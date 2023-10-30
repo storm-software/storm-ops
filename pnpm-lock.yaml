@@ -160,6 +160,9 @@ importers:
       commander:
         specifier: ^11.1.0
         version: 11.1.0
+      deep-map:
+        specifier: ^2.0.0
+        version: 2.0.0
       doctoc:
         specifier: ^2.2.1
         version: 2.2.1
@@ -8072,6 +8075,17 @@ packages:
       {
         integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==
       }
+    dev: false
+
+  /deep-map@2.0.0:
+    resolution:
+      {
+        integrity: sha512-guIurpeZi1wiclCEEHpJmFx7Tr4gkmSBNcUpY67maP4BJeEa1JPVf9KXURcCI/cAHsvGtqVwQKI/X39rY735Rg==
+      }
+    engines: { node: ">=6" }
+    dependencies:
+      lodash: 4.17.21
+      tslib: 1.14.1
     dev: false
 
   /deepmerge@4.3.1:

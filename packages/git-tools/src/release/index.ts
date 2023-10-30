@@ -12,6 +12,7 @@ import { setReleaseContext } from "../semantic-release-plugin";
 import { ReleaseConfig } from "../types";
 import defaultOptions from "./config";
 import { resolvePlugins } from "./plugins";
+import { applyTokensToReleaseConfig } from "./tokens";
 
 const LARGE_BUFFER = 1024 * 1000000;
 
@@ -110,6 +111,12 @@ export async function runProjectRelease(
   const workspaceDir = process.env["DEV_REPO_ROOT"]
     ? process.env["DEV_REPO_ROOT"]
     : process.cwd();
+
+  config = applyTokensToReleaseConfig(config, {
+    projectName,
+    projectDir: projectConfig.root,
+    workspaceDir
+  });
 
   setReleaseContext({
     ...config,

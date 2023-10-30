@@ -3,7 +3,7 @@ export default {
   changelog: true,
   changelogFile: "${PROJECT_DIR}/CHANGELOG.md",
   commitMessage:
-    "release(${PROJECT_DIR}): Changelogs generated for v${nextRelease.version}\n\n${nextRelease.notes}",
+    "chore(${PROJECT_NAME}): Changelogs generated for v${nextRelease.version}\n\n${nextRelease.notes}",
   linkCompare: true,
   linkReferences: true,
   npm: true,
@@ -43,8 +43,9 @@ export default {
   repositoryUrl: process.env.CI_REPO_URL,
   branches: [
     "main",
-    "alpha",
-    "beta",
+    "next",
+    { name: "beta", prerelease: true },
+    { name: "alpha", prerelease: true },
     {
       name: "[\\s\\S]+",
       prerelease: true
@@ -60,7 +61,7 @@ export default {
           header: "# ${PROJECT_NAME} v${version} Changelog\n\n",
           preMajor: process.env.CI_PRE_MAJOR,
           releaseCommitMessageFormat:
-            "release(${PROJECT_DIR}): Changelogs generated for v${nextRelease.version}\n\n${nextRelease.notes}"
+            "chore(${PROJECT_NAME}): Changelogs generated for v${nextRelease.version}\n\n${nextRelease.notes}"
         },
         releaseRules: [{ type: "refactor", release: "patch" }]
       }
