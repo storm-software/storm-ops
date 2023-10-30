@@ -87,11 +87,9 @@ export const analyzeCommitsForProject =
   };
 
 function getCommitAnalyzer() {
-  const fn = new Function(
-    'return import("@semantic-release/commit-analyzer").then(m => m.analyzeCommits)'
+  return import("@semantic-release/commit-analyzer").then(
+    m => m.analyzeCommits
   );
-
-  return fn() as Promise<any>;
 }
 
 async function filterCommits(
