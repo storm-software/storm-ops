@@ -21,6 +21,8 @@ export const getCommitsForProject =
   (verbose?: boolean) =>
   (plugin: PluginFn) =>
   async (config: unknown, context: any) => {
+    console.log("getCommitsForProject");
+
     if (!CurrentContext) {
       throw new Error("Release context is missing.");
     }
@@ -41,6 +43,56 @@ export const getCommitsForProject =
       commits: filteredCommits
     });
   };
+
+export const analyzeCommitsForProject =
+  (verbose?: boolean) =>
+  (plugin: PluginFn) =>
+  async (config: any, context: any) => {
+    console.log("analyzeCommitsForProject");
+
+    if (!CurrentContext) {
+      throw new Error("Release context is missing.");
+    }
+
+    if (!context.commits) {
+      throw new Error("Commits are missing.");
+    }
+
+    const filteredCommits = await filterCommits(
+      context.commits,
+      CurrentContext,
+      context,
+      verbose
+    );
+
+    const analyzeCommits = await getCommitAnalyzer();
+    return analyzeCommits(
+      {
+        preset: "conventionalcommits",
+        // JSON Schema: https://github.com/conventional-changelog/conventional-changelog-config-spec/blob/master/versions/2.0.0/schema.json
+        presetConfig: {
+          header: "# ${PROJECT_NAME} v${version} Changelog\n\n",
+          preMajor: process.env.CI_PRE_MAJOR,
+          releaseCommitMessageFormat:
+            "chore(${PROJECT_NAME}): Changelogs generated for v${nextRelease.version}\n\n${nextRelease.notes}"
+        },
+        releaseRules: [{ type: "refactor", release: "patch" }],
+        ...config
+      },
+      {
+        ...context,
+        commits: filteredCommits
+      }
+    );
+  };
+
+function getCommitAnalyzer() {
+  const fn = new Function(
+    'return import("@semantic-release/commit-analyzer").then(m => m.analyzeCommits)'
+  );
+
+  return fn() as Promise<any>;
+}
 
 async function filterCommits(
   commits: any[],

@@ -47,21 +47,5 @@ export default {
     { name: "beta", prerelease: true },
     { name: "alpha", prerelease: true }
   ],
-  plugins: [
-    [
-      "@semantic-release/commit-analyzer",
-      {
-        preset: "conventionalcommits",
-        // JSON Schema: https://github.com/conventional-changelog/conventional-changelog-config-spec/blob/master/versions/2.0.0/schema.json
-        presetConfig: {
-          header: "# ${PROJECT_NAME} v${version} Changelog\n\n",
-          preMajor: process.env.CI_PRE_MAJOR,
-          releaseCommitMessageFormat:
-            "chore(${PROJECT_NAME}): Changelogs generated for v${nextRelease.version}\n\n${nextRelease.notes}"
-        },
-        releaseRules: [{ type: "refactor", release: "patch" }]
-      }
-    ],
-    "@semantic-release/release-notes-generator"
-  ]
+  plugins: ["@semantic-release/release-notes-generator"]
 };

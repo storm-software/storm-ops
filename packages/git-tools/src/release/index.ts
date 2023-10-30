@@ -156,6 +156,7 @@ function getSemanticRelease() {
 
   return fn() as Promise<any>;
 }
+
 // Replace our token that is used for consistency with token required by semantic-release
 function parseTag(tag: string) {
   return tag.replace("${VERSION}", match => match.toLowerCase());

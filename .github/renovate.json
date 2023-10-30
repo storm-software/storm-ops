@@ -47,5 +47,9 @@
       "depTypeList": ["dependencies"],
       "updateTypes": ["patch", "pin"]
     }
-  ]
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
+  "osvVulnerabilityAlerts": true
 }
