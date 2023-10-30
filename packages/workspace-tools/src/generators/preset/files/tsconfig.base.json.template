@@ -1,0 +1,15 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "extends": "@storm-software/workspace-tools/config/tsconfig.root.json",
+    "display": "Storm Software - <%= name %>",
+    "compilerOptions": {
+        "rootDir": ".",
+        "baseUrl": ".",
+        "paths": {}
+    },
+    "references": [
+        {
+            "path": "./.storybook/tsconfig.json"
+        }
+    ]
+}

@@ -1,0 +1,95 @@
+{
+  "name": "linting-tools",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/linting-tools/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/linting-tools",
+        "tsConfig": "packages/linting-tools/tsconfig.json",
+        "project": "packages/linting-tools/package.json",
+        "main": "packages/linting-tools/src/cli/index.ts",
+        "additionalEntryPoints": [
+          "packages/linting-tools/src/eslint/graphql/index.ts",
+          "packages/linting-tools/src/eslint/javascript/index.ts",
+          "packages/linting-tools/src/eslint/json/index.ts",
+          "packages/linting-tools/src/eslint/jest/index.ts",
+          "packages/linting-tools/src/eslint/next/index.ts",
+          "packages/linting-tools/src/eslint/react/index.ts",
+          "packages/linting-tools/src/eslint/typescript/index.ts",
+          "packages/linting-tools/src/manypkg/index.ts"
+        ],
+        "deleteOutputPath": true,
+        "bundle": true,
+        "sourcemap": false,
+        "minify": false,
+        "skipTypeCheck": false,
+        "thirdParty": true,
+        "format": ["esm", "cjs"],
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".js"
+          }
+        },
+        "assets": [
+          {
+            "input": "packages/linting-tools",
+            "glob": "README.md",
+            "output": "/"
+          },
+          {
+            "input": "packages/linting-tools",
+            "glob": "CHANGELOG.md",
+            "output": "/"
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "/"
+          },
+          {
+            "input": "packages/linting-tools",
+            "glob": "bin/**/*",
+            "output": "."
+          },
+          {
+            "input": "packages/linting-tools/src",
+            "glob": "alex/**/.{alexrc,alexignore}",
+            "output": "."
+          },
+          {
+            "input": "packages/linting-tools/src",
+            "glob": "cspell/**/dictionary.txt",
+            "output": "."
+          },
+          {
+            "input": "packages/linting-tools/src",
+            "glob": "cspell/**/*.js",
+            "output": "."
+          },
+          {
+            "input": "packages/linting-tools/src",
+            "glob": "prettier/**/*.js",
+            "output": "."
+          },
+          {
+            "input": "packages/linting-tools/src",
+            "glob": "prettier/.prettierignore",
+            "output": "."
+          },
+          {
+            "input": "packages/linting-tools/src",
+            "glob": "tsconfig/**/*.*",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {},
+    "test": {}
+  },
+  "tags": []
+}

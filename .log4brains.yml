@@ -1,0 +1,5 @@
+project:
+  name: storm-ops
+  tz: America/New_York
+  adrFolder: ./docs/decisions
+  packages: []

@@ -1,0 +1,85 @@
+# Simple workflow for deploying documentation to GitHub Pages
+name: "Deploy Documentation"
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches:
+      - "main"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+env:
+  CI: true
+  NX_DAEMON: false
+  NX_VERBOSE_LOGGING: true
+  GITHUB_ACTOR: "🤖 Storm Bot"
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  deploy-docs:
+    if: github.repository == 'storm-software/<%= name %>' && github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v3
+        with:
+          registry-url: https://registry.npmjs.org/
+          node-version-file: .github/.nvmrc
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install Dependencies
+        run: pnpm ci
+
+      - name: Prepare for build
+        run: pnpm build --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
+
+      - name: Generate TSDocs Markdown with API Extractor
+        run: pnpm nx g @storm-software/workspace-tools:api-extractor --outputPath 'docs/website/docs/api-reference' --clean --no-interactive
+
+      - name: Build website
+        run: pnpm nx run docs-website:build
+
+      - name: Build event catalog
+        run: pnpm nx run docs-event-catalog:build
+
+      - name: Copy event catalog into website
+        run: mkdir ./dist/docs/website/event-catalog && cp -r ./dist/docs/event-catalog/dist/out/* ./dist/docs/website/event-catalog
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: "./dist/docs/website"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

@@ -1,0 +1,4 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+node ./packages/workspace-tools/scripts/check-lock-file.js

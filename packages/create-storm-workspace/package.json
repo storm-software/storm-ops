@@ -1,0 +1,17 @@
+{
+  "name": "create-storm-workspace",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
+  "bin": {
+    "create-storm-workspace": "./bin/index.js"
+  },
+  "dependencies": {
+    "create-nx-workspace": "^17.0.1",
+    "enquirer": "^2.4.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

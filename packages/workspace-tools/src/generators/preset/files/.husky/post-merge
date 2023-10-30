@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+changedFiles="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
+node @storm-software/workspace-tools/scripts/package-version-warning.js $changedFiles
+

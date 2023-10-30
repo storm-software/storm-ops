@@ -1,0 +1,53 @@
+{
+  "name": "workspace-tools",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/workspace-tools/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/workspace-tools",
+        "main": "packages/workspace-tools/src/index.ts",
+        "tsConfig": "packages/workspace-tools/tsconfig.lib.json",
+        "assets": [
+          "packages/workspace-tools/*.md",
+          {
+            "input": "./packages/workspace-tools/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/workspace-tools/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./packages/workspace-tools",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/workspace-tools",
+            "glob": "executors.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/workspace-tools/config",
+            "glob": "**/*.*",
+            "output": "./config"
+          },
+          {
+            "input": "./packages/workspace-tools/scripts",
+            "glob": "**/*.js",
+            "output": "./scripts"
+          }
+        ]
+      }
+    },
+    "lint": {},
+    "test": {}
+  },
+  "tags": ["scope:tools"]
+}

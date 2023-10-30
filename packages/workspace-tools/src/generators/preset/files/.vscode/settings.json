@@ -1,0 +1,300 @@
+{
+  /******************************
+   * relay graph-ql
+   ******************************/
+  "relay.autoStartCompiler": true,
+  "relay.rootDirectory": "../",
+  "relay.pathToConfig": "@storm-software/graphql-tools/config/relay.config.js",
+
+  /******************************
+   * VS Code Search
+   ******************************/
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/.tamagui": true,
+    "**/.next": true,
+    "**/dist": true
+  },
+
+  /******************************
+   * bracket pair colorization
+   ******************************/
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.tabCompletion": "on",
+
+  /******************************
+   * Typescript
+   ******************************/
+  "typescript.tsserver.log": "verbose",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+
+  /******************************
+   * Tailwind CSS
+   ******************************/
+  "tailwindCSS.experimental.classRegex": [
+    [
+      "cva(?:<[^>]*>)?(([^)]*))",
+      "[\"'`]([^\"'`]*).*?[\"'`]",
+      "(?:twMerge|twJoin)\\(([^\\);]*)[\\);]"
+    ]
+  ],
+
+  /******************************
+   * eslint / prettier
+   ******************************/
+  "editor.formatOnSave": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.associations": {
+    "*.hbs": "handlebars",
+    "*.4cast": "forecast"
+  },
+
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.organizeImports": true,
+      "source.sortMembers": true
+    }
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.organizeImports": true,
+      "source.sortMembers": true
+    }
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.organizeImports": true,
+      "source.sortMembers": true
+    }
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.organizeImports": true,
+      "source.sortMembers": true
+    }
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  /******************************
+   * Markdown
+   ******************************/
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  },
+
+  /******************************
+   * Prisma
+   ******************************/
+  "[prisma]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+
+  /******************************
+   * Forecast
+   ******************************/
+  "[forecast]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+
+  /******************************
+   * Handlebars
+   ******************************/
+  "[handlebars]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  /******************************
+   * csharpier
+   ******************************/
+  "[csharp]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+  },
+
+  /******************************
+   * vscode-icons
+   ******************************/
+  "vsicons.associations.files": [
+    {
+      "icon": "registry",
+      "extensions": ["routes.config.ts"],
+      "filename": true,
+      "format": "svg"
+    },
+    {
+      "icon": "dependencies",
+      "extensions": ["dependencies.config.ts"],
+      "filename": true,
+      "format": "svg"
+    },
+    {
+      "icon": "swagger",
+      "extensions": ["api-spec.json"],
+      "filename": true,
+      "format": "svg"
+    },
+    {
+      "icon": "tailwind",
+      "extensions": ["tailwind.preset.js"],
+      "filename": true,
+      "format": "svg"
+    },
+    {
+      "icon": "jest",
+      "extensions": ["jest.preset.js"],
+      "filename": true,
+      "format": "svg"
+    },
+    {
+      "icon": "config",
+      "extensions": ["environment.ts"],
+      "format": "svg"
+    },
+    {
+      "icon": "config",
+      "extensions": ["environment.ts"],
+      "format": "svg"
+    },
+    {
+      "icon": "dotenv",
+      "extensions": [".env", ".env.local", ".env.production"],
+      "languages": ["dotenv"],
+      "format": "svg"
+    },
+    {
+      "icon": "sentry",
+      "extensions": [
+        ".sentryclirc",
+        "sentry.client.config.js",
+        "sentry.server.config.js",
+        "sentry.properties"
+      ],
+      "format": "svg"
+    }
+  ],
+  "vsicons.associations.folders": [
+    {
+      "icon": "graphql",
+      "extensions": ["graphql", "gql"],
+      "format": "svg"
+    },
+    {
+      "icon": "www",
+      "extensions": ["shell"],
+      "format": "svg"
+    },
+    {
+      "icon": "config",
+      "extensions": ["environment"],
+      "format": "svg"
+    },
+    {
+      "icon": "tools",
+      "extensions": ["tools", "executors", "generators"],
+      "format": "svg"
+    },
+    {
+      "icon": "helper",
+      "extensions": ["utilities"],
+      "format": "svg"
+    },
+    {
+      "icon": "typescript",
+      "extensions": ["constants"],
+      "format": "svg"
+    },
+    {
+      "icon": "typings2",
+      "extensions": ["enums"],
+      "format": "svg"
+    },
+    {
+      "icon": "typings",
+      "extensions": ["types"],
+      "format": "svg"
+    },
+    {
+      "icon": "db",
+      "extensions": ["state"],
+      "format": "svg"
+    },
+    {
+      "icon": "api",
+      "extensions": [".openapi-generator", "openapi", "asyncapi"],
+      "format": "svg"
+    },
+    {
+      "icon": "route",
+      "extensions": ["inversion"],
+      "format": "svg"
+    },
+    {
+      "icon": "route",
+      "extensions": ["inversion"],
+      "format": "svg"
+    },
+    {
+      "icon": "include",
+      "extensions": ["external"],
+      "format": "svg"
+    },
+    {
+      "icon": "library",
+      "extensions": ["shared"],
+      "format": "svg"
+    },
+    {
+      "icon": "server",
+      "extensions": ["dotnet"],
+      "format": "svg"
+    },
+    {
+      "icon": "style",
+      "extensions": ["design-system"],
+      "format": "svg"
+    },
+    {
+      "icon": "theme",
+      "extensions": ["tokens"],
+      "format": "svg"
+    }
+  ],
+
+  /******************************
+   * commitizen
+   ******************************/
+  "commitizen.capitalizeWindowsDriveLetter": true,
+  "commitizen.autoSync": false,
+  "commitizen.showOutputChannel": "always"
+}

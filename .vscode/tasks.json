@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Forecast CodeGen",
+      "command": "pnpm forecast-codegen",
+      "type": "shell",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "⚡Storm Software's Forecast Code Generator tool",
+      "icon": {
+        "color": "terminal.ansiGreen",
+        "id": "server-process"
+      }
+    }
+  ]
+}

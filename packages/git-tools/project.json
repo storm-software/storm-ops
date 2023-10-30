@@ -1,0 +1,87 @@
+{
+  "name": "git-tools",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/git-tools/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/git-tools",
+        "tsConfig": "packages/git-tools/tsconfig.json",
+        "project": "packages/git-tools/package.json",
+        "main": "packages/git-tools/src/index.ts",
+        "additionalEntryPoints": [
+          "packages/git-tools/src/cli/index.ts",
+          "packages/git-tools/src/commitizen/index.ts",
+          "packages/git-tools/src/commit/config.ts",
+          "packages/git-tools/src/commitlint/config.ts",
+          "packages/git-tools/src/commitizen/config.ts",
+          "packages/git-tools/src/commit/index.ts",
+          "packages/git-tools/src/release/index.ts",
+          "packages/git-tools/src/release/config.js",
+          "packages/git-tools/src/semantic-release-plugin/index.ts"
+        ],
+        "deleteOutputPath": true,
+        "bundle": true,
+        "sourcemap": true,
+        "minify": false,
+        "skipTypeCheck": true,
+        "thirdParty": true,
+        "format": ["esm", "cjs"],
+        "external": [
+          "@swc/wasm",
+          "@swc/core",
+          "nx",
+          "@angular-devkit/architect"
+        ],
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".js"
+          }
+        },
+        "assets": [
+          {
+            "input": "packages/git-tools",
+            "glob": "README.md",
+            "output": "/"
+          },
+          {
+            "input": "packages/git-tools",
+            "glob": "CHANGELOG.md",
+            "output": "/"
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "/"
+          },
+          {
+            "input": "packages/git-tools",
+            "glob": "bin/**/*",
+            "output": "."
+          },
+          {
+            "input": "packages/git-tools/src",
+            "glob": "lint-staged/**/*.js",
+            "output": "."
+          },
+          {
+            "input": "packages/linting-tools/src",
+            "glob": "prettier/.prettierignore_staged",
+            "output": "."
+          },
+          {
+            "input": "packages/git-tools/src",
+            "glob": "readme/templates/**/*.*",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {},
+    "test": {}
+  },
+  "tags": []
+}

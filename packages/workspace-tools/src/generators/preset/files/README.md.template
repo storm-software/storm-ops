@@ -1,23 +1,23 @@
-<div align="center"><img src="https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-banner.png" width="100%" altText="storm-ops" /></div>
+<div align="center"><img src="https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-banner.png" width="100%" altText="<%= name %>" /></div>
 
 <div align="center">
-<a href="https://stormcloud.dev" target="_blank">Website</a>  |  <a href="https://stormcloud.dev/contact" target="_blank">Contact</a>  |  <a href="https://github.com/storm-software/storm-ops" target="_blank">Repository</a>  |  <a href="https://storm-software.github.io/storm-ops/" target="_blank">Documentation</a>  |  <a href="https://github.com/storm-software/storm-ops/issues/new?assignees=&labels=bug&template=bug-report.yml&title=Bug Report%3A+">Report a Bug</a> | <a href="https://github.com/storm-software/storm-ops/issues/new?assignees=&labels=enhancement&template=feature-request.yml&title=Feature Request%3A+">Request a Feature</a> | <a href="https://github.com/storm-software/storm-ops/issues/new?assignees=&labels=documentation&template=documentation.yml&title=Documentation Request%3A+">Request Documentation</a> | <a href="https://github.com/storm-software/storm-ops/discussions">Ask a Question</a>
+<a href="https://stormcloud.dev" target="_blank">Website</a>  |  <a href="https://stormcloud.dev/contact" target="_blank">Contact</a>  |  <a href="https://github.com/storm-software/<%= name %>" target="_blank">Repository</a>  |  <a href="https://storm-software.github.io/<%= name %>/" target="_blank">Documentation</a>  |  <a href="https://github.com/storm-software/<%= name %>/issues/new?assignees=&labels=bug&template=bug-report.yml&title=Bug Report%3A+">Report a Bug</a> | <a href="https://github.com/storm-software/<%= name %>/issues/new?assignees=&labels=enhancement&template=feature-request.yml&title=Feature Request%3A+">Request a Feature</a> | <a href="https://github.com/storm-software/<%= name %>/issues/new?assignees=&labels=documentation&template=documentation.yml&title=Documentation Request%3A+">Request Documentation</a> | <a href="https://github.com/storm-software/<%= name %>/discussions">Ask a Question</a>
 </div>
 
 <br />
-Storm Software's <b>⚡Storm-Ops</b> monorepo contains various configurations and tools used to manage the Storm Software repositories.
+Storm Software's <b>⚡<%= name %></b> monorepo contains utility applications, tools, and various libraries used to create modern, scalable web applications. <b>With the assistance of Storm's <a href="#forecast---model-driven-development">Forecast modelling</a>, a developer could create and a fully featured back-end without writing any actual code themselves.</b>
 <br />
-Storm-Ops is built using <a href="https://nx.dev/" target="_blank">Nx</a>, a set of extensible dev tools for monorepos, which helps you develop like Google, Facebook, and Microsoft. Building on top of Nx, the Open System provides a set of tools and patterns that help you scale your monorepo to many teams while keeping the codebase maintainable.
+<%= name %> is built using <a href="https://nx.dev/" target="_blank">Nx</a>, a set of extensible dev tools for monorepos, which helps you develop like Google, Facebook, and Microsoft. Building on top of Nx, the Open System provides a set of tools and patterns that help you scale your monorepo to many teams while keeping the codebase maintainable.
 
 <h3 align="center">💻 Visit <a href="https://stormcloud.dev" target="_blank">stormcloud.dev</a> to stay up to date with this developer<br /><br /></h3>
 
-[![github](https://img.shields.io/github/package-json/v/storm-software/storm-ops?style=for-the-badge&color=1fb2a6)](https://github.com/storm-software/storm-ops)&nbsp;[![Nx](https://img.shields.io/badge/Nx-14.4.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-13.0.5-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![codecov.io](https://img.shields.io/codecov/c/github/commitizen/cz-cli.svg?style=for-the-badge&color=1fb2a6)](https://codecov.io/github/commitizen/cz-cli?branch=master)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with docusaurus](https://img.shields.io/badge/documented_with-docusaurus-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://docusaurus.io/)
+[![github](https://img.shields.io/github/package-json/v/storm-software/<%= name %>?style=for-the-badge&color=1fb2a6)](https://github.com/storm-software/<%= name %>)&nbsp;[![Nx](https://img.shields.io/badge/Nx-14.4.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-13.0.5-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![codecov.io](https://img.shields.io/codecov/c/github/commitizen/cz-cli.svg?style=for-the-badge&color=1fb2a6)](https://codecov.io/github/commitizen/cz-cli?branch=master)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with docusaurus](https://img.shields.io/badge/documented_with-docusaurus-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://docusaurus.io/)
 
 <h3 align="center" bold="true">⚠️ <b>Attention</b> ⚠️ - This repository, and the apps, libraries, and tools contained within, is still in it's initial development phase. As a result, bugs and issues are expected with it's usage. When the main development phase completes, a proper release will be performed, the packages will be availible through NPM (and other distributions), and this message will be removed. However, in the meantime, please feel free to report any issues you may come across.<br /><br /></h3>
 
 <!--#if GitHubActions-->
 
-[![GitHub Actions Build History](https://buildstats.info/github/chart/storm-software/storm-ops?branch=main&includeBuildsFromPullRequest=false)](https://github.com/storm-software/storm-ops/actions)
+[![GitHub Actions Build History](https://buildstats.info/github/chart/storm-software/<%= name %>?branch=main&includeBuildsFromPullRequest=false)](https://github.com/storm-software/<%= name %>/actions)
 
 <!--#endif-->
 
@@ -80,9 +80,9 @@ The following are some of the features/publishable code that are included in thi
 
 # Getting Started
 
-Once the code is pulled locally, open a command prompt and run `pnpm install` in the root repo directory (/storm-ops).
+Once the code is pulled locally, open a command prompt and run `npm install` in the root repo directory (/<%= name %>).
 
-More information can be found in the [Open System documentation](https://storm-software.github.io/storm-ops/docs/getting-started/installation).
+More information can be found in the [Open System documentation](https://storm-software.github.io/<%= name %>/docs/getting-started/installation).
 
 ## Build
 
@@ -140,11 +140,11 @@ Run `nx g @storm-software/workspace:lib my-lib` to generate a library.
 
 > You can also use any of the plugins above to generate libraries as well.
 
-Libraries are shareable across libraries and applications. They can be imported from `@storm-ops/my-lib`.
+Libraries are shareable across libraries and applications. They can be imported from `@<%= name %>/my-lib`.
 
 ## Code Scaffolding
 
-Run `nx g @nx/react:component my-component --project=storm-ops` to generate a new component.
+Run `nx g @nx/react:component my-component --project=<%= name %>` to generate a new component.
 <br /><br />
 
 # Testing
@@ -185,11 +185,11 @@ Visit [Nx Cloud](https://nx.app/) to learn more.
 
 # Roadmap
 
-See the [open issues](https://github.com/storm-software/storm-ops/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/storm-software/<%= name %>/issues) for a list of proposed features (and known issues).
 
-- [Top Feature Requests](https://github.com/storm-software/storm-ops/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
-- [Top Bugs](https://github.com/storm-software/storm-ops/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
-- [Newest Bugs](https://github.com/storm-software/storm-ops/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
+- [Top Feature Requests](https://github.com/storm-software/<%= name %>/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
+- [Top Bugs](https://github.com/storm-software/<%= name %>/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
+- [Newest Bugs](https://github.com/storm-software/<%= name %>/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
   <br /><br />
 
 # Contributing
@@ -205,7 +205,7 @@ Please try to create bug reports that are:
 
 Please adhere to this project's [code of conduct](.github/CODE_OF_CONDUCT.md).
 
-You can use [markdownlint-cli](https://github.com/storm-software/storm-ops/markdownlint-cli) to check for common markdown style inconsistency.
+You can use [markdownlint-cli](https://github.com/storm-software/<%= name %>/markdownlint-cli) to check for common markdown style inconsistency.
 <br /><br />
 
 # Support
@@ -213,7 +213,7 @@ You can use [markdownlint-cli](https://github.com/storm-software/storm-ops/markd
 Reach out to the maintainer at one of the following places:
 
 - [Contact](https://stormcloud.dev/contact)
-- [GitHub discussions](https://github.com/storm-software/storm-ops/discussions)
+- [GitHub discussions](https://github.com/storm-software/<%= name %>/discussions)
 - <contact@stormcloud.dev>
 
 # License
@@ -232,7 +232,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tbody>
     <tr>
-      <td align="center"><a href="http://www.sullypat.com/"><img src="https://avatars.githubusercontent.com/u/99053093?v=4?s=100" width="100px;" alt="Patrick Sullivan"/><br /><sub><b>Patrick Sullivan</b></sub></a><br /><a href="#design-sullivanpj" title="Design">🎨</a> <a href="https://github.com/storm-software/storm-ops/commits?author=sullivanpj" title="Code">💻</a> <a href="#tool-sullivanpj" title="Tools">🔧</a> <a href="https://github.com/storm-software/storm-ops/commits?author=sullivanpj" title="Documentation">📖</a> <a href="https://github.com/storm-software/storm-ops/commits?author=sullivanpj" title="Tests">⚠️</a></td>
+      <td align="center"><a href="http://www.sullypat.com/"><img src="https://avatars.githubusercontent.com/u/99053093?v=4?s=100" width="100px;" alt="Patrick Sullivan"/><br /><sub><b>Patrick Sullivan</b></sub></a><br /><a href="#design-sullivanpj" title="Design">🎨</a> <a href="https://github.com/storm-software/<%= name %>/commits?author=sullivanpj" title="Code">💻</a> <a href="#tool-sullivanpj" title="Tools">🔧</a> <a href="https://github.com/storm-software/<%= name %>/commits?author=sullivanpj" title="Documentation">📖</a> <a href="https://github.com/storm-software/<%= name %>/commits?author=sullivanpj" title="Tests">⚠️</a></td>
       <td align="center"><a href="https://tylerbenning.com/"><img src="https://avatars.githubusercontent.com/u/7265547?v=4?s=100" width="100px;" alt="Tyler Benning"/><br /><sub><b>Tyler Benning</b></sub></a><br /><a href="#design-tbenning" title="Design">🎨</a></td>
     </tr>
   </tbody>

@@ -1,0 +1,3 @@
+{
+  "import": ["../dist/packages/linting-tools/cspell/config"]
+}

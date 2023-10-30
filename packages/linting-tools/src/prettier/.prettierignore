@@ -1,0 +1,15 @@
+.alexignore
+.prettierignore
+**/.git/**
+**/.docusaurus/**
+**/dist/**
+**/dotnet/**
+**/node_modules/**
+**/.next/**
+**/pnpm-lock.yaml/**
+**/tools/docker/**
+**/__snapshots__/**
+**/catalog-package/**
+**/*.hbs
+
+# tailwind.config.js

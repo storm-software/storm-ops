@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@storm-software/git-tools/*": ["packages/git-tools/*"],
+      "@storm-software/linting-tools/*": ["packages/linting-tools/*"],
+      "@storm-software/workspace-tools": [
+        "packages/workspace-tools/src/index.ts"
+      ],
+      "create-storm-workspace": ["packages/create-storm-workspace/bin/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

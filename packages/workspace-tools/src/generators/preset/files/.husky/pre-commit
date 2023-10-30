@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+node @storm-software/workspace-tools/scripts/check-lock-file.js
+pnpm pre-commit

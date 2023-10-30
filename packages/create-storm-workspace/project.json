@@ -1,0 +1,22 @@
+{
+  "name": "create-storm-workspace",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/create-storm-workspace/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/create-storm-workspace",
+        "main": "packages/create-storm-workspace/bin/index.ts",
+        "tsConfig": "packages/create-storm-workspace/tsconfig.lib.json",
+        "assets": ["packages/create-storm-workspace/*.md"],
+        "updateBuildableProjectDepsInPackageJson": false
+      }
+    },
+    "lint": {}
+  },
+  "tags": ["scope:config"],
+  "implicitDependencies": ["workspace-tools"]
+}

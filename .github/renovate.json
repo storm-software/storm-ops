@@ -1,0 +1,51 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    "group:monorepos",
+    "schedule:weekly",
+    ":semanticCommits",
+    ":automergePatch",
+    ":noUnscheduledUpdates",
+    ":pinAllExceptPeerDependencies"
+  ],
+  "semanticCommits": "enabled",
+  "reviewers": ["@sullivanpj"],
+  "rebaseWhen": "conflicted",
+  "rangeStrategy": "pin",
+  "automerge": true,
+  "major": {
+    "automerge": false
+  },
+  "minor": {
+    "automerge": false
+  },
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["^@storm-software/"],
+      "enabled": true
+    },
+    {
+      "matchPackageNames": ["@nx"],
+      "postUpgradeTasks": {
+        "commands": [
+          "npx nx migrate latest --run-migrations --create-commits --commit-message='chore(repo): update @nx dependencies'"
+        ]
+      }
+    },
+    {
+      "groupName": "dependencies-non-major",
+      "matchUpdateTypes": ["digest", "minor", "patch", "pin"]
+    },
+    {
+      "groupName": "patch & minor dev dependencies",
+      "depTypeList": ["devDependencies"],
+      "updateTypes": ["digest", "minor", "patch", "pin"]
+    },
+    {
+      "groupName": "patch prod dependencies",
+      "depTypeList": ["dependencies"],
+      "updateTypes": ["patch", "pin"]
+    }
+  ]
+}
