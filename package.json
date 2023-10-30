@@ -110,5 +110,13 @@
       "lint",
       "format"
     ]
+  },
+  "pnpm": {
+    "overrides": {
+      "create-storm-workspace": "workspace:*",
+      "@storm-software/workspace-tools": "workspace:*",
+      "@storm-software/linting-tools": "workspace:*",
+      "@storm-software/git-tools": "workspace:*"
+    }
   }
 }
