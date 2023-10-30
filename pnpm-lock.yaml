@@ -148,6 +148,9 @@ importers:
       "@semantic-release/changelog":
         specifier: ^6.0.3
         version: 6.0.3(semantic-release@22.0.5)
+      "@semantic-release/commit-analyzer":
+        specifier: ^11.0.0
+        version: 11.0.0(semantic-release@22.0.5)
       "@semantic-release/exec":
         specifier: ^6.0.3
         version: 6.0.3(semantic-release@22.0.5)
@@ -157,6 +160,9 @@ importers:
       "@semantic-release/npm":
         specifier: ^11.0.0
         version: 11.0.0(semantic-release@22.0.5)
+      "@semantic-release/release-notes-generator":
+        specifier: ^12.0.0
+        version: 12.0.0(semantic-release@22.0.5)
       any-shell-escape:
         specifier: ^0.1.1
         version: 0.1.1
