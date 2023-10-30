@@ -5,7 +5,6 @@ import {
 } from "@nx/devkit";
 import "es6-weak-map";
 import { execSync } from "node:child_process";
-import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { getAffectedGraphNodes } from "nx/src/command-line/affected/affected";
 import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
@@ -128,7 +127,7 @@ export async function runProjectRelease(
   const release = await getSemanticRelease();
 
   let pluginPath = plugin;
-  if (!pluginPath.startsWith("@") && !existsSync(pluginPath)) {
+  if (!pluginPath.startsWith("@")) {
     pluginPath = join(workspaceDir, pluginPath);
   }
 
