@@ -56,6 +56,9 @@ jobs:
       - name: Build repository packages
         run: pnpm nx run-many -t build --parallel=5
 
+      - name: Add permissions
+        run: chown -R 1001:1001 dist
+
       - name: Run Linters
         run: pnpm lint
 
