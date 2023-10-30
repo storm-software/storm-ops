@@ -57,7 +57,7 @@ jobs:
         run: pnpm nx run-many -t build --parallel=5
 
       - name: Add permissions
-        run: chown -R 1001:1001 dist
+        run: chmod +rwx dist
 
       - name: Run Linters
         run: pnpm lint
