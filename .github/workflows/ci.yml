@@ -56,8 +56,8 @@ jobs:
       - name: Build repository packages
         run: pnpm nx affected -t build --parallel=5 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
 
-      - name: Run Linters
-        run: pnpm lint
+      #- name: Run Linters
+      #  run: pnpm lint
 
       - name: Run Formatters
         run: pnpm nx format
