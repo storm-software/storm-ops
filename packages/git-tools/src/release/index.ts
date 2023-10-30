@@ -100,7 +100,7 @@ export async function runProjectRelease(
     ? parseTag(config.tagFormat)
     : config.tagFormat;
 
-  const release = await getSemanticRelease();
+  release ??= await getSemanticRelease();
 
   await release({
     extends: plugin,
@@ -110,15 +110,13 @@ export async function runProjectRelease(
   });
 }
 
+let release;
+
 /**
  * @FIXME Recently semantic-release became esm only, but until NX will support plugins in ESM, we have to use this dirty hack :/
  * */
-function getSemanticRelease() {
-  const fn = new Function(
-    'return import("semantic-release").then(m => m.default)'
-  );
-
-  return fn() as Promise<any>;
+async function getSemanticRelease() {
+  return (await import("semantic-release")).default;
 }
 
 // Replace our token that is used for consistency with token required by semantic-release
