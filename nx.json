@@ -1,13 +1,43 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "extends": "nx/presets/npm.json",
   "affected": {
     "defaultBase": "main"
+  },
+  "workspaceLayout": {
+    "projectNameAndRootFormat": "as-provided"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "format", "test", "e2e"],
+        "parallel": 5
+      }
+    }
   },
   "targetDefaults": {
     "build": {
       "cache": true,
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "inputs": ["production", "^production"],
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/{projectRoot}",
+        "tsConfig": "{projectRoot}/tsconfig.lib.json",
+        "assets": [
+          {
+            "glob": "*.md",
+            "input": "{projectRoot}",
+            "output": "."
+          },
+          {
+            "glob": "LICENSE",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
     },
     "lint": {
       "cache": true,
