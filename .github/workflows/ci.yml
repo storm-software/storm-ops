@@ -41,7 +41,7 @@ jobs:
         uses: ./.github/actions/setup-workspace
 
       - name: Install dependencies
-        run: pnpm ci
+        run: pnpm install
 
       - name: Get appropriate base and head commits for `nx affected` commands
         uses: nrwl/nx-set-shas@v3
@@ -77,6 +77,8 @@ jobs:
 
       - name: Release Library Version Updates
         run: pnpm release --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       #- name: Release Repository Version Updates
       #  run: pnpm nx run-many --target=semantic-release --parallel=false
