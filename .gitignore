@@ -4,7 +4,9 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # compiled output
-dist
+dist/**
+!dist/.gitkeep
+
 tmp
 /out-tsc
 out
