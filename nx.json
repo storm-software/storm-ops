@@ -60,7 +60,5 @@
     ],
     "sharedGlobals": []
   },
-  "nxCloudAccessToken": "N2UyNGNlNDktNjlmNC00YTA3LTliOGYtNDhjYjEyYzgyZDZifHJlYWQtd3JpdGU=",
-  "parallel": 1,
-  "cacheDirectory": "/.nx/cache"
+  "nxCloudAccessToken": "N2UyNGNlNDktNjlmNC00YTA3LTliOGYtNDhjYjEyYzgyZDZifHJlYWQtd3JpdGU="
 }
