@@ -4,6 +4,12 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  create-storm-workspace: workspace:*
+  "@storm-software/workspace-tools": workspace:*
+  "@storm-software/linting-tools": workspace:*
+  "@storm-software/git-tools": workspace:*
+
 importers:
   .:
     dependencies:
