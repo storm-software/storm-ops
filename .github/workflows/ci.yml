@@ -54,16 +54,16 @@ jobs:
           echo "HEAD: ${{ env.NX_HEAD }}"
 
       - name: Build repository packages
-        run: pnpm nx affected -t build --parallel=5 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
+        run: pnpm nx run-many -t build --parallel=5
 
-      #- name: Run Linters
-      #  run: pnpm lint
+      - name: Run Linters
+        run: pnpm lint
 
       #- name: Run Formatters
       #  run: pnpm nx format
 
-      #- name: Build repository packages
-      #  run: pnpm nx affected -t build --parallel=5 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
+      - name: Build repository packages
+        run: pnpm nx affected -t build --parallel=5 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
 
       #- name: Run Tests
       #  uses: nick-fields/retry@v2.8.3
