@@ -3,7 +3,10 @@ import {
   ProjectsConfigurations,
   readProjectsConfigurationFromProjectGraph
 } from "@nx/devkit";
+import "es6-weak-map";
 import { execSync } from "node:child_process";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { getAffectedGraphNodes } from "nx/src/command-line/affected/affected";
 import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
 import { setReleaseContext } from "../semantic-release-plugin";
@@ -48,10 +51,32 @@ export async function runRelease(
       plugin
     );
   } else {
+    let currentBase = base ? base : process.env.NX_BASE;
+    let currentHead = head ? head : process.env.NX_HEAD;
+    if (!currentBase && !currentHead) {
+      const baseHead = execSync(
+        `git merge-base --fork-point origin/main HEAD`
+      ).toString();
+      const [base, head] = baseHead.split("\n");
+      baseHead && (process.env.NX_BASE = base);
+      baseHead && (process.env.NX_HEAD = head);
+
+      if (!currentBase && !currentHead) {
+        currentBase = execSync(`git rev-parse origin/main`).toString();
+        currentHead = execSync(`git rev-parse HEAD`).toString();
+      }
+
+      if (!currentBase && !currentHead) {
+        throw new Error(
+          "Base and head are not specified and cannot be determined automatically."
+        );
+      }
+    }
+
     const projects = await getAffectedGraphNodes(
       {
-        base: base ? base : process.env.NX_BASE,
-        head: head ? head : process.env.NX_HEAD,
+        base: currentBase,
+        head: currentHead,
         parallel: 1
       },
       projectGraph
@@ -100,25 +125,31 @@ export async function runProjectRelease(
     ? parseTag(config.tagFormat)
     : config.tagFormat;
 
-  release ??= await getSemanticRelease();
+  const release = await getSemanticRelease();
+
+  let pluginPath = plugin;
+  if (!pluginPath.startsWith("@") && !existsSync(pluginPath)) {
+    pluginPath = join(workspaceDir, pluginPath);
+  }
 
   await release({
-    extends: plugin,
+    extends: pluginPath,
     ...config,
     tagFormat,
     plugins
   });
 }
 
-let release;
-
 /**
  * @FIXME Recently semantic-release became esm only, but until NX will support plugins in ESM, we have to use this dirty hack :/
  * */
-async function getSemanticRelease() {
-  return (await import("semantic-release")).default;
-}
+function getSemanticRelease() {
+  const fn = new Function(
+    'return import("semantic-release").then(m => m.default)'
+  );
 
+  return fn() as Promise<any>;
+}
 // Replace our token that is used for consistency with token required by semantic-release
 function parseTag(tag: string) {
   return tag.replace("${VERSION}", match => match.toLowerCase());

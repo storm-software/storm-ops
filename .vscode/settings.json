@@ -296,5 +296,6 @@
    ******************************/
   "commitizen.capitalizeWindowsDriveLetter": true,
   "commitizen.autoSync": false,
-  "commitizen.showOutputChannel": "always"
+  "commitizen.showOutputChannel": "always",
+  "cSpell.words": ["remeda"]
 }

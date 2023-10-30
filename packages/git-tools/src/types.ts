@@ -5,7 +5,6 @@ import {
   ProjectGraph,
   ProjectsConfigurations
 } from "nx/src/devkit-exports";
-import { Options, PluginSpec } from "semantic-release";
 
 export type CommitQuestion = {
   description: string;
@@ -103,7 +102,7 @@ export type GetProjectContext = Pick<
   | "workspace"
 >;
 
-export type ReleaseConfig = Omit<Options, "extends"> & {
+export type ReleaseConfig = any & {
   npm: boolean;
   github: boolean;
   githubOptions?: Record<string, unknown>;
@@ -123,7 +122,9 @@ export type ReleaseConfig = Omit<Options, "extends"> & {
     | { release: string | boolean; [key: string]: unknown }[];
   preset?: string;
   presetConfig?: Record<string, unknown>;
-  plugins?: PluginSpec[];
+  plugins?: any[];
+  tagFormat?: string;
+  git: boolean;
 };
 
 export type ReleaseContext = ReleaseConfig & {

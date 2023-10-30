@@ -72,7 +72,6 @@ export const resolvePlugins = (
         presetConfig: options.presetConfig
       }
     ],
-
     ...(options.changelog
       ? [
           [

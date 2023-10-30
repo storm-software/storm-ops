@@ -4,6 +4,7 @@ import { runCommit } from "../commit";
 import { runReadme } from "../readme";
 import { runRelease } from "../release";
 import { ReadMeOptions } from "../types";
+
 function createProgram() {
   try {
     console.log("Running ⚡Storm Git Tools");
