@@ -1,9 +1,8 @@
 import fs from "fs";
 import path from "path";
-import { PluginSpec } from "semantic-release";
 import { ReleaseConfig } from "../types";
 
-const getNpmPlugin = (options: ReleaseConfig): PluginSpec[] => {
+const getNpmPlugin = (options: ReleaseConfig) => {
   if (!options.packageJsonDir) {
     return [];
   }
@@ -13,7 +12,7 @@ const getNpmPlugin = (options: ReleaseConfig): PluginSpec[] => {
     ? path.join(options.outputPath, "package.json")
     : undefined;
 
-  const plugins: PluginSpec[] = [];
+  const plugins = [];
   if (buildPkgRoot && fs.existsSync(buildPkgRoot)) {
     // Bump package.json version for built project, so that it can be published to NPM with correct version (if package is public)
     plugins.push([
@@ -51,8 +50,8 @@ export const resolvePlugins = (
     options.packageJsonDir
   );
 
-  const emptyArray = [] as unknown as PluginSpec;
-  const defaultPlugins: PluginSpec[] = [
+  const emptyArray: never[] = [];
+  const defaultPlugins = [
     [
       "@semantic-release/commit-analyzer",
       {

@@ -3,18 +3,16 @@ import { execSync } from "child_process";
 import { filterAffected } from "nx/src/project-graph/affected/affected-project-graph";
 import { calculateFileChanges } from "nx/src/project-graph/file-utils";
 import { filter, map, pipe } from "remeda";
-import type { Commit } from "semantic-release";
-import { Context } from "semantic-release";
 import { PluginFn } from "semantic-release-plugin-decorators";
 import { ReleaseContext } from "../types";
 import { CurrentContext } from "./release-context";
 
 interface CommitAffectingProjectsParams {
-  commit: Pick<Commit, "subject" | "commit" | "body">;
+  commit: Pick<any, "subject" | "commit" | "body">;
   projects: string[];
   // Name of root project
   projectName: string;
-  context: Pick<Context, "logger">;
+  context: Pick<any, "logger">;
   verbose?: boolean;
   graph: ProjectGraph;
 }
@@ -22,7 +20,7 @@ interface CommitAffectingProjectsParams {
 export const getCommitsForProject =
   (verbose?: boolean) =>
   (plugin: PluginFn) =>
-  async (config: unknown, context: Context) => {
+  async (config: unknown, context: any) => {
     if (!CurrentContext) {
       throw new Error("Release context is missing.");
     }
@@ -45,9 +43,9 @@ export const getCommitsForProject =
   };
 
 async function filterCommits(
-  commits: Commit[],
+  commits: any[],
   releaseContext: ReleaseContext,
-  context: Context,
+  context: any,
   verbose?: boolean
 ) {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -160,7 +158,7 @@ export async function isCommitAffectingProjects({
 }
 
 export function shouldSkipCommit(
-  commit: Pick<Commit, "body">,
+  commit: Pick<any, "body">,
   projectName: string
 ): boolean {
   const onlyMatchRegex = /\[only (.*?)]/g;
@@ -172,27 +170,27 @@ export function shouldSkipCommit(
 
   const hasOnlyMatch =
     onlyMatches.length &&
-    !onlyMatches.some(match =>
+    !onlyMatches.some((match: any) =>
       match[1]
         .split(",")
-        .map(project => project.trim())
-        .some(project => project === projectName)
+        .map((project: string) => project.trim())
+        .some((project: string) => project === projectName)
     );
 
   const hasSkipMatch =
     commit.body.includes(skipAll) ||
     (skipMatches.length &&
-      skipMatches.some(match =>
+      skipMatches.some((match: any) =>
         match[1]
           .split(",")
-          .map(project => project.trim())
-          .some(project => project === projectName)
+          .map((project: string) => project.trim())
+          .some((project: string) => project === projectName)
       ));
 
   return Boolean(hasSkipMatch || hasOnlyMatch);
 }
 
-function listAffectedFilesInCommit(commit: Pick<Commit, "commit">): string[] {
+function listAffectedFilesInCommit(commit: Pick<any, "commit">): string[] {
   // eg. /code/Repo/frontend/
   const cwd = process.cwd() + "/";
   // eg. /code/Repo/

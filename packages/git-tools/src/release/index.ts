@@ -6,7 +6,6 @@ import {
 import { execSync } from "node:child_process";
 import { getAffectedGraphNodes } from "nx/src/command-line/affected/affected";
 import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
-import type release from "semantic-release";
 import { setReleaseContext } from "../semantic-release-plugin";
 import { ReleaseConfig } from "../types";
 import defaultOptions from "./config";
@@ -119,7 +118,7 @@ function getSemanticRelease() {
     'return import("semantic-release").then(m => m.default)'
   );
 
-  return fn() as Promise<typeof release>;
+  return fn() as Promise<any>;
 }
 
 // Replace our token that is used for consistency with token required by semantic-release
