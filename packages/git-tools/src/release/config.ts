@@ -45,11 +45,7 @@ export default {
     "main",
     "next",
     { name: "beta", prerelease: true },
-    { name: "alpha", prerelease: true },
-    {
-      name: "[\\s\\S]+",
-      prerelease: true
-    }
+    { name: "alpha", prerelease: true }
   ],
   plugins: [
     [
