@@ -4,7 +4,7 @@
   "sourceRoot": "packages/git-tools/src",
   "projectType": "library",
   "targets": {
-    "build": {
+    "build-cli": {
       "executor": "@nx/esbuild:esbuild",
       "outputs": ["{options.outputPath}"],
       "options": {
@@ -20,8 +20,7 @@
           "packages/git-tools/src/commitizen/config.ts",
           "packages/git-tools/src/commit/index.ts",
           "packages/git-tools/src/release/index.ts",
-          "packages/git-tools/src/release/config.js",
-          "packages/git-tools/src/semantic-release-plugin/index.ts"
+          "packages/git-tools/src/release/config.js"
         ],
         "deleteOutputPath": true,
         "bundle": true,
@@ -78,6 +77,39 @@
             "output": "."
           }
         ]
+      }
+    },
+    "build-plugin": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/git-tools",
+        "tsConfig": "packages/git-tools/tsconfig.lib.json",
+        "project": "packages/git-tools/package.json",
+        "main": "packages/git-tools/src/semantic-release-plugin/index.ts",
+        "deleteOutputPath": false,
+        "bundle": true,
+        "sourcemap": true,
+        "minify": false,
+        "skipTypeCheck": true,
+        "thirdParty": true,
+        "format": ["esm"],
+        "external": [
+          "@swc/wasm",
+          "@swc/core",
+          "nx",
+          "@angular-devkit/architect"
+        ]
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "pnpm nx run git-tools:build-cli",
+          "pnpm nx run git-tools:build-plugin"
+        ],
+        "parallel": false
       }
     },
     "lint": {},

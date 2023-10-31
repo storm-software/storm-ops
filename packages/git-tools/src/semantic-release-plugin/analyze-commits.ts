@@ -1,5 +1,4 @@
 import { ProjectGraph, createProjectGraphAsync } from "@nx/devkit";
-import { analyzeCommits } from "@semantic-release/commit-analyzer";
 import { execSync } from "child_process";
 import { filterAffected } from "nx/src/project-graph/affected/affected-project-graph";
 import { calculateFileChanges } from "nx/src/project-graph/file-utils";
@@ -7,7 +6,6 @@ import { filter, map, pipe } from "remeda";
 import { PluginFn } from "semantic-release-plugin-decorators";
 import { ReleaseContext } from "../types";
 import { CurrentContext } from "./release-context";
-
 interface CommitAffectingProjectsParams {
   commit: Pick<any, "subject" | "commit" | "body">;
   projects: string[];
@@ -66,7 +64,7 @@ export const analyzeCommitsForProject =
       verbose
     );
 
-    // const analyzeCommits = await getCommitAnalyzer();
+    const analyzeCommits = await getCommitAnalyzer();
     return analyzeCommits(
       {
         preset: "conventionalcommits",
