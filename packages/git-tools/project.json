@@ -86,7 +86,10 @@
         "outputPath": "dist/packages/git-tools",
         "tsConfig": "packages/git-tools/tsconfig.lib.json",
         "project": "packages/git-tools/package.json",
-        "main": "packages/git-tools/src/semantic-release-plugin/index.ts",
+        "main": "packages/git-tools/src/index.ts",
+        "additionalEntryPoints": [
+          "packages/git-tools/src/semantic-release-plugin/index.ts"
+        ],
         "deleteOutputPath": false,
         "bundle": true,
         "sourcemap": true,
