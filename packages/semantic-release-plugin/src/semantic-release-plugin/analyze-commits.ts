@@ -6,6 +6,7 @@ import { filter, map, pipe } from "remeda";
 import { PluginFn } from "semantic-release-plugin-decorators";
 import { ReleaseContext } from "../types";
 import { CurrentContext } from "./release-context";
+
 interface CommitAffectingProjectsParams {
   commit: Pick<any, "subject" | "commit" | "body">;
   projects: string[];

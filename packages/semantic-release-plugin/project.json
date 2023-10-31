@@ -1,0 +1,35 @@
+{
+  "name": "semantic-release-plugin",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/semantic-release-plugin/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/semantic-release-plugin",
+        "main": "packages/semantic-release-plugin/src/index.ts",
+        "tsConfig": "packages/semantic-release-plugin/tsconfig.lib.json",
+        "assets": ["packages/semantic-release-plugin/*.md"],
+        "generatePackageJson": true,
+        "deleteOutputPath": true,
+        "bundle": true,
+        "sourcemap": true,
+        "minify": false,
+        "skipTypeCheck": true,
+        "thirdParty": true,
+        "format": ["esm"],
+        "external": [
+          "@swc/wasm",
+          "@swc/core",
+          "nx",
+          "@angular-devkit/architect"
+        ]
+      }
+    },
+    "lint": {},
+    "test": {}
+  },
+  "tags": []
+}

@@ -3,12 +3,12 @@ import {
   ProjectsConfigurations,
   readProjectsConfigurationFromProjectGraph
 } from "@nx/devkit";
+import { setReleaseContext } from "@storm-software/semantic-release-plugin";
 import "es6-weak-map";
 import { execSync } from "node:child_process";
 import { join } from "node:path";
 import { getAffectedGraphNodes } from "nx/src/command-line/affected/affected";
 import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
-import { setReleaseContext } from "../semantic-release-plugin";
 import { ReleaseConfig } from "../types";
 import defaultOptions from "./config";
 import { resolvePlugins } from "./plugins";
@@ -19,7 +19,7 @@ const LARGE_BUFFER = 1024 * 1000000;
 export async function runRelease(
   projectName?: string,
   releaseConfig = "@storm-software/git-tools/release/config.js",
-  plugin = "@storm-software/git-tools/semantic-release-plugin",
+  plugin = "@storm-software/semantic-release-plugin",
   base?: string,
   head?: string
 ) {
@@ -98,7 +98,7 @@ export async function runProjectRelease(
   projectConfigs: ProjectsConfigurations,
   projectGraph: ProjectGraph,
   projectName: string,
-  plugin = "@storm-software/git-tools/semantic-release-plugin"
+  plugin = "@storm-software/semantic-release-plugin"
 ) {
   const projectConfig = projectConfigs.projects[projectName];
   if (projectConfig.targets?.build) {

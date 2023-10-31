@@ -90,5 +90,10 @@
     ],
     "sharedGlobals": []
   },
-  "nxCloudAccessToken": "N2UyNGNlNDktNjlmNC00YTA3LTliOGYtNDhjYjEyYzgyZDZifHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "N2UyNGNlNDktNjlmNC00YTA3LTliOGYtNDhjYjEyYzgyZDZifHJlYWQtd3JpdGU=",
+  "pluginsConfig": {
+    "@nx/js": {
+      "analyzeSourceFiles": true
+    }
+  }
 }
