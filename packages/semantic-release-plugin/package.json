@@ -4,12 +4,15 @@
   "type": "commonjs",
   "main": "./index.cjs",
   "dependencies": {
-    "@semantic-release/release-notes-generator": "^12.0.0",
+    "conventional-changelog-writer": "^7.0.1",
     "conventional-commits-filter": "^4.0.0",
     "conventional-commits-parser": "^5.0.0",
+    "get-stream": "^8.0.1",
     "import-from": "^4.0.0",
+    "into-stream": "^8.0.0",
     "lodash": "^4.17.21",
     "micromatch": "^4.0.5",
+    "read-pkg-up": "^10.1.0",
     "remeda": "^1.28.0",
     "semantic-release-plugin-decorators": "^3.0.1"
   }

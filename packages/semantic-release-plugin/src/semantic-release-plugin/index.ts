@@ -1,8 +1,7 @@
 import { wrapStep } from "semantic-release-plugin-decorators";
-import {
-  analyzeCommitsForProject,
-  getCommitsForProject
-} from "./analyze-commits";
+import { analyzeCommitsForProject } from "./analyze-commits";
+import { getCommitsForProject } from "./get-commits-for-project";
+import { generateReleaseNotes } from "./release-notes-generator";
 
 const wrapperName = "storm-semantic-release";
 
@@ -14,7 +13,7 @@ const analyzeCommits = wrapStep(
   }
 );
 
-const generateNotes = wrapStep("generateNotes", getCommitsForProject(false), {
+const generateNotes = wrapStep("generateNotes", generateReleaseNotes(false), {
   wrapperName
 });
 

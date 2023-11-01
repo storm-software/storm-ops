@@ -47,6 +47,5 @@ export default {
     "next",
     { name: "beta", prerelease: true },
     { name: "alpha", prerelease: true }
-  ],
-  plugins: ["@semantic-release/release-notes-generator"]
+  ]
 };

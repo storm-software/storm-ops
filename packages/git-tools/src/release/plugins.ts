@@ -53,17 +53,6 @@ export const resolvePlugins = (
 
   const emptyArray: never[] = [];
   const defaultPlugins = [
-    [
-      "@semantic-release/release-notes-generator",
-      {
-        linkCompare: options.linkCompare,
-        linkReferences: options.linkReferences,
-        parserOpts: options.parserOpts,
-        writerOpts: options.writerOpts,
-        preset: options.preset,
-        presetConfig: options.presetConfig
-      }
-    ],
     ...(options.changelog
       ? [
           [
@@ -85,7 +74,10 @@ export const resolvePlugins = (
         parserOpts: options.parserOpts,
         releaseRules: options.releaseRules,
         preset: options.preset,
-        presetConfig: options.presetConfig
+        presetConfig: options.presetConfig,
+        linkCompare: options.linkCompare,
+        linkReferences: options.linkReferences,
+        writerOpts: options.writerOpts
       }
     ]);
   }
