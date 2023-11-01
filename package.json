@@ -62,7 +62,7 @@
     "nx": "nx",
     "prepare": "pnpm prepare:husky && npx patch-package -y",
     "prepare:husky": "is-ci || husky install",
-    "release": "pnpm dist/packages/git-tools/bins/cli.js release --plugin=\"dist/packages/semantic-release-plugin\"",
+    "release": "pnpm dist/packages/git-tools/bin/cli.js release --plugin=\"dist/packages/semantic-release-plugin\"",
     "start": "nx serve",
     "test": "nx test"
   },
