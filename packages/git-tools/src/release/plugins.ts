@@ -53,7 +53,7 @@ export const resolvePlugins = (
   const emptyArray: never[] = [];
   const defaultPlugins = [
     [
-      "@semantic-release/commit-analyzer",
+      "@storm-software/semantic-release-plugin",
       {
         parserOpts: options.parserOpts,
         releaseRules: options.releaseRules,
