@@ -9,7 +9,9 @@ import { filterAffected } from "nx/src/project-graph/affected/affected-project-g
 import { calculateFileChanges } from "nx/src/project-graph/file-utils";
 import { map, pipe } from "remeda";
 import { PluginFn } from "semantic-release-plugin-decorators";
+import { DEFAULT_RELEASE_RULES, RELEASE_TYPES } from "../constants";
 import { ReleaseContext } from "../types";
+import { compareReleaseTypes } from "./compare-release-types";
 import { CurrentContext } from "./release-context";
 
 interface CommitAffectingProjectsParams {
@@ -89,51 +91,6 @@ export const analyzeCommitsForProject =
       }
     );
   };
-
-export const RELEASE_TYPES = [
-  "major",
-  "premajor",
-  "minor",
-  "preminor",
-  "patch",
-  "prepatch",
-  "prerelease"
-];
-
-export const DEFAULT_RELEASE_RULES = [
-  { breaking: true, release: "major" },
-  { revert: true, release: "patch" },
-  // Angular
-  { type: "feat", release: "minor" },
-  { type: "fix", release: "patch" },
-  { type: "perf", release: "patch" },
-  // Atom
-  { emoji: ":racehorse:", release: "patch" },
-  { emoji: ":bug:", release: "patch" },
-  { emoji: ":penguin:", release: "patch" },
-  { emoji: ":apple:", release: "patch" },
-  { emoji: ":checkered_flag:", release: "patch" },
-  // Ember
-  { tag: "BUGFIX", release: "patch" },
-  { tag: "FEATURE", release: "minor" },
-  { tag: "SECURITY", release: "patch" },
-  // ESLint
-  { tag: "Breaking", release: "major" },
-  { tag: "Fix", release: "patch" },
-  { tag: "Update", release: "minor" },
-  { tag: "New", release: "minor" },
-  // Express
-  { component: "perf", release: "patch" },
-  { component: "deps", release: "patch" },
-  // JSHint
-  { type: "FEAT", release: "minor" },
-  { type: "FIX", release: "patch" }
-];
-
-const compareReleaseTypes = (currentReleaseType, releaseType) =>
-  !currentReleaseType ||
-  RELEASE_TYPES.indexOf(releaseType) <
-    RELEASE_TYPES.indexOf(currentReleaseType);
 
 const analyzeCommits = async (pluginConfig: any, context: any) => {
   const { commits } = context;
