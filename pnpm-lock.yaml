@@ -450,6 +450,9 @@ importers:
 
   packages/semantic-release-plugin:
     dependencies:
+      "@semantic-release/commit-analyzer":
+        specifier: ^11.0.0
+        version: 11.0.0(semantic-release@22.0.5)
       "@semantic-release/release-notes-generator":
         specifier: ^12.0.0
         version: 12.0.0(semantic-release@22.0.5)

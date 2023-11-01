@@ -1,7 +1,5 @@
 import { ProjectGraph, createProjectGraphAsync } from "@nx/devkit";
-import analyzeCommit from "@semantic-release/commit-analyzer/lib/analyze-commit.js";
-import loadParserConfig from "@semantic-release/commit-analyzer/lib/load-parser-config.js";
-import loadReleaseRules from "@semantic-release/commit-analyzer/lib/load-release-rules.js";
+
 import { execSync } from "child_process";
 import filter from "conventional-commits-filter";
 import { sync as parser } from "conventional-commits-parser";
@@ -11,6 +9,7 @@ import { map, pipe } from "remeda";
 import { PluginFn } from "semantic-release-plugin-decorators";
 import { DEFAULT_RELEASE_RULES, RELEASE_TYPES } from "../constants";
 import { ReleaseContext } from "../types";
+import { analyzeCommit } from "./analyze-commit";
 import { compareReleaseTypes } from "./compare-release-types";
 import { CurrentContext } from "./release-context";
 
@@ -94,7 +93,19 @@ export const analyzeCommitsForProject =
 
 const analyzeCommits = async (pluginConfig: any, context: any) => {
   const { commits } = context;
-  const releaseRules = loadReleaseRules(pluginConfig, context);
+  if (!commits || !commits.length) {
+    console.log("No commits found, skipping analysis");
+    return null;
+  }
+
+  const loadParserConfig = await import(
+    "@semantic-release/commit-analyzer/lib/load-parser-config.js"
+  );
+  const loadReleaseRules = await import(
+    "@semantic-release/commit-analyzer/lib/load-release-rules.js"
+  );
+
+  const releaseRules = await loadReleaseRules(pluginConfig, context);
   const config = await loadParserConfig(pluginConfig, context);
   let releaseType = null;
 
