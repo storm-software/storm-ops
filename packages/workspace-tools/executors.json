@@ -1,0 +1,10 @@
+{
+  "executors": {
+    "build": {
+      "implementation": "./executors/build/executor",
+      "schema": "./executors/build/schema.json",
+      "description": "Run a build on the project using tsup configuration",
+      "hasher": "./executors/build/hasher"
+    }
+  }
+}
