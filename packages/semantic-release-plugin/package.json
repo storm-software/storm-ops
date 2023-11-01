@@ -1,8 +1,8 @@
 {
   "name": "@storm-software/semantic-release-plugin",
   "version": "0.0.1",
-  "main": "./index.cjs",
-  "module": "./index.js",
+  "type": "module",
+  "main": "./index.js",
   "dependencies": {
     "@semantic-release/changelog": "^6.0.3",
     "conventional-changelog-writer": "^7.0.1",
