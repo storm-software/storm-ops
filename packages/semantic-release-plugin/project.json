@@ -11,19 +11,43 @@
         "outputPath": "dist/packages/semantic-release-plugin",
         "main": "packages/semantic-release-plugin/src/index.ts",
         "tsConfig": "packages/semantic-release-plugin/tsconfig.lib.json",
-        "assets": ["packages/semantic-release-plugin/*.md"],
         "deleteOutputPath": true,
         "bundle": true,
         "sourcemap": true,
         "minify": false,
         "skipTypeCheck": true,
-        "thirdParty": false,
+        "thirdParty": true,
         "format": ["cjs"],
         "external": [
           "@swc/wasm",
           "@swc/core",
           "nx",
-          "@angular-devkit/architect"
+          "@angular-devkit/architect",
+          "@semantic-release/exec",
+          "@semantic-release/git",
+          "@semantic-release/npm"
+        ],
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".js"
+          }
+        },
+        "assets": [
+          {
+            "input": "packages/git-tools",
+            "glob": "README.md",
+            "output": "/"
+          },
+          {
+            "input": "packages/git-tools",
+            "glob": "CHANGELOG.md",
+            "output": "/"
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "/"
+          }
         ]
       }
     },
