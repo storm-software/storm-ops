@@ -9,6 +9,7 @@ overrides:
   "@storm-software/workspace-tools": workspace:*
   "@storm-software/linting-tools": workspace:*
   "@storm-software/git-tools": workspace:*
+  "@storm-software/semantic-release-plugin": workspace:*
 
 importers:
   .:
