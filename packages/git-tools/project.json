@@ -33,7 +33,8 @@
           "@swc/wasm",
           "@swc/core",
           "nx",
-          "@angular-devkit/architect"
+          "@angular-devkit/architect",
+          "semantic-release"
         ],
         "esbuildOptions": {
           "banner": {
