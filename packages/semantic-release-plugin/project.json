@@ -13,7 +13,7 @@
         "tsConfig": "packages/semantic-release-plugin/tsconfig.lib.json",
         "assets": ["packages/semantic-release-plugin/*.md"],
         "deleteOutputPath": true,
-        "bundle": false,
+        "bundle": true,
         "sourcemap": true,
         "minify": false,
         "skipTypeCheck": true,
