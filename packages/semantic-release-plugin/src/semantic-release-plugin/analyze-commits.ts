@@ -33,7 +33,7 @@ export const analyzeCommitsForProject =
       verbose
     );
 
-    return analyzeCommits(
+    return _plugin(
       {
         preset: "conventionalcommits",
         // JSON Schema: https://github.com/conventional-changelog/conventional-changelog-config-spec/blob/master/versions/2.0.0/schema.json
