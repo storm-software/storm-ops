@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { createPromptModule } from "inquirer";
 import { CommitState } from "../types";
 import { createQuestions } from "./commit-questions";
 
 export const commitPrompt = async (state: CommitState) => {
-  const prompt = createPromptModule({});
+  const inquirer = await import("inquirer");
+
+  const prompt = inquirer.createPromptModule({});
   const questions = createQuestions(state);
 
   /*questions.forEach(

@@ -1,8 +1,4 @@
-import {
-  ProjectGraph,
-  ProjectsConfigurations,
-  readProjectsConfigurationFromProjectGraph
-} from "@nx/devkit";
+import type { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
 import "es6-weak-map";
 import { execSync } from "node:child_process";
 import { join } from "node:path";
@@ -22,6 +18,10 @@ export async function runRelease(
   base?: string,
   head?: string
 ) {
+  const { readProjectsConfigurationFromProjectGraph } = await import(
+    "@nx/devkit"
+  );
+
   const projectGraph = await buildProjectGraphWithoutDaemon();
 
   const projectConfigs =

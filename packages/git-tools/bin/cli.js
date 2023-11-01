@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import("../cli/index.js").then(mod => {
-  mod.default
+  mod
     .default()
     .then(exitCode => {
       process.exitCode = exitCode;

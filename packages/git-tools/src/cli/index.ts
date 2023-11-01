@@ -1,13 +1,14 @@
-import { Command, Option } from "commander";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root.js";
 import { runCommit } from "../commit";
 import { runReadme } from "../readme";
 import { runRelease } from "../release";
 import { ReadMeOptions } from "../types";
 
-function createProgram() {
+async function createProgram() {
   try {
     console.log("Running ⚡Storm Git Tools");
+
+    const { Command, Option } = await import("commander");
 
     const root = findWorkspaceRoot(process.cwd());
     process.env.DEV_REPO_ROOT ??= root?.dir;
@@ -167,7 +168,7 @@ async function releaseAction({
 
 export default async function (): Promise<void> {
   try {
-    const program = createProgram();
+    const program = await createProgram();
     program.exitOverride();
 
     await program.parseAsync(process.argv);

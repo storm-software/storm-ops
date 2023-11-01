@@ -1,4 +1,3 @@
-import shellescape from "any-shell-escape";
 import { execSync } from "child_process";
 import fs from "fs";
 import { join } from "path";
@@ -18,7 +17,15 @@ export const runCommit = async (
 
     const message = formatCommitMessage(await commitPrompt(state));
     const commitMsgFile = join(getGitDir(), "COMMIT_EDITMSG");
-    const command = shellescape(["git", "commit", "--file", commitMsgFile]);
+
+    const shellescape = await import("any-shell-escape");
+
+    const command = shellescape.default([
+      "git",
+      "commit",
+      "--file",
+      commitMsgFile
+    ]);
 
     if (dryRun) {
       // The full path is replaced with a relative path to make the test pass on every machine

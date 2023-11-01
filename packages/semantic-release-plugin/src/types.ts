@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { ProjectGraph, ProjectsConfigurations } from "nx/src/devkit-exports";
+import type {
+  ProjectGraph,
+  ProjectsConfigurations
+} from "nx/src/devkit-exports";
 
 export type ReleaseConfig = any & {
   npm: boolean;

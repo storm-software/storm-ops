@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import {
+import type {
   ExecutorContext,
   ProjectGraph,
   ProjectsConfigurations

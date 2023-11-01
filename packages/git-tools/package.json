@@ -1,6 +1,7 @@
 {
   "name": "@storm-software/git-tools",
   "version": "0.0.1",
+  "type": "module",
   "bin": {
     "storm-git": "./bin/cli.js"
   },

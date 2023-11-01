@@ -17,15 +17,12 @@
         "minify": false,
         "skipTypeCheck": true,
         "thirdParty": true,
-        "format": ["cjs", "esm"],
+        "format": ["esm"],
         "external": [
           "@swc/wasm",
           "@swc/core",
           "nx",
-          "@angular-devkit/architect",
-          "@semantic-release/exec",
-          "@semantic-release/git",
-          "@semantic-release/npm"
+          "@angular-devkit/architect"
         ],
         "assets": [
           {

@@ -10,7 +10,6 @@ import {
   readProjectsConfigurationFromProjectGraph
 } from "nx/src/project-graph/project-graph.js";
 import { join } from "path";
-import { format } from "prettier";
 import { findFileName, findFilePath } from "../common/file-utils";
 import { ReadMeOptions } from "../types";
 import { doctoc } from "./doctoc";
@@ -113,8 +112,10 @@ export const runProjectReadme = async (
       }
 
       if (prettier) {
+        const prettier = await import("prettier");
         console.info(`Formatting output with Prettier`);
-        newContent = format(newContent, {
+
+        newContent = prettier.format(newContent, {
           parser: "markdown",
           trailingComma: "none",
           tabWidth: 2,

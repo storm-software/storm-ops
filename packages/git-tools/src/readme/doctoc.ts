@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { transform } from "doctoc/lib/transform";
-import { readFileSync, readdirSync, statSync, writeFileSync } from "fs";
-import { extname, join } from "path";
+import { readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
+import { extname, join } from "node:path";
 
-function transformAndSave(
+async function transformAndSave(
   files: any[],
   mode = "github.com",
   maxHeaderLevel = 3,
@@ -13,6 +12,8 @@ function transformAndSave(
   processAll = false,
   updateOnly = false
 ) {
+  const doctoc = await import("doctoc/lib/transform");
+
   if (processAll) {
     console.log(
       "--all flag is enabled. Including headers before the TOC location."
@@ -29,7 +30,7 @@ function transformAndSave(
 
   const transformed = files.map(function (x) {
     const content = readFileSync(x.path, "utf8"),
-      result = transform(
+      result = doctoc.transform(
         content,
         mode,
         maxHeaderLevel,
