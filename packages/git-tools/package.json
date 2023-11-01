@@ -2,7 +2,7 @@
   "name": "@storm-software/git-tools",
   "version": "0.0.1",
   "bin": {
-    "storm-git": "./bin/cli"
+    "storm-git": "./bin/cli.js"
   },
   "dependencies": {
     "@commitlint/cli": "^18.2.0",

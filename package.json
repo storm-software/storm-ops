@@ -50,7 +50,7 @@
     "build:storybook": "storybook build -s public",
     "clean": "rimraf dist",
     "clean:packages": "rimraf dist/packages",
-    "commit": "pnpm dist/packages/git-tools/bin/cli commit",
+    "commit": "pnpm dist/packages/git-tools/bin/cli.js commit",
     "dep-graph": "nx dep-graph",
     "e2e": "nx e2e",
     "format": "nx format:write",
@@ -62,7 +62,7 @@
     "nx": "nx",
     "prepare": "pnpm prepare:husky && npx patch-package -y",
     "prepare:husky": "is-ci || husky install",
-    "release": "pnpm dist/packages/git-tools/bin/cli release --plugin=\"dist/packages/semantic-release-plugin\"",
+    "release": "pnpm dist/packages/git-tools/bins/cli.js release --plugin=\"dist/packages/semantic-release-plugin\"",
     "start": "nx serve",
     "test": "nx test"
   },

@@ -17,7 +17,7 @@
         "minify": false,
         "skipTypeCheck": true,
         "thirdParty": true,
-        "format": ["cjs"],
+        "format": ["cjs", "esm"],
         "external": [
           "@swc/wasm",
           "@swc/core",
@@ -27,11 +27,6 @@
           "@semantic-release/git",
           "@semantic-release/npm"
         ],
-        "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
-          }
-        },
         "assets": [
           {
             "input": "packages/git-tools",

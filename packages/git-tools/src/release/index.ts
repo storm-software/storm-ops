@@ -6,8 +6,8 @@ import {
 import "es6-weak-map";
 import { execSync } from "node:child_process";
 import { join } from "node:path";
-import { getAffectedGraphNodes } from "nx/src/command-line/affected/affected";
-import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
+import { getAffectedGraphNodes } from "nx/src/command-line/affected/affected.js";
+import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph.js";
 import { ReleaseConfig } from "../types";
 import defaultOptions from "./config";
 import { resolvePlugins } from "./plugins";

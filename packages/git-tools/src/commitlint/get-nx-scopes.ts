@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
+import { ProjectConfiguration } from "nx/src/config/workspace-json-project-json.js";
 import {
   buildProjectGraphWithoutDaemon,
   readProjectsConfigurationFromProjectGraph
-} from "nx/src/project-graph/project-graph";
+} from "nx/src/project-graph/project-graph.js";
 
 export async function getNxScopes(
   context: any,

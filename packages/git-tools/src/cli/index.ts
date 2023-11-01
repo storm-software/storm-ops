@@ -1,5 +1,5 @@
 import { Command, Option } from "commander";
-import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
+import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root.js";
 import { runCommit } from "../commit";
 import { runReadme } from "../readme";
 import { runRelease } from "../release";

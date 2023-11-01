@@ -8,7 +8,7 @@ import {
 import {
   buildProjectGraphWithoutDaemon,
   readProjectsConfigurationFromProjectGraph
-} from "nx/src/project-graph/project-graph";
+} from "nx/src/project-graph/project-graph.js";
 import { join } from "path";
 import { format } from "prettier";
 import { findFileName, findFilePath } from "../common/file-utils";
