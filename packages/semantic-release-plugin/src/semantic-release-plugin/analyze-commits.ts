@@ -1,5 +1,4 @@
 import { ProjectGraph, createProjectGraphAsync } from "@nx/devkit";
-
 import { execSync } from "child_process";
 import filter from "conventional-commits-filter";
 import { sync as parser } from "conventional-commits-parser";
@@ -11,6 +10,8 @@ import { DEFAULT_RELEASE_RULES, RELEASE_TYPES } from "../constants";
 import { ReleaseContext } from "../types";
 import { analyzeCommit } from "./analyze-commit";
 import { compareReleaseTypes } from "./compare-release-types";
+import { loadParserConfig } from "./load-parser-config";
+import { loadReleaseRules } from "./load-release-rules";
 import { CurrentContext } from "./release-context";
 
 interface CommitAffectingProjectsParams {
@@ -97,13 +98,6 @@ const analyzeCommits = async (pluginConfig: any, context: any) => {
     console.log("No commits found, skipping analysis");
     return null;
   }
-
-  const loadParserConfig = await import(
-    "@semantic-release/commit-analyzer/lib/load-parser-config.js"
-  );
-  const loadReleaseRules = await import(
-    "@semantic-release/commit-analyzer/lib/load-release-rules.js"
-  );
 
   const releaseRules = await loadReleaseRules(pluginConfig, context);
   const config = await loadParserConfig(pluginConfig, context);
