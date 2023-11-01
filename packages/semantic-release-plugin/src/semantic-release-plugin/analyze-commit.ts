@@ -1,4 +1,4 @@
-import { isMatchWith, isString } from "lodash";
+import { isMatchWith, isString } from "lodash-es";
 import micromatch from "micromatch";
 import { RELEASE_TYPES } from "../constants";
 import { compareReleaseTypes } from "./compare-release-types";

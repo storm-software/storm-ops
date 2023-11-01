@@ -3,8 +3,8 @@
 import { ProjectGraph, createProjectGraphAsync } from "@nx/devkit";
 import { execSync } from "child_process";
 import filter from "conventional-commits-filter";
-import { filterAffected } from "nx/src/project-graph/affected/affected-project-graph";
-import { calculateFileChanges } from "nx/src/project-graph/file-utils";
+import { filterAffected } from "nx/src/project-graph/affected/affected-project-graph.js";
+import { calculateFileChanges } from "nx/src/project-graph/file-utils.js";
 import { map, pipe } from "remeda";
 import { PluginFn } from "semantic-release-plugin-decorators";
 import { ReleaseContext } from "../types";

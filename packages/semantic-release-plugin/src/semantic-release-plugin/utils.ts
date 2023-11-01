@@ -1,4 +1,4 @@
-import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
+import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root.js";
 
 export const getWorkspaceRoot = () => {
   const root = findWorkspaceRoot(process.cwd());

@@ -6,7 +6,7 @@ import { sync as parser } from "conventional-commits-parser";
 import getStream from "get-stream";
 import importFrom from "import-from";
 import intoStream from "into-stream";
-import { find, merge } from "lodash";
+import { find, merge } from "lodash-es";
 import { dirname } from "node:path";
 import { readPackageUp } from "read-pkg-up";
 import { PluginFn } from "semantic-release-plugin-decorators";

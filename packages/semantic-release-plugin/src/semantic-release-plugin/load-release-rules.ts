@@ -1,5 +1,5 @@
 import importFrom from "import-from";
-import { isUndefined } from "lodash";
+import { isUndefined } from "lodash-es";
 import { dirname } from "node:path";
 import { RELEASE_TYPES } from "../constants";
 import { getWorkspaceRoot } from "./utils";

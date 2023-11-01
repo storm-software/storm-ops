@@ -1,5 +1,5 @@
 import importFrom from "import-from";
-import { dirname } from "path";
+import { dirname } from "node:path";
 import { getWorkspaceRoot } from "./utils";
 
 export const loadParserConfig = async (
