@@ -127,17 +127,17 @@ export async function runProjectRelease(
     projectConfigs
   });
 
-  const plugins = resolvePlugins(config, workspaceDir);
+  let pluginPath = plugin;
+  if (!pluginPath.startsWith("@")) {
+    pluginPath = join(workspaceDir, pluginPath);
+  }
+
+  const plugins = resolvePlugins(config, workspaceDir, pluginPath);
   const tagFormat = config.tagFormat
     ? parseTag(config.tagFormat)
     : config.tagFormat;
 
   const release = await getSemanticRelease();
-
-  let pluginPath = plugin;
-  if (!pluginPath.startsWith("@")) {
-    pluginPath = join(workspaceDir, pluginPath);
-  }
 
   await release({
     extends: pluginPath,

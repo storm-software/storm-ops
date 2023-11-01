@@ -39,7 +39,8 @@ const getNpmPlugin = (options: ReleaseConfig) => {
 
 export const resolvePlugins = (
   options: ReleaseConfig,
-  workspaceRoot: string
+  workspaceRoot: string,
+  pluginPath: string
 ) => {
   if (!options.packageJsonDir) {
     return [];
@@ -77,9 +78,9 @@ export const resolvePlugins = (
     ...(options.plugins ?? [])
   ];
 
-  if (options.stormPlugin) {
+  if (pluginPath) {
     defaultPlugins.unshift([
-      options.stormPlugin,
+      pluginPath,
       {
         parserOpts: options.parserOpts,
         releaseRules: options.releaseRules,
