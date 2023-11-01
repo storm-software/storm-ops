@@ -11,6 +11,11 @@ overrides:
   "@storm-software/git-tools": workspace:*
   "@storm-software/semantic-release-plugin": workspace:*
 
+patchedDependencies:
+  semantic-release@22.0.5:
+    hash: 7vhgie2e5x4xqwharyskrj5jby
+    path: patches/semantic-release@22.0.5.patch
+
 importers:
   .:
     dependencies:
@@ -115,7 +120,7 @@ importers:
         version: 5.0.0(prettier@2.8.8)
       semantic-release:
         specifier: ^22.0.5
-        version: 22.0.5
+        version: 22.0.5(patch_hash=7vhgie2e5x4xqwharyskrj5jby)
       ts-jest:
         specifier: ^29.1.0
         version: 29.1.1(@babel/core@7.23.2)(esbuild@0.19.5)(jest@29.7.0)(typescript@5.1.6)
@@ -205,7 +210,7 @@ importers:
         version: 1.28.0
       semantic-release:
         specifier: ^22.0.5
-        version: 22.0.5
+        version: 22.0.5(patch_hash=7vhgie2e5x4xqwharyskrj5jby)
       semantic-release-plugin-decorators:
         specifier: ^3.0.1
         version: 3.0.1(semantic-release@22.0.5)
@@ -4442,7 +4447,7 @@ packages:
       aggregate-error: 3.1.0
       fs-extra: 11.1.1
       lodash: 4.17.21
-      semantic-release: 22.0.5
+      semantic-release: 22.0.5(patch_hash=7vhgie2e5x4xqwharyskrj5jby)
     dev: false
 
   /@semantic-release/commit-analyzer@11.0.0(semantic-release@22.0.5):
@@ -4461,7 +4466,7 @@ packages:
       import-from: 4.0.0
       lodash-es: 4.17.21
       micromatch: 4.0.5
-      semantic-release: 22.0.5
+      semantic-release: 22.0.5(patch_hash=7vhgie2e5x4xqwharyskrj5jby)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -4497,7 +4502,7 @@ packages:
       execa: 5.1.1
       lodash: 4.17.21
       parse-json: 5.2.0
-      semantic-release: 22.0.5
+      semantic-release: 22.0.5(patch_hash=7vhgie2e5x4xqwharyskrj5jby)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -4519,7 +4524,7 @@ packages:
       lodash: 4.17.21
       micromatch: 4.0.5
       p-reduce: 2.1.0
-      semantic-release: 22.0.5
+      semantic-release: 22.0.5(patch_hash=7vhgie2e5x4xqwharyskrj5jby)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -4548,7 +4553,7 @@ packages:
       lodash-es: 4.17.21
       mime: 3.0.0
       p-filter: 3.0.0
-      semantic-release: 22.0.5
+      semantic-release: 22.0.5(patch_hash=7vhgie2e5x4xqwharyskrj5jby)
       url-join: 5.0.0
     transitivePeerDependencies:
       - supports-color
@@ -4574,7 +4579,7 @@ packages:
       rc: 1.2.8
       read-pkg: 8.1.0
       registry-auth-token: 5.0.2
-      semantic-release: 22.0.5
+      semantic-release: 22.0.5(patch_hash=7vhgie2e5x4xqwharyskrj5jby)
       semver: 7.5.4
       tempy: 3.1.0
     dev: false
@@ -4598,7 +4603,7 @@ packages:
       into-stream: 7.0.0
       lodash-es: 4.17.21
       read-pkg-up: 10.1.0
-      semantic-release: 22.0.5
+      semantic-release: 22.0.5(patch_hash=7vhgie2e5x4xqwharyskrj5jby)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -17576,10 +17581,10 @@ packages:
     peerDependencies:
       semantic-release: ">=11"
     dependencies:
-      semantic-release: 22.0.5
+      semantic-release: 22.0.5(patch_hash=7vhgie2e5x4xqwharyskrj5jby)
     dev: false
 
-  /semantic-release@22.0.5:
+  /semantic-release@22.0.5(patch_hash=7vhgie2e5x4xqwharyskrj5jby):
     resolution:
       {
         integrity: sha512-ESCEQsZlBj1DWMA84RthaJzQHHnihoGk49s9nUxHfRNUNZelLE9JZrE94bHO2Y00EWb7iwrzr1OYhv5QNVmf8A==
@@ -17618,6 +17623,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: false
+    patched: true
 
   /sembear@0.5.2:
     resolution:

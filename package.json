@@ -123,6 +123,9 @@
       "@storm-software/linting-tools": "workspace:*",
       "@storm-software/git-tools": "workspace:*",
       "@storm-software/semantic-release-plugin": "workspace:*"
+    },
+    "patchedDependencies": {
+      "semantic-release@22.0.5": "patches/semantic-release@22.0.5.patch"
     }
   }
 }
