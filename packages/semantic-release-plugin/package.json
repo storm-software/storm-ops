@@ -5,6 +5,8 @@
   "main": "./index.js",
   "dependencies": {
     "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^11.0.0",
+    "@semantic-release/release-notes-generator": "^12.0.0",
     "conventional-changelog-writer": "^7.0.1",
     "conventional-commits-filter": "^4.0.0",
     "conventional-commits-parser": "^5.0.0",

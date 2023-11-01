@@ -123,7 +123,7 @@ export async function runProjectRelease(
     pluginPath = join(workspaceDir, pluginPath);
   }
 
-  const plugins = resolvePlugins(config, workspaceDir, pluginPath);
+  const plugins = resolvePlugins(config, workspaceDir);
   const tagFormat = config.tagFormat
     ? parseTag(config.tagFormat)
     : config.tagFormat;

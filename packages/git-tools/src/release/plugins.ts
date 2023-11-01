@@ -39,8 +39,7 @@ const getNpmPlugin = (options: ReleaseConfig) => {
 
 export const resolvePlugins = (
   options: ReleaseConfig,
-  workspaceRoot: string,
-  pluginPath: string
+  workspaceRoot: string
 ) => {
   if (!options.packageJsonDir) {
     return [];
@@ -53,34 +52,29 @@ export const resolvePlugins = (
 
   const emptyArray: never[] = [];
   const defaultPlugins = [
-    ...(options.changelog
-      ? [
-          [
-            "@semantic-release/changelog",
-            {
-              changelogFile: options.changelogFile
-            }
-          ]
-        ]
-      : emptyArray),
-    ...(options.npm ? getNpmPlugin(options) : emptyArray),
-    ...(options.plugins ?? [])
-  ];
-
-  if (pluginPath) {
-    defaultPlugins.unshift([
-      pluginPath,
+    [
+      "@semantic-release/commit-analyzer",
       {
         parserOpts: options.parserOpts,
         releaseRules: options.releaseRules,
         preset: options.preset,
-        presetConfig: options.presetConfig,
+        presetConfig: options.presetConfig
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
         linkCompare: options.linkCompare,
         linkReferences: options.linkReferences,
-        writerOpts: options.writerOpts
+        parserOpts: options.parserOpts,
+        writerOpts: options.writerOpts,
+        preset: options.preset,
+        presetConfig: options.presetConfig
       }
-    ]);
-  }
+    ],
+    ...(options.npm ? getNpmPlugin(options) : emptyArray),
+    ...(options.plugins ?? [])
+  ];
 
   if (options.git) {
     defaultPlugins.push([

@@ -23,10 +23,6 @@ export const getCommitsForProject =
   (verbose?: boolean) =>
   (plugin: PluginFn) =>
   async (config: unknown, context: any) => {
-    console.log("getCommitsForProject");
-    console.log(config);
-    console.log(context);
-
     if (!config) {
       throw new Error("Release context is missing.");
     }
