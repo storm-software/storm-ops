@@ -3,7 +3,8 @@
   "compilerOptions": {
     "module": "CommonJS",
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "strict": false,
+    "allowJs": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": false,
     "noImplicitReturns": true,

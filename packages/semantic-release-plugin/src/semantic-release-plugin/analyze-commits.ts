@@ -1,8 +1,13 @@
 import { ProjectGraph, createProjectGraphAsync } from "@nx/devkit";
+import analyzeCommit from "@semantic-release/commit-analyzer/lib/analyze-commit.js";
+import loadParserConfig from "@semantic-release/commit-analyzer/lib/load-parser-config.js";
+import loadReleaseRules from "@semantic-release/commit-analyzer/lib/load-release-rules.js";
 import { execSync } from "child_process";
+import filter from "conventional-commits-filter";
+import { sync as parser } from "conventional-commits-parser";
 import { filterAffected } from "nx/src/project-graph/affected/affected-project-graph";
 import { calculateFileChanges } from "nx/src/project-graph/file-utils";
-import { filter, map, pipe } from "remeda";
+import { map, pipe } from "remeda";
 import { PluginFn } from "semantic-release-plugin-decorators";
 import { ReleaseContext } from "../types";
 import { CurrentContext } from "./release-context";
@@ -65,7 +70,6 @@ export const analyzeCommitsForProject =
       verbose
     );
 
-    const analyzeCommits = await getCommitAnalyzer();
     return analyzeCommits(
       {
         preset: "conventionalcommits",
@@ -86,13 +90,118 @@ export const analyzeCommitsForProject =
     );
   };
 
-function getCommitAnalyzer() {
-  const fn = new Function(
-    'return import("@semantic-release/commit-analyzer").then(m => m.analyzeCommits)'
+export const RELEASE_TYPES = [
+  "major",
+  "premajor",
+  "minor",
+  "preminor",
+  "patch",
+  "prepatch",
+  "prerelease"
+];
+
+export const DEFAULT_RELEASE_RULES = [
+  { breaking: true, release: "major" },
+  { revert: true, release: "patch" },
+  // Angular
+  { type: "feat", release: "minor" },
+  { type: "fix", release: "patch" },
+  { type: "perf", release: "patch" },
+  // Atom
+  { emoji: ":racehorse:", release: "patch" },
+  { emoji: ":bug:", release: "patch" },
+  { emoji: ":penguin:", release: "patch" },
+  { emoji: ":apple:", release: "patch" },
+  { emoji: ":checkered_flag:", release: "patch" },
+  // Ember
+  { tag: "BUGFIX", release: "patch" },
+  { tag: "FEATURE", release: "minor" },
+  { tag: "SECURITY", release: "patch" },
+  // ESLint
+  { tag: "Breaking", release: "major" },
+  { tag: "Fix", release: "patch" },
+  { tag: "Update", release: "minor" },
+  { tag: "New", release: "minor" },
+  // Express
+  { component: "perf", release: "patch" },
+  { component: "deps", release: "patch" },
+  // JSHint
+  { type: "FEAT", release: "minor" },
+  { type: "FIX", release: "patch" }
+];
+
+const compareReleaseTypes = (currentReleaseType, releaseType) =>
+  !currentReleaseType ||
+  RELEASE_TYPES.indexOf(releaseType) <
+    RELEASE_TYPES.indexOf(currentReleaseType);
+
+const analyzeCommits = async (pluginConfig: any, context: any) => {
+  const { commits } = context;
+  const releaseRules = loadReleaseRules(pluginConfig, context);
+  const config = await loadParserConfig(pluginConfig, context);
+  let releaseType = null;
+
+  filter(
+    commits
+      .filter(({ message, hash }) => {
+        if (!message.trim()) {
+          console.debug("Skip commit %s with empty message", hash);
+          return false;
+        }
+
+        return true;
+      })
+      .map(({ message, ...commitProps }) => ({
+        rawMsg: message,
+        message,
+        ...commitProps,
+        ...parser(message, config)
+      }))
+  ).every(({ rawMsg, ...commit }) => {
+    console.log(`Analyzing commit: %s`, rawMsg);
+    let commitReleaseType;
+
+    // Determine release type based on custom releaseRules
+    if (releaseRules) {
+      console.debug("Analyzing with custom rules");
+      commitReleaseType = analyzeCommit(releaseRules, commit);
+    }
+
+    // If no custom releaseRules or none matched the commit, try with default releaseRules
+    if (commitReleaseType === null || commitReleaseType === undefined) {
+      console.debug("Analyzing with default rules");
+      commitReleaseType = analyzeCommit(DEFAULT_RELEASE_RULES, commit);
+    }
+
+    if (commitReleaseType) {
+      console.log("The release type for the commit is %s", commitReleaseType);
+    } else {
+      console.log("The commit should not trigger a release");
+    }
+
+    // Set releaseType if commit's release type is higher
+    if (
+      commitReleaseType &&
+      compareReleaseTypes(releaseType, commitReleaseType)
+    ) {
+      releaseType = commitReleaseType;
+    }
+
+    // Break loop if releaseType is the highest
+    if (releaseType === RELEASE_TYPES[0]) {
+      return false;
+    }
+
+    return true;
+  });
+  console.log(
+    "Analysis of %s commits complete: %s release",
+    commits.length,
+    releaseType || "no"
   );
 
-  return fn() as Promise<any>;
-}
+  return releaseType;
+};
 
 async function filterCommits(
   commits: any[],

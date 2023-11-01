@@ -456,6 +456,12 @@ importers:
       "@semantic-release/release-notes-generator":
         specifier: ^12.0.0
         version: 12.0.0(semantic-release@22.0.5)
+      conventional-commits-filter:
+        specifier: ^4.0.0
+        version: 4.0.0
+      conventional-commits-parser:
+        specifier: ^5.0.0
+        version: 5.0.0
       remeda:
         specifier: ^1.28.0
         version: 1.28.0
