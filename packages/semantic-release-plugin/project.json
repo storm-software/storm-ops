@@ -17,13 +17,18 @@
         "minify": false,
         "skipTypeCheck": true,
         "thirdParty": true,
-        "format": ["esm"],
+        "format": ["esm", "cjs"],
         "external": [
           "@swc/wasm",
           "@swc/core",
           "nx",
           "@angular-devkit/architect"
         ],
+        "esbuildOptions": {
+          "banner": {
+            "js": "import { fileURLToPath } from 'url';\nimport { createRequire as topLevelCreateRequire } from 'module';\nconst require = topLevelCreateRequire(import.meta.url);\nconst __filename = fileURLToPath(import.meta.url);\nconst __dirname = path.dirname(__filename);"
+          }
+        },
         "assets": [
           {
             "input": "packages/git-tools",
