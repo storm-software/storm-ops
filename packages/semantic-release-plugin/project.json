@@ -13,11 +13,11 @@
         "tsConfig": "packages/semantic-release-plugin/tsconfig.lib.json",
         "assets": ["packages/semantic-release-plugin/*.md"],
         "deleteOutputPath": true,
-        "bundle": true,
+        "bundle": false,
         "sourcemap": true,
         "minify": false,
         "skipTypeCheck": true,
-        "thirdParty": true,
+        "thirdParty": false,
         "format": ["cjs"],
         "external": [
           "@swc/wasm",
