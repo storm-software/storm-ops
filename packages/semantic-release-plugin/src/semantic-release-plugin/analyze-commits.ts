@@ -12,7 +12,6 @@ import { analyzeCommit } from "./analyze-commit";
 import { compareReleaseTypes } from "./compare-release-types";
 import { loadParserConfig } from "./load-parser-config";
 import { loadReleaseRules } from "./load-release-rules";
-import { CurrentContext } from "./release-context";
 
 interface CommitAffectingProjectsParams {
   commit: Pick<any, "subject" | "commit" | "body">;
@@ -29,8 +28,10 @@ export const getCommitsForProject =
   (plugin: PluginFn) =>
   async (config: unknown, context: any) => {
     console.log("getCommitsForProject");
+    console.log(config);
+    console.log(context);
 
-    if (!CurrentContext) {
+    if (!config) {
       throw new Error("Release context is missing.");
     }
 
@@ -40,7 +41,7 @@ export const getCommitsForProject =
 
     const filteredCommits = await filterCommits(
       context.commits,
-      CurrentContext,
+      config,
       context,
       verbose
     );
@@ -56,8 +57,10 @@ export const analyzeCommitsForProject =
   (plugin: PluginFn) =>
   async (config: any, context: any) => {
     console.log("analyzeCommitsForProject");
+    console.log(config);
+    console.log(context);
 
-    if (!CurrentContext) {
+    if (!config) {
       throw new Error("Release context is missing.");
     }
 
@@ -67,7 +70,7 @@ export const analyzeCommitsForProject =
 
     const filteredCommits = await filterCommits(
       context.commits,
-      CurrentContext,
+      config,
       context,
       verbose
     );

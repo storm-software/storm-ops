@@ -3,7 +3,6 @@ import {
   ProjectsConfigurations,
   readProjectsConfigurationFromProjectGraph
 } from "@nx/devkit";
-import { setReleaseContext } from "@storm-software/semantic-release-plugin";
 import "es6-weak-map";
 import { execSync } from "node:child_process";
 import { join } from "node:path";
@@ -119,14 +118,6 @@ export async function runProjectRelease(
     workspaceDir
   });
 
-  setReleaseContext({
-    ...config,
-    projectName,
-    workspaceDir,
-    projectGraph,
-    projectConfigs
-  });
-
   let pluginPath = plugin;
   if (!pluginPath.startsWith("@")) {
     pluginPath = join(workspaceDir, pluginPath);
@@ -141,7 +132,13 @@ export async function runProjectRelease(
 
   await release({
     extends: pluginPath,
-    ...config,
+    ...{
+      ...config,
+      projectName,
+      workspaceDir,
+      projectGraph,
+      projectConfigs
+    },
     tagFormat,
     plugins
   });
