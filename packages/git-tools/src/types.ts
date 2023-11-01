@@ -123,6 +123,7 @@ export type ReleaseConfig = any & {
   preset?: string;
   presetConfig?: Record<string, unknown>;
   plugins?: any[];
+  stormPlugin?: string;
   tagFormat?: string;
   git: boolean;
 };

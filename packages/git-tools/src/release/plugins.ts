@@ -53,15 +53,6 @@ export const resolvePlugins = (
   const emptyArray: never[] = [];
   const defaultPlugins = [
     [
-      "@storm-software/semantic-release-plugin",
-      {
-        parserOpts: options.parserOpts,
-        releaseRules: options.releaseRules,
-        preset: options.preset,
-        presetConfig: options.presetConfig
-      }
-    ],
-    [
       "@semantic-release/release-notes-generator",
       {
         linkCompare: options.linkCompare,
@@ -85,6 +76,18 @@ export const resolvePlugins = (
     ...(options.npm ? getNpmPlugin(options) : emptyArray),
     ...(options.plugins ?? [])
   ];
+
+  if (options.stormPlugin) {
+    defaultPlugins.unshift([
+      options.stormPlugin,
+      {
+        parserOpts: options.parserOpts,
+        releaseRules: options.releaseRules,
+        preset: options.preset,
+        presetConfig: options.presetConfig
+      }
+    ]);
+  }
 
   if (options.git) {
     defaultPlugins.push([

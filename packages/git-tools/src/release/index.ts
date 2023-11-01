@@ -42,6 +42,7 @@ export async function runRelease(
     };
   }
 
+  config.stormPlugin = plugin;
   if (projectName) {
     await runProjectRelease(
       config,

@@ -8,6 +8,7 @@ export default {
   linkReferences: true,
   npm: true,
   github: true,
+  useStormPlugin: true,
   githubOptions: {
     assets: [
       { path: "dist/${PROJECT_DIR}/**/*.css", label: "CSS distribution" },
