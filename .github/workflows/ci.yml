@@ -9,6 +9,7 @@ on:
   push:
     branches:
       - "main"
+      - "next"
       - "alpha"
       - "beta"
 
@@ -18,7 +19,6 @@ env:
   NX_VERBOSE_LOGGING: true
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
   NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
-  GITHUB_ACTOR: "🤖 Storm Bot"
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
