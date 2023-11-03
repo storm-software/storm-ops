@@ -31,6 +31,9 @@ export const getCommitsForProject =
       throw new Error("Commits are missing.");
     }
 
+    context.logger.log("**** Printing config: ****");
+    context.logger.log(config);
+
     const filteredCommits = await filterCommits(
       context.commits,
       config,
