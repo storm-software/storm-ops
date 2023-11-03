@@ -4,8 +4,14 @@ import { execSync } from "node:child_process";
 import { join } from "node:path";
 import { getAffectedGraphNodes } from "nx/src/command-line/affected/affected.js";
 import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph.js";
+import type {
+  Commit,
+  LastRelease,
+  NextRelease,
+  Release
+} from "semantic-release";
 import { ReleaseConfig } from "../types";
-import defaultOptions from "./config";
+import defaultConfig from "./config";
 import { resolvePlugins } from "./plugins";
 import { applyTokensToReleaseConfig } from "./tokens";
 
@@ -27,7 +33,7 @@ export async function runRelease(
   const projectConfigs =
     readProjectsConfigurationFromProjectGraph(projectGraph);
 
-  let config: ReleaseConfig = defaultOptions as ReleaseConfig;
+  let config: ReleaseConfig = defaultConfig as ReleaseConfig;
   if (releaseConfig !== "@storm-software/git-tools/release/config.js") {
     let userConfig = (await import(releaseConfig))?.default;
     if (userConfig?.default) {
@@ -41,14 +47,19 @@ export async function runRelease(
     };
   }
 
-  config.stormPlugin = plugin;
+  console.log("Running release process with the following config options:");
+  console.log(config);
+
+  const results = [];
   if (projectName) {
-    await runProjectRelease(
-      config,
-      projectConfigs,
-      projectGraph,
-      projectName,
-      plugin
+    results.push(
+      await runProjectRelease(
+        config,
+        projectConfigs,
+        projectGraph,
+        projectName,
+        plugin
+      )
     );
   } else {
     let currentBase = base ? base : process.env.NX_BASE;
@@ -82,15 +93,28 @@ export async function runRelease(
       projectGraph
     );
     for (const project of projects) {
-      await runProjectRelease(
-        config,
-        projectConfigs,
-        projectGraph,
-        project.name,
-        plugin
+      results.push(
+        await runProjectRelease(
+          config,
+          projectConfigs,
+          projectGraph,
+          project.name,
+          plugin
+        )
       );
     }
   }
+
+  console.log(
+    `⚡Processed the following commits: ${[...results.map(r => r.commits)].join(
+      "\n"
+    )}`
+  );
+  console.log(
+    `⚡Completed the following releases successfully: ${[
+      ...results.map(r => r.releases)
+    ].join("\n")}`
+  );
 }
 
 export async function runProjectRelease(
@@ -99,7 +123,12 @@ export async function runProjectRelease(
   projectGraph: ProjectGraph,
   projectName: string,
   plugin = "@storm-software/git-tools/semantic-release-plugin"
-) {
+): Promise<{
+  lastRelease: LastRelease;
+  commits: Commit[];
+  nextRelease: NextRelease;
+  releases: Release[];
+}> {
   const projectConfig = projectConfigs.projects[projectName];
   if (projectConfig.targets?.build) {
     execSync(`pnpm nx run ${projectName}:build`, {
@@ -136,13 +165,26 @@ export async function runProjectRelease(
     ? parseTag(config.tagFormat)
     : config.tagFormat;
 
-  const release = await import("semantic-release");
-  await release.default({
-    extends: pluginPath,
-    config: context,
-    tagFormat,
-    plugins
-  });
+  const result = await import("semantic-release").then(mod =>
+    mod.default(
+      {
+        extends: pluginPath,
+        config: context,
+        tagFormat,
+        plugins
+      },
+      {
+        cwd: workspaceDir,
+        env: process.env,
+        stdout: process.stdout
+      }
+    )
+  );
+  if (!result) {
+    throw new Error(`Release for ${projectName} has failed`);
+  }
+
+  return result;
 }
 
 // Replace our token that is used for consistency with token required by semantic-release
