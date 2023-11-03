@@ -24,7 +24,7 @@ export const getCommitsForProject =
   (plugin: PluginFn) =>
   async (config: any, context: any) => {
     if (!config) {
-      throw new Error("Release context is missing.");
+      throw new Error("Release config is missing.");
     }
 
     if (!context.commits) {
