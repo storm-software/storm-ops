@@ -166,7 +166,9 @@ export async function runProjectRelease(
     : config.tagFormat;
 
   plugins.forEach(plugin => {
-    console.log(`Running ${plugin[0]} plugin with the following config:`);
+    console.log(
+      `Running ${plugin[0]} semantic-release plugin with the following config:`
+    );
     console.log(plugin[1]);
   });
 
