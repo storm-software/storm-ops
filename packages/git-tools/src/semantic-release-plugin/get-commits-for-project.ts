@@ -22,7 +22,7 @@ interface CommitAffectingProjectsParams {
 export const getCommitsForProject =
   (verbose?: boolean) =>
   (plugin: PluginFn) =>
-  async (config: unknown, context: any) => {
+  async (config: any, context: any) => {
     if (!config) {
       throw new Error("Release context is missing.");
     }
@@ -31,9 +31,6 @@ export const getCommitsForProject =
       throw new Error("Commits are missing.");
     }
 
-    context.logger.log("**** Printing config: ****");
-    context.logger.log(config);
-
     const filteredCommits = await filterCommits(
       context.commits,
       config,
@@ -41,7 +38,9 @@ export const getCommitsForProject =
       verbose
     );
     if (!filteredCommits || filteredCommits.length === 0) {
-      context.logger.warn("No commits found for this project. Skip analysis.");
+      context.logger.warn(
+        `No commits found for the ${config.projectName} package. Skip analysis.`
+      );
     }
 
     return plugin(config, {

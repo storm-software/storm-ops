@@ -14,7 +14,7 @@ const LARGE_BUFFER = 1024 * 1000000;
 export async function runRelease(
   projectName?: string,
   releaseConfig = "@storm-software/git-tools/release/config.js",
-  plugin = "@storm-software/semantic-release-plugin",
+  plugin = "@storm-software/git-tools/semantic-release-plugin",
   base?: string,
   head?: string
 ) {
@@ -98,7 +98,7 @@ export async function runProjectRelease(
   projectConfigs: ProjectsConfigurations,
   projectGraph: ProjectGraph,
   projectName: string,
-  plugin = "@storm-software/semantic-release-plugin"
+  plugin = "@storm-software/git-tools/semantic-release-plugin"
 ) {
   const projectConfig = projectConfigs.projects[projectName];
   if (projectConfig.targets?.build) {
@@ -123,7 +123,15 @@ export async function runProjectRelease(
     pluginPath = join(workspaceDir, pluginPath);
   }
 
-  const plugins = resolvePlugins(config, workspaceDir);
+  const context = {
+    ...config,
+    projectName,
+    workspaceDir,
+    projectGraph,
+    projectConfigs
+  };
+
+  const plugins = resolvePlugins(context, workspaceDir);
   const tagFormat = config.tagFormat
     ? parseTag(config.tagFormat)
     : config.tagFormat;
@@ -131,13 +139,7 @@ export async function runProjectRelease(
   const release = await import("semantic-release");
   await release.default({
     extends: pluginPath,
-    ...{
-      ...config,
-      projectName,
-      workspaceDir,
-      projectGraph,
-      projectConfigs
-    },
+    config: context,
     tagFormat,
     plugins
   });

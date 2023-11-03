@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import fs from "fs";
 import path from "path";
-import { ReleaseConfig } from "../types";
+import type { PluginSpec } from "semantic-release";
+import { ReleaseConfig, ReleaseContext } from "../types";
 
 const getNpmPlugin = (options: ReleaseConfig) => {
   if (!options.packageJsonDir) {
@@ -38,9 +40,9 @@ const getNpmPlugin = (options: ReleaseConfig) => {
 };
 
 export const resolvePlugins = (
-  options: ReleaseConfig,
+  options: ReleaseContext,
   workspaceRoot: string
-) => {
+): PluginSpec<any>[] => {
   if (!options.packageJsonDir) {
     return [];
   }
@@ -101,5 +103,12 @@ export const resolvePlugins = (
     defaultPlugins.push(["@semantic-release/github", options.githubOptions]);
   }
 
-  return defaultPlugins;
+  return defaultPlugins.map((plugin: PluginSpec<any>) => {
+    if (Array.isArray(plugin) && plugin.length > 0) {
+      const [pluginName, pluginOptions] = plugin;
+      return [pluginName, { ...pluginOptions, ...options }];
+    }
+
+    return plugin;
+  });
 };

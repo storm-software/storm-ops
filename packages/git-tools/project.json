@@ -20,7 +20,8 @@
           "packages/git-tools/src/commitizen/config.ts",
           "packages/git-tools/src/commit/index.ts",
           "packages/git-tools/src/release/index.ts",
-          "packages/git-tools/src/release/config.js"
+          "packages/git-tools/src/release/config.js",
+          "packages/git-tools/src/semantic-release-plugin/index.ts"
         ],
         "deleteOutputPath": true,
         "bundle": true,

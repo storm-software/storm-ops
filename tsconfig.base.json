@@ -17,9 +17,6 @@
     "paths": {
       "@storm-software/git-tools/*": ["packages/git-tools/*"],
       "@storm-software/linting-tools/*": ["packages/linting-tools/*"],
-      "@storm-software/semantic-release-plugin": [
-        "packages/semantic-release-plugin/src/index.ts"
-      ],
       "@storm-software/workspace-tools": [
         "packages/workspace-tools/src/index.ts"
       ],

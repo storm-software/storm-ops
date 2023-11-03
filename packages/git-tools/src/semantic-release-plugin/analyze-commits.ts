@@ -15,9 +15,6 @@ export const analyzeCommitsForProject =
       throw new Error("Commits are missing.");
     }
 
-    context.logger.log("**** Printing config: ****");
-    context.logger.log(config);
-
     const filteredCommits = await filterCommits(
       context.commits,
       config,
@@ -25,7 +22,9 @@ export const analyzeCommitsForProject =
       verbose
     );
     if (!filteredCommits || filteredCommits.length === 0) {
-      context.logger.warn("No commits found for this project. Skip analysis.");
+      context.logger.warn(
+        `No commits found for the ${config.projectName} package. Skip analysis.`
+      );
     }
 
     return _plugin(
