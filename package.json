@@ -127,7 +127,8 @@
       "@storm-software/semantic-release-plugin": "workspace:*"
     },
     "patchedDependencies": {
-      "semantic-release@22.0.5": "patches/semantic-release@22.0.5.patch"
+      "semantic-release@22.0.5": "patches/semantic-release@22.0.5.patch",
+      "semantic-release-plugin-decorators@3.0.1": "patches/semantic-release-plugin-decorators@3.0.1.patch"
     }
   }
 }

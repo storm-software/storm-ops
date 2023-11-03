@@ -12,6 +12,9 @@ overrides:
   "@storm-software/semantic-release-plugin": workspace:*
 
 patchedDependencies:
+  semantic-release-plugin-decorators@3.0.1:
+    hash: fepeunjjo6hoyd6keid2faobpi
+    path: patches/semantic-release-plugin-decorators@3.0.1.patch
   semantic-release@22.0.5:
     hash: 7vhgie2e5x4xqwharyskrj5jby
     path: patches/semantic-release@22.0.5.patch
@@ -225,7 +228,7 @@ importers:
         version: 22.0.5(patch_hash=7vhgie2e5x4xqwharyskrj5jby)
       semantic-release-plugin-decorators:
         specifier: ^3.0.1
-        version: 3.0.1(semantic-release@22.0.5)
+        version: 3.0.1(patch_hash=fepeunjjo6hoyd6keid2faobpi)(semantic-release@22.0.5)
       semver:
         specifier: ^7.5.4
         version: 7.5.4
@@ -518,7 +521,7 @@ importers:
         version: 1.28.0
       semantic-release-plugin-decorators:
         specifier: ^3.0.1
-        version: 3.0.1(semantic-release@22.0.5)
+        version: 3.0.1(patch_hash=fepeunjjo6hoyd6keid2faobpi)(semantic-release@22.0.5)
 
   packages/workspace-tools:
     dependencies:
@@ -18066,7 +18069,7 @@ packages:
       xmlchars: 2.2.0
     dev: false
 
-  /semantic-release-plugin-decorators@3.0.1(semantic-release@22.0.5):
+  /semantic-release-plugin-decorators@3.0.1(patch_hash=fepeunjjo6hoyd6keid2faobpi)(semantic-release@22.0.5):
     resolution:
       {
         integrity: sha512-f5Qjvv/AJYByvkaj11a+05gQwfPwgQKo5OIhj8YVM2Dhf2rOPEOLD83jGrTdM7Nuf//sZYw77/cGUSVygUG9Kg==
@@ -18076,6 +18079,7 @@ packages:
     dependencies:
       semantic-release: 22.0.5(patch_hash=7vhgie2e5x4xqwharyskrj5jby)
     dev: false
+    patched: true
 
   /semantic-release@22.0.5(patch_hash=7vhgie2e5x4xqwharyskrj5jby):
     resolution:
