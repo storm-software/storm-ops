@@ -120,9 +120,13 @@ const generatePluginOptions = (
   options: ReleaseContext,
   plugin: PluginSpec<any>
 ): PluginSpec<any> => {
-  if (Array.isArray(plugin) && plugin.length > 0) {
-    const [pluginName, pluginOptions] = plugin;
-    return [pluginName, { ...defaultConfig, ...pluginOptions, ...options }];
+  if (plugin) {
+    if (Array.isArray(plugin) && plugin.length > 0) {
+      const [pluginName, pluginOptions] = plugin;
+      return [pluginName, { ...defaultConfig, ...options, ...pluginOptions }];
+    } else if (typeof plugin === "string") {
+      return [plugin, { ...defaultConfig, ...options }];
+    }
   }
 
   return plugin;

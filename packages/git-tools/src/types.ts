@@ -125,6 +125,7 @@ export type ReleaseConfig = any & {
   plugins?: any[];
   tagFormat?: string;
   git: boolean;
+  branches: string[];
 };
 
 export type ReleaseContext = ReleaseConfig & {
