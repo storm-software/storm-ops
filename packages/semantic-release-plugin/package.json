@@ -2,7 +2,7 @@
   "name": "@storm-software/semantic-release-plugin",
   "version": "0.0.1",
   "type": "module",
-  "main": "./index.js",
+  "main": "./src/index.js",
   "dependencies": {
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^11.0.0",
