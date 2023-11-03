@@ -19,13 +19,16 @@ env:
   NX_VERBOSE_LOGGING: true
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
   NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  NX_BASE: ${{ github.base_ref }}
+  NX_HEAD: ${{ github.head_ref }}
+  GITHUB_ACTOR: ${{ github.actor }}
+  GITHUB_TOKEN: ${{ github.token }}
+  GH_TOKEN: ${{ github.token }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
   build-and-release:
-    if: github.repository == 'storm-software/storm-ops' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta')
+    if: github.repository == 'storm-software/storm-ops' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/next' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta')
     name: "Build & Release"
     runs-on: ubuntu-latest
     steps:
@@ -38,8 +41,8 @@ jobs:
 
       - name: configure git
         run: |
-          git config user.name "sullivanpj"
-          git config user.email "sullivanpj@users.noreply.github.com"
+          git config user.name "${{ env.GITHUB_ACTOR }}"
+          git config user.email "${{ env.GITHUB_ACTOR }}@users.noreply.github.com"
           npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
 
       - name: Install dependencies
@@ -92,10 +95,10 @@ jobs:
       - name: Release Library Version Updates
         run: pnpm release --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ env.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ env.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ env.NPM_TOKEN }}
           TAG: ${{ inputs.tag }}
 
       - name: Create Pull Request
@@ -104,4 +107,4 @@ jobs:
           destination_branch: main
           pr_title: "chore(repo): Github CI/CD automated updates"
           pr_body: "This changeset is the result of updates made in the repository's files via the CI/CD pipeline automatically. The changes include linting, formatting, and version updates."
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ env.GITHUB_TOKEN }}
