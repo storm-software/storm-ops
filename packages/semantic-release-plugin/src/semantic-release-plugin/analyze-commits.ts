@@ -7,10 +7,6 @@ export const analyzeCommitsForProject =
   (verbose?: boolean) =>
   (_plugin: PluginFn) =>
   async (config: any, context: any) => {
-    console.log("analyzeCommitsForProject");
-    console.log(config);
-    console.log(context);
-
     if (!config) {
       throw new Error("Release context is missing.");
     }
@@ -25,6 +21,9 @@ export const analyzeCommitsForProject =
       context,
       verbose
     );
+    if (!filteredCommits || filteredCommits.length === 0) {
+      console.warn("No commits found for this project. Skip analysis.");
+    }
 
     return _plugin(
       {

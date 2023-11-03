@@ -37,6 +37,9 @@ export const getCommitsForProject =
       context,
       verbose
     );
+    if (!filteredCommits || filteredCommits.length === 0) {
+      console.warn("No commits found for this project. Skip analysis.");
+    }
 
     return plugin(config, {
       ...context,
