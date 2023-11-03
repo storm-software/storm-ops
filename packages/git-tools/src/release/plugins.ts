@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import type { PluginSpec } from "semantic-release";
 import { ReleaseConfig, ReleaseContext } from "../types";
+import defaultConfig from "./config";
 
 const getNpmPlugin = (options: ReleaseConfig) => {
   if (!options.packageJsonDir) {
@@ -36,7 +37,7 @@ const getNpmPlugin = (options: ReleaseConfig) => {
     ]);
   }
 
-  return plugins;
+  return formatPlugins(options, plugins);
 };
 
 export const resolvePlugins = (
@@ -103,12 +104,26 @@ export const resolvePlugins = (
     defaultPlugins.push(["@semantic-release/github", options.githubOptions]);
   }
 
-  return defaultPlugins.map((plugin: PluginSpec<any>) => {
-    if (Array.isArray(plugin) && plugin.length > 0) {
-      const [pluginName, pluginOptions] = plugin;
-      return [pluginName, { ...pluginOptions, ...options }];
-    }
+  return formatPlugins(options, defaultPlugins);
+};
 
-    return plugin;
-  });
+const formatPlugins = (
+  options: ReleaseContext,
+  plugins: PluginSpec<any>[]
+): PluginSpec<any>[] => {
+  return plugins.map((plugin: PluginSpec<any>) =>
+    generatePluginOptions(options, plugin)
+  );
+};
+
+const generatePluginOptions = (
+  options: ReleaseContext,
+  plugin: PluginSpec<any>
+): PluginSpec<any> => {
+  if (Array.isArray(plugin) && plugin.length > 0) {
+    const [pluginName, pluginOptions] = plugin;
+    return [pluginName, { ...defaultConfig, ...pluginOptions, ...options }];
+  }
+
+  return plugin;
 };
