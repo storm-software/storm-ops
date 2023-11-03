@@ -75,6 +75,16 @@ export const resolvePlugins = (
         presetConfig: options.presetConfig
       }
     ],
+    ...(options.changelog
+      ? [
+          [
+            "@semantic-release/changelog",
+            {
+              changelogFile: options.changelogFile
+            }
+          ]
+        ]
+      : emptyArray),
     ...(options.npm ? getNpmPlugin(options) : emptyArray),
     ...(options.plugins ?? [])
   ];
