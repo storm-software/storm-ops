@@ -27,7 +27,7 @@ export const analyzeCommitsForProject =
       );
     }
 
-    const releaseRules = config.releaseRules.reduce(
+    const releaseRules = (config.releaseRules ?? []).reduce(
       (ret: Array<{ type: string; release: string }>, rule: any) => {
         if (
           !ret.some(
