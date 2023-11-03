@@ -5,14 +5,30 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
+      "executor": "@nx/esbuild:esbuild",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "rootDir": "packages/semantic-release-plugin",
         "outputPath": "dist/packages/semantic-release-plugin",
         "main": "packages/semantic-release-plugin/src/index.ts",
         "tsConfig": "packages/semantic-release-plugin/tsconfig.lib.json",
-        "clean": true,
+        "deleteOutputPath": true,
+        "bundle": true,
+        "sourcemap": true,
+        "minify": false,
+        "skipTypeCheck": true,
+        "thirdParty": true,
+        "format": ["esm"],
+        "external": [
+          "@swc/wasm",
+          "@swc/core",
+          "nx",
+          "@angular-devkit/architect"
+        ],
+        "esbuildOptions": {
+          "banner": {
+            "js": "import { fileURLToPath as _fileURLToPath } from 'url';\nimport _path from 'node:path';\nimport { createRequire as topLevelCreateRequire } from 'module';\nconst require = topLevelCreateRequire(import.meta.url);\nconst __filename = _fileURLToPath(import.meta.url);\nconst __dirname = _path.dirname(__filename);"
+          }
+        },
         "assets": [
           {
             "input": "packages/git-tools",
