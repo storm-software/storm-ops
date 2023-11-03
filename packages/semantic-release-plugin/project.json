@@ -8,6 +8,7 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "rootDir": "packages/semantic-release-plugin",
         "outputPath": "dist/packages/semantic-release-plugin",
         "main": "packages/semantic-release-plugin/src/index.ts",
         "tsConfig": "packages/semantic-release-plugin/tsconfig.lib.json",
