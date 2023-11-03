@@ -58,6 +58,9 @@ importers:
       "@semantic-release/git":
         specifier: ^10.0.1
         version: 10.0.1(semantic-release@22.0.5)
+      "@semantic-release/github":
+        specifier: ^9.2.1
+        version: 9.2.1(semantic-release@22.0.5)
       "@semantic-release/npm":
         specifier: ^11.0.0
         version: 11.0.0(semantic-release@22.0.5)
