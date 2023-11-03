@@ -2,10 +2,9 @@
 
 import { ProjectGraph, createProjectGraphAsync } from "@nx/devkit";
 import { execSync } from "child_process";
-import filter from "conventional-commits-filter";
 import { filterAffected } from "nx/src/project-graph/affected/affected-project-graph.js";
 import { calculateFileChanges } from "nx/src/project-graph/file-utils.js";
-import { map, pipe } from "remeda";
+import { filter, map, pipe } from "remeda";
 import { PluginFn } from "semantic-release-plugin-decorators";
 import { ReleaseContext } from "../types";
 
@@ -60,14 +59,6 @@ export async function filterCommits(
   const graph = await createProjectGraphAsync();
   const dependencies = await getProjectDependencies(projectName, graph);
   const allDeps = [...dependencies, projectName];
-
-  if (verbose) {
-    context.logger.log(
-      `Found following dependencies: "${dependencies.join(
-        ", "
-      )}" for project "${projectName}"`
-    );
-  }
 
   const result = await promiseFilter(commits, (commit: any) =>
     isCommitAffectingProjects({
