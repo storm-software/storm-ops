@@ -10,7 +10,12 @@ export default {
   github: true,
   githubOptions: {},
   git: true,
-  gitAssets: ["${WORKSPACE_DIR}/LICENSE", "${WORKSPACE_DIR}/assets/favicons"],
+  gitAssets: [
+    "${WORKSPACE_DIR}/LICENSE",
+    "${PROJECT_DIR}/package.json",
+    "${PROJECT_DIR}/README.md",
+    "${WORKSPACE_DIR}/assets/favicons"
+  ],
   tagFormat: "${PROJECT_NAME}-v${version}",
   packageJsonDir: "${PROJECT_DIR}",
   repositoryUrl: process.env.CI_REPO_URL,
