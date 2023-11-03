@@ -165,11 +165,16 @@ export async function runProjectRelease(
     ? parseTag(config.tagFormat)
     : config.tagFormat;
 
+  plugins.forEach(plugin => {
+    console.log(`Running ${plugin[0]} plugin with the following config:`);
+    console.log(plugin[1]);
+  });
+
   const result = await import("semantic-release").then(mod =>
     mod.default(
       {
         extends: pluginPath,
-        config: context,
+        ...context,
         tagFormat,
         plugins
       },
