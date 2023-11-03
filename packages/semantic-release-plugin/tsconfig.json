@@ -8,6 +8,7 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": false,
     "noImplicitReturns": true,
+    "allowSyntheticDefaultImports": true,
     "noFallthroughCasesInSwitch": true
   },
   "files": [],
