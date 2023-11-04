@@ -17,6 +17,7 @@ favicons
 valibot
 hasura
 strapi
+allcontributors
 probot
 smee
 remeda
