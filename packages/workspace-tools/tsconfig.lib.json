@@ -6,6 +6,6 @@
     "allowJs": true,
     "types": ["node"]
   },
-  "include": ["src/**/*.ts", "scripts/**/*.js"],
+  "include": ["src/**/*.ts", "../git-tools/scripts/**/*.js"],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }
