@@ -3,4 +3,6 @@
 
 changedFiles="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
 node ./packages/workspace-tools/scripts/package-version-warning.js $changedFiles
+node ./packages/workspace-tools/scripts/post-merge.js
+
 
