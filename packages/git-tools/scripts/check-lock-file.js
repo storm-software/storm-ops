@@ -1,4 +1,4 @@
-const fs = require("fs");
+import fs from "fs";
 
 console.log("🔒🔒🔒 Validating lock files 🔒🔒🔒\n");
 
