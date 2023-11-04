@@ -77,6 +77,16 @@
             "input": "packages/git-tools/src",
             "glob": "readme/templates/**/*.*",
             "output": "."
+          },
+          {
+            "input": "./packages/git-tools/scripts",
+            "glob": "**/*.js",
+            "output": "./scripts"
+          },
+          {
+            "input": "./packages/git-tools/hooks",
+            "glob": "**/*.js",
+            "output": "./hooks"
           }
         ]
       }

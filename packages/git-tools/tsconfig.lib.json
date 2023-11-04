@@ -6,6 +6,12 @@
     "types": ["node"]
   },
   "files": ["declarations.d.ts"],
-  "include": ["src/**/*.ts", "src/**/*.js", "bin/**/*", "declarations.d.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.js",
+    "scripts/**/*.js",
+    "bin/**/*",
+    "declarations.d.ts"
+  ],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }

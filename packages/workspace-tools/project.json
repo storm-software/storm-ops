@@ -37,11 +37,6 @@
             "input": "./packages/workspace-tools/config",
             "glob": "**/*.*",
             "output": "./config"
-          },
-          {
-            "input": "./packages/workspace-tools/scripts",
-            "glob": "**/*.js",
-            "output": "./scripts"
           }
         ]
       }

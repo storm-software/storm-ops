@@ -121,12 +121,11 @@
   },
   "husky": {
     "hooks": {
-      "post-checkout": "echo $HUSKY_GIT_STDIN | node ./dist/packages/workspace-tools/post-checkout.js $HUSKY_GIT_PARAMS",
-      "post-commit": "echo $HUSKY_GIT_STDIN | node ./dist/packages/workspace-tools/post-commit.js $HUSKY_GIT_PARAMS",
-      "post-merge": "echo $HUSKY_GIT_STDIN | node ./dist/packages/workspace-tools/post-merge.js $HUSKY_GIT_PARAMS",
-      "pre-commit": "echo $HUSKY_GIT_STDIN | node ./dist/packages/workspace-tools/pre-commit.js $HUSKY_GIT_PARAMS",
-      "pre-install": "echo $HUSKY_GIT_STDIN | node ./dist/packages/workspace-tools/pre-install.js $HUSKY_GIT_PARAMS",
-      "pre-push": "echo $HUSKY_GIT_STDIN | node ./dist/packages/workspace-tools/pre-push.js $HUSKY_GIT_PARAMS"
+      "post-checkout": "echo $HUSKY_GIT_STDIN | packages/git-tools/hooks/post-checkout $HUSKY_GIT_PARAMS",
+      "post-commit": "echo $HUSKY_GIT_STDIN | packages/git-tools/hooks/post-commit $HUSKY_GIT_PARAMS",
+      "post-merge": "echo $HUSKY_GIT_STDIN | packages/git-tools/hooks/post-merge $HUSKY_GIT_PARAMS",
+      "pre-commit": "echo $HUSKY_GIT_STDIN | packages/git-tools/hooks/pre-commit $HUSKY_GIT_PARAMS",
+      "pre-push": "echo $HUSKY_GIT_STDIN | packages/git-tools/hooks/pre-push $HUSKY_GIT_PARAMS"
     }
   },
   "pnpm": {
