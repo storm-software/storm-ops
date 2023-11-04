@@ -300,8 +300,8 @@ importers:
         specifier: 1.0.2
         version: 1.0.2
       '@cspell/dict-en-gb':
-        specifier: 1.1.33
-        version: 1.1.33
+        specifier: 4.1.25
+        version: 4.1.25
       '@cspell/dict-en_us':
         specifier: 4.3.11
         version: 4.3.11
@@ -2087,6 +2087,10 @@ packages:
 
   /@cspell/dict-en-gb@1.1.33:
     resolution: {integrity: sha512-tKSSUf9BJEV+GJQAYGw5e+ouhEe2ZXE620S7BLKe3ZmpnjlNG9JqlnaBhkIMxKnNFkLY2BP/EARzw31AZnOv4g==}
+    dev: false
+
+  /@cspell/dict-en-gb@4.1.25:
+    resolution: {integrity: sha512-x2HhFBQ//0Ra/Hx1BNBwGmZYvdtPseY809ZmSwYuvSXEn7n8NTtDi9PqIbQ2TwYEz0jtqi9C0IiDUjotOYzqSQ==}
     dev: false
 
   /@cspell/dict-en_us@4.3.11:

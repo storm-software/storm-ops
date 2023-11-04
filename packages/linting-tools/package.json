@@ -20,7 +20,7 @@
     "@cspell/dict-dotnet": "5.0.0",
     "@cspell/dict-elixir": "4.0.3",
     "@cspell/dict-en-common-misspellings": "1.0.2",
-    "@cspell/dict-en-gb": "1.1.33",
+    "@cspell/dict-en-gb": "4.1.25",
     "@cspell/dict-en_us": "4.3.11",
     "@cspell/dict-filetypes": "3.0.2",
     "@cspell/dict-fonts": "4.0.0",
