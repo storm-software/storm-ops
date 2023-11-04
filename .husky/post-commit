@@ -1,5 +1,0 @@
-#!/bin/sh
-
-node ./packages/workspace-tools/scripts/post-commit.js
-
-

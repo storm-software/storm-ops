@@ -1,6 +1,0 @@
-#!/bin/sh
-
-changedFiles="$(git diff-tree -r --name-only --no-commit-id $1 $2)"
-node ./packages/workspace-tools/scripts/package-version-warning.js $changedFiles
-node ./packages/workspace-tools/scripts/post-checkout.js
-

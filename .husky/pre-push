@@ -1,4 +1,0 @@
-#!/bin/sh
-
-node ./packages/workspace-tools/scripts/check-lock-file.js
-node ./packages/workspace-tools/scripts/pre-push.js
