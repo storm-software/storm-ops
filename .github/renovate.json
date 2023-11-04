@@ -29,7 +29,7 @@
       "matchPackageNames": ["@nx"],
       "postUpgradeTasks": {
         "commands": [
-          "npx nx migrate latest --run-migrations --create-commits --commit-message='chore(storm-ops): update @nx dependencies'"
+          "pnpm nx migrate latest --run-migrations --create-commits --commit-message='chore(storm-ops): update @nx dependencies [skip ci]'"
         ]
       }
     },

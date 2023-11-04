@@ -39,7 +39,7 @@
         ],
         "esbuildOptions": {
           "banner": {
-            "js": "import { fileURLToPath as _fileURLToPath } from 'url';\nimport _path from 'node:path';\nimport { createRequire as topLevelCreateRequire } from 'module';\nconst require = topLevelCreateRequire(import.meta.url);\nconst __filename = _fileURLToPath(import.meta.url);\nconst __dirname = _path.dirname(__filename);"
+            "js": "import { fileURLToPath as _fileURLToPath } from 'url';\nimport _path from 'node:path';\nimport { createRequire as topLevelCreateRequire } from 'module';\nconst require = topLevelCreateRequire(import.meta.url);"
           }
         },
         "assets": [

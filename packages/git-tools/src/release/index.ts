@@ -10,7 +10,7 @@ import type {
   NextRelease,
   Release
 } from "semantic-release";
-import { ReleaseConfig } from "../types";
+import { ReleaseConfig, ReleaseContext } from "../types";
 import defaultConfig from "./config";
 import { resolvePlugins } from "./plugins";
 import { applyTokensToReleaseConfig } from "./tokens";
@@ -152,7 +152,7 @@ export async function runProjectRelease(
     pluginPath = join(workspaceDir, pluginPath);
   }
 
-  const context = {
+  const context: ReleaseContext = {
     ...config,
     projectName,
     workspaceDir,
@@ -177,12 +177,13 @@ export async function runProjectRelease(
       {
         extends: pluginPath,
         ...context,
+        options: context,
         tagFormat,
         plugins
       },
       {
         cwd: workspaceDir,
-        env: process.env,
+        env: prepareEnv(context, process.env),
         stdout: process.stdout
       }
     )
@@ -197,4 +198,24 @@ export async function runProjectRelease(
 // Replace our token that is used for consistency with token required by semantic-release
 function parseTag(tag: string) {
   return tag.replace("${VERSION}", match => match.toLowerCase());
+}
+
+// Replace our token that is used for consistency with token required by semantic-release
+function prepareEnv(
+  context: ReleaseContext,
+  env: Record<string, string> = process.env
+) {
+  return Object.assign(env, {
+    CI: true,
+    GIT_AUTHOR_NAME: env.CI_REPO_OWNER,
+    GIT_AUTHOR_EMAIL: env.CI_REPO_OWNER_EMAIL
+      ? env.CI_REPO_OWNER_EMAIL
+      : `${env.CI_REPO_OWNER}@users.noreply.github.com`,
+    GIT_COMMITTER_NAME: env.CI_REPO_OWNER,
+    GIT_COMMITTER_EMAIL: env.CI_REPO_OWNER_EMAIL
+      ? env.CI_REPO_OWNER_EMAIL
+      : `${env.CI_REPO_OWNER}@users.noreply.github.com`,
+    ...env,
+    CI_REPO_URL: context.workspaceDir ? context.workspaceDir : env.CI_REPO_URL
+  });
 }
