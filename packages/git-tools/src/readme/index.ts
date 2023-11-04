@@ -115,7 +115,7 @@ export const runProjectReadme = async (
         const prettier = await import("prettier");
         console.info(`Formatting output with Prettier`);
 
-        newContent = prettier.format(newContent, {
+        newContent = await prettier.format(newContent, {
           parser: "markdown",
           trailingComma: "none",
           tabWidth: 2,

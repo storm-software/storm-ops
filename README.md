@@ -218,7 +218,7 @@ Reach out to the maintainer at one of the following places:
 
 # License
 
-This project is licensed under the **Apache License 2.0**. Feel free to edit and distribute this template as you like.
+This project is licensed under the **Apache License 2.0**. Feel free to edit and distribute this template as you like. If you have any specific questions, please reach out to the Storm Software development team.
 
 See [LICENSE](LICENSE) for more information.
 
