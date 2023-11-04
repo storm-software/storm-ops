@@ -23,11 +23,9 @@ env:
   NX_HEAD: ${{ github.head_ref }}
   GITHUB_ACTOR: ${{ github.actor }}
   GITHUB_TOKEN: ${{ github.token }}
-  GH_TOKEN: ${{ github.token }}
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   DEV_REPO_ROOT: ${{ github.workspace }}
-  NX_WORKSPACE_ROOT_PATH: ${{ github.workspace }}
+  CI_REPO_WORKER: stormie-bot
+  NPM_TOKEN: ${{ secrets.STORMIE_NPM_TOKEN }}
 
 jobs:
   build-and-release:
@@ -39,14 +37,15 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup workspace
         uses: ./.github/actions/setup-workspace
 
       - name: configure git
         run: |
-          git config user.name "${{ env.CI_REPO_OWNER }}"
-          git config user.email "${{ env.CI_REPO_OWNER }}@users.noreply.github.com"
+          git config user.name "${{ env.CI_REPO_WORKER }}"
+          git config user.email "${{ env.CI_REPO_WORKER }}@users.noreply.github.com"
           npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
 
       - name: Install dependencies

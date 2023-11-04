@@ -205,16 +205,17 @@ function prepareEnv(
   context: ReleaseContext,
   env: Record<string, string> = process.env
 ) {
+  const name = env.CI_REPO_WORKER ? env.CI_REPO_WORKER : env.CI_REPO_OWNER;
+  const email = env.CI_REPO_OWNER_EMAIL
+    ? env.CI_REPO_OWNER_EMAIL
+    : `${name}@users.noreply.github.com`;
+
   return Object.assign(env, {
     CI: true,
-    GIT_AUTHOR_NAME: env.CI_REPO_OWNER,
-    GIT_AUTHOR_EMAIL: env.CI_REPO_OWNER_EMAIL
-      ? env.CI_REPO_OWNER_EMAIL
-      : `${env.CI_REPO_OWNER}@users.noreply.github.com`,
-    GIT_COMMITTER_NAME: env.CI_REPO_OWNER,
-    GIT_COMMITTER_EMAIL: env.CI_REPO_OWNER_EMAIL
-      ? env.CI_REPO_OWNER_EMAIL
-      : `${env.CI_REPO_OWNER}@users.noreply.github.com`,
+    GIT_AUTHOR_NAME: name,
+    GIT_AUTHOR_EMAIL: email,
+    GIT_COMMITTER_NAME: name,
+    GIT_COMMITTER_EMAIL: email,
     ...env,
     CI_REPO_URL: context.workspaceDir ? context.workspaceDir : env.CI_REPO_URL
   });
