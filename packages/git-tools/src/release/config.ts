@@ -14,7 +14,8 @@ export default {
     "${WORKSPACE_DIR}/LICENSE",
     "${PROJECT_DIR}/package.json",
     "${PROJECT_DIR}/README.md",
-    "${WORKSPACE_DIR}/assets/favicons"
+    "${WORKSPACE_DIR}/assets/logo-light.png",
+    "${WORKSPACE_DIR}/assets/logo-dark.png"
   ],
   tagFormat: "${PROJECT_NAME}-v${version}",
   packageJsonDir: "${PROJECT_DIR}",
