@@ -50,6 +50,9 @@ export async function runRelease(
   console.log("Running release process with the following config options:");
   console.log(config);
 
+  console.log("Running git lfs fetch");
+  execSync("git lfs fetch --all");
+
   const results = [];
   if (projectName) {
     results.push(
