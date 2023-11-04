@@ -11,8 +11,28 @@
         "outputPath": "dist/packages/create-storm-workspace",
         "main": "packages/create-storm-workspace/bin/index.ts",
         "tsConfig": "packages/create-storm-workspace/tsconfig.lib.json",
-        "assets": ["packages/create-storm-workspace/*.md"],
-        "updateBuildableProjectDepsInPackageJson": false
+        "assets": [
+          {
+            "input": "packages/create-storm-workspace",
+            "glob": "README.md",
+            "output": "/"
+          },
+          {
+            "input": "packages/create-storm-workspace",
+            "glob": "CHANGELOG.md",
+            "output": "/"
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "/"
+          },
+          {
+            "input": "packages/create-storm-workspace",
+            "glob": "bin/**/*",
+            "output": "."
+          }
+        ]
       }
     },
     "lint": {}

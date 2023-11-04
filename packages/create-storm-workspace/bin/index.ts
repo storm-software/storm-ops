@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { createWorkspace } from "create-nx-workspace";
 import { prompt } from "enquirer";
 
