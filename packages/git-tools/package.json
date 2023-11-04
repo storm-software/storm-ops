@@ -30,7 +30,7 @@
     "lodash-es": "4.17.21",
     "micromatch": "4.0.5",
     "nx": "17.0.3",
-    "prettier": "2.8.8",
+    "prettier": "3.0.3",
     "remeda": "1.29.0",
     "semantic-release": "22.0.7",
     "semantic-release-plugin-decorators": "3.0.1",
