@@ -93,15 +93,22 @@ export async function runRelease(
       projectGraph
     );
     for (const project of projects) {
-      results.push(
-        await runProjectRelease(
-          config,
-          projectConfigs,
-          projectGraph,
-          project.name,
-          plugin
-        )
+      console.log(
+        `!!!! Running release processing for project: ${project.name} !!!!`
       );
+
+      const result = await runProjectRelease(
+        config,
+        projectConfigs,
+        projectGraph,
+        project.name,
+        plugin
+      );
+      console.log(
+        `!!!! Completed release processing for project: ${project.name} !!!!`
+      );
+
+      results.push(result);
     }
   }
 

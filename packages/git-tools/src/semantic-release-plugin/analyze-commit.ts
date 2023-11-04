@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { isMatchWith, isString } from "lodash-es";
 import micromatch from "micromatch";
 import { RELEASE_TYPES } from "../constants";
