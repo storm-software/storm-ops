@@ -6,9 +6,9 @@
   "typings": "./src/index.d.ts",
   "dependencies": {
     "@nx/devkit": "17.0.1",
-    "esbuild-plugin-file-path-extensions": "^1.0.0",
-    "tslib": "^2.3.0",
-    "tsup": "^7.2.0"
+    "esbuild-plugin-file-path-extensions": "1.0.0",
+    "tslib": "2.6.2",
+    "tsup": "7.2.0"
   },
   "publishConfig": {
     "access": "public"
