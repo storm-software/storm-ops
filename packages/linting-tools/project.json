@@ -28,10 +28,10 @@
         "minify": false,
         "skipTypeCheck": false,
         "thirdParty": true,
-        "format": ["esm", "cjs"],
+        "format": ["esm"],
         "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
+          "banner": {
+            "js": "import { fileURLToPath as _fileURLToPath } from 'url';\nimport _path from 'node:path';\nimport { createRequire as topLevelCreateRequire } from 'module';\nconst require = topLevelCreateRequire(import.meta.url);\nconst __filename = _fileURLToPath(import.meta.url);\nconst __dirname = _path.dirname(__filename);"
           }
         },
         "assets": [
@@ -72,12 +72,7 @@
           },
           {
             "input": "packages/linting-tools/src",
-            "glob": "prettier/**/*.js",
-            "output": "."
-          },
-          {
-            "input": "packages/linting-tools/src",
-            "glob": "prettier/.prettierignore",
+            "glob": "prettier/**/*.*",
             "output": "."
           },
           {

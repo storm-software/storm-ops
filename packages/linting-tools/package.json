@@ -1,10 +1,9 @@
 {
   "name": "@storm-software/linting-tools",
   "version": "0.0.1",
-  "type": "commonjs",
-  "main": "./index.cjs",
+  "type": "module",
   "bin": {
-    "storm-lint": "./bin/cli"
+    "storm-git": "./bin/cli.js"
   },
   "dependencies": {
     "@cspell/dict-ada": "4.0.2",
