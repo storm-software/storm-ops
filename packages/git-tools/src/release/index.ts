@@ -131,9 +131,9 @@ export async function runProjectRelease(
   projectName: string,
   plugin = "@storm-software/git-tools/semantic-release-plugin"
 ): Promise<{
-  lastRelease: LastRelease;
+  lastRelease?: LastRelease;
   commits: Commit[];
-  nextRelease: NextRelease;
+  nextRelease?: NextRelease;
   releases: Release[];
 }> {
   const projectConfig = projectConfigs.projects[projectName];
@@ -200,7 +200,12 @@ export async function runProjectRelease(
     )
   );
   if (!result) {
-    throw new Error(`Release for ${projectName} has failed`);
+    console.warn(`No release ran for ${projectName}`);
+
+    return {
+      commits: [],
+      releases: []
+    };
   }
 
   return result;
