@@ -15,7 +15,7 @@ patchedDependencies:
     hash: fepeunjjo6hoyd6keid2faobpi
     path: patches/semantic-release-plugin-decorators@3.0.1.patch
   semantic-release@22.0.7:
-    hash: 2ouiy7277qteiu7kbcanq73ecm
+    hash: sdh76cbs3s6gimrygngciaff4a
     path: patches/semantic-release@22.0.7.patch
 
 importers:
@@ -131,7 +131,7 @@ importers:
         version: 5.0.0(prettier@3.0.3)
       semantic-release:
         specifier: 22.0.7
-        version: 22.0.7(patch_hash=2ouiy7277qteiu7kbcanq73ecm)
+        version: 22.0.7(patch_hash=sdh76cbs3s6gimrygngciaff4a)
       ts-jest:
         specifier: 29.1.1
         version: 29.1.1(@babel/core@7.23.2)(esbuild@0.19.5)(jest@29.7.0)(typescript@5.2.2)
@@ -239,7 +239,7 @@ importers:
         version: 1.29.0
       semantic-release:
         specifier: 22.0.7
-        version: 22.0.7(patch_hash=2ouiy7277qteiu7kbcanq73ecm)
+        version: 22.0.7(patch_hash=sdh76cbs3s6gimrygngciaff4a)
       semantic-release-plugin-decorators:
         specifier: 3.0.1
         version: 3.0.1(patch_hash=fepeunjjo6hoyd6keid2faobpi)(semantic-release@22.0.7)
@@ -4806,7 +4806,7 @@ packages:
       aggregate-error: 3.1.0
       fs-extra: 11.1.1
       lodash: 4.17.21
-      semantic-release: 22.0.7(patch_hash=2ouiy7277qteiu7kbcanq73ecm)
+      semantic-release: 22.0.7(patch_hash=sdh76cbs3s6gimrygngciaff4a)
     dev: false
 
   /@semantic-release/commit-analyzer@11.0.0(semantic-release@22.0.7):
@@ -4825,7 +4825,7 @@ packages:
       import-from: 4.0.0
       lodash-es: 4.17.21
       micromatch: 4.0.5
-      semantic-release: 22.0.7(patch_hash=2ouiy7277qteiu7kbcanq73ecm)
+      semantic-release: 22.0.7(patch_hash=sdh76cbs3s6gimrygngciaff4a)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -4861,7 +4861,7 @@ packages:
       execa: 5.1.1
       lodash: 4.17.21
       parse-json: 5.2.0
-      semantic-release: 22.0.7(patch_hash=2ouiy7277qteiu7kbcanq73ecm)
+      semantic-release: 22.0.7(patch_hash=sdh76cbs3s6gimrygngciaff4a)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -4883,7 +4883,7 @@ packages:
       lodash: 4.17.21
       micromatch: 4.0.5
       p-reduce: 2.1.0
-      semantic-release: 22.0.7(patch_hash=2ouiy7277qteiu7kbcanq73ecm)
+      semantic-release: 22.0.7(patch_hash=sdh76cbs3s6gimrygngciaff4a)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -4912,7 +4912,7 @@ packages:
       lodash-es: 4.17.21
       mime: 3.0.0
       p-filter: 3.0.0
-      semantic-release: 22.0.7(patch_hash=2ouiy7277qteiu7kbcanq73ecm)
+      semantic-release: 22.0.7(patch_hash=sdh76cbs3s6gimrygngciaff4a)
       url-join: 5.0.0
     transitivePeerDependencies:
       - supports-color
@@ -4938,7 +4938,7 @@ packages:
       rc: 1.2.8
       read-pkg: 9.0.0
       registry-auth-token: 5.0.2
-      semantic-release: 22.0.7(patch_hash=2ouiy7277qteiu7kbcanq73ecm)
+      semantic-release: 22.0.7(patch_hash=sdh76cbs3s6gimrygngciaff4a)
       semver: 7.5.4
       tempy: 3.1.0
     dev: false
@@ -4962,7 +4962,7 @@ packages:
       into-stream: 7.0.0
       lodash-es: 4.17.21
       read-pkg-up: 11.0.0
-      semantic-release: 22.0.7(patch_hash=2ouiy7277qteiu7kbcanq73ecm)
+      semantic-release: 22.0.7(patch_hash=sdh76cbs3s6gimrygngciaff4a)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -18279,11 +18279,11 @@ packages:
     peerDependencies:
       semantic-release: ">=11"
     dependencies:
-      semantic-release: 22.0.7(patch_hash=2ouiy7277qteiu7kbcanq73ecm)
+      semantic-release: 22.0.7(patch_hash=sdh76cbs3s6gimrygngciaff4a)
     dev: false
     patched: true
 
-  /semantic-release@22.0.7(patch_hash=2ouiy7277qteiu7kbcanq73ecm):
+  /semantic-release@22.0.7(patch_hash=sdh76cbs3s6gimrygngciaff4a):
     resolution:
       {
         integrity: sha512-Stx23Hjn7iU8GOAlhG3pHlR7AoNEahj9q7lKBP0rdK2BasGtJ4AWYh3zm1u3SCMuFiA8y4CE/Gu4RGKau1WiaQ==

@@ -1,5 +1,5 @@
 diff --git a/lib/get-config.js b/lib/get-config.js
-index aa119f302d147ac12960871ad8150623bc089911..429577e1a4d840f3d73d53e76a2f7fc25e3d6918 100644
+index aa119f302d147ac12960871ad8150623bc089911..abc946c3f2749ce4f416d187d4826ad9d37fffcb 100644
 --- a/lib/get-config.js
 +++ b/lib/get-config.js
 @@ -1,5 +1,6 @@
@@ -33,7 +33,7 @@ index aa119f302d147ac12960871ad8150623bc089911..429577e1a4d840f3d73d53e76a2f7fc2
 -            : undefined;
 -
 -        const { default: extendsOptions } = await import(resolvedPath, importAssertions);
-+        const extendsOptions = require(resolveFrom.silent(__dirname, extendPath) || resolveFrom(cwd, extendPath));
++        const extendsOptions = await import(resolveFrom.silent(__dirname, extendPath) || resolveFrom(cwd, extendPath));
  
          // For each plugin defined in a shareable config, save in `pluginsPath` the extendable config path,
          // so those plugin will be loaded relative to the config file
