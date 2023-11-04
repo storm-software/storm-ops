@@ -8,7 +8,7 @@
     "create-storm-workspace": "./bin/index.js"
   },
   "dependencies": {
-    "create-nx-workspace": "17.0.1",
+    "create-nx-workspace": "17.0.3",
     "enquirer": "2.4.1"
   },
   "publishConfig": {
