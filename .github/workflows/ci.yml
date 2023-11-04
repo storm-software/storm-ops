@@ -66,7 +66,7 @@ jobs:
         run: pnpm nx run-many -t build --parallel=5
 
       - name: Add permissions to linting tools
-        run: chmod a=rwx dist/packages/linting-tools/bin/cli
+        run: chmod a=rwx dist/packages/linting-tools/bin/cli.js
 
       - name: Add permissions to alex config file
         run: chmod a=rwx dist/packages/linting-tools/alex/.alexrc
