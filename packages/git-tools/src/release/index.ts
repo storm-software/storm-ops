@@ -169,7 +169,11 @@ export async function runProjectRelease(
     console.log(
       `Running ${plugin[0]} semantic-release plugin with the following config:`
     );
-    console.log(plugin[1]);
+
+    const config = plugin[1];
+    delete config.projectGraph;
+
+    console.log(config);
   });
 
   const result = await import("semantic-release").then(mod =>
