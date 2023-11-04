@@ -172,34 +172,40 @@ export async function runProjectRelease(
     ? parseTag(config.tagFormat)
     : config.tagFormat;
 
-  plugins.forEach(plugin => {
-    console.log(
-      `Running ${plugin[0]} semantic-release plugin with the following config:`
-    );
-
-    const config = plugin[1];
-    delete config.projectGraph;
-
-    console.log(config);
-  });
-
-  const result = await import("semantic-release").then(mod =>
-    mod.default(
-      {
-        extends: pluginPath,
-        ...context,
-        options: context,
-        tagFormat,
-        plugins
-      },
-      {
-        cwd: workspaceDir,
-        env: prepareEnv(context, process.env),
-        stdout: process.stdout
+  let result!:
+    | {
+        lastRelease?: LastRelease;
+        commits: Commit[];
+        nextRelease?: NextRelease;
+        releases: Release[];
       }
-    )
-  );
-  if (!result) {
+    | boolean;
+
+  try {
+    result = await import("semantic-release").then(mod =>
+      mod.default(
+        {
+          extends: pluginPath,
+          ...context,
+          options: context,
+          tagFormat,
+          plugins
+        },
+        {
+          cwd: workspaceDir,
+          env: prepareEnv(context, process.env),
+          stdout: process.stdout
+        }
+      )
+    );
+  } catch (e) {
+    console.error(
+      `An error occurred while running semantic-release for ${projectName}`
+    );
+    console.error(e);
+  }
+
+  if (!result || typeof result === "boolean") {
     console.warn(`No release ran for ${projectName}`);
 
     return {

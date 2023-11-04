@@ -1,6 +1,32 @@
 {
   "name": "@storm-software/linting-tools",
   "version": "0.0.1",
+  "description": "⚡ A package containing various linting tools used to validate syntax, enforce design standards, and format code in a Storm workspace.",
+  "keywords": [
+    "storm",
+    "storm-ops",
+    "stormstack",
+    "storm-stack",
+    "sullivanpj",
+    "open-system",
+    "monorepo"
+  ],
+  "homepage": "https://stormsoftware.org",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.org"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git",
+    "directory": "packages/workspace-tools"
+  },
+  "license": "Apache License 2.0",
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.org",
+    "url": "https://stormsoftware.org"
+  },
   "type": "module",
   "bin": {
     "storm-git": "./bin/cli.js"

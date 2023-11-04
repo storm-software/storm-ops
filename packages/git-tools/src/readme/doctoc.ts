@@ -45,14 +45,11 @@ async function transformAndSave(
   });
 
   const changed = transformed.filter(function (x) {
-      return x.transformed;
-    }),
-    unchanged = transformed.filter(function (x) {
-      return !x.transformed;
-    }),
-    toc = transformed.filter(function (x) {
-      return x.toc;
-    });
+    return x.transformed;
+  });
+  const unchanged = transformed.filter(function (x) {
+    return !x.transformed;
+  });
 
   unchanged.forEach(function (x) {
     console.log('"%s" is up to date', x.path);

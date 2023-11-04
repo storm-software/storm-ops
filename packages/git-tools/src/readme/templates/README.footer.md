@@ -1,3 +1,7 @@
+## Storm Workspaces
+
+Storm workspaces are built using <a href="https://nx.dev/" target="_blank">Nx</a>, a set of extensible dev tools for monorepos, which helps you develop like Google, Facebook, and Microsoft. Building on top of Nx, the Open System provides a set of tools and patterns that help you scale your monorepo to many teams while keeping the codebase maintainable.
+
 ## Roadmap
 
 See the [open issues](https://github.com/storm-software/stormstack/issues) for a list of proposed features (and known issues).
@@ -10,9 +14,9 @@ See the [open issues](https://github.com/storm-software/stormstack/issues) for a
 
 Reach out to the maintainer at one of the following places:
 
-- [Contact](https://stormcloud.dev/contact)
+- [Contact](https://stormsoftware.org/contact)
 - [GitHub discussions](https://github.com/storm-software/stormstack/discussions)
-- <support@stormcloud.dev>
+- <support@stormsoftware.org>
 
 ## License
 
@@ -71,7 +75,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
   <img src="https://pub-e71cff0f90204755bc910518d63cacf8.r2.dev/logo-opengraph.gif" width="100%"/>
 </div>
 <div align="center">
-<a href="https://www.patsullivan.org" target="_blank">Website</a>  |  <a href="https://stormcloud.dev/contact" target="_blank">Contact</a>  |  <a href="https://linkedin.com/in/patrick-sullivan-865526b0" target="_blank">LinkedIn</a>  |  <a href="https://medium.com/@pat.joseph.sullivan" target="_blank">Medium</a>  | <a href="https://github.com/sullivanpj" target="_blank">GitHub</a>  |  <a href="https://keybase.io/sullivanp" target="_blank">OpenPGP Key</a>
+<a href="https://www.patsullivan.org" target="_blank">Website</a>  |  <a href="https://stormsoftware.org/contact" target="_blank">Contact</a>  |  <a href="https://linkedin.com/in/patrick-sullivan-865526b0" target="_blank">LinkedIn</a>  |  <a href="https://medium.com/@pat.joseph.sullivan" target="_blank">Medium</a>  | <a href="https://github.com/sullivanpj" target="_blank">GitHub</a>  |  <a href="https://keybase.io/sullivanp" target="_blank">OpenPGP Key</a>
 </div>
 
 <div align="center">
