@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.0...@storm-software/storm-ops-v1.0.1) (2023-11-05)
+
+
+### Bug Fixes
+
+* **git-tools:** Remove unused lodash dependency ([0381059](https://github.com/storm-software/storm-ops/commit/0381059a48e7260648a61178ad52912c69362601))
+
 # [1.0.0](https://github.com/storm-software/storm-ops/compare/...@storm-software/storm-ops-v1.0.0) (2023-11-04)
 
 
