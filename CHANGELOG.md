@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.2...@storm-software/storm-ops-v1.0.3) (2023-11-05)
+
+
+### Bug Fixes
+
+* **git-tools:** Update release CLI to release to npm ([6b4b7ec](https://github.com/storm-software/storm-ops/commit/6b4b7ecec767f1bbd1da1f1e21014baff1f3e5bf))
+
 ## [1.0.2](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.1...@storm-software/storm-ops-v1.0.2) (2023-11-05)
 
 
