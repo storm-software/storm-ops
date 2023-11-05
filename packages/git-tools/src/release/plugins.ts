@@ -21,7 +21,8 @@ const getNpmPlugin = (options: ReleaseConfig) => {
     plugins.push([
       "@semantic-release/npm",
       {
-        pkgRoot: options.outputPath
+        pkgRoot: options.outputPath,
+        npmPublish: true
       }
     ]);
   }
