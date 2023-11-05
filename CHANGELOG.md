@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.1...@storm-software/storm-ops-v1.0.2) (2023-11-05)
+
+
+### Bug Fixes
+
+* **storm-ops:** Update workspace package.json file with private field set to [secure] ([2045f27](https://github.com/storm-software/storm-ops/commit/2045f2753e90828747d155903dc5071864e893aa))
+
 ## [1.0.1](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.0...@storm-software/storm-ops-v1.0.1) (2023-11-05)
 
 
