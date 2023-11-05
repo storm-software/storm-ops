@@ -206,7 +206,7 @@ export async function runProjectRelease(
   }
 
   if (!result || typeof result === "boolean") {
-    console.warn(`No release ran for ${projectName}`);
+    console.warn(`✘ No release ran for ${projectName}`);
 
     return {
       commits: [],
