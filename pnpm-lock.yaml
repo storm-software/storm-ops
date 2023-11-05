@@ -222,6 +222,9 @@ importers:
       inquirer:
         specifier: 9.2.11
         version: 9.2.11
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       lodash-es:
         specifier: 4.17.21
         version: 4.17.21
