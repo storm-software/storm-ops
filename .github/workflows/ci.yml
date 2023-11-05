@@ -76,6 +76,15 @@ jobs:
       #- name: Run Formatters
       #  run: pnpm nx format
 
+      - name: Add permissions to linting-tools package.json file
+        run: chmod a=rwx packages/linting-tools/package.json
+      - name: Add permissions to git-tools package.json file
+        run: chmod a=rwx packages/git-tools/package.json
+      - name: Add permissions to workspace-tools package.json file
+        run: chmod a=rwx packages/workspace-tools/package.json
+      - name: Add permissions to create-storm-workspace package.json file
+        run: chmod a=rwx packages/create-storm-workspace/package.json
+
       - name: Build repository packages
         run: pnpm nx affected -t build --parallel=5 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
 
