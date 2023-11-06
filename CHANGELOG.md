@@ -1,3 +1,10 @@
+## [1.0.10](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.9...@storm-software/storm-ops-v1.0.10) (2023-11-06)
+
+
+### Bug Fixes
+
+* **storm-ops:** Update env prefix with STORM to specify it is internal ([7e7468b](https://github.com/storm-software/storm-ops/commit/7e7468b6e21dd993bc8af9af74bda10b926c5e6f))
+
 ## [1.0.9](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.8...@storm-software/storm-ops-v1.0.9) (2023-11-06)
 
 
