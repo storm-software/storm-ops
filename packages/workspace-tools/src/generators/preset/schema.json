@@ -50,13 +50,13 @@
     },
     "includeApps": {
       "type": "boolean",
-      "description": "Is the organization a purely package based repository (one large packages folder) or does it include apps (split between apps and libs folders)?",
+      "description": "Should a separate `apps` folder be created for this workspace (if Yes: `apps` and `libs` folders will be added, if No: `packages` folders will be added)?",
       "default": false,
       "$default": {
         "$source": "argv",
         "index": 3
       },
-      "x-prompt": "Is the organization a purely package based repository (one large packages folder) or does it include apps (split between apps and libs folders)?"
+      "x-prompt": "Is the workspace a purely package based repository (one large packages folder) or does it include apps (split between apps and libs folders)?"
     },
     "description": {
       "type": "string",
@@ -69,13 +69,34 @@
     },
     "repositoryUrl": {
       "type": "string",
-      "description": "The URL of the workspace in GitHub. Defaults to the https://github.com/<organization>/<name>.git.",
+      "description": "The URL of the workspace in GitHub. Defaults to the https://github.com/<organization>/<name>",
       "$default": {
         "$source": "argv",
         "index": 5
       },
       "x-prompt": "What is the workspace's GitHub repository URL?"
+    },
+    "nxCloud": {
+      "type": "boolean",
+      "description": "Should distributed caching with Nx Cloud be enabled for the workspace?",
+      "default": false,
+      "$default": {
+        "$source": "argv",
+        "index": 6
+      },
+      "x-prompt": "Should distributed caching with Nx Cloud be enabled for the workspace?"
+    },
+    "mode": {
+      "type": "string",
+      "description": "Which client mode should be used for the Nx Task Runner?",
+      "default": "dark",
+      "enum": ["light", "dark"],
+      "$default": {
+        "$source": "argv",
+        "index": 7
+      },
+      "x-prompt": "Which client mode should be used for the Nx Task Runner?"
     }
   },
-  "required": ["name", "organization", "includeApps"]
+  "required": ["name", "organization", "includeApps", "nxCloud", "mode"]
 }

@@ -17,9 +17,7 @@
     "paths": {
       "@storm-software/git-tools/*": ["packages/git-tools/*"],
       "@storm-software/linting-tools/*": ["packages/linting-tools/*"],
-      "@storm-software/workspace-tools": [
-        "packages/workspace-tools/src/index.ts"
-      ],
+      "@storm-software/workspace-tools": ["packages/workspace-tools/index.ts"],
       "create-storm-workspace": ["packages/create-storm-workspace/bin/index.ts"]
     }
   },

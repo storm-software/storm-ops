@@ -1,3 +1,4 @@
+export type NxClientMode = "light" | "dark";
 export interface PresetGeneratorSchema {
   name: string;
   organization: string;
@@ -5,4 +6,6 @@ export interface PresetGeneratorSchema {
   namespace?: string;
   description?: string;
   repositoryUrl?: string;
+  nxCloud: boolean;
+  mode: NxClientMode;
 }

@@ -79,6 +79,12 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
     json.namespace ??= `@${options.namespace}`;
     json.description ??= options.description;
 
+    options.repositoryUrl ??= `https://github.com/${options.organization}/${options.name}}`;
+    json.repository ??= {
+      type: "github",
+      url: `${options.repositoryUrl}.git`
+    };
+
     // generate a start script into the package.json
 
     json.scripts.adr = "pnpm log4brains adr new";
@@ -179,7 +185,7 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
       };
 
       json.nextBundleAnalysis = {
-        "buildOutputDirectory": "dist/apps/web/website/.next"
+        "buildOutputDirectory": "dist/apps/web/app/.next"
       };
     }
 
@@ -208,7 +214,6 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
     "prettier-plugin-prisma": "latest",
     "tsup": "latest",
     "eslint": "latest",
-    "nx-cloud": "latest",
     "log4brains": "latest",
     "husky": "latest",
     "prettier": "latest",
@@ -250,6 +255,13 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
       "@nx/next": "latest",
       "@nx/node": "latest",
       "@nx/storybook": "latest"
+    };
+  }
+
+  if (options.nxCloud) {
+    dependencies = {
+      ...dependencies,
+      "nx-cloud": "latest"
     };
   }
 
