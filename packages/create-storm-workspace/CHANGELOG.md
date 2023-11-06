@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.0.1...create-storm-workspace-v1.1.0) (2023-11-06)
+
+
+### Features
+
+* **workspace-tools:** Added the init generator and tsup build executor ([e34d64c](https://github.com/storm-software/storm-ops/commit/e34d64c84027d60cb29ca54fa957b5994128b4aa))
+
 ## [1.0.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.0.0...create-storm-workspace-v1.0.1) (2023-11-06)
 
 
