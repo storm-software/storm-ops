@@ -13,6 +13,18 @@
 # [1.2.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.1.1...workspace-tools-v1.2.0) (2023-11-06)
 
 
+### Bug Fixes
+
+* **git-tools:** Added missing GitHub release config and removed failed GitGuardian lines ([4b64698](https://github.com/storm-software/storm-ops/commit/4b646983226fa979c76f8078ffd1cee1d544f1a1))
+
+
+### Features
+
+* **workspace-tools:** Added init generator and enhanced preset template files ([c1ac333](https://github.com/storm-software/storm-ops/commit/c1ac33355520a717df93f157f31bb311dd81b7c6))
+
+# [1.2.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.1.1...workspace-tools-v1.2.0) (2023-11-06)
+
+
 ### Features
 
 * **workspace-tools:** Added init generator and enhanced preset template files ([c1ac333](https://github.com/storm-software/storm-ops/commit/c1ac33355520a717df93f157f31bb311dd81b7c6))
