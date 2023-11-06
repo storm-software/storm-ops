@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.1.2...@storm-software/storm-ops-v1.1.3) (2023-11-06)
+
+
+### Bug Fixes
+
+* **storm-ops:** Set Allow Incomplete Push for LFS to true ([8aa2818](https://github.com/storm-software/storm-ops/commit/8aa281806d37b85d482a6d8dc3db7b790326f5cc))
+
 ## [1.1.2](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.1.1...@storm-software/storm-ops-v1.1.2) (2023-11-06)
 
 
