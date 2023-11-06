@@ -112,27 +112,34 @@ export async function runRelease(
     }
   }
 
-  console.log(
-    `⚡Processed the following commits: ${[
-      ...results.map(result =>
-        result.commits.map(commit => commit.subject).join("\n")
-      )
-    ]}`
-  );
-  console.log(
-    `⚡Completed the following releases successfully: ${[
-      ...results.map(result =>
-        result.releases
-          .map(
-            release =>
-              `${release.pluginName ? `${release.pluginName}: ` : ""}${
-                release.name ? `${release.name}: ` : "<missing>"
-              } v${release.version ? release.version : "<missing>"}`
+  const commits = results.filter(result => result.commits.length > 0);
+  const releases = results.filter(result => result.releases.length > 0);
+
+  commits.length > 0
+    ? console.log(
+        `⚡Processed the following commits: ${[
+          ...commits.map(result =>
+            result.commits.map(commit => commit.subject).join("\n")
           )
-          .join("\n")
+        ]}`
       )
-    ]}`
-  );
+    : console.log(`ℹ No commits were processed.`);
+  releases.length > 0
+    ? console.log(
+        `⚡Completed the following releases successfully: ${[
+          ...releases.map(result =>
+            result.releases
+              .map(
+                release =>
+                  `${release.pluginName ? `${release.pluginName}: ` : ""}${
+                    release.name ? `${release.name}: ` : "<missing>"
+                  } v${release.version ? release.version : "<missing>"}`
+              )
+              .join("\n")
+          )
+        ]}`
+      )
+    : console.log(`ℹ No releases were processed.`);
 }
 
 export async function runProjectRelease(
@@ -172,7 +179,7 @@ export async function runProjectRelease(
 
   const context: ReleaseContext = {
     ...config,
-    outputPath: join(workspaceDir, "dist", projectConfig.root),
+    outputPath: join("dist", config.packageJsonDir),
     projectName,
     workspaceDir,
     projectGraph,
