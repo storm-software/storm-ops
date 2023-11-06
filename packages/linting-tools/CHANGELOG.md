@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.0.0...linting-tools-v1.0.1) (2023-11-06)
+
+
+### Bug Fixes
+
+* **storm-ops:** Add @semantic-release/commit-analyzer dependency back to workspace root ([553dd65](https://github.com/storm-software/storm-ops/commit/553dd6548aba57eada49dce635312b2c4bdd474f))
+* **storm-ops:** Resolved issue with prepare script in workspace root ([4caa35a](https://github.com/storm-software/storm-ops/commit/4caa35a09421e0ac48a0d2eddc27843c4dcff6e7))
+
 # [1.0.0](https://github.com/storm-software/storm-ops/compare/...linting-tools-v1.0.0) (2023-11-06)
 
 
