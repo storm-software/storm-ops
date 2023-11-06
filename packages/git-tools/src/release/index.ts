@@ -123,7 +123,12 @@ export async function runRelease(
     `⚡Completed the following releases successfully: ${[
       ...results.map(result =>
         result.releases
-          .map(release => `${release.name}v${release.version}`)
+          .map(
+            release =>
+              `${release.pluginName ? `${release.pluginName}: ` : ""}${
+                release.name ? `${release.name}: ` : "<missing>"
+              } v${release.version ? release.version : "<missing>"}`
+          )
           .join("\n")
       )
     ]}`
@@ -167,6 +172,7 @@ export async function runProjectRelease(
 
   const context: ReleaseContext = {
     ...config,
+    outputPath: join(workspaceDir, "dist", projectConfig.root),
     projectName,
     workspaceDir,
     projectGraph,
