@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/storm-software/storm-ops/compare/git-tools-v1.0.8...git-tools-v1.0.9) (2023-11-06)
+
+
+### Bug Fixes
+
+* **git-tools:** Combined the distribution packages for GitHub release ([0090c28](https://github.com/storm-software/storm-ops/commit/0090c2859ace94396de1da654e39a35caf5aae4a))
+
 ## [1.0.8](https://github.com/storm-software/storm-ops/compare/git-tools-v1.0.7...git-tools-v1.0.8) (2023-11-06)
 
 
