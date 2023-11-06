@@ -5,8 +5,6 @@
 
 # compiled output
 dist/**
-!dist/.gitkeep
-
 tmp
 /out-tsc
 out

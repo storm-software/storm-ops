@@ -1,10 +1,6 @@
-name: "Setup Node"
+name: "Setup Workspace"
 description: "This action install node and cache modules. It uses pnpm as package manager."
 inputs:
-  node-version:
-    description: "The node version to install (Default: lts)"
-    default: "lts/*"
-    required: false
   working-directory:
     description: "The working directory of your node package"
     default: "."
@@ -20,7 +16,7 @@ runs:
     - uses: pnpm/action-setup@v2.4.0
       id: pnpm-install
       with:
-        version: 8.6.10
+        version: 8.7.4
         run_install: false
 
     - name: Get pnpm store directory
@@ -29,14 +25,17 @@ runs:
       run: |
         echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-    - uses: actions/cache@v3
-      name: Setup pnpm cache
+    - uses: actions/setup-node@v4
       with:
-        path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-        key: ${{ runner.os }}-pnpm-8-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-8-store-
+        registry-url: https://registry.npmjs.org/
+        node-version-file: .github/.nvmrc
+        cache: pnpm
+        cache-dependency-path: pnpm-lock.yaml
 
     - name: setup pnpm config registry
       run: pnpm config set registry https://registry.npmjs.org
+      shell: bash
+
+    - name: setup pnpm config registry
+      run: pnpm install
       shell: bash

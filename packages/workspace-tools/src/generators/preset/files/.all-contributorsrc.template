@@ -1,6 +1,6 @@
 {
   "projectName": "<%= name %>",
-  "projectOwner": "sullivanpj",
+  "projectOwner": "storm-software",
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
@@ -14,9 +14,13 @@
       "login": "sullivanpj",
       "name": "Patrick Sullivan",
       "avatar_url": "https://avatars.githubusercontent.com/u/99053093?v=4",
-      "profile": "http://www.patsullivan.dev/",
+      "profile": "http://www.sullypat.com/",
       "contributions": [
-        "tool"
+        "design",
+        "code",
+        "tool",
+        "doc",
+        "test"
       ]
     },
     {
@@ -27,8 +31,18 @@
       "contributions": [
         "design"
       ]
+    },
+    {
+      "login": "stormie-bot",
+      "name": "Stormie",
+      "avatar_url": "https://avatars.githubusercontent.com/u/149802440?v=4",
+      "profile": "http://stormsoftware.org",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "linkToUsage": true
+  "linkToUsage": true,
+  "commitType": "docs"
 }

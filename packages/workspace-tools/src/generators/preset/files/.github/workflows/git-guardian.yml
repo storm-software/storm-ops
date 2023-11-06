@@ -7,10 +7,12 @@ jobs:
     name: GitGuardian scan
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # fetch all history so multiple commits can be scanned
+          fetch-depth: 0
+          token: ${{ secrets.STORMIE_GITHUB_TOKEN }}
+
       - name: GitGuardian scan
         uses: GitGuardian/ggshield-action@master
         env:

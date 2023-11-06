@@ -1,6 +1,6 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
-    "extends": "@storm-software/workspace-tools/config/tsconfig.root.json",
+    "extends": "@storm-software/linting-tools/tsconfig/tsconfig.root.json",
     "display": "Storm Software - <%= name %>",
     "compilerOptions": {
         "rootDir": ".",

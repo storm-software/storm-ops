@@ -6,7 +6,7 @@
       "type": "extensionHost",
       "request": "launch",
       "args": [
-        "--extensionDevelopmentPath=${workspaceFolder}/node_modules/@storm-software/forecast/language"
+        "--extensionDevelopmentPath=${workspaceFolder}/node_modules/@power-plant/language"
       ]
     },
     {
@@ -14,7 +14,7 @@
       "type": "extensionHost",
       "request": "launch",
       "args": [
-        "--extensionDevelopmentPath=${workspaceFolder}/node_modules/@storm-software/forecast/codegen"
+        "--extensionDevelopmentPath=${workspaceFolder}/node_modules/power-plant"
       ]
     },
     {
@@ -32,7 +32,7 @@
       "skipFiles": ["<node_internals>/**"],
       "sourceMaps": true,
       "outFiles": [
-        "${workspaceFolder}/node_modules/@storm-software/forecast/language/**/*.js"
+        "${workspaceFolder}/node_modules/@power-plant/language/**/*.js"
       ]
     }
   ]

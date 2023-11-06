@@ -9,9 +9,12 @@ export declare const swcCoreVersion = "~1.3.95";
 export declare const swcHelpersVersion = "~0.5.3";
 export declare const swcNodeVersion = "1.6.8";
 export declare const tsLibVersion = "2.6.2";
-export declare const typesNodeVersion = "20.8.10";
+export declare const typesNodeVersion = "20.9.0";
 export declare const verdaccioVersion = "5.27.0";
 export declare const typescriptVersion = "~5.2.2";
 export declare const eslintVersion = "~8.53.0";
 export declare const lintStagedVersion = "15.0.2";
 export declare const semanticReleaseVersion = "22.0.7";
+
+export declare const nodeVersion = "20.9.0";
+export declare const pnpmVersion = "8.10.2";

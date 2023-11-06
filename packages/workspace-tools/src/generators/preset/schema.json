@@ -2,17 +2,80 @@
   "$schema": "http://json-schema.org/schema",
   "$id": "Preset",
   "title": "Storm Workspace preset",
+  "description": "Storm workspace preset generator",
   "type": "object",
+  "example": [
+    {
+      "command": "nx g @storm-software/workspace-tools:preset --name 'example-repo'",
+      "description": "Generate a storm workspace with the name: example-repo, namespace: storm-software, organization: storm-software, and repositoryUrl: 'https://github.com/storm-software/example-repo'."
+    },
+
+    {
+      "command": "nx g @storm-software/workspace-tools:preset --name 'example-repo' --namespace 'example'",
+      "description": "Generate a storm workspace with the name: example-repo, namespace: example, and repositoryUrl: 'https://github.com/storm-software/example-repo'."
+    },
+    {
+      "command": "nx g @storm-software/workspace-tools:preset --name 'example-repo' --namespace 'example' --organization 'example-org' --description 'An example workspace'",
+      "description": "Generate a storm workspace with the name: example-repo, namespace: example, organization: example-org, description: 'An example workspace', and repositoryUrl: 'https://github.com/example-org/example-repo'."
+    }
+  ],
   "properties": {
     "name": {
       "type": "string",
-      "description": "",
+      "description": "The name of the workspace root.",
       "$default": {
         "$source": "argv",
         "index": 0
       },
       "x-prompt": "What name would you like to use?"
+    },
+    "organization": {
+      "type": "string",
+      "description": "The organization that owns the workspace.",
+      "default": "storm-software",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": "What organization owns this repository?"
+    },
+    "namespace": {
+      "type": "string",
+      "description": "The npm scope used for the workspace. Defaults to the organization name.",
+      "$default": {
+        "$source": "argv",
+        "index": 2
+      },
+      "x-prompt": "What namespace (npm scope) would you like to use? Defaults to the organization name."
+    },
+    "includeApps": {
+      "type": "boolean",
+      "description": "Is the organization a purely package based repository (one large packages folder) or does it include apps (split between apps and libs folders)?",
+      "default": false,
+      "$default": {
+        "$source": "argv",
+        "index": 3
+      },
+      "x-prompt": "Is the organization a purely package based repository (one large packages folder) or does it include apps (split between apps and libs folders)?"
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the workspace to use in the package.json and README.md files.",
+      "$default": {
+        "$source": "argv",
+        "index": 4
+      },
+      "x-prompt": "Provide a description of the workspace to use in the package.json and README.md files."
+    },
+    "repositoryUrl": {
+      "type": "string",
+      "description": "The URL of the workspace in GitHub. Defaults to the https://github.com/<organization>/<name>.git.",
+      "$default": {
+        "$source": "argv",
+        "index": 5
+      },
+      "x-prompt": "What is the workspace's GitHub repository URL?"
     }
   },
-  "required": ["name"]
+  "required": ["name", "organization", "includeApps"]
 }

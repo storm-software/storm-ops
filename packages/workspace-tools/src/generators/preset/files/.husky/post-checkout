@@ -1,6 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-changedFiles="$(git diff-tree -r --name-only --no-commit-id $1 $2)"
-node @storm-software/workspace-tools/scripts/package-version-warning.js $changedFiles
+echo $HUSKY_GIT_STDIN | @storm-software/git-tools/hooks/post-checkout $HUSKY_GIT_PARAMS
 

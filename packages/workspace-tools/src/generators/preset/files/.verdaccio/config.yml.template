@@ -8,7 +8,7 @@ uplinks:
     maxage: 60m
 
 packages:
-  '@<%= name %>/*':
+  '@<%= namespace %>/*':
     access: $all
     publish: $all
     proxy: http://localhost:4873

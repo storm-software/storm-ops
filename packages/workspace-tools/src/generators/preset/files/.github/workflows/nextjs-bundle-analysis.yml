@@ -19,30 +19,19 @@ env:
   NX_DAEMON: false
   NX_VERBOSE_LOGGING: true
   SKIP_ENV_VALIDATION: true
-  GITHUB_ACTOR: "🤖 Storm Bot"
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  ANALYZE: true
 
 jobs:
   analyze:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2.2.4
+      - uses: actions/checkout@v4
         with:
-          version: 8
+          fetch-depth: 0
+          token: ${{ secrets.STORMIE_GITHUB_TOKEN }}
 
-      - uses: actions/setup-node@v3
-        with:
-          registry-url: https://registry.npmjs.org/
-          node-version-file: .github/.nvmrc
-          cache: pnpm
-          cache-dependency-path: pnpm-lock.yaml
-
-      - name: Install Dependencies
-        run: pnpm ci
+      - name: Setup workspace
+        uses: ./.github/actions/setup-workspace
 
       - name: Restore next build
         uses: actions/cache@v3
@@ -50,33 +39,28 @@ jobs:
         env:
           cache-name: cache-next-build
         with:
-          path: dist/apps/web/shell/.next/cache
+          path: dist/apps/web/app/.next/cache
           # change this if you prefer a more strict cache
           key: ${{ runner.os }}-build-${{ env.cache-name }}
 
-      - name: Set appropriate base and head commits for `nx affected` commands
-        run: |
-          echo "BASE: ${{ env.NX_BASE }}"
-          echo "HEAD: ${{ env.NX_HEAD }}"
-
-      - name: Prepare for build
-        run: pnpm build --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
-
       - name: Build next.js app
+        run: pnpm nx run web-app:build
         env:
           SKIP_BUILD_PRODUCT_REDIRECTS: 1
-        run: pnpm nx run web-shell:build
+          ANALYZE: true
 
       # Here's the first place where next-bundle-analysis' own script is used
       # This step pulls the raw bundle stats for the current bundle
       - name: Analyze bundle
         run: pnpm -p nextjs-bundle-analysis report
+        env:
+          ANALYZE: true
 
       - name: Upload bundle
         uses: actions/upload-artifact@v3
         with:
           name: bundle
-          path: dist/apps/web/shell/.next/analyze/__bundle_analysis.json
+          path: dist/apps/web/app/.next/analyze/__bundle_analysis.json
 
       #- name: Download base branch bundle stats
       #  uses: dawidd6/action-download-artifact@v2

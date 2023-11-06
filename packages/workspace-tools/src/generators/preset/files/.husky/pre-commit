@@ -1,5 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-node @storm-software/workspace-tools/scripts/check-lock-file.js
-pnpm pre-commit
+echo $HUSKY_GIT_STDIN | @storm-software/git-tools/hooks/pre-commit $HUSKY_GIT_PARAMS

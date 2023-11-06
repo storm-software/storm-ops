@@ -1,7 +1,7 @@
 {
   "recommendations": [
     "nrwl.angular-console",
-    "storm-software.forecast",
+    "storm-software.power-plant",
     "esbenp.prettier-vscode",
     "firsttris.vscode-jest-runner",
     "dbaeumer.vscode-eslint",

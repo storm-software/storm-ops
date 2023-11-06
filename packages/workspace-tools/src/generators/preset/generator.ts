@@ -7,15 +7,34 @@ import {
   updateJson
 } from "@nx/devkit";
 import * as path from "path";
+import {
+  nodeVersion,
+  pnpmVersion,
+  typescriptVersion
+} from "../../utils/versions";
 import { PresetGeneratorSchema } from "./schema";
 
 export default async function (tree: Tree, options: PresetGeneratorSchema) {
   const projectRoot = `.`;
 
-  addProjectConfiguration(tree, options.name, {
+  options.description ??= `⚡The ${
+    options.namespace ? options.namespace : options.name
+  } monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.`;
+  options.namespace ??= options.organization;
+
+  addProjectConfiguration(tree, `@${options.namespace}/${options.name}`, {
     root: projectRoot,
     projectType: "application",
-    targets: {}
+    targets: {
+      "local-registry": {
+        "executor": "@nx/js:verdaccio",
+        "options": {
+          "port": 4873,
+          "config": ".verdaccio/config.yml",
+          "storage": "tmp/local-registry/storage"
+        }
+      }
+    }
   });
 
   updateJson(tree, "package.json", json => {
@@ -24,12 +43,15 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
     json.version = "0.0.0";
     json.private = true;
     json.keywords ??= [
+      options.name,
+      options.namespace,
       "storm",
       "stormstack",
-      "storm-stack",
-      "forecast",
-      "forecast-lang",
-      "forecast-model",
+      "storm-ops",
+      "powerplant",
+      "power-plant",
+      "power-plant-lang",
+      "power-plant-model",
       "impact",
       "nextjs",
       "prisma",
@@ -38,7 +60,6 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
       "strapi",
       "graphql",
       "sullivanpj",
-      "open-system",
       "monorepo"
     ];
 
@@ -55,66 +76,112 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
       url: "https://stormsoftware.org"
     };
 
+    json.namespace ??= `@${options.namespace}`;
+    json.description ??= options.description;
+
     // generate a start script into the package.json
 
     json.scripts.adr = "pnpm log4brains adr new";
     json.scripts["adr-preview"] = "pnpm log4brains preview";
-    json.scripts.prepare = "pnpm prepare:husky && npx patch-package -y";
-    json.scripts["prepare:husky"] = "is-ci || husky install";
+    json.scripts.prepare = "pnpm @storm-software/git-tools/scripts/prepare.js";
     json.scripts.preinstall =
-      "pnpm @storm-software/workspace-tools/scripts/pre-install.js || npx -y only-allow pnpm";
+      "pnpm @storm-software/git-tools/scripts/pre-install.js || npx -y only-allow pnpm";
     json.scripts["install:csb"] =
       "corepack enable && pnpm install --frozen-lockfile";
 
     json.scripts.clean = "rimraf dist";
     json.scripts.prebuild = "pnpm clean";
+    json.scripts["clean:tools"] = "rimraf dist/tools";
+    json.scripts["clean:docs"] = "rimraf dist/docs";
+
+    if (!options.includeApps) {
+      json.scripts["clean:packages"] = "rimraf dist/packages";
+    } else {
+      json.scripts["clean:apps"] = "rimraf dist/apps";
+      json.scripts["clean:libs"] = "rimraf dist/libs";
+      json.scripts["clean:storybook"] = "rimraf dist/storybook";
+    }
+
     json.scripts.build = "nx affected -t build --parallel=5";
     json.scripts["build:all"] = "nx run-many -t build --all --parallel=5";
     json.scripts["build:production"] =
       "nx run-many -t build --all --prod --parallel=5";
+    json.scripts["build:tools"] =
+      "nx run-many -t build --projects=tools/* --parallel=5";
+    json.scripts["build:docs"] =
+      "nx run-many -t build --projects=docs/* --parallel=5";
+
+    if (!options.includeApps) {
+      json.scripts["build:packages"] =
+        "nx run-many -t build --projects=packages/* --parallel=5";
+    } else {
+      json.scripts["build:apps"] =
+        "nx run-many -t build --projects=apps/* --parallel=5";
+      json.scripts["build:libs"] =
+        "nx run-many -t build --projects=libs/* --parallel=5";
+      json.scripts["build:storybook"] = "storybook build -s public";
+    }
 
     json.scripts.nx = "nx";
     json.scripts.graph = "nx graph";
     json.scripts.lint = "pnpm storm-lint all";
-    json.scripts.start = "nx serve";
-    json.scripts.test = "nx test";
-    json.scripts.e2e = "nx e2e";
-    json.scripts.format = "nx format:write && pnpm doctoc --github README.md";
+
+    if (options.includeApps) {
+      json.scripts.start = "nx serve";
+      json.scripts.storybook = "pnpm storybook dev -p 6006";
+    }
+
+    json.scripts.format = "nx format:write";
     json.scripts.help = "nx help";
     json.scripts["dep-graph"] = "nx dep-graph";
     json.scripts["local-registry"] =
       "nx local-registry @storm-software/storm-ops";
 
-    json.scripts["pre-push"] =
-      "lint-staged --concurrent false --config @storm-software/linting-tools/lint-staged/config";
+    json.scripts.e2e = "nx e2e";
+
+    if (options.includeApps) {
+      json.scripts.test = "nx test";
+    } else {
+      json.scripts.test = "nx test && pnpm test:storybook";
+      json.scripts["test:storybook"] = "pnpm test-storybook";
+    }
+
+    json.scripts.lint = "pnpm storm-lint all --skip-cspell";
     json.scripts.commit = "pnpm storm-git commit";
+    json.scripts.readme =
+      'pnpm storm-git readme --templates="tools/readme-templates"';
     json.scripts["api-extractor"] =
       "nx g @storm-software/workspace-tools:api-extractor --outputPath 'docs/api-reference' --clean --no-interactive";
     json.scripts.release = "pnpm storm-git release";
 
-    json.packageManager ??= "pnpm@8.7.4";
+    json.packageManager ??= "pnpm@8.10.2";
     json.engines = {
-      node: ">=18.17.0",
-      pnpm: ">=8.7.4"
+      pnpm: `>=${pnpmVersion}`
     };
+    if (options.includeApps) {
+      json.engines.node = `>=${nodeVersion}`;
+    }
 
-    json.prettier = "@storm-software/linting-tools/prettier/config";
-    json.resolutions = {
-      graphql: "^16.8.0",
-      minimist: "^1.2.6"
-    };
+    json.packageManager ??= "pnpm@8.10.2";
+    json.prettier = "@storm-software/linting-tools/prettier/config.json";
 
-    json.bundlewatch = {
-      files: [
-        {
-          path: "dist/*/*.js",
-          maxSize: "200kB"
+    if (options.includeApps) {
+      json.bundlewatch = {
+        files: [
+          {
+            path: "dist/*/*.js",
+            maxSize: "200kB"
+          }
+        ],
+        ci: {
+          trackBranches: ["main", "alpha", "beta"]
         }
-      ],
-      ci: {
-        trackBranches: ["main", "alpha", "beta"]
-      }
-    };
+      };
+
+      json.nextBundleAnalysis = {
+        "buildOutputDirectory": "dist/apps/web/website/.next"
+      };
+    }
 
     json.nx = {
       includedScripts: ["lint", "format"]
@@ -126,45 +193,65 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
   generateFiles(tree, path.join(__dirname, "files"), projectRoot, options);
   await formatFiles(tree);
 
-  return addDependenciesToPackageJson(
-    tree,
-    {
-      react: "latest",
-      nx: "latest",
+  let dependencies: Record<string, string> = {
+    "nx": "latest",
+    "@nx/js": "latest",
+    "@nx/workspace": "latest",
+    "@nx/devkit": "latest",
+    "@nx/eslint": "latest",
+    "@nx/eslint-plugin": "latest",
+    "@nx/jest": "latest",
+    "@storm-software/git-tools": "latest",
+    "@storm-software/linting-tools": "latest",
+    "@storm-software/workspace-tools": "latest",
+    "prettier-plugin-packagejson": "latest",
+    "prettier-plugin-prisma": "latest",
+    "tsup": "latest",
+    "eslint": "latest",
+    "nx-cloud": "latest",
+    "log4brains": "latest",
+    "husky": "latest",
+    "prettier": "latest",
+    "lint-staged": "latest",
+    "semantic-release": "latest",
+    "@semantic-release/changelog": "latest",
+    "@semantic-release/commit-analyzer": "latest",
+    "@semantic-release/exec": "latest",
+    "@semantic-release/git": "latest",
+    "@semantic-release/github": "latest",
+    "@semantic-release/npm": "latest",
+    "@semantic-release/release-notes-generator": "latest",
+    "jest": "latest",
+    "jest-environment-jsdom": "latest",
+    "jest-environment-node": "latest",
+    "ts-jest": "latest",
+    "ts-node": "latest",
+    "tslib": "latest",
+    "typescript": typescriptVersion,
+    "@swc-node/register": "latest",
+    "@swc/cli": "latest",
+    "@swc/core": "latest",
+    "@swc/helpers": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@types/jest": "latest",
+    "@types/node": "20.8.10",
+    "verdaccio": "latest"
+  };
+  if (options.includeApps) {
+    dependencies = {
+      ...dependencies,
+      "bundlewatch": "latest",
+      "react": "latest",
       "react-dom": "latest",
-      "react-scripts": "latest"
-    },
-    {
-      "@storm-software/git-tools": "latest",
-      "@storm-software/linting-tools": "latest",
-      "@storm-software/workspace-tools": "latest",
-      "prettier-plugin-packagejson": "latest",
-      "prettier-plugin-prisma": "latest",
-      "patch-package": "latest",
-      tsup: "latest",
-      eslint: "latest",
-      "eslint-config-next": "latest",
-      "eslint-config-prettier": "latest",
-      "eslint-plugin-cypress": "latest",
-      "eslint-plugin-import": "latest",
-      "eslint-plugin-jest": "latest",
-      "eslint-plugin-jsx-a11y": "latest",
-      "eslint-plugin-react": "latest",
-      "eslint-plugin-react-hooks": "latest",
-      "eslint-plugin-storybook": "latest",
-      "nx-cloud": "latest",
-      log4brains: "latest",
-      husky: "latest",
-      prettier: "latest",
-      "is-ci": "latest",
-      "lint-staged": "latest",
-      jest: "29.5.0",
-      "jest-cli": "^29.5.0",
-      "jest-environment-jsdom": "29.5.0",
-      "jest-environment-node": "^29.4.1",
-      jsdom: "~22.1.0",
-      "@types/react": "latest",
-      "@types/react-dom": "latest"
-    }
-  );
+      "storybook": "latest",
+      "@storybook/addons": "latest",
+      "@nx/react": "latest",
+      "@nx/next": "latest",
+      "@nx/node": "latest",
+      "@nx/storybook": "latest"
+    };
+  }
+
+  return addDependenciesToPackageJson(tree, dependencies, {});
 }
