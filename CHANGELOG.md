@@ -1,3 +1,10 @@
+## [1.0.14](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.13...@storm-software/storm-ops-v1.0.14) (2023-11-06)
+
+
+### Bug Fixes
+
+* **git-tools:** Update readme CLI to properly handle scenario with no project name ([7e80f7c](https://github.com/storm-software/storm-ops/commit/7e80f7c72f1af3d67b5b21b9adde65f80b30df7c))
+
 ## [1.0.13](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.12...@storm-software/storm-ops-v1.0.13) (2023-11-06)
 
 
