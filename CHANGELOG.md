@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.8...@storm-software/storm-ops-v1.0.9) (2023-11-06)
+
+
+### Bug Fixes
+
+* **storm-ops:** Clean up pnpm workspaces config ([78a49f9](https://github.com/storm-software/storm-ops/commit/78a49f9be1f49251273a05b22e6fb46bbb8621b6))
+
 ## [1.0.8](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.7...@storm-software/storm-ops-v1.0.8) (2023-11-06)
 
 
