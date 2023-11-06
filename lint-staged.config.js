@@ -40,7 +40,7 @@ module.exports = {
       return [
         "pnpm lint",
         `prettier --with-node-modules --ignore-path ${join(
-          process.env.CI_REPO_ROOT,
+          process.env.STORM_REPO_ROOT,
           "packages/git-tools/prettier/.prettierignore_staged"
         )} --write ${escapedFileNames}`,
         "pnpm nx format:write --uncommitted",
@@ -54,10 +54,10 @@ module.exports = {
 
     return [
       `pnpm ${join(
-        process.env.CI_REPO_ROOT,
+        process.env.STORM_REPO_ROOT,
         "dist/packages/git-tools/bin/cli.js"
       )} readme --templates=${join(
-        process.env.CI_REPO_ROOT,
+        process.env.STORM_REPO_ROOT,
         "dist/packages/git-tools/readme/templates"
       )}`,
       `git add ${escapedFileNames}`

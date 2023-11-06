@@ -162,8 +162,8 @@ export async function runProjectRelease(
   }
 
   config.packageJsonDir = projectConfig.root;
-  const workspaceDir = process.env.CI_REPO_ROOT
-    ? process.env.CI_REPO_ROOT
+  const workspaceDir = process.env.STORM_REPO_ROOT
+    ? process.env.STORM_REPO_ROOT
     : process.cwd();
 
   if (!workspaceDir) {

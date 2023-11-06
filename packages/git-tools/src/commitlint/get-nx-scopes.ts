@@ -14,7 +14,7 @@ export async function getNxScopes(
   const ctx = context || {};
 
   process.env["NX_WORKSPACE_ROOT_PATH"] ??=
-    process.env["CI_REPO_ROOT"] ?? ctx.cwd ?? process.cwd();
+    process.env["STORM_REPO_ROOT"] ?? ctx.cwd ?? process.cwd();
 
   const projectConfigs = readProjectsConfigurationFromProjectGraph(
     await buildProjectGraphWithoutDaemon()
