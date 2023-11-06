@@ -32,14 +32,6 @@ runs:
         cache: pnpm
         cache-dependency-path: pnpm-lock.yaml
 
-    - uses: actions/cache@v3
-      name: Setup pnpm cache
-      with:
-        path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-        key: ${{ runner.os }}-pnpm-8-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-8-store-
-
     - name: setup pnpm config registry
       run: pnpm config set registry https://registry.npmjs.org
       shell: bash
