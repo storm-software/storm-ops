@@ -25,6 +25,5 @@ export default {
     "next",
     { name: "beta", prerelease: true },
     { name: "alpha", prerelease: true }
-  ],
-  preset: "angular"
+  ]
 };
