@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.0.1...linting-tools-v1.0.2) (2023-11-06)
+
+
+### Bug Fixes
+
+* **git-tools:** Added missing GitHub release config and removed failed GitGuardian lines ([4b64698](https://github.com/storm-software/storm-ops/commit/4b646983226fa979c76f8078ffd1cee1d544f1a1))
+
 ## [1.0.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.0.0...linting-tools-v1.0.1) (2023-11-06)
 
 
