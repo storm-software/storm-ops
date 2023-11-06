@@ -1,3 +1,12 @@
+## [1.0.8](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.7...@storm-software/storm-ops-v1.0.8) (2023-11-06)
+
+
+### Bug Fixes
+
+* **git-tools:** Update env variable passed to release plugin ([c75602f](https://github.com/storm-software/storm-ops/commit/c75602fbc0b2ad8eec238617e2e473a9bf3348c6))
+* **git-tools:** Update paths used to check for package.json during versioning ([e25e02a](https://github.com/storm-software/storm-ops/commit/e25e02a23c6df87331bd1aae5b5c970445b912a8))
+* **storm-ops:** Update paths used to check for package.json during versioning ([5e87fd0](https://github.com/storm-software/storm-ops/commit/5e87fd0d472ff670c48081fd30c15eaa699dcde5))
+
 ## [1.0.7](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.6...@storm-software/storm-ops-v1.0.7) (2023-11-06)
 
 
