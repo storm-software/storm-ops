@@ -39,15 +39,6 @@ jobs:
       - name: Setup workspace
         uses: ./.github/actions/setup-workspace
 
-      - name: configure git
-        run: |
-          git config user.name "${{ env.CI_REPO_WORKER }}"
-          git config user.email "${{ env.CI_REPO_WORKER }}@users.noreply.github.com"
-          npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
-
-      - name: Install dependencies
-        run: pnpm install
-
       - name: Get appropriate base and head commits for `nx affected` commands
         uses: nrwl/nx-set-shas@v4
         with:
