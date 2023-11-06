@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.15...@storm-software/storm-ops-v1.1.0) (2023-11-06)
+
+
+### Features
+
+* **workspace-tools:** Added init generator and enhanced preset template files ([c1ac333](https://github.com/storm-software/storm-ops/commit/c1ac33355520a717df93f157f31bb311dd81b7c6))
+
 ## [1.0.15](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.14...@storm-software/storm-ops-v1.0.15) (2023-11-06)
 
 
