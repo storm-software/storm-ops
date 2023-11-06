@@ -186,7 +186,7 @@ export async function runProjectRelease(
     projectConfigs
   };
 
-  const plugins = resolvePlugins(context, workspaceDir);
+  const plugins = resolvePlugins(context);
   const tagFormat = config.tagFormat
     ? parseTag(config.tagFormat)
     : config.tagFormat;

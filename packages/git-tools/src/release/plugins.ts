@@ -19,6 +19,7 @@ const getNpmPlugin = (options: ReleaseConfig) => {
     ? path.join(options.workspaceDir, options.outputPath, "package.json")
     : undefined;
 
+  console.log(`!!!! workspaceDir: ${options.workspaceDir}`);
   console.log(`!!!! buildPkgRoot: ${buildPkgRoot}`);
   console.log(`!!!! outputPath: ${options.outputPath}`);
   console.log(`!!!! projectPkgPath: ${projectPkgPath}`);
@@ -50,16 +51,13 @@ const getNpmPlugin = (options: ReleaseConfig) => {
   return formatPlugins(options, plugins);
 };
 
-export const resolvePlugins = (
-  options: ReleaseContext,
-  workspaceRoot: string
-): PluginSpec<any>[] => {
+export const resolvePlugins = (options: ReleaseContext): PluginSpec<any>[] => {
   if (!options.packageJsonDir) {
     return [];
   }
 
   const relativeProjectPkgPath = path.relative(
-    workspaceRoot,
+    options.workspaceRoot,
     options.packageJsonDir
   );
 
@@ -107,7 +105,7 @@ export const resolvePlugins = (
         assets: [
           // Git requires relative paths from project root in a posix format
           path
-            .relative(workspaceRoot, options.changelogFile as string)
+            .relative(options.workspaceRoot, options.changelogFile as string)
             .split(path.sep)
             .join(path.posix.sep),
           path
