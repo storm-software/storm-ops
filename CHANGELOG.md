@@ -1,3 +1,11 @@
+## [1.1.2](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.1.1...@storm-software/storm-ops-v1.1.2) (2023-11-06)
+
+
+### Bug Fixes
+
+* **create-storm-workspace:** Resolved issues with create workspace script options ([b81eaf2](https://github.com/storm-software/storm-ops/commit/b81eaf2c493dd319458f5ad5b375612fb3b8206f))
+* **storm-ops:** Regenerate pnpm lockfile ([6cc4c75](https://github.com/storm-software/storm-ops/commit/6cc4c75486d843327d8e438e34dd08182bb0e052))
+
 ## [1.1.1](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.1.0...@storm-software/storm-ops-v1.1.1) (2023-11-06)
 
 
