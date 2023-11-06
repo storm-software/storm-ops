@@ -129,7 +129,7 @@ export async function runManypkg(
   }
 
   const { packages, rootPackage, rootDir } = (await getPackages(
-    process.env["DEV_REPO_ROOT"] ? process.env["DEV_REPO_ROOT"] : process.cwd()
+    process.env["CI_REPO_ROOT"] ? process.env["CI_REPO_ROOT"] : process.cwd()
   )) as PackagesWithConfig;
 
   const options: Options = {

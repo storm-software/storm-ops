@@ -162,8 +162,8 @@ export async function runProjectRelease(
   }
 
   config.packageJsonDir = projectConfig.root;
-  const workspaceDir = process.env["DEV_REPO_ROOT"]
-    ? process.env["DEV_REPO_ROOT"]
+  const workspaceDir = process.env["CI_REPO_ROOT"]
+    ? process.env["CI_REPO_ROOT"]
     : process.cwd();
 
   config = applyTokensToReleaseConfig(config, {
