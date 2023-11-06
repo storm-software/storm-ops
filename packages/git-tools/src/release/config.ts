@@ -8,14 +8,40 @@ export default {
   linkReferences: true,
   npm: true,
   github: true,
-  githubOptions: {},
+  githubOptions: {
+    "assets": [
+      { "path": "dist/${PROJECT_DIR}/**/*.css", "label": "CSS distribution" },
+      { "path": "dist/${PROJECT_DIR}/**/*.js", "label": "JS distribution" },
+      {
+        "path": "dist/${PROJECT_DIR}/**/meta.esm.json",
+        "label": "JS Meta distribution"
+      },
+      {
+        "path": "dist/${PROJECT_DIR}/**/*.cjs",
+        "label": "CommonJS distribution"
+      },
+      {
+        "path": "dist/${PROJECT_DIR}/**/meta.cjs.json",
+        "label": "CommonJS Meta distribution"
+      },
+      { "path": "dist/${PROJECT_DIR}/**/LICENSE", "label": "Package License" },
+      { "path": "dist/${PROJECT_DIR}/**/README.md", "label": "Package ReadMe" },
+      {
+        "path": "dist/${PROJECT_DIR}/**/package.json",
+        "label": "Package JSON distribution"
+      },
+      {
+        "path": "dist/${PROJECT_DIR}/**/*.*",
+        "label": "Misc. Package distribution"
+      }
+    ]
+  },
   git: true,
   gitAssets: [
     "${WORKSPACE_DIR}/LICENSE",
     "${PROJECT_DIR}/package.json",
     "${PROJECT_DIR}/README.md",
-    "${WORKSPACE_DIR}/assets/logo-light.png",
-    "${WORKSPACE_DIR}/assets/logo-dark.png"
+    "${PROJECT_DIR}/CHANGELOG.md"
   ],
   tagFormat: "${PROJECT_NAME}-v${version}",
   packageJsonDir: "${PROJECT_DIR}",
