@@ -19,7 +19,7 @@ export default {
   ],
   tagFormat: "${PROJECT_NAME}-v${version}",
   packageJsonDir: "${PROJECT_DIR}",
-  repositoryUrl: process.env.CI_REPO_URL,
+  repositoryUrl: process.env.STORM_REPO_URL,
   branches: [
     "main",
     "next",

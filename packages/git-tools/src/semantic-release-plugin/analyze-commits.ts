@@ -51,7 +51,7 @@ export const analyzeCommitsForProject =
         presetConfig: {
           ...config.presetConfig,
           header: "# ${PROJECT_NAME} v${version} Changelog\n\n",
-          preMajor: process.env.CI_PRE_MAJOR,
+          preMajor: process.env.STORM_PRE_MAJOR,
           releaseCommitMessageFormat:
             "chore(${PROJECT_NAME}): Changelogs generated for v${nextRelease.version}\n\n${nextRelease.notes}"
         },

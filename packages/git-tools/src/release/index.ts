@@ -162,8 +162,8 @@ export async function runProjectRelease(
   }
 
   config.packageJsonDir = projectConfig.root;
-  const workspaceDir = process.env["CI_REPO_ROOT"]
-    ? process.env["CI_REPO_ROOT"]
+  const workspaceDir = process.env.CI_REPO_ROOT
+    ? process.env.CI_REPO_ROOT
     : process.cwd();
 
   if (!workspaceDir) {
@@ -249,9 +249,11 @@ function prepareEnv(
   context: ReleaseContext,
   env: Record<string, string> = process.env
 ) {
-  const name = env.CI_REPO_WORKER ? env.CI_REPO_WORKER : env.CI_REPO_OWNER;
-  const email = env.CI_REPO_OWNER_EMAIL
-    ? env.CI_REPO_OWNER_EMAIL
+  const name = env.STORM_REPO_WORKER
+    ? env.STORM_REPO_WORKER
+    : env.STORM_REPO_OWNER;
+  const email = env.STORM_REPO_OWNER_EMAIL
+    ? env.STORM_REPO_OWNER_EMAIL
     : `${name}@users.noreply.github.com`;
 
   return Object.assign(env, {
@@ -261,6 +263,8 @@ function prepareEnv(
     GIT_COMMITTER_NAME: name,
     GIT_COMMITTER_EMAIL: email,
     ...env,
-    CI_REPO_URL: context.workspaceDir ? context.workspaceDir : env.CI_REPO_URL
+    STORM_REPO_URL: context.workspaceDir
+      ? context.workspaceDir
+      : env.STORM_REPO_URL
   });
 }
