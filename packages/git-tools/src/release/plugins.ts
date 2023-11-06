@@ -122,7 +122,11 @@ export const resolvePlugins = (options: ReleaseContext): PluginSpec<any>[] => {
     ]);
   }
 
-  if (options.github) {
+  if (
+    options.github &&
+    options.workspaceDir?.toLowerCase() !==
+      options.packageJsonDir?.toLowerCase()
+  ) {
     defaultPlugins.push(["@semantic-release/github", options.githubOptions]);
   }
 
