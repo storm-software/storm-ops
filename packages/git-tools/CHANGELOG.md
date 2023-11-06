@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/storm-software/storm-ops/compare/git-tools-v1.0.3...git-tools-v1.0.4) (2023-11-06)
+
+
+### Bug Fixes
+
+* **git-tools:** Added missing GitHub release config and removed failed GitGuardian lines ([4b64698](https://github.com/storm-software/storm-ops/commit/4b646983226fa979c76f8078ffd1cee1d544f1a1))
+
 ## [1.0.3](https://github.com/storm-software/storm-ops/compare/git-tools-v1.0.2...git-tools-v1.0.3) (2023-11-06)
 
 
