@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.5...@storm-software/storm-ops-v1.0.6) (2023-11-06)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue with NPM token population ([44b2d75](https://github.com/storm-software/storm-ops/commit/44b2d75563f5c41203129038a0dfe5350274b25c))
+
 ## [1.0.5](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.4...@storm-software/storm-ops-v1.0.5) (2023-11-06)
 
 
