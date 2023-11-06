@@ -1,9 +1,16 @@
 {
   "generators": {
+    "init": {
+      "factory": "./src/generators/init/init#stormInitGenerator",
+      "schema": "./src/generators/init/schema.json",
+      "description": "Initialize the `@storm-software/workspace-tools` plugin.",
+      "aliases": ["ng-add"],
+      "hidden": true
+    },
     "preset": {
       "factory": "./src/generators/preset/generator",
       "schema": "./src/generators/preset/schema.json",
-      "description": "preset generator",
+      "description": "Storm workspace preset generator",
       "x-use-standalone-layout": true
     }
   }

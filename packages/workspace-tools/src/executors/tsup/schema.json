@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "title": "Build executor",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "properties": {
+      "main": {
+        "type": "string",
+        "description": "The path to the entry file, relative to project.",
+        "alias": "entryFile",
+        "x-completion-type": "file",
+        "x-completion-glob": "**/*@(.js|.ts)",
+        "x-priority": "important",
+        "default": "{sourceRoot}/**/*@(.js|.jsx|.ts|.tsx)"
+      },
+      "outputPath": {
+        "type": "string",
+        "description": "The output path of the generated files.",
+        "x-completion-type": "directory",
+        "x-priority": "important",
+        "default": "dist/{projectRoot}"
+      },
+      "tsConfig": {
+        "type": "string",
+        "description": "The path to tsconfig file.",
+        "x-completion-type": "file",
+        "x-completion-glob": "tsconfig.*.json",
+        "x-priority": "important",
+        "default": "tsconfig.lib.json"
+      },
+      "additionalEntryPoints": {
+        "type": "array",
+        "description": "List of additional entry points.",
+        "items": {
+          "type": "string"
+        },
+        "default": []
+      },
+      "external": {
+        "type": "array",
+        "description": "Mark one or more module as external. Can use * wildcards, such as '*.png'.",
+        "items": {
+          "type": "string"
+        }
+      },
+      "bundle": {
+        "type": "boolean",
+        "description": "Whether to bundle the main entry point and additional entry points. Set to false to keep individual output files.",
+        "default": true
+      },
+      "watch": {
+        "type": "boolean",
+        "description": "Enable re-building when files change.",
+        "default": false
+      },
+      "assets": {
+        "type": "array",
+        "description": "List of static assets.",
+        "default": [],
+        "items": {
+          "$ref": "#/definitions/assetPattern"
+        }
+      },
+      "clean": {
+        "type": "boolean",
+        "description": "Remove previous output before build.",
+        "alias": "deleteOutputPath",
+        "default": true
+      },
+      "minify": {
+        "type": "boolean",
+        "description": "Minifies outputs.",
+        "default": true
+      },
+      "platform": {
+        "type": "string",
+        "description": "Platform target for outputs.",
+        "enum": ["browser", "node", "neutral"],
+        "default": "node"
+      },
+      "options": {
+        "type": "object",
+        "description": "Additional options to pass to tsup. See https://paka.dev/npm/tsup@7.2.0/api#d35d54aca71eb26e.",
+        "additionalProperties": true,
+        "x-priority": "important"
+      }
+    },
+    "required": ["tsConfig", "main"],
+    "definitions": {
+      "assetPattern": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "glob": {
+                "type": "string",
+                "description": "The pattern to match."
+              },
+              "input": {
+                "type": "string",
+                "description": "The input directory path in which to apply `glob`. Defaults to the project root."
+              },
+              "output": {
+                "type": "string",
+                "description": "Relative path within the output folder."
+              },
+              "ignore": {
+                "description": "An array of globs to ignore.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": ["glob", "input", "output"]
+          },
+          {
+            "type": "string"
+          }
+        ]
+      }
+    }
+  }
+}

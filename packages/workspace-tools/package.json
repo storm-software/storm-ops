@@ -29,13 +29,23 @@
     "url": "https://stormsoftware.org"
   },
   "type": "commonjs",
-  "main": "./src/index.js",
-  "typings": "./src/index.d.ts",
+  "main": "./index",
+  "typings": "./index.d.ts",
   "dependencies": {
     "@nx/devkit": "17.0.3",
     "esbuild-plugin-file-path-extensions": "1.0.0",
-    "tslib": "2.6.2",
+    "tslib": "2.6.2"
+  },
+  "devDependencies": {
     "tsup": "7.2.0"
+  },
+  "peerDependencies": {
+    "tsup": "7.2.0"
+  },
+  "peerDependenciesMeta": {
+    "tsup": {
+      "optional": true
+    }
   },
   "publishConfig": {
     "access": "public"

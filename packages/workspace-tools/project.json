@@ -9,7 +9,7 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/workspace-tools",
-        "main": "packages/workspace-tools/src/index.ts",
+        "main": "packages/workspace-tools/index.ts",
         "tsConfig": "packages/workspace-tools/tsconfig.lib.json",
         "assets": [
           "packages/workspace-tools/*.md",
