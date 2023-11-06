@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/storm-software/storm-ops/compare/git-tools-v1.0.4...git-tools-v1.0.5) (2023-11-06)
+
+
+### Bug Fixes
+
+* **storm-ops:** Regenerate pnpm lockfile ([6cc4c75](https://github.com/storm-software/storm-ops/commit/6cc4c75486d843327d8e438e34dd08182bb0e052))
+
 ## [1.0.4](https://github.com/storm-software/storm-ops/compare/git-tools-v1.0.3...git-tools-v1.0.4) (2023-11-06)
 
 
