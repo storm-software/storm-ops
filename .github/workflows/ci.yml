@@ -44,6 +44,7 @@ jobs:
         run: |
           git config user.name "${{ env.STORM_REPO_WORKER }}"
           git config user.email "${{ env.STORM_REPO_WORKER }}@users.noreply.github.com"
+          git config lfs.allowincompletepush true
           npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
 
       - name: Get appropriate base and head commits for `nx affected` commands
