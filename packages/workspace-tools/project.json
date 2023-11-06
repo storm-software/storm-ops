@@ -44,5 +44,5 @@
     "lint": {},
     "test": {}
   },
-  "tags": ["scope:tools"]
+  "tags": ["type:util", "scope:tools"]
 }

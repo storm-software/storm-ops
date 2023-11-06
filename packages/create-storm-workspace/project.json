@@ -37,6 +37,6 @@
     },
     "lint": {}
   },
-  "tags": ["scope:config"],
+  "tags": ["type:util", "scope:tools"],
   "implicitDependencies": ["workspace-tools"]
 }

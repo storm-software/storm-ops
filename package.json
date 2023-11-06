@@ -57,8 +57,7 @@
     "lint": "pnpm dist/packages/linting-tools/bin/cli.js all --skip-cspell --alex-config=\"dist/packages/linting-tools/alex/.alexrc\" --alex-config=\"dist/packages/linting-tools/alex/.alexignore\"",
     "local-registry": "nx local-registry @storm-software/storm-ops",
     "nx": "nx",
-    "prepare": "pnpm prepare:husky && npx patch-package -y",
-    "prepare:husky": "is-ci || husky install",
+    "prepare": "pnpm dist/packages/git-tools/scripts/prepare.js",
     "release": "pnpm dist/packages/git-tools/bin/cli.js release --plugin=\"dist/packages/git-tools/semantic-release-plugin\"",
     "start": "nx serve",
     "test": "nx test"
@@ -73,6 +72,7 @@
     "@nx/js": "17.0.3",
     "@nx/plugin": "17.0.3",
     "@nx/workspace": "17.0.3",
+    "@semantic-release/commit-analyzer": "11.0.0",
     "@swc-node/register": "1.6.8",
     "@swc/cli": "0.1.62",
     "@swc/core": "1.3.95",

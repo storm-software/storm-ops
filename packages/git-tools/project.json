@@ -94,5 +94,5 @@
     "lint": {},
     "test": {}
   },
-  "tags": []
+  "tags": ["type:util", "scope:tools"]
 }
