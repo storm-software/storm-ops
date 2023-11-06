@@ -24,6 +24,7 @@ env:
   GITHUB_TOKEN: ${{ github.token }}
   DEV_REPO_ROOT: ${{ github.workspace }}
   NPM_TOKEN: ${{ secrets.STORMIE_NPM_TOKEN }}
+  NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
 
 jobs:
   build-and-release:

@@ -212,8 +212,7 @@ export async function runProjectRelease(
         },
         {
           cwd: workspaceDir,
-          env: prepareEnv(context, process.env),
-          stdout: process.stdout
+          env: prepareEnv(context, process.env)
         }
       )
     );

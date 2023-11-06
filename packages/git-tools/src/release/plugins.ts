@@ -15,6 +15,11 @@ const getNpmPlugin = (options: ReleaseConfig) => {
     ? path.join(options.outputPath, "package.json")
     : undefined;
 
+  console.log(`!!!! buildPkgRoot: ${buildPkgRoot}`);
+  console.log(`!!!! outputPath: ${options.outputPath}`);
+  console.log(`!!!! projectPkgPath: ${projectPkgPath}`);
+  console.log(`!!!! packageJsonDir: ${options.packageJsonDir}`);
+
   const plugins = [];
   if (buildPkgRoot && fs.existsSync(buildPkgRoot)) {
     // Bump package.json version for built project, so that it can be published to NPM with correct version (if package is public)
