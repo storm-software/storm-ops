@@ -25,7 +25,6 @@ env:
   GITHUB_ACTOR: ${{ github.actor }}
   GITHUB_TOKEN: ${{ github.token }}
   NPM_TOKEN: ${{ secrets.STORMIE_NPM_TOKEN }}
-  NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
 
 jobs:
   build-and-release:
