@@ -56,8 +56,12 @@ export const resolvePlugins = (options: ReleaseContext): PluginSpec<any>[] => {
     return [];
   }
 
+  if (!options.workspaceDir) {
+    throw new Error("Workspace root is required in options");
+  }
+
   const relativeProjectPkgPath = path.relative(
-    options.workspaceRoot,
+    options.workspaceDir,
     options.packageJsonDir
   );
 
@@ -105,7 +109,7 @@ export const resolvePlugins = (options: ReleaseContext): PluginSpec<any>[] => {
         assets: [
           // Git requires relative paths from project root in a posix format
           path
-            .relative(options.workspaceRoot, options.changelogFile as string)
+            .relative(options.workspaceDir, options.changelogFile as string)
             .split(path.sep)
             .join(path.posix.sep),
           path

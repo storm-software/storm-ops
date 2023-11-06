@@ -166,6 +166,10 @@ export async function runProjectRelease(
     ? process.env["CI_REPO_ROOT"]
     : process.cwd();
 
+  if (!workspaceDir) {
+    throw new Error("Workspace root is required in options");
+  }
+
   config = applyTokensToReleaseConfig(config, {
     projectName,
     projectDir: projectConfig.root,
