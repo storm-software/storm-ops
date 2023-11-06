@@ -1,3 +1,11 @@
+## [1.0.15](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.14...@storm-software/storm-ops-v1.0.15) (2023-11-06)
+
+
+### Bug Fixes
+
+* **storm-ops:** Add @semantic-release/commit-analyzer dependency back to workspace root ([553dd65](https://github.com/storm-software/storm-ops/commit/553dd6548aba57eada49dce635312b2c4bdd474f))
+* **storm-ops:** Resolved issue with prepare script in workspace root ([4caa35a](https://github.com/storm-software/storm-ops/commit/4caa35a09421e0ac48a0d2eddc27843c4dcff6e7))
+
 ## [1.0.14](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.13...@storm-software/storm-ops-v1.0.14) (2023-11-06)
 
 
