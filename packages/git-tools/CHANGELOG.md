@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/storm-software/storm-ops/compare/git-tools-v1.0.7...git-tools-v1.0.8) (2023-11-06)
+
+
+### Bug Fixes
+
+* **git-tools:** Update GitHub release CLI to skip workspace root ([85aa29d](https://github.com/storm-software/storm-ops/commit/85aa29df7b38a37e8ecf68cb4b22901963148e47))
+
 ## [1.0.7](https://github.com/storm-software/storm-ops/compare/git-tools-v1.0.6...git-tools-v1.0.7) (2023-11-06)
 
 
