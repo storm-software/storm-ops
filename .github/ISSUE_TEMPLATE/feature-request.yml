@@ -17,14 +17,13 @@ body:
       description: How can we get in touch with you if we need more info?
       placeholder: ex. email@example.com
     validations:
-      required: false
+      required: true
   - type: textarea
     id: description
     attributes:
       label: Description
       description: What is the behavior that you would like to see introduced?
       placeholder: What is the behavior that you would like to see introduced?
-      value: "What is the behavior that you would like to see introduced?"
     validations:
       required: true
   - type: textarea
@@ -33,7 +32,6 @@ body:
       label: Motivation
       description: Why do you believe this behavior would be beneficial?
       placeholder: Why do you believe this behavior would be beneficial?
-      value: "Why do you believe this behavior would be beneficial?"
     validations:
       required: false
   - type: textarea
@@ -42,7 +40,6 @@ body:
       label: Suggested Implementation
       description: How do you imagine this might work?
       placeholder: How do you imagine this might work?
-      value: "How do you imagine this might work?"
     validations:
       required: false
   - type: checkboxes
@@ -54,7 +51,7 @@ body:
         - label: I'd be willing to implement this feature ([contributing guide](https://github.com/storm-software/storm-ops/blob/main/.github/CONTRIBUTING.md))
           required: false
   - type: checkboxes
-    id: terms
+    id: agreed
     attributes:
       label: Code of Conduct
       description: By submitting this request, you agree to follow our [Code of Conduct](https://github.com/storm-software/storm-ops/blob/main/.github/CODE_OF_CONDUCT.md)
