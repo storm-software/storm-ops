@@ -2,6 +2,32 @@
   "name": "@storm-software/git-tools",
   "version": "0.0.1",
   "private": false,
+  "description": "⚡ A package containing various git tools used in Storm workspaces.",
+  "keywords": [
+    "storm",
+    "storm-ops",
+    "stormstack",
+    "storm-stack",
+    "sullivanpj",
+    "open-system",
+    "monorepo"
+  ],
+  "homepage": "https://stormsoftware.org",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.org"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git",
+    "directory": "packages/git-tools"
+  },
+  "license": "Apache License 2.0",
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.org",
+    "url": "https://stormsoftware.org"
+  },
   "type": "module",
   "bin": {
     "storm-git": "./bin/cli.js"
