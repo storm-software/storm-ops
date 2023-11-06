@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.6...@storm-software/storm-ops-v1.0.7) (2023-11-06)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolve issue with registry config in release action ([a5f73e7](https://github.com/storm-software/storm-ops/commit/a5f73e7956b36bbe50d2f3180f95c3b599f9059d))
+
 ## [1.0.6](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.5...@storm-software/storm-ops-v1.0.6) (2023-11-06)
 
 
