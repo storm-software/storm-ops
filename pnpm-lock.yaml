@@ -84,6 +84,9 @@ importers:
       husky:
         specifier: 8.0.3
         version: 8.0.3
+      is-ci:
+        specifier: ^3.0.1
+        version: 3.0.1
       jest:
         specifier: 29.7.0
         version: 29.7.0(@types/node@20.8.10)(ts-node@10.9.1)
