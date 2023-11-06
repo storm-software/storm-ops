@@ -1,3 +1,10 @@
+## [1.0.12](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.11...@storm-software/storm-ops-v1.0.12) (2023-11-06)
+
+
+### Bug Fixes
+
+* **storm-ops:** Remove unused workspace config from package.json ([0651468](https://github.com/storm-software/storm-ops/commit/0651468547eab92f29ea0f74152752eb700af0cb))
+
 ## [1.0.11](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.10...@storm-software/storm-ops-v1.0.11) (2023-11-06)
 
 
