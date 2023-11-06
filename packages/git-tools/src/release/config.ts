@@ -10,43 +10,13 @@ export default {
   github: true,
   githubOptions: {
     "assets": [
-      { "path": "dist/${PROJECT_DIR}/**/*.css", "label": "CSS distribution" },
       {
-        "path": "dist/${PROJECT_DIR}/**/{*.ts,*.tsx}",
-        "label": "TS distribution"
-      },
-      {
-        "path": "dist/${PROJECT_DIR}/**/{*.js,*.jsx}",
-        "label": "JS distribution"
-      },
-      {
-        "path": "dist/${PROJECT_DIR}/**/meta.esm.json",
-        "label": "JS Meta distribution"
-      },
-      {
-        "path": "dist/${PROJECT_DIR}/**/*.cjs",
-        "label": "CommonJS distribution"
-      },
-      {
-        "path": "dist/${PROJECT_DIR}/**/meta.cjs.json",
-        "label": "CommonJS Meta distribution"
-      },
-      { "path": "dist/${PROJECT_DIR}/**/LICENSE", "label": "Package License" },
-      { "path": "dist/${PROJECT_DIR}/**/README.md", "label": "Package ReadMe" },
-      {
-        "path": "dist/${PROJECT_DIR}/**/CHANGELOG.md",
-        "label": "Package Changelog"
-      },
-      {
-        "path": "dist/${PROJECT_DIR}/**/package.json",
-        "label": "Package JSON"
-      },
-      {
-        "path":
-          "dist/${PROJECT_DIR}/**/!{*.css,*.ts,*.tsx,*.js,*.jsx,meta.esm.json,*.cjs,meta.cjs.json,LICENSE,README.md,CHANGELOG.md,package.json}",
-        "label": "Misc. distribution"
+        "path": "dist/${PROJECT_DIR}/**/*",
+        "label": "Package distribution"
       }
-    ]
+    ],
+    addReleases: true,
+    draftRelease: false
   },
   git: true,
   gitAssets: [
