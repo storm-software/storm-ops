@@ -10,9 +10,13 @@ const getNpmPlugin = (options: ReleaseConfig) => {
     return [];
   }
 
-  const projectPkgPath = path.join(options.packageJsonDir, "package.json");
+  const projectPkgPath = path.join(
+    options.workspaceDir,
+    options.packageJsonDir,
+    "package.json"
+  );
   const buildPkgRoot = options.outputPath
-    ? path.join(options.outputPath, "package.json")
+    ? path.join(options.workspaceDir, options.outputPath, "package.json")
     : undefined;
 
   console.log(`!!!! buildPkgRoot: ${buildPkgRoot}`);
