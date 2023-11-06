@@ -1,3 +1,10 @@
+## [1.0.13](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.12...@storm-software/storm-ops-v1.0.13) (2023-11-06)
+
+
+### Bug Fixes
+
+* **git-tools:** Updated default README template files used by readme CLI ([77c7c59](https://github.com/storm-software/storm-ops/commit/77c7c5936b614f7a5d3072254ff8065e70ad4d25))
+
 ## [1.0.12](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.11...@storm-software/storm-ops-v1.0.12) (2023-11-06)
 
 
