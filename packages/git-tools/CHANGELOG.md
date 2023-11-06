@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/storm-software/storm-ops/compare/git-tools-v1.0.5...git-tools-v1.0.6) (2023-11-06)
+
+
+### Bug Fixes
+
+* **git-tools:** Add code to get lfs files in release CLI ([ff959c2](https://github.com/storm-software/storm-ops/commit/ff959c20bb3f3881a69e79b50d58d1e4e742bd24))
+
 ## [1.0.5](https://github.com/storm-software/storm-ops/compare/git-tools-v1.0.4...git-tools-v1.0.5) (2023-11-06)
 
 
