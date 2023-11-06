@@ -113,14 +113,20 @@ export async function runRelease(
   }
 
   console.log(
-    `⚡Processed the following commits: ${[...results.map(r => r.commits)].join(
-      "\n"
-    )}`
+    `⚡Processed the following commits: ${[
+      ...results.map(result =>
+        result.commits.map(commit => commit.subject).join("\n")
+      )
+    ]}`
   );
   console.log(
     `⚡Completed the following releases successfully: ${[
-      ...results.map(r => r.releases)
-    ].join("\n")}`
+      ...results.map(result =>
+        result.releases
+          .map(release => `${release.name}v${release.version}`)
+          .join("\n")
+      )
+    ]}`
   );
 }
 
