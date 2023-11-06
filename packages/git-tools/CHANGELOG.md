@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/storm-software/storm-ops/compare/git-tools-v1.0.6...git-tools-v1.0.7) (2023-11-06)
+
+
+### Bug Fixes
+
+* **git-tools:** Cleaned up assets list in GitHub release CLI ([726f2e4](https://github.com/storm-software/storm-ops/commit/726f2e41180ca282fcccf9d9223c4e7ff2c3a4f8))
+
 ## [1.0.6](https://github.com/storm-software/storm-ops/compare/git-tools-v1.0.5...git-tools-v1.0.6) (2023-11-06)
 
 
