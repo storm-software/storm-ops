@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/storm-software/storm-ops/compare/git-tools-v1.0.1...git-tools-v1.0.2) (2023-11-06)
+
+
+### Bug Fixes
+
+* **git-tools:** Update readme CLI to properly handle scenario with no project name ([7e80f7c](https://github.com/storm-software/storm-ops/commit/7e80f7c72f1af3d67b5b21b9adde65f80b30df7c))
+
 ## [1.0.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.0.0...git-tools-v1.0.1) (2023-11-06)
 
 
