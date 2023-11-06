@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.3...@storm-software/storm-ops-v1.0.4) (2023-11-06)
+
+
+### Bug Fixes
+
+* **storm-ops:** Fix issue with Setup Workspace action script ([2dd979e](https://github.com/storm-software/storm-ops/commit/2dd979e0c7a459f48416d338eb517fe8b59dfe14))
+
 ## [1.0.3](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.2...@storm-software/storm-ops-v1.0.3) (2023-11-05)
 
 
