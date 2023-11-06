@@ -37,9 +37,6 @@
     "email": "contact@stormsoftware.org",
     "url": "https://stormsoftware.org"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "adr": "pnpm log4brains adr new",
     "adr-preview": "pnpm log4brains preview",
