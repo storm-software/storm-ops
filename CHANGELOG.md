@@ -1,3 +1,10 @@
+## [1.0.11](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.10...@storm-software/storm-ops-v1.0.11) (2023-11-06)
+
+
+### Bug Fixes
+
+* **storm-ops:** Update the REPO_ROOT env to align with new naming convention ([02d58d0](https://github.com/storm-software/storm-ops/commit/02d58d05c15de07c9123427df7fead73bfed5364))
+
 ## [1.0.10](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.0.9...@storm-software/storm-ops-v1.0.10) (2023-11-06)
 
 
