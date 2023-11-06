@@ -50,10 +50,10 @@ export async function runRelease(
   console.log("Running release process with the following config options:");
   console.log(config);
 
-  console.log(
+  /*console.log(
     'Running "git lfs fetch --all" to ensure all files are available."'
   );
-  execSync("git lfs fetch --all");
+  execSync("git lfs fetch --all");*/
 
   const results = [];
   if (projectName) {
