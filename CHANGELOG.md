@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.1.3...@storm-software/storm-ops-v1.1.4) (2023-11-07)
+
+
+### Bug Fixes
+
+* **storm-ops:** Resolve issue with the CI workflow action ([ee1e481](https://github.com/storm-software/storm-ops/commit/ee1e481274b59ac9c3ddc74e6dce030428f3f0af))
+
 ## [1.1.3](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.1.2...@storm-software/storm-ops-v1.1.3) (2023-11-06)
 
 
