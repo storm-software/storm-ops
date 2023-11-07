@@ -7,5 +7,10 @@
     "types": ["node"]
   },
   "include": ["index.ts", "src/**/*.ts", "src/**/*.js"],
-  "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
+  "exclude": [
+    "jest.config.ts",
+    "src/generators/**/files/**/eslint.config.js",
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts"
+  ]
 }
