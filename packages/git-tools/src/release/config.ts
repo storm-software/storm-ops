@@ -10,9 +10,15 @@ export default {
   github: true,
   githubOptions: {
     "assets": [
+      { "path": "dist/${PROJECT_DIR}/**/LICENSE", "label": "Package License" },
+      { "path": "dist/${PROJECT_DIR}/**/README.md", "label": "Package ReadMe" },
       {
-        "path": "dist/${PROJECT_DIR}/**/*",
-        "label": "Package distribution"
+        "path": "dist/${PROJECT_DIR}/**/CHANGELOG.md",
+        "label": "Package Changelog"
+      },
+      {
+        "path": "dist/${PROJECT_DIR}/**/package.json",
+        "label": "Package JSON"
       }
     ],
     addReleases: true,
