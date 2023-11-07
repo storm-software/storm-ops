@@ -18,7 +18,7 @@ env:
   NX_DAEMON: false
   NX_VERBOSE_LOGGING: true
   STORM_REPO_WORKER: stormie-bot
-  STORM_REPO_URL: ${{ github.repositoryUrl }}
+  STORM_REPO_URL: https://github.com/storm-software/storm-ops
   STORM_REPO_ROOT: ${{ github.workspace }}
   NX_BASE: ${{ github.base_ref }}
   NX_HEAD: ${{ github.head_ref }}
