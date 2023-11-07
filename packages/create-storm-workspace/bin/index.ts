@@ -2,6 +2,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { getNpmPackageVersion } from "@nx/workspace/src/generators/utils/get-npm-package-version";
 import { createWorkspace } from "create-nx-workspace";
 import { prompt } from "enquirer";
 
@@ -32,7 +33,7 @@ async function main() {
     const response = await prompt<{ namespace: string }>({
       type: "input",
       name: "namespace",
-      message: "What organization owns this repository?",
+      message: "What is the namespace of this repository (npm scope)?",
       initial: organization ? organization : "storm-software"
     });
     namespace = response.namespace;
@@ -107,12 +108,9 @@ async function main() {
 
   console.log(`⚡ Creating the Storm Workspace: ${name}`);
 
-  // This assume s "@storm-software/workspace-tools" and "create-storm-workspace" are at the same version
-  const packageJson =
-    await require("@storm-software/workspace-tools/package.json");
-
+  const version = getNpmPackageVersion("@storm-software/workspace-tools");
   const { directory } = await createWorkspace(
-    `@storm-software/workspace-tools@${packageJson?.version}`,
+    `@storm-software/workspace-tools@${version ? version : "latest"}`,
     {
       name,
       organization,
