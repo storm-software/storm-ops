@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.0.3...linting-tools-v1.1.0) (2023-11-07)
+
+
+### Bug Fixes
+
+* **storm-ops:** Update pnpm lockfile ([f08a730](https://github.com/storm-software/storm-ops/commit/f08a7309f56fabbf6d0c108b3a57834a0ec05429))
+
+
+### Features
+
+* **storm-ops:** Converted repository eslint to flat structure ([a738c3a](https://github.com/storm-software/storm-ops/commit/a738c3a9839cd5262e98029641f7a9a4d886e117))
+
 ## [1.0.3](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.0.2...linting-tools-v1.0.3) (2023-11-06)
 
 
