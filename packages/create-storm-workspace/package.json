@@ -31,7 +31,7 @@
   "type": "commonjs",
   "typings": "./src/index.d.ts",
   "bin": {
-    "create-storm-workspace": "./bin/index.js"
+    "create-storm-workspace": "./index.js"
   },
   "dependencies": {
     "@nx/workspace": "17.0.3",
