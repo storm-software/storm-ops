@@ -37,12 +37,6 @@
     "create-nx-workspace": "17.0.3",
     "enquirer": "2.4.1"
   },
-  "devDependencies": {
-    "@storm-software/workspace-tools": "*"
-  },
-  "peerDependencies": {
-    "@storm-software/workspace-tools": "workspace:*"
-  },
   "publishConfig": {
     "access": "public"
   }

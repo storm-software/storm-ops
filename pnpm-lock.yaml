@@ -160,10 +160,6 @@ importers:
       enquirer:
         specifier: 2.4.1
         version: 2.4.1
-    devDependencies:
-      "@storm-software/workspace-tools":
-        specifier: workspace:*
-        version: link:../workspace-tools
 
   packages/git-tools:
     dependencies:
