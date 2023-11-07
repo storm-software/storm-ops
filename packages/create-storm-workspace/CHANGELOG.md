@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.1...create-storm-workspace-v1.5.2) (2023-11-07)
+
+
+### Bug Fixes
+
+* **create-storm-workspace:** Resolved issue getting workspace-tools package version ([2ce3d32](https://github.com/storm-software/storm-ops/commit/2ce3d32525e0f184c47c7b98bd880cafd8f3a6e8))
+
 ## [1.5.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.0...create-storm-workspace-v1.5.1) (2023-11-07)
 
 
