@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.3.0...@storm-software/storm-ops-v1.4.0) (2023-11-07)
+
+
+### Features
+
+* **workspace-tools:** Added the node-library generator ([85ada65](https://github.com/storm-software/storm-ops/commit/85ada65f9737f972a36d0a001179f87963b4aa98))
+
 # [1.3.0](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.2.0...@storm-software/storm-ops-v1.3.0) (2023-11-07)
 
 
