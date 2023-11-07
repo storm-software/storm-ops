@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.2...workspace-tools-v1.5.3) (2023-11-07)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved various type issues with preset execution ([189ed86](https://github.com/storm-software/storm-ops/commit/189ed867e688af05a3b1aebbd8a053c2c707a457))
+
 ## [1.5.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.1...workspace-tools-v1.5.2) (2023-11-07)
 
 
