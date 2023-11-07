@@ -1,3 +1,16 @@
+# [1.3.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.2.0...workspace-tools-v1.3.0) (2023-11-07)
+
+
+### Bug Fixes
+
+* **storm-ops:** Update pnpm lockfile ([f08a730](https://github.com/storm-software/storm-ops/commit/f08a7309f56fabbf6d0c108b3a57834a0ec05429))
+* **workspace-tools:** Exclude eslint config from generators in typescript comiler ([83bd2b3](https://github.com/storm-software/storm-ops/commit/83bd2b32815a6c6603a83106f1832a67a933d70e))
+
+
+### Features
+
+* **storm-ops:** Converted repository eslint to flat structure ([a738c3a](https://github.com/storm-software/storm-ops/commit/a738c3a9839cd5262e98029641f7a9a4d886e117))
+
 # [1.2.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.1.1...workspace-tools-v1.2.0) (2023-11-06)
 
 
