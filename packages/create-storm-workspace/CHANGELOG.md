@@ -1,3 +1,10 @@
+## [1.5.4](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.3...create-storm-workspace-v1.5.4) (2023-11-07)
+
+
+### Bug Fixes
+
+* **create-storm-workspace:** Resolved issue with missing package executable ([4256731](https://github.com/storm-software/storm-ops/commit/4256731041c36bcf54d965b9b8d44f5b2163566e))
+
 ## [1.5.3](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.2...create-storm-workspace-v1.5.3) (2023-11-07)
 
 
