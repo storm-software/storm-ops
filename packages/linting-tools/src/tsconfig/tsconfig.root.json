@@ -5,7 +5,11 @@
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "strictNullChecks": true,
     "allowJs": true,
+    "strict": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "types": ["node", "jest"],
@@ -18,6 +22,12 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs",
+      "esModuleInterop": true
+    }
   },
   "include": ["./reset.d.ts"],
   "exclude": ["**/node_modules", "**/tmp"]

@@ -1,0 +1,56 @@
+{
+  "name": "testing-tools",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/testing-tools/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/testing-tools",
+        "main": "packages/testing-tools/src/index.ts",
+        "tsConfig": "packages/testing-tools/tsconfig.lib.json",
+        "project": "packages/testing-tools/package.json",
+        "deleteOutputPath": true,
+        "bundle": true,
+        "sourcemap": false,
+        "minify": false,
+        "skipTypeCheck": false,
+        "thirdParty": true,
+        "format": ["cjs", "esm"],
+        "external": [
+          "@swc/wasm",
+          "@swc/core",
+          "nx",
+          "@angular-devkit/architect"
+        ],
+        "assets": [
+          {
+            "input": "packages/testing-tools",
+            "glob": "README.md",
+            "output": "/"
+          },
+          {
+            "input": "packages/testing-tools",
+            "glob": "CHANGELOG.md",
+            "output": "/"
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "/"
+          },
+          {
+            "input": "packages/testing-tools/src",
+            "glob": "jest/**/*.*",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {},
+    "test": {}
+  },
+  "tags": ["type:util", "scope:tools"]
+}

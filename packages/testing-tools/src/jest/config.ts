@@ -16,7 +16,7 @@ export default {
    * Indicates whether the coverage information should be collected while executing the test. Because this retrofits all
    * executed files with coverage collection statements, it may significantly slow down your tests. Default: false
    */
-  collectCoverage: true,
+  collectCoverage: process.env.CI ? true : false,
 
   /**
    * An array of glob patterns indicating a set of files for which coverage information should be collected.
@@ -53,13 +53,14 @@ export default {
    * A list of reporter names that Jest uses when writing coverage reports. Any istanbul reporter can be used.
    * Default: ["json", "lcov", "text"]
    */
-  coverageReporters: ["lcov"],
+  coverageReporters: ["lcov", "json"],
 
-  setupFiles: ["@storm-software/jest/mocks/jest.setup.js"],
+  setupFiles: ["@storm-software/testing-tools/jest/__mocks__/jest.setup.js"],
 
   moduleNameMapper: {
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-      "@storm-software/jest/mocks/file.mock.js",
-    "\\.(css|less)$": "@storm-software/jest/mocks/style.mock.js"
+      "@storm-software/testing-tools/jest/__mocks__/file.mock.js",
+    "\\.(css|less)$":
+      "@storm-software/testing-tools/jest/__mocks__/style.mock.js"
   }
 };

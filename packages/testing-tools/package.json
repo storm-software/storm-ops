@@ -1,0 +1,39 @@
+{
+  "name": "@storm-software/testing-tools",
+  "version": "0.0.1",
+  "private": false,
+  "description": "⚡ A package containing various testing tools used by Storm workspaces to drive unit and e2e testing.",
+  "keywords": [
+    "storm",
+    "storm-ops",
+    "stormstack",
+    "storm-stack",
+    "sullivanpj",
+    "open-system",
+    "monorepo"
+  ],
+  "homepage": "https://stormsoftware.org",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.org"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git",
+    "directory": "packages/testing-tools"
+  },
+  "license": "Apache License 2.0",
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.org",
+    "url": "https://stormsoftware.org"
+  },
+  "type": "commonjs",
+  "main": "./index.cjs",
+  "dependencies": {
+    "@nx/jest": "17.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
