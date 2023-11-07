@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.0.0...testing-tools-v1.1.0) (2023-11-07)
+
+
+### Features
+
+* **workspace-tools:** Added the node-library generator ([85ada65](https://github.com/storm-software/storm-ops/commit/85ada65f9737f972a36d0a001179f87963b4aa98))
+
 # [1.0.0](https://github.com/storm-software/storm-ops/compare/...testing-tools-v1.0.0) (2023-11-07)
 
 
