@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.0...git-tools-v1.2.1) (2023-11-07)
+
+
+### Bug Fixes
+
+* **create-storm-workspace:** Resolved issue with linked workspace-tools dependency in package.json ([90b0b76](https://github.com/storm-software/storm-ops/commit/90b0b766817445084cec96126c51c8302ca16d6d))
+
 # [1.2.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.1.0...git-tools-v1.2.0) (2023-11-07)
 
 
