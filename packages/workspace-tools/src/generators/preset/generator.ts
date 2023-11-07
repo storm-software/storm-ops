@@ -214,6 +214,7 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
     "prettier-plugin-prisma": "latest",
     "tsup": "latest",
     "eslint": "latest",
+    "@eslint/eslintrc": "latest",
     "log4brains": "latest",
     "husky": "latest",
     "prettier": "latest",
