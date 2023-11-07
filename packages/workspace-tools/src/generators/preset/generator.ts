@@ -209,6 +209,7 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
     "@nx/jest": "latest",
     "@storm-software/git-tools": "latest",
     "@storm-software/linting-tools": "latest",
+    "@storm-software/testing-tools": "latest",
     "@storm-software/workspace-tools": "latest",
     "prettier-plugin-packagejson": "latest",
     "prettier-plugin-prisma": "latest",

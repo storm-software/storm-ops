@@ -53,16 +53,6 @@ export default async function runExecutor(
       input: "LICENSE",
       output: "."
     });
-    assets.push({
-      glob: "",
-      input: "assets/logo-light.png",
-      output: "."
-    });
-    assets.push({
-      glob: "",
-      input: "assets/logo-dark.png",
-      output: "."
-    });
 
     const result = await copyAssets(
       { assets, watch: options.watch, outputPath },

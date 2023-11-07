@@ -6,10 +6,15 @@
     "allowJs": true,
     "types": ["node"]
   },
-  "include": ["index.ts", "src/**/*.ts", "src/**/*.js"],
+  "include": [
+    "index.ts",
+    "src/**/*.ts",
+    "src/**/*.js",
+    "src/generators/node-library/files/jest.config.ts.template"
+  ],
   "exclude": [
     "jest.config.ts",
-    "src/generators/**/files/**/eslint.config.js",
+    "src/generators/**/files/**/*",
     "src/**/*.spec.ts",
     "src/**/*.test.ts"
   ]

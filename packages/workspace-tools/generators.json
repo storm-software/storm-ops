@@ -12,6 +12,13 @@
       "schema": "./src/generators/preset/schema.json",
       "description": "Storm workspace preset generator",
       "x-use-standalone-layout": true
+    },
+    "node-library": {
+      "factory": "./src/generators/node-library/generator",
+      "schema": "./src/generators/node-library/schema.json",
+      "aliases": ["node-lib"],
+      "x-type": "library",
+      "description": "Generate a new node library project in the Storm workspace"
     }
   }
 }

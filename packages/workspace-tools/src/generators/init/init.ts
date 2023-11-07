@@ -7,7 +7,10 @@ export async function stormInitGenerator(tree: Tree, schema: Schema) {
     tree,
     {
       "nx": nxVersion,
-      "@nx/workspace": nxVersion
+      "@nx/workspace": nxVersion,
+      "@storm-software/testing-tools": "latest",
+      "@storm-software/git-tools": "latest",
+      "@storm-software/linting-tools": "latest"
     },
     {}
   );
