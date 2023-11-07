@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.3.0...create-storm-workspace-v1.4.0) (2023-11-07)
+
+
+### Bug Fixes
+
+* **storm-ops:** Regenerated pnpm filelock file ([113bf16](https://github.com/storm-software/storm-ops/commit/113bf1678acd4324992f4d8f2581c262bddcbc85))
+
+
+### Features
+
+* **testing-tools:** Added testing-tools library for common test functionality ([08d3ccd](https://github.com/storm-software/storm-ops/commit/08d3ccda5508db5c9abf2481900f9d9826d6ece1))
+
 # [1.3.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.2.2...create-storm-workspace-v1.3.0) (2023-11-07)
 
 
