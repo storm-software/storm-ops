@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.1...testing-tools-v1.1.2) (2023-11-07)
+
+
+### Bug Fixes
+
+* **create-storm-workspace:** Bundle packages with create-storm-workspace ([f3bcb3b](https://github.com/storm-software/storm-ops/commit/f3bcb3b750cf8f8aacb2e93a600a5b18bcacaa7d))
+
 ## [1.1.1](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.0...testing-tools-v1.1.1) (2023-11-07)
 
 

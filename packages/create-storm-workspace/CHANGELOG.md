@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.2...create-storm-workspace-v1.5.3) (2023-11-07)
+
+
+### Bug Fixes
+
+* **create-storm-workspace:** Bundle packages with create-storm-workspace ([f3bcb3b](https://github.com/storm-software/storm-ops/commit/f3bcb3b750cf8f8aacb2e93a600a5b18bcacaa7d))
+
 ## [1.5.2](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.1...create-storm-workspace-v1.5.2) (2023-11-07)
 
 
