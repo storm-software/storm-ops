@@ -5,12 +5,25 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
+      "executor": "@nx/esbuild:esbuild",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/create-storm-workspace",
-        "main": "packages/create-storm-workspace/bin/index.ts",
         "tsConfig": "packages/create-storm-workspace/tsconfig.lib.json",
+        "project": "packages/create-storm-workspace/package.json",
+        "main": "packages/create-storm-workspace/bin/index.ts",
+        "deleteOutputPath": true,
+        "bundle": true,
+        "sourcemap": false,
+        "minify": true,
+        "skipTypeCheck": false,
+        "thirdParty": true,
+        "format": ["esm", "cjs"],
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".js"
+          }
+        },
         "assets": [
           {
             "input": "packages/create-storm-workspace",
