@@ -96,7 +96,15 @@
         "index": 7
       },
       "x-prompt": "Which client mode should be used for the Nx Task Runner?"
+    },
+    "packageManager": {
+      "type": "string",
+      "description": "What package manager is used for the workspace?",
+      "enum": ["npm", "yarn", "pnpm"],
+      "default": "pnpm",
+      "x-prompt": "What package manager is used for the workspace?",
+      "hidden": true
     }
   },
-  "required": ["name", "organization", "includeApps", "nxCloud", "mode"]
+  "required": ["name", "organization", "includeApps", "mode"]
 }

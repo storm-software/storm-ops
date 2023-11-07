@@ -6,12 +6,7 @@
     "allowJs": true,
     "types": ["node"]
   },
-  "include": [
-    "index.ts",
-    "src/**/*.ts",
-    "src/**/*.js",
-    "src/generators/node-library/files/jest.config.ts.template"
-  ],
+  "include": ["index.ts", "src/**/*.ts", "src/**/*.js"],
   "exclude": [
     "jest.config.ts",
     "src/generators/**/files/**/*",

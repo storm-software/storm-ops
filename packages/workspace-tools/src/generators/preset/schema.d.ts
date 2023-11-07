@@ -1,4 +1,6 @@
 export type NxClientMode = "light" | "dark";
+export type PackageManager = "npm" | "yarn" | "pnpm";
+
 export interface PresetGeneratorSchema {
   name: string;
   organization: string;
@@ -8,4 +10,5 @@ export interface PresetGeneratorSchema {
   repositoryUrl?: string;
   nxCloud: boolean;
   mode: NxClientMode;
+  packageManager: PackageManager;
 }
