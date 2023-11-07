@@ -1,3 +1,10 @@
+## [1.0.10](https://github.com/storm-software/storm-ops/compare/git-tools-v1.0.9...git-tools-v1.0.10) (2023-11-07)
+
+
+### Bug Fixes
+
+* **git-tools:** Removed old release drafts ([7dff66c](https://github.com/storm-software/storm-ops/commit/7dff66c5da29f559bc1e515d48e9fc1b8fa252d5))
+
 ## [1.0.9](https://github.com/storm-software/storm-ops/compare/git-tools-v1.0.8...git-tools-v1.0.9) (2023-11-06)
 
 
