@@ -1,3 +1,10 @@
+## [1.5.11](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.10...create-storm-workspace-v1.5.11) (2023-11-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated package.json scripts in preset ([9dd9b9c](https://github.com/storm-software/storm-ops/commit/9dd9b9cc2acd250da5e8278d7ef2212aff6469f6))
+
 ## [1.5.10](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.9...create-storm-workspace-v1.5.10) (2023-11-08)
 
 

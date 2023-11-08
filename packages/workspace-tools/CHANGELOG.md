@@ -1,3 +1,10 @@
+## [1.5.9](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.8...workspace-tools-v1.5.9) (2023-11-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated package.json scripts in preset ([9dd9b9c](https://github.com/storm-software/storm-ops/commit/9dd9b9cc2acd250da5e8278d7ef2212aff6469f6))
+
 ## [1.5.8](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.7...workspace-tools-v1.5.8) (2023-11-08)
 
 
