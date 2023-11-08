@@ -1,3 +1,10 @@
+## [1.4.8](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.7...@storm-software/storm-ops-v1.4.8) (2023-11-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issues with all-contributors template ([56f40e0](https://github.com/storm-software/storm-ops/commit/56f40e06143203c6d24658d192cba20fefa75004))
+
 ## [1.4.7](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.6...@storm-software/storm-ops-v1.4.7) (2023-11-08)
 
 
