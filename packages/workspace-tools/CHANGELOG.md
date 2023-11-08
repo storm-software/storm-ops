@@ -1,3 +1,11 @@
+## [1.5.12](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.11...workspace-tools-v1.5.12) (2023-11-08)
+
+
+### Bug Fixes
+
+* **create-storm-workspace:** Resolved issue with command args and added debug option to tsup ([01d2296](https://github.com/storm-software/storm-ops/commit/01d2296ab7651f83966cf2e8ec364f066e09611b))
+* **workspace-tools:** Added husky install to prepare script ([f29b34e](https://github.com/storm-software/storm-ops/commit/f29b34eb96882a8330bf7463fc39624d4124e1e9))
+
 ## [1.5.11](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.10...workspace-tools-v1.5.11) (2023-11-08)
 
 
