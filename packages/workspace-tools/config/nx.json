@@ -11,16 +11,8 @@
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "format",
-          "test",
-          "e2e",
-          "build-storybook"
-        ],
-        "parallel": 5,
-        "cacheDirectory": "node_modules/.cache/nx"
+        "cacheableOperations": ["build", "lint", "format", "test", "e2e"],
+        "parallel": 5
       }
     }
   },
@@ -118,16 +110,7 @@
     },
     "e2e": {
       "cache": true
-    },
-    "build-storybook": {
-      "cache": true,
-      "inputs": [
-        "default",
-        "^production",
-        "!{projectRoot}/.storybook/**/*",
-        "{projectRoot}/.storybook/**/*",
-        "{projectRoot}/tsconfig.storybook.json"
-      ]
     }
-  }
+  },
+  "cacheDirectory": "node_modules/.cache/nx"
 }

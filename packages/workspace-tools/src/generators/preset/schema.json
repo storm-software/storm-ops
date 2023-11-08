@@ -80,10 +80,6 @@
       "type": "boolean",
       "description": "Should distributed caching with Nx Cloud be enabled for the workspace?",
       "default": false,
-      "$default": {
-        "$source": "argv",
-        "index": 6
-      },
       "x-prompt": "Should distributed caching with Nx Cloud be enabled for the workspace?"
     },
     "mode": {
@@ -91,10 +87,6 @@
       "description": "Which client mode should be used for the Nx Task Runner?",
       "default": "dark",
       "enum": ["light", "dark"],
-      "$default": {
-        "$source": "argv",
-        "index": 7
-      },
       "x-prompt": "Which client mode should be used for the Nx Task Runner?"
     },
     "packageManager": {
