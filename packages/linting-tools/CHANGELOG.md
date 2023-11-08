@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.2...linting-tools-v1.3.3) (2023-11-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issues with mismatching node/pnpm versions ([8f9d0dd](https://github.com/storm-software/storm-ops/commit/8f9d0ddf4391534ee60dee603a819bf95f8b859c))
+
 ## [1.3.2](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.1...linting-tools-v1.3.2) (2023-11-07)
 
 

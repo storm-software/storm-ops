@@ -1,3 +1,10 @@
+## [1.5.4](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.3...workspace-tools-v1.5.4) (2023-11-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issues with mismatching node/pnpm versions ([8f9d0dd](https://github.com/storm-software/storm-ops/commit/8f9d0ddf4391534ee60dee603a819bf95f8b859c))
+
 ## [1.5.3](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.2...workspace-tools-v1.5.3) (2023-11-07)
 
 
