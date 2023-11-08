@@ -19,6 +19,20 @@
   },
 
   /******************************
+   * VS Code colorization
+   ******************************/
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#1d232a",
+    "statusBarItem.hoverBackground": "#313C47",
+    "statusBar.foreground": "#1fb2a6"
+  },
+
+  /******************************
+   * Peacock colorization
+   ******************************/
+  "peacock.color": "#1fb2a6",
+
+  /******************************
    * bracket pair colorization
    ******************************/
   "editor.bracketPairColorization.enabled": true,

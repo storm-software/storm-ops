@@ -26,6 +26,7 @@ node_modules
 
 # IDE - VSCode
 .vscode/*
+!.vscode/README.md
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json

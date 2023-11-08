@@ -10,7 +10,6 @@ tmp
 out
 .nx
 
-# build
 
 # dependencies
 node_modules
@@ -23,9 +22,11 @@ node_modules
 *.launch
 .settings/
 *.sublime-workspace
+*.code-workspace
 
 # IDE - VSCode
 .vscode/*
+!.vscode/README.md
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
