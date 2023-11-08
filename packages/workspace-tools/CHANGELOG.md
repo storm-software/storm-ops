@@ -1,3 +1,10 @@
+## [1.5.13](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.12...workspace-tools-v1.5.13) (2023-11-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved husky install error thrown in preset ([a24d783](https://github.com/storm-software/storm-ops/commit/a24d783a1402f3bc7232b8c9195a6ea01322533c))
+
 ## [1.5.12](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.11...workspace-tools-v1.5.12) (2023-11-08)
 
 
