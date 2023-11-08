@@ -1,3 +1,10 @@
+## [1.5.6](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.5...workspace-tools-v1.5.6) (2023-11-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with README template in preset ([5824423](https://github.com/storm-software/storm-ops/commit/5824423e787aa2bec7e94cca89105a2bee2828f4))
+
 ## [1.5.5](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.4...workspace-tools-v1.5.5) (2023-11-08)
 
 
