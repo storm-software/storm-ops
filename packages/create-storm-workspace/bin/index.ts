@@ -83,19 +83,7 @@ async function main() {
       repositoryUrl = response.repositoryUrl;
     }
 
-    let nxCloud = process.argv[8] ? Boolean(process.argv[8]) : null;
-    if (!nxCloud && typeof nxCloud !== "boolean") {
-      const response = await prompt<{ nxCloud: boolean }>({
-        type: "confirm",
-        name: "nxCloud",
-        message:
-          "Should Nx Cloud be enabled for the workspace (allows for remote workspace caching)?",
-        initial: false
-      });
-      nxCloud = response.nxCloud;
-    }
-
-    let mode: NxClientMode = process.argv[9] as NxClientMode;
+    let mode: NxClientMode = process.argv[8] as NxClientMode;
     if (!mode) {
       mode = (
         await prompt<{ mode: "light" | "dark" }>({
@@ -124,7 +112,7 @@ async function main() {
         includeApps,
         repositoryUrl,
         packageManager: "pnpm",
-        nxCloud,
+        nxCloud: false,
         mode
       }
     );
