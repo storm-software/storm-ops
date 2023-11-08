@@ -44,7 +44,7 @@ async function main() {
       namespace = response.namespace;
     }
 
-    let includeApps = process.argv[5] ? Boolean(process.argv[3]) : null;
+    let includeApps = process.argv[5] ? Boolean(process.argv[5]) : null;
     if (!includeApps && typeof includeApps !== "boolean") {
       const response = await prompt<{ includeApps: boolean }>({
         type: "confirm",
@@ -83,7 +83,7 @@ async function main() {
       repositoryUrl = response.repositoryUrl;
     }
 
-    let nxCloud = process.argv[8] ? Boolean(process.argv[3]) : null;
+    let nxCloud = process.argv[8] ? Boolean(process.argv[8]) : null;
     if (!nxCloud && typeof nxCloud !== "boolean") {
       const response = await prompt<{ nxCloud: boolean }>({
         type: "confirm",
