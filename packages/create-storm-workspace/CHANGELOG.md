@@ -1,3 +1,10 @@
+## [1.5.15](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.14...create-storm-workspace-v1.5.15) (2023-11-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved husky install error thrown in preset ([a24d783](https://github.com/storm-software/storm-ops/commit/a24d783a1402f3bc7232b8c9195a6ea01322533c))
+
 ## [1.5.14](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.13...create-storm-workspace-v1.5.14) (2023-11-08)
 
 
