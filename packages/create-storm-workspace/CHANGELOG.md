@@ -1,3 +1,11 @@
+## [1.5.12](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.11...create-storm-workspace-v1.5.12) (2023-11-08)
+
+
+### Bug Fixes
+
+* **create-storm-workspace:** Updated vsc setting config and args order ([0cdbfef](https://github.com/storm-software/storm-ops/commit/0cdbfef3083d2fbc3a2b65c185d2c5ac61ce0207))
+* **workspace-tools:** Resolved issue with Setup Workspace action name ([1ccd8b4](https://github.com/storm-software/storm-ops/commit/1ccd8b4f0523576175e48ef36cfa4a47f00e4ad4))
+
 ## [1.5.11](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.10...create-storm-workspace-v1.5.11) (2023-11-08)
 
 
