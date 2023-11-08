@@ -1,3 +1,11 @@
+## [1.5.6](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.5...create-storm-workspace-v1.5.6) (2023-11-08)
+
+
+### Bug Fixes
+
+* **create-storm-workspace:** Resolved issue with the CLI's arg indexes ([78b12e1](https://github.com/storm-software/storm-ops/commit/78b12e14aa96e55a7768efff433d57e10374fbe7))
+* **workspace-tools:** Resolved issues with mismatching node/pnpm versions ([8f9d0dd](https://github.com/storm-software/storm-ops/commit/8f9d0ddf4391534ee60dee603a819bf95f8b859c))
+
 ## [1.5.5](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.4...create-storm-workspace-v1.5.5) (2023-11-07)
 
 
