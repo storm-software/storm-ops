@@ -1,3 +1,10 @@
+## [1.4.7](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.6...@storm-software/storm-ops-v1.4.7) (2023-11-08)
+
+
+### Bug Fixes
+
+* **create-storm-workspace:** Updated vsc setting config and args order ([0cdbfef](https://github.com/storm-software/storm-ops/commit/0cdbfef3083d2fbc3a2b65c185d2c5ac61ce0207))
+
 ## [1.4.6](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.5...@storm-software/storm-ops-v1.4.6) (2023-11-08)
 
 
