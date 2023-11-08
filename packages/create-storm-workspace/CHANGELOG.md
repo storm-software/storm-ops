@@ -1,3 +1,10 @@
+## [1.5.7](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.6...create-storm-workspace-v1.5.7) (2023-11-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with nx.json file in preset ([ce132a0](https://github.com/storm-software/storm-ops/commit/ce132a00334b9c6e6123c1302301b808212db4fb))
+
 ## [1.5.6](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.5...create-storm-workspace-v1.5.6) (2023-11-08)
 
 
