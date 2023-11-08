@@ -70,7 +70,16 @@ export async function nodeLibraryGenerator(
           outputPath: getOutputPath(options),
           main: join(options.projectRoot, "src/index.ts"),
           tsConfig: join(options.projectRoot, "tsconfig.json"),
-          project: join(options.projectRoot, "package.json")
+          project: join(options.projectRoot, "package.json"),
+          defaultConfiguration: "production",
+          configurations: {
+            production: {
+              debug: false
+            },
+            development: {
+              debug: true
+            }
+          }
         }
       },
       lint: {},

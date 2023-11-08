@@ -7,6 +7,7 @@ export type TsupExecutorSchema = Omit<
   | "metafile"
   | "generatePackageJson"
   | "sourcemap"
+  | "minify"
   | "format"
   | "target"
   | "thirdParty"
@@ -16,4 +17,5 @@ export type TsupExecutorSchema = Omit<
 > & {
   options: Options;
   clean: boolean;
+  debug: boolean;
 };

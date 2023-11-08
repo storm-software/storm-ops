@@ -3,10 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { getNpmPackageVersion } from "@nx/workspace/src/generators/utils/get-npm-package-version";
-import type {
-  NxClientMode,
-  PresetGeneratorSchema
-} from "@storm-software/workspace-tools";
+import type { PresetGeneratorSchema } from "@storm-software/workspace-tools";
 import { createWorkspace } from "create-nx-workspace";
 import { prompt } from "enquirer";
 
@@ -86,24 +83,6 @@ async function main() {
       repositoryUrl = response.repositoryUrl;
     }
 
-    let mode: NxClientMode = (
-      process.argv.length > 8 ? process.argv[8] : null
-    ) as NxClientMode;
-    if (!mode) {
-      mode = (
-        await prompt<{ mode: "light" | "dark" }>({
-          name: "mode",
-          message: "Which mode should be used?",
-          initial: "dark" as any,
-          type: "autocomplete",
-          choices: [
-            { name: "light", message: "light" },
-            { name: "dark", message: "dark" }
-          ]
-        })
-      ).mode;
-    }
-
     console.log(`⚡ Creating the Storm Workspace: ${name}`);
 
     const version = getNpmPackageVersion("@storm-software/workspace-tools");
@@ -118,7 +97,7 @@ async function main() {
         repositoryUrl,
         packageManager: "pnpm",
         nxCloud: false,
-        mode
+        mode: "dark"
       }
     );
 

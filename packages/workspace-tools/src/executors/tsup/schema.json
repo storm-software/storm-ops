@@ -69,10 +69,10 @@
         "alias": "deleteOutputPath",
         "default": true
       },
-      "minify": {
+      "debug": {
         "type": "boolean",
-        "description": "Minifies outputs.",
-        "default": true
+        "description": "Should output be unminified with source mappings.",
+        "default": false
       },
       "platform": {
         "type": "string",
