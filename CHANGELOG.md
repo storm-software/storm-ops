@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.5...@storm-software/storm-ops-v1.4.6) (2023-11-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated package.json scripts in preset ([9dd9b9c](https://github.com/storm-software/storm-ops/commit/9dd9b9cc2acd250da5e8278d7ef2212aff6469f6))
+
 ## [1.4.5](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.4...@storm-software/storm-ops-v1.4.5) (2023-11-08)
 
 
