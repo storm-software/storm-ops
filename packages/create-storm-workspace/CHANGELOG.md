@@ -1,3 +1,10 @@
+## [1.5.8](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.7...create-storm-workspace-v1.5.8) (2023-11-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with README template in preset ([5824423](https://github.com/storm-software/storm-ops/commit/5824423e787aa2bec7e94cca89105a2bee2828f4))
+
 ## [1.5.7](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.6...create-storm-workspace-v1.5.7) (2023-11-08)
 
 
