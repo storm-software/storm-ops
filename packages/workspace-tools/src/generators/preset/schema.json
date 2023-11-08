@@ -80,7 +80,8 @@
       "type": "boolean",
       "description": "Should distributed caching with Nx Cloud be enabled for the workspace?",
       "default": false,
-      "x-prompt": "Should distributed caching with Nx Cloud be enabled for the workspace?"
+      "x-prompt": "Should distributed caching with Nx Cloud be enabled for the workspace?",
+      "hidden": true
     },
     "mode": {
       "type": "string",

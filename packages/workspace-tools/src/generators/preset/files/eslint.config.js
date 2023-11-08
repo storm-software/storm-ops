@@ -7,6 +7,7 @@ const jestConfig = require("@storm-software/linting-tools/eslint/jest");
 const jsonConfig = require("@storm-software/linting-tools/eslint/json");
 const reactConfig = require("@storm-software/linting-tools/eslint/react");
 const nextConfig = require("@storm-software/linting-tools/eslint/next");
+
 const js = require("@eslint/js");
 const compat = new FlatCompat({
   baseDirectory: __dirname,

@@ -12,7 +12,7 @@ import { prompt } from "enquirer";
 
 async function main() {
   try {
-    let name = process.argv[2];
+    let name = process.argv.length > 2 ? process.argv[2] : null;
     if (!name) {
       const response = await prompt<{ name: string }>({
         type: "input",
@@ -22,7 +22,7 @@ async function main() {
       name = response.name;
     }
 
-    let organization = process.argv[3];
+    let organization = process.argv.length > 3 ? process.argv[3] : null;
     if (!organization) {
       const response = await prompt<{ organization: string }>({
         type: "input",
@@ -33,7 +33,7 @@ async function main() {
       organization = response.organization;
     }
 
-    let namespace = process.argv[4];
+    let namespace = process.argv.length > 4 ? process.argv[4] : null;
     if (!namespace) {
       const response = await prompt<{ namespace: string }>({
         type: "input",
@@ -44,7 +44,10 @@ async function main() {
       namespace = response.namespace;
     }
 
-    let includeApps = process.argv[5] ? Boolean(process.argv[5]) : null;
+    let includeApps =
+      process.argv.length > 5 && process.argv[5]
+        ? Boolean(process.argv[5])
+        : null;
     if (!includeApps && typeof includeApps !== "boolean") {
       const response = await prompt<{ includeApps: boolean }>({
         type: "confirm",
@@ -56,7 +59,7 @@ async function main() {
       includeApps = response.includeApps;
     }
 
-    let description = process.argv[6];
+    let description = process.argv.length > 6 ? process.argv[6] : null;
     if (!description) {
       const response = await prompt<{ description: string }>({
         type: "input",
@@ -70,7 +73,7 @@ async function main() {
       description = response.description;
     }
 
-    let repositoryUrl = process.argv[7];
+    let repositoryUrl = process.argv.length > 7 ? process.argv[7] : null;
     if (!repositoryUrl) {
       const response = await prompt<{ repositoryUrl: string }>({
         type: "input",
@@ -83,7 +86,9 @@ async function main() {
       repositoryUrl = response.repositoryUrl;
     }
 
-    let mode: NxClientMode = process.argv[8] as NxClientMode;
+    let mode: NxClientMode = (
+      process.argv.length > 8 ? process.argv[8] : null
+    ) as NxClientMode;
     if (!mode) {
       mode = (
         await prompt<{ mode: "light" | "dark" }>({
