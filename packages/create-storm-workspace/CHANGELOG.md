@@ -1,3 +1,10 @@
+## [1.5.13](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.12...create-storm-workspace-v1.5.13) (2023-11-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issues with all-contributors template ([56f40e0](https://github.com/storm-software/storm-ops/commit/56f40e06143203c6d24658d192cba20fefa75004))
+
 ## [1.5.12](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.11...create-storm-workspace-v1.5.12) (2023-11-08)
 
 
