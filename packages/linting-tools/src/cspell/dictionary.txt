@@ -2,6 +2,7 @@
 
 stormstack
 stormcloud
+stormsoftware
 Akka
 alexignore
 alexjs

@@ -49,10 +49,9 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
       "storm",
       "stormstack",
       "storm-ops",
-      "powerplant",
-      "power-plant",
-      "power-plant-lang",
-      "power-plant-model",
+      "acidic",
+      "acidic-lang",
+      "acidic-model",
       "impact",
       "nextjs",
       "prisma",
@@ -91,8 +90,7 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
     json.scripts.adr = "pnpm log4brains adr new";
     json.scripts["adr-preview"] = "pnpm log4brains preview";
     json.scripts.prepare = "pnpm @storm-software/git-tools/scripts/prepare.js";
-    json.scripts.preinstall =
-      "pnpm @storm-software/git-tools/scripts/pre-install.js || npx -y only-allow pnpm";
+    json.scripts.preinstall = "npx -y only-allow pnpm";
     json.scripts["install:csb"] =
       "corepack enable && pnpm install --frozen-lockfile";
 
@@ -157,7 +155,7 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
     json.scripts.lint = "pnpm storm-lint all --skip-cspell";
     json.scripts.commit = "pnpm storm-git commit";
     json.scripts.readme =
-      'pnpm storm-git readme --templates="tools/readme-templates"';
+      'pnpm storm-git readme --templates="docs/readme-templates"';
     json.scripts["api-extractor"] =
       "nx g @storm-software/workspace-tools:api-extractor --outputPath 'docs/api-reference' --clean --no-interactive";
     json.scripts.release = "pnpm storm-git release";
