@@ -116,7 +116,14 @@ export async function nodeLibraryGenerator(
     }
     return {
       ...json,
-      files: ["build", "src"],
+      files: [
+        joinPathFragments(
+          offsetFromRoot(options.projectRoot),
+          "dist",
+          options.projectRoot,
+          "src"
+        )
+      ],
       type: "module",
       types: "legacy/index.d.ts",
       main: "legacy/index.cjs",
