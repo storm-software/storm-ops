@@ -1,3 +1,10 @@
+## [1.5.16](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.15...create-storm-workspace-v1.5.16) (2023-11-08)
+
+
+### Bug Fixes
+
+* **create-storm-workspace:** Update preset implementation and added back nxCloud and mode args to CLI ([35bab7e](https://github.com/storm-software/storm-ops/commit/35bab7e28ca2d7ca2430e0ec2d4c257d241adc53))
+
 ## [1.5.15](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.14...create-storm-workspace-v1.5.15) (2023-11-08)
 
 
