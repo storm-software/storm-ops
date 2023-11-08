@@ -1,3 +1,10 @@
+## [1.5.9](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.8...create-storm-workspace-v1.5.9) (2023-11-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with preset CI action's env config ([e6f7b8a](https://github.com/storm-software/storm-ops/commit/e6f7b8a81be6197d9f5d0fe71dafabf90189c669))
+
 ## [1.5.8](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.7...create-storm-workspace-v1.5.8) (2023-11-08)
 
 
