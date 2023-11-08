@@ -249,19 +249,21 @@ function prepareEnv(
   context: ReleaseContext,
   env: Record<string, string> = process.env
 ) {
-  const name = env.STORM_REPO_WORKER
+  const authorName = env.GITHUB_ACTOR
+    ? env.GITHUB_ACTOR
+    : env.STORM_REPO_WORKER
     ? env.STORM_REPO_WORKER
     : env.STORM_REPO_OWNER;
-  const email = env.STORM_REPO_OWNER_EMAIL
-    ? env.STORM_REPO_OWNER_EMAIL
-    : `${name}@users.noreply.github.com`;
+  const committerName = env.STORM_REPO_WORKER
+    ? env.STORM_REPO_WORKER
+    : env.STORM_REPO_OWNER;
 
   return Object.assign(env, {
     CI: true,
-    GIT_AUTHOR_NAME: name,
-    GIT_AUTHOR_EMAIL: email,
-    GIT_COMMITTER_NAME: name,
-    GIT_COMMITTER_EMAIL: email,
+    GIT_AUTHOR_NAME: authorName,
+    GIT_AUTHOR_EMAIL: `${authorName}@users.noreply.github.com`,
+    GIT_COMMITTER_NAME: committerName,
+    GIT_COMMITTER_EMAIL: `${committerName}@users.noreply.github.com`,
     ...env,
     STORM_REPO_URL: context.workspaceDir
       ? context.workspaceDir
