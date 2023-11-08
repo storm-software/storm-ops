@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.4...@storm-software/storm-ops-v1.4.5) (2023-11-08)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved incorrect author and committer names during release CLI ([9192070](https://github.com/storm-software/storm-ops/commit/91920705e9d99db618917ed2183c8862f9b64c91))
+
 ## [1.4.4](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.3...@storm-software/storm-ops-v1.4.4) (2023-11-08)
 
 

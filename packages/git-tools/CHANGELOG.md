@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.2...git-tools-v1.2.3) (2023-11-08)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved incorrect author and committer names during release CLI ([9192070](https://github.com/storm-software/storm-ops/commit/91920705e9d99db618917ed2183c8862f9b64c91))
+
 ## [1.2.2](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.1...git-tools-v1.2.2) (2023-11-07)
 
 
