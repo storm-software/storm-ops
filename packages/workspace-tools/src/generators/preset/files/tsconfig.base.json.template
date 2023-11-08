@@ -7,9 +7,5 @@
         "baseUrl": ".",
         "paths": {}
     },
-    "references": [
-        {
-            "path": "./.storybook/tsconfig.json"
-        }
-    ]
+    "references": []
 }

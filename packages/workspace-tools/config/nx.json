@@ -129,6 +129,5 @@
         "{projectRoot}/tsconfig.storybook.json"
       ]
     }
-  },
-  "plugins": ["@nx/next"]
+  }
 }

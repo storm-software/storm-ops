@@ -41,6 +41,7 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
     json.scripts = json.scripts || {};
 
     json.version = "0.0.0";
+    json.triggerEmptyDevReleaseByIncrementingThisNumber = 0;
     json.private = true;
     json.keywords ??= [
       options.name,
@@ -140,8 +141,9 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
     json.scripts.format = "nx format:write";
     json.scripts.help = "nx help";
     json.scripts["dep-graph"] = "nx dep-graph";
-    json.scripts["local-registry"] =
-      "nx local-registry @storm-software/storm-ops";
+    json.scripts[
+      "local-registry"
+    ] = `nx local-registry @${options.namespace}/${options.name}`;
 
     json.scripts.e2e = "nx e2e";
 
@@ -160,15 +162,12 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
       "nx g @storm-software/workspace-tools:api-extractor --outputPath 'docs/api-reference' --clean --no-interactive";
     json.scripts.release = "pnpm storm-git release";
 
-    json.packageManager ??= "pnpm@8.10.2";
+    json.packageManager ??= `pnpm@${pnpmVersion}`;
     json.engines = {
+      node: `>=${nodeVersion}`,
       pnpm: `>=${pnpmVersion}`
     };
-    if (options.includeApps) {
-      json.engines.node = `>=${nodeVersion}`;
-    }
 
-    json.packageManager ??= "pnpm@8.10.2";
     json.prettier = "@storm-software/linting-tools/prettier/config.json";
 
     if (options.includeApps) {
@@ -196,7 +195,11 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
     return json;
   });
 
-  generateFiles(tree, path.join(__dirname, "files"), projectRoot, options);
+  generateFiles(tree, path.join(__dirname, "files"), projectRoot, {
+    ...options,
+    pnpmVersion,
+    nodeVersion
+  });
   await formatFiles(tree);
 
   let dependencies: Record<string, string> = {

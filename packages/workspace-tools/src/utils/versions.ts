@@ -15,5 +15,5 @@ export const lintStagedVersion = "15.0.2";
 export const semanticReleaseVersion = "22.0.7";
 
 export const nxVersion = "^17.0.3";
-export const nodeVersion = "20.9.0";
+export const nodeVersion = "18.17.1";
 export const pnpmVersion = "8.10.2";

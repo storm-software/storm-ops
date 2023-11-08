@@ -6,7 +6,7 @@
       "type": "extensionHost",
       "request": "launch",
       "args": [
-        "--extensionDevelopmentPath=${workspaceFolder}/node_modules/@power-plant/language"
+        "--extensionDevelopmentPath=${workspaceFolder}/node_modules/@acidic/language"
       ]
     },
     {
@@ -14,7 +14,7 @@
       "type": "extensionHost",
       "request": "launch",
       "args": [
-        "--extensionDevelopmentPath=${workspaceFolder}/node_modules/power-plant"
+        "--extensionDevelopmentPath=${workspaceFolder}/node_modules/acidic"
       ]
     },
     {
@@ -31,9 +31,7 @@
       "request": "attach",
       "skipFiles": ["<node_internals>/**"],
       "sourceMaps": true,
-      "outFiles": [
-        "${workspaceFolder}/node_modules/@power-plant/language/**/*.js"
-      ]
+      "outFiles": ["${workspaceFolder}/node_modules/@acidic/language/**/*.js"]
     }
   ]
 }

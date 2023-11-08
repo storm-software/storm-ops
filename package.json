@@ -107,6 +107,10 @@
     "verdaccio": "5.27.0"
   },
   "packageManager": "pnpm@8.10.2",
+  "engines": {
+    "node": ">=18.17.1",
+    "pnpm": ">=8.10.2"
+  },
   "namespace": "@storm-software",
   "nx": {
     "includedScripts": [
