@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.2...testing-tools-v1.1.3) (2023-11-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issues with mismatching node/pnpm versions ([8f9d0dd](https://github.com/storm-software/storm-ops/commit/8f9d0ddf4391534ee60dee603a819bf95f8b859c))
+
 ## [1.1.2](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.1...testing-tools-v1.1.2) (2023-11-07)
 
 
