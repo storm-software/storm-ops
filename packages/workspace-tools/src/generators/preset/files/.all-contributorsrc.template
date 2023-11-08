@@ -7,6 +7,10 @@
     "README.md"
   ],
   "imageSize": 100,
+  "contributorTemplate": "<a href=\"<%= contributor.profile %>\"><img src=\"<%= contributor.avatar_url %>\" width=\"<%= options.imageSize %>px;\" alt=\"\"/><br /><sub><b><%= contributor.name %></b></sub></a>",
+  "contributorsPerLine": 5,
+  "linkToUsage": true,
+  "commitType": "docs"
   "commit": true,
   "commitConvention": "angular",
   "contributors": [
@@ -41,8 +45,5 @@
         "maintenance"
       ]
     }
-  ],
-  "contributorsPerLine": 7,
-  "linkToUsage": true,
-  "commitType": "docs"
+  ]
 }
