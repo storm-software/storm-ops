@@ -119,6 +119,9 @@ async function main() {
 
     console.log(`⚡ Successfully created the workspace: ${directory}.`);
   } catch (error) {
+    console.log(
+      "❌ An error occurred while creating the workspace. Please correct the below issue:"
+    );
     console.error(error);
   }
 }
