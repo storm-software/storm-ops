@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.4...linting-tools-v1.3.5) (2023-11-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issues with all-contributors template ([56f40e0](https://github.com/storm-software/storm-ops/commit/56f40e06143203c6d24658d192cba20fefa75004))
+
 ## [1.3.4](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.3...linting-tools-v1.3.4) (2023-11-08)
 
 
