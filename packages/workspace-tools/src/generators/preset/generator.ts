@@ -89,7 +89,7 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
 
     json.scripts.adr = "pnpm log4brains adr new";
     json.scripts["adr-preview"] = "pnpm log4brains preview";
-    json.scripts.prepare = "pnpm @storm-software/git-tools/scripts/prepare.js";
+    json.scripts.prepare = "pnpm install husky";
     json.scripts.preinstall = "npx -y only-allow pnpm";
     json.scripts["install:csb"] =
       "corepack enable && pnpm install --frozen-lockfile";
