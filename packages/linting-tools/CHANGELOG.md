@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.3...linting-tools-v1.3.4) (2023-11-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated package.json scripts in preset ([9dd9b9c](https://github.com/storm-software/storm-ops/commit/9dd9b9cc2acd250da5e8278d7ef2212aff6469f6))
+
 ## [1.3.3](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.2...linting-tools-v1.3.3) (2023-11-08)
 
 
