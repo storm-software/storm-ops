@@ -1,3 +1,10 @@
+## [1.5.10](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.9...create-storm-workspace-v1.5.10) (2023-11-08)
+
+
+### Bug Fixes
+
+* **create-storm-workspace:** Resolved issue with array index access ([6ec1fc8](https://github.com/storm-software/storm-ops/commit/6ec1fc83621bc0027f4783cd10513884ef233fd5))
+
 ## [1.5.9](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.8...create-storm-workspace-v1.5.9) (2023-11-08)
 
 
