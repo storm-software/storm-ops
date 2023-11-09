@@ -30,7 +30,7 @@
   },
   "type": "module",
   "bin": {
-    "storm-git": "./bin/cli.js"
+    "storm-lint": "./bin/cli.js"
   },
   "dependencies": {
     "@cspell/dict-ada": "4.0.2",
