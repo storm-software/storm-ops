@@ -1,3 +1,10 @@
+## [1.5.15](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.14...workspace-tools-v1.5.15) (2023-11-09)
+
+
+### Bug Fixes
+
+* **linting-tools:** Resolved issue with linting tool executable file name ([6ad8767](https://github.com/storm-software/storm-ops/commit/6ad87673332ebdebc56eb32266585f801f791797))
+
 ## [1.5.14](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.13...workspace-tools-v1.5.14) (2023-11-08)
 
 
