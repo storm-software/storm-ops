@@ -1,3 +1,10 @@
+## [1.3.6](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.5...linting-tools-v1.3.6) (2023-11-09)
+
+
+### Bug Fixes
+
+* **linting-tools:** Resolved issue with linting tool executable file name ([6ad8767](https://github.com/storm-software/storm-ops/commit/6ad87673332ebdebc56eb32266585f801f791797))
+
 ## [1.3.5](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.4...linting-tools-v1.3.5) (2023-11-08)
 
 
