@@ -1,3 +1,10 @@
+## [1.5.18](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.17...create-storm-workspace-v1.5.18) (2023-11-09)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with dependency versions in preset ([3e8225a](https://github.com/storm-software/storm-ops/commit/3e8225aed8de591575b225b01d4fb7fb9ed4d56a))
+
 ## [1.5.17](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.16...create-storm-workspace-v1.5.17) (2023-11-09)
 
 
