@@ -8,7 +8,11 @@ export default {
   linkReferences: true,
   npm: true,
   github: true,
-  githubOptions: {},
+  githubOptions: {
+    assets: [],
+    addReleases: true,
+    draftRelease: false
+  },
   git: true,
   gitAssets: [
     "${WORKSPACE_DIR}/LICENSE",
