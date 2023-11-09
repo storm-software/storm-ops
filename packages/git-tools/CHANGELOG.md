@@ -1,3 +1,10 @@
+## [1.2.7](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.6...git-tools-v1.2.7) (2023-11-09)
+
+
+### Bug Fixes
+
+* **git-tools:** Update GitHub release CLI ([87e3c01](https://github.com/storm-software/storm-ops/commit/87e3c014c317d971cd76daf99c7ed49a66f7f664))
+
 ## [1.2.6](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.5...git-tools-v1.2.6) (2023-11-09)
 
 
