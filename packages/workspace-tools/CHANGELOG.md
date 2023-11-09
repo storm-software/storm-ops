@@ -1,3 +1,10 @@
+## [1.5.16](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.15...workspace-tools-v1.5.16) (2023-11-09)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with dependency versions in preset ([3e8225a](https://github.com/storm-software/storm-ops/commit/3e8225aed8de591575b225b01d4fb7fb9ed4d56a))
+
 ## [1.5.15](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.14...workspace-tools-v1.5.15) (2023-11-09)
 
 
