@@ -8,22 +8,7 @@ export default {
   linkReferences: true,
   npm: true,
   github: true,
-  githubOptions: {
-    "assets": [
-      { "path": "dist/${PROJECT_DIR}/**/LICENSE", "label": "Package License" },
-      { "path": "dist/${PROJECT_DIR}/**/README.md", "label": "Package ReadMe" },
-      {
-        "path": "dist/${PROJECT_DIR}/**/CHANGELOG.md",
-        "label": "Package Changelog"
-      },
-      {
-        "path": "dist/${PROJECT_DIR}/**/package.json",
-        "label": "Package JSON"
-      }
-    ],
-    addReleases: true,
-    draftRelease: false
-  },
+  githubOptions: {},
   git: true,
   gitAssets: [
     "${WORKSPACE_DIR}/LICENSE",
