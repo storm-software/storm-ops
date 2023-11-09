@@ -1,3 +1,10 @@
+## [1.2.6](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.5...git-tools-v1.2.6) (2023-11-09)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Remove GitHub release from workspace tools ([cfab2ac](https://github.com/storm-software/storm-ops/commit/cfab2ac7e7fbd8f5f067b468947952920028cd44))
+
 ## [1.2.5](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.4...git-tools-v1.2.5) (2023-11-09)
 
 
