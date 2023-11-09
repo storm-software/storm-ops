@@ -1,3 +1,10 @@
+## [1.4.10](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.9...@storm-software/storm-ops-v1.4.10) (2023-11-09)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with dependency versions in preset ([3e8225a](https://github.com/storm-software/storm-ops/commit/3e8225aed8de591575b225b01d4fb7fb9ed4d56a))
+
 ## [1.4.9](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.8...@storm-software/storm-ops-v1.4.9) (2023-11-09)
 
 
