@@ -1,3 +1,10 @@
+## [1.5.19](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.18...create-storm-workspace-v1.5.19) (2023-11-10)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with node-library generator package.json creation ([d18d160](https://github.com/storm-software/storm-ops/commit/d18d160f1dd7958df7c0d9c0b1921600dbb3741d))
+
 ## [1.5.18](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.17...create-storm-workspace-v1.5.18) (2023-11-09)
 
 
