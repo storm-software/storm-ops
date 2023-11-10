@@ -1,3 +1,10 @@
+## [1.5.20](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.19...create-storm-workspace-v1.5.20) (2023-11-10)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Replace joins with calls to joinPathFragments in node-library generator ([5599b5b](https://github.com/storm-software/storm-ops/commit/5599b5bf0f3ddac163b20efe05f0c3e62a215ac9))
+
 ## [1.5.19](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.18...create-storm-workspace-v1.5.19) (2023-11-10)
 
 
