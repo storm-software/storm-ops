@@ -1,3 +1,10 @@
+## [1.5.31](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.30...create-storm-workspace-v1.5.31) (2023-11-10)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue setting private package.json field in node-library generator ([7e570c5](https://github.com/storm-software/storm-ops/commit/7e570c5d62b206bca2840e8e92c0a9920d8b571e))
+
 ## [1.5.30](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.29...create-storm-workspace-v1.5.30) (2023-11-10)
 
 
