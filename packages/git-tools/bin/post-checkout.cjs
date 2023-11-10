@@ -3,6 +3,8 @@
 const { execSync } = require("node:child_process");
 
 try {
+  console.log("Running Storm post-checkout hook...");
+
   execSync(
     'changedFiles="$(git diff-tree -r --name-only --no-commit-id $1 $2)" && node @storm-software/git-tools/scripts/package-version-warning.cjs $changedFiles'
   );

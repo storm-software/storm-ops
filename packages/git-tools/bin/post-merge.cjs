@@ -3,6 +3,8 @@
 const { execSync } = require("node:child_process");
 
 try {
+  console.log("Running Storm post-merge hook...");
+
   execSync(
     'changedFiles="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)" && @storm-software/git-tools/scripts/package-version-warning.cjs $changedFiles'
   );

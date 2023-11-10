@@ -3,6 +3,8 @@
 const { execSync } = require("node:child_process");
 
 try {
+  console.log("Running Storm pre-push hook...");
+
   execSync("node @storm-software/git-tools/scripts/check-lock-file.cjs");
 
   const result = execSync(
