@@ -1,3 +1,11 @@
+## [1.4.18](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.17...@storm-software/storm-ops-v1.4.18) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Update hook execution scripts ([1d1b426](https://github.com/storm-software/storm-ops/commit/1d1b4265ad99ad9fc97764dd89f5cf2cf5f9a2ca))
+* **git-tools:** Update use of command line variables ([a6c0d18](https://github.com/storm-software/storm-ops/commit/a6c0d1858a19791d92316a4fc2ec520f4bf69d98))
+
 ## [1.4.17](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.16...@storm-software/storm-ops-v1.4.17) (2023-11-10)
 
 
