@@ -80,7 +80,7 @@
           },
           {
             "input": "./packages/git-tools/scripts",
-            "glob": "**/*.js",
+            "glob": "**/*.cjs",
             "output": "./scripts"
           },
           {

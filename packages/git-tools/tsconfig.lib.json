@@ -9,10 +9,10 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.js",
-    "scripts/**/*.js",
+    "src/**/*.cjs",
+    "scripts/**/*.cjs",
     "bin/**/*",
-    "declarations.d.ts",
-    "src/lint-staged/config.cjs"
+    "declarations.d.ts"
   ],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }
