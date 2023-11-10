@@ -51,7 +51,7 @@ try {
     process.exit(1);
   }
 
-  execSync("git lfs pre-push");
+  execSync("git lfs pre-push main");
 } catch (e) {
   console.error(e);
   process.exit(1);

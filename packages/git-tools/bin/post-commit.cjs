@@ -13,7 +13,7 @@ try {
     process.exit(1);
   }
 
-  execSync("git lfs post-commit");
+  execSync("git lfs post-commit main");
 } catch (e) {
   console.error(e);
   process.exit(1);
