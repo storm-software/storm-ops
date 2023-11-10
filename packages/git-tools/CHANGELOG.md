@@ -1,3 +1,19 @@
+## [1.2.19](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.18...git-tools-v1.2.19) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Add origin to git lfs command ([4c33508](https://github.com/storm-software/storm-ops/commit/4c335088d426535eb443b01d653696576dc1d237))
+* **git-tools:** Added branch name to git command ([f411035](https://github.com/storm-software/storm-ops/commit/f41103595cfa383256b347c5e93635445a051fda))
+* **git-tools:** Ensure full path is added to remote branch params ([bb2c668](https://github.com/storm-software/storm-ops/commit/bb2c668ccb959b038929a30436163088b4c02a7d))
+* **git-tools:** More updates to variables in hooks ([1096948](https://github.com/storm-software/storm-ops/commit/10969481676eba0b86118dff0e1365adfbf4bd75))
+* **git-tools:** Remove git-lfs variables from the husky ([0f80794](https://github.com/storm-software/storm-ops/commit/0f80794418bb82000e73029df6c7d738d289ca78))
+* **git-tools:** Remove git-lfs variables from the husky hooks ([cad7eff](https://github.com/storm-software/storm-ops/commit/cad7eff3c2ed3a1f0b318d9973b6756b8446eb0a))
+* **git-tools:** Resolved issue calling git-lfs commands on current branch ([f5c4dd8](https://github.com/storm-software/storm-ops/commit/f5c4dd8331f1df05e0661b1aa72dcd1260a972ad))
+* **git-tools:** Update code to use the provided git variables ([f5acee1](https://github.com/storm-software/storm-ops/commit/f5acee1da47f1d0ec730a82a20aaaff9f6e77e54))
+* **git-tools:** Update hook execution scripts ([1d1b426](https://github.com/storm-software/storm-ops/commit/1d1b4265ad99ad9fc97764dd89f5cf2cf5f9a2ca))
+* **git-tools:** Update use of command line variables ([a6c0d18](https://github.com/storm-software/storm-ops/commit/a6c0d1858a19791d92316a4fc2ec520f4bf69d98))
+
 ## [1.2.18](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.17...git-tools-v1.2.18) (2023-11-10)
 
 
