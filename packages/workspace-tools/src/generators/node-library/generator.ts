@@ -161,7 +161,7 @@ export async function nodeLibraryGenerator(
   } else {
     writeJson<PackageJson>(tree, packageJsonPath, {
       name: options.importPath,
-      private: options.publishable && !options.rootProject,
+      private: !options.publishable || options.rootProject,
       files: [
         joinPathFragments(
           offsetFromRoot(options.projectRoot),
