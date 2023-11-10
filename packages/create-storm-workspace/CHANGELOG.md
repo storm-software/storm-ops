@@ -1,3 +1,10 @@
+## [1.5.30](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.29...create-storm-workspace-v1.5.30) (2023-11-10)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue adding linting during node-library generator ([6b5c34a](https://github.com/storm-software/storm-ops/commit/6b5c34ad9297bd622ccca8c322abbc7cfdb09326))
+
 ## [1.5.29](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.28...create-storm-workspace-v1.5.29) (2023-11-10)
 
 
