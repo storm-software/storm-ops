@@ -1,3 +1,10 @@
+## [1.5.25](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.24...create-storm-workspace-v1.5.25) (2023-11-10)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved project configuration reference issue in tsup executor ([f6f8cef](https://github.com/storm-software/storm-ops/commit/f6f8ceff5ff7fc94c4c1680db2ce25afcc8254d4))
+
 ## [1.5.24](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.23...create-storm-workspace-v1.5.24) (2023-11-10)
 
 
