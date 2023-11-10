@@ -6,7 +6,7 @@ try {
   console.log("Running Storm post-checkout hook...");
 
   execSync(
-    'changedFiles="$(git diff-tree -r --name-only --no-commit-id $1 $2)" && node @storm-software/git-tools/scripts/package-version-warning.cjs $changedFiles'
+    'node @storm-software/git-tools/scripts/package-version-warning.cjs "$(git diff-tree -r --name-only --no-commit-id $1 $2)"'
   );
 
   const result = execSync("git-lfs -v", "utf8");
