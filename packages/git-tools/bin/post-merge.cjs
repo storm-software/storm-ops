@@ -17,7 +17,7 @@ try {
     process.exit(1);
   }
 
-  execSync('git lfs post-merge "$@"');
+  execSync('git lfs post-merge "$(git rev-parse --abbrev-ref HEAD)"');
 } catch (e) {
   console.error(e);
   process.exit(1);

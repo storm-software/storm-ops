@@ -17,7 +17,7 @@ try {
     process.exit(1);
   }
 
-  execSync('git lfs post-checkout "$@"');
+  execSync('git lfs post-checkout "$(git rev-parse --abbrev-ref HEAD)"');
 } catch (e) {
   console.error(e);
   process.exit(1);
