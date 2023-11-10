@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.7...testing-tools-v1.1.8) (2023-11-10)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue setting private package.json field in node-library generator ([7e570c5](https://github.com/storm-software/storm-ops/commit/7e570c5d62b206bca2840e8e92c0a9920d8b571e))
+
 ## [1.1.7](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.6...testing-tools-v1.1.7) (2023-11-10)
 
 
