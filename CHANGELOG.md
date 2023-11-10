@@ -1,3 +1,10 @@
+## [1.4.15](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.14...@storm-software/storm-ops-v1.4.15) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Update husky hooks to executable scripts ([acc9511](https://github.com/storm-software/storm-ops/commit/acc95116890a7ed6ed896fbc354ea601d3386255))
+
 ## [1.4.14](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.13...@storm-software/storm-ops-v1.4.14) (2023-11-10)
 
 
