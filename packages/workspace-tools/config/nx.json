@@ -9,7 +9,12 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "nx/tasks-runners/default"
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "format", "test", "e2e"],
+        "parallel": 4,
+        "cacheDirectory": ".nx/cache"
+      }
     }
   },
   "pluginsConfig": {
@@ -107,8 +112,5 @@
     "e2e": {
       "cache": true
     }
-  },
-  "parallel": 4,
-  "cacheDirectory": ".nx/cache",
-  "cacheableOperations": ["build", "lint", "format", "test", "e2e"]
+  }
 }
