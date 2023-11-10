@@ -1,3 +1,10 @@
+## [1.4.16](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.15...@storm-software/storm-ops-v1.4.16) (2023-11-10)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue setting private package.json field in node-library generator ([7e570c5](https://github.com/storm-software/storm-ops/commit/7e570c5d62b206bca2840e8e92c0a9920d8b571e))
+
 ## [1.4.15](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.14...@storm-software/storm-ops-v1.4.15) (2023-11-10)
 
 
