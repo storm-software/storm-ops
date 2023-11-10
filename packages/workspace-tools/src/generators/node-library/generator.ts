@@ -16,7 +16,6 @@ import jsInitGenerator from "@nx/js/src/generators/init/init";
 import { NormalizedSchema } from "@nx/js/src/generators/library/library";
 import setupVerdaccio from "@nx/js/src/generators/setup-verdaccio/generator";
 import { PackageJson } from "nx/src/utils/package-json";
-import { join } from "path";
 import { typesNodeVersion } from "../../utils/versions";
 import { normalizeOptions } from "./normalize-options";
 import { NodeLibraryGeneratorSchema } from "./schema";
@@ -25,7 +24,7 @@ export async function nodeLibraryGenerator(
   tree: Tree,
   schema: NodeLibraryGeneratorSchema
 ) {
-  const filesDir = join(__dirname, "./files");
+  const filesDir = joinPathFragments(__dirname, "./files");
   const options = await normalizeOptions(tree, schema);
 
   const tasks: GeneratorCallback[] = [];
@@ -68,9 +67,9 @@ export async function nodeLibraryGenerator(
         outputs: ["{options.outputPath}"],
         options: {
           outputPath: getOutputPath(options),
-          main: join(options.projectRoot, "src/index.ts"),
-          tsConfig: join(options.projectRoot, "tsconfig.json"),
-          project: join(options.projectRoot, "package.json"),
+          main: joinPathFragments(options.projectRoot, "src/index.ts"),
+          tsConfig: joinPathFragments(options.projectRoot, "tsconfig.json"),
+          project: joinPathFragments(options.projectRoot, "package.json"),
           defaultConfiguration: "production",
           configurations: {
             production: {
