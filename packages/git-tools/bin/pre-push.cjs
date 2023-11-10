@@ -52,7 +52,7 @@ try {
   }
 
   const remote = execSync("git rev-parse --abbrev-ref HEAD", "utf8");
-  execSync(`git lfs pre-push refs/remotes/${remote}`);
+  execSync(`git lfs pre-push "$@"`);
 } catch (e) {
   console.error(e);
   process.exit(1);
