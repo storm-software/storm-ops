@@ -3,20 +3,29 @@ import {
   Tree,
   addDependenciesToPackageJson,
   addProjectConfiguration,
+  ensurePackage,
   formatFiles,
   generateFiles,
   joinPathFragments,
   names,
   offsetFromRoot,
+  readProjectConfiguration,
   updateJson,
   writeJson
 } from "@nx/devkit";
-import { getRelativePathToRootTsConfig, tsConfigBaseOptions } from "@nx/js";
+import {
+  addTsConfigPath,
+  getRelativePathToRootTsConfig,
+  tsConfigBaseOptions
+} from "@nx/js";
 import jsInitGenerator from "@nx/js/src/generators/init/init";
-import { NormalizedSchema } from "@nx/js/src/generators/library/library";
+import {
+  AddLintOptions,
+  NormalizedSchema
+} from "@nx/js/src/generators/library/library";
 import setupVerdaccio from "@nx/js/src/generators/setup-verdaccio/generator";
 import { PackageJson } from "nx/src/utils/package-json";
-import { typesNodeVersion } from "../../utils/versions";
+import { nxVersion, typesNodeVersion } from "../../utils/versions";
 import { normalizeOptions } from "./normalize-options";
 import { NodeLibraryGeneratorSchema } from "./schema";
 
@@ -51,11 +60,24 @@ export async function nodeLibraryGenerator(
     tasks.push(await setupVerdaccio(tree, { ...options, skipFormat: true }));
   }
 
+  const lintCallback = await addLint(tree, options);
+  tasks.push(lintCallback);
+
   const { className, name, propertyName } = names(
     options.projectNames.projectFileName
   );
 
   createProjectTsConfigJson(tree, options);
+  addTsConfigPath(tree, options.importPath, [
+    joinPathFragments(
+      options.projectRoot,
+      "./src",
+      "index." + (options.js ? "js" : "ts")
+    )
+  ]);
+  addTsConfigPath(tree, joinPathFragments(options.importPath, "/*"), [
+    joinPathFragments(options.projectRoot, "./src", "/*")
+  ]);
 
   addProjectConfiguration(tree, options.name, {
     root: options.directory,
@@ -191,7 +213,115 @@ export async function nodeLibraryGenerator(
     } as unknown as PackageJson);
   }
 
+  if (tree.exists("package.json")) {
+    updateJson(tree, "package.json", json => ({
+      ...json,
+      pnpm: {
+        ...json.pnpm,
+        override: {
+          ...json.pnpm.override,
+          [options.importPath]: "workspace:*"
+        }
+      }
+    }));
+  }
+
   await formatFiles(tree);
+}
+
+async function addLint(
+  tree: Tree,
+  options: AddLintOptions
+): Promise<GeneratorCallback> {
+  const { lintProjectGenerator } = ensurePackage("@nx/eslint", nxVersion);
+  const { mapLintPattern } =
+    // nx-ignore-next-line
+    require("@nx/eslint/src/generators/lint-project/lint-project");
+  const projectConfiguration = readProjectConfiguration(tree, options.name);
+  const task = lintProjectGenerator(tree, {
+    project: options.name,
+    linter: options.linter,
+    skipFormat: true,
+    tsConfigPaths: [
+      joinPathFragments(options.projectRoot, "tsconfig.lib.json")
+    ],
+    unitTestRunner: options.unitTestRunner,
+    eslintFilePatterns: [
+      mapLintPattern(
+        options.projectRoot,
+        options.js ? "js" : "ts",
+        options.rootProject
+      )
+    ],
+    setParserOptionsProject: options.setParserOptionsProject,
+    rootProject: options.rootProject
+  });
+  const {
+    addOverrideToLintConfig,
+    lintConfigHasOverride,
+    isEslintConfigSupported,
+    updateOverrideInLintConfig
+    // nx-ignore-next-line
+  } = require("@nx/eslint/src/generators/utils/eslint-file");
+
+  // if config is not supported, we don't need to do anything
+  if (!isEslintConfigSupported(tree)) {
+    return task;
+  }
+
+  // Also update the root ESLint config. The lintProjectGenerator will not generate it for root projects.
+  // But we need to set the package.json checks.
+  if (options.rootProject) {
+    addOverrideToLintConfig(tree, "", {
+      files: ["*.json"],
+      parser: "jsonc-eslint-parser",
+      rules: {
+        "@nx/dependency-checks": "error"
+      }
+    });
+  }
+
+  // If project lints package.json with @nx/dependency-checks, then add ignore files for
+  // build configuration files such as vite.config.ts. These config files need to be
+  // ignored, otherwise we will errors on missing dependencies that are for dev only.
+  if (
+    lintConfigHasOverride(
+      tree,
+      projectConfiguration.root,
+      o =>
+        Array.isArray(o.files)
+          ? o.files.some(f => f.match(/\.json$/))
+          : !!o.files?.match(/\.json$/),
+      true
+    )
+  ) {
+    updateOverrideInLintConfig(
+      tree,
+      projectConfiguration.root,
+      o => o.rules?.["@nx/dependency-checks"],
+      o => {
+        const value = o.rules["@nx/dependency-checks"];
+        let ruleSeverity: string;
+        let ruleOptions: any;
+        if (Array.isArray(value)) {
+          ruleSeverity = value[0];
+          ruleOptions = value[1];
+        } else {
+          ruleSeverity = value;
+          ruleOptions = {};
+        }
+
+        if (options.bundler === "esbuild") {
+          ruleOptions.ignoredFiles = [
+            "{projectRoot}/esbuild.config.{js,ts,mjs,mts}"
+          ];
+          o.rules["@nx/dependency-checks"] = [ruleSeverity, ruleOptions];
+        }
+        return o;
+      }
+    );
+  }
+  return task;
 }
 
 function getOutputPath(options: NormalizedSchema) {
