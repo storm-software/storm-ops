@@ -21,7 +21,7 @@ try {
     process.exit(1);
   }
 
-  execSync("git lfs post-checkout main");
+  execSync("git lfs post-checkout origin main");
 } catch (e) {
   console.error(e);
   process.exit(1);

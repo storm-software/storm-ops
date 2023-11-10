@@ -21,7 +21,7 @@ try {
     process.exit(1);
   }
 
-  execSync("git lfs post-merge main");
+  execSync("git lfs post-merge origin main");
 } catch (e) {
   console.error(e);
   process.exit(1);
