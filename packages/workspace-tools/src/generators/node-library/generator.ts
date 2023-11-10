@@ -106,16 +106,55 @@ export async function nodeLibraryGenerator(
     options.projectRoot,
     "package.json"
   );
+  if (tree.exists(packageJsonPath)) {
+    updateJson<PackageJson>(tree, packageJsonPath, (json: PackageJson) => {
+      json.name = options.importPath;
+      json.version = "0.0.1";
+      // If the package is publishable or root/standalone, we should remove the private field.
+      if (json.private && (options.publishable || options.rootProject)) {
+        delete json.private;
+      }
 
-  updateJson<PackageJson>(tree, packageJsonPath, (json: PackageJson) => {
-    json.name = options.importPath;
-    json.version = "0.0.1";
-    // If the package is publishable or root/standalone, we should remove the private field.
-    if (json.private && (options.publishable || options.rootProject)) {
-      delete json.private;
-    }
-    return {
-      ...json,
+      return {
+        ...json,
+        files: [
+          joinPathFragments(
+            offsetFromRoot(options.projectRoot),
+            "dist",
+            options.projectRoot,
+            "src"
+          )
+        ],
+        type: "module",
+        types: "legacy/index.d.ts",
+        main: "legacy/index.cjs",
+        module: "legacy/index.js",
+        exports: {
+          ".": {
+            import: {
+              types: "./modern/index.d.ts",
+              default: "./modern/index.js"
+            },
+            require: {
+              types: "./modern/index.d.cts",
+              default: "./modern/index.cjs"
+            }
+          },
+          "./package.json": "./package.json"
+        },
+        sideEffects: false,
+        dependencies: {
+          ...json.dependencies
+        },
+        publishConfig: {
+          access: "public"
+        }
+      } as unknown as PackageJson;
+    });
+  } else {
+    writeJson<PackageJson>(tree, packageJsonPath, {
+      name: options.importPath,
+      private: options.publishable && !options.rootProject,
       files: [
         joinPathFragments(
           offsetFromRoot(options.projectRoot),
@@ -142,14 +181,16 @@ export async function nodeLibraryGenerator(
         "./package.json": "./package.json"
       },
       sideEffects: false,
-      dependencies: {
-        ...json.dependencies
+      devDependencies: {
+        "@storm-software/workspace-tools": "latest",
+        "@storm-software/testing-tools": "latest",
+        "@types/node": typesNodeVersion
       },
       publishConfig: {
         access: "public"
       }
-    } as unknown as PackageJson;
-  });
+    } as unknown as PackageJson);
+  }
 
   await formatFiles(tree);
 }
