@@ -1,3 +1,10 @@
+## [1.4.17](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.16...@storm-software/storm-ops-v1.4.17) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Moved hook executable scripts to bin folder ([36f8896](https://github.com/storm-software/storm-ops/commit/36f889633a971ac091491dd82fbd40d6cc6236dc))
+
 ## [1.4.16](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.15...@storm-software/storm-ops-v1.4.16) (2023-11-10)
 
 
