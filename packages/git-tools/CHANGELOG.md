@@ -1,3 +1,10 @@
+## [1.2.8](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.7...git-tools-v1.2.8) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue with semantic release plugin path default ([d7eea90](https://github.com/storm-software/storm-ops/commit/d7eea9024787edde8672482c29cba93cd50408b2))
+
 ## [1.2.7](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.6...git-tools-v1.2.7) (2023-11-09)
 
 
