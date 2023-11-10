@@ -67,7 +67,7 @@
           },
           {
             "input": "packages/linting-tools/src",
-            "glob": "cspell/**/*.js",
+            "glob": "cspell/**/*.json",
             "output": "."
           },
           {

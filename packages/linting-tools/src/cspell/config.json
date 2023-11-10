@@ -1,13 +1,12 @@
-module.exports = {
-  "$schema":
-    "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
-  version: "0.2",
-  name: "Storm cspell settings",
-  id: "storm-cspell",
-  description: "Default cspell configuration used by Storm Software.",
-  language: "en",
-  caseSensitive: false,
-  enabledLanguageIds: [
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "name": "Storm cspell settings",
+  "id": "storm-cspell",
+  "description": "Default cspell configuration used by Storm Software.",
+  "language": "en",
+  "caseSensitive": false,
+  "enabledLanguageIds": [
     "typescript",
     "javascript",
     "typescriptreact",
@@ -19,95 +18,92 @@ module.exports = {
     "handlebars",
     "markdown"
   ],
-  maxNumberOfProblems: 10000,
-  dictionaryDefinitions: [
+  "maxNumberOfProblems": 10000,
+  "dictionaryDefinitions": [
     {
       // The name of the dictionary is used to look it up.
-      name: "storm",
+      "name": "storm",
       // Path to the custom word file. Relative to this `cspell.json` file.
-      path: "./dictionary.txt",
+      "path": "./dictionary.txt",
       // Some editor extensions will use `addWords` for adding words to your
       // personal dictionary.
-      addWords: true
+      "addWords": true
     }
   ],
-  dictionaries: [
+  "dictionaries": [
     "storm",
     "companies",
     "softwareTerms",
     "public-licenses",
     "filetypes"
   ],
-  flagWords: [],
+  "flagWords": [],
 
   // Ignore files that aren't check in to git as well as files that aren't written
   // by hand. Note that we do want to check, say, JSON files (as package.json
   // contains English text like package descriptions).
-  useGitignore: true,
+  "useGitignore": true,
   // GitHub Security Advisories
-  ignoreRegExpList: ["GHSA-[-\\w]+"],
-  overrides: [
+  "ignoreRegExpList": ["GHSA-[-\\w]+"],
+  "overrides": [
     {
       //Ignore anything in a changelog file that looks like a GitHub username.
-      filename: "**/CHANGELOG*.md",
-      ignoreRegExpList: ["@[-\\w]+"]
+      "filename": "**/CHANGELOG*.md",
+      "ignoreRegExpList": ["@[-\\w]+"]
     },
     {
       //Ignore the targets of links in Markdown/MDX files.
-      filename: "'**/*.md*",
-      ignoreRegExpList: ["\\]\\([^)]+\\)"]
+      "filename": "'**/*.md*",
+      "ignoreRegExpList": ["\\]\\([^)]+\\)"]
     }
   ],
-  patterns: [
+  "patterns": [
     {
-      name: "HTML-symbol-entity",
-      description: "Matches on HTML symbols like `&clubs;`",
-      pattern: /&[a-z]+;/g
+      "name": "HTML-symbol-entity",
+      "description": "Matches on HTML symbols like `&clubs;`",
+      "pattern": "/&[a-z]+;/g"
     },
     {
-      name: "MARKDOWN-link-reference",
-      description:
-        "Markdown reference link: `[This is a link][reference]`, matches `[reference]`",
-      pattern: /(?<=\])\[[-\w.`'"*&;#@ ]+\]/g
+      "name": "MARKDOWN-link-reference",
+      "description": "Markdown reference link: `[This is a link][reference]`, matches `[reference]`",
+      "pattern": "/(?<=])[[-w.`'\"*&;#@ ]+]/g"
     },
     {
-      name: "MARKDOWN-link-footer",
-      description:
-        "Markdown referenced link: `[reference]: https://www.google.com`, matches the entire reference.",
-      pattern: /\[[-\w.`'"*&;#@ ]+\]:( [^\s]*)?/g
+      "name": "MARKDOWN-link-footer",
+      "description": "Markdown referenced link: `[reference]: https://www.google.com`, matches the entire reference.",
+      "pattern": "/[[-w.`'\"*&;#@ ]+]:( [^s]*)?/g"
     },
     {
-      name: "MARKDOWN-link",
-      description: "Markdown link: `[link text](link)`, matches `link`",
-      pattern: /(?<=\]\()[^)\s]+/g
+      "name": "MARKDOWN-link",
+      "description": "Markdown link: `[link text](link)`, matches `link`",
+      "pattern": "/(?<=]()[^)s]+/g"
     },
     {
-      name: "MARKDOWN-anchor",
-      description:
-        'Markdown Anchors: `<a id="my_link"></a>`, matches `my_link`',
-      pattern: /(?<=<a\s+id=")[^"\s]+/g
+      "name": "MARKDOWN-anchor",
+      "description": "Markdown Anchors: `<a id=\"my_link\"></a>`, matches `my_link`",
+      "pattern": "/(?<=<as+id=\")[^\"s]+/g"
     }
   ],
-  languageSettings: [
+  "languageSettings": [
     {
-      languageId: "javascript,javascriptreact",
-      dictionaries: ["storm", "typescript", "node", "npm"]
+      "languageId": "javascript,javascriptreact",
+      "dictionaries": ["storm", "typescript", "node", "npm"]
     },
     {
-      languageId: "typescript,typescriptreact,mdx",
-      dictionaries: ["storm", "typescript", "node", "npm"]
+      "languageId": "typescript,typescriptreact,mdx",
+      "dictionaries": ["storm", "typescript", "node", "npm"]
     },
     {
-      languageId: "javascriptreact,typescriptreact,mdx",
-      dictionaries: ["storm", "html", "html-symbol-entities", "css", "fonts"]
+      "languageId": "javascriptreact,typescriptreact,mdx",
+      "dictionaries": ["storm", "html", "html-symbol-entities", "css", "fonts"]
     },
     {
-      languageId: "markdown,asciidoc",
-      dictionaries: ["storm", "npm", "html", "html-symbol-entities"]
+      "languageId": "markdown,asciidoc",
+      "dictionaries": ["storm", "npm", "html", "html-symbol-entities"]
     },
     {
-      languageId: "html,pug,jade,php,handlebars",
-      dictionaries: [
+      "languageId": "html,pug,jade,php,handlebars",
+      "dictionaries": [
         "storm",
         "html",
         "fonts",
@@ -118,40 +114,40 @@ module.exports = {
       ]
     },
     {
-      languageId: "json,jsonc",
-      dictionaries: ["storm", "node", "npm"]
+      "languageId": "json,jsonc",
+      "dictionaries": ["storm", "node", "npm"]
     },
     {
-      languageId: "php",
-      dictionaries: ["storm", "php"]
+      "languageId": "php",
+      "dictionaries": ["storm", "php"]
     },
     {
-      languageId: "css,less,scss",
-      dictionaries: ["storm", "fonts", "css"]
+      "languageId": "css,less,scss",
+      "dictionaries": ["storm", "fonts", "css"]
     },
     {
-      languageId: "map",
-      enabled: false
+      "languageId": "map",
+      "enabled": false
     },
     {
-      languageId: "image",
-      enabled: false
+      "languageId": "image",
+      "enabled": false
     },
     {
-      languageId: "binary",
-      enabled: false
+      "languageId": "binary",
+      "enabled": false
     },
     {
-      languageId: "markdown,html,mdx",
-      ignoreRegExpList: ["HTML-symbol-entity"]
+      "languageId": "markdown,html,mdx",
+      "ignoreRegExpList": ["HTML-symbol-entity"]
     },
     {
-      languageId: "html",
-      ignoreRegExpList: ["href"]
+      "languageId": "html",
+      "ignoreRegExpList": ["href"]
     },
     {
-      languageId: "markdown",
-      ignoreRegExpList: [
+      "languageId": "markdown",
+      "ignoreRegExpList": [
         "MARKDOWN-link-reference",
         "MARKDOWN-link-footer",
         "MARKDOWN-link",
@@ -159,7 +155,7 @@ module.exports = {
       ]
     }
   ],
-  import: [
+  "import": [
     "@cspell/dict-ada/cspell-ext.json",
     "@cspell/dict-aws/cspell-ext.json",
     "@cspell/dict-bash/cspell-ext.json",
@@ -209,4 +205,4 @@ module.exports = {
     "@cspell/dict-typescript/cspell-ext.json",
     "@cspell/dict-vue/cspell-ext.json"
   ]
-};
+}

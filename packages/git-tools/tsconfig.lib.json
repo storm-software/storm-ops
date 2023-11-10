@@ -11,7 +11,8 @@
     "src/**/*.js",
     "scripts/**/*.js",
     "bin/**/*",
-    "declarations.d.ts"
+    "declarations.d.ts",
+    "src/lint-staged/config.cjs"
   ],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }
