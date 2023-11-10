@@ -1,3 +1,10 @@
+## [1.2.14](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.13...git-tools-v1.2.14) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Update extension type of scripts used in husky hooks ([1aa3e3b](https://github.com/storm-software/storm-ops/commit/1aa3e3b26d79015bab75f1bbee26974407a19428))
+
 ## [1.2.13](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.12...git-tools-v1.2.13) (2023-11-10)
 
 
