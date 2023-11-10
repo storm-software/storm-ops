@@ -1,3 +1,10 @@
+## [1.5.28](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.27...create-storm-workspace-v1.5.28) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Update readme-gen to use the configured pnpm script ([87a2788](https://github.com/storm-software/storm-ops/commit/87a2788bbe74bd7ef92ca872c3cadc57531ba51e))
+
 ## [1.5.27](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.26...create-storm-workspace-v1.5.27) (2023-11-10)
 
 
