@@ -6,7 +6,7 @@ try {
   console.log("Running Storm post-merge hook...");
 
   execSync(
-    'node @storm-software/git-tools/scripts/package-version-warning.cjs "$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"'
+    'changed = "$(git diff-tree -r --name-only --no-commit-id $1 $2)" && node @storm-software/git-tools/scripts/package-version-warning.cjs $changed'
   );
 
   const result = execSync("git-lfs -v", "utf8");
@@ -17,7 +17,9 @@ try {
     process.exit(1);
   }
 
-  execSync('git lfs post-merge "$(git rev-parse --abbrev-ref HEAD)"');
+  execSync(
+    'remote = "$(git rev-parse --abbrev-ref HEAD)" && git lfs post-merge $remote'
+  );
 } catch (e) {
   console.error(e);
   process.exit(1);
