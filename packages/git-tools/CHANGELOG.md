@@ -1,3 +1,11 @@
+## [1.2.11](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.10...git-tools-v1.2.11) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Update list-staged config extension to work with ES modules ([a408b88](https://github.com/storm-software/storm-ops/commit/a408b88543fa835c931b25d8c9294c4427e8e6fe))
+* **linting-tools:** Update cspell config to json to resolve import issue ([5ca437a](https://github.com/storm-software/storm-ops/commit/5ca437a2880486de494f4a49803b5e59b5a746dc))
+
 ## [1.2.10](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.9...git-tools-v1.2.10) (2023-11-10)
 
 
