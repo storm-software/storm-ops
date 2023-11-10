@@ -83,7 +83,7 @@ async function createProgram() {
     const releasePlugin = new Option(
       "--plugin <plugin>",
       "Semantic Release plugin"
-    ).default("@storm-software/semantic-release-plugin");
+    ).default("@storm-software/git-tools/semantic-release-plugin");
 
     const releaseBase = new Option("--base <base>", "Git base tag value");
 
@@ -143,7 +143,7 @@ async function readmeAction(options: ReadMeOptions) {
 async function releaseAction({
   project,
   config = "@storm-software/git-tools/commit/config.js",
-  plugin = "@storm-software/semantic-release-plugin",
+  plugin = "@storm-software/git-tools/semantic-release-plugin",
   base,
   head
 }: {
