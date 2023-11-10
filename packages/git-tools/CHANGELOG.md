@@ -1,3 +1,10 @@
+## [1.2.13](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.12...git-tools-v1.2.13) (2023-11-10)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with node-library generator ([c0f2d26](https://github.com/storm-software/storm-ops/commit/c0f2d26849f0f16ca4e6da30c953152be3113906))
+
 ## [1.2.12](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.11...git-tools-v1.2.12) (2023-11-10)
 
 
