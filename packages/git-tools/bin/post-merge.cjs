@@ -21,8 +21,7 @@ try {
     process.exit(1);
   }
 
-  const remote = execSync("git rev-parse --abbrev-ref HEAD", "utf8");
-  execSync(`git lfs post-merge "$@"`);
+  execSync("git lfs post-merge");
 } catch (e) {
   console.error(e);
   process.exit(1);
