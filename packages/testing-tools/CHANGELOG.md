@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.6...testing-tools-v1.1.7) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Update list-staged config extension to work with ES modules ([a408b88](https://github.com/storm-software/storm-ops/commit/a408b88543fa835c931b25d8c9294c4427e8e6fe))
+
 ## [1.1.6](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.5...testing-tools-v1.1.6) (2023-11-10)
 
 

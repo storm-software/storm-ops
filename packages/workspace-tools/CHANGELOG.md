@@ -1,3 +1,11 @@
+## [1.5.25](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.24...workspace-tools-v1.5.25) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Update list-staged config extension to work with ES modules ([a408b88](https://github.com/storm-software/storm-ops/commit/a408b88543fa835c931b25d8c9294c4427e8e6fe))
+* **linting-tools:** Update cspell config to json to resolve import issue ([5ca437a](https://github.com/storm-software/storm-ops/commit/5ca437a2880486de494f4a49803b5e59b5a746dc))
+
 ## [1.5.24](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.23...workspace-tools-v1.5.24) (2023-11-10)
 
 
