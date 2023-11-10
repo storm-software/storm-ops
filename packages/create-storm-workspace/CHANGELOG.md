@@ -1,3 +1,10 @@
+## [1.5.24](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.23...create-storm-workspace-v1.5.24) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue with missing husky hooks ([505113d](https://github.com/storm-software/storm-ops/commit/505113d29a17b37c99aa00d93bb6a1b5f60412ed))
+
 ## [1.5.23](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.22...create-storm-workspace-v1.5.23) (2023-11-10)
 
 

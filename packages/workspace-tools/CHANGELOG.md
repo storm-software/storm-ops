@@ -1,3 +1,10 @@
+## [1.5.22](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.21...workspace-tools-v1.5.22) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue with missing husky hooks ([505113d](https://github.com/storm-software/storm-ops/commit/505113d29a17b37c99aa00d93bb6a1b5f60412ed))
+
 ## [1.5.21](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.20...workspace-tools-v1.5.21) (2023-11-10)
 
 

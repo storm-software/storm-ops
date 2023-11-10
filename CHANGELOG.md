@@ -1,3 +1,10 @@
+## [1.4.12](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.11...@storm-software/storm-ops-v1.4.12) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue with missing husky hooks ([505113d](https://github.com/storm-software/storm-ops/commit/505113d29a17b37c99aa00d93bb6a1b5f60412ed))
+
 ## [1.4.11](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.10...@storm-software/storm-ops-v1.4.11) (2023-11-10)
 
 
