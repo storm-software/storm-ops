@@ -1,3 +1,12 @@
+## [1.5.22](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.21...create-storm-workspace-v1.5.22) (2023-11-10)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Move the nx.json default config to tasks-runners ([3103757](https://github.com/storm-software/storm-ops/commit/31037576dec87a7291bed5fb4f0626b83e351e1e))
+* **workspace-tools:** Update cache directory in nx.json default ([67e04c6](https://github.com/storm-software/storm-ops/commit/67e04c6dbf7f78f0f713d34abae94a7f45ab7a79))
+* **workspace-tools:** Update env file in preset generator ([c48acad](https://github.com/storm-software/storm-ops/commit/c48acad7b01ee56e7f9304f16b8b32aaa31be441))
+
 ## [1.5.21](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.20...create-storm-workspace-v1.5.21) (2023-11-10)
 
 
