@@ -1,3 +1,11 @@
+## [1.3.9](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.8...linting-tools-v1.3.9) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Update list-staged config extension to work with ES modules ([a408b88](https://github.com/storm-software/storm-ops/commit/a408b88543fa835c931b25d8c9294c4427e8e6fe))
+* **linting-tools:** Update cspell config to json to resolve import issue ([5ca437a](https://github.com/storm-software/storm-ops/commit/5ca437a2880486de494f4a49803b5e59b5a746dc))
+
 ## [1.3.8](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.7...linting-tools-v1.3.8) (2023-11-10)
 
 
