@@ -65,7 +65,7 @@
           },
           {
             "input": "packages/git-tools/src",
-            "glob": "lint-staged/**/*.js",
+            "glob": "lint-staged/**/*.cjs",
             "output": "."
           },
           {
