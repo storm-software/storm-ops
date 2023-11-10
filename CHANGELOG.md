@@ -1,3 +1,10 @@
+## [1.4.11](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.10...@storm-software/storm-ops-v1.4.11) (2023-11-10)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with path to tsup executor ([7eca742](https://github.com/storm-software/storm-ops/commit/7eca742381ccb9c78bfd401db8215f958bcf7697))
+
 ## [1.4.10](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.9...@storm-software/storm-ops-v1.4.10) (2023-11-09)
 
 
