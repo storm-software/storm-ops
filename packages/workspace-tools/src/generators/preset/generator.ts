@@ -91,7 +91,7 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
 
       json.scripts.adr = "pnpm log4brains adr new";
       json.scripts["adr-preview"] = "pnpm log4brains preview";
-      json.scripts.prepare = "pnpm add husky -w";
+      json.scripts.prepare = "pnpm add husky -w && pnpm husky install";
       json.scripts.preinstall = "npx -y only-allow pnpm";
       json.scripts["install:csb"] =
         "corepack enable && pnpm install --frozen-lockfile";

@@ -30,7 +30,12 @@
   },
   "type": "module",
   "bin": {
-    "storm-git": "./bin/cli.js"
+    "storm-git": "./bin/cli.js",
+    "storm-post-checkout": "./hooks/post-checkout",
+    "storm-post-commit": "./hooks/post-commit",
+    "storm-post-merge": "./hooks/post-merge",
+    "storm-pre-commit": "./hooks/pre-commit",
+    "storm-pre-push": "./hooks/pre-push"
   },
   "dependencies": {
     "@commitlint/cli": "18.2.0",

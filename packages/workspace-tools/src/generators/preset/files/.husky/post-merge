@@ -1,5 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo $HUSKY_GIT_STDIN | @storm-software/git-tools/hooks/post-merge $HUSKY_GIT_PARAMS
+echo $HUSKY_GIT_STDIN | storm-post-merge $HUSKY_GIT_PARAMS
 
