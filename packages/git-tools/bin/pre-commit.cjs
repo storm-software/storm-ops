@@ -2,7 +2,12 @@
 
 const { execSync } = require("node:child_process");
 
-execSync(
-  'pnpm lint-staged --concurrent false --config="@storm-software/git-tools/lint-staged/config.cjs"'
-);
-execSync("pnpm test");
+try {
+  execSync(
+    'pnpm lint-staged --concurrent false --config="@storm-software/git-tools/lint-staged/config.cjs"'
+  );
+  execSync("pnpm test");
+} catch (e) {
+  console.error(e);
+  process.exit(1);
+}
