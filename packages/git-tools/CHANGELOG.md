@@ -1,3 +1,10 @@
+## [1.2.18](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.17...git-tools-v1.2.18) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Updated code that checks for git-lfs in hooks ([ec4e632](https://github.com/storm-software/storm-ops/commit/ec4e632fe5db27eba12e7dffbbab7ef96c2ef40e))
+
 ## [1.2.17](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.16...git-tools-v1.2.17) (2023-11-10)
 
 
