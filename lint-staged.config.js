@@ -56,7 +56,7 @@ module.exports = {
       `pnpm ${join(
         process.env.STORM_REPO_ROOT,
         "dist/packages/git-tools/bin/cli.js"
-      )} readme --templates=${join(
+      )} readme-gen --templates=${join(
         process.env.STORM_REPO_ROOT,
         "dist/packages/git-tools/readme/templates"
       )}`,

@@ -31,11 +31,11 @@
   "type": "module",
   "bin": {
     "storm-git": "./bin/cli.js",
-    "storm-post-checkout": "./hooks/post-checkout",
-    "storm-post-commit": "./hooks/post-commit",
-    "storm-post-merge": "./hooks/post-merge",
-    "storm-pre-commit": "./hooks/pre-commit",
-    "storm-pre-push": "./hooks/pre-push"
+    "storm-post-checkout": "./hooks/post-checkout.cjs",
+    "storm-post-commit": "./hooks/post-commit.cjs",
+    "storm-post-merge": "./hooks/post-merge.cjs",
+    "storm-pre-commit": "./hooks/pre-commit.cjs",
+    "storm-pre-push": "./hooks/pre-push.cjs"
   },
   "dependencies": {
     "@commitlint/cli": "18.2.0",

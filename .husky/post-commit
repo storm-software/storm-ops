@@ -1,5 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo $HUSKY_GIT_STDIN | ./packages/git-tools/hooks/post-commit $HUSKY_GIT_PARAMS
+echo $HUSKY_GIT_STDIN | ./packages/git-tools/hooks/post-commit.cjs $HUSKY_GIT_PARAMS
 
