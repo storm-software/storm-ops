@@ -22,7 +22,7 @@ try {
   }
 
   const remote = execSync("git rev-parse --abbrev-ref HEAD", "utf8");
-  execSync(`git lfs post-checkout ${remote}`);
+  execSync(`git lfs post-checkout refs/remotes/${remote}`);
 } catch (e) {
   console.error(e);
   process.exit(1);
