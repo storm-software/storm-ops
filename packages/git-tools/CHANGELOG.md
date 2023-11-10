@@ -1,3 +1,10 @@
+## [1.2.10](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.9...git-tools-v1.2.10) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issues with husky hook scripts ([3c330bb](https://github.com/storm-software/storm-ops/commit/3c330bb92ed007d9d8c9b6f893826057b5150092))
+
 ## [1.2.9](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.8...git-tools-v1.2.9) (2023-11-10)
 
 
