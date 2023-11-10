@@ -1,3 +1,10 @@
+## [1.5.21](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.20...workspace-tools-v1.5.21) (2023-11-10)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with path to tsup executor ([7eca742](https://github.com/storm-software/storm-ops/commit/7eca742381ccb9c78bfd401db8215f958bcf7697))
+
 ## [1.5.20](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.19...workspace-tools-v1.5.20) (2023-11-10)
 
 
