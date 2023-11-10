@@ -156,8 +156,8 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
 
       json.scripts.lint = "pnpm storm-lint all --skip-cspell";
       json.scripts.commit = "pnpm storm-git commit";
-      json.scripts.readme =
-        'pnpm storm-git readme --templates="docs/readme-templates"';
+      json.scripts["readme-gen"] =
+        'pnpm storm-git readme-gen --templates="docs/readme-templates"';
       json.scripts["api-extractor"] =
         "nx g @storm-software/workspace-tools:api-extractor --outputPath 'docs/api-reference' --clean --no-interactive";
       json.scripts.release = "pnpm storm-git release";

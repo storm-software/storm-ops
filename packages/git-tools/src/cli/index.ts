@@ -61,7 +61,7 @@ async function createProgram() {
     ).default(true);
 
     program
-      .command("readme")
+      .command("readme-gen")
       .description("Run the README.md generator using the templates provided.")
       .addOption(readmeTemplatePath)
       .addOption(readmePackageName)

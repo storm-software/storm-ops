@@ -47,9 +47,6 @@ module.exports = {
       .map(filename => (isWin ? filename : escape(filename)))
       .join(" ");
 
-    return [
-      'pnpm storm-git readme --templates="@storm-software/git-tools/readme/templates"',
-      `git add ${escapedFileNames}`
-    ];
+    return ["pnpm readme-gen", `git add ${escapedFileNames}`];
   }
 };
