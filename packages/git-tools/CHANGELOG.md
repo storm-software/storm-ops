@@ -1,3 +1,10 @@
+## [1.2.16](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.15...git-tools-v1.2.16) (2023-11-10)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue setting private package.json field in node-library generator ([7e570c5](https://github.com/storm-software/storm-ops/commit/7e570c5d62b206bca2840e8e92c0a9920d8b571e))
+
 ## [1.2.15](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.14...git-tools-v1.2.15) (2023-11-10)
 
 
