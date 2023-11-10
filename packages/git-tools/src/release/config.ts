@@ -10,7 +10,7 @@ export default {
   github: true,
   githubOptions: {
     assets: [],
-    addReleases: true,
+    addReleases: "bottom",
     draftRelease: false
   },
   git: true,

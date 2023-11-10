@@ -68,17 +68,6 @@ export async function nodeLibraryGenerator(
   );
 
   createProjectTsConfigJson(tree, options);
-  addTsConfigPath(tree, options.importPath, [
-    joinPathFragments(
-      options.projectRoot,
-      "./src",
-      "index." + (options.js ? "js" : "ts")
-    )
-  ]);
-  addTsConfigPath(tree, joinPathFragments(options.importPath, "/*"), [
-    joinPathFragments(options.projectRoot, "./src", "/*")
-  ]);
-
   addProjectConfiguration(tree, options.name, {
     root: options.directory,
     projectType: "library",
@@ -225,6 +214,17 @@ export async function nodeLibraryGenerator(
       }
     }));
   }
+
+  addTsConfigPath(tree, options.importPath, [
+    joinPathFragments(
+      options.projectRoot,
+      "./src",
+      "index." + (options.js ? "js" : "ts")
+    )
+  ]);
+  addTsConfigPath(tree, joinPathFragments(options.importPath, "/*"), [
+    joinPathFragments(options.projectRoot, "./src", "/*")
+  ]);
 
   await formatFiles(tree);
 }
