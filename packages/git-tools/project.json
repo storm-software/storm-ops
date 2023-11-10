@@ -60,7 +60,7 @@
           },
           {
             "input": "packages/git-tools",
-            "glob": "bin/**/*",
+            "glob": "bin/**/{*,*.*}",
             "output": "."
           },
           {
@@ -82,11 +82,6 @@
             "input": "./packages/git-tools/scripts",
             "glob": "**/*.cjs",
             "output": "./scripts"
-          },
-          {
-            "input": "./packages/git-tools/hooks",
-            "glob": "**/{*,*.*}",
-            "output": "./hooks"
           }
         ]
       }

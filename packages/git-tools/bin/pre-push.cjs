@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { execSync } = require("node:child_process");
 
 execSync("node @storm-software/git-tools/scripts/check-lock-file.cjs");
