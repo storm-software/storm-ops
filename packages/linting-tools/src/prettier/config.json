@@ -19,7 +19,13 @@
       }
     },
     {
-      "files": "**/*.4cast",
+      "files": "**/*.acid",
+      "options": {
+        "parser": "prisma-parse"
+      }
+    },
+    {
+      "files": "**/*.acidic",
       "options": {
         "parser": "prisma-parse"
       }

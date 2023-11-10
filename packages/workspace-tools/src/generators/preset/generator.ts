@@ -71,7 +71,7 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
         email: "support@stormsoftware.org"
       };
 
-      json.license ??= "Apache License 2.0";
+      json.license = "Apache License 2.0";
       json.author ??= {
         name: "Storm Software",
         email: "contact@stormsoftware.org",

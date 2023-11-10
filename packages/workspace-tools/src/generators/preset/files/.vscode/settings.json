@@ -64,7 +64,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "files.associations": {
     "*.hbs": "handlebars",
-    "*.4cast": "acidic"
+    "*.acid": "acidic",
+    "*.acidic": "acidic"
   },
 
   "eslint.validate": [

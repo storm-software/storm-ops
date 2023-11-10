@@ -85,7 +85,7 @@
           },
           {
             "input": "./packages/git-tools/hooks",
-            "glob": "**/*.js",
+            "glob": "**/{*,*.*}",
             "output": "./hooks"
           }
         ]
