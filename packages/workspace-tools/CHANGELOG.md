@@ -1,3 +1,10 @@
+## [1.5.27](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.26...workspace-tools-v1.5.27) (2023-11-10)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with node-library generator ([c0f2d26](https://github.com/storm-software/storm-ops/commit/c0f2d26849f0f16ca4e6da30c953152be3113906))
+
 ## [1.5.26](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.25...workspace-tools-v1.5.26) (2023-11-10)
 
 
