@@ -60,9 +60,6 @@ export async function nodeLibraryGenerator(
     tasks.push(await setupVerdaccio(tree, { ...options, skipFormat: true }));
   }
 
-  const lintCallback = await addLint(tree, options);
-  tasks.push(lintCallback);
-
   const { className, name, propertyName } = names(
     options.projectNames.projectFileName
   );
@@ -226,6 +223,9 @@ export async function nodeLibraryGenerator(
     joinPathFragments(options.projectRoot, "./src", "/*")
   ]);
 
+  const lintCallback = await addLint(tree, options);
+  tasks.push(lintCallback);
+
   await formatFiles(tree);
 }
 
@@ -242,9 +242,7 @@ async function addLint(
     project: options.name,
     linter: options.linter,
     skipFormat: true,
-    tsConfigPaths: [
-      joinPathFragments(options.projectRoot, "tsconfig.lib.json")
-    ],
+    tsConfigPaths: [joinPathFragments(options.projectRoot, "tsconfig.json")],
     unitTestRunner: options.unitTestRunner,
     eslintFilePatterns: [
       mapLintPattern(
