@@ -1,10 +1,10 @@
 {
   "executors": {
     "tsup": {
-      "implementation": "./executors/tsup/executor",
-      "schema": "./executors/tsup/schema.json",
+      "implementation": "./src/executors/tsup/executor",
+      "schema": "./src/executors/tsup/schema.json",
       "description": "Run a build on the project using tsup configuration",
-      "hasher": "./executors/tsup/hasher"
+      "hasher": "./src/executors/tsup/hasher"
     }
   }
 }
