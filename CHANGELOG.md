@@ -1,3 +1,10 @@
+## [1.4.14](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.13...@storm-software/storm-ops-v1.4.14) (2023-11-10)
+
+
+### Bug Fixes
+
+* **storm-ops:** Update workspace's husky hooks to use new extensions ([649fe58](https://github.com/storm-software/storm-ops/commit/649fe58d587ae83611e5be1ef06e6226922401e3))
+
 ## [1.4.13](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.12...@storm-software/storm-ops-v1.4.13) (2023-11-10)
 
 
