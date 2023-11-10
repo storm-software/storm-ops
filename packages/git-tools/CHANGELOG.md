@@ -1,3 +1,13 @@
+## [1.2.17](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.16...git-tools-v1.2.17) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Added logging to husky hooks ([5b4a159](https://github.com/storm-software/storm-ops/commit/5b4a1597fee820bf1aa009473b313d43d06ae1c9))
+* **git-tools:** Moved hook executable scripts to bin folder ([36f8896](https://github.com/storm-software/storm-ops/commit/36f889633a971ac091491dd82fbd40d6cc6236dc))
+* **git-tools:** Updated executable scripts to check for git-lfs failures ([ad738cf](https://github.com/storm-software/storm-ops/commit/ad738cfaadc30306c9ff9e2e7fde19c9b328ccaf))
+* **git-tools:** Wrapped all hook executable scripts with try-catches ([f36b181](https://github.com/storm-software/storm-ops/commit/f36b1813a88970eb7fd24c67ef71e93bca7edcf9))
+
 ## [1.2.16](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.15...git-tools-v1.2.16) (2023-11-10)
 
 
