@@ -13,9 +13,8 @@ try {
     process.exit(1);
   }
 
-  execSync(
-    'remote = "$(git rev-parse --abbrev-ref HEAD)" && git lfs post-commit $remote'
-  );
+  const remote = execSync("git rev-parse --abbrev-ref HEAD", "utf8");
+  execSync(`git lfs post-commit ${remote}`);
 } catch (e) {
   console.error(e);
   process.exit(1);

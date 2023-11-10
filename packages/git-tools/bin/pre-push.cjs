@@ -51,9 +51,8 @@ try {
     process.exit(1);
   }
 
-  execSync(
-    'remote = "$(git rev-parse --abbrev-ref HEAD)" && git lfs pre-push $remote'
-  );
+  const remote = execSync("git rev-parse --abbrev-ref HEAD", "utf8");
+  execSync(`git lfs pre-push ${remote}`);
 } catch (e) {
   console.error(e);
   process.exit(1);
