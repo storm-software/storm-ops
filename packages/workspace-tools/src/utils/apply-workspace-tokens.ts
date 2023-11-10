@@ -16,13 +16,14 @@ export const applyWorkspaceTokens = (
   let projectRoot!: string;
   let sourceRoot!: string;
   if (
-    (config as ExecutorContext)?.projectsConfigurations &&
+    (config as ExecutorContext)?.projectsConfigurations?.projects &&
     (config as ExecutorContext)?.projectName
   ) {
     const context = config as ExecutorContext;
     projectName = context.projectName;
-    projectRoot = context.projectsConfigurations[projectName].root;
-    sourceRoot = context.projectsConfigurations[projectName].sourceRoot;
+    projectRoot = context.projectsConfigurations.projects[projectName].root;
+    sourceRoot =
+      context.projectsConfigurations.projects[projectName].sourceRoot;
   } else {
     const projectConfig = config as ProjectConfiguration;
     projectName = projectConfig.name;

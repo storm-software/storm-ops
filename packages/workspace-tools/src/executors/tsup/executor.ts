@@ -18,11 +18,21 @@ export default async function runExecutor(
   try {
     console.log("⚡Running build executor on the workspace");
 
+    if (
+      !context.projectsConfigurations?.projects ||
+      !context.projectName ||
+      !context.projectsConfigurations.projects[context.projectName]
+    ) {
+      throw Error(
+        "The Build process failed because the context is not valid. Please run this command from a workspace."
+      );
+    }
+
     const workspaceRoot = getWorkspaceRoot();
     const projectRoot =
-      context.projectsConfigurations[context.projectName].root;
+      context.projectsConfigurations.projects[context.projectName].root;
     const sourceRoot =
-      context.projectsConfigurations[context.projectName].sourceRoot;
+      context.projectsConfigurations.projects[context.projectName].sourceRoot;
 
     const outputPath = applyWorkspaceTokens(
       options.outputPath
