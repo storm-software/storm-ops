@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.5...testing-tools-v1.1.6) (2023-11-10)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue with missing husky hooks ([505113d](https://github.com/storm-software/storm-ops/commit/505113d29a17b37c99aa00d93bb6a1b5f60412ed))
+
 ## [1.1.5](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.4...testing-tools-v1.1.5) (2023-11-09)
 
 
