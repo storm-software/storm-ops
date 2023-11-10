@@ -1,3 +1,10 @@
+## [1.3.10](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.9...linting-tools-v1.3.10) (2023-11-10)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue setting private package.json field in node-library generator ([7e570c5](https://github.com/storm-software/storm-ops/commit/7e570c5d62b206bca2840e8e92c0a9920d8b571e))
+
 ## [1.3.9](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.8...linting-tools-v1.3.9) (2023-11-10)
 
 
