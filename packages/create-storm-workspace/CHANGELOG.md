@@ -1,3 +1,10 @@
+## [1.5.21](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.20...create-storm-workspace-v1.5.21) (2023-11-10)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update node-library generator to add library to workspace tsconfig and package.json ([325cb72](https://github.com/storm-software/storm-ops/commit/325cb726e37a333bab12bbfbd95b16497dd2a940))
+
 ## [1.5.20](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.19...create-storm-workspace-v1.5.20) (2023-11-10)
 
 
