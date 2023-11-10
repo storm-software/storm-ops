@@ -109,6 +109,6 @@
     }
   },
   "parallel": 4,
-  "cacheDirectory": "node_modules/.cache/nx",
+  "cacheDirectory": ".nx/cache",
   "cacheableOperations": ["build", "lint", "format", "test", "e2e"]
 }
