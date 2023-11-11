@@ -1,3 +1,10 @@
+## [1.5.34](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.33...create-storm-workspace-v1.5.34) (2023-11-11)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve null reference issue in node-library generator ([113a9dc](https://github.com/storm-software/storm-ops/commit/113a9dc34587c2b6b3cdfe006d13f09f46560e00))
+
 ## [1.5.33](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.5.32...create-storm-workspace-v1.5.33) (2023-11-11)
 
 
