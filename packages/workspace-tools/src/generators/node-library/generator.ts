@@ -203,9 +203,9 @@ export async function nodeLibraryGenerator(
     updateJson(tree, "package.json", json => ({
       ...json,
       pnpm: {
-        ...json?.pnpm,
+        ...(json?.pnpm ?? {}),
         override: {
-          ...json?.pnpm?.override,
+          ...(json?.pnpm?.override ?? {}),
           [options.importPath]: "workspace:*"
         }
       }
