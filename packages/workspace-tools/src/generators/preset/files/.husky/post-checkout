@@ -1,5 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo $HUSKY_GIT_STDIN | storm-post-checkout $HUSKY_GIT_PARAMS
+echo $HUSKY_GIT_STDIN | pnpm storm-post-checkout $HUSKY_GIT_PARAMS
 
