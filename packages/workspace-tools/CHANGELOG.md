@@ -1,3 +1,10 @@
+## [1.6.4](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.3...workspace-tools-v1.6.4) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added code to properly set the package.json files in node-library generator ([144749c](https://github.com/storm-software/storm-ops/commit/144749caf85d606612e67e7cfae9273ff8f70bce))
+
 ## [1.6.3](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.2...workspace-tools-v1.6.3) (2023-11-12)
 
 
