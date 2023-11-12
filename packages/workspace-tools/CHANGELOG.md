@@ -1,3 +1,10 @@
+## [1.6.6](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.5...workspace-tools-v1.6.6) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Change the extension on the compiled files to js ([5214e97](https://github.com/storm-software/storm-ops/commit/5214e9752594b0bf9aaff19c453bcce935bfdbb4))
+
 ## [1.6.5](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.4...workspace-tools-v1.6.5) (2023-11-12)
 
 
