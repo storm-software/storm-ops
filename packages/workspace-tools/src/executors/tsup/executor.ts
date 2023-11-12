@@ -49,18 +49,18 @@ export default async function runExecutor(
 
     const assets = Array.from(options.assets);
     assets.push({
-      glob: join(sourceRoot, "package.json"),
       input: sourceRoot,
+      glob: "package.json",
       output: "."
     });
     assets.push({
-      glob: join(sourceRoot, "README.md"),
       input: sourceRoot,
-      output: outputPath
+      glob: "*.md",
+      output: "/"
     });
     assets.push({
-      glob: "",
-      input: "LICENSE",
+      input: "",
+      glob: "LICENSE",
       output: "."
     });
 
@@ -69,7 +69,7 @@ export default async function runExecutor(
       context
     );
     if (!result.success) {
-      throw Error("The Build process failed trying to copy assets");
+      console.error("The Build process failed trying to copy assets");
     }
 
     options.external = options.external || [];
@@ -119,7 +119,7 @@ export default async function runExecutor(
 
     const packageJsonResult = await copyPackageJson(cpjOptions, context);
     if (!packageJsonResult.success) {
-      console.error("The Build process failed trying to copy package.json");
+      throw new Error("The Build process failed trying to copy package.json");
     }
 
     console.log("Getting Tsup build config");
