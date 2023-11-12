@@ -11,7 +11,6 @@ export function modernConfig(
   debug = false,
   bundle = true,
   platform = "neutral",
-  clean = true,
   options: Options = {}
 ) {
   return {
@@ -39,7 +38,7 @@ export function modernConfig(
     platform,
     dts: true,
     sourcemap: debug,
-    clean,
+    clean: false,
     esbuildPlugins: [esbuildPluginFilePathExtensions({ esmExtension: "js" })]
   } as Options;
 }
@@ -51,7 +50,6 @@ export function legacyConfig(
   debug = false,
   bundle = true,
   platform = "neutral",
-  clean = true,
   options: Options = {}
 ) {
   return {
@@ -68,7 +66,7 @@ export function legacyConfig(
     platform,
     dts: true,
     sourcemap: debug,
-    clean,
+    clean: false,
     esbuildPlugins: [esbuildPluginFilePathExtensions({ esmExtension: "js" })]
   } as Options;
 }
@@ -79,7 +77,6 @@ export function getConfig({
   debug,
   bundle,
   platform,
-  clean,
   options,
   main,
   additionalEntryPoints
@@ -87,25 +84,7 @@ export function getConfig({
   const entry = [main, ...(additionalEntryPoints ?? [])];
 
   return defineConfig([
-    modernConfig(
-      entry,
-      outputPath,
-      tsConfig,
-      debug,
-      bundle,
-      platform,
-      clean,
-      options
-    ),
-    legacyConfig(
-      entry,
-      outputPath,
-      tsConfig,
-      debug,
-      bundle,
-      platform,
-      clean,
-      options
-    )
+    modernConfig(entry, outputPath, tsConfig, debug, bundle, platform, options),
+    legacyConfig(entry, outputPath, tsConfig, debug, bundle, platform, options)
   ]);
 }

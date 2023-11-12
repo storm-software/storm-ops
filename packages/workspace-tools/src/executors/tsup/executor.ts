@@ -4,6 +4,7 @@ import { getOutExtension } from "@nx/esbuild/src/executors/esbuild/lib/build-esb
 import { getExtraDependencies } from "@nx/esbuild/src/executors/esbuild/lib/get-extra-dependencies";
 import { CopyPackageJsonOptions, copyAssets, copyPackageJson } from "@nx/js";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
+import { removeSync } from "fs-extra";
 import { join } from "path";
 import { Options, build as tsup } from "tsup";
 import { applyWorkspaceTokens } from "../../utils/apply-workspace-tokens";
@@ -46,6 +47,11 @@ export default async function runExecutor(
         : join(sourceRoot, "**/*@(.js|.jsx|.ts|.tsx)"),
       context
     );
+
+    if (options.clean !== false) {
+      console.log("🧹 Cleaning output path");
+      removeSync(options.outputPath);
+    }
 
     const assets = Array.from(options.assets);
     assets.push({

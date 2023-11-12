@@ -492,6 +492,9 @@ importers:
       esbuild-plugin-file-path-extensions:
         specifier: 1.0.0
         version: 1.0.0
+      fs-extra:
+        specifier: ^11.1.1
+        version: 11.1.1
       tslib:
         specifier: 2.6.2
         version: 2.6.2
