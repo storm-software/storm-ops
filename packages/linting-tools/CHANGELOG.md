@@ -1,3 +1,10 @@
+## [1.3.15](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.14...linting-tools-v1.3.15) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update output paths on tsup executor config ([54e2078](https://github.com/storm-software/storm-ops/commit/54e2078c4d6fbc98401d4703746c1de9504e75a4))
+
 ## [1.3.14](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.13...linting-tools-v1.3.14) (2023-11-12)
 
 
