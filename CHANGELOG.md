@@ -1,3 +1,10 @@
+## [1.4.21](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.20...@storm-software/storm-ops-v1.4.21) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Log error when copy assets fails ([c97b2c9](https://github.com/storm-software/storm-ops/commit/c97b2c9ca6ea5b3170718c23894b45db41172ff0))
+
 ## [1.4.20](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.19...@storm-software/storm-ops-v1.4.20) (2023-11-12)
 
 
