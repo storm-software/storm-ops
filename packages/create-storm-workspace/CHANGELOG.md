@@ -1,3 +1,11 @@
+## [1.6.3](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.2...create-storm-workspace-v1.6.3) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed unused hasher module ([83cc1ac](https://github.com/storm-software/storm-ops/commit/83cc1ac61e560b19986fab8b02ac94e54a8d0273))
+* **workspace-tools:** Resolve issue with `outDir` in spec tsconfig ([cbf4245](https://github.com/storm-software/storm-ops/commit/cbf4245fc217f4e319c43565ab5bc64af5af2c22))
+
 ## [1.6.2](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.1...create-storm-workspace-v1.6.2) (2023-11-12)
 
 
