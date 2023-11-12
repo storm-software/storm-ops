@@ -1,3 +1,10 @@
+## [1.6.9](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.8...create-storm-workspace-v1.6.9) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Log error when copy assets fails ([c97b2c9](https://github.com/storm-software/storm-ops/commit/c97b2c9ca6ea5b3170718c23894b45db41172ff0))
+
 ## [1.6.8](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.7...create-storm-workspace-v1.6.8) (2023-11-12)
 
 
