@@ -1,3 +1,4 @@
+import { joinPathFragments } from "@nx/devkit";
 import { esbuildPluginFilePathExtensions } from "esbuild-plugin-file-path-extensions";
 import { Options, defineConfig } from "tsup";
 import { TsupExecutorSchema } from "./schema";
@@ -33,7 +34,7 @@ export function modernConfig(
           ]
         : ["esnext"],
     tsconfig: tsConfig,
-    outDir,
+    outDir: joinPathFragments(outDir, "modern"),
     minify: debug,
     bundle,
     platform,
@@ -62,7 +63,7 @@ export function legacyConfig(
     format: ["cjs", "esm"],
     target: ["es2020", "node16"],
     tsconfig: tsConfig,
-    outDir,
+    outDir: joinPathFragments(outDir, "legacy"),
     minify: debug,
     bundle,
     platform,
