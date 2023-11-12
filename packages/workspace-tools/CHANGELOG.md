@@ -1,3 +1,10 @@
+## [1.6.8](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.7...workspace-tools-v1.6.8) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Log copy package failures instead of throwing an error during tsup executor ([6f61a2a](https://github.com/storm-software/storm-ops/commit/6f61a2a92690fe94a4f8748011374e1eca534962))
+
 ## [1.6.7](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.6...workspace-tools-v1.6.7) (2023-11-12)
 
 
