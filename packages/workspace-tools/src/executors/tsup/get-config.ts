@@ -72,18 +72,21 @@ export function legacyConfig(
   } as Options;
 }
 
-export function getConfig({
-  outputPath,
-  tsConfig,
-  debug,
-  bundle,
-  platform,
-  options,
-  additionalEntryPoints
-}: TsupExecutorSchema) {
+export function getConfig(
+  projectRoot: string,
+  {
+    outputPath,
+    tsConfig,
+    debug,
+    bundle,
+    platform,
+    options,
+    additionalEntryPoints
+  }: TsupExecutorSchema
+) {
   const entry = [
-    "src/**/*.ts",
-    "src/**/*.tsx",
+    joinPathFragments(projectRoot, "**/*.ts"),
+    joinPathFragments(projectRoot, "**/*.tsx"),
     ...(additionalEntryPoints ?? [])
   ];
 
