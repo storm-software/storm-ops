@@ -9,6 +9,7 @@ import {
   joinPathFragments,
   names,
   offsetFromRoot,
+  readJson,
   readProjectConfiguration,
   updateJson,
   writeJson
@@ -109,6 +110,53 @@ export async function nodeLibraryGenerator(
     hasUnitTestRunner: options.unitTestRunner !== "none"
   });
 
+  let bugs = {
+    url: "https://stormsoftware.org/support",
+    email: "support@stormsoftware.org"
+  };
+  let repository = {
+    type: "github",
+    url: "https://github.com/storm-software/storm-stack.git"
+  };
+  let homepage = "https://stormsoftware.org";
+  let license = "Apache License 2.0";
+  let author = {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.org",
+    "url": "https://stormsoftware.org"
+  };
+  let keywords = [
+    "storm",
+    "storm-ops",
+    "stormstack",
+    "storm-stack",
+    "sullivanpj",
+    "open-system",
+    "monorepo"
+  ];
+  let description =
+    "⚡ A Storm package used to create modern, scalable web applications.";
+
+  if (tree.exists("package.json")) {
+    const packageJson = readJson<{
+      bugs: any;
+      repository: any;
+      homepage: string;
+      license: string;
+      author: any;
+      keywords: string[];
+      description: string;
+    }>(tree, "package.json");
+
+    packageJson?.bugs && (bugs = packageJson.bugs);
+    packageJson?.repository && (repository = packageJson.repository);
+    packageJson?.homepage && (homepage = packageJson.homepage);
+    packageJson?.license && (license = packageJson.license);
+    packageJson?.author && (author = packageJson.author);
+    packageJson?.keywords && (keywords = packageJson.keywords);
+    packageJson?.description && (description = packageJson.description);
+  }
+
   const packageJsonPath = joinPathFragments(
     options.projectRoot,
     "package.json"
@@ -124,6 +172,17 @@ export async function nodeLibraryGenerator(
 
       return {
         ...json,
+        version: "0.0.1",
+        description,
+        bugs,
+        repository: {
+          ...repository,
+          directory: options.projectRoot
+        },
+        homepage,
+        license,
+        author,
+        keywords,
         files: [
           joinPathFragments(
             offsetFromRoot(options.projectRoot),
@@ -161,6 +220,17 @@ export async function nodeLibraryGenerator(
   } else {
     writeJson<PackageJson>(tree, packageJsonPath, {
       name: options.importPath,
+      version: "0.0.1",
+      description,
+      bugs,
+      repository: {
+        ...repository,
+        directory: options.projectRoot
+      },
+      homepage,
+      license,
+      author,
+      keywords,
       private: !options.publishable || options.rootProject,
       files: [
         joinPathFragments(
