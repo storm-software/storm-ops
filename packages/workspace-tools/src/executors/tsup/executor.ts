@@ -119,7 +119,7 @@ export default async function runExecutor(
 
     const packageJsonResult = await copyPackageJson(cpjOptions, context);
     if (!packageJsonResult.success) {
-      throw Error("The Build process failed trying to copy package.json");
+      console.error("The Build process failed trying to copy package.json");
     }
 
     const config = getConfig({ ...options, main, outputPath });
