@@ -1,3 +1,10 @@
+## [1.6.5](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.4...create-storm-workspace-v1.6.5) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Remove ES module from build process ([afaaef0](https://github.com/storm-software/storm-ops/commit/afaaef08e1c13b8c008d5a6648caa56d7167d0bc))
+
 ## [1.6.4](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.3...create-storm-workspace-v1.6.4) (2023-11-12)
 
 
