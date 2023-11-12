@@ -13,7 +13,7 @@
         "x-completion-type": "file",
         "x-completion-glob": "**/*@(.js|.ts)",
         "x-priority": "important",
-        "default": "{sourceRoot}/**/*@(.js|.jsx|.ts|.tsx)"
+        "default": "{sourceRoot}/**/{*.js,*.jsx,*.ts,*.tsx}"
       },
       "outputPath": {
         "type": "string",

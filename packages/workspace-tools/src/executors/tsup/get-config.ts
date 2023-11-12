@@ -16,6 +16,7 @@ export function modernConfig(
   return {
     ...options,
     entry,
+    entryPoints: ["src/index.ts"],
     splitting: true,
     treeshake: true,
     format: ["cjs", "esm"],
@@ -55,6 +56,7 @@ export function legacyConfig(
   return {
     ...options,
     entry,
+    entryPoints: ["src/index.ts"],
     splitting: true,
     treeshake: true,
     format: ["cjs", "esm"],
