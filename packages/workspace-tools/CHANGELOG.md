@@ -1,3 +1,10 @@
+## [1.6.13](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.12...workspace-tools-v1.6.13) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update output paths on tsup executor config ([54e2078](https://github.com/storm-software/storm-ops/commit/54e2078c4d6fbc98401d4703746c1de9504e75a4))
+
 ## [1.6.12](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.11...workspace-tools-v1.6.12) (2023-11-12)
 
 
