@@ -5,14 +5,39 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
+      "executor": "@nx/esbuild:esbuild",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/workspace-tools",
-        "main": "packages/workspace-tools/index.ts",
         "tsConfig": "packages/workspace-tools/tsconfig.lib.json",
+        "project": "packages/workspace-tools/package.json",
+        "main": "packages/workspace-tools/index.ts",
+        "additionalEntryPoints": [
+          "packages/workspace-tools/src/executors/tsup/executor.ts",
+          "packages/workspace-tools/src/executors/tsup/get-config.ts",
+          "packages/workspace-tools/src/generators/init/init.ts",
+          "packages/workspace-tools/src/generators/node-library/generator.ts",
+          "packages/workspace-tools/src/generators/preset/generator.ts",
+          "packages/workspace-tools/src/utils/index.ts"
+        ],
+        "platform": "node",
+        "deleteOutputPath": true,
+        "bundle": true,
+        "metafile": true,
+        "sourcemap": true,
+        "minify": true,
+        "format": ["esm", "cjs"],
         "assets": [
-          "packages/workspace-tools/*.md",
+          {
+            "input": "./packages/workspace-tools",
+            "glob": "*.md",
+            "output": "/"
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "/"
+          },
           {
             "input": "./packages/workspace-tools/src",
             "glob": "**/!(*.ts)",
@@ -37,6 +62,11 @@
             "input": "./packages/workspace-tools/config",
             "glob": "**/*.*",
             "output": "./config"
+          },
+          {
+            "input": "./packages/workspace-tools",
+            "glob": "**/schema.json",
+            "output": "."
           }
         ]
       }

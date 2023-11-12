@@ -148,10 +148,10 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
       json.scripts.e2e = "nx e2e";
 
       if (options.includeApps) {
-        json.scripts.test = "nx test";
-      } else {
         json.scripts.test = "nx test && pnpm test:storybook";
         json.scripts["test:storybook"] = "pnpm test-storybook";
+      } else {
+        json.scripts.test = "nx test";
       }
 
       json.scripts.lint = "pnpm storm-lint all --skip-cspell";
@@ -159,7 +159,7 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
       json.scripts["readme-gen"] =
         'pnpm storm-git readme-gen --templates="docs/readme-templates"';
       json.scripts["api-extractor"] =
-        "nx g @storm-software/workspace-tools:api-extractor --outputPath 'docs/api-reference' --clean --no-interactive";
+        'pnpm storm-docs api-extractor --outputPath="docs/api-reference" --clean';
       json.scripts.release = "pnpm storm-git release";
 
       json.packageManager ??= `pnpm@${pnpmVersion}`;
@@ -242,7 +242,6 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
       "ts-jest": "^29.1.1",
       "ts-node": "^10.9.1",
       "tslib": "^2.6.2",
-      "tsup": "^7.2.0",
       "typescript": typescriptVersion,
       "verdaccio": "^5.27.0"
     };
