@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.0...workspace-tools-v1.6.1) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with missing tsup executor hasher code ([b1b6412](https://github.com/storm-software/storm-ops/commit/b1b6412f5b1106c494d686dc4115e3e2235358a6))
+
 # [1.6.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.32...workspace-tools-v1.6.0) (2023-11-12)
 
 
