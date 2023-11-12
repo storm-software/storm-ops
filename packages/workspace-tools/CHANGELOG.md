@@ -1,3 +1,10 @@
+## [1.6.14](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.13...workspace-tools-v1.6.14) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update entry paths for tsup build executor ([031f80e](https://github.com/storm-software/storm-ops/commit/031f80e3ac6880fc7be7cc2375ea70c748411b34))
+
 ## [1.6.13](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.12...workspace-tools-v1.6.13) (2023-11-12)
 
 
