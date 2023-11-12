@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/schema",
   "version": 2,
   "title": "Tsup Build executor",
-  "description": "",
+  "description": "Run a build on the project using tsup configuration",
   "type": "object",
   "properties": {
     "properties": {
@@ -78,7 +78,7 @@
         "type": "string",
         "description": "Platform target for outputs.",
         "enum": ["browser", "node", "neutral"],
-        "default": "node"
+        "default": "neutral"
       },
       "options": {
         "type": "object",

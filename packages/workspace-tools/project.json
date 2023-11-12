@@ -24,9 +24,8 @@
         "deleteOutputPath": true,
         "bundle": true,
         "metafile": true,
-        "sourcemap": true,
-        "minify": true,
-        "format": ["esm", "cjs"],
+        "minify": false,
+        "format": ["cjs"],
         "assets": [
           {
             "input": "./packages/workspace-tools",

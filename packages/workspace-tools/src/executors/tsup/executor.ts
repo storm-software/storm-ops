@@ -16,7 +16,7 @@ export default async function runExecutor(
   context: ExecutorContext
 ) {
   try {
-    console.log("⚡Running build executor on the workspace");
+    console.log("⚡ Running build executor on the workspace");
 
     if (
       !context.projectsConfigurations?.projects ||
@@ -129,7 +129,7 @@ export default async function runExecutor(
       await build(config);
     }
 
-    console.log("⚡The Build process has completed successfully");
+    console.log("⚡ The Build process has completed successfully");
     return {
       success: true
     };

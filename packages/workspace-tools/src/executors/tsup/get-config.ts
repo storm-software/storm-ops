@@ -7,10 +7,10 @@ type Entry = string | string[] | Record<string, string>;
 export function modernConfig(
   entry: Entry,
   outDir: string,
-  tsConfig = "tsconfig.lib.json",
+  tsConfig = "tsconfig.json",
   debug = false,
   bundle = true,
-  platform = "node",
+  platform = "neutral",
   clean = true,
   options: Options = {}
 ) {
@@ -20,7 +20,18 @@ export function modernConfig(
     splitting: true,
     treeshake: true,
     format: ["cjs", "esm"],
-    target: ["chrome91", "firefox90", "edge91", "safari15", "ios15", "opera77"],
+    target:
+      platform !== "node"
+        ? [
+            "chrome91",
+            "firefox90",
+            "edge91",
+            "safari15",
+            "ios15",
+            "opera77",
+            "esnext"
+          ]
+        : ["esnext"],
     tsconfig: tsConfig,
     outDir,
     minify: debug,
@@ -36,10 +47,10 @@ export function modernConfig(
 export function legacyConfig(
   entry: Entry,
   outDir: string,
-  tsConfig = "tsconfig.lib.json",
+  tsConfig = "tsconfig.json",
   debug = false,
   bundle = true,
-  platform = "node",
+  platform = "neutral",
   clean = true,
   options: Options = {}
 ) {
