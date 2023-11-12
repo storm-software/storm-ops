@@ -1,3 +1,10 @@
+## [1.4.23](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.22...@storm-software/storm-ops-v1.4.23) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update clean functionality so no previously build files are removed ([19ce7bd](https://github.com/storm-software/storm-ops/commit/19ce7bd17f570587a70256471c63b613943a0c39))
+
 ## [1.4.22](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.21...@storm-software/storm-ops-v1.4.22) (2023-11-12)
 
 

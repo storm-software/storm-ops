@@ -1,3 +1,10 @@
+## [1.6.11](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.10...workspace-tools-v1.6.11) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update clean functionality so no previously build files are removed ([19ce7bd](https://github.com/storm-software/storm-ops/commit/19ce7bd17f570587a70256471c63b613943a0c39))
+
 ## [1.6.10](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.9...workspace-tools-v1.6.10) (2023-11-12)
 
 
