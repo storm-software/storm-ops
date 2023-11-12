@@ -1,3 +1,10 @@
+## [1.3.11](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.10...linting-tools-v1.3.11) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved export issue with tsup executor ([f5427a1](https://github.com/storm-software/storm-ops/commit/f5427a1314473ffb2598a6c9c88de73877778770))
+
 ## [1.3.10](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.9...linting-tools-v1.3.10) (2023-11-10)
 
 
