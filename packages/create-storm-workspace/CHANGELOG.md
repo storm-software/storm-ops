@@ -1,3 +1,10 @@
+## [1.6.12](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.11...create-storm-workspace-v1.6.12) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update default config for tsup build executor ([8296085](https://github.com/storm-software/storm-ops/commit/829608553c2a6c05f48520bc0d0b42ae12b3118f))
+
 ## [1.6.11](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.10...create-storm-workspace-v1.6.11) (2023-11-12)
 
 
