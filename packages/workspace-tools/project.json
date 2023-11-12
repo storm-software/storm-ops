@@ -26,6 +26,11 @@
         "metafile": true,
         "minify": false,
         "format": ["cjs"],
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".js"
+          }
+        },
         "assets": [
           {
             "input": "./packages/workspace-tools",
