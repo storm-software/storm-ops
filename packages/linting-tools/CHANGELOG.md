@@ -1,3 +1,10 @@
+## [1.3.13](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.12...linting-tools-v1.3.13) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with config objects passed to copyAssets function ([ea68191](https://github.com/storm-software/storm-ops/commit/ea681918bac665c7442afee6aa3228897b69ea10))
+
 ## [1.3.12](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.11...linting-tools-v1.3.12) (2023-11-12)
 
 

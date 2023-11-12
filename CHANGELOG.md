@@ -1,3 +1,10 @@
+## [1.4.22](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.21...@storm-software/storm-ops-v1.4.22) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with config objects passed to copyAssets function ([ea68191](https://github.com/storm-software/storm-ops/commit/ea681918bac665c7442afee6aa3228897b69ea10))
+
 ## [1.4.21](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.20...@storm-software/storm-ops-v1.4.21) (2023-11-12)
 
 

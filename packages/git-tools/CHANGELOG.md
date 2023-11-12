@@ -1,3 +1,10 @@
+## [1.2.21](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.20...git-tools-v1.2.21) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with config objects passed to copyAssets function ([ea68191](https://github.com/storm-software/storm-ops/commit/ea681918bac665c7442afee6aa3228897b69ea10))
+
 ## [1.2.20](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.19...git-tools-v1.2.20) (2023-11-12)
 
 
