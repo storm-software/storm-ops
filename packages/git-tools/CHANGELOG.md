@@ -1,3 +1,10 @@
+## [1.2.22](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.21...git-tools-v1.2.22) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update clean functionality so no previously build files are removed ([19ce7bd](https://github.com/storm-software/storm-ops/commit/19ce7bd17f570587a70256471c63b613943a0c39))
+
 ## [1.2.21](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.20...git-tools-v1.2.21) (2023-11-12)
 
 
