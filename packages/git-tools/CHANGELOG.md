@@ -1,3 +1,10 @@
+## [1.2.20](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.19...git-tools-v1.2.20) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Include @nx/esbuild and tsup dependencies in build bundle ([7acaf5e](https://github.com/storm-software/storm-ops/commit/7acaf5e138709ac0ded3bbcfda2de6f3dfe8cca8))
+
 ## [1.2.19](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.18...git-tools-v1.2.19) (2023-11-10)
 
 
