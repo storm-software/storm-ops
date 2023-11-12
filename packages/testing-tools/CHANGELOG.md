@@ -1,3 +1,10 @@
+## [1.1.12](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.11...testing-tools-v1.1.12) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update output paths on tsup executor config ([54e2078](https://github.com/storm-software/storm-ops/commit/54e2078c4d6fbc98401d4703746c1de9504e75a4))
+
 ## [1.1.11](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.10...testing-tools-v1.1.11) (2023-11-12)
 
 
