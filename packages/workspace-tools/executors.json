@@ -3,8 +3,7 @@
     "tsup": {
       "implementation": "./src/executors/tsup/executor",
       "schema": "./src/executors/tsup/schema.json",
-      "description": "Run a build on the project using tsup configuration",
-      "hasher": "./src/executors/tsup/hasher"
+      "description": "Run a build on the project using tsup configuration"
     }
   }
 }

@@ -14,7 +14,6 @@
         "main": "packages/workspace-tools/index.ts",
         "additionalEntryPoints": [
           "packages/workspace-tools/src/executors/tsup/executor.ts",
-          "packages/workspace-tools/src/executors/tsup/hasher.ts",
           "packages/workspace-tools/src/executors/tsup/get-config.ts",
           "packages/workspace-tools/src/generators/init/init.ts",
           "packages/workspace-tools/src/generators/node-library/generator.ts",
@@ -67,6 +66,11 @@
           {
             "input": "./packages/workspace-tools",
             "glob": "**/schema.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/workspace-tools",
+            "glob": "**/files/**/{*.*,*}",
             "output": "."
           }
         ]
