@@ -1,3 +1,10 @@
+## [1.2.23](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.22...git-tools-v1.2.23) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update output paths on tsup executor config ([54e2078](https://github.com/storm-software/storm-ops/commit/54e2078c4d6fbc98401d4703746c1de9504e75a4))
+
 ## [1.2.22](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.21...git-tools-v1.2.22) (2023-11-12)
 
 
