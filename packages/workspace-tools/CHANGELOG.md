@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.32...workspace-tools-v1.6.0) (2023-11-12)
+
+
+### Features
+
+* **workspace-tools:** Upgrade workspace tools to bundle all dependencies ([4a110f1](https://github.com/storm-software/storm-ops/commit/4a110f11fa41b0f1e4c0e403e033069647ec7b53))
+
 ## [1.5.32](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.5.31...workspace-tools-v1.5.32) (2023-11-11)
 
 
