@@ -122,6 +122,7 @@ export default async function runExecutor(
       console.error("The Build process failed trying to copy package.json");
     }
 
+    console.log("Getting Tsup build config");
     const config = getConfig({ ...options, main, outputPath });
     if (typeof config === "function") {
       await build(await Promise.resolve(config({})));
