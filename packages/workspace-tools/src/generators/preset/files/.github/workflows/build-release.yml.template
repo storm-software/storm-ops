@@ -26,7 +26,7 @@ env:
   NPM_TOKEN: ${{ secrets.STORMIE_NPM_TOKEN }}
 
 jobs:
-  build-and-release:
+  build-release:
     if: github.repository == '<%= organization %>/<%= name %>' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/next' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta')
     name: "Build & Release"
     runs-on: ubuntu-latest
