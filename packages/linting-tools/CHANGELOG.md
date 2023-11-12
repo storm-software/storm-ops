@@ -1,3 +1,10 @@
+## [1.3.12](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.11...linting-tools-v1.3.12) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Include @nx/esbuild and tsup dependencies in build bundle ([7acaf5e](https://github.com/storm-software/storm-ops/commit/7acaf5e138709ac0ded3bbcfda2de6f3dfe8cca8))
+
 ## [1.3.11](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.10...linting-tools-v1.3.11) (2023-11-12)
 
 
