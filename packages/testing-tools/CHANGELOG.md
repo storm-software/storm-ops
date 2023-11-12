@@ -1,3 +1,10 @@
+## [1.1.9](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.8...testing-tools-v1.1.9) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Include @nx/esbuild and tsup dependencies in build bundle ([7acaf5e](https://github.com/storm-software/storm-ops/commit/7acaf5e138709ac0ded3bbcfda2de6f3dfe8cca8))
+
 ## [1.1.8](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.7...testing-tools-v1.1.8) (2023-11-10)
 
 
