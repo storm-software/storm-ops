@@ -41,12 +41,6 @@ export default async function runExecutor(
         : join(workspaceRoot, "dist", projectRoot),
       context
     );
-    const main = applyWorkspaceTokens(
-      options.main
-        ? options.main
-        : join(sourceRoot, "**/*@(.js|.jsx|.ts|.tsx)"),
-      context
-    );
 
     if (options.clean !== false) {
       console.log("🧹 Cleaning output path");
@@ -103,9 +97,11 @@ export default async function runExecutor(
 
     const cpjOptions: CopyPackageJsonOptions = {
       ...options,
+      main: "src/index.ts",
       generateLockfile: true,
       outputFileExtensionForCjs: getOutExtension("cjs", {
         external: [],
+        main: "src/index.ts",
         ...options,
         singleEntry: options.additionalEntryPoints?.length === 0,
         thirdParty: true,
@@ -129,7 +125,7 @@ export default async function runExecutor(
     }
 
     console.log("Getting Tsup build config");
-    const config = getConfig({ ...options, main, outputPath });
+    const config = getConfig({ ...options, outputPath });
     if (typeof config === "function") {
       await build(await Promise.resolve(config({})));
     } else {

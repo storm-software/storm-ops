@@ -6,15 +6,6 @@
   "type": "object",
   "properties": {
     "properties": {
-      "main": {
-        "type": "string",
-        "description": "The path to the entry file, relative to project.",
-        "alias": "entryFile",
-        "x-completion-type": "file",
-        "x-completion-glob": "**/*@(.js|.ts)",
-        "x-priority": "important",
-        "default": "{sourceRoot}/**/{*.js,*.jsx,*.ts,*.tsx}"
-      },
       "outputPath": {
         "type": "string",
         "description": "The output path of the generated files.",

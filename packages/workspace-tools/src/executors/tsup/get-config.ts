@@ -17,7 +17,6 @@ export function modernConfig(
   return {
     ...options,
     entry,
-    entryPoints: ["src/index.ts"],
     splitting: true,
     treeshake: true,
     format: ["cjs", "esm"],
@@ -34,7 +33,7 @@ export function modernConfig(
           ]
         : ["esnext"],
     tsconfig: tsConfig,
-    outDir: joinPathFragments(outDir, "modern"),
+    outDir: joinPathFragments(outDir, "build", "modern"),
     minify: debug,
     bundle,
     platform,
@@ -57,13 +56,12 @@ export function legacyConfig(
   return {
     ...options,
     entry,
-    entryPoints: ["src/index.ts"],
     splitting: true,
     treeshake: true,
     format: ["cjs", "esm"],
     target: ["es2020", "node16"],
     tsconfig: tsConfig,
-    outDir: joinPathFragments(outDir, "legacy"),
+    outDir: joinPathFragments(outDir, "build", "legacy"),
     minify: debug,
     bundle,
     platform,
@@ -81,10 +79,13 @@ export function getConfig({
   bundle,
   platform,
   options,
-  main,
   additionalEntryPoints
 }: TsupExecutorSchema) {
-  const entry = [main, ...(additionalEntryPoints ?? [])];
+  const entry = [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ...(additionalEntryPoints ?? [])
+  ];
 
   return defineConfig([
     modernConfig(entry, outputPath, tsConfig, debug, bundle, platform, options),
