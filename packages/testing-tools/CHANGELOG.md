@@ -1,3 +1,10 @@
+## [1.1.14](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.13...testing-tools-v1.1.14) (2023-11-13)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tsup config to package src files in build package ([c6297b5](https://github.com/storm-software/storm-ops/commit/c6297b54a4db28d0737adfa4203a6a6dd9b4565f))
+
 ## [1.1.13](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.12...testing-tools-v1.1.13) (2023-11-13)
 
 
