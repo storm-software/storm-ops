@@ -1,3 +1,10 @@
+## [1.4.28](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.27...@storm-software/storm-ops-v1.4.28) (2023-11-13)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tsup config to package src files in build package ([c6297b5](https://github.com/storm-software/storm-ops/commit/c6297b54a4db28d0737adfa4203a6a6dd9b4565f))
+
 ## [1.4.27](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.26...@storm-software/storm-ops-v1.4.27) (2023-11-13)
 
 
