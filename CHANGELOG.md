@@ -1,3 +1,10 @@
+## [1.4.26](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.25...@storm-software/storm-ops-v1.4.26) (2023-11-13)
+
+
+### Bug Fixes
+
+* **linting-tools:** Removed emitDecoratorMetadata from base tsconfig ([e2339d0](https://github.com/storm-software/storm-ops/commit/e2339d0e679ec33e88156124cfb5e9f912a750b5))
+
 ## [1.4.25](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.24...@storm-software/storm-ops-v1.4.25) (2023-11-13)
 
 
