@@ -1,3 +1,10 @@
+## [1.3.19](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.18...linting-tools-v1.3.19) (2023-11-13)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tsup config to package src files in build package ([c6297b5](https://github.com/storm-software/storm-ops/commit/c6297b54a4db28d0737adfa4203a6a6dd9b4565f))
+
 ## [1.3.18](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.17...linting-tools-v1.3.18) (2023-11-13)
 
 
