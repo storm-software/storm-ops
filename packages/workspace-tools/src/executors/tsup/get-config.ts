@@ -19,7 +19,7 @@ export function modernConfig(
     entry,
     splitting: true,
     treeshake: {
-      moduleSideEffects: ["build", "src"],
+      moduleSideEffects: ["src"],
       preset: "recommended"
     },
     format: ["cjs", "esm"],
@@ -34,10 +34,27 @@ export function modernConfig(
             "opera77",
             "esnext"
           ]
-        : ["esnext"],
+        : ["esnext", "edge91", "node18"],
     tsconfig: tsConfig,
-    outDir: joinPathFragments(outDir, "build", "modern"),
-    minify: debug,
+    outDir: joinPathFragments(outDir, "modern"),
+    metafile: true,
+    minify: !debug ? "terser" : false,
+    terserOptions: !debug
+      ? {
+          mangle: true,
+          module: true,
+          compress: true,
+          format: {
+            comments: false
+          },
+          ecma: 2020,
+          keep_classnames: false,
+          keep_fnames: true
+        }
+      : undefined,
+    minifyWhitespace: !debug,
+    minifyIdentifiers: !debug,
+    minifySyntax: !debug,
     bundle,
     platform,
     dts: true,
@@ -67,14 +84,31 @@ export function legacyConfig(
     entry,
     splitting: true,
     treeshake: {
-      moduleSideEffects: ["build", "src"],
+      moduleSideEffects: ["src"],
       preset: "recommended"
     },
     format: ["cjs", "esm"],
-    target: ["es2022", "node16"],
+    target: ["es2022", "node18"],
     tsconfig: tsConfig,
-    outDir: joinPathFragments(outDir, "build", "legacy"),
-    minify: debug,
+    outDir: joinPathFragments(outDir, "legacy"),
+    metafile: true,
+    minify: !debug ? "terser" : false,
+    terserOptions: !debug
+      ? {
+          mangle: true,
+          module: true,
+          compress: true,
+          format: {
+            comments: false
+          },
+          ecma: 2020,
+          keep_classnames: false,
+          keep_fnames: true
+        }
+      : undefined,
+    minifyWhitespace: !debug,
+    minifyIdentifiers: !debug,
+    minifySyntax: !debug,
     bundle,
     platform,
     dts: true,
