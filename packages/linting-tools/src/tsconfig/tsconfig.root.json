@@ -14,7 +14,6 @@
     "moduleResolution": "node",
     "types": ["node", "jest"],
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": true,
