@@ -1,3 +1,10 @@
+## [1.6.26](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.25...create-storm-workspace-v1.6.26) (2023-11-13)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Include terser in workspace package for tsup build ([ee26f46](https://github.com/storm-software/storm-ops/commit/ee26f4696873ea4b329f73d7b4b718cd193c7847))
+
 ## [1.6.25](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.24...create-storm-workspace-v1.6.25) (2023-11-13)
 
 
