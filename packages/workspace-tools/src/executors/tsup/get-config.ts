@@ -1,5 +1,4 @@
 import { joinPathFragments } from "@nx/devkit";
-import { esbuildPluginFilePathExtensions } from "esbuild-plugin-file-path-extensions";
 import { Options, defineConfig } from "tsup";
 import { TsupExecutorSchema } from "./schema";
 
@@ -39,8 +38,7 @@ export function modernConfig(
     platform,
     dts: true,
     sourcemap: debug,
-    clean: false,
-    esbuildPlugins: [esbuildPluginFilePathExtensions({ esmExtension: "js" })]
+    clean: false
   } as Options;
 }
 
@@ -67,8 +65,7 @@ export function legacyConfig(
     platform,
     dts: true,
     sourcemap: debug,
-    clean: false,
-    esbuildPlugins: [esbuildPluginFilePathExtensions({ esmExtension: "js" })]
+    clean: false
   } as Options;
 }
 
