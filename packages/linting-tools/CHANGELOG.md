@@ -1,3 +1,10 @@
+## [1.3.16](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.15...linting-tools-v1.3.16) (2023-11-13)
+
+
+### Bug Fixes
+
+* **linting-tools:** Remove `experimentalDecorators` from base tsconfig as it is no longer required ([294e869](https://github.com/storm-software/storm-ops/commit/294e86947e46e5aa4b275412f48dd2363e992abb))
+
 ## [1.3.15](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.14...linting-tools-v1.3.15) (2023-11-12)
 
 
