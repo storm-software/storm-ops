@@ -1,3 +1,10 @@
+## [1.6.17](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.16...create-storm-workspace-v1.6.17) (2023-11-13)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Remove the extension update plugin from tsup config ([e003eb1](https://github.com/storm-software/storm-ops/commit/e003eb1a28042009cf478c5529b99941c7580d13))
+
 ## [1.6.16](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.15...create-storm-workspace-v1.6.16) (2023-11-13)
 
 
