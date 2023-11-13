@@ -1,3 +1,10 @@
+## [1.4.25](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.24...@storm-software/storm-ops-v1.4.25) (2023-11-13)
+
+
+### Bug Fixes
+
+* **linting-tools:** Remove `experimentalDecorators` from base tsconfig as it is no longer required ([294e869](https://github.com/storm-software/storm-ops/commit/294e86947e46e5aa4b275412f48dd2363e992abb))
+
 ## [1.4.24](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.23...@storm-software/storm-ops-v1.4.24) (2023-11-12)
 
 
