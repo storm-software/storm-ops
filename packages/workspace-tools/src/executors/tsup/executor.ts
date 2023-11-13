@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ExecutorContext } from "@nx/devkit";
 import { getExtraDependencies } from "@nx/esbuild/src/executors/esbuild/lib/get-extra-dependencies";
-import { copyAssets } from "@nx/js";
+import { CopyPackageJsonOptions, copyAssets, copyPackageJson } from "@nx/js";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
 import { removeSync } from "fs-extra";
 import { join } from "path";
@@ -94,14 +94,14 @@ export default async function runExecutor(
       externalDependencies.push(tpd);
     }
 
-    /*const cpjOptions: CopyPackageJsonOptions = {
+    const cpjOptions: CopyPackageJsonOptions = {
       ...options,
       main: "src/index.ts",
       outputFileExtensionForCjs: ".cjs",
       outputFileExtensionForEsm: ".js",
       generateLockfile: false,
       skipTypings: false,
-      generateExportsField: true,
+      generateExportsField: false,
       excludeLibsInPackageJson: false,
       updateBuildableProjectDepsInPackageJson: externalDependencies.length > 0,
       buildableProjectDepsInPackageJsonType: "peerDependencies"
@@ -117,7 +117,7 @@ export default async function runExecutor(
     const packageJsonResult = await copyPackageJson(cpjOptions, context);
     if (!packageJsonResult.success) {
       throw new Error("The Build process failed trying to copy package.json");
-    }*/
+    }
 
     console.log("Getting Tsup build config");
     const config = getConfig(sourceRoot, { ...options, outputPath });

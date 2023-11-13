@@ -12,6 +12,7 @@ export function modernConfig(
   debug = false,
   bundle = true,
   platform = "neutral",
+  publicDir,
   options: Options = {}
 ) {
   return {
@@ -36,7 +37,7 @@ export function modernConfig(
           ]
         : ["esnext", "edge91", "node18"],
     tsconfig: tsConfig,
-    outDir: joinPathFragments(outDir, "modern"),
+    outDir: joinPathFragments(outDir, "build", "modern"),
     metafile: true,
     minify: !debug ? "terser" : false,
     terserOptions: !debug
@@ -61,6 +62,11 @@ export function modernConfig(
     sourcemap: debug,
     cjsInterop: true,
     clean: false,
+    publicDir,
+    outExtension: (ctx: { format: string }) => ({
+      js: ctx.format === "cjs" ? "cjs" : "js",
+      dts: ctx.format === "cjs" ? "d.cts" : "d.ts"
+    }),
     esbuildPlugins: [
       esbuildPluginFilePathExtensions({
         esmExtension: "js",
@@ -77,6 +83,7 @@ export function legacyConfig(
   debug = false,
   bundle = true,
   platform = "neutral",
+  publicDir,
   options: Options = {}
 ) {
   return {
@@ -90,7 +97,7 @@ export function legacyConfig(
     format: ["cjs", "esm"],
     target: ["es2022", "node18"],
     tsconfig: tsConfig,
-    outDir: joinPathFragments(outDir, "legacy"),
+    outDir: joinPathFragments(outDir, "build", "legacy"),
     metafile: true,
     minify: !debug ? "terser" : false,
     terserOptions: !debug
@@ -115,6 +122,11 @@ export function legacyConfig(
     sourcemap: debug,
     cjsInterop: true,
     clean: false,
+    publicDir,
+    outExtension: (ctx: { format: string }) => ({
+      js: ctx.format === "cjs" ? "cjs" : "js",
+      dts: ctx.format === "cjs" ? "d.cts" : "d.ts"
+    }),
     esbuildPlugins: [
       esbuildPluginFilePathExtensions({
         esmExtension: "js",
@@ -141,9 +153,28 @@ export function getConfig(
     joinPathFragments(sourceRoot, "**/*.tsx"),
     ...(additionalEntryPoints ?? [])
   ];
+  const publicDir = joinPathFragments(sourceRoot, "src");
 
   return defineConfig([
-    modernConfig(entry, outputPath, tsConfig, debug, bundle, platform, options),
-    legacyConfig(entry, outputPath, tsConfig, debug, bundle, platform, options)
+    modernConfig(
+      entry,
+      outputPath,
+      tsConfig,
+      debug,
+      bundle,
+      platform,
+      publicDir,
+      options
+    ),
+    legacyConfig(
+      entry,
+      outputPath,
+      tsConfig,
+      debug,
+      bundle,
+      platform,
+      publicDir,
+      options
+    )
   ]);
 }
