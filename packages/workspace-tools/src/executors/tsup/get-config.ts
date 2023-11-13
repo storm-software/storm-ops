@@ -71,7 +71,7 @@ export function legacyConfig(
       preset: "recommended"
     },
     format: ["cjs", "esm"],
-    target: ["es2020", "node16"],
+    target: ["es2022", "node16"],
     tsconfig: tsConfig,
     outDir: joinPathFragments(outDir, "build", "legacy"),
     minify: debug,
