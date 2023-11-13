@@ -97,9 +97,14 @@ export default async function runExecutor(
     const cpjOptions: CopyPackageJsonOptions = {
       ...options,
       main: "src/index.ts",
+      outputFileExtensionForCjs: ".cjs",
+      outputFileExtensionForEsm: ".js",
       generateLockfile: true,
+      skipTypings: false,
+      generateExportsField: true,
       excludeLibsInPackageJson: false,
-      updateBuildableProjectDepsInPackageJson: externalDependencies.length > 0
+      updateBuildableProjectDepsInPackageJson: externalDependencies.length > 0,
+      buildableProjectDepsInPackageJsonType: "peerDependencies"
     };
 
     // If we're bundling third-party packages, then any extra deps from external should be the only deps in package.json
