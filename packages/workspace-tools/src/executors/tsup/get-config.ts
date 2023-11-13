@@ -73,7 +73,7 @@ export function legacyConfig(
 }
 
 export function getConfig(
-  projectRoot: string,
+  sourceRoot: string,
   {
     outputPath,
     tsConfig,
@@ -85,8 +85,8 @@ export function getConfig(
   }: TsupExecutorSchema
 ) {
   const entry = [
-    joinPathFragments(projectRoot, "**/*.ts"),
-    joinPathFragments(projectRoot, "**/*.tsx"),
+    joinPathFragments(sourceRoot, "**/*.ts"),
+    joinPathFragments(sourceRoot, "**/*.tsx"),
     ...(additionalEntryPoints ?? [])
   ];
 

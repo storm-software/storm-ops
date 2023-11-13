@@ -125,7 +125,7 @@ export default async function runExecutor(
     }
 
     console.log("Getting Tsup build config");
-    const config = getConfig(projectRoot, { ...options, outputPath });
+    const config = getConfig(sourceRoot, { ...options, outputPath });
     if (typeof config === "function") {
       await build(await Promise.resolve(config({})));
     } else {
