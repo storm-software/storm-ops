@@ -1,3 +1,10 @@
+## [1.6.21](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.20...create-storm-workspace-v1.6.21) (2023-11-13)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the package.json config during tsup build executor ([39a6a40](https://github.com/storm-software/storm-ops/commit/39a6a40e4b98300ab6c970c2a8b83ba2d6f19351))
+
 ## [1.6.20](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.19...create-storm-workspace-v1.6.20) (2023-11-13)
 
 
