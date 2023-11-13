@@ -1,3 +1,10 @@
+## [1.6.22](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.21...create-storm-workspace-v1.6.22) (2023-11-13)
+
+
+### Bug Fixes
+
+* **linting-tools:** Remove `experimentalDecorators` from base tsconfig as it is no longer required ([294e869](https://github.com/storm-software/storm-ops/commit/294e86947e46e5aa4b275412f48dd2363e992abb))
+
 ## [1.6.21](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.20...create-storm-workspace-v1.6.21) (2023-11-13)
 
 
