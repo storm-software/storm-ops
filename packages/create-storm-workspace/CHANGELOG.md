@@ -1,3 +1,10 @@
+## [1.6.16](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.15...create-storm-workspace-v1.6.16) (2023-11-13)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the entry glob to start at sourceRoot ([92c5ac2](https://github.com/storm-software/storm-ops/commit/92c5ac25736c49c5522f2e251b06b5e1406fd688))
+
 ## [1.6.15](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.14...create-storm-workspace-v1.6.15) (2023-11-12)
 
 
