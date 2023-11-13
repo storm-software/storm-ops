@@ -1,3 +1,10 @@
+## [1.6.25](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.24...workspace-tools-v1.6.25) (2023-11-13)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tsup config to use minifier correctly ([fd86f5b](https://github.com/storm-software/storm-ops/commit/fd86f5bbdd1d7c4f76dd625a7aea91304a7102af))
+
 ## [1.6.24](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.23...workspace-tools-v1.6.24) (2023-11-13)
 
 
