@@ -1,3 +1,10 @@
+## [1.4.27](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.26...@storm-software/storm-ops-v1.4.27) (2023-11-13)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Include terser in workspace package for tsup build ([ee26f46](https://github.com/storm-software/storm-ops/commit/ee26f4696873ea4b329f73d7b4b718cd193c7847))
+
 ## [1.4.26](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.25...@storm-software/storm-ops-v1.4.26) (2023-11-13)
 
 
