@@ -1,3 +1,10 @@
+## [1.6.15](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.14...create-storm-workspace-v1.6.15) (2023-11-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with entry globs ([12bb7b2](https://github.com/storm-software/storm-ops/commit/12bb7b29a4b0bec58307caf98e2b5ad7efef3c65))
+
 ## [1.6.14](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.13...create-storm-workspace-v1.6.14) (2023-11-12)
 
 
