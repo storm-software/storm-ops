@@ -1,3 +1,10 @@
+## [1.6.18](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.17...workspace-tools-v1.6.18) (2023-11-13)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with missing option in node-library generator ([b555532](https://github.com/storm-software/storm-ops/commit/b5555324e3ceef6e687b7b0e327f3cb1c2052700))
+
 ## [1.6.17](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.16...workspace-tools-v1.6.17) (2023-11-13)
 
 
