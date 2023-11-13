@@ -1,3 +1,10 @@
+## [1.6.20](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.19...workspace-tools-v1.6.20) (2023-11-13)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update treeshaking config for tsup build executor ([a2903f2](https://github.com/storm-software/storm-ops/commit/a2903f2c528046093d637e8feb9c4d50027021c6))
+
 ## [1.6.19](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.18...workspace-tools-v1.6.19) (2023-11-13)
 
 
