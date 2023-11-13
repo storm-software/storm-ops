@@ -1,3 +1,10 @@
+## [1.2.24](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.23...git-tools-v1.2.24) (2023-11-13)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Include terser in workspace package for tsup build ([ee26f46](https://github.com/storm-software/storm-ops/commit/ee26f4696873ea4b329f73d7b4b718cd193c7847))
+
 ## [1.2.23](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.22...git-tools-v1.2.23) (2023-11-12)
 
 
