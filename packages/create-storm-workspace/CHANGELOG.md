@@ -1,3 +1,10 @@
+## [1.6.24](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.23...create-storm-workspace-v1.6.24) (2023-11-13)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Upgrade legacy tsup build target to 2022 ([80cf997](https://github.com/storm-software/storm-ops/commit/80cf99784451809fc70a359e21ab5523ce1193c3))
+
 ## [1.6.23](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.22...create-storm-workspace-v1.6.23) (2023-11-13)
 
 
