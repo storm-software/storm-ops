@@ -1,3 +1,10 @@
+## [1.6.19](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.18...workspace-tools-v1.6.19) (2023-11-13)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added path extension plugin to tsup build config ([a03f2f3](https://github.com/storm-software/storm-ops/commit/a03f2f374dac599db24c77e4121925c12d232b18))
+
 ## [1.6.18](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.17...workspace-tools-v1.6.18) (2023-11-13)
 
 
