@@ -76,7 +76,6 @@ export async function nodeLibraryGenerator(
         outputs: ["{options.outputPath}"],
         options: {
           outputPath: getOutputPath(options),
-          main: joinPathFragments(options.projectRoot, "src/index.ts"),
           tsConfig: joinPathFragments(options.projectRoot, "tsconfig.json"),
           project: joinPathFragments(options.projectRoot, "package.json"),
           defaultConfiguration: "production",
@@ -192,18 +191,18 @@ export async function nodeLibraryGenerator(
           )
         ],
         type: "module",
-        types: "legacy/index.d.ts",
-        main: "legacy/index.cjs",
-        module: "legacy/index.js",
+        types: "build/legacy/index.d.ts",
+        main: "build/legacy/index.cjs",
+        module: "build/legacy/index.js",
         exports: {
           ".": {
             import: {
-              types: "./modern/index.d.ts",
-              default: "./modern/index.js"
+              types: "./build/modern/index.d.ts",
+              default: "./build/modern/index.js"
             },
             require: {
-              types: "./modern/index.d.cts",
-              default: "./modern/index.cjs"
+              types: "./build/modern/index.d.cts",
+              default: "./build/modern/index.cjs"
             }
           },
           "./package.json": "./package.json"
@@ -241,18 +240,18 @@ export async function nodeLibraryGenerator(
         )
       ],
       type: "module",
-      types: "legacy/index.d.ts",
-      main: "legacy/index.cjs",
-      module: "legacy/index.js",
+      types: "build/legacy/index.d.ts",
+      main: "build/legacy/index.cjs",
+      module: "build/legacy/index.js",
       exports: {
         ".": {
           import: {
-            types: "./modern/index.d.ts",
-            default: "./modern/index.js"
+            types: "./build/modern/index.d.ts",
+            default: "./build/modern/index.js"
           },
           require: {
-            types: "./modern/index.d.cts",
-            default: "./modern/index.cjs"
+            types: "./build/modern/index.d.cts",
+            default: "./build/modern/index.cjs"
           }
         },
         "./package.json": "./package.json"
