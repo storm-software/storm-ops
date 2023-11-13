@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ExecutorContext } from "@nx/devkit";
-import { getOutExtension } from "@nx/esbuild/src/executors/esbuild/lib/build-esbuild-options";
 import { getExtraDependencies } from "@nx/esbuild/src/executors/esbuild/lib/get-extra-dependencies";
 import { CopyPackageJsonOptions, copyAssets, copyPackageJson } from "@nx/js";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
@@ -99,16 +98,7 @@ export default async function runExecutor(
       ...options,
       main: "src/index.ts",
       generateLockfile: true,
-      outputFileExtensionForCjs: getOutExtension("cjs", {
-        external: [],
-        main: "src/index.ts",
-        ...options,
-        singleEntry: options.additionalEntryPoints?.length === 0,
-        thirdParty: true,
-        assets,
-        userDefinedBuildOptions: {}
-      }),
-      excludeLibsInPackageJson: true,
+      excludeLibsInPackageJson: false,
       updateBuildableProjectDepsInPackageJson: externalDependencies.length > 0
     };
 

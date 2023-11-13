@@ -18,7 +18,10 @@ export function modernConfig(
     ...options,
     entry,
     splitting: true,
-    treeshake: true,
+    treeshake: {
+      moduleSideEffects: ["build", "src"],
+      preset: "recommended"
+    },
     format: ["cjs", "esm"],
     target:
       platform !== "node"
@@ -39,6 +42,7 @@ export function modernConfig(
     platform,
     dts: true,
     sourcemap: debug,
+    cjsInterop: true,
     clean: false,
     esbuildPlugins: [
       esbuildPluginFilePathExtensions({
@@ -62,7 +66,10 @@ export function legacyConfig(
     ...options,
     entry,
     splitting: true,
-    treeshake: true,
+    treeshake: {
+      moduleSideEffects: ["build", "src"],
+      preset: "recommended"
+    },
     format: ["cjs", "esm"],
     target: ["es2020", "node16"],
     tsconfig: tsConfig,
@@ -72,6 +79,7 @@ export function legacyConfig(
     platform,
     dts: true,
     sourcemap: debug,
+    cjsInterop: true,
     clean: false,
     esbuildPlugins: [
       esbuildPluginFilePathExtensions({
