@@ -1,3 +1,10 @@
+## [1.3.18](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.17...linting-tools-v1.3.18) (2023-11-13)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Include terser in workspace package for tsup build ([ee26f46](https://github.com/storm-software/storm-ops/commit/ee26f4696873ea4b329f73d7b4b718cd193c7847))
+
 ## [1.3.17](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.16...linting-tools-v1.3.17) (2023-11-13)
 
 
