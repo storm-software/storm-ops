@@ -1,3 +1,10 @@
+## [1.6.28](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.27...workspace-tools-v1.6.28) (2023-11-14)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with incorrect extensions provided to tsup build config ([46d7dc5](https://github.com/storm-software/storm-ops/commit/46d7dc5835cd49da484e50d6eda7e8013071b72c))
+
 ## [1.6.27](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.26...workspace-tools-v1.6.27) (2023-11-13)
 
 
