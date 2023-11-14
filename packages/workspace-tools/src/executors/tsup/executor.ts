@@ -80,6 +80,11 @@ export default async function runExecutor(
       glob: "LICENSE",
       output: "."
     });
+    assets.push({
+      input: sourceRoot,
+      glob: "**/{*.d.ts,*.ts,*.tsx}",
+      output: "src/"
+    });
 
     const result = await copyAssets(
       { assets, watch: options.watch, outputPath },
@@ -173,7 +178,10 @@ export default async function runExecutor(
     packageJson.types = "build/legacy/index.d.ts";
 
     packageJson.sideEffects ??= false;
-    packageJson.files ??= ["src"];
+    packageJson.files ??= ["build", "src"];
+    packageJson.publishConfig ??= {
+      "access": "public"
+    };
 
     packageJson.description ??= workspacePackageJson.description;
     packageJson.homepage ??= workspacePackageJson.homepage;
