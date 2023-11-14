@@ -1,9 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ExecutorContext } from "@nx/devkit";
+import {
+  ExecutorContext,
+  joinPathFragments,
+  readJsonFile,
+  writeJsonFile
+} from "@nx/devkit";
 import { getExtraDependencies } from "@nx/esbuild/src/executors/esbuild/lib/get-extra-dependencies";
-import { CopyPackageJsonOptions, copyAssets, copyPackageJson } from "@nx/js";
+import { copyAssets } from "@nx/js";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
 import { removeSync } from "fs-extra";
+import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
+import { fileExists } from "nx/src/utils/fileutils";
 import { join } from "path";
 import { Options, build as tsup } from "tsup";
 import { applyWorkspaceTokens } from "../../utils/apply-workspace-tokens";
@@ -11,12 +18,20 @@ import { getWorkspaceRoot } from "../../utils/get-workspace-root";
 import { getConfig } from "./get-config";
 import { TsupExecutorSchema } from "./schema";
 
+type PackageConfiguration = {
+  version: string;
+  packageName: string;
+  hash?: string;
+};
+
 export default async function runExecutor(
   options: TsupExecutorSchema,
   context: ExecutorContext
 ) {
   try {
     console.log("⚡ Running build executor on the workspace");
+
+    // #region Prepare build context variables
 
     if (
       !context.projectsConfigurations?.projects ||
@@ -41,19 +56,22 @@ export default async function runExecutor(
       context
     );
 
+    // #endregion Prepare build context variables
+
+    // #region Clean output directory
+
     if (options.clean !== false) {
       console.log("🧹 Cleaning output path");
       removeSync(options.outputPath);
     }
 
+    // #endregion Clean output directory
+
+    // #region Copy asset files to output directory
+
     const assets = Array.from(options.assets);
     assets.push({
-      input: sourceRoot,
-      glob: "package.json",
-      output: "."
-    });
-    assets.push({
-      input: sourceRoot,
+      input: projectRoot,
       glob: "*.md",
       output: "/"
     });
@@ -70,6 +88,10 @@ export default async function runExecutor(
     if (!result.success) {
       console.error("The Build process failed trying to copy assets");
     }
+
+    // #endregion Copy asset files to output directory
+
+    // #region Generate the package.json file
 
     options.external = options.external || [];
     const externalDependencies: DependentBuildableProjectNode[] =
@@ -90,34 +112,86 @@ export default async function runExecutor(
       context.projectGraph
     );
     for (const tpd of thirdPartyDependencies) {
-      options.external.push((tpd.node.data as any).packageName);
-      externalDependencies.push(tpd);
+      const packageConfig = tpd.node.data as PackageConfiguration;
+      if (packageConfig?.packageName) {
+        options.external.push(packageConfig.packageName);
+        externalDependencies.push(tpd);
+      }
     }
 
-    const cpjOptions: CopyPackageJsonOptions = {
-      ...options,
-      main: "src/index.ts",
-      outputFileExtensionForCjs: ".cjs",
-      outputFileExtensionForEsm: ".js",
-      generateLockfile: false,
-      skipTypings: false,
-      generateExportsField: false,
-      excludeLibsInPackageJson: false,
-      updateBuildableProjectDepsInPackageJson: externalDependencies.length > 0,
-      buildableProjectDepsInPackageJsonType: "peerDependencies"
+    const projectGraph = await buildProjectGraphWithoutDaemon();
+
+    const pathToPackageJson = join(context.root, projectRoot, "package.json");
+    const packageJson = fileExists(pathToPackageJson)
+      ? readJsonFile(pathToPackageJson)
+      : { name: context.projectName, version: "0.0.1" };
+
+    const workspacePackageJson = readJsonFile(
+      joinPathFragments(workspaceRoot, "package.json")
+    );
+
+    externalDependencies.forEach(entry => {
+      const packageConfig = entry.node.data as PackageConfiguration;
+      if (
+        packageConfig?.packageName &&
+        !!(projectGraph.externalNodes[entry.node.name]?.type === "npm")
+      ) {
+        const { packageName, version } = packageConfig;
+        if (
+          packageJson.dependencies?.[packageName] ||
+          packageJson.devDependencies?.[packageName] ||
+          packageJson.peerDependencies?.[packageName]
+        ) {
+          return;
+        }
+        if (workspacePackageJson.devDependencies?.[packageName]) {
+          return;
+        }
+
+        packageJson.dependencies ??= {};
+        packageJson.dependencies[packageName] = version;
+      }
+    });
+
+    packageJson.type ??= "module";
+    packageJson.exports = {
+      ".": {
+        "import": {
+          "types": "./build/modern/index.d.ts",
+          "default": "./build/modern/index.js"
+        },
+        "require": {
+          "types": "./build/modern/index.d.cts",
+          "default": "./build/modern/index.cjs"
+        }
+      },
+      "./package.json": "./package.json"
     };
 
-    // If we're bundling third-party packages, then any extra deps from external should be the only deps in package.json
-    if (externalDependencies.length > 0) {
-      cpjOptions.overrideDependencies = externalDependencies;
-    } else {
-      cpjOptions.extraDependencies = externalDependencies;
-    }
+    packageJson.main = "build/legacy/index.cjs";
+    packageJson.module = "build/legacy/index.js";
+    packageJson.types = "build/legacy/index.d.ts";
 
-    const packageJsonResult = await copyPackageJson(cpjOptions, context);
-    if (!packageJsonResult.success) {
-      throw new Error("The Build process failed trying to copy package.json");
-    }
+    packageJson.sideEffects ??= false;
+    packageJson.files ??= ["src"];
+
+    packageJson.description ??= workspacePackageJson.description;
+    packageJson.homepage ??= workspacePackageJson.homepage;
+    packageJson.bugs ??= workspacePackageJson.bugs;
+    packageJson.author ??= workspacePackageJson.author;
+    packageJson.license ??= workspacePackageJson.license;
+    packageJson.keywords ??= workspacePackageJson.keywords;
+
+    packageJson.repository ??= workspacePackageJson.repository;
+    packageJson.repository.directory = projectRoot
+      ? projectRoot
+      : `packages/${context.projectName}`;
+
+    writeJsonFile(`${options.outputPath}/package.json`, packageJson);
+
+    // #endregion Generate the package.json file
+
+    // #region Run the build process
 
     console.log("Getting Tsup build config");
     const config = getConfig(sourceRoot, { ...options, outputPath });
@@ -126,6 +200,8 @@ export default async function runExecutor(
     } else {
       await build(config);
     }
+
+    // #endregion Run the build process
 
     console.log("⚡ The Build process has completed successfully");
     return {

@@ -63,10 +63,6 @@ export function modernConfig(
     cjsInterop: true,
     clean: false,
     publicDir,
-    outExtension: (ctx: { format: string }) => ({
-      js: ctx.format === "cjs" ? "cjs" : "js",
-      dts: ctx.format === "cjs" ? "d.cts" : "d.ts"
-    }),
     esbuildPlugins: [
       esbuildPluginFilePathExtensions({
         esmExtension: "js",
@@ -123,10 +119,6 @@ export function legacyConfig(
     cjsInterop: true,
     clean: false,
     publicDir,
-    outExtension: (ctx: { format: string }) => ({
-      js: ctx.format === "cjs" ? ".cjs" : ".js",
-      dts: ctx.format === "cjs" ? ".d.cts" : ".d.ts"
-    }),
     esbuildPlugins: [
       esbuildPluginFilePathExtensions({
         esmExtension: "js",
@@ -153,7 +145,6 @@ export function getConfig(
     joinPathFragments(sourceRoot, "**/*.tsx"),
     ...(additionalEntryPoints ?? [])
   ];
-  const publicDir = joinPathFragments(sourceRoot, "src");
 
   return defineConfig([
     modernConfig(
@@ -163,7 +154,7 @@ export function getConfig(
       debug,
       bundle,
       platform,
-      publicDir,
+      sourceRoot,
       options
     ),
     legacyConfig(
@@ -173,7 +164,7 @@ export function getConfig(
       debug,
       bundle,
       platform,
-      publicDir,
+      sourceRoot,
       options
     )
   ]);
