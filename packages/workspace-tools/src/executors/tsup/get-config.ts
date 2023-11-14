@@ -124,8 +124,8 @@ export function legacyConfig(
     clean: false,
     publicDir,
     outExtension: (ctx: { format: string }) => ({
-      js: ctx.format === "cjs" ? "cjs" : "js",
-      dts: ctx.format === "cjs" ? "d.cts" : "d.ts"
+      js: ctx.format === "cjs" ? ".cjs" : ".js",
+      dts: ctx.format === "cjs" ? ".d.cts" : ".d.ts"
     }),
     esbuildPlugins: [
       esbuildPluginFilePathExtensions({
