@@ -173,6 +173,8 @@ export default async function runExecutor(
       "./package.json": "./package.json"
     };
 
+    packageJson.funding ??= workspacePackageJson.funding;
+
     packageJson.main = "dist/legacy/index.cjs";
     packageJson.module = "dist/legacy/index.js";
     packageJson.types = "dist/legacy/index.d.ts";

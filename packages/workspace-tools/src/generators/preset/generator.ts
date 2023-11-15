@@ -78,6 +78,11 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
         url: "https://stormsoftware.org"
       };
 
+      json.funding ??= {
+        type: "github",
+        url: "https://github.com/sponsors/storm-software"
+      };
+
       json.namespace ??= `@${options.namespace}`;
       json.description ??= options.description;
 
@@ -242,6 +247,7 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
       "ts-jest": "^29.1.1",
       "ts-node": "^10.9.1",
       "tslib": "^2.6.2",
+      "terser": "^5.24.0",
       "typescript": typescriptVersion,
       "verdaccio": "^5.27.0"
     };
