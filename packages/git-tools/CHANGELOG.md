@@ -1,3 +1,10 @@
+## [1.2.28](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.27...git-tools-v1.2.28) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved tsup issue with entry option and package.json full path ([1181d64](https://github.com/storm-software/storm-ops/commit/1181d644c5c1ced40c7dbb563df252b2630ca7ca))
+
 ## [1.2.27](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.26...git-tools-v1.2.27) (2023-11-15)
 
 
