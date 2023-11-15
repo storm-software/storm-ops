@@ -1,3 +1,10 @@
+## [1.6.32](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.31...workspace-tools-v1.6.32) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added mts to list of extensions for output ([d64b590](https://github.com/storm-software/storm-ops/commit/d64b5906c926de0ff661769cd3dce59c1330ecb4))
+
 ## [1.6.31](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.30...workspace-tools-v1.6.31) (2023-11-15)
 
 
