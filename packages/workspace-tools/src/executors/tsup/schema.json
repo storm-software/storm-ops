@@ -39,7 +39,7 @@
       "bundle": {
         "type": "boolean",
         "description": "Whether to bundle the main entry point and additional entry points. Set to false to keep individual output files.",
-        "default": true
+        "default": false
       },
       "watch": {
         "type": "boolean",
@@ -69,7 +69,7 @@
         "type": "string",
         "description": "Platform target for outputs.",
         "enum": ["browser", "node", "neutral"],
-        "default": "neutral"
+        "default": "node"
       },
       "options": {
         "type": "object",
@@ -78,7 +78,7 @@
         "x-priority": "important"
       }
     },
-    "required": ["tsConfig", "main"],
+    "required": ["tsConfig"],
     "definitions": {
       "assetPattern": {
         "oneOf": [

@@ -11,19 +11,14 @@ export function modernConfig(
   outDir: string,
   tsconfig = "tsconfig.json",
   debug = false,
-  bundle = true,
-  platform = "neutral",
+  bundle = false,
+  platform = "node",
   options: Options = {}
 ) {
   return {
     ...options,
     name: "modern",
     entry,
-    splitting: true,
-    treeshake: {
-      moduleSideEffects: ["src"],
-      preset: "recommended"
-    },
     format: ["cjs", "esm"],
     target:
       platform !== "node"
@@ -61,7 +56,12 @@ export function modernConfig(
     dts: true,
     sourcemap: debug,
     clean: false,
-    esbuildPlugins: [esbuildPluginFilePathExtensions({ esmExtension: "js" })]
+    esbuildPlugins: [
+      esbuildPluginFilePathExtensions({
+        esmExtension: "js",
+        cjsExtension: "cjs"
+      })
+    ]
   } as Options;
 }
 
@@ -70,19 +70,14 @@ export function legacyConfig(
   outDir: string,
   tsconfig = "tsconfig.json",
   debug = false,
-  bundle = true,
-  platform = "neutral",
+  bundle = false,
+  platform = "node",
   options: Options = {}
 ) {
   return {
     ...options,
     name: "legacy",
     entry,
-    splitting: true,
-    treeshake: {
-      moduleSideEffects: ["src"],
-      preset: "recommended"
-    },
     format: ["cjs", "esm"],
     target: ["es2022", "node18"],
     tsconfig,
@@ -110,7 +105,12 @@ export function legacyConfig(
     dts: true,
     sourcemap: debug,
     clean: false,
-    esbuildPlugins: [esbuildPluginFilePathExtensions({ esmExtension: "js" })]
+    esbuildPlugins: [
+      esbuildPluginFilePathExtensions({
+        esmExtension: "js",
+        cjsExtension: "cjs"
+      })
+    ]
   } as Options;
 }
 
