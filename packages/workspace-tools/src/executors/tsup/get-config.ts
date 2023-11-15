@@ -31,13 +31,11 @@ export function modernConfig(
             "opera77",
             "esnext"
           ]
-        : ["esnext", "edge91", "node18"],
+        : ["esnext", "node18"],
     tsconfig,
     outDir: joinPathFragments(outDir, "dist", "modern"),
     metafile: true,
     minify: !debug,
-    minifyWhitespace: !debug,
-    minifySyntax: !debug,
     bundle,
     platform,
     dts: true,
@@ -71,8 +69,6 @@ export function legacyConfig(
     outDir: joinPathFragments(outDir, "dist", "legacy"),
     metafile: true,
     minify: !debug,
-    minifyWhitespace: !debug,
-    minifySyntax: !debug,
     bundle,
     platform,
     dts: true,

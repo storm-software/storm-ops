@@ -62,7 +62,7 @@ export default async function runExecutor(
 
     if (options.clean !== false) {
       console.log("🧹 Cleaning output path");
-      removeSync(options.outputPath);
+      removeSync(outputPath);
     }
 
     // #endregion Clean output directory
@@ -209,13 +209,15 @@ export default async function runExecutor(
       ? projectRoot
       : `packages/${context.projectName}`;
 
-    writeJsonFile(`${options.outputPath}/package.json`, packageJson);
+    const packageJsonPath = join(outputPath, "package.json");
+    writeJsonFile(packageJsonPath, packageJson);
 
     // #endregion Generate the package.json file
 
     // #region Run the build process
 
     console.log("Getting Tsup build config");
+
     const config = getConfig(sourceRoot, { ...options, outputPath });
     if (typeof config === "function") {
       await build(await Promise.resolve(config({})));
@@ -238,6 +240,7 @@ export default async function runExecutor(
 }
 
 const build = async (options: Options | Options[]) => {
+  console.log("Tsup build config: \n", options);
   if (Array.isArray(options)) {
     await Promise.all(options.map(buildOptions => tsup(buildOptions)));
   } else {
