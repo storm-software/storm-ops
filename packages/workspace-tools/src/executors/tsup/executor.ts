@@ -1,13 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-  ExecutorContext,
-  joinPathFragments,
-  readJsonFile,
-  writeJsonFile
-} from "@nx/devkit";
+import { ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devkit";
 import { getExtraDependencies } from "@nx/esbuild/src/executors/esbuild/lib/get-extra-dependencies";
 import { copyAssets } from "@nx/js";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
+import { writeFileSync } from "fs";
 import { removeSync } from "fs-extra";
 import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
 import { fileExists } from "nx/src/utils/fileutils";
@@ -207,10 +203,14 @@ export default async function runExecutor(
     packageJson.repository ??= workspacePackageJson.repository;
     packageJson.repository.directory ??= projectRoot
       ? projectRoot
-      : `packages/${context.projectName}`;
+      : joinPathFragments("packages", context.projectName);
 
-    const packageJsonPath = join(outputPath, "package.json");
-    writeJsonFile(packageJsonPath, packageJson);
+    const packageJsonPath = joinPathFragments(
+      context.root,
+      outputPath,
+      "package.json"
+    );
+    writeFileSync(packageJsonPath, packageJson);
 
     // #endregion Generate the package.json file
 

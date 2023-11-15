@@ -69,7 +69,7 @@
         "type": "string",
         "description": "Platform target for outputs.",
         "enum": ["browser", "node", "neutral"],
-        "default": "node"
+        "default": "neutral"
       },
       "options": {
         "type": "object",
@@ -78,7 +78,7 @@
         "x-priority": "important"
       }
     },
-    "required": ["tsConfig"],
+    "required": ["tsConfig", "platform"],
     "definitions": {
       "assetPattern": {
         "oneOf": [

@@ -1,6 +1,5 @@
 import { joinPathFragments } from "@nx/devkit";
 import { BuildOptions, Format } from "esbuild";
-import { esbuildPluginFilePathExtensions } from "esbuild-plugin-file-path-extensions";
 import { Options, defineConfig } from "tsup";
 import { TsupExecutorSchema } from "./schema";
 
@@ -12,7 +11,7 @@ export function modernConfig(
   tsconfig = "tsconfig.json",
   debug = false,
   bundle = true,
-  platform = "node",
+  platform = "neutral",
   options: Options = {}
 ) {
   return {
@@ -40,13 +39,7 @@ export function modernConfig(
     platform,
     dts: true,
     sourcemap: debug,
-    clean: false,
-    esbuildPlugins: [
-      esbuildPluginFilePathExtensions({
-        esmExtension: "js",
-        cjsExtension: "cjs"
-      })
-    ]
+    clean: false
   } as Options;
 }
 
@@ -56,7 +49,7 @@ export function legacyConfig(
   tsconfig = "tsconfig.json",
   debug = false,
   bundle = true,
-  platform = "node",
+  platform = "neutral",
   options: Options = {}
 ) {
   return {
@@ -73,13 +66,7 @@ export function legacyConfig(
     platform,
     dts: true,
     sourcemap: debug,
-    clean: false,
-    esbuildPlugins: [
-      esbuildPluginFilePathExtensions({
-        esmExtension: "js",
-        cjsExtension: "cjs"
-      })
-    ]
+    clean: false
   } as Options;
 }
 
@@ -96,7 +83,8 @@ export function getConfig(
   }: TsupExecutorSchema
 ) {
   const entry = [
-    joinPathFragments(sourceRoot, "index.ts"),
+    joinPathFragments(sourceRoot, "**/*.ts"),
+    joinPathFragments(sourceRoot, "**/*.tsx"),
     ...(additionalEntryPoints ?? [])
   ];
 
