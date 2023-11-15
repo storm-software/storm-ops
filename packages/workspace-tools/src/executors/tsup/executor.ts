@@ -215,18 +215,19 @@ export default async function runExecutor(
     writeFileSync(
       packageJsonPath,
       await format(JSON.stringify(packageJson), {
-        "plugins": ["prettier-plugin-packagejson"],
-        "trailingComma": "none",
-        "tabWidth": 2,
-        "semi": true,
-        "singleQuote": false,
-        "quoteProps": "preserve",
-        "insertPragma": false,
-        "bracketSameLine": true,
-        "printWidth": 80,
-        "bracketSpacing": true,
-        "arrowParens": "avoid",
-        "endOfLine": "lf"
+        plugins: ["prettier-plugin-packagejson"],
+        parser: "json",
+        trailingComma: "none",
+        tabWidth: 2,
+        semi: true,
+        singleQuote: false,
+        quoteProps: "preserve",
+        insertPragma: false,
+        bracketSameLine: true,
+        printWidth: 80,
+        bracketSpacing: true,
+        arrowParens: "avoid",
+        endOfLine: "lf"
       })
     );
 
