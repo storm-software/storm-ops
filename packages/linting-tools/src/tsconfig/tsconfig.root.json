@@ -8,7 +8,6 @@
     "noImplicitReturns": true,
     "noUncheckedIndexedAccess": true,
     "strictNullChecks": true,
-    "allowJs": true,
     "strict": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
@@ -24,7 +23,8 @@
     "module": "esnext",
     "lib": ["esnext", "dom", "dom.iterable"],
     "skipLibCheck": true,
-    "skipDefaultLibCheck": true
+    "skipDefaultLibCheck": true,
+    "esModuleInterop": true
   },
   "ts-node": {
     "compilerOptions": {

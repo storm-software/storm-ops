@@ -135,6 +135,7 @@ export async function nodeLibraryGenerator(
     updateJson<PackageJson>(tree, packageJsonPath, (json: PackageJson) => {
       json.name = options.importPath;
       json.version = "0.0.1";
+
       // If the package is publishable or root/standalone, we should remove the private field.
       if (json.private && (options.publishable || options.rootProject)) {
         delete json.private;
@@ -197,6 +198,36 @@ export async function nodeLibraryGenerator(
   addTsConfigPath(tree, joinPathFragments(options.importPath, "/*"), [
     joinPathFragments(options.projectRoot, "./src", "/*")
   ]);
+
+  if (tree.exists("package.json")) {
+    const packageJson = readJson<{
+      repository: any;
+      description: string;
+    }>(tree, "package.json");
+
+    packageJson?.repository && (repository = packageJson.repository);
+    packageJson?.description && (description = packageJson.description);
+  }
+
+  const tsconfigPath = joinPathFragments(options.projectRoot, "tsconfig.json");
+  if (tree.exists(tsconfigPath)) {
+    updateJson(tree, tsconfigPath, (json: any) => {
+      json.composite ??= true;
+
+      return json;
+    });
+  } else {
+    writeJson(tree, tsconfigPath, {
+      extends: `${offsetFromRoot(options.projectRoot)}tsconfig.base.json`,
+      composite: true,
+      compilerOptions: {
+        outDir: `${offsetFromRoot(options.projectRoot)}dist/out-tsc`
+      },
+      files: [],
+      include: ["src/**/*.ts", "src/**/*.js"],
+      exclude: ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
+    });
+  }
 
   const lintCallback = await addLint(tree, options);
   tasks.push(lintCallback);

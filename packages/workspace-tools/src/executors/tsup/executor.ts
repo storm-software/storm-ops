@@ -159,7 +159,7 @@ export default async function runExecutor(
     });
 
     packageJson.type ??= "module";
-    packageJson.exports = {
+    packageJson.exports ??= {
       ".": {
         "import": {
           "types": "./dist/modern/index.d.ts",
@@ -175,9 +175,9 @@ export default async function runExecutor(
 
     packageJson.funding ??= workspacePackageJson.funding;
 
-    packageJson.main = "dist/legacy/index.cjs";
-    packageJson.module = "dist/legacy/index.js";
-    packageJson.types = "dist/legacy/index.d.ts";
+    packageJson.main ??= "dist/legacy/index.cjs";
+    packageJson.module ??= "dist/legacy/index.js";
+    packageJson.types ??= "dist/legacy/index.d.ts";
 
     packageJson.sideEffects ??= false;
     packageJson.files ??= ["dist", "src"];
@@ -193,7 +193,7 @@ export default async function runExecutor(
     packageJson.keywords ??= workspacePackageJson.keywords;
 
     packageJson.repository ??= workspacePackageJson.repository;
-    packageJson.repository.directory = projectRoot
+    packageJson.repository.directory ??= projectRoot
       ? projectRoot
       : `packages/${context.projectName}`;
 

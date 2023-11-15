@@ -1,5 +1,6 @@
 import { joinPathFragments } from "@nx/devkit";
 import { BuildOptions, Format } from "esbuild";
+import { esbuildPluginFilePathExtensions } from "esbuild-plugin-file-path-extensions";
 import { Options, defineConfig } from "tsup";
 import { TsupExecutorSchema } from "./schema";
 
@@ -8,7 +9,7 @@ type Entry = string | string[] | Record<string, string>;
 export function modernConfig(
   entry: Entry,
   outDir: string,
-  tsConfig = "tsconfig.json",
+  tsconfig = "tsconfig.json",
   debug = false,
   bundle = true,
   platform = "neutral",
@@ -22,7 +23,7 @@ export function modernConfig(
       moduleSideEffects: ["src"],
       preset: "recommended"
     },
-    format: ["esm", "cjs"],
+    format: ["cjs", "esm"],
     target:
       platform !== "node"
         ? [
@@ -35,8 +36,8 @@ export function modernConfig(
             "esnext"
           ]
         : ["esnext", "edge91", "node18"],
-    tsconfig: tsConfig,
-    outDir: joinPathFragments(outDir, "build", "modern"),
+    tsconfig,
+    outDir: joinPathFragments(outDir, "dist", "modern"),
     metafile: true,
     minify: !debug ? "terser" : false,
     terserOptions: !debug
@@ -58,15 +59,15 @@ export function modernConfig(
     platform,
     dts: true,
     sourcemap: debug,
-    cjsInterop: true,
-    clean: false
+    clean: false,
+    esbuildPlugins: [esbuildPluginFilePathExtensions({ esmExtension: "js" })]
   } as Options;
 }
 
 export function legacyConfig(
   entry: Entry,
   outDir: string,
-  tsConfig = "tsconfig.json",
+  tsconfig = "tsconfig.json",
   debug = false,
   bundle = true,
   platform = "neutral",
@@ -80,10 +81,10 @@ export function legacyConfig(
       moduleSideEffects: ["src"],
       preset: "recommended"
     },
-    format: ["esm", "cjs"],
+    format: ["cjs", "esm"],
     target: ["es2022", "node18"],
-    tsconfig: tsConfig,
-    outDir: joinPathFragments(outDir, "build", "legacy"),
+    tsconfig,
+    outDir: joinPathFragments(outDir, "dist", "legacy"),
     metafile: true,
     minify: !debug ? "terser" : false,
     terserOptions: !debug
@@ -106,8 +107,8 @@ export function legacyConfig(
     platform,
     dts: true,
     sourcemap: debug,
-    cjsInterop: true,
-    clean: false
+    clean: false,
+    esbuildPlugins: [esbuildPluginFilePathExtensions({ esmExtension: "js" })]
   } as Options;
 }
 
