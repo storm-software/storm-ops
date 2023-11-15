@@ -1,3 +1,10 @@
+## [1.4.29](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.28...@storm-software/storm-ops-v1.4.29) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Generate tsconfig fields in node-library generator ([d34b2e6](https://github.com/storm-software/storm-ops/commit/d34b2e6fab177c490ea7fc81637cf26dbb4dad5f))
+
 ## [1.4.28](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.27...@storm-software/storm-ops-v1.4.28) (2023-11-13)
 
 
