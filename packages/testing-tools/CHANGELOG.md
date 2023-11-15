@@ -1,3 +1,10 @@
+## [1.1.16](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.15...testing-tools-v1.1.16) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patch tsup to use generated package.json file ([424fb45](https://github.com/storm-software/storm-ops/commit/424fb454abea5399b7333777210286d654610f2d))
+
 ## [1.1.15](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.14...testing-tools-v1.1.15) (2023-11-15)
 
 
