@@ -83,7 +83,7 @@ export default async function runExecutor(
     assets.push({
       input: sourceRoot,
       glob: "**/{*.d.ts,*.ts,*.tsx}",
-      output: "src/"
+      output: "lib/"
     });
 
     const result = await copyAssets(
@@ -180,7 +180,7 @@ export default async function runExecutor(
     packageJson.types ??= "dist/legacy/index.d.ts";
 
     packageJson.sideEffects ??= false;
-    packageJson.files ??= ["dist", "src"];
+    packageJson.files ??= ["dist", "lib"];
     packageJson.publishConfig ??= {
       "access": "public"
     };

@@ -127,8 +127,7 @@ export function getConfig(
   }: TsupExecutorSchema
 ) {
   const entry = [
-    joinPathFragments(sourceRoot, "**/*.ts"),
-    joinPathFragments(sourceRoot, "**/*.tsx"),
+    joinPathFragments(sourceRoot, "index.ts"),
     ...(additionalEntryPoints ?? [])
   ];
 
