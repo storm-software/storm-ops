@@ -1,3 +1,12 @@
+## [1.6.38](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.37...workspace-tools-v1.6.38) (2023-11-15)
+
+
+### Bug Fixes
+
+* **deps:** update patch prod dependencies ([4f84a7e](https://github.com/storm-software/storm-ops/commit/4f84a7e38ddd416883229b67665649ae0ffcc03a))
+* **workspace-tools:** Added back previously removed config ([d599f20](https://github.com/storm-software/storm-ops/commit/d599f20113c117b7a430de422b49921053cf61e4))
+* **workspace-tools:** Update default options for tsup executor ([436d792](https://github.com/storm-software/storm-ops/commit/436d7922a31128030659d671e5ed76272801215d))
+
 ## [1.6.37](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.36...workspace-tools-v1.6.37) (2023-11-15)
 
 

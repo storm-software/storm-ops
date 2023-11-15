@@ -1,3 +1,10 @@
+## [1.4.32](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.31...@storm-software/storm-ops-v1.4.32) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update default options for tsup executor ([436d792](https://github.com/storm-software/storm-ops/commit/436d7922a31128030659d671e5ed76272801215d))
+
 ## [1.4.31](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.30...@storm-software/storm-ops-v1.4.31) (2023-11-15)
 
 

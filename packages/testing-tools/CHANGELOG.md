@@ -1,3 +1,11 @@
+## [1.1.15](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.14...testing-tools-v1.1.15) (2023-11-15)
+
+
+### Bug Fixes
+
+* **deps:** update patch prod dependencies ([4f84a7e](https://github.com/storm-software/storm-ops/commit/4f84a7e38ddd416883229b67665649ae0ffcc03a))
+* **workspace-tools:** Update default options for tsup executor ([436d792](https://github.com/storm-software/storm-ops/commit/436d7922a31128030659d671e5ed76272801215d))
+
 ## [1.1.14](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.13...testing-tools-v1.1.14) (2023-11-13)
 
 

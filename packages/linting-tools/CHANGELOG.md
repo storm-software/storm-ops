@@ -1,3 +1,11 @@
+## [1.3.22](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.21...linting-tools-v1.3.22) (2023-11-15)
+
+
+### Bug Fixes
+
+* **deps:** update patch prod dependencies ([4f84a7e](https://github.com/storm-software/storm-ops/commit/4f84a7e38ddd416883229b67665649ae0ffcc03a))
+* **workspace-tools:** Update default options for tsup executor ([436d792](https://github.com/storm-software/storm-ops/commit/436d7922a31128030659d671e5ed76272801215d))
+
 ## [1.3.21](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.20...linting-tools-v1.3.21) (2023-11-15)
 
 
