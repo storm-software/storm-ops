@@ -1,3 +1,10 @@
+## [1.3.20](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.19...linting-tools-v1.3.20) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Generate tsconfig fields in node-library generator ([d34b2e6](https://github.com/storm-software/storm-ops/commit/d34b2e6fab177c490ea7fc81637cf26dbb4dad5f))
+
 ## [1.3.19](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.18...linting-tools-v1.3.19) (2023-11-13)
 
 
