@@ -1,3 +1,10 @@
+## [1.3.23](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.22...linting-tools-v1.3.23) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patch tsup to use generated package.json file ([424fb45](https://github.com/storm-software/storm-ops/commit/424fb454abea5399b7333777210286d654610f2d))
+
 ## [1.3.22](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.21...linting-tools-v1.3.22) (2023-11-15)
 
 
