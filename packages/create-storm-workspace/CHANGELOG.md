@@ -1,3 +1,10 @@
+## [1.6.30](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.29...create-storm-workspace-v1.6.30) (2023-11-14)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added esbuildOption update function to change extensions on output files ([1038fd6](https://github.com/storm-software/storm-ops/commit/1038fd6b044aa66ad73d28541782b59392d98ef1))
+
 ## [1.6.29](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.28...create-storm-workspace-v1.6.29) (2023-11-14)
 
 
