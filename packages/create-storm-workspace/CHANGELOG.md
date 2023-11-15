@@ -1,3 +1,10 @@
+## [1.6.37](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.36...create-storm-workspace-v1.6.37) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed some of the extra tsup config options ([085c056](https://github.com/storm-software/storm-ops/commit/085c0566e546f648a8aed3604f1ea356c3b4a7bc))
+
 ## [1.6.36](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.35...create-storm-workspace-v1.6.36) (2023-11-15)
 
 

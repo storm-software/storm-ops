@@ -1,3 +1,10 @@
+## [1.4.30](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.29...@storm-software/storm-ops-v1.4.30) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed some of the extra tsup config options ([085c056](https://github.com/storm-software/storm-ops/commit/085c0566e546f648a8aed3604f1ea356c3b4a7bc))
+
 ## [1.4.29](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.28...@storm-software/storm-ops-v1.4.29) (2023-11-15)
 
 

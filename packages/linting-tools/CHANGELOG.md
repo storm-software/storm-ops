@@ -1,3 +1,10 @@
+## [1.3.21](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.20...linting-tools-v1.3.21) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed some of the extra tsup config options ([085c056](https://github.com/storm-software/storm-ops/commit/085c0566e546f648a8aed3604f1ea356c3b4a7bc))
+
 ## [1.3.20](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.19...linting-tools-v1.3.20) (2023-11-15)
 
 
