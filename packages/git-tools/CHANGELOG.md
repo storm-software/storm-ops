@@ -1,3 +1,11 @@
+## [1.2.29](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.28...git-tools-v1.2.29) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with prettier config import ([4e2c026](https://github.com/storm-software/storm-ops/commit/4e2c026ca16072a60cbf34ece52e836ed6c0c183))
+* **workspace-tools:** Updated tsup build to check for package.json in outDir via patch ([65afb51](https://github.com/storm-software/storm-ops/commit/65afb51dbcd4e68ebf44f643a9f683e66564b18c))
+
 ## [1.2.28](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.27...git-tools-v1.2.28) (2023-11-15)
 
 
