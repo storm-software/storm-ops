@@ -1,3 +1,10 @@
+## [1.6.39](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.38...create-storm-workspace-v1.6.39) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update entry file to point to src/index.ts file specifically ([b3ab296](https://github.com/storm-software/storm-ops/commit/b3ab296a24b41996c264ab70d72d9dd5038fec04))
+
 ## [1.6.38](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.37...create-storm-workspace-v1.6.38) (2023-11-15)
 
 
