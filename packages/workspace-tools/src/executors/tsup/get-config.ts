@@ -1,6 +1,5 @@
 import { joinPathFragments } from "@nx/devkit";
 import { BuildOptions, Format } from "esbuild";
-import { esbuildPluginFilePathExtensions } from "esbuild-plugin-file-path-extensions";
 import { Options, defineConfig } from "tsup";
 import { TsupExecutorSchema } from "./schema";
 
@@ -43,7 +42,7 @@ export function modernConfig(
     terserOptions: !debug
       ? {
           mangle: true,
-          module: true,
+          module: false,
           compress: true,
           format: {
             comments: false
@@ -62,13 +61,7 @@ export function modernConfig(
     sourcemap: debug,
     cjsInterop: true,
     clean: false,
-    esbuildOptions,
-    esbuildPlugins: [
-      esbuildPluginFilePathExtensions({
-        esmExtension: "js",
-        cjsExtension: "cjs"
-      })
-    ]
+    esbuildOptions
   } as Options;
 }
 
@@ -98,7 +91,7 @@ export function legacyConfig(
     terserOptions: !debug
       ? {
           mangle: true,
-          module: true,
+          module: false,
           compress: true,
           format: {
             comments: false
@@ -117,13 +110,7 @@ export function legacyConfig(
     sourcemap: debug,
     cjsInterop: true,
     clean: false,
-    esbuildOptions,
-    esbuildPlugins: [
-      esbuildPluginFilePathExtensions({
-        esmExtension: "js",
-        cjsExtension: "cjs"
-      })
-    ]
+    esbuildOptions
   } as Options;
 }
 
