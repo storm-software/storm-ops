@@ -210,7 +210,7 @@ export default async function runExecutor(
       outputPath,
       "package.json"
     );
-    writeFileSync(packageJsonPath, packageJson);
+    writeFileSync(packageJsonPath, JSON.stringify(packageJson));
 
     // #endregion Generate the package.json file
 
