@@ -218,6 +218,7 @@ export default async function runExecutor(
 
     console.log("Getting Tsup build config");
 
+    process.env["TSUP_PACKAGE_JSON_PATH"] = packageJsonPath;
     const config = getConfig(sourceRoot, { ...options, outputPath });
     if (typeof config === "function") {
       await build(await Promise.resolve(config({})));

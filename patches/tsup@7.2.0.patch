@@ -1,0 +1,15 @@
+diff --git a/dist/index.js b/dist/index.js
+index 68c197cb2b8dfa928a448475b4020e7301da959e..38c179145e8ab74a051f4447b8d085f5595820c7 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -1605,7 +1605,9 @@ async function runEsbuild(options, {
+   buildDependencies,
+   pluginContainer
+ }) {
+-  const pkg = await _chunk52KWB5QBjs.loadPkg.call(void 0, process.cwd());
++  const pkg = await _chunk52KWB5QBjs.loadPkg.call(void 0, process.env?.["TSUP_PACKAGE_JSON_PATH"] 
++    ? process.env["TSUP_PACKAGE_JSON_PATH"]
++    : process.cwd());
+   const deps = await _chunk52KWB5QBjs.getProductionDeps.call(void 0, process.cwd());
+   const external = [
+     // Exclude dependencies, e.g. `lodash`, `lodash/get`
