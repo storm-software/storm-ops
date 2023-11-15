@@ -1,3 +1,10 @@
+## [1.6.46](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.45...create-storm-workspace-v1.6.46) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Add json parser option to prettier format line ([86790d6](https://github.com/storm-software/storm-ops/commit/86790d6d683fe191c582afcd5a90b1d086497aec))
+
 ## [1.6.45](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.44...create-storm-workspace-v1.6.45) (2023-11-15)
 
 
