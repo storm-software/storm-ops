@@ -1,3 +1,10 @@
+## [1.6.31](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.30...workspace-tools-v1.6.31) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Ensure proper extensions are applied to declaration files on cjs build ([d1221e6](https://github.com/storm-software/storm-ops/commit/d1221e6e63ea7b4e4cb935d367bc255cf29a5334))
+
 ## [1.6.30](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.29...workspace-tools-v1.6.30) (2023-11-14)
 
 
