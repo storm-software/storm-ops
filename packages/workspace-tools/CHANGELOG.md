@@ -1,3 +1,10 @@
+## [1.6.44](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.43...workspace-tools-v1.6.44) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue around writing data to package.json file ([991485e](https://github.com/storm-software/storm-ops/commit/991485e59b749c2278a90684126567835a0a0abc))
+
 ## [1.6.43](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.42...workspace-tools-v1.6.43) (2023-11-15)
 
 
