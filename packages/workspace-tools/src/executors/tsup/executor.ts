@@ -162,23 +162,23 @@ export default async function runExecutor(
     packageJson.exports = {
       ".": {
         "import": {
-          "types": "./build/modern/index.d.ts",
-          "default": "./build/modern/index.js"
+          "types": "./dist/modern/index.d.ts",
+          "default": "./dist/modern/index.js"
         },
         "require": {
-          "types": "./build/modern/index.d.cts",
-          "default": "./build/modern/index.cjs"
+          "types": "./dist/modern/index.d.cts",
+          "default": "./dist/modern/index.cjs"
         }
       },
       "./package.json": "./package.json"
     };
 
-    packageJson.main = "build/legacy/index.cjs";
-    packageJson.module = "build/legacy/index.js";
-    packageJson.types = "build/legacy/index.d.ts";
+    packageJson.main = "dist/legacy/index.cjs";
+    packageJson.module = "dist/legacy/index.js";
+    packageJson.types = "dist/legacy/index.d.ts";
 
     packageJson.sideEffects ??= false;
-    packageJson.files ??= ["build", "src"];
+    packageJson.files ??= ["dist", "src"];
     packageJson.publishConfig ??= {
       "access": "public"
     };

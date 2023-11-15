@@ -22,7 +22,7 @@ export function modernConfig(
       moduleSideEffects: ["src"],
       preset: "recommended"
     },
-    format: ["cjs", "esm"],
+    format: ["esm", "cjs"],
     target:
       platform !== "node"
         ? [
@@ -42,13 +42,12 @@ export function modernConfig(
     terserOptions: !debug
       ? {
           mangle: true,
-          module: false,
           compress: true,
           format: {
             comments: false
           },
           ecma: 2020,
-          keep_classnames: false,
+          keep_classnames: true,
           keep_fnames: true
         }
       : undefined,
@@ -60,8 +59,7 @@ export function modernConfig(
     dts: true,
     sourcemap: debug,
     cjsInterop: true,
-    clean: false,
-    esbuildOptions
+    clean: false
   } as Options;
 }
 
@@ -82,7 +80,7 @@ export function legacyConfig(
       moduleSideEffects: ["src"],
       preset: "recommended"
     },
-    format: ["cjs", "esm"],
+    format: ["esm", "cjs"],
     target: ["es2022", "node18"],
     tsconfig: tsConfig,
     outDir: joinPathFragments(outDir, "build", "legacy"),
@@ -91,14 +89,14 @@ export function legacyConfig(
     terserOptions: !debug
       ? {
           mangle: true,
-          module: false,
           compress: true,
           format: {
             comments: false
           },
           ecma: 2020,
           keep_classnames: false,
-          keep_fnames: true
+          keep_fnames: true,
+          safari10: true
         }
       : undefined,
     minifyWhitespace: !debug,
@@ -109,8 +107,7 @@ export function legacyConfig(
     dts: true,
     sourcemap: debug,
     cjsInterop: true,
-    clean: false,
-    esbuildOptions
+    clean: false
   } as Options;
 }
 
