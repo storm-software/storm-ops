@@ -17,7 +17,13 @@ export function modernConfig(
 ) {
   return {
     ...options,
+    name: "modern",
     entry,
+    splitting: true,
+    treeshake: {
+      moduleSideEffects: ["src"],
+      preset: "recommended"
+    },
     format: ["cjs", "esm"],
     target:
       platform !== "node"
@@ -34,6 +40,22 @@ export function modernConfig(
     tsconfig,
     outDir: joinPathFragments(outDir, "dist", "modern"),
     metafile: true,
+    minify: !debug ? "terser" : false,
+    terserOptions: !debug
+      ? {
+          mangle: true,
+          compress: true,
+          format: {
+            comments: false
+          },
+          ecma: 2020,
+          keep_classnames: true,
+          keep_fnames: true
+        }
+      : undefined,
+    minifyWhitespace: !debug,
+    minifyIdentifiers: !debug,
+    minifySyntax: !debug,
     bundle,
     platform,
     dts: true,
@@ -54,12 +76,35 @@ export function legacyConfig(
 ) {
   return {
     ...options,
+    name: "legacy",
     entry,
+    splitting: true,
+    treeshake: {
+      moduleSideEffects: ["src"],
+      preset: "recommended"
+    },
     format: ["cjs", "esm"],
     target: ["es2022", "node18"],
     tsconfig,
     outDir: joinPathFragments(outDir, "dist", "legacy"),
     metafile: true,
+    minify: !debug ? "terser" : false,
+    terserOptions: !debug
+      ? {
+          mangle: true,
+          compress: true,
+          format: {
+            comments: false
+          },
+          ecma: 2020,
+          keep_classnames: false,
+          keep_fnames: true,
+          safari10: true
+        }
+      : undefined,
+    minifyWhitespace: !debug,
+    minifyIdentifiers: !debug,
+    minifySyntax: !debug,
     bundle,
     platform,
     dts: true,

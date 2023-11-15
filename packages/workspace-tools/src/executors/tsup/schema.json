@@ -19,7 +19,7 @@
         "x-completion-type": "file",
         "x-completion-glob": "tsconfig.*.json",
         "x-priority": "important",
-        "default": "tsconfig.lib.json"
+        "default": "tsconfig.json"
       },
       "additionalEntryPoints": {
         "type": "array",
