@@ -51,7 +51,7 @@
     "e2e": "nx e2e",
     "format": "nx format:write",
     "help": "nx help",
-    "preinstall": "pnpm dist/packages/git-tools/scripts/pre-install.js || npx -y only-allow pnpm",
+    "preinstall": "pnpm dist/packages/git-tools/scripts/pre-install.cjs || npx -y only-allow pnpm",
     "lint": "pnpm dist/packages/linting-tools/bin/cli.js all --skip-cspell --alex-config=\"dist/packages/linting-tools/alex/.alexrc\" --alex-config=\"dist/packages/linting-tools/alex/.alexignore\"",
     "local-registry": "nx local-registry @storm-software/storm-ops",
     "nx": "nx",

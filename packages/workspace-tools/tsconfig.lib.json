@@ -4,9 +4,10 @@
     "outDir": "../../dist/out-tsc",
     "declaration": true,
     "allowJs": true,
+    "resolveJsonModule": true,
     "types": ["node"]
   },
-  "include": ["index.ts", "src/**/*.ts", "src/**/*.js"],
+  "include": ["index.ts", "src/**/*.ts", "src/**/*.js", "**/*.json"],
   "exclude": [
     "jest.config.ts",
     "src/generators/**/files/**/*",
