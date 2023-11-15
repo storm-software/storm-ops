@@ -149,7 +149,7 @@ export default async function runExecutor(
         ) {
           return;
         }
-        if (workspacePackageJson.devDependencies?.[packageName]) {
+        if (workspacePackageJson.dependencies?.[packageName]) {
           return;
         }
 
@@ -161,14 +161,26 @@ export default async function runExecutor(
     packageJson.type ??= "module";
     packageJson.exports ??= {
       ".": {
-        "import": {
-          "types": "./dist/modern/index.d.ts",
-          "default": "./dist/modern/index.js"
+        import: {
+          types: "./dist/modern/index.d.ts",
+          default: "./dist/modern/index.js"
         },
-        "require": {
-          "types": "./dist/modern/index.d.cts",
-          "default": "./dist/modern/index.cjs"
-        }
+        require: {
+          types: "./dist/modern/index.d.cts",
+          default: "./dist/modern/index.cjs"
+        },
+        ...(options.additionalEntryPoints ?? []).map(entryPoint => ({
+          [removeExtension(entryPoint).replace(sourceRoot, "")]: {
+            types: joinPathFragments(
+              "./dist/modern",
+              `${removeExtension(entryPoint.replace(sourceRoot, ""))}.d.ts`
+            ),
+            default: joinPathFragments(
+              "./dist/modern",
+              `${removeExtension(entryPoint.replace(sourceRoot, ""))}.js`
+            )
+          }
+        }))
       },
       "./package.json": "./package.json"
     };
@@ -182,7 +194,7 @@ export default async function runExecutor(
     packageJson.sideEffects ??= false;
     packageJson.files ??= ["dist", "lib"];
     packageJson.publishConfig ??= {
-      "access": "public"
+      access: "public"
     };
 
     packageJson.description ??= workspacePackageJson.description;
@@ -231,4 +243,10 @@ const build = async (options: Options | Options[]) => {
   } else {
     await tsup(options);
   }
+};
+
+const removeExtension = (filePath: string): string => {
+  return filePath.lastIndexOf(".")
+    ? filePath.substring(0, filePath.lastIndexOf("."))
+    : filePath;
 };

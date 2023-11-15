@@ -11,7 +11,7 @@ export function modernConfig(
   outDir: string,
   tsconfig = "tsconfig.json",
   debug = false,
-  bundle = false,
+  bundle = true,
   platform = "node",
   options: Options = {}
 ) {
@@ -35,21 +35,8 @@ export function modernConfig(
     tsconfig,
     outDir: joinPathFragments(outDir, "dist", "modern"),
     metafile: true,
-    minify: !debug ? "terser" : false,
-    terserOptions: !debug
-      ? {
-          mangle: true,
-          compress: true,
-          format: {
-            comments: false
-          },
-          ecma: 2020,
-          keep_classnames: true,
-          keep_fnames: true
-        }
-      : undefined,
+    minify: !debug,
     minifyWhitespace: !debug,
-    minifyIdentifiers: !debug,
     minifySyntax: !debug,
     bundle,
     platform,
@@ -70,7 +57,7 @@ export function legacyConfig(
   outDir: string,
   tsconfig = "tsconfig.json",
   debug = false,
-  bundle = false,
+  bundle = true,
   platform = "node",
   options: Options = {}
 ) {
@@ -83,22 +70,8 @@ export function legacyConfig(
     tsconfig,
     outDir: joinPathFragments(outDir, "dist", "legacy"),
     metafile: true,
-    minify: !debug ? "terser" : false,
-    terserOptions: !debug
-      ? {
-          mangle: true,
-          compress: true,
-          format: {
-            comments: false
-          },
-          ecma: 2020,
-          keep_classnames: false,
-          keep_fnames: true,
-          safari10: true
-        }
-      : undefined,
+    minify: !debug,
     minifyWhitespace: !debug,
-    minifyIdentifiers: !debug,
     minifySyntax: !debug,
     bundle,
     platform,
