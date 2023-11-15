@@ -159,10 +159,9 @@ const esbuildOptions = (
 ) => {
   if (context.format === "esm") {
     options.outExtension = {
-      ".js": ".js",
-      ".d.ts": ".d.ts"
+      ".js": ".js"
     };
   } else if (context.format === "cjs") {
-    options.outExtension = { ".js": ".cjs", ".d.ts": ".d.cts" };
+    options.outExtension = { ".js": ".cjs" };
   }
 };
