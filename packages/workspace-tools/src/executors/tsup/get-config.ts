@@ -158,8 +158,8 @@ const esbuildOptions = (
   }
 ) => {
   if (context.format === "esm") {
-    options.outExtension = { ".js": ".js" };
+    options.outExtension = { ".js": ".js", ".d.ts": ".d.ts" };
   } else if (context.format === "cjs") {
-    options.outExtension = { ".js": ".cjs" };
+    options.outExtension = { ".js": ".cjs", ".d.ts": ".d.cts" };
   }
 };
