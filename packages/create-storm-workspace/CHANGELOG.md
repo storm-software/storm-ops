@@ -1,3 +1,10 @@
+## [1.6.36](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.35...create-storm-workspace-v1.6.36) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Generate tsconfig fields in node-library generator ([d34b2e6](https://github.com/storm-software/storm-ops/commit/d34b2e6fab177c490ea7fc81637cf26dbb4dad5f))
+
 ## [1.6.35](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.34...create-storm-workspace-v1.6.35) (2023-11-15)
 
 
