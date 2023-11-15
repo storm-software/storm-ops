@@ -1,3 +1,10 @@
+## [1.4.31](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.30...@storm-software/storm-ops-v1.4.31) (2023-11-15)
+
+
+### Bug Fixes
+
+* **deps:** update patch prod dependencies ([4f84a7e](https://github.com/storm-software/storm-ops/commit/4f84a7e38ddd416883229b67665649ae0ffcc03a))
+
 ## [1.4.30](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.29...@storm-software/storm-ops-v1.4.30) (2023-11-15)
 
 
