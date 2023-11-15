@@ -1,3 +1,10 @@
+## [1.6.42](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.41...workspace-tools-v1.6.42) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patch tsup to use generated package.json file ([424fb45](https://github.com/storm-software/storm-ops/commit/424fb454abea5399b7333777210286d654610f2d))
+
 ## [1.6.41](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.40...workspace-tools-v1.6.41) (2023-11-15)
 
 
