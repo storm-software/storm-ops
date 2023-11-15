@@ -1,3 +1,10 @@
+## [1.6.41](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.40...create-storm-workspace-v1.6.41) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update package.json path generation ([a5c84a2](https://github.com/storm-software/storm-ops/commit/a5c84a2e10dc8e241bc698c086b77c6265d1f36f))
+
 ## [1.6.40](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.39...create-storm-workspace-v1.6.40) (2023-11-15)
 
 
