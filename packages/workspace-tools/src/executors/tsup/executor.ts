@@ -3,7 +3,6 @@ import { ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devkit";
 import { getExtraDependencies } from "@nx/esbuild/src/executors/esbuild/lib/get-extra-dependencies";
 import { copyAssets } from "@nx/js";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
-import prettierConfig from "@storm-software/linting-tools/prettier/config.json";
 import { writeFileSync } from "fs";
 import { removeSync } from "fs-extra";
 import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
@@ -212,9 +211,23 @@ export default async function runExecutor(
       outputPath,
       "package.json"
     );
+
     writeFileSync(
       packageJsonPath,
-      await format(JSON.stringify(packageJson), prettierConfig)
+      await format(JSON.stringify(packageJson), {
+        "plugins": ["prettier-plugin-packagejson"],
+        "trailingComma": "none",
+        "tabWidth": 2,
+        "semi": true,
+        "singleQuote": false,
+        "quoteProps": "preserve",
+        "insertPragma": false,
+        "bracketSameLine": true,
+        "printWidth": 80,
+        "bracketSpacing": true,
+        "arrowParens": "avoid",
+        "endOfLine": "lf"
+      })
     );
 
     // #endregion Generate the package.json file
