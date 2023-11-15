@@ -1,3 +1,10 @@
+## [1.4.34](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.33...@storm-software/storm-ops-v1.4.34) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved tsup issue with entry option and package.json full path ([1181d64](https://github.com/storm-software/storm-ops/commit/1181d644c5c1ced40c7dbb563df252b2630ca7ca))
+
 ## [1.4.33](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.32...@storm-software/storm-ops-v1.4.33) (2023-11-15)
 
 
