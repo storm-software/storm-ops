@@ -1,3 +1,10 @@
+## [1.6.33](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.32...create-storm-workspace-v1.6.33) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Undo previous changes to `outExtension` config ([cea4c2e](https://github.com/storm-software/storm-ops/commit/cea4c2e294a7d60bc85ebc859841c45c62d2f484))
+
 ## [1.6.32](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.31...create-storm-workspace-v1.6.32) (2023-11-15)
 
 
