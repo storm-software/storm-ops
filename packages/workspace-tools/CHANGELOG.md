@@ -1,3 +1,10 @@
+## [1.6.34](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.33...workspace-tools-v1.6.34) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Remove .d.ts from extensions config ([fd342ce](https://github.com/storm-software/storm-ops/commit/fd342cee8fa5d1ed3f4ffb2a5d25e1c8f554f7e2))
+
 ## [1.6.33](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.32...workspace-tools-v1.6.33) (2023-11-15)
 
 
