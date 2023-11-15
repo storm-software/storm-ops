@@ -1,3 +1,11 @@
+## [1.1.18](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.17...testing-tools-v1.1.18) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with prettier config import ([4e2c026](https://github.com/storm-software/storm-ops/commit/4e2c026ca16072a60cbf34ece52e836ed6c0c183))
+* **workspace-tools:** Updated tsup build to check for package.json in outDir via patch ([65afb51](https://github.com/storm-software/storm-ops/commit/65afb51dbcd4e68ebf44f643a9f683e66564b18c))
+
 ## [1.1.17](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.16...testing-tools-v1.1.17) (2023-11-15)
 
 
