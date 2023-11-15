@@ -1,3 +1,12 @@
+## [1.6.35](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.34...workspace-tools-v1.6.35) (2023-11-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Further required updates to the tsup config ([d075188](https://github.com/storm-software/storm-ops/commit/d07518857d56eff163f70118e955c6d5348ef2cf))
+* **workspace-tools:** Included funding in package.json of monorepo packages ([338677c](https://github.com/storm-software/storm-ops/commit/338677ce3ec9ca3179de732c96795db39fbb34a3))
+* **workspace-tools:** Remove unneeded plugin from tsup config ([e205c7a](https://github.com/storm-software/storm-ops/commit/e205c7a9ec94b09e03a8b3ced2369c03c3c26e97))
+
 ## [1.6.34](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.33...workspace-tools-v1.6.34) (2023-11-15)
 
 
