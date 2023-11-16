@@ -1,3 +1,10 @@
+## [1.1.24](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.23...testing-tools-v1.1.24) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update `entry` in tsup to use a single default file ([06bf60c](https://github.com/storm-software/storm-ops/commit/06bf60c125411a1bdc72bebd7ebe0e7bbc9aa740))
+
 ## [1.1.23](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.22...testing-tools-v1.1.23) (2023-11-16)
 
 
