@@ -1,3 +1,11 @@
+## [1.1.21](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.20...testing-tools-v1.1.21) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patch logging into tsup build ([e6ce2d7](https://github.com/storm-software/storm-ops/commit/e6ce2d7332c409d98f3aee4c561c299de6566de5))
+* **workspace-tools:** Patch tsup build with check for `this` in rollup config ([f6bd066](https://github.com/storm-software/storm-ops/commit/f6bd06677163c0df6bd0a1b4a5e40bd651bf1e86))
+
 ## [1.1.20](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.19...testing-tools-v1.1.20) (2023-11-16)
 
 
