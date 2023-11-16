@@ -1,3 +1,10 @@
+## [1.6.58](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.57...create-storm-workspace-v1.6.58) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update `entry` in tsup to use a single default file ([06bf60c](https://github.com/storm-software/storm-ops/commit/06bf60c125411a1bdc72bebd7ebe0e7bbc9aa740))
+
 ## [1.6.57](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.56...create-storm-workspace-v1.6.57) (2023-11-16)
 
 
