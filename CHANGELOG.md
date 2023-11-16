@@ -1,3 +1,11 @@
+## [1.4.40](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.39...@storm-software/storm-ops-v1.4.40) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Change tsup build to use glob package instead of function from Nx ([4fa5e17](https://github.com/storm-software/storm-ops/commit/4fa5e17d3d29f1769caccb52957fb8fb9ee772d0))
+* **workspace-tools:** Included missing config function signature change ([a2228f2](https://github.com/storm-software/storm-ops/commit/a2228f2fba09d2dfd80a3f3c6dc5059077265f12))
+
 ## [1.4.39](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.38...@storm-software/storm-ops-v1.4.39) (2023-11-16)
 
 
