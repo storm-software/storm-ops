@@ -26,7 +26,7 @@ export default async function runExecutor(
   context: ExecutorContext
 ) {
   try {
-    console.log("⚡ Running build executor on the workspace");
+    console.log("📦 Running build executor on the workspace");
 
     // #region Prepare build context variables
 
@@ -35,7 +35,7 @@ export default async function runExecutor(
       !context.projectName ||
       !context.projectsConfigurations.projects[context.projectName]
     ) {
-      throw Error(
+      throw new Error(
         "The Build process failed because the context is not valid. Please run this command from a workspace."
       );
     }
@@ -88,7 +88,7 @@ export default async function runExecutor(
       context
     );
     if (!result.success) {
-      console.error("The Build process failed trying to copy assets");
+      throw new Error("The Build process failed trying to copy assets");
     }
 
     // #endregion Copy asset files to output directory
@@ -190,7 +190,7 @@ export default async function runExecutor(
     packageJson.types ??= "dist/legacy/index.d.ts";
 
     packageJson.sideEffects ??= false;
-    packageJson.files ??= ["dist", "lib"];
+    packageJson.files ??= ["dist/", "lib/"];
     packageJson.publishConfig ??= {
       access: "public"
     };
@@ -236,6 +236,15 @@ export default async function runExecutor(
 
     // #region Run the build process
 
+    addEventListener("message", event => {
+      if (
+        !(event.source instanceof MessagePort) &&
+        !(event.source instanceof ServiceWorker)
+      ) {
+        console.log("📢 Tsup build message: \n", event);
+      }
+    });
+
     const config = getConfig(sourceRoot, { ...options, outputPath });
     if (typeof config === "function") {
       await build(await Promise.resolve(config({})));
@@ -258,7 +267,7 @@ export default async function runExecutor(
 }
 
 const build = async (options: Options | Options[]) => {
-  console.log("Tsup build config: \n", options);
+  console.log("⚙️ Tsup build config: \n", options);
   if (Array.isArray(options)) {
     await Promise.all(options.map(buildOptions => tsup(buildOptions)));
   } else {

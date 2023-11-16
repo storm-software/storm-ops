@@ -1,5 +1,6 @@
 import { joinPathFragments } from "@nx/devkit";
 import { BuildOptions, Format } from "esbuild";
+import { esbuildPluginFilePathExtensions } from "esbuild-plugin-file-path-extensions";
 import { Options, defineConfig } from "tsup";
 import { TsupExecutorSchema } from "./schema";
 
@@ -12,10 +13,9 @@ export function modernConfig(
   debug = false,
   bundle = true,
   platform = "neutral",
-  options: Options = {}
+  options: Options
 ) {
   return {
-    ...options,
     name: "modern",
     entry,
     format: platform !== "node" ? ["cjs", "esm", "iife"] : ["cjs", "esm"],
@@ -36,17 +36,16 @@ export function modernConfig(
     silent: false,
     metafile: true,
     minify: false,
-    bundle,
     platform,
     dts: true,
     sourcemap: debug,
     clean: false,
-    cjsInterop: true,
     outExtension({ format }) {
       return {
         js: format === "cjs" ? ".cjs" : ".js"
       };
-    }
+    },
+    esbuildPlugins: [esbuildPluginFilePathExtensions({ esmExtension: "js" })]
   } as Options;
 }
 
@@ -57,10 +56,9 @@ export function legacyConfig(
   debug = false,
   bundle = true,
   platform = "neutral",
-  options: Options = {}
+  options: Options
 ) {
   return {
-    ...options,
     name: "legacy",
     entry,
     format: platform !== "node" ? ["cjs", "esm", "iife"] : ["cjs", "esm"],
@@ -71,17 +69,16 @@ export function legacyConfig(
     metafile: true,
     shims: true,
     minify: false,
-    bundle,
     platform,
     dts: true,
     sourcemap: debug,
     clean: false,
-    cjsInterop: true,
     outExtension({ format }) {
       return {
         js: format === "cjs" ? ".cjs" : ".js"
       };
-    }
+    },
+    esbuildPlugins: [esbuildPluginFilePathExtensions({ esmExtension: "js" })]
   } as Options;
 }
 
