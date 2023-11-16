@@ -1,3 +1,10 @@
+## [1.2.35](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.34...git-tools-v1.2.35) (2023-11-16)
+
+
+### Bug Fixes
+
+* **linting-tools:** Added tsconfig recommended to root tsconfig ([cfc70d7](https://github.com/storm-software/storm-ops/commit/cfc70d70ed5a123260d4ef9f1649ad66a0fe38e1))
+
 ## [1.2.34](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.33...git-tools-v1.2.34) (2023-11-16)
 
 

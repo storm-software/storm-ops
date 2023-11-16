@@ -1,3 +1,10 @@
+## [1.4.41](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.40...@storm-software/storm-ops-v1.4.41) (2023-11-16)
+
+
+### Bug Fixes
+
+* **linting-tools:** Added tsconfig recommended to root tsconfig ([cfc70d7](https://github.com/storm-software/storm-ops/commit/cfc70d70ed5a123260d4ef9f1649ad66a0fe38e1))
+
 ## [1.4.40](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.39...@storm-software/storm-ops-v1.4.40) (2023-11-16)
 
 
