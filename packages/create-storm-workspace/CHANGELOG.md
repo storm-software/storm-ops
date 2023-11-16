@@ -1,3 +1,11 @@
+## [1.6.49](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.48...create-storm-workspace-v1.6.49) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patch logging into tsup build ([e6ce2d7](https://github.com/storm-software/storm-ops/commit/e6ce2d7332c409d98f3aee4c561c299de6566de5))
+* **workspace-tools:** Updates to tsup build config ([157b420](https://github.com/storm-software/storm-ops/commit/157b420de3ba39b1fce535c64c7b12fe8f590e4f))
+
 ## [1.6.48](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.47...create-storm-workspace-v1.6.48) (2023-11-16)
 
 
