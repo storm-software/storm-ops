@@ -188,7 +188,7 @@ export default async function runExecutor(
 
     packageJson.main ??= "dist/legacy/index.cjs";
     packageJson.module ??= "dist/legacy/index.js";
-    packageJson.browser ??= "dist/modern/index.js";
+    packageJson.browser ??= "dist/modern/index.global.js";
     packageJson.types ??= "dist/legacy/index.d.ts";
 
     packageJson.sideEffects ??= false;
