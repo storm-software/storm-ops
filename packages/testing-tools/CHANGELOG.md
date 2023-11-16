@@ -1,3 +1,10 @@
+## [1.1.20](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.19...testing-tools-v1.1.20) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tsup patch to use the logger ([4874960](https://github.com/storm-software/storm-ops/commit/4874960eff7c9335d51c375ea858bca992c9e5f8))
+
 ## [1.1.19](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.18...testing-tools-v1.1.19) (2023-11-16)
 
 
