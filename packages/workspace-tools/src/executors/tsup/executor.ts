@@ -27,7 +27,7 @@ export default async function runExecutor(
   context: ExecutorContext
 ) {
   try {
-    console.log("📦 Running build executor on the workspace");
+    console.log("📦  Running build executor on the workspace");
 
     // #region Prepare build context variables
 
@@ -59,7 +59,7 @@ export default async function runExecutor(
     // #region Clean output directory
 
     if (options.clean !== false) {
-      console.log("🧹 Cleaning output path");
+      console.log("🧹  Cleaning output path");
       removeSync(outputPath);
     }
 
@@ -239,12 +239,7 @@ export default async function runExecutor(
 
     const eventEmitter = new EventEmitter({ captureRejections: true });
     eventEmitter.addListener("message", event => {
-      if (
-        !(event.source instanceof MessagePort) &&
-        !(event.source instanceof ServiceWorker)
-      ) {
-        console.log(`📢 Tsup build message (${event.source}): \n`, event.data);
-      }
+      console.log(`📢  Tsup build message: \n`, event);
     });
 
     const config = getConfig(sourceRoot, { ...options, outputPath });
@@ -269,7 +264,7 @@ export default async function runExecutor(
 }
 
 const build = async (options: Options | Options[]) => {
-  console.log("⚙️ Tsup build config: \n", options);
+  console.log("⚙️  Tsup build config: \n", options);
   if (Array.isArray(options)) {
     await Promise.all(options.map(buildOptions => tsup(buildOptions)));
   } else {

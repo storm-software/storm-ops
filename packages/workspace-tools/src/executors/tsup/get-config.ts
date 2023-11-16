@@ -40,11 +40,6 @@ export function modernConfig(
     dts: true,
     sourcemap: debug,
     clean: false,
-    outExtension({ format }) {
-      return {
-        js: format === "cjs" ? ".cjs" : ".js"
-      };
-    },
     esbuildPlugins: [esbuildPluginFilePathExtensions({ esmExtension: "js" })]
   } as Options;
 }
@@ -73,11 +68,6 @@ export function legacyConfig(
     dts: true,
     sourcemap: debug,
     clean: false,
-    outExtension({ format }) {
-      return {
-        js: format === "cjs" ? ".cjs" : ".js"
-      };
-    },
     esbuildPlugins: [esbuildPluginFilePathExtensions({ esmExtension: "js" })]
   } as Options;
 }
