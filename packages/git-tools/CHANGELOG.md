@@ -1,3 +1,11 @@
+## [1.2.34](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.33...git-tools-v1.2.34) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Change tsup build to use glob package instead of function from Nx ([4fa5e17](https://github.com/storm-software/storm-ops/commit/4fa5e17d3d29f1769caccb52957fb8fb9ee772d0))
+* **workspace-tools:** Included missing config function signature change ([a2228f2](https://github.com/storm-software/storm-ops/commit/a2228f2fba09d2dfd80a3f3c6dc5059077265f12))
+
 ## [1.2.33](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.32...git-tools-v1.2.33) (2023-11-16)
 
 
