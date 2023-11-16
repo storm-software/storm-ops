@@ -1,3 +1,10 @@
+## [1.6.48](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.47...workspace-tools-v1.6.48) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tsup patch to use the logger ([4874960](https://github.com/storm-software/storm-ops/commit/4874960eff7c9335d51c375ea858bca992c9e5f8))
+
 ## [1.6.47](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.46...workspace-tools-v1.6.47) (2023-11-16)
 
 
