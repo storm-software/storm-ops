@@ -59,7 +59,7 @@ export default async function runExecutor(
     // #region Clean output directory
 
     if (options.clean !== false) {
-      console.log("🧹  Cleaning output path");
+      console.log("🧹 Cleaning output path");
       removeSync(outputPath);
     }
 
@@ -242,7 +242,10 @@ export default async function runExecutor(
       console.log(`📢  Tsup build message: \n`, event);
     });
 
-    const config = getConfig(sourceRoot, { ...options, outputPath });
+    const config = getConfig(joinPathFragments(context.root, sourceRoot), {
+      ...options,
+      outputPath
+    });
     if (typeof config === "function") {
       await build(await Promise.resolve(config({})));
     } else {
