@@ -87,8 +87,7 @@ export function getConfig(
 ) {
   const entry = globSync(
     [
-      joinPathFragments(sourceRoot, "**/*.ts"),
-      joinPathFragments(sourceRoot, "**/*.tsx"),
+      joinPathFragments(sourceRoot, "index.ts"),
       ...(additionalEntryPoints ?? [])
     ],
     { withFileTypes: true }
