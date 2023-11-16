@@ -236,14 +236,18 @@ export default async function runExecutor(
 
     // #region Run the build process
 
-    addEventListener("message", event => {
-      if (
-        !(event.source instanceof MessagePort) &&
-        !(event.source instanceof ServiceWorker)
-      ) {
-        console.log("📢 Tsup build message: \n", event);
-      }
-    });
+    window &&
+      window.addEventListener("message", event => {
+        if (
+          !(event.source instanceof MessagePort) &&
+          !(event.source instanceof ServiceWorker)
+        ) {
+          console.log(
+            `📢 Tsup build message (${event.source}): \n`,
+            event.data
+          );
+        }
+      });
 
     const config = getConfig(sourceRoot, { ...options, outputPath });
     if (typeof config === "function") {
