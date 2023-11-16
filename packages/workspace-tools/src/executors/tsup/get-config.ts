@@ -1,4 +1,4 @@
-import { Tree, joinPathFragments } from "@nx/devkit";
+import { joinPathFragments } from "@nx/devkit";
 import { esbuildPluginFilePathExtensions } from "esbuild-plugin-file-path-extensions";
 import { globSync } from "glob";
 import { Options, defineConfig } from "tsup";
@@ -73,7 +73,6 @@ export function legacyConfig(
 }
 
 export function getConfig(
-  tree: Tree,
   sourceRoot: string,
   {
     outputPath,
