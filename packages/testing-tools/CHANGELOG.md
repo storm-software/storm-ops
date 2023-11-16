@@ -1,3 +1,10 @@
+## [1.1.19](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.18...testing-tools-v1.1.19) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added troubleshooting logging to tsup build ([f033bc5](https://github.com/storm-software/storm-ops/commit/f033bc548ef94aee6310fb6d5105fc750074264b))
+
 ## [1.1.18](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.17...testing-tools-v1.1.18) (2023-11-15)
 
 
