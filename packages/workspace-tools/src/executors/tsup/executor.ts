@@ -5,6 +5,7 @@ import { copyAssets } from "@nx/js";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
 import { writeFileSync } from "fs";
 import { removeSync } from "fs-extra";
+import { EventEmitter } from "node:events";
 import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
 import { fileExists } from "nx/src/utils/fileutils";
 import { join } from "path";
@@ -236,18 +237,15 @@ export default async function runExecutor(
 
     // #region Run the build process
 
-    window &&
-      window.addEventListener("message", event => {
-        if (
-          !(event.source instanceof MessagePort) &&
-          !(event.source instanceof ServiceWorker)
-        ) {
-          console.log(
-            `📢 Tsup build message (${event.source}): \n`,
-            event.data
-          );
-        }
-      });
+    const eventEmitter = new EventEmitter({ captureRejections: true });
+    eventEmitter.addListener("message", event => {
+      if (
+        !(event.source instanceof MessagePort) &&
+        !(event.source instanceof ServiceWorker)
+      ) {
+        console.log(`📢 Tsup build message (${event.source}): \n`, event.data);
+      }
+    });
 
     const config = getConfig(sourceRoot, { ...options, outputPath });
     if (typeof config === "function") {
