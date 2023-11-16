@@ -36,6 +36,7 @@
     "@nx/esbuild": "17.0.3",
     "esbuild-plugin-file-path-extensions": "1.0.0",
     "fs-extra": "^11.1.1",
+    "glob": "^10.3.10",
     "terser": "^5.24.0",
     "tslib": "2.6.2",
     "tsup": "7.2.0"

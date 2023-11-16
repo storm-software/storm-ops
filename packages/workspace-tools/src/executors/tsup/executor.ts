@@ -242,7 +242,7 @@ export default async function runExecutor(
       console.log(`📢  Tsup build message: \n`, event);
     });
 
-    const config = getConfig(sourceRoot, { ...options, outputPath });
+    const config = getConfig(tree, sourceRoot, { ...options, outputPath });
     if (typeof config === "function") {
       await build(await Promise.resolve(config({})));
     } else {

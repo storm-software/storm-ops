@@ -1,5 +1,6 @@
-import { Tree, glob, joinPathFragments } from "@nx/devkit";
+import { Tree, joinPathFragments } from "@nx/devkit";
 import { esbuildPluginFilePathExtensions } from "esbuild-plugin-file-path-extensions";
+import { globSync } from "glob";
 import { Options, defineConfig } from "tsup";
 import { TsupExecutorSchema } from "./schema";
 
@@ -84,7 +85,7 @@ export function getConfig(
     additionalEntryPoints
   }: TsupExecutorSchema
 ) {
-  const entry = glob(tree, [
+  const entry = globSync([
     joinPathFragments(sourceRoot, "**/*.ts"),
     joinPathFragments(sourceRoot, "**/*.tsx"),
     ...(additionalEntryPoints ?? [])
