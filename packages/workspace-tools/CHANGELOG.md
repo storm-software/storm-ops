@@ -1,3 +1,10 @@
+## [1.6.55](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.54...workspace-tools-v1.6.55) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Ensure full paths are used for tsup entry config ([10c915d](https://github.com/storm-software/storm-ops/commit/10c915dd36f0474e4005675e11eeecd98103834f))
+
 ## [1.6.54](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.53...workspace-tools-v1.6.54) (2023-11-16)
 
 
