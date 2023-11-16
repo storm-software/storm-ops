@@ -1,3 +1,10 @@
+## [1.6.56](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.55...workspace-tools-v1.6.56) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update entry config to use strings instead of `Path` objects ([265669a](https://github.com/storm-software/storm-ops/commit/265669ae0d1e616289c0d3e77db223e97c9e52a3))
+
 ## [1.6.55](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.54...workspace-tools-v1.6.55) (2023-11-16)
 
 
