@@ -1,3 +1,10 @@
+## [1.6.52](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.51...create-storm-workspace-v1.6.52) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update executor to attach message event handler to `window` ([00555a9](https://github.com/storm-software/storm-ops/commit/00555a99645f92e6f1060b34e9bfc913238913c8))
+
 ## [1.6.51](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.50...create-storm-workspace-v1.6.51) (2023-11-16)
 
 
