@@ -1,3 +1,10 @@
+## [1.3.31](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.30...linting-tools-v1.3.31) (2023-11-16)
+
+
+### Bug Fixes
+
+* **linting-tools:** Added tsconfig recommended to root tsconfig ([cfc70d7](https://github.com/storm-software/storm-ops/commit/cfc70d70ed5a123260d4ef9f1649ad66a0fe38e1))
+
 ## [1.3.30](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.29...linting-tools-v1.3.30) (2023-11-16)
 
 
