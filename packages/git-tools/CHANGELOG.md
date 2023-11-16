@@ -1,3 +1,10 @@
+## [1.2.30](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.29...git-tools-v1.2.30) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added troubleshooting logging to tsup build ([f033bc5](https://github.com/storm-software/storm-ops/commit/f033bc548ef94aee6310fb6d5105fc750074264b))
+
 ## [1.2.29](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.28...git-tools-v1.2.29) (2023-11-15)
 
 
