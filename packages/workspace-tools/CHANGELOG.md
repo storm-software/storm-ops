@@ -1,3 +1,10 @@
+## [1.6.57](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.56...workspace-tools-v1.6.57) (2023-11-16)
+
+
+### Bug Fixes
+
+* **linting-tools:** Added tsconfig recommended to root tsconfig ([cfc70d7](https://github.com/storm-software/storm-ops/commit/cfc70d70ed5a123260d4ef9f1649ad66a0fe38e1))
+
 ## [1.6.56](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.55...workspace-tools-v1.6.56) (2023-11-16)
 
 
