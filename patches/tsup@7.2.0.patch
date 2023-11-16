@@ -1,8 +1,8 @@
 diff --git a/dist/index.js b/dist/index.js
-index 68c197cb2b8dfa928a448475b4020e7301da959e..7df518683ef812a3bc309f4bfdbcbcbb2bd57ed1 100644
+index 68c197cb2b8dfa928a448475b4020e7301da959e..35e855221a6cba1507c3571035beaed8bd0e1f1a 100644
 --- a/dist/index.js
 +++ b/dist/index.js
-@@ -1605,8 +1605,32 @@ async function runEsbuild(options, {
+@@ -1605,8 +1605,35 @@ async function runEsbuild(options, {
    buildDependencies,
    pluginContainer
  }) {
@@ -13,16 +13,19 @@ index 68c197cb2b8dfa928a448475b4020e7301da959e..7df518683ef812a3bc309f4bfdbcbcbb
 +  let pkgPath = options.outDir 
 +    ? options.outDir
 +    : process.cwd();
-+    logger.error("Original pkgPath: ", pkgPath);
++  logger.error("Original pkgPath: ", pkgPath);
++
 +  if (pkgPath) {
 +    const splits = pkgPath.split(_path2.default.sep);
 +    logger.error("splits: ", splits);
++
 +    if (splits.length > 0) {
-+     const pkgPathIndex = splits.slice(0, splits.length)
-+      .findLastIndex(index => 
-+        existsSync(_path2.default.join(splits.slice(0, index)
-+          .join(_path2.default.sep), "package.json")));
-+          logger.error("pkgPathIndex: ", pkgPathIndex);
++      const pkgPathIndex = splits.slice(0, splits.length)
++        .findLastIndex(index => 
++          existsSync(_path2.default.join(splits.slice(0, index)
++            .join(_path2.default.sep), "package.json")));
++      logger.error("pkgPathIndex: ", pkgPathIndex);
++
 +      if (pkgPathIndex) {
 +        pkgPath = splits.slice(0, pkgPathIndex).join(_path2.default.sep);
 +        logger.error("Updated pkgPath: ", pkgPath);
@@ -37,7 +40,16 @@ index 68c197cb2b8dfa928a448475b4020e7301da959e..7df518683ef812a3bc309f4bfdbcbcbb
    const external = [
      // Exclude dependencies, e.g. `lodash`, `lodash/get`
      ...deps.map((dep) => new RegExp(`^${dep}($|\\/|\\\\)`)),
-@@ -2052,6 +2076,7 @@ var sizeReporter = () => {
+@@ -1727,7 +1754,7 @@ async function runEsbuild(options, {
+       outExtension: options.legacyOutput ? void 0 : outExtension,
+       write: false,
+       splitting,
+-      logLevel: "error",
++      logLevel: 'info',
+       minify: options.minify === "terser" ? false : options.minify,
+       minifyWhitespace: options.minifyWhitespace,
+       minifyIdentifiers: options.minifyIdentifiers,
+@@ -2052,6 +2079,7 @@ var sizeReporter = () => {
  // src/plugins/tree-shaking.ts
  var import_rollup_plugin_hashbang = _chunkB7UJSB4Njs.__toESM.call(void 0, _chunk52KWB5QBjs.require_dist.call(void 0, ));
  var _rollup = require('rollup');
