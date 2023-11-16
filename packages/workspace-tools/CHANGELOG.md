@@ -1,3 +1,10 @@
+## [1.6.50](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.49...workspace-tools-v1.6.50) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patch tsup build with check for `this` in rollup config ([f6bd066](https://github.com/storm-software/storm-ops/commit/f6bd06677163c0df6bd0a1b4a5e40bd651bf1e86))
+
 ## [1.6.49](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.48...workspace-tools-v1.6.49) (2023-11-16)
 
 
