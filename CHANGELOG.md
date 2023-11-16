@@ -1,3 +1,10 @@
+## [1.4.38](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.37...@storm-software/storm-ops-v1.4.38) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patch logging into tsup build ([e6ce2d7](https://github.com/storm-software/storm-ops/commit/e6ce2d7332c409d98f3aee4c561c299de6566de5))
+
 ## [1.4.37](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.36...@storm-software/storm-ops-v1.4.37) (2023-11-16)
 
 
