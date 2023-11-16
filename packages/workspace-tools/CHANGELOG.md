@@ -1,3 +1,10 @@
+## [1.6.53](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.52...workspace-tools-v1.6.53) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added EventEmitter listener to the tsup executor ([384ff89](https://github.com/storm-software/storm-ops/commit/384ff89035134a131ee63c4ea43fa15349146e44))
+
 ## [1.6.52](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.51...workspace-tools-v1.6.52) (2023-11-16)
 
 
