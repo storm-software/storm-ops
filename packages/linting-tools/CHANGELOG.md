@@ -1,3 +1,10 @@
+## [1.3.32](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.31...linting-tools-v1.3.32) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update `entry` in tsup to use a single default file ([06bf60c](https://github.com/storm-software/storm-ops/commit/06bf60c125411a1bdc72bebd7ebe0e7bbc9aa740))
+
 ## [1.3.31](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.30...linting-tools-v1.3.31) (2023-11-16)
 
 
