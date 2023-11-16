@@ -1,7 +1,8 @@
 import { joinPathFragments } from "@nx/devkit";
 import { esbuildPluginFilePathExtensions } from "esbuild-plugin-file-path-extensions";
-import { globSync } from "glob";
+import { Path, globSync } from "glob";
 import { Options, defineConfig } from "tsup";
+import { removeExtension } from "../../utils/file-path-utils";
 import { TsupExecutorSchema } from "./schema";
 
 type Entry = string | string[] | Record<string, string>;
@@ -84,11 +85,21 @@ export function getConfig(
     additionalEntryPoints
   }: TsupExecutorSchema
 ) {
-  const entry = globSync([
-    joinPathFragments(sourceRoot, "**/*.ts"),
-    joinPathFragments(sourceRoot, "**/*.tsx"),
-    ...(additionalEntryPoints ?? [])
-  ]);
+  const entry = globSync(
+    [
+      joinPathFragments(sourceRoot, "**/*.ts"),
+      joinPathFragments(sourceRoot, "**/*.tsx"),
+      ...(additionalEntryPoints ?? [])
+    ],
+    { withFileTypes: true }
+  ).reduce((ret, filePath: Path) => {
+    ret[removeExtension(filePath.name)] = joinPathFragments(
+      filePath.path,
+      filePath.name
+    );
+
+    return ret;
+  }, {});
 
   return defineConfig([
     modernConfig(entry, outputPath, tsConfig, debug, bundle, platform, options),

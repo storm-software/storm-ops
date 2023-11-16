@@ -12,6 +12,7 @@ import { join } from "path";
 import { format } from "prettier";
 import { Options, build as tsup } from "tsup";
 import { applyWorkspaceTokens } from "../../utils/apply-workspace-tokens";
+import { removeExtension } from "../../utils/file-path-utils";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
 import { getConfig } from "./get-config";
 import { TsupExecutorSchema } from "./schema";
@@ -273,10 +274,4 @@ const build = async (options: Options | Options[]) => {
   } else {
     await tsup(options);
   }
-};
-
-const removeExtension = (filePath: string): string => {
-  return filePath.lastIndexOf(".")
-    ? filePath.substring(0, filePath.lastIndexOf("."))
-    : filePath;
 };
