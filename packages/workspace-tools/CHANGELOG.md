@@ -1,3 +1,13 @@
+## [1.6.54](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.53...workspace-tools-v1.6.54) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added glob entry loading to tsup config ([fe40be2](https://github.com/storm-software/storm-ops/commit/fe40be28e6b0b049d4268b6d5c1b743634571a0f))
+* **workspace-tools:** Change tsup build to use glob package instead of function from Nx ([4fa5e17](https://github.com/storm-software/storm-ops/commit/4fa5e17d3d29f1769caccb52957fb8fb9ee772d0))
+* **workspace-tools:** Included missing config function signature change ([a2228f2](https://github.com/storm-software/storm-ops/commit/a2228f2fba09d2dfd80a3f3c6dc5059077265f12))
+* **workspace-tools:** Remove outExtensions from tsup config ([18d3ec7](https://github.com/storm-software/storm-ops/commit/18d3ec7ea63f2c6f64b8d31a7e458fea2b792f79))
+
 ## [1.6.53](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.52...workspace-tools-v1.6.53) (2023-11-16)
 
 
