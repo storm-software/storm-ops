@@ -1,3 +1,10 @@
+## [1.6.51](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.50...workspace-tools-v1.6.51) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed `cjsInterop` and added code to handle post message events ([06adf3c](https://github.com/storm-software/storm-ops/commit/06adf3c3905fae95f275bec2b8325021349867c0))
+
 ## [1.6.50](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.49...workspace-tools-v1.6.50) (2023-11-16)
 
 
