@@ -1,3 +1,10 @@
+## [1.2.33](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.32...git-tools-v1.2.33) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patch tsup build with check for `this` in rollup config ([f6bd066](https://github.com/storm-software/storm-ops/commit/f6bd06677163c0df6bd0a1b4a5e40bd651bf1e86))
+
 ## [1.2.32](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.31...git-tools-v1.2.32) (2023-11-16)
 
 
