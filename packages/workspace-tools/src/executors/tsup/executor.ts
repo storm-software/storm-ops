@@ -186,6 +186,7 @@ export default async function runExecutor(
 
     packageJson.main ??= "dist/legacy/index.cjs";
     packageJson.module ??= "dist/legacy/index.js";
+    packageJson.browser ??= "dist/modern/index.js";
     packageJson.types ??= "dist/legacy/index.d.ts";
 
     packageJson.sideEffects ??= false;
@@ -234,8 +235,6 @@ export default async function runExecutor(
     // #endregion Generate the package.json file
 
     // #region Run the build process
-
-    console.log("Getting Tsup build config");
 
     const config = getConfig(sourceRoot, { ...options, outputPath });
     if (typeof config === "function") {

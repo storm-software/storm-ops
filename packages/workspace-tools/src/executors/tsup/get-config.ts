@@ -18,7 +18,7 @@ export function modernConfig(
     ...options,
     name: "modern",
     entry,
-    format: ["cjs", "esm"],
+    format: platform !== "node" ? ["cjs", "esm", "iife"] : ["cjs", "esm"],
     target:
       platform !== "node"
         ? [
@@ -40,7 +40,13 @@ export function modernConfig(
     platform,
     dts: true,
     sourcemap: debug,
-    clean: false
+    clean: false,
+    cjsInterop: true,
+    outExtension({ format }) {
+      return {
+        js: format === "cjs" ? ".cjs" : ".js"
+      };
+    }
   } as Options;
 }
 
@@ -57,7 +63,7 @@ export function legacyConfig(
     ...options,
     name: "legacy",
     entry,
-    format: ["cjs", "esm"],
+    format: platform !== "node" ? ["cjs", "esm", "iife"] : ["cjs", "esm"],
     target: ["es2022", "node18"],
     tsconfig,
     outDir: joinPathFragments(outDir, "dist", "legacy"),
@@ -69,7 +75,13 @@ export function legacyConfig(
     platform,
     dts: true,
     sourcemap: debug,
-    clean: false
+    clean: false,
+    cjsInterop: true,
+    outExtension({ format }) {
+      return {
+        js: format === "cjs" ? ".cjs" : ".js"
+      };
+    }
   } as Options;
 }
 
