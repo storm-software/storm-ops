@@ -1,3 +1,10 @@
+## [1.3.29](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.28...linting-tools-v1.3.29) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patch tsup build with check for `this` in rollup config ([f6bd066](https://github.com/storm-software/storm-ops/commit/f6bd06677163c0df6bd0a1b4a5e40bd651bf1e86))
+
 ## [1.3.28](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.27...linting-tools-v1.3.28) (2023-11-16)
 
 
