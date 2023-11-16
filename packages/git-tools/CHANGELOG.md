@@ -1,3 +1,10 @@
+## [1.2.36](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.35...git-tools-v1.2.36) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update `entry` in tsup to use a single default file ([06bf60c](https://github.com/storm-software/storm-ops/commit/06bf60c125411a1bdc72bebd7ebe0e7bbc9aa740))
+
 ## [1.2.35](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.34...git-tools-v1.2.35) (2023-11-16)
 
 
