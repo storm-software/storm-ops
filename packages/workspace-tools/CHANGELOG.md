@@ -1,3 +1,10 @@
+## [1.6.47](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.46...workspace-tools-v1.6.47) (2023-11-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added troubleshooting logging to tsup build ([f033bc5](https://github.com/storm-software/storm-ops/commit/f033bc548ef94aee6310fb6d5105fc750074264b))
+
 ## [1.6.46](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.6.45...workspace-tools-v1.6.46) (2023-11-15)
 
 
