@@ -158,7 +158,7 @@ export default async function runExecutor(
       }
     });
 
-    packageJson.type ??= "module";
+    packageJson.type = "module";
     packageJson.exports ??= {
       ".": {
         import: {
