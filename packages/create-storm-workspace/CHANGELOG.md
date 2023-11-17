@@ -1,3 +1,10 @@
+## [1.7.4](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.3...create-storm-workspace-v1.7.4) (2023-11-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update prettier to use normal runtime instead of standalone ([5a7d631](https://github.com/storm-software/storm-ops/commit/5a7d631a5985e2596b4e712a33427e1aaa1fad25))
+
 ## [1.7.3](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.2...create-storm-workspace-v1.7.3) (2023-11-17)
 
 
