@@ -1,3 +1,11 @@
+## [1.7.5](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.4...create-storm-workspace-v1.7.5) (2023-11-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Ensure the type field is applied to package.jcon ([2e93db7](https://github.com/storm-software/storm-ops/commit/2e93db7798999f76a4a0e03c9ac9525d4d6eec61))
+* **workspace-tools:** Update path to typescript source files in package output ([41bf658](https://github.com/storm-software/storm-ops/commit/41bf658b403b36a01590d0e5eb0d8343ab20c435))
+
 ## [1.7.4](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.3...create-storm-workspace-v1.7.4) (2023-11-17)
 
 
