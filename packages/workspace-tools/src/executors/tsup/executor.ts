@@ -239,7 +239,7 @@ export default async function runExecutor(
     // #region Run the build process
 
     const eventEmitter = new EventEmitter({ captureRejections: true });
-    eventEmitter.addListener("message", event => {
+    eventEmitter.on("message", event => {
       console.log(`📢  Tsup build message: \n`, event);
     });
 

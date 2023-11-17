@@ -1,5 +1,4 @@
 import { joinPathFragments } from "@nx/devkit";
-import { esbuildPluginFilePathExtensions } from "esbuild-plugin-file-path-extensions";
 import { Path, globSync } from "glob";
 import { Options, defineConfig } from "tsup";
 import { removeExtension } from "../../utils/file-path-utils";
@@ -41,7 +40,7 @@ export function modernConfig(
     dts: true,
     sourcemap: debug,
     clean: false,
-    esbuildPlugins: [esbuildPluginFilePathExtensions({ esmExtension: "js" })]
+    outExtension
   } as Options;
 }
 
@@ -69,7 +68,7 @@ export function legacyConfig(
     dts: true,
     sourcemap: debug,
     clean: false,
-    esbuildPlugins: [esbuildPluginFilePathExtensions({ esmExtension: "js" })]
+    outExtension
   } as Options;
 }
 
@@ -87,7 +86,8 @@ export function getConfig(
 ) {
   const entry = globSync(
     [
-      joinPathFragments(sourceRoot, "index.ts"),
+      joinPathFragments(sourceRoot, "**/*.ts"),
+      joinPathFragments(sourceRoot, "**/*.tsx"),
       ...(additionalEntryPoints ?? [])
     ],
     { withFileTypes: true }
@@ -105,3 +105,28 @@ export function getConfig(
     legacyConfig(entry, outputPath, tsConfig, debug, bundle, platform, options)
   ]);
 }
+
+const outExtension = ({ options, format, pkgType }) => {
+  console.log(options);
+  console.log(format);
+  console.log(pkgType);
+
+  let jsExtension = ".js";
+  let dtsExtension = ".d.ts";
+  if (format === "cjs") {
+    jsExtension = ".cjs";
+    dtsExtension = ".d.cts";
+  }
+  if (format === "esm") {
+    jsExtension = ".js";
+    dtsExtension = ".d.ts";
+  }
+  if (format === "iife") {
+    jsExtension = ".global.js";
+  }
+
+  return {
+    js: jsExtension,
+    dts: dtsExtension
+  };
+};
