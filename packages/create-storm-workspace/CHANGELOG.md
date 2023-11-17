@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.58...create-storm-workspace-v1.7.0) (2023-11-17)
+
+
+### Features
+
+* **workspace-tools:** Added outExtension config option ([fe31e5c](https://github.com/storm-software/storm-ops/commit/fe31e5c3aefb853edc557c288104fe82a6fe77d2))
+
 ## [1.6.58](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.57...create-storm-workspace-v1.6.58) (2023-11-16)
 
 
