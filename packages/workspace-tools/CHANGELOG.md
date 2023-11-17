@@ -1,3 +1,10 @@
+## [1.7.3](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.2...workspace-tools-v1.7.3) (2023-11-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added heading to the packaged typescript files ([fddf128](https://github.com/storm-software/storm-ops/commit/fddf1280035c5b2a31a2f8333b10a29e9bc38f90))
+
 ## [1.7.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.1...workspace-tools-v1.7.2) (2023-11-17)
 
 
