@@ -12,7 +12,7 @@ export function modernConfig(
   tsconfig = "tsconfig.json",
   debug = false,
   bundle = true,
-  platform = "neutral",
+  platform = "node",
   options: Options
 ) {
   return {
@@ -51,7 +51,7 @@ export function legacyConfig(
   tsconfig = "tsconfig.json",
   debug = false,
   bundle = true,
-  platform = "neutral",
+  platform = "node",
   options: Options
 ) {
   return {

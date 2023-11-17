@@ -188,11 +188,12 @@ export default async function runExecutor(
 
     packageJson.main ??= "dist/legacy/index.cjs";
     packageJson.module ??= "dist/legacy/index.js";
-    packageJson.browser ??= "dist/modern/index.global.js";
+    options.platform !== "node" &&
+      (packageJson.browser ??= "dist/modern/index.global.js");
     packageJson.types ??= "dist/legacy/index.d.ts";
 
     packageJson.sideEffects ??= false;
-    packageJson.files ??= ["dist/", "lib/"];
+    packageJson.files ??= ["dist", "lib"];
     packageJson.publishConfig ??= {
       access: "public"
     };
