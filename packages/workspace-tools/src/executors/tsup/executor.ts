@@ -10,7 +10,7 @@ import { EventEmitter } from "node:events";
 import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
 import { fileExists } from "nx/src/utils/fileutils";
 import { join } from "path";
-import { format } from "prettier/standalone";
+import { format } from "prettier";
 import { Options, build as tsup } from "tsup";
 import { applyWorkspaceTokens } from "../../utils/apply-workspace-tokens";
 import { removeExtension } from "../../utils/file-path-utils";
