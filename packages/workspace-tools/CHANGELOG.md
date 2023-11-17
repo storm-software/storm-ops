@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.1...workspace-tools-v1.7.2) (2023-11-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update default platform to node ([4b6f1b2](https://github.com/storm-software/storm-ops/commit/4b6f1b208da89492a9586cc87970c4a78f09861f))
+
 ## [1.7.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.0...workspace-tools-v1.7.1) (2023-11-17)
 
 
