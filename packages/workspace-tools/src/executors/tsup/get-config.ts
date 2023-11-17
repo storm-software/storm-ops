@@ -35,6 +35,7 @@ export function modernConfig(
     outDir: joinPathFragments(outDir, "dist", "modern"),
     silent: false,
     metafile: true,
+    shims: true,
     minify: false,
     platform,
     dts: true,
