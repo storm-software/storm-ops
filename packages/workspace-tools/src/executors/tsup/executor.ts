@@ -236,15 +236,21 @@ export default async function runExecutor(
       })
     );
 
-    const heading = "This is the heading";
-
+    const heading = process.env.STORM_TS_FILE_HEADING;
     const files = readdirSync(
       joinPathFragments(context.root, outputPath, "src"),
       "utf-8"
     );
     await Promise.allSettled(
       files.map(file =>
-        writeFile(file, `${heading}\n\n${readFileSync(file, "utf-8")}`, "utf-8")
+        writeFile(
+          joinPathFragments(context.root, outputPath, "src", file),
+          `${heading}\n\n${readFileSync(
+            joinPathFragments(context.root, outputPath, "src", file),
+            "utf-8"
+          )}`,
+          "utf-8"
+        )
       )
     );
 
