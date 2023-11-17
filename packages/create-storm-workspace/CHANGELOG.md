@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.0...create-storm-workspace-v1.7.1) (2023-11-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added shim to modern build ([0e03ce7](https://github.com/storm-software/storm-ops/commit/0e03ce7a933454d2ca5adf889e60083105d6f433))
+
 # [1.7.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.6.58...create-storm-workspace-v1.7.0) (2023-11-17)
 
 
