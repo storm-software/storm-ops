@@ -69,7 +69,7 @@
         "type": "string",
         "description": "Platform target for outputs.",
         "enum": ["browser", "node", "neutral"],
-        "default": "neutral"
+        "default": "node"
       },
       "options": {
         "type": "object",

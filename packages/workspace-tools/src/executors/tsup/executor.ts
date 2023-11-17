@@ -3,13 +3,14 @@ import { ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devkit";
 import { getExtraDependencies } from "@nx/esbuild/src/executors/esbuild/lib/get-extra-dependencies";
 import { copyAssets } from "@nx/js";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
-import { writeFileSync } from "fs";
+import { readFileSync, readdirSync, writeFileSync } from "fs";
 import { removeSync } from "fs-extra";
+import { writeFile } from "fs/promises";
 import { EventEmitter } from "node:events";
 import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
 import { fileExists } from "nx/src/utils/fileutils";
 import { join } from "path";
-import { format } from "prettier";
+import { format } from "prettier/standalone";
 import { Options, build as tsup } from "tsup";
 import { applyWorkspaceTokens } from "../../utils/apply-workspace-tokens";
 import { removeExtension } from "../../utils/file-path-utils";
@@ -186,11 +187,11 @@ export default async function runExecutor(
 
     packageJson.funding ??= workspacePackageJson.funding;
 
+    packageJson.types ??= "dist/legacy/index.d.ts";
     packageJson.main ??= "dist/legacy/index.cjs";
     packageJson.module ??= "dist/legacy/index.js";
     options.platform !== "node" &&
       (packageJson.browser ??= "dist/modern/index.global.js");
-    packageJson.types ??= "dist/legacy/index.d.ts";
 
     packageJson.sideEffects ??= false;
     packageJson.files ??= ["dist", "lib"];
@@ -233,6 +234,18 @@ export default async function runExecutor(
         arrowParens: "avoid",
         endOfLine: "lf"
       })
+    );
+
+    const heading = "This is the heading";
+
+    const files = readdirSync(
+      joinPathFragments(context.root, outputPath, "lib"),
+      "utf-8"
+    );
+    await Promise.allSettled(
+      files.map(file =>
+        writeFile(file, `${heading}\n\n${readFileSync(file, "utf-8")}`, "utf-8")
+      )
     );
 
     // #endregion Generate the package.json file
