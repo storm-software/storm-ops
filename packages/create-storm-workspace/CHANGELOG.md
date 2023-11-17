@@ -1,3 +1,10 @@
+## [1.7.6](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.5...create-storm-workspace-v1.7.6) (2023-11-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tsup build executor to resolve error thrown during heading printing ([4c41547](https://github.com/storm-software/storm-ops/commit/4c4154749c7f1abbb9a129d809c2e4f4dfe88b21))
+
 ## [1.7.5](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.4...create-storm-workspace-v1.7.5) (2023-11-17)
 
 
