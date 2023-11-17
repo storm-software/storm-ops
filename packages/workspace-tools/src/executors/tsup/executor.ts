@@ -83,7 +83,7 @@ export default async function runExecutor(
     assets.push({
       input: sourceRoot,
       glob: "**/{*.d.ts,*.ts,*.tsx}",
-      output: "lib/"
+      output: "src/"
     });
 
     const result = await copyAssets(
@@ -194,7 +194,7 @@ export default async function runExecutor(
       (packageJson.browser ??= "dist/modern/index.global.js");
 
     packageJson.sideEffects ??= false;
-    packageJson.files ??= ["dist", "lib"];
+    packageJson.files ??= ["dist", "src"];
     packageJson.publishConfig ??= {
       access: "public"
     };
@@ -239,7 +239,7 @@ export default async function runExecutor(
     const heading = "This is the heading";
 
     const files = readdirSync(
-      joinPathFragments(context.root, outputPath, "lib"),
+      joinPathFragments(context.root, outputPath, "src"),
       "utf-8"
     );
     await Promise.allSettled(
