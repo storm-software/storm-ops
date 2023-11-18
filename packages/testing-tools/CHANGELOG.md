@@ -1,3 +1,10 @@
+## [1.1.29](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.28...testing-tools-v1.1.29) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added join to add separators in package.json path in tsup ([b56df8a](https://github.com/storm-software/storm-ops/commit/b56df8a3c20e12fb8763e481cbc6ca82ff6403cf))
+
 ## [1.1.28](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.27...testing-tools-v1.1.28) (2023-11-18)
 
 
