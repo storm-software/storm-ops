@@ -1,3 +1,10 @@
+## [1.4.45](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.44...@storm-software/storm-ops-v1.4.45) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added banner to tsup patch ([2b97503](https://github.com/storm-software/storm-ops/commit/2b975032eece19bcdde9b7c3fbbd160c37c02c0f))
+
 ## [1.4.44](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.43...@storm-software/storm-ops-v1.4.44) (2023-11-18)
 
 
