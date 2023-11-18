@@ -1,3 +1,10 @@
+## [1.3.33](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.32...linting-tools-v1.3.33) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patched tsup to properly use logger ([73a56f0](https://github.com/storm-software/storm-ops/commit/73a56f07931e173a70e30b01cf629ae17f27646a))
+
 ## [1.3.32](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.31...linting-tools-v1.3.32) (2023-11-16)
 
 
