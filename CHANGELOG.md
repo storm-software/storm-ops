@@ -1,3 +1,10 @@
+## [1.4.44](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.43...@storm-software/storm-ops-v1.4.44) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patched tsup to properly use logger ([73a56f0](https://github.com/storm-software/storm-ops/commit/73a56f07931e173a70e30b01cf629ae17f27646a))
+
 ## [1.4.43](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.42...@storm-software/storm-ops-v1.4.43) (2023-11-17)
 
 
