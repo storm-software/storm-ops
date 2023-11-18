@@ -6,12 +6,16 @@ import { TsupExecutorSchema } from "./schema";
 
 type Entry = string | string[] | Record<string, string>;
 
+export type TsupGetConfigOptions = Omit<TsupExecutorSchema, "banner"> & {
+  banner?: { js?: string; css?: string };
+};
+
 export function modernConfig(
   entry: Entry,
   outDir: string,
   tsconfig = "tsconfig.json",
   debug = false,
-  bundle = true,
+  banner: { js?: string; css?: string } = {},
   platform = "node",
   options: Options
 ) {
@@ -38,6 +42,7 @@ export function modernConfig(
     shims: true,
     minify: false,
     platform,
+    banner,
     dts: true,
     sourcemap: debug,
     clean: false,
@@ -50,7 +55,7 @@ export function legacyConfig(
   outDir: string,
   tsconfig = "tsconfig.json",
   debug = false,
-  bundle = true,
+  banner: { js?: string; css?: string } = {},
   platform = "node",
   options: Options
 ) {
@@ -66,6 +71,7 @@ export function legacyConfig(
     shims: true,
     minify: false,
     platform,
+    banner,
     dts: true,
     sourcemap: debug,
     clean: false,
@@ -79,11 +85,11 @@ export function getConfig(
     outputPath,
     tsConfig,
     debug,
-    bundle,
+    banner,
     platform,
     options,
     additionalEntryPoints
-  }: TsupExecutorSchema
+  }: TsupGetConfigOptions
 ) {
   const entry = globSync(
     [
@@ -102,8 +108,8 @@ export function getConfig(
   }, {});
 
   return defineConfig([
-    modernConfig(entry, outputPath, tsConfig, debug, bundle, platform, options),
-    legacyConfig(entry, outputPath, tsConfig, debug, bundle, platform, options)
+    modernConfig(entry, outputPath, tsConfig, debug, banner, platform, options),
+    legacyConfig(entry, outputPath, tsConfig, debug, banner, platform, options)
   ]);
 }
 

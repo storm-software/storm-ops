@@ -71,10 +71,10 @@
         "enum": ["browser", "node", "neutral"],
         "default": "node"
       },
-      "fileHeading": {
+      "banner": {
         "type": "string",
         "description": "A short heading added to the top of each typescript file added in the output folder's src directory.",
-        "default": "// This code was developed by Storm Software (https://stormsoftware.org) and is licensed under the Apache License 2.0."
+        "default": "This code was developed by Storm Software (https://stormsoftware.org) and is licensed under the Apache License 2.0."
       },
       "options": {
         "type": "object",

@@ -238,19 +238,21 @@ export default async function runExecutor(
       })
     );
 
-    const heading = options.fileHeading
-      ? options.fileHeading
+    const banner = options.banner
+      ? options.banner
       : process.env.STORM_TS_FILE_HEADING;
-    if (heading) {
+    if (banner) {
       const files = globSync([
         joinPathFragments(context.root, outputPath, "src/**/*.ts"),
-        joinPathFragments(context.root, outputPath, "src/**/*.tsx")
+        joinPathFragments(context.root, outputPath, "src/**/*.tsx"),
+        joinPathFragments(context.root, outputPath, "src/**/*.js"),
+        joinPathFragments(context.root, outputPath, "src/**/*.jsx")
       ]);
       await Promise.allSettled(
         files.map(file =>
           writeFile(
             file,
-            `${heading}\n\n${readFileSync(file, "utf-8")}`,
+            `// ${banner}\n\n${readFileSync(file, "utf-8")}`,
             "utf-8"
           )
         )
@@ -268,6 +270,7 @@ export default async function runExecutor(
 
     const config = getConfig(sourceRoot, {
       ...options,
+      banner: { js: `// ${banner}`, css: `/* ${banner} */` },
       outputPath
     });
     if (typeof config === "function") {
