@@ -1,3 +1,10 @@
+## [1.2.42](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.41...git-tools-v1.2.42) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with order of package.json search in tsup executor ([5fea9a1](https://github.com/storm-software/storm-ops/commit/5fea9a117691bef20aa22fbd107522d43b8b1b62))
+
 ## [1.2.41](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.40...git-tools-v1.2.41) (2023-11-18)
 
 
