@@ -1,3 +1,10 @@
+## [1.4.49](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.48...@storm-software/storm-ops-v1.4.49) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with order of package.json search in tsup executor ([5fea9a1](https://github.com/storm-software/storm-ops/commit/5fea9a117691bef20aa22fbd107522d43b8b1b62))
+
 ## [1.4.48](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.47...@storm-software/storm-ops-v1.4.48) (2023-11-18)
 
 
