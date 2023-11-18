@@ -1,3 +1,10 @@
+## [1.7.11](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.10...create-storm-workspace-v1.7.11) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with external deps were not passed to tsup ([72126c9](https://github.com/storm-software/storm-ops/commit/72126c99a46d307a3afca50dc6881dc33735c772))
+
 ## [1.7.10](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.9...create-storm-workspace-v1.7.10) (2023-11-18)
 
 
