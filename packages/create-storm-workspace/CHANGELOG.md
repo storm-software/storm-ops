@@ -1,3 +1,11 @@
+## [1.7.10](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.9...create-storm-workspace-v1.7.10) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Prevented empty headers from being added and resolved issue with project.json ([d1a1a5e](https://github.com/storm-software/storm-ops/commit/d1a1a5ec740dcfec1b8de26010bf532ddbcf38a1))
+* **workspace-tools:** Renamed `fileHeading` to `banner` to align with existing ESBuild options ([a4c3ad0](https://github.com/storm-software/storm-ops/commit/a4c3ad08f6af7b2a9342f72083f31b9c6ab92552))
+
 ## [1.7.9](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.8...create-storm-workspace-v1.7.9) (2023-11-18)
 
 
