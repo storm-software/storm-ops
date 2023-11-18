@@ -1,46 +1,40 @@
 diff --git a/dist/index.js b/dist/index.js
-index 68c197cb2b8dfa928a448475b4020e7301da959e..35e855221a6cba1507c3571035beaed8bd0e1f1a 100644
+index 68c197cb2b8dfa928a448475b4020e7301da959e..c413a315956fcb808b4eee54bc0f1293e7944b19 100644
 --- a/dist/index.js
 +++ b/dist/index.js
-@@ -1605,8 +1605,35 @@ async function runEsbuild(options, {
+@@ -1605,8 +1605,29 @@ async function runEsbuild(options, {
    buildDependencies,
    pluginContainer
  }) {
 -  const pkg = await _chunk52KWB5QBjs.loadPkg.call(void 0, process.cwd());
 -  const deps = await _chunk52KWB5QBjs.getProductionDeps.call(void 0, process.cwd());
-+  logger.info("⚡ Preparing to run ESBuild");
-+
 +  let pkgPath = options.outDir 
 +    ? options.outDir
 +    : process.cwd();
-+  logger.error("Original pkgPath: ", pkgPath);
 +
++  logger.info(format, `⚡ Preparing to run ESBuild: ${pkgPath}`);
 +  if (pkgPath) {
 +    const splits = pkgPath.split(_path2.default.sep);
-+    logger.error("splits: ", splits);
 +
 +    if (splits.length > 0) {
 +      const pkgPathIndex = splits.slice(0, splits.length)
 +        .findLastIndex(index => 
 +          existsSync(_path2.default.join(splits.slice(0, index)
 +            .join(_path2.default.sep), "package.json")));
-+      logger.error("pkgPathIndex: ", pkgPathIndex);
 +
 +      if (pkgPathIndex) {
 +        pkgPath = splits.slice(0, pkgPathIndex).join(_path2.default.sep);
-+        logger.error("Updated pkgPath: ", pkgPath);
 +      }
 +    }
 +  }
 +
-+  logger.error("Final pkgPath: ", pkgPath);
++  logger.info(format, `⚡ Running ESBuild: ${pkgPath}`);
 +  const pkg = await _chunk52KWB5QBjs.loadPkg.call(void 0, pkgPath);
-+  logger.error("pkg: ", pkg);
 +  const deps = await _chunk52KWB5QBjs.getProductionDeps.call(void 0, pkgPath);
    const external = [
      // Exclude dependencies, e.g. `lodash`, `lodash/get`
      ...deps.map((dep) => new RegExp(`^${dep}($|\\/|\\\\)`)),
-@@ -1727,7 +1754,7 @@ async function runEsbuild(options, {
+@@ -1727,7 +1748,7 @@ async function runEsbuild(options, {
        outExtension: options.legacyOutput ? void 0 : outExtension,
        write: false,
        splitting,
@@ -49,7 +43,7 @@ index 68c197cb2b8dfa928a448475b4020e7301da959e..35e855221a6cba1507c3571035beaed8
        minify: options.minify === "terser" ? false : options.minify,
        minifyWhitespace: options.minifyWhitespace,
        minifyIdentifiers: options.minifyIdentifiers,
-@@ -2052,6 +2079,7 @@ var sizeReporter = () => {
+@@ -2052,6 +2073,7 @@ var sizeReporter = () => {
  // src/plugins/tree-shaking.ts
  var import_rollup_plugin_hashbang = _chunkB7UJSB4Njs.__toESM.call(void 0, _chunk52KWB5QBjs.require_dist.call(void 0, ));
  var _rollup = require('rollup');

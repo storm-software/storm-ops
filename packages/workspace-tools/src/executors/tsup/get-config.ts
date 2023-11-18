@@ -54,10 +54,7 @@ export function modernConfig({
     external,
     platform,
     banner,
-    dts: {
-      entry,
-      only: false
-    },
+    dts: true,
     sourcemap: debug,
     clean: false,
     outExtension
@@ -88,10 +85,7 @@ export function legacyConfig({
     external,
     platform,
     banner,
-    dts: {
-      entry,
-      only: false
-    },
+    dts: true,
     sourcemap: debug,
     clean: false,
     outExtension
