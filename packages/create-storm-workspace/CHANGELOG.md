@@ -1,3 +1,10 @@
+## [1.7.20](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.19...create-storm-workspace-v1.7.20) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with order of package.json search in tsup executor ([5fea9a1](https://github.com/storm-software/storm-ops/commit/5fea9a117691bef20aa22fbd107522d43b8b1b62))
+
 ## [1.7.19](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.18...create-storm-workspace-v1.7.19) (2023-11-18)
 
 
