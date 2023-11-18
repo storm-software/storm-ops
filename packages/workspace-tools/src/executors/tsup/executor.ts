@@ -113,15 +113,17 @@ export default async function runExecutor(
         return acc;
       }, []);
 
-    const thirdPartyDependencies = getExtraDependencies(
-      context.projectName,
-      context.projectGraph
-    );
-    for (const tpd of thirdPartyDependencies) {
-      const packageConfig = tpd.node.data as PackageConfiguration;
-      if (packageConfig?.packageName) {
-        options.external.push(packageConfig.packageName);
-        externalDependencies.push(tpd);
+    if (!options.bundle) {
+      for (const thirdPartyDependency of getExtraDependencies(
+        context.projectName,
+        context.projectGraph
+      )) {
+        const packageConfig = thirdPartyDependency.node
+          .data as PackageConfiguration;
+        if (packageConfig?.packageName) {
+          options.external.push(packageConfig.packageName);
+          externalDependencies.push(thirdPartyDependency);
+        }
       }
     }
 
@@ -219,6 +221,7 @@ export default async function runExecutor(
       "package.json"
     );
 
+    console.log(`⚡ Writing package.json file to: ${packageJsonPath}`);
     writeFileSync(
       packageJsonPath,
       await format(JSON.stringify(packageJson), {
