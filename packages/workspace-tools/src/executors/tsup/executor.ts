@@ -191,7 +191,8 @@ export default async function runExecutor(
     packageJson.types ??= "dist/legacy/index.d.ts";
     packageJson.main ??= "dist/legacy/index.cjs";
     packageJson.module ??= "dist/legacy/index.js";
-    options.platform !== "node" &&
+    options.platform &&
+      options.platform !== "node" &&
       (packageJson.browser ??= "dist/modern/index.global.js");
 
     packageJson.sideEffects ??= false;
@@ -237,16 +238,24 @@ export default async function runExecutor(
       })
     );
 
-    const heading = process.env.STORM_TS_FILE_HEADING;
-    const files = globSync([
-      joinPathFragments(context.root, outputPath, "src/**/*.ts"),
-      joinPathFragments(context.root, outputPath, "src/**/*.tsx")
-    ]);
-    await Promise.allSettled(
-      files.map(file =>
-        writeFile(file, `${heading}\n\n${readFileSync(file, "utf-8")}`, "utf-8")
-      )
-    );
+    const heading = options.fileHeading
+      ? options.fileHeading
+      : process.env.STORM_TS_FILE_HEADING;
+    if (heading) {
+      const files = globSync([
+        joinPathFragments(context.root, outputPath, "src/**/*.ts"),
+        joinPathFragments(context.root, outputPath, "src/**/*.tsx")
+      ]);
+      await Promise.allSettled(
+        files.map(file =>
+          writeFile(
+            file,
+            `${heading}\n\n${readFileSync(file, "utf-8")}`,
+            "utf-8"
+          )
+        )
+      );
+    }
 
     // #endregion Generate the package.json file
 

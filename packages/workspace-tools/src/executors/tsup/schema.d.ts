@@ -19,4 +19,5 @@ export type TsupExecutorSchema = Omit<
   options: Options;
   clean: boolean;
   debug: boolean;
+  fileHeading?: string;
 };

@@ -69,7 +69,7 @@ export async function nodeLibraryGenerator(
   addProjectConfiguration(tree, options.name, {
     root: options.directory,
     projectType: "library",
-    sourceRoot: `${options.directory}/src`,
+    sourceRoot: joinPathFragments(options.directory, "src"),
     targets: {
       build: {
         executor: "@storm-software/workspace-tools:tsup",
@@ -78,14 +78,14 @@ export async function nodeLibraryGenerator(
           outputPath: getOutputPath(options),
           tsConfig: joinPathFragments(options.projectRoot, "tsconfig.json"),
           project: joinPathFragments(options.projectRoot, "package.json"),
-          defaultConfiguration: "production",
-          configurations: {
-            production: {
-              debug: false
-            },
-            development: {
-              debug: true
-            }
+          defaultConfiguration: "production"
+        },
+        configurations: {
+          production: {
+            debug: false
+          },
+          development: {
+            debug: true
           }
         }
       },
