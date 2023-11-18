@@ -24,6 +24,7 @@
         "deleteOutputPath": true,
         "bundle": true,
         "thirdParty": true,
+        "skipTypeCheck": false,
         "metafile": true,
         "minify": false,
         "format": ["cjs"],
@@ -37,6 +38,7 @@
           "@angular-devkit/architect",
           "@angular-devkit/schematics",
           "@swc/wasm",
+          "esbuild",
           "nx"
         ],
         "assets": [
