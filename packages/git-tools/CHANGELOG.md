@@ -1,3 +1,10 @@
+## [1.2.37](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.36...git-tools-v1.2.37) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patched tsup to properly use logger ([73a56f0](https://github.com/storm-software/storm-ops/commit/73a56f07931e173a70e30b01cf629ae17f27646a))
+
 ## [1.2.36](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.35...git-tools-v1.2.36) (2023-11-16)
 
 
