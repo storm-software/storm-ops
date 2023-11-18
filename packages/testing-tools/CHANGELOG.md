@@ -1,3 +1,10 @@
+## [1.1.28](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.27...testing-tools-v1.1.28) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue looking up package folder in tsup patch ([0eeee37](https://github.com/storm-software/storm-ops/commit/0eeee37219ceaf2873d7e8d0c7d5f7f46ab6a9bd))
+
 ## [1.1.27](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.26...testing-tools-v1.1.27) (2023-11-18)
 
 

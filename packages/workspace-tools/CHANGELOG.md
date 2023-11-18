@@ -1,3 +1,10 @@
+## [1.7.18](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.17...workspace-tools-v1.7.18) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue looking up package folder in tsup patch ([0eeee37](https://github.com/storm-software/storm-ops/commit/0eeee37219ceaf2873d7e8d0c7d5f7f46ab6a9bd))
+
 ## [1.7.17](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.16...workspace-tools-v1.7.17) (2023-11-18)
 
 

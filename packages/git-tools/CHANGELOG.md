@@ -1,3 +1,10 @@
+## [1.2.40](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.39...git-tools-v1.2.40) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue looking up package folder in tsup patch ([0eeee37](https://github.com/storm-software/storm-ops/commit/0eeee37219ceaf2873d7e8d0c7d5f7f46ab6a9bd))
+
 ## [1.2.39](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.38...git-tools-v1.2.39) (2023-11-18)
 
 
