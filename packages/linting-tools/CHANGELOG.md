@@ -1,3 +1,10 @@
+## [1.3.34](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.33...linting-tools-v1.3.34) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added banner to tsup patch ([2b97503](https://github.com/storm-software/storm-ops/commit/2b975032eece19bcdde9b7c3fbbd160c37c02c0f))
+
 ## [1.3.33](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.32...linting-tools-v1.3.33) (2023-11-18)
 
 
