@@ -1,3 +1,10 @@
+## [1.7.19](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.18...create-storm-workspace-v1.7.19) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added join to add separators in package.json path in tsup ([b56df8a](https://github.com/storm-software/storm-ops/commit/b56df8a3c20e12fb8763e481cbc6ca82ff6403cf))
+
 ## [1.7.18](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.17...create-storm-workspace-v1.7.18) (2023-11-18)
 
 
