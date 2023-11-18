@@ -1,3 +1,10 @@
+## [1.7.13](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.12...create-storm-workspace-v1.7.13) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added banner to tsup patch ([2b97503](https://github.com/storm-software/storm-ops/commit/2b975032eece19bcdde9b7c3fbbd160c37c02c0f))
+
 ## [1.7.12](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.11...create-storm-workspace-v1.7.12) (2023-11-18)
 
 
