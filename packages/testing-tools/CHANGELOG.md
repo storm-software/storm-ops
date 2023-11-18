@@ -1,3 +1,10 @@
+## [1.1.26](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.25...testing-tools-v1.1.26) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added banner to tsup patch ([2b97503](https://github.com/storm-software/storm-ops/commit/2b975032eece19bcdde9b7c3fbbd160c37c02c0f))
+
 ## [1.1.25](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.24...testing-tools-v1.1.25) (2023-11-18)
 
 
