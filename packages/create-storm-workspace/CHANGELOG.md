@@ -1,3 +1,11 @@
+## [1.7.16](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.15...create-storm-workspace-v1.7.16) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added conditional to ensure package.json path was populated ([88b558f](https://github.com/storm-software/storm-ops/commit/88b558fb75d47a8d7fc7f2ec050626f9e2d06a2c))
+* **workspace-tools:** Added prettier as an external dependency ([33009d8](https://github.com/storm-software/storm-ops/commit/33009d8aee2774c2ce537a35f2226e92b41fea9b))
+
 ## [1.7.15](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.14...create-storm-workspace-v1.7.15) (2023-11-18)
 
 
