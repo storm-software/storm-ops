@@ -1,3 +1,10 @@
+## [1.2.39](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.38...git-tools-v1.2.39) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Fixed issue in tsup patch around package.json generation ([a526fe7](https://github.com/storm-software/storm-ops/commit/a526fe72607ed7a957266fc790cafa8fb5d5b501))
+
 ## [1.2.38](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.37...git-tools-v1.2.38) (2023-11-18)
 
 

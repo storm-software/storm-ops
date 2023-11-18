@@ -1,3 +1,10 @@
+## [1.4.46](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.45...@storm-software/storm-ops-v1.4.46) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Fixed issue in tsup patch around package.json generation ([a526fe7](https://github.com/storm-software/storm-ops/commit/a526fe72607ed7a957266fc790cafa8fb5d5b501))
+
 ## [1.4.45](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.44...@storm-software/storm-ops-v1.4.45) (2023-11-18)
 
 
