@@ -1,3 +1,10 @@
+## [1.7.14](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.13...create-storm-workspace-v1.7.14) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added thirdparty packages to workspace tools build ([efd7c3a](https://github.com/storm-software/storm-ops/commit/efd7c3af0891bf3f57e931d082208666ab7d30d8))
+
 ## [1.7.13](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.12...create-storm-workspace-v1.7.13) (2023-11-18)
 
 
