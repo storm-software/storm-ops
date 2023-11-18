@@ -23,6 +23,7 @@
         "platform": "node",
         "deleteOutputPath": true,
         "bundle": true,
+        "thirdParty": true,
         "metafile": true,
         "minify": false,
         "format": ["cjs"],
@@ -31,6 +32,13 @@
             ".js": ".js"
           }
         },
+        "external": [
+          "@angular-devkit/core",
+          "@angular-devkit/architect",
+          "@angular-devkit/schematics",
+          "@swc/wasm",
+          "nx"
+        ],
         "assets": [
           {
             "input": "./packages/workspace-tools",
