@@ -257,7 +257,7 @@ export default async function runExecutor(
       console.log(`📢  Tsup build message: \n`, event);
     });
 
-    const config = getConfig(joinPathFragments(context.root, sourceRoot), {
+    const config = getConfig(sourceRoot, {
       ...options,
       outputPath
     });
