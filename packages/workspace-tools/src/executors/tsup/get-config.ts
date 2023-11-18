@@ -10,15 +10,25 @@ export type TsupGetConfigOptions = Omit<TsupExecutorSchema, "banner"> & {
   banner?: { js?: string; css?: string };
 };
 
-export function modernConfig(
-  entry: Entry,
-  outDir: string,
+type GetConfigParams = Omit<
+  TsupGetConfigOptions,
+  "entry" | "assets" | "clean" | "outputPath" | "tsConfig"
+> & {
+  entry: Entry;
+  outDir: string;
+  tsconfig: string;
+};
+
+export function modernConfig({
+  entry,
+  outDir,
   tsconfig = "tsconfig.json",
   debug = false,
-  banner: { js?: string; css?: string } = {},
+  external,
+  banner = {},
   platform = "node",
-  options: Options
-) {
+  options
+}: GetConfigParams) {
   return {
     name: "modern",
     entry,
@@ -41,24 +51,29 @@ export function modernConfig(
     metafile: true,
     shims: true,
     minify: false,
+    external,
     platform,
     banner,
-    dts: true,
+    dts: {
+      entry,
+      only: false
+    },
     sourcemap: debug,
     clean: false,
     outExtension
   } as Options;
 }
 
-export function legacyConfig(
-  entry: Entry,
-  outDir: string,
+export function legacyConfig({
+  entry,
+  outDir,
   tsconfig = "tsconfig.json",
   debug = false,
-  banner: { js?: string; css?: string } = {},
+  external,
+  banner = {},
   platform = "node",
-  options: Options
-) {
+  options
+}: GetConfigParams) {
   return {
     name: "legacy",
     entry,
@@ -70,9 +85,13 @@ export function legacyConfig(
     metafile: true,
     shims: true,
     minify: false,
+    external,
     platform,
     banner,
-    dts: true,
+    dts: {
+      entry,
+      only: false
+    },
     sourcemap: debug,
     clean: false,
     outExtension
@@ -87,6 +106,7 @@ export function getConfig(
     debug,
     banner,
     platform,
+    external,
     options,
     additionalEntryPoints
   }: TsupGetConfigOptions
@@ -108,8 +128,26 @@ export function getConfig(
   }, {});
 
   return defineConfig([
-    modernConfig(entry, outputPath, tsConfig, debug, banner, platform, options),
-    legacyConfig(entry, outputPath, tsConfig, debug, banner, platform, options)
+    modernConfig({
+      entry,
+      outDir: outputPath,
+      tsconfig: tsConfig,
+      debug,
+      banner,
+      platform,
+      external,
+      options
+    }),
+    legacyConfig({
+      entry,
+      outDir: outputPath,
+      tsconfig: tsConfig,
+      debug,
+      banner,
+      platform,
+      external,
+      options
+    })
   ]);
 }
 
