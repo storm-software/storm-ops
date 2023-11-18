@@ -1,3 +1,10 @@
+## [1.2.38](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.37...git-tools-v1.2.38) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added banner to tsup patch ([2b97503](https://github.com/storm-software/storm-ops/commit/2b975032eece19bcdde9b7c3fbbd160c37c02c0f))
+
 ## [1.2.37](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.36...git-tools-v1.2.37) (2023-11-18)
 
 
