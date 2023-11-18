@@ -1,3 +1,10 @@
+## [1.2.41](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.40...git-tools-v1.2.41) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added join to add separators in package.json path in tsup ([b56df8a](https://github.com/storm-software/storm-ops/commit/b56df8a3c20e12fb8763e481cbc6ca82ff6403cf))
+
 ## [1.2.40](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.39...git-tools-v1.2.40) (2023-11-18)
 
 
