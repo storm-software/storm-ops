@@ -3,9 +3,10 @@ import { ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devkit";
 import { getExtraDependencies } from "@nx/esbuild/src/executors/esbuild/lib/get-extra-dependencies";
 import { copyAssets } from "@nx/js";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
-import { readFileSync, readdirSync, writeFileSync } from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import { removeSync } from "fs-extra";
 import { writeFile } from "fs/promises";
+import { globSync } from "glob";
 import { EventEmitter } from "node:events";
 import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
 import { fileExists } from "nx/src/utils/fileutils";
@@ -237,10 +238,10 @@ export default async function runExecutor(
     );
 
     const heading = process.env.STORM_TS_FILE_HEADING;
-    const files = readdirSync(
-      joinPathFragments(context.root, outputPath, "src"),
-      "utf-8"
-    );
+    const files = globSync([
+      joinPathFragments(context.root, outputPath, "src/**/*.ts"),
+      joinPathFragments(context.root, outputPath, "src/**/*.tsx")
+    ]);
     await Promise.allSettled(
       files.map(file =>
         writeFile(
