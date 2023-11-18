@@ -1,3 +1,10 @@
+## [1.7.9](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.8...workspace-tools-v1.7.9) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the sourceRoot value passed to getConfig in tsup executor ([5220d4d](https://github.com/storm-software/storm-ops/commit/5220d4d946ed01d27cda4ca1f2434eeff93a161c))
+
 ## [1.7.8](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.7...workspace-tools-v1.7.8) (2023-11-18)
 
 
