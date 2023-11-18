@@ -39,6 +39,7 @@
           "@angular-devkit/schematics",
           "@swc/wasm",
           "esbuild",
+          "prettier",
           "nx"
         ],
         "assets": [
