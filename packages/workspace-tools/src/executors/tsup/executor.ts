@@ -244,14 +244,7 @@ export default async function runExecutor(
     ]);
     await Promise.allSettled(
       files.map(file =>
-        writeFile(
-          joinPathFragments(context.root, outputPath, "src", file),
-          `${heading}\n\n${readFileSync(
-            joinPathFragments(context.root, outputPath, "src", file),
-            "utf-8"
-          )}`,
-          "utf-8"
-        )
+        writeFile(file, `${heading}\n\n${readFileSync(file, "utf-8")}`, "utf-8")
       )
     );
 
