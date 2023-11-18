@@ -1,3 +1,10 @@
+## [1.4.47](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.46...@storm-software/storm-ops-v1.4.47) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue looking up package folder in tsup patch ([0eeee37](https://github.com/storm-software/storm-ops/commit/0eeee37219ceaf2873d7e8d0c7d5f7f46ab6a9bd))
+
 ## [1.4.46](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.45...@storm-software/storm-ops-v1.4.46) (2023-11-18)
 
 
