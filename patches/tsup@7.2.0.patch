@@ -1,8 +1,8 @@
 diff --git a/dist/index.js b/dist/index.js
-index 68c197cb2b8dfa928a448475b4020e7301da959e..cc92650d617929522ea8895220f5a88340cf70f6 100644
+index 68c197cb2b8dfa928a448475b4020e7301da959e..1582e5270ea13dde43abef6456dae8f082b07dc9 100644
 --- a/dist/index.js
 +++ b/dist/index.js
-@@ -1605,8 +1605,35 @@ async function runEsbuild(options, {
+@@ -1605,8 +1605,37 @@ async function runEsbuild(options, {
    buildDependencies,
    pluginContainer
  }) {
@@ -16,16 +16,18 @@ index 68c197cb2b8dfa928a448475b4020e7301da959e..cc92650d617929522ea8895220f5a883
 +  if (pkgPath) {
 +    const splits = pkgPath.split(_path2.default.sep);
 +    if (splits.length > 0) {
-+      const pkgPathIndex = splits.slice(0, 
-+          splits.length).reverse()
-+        .findIndex((split, index) => {
-+            const packageJsonPath = _path2.default.join(splits.slice(0, 
-+              index).join(_path2.default.sep), 
-+                "package.json");
-+            logger.info(format, `⚡ Searching for package.json file in ${packageJsonPath}`);
++      let pkgPathIndex = -1;
++      for (let i = splits.length - 1; i >= 0 && pkgPathIndex < 0; i--) {
++        const packageJsonPath = _path2.default.join(splits.slice(0, 
++          splits.length - i).join(_path2.default.sep), 
++            "package.json");
++        logger.info(format, `⚡ Searching for package.json file in ${packageJsonPath}`);
 +
-+            return existsSync(packageJsonPath);
-+          });
++        if (_fs2.default.existsSync(packageJsonPath)) {
++          logger.info(format, `⚡ Found the package.json file in ${packageJsonPath} (index: ${i})`);
++          pkgPathIndex = i;
++        }
++      }
 +
 +      logger.info(format, `⚡ Package path index: ${pkgPathIndex}`);
 +      if (pkgPathIndex) {
@@ -40,7 +42,7 @@ index 68c197cb2b8dfa928a448475b4020e7301da959e..cc92650d617929522ea8895220f5a883
    const external = [
      // Exclude dependencies, e.g. `lodash`, `lodash/get`
      ...deps.map((dep) => new RegExp(`^${dep}($|\\/|\\\\)`)),
-@@ -1676,7 +1703,7 @@ async function runEsbuild(options, {
+@@ -1676,7 +1705,7 @@ async function runEsbuild(options, {
        jsxFragment: options.jsxFragment,
        sourcemap: options.sourcemap ? "external" : false,
        target: options.target,
@@ -49,7 +51,7 @@ index 68c197cb2b8dfa928a448475b4020e7301da959e..cc92650d617929522ea8895220f5a883
        footer,
        tsconfig: options.tsconfig,
        loader: {
-@@ -1727,7 +1754,7 @@ async function runEsbuild(options, {
+@@ -1727,7 +1756,7 @@ async function runEsbuild(options, {
        outExtension: options.legacyOutput ? void 0 : outExtension,
        write: false,
        splitting,
@@ -58,7 +60,7 @@ index 68c197cb2b8dfa928a448475b4020e7301da959e..cc92650d617929522ea8895220f5a883
        minify: options.minify === "terser" ? false : options.minify,
        minifyWhitespace: options.minifyWhitespace,
        minifyIdentifiers: options.minifyIdentifiers,
-@@ -2052,6 +2079,7 @@ var sizeReporter = () => {
+@@ -2052,6 +2081,7 @@ var sizeReporter = () => {
  // src/plugins/tree-shaking.ts
  var import_rollup_plugin_hashbang = _chunkB7UJSB4Njs.__toESM.call(void 0, _chunk52KWB5QBjs.require_dist.call(void 0, ));
  var _rollup = require('rollup');
