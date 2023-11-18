@@ -1,3 +1,10 @@
+## [1.7.7](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.6...create-storm-workspace-v1.7.7) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tsup build to use glob to update src files ([316b91d](https://github.com/storm-software/storm-ops/commit/316b91d72cf4ab7373b48feacac8fca3160f7a8b))
+
 ## [1.7.6](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.5...create-storm-workspace-v1.7.6) (2023-11-17)
 
 
