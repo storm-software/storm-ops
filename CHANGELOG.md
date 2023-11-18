@@ -1,3 +1,10 @@
+## [1.4.48](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.47...@storm-software/storm-ops-v1.4.48) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added join to add separators in package.json path in tsup ([b56df8a](https://github.com/storm-software/storm-ops/commit/b56df8a3c20e12fb8763e481cbc6ca82ff6403cf))
+
 ## [1.4.47](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.46...@storm-software/storm-ops-v1.4.47) (2023-11-18)
 
 
