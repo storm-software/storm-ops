@@ -1,3 +1,10 @@
+## [1.7.15](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.14...create-storm-workspace-v1.7.15) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the tsup executor to include 3rd party depencendies in package.json ([4896ca8](https://github.com/storm-software/storm-ops/commit/4896ca87839af146f18de16d0924853ab971dff0))
+
 ## [1.7.14](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.13...create-storm-workspace-v1.7.14) (2023-11-18)
 
 
