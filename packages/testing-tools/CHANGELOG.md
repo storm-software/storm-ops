@@ -1,3 +1,10 @@
+## [1.1.30](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.29...testing-tools-v1.1.30) (2023-11-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with order of package.json search in tsup executor ([5fea9a1](https://github.com/storm-software/storm-ops/commit/5fea9a117691bef20aa22fbd107522d43b8b1b62))
+
 ## [1.1.29](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.28...testing-tools-v1.1.29) (2023-11-18)
 
 
