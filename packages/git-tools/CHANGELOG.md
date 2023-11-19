@@ -1,3 +1,10 @@
+## [1.2.44](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.43...git-tools-v1.2.44) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad loop conditional in Tsup patch ([a692e7d](https://github.com/storm-software/storm-ops/commit/a692e7d3adf526353a4714e22761a1ba3bcc1cb5))
+
 ## [1.2.43](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.42...git-tools-v1.2.43) (2023-11-19)
 
 
