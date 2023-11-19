@@ -1,3 +1,10 @@
+## [1.3.39](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.38...linting-tools-v1.3.39) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added conditional to tsup package.json search ([f1e26a9](https://github.com/storm-software/storm-ops/commit/f1e26a9fadee64704e7a3beebed6ac8e9d103063))
+
 ## [1.3.38](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.37...linting-tools-v1.3.38) (2023-11-18)
 
 
