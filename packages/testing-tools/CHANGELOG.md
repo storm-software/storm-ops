@@ -1,3 +1,10 @@
+## [1.1.34](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.33...testing-tools-v1.1.34) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added rollup support for DTS generation ([d1f3325](https://github.com/storm-software/storm-ops/commit/d1f3325bf712e3714904e9ca4b795bfba3df39f8))
+
 ## [1.1.33](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.32...testing-tools-v1.1.33) (2023-11-19)
 
 
