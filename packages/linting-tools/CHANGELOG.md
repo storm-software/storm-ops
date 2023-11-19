@@ -1,3 +1,10 @@
+## [1.3.41](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.40...linting-tools-v1.3.41) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue preventing package.json from being written ([c340959](https://github.com/storm-software/storm-ops/commit/c340959fdacb2541c60afca5feef9868bc0296e1))
+
 ## [1.3.40](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.39...linting-tools-v1.3.40) (2023-11-19)
 
 
