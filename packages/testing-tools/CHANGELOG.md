@@ -1,3 +1,10 @@
+## [1.1.33](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.32...testing-tools-v1.1.33) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue preventing package.json from being written ([c340959](https://github.com/storm-software/storm-ops/commit/c340959fdacb2541c60afca5feef9868bc0296e1))
+
 ## [1.1.32](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.31...testing-tools-v1.1.32) (2023-11-19)
 
 
