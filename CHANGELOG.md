@@ -1,3 +1,10 @@
+## [1.4.53](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.52...@storm-software/storm-ops-v1.4.53) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added rollup support for DTS generation ([d1f3325](https://github.com/storm-software/storm-ops/commit/d1f3325bf712e3714904e9ca4b795bfba3df39f8))
+
 ## [1.4.52](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.51...@storm-software/storm-ops-v1.4.52) (2023-11-19)
 
 
