@@ -1,3 +1,10 @@
+## [1.2.47](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.46...git-tools-v1.2.47) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added esm and cjs shims to package bundle ([87a16e4](https://github.com/storm-software/storm-ops/commit/87a16e4007f04201bb0b817fe6fe2bf41c461f95))
+
 ## [1.2.46](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.45...git-tools-v1.2.46) (2023-11-19)
 
 
