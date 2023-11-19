@@ -27,6 +27,7 @@ export function modernConfig({
   external,
   banner = {},
   platform = "node",
+  verbose = false,
   options
 }: GetConfigParams) {
   return {
@@ -47,7 +48,7 @@ export function modernConfig({
         : ["esnext", "node18"],
     tsconfig,
     outDir: joinPathFragments(outDir, "dist", "modern"),
-    silent: false,
+    silent: !verbose,
     metafile: true,
     shims: true,
     minify: false,
@@ -69,6 +70,7 @@ export function legacyConfig({
   external,
   banner = {},
   platform = "node",
+  verbose = false,
   options
 }: GetConfigParams) {
   return {
@@ -78,7 +80,7 @@ export function legacyConfig({
     target: ["es2022", "node18"],
     tsconfig,
     outDir: joinPathFragments(outDir, "dist", "legacy"),
-    silent: false,
+    silent: !verbose,
     metafile: true,
     shims: true,
     minify: false,
@@ -102,7 +104,8 @@ export function getConfig(
     platform,
     external,
     options,
-    additionalEntryPoints
+    additionalEntryPoints,
+    verbose
   }: TsupGetConfigOptions
 ) {
   const entry = globSync(
@@ -130,6 +133,7 @@ export function getConfig(
       banner,
       platform,
       external,
+      verbose,
       options
     }),
     legacyConfig({
@@ -140,6 +144,7 @@ export function getConfig(
       banner,
       platform,
       external,
+      verbose,
       options
     })
   ]);

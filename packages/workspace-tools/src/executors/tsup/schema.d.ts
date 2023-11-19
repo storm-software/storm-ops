@@ -20,4 +20,5 @@ export type TsupExecutorSchema = Omit<
   clean: boolean;
   debug: boolean;
   banner?: string;
+  verbose: boolean;
 };

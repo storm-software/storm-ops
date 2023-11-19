@@ -30,7 +30,16 @@ export default async function runExecutor(
   context: ExecutorContext
 ) {
   try {
-    console.log("📦  Running build executor on the workspace");
+    console.log("📦  Running Storm build executor on the workspace");
+
+    options.verbose &&
+      console.log(
+        `⚙️  Executor options:
+${Object.keys(options)
+  .map(key => ({ [key]: options[key] }))
+  .join("\n")}
+`
+      );
 
     // #region Prepare build context variables
 
@@ -62,7 +71,7 @@ export default async function runExecutor(
     // #region Clean output directory
 
     if (options.clean !== false) {
-      console.log("🧹 Cleaning output path");
+      console.log(`🧹 Cleaning output path: ${outputPath}`);
       removeSync(outputPath);
     }
 
@@ -112,6 +121,13 @@ export default async function runExecutor(
         }
         return acc;
       }, []);
+    options.verbose &&
+      console.log(`Added the following external dependencies:
+${externalDependencies
+  .map(dep => {
+    return `name: ${dep.name}, node: ${dep.node}, outputs: ${dep.outputs}`;
+  })
+  .join("\n")}`);
 
     if (!options.bundle) {
       for (const thirdPartyDependency of getExtraDependencies(
@@ -275,7 +291,9 @@ export default async function runExecutor(
 
     const config = getConfig(sourceRoot, {
       ...options,
-      banner: { js: `// ${banner}`, css: `/* ${banner} */` },
+      banner: banner
+        ? { js: `// ${banner}`, css: `/* ${banner} */` }
+        : undefined,
       outputPath
     });
     if (typeof config === "function") {
@@ -299,7 +317,12 @@ export default async function runExecutor(
 }
 
 const build = async (options: Options | Options[]) => {
-  console.log("⚙️  Tsup build config: \n", options);
+  Array.isArray(options)
+    ? options.length > 0
+      ? options[0].silent
+      : false
+    : options.silent && console.log("⚙️  Tsup build config: \n", options, "\n");
+
   if (Array.isArray(options)) {
     await Promise.all(options.map(buildOptions => tsup(buildOptions)));
   } else {

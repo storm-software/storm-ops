@@ -26,6 +26,10 @@
       "enabled": true
     },
     {
+      "matchPackagePatterns": ["tsup"],
+      "enabled": false
+    },
+    {
       "matchPackageNames": ["@nx"],
       "postUpgradeTasks": {
         "commands": [

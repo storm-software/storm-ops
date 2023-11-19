@@ -76,6 +76,11 @@
         "description": "A short heading added to the top of each typescript file added in the output folder's src directory.",
         "default": "This code was developed by Storm Software (https://stormsoftware.org) and is licensed under the Apache License 2.0."
       },
+      "verbose": {
+        "type": "boolean",
+        "description": "Should write extra log outputs with details from the executor.",
+        "default": false
+      },
       "options": {
         "type": "object",
         "description": "Additional options to pass to tsup. See https://paka.dev/npm/tsup@7.2.0/api#d35d54aca71eb26e.",
