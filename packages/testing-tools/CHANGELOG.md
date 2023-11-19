@@ -1,3 +1,10 @@
+## [1.1.31](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.30...testing-tools-v1.1.31) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added conditional to tsup package.json search ([f1e26a9](https://github.com/storm-software/storm-ops/commit/f1e26a9fadee64704e7a3beebed6ac8e9d103063))
+
 ## [1.1.30](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.29...testing-tools-v1.1.30) (2023-11-18)
 
 
