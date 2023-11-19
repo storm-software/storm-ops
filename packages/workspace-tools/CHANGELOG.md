@@ -1,3 +1,10 @@
+## [1.7.23](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.22...workspace-tools-v1.7.23) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue preventing package.json from being written ([c340959](https://github.com/storm-software/storm-ops/commit/c340959fdacb2541c60afca5feef9868bc0296e1))
+
 ## [1.7.22](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.21...workspace-tools-v1.7.22) (2023-11-19)
 
 
