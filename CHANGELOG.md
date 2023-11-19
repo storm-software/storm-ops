@@ -1,3 +1,10 @@
+## [1.4.50](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.49...@storm-software/storm-ops-v1.4.50) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added conditional to tsup package.json search ([f1e26a9](https://github.com/storm-software/storm-ops/commit/f1e26a9fadee64704e7a3beebed6ac8e9d103063))
+
 ## [1.4.49](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.48...@storm-software/storm-ops-v1.4.49) (2023-11-18)
 
 
