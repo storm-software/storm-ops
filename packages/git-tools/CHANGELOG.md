@@ -1,3 +1,10 @@
+## [1.2.45](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.44...git-tools-v1.2.45) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue preventing package.json from being written ([c340959](https://github.com/storm-software/storm-ops/commit/c340959fdacb2541c60afca5feef9868bc0296e1))
+
 ## [1.2.44](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.43...git-tools-v1.2.44) (2023-11-19)
 
 
