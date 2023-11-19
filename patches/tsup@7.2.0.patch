@@ -1,5 +1,5 @@
 diff --git a/dist/index.js b/dist/index.js
-index 68c197cb2b8dfa928a448475b4020e7301da959e..1582e5270ea13dde43abef6456dae8f082b07dc9 100644
+index 68c197cb2b8dfa928a448475b4020e7301da959e..abe901334ba8ab7c1d573f0f88bdd1667ec29575 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1605,8 +1605,37 @@ async function runEsbuild(options, {
@@ -17,11 +17,11 @@ index 68c197cb2b8dfa928a448475b4020e7301da959e..1582e5270ea13dde43abef6456dae8f0
 +    const splits = pkgPath.split(_path2.default.sep);
 +    if (splits.length > 0) {
 +      let pkgPathIndex = -1;
-+      for (let i = splits.length - 1; i >= 0 && pkgPathIndex < 0; i--) {
++      for (let i = splits.length - 1; i > 0 && pkgPathIndex < 0; i--) {
 +        const packageJsonPath = _path2.default.join(splits.slice(0, 
 +          splits.length - i).join(_path2.default.sep), 
 +            "package.json");
-+        logger.info(format, `⚡ Searching for package.json file in ${packageJsonPath}`);
++        logger.info(format, `⚡ Searching for package.json file in ${packageJsonPath} (index: ${i})`);
 +
 +        if (_fs2.default.existsSync(packageJsonPath)) {
 +          logger.info(format, `⚡ Found the package.json file in ${packageJsonPath} (index: ${i})`);
