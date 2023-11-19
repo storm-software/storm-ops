@@ -88,6 +88,11 @@
             "input": "./packages/workspace-tools",
             "glob": "**/files/**/{*.*,*}",
             "output": "."
+          },
+          {
+            "input": "./packages/workspace-tools/assets",
+            "glob": "**/*.*",
+            "output": "./assets"
           }
         ]
       }
