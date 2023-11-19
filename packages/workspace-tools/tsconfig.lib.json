@@ -5,6 +5,7 @@
     "declaration": true,
     "allowJs": true,
     "resolveJsonModule": true,
+    "esModuleInterop": true,
     "types": ["node"]
   },
   "include": ["index.ts", "src/**/*.ts", "src/**/*.js", "**/*.json"],
