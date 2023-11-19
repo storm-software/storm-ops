@@ -1,3 +1,10 @@
+## [1.4.54](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.53...@storm-software/storm-ops-v1.4.54) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added esm and cjs shims to package bundle ([87a16e4](https://github.com/storm-software/storm-ops/commit/87a16e4007f04201bb0b817fe6fe2bf41c461f95))
+
 ## [1.4.53](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.52...@storm-software/storm-ops-v1.4.53) (2023-11-19)
 
 

@@ -1,3 +1,10 @@
+## [1.1.35](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.34...testing-tools-v1.1.35) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added esm and cjs shims to package bundle ([87a16e4](https://github.com/storm-software/storm-ops/commit/87a16e4007f04201bb0b817fe6fe2bf41c461f95))
+
 ## [1.1.34](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.33...testing-tools-v1.1.34) (2023-11-19)
 
 

@@ -1,3 +1,10 @@
+## [1.3.43](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.42...linting-tools-v1.3.43) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added esm and cjs shims to package bundle ([87a16e4](https://github.com/storm-software/storm-ops/commit/87a16e4007f04201bb0b817fe6fe2bf41c461f95))
+
 ## [1.3.42](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.41...linting-tools-v1.3.42) (2023-11-19)
 
 
