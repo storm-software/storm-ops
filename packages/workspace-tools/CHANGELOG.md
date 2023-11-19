@@ -1,3 +1,10 @@
+## [1.7.27](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.26...workspace-tools-v1.7.27) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Upgrade tsup version and enabled experimental dts ([96f6870](https://github.com/storm-software/storm-ops/commit/96f6870f590ab6a44a3058f20f6ee4e6a6ab1623))
+
 ## [1.7.26](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.25...workspace-tools-v1.7.26) (2023-11-19)
 
 
