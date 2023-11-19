@@ -1,3 +1,10 @@
+## [1.7.22](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.21...create-storm-workspace-v1.7.22) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad loop conditional in Tsup patch ([a692e7d](https://github.com/storm-software/storm-ops/commit/a692e7d3adf526353a4714e22761a1ba3bcc1cb5))
+
 ## [1.7.21](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.20...create-storm-workspace-v1.7.21) (2023-11-19)
 
 
