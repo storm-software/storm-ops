@@ -28,6 +28,7 @@ export function modernConfig({
   banner = {},
   platform = "node",
   verbose = false,
+  define,
   options
 }: GetConfigParams) {
   return {
@@ -55,6 +56,7 @@ export function modernConfig({
     external,
     platform,
     banner,
+    define,
     dts: true,
     sourcemap: debug,
     clean: false,
@@ -71,6 +73,7 @@ export function legacyConfig({
   banner = {},
   platform = "node",
   verbose = false,
+  define,
   options
 }: GetConfigParams) {
   return {
@@ -87,6 +90,7 @@ export function legacyConfig({
     external,
     platform,
     banner,
+    define,
     dts: true,
     sourcemap: debug,
     clean: false,
@@ -105,6 +109,7 @@ export function getConfig(
     external,
     options,
     additionalEntryPoints,
+    define,
     verbose
   }: TsupGetConfigOptions
 ) {
@@ -134,6 +139,7 @@ export function getConfig(
       platform,
       external,
       verbose,
+      define,
       options
     }),
     legacyConfig({
@@ -145,6 +151,7 @@ export function getConfig(
       platform,
       external,
       verbose,
+      define,
       options
     })
   ]);

@@ -1,5 +1,5 @@
 diff --git a/dist/index.js b/dist/index.js
-index 68c197cb2b8dfa928a448475b4020e7301da959e..e36457d889845d289e30e531c1778a7b9c881161 100644
+index 68c197cb2b8dfa928a448475b4020e7301da959e..83e28efa1f52c7dc4a661ff723b3545b1665441f 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1605,8 +1605,32 @@ async function runEsbuild(options, {
@@ -37,25 +37,27 @@ index 68c197cb2b8dfa928a448475b4020e7301da959e..e36457d889845d289e30e531c1778a7b
    const external = [
      // Exclude dependencies, e.g. `lodash`, `lodash/get`
      ...deps.map((dep) => new RegExp(`^${dep}($|\\/|\\\\)`)),
-@@ -1676,7 +1700,7 @@ async function runEsbuild(options, {
-       jsxFragment: options.jsxFragment,
-       sourcemap: options.sourcemap ? "external" : false,
-       target: options.target,
--      banner,
-+      banner: { js: "Created by Storm Software", css: "Created by Storm Software" },
-       footer,
-       tsconfig: options.tsconfig,
-       loader: {
-@@ -1727,7 +1751,7 @@ async function runEsbuild(options, {
+@@ -1719,15 +1743,16 @@ async function runEsbuild(options, {
+         }, {})
+       },
+       inject: [
+-        format === "cjs" && injectShims ? _path2.default.join(__dirname, "../assets/cjs_shims.js") : "",
+-        format === "esm" && injectShims && platform === "node" ? _path2.default.join(__dirname, "../assets/esm_shims.js") : "",
++        format === "cjs" && injectShims ? _path2.default.join(__dirname, "../../../assets/cjs_shims.js") : "",
++        format === "esm" && injectShims && platform === "node" ? _path2.default.join(__dirname, "../../../assets/esm_shims.js") : "",
+         ...options.inject || []
+       ].filter(Boolean),
+       outdir: options.legacyOutput && format !== "cjs" ? _path2.default.join(outDir, format) : outDir,
        outExtension: options.legacyOutput ? void 0 : outExtension,
        write: false,
        splitting,
 -      logLevel: "error",
-+      logLevel: options.silent ? 'error' : 'info',
++      logLevel: options.silent ? 'error' : 'verbose',
++      color: true,
        minify: options.minify === "terser" ? false : options.minify,
        minifyWhitespace: options.minifyWhitespace,
        minifyIdentifiers: options.minifyIdentifiers,
-@@ -2052,6 +2076,7 @@ var sizeReporter = () => {
+@@ -2052,6 +2077,7 @@ var sizeReporter = () => {
  // src/plugins/tree-shaking.ts
  var import_rollup_plugin_hashbang = _chunkB7UJSB4Njs.__toESM.call(void 0, _chunk52KWB5QBjs.require_dist.call(void 0, ));
  var _rollup = require('rollup');
