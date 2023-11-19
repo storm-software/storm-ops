@@ -1,3 +1,10 @@
+## [1.4.52](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.51...@storm-software/storm-ops-v1.4.52) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue preventing package.json from being written ([c340959](https://github.com/storm-software/storm-ops/commit/c340959fdacb2541c60afca5feef9868bc0296e1))
+
 ## [1.4.51](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.50...@storm-software/storm-ops-v1.4.51) (2023-11-19)
 
 
