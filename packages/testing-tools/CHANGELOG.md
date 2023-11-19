@@ -1,3 +1,10 @@
+## [1.1.36](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.35...testing-tools-v1.1.36) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update where tsup loads shim files and added define option ([fa8fe6a](https://github.com/storm-software/storm-ops/commit/fa8fe6a4e7a5d6ac0f87a7b07d1db41cdd3bddc6))
+
 ## [1.1.35](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.34...testing-tools-v1.1.35) (2023-11-19)
 
 

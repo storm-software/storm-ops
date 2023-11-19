@@ -1,3 +1,10 @@
+## [1.7.26](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.25...create-storm-workspace-v1.7.26) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update where tsup loads shim files and added define option ([fa8fe6a](https://github.com/storm-software/storm-ops/commit/fa8fe6a4e7a5d6ac0f87a7b07d1db41cdd3bddc6))
+
 ## [1.7.25](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.24...create-storm-workspace-v1.7.25) (2023-11-19)
 
 

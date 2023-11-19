@@ -1,3 +1,10 @@
+## [1.2.48](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.47...git-tools-v1.2.48) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update where tsup loads shim files and added define option ([fa8fe6a](https://github.com/storm-software/storm-ops/commit/fa8fe6a4e7a5d6ac0f87a7b07d1db41cdd3bddc6))
+
 ## [1.2.47](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.46...git-tools-v1.2.47) (2023-11-19)
 
 
