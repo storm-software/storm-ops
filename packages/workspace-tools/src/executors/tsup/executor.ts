@@ -36,7 +36,7 @@ export default async function runExecutor(
       console.log(
         `⚙️  Executor options:
 ${Object.keys(options)
-  .map(key => ({ [key]: options[key] }))
+  .map(key => `${key}: ${options[key]}`)
   .join("\n")}
 `
       );
@@ -236,28 +236,26 @@ ${externalDependencies
       outputPath,
       "package.json"
     );
-    if (!packageJsonPath) {
-      console.log(`⚡ Writing package.json file to: ${packageJsonPath}`);
+    console.log(`⚡ Writing package.json file to: ${packageJsonPath}`);
 
-      writeFileSync(
-        packageJsonPath,
-        await format(JSON.stringify(packageJson), {
-          plugins: ["prettier-plugin-packagejson"],
-          parser: "json",
-          trailingComma: "none",
-          tabWidth: 2,
-          semi: true,
-          singleQuote: false,
-          quoteProps: "preserve",
-          insertPragma: false,
-          bracketSameLine: true,
-          printWidth: 80,
-          bracketSpacing: true,
-          arrowParens: "avoid",
-          endOfLine: "lf"
-        })
-      );
-    }
+    writeFileSync(
+      packageJsonPath,
+      await format(JSON.stringify(packageJson), {
+        plugins: ["prettier-plugin-packagejson"],
+        parser: "json",
+        trailingComma: "none",
+        tabWidth: 2,
+        semi: true,
+        singleQuote: false,
+        quoteProps: "preserve",
+        insertPragma: false,
+        bracketSameLine: true,
+        printWidth: 80,
+        bracketSpacing: true,
+        arrowParens: "avoid",
+        endOfLine: "lf"
+      })
+    );
 
     const banner = options.banner
       ? options.banner

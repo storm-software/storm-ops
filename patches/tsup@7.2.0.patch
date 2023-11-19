@@ -1,5 +1,5 @@
 diff --git a/dist/index.js b/dist/index.js
-index 68c197cb2b8dfa928a448475b4020e7301da959e..f43a1b851d1c0a4fc8cb01a13b41701b90ca40b5 100644
+index 68c197cb2b8dfa928a448475b4020e7301da959e..e36457d889845d289e30e531c1778a7b9c881161 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1605,8 +1605,32 @@ async function runEsbuild(options, {
@@ -12,7 +12,7 @@ index 68c197cb2b8dfa928a448475b4020e7301da959e..f43a1b851d1c0a4fc8cb01a13b41701b
 +    ? options.outDir
 +    : process.cwd();
 +
-+  logger.info(format, `⚡ Preparing to run ESBuild: ${pkgPath}`);
++  !options.silent && logger.info(format, `⚡ Preparing to run ESBuild: ${pkgPath}`);
 +  if (pkgPath) {
 +    const splits = pkgPath.split("/");
 +    if (splits.length > 0) {
@@ -20,10 +20,10 @@ index 68c197cb2b8dfa928a448475b4020e7301da959e..f43a1b851d1c0a4fc8cb01a13b41701b
 +        const packageJsonPath = _path2.default.join(splits.slice(0, 
 +          splits.length - i).join("/"), 
 +            "package.json");
-+        logger.info(format, `⚡ Searching for package.json file in ${packageJsonPath} (index: ${i})`);
++        !options.silent && logger.info(format, `⚡ Searching for package.json file in ${packageJsonPath} (index: ${i})`);
 +
 +        if (_fs2.default.existsSync(packageJsonPath)) {
-+          logger.info(format, `⚡ Found the package.json file in ${packageJsonPath} (index: ${i})`);
++          !options.silent && logger.info(format, `⚡ Found the package.json file in ${packageJsonPath} (index: ${i})`);
 +          pkgPath = packageJsonPath.replace("package.json", "");
 +          break;
 +        }
@@ -51,7 +51,7 @@ index 68c197cb2b8dfa928a448475b4020e7301da959e..f43a1b851d1c0a4fc8cb01a13b41701b
        write: false,
        splitting,
 -      logLevel: "error",
-+      logLevel: 'info',
++      logLevel: options.silent ? 'error' : 'info',
        minify: options.minify === "terser" ? false : options.minify,
        minifyWhitespace: options.minifyWhitespace,
        minifyIdentifiers: options.minifyIdentifiers,
