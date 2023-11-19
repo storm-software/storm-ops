@@ -1,3 +1,10 @@
+## [1.7.25](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.24...workspace-tools-v1.7.25) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added esm and cjs shims to package bundle ([87a16e4](https://github.com/storm-software/storm-ops/commit/87a16e4007f04201bb0b817fe6fe2bf41c461f95))
+
 ## [1.7.24](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.23...workspace-tools-v1.7.24) (2023-11-19)
 
 
