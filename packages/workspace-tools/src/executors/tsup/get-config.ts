@@ -26,7 +26,7 @@ export function modernConfig({
   debug = false,
   external,
   banner = {},
-  platform = "node",
+  platform = "neutral",
   verbose = false,
   define,
   options
@@ -58,6 +58,7 @@ export function modernConfig({
     banner,
     define,
     dts: true,
+    experimentalDts: true,
     sourcemap: debug,
     clean: false,
     outExtension
@@ -71,7 +72,7 @@ export function legacyConfig({
   debug = false,
   external,
   banner = {},
-  platform = "node",
+  platform = "neutral",
   verbose = false,
   define,
   options
@@ -92,6 +93,7 @@ export function legacyConfig({
     banner,
     define,
     dts: true,
+    experimentalDts: true,
     sourcemap: debug,
     clean: false,
     outExtension

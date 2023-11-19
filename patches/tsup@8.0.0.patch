@@ -1,0 +1,62 @@
+diff --git a/dist/index.js b/dist/index.js
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..598381c431e83b042f4bd4f272897922ff8d5885 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -1610,8 +1610,35 @@ async function runEsbuild(options, {
+   buildDependencies,
+   pluginContainer
+ }) {
+-  const pkg = await _chunk7G76EW2Rjs.loadPkg.call(void 0, process.cwd());
+-  const deps = await _chunk7G76EW2Rjs.getProductionDeps.call(void 0, process.cwd());
++  let pkgPath = options.outDir 
++    ? options.outDir
++    : process.cwd();
++  
++  !options.silent && logger3.info(format, `⚡ Preparing to run ESBuild: ${pkgPath}`);
++  if (pkgPath) {
++    const splits = pkgPath.split("/");
++    if (splits.length > 0) {
++      for (let i = 0; i < splits.length - 1; i++) {
++        const packageJsonPath = _path2.default.join(splits.slice(0, 
++          splits.length - i).join("/"), 
++            "package.json");
++        !options.silent && logger3.info(format, 
++          `⚡ Searching for package.json file in ${packageJsonPath} (index: ${i})`);
++
++        if (_fs2.default.existsSync(packageJsonPath)) {
++          !options.silent && logger3.info(format, 
++            `⚡ Found the package.json file in ${packageJsonPath} (index: ${i})`);
++          pkgPath = packageJsonPath.replace("package.json", "");
++          break;
++        }
++      }
++    }
++  }
++
++  logger3.info(format, `⚡ Running ESBuild: ${pkgPath}`);
++  const pkg = await _chunk7G76EW2Rjs.loadPkg.call(void 0, pkgPath);
++  const deps = await _chunk7G76EW2Rjs.getProductionDeps.call(void 0, pkgPath);
++
+   const external = [
+     // Exclude dependencies, e.g. `lodash`, `lodash/get`
+     ...deps.map((dep) => new RegExp(`^${dep}($|\\/|\\\\)`)),
+@@ -1724,15 +1751,16 @@ async function runEsbuild(options, {
+         }, {})
+       },
+       inject: [
+-        format === "cjs" && injectShims ? _path2.default.join(__dirname, "../assets/cjs_shims.js") : "",
+-        format === "esm" && injectShims && platform === "node" ? _path2.default.join(__dirname, "../assets/esm_shims.js") : "",
++        format === "cjs" && injectShims ? _path2.default.join(__dirname, "../../../assets/cjs_shims.js") : "",
++        format === "esm" && injectShims && platform === "node" ? _path2.default.join(__dirname, "../../../assets/esm_shims.js") : "",
+         ...options.inject || []
+       ].filter(Boolean),
+       outdir: options.legacyOutput && format !== "cjs" ? _path2.default.join(outDir, format) : outDir,
+       outExtension: options.legacyOutput ? void 0 : outExtension,
+       write: false,
+       splitting,
+-      logLevel: "error",
++      logLevel: options.silent ? 'error' : 'info',
++      color: true,
+       minify: options.minify === "terser" ? false : options.minify,
+       minifyWhitespace: options.minifyWhitespace,
+       minifyIdentifiers: options.minifyIdentifiers,

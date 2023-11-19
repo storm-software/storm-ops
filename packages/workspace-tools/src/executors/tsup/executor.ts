@@ -36,7 +36,14 @@ export default async function runExecutor(
       console.log(
         `⚙️  Executor options:
 ${Object.keys(options)
-  .map(key => `${key}: ${options[key]}`)
+  .map(
+    key =>
+      `${key}: ${
+        !options[key] || isPrimitive(options[key])
+          ? options[key]
+          : JSON.stringify(options[key])
+      }`
+  )
   .join("\n")}
 `
       );
@@ -325,5 +332,17 @@ const build = async (options: Options | Options[]) => {
     await Promise.all(options.map(buildOptions => tsup(buildOptions)));
   } else {
     await tsup(options);
+  }
+};
+
+const isPrimitive = (value: unknown): boolean => {
+  try {
+    return (
+      value === undefined ||
+      value === null ||
+      (typeof value !== "object" && typeof value !== "function")
+    );
+  } catch (e) {
+    return false;
   }
 };
