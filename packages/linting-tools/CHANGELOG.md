@@ -1,3 +1,10 @@
+## [1.3.42](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.41...linting-tools-v1.3.42) (2023-11-19)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added rollup support for DTS generation ([d1f3325](https://github.com/storm-software/storm-ops/commit/d1f3325bf712e3714904e9ca4b795bfba3df39f8))
+
 ## [1.3.41](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.40...linting-tools-v1.3.41) (2023-11-19)
 
 
