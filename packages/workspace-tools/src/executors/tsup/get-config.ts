@@ -19,6 +19,9 @@ type GetConfigParams = Omit<
   projectRoot: string;
   workspaceRoot: string;
   tsconfig: string;
+  apiReport?: boolean;
+  docModel?: boolean;
+  tsdocMetadata?: boolean;
 };
 
 export function modernConfig({
@@ -32,6 +35,9 @@ export function modernConfig({
   banner = {},
   platform = "neutral",
   verbose = false,
+  apiReport = true,
+  docModel = true,
+  tsdocMetadata = true,
   define,
   env,
   options
@@ -72,6 +78,9 @@ export function modernConfig({
         noEmit: false
       }
     },
+    apiReport,
+    docModel,
+    tsdocMetadata,
     sourcemap: debug,
     clean: false,
     outExtension
@@ -118,6 +127,9 @@ export function legacyConfig({
         noEmit: false
       }
     },
+    apiReport: false,
+    docModel: false,
+    tsdocMetadata: false,
     sourcemap: debug,
     clean: false,
     outExtension
@@ -137,6 +149,9 @@ export function getConfig(
     external,
     options,
     additionalEntryPoints,
+    apiReport,
+    docModel,
+    tsdocMetadata,
     define,
     env,
     verbose
@@ -170,6 +185,9 @@ export function getConfig(
       platform,
       external,
       verbose,
+      apiReport,
+      docModel,
+      tsdocMetadata,
       define,
       env,
       options

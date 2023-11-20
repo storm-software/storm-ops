@@ -91,6 +91,21 @@
         "description": "Define environment variables that can be used in the source code. The value will be converted into a stringified JSON.",
         "additionalProperties": true
       },
+      "apiReport": {
+        "type": "boolean",
+        "description": "Should API Extractor generate an API Report file.",
+        "default": true
+      },
+      "docModel": {
+        "type": "boolean",
+        "description": "Should API Extractor generate an Doc Model markdown file.",
+        "default": true
+      },
+      "tsdocMetadata": {
+        "type": "boolean",
+        "description": "Should API Extractor generate an TSDoc Metadata file.",
+        "default": true
+      },
       "options": {
         "type": "object",
         "description": "Additional options to pass to tsup. See https://paka.dev/npm/tsup@7.2.0/api#d35d54aca71eb26e.",

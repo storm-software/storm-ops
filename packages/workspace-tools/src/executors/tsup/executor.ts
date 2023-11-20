@@ -46,6 +46,9 @@ export default async function runExecutor(
     options.bundle ??= true;
     options.debug ??= false;
     options.watch ??= false;
+    options.apiReport ??= true;
+    options.docModel ??= true;
+    options.tsdocMetadata ??= true;
     options.define ??= {};
     options.env ??= {};
 

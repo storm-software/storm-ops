@@ -23,4 +23,7 @@ export type TsupExecutorSchema = Omit<
   verbose: boolean;
   define?: Record<string, string>;
   env?: Record<string, string>;
+  apiReport?: boolean;
+  docModel?: boolean;
+  tsdocMetadata?: boolean;
 };
