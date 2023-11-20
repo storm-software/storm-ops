@@ -1,3 +1,10 @@
+## [1.3.53](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.52...linting-tools-v1.3.53) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with tsconfig parser parameteters in tsup patch ([f71e590](https://github.com/storm-software/storm-ops/commit/f71e59055fc2d37ba282fd041c7a60e6469c76da))
+
 ## [1.3.52](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.51...linting-tools-v1.3.52) (2023-11-20)
 
 
