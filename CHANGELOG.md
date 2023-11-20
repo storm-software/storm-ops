@@ -1,3 +1,10 @@
+## [1.4.62](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.61...@storm-software/storm-ops-v1.4.62) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with package export lookup in tsup patch ([ba53a36](https://github.com/storm-software/storm-ops/commit/ba53a3606b60e78d0f66894c6e3bc5d116ddaacd))
+
 ## [1.4.61](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.60...@storm-software/storm-ops-v1.4.61) (2023-11-20)
 
 
