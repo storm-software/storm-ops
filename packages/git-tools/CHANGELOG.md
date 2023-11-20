@@ -1,3 +1,10 @@
+## [1.2.51](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.50...git-tools-v1.2.51) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added code to default tsup build options and package.json path in api-extractor ([f79dbb1](https://github.com/storm-software/storm-ops/commit/f79dbb1d57ba7e2da054ae47483e98516739662b))
+
 ## [1.2.50](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.49...git-tools-v1.2.50) (2023-11-20)
 
 
