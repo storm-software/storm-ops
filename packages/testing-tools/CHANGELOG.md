@@ -1,3 +1,10 @@
+## [1.1.45](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.44...testing-tools-v1.1.45) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with tsconfig parser parameteters in tsup patch ([f71e590](https://github.com/storm-software/storm-ops/commit/f71e59055fc2d37ba282fd041c7a60e6469c76da))
+
 ## [1.1.44](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.43...testing-tools-v1.1.44) (2023-11-20)
 
 
