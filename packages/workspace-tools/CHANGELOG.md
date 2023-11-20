@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.8.0...workspace-tools-v1.8.1) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated the api-reports docs path in tsup executor ([7ba4b1d](https://github.com/storm-software/storm-ops/commit/7ba4b1d6969d6de7f77ca9f1b99a53426ed659fb))
+
 # [1.8.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.37...workspace-tools-v1.8.0) (2023-11-20)
 
 
