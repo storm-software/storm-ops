@@ -1,3 +1,10 @@
+## [1.4.58](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.57...@storm-software/storm-ops-v1.4.58) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added code to default tsup build options and package.json path in api-extractor ([f79dbb1](https://github.com/storm-software/storm-ops/commit/f79dbb1d57ba7e2da054ae47483e98516739662b))
+
 ## [1.4.57](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.56...@storm-software/storm-ops-v1.4.57) (2023-11-20)
 
 
