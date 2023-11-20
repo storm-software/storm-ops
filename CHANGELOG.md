@@ -1,3 +1,10 @@
+## [1.4.63](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.62...@storm-software/storm-ops-v1.4.63) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added extra logging to tsup patch ([6c58d8a](https://github.com/storm-software/storm-ops/commit/6c58d8a369d5ee4b28804903b49ae2ea141e7abd))
+
 ## [1.4.62](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.61...@storm-software/storm-ops-v1.4.62) (2023-11-20)
 
 
