@@ -1,3 +1,10 @@
+## [1.7.30](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.29...create-storm-workspace-v1.7.30) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added code to default tsup build options and package.json path in api-extractor ([f79dbb1](https://github.com/storm-software/storm-ops/commit/f79dbb1d57ba7e2da054ae47483e98516739662b))
+
 ## [1.7.29](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.28...create-storm-workspace-v1.7.29) (2023-11-20)
 
 
