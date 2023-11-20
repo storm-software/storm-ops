@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.3.0...git-tools-v1.3.1) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated the api-reports docs path in tsup executor ([7ba4b1d](https://github.com/storm-software/storm-ops/commit/7ba4b1d6969d6de7f77ca9f1b99a53426ed659fb))
+
 # [1.3.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.58...git-tools-v1.3.0) (2023-11-20)
 
 
