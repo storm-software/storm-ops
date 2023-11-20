@@ -1,3 +1,10 @@
+## [1.3.51](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.50...linting-tools-v1.3.51) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with package export lookup in tsup patch ([ba53a36](https://github.com/storm-software/storm-ops/commit/ba53a3606b60e78d0f66894c6e3bc5d116ddaacd))
+
 ## [1.3.50](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.49...linting-tools-v1.3.50) (2023-11-20)
 
 
