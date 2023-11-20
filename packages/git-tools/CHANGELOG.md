@@ -1,3 +1,10 @@
+## [1.2.54](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.53...git-tools-v1.2.54) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved bad tsconfig path issue in tsup patch ([564b0b5](https://github.com/storm-software/storm-ops/commit/564b0b5cd054852106328fb047cd77baefea962e))
+
 ## [1.2.53](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.52...git-tools-v1.2.53) (2023-11-20)
 
 

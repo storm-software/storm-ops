@@ -1,3 +1,10 @@
+## [1.1.42](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.41...testing-tools-v1.1.42) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved bad tsconfig path issue in tsup patch ([564b0b5](https://github.com/storm-software/storm-ops/commit/564b0b5cd054852106328fb047cd77baefea962e))
+
 ## [1.1.41](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.40...testing-tools-v1.1.41) (2023-11-20)
 
 
