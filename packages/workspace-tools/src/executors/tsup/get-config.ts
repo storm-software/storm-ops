@@ -16,12 +16,14 @@ type GetConfigParams = Omit<
 > & {
   entry: Entry;
   outDir: string;
+  projectRoot: string;
   tsconfig: string;
 };
 
 export function modernConfig({
   entry,
   outDir,
+  projectRoot,
   tsconfig = "tsconfig.json",
   debug = false,
   external,
@@ -49,6 +51,7 @@ export function modernConfig({
           ]
         : ["esnext", "node18"],
     tsconfig,
+    projectRoot,
     outDir: joinPathFragments(outDir, "dist", "modern"),
     silent: !verbose,
     metafile: true,
@@ -75,6 +78,7 @@ export function modernConfig({
 export function legacyConfig({
   entry,
   outDir,
+  projectRoot,
   tsconfig = "tsconfig.json",
   debug = false,
   external,
@@ -91,6 +95,7 @@ export function legacyConfig({
     format: platform !== "node" ? ["cjs", "esm", "iife"] : ["cjs", "esm"],
     target: ["es2022", "node18"],
     tsconfig,
+    projectRoot,
     outDir: joinPathFragments(outDir, "dist", "legacy"),
     silent: !verbose,
     metafile: true,
@@ -115,6 +120,7 @@ export function legacyConfig({
 }
 
 export function getConfig(
+  projectRoot: string,
   sourceRoot: string,
   {
     outputPath,
@@ -150,6 +156,7 @@ export function getConfig(
     modernConfig({
       entry,
       outDir: outputPath,
+      projectRoot,
       tsconfig: tsConfig,
       debug,
       banner,
@@ -163,6 +170,7 @@ export function getConfig(
     legacyConfig({
       entry,
       outDir: outputPath,
+      projectRoot,
       tsconfig: tsConfig,
       debug,
       banner,

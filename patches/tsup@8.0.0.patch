@@ -1,5 +1,18 @@
+diff --git a/dist/index.d.ts b/dist/index.d.ts
+index 36191e8e511f9cc413d70403ac86c989890f8d65..90904ee10b884a1e35ddd637e0be4313a7f8e82d 100644
+--- a/dist/index.d.ts
++++ b/dist/index.d.ts
+@@ -528,6 +528,8 @@ type Options = {
+      * @default false
+      */
+     cjsInterop?: boolean;
++
++    projectRoot?: string;
+ };
+ interface NormalizedExperimentalDtsConfig {
+     entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..c915d5db8e1a6a21d6d8f0aea898b7a547c8bbd1 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..7b3a79d91ea5c887e6f515e5232864770592a98d 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1603,6 +1603,36 @@ var generateExternal = async (external) => {
@@ -54,6 +67,15 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..c915d5db8e1a6a21d6d8f0aea898b7a5
    const external = [
      // Exclude dependencies, e.g. `lodash`, `lodash/get`
      ...deps.map((dep) => new RegExp(`^${dep}($|\\/|\\\\)`)),
+@@ -1683,7 +1717,7 @@ async function runEsbuild(options, {
+       target: options.target,
+       banner,
+       footer,
+-      tsconfig: options.tsconfig,
++      tsconfig: options.projectRoot ? _path2.join(options.projectRoot, options.tsconfig) : options.tsconfig,
+       loader: {
+         ".aac": "file",
+         ".css": "file",
 @@ -1724,15 +1758,16 @@ async function runEsbuild(options, {
          }, {})
        },
@@ -69,12 +91,65 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..c915d5db8e1a6a21d6d8f0aea898b7a5
        write: false,
        splitting,
 -      logLevel: "error",
-+      logLevel: options.silent ? 'error' : 'info',
++      logLevel: options.silent !== false ? 'error' : 'info',
 +      color: true,
        minify: options.minify === "terser" ? false : options.minify,
        minifyWhitespace: options.minifyWhitespace,
        minifyIdentifiers: options.minifyIdentifiers,
-@@ -2429,8 +2464,10 @@ function formatDistributionExport(declaration, dest) {
+@@ -2287,11 +2322,12 @@ function emitDtsFiles(program, host) {
+   }
+   return fileMapping;
+ }
+-function emit(compilerOptions, tsconfig) {
+-  let cwd = process.cwd();
+-  let rawTsconfig = _bundlerequire.loadTsConfig.call(void 0, cwd, tsconfig);
++function emit(options, compilerOptions, tsconfig) {
++  logger.info("tsc", `Trying to find ${tsconfig || "tsconfig.json"} in ${options.projectRoot}`);
++
++  let rawTsconfig = _bundlerequire.loadTsConfig.call(void 0, options.projectRoot, tsconfig);
+   if (!rawTsconfig) {
+-    throw new Error(`Unable to find ${tsconfig || "tsconfig.json"} in ${cwd}`);
++    throw new Error(`Unable to find ${tsconfig || "tsconfig.json"} in ${options.projectRoot}`);
+   }
+   let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
+   let parsedTsconfig = _typescript2.default.parseJsonConfigFileContent(
+@@ -2299,6 +2335,8 @@ function emit(compilerOptions, tsconfig) {
+       ...rawTsconfig.data,
+       compilerOptions: {
+         ..._optionalChain([rawTsconfig, 'access', _16 => _16.data, 'optionalAccess', _17 => _17.compilerOptions]),
++        ...compilerOptions,
++
+         // Enable declaration emit and disable javascript emit
+         noEmit: false,
+         declaration: true,
+@@ -2308,13 +2346,13 @@ function emit(compilerOptions, tsconfig) {
+       }
+     },
+     _typescript2.default.sys,
+-    tsconfig ? _path.dirname.call(void 0, tsconfig) : "./"
++    tsconfig ?_path.join(options.projectRoot, _path.dirname.call(void 0, tsconfig)) : options.projectRoot
+   );
+-  let options = parsedTsconfig.options;
+-  let host = _typescript2.default.createCompilerHost(options);
++
++  let host = _typescript2.default.createCompilerHost(parsedTsconfig.options);
+   let program = _typescript2.default.createProgram(
+     parsedTsconfig.fileNames,
+-    options,
++    parsedTsconfig.options,
+     host
+   );
+   let fileMapping = emitDtsFiles(program, host);
+@@ -2328,7 +2366,7 @@ function runTypeScriptCompiler(options) {
+     };
+     logger.info("tsc", "Build start");
+     const dtsOptions = options.experimentalDts;
+-    const exports = emit(dtsOptions.compilerOptions, options.tsconfig);
++    const exports = emit(options, dtsOptions.compilerOptions, options.tsconfig);
+     logger.success("tsc", `\u26A1\uFE0F Build success in ${getDuration()}`);
+     return exports;
+   } catch (error) {
+@@ -2429,8 +2467,10 @@ function formatDistributionExport(declaration, dest) {
  // src/api-extractor.ts
  var logger2 = _chunk7G76EW2Rjs.createLogger.call(void 0, );
  function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
@@ -87,7 +162,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..c915d5db8e1a6a21d6d8f0aea898b7a5
    let configObject = {
      mainEntryPointFilePath: inputFilePath,
      apiReport: {
-@@ -2447,7 +2484,7 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+@@ -2447,7 +2487,7 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
      compiler: {
        tsconfigFilePath
      },
@@ -96,7 +171,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..c915d5db8e1a6a21d6d8f0aea898b7a5
    };
    const prepareOptions = {
      configObject,
-@@ -2477,7 +2514,11 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+@@ -2477,7 +2517,11 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
  async function rollupDtsFiles(options, exports, format) {
    let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
    let outDir = options.outDir || "dist";

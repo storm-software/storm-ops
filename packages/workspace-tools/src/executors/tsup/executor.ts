@@ -35,7 +35,7 @@ export default async function runExecutor(
     // #region Apply default options
 
     options.outputPath ??= "dist/{projectRoot}";
-    options.tsConfig ??= "{projectRoot}/tsconfig.json";
+    options.tsConfig ??= "tsconfig.json";
     options.banner ??= process.env.STORM_FILE_BANNER;
     options.platform ??= "neutral";
     options.verbose ??= false;
@@ -310,7 +310,7 @@ ${externalDependencies
       console.log(`📢  Tsup build message: \n`, event);
     });
 
-    const config = getConfig(sourceRoot, {
+    const config = getConfig(projectRoot, sourceRoot, {
       ...options,
       banner: options.banner
         ? { js: `// ${options.banner}`, css: `/* ${options.banner} */` }
