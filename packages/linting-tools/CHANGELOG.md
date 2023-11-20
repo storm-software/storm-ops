@@ -1,3 +1,10 @@
+## [1.3.50](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.49...linting-tools-v1.3.50) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved bad tsconfig path issue in tsup patch ([564b0b5](https://github.com/storm-software/storm-ops/commit/564b0b5cd054852106328fb047cd77baefea962e))
+
 ## [1.3.49](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.48...linting-tools-v1.3.49) (2023-11-20)
 
 
