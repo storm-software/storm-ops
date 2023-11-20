@@ -32,6 +32,7 @@
   "main": "./index",
   "typings": "./index.d.ts",
   "dependencies": {
+    "@microsoft/api-extractor": "^7.38.3",
     "@nx/devkit": "17.0.3",
     "@nx/esbuild": "17.0.3",
     "@rollup/plugin-json": "^6.0.1",
