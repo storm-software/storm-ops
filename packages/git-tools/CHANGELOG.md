@@ -1,3 +1,10 @@
+## [1.2.53](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.52...git-tools-v1.2.53) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with path library reference in tsup ([9745279](https://github.com/storm-software/storm-ops/commit/974527945816b40c8b210b06b3da16f20cb86dde))
+
 ## [1.2.52](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.51...git-tools-v1.2.52) (2023-11-20)
 
 
