@@ -1,3 +1,10 @@
+## [1.4.65](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.64...@storm-software/storm-ops-v1.4.65) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added missing @microsoft/api-extractor dependency for tsup DTS build ([56ab124](https://github.com/storm-software/storm-ops/commit/56ab124124275be7f66f0e9f11d64477c82bbcf5))
+
 ## [1.4.64](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.63...@storm-software/storm-ops-v1.4.64) (2023-11-20)
 
 
