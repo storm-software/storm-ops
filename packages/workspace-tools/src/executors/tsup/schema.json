@@ -86,6 +86,11 @@
         "description": "Define global constants that can be used in the source code. The value will be converted into a stringified JSON.",
         "additionalProperties": true
       },
+      "env": {
+        "type": "object",
+        "description": "Define environment variables that can be used in the source code. The value will be converted into a stringified JSON.",
+        "additionalProperties": true
+      },
       "options": {
         "type": "object",
         "description": "Additional options to pass to tsup. See https://paka.dev/npm/tsup@7.2.0/api#d35d54aca71eb26e.",

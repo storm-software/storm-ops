@@ -22,4 +22,5 @@ export type TsupExecutorSchema = Omit<
   banner?: string;
   verbose: boolean;
   define?: Record<string, string>;
+  env?: Record<string, string>;
 };

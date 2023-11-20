@@ -29,6 +29,7 @@ export function modernConfig({
   platform = "neutral",
   verbose = false,
   define,
+  env,
   options
 }: GetConfigParams) {
   return {
@@ -57,8 +58,14 @@ export function modernConfig({
     platform,
     banner,
     define,
+    env,
     dts: false,
-    experimentalDts: true,
+    experimentalDts: {
+      entry,
+      compilerOptions: {
+        noEmit: false
+      }
+    },
     sourcemap: debug,
     clean: false,
     outExtension
@@ -75,6 +82,7 @@ export function legacyConfig({
   platform = "neutral",
   verbose = false,
   define,
+  env,
   options
 }: GetConfigParams) {
   return {
@@ -92,8 +100,14 @@ export function legacyConfig({
     platform,
     banner,
     define,
+    env,
     dts: false,
-    experimentalDts: true,
+    experimentalDts: {
+      entry,
+      compilerOptions: {
+        noEmit: false
+      }
+    },
     sourcemap: debug,
     clean: false,
     outExtension
@@ -112,6 +126,7 @@ export function getConfig(
     options,
     additionalEntryPoints,
     define,
+    env,
     verbose
   }: TsupGetConfigOptions
 ) {
@@ -142,6 +157,7 @@ export function getConfig(
       external,
       verbose,
       define,
+      env,
       options
     }),
     legacyConfig({
@@ -154,6 +170,7 @@ export function getConfig(
       external,
       verbose,
       define,
+      env,
       options
     })
   ]);
