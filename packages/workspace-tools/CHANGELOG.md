@@ -1,3 +1,10 @@
+## [1.7.36](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.35...workspace-tools-v1.7.36) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with tsconfig parser parameteters in tsup patch ([f71e590](https://github.com/storm-software/storm-ops/commit/f71e59055fc2d37ba282fd041c7a60e6469c76da))
+
 ## [1.7.35](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.34...workspace-tools-v1.7.35) (2023-11-20)
 
 
