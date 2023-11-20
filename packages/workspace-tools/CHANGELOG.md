@@ -1,3 +1,10 @@
+## [1.7.28](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.27...workspace-tools-v1.7.28) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Prevent both dts and experimentalDts from being enabled ([c2e5082](https://github.com/storm-software/storm-ops/commit/c2e50822440564f27e7f387e0e936c07092b4653))
+
 ## [1.7.27](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.26...workspace-tools-v1.7.27) (2023-11-19)
 
 
