@@ -1,3 +1,10 @@
+## [1.3.54](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.53...linting-tools-v1.3.54) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added missing @microsoft/api-extractor dependency for tsup DTS build ([56ab124](https://github.com/storm-software/storm-ops/commit/56ab124124275be7f66f0e9f11d64477c82bbcf5))
+
 ## [1.3.53](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.52...linting-tools-v1.3.53) (2023-11-20)
 
 

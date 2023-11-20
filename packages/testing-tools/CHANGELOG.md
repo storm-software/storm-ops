@@ -1,3 +1,10 @@
+## [1.1.46](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.45...testing-tools-v1.1.46) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added missing @microsoft/api-extractor dependency for tsup DTS build ([56ab124](https://github.com/storm-software/storm-ops/commit/56ab124124275be7f66f0e9f11d64477c82bbcf5))
+
 ## [1.1.45](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.44...testing-tools-v1.1.45) (2023-11-20)
 
 

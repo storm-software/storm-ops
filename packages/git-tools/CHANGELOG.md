@@ -1,3 +1,10 @@
+## [1.2.58](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.57...git-tools-v1.2.58) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added missing @microsoft/api-extractor dependency for tsup DTS build ([56ab124](https://github.com/storm-software/storm-ops/commit/56ab124124275be7f66f0e9f11d64477c82bbcf5))
+
 ## [1.2.57](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.56...git-tools-v1.2.57) (2023-11-20)
 
 
