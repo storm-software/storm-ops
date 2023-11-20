@@ -17,6 +17,7 @@ type GetConfigParams = Omit<
   entry: Entry;
   outDir: string;
   projectRoot: string;
+  workspaceRoot: string;
   tsconfig: string;
 };
 
@@ -24,6 +25,7 @@ export function modernConfig({
   entry,
   outDir,
   projectRoot,
+  workspaceRoot,
   tsconfig = "tsconfig.json",
   debug = false,
   external,
@@ -52,6 +54,7 @@ export function modernConfig({
         : ["esnext", "node18"],
     tsconfig,
     projectRoot,
+    workspaceRoot,
     outDir: joinPathFragments(outDir, "dist", "modern"),
     silent: !verbose,
     metafile: true,
@@ -79,6 +82,7 @@ export function legacyConfig({
   entry,
   outDir,
   projectRoot,
+  workspaceRoot,
   tsconfig = "tsconfig.json",
   debug = false,
   external,
@@ -96,6 +100,7 @@ export function legacyConfig({
     target: ["es2022", "node18"],
     tsconfig,
     projectRoot,
+    workspaceRoot,
     outDir: joinPathFragments(outDir, "dist", "legacy"),
     silent: !verbose,
     metafile: true,
@@ -120,6 +125,7 @@ export function legacyConfig({
 }
 
 export function getConfig(
+  workspaceRoot: string,
   projectRoot: string,
   sourceRoot: string,
   {
@@ -157,6 +163,7 @@ export function getConfig(
       entry,
       outDir: outputPath,
       projectRoot,
+      workspaceRoot,
       tsconfig: tsConfig,
       debug,
       banner,
@@ -171,6 +178,7 @@ export function getConfig(
       entry,
       outDir: outputPath,
       projectRoot,
+      workspaceRoot,
       tsconfig: tsConfig,
       debug,
       banner,

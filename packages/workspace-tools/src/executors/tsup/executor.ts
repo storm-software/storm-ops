@@ -310,10 +310,10 @@ ${externalDependencies
       console.log(`📢  Tsup build message: \n`, event);
     });
 
-    const config = getConfig(projectRoot, sourceRoot, {
+    const config = getConfig(context.root, projectRoot, sourceRoot, {
       ...options,
       banner: options.banner
-        ? { js: `// ${options.banner}`, css: `/* ${options.banner} */` }
+        ? { js: `// ${options.banner}\n\n`, css: `/* ${options.banner} */\n\n` }
         : undefined,
       outputPath
     });
