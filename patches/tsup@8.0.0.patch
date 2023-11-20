@@ -12,7 +12,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..90904ee10b884a1e35ddd637e0be4313
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..7b3a79d91ea5c887e6f515e5232864770592a98d 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..fac2dca94b8bf46f3edc0d2cc6a8cd086b548a7f 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1603,6 +1603,36 @@ var generateExternal = async (external) => {
@@ -72,7 +72,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..7b3a79d91ea5c887e6f515e523286477
        banner,
        footer,
 -      tsconfig: options.tsconfig,
-+      tsconfig: options.projectRoot ? _path2.join(options.projectRoot, options.tsconfig) : options.tsconfig,
++      tsconfig: options.projectRoot ? _path2.default.join(options.projectRoot, options.tsconfig) : options.tsconfig,
        loader: {
          ".aac": "file",
          ".css": "file",
