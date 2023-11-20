@@ -1,3 +1,10 @@
+## [1.1.39](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.38...testing-tools-v1.1.39) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added code to default tsup build options and package.json path in api-extractor ([f79dbb1](https://github.com/storm-software/storm-ops/commit/f79dbb1d57ba7e2da054ae47483e98516739662b))
+
 ## [1.1.38](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.37...testing-tools-v1.1.38) (2023-11-20)
 
 
