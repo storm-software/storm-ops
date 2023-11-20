@@ -1,3 +1,10 @@
+## [1.2.52](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.51...git-tools-v1.2.52) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resovled issue with tsup dts tsconfig path ([eefb517](https://github.com/storm-software/storm-ops/commit/eefb517fc2369ab2411911c3810e51390a4689d9))
+
 ## [1.2.51](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.50...git-tools-v1.2.51) (2023-11-20)
 
 
