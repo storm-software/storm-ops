@@ -32,6 +32,23 @@ export default async function runExecutor(
   try {
     console.log("📦  Running Storm build executor on the workspace");
 
+    // #region Apply default options
+
+    options.outputPath ??= "dist/{projectRoot}";
+    options.tsConfig ??= "{projectRoot}/tsconfig.json";
+    options.banner ??= process.env.STORM_FILE_BANNER;
+    options.platform ??= "neutral";
+    options.verbose ??= false;
+    options.external ??= [];
+    options.additionalEntryPoints ??= [];
+    options.assets ??= [];
+    options.clean ??= true;
+    options.bundle ??= true;
+    options.debug ??= false;
+    options.watch ??= false;
+    options.define ??= {};
+    options.env ??= {};
+
     options.verbose &&
       console.log(
         `⚙️  Executor options:
@@ -47,6 +64,8 @@ ${Object.keys(options)
   .join("\n")}
 `
       );
+
+    // #endregion Apply default options
 
     // #region Prepare build context variables
 
@@ -264,10 +283,7 @@ ${externalDependencies
       })
     );
 
-    const banner = options.banner
-      ? options.banner
-      : process.env.STORM_TS_FILE_HEADING;
-    if (banner) {
+    if (options.banner) {
       const files = globSync([
         joinPathFragments(context.root, outputPath, "src/**/*.ts"),
         joinPathFragments(context.root, outputPath, "src/**/*.tsx"),
@@ -278,7 +294,7 @@ ${externalDependencies
         files.map(file =>
           writeFile(
             file,
-            `// ${banner}\n\n${readFileSync(file, "utf-8")}`,
+            `// ${options.banner}\n\n${readFileSync(file, "utf-8")}`,
             "utf-8"
           )
         )
@@ -296,8 +312,8 @@ ${externalDependencies
 
     const config = getConfig(sourceRoot, {
       ...options,
-      banner: banner
-        ? { js: `// ${banner}`, css: `/* ${banner} */` }
+      banner: options.banner
+        ? { js: `// ${options.banner}`, css: `/* ${options.banner} */` }
         : undefined,
       outputPath
     });

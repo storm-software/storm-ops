@@ -1,18 +1,18 @@
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..598381c431e83b042f4bd4f272897922ff8d5885 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..c915d5db8e1a6a21d6d8f0aea898b7a547c8bbd1 100644
 --- a/dist/index.js
 +++ b/dist/index.js
-@@ -1610,8 +1610,35 @@ async function runEsbuild(options, {
-   buildDependencies,
-   pluginContainer
- }) {
--  const pkg = await _chunk7G76EW2Rjs.loadPkg.call(void 0, process.cwd());
--  const deps = await _chunk7G76EW2Rjs.getProductionDeps.call(void 0, process.cwd());
-+  let pkgPath = options.outDir 
-+    ? options.outDir
+@@ -1603,6 +1603,36 @@ var generateExternal = async (external) => {
+   }
+   return result;
+ };
++
++var packageJsonSearch = (outDir, silent, format, logger) => {
++  let pkgPath = outDir 
++    ? outDir
 +    : process.cwd();
 +  
-+  !options.silent && logger3.info(format, `⚡ Preparing to run ESBuild: ${pkgPath}`);
++  !silent && logger.info(format, `⚡ Beginning search for package.json file: ${pkgPath}`);
 +  if (pkgPath) {
 +    const splits = pkgPath.split("/");
 +    if (splits.length > 0) {
@@ -20,11 +20,11 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..598381c431e83b042f4bd4f272897922
 +        const packageJsonPath = _path2.default.join(splits.slice(0, 
 +          splits.length - i).join("/"), 
 +            "package.json");
-+        !options.silent && logger3.info(format, 
++        !silent && logger.info(format, 
 +          `⚡ Searching for package.json file in ${packageJsonPath} (index: ${i})`);
 +
 +        if (_fs2.default.existsSync(packageJsonPath)) {
-+          !options.silent && logger3.info(format, 
++          !silent && logger.info(format, 
 +            `⚡ Found the package.json file in ${packageJsonPath} (index: ${i})`);
 +          pkgPath = packageJsonPath.replace("package.json", "");
 +          break;
@@ -33,14 +33,28 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..598381c431e83b042f4bd4f272897922
 +    }
 +  }
 +
++  return pkgPath;
++}
++
+ async function runEsbuild(options, {
+   format,
+   css,
+@@ -1610,8 +1640,12 @@ async function runEsbuild(options, {
+   buildDependencies,
+   pluginContainer
+ }) {
+-  const pkg = await _chunk7G76EW2Rjs.loadPkg.call(void 0, process.cwd());
+-  const deps = await _chunk7G76EW2Rjs.getProductionDeps.call(void 0, process.cwd());
++  const pkgPath = packageJsonSearch(options.outDir, options.silent, format, logger3);
 +  logger3.info(format, `⚡ Running ESBuild: ${pkgPath}`);
++
 +  const pkg = await _chunk7G76EW2Rjs.loadPkg.call(void 0, pkgPath);
 +  const deps = await _chunk7G76EW2Rjs.getProductionDeps.call(void 0, pkgPath);
 +
    const external = [
      // Exclude dependencies, e.g. `lodash`, `lodash/get`
      ...deps.map((dep) => new RegExp(`^${dep}($|\\/|\\\\)`)),
-@@ -1724,15 +1751,16 @@ async function runEsbuild(options, {
+@@ -1724,15 +1758,16 @@ async function runEsbuild(options, {
          }, {})
        },
        inject: [
@@ -60,3 +74,38 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..598381c431e83b042f4bd4f272897922
        minify: options.minify === "terser" ? false : options.minify,
        minifyWhitespace: options.minifyWhitespace,
        minifyIdentifiers: options.minifyIdentifiers,
+@@ -2429,8 +2464,10 @@ function formatDistributionExport(declaration, dest) {
+ // src/api-extractor.ts
+ var logger2 = _chunk7G76EW2Rjs.createLogger.call(void 0, );
+ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+-  let cwd = process.cwd();
+-  let packageJsonFullPath = _path2.default.join(cwd, "package.json");
++  let pkgPath = packageJsonSearch(outputFilePath, false, "dts", logger2);
++  logger2.info("dts", `⚡ Preparing to run API Extractor (DTS generate): ${pkgPath}`);
++
++  let packageJsonFullPath = _path2.default.join(pkgPath, "package.json");
+   let configObject = {
+     mainEntryPointFilePath: inputFilePath,
+     apiReport: {
+@@ -2447,7 +2484,7 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+     compiler: {
+       tsconfigFilePath
+     },
+-    projectFolder: cwd
++    projectFolder: pkgPath
+   };
+   const prepareOptions = {
+     configObject,
+@@ -2477,7 +2514,11 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+ async function rollupDtsFiles(options, exports, format) {
+   let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
+   let outDir = options.outDir || "dist";
+-  let pkg = await _chunk7G76EW2Rjs.loadPkg.call(void 0, process.cwd());
++  let pkgPath = packageJsonSearch(outDir, false, "dts", logger2);
++
++  logger2.info("dts", `⚡ Preparing to run Rollup (DTS generate): ${pkgPath}`);
++  let pkg = await _chunk7G76EW2Rjs.loadPkg.call(void 0, pkgPath);
++
+   let dtsExtension = _chunkGQ77QZBOjs.defaultOutExtension.call(void 0, { format, pkgType: pkg.type }).dts;
+   let dtsInputFilePath = _path2.default.join(
+     declarationDir,
