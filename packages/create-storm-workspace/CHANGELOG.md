@@ -1,3 +1,10 @@
+## [1.7.32](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.31...create-storm-workspace-v1.7.32) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with path library reference in tsup ([9745279](https://github.com/storm-software/storm-ops/commit/974527945816b40c8b210b06b3da16f20cb86dde))
+
 ## [1.7.31](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.30...create-storm-workspace-v1.7.31) (2023-11-20)
 
 
