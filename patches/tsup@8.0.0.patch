@@ -39,7 +39,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..c88e541262ba18e25573b1879e447ac9
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..18b565adface65249492dbfae73d18ccc02b9b02 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..b583370e65527a9788c9ec5af7e777abe524c555 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1603,6 +1603,36 @@ var generateExternal = async (external) => {
@@ -230,7 +230,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..18b565adface65249492dbfae73d18cc
      logger.success("tsc", `\u26A1\uFE0F Build success in ${getDuration()}`);
      return exports;
    } catch (error) {
-@@ -2428,26 +2497,51 @@ function formatDistributionExport(declaration, dest) {
+@@ -2428,26 +2497,53 @@ function formatDistributionExport(declaration, dest) {
  
  // src/api-extractor.ts
  var logger2 = _chunk7G76EW2Rjs.createLogger.call(void 0, );
@@ -238,7 +238,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..18b565adface65249492dbfae73d18cc
 -  let cwd = process.cwd();
 -  let packageJsonFullPath = _path2.default.join(cwd, "package.json");
 +function rollupDtsFile(options, inputFilePath, outputFilePath, tsconfigFilePath) {
-+  let pkgPath = packageJsonSearch(outputFilePath, options.silent, "dts", logger2);
++  let pkgPath = packageJsonSearch(options.outDir, options.silent, "dts", logger2);
 +  if (pkgPath.endsWith("/")) {
 +    pkgPath = pkgPath.slice(0, -1);
 +  }
@@ -250,7 +250,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..18b565adface65249492dbfae73d18cc
 +  const packageName = pkgPath.substring(pkgPath.lastIndexOf("/") ?? 0);
 +  const apiReferenceProjectDir = _path2.default.join(options.workspaceRoot, 
 +    "docs", 
-+    "api-report", 
++    "api-reports", 
 +    options.projectRoot);
 +    
    let configObject = {
@@ -273,9 +273,11 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..18b565adface65249492dbfae73d18cc
        enabled: true,
 -      untrimmedFilePath: outputFilePath
 +      untrimmedFilePath: outputFilePath,
-+      betaTrimmedFilePath: _path2.default.join(_path2.default.dirname(outputFilePath), 
++      betaTrimmedFilePath: _path2.default.join(options.workspaceRoot,
++        options.outDir, 
 +        `${packageName}-beta.d.ts`),
-+      publicTrimmedFilePath: _path2.default.join(_path2.default.dirname(outputFilePath), 
++      publicTrimmedFilePath: _path2.default.join(options.workspaceRoot,
++        options.outDir, 
 +        `${packageName}-public.d.ts`)
 +    },
 +    tsdocMetadata: { 
@@ -292,7 +294,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..18b565adface65249492dbfae73d18cc
    };
    const prepareOptions = {
      configObject,
-@@ -2477,7 +2571,11 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+@@ -2477,7 +2573,11 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
  async function rollupDtsFiles(options, exports, format) {
    let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
    let outDir = options.outDir || "dist";
@@ -305,7 +307,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..18b565adface65249492dbfae73d18cc
    let dtsExtension = _chunkGQ77QZBOjs.defaultOutExtension.call(void 0, { format, pkgType: pkg.type }).dts;
    let dtsInputFilePath = _path2.default.join(
      declarationDir,
-@@ -2490,6 +2588,7 @@ async function rollupDtsFiles(options, exports, format) {
+@@ -2490,6 +2590,7 @@ async function rollupDtsFiles(options, exports, format) {
      formatAggregationExports(exports, declarationDir)
    );
    rollupDtsFile(
