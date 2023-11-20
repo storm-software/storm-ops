@@ -1,3 +1,10 @@
+## [1.7.34](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.33...workspace-tools-v1.7.34) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with package export lookup in tsup patch ([ba53a36](https://github.com/storm-software/storm-ops/commit/ba53a3606b60e78d0f66894c6e3bc5d116ddaacd))
+
 ## [1.7.33](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.32...workspace-tools-v1.7.33) (2023-11-20)
 
 
