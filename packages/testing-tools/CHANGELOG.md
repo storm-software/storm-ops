@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.46...testing-tools-v1.2.0) (2023-11-20)
+
+
+### Features
+
+* **workspace-tools:** Update tsup executor to generate API Report file, Doc Model, and TSDoc Metadata ([fb4cda5](https://github.com/storm-software/storm-ops/commit/fb4cda5807005d2ae412d637fa5247ebad09abf7))
+
 ## [1.1.46](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.45...testing-tools-v1.1.46) (2023-11-20)
 
 
