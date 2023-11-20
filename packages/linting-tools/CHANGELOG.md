@@ -1,3 +1,10 @@
+## [1.3.47](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.46...linting-tools-v1.3.47) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added code to default tsup build options and package.json path in api-extractor ([f79dbb1](https://github.com/storm-software/storm-ops/commit/f79dbb1d57ba7e2da054ae47483e98516739662b))
+
 ## [1.3.46](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.45...linting-tools-v1.3.46) (2023-11-20)
 
 
