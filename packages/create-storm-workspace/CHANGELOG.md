@@ -1,3 +1,10 @@
+## [1.7.37](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.36...create-storm-workspace-v1.7.37) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added missing @microsoft/api-extractor dependency for tsup DTS build ([56ab124](https://github.com/storm-software/storm-ops/commit/56ab124124275be7f66f0e9f11d64477c82bbcf5))
+
 ## [1.7.36](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.35...create-storm-workspace-v1.7.36) (2023-11-20)
 
 
