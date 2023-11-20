@@ -1,3 +1,10 @@
+## [1.4.59](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.58...@storm-software/storm-ops-v1.4.59) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resovled issue with tsup dts tsconfig path ([eefb517](https://github.com/storm-software/storm-ops/commit/eefb517fc2369ab2411911c3810e51390a4689d9))
+
 ## [1.4.58](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.57...@storm-software/storm-ops-v1.4.58) (2023-11-20)
 
 
