@@ -1,3 +1,10 @@
+## [1.1.41](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.40...testing-tools-v1.1.41) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with path library reference in tsup ([9745279](https://github.com/storm-software/storm-ops/commit/974527945816b40c8b210b06b3da16f20cb86dde))
+
 ## [1.1.40](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.39...testing-tools-v1.1.40) (2023-11-20)
 
 
