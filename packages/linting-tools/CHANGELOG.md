@@ -1,3 +1,10 @@
+## [1.3.48](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.47...linting-tools-v1.3.48) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resovled issue with tsup dts tsconfig path ([eefb517](https://github.com/storm-software/storm-ops/commit/eefb517fc2369ab2411911c3810e51390a4689d9))
+
 ## [1.3.47](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.46...linting-tools-v1.3.47) (2023-11-20)
 
 
