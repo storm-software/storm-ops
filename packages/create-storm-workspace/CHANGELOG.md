@@ -1,3 +1,10 @@
+## [1.7.31](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.30...create-storm-workspace-v1.7.31) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resovled issue with tsup dts tsconfig path ([eefb517](https://github.com/storm-software/storm-ops/commit/eefb517fc2369ab2411911c3810e51390a4689d9))
+
 ## [1.7.30](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.29...create-storm-workspace-v1.7.30) (2023-11-20)
 
 
