@@ -1,3 +1,10 @@
+## [1.4.64](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.63...@storm-software/storm-ops-v1.4.64) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with tsconfig parser parameteters in tsup patch ([f71e590](https://github.com/storm-software/storm-ops/commit/f71e59055fc2d37ba282fd041c7a60e6469c76da))
+
 ## [1.4.63](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.62...@storm-software/storm-ops-v1.4.63) (2023-11-20)
 
 
