@@ -1,3 +1,10 @@
+## [1.1.43](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.42...testing-tools-v1.1.43) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with package export lookup in tsup patch ([ba53a36](https://github.com/storm-software/storm-ops/commit/ba53a3606b60e78d0f66894c6e3bc5d116ddaacd))
+
 ## [1.1.42](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.41...testing-tools-v1.1.42) (2023-11-20)
 
 
