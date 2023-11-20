@@ -1,3 +1,10 @@
+## [1.2.55](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.54...git-tools-v1.2.55) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with package export lookup in tsup patch ([ba53a36](https://github.com/storm-software/storm-ops/commit/ba53a3606b60e78d0f66894c6e3bc5d116ddaacd))
+
 ## [1.2.54](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.53...git-tools-v1.2.54) (2023-11-20)
 
 
