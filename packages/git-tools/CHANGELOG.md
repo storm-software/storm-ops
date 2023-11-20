@@ -1,3 +1,10 @@
+## [1.2.57](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.56...git-tools-v1.2.57) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with tsconfig parser parameteters in tsup patch ([f71e590](https://github.com/storm-software/storm-ops/commit/f71e59055fc2d37ba282fd041c7a60e6469c76da))
+
 ## [1.2.56](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.55...git-tools-v1.2.56) (2023-11-20)
 
 
