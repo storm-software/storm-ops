@@ -1,3 +1,10 @@
+## [1.7.35](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.34...workspace-tools-v1.7.35) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added extra logging to tsup patch ([6c58d8a](https://github.com/storm-software/storm-ops/commit/6c58d8a369d5ee4b28804903b49ae2ea141e7abd))
+
 ## [1.7.34](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.7.33...workspace-tools-v1.7.34) (2023-11-20)
 
 
