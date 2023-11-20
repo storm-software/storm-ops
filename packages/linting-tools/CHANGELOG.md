@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.54...linting-tools-v1.4.0) (2023-11-20)
+
+
+### Features
+
+* **workspace-tools:** Update tsup executor to generate API Report file, Doc Model, and TSDoc Metadata ([fb4cda5](https://github.com/storm-software/storm-ops/commit/fb4cda5807005d2ae412d637fa5247ebad09abf7))
+
 ## [1.3.54](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.3.53...linting-tools-v1.3.54) (2023-11-20)
 
 
