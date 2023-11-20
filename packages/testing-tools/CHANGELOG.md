@@ -1,3 +1,10 @@
+## [1.1.44](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.43...testing-tools-v1.1.44) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added extra logging to tsup patch ([6c58d8a](https://github.com/storm-software/storm-ops/commit/6c58d8a369d5ee4b28804903b49ae2ea141e7abd))
+
 ## [1.1.43](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.42...testing-tools-v1.1.43) (2023-11-20)
 
 

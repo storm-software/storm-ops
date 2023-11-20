@@ -1,3 +1,10 @@
+## [1.2.56](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.55...git-tools-v1.2.56) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added extra logging to tsup patch ([6c58d8a](https://github.com/storm-software/storm-ops/commit/6c58d8a369d5ee4b28804903b49ae2ea141e7abd))
+
 ## [1.2.55](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.54...git-tools-v1.2.55) (2023-11-20)
 
 
