@@ -1,3 +1,10 @@
+## [1.4.60](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.59...@storm-software/storm-ops-v1.4.60) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with path library reference in tsup ([9745279](https://github.com/storm-software/storm-ops/commit/974527945816b40c8b210b06b3da16f20cb86dde))
+
 ## [1.4.59](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.4.58...@storm-software/storm-ops-v1.4.59) (2023-11-20)
 
 
