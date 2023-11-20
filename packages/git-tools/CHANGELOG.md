@@ -1,3 +1,10 @@
+## [1.2.50](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.49...git-tools-v1.2.50) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Prevent both dts and experimentalDts from being enabled ([c2e5082](https://github.com/storm-software/storm-ops/commit/c2e50822440564f27e7f387e0e936c07092b4653))
+
 ## [1.2.49](https://github.com/storm-software/storm-ops/compare/git-tools-v1.2.48...git-tools-v1.2.49) (2023-11-19)
 
 

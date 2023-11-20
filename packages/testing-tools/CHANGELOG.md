@@ -1,3 +1,10 @@
+## [1.1.38](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.37...testing-tools-v1.1.38) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Prevent both dts and experimentalDts from being enabled ([c2e5082](https://github.com/storm-software/storm-ops/commit/c2e50822440564f27e7f387e0e936c07092b4653))
+
 ## [1.1.37](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.1.36...testing-tools-v1.1.37) (2023-11-19)
 
 
