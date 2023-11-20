@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.37...create-storm-workspace-v1.8.0) (2023-11-20)
+
+
+### Features
+
+* **workspace-tools:** Update tsup executor to generate API Report file, Doc Model, and TSDoc Metadata ([fb4cda5](https://github.com/storm-software/storm-ops/commit/fb4cda5807005d2ae412d637fa5247ebad09abf7))
+
 ## [1.7.37](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.36...create-storm-workspace-v1.7.37) (2023-11-20)
 
 
