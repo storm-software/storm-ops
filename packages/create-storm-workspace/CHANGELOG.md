@@ -1,3 +1,10 @@
+## [1.7.29](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.28...create-storm-workspace-v1.7.29) (2023-11-20)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added env option to the tsup executor config ([80e4e84](https://github.com/storm-software/storm-ops/commit/80e4e84d130bd7275a7b104d8f589d906c9f92ac))
+
 ## [1.7.28](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.7.27...create-storm-workspace-v1.7.28) (2023-11-20)
 
 
