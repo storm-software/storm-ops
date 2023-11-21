@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/storm-software/storm-ops/compare/git-tools-v1.3.3...git-tools-v1.3.4) (2023-11-21)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with `tsdocMetadataFilePath` option ([e1e8b59](https://github.com/storm-software/storm-ops/commit/e1e8b59c853580ea5deb5175cad6971953878f18))
+
 ## [1.3.3](https://github.com/storm-software/storm-ops/compare/git-tools-v1.3.2...git-tools-v1.3.3) (2023-11-21)
 
 
