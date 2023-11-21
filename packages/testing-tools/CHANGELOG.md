@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.2.3...testing-tools-v1.2.4) (2023-11-21)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with `tsdocMetadataFilePath` option ([e1e8b59](https://github.com/storm-software/storm-ops/commit/e1e8b59c853580ea5deb5175cad6971953878f18))
+
 ## [1.2.3](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.2.2...testing-tools-v1.2.3) (2023-11-21)
 
 
