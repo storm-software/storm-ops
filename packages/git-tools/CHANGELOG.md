@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.5.0...git-tools-v1.5.1) (2023-11-21)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issues with api-extractors paths ([8ea88f0](https://github.com/storm-software/storm-ops/commit/8ea88f09c240a94533474436dbac50bdabd26b2a))
+
 # [1.5.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.4.0...git-tools-v1.5.0) (2023-11-21)
 
 
