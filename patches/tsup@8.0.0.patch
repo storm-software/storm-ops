@@ -51,7 +51,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..c88e541262ba18e25573b1879e447ac9
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..1f36977f9d966927288a4262c87e57620e4a2644 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..4e36f9a6756af30339331b7b54203d4bd7678806 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1603,6 +1603,36 @@ var generateExternal = async (external) => {
@@ -242,7 +242,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..1f36977f9d966927288a4262c87e5762
      logger.success("tsc", `\u26A1\uFE0F Build success in ${getDuration()}`);
      return exports;
    } catch (error) {
-@@ -2428,32 +2497,71 @@ function formatDistributionExport(declaration, dest) {
+@@ -2428,32 +2497,75 @@ function formatDistributionExport(declaration, dest) {
  
  // src/api-extractor.ts
  var logger2 = _chunk7G76EW2Rjs.createLogger.call(void 0, );
@@ -269,6 +269,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..1f36977f9d966927288a4262c87e5762
 +    packageName = splits[splits.length - 2];
 +  }
 +  const apiReferenceProjectDir = _path2.default.join("<projectFolder>",
++    pkgPath,
 +    "api-reports");
 +    
    let configObject = {
@@ -295,8 +296,10 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..1f36977f9d966927288a4262c87e5762
 -      untrimmedFilePath: outputFilePath
 +      untrimmedFilePath: outputFilePath,
 +      betaTrimmedFilePath: _path2.default.join("<projectFolder>", 
++        options.outDir,
 +        `index-beta.d.ts`),
 +      publicTrimmedFilePath: _path2.default.join("<projectFolder>", 
++        options.outDir, 
 +        `index-public.d.ts`)
 +    },
 +    tsdocMetadata: { 
@@ -307,11 +310,12 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..1f36977f9d966927288a4262c87e5762
      },
 -    tsdocMetadata: { enabled: false },
      compiler: {
-       tsconfigFilePath
+-      tsconfigFilePath
++      tsconfigFilePath: _path2.default.join("<projectFolder>", 
++        tsconfigFilePath.replace(options.workspaceRoot, ""))
      },
 -    projectFolder: cwd
-+    projectFolder: _path2.default.join(options.workspaceRoot,
-+      pkgPath)
++    projectFolder: _path2.default.join("..", "..", "..", "..", "..", "..")
    };
 +
    const prepareOptions = {
@@ -319,12 +323,13 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..1f36977f9d966927288a4262c87e5762
      configObjectFullPath: void 0,
      packageJsonFullPath
    };
++  logger2.info("dts", `⚡ Current Directory: ${__dirname}`);
 +  logger2.info("dts", "⚡ Running API Extractor with the following config: \n", prepareOptions);
 +
    const imported = _chunkGQ77QZBOjs.getApiExtractor.call(void 0, );
    if (!imported) {
      throw new Error(
-@@ -2477,21 +2585,27 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+@@ -2477,21 +2589,30 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
  async function rollupDtsFiles(options, exports, format) {
    let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
    let outDir = options.outDir || "dist";
@@ -337,21 +342,25 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..1f36977f9d966927288a4262c87e5762
    let dtsExtension = _chunkGQ77QZBOjs.defaultOutExtension.call(void 0, { format, pkgType: pkg.type }).dts;
    let dtsInputFilePath = _path2.default.join(
      declarationDir,
++    outDir.replace(pkgPath, ""),
      "_tsup-dts-aggregation" + dtsExtension
    );
    dtsInputFilePath = dtsInputFilePath.replace(/\.d\.mts$/, ".dmts.d.ts").replace(/\.d\.cts$/, ".dcts.d.ts");
 -  let dtsOutputFilePath = _path2.default.join(outDir, "_tsup-dts-rollup" + dtsExtension);
-+  let dtsOutputFilePath = _path2.default.join(pkgPath, "index" + dtsExtension);
++  let dtsOutputFilePath = _path2.default.join(outDir, "index" + dtsExtension);
    _chunkGQ77QZBOjs.writeFileSync.call(void 0, 
      dtsInputFilePath,
      formatAggregationExports(exports, declarationDir)
    );
    rollupDtsFile(
-+    options,
-     dtsInputFilePath,
+-    dtsInputFilePath,
 -    dtsOutputFilePath,
++    options,
 +    _path2.default.join("<projectFolder>", 
-+        `index${dtsExtension}`),
++      dtsInputFilePath.replace(options.workspaceRoot, "")),
++    _path2.default.join("<projectFolder>", 
++      options.outDir,
++      `index${dtsExtension}`),
      options.tsconfig || "tsconfig.json"
    );
    for (let [out, sourceFileName] of Object.entries(
