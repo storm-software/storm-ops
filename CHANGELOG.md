@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.7.0...@storm-software/storm-ops-v1.7.1) (2023-11-21)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issues with api-extractors paths ([8ea88f0](https://github.com/storm-software/storm-ops/commit/8ea88f09c240a94533474436dbac50bdabd26b2a))
+
 # [1.7.0](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.6.0...@storm-software/storm-ops-v1.7.0) (2023-11-21)
 
 
