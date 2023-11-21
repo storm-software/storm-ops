@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.5.2...@storm-software/storm-ops-v1.5.3) (2023-11-21)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with path separator character in tsup ([ea97d60](https://github.com/storm-software/storm-ops/commit/ea97d60bec1d966bbda5edffcc9f7edb8e488c27))
+
 ## [1.5.2](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.5.1...@storm-software/storm-ops-v1.5.2) (2023-11-20)
 
 
