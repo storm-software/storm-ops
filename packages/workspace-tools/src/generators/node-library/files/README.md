@@ -3,6 +3,8 @@
 
 # <%= name %>
 
+<%= description %>
+
 <!-- START doctoc -->
 <!-- END doctoc -->
 

@@ -6,13 +6,22 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "Library name.",
+      "description": "A name for the library.",
       "$default": {
         "$source": "argv",
         "index": 0
       },
       "x-prompt": "What name would you like to use for the library?",
       "pattern": "(?:^@[a-zA-Z0-9-*~][a-zA-Z0-9-*._~]*\\/[a-zA-Z0-9-~][a-zA-Z0-9-._~]*|^[a-zA-Z][^:]*)$"
+    },
+    "description": {
+      "type": "string",
+      "description": "The library used by Storm Software for building TypeScript applications.",
+      "$default": {
+        "$source": "argv",
+        "index": 2
+      },
+      "x-prompt": "Provide description to use as a summary of the library?"
     },
     "directory": {
       "type": "string",
@@ -61,5 +70,12 @@
       "description": "Is the current project the root project in the workspace."
     }
   },
-  "required": ["name"]
+  "required": [
+    "name",
+    "directory",
+    "projectNameAndRootFormat",
+    "publishable",
+    "importPath",
+    "buildable"
+  ]
 }

@@ -18,4 +18,5 @@ export type NodeLibraryGeneratorSchema = Omit<
   | "minimal"
 > & {
   name: string;
+  description: string;
 };

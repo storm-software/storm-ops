@@ -78,14 +78,17 @@ export async function nodeLibraryGenerator(
           outputPath: getOutputPath(options),
           tsConfig: joinPathFragments(options.projectRoot, "tsconfig.json"),
           project: joinPathFragments(options.projectRoot, "package.json"),
-          defaultConfiguration: "production"
+          defaultConfiguration: "production",
+          platform: "node"
         },
         configurations: {
           production: {
-            debug: false
+            debug: false,
+            verbose: false
           },
           development: {
-            debug: true
+            debug: true,
+            verbose: true
           }
         }
       },
@@ -115,6 +118,7 @@ export async function nodeLibraryGenerator(
   };
 
   let description =
+    schema.description ??
     "⚡ A Storm package used to create modern, scalable web applications.";
 
   if (tree.exists("package.json")) {
