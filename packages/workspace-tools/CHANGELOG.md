@@ -1,3 +1,10 @@
+## [1.8.5](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.8.4...workspace-tools-v1.8.5) (2023-11-21)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated paths of generated api-reports ([c79d65e](https://github.com/storm-software/storm-ops/commit/c79d65e8a77c4801f20934e4cc733817f60d1aa2))
+
 ## [1.8.4](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.8.3...workspace-tools-v1.8.4) (2023-11-21)
 
 
