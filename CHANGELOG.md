@@ -1,3 +1,10 @@
+## [1.5.4](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.5.3...@storm-software/storm-ops-v1.5.4) (2023-11-21)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with `tsdocMetadataFilePath` option ([e1e8b59](https://github.com/storm-software/storm-ops/commit/e1e8b59c853580ea5deb5175cad6971953878f18))
+
 ## [1.5.3](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.5.2...@storm-software/storm-ops-v1.5.3) (2023-11-21)
 
 
