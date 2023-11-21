@@ -51,7 +51,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..c88e541262ba18e25573b1879e447ac9
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..f528f6e14ebaeec47abc54642e1a0dc83c389583 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..87c85b3c98ee16d26bf10dcd1dc96c3133836101 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1603,6 +1603,36 @@ var generateExternal = async (external) => {
@@ -177,10 +177,10 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..f528f6e14ebaeec47abc54642e1a0dc8
    if (!rawTsconfig) {
 -    throw new Error(`Unable to find ${tsconfig || "tsconfig.json"} in ${cwd}`);
 +    throw new Error(`Unable to find ${tsconfig || "tsconfig.json"}`);
-+  }
+   }
 +  if (!rawTsconfig.data) {
 +    rawTsconfig.data = {};
-   }
++  }
 +  if (!rawTsconfig.data.compilerOptions) {
 +    rawTsconfig.data.compilerOptions = {};
 +  }
@@ -242,7 +242,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..f528f6e14ebaeec47abc54642e1a0dc8
      logger.success("tsc", `\u26A1\uFE0F Build success in ${getDuration()}`);
      return exports;
    } catch (error) {
-@@ -2428,32 +2497,72 @@ function formatDistributionExport(declaration, dest) {
+@@ -2428,32 +2497,73 @@ function formatDistributionExport(declaration, dest) {
  
  // src/api-extractor.ts
  var logger2 = _chunk7G76EW2Rjs.createLogger.call(void 0, );
@@ -260,16 +260,17 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..f528f6e14ebaeec47abc54642e1a0dc8
 +  let packageJsonFullPath = options.workspaceRoot 
 +    ? _path2.default.join(options.workspaceRoot, pkgPath, "package.json")
 +    : _path2.default.join(pkgPath, "package.json");
++
 +  const splits = pkgPath.split("\\");
++  logger2.info("dts", splits);
 +
 +  let packageName = pkgPath;
-+  if (splits.length > 1) {
-+    packageName = splits[splits.length - 1];
++  if (splits.length > 2) {
++    packageName = splits[splits.length - 2];
 +  }
 +  const apiReferenceProjectDir = _path2.default.join("<projectFolder>",
-+    "docs", 
-+    "api-reports", 
-+    options.projectRoot);
++    pkgPath, 
++    "api-reports");
 +    
    let configObject = {
      mainEntryPointFilePath: inputFilePath,
@@ -325,12 +326,12 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..f528f6e14ebaeec47abc54642e1a0dc8
    const imported = _chunkGQ77QZBOjs.getApiExtractor.call(void 0, );
    if (!imported) {
      throw new Error(
-@@ -2477,7 +2586,11 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+@@ -2477,19 +2587,24 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
  async function rollupDtsFiles(options, exports, format) {
    let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
    let outDir = options.outDir || "dist";
 -  let pkg = await _chunk7G76EW2Rjs.loadPkg.call(void 0, process.cwd());
-+  let pkgPath = packageJsonSearch(outDir, false, "dts", logger2);
++  let pkgPath = packageJsonSearch(outDir, options.silent, "dts", logger2);
 +
 +  logger2.info("dts", `⚡ Preparing to run Rollup (DTS generate): ${pkgPath}`);
 +  let pkg = await _chunk7G76EW2Rjs.loadPkg.call(void 0, pkgPath);
@@ -338,7 +339,13 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..f528f6e14ebaeec47abc54642e1a0dc8
    let dtsExtension = _chunkGQ77QZBOjs.defaultOutExtension.call(void 0, { format, pkgType: pkg.type }).dts;
    let dtsInputFilePath = _path2.default.join(
      declarationDir,
-@@ -2490,6 +2603,7 @@ async function rollupDtsFiles(options, exports, format) {
+     "_tsup-dts-aggregation" + dtsExtension
+   );
+   dtsInputFilePath = dtsInputFilePath.replace(/\.d\.mts$/, ".dmts.d.ts").replace(/\.d\.cts$/, ".dcts.d.ts");
+-  let dtsOutputFilePath = _path2.default.join(outDir, "_tsup-dts-rollup" + dtsExtension);
++  let dtsOutputFilePath = _path2.default.join(pkgPath, "_tsup-dts-rollup" + dtsExtension);
+   _chunkGQ77QZBOjs.writeFileSync.call(void 0, 
+     dtsInputFilePath,
      formatAggregationExports(exports, declarationDir)
    );
    rollupDtsFile(
