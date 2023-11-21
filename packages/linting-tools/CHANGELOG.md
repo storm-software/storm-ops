@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.4.5...linting-tools-v1.5.0) (2023-11-21)
+
+
+### Features
+
+* **workspace-tools:** Added `description` as an option in the node-library generator ([7a8eb85](https://github.com/storm-software/storm-ops/commit/7a8eb851ae7d979bb32c250ed3a1c78ea5b65af9))
+
 ## [1.4.5](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.4.4...linting-tools-v1.4.5) (2023-11-21)
 
 
