@@ -3,7 +3,6 @@ import { Options } from "tsup";
 
 export type TsupExecutorSchema = Omit<
   EsBuildExecutorOptions,
-  | "main"
   | "outputFileName"
   | "metafile"
   | "generatePackageJson"

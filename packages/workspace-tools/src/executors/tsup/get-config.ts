@@ -12,7 +12,7 @@ export type TsupGetConfigOptions = Omit<TsupExecutorSchema, "banner"> & {
 
 type GetConfigParams = Omit<
   TsupGetConfigOptions,
-  "entry" | "assets" | "clean" | "outputPath" | "tsConfig"
+  "entry" | "assets" | "clean" | "outputPath" | "tsConfig" | "main"
 > & {
   entry: Entry;
   outDir: string;
@@ -141,6 +141,7 @@ export function getConfig(
   projectRoot: string,
   sourceRoot: string,
   {
+    main,
     outputPath,
     tsConfig,
     debug,
@@ -157,14 +158,9 @@ export function getConfig(
     verbose
   }: TsupGetConfigOptions
 ) {
-  const entry = globSync(
-    [
-      joinPathFragments(sourceRoot, "**/*.ts"),
-      joinPathFragments(sourceRoot, "**/*.tsx"),
-      ...(additionalEntryPoints ?? [])
-    ],
-    { withFileTypes: true }
-  ).reduce((ret, filePath: Path) => {
+  const entry = globSync([main, ...(additionalEntryPoints ?? [])], {
+    withFileTypes: true
+  }).reduce((ret, filePath: Path) => {
     ret[removeExtension(filePath.name)] = joinPathFragments(
       filePath.path,
       filePath.name

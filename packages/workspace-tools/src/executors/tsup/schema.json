@@ -6,6 +6,11 @@
   "type": "object",
   "properties": {
     "properties": {
+      "main": {
+        "type": "string",
+        "description": "The path to the entry file, relative to project.",
+        "default": "src/index.ts"
+      },
       "outputPath": {
         "type": "string",
         "description": "The output path of the generated files.",

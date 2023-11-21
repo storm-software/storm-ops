@@ -34,6 +34,7 @@ export default async function runExecutor(
 
     // #region Apply default options
 
+    options.main ??= "src/index.ts";
     options.outputPath ??= "dist/{projectRoot}";
     options.tsConfig ??= "tsconfig.json";
     options.banner ??= process.env.STORM_FILE_BANNER;

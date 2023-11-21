@@ -51,7 +51,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..c88e541262ba18e25573b1879e447ac9
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..710c8225574a0c4369f1aeb92f8dd237b9a29150 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..1f36977f9d966927288a4262c87e57620e4a2644 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1603,6 +1603,36 @@ var generateExternal = async (external) => {
@@ -324,7 +324,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..710c8225574a0c4369f1aeb92f8dd237
    const imported = _chunkGQ77QZBOjs.getApiExtractor.call(void 0, );
    if (!imported) {
      throw new Error(
-@@ -2477,19 +2585,24 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+@@ -2477,21 +2585,27 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
  async function rollupDtsFiles(options, exports, format) {
    let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
    let outDir = options.outDir || "dist";
@@ -349,8 +349,12 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..710c8225574a0c4369f1aeb92f8dd237
    rollupDtsFile(
 +    options,
      dtsInputFilePath,
-     dtsOutputFilePath,
+-    dtsOutputFilePath,
++    _path2.default.join("<projectFolder>", 
++        `index${dtsExtension}`),
      options.tsconfig || "tsconfig.json"
+   );
+   for (let [out, sourceFileName] of Object.entries(
 diff --git a/schema.json b/schema.json
 deleted file mode 100644
 index 0402482e7915288e66615aec6ee51d46250af832..0000000000000000000000000000000000000000
