@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.5.0...linting-tools-v1.6.0) (2023-11-21)
+
+
+### Features
+
+* **workspace-tools:** Added the `main` option to tsup build support manually entered entry paths ([fcb0fa7](https://github.com/storm-software/storm-ops/commit/fcb0fa7b98a8ed9bf14f9b724d9d9c7f345b7a08))
+
 # [1.5.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.4.5...linting-tools-v1.5.0) (2023-11-21)
 
 
