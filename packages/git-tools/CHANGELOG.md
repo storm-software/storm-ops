@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/storm-software/storm-ops/compare/git-tools-v1.3.2...git-tools-v1.3.3) (2023-11-21)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with path separator character in tsup ([ea97d60](https://github.com/storm-software/storm-ops/commit/ea97d60bec1d966bbda5edffcc9f7edb8e488c27))
+
 ## [1.3.2](https://github.com/storm-software/storm-ops/compare/git-tools-v1.3.1...git-tools-v1.3.2) (2023-11-20)
 
 
