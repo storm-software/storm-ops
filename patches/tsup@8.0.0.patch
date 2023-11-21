@@ -1,3 +1,15 @@
+diff --git a/LICENSE b/LICENSE
+deleted file mode 100644
+index 6b47a140691dd9daca407e3cab8e51c04fd119aa..0000000000000000000000000000000000000000
+diff --git a/assets/cjs_shims.js b/assets/cjs_shims.js
+deleted file mode 100644
+index bcd355e87060dbbac60702442a11e731973407e1..0000000000000000000000000000000000000000
+diff --git a/assets/esm_shims.js b/assets/esm_shims.js
+deleted file mode 100644
+index c238cb3317b5300d9fc7b3672ad859241f9bfd58..0000000000000000000000000000000000000000
+diff --git a/assets/package.json b/assets/package.json
+deleted file mode 100644
+index a43829151e1423f0641beb1f114773f1c67fda72..0000000000000000000000000000000000000000
 diff --git a/dist/chunk-GQ77QZBO.js b/dist/chunk-GQ77QZBO.js
 index 6040ec0707ad57b89834936e19bead6c8014ff6f..c2e972d5b653c6b2a413ac1ef51dc9e30f208256 100644
 --- a/dist/chunk-GQ77QZBO.js
@@ -39,7 +51,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..c88e541262ba18e25573b1879e447ac9
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..9819db95a56082af6ac850a3b0e3b38102cd9548 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..b42c39e95e04a602223d4af5f1967a5e9b0dfb22 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1603,6 +1603,36 @@ var generateExternal = async (external) => {
@@ -248,7 +260,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..9819db95a56082af6ac850a3b0e3b381
 +  let packageJsonFullPath = options.workspaceRoot 
 +    ? _path2.default.join(options.workspaceRoot, pkgPath, "package.json")
 +    : _path2.default.join(pkgPath, "package.json");
-+  const splits = pkgPath.split("/");
++  const splits = pkgPath.split("\\");
 +
 +  let packageName = pkgPath;
 +  if (splits.length > 1) {
@@ -334,3 +346,6 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..9819db95a56082af6ac850a3b0e3b381
      dtsInputFilePath,
      dtsOutputFilePath,
      options.tsconfig || "tsconfig.json"
+diff --git a/schema.json b/schema.json
+deleted file mode 100644
+index 0402482e7915288e66615aec6ee51d46250af832..0000000000000000000000000000000000000000
