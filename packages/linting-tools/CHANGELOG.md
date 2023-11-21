@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.4.2...linting-tools-v1.4.3) (2023-11-21)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with path separator character in tsup ([ea97d60](https://github.com/storm-software/storm-ops/commit/ea97d60bec1d966bbda5edffcc9f7edb8e488c27))
+
 ## [1.4.2](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.4.1...linting-tools-v1.4.2) (2023-11-20)
 
 
