@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.6.0...@storm-software/storm-ops-v1.7.0) (2023-11-21)
+
+
+### Features
+
+* **workspace-tools:** Added the `main` option to tsup build support manually entered entry paths ([fcb0fa7](https://github.com/storm-software/storm-ops/commit/fcb0fa7b98a8ed9bf14f9b724d9d9c7f345b7a08))
+
 # [1.6.0](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.5.5...@storm-software/storm-ops-v1.6.0) (2023-11-21)
 
 
