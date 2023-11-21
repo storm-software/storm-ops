@@ -1,3 +1,10 @@
+## [1.5.5](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.5.4...@storm-software/storm-ops-v1.5.5) (2023-11-21)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated paths of generated api-reports ([c79d65e](https://github.com/storm-software/storm-ops/commit/c79d65e8a77c4801f20934e4cc733817f60d1aa2))
+
 ## [1.5.4](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.5.3...@storm-software/storm-ops-v1.5.4) (2023-11-21)
 
 
