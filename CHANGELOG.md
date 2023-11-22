@@ -1,3 +1,10 @@
+## [1.7.9](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.7.8...@storm-software/storm-ops-v1.7.9) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update generated tsconfig include to point to package root ([49aef81](https://github.com/storm-software/storm-ops/commit/49aef8178bb8a2c71e92ee3785358d42507eee56))
+
 ## [1.7.8](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.7.7...@storm-software/storm-ops-v1.7.8) (2023-11-22)
 
 

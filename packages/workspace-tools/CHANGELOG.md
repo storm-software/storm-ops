@@ -1,3 +1,10 @@
+## [1.10.10](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.10.9...workspace-tools-v1.10.10) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update generated tsconfig include to point to package root ([49aef81](https://github.com/storm-software/storm-ops/commit/49aef8178bb8a2c71e92ee3785358d42507eee56))
+
 ## [1.10.9](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.10.8...workspace-tools-v1.10.9) (2023-11-22)
 
 
