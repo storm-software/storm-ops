@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.4.1...testing-tools-v1.4.2) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the `projectFolder` option passed to api-extractor ([fb0c939](https://github.com/storm-software/storm-ops/commit/fb0c939122c19947bebfbebdea153cbabc3335cc))
+
 ## [1.4.1](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.4.0...testing-tools-v1.4.1) (2023-11-21)
 
 
