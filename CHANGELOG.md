@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.7.1...@storm-software/storm-ops-v1.7.2) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the `projectFolder` option passed to api-extractor ([fb0c939](https://github.com/storm-software/storm-ops/commit/fb0c939122c19947bebfbebdea153cbabc3335cc))
+
 ## [1.7.1](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.7.0...@storm-software/storm-ops-v1.7.1) (2023-11-21)
 
 
