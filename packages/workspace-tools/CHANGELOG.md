@@ -1,3 +1,10 @@
+## [1.10.9](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.10.8...workspace-tools-v1.10.9) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve include issue with tsc during tsup build ([a6fffbe](https://github.com/storm-software/storm-ops/commit/a6fffbe881cb4f05f974de0b745157a0cfb8dcf6))
+
 ## [1.10.8](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.10.7...workspace-tools-v1.10.8) (2023-11-22)
 
 
