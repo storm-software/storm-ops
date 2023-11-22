@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.4.5...testing-tools-v1.4.6) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed overriden tsconfig for api-extractor ([fcece07](https://github.com/storm-software/storm-ops/commit/fcece076bca3b0bd9938a4f5fbf3717628085ac3))
+
 ## [1.4.5](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.4.4...testing-tools-v1.4.5) (2023-11-22)
 
 
