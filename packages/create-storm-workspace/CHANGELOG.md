@@ -1,3 +1,10 @@
+## [1.10.2](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.1...create-storm-workspace-v1.10.2) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the `projectFolder` option passed to api-extractor ([fb0c939](https://github.com/storm-software/storm-ops/commit/fb0c939122c19947bebfbebdea153cbabc3335cc))
+
 ## [1.10.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.0...create-storm-workspace-v1.10.1) (2023-11-21)
 
 
