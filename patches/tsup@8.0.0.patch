@@ -51,7 +51,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..c88e541262ba18e25573b1879e447ac9
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..33ea164d8b56a0151519e46f60b53d02525736d4 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..4eba45ef4db8cdbbeac3aa1c0e5a2c926e7ea870 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1603,6 +1603,36 @@ var generateExternal = async (external) => {
@@ -140,7 +140,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..33ea164d8b56a0151519e46f60b53d02
        minify: options.minify === "terser" ? false : options.minify,
        minifyWhitespace: options.minifyWhitespace,
        minifyIdentifiers: options.minifyIdentifiers,
-@@ -2196,13 +2236,17 @@ var AliasPool = (_class = class {constructor() { _class.prototype.__init.call(th
+@@ -2196,13 +2236,19 @@ var AliasPool = (_class = class {constructor() { _class.prototype.__init.call(th
      return alias;
    }
  }, _class);
@@ -150,7 +150,9 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..33ea164d8b56a0151519e46f60b53d02
    let aliasPool = new AliasPool();
    let assignAlias = aliasPool.assign.bind(aliasPool);
 +
-+  const packagePath = _path.join(program.getCurrentDirectory(), 
++  const packagePath = _path.join(options.workspaceRoot 
++      ? options.workspaceRoot 
++      : program.getCurrentDirectory(), 
 +    packageJsonSearch(options.outDir, options.silent, "dts", logger));
 +  logger.info("dts", `⚡ Getting Exports (DTS generate): ${packagePath}`);
 +
@@ -161,7 +163,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..33ea164d8b56a0151519e46f60b53d02
      const sourceFile = program.getSourceFile(sourceFileName);
      if (!sourceFile) {
        return [];
-@@ -2287,18 +2331,34 @@ function emitDtsFiles(program, host) {
+@@ -2287,38 +2333,67 @@ function emitDtsFiles(program, host) {
    }
    return fileMapping;
  }
@@ -174,16 +176,19 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..33ea164d8b56a0151519e46f60b53d02
 +  let rawTsconfig = _bundlerequire.loadTsConfig.call(void 0, 
 +    _path.dirname.call(void 0, tsconfig), 
 +    _path.basename.call(void 0, tsconfig));
++
    if (!rawTsconfig) {
 -    throw new Error(`Unable to find ${tsconfig || "tsconfig.json"} in ${cwd}`);
 +    throw new Error(`Unable to find ${tsconfig || "tsconfig.json"}`);
 +  }
 +  if (!rawTsconfig.data) {
 +    rawTsconfig.data = {};
-   }
++  }
 +  if (!rawTsconfig.data.compilerOptions) {
 +    rawTsconfig.data.compilerOptions = {};
-+  }
+   }
++
++  const packagePath = packageJsonSearch(options.outDir, options.silent, "dts", logger);
 +
 +  logger.info("tsc", "Getting temporary declaration directory");
    let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
@@ -201,8 +206,12 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..33ea164d8b56a0151519e46f60b53d02
          // Enable declaration emit and disable javascript emit
          noEmit: false,
          declaration: true,
-@@ -2308,17 +2368,26 @@ function emit(compilerOptions, tsconfig) {
-       }
+         declarationMap: true,
+         declarationDir,
+         emitDeclarationOnly: true
+-      }
++      },
++      include: [ ...rawTsconfig.data.include, _path.join(packagePath, "**/*") ],
      },
      _typescript2.default.sys,
 -    tsconfig ? _path.dirname.call(void 0, tsconfig) : "./"
@@ -233,16 +242,20 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..33ea164d8b56a0151519e46f60b53d02
  }
  function runTypeScriptCompiler(options) {
    try {
-@@ -2328,7 +2397,7 @@ function runTypeScriptCompiler(options) {
+@@ -2326,9 +2401,11 @@ function runTypeScriptCompiler(options) {
+     const getDuration = () => {
+       return `${Math.floor(Date.now() - start)}ms`;
      };
++
      logger.info("tsc", "Build start");
      const dtsOptions = options.experimentalDts;
 -    const exports = emit(dtsOptions.compilerOptions, options.tsconfig);
 +    const exports = emit(options, dtsOptions.compilerOptions, options.tsconfig);
++
      logger.success("tsc", `\u26A1\uFE0F Build success in ${getDuration()}`);
      return exports;
    } catch (error) {
-@@ -2428,40 +2497,91 @@ function formatDistributionExport(declaration, dest) {
+@@ -2428,40 +2505,91 @@ function formatDistributionExport(declaration, dest) {
  
  // src/api-extractor.ts
  var logger2 = _chunk7G76EW2Rjs.createLogger.call(void 0, );
@@ -344,7 +357,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..33ea164d8b56a0151519e46f60b53d02
    const extractorResult = Extractor.invoke(extractorConfig, {
      // Equivalent to the "--local" command-line parameter
      localBuild: true,
-@@ -2477,31 +2597,49 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+@@ -2477,31 +2605,49 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
  async function rollupDtsFiles(options, exports, format) {
    let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
    let outDir = options.outDir || "dist";

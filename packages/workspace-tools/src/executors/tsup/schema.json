@@ -6,7 +6,7 @@
   "type": "object",
   "properties": {
     "properties": {
-      "main": {
+      "entry": {
         "type": "string",
         "description": "The path to the entry file, relative to project."
       },

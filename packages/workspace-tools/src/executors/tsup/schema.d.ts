@@ -16,7 +16,7 @@ export type TsupExecutorSchema = Omit<
   | "esbuildOptions"
   | "esbuildConfig"
 > & {
-  main?: string;
+  entry?: string;
   options: Options;
   clean: boolean;
   debug: boolean;

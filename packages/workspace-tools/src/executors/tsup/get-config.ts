@@ -141,7 +141,6 @@ export function getConfig(
   projectRoot: string,
   sourceRoot: string,
   {
-    main,
     outputPath,
     tsConfig,
     debug,
@@ -155,11 +154,12 @@ export function getConfig(
     tsdocMetadata,
     define,
     env,
-    verbose
+    verbose,
+    ...rest
   }: TsupGetConfigOptions
 ) {
   const entry = globSync(
-    [main ? main : sourceRoot, ...(additionalEntryPoints ?? [])],
+    [rest.entry ? rest.entry : sourceRoot, ...(additionalEntryPoints ?? [])],
     {
       withFileTypes: true
     }
