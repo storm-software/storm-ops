@@ -1,3 +1,10 @@
+## [1.10.3](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.2...create-storm-workspace-v1.10.3) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Add default tsconfig values for api-extractor ([ae43e3f](https://github.com/storm-software/storm-ops/commit/ae43e3f47636a8921ace3441da5d533fa9773fe1))
+
 ## [1.10.2](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.1...create-storm-workspace-v1.10.2) (2023-11-22)
 
 
