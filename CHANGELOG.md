@@ -1,3 +1,10 @@
+## [1.7.5](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.7.4...@storm-software/storm-ops-v1.7.5) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Correctly formatted include path in tsconfig passed to api extractor ([4c65fcf](https://github.com/storm-software/storm-ops/commit/4c65fcfb109f21f854ba5d6973e00bbc6e5c5173))
+
 ## [1.7.4](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.7.3...@storm-software/storm-ops-v1.7.4) (2023-11-22)
 
 
