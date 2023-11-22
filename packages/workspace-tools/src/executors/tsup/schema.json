@@ -8,8 +8,7 @@
     "properties": {
       "main": {
         "type": "string",
-        "description": "The path to the entry file, relative to project.",
-        "default": "src/index.ts"
+        "description": "The path to the entry file, relative to project."
       },
       "outputPath": {
         "type": "string",

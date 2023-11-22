@@ -3,6 +3,7 @@ import { Options } from "tsup";
 
 export type TsupExecutorSchema = Omit<
   EsBuildExecutorOptions,
+  | "main"
   | "outputFileName"
   | "metafile"
   | "generatePackageJson"
@@ -15,6 +16,7 @@ export type TsupExecutorSchema = Omit<
   | "esbuildOptions"
   | "esbuildConfig"
 > & {
+  main?: string;
   options: Options;
   clean: boolean;
   debug: boolean;
