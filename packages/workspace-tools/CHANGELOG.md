@@ -1,3 +1,10 @@
+## [1.10.8](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.10.7...workspace-tools-v1.10.8) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue around incorrect output mapping in api-extractor ([b0464ed](https://github.com/storm-software/storm-ops/commit/b0464ed5f4b1f91a5b4c21d00e29d770d5732582))
+
 ## [1.10.7](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.10.6...workspace-tools-v1.10.7) (2023-11-22)
 
 
