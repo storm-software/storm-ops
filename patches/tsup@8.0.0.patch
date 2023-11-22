@@ -51,7 +51,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..c88e541262ba18e25573b1879e447ac9
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..4e36f9a6756af30339331b7b54203d4bd7678806 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..417c504089165d4c35599b2869ffb434131dc1ba 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1603,6 +1603,36 @@ var generateExternal = async (external) => {
@@ -242,7 +242,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..4e36f9a6756af30339331b7b54203d4b
      logger.success("tsc", `\u26A1\uFE0F Build success in ${getDuration()}`);
      return exports;
    } catch (error) {
-@@ -2428,32 +2497,75 @@ function formatDistributionExport(declaration, dest) {
+@@ -2428,32 +2497,74 @@ function formatDistributionExport(declaration, dest) {
  
  // src/api-extractor.ts
  var logger2 = _chunk7G76EW2Rjs.createLogger.call(void 0, );
@@ -304,8 +304,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..4e36f9a6756af30339331b7b54203d4b
 +    },
 +    tsdocMetadata: { 
 +      enabled: options.tsdocMetadata !== false,
-+      tsdocMetadataFilePath: _path2.default.join(
-+        apiReferenceProjectDir, 
++      tsdocMetadataFilePath: _path2.default.join(apiReferenceProjectDir, 
 +        `${packageName}.api.tsdoc-metadata.json`) 
      },
 -    tsdocMetadata: { enabled: false },
@@ -315,7 +314,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..4e36f9a6756af30339331b7b54203d4b
 +        tsconfigFilePath.replace(options.workspaceRoot, ""))
      },
 -    projectFolder: cwd
-+    projectFolder: _path2.default.join("..", "..", "..", "..", "..", "..")
++    projectFolder: "./"
    };
 +
    const prepareOptions = {
@@ -329,7 +328,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..4e36f9a6756af30339331b7b54203d4b
    const imported = _chunkGQ77QZBOjs.getApiExtractor.call(void 0, );
    if (!imported) {
      throw new Error(
-@@ -2477,21 +2589,30 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+@@ -2477,21 +2588,30 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
  async function rollupDtsFiles(options, exports, format) {
    let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
    let outDir = options.outDir || "dist";
