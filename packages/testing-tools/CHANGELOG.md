@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.4.3...testing-tools-v1.4.4) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with export generation after api-extractor ([2b9e593](https://github.com/storm-software/storm-ops/commit/2b9e593a72ee352531e5721c62e3a3d10e86ed47))
+
 ## [1.4.3](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.4.2...testing-tools-v1.4.3) (2023-11-22)
 
 
