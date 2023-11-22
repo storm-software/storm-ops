@@ -1,3 +1,10 @@
+## [1.4.9](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.4.8...testing-tools-v1.4.9) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update generated tsconfig include to point to package root ([49aef81](https://github.com/storm-software/storm-ops/commit/49aef8178bb8a2c71e92ee3785358d42507eee56))
+
 ## [1.4.8](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.4.7...testing-tools-v1.4.8) (2023-11-22)
 
 
