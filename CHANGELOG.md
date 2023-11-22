@@ -1,3 +1,10 @@
+## [1.7.10](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.7.9...@storm-software/storm-ops-v1.7.10) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad path in tsup build ([33a7b25](https://github.com/storm-software/storm-ops/commit/33a7b25b153f81cfced829dd0b3e6c5225afea36))
+
 ## [1.7.9](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.7.8...@storm-software/storm-ops-v1.7.9) (2023-11-22)
 
 
