@@ -1,3 +1,10 @@
+## [1.5.6](https://github.com/storm-software/storm-ops/compare/git-tools-v1.5.5...git-tools-v1.5.6) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed overriden tsconfig for api-extractor ([fcece07](https://github.com/storm-software/storm-ops/commit/fcece076bca3b0bd9938a4f5fbf3717628085ac3))
+
 ## [1.5.5](https://github.com/storm-software/storm-ops/compare/git-tools-v1.5.4...git-tools-v1.5.5) (2023-11-22)
 
 
