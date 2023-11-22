@@ -1,3 +1,10 @@
+## [1.10.7](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.6...create-storm-workspace-v1.10.7) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed overriden tsconfig for api-extractor ([fcece07](https://github.com/storm-software/storm-ops/commit/fcece076bca3b0bd9938a4f5fbf3717628085ac3))
+
 ## [1.10.6](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.5...create-storm-workspace-v1.10.6) (2023-11-22)
 
 
