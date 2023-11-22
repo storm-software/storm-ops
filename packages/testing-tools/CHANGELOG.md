@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.4.4...testing-tools-v1.4.5) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Correctly formatted include path in tsconfig passed to api extractor ([4c65fcf](https://github.com/storm-software/storm-ops/commit/4c65fcfb109f21f854ba5d6973e00bbc6e5c5173))
+
 ## [1.4.4](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.4.3...testing-tools-v1.4.4) (2023-11-22)
 
 
