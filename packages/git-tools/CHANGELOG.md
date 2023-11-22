@@ -1,3 +1,10 @@
+## [1.5.8](https://github.com/storm-software/storm-ops/compare/git-tools-v1.5.7...git-tools-v1.5.8) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve include issue with tsc during tsup build ([a6fffbe](https://github.com/storm-software/storm-ops/commit/a6fffbe881cb4f05f974de0b745157a0cfb8dcf6))
+
 ## [1.5.7](https://github.com/storm-software/storm-ops/compare/git-tools-v1.5.6...git-tools-v1.5.7) (2023-11-22)
 
 
