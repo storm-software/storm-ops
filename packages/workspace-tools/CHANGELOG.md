@@ -1,3 +1,10 @@
+## [1.10.5](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.10.4...workspace-tools-v1.10.5) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Allow main to default from sourceRoot when not provided to tsup executor ([e794d02](https://github.com/storm-software/storm-ops/commit/e794d02e4b2fffa6af0e6624b4499206574409a4))
+
 ## [1.10.4](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.10.3...workspace-tools-v1.10.4) (2023-11-22)
 
 
