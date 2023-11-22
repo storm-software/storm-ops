@@ -1,6 +1,5 @@
 import { joinPathFragments } from "@nx/devkit";
 import { Path, globSync } from "glob";
-import { isAbsolute } from "path";
 import { Options, defineConfig } from "tsup";
 import { removeExtension } from "../../utils/file-path-utils";
 import { TsupExecutorSchema } from "./schema";
@@ -159,14 +158,8 @@ export function getConfig(
     verbose
   }: TsupGetConfigOptions
 ) {
-  const entryPath = main ? main : sourceRoot;
   const entry = globSync(
-    [
-      isAbsolute(entryPath)
-        ? entryPath
-        : joinPathFragments(workspaceRoot, entryPath),
-      ...(additionalEntryPoints ?? [])
-    ],
+    [main ? main : sourceRoot, ...(additionalEntryPoints ?? [])],
     {
       withFileTypes: true
     }

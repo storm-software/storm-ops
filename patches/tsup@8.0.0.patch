@@ -51,7 +51,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..c88e541262ba18e25573b1879e447ac9
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..d6a951732c0a00a7f7ea27e3c7d2fda533345a92 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..33ea164d8b56a0151519e46f60b53d02525736d4 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1603,6 +1603,36 @@ var generateExternal = async (external) => {
@@ -177,10 +177,10 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..d6a951732c0a00a7f7ea27e3c7d2fda5
    if (!rawTsconfig) {
 -    throw new Error(`Unable to find ${tsconfig || "tsconfig.json"} in ${cwd}`);
 +    throw new Error(`Unable to find ${tsconfig || "tsconfig.json"}`);
-   }
++  }
 +  if (!rawTsconfig.data) {
 +    rawTsconfig.data = {};
-+  }
+   }
 +  if (!rawTsconfig.data.compilerOptions) {
 +    rawTsconfig.data.compilerOptions = {};
 +  }
@@ -242,7 +242,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..d6a951732c0a00a7f7ea27e3c7d2fda5
      logger.success("tsc", `\u26A1\uFE0F Build success in ${getDuration()}`);
      return exports;
    } catch (error) {
-@@ -2428,32 +2497,79 @@ function formatDistributionExport(declaration, dest) {
+@@ -2428,40 +2497,91 @@ function formatDistributionExport(declaration, dest) {
  
  // src/api-extractor.ts
  var logger2 = _chunk7G76EW2Rjs.createLogger.call(void 0, );
@@ -332,8 +332,10 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..d6a951732c0a00a7f7ea27e3c7d2fda5
    const imported = _chunkGQ77QZBOjs.getApiExtractor.call(void 0, );
    if (!imported) {
      throw new Error(
-@@ -2462,6 +2578,9 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+       `@microsoft/api-extractor is not installed. Please install it first.`
+     );
    }
++  
    const { ExtractorConfig, Extractor } = imported;
    const extractorConfig = ExtractorConfig.prepare(prepareOptions);
 +  !options.silent && logger2.info("dts", "⚡ Invoking extractor with the following prepare options: \n", 
@@ -342,14 +344,16 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..d6a951732c0a00a7f7ea27e3c7d2fda5
    const extractorResult = Extractor.invoke(extractorConfig, {
      // Equivalent to the "--local" command-line parameter
      localBuild: true,
-@@ -2477,31 +2596,47 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+@@ -2477,31 +2597,49 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
  async function rollupDtsFiles(options, exports, format) {
    let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
    let outDir = options.outDir || "dist";
 -  let pkg = await _chunk7G76EW2Rjs.loadPkg.call(void 0, process.cwd());
 +  let pkgPath = packageJsonSearch(outDir, options.silent, "dts", logger2);
 +
-+  logger2.info("dts", `⚡ Preparing to run Rollup (DTS generate): ${pkgPath}`);
++  !options.silent && logger2.info("dts", `⚡ Preparing to run Rollup (DTS generate): ${pkgPath}`);
++  !options.silent && logger2.info("dts", `⚡ Exports list to use in generation: ${exports.map((e) => JSON.stringify(e)).join("\n")}`);
++
 +  let pkg = await _chunk7G76EW2Rjs.loadPkg.call(void 0, pkgPath);
 +
    let dtsExtension = _chunkGQ77QZBOjs.defaultOutExtension.call(void 0, { format, pkgType: pkg.type }).dts;
@@ -381,7 +385,8 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..d6a951732c0a00a7f7ea27e3c7d2fda5
      options.experimentalDts.entry
    )) {
      sourceFileName = _chunkGQ77QZBOjs.toAbsolutePath.call(void 0, sourceFileName);
-     const outFileName = _path2.default.join(outDir, out + dtsExtension);
+-    const outFileName = _path2.default.join(outDir, out + dtsExtension);
++    const outFileName = _path2.default.join(outDir, "decl", out + dtsExtension);
 +
 +    // Find all declarations that are exported from the current source file
 +    const currentExports = exports.filter(
