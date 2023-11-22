@@ -1,3 +1,10 @@
+## [1.7.6](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.7.5...@storm-software/storm-ops-v1.7.6) (2023-11-22)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed overriden tsconfig for api-extractor ([fcece07](https://github.com/storm-software/storm-ops/commit/fcece076bca3b0bd9938a4f5fbf3717628085ac3))
+
 ## [1.7.5](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.7.4...@storm-software/storm-ops-v1.7.5) (2023-11-22)
 
 
