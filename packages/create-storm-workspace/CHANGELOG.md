@@ -1,3 +1,11 @@
+## [1.10.14](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.13...create-storm-workspace-v1.10.14) (2023-11-24)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad import ([e795302](https://github.com/storm-software/storm-ops/commit/e795302f766b5fea4e27c60ffdc09cade02041e1))
+* **workspace-tools:** Update path joins in tsup build ([696a0a3](https://github.com/storm-software/storm-ops/commit/696a0a3d487009b00fb50915fb0c62db40f728dc))
+
 ## [1.10.13](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.12...create-storm-workspace-v1.10.13) (2023-11-24)
 
 
