@@ -1,7 +1,5 @@
 import { joinPathFragments } from "@nx/devkit";
-import { Path, globSync } from "glob";
 import { Options, defineConfig } from "tsup";
-import { removeExtension } from "../../utils/file-path-utils";
 import { TsupExecutorSchema } from "./schema";
 
 type Entry = string | string[] | Record<string, string>;
@@ -158,19 +156,10 @@ export function getConfig(
     ...rest
   }: TsupGetConfigOptions
 ) {
-  const entry = globSync(
-    [rest.entry ? rest.entry : sourceRoot, ...(additionalEntryPoints ?? [])],
-    {
-      withFileTypes: true
-    }
-  ).reduce((ret, filePath: Path) => {
-    ret[removeExtension(filePath.name)] = joinPathFragments(
-      filePath.path,
-      filePath.name
-    );
-
-    return ret;
-  }, {});
+  const entry = [
+    rest.entry ? rest.entry : sourceRoot,
+    ...(additionalEntryPoints ?? [])
+  ];
 
   return defineConfig([
     modernConfig({
