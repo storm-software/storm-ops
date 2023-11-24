@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devkit";
+import { ExecutorContext, join, readJsonFile } from "@nx/devkit";
 import { getExtraDependencies } from "@nx/esbuild/src/executors/esbuild/lib/get-extra-dependencies";
 import { copyAssets } from "@nx/js";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
@@ -10,7 +10,6 @@ import { globSync } from "glob";
 import { EventEmitter } from "node:events";
 import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
 import { fileExists } from "nx/src/utils/fileutils";
-import { join } from "path";
 import { format } from "prettier";
 import { Options, build as tsup } from "tsup";
 import { applyWorkspaceTokens } from "../../utils/apply-workspace-tokens";
@@ -180,7 +179,7 @@ ${externalDependencies
       : { name: context.projectName, version: "0.0.1" };
 
     const workspacePackageJson = readJsonFile(
-      joinPathFragments(workspaceRoot, "package.json")
+      join(workspaceRoot, "package.json")
     );
 
     externalDependencies.forEach(entry => {
@@ -219,11 +218,11 @@ ${externalDependencies
         },
         ...(options.additionalEntryPoints ?? []).map(entryPoint => ({
           [removeExtension(entryPoint).replace(sourceRoot, "")]: {
-            types: joinPathFragments(
+            types: join(
               "./dist/modern",
               `${removeExtension(entryPoint.replace(sourceRoot, ""))}.d.ts`
             ),
-            default: joinPathFragments(
+            default: join(
               "./dist/modern",
               `${removeExtension(entryPoint.replace(sourceRoot, ""))}.js`
             )
@@ -258,13 +257,9 @@ ${externalDependencies
     packageJson.repository ??= workspacePackageJson.repository;
     packageJson.repository.directory ??= projectRoot
       ? projectRoot
-      : joinPathFragments("packages", context.projectName);
+      : join("packages", context.projectName);
 
-    const packageJsonPath = joinPathFragments(
-      context.root,
-      outputPath,
-      "package.json"
-    );
+    const packageJsonPath = join(context.root, outputPath, "package.json");
     console.log(`⚡ Writing package.json file to: ${packageJsonPath}`);
 
     writeFileSync(
@@ -288,10 +283,10 @@ ${externalDependencies
 
     if (options.banner) {
       const files = globSync([
-        joinPathFragments(context.root, outputPath, "src/**/*.ts"),
-        joinPathFragments(context.root, outputPath, "src/**/*.tsx"),
-        joinPathFragments(context.root, outputPath, "src/**/*.js"),
-        joinPathFragments(context.root, outputPath, "src/**/*.jsx")
+        join(context.root, outputPath, "src/**/*.ts"),
+        join(context.root, outputPath, "src/**/*.tsx"),
+        join(context.root, outputPath, "src/**/*.js"),
+        join(context.root, outputPath, "src/**/*.jsx")
       ]);
       await Promise.allSettled(
         files.map(file =>

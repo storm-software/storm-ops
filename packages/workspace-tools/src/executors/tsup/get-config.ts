@@ -1,4 +1,5 @@
 import { joinPathFragments } from "@nx/devkit";
+import { join } from "path";
 import { Options, defineConfig } from "tsup";
 import { removeExtension } from "../../utils/file-path-utils";
 import { TsupExecutorSchema } from "./schema";
@@ -158,7 +159,7 @@ export function getConfig(
   }: TsupGetConfigOptions
 ) {
   const entry = [
-    rest.entry ? rest.entry : joinPathFragments(sourceRoot, "index.ts"),
+    rest.entry ? rest.entry : join(sourceRoot, "index.ts"),
     ...(additionalEntryPoints ?? [])
   ].reduce((ret, filePath: string) => {
     ret[
