@@ -167,7 +167,11 @@ export function getConfig(
       withFileTypes: true
     }
   ).reduce((ret, filePath: Path) => {
-    ret[removeExtension(filePath.name)] = join(filePath.path, filePath.name);
+    ret[
+      join(filePath.path, removeExtension(filePath.name))
+        .replaceAll("/", "-")
+        .replaceAll("\\", "-")
+    ] = join(filePath.path, filePath.name);
 
     return ret;
   }, {});
