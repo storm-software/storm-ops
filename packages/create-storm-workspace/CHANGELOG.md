@@ -1,3 +1,10 @@
+## [1.10.12](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.11...create-storm-workspace-v1.10.12) (2023-11-24)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update how entry is determined in tsup build ([7af0212](https://github.com/storm-software/storm-ops/commit/7af0212ebd5272826227591c262ac42b740a7508))
+
 ## [1.10.11](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.10...create-storm-workspace-v1.10.11) (2023-11-22)
 
 
