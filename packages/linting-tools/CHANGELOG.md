@@ -1,3 +1,10 @@
+## [1.6.11](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.6.10...linting-tools-v1.6.11) (2023-11-24)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with dts `files` in compiler options ([2e9a611](https://github.com/storm-software/storm-ops/commit/2e9a611f6dee0c2db0fc6b87301472960f3b0cb5))
+
 ## [1.6.10](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.6.9...linting-tools-v1.6.10) (2023-11-22)
 
 
