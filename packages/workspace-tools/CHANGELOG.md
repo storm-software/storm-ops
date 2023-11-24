@@ -1,3 +1,10 @@
+## [1.10.13](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.10.12...workspace-tools-v1.10.13) (2023-11-24)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update entry creation code in tsup build ([6c8b12f](https://github.com/storm-software/storm-ops/commit/6c8b12fd6ae01659f004525cc4dfdbab484e3096))
+
 ## [1.10.12](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.10.11...workspace-tools-v1.10.12) (2023-11-24)
 
 
