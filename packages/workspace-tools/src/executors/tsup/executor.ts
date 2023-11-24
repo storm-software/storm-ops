@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ExecutorContext, join, readJsonFile } from "@nx/devkit";
+import { ExecutorContext, readJsonFile } from "@nx/devkit";
 import { getExtraDependencies } from "@nx/esbuild/src/executors/esbuild/lib/get-extra-dependencies";
 import { copyAssets } from "@nx/js";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
@@ -10,6 +10,7 @@ import { globSync } from "glob";
 import { EventEmitter } from "node:events";
 import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
 import { fileExists } from "nx/src/utils/fileutils";
+import { join } from "path";
 import { format } from "prettier";
 import { Options, build as tsup } from "tsup";
 import { applyWorkspaceTokens } from "../../utils/apply-workspace-tokens";

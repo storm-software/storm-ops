@@ -1,4 +1,4 @@
-import { joinPathFragments } from "@nx/devkit";
+import { Path, globSync } from "glob";
 import { join } from "path";
 import { Options, defineConfig } from "tsup";
 import { removeExtension } from "../../utils/file-path-utils";
@@ -61,7 +61,7 @@ export function modernConfig({
     tsconfig,
     projectRoot,
     workspaceRoot,
-    outDir: joinPathFragments(outDir, "dist", "modern"),
+    outDir: join(outDir, "dist", "modern"),
     silent: !verbose,
     metafile: true,
     shims: true,
@@ -110,7 +110,7 @@ export function legacyConfig({
     tsconfig,
     projectRoot,
     workspaceRoot,
-    outDir: joinPathFragments(outDir, "dist", "legacy"),
+    outDir: join(outDir, "dist", "legacy"),
     silent: !verbose,
     metafile: true,
     shims: true,
@@ -158,16 +158,16 @@ export function getConfig(
     ...rest
   }: TsupGetConfigOptions
 ) {
-  const entry = [
-    rest.entry ? rest.entry : join(sourceRoot, "index.ts"),
-    ...(additionalEntryPoints ?? [])
-  ].reduce((ret, filePath: string) => {
-    ret[
-      removeExtension(filePath)
-        .replaceAll("/", "-")
-        .replaceAll("\\", "-")
-        .replaceAll("*", "")
-    ] = filePath;
+  const entry = globSync(
+    [
+      rest.entry ? rest.entry : join(sourceRoot, "index.ts"),
+      ...(additionalEntryPoints ?? [])
+    ],
+    {
+      withFileTypes: true
+    }
+  ).reduce((ret, filePath: Path) => {
+    ret[removeExtension(filePath.name)] = join(filePath.path, filePath.name);
 
     return ret;
   }, {});
