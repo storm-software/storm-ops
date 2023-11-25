@@ -1,3 +1,10 @@
+## [1.6.4](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.6.3...testing-tools-v1.6.4) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added virtual file system to tsup patch to resolve missing libs ([068ab7a](https://github.com/storm-software/storm-ops/commit/068ab7a56a45d3d3ed63a86661d8207929829e5a))
+
 ## [1.6.3](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.6.2...testing-tools-v1.6.3) (2023-11-25)
 
 
