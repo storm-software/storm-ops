@@ -1,3 +1,10 @@
+## [1.6.5](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.6.4...testing-tools-v1.6.5) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update imports for @typescript/vfs to use named values ([99306e5](https://github.com/storm-software/storm-ops/commit/99306e575db6c059035077c26dcef4a116ff1bcb))
+
 ## [1.6.4](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.6.3...testing-tools-v1.6.4) (2023-11-25)
 
 
