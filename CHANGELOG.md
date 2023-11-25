@@ -1,3 +1,10 @@
+## [1.7.13](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.7.12...@storm-software/storm-ops-v1.7.13) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the outDir value of parsed tsconfig options in tsup patch ([65c2aca](https://github.com/storm-software/storm-ops/commit/65c2aca19ba41a7de44d2f4b2121f7e2abfd3893))
+
 ## [1.7.12](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.7.11...@storm-software/storm-ops-v1.7.12) (2023-11-25)
 
 
