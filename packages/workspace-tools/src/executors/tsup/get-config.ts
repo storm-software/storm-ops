@@ -167,12 +167,18 @@ export function getConfig(
       withFileTypes: true
     }
   ).reduce((ret, filePath: Path) => {
-    ret[
-      join(filePath.path, removeExtension(filePath.name))
-        .replaceAll(workspaceRoot, "")
-        .replaceAll("\\", "/")
-        .replaceAll(projectRoot, "")
-    ] = join(filePath.path, filePath.name);
+    let propertyKey = join(filePath.path, removeExtension(filePath.name))
+      .replaceAll(workspaceRoot, "")
+      .replaceAll("\\", "/")
+      .replaceAll(sourceRoot, "")
+      .replaceAll(projectRoot, "");
+    if (propertyKey.startsWith("/")) {
+      propertyKey = propertyKey.substring(1);
+    }
+
+    if (!(propertyKey in ret)) {
+      ret[propertyKey] = join(filePath.path, filePath.name);
+    }
 
     return ret;
   }, {});
