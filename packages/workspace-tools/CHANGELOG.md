@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.13.0...workspace-tools-v1.13.1) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with missing node_modules folder ([ac6c99e](https://github.com/storm-software/storm-ops/commit/ac6c99e2dd1ab0d3a9a3b68722724ace5271c564))
+
 # [1.13.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.12.6...workspace-tools-v1.13.0) (2023-11-25)
 
 
