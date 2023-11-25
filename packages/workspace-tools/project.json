@@ -41,7 +41,8 @@
           "@swc/wasm",
           "esbuild",
           "prettier",
-          "nx"
+          "nx",
+          "typescript"
         ],
         "assets": [
           {
