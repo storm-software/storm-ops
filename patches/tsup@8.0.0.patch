@@ -11,24 +11,24 @@ diff --git a/assets/package.json b/assets/package.json
 deleted file mode 100644
 index a43829151e1423f0641beb1f114773f1c67fda72..0000000000000000000000000000000000000000
 diff --git a/dist/chunk-GQ77QZBO.js b/dist/chunk-GQ77QZBO.js
-index 6040ec0707ad57b89834936e19bead6c8014ff6f..c2e972d5b653c6b2a413ac1ef51dc9e30f208256 100644
+index 6040ec0707ad57b89834936e19bead6c8014ff6f..f0f530671fa4a9e72dd5188e7a340a9259023357 100644
 --- a/dist/chunk-GQ77QZBO.js
 +++ b/dist/chunk-GQ77QZBO.js
-@@ -191,14 +191,14 @@ function defaultOutExtension({
+@@ -191,14 +191,13 @@ function defaultOutExtension({
      dts: dtsExtension
    };
  }
 -function ensureTempDeclarationDir() {
-+function ensureTempDeclarationDir(options) {
-   const cwd = process.cwd();
+-  const cwd = process.cwd();
 -  const dirPath = _path2.default.join(cwd, ".tsup", "declaration");
-+  const dirPath = _path2.default.join(cwd, "tmp", ".tsup", "declaration");
++function ensureTempDeclarationDir(options) {
++  const dirPath = _path2.default.join(options.workspaceRoot, "tmp", ".tsup", "declaration");
    if (_fs2.default.existsSync(dirPath)) {
      return dirPath;
    }
    _fs2.default.mkdirSync(dirPath, { recursive: true });
 -  const gitIgnorePath = _path2.default.join(cwd, ".tsup", ".gitignore");
-+  const gitIgnorePath = _path2.default.join(cwd, "tmp", ".tsup", ".gitignore");
++  const gitIgnorePath = _path2.default.join(options.workspaceRoot, "tmp", ".tsup", ".gitignore");
    writeFileSync(gitIgnorePath, "**/*\n");
    return dirPath;
  }
@@ -51,10 +51,30 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..c88e541262ba18e25573b1879e447ac9
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..889709439bcf6ef2d78471f429a1a46d5f8e1f7d 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..decbfc560f9ecacb27bab8543790bc01b04e1f34 100644
 --- a/dist/index.js
 +++ b/dist/index.js
-@@ -1603,6 +1603,36 @@ var generateExternal = async (external) => {
+@@ -1590,19 +1590,54 @@ var getOutputExtensionMap = (options, format, pkgType) => {
+     ".js": extension.js || defaultExtension.js
+   };
+ };
+-var generateExternal = async (external) => {
++var generateExternal = async (external, options, logger) => {
+   const result = [];
++
++  const pkgJsonPath = packageJsonSearch(options.outDir, options.silent, "CLI", logger);
+   for (const item of external) {
+     if (typeof item !== "string" || !item.endsWith("package.json")) {
+       result.push(item);
+       continue;
+     }
+-    let pkgPath = _path2.default.isAbsolute(item) ? _path2.default.dirname(item) : _path2.default.dirname(_path2.default.resolve(process.cwd(), item));
++
++    let pkgPath = _path2.default.isAbsolute(item) 
++      ? _path2.default.dirname(item) 
++      : _path2.default.dirname(_path2.default.resolve(pkgJsonPath ?? process.cwd(), item));
+     const deps = await _chunk7G76EW2Rjs.getProductionDeps.call(void 0, pkgPath);
+     result.push(...deps);
    }
    return result;
  };
@@ -64,7 +84,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..889709439bcf6ef2d78471f429a1a46d
 +    ? outDir
 +    : process.cwd();
 +  
-+  !silent && logger.info(format, `⚡ Beginning search for package.json file: ${pkgPath}`);
++  !silent && logger && logger.info(format, `⚡ Beginning search for package.json file: ${pkgPath}`);
 +  if (pkgPath) {
 +    const splits = pkgPath.split("/");
 +    if (splits.length > 0) {
@@ -72,11 +92,11 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..889709439bcf6ef2d78471f429a1a46d
 +        const packageJsonPath = _path2.default.join(splits.slice(0, 
 +          splits.length - i).join("/"), 
 +            "package.json");
-+        !silent && logger.info(format, 
++        !silent && logger && logger.info(format, 
 +          `⚡ Searching for package.json file in ${packageJsonPath} (index: ${i})`);
 +
 +        if (_fs2.default.existsSync(packageJsonPath)) {
-+          !silent && logger.info(format, 
++          !silent && logger && logger.info(format, 
 +            `⚡ Found the package.json file in ${packageJsonPath} (index: ${i})`);
 +          pkgPath = packageJsonPath.replace("package.json", "");
 +          break;
@@ -91,7 +111,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..889709439bcf6ef2d78471f429a1a46d
  async function runEsbuild(options, {
    format,
    css,
-@@ -1610,8 +1640,12 @@ async function runEsbuild(options, {
+@@ -1610,12 +1645,16 @@ async function runEsbuild(options, {
    buildDependencies,
    pluginContainer
  }) {
@@ -106,7 +126,12 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..889709439bcf6ef2d78471f429a1a46d
    const external = [
      // Exclude dependencies, e.g. `lodash`, `lodash/get`
      ...deps.map((dep) => new RegExp(`^${dep}($|\\/|\\\\)`)),
-@@ -1683,7 +1717,12 @@ async function runEsbuild(options, {
+-    ...await generateExternal(options.external || [])
++    ...await generateExternal(options.external || [], options, logger3)
+   ];
+   const outDir = options.outDir;
+   const outExtension = getOutputExtensionMap(options, format, pkg.type);
+@@ -1683,7 +1722,12 @@ async function runEsbuild(options, {
        target: options.target,
        banner,
        footer,
@@ -120,7 +145,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..889709439bcf6ef2d78471f429a1a46d
        loader: {
          ".aac": "file",
          ".css": "file",
-@@ -1724,15 +1763,16 @@ async function runEsbuild(options, {
+@@ -1724,15 +1768,16 @@ async function runEsbuild(options, {
          }, {})
        },
        inject: [
@@ -140,7 +165,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..889709439bcf6ef2d78471f429a1a46d
        minify: options.minify === "terser" ? false : options.minify,
        minifyWhitespace: options.minifyWhitespace,
        minifyIdentifiers: options.minifyIdentifiers,
-@@ -2196,13 +2236,19 @@ var AliasPool = (_class = class {constructor() { _class.prototype.__init.call(th
+@@ -2196,13 +2241,19 @@ var AliasPool = (_class = class {constructor() { _class.prototype.__init.call(th
      return alias;
    }
  }, _class);
@@ -163,7 +188,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..889709439bcf6ef2d78471f429a1a46d
      const sourceFile = program.getSourceFile(sourceFileName);
      if (!sourceFile) {
        return [];
-@@ -2287,38 +2333,69 @@ function emitDtsFiles(program, host) {
+@@ -2287,38 +2338,69 @@ function emitDtsFiles(program, host) {
    }
    return fileMapping;
  }
@@ -180,16 +205,17 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..889709439bcf6ef2d78471f429a1a46d
    if (!rawTsconfig) {
 -    throw new Error(`Unable to find ${tsconfig || "tsconfig.json"} in ${cwd}`);
 +    throw new Error(`Unable to find ${tsconfig || "tsconfig.json"}`);
-+  }
+   }
+-  let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
 +  if (!rawTsconfig.data) {
 +    rawTsconfig.data = {};
 +  }
 +  if (!rawTsconfig.data.compilerOptions) {
 +    rawTsconfig.data.compilerOptions = {};
-   }
++  }
 +
 +  logger.info("tsc", "Getting temporary declaration directory");
-   let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
++  let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, options);
 +  logger.info("tsc", declarationDir);
 +
 +  logger.info("tsc", "Parsing tsconfig.json");
@@ -244,7 +270,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..889709439bcf6ef2d78471f429a1a46d
  }
  function runTypeScriptCompiler(options) {
    try {
-@@ -2326,9 +2403,11 @@ function runTypeScriptCompiler(options) {
+@@ -2326,9 +2408,11 @@ function runTypeScriptCompiler(options) {
      const getDuration = () => {
        return `${Math.floor(Date.now() - start)}ms`;
      };
@@ -257,7 +283,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..889709439bcf6ef2d78471f429a1a46d
      logger.success("tsc", `\u26A1\uFE0F Build success in ${getDuration()}`);
      return exports;
    } catch (error) {
-@@ -2428,40 +2507,91 @@ function formatDistributionExport(declaration, dest) {
+@@ -2428,40 +2512,91 @@ function formatDistributionExport(declaration, dest) {
  
  // src/api-extractor.ts
  var logger2 = _chunk7G76EW2Rjs.createLogger.call(void 0, );
@@ -359,7 +385,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..889709439bcf6ef2d78471f429a1a46d
    const extractorResult = Extractor.invoke(extractorConfig, {
      // Equivalent to the "--local" command-line parameter
      localBuild: true,
-@@ -2477,31 +2607,49 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+@@ -2477,31 +2612,49 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
  async function rollupDtsFiles(options, exports, format) {
    let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
    let outDir = options.outDir || "dist";
@@ -415,7 +441,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..889709439bcf6ef2d78471f429a1a46d
      );
    }
  }
-@@ -2592,11 +2740,14 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -2592,11 +2745,14 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
      options.entry = entry;
      logger3.info("CLI", `Building entry: ${JSON.stringify(entry)}`);
    }
@@ -432,7 +458,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..889709439bcf6ef2d78471f429a1a46d
      );
      options.tsconfig = tsconfig.path;
      options.tsconfigResolvePaths = _optionalChain([tsconfig, 'access', _20 => _20.data, 'optionalAccess', _21 => _21.compilerOptions, 'optionalAccess', _22 => _22.paths]) || {};
-@@ -2610,7 +2761,8 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -2610,7 +2766,8 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
      if (options.experimentalDts) {
        options.experimentalDts.compilerOptions = {
          ...tsconfig.data.compilerOptions || {},
@@ -442,6 +468,33 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..889709439bcf6ef2d78471f429a1a46d
        };
        options.experimentalDts.entry = _chunkGQ77QZBOjs.toObjectEntry.call(void 0, 
          Object.keys(options.experimentalDts.entry).length > 0 ? options.experimentalDts.entry : options.entry
+@@ -2629,7 +2786,7 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+ };
+ async function build(_options) {
+   const config = _options.config === false ? {} : await _chunk7G76EW2Rjs.loadTsupConfig.call(void 0, 
+-    process.cwd(),
++    _options.workspaceRoot ?? process.cwd(),
+     _options.config === true ? void 0 : _options.config
+   );
+   const configData = typeof config.data === "function" ? await config.data(_options) : config.data;
+@@ -2695,7 +2852,7 @@ async function build(_options) {
+             let onSuccessProcess;
+             let onSuccessCleanup;
+             const buildDependencies = /* @__PURE__ */ new Set();
+-            let depsHash = await _chunk7G76EW2Rjs.getAllDepsHash.call(void 0, process.cwd());
++            let depsHash = await _chunk7G76EW2Rjs.getAllDepsHash.call(void 0, options.workspaceRoot ?? process.cwd());
+             const doOnSuccessCleanup = async () => {
+               if (onSuccessProcess) {
+                 await killProcess({
+@@ -2816,7 +2973,7 @@ async function build(_options) {
+                 let shouldSkipChange = false;
+                 if (options.watch === true) {
+                   if (file === "package.json" && !buildDependencies.has(file)) {
+-                    const currentHash = await _chunk7G76EW2Rjs.getAllDepsHash.call(void 0, process.cwd());
++                    const currentHash = await _chunk7G76EW2Rjs.getAllDepsHash.call(void 0, options.workspaceRoot ?? process.cwd());
+                     shouldSkipChange = currentHash === depsHash;
+                     depsHash = currentHash;
+                   } else if (!buildDependencies.has(file)) {
 diff --git a/schema.json b/schema.json
 deleted file mode 100644
 index 0402482e7915288e66615aec6ee51d46250af832..0000000000000000000000000000000000000000

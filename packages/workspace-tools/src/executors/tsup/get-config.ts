@@ -136,6 +136,57 @@ export function legacyConfig({
   } as Options;
 }
 
+export function workerConfig({
+  entry,
+  outDir,
+  projectRoot,
+  workspaceRoot,
+  tsconfig = "tsconfig.json",
+  debug = false,
+  external,
+  banner = {},
+  verbose = false,
+  apiReport = true,
+  docModel = true,
+  tsdocMetadata = true,
+  define,
+  env,
+  options
+}: GetConfigParams) {
+  return {
+    name: "worker",
+    entry,
+    format: ["esm"],
+    target: ["chrome95"],
+    tsconfig,
+    projectRoot,
+    workspaceRoot,
+    outDir: join(outDir, "dist", "worker"),
+    silent: !verbose,
+    metafile: true,
+    shims: true,
+    minify: false,
+    external,
+    platform: "browser",
+    banner,
+    define,
+    env,
+    dts: false,
+    experimentalDts: {
+      entry,
+      compilerOptions: {
+        noEmit: false
+      }
+    },
+    apiReport,
+    docModel,
+    tsdocMetadata,
+    sourcemap: debug,
+    clean: false,
+    outExtension
+  } as Options;
+}
+
 export function getConfig(
   workspaceRoot: string,
   projectRoot: string,
@@ -185,41 +236,31 @@ export function getConfig(
     return ret;
   }, {});
 
-  return defineConfig([
-    modernConfig({
-      entry,
-      outDir: outputPath,
-      projectRoot,
-      workspaceRoot,
-      tsconfig: tsConfig,
-      debug,
-      banner,
-      platform,
-      external,
-      verbose,
-      apiReport,
-      docModel,
-      tsdocMetadata,
-      define,
-      env,
-      options
-    }),
-    legacyConfig({
-      entry,
-      outDir: outputPath,
-      projectRoot,
-      workspaceRoot,
-      tsconfig: tsConfig,
-      debug,
-      banner,
-      platform,
-      external,
-      verbose,
-      define,
-      env,
-      options
-    })
-  ]);
+  const params = {
+    entry,
+    outDir: outputPath,
+    projectRoot,
+    workspaceRoot,
+    tsconfig: tsConfig,
+    debug,
+    banner,
+    platform,
+    external,
+    verbose,
+    apiReport,
+    docModel,
+    tsdocMetadata,
+    define,
+    env,
+    options
+  };
+
+  const config = [modernConfig(params), legacyConfig(params)];
+  if (platform === "node") {
+    config.push(workerConfig(params));
+  }
+
+  return defineConfig(config);
 }
 
 const outExtension = ({ options, format, pkgType }) => {
