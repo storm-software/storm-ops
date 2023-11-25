@@ -172,12 +172,14 @@ export function getConfig(
       .replaceAll("\\", "/")
       .replaceAll(sourceRoot, "")
       .replaceAll(projectRoot, "");
-    if (propertyKey.startsWith("/")) {
-      propertyKey = propertyKey.substring(1);
-    }
+    if (propertyKey) {
+      while (propertyKey.startsWith("/")) {
+        propertyKey = propertyKey.substring(1);
+      }
 
-    if (!(propertyKey in ret)) {
-      ret[propertyKey] = join(filePath.path, filePath.name);
+      if (!(propertyKey in ret)) {
+        ret[propertyKey] = join(filePath.path, filePath.name);
+      }
     }
 
     return ret;

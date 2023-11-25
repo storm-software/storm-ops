@@ -51,7 +51,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..c88e541262ba18e25573b1879e447ac9
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..e547945d6a991a7309d0ba1f719629b664f6d76d 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..889709439bcf6ef2d78471f429a1a46d5f8e1f7d 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1603,6 +1603,36 @@ var generateExternal = async (external) => {
@@ -163,7 +163,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..e547945d6a991a7309d0ba1f719629b6
      const sourceFile = program.getSourceFile(sourceFileName);
      if (!sourceFile) {
        return [];
-@@ -2287,38 +2333,72 @@ function emitDtsFiles(program, host) {
+@@ -2287,38 +2333,69 @@ function emitDtsFiles(program, host) {
    }
    return fileMapping;
  }
@@ -202,6 +202,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..e547945d6a991a7309d0ba1f719629b6
 +        ...compilerOptions,
 +
          // Enable declaration emit and disable javascript emit
++        outDir: options.outDir,
          noEmit: false,
          declaration: true,
          declarationMap: true,
@@ -209,13 +210,9 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..e547945d6a991a7309d0ba1f719629b6
          emitDeclarationOnly: true
 -      }
 +      },
-+      files: [ 
-+        ...(rawTsconfig.data.files ?? {}), 
-+        `${options.projectRoot}/**/*` 
-+      ],
 +      include: [ 
 +        ...(rawTsconfig.data.files ?? {}), 
-+        `${options.projectRoot}/**/*` 
++        _path.join(options.projectRoot, "**", "*") 
 +      ],
      },
      _typescript2.default.sys,
@@ -247,7 +244,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..e547945d6a991a7309d0ba1f719629b6
  }
  function runTypeScriptCompiler(options) {
    try {
-@@ -2326,9 +2406,11 @@ function runTypeScriptCompiler(options) {
+@@ -2326,9 +2403,11 @@ function runTypeScriptCompiler(options) {
      const getDuration = () => {
        return `${Math.floor(Date.now() - start)}ms`;
      };
@@ -260,7 +257,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..e547945d6a991a7309d0ba1f719629b6
      logger.success("tsc", `\u26A1\uFE0F Build success in ${getDuration()}`);
      return exports;
    } catch (error) {
-@@ -2428,40 +2510,91 @@ function formatDistributionExport(declaration, dest) {
+@@ -2428,40 +2507,91 @@ function formatDistributionExport(declaration, dest) {
  
  // src/api-extractor.ts
  var logger2 = _chunk7G76EW2Rjs.createLogger.call(void 0, );
@@ -362,7 +359,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..e547945d6a991a7309d0ba1f719629b6
    const extractorResult = Extractor.invoke(extractorConfig, {
      // Equivalent to the "--local" command-line parameter
      localBuild: true,
-@@ -2477,31 +2610,49 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+@@ -2477,31 +2607,49 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
  async function rollupDtsFiles(options, exports, format) {
    let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
    let outDir = options.outDir || "dist";
@@ -418,6 +415,33 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..e547945d6a991a7309d0ba1f719629b6
      );
    }
  }
+@@ -2592,11 +2740,14 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+     options.entry = entry;
+     logger3.info("CLI", `Building entry: ${JSON.stringify(entry)}`);
+   }
+-  const tsconfig = _bundlerequire.loadTsConfig.call(void 0, process.cwd(), options.tsconfig);
++
++  !options.silent && logger2.info("CLI", `⚡ Normalizing options: ${options.tsconfig}`);
++
++  const tsconfig = _bundlerequire.loadTsConfig.call(void 0, options.workspaceRoot, options.tsconfig);
+   if (tsconfig) {
+     logger3.info(
+       "CLI",
+-      `Using tsconfig: ${_path2.default.relative(process.cwd(), tsconfig.path)}`
++      `Using tsconfig: ${_path2.default.relative(options.workspaceRoot, tsconfig.path)}`
+     );
+     options.tsconfig = tsconfig.path;
+     options.tsconfigResolvePaths = _optionalChain([tsconfig, 'access', _20 => _20.data, 'optionalAccess', _21 => _21.compilerOptions, 'optionalAccess', _22 => _22.paths]) || {};
+@@ -2610,7 +2761,8 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+     if (options.experimentalDts) {
+       options.experimentalDts.compilerOptions = {
+         ...tsconfig.data.compilerOptions || {},
+-        ...options.experimentalDts.compilerOptions || {}
++        ...options.experimentalDts.compilerOptions || {},
++        outDir: options.outDir
+       };
+       options.experimentalDts.entry = _chunkGQ77QZBOjs.toObjectEntry.call(void 0, 
+         Object.keys(options.experimentalDts.entry).length > 0 ? options.experimentalDts.entry : options.entry
 diff --git a/schema.json b/schema.json
 deleted file mode 100644
 index 0402482e7915288e66615aec6ee51d46250af832..0000000000000000000000000000000000000000
