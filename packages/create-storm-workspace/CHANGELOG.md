@@ -1,3 +1,10 @@
+## [1.13.2](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.1...create-storm-workspace-v1.13.2) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated tsup patch to use compilerHost ([6fcff07](https://github.com/storm-software/storm-ops/commit/6fcff076a61f708472591c701dbd06716286ef6b))
+
 ## [1.13.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.0...create-storm-workspace-v1.13.1) (2023-11-25)
 
 
