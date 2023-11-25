@@ -1,3 +1,10 @@
+## [1.12.4](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.12.3...create-storm-workspace-v1.12.4) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added virtual file system to tsup patch to resolve missing libs ([068ab7a](https://github.com/storm-software/storm-ops/commit/068ab7a56a45d3d3ed63a86661d8207929829e5a))
+
 ## [1.12.3](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.12.2...create-storm-workspace-v1.12.3) (2023-11-25)
 
 
