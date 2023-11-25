@@ -1,3 +1,10 @@
+## [1.10.19](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.18...create-storm-workspace-v1.10.19) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Replace invalid charaters in property key ([923bdad](https://github.com/storm-software/storm-ops/commit/923bdada143fc1150113b9b1881fe915a33a9e87))
+
 ## [1.10.18](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.17...create-storm-workspace-v1.10.18) (2023-11-25)
 
 
