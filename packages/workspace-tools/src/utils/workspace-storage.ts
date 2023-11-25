@@ -1,5 +1,11 @@
-import fs from "node:fs";
-import path from "node:path";
+import {
+  existsSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  writeFileSync
+} from "node:fs";
+import { join } from "node:path";
 import { findCacheDirectory } from "./find-cache-dir";
 
 /**
@@ -30,9 +36,9 @@ export class WorkspaceStorage {
    * @returns The value of the key
    */
   getItem(key: string): string | undefined {
-    const cacheFile = path.join(this.cacheDir, key);
-    if (fs.existsSync(cacheFile)) {
-      return fs.readFileSync(cacheFile, "utf-8");
+    const cacheFile = join(this.cacheDir, key);
+    if (existsSync(cacheFile)) {
+      return readFileSync(cacheFile, "utf-8");
     }
 
     return undefined;
@@ -45,8 +51,8 @@ export class WorkspaceStorage {
    * @param value - The value to set
    */
   setItem(key: string, value: string) {
-    const cacheFile = path.join(this.cacheDir, key);
-    fs.writeFileSync(cacheFile, value);
+    const cacheFile = join(this.cacheDir, key);
+    writeFileSync(cacheFile, value);
   }
 
   /**
@@ -55,16 +61,16 @@ export class WorkspaceStorage {
    * @param key - The key to remove
    */
   removeItem(key: string) {
-    const cacheFile = path.join(this.cacheDir, key);
-    fs.rmSync(cacheFile, { force: true, recursive: true });
+    const cacheFile = join(this.cacheDir, key);
+    rmSync(cacheFile, { force: true, recursive: true });
   }
 
   /**
    * Clear the cache
    */
   clear() {
-    fs.readdirSync(this.cacheDir).forEach(cacheFile => {
-      fs.rmSync(cacheFile, { force: true, recursive: true });
+    readdirSync(this.cacheDir).forEach(cacheFile => {
+      rmSync(cacheFile, { force: true, recursive: true });
     });
   }
 
@@ -75,7 +81,7 @@ export class WorkspaceStorage {
    * @returns The key at the index
    */
   key(index: number) {
-    const files = fs.readdirSync(this.cacheDir);
+    const files = readdirSync(this.cacheDir);
     if (index < files.length && index >= 0) {
       return files[index];
     }
