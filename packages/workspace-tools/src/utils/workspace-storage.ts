@@ -51,8 +51,7 @@ export class WorkspaceStorage {
    * @param value - The value to set
    */
   setItem(key: string, value: string) {
-    const cacheFile = join(this.cacheDir, key);
-    writeFileSync(cacheFile, value);
+    writeFileSync(join(this.cacheDir, key), value, { encoding: "utf-8" });
   }
 
   /**
@@ -61,8 +60,7 @@ export class WorkspaceStorage {
    * @param key - The key to remove
    */
   removeItem(key: string) {
-    const cacheFile = join(this.cacheDir, key);
-    rmSync(cacheFile, { force: true, recursive: true });
+    rmSync(join(this.cacheDir, key), { force: true, recursive: true });
   }
 
   /**
