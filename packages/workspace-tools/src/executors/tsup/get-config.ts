@@ -169,9 +169,9 @@ export function getConfig(
   ).reduce((ret, filePath: Path) => {
     ret[
       join(filePath.path, removeExtension(filePath.name))
-        .replaceAll("/", "-")
-        .replaceAll("\\", "-")
-        .replaceAll(":", "")
+        .replaceAll(workspaceRoot, "")
+        .replaceAll("\\", "/")
+        .replaceAll(projectRoot, "")
     ] = join(filePath.path, filePath.name);
 
     return ret;
