@@ -1,3 +1,10 @@
+## [1.10.16](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.10.15...workspace-tools-v1.10.16) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with names in `entry` options for tsup builder ([bc0c2a1](https://github.com/storm-software/storm-ops/commit/bc0c2a175d78771b8e6d1aa215b540f7204abc23))
+
 ## [1.10.15](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.10.14...workspace-tools-v1.10.15) (2023-11-24)
 
 
