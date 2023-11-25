@@ -1,3 +1,17 @@
+# [1.13.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.12.6...workspace-tools-v1.13.0) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed default imports of node packages ([3781197](https://github.com/storm-software/storm-ops/commit/378119711fd6e88a36f61f3ad9eb347ef30867ee))
+* **workspace-tools:** Resolved issue with ES module imports ([8573fbc](https://github.com/storm-software/storm-ops/commit/8573fbcc2c741c8496160e61ff7011070ad07402))
+* **workspace-tools:** Resolved issue with missing return statement ([138f96a](https://github.com/storm-software/storm-ops/commit/138f96a1d129cfda8c36cf8d13bd76bf931bf2a0))
+
+
+### Features
+
+* **workspace-tools:** Added `WorkspaceStorage` class to handle caching during processing ([b7a6830](https://github.com/storm-software/storm-ops/commit/b7a68300721be70fdf18c07b9e700f77f1191486))
+
 ## [1.12.6](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.12.5...workspace-tools-v1.12.6) (2023-11-25)
 
 
