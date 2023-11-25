@@ -1,3 +1,10 @@
+## [1.9.4](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.9.3...@storm-software/storm-ops-v1.9.4) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added virtual file system to tsup patch to resolve missing libs ([068ab7a](https://github.com/storm-software/storm-ops/commit/068ab7a56a45d3d3ed63a86661d8207929829e5a))
+
 ## [1.9.3](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.9.2...@storm-software/storm-ops-v1.9.3) (2023-11-25)
 
 
