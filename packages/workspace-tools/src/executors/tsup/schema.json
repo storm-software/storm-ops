@@ -78,7 +78,7 @@
       "platform": {
         "type": "string",
         "description": "Platform target for outputs.",
-        "enum": ["browser", "node", "neutral"],
+        "enum": ["browser", "neutral", "node", "worker"],
         "default": "neutral"
       },
       "banner": {

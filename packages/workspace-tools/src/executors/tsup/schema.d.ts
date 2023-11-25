@@ -1,6 +1,8 @@
 import { EsBuildExecutorOptions } from "@nx/esbuild/src/executors/esbuild/schema.d.ts";
 import { Options } from "tsup";
 
+export type Platform = "browser" | "neutral" | "node" | "worker";
+
 export type TsupExecutorSchema = Omit<
   EsBuildExecutorOptions,
   | "main"
@@ -15,6 +17,7 @@ export type TsupExecutorSchema = Omit<
   | "skipTypeCheck"
   | "esbuildOptions"
   | "esbuildConfig"
+  | "platform"
 > & {
   entry?: string;
   options: Options;
@@ -28,4 +31,5 @@ export type TsupExecutorSchema = Omit<
   docModel?: boolean;
   tsdocMetadata?: boolean;
   includeSrc?: boolean;
+  platform?: Platform;
 };

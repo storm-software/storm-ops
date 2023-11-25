@@ -25,12 +25,8 @@ function useDirectory(
 
 function getNodeModuleDirectory(workspaceRoot: string): string | undefined {
   const nodeModules = join(workspaceRoot, "node_modules");
-
-  if (!isWritable(nodeModules)) {
+  if (existsSync(nodeModules) && !isWritable(nodeModules)) {
     throw new Error("Cannot write to node_modules directory");
-  }
-  if (existsSync(nodeModules) || !isWritable(join(workspaceRoot))) {
-    return undefined;
   }
 
   return nodeModules;

@@ -80,7 +80,7 @@ export class WorkspaceStorage {
    * @param index - The index to get
    * @returns The key at the index
    */
-  key(index: number) {
+  key(index: number): string | undefined {
     const files = readdirSync(this.cacheDir);
     if (index < files.length && index >= 0) {
       return files[index];

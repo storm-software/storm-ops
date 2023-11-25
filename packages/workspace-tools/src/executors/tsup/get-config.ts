@@ -165,14 +165,15 @@ export function workerConfig({
     entry,
     format: ["esm"],
     target: ["chrome95"],
+    bundle: true,
     tsconfig,
     projectRoot,
     workspaceRoot,
-    outDir: join(outDir, "dist", "worker"),
+    outDir: join(outDir, "dist"),
     silent: !verbose,
     metafile: true,
     shims: true,
-    minify: false,
+    minify: true,
     external,
     platform: "browser",
     banner,
@@ -267,12 +268,11 @@ export function getConfig(
     options
   };
 
-  const config = [modernConfig(params), legacyConfig(params)];
-  if (platform === "node") {
-    config.push(workerConfig(params));
+  if (platform === "worker") {
+    return defineConfig(workerConfig(params));
   }
 
-  return defineConfig(config);
+  return defineConfig([modernConfig(params), legacyConfig(params)]);
 }
 
 const outExtension = ({ options, format, pkgType }) => {
