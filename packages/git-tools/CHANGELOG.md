@@ -1,3 +1,10 @@
+## [1.8.2](https://github.com/storm-software/storm-ops/compare/git-tools-v1.8.1...git-tools-v1.8.2) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated the way options are passed to `createProgram` ([aa03cd7](https://github.com/storm-software/storm-ops/commit/aa03cd764dcf0fee436d12d385cae5cec74aab9d))
+
 ## [1.8.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.8.0...git-tools-v1.8.1) (2023-11-25)
 
 
