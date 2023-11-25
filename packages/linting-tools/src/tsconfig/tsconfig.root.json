@@ -29,12 +29,6 @@
     "skipDefaultLibCheck": true,
     "esModuleInterop": true
   },
-  "ts-node": {
-    "compilerOptions": {
-      "module": "commonjs",
-      "esModuleInterop": true
-    }
-  },
   "include": ["./reset.d.ts"],
   "exclude": ["**/node_modules", "**/tmp"]
 }
