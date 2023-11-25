@@ -1,3 +1,15 @@
+# [1.10.0](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.9.6...@storm-software/storm-ops-v1.10.0) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with ES module imports ([8573fbc](https://github.com/storm-software/storm-ops/commit/8573fbcc2c741c8496160e61ff7011070ad07402))
+
+
+### Features
+
+* **workspace-tools:** Added `WorkspaceStorage` class to handle caching during processing ([b7a6830](https://github.com/storm-software/storm-ops/commit/b7a68300721be70fdf18c07b9e700f77f1191486))
+
 ## [1.9.6](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.9.5...@storm-software/storm-ops-v1.9.6) (2023-11-25)
 
 
