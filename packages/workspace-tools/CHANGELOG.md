@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.10.20...workspace-tools-v1.11.0) (2023-11-25)
+
+
+### Features
+
+* **workspace-tools:** Added workers distribution to tsup build ([fc80ec1](https://github.com/storm-software/storm-ops/commit/fc80ec1e3ecea46bc63b2bd5fc4e46f3ecdc8ba0))
+
 ## [1.10.20](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.10.19...workspace-tools-v1.10.20) (2023-11-25)
 
 
