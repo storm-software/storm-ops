@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.6.1...testing-tools-v1.6.2) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update default compilerOptions prior to calling tsc ([8bcb254](https://github.com/storm-software/storm-ops/commit/8bcb254fc0045414a80d79b056f6cfde2fd66e68))
+
 ## [1.6.1](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.6.0...testing-tools-v1.6.1) (2023-11-25)
 
 
