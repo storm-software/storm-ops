@@ -1,3 +1,10 @@
+## [1.10.17](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.16...create-storm-workspace-v1.10.17) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Fixed issue with invalid chars in entry name ([5d849dd](https://github.com/storm-software/storm-ops/commit/5d849dd45c198283b31fe5e939351df0e841107c))
+
 ## [1.10.16](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.15...create-storm-workspace-v1.10.16) (2023-11-25)
 
 
