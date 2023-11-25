@@ -42,6 +42,7 @@ export default async function runExecutor(
     options.external ??= [];
     options.additionalEntryPoints ??= [];
     options.assets ??= [];
+    options.includeSrc ??= true;
     options.clean ??= true;
     options.bundle ??= true;
     options.debug ??= false;
@@ -119,11 +120,14 @@ ${Object.keys(options)
       glob: "LICENSE",
       output: "."
     });
-    assets.push({
-      input: sourceRoot,
-      glob: "**/{*.d.ts,*.ts,*.tsx}",
-      output: "src/"
-    });
+
+    if (options.includeSrc) {
+      assets.push({
+        input: sourceRoot,
+        glob: "**/{*.d.ts,*.ts,*.tsx}",
+        output: "src/"
+      });
+    }
 
     const result = await copyAssets(
       { assets, watch: options.watch, outputPath },
@@ -243,7 +247,11 @@ ${externalDependencies
       (packageJson.browser ??= "dist/modern/index.global.js");
 
     packageJson.sideEffects ??= false;
-    packageJson.files ??= ["dist", "src"];
+    packageJson.files ??= ["dist"];
+    if (options.includeSrc && !packageJson.files.includes("src")) {
+      packageJson.files.push("src");
+    }
+
     packageJson.publishConfig ??= {
       access: "public"
     };
@@ -282,7 +290,7 @@ ${externalDependencies
       })
     );
 
-    if (options.banner) {
+    if (options.banner && options.includeSrc) {
       const files = globSync([
         join(context.root, outputPath, "src/**/*.ts"),
         join(context.root, outputPath, "src/**/*.tsx"),

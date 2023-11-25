@@ -27,4 +27,5 @@ export type TsupExecutorSchema = Omit<
   apiReport?: boolean;
   docModel?: boolean;
   tsdocMetadata?: boolean;
+  includeSrc?: boolean;
 };
