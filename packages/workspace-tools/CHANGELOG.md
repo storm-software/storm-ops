@@ -1,3 +1,10 @@
+## [1.13.3](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.13.2...workspace-tools-v1.13.3) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated the way options are passed to `createProgram` ([aa03cd7](https://github.com/storm-software/storm-ops/commit/aa03cd764dcf0fee436d12d385cae5cec74aab9d))
+
 ## [1.13.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.13.1...workspace-tools-v1.13.2) (2023-11-25)
 
 
