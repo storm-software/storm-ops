@@ -51,7 +51,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..c88e541262ba18e25573b1879e447ac9
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..e0b172b33c9741b6777352c589a940cce9bdceb5 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..e547945d6a991a7309d0ba1f719629b664f6d76d 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1603,6 +1603,36 @@ var generateExternal = async (external) => {
@@ -210,11 +210,11 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..e0b172b33c9741b6777352c589a940cc
 -      }
 +      },
 +      files: [ 
-+        ...rawTsconfig.data.files, 
++        ...(rawTsconfig.data.files ?? {}), 
 +        `${options.projectRoot}/**/*` 
 +      ],
 +      include: [ 
-+        ...rawTsconfig.data.include, 
++        ...(rawTsconfig.data.files ?? {}), 
 +        `${options.projectRoot}/**/*` 
 +      ],
      },

@@ -171,6 +171,7 @@ export function getConfig(
       join(filePath.path, removeExtension(filePath.name))
         .replaceAll("/", "-")
         .replaceAll("\\", "-")
+        .replaceAll(":", "")
     ] = join(filePath.path, filePath.name);
 
     return ret;
