@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { env } from "node:process";
 import { getWorkspaceRoot } from "./get-workspace-root";
 
-const isWritable = path => {
+const isWritable = (path: string): boolean => {
   try {
     accessSync(path, constants.W_OK);
     return true;
@@ -15,7 +15,7 @@ const isWritable = path => {
 function useDirectory(
   directory: string,
   { create = true }: { create?: boolean }
-) {
+): string {
   if (create) {
     mkdirSync(directory, { recursive: true });
   }
@@ -23,14 +23,14 @@ function useDirectory(
   return directory;
 }
 
-function getNodeModuleDirectory(workspaceRoot: string) {
+function getNodeModuleDirectory(workspaceRoot: string): string | undefined {
   const nodeModules = join(workspaceRoot, "node_modules");
 
-  if (
-    !isWritable(nodeModules) &&
-    (existsSync(nodeModules) || !isWritable(join(workspaceRoot)))
-  ) {
-    return;
+  if (!isWritable(nodeModules)) {
+    throw new Error("Cannot write to node_modules directory");
+  }
+  if (existsSync(nodeModules) || !isWritable(join(workspaceRoot))) {
+    return undefined;
   }
 
   return nodeModules;
@@ -52,7 +52,7 @@ export function findCacheDirectory(
     workspaceRoot: getWorkspaceRoot(),
     create: true
   }
-) {
+): string {
   if (env.CACHE_DIR && !["true", "false", "1", "0"].includes(env.CACHE_DIR)) {
     return useDirectory(join(env.CACHE_DIR, name, cacheName), { create });
   }
@@ -67,7 +67,7 @@ export function findCacheDirectory(
 
   const nodeModules = getNodeModuleDirectory(workspaceRoot);
   if (!nodeModules) {
-    return;
+    throw new Error("Cannot find node_modules directory");
   }
 
   return useDirectory(
