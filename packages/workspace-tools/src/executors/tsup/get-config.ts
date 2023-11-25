@@ -1,6 +1,7 @@
 import { Path, globSync } from "glob";
 import { join } from "path";
 import { Options, defineConfig } from "tsup";
+import { WorkspaceStorage } from "../../utils";
 import { removeExtension } from "../../utils/file-path-utils";
 import { TsupExecutorSchema } from "./schema";
 
@@ -22,6 +23,7 @@ type GetConfigParams = Omit<
   apiReport?: boolean;
   docModel?: boolean;
   tsdocMetadata?: boolean;
+  tsCdnStorage?: WorkspaceStorage;
 };
 
 export function modernConfig({
@@ -40,6 +42,7 @@ export function modernConfig({
   tsdocMetadata = true,
   define,
   env,
+  tsCdnStorage,
   options
 }: GetConfigParams) {
   return {
@@ -83,6 +86,7 @@ export function modernConfig({
     tsdocMetadata,
     sourcemap: debug,
     clean: false,
+    tsCdnStorage,
     outExtension
   } as Options;
 }
@@ -100,6 +104,7 @@ export function legacyConfig({
   verbose = false,
   define,
   env,
+  tsCdnStorage,
   options
 }: GetConfigParams) {
   return {
@@ -132,6 +137,7 @@ export function legacyConfig({
     tsdocMetadata: false,
     sourcemap: debug,
     clean: false,
+    tsCdnStorage,
     outExtension
   } as Options;
 }
@@ -151,6 +157,7 @@ export function workerConfig({
   tsdocMetadata = true,
   define,
   env,
+  tsCdnStorage,
   options
 }: GetConfigParams) {
   return {
@@ -183,6 +190,7 @@ export function workerConfig({
     tsdocMetadata,
     sourcemap: debug,
     clean: false,
+    tsCdnStorage,
     outExtension
   } as Options;
 }
@@ -252,6 +260,10 @@ export function getConfig(
     tsdocMetadata,
     define,
     env,
+    tsCdnStorage: new WorkspaceStorage({
+      cacheName: "ts-libs",
+      workspaceRoot
+    }),
     options
   };
 
