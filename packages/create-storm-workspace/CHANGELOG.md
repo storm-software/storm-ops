@@ -1,3 +1,10 @@
+## [1.10.18](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.17...create-storm-workspace-v1.10.18) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with entry properties ([476affc](https://github.com/storm-software/storm-ops/commit/476affcab1b17148b4e3df78f24dd3fd6588d403))
+
 ## [1.10.17](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.16...create-storm-workspace-v1.10.17) (2023-11-25)
 
 
