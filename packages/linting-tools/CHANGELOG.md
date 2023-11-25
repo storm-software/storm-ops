@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.8.0...linting-tools-v1.8.1) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved bad iterable issue in tsup patch ([62a016b](https://github.com/storm-software/storm-ops/commit/62a016bc7bc5aec0978d0a92883843c795f997ac))
+
 # [1.8.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.7.1...linting-tools-v1.8.0) (2023-11-25)
 
 
