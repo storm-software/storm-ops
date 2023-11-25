@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.5.13...git-tools-v1.6.0) (2023-11-25)
+
+
+### Features
+
+* **workspace-tools:** Added workers distribution to tsup build ([fc80ec1](https://github.com/storm-software/storm-ops/commit/fc80ec1e3ecea46bc63b2bd5fc4e46f3ecdc8ba0))
+
 ## [1.5.13](https://github.com/storm-software/storm-ops/compare/git-tools-v1.5.12...git-tools-v1.5.13) (2023-11-25)
 
 
