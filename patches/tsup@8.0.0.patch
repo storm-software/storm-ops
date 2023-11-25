@@ -51,7 +51,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..c88e541262ba18e25573b1879e447ac9
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..13b1aa93ecf8d2e95f78b4368ee0cd626b404657 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..de58a8a83f6272c9fe0e4f0b20589733763890b7 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1590,19 +1590,54 @@ var getOutputExtensionMap = (options, format, pkgType) => {
@@ -222,7 +222,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..13b1aa93ecf8d2e95f78b4368ee0cd62
    let emitResult = program.emit(void 0, writeFile, void 0, true);
    let diagnostics = _typescript2.default.getPreEmitDiagnostics(program).concat(emitResult.diagnostics);
    let diagnosticMessages = [];
-@@ -2287,38 +2342,115 @@ function emitDtsFiles(program, host) {
+@@ -2287,48 +2342,127 @@ function emitDtsFiles(program, host) {
    }
    return fileMapping;
  }
@@ -350,9 +350,10 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..13b1aa93ecf8d2e95f78b4368ee0cd62
 +
 +  return getExports(options, program, fileMapping);
  }
- function runTypeScriptCompiler(options) {
+-function runTypeScriptCompiler(options) {
++async function runTypeScriptCompiler(options) {
    try {
-@@ -2326,9 +2458,11 @@ function runTypeScriptCompiler(options) {
+     const start = Date.now();
      const getDuration = () => {
        return `${Math.floor(Date.now() - start)}ms`;
      };
@@ -360,7 +361,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..13b1aa93ecf8d2e95f78b4368ee0cd62
      logger.info("tsc", "Build start");
      const dtsOptions = options.experimentalDts;
 -    const exports = emit(dtsOptions.compilerOptions, options.tsconfig);
-+    const exports = emit(options, dtsOptions.compilerOptions, options.tsconfig);
++    const exports = await emit(options, dtsOptions.compilerOptions, options.tsconfig);
 +
      logger.success("tsc", `\u26A1\uFE0F Build success in ${getDuration()}`);
      return exports;
@@ -467,9 +468,12 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..13b1aa93ecf8d2e95f78b4368ee0cd62
    const extractorResult = Extractor.invoke(extractorConfig, {
      // Equivalent to the "--local" command-line parameter
      localBuild: true,
-@@ -2477,31 +2662,49 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+@@ -2475,33 +2660,51 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+   }
+ }
  async function rollupDtsFiles(options, exports, format) {
-   let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
+-  let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
++  let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, options);
    let outDir = options.outDir || "dist";
 -  let pkg = await _chunk7G76EW2Rjs.loadPkg.call(void 0, process.cwd());
 +  let pkgPath = packageJsonSearch(outDir, options.silent, "dts", logger2);
@@ -559,6 +563,15 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..13b1aa93ecf8d2e95f78b4368ee0cd62
      _options.config === true ? void 0 : _options.config
    );
    const configData = typeof config.data === "function" ? await config.data(_options) : config.data;
+@@ -2652,7 +2859,7 @@ async function build(_options) {
+             );
+           }
+           if (options.experimentalDts) {
+-            const exports = runTypeScriptCompiler(options);
++            const exports = await runTypeScriptCompiler(options);
+             await runDtsRollup(options, exports);
+           }
+           if (options.dts) {
 @@ -2695,7 +2902,7 @@ async function build(_options) {
              let onSuccessProcess;
              let onSuccessCleanup;
