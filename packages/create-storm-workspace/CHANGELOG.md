@@ -1,3 +1,10 @@
+## [1.10.20](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.19...create-storm-workspace-v1.10.20) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the outDir value of parsed tsconfig options in tsup patch ([65c2aca](https://github.com/storm-software/storm-ops/commit/65c2aca19ba41a7de44d2f4b2121f7e2abfd3893))
+
 ## [1.10.19](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.10.18...create-storm-workspace-v1.10.19) (2023-11-25)
 
 
