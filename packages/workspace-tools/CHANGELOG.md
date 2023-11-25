@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.11.1...workspace-tools-v1.12.0) (2023-11-25)
+
+
+### Features
+
+* **workspace-tools:** Added the `includeSrc` option to the tsup build executor ([be66e22](https://github.com/storm-software/storm-ops/commit/be66e222af773fb741cfa719f883bfb921ff8a68))
+
 ## [1.11.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.11.0...workspace-tools-v1.11.1) (2023-11-25)
 
 
