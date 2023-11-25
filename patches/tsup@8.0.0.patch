@@ -51,7 +51,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..c88e541262ba18e25573b1879e447ac9
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..934e0cd408f73bbc713c9fd5b1d418fd8cb91dea 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..13b1aa93ecf8d2e95f78b4368ee0cd626b404657 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1590,19 +1590,54 @@ var getOutputExtensionMap = (options, format, pkgType) => {
@@ -307,7 +307,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..934e0cd408f73bbc713c9fd5b1d418fd
 -  let host = _typescript2.default.createCompilerHost(options);
 +  logger.info("tsc", parsedTsconfig);
 +
-+  const fsMap = await _tsvfs2.default.createDefaultMapFromCDN(parsedTsconfig.options, 
++  const fsMap = await _tsvfs2.createDefaultMapFromCDN(parsedTsconfig.options, 
 +    _typescript2.default.version, 
 +    true, 
 +    _typescript2.default);
@@ -316,10 +316,10 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..934e0cd408f73bbc713c9fd5b1d418fd
 +  parsedTsconfig.options.lib.forEach(lib => addLib(lib, fsMap));
 +  logger.info("tsc", "Added libs to FS Map");
 +
-+  const system = _tsvfs2.default.createSystem(fsMap);
++  const system = _tsvfs2.createSystem(fsMap);
 +  logger.info("tsc", "Created virtual file system");
 +
-+  const host = _tsvfs2.default.createVirtualCompilerHost(system, 
++  const host = _tsvfs2.createVirtualCompilerHost(system, 
 +    parsedTsconfig.options, 
 +    _typescript2.default);
 +  logger.info("tsc", "Created virtual compiler host");
