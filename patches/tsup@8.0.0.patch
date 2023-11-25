@@ -51,7 +51,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..c88e541262ba18e25573b1879e447ac9
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..47ec87088b20fb32c69b2e1429d3b603bf2beb8c 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..57ddc19368abf08a6c9c1b674ec56805cec3cbf1 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1590,19 +1590,54 @@ var getOutputExtensionMap = (options, format, pkgType) => {
@@ -214,7 +214,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..47ec87088b20fb32c69b2e1429d3b603
    let emitResult = program.emit(void 0, writeFile, void 0, true);
    let diagnostics = _typescript2.default.getPreEmitDiagnostics(program).concat(emitResult.diagnostics);
    let diagnosticMessages = [];
-@@ -2287,38 +2341,91 @@ function emitDtsFiles(program, host) {
+@@ -2287,38 +2341,95 @@ function emitDtsFiles(program, host) {
    }
    return fileMapping;
  }
@@ -264,13 +264,17 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..47ec87088b20fb32c69b2e1429d3b603
          emitDeclarationOnly: true
 -      }
 +      },
++      files: [
++        ...(rawTsconfig.data.files ?? []), 
++        ...(rawTsconfig.files ?? []), 
++      ],
 +      include: [ 
 +        ...(rawTsconfig.data.include?.map?.(include => _path.join(options.projectRoot, 
-+          include)) ?? {}),
++          include)) ?? []),
 +      ],
 +      exclude: [ 
 +        ...(rawTsconfig.data.exclude?.map?.(exclude => _path.join(options.projectRoot, 
-+          exclude)) ?? {}),
++          exclude)) ?? []),
 +      ],
      },
      _typescript2.default.sys,
@@ -288,13 +292,13 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..47ec87088b20fb32c69b2e1429d3b603
 +  let tsOptions = parsedTsconfig.options;
 +  if (parsedTsconfig.raw.include) {
 +    tsOptions.include = [
-+      ...(tsOptions.include ?? {}),
++      ...(tsOptions.include ?? []),
 +      ...parsedTsconfig.raw.include
 +    ];
 +  }
 +  if (parsedTsconfig.raw.exclude) {
 +    tsOptions.exclude = [
-+      ...(tsOptions.exclude ?? {}),
++      ...(tsOptions.exclude ?? []),
 +      ...parsedTsconfig.raw.exclude
 +    ];
 +  }
@@ -319,7 +323,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..47ec87088b20fb32c69b2e1429d3b603
  }
  function runTypeScriptCompiler(options) {
    try {
-@@ -2326,9 +2433,11 @@ function runTypeScriptCompiler(options) {
+@@ -2326,9 +2437,11 @@ function runTypeScriptCompiler(options) {
      const getDuration = () => {
        return `${Math.floor(Date.now() - start)}ms`;
      };
@@ -332,7 +336,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..47ec87088b20fb32c69b2e1429d3b603
      logger.success("tsc", `\u26A1\uFE0F Build success in ${getDuration()}`);
      return exports;
    } catch (error) {
-@@ -2428,40 +2537,91 @@ function formatDistributionExport(declaration, dest) {
+@@ -2428,40 +2541,91 @@ function formatDistributionExport(declaration, dest) {
  
  // src/api-extractor.ts
  var logger2 = _chunk7G76EW2Rjs.createLogger.call(void 0, );
@@ -434,7 +438,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..47ec87088b20fb32c69b2e1429d3b603
    const extractorResult = Extractor.invoke(extractorConfig, {
      // Equivalent to the "--local" command-line parameter
      localBuild: true,
-@@ -2477,31 +2637,49 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+@@ -2477,31 +2641,49 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
  async function rollupDtsFiles(options, exports, format) {
    let declarationDir = _chunkGQ77QZBOjs.ensureTempDeclarationDir.call(void 0, );
    let outDir = options.outDir || "dist";
@@ -490,7 +494,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..47ec87088b20fb32c69b2e1429d3b603
      );
    }
  }
-@@ -2592,11 +2770,14 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -2592,11 +2774,14 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
      options.entry = entry;
      logger3.info("CLI", `Building entry: ${JSON.stringify(entry)}`);
    }
@@ -507,7 +511,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..47ec87088b20fb32c69b2e1429d3b603
      );
      options.tsconfig = tsconfig.path;
      options.tsconfigResolvePaths = _optionalChain([tsconfig, 'access', _20 => _20.data, 'optionalAccess', _21 => _21.compilerOptions, 'optionalAccess', _22 => _22.paths]) || {};
-@@ -2610,7 +2791,8 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -2610,7 +2795,8 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
      if (options.experimentalDts) {
        options.experimentalDts.compilerOptions = {
          ...tsconfig.data.compilerOptions || {},
@@ -517,7 +521,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..47ec87088b20fb32c69b2e1429d3b603
        };
        options.experimentalDts.entry = _chunkGQ77QZBOjs.toObjectEntry.call(void 0, 
          Object.keys(options.experimentalDts.entry).length > 0 ? options.experimentalDts.entry : options.entry
-@@ -2629,7 +2811,7 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -2629,7 +2815,7 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
  };
  async function build(_options) {
    const config = _options.config === false ? {} : await _chunk7G76EW2Rjs.loadTsupConfig.call(void 0, 
@@ -526,7 +530,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..47ec87088b20fb32c69b2e1429d3b603
      _options.config === true ? void 0 : _options.config
    );
    const configData = typeof config.data === "function" ? await config.data(_options) : config.data;
-@@ -2695,7 +2877,7 @@ async function build(_options) {
+@@ -2695,7 +2881,7 @@ async function build(_options) {
              let onSuccessProcess;
              let onSuccessCleanup;
              const buildDependencies = /* @__PURE__ */ new Set();
@@ -535,7 +539,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..47ec87088b20fb32c69b2e1429d3b603
              const doOnSuccessCleanup = async () => {
                if (onSuccessProcess) {
                  await killProcess({
-@@ -2816,7 +2998,7 @@ async function build(_options) {
+@@ -2816,7 +3002,7 @@ async function build(_options) {
                  let shouldSkipChange = false;
                  if (options.watch === true) {
                    if (file === "package.json" && !buildDependencies.has(file)) {
