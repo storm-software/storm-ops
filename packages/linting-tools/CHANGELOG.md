@@ -1,3 +1,10 @@
+## [1.8.6](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.8.5...linting-tools-v1.8.6) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resovled issue with missing options in rollup build in tsup patch ([765f538](https://github.com/storm-software/storm-ops/commit/765f538d0dd11964299e254654bbd1b5b38261ff))
+
 ## [1.8.5](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.8.4...linting-tools-v1.8.5) (2023-11-25)
 
 
