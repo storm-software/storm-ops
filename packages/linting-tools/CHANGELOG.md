@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.1...linting-tools-v1.9.2) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated the way options are passed to `createProgram` ([aa03cd7](https://github.com/storm-software/storm-ops/commit/aa03cd764dcf0fee436d12d385cae5cec74aab9d))
+
 ## [1.9.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.0...linting-tools-v1.9.1) (2023-11-25)
 
 
