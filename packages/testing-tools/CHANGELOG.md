@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.7.0...testing-tools-v1.7.1) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated tsup patch to use compilerHost ([6fcff07](https://github.com/storm-software/storm-ops/commit/6fcff076a61f708472591c701dbd06716286ef6b))
+
 # [1.7.0](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.6.6...testing-tools-v1.7.0) (2023-11-25)
 
 
