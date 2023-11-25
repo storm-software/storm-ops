@@ -1,3 +1,10 @@
+## [1.12.3](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.12.2...workspace-tools-v1.12.3) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed compiler options to set targer manaully in tsup build ([4aff28d](https://github.com/storm-software/storm-ops/commit/4aff28d6e451b18c120157b0c7e62ce6530a9eff))
+
 ## [1.12.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.12.1...workspace-tools-v1.12.2) (2023-11-25)
 
 
