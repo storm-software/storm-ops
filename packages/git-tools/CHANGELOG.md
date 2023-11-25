@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.6.0...git-tools-v1.6.1) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update include paths in tsconfig used in tsup builder ([99e651d](https://github.com/storm-software/storm-ops/commit/99e651d42f770bc29e7e76f7533abe519e29b9a4))
+
 # [1.6.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.5.13...git-tools-v1.6.0) (2023-11-25)
 
 
