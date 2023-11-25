@@ -1,3 +1,10 @@
+## [1.4.12](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.4.11...testing-tools-v1.4.12) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Fixed issue with invalid chars in entry name ([5d849dd](https://github.com/storm-software/storm-ops/commit/5d849dd45c198283b31fe5e939351df0e841107c))
+
 ## [1.4.11](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.4.10...testing-tools-v1.4.11) (2023-11-24)
 
 
