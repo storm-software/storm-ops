@@ -1,3 +1,10 @@
+## [1.13.7](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.6...create-storm-workspace-v1.13.7) (2023-11-26)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue where fs map was cleared out ([1ea5c53](https://github.com/storm-software/storm-ops/commit/1ea5c538fbcd5220edc62024d42238816c4ecf2c))
+
 ## [1.13.6](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.5...create-storm-workspace-v1.13.6) (2023-11-26)
 
 
