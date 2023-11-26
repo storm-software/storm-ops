@@ -1,3 +1,10 @@
+## [1.9.4](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.3...linting-tools-v1.9.4) (2023-11-26)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with fs key ([e48babc](https://github.com/storm-software/storm-ops/commit/e48babca8053531bcbec4635efca7accd0e00699))
+
 ## [1.9.3](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.2...linting-tools-v1.9.3) (2023-11-25)
 
 
