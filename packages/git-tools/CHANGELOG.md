@@ -1,3 +1,10 @@
+## [1.8.7](https://github.com/storm-software/storm-ops/compare/git-tools-v1.8.6...git-tools-v1.8.7) (2023-11-26)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added `emitDeclarationOnly` to typescript compiler options ([e7b024f](https://github.com/storm-software/storm-ops/commit/e7b024f6f7648607aa4c71048cebbf6451d30577))
+
 ## [1.8.6](https://github.com/storm-software/storm-ops/compare/git-tools-v1.8.5...git-tools-v1.8.6) (2023-11-26)
 
 
