@@ -1,3 +1,10 @@
+## [1.10.8](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.10.7...@storm-software/storm-ops-v1.10.8) (2023-11-26)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Fixed issue with `packageJsonFullPath` parameter of api-extractor ([69e4021](https://github.com/storm-software/storm-ops/commit/69e40219d7db548736b640ebada7fa14aee8a325))
+
 ## [1.10.7](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.10.6...@storm-software/storm-ops-v1.10.7) (2023-11-26)
 
 
