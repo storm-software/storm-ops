@@ -1,3 +1,10 @@
+## [1.8.6](https://github.com/storm-software/storm-ops/compare/git-tools-v1.8.5...git-tools-v1.8.6) (2023-11-26)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue where fs map was cleared out ([1ea5c53](https://github.com/storm-software/storm-ops/commit/1ea5c538fbcd5220edc62024d42238816c4ecf2c))
+
 ## [1.8.5](https://github.com/storm-software/storm-ops/compare/git-tools-v1.8.4...git-tools-v1.8.5) (2023-11-26)
 
 
