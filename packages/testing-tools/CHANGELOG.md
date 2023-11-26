@@ -1,3 +1,10 @@
+## [1.7.8](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.7.7...testing-tools-v1.7.8) (2023-11-26)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Fixed issue with `packageJsonFullPath` parameter of api-extractor ([69e4021](https://github.com/storm-software/storm-ops/commit/69e40219d7db548736b640ebada7fa14aee8a325))
+
 ## [1.7.7](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.7.6...testing-tools-v1.7.7) (2023-11-26)
 
 
