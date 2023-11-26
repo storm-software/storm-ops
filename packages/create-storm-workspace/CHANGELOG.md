@@ -1,3 +1,10 @@
+## [1.13.5](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.4...create-storm-workspace-v1.13.5) (2023-11-26)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with fs key ([e48babc](https://github.com/storm-software/storm-ops/commit/e48babca8053531bcbec4635efca7accd0e00699))
+
 ## [1.13.4](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.3...create-storm-workspace-v1.13.4) (2023-11-25)
 
 
