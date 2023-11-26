@@ -52,7 +52,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..4200d6e04057d5d601b5593a068b3c07
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..eae8bfd5c276eadf34269a98b5b07cc9df841fc0 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..c318c659642c625302c3439b172763922def6b6e 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1590,19 +1590,54 @@ var getOutputExtensionMap = (options, format, pkgType) => {
@@ -252,7 +252,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..eae8bfd5c276eadf34269a98b5b07cc9
 +  const file = await getFile(name, logger);
 +  map.set(name, file);
 +  if (name.includes(options.workspaceRoot)) {
-+    const relativeName = _path.relative(options.workspaceRoot, name);
++    const relativeName = name.replace(options.workspaceRoot, "");
 +    map.set(relativeName.startsWith("/") 
 +      ? relativeName 
 +      : `/${relativeName}`, file);
