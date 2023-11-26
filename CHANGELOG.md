@@ -1,3 +1,11 @@
+## [1.10.4](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.10.3...@storm-software/storm-ops-v1.10.4) (2023-11-26)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with fs key ([e48babc](https://github.com/storm-software/storm-ops/commit/e48babca8053531bcbec4635efca7accd0e00699))
+* **workspace-tools:** Update paths on file system map in tsup patch ([2d1a1f5](https://github.com/storm-software/storm-ops/commit/2d1a1f5186eb301ea7b5486528ed2a8133eabadb))
+
 ## [1.10.3](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.10.2...@storm-software/storm-ops-v1.10.3) (2023-11-25)
 
 
