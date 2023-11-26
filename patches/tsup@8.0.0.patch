@@ -52,7 +52,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..4200d6e04057d5d601b5593a068b3c07
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..149e1d0c37cb56d8f48362f4f155eade5033648c 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..5f267c19c985199ebad6bbe50715a7811c8a9c12 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1590,19 +1590,54 @@ var getOutputExtensionMap = (options, format, pkgType) => {
@@ -251,7 +251,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..149e1d0c37cb56d8f48362f4f155eade
 +  const relativeName = name.replaceAll("/", "\\")
 +    .replace(options.workspaceRoot, "")
 +    .replaceAll("\\", "/");
-+  if (map.has(relativeName)) {
++  if (map && map.has(relativeName)) {
 +    logger.info("tsc", `Adding file to FS Map: ${relativeName}`);
 +
 +    const file = await getFile(name, logger);
@@ -326,16 +326,16 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..149e1d0c37cb56d8f48362f4f155eade
 +  );
 +  logger.info("tsc", parsedTsconfig);
 +
-+  let fsMap = await _tsvfs2.createDefaultMapFromNodeModules(parsedTsconfig.options, 
++  const fsMap = await _tsvfs2.createDefaultMapFromNodeModules(parsedTsconfig.options, 
 +    _typescript2.default,
 +    options.workspaceRoot);
 +  logger.info("tsc", "Created FS Map");
 +
 +  /*parsedTsconfig.options.lib.forEach(lib => addLib(lib, fsMap, logger));
-+  logger.info("tsc", "Added libs to FS Map");*/
++  logger.info("tsc", "Added libs to FS Map");
 +
 +  fsMap = _tsvfs2.addFilesForTypesIntoFolder(fsMap);
-+  logger.info("tsc", "Added types to FS Map");
++  logger.info("tsc", "Added types to FS Map");*/
 +
 +  await Promise.all(parsedTsconfig.fileNames.map((fileName) => 
 +    addFile(fileName, fsMap, options, logger)));
