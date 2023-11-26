@@ -1,3 +1,10 @@
+## [1.10.5](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.10.4...@storm-software/storm-ops-v1.10.5) (2023-11-26)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with virtual file system in tsup patch ([ea79319](https://github.com/storm-software/storm-ops/commit/ea793191735ccf6bfd7d9b4670da71a598e12606))
+
 ## [1.10.4](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.10.3...@storm-software/storm-ops-v1.10.4) (2023-11-26)
 
 
