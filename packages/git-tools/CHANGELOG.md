@@ -1,3 +1,10 @@
+## [1.8.3](https://github.com/storm-software/storm-ops/compare/git-tools-v1.8.2...git-tools-v1.8.3) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with incorrectly written config file ([bc93e00](https://github.com/storm-software/storm-ops/commit/bc93e00986d962c55323d85dec22c7c543614417))
+
 ## [1.8.2](https://github.com/storm-software/storm-ops/compare/git-tools-v1.8.1...git-tools-v1.8.2) (2023-11-25)
 
 

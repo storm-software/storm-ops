@@ -1,3 +1,10 @@
+## [1.7.3](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.7.2...testing-tools-v1.7.3) (2023-11-25)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with incorrectly written config file ([bc93e00](https://github.com/storm-software/storm-ops/commit/bc93e00986d962c55323d85dec22c7c543614417))
+
 ## [1.7.2](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.7.1...testing-tools-v1.7.2) (2023-11-25)
 
 
