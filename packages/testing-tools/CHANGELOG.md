@@ -1,3 +1,10 @@
+## [1.7.5](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.7.4...testing-tools-v1.7.5) (2023-11-26)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with virtual file system in tsup patch ([ea79319](https://github.com/storm-software/storm-ops/commit/ea793191735ccf6bfd7d9b4670da71a598e12606))
+
 ## [1.7.4](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.7.3...testing-tools-v1.7.4) (2023-11-26)
 
 
