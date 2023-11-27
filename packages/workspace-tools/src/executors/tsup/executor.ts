@@ -5,7 +5,6 @@ import { copyAssets } from "@nx/js";
 import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options";
 import { createTypeScriptCompilationOptions } from "@nx/js/src/executors/tsc/tsc.impl";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
-import { handleInliningBuild } from "@nx/js/src/utils/inline";
 import { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
 import { readFileSync, writeFileSync } from "fs";
 import { removeSync } from "fs-extra";
@@ -318,24 +317,6 @@ ${externalDependencies
       );
     }
 
-    const normalize = normalizeOptions(
-      {
-        ...options,
-        watch: false,
-        main: join(sourceRoot, "index.ts"),
-        transformers: []
-      },
-      context.root,
-      sourceRoot,
-      workspaceRoot
-    );
-    const tscOptions = createTypeScriptCompilationOptions(normalize, context);
-    const inlineProjectGraph = handleInliningBuild(
-      context,
-      normalize,
-      tscOptions.tsConfig
-    );
-
     // #endregion Generate the package.json file
 
     // #region Run the build process
@@ -347,7 +328,24 @@ ${externalDependencies
 
     const config = getConfig(context.root, projectRoot, sourceRoot, {
       ...options,
-      dtsTsConfig: getNormalizedTsConfig(context.root, outputPath, tscOptions),
+      dtsTsConfig: getNormalizedTsConfig(
+        context.root,
+        outputPath,
+        createTypeScriptCompilationOptions(
+          normalizeOptions(
+            {
+              ...options,
+              watch: false,
+              main: options.entry,
+              transformers: []
+            },
+            context.root,
+            sourceRoot,
+            workspaceRoot
+          ),
+          context
+        )
+      ),
       banner: options.banner
         ? { js: `// ${options.banner}\n\n`, css: `/* ${options.banner} */\n\n` }
         : undefined,
