@@ -1,3 +1,10 @@
+## [1.13.12](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.13.11...workspace-tools-v1.13.12) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue around adding files to api-extractor config ([4ad4118](https://github.com/storm-software/storm-ops/commit/4ad41184c0c8d1f803846b5bb653dc8fffc905e6))
+
 ## [1.13.11](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.13.10...workspace-tools-v1.13.11) (2023-11-27)
 
 
