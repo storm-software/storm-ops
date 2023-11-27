@@ -378,26 +378,27 @@ function getNormalizedTsConfig(
   outputPath: string,
   options: TypeScriptCompilationOptions
 ) {
+  const config = ts.readConfigFile(options.tsConfig, ts.sys.readFile).config;
   const tsConfig = ts.parseJsonConfigFileContent(
     {
-      ...ts.readConfigFile(options.tsConfig, ts.sys.readFile).config,
-      outDir: outputPath,
-      allowJs: true,
-      noEmit: false,
-      declaration: true,
-      declarationMap: true,
-      emitDeclarationOnly: true,
-      declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
+      ...config,
+      compilerOptions: {
+        ...config.compilerOptions,
+        outDir: outputPath,
+        rootDir: workspaceRoot,
+        baseUrl: workspaceRoot,
+        allowJs: true,
+        noEmit: false,
+        declaration: true,
+        declarationMap: true,
+        emitDeclarationOnly: true,
+        declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
+      }
     },
     ts.sys,
     dirname(options.tsConfig)
   );
 
-  tsConfig.options.noEmit = false;
-  tsConfig.options.outDir = outputPath;
-
-  tsConfig.options.rootDir = workspaceRoot;
-  tsConfig.options.baseUrl = workspaceRoot;
   tsConfig.options.pathsBasePath = workspaceRoot;
   if (tsConfig.options.incremental && !tsConfig.options.tsBuildInfoFile) {
     tsConfig.options.tsBuildInfoFile = joinPathFragments(
