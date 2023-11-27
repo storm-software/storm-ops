@@ -1,3 +1,10 @@
+## [1.9.14](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.13...linting-tools-v1.9.14) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added custom tsc options to tsup patch config ([c6a4d49](https://github.com/storm-software/storm-ops/commit/c6a4d49ef5efac05acb09601393fb54dee42090b))
+
 ## [1.9.13](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.12...linting-tools-v1.9.13) (2023-11-27)
 
 
