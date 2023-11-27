@@ -102,9 +102,7 @@ ${Object.keys(options)
       context
     );
     options.entry = applyWorkspaceTokens(
-      options.entry
-        ? options.entry
-        : join(workspaceRoot, sourceRoot, "**/*.{ts,tsx}"),
+      options.entry ? options.entry : join(sourceRoot, "index.ts"),
       context
     );
 

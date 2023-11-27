@@ -60,7 +60,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..3f62789299ce916f0cdbc8009a8673c2
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..468fab4d4846245c663e64101eb5b4d9a5ca4cbb 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..a38e2d32ecad1ecc820ad40d8fe40442778dc2f5 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1590,19 +1590,54 @@ var getOutputExtensionMap = (options, format, pkgType) => {
@@ -386,12 +386,12 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..468fab4d4846245c663e64101eb5b4d9
 +  });
 +
 +  const fileMapping = emitDtsFiles(program, host, options);
-+  if (fileMapping) {
++  if (!fileMapping || fileMapping.size === 0) {
++    logger.warn("tsc", "No files were emitted during DTS generation!");
++  } else {
 +    let resultLog = "Emitted the following file names: \n";
 +    fileMapping.forEach((value, key) => resultLog += ` -> ${key}: ${value}\n`);
 +    logger.info("tsc", resultLog);
-+  } else {
-+    logger.error("tsc", "No files were emitted during DTS generation");
 +  }
 +
 +  
