@@ -1,3 +1,4 @@
+import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
 import { Path, globSync } from "glob";
 import { join } from "path";
 import { Options, defineConfig } from "tsup";
@@ -9,6 +10,7 @@ type Entry = string | string[] | Record<string, string>;
 
 export type TsupGetConfigOptions = Omit<TsupExecutorSchema, "banner"> & {
   banner?: { js?: string; css?: string };
+  tscOptions: TypeScriptCompilationOptions;
 };
 
 type GetConfigParams = Omit<
@@ -24,6 +26,7 @@ type GetConfigParams = Omit<
   docModel?: boolean;
   tsdocMetadata?: boolean;
   tsCdnStorage?: WorkspaceStorage;
+  tscOptions: TypeScriptCompilationOptions;
 };
 
 export function modernConfig({
@@ -43,7 +46,7 @@ export function modernConfig({
   define,
   env,
   tsCdnStorage,
-  options
+  tscOptions
 }: GetConfigParams) {
   return {
     name: "modern",
@@ -87,7 +90,8 @@ export function modernConfig({
     sourcemap: debug,
     clean: false,
     tsCdnStorage,
-    outExtension
+    outExtension,
+    tscOptions
   } as Options;
 }
 
@@ -105,7 +109,7 @@ export function legacyConfig({
   define,
   env,
   tsCdnStorage,
-  options
+  tscOptions
 }: GetConfigParams) {
   return {
     name: "legacy",
@@ -138,7 +142,8 @@ export function legacyConfig({
     sourcemap: debug,
     clean: false,
     tsCdnStorage,
-    outExtension
+    outExtension,
+    tscOptions
   } as Options;
 }
 
@@ -158,7 +163,7 @@ export function workerConfig({
   define,
   env,
   tsCdnStorage,
-  options
+  tscOptions
 }: GetConfigParams) {
   return {
     name: "worker",
@@ -192,7 +197,8 @@ export function workerConfig({
     sourcemap: debug,
     clean: false,
     tsCdnStorage,
-    outExtension
+    outExtension,
+    tscOptions
   } as Options;
 }
 
@@ -215,6 +221,7 @@ export function getConfig(
     define,
     env,
     verbose,
+    tscOptions,
     ...rest
   }: TsupGetConfigOptions
 ) {
@@ -265,7 +272,8 @@ export function getConfig(
       cacheName: "ts-libs",
       workspaceRoot
     }),
-    options
+    options,
+    tscOptions
   };
 
   if (platform === "worker") {
