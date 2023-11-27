@@ -1,3 +1,10 @@
+## [1.13.25](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.24...create-storm-workspace-v1.13.25) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue specifying compiler options ([530e114](https://github.com/storm-software/storm-ops/commit/530e114bbc9ebd4c02db46deda8d91b57944cdce))
+
 ## [1.13.24](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.23...create-storm-workspace-v1.13.24) (2023-11-27)
 
 
