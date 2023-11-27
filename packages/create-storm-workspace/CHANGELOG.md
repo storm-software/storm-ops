@@ -1,3 +1,10 @@
+## [1.13.14](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.13...create-storm-workspace-v1.13.14) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad path in file map ([ed09f1e](https://github.com/storm-software/storm-ops/commit/ed09f1ecff294e124c6c72301330dbb6f8f94c11))
+
 ## [1.13.13](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.12...create-storm-workspace-v1.13.13) (2023-11-27)
 
 
