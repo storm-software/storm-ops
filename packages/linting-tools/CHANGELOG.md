@@ -1,3 +1,10 @@
+## [1.9.16](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.15...linting-tools-v1.9.16) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resovled issue with parameters passed to createProgram ([96e1e5a](https://github.com/storm-software/storm-ops/commit/96e1e5a12a871779b77f6f51ff1d40cb150fb014))
+
 ## [1.9.15](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.14...linting-tools-v1.9.15) (2023-11-27)
 
 
