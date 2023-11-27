@@ -1,3 +1,10 @@
+## [1.8.14](https://github.com/storm-software/storm-ops/compare/git-tools-v1.8.13...git-tools-v1.8.14) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added custom tsc options to tsup patch config ([c6a4d49](https://github.com/storm-software/storm-ops/commit/c6a4d49ef5efac05acb09601393fb54dee42090b))
+
 ## [1.8.13](https://github.com/storm-software/storm-ops/compare/git-tools-v1.8.12...git-tools-v1.8.13) (2023-11-27)
 
 
