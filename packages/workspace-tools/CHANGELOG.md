@@ -1,3 +1,10 @@
+## [1.13.18](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.13.17...workspace-tools-v1.13.18) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resovled issue with parameters passed to createProgram ([96e1e5a](https://github.com/storm-software/storm-ops/commit/96e1e5a12a871779b77f6f51ff1d40cb150fb014))
+
 ## [1.13.17](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.13.16...workspace-tools-v1.13.17) (2023-11-27)
 
 
