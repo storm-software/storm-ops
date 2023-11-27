@@ -1,3 +1,10 @@
+## [1.13.20](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.19...create-storm-workspace-v1.13.20) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with invalid fileNames variable reference ([c045be1](https://github.com/storm-software/storm-ops/commit/c045be17ca911278d174f47924c6f03a240da790))
+
 ## [1.13.19](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.18...create-storm-workspace-v1.13.19) (2023-11-27)
 
 
