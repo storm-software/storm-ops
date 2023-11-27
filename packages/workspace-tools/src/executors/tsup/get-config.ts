@@ -84,12 +84,10 @@ export function modernConfig({
       entry,
       compilerOptions: {
         ...dtsTsConfig,
-        outDir: outputPath,
-        allowJs: true,
-        noEmit: false,
-        declaration: true,
-        declarationMap: true,
-        emitDeclarationOnly: true
+        options: {
+          ...dtsTsConfig.options,
+          outDir: outputPath
+        }
       }
     },
     apiReport,
@@ -143,12 +141,10 @@ export function legacyConfig({
       entry,
       compilerOptions: {
         ...dtsTsConfig,
-        outDir: outputPath,
-        allowJs: true,
-        noEmit: false,
-        declaration: true,
-        declarationMap: true,
-        emitDeclarationOnly: true
+        options: {
+          ...dtsTsConfig.options,
+          outDir: outputPath
+        }
       }
     },
     apiReport: false,
@@ -202,7 +198,11 @@ export function workerConfig({
     experimentalDts: {
       entry,
       compilerOptions: {
-        noEmit: false
+        ...dtsTsConfig,
+        options: {
+          ...dtsTsConfig.options,
+          outDir: join(outDir, "dist")
+        }
       }
     },
     apiReport,

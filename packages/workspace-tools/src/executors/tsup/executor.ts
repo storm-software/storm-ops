@@ -349,7 +349,7 @@ ${externalDependencies
 
     const config = getConfig(context.root, projectRoot, sourceRoot, {
       ...options,
-      dtsTsConfig: getNormalizedTsConfig(tscOptions),
+      dtsTsConfig: getNormalizedTsConfig(context.root, outputPath, tscOptions),
       banner: options.banner
         ? { js: `// ${options.banner}\n\n`, css: `/* ${options.banner} */\n\n` }
         : undefined,
@@ -375,10 +375,22 @@ ${externalDependencies
   }
 }
 
-function getNormalizedTsConfig(options: TypeScriptCompilationOptions) {
-  const readResult = ts.readConfigFile(options.tsConfig, ts.sys.readFile);
+function getNormalizedTsConfig(
+  workspaceRoot: string,
+  outputPath: string,
+  options: TypeScriptCompilationOptions
+) {
   const tsConfig = ts.parseJsonConfigFileContent(
-    readResult.config,
+    {
+      ...ts.readConfigFile(options.tsConfig, ts.sys.readFile).config,
+      outDir: outputPath,
+      allowJs: true,
+      noEmit: false,
+      declaration: true,
+      declarationMap: true,
+      emitDeclarationOnly: true,
+      declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
+    },
     ts.sys,
     dirname(options.tsConfig)
   );
