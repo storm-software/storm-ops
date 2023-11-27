@@ -60,7 +60,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..3f62789299ce916f0cdbc8009a8673c2
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..7d30ce70049810559cc4b3055eb1079280a93130 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..bee6bc4731996349c8c0d24a2780075afdba8437 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1590,19 +1590,54 @@ var getOutputExtensionMap = (options, format, pkgType) => {
@@ -369,8 +369,8 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..7d30ce70049810559cc4b3055eb10792
 +
 +  const host = _typescript2.default.createCompilerHost(compilerOptions.options);
 +  const program = _typescript2.default.createProgram({
-+    rootNames: tsconfig.fileNames,
-+    options: tsconfig.options,
++    rootNames: compilerOptions.fileNames,
++    options: compilerOptions.options,
 +    host,
 +  });
 +
