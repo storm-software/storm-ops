@@ -1,3 +1,10 @@
+## [1.9.17](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.16...linting-tools-v1.9.17) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with invalid fileNames variable reference ([c045be1](https://github.com/storm-software/storm-ops/commit/c045be17ca911278d174f47924c6f03a240da790))
+
 ## [1.9.16](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.15...linting-tools-v1.9.16) (2023-11-27)
 
 
