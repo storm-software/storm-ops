@@ -1,7 +1,7 @@
-import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
 import { Path, globSync } from "glob";
 import { join } from "path";
 import { Options, defineConfig } from "tsup";
+import type { ParsedCommandLine } from "typescript";
 import { WorkspaceStorage } from "../../utils";
 import { removeExtension } from "../../utils/file-path-utils";
 import { TsupExecutorSchema } from "./schema";
@@ -10,7 +10,7 @@ type Entry = string | string[] | Record<string, string>;
 
 export type TsupGetConfigOptions = Omit<TsupExecutorSchema, "banner"> & {
   banner?: { js?: string; css?: string };
-  tscOptions: TypeScriptCompilationOptions;
+  dtsTsConfig: ParsedCommandLine;
 };
 
 type GetConfigParams = Omit<
@@ -26,7 +26,7 @@ type GetConfigParams = Omit<
   docModel?: boolean;
   tsdocMetadata?: boolean;
   tsCdnStorage?: WorkspaceStorage;
-  tscOptions: TypeScriptCompilationOptions;
+  dtsTsConfig: ParsedCommandLine;
 };
 
 export function modernConfig({
@@ -46,8 +46,10 @@ export function modernConfig({
   define,
   env,
   tsCdnStorage,
-  tscOptions
+  dtsTsConfig
 }: GetConfigParams) {
+  let outputPath = join(outDir, "dist", "modern");
+
   return {
     name: "modern",
     entry,
@@ -67,7 +69,7 @@ export function modernConfig({
     tsconfig,
     projectRoot,
     workspaceRoot,
-    outDir: join(outDir, "dist", "modern"),
+    outDir: outputPath,
     silent: !verbose,
     metafile: true,
     shims: true,
@@ -81,7 +83,13 @@ export function modernConfig({
     experimentalDts: {
       entry,
       compilerOptions: {
-        noEmit: false
+        ...dtsTsConfig,
+        outDir: outputPath,
+        allowJs: true,
+        noEmit: false,
+        declaration: true,
+        declarationMap: true,
+        emitDeclarationOnly: true
       }
     },
     apiReport,
@@ -90,8 +98,7 @@ export function modernConfig({
     sourcemap: debug,
     clean: false,
     tsCdnStorage,
-    outExtension,
-    tscOptions
+    outExtension
   } as Options;
 }
 
@@ -109,8 +116,10 @@ export function legacyConfig({
   define,
   env,
   tsCdnStorage,
-  tscOptions
+  dtsTsConfig
 }: GetConfigParams) {
+  let outputPath = join(outDir, "dist", "legacy");
+
   return {
     name: "legacy",
     entry,
@@ -119,7 +128,7 @@ export function legacyConfig({
     tsconfig,
     projectRoot,
     workspaceRoot,
-    outDir: join(outDir, "dist", "legacy"),
+    outDir: outputPath,
     silent: !verbose,
     metafile: true,
     shims: true,
@@ -133,7 +142,13 @@ export function legacyConfig({
     experimentalDts: {
       entry,
       compilerOptions: {
-        noEmit: false
+        ...dtsTsConfig,
+        outDir: outputPath,
+        allowJs: true,
+        noEmit: false,
+        declaration: true,
+        declarationMap: true,
+        emitDeclarationOnly: true
       }
     },
     apiReport: false,
@@ -142,8 +157,7 @@ export function legacyConfig({
     sourcemap: debug,
     clean: false,
     tsCdnStorage,
-    outExtension,
-    tscOptions
+    outExtension
   } as Options;
 }
 
@@ -163,7 +177,7 @@ export function workerConfig({
   define,
   env,
   tsCdnStorage,
-  tscOptions
+  dtsTsConfig
 }: GetConfigParams) {
   return {
     name: "worker",
@@ -197,8 +211,7 @@ export function workerConfig({
     sourcemap: debug,
     clean: false,
     tsCdnStorage,
-    outExtension,
-    tscOptions
+    outExtension
   } as Options;
 }
 
@@ -221,7 +234,7 @@ export function getConfig(
     define,
     env,
     verbose,
-    tscOptions,
+    dtsTsConfig,
     ...rest
   }: TsupGetConfigOptions
 ) {
@@ -273,7 +286,7 @@ export function getConfig(
       workspaceRoot
     }),
     options,
-    tscOptions
+    dtsTsConfig
   };
 
   if (platform === "worker") {

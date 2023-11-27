@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ExecutorContext, readJsonFile } from "@nx/devkit";
+import { ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devkit";
 import { getExtraDependencies } from "@nx/esbuild/src/executors/esbuild/lib/get-extra-dependencies";
 import { copyAssets } from "@nx/js";
 import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options";
 import { createTypeScriptCompilationOptions } from "@nx/js/src/executors/tsc/tsc.impl";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
 import { handleInliningBuild } from "@nx/js/src/utils/inline";
+import { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
 import { readFileSync, writeFileSync } from "fs";
 import { removeSync } from "fs-extra";
 import { writeFile } from "fs/promises";
@@ -13,9 +14,10 @@ import { globSync } from "glob";
 import { EventEmitter } from "node:events";
 import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
 import { fileExists } from "nx/src/utils/fileutils";
-import { join } from "path";
+import { dirname, join } from "path";
 import { format } from "prettier";
 import { Options, build as tsup } from "tsup";
+import * as ts from "typescript";
 import { applyWorkspaceTokens } from "../../utils/apply-workspace-tokens";
 import { removeExtension } from "../../utils/file-path-utils";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
@@ -347,7 +349,7 @@ ${externalDependencies
 
     const config = getConfig(context.root, projectRoot, sourceRoot, {
       ...options,
-      tscOptions,
+      dtsTsConfig: getNormalizedTsConfig(tscOptions),
       banner: options.banner
         ? { js: `// ${options.banner}\n\n`, css: `/* ${options.banner} */\n\n` }
         : undefined,
@@ -371,6 +373,27 @@ ${externalDependencies
       success: false
     };
   }
+}
+
+function getNormalizedTsConfig(options: TypeScriptCompilationOptions) {
+  const readResult = ts.readConfigFile(options.tsConfig, ts.sys.readFile);
+  const tsConfig = ts.parseJsonConfigFileContent(
+    readResult.config,
+    ts.sys,
+    dirname(options.tsConfig)
+  );
+
+  tsConfig.options.outDir = options.outputPath;
+  tsConfig.options.noEmitOnError = true;
+  tsConfig.options.rootDir = options.rootDir;
+  if (tsConfig.options.incremental && !tsConfig.options.tsBuildInfoFile) {
+    tsConfig.options.tsBuildInfoFile = joinPathFragments(
+      options.outputPath,
+      "tsconfig.tsbuildinfo"
+    );
+  }
+
+  return tsConfig;
 }
 
 const build = async (options: Options | Options[]) => {
