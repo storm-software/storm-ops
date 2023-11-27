@@ -1,3 +1,10 @@
+## [1.13.24](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.23...create-storm-workspace-v1.13.24) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with noEmit set to true for dts build ([4670adf](https://github.com/storm-software/storm-ops/commit/4670adfb0dc97c7b29e7a0ebfa9bab93041fe138))
+
 ## [1.13.23](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.22...create-storm-workspace-v1.13.23) (2023-11-27)
 
 
