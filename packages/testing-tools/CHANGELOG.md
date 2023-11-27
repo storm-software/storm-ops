@@ -1,3 +1,11 @@
+## [1.7.19](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.7.18...testing-tools-v1.7.19) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved const issue in tsup patch ([cb14759](https://github.com/storm-software/storm-ops/commit/cb14759987b7306b7ba843dbd2798f928db66aaa))
+* **workspace-tools:** Updated issue with bad map logging ([70092a8](https://github.com/storm-software/storm-ops/commit/70092a8ad5e3b0a6128ec5a96da7d7b723b416b1))
+
 ## [1.7.18](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.7.17...testing-tools-v1.7.18) (2023-11-27)
 
 
