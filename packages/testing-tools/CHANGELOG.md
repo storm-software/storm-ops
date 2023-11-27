@@ -1,3 +1,10 @@
+## [1.7.18](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.7.17...testing-tools-v1.7.18) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added additional logging for tsc process ([ffe350f](https://github.com/storm-software/storm-ops/commit/ffe350faf3c77d7e99f30d8ea231228936faea25))
+
 ## [1.7.17](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.7.16...testing-tools-v1.7.17) (2023-11-27)
 
 
