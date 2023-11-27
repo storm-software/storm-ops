@@ -395,12 +395,12 @@ function getNormalizedTsConfig(
     dirname(options.tsConfig)
   );
 
-  tsConfig.options.outDir = options.outputPath;
+  tsConfig.options.outDir = outputPath;
   tsConfig.options.noEmitOnError = true;
-  tsConfig.options.rootDir = options.rootDir;
+  tsConfig.options.rootDir = workspaceRoot;
   if (tsConfig.options.incremental && !tsConfig.options.tsBuildInfoFile) {
     tsConfig.options.tsBuildInfoFile = joinPathFragments(
-      options.outputPath,
+      outputPath,
       "tsconfig.tsbuildinfo"
     );
   }
