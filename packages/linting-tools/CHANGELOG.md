@@ -1,3 +1,10 @@
+## [1.9.12](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.11...linting-tools-v1.9.12) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added code to call original emit method ([d4febb4](https://github.com/storm-software/storm-ops/commit/d4febb40983615dbeabfbf88d38a59555722e217))
+
 ## [1.9.11](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.10...linting-tools-v1.9.11) (2023-11-27)
 
 

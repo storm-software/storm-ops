@@ -1,3 +1,10 @@
+## [1.13.13](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.13.12...workspace-tools-v1.13.13) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added code to call original emit method ([d4febb4](https://github.com/storm-software/storm-ops/commit/d4febb40983615dbeabfbf88d38a59555722e217))
+
 ## [1.13.12](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.13.11...workspace-tools-v1.13.12) (2023-11-27)
 
 

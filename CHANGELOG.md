@@ -1,3 +1,10 @@
+## [1.10.12](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.10.11...@storm-software/storm-ops-v1.10.12) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added code to call original emit method ([d4febb4](https://github.com/storm-software/storm-ops/commit/d4febb40983615dbeabfbf88d38a59555722e217))
+
 ## [1.10.11](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.10.10...@storm-software/storm-ops-v1.10.11) (2023-11-27)
 
 
