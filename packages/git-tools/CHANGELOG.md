@@ -1,3 +1,10 @@
+## [1.8.18](https://github.com/storm-software/storm-ops/compare/git-tools-v1.8.17...git-tools-v1.8.18) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added additional logging for tsc process ([ffe350f](https://github.com/storm-software/storm-ops/commit/ffe350faf3c77d7e99f30d8ea231228936faea25))
+
 ## [1.8.17](https://github.com/storm-software/storm-ops/compare/git-tools-v1.8.16...git-tools-v1.8.17) (2023-11-27)
 
 
