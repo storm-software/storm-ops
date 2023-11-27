@@ -1,3 +1,10 @@
+## [1.13.21](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.13.20...workspace-tools-v1.13.21) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added additional logging for tsc process ([ffe350f](https://github.com/storm-software/storm-ops/commit/ffe350faf3c77d7e99f30d8ea231228936faea25))
+
 ## [1.13.20](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.13.19...workspace-tools-v1.13.20) (2023-11-27)
 
 
