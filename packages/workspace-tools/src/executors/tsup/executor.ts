@@ -39,7 +39,7 @@ export default async function runExecutor(
 
     // #region Apply default options
 
-    options.entry ??= "{sourceRoot}/**/*.{ts,tsx}";
+    options.entry ??= "{sourceRoot}/index.ts";
     options.outputPath ??= "dist/{projectRoot}";
     options.tsConfig ??= "tsconfig.json";
     options.banner ??= process.env.STORM_FILE_BANNER;
@@ -393,9 +393,12 @@ function getNormalizedTsConfig(
     dirname(options.tsConfig)
   );
 
+  tsConfig.options.noEmit = false;
   tsConfig.options.outDir = outputPath;
-  tsConfig.options.noEmitOnError = true;
+
   tsConfig.options.rootDir = workspaceRoot;
+  tsConfig.options.baseUrl = workspaceRoot;
+  tsConfig.options.pathsBasePath = workspaceRoot;
   if (tsConfig.options.incremental && !tsConfig.options.tsBuildInfoFile) {
     tsConfig.options.tsBuildInfoFile = joinPathFragments(
       outputPath,
