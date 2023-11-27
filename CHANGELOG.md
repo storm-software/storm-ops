@@ -1,3 +1,10 @@
+## [1.10.14](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.10.13...@storm-software/storm-ops-v1.10.14) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added custom tsc options to tsup patch config ([c6a4d49](https://github.com/storm-software/storm-ops/commit/c6a4d49ef5efac05acb09601393fb54dee42090b))
+
 ## [1.10.13](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.10.12...@storm-software/storm-ops-v1.10.13) (2023-11-27)
 
 
