@@ -1,3 +1,10 @@
+## [1.13.17](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.16...create-storm-workspace-v1.13.17) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added code to prevent issue with tsconfig for dts build ([bed9e45](https://github.com/storm-software/storm-ops/commit/bed9e45968329a2f0dd0adcdabb91f20d8bf535f))
+
 ## [1.13.16](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.15...create-storm-workspace-v1.13.16) (2023-11-27)
 
 
