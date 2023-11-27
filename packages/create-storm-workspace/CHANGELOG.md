@@ -1,3 +1,10 @@
+## [1.13.19](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.18...create-storm-workspace-v1.13.19) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with rootDir used in tsup executor ([627f76a](https://github.com/storm-software/storm-ops/commit/627f76a2f9186280ba6384182087fdcb2598a428))
+
 ## [1.13.18](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.17...create-storm-workspace-v1.13.18) (2023-11-27)
 
 
