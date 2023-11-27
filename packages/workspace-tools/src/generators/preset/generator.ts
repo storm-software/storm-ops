@@ -15,7 +15,10 @@ import {
 } from "../../utils/versions";
 import { PresetGeneratorSchema } from "./schema";
 
-export default async function (tree: Tree, options: PresetGeneratorSchema) {
+export async function presetGenerator(
+  tree: Tree,
+  options: PresetGeneratorSchema
+) {
   try {
     const projectRoot = `.`;
 
@@ -285,3 +288,5 @@ export default async function (tree: Tree, options: PresetGeneratorSchema) {
     console.error(error);
   }
 }
+
+export default presetGenerator;

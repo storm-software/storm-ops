@@ -29,7 +29,7 @@ type PackageConfiguration = {
   hash?: string;
 };
 
-export default async function runExecutor(
+export async function tsupExecutor(
   options: TsupExecutorSchema,
   context: ExecutorContext
 ) {
@@ -433,3 +433,5 @@ const isPrimitive = (value: unknown): boolean => {
     return false;
   }
 };
+
+export default tsupExecutor;
