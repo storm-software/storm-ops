@@ -1,3 +1,10 @@
+## [1.10.10](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.10.9...@storm-software/storm-ops-v1.10.10) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Clean up around tsup patch dts build ([4650a98](https://github.com/storm-software/storm-ops/commit/4650a9884784707e927bc2352643e1a3bc535fd4))
+
 ## [1.10.9](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.10.8...@storm-software/storm-ops-v1.10.9) (2023-11-27)
 
 
