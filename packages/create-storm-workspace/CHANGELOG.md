@@ -1,3 +1,10 @@
+## [1.13.23](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.22...create-storm-workspace-v1.13.23) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue preventing file mappings from being logged ([f1435ed](https://github.com/storm-software/storm-ops/commit/f1435ed71a1e11098a581e5808c40910224a9c6f))
+
 ## [1.13.22](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.21...create-storm-workspace-v1.13.22) (2023-11-27)
 
 

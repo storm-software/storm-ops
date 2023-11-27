@@ -1,3 +1,10 @@
+## [1.8.20](https://github.com/storm-software/storm-ops/compare/git-tools-v1.8.19...git-tools-v1.8.20) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue preventing file mappings from being logged ([f1435ed](https://github.com/storm-software/storm-ops/commit/f1435ed71a1e11098a581e5808c40910224a9c6f))
+
 ## [1.8.19](https://github.com/storm-software/storm-ops/compare/git-tools-v1.8.18...git-tools-v1.8.19) (2023-11-27)
 
 
