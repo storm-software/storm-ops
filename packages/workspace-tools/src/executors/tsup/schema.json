@@ -9,7 +9,8 @@
       "entry": {
         "type": "string",
         "description": "The path to the entry file, relative to project.",
-        "alias": "main"
+        "alias": "main",
+        "default": "{projectRoot}/src/**/*.{ts,tsx}"
       },
       "outputPath": {
         "type": "string",

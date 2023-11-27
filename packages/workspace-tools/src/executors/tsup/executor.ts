@@ -34,6 +34,7 @@ export default async function runExecutor(
 
     // #region Apply default options
 
+    options.entry ??= "{sourceRoot}/**/*.{ts,tsx}";
     options.outputPath ??= "dist/{projectRoot}";
     options.tsConfig ??= "tsconfig.json";
     options.banner ??= process.env.STORM_FILE_BANNER;
@@ -93,6 +94,12 @@ ${Object.keys(options)
       options.outputPath
         ? options.outputPath
         : join(workspaceRoot, "dist", projectRoot),
+      context
+    );
+    options.entry = applyWorkspaceTokens(
+      options.entry
+        ? options.entry
+        : join(workspaceRoot, sourceRoot, "**/*.{ts,tsx}"),
       context
     );
 

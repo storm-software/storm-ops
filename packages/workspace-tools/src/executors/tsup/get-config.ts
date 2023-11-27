@@ -220,7 +220,7 @@ export function getConfig(
 ) {
   const entry = globSync(
     [
-      rest.entry ? rest.entry : join(sourceRoot, "index.ts"),
+      rest.entry ? rest.entry : join(sourceRoot, "**/*{.ts,.tsx}"),
       ...(additionalEntryPoints ?? [])
     ],
     {
