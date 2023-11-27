@@ -1,3 +1,10 @@
+## [1.8.12](https://github.com/storm-software/storm-ops/compare/git-tools-v1.8.11...git-tools-v1.8.12) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added code to call original emit method ([d4febb4](https://github.com/storm-software/storm-ops/commit/d4febb40983615dbeabfbf88d38a59555722e217))
+
 ## [1.8.11](https://github.com/storm-software/storm-ops/compare/git-tools-v1.8.10...git-tools-v1.8.11) (2023-11-27)
 
 
