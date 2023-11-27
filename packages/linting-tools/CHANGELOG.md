@@ -1,3 +1,10 @@
+## [1.9.9](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.8...linting-tools-v1.9.9) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated how emit is called ([dcc7bc5](https://github.com/storm-software/storm-ops/commit/dcc7bc54a6de0123d47decc548ea0e611cdecd95))
+
 ## [1.9.8](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.7...linting-tools-v1.9.8) (2023-11-26)
 
 
