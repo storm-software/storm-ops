@@ -1,3 +1,10 @@
+## [1.10.18](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.10.17...@storm-software/storm-ops-v1.10.18) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added additional logging for tsc process ([ffe350f](https://github.com/storm-software/storm-ops/commit/ffe350faf3c77d7e99f30d8ea231228936faea25))
+
 ## [1.10.17](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.10.16...@storm-software/storm-ops-v1.10.17) (2023-11-27)
 
 
