@@ -1,3 +1,10 @@
+## [1.13.16](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.13.15...workspace-tools-v1.13.16) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added paresed tsc options as tsup parameter ([dd51e93](https://github.com/storm-software/storm-ops/commit/dd51e934a793fa0c4c9c07ee2e97bda185777a27))
+
 ## [1.13.15](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.13.14...workspace-tools-v1.13.15) (2023-11-27)
 
 

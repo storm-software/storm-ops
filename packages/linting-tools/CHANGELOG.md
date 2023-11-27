@@ -1,3 +1,10 @@
+## [1.9.15](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.14...linting-tools-v1.9.15) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added paresed tsc options as tsup parameter ([dd51e93](https://github.com/storm-software/storm-ops/commit/dd51e934a793fa0c4c9c07ee2e97bda185777a27))
+
 ## [1.9.14](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.13...linting-tools-v1.9.14) (2023-11-27)
 
 
