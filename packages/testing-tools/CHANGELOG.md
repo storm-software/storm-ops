@@ -1,3 +1,10 @@
+## [1.7.15](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.7.14...testing-tools-v1.7.15) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added paresed tsc options as tsup parameter ([dd51e93](https://github.com/storm-software/storm-ops/commit/dd51e934a793fa0c4c9c07ee2e97bda185777a27))
+
 ## [1.7.14](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.7.13...testing-tools-v1.7.14) (2023-11-27)
 
 
