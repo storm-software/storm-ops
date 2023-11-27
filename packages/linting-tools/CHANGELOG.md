@@ -1,3 +1,10 @@
+## [1.9.11](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.10...linting-tools-v1.9.11) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue around adding files to api-extractor config ([4ad4118](https://github.com/storm-software/storm-ops/commit/4ad41184c0c8d1f803846b5bb653dc8fffc905e6))
+
 ## [1.9.10](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.9...linting-tools-v1.9.10) (2023-11-27)
 
 
