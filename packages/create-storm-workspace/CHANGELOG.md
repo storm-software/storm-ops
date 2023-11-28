@@ -1,3 +1,16 @@
+# [1.14.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.26...create-storm-workspace-v1.14.0) (2023-11-28)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Export executor and generator functions by name ([96c1b7a](https://github.com/storm-software/storm-ops/commit/96c1b7a1c5db17910f84610f928e36d757c9efbf))
+* **workspace-tools:** Remove rollup.ts from the `additionalEntryPoints` list ([b45785e](https://github.com/storm-software/storm-ops/commit/b45785e8b9dd09178651123658cccaded7c559d7))
+
+
+### Features
+
+* **workspace-tools:** Added the `plugins` option to the tsup executor ([8cdb8af](https://github.com/storm-software/storm-ops/commit/8cdb8af57eddac03af7f96bfbc2dfbc1672a71be))
+
 ## [1.13.26](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.13.25...create-storm-workspace-v1.13.26) (2023-11-27)
 
 
