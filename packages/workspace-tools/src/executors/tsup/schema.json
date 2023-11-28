@@ -122,6 +122,14 @@
         "description": "Additional options to pass to tsup. See https://paka.dev/npm/tsup@7.2.0/api#d35d54aca71eb26e.",
         "additionalProperties": true,
         "x-priority": "important"
+      },
+      "plugins": {
+        "type": "array",
+        "description": "List of ESBuild plugins to use during processing",
+        "default": [],
+        "items": {
+          "type": "object"
+        }
       }
     },
     "required": ["tsConfig", "platform", "banner"],

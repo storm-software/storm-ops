@@ -32,4 +32,5 @@ export type TsupExecutorSchema = Omit<
   tsdocMetadata?: boolean;
   includeSrc?: boolean;
   platform?: Platform;
+  plugins?: any[];
 };

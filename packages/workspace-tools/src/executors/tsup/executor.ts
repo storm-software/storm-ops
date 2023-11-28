@@ -6,6 +6,7 @@ import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options
 import { createTypeScriptCompilationOptions } from "@nx/js/src/executors/tsc/tsc.impl";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
 import { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
+import { load } from "decky";
 import { readFileSync, writeFileSync } from "fs";
 import { removeSync } from "fs-extra";
 import { writeFile } from "fs/promises";
@@ -47,6 +48,7 @@ export async function tsupExecutor(
     options.external ??= [];
     options.additionalEntryPoints ??= [];
     options.assets ??= [];
+    options.plugins ??= [];
     options.includeSrc ??= true;
     options.clean ??= true;
     options.bundle ??= true;
@@ -318,6 +320,12 @@ ${externalDependencies
     }
 
     // #endregion Generate the package.json file
+
+    // #region Add default plugins
+
+    options.plugins.push(await load());
+
+    // #endregion Add default plugins
 
     // #region Run the build process
 

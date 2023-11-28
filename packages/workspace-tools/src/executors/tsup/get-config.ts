@@ -46,6 +46,7 @@ export function modernConfig({
   define,
   env,
   tsCdnStorage,
+  plugins,
   dtsTsConfig
 }: GetConfigParams) {
   let outputPath = join(outDir, "dist", "modern");
@@ -96,6 +97,7 @@ export function modernConfig({
     sourcemap: debug,
     clean: false,
     tsCdnStorage,
+    plugins,
     outExtension
   } as Options;
 }
@@ -114,6 +116,7 @@ export function legacyConfig({
   define,
   env,
   tsCdnStorage,
+  plugins,
   dtsTsConfig
 }: GetConfigParams) {
   let outputPath = join(outDir, "dist", "legacy");
@@ -153,6 +156,7 @@ export function legacyConfig({
     sourcemap: debug,
     clean: false,
     tsCdnStorage,
+    plugins,
     outExtension
   } as Options;
 }
@@ -173,6 +177,7 @@ export function workerConfig({
   define,
   env,
   tsCdnStorage,
+  plugins,
   dtsTsConfig
 }: GetConfigParams) {
   return {
@@ -211,6 +216,7 @@ export function workerConfig({
     sourcemap: debug,
     clean: false,
     tsCdnStorage,
+    plugins,
     outExtension
   } as Options;
 }
@@ -235,6 +241,7 @@ export function getConfig(
     env,
     verbose,
     dtsTsConfig,
+    plugins,
     ...rest
   }: TsupGetConfigOptions
 ) {
@@ -286,6 +293,7 @@ export function getConfig(
       workspaceRoot
     }),
     options,
+    plugins,
     dtsTsConfig
   };
 
@@ -296,11 +304,7 @@ export function getConfig(
   return defineConfig([modernConfig(params), legacyConfig(params)]);
 }
 
-const outExtension = ({ options, format, pkgType }) => {
-  console.log(options);
-  console.log(format);
-  console.log(pkgType);
-
+const outExtension = ({ format }) => {
   let jsExtension = ".js";
   let dtsExtension = ".d.ts";
   if (format === "cjs") {
