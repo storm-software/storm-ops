@@ -1,3 +1,10 @@
+## [1.9.21](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.20...linting-tools-v1.9.21) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Cleaned up tsup patch and executor code ([289721f](https://github.com/storm-software/storm-ops/commit/289721f40f481b8c8b904298df7ff6efa8a7979b))
+
 ## [1.9.20](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.9.19...linting-tools-v1.9.20) (2023-11-27)
 
 

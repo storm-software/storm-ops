@@ -1,3 +1,10 @@
+## [1.13.26](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.13.25...workspace-tools-v1.13.26) (2023-11-27)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Cleaned up tsup patch and executor code ([289721f](https://github.com/storm-software/storm-ops/commit/289721f40f481b8c8b904298df7ff6efa8a7979b))
+
 ## [1.13.25](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.13.24...workspace-tools-v1.13.25) (2023-11-27)
 
 
