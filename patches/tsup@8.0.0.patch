@@ -41,7 +41,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..3f62789299ce916f0cdbc8009a8673c2
  import { SourceMap as SourceMap$1, TreeshakingOptions, TreeshakingPreset, InputOption } from 'rollup';
  import { RawSourceMap } from 'source-map';
 +import type { ParsedCommandLine } from 'typescript';
-
+ 
  declare type GeneratedColumn = number;
  declare type SourcesIndex = number;
 @@ -528,6 +529,14 @@ type Options = {
@@ -60,7 +60,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..3f62789299ce916f0cdbc8009a8673c2
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..bc5f9b7eabdafaf830772597bc8042fff8ea12bd 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..1612e50f27fb05445d30d916e50de5b53e623e51 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1590,19 +1590,61 @@ var getOutputExtensionMap = (options, format, pkgType) => {
@@ -183,7 +183,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..bc5f9b7eabdafaf830772597bc8042ff
        minifyIdentifiers: options.minifyIdentifiers,
 @@ -2177,7 +2229,6 @@ var terserPlugin = ({
  // src/tsc.ts
-
+ 
  var _typescript = require('typescript'); var _typescript2 = _interopRequireDefault(_typescript);
 -
  var logger = _chunk7G76EW2Rjs.createLogger.call(void 0, );
@@ -346,7 +346,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..bc5f9b7eabdafaf830772597bc8042ff
      return exports;
    } catch (error) {
 @@ -2428,40 +2489,86 @@ function formatDistributionExport(declaration, dest) {
-
+ 
  // src/api-extractor.ts
  var logger2 = _chunk7G76EW2Rjs.createLogger.call(void 0, );
 -function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
@@ -470,7 +470,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..bc5f9b7eabdafaf830772597bc8042ff
 +    .replace(/\.d\.mts$/, ".dmts.d.ts")
 +    .replace(/\.d\.cts$/, ".dcts.d.ts");
 +
-   _chunkGQ77QZBOjs.writeFileSync.call(void 0,
+   _chunkGQ77QZBOjs.writeFileSync.call(void 0, 
      dtsInputFilePath,
      formatAggregationExports(exports, declarationDir)
    );
@@ -497,7 +497,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..bc5f9b7eabdafaf830772597bc8042ff
 +      (declaration) => declaration.sourceFileName === sourceFileName
 +    )
 +
-     _chunkGQ77QZBOjs.writeFileSync.call(void 0,
+     _chunkGQ77QZBOjs.writeFileSync.call(void 0, 
        outFileName,
 -      formatDistributionExports(exports, outFileName, dtsOutputFilePath)
 +      formatDistributionExports(currentExports, outFileName, outDir)
@@ -532,12 +532,12 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..bc5f9b7eabdafaf830772597bc8042ff
 +        ...options.experimentalDts.compilerOptions || {},
 +        outDir: options.outDir
        };
-       options.experimentalDts.entry = _chunkGQ77QZBOjs.toObjectEntry.call(void 0,
+       options.experimentalDts.entry = _chunkGQ77QZBOjs.toObjectEntry.call(void 0, 
          Object.keys(options.experimentalDts.entry).length > 0 ? options.experimentalDts.entry : options.entry
 @@ -2629,7 +2759,7 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
  };
  async function build(_options) {
-   const config = _options.config === false ? {} : await _chunk7G76EW2Rjs.loadTsupConfig.call(void 0,
+   const config = _options.config === false ? {} : await _chunk7G76EW2Rjs.loadTsupConfig.call(void 0, 
 -    process.cwd(),
 +    _options.workspaceRoot ?? process.cwd(),
      _options.config === true ? void 0 : _options.config
