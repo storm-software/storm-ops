@@ -60,7 +60,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..3f62789299ce916f0cdbc8009a8673c2
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..22e4d99e9e3c9d8e3c544f8f533985f75e5ffc61 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..981ec4c7a15fe1c2d26b471c02f55382b334be80 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1590,19 +1590,61 @@ var getOutputExtensionMap = (options, format, pkgType) => {
@@ -371,9 +371,9 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..22e4d99e9e3c9d8e3c544f8f533985f7
 +    
    let configObject = {
 -    mainEntryPointFilePath: inputFilePath,
-+    mainEntryPointFilePath: `<projectFolder>/${_path2.default.join( 
-+      relativeProjectFolder,
-+      inputFilePath.replace(options.workspaceRoot, "")).replaceAll("\\", "/")}`,
++    mainEntryPointFilePath: inputFilePath.includes(options.workspaceRoot)
++      ? inputFilePath
++      : _path2.default.join(options.workspaceRoot, inputFilePath),
      apiReport: {
 -      enabled: false,
 -      // `reportFileName` is not been used. It's just to fit the requirement of API Extractor.
