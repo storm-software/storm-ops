@@ -1,3 +1,10 @@
+## [1.9.7](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.6...testing-tools-v1.9.7) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad path module usage in tsup patch ([e0a984a](https://github.com/storm-software/storm-ops/commit/e0a984a656d65cb6f2b015ebac43d908bdded3d9))
+
 ## [1.9.6](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.5...testing-tools-v1.9.6) (2023-11-29)
 
 
