@@ -1,3 +1,10 @@
+## [1.13.6](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.13.5...@storm-software/storm-ops-v1.13.6) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tsup patch so correct files are written after api-extractor ([7106c74](https://github.com/storm-software/storm-ops/commit/7106c74eddc0fe552b142c467ea63e74fb7026ba))
+
 ## [1.13.5](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.13.4...@storm-software/storm-ops-v1.13.5) (2023-11-29)
 
 

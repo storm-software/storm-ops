@@ -1,3 +1,10 @@
+## [1.16.10](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.9...create-storm-workspace-v1.16.10) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tsup patch so correct files are written after api-extractor ([7106c74](https://github.com/storm-software/storm-ops/commit/7106c74eddc0fe552b142c467ea63e74fb7026ba))
+
 ## [1.16.9](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.8...create-storm-workspace-v1.16.9) (2023-11-29)
 
 
