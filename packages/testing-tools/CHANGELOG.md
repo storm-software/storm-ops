@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.8.5...testing-tools-v1.9.0) (2023-11-29)
+
+
+### Features
+
+* **git-tools:** Added executors and generators sections to the readme-gen CLI ([99aacba](https://github.com/storm-software/storm-ops/commit/99aacba62747cef1347bc87a0fff35fb2ffb0bde))
+
 ## [1.8.5](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.8.4...testing-tools-v1.8.5) (2023-11-29)
 
 
