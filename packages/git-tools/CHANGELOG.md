@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.9.5...git-tools-v1.10.0) (2023-11-29)
+
+
+### Features
+
+* **git-tools:** Added executors and generators sections to the readme-gen CLI ([99aacba](https://github.com/storm-software/storm-ops/commit/99aacba62747cef1347bc87a0fff35fb2ffb0bde))
+
 ## [1.9.5](https://github.com/storm-software/storm-ops/compare/git-tools-v1.9.4...git-tools-v1.9.5) (2023-11-29)
 
 
