@@ -1,3 +1,10 @@
+## [1.16.6](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.5...create-storm-workspace-v1.16.6) (2023-11-29)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue with generation of options table in readme-gen ([69f9c86](https://github.com/storm-software/storm-ops/commit/69f9c86efc90e117c4ec9a5b4d1a520d764af4f5))
+
 ## [1.16.5](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.4...create-storm-workspace-v1.16.5) (2023-11-29)
 
 
