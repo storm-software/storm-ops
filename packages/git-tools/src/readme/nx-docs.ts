@@ -83,7 +83,10 @@ export const getExecutorMarkdown = (
                   }
 
                   if (schema.description) {
-                    result += `| ${schema.description}    `;
+                    result += `| ${schema.description.replaceAll(
+                      "`",
+                      "\\`"
+                    )}    `;
                   } else {
                     result += `|    `;
                   }
@@ -97,7 +100,7 @@ export const getExecutorMarkdown = (
                     result += `|    `;
                   }
 
-                  result += "|\n";
+                  result += ` | \n`;
                 }
 
                 return result;
@@ -117,7 +120,7 @@ export const getExecutorMarkdown = (
       }
 
       if (!description && executor.description) {
-        description = `${executor.description}\n\n`;
+        description = `${executor.description.replaceAll("`", "\\`")}\n\n`;
       }
 
       return (
@@ -185,8 +188,8 @@ export const getGeneratorMarkdown = (
 
             result +=
               "### Options\n\nThe following executor options are available:\n\n";
-            result += "| Option    | Type   | Description   | Default   |";
-            result += "| --------- | ------ | ------------- | --------- |";
+            result += "| Option    | Type   | Description   | Default   | \n";
+            result += "| --------- | ------ | ------------- | --------- | \n";
 
             result += Object.entries(schemaJson.properties)
               .map(([name, schema]: [string, any]) => {
@@ -218,7 +221,10 @@ export const getGeneratorMarkdown = (
                   }
 
                   if (schema.description) {
-                    resultSchema += `| ${schema.description}    `;
+                    resultSchema += `| ${schema.description.replaceAll(
+                      "`",
+                      "\\`"
+                    )}    `;
                   } else {
                     resultSchema += `|    `;
                   }
@@ -232,7 +238,7 @@ export const getGeneratorMarkdown = (
                     resultSchema += `|    `;
                   }
 
-                  resultSchema += "|\n";
+                  resultSchema += ` | \n`;
                 }
 
                 return resultSchema;
@@ -258,7 +264,10 @@ export const getGeneratorMarkdown = (
                     exampleCmd.description &&
                     typeof exampleCmd.description === "string"
                   ) {
-                    resultCmd += `#### ${exampleCmd.description}\n\n`;
+                    resultCmd += `#### ${exampleCmd.description.replaceAll(
+                      "`",
+                      "\\`"
+                    )}\n\n`;
                   }
 
                   if (
@@ -281,7 +290,10 @@ export const getGeneratorMarkdown = (
                 schemaJson.example.description &&
                 typeof schemaJson.example.description === "string"
               ) {
-                example = `### Example \n\n${schemaJson.example.description} \n\n`;
+                example = `### Example \n\n${schemaJson.example.description.replaceAll(
+                  "`",
+                  "\\`"
+                )} \n\n`;
               } else {
                 example = `### Example \n\nThis generator can be used by executing the following in a command line utility: \n\n`;
               }
@@ -308,7 +320,7 @@ export const getGeneratorMarkdown = (
       }
 
       if (!description && generator.description) {
-        description = `${generator.description}\n\n`;
+        description = `${generator.description.replaceAll("`", "\\`")}\n\n`;
       }
 
       return title + description + example + result;

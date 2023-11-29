@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$id": "NodeLibrary",
-  "title": "",
+  "title": "Add Node Library",
   "type": "object",
   "properties": {
     "name": {

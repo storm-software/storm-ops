@@ -1,22 +1,22 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$id": "Preset",
-  "title": "Storm Workspace preset",
-  "description": "Storm workspace preset generator",
+  "title": "Workspace Preset",
+  "description": "Create a Storm workspace with all of the required files and recommended packages installed.",
   "type": "object",
   "example": [
     {
       "command": "nx g @storm-software/workspace-tools:preset --name 'example-repo'",
-      "description": "Generate a storm workspace with the name: example-repo, namespace: storm-software, organization: storm-software, and repositoryUrl: 'https://github.com/storm-software/example-repo'."
+      "description": "Generate a storm workspace with: \n- name: example-repo \n- namespace: storm-software \n- organization: storm-software \n- repositoryUrl: <https://github.com/storm-software/example-repo>"
     },
 
     {
       "command": "nx g @storm-software/workspace-tools:preset --name 'example-repo' --namespace 'example'",
-      "description": "Generate a storm workspace with the name: example-repo, namespace: example, and repositoryUrl: 'https://github.com/storm-software/example-repo'."
+      "description": "Generate a storm workspace with: \n- name: example-repo \n- namespace: example \n- repositoryUrl: <https://github.com/storm-software/example-repo>"
     },
     {
       "command": "nx g @storm-software/workspace-tools:preset --name 'example-repo' --namespace 'example' --organization 'example-org' --description 'An example workspace'",
-      "description": "Generate a storm workspace with the name: example-repo, namespace: example, organization: example-org, description: 'An example workspace', and repositoryUrl: 'https://github.com/example-org/example-repo'."
+      "description": "Generate a storm workspace with: \n- name: example-repo \n- namespace: example \n- organization: example-org \n- description: An example workspace \n- repositoryUrl: <https://github.com/example-org/example-repo>"
     }
   ],
   "properties": {
@@ -69,7 +69,7 @@
     },
     "repositoryUrl": {
       "type": "string",
-      "description": "The URL of the workspace in GitHub. Defaults to the https://github.com/<organization>/<name>",
+      "description": "The URL of the workspace in GitHub. Defaults to <https://github.com/{organization}/{name}>",
       "$default": {
         "$source": "argv",
         "index": 5
