@@ -1,3 +1,10 @@
+## [1.12.6](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.12.5...linting-tools-v1.12.6) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tsup patch to use workspace root as base directory for api-extractor ([d8cdc3c](https://github.com/storm-software/storm-ops/commit/d8cdc3c461ac1a95a814f04e569f05a54d1a8937))
+
 ## [1.12.5](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.12.4...linting-tools-v1.12.5) (2023-11-29)
 
 
