@@ -1,3 +1,10 @@
+## [1.9.3](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.2...testing-tools-v1.9.3) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with api-extractor output directory ([5aa99ef](https://github.com/storm-software/storm-ops/commit/5aa99ef09950a738e658d4c75c6e241e4f1b4f14))
+
 ## [1.9.2](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.1...testing-tools-v1.9.2) (2023-11-29)
 
 
