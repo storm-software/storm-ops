@@ -97,13 +97,11 @@ ${Object.keys(options)
       context.projectsConfigurations.projects[context.projectName].sourceRoot;
 
     const outputPath = applyWorkspaceTokens(
-      options.outputPath
-        ? options.outputPath
-        : join(workspaceRoot, "dist", projectRoot),
+      options.outputPath ? options.outputPath : "dist/{projectRoot}",
       context
     );
     options.entry = applyWorkspaceTokens(
-      options.entry ? options.entry : join(sourceRoot, "index.ts"),
+      options.entry ? options.entry : "{sourceRoot}/index.ts",
       context
     );
 
@@ -132,7 +130,7 @@ ${Object.keys(options)
       output: "."
     });
 
-    if (options.includeSrc) {
+    if (options.includeSrc !== false) {
       assets.push({
         input: sourceRoot,
         glob: "**/{*.ts,*.tsx,*.js,*.jsx}",
@@ -256,15 +254,22 @@ ${externalDependencies
     options.platform &&
       options.platform !== "node" &&
       (packageJson.browser ??= "dist/modern/index.global.js");
-    options.includeSrc &&
-      (packageJson.source ??= `./${join(
-        sourceRoot.replace(projectRoot, ""),
-        "index.ts"
-      ).replaceAll("\\", "/")}`);
+
+    if (options.includeSrc !== false) {
+      let distSrc = sourceRoot.replace(projectRoot, "");
+      if (distSrc.startsWith("/")) {
+        distSrc = distSrc.substring(1);
+      }
+
+      packageJson.source ??= `./${join(distSrc, "index.ts").replaceAll(
+        "\\",
+        "/"
+      )}`;
+    }
 
     packageJson.sideEffects ??= false;
     packageJson.files ??= ["dist"];
-    if (options.includeSrc && !packageJson.files.includes("src")) {
+    if (options.includeSrc !== false && !packageJson.files.includes("src")) {
       packageJson.files.push("src");
     }
 
@@ -306,12 +311,12 @@ ${externalDependencies
       })
     );
 
-    if (options.banner && options.includeSrc) {
+    if (options.banner && options.includeSrc !== false) {
       const files = globSync([
-        join(context.root, outputPath, "src/**/*.ts").replaceAll("/", "\\"),
-        join(context.root, outputPath, "src/**/*.tsx").replaceAll("/", "\\"),
-        join(context.root, outputPath, "src/**/*.js").replaceAll("/", "\\"),
-        join(context.root, outputPath, "src/**/*.jsx").replaceAll("/", "\\")
+        joinPathFragments(context.root, outputPath, "src/**/*.ts"),
+        joinPathFragments(context.root, outputPath, "src/**/*.tsx"),
+        joinPathFragments(context.root, outputPath, "src/**/*.js"),
+        joinPathFragments(context.root, outputPath, "src/**/*.jsx")
       ]);
       await Promise.allSettled(
         files.map(file =>
