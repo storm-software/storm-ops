@@ -1,3 +1,10 @@
+## [1.16.8](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.7...create-storm-workspace-v1.16.8) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Reduce path length of `mainEntryPointFilePath` api-extractor option ([1e747d3](https://github.com/storm-software/storm-ops/commit/1e747d34c5c9c82e00884d140632f9e725950672))
+
 ## [1.16.7](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.6...create-storm-workspace-v1.16.7) (2023-11-29)
 
 
