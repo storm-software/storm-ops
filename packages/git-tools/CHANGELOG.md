@@ -1,3 +1,10 @@
+## [1.10.7](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.6...git-tools-v1.10.7) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with api-extractor output directory ([5aa99ef](https://github.com/storm-software/storm-ops/commit/5aa99ef09950a738e658d4c75c6e241e4f1b4f14))
+
 ## [1.10.6](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.5...git-tools-v1.10.6) (2023-11-29)
 
 
