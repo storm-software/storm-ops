@@ -1,3 +1,10 @@
+## [1.11.3](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.11.2...linting-tools-v1.11.3) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update paths passed to api-extractor in tsup patch ([f3b6ce9](https://github.com/storm-software/storm-ops/commit/f3b6ce91e71ccc104895b4bcc0edf50a52e2b8ba))
+
 ## [1.11.2](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.11.1...linting-tools-v1.11.2) (2023-11-29)
 
 
