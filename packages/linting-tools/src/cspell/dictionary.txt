@@ -16,6 +16,9 @@ retext
 vfile
 autoincrement
 favicons
+unminified
+deepkit
+typeschema
 valibot
 hasura
 strapi
