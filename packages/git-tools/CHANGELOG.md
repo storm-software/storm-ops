@@ -1,3 +1,11 @@
+## [1.10.10](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.9...git-tools-v1.10.10) (2023-11-29)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue with escape character in descriptions for nx plugins ([c4c5cb0](https://github.com/storm-software/storm-ops/commit/c4c5cb0ec512d74836d9769dac50b3e545993b0c))
+* **workspace-tools:** Update tsup patch so correct files are written after api-extractor ([7106c74](https://github.com/storm-software/storm-ops/commit/7106c74eddc0fe552b142c467ea63e74fb7026ba))
+
 ## [1.10.9](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.8...git-tools-v1.10.9) (2023-11-29)
 
 
