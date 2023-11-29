@@ -1,3 +1,10 @@
+## [1.13.3](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.13.2...@storm-software/storm-ops-v1.13.3) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with api-extractor output directory ([5aa99ef](https://github.com/storm-software/storm-ops/commit/5aa99ef09950a738e658d4c75c6e241e4f1b4f14))
+
 ## [1.13.2](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.13.1...@storm-software/storm-ops-v1.13.2) (2023-11-29)
 
 
