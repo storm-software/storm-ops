@@ -1,3 +1,10 @@
+## [1.10.8](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.7...git-tools-v1.10.8) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Reduce path length of `mainEntryPointFilePath` api-extractor option ([1e747d3](https://github.com/storm-software/storm-ops/commit/1e747d34c5c9c82e00884d140632f9e725950672))
+
 ## [1.10.7](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.6...git-tools-v1.10.7) (2023-11-29)
 
 
