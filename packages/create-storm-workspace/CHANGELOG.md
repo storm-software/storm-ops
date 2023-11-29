@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.14.2...create-storm-workspace-v1.15.0) (2023-11-29)
+
+
+### Features
+
+* **linting-tools:** Added more items to cspell dictionary ([34112bf](https://github.com/storm-software/storm-ops/commit/34112bf17967dd4069d5cba1bedda12b84fadbc0))
+
 ## [1.14.2](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.14.1...create-storm-workspace-v1.14.2) (2023-11-29)
 
 
