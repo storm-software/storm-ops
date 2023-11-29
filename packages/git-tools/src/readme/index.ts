@@ -122,18 +122,12 @@ export const runProjectReadme = async (
         );
         if (executorsJson?.executors) {
           console.info("Adding executors...");
-          newContent = newContent
-            .replace("<!-- END executors -->", "")
-            .replace(
-              "<!-- START executors -->",
-              "<!-- START executors -->\n\n" +
-                getExecutorMarkdown(
-                  packageName,
-                  executorsJsonPath,
-                  executorsJson
-                ) +
-                "\n\n<!-- END executors -->\n\n"
-            );
+
+          newContent = formatReadMeFromSectionName(
+            "executors",
+            getExecutorMarkdown(packageName, executorsJsonPath, executorsJson),
+            newContent
+          );
         }
       }
     }
@@ -149,18 +143,16 @@ export const runProjectReadme = async (
         );
         if (generatorsJson?.generators) {
           console.info("Adding generators...");
-          newContent = newContent
-            .replace("<!-- END generators -->", "")
-            .replace(
-              "<!-- START generators -->",
-              "<!-- START generators -->\n\n" +
-                getGeneratorMarkdown(
-                  packageName,
-                  generatorsJsonPath,
-                  generatorsJson
-                ) +
-                "\n\n<!-- END generators -->\n\n\n"
-            );
+
+          newContent = formatReadMeFromSectionName(
+            "generators",
+            getGeneratorMarkdown(
+              packageName,
+              generatorsJsonPath,
+              generatorsJson
+            ),
+            newContent
+          );
         }
       }
     }

@@ -16,7 +16,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.org" target="_blank">stormsoftware.org</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.16.2-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
+[![Version](https://img.shields.io/badge/version-1.16.3-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
 [![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with docusaurus](https://img.shields.io/badge/documented_with-docusaurus-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://docusaurus.io/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <h3 align="center" bold="true">⚠️ <b>Attention</b> ⚠️ This repository, and the apps, libraries, and tools contained within, is still in it's initial development phase. As a result, bugs and issues are expected with it's usage. When the main development phase completes, a proper release will be performed, the packages will be availible through NPM (and other distributions), and this message will be removed. However, in the meantime, please feel free to report any issues you may come across.</h3><br />
@@ -31,110 +31,80 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 A package containing tools for managing a Storm workspace. It includes various [Nx](https://nx.dev) generators and executors for common development tasks.
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+## Table of Contents
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 This library was generated with [Nx](https://nx.dev).
 
 <!-- START executors -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
 
 ## Tsup Builder
 
 Run a build on the project using ESBuild with a patched tsup configuration
 
-### Example
+### Example 
 
-This executor can be used by executing the following in a command line utility:
+This executor can be used by executing the following in a command line utility: 
 
-```cmd
+```cmd 
 nx run my-project:tsup
 ```
 
-**Please note:** _The tsup executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._
+**Please note:** _The tsup executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
 
 ### Options
 
 The following executor options are available:
 
-| Option | Type                  | Description                                      | Default                                                                                                                |
-| ------ | --------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| entry  | `string`              | The path to the entry file, relative to project. | "{sourceRoot}/index.ts"                                                                                                |
-| ,      | outputPath            | `string`                                         | The output path of the generated files.                                                                                | "dist/{projectRoot}"                                                                                                    |
-| ,      | tsConfig\*            | `string`                                         | The path to tsconfig file.                                                                                             | "tsconfig.json"                                                                                                         |
-| ,      | additionalEntryPoints | `string[]`                                       | List of additional entry points.                                                                                       | ``                                                                                                                      |
-| ,      | external              | `string[]`                                       | Mark one or more module as external. Can use \* wildcards, such as '\*.png'.                                           |                                                                                                                         |
-| ,      | bundle                | `boolean`                                        | Whether to bundle the main entry point and additional entry points. Set to false to keep individual output files.      | `true`                                                                                                                  |
-| ,      | watch                 | `boolean`                                        | Enable re-building when files change.                                                                                  |                                                                                                                         |
-| ,      | assets                | `array`                                          | List of static assets.                                                                                                 | ``                                                                                                                      |
-| ,      | clean                 | `boolean`                                        | Remove previous output before build.                                                                                   | `true`                                                                                                                  |
-| ,      | includeSrc            | `boolean`                                        | Should the source files be added to the distribution folder in an \`src\` directory.                                   | `true`                                                                                                                  |
-| ,      | debug                 | `boolean`                                        | Should output be unminified with source mappings.                                                                      |                                                                                                                         |
-| ,      | platform\*            | "browser" \| "neutral" \| "node" \| "worker"     | Platform target for outputs.                                                                                           | "neutral"                                                                                                               |
-| ,      | banner\*              | `string`                                         | A short heading added to the top of each typescript file added in the output folder's src directory.                   | "This code was developed by Storm Software (<https://stormsoftware.org>) and is licensed under the Apache License 2.0." |
-| ,      | verbose               | `boolean`                                        | Should write extra log outputs with details from the executor.                                                         |                                                                                                                         |
-| ,      | define                | `object`                                         | Define global constants that can be used in the source code. The value will be converted into a stringified JSON.      |                                                                                                                         |
-| ,      | env                   | `object`                                         | Define environment variables that can be used in the source code. The value will be converted into a stringified JSON. |                                                                                                                         |
-| ,      | apiReport             | `boolean`                                        | Should API Extractor generate an API Report file.                                                                      | `true`                                                                                                                  |
-| ,      | docModel              | `boolean`                                        | Should API Extractor generate an Doc Model markdown file.                                                              | `true`                                                                                                                  |
-| ,      | tsdocMetadata         | `boolean`                                        | Should API Extractor generate an TSDoc Metadata file.                                                                  | `true`                                                                                                                  |
-| ,      | options               | `object`                                         | Additional options to pass to tsup. See <https://paka.dev/npm/tsup@7.2.0/api#d35d54aca71eb26e>.                        |                                                                                                                         |
-| ,      | plugins               | `object[]`                                       | List of ESBuild plugins to use during processing                                                                       | ``                                                                                                                      |
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| entry    | `string`   | The path to the entry file, relative to project.    | "{sourceRoot}/index.ts"     | 
+,| outputPath    | `string`   | The output path of the generated files.    | "dist/{projectRoot}"     | 
+,| tsConfig\*   | `string`   | The path to tsconfig file.    | "tsconfig.json"     | 
+,| additionalEntryPoints    | `string[]`  | List of additional entry points.    | ``     | 
+,| external    | `string[]`  | Mark one or more module as external. Can use \* wildcards, such as '\*.png'.    |     | 
+,| bundle    | `boolean`   | Whether to bundle the main entry point and additional entry points. Set to false to keep individual output files.    | `true`     | 
+,| watch    | `boolean`   | Enable re-building when files change.    |     | 
+,| assets    | `array`   | List of static assets.    | ``     | 
+,| clean    | `boolean`   | Remove previous output before build.    | `true`     | 
+,| includeSrc    | `boolean`   | Should the source files be added to the distribution folder in an \`src\` directory.    | `true`     | 
+,| debug    | `boolean`   | Should output be unminified with source mappings.    |     | 
+,| platform\*   | "browser" \| "neutral" \| "node" \| "worker"    | Platform target for outputs.    | "neutral"     | 
+,| banner\*   | `string`   | A short heading added to the top of each typescript file added in the output folder's src directory.    | "This code was developed by Storm Software (<https://stormsoftware.org>) and is licensed under the Apache License 2.0."     | 
+,| verbose    | `boolean`   | Should write extra log outputs with details from the executor.    |     | 
+,| define    | `object`   | Define global constants that can be used in the source code. The value will be converted into a stringified JSON.    |     | 
+,| env    | `object`   | Define environment variables that can be used in the source code. The value will be converted into a stringified JSON.    |     | 
+,| apiReport    | `boolean`   | Should API Extractor generate an API Report file.    | `true`     | 
+,| docModel    | `boolean`   | Should API Extractor generate an Doc Model markdown file.    | `true`     | 
+,| tsdocMetadata    | `boolean`   | Should API Extractor generate an TSDoc Metadata file.    | `true`     | 
+,| options    | `object`   | Additional options to pass to tsup. See <https://paka.dev/npm/tsup@7.2.0/api#d35d54aca71eb26e>.    |     | 
+,| plugins    | `object[]`  | List of ESBuild plugins to use during processing    | ``     | 
 
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+
+
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
 
 <!-- END executors -->
-
-## Executors
-
-The following executors are available in this package to invoke common tasks for the workspace's projects:
-
-## Tsup Build executor
-
-Run a build on the project using tsup configuration
-
-### Example
-
-This executor can be used by executing the following in a command line utility:
-
-```cmd
-nx run my-project:tsup
-```
-
-**Please note:** _The tsup executor should be included in the desired projects's `project.json` file._
-
-### Options
-
-The following executor options are available:
-
-| Option | Type | Description | Default || --------- | ------ | ------------- | --------- || entry | `string` | The path to the entry file, relative to project. | "{sourceRoot}/index.ts" |
-,| outputPath | `string` | The output path of the generated files. | "dist/{projectRoot}" |
-,| tsConfig | `string` | The path to tsconfig file. | "tsconfig.json" |
-,| additionalEntryPoints | `string[]` | List of additional entry points. | ``   |
-,| external    | `string[]`  | Mark one or more module as external. Can use * wildcards, such as '*.png'.    |    |
-,| bundle    | `boolean`   | Whether to bundle the main entry point and additional entry points. Set to false to keep individual output files.    | `true`    |
-,| watch    | `boolean`   | Enable re-building when files change.    |    |
-,| assets    | `array`   | List of static assets.    |`` |
-,| clean | `boolean` | Remove previous output before build. | `true` |
-,| includeSrc | `boolean` | Should the source files be added to the distribution folder in an `src` directory. | `true` |
-,| debug | `boolean` | Should output be unminified with source mappings. | |
-,| platform | "browser" \| "neutral" \| "node" \| "worker" | Platform target for outputs. | "neutral" |
-,| banner | `string` | A short heading added to the top of each typescript file added in the output folder's src directory. | "This code was developed by Storm Software (https://stormsoftware.org) and is licensed under the Apache License 2.0." |
-,| verbose | `boolean` | Should write extra log outputs with details from the executor. | |
-,| define | `object` | Define global constants that can be used in the source code. The value will be converted into a stringified JSON. | |
-,| env | `object` | Define environment variables that can be used in the source code. The value will be converted into a stringified JSON. | |
-,| apiReport | `boolean` | Should API Extractor generate an API Report file. | `true` |
-,| docModel | `boolean` | Should API Extractor generate an Doc Model markdown file. | `true` |
-,| tsdocMetadata | `boolean` | Should API Extractor generate an TSDoc Metadata file. | `true` |
-,| options | `object` | Additional options to pass to tsup. See https://paka.dev/npm/tsup@7.2.0/api#d35d54aca71eb26e. | |
-,| plugins | `object[]` | List of ESBuild plugins to use during processing | ``   |
-,| required    |`string` |    |    |
-,| definitions    |`string` | | |
 
 ## Generators
 
 The following generators are available with this package to assist in workspace management:
 
 <!-- START generators -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
 
 ## Init Storm Workspace Plugin
 
@@ -144,48 +114,52 @@ Init Storm Workspace Plugin.
 
 The following executor options are available:
 
-| Option     | Type      | Description            | Default |
-| ---------- | --------- | ---------------------- | ------- |
-| skipFormat | `boolean` | Skip formatting files. |         |
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| skipFormat    | `boolean`   | Skip formatting files.    |     | 
+
+
+
 
 ## Workspace Preset
 
 Create a Storm workspace with all of the required files and recommended packages installed.
 
-### Examples
+### Examples 
 
-This generator can be used by executing the following examples in a command line utility:
+This generator can be used by executing the following examples in a command line utility: 
 
-Generate a storm workspace with:
-
-- name: example-repo
-- namespace: storm-software
-- organization: storm-software
+Generate a storm workspace with: 
+- name: example-repo 
+- namespace: storm-software 
+- organization: storm-software 
 - repositoryUrl: <https://github.com/storm-software/example-repo>
 
-```cmd
+```cmd 
 nx g @storm-software/workspace-tools:preset --name 'example-repo'
 ```
 
-Generate a storm workspace with:
 
-- name: example-repo
-- namespace: example
+
+Generate a storm workspace with: 
+- name: example-repo 
+- namespace: example 
 - repositoryUrl: <https://github.com/storm-software/example-repo>
 
-```cmd
+```cmd 
 nx g @storm-software/workspace-tools:preset --name 'example-repo' --namespace 'example'
 ```
 
-Generate a storm workspace with:
 
-- name: example-repo
-- namespace: example
-- organization: example-org
-- description: An example workspace
+
+Generate a storm workspace with: 
+- name: example-repo 
+- namespace: example 
+- organization: example-org 
+- description: An example workspace 
 - repositoryUrl: <https://github.com/example-org/example-repo>
 
-```cmd
+```cmd 
 nx g @storm-software/workspace-tools:preset --name 'example-repo' --namespace 'example' --organization 'example-org' --description 'An example workspace'
 ```
 
@@ -193,19 +167,22 @@ nx g @storm-software/workspace-tools:preset --name 'example-repo' --namespace 'e
 
 The following executor options are available:
 
-| Option | Type           | Description                     | Default                                                                                                                                                           |
-| ------ | -------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| name\* | `string`       | The name of the workspace root. |                                                                                                                                                                   |
-| ,      | organization\* | `string`                        | The organization that owns the workspace.                                                                                                                         | "storm-software" |
-| ,      | namespace      | `string`                        | The npm scope used for the workspace. Defaults to the organization name.                                                                                          |                  |
-| ,      | includeApps\*  | `boolean`                       | Should a separate \`apps\` folder be created for this workspace (if Yes: \`apps\` and \`libs\` folders will be added, if No: \`packages\` folders will be added)? |                  |
-| ,      | description    | `string`                        | The description of the workspace to use in the package.json and README.md files.                                                                                  |                  |
-| ,      | repositoryUrl  | `string`                        | The URL of the workspace in GitHub. Defaults to <https://github.com/{organization}/{name}>                                                                        |                  |
-| ,      | nxCloud        | `boolean`                       | Should distributed caching with Nx Cloud be enabled for the workspace?                                                                                            |                  |
-| ,      | mode\*         | "light" \| "dark"               | Which client mode should be used for the Nx Task Runner?                                                                                                          | "dark"           |
-| ,      | packageManager | "npm" \| "yarn" \| "pnpm"       | What package manager is used for the workspace?                                                                                                                   | "pnpm"           |
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| name\*   | `string`   | The name of the workspace root.    |     | 
+,| organization\*   | `string`   | The organization that owns the workspace.    | "storm-software"     | 
+,| namespace    | `string`   | The npm scope used for the workspace. Defaults to the organization name.    |     | 
+,| includeApps\*   | `boolean`   | Should a separate \`apps\` folder be created for this workspace (if Yes: \`apps\` and \`libs\` folders will be added, if No: \`packages\` folders will be added)?    |     | 
+,| description    | `string`   | The description of the workspace to use in the package.json and README.md files.    |     | 
+,| repositoryUrl    | `string`   | The URL of the workspace in GitHub. Defaults to <https://github.com/{organization}/{name}>    |     | 
+,| nxCloud    | `boolean`   | Should distributed caching with Nx Cloud be enabled for the workspace?    |     | 
+,| mode\*   | "light" \| "dark"    | Which client mode should be used for the Nx Task Runner?    | "dark"     | 
+,| packageManager    | "npm" \| "yarn" \| "pnpm"    | What package manager is used for the workspace?    | "pnpm"     | 
 
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+
+
 
 ## Add Node Library
 
@@ -215,97 +192,29 @@ Generate a new node library project in the Storm workspace
 
 The following executor options are available:
 
-| Option | Type                       | Description                | Default                                                                                                                                                                                    |
-| ------ | -------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ |
-| name\* | `string`                   | A name for the library.    |                                                                                                                                                                                            |
-| ,      | description                | `string`                   | The library used by Storm Software for building TypeScript applications.                                                                                                                   |        |
-| ,      | directory\*                | `string`                   | A directory where the lib is placed.                                                                                                                                                       |        |
-| ,      | projectNameAndRootFormat\* | "as-provided" \| "derived" | Whether to generate the project name and root directory as provided (\`as-provided\`) or generate them composing their values and taking the configured layout into account (\`derived\`). |        |
-| ,      | tags                       | `string`                   | Add tags to the library (used for linting).                                                                                                                                                |        |
-| ,      | strict                     | `boolean`                  | Whether to enable tsconfig strict mode or not.                                                                                                                                             | `true` |
-| ,      | publishable\*              | `boolean`                  | Generate a publishable library.                                                                                                                                                            |        |
-| ,      | importPath\*               | `string`                   | The library name used to import it, like @storm-software/my-awesome-lib. Required for publishable library.                                                                                 |        |
-| ,      | buildable\*                | `boolean`                  | Generate a buildable library.                                                                                                                                                              | `true` |
-| ,      | setParserOptionsProject    | `boolean`                  | Whether or not to configure the ESLint \`parserOptions.project\` option. We do not do this by default for lint performance reasons.                                                        |        |
-| ,      | rootProject                | `boolean`                  | Is the current project the root project in the workspace.                                                                                                                                  |        |
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| name\*   | `string`   | A name for the library.    |     | 
+,| description    | `string`   | The library used by Storm Software for building TypeScript applications.    |     | 
+,| directory\*   | `string`   | A directory where the lib is placed.    |     | 
+,| projectNameAndRootFormat\*   | "as-provided" \| "derived"    | Whether to generate the project name and root directory as provided (\`as-provided\`) or generate them composing their values and taking the configured layout into account (\`derived\`).    |     | 
+,| tags    | `string`   | Add tags to the library (used for linting).    |     | 
+,| strict    | `boolean`   | Whether to enable tsconfig strict mode or not.    | `true`     | 
+,| publishable\*   | `boolean`   | Generate a publishable library.    |     | 
+,| importPath\*   | `string`   | The library name used to import it, like @storm-software/my-awesome-lib. Required for publishable library.    |     | 
+,| buildable\*   | `boolean`   | Generate a buildable library.    | `true`     | 
+,| setParserOptionsProject    | `boolean`   | Whether or not to configure the ESLint \`parserOptions.project\` option. We do not do this by default for lint performance reasons.    |     | 
+,| rootProject    | `boolean`   | Is the current project the root project in the workspace.    |     | 
 
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+
+
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
 
 <!-- END generators -->
-
-## Init Storm Workspace Plugin
-
-Init Storm Workspace Plugin.
-
-### Options
-
-The following executor options are available:
-
-| Option | Type | Description | Default || --------- | ------ | ------------- | --------- || skipFormat | `boolean` | Skip formatting files. | |
-
-## Storm Workspace preset
-
-Storm workspace preset generator
-
-### Examples
-
-This generator can be used by executing the following examples in a command line utility:
-
-#### Generate a storm workspace with the name: example-repo, namespace: storm-software, organization: storm-software, and repositoryUrl: 'https://github.com/storm-software/example-repo'.
-
-```
-nx g @storm-software/workspace-tools:preset --name 'example-repo'
-```
-
-#### Generate a storm workspace with the name: example-repo, namespace: example, and repositoryUrl: 'https://github.com/storm-software/example-repo'.
-
-```
-nx g @storm-software/workspace-tools:preset --name 'example-repo' --namespace 'example'
-```
-
-#### Generate a storm workspace with the name: example-repo, namespace: example, organization: example-org, description: 'An example workspace', and repositoryUrl: 'https://github.com/example-org/example-repo'.
-
-```
-nx g @storm-software/workspace-tools:preset --name 'example-repo' --namespace 'example' --organization 'example-org' --description 'An example workspace'
-```
-
-### Options
-
-The following executor options are available:
-
-| Option | Type | Description | Default || --------- | ------ | ------------- | --------- || name\* | `string` | The name of the workspace root. | |
-,| organization\* | `string` | The organization that owns the workspace. | "storm-software" |
-,| namespace | `string` | The npm scope used for the workspace. Defaults to the organization name. | |
-,| includeApps\* | `boolean` | Should a separate `apps` folder be created for this workspace (if Yes: `apps` and `libs` folders will be added, if No: `packages` folders will be added)? | |
-,| description | `string` | The description of the workspace to use in the package.json and README.md files. | |
-,| repositoryUrl | `string` | The URL of the workspace in GitHub. Defaults to the https://github.com/<organization>/<name> | |
-,| nxCloud | `boolean` | Should distributed caching with Nx Cloud be enabled for the workspace? | |
-,| mode\* | "light" \| "dark" | Which client mode should be used for the Nx Task Runner? | "dark" |
-,| packageManager | "npm" \| "yarn" \| "pnpm" | What package manager is used for the workspace? | "pnpm" |
-
-**Please note:** _Option names followed by _ above are required, and must be provided to run the executor.\*
-
-## node-library
-
-Generate a new node library project in the Storm workspace
-
-### Options
-
-The following executor options are available:
-
-| Option | Type | Description | Default || --------- | ------ | ------------- | --------- || name\* | `string` | A name for the library. | |
-,| description | `string` | The library used by Storm Software for building TypeScript applications. | |
-,| directory\* | `string` | A directory where the lib is placed. | |
-,| projectNameAndRootFormat\* | "as-provided" \| "derived" | Whether to generate the project name and root directory as provided (`as-provided`) or generate them composing their values and taking the configured layout into account (`derived`). | |
-,| tags | `string` | Add tags to the library (used for linting). | |
-,| strict | `boolean` | Whether to enable tsconfig strict mode or not. | `true` |
-,| publishable\* | `boolean` | Generate a publishable library. | |
-,| importPath\* | `string` | The library name used to import it, like @storm-software/my-awesome-lib. Required for publishable library. | |
-,| buildable\* | `boolean` | Generate a buildable library. | `true` |
-,| setParserOptionsProject | `boolean` | Whether or not to configure the ESLint `parserOptions.project` option. We do not do this by default for lint performance reasons. | |
-,| rootProject | `boolean` | Is the current project the root project in the workspace. | |
-
-**Please note:** _Option names followed by _ above are required, and must be provided to run the executor.\*
 
 ## Building
 
