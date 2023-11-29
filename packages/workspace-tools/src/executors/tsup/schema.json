@@ -20,7 +20,7 @@
     },
     "tsConfig": {
       "type": "string",
-      "description": "The path to tsconfig file.",
+      "description": "The path to the `tsconfig.json` file.",
       "x-completion-type": "file",
       "x-completion-glob": "tsconfig.*.json",
       "x-priority": "important",
@@ -36,7 +36,7 @@
     },
     "external": {
       "type": "array",
-      "description": "Mark one or more module as external. Can use * wildcards, such as '*.png'.",
+      "description": "Mark one or more module as external. Can use * wildcards, such as *.png.",
       "items": {
         "type": "string"
       }
@@ -83,7 +83,7 @@
     },
     "banner": {
       "type": "string",
-      "description": "A short heading added to the top of each typescript file added in the output folder's src directory.",
+      "description": "A short heading added to the top of each typescript file added in the output folder's `src` directory.",
       "default": "This code was developed by Storm Software (<https://stormsoftware.org>) and is licensed under the Apache License 2.0."
     },
     "verbose": {

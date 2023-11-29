@@ -38,6 +38,10 @@ A package containing tools for managing a Storm workspace. It includes various [
 
 This library was generated with [Nx](https://nx.dev).
 
+## Executors
+
+The following executors are available in this package to invoke common tasks for the workspace's projects:
+
 <!-- START executors -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -65,17 +69,17 @@ The following executor options are available:
 | --------- | ------ | ------------- | --------- | 
 | entry      | `string`    | The path to the entry file, relative to project.     | "{sourceRoot}/index.ts"     | 
  | outputPath      | `string`    | The output path of the generated files.     | "dist/{projectRoot}"     | 
- | *tsConfig \**    | `string`    | The path to tsconfig file.     | "tsconfig.json"     | 
+ | **tsConfig \***    | `string`    | The path to the \`tsconfig.json\` file.     | "tsconfig.json"     | 
  | additionalEntryPoints      | `string[]`   | List of additional entry points.     | `[]`     | 
- | external      | `string[]`   | Mark one or more module as external. Can use \* wildcards, such as '\*.png'.     |     | 
+ | external      | `string[]`   | Mark one or more module as external. Can use \* wildcards, such as \*.png.     |     | 
  | bundle      | `boolean`    | Whether to bundle the main entry point and additional entry points. Set to false to keep individual output files.     | `true`     | 
  | watch      | `boolean`    | Enable re-building when files change.     |     | 
  | assets      | `array`    | List of static assets.     | `[]`     | 
  | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
  | includeSrc      | `boolean`    | Should the source files be added to the distribution folder in an \`src\` directory.     | `true`     | 
  | debug      | `boolean`    | Should output be unminified with source mappings.     |     | 
- | *platform \**    | "browser" \| "neutral" \| "node" \| "worker"     | Platform target for outputs.     | "neutral"     | 
- | *banner \**    | `string`    | A short heading added to the top of each typescript file added in the output folder's src directory.     | "This code was developed by Storm Software (<https://stormsoftware.org>) and is licensed under the Apache License 2.0."     | 
+ | **platform \***    | "browser" \| "neutral" \| "node" \| "worker"     | Platform target for outputs.     | "neutral"     | 
+ | **banner \***    | `string`    | A short heading added to the top of each typescript file added in the output folder's \`src\` directory.     | "This code was developed by Storm Software (<https://stormsoftware.org>) and is licensed under the Apache License 2.0."     | 
  | verbose      | `boolean`    | Should write extra log outputs with details from the executor.     |     | 
  | define      | `object`    | Define global constants that can be used in the source code. The value will be converted into a stringified JSON.     |     | 
  | env      | `object`    | Define environment variables that can be used in the source code. The value will be converted into a stringified JSON.     |     | 
@@ -167,14 +171,14 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| *name \**    | `string`    | The name of the workspace root.     |     | 
- | *organization \**    | `string`    | The organization that owns the workspace.     | "storm-software"     | 
+| **name \***    | `string`    | The name of the workspace root.     |     | 
+ | **organization \***    | `string`    | The organization that owns the workspace.     | "storm-software"     | 
  | namespace      | `string`    | The npm scope used for the workspace. Defaults to the organization name.     |     | 
- | *includeApps \**    | `boolean`    | Should a separate \`apps\` folder be created for this workspace (if Yes: \`apps\` and \`libs\` folders will be added, if No: \`packages\` folders will be added)?     |     | 
+ | **includeApps \***    | `boolean`    | Should a separate `apps` folder be created for this workspace (if Yes: `apps` and `libs` folders will be added, if No: `packages` folders will be added)?     |     | 
  | description      | `string`    | The description of the workspace to use in the package.json and README.md files.     |     | 
  | repositoryUrl      | `string`    | The URL of the workspace in GitHub. Defaults to <https://github.com/{organization}/{name}>     |     | 
  | nxCloud      | `boolean`    | Should distributed caching with Nx Cloud be enabled for the workspace?     |     | 
- | *mode \**    | "light" \| "dark"     | Which client mode should be used for the Nx Task Runner?     | "dark"     | 
+ | **mode \***    | "light" \| "dark"     | Which client mode should be used for the Nx Task Runner?     | "dark"     | 
  | packageManager      | "npm" \| "yarn" \| "pnpm"     | What package manager is used for the workspace?     | "pnpm"     | 
 
 
@@ -192,16 +196,16 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| *name \**    | `string`    | A name for the library.     |     | 
+| **name \***    | `string`    | A name for the library.     |     | 
  | description      | `string`    | The library used by Storm Software for building TypeScript applications.     |     | 
- | *directory \**    | `string`    | A directory where the lib is placed.     |     | 
- | *projectNameAndRootFormat \**    | "as-provided" \| "derived"     | Whether to generate the project name and root directory as provided (\`as-provided\`) or generate them composing their values and taking the configured layout into account (\`derived\`).     |     | 
+ | **directory \***    | `string`    | A directory where the lib is placed.     |     | 
+ | **projectNameAndRootFormat \***    | "as-provided" \| "derived"     | Whether to generate the project name and root directory as provided (`as-provided`) or generate them composing their values and taking the configured layout into account (`derived`).     |     | 
  | tags      | `string`    | Add tags to the library (used for linting).     |     | 
  | strict      | `boolean`    | Whether to enable tsconfig strict mode or not.     | `true`     | 
- | *publishable \**    | `boolean`    | Generate a publishable library.     |     | 
- | *importPath \**    | `string`    | The library name used to import it, like @storm-software/my-awesome-lib. Required for publishable library.     |     | 
- | *buildable \**    | `boolean`    | Generate a buildable library.     | `true`     | 
- | setParserOptionsProject      | `boolean`    | Whether or not to configure the ESLint \`parserOptions.project\` option. We do not do this by default for lint performance reasons.     |     | 
+ | **publishable \***    | `boolean`    | Generate a publishable library.     |     | 
+ | **importPath \***    | `string`    | The library name used to import it, like @storm-software/my-awesome-lib. Required for publishable library.     |     | 
+ | **buildable \***    | `boolean`    | Generate a buildable library.     | `true`     | 
+ | setParserOptionsProject      | `boolean`    | Whether or not to configure the ESLint `parserOptions.project` option. We do not do this by default for lint performance reasons.     |     | 
  | rootProject      | `boolean`    | Is the current project the root project in the workspace.     |     | 
 
 

@@ -60,7 +60,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..3f62789299ce916f0cdbc8009a8673c2
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..facaa6ced1e6d1d09a33dacfd981a3866a7eca7d 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..07f76fa8436ef638d3201c80bab48eda23c2538d 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1590,19 +1590,61 @@ var getOutputExtensionMap = (options, format, pkgType) => {
@@ -460,7 +460,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..facaa6ced1e6d1d09a33dacfd981a386
      formatAggregationExports(exports, declarationDir)
    );
 +  
-+  let dtsOutputFilePath = path.join(outDir, 'dts-rollup' + dtsExtension)
++  let dtsOutputFilePath = _path2.default.join(outDir, 'declaration' + dtsExtension)
    rollupDtsFile(
 +    options,
      dtsInputFilePath,
