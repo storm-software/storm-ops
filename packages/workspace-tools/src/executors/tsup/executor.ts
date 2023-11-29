@@ -135,7 +135,7 @@ ${Object.keys(options)
     if (options.includeSrc) {
       assets.push({
         input: sourceRoot,
-        glob: "**/{*.d.ts,*.ts,*.tsx}",
+        glob: "**/{*.ts,*.tsx,*.js,*.jsx}",
         output: "src/"
       });
     }
@@ -256,6 +256,11 @@ ${externalDependencies
     options.platform &&
       options.platform !== "node" &&
       (packageJson.browser ??= "dist/modern/index.global.js");
+    options.includeSrc &&
+      (packageJson.source ??= `./${join(
+        sourceRoot.replace(projectRoot, ""),
+        "index.ts"
+      ).replaceAll("\\", "/")}`);
 
     packageJson.sideEffects ??= false;
     packageJson.files ??= ["dist"];
@@ -303,10 +308,10 @@ ${externalDependencies
 
     if (options.banner && options.includeSrc) {
       const files = globSync([
-        join(context.root, outputPath, "src/**/*.ts"),
-        join(context.root, outputPath, "src/**/*.tsx"),
-        join(context.root, outputPath, "src/**/*.js"),
-        join(context.root, outputPath, "src/**/*.jsx")
+        join(context.root, outputPath, "src/**/*.ts").replaceAll("/", "\\"),
+        join(context.root, outputPath, "src/**/*.tsx").replaceAll("/", "\\"),
+        join(context.root, outputPath, "src/**/*.js").replaceAll("/", "\\"),
+        join(context.root, outputPath, "src/**/*.jsx").replaceAll("/", "\\")
       ]);
       await Promise.allSettled(
         files.map(file =>
