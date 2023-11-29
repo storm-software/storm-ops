@@ -1,3 +1,10 @@
+## [1.12.5](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.12.4...linting-tools-v1.12.5) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Reduce path length of `mainEntryPointFilePath` api-extractor option ([1e747d3](https://github.com/storm-software/storm-ops/commit/1e747d34c5c9c82e00884d140632f9e725950672))
+
 ## [1.12.4](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.12.3...linting-tools-v1.12.4) (2023-11-29)
 
 
