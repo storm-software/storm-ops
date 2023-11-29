@@ -42,6 +42,32 @@ This package contains various [Git](https://git-scm.com/) management tools combi
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+## Installing
+
+Using [pnpm](http://pnpm.io):
+
+```bash
+pnpm add -D @storm-software/git-tools
+```
+
+<details>
+  <summary>Using npm</summary>
+
+```bash
+npm install -D @storm-software/git-tools
+```
+
+</details>
+
+<details>
+  <summary>Using yarn</summary>
+
+```bash
+yarn add -D @storm-software/git-tools
+```
+
+</details>
+
 ## Building
 
 Run `nx build git-tools` to build the library.

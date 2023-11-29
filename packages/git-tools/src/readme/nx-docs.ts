@@ -286,9 +286,9 @@ export const getGeneratorMarkdown = (
                     exampleCmd.command &&
                     typeof exampleCmd.command === "string"
                   ) {
-                    resultCmd += `\`\`\`cmd \n${exampleCmd.command}\n\`\`\`\n\n`;
+                    resultCmd += `\`\`\`bash \n${exampleCmd.command}\n\`\`\`\n\n`;
                   } else if (typeof exampleCmd === "string") {
-                    resultCmd += `\`\`\`\cmd n${exampleCmd}\n\`\`\`\n\n`;
+                    resultCmd += `\`\`\`bash \n${exampleCmd}\n\`\`\`\n\n`;
                   }
 
                   return resultCmd;
@@ -310,13 +310,13 @@ export const getGeneratorMarkdown = (
                 example = `### Example \n\nThis generator can be used by executing the following in a command line utility: \n\n`;
               }
 
-              example += `\`\`\`cmd \n${schemaJson.example.command}\n\`\`\`\n\n`;
+              example += `\`\`\`bash \n${schemaJson.example.command}\n\`\`\`\n\n`;
             } else if (typeof schemaJson.example === "string") {
               example = `### Example \n\nThis generator can be used by executing the following in a command line utility: \n\n`;
-              example += `\`\`\`cmd \n${schemaJson.example}\n\`\`\`\n\n`;
+              example += `\`\`\`bash \n${schemaJson.example}\n\`\`\`\n\n`;
             } else {
               example = `### Example \n\nThis generator can be used by executing the following in a command line utility: \n\n`;
-              example += `\`\`\`cmd \nnx g ${packageName}:${name}\n\`\`\`\n\n`;
+              example += `\`\`\`bash \nnx g ${packageName}:${name}\n\`\`\`\n\n`;
             }
 
             if (required.length > 0) {

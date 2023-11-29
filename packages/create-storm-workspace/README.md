@@ -38,13 +38,39 @@ It is essentially a wrapper around the [Nx CLI](https://nx.dev) that adds some a
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+## Installing
+
+Using [pnpm](http://pnpm.io):
+
+```bash
+pnpm add -g create-storm-workspace
+```
+
+<details>
+  <summary>Using npm</summary>
+
+```bash
+npm install -g create-storm-workspace
+```
+
+</details>
+
+<details>
+  <summary>Using yarn</summary>
+
+```bash
+yarn add -g create-storm-workspace
+```
+
+</details>
+
 ## Building
 
-Run `nx build nx-storm` to build the library.
+Run `nx build create-storm-workspace` to build the library.
 
 ## Running unit tests
 
-Run `nx test nx-storm` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test create-storm-workspace` to execute the unit tests via [Jest](https://jestjs.io).
 
 <!-- START footer -->
 <!-- prettier-ignore-start -->
