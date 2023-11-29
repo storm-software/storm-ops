@@ -1,3 +1,10 @@
+## [1.16.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.16.1...workspace-tools-v1.16.2) (2023-11-29)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved various issues with nx documentation for readme-gen ([8067497](https://github.com/storm-software/storm-ops/commit/806749724b520f21622c0c93c8ff4e3c63129480))
+
 ## [1.16.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.16.0...workspace-tools-v1.16.1) (2023-11-29)
 
 
