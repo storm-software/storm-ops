@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.8.0...testing-tools-v1.8.1) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Remove code that overwrites dts files ([894ef6e](https://github.com/storm-software/storm-ops/commit/894ef6e0ad973d5ed0983f421be341cf53075202))
+
 # [1.8.0](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.7.21...testing-tools-v1.8.0) (2023-11-28)
 
 
