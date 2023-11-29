@@ -1,3 +1,10 @@
+## [1.10.13](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.12...git-tools-v1.10.13) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tmp path on tsup patch ([2dd3551](https://github.com/storm-software/storm-ops/commit/2dd3551988d0c6ee4236123c4eeb7047f53cf666))
+
 ## [1.10.12](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.11...git-tools-v1.10.12) (2023-11-29)
 
 
