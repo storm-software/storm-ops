@@ -1,3 +1,10 @@
+## [1.9.9](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.8...testing-tools-v1.9.9) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tmp path on tsup patch ([2dd3551](https://github.com/storm-software/storm-ops/commit/2dd3551988d0c6ee4236123c4eeb7047f53cf666))
+
 ## [1.9.8](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.7...testing-tools-v1.9.8) (2023-11-29)
 
 
