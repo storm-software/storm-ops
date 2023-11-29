@@ -1,3 +1,10 @@
+## [1.9.3](https://github.com/storm-software/storm-ops/compare/git-tools-v1.9.2...git-tools-v1.9.3) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update package path used by api-extractor ([e8081ef](https://github.com/storm-software/storm-ops/commit/e8081ef5df2bdd0b970c52444b552ab91d8ff2b4))
+
 ## [1.9.2](https://github.com/storm-software/storm-ops/compare/git-tools-v1.9.1...git-tools-v1.9.2) (2023-11-29)
 
 
