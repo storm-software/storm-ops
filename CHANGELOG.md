@@ -1,3 +1,10 @@
+## [1.13.8](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.13.7...@storm-software/storm-ops-v1.13.8) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad path module usage in tsup patch ([e0a984a](https://github.com/storm-software/storm-ops/commit/e0a984a656d65cb6f2b015ebac43d908bdded3d9))
+
 ## [1.13.7](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.13.6...@storm-software/storm-ops-v1.13.7) (2023-11-29)
 
 
