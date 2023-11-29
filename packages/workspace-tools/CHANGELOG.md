@@ -1,3 +1,10 @@
+## [1.16.10](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.16.9...workspace-tools-v1.16.10) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad path module usage in tsup patch ([e0a984a](https://github.com/storm-software/storm-ops/commit/e0a984a656d65cb6f2b015ebac43d908bdded3d9))
+
 ## [1.16.9](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.16.8...workspace-tools-v1.16.9) (2023-11-29)
 
 
