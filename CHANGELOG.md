@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.11.0...@storm-software/storm-ops-v1.11.1) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Remove code that overwrites dts files ([894ef6e](https://github.com/storm-software/storm-ops/commit/894ef6e0ad973d5ed0983f421be341cf53075202))
+
 # [1.11.0](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.10.21...@storm-software/storm-ops-v1.11.0) (2023-11-28)
 
 
