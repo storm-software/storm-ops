@@ -1,3 +1,10 @@
+## [1.10.4](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.3...git-tools-v1.10.4) (2023-11-29)
+
+
+### Bug Fixes
+
+* **git-tools:** Added code to ensure the readme-gen sections are added back after running ([19232ef](https://github.com/storm-software/storm-ops/commit/19232ef62d9d10bb4619debeb968f83e970e38c8))
+
 ## [1.10.3](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.2...git-tools-v1.10.3) (2023-11-29)
 
 
