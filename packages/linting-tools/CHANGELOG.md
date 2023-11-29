@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.12.0...linting-tools-v1.12.1) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with entry path passed into api-extractor ([b2614e5](https://github.com/storm-software/storm-ops/commit/b2614e5639be0717e747c6bf06b39dc31df393e2))
+
 # [1.12.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.11.3...linting-tools-v1.12.0) (2023-11-29)
 
 
