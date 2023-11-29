@@ -60,7 +60,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..3f62789299ce916f0cdbc8009a8673c2
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..16295c68910a9c8eed9b1117a295fce0a64067ab 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..b780cdc1147a155cc734c0cf9a47042d0185b63a 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1590,19 +1590,54 @@ var getOutputExtensionMap = (options, format, pkgType) => {
@@ -436,7 +436,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..16295c68910a9c8eed9b1117a295fce0
    const extractorResult = Extractor.invoke(extractorConfig, {
      // Equivalent to the "--local" command-line parameter
      localBuild: true,
-@@ -2475,33 +2575,52 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+@@ -2475,35 +2575,54 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
    }
  }
  async function rollupDtsFiles(options, exports, format) {
@@ -477,8 +477,9 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..16295c68910a9c8eed9b1117a295fce0
 +    dtsExtension,
      options.tsconfig || "tsconfig.json"
    );
+-  for (let [out, sourceFileName] of Object.entries(
 +  
-   for (let [out, sourceFileName] of Object.entries(
++  /*for (let [out, sourceFileName] of Object.entries(
      options.experimentalDts.entry
    )) {
      sourceFileName = _chunkGQ77QZBOjs.toAbsolutePath.call(void 0, sourceFileName);
@@ -494,8 +495,11 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..16295c68910a9c8eed9b1117a295fce0
 -      formatDistributionExports(exports, outFileName, dtsOutputFilePath)
 +      formatDistributionExports(currentExports, outFileName, outDir)
      );
-   }
+-  }
++  }*/
  }
+ async function runDtsRollup(options, exports) {
+   try {
 @@ -2592,11 +2711,14 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
      options.entry = entry;
      logger3.info("CLI", `Building entry: ${JSON.stringify(entry)}`);
