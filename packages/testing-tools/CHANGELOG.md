@@ -1,3 +1,10 @@
+## [1.8.2](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.8.1...testing-tools-v1.8.2) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with package.json search method ([287761e](https://github.com/storm-software/storm-ops/commit/287761e008d821c32216b18c7eba448e3576b0dd))
+
 ## [1.8.1](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.8.0...testing-tools-v1.8.1) (2023-11-29)
 
 
