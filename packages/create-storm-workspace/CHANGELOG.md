@@ -1,3 +1,10 @@
+## [1.16.11](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.10...create-storm-workspace-v1.16.11) (2023-11-29)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue with escape character in descriptions for nx plugins ([c4c5cb0](https://github.com/storm-software/storm-ops/commit/c4c5cb0ec512d74836d9769dac50b3e545993b0c))
+
 ## [1.16.10](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.9...create-storm-workspace-v1.16.10) (2023-11-29)
 
 
