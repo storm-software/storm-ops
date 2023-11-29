@@ -13,6 +13,7 @@ import { join } from "path";
 import { findFileName, findFilePath } from "../common/file-utils";
 import { ReadMeOptions } from "../types";
 import { doctoc } from "./doctoc";
+import { getExecutorMarkdown, getGeneratorMarkdown } from "./nx-docs";
 import { createTokens, formatReadMeFromSectionName } from "./utils";
 
 export const runReadme = async ({
@@ -95,6 +96,7 @@ export const runProjectReadme = async (
       readFileSync(inputFile, "utf8")
     );
 
+    let packageName = projectName;
     const packageJsonPath = join(findFilePath(inputFile), "package.json");
     if (existsSync(packageJsonPath)) {
       const packageJson = JSON.parse(
@@ -106,6 +108,48 @@ export const runProjectReadme = async (
           "<!-- VERSION -->",
           packageJson.version
         );
+      }
+      if (packageJson?.name) {
+        packageName = packageJson.name;
+      }
+    }
+
+    if (newContent.includes("<!-- EXECUTORS -->")) {
+      const executorsJsonPath = join(findFilePath(inputFile), "executors.json");
+      if (existsSync(executorsJsonPath)) {
+        const executorsJson = JSON.parse(
+          readFileSync(executorsJsonPath, "utf8") ?? "{}"
+        );
+        if (executorsJson?.executors) {
+          console.info("Adding executors...");
+          newContent = newContent.replace(
+            "<!-- EXECUTORS -->",
+            getExecutorMarkdown(packageName, executorsJsonPath, executorsJson)
+          );
+        }
+      }
+    }
+
+    if (newContent.includes("<!-- GENERATORS -->")) {
+      const generatorsJsonPath = join(
+        findFilePath(inputFile),
+        "generators.json"
+      );
+      if (existsSync(generatorsJsonPath)) {
+        const generatorsJson = JSON.parse(
+          readFileSync(generatorsJsonPath, "utf8") ?? "{}"
+        );
+        if (generatorsJson?.generators) {
+          console.info("Adding generators...");
+          newContent = newContent.replace(
+            "<!-- GENERATORS -->",
+            getGeneratorMarkdown(
+              packageName,
+              generatorsJsonPath,
+              generatorsJson
+            )
+          );
+        }
       }
     }
 

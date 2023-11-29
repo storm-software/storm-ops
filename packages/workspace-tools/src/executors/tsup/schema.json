@@ -5,131 +5,129 @@
   "description": "Run a build on the project using tsup configuration",
   "type": "object",
   "properties": {
-    "properties": {
-      "entry": {
-        "type": "string",
-        "description": "The path to the entry file, relative to project.",
-        "alias": "main",
-        "default": "{sourceRoot}/index.ts"
+    "entry": {
+      "type": "string",
+      "description": "The path to the entry file, relative to project.",
+      "alias": "main",
+      "default": "{sourceRoot}/index.ts"
+    },
+    "outputPath": {
+      "type": "string",
+      "description": "The output path of the generated files.",
+      "x-completion-type": "directory",
+      "x-priority": "important",
+      "default": "dist/{projectRoot}"
+    },
+    "tsConfig": {
+      "type": "string",
+      "description": "The path to tsconfig file.",
+      "x-completion-type": "file",
+      "x-completion-glob": "tsconfig.*.json",
+      "x-priority": "important",
+      "default": "tsconfig.json"
+    },
+    "additionalEntryPoints": {
+      "type": "array",
+      "description": "List of additional entry points.",
+      "items": {
+        "type": "string"
       },
-      "outputPath": {
-        "type": "string",
-        "description": "The output path of the generated files.",
-        "x-completion-type": "directory",
-        "x-priority": "important",
-        "default": "dist/{projectRoot}"
-      },
-      "tsConfig": {
-        "type": "string",
-        "description": "The path to tsconfig file.",
-        "x-completion-type": "file",
-        "x-completion-glob": "tsconfig.*.json",
-        "x-priority": "important",
-        "default": "tsconfig.json"
-      },
-      "additionalEntryPoints": {
-        "type": "array",
-        "description": "List of additional entry points.",
-        "items": {
-          "type": "string"
-        },
-        "default": []
-      },
-      "external": {
-        "type": "array",
-        "description": "Mark one or more module as external. Can use * wildcards, such as '*.png'.",
-        "items": {
-          "type": "string"
-        }
-      },
-      "bundle": {
-        "type": "boolean",
-        "description": "Whether to bundle the main entry point and additional entry points. Set to false to keep individual output files.",
-        "default": true
-      },
-      "watch": {
-        "type": "boolean",
-        "description": "Enable re-building when files change.",
-        "default": false
-      },
-      "assets": {
-        "type": "array",
-        "description": "List of static assets.",
-        "default": [],
-        "items": {
-          "$ref": "#/definitions/assetPattern"
-        }
-      },
-      "clean": {
-        "type": "boolean",
-        "description": "Remove previous output before build.",
-        "alias": "deleteOutputPath",
-        "default": true
-      },
-      "includeSrc": {
-        "type": "boolean",
-        "description": "Should the source files be added to the distribution folder in an `src` directory.",
-        "default": true
-      },
-      "debug": {
-        "type": "boolean",
-        "description": "Should output be unminified with source mappings.",
-        "default": false
-      },
-      "platform": {
-        "type": "string",
-        "description": "Platform target for outputs.",
-        "enum": ["browser", "neutral", "node", "worker"],
-        "default": "neutral"
-      },
-      "banner": {
-        "type": "string",
-        "description": "A short heading added to the top of each typescript file added in the output folder's src directory.",
-        "default": "This code was developed by Storm Software (https://stormsoftware.org) and is licensed under the Apache License 2.0."
-      },
-      "verbose": {
-        "type": "boolean",
-        "description": "Should write extra log outputs with details from the executor.",
-        "default": false
-      },
-      "define": {
-        "type": "object",
-        "description": "Define global constants that can be used in the source code. The value will be converted into a stringified JSON.",
-        "additionalProperties": true
-      },
-      "env": {
-        "type": "object",
-        "description": "Define environment variables that can be used in the source code. The value will be converted into a stringified JSON.",
-        "additionalProperties": true
-      },
-      "apiReport": {
-        "type": "boolean",
-        "description": "Should API Extractor generate an API Report file.",
-        "default": true
-      },
-      "docModel": {
-        "type": "boolean",
-        "description": "Should API Extractor generate an Doc Model markdown file.",
-        "default": true
-      },
-      "tsdocMetadata": {
-        "type": "boolean",
-        "description": "Should API Extractor generate an TSDoc Metadata file.",
-        "default": true
-      },
-      "options": {
-        "type": "object",
-        "description": "Additional options to pass to tsup. See https://paka.dev/npm/tsup@7.2.0/api#d35d54aca71eb26e.",
-        "additionalProperties": true,
-        "x-priority": "important"
-      },
-      "plugins": {
-        "type": "array",
-        "description": "List of ESBuild plugins to use during processing",
-        "default": [],
-        "items": {
-          "type": "object"
-        }
+      "default": []
+    },
+    "external": {
+      "type": "array",
+      "description": "Mark one or more module as external. Can use * wildcards, such as '*.png'.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "bundle": {
+      "type": "boolean",
+      "description": "Whether to bundle the main entry point and additional entry points. Set to false to keep individual output files.",
+      "default": true
+    },
+    "watch": {
+      "type": "boolean",
+      "description": "Enable re-building when files change.",
+      "default": false
+    },
+    "assets": {
+      "type": "array",
+      "description": "List of static assets.",
+      "default": [],
+      "items": {
+        "$ref": "#/definitions/assetPattern"
+      }
+    },
+    "clean": {
+      "type": "boolean",
+      "description": "Remove previous output before build.",
+      "alias": "deleteOutputPath",
+      "default": true
+    },
+    "includeSrc": {
+      "type": "boolean",
+      "description": "Should the source files be added to the distribution folder in an `src` directory.",
+      "default": true
+    },
+    "debug": {
+      "type": "boolean",
+      "description": "Should output be unminified with source mappings.",
+      "default": false
+    },
+    "platform": {
+      "type": "string",
+      "description": "Platform target for outputs.",
+      "enum": ["browser", "neutral", "node", "worker"],
+      "default": "neutral"
+    },
+    "banner": {
+      "type": "string",
+      "description": "A short heading added to the top of each typescript file added in the output folder's src directory.",
+      "default": "This code was developed by Storm Software (https://stormsoftware.org) and is licensed under the Apache License 2.0."
+    },
+    "verbose": {
+      "type": "boolean",
+      "description": "Should write extra log outputs with details from the executor.",
+      "default": false
+    },
+    "define": {
+      "type": "object",
+      "description": "Define global constants that can be used in the source code. The value will be converted into a stringified JSON.",
+      "additionalProperties": true
+    },
+    "env": {
+      "type": "object",
+      "description": "Define environment variables that can be used in the source code. The value will be converted into a stringified JSON.",
+      "additionalProperties": true
+    },
+    "apiReport": {
+      "type": "boolean",
+      "description": "Should API Extractor generate an API Report file.",
+      "default": true
+    },
+    "docModel": {
+      "type": "boolean",
+      "description": "Should API Extractor generate an Doc Model markdown file.",
+      "default": true
+    },
+    "tsdocMetadata": {
+      "type": "boolean",
+      "description": "Should API Extractor generate an TSDoc Metadata file.",
+      "default": true
+    },
+    "options": {
+      "type": "object",
+      "description": "Additional options to pass to tsup. See https://paka.dev/npm/tsup@7.2.0/api#d35d54aca71eb26e.",
+      "additionalProperties": true,
+      "x-priority": "important"
+    },
+    "plugins": {
+      "type": "array",
+      "description": "List of ESBuild plugins to use during processing",
+      "default": [],
+      "items": {
+        "type": "object"
       }
     },
     "required": ["tsConfig", "platform", "banner"],
