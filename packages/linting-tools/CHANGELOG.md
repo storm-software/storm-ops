@@ -1,3 +1,10 @@
+## [1.11.2](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.11.1...linting-tools-v1.11.2) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the slashes used in package path in tsup patch ([55470d5](https://github.com/storm-software/storm-ops/commit/55470d54de7dc73b07430e153a6c89719da44667))
+
 ## [1.11.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.11.0...linting-tools-v1.11.1) (2023-11-29)
 
 

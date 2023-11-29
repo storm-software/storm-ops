@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.15.1...create-storm-workspace-v1.15.2) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the slashes used in package path in tsup patch ([55470d5](https://github.com/storm-software/storm-ops/commit/55470d54de7dc73b07430e153a6c89719da44667))
+
 ## [1.15.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.15.0...create-storm-workspace-v1.15.1) (2023-11-29)
 
 

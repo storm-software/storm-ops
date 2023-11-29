@@ -1,3 +1,10 @@
+## [1.9.4](https://github.com/storm-software/storm-ops/compare/git-tools-v1.9.3...git-tools-v1.9.4) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the slashes used in package path in tsup patch ([55470d5](https://github.com/storm-software/storm-ops/commit/55470d54de7dc73b07430e153a6c89719da44667))
+
 ## [1.9.3](https://github.com/storm-software/storm-ops/compare/git-tools-v1.9.2...git-tools-v1.9.3) (2023-11-29)
 
 
