@@ -114,7 +114,7 @@ export const runProjectReadme = async (
       }
     }
 
-    if (newContent.includes("<!-- EXECUTORS -->")) {
+    if (newContent.includes("<!-- START executors -->")) {
       const executorsJsonPath = join(findFilePath(inputFile), "executors.json");
       if (existsSync(executorsJsonPath)) {
         const executorsJson = JSON.parse(
@@ -122,15 +122,23 @@ export const runProjectReadme = async (
         );
         if (executorsJson?.executors) {
           console.info("Adding executors...");
-          newContent = newContent.replace(
-            "<!-- EXECUTORS -->",
-            getExecutorMarkdown(packageName, executorsJsonPath, executorsJson)
-          );
+          newContent = newContent
+            .replace("<!-- END executors -->", "")
+            .replace(
+              "<!-- START executors -->",
+              "<!-- START executors -->\n\n" +
+                getExecutorMarkdown(
+                  packageName,
+                  executorsJsonPath,
+                  executorsJson
+                ) +
+                "\n\n<!-- END executors -->\n\n"
+            );
         }
       }
     }
 
-    if (newContent.includes("<!-- GENERATORS -->")) {
+    if (newContent.includes("<!-- START generators -->")) {
       const generatorsJsonPath = join(
         findFilePath(inputFile),
         "generators.json"
@@ -141,14 +149,18 @@ export const runProjectReadme = async (
         );
         if (generatorsJson?.generators) {
           console.info("Adding generators...");
-          newContent = newContent.replace(
-            "<!-- GENERATORS -->",
-            getGeneratorMarkdown(
-              packageName,
-              generatorsJsonPath,
-              generatorsJson
-            )
-          );
+          newContent = newContent
+            .replace("<!-- END generators -->", "")
+            .replace(
+              "<!-- START generators -->",
+              "<!-- START generators -->\n\n" +
+                getGeneratorMarkdown(
+                  packageName,
+                  generatorsJsonPath,
+                  generatorsJson
+                ) +
+                "\n\n<!-- END generators -->\n\n\n"
+            );
         }
       }
     }
