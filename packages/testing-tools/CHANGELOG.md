@@ -1,3 +1,10 @@
+## [1.9.4](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.3...testing-tools-v1.9.4) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Reduce path length of `mainEntryPointFilePath` api-extractor option ([1e747d3](https://github.com/storm-software/storm-ops/commit/1e747d34c5c9c82e00884d140632f9e725950672))
+
 ## [1.9.3](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.2...testing-tools-v1.9.3) (2023-11-29)
 
 
