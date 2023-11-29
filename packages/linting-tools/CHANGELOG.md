@@ -1,3 +1,10 @@
+## [1.12.10](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.12.9...linting-tools-v1.12.10) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tmp path on tsup patch ([2dd3551](https://github.com/storm-software/storm-ops/commit/2dd3551988d0c6ee4236123c4eeb7047f53cf666))
+
 ## [1.12.9](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.12.8...linting-tools-v1.12.9) (2023-11-29)
 
 
