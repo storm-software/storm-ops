@@ -59,16 +59,16 @@ export const getExecutorMarkdown = (
               .map(([name, schema]: [string, any]) => {
                 let result = "";
                 if (name) {
-                  result += `| ${name}${
-                    required.includes(name) ? "\\*" : " "
-                  }   `;
+                  result += `| ${required.includes(name) ? "*" : ""}${name}${
+                    required.includes(name) ? " \\*" : "  "
+                  }${required.includes(name) ? "*" : ""}   `;
                   if (schema.type) {
                     if (
                       schema.enum &&
                       Array.isArray(schema.enum) &&
                       schema.enum.length > 0
                     ) {
-                      result += `| ${schema.enum
+                      result += ` | ${schema.enum
                         .map((x: any) =>
                           !schema.type || schema.type === "string"
                             ? `"${x}"`
@@ -76,29 +76,29 @@ export const getExecutorMarkdown = (
                         )
                         .join(" \\| ")}    `;
                     } else if (schema.type === "array" && schema.items?.type) {
-                      result += `| \`${schema.items.type}[]\`  `;
+                      result += ` | \`${schema.items.type}[]\`  `;
                     } else {
-                      result += `| \`${schema.type}\`   `;
+                      result += ` | \`${schema.type}\`   `;
                     }
                   } else {
-                    result += `| \`string\`  `;
+                    result += ` | \`string\`  `;
                   }
 
                   if (schema.description) {
-                    result += `| ${schema.description
+                    result += ` | ${schema.description
                       .replaceAll("`", "\\`")
                       .replaceAll("*", "\\*")}    `;
                   } else {
-                    result += `|    `;
+                    result += ` |    `;
                   }
 
                   if (schema.default) {
                     result +=
                       schema.type === "string" || !schema.type
-                        ? `| "${schema.default}"    `
-                        : `| \`${schema.default}\`    `;
+                        ? ` | "${schema.default}"    `
+                        : ` | \`${schema.default}\`    `;
                   } else {
-                    result += `|    `;
+                    result += ` |    `;
                   }
 
                   result += ` | \n`;
@@ -106,7 +106,7 @@ export const getExecutorMarkdown = (
 
                 return result;
               })
-              .join();
+              .join(" ");
 
             result += "\n\n";
             if (required.length > 0) {
@@ -200,8 +200,10 @@ export const getGeneratorMarkdown = (
               .map(([name, schema]: [string, any]) => {
                 let resultSchema = "";
                 if (name) {
-                  resultSchema += `| ${name}${
-                    required.includes(name) ? "\\*" : " "
+                  resultSchema += `| ${
+                    required.includes(name) ? "*" : ""
+                  }${name}${required.includes(name) ? " \\*" : "  "}${
+                    required.includes(name) ? "*" : ""
                   }   `;
                   if (schema.type) {
                     if (
@@ -209,7 +211,7 @@ export const getGeneratorMarkdown = (
                       Array.isArray(schema.enum) &&
                       schema.enum.length > 0
                     ) {
-                      resultSchema += `| ${schema.enum
+                      resultSchema += ` | ${schema.enum
                         .map((x: any) =>
                           !schema.type || schema.type === "string"
                             ? `"${x}"`
@@ -217,29 +219,29 @@ export const getGeneratorMarkdown = (
                         )
                         .join(" \\| ")}    `;
                     } else if (schema.type === "array" && schema.items?.type) {
-                      resultSchema += `| \`${schema.items.type}[]\`  `;
+                      resultSchema += ` | \`${schema.items.type}[]\`  `;
                     } else {
-                      resultSchema += `| \`${schema.type}\`   `;
+                      resultSchema += ` | \`${schema.type}\`   `;
                     }
                   } else {
-                    resultSchema += `| \`string\`  `;
+                    resultSchema += ` | \`string\`  `;
                   }
 
                   if (schema.description) {
-                    resultSchema += `| ${schema.description
+                    resultSchema += ` | ${schema.description
                       .replaceAll("`", "\\`")
                       .replaceAll("*", "\\*")}    `;
                   } else {
-                    resultSchema += `|    `;
+                    resultSchema += ` |    `;
                   }
 
                   if (schema.default) {
                     resultSchema +=
                       schema.type === "string" || !schema.type
-                        ? `| "${schema.default}"    `
-                        : `| \`${schema.default}\`    `;
+                        ? ` | "${schema.default}"    `
+                        : ` | \`${schema.default}\`    `;
                   } else {
-                    resultSchema += `|    `;
+                    resultSchema += ` |    `;
                   }
 
                   resultSchema += ` | \n`;
@@ -247,7 +249,7 @@ export const getGeneratorMarkdown = (
 
                 return resultSchema;
               })
-              .join();
+              .join(" ");
 
             result += "\n\n";
             if (required.length > 0) {
