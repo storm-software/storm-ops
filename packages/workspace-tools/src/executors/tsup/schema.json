@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/schema",
   "version": 2,
   "title": "Tsup Builder",
-  "description": "Run a build on the project using tsup configuration",
+  "description": "Run a build on the project using ESBuild with a patched tsup configuration",
   "type": "object",
   "properties": {
     "entry": {
@@ -84,7 +84,7 @@
     "banner": {
       "type": "string",
       "description": "A short heading added to the top of each typescript file added in the output folder's src directory.",
-      "default": "This code was developed by Storm Software (https://stormsoftware.org) and is licensed under the Apache License 2.0."
+      "default": "This code was developed by Storm Software (<https://stormsoftware.org>) and is licensed under the Apache License 2.0."
     },
     "verbose": {
       "type": "boolean",
@@ -118,7 +118,7 @@
     },
     "options": {
       "type": "object",
-      "description": "Additional options to pass to tsup. See https://paka.dev/npm/tsup@7.2.0/api#d35d54aca71eb26e.",
+      "description": "Additional options to pass to tsup. See <https://paka.dev/npm/tsup@7.2.0/api#d35d54aca71eb26e>.",
       "additionalProperties": true,
       "x-priority": "important"
     },

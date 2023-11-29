@@ -37,7 +37,9 @@ export const getExecutorMarkdown = (
           }
 
           if (schemaJson.description) {
-            description = `${schemaJson.description}\n\n`;
+            description = `${schemaJson.description
+              .replaceAll("`", "\\`")
+              .replaceAll("*", "\\*")}\n\n`;
           }
 
           required =
@@ -50,8 +52,8 @@ export const getExecutorMarkdown = (
           ) {
             result +=
               "### Options\n\nThe following executor options are available:\n\n";
-            result += "| Option    | Type   | Description   | Default   |";
-            result += "| --------- | ------ | ------------- | --------- |";
+            result += "| Option    | Type   | Description   | Default   | \n";
+            result += "| --------- | ------ | ------------- | --------- | \n";
 
             result += Object.entries(schemaJson.properties)
               .map(([name, schema]: [string, any]) => {
@@ -83,10 +85,9 @@ export const getExecutorMarkdown = (
                   }
 
                   if (schema.description) {
-                    result += `| ${schema.description.replaceAll(
-                      "`",
-                      "\\`"
-                    )}    `;
+                    result += `| ${schema.description
+                      .replaceAll("`", "\\`")
+                      .replaceAll("*", "\\*")}    `;
                   } else {
                     result += `|    `;
                   }
@@ -109,7 +110,7 @@ export const getExecutorMarkdown = (
 
             result += "\n\n";
             if (required.length > 0) {
-              result += `**Please note:** *Option names followed by \* above are required, and must be provided to run the executor.* \n\n`;
+              result += `**Please note:** _Option names followed by \\* above are required, and must be provided to run the executor._ \n\n`;
             }
           }
         }
@@ -120,18 +121,20 @@ export const getExecutorMarkdown = (
       }
 
       if (!description && executor.description) {
-        description = `${executor.description.replaceAll("`", "\\`")}\n\n`;
+        description = `${executor.description
+          .replaceAll("`", "\\`")
+          .replaceAll("*", "\\*")}\n\n`;
       }
 
       return (
         title +
         description +
-        `### Example \n\nThis executor can be used by executing the following in a command line utility: \n\n\`\`\`\nnx run my-project:${name}\n\`\`\`\n\n` +
-        `**Please note:** *The ${name} executor should be included in the desired projects's \`project.json\` file.${
+        `### Example \n\nThis executor can be used by executing the following in a command line utility: \n\n\`\`\`cmd \nnx run my-project:${name}\n\`\`\`\n\n` +
+        `**Please note:** _The ${name} executor should be included in the desired projects's \`project.json\` file.${
           required.length > 0
-            ? "All required options must be included in the `options` property of the json."
+            ? `All required options must be included in the \`options\` property of the json.`
             : ""
-        }* \n\n` +
+        }_ \n\n` +
         result
       );
     })
@@ -174,7 +177,9 @@ export const getGeneratorMarkdown = (
           }
 
           if (schemaJson.description) {
-            description = `${schemaJson.description}\n\n`;
+            description = `${schemaJson.description
+              .replaceAll("`", "\\`")
+              .replaceAll("*", "\\*")}\n\n`;
           }
 
           if (
@@ -221,10 +226,9 @@ export const getGeneratorMarkdown = (
                   }
 
                   if (schema.description) {
-                    resultSchema += `| ${schema.description.replaceAll(
-                      "`",
-                      "\\`"
-                    )}    `;
+                    resultSchema += `| ${schema.description
+                      .replaceAll("`", "\\`")
+                      .replaceAll("*", "\\*")}    `;
                   } else {
                     resultSchema += `|    `;
                   }
@@ -247,7 +251,7 @@ export const getGeneratorMarkdown = (
 
             result += "\n\n";
             if (required.length > 0) {
-              result += `**Please note:** *Option names followed by \* above are required, and must be provided to run the executor.* \n\n`;
+              result += `**Please note:** _Option names followed by \\* above are required, and must be provided to run the executor._ \n\n`;
             }
           }
 
@@ -264,19 +268,18 @@ export const getGeneratorMarkdown = (
                     exampleCmd.description &&
                     typeof exampleCmd.description === "string"
                   ) {
-                    resultCmd += `#### ${exampleCmd.description.replaceAll(
-                      "`",
-                      "\\`"
-                    )}\n\n`;
+                    resultCmd += `${exampleCmd.description
+                      .replaceAll("`", "\\`")
+                      .replaceAll("*", "\\*")}\n\n`;
                   }
 
                   if (
                     exampleCmd.command &&
                     typeof exampleCmd.command === "string"
                   ) {
-                    resultCmd += `\`\`\`\n${exampleCmd.command}\n\`\`\`\n\n`;
+                    resultCmd += `\`\`\`cmd \n${exampleCmd.command}\n\`\`\`\n\n`;
                   } else if (typeof exampleCmd === "string") {
-                    resultCmd += `\`\`\`\n${exampleCmd}\n\`\`\`\n\n`;
+                    resultCmd += `\`\`\`\cmd n${exampleCmd}\n\`\`\`\n\n`;
                   }
 
                   return resultCmd;
@@ -290,26 +293,25 @@ export const getGeneratorMarkdown = (
                 schemaJson.example.description &&
                 typeof schemaJson.example.description === "string"
               ) {
-                example = `### Example \n\n${schemaJson.example.description.replaceAll(
-                  "`",
-                  "\\`"
-                )} \n\n`;
+                example = `### Example \n\n${schemaJson.example.description
+                  .replaceAll("`", "\\`")
+                  .replaceAll("*", "\\*")} \n\n`;
               } else {
                 example = `### Example \n\nThis generator can be used by executing the following in a command line utility: \n\n`;
               }
 
-              example += `\`\`\`\n${schemaJson.example.command}\n\`\`\`\n\n`;
+              example += `\`\`\`cmd \n${schemaJson.example.command}\n\`\`\`\n\n`;
             } else if (typeof schemaJson.example === "string") {
               example = `### Example \n\nThis generator can be used by executing the following in a command line utility: \n\n`;
-              example += `\`\`\`\n${schemaJson.example}\n\`\`\`\n\n`;
+              example += `\`\`\`cmd \n${schemaJson.example}\n\`\`\`\n\n`;
             } else {
               example = `### Example \n\nThis generator can be used by executing the following in a command line utility: \n\n`;
-              example += `\`\`\`\nnx g ${packageName}:${name}\n\`\`\`\n\n`;
+              example += `\`\`\`cmd \nnx g ${packageName}:${name}\n\`\`\`\n\n`;
             }
 
             if (required.length > 0) {
               example +=
-                "** Please note:** *All required options must be included as parameters when calling the generator.* \n\n";
+                "** Please note:** _All required options must be included as parameters when calling the generator._ \n\n";
             }
           }
         }
@@ -320,7 +322,9 @@ export const getGeneratorMarkdown = (
       }
 
       if (!description && generator.description) {
-        description = `${generator.description.replaceAll("`", "\\`")}\n\n`;
+        description = `${generator.description
+          .replaceAll("`", "\\`")
+          .replaceAll("*", "\\*")}\n\n`;
       }
 
       return title + description + example + result;

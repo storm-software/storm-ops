@@ -48,7 +48,7 @@ Run a build on the project using tsup configuration
 
 This executor can be used by executing the following in a command line utility:
 
-```
+```cmd
 nx run my-project:tsup
 ```
 
