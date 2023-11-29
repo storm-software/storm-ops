@@ -1,3 +1,10 @@
+## [1.16.12](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.16.11...workspace-tools-v1.16.12) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tmp path on tsup patch ([2dd3551](https://github.com/storm-software/storm-ops/commit/2dd3551988d0c6ee4236123c4eeb7047f53cf666))
+
 ## [1.16.11](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.16.10...workspace-tools-v1.16.11) (2023-11-29)
 
 
