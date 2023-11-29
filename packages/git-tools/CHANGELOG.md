@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.0...git-tools-v1.10.1) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with invalid schema json for tsup executor ([045560e](https://github.com/storm-software/storm-ops/commit/045560e2add5f4dc33be71148d63e4ecee496ced))
+
 # [1.10.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.9.5...git-tools-v1.10.0) (2023-11-29)
 
 
