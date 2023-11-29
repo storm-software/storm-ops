@@ -1,3 +1,10 @@
+## [1.10.2](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.10.1...linting-tools-v1.10.2) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with package.json search method ([287761e](https://github.com/storm-software/storm-ops/commit/287761e008d821c32216b18c7eba448e3576b0dd))
+
 ## [1.10.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.10.0...linting-tools-v1.10.1) (2023-11-29)
 
 
