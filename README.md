@@ -32,8 +32,6 @@ Storm-Ops is built using <a href="https://nx.dev/" target="_blank">Nx</a>, a set
 - [Getting Started](#getting-started)
   - [Build](#build)
   - [Development Server](#development-server)
-- [Acidic - Model-Driven Development](#acidic---model-driven-development)
-  - [Visual Studio Code Extension](#visual-studio-code-extension)
 - [Environment Configuration Help](#environment-configuration-help)
   - [Plug-Ins](#plug-ins)
   - [Generate an Application](#generate-an-application)
@@ -93,20 +91,6 @@ Run `pnpm build` to build the project. The build artifacts will be stored in the
 
 Run `pnpm serve` for a dev server. Navigate to <http://localhost:4200/>. The app will automatically reload if you change any of the source files.
 <br /><br />
-
-# Acidic - Model-Driven Development
-
-In StormStack, ⚡ _acidic_ refers to a collection of applications and libraries that are used to build server-side code from a user-defined model. This functionality all lives in the Storm monorepo's `tools` directory (/tools/acidic).
-
-<div align="center"><img src="https://pub-e71cff0f90204755bc910518d63cacf8.r2.dev/storm-generate.bg.png" width="800px" /></div>
-<br />
-
-More information can be found in the [📓 Documentation](https://acidicjs.com/docs).
-<br /><br />
-
-## Visual Studio Code Extension
-
-Acidic has it's own Visual Studio Code extension to support the language model in the IDE. The extension can be found in the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=storm-software.acidic).
 
 # Environment Configuration Help
 
