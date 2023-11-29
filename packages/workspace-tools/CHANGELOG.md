@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.15.0...workspace-tools-v1.15.1) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update package path used by api-extractor ([e8081ef](https://github.com/storm-software/storm-ops/commit/e8081ef5df2bdd0b970c52444b552ab91d8ff2b4))
+
 # [1.15.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.14.2...workspace-tools-v1.15.0) (2023-11-29)
 
 

@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.11.0...linting-tools-v1.11.1) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update package path used by api-extractor ([e8081ef](https://github.com/storm-software/storm-ops/commit/e8081ef5df2bdd0b970c52444b552ab91d8ff2b4))
+
 # [1.11.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.10.2...linting-tools-v1.11.0) (2023-11-29)
 
 

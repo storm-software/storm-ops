@@ -1,3 +1,10 @@
+## [1.8.3](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.8.2...testing-tools-v1.8.3) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update package path used by api-extractor ([e8081ef](https://github.com/storm-software/storm-ops/commit/e8081ef5df2bdd0b970c52444b552ab91d8ff2b4))
+
 ## [1.8.2](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.8.1...testing-tools-v1.8.2) (2023-11-29)
 
 
