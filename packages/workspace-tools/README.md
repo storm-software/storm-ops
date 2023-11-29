@@ -16,7 +16,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.org" target="_blank">stormsoftware.org</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.16.4-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
+[![Version](https://img.shields.io/badge/version-1.16.8-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
 [![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with docusaurus](https://img.shields.io/badge/documented_with-docusaurus-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://docusaurus.io/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <h3 align="center" bold="true">⚠️ <b>Attention</b> ⚠️ This repository, and the apps, libraries, and tools contained within, is still in it's initial development phase. As a result, bugs and issues are expected with it's usage. When the main development phase completes, a proper release will be performed, the packages will be availible through NPM (and other distributions), and this message will be removed. However, in the meantime, please feel free to report any issues you may come across.</h3><br />
@@ -66,11 +66,11 @@ The following executor options are available:
 | entry      | `string`    | The path to the entry file, relative to project.     | "{sourceRoot}/index.ts"     | 
  | outputPath      | `string`    | The output path of the generated files.     | "dist/{projectRoot}"     | 
  | *tsConfig \**    | `string`    | The path to tsconfig file.     | "tsconfig.json"     | 
- | additionalEntryPoints      | `string[]`   | List of additional entry points.     | ``     | 
+ | additionalEntryPoints      | `string[]`   | List of additional entry points.     | `[]`     | 
  | external      | `string[]`   | Mark one or more module as external. Can use \* wildcards, such as '\*.png'.     |     | 
  | bundle      | `boolean`    | Whether to bundle the main entry point and additional entry points. Set to false to keep individual output files.     | `true`     | 
  | watch      | `boolean`    | Enable re-building when files change.     |     | 
- | assets      | `array`    | List of static assets.     | ``     | 
+ | assets      | `array`    | List of static assets.     | `[]`     | 
  | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
  | includeSrc      | `boolean`    | Should the source files be added to the distribution folder in an \`src\` directory.     | `true`     | 
  | debug      | `boolean`    | Should output be unminified with source mappings.     |     | 
@@ -83,7 +83,7 @@ The following executor options are available:
  | docModel      | `boolean`    | Should API Extractor generate an Doc Model markdown file.     | `true`     | 
  | tsdocMetadata      | `boolean`    | Should API Extractor generate an TSDoc Metadata file.     | `true`     | 
  | options      | `object`    | Additional options to pass to tsup. See <https://paka.dev/npm/tsup@7.2.0/api#d35d54aca71eb26e>.     |     | 
- | plugins      | `object[]`   | List of ESBuild plugins to use during processing     | ``     | 
+ | plugins      | `object[]`   | List of ESBuild plugins to use during processing     | `[]`     | 
 
 
 **Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 

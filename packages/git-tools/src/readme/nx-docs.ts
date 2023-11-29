@@ -59,9 +59,9 @@ export const getExecutorMarkdown = (
               .map(([name, schema]: [string, any]) => {
                 let result = "";
                 if (name) {
-                  result += `| ${required.includes(name) ? "*" : ""}${name}${
+                  result += `| ${required.includes(name) ? "**" : ""}${name}${
                     required.includes(name) ? " \\*" : "  "
-                  }${required.includes(name) ? "*" : ""}   `;
+                  }${required.includes(name) ? "**" : ""}   `;
                   if (schema.type) {
                     if (
                       schema.enum &&
@@ -179,9 +179,10 @@ export const getGeneratorMarkdown = (
           }
 
           if (schemaJson.description) {
-            description = `${schemaJson.description
-              .replaceAll("`", "\\`")
-              .replaceAll("*", "\\*")}\n\n`;
+            description = `${schemaJson.description.replaceAll(
+              "*",
+              "\\*"
+            )}\n\n`;
           }
 
           if (
@@ -203,9 +204,9 @@ export const getGeneratorMarkdown = (
                 let resultSchema = "";
                 if (name) {
                   resultSchema += `| ${
-                    required.includes(name) ? "*" : ""
+                    required.includes(name) ? "**" : ""
                   }${name}${required.includes(name) ? " \\*" : "  "}${
-                    required.includes(name) ? "*" : ""
+                    required.includes(name) ? "**" : ""
                   }   `;
                   if (schema.type) {
                     if (
@@ -230,9 +231,10 @@ export const getGeneratorMarkdown = (
                   }
 
                   if (schema.description) {
-                    resultSchema += ` | ${schema.description
-                      .replaceAll("`", "\\`")
-                      .replaceAll("*", "\\*")}    `;
+                    resultSchema += ` | ${schema.description.replaceAll(
+                      "*",
+                      "\\*"
+                    )}    `;
                   } else {
                     resultSchema += ` |    `;
                   }
@@ -274,9 +276,10 @@ export const getGeneratorMarkdown = (
                     exampleCmd.description &&
                     typeof exampleCmd.description === "string"
                   ) {
-                    resultCmd += `${exampleCmd.description
-                      .replaceAll("`", "\\`")
-                      .replaceAll("*", "\\*")}\n\n`;
+                    resultCmd += `${exampleCmd.description.replaceAll(
+                      "*",
+                      "\\*"
+                    )}\n\n`;
                   }
 
                   if (
@@ -299,9 +302,10 @@ export const getGeneratorMarkdown = (
                 schemaJson.example.description &&
                 typeof schemaJson.example.description === "string"
               ) {
-                example = `### Example \n\n${schemaJson.example.description
-                  .replaceAll("`", "\\`")
-                  .replaceAll("*", "\\*")} \n\n`;
+                example = `### Example \n\n${schemaJson.example.description.replaceAll(
+                  "*",
+                  "\\*"
+                )} \n\n`;
               } else {
                 example = `### Example \n\nThis generator can be used by executing the following in a command line utility: \n\n`;
               }
@@ -328,9 +332,7 @@ export const getGeneratorMarkdown = (
       }
 
       if (!description && generator.description) {
-        description = `${generator.description
-          .replaceAll("`", "\\`")
-          .replaceAll("*", "\\*")}\n\n`;
+        description = `${generator.description.replaceAll("*", "\\*")}\n\n`;
       }
 
       return title + description + example + result;
