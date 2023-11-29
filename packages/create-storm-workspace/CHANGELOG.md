@@ -1,3 +1,10 @@
+## [1.16.7](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.6...create-storm-workspace-v1.16.7) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with api-extractor output directory ([5aa99ef](https://github.com/storm-software/storm-ops/commit/5aa99ef09950a738e658d4c75c6e241e4f1b4f14))
+
 ## [1.16.6](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.5...create-storm-workspace-v1.16.6) (2023-11-29)
 
 
