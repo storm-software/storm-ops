@@ -1,3 +1,10 @@
+## [1.16.12](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.11...create-storm-workspace-v1.16.12) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad path module usage in tsup patch ([e0a984a](https://github.com/storm-software/storm-ops/commit/e0a984a656d65cb6f2b015ebac43d908bdded3d9))
+
 ## [1.16.11](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.10...create-storm-workspace-v1.16.11) (2023-11-29)
 
 
