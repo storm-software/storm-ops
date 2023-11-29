@@ -1,3 +1,10 @@
+## [1.9.5](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.4...testing-tools-v1.9.5) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tsup patch to use workspace root as base directory for api-extractor ([d8cdc3c](https://github.com/storm-software/storm-ops/commit/d8cdc3c461ac1a95a814f04e569f05a54d1a8937))
+
 ## [1.9.4](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.3...testing-tools-v1.9.4) (2023-11-29)
 
 
