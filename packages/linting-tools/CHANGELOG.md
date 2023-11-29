@@ -1,3 +1,10 @@
+## [1.12.8](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.12.7...linting-tools-v1.12.8) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad path module usage in tsup patch ([e0a984a](https://github.com/storm-software/storm-ops/commit/e0a984a656d65cb6f2b015ebac43d908bdded3d9))
+
 ## [1.12.7](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.12.6...linting-tools-v1.12.7) (2023-11-29)
 
 
