@@ -1,3 +1,10 @@
+## [1.12.3](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.12.2...@storm-software/storm-ops-v1.12.3) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update paths passed to api-extractor in tsup patch ([f3b6ce9](https://github.com/storm-software/storm-ops/commit/f3b6ce91e71ccc104895b4bcc0edf50a52e2b8ba))
+
 ## [1.12.2](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.12.1...@storm-software/storm-ops-v1.12.2) (2023-11-29)
 
 

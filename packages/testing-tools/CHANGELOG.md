@@ -1,3 +1,10 @@
+## [1.8.5](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.8.4...testing-tools-v1.8.5) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update paths passed to api-extractor in tsup patch ([f3b6ce9](https://github.com/storm-software/storm-ops/commit/f3b6ce91e71ccc104895b4bcc0edf50a52e2b8ba))
+
 ## [1.8.4](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.8.3...testing-tools-v1.8.4) (2023-11-29)
 
 
