@@ -1,3 +1,10 @@
+## [1.12.4](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.12.3...linting-tools-v1.12.4) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with api-extractor output directory ([5aa99ef](https://github.com/storm-software/storm-ops/commit/5aa99ef09950a738e658d4c75c6e241e4f1b4f14))
+
 ## [1.12.3](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.12.2...linting-tools-v1.12.3) (2023-11-29)
 
 
