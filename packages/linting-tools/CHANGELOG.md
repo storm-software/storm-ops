@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.10.2...linting-tools-v1.11.0) (2023-11-29)
+
+
+### Features
+
+* **linting-tools:** Added more items to cspell dictionary ([34112bf](https://github.com/storm-software/storm-ops/commit/34112bf17967dd4069d5cba1bedda12b84fadbc0))
+
 ## [1.10.2](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.10.1...linting-tools-v1.10.2) (2023-11-29)
 
 
