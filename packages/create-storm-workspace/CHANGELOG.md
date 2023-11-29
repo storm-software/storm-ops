@@ -1,3 +1,10 @@
+## [1.16.9](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.8...create-storm-workspace-v1.16.9) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tsup patch to use workspace root as base directory for api-extractor ([d8cdc3c](https://github.com/storm-software/storm-ops/commit/d8cdc3c461ac1a95a814f04e569f05a54d1a8937))
+
 ## [1.16.8](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.7...create-storm-workspace-v1.16.8) (2023-11-29)
 
 
