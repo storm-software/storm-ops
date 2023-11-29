@@ -1,3 +1,10 @@
+## [1.16.11](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.16.10...workspace-tools-v1.16.11) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with path separators in tsup patch ([e7dc44d](https://github.com/storm-software/storm-ops/commit/e7dc44d77f8445a495fb7164d85498d4a2cbf179))
+
 ## [1.16.10](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.16.9...workspace-tools-v1.16.10) (2023-11-29)
 
 
