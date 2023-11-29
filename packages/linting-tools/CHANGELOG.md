@@ -1,3 +1,10 @@
+## [1.12.3](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.12.2...linting-tools-v1.12.3) (2023-11-29)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue with generation of options table in readme-gen ([69f9c86](https://github.com/storm-software/storm-ops/commit/69f9c86efc90e117c4ec9a5b4d1a520d764af4f5))
+
 ## [1.12.2](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.12.1...linting-tools-v1.12.2) (2023-11-29)
 
 
