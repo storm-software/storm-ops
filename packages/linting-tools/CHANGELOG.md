@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.11.3...linting-tools-v1.12.0) (2023-11-29)
+
+
+### Features
+
+* **git-tools:** Added executors and generators sections to the readme-gen CLI ([99aacba](https://github.com/storm-software/storm-ops/commit/99aacba62747cef1347bc87a0fff35fb2ffb0bde))
+
 ## [1.11.3](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.11.2...linting-tools-v1.11.3) (2023-11-29)
 
 
