@@ -407,8 +407,7 @@ function getNormalizedTsConfig(
         noEmit: false,
         declaration: true,
         declarationMap: true,
-        emitDeclarationOnly: true,
-        declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
+        emitDeclarationOnly: true
       }
     },
     ts.sys,
