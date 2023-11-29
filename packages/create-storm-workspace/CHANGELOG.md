@@ -1,3 +1,15 @@
+## [1.16.15](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.14...create-storm-workspace-v1.16.15) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Add back the `declarationDir` value to the compilerOptions for dts build ([b02402d](https://github.com/storm-software/storm-ops/commit/b02402d6ef3c57b217771b2f086058c329c0b5af))
+
+
+### Reverts
+
+* **workspace-tools:** Revert tsup patch back to previous version before updates to api-extractor ([c8a83f1](https://github.com/storm-software/storm-ops/commit/c8a83f1ca6739248576bf81d791d02d02a09acb4))
+
 ## [1.16.14](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.13...create-storm-workspace-v1.16.14) (2023-11-29)
 
 
