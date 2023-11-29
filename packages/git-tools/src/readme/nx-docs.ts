@@ -96,6 +96,8 @@ export const getExecutorMarkdown = (
                     result +=
                       schema.type === "string" || !schema.type
                         ? ` | "${schema.default}"    `
+                        : schema.type === "array"
+                        ? ` | \`[]\`    `
                         : ` | \`${schema.default}\`    `;
                   } else {
                     result += ` |    `;
@@ -239,6 +241,8 @@ export const getGeneratorMarkdown = (
                     resultSchema +=
                       schema.type === "string" || !schema.type
                         ? ` | "${schema.default}"    `
+                        : schema.type === "array"
+                        ? ` | \`[]\`    `
                         : ` | \`${schema.default}\`    `;
                   } else {
                     resultSchema += ` |    `;
