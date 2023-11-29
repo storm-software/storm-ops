@@ -1,3 +1,11 @@
+## [1.16.5](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.16.4...workspace-tools-v1.16.5) (2023-11-29)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue with generation of options table in readme-gen ([69f9c86](https://github.com/storm-software/storm-ops/commit/69f9c86efc90e117c4ec9a5b4d1a520d764af4f5))
+* **workspace-tools:** Resolved issue with paths passed to api-extractor ([3f7c5ea](https://github.com/storm-software/storm-ops/commit/3f7c5ea14b3db1d1444624781a5ec025cc432552))
+
 ## [1.16.4](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.16.3...workspace-tools-v1.16.4) (2023-11-29)
 
 
