@@ -1,3 +1,10 @@
+## [1.13.10](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.13.9...@storm-software/storm-ops-v1.13.10) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tmp path on tsup patch ([2dd3551](https://github.com/storm-software/storm-ops/commit/2dd3551988d0c6ee4236123c4eeb7047f53cf666))
+
 ## [1.13.9](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.13.8...@storm-software/storm-ops-v1.13.9) (2023-11-29)
 
 
