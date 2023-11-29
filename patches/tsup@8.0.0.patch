@@ -60,7 +60,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..3f62789299ce916f0cdbc8009a8673c2
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..0dfc3f9bd55b2999741795100bf21a0d6a96f597 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..c6d584eea90b6a43423dd13c5dd88602dbf5ef93 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1590,19 +1590,61 @@ var getOutputExtensionMap = (options, format, pkgType) => {
@@ -359,67 +359,67 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..0dfc3f9bd55b2999741795100bf21a0d
 +  }
 +
 +  !options.silent && logger2.info("dts", `⚡ Preparing to run API Extractor (DTS generate): ${projectFolder}`);
-+  const relativeProjectFolder = _path2.default.relative(_path2.default.join(options.workspaceRoot, 
-+    projectFolder), 
-+    options.workspaceRoot);
++  const relativeProjectFolder = _path2.default.join(_path2.default.relative(
++    _path2.default.join(options.workspaceRoot,  projectFolder), 
++      options.workspaceRoot), 
++    "..");
 +
-+  const apiReferenceProjectDir = _path2.default.join("<projectFolder>", 
++  const apiReferenceProjectDir = _path2.default.join( 
 +    relativeProjectFolder,
 +    "docs",
 +    "api-reports",
-+    options.projectRoot);
++    options.projectRoot).replaceAll("\\", "/");
 +    
    let configObject = {
 -    mainEntryPointFilePath: inputFilePath,
-+    mainEntryPointFilePath: _path2.default.join("<projectFolder>", 
++    mainEntryPointFilePath: `<projectFolder>/${_path2.default.join( 
 +      relativeProjectFolder,
-+      inputFilePath.replace(options.workspaceRoot, "")),
++      inputFilePath.replace(options.workspaceRoot, "")).replaceAll("\\", "/")}`,
      apiReport: {
 -      enabled: false,
 -      // `reportFileName` is not been used. It's just to fit the requirement of API Extractor.
 -      reportFileName: "tsup-report.api.md"
 +      enabled: options.apiReport !== false,
 +      reportFileName: "api-report.md",
-+      reportFolder: apiReferenceProjectDir,
-+      reportTempFolder: _path2.default.join("<projectFolder>", 
++      reportFolder: `<projectFolder>/${apiReferenceProjectDir}`,
++      reportTempFolder: `<projectFolder>/${_path2.default.join("<projectFolder>", 
 +        relativeProjectFolder,
 +        "tmp", 
-+        "api-reports")
++        "api-reports").replaceAll("\\", "/")}`
 +    },
 +    docModel: { 
 +      enabled: options.docModel !== false,
-+      apiJsonFilePath: _path2.default.join(apiReferenceProjectDir, 
++      apiJsonFilePath: `<projectFolder>/${_path2.default.join(apiReferenceProjectDir, 
 +        relativeProjectFolder,
-+        "documents-model.api.json") 
++        "documents-model.api.json").replaceAll("\\", "/")}`
      },
 -    docModel: { enabled: false },
      dtsRollup: {
        enabled: true,
 -      untrimmedFilePath: outputFilePath
-+      untrimmedFilePath: _path2.default.join("<projectFolder>", 
++      untrimmedFilePath: `<projectFolder>/${_path2.default.join( 
 +        relativeProjectFolder,
 +        options.outDir,
-+        `index${dtsExtension}`),
-+      betaTrimmedFilePath: _path2.default.join("<projectFolder>", 
++        `index${dtsExtension}`).replaceAll("\\", "/")}`,
++      betaTrimmedFilePath: `<projectFolder>/${_path2.default.join(
 +        relativeProjectFolder,
 +        options.outDir,
-+        "index-beta.d.ts"),
-+      publicTrimmedFilePath: _path2.default.join("<projectFolder>", 
++        "index-beta.d.ts").replaceAll("\\", "/")}`,
++      publicTrimmedFilePath: `<projectFolder>/${_path2.default.join( 
 +        relativeProjectFolder,
 +        options.outDir, 
-+        "index-public.d.ts")
++        "index-public.d.ts").replaceAll("\\", "/")}`
 +    },
 +    tsdocMetadata: { 
 +      enabled: options.tsdocMetadata !== false,
-+      tsdocMetadataFilePath: _path2.default.join("<projectFolder>", 
-+        "tsdoc-metadata.api.json") 
++      tsdocMetadataFilePath: "<projectFolder>/tsdoc-metadata.api.json"
      },
 -    tsdocMetadata: { enabled: false },
      compiler: {
        tsconfigFilePath
      },
 -    projectFolder: cwd
-+    projectFolder
++    projectFolder: `./${projectFolder}`
    };
 +
    const prepareOptions = {
