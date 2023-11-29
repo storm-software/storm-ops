@@ -60,7 +60,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..3f62789299ce916f0cdbc8009a8673c2
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..474cdc27088b0f982d1dadd4497e88a4c80aed3b 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..467a539ae5b5012434df851d1af7d53a717fe4ad 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1590,19 +1590,61 @@ var getOutputExtensionMap = (options, format, pkgType) => {
@@ -354,9 +354,6 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..474cdc27088b0f982d1dadd4497e88a4
 -  let packageJsonFullPath = _path2.default.join(cwd, "package.json");
 +function rollupDtsFile(options, inputFilePath, dtsExtension, tsconfigFilePath) {
 +  let projectFolder = packageJsonSearch(options.outDir, options.silent, "dts", logger2);
-+  if (projectFolder.endsWith("/")) {
-+    projectFolder = projectFolder.slice(0, -1);
-+  }
 +
 +  !options.silent && logger2.info("dts", `⚡ Preparing to run API Extractor (DTS generate): ${projectFolder}`);
 +  const apiReferenceProjectDir = _path2.default.join( 
@@ -392,13 +389,16 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..474cdc27088b0f982d1dadd4497e88a4
        enabled: true,
 -      untrimmedFilePath: outputFilePath
 +      untrimmedFilePath: `<projectFolder>/${_path2.default.join( 
-+        options.outDir.replace(projectFolder, ""),
++        options.outDir.replaceAll("\\", "/")
++          .replace(projectFolder.replaceAll("\\", "/"), ""),
 +        `index${dtsExtension}`).replaceAll("\\", "/")}`,
 +      betaTrimmedFilePath: `<projectFolder>/${_path2.default.join(
-+        options.outDir.replace(projectFolder, ""),
++        options.outDir.replaceAll("\\", "/")
++          .replace(projectFolder.replaceAll("\\", "/"), ""),
 +        "index-beta.d.ts").replaceAll("\\", "/")}`,
 +      publicTrimmedFilePath: `<projectFolder>/${_path2.default.join( 
-+        options.outDir.replace(projectFolder, ""), 
++        options.outDir.replaceAll("\\", "/")
++          .replace(projectFolder.replaceAll("\\", "/"), ""),
 +        "index-public.d.ts").replaceAll("\\", "/")}`
 +    },
 +    tsdocMetadata: { 
