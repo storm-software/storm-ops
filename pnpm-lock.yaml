@@ -19,7 +19,7 @@ patchedDependencies:
     hash: sdh76cbs3s6gimrygngciaff4a
     path: patches/semantic-release@22.0.7.patch
   tsup@8.0.0:
-    hash: djdkz5qup46k4s4alvji3poqly
+    hash: m527i7lv23wrjme54td3tcmgdi
     path: patches/tsup@8.0.0.patch
 
 importers:
@@ -533,7 +533,7 @@ importers:
         version: 2.6.2
       tsup:
         specifier: 8.0.0
-        version: 8.0.0(patch_hash=djdkz5qup46k4s4alvji3poqly)(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.96)(ts-node@10.9.1)(typescript@5.2.2)
+        version: 8.0.0(patch_hash=m527i7lv23wrjme54td3tcmgdi)(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.96)(ts-node@10.9.1)(typescript@5.2.2)
 
 packages:
   /@aashutoshrathi/word-wrap@1.2.6:
@@ -19968,7 +19968,7 @@ packages:
     engines: { node: ">=0.6.x" }
     dev: false
 
-  /tsup@8.0.0(patch_hash=djdkz5qup46k4s4alvji3poqly)(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.96)(ts-node@10.9.1)(typescript@5.2.2):
+  /tsup@8.0.0(patch_hash=m527i7lv23wrjme54td3tcmgdi)(@microsoft/api-extractor@7.38.3)(@swc/core@1.3.96)(ts-node@10.9.1)(typescript@5.2.2):
     resolution:
       {
         integrity: sha512-9rOGn8LsFn2iAg2pCB1jnH7ygVuGjlzIomjw0jKXUxAii3iL5cXgm0jZMPKfFH1bSAjQovJ1DUVPSw+oDuIu8A==

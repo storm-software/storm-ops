@@ -60,7 +60,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..3f62789299ce916f0cdbc8009a8673c2
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..36379a087d095fda559c69a687e7e91e81d252c8 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..0dfc3f9bd55b2999741795100bf21a0d6a96f597 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1590,19 +1590,61 @@ var getOutputExtensionMap = (options, format, pkgType) => {
@@ -121,7 +121,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..36379a087d095fda559c69a687e7e91e
 +      `⚡ No package.json file found, using ${pkgPath} as the output directory`);
 +  }
 +
-+  return pkgPath;
++  return pkgPath.replaceAll("\\", "/");
 +}
 +
  async function runEsbuild(options, {
