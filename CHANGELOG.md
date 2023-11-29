@@ -1,3 +1,10 @@
+## [1.13.7](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.13.6...@storm-software/storm-ops-v1.13.7) (2023-11-29)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue with escape character in descriptions for nx plugins ([c4c5cb0](https://github.com/storm-software/storm-ops/commit/c4c5cb0ec512d74836d9769dac50b3e545993b0c))
+
 ## [1.13.6](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.13.5...@storm-software/storm-ops-v1.13.6) (2023-11-29)
 
 
