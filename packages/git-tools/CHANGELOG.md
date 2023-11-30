@@ -1,3 +1,10 @@
+## [1.10.17](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.16...git-tools-v1.10.17) (2023-11-30)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved bad reference to path ([622c842](https://github.com/storm-software/storm-ops/commit/622c84247119570a469d2dc802a3317d44a17bb0))
+
 ## [1.10.16](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.15...git-tools-v1.10.16) (2023-11-30)
 
 
