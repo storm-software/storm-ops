@@ -218,6 +218,8 @@ ${externalDependencies
     const packageJson = fileExists(pathToPackageJson)
       ? readJsonFile(pathToPackageJson)
       : { name: context.projectName, version: "0.0.1" };
+
+    delete packageJson.dependencies;
     externalDependencies.forEach(entry => {
       const packageConfig = entry.node.data as PackageConfiguration;
       if (
