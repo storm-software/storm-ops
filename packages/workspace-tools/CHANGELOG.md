@@ -1,3 +1,11 @@
+## [1.17.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.17.0...workspace-tools-v1.17.1) (2023-11-30)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Enhanced external dependency selection logic ([12dc8d5](https://github.com/storm-software/storm-ops/commit/12dc8d52175f19f70014f21e66e27c7dbaf29df2))
+* **workspace-tools:** Ensure we do no add duplicate dependencies ([5e65bbe](https://github.com/storm-software/storm-ops/commit/5e65bbe90790c7c8e77aa23977e988699901fd3d))
+
 # [1.17.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.16.17...workspace-tools-v1.17.0) (2023-11-30)
 
 
