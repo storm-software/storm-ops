@@ -1,3 +1,10 @@
+## [1.12.14](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.12.13...linting-tools-v1.12.14) (2023-11-30)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved bad reference to path ([622c842](https://github.com/storm-software/storm-ops/commit/622c84247119570a469d2dc802a3317d44a17bb0))
+
 ## [1.12.13](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.12.12...linting-tools-v1.12.13) (2023-11-30)
 
 
