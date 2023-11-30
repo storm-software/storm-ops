@@ -6,6 +6,20 @@ const fs = require("fs");
 try {
   console.log("Running Storm pre-push hook...");
 
+  ["SIGTERM", "SIGINT", "SIGUSR2"].map(type => {
+    process.once(type, async () => {
+      try {
+        console.info(`process.on ${type}`);
+        console.info(`shutdown process done, exiting with code 0`);
+        process.exit(0);
+      } catch (e) {
+        console.warn(`shutdown process failed, exiting with code 1`);
+        console.error(e);
+        process.exit(1);
+      }
+    });
+  });
+
   console.log("🔒🔒🔒 Validating lock files 🔒🔒🔒\n");
 
   const errors = [];

@@ -14,6 +14,20 @@ async function main() {
   try {
     console.log(`⚡ Collecting required info to creating a Storm Workspace`);
 
+    ["SIGTERM", "SIGINT", "SIGUSR2"].map(type => {
+      process.once(type, async () => {
+        try {
+          console.info(`process.on ${type}`);
+          console.info(`shutdown process done, exiting with code 0`);
+          process.exit(0);
+        } catch (e) {
+          console.warn(`shutdown process failed, exiting with code 1`);
+          console.error(e);
+          process.exit(1);
+        }
+      });
+    });
+
     let name = process.argv.length > 2 ? process.argv[2] : null;
     if (!name) {
       const response = await prompt<{ name: string }>({
@@ -145,6 +159,7 @@ async function main() {
       "❌ An error occurred while creating the workspace. Please correct the below issue:"
     );
     console.error(error);
+    process.exit(1);
   }
 }
 
