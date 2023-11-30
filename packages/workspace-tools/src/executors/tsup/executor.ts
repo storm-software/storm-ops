@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { esbuildDecorators } from "@anatine/esbuild-decorators";
 import { ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devkit";
 import { getExtraDependencies } from "@nx/esbuild/src/executors/esbuild/lib/get-extra-dependencies";
 import { copyAssets } from "@nx/js";
@@ -322,7 +323,11 @@ ${externalDependencies
         files.map(file =>
           writeFile(
             file,
-            `// ${options.banner}\n\n${readFileSync(file, "utf-8")}`,
+            `${
+              options.banner.startsWith("//")
+                ? options.banner
+                : `// ${options.banner}`
+            }\n\n${readFileSync(file, "utf-8")}`,
             "utf-8"
           )
         )
@@ -334,6 +339,12 @@ ${externalDependencies
     // #region Add default plugins
 
     options.plugins.push(await load());
+    options.plugins.push(
+      esbuildDecorators({
+        tsconfig: options.tsConfig,
+        cwd: workspaceRoot
+      })
+    );
 
     // #endregion Add default plugins
 
@@ -365,7 +376,18 @@ ${externalDependencies
         )
       ),
       banner: options.banner
-        ? { js: `// ${options.banner}\n\n`, css: `/* ${options.banner} */\n\n` }
+        ? {
+            js: `${
+              options.banner.startsWith("//")
+                ? options.banner
+                : `// ${options.banner}`
+            }\n\n`,
+            css: `/* ${
+              options.banner.startsWith("//")
+                ? options.banner.replace("//", "")
+                : options.banner
+            } */\n\n`
+          }
         : undefined,
       outputPath
     });
