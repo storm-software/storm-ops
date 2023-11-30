@@ -1,3 +1,10 @@
+## [1.9.13](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.12...testing-tools-v1.9.13) (2023-11-30)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved bad reference to path ([622c842](https://github.com/storm-software/storm-ops/commit/622c84247119570a469d2dc802a3317d44a17bb0))
+
 ## [1.9.12](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.11...testing-tools-v1.9.12) (2023-11-30)
 
 
