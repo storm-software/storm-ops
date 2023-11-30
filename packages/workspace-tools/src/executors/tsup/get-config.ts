@@ -2,7 +2,6 @@ import { Path, globSync } from "glob";
 import { join } from "path";
 import { Options, defineConfig } from "tsup";
 import type { ParsedCommandLine } from "typescript";
-import { WorkspaceStorage } from "../../utils";
 import { removeExtension } from "../../utils/file-path-utils";
 import { TsupExecutorSchema } from "./schema";
 
@@ -25,7 +24,6 @@ type GetConfigParams = Omit<
   apiReport?: boolean;
   docModel?: boolean;
   tsdocMetadata?: boolean;
-  tsCdnStorage?: WorkspaceStorage;
   dtsTsConfig: ParsedCommandLine;
 };
 
@@ -45,7 +43,6 @@ export function modernConfig({
   tsdocMetadata = true,
   define,
   env,
-  tsCdnStorage,
   plugins,
   dtsTsConfig
 }: GetConfigParams) {
@@ -96,7 +93,6 @@ export function modernConfig({
     tsdocMetadata,
     sourcemap: debug,
     clean: false,
-    tsCdnStorage,
     plugins,
     outExtension
   } as Options;
@@ -115,7 +111,6 @@ export function legacyConfig({
   verbose = false,
   define,
   env,
-  tsCdnStorage,
   plugins,
   dtsTsConfig
 }: GetConfigParams) {
@@ -155,7 +150,6 @@ export function legacyConfig({
     tsdocMetadata: false,
     sourcemap: debug,
     clean: false,
-    tsCdnStorage,
     plugins,
     outExtension
   } as Options;
@@ -176,7 +170,6 @@ export function workerConfig({
   tsdocMetadata = true,
   define,
   env,
-  tsCdnStorage,
   plugins,
   dtsTsConfig
 }: GetConfigParams) {
@@ -192,7 +185,7 @@ export function workerConfig({
     outDir: join(outDir, "dist"),
     silent: !verbose,
     metafile: true,
-    shims: true,
+    shims: false,
     minify: true,
     external,
     platform: "browser",
@@ -215,7 +208,6 @@ export function workerConfig({
     tsdocMetadata,
     sourcemap: debug,
     clean: false,
-    tsCdnStorage,
     plugins,
     outExtension
   } as Options;
@@ -288,10 +280,6 @@ export function getConfig(
     tsdocMetadata,
     define,
     env,
-    tsCdnStorage: new WorkspaceStorage({
-      cacheName: "ts-libs",
-      workspaceRoot
-    }),
     options,
     plugins,
     dtsTsConfig

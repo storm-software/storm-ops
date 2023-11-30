@@ -12,7 +12,6 @@ import { readFileSync, writeFileSync } from "fs";
 import { removeSync } from "fs-extra";
 import { writeFile } from "fs/promises";
 import { globSync } from "glob";
-import { EventEmitter } from "node:events";
 import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
 import { fileExists } from "nx/src/utils/fileutils";
 import { dirname, join } from "path";
@@ -151,7 +150,24 @@ ${Object.keys(options)
 
     // #region Generate the package.json file
 
+    const workspacePackageJson = readJsonFile(
+      join(workspaceRoot, "package.json")
+    );
+
     options.external = options.external || [];
+    if (workspacePackageJson?.dependencies) {
+      options.external = Object.keys(workspacePackageJson?.dependencies).reduce(
+        (ret: string[], key: string) => {
+          if (!options.external.includes(key)) {
+            ret.push(key);
+          }
+
+          return ret;
+        },
+        options.external
+      );
+    }
+
     const externalDependencies: DependentBuildableProjectNode[] =
       options.external.reduce((acc, name) => {
         const externalNode = context.projectGraph.externalNodes[`npm:${name}`];
@@ -161,7 +177,17 @@ ${Object.keys(options)
             outputs: [],
             node: externalNode
           });
+        } else {
+          const workspaceNode = context.projectGraph.nodes[name];
+          if (workspaceNode) {
+            acc.push({
+              name,
+              outputs: [],
+              node: workspaceNode
+            });
+          }
         }
+
         return acc;
       }, []);
     options.verbose &&
@@ -172,7 +198,7 @@ ${externalDependencies
   })
   .join("\n")}`);
 
-    if (!options.bundle) {
+    if (options.bundle === false) {
       for (const thirdPartyDependency of getExtraDependencies(
         context.projectName,
         context.projectGraph
@@ -192,31 +218,35 @@ ${externalDependencies
     const packageJson = fileExists(pathToPackageJson)
       ? readJsonFile(pathToPackageJson)
       : { name: context.projectName, version: "0.0.1" };
-
-    const workspacePackageJson = readJsonFile(
-      join(workspaceRoot, "package.json")
-    );
-
     externalDependencies.forEach(entry => {
       const packageConfig = entry.node.data as PackageConfiguration;
       if (
         packageConfig?.packageName &&
-        !!(projectGraph.externalNodes[entry.node.name]?.type === "npm")
+        (!!(projectGraph.externalNodes[entry.node.name]?.type === "npm") ||
+          !!projectGraph.nodes[entry.node.name])
       ) {
         const { packageName, version } = packageConfig;
-        if (
+        /*if (
           packageJson.dependencies?.[packageName] ||
           packageJson.devDependencies?.[packageName] ||
           packageJson.peerDependencies?.[packageName]
         ) {
           return;
-        }
-        if (workspacePackageJson.dependencies?.[packageName]) {
+        }*/
+
+        if (
+          workspacePackageJson.dependencies?.[packageName] ||
+          workspacePackageJson.devDependencies?.[packageName]
+        ) {
           return;
         }
 
         packageJson.dependencies ??= {};
-        packageJson.dependencies[packageName] = version;
+        packageJson.dependencies[packageName] = !!projectGraph.nodes[
+          entry.node.name
+        ]
+          ? "latest"
+          : version;
       }
     });
 
@@ -262,7 +292,7 @@ ${externalDependencies
         distSrc = distSrc.substring(1);
       }
 
-      packageJson.source ??= `./${join(distSrc, "index.ts").replaceAll(
+      packageJson.source ??= `${join(distSrc, "index.ts").replaceAll(
         "\\",
         "/"
       )}`;
@@ -349,11 +379,6 @@ ${externalDependencies
     // #endregion Add default plugins
 
     // #region Run the build process
-
-    const eventEmitter = new EventEmitter({ captureRejections: true });
-    eventEmitter.on("message", event => {
-      console.log(`📢  Tsup build message: \n`, event);
-    });
 
     const config = getConfig(context.root, projectRoot, sourceRoot, {
       ...options,
