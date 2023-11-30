@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.14...testing-tools-v1.10.0) (2023-11-30)
+
+
+### Features
+
+* **workspace-tools:** Added `esbuild-decorators` plugin to tsup build executor ([5f83171](https://github.com/storm-software/storm-ops/commit/5f831716b4e9d6ba35e87a4cc62de0f1b2c397c3))
+
 ## [1.9.14](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.13...testing-tools-v1.9.14) (2023-11-30)
 
 
