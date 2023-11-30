@@ -1,3 +1,10 @@
+## [1.16.16](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.15...create-storm-workspace-v1.16.16) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the path separators in api-extractor parameters ([59a0908](https://github.com/storm-software/storm-ops/commit/59a09086e48af2f8aff9297878c3cd436eaf7837))
+
 ## [1.16.15](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.16.14...create-storm-workspace-v1.16.15) (2023-11-29)
 
 

@@ -1,3 +1,10 @@
+## [1.13.12](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.13.11...@storm-software/storm-ops-v1.13.12) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the path separators in api-extractor parameters ([59a0908](https://github.com/storm-software/storm-ops/commit/59a09086e48af2f8aff9297878c3cd436eaf7837))
+
 ## [1.13.11](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.13.10...@storm-software/storm-ops-v1.13.11) (2023-11-29)
 
 

@@ -1,3 +1,10 @@
+## [1.9.11](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.10...testing-tools-v1.9.11) (2023-11-30)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the path separators in api-extractor parameters ([59a0908](https://github.com/storm-software/storm-ops/commit/59a09086e48af2f8aff9297878c3cd436eaf7837))
+
 ## [1.9.10](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.9...testing-tools-v1.9.10) (2023-11-29)
 
 

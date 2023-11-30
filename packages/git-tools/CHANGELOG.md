@@ -1,3 +1,10 @@
+## [1.10.15](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.14...git-tools-v1.10.15) (2023-11-29)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the path separators in api-extractor parameters ([59a0908](https://github.com/storm-software/storm-ops/commit/59a09086e48af2f8aff9297878c3cd436eaf7837))
+
 ## [1.10.14](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.13...git-tools-v1.10.14) (2023-11-29)
 
 
