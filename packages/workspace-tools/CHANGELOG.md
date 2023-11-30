@@ -1,3 +1,10 @@
+## [1.16.16](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.16.15...workspace-tools-v1.16.16) (2023-11-30)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved bad reference to path ([622c842](https://github.com/storm-software/storm-ops/commit/622c84247119570a469d2dc802a3317d44a17bb0))
+
 ## [1.16.15](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.16.14...workspace-tools-v1.16.15) (2023-11-30)
 
 
