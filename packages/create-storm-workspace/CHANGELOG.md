@@ -1,3 +1,10 @@
+## [1.17.2](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.17.1...create-storm-workspace-v1.17.2) (2023-11-30)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Ensure we do no add duplicate dependencies ([5e65bbe](https://github.com/storm-software/storm-ops/commit/5e65bbe90790c7c8e77aa23977e988699901fd3d))
+
 ## [1.17.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.17.0...create-storm-workspace-v1.17.1) (2023-11-30)
 
 
