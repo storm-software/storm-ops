@@ -1,3 +1,10 @@
+## [1.10.16](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.15...git-tools-v1.10.16) (2023-11-30)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with api-extractor input path ([dabefc5](https://github.com/storm-software/storm-ops/commit/dabefc5295646d83325eb845038a2e9b273f7d8e))
+
 ## [1.10.15](https://github.com/storm-software/storm-ops/compare/git-tools-v1.10.14...git-tools-v1.10.15) (2023-11-29)
 
 

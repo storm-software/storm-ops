@@ -1,3 +1,10 @@
+## [1.16.15](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.16.14...workspace-tools-v1.16.15) (2023-11-30)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with api-extractor input path ([dabefc5](https://github.com/storm-software/storm-ops/commit/dabefc5295646d83325eb845038a2e9b273f7d8e))
+
 ## [1.16.14](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.16.13...workspace-tools-v1.16.14) (2023-11-29)
 
 

@@ -1,3 +1,10 @@
+## [1.9.12](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.11...testing-tools-v1.9.12) (2023-11-30)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with api-extractor input path ([dabefc5](https://github.com/storm-software/storm-ops/commit/dabefc5295646d83325eb845038a2e9b273f7d8e))
+
 ## [1.9.11](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.9.10...testing-tools-v1.9.11) (2023-11-30)
 
 
