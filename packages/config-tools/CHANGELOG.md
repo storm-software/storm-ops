@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/storm-software/storm-ops/compare/config-tools-v1.1.0...config-tools-v1.1.1) (2023-12-02)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added new executors to `additionalEntryPoints` configuration ([f7289c7](https://github.com/storm-software/storm-ops/commit/f7289c7b21eba99e0a70147767b1f28fea242854))
+
 # [1.1.0](https://github.com/storm-software/storm-ops/compare/config-tools-v1.0.0...config-tools-v1.1.0) (2023-12-02)
 
 
