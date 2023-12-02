@@ -1,3 +1,11 @@
+## [1.19.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.19.1...workspace-tools-v1.19.2) (2023-12-02)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issue with updated `createStormConfig` schema ([cbc6941](https://github.com/storm-software/storm-ops/commit/cbc69413e1ebbf5521c638401a34c604f25c2854))
+* **config-tools:** Updated the config schema's default values ([42fc718](https://github.com/storm-software/storm-ops/commit/42fc7183f2725e435d006897fb349c02f7454ff9))
+
 ## [1.19.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.19.0...workspace-tools-v1.19.1) (2023-12-02)
 
 
