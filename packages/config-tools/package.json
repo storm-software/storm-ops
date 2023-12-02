@@ -8,7 +8,6 @@
     "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/config-tools"
   },
-  "type": "module",
   "dependencies": {
     "@decs/typeschema": "^0.12.1",
     "cosmiconfig": "^9.0.0",
