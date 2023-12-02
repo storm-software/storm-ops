@@ -18,8 +18,6 @@ export const applyWorkspaceExecutorTokens = (
   option: string,
   tokenizerOptions: ExecutorTokenizerOptions
 ): string => {
-  console.log("applyWorkspaceExecutorTokens", option);
-
   let result = option;
   if (!result) {
     return result;
@@ -114,7 +112,7 @@ export const applyWorkspaceTokens = <
         typeof options[option] === "boolean" ||
         typeof options[option] === "string"
       ) {
-        ret[option] = tokenizerFn(option, config);
+        ret[option] = tokenizerFn(options[option], config);
       } else if (Array.isArray(options[option])) {
         ret[option] = options[option].map((item: any) =>
           tokenizerFn(item, config)

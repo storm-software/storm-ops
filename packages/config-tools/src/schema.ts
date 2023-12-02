@@ -168,6 +168,12 @@ export const StormConfigSchema = z
       .trim()
       .default("en-US")
       .describe("The default locale of the workspace"),
+    logLevel: z
+      .enum(["silent", "fatal", "error", "warn", "info", "debug", "trace"])
+      .optional()
+      .describe(
+        "The log level used to filter out lower priority log messages. If not provided, this is defaulted using the `environment` config value (if `environment` is set to `production` then `level` is `error`, else `level` is `debug`)."
+      ),
     configFile: z
       .string()
       .trim()

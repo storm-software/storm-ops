@@ -31,8 +31,8 @@ export const createStormConfig = async <
   }
 
   if (schema && extensionName) {
-    const moduleConfig = await createConfigExtension(extensionName, schema);
-    result.modules[extensionName] = moduleConfig;
+    const extensionConfig = await createConfigExtension(extensionName, schema);
+    result.extensions[extensionName] = extensionConfig;
   }
 
   _static_cache = result;
@@ -42,9 +42,9 @@ export const createStormConfig = async <
 /**
  * Get the config for a specific Storm config Extension
  *
- * @param moduleName - The name of the config module
- * @param options - The options for the config module
- * @returns The config for the specified Storm config module. If the module does not exist, `undefined` is returned.
+ * @param extensionName - The name of the config extension
+ * @param options - The options for the config extension
+ * @returns The config for the specified Storm config extension. If the extension does not exist, `undefined` is returned.
  */
 export const createConfigExtension = async <TExtensionConfig = any>(
   extensionName: string,

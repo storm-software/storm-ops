@@ -2,8 +2,9 @@ import { Tree } from "@nx/devkit";
 import { getConfigFile } from "@storm-software/config-tools/config-file/get-config-file";
 import { getConfigEnv } from "@storm-software/config-tools/env/get-env";
 import { setConfigEnv } from "@storm-software/config-tools/env/set-env";
-import { StormConfig } from "@storm-software/config-tools/types";
+import { LogLevel, StormConfig } from "@storm-software/config-tools/types";
 import { getDefaultConfig } from "@storm-software/config-tools/utilities/get-default-config";
+import { getLogLevel } from "@storm-software/config-tools/utilities/get-log-level";
 import { BaseWorkspaceToolOptions } from "../types";
 import {
   applyWorkspaceGeneratorTokens,
@@ -54,8 +55,6 @@ export const withRunGenerator =
         options = generatorOptions.applyDefaultFn(options);
       }
 
-      console.debug("⚙️  Generator schema options: \n", options);
-
       let config: any | undefined;
       if (!generatorOptions.skipReadingConfig) {
         const configFile = await getConfigFile();
@@ -67,11 +66,16 @@ export const withRunGenerator =
         });
         setConfigEnv(config);
 
-        console.debug(`Loaded Storm config into env:
-${Object.keys(process.env)
-  .map(key => ` - ${key}=${process.env[key]}`)
-  .join("\n")}`);
+        getLogLevel(config.logLevel) >= LogLevel.DEBUG &&
+          console.debug(
+            `Loaded Storm config into env: \n${Object.keys(process.env)
+              .map(key => ` - ${key}=${process.env[key]}`)
+              .join("\n")}`
+          );
       }
+
+      getLogLevel(config.logLevel) >= LogLevel.DEBUG &&
+        console.debug("⚙️  Generator schema options: \n", options);
 
       const tokenized = applyWorkspaceTokens(
         options,

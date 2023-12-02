@@ -1,4 +1,5 @@
-import { StormConfig } from "../types";
+import { LogLevel, StormConfig } from "../types";
+import { getLogLevel } from "../utilities/get-log-level";
 
 /**
  * Get the config for an extension module of Storm workspace from environment variables
@@ -56,10 +57,17 @@ export const setConfigEnv = (config: StormConfig) => {
   process.env[`${prefix}HOMEPAGE`] = config.homepage;
   process.env[`${prefix}TIMEZONE`] = config.timezone;
   process.env.TZ = config.timezone;
+  process.env.DEFAULT_TIMEZONE = config.timezone;
   process.env[`${prefix}LOCALE`] = config.locale;
   process.env.LOCALE = config.locale;
+  process.env.DEFAULT_LOCALE = config.locale;
+  process.env.LANG = config.locale
+    ? `${config.locale.replaceAll("-", "_")}.UTF-8`
+    : "en_US.UTF-8";
   process.env[`${prefix}CONFIG_FILE`] = config.configFile;
   process.env[`${prefix}WORKSPACE_ROOT`] = config.workspaceRoot;
+  process.env.NX_WORKSPACE_ROOT = config.workspaceRoot;
+  process.env.NX_WORKSPACE_ROOT_PATH = config.workspaceRoot;
   process.env[`${prefix}PACKAGE_DIRECTORY`] = config.packageDirectory;
   process.env[`${prefix}BUILD_DIRECTORY`] = config.buildDirectory;
   process.env[`${prefix}RUNTIME_VERSION`] = config.runtimeVersion;
@@ -80,6 +88,13 @@ export const setConfigEnv = (config: StormConfig) => {
   process.env[`${prefix}REPOSITORY`] = config.repository;
   process.env[`${prefix}BRANCH`] = config.branch;
   process.env[`${prefix}PRE_MAJOR`] = String(config.preMajor);
+  process.env[`${prefix}LOG_LEVEL`] = String(config.logLevel);
+  process.env.NX_VERBOSE_LOGGING = String(
+    getLogLevel(config.logLevel) >= LogLevel.DEBUG ? true : false
+  );
+  process.env.RUST_BACKTRACE =
+    getLogLevel(config.logLevel) >= LogLevel.DEBUG ? "full" : "none";
+
   process.env[`${prefix}CONFIG`] = JSON.stringify(config);
 
   Object.keys(config.extensions ?? {}).forEach((key: string) => {

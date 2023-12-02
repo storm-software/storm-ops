@@ -45,7 +45,8 @@
           "esbuild",
           "prettier",
           "nx",
-          "typescript"
+          "typescript",
+          "@storm-software/config-tools"
         ],
         "assets": [
           {

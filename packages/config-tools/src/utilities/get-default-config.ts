@@ -29,7 +29,7 @@ export const DefaultStormConfig: Omit<StormConfig, "name"> = {
   worker: "stormie-bot",
   runtimeDirectory: "node_modules/.storm",
   colors: { ...DefaultColorConfig },
-  modules: {}
+  extensions: {}
 };
 
 /**
@@ -77,7 +77,7 @@ export const getDefaultConfig = async (
     env: "production",
     branch: "main",
     organization: "storm-software",
-    modules: {},
+    extensions: {},
     ci: true,
     configFile: join(workspaceRoot, "storm.config.js"),
     runtimeVersion: "1.0.0",

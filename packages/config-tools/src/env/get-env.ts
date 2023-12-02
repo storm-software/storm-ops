@@ -1,5 +1,5 @@
-import { StormConfig } from "../types";
-import { getDefaultConfig } from "../utilities/get-default-config";
+import { LogLevelLabel, StormConfig } from "../types";
+import { getLogLevelLabel } from "../utilities";
 
 /**
  * Get the config for an extension module of Storm workspace from environment variables
@@ -39,7 +39,6 @@ export const getExtensionEnv = <
 export const getConfigEnv = (): Partial<StormConfig> => {
   const prefix = `STORM_`;
 
-  const defaultConfig = getDefaultConfig();
   let config: Partial<StormConfig> = {
     name: process.env[`${prefix}NAME`],
     namespace: process.env[`${prefix}NAMESPACE`],
@@ -76,6 +75,15 @@ export const getConfigEnv = (): Partial<StormConfig> => {
     repository: process.env[`${prefix}REPOSITORY`],
     branch: process.env[`${prefix}BRANCH`],
     preMajor: Boolean(process.env[`${prefix}PRE_MAJOR`]),
+    logLevel:
+      process.env[`${prefix}LOG_LEVEL`] !== null &&
+      process.env[`${prefix}LOG_LEVEL`] !== undefined
+        ? Number.isSafeInteger(
+            Number.parseInt(process.env[`${prefix}LOG_LEVEL`])
+          )
+          ? getLogLevelLabel(Number.parseInt(process.env[`${prefix}LOG_LEVEL`]))
+          : (process.env[`${prefix}LOG_LEVEL`] as LogLevelLabel)
+        : LogLevelLabel.INFO,
     extensions: {}
   };
 

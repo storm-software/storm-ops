@@ -2,7 +2,8 @@ import { ExecutorContext } from "@nx/devkit";
 import { getConfigFile } from "@storm-software/config-tools/config-file/get-config-file";
 import { getConfigEnv } from "@storm-software/config-tools/env/get-env";
 import { setConfigEnv } from "@storm-software/config-tools/env/set-env";
-import { StormConfig } from "@storm-software/config-tools/types";
+import { LogLevel, StormConfig } from "@storm-software/config-tools/types";
+import { getLogLevel } from "@storm-software/config-tools/utilities";
 import { getDefaultConfig } from "@storm-software/config-tools/utilities/get-default-config";
 import { BaseWorkspaceToolOptions } from "../types";
 import {
@@ -55,8 +56,6 @@ export const withRunExecutor =
         options = executorOptions.applyDefaultFn(options);
       }
 
-      console.debug(`⚙️  Executor schema options: \n`, options);
-
       if (
         !context.projectsConfigurations?.projects ||
         !context.projectName ||
@@ -77,20 +76,22 @@ export const withRunExecutor =
 
       let config: StormConfig | undefined;
       if (!executorOptions.skipReadingConfig) {
-        const configFile = await getConfigFile();
-        const configEnv = getConfigEnv();
-
         config = await getDefaultConfig({
-          ...configFile,
-          ...configEnv
+          ...(await getConfigFile()),
+          ...getConfigEnv()
         });
         setConfigEnv(config);
 
-        console.debug(`Loaded Storm config into env:
-  ${Object.keys(process.env)
-    .map(key => ` - ${key}=${process.env[key]}`)
-    .join("\n")}`);
+        getLogLevel(config.logLevel) >= LogLevel.DEBUG &&
+          console.debug(
+            `Loaded Storm config into env: \n${Object.keys(process.env)
+              .map(key => ` - ${key}=${process.env[key]}`)
+              .join("\n")}`
+          );
       }
+
+      getLogLevel(config.logLevel) >= LogLevel.DEBUG &&
+        console.debug(`⚙️  Executor schema options: \n`, options);
 
       const tokenized = applyWorkspaceTokens(
         options,
