@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.2...config-tools-v1.2.3) (2023-12-02)
+
+
+### Bug Fixes
+
+* **config-tools:** Add `outExtension` to esbuild options ([57059ea](https://github.com/storm-software/storm-ops/commit/57059ead4b579cb4280b70e0ec32a33b83c40bcc))
+
 ## [1.2.2](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.1...config-tools-v1.2.2) (2023-12-02)
 
 

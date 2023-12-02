@@ -1,3 +1,10 @@
+## [1.21.4](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.3...workspace-tools-v1.21.4) (2023-12-02)
+
+
+### Bug Fixes
+
+* **config-tools:** Add `outExtension` to esbuild options ([57059ea](https://github.com/storm-software/storm-ops/commit/57059ead4b579cb4280b70e0ec32a33b83c40bcc))
+
 ## [1.21.3](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.2...workspace-tools-v1.21.3) (2023-12-02)
 
 
