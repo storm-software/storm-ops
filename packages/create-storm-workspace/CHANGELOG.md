@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.18.0...create-storm-workspace-v1.19.0) (2023-12-02)
+
+
+### Features
+
+* **workspace-tools:** Added the config-schema generator to create json schemas for Storm Config ([4b66f3c](https://github.com/storm-software/storm-ops/commit/4b66f3cb6ff1586b0f86ceec89cc5a296162ed97))
+
 # [1.18.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.17.2...create-storm-workspace-v1.18.0) (2023-12-02)
 
 
