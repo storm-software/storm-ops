@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.19.3...create-storm-workspace-v1.20.0) (2023-12-02)
+
+
+### Features
+
+* **workspace-tools:** Added default options function parameter to workspace tools ([9a5c880](https://github.com/storm-software/storm-ops/commit/9a5c880c24898f5c593c32d1d13e978c5e0b3356))
+
 ## [1.19.3](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.19.2...create-storm-workspace-v1.19.3) (2023-12-02)
 
 
