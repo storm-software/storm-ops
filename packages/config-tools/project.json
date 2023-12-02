@@ -14,7 +14,13 @@
         "project": "packages/config-tools/package.json",
         "defaultConfiguration": "production",
         "platform": "node",
-        "format": ["esm", "cjs"],
+        "deleteOutputPath": true,
+        "bundle": true,
+        "thirdParty": true,
+        "skipTypeCheck": true,
+        "metafile": true,
+        "minify": false,
+        "format": ["cjs"],
         "external": [
           "ow",
           "valibot",
@@ -22,20 +28,25 @@
           "@effect/schema",
           "@effect/data",
           "@deepkit/type"
-        ]
-      },
-      "configurations": {
-        "production": {
-          "debug": false,
-          "verbose": false
+        ],
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".js"
+          }
         },
-        "development": {
-          "debug": true,
-          "verbose": true
+        "configurations": {
+          "production": {
+            "debug": false,
+            "verbose": false
+          },
+          "development": {
+            "debug": true,
+            "verbose": true
+          }
         }
-      }
-    },
-    "lint": {},
-    "test": {}
+      },
+      "lint": {},
+      "test": {}
+    }
   }
 }
