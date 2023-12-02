@@ -19,6 +19,11 @@
       "aliases": ["node-lib"],
       "x-type": "library",
       "description": "Generate a new node library project in the Storm workspace"
+    },
+    "config-schema": {
+      "factory": "./src/generators/config-schema/generator",
+      "schema": "./src/generators/config-schema/schema.json",
+      "description": "Create a Storm JSON schema based on the workspaces project configurations"
     }
   }
 }

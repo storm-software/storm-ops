@@ -1,7 +1,8 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "$id": "NodeLibrary",
+  "$id": "node-library",
   "title": "Add Node Library",
+  "description": "Create a Storm JSON schema based on the workspace's project configurations",
   "type": "object",
   "properties": {
     "name": {

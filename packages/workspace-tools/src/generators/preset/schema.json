@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "$id": "Preset",
+  "$id": "preset",
   "title": "Workspace Preset",
   "description": "Create a Storm workspace with all of the required files and recommended packages installed.",
   "type": "object",

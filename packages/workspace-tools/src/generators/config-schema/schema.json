@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "config-schema",
+  "title": "Configuration Schema Creator",
+  "description": "Create a StormConfig JSON schema based on the workspace's project configurations",
+  "type": "object",
+  "properties": {
+    "outputFile": {
+      "type": "string",
+      "description": "The file path where the schema json will be written (relative to the workspace root)",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Where should the schema json be written (relative to the workspace root)?",
+      "default": "{workspaceRoot}/storm.schema.json"
+    }
+  },
+  "required": ["outputFile"]
+}
