@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.14.0...linting-tools-v1.15.0) (2023-12-02)
+
+
+### Features
+
+* **workspace-tools:** Added the config-schema generator to create json schemas for Storm Config ([4b66f3c](https://github.com/storm-software/storm-ops/commit/4b66f3cb6ff1586b0f86ceec89cc5a296162ed97))
+
 # [1.14.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.13.1...linting-tools-v1.14.0) (2023-12-02)
 
 
