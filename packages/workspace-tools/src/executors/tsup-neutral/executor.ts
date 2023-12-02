@@ -1,5 +1,4 @@
 import { ExecutorContext } from "@nx/devkit";
-import esbuildPluginPino from "esbuild-plugin-pino";
 import { withRunExecutor } from "../../base/base-executor";
 import { getFileBanner } from "../../utils/get-file-banner";
 import tsupExecutor from "../tsup/executor";
@@ -11,15 +10,6 @@ export const tsNeutralBuildExecutorFn = (
   config?: any
 ) => {
   options.plugins ??= [];
-  options.transports ??= ["pino-pretty"];
-
-  if (
-    options.transports &&
-    Array.isArray(options.transports) &&
-    options.transports.length > 0
-  ) {
-    options.plugins.push(esbuildPluginPino({ transports: options.transports }));
-  }
 
   return tsupExecutor(
     {
