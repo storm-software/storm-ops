@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.13.0...git-tools-v1.13.1) (2023-12-02)
+
+
+### Bug Fixes
+
+* **config-tools:** Updated the config schema's default values ([42fc718](https://github.com/storm-software/storm-ops/commit/42fc7183f2725e435d006897fb349c02f7454ff9))
+
 # [1.13.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.12.0...git-tools-v1.13.0) (2023-12-02)
 
 
