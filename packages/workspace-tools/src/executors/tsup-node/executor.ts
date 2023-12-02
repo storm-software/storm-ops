@@ -38,11 +38,9 @@ export const tsNodeBuildExecutorFn = (
           : "TypeScript (NodeJs Platform)"
       ),
       define: {
-        ...options.define,
-        __STORM_CONFIG: config
+        ...options.define
       },
       env: {
-        __STORM_CONFIG: config,
         ...process.env
       }
     },

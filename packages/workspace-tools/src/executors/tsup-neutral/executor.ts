@@ -1,4 +1,5 @@
 import { ExecutorContext } from "@nx/devkit";
+import { StormConfig } from "@storm-software/config-tools";
 import { withRunExecutor } from "../../base/base-executor";
 import { getFileBanner } from "../../utils/get-file-banner";
 import {
@@ -10,7 +11,7 @@ import { TsupNeutralExecutorSchema } from "./schema";
 export const tsNeutralBuildExecutorFn = (
   options: TsupNeutralExecutorSchema,
   context: ExecutorContext,
-  config?: any
+  config?: StormConfig
 ) => {
   options.plugins ??= [];
 
@@ -31,11 +32,9 @@ export const tsNeutralBuildExecutorFn = (
           : "TypeScript (Neutral Platform)"
       ),
       define: {
-        ...options.define,
-        __STORM_CONFIG: config
+        ...options.define
       },
       env: {
-        __STORM_CONFIG: config,
         ...process.env
       }
     },
