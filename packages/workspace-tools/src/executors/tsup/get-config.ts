@@ -93,6 +93,7 @@ export function modernConfig({
     tsdocMetadata,
     sourcemap: debug,
     clean: false,
+    tsconfigDecoratorMetadata: true,
     plugins,
     outExtension
   } as Options;
@@ -150,6 +151,7 @@ export function legacyConfig({
     tsdocMetadata: false,
     sourcemap: debug,
     clean: false,
+    tsconfigDecoratorMetadata: true,
     plugins,
     outExtension
   } as Options;
@@ -208,6 +210,7 @@ export function workerConfig({
     tsdocMetadata,
     sourcemap: debug,
     clean: false,
+    tsconfigDecoratorMetadata: true,
     plugins,
     outExtension
   } as Options;

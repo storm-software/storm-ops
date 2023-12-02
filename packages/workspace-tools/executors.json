@@ -3,7 +3,18 @@
     "tsup": {
       "implementation": "./src/executors/tsup/executor",
       "schema": "./src/executors/tsup/schema.json",
-      "description": "Run a build on the project using tsup configuration"
+      "description": "Run a build on the project using tsup configuration",
+      "internal": true
+    },
+    "tsup-neutral": {
+      "implementation": "./src/executors/tsup-neutral/executor",
+      "schema": "./src/executors/tsup-neutral/schema.json",
+      "description": "Runs a neutral platform TypeScript build"
+    },
+    "tsup-node": {
+      "implementation": "./src/executors/tsup-node/executor",
+      "schema": "./src/executors/tsup-node/schema.json",
+      "description": "Runs a node platform TypeScript build"
     }
   }
 }

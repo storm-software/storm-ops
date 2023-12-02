@@ -1,5 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
+  "$id": "tsup",
   "version": 2,
   "title": "Tsup Builder",
   "description": "Run a build on the project using ESBuild with a patched tsup configuration",

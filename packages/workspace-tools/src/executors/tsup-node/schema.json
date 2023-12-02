@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "extends": "../tsup-neutral/schema.json",
+  "version": 2,
+  "title": "Node TypeScript Builder",
+  "description": "Runs a node platform TypeScript build",
+  "type": "object",
+  "properties": {},
+  "required": []
+}

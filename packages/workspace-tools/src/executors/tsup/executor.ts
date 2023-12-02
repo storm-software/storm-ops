@@ -8,6 +8,7 @@ import { createTypeScriptCompilationOptions } from "@nx/js/src/executors/tsc/tsc
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
 import { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
 import { load } from "decky";
+import { environmentPlugin } from "esbuild-plugin-environment";
 import { readFileSync, writeFileSync } from "fs";
 import { removeSync } from "fs-extra";
 import { writeFile } from "fs/promises";
@@ -42,7 +43,6 @@ export async function tsupExecutor(
     options.entry ??= "{sourceRoot}/index.ts";
     options.outputPath ??= "dist/{projectRoot}";
     options.tsConfig ??= "tsconfig.json";
-    options.banner ??= process.env.STORM_FILE_BANNER;
     options.platform ??= "neutral";
     options.verbose ??= false;
     options.external ??= [];
@@ -344,7 +344,7 @@ ${externalDependencies
       })
     );
 
-    if (options.banner && options.includeSrc !== false) {
+    if (options.includeSrc !== false) {
       const files = globSync([
         joinPathFragments(context.root, outputPath, "src/**/*.ts"),
         joinPathFragments(context.root, outputPath, "src/**/*.tsx"),
@@ -356,9 +356,11 @@ ${externalDependencies
           writeFile(
             file,
             `${
-              options.banner.startsWith("//")
-                ? options.banner
-                : `// ${options.banner}`
+              options.banner
+                ? options.banner.startsWith("//")
+                  ? options.banner
+                  : `// ${options.banner}`
+                : ""
             }\n\n${readFileSync(file, "utf-8")}`,
             "utf-8"
           )
@@ -377,6 +379,7 @@ ${externalDependencies
         cwd: workspaceRoot
       })
     );
+    options.plugins.push(environmentPlugin(options.env));
 
     // #endregion Add default plugins
 
@@ -404,16 +407,8 @@ ${externalDependencies
       ),
       banner: options.banner
         ? {
-            js: `${
-              options.banner.startsWith("//")
-                ? options.banner
-                : `// ${options.banner}`
-            }\n\n`,
-            css: `/* ${
-              options.banner.startsWith("//")
-                ? options.banner.replace("//", "")
-                : options.banner
-            } */\n\n`
+            js: `${options.banner}\n\n`,
+            css: `/* \n${options.banner}\n */\n\n`
           }
         : undefined,
       outputPath

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "extends": "../tsup/schema.json",
+  "version": 2,
+  "title": "Neutral TypeScript Builder",
+  "description": "Runs a neutral platform TypeScript build",
+  "type": "object",
+  "properties": {
+    "transports": {
+      "type": "array",
+      "description": "",
+      "items": {
+        "type": "string"
+      },
+      "default": ["pino-pretty"]
+    }
+  },
+  "required": []
+}

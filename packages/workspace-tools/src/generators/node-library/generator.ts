@@ -26,16 +26,17 @@ import {
 } from "@nx/js/src/generators/library/library";
 import setupVerdaccio from "@nx/js/src/generators/setup-verdaccio/generator";
 import { PackageJson } from "nx/src/utils/package-json";
+import { withRunGenerator } from "../../base/base-generator";
 import { nxVersion, typesNodeVersion } from "../../utils/versions";
 import { normalizeOptions } from "./normalize-options";
 import { NodeLibraryGeneratorSchema } from "./schema";
 
-export async function nodeLibraryGenerator(
+export async function nodeLibraryGeneratorFn(
   tree: Tree,
   schema: NodeLibraryGeneratorSchema
 ) {
   const filesDir = joinPathFragments(__dirname, "./files");
-  const options = await normalizeOptions(tree, schema);
+  const options = await normalizeOptions(tree, { ...schema });
 
   const tasks: GeneratorCallback[] = [];
   tasks.push(
@@ -102,6 +103,8 @@ export async function nodeLibraryGenerator(
     dot: ".",
     className,
     name,
+    namespace: process.env.STORM_NAMESPACE ?? "storm-software",
+    description: schema.description ?? "",
     propertyName,
     js: !!options.js,
     cliCommand: "nx",
@@ -184,8 +187,8 @@ export async function nodeLibraryGenerator(
       ...json,
       pnpm: {
         ...json?.pnpm,
-        override: {
-          ...json?.pnpm?.override,
+        overrides: {
+          ...json?.pnpm?.overrides,
           [options.importPath]: "workspace:*"
         }
       }
@@ -237,6 +240,8 @@ export async function nodeLibraryGenerator(
   tasks.push(lintCallback);
 
   await formatFiles(tree);
+
+  return null;
 }
 
 async function addLint(
@@ -367,4 +372,7 @@ function createProjectTsConfigJson(tree: Tree, options: NormalizedSchema) {
   );
 }
 
-export default nodeLibraryGenerator;
+export default withRunGenerator<NodeLibraryGeneratorSchema>(
+  "TypeScript Build (NodeJs Platform)",
+  nodeLibraryGeneratorFn
+);
