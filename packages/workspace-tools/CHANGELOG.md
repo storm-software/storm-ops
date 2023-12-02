@@ -1,3 +1,10 @@
+## [1.19.3](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.19.2...workspace-tools-v1.19.3) (2023-12-02)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with `esbuildPluginPino` plugin for neutral build ([dba1022](https://github.com/storm-software/storm-ops/commit/dba102278281102a359c1c7cff087b9969b58c7c))
+
 ## [1.19.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.19.1...workspace-tools-v1.19.2) (2023-12-02)
 
 
