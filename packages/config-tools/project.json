@@ -14,6 +14,7 @@
         "project": "packages/config-tools/package.json",
         "defaultConfiguration": "production",
         "platform": "node",
+        "format": ["esm", "cjs"],
         "external": [
           "ow",
           "valibot",

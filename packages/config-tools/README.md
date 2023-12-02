@@ -16,7 +16,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.org" target="_blank">stormsoftware.org</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.1.1-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
+[![Version](https://img.shields.io/badge/version-1.2.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
 [![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with docusaurus](https://img.shields.io/badge/documented_with-docusaurus-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://docusaurus.io/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <h3 align="center" bold="true">⚠️ <b>Attention</b> ⚠️ This repository, and the apps, libraries, and tools contained within, is still in it's initial development phase. As a result, bugs and issues are expected with it's usage. When the main development phase completes, a proper release will be performed, the packages will be availible through NPM (and other distributions), and this message will be removed. However, in the meantime, please feel free to report any issues you may come across.</h3><br />
@@ -27,9 +27,32 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- END header -->
 
-# config-tools
+# Storm Configuration Tools
 
 A package containing various utilities to support custom workspace configurations
+
+Below is a list of the available configuration values that can be set through environment variables:
+
+| Name                    | Description                                                                            | Default                     |
+| ----------------------- | -------------------------------------------------------------------------------------- | --------------------------- |
+| STORM_COLOR_BACKGROUND  | The workspace's background theme color                                                 | `#1d232a`                   |
+| STORM_COLOR_ERROR       | The workspace's error theme color                                                      | `#990000`                   |
+| STORM_COLOR_FATAL       | The workspace's fatal theme color                                                      | `#7d1a1a`                   |
+| STORM_COLOR_INFO        | The workspace's info theme color                                                       | `#0ea5e9`                   |
+| STORM_COLOR_PRIMARY     | The workspace's primary theme color                                                    | `#1fb2a6`                   |
+| STORM_COLOR_SUCCESS     | The workspace's success theme color                                                    | `#087f5b`                   |
+| STORM_COLOR_WARNING     | The workspace's warning theme color                                                    | `#fcc419`                   |
+| STORM_ENV               | The current runtime environment of the package                                         | "production"                |
+| STORM_HOMEPAGE          | The homepage URL for the workspace                                                     | <https://stormsoftware.org> |
+| STORM_LICENSE           | The license used by the workspace                                                      | "Apache License 2.0"        |
+| STORM_LOCALE            | The default locale of the workspace                                                    | "en-US"                     |
+| STORM_LOG_LEVEL         | The current maximum level of messages to write to the logs                             | "info"                      |
+| STORM_ORGANIZATION      | The organization of the workspace                                                      | "storm-software"            |
+| STORM_REPOSITORY        | The repo URL of the workspace (i.e. GitHub URL)                                        |
+| STORM_RUNTIME_DIRECTORY | The default directory of the storm runtime for storage/generation                      | "node_modules/.storm"       |
+| STORM_RUNTIME_VERSION   | The global version of the Storm runtime                                                | "1.0.0"                     |
+| STORM_TIMEZONE          | The default timezone of the workspace                                                  | "America/New_York"          |
+| STORM_WORKER            | The worker of the package (this is the bot that will be used to perform various tasks) | "stormie-bot"               |
 
 <!-- START doctoc -->
 <!-- END doctoc -->
