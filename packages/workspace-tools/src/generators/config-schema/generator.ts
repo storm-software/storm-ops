@@ -1,5 +1,5 @@
 import { formatFiles, ProjectConfiguration, Tree, writeJson } from "@nx/devkit";
-import { StormConfigSchema } from "@storm-software/config-tools/schema";
+import { StormConfigSchema } from "@storm-software/config-tools";
 import { existsSync } from "fs";
 import { join } from "path";
 import * as z from "zod";

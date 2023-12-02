@@ -1,5 +1,5 @@
 import { ProjectConfiguration } from "@nx/devkit";
-import { StormConfig } from "@storm-software/config-tools/types";
+import { StormConfig } from "@storm-software/config-tools";
 import { getWorkspaceRoot } from "./get-workspace-root";
 
 export interface BaseTokenizerOptions {

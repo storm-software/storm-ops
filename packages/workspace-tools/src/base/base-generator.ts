@@ -1,10 +1,13 @@
 import { Tree } from "@nx/devkit";
-import { getConfigFile } from "@storm-software/config-tools/config-file/get-config-file";
-import { getConfigEnv } from "@storm-software/config-tools/env/get-env";
-import { setConfigEnv } from "@storm-software/config-tools/env/set-env";
-import { LogLevel, StormConfig } from "@storm-software/config-tools/types";
-import { getDefaultConfig } from "@storm-software/config-tools/utilities/get-default-config";
-import { getLogLevel } from "@storm-software/config-tools/utilities/get-log-level";
+import {
+  LogLevel,
+  StormConfig,
+  getConfigEnv,
+  getConfigFile,
+  getDefaultConfig,
+  getLogLevel,
+  setConfigEnv
+} from "@storm-software/config-tools";
 import { BaseWorkspaceToolOptions } from "../types";
 import {
   applyWorkspaceGeneratorTokens,
