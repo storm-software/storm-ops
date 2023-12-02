@@ -1,3 +1,10 @@
+## [1.20.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.20.0...create-storm-workspace-v1.20.1) (2023-12-02)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added `StormConfig` as potential option tokens ([cf0a4c5](https://github.com/storm-software/storm-ops/commit/cf0a4c555993c8dd16ca96670e205405e382907b))
+
 # [1.20.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.19.3...create-storm-workspace-v1.20.0) (2023-12-02)
 
 
