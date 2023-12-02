@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.12.0...testing-tools-v1.12.1) (2023-12-02)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added new executors to `additionalEntryPoints` configuration ([f7289c7](https://github.com/storm-software/storm-ops/commit/f7289c7b21eba99e0a70147767b1f28fea242854))
+
 # [1.12.0](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.11.0...testing-tools-v1.12.0) (2023-12-02)
 
 
