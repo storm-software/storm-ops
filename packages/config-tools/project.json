@@ -1,0 +1,40 @@
+{
+  "name": "config-tools",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/config-tools/src",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "main": "packages/config-tools/src/index.ts",
+        "outputPath": "dist/packages/config-tools",
+        "tsConfig": "packages/config-tools/tsconfig.json",
+        "project": "packages/config-tools/package.json",
+        "defaultConfiguration": "production",
+        "platform": "node",
+        "external": [
+          "ow",
+          "valibot",
+          "fp-ts/Either",
+          "@effect/schema",
+          "@effect/data",
+          "@deepkit/type"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "debug": false,
+          "verbose": false
+        },
+        "development": {
+          "debug": true,
+          "verbose": true
+        }
+      }
+    },
+    "lint": {},
+    "test": {}
+  }
+}

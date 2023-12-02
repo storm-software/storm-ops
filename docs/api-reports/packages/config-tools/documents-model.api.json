@@ -1,0 +1,1606 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.38.3",
+    "schemaVersion": 1011,
+    "oldestForwardsCompatibleVersion": 1001,
+    "tsdocConfig": {
+      "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+      "noStandardTags": true,
+      "tagDefinitions": [
+        {
+          "tagName": "@alpha",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@beta",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@defaultValue",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@decorator",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@deprecated",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@eventProperty",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@example",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@experimental",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@inheritDoc",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@internal",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@label",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@link",
+          "syntaxKind": "inline",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@override",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@packageDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@param",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@privateRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@public",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@readonly",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@remarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@returns",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@sealed",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@see",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@throws",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@typeParam",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@virtual",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@betaDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@internalRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@preapproved",
+          "syntaxKind": "modifier"
+        }
+      ],
+      "supportForTags": {
+        "@alpha": true,
+        "@beta": true,
+        "@defaultValue": true,
+        "@decorator": true,
+        "@deprecated": true,
+        "@eventProperty": true,
+        "@example": true,
+        "@experimental": true,
+        "@inheritDoc": true,
+        "@internal": true,
+        "@label": true,
+        "@link": true,
+        "@override": true,
+        "@packageDocumentation": true,
+        "@param": true,
+        "@privateRemarks": true,
+        "@public": true,
+        "@readonly": true,
+        "@remarks": true,
+        "@returns": true,
+        "@sealed": true,
+        "@see": true,
+        "@throws": true,
+        "@typeParam": true,
+        "@virtual": true,
+        "@betaDocumentation": true,
+        "@internalRemarks": true,
+        "@preapproved": true
+      },
+      "reportUnsupportedHtmlElements": false
+    }
+  },
+  "kind": "Package",
+  "canonicalReference": "@storm-software/config-tools!",
+  "docComment": "",
+  "name": "@storm-software/config-tools",
+  "preserveMemberOrder": false,
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@storm-software/config-tools!",
+      "name": "",
+      "preserveMemberOrder": false,
+      "members": [
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@storm-software/config-tools!ColorConfig:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type ColorConfig = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Infer",
+              "canonicalReference": "!unknown"
+            },
+            {
+              "kind": "Content",
+              "text": "<typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "ColorConfigSchema",
+              "canonicalReference": "@storm-software/config-tools!ColorConfigSchema:var"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/types.ts",
+          "releaseTag": "Public",
+          "name": "ColorConfig",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@storm-software/config-tools!ColorConfigInput:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type ColorConfigInput = "
+            },
+            {
+              "kind": "Reference",
+              "text": "InferIn",
+              "canonicalReference": "!unknown"
+            },
+            {
+              "kind": "Content",
+              "text": "<typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "ColorConfigSchema",
+              "canonicalReference": "@storm-software/config-tools!ColorConfigSchema:var"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/types.ts",
+          "releaseTag": "Public",
+          "name": "ColorConfigInput",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@storm-software/config-tools!ColorConfigSchema:var",
+          "docComment": "/**\n * Storm theme color config values used for styling various workspace elements\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "ColorConfigSchema: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodObject",
+              "canonicalReference": "!z.ZodObject:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<{\n    primary: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    background: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    success: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    info: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    warning: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    error: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    fatal: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n}, \"strip\", "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodTypeAny",
+              "canonicalReference": "!z.ZodTypeAny:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", {\n    primary?: string;\n    background?: string;\n    success?: string;\n    info?: string;\n    warning?: string;\n    error?: string;\n    fatal?: string;\n}, {\n    primary?: string;\n    background?: string;\n    success?: string;\n    info?: string;\n    warning?: string;\n    error?: string;\n    fatal?: string;\n}>"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/schema.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "ColorConfigSchema",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 33
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@storm-software/config-tools!createConfigExtension:var",
+          "docComment": "/**\n * Get the config for a specific Storm config Extension\n *\n * @param moduleName - The name of the config module\n *\n * @param options - The options for the config module\n *\n * @returns The config for the specified Storm config module. If the module does not exist, `undefined` is returned.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "createConfigExtension: "
+            },
+            {
+              "kind": "Content",
+              "text": "<TExtensionConfig = any>(schema: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Schema",
+              "canonicalReference": "!unknown"
+            },
+            {
+              "kind": "Content",
+              "text": ", extensionName: string) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<TExtensionConfig>"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/create-storm-config.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "createConfigExtension",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@storm-software/config-tools!createStormConfig:var",
+          "docComment": "/**\n * Get the config for the current Storm workspace\n *\n * @returns The config for the current Storm workspace\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "createStormConfig: "
+            },
+            {
+              "kind": "Content",
+              "text": "<TModuleName extends string = string, TModuleConfig = any>(schema?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Schema",
+              "canonicalReference": "!unknown"
+            },
+            {
+              "kind": "Content",
+              "text": ", moduleName?: TModuleName) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "StormConfig",
+              "canonicalReference": "@storm-software/config-tools!StormConfig:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<TModuleName, TModuleConfig>>"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/create-storm-config.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "createStormConfig",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@storm-software/config-tools!DefaultColorConfig:var",
+          "docComment": "/**\n * Storm theme config values used for styling various workspace elements\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "DefaultColorConfig: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ColorConfig",
+              "canonicalReference": "@storm-software/config-tools!ColorConfig:type"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/utilities/get-default-config.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "DefaultColorConfig",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@storm-software/config-tools!DefaultStormConfig:var",
+          "docComment": "/**\n * Storm Workspace config values used during various dev-ops processes\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "DefaultStormConfig: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Omit",
+              "canonicalReference": "!Omit:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "StormConfig",
+              "canonicalReference": "@storm-software/config-tools!StormConfig:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", \"name\">"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/utilities/get-default-config.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "DefaultStormConfig",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@storm-software/config-tools!getConfigEnv:var",
+          "docComment": "/**\n * Get the config for the current Storm workspace\n *\n * @returns The config for the current Storm workspace from environment variables\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "getConfigEnv: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Partial",
+              "canonicalReference": "!Partial:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "StormConfig",
+              "canonicalReference": "@storm-software/config-tools!StormConfig:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/env/get-env.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "getConfigEnv",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@storm-software/config-tools!getConfigFile:var",
+          "docComment": "/**\n * Get the config file for the current Storm workspace\n *\n * @returns The config file for the current Storm workspace\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "getConfigFile: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Partial",
+              "canonicalReference": "!Partial:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "StormConfigInput",
+              "canonicalReference": "@storm-software/config-tools!StormConfigInput:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">>"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/config-file/get-config-file.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "getConfigFile",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@storm-software/config-tools!getDefaultConfig:var",
+          "docComment": "/**\n * Get the default Storm config values used during various dev-ops processes\n *\n * @returns The default Storm config values\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "getDefaultConfig: "
+            },
+            {
+              "kind": "Content",
+              "text": "(config?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Partial",
+              "canonicalReference": "!Partial:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "StormConfig",
+              "canonicalReference": "@storm-software/config-tools!StormConfig:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "StormConfig",
+              "canonicalReference": "@storm-software/config-tools!StormConfig:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/utilities/get-default-config.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "getDefaultConfig",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 10
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@storm-software/config-tools!getExtensionEnv:var",
+          "docComment": "/**\n * Get the config for an extension module of Storm workspace from environment variables\n *\n * @param extensionName - The name of the extension module\n *\n * @returns The config for the specified Storm extension module. If the module does not exist, `undefined` is returned.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "getExtensionEnv: "
+            },
+            {
+              "kind": "Content",
+              "text": "<TConfig extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<string, any> = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<string, any>>(extensionName: string) => TConfig"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/env/get-env.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "getExtensionEnv",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@storm-software/config-tools!setConfigEnv:var",
+          "docComment": "/**\n * Get the config for the current Storm workspace\n *\n * @returns The config for the current Storm workspace from environment variables\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "setConfigEnv: "
+            },
+            {
+              "kind": "Content",
+              "text": "(config: "
+            },
+            {
+              "kind": "Reference",
+              "text": "StormConfig",
+              "canonicalReference": "@storm-software/config-tools!StormConfig:type"
+            },
+            {
+              "kind": "Content",
+              "text": ") => void"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/env/set-env.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "setConfigEnv",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@storm-software/config-tools!setExtensionEnv:var",
+          "docComment": "/**\n * Get the config for an extension module of Storm workspace from environment variables\n *\n * @param extensionName - The name of the extension module\n *\n * @returns The config for the specified Storm extension module. If the module does not exist, `undefined` is returned.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "setExtensionEnv: "
+            },
+            {
+              "kind": "Content",
+              "text": "<TConfig extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<string, any> = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<string, any>>(extensionName: string, extension: TConfig) => void"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/env/set-env.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "setExtensionEnv",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@storm-software/config-tools!StormConfig:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type StormConfig<TModuleName extends "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": " = "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": ", TModuleConfig = "
+            },
+            {
+              "kind": "Content",
+              "text": "any"
+            },
+            {
+              "kind": "Content",
+              "text": "> = "
+            },
+            {
+              "kind": "Reference",
+              "text": "TStormConfig",
+              "canonicalReference": "@storm-software/config-tools!~TStormConfig:type"
+            },
+            {
+              "kind": "Content",
+              "text": " & {\n    modules: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<string, any> & {\n        [moduleName in TModuleName]: TModuleConfig;\n    };\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/types.ts",
+          "releaseTag": "Public",
+          "name": "StormConfig",
+          "typeParameters": [
+            {
+              "typeParameterName": "TModuleName",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            },
+            {
+              "typeParameterName": "TModuleConfig",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 7,
+            "endIndex": 11
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@storm-software/config-tools!StormConfigInput:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type StormConfigInput = "
+            },
+            {
+              "kind": "Reference",
+              "text": "InferIn",
+              "canonicalReference": "!unknown"
+            },
+            {
+              "kind": "Content",
+              "text": "<typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "StormConfigSchema",
+              "canonicalReference": "@storm-software/config-tools!StormConfigSchema:var"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/types.ts",
+          "releaseTag": "Public",
+          "name": "StormConfigInput",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@storm-software/config-tools!StormConfigSchema:var",
+          "docComment": "/**\n * Storm Workspace config values used during various dev-ops processes. It represents the config of the entire monorepo.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "StormConfigSchema: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodObject",
+              "canonicalReference": "!z.ZodObject:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<{\n    name: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n    namespace: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    organization: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    repository: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodOptional",
+              "canonicalReference": "!z.ZodOptional:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    license: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    homepage: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    branch: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    preMajor: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodBoolean",
+              "canonicalReference": "!z.ZodBoolean:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    owner: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    worker: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    env: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodEnum",
+              "canonicalReference": "!z.ZodEnum:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<[\"development\", \"staging\", \"production\"]>>;\n    ci: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodBoolean",
+              "canonicalReference": "!z.ZodBoolean:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    workspaceRoot: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";\n    packageDirectory: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodOptional",
+              "canonicalReference": "!z.ZodOptional:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    buildDirectory: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodOptional",
+              "canonicalReference": "!z.ZodOptional:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    runtimeDirectory: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    runtimeVersion: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    timezone: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    locale: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    configFile: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodNullable",
+              "canonicalReference": "!z.ZodNullable:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">>;\n    colors: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodObject",
+              "canonicalReference": "!z.ZodObject:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<{\n        primary: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n        background: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n        success: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n        info: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n        warning: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n        error: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n        fatal: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodDefault",
+              "canonicalReference": "!z.ZodDefault:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n    }, \"strip\", "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodTypeAny",
+              "canonicalReference": "!z.ZodTypeAny:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", {\n        primary?: string;\n        background?: string;\n        success?: string;\n        info?: string;\n        warning?: string;\n        error?: string;\n        fatal?: string;\n    }, {\n        primary?: string;\n        background?: string;\n        success?: string;\n        info?: string;\n        warning?: string;\n        error?: string;\n        fatal?: string;\n    }>;\n    extensions: "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodRecord",
+              "canonicalReference": "!z.ZodRecord:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodString",
+              "canonicalReference": "!z.ZodString:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodAny",
+              "canonicalReference": "!z.ZodAny:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">;\n}, \"strip\", "
+            },
+            {
+              "kind": "Reference",
+              "text": "z.ZodTypeAny",
+              "canonicalReference": "!z.ZodTypeAny:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", {\n    name?: string;\n    namespace?: string;\n    organization?: string;\n    repository?: string;\n    license?: string;\n    homepage?: string;\n    branch?: string;\n    preMajor?: boolean;\n    owner?: string;\n    worker?: string;\n    env?: \"development\" | \"staging\" | \"production\";\n    ci?: boolean;\n    workspaceRoot?: string;\n    packageDirectory?: string;\n    buildDirectory?: string;\n    runtimeDirectory?: string;\n    runtimeVersion?: string;\n    timezone?: string;\n    locale?: string;\n    configFile?: string;\n    colors?: {\n        primary?: string;\n        background?: string;\n        success?: string;\n        info?: string;\n        warning?: string;\n        error?: string;\n        fatal?: string;\n    };\n    extensions?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<string, any>;\n}, {\n    name?: string;\n    namespace?: string;\n    organization?: string;\n    repository?: string;\n    license?: string;\n    homepage?: string;\n    branch?: string;\n    preMajor?: boolean;\n    owner?: string;\n    worker?: string;\n    env?: \"development\" | \"staging\" | \"production\";\n    ci?: boolean;\n    workspaceRoot?: string;\n    packageDirectory?: string;\n    buildDirectory?: string;\n    runtimeDirectory?: string;\n    runtimeVersion?: string;\n    timezone?: string;\n    locale?: string;\n    configFile?: string;\n    colors?: {\n        primary?: string;\n        background?: string;\n        success?: string;\n        info?: string;\n        warning?: string;\n        error?: string;\n        fatal?: string;\n    };\n    extensions?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<string, any>;\n}>"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/schema.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "StormConfigSchema",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 125
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@storm-software/config-tools!wrapped_ColorConfig:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "wrapped_ColorConfig: "
+            },
+            {
+              "kind": "Content",
+              "text": "import(\"@decs/typeschema\").TypeSchema<{\n    primary?: string;\n    background?: string;\n    success?: string;\n    info?: string;\n    warning?: string;\n    error?: string;\n    fatal?: string;\n}, {\n    primary?: string;\n    background?: string;\n    success?: string;\n    info?: string;\n    warning?: string;\n    error?: string;\n    fatal?: string;\n}>"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/types.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "wrapped_ColorConfig",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@storm-software/config-tools!wrapped_StormConfig:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "wrapped_StormConfig: "
+            },
+            {
+              "kind": "Content",
+              "text": "import(\"@decs/typeschema\").TypeSchema<{\n    name?: string;\n    namespace?: string;\n    organization?: string;\n    repository?: string;\n    license?: string;\n    homepage?: string;\n    branch?: string;\n    preMajor?: boolean;\n    owner?: string;\n    worker?: string;\n    env?: \"development\" | \"staging\" | \"production\";\n    ci?: boolean;\n    workspaceRoot?: string;\n    packageDirectory?: string;\n    buildDirectory?: string;\n    runtimeDirectory?: string;\n    runtimeVersion?: string;\n    timezone?: string;\n    locale?: string;\n    configFile?: string;\n    colors?: {\n        primary?: string;\n        background?: string;\n        success?: string;\n        info?: string;\n        warning?: string;\n        error?: string;\n        fatal?: string;\n    };\n    extensions?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<string, any>;\n}, {\n    name?: string;\n    namespace?: string;\n    organization?: string;\n    repository?: string;\n    license?: string;\n    homepage?: string;\n    branch?: string;\n    preMajor?: boolean;\n    owner?: string;\n    worker?: string;\n    env?: \"development\" | \"staging\" | \"production\";\n    ci?: boolean;\n    workspaceRoot?: string;\n    packageDirectory?: string;\n    buildDirectory?: string;\n    runtimeDirectory?: string;\n    runtimeVersion?: string;\n    timezone?: string;\n    locale?: string;\n    configFile?: string;\n    colors?: {\n        primary?: string;\n        background?: string;\n        success?: string;\n        info?: string;\n        warning?: string;\n        error?: string;\n        fatal?: string;\n    };\n    extensions?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<string, any>;\n}>"
+            }
+          ],
+          "fileUrlPath": "packages/config-tools/src/types.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "wrapped_StormConfig",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        }
+      ]
+    }
+  ]
+}
