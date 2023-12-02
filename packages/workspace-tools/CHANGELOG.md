@@ -1,3 +1,10 @@
+## [1.21.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.1...workspace-tools-v1.21.2) (2023-12-02)
+
+
+### Bug Fixes
+
+* **config-tools:** Added esm and cjs as build options ([5fda41e](https://github.com/storm-software/storm-ops/commit/5fda41e2d589d8793b106a4a4ad1fc22b14fd459))
+
 ## [1.21.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.0...workspace-tools-v1.21.1) (2023-12-02)
 
 
