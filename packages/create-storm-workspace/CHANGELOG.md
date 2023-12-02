@@ -1,3 +1,10 @@
+## [1.21.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.21.0...create-storm-workspace-v1.21.1) (2023-12-02)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad imports of config-tools package ([88433c2](https://github.com/storm-software/storm-ops/commit/88433c2fabaa3931e46553bb556d3a75f5a0c345))
+
 # [1.21.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.20.1...create-storm-workspace-v1.21.0) (2023-12-02)
 
 
