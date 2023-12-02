@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/storm-software/storm-ops/compare/config-tools-v1.1.3...config-tools-v1.2.0) (2023-12-02)
+
+
+### Features
+
+* **config-tools:** Added `logLevel` configuration value ([edcd12a](https://github.com/storm-software/storm-ops/commit/edcd12a215cc1f6ec7c8ee3b1521a847a5a1e44f))
+
 ## [1.1.3](https://github.com/storm-software/storm-ops/compare/config-tools-v1.1.2...config-tools-v1.1.3) (2023-12-02)
 
 
