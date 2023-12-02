@@ -1,11 +1,13 @@
 import { ProjectConfiguration } from "@nx/devkit";
+import { StormConfig } from "@storm-software/config-tools/types";
 import { getWorkspaceRoot } from "./get-workspace-root";
 
-export interface BaseTokenizerConfig {
+export interface BaseTokenizerOptions {
   workspaceRoot?: string;
+  config?: StormConfig;
 }
 
-export type ExecutorTokenizerConfig = BaseTokenizerConfig &
+export type ExecutorTokenizerOptions = BaseTokenizerOptions &
   ProjectConfiguration & {
     projectName: string;
     projectRoot: string;
@@ -14,8 +16,10 @@ export type ExecutorTokenizerConfig = BaseTokenizerConfig &
 
 export const applyWorkspaceExecutorTokens = (
   option: string,
-  config: ExecutorTokenizerConfig
+  tokenizerOptions: ExecutorTokenizerOptions
 ): string => {
+  console.log("applyWorkspaceExecutorTokens", option);
+
   let result = option;
   if (!result) {
     return result;
@@ -24,18 +28,31 @@ export const applyWorkspaceExecutorTokens = (
   let projectName!: string;
   let projectRoot!: string;
   let sourceRoot!: string;
-  if ((config as ExecutorTokenizerConfig)?.projectName) {
-    const context = config as ExecutorTokenizerConfig;
+  if ((tokenizerOptions as ExecutorTokenizerOptions)?.projectName) {
+    const context = tokenizerOptions as ExecutorTokenizerOptions;
     projectName = context.projectName;
     projectRoot = context.root;
     sourceRoot = context.sourceRoot;
   } else {
-    const projectConfig = config as ProjectConfiguration;
+    const projectConfig = tokenizerOptions as ProjectConfiguration;
     projectName = projectConfig.name;
     projectRoot = projectConfig.root;
     sourceRoot = projectConfig.sourceRoot;
   }
 
+  if (tokenizerOptions.config) {
+    const configKeys = Object.keys(tokenizerOptions.config);
+    if (configKeys.some(configKey => result.includes(`{${configKey}}`))) {
+      configKeys.forEach(configKey => {
+        if (result.includes(`{${configKey}}`)) {
+          result = result.replaceAll(
+            `{${configKey}}`,
+            tokenizerOptions.config[configKey]
+          );
+        }
+      });
+    }
+  }
   if (result.includes("{projectName}")) {
     result = result.replaceAll("{projectName}", projectName);
   }
@@ -48,7 +65,7 @@ export const applyWorkspaceExecutorTokens = (
   if (result.includes("{workspaceRoot}")) {
     result = result.replaceAll(
       "{workspaceRoot}",
-      config.workspaceRoot ?? getWorkspaceRoot()
+      tokenizerOptions.workspaceRoot ?? getWorkspaceRoot()
     );
   }
 
@@ -57,7 +74,7 @@ export const applyWorkspaceExecutorTokens = (
 
 export const applyWorkspaceGeneratorTokens = (
   option: string,
-  config: BaseTokenizerConfig
+  tokenizerOptions: BaseTokenizerOptions
 ): string => {
   let result = option;
   if (!result) {
@@ -67,7 +84,9 @@ export const applyWorkspaceGeneratorTokens = (
   if (result.includes("{workspaceRoot}")) {
     result = result.replaceAll(
       "{workspaceRoot}",
-      config.workspaceRoot ?? getWorkspaceRoot()
+      tokenizerOptions.workspaceRoot ??
+        tokenizerOptions.config.workspaceRoot ??
+        getWorkspaceRoot()
     );
   }
 
@@ -75,7 +94,7 @@ export const applyWorkspaceGeneratorTokens = (
 };
 
 export const applyWorkspaceTokens = <
-  TConfig extends BaseTokenizerConfig = BaseTokenizerConfig
+  TConfig extends BaseTokenizerOptions = BaseTokenizerOptions
 >(
   options: Record<string, any>,
   config: TConfig,

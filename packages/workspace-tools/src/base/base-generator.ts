@@ -56,12 +56,6 @@ export const withRunGenerator =
 
       console.debug("⚙️  Generator schema options: \n", options);
 
-      const tokenized = applyWorkspaceTokens(
-        options,
-        { workspaceRoot: tree.root },
-        applyWorkspaceGeneratorTokens
-      ) as TGeneratorSchema;
-
       let config: any | undefined;
       if (!generatorOptions.skipReadingConfig) {
         const configFile = await getConfigFile();
@@ -78,6 +72,12 @@ ${Object.keys(process.env)
   .map(key => ` - ${key}=${process.env[key]}`)
   .join("\n")}`);
       }
+
+      const tokenized = applyWorkspaceTokens(
+        options,
+        { workspaceRoot: tree.root, config },
+        applyWorkspaceGeneratorTokens
+      ) as TGeneratorSchema;
 
       const result = await Promise.resolve(
         generatorFn(tree, tokenized, config)

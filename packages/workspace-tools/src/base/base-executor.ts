@@ -75,19 +75,6 @@ export const withRunExecutor =
       const projectName =
         context.projectsConfigurations.projects[context.projectName].name;
 
-      const tokenized = applyWorkspaceTokens(
-        options,
-        {
-          workspaceRoot,
-          projectRoot,
-          sourceRoot,
-          projectName,
-          ...context.projectsConfigurations.projects[context.projectName],
-          ...executorOptions
-        },
-        applyWorkspaceExecutorTokens
-      ) as TExecutorSchema;
-
       let config: StormConfig | undefined;
       if (!executorOptions.skipReadingConfig) {
         const configFile = await getConfigFile();
@@ -100,10 +87,24 @@ export const withRunExecutor =
         setConfigEnv(config);
 
         console.debug(`Loaded Storm config into env:
-${Object.keys(process.env)
-  .map(key => ` - ${key}=${process.env[key]}`)
-  .join("\n")}`);
+  ${Object.keys(process.env)
+    .map(key => ` - ${key}=${process.env[key]}`)
+    .join("\n")}`);
       }
+
+      const tokenized = applyWorkspaceTokens(
+        options,
+        {
+          config,
+          workspaceRoot,
+          projectRoot,
+          sourceRoot,
+          projectName,
+          ...context.projectsConfigurations.projects[context.projectName],
+          ...executorOptions
+        },
+        applyWorkspaceExecutorTokens
+      ) as TExecutorSchema;
 
       const result = await Promise.resolve(
         executorFn(tokenized, context, config)
