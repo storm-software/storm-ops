@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.11.0...testing-tools-v1.12.0) (2023-12-02)
+
+
+### Features
+
+* **workspace-tools:** Added the config-schema generator to create json schemas for Storm Config ([4b66f3c](https://github.com/storm-software/storm-ops/commit/4b66f3cb6ff1586b0f86ceec89cc5a296162ed97))
+
 # [1.11.0](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.10.1...testing-tools-v1.11.0) (2023-12-02)
 
 
