@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.12.0...git-tools-v1.13.0) (2023-12-02)
+
+
+### Features
+
+* **workspace-tools:** Added the config-schema generator to create json schemas for Storm Config ([4b66f3c](https://github.com/storm-software/storm-ops/commit/4b66f3cb6ff1586b0f86ceec89cc5a296162ed97))
+
 # [1.12.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.11.1...git-tools-v1.12.0) (2023-12-02)
 
 
