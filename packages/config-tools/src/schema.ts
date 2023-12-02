@@ -123,11 +123,11 @@ export const StormConfigSchema = z
       ),
     env: z
       .enum(["development", "staging", "production"])
-      .default("development")
+      .default("production")
       .describe("The current runtime environment of the package"),
     ci: z
       .boolean()
-      .default(false)
+      .default(true)
       .describe(
         "An indicator specifying if the current environment is a CI environment"
       ),
@@ -143,7 +143,7 @@ export const StormConfigSchema = z
     buildDirectory: z
       .string()
       .trim()
-      .optional()
+      .default("dist")
       .describe("The build directory for the workspace"),
     runtimeDirectory: z
       .string()
