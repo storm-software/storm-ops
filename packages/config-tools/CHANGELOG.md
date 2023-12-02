@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/storm-software/storm-ops/compare/config-tools-v1.1.2...config-tools-v1.1.3) (2023-12-02)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with `esbuildPluginPino` plugin for neutral build ([dba1022](https://github.com/storm-software/storm-ops/commit/dba102278281102a359c1c7cff087b9969b58c7c))
+
 ## [1.1.2](https://github.com/storm-software/storm-ops/compare/config-tools-v1.1.1...config-tools-v1.1.2) (2023-12-02)
 
 
