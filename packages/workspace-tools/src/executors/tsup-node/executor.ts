@@ -2,7 +2,10 @@ import { ExecutorContext } from "@nx/devkit";
 import esbuildPluginPino from "esbuild-plugin-pino";
 import { withRunExecutor } from "../../base/base-executor";
 import { getFileBanner } from "../../utils/get-file-banner";
-import tsupExecutor from "../tsup/executor";
+import {
+  applyDefault as tsupApplyDefault,
+  tsupExecutorFn
+} from "../tsup/executor";
 import { TsupNodeExecutorSchema } from "./schema";
 
 export const tsNodeBuildExecutorFn = (
@@ -10,9 +13,6 @@ export const tsNodeBuildExecutorFn = (
   context: ExecutorContext,
   config?: any
 ) => {
-  options.plugins ??= [];
-  options.transports ??= ["pino-pretty", "pino-loki"];
-
   if (
     options.transports &&
     Array.isArray(options.transports) &&
@@ -21,7 +21,7 @@ export const tsNodeBuildExecutorFn = (
     options.plugins.push(esbuildPluginPino({ transports: options.transports }));
   }
 
-  return tsupExecutor(
+  return tsupExecutorFn(
     {
       ...options,
       platform: "node",
@@ -50,7 +50,22 @@ export const tsNodeBuildExecutorFn = (
   );
 };
 
+const applyDefault = (
+  options: TsupNodeExecutorSchema
+): TsupNodeExecutorSchema => {
+  options = tsupApplyDefault({ ...options, platform: "node" });
+
+  options.plugins ??= [];
+  options.transports ??= ["pino-pretty", "pino-loki"];
+
+  return options;
+};
+
 export default withRunExecutor<TsupNodeExecutorSchema>(
   "TypeScript Build (NodeJs Platform)",
-  tsNodeBuildExecutorFn
+  tsNodeBuildExecutorFn,
+  {
+    skipReadingConfig: false,
+    applyDefaultFn: applyDefault
+  }
 );

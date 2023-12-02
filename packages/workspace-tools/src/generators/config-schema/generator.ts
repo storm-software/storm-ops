@@ -18,7 +18,6 @@ export async function configSchemaGeneratorFn(
   tree: Tree,
   options: ConfigSchemaGeneratorSchema
 ) {
-  const schema = {};
   const projectConfigurations = getProjectConfigurations<
     ProjectConfiguration & { config: any }
   >();

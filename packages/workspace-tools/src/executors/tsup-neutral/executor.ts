@@ -1,7 +1,10 @@
 import { ExecutorContext } from "@nx/devkit";
 import { withRunExecutor } from "../../base/base-executor";
 import { getFileBanner } from "../../utils/get-file-banner";
-import tsupExecutor from "../tsup/executor";
+import {
+  applyDefault as tsupApplyDefault,
+  tsupExecutorFn
+} from "../tsup/executor";
 import { TsupNeutralExecutorSchema } from "./schema";
 
 export const tsNeutralBuildExecutorFn = (
@@ -11,7 +14,7 @@ export const tsNeutralBuildExecutorFn = (
 ) => {
   options.plugins ??= [];
 
-  return tsupExecutor(
+  return tsupExecutorFn(
     {
       ...options,
       platform: "neutral",
@@ -40,7 +43,20 @@ export const tsNeutralBuildExecutorFn = (
   );
 };
 
+const applyDefault = (
+  options: TsupNeutralExecutorSchema
+): TsupNeutralExecutorSchema => {
+  options = tsupApplyDefault({ ...options, platform: "neutral" });
+  options.plugins ??= [];
+
+  return options;
+};
+
 export default withRunExecutor<TsupNeutralExecutorSchema>(
   "TypeScript Build (Neutral Platform)",
-  tsNeutralBuildExecutorFn
+  tsNeutralBuildExecutorFn,
+  {
+    skipReadingConfig: false,
+    applyDefaultFn: applyDefault
+  }
 );

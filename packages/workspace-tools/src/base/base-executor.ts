@@ -4,7 +4,12 @@ import { getConfigEnv } from "@storm-software/config-tools/env/get-env";
 import { setConfigEnv } from "@storm-software/config-tools/env/set-env";
 import { StormConfig } from "@storm-software/config-tools/types";
 import { getDefaultConfig } from "@storm-software/config-tools/utilities/get-default-config";
-import { applyWorkspaceTokens } from "../utils/apply-workspace-tokens";
+import { BaseWorkspaceToolOptions } from "../types";
+import {
+  applyWorkspaceExecutorTokens,
+  applyWorkspaceTokens
+} from "../utils/apply-workspace-tokens";
+import { getWorkspaceRoot } from "../utils/get-workspace-root";
 
 export interface BaseExecutorSchema extends Record<string, any> {
   main?: string;
@@ -12,9 +17,9 @@ export interface BaseExecutorSchema extends Record<string, any> {
   tsConfig?: string;
 }
 
-export interface BaseExecutorOptions {
-  skipReadingConfig?: boolean;
-}
+export interface BaseExecutorOptions<
+  TExecutorSchema extends BaseExecutorSchema = BaseExecutorSchema
+> extends BaseWorkspaceToolOptions<TExecutorSchema> {}
 
 export interface BaseExecutorResult {
   error?: Error;
@@ -33,7 +38,9 @@ export const withRunExecutor =
       | BaseExecutorResult
       | null
       | undefined,
-    executorOptions: BaseExecutorOptions = { skipReadingConfig: false }
+    executorOptions: BaseExecutorOptions<TExecutorSchema> = {
+      skipReadingConfig: false
+    }
   ) =>
   async (
     options: TExecutorSchema,
@@ -43,19 +50,43 @@ export const withRunExecutor =
 
     try {
       console.info(`⚡ Running the ${name} executor...`);
-      console.debug(`⚙️ Executor schema options: \n`, options);
 
-      const tokenized = Object.keys(options).reduce(
-        (ret: TExecutorSchema, key: keyof TExecutorSchema) => {
-          ret[key] = applyWorkspaceTokens(
-            options[key],
-            context
-          ) as TExecutorSchema[keyof TExecutorSchema];
+      if (executorOptions?.applyDefaultFn) {
+        options = executorOptions.applyDefaultFn(options);
+      }
 
-          return ret;
+      console.debug(`⚙️  Executor schema options: \n`, options);
+
+      if (
+        !context.projectsConfigurations?.projects ||
+        !context.projectName ||
+        !context.projectsConfigurations.projects[context.projectName]
+      ) {
+        throw new Error(
+          "The Build process failed because the context is not valid. Please run this command from a workspace."
+        );
+      }
+
+      const workspaceRoot = getWorkspaceRoot();
+      const projectRoot =
+        context.projectsConfigurations.projects[context.projectName].root;
+      const sourceRoot =
+        context.projectsConfigurations.projects[context.projectName].sourceRoot;
+      const projectName =
+        context.projectsConfigurations.projects[context.projectName].name;
+
+      const tokenized = applyWorkspaceTokens(
+        options,
+        {
+          workspaceRoot,
+          projectRoot,
+          sourceRoot,
+          projectName,
+          ...context.projectsConfigurations.projects[context.projectName],
+          ...executorOptions
         },
-        options
-      );
+        applyWorkspaceExecutorTokens
+      ) as TExecutorSchema;
 
       let config: StormConfig | undefined;
       if (!executorOptions.skipReadingConfig) {

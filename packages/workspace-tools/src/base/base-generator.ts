@@ -4,6 +4,11 @@ import { getConfigEnv } from "@storm-software/config-tools/env/get-env";
 import { setConfigEnv } from "@storm-software/config-tools/env/set-env";
 import { StormConfig } from "@storm-software/config-tools/types";
 import { getDefaultConfig } from "@storm-software/config-tools/utilities/get-default-config";
+import { BaseWorkspaceToolOptions } from "../types";
+import {
+  applyWorkspaceGeneratorTokens,
+  applyWorkspaceTokens
+} from "../utils/apply-workspace-tokens";
 
 export interface BaseGeneratorSchema extends Record<string, any> {
   main?: string;
@@ -11,9 +16,9 @@ export interface BaseGeneratorSchema extends Record<string, any> {
   tsConfig?: string;
 }
 
-export interface BaseGeneratorOptions {
-  skipReadingConfig?: boolean;
-}
+export interface BaseGeneratorOptions<
+  TGeneratorSchema extends BaseGeneratorSchema = BaseGeneratorSchema
+> extends BaseWorkspaceToolOptions<TGeneratorSchema> {}
 
 export interface BaseGeneratorResult {
   error?: Error;
@@ -32,7 +37,9 @@ export const withRunGenerator =
       | BaseGeneratorResult
       | null
       | undefined,
-    generatorOptions: BaseGeneratorOptions = { skipReadingConfig: false }
+    generatorOptions: BaseGeneratorOptions<TGeneratorSchema> = {
+      skipReadingConfig: false
+    }
   ) =>
   async (
     tree: Tree,
@@ -42,7 +49,18 @@ export const withRunGenerator =
 
     try {
       console.info(`⚡ Running the ${name} generator...`);
-      console.debug("⚙️ Generator schema options: \n", options);
+
+      if (generatorOptions?.applyDefaultFn) {
+        options = generatorOptions.applyDefaultFn(options);
+      }
+
+      console.debug("⚙️  Generator schema options: \n", options);
+
+      const tokenized = applyWorkspaceTokens(
+        options,
+        { workspaceRoot: tree.root },
+        applyWorkspaceGeneratorTokens
+      ) as TGeneratorSchema;
 
       let config: any | undefined;
       if (!generatorOptions.skipReadingConfig) {
@@ -61,7 +79,9 @@ ${Object.keys(process.env)
   .join("\n")}`);
       }
 
-      const result = await Promise.resolve(generatorFn(tree, options, config));
+      const result = await Promise.resolve(
+        generatorFn(tree, tokenized, config)
+      );
       if (
         result &&
         (!result.success ||

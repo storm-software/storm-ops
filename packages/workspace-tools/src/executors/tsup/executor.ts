@@ -19,7 +19,7 @@ import { dirname, join } from "path";
 import { format } from "prettier";
 import { Options, build as tsup } from "tsup";
 import * as ts from "typescript";
-import { applyWorkspaceTokens } from "../../utils/apply-workspace-tokens";
+import { withRunExecutor } from "../../base/base-executor";
 import { removeExtension } from "../../utils/file-path-utils";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
 import { getConfig } from "./get-config";
@@ -31,7 +31,7 @@ type PackageConfiguration = {
   hash?: string;
 };
 
-export async function tsupExecutor(
+export async function tsupExecutorFn(
   options: TsupExecutorSchema,
   context: ExecutorContext
 ) {
@@ -39,26 +39,6 @@ export async function tsupExecutor(
     console.log("📦  Running Storm build executor on the workspace");
 
     // #region Apply default options
-
-    options.entry ??= "{sourceRoot}/index.ts";
-    options.outputPath ??= "dist/{projectRoot}";
-    options.tsConfig ??= "tsconfig.json";
-    options.platform ??= "neutral";
-    options.verbose ??= false;
-    options.external ??= [];
-    options.additionalEntryPoints ??= [];
-    options.assets ??= [];
-    options.plugins ??= [];
-    options.includeSrc ??= true;
-    options.clean ??= true;
-    options.bundle ??= true;
-    options.debug ??= false;
-    options.watch ??= false;
-    options.apiReport ??= true;
-    options.docModel ??= true;
-    options.tsdocMetadata ??= true;
-    options.define ??= {};
-    options.env ??= {};
 
     options.verbose &&
       console.log(
@@ -96,22 +76,13 @@ ${Object.keys(options)
     const sourceRoot =
       context.projectsConfigurations.projects[context.projectName].sourceRoot;
 
-    const outputPath = applyWorkspaceTokens(
-      options.outputPath ? options.outputPath : "dist/{projectRoot}",
-      context
-    );
-    options.entry = applyWorkspaceTokens(
-      options.entry ? options.entry : "{sourceRoot}/index.ts",
-      context
-    );
-
     // #endregion Prepare build context variables
 
     // #region Clean output directory
 
     if (options.clean !== false) {
-      console.log(`🧹 Cleaning output path: ${outputPath}`);
-      removeSync(outputPath);
+      console.log(`🧹 Cleaning output path: ${options.outputPath}`);
+      removeSync(options.outputPath);
     }
 
     // #endregion Clean output directory
@@ -139,7 +110,7 @@ ${Object.keys(options)
     }
 
     const result = await copyAssets(
-      { assets, watch: options.watch, outputPath },
+      { assets, watch: options.watch, outputPath: options.outputPath },
       context
     );
     if (!result.success) {
@@ -322,7 +293,11 @@ ${externalDependencies
       ? projectRoot
       : join("packages", context.projectName);
 
-    const packageJsonPath = join(context.root, outputPath, "package.json");
+    const packageJsonPath = join(
+      context.root,
+      options.outputPath,
+      "package.json"
+    );
     console.log(`⚡ Writing package.json file to: ${packageJsonPath}`);
 
     writeFileSync(
@@ -346,10 +321,10 @@ ${externalDependencies
 
     if (options.includeSrc !== false) {
       const files = globSync([
-        joinPathFragments(context.root, outputPath, "src/**/*.ts"),
-        joinPathFragments(context.root, outputPath, "src/**/*.tsx"),
-        joinPathFragments(context.root, outputPath, "src/**/*.js"),
-        joinPathFragments(context.root, outputPath, "src/**/*.jsx")
+        joinPathFragments(context.root, options.outputPath, "src/**/*.ts"),
+        joinPathFragments(context.root, options.outputPath, "src/**/*.tsx"),
+        joinPathFragments(context.root, options.outputPath, "src/**/*.js"),
+        joinPathFragments(context.root, options.outputPath, "src/**/*.jsx")
       ]);
       await Promise.allSettled(
         files.map(file =>
@@ -389,7 +364,7 @@ ${externalDependencies
       ...options,
       dtsTsConfig: getNormalizedTsConfig(
         context.root,
-        outputPath,
+        options.outputPath,
         createTypeScriptCompilationOptions(
           normalizeOptions(
             {
@@ -411,7 +386,7 @@ ${externalDependencies
             css: `/* \n${options.banner}\n */\n\n`
           }
         : undefined,
-      outputPath
+      outputPath: options.outputPath
     });
     if (typeof config === "function") {
       await build(await Promise.resolve(config({})));
@@ -496,4 +471,37 @@ const isPrimitive = (value: unknown): boolean => {
   }
 };
 
-export default tsupExecutor;
+export const applyDefault = (
+  options: TsupExecutorSchema
+): TsupExecutorSchema => {
+  options.entry ??= "{sourceRoot}/index.ts";
+  options.outputPath ??= "dist/{projectRoot}";
+  options.tsConfig ??= "tsconfig.json";
+  options.platform ??= "neutral";
+  options.verbose ??= false;
+  options.external ??= [];
+  options.additionalEntryPoints ??= [];
+  options.assets ??= [];
+  options.plugins ??= [];
+  options.includeSrc ??= true;
+  options.clean ??= true;
+  options.bundle ??= true;
+  options.debug ??= false;
+  options.watch ??= false;
+  options.apiReport ??= true;
+  options.docModel ??= true;
+  options.tsdocMetadata ??= true;
+  options.define ??= {};
+  options.env ??= {};
+
+  return options;
+};
+
+export default withRunExecutor<TsupExecutorSchema>(
+  "TypeScript Build using tsup",
+  tsupExecutorFn,
+  {
+    skipReadingConfig: false,
+    applyDefaultFn: applyDefault
+  }
+);

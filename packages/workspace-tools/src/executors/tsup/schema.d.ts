@@ -19,7 +19,7 @@ export type TsupExecutorSchema = Omit<
   | "esbuildConfig"
   | "platform"
 > & {
-  entry?: string;
+  entry: string;
   options: Options;
   clean: boolean;
   debug: boolean;
@@ -31,6 +31,6 @@ export type TsupExecutorSchema = Omit<
   docModel?: boolean;
   tsdocMetadata?: boolean;
   includeSrc?: boolean;
-  platform?: Platform;
-  plugins?: any[];
+  platform: Platform;
+  plugins: any[];
 };
