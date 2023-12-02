@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.1...config-tools-v1.2.2) (2023-12-02)
+
+
+### Bug Fixes
+
+* **config-tools:** Update config package module type ([52dacd0](https://github.com/storm-software/storm-ops/commit/52dacd0a9f43ad36c915a0bc2ff5994c2ad32d45))
+
 ## [1.2.1](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.0...config-tools-v1.2.1) (2023-12-02)
 
 
