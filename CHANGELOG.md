@@ -1,3 +1,10 @@
+## [1.16.2](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.16.1...@storm-software/storm-ops-v1.16.2) (2023-12-02)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issue with updated `createStormConfig` schema ([cbc6941](https://github.com/storm-software/storm-ops/commit/cbc69413e1ebbf5521c638401a34c604f25c2854))
+
 ## [1.16.1](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.16.0...@storm-software/storm-ops-v1.16.1) (2023-12-02)
 
 
