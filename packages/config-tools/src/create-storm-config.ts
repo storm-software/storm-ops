@@ -20,18 +20,18 @@ export const createStormConfig = async <
   let result!: StormConfig<TExtensionName, TExtensionConfig>;
   if (!_static_cache) {
     let config = getConfigEnv() as StormConfig & {
-      [moduleName in TExtensionName]: TExtensionConfig;
+      [extensionName in TExtensionName]: TExtensionConfig;
     };
     result = (await wrapped_StormConfig.parse(config)) as StormConfig<
-      TModuleName,
-      TModuleConfig
+      TExtensionName,
+      TExtensionConfig
     >;
   } else {
-    result = _static_cache as StormConfig<TModuleName, TModuleConfig>;
+    result = _static_cache as StormConfig<TExtensionName, TExtensionConfig>;
   }
 
   if (schema && extensionName) {
-    const moduleConfig = await createConfigExtension(schema, extensionName);
+    const moduleConfig = await createConfigExtension(extensionName, schema);
     result.modules[extensionName] = moduleConfig;
   }
 

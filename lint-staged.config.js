@@ -29,7 +29,7 @@ module.exports = {
       .map(filename => (isWin ? filename : escape(filename)))
       .join(" ");
 
-    return [`git add ${escapedFileNames}`];
+    return ["pnpm build", `git add ${escapedFileNames}`];
   },
   "**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx,yml,yaml,graphql,html,prisma,acid,acidic}":
     fileNames => {
