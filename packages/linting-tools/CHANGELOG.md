@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.15.1...linting-tools-v1.15.2) (2023-12-02)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issue with updated `createStormConfig` schema ([cbc6941](https://github.com/storm-software/storm-ops/commit/cbc69413e1ebbf5521c638401a34c604f25c2854))
+
 ## [1.15.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.15.0...linting-tools-v1.15.1) (2023-12-02)
 
 
