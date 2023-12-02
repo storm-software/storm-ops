@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.13.0...linting-tools-v1.13.1) (2023-11-30)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Enhanced external dependency selection logic ([12dc8d5](https://github.com/storm-software/storm-ops/commit/12dc8d52175f19f70014f21e66e27c7dbaf29df2))
+
 # [1.13.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.12.15...linting-tools-v1.13.0) (2023-11-30)
 
 
