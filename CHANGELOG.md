@@ -1,3 +1,11 @@
+# [1.15.0](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.14.1...@storm-software/storm-ops-v1.15.0) (2023-12-02)
+
+
+### Features
+
+* **config-tools:** Added the config-tools library to support storm configuration ([63f8b9e](https://github.com/storm-software/storm-ops/commit/63f8b9e80a3fc95adbb4dae36e04339e9d46d089))
+* **workspace-tools:** Added the `tsup-neutral` and `tsup-node` executors ([0b1c10e](https://github.com/storm-software/storm-ops/commit/0b1c10e40b2c14b1f49012b8288808aec74e247f))
+
 ## [1.14.1](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.14.0...@storm-software/storm-ops-v1.14.1) (2023-11-30)
 
 

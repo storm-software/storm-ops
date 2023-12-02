@@ -1,3 +1,11 @@
+# [1.18.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.17.1...workspace-tools-v1.18.0) (2023-12-02)
+
+
+### Features
+
+* **config-tools:** Added the config-tools library to support storm configuration ([63f8b9e](https://github.com/storm-software/storm-ops/commit/63f8b9e80a3fc95adbb4dae36e04339e9d46d089))
+* **workspace-tools:** Added the `tsup-neutral` and `tsup-node` executors ([0b1c10e](https://github.com/storm-software/storm-ops/commit/0b1c10e40b2c14b1f49012b8288808aec74e247f))
+
 ## [1.17.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.17.0...workspace-tools-v1.17.1) (2023-11-30)
 
 
