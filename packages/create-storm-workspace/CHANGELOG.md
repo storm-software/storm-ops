@@ -1,3 +1,10 @@
+## [1.21.6](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.21.5...create-storm-workspace-v1.21.6) (2023-12-03)
+
+
+### Bug Fixes
+
+* **config-tools:** Updated the `StormConfig` schema to properly type extensions and removed @decs/typeschema dependency ([40ed139](https://github.com/storm-software/storm-ops/commit/40ed13919f073da95cac183467accdcfc6c12270))
+
 ## [1.21.5](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.21.4...create-storm-workspace-v1.21.5) (2023-12-02)
 
 
