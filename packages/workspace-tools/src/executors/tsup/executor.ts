@@ -471,7 +471,7 @@ const isPrimitive = (value: unknown): boolean => {
   }
 };
 
-export const applyDefault = (
+export const applyDefaultOptions = (
   options: TsupExecutorSchema
 ): TsupExecutorSchema => {
   options.entry ??= "{sourceRoot}/index.ts";
@@ -502,6 +502,8 @@ export default withRunExecutor<TsupExecutorSchema>(
   tsupExecutorFn,
   {
     skipReadingConfig: false,
-    applyDefaultFn: applyDefault
+    hooks: {
+      applyDefaultOptions
+    }
   }
 );

@@ -3,7 +3,7 @@ import { StormConfig } from "@storm-software/config-tools";
 import { withRunExecutor } from "../../base/base-executor";
 import { getFileBanner } from "../../utils/get-file-banner";
 import {
-  applyDefault as tsupApplyDefault,
+  applyDefaultOptions as tsupApplyDefault,
   tsupExecutorFn
 } from "../tsup/executor";
 import { TsupNeutralExecutorSchema } from "./schema";
@@ -42,7 +42,7 @@ export const tsNeutralBuildExecutorFn = (
   );
 };
 
-const applyDefault = (
+const applyDefaultOptions = (
   options: TsupNeutralExecutorSchema
 ): TsupNeutralExecutorSchema => {
   options = tsupApplyDefault({ ...options, platform: "neutral" });
@@ -56,6 +56,8 @@ export default withRunExecutor<TsupNeutralExecutorSchema>(
   tsNeutralBuildExecutorFn,
   {
     skipReadingConfig: false,
-    applyDefaultFn: applyDefault
+    hooks: {
+      applyDefaultOptions
+    }
   }
 );

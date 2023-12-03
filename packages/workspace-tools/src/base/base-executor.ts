@@ -43,7 +43,8 @@ export const withRunExecutor =
       | null
       | undefined,
     executorOptions: BaseExecutorOptions<TExecutorSchema> = {
-      skipReadingConfig: false
+      skipReadingConfig: false,
+      hooks: {}
     }
   ) =>
   async (
@@ -54,10 +55,6 @@ export const withRunExecutor =
 
     try {
       console.info(`⚡ Running the ${name} executor...`);
-
-      if (executorOptions?.applyDefaultFn) {
-        options = executorOptions.applyDefaultFn(options);
-      }
 
       if (
         !context.projectsConfigurations?.projects ||
@@ -93,6 +90,16 @@ export const withRunExecutor =
           );
       }
 
+      if (executorOptions?.hooks?.applyDefaultOptions) {
+        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
+          console.debug(`Running the applyDefaultOptions hook...`);
+        options = await Promise.resolve(
+          executorOptions.hooks.applyDefaultOptions(options, config)
+        );
+        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
+          console.debug(`Completed the applyDefaultOptions hook...`);
+      }
+
       getLogLevel(config.logLevel) >= LogLevel.DEBUG &&
         console.debug(`⚙️  Executor schema options: \n`, options);
 
@@ -110,6 +117,16 @@ export const withRunExecutor =
         applyWorkspaceExecutorTokens
       ) as TExecutorSchema;
 
+      if (executorOptions?.hooks?.preProcess) {
+        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
+          console.debug(`Running the preProcess hook...`);
+        await Promise.resolve(
+          executorOptions.hooks.preProcess(tokenized, config)
+        );
+        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
+          console.debug(`Completed the preProcess hook...`);
+      }
+
       const result = await Promise.resolve(
         executorFn(tokenized, context, config)
       );
@@ -125,6 +142,14 @@ export const withRunExecutor =
         throw new Error(`The ${name} executor failed to run`, {
           cause: result!.error
         });
+      }
+
+      if (executorOptions?.hooks?.postProcess) {
+        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
+          console.debug(`Running the postProcess hook...`);
+        await Promise.resolve(executorOptions.hooks.postProcess(config));
+        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
+          console.debug(`Completed the postProcess hook...`);
       }
 
       console.info(`🎉 Successfully completed running the ${name} executor!`);

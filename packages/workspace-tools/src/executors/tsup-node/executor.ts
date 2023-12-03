@@ -3,7 +3,7 @@ import esbuildPluginPino from "esbuild-plugin-pino";
 import { withRunExecutor } from "../../base/base-executor";
 import { getFileBanner } from "../../utils/get-file-banner";
 import {
-  applyDefault as tsupApplyDefault,
+  applyDefaultOptions as tsupApplyDefault,
   tsupExecutorFn
 } from "../tsup/executor";
 import { TsupNodeExecutorSchema } from "./schema";
@@ -48,7 +48,7 @@ export const tsNodeBuildExecutorFn = (
   );
 };
 
-const applyDefault = (
+const applyDefaultOptions = (
   options: TsupNodeExecutorSchema
 ): TsupNodeExecutorSchema => {
   options = tsupApplyDefault({ ...options, platform: "node" });
@@ -64,6 +64,8 @@ export default withRunExecutor<TsupNodeExecutorSchema>(
   tsNodeBuildExecutorFn,
   {
     skipReadingConfig: false,
-    applyDefaultFn: applyDefault
+    hooks: {
+      applyDefaultOptions
+    }
   }
 );

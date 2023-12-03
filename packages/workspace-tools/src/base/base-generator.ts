@@ -54,10 +54,6 @@ export const withRunGenerator =
     try {
       console.info(`⚡ Running the ${name} generator...`);
 
-      if (generatorOptions?.applyDefaultFn) {
-        options = generatorOptions.applyDefaultFn(options);
-      }
-
       let config: any | undefined;
       if (!generatorOptions.skipReadingConfig) {
         config = getDefaultConfig({
@@ -74,6 +70,16 @@ export const withRunGenerator =
           );
       }
 
+      if (generatorOptions?.hooks?.applyDefaultOptions) {
+        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
+          console.debug(`Running the applyDefaultOptions hook...`);
+        options = await Promise.resolve(
+          generatorOptions.hooks.applyDefaultOptions(options, config)
+        );
+        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
+          console.debug(`Completed the applyDefaultOptions hook...`);
+      }
+
       getLogLevel(config.logLevel) >= LogLevel.DEBUG &&
         console.debug("⚙️  Generator schema options: \n", options);
 
@@ -82,6 +88,16 @@ export const withRunGenerator =
         { workspaceRoot: tree.root, config },
         applyWorkspaceGeneratorTokens
       ) as TGeneratorSchema;
+
+      if (generatorOptions?.hooks?.preProcess) {
+        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
+          console.debug(`Running the preProcess hook...`);
+        await Promise.resolve(
+          generatorOptions.hooks.preProcess(options, config)
+        );
+        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
+          console.debug(`Completed the preProcess hook...`);
+      }
 
       const result = await Promise.resolve(
         generatorFn(tree, tokenized, config)
@@ -98,6 +114,14 @@ export const withRunGenerator =
         throw new Error(`The ${name} generator failed to run`, {
           cause: result!.error
         });
+      }
+
+      if (generatorOptions?.hooks?.postProcess) {
+        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
+          console.debug(`Running the postProcess hook...`);
+        await Promise.resolve(generatorOptions.hooks.postProcess(config));
+        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
+          console.debug(`Completed the postProcess hook...`);
       }
 
       console.info(`🎉 Successfully completed running the ${name} generator!`);

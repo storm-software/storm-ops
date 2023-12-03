@@ -28,6 +28,14 @@ export const DefaultStormConfig: Omit<StormConfig, "name"> = {
   owner: "@storm-software/development",
   worker: "stormie-bot",
   runtimeDirectory: "node_modules/.storm",
+  timezone: "America/New_York",
+  locale: "en-US",
+  env: "production",
+  branch: "main",
+  organization: "storm-software",
+  ci: true,
+  configFile: null,
+  runtimeVersion: "1.0.0",
   colors: { ...DefaultColorConfig },
   extensions: {}
 };
@@ -72,14 +80,6 @@ export const getDefaultConfig = (
     repository,
     license: license ?? DefaultStormConfig.license!,
     homepage: homepage ?? DefaultStormConfig.homepage!,
-    timezone: "America/New_York",
-    locale: "en-US",
-    env: "production",
-    branch: "main",
-    organization: "storm-software",
-    ci: true,
-    configFile: join(workspaceRoot, "storm.config.js"),
-    runtimeVersion: "1.0.0",
     extensions: {},
     ...config
   }) as StormConfig;

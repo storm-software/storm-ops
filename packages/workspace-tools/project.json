@@ -41,12 +41,11 @@
           "@angular-devkit/core",
           "@angular-devkit/architect",
           "@angular-devkit/schematics",
+          "typescript",
           "@swc/wasm",
           "esbuild",
           "prettier",
-          "nx",
-          "typescript",
-          "@storm-software/config-tools"
+          "nx"
         ],
         "assets": [
           {
