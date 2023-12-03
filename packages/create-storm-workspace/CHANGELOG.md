@@ -1,3 +1,10 @@
+## [1.21.5](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.21.4...create-storm-workspace-v1.21.5) (2023-12-02)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad `$id` field in schema.json ([dd6cc03](https://github.com/storm-software/storm-ops/commit/dd6cc03f288e09f51cfebc1570c30ccef657d525))
+
 ## [1.21.4](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.21.3...create-storm-workspace-v1.21.4) (2023-12-02)
 
 
