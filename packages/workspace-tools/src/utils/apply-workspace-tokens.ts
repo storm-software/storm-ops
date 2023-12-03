@@ -79,6 +79,19 @@ export const applyWorkspaceGeneratorTokens = (
     return result;
   }
 
+  if (tokenizerOptions.config) {
+    const configKeys = Object.keys(tokenizerOptions.config);
+    if (configKeys.some(configKey => result.includes(`{${configKey}}`))) {
+      configKeys.forEach(configKey => {
+        if (result.includes(`{${configKey}}`)) {
+          result = result.replaceAll(
+            `{${configKey}}`,
+            tokenizerOptions.config[configKey]
+          );
+        }
+      });
+    }
+  }
   if (result.includes("{workspaceRoot}")) {
     result = result.replaceAll(
       "{workspaceRoot}",
@@ -105,20 +118,18 @@ export const applyWorkspaceTokens = <
 
   return Object.keys(options).reduce(
     (ret: Record<string, any>, option: string) => {
-      if (
-        options[option] === undefined ||
-        options[option] === null ||
-        typeof options[option] === "number" ||
-        typeof options[option] === "boolean" ||
-        typeof options[option] === "string"
-      ) {
+      if (typeof options[option] === "string") {
         ret[option] = tokenizerFn(options[option], config);
       } else if (Array.isArray(options[option])) {
         ret[option] = options[option].map((item: any) =>
-          tokenizerFn(item, config)
+          typeof item === "string" ? tokenizerFn(item, config) : item
         );
       } else if (typeof options[option] === "object") {
-        ret[option] = tokenizerFn(options[option], config);
+        ret[option] = applyWorkspaceTokens(
+          options[option],
+          config,
+          tokenizerFn
+        );
       }
 
       return ret;

@@ -71,7 +71,6 @@ export function modernConfig({
     silent: !verbose,
     metafile: true,
     shims: true,
-    minify: false,
     external,
     platform,
     banner,
@@ -87,6 +86,13 @@ export function modernConfig({
           outDir: outputPath
         }
       }
+    },
+    minify: debug ? false : "terser",
+    terserOptions: {
+      compress: true,
+      ecma: 2020,
+      keep_classnames: true,
+      keep_fnames: true
     },
     apiReport,
     docModel,
@@ -129,7 +135,6 @@ export function legacyConfig({
     silent: !verbose,
     metafile: true,
     shims: true,
-    minify: false,
     external,
     platform,
     banner,
@@ -145,6 +150,13 @@ export function legacyConfig({
           outDir: outputPath
         }
       }
+    },
+    minify: debug ? false : "terser",
+    terserOptions: {
+      compress: true,
+      ecma: 2020,
+      keep_classnames: true,
+      keep_fnames: true
     },
     apiReport: false,
     docModel: false,
@@ -188,7 +200,6 @@ export function workerConfig({
     silent: !verbose,
     metafile: true,
     shims: false,
-    minify: true,
     external,
     platform: "browser",
     banner,
@@ -204,6 +215,13 @@ export function workerConfig({
           outDir: join(outDir, "dist")
         }
       }
+    },
+    minify: debug ? false : "terser",
+    terserOptions: {
+      compress: true,
+      ecma: 2020,
+      keep_classnames: true,
+      keep_fnames: true
     },
     apiReport,
     docModel,

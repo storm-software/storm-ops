@@ -31,20 +31,13 @@
         "skipTypeCheck": false,
         "metafile": true,
         "minify": false,
-        "format": ["cjs"],
-        "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
-          }
-        },
+        "format": ["esm", "cjs"],
         "external": [
           "@angular-devkit/core",
           "@angular-devkit/architect",
           "@angular-devkit/schematics",
-          "typescript",
           "@swc/wasm",
           "esbuild",
-          "prettier",
           "nx"
         ],
         "assets": [

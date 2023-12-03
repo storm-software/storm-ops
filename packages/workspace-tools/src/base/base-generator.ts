@@ -8,7 +8,7 @@ import {
   getLogLevel,
   setConfigEnv
 } from "@storm-software/config-tools";
-import chalk from "chalk";
+import * as chalk from "chalk";
 import { BaseWorkspaceToolOptions } from "../types";
 import {
   applyWorkspaceGeneratorTokens,
@@ -85,8 +85,11 @@ export const withRunGenerator =
           console.debug(chalk.dim(`Completed the applyDefaultOptions hook...`));
       }
 
-      getLogLevel(config.logLevel) >= LogLevel.DEBUG &&
-        console.debug(chalk.dim("⚙️  Generator schema options: \n"), options);
+      getLogLevel(config.logLevel) >= LogLevel.INFO &&
+        console.info(
+          chalk.hex("#0ea5e9").italic("\n\n⚙️  Generator schema options: \n"),
+          options
+        );
 
       const tokenized = applyWorkspaceTokens(
         options,
@@ -131,7 +134,7 @@ export const withRunGenerator =
 
       console.info(
         chalk.bold.hex("#087f5b")(
-          `🎉 Successfully completed running the ${name} generator!`
+          `\n\n🎉 Successfully completed running the ${name} generator!`
         )
       );
 
@@ -141,21 +144,24 @@ export const withRunGenerator =
     } catch (error) {
       console.error(
         chalk.bold.hex("#7d1a1a")(
-          `❌ An error occurred while running the generator`
-        )
+          `❌ An error occurred while running the generator\n\n`
+        ),
+        error
       );
-      console.error(chalk.bold.hex("#7d1a1a")(error));
+      console.error(error);
 
       return {
         success: false
       };
     } finally {
       console.info(
-        chalk.dim(
-          `⏱️  The${name ? ` ${name}` : ""} generator took ${
-            Date.now() - startTime
-          }ms to complete`
-        )
+        chalk
+          .hex("#0ea5e9")
+          .italic(
+            `⏱️  The${name ? ` ${name}` : ""} generator took ${
+              Date.now() - startTime
+            }ms to complete`
+          )
       );
     }
   };

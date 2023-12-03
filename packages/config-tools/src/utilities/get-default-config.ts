@@ -71,18 +71,19 @@ export const getDefaultConfig = (
     }
   }
 
-  return StormConfigSchema.parse({
-    ...(DefaultStormConfig as Required<StormConfig>),
-    colors: { ...DefaultColorConfig, ...config },
-    workspaceRoot,
-    name,
-    namespace,
-    repository,
-    license: license ?? DefaultStormConfig.license!,
-    homepage: homepage ?? DefaultStormConfig.homepage!,
-    extensions: {},
-    ...config
-  }) as StormConfig;
+  return StormConfigSchema.parse(
+    Object.assign(config, {
+      ...(DefaultStormConfig as Required<StormConfig>),
+      colors: { ...DefaultColorConfig },
+      workspaceRoot,
+      name,
+      namespace,
+      repository,
+      license: license ?? DefaultStormConfig.license!,
+      homepage: homepage ?? DefaultStormConfig.homepage!,
+      extensions: {}
+    })
+  ) as StormConfig;
 };
 
 const getWorkspaceRoot = () => {
