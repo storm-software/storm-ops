@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.4...config-tools-v1.2.5) (2023-12-03)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Remove config-tools as an external dependency ([7a24864](https://github.com/storm-software/storm-ops/commit/7a248643ef13fca6ddaa3c25f6c78ede86dec8be))
+
 ## [1.2.4](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.3...config-tools-v1.2.4) (2023-12-03)
 
 

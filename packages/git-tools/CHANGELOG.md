@@ -1,3 +1,10 @@
+## [1.14.3](https://github.com/storm-software/storm-ops/compare/git-tools-v1.14.2...git-tools-v1.14.3) (2023-12-03)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Remove config-tools as an external dependency ([7a24864](https://github.com/storm-software/storm-ops/commit/7a248643ef13fca6ddaa3c25f6c78ede86dec8be))
+
 ## [1.14.2](https://github.com/storm-software/storm-ops/compare/git-tools-v1.14.1...git-tools-v1.14.2) (2023-12-03)
 
 
