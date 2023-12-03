@@ -44,7 +44,7 @@
     "@commitlint/types": "18.1.0",
     "@nx/devkit": "17.0.3",
     "any-shell-escape": "0.1.1",
-    "chalk": "5.3.0",
+    "chalk": "4.1.0",
     "commander": "11.1.0",
     "conventional-commits-filter": "4.0.0",
     "deep-map": "2.0.0",
