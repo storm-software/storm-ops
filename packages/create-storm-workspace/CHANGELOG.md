@@ -1,3 +1,10 @@
+## [1.21.11](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.21.10...create-storm-workspace-v1.21.11) (2023-12-03)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Add prettier and typescript to externals list ([b17f44f](https://github.com/storm-software/storm-ops/commit/b17f44f7d244d9f538fa6c938a5fa2ce0ea1f5fd))
+
 ## [1.21.10](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.21.9...create-storm-workspace-v1.21.10) (2023-12-03)
 
 
