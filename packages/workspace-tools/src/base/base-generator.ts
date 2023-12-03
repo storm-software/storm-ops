@@ -60,12 +60,9 @@ export const withRunGenerator =
 
       let config: any | undefined;
       if (!generatorOptions.skipReadingConfig) {
-        const configFile = await getConfigFile();
-        const configEnv = getConfigEnv();
-
-        config = await getDefaultConfig({
-          ...configFile,
-          ...configEnv
+        config = getDefaultConfig({
+          ...(await getConfigFile()),
+          ...getConfigEnv()
         });
         setConfigEnv(config);
 

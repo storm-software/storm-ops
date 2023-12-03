@@ -1,6 +1,7 @@
-import { Schema, wrap } from "@decs/typeschema";
+import * as z from "zod";
 import { getConfigEnv, getExtensionEnv } from "./env/get-env";
-import { StormConfig, wrapped_StormConfig } from "./types";
+import { StormConfigSchema } from "./schema";
+import { StormConfig } from "./types";
 
 const _extension_cache = new WeakMap<{ extensionName: string }, any>();
 let _static_cache: StormConfig | undefined = undefined;
@@ -10,19 +11,22 @@ let _static_cache: StormConfig | undefined = undefined;
  *
  * @returns The config for the current Storm workspace
  */
-export const createStormConfig = async <
-  TExtensionName extends string = string,
-  TExtensionConfig = any
+export const createStormConfig = <
+  TExtensionName extends
+    keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
+  TExtensionConfig extends Record<string, any> = Record<string, any>,
+  TExtensionSchema extends
+    z.ZodType<TExtensionConfig> = z.ZodType<TExtensionConfig>
 >(
   extensionName?: TExtensionName,
-  schema?: Schema
-): Promise<StormConfig<TExtensionName, TExtensionConfig>> => {
+  schema?: TExtensionSchema
+): StormConfig<TExtensionName, TExtensionConfig> => {
   let result!: StormConfig<TExtensionName, TExtensionConfig>;
   if (!_static_cache) {
     let config = getConfigEnv() as StormConfig & {
       [extensionName in TExtensionName]: TExtensionConfig;
     };
-    result = (await wrapped_StormConfig.parse(config)) as StormConfig<
+    result = StormConfigSchema.parse(config) as StormConfig<
       TExtensionName,
       TExtensionConfig
     >;
@@ -31,8 +35,14 @@ export const createStormConfig = async <
   }
 
   if (schema && extensionName) {
-    const extensionConfig = await createConfigExtension(extensionName, schema);
-    result.extensions[extensionName] = extensionConfig;
+    result.extensions = {
+      ...result.extensions,
+      [extensionName]: createConfigExtension<
+        TExtensionName,
+        TExtensionConfig,
+        TExtensionSchema
+      >(extensionName, schema)
+    };
   }
 
   _static_cache = result;
@@ -46,10 +56,16 @@ export const createStormConfig = async <
  * @param options - The options for the config extension
  * @returns The config for the specified Storm config extension. If the extension does not exist, `undefined` is returned.
  */
-export const createConfigExtension = async <TExtensionConfig = any>(
-  extensionName: string,
-  schema: Schema
-): Promise<TExtensionConfig> => {
+export const createConfigExtension = <
+  TExtensionName extends
+    keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
+  TExtensionConfig extends Record<string, any> = Record<string, any>,
+  TExtensionSchema extends
+    z.ZodType<TExtensionConfig> = z.ZodType<TExtensionConfig>
+>(
+  extensionName: TExtensionName,
+  schema: TExtensionSchema
+): TExtensionConfig => {
   const extension_cache_key = { extensionName };
   if (_extension_cache.has(extension_cache_key)) {
     return _extension_cache.get(extension_cache_key) as TExtensionConfig;
@@ -57,7 +73,7 @@ export const createConfigExtension = async <TExtensionConfig = any>(
 
   let extension = getExtensionEnv(extensionName);
   if (schema) {
-    extension = await wrap(schema).parse(extension);
+    extension = schema.parse(extension);
   }
 
   _extension_cache.set(extension_cache_key, extension);

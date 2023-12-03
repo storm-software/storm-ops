@@ -1,21 +1,23 @@
-import { wrap, type Infer, type InferIn } from "@decs/typeschema";
+import * as z from "zod";
 import { ColorConfigSchema, StormConfigSchema } from "./schema";
 
-export type ColorConfig = Infer<typeof ColorConfigSchema>;
-export type ColorConfigInput = InferIn<typeof ColorConfigSchema>;
-export const wrapped_ColorConfig = wrap(ColorConfigSchema);
+export type ColorConfig = z.infer<typeof ColorConfigSchema>;
+export type ColorConfigInput = z.input<typeof ColorConfigSchema>;
 
-type TStormConfig = Infer<typeof StormConfigSchema>;
-export type StormConfigInput = InferIn<typeof StormConfigSchema>;
-export const wrapped_StormConfig = wrap(StormConfigSchema);
+type TStormConfig = z.infer<typeof StormConfigSchema>;
+export type StormConfigInput = z.input<typeof StormConfigSchema>;
 
 export type StormConfig<
-  TExtensionName extends string = string,
-  TExtensionConfig = any
+  TExtensionName extends
+    keyof TStormConfig["extensions"] = keyof TStormConfig["extensions"],
+  TExtensionConfig extends
+    TStormConfig["extensions"][TExtensionName] = TStormConfig["extensions"][TExtensionName]
 > = TStormConfig & {
-  extensions: Record<string, any> & {
-    [extensionName in TExtensionName]: TExtensionConfig;
-  };
+  extensions:
+    | (TStormConfig["extensions"] & {
+        [extensionName in TExtensionName]: TExtensionConfig;
+      })
+    | {};
 };
 
 export type LogLevel = 0 | 10 | 20 | 30 | 40 | 60 | 70;

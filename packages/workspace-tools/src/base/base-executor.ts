@@ -79,7 +79,7 @@ export const withRunExecutor =
 
       let config: StormConfig | undefined;
       if (!executorOptions.skipReadingConfig) {
-        config = await getDefaultConfig({
+        config = getDefaultConfig({
           ...(await getConfigFile()),
           ...getConfigEnv()
         });

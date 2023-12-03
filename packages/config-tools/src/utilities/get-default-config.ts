@@ -1,7 +1,7 @@
-import { existsSync } from "fs";
-import { readFile } from "fs/promises";
+import { existsSync, readFileSync } from "fs";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root.js";
 import { join } from "path";
+import { StormConfigSchema } from "../schema";
 import { ColorConfig, StormConfig } from "../types";
 
 /**
@@ -37,9 +37,9 @@ export const DefaultStormConfig: Omit<StormConfig, "name"> = {
  *
  * @returns The default Storm config values
  */
-export const getDefaultConfig = async (
+export const getDefaultConfig = (
   config: Partial<StormConfig> = {}
-): Promise<StormConfig> => {
+): StormConfig => {
   let name = "storm-workspace";
   let namespace = "storm-software";
   let repository = "https://github.com/storm-software/storm-stack";
@@ -49,7 +49,7 @@ export const getDefaultConfig = async (
 
   const workspaceRoot = getWorkspaceRoot() ?? process.cwd();
   if (existsSync(join(workspaceRoot, "package.json"))) {
-    const file = await readFile(join(workspaceRoot, "package.json"), {
+    const file = readFileSync(join(workspaceRoot, "package.json"), {
       encoding: "utf-8"
     });
     if (file) {
@@ -63,7 +63,7 @@ export const getDefaultConfig = async (
     }
   }
 
-  return {
+  return StormConfigSchema.parse({
     ...(DefaultStormConfig as Required<StormConfig>),
     colors: { ...DefaultColorConfig, ...config },
     workspaceRoot,
@@ -77,12 +77,12 @@ export const getDefaultConfig = async (
     env: "production",
     branch: "main",
     organization: "storm-software",
-    extensions: {},
     ci: true,
     configFile: join(workspaceRoot, "storm.config.js"),
     runtimeVersion: "1.0.0",
+    extensions: {},
     ...config
-  };
+  }) as StormConfig;
 };
 
 const getWorkspaceRoot = () => {

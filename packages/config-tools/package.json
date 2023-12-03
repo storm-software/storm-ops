@@ -9,7 +9,6 @@
     "directory": "packages/config-tools"
   },
   "dependencies": {
-    "@decs/typeschema": "^0.12.1",
     "cosmiconfig": "^9.0.0",
     "zod": "^3.22.4"
   },

@@ -17,18 +17,10 @@
         "deleteOutputPath": true,
         "bundle": true,
         "thirdParty": true,
-        "skipTypeCheck": true,
+        "skipTypeCheck": false,
         "metafile": true,
         "minify": false,
         "format": ["cjs"],
-        "external": [
-          "ow",
-          "valibot",
-          "fp-ts/Either",
-          "@effect/schema",
-          "@effect/data",
-          "@deepkit/type"
-        ],
         "esbuildOptions": {
           "outExtension": {
             ".js": ".js"
