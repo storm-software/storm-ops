@@ -1,3 +1,10 @@
+## [1.16.7](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.16.6...@storm-software/storm-ops-v1.16.7) (2023-12-03)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Ensure only storm env are written to build package ([16d7fc9](https://github.com/storm-software/storm-ops/commit/16d7fc90c831d89e0d79bc02683c8a3ad7af63ce))
+
 ## [1.16.6](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.16.5...@storm-software/storm-ops-v1.16.6) (2023-12-03)
 
 
