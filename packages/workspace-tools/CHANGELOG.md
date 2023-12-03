@@ -1,3 +1,10 @@
+## [1.21.14](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.13...workspace-tools-v1.21.14) (2023-12-03)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Ensure correct env values are passed to tsup build ([da0ba21](https://github.com/storm-software/storm-ops/commit/da0ba21533641a729f284bdbcbf061f699b4cfc3))
+
 ## [1.21.13](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.12...workspace-tools-v1.21.13) (2023-12-03)
 
 
