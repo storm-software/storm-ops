@@ -369,8 +369,13 @@ ${externalDependencies
 
     const config = getConfig(context.root, projectRoot, sourceRoot, {
       ...options,
-      define: stormEnv,
-      env: stormEnv,
+      define: {
+        __STORM_CONFIG: JSON.stringify(stormEnv)
+      },
+      env: {
+        __STORM_CONFIG: JSON.stringify(stormEnv),
+        ...stormEnv
+      },
       dtsTsConfig: getNormalizedTsConfig(
         context.root,
         options.outputPath,
