@@ -1,3 +1,10 @@
+## [1.21.8](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.7...workspace-tools-v1.21.8) (2023-12-03)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issues with logging styling ([cc1ce21](https://github.com/storm-software/storm-ops/commit/cc1ce2167cf8be22db62ea73ed11ec2753fd6a0c))
+
 ## [1.21.7](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.6...workspace-tools-v1.21.7) (2023-12-03)
 
 
