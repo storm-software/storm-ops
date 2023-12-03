@@ -36,7 +36,9 @@
           "@angular-devkit/core",
           "@angular-devkit/architect",
           "@angular-devkit/schematics",
+          "typescript",
           "@swc/wasm",
+          "prettier",
           "esbuild",
           "nx"
         ],
