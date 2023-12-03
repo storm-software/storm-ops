@@ -1,3 +1,10 @@
+## [1.16.4](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.16.3...@storm-software/storm-ops-v1.16.4) (2023-12-03)
+
+
+### Bug Fixes
+
+* **config-tools:** Updated the `StormConfig` schema to properly type extensions and removed @decs/typeschema dependency ([40ed139](https://github.com/storm-software/storm-ops/commit/40ed13919f073da95cac183467accdcfc6c12270))
+
 ## [1.16.3](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.16.2...@storm-software/storm-ops-v1.16.3) (2023-12-02)
 
 
