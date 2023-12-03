@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.3...config-tools-v1.2.4) (2023-12-03)
+
+
+### Bug Fixes
+
+* **config-tools:** Updated the `StormConfig` schema to properly type extensions and removed @decs/typeschema dependency ([40ed139](https://github.com/storm-software/storm-ops/commit/40ed13919f073da95cac183467accdcfc6c12270))
+
 ## [1.2.3](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.2...config-tools-v1.2.3) (2023-12-02)
 
 
