@@ -1,3 +1,10 @@
+## [1.21.13](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.21.12...create-storm-workspace-v1.21.13) (2023-12-03)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Ensure only storm env are written to build package ([16d7fc9](https://github.com/storm-software/storm-ops/commit/16d7fc90c831d89e0d79bc02683c8a3ad7af63ce))
+
 ## [1.21.12](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.21.11...create-storm-workspace-v1.21.12) (2023-12-03)
 
 
