@@ -56,7 +56,7 @@ export const withRunExecutor =
 
     try {
       console.info(
-        chalk.bold.hex("#1fb2a6")(`⚡ Running the ${name} executor...`)
+        chalk.bold.hex("#1fb2a6")(`⚡ Running the ${name} executor...\n\n`)
       );
 
       if (
@@ -107,9 +107,8 @@ export const withRunExecutor =
 
       getLogLevel(config.logLevel) >= LogLevel.INFO &&
         console.info(
-          chalk
-            .hex("#0ea5e9")
-            .italic(`\n\n⚙️  Executor schema options: \n`, options)
+          chalk.hex("#0ea5e9").italic(`\n\n ⚙️  Executor schema options: \n`),
+          options
         );
 
       const tokenized = applyWorkspaceTokens(
@@ -173,7 +172,7 @@ export const withRunExecutor =
     } catch (error) {
       console.error(
         chalk.bold.hex("#7d1a1a")(
-          `❌ An error occurred while running the executor\n\n`
+          `❌  An error occurred while running the executor\n\n`
         ),
         error
       );

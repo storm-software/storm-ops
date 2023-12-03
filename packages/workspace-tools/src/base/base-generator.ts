@@ -54,7 +54,7 @@ export const withRunGenerator =
 
     try {
       console.info(
-        chalk.bold.hex("#1fb2a6")(`⚡ Running the ${name} generator...`)
+        chalk.bold.hex("#1fb2a6")(`⚡ Running the ${name} generator...\n\n`)
       );
 
       let config: any | undefined;
@@ -87,7 +87,7 @@ export const withRunGenerator =
 
       getLogLevel(config.logLevel) >= LogLevel.INFO &&
         console.info(
-          chalk.hex("#0ea5e9").italic("\n\n⚙️  Generator schema options: \n"),
+          chalk.hex("#0ea5e9").italic("\n\n ⚙️  Generator schema options: \n"),
           options
         );
 
@@ -144,7 +144,7 @@ export const withRunGenerator =
     } catch (error) {
       console.error(
         chalk.bold.hex("#7d1a1a")(
-          `❌ An error occurred while running the generator\n\n`
+          `❌  An error occurred while running the generator\n\n`
         ),
         error
       );

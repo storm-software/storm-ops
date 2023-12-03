@@ -89,6 +89,7 @@ export const setConfigEnv = (config: StormConfig) => {
   process.env[`${prefix}BRANCH`] = config.branch;
   process.env[`${prefix}PRE_MAJOR`] = String(config.preMajor);
   process.env[`${prefix}LOG_LEVEL`] = String(config.logLevel);
+  process.env.LOG_LEVEL = String(config.logLevel);
   process.env.NX_VERBOSE_LOGGING = String(
     getLogLevel(config.logLevel) >= LogLevel.DEBUG ? true : false
   );

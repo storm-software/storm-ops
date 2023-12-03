@@ -354,7 +354,16 @@ ${externalDependencies
         cwd: workspaceRoot
       })
     );
-    options.plugins.push(environmentPlugin(options.env));
+    options.plugins.push(
+      environmentPlugin(
+        Object.keys(options.env)
+          .filter(key => key.startsWith("STORM_"))
+          .reduce((ret, key) => {
+            ret[key] = options.env[key];
+            return ret;
+          }, {})
+      )
+    );
 
     // #endregion Add default plugins
 
