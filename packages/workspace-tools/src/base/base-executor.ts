@@ -8,6 +8,7 @@ import {
   getLogLevel,
   setConfigEnv
 } from "@storm-software/config-tools";
+import chalk from "chalk";
 import { BaseWorkspaceToolOptions } from "../types";
 import {
   applyWorkspaceExecutorTokens,
@@ -54,7 +55,9 @@ export const withRunExecutor =
     const startTime = Date.now();
 
     try {
-      console.info(`⚡ Running the ${name} executor...`);
+      console.info(
+        chalk.bold.hex("#1fb2a6")(`⚡ Running the ${name} executor...`)
+      );
 
       if (
         !context.projectsConfigurations?.projects ||
@@ -84,24 +87,26 @@ export const withRunExecutor =
 
         getLogLevel(config.logLevel) >= LogLevel.DEBUG &&
           console.debug(
-            `Loaded Storm config into env: \n${Object.keys(process.env)
-              .map(key => ` - ${key}=${process.env[key]}`)
-              .join("\n")}`
+            chalk.dim(
+              `Loaded Storm config into env: \n${Object.keys(process.env)
+                .map(key => ` - ${key}=${process.env[key]}`)
+                .join("\n")}`
+            )
           );
       }
 
       if (executorOptions?.hooks?.applyDefaultOptions) {
         getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(`Running the applyDefaultOptions hook...`);
+          console.debug(chalk.dim(`Running the applyDefaultOptions hook...`));
         options = await Promise.resolve(
           executorOptions.hooks.applyDefaultOptions(options, config)
         );
         getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(`Completed the applyDefaultOptions hook...`);
+          console.debug(chalk.dim(`Completed the applyDefaultOptions hook...`));
       }
 
       getLogLevel(config.logLevel) >= LogLevel.DEBUG &&
-        console.debug(`⚙️  Executor schema options: \n`, options);
+        console.debug(chalk.dim(`⚙️  Executor schema options: \n`), options);
 
       const tokenized = applyWorkspaceTokens(
         options,
@@ -119,12 +124,12 @@ export const withRunExecutor =
 
       if (executorOptions?.hooks?.preProcess) {
         getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(`Running the preProcess hook...`);
+          console.debug(chalk.dim(`Running the preProcess hook...`));
         await Promise.resolve(
           executorOptions.hooks.preProcess(tokenized, config)
         );
         getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(`Completed the preProcess hook...`);
+          console.debug(chalk.dim(`Completed the preProcess hook...`));
       }
 
       const result = await Promise.resolve(
@@ -146,25 +151,39 @@ export const withRunExecutor =
 
       if (executorOptions?.hooks?.postProcess) {
         getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(`Running the postProcess hook...`);
+          console.debug(chalk.dim(`Running the postProcess hook...`));
         await Promise.resolve(executorOptions.hooks.postProcess(config));
         getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(`Completed the postProcess hook...`);
+          console.debug(chalk.dim(`Completed the postProcess hook...`));
       }
 
-      console.info(`🎉 Successfully completed running the ${name} executor!`);
+      console.info(
+        chalk.bold.hex("#087f5b")(
+          `🎉 Successfully completed running the ${name} executor!`
+        )
+      );
 
       return {
         success: true
       };
     } catch (error) {
-      console.error(`❌ An error occurred while running the executor`);
-      console.error(error);
+      console.error(
+        chalk.bold.hex("#7d1a1a")(
+          `❌ An error occurred while running the executor`
+        )
+      );
+      console.error(chalk.bold.hex("#7d1a1a")(error));
 
       return {
         success: false
       };
     } finally {
-      console.info(startTime, name);
+      console.info(
+        chalk.dim(
+          `⏱️  The${name ? ` ${name}` : ""} generator took ${
+            Date.now() - startTime
+          }ms to complete`
+        )
+      );
     }
   };
