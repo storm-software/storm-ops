@@ -1,3 +1,10 @@
+## [1.2.8](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.7...config-tools-v1.2.8) (2023-12-03)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Ensure only storm env are written to build package ([16d7fc9](https://github.com/storm-software/storm-ops/commit/16d7fc90c831d89e0d79bc02683c8a3ad7af63ce))
+
 ## [1.2.7](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.6...config-tools-v1.2.7) (2023-12-03)
 
 
