@@ -31,7 +31,12 @@
         "skipTypeCheck": false,
         "metafile": true,
         "minify": false,
-        "format": ["esm", "cjs"],
+        "format": ["cjs"],
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".js"
+          }
+        },
         "external": [
           "@angular-devkit/core",
           "@angular-devkit/architect",

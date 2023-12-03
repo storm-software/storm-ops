@@ -29,7 +29,7 @@
     "url": "https://stormsoftware.org"
   },
   "type": "commonjs",
-  "main": "./index.cjs",
+  "main": "./index.js",
   "typings": "./index.d.ts",
   "dependencies": {
     "@anatine/esbuild-decorators": "^0.2.19",
