@@ -1,3 +1,10 @@
+## [1.14.2](https://github.com/storm-software/storm-ops/compare/git-tools-v1.14.1...git-tools-v1.14.2) (2023-12-03)
+
+
+### Bug Fixes
+
+* **config-tools:** Updated the `StormConfig` schema to properly type extensions and removed @decs/typeschema dependency ([40ed139](https://github.com/storm-software/storm-ops/commit/40ed13919f073da95cac183467accdcfc6c12270))
+
 ## [1.14.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.14.0...git-tools-v1.14.1) (2023-12-02)
 
 
