@@ -347,6 +347,13 @@ ${externalDependencies
 
     // #region Add default plugins
 
+    const stormEnv = Object.keys(options.env)
+      .filter(key => key.startsWith("STORM_"))
+      .reduce((ret, key) => {
+        ret[key] = options.env[key];
+        return ret;
+      }, {});
+
     options.plugins.push(await load());
     options.plugins.push(
       esbuildDecorators({
@@ -354,16 +361,7 @@ ${externalDependencies
         cwd: workspaceRoot
       })
     );
-    options.plugins.push(
-      environmentPlugin(
-        Object.keys(options.env)
-          .filter(key => key.startsWith("STORM_"))
-          .reduce((ret, key) => {
-            ret[key] = options.env[key];
-            return ret;
-          }, {})
-      )
-    );
+    options.plugins.push(environmentPlugin(stormEnv));
 
     // #endregion Add default plugins
 
@@ -371,6 +369,8 @@ ${externalDependencies
 
     const config = getConfig(context.root, projectRoot, sourceRoot, {
       ...options,
+      define: stormEnv,
+      env: stormEnv,
       dtsTsConfig: getNormalizedTsConfig(
         context.root,
         options.outputPath,
