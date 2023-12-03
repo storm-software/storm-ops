@@ -1,3 +1,13 @@
+## [1.12.6](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.12.5...testing-tools-v1.12.6) (2023-12-03)
+
+
+### Bug Fixes
+
+* **storm-ops:** Update pnpm-lock.yaml file ([74fe737](https://github.com/storm-software/storm-ops/commit/74fe737c2d43018c2c2a09d0489bdfc188b0e1ce))
+* **workspace-tools:** Remove pino logging esbuild plugin ([730de8c](https://github.com/storm-software/storm-ops/commit/730de8c5c49c1e1b360b961e23b3f462e9e58c1a))
+* **workspace-tools:** Resolved more issues with results display ([05d80d2](https://github.com/storm-software/storm-ops/commit/05d80d26e77e514a18101290f52398a970d260a7))
+* **workspace-tools:** Update all workspace chalk deps to version 4.1.0 ([b74a940](https://github.com/storm-software/storm-ops/commit/b74a940ee921981612a0ed1f951ce443f133dcd7))
+
 ## [1.12.5](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.12.4...testing-tools-v1.12.5) (2023-12-03)
 
 
