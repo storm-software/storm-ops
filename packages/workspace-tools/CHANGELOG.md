@@ -1,3 +1,10 @@
+## [1.21.12](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.11...workspace-tools-v1.21.12) (2023-12-03)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with output extensions ([9a64356](https://github.com/storm-software/storm-ops/commit/9a643562c629527f83c0d9cab2912cf498d55bb6))
+
 ## [1.21.11](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.10...workspace-tools-v1.21.11) (2023-12-03)
 
 
