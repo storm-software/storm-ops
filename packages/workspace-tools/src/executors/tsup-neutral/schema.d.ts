@@ -4,6 +4,6 @@ export type TsupNeutralExecutorSchema = Omit<
   TsupExecutorSchema,
   "env" | "platform"
 > & {
-  transports?: string[];
-  platform?: Platform;
+  transports: string[];
+  platform: Platform;
 };

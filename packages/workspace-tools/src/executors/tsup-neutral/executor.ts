@@ -1,5 +1,6 @@
 import { ExecutorContext } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config-tools";
+import esbuildPluginPino from "esbuild-plugin-pino";
 import { withRunExecutor } from "../../base/base-executor";
 import { getFileBanner } from "../../utils/get-file-banner";
 import {
@@ -13,7 +14,13 @@ export const tsNeutralBuildExecutorFn = (
   context: ExecutorContext,
   config?: StormConfig
 ) => {
-  options.plugins ??= [];
+  if (
+    options.transports &&
+    Array.isArray(options.transports) &&
+    options.transports.length > 0
+  ) {
+    options.plugins.push(esbuildPluginPino({ transports: options.transports }));
+  }
 
   return tsupExecutorFn(
     {
@@ -45,10 +52,14 @@ export const tsNeutralBuildExecutorFn = (
 const applyDefaultOptions = (
   options: TsupNeutralExecutorSchema
 ): TsupNeutralExecutorSchema => {
-  options = tsupApplyDefault({ ...options, platform: "neutral" });
-  options.plugins ??= [];
-
-  return options;
+  return {
+    ...tsupApplyDefault({
+      plugins: [],
+      ...options,
+      platform: "neutral"
+    }),
+    transports: ["pino-pretty"]
+  } as TsupNeutralExecutorSchema;
 };
 
 export default withRunExecutor<TsupNeutralExecutorSchema>(
