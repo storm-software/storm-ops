@@ -1,3 +1,10 @@
+## [1.21.16](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.15...workspace-tools-v1.21.16) (2023-12-04)
+
+
+### Bug Fixes
+
+* **config-tools:** Included types definition with package ([d4176fb](https://github.com/storm-software/storm-ops/commit/d4176fb1e3fdbff73261118377dd48d62ceaee52))
+
 ## [1.21.15](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.14...workspace-tools-v1.21.15) (2023-12-03)
 
 
