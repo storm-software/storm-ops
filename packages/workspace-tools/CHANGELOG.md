@@ -1,3 +1,10 @@
+## [1.21.15](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.14...workspace-tools-v1.21.15) (2023-12-03)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with passing incorrect config keys to tsup ([d8cd0f9](https://github.com/storm-software/storm-ops/commit/d8cd0f9b51af42575d923190ff9c85672214e0af))
+
 ## [1.21.14](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.13...workspace-tools-v1.21.14) (2023-12-03)
 
 
