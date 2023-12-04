@@ -26,6 +26,28 @@
             ".js": ".js"
           }
         },
+        "assets": [
+          {
+            "input": "./packages/config-tools",
+            "glob": "*.md",
+            "output": "."
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "."
+          },
+          {
+            "input": "./packages/config-tools",
+            "glob": "package.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/config-tools",
+            "glob": "declarations.d.ts",
+            "output": "."
+          }
+        ],
         "configurations": {
           "production": {
             "debug": false,
