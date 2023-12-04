@@ -1,3 +1,10 @@
+## [1.2.9](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.8...config-tools-v1.2.9) (2023-12-04)
+
+
+### Bug Fixes
+
+* **config-tools:** Included types definition with package ([d4176fb](https://github.com/storm-software/storm-ops/commit/d4176fb1e3fdbff73261118377dd48d62ceaee52))
+
 ## [1.2.8](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.7...config-tools-v1.2.8) (2023-12-03)
 
 
