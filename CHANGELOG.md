@@ -1,3 +1,10 @@
+## [1.16.8](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.16.7...@storm-software/storm-ops-v1.16.8) (2023-12-05)
+
+
+### Bug Fixes
+
+* **config-tools:** Update configuration types to allow any type of schema ([c79b428](https://github.com/storm-software/storm-ops/commit/c79b428057b6020c1a50e68dd6f753cf7ad133f5))
+
 ## [1.16.7](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.16.6...@storm-software/storm-ops-v1.16.7) (2023-12-03)
 
 
