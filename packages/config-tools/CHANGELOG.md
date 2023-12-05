@@ -1,3 +1,10 @@
+## [1.2.11](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.10...config-tools-v1.2.11) (2023-12-05)
+
+
+### Bug Fixes
+
+* **config-tools:** Update generic type used in `createStormConfig` function ([fe72f6d](https://github.com/storm-software/storm-ops/commit/fe72f6d52ca0ea02e15f07679ba5f0e824a228be))
+
 ## [1.2.10](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.9...config-tools-v1.2.10) (2023-12-05)
 
 
