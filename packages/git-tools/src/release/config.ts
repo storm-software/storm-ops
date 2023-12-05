@@ -22,7 +22,7 @@ export default {
   ],
   tagFormat: "${PROJECT_NAME}-v${version}",
   packageJsonDir: "${PROJECT_DIR}",
-  repositoryUrl: process.env.STORM_REPO_URL,
+  repositoryUrl: process.env.STORM_REPOSITORY,
   branches: [
     "main",
     "next",

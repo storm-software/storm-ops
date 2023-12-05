@@ -11,7 +11,7 @@ async function createProgram() {
     const { Command, Option } = await import("commander");
 
     const root = findWorkspaceRoot(process.cwd());
-    process.env.STORM_REPO_ROOT ??= root?.dir;
+    process.env.STORM_WORKSPACE_ROOT ??= root?.dir;
     process.env.NX_WORKSPACE_ROOT_PATH ??= root?.dir;
     root?.dir && process.chdir(root.dir);
 

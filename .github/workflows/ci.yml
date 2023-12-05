@@ -17,9 +17,9 @@ env:
   CI: true
   NX_DAEMON: false
   NX_VERBOSE_LOGGING: true
-  STORM_REPO_WORKER: stormie-bot
-  STORM_REPO_URL: https://github.com/storm-software/storm-ops
-  STORM_REPO_ROOT: ${{ github.workspace }}
+  STORM_WORKER: stormie-bot
+  STORM_REPOSITORY: https://github.com/storm-software/storm-ops
+  STORM_WORKSPACE_ROOT: ${{ github.workspace }}
   NX_BASE: ${{ github.base_ref }}
   NX_HEAD: ${{ github.head_ref }}
   GITHUB_ACTOR: ${{ github.actor }}
@@ -42,8 +42,8 @@ jobs:
 
       - name: configure git
         run: |
-          git config user.name "${{ env.STORM_REPO_WORKER }}"
-          git config user.email "${{ env.STORM_REPO_WORKER }}@users.noreply.github.com"
+          git config user.name "${{ env.STORM_WORKER }}"
+          git config user.email "${{ env.STORM_WORKER }}@users.noreply.github.com"
           git config lfs.allowincompletepush true
           npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
 
@@ -118,7 +118,7 @@ jobs:
           NPM_TOKEN: ${{ env.NPM_TOKEN }}
           NPM_AUTH_TOKEN: ${{ env.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{ env.NPM_TOKEN }}
-          STORM_REPO_WORKER: ${{ env.STORM_REPO_WORKER }}
-          STORM_REPO_ROOT: ${{ github.workspace }}
+          STORM_WORKER: ${{ env.STORM_WORKER }}
+          STORM_WORKSPACE_ROOT: ${{ github.workspace }}
           STORM_REPO_URL: ${{ github.repositoryUrl }}
           TAG: ${{ inputs.tag }}

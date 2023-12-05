@@ -10,7 +10,7 @@ function createProgram() {
   console.log("Running⚡Storm Linting Tools");
 
   const root = findWorkspaceRoot();
-  process.env.STORM_REPO_ROOT ??= root;
+  process.env.STORM_WORKSPACE_ROOT ??= root;
   process.env.NX_WORKSPACE_ROOT_PATH ??= root;
   root && process.chdir(root);
 
@@ -181,8 +181,8 @@ async function cspellAction(cspellConfig: string) {
       dot: true,
       debug: true,
       gitignore: true,
-      root: process.env["STORM_REPO_ROOT"]
-        ? process.env["STORM_REPO_ROOT"]
+      root: process.env["STORM_WORKSPACE_ROOT"]
+        ? process.env["STORM_WORKSPACE_ROOT"]
         : process.cwd(),
       defaultConfiguration: false,
       config: cspellConfig
@@ -299,7 +299,7 @@ export function workspaceRootInner(
   dir: string,
   candidateRoot: string | undefined
 ): string | undefined {
-  if (process.env.STORM_REPO_ROOT) return process.env.STORM_REPO_ROOT;
+  if (process.env.STORM_WORKSPACE_ROOT) return process.env.STORM_WORKSPACE_ROOT;
   if (path.dirname(dir) === dir) return candidateRoot;
 
   const matches = [path.join(dir, "pnpm-workspace.yaml")];

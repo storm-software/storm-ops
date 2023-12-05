@@ -93,9 +93,7 @@ export async function runRelease(
       projectGraph
     );
     for (const project of projects) {
-      console.log(
-        `!!!! Running release processing for project: ${project.name} !!!!`
-      );
+      console.log(`Running release processing for project: ${project.name}`);
 
       const result = await runProjectRelease(
         config,
@@ -104,9 +102,7 @@ export async function runRelease(
         project.name,
         plugin
       );
-      console.log(
-        `!!!! Completed release processing for project: ${project.name} !!!!`
-      );
+      console.log(`Completed release processing for project: ${project.name}`);
 
       results.push(result);
     }
@@ -162,8 +158,8 @@ export async function runProjectRelease(
   }
 
   config.packageJsonDir = projectConfig.root;
-  const workspaceDir = process.env.STORM_REPO_ROOT
-    ? process.env.STORM_REPO_ROOT
+  const workspaceDir = process.env.STORM_WORKSPACE_ROOT
+    ? process.env.STORM_WORKSPACE_ROOT
     : process.cwd();
 
   if (!workspaceDir) {
@@ -251,12 +247,10 @@ function prepareEnv(
 ) {
   const authorName = env.GITHUB_ACTOR
     ? env.GITHUB_ACTOR
-    : env.STORM_REPO_WORKER
-    ? env.STORM_REPO_WORKER
-    : env.STORM_REPO_OWNER;
-  const committerName = env.STORM_REPO_WORKER
-    ? env.STORM_REPO_WORKER
-    : env.STORM_REPO_OWNER;
+    : env.STORM_WORKER
+    ? env.STORM_WORKER
+    : env.STORM_OWNER;
+  const committerName = env.STORM_WORKER ? env.STORM_WORKER : env.STORM_OWNER;
 
   return Object.assign(env, {
     CI: true,
@@ -267,6 +261,6 @@ function prepareEnv(
     ...env,
     STORM_REPO_URL: context.workspaceDir
       ? context.workspaceDir
-      : env.STORM_REPO_URL
+      : env.STORM_REPOSITORY
   });
 }

@@ -19,11 +19,9 @@ const getNpmPlugin = (options: ReleaseConfig) => {
     ? path.join(options.workspaceDir, options.outputPath, "package.json")
     : undefined;
 
-  console.log(`!!!! workspaceDir: ${options.workspaceDir}`);
-  console.log(`!!!! buildPkgRoot: ${buildPkgRoot}`);
-  console.log(`!!!! outputPath: ${options.outputPath}`);
-  console.log(`!!!! projectPkgPath: ${projectPkgPath}`);
-  console.log(`!!!! packageJsonDir: ${options.packageJsonDir}`);
+  console.log(
+    `⚙️  Release Options: \nworkspaceDir: ${options.workspaceDir} \nbuildPkgRoot: ${buildPkgRoot} \noutputPath: ${options.outputPath} \nprojectPkgPath: ${projectPkgPath} \npackageJsonDir: ${options.packageJsonDir}`
+  );
 
   const plugins = [];
   if (buildPkgRoot && fs.existsSync(buildPkgRoot)) {

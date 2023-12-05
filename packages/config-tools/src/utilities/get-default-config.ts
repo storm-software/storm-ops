@@ -88,7 +88,7 @@ export const getDefaultConfig = (
 
 const getWorkspaceRoot = () => {
   const root = findWorkspaceRoot(process.cwd());
-  process.env.STORM_REPO_ROOT ??= root?.dir;
+  process.env.STORM_WORKSPACE_ROOT ??= root?.dir;
   process.env.NX_WORKSPACE_ROOT_PATH ??= root?.dir;
 
   return root?.dir;

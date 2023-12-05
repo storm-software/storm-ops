@@ -129,8 +129,8 @@ export async function runManypkg(
   }
 
   const { packages, rootPackage, rootDir } = (await getPackages(
-    process.env["STORM_REPO_ROOT"]
-      ? process.env["STORM_REPO_ROOT"]
+    process.env["STORM_WORKSPACE_ROOT"]
+      ? process.env["STORM_WORKSPACE_ROOT"]
       : process.cwd()
   )) as PackagesWithConfig;
 
