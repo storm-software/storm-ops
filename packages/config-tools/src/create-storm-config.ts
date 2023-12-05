@@ -14,7 +14,7 @@ let _static_cache: StormConfig | undefined = undefined;
 export const createStormConfig = <
   TExtensionName extends
     keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
-  TExtensionConfig extends Record<string, any> = Record<string, any>,
+  TExtensionConfig extends any = any,
   TExtensionSchema extends
     z.ZodType<TExtensionConfig> = z.ZodType<TExtensionConfig>
 >(
@@ -59,7 +59,7 @@ export const createStormConfig = <
 export const createConfigExtension = <
   TExtensionName extends
     keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
-  TExtensionConfig extends Record<string, any> = Record<string, any>,
+  TExtensionConfig extends any = any,
   TExtensionSchema extends
     z.ZodType<TExtensionConfig> = z.ZodType<TExtensionConfig>
 >(
