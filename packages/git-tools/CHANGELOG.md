@@ -1,3 +1,10 @@
+## [1.14.6](https://github.com/storm-software/storm-ops/compare/git-tools-v1.14.5...git-tools-v1.14.6) (2023-12-05)
+
+
+### Bug Fixes
+
+* **config-tools:** Update configuration types to allow any type of schema ([c79b428](https://github.com/storm-software/storm-ops/commit/c79b428057b6020c1a50e68dd6f753cf7ad133f5))
+
 ## [1.14.5](https://github.com/storm-software/storm-ops/compare/git-tools-v1.14.4...git-tools-v1.14.5) (2023-12-03)
 
 
