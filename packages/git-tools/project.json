@@ -31,11 +31,10 @@
         "thirdParty": true,
         "format": ["esm"],
         "external": [
+          "nx",
           "@swc/wasm",
           "@swc/core",
-          "nx",
-          "@angular-devkit/architect",
-          "semantic-release"
+          "@angular-devkit/architect"
         ],
         "esbuildOptions": {
           "banner": {

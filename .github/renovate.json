@@ -26,7 +26,7 @@
       "enabled": true
     },
     {
-      "matchPackagePatterns": ["tsup", "chalk"],
+      "matchPackagePatterns": ["tsup", "chalk", "semantic-release"],
       "enabled": false
     },
     {
