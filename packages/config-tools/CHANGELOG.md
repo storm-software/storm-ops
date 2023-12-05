@@ -1,3 +1,13 @@
+## [1.2.12](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.11...config-tools-v1.2.12) (2023-12-05)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue in `semantic-release` patch with module directory ([a04aa3a](https://github.com/storm-software/storm-ops/commit/a04aa3add212abc781392d1227122a790b2f004e))
+* **git-tools:** Resolved issue with patched semantic-release bundled path ([93b4e43](https://github.com/storm-software/storm-ops/commit/93b4e439bf19a888db1b35554b32b9aec3cc3acd))
+* **git-tools:** Update the env used by packages to match new config updates ([d3b7dac](https://github.com/storm-software/storm-ops/commit/d3b7dac057a04aff9e0170d89cedc4cb47c584e5))
+* **git-tools:** Updated `semantic-release` patch to properly check for plugins ([4e3db96](https://github.com/storm-software/storm-ops/commit/4e3db96814e8abb5cb22d9bfb5c747f042c43157))
+
 ## [1.2.11](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.10...config-tools-v1.2.11) (2023-12-05)
 
 
