@@ -27,8 +27,7 @@ declare function createStormConfig<
   TExtensionName extends
     keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
   TExtensionConfig extends any = any,
-  TExtensionSchema extends
-    z.ZodType<TExtensionConfig> = z.ZodType<TExtensionConfig>
+  TExtensionSchema extends z.ZodTypeAny = z.ZodTypeAny
 >(
   extensionName?: TExtensionName,
   schema?: TExtensionSchema
