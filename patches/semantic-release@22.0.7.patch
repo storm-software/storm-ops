@@ -1,5 +1,5 @@
 diff --git a/lib/get-config.js b/lib/get-config.js
-index aa119f302d147ac12960871ad8150623bc089911..abc946c3f2749ce4f416d187d4826ad9d37fffcb 100644
+index aa119f302d147ac12960871ad8150623bc089911..5f021b44636a0c5c8275af1231d5e093b8035618 100644
 --- a/lib/get-config.js
 +++ b/lib/get-config.js
 @@ -1,5 +1,6 @@
@@ -37,3 +37,22 @@ index aa119f302d147ac12960871ad8150623bc089911..abc946c3f2749ce4f416d187d4826ad9
  
          // For each plugin defined in a shareable config, save in `pluginsPath` the extendable config path,
          // so those plugin will be loaded relative to the config file
+@@ -51,11 +43,17 @@ export default async (context, cliOptions) => {
+           .filter(([, value]) => Boolean(value))
+           .reduce((pluginsPath, [option, value]) => {
+             castArray(value).forEach((plugin) => {
++              console.info("Processing Plugin:\n");
++              console.info(plugin);
++              
+               if (option === "plugins" && validatePlugin(plugin)) {
+                 pluginsPath[parseConfig(plugin)[0]] = extendPath;
+               } else if (
+                 PLUGINS_DEFINITIONS[option] &&
+-                (isString(plugin) || (isPlainObject(plugin) && isString(plugin.path)))
++                (plugin && 
++                  (isString(plugin) || 
++                    (isPlainObject(plugin) && 
++                    isString(plugin.path))))
+               ) {
+                 pluginsPath[isString(plugin) ? plugin : plugin.path] = extendPath;
+               }
