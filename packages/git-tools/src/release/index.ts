@@ -157,6 +157,16 @@ export async function runProjectRelease(
     });
   }
 
+  if (projectConfig.root === ".") {
+    console.warn(
+      `✘ Skipping release for workspace root project - ${projectName}`
+    );
+    return {
+      commits: [],
+      releases: []
+    };
+  }
+
   config.packageJsonDir = projectConfig.root;
   const workspaceDir = process.env.STORM_WORKSPACE_ROOT
     ? process.env.STORM_WORKSPACE_ROOT
