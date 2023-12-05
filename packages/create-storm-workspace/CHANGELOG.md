@@ -1,3 +1,10 @@
+## [1.21.18](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.21.17...create-storm-workspace-v1.21.18) (2023-12-05)
+
+
+### Bug Fixes
+
+* **config-tools:** Update generic type used in `createStormConfig` function ([fe72f6d](https://github.com/storm-software/storm-ops/commit/fe72f6d52ca0ea02e15f07679ba5f0e824a228be))
+
 ## [1.21.17](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.21.16...create-storm-workspace-v1.21.17) (2023-12-05)
 
 
