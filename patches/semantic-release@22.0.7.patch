@@ -1,3 +1,24 @@
+diff --git a/index.js b/index.js
+index 67877fb4b347a5e7c9a0b221a6447fa3d2ab2e95..c557f71d7179b1dd1f4a827ca9de0fb872e6ceb0 100644
+--- a/index.js
++++ b/index.js
+@@ -21,7 +21,6 @@ import getError from "./lib/get-error.js";
+ import { COMMIT_EMAIL, COMMIT_NAME } from "./lib/definitions/constants.js";
+ 
+ const require = createRequire(import.meta.url);
+-const pkg = require("./package.json");
+ 
+ let markedOptionsSet = false;
+ async function terminalOutput(text) {
+@@ -266,7 +265,7 @@ export default async (cliOptions = {}, { cwd = process.cwd(), env = process.env,
+     envCi: envCi({ env, cwd }),
+   };
+   context.logger = getLogger(context);
+-  context.logger.log(`Running ${pkg.name} version ${pkg.version}`);
++  context.logger.log(`Running Storm Semantic Release version 22.0.7`);
+   try {
+     const { plugins, options } = await getConfig(context, cliOptions);
+     options.originalRepositoryURL = options.repositoryUrl;
 diff --git a/lib/definitions/errors.js b/lib/definitions/errors.js
 index 9df955dd7d276ed95ee8b9583d3ee7a9612c5b31..b91aea12d1229abaa91702a7c246bd6906ba901f 100644
 --- a/lib/definitions/errors.js
