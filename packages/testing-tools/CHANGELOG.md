@@ -1,3 +1,12 @@
+## [1.12.9](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.12.8...testing-tools-v1.12.9) (2023-12-05)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue in `semantic-release` patch with module directory ([a04aa3a](https://github.com/storm-software/storm-ops/commit/a04aa3add212abc781392d1227122a790b2f004e))
+* **git-tools:** Resolved issue with patched semantic-release bundled path ([93b4e43](https://github.com/storm-software/storm-ops/commit/93b4e439bf19a888db1b35554b32b9aec3cc3acd))
+* **git-tools:** Updated `semantic-release` patch to properly check for plugins ([4e3db96](https://github.com/storm-software/storm-ops/commit/4e3db96814e8abb5cb22d9bfb5c747f042c43157))
+
 ## [1.12.8](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.12.7...testing-tools-v1.12.8) (2023-12-05)
 
 
