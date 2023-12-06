@@ -1,3 +1,10 @@
+## [1.15.10](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.15.9...linting-tools-v1.15.10) (2023-12-06)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad options passed into base TS library generator ([aeff286](https://github.com/storm-software/storm-ops/commit/aeff286fba411b47c205f3d13cefb425b2c1a977))
+
 ## [1.15.9](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.15.8...linting-tools-v1.15.9) (2023-12-05)
 
 
