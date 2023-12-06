@@ -12,7 +12,6 @@ import {
   normalizeOptions,
   typeScriptLibraryGeneratorFn
 } from "../../base/typescript-library-generator";
-import { typesNodeVersion } from "../../utils/versions";
 import { NeutralLibraryGeneratorSchema } from "./schema";
 
 export async function neutralLibraryGeneratorFn(
@@ -22,11 +21,9 @@ export async function neutralLibraryGeneratorFn(
   const filesDir = joinPathFragments(__dirname, "./files");
   const tsLibraryGeneratorOptions: TypeScriptLibraryGeneratorSchema = {
     ...schema,
-    platform: "node",
-    devDependencies: {
-      "@types/node": typesNodeVersion
-    },
-    buildExecutor: "@storm-software/workspace-tools:tsup-node"
+    platform: "neutral",
+    devDependencies: {},
+    buildExecutor: "@storm-software/workspace-tools:tsup-neutral"
   };
 
   const options = await normalizeOptions(tree, tsLibraryGeneratorOptions);
