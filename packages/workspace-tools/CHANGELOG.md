@@ -1,3 +1,10 @@
+## [1.22.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.22.0...workspace-tools-v1.22.1) (2023-12-06)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad options passed into base TS library generator ([aeff286](https://github.com/storm-software/storm-ops/commit/aeff286fba411b47c205f3d13cefb425b2c1a977))
+
 # [1.22.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.19...workspace-tools-v1.22.0) (2023-12-06)
 
 
