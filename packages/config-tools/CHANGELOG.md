@@ -1,3 +1,10 @@
+## [1.2.13](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.12...config-tools-v1.2.13) (2023-12-06)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad options passed into base TS library generator ([aeff286](https://github.com/storm-software/storm-ops/commit/aeff286fba411b47c205f3d13cefb425b2c1a977))
+
 ## [1.2.12](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.11...config-tools-v1.2.12) (2023-12-05)
 
 
