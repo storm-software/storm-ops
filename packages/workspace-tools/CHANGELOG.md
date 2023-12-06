@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.19...workspace-tools-v1.22.0) (2023-12-06)
+
+
+### Features
+
+* **workspace-tools:** Added the new Neutral TypeScript Library generator ([bc8aed7](https://github.com/storm-software/storm-ops/commit/bc8aed721cac28a20a8e320042a3c9288b38bf39))
+
 ## [1.21.19](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.21.18...workspace-tools-v1.21.19) (2023-12-05)
 
 
