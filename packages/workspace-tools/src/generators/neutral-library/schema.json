@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "$id": "node-library",
-  "title": "Add Node Library",
-  "description": "Create a new NodeJs TypeScript library package in the Storm workspace",
+  "$id": "neutral-library",
+  "title": "Add Neutral Library",
+  "description": "Create a new Neutral TypeScript library package in the Storm workspaces",
   "type": "object",
   "properties": {
     "name": {

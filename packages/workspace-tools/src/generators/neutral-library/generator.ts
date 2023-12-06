@@ -13,11 +13,11 @@ import {
   typeScriptLibraryGeneratorFn
 } from "../../base/typescript-library-generator";
 import { typesNodeVersion } from "../../utils/versions";
-import { NodeLibraryGeneratorSchema } from "./schema";
+import { NeutralLibraryGeneratorSchema } from "./schema";
 
-export async function nodeLibraryGeneratorFn(
+export async function neutralLibraryGeneratorFn(
   tree: Tree,
-  schema: NodeLibraryGeneratorSchema
+  schema: NeutralLibraryGeneratorSchema
 ) {
   const filesDir = joinPathFragments(__dirname, "./files");
   const tsLibraryGeneratorOptions: TypeScriptLibraryGeneratorSchema = {
@@ -57,7 +57,7 @@ export async function nodeLibraryGeneratorFn(
   return null;
 }
 
-export default withRunGenerator<NodeLibraryGeneratorSchema>(
-  "TypeScript Build (NodeJs Platform)",
-  nodeLibraryGeneratorFn
+export default withRunGenerator<NeutralLibraryGeneratorSchema>(
+  "TypeScript Build (Neutral Platform)",
+  neutralLibraryGeneratorFn
 );

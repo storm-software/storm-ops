@@ -20,17 +20,17 @@ export type TsupExecutorSchema = Omit<
   | "platform"
 > & {
   entry: string;
-  options: Options;
-  clean: boolean;
-  debug: boolean;
+  options?: Options;
+  clean?: boolean;
+  debug?: boolean;
   banner?: string;
-  verbose: boolean;
+  verbose?: boolean;
   define?: Record<string, string>;
   env?: Record<string, string>;
   apiReport?: boolean;
   docModel?: boolean;
   tsdocMetadata?: boolean;
   includeSrc?: boolean;
-  platform: Platform;
-  plugins: any[];
+  platform?: Platform;
+  plugins?: any[];
 };
