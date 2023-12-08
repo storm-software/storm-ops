@@ -33,6 +33,8 @@ export function modernConfig({
   projectRoot,
   workspaceRoot,
   tsconfig = "tsconfig.json",
+  splitting,
+  treeshake,
   debug = false,
   external,
   banner = {},
@@ -65,6 +67,12 @@ export function modernConfig({
           ]
         : ["esnext", "node18"],
     tsconfig,
+    splitting,
+    treeshake: treeshake
+      ? {
+          preset: "recommended"
+        }
+      : false,
     projectRoot,
     workspaceRoot,
     outDir: outputPath,
@@ -111,6 +119,8 @@ export function legacyConfig({
   projectRoot,
   workspaceRoot,
   tsconfig = "tsconfig.json",
+  splitting,
+  treeshake,
   debug = false,
   external,
   banner = {},
@@ -129,6 +139,12 @@ export function legacyConfig({
     format: platform !== "node" ? ["cjs", "esm", "iife"] : ["cjs", "esm"],
     target: ["es2022", "node18"],
     tsconfig,
+    splitting,
+    treeshake: treeshake
+      ? {
+          preset: "recommended"
+        }
+      : false,
     projectRoot,
     workspaceRoot,
     outDir: outputPath,
@@ -175,6 +191,8 @@ export function workerConfig({
   projectRoot,
   workspaceRoot,
   tsconfig = "tsconfig.json",
+  splitting,
+  treeshake,
   debug = false,
   external,
   banner = {},
@@ -187,6 +205,8 @@ export function workerConfig({
   plugins,
   dtsTsConfig
 }: GetConfigParams) {
+  let outputPath = join(outDir, "dist");
+
   return {
     name: "worker",
     entry,
@@ -194,9 +214,15 @@ export function workerConfig({
     target: ["chrome95"],
     bundle: true,
     tsconfig,
+    splitting,
+    treeshake: treeshake
+      ? {
+          preset: "recommended"
+        }
+      : false,
     projectRoot,
     workspaceRoot,
-    outDir: join(outDir, "dist"),
+    outDir: outputPath,
     silent: !verbose,
     metafile: true,
     shims: false,
@@ -212,7 +238,7 @@ export function workerConfig({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: join(outDir, "dist")
+          outDir: outputPath
         }
       }
     },
@@ -241,20 +267,8 @@ export function getConfig(
   {
     outputPath,
     tsConfig,
-    debug,
-    banner,
-    platform,
-    external,
-    options,
     additionalEntryPoints,
-    apiReport,
-    docModel,
-    tsdocMetadata,
-    define,
-    env,
-    verbose,
-    dtsTsConfig,
-    plugins,
+    platform,
     ...rest
   }: TsupGetConfigOptions
 ) {
@@ -286,24 +300,14 @@ export function getConfig(
   }, {});
 
   const params = {
+    ...rest,
     entry,
     outDir: outputPath,
-    projectRoot,
-    workspaceRoot,
     tsconfig: tsConfig,
-    debug,
-    banner,
-    platform,
-    external,
-    verbose,
-    apiReport,
-    docModel,
-    tsdocMetadata,
-    define,
-    env,
-    options,
-    plugins,
-    dtsTsConfig
+    workspaceRoot,
+    projectRoot,
+    sourceRoot,
+    platform
   };
 
   if (platform === "worker") {

@@ -33,4 +33,6 @@ export type TsupExecutorSchema = Omit<
   includeSrc?: boolean;
   platform?: Platform;
   plugins?: any[];
+  splitting?: boolean;
+  treeshake?: boolean;
 };

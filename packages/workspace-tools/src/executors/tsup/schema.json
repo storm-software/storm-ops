@@ -69,7 +69,17 @@
     "includeSrc": {
       "type": "boolean",
       "description": "Should the source files be added to the distribution folder in an `src` directory.",
-      "default": false
+      "default": true
+    },
+    "splitting": {
+      "type": "boolean",
+      "description": "Should the build process preform *code-splitting*?",
+      "default": true
+    },
+    "treeshake": {
+      "type": "boolean",
+      "description": "Should the build process *tree-shake* to remove unused code?",
+      "default": true
     },
     "debug": {
       "type": "boolean",
