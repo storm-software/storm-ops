@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { esbuildDecorators } from "@anatine/esbuild-decorators";
-import { ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devkit";
+import {
+  ExecutorContext,
+  joinPathFragments,
+  readCachedProjectGraph,
+  readJsonFile
+} from "@nx/devkit";
 import { getExtraDependencies } from "@nx/esbuild/src/executors/esbuild/lib/get-extra-dependencies";
 import { copyAssets } from "@nx/js";
 import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options";
@@ -13,7 +18,6 @@ import { readFileSync, writeFileSync } from "fs";
 import { removeSync } from "fs-extra";
 import { writeFile } from "fs/promises";
 import { globSync } from "glob";
-import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
 import { fileExists } from "nx/src/utils/fileutils";
 import { dirname, join } from "path";
 import { Options as PrettierOptions, format } from "prettier";
@@ -183,8 +187,7 @@ ${externalDependencies
       }
     }
 
-    const projectGraph = await buildProjectGraphWithoutDaemon();
-
+    const projectGraph = readCachedProjectGraph();
     const pathToPackageJson = join(context.root, projectRoot, "package.json");
     const packageJson = fileExists(pathToPackageJson)
       ? readJsonFile(pathToPackageJson)
