@@ -7,7 +7,7 @@
  */
 export const getFileBanner = (name: string, commentStart = "//") => {
   let padding = "";
-  while (name.length + padding.length < 18) {
+  while (name.length + padding.length < 12) {
     padding += " ";
   }
 

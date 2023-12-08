@@ -16,7 +16,7 @@ import { globSync } from "glob";
 import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph";
 import { fileExists } from "nx/src/utils/fileutils";
 import { dirname, join } from "path";
-import { format } from "prettier";
+import { Options as PrettierOptions, format } from "prettier";
 import { Options, build as tsup } from "tsup";
 import * as ts from "typescript";
 import { withRunExecutor } from "../../base/base-executor";
@@ -300,22 +300,26 @@ ${externalDependencies
     );
     console.log(`⚡ Writing package.json file to: ${packageJsonPath}`);
 
+    const prettierOptions: PrettierOptions = {
+      plugins: ["prettier-plugin-packagejson"],
+      trailingComma: "none",
+      tabWidth: 2,
+      semi: true,
+      singleQuote: false,
+      quoteProps: "preserve",
+      insertPragma: false,
+      bracketSameLine: true,
+      printWidth: 80,
+      bracketSpacing: true,
+      arrowParens: "avoid",
+      endOfLine: "lf"
+    };
+
     writeFileSync(
       packageJsonPath,
       await format(JSON.stringify(packageJson), {
-        plugins: ["prettier-plugin-packagejson"],
-        parser: "json",
-        trailingComma: "none",
-        tabWidth: 2,
-        semi: true,
-        singleQuote: false,
-        quoteProps: "preserve",
-        insertPragma: false,
-        bracketSameLine: true,
-        printWidth: 80,
-        bracketSpacing: true,
-        arrowParens: "avoid",
-        endOfLine: "lf"
+        ...prettierOptions,
+        parser: "json"
       })
     );
 
@@ -327,16 +331,22 @@ ${externalDependencies
         joinPathFragments(context.root, options.outputPath, "src/**/*.jsx")
       ]);
       await Promise.allSettled(
-        files.map(file =>
+        files.map(async file =>
           writeFile(
             file,
-            `${
-              options.banner
-                ? options.banner.startsWith("//")
-                  ? options.banner
-                  : `// ${options.banner}`
-                : ""
-            }\n\n${readFileSync(file, "utf-8")}`,
+            await format(
+              `${
+                options.banner
+                  ? options.banner.startsWith("//")
+                    ? options.banner
+                    : `// ${options.banner}`
+                  : ""
+              }\n\n${readFileSync(file, "utf-8")}`,
+              {
+                ...prettierOptions,
+                parser: "typescript"
+              }
+            ),
             "utf-8"
           )
         )
