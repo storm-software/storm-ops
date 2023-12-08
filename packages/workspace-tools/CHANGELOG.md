@@ -1,3 +1,10 @@
+## [1.22.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.22.1...workspace-tools-v1.22.2) (2023-12-07)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update `includeSrc` default to `false` in tsup build executors ([ec6ac7c](https://github.com/storm-software/storm-ops/commit/ec6ac7cd84f3a4eb638d938bafb9cf495342bbb0))
+
 ## [1.22.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.22.0...workspace-tools-v1.22.1) (2023-12-06)
 
 
