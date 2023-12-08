@@ -1,3 +1,15 @@
+# [1.23.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.22.2...create-storm-workspace-v1.23.0) (2023-12-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Clean up default banner output in `src` folder with `prettier` formatting ([6773d04](https://github.com/storm-software/storm-ops/commit/6773d045109b002b4f2920d48bdb5b6dd150fb43))
+
+
+### Features
+
+* **workspace-tools:** Added the `splitting` and `treeShake` options to build executor ([fe58fd9](https://github.com/storm-software/storm-ops/commit/fe58fd96fab02c288a12861564e625a7eac56076))
+
 ## [1.22.2](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.22.1...create-storm-workspace-v1.22.2) (2023-12-07)
 
 
