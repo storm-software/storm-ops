@@ -1,3 +1,10 @@
+## [1.14.9](https://github.com/storm-software/storm-ops/compare/git-tools-v1.14.8...git-tools-v1.14.9) (2023-12-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the tsup build executor to use the daemon for getting the ProjectGraph ([0e3a598](https://github.com/storm-software/storm-ops/commit/0e3a598fb0b20008b8321a174dfb861590a6a9de))
+
 ## [1.14.8](https://github.com/storm-software/storm-ops/compare/git-tools-v1.14.7...git-tools-v1.14.8) (2023-12-06)
 
 

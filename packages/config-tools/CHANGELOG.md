@@ -1,3 +1,10 @@
+## [1.2.14](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.13...config-tools-v1.2.14) (2023-12-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the tsup build executor to use the daemon for getting the ProjectGraph ([0e3a598](https://github.com/storm-software/storm-ops/commit/0e3a598fb0b20008b8321a174dfb861590a6a9de))
+
 ## [1.2.13](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.12...config-tools-v1.2.13) (2023-12-06)
 
 

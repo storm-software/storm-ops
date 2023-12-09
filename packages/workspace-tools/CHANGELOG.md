@@ -1,3 +1,10 @@
+## [1.23.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.23.0...workspace-tools-v1.23.1) (2023-12-08)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the tsup build executor to use the daemon for getting the ProjectGraph ([0e3a598](https://github.com/storm-software/storm-ops/commit/0e3a598fb0b20008b8321a174dfb861590a6a9de))
+
 # [1.23.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.22.2...workspace-tools-v1.23.0) (2023-12-08)
 
 
