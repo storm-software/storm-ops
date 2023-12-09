@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.14...config-tools-v1.3.0) (2023-12-09)
+
+
+### Features
+
+* **workspace-tools:** Added `esbuild-plugin-handlebars` plugin ([5859957](https://github.com/storm-software/storm-ops/commit/5859957a0b0fff43099a7b821d721fa6625429e0))
+
 ## [1.2.14](https://github.com/storm-software/storm-ops/compare/config-tools-v1.2.13...config-tools-v1.2.14) (2023-12-08)
 
 
