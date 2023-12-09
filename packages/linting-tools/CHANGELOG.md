@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.15.11...linting-tools-v1.16.0) (2023-12-09)
+
+
+### Features
+
+* **workspace-tools:** Added `esbuild-plugin-handlebars` plugin ([5859957](https://github.com/storm-software/storm-ops/commit/5859957a0b0fff43099a7b821d721fa6625429e0))
+
 ## [1.15.11](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.15.10...linting-tools-v1.15.11) (2023-12-08)
 
 
