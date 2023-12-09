@@ -95,13 +95,13 @@ export function modernConfig({
         }
       }
     },
-    minify: debug ? false : "terser",
+    /*minify: debug ? false : "terser",
     terserOptions: {
       compress: true,
       ecma: 2020,
       keep_classnames: true,
       keep_fnames: true
-    },
+    },*/
     apiReport,
     docModel,
     tsdocMetadata,
@@ -167,13 +167,13 @@ export function legacyConfig({
         }
       }
     },
-    minify: debug ? false : "terser",
+    /*minify: debug ? false : "terser",
     terserOptions: {
       compress: true,
       ecma: 2020,
       keep_classnames: true,
       keep_fnames: true
-    },
+    },*/
     apiReport: false,
     docModel: false,
     tsdocMetadata: false,
@@ -242,13 +242,13 @@ export function workerConfig({
         }
       }
     },
-    minify: debug ? false : "terser",
+    /*minify: debug ? false : "terser",
     terserOptions: {
       compress: true,
       ecma: 2020,
       keep_classnames: true,
       keep_fnames: true
-    },
+    },*/
     apiReport,
     docModel,
     tsdocMetadata,

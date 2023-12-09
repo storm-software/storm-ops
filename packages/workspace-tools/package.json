@@ -40,6 +40,7 @@
     "chalk": "4.1.0",
     "decky": "^1.1.1",
     "esbuild-plugin-environment": "^0.3.0",
+    "esbuild-plugin-handlebars": "^1.0.2",
     "esbuild-plugin-pino": "^2.1.0",
     "fs-extra": "^11.1.1",
     "glob": "^10.3.10",
