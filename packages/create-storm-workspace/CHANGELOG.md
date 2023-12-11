@@ -1,3 +1,10 @@
+## [1.24.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.24.0...create-storm-workspace-v1.24.1) (2023-12-11)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad nx.json config ([1753feb](https://github.com/storm-software/storm-ops/commit/1753febc615fa341af86d49981905221153dbcfb))
+
 # [1.24.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.23.1...create-storm-workspace-v1.24.0) (2023-12-09)
 
 
