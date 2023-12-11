@@ -1,3 +1,10 @@
+# [1.25.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.24.2...create-storm-workspace-v1.25.0) (2023-12-11)
+
+
+### Features
+
+* **workspace-tools:** Added the `generatePackageJson` option to tsup build ([c067c9b](https://github.com/storm-software/storm-ops/commit/c067c9baaf639b8e508e5fdc2789da2f8378c4b8))
+
 ## [1.24.2](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.24.1...create-storm-workspace-v1.24.2) (2023-12-11)
 
 
