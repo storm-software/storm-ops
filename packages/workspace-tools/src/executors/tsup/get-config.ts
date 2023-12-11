@@ -46,6 +46,7 @@ export function modernConfig({
   define,
   env,
   plugins,
+  generatePackageJson,
   dtsTsConfig
 }: GetConfigParams) {
   let outputPath = join(outDir, "dist", "modern");
@@ -68,6 +69,7 @@ export function modernConfig({
         : ["esnext", "node18"],
     tsconfig,
     splitting,
+    generatePackageJson,
     treeshake: treeshake
       ? {
           preset: "recommended"
@@ -129,6 +131,7 @@ export function legacyConfig({
   define,
   env,
   plugins,
+  generatePackageJson,
   dtsTsConfig
 }: GetConfigParams) {
   let outputPath = join(outDir, "dist", "legacy");
@@ -140,6 +143,7 @@ export function legacyConfig({
     target: ["es2022", "node18"],
     tsconfig,
     splitting,
+    generatePackageJson,
     treeshake: treeshake
       ? {
           preset: "recommended"
@@ -203,6 +207,7 @@ export function workerConfig({
   define,
   env,
   plugins,
+  generatePackageJson,
   dtsTsConfig
 }: GetConfigParams) {
   let outputPath = join(outDir, "dist");
@@ -215,6 +220,7 @@ export function workerConfig({
     bundle: true,
     tsconfig,
     splitting,
+    generatePackageJson,
     treeshake: treeshake
       ? {
           preset: "recommended"

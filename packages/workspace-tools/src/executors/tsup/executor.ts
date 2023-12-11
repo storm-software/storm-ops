@@ -105,6 +105,14 @@ ${Object.keys(options)
       output: "."
     });
 
+    if (options.generatePackageJson === false) {
+      assets.push({
+        input: projectRoot,
+        glob: "**/package.json",
+        output: "."
+      });
+    }
+
     if (options.includeSrc !== false) {
       assets.push({
         input: sourceRoot,
@@ -187,122 +195,6 @@ ${externalDependencies
       }
     }
 
-    const projectGraph = readCachedProjectGraph();
-    const pathToPackageJson = join(context.root, projectRoot, "package.json");
-    const packageJson = fileExists(pathToPackageJson)
-      ? readJsonFile(pathToPackageJson)
-      : { name: context.projectName, version: "0.0.1" };
-
-    delete packageJson.dependencies;
-    externalDependencies.forEach(entry => {
-      const packageConfig = entry.node.data as PackageConfiguration;
-      if (
-        packageConfig?.packageName &&
-        (!!(projectGraph.externalNodes[entry.node.name]?.type === "npm") ||
-          !!projectGraph.nodes[entry.node.name])
-      ) {
-        const { packageName, version } = packageConfig;
-        /*if (
-          packageJson.dependencies?.[packageName] ||
-          packageJson.devDependencies?.[packageName] ||
-          packageJson.peerDependencies?.[packageName]
-        ) {
-          return;
-        }*/
-
-        if (
-          workspacePackageJson.dependencies?.[packageName] ||
-          workspacePackageJson.devDependencies?.[packageName]
-        ) {
-          return;
-        }
-
-        packageJson.dependencies ??= {};
-        packageJson.dependencies[packageName] = !!projectGraph.nodes[
-          entry.node.name
-        ]
-          ? "latest"
-          : version;
-      }
-    });
-
-    packageJson.type = "module";
-    packageJson.exports ??= {
-      ".": {
-        import: {
-          types: "./dist/modern/index.d.ts",
-          default: "./dist/modern/index.js"
-        },
-        require: {
-          types: "./dist/modern/index.d.cts",
-          default: "./dist/modern/index.cjs"
-        },
-        ...(options.additionalEntryPoints ?? []).map(entryPoint => ({
-          [removeExtension(entryPoint).replace(sourceRoot, "")]: {
-            types: join(
-              "./dist/modern",
-              `${removeExtension(entryPoint.replace(sourceRoot, ""))}.d.ts`
-            ),
-            default: join(
-              "./dist/modern",
-              `${removeExtension(entryPoint.replace(sourceRoot, ""))}.js`
-            )
-          }
-        }))
-      },
-      "./package.json": "./package.json"
-    };
-
-    packageJson.funding ??= workspacePackageJson.funding;
-
-    packageJson.types ??= "dist/legacy/index.d.ts";
-    packageJson.main ??= "dist/legacy/index.cjs";
-    packageJson.module ??= "dist/legacy/index.js";
-    options.platform &&
-      options.platform !== "node" &&
-      (packageJson.browser ??= "dist/modern/index.global.js");
-
-    if (options.includeSrc !== false) {
-      let distSrc = sourceRoot.replace(projectRoot, "");
-      if (distSrc.startsWith("/")) {
-        distSrc = distSrc.substring(1);
-      }
-
-      packageJson.source ??= `${join(distSrc, "index.ts").replaceAll(
-        "\\",
-        "/"
-      )}`;
-    }
-
-    packageJson.sideEffects ??= false;
-    packageJson.files ??= ["dist"];
-    if (options.includeSrc !== false && !packageJson.files.includes("src")) {
-      packageJson.files.push("src");
-    }
-
-    packageJson.publishConfig ??= {
-      access: "public"
-    };
-
-    packageJson.description ??= workspacePackageJson.description;
-    packageJson.homepage ??= workspacePackageJson.homepage;
-    packageJson.bugs ??= workspacePackageJson.bugs;
-    packageJson.author ??= workspacePackageJson.author;
-    packageJson.license ??= workspacePackageJson.license;
-    packageJson.keywords ??= workspacePackageJson.keywords;
-
-    packageJson.repository ??= workspacePackageJson.repository;
-    packageJson.repository.directory ??= projectRoot
-      ? projectRoot
-      : join("packages", context.projectName);
-
-    const packageJsonPath = join(
-      context.root,
-      options.outputPath,
-      "package.json"
-    );
-    console.log(`⚡ Writing package.json file to: ${packageJsonPath}`);
-
     const prettierOptions: PrettierOptions = {
       plugins: ["prettier-plugin-packagejson"],
       trailingComma: "none",
@@ -318,13 +210,131 @@ ${externalDependencies
       endOfLine: "lf"
     };
 
-    writeFileSync(
-      packageJsonPath,
-      await format(JSON.stringify(packageJson), {
-        ...prettierOptions,
-        parser: "json"
-      })
-    );
+    if (options.generatePackageJson !== false) {
+      const projectGraph = readCachedProjectGraph();
+      const pathToPackageJson = join(context.root, projectRoot, "package.json");
+      const packageJson = fileExists(pathToPackageJson)
+        ? readJsonFile(pathToPackageJson)
+        : { name: context.projectName, version: "0.0.1" };
+
+      delete packageJson.dependencies;
+      externalDependencies.forEach(entry => {
+        const packageConfig = entry.node.data as PackageConfiguration;
+        if (
+          packageConfig?.packageName &&
+          (!!(projectGraph.externalNodes[entry.node.name]?.type === "npm") ||
+            !!projectGraph.nodes[entry.node.name])
+        ) {
+          const { packageName, version } = packageConfig;
+          /*if (
+          packageJson.dependencies?.[packageName] ||
+          packageJson.devDependencies?.[packageName] ||
+          packageJson.peerDependencies?.[packageName]
+        ) {
+          return;
+        }*/
+
+          if (
+            workspacePackageJson.dependencies?.[packageName] ||
+            workspacePackageJson.devDependencies?.[packageName]
+          ) {
+            return;
+          }
+
+          packageJson.dependencies ??= {};
+          packageJson.dependencies[packageName] = !!projectGraph.nodes[
+            entry.node.name
+          ]
+            ? "latest"
+            : version;
+        }
+      });
+
+      packageJson.type = "module";
+      packageJson.exports ??= {
+        ".": {
+          import: {
+            types: "./dist/modern/index.d.ts",
+            default: "./dist/modern/index.js"
+          },
+          require: {
+            types: "./dist/modern/index.d.cts",
+            default: "./dist/modern/index.cjs"
+          },
+          ...(options.additionalEntryPoints ?? []).map(entryPoint => ({
+            [removeExtension(entryPoint).replace(sourceRoot, "")]: {
+              types: join(
+                "./dist/modern",
+                `${removeExtension(entryPoint.replace(sourceRoot, ""))}.d.ts`
+              ),
+              default: join(
+                "./dist/modern",
+                `${removeExtension(entryPoint.replace(sourceRoot, ""))}.js`
+              )
+            }
+          }))
+        },
+        "./package.json": "./package.json"
+      };
+
+      packageJson.funding ??= workspacePackageJson.funding;
+
+      packageJson.types ??= "dist/legacy/index.d.ts";
+      packageJson.main ??= "dist/legacy/index.cjs";
+      packageJson.module ??= "dist/legacy/index.js";
+      options.platform &&
+        options.platform !== "node" &&
+        (packageJson.browser ??= "dist/modern/index.global.js");
+
+      if (options.includeSrc !== false) {
+        let distSrc = sourceRoot.replace(projectRoot, "");
+        if (distSrc.startsWith("/")) {
+          distSrc = distSrc.substring(1);
+        }
+
+        packageJson.source ??= `${join(distSrc, "index.ts").replaceAll(
+          "\\",
+          "/"
+        )}`;
+      }
+
+      packageJson.sideEffects ??= false;
+      packageJson.files ??= ["dist"];
+      if (options.includeSrc !== false && !packageJson.files.includes("src")) {
+        packageJson.files.push("src");
+      }
+
+      packageJson.publishConfig ??= {
+        access: "public"
+      };
+
+      packageJson.description ??= workspacePackageJson.description;
+      packageJson.homepage ??= workspacePackageJson.homepage;
+      packageJson.bugs ??= workspacePackageJson.bugs;
+      packageJson.author ??= workspacePackageJson.author;
+      packageJson.license ??= workspacePackageJson.license;
+      packageJson.keywords ??= workspacePackageJson.keywords;
+
+      packageJson.repository ??= workspacePackageJson.repository;
+      packageJson.repository.directory ??= projectRoot
+        ? projectRoot
+        : join("packages", context.projectName);
+
+      const packageJsonPath = join(
+        context.root,
+        options.outputPath,
+        "package.json"
+      );
+      console.log(`⚡ Writing package.json file to: ${packageJsonPath}`);
+
+      writeFileSync(
+        packageJsonPath,
+        await format(JSON.stringify(packageJson), {
+          ...prettierOptions,
+          parser: "json"
+        })
+      );
+    }
 
     if (options.includeSrc !== false) {
       const files = globSync([
@@ -504,6 +514,7 @@ export const applyDefaultOptions = (
   options.entry ??= "{sourceRoot}/index.ts";
   options.outputPath ??= "dist/{projectRoot}";
   options.tsConfig ??= "tsconfig.json";
+  options.generatePackageJson ??= true;
   options.splitting ??= true;
   options.treeshake ??= true;
   options.platform ??= "neutral";

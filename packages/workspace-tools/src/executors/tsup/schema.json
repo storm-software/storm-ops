@@ -71,6 +71,11 @@
       "description": "Should the source files be added to the distribution folder in an `src` directory.",
       "default": false
     },
+    "generatePackageJson": {
+      "type": "boolean",
+      "description": "Should a package.json file be generated in the output folder or should the existing one be copied in.",
+      "default": true
+    },
     "splitting": {
       "type": "boolean",
       "description": "Should the build process preform *code-splitting*?",
