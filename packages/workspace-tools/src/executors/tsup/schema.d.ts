@@ -33,6 +33,7 @@ export type TsupExecutorSchema = Omit<
   includeSrc?: boolean;
   platform?: Platform;
   plugins?: any[];
+  shims?: boolean;
   splitting?: boolean;
   treeshake?: boolean;
   generatePackageJson?: boolean;

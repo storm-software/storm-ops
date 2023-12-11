@@ -107,6 +107,10 @@
       "description": "Should write extra log outputs with details from the executor.",
       "default": false
     },
+    "shims": {
+      "type": "boolean",
+      "description": "Should the build process add shims for node.js modules that are not available in the browser?"
+    },
     "define": {
       "type": "object",
       "description": "Define global constants that can be used in the source code. The value will be converted into a stringified JSON.",

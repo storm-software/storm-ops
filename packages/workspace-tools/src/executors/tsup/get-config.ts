@@ -21,6 +21,7 @@ type GetConfigParams = Omit<
   projectRoot: string;
   workspaceRoot: string;
   tsconfig: string;
+  shims?: boolean;
   apiReport?: boolean;
   docModel?: boolean;
   tsdocMetadata?: boolean;
@@ -36,6 +37,7 @@ export function modernConfig({
   splitting,
   treeshake,
   debug = false,
+  shims = true,
   external,
   banner = {},
   platform = "neutral",
@@ -80,7 +82,7 @@ export function modernConfig({
     outDir: outputPath,
     silent: !verbose,
     metafile: true,
-    shims: true,
+    shims,
     external,
     platform,
     banner,
@@ -128,6 +130,7 @@ export function legacyConfig({
   banner = {},
   platform = "neutral",
   verbose = false,
+  shims = true,
   define,
   env,
   plugins,
@@ -154,7 +157,7 @@ export function legacyConfig({
     outDir: outputPath,
     silent: !verbose,
     metafile: true,
-    shims: true,
+    shims,
     external,
     platform,
     banner,
@@ -204,6 +207,7 @@ export function workerConfig({
   apiReport = true,
   docModel = true,
   tsdocMetadata = true,
+  shims = false,
   define,
   env,
   plugins,
@@ -231,7 +235,7 @@ export function workerConfig({
     outDir: outputPath,
     silent: !verbose,
     metafile: true,
-    shims: false,
+    shims,
     external,
     platform: "browser",
     banner,
