@@ -1,3 +1,10 @@
+# [1.26.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.25.0...create-storm-workspace-v1.26.0) (2023-12-11)
+
+
+### Features
+
+* **workspace-tools:** Added the `shims` option to the tsup extractor ([108ad97](https://github.com/storm-software/storm-ops/commit/108ad973641620d06ccc2e43a2e028e78a948375))
+
 # [1.25.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.24.2...create-storm-workspace-v1.25.0) (2023-12-11)
 
 
