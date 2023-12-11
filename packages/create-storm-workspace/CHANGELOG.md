@@ -1,3 +1,10 @@
+## [1.24.2](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.24.1...create-storm-workspace-v1.24.2) (2023-12-11)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update tsup build to not include `src` folder by default ([d400c33](https://github.com/storm-software/storm-ops/commit/d400c338e29ddfbe4c3288f1015db972849c7181))
+
 ## [1.24.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.24.0...create-storm-workspace-v1.24.1) (2023-12-11)
 
 
