@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.15.0...git-tools-v1.15.1) (2023-12-11)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad nx.json config ([1753feb](https://github.com/storm-software/storm-ops/commit/1753febc615fa341af86d49981905221153dbcfb))
+
 # [1.15.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.14.9...git-tools-v1.15.0) (2023-12-09)
 
 
