@@ -1,3 +1,10 @@
+# [1.30.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.29.0...workspace-tools-v1.30.0) (2023-12-12)
+
+
+### Features
+
+* **workspace-tools:** Added the `packageAll` option to build nested package files ([cf18588](https://github.com/storm-software/storm-ops/commit/cf18588e55e491f984affecd040c95298f0cf273))
+
 # [1.29.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.28.0...workspace-tools-v1.29.0) (2023-12-12)
 
 
