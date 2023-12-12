@@ -1,3 +1,10 @@
+# [1.27.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.26.1...workspace-tools-v1.27.0) (2023-12-12)
+
+
+### Features
+
+* **workspace-tools:** Add `implicitDependencies` to external list ([9bc79bc](https://github.com/storm-software/storm-ops/commit/9bc79bcefa6358b15ae78bcc811c7554762baa6b))
+
 ## [1.26.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.26.0...workspace-tools-v1.26.1) (2023-12-12)
 
 
