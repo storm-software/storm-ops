@@ -16,7 +16,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.org" target="_blank">stormsoftware.org</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.24.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
+[![Version](https://img.shields.io/badge/version-1.29.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
 [![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with docusaurus](https://img.shields.io/badge/documented_with-docusaurus-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://docusaurus.io/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <h3 align="center" bold="true">⚠️ <b>Attention</b> ⚠️ This repository, and the apps, libraries, and tools contained within, is still in it's initial development phase. As a result, bugs and issues are expected with it's usage. When the main development phase completes, a proper release will be performed, the packages will be availible through NPM (and other distributions), and this message will be removed. However, in the meantime, please feel free to report any issues you may come across.</h3><br />
@@ -102,13 +102,16 @@ The following executor options are available:
  | watch      | `boolean`    | Enable re-building when files change.     |     | 
  | assets      | `array`    | List of static assets.     | `[]`     | 
  | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
- | includeSrc      | `boolean`    | Should the source files be added to the distribution folder in an \`src\` directory.     | `true`     | 
+ | includeSrc      | `boolean`    | Should the source files be added to the distribution folder in an \`src\` directory.     |     | 
+ | packageAll      | `boolean`    | Should the build run for each file contained in the package individually.     | `true`     | 
+ | generatePackageJson      | `boolean`    | Should a package.json file be generated in the output folder or should the existing one be copied in.     | `true`     | 
  | splitting      | `boolean`    | Should the build process preform \*code-splitting\*?     | `true`     | 
  | treeshake      | `boolean`    | Should the build process \*tree-shake\* to remove unused code?     | `true`     | 
  | debug      | `boolean`    | Should output be unminified with source mappings.     |     | 
  | **platform \***    | "browser" \| "neutral" \| "node" \| "worker"     | Platform target for outputs.     | "neutral"     | 
  | **banner \***    | `string`    | A short heading added to the top of each typescript file added in the output folder's \`src\` directory.     | "This code was developed by Storm Software (<https://stormsoftware.org>) and is licensed under the Apache License 2.0."     | 
  | verbose      | `boolean`    | Should write extra log outputs with details from the executor.     |     | 
+ | shims      | `boolean`    | Should the build process add shims for node.js modules that are not available in the browser?     |     | 
  | define      | `object`    | Define global constants that can be used in the source code. The value will be converted into a stringified JSON.     |     | 
  | env      | `object`    | Define environment variables that can be used in the source code. The value will be converted into a stringified JSON.     |     | 
  | apiReport      | `boolean`    | Should API Extractor generate an API Report file.     | `true`     | 
@@ -160,6 +163,22 @@ nx run my-project:tsup-node
 ```
 
 **Please note:** _The tsup-node executor should be included in the desired projects's `project.json` file._ 
+
+
+
+## Browser TypeScript Builder
+
+Runs a browser platform TypeScript build
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:tsup-browser
+```
+
+**Please note:** _The tsup-browser executor should be included in the desired projects's `project.json` file._ 
 
 
 
@@ -302,6 +321,33 @@ The following executor options are available:
 ## Add Neutral Library
 
 Create a new Neutral TypeScript library package in the Storm workspaces
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| **name \***    | `string`    | A name for the library.     |     | 
+ | description      | `string`    | The library used by Storm Software for building TypeScript applications.     |     | 
+ | **directory \***    | `string`    | A directory where the lib is placed.     |     | 
+ | **projectNameAndRootFormat \***    | "as-provided" \| "derived"     | Whether to generate the project name and root directory as provided (`as-provided`) or generate them composing their values and taking the configured layout into account (`derived`).     |     | 
+ | tags      | `string`    | Add tags to the library (used for linting).     |     | 
+ | strict      | `boolean`    | Whether to enable tsconfig strict mode or not.     | `true`     | 
+ | **publishable \***    | `boolean`    | Generate a publishable library.     |     | 
+ | **importPath \***    | `string`    | The library name used to import it, like @storm-software/my-awesome-lib. Required for publishable library.     |     | 
+ | **buildable \***    | `boolean`    | Generate a buildable library.     | `true`     | 
+ | setParserOptionsProject      | `boolean`    | Whether or not to configure the ESLint `parserOptions.project` option. We do not do this by default for lint performance reasons.     |     | 
+ | rootProject      | `boolean`    | Is the current project the root project in the workspace.     |     | 
+
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+
+
+
+## Add browser Library
+
+Create a new browser TypeScript library package in the Storm workspace
 
 ### Options
 

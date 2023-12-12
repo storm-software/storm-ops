@@ -154,6 +154,7 @@ ${Object.keys(options)
     const implicitDependencies =
       context.projectsConfigurations.projects[context.projectName]
         .implicitDependencies;
+
     if (implicitDependencies && implicitDependencies.length > 0) {
       options.external = implicitDependencies.reduce(
         (ret: string[], key: string) => {
@@ -180,7 +181,7 @@ ${Object.keys(options)
       );
     }
 
-    const externalDependencies: DependentBuildableProjectNode[] =
+    let externalDependencies: DependentBuildableProjectNode[] =
       options.external.reduce((acc, name) => {
         const externalNode = context.projectGraph.externalNodes[`npm:${name}`];
         if (externalNode) {
@@ -189,27 +190,22 @@ ${Object.keys(options)
             outputs: [],
             node: externalNode
           });
-        } else {
-          const workspaceNode = context.projectGraph.nodes[name];
-          if (workspaceNode) {
-            acc.push({
-              name,
-              outputs: [],
-              node: workspaceNode
-            });
-          }
         }
 
         return acc;
       }, []);
+    externalDependencies = implicitDependencies.reduce((acc, name) => {
+      const internalNode = context.projectGraph.nodes[name];
+      if (internalNode) {
+        acc.push({
+          name,
+          outputs: [],
+          node: internalNode
+        });
+      }
 
-    options.verbose &&
-      console.log(`Added the following external dependencies:
-${externalDependencies
-  .map(dep => {
-    return `name: ${dep.name}, node: ${dep.node}, outputs: ${dep.outputs}`;
-  })
-  .join("\n")}`);
+      return acc;
+    }, externalDependencies);
 
     if (options.bundle === false) {
       for (const thirdPartyDependency of getExtraDependencies(
@@ -224,6 +220,13 @@ ${externalDependencies
         }
       }
     }
+
+    console.log(`Building with the following dependencies marked as external:
+    ${externalDependencies
+      .map(dep => {
+        return `name: ${dep.name}, node: ${dep.node}, outputs: ${dep.outputs}`;
+      })
+      .join("\n")}`);
 
     const prettierOptions: PrettierOptions = {
       plugins: ["prettier-plugin-packagejson"],
@@ -578,6 +581,7 @@ export const applyDefaultOptions = (
   options.apiReport ??= true;
   options.docModel ??= true;
   options.tsdocMetadata ??= true;
+  options.packageAll ??= true;
   options.define ??= {};
   options.env ??= {};
   options.verbose ??= !!process.env.CI;

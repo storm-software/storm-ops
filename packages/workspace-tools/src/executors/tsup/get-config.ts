@@ -282,26 +282,25 @@ export function getConfig(
     ...rest
   }: TsupGetConfigOptions
 ) {
-  const entry = globSync(
-    [
-      rest.entry
-        ? rest.entry
-        : joinPathFragments(
-            sourceRoot.includes(workspaceRoot)
-              ? sourceRoot
-              : joinPathFragments(workspaceRoot, sourceRoot),
-            "**/*.{ts,tsx}"
-          ),
-      ...(additionalEntryPoints ?? [])
-    ],
-    {
-      withFileTypes: true
-    }
-  ).reduce((ret, filePath: Path) => {
+  const entryPoints = [];
+  if (rest.entry) {
+    entryPoints.push(rest.entry);
+  }
+  if (rest.packageAll !== false) {
+    entryPoints.push(joinPathFragments(sourceRoot, "**/*.{ts,tsx}"));
+  }
+  if (additionalEntryPoints) {
+    entryPoints.push(...additionalEntryPoints);
+  }
+
+  const entry = globSync(entryPoints, {
+    withFileTypes: true
+  }).reduce((ret, filePath: Path) => {
     let propertyKey = joinPathFragments(
       filePath.path,
       removeExtension(filePath.name)
     )
+      .replaceAll("/", "\\")
       .replaceAll(workspaceRoot, "")
       .replaceAll("\\", "/")
       .replaceAll(sourceRoot, "")
