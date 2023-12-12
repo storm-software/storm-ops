@@ -71,9 +71,9 @@
       "description": "Should the source files be added to the distribution folder in an `src` directory.",
       "default": false
     },
-    "packageAll": {
+    "emitOnAll": {
       "type": "boolean",
-      "description": "Should the build run for each file contained in the package individually.",
+      "description": "Should each file contained in the package be emitted individually.",
       "default": true
     },
     "generatePackageJson": {

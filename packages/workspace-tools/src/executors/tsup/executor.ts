@@ -6,7 +6,6 @@ import {
   readCachedProjectGraph,
   readJsonFile
 } from "@nx/devkit";
-import { getExtraDependencies } from "@nx/esbuild/src/executors/esbuild/lib/get-extra-dependencies";
 import { copyAssets } from "@nx/js";
 import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options";
 import { createTypeScriptCompilationOptions } from "@nx/js/src/executors/tsc/tsc.impl";
@@ -25,6 +24,10 @@ import { Options, build as tsup } from "tsup";
 import * as ts from "typescript";
 import { withRunExecutor } from "../../base/base-executor";
 import { removeExtension } from "../../utils/file-path-utils";
+import {
+  getExternalDependencies,
+  getInternalDependencies
+} from "../../utils/get-project-deps";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
 import { getConfig } from "./get-config";
 import { TsupExecutorSchema } from "./schema";
@@ -151,45 +154,6 @@ ${Object.keys(options)
       );
     }
 
-    const implicitDependencies =
-      context.projectsConfigurations.projects[context.projectName]
-        .implicitDependencies;
-    if (implicitDependencies && implicitDependencies.length > 0) {
-      options.external = implicitDependencies.reduce(
-        (ret: string[], key: string) => {
-          if (
-            Object.keys(context.projectsConfigurations.projects[key]?.targets)
-              .length > 0
-          ) {
-            const buildTargetName = Object.keys(
-              context.projectsConfigurations.projects[key].targets
-            ).find((name: string) => name.toLowerCase() === "build");
-            if (
-              buildTargetName &&
-              context.projectsConfigurations.projects[key].targets[
-                buildTargetName
-              ]?.options?.project
-            ) {
-              const packageJson = readJsonFile(
-                context.projectsConfigurations.projects[key].targets[
-                  buildTargetName
-                ].options.project
-              );
-              if (
-                packageJson?.name &&
-                !options.external.includes(packageJson.name)
-              ) {
-                ret.push(packageJson.name);
-              }
-            }
-          }
-
-          return ret;
-        },
-        options.external
-      );
-    }
-
     let externalDependencies: DependentBuildableProjectNode[] =
       options.external.reduce((acc, name) => {
         const externalNode = context.projectGraph.externalNodes[`npm:${name}`];
@@ -203,21 +167,22 @@ ${Object.keys(options)
 
         return acc;
       }, []);
-    externalDependencies = implicitDependencies.reduce((acc, name) => {
-      const internalNode = context.projectGraph.nodes[name];
-      if (internalNode) {
-        acc.push({
-          name,
-          outputs: [],
-          node: internalNode
-        });
-      }
 
-      return acc;
-    }, externalDependencies);
+    let internalDependencies: DependentBuildableProjectNode[] = [];
+    for (const internalDependency of getInternalDependencies(
+      context.projectName,
+      context.projectGraph
+    )) {
+      const packageConfig = internalDependency.node
+        .data as PackageConfiguration;
+      if (packageConfig?.packageName) {
+        options.external.push(packageConfig.packageName);
+        internalDependencies.push(internalDependency);
+      }
+    }
 
     if (options.bundle === false) {
-      for (const thirdPartyDependency of getExtraDependencies(
+      for (const thirdPartyDependency of getExternalDependencies(
         context.projectName,
         context.projectGraph
       )) {
@@ -264,11 +229,9 @@ ${Object.keys(options)
         const packageConfig = entry.node.data as PackageConfiguration;
         if (
           packageConfig?.packageName &&
-          (!!(projectGraph.externalNodes[entry.node.name]?.type === "npm") ||
-            !!projectGraph.nodes[entry.node.name])
+          !!(projectGraph.externalNodes[entry.node.name]?.type === "npm")
         ) {
           const { packageName, version } = packageConfig;
-
           if (
             workspacePackageJson.dependencies?.[packageName] ||
             workspacePackageJson.devDependencies?.[packageName]
@@ -282,6 +245,16 @@ ${Object.keys(options)
           ]
             ? "latest"
             : version;
+        }
+      });
+
+      internalDependencies.forEach(entry => {
+        const packageConfig = entry.node.data as PackageConfiguration;
+        if (packageConfig?.packageName) {
+          const { packageName, version } = packageConfig;
+
+          packageJson.dependencies ??= {};
+          packageJson.dependencies[packageName] = version ? version : "latest";
         }
       });
 
@@ -590,7 +563,7 @@ export const applyDefaultOptions = (
   options.apiReport ??= true;
   options.docModel ??= true;
   options.tsdocMetadata ??= true;
-  options.packageAll ??= true;
+  options.emitOnAll ??= true;
   options.define ??= {};
   options.env ??= {};
   options.verbose ??= !!process.env.CI;

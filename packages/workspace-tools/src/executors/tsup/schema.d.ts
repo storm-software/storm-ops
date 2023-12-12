@@ -37,5 +37,5 @@ export type TsupExecutorSchema = Omit<
   splitting?: boolean;
   treeshake?: boolean;
   generatePackageJson?: boolean;
-  packageAll?: boolean;
+  emitOnAll?: boolean;
 };

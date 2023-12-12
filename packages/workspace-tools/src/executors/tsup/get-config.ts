@@ -279,6 +279,7 @@ export function getConfig(
     tsConfig,
     additionalEntryPoints,
     platform,
+    emitOnAll = true,
     ...rest
   }: TsupGetConfigOptions
 ) {
@@ -286,7 +287,7 @@ export function getConfig(
   if (rest.entry) {
     entryPoints.push(rest.entry);
   }
-  if (rest.packageAll !== false) {
+  if (emitOnAll !== false) {
     entryPoints.push(joinPathFragments(sourceRoot, "**/*.{ts,tsx}"));
   }
   if (additionalEntryPoints) {
@@ -301,9 +302,9 @@ export function getConfig(
       removeExtension(filePath.name)
     )
       .replaceAll("\\", "/")
-      .replaceAll(workspaceRoot.substring(1).replaceAll("\\", "/"), "")
-      .replaceAll(sourceRoot.replaceAll("\\", "/"), "")
-      .replaceAll(projectRoot.replaceAll("\\", "/"), "");
+      .replaceAll(workspaceRoot.substring(2).replaceAll("\\", "/"), "")
+      .replaceAll(sourceRoot, "")
+      .replaceAll(projectRoot, "");
 
     if (propertyKey) {
       while (propertyKey.startsWith("/")) {
