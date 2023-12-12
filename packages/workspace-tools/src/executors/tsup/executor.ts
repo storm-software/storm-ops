@@ -154,24 +154,33 @@ ${Object.keys(options)
     const implicitDependencies =
       context.projectsConfigurations.projects[context.projectName]
         .implicitDependencies;
-
     if (implicitDependencies && implicitDependencies.length > 0) {
       options.external = implicitDependencies.reduce(
         (ret: string[], key: string) => {
-          if (context.projectsConfigurations.projects[key].root) {
-            const packageJson = readJsonFile(
-              join(
-                context.root,
-                context.projectsConfigurations.projects[key].root,
-                "package.json"
-              )
-            );
-
+          if (
+            Object.keys(context.projectsConfigurations.projects[key]?.targets)
+              .length > 0
+          ) {
+            const buildTargetName = Object.keys(
+              context.projectsConfigurations.projects[key].targets
+            ).find((name: string) => name.toLowerCase() === "build");
             if (
-              packageJson.name &&
-              !options.external.includes(packageJson.name)
+              buildTargetName &&
+              context.projectsConfigurations.projects[key].targets[
+                buildTargetName
+              ]?.options?.project
             ) {
-              ret.push(packageJson.name);
+              const packageJson = readJsonFile(
+                context.projectsConfigurations.projects[key].targets[
+                  buildTargetName
+                ].options.project
+              );
+              if (
+                packageJson?.name &&
+                !options.external.includes(packageJson.name)
+              ) {
+                ret.push(packageJson.name);
+              }
             }
           }
 
@@ -288,20 +297,20 @@ ${Object.keys(options)
             default: "./dist/modern/index.cjs"
           },
           default: {
-            types: "./dist/modern/**/*.d.ts",
-            default: "./dist/modern/**/*.js"
+            types: "./dist/modern/index.d.ts",
+            default: "./dist/modern/index.js"
           },
           "./*": {
             "import": {
-              types: "./dist/modern/**/*.d.ts",
+              types: "./dist/modern/index.d.ts",
               default: "./dist/modern/**/*.js"
             },
             require: {
-              types: "./dist/modern/**/*.d.cts",
+              types: "./dist/modern/index.d.cts",
               default: "./dist/modern/**/*.cjs"
             },
             "default": {
-              types: "./dist/modern/**/*.d.ts",
+              types: "./dist/modern/index.d.ts",
               default: "./dist/modern/**/*.js"
             }
           },

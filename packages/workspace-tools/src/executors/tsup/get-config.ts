@@ -300,11 +300,10 @@ export function getConfig(
       filePath.path,
       removeExtension(filePath.name)
     )
-      .replaceAll("/", "\\")
-      .replaceAll(workspaceRoot, "")
       .replaceAll("\\", "/")
-      .replaceAll(sourceRoot, "")
-      .replaceAll(projectRoot, "");
+      .replaceAll(workspaceRoot.substring(1).replaceAll("\\", "/"), "")
+      .replaceAll(sourceRoot.replaceAll("\\", "/"), "")
+      .replaceAll(projectRoot.replaceAll("\\", "/"), "");
 
     if (propertyKey) {
       while (propertyKey.startsWith("/")) {
