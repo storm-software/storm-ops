@@ -15,6 +15,11 @@
       "implementation": "./src/executors/tsup-node/executor",
       "schema": "./src/executors/tsup-node/schema.json",
       "description": "Runs a node platform TypeScript build"
+    },
+    "tsup-browser": {
+      "implementation": "./src/executors/tsup-browser/executor",
+      "schema": "./src/executors/tsup-browser/schema.json",
+      "description": "Runs a browser platform TypeScript build"
     }
   }
 }

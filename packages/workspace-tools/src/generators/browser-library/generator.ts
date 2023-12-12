@@ -12,21 +12,34 @@ import {
   normalizeOptions,
   typeScriptLibraryGeneratorFn
 } from "../../base/typescript-library-generator";
-import { typesNodeVersion } from "../../utils/versions";
-import { NodeLibraryGeneratorSchema } from "./schema";
+import { BrowserLibraryGeneratorSchema } from "./schema";
 
-export async function nodeLibraryGeneratorFn(
+export async function browserLibraryGeneratorFn(
   tree: Tree,
-  schema: NodeLibraryGeneratorSchema
+  schema: BrowserLibraryGeneratorSchema
 ) {
   const filesDir = joinPathFragments(__dirname, "./files");
   const tsLibraryGeneratorOptions: TypeScriptLibraryGeneratorSchema = {
     ...schema,
-    platform: "node",
+    platform: "browser",
     devDependencies: {
-      "@types/node": typesNodeVersion
+      "@types/react": "^18.2.43",
+      "@types/react-dom": "^18.2.17"
     },
-    buildExecutor: "@storm-software/workspace-tools:tsup-node"
+    peerDependencies: {
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "react-native": "*"
+    },
+    peerDependenciesMeta: {
+      "react-dom": {
+        "optional": true
+      },
+      "react-native": {
+        "optional": true
+      }
+    },
+    buildExecutor: "@storm-software/workspace-tools:tsup-browser"
   };
 
   const options = await normalizeOptions(tree, tsLibraryGeneratorOptions);
@@ -48,7 +61,17 @@ export async function nodeLibraryGeneratorFn(
     tmpl: "",
     offsetFromRoot: offsetFromRoot(options.projectRoot),
     buildable: options.bundler && options.bundler !== "none",
-    hasUnitTestRunner: options.unitTestRunner !== "none"
+    hasUnitTestRunner: options.unitTestRunner !== "none",
+    tsConfigOptions: {
+      compilerOptions: {
+        jsx: "react",
+        types: [
+          "node",
+          "@nx/react/typings/cssmodule.d.ts",
+          "@nx/react/typings/image.d.ts"
+        ]
+      }
+    }
   });
 
   await typeScriptLibraryGeneratorFn(tree, tsLibraryGeneratorOptions);
@@ -57,7 +80,7 @@ export async function nodeLibraryGeneratorFn(
   return null;
 }
 
-export default withRunGenerator<NodeLibraryGeneratorSchema>(
-  "TypeScript Library Creator (NodeJs Platform)",
-  nodeLibraryGeneratorFn
+export default withRunGenerator<BrowserLibraryGeneratorSchema>(
+  "TypeScript Library Creator (Browser Platform)",
+  browserLibraryGeneratorFn
 );

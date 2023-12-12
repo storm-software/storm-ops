@@ -29,6 +29,11 @@
       "factory": "./src/generators/neutral-library/generator",
       "schema": "./src/generators/neutral-library/schema.json",
       "description": "Create a new Neutral TypeScript library package in the Storm workspace"
+    },
+    "browser-library": {
+      "factory": "./src/generators/browser-library/generator",
+      "schema": "./src/generators/browser-library/schema.json",
+      "description": "Create a new browser TypeScript library package in the Storm workspace"
     }
   }
 }

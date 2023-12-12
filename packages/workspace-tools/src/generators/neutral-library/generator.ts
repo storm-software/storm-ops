@@ -55,6 +55,6 @@ export async function neutralLibraryGeneratorFn(
 }
 
 export default withRunGenerator<NeutralLibraryGeneratorSchema>(
-  "TypeScript Build (Neutral Platform)",
+  "TypeScript Library Creator (Neutral Platform)",
   neutralLibraryGeneratorFn
 );

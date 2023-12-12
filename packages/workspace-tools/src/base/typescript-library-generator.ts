@@ -53,7 +53,13 @@ export type TypeScriptLibraryGeneratorSchema = Omit<
   buildExecutor: string;
   platform?: Platform;
   devDependencies?: Record<string, string>;
+  peerDependencies?: Record<string, string>;
+  peerDependenciesMeta?: Record<string, any>;
+  tsConfigOptions?: Record<string, any>;
 };
+
+export type TypeScriptLibraryGeneratorNormalizedSchema =
+  TypeScriptLibraryGeneratorSchema & NormalizedSchema;
 
 export async function typeScriptLibraryGeneratorFn(
   tree: Tree,
@@ -357,7 +363,9 @@ export async function addLint(
   return task;
 }
 
-export function getOutputPath(options: NormalizedSchema) {
+export function getOutputPath(
+  options: TypeScriptLibraryGeneratorNormalizedSchema
+) {
   const parts = ["dist"];
   if (options.projectRoot === ".") {
     parts.push(options.name);
@@ -369,23 +377,35 @@ export function getOutputPath(options: NormalizedSchema) {
 
 export function createProjectTsConfigJson(
   tree: Tree,
-  options: NormalizedSchema
+  options: TypeScriptLibraryGeneratorNormalizedSchema
 ) {
   const tsconfig = {
     extends: options.rootProject
       ? undefined
       : getRelativePathToRootTsConfig(tree, options.projectRoot),
+    ...(options?.tsConfigOptions ?? {}),
     compilerOptions: {
       ...(options.rootProject ? tsConfigBaseOptions : {}),
       outDir: joinPathFragments(
         offsetFromRoot(options.projectRoot),
         "dist/out-tsc"
       ),
-      noEmit: true
+      noEmit: true,
+      ...(options?.tsConfigOptions?.compilerOptions ?? {})
     },
-    files: [],
-    include: ["src/**/*.ts", "src/**/*.js", "bin/**/*"],
-    exclude: ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
+    files: [...(options?.tsConfigOptions?.files ?? [])],
+    include: [
+      ...(options?.tsConfigOptions?.include ?? []),
+      "src/**/*.ts",
+      "src/**/*.js",
+      "bin/**/*"
+    ],
+    exclude: [
+      ...(options?.tsConfigOptions?.exclude ?? []),
+      "jest.config.ts",
+      "src/**/*.spec.ts",
+      "src/**/*.test.ts"
+    ]
   };
 
   writeJson(
@@ -398,7 +418,7 @@ export function createProjectTsConfigJson(
 export async function normalizeOptions(
   tree: Tree,
   options: TypeScriptLibraryGeneratorSchema
-): Promise<NormalizedSchema> {
+): Promise<TypeScriptLibraryGeneratorNormalizedSchema> {
   if (options.publishable) {
     if (!options.importPath) {
       throw new Error(
