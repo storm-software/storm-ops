@@ -113,7 +113,7 @@ ${Object.keys(options)
       });
     }
 
-    if (options.includeSrc !== false) {
+    if (options.includeSrc === true) {
       assets.push({
         input: sourceRoot,
         glob: "**/{*.ts,*.tsx,*.js,*.jsx}",
@@ -344,7 +344,7 @@ ${Object.keys(options)
         options.platform !== "node" &&
         (packageJson.browser ??= "dist/modern/index.global.js");
 
-      if (options.includeSrc !== false) {
+      if (options.includeSrc === true) {
         let distSrc = sourceRoot.replace(projectRoot, "");
         if (distSrc.startsWith("/")) {
           distSrc = distSrc.substring(1);
@@ -359,7 +359,7 @@ ${Object.keys(options)
       packageJson.sideEffects ??= false;
 
       packageJson.files ??= ["dist/**/*"];
-      if (options.includeSrc !== false && !packageJson.files.includes("src")) {
+      if (options.includeSrc === true && !packageJson.files.includes("src")) {
         packageJson.files.push("src/**/*");
       }
 
@@ -395,7 +395,7 @@ ${Object.keys(options)
       );
     }
 
-    if (options.includeSrc !== false) {
+    if (options.includeSrc === true) {
       const files = globSync([
         joinPathFragments(context.root, options.outputPath, "src/**/*.ts"),
         joinPathFragments(context.root, options.outputPath, "src/**/*.tsx"),
