@@ -151,6 +151,35 @@ ${Object.keys(options)
       );
     }
 
+    const implicitDependencies =
+      context.projectsConfigurations.projects[context.projectName]
+        .implicitDependencies;
+    if (implicitDependencies && implicitDependencies.length > 0) {
+      options.external = implicitDependencies.reduce(
+        (ret: string[], key: string) => {
+          if (context.projectsConfigurations.projects[key].root) {
+            const packageJson = readJsonFile(
+              join(
+                context.root,
+                context.projectsConfigurations.projects[key].root,
+                "package.json"
+              )
+            );
+
+            if (
+              packageJson.name &&
+              !options.external.includes(packageJson.name)
+            ) {
+              ret.push(packageJson.name);
+            }
+          }
+
+          return ret;
+        },
+        options.external
+      );
+    }
+
     const externalDependencies: DependentBuildableProjectNode[] =
       options.external.reduce((acc, name) => {
         const externalNode = context.projectGraph.externalNodes[`npm:${name}`];
@@ -173,6 +202,7 @@ ${Object.keys(options)
 
         return acc;
       }, []);
+
     options.verbose &&
       console.log(`Added the following external dependencies:
 ${externalDependencies
@@ -226,13 +256,6 @@ ${externalDependencies
             !!projectGraph.nodes[entry.node.name])
         ) {
           const { packageName, version } = packageConfig;
-          /*if (
-          packageJson.dependencies?.[packageName] ||
-          packageJson.devDependencies?.[packageName] ||
-          packageJson.peerDependencies?.[packageName]
-        ) {
-          return;
-        }*/
 
           if (
             workspacePackageJson.dependencies?.[packageName] ||
