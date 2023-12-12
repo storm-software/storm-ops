@@ -1,3 +1,10 @@
+# [1.29.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.28.0...workspace-tools-v1.29.0) (2023-12-12)
+
+
+### Features
+
+* **workspace-tools:** Added compiled child directories to build package ([367ac43](https://github.com/storm-software/storm-ops/commit/367ac4312ed4b81badbce62676d3d9341431018a))
+
 # [1.28.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.27.0...workspace-tools-v1.28.0) (2023-12-12)
 
 
