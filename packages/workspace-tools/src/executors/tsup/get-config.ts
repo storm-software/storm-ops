@@ -1,5 +1,5 @@
+import { joinPathFragments } from "@nx/devkit";
 import { Path, globSync } from "glob";
-import { join } from "path";
 import { Options, defineConfig } from "tsup";
 import type { ParsedCommandLine } from "typescript";
 import { removeExtension } from "../../utils/file-path-utils";
@@ -51,7 +51,7 @@ export function modernConfig({
   generatePackageJson,
   dtsTsConfig
 }: GetConfigParams) {
-  let outputPath = join(outDir, "dist", "modern");
+  let outputPath = joinPathFragments(outDir, "dist", "modern");
 
   return {
     name: "modern",
@@ -137,7 +137,7 @@ export function legacyConfig({
   generatePackageJson,
   dtsTsConfig
 }: GetConfigParams) {
-  let outputPath = join(outDir, "dist", "legacy");
+  let outputPath = joinPathFragments(outDir, "dist", "legacy");
 
   return {
     name: "legacy",
@@ -207,14 +207,14 @@ export function workerConfig({
   apiReport = true,
   docModel = true,
   tsdocMetadata = true,
-  shims = false,
+  shims = true,
   define,
   env,
   plugins,
   generatePackageJson,
   dtsTsConfig
 }: GetConfigParams) {
-  let outputPath = join(outDir, "dist");
+  let outputPath = joinPathFragments(outDir, "dist");
 
   return {
     name: "worker",
@@ -252,13 +252,13 @@ export function workerConfig({
         }
       }
     },
-    /*minify: debug ? false : "terser",
+    minify: debug ? false : "terser",
     terserOptions: {
       compress: true,
       ecma: 2020,
       keep_classnames: true,
       keep_fnames: true
-    },*/
+    },
     apiReport,
     docModel,
     tsdocMetadata,
@@ -284,25 +284,42 @@ export function getConfig(
 ) {
   const entry = globSync(
     [
-      rest.entry ? rest.entry : join(sourceRoot, "**/*.{ts,tsx}"),
+      rest.entry
+        ? rest.entry
+        : joinPathFragments(
+            sourceRoot.includes(workspaceRoot)
+              ? sourceRoot
+              : joinPathFragments(workspaceRoot, sourceRoot),
+            "**/*.{ts,tsx}"
+          ),
       ...(additionalEntryPoints ?? [])
     ],
     {
       withFileTypes: true
     }
   ).reduce((ret, filePath: Path) => {
-    let propertyKey = join(filePath.path, removeExtension(filePath.name))
+    let propertyKey = joinPathFragments(
+      filePath.path,
+      removeExtension(filePath.name)
+    )
       .replaceAll(workspaceRoot, "")
       .replaceAll("\\", "/")
       .replaceAll(sourceRoot, "")
       .replaceAll(projectRoot, "");
+
     if (propertyKey) {
       while (propertyKey.startsWith("/")) {
         propertyKey = propertyKey.substring(1);
       }
 
+      console.debug(
+        `Trying to add entry point ${propertyKey} at "${joinPathFragments(
+          filePath.path,
+          filePath.name
+        )}"`
+      );
       if (!(propertyKey in ret)) {
-        ret[propertyKey] = join(filePath.path, filePath.name);
+        ret[propertyKey] = joinPathFragments(filePath.path, filePath.name);
       }
     }
 

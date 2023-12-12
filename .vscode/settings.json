@@ -387,5 +387,12 @@
    ******************************/
   "commitizen.capitalizeWindowsDriveLetter": true,
   "commitizen.autoSync": false,
-  "commitizen.showOutputChannel": "always"
+  "commitizen.showOutputChannel": "always",
+  "[javascript][javascriptreact][typescript][typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit",
+      "source.organizeImports": "explicit",
+      "source.sortMembers": "explicit"
+    }
+  }
 }

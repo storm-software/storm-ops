@@ -284,6 +284,24 @@ ${externalDependencies
             types: "./dist/modern/index.d.cts",
             default: "./dist/modern/index.cjs"
           },
+          default: {
+            types: "./dist/modern/**/*.d.ts",
+            default: "./dist/modern/**/*.js"
+          },
+          "./*": {
+            "import": {
+              types: "./dist/modern/**/*.d.ts",
+              default: "./dist/modern/**/*.js"
+            },
+            require: {
+              types: "./dist/modern/**/*.d.cts",
+              default: "./dist/modern/**/*.cjs"
+            },
+            "default": {
+              types: "./dist/modern/**/*.d.ts",
+              default: "./dist/modern/**/*.js"
+            }
+          },
           ...(options.additionalEntryPoints ?? []).map(entryPoint => ({
             [removeExtension(entryPoint).replace(sourceRoot, "")]: {
               types: join(
@@ -303,6 +321,11 @@ ${externalDependencies
       packageJson.funding ??= workspacePackageJson.funding;
 
       packageJson.types ??= "dist/legacy/index.d.ts";
+      packageJson.typings ??= "dist/legacy/index.d.ts";
+      packageJson.typescript ??= {
+        definition: "dist/legacy/index.d.ts"
+      };
+
       packageJson.main ??= "dist/legacy/index.cjs";
       packageJson.module ??= "dist/legacy/index.js";
       options.platform &&
@@ -322,9 +345,10 @@ ${externalDependencies
       }
 
       packageJson.sideEffects ??= false;
-      packageJson.files ??= ["dist"];
+
+      packageJson.files ??= ["dist/**/*"];
       if (options.includeSrc !== false && !packageJson.files.includes("src")) {
-        packageJson.files.push("src");
+        packageJson.files.push("src/**/*");
       }
 
       packageJson.publishConfig ??= {
@@ -546,7 +570,7 @@ export const applyDefaultOptions = (
   options.additionalEntryPoints ??= [];
   options.assets ??= [];
   options.plugins ??= [];
-  options.includeSrc ??= true;
+  options.includeSrc ??= false;
   options.clean ??= true;
   options.bundle ??= true;
   options.debug ??= false;
@@ -556,6 +580,7 @@ export const applyDefaultOptions = (
   options.tsdocMetadata ??= true;
   options.define ??= {};
   options.env ??= {};
+  options.verbose ??= !!process.env.CI;
 
   return options;
 };
