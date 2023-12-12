@@ -69,7 +69,7 @@
     "includeSrc": {
       "type": "boolean",
       "description": "Should the source files be added to the distribution folder in an `src` directory.",
-      "default": false
+      "default": true
     },
     "generatePackageJson": {
       "type": "boolean",
