@@ -1,3 +1,10 @@
+## [1.30.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.30.0...workspace-tools-v1.30.1) (2023-12-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with dependency names and bad entry paths ([85b3e68](https://github.com/storm-software/storm-ops/commit/85b3e6896731be05284b8c1d9f504ef75fd0dbfc))
+
 # [1.30.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.29.0...workspace-tools-v1.30.0) (2023-12-12)
 
 
