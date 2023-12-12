@@ -1,3 +1,10 @@
+## [1.26.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.26.0...workspace-tools-v1.26.1) (2023-12-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Set the `includeSrc` options default to true ([5e378ad](https://github.com/storm-software/storm-ops/commit/5e378ade04173b909ff8c8b4f3e4a6c73b5859a5))
+
 # [1.26.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.25.0...workspace-tools-v1.26.0) (2023-12-11)
 
 
