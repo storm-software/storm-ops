@@ -1,3 +1,10 @@
+## [1.30.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.30.1...workspace-tools-v1.30.2) (2023-12-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue where `includeSrc` option was incorrectly set ([a162001](https://github.com/storm-software/storm-ops/commit/a162001761a68900b5dc968f27cb70859bcfcc6a))
+
 ## [1.30.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.30.0...workspace-tools-v1.30.1) (2023-12-12)
 
 
