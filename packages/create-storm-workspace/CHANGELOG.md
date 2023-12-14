@@ -1,3 +1,10 @@
+## [1.30.7](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.30.6...create-storm-workspace-v1.30.7) (2023-12-14)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with promise on configuration object ([1f2046f](https://github.com/storm-software/storm-ops/commit/1f2046f4ad6bedbc314535b424cf1b5511f31269))
+
 ## [1.30.6](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.30.5...create-storm-workspace-v1.30.6) (2023-12-14)
 
 
