@@ -297,12 +297,18 @@ export function getConfig(
   const entry = globSync(entryPoints, {
     withFileTypes: true
   }).reduce((ret, filePath: Path) => {
+    let formattedPath = workspaceRoot.replaceAll("\\", "/");
+    if (formattedPath.toUpperCase().startsWith("C:")) {
+      // Handle starting pattern for Window's paths
+      formattedPath = formattedPath.substring(2);
+    }
+
     let propertyKey = joinPathFragments(
       filePath.path,
       removeExtension(filePath.name)
     )
       .replaceAll("\\", "/")
-      .replaceAll(workspaceRoot.substring(2).replaceAll("\\", "/"), "")
+      .replaceAll(formattedPath, "")
       .replaceAll(sourceRoot, "")
       .replaceAll(projectRoot, "");
 
