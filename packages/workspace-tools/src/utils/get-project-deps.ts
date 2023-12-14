@@ -1,4 +1,4 @@
-import { ProjectGraph } from "@nx/devkit";
+import { ProjectGraph, ProjectGraphProjectNode } from "@nx/devkit";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
 
 export function getExtraDependencies(
@@ -40,7 +40,7 @@ export function getExtraDependencies(
 export function getInternalDependencies(
   projectName: string,
   graph: ProjectGraph
-): DependentBuildableProjectNode[] {
+): ProjectGraphProjectNode[] {
   const allDeps = graph.dependencies[projectName];
 
   return Array.from(

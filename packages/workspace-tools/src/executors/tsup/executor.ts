@@ -24,10 +24,8 @@ import { Options, build as tsup } from "tsup";
 import * as ts from "typescript";
 import { withRunExecutor } from "../../base/base-executor";
 import { removeExtension } from "../../utils/file-path-utils";
-import {
-  getExternalDependencies,
-  getInternalDependencies
-} from "../../utils/get-project-deps";
+import { getProjectConfiguration } from "../../utils/get-project-configurations";
+import { getExternalDependencies } from "../../utils/get-project-deps";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
 import { getConfig } from "./get-config";
 import { TsupExecutorSchema } from "./schema";
@@ -168,17 +166,33 @@ ${Object.keys(options)
         return acc;
       }, []);
 
-    let internalDependencies: DependentBuildableProjectNode[] = [];
-    for (const internalDependency of getInternalDependencies(
-      context.projectName,
-      context.projectGraph
-    )) {
-      const packageConfig = internalDependency.node
-        .data as PackageConfiguration;
-      if (packageConfig?.packageName) {
-        options.external.push(packageConfig.packageName);
-        internalDependencies.push(internalDependency);
-      }
+    const implicitDependencies =
+      context.projectsConfigurations.projects[context.projectName]
+        .implicitDependencies;
+    const internalDependencies: string[] = [];
+
+    if (implicitDependencies && implicitDependencies.length > 0) {
+      options.external = implicitDependencies.reduce(
+        (ret: string[], key: string) => {
+          const projectConfig = getProjectConfiguration(key);
+          if (projectConfig.targets?.build) {
+            const packageJson = readJsonFile(
+              projectConfig.targets?.build.options.project
+            );
+
+            if (
+              packageJson?.name &&
+              !options.external.includes(packageJson.name)
+            ) {
+              ret.push(packageJson.name);
+              internalDependencies.push(packageJson.name);
+            }
+          }
+
+          return ret;
+        },
+        options.external
+      );
     }
 
     if (options.bundle === false) {
@@ -196,11 +210,11 @@ ${Object.keys(options)
     }
 
     console.log(`Building with the following dependencies marked as external:
-    ${externalDependencies
-      .map(dep => {
-        return `name: ${dep.name}, node: ${dep.node}, outputs: ${dep.outputs}`;
-      })
-      .join("\n")}`);
+${externalDependencies
+  .map(dep => {
+    return `name: ${dep.name}, node: ${dep.node}, outputs: ${dep.outputs}`;
+  })
+  .join("\n")}`);
 
     const prettierOptions: PrettierOptions = {
       plugins: ["prettier-plugin-packagejson"],
@@ -248,14 +262,9 @@ ${Object.keys(options)
         }
       });
 
-      internalDependencies.forEach(entry => {
-        const packageConfig = entry.node.data as PackageConfiguration;
-        if (packageConfig?.packageName) {
-          const { packageName, version } = packageConfig;
-
-          packageJson.dependencies ??= {};
-          packageJson.dependencies[packageName] = version ? version : "latest";
-        }
+      internalDependencies.forEach(packageName => {
+        packageJson.dependencies ??= {};
+        packageJson.dependencies[packageName] = "latest";
       });
 
       packageJson.type = "module";

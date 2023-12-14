@@ -13,3 +13,14 @@ export const getProjectConfigurations = <
   retrieveProjectConfigurationsWithoutPluginInference(
     getWorkspaceRoot()
   ) as Record<string, TConfig>;
+
+/**
+ * Retrieve the project configurations from the workspace.
+ *
+ * @returns The project configurations.
+ */
+export const getProjectConfiguration = <
+  TConfig extends ProjectConfiguration = ProjectConfiguration
+>(
+  projectName: string
+): TConfig | undefined => getProjectConfigurations<TConfig>()?.[projectName];
