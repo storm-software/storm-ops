@@ -1,3 +1,10 @@
+## [1.30.4](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.30.3...create-storm-workspace-v1.30.4) (2023-12-14)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resovled issue with internal references ([54334e6](https://github.com/storm-software/storm-ops/commit/54334e65c01f40b92b40c73361cfb1023df8e780))
+
 ## [1.30.3](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.30.2...create-storm-workspace-v1.30.3) (2023-12-12)
 
 
