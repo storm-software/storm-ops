@@ -1,3 +1,10 @@
+## [1.30.8](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.30.7...workspace-tools-v1.30.8) (2023-12-14)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with dist paths in non-windows systems ([ea9e3a6](https://github.com/storm-software/storm-ops/commit/ea9e3a625847d0eb3472ec34a450b5c220103fd6))
+
 ## [1.30.7](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.30.6...workspace-tools-v1.30.7) (2023-12-14)
 
 
