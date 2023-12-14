@@ -174,8 +174,10 @@ ${Object.keys(options)
     if (implicitDependencies && implicitDependencies.length > 0) {
       options.external = implicitDependencies.reduce(
         (ret: string[], key: string) => {
+          console.log(`⚡ Adding implicit dependency: ${key}`);
+
           const projectConfig = getProjectConfiguration(key);
-          if (projectConfig.targets?.build) {
+          if (projectConfig?.targets?.build) {
             const packageJson = readJsonFile(
               projectConfig.targets?.build.options.project
             );
