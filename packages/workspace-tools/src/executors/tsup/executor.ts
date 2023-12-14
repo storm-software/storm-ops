@@ -24,10 +24,7 @@ import { Options, build as tsup } from "tsup";
 import * as ts from "typescript";
 import { withRunExecutor } from "../../base/base-executor";
 import { removeExtension } from "../../utils/file-path-utils";
-import {
-  getProjectConfiguration,
-  getProjectConfigurations
-} from "../../utils/get-project-configurations";
+import { getProjectConfigurations } from "../../utils/get-project-configurations";
 import { getExternalDependencies } from "../../utils/get-project-deps";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
 import { getConfig } from "./get-config";
@@ -174,7 +171,7 @@ ${Object.keys(options)
         .implicitDependencies;
     const internalDependencies: string[] = [];
 
-    const projectConfigs = getProjectConfigurations();
+    const projectConfigs = await Promise.resolve(getProjectConfigurations());
     console.log("Project Configs:");
     console.log(projectConfigs);
 
@@ -183,7 +180,7 @@ ${Object.keys(options)
         (ret: string[], key: string) => {
           console.log(`⚡ Adding implicit dependency: ${key}`);
 
-          const projectConfig = getProjectConfiguration(key);
+          const projectConfig = projectConfigs[key];
           if (projectConfig?.targets?.build) {
             const packageJson = readJsonFile(
               projectConfig.targets?.build.options.project
