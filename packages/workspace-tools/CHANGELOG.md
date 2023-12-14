@@ -1,3 +1,10 @@
+## [1.30.5](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.30.4...workspace-tools-v1.30.5) (2023-12-14)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with null reference ([329b50e](https://github.com/storm-software/storm-ops/commit/329b50e63ce93dfded0e97b211ba4b452b0625dc))
+
 ## [1.30.4](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.30.3...workspace-tools-v1.30.4) (2023-12-14)
 
 
