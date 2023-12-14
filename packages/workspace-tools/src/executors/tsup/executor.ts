@@ -24,7 +24,10 @@ import { Options, build as tsup } from "tsup";
 import * as ts from "typescript";
 import { withRunExecutor } from "../../base/base-executor";
 import { removeExtension } from "../../utils/file-path-utils";
-import { getProjectConfiguration } from "../../utils/get-project-configurations";
+import {
+  getProjectConfiguration,
+  getProjectConfigurations
+} from "../../utils/get-project-configurations";
 import { getExternalDependencies } from "../../utils/get-project-deps";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
 import { getConfig } from "./get-config";
@@ -170,6 +173,10 @@ ${Object.keys(options)
       context.projectsConfigurations.projects[context.projectName]
         .implicitDependencies;
     const internalDependencies: string[] = [];
+
+    const projectConfigs = getProjectConfigurations();
+    console.log("Project Configs:");
+    console.log(projectConfigs);
 
     if (implicitDependencies && implicitDependencies.length > 0) {
       options.external = implicitDependencies.reduce(
