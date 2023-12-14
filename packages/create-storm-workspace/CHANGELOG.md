@@ -1,3 +1,10 @@
+## [1.30.6](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.30.5...create-storm-workspace-v1.30.6) (2023-12-14)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added debugging logs ([6801075](https://github.com/storm-software/storm-ops/commit/68010759c1cf8ec21c676886318ee04d3da60533))
+
 ## [1.30.5](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.30.4...create-storm-workspace-v1.30.5) (2023-12-14)
 
 
