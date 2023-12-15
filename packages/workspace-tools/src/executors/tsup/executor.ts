@@ -502,8 +502,9 @@ ${externalDependencies
 
     // #region Run the build process
 
-    const config = defineConfig([
-      ...Object.keys(entry).reduce((ret: Options[], key: string) => {
+    console.log("⚡ Building with the following entry points: ", entry);
+    const config = defineConfig(
+      Object.keys(entry).reduce((ret: Options[], key: string) => {
         const getConfigOptions = {
           ...options,
           define: {
@@ -550,7 +551,7 @@ ${externalDependencies
 
         return ret;
       }, [])
-    ]);
+    );
 
     if (typeof config === "function") {
       await build(await Promise.resolve(config({})));
