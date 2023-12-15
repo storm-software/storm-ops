@@ -1,3 +1,10 @@
+# [1.31.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.30.14...create-storm-workspace-v1.31.0) (2023-12-15)
+
+
+### Features
+
+* **design-tools:** Added design tools package to support storm design systems ([187a38f](https://github.com/storm-software/storm-ops/commit/187a38fc7ce8f992ff96ad210058089da909f1b6))
+
 ## [1.30.14](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.30.13...create-storm-workspace-v1.30.14) (2023-12-15)
 
 
