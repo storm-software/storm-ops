@@ -1,3 +1,10 @@
+## [1.30.13](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.30.12...create-storm-workspace-v1.30.13) (2023-12-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolve issue with type generations ([0873d59](https://github.com/storm-software/storm-ops/commit/0873d5947d6ef4540ccb55e0363801eb6ec3af7a))
+
 ## [1.30.12](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.30.11...create-storm-workspace-v1.30.12) (2023-12-15)
 
 
