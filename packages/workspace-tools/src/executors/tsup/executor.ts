@@ -364,15 +364,15 @@ ${externalDependencies
           if (!ret[packageJsonKey]) {
             ret[packageJsonKey] = {
               import: {
-                types: `./dist/modern/${key}.d.ts`,
+                types: "./dist/modern/index.d.ts",
                 default: `./dist/modern/${key}.js`
               },
               require: {
-                types: `./dist/modern/${key}.d.cts`,
+                types: "./dist/modern/index.d.cts",
                 default: `./dist/modern/${key}.cjs`
               },
               default: {
-                types: `./dist/modern/${key}.d.ts`,
+                types: "./dist/modern/index.d.ts",
                 default: `./dist/modern/${key}.js`
               }
             };
@@ -502,56 +502,47 @@ ${externalDependencies
 
     // #region Run the build process
 
-    console.log("⚡ Building with the following entry points: ", entry);
-    const config = defineConfig(
-      Object.keys(entry).reduce((ret: Options[], key: string) => {
-        const getConfigOptions = {
-          ...options,
-          define: {
-            __STORM_CONFIG: JSON.stringify(stormEnv)
-          },
-          env: {
-            __STORM_CONFIG: JSON.stringify(stormEnv),
-            ...stormEnv
-          },
-          dtsTsConfig: getNormalizedTsConfig(
+    const getConfigOptions = {
+      ...options,
+      define: {
+        __STORM_CONFIG: JSON.stringify(stormEnv)
+      },
+      env: {
+        __STORM_CONFIG: JSON.stringify(stormEnv),
+        ...stormEnv
+      },
+      dtsTsConfig: getNormalizedTsConfig(
+        context.root,
+        options.outputPath,
+        createTypeScriptCompilationOptions(
+          normalizeOptions(
+            {
+              ...options,
+              watch: false,
+              main: options.entry,
+              transformers: []
+            },
             context.root,
-            options.outputPath,
-            createTypeScriptCompilationOptions(
-              normalizeOptions(
-                {
-                  ...options,
-                  watch: false,
-                  main: entry[key],
-                  transformers: []
-                },
-                context.root,
-                sourceRoot,
-                workspaceRoot
-              ),
-              context
-            )
+            sourceRoot,
+            workspaceRoot
           ),
-          banner: options.banner
-            ? {
-                js: `${options.banner}\n\n`,
-                css: `/* \n${options.banner}\n */\n\n`
-              }
-            : undefined,
-          outputPath: options.outputPath,
-          entry: { [key]: entry[key] }
-        };
+          context
+        )
+      ),
+      banner: options.banner
+        ? {
+            js: `${options.banner}\n\n`,
+            css: `/* \n${options.banner}\n */\n\n`
+          }
+        : undefined,
+      outputPath: options.outputPath,
+      entry
+    };
 
-        ret.push(
-          getConfig(context.root, projectRoot, legacyConfig, getConfigOptions)
-        );
-        ret.push(
-          getConfig(context.root, projectRoot, modernConfig, getConfigOptions)
-        );
-
-        return ret;
-      }, [])
-    );
+    const config = defineConfig([
+      getConfig(context.root, projectRoot, legacyConfig, getConfigOptions),
+      getConfig(context.root, projectRoot, modernConfig, getConfigOptions)
+    ]);
 
     if (typeof config === "function") {
       await build(await Promise.resolve(config({})));
