@@ -16,18 +16,18 @@ import { environmentPlugin } from "esbuild-plugin-environment";
 import { readFileSync, writeFileSync } from "fs";
 import { removeSync } from "fs-extra";
 import { writeFile } from "fs/promises";
-import { globSync } from "glob";
+import { Path, globSync } from "glob";
 import { fileExists } from "nx/src/utils/fileutils";
 import { dirname, join } from "path";
 import { Options as PrettierOptions, format } from "prettier";
-import { Options, build as tsup } from "tsup";
+import { Options, defineConfig, build as tsup } from "tsup";
 import * as ts from "typescript";
 import { withRunExecutor } from "../../base/base-executor";
 import { removeExtension } from "../../utils/file-path-utils";
 import { getProjectConfigurations } from "../../utils/get-project-configurations";
 import { getExternalDependencies } from "../../utils/get-project-deps";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
-import { getConfig } from "./get-config";
+import { getConfig, modernConfig } from "./get-config";
 import { TsupExecutorSchema } from "./schema";
 
 type PackageConfiguration = {
@@ -237,6 +237,54 @@ ${externalDependencies
       endOfLine: "lf"
     };
 
+    const entryPoints = [];
+    if (options.entry) {
+      entryPoints.push(options.entry);
+    }
+    if (options.emitOnAll !== false) {
+      entryPoints.push(joinPathFragments(sourceRoot, "**/*.{ts,tsx}"));
+    }
+    if (options.additionalEntryPoints) {
+      entryPoints.push(...options.additionalEntryPoints);
+    }
+
+    const entry = globSync(entryPoints, {
+      withFileTypes: true
+    }).reduce((ret, filePath: Path) => {
+      let formattedPath = workspaceRoot.replaceAll("\\", "/");
+      if (formattedPath.toUpperCase().startsWith("C:")) {
+        // Handle starting pattern for Window's paths
+        formattedPath = formattedPath.substring(2);
+      }
+
+      let propertyKey = joinPathFragments(
+        filePath.path,
+        removeExtension(filePath.name)
+      )
+        .replaceAll("\\", "/")
+        .replaceAll(formattedPath, "")
+        .replaceAll(sourceRoot, "")
+        .replaceAll(projectRoot, "");
+
+      if (propertyKey) {
+        while (propertyKey.startsWith("/")) {
+          propertyKey = propertyKey.substring(1);
+        }
+
+        console.debug(
+          `Trying to add entry point ${propertyKey} at "${joinPathFragments(
+            filePath.path,
+            filePath.name
+          )}"`
+        );
+        if (!(propertyKey in ret)) {
+          ret[propertyKey] = joinPathFragments(filePath.path, filePath.name);
+        }
+      }
+
+      return ret;
+    }, {});
+
     if (options.generatePackageJson !== false) {
       const projectGraph = readCachedProjectGraph();
       const pathToPackageJson = join(context.root, projectRoot, "package.json");
@@ -288,20 +336,6 @@ ${externalDependencies
             types: "./dist/modern/index.d.ts",
             default: "./dist/modern/index.js"
           },
-          "./*": {
-            "import": {
-              types: "./dist/modern/index.d.ts",
-              default: "./dist/modern/**/*.js"
-            },
-            require: {
-              types: "./dist/modern/index.d.cts",
-              default: "./dist/modern/**/*.cjs"
-            },
-            "default": {
-              types: "./dist/modern/index.d.ts",
-              default: "./dist/modern/**/*.js"
-            }
-          },
           ...(options.additionalEntryPoints ?? []).map(entryPoint => ({
             [removeExtension(entryPoint).replace(sourceRoot, "")]: {
               types: join(
@@ -317,6 +351,31 @@ ${externalDependencies
         },
         "./package.json": "./package.json"
       };
+
+      packageJson.exports = Object.keys(entry).reduce(
+        (ret: Record<string, any>, key: string) => {
+          const packageJsonKey = key.startsWith("./") ? key : `./${key}`;
+          if (!ret[packageJsonKey]) {
+            ret[packageJsonKey] = {
+              import: {
+                types: `./dist/modern/${key}.d.ts`,
+                default: `./dist/modern/${key}.js`
+              },
+              require: {
+                types: `./dist/modern/${key}.d.cts`,
+                default: `./dist/modern/${key}.cjs`
+              },
+              default: {
+                types: `./dist/modern/${key}.d.ts`,
+                default: `./dist/modern/${key}.js`
+              }
+            };
+          }
+
+          return ret;
+        },
+        packageJson.exports
+      );
 
       packageJson.funding ??= workspacePackageJson.funding;
 
@@ -437,41 +496,51 @@ ${externalDependencies
 
     // #region Run the build process
 
-    const config = getConfig(context.root, projectRoot, sourceRoot, {
-      ...options,
-      define: {
-        __STORM_CONFIG: JSON.stringify(stormEnv)
-      },
-      env: {
-        __STORM_CONFIG: JSON.stringify(stormEnv),
-        ...stormEnv
-      },
-      dtsTsConfig: getNormalizedTsConfig(
-        context.root,
-        options.outputPath,
-        createTypeScriptCompilationOptions(
-          normalizeOptions(
-            {
-              ...options,
-              watch: false,
-              main: options.entry,
-              transformers: []
+    const config = defineConfig([
+      ...Object.keys(entry).reduce((ret: Options[], key: string) => {
+        ret.push(
+          getConfig(context.root, projectRoot, modernConfig, {
+            ...options,
+            define: {
+              __STORM_CONFIG: JSON.stringify(stormEnv)
             },
-            context.root,
-            sourceRoot,
-            workspaceRoot
-          ),
-          context
-        )
-      ),
-      banner: options.banner
-        ? {
-            js: `${options.banner}\n\n`,
-            css: `/* \n${options.banner}\n */\n\n`
-          }
-        : undefined,
-      outputPath: options.outputPath
-    });
+            env: {
+              __STORM_CONFIG: JSON.stringify(stormEnv),
+              ...stormEnv
+            },
+            dtsTsConfig: getNormalizedTsConfig(
+              context.root,
+              options.outputPath,
+              createTypeScriptCompilationOptions(
+                normalizeOptions(
+                  {
+                    ...options,
+                    watch: false,
+                    main: key,
+                    transformers: []
+                  },
+                  context.root,
+                  sourceRoot,
+                  workspaceRoot
+                ),
+                context
+              )
+            ),
+            banner: options.banner
+              ? {
+                  js: `${options.banner}\n\n`,
+                  css: `/* \n${options.banner}\n */\n\n`
+                }
+              : undefined,
+            outputPath: options.outputPath,
+            entry: key
+          })
+        );
+
+        return ret;
+      }, [])
+    ]);
+
     if (typeof config === "function") {
       await build(await Promise.resolve(config({})));
     } else {

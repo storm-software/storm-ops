@@ -1,8 +1,6 @@
 import { joinPathFragments } from "@nx/devkit";
-import { Path, globSync } from "glob";
-import { Options, defineConfig } from "tsup";
+import { Options } from "tsup";
 import type { ParsedCommandLine } from "typescript";
-import { removeExtension } from "../../utils/file-path-utils";
 import { TsupExecutorSchema } from "./schema";
 
 type Entry = string | string[] | Record<string, string>;
@@ -68,7 +66,7 @@ export function modernConfig({
             "opera77",
             "esnext"
           ]
-        : ["esnext", "node18"],
+        : ["esnext", "node"],
     tsconfig,
     splitting,
     generatePackageJson,
@@ -273,7 +271,7 @@ export function workerConfig({
 export function getConfig(
   workspaceRoot: string,
   projectRoot: string,
-  sourceRoot: string,
+  getConfigFn: (options: GetConfigParams) => Options,
   {
     outputPath,
     tsConfig,
@@ -283,70 +281,14 @@ export function getConfig(
     ...rest
   }: TsupGetConfigOptions
 ) {
-  const entryPoints = [];
-  if (rest.entry) {
-    entryPoints.push(rest.entry);
-  }
-  if (emitOnAll !== false) {
-    entryPoints.push(joinPathFragments(sourceRoot, "**/*.{ts,tsx}"));
-  }
-  if (additionalEntryPoints) {
-    entryPoints.push(...additionalEntryPoints);
-  }
-
-  const entry = globSync(entryPoints, {
-    withFileTypes: true
-  }).reduce((ret, filePath: Path) => {
-    let formattedPath = workspaceRoot.replaceAll("\\", "/");
-    if (formattedPath.toUpperCase().startsWith("C:")) {
-      // Handle starting pattern for Window's paths
-      formattedPath = formattedPath.substring(2);
-    }
-
-    let propertyKey = joinPathFragments(
-      filePath.path,
-      removeExtension(filePath.name)
-    )
-      .replaceAll("\\", "/")
-      .replaceAll(formattedPath, "")
-      .replaceAll(sourceRoot, "")
-      .replaceAll(projectRoot, "");
-
-    if (propertyKey) {
-      while (propertyKey.startsWith("/")) {
-        propertyKey = propertyKey.substring(1);
-      }
-
-      console.debug(
-        `Trying to add entry point ${propertyKey} at "${joinPathFragments(
-          filePath.path,
-          filePath.name
-        )}"`
-      );
-      if (!(propertyKey in ret)) {
-        ret[propertyKey] = joinPathFragments(filePath.path, filePath.name);
-      }
-    }
-
-    return ret;
-  }, {});
-
-  const params = {
+  return getConfigFn({
     ...rest,
-    entry,
     outDir: outputPath,
     tsconfig: tsConfig,
     workspaceRoot,
     projectRoot,
-    sourceRoot,
     platform
-  };
-
-  if (platform === "worker") {
-    return defineConfig(workerConfig(params));
-  }
-
-  return defineConfig([modernConfig(params), legacyConfig(params)]);
+  });
 }
 
 const outExtension = ({ format }) => {
