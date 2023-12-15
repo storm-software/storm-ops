@@ -1,3 +1,10 @@
+## [1.30.11](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.30.10...create-storm-workspace-v1.30.11) (2023-12-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added logging for troubleshooting entry points on build ([7f4d9c1](https://github.com/storm-software/storm-ops/commit/7f4d9c176aa171e0c7bb6f3b073bd233c366a3eb))
+
 ## [1.30.10](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.30.9...create-storm-workspace-v1.30.10) (2023-12-15)
 
 
