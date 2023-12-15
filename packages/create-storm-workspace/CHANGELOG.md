@@ -1,3 +1,10 @@
+## [1.30.14](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.30.13...create-storm-workspace-v1.30.14) (2023-12-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Supply version number for node in modern build ([90e69eb](https://github.com/storm-software/storm-ops/commit/90e69ebdf35752eedc4a47dfa9fe4ba17a3dbb5b))
+
 ## [1.30.13](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.30.12...create-storm-workspace-v1.30.13) (2023-12-15)
 
 
