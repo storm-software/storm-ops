@@ -18,6 +18,8 @@
     "paths": {
       "@storm-software/config-tools": ["packages/config-tools/src/index.ts"],
       "@storm-software/config-tools/*": ["packages/config-tools/src/*"],
+      "@storm-software/design-tools": ["packages/design-tools/src/index.ts"],
+      "@storm-software/design-tools/*": ["packages/design-tools/src/*"],
       "@storm-software/git-tools": ["packages/git-tools/src/index.ts"],
       "@storm-software/git-tools/*": ["packages/git-tools/*"],
       "@storm-software/linting-tools": ["packages/linting-tools/src/index.ts"],

@@ -125,6 +125,7 @@
       "@storm-software/linting-tools": "workspace:*",
       "@storm-software/git-tools": "workspace:*",
       "@storm-software/testing-tools": "workspace:*",
+      "@storm-software/design-tools": "workspace:*",
       "@storm-software/config-tools": "workspace:*"
     },
     "patchedDependencies": {
