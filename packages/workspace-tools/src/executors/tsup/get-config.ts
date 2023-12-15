@@ -70,7 +70,7 @@ export function modernConfig({
             "opera77",
             "esnext"
           ]
-        : ["esnext", "node"],
+        : ["esnext", "node20"],
     tsconfig,
     splitting,
     generatePackageJson,
