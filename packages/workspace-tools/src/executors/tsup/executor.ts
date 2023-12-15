@@ -539,7 +539,7 @@ ${externalDependencies
               }
             : undefined,
           outputPath: options.outputPath,
-          entry: entry[key]
+          entry: { [key]: entry[key] }
         };
 
         ret.push(

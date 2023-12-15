@@ -5,9 +5,13 @@ import { TsupExecutorSchema } from "./schema";
 
 type Entry = string | string[] | Record<string, string>;
 
-export type TsupGetConfigOptions = Omit<TsupExecutorSchema, "banner"> & {
+export type TsupGetConfigOptions = Omit<
+  TsupExecutorSchema,
+  "banner" | "entry"
+> & {
   banner?: { js?: string; css?: string };
   dtsTsConfig: ParsedCommandLine;
+  entry: Entry;
 };
 
 type GetConfigParams = Omit<
