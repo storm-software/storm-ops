@@ -1,3 +1,10 @@
+## [1.30.10](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.30.9...workspace-tools-v1.30.10) (2023-12-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated the code to define tsup config ([6d6889e](https://github.com/storm-software/storm-ops/commit/6d6889e81e493dbdb73386e10ea4583246886232))
+
 ## [1.30.9](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.30.8...workspace-tools-v1.30.9) (2023-12-15)
 
 
