@@ -1,3 +1,10 @@
+## [1.30.9](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.30.8...workspace-tools-v1.30.9) (2023-12-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update package.json export to include new options ([480d5d0](https://github.com/storm-software/storm-ops/commit/480d5d06eee301206ac0ed7c03ae6d7a22835b84))
+
 ## [1.30.8](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.30.7...workspace-tools-v1.30.8) (2023-12-14)
 
 
