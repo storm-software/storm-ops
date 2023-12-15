@@ -1,3 +1,10 @@
+## [1.30.12](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.30.11...workspace-tools-v1.30.12) (2023-12-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with bad `entry` option passed to tsup ([39c1ceb](https://github.com/storm-software/storm-ops/commit/39c1ceb98f99f722fe3bce62d6d0154bfd097d00))
+
 ## [1.30.11](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.30.10...workspace-tools-v1.30.11) (2023-12-15)
 
 
