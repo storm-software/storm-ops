@@ -27,7 +27,7 @@ import { removeExtension } from "../../utils/file-path-utils";
 import { getProjectConfigurations } from "../../utils/get-project-configurations";
 import { getExternalDependencies } from "../../utils/get-project-deps";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
-import { getConfig, modernConfig } from "./get-config";
+import { getConfig, legacyConfig, modernConfig } from "./get-config";
 import { TsupExecutorSchema } from "./schema";
 
 type PackageConfiguration = {
@@ -293,11 +293,15 @@ ${externalDependencies
         : { name: context.projectName, version: "0.0.1" };
 
       delete packageJson.dependencies;
-      externalDependencies.forEach(entry => {
-        const packageConfig = entry.node.data as PackageConfiguration;
+      externalDependencies.forEach(externalDependency => {
+        const packageConfig = externalDependency.node
+          .data as PackageConfiguration;
         if (
           packageConfig?.packageName &&
-          !!(projectGraph.externalNodes[entry.node.name]?.type === "npm")
+          !!(
+            projectGraph.externalNodes[externalDependency.node.name]?.type ===
+            "npm"
+          )
         ) {
           const { packageName, version } = packageConfig;
           if (
@@ -309,7 +313,7 @@ ${externalDependencies
 
           packageJson.dependencies ??= {};
           packageJson.dependencies[packageName] = !!projectGraph.nodes[
-            entry.node.name
+            externalDependency.node.name
           ]
             ? "latest"
             : version;
@@ -354,7 +358,9 @@ ${externalDependencies
 
       packageJson.exports = Object.keys(entry).reduce(
         (ret: Record<string, any>, key: string) => {
-          const packageJsonKey = key.startsWith("./") ? key : `./${key}`;
+          let packageJsonKey = key.startsWith("./") ? key : `./${key}`;
+          packageJsonKey = packageJsonKey.replaceAll("/index", "");
+
           if (!ret[packageJsonKey]) {
             ret[packageJsonKey] = {
               import: {
@@ -498,43 +504,48 @@ ${externalDependencies
 
     const config = defineConfig([
       ...Object.keys(entry).reduce((ret: Options[], key: string) => {
+        const getConfigOptions = {
+          ...options,
+          define: {
+            __STORM_CONFIG: JSON.stringify(stormEnv)
+          },
+          env: {
+            __STORM_CONFIG: JSON.stringify(stormEnv),
+            ...stormEnv
+          },
+          dtsTsConfig: getNormalizedTsConfig(
+            context.root,
+            options.outputPath,
+            createTypeScriptCompilationOptions(
+              normalizeOptions(
+                {
+                  ...options,
+                  watch: false,
+                  main: entry[key],
+                  transformers: []
+                },
+                context.root,
+                sourceRoot,
+                workspaceRoot
+              ),
+              context
+            )
+          ),
+          banner: options.banner
+            ? {
+                js: `${options.banner}\n\n`,
+                css: `/* \n${options.banner}\n */\n\n`
+              }
+            : undefined,
+          outputPath: options.outputPath,
+          entry: entry[key]
+        };
+
         ret.push(
-          getConfig(context.root, projectRoot, modernConfig, {
-            ...options,
-            define: {
-              __STORM_CONFIG: JSON.stringify(stormEnv)
-            },
-            env: {
-              __STORM_CONFIG: JSON.stringify(stormEnv),
-              ...stormEnv
-            },
-            dtsTsConfig: getNormalizedTsConfig(
-              context.root,
-              options.outputPath,
-              createTypeScriptCompilationOptions(
-                normalizeOptions(
-                  {
-                    ...options,
-                    watch: false,
-                    main: key,
-                    transformers: []
-                  },
-                  context.root,
-                  sourceRoot,
-                  workspaceRoot
-                ),
-                context
-              )
-            ),
-            banner: options.banner
-              ? {
-                  js: `${options.banner}\n\n`,
-                  css: `/* \n${options.banner}\n */\n\n`
-                }
-              : undefined,
-            outputPath: options.outputPath,
-            entry: key
-          })
+          getConfig(context.root, projectRoot, legacyConfig, getConfigOptions)
+        );
+        ret.push(
+          getConfig(context.root, projectRoot, modernConfig, getConfigOptions)
         );
 
         return ret;

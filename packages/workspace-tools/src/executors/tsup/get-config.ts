@@ -277,7 +277,6 @@ export function getConfig(
     tsConfig,
     additionalEntryPoints,
     platform,
-    emitOnAll = true,
     ...rest
   }: TsupGetConfigOptions
 ) {
