@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/storm-software/storm-ops/compare/config-tools-v1.4.0...config-tools-v1.5.0) (2023-12-15)
+
+
+### Features
+
+* **design-tools:** Added design tools package to support storm design systems ([187a38f](https://github.com/storm-software/storm-ops/commit/187a38fc7ce8f992ff96ad210058089da909f1b6))
+
 # [1.4.0](https://github.com/storm-software/storm-ops/compare/config-tools-v1.3.1...config-tools-v1.4.0) (2023-12-12)
 
 
