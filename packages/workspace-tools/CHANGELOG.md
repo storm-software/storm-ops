@@ -1,3 +1,10 @@
+## [1.31.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.31.1...workspace-tools-v1.31.2) (2023-12-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Ensure dev dependencies are handled correctly in built package.json ([fbd78d2](https://github.com/storm-software/storm-ops/commit/fbd78d2bdc95093436ef0281529a1bc1d409fe35))
+
 ## [1.31.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.31.0...workspace-tools-v1.31.1) (2023-12-17)
 
 
