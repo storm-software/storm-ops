@@ -134,6 +134,10 @@ ${Object.keys(options)
 
     // #region Generate the package.json file
 
+    const pathToPackageJson = join(context.root, projectRoot, "package.json");
+    const packageJson = fileExists(pathToPackageJson)
+      ? readJsonFile(pathToPackageJson)
+      : { name: context.projectName, version: "0.0.1" };
     const workspacePackageJson = readJsonFile(
       join(workspaceRoot, "package.json")
     );
@@ -142,7 +146,7 @@ ${Object.keys(options)
     if (workspacePackageJson?.dependencies) {
       options.external = Object.keys(workspacePackageJson?.dependencies).reduce(
         (ret: string[], key: string) => {
-          if (!options.external.includes(key)) {
+          if (!ret.includes(key)) {
             ret.push(key);
           }
 
@@ -153,17 +157,20 @@ ${Object.keys(options)
     }
 
     let externalDependencies: DependentBuildableProjectNode[] =
-      options.external.reduce((acc, name) => {
-        const externalNode = context.projectGraph.externalNodes[`npm:${name}`];
-        if (externalNode) {
-          acc.push({
-            name,
-            outputs: [],
-            node: externalNode
-          });
+      options.external.reduce((ret, name) => {
+        if (!packageJson?.devDependencies?.[name]) {
+          const externalNode =
+            context.projectGraph.externalNodes[`npm:${name}`];
+          if (externalNode) {
+            ret.push({
+              name,
+              outputs: [],
+              node: externalNode
+            });
+          }
         }
 
-        return acc;
+        return ret;
       }, []);
 
     const implicitDependencies =
@@ -182,16 +189,16 @@ ${Object.keys(options)
 
           const projectConfig = projectConfigs[key];
           if (projectConfig?.targets?.build) {
-            const packageJson = readJsonFile(
+            const projectPackageJson = readJsonFile(
               projectConfig.targets?.build.options.project
             );
 
             if (
-              packageJson?.name &&
-              !options.external.includes(packageJson.name)
+              projectPackageJson?.name &&
+              !options.external.includes(projectPackageJson.name)
             ) {
-              ret.push(packageJson.name);
-              internalDependencies.push(packageJson.name);
+              ret.push(projectPackageJson.name);
+              internalDependencies.push(projectPackageJson.name);
             }
           }
 
@@ -210,7 +217,9 @@ ${Object.keys(options)
           .data as PackageConfiguration;
         if (packageConfig?.packageName) {
           options.external.push(packageConfig.packageName);
-          externalDependencies.push(thirdPartyDependency);
+          if (!packageJson?.devDependencies?.[packageConfig.packageName]) {
+            externalDependencies.push(thirdPartyDependency);
+          }
         }
       }
     }
@@ -287,10 +296,6 @@ ${externalDependencies
 
     if (options.generatePackageJson !== false) {
       const projectGraph = readCachedProjectGraph();
-      const pathToPackageJson = join(context.root, projectRoot, "package.json");
-      const packageJson = fileExists(pathToPackageJson)
-        ? readJsonFile(pathToPackageJson)
-        : { name: context.projectName, version: "0.0.1" };
 
       delete packageJson.dependencies;
       externalDependencies.forEach(externalDependency => {
@@ -306,7 +311,8 @@ ${externalDependencies
           const { packageName, version } = packageConfig;
           if (
             workspacePackageJson.dependencies?.[packageName] ||
-            workspacePackageJson.devDependencies?.[packageName]
+            workspacePackageJson.devDependencies?.[packageName] ||
+            packageJson?.devDependencies?.[packageName]
           ) {
             return;
           }
@@ -321,8 +327,10 @@ ${externalDependencies
       });
 
       internalDependencies.forEach(packageName => {
-        packageJson.dependencies ??= {};
-        packageJson.dependencies[packageName] = "latest";
+        if (!packageJson?.devDependencies?.[packageName]) {
+          packageJson.dependencies ??= {};
+          packageJson.dependencies[packageName] = "latest";
+        }
       });
 
       packageJson.type = "module";
