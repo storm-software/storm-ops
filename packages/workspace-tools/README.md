@@ -16,7 +16,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.org" target="_blank">stormsoftware.org</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.29.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
+[![Version](https://img.shields.io/badge/version-1.31.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
 [![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with docusaurus](https://img.shields.io/badge/documented_with-docusaurus-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://docusaurus.io/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <h3 align="center" bold="true">⚠️ <b>Attention</b> ⚠️ This repository, and the apps, libraries, and tools contained within, is still in it's initial development phase. As a result, bugs and issues are expected with it's usage. When the main development phase completes, a proper release will be performed, the packages will be availible through NPM (and other distributions), and this message will be removed. However, in the meantime, please feel free to report any issues you may come across.</h3><br />
@@ -103,7 +103,7 @@ The following executor options are available:
  | assets      | `array`    | List of static assets.     | `[]`     | 
  | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
  | includeSrc      | `boolean`    | Should the source files be added to the distribution folder in an \`src\` directory.     |     | 
- | packageAll      | `boolean`    | Should the build run for each file contained in the package individually.     | `true`     | 
+ | emitOnAll      | `boolean`    | Should each file contained in the package be emitted individually.     | `true`     | 
  | generatePackageJson      | `boolean`    | Should a package.json file be generated in the output folder or should the existing one be copied in.     | `true`     | 
  | splitting      | `boolean`    | Should the build process preform \*code-splitting\*?     | `true`     | 
  | treeshake      | `boolean`    | Should the build process \*tree-shake\* to remove unused code?     | `true`     | 
@@ -179,6 +179,45 @@ nx run my-project:tsup-browser
 ```
 
 **Please note:** _The tsup-browser executor should be included in the desired projects's `project.json` file._ 
+
+
+
+## Design Tokens Code Builder
+
+Create styling source code from design tokens json file(s) exported from Figma Tokens Studio
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:design-tokens
+```
+
+**Please note:** _The design-tokens executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| **inputPath \***    | `string`    | The path to the tokens json file(s) exported from Figma Tokens Studio.     |     | 
+ | **type \***    | "tailwindcss" \| "tamagui" \| "all"     | The type of code to generate based on the supplied tokens (TailWind CSS, Tamagui, etc.).     | "tailwindcss"     | 
+ | **tsConfig \***    | `string`    | Path to the typescript config file.     |     | 
+ | customActions      | `string`    | Path to the ts file exporting the custom actions to register.     |     | 
+ | customFileHeaders      | `string`    | Path to the ts file exporting the custom file headers to register.     |     | 
+ | customFilters      | `string`    | Path to the ts file exporting the custom filters to register.     |     | 
+ | customFormats      | `string`    | Path to the ts file exporting the custom formats to register.     |     | 
+ | customParsers      | `string`    | Path to the ts file exporting the custom parsers to register.     |     | 
+ | customTransformGroups      | `string`    | Path to the ts file exporting the custom transform groups to register.     |     | 
+ | customTransforms      | `string`    | Path to the ts file exporting the custom transform to register.     |     | 
+ | outputPath      | `string`    | The output path of the generated files.     |     | 
+ | deleteOutputPath      | `boolean`    | Delete the output path before building.     | `true`     | 
+ | platform      | `string`    | Build only the passed platform defined in the configuration.     |     | 
+
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
 
 
 
