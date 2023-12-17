@@ -1,4 +1,4 @@
-<div align="center"><img src="https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-banner.png" width="100%" altText="storm-ops" /></div>
+<div align="center"><img src="https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-banner.png" width="100%" alt="Storm Software" /></div>
 
 <br />
 <div align="center">
@@ -174,7 +174,7 @@ Run `pnpm graph` to see a diagram of the dependencies of the Open System project
 
 Nx caches the output of any previously run command such as testing and building, so it can replay the cached results instead of rerunning it. Nx Cloud allows you to share the computation cache across everyone in your team and CI.
 
-<p align="center"><img src="https://pub-4661138852db4e5da99a6660fbf9b633.r2.dev/Nx Cloud - Dashboard.png" width="100%" altText="Nx Cloud - Dashboard" /></p>
+<p align="center"><img src="https://pub-4661138852db4e5da99a6660fbf9b633.r2.dev/Nx Cloud - Dashboard.png" width="100%" alt="Nx Cloud - Dashboard" /></p>
 
 ## Distributed Computation Caching & Distributed Task Execution
 
@@ -260,7 +260,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 <h1 align="center"></h1>
 <br />
 <div align="center">
-  <img src="https://pub-e71cff0f90204755bc910518d63cacf8.r2.dev/logo-opengraph.gif" width="100%"/>
+  <img src="https://pub-e71cff0f90204755bc910518d63cacf8.r2.dev/logo-opengraph.gif" width="100%" alt="Storm Software" />
 </div>
 <div align="center">
 <a href="https://stormsoftware.org" target="_blank">Website</a>  |  <a href="https://stormsoftware.org/contact" target="_blank">Contact</a>  |  <a href="https://linkedin.com/in/patrick-sullivan-865526b0" target="_blank">LinkedIn</a>  |  <a href="https://medium.com/@pat.joseph.sullivan" target="_blank">Medium</a>  | <a href="https://github.com/sullivanpj" target="_blank">GitHub</a>  |  <a href="https://keybase.io/sullivanp" target="_blank">OpenPGP Key</a>

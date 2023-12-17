@@ -269,7 +269,7 @@ function prepareEnv(
     GIT_COMMITTER_NAME: committerName,
     GIT_COMMITTER_EMAIL: `${committerName}@users.noreply.github.com`,
     ...env,
-    STORM_REPO_URL: context.workspaceDir
+    STORM_REPOSITORY: context.workspaceDir
       ? context.workspaceDir
       : env.STORM_REPOSITORY
   });

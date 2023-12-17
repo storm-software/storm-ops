@@ -17,7 +17,7 @@ env:
   CI: true
   NX_VERBOSE_LOGGING: true
   STORM_WORKER: stormie-bot
-  STORM_REPO_URL: https://github.com/<%= organization %>/<%= name %>
+  STORM_REPOSITORY: ${{ github.repositoryUrl }}
   STORM_WORKSPACE_ROOT: ${{ github.workspace }}
   NX_BASE: ${{ github.base_ref }}
   NX_HEAD: ${{ github.head_ref }}
@@ -87,5 +87,5 @@ jobs:
           NODE_AUTH_TOKEN: ${{ env.NPM_TOKEN }}
           STORM_WORKER: ${{ env.STORM_WORKER }}
           STORM_WORKSPACE_ROOT: ${{ github.workspace }}
-          STORM_REPO_URL: ${{ github.repositoryUrl }}
+          STORM_REPOSITORY: ${{ github.repositoryUrl }}
           TAG: ${{ inputs.tag }}
