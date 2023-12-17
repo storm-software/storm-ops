@@ -74,7 +74,7 @@
     "emitOnAll": {
       "type": "boolean",
       "description": "Should each file contained in the package be emitted individually.",
-      "default": true
+      "default": false
     },
     "generatePackageJson": {
       "type": "boolean",

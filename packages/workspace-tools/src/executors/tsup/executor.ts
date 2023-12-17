@@ -250,7 +250,7 @@ ${externalDependencies
     if (options.entry) {
       entryPoints.push(options.entry);
     }
-    if (options.emitOnAll !== false) {
+    if (options.emitOnAll === true) {
       entryPoints.push(joinPathFragments(sourceRoot, "**/*.{ts,tsx}"));
     }
     if (options.additionalEntryPoints) {
@@ -658,7 +658,7 @@ export const applyDefaultOptions = (
   options.apiReport ??= true;
   options.docModel ??= true;
   options.tsdocMetadata ??= true;
-  options.emitOnAll ??= true;
+  options.emitOnAll ??= false;
   options.define ??= {};
   options.env ??= {};
   options.verbose ??= !!process.env.CI;
