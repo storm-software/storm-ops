@@ -1,3 +1,10 @@
+## [1.31.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.0...create-storm-workspace-v1.31.1) (2023-12-17)
+
+
+### Bug Fixes
+
+* **git-tools:** Update the env names to align with config parameters ([f7438f0](https://github.com/storm-software/storm-ops/commit/f7438f048d52a598bb11e742b1549153e58237c8))
+
 # [1.31.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.30.14...create-storm-workspace-v1.31.0) (2023-12-15)
 
 
