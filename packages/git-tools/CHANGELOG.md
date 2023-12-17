@@ -1,3 +1,10 @@
+## [1.17.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.17.0...git-tools-v1.17.1) (2023-12-17)
+
+
+### Bug Fixes
+
+* **git-tools:** Update the env names to align with config parameters ([f7438f0](https://github.com/storm-software/storm-ops/commit/f7438f048d52a598bb11e742b1549153e58237c8))
+
 # [1.17.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.16.0...git-tools-v1.17.0) (2023-12-15)
 
 
