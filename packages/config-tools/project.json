@@ -34,11 +34,6 @@
           },
           {
             "input": "./packages/config-tools",
-            "glob": "package.json",
-            "output": "."
-          },
-          {
-            "input": "./packages/config-tools",
             "glob": "declarations.d.ts",
             "output": "."
           }
@@ -53,9 +48,9 @@
             "verbose": true
           }
         }
-      },
-      "lint": {},
-      "test": {}
-    }
+      }
+    },
+    "lint": {},
+    "test": {}
   }
 }
