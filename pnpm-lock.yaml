@@ -162,6 +162,15 @@ importers:
       cosmiconfig:
         specifier: ^9.0.0
         version: 9.0.0(typescript@5.2.2)
+      find-up:
+        specifier: ^7.0.0
+        version: 7.0.0
+      fp-ts:
+        specifier: ^2.16.1
+        version: 2.16.1
+      locate-path:
+        specifier: ^7.2.0
+        version: 7.2.0
       zod:
         specifier: ^3.22.4
         version: 3.22.4
@@ -10660,6 +10669,18 @@ packages:
       path-exists: 5.0.0
     dev: false
 
+  /find-up@7.0.0:
+    resolution:
+      {
+        integrity: sha512-YyZM99iHrqLKjmt4LJDj58KI+fYyufRLBSYcqycxf//KpBk9FoewoGX0450m9nB44qrZnovzC2oeP5hUibxc/g==
+      }
+    engines: { node: ">=18" }
+    dependencies:
+      locate-path: 7.2.0
+      path-exists: 5.0.0
+      unicorn-magic: 0.1.0
+    dev: false
+
   /find-value@1.0.12:
     resolution:
       {
@@ -10793,6 +10814,13 @@ packages:
         integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==
       }
     engines: { node: ">= 0.6" }
+    dev: false
+
+  /fp-ts@2.16.1:
+    resolution:
+      {
+        integrity: sha512-by7U5W8dkIzcvDofUcO42yl9JbnHTEDBrzu3pt5fKT+Z4Oy85I21K80EYJYdjQGC2qum4Vo55Ag57iiIK4FYuA==
+      }
     dev: false
 
   /fresh@0.5.2:

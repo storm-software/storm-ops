@@ -55,7 +55,11 @@ export const getDefaultConfig = (
   let license = DefaultStormConfig.license;
   let homepage = DefaultStormConfig.homepage;
 
-  const workspaceRoot = getWorkspaceRoot() ?? process.cwd();
+  const workspaceRoot = findWorkspaceRoot(process.cwd());
+  if (typeof workspaceRoot !== "string") {
+    throw new Error("Could not find workspace root");
+  }
+
   if (existsSync(join(workspaceRoot, "package.json"))) {
     const file = readFileSync(join(workspaceRoot, "package.json"), {
       encoding: "utf-8"
@@ -84,12 +88,4 @@ export const getDefaultConfig = (
       extensions: {}
     })
   ) as StormConfig;
-};
-
-const getWorkspaceRoot = () => {
-  const root = findWorkspaceRoot(process.cwd());
-  process.env.STORM_WORKSPACE_ROOT ??= root?.dir;
-  process.env.NX_WORKSPACE_ROOT_PATH ??= root?.dir;
-
-  return root?.dir;
 };

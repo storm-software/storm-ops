@@ -9,6 +9,9 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "main": "packages/config-tools/src/index.ts",
+        "additionalEntryPoints": [
+          "packages/config-tools/src/utilities/find-workspace-root.ts"
+        ],
         "outputPath": "dist/packages/config-tools",
         "tsConfig": "packages/config-tools/tsconfig.json",
         "project": "packages/config-tools/package.json",
