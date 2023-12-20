@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.1...config-tools-v1.5.2) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Added esm to the build ([48d834e](https://github.com/storm-software/storm-ops/commit/48d834ea0f801017c591a51d675044f14b7fb213))
+
 ## [1.5.1](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.0...config-tools-v1.5.1) (2023-12-20)
 
 
