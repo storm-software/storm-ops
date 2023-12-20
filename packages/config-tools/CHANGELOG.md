@@ -1,3 +1,10 @@
+## [1.5.5](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.4...config-tools-v1.5.5) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Update project config to no longer bundle ([06b72cd](https://github.com/storm-software/storm-ops/commit/06b72cdea2b85826571d177dad1cb352769c0f76))
+
 ## [1.5.4](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.3...config-tools-v1.5.4) (2023-12-20)
 
 
