@@ -1,3 +1,10 @@
+## [1.5.4](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.3...config-tools-v1.5.4) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Resovled issue in project.json and package.json import fields ([1c5c665](https://github.com/storm-software/storm-ops/commit/1c5c6658c7ab1322ba6f33032c1c304628d31ece))
+
 ## [1.5.3](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.2...config-tools-v1.5.3) (2023-12-20)
 
 
