@@ -1,3 +1,10 @@
+## [1.17.2](https://github.com/storm-software/storm-ops/compare/git-tools-v1.17.1...git-tools-v1.17.2) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Update project config to no longer bundle ([06b72cd](https://github.com/storm-software/storm-ops/commit/06b72cdea2b85826571d177dad1cb352769c0f76))
+
 ## [1.17.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.17.0...git-tools-v1.17.1) (2023-12-17)
 
 
