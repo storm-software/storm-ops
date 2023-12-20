@@ -1,3 +1,10 @@
+## [1.31.7](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.31.6...workspace-tools-v1.31.7) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Resovled issue in project.json and package.json import fields ([1c5c665](https://github.com/storm-software/storm-ops/commit/1c5c6658c7ab1322ba6f33032c1c304628d31ece))
+
 ## [1.31.6](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.31.5...workspace-tools-v1.31.6) (2023-12-20)
 
 
