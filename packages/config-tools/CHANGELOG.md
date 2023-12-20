@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.2...config-tools-v1.5.3) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issues to ensure support for cjs and esm builds ([90a6379](https://github.com/storm-software/storm-ops/commit/90a63798156c3984697e69e685bd3e8cbd02a06f))
+
 ## [1.5.2](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.1...config-tools-v1.5.2) (2023-12-20)
 
 

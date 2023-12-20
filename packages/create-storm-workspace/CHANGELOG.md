@@ -1,3 +1,10 @@
+## [1.31.6](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.5...create-storm-workspace-v1.31.6) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issues to ensure support for cjs and esm builds ([90a6379](https://github.com/storm-software/storm-ops/commit/90a63798156c3984697e69e685bd3e8cbd02a06f))
+
 ## [1.31.5](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.4...create-storm-workspace-v1.31.5) (2023-12-20)
 
 
