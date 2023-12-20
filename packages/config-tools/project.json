@@ -15,7 +15,7 @@
         "defaultConfiguration": "production",
         "platform": "node",
         "deleteOutputPath": true,
-        "bundle": false,
+        "bundle": true,
         "thirdParty": false,
         "skipTypeCheck": false,
         "metafile": true,
