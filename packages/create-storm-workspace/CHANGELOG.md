@@ -1,3 +1,10 @@
+## [1.31.9](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.8...create-storm-workspace-v1.31.9) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Enabled bundling but kept `thirdParty` false ([77f5e54](https://github.com/storm-software/storm-ops/commit/77f5e54495c23998546083c45a8358374bed2104))
+
 ## [1.31.8](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.7...create-storm-workspace-v1.31.8) (2023-12-20)
 
 
