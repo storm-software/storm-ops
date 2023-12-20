@@ -8,6 +8,7 @@
     "url": "https://github.com/storm-software/storm-ops.git",
     "directory": "packages/config-tools"
   },
+  "type": "module",
   "main": "./index.cjs",
   "module": "./index.js",
   "types": "declarations.d.ts",
