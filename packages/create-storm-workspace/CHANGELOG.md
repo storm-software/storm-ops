@@ -1,3 +1,10 @@
+## [1.31.3](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.2...create-storm-workspace-v1.31.3) (2023-12-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Set default value of `emitOnAll` build option to `false` for now ([7627ca8](https://github.com/storm-software/storm-ops/commit/7627ca8641bd80b2d570db7a70108f02c98ae271))
+
 ## [1.31.2](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.1...create-storm-workspace-v1.31.2) (2023-12-17)
 
 
