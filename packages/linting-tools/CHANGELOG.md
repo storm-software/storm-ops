@@ -1,3 +1,10 @@
+## [1.18.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.18.0...linting-tools-v1.18.1) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Added more accurate search for workspace root ([c418b08](https://github.com/storm-software/storm-ops/commit/c418b08c8bb8917e562bef50cb324d66244d98a3))
+
 # [1.18.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.17.0...linting-tools-v1.18.0) (2023-12-15)
 
 
