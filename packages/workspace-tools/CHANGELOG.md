@@ -1,3 +1,10 @@
+## [1.31.10](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.31.9...workspace-tools-v1.31.10) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Mark the package type as module ([3ca24c0](https://github.com/storm-software/storm-ops/commit/3ca24c0149ce2a56d2b64f69441b0f8f7efa76a5))
+
 ## [1.31.9](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.31.8...workspace-tools-v1.31.9) (2023-12-20)
 
 
