@@ -1,3 +1,10 @@
+## [1.5.7](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.6...config-tools-v1.5.7) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Mark the package type as module ([3ca24c0](https://github.com/storm-software/storm-ops/commit/3ca24c0149ce2a56d2b64f69441b0f8f7efa76a5))
+
 ## [1.5.6](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.5...config-tools-v1.5.6) (2023-12-20)
 
 
