@@ -1,3 +1,10 @@
+## [1.31.5](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.4...create-storm-workspace-v1.31.5) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Added esm to the build ([48d834e](https://github.com/storm-software/storm-ops/commit/48d834ea0f801017c591a51d675044f14b7fb213))
+
 ## [1.31.4](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.3...create-storm-workspace-v1.31.4) (2023-12-20)
 
 
