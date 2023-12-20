@@ -1,3 +1,10 @@
+## [1.5.6](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.5...config-tools-v1.5.6) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Enabled bundling but kept `thirdParty` false ([77f5e54](https://github.com/storm-software/storm-ops/commit/77f5e54495c23998546083c45a8358374bed2104))
+
 ## [1.5.5](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.4...config-tools-v1.5.5) (2023-12-20)
 
 
