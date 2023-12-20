@@ -1,3 +1,10 @@
+## [1.31.4](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.3...create-storm-workspace-v1.31.4) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Update package tools to bundle dependencies ([982a31b](https://github.com/storm-software/storm-ops/commit/982a31bbfe0505064592f62b6e8a2936e0850aac))
+
 ## [1.31.3](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.2...create-storm-workspace-v1.31.3) (2023-12-17)
 
 
