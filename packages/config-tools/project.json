@@ -20,7 +20,7 @@
         "skipTypeCheck": false,
         "metafile": true,
         "minify": false,
-        "format": ["cjs"],
+        "format": ["cjs", "esm"],
         "esbuildOptions": {
           "outExtension": {
             ".js": ".js"
