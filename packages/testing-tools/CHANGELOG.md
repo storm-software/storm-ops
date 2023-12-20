@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.15.0...testing-tools-v1.15.1) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Added more accurate search for workspace root ([c418b08](https://github.com/storm-software/storm-ops/commit/c418b08c8bb8917e562bef50cb324d66244d98a3))
+
 # [1.15.0](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.14.0...testing-tools-v1.15.0) (2023-12-15)
 
 
