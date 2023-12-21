@@ -1,8 +1,8 @@
 import { existsSync, readFileSync } from "fs";
-import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root.js";
 import { join } from "path";
 import { StormConfigSchema } from "../schema";
 import { ColorConfig, StormConfig } from "../types";
+import { findWorkspaceRoot } from "./find-workspace-root";
 
 /**
  * Storm theme config values used for styling various workspace elements
@@ -56,10 +56,6 @@ export const getDefaultConfig = (
   let homepage = DefaultStormConfig.homepage;
 
   const workspaceRoot = findWorkspaceRoot(process.cwd());
-  if (typeof workspaceRoot !== "string") {
-    throw new Error("Could not find workspace root");
-  }
-
   if (existsSync(join(workspaceRoot, "package.json"))) {
     const file = readFileSync(join(workspaceRoot, "package.json"), {
       encoding: "utf-8"

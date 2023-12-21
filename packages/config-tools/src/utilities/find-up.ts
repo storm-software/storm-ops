@@ -1,5 +1,5 @@
 import { locatePath, locatePathSync } from "locate-path";
-import path from "path";
+import * as path from "path";
 import { fileURLToPath } from "url";
 
 export interface FindUpOptions {
