@@ -1,3 +1,10 @@
+## [1.5.14](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.13...config-tools-v1.5.14) (2023-12-21)
+
+
+### Bug Fixes
+
+* **config-tools:** Update declaration types ([8ca8850](https://github.com/storm-software/storm-ops/commit/8ca8850c5ba1d92e7bc3fa273f332cf8c1acce18))
+
 ## [1.5.13](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.12...config-tools-v1.5.13) (2023-12-21)
 
 
