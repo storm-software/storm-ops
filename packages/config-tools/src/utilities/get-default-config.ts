@@ -46,7 +46,8 @@ export const DefaultStormConfig: Omit<StormConfig, "name"> = {
  * @returns The default Storm config values
  */
 export const getDefaultConfig = (
-  config: Partial<StormConfig> = {}
+  config: Partial<StormConfig> = {},
+  root?: string
 ): StormConfig => {
   let name = "storm-workspace";
   let namespace = "storm-software";
@@ -55,7 +56,7 @@ export const getDefaultConfig = (
   let license = DefaultStormConfig.license;
   let homepage = DefaultStormConfig.homepage;
 
-  const workspaceRoot = findWorkspaceRoot();
+  const workspaceRoot = findWorkspaceRoot(root);
   if (existsSync(join(workspaceRoot, "package.json"))) {
     const file = readFileSync(join(workspaceRoot, "package.json"), {
       encoding: "utf-8"

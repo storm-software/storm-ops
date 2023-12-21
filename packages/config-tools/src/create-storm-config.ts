@@ -12,6 +12,15 @@ let _static_cache: StormConfig | undefined = undefined;
  *
  * @returns The config for the current Storm workspace
  */
+export const createConfig = (workspaceRoot?: string): StormConfig => {
+  return createStormConfig(undefined, undefined, workspaceRoot);
+};
+
+/**
+ * Get the config for the current Storm workspace
+ *
+ * @returns The config for the current Storm workspace
+ */
 export const createStormConfig = <
   TExtensionName extends
     keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
@@ -19,14 +28,15 @@ export const createStormConfig = <
   TExtensionSchema extends z.ZodTypeAny = z.ZodTypeAny
 >(
   extensionName?: TExtensionName,
-  schema?: TExtensionSchema
+  schema?: TExtensionSchema,
+  workspaceRoot?: string
 ): StormConfig<TExtensionName, TExtensionConfig> => {
   let result!: StormConfig<TExtensionName, TExtensionConfig>;
   if (!_static_cache) {
     let config = getConfigEnv() as StormConfig & {
       [extensionName in TExtensionName]: TExtensionConfig;
     };
-    config = Object.assign(getDefaultConfig(), config);
+    config = Object.assign(getDefaultConfig({}, workspaceRoot), config);
 
     result = StormConfigSchema.parse(config) as StormConfig<
       TExtensionName,
