@@ -1,3 +1,10 @@
+# [1.32.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.31.17...workspace-tools-v1.32.0) (2023-12-21)
+
+
+### Features
+
+* **config-tools:** Publish `findWorkspaceRoot` and `findWorkspaceRootSafe` to package ([e5302ed](https://github.com/storm-software/storm-ops/commit/e5302edc6ceff492f8274b8d48d7c74a5f7a72c7))
+
 ## [1.31.17](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.31.16...workspace-tools-v1.31.17) (2023-12-21)
 
 
