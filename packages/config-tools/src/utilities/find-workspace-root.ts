@@ -33,8 +33,8 @@ const rootFiles = [
 /**
  * Find the monorepo root directory, searching upwards from `path`.
  */
-export function findWorkspaceRoot(pathInsideMonorepo?: string) {
-  const result = process.env.STORM_WORKSPACE_ROOT
+export function findWorkspaceRootSafe(pathInsideMonorepo?: string) {
+  return process.env.STORM_WORKSPACE_ROOT
     ? process.env.STORM_WORKSPACE_ROOT
     : process.env.NX_WORKSPACE_ROOT_PATH
     ? process.env.NX_WORKSPACE_ROOT_PATH
@@ -43,6 +43,13 @@ export function findWorkspaceRoot(pathInsideMonorepo?: string) {
         type: "file",
         limit: 1
       });
+}
+
+/**
+ * Find the monorepo root directory, searching upwards from `path`.
+ */
+export function findWorkspaceRoot(pathInsideMonorepo?: string) {
+  const result = findWorkspaceRootSafe(pathInsideMonorepo);
   if (!result) {
     throw new Error(
       `Cannot find workspace root upwards from known path. Files search list includes: \n${rootFiles.join(

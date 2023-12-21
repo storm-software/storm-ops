@@ -18,6 +18,24 @@ declare type StormConfig<
 export { StormConfig };
 
 /**
+ * Find the root of the current monorepo
+ *
+ * @param pathInsideMonorepo - The path inside the monorepo
+ */
+declare function findWorkspaceRoot(pathInsideMonorepo?: string): string;
+export { findWorkspaceRoot };
+
+/**
+ * Find the root of the current monorepo safely (do not throw an error if it cannot be found)
+ *
+ * @param pathInsideMonorepo - The path inside the monorepo
+ */
+declare function findWorkspaceRootSafe(
+  pathInsideMonorepo?: string
+): string | undefined;
+export { findWorkspaceRootSafe };
+
+/**
  * Type-check to determine if `obj` is a `StormError` object
  *
  * @param value - the object to check
