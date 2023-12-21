@@ -1,3 +1,10 @@
+## [1.5.11](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.10...config-tools-v1.5.11) (2023-12-21)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issue with default config lookup ([4db800a](https://github.com/storm-software/storm-ops/commit/4db800a424e71ba89db29de50f516a725162ded5))
+
 ## [1.5.10](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.9...config-tools-v1.5.10) (2023-12-21)
 
 
