@@ -1,3 +1,10 @@
+# [1.33.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.32.1...workspace-tools-v1.33.0) (2023-12-21)
+
+
+### Features
+
+* **config-tools:** Added the `findWorkspaceRootSync` and `findWorkspaceRootSafeSync` functions ([59e0ee4](https://github.com/storm-software/storm-ops/commit/59e0ee4779a15752fb035d235b929bb3e8ecc974))
+
 ## [1.32.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.32.0...workspace-tools-v1.32.1) (2023-12-21)
 
 
