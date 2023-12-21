@@ -1,3 +1,10 @@
+## [1.31.14](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.31.13...workspace-tools-v1.31.14) (2023-12-21)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issue with default config lookup ([4db800a](https://github.com/storm-software/storm-ops/commit/4db800a424e71ba89db29de50f516a725162ded5))
+
 ## [1.31.13](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.31.12...workspace-tools-v1.31.13) (2023-12-21)
 
 
