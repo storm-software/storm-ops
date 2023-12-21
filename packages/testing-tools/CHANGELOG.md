@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.15.1...testing-tools-v1.15.2) (2023-12-21)
+
+
+### Bug Fixes
+
+* **config-tools:** Remove unused dependencies ([ef00034](https://github.com/storm-software/storm-ops/commit/ef00034e8a79b81147056ee32a12eaa991a0d4f3))
+
 ## [1.15.1](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.15.0...testing-tools-v1.15.1) (2023-12-20)
 
 
