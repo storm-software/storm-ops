@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from "fs";
 import { join } from "path";
 import { StormConfigSchema } from "../schema";
 import { ColorConfig, StormConfig } from "../types";
-import { findWorkspaceRoot } from "./find-workspace-root";
+import { findWorkspaceRootSync } from "./find-workspace-root";
 
 /**
  * Storm theme config values used for styling various workspace elements
@@ -56,7 +56,7 @@ export const getDefaultConfig = (
   let license = DefaultStormConfig.license;
   let homepage = DefaultStormConfig.homepage;
 
-  const workspaceRoot = findWorkspaceRoot(root);
+  const workspaceRoot = findWorkspaceRootSync(root);
   if (existsSync(join(workspaceRoot, "package.json"))) {
     const file = readFileSync(join(workspaceRoot, "package.json"), {
       encoding: "utf-8"

@@ -3,7 +3,7 @@
  * Find the monorepo root directory
  */
 
-import { findUpSync } from "./find-up";
+import { findUp, findUpSync } from "./find-up";
 
 const rootFiles = [
   "lerna.json",
@@ -33,7 +33,28 @@ const rootFiles = [
 /**
  * Find the monorepo root directory, searching upwards from `path`.
  */
-export function findWorkspaceRootSafe(pathInsideMonorepo?: string) {
+export function findWorkspaceRootSafe(
+  pathInsideMonorepo?: string
+): Promise<string | undefined> {
+  return (
+    process.env.STORM_WORKSPACE_ROOT
+      ? process.env.STORM_WORKSPACE_ROOT
+      : process.env.NX_WORKSPACE_ROOT_PATH
+      ? process.env.NX_WORKSPACE_ROOT_PATH
+      : findUp(rootFiles, {
+          cwd: pathInsideMonorepo ?? process.cwd(),
+          type: "file",
+          limit: 1
+        })
+  ) as Promise<string | undefined>;
+}
+
+/**
+ * Find the monorepo root directory, searching upwards from `path`.
+ */
+export function findWorkspaceRootSafeSync(
+  pathInsideMonorepo?: string
+): string | undefined {
   return process.env.STORM_WORKSPACE_ROOT
     ? process.env.STORM_WORKSPACE_ROOT
     : process.env.NX_WORKSPACE_ROOT_PATH
@@ -48,8 +69,26 @@ export function findWorkspaceRootSafe(pathInsideMonorepo?: string) {
 /**
  * Find the monorepo root directory, searching upwards from `path`.
  */
-export function findWorkspaceRoot(pathInsideMonorepo?: string) {
+export function findWorkspaceRoot(
+  pathInsideMonorepo?: string
+): Promise<string> {
   const result = findWorkspaceRootSafe(pathInsideMonorepo);
+  if (!result) {
+    throw new Error(
+      `Cannot find workspace root upwards from known path. Files search list includes: \n${rootFiles.join(
+        "\n"
+      )}\nPath: ${pathInsideMonorepo ? pathInsideMonorepo : process.cwd()}`
+    );
+  }
+
+  return result;
+}
+
+/**
+ * Find the monorepo root directory, searching upwards from `path`.
+ */
+export function findWorkspaceRootSync(pathInsideMonorepo?: string): string {
+  const result = findWorkspaceRootSafeSync(pathInsideMonorepo);
   if (!result) {
     throw new Error(
       `Cannot find workspace root upwards from known path. Files search list includes: \n${rootFiles.join(
