@@ -55,7 +55,7 @@ export const getDefaultConfig = (
   let license = DefaultStormConfig.license;
   let homepage = DefaultStormConfig.homepage;
 
-  const workspaceRoot = findWorkspaceRoot(process.cwd());
+  const workspaceRoot = findWorkspaceRoot();
   if (existsSync(join(workspaceRoot, "package.json"))) {
     const file = readFileSync(join(workspaceRoot, "package.json"), {
       encoding: "utf-8"

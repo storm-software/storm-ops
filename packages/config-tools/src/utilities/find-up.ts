@@ -51,10 +51,16 @@ export async function findUpMultiple(
     };
 
     const matches = [];
-    // eslint-disable-next-line no-constant-condition
     while (true) {
-      // eslint-disable-next-line no-await-in-loop
+      console.debug(
+        `Searching for workspace root files in ${directory} \nOptions: ${JSON.stringify(
+          options
+        )}`
+      );
+
       const foundPath = await runMatcher({ ...options, cwd: directory });
+      console.debug(`Found path specified at ${foundPath}`);
+
       if (foundPath) {
         matches.push(path.resolve(directory, foundPath));
       }

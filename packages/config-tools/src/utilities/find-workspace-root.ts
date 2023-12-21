@@ -3,7 +3,6 @@
  * Find the monorepo root directory
  */
 
-import * as path from "path";
 import { findUpSync } from "./find-up";
 
 const rootFiles = [
@@ -48,7 +47,7 @@ export function findWorkspaceRoot(pathInsideMonorepo?: string) {
     throw new Error(
       `Cannot find workspace root upwards from known path. Files search list includes: \n${rootFiles.join(
         "\n"
-      )}\nPath: ${path}`
+      )}\nPath: ${pathInsideMonorepo ? pathInsideMonorepo : process.cwd()}`
     );
   }
 
