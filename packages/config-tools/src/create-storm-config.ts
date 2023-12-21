@@ -2,6 +2,7 @@ import * as z from "zod";
 import { getConfigEnv, getExtensionEnv } from "./env/get-env";
 import { StormConfigSchema } from "./schema";
 import { StormConfig } from "./types";
+import { getDefaultConfig } from "./utilities/get-default-config";
 
 const _extension_cache = new WeakMap<{ extensionName: string }, any>();
 let _static_cache: StormConfig | undefined = undefined;
@@ -25,6 +26,8 @@ export const createStormConfig = <
     let config = getConfigEnv() as StormConfig & {
       [extensionName in TExtensionName]: TExtensionConfig;
     };
+    config = Object.assign(getDefaultConfig(), config);
+
     result = StormConfigSchema.parse(config) as StormConfig<
       TExtensionName,
       TExtensionConfig
