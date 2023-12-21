@@ -1,3 +1,10 @@
+## [1.31.15](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.14...create-storm-workspace-v1.31.15) (2023-12-21)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issue around path parameter ([eb15b5d](https://github.com/storm-software/storm-ops/commit/eb15b5d8d2344cc8517a5d26b30685ee990cc877))
+
 ## [1.31.14](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.13...create-storm-workspace-v1.31.14) (2023-12-21)
 
 
