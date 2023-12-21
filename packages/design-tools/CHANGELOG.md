@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/storm-software/storm-ops/compare/design-tools-v1.0.1...design-tools-v1.0.2) (2023-12-21)
+
+
+### Bug Fixes
+
+* **config-tools:** Remove unused dependencies ([ef00034](https://github.com/storm-software/storm-ops/commit/ef00034e8a79b81147056ee32a12eaa991a0d4f3))
+
 ## [1.0.1](https://github.com/storm-software/storm-ops/compare/design-tools-v1.0.0...design-tools-v1.0.1) (2023-12-20)
 
 
