@@ -7,7 +7,7 @@ import * as path from "path";
 
 import { Either, alt, chain, fromNullable, map, mapLeft } from "fp-ts/Either";
 import { constant, pipe } from "fp-ts/function";
-import { findUp } from "./find-up";
+import { findUpSync } from "./find-up";
 
 export type WorkspaceRootError = {
   type: string;
@@ -51,8 +51,7 @@ const searchUp = (
   cwd: string
 ): Either<WorkspaceRootError, string> =>
   pipe(
-    // FIXME: this should be async, or at least offer an async version in addition
-    findUp(target, {
+    findUpSync(target, {
       cwd,
       type: "file",
       limit: 1
