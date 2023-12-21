@@ -1,3 +1,10 @@
+## [1.17.3](https://github.com/storm-software/storm-ops/compare/git-tools-v1.17.2...git-tools-v1.17.3) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Added more accurate search for workspace root ([c418b08](https://github.com/storm-software/storm-ops/commit/c418b08c8bb8917e562bef50cb324d66244d98a3))
+
 ## [1.17.2](https://github.com/storm-software/storm-ops/compare/git-tools-v1.17.1...git-tools-v1.17.2) (2023-12-20)
 
 

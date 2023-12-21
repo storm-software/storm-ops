@@ -1,3 +1,10 @@
+## [1.5.8](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.7...config-tools-v1.5.8) (2023-12-20)
+
+
+### Bug Fixes
+
+* **config-tools:** Added more accurate search for workspace root ([c418b08](https://github.com/storm-software/storm-ops/commit/c418b08c8bb8917e562bef50cb324d66244d98a3))
+
 ## [1.5.7](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.6...config-tools-v1.5.7) (2023-12-20)
 
 
