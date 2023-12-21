@@ -23,6 +23,15 @@ export { StormConfig };
  * @param value - the object to check
  * @returns The function isStormError is returning a boolean value.
  */
+declare function createConfig(workspaceRoot?: string): StormConfig;
+export { createConfig };
+
+/**
+ * Type-check to determine if `obj` is a `StormError` object
+ *
+ * @param value - the object to check
+ * @returns The function isStormError is returning a boolean value.
+ */
 declare function createStormConfig<
   TExtensionName extends
     keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
@@ -30,6 +39,7 @@ declare function createStormConfig<
   TExtensionSchema extends z.ZodTypeAny = z.ZodTypeAny
 >(
   extensionName?: TExtensionName,
-  schema?: TExtensionSchema
+  schema?: TExtensionSchema,
+  workspaceRoot?: string
 ): StormConfig<TExtensionName, TExtensionConfig>;
 export { createStormConfig };
