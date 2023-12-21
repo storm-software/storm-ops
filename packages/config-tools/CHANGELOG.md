@@ -1,3 +1,10 @@
+## [1.5.9](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.8...config-tools-v1.5.9) (2023-12-21)
+
+
+### Bug Fixes
+
+* **config-tools:** Handle sync method correctly ([6cbd64e](https://github.com/storm-software/storm-ops/commit/6cbd64e61f88f4a651ae1f05e16811fdf355fc71))
+
 ## [1.5.8](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.7...config-tools-v1.5.8) (2023-12-20)
 
 
