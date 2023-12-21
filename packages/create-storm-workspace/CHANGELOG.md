@@ -1,3 +1,10 @@
+## [1.31.12](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.11...create-storm-workspace-v1.31.12) (2023-12-21)
+
+
+### Bug Fixes
+
+* **config-tools:** Handle sync method correctly ([6cbd64e](https://github.com/storm-software/storm-ops/commit/6cbd64e61f88f4a651ae1f05e16811fdf355fc71))
+
 ## [1.31.11](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.10...create-storm-workspace-v1.31.11) (2023-12-20)
 
 
