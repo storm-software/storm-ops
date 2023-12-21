@@ -1,3 +1,10 @@
+## [1.31.13](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.12...create-storm-workspace-v1.31.13) (2023-12-21)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issue with determining workspace root ([a614a36](https://github.com/storm-software/storm-ops/commit/a614a363194913de9d5de596fc70910f586d33f9))
+
 ## [1.31.12](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.11...create-storm-workspace-v1.31.12) (2023-12-21)
 
 

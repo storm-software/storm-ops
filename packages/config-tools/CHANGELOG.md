@@ -1,3 +1,10 @@
+## [1.5.10](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.9...config-tools-v1.5.10) (2023-12-21)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issue with determining workspace root ([a614a36](https://github.com/storm-software/storm-ops/commit/a614a363194913de9d5de596fc70910f586d33f9))
+
 ## [1.5.9](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.8...config-tools-v1.5.9) (2023-12-21)
 
 
