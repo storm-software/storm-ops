@@ -1,3 +1,10 @@
+## [1.31.17](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.16...create-storm-workspace-v1.31.17) (2023-12-21)
+
+
+### Bug Fixes
+
+* **config-tools:** Update declaration types ([8ca8850](https://github.com/storm-software/storm-ops/commit/8ca8850c5ba1d92e7bc3fa273f332cf8c1acce18))
+
 ## [1.31.16](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.15...create-storm-workspace-v1.31.16) (2023-12-21)
 
 
