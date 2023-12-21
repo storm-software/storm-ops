@@ -1,3 +1,10 @@
+## [1.5.12](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.11...config-tools-v1.5.12) (2023-12-21)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issue around path parameter ([eb15b5d](https://github.com/storm-software/storm-ops/commit/eb15b5d8d2344cc8517a5d26b30685ee990cc877))
+
 ## [1.5.11](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.10...config-tools-v1.5.11) (2023-12-21)
 
 
