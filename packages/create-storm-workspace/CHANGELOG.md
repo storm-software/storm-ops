@@ -1,3 +1,10 @@
+## [1.31.16](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.15...create-storm-workspace-v1.31.16) (2023-12-21)
+
+
+### Bug Fixes
+
+* **config-tools:** Add workspace root parameter to config creator ([a22f0fb](https://github.com/storm-software/storm-ops/commit/a22f0fb10970bf49c4ab384ef9a4e8988ef6f372))
+
 ## [1.31.15](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.14...create-storm-workspace-v1.31.15) (2023-12-21)
 
 

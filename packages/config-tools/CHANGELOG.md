@@ -1,3 +1,10 @@
+## [1.5.13](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.12...config-tools-v1.5.13) (2023-12-21)
+
+
+### Bug Fixes
+
+* **config-tools:** Add workspace root parameter to config creator ([a22f0fb](https://github.com/storm-software/storm-ops/commit/a22f0fb10970bf49c4ab384ef9a4e8988ef6f372))
+
 ## [1.5.12](https://github.com/storm-software/storm-ops/compare/config-tools-v1.5.11...config-tools-v1.5.12) (2023-12-21)
 
 
