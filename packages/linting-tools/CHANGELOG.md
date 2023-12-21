@@ -1,3 +1,10 @@
+## [1.18.2](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.18.1...linting-tools-v1.18.2) (2023-12-21)
+
+
+### Bug Fixes
+
+* **config-tools:** Remove unused dependencies ([ef00034](https://github.com/storm-software/storm-ops/commit/ef00034e8a79b81147056ee32a12eaa991a0d4f3))
+
 ## [1.18.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.18.0...linting-tools-v1.18.1) (2023-12-20)
 
 
