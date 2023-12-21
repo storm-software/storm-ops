@@ -1,3 +1,10 @@
+## [1.32.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.32.0...create-storm-workspace-v1.32.1) (2023-12-21)
+
+
+### Bug Fixes
+
+* **config-tools:** Remove unused dependencies ([ef00034](https://github.com/storm-software/storm-ops/commit/ef00034e8a79b81147056ee32a12eaa991a0d4f3))
+
 # [1.32.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.31.17...create-storm-workspace-v1.32.0) (2023-12-21)
 
 
