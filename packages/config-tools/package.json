@@ -15,7 +15,6 @@
   "dependencies": {
     "cosmiconfig": "^9.0.0",
     "find-up": "^7.0.0",
-    "fp-ts": "^2.16.1",
     "locate-path": "^7.2.0",
     "zod": "^3.22.4"
   },
