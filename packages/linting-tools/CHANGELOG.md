@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.19.0...linting-tools-v1.20.0) (2023-12-22)
+
+
+### Features
+
+* **workspace-tools:** Added `design-tokens` generator ([af49878](https://github.com/storm-software/storm-ops/commit/af498784bc6446974c141ebb6206749076e2a6b3))
+
 # [1.19.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.18.2...linting-tools-v1.19.0) (2023-12-21)
 
 
