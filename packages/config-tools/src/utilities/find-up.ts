@@ -1,5 +1,5 @@
 import { locatePath, locatePathSync } from "locate-path";
-import * as path from "path";
+import { dirname, parse, resolve } from "path";
 import { fileURLToPath } from "url";
 
 export interface FindUpOptions {
@@ -23,9 +23,9 @@ export async function findUpMultiple(
     | ((cwd: string) => string)[],
   options: FindUpOptions = { limit: Number.POSITIVE_INFINITY, type: "file" }
 ) {
-  let directory = path.resolve(toPath(options.cwd) ?? "");
-  const { root } = path.parse(directory);
-  const stopAt = path.resolve(directory, toPath(options.stopAt ?? root));
+  let directory = resolve(toPath(options.cwd) ?? "");
+  const { root } = parse(directory);
+  const stopAt = resolve(directory, toPath(options.stopAt ?? root));
   const limit = options.limit ?? Number.POSITIVE_INFINITY;
 
   if (typeof names === "function") {
@@ -50,7 +50,7 @@ export async function findUpMultiple(
       return foundPath;
     };
 
-    const matches = [];
+    const matches: string[] = [];
     while (true) {
       console.debug(
         `Searching for workspace root files in ${directory} \nOptions: ${JSON.stringify(
@@ -62,28 +62,27 @@ export async function findUpMultiple(
       console.debug(`Found path specified at ${foundPath}`);
 
       if (foundPath) {
-        matches.push(path.resolve(directory, foundPath));
+        matches.push(resolve(directory, foundPath));
       }
 
       if (directory === stopAt || matches.length >= limit) {
         break;
       }
 
-      directory = path.dirname(directory);
+      directory = dirname(directory);
     }
 
     return matches;
   };
 
-  return (
-    await Promise.allSettled(
-      (
-        (names && Array.isArray(names) ? names : [names]) as
-          | string[]
-          | ((cwd: string) => string)[]
-      ).map((name: string | ((cwd: string) => string)) => runNameMatcher(name))
-    )
-  ).flat();
+  const promises = Promise.all(
+    (
+      (names && Array.isArray(names) ? names : [names]) as
+        | string[]
+        | ((cwd: string) => string)[]
+    ).map((name: string | ((cwd: string) => string)) => runNameMatcher(name))
+  );
+  return (await promises).flat().map(path => (path ? path : ""));
 }
 
 export function findUpMultipleSync(
@@ -94,9 +93,9 @@ export function findUpMultipleSync(
     | ((cwd: string) => string)[],
   options: FindUpOptions = { limit: 1, type: "file" }
 ) {
-  let directory = path.resolve(toPath(options.cwd) ?? "");
-  const { root } = path.parse(directory);
-  const stopAt = path.resolve(directory, toPath(options.stopAt) ?? root);
+  let directory = resolve(toPath(options.cwd) ?? "");
+  const { root } = parse(directory);
+  const stopAt = resolve(directory, toPath(options.stopAt) ?? root);
   const limit = options.limit ?? Number.POSITIVE_INFINITY;
 
   if (typeof names === "function") {
@@ -121,19 +120,18 @@ export function findUpMultipleSync(
       return foundPath;
     };
 
-    const matches = [];
-    // eslint-disable-next-line no-constant-condition
+    const matches: string[] = [];
     while (true) {
       const foundPath = runMatcher({ ...options, cwd: directory });
       if (foundPath) {
-        matches.push(path.resolve(directory, foundPath));
+        matches.push(resolve(directory, foundPath));
       }
 
       if (directory === stopAt || matches.length >= limit) {
         break;
       }
 
-      directory = path.dirname(directory);
+      directory = dirname(directory);
     }
 
     return matches;
@@ -145,7 +143,8 @@ export function findUpMultipleSync(
       | ((cwd: string) => string)[]
   )
     .map((name: string | ((cwd: string) => string)) => runNameMatcher(name))
-    .flat();
+    .flat()
+    .map(path => (path ? path : ""));
 }
 
 export async function findUp(
