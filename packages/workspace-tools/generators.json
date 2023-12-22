@@ -34,6 +34,11 @@
       "factory": "./src/generators/browser-library/generator",
       "schema": "./src/generators/browser-library/schema.json",
       "description": "Create a new browser TypeScript library package in the Storm workspace"
+    },
+    "design-tokens": {
+      "factory": "./src/generators/design-tokens/generator",
+      "schema": "./src/generators/design-tokens/schema.json",
+      "description": "Generate design tokens code using a Token Studio export"
     }
   }
 }

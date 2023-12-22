@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from "fs";
 import { join } from "path";
 import { StormConfigSchema } from "../schema";
 import { ColorConfig, StormConfig } from "../types";
-import { findWorkspaceRootSync } from "./find-workspace-root";
+import { findWorkspaceRoot } from "./find-workspace-root";
 
 /**
  * Storm theme config values used for styling various workspace elements
@@ -20,7 +20,8 @@ export const DefaultColorConfig: ColorConfig = {
 /**
  * Storm Workspace config values used during various dev-ops processes
  */
-export const DefaultStormConfig: Omit<StormConfig, "name"> = {
+export const DefaultStormConfig: StormConfig = {
+  name: "storm-workspace",
   namespace: "storm-software",
   license: "Apache License 2.0",
   homepage: "https://stormsoftware.org",
@@ -28,6 +29,7 @@ export const DefaultStormConfig: Omit<StormConfig, "name"> = {
   owner: "@storm-software/development",
   worker: "stormie-bot",
   runtimeDirectory: "node_modules/.storm",
+  packageManager: "npm",
   timezone: "America/New_York",
   locale: "en-US",
   env: "production",
@@ -51,12 +53,12 @@ export const getDefaultConfig = (
 ): StormConfig => {
   let name = "storm-workspace";
   let namespace = "storm-software";
-  let repository = "https://github.com/storm-software/storm-stack";
+  let repository = "https://github.com/storm-software/storm-ops";
 
   let license = DefaultStormConfig.license;
   let homepage = DefaultStormConfig.homepage;
 
-  const workspaceRoot = findWorkspaceRootSync(root);
+  const workspaceRoot = findWorkspaceRoot(root);
   if (existsSync(join(workspaceRoot, "package.json"))) {
     const file = readFileSync(join(workspaceRoot, "package.json"), {
       encoding: "utf-8"

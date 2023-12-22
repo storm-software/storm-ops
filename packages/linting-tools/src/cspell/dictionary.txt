@@ -23,6 +23,7 @@ valibot
 hasura
 strapi
 tamagui
+lockb
 allcontributors
 probot
 smee

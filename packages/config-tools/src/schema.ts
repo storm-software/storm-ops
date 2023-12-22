@@ -158,6 +158,10 @@ export const StormConfigSchema = z
       )
       .default("1.0.0")
       .describe("The global version of the Storm runtime"),
+    packageManager: z
+      .enum(["npm", "yarn", "pnpm", "bun"])
+      .default("npm")
+      .describe("The package manager used by the repository"),
     timezone: z
       .string()
       .trim()

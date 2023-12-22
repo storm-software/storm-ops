@@ -5,7 +5,7 @@
  * Find the monorepo root directory
  */
 
-import { findUp, findUpSync } from "./find-up";
+import { findFolderUp } from "./find-up";
 
 const rootFiles = [
   "lerna.json",
@@ -38,19 +38,16 @@ const rootFiles = [
  * @param pathInsideMonorepo - The path inside the monorepo to start searching from
  * @returns The monorepo root directory
  */
-export async function findWorkspaceRootSafe(
+export function findWorkspaceRootSafe(
   pathInsideMonorepo?: string
-): Promise<string | undefined> {
+): string | undefined {
   if (process.env.STORM_WORKSPACE_ROOT || process.env.NX_WORKSPACE_ROOT_PATH) {
     return (
       process.env.STORM_WORKSPACE_ROOT ?? process.env.NX_WORKSPACE_ROOT_PATH
     );
   }
-  return await findUp(rootFiles, {
-    cwd: pathInsideMonorepo ?? process.cwd(),
-    type: "file",
-    limit: 1
-  });
+
+  return findFolderUp(pathInsideMonorepo ?? process.cwd(), rootFiles);
 }
 
 /**
@@ -59,49 +56,8 @@ export async function findWorkspaceRootSafe(
  * @param pathInsideMonorepo - The path inside the monorepo to start searching from
  * @returns The monorepo root directory
  */
-export function findWorkspaceRootSafeSync(
-  pathInsideMonorepo?: string
-): string | undefined {
-  return process.env.STORM_WORKSPACE_ROOT
-    ? process.env.STORM_WORKSPACE_ROOT
-    : process.env.NX_WORKSPACE_ROOT_PATH
-    ? process.env.NX_WORKSPACE_ROOT_PATH
-    : findUpSync(rootFiles, {
-        cwd: pathInsideMonorepo ?? process.cwd(),
-        type: "file",
-        limit: 1
-      });
-}
-
-/**
- * Find the monorepo root directory, searching upwards from `path`.
- *
- * @param pathInsideMonorepo - The path inside the monorepo to start searching from
- * @returns The monorepo root directory
- */
-export async function findWorkspaceRoot(
-  pathInsideMonorepo?: string
-): Promise<string> {
-  const result = await findWorkspaceRootSafe(pathInsideMonorepo);
-  if (!result) {
-    throw new Error(
-      `Cannot find workspace root upwards from known path. Files search list includes: \n${rootFiles.join(
-        "\n"
-      )}\nPath: ${pathInsideMonorepo ? pathInsideMonorepo : process.cwd()}`
-    );
-  }
-
-  return result;
-}
-
-/**
- * Find the monorepo root directory, searching upwards from `path`.
- *
- * @param pathInsideMonorepo - The path inside the monorepo to start searching from
- * @returns The monorepo root directory
- */
-export function findWorkspaceRootSync(pathInsideMonorepo?: string): string {
-  const result = findWorkspaceRootSafeSync(pathInsideMonorepo);
+export function findWorkspaceRoot(pathInsideMonorepo?: string): string {
+  const result = findWorkspaceRootSafe(pathInsideMonorepo);
   if (!result) {
     throw new Error(
       `Cannot find workspace root upwards from known path. Files search list includes: \n${rootFiles.join(
