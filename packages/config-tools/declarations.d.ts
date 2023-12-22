@@ -23,7 +23,7 @@ export { StormConfig };
  * @param pathInsideMonorepo - The path inside the monorepo
  */
 declare function findWorkspaceRoot(pathInsideMonorepo?: string): string;
-export { findWorkspaceRootSync };
+export { findWorkspaceRoot };
 
 /**
  * Find the root of the current monorepo safely (do not throw an error if it cannot be found)
@@ -33,7 +33,7 @@ export { findWorkspaceRootSync };
 declare function findWorkspaceRootSafe(
   pathInsideMonorepo?: string
 ): string | undefined;
-export { findWorkspaceRootSafeSync };
+export { findWorkspaceRootSafe };
 
 /**
  * Type-check to determine if `obj` is a `StormError` object
