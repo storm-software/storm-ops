@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/storm-software/storm-ops/compare/config-tools-v1.8.0...config-tools-v1.8.1) (2023-12-22)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved export issue in type declarations ([9125a40](https://github.com/storm-software/storm-ops/commit/9125a40607db1f58351cd9ef12e86f62b234d753))
+
 # [1.8.0](https://github.com/storm-software/storm-ops/compare/config-tools-v1.7.1...config-tools-v1.8.0) (2023-12-22)
 
 
