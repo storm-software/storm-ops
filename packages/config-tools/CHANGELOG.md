@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/storm-software/storm-ops/compare/config-tools-v1.7.0...config-tools-v1.7.1) (2023-12-22)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issues with returned values in `findWorkspaceRoot` functions ([c790e15](https://github.com/storm-software/storm-ops/commit/c790e151ec130b4a72d17b965092c402c685d824))
+
 # [1.7.0](https://github.com/storm-software/storm-ops/compare/config-tools-v1.6.1...config-tools-v1.7.0) (2023-12-21)
 
 
