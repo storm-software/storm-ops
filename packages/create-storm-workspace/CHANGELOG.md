@@ -1,3 +1,10 @@
+# [1.34.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.33.1...create-storm-workspace-v1.34.0) (2023-12-22)
+
+
+### Features
+
+* **workspace-tools:** Added `design-tokens` generator ([af49878](https://github.com/storm-software/storm-ops/commit/af498784bc6446974c141ebb6206749076e2a6b3))
+
 ## [1.33.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.33.0...create-storm-workspace-v1.33.1) (2023-12-22)
 
 
