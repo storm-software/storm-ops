@@ -1,3 +1,10 @@
+## [1.33.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.33.0...workspace-tools-v1.33.1) (2023-12-22)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issues with returned values in `findWorkspaceRoot` functions ([c790e15](https://github.com/storm-software/storm-ops/commit/c790e151ec130b4a72d17b965092c402c685d824))
+
 # [1.33.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.32.1...workspace-tools-v1.33.0) (2023-12-21)
 
 
