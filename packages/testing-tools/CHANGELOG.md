@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.15.2...testing-tools-v1.16.0) (2023-12-21)
+
+
+### Features
+
+* **config-tools:** Added the `findWorkspaceRootSync` and `findWorkspaceRootSafeSync` functions ([59e0ee4](https://github.com/storm-software/storm-ops/commit/59e0ee4779a15752fb035d235b929bb3e8ecc974))
+
 ## [1.15.2](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.15.1...testing-tools-v1.15.2) (2023-12-21)
 
 
