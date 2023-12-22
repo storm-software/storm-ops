@@ -1,3 +1,10 @@
+## [1.34.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.34.0...create-storm-workspace-v1.34.1) (2023-12-22)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved export issue in type declarations ([9125a40](https://github.com/storm-software/storm-ops/commit/9125a40607db1f58351cd9ef12e86f62b234d753))
+
 # [1.34.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.33.1...create-storm-workspace-v1.34.0) (2023-12-22)
 
 
