@@ -36,12 +36,16 @@ export const createStormConfig = <
     let config = getConfigEnv() as StormConfig & {
       [extensionName in TExtensionName]: TExtensionConfig;
     };
-    config = Object.assign(getDefaultConfig({}, workspaceRoot), config);
+    const defaultConfig = getDefaultConfig(config, workspaceRoot);
 
-    result = StormConfigSchema.parse(config) as StormConfig<
-      TExtensionName,
-      TExtensionConfig
-    >;
+    result = StormConfigSchema.parse({
+      ...defaultConfig,
+      ...config,
+      colors: {
+        ...defaultConfig?.colors,
+        ...config.colors
+      }
+    }) as StormConfig<TExtensionName, TExtensionConfig>;
   } else {
     result = _static_cache as StormConfig<TExtensionName, TExtensionConfig>;
   }

@@ -21,7 +21,7 @@ export const DefaultColorConfig: ColorConfig = {
  * Storm Workspace config values used during various dev-ops processes
  */
 export const DefaultStormConfig: StormConfig = {
-  name: "storm-workspace",
+  name: "storm",
   namespace: "storm-software",
   license: "Apache License 2.0",
   homepage: "https://stormsoftware.org",
@@ -74,17 +74,16 @@ export const getDefaultConfig = (
     }
   }
 
-  return StormConfigSchema.parse(
-    Object.assign(config, {
-      ...(DefaultStormConfig as Required<StormConfig>),
-      colors: { ...DefaultColorConfig },
-      workspaceRoot,
-      name,
-      namespace,
-      repository,
-      license: license ?? DefaultStormConfig.license!,
-      homepage: homepage ?? DefaultStormConfig.homepage!,
-      extensions: {}
-    })
-  ) as StormConfig;
+  return StormConfigSchema.parse({
+    ...config,
+    ...(DefaultStormConfig as Required<StormConfig>),
+    colors: { ...config.colors, ...DefaultColorConfig },
+    workspaceRoot,
+    name,
+    namespace,
+    repository,
+    license: license ?? DefaultStormConfig.license!,
+    homepage: homepage ?? DefaultStormConfig.homepage!,
+    extensions: {}
+  }) as StormConfig;
 };

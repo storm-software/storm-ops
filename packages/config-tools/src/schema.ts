@@ -69,7 +69,12 @@ export const ColorConfigSchema = z
  */
 export const StormConfigSchema = z
   .object({
-    name: z.string().trim().toLowerCase().describe("The name of the package"),
+    name: z
+      .string()
+      .trim()
+      .toLowerCase()
+      .default("storm")
+      .describe("The name of the package"),
     namespace: z
       .string()
       .trim()
