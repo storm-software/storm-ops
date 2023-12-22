@@ -1,3 +1,10 @@
+## [1.34.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.34.1...workspace-tools-v1.34.2) (2023-12-22)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issue in configuration defaulter function ([92e10c1](https://github.com/storm-software/storm-ops/commit/92e10c1fa0283eaf341f4bc9338628cbdb546eb9))
+
 ## [1.34.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.34.0...workspace-tools-v1.34.1) (2023-12-22)
 
 
