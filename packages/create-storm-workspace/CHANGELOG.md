@@ -1,3 +1,10 @@
+## [1.35.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.35.0...create-storm-workspace-v1.35.1) (2023-12-23)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved isssue with config file loading ([f2e7897](https://github.com/storm-software/storm-ops/commit/f2e789761230d78ec1fedb511744ef57075d2b7d))
+
 # [1.35.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.34.2...create-storm-workspace-v1.35.0) (2023-12-23)
 
 
