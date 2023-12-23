@@ -1,3 +1,10 @@
+## [1.8.2](https://github.com/storm-software/storm-ops/compare/config-tools-v1.8.1...config-tools-v1.8.2) (2023-12-22)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issue in configuration defaulter function ([92e10c1](https://github.com/storm-software/storm-ops/commit/92e10c1fa0283eaf341f4bc9338628cbdb546eb9))
+
 ## [1.8.1](https://github.com/storm-software/storm-ops/compare/config-tools-v1.8.0...config-tools-v1.8.1) (2023-12-22)
 
 
