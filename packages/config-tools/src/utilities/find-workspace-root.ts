@@ -9,6 +9,13 @@ import { findFolderUp } from "./find-up";
 
 const rootFiles = [
   "lerna.json",
+  "storm.config.js",
+  "storm.config.ts",
+  ".storm.json",
+  ".storm.yaml",
+  ".storm.yml",
+  ".storm.js",
+  ".storm.ts",
   "nx.json",
   "turbo.json",
   "npm-workspace.json",

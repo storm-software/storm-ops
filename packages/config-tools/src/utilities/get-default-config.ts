@@ -84,6 +84,8 @@ export const getDefaultConfig = (
     repository,
     license: license ?? DefaultStormConfig.license!,
     homepage: homepage ?? DefaultStormConfig.homepage!,
-    extensions: {}
+    extensions: {
+      ...config.extensions
+    }
   }) as StormConfig;
 };

@@ -197,6 +197,7 @@ export const StormConfigSchema = z
     ),
     extensions: z
       .record(z.any())
+      .optional()
       .default({})
       .describe("Configuration of each used extension")
   })

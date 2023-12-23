@@ -110,7 +110,7 @@ export const loadStormConfig = async (workspaceRoot?: string) => {
       return;
     }
 
-    setConfigEnv(StormConfigSchema.parse(configFile) as StormConfig);
+    setConfigEnv(StormConfigSchema.parse(configFile));
   } catch (e) {
     console.error(e);
   }

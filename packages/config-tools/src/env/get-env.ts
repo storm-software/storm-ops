@@ -92,7 +92,13 @@ export const getConfigEnv = (): Partial<StormConfig> => {
 
   const serializedConfig = process.env[`${prefix}CONFIG`];
   if (serializedConfig) {
-    config = Object.assign(config, JSON.parse(serializedConfig));
+    const parsed = JSON.parse(serializedConfig);
+    config = {
+      ...config,
+      ...parsed,
+      colors: { ...config.colors, ...parsed.colors },
+      extensions: { ...config.extensions, ...parsed.extensions }
+    };
   }
 
   const extensionPrefix = `${prefix}EXTENSION_`;

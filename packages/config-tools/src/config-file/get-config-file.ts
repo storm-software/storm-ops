@@ -1,7 +1,7 @@
 import { CosmiconfigResult, cosmiconfig } from "cosmiconfig";
 import { StormConfigInput } from "../types";
 
-let _static_cache: Partial<StormConfigInput> | undefined = undefined;
+let _static_cache: StormConfigInput | undefined = undefined;
 
 const getConfigFileName = (
   fileName: string,
@@ -16,9 +16,9 @@ const getConfigFileName = (
  */
 export const getConfigFile = async (
   filePath?: string
-): Promise<Partial<StormConfigInput>> => {
+): Promise<StormConfigInput> => {
   if (_static_cache) {
-    return _static_cache as Partial<StormConfigInput>;
+    return _static_cache as StormConfigInput;
   }
 
   let cosmiconfigResult = await getConfigFileName("storm", filePath);
