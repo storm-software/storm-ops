@@ -1,3 +1,10 @@
+# [1.35.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.34.2...workspace-tools-v1.35.0) (2023-12-23)
+
+
+### Features
+
+* **config-tools:** Added the `loadStormConfig` function ([cfcda96](https://github.com/storm-software/storm-ops/commit/cfcda96d27e49f12036d6d31128eb5546800b9d7))
+
 ## [1.34.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.34.1...workspace-tools-v1.34.2) (2023-12-22)
 
 
