@@ -57,7 +57,11 @@ try {
 
   console.log("Lock file is valid 👍");
 
-  const result = execSync("git-lfs -v", "utf8");
+  const result = execSync("git-lfs -v", {
+    encoding: "utf8",
+    env: { ...process.env },
+    windowsHide: true
+  });
   if (result && Number.isInteger(Number.parseInt(result)) && Number(result)) {
     console.error(
       `This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting .git/hooks/pre-push.\nError: ${result}`
@@ -65,7 +69,11 @@ try {
     process.exit(1);
   }
 
-  execSync("git lfs pre-push origin main");
+  execSync("git lfs pre-push origin main", {
+    encoding: "utf8",
+    env: { ...process.env },
+    windowsHide: true
+  });
 } catch (e) {
   console.error(e);
   process.exit(1);
