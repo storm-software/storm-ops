@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/storm-software/storm-ops/compare/config-tools-v1.9.0...config-tools-v1.9.1) (2023-12-23)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved isssue with config file loading ([f2e7897](https://github.com/storm-software/storm-ops/commit/f2e789761230d78ec1fedb511744ef57075d2b7d))
+
 # [1.9.0](https://github.com/storm-software/storm-ops/compare/config-tools-v1.8.2...config-tools-v1.9.0) (2023-12-23)
 
 
