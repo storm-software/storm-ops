@@ -1,5 +1,7 @@
 import * as z from "zod";
+import { getConfigFile } from "./config-file/get-config-file";
 import { getConfigEnv, getExtensionEnv } from "./env/get-env";
+import { setConfigEnv } from "./env/set-env";
 import { StormConfigSchema } from "./schema";
 import { StormConfig } from "./types";
 import { getDefaultConfig } from "./utilities/get-default-config";
@@ -93,4 +95,20 @@ export const createConfigExtension = <
 
   _extension_cache.set(extension_cache_key, extension);
   return extension as TExtensionConfig;
+};
+
+/**
+ * Load the config file values for the current Storm workspace into environment variables
+ */
+export const loadStormConfig = async (workspaceRoot?: string) => {
+  try {
+    setConfigEnv(
+      StormConfigSchema.parse(await getConfigFile(workspaceRoot)) as StormConfig
+    );
+  } catch (e) {
+    console.warn(
+      "No Storm config file found in the current workspace. Please ensure this is the expected behavior - you can add a `storm.config.js` file to the root of your workspace if it is not."
+    );
+    console.error(e);
+  }
 };

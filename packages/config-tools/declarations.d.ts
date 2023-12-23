@@ -17,6 +17,9 @@ declare type StormConfig<
 };
 export { StormConfig };
 
+declare type StormConfigInput = z.input<typeof StormConfigSchema>;
+export { StormConfigInput };
+
 /**
  * Find the root of the current monorepo
  *
@@ -43,6 +46,18 @@ export { findWorkspaceRootSafe };
  */
 declare function createConfig(workspaceRoot?: string): StormConfig;
 export { createConfig };
+
+/**
+ * Get the config file values for the current Storm workspace
+ */
+declare function getConfigFile(): Promise<Partial<StormConfigInput>>;
+export { getConfigFile };
+
+/**
+ * Load the config file values for the current Storm workspace into environment variables
+ */
+declare function loadStormConfig(workspaceRoot?: string): Promise<void>;
+export { loadStormConfig };
 
 /**
  * Type-check to determine if `obj` is a `StormError` object

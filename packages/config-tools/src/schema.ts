@@ -73,13 +73,13 @@ export const StormConfigSchema = z
       .string()
       .trim()
       .toLowerCase()
-      .default("storm")
+      .optional()
       .describe("The name of the package"),
     namespace: z
       .string()
       .trim()
       .toLowerCase()
-      .default("storm-software")
+      .optional()
       .describe("The namespace of the package"),
     organization: z
       .string()
@@ -139,6 +139,7 @@ export const StormConfigSchema = z
     workspaceRoot: z
       .string()
       .trim()
+      .optional()
       .describe("The root directory of the workspace"),
     packageDirectory: z
       .string()
@@ -179,7 +180,7 @@ export const StormConfigSchema = z
       .describe("The default locale of the workspace"),
     logLevel: z
       .enum(["silent", "fatal", "error", "warn", "info", "debug", "trace"])
-      .optional()
+      .default("debug")
       .describe(
         "The log level used to filter out lower priority log messages. If not provided, this is defaulted using the `environment` config value (if `environment` is set to `production` then `level` is `error`, else `level` is `debug`)."
       ),

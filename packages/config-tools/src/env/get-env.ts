@@ -45,6 +45,9 @@ export const getConfigEnv = (): Partial<StormConfig> => {
     owner: process.env[`${prefix}OWNER`],
     worker: process.env[`${prefix}WORKER`],
     organization: process.env[`${prefix}ORGANIZATION`],
+    packageManager: process.env[
+      `${prefix}PACKAGE_MANAGER`
+    ] as StormConfig["packageManager"],
     license: process.env[`${prefix}LICENSE`],
     homepage: process.env[`${prefix}HOMEPAGE`],
     timezone: process.env[`${prefix}TIMEZONE`] ?? process.env.TZ,
@@ -57,7 +60,7 @@ export const getConfigEnv = (): Partial<StormConfig> => {
     runtimeDirectory: process.env[`${prefix}RUNTIME_DIRECTORY`],
     env: (process.env[`${prefix}ENV`] ??
       process.env.NODE_ENV ??
-      process.env.ENVIRONMENT) as "development" | "staging" | "production",
+      process.env.ENVIRONMENT) as StormConfig["env"],
     ci: Boolean(
       process.env[`${prefix}CI`] ??
         process.env.CI ??
