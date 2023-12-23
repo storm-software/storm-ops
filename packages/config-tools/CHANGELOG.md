@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/storm-software/storm-ops/compare/config-tools-v1.9.1...config-tools-v1.9.2) (2023-12-23)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolve potential empty extensions config issue ([80836bb](https://github.com/storm-software/storm-ops/commit/80836bbe70afa0b38f67c78f1e127eacb4f8ca87))
+
 ## [1.9.1](https://github.com/storm-software/storm-ops/compare/config-tools-v1.9.0...config-tools-v1.9.1) (2023-12-23)
 
 
