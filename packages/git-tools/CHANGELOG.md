@@ -1,3 +1,10 @@
+## [1.18.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.18.0...git-tools-v1.18.1) (2023-12-23)
+
+
+### Bug Fixes
+
+* **git-tools:** Updated command execution in git hooks ([5ec4f55](https://github.com/storm-software/storm-ops/commit/5ec4f556b58025b1d3880c8696a1e065e4fe0d57))
+
 # [1.18.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.17.4...git-tools-v1.18.0) (2023-12-21)
 
 
