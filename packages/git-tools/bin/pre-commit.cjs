@@ -20,7 +20,7 @@ try {
   });
 
   execSync(
-    'pnpm lint-staged --config="@storm-software/git-tools/lint-staged/config.cjs"',
+    'pnpm lint-staged --concurrent false --config="@storm-software/git-tools/lint-staged/config.cjs"',
     { encoding: "utf8", env: { ...process.env }, windowsHide: true }
   );
   execSync("pnpm test", {
