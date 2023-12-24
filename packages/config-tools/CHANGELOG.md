@@ -1,3 +1,10 @@
+## [1.9.3](https://github.com/storm-software/storm-ops/compare/config-tools-v1.9.2...config-tools-v1.9.3) (2023-12-24)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issues with defaulting config when no file exists ([3f44d88](https://github.com/storm-software/storm-ops/commit/3f44d88fec753bfa818d2b738f1debd2a6cd686a))
+
 ## [1.9.2](https://github.com/storm-software/storm-ops/compare/config-tools-v1.9.1...config-tools-v1.9.2) (2023-12-23)
 
 
