@@ -102,15 +102,18 @@ export const createConfigExtension = <
  */
 export const loadStormConfig = async (workspaceRoot?: string) => {
   try {
+    let config = {} as StormConfig;
+
     const configFile = await getConfigFile(workspaceRoot);
-    if (!configFile) {
+    if (configFile) {
+      config = StormConfigSchema.parse(configFile);
+    } else {
       console.warn(
         "No Storm config file found in the current workspace. Please ensure this is the expected behavior - you can add a `storm.config.js` file to the root of your workspace if it is not."
       );
-      return;
     }
 
-    setConfigEnv(StormConfigSchema.parse(configFile));
+    setConfigEnv(getDefaultConfig(config, workspaceRoot));
   } catch (e) {
     console.error(e);
   }
