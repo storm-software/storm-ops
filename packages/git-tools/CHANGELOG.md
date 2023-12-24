@@ -1,3 +1,10 @@
+## [1.18.2](https://github.com/storm-software/storm-ops/compare/git-tools-v1.18.1...git-tools-v1.18.2) (2023-12-24)
+
+
+### Bug Fixes
+
+* **git-tools:** Ensure lint stange is not ran concurrently ([3fab5d6](https://github.com/storm-software/storm-ops/commit/3fab5d65ae00b6db3d0441913d35432448e498ce))
+
 ## [1.18.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.18.0...git-tools-v1.18.1) (2023-12-23)
 
 
