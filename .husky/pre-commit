@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-pnpm lint-staged --config="./lint-staged.config.js"
+pnpm lint-staged --concurrent false --config="./lint-staged.config.js"
