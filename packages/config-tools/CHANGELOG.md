@@ -1,3 +1,10 @@
+## [1.9.4](https://github.com/storm-software/storm-ops/compare/config-tools-v1.9.3...config-tools-v1.9.4) (2023-12-26)
+
+
+### Bug Fixes
+
+* **linting-tools:** Added tailwindcss prettier formatting to linting tools ([a8072f2](https://github.com/storm-software/storm-ops/commit/a8072f2f92a4cc9e93ef173574ff142cf23c13f7))
+
 ## [1.9.3](https://github.com/storm-software/storm-ops/compare/config-tools-v1.9.2...config-tools-v1.9.3) (2023-12-24)
 
 

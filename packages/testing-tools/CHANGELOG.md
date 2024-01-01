@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.16.0...testing-tools-v1.16.1) (2023-12-26)
+
+
+### Bug Fixes
+
+* **linting-tools:** Added tailwindcss prettier formatting to linting tools ([a8072f2](https://github.com/storm-software/storm-ops/commit/a8072f2f92a4cc9e93ef173574ff142cf23c13f7))
+
 # [1.16.0](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.15.2...testing-tools-v1.16.0) (2023-12-21)
 
 
