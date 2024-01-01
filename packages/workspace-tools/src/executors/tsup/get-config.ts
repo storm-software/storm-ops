@@ -145,7 +145,7 @@ export function legacyConfig({
     name: "legacy",
     entry,
     format: platform !== "node" ? ["cjs", "esm", "iife"] : ["cjs", "esm"],
-    target: ["es2022", "node18"],
+    target: platform !== "node" ? ["es2022"] : ["es2022", "node18"],
     tsconfig,
     splitting,
     generatePackageJson,
