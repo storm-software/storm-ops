@@ -6,6 +6,7 @@ import {
   applyDefaultOptions as tsupApplyDefault,
   tsupExecutorFn
 } from "../tsup/executor";
+import { legacyNeutralConfig, modernNeutralConfig } from "./get-config";
 import { TsupNeutralExecutorSchema } from "./schema";
 
 export const tsNeutralBuildExecutorFn = (
@@ -57,6 +58,10 @@ const applyDefaultOptions = (
       ...options,
       platform: "neutral"
     }),
+    getConfig: {
+      "dist/modern": modernNeutralConfig,
+      "dist/legacy": legacyNeutralConfig
+    },
     transports: ["pino-pretty"]
   } as TsupNeutralExecutorSchema;
 };

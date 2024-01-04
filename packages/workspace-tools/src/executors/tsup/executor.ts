@@ -23,11 +23,11 @@ import { Options as PrettierOptions, format } from "prettier";
 import { Options, defineConfig, build as tsup } from "tsup";
 import * as ts from "typescript";
 import { withRunExecutor } from "../../base/base-executor";
+import { defaultConfig, getConfig } from "../../base/get-tsup-config";
 import { removeExtension } from "../../utils/file-path-utils";
 import { getProjectConfigurations } from "../../utils/get-project-configurations";
 import { getExternalDependencies } from "../../utils/get-project-deps";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
-import { getConfig, legacyConfig, modernConfig } from "./get-config";
 import { TsupExecutorSchema } from "./schema";
 
 type PackageConfiguration = {
@@ -333,95 +333,111 @@ ${externalDependencies
         }
       });
 
+      const distPaths: string[] = _isFunction(options.getConfig)
+        ? [""]
+        : Object.keys(options.getConfig).map(key => `${key}/`);
+
       packageJson.type = "module";
-      packageJson.exports ??= {
-        ".": {
-          import: {
-            types: "./dist/modern/index.d.ts",
-            default: "./dist/modern/index.js"
-          },
-          require: {
-            types: "./dist/modern/index.d.cts",
-            default: "./dist/modern/index.cjs"
-          },
-          default: {
-            types: "./dist/modern/index.d.ts",
-            default: "./dist/modern/index.js"
-          },
-          ...(options.additionalEntryPoints ?? []).map(entryPoint => ({
-            [removeExtension(entryPoint).replace(sourceRoot, "")]: {
-              types: join(
-                "./dist/modern",
-                `${removeExtension(entryPoint.replace(sourceRoot, ""))}.d.ts`
-              ),
-              default: join(
-                "./dist/modern",
-                `${removeExtension(entryPoint.replace(sourceRoot, ""))}.js`
-              )
-            }
-          }))
-        },
-        "./package.json": "./package.json"
-      };
-
-      packageJson.exports = Object.keys(entry).reduce(
-        (ret: Record<string, any>, key: string) => {
-          let packageJsonKey = key.startsWith("./") ? key : `./${key}`;
-          packageJsonKey = packageJsonKey.replaceAll("/index", "");
-
-          if (!ret[packageJsonKey]) {
-            ret[packageJsonKey] = {
-              import: {
-                types: "./dist/modern/index.d.ts",
-                default: `./dist/modern/${key}.js`
-              },
-              require: {
-                types: "./dist/modern/index.d.cts",
-                default: `./dist/modern/${key}.cjs`
-              },
-              default: {
-                types: "./dist/modern/index.d.ts",
-                default: `./dist/modern/${key}.js`
+      if (distPaths.length > 1) {
+        packageJson.exports ??= {
+          ".": {
+            import: {
+              types: `./${distPaths[0]}index.d.ts`,
+              default: `./${distPaths[0]}index.js`
+            },
+            require: {
+              types: `./${distPaths[0]}index.d.cts`,
+              default: `./${distPaths[0]}index.cjs`
+            },
+            default: {
+              types: `./${distPaths[0]}index.d.ts`,
+              default: `./${distPaths[0]}index.js`
+            },
+            ...(options.additionalEntryPoints ?? []).map(entryPoint => ({
+              [removeExtension(entryPoint).replace(sourceRoot, "")]: {
+                types: join(
+                  `./${distPaths[0]}`,
+                  `${removeExtension(entryPoint.replace(sourceRoot, ""))}.d.ts`
+                ),
+                default: join(
+                  `./${distPaths[0]}`,
+                  `${removeExtension(entryPoint.replace(sourceRoot, ""))}.js`
+                )
               }
-            };
+            }))
+          },
+          "./package.json": "./package.json"
+        };
+
+        packageJson.exports = Object.keys(entry).reduce(
+          (ret: Record<string, any>, key: string) => {
+            let packageJsonKey = key.startsWith("./") ? key : `./${key}`;
+            packageJsonKey = packageJsonKey.replaceAll("/index", "");
+
+            if (!ret[packageJsonKey]) {
+              ret[packageJsonKey] = {
+                import: {
+                  types: `./${distPaths[0]}index.d.ts`,
+                  default: `./${distPaths[0]}${key}.js`
+                },
+                require: {
+                  types: `./${distPaths[0]}index.d.cts`,
+                  default: `./${distPaths[0]}${key}.cjs`
+                },
+                default: {
+                  types: `./${distPaths[0]}index.d.ts`,
+                  default: `./${distPaths[0]}${key}.js`
+                }
+              };
+            }
+
+            return ret;
+          },
+          packageJson.exports
+        );
+
+        packageJson.funding ??= workspacePackageJson.funding;
+
+        packageJson.types ??= `${
+          distPaths.length > 1 ? distPaths[1] : distPaths[0]
+        }index.d.ts`;
+        packageJson.typings ??= `${
+          distPaths.length > 1 ? distPaths[1] : distPaths[0]
+        }index.d.ts`;
+        packageJson.typescript ??= {
+          definition: `${
+            distPaths.length > 1 ? distPaths[1] : distPaths[0]
+          }index.d.ts`
+        };
+
+        packageJson.main ??= `${
+          distPaths.length > 1 ? distPaths[1] : distPaths[0]
+        }index.cjs`;
+        packageJson.module ??= `${
+          distPaths.length > 1 ? distPaths[1] : distPaths[0]
+        }index.js`;
+        options.platform &&
+          options.platform !== "node" &&
+          (packageJson.browser ??= `${distPaths[0]}index.global.js`);
+
+        if (options.includeSrc === true) {
+          let distSrc = sourceRoot.replace(projectRoot, "");
+          if (distSrc.startsWith("/")) {
+            distSrc = distSrc.substring(1);
           }
 
-          return ret;
-        },
-        packageJson.exports
-      );
-
-      packageJson.funding ??= workspacePackageJson.funding;
-
-      packageJson.types ??= "dist/legacy/index.d.ts";
-      packageJson.typings ??= "dist/legacy/index.d.ts";
-      packageJson.typescript ??= {
-        definition: "dist/legacy/index.d.ts"
-      };
-
-      packageJson.main ??= "dist/legacy/index.cjs";
-      packageJson.module ??= "dist/legacy/index.js";
-      options.platform &&
-        options.platform !== "node" &&
-        (packageJson.browser ??= "dist/modern/index.global.js");
-
-      if (options.includeSrc === true) {
-        let distSrc = sourceRoot.replace(projectRoot, "");
-        if (distSrc.startsWith("/")) {
-          distSrc = distSrc.substring(1);
+          packageJson.source ??= `${join(distSrc, "index.ts").replaceAll(
+            "\\",
+            "/"
+          )}`;
         }
 
-        packageJson.source ??= `${join(distSrc, "index.ts").replaceAll(
-          "\\",
-          "/"
-        )}`;
-      }
+        packageJson.sideEffects ??= false;
 
-      packageJson.sideEffects ??= false;
-
-      packageJson.files ??= ["dist/**/*"];
-      if (options.includeSrc === true && !packageJson.files.includes("src")) {
-        packageJson.files.push("src/**/*");
+        packageJson.files ??= ["dist/**/*"];
+        if (options.includeSrc === true && !packageJson.files.includes("src")) {
+          packageJson.files.push("src/**/*");
+        }
       }
 
       packageJson.publishConfig ??= {
@@ -547,10 +563,15 @@ ${externalDependencies
       entry
     };
 
-    const config = defineConfig([
-      getConfig(context.root, projectRoot, legacyConfig, getConfigOptions),
-      getConfig(context.root, projectRoot, modernConfig, getConfigOptions)
-    ]);
+    const getConfigFns = _isFunction(options.getConfig)
+      ? [options.getConfig]
+      : Object.keys(options.getConfig).map(key => options.getConfig[key]);
+
+    const config = defineConfig(
+      getConfigFns.map(getConfigFn =>
+        getConfig(context.root, projectRoot, getConfigFn, getConfigOptions)
+      )
+    );
 
     if (typeof config === "function") {
       await build(await Promise.resolve(config({})));
@@ -662,6 +683,7 @@ export const applyDefaultOptions = (
   options.define ??= {};
   options.env ??= {};
   options.verbose ??= !!process.env.CI;
+  options.getConfig ??= defaultConfig;
 
   return options;
 };
@@ -676,3 +698,22 @@ export default withRunExecutor<TsupExecutorSchema>(
     }
   }
 );
+
+const _isFunction = (
+  value: unknown
+): value is ((params?: unknown) => unknown) & Function => {
+  try {
+    return (
+      value instanceof Function ||
+      typeof value === "function" ||
+      !!(
+        value &&
+        value.constructor &&
+        (value as any)?.call &&
+        (value as any)?.apply
+      )
+    );
+  } catch (e) {
+    return false;
+  }
+};

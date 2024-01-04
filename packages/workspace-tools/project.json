@@ -14,7 +14,6 @@
         "main": "packages/workspace-tools/index.ts",
         "additionalEntryPoints": [
           "packages/workspace-tools/src/executors/tsup/executor.ts",
-          "packages/workspace-tools/src/executors/tsup/get-config.ts",
           "packages/workspace-tools/src/executors/tsup-neutral/executor.ts",
           "packages/workspace-tools/src/executors/tsup-node/executor.ts",
           "packages/workspace-tools/src/executors/tsup-browser/executor.ts",

@@ -5,6 +5,7 @@ import {
   applyDefaultOptions as tsupApplyDefault,
   tsupExecutorFn
 } from "../tsup/executor";
+import { nodeConfig } from "./get-config";
 import { TsupNodeExecutorSchema } from "./schema";
 
 export const tsNodeBuildExecutorFn = (
@@ -52,6 +53,7 @@ const applyDefaultOptions = (
 ): TsupNodeExecutorSchema => {
   return {
     ...tsupApplyDefault({ plugins: [], ...options, platform: "node" }),
+    getConfig: nodeConfig,
     transports: ["pino-pretty", "pino-loki"]
   };
 };

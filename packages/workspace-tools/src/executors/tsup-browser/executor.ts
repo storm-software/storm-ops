@@ -5,6 +5,7 @@ import {
   applyDefaultOptions as tsupApplyDefault,
   tsupExecutorFn
 } from "../tsup/executor";
+import { legacyBrowserConfig, modernBrowserConfig } from "./get-config";
 import { TsupBrowserExecutorSchema } from "./schema";
 
 export const tsNodeBuildExecutorFn = (
@@ -52,6 +53,10 @@ const applyDefaultOptions = (
 ): TsupBrowserExecutorSchema => {
   return {
     ...tsupApplyDefault({ plugins: [], ...options, platform: "browser" }),
+    getConfig: {
+      "dist/modern": modernBrowserConfig,
+      "dist/legacy": legacyBrowserConfig
+    },
     transports: ["pino-pretty"]
   };
 };
