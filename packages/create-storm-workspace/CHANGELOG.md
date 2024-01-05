@@ -1,3 +1,10 @@
+# [1.36.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.35.5...create-storm-workspace-v1.36.0) (2024-01-05)
+
+
+### Features
+
+* **workspace-tools:** Added dynamic tsup build configuration ([c9932d9](https://github.com/storm-software/storm-ops/commit/c9932d9157ec23b4a460d52faf4988e1f748c84e))
+
 ## [1.35.5](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.35.4...create-storm-workspace-v1.35.5) (2024-01-01)
 
 
