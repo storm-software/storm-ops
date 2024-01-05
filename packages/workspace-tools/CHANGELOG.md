@@ -1,3 +1,11 @@
+## [1.36.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.36.0...workspace-tools-v1.36.1) (2024-01-05)
+
+
+### Bug Fixes
+
+* **linting-tools:** Call linting functions in parallel ([0aa300f](https://github.com/storm-software/storm-ops/commit/0aa300f2c6dd7a67589025ffe512197535222064))
+* **workspace-tools:** Resolve issue with builds ([d136a22](https://github.com/storm-software/storm-ops/commit/d136a22dc88ba57105c8c95205d6115e23ede51e))
+
 # [1.36.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.35.5...workspace-tools-v1.36.0) (2024-01-05)
 
 

@@ -1,3 +1,10 @@
+## [1.20.2](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.20.1...linting-tools-v1.20.2) (2024-01-05)
+
+
+### Bug Fixes
+
+* **linting-tools:** Call linting functions in parallel ([0aa300f](https://github.com/storm-software/storm-ops/commit/0aa300f2c6dd7a67589025ffe512197535222064))
+
 ## [1.20.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.20.0...linting-tools-v1.20.1) (2023-12-26)
 
 
