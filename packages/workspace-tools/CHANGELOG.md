@@ -1,3 +1,10 @@
+## [1.36.5](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.36.4...workspace-tools-v1.36.5) (2024-01-05)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue with dist path formatting ([dc97a89](https://github.com/storm-software/storm-ops/commit/dc97a89ec85de194f698fcd9ee27eecdab98bde8))
+
 ## [1.36.4](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.36.3...workspace-tools-v1.36.4) (2024-01-05)
 
 
