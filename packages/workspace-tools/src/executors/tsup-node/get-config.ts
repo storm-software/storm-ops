@@ -1,3 +1,4 @@
+import { joinPathFragments } from "@nx/devkit";
 import { Options } from "tsup";
 import { outExtension } from "../../base/get-tsup-config";
 import { GetConfigParams } from "../../types";
@@ -40,7 +41,7 @@ export function nodeConfig({
       : false,
     projectRoot,
     workspaceRoot,
-    outDir,
+    outDir: joinPathFragments(outDir, "dist"),
     silent: !verbose,
     metafile: true,
     shims,
@@ -56,7 +57,7 @@ export function nodeConfig({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir
+          outDir: joinPathFragments(outDir, "dist")
         }
       }
     },
@@ -116,7 +117,7 @@ export function workerConfig({
       : false,
     projectRoot,
     workspaceRoot,
-    outDir,
+    outDir: joinPathFragments(outDir, "dist"),
     silent: !verbose,
     metafile: true,
     shims,
@@ -132,7 +133,7 @@ export function workerConfig({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir
+          outDir: joinPathFragments(outDir, "dist")
         }
       }
     },

@@ -1,3 +1,4 @@
+import { joinPathFragments } from "@nx/devkit";
 import { Options } from "tsup";
 import { GetConfigParams, TsupGetConfigOptions } from "../types";
 
@@ -50,7 +51,7 @@ export function defaultConfig({
       : false,
     projectRoot,
     workspaceRoot,
-    outDir,
+    outDir: joinPathFragments(outDir, "dist"),
     silent: !verbose,
     metafile: true,
     shims,
@@ -66,7 +67,7 @@ export function defaultConfig({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir
+          outDir: joinPathFragments(outDir, "dist")
         }
       }
     },

@@ -52,7 +52,7 @@ ${Object.keys(options)
   .map(
     key =>
       `${key}: ${
-        !options[key] || isPrimitive(options[key])
+        !options[key] || _isPrimitive(options[key])
           ? options[key]
           : JSON.stringify(options[key])
       }`
@@ -336,7 +336,7 @@ ${externalDependencies
       console.log(JSON.stringify(options.getConfig));
       const distPaths: string[] =
         !options?.getConfig || _isFunction(options.getConfig)
-          ? [""]
+          ? ["dist/"]
           : Object.keys(options.getConfig).map(key => `${key}/`);
 
       packageJson.type = "module";
@@ -652,18 +652,6 @@ const build = async (options: Options | Options[]) => {
   }
 };
 
-const isPrimitive = (value: unknown): boolean => {
-  try {
-    return (
-      value === undefined ||
-      value === null ||
-      (typeof value !== "object" && typeof value !== "function")
-    );
-  } catch (e) {
-    return false;
-  }
-};
-
 export const applyDefaultOptions = (
   options: TsupExecutorSchema
 ): TsupExecutorSchema => {
@@ -691,7 +679,7 @@ export const applyDefaultOptions = (
   options.define ??= {};
   options.env ??= {};
   options.verbose ??= !!process.env.CI;
-  options.getConfig ??= defaultConfig;
+  options.getConfig ??= { "dist": defaultConfig };
 
   return options;
 };
@@ -706,6 +694,18 @@ export default withRunExecutor<TsupExecutorSchema>(
     }
   }
 );
+
+const _isPrimitive = (value: unknown): boolean => {
+  try {
+    return (
+      value === undefined ||
+      value === null ||
+      (typeof value !== "object" && typeof value !== "function")
+    );
+  } catch (e) {
+    return false;
+  }
+};
 
 const _isFunction = (
   value: unknown
