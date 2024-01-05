@@ -1,3 +1,10 @@
+## [1.36.4](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.36.3...workspace-tools-v1.36.4) (2024-01-05)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved entry point issue in package.json files ([7d2c178](https://github.com/storm-software/storm-ops/commit/7d2c1780cb398f04d5937b556e7bacc76cd1bf52))
+
 ## [1.36.3](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.36.2...workspace-tools-v1.36.3) (2024-01-05)
 
 
