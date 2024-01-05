@@ -333,9 +333,11 @@ ${externalDependencies
         }
       });
 
-      const distPaths: string[] = _isFunction(options.getConfig)
-        ? [""]
-        : Object.keys(options.getConfig).map(key => `${key}/`);
+      console.log(JSON.stringify(options.getConfig));
+      const distPaths: string[] =
+        !options?.getConfig || _isFunction(options.getConfig)
+          ? [""]
+          : Object.keys(options.getConfig).map(key => `${key}/`);
 
       packageJson.type = "module";
       if (distPaths.length > 1) {
