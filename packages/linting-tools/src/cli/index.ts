@@ -142,26 +142,28 @@ async function allAction(
     console.log("⚡ Linting the Storm Workspace");
     console.log(process.argv);
 
+    const promises = [];
     if (!cspellSkip) {
-      await cspellAction(cspellConfig);
+      promises.push(cspellAction(cspellConfig));
     }
 
     if (!alexSkip) {
-      await alexAction(alexConfig, alexIgnore);
+      promises.push(alexAction(alexConfig, alexIgnore));
     }
 
     if (!depsVersionSkip) {
-      await depsVersionAction();
+      promises.push(depsVersionAction());
     }
 
     if (!circularDepsSkip) {
-      await circularDepsAction();
+      promises.push(circularDepsAction());
     }
 
     if (!manypkgSkip) {
-      await manypkgAction(manypkgType, manypkgArgs, manypkgFix);
+      promises.push(manypkgAction(manypkgType, manypkgArgs, manypkgFix));
     }
 
+    await Promise.all(promises);
     console.log(`⚡ Linted the workspace`);
   } catch (e) {
     console.error(e);
