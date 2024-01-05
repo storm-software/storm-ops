@@ -565,20 +565,26 @@ ${externalDependencies
       entry
     };
 
-    const getConfigFns = _isFunction(options.getConfig)
-      ? [options.getConfig]
-      : Object.keys(options.getConfig).map(key => options.getConfig[key]);
+    if (options.getConfig) {
+      const getConfigFns = _isFunction(options.getConfig)
+        ? [options.getConfig]
+        : Object.keys(options.getConfig).map(key => options.getConfig[key]);
 
-    const config = defineConfig(
-      getConfigFns.map(getConfigFn =>
-        getConfig(context.root, projectRoot, getConfigFn, getConfigOptions)
-      )
-    );
+      const config = defineConfig(
+        getConfigFns.map(getConfigFn =>
+          getConfig(context.root, projectRoot, getConfigFn, getConfigOptions)
+        )
+      );
 
-    if (typeof config === "function") {
-      await build(await Promise.resolve(config({})));
+      if (_isFunction(config)) {
+        await build(await Promise.resolve(config({})));
+      } else {
+        await build(config);
+      }
     } else {
-      await build(config);
+      console.log(
+        "The Build process did not run because no `getConfig` parameter was provided"
+      );
     }
 
     // #endregion Run the build process

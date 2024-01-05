@@ -8,7 +8,7 @@ import {
 import { nodeConfig } from "./get-config";
 import { TsupNodeExecutorSchema } from "./schema";
 
-export const tsNodeBuildExecutorFn = (
+export const tsupNodeBuildExecutorFn = (
   options: TsupNodeExecutorSchema,
   context: ExecutorContext,
   config?: any
@@ -24,6 +24,7 @@ export const tsNodeBuildExecutorFn = (
   return tsupExecutorFn(
     {
       ...options,
+      getConfig: { "dist": nodeConfig },
       platform: "node",
       banner: getFileBanner(
         context.projectName
@@ -53,14 +54,13 @@ const applyDefaultOptions = (
 ): TsupNodeExecutorSchema => {
   return {
     ...tsupApplyDefault({ plugins: [], ...options, platform: "node" }),
-    getConfig: { "dist": nodeConfig },
     transports: ["pino-pretty", "pino-loki"]
   };
 };
 
 export default withRunExecutor<TsupNodeExecutorSchema>(
   "TypeScript Build (NodeJs Platform)",
-  tsNodeBuildExecutorFn,
+  tsupNodeBuildExecutorFn,
   {
     skipReadingConfig: false,
     hooks: {

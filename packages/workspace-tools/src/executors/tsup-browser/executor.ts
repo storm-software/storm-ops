@@ -8,7 +8,7 @@ import {
 import { legacyBrowserConfig, modernBrowserConfig } from "./get-config";
 import { TsupBrowserExecutorSchema } from "./schema";
 
-export const tsNodeBuildExecutorFn = (
+export const tsupBrowserBuildExecutorFn = (
   options: TsupBrowserExecutorSchema,
   context: ExecutorContext,
   config?: any
@@ -24,6 +24,10 @@ export const tsNodeBuildExecutorFn = (
   return tsupExecutorFn(
     {
       ...options,
+      getConfig: {
+        "dist/modern": modernBrowserConfig,
+        "dist/legacy": legacyBrowserConfig
+      },
       platform: "browser",
       banner: getFileBanner(
         context.projectName
@@ -53,17 +57,13 @@ const applyDefaultOptions = (
 ): TsupBrowserExecutorSchema => {
   return {
     ...tsupApplyDefault({ plugins: [], ...options, platform: "browser" }),
-    getConfig: {
-      "dist/modern": modernBrowserConfig,
-      "dist/legacy": legacyBrowserConfig
-    },
     transports: ["pino-pretty"]
   };
 };
 
 export default withRunExecutor<TsupBrowserExecutorSchema>(
   "TypeScript Build (Browser Platforms)",
-  tsNodeBuildExecutorFn,
+  tsupBrowserBuildExecutorFn,
   {
     skipReadingConfig: false,
     hooks: {

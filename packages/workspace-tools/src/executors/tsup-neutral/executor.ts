@@ -9,7 +9,7 @@ import {
 import { legacyNeutralConfig, modernNeutralConfig } from "./get-config";
 import { TsupNeutralExecutorSchema } from "./schema";
 
-export const tsNeutralBuildExecutorFn = (
+export const tsupNeutralBuildExecutorFn = (
   options: TsupNeutralExecutorSchema,
   context: ExecutorContext,
   config?: StormConfig
@@ -25,6 +25,10 @@ export const tsNeutralBuildExecutorFn = (
   return tsupExecutorFn(
     {
       ...options,
+      getConfig: {
+        "dist/modern": modernNeutralConfig,
+        "dist/legacy": legacyNeutralConfig
+      },
       platform: "neutral",
       banner: getFileBanner(
         context.projectName
@@ -58,17 +62,13 @@ const applyDefaultOptions = (
       ...options,
       platform: "neutral"
     }),
-    getConfig: {
-      "dist/modern": modernNeutralConfig,
-      "dist/legacy": legacyNeutralConfig
-    },
     transports: ["pino-pretty"]
   } as TsupNeutralExecutorSchema;
 };
 
 export default withRunExecutor<TsupNeutralExecutorSchema>(
   "TypeScript Build (Neutral Platform)",
-  tsNeutralBuildExecutorFn,
+  tsupNeutralBuildExecutorFn,
   {
     skipReadingConfig: false,
     hooks: {
