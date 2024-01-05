@@ -53,7 +53,7 @@ const applyDefaultOptions = (
 ): TsupNodeExecutorSchema => {
   return {
     ...tsupApplyDefault({ plugins: [], ...options, platform: "node" }),
-    getConfig: nodeConfig,
+    getConfig: { "dist": nodeConfig },
     transports: ["pino-pretty", "pino-loki"]
   };
 };
