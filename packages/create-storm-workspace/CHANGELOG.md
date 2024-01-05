@@ -1,3 +1,10 @@
+## [1.36.3](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.36.2...create-storm-workspace-v1.36.3) (2024-01-05)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Cleaned up the logic around running `getConfig` functions ([bcc3304](https://github.com/storm-software/storm-ops/commit/bcc3304cb976e01a55030221cd5c5f4f1c22f150))
+
 ## [1.36.2](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.36.1...create-storm-workspace-v1.36.2) (2024-01-05)
 
 
