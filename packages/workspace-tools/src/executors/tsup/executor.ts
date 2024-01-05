@@ -340,7 +340,7 @@ ${externalDependencies
           : Object.keys(options.getConfig).map(key => `${key}/`);
 
       packageJson.type = "module";
-      if (distPaths.length > 1) {
+      if (distPaths.length > 0) {
         packageJson.exports ??= {
           ".": {
             import: {
