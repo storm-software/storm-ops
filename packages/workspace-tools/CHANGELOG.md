@@ -1,3 +1,10 @@
+## [1.36.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.36.1...workspace-tools-v1.36.2) (2024-01-05)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated logic to pass in getConfig params for NodeJs build ([6f8b424](https://github.com/storm-software/storm-ops/commit/6f8b424bc01fa51a0ef4b1e9ec1b2ca4140d9637))
+
 ## [1.36.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.36.0...workspace-tools-v1.36.1) (2024-01-05)
 
 
