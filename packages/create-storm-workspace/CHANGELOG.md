@@ -1,3 +1,10 @@
+# [1.37.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.36.7...create-storm-workspace-v1.37.0) (2024-01-06)
+
+
+### Features
+
+* **workspace-tools:** Added the `format` option to tsup build executor ([5a6300b](https://github.com/storm-software/storm-ops/commit/5a6300b7ba891b079946760f9ac17a0fb5fadbb2))
+
 ## [1.36.7](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.36.6...create-storm-workspace-v1.36.7) (2024-01-06)
 
 
