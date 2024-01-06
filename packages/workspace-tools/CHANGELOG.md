@@ -1,3 +1,10 @@
+## [1.36.6](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.36.5...workspace-tools-v1.36.6) (2024-01-06)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Generate typings for browser packages ([ea29e7a](https://github.com/storm-software/storm-ops/commit/ea29e7a733d5abe723e6096640c5ed0eb0c54434))
+
 ## [1.36.5](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.36.4...workspace-tools-v1.36.5) (2024-01-05)
 
 
