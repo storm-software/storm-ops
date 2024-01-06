@@ -417,6 +417,7 @@ ${externalDependencies
         packageJson.module ??= `${
           distPaths.length > 1 ? distPaths[1] : distPaths[0]
         }index.js`;
+
         options.platform &&
           options.platform !== "node" &&
           (packageJson.browser ??= `${distPaths[0]}index.global.js`);
@@ -659,6 +660,7 @@ export const applyDefaultOptions = (
   options.splitting ??= true;
   options.treeshake ??= true;
   options.platform ??= "neutral";
+  options.format ??= ["cjs", "esm"];
   options.verbose ??= false;
   options.external ??= [];
   options.additionalEntryPoints ??= [];

@@ -91,6 +91,14 @@
       "description": "Should the build process *tree-shake* to remove unused code?",
       "default": true
     },
+    "format": {
+      "type": "array",
+      "description": "The output format for the generated JavaScript files. There are currently three possible values that can be configured: iife, cjs, and esm.",
+      "default": ["cjs", "esm"],
+      "items": {
+        "type": "string"
+      }
+    },
     "debug": {
       "type": "boolean",
       "description": "Should output be unminified with source mappings.",

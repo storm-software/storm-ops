@@ -28,7 +28,7 @@ export function modernBrowserConfig({
   return {
     name: "modern",
     entry,
-    format: ["cjs", "esm", "iife"],
+    format: ["cjs", "esm"],
     target: [
       "chrome91",
       "firefox90",
@@ -114,7 +114,7 @@ export function legacyBrowserConfig({
   return {
     name: "legacy",
     entry,
-    format: ["cjs", "esm", "iife"],
+    format: ["cjs", "esm"],
     target: ["es2022"],
     tsconfig,
     splitting,

@@ -10,6 +10,7 @@ export function defaultConfig({
   tsconfig = "tsconfig.json",
   splitting,
   treeshake,
+  format = ["cjs", "esm"],
   debug = false,
   shims = true,
   external,
@@ -28,7 +29,7 @@ export function defaultConfig({
   return {
     name: "default",
     entry,
-    format: platform !== "node" ? ["cjs", "esm", "iife"] : ["cjs", "esm"],
+    format,
     target:
       platform !== "node"
         ? [

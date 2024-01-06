@@ -28,7 +28,7 @@ export function modernNeutralConfig({
   return {
     name: "modern",
     entry,
-    format: ["cjs", "esm", "iife"],
+    format: ["cjs", "esm"],
     target: ["esnext"],
     tsconfig,
     splitting,
@@ -99,7 +99,7 @@ export function legacyNeutralConfig({
   return {
     name: "legacy",
     entry,
-    format: ["cjs", "esm", "iife"],
+    format: ["cjs", "esm"],
     target: ["es2022"],
     tsconfig,
     splitting,
