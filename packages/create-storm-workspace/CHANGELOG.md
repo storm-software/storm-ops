@@ -1,3 +1,10 @@
+## [1.36.7](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.36.6...create-storm-workspace-v1.36.7) (2024-01-06)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed the pino logging plugin from neutral and browser builds ([15d11ca](https://github.com/storm-software/storm-ops/commit/15d11cadba3b99facedc586912a8ff165cb2aa09))
+
 ## [1.36.6](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.36.5...create-storm-workspace-v1.36.6) (2024-01-06)
 
 
