@@ -11,7 +11,6 @@ import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options
 import { createTypeScriptCompilationOptions } from "@nx/js/src/executors/tsc/tsc.impl";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
 import { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
-import { load } from "decky";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import { readFileSync, writeFileSync } from "fs";
 import { removeSync } from "fs-extra";
@@ -514,8 +513,6 @@ ${externalDependencies
         ret[key] = options.env[key];
         return ret;
       }, {});
-
-    options.plugins.push(await load());
     options.plugins.push(
       esbuildDecorators({
         tsconfig: options.tsConfig,

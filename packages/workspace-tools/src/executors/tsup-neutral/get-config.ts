@@ -29,15 +29,7 @@ export function modernNeutralConfig({
     name: "modern",
     entry,
     format: ["cjs", "esm", "iife"],
-    target: [
-      "chrome91",
-      "firefox90",
-      "edge91",
-      "safari15",
-      "ios15",
-      "opera77",
-      "esnext"
-    ],
+    target: ["esnext"],
     tsconfig,
     splitting,
     generatePackageJson,
@@ -68,13 +60,6 @@ export function modernNeutralConfig({
         }
       }
     },
-    /*minify: debug ? false : "terser",
-    terserOptions: {
-      compress: true,
-      ecma: 2020,
-      keep_classnames: true,
-      keep_fnames: true
-    },*/
     apiReport: false,
     docModel: false,
     tsdocMetadata: false,
@@ -146,13 +131,6 @@ export function legacyNeutralConfig({
         }
       }
     },
-    /*minify: debug ? false : "terser",
-    terserOptions: {
-      compress: true,
-      ecma: 2020,
-      keep_classnames: true,
-      keep_fnames: true
-    },*/
     apiReport,
     docModel,
     tsdocMetadata,

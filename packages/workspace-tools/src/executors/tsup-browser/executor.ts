@@ -13,14 +13,6 @@ export const tsupBrowserBuildExecutorFn = (
   context: ExecutorContext,
   config?: any
 ) => {
-  if (
-    options.transports &&
-    Array.isArray(options.transports) &&
-    options.transports.length > 0
-  ) {
-    //options.plugins.push(esbuildPluginPino({ transports: options.transports }));
-  }
-
   return tsupExecutorFn(
     {
       ...options,
@@ -56,8 +48,7 @@ const applyDefaultOptions = (
   options: TsupBrowserExecutorSchema
 ): TsupBrowserExecutorSchema => {
   return {
-    ...tsupApplyDefault({ plugins: [], ...options, platform: "browser" }),
-    transports: ["pino-pretty"]
+    ...tsupApplyDefault({ plugins: [], ...options, platform: "browser" })
   };
 };
 

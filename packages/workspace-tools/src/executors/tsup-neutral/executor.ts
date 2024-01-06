@@ -14,14 +14,6 @@ export const tsupNeutralBuildExecutorFn = (
   context: ExecutorContext,
   config?: StormConfig
 ) => {
-  if (
-    options.transports &&
-    Array.isArray(options.transports) &&
-    options.transports.length > 0
-  ) {
-    // options.plugins.push(esbuildPluginPino({ transports: options.transports }));
-  }
-
   return tsupExecutorFn(
     {
       ...options,
@@ -61,8 +53,7 @@ const applyDefaultOptions = (
       plugins: [],
       ...options,
       platform: "neutral"
-    }),
-    transports: ["pino-pretty"]
+    })
   } as TsupNeutralExecutorSchema;
 };
 

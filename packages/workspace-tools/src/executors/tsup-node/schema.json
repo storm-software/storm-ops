@@ -1,11 +1,20 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$id": "tsup-node",
-  "extends": "../tsup-neutral/schema.json",
+  "extends": "../tsup/schema.json",
   "version": 2,
   "title": "Node TypeScript Builder",
   "description": "Runs a node platform TypeScript build",
   "type": "object",
-  "properties": {},
+  "properties": {
+    "transports": {
+      "type": "array",
+      "description": "",
+      "items": {
+        "type": "string"
+      },
+      "default": ["pino-pretty", "pino-loki"]
+    }
+  },
   "required": []
 }

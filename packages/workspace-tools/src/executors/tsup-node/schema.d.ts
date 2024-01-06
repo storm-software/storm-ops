@@ -5,5 +5,6 @@ export type TsupNodeExecutorSchema = Omit<
   TsupNeutralExecutorSchema,
   "platform"
 > & {
+  transports: string[];
   platform?: Platform;
 };
