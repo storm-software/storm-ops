@@ -25,10 +25,10 @@ export function modernNeutralConfig({
 }: GetConfigParams) {
   let outputPath = joinPathFragments(outDir, "dist", "modern");
 
-  return {
+  const options = {
     name: "modern",
     entry,
-    format: ["cjs", "esm"],
+    format: ["cjs", "esm", "iife"],
     target: ["esnext"],
     tsconfig,
     splitting,
@@ -69,6 +69,18 @@ export function modernNeutralConfig({
     plugins,
     outExtension
   } as Options;
+
+  if (!debug) {
+    options.minify = "terser";
+    options.terserOptions = {
+      compress: true,
+      ecma: 2020,
+      keep_classnames: true,
+      keep_fnames: true
+    };
+  }
+
+  return options;
 }
 
 export function legacyNeutralConfig({
@@ -96,10 +108,10 @@ export function legacyNeutralConfig({
 }: GetConfigParams) {
   let outputPath = joinPathFragments(outDir, "dist", "legacy");
 
-  return {
+  const options = {
     name: "legacy",
     entry,
-    format: ["cjs", "esm"],
+    format: ["cjs", "esm", "iife"],
     target: ["es2022"],
     tsconfig,
     splitting,
@@ -140,4 +152,16 @@ export function legacyNeutralConfig({
     plugins,
     outExtension
   } as Options;
+
+  if (!debug) {
+    options.minify = "terser";
+    options.terserOptions = {
+      compress: true,
+      ecma: 2020,
+      keep_classnames: true,
+      keep_fnames: true
+    };
+  }
+
+  return options;
 }

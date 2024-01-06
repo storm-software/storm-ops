@@ -26,7 +26,7 @@ export function nodeConfig({
   generatePackageJson,
   dtsTsConfig
 }: GetConfigParams) {
-  return {
+  const options = {
     name: "node",
     entry,
     format: ["cjs", "esm"],
@@ -61,13 +61,6 @@ export function nodeConfig({
         }
       }
     },
-    minify: debug ? false : "terser",
-    terserOptions: {
-      compress: true,
-      ecma: 2020,
-      keep_classnames: true,
-      keep_fnames: true
-    },
     apiReport,
     docModel,
     tsdocMetadata,
@@ -77,6 +70,18 @@ export function nodeConfig({
     plugins,
     outExtension
   } as Options;
+
+  if (!debug) {
+    options.minify = "terser";
+    options.terserOptions = {
+      compress: true,
+      ecma: 2020,
+      keep_classnames: true,
+      keep_fnames: true
+    };
+  }
+
+  return options;
 }
 
 export function workerConfig({
@@ -101,7 +106,7 @@ export function workerConfig({
   generatePackageJson,
   dtsTsConfig
 }: GetConfigParams) {
-  return {
+  const options = {
     name: "worker",
     entry,
     format: ["esm"],
@@ -137,13 +142,6 @@ export function workerConfig({
         }
       }
     },
-    minify: debug ? false : "terser",
-    terserOptions: {
-      compress: true,
-      ecma: 2020,
-      keep_classnames: true,
-      keep_fnames: true
-    },
     apiReport,
     docModel,
     tsdocMetadata,
@@ -153,4 +151,16 @@ export function workerConfig({
     plugins,
     outExtension
   } as Options;
+
+  if (!debug) {
+    options.minify = "terser";
+    options.terserOptions = {
+      compress: true,
+      ecma: 2020,
+      keep_classnames: true,
+      keep_fnames: true
+    };
+  }
+
+  return options;
 }

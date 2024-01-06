@@ -1,5 +1,4 @@
 import { ExecutorContext } from "@nx/devkit";
-import esbuildPluginPino from "esbuild-plugin-pino";
 import { withRunExecutor } from "../../base/base-executor";
 import { getFileBanner } from "../../utils/get-file-banner";
 import {
@@ -19,7 +18,7 @@ export const tsupNodeBuildExecutorFn = (
     Array.isArray(options.transports) &&
     options.transports.length > 0
   ) {
-    options.plugins.push(esbuildPluginPino({ transports: options.transports }));
+    // options.plugins.push(esbuildPluginPino({ transports: options.transports }));
   }
 
   return tsupExecutorFn(

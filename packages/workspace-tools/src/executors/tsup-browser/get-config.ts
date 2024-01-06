@@ -25,10 +25,10 @@ export function modernBrowserConfig({
 }: GetConfigParams) {
   let outputPath = joinPathFragments(outDir, "dist", "modern");
 
-  return {
+  const options = {
     name: "modern",
     entry,
-    format: ["cjs", "esm"],
+    format: ["cjs", "esm", "iife"],
     target: [
       "chrome91",
       "firefox90",
@@ -68,13 +68,6 @@ export function modernBrowserConfig({
         }
       }
     },
-    /*minify: debug ? false : "terser",
-    terserOptions: {
-      compress: true,
-      ecma: 2020,
-      keep_classnames: true,
-      keep_fnames: true
-    },*/
     apiReport: false,
     docModel: false,
     tsdocMetadata: false,
@@ -84,6 +77,18 @@ export function modernBrowserConfig({
     plugins,
     outExtension
   } as Options;
+
+  if (!debug) {
+    options.minify = "terser";
+    options.terserOptions = {
+      compress: true,
+      ecma: 2020,
+      keep_classnames: true,
+      keep_fnames: true
+    };
+  }
+
+  return options;
 }
 
 export function legacyBrowserConfig({
@@ -111,10 +116,10 @@ export function legacyBrowserConfig({
 }: GetConfigParams) {
   let outputPath = joinPathFragments(outDir, "dist", "legacy");
 
-  return {
+  const options = {
     name: "legacy",
     entry,
-    format: ["cjs", "esm"],
+    format: ["cjs", "esm", "iife"],
     target: ["es2022"],
     tsconfig,
     splitting,
@@ -146,13 +151,6 @@ export function legacyBrowserConfig({
         }
       }
     },
-    /*minify: debug ? false : "terser",
-    terserOptions: {
-      compress: true,
-      ecma: 2020,
-      keep_classnames: true,
-      keep_fnames: true
-    },*/
     apiReport,
     docModel,
     tsdocMetadata,
@@ -162,4 +160,16 @@ export function legacyBrowserConfig({
     plugins,
     outExtension
   } as Options;
+
+  if (!debug) {
+    options.minify = "terser";
+    options.terserOptions = {
+      compress: true,
+      ecma: 2020,
+      keep_classnames: true,
+      keep_fnames: true
+    };
+  }
+
+  return options;
 }
