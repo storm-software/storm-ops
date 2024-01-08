@@ -31,7 +31,7 @@
   "type": "commonjs",
   "main": "./index.cjs",
   "dependencies": {
-    "@nx/jest": "17.0.3"
+    "@nx/jest": "17.2.8"
   },
   "publishConfig": {
     "access": "public"
