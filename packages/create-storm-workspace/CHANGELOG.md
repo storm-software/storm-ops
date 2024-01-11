@@ -1,3 +1,10 @@
+## [1.37.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.37.0...create-storm-workspace-v1.37.1) (2024-01-06)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Updated debug to disable minification ([d4d69fa](https://github.com/storm-software/storm-ops/commit/d4d69fa138bd9a4528ef362d112afc8bf11d6172))
+
 # [1.37.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.36.7...create-storm-workspace-v1.37.0) (2024-01-06)
 
 
