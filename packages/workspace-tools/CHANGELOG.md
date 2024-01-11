@@ -1,3 +1,10 @@
+# [1.38.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.37.1...workspace-tools-v1.38.0) (2024-01-11)
+
+
+### Features
+
+* **workspace-tools:** Added `metafile` option to tsup build ([f3c982c](https://github.com/storm-software/storm-ops/commit/f3c982c16a29d2034b9087bc86cf61a776e1445b))
+
 ## [1.37.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.37.0...workspace-tools-v1.37.1) (2024-01-06)
 
 
