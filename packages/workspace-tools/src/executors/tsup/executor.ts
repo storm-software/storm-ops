@@ -675,6 +675,7 @@ export const applyDefaultOptions = (
   options.docModel ??= true;
   options.tsdocMetadata ??= true;
   options.emitOnAll ??= false;
+  options.metafile ??= false;
   options.define ??= {};
   options.env ??= {};
   options.verbose ??= !!process.env.CI;

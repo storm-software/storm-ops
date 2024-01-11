@@ -42,4 +42,5 @@ export type TsupExecutorSchema = Omit<
     | Record<string, (params: GetConfigParams) => Options>
     | ((params: GetConfigParams) => Options);
   format?: string[];
+  metafile?: boolean;
 };

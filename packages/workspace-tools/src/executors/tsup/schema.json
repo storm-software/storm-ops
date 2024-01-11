@@ -71,6 +71,11 @@
       "description": "Should the source files be added to the distribution folder in an `src` directory.",
       "default": false
     },
+    "metafile": {
+      "type": "boolean",
+      "description": "Should a meta file be created for the build package",
+      "default": false
+    },
     "emitOnAll": {
       "type": "boolean",
       "description": "Should each file contained in the package be emitted individually.",
