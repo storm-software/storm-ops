@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/design-tools",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "private": false,
   "description": "⚡ A package containing various design/style tools used in Storm workspaces.",
   "keywords": [

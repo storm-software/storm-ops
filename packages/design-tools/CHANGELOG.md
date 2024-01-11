@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/storm-software/storm-ops/compare/design-tools-v1.0.3...design-tools-v1.1.0) (2024-01-11)
+
+
+### Features
+
+* **workspace-tools:** Added `metafile` option to tsup build ([f3c982c](https://github.com/storm-software/storm-ops/commit/f3c982c16a29d2034b9087bc86cf61a776e1445b))
+
 ## [1.0.3](https://github.com/storm-software/storm-ops/compare/design-tools-v1.0.2...design-tools-v1.0.3) (2023-12-26)
 
 
