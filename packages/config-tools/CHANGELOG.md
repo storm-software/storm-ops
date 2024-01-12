@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/storm-software/storm-ops/compare/config-tools-v1.9.4...config-tools-v1.10.0) (2024-01-11)
+
+
+### Features
+
+* **workspace-tools:** Added `metafile` option to tsup build ([f3c982c](https://github.com/storm-software/storm-ops/commit/f3c982c16a29d2034b9087bc86cf61a776e1445b))
+
 ## [1.9.4](https://github.com/storm-software/storm-ops/compare/config-tools-v1.9.3...config-tools-v1.9.4) (2023-12-26)
 
 
