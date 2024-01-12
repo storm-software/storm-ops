@@ -332,7 +332,6 @@ ${externalDependencies
         }
       });
 
-      console.log(JSON.stringify(options.getConfig));
       const distPaths: string[] =
         !options?.getConfig || _isFunction(options.getConfig)
           ? ["dist/"]

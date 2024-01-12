@@ -6,7 +6,7 @@ import { ReadMeOptions } from "../types";
 
 async function createProgram() {
   try {
-    console.log("Running ⚡Storm Git Tools");
+    console.log("⚡ Running Storm Git Tools");
 
     const { Command, Option } = await import("commander");
 
@@ -114,11 +114,11 @@ async function commitAction({
   dryRun: boolean;
 }) {
   try {
-    console.log("⚡ Linting the Commit Message and running Commitizen");
+    console.log("⚡ Linting the Commit Message and running Commitizen \n");
 
     await runCommit(config, dryRun);
 
-    console.log("✅ Commit Message linting and Commitizen are complete");
+    console.log("✅ Commit Message linting and Commitizen are complete \n");
     process.exit(0);
   } catch (e) {
     console.error(e);
@@ -128,11 +128,13 @@ async function commitAction({
 
 async function readmeAction(options: ReadMeOptions) {
   try {
-    console.log("⚡ Formatting the workspace's README.md files");
+    console.log("⚡ Formatting the workspace's README.md files \n");
 
     await runReadme(options);
 
-    console.log("✅ Formatting of the workspace's README.md files is complete");
+    console.log(
+      "✅ Formatting of the workspace's README.md files is complete \n"
+    );
     process.exit(0);
   } catch (e) {
     console.error(e);
@@ -154,11 +156,11 @@ async function releaseAction({
   head?: string;
 }) {
   try {
-    console.log("⚡ Linting the Commit Message and running Commitizen");
+    console.log("⚡ Linting the Commit Message and running Commitizen \n");
 
     await runRelease(project, config, plugin, base, head);
 
-    console.log("✅ Commit Message linting and Commitizen are complete");
+    console.log("✅ Commit Message linting and Commitizen are complete \n");
     process.exit(0);
   } catch (e) {
     console.error(e);

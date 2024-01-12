@@ -3,7 +3,7 @@ import { Options } from "tsup";
 import { outExtension } from "../../base/get-tsup-config";
 import { GetConfigParams } from "../../types";
 
-export function modernNeutralConfig({
+export function neutralConfig({
   entry,
   outDir,
   projectRoot,
@@ -24,10 +24,10 @@ export function modernNeutralConfig({
   generatePackageJson,
   dtsTsConfig
 }: GetConfigParams) {
-  let outputPath = joinPathFragments(outDir, "dist", "modern");
+  let outputPath = joinPathFragments(outDir, "dist");
 
   const options = {
-    name: "modern",
+    name: "neutral",
     entry,
     format: ["cjs", "esm", "iife"],
     target: ["esnext"],
