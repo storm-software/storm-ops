@@ -1,3 +1,10 @@
+## [1.19.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.19.0...git-tools-v1.19.1) (2024-01-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed legacy config from neutral tsup build ([4e1cce7](https://github.com/storm-software/storm-ops/commit/4e1cce7122194d6d0364a564115ebdebe7eab46b))
+
 # [1.19.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.18.3...git-tools-v1.19.0) (2024-01-11)
 
 

@@ -1,3 +1,10 @@
+## [1.38.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.38.0...workspace-tools-v1.38.1) (2024-01-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed legacy config from neutral tsup build ([4e1cce7](https://github.com/storm-software/storm-ops/commit/4e1cce7122194d6d0364a564115ebdebe7eab46b))
+
 # [1.38.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.37.1...workspace-tools-v1.38.0) (2024-01-11)
 
 

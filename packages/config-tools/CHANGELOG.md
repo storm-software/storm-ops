@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/storm-software/storm-ops/compare/config-tools-v1.10.0...config-tools-v1.10.1) (2024-01-12)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed legacy config from neutral tsup build ([4e1cce7](https://github.com/storm-software/storm-ops/commit/4e1cce7122194d6d0364a564115ebdebe7eab46b))
+
 # [1.10.0](https://github.com/storm-software/storm-ops/compare/config-tools-v1.9.4...config-tools-v1.10.0) (2024-01-11)
 
 
