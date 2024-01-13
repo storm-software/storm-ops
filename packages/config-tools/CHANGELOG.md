@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/storm-software/storm-ops/compare/config-tools-v1.10.1...config-tools-v1.11.0) (2024-01-13)
+
+
+### Features
+
+* **workspace-tools:** Added Typia compiler transformer to tsup build ([2b5645f](https://github.com/storm-software/storm-ops/commit/2b5645f8603ba06437b7311dc0652be5927e3168))
+
 ## [1.10.1](https://github.com/storm-software/storm-ops/compare/config-tools-v1.10.0...config-tools-v1.10.1) (2024-01-12)
 
 
