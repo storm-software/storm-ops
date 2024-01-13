@@ -22,7 +22,8 @@ export function neutralConfig({
   env,
   plugins,
   generatePackageJson,
-  dtsTsConfig
+  dtsTsConfig,
+  getTransform
 }: GetConfigParams) {
   let outputPath = joinPathFragments(outDir, "dist");
 
@@ -68,7 +69,8 @@ export function neutralConfig({
     clean: false,
     tsconfigDecoratorMetadata: true,
     plugins,
-    outExtension
+    outExtension,
+    getTransform
   } as Options;
 
   if (!debug) {
@@ -106,7 +108,8 @@ export function legacyNeutralConfig({
   env,
   plugins,
   generatePackageJson,
-  dtsTsConfig
+  dtsTsConfig,
+  getTransform
 }: GetConfigParams) {
   let outputPath = joinPathFragments(outDir, "dist", "legacy");
 
@@ -152,7 +155,8 @@ export function legacyNeutralConfig({
     clean: false,
     tsconfigDecoratorMetadata: true,
     plugins,
-    outExtension
+    outExtension,
+    getTransform
   } as Options;
 
   if (!debug) {

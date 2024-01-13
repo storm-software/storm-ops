@@ -43,4 +43,5 @@ export type TsupExecutorSchema = Omit<
     | ((params: GetConfigParams) => Options);
   format?: string[];
   metafile?: boolean;
+  skipTypia?: boolean;
 };

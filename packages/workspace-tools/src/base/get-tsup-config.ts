@@ -25,7 +25,8 @@ export function defaultConfig({
   env,
   plugins,
   generatePackageJson,
-  dtsTsConfig
+  dtsTsConfig,
+  getTransform
 }: GetConfigParams) {
   return {
     name: "default",
@@ -87,6 +88,7 @@ export function defaultConfig({
     clean: false,
     tsconfigDecoratorMetadata: true,
     plugins,
+    getTransform,
     outExtension
   } as Options;
 }

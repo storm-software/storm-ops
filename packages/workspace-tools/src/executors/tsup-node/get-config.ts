@@ -25,7 +25,8 @@ export function nodeConfig({
   env,
   plugins,
   generatePackageJson,
-  dtsTsConfig
+  dtsTsConfig,
+  getTransform
 }: GetConfigParams) {
   const options = {
     name: "node",
@@ -44,7 +45,7 @@ export function nodeConfig({
     workspaceRoot,
     outDir: joinPathFragments(outDir, "dist"),
     silent: !verbose,
-    metafile: true,
+    metafile,
     shims,
     external,
     platform,
@@ -69,7 +70,8 @@ export function nodeConfig({
     clean: false,
     tsconfigDecoratorMetadata: true,
     plugins,
-    outExtension
+    outExtension,
+    getTransform
   } as Options;
 
   if (!debug) {
@@ -106,7 +108,8 @@ export function workerConfig({
   env,
   plugins,
   generatePackageJson,
-  dtsTsConfig
+  dtsTsConfig,
+  getTransform
 }: GetConfigParams) {
   const options = {
     name: "worker",
@@ -126,7 +129,7 @@ export function workerConfig({
     workspaceRoot,
     outDir: joinPathFragments(outDir, "dist"),
     silent: !verbose,
-    metafile: true,
+    metafile,
     shims,
     external,
     platform: "browser",
@@ -151,7 +154,8 @@ export function workerConfig({
     clean: false,
     tsconfigDecoratorMetadata: true,
     plugins,
-    outExtension
+    outExtension,
+    getTransform
   } as Options;
 
   if (!debug) {

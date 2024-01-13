@@ -27,6 +27,7 @@ import { removeExtension } from "../../utils/file-path-utils";
 import { getProjectConfigurations } from "../../utils/get-project-configurations";
 import { getExternalDependencies } from "../../utils/get-project-deps";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
+import { getTypiaTransform } from "../../utils/typia-transform";
 import { TsupExecutorSchema } from "./schema";
 
 type PackageConfiguration = {
@@ -559,7 +560,8 @@ ${externalDependencies
           }
         : undefined,
       outputPath: options.outputPath,
-      entry
+      entry,
+      getTransform: options.skipTypia ? undefined : getTypiaTransform
     };
 
     if (options.getConfig) {
@@ -614,6 +616,11 @@ function getNormalizedTsConfig(
         baseUrl: workspaceRoot,
         allowJs: true,
         noEmit: false,
+        esModuleInterop: true,
+        downlevelIteration: true,
+        forceConsistentCasingInFileNames: true,
+        strict: true,
+        skipLibCheck: true,
         declaration: true,
         declarationMap: true,
         emitDeclarationOnly: true,
@@ -675,6 +682,7 @@ export const applyDefaultOptions = (
   options.tsdocMetadata ??= true;
   options.emitOnAll ??= false;
   options.metafile ??= false;
+  options.skipTypia ??= false;
   options.define ??= {};
   options.env ??= {};
   options.verbose ??= !!process.env.CI;

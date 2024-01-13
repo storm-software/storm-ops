@@ -1,0 +1,11 @@
+{
+  "name": "@storm-software/infrastructure",
+  "main": "index.ts",
+  "dependencies": {
+    "@pulumi/github": "^4.8.1",
+    "@pulumi/pulumi": "^3.19.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16"
+  }
+}

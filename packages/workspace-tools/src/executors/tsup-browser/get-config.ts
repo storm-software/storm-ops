@@ -22,7 +22,8 @@ export function modernBrowserConfig({
   env,
   plugins,
   generatePackageJson,
-  dtsTsConfig
+  dtsTsConfig,
+  getTransform
 }: GetConfigParams) {
   let outputPath = joinPathFragments(outDir, "dist", "modern");
 
@@ -76,7 +77,8 @@ export function modernBrowserConfig({
     clean: false,
     tsconfigDecoratorMetadata: true,
     plugins,
-    outExtension
+    outExtension,
+    getTransform
   } as Options;
 
   if (!debug) {
@@ -114,7 +116,8 @@ export function legacyBrowserConfig({
   env,
   plugins,
   generatePackageJson,
-  dtsTsConfig
+  dtsTsConfig,
+  getTransform
 }: GetConfigParams) {
   let outputPath = joinPathFragments(outDir, "dist", "legacy");
 
@@ -160,7 +163,8 @@ export function legacyBrowserConfig({
     clean: false,
     tsconfigDecoratorMetadata: true,
     plugins,
-    outExtension
+    outExtension,
+    getTransform
   } as Options;
 
   if (!debug) {

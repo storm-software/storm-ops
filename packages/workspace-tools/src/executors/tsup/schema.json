@@ -81,6 +81,11 @@
       "description": "Should each file contained in the package be emitted individually.",
       "default": false
     },
+    "skipTypia": {
+      "type": "boolean",
+      "description": "Should the typia schema transformation process be skipped.",
+      "default": false
+    },
     "generatePackageJson": {
       "type": "boolean",
       "description": "Should a package.json file be generated in the output folder or should the existing one be copied in.",

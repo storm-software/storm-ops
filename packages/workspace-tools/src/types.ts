@@ -1,4 +1,5 @@
 import { StormConfig } from "@storm-software/config-tools";
+import * as ts from "typescript";
 import { ParsedCommandLine } from "typescript";
 import { TsupExecutorSchema } from "./executors/tsup/schema";
 
@@ -41,4 +42,8 @@ export type GetConfigParams = Omit<
   docModel?: boolean;
   tsdocMetadata?: boolean;
   dtsTsConfig: ParsedCommandLine;
+  getTransform?: (
+    program: ts.Program,
+    diagnostics: ts.Diagnostic[]
+  ) => ts.TransformerFactory<ts.SourceFile>;
 };
