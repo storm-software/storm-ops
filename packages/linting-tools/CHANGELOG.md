@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.23.0...linting-tools-v1.24.0) (2024-01-14)
+
+
+### Features
+
+* **git-tools:** Improved all CLI tools and git hooks to use the `zx` package ([a905c21](https://github.com/storm-software/storm-ops/commit/a905c213d710d995cc114b32a90bf4d042c550d6))
+
 # [1.23.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.22.0...linting-tools-v1.23.0) (2024-01-14)
 
 
