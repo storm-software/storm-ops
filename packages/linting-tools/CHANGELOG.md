@@ -1,3 +1,10 @@
+## [1.24.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.24.0...linting-tools-v1.24.1) (2024-01-14)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Cleaned up dependanies and option defaulting in tsup ([0ae0dd3](https://github.com/storm-software/storm-ops/commit/0ae0dd327ed646e6dbcd1c33b44aef820403cd77))
+
 # [1.24.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.23.0...linting-tools-v1.24.0) (2024-01-14)
 
 
