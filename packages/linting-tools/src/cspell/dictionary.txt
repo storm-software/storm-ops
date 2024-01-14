@@ -20,6 +20,7 @@ unminified
 deepkit
 typeschema
 valibot
+lefthook
 hasura
 strapi
 tamagui

@@ -1,8 +1,8 @@
+import fs from "fs";
+import path from "path";
 import { Command, Option } from "commander";
 import { lint } from "cspell";
 import { parseCircular, parseDependencyTree, prettyCircular } from "dpdm";
-import fs from "fs";
-import path from "path";
 import { runAlex } from "../alex";
 import { runManypkg } from "../manypkg";
 
@@ -18,15 +18,11 @@ function createProgram() {
 
   program.version("1.0.0", "-v --version", "display CLI version");
 
-  program
-    .description("⚡Lint the Storm Workspace")
-    .showHelpAfterError()
-    .showSuggestionAfterError();
+  program.description("⚡Lint the Storm Workspace").showHelpAfterError().showSuggestionAfterError();
 
-  const cspellConfig = new Option(
-    "--cspell-config <file>",
-    "CSpell config file path"
-  ).default("@storm-software/linting-tools/cspell/config.js");
+  const cspellConfig = new Option("--cspell-config <file>", "CSpell config file path").default(
+    "@storm-software/linting-tools/cspell/config.js"
+  );
 
   program
     .command("cspell")
@@ -34,15 +30,13 @@ function createProgram() {
     .addOption(cspellConfig)
     .action(cspellAction);
 
-  const alexConfig = new Option(
-    "--alex-config <file>",
-    "Alex.js config file path"
-  ).default("@storm-software/linting-tools/alex/.alexrc");
+  const alexConfig = new Option("--alex-config <file>", "Alex.js config file path").default(
+    "@storm-software/linting-tools/alex/.alexrc"
+  );
 
-  const alexIgnore = new Option(
-    "--alex-ignore <file>",
-    "Alex.js Ignore file path"
-  ).default("@storm-software/linting-tools/alex/.alexignore");
+  const alexIgnore = new Option("--alex-ignore <file>", "Alex.js Ignore file path").default(
+    "@storm-software/linting-tools/alex/.alexignore"
+  );
 
   program
     .command("alex")
@@ -61,10 +55,9 @@ function createProgram() {
     .description("Run circular dependency lint for the workspace.")
     .action(circularDepsAction);
 
-  const manypkgType = new Option(
-    "--manypkg-type <type>",
-    "The manypkg command to run"
-  ).default("check");
+  const manypkgType = new Option("--manypkg-type <type>", "The manypkg command to run").default(
+    "check"
+  );
 
   const manypkgArgs = new Option(
     "--manypkg-args <args>",
@@ -86,10 +79,7 @@ function createProgram() {
 
   const cspellSkip = new Option("--skip-cspell", "Should skip CSpell linting");
 
-  const alexSkip = new Option(
-    "--skip-alex",
-    "Should skip Alex language linting"
-  );
+  const alexSkip = new Option("--skip-alex", "Should skip Alex language linting");
 
   const depsVersionSkip = new Option(
     "--skip-deps-version",
@@ -101,10 +91,7 @@ function createProgram() {
     "Should skip circular dependency linting"
   );
 
-  const manypkgSkip = new Option(
-    "--skip-manypkg",
-    "Should skip Manypkg linting"
-  );
+  const manypkgSkip = new Option("--skip-manypkg", "Should skip Manypkg linting");
 
   program
     .command("all")
@@ -164,7 +151,7 @@ async function allAction(
     }
 
     await Promise.all(promises);
-    console.log(`⚡ Linted the workspace`);
+    console.log("⚡ Linted the workspace");
   } catch (e) {
     console.error(e);
     process.exit(1);
@@ -183,11 +170,9 @@ async function cspellAction(cspellConfig: string) {
       dot: true,
       debug: true,
       gitignore: true,
-      root: process.env["STORM_WORKSPACE_ROOT"]
-        ? process.env["STORM_WORKSPACE_ROOT"]
-        : process.cwd(),
+      root: process.env.STORM_WORKSPACE_ROOT ? process.env.STORM_WORKSPACE_ROOT : process.cwd(),
       defaultConfiguration: false,
-      config: cspellConfig
+      config: cspellConfig,
     });
     if (result.errors) {
       console.log("❌ Spelling linting has failed");
@@ -231,12 +216,12 @@ async function depsVersionAction() {
 
     // Show output for dependencies that still have mismatches.
     if (cdvc.hasMismatchingDependenciesNotFixable) {
-      console.error(`❌ Dependency version consistency linting has failed`);
+      console.error("❌ Dependency version consistency linting has failed");
       console.error(cdvc.toMismatchSummary());
       process.exit(1);
     }
 
-    console.log(`✅ Dependency Version linting is complete`);
+    console.log("✅ Dependency Version linting is complete");
   } catch (e) {
     console.error(e);
     process.exit(1);
@@ -250,30 +235,26 @@ async function circularDepsAction() {
     const tree = await parseDependencyTree("**/*.*", {
       tsconfig: "./tsconfig.base.json",
       transform: true,
-      skipDynamicImports: false
+      skipDynamicImports: false,
     });
 
     const circulars = parseCircular(tree);
     console.log(prettyCircular(circulars));
 
-    console.log(`✅ Circular dependency linting is complete`);
+    console.log("✅ Circular dependency linting is complete");
   } catch (e) {
     console.error(e);
     process.exit(1);
   }
 }
 
-async function manypkgAction(
-  manypkgType = "check",
-  manypkgArgs: string[],
-  manypkgFix: boolean
-) {
+async function manypkgAction(manypkgType = "check", manypkgArgs: string[], manypkgFix: boolean) {
   try {
     console.log("⚡ Linting the workspace's packages with Manypkg");
 
     await runManypkg(manypkgType, manypkgArgs, manypkgFix);
 
-    console.log(`✅ Manypkg linting is complete`);
+    console.log("✅ Manypkg linting is complete");
   } catch (e) {
     console.error(e);
     process.exit(1);
@@ -306,7 +287,7 @@ export function workspaceRootInner(
 
   const matches = [path.join(dir, "pnpm-workspace.yaml")];
 
-  if (matches.some(x => fs.existsSync(x))) {
+  if (matches.some((x) => fs.existsSync(x))) {
     return dir;
   } else {
     return workspaceRootInner(path.dirname(dir), candidateRoot);

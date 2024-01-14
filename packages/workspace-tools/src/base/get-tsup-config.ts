@@ -26,7 +26,7 @@ export function defaultConfig({
   plugins,
   generatePackageJson,
   dtsTsConfig,
-  getTransform
+  getTransform,
 }: GetConfigParams) {
   return {
     name: "default",
@@ -34,22 +34,14 @@ export function defaultConfig({
     format,
     target:
       platform !== "node"
-        ? [
-            "chrome91",
-            "firefox90",
-            "edge91",
-            "safari15",
-            "ios15",
-            "opera77",
-            "esnext"
-          ]
+        ? ["chrome91", "firefox90", "edge91", "safari15", "ios15", "opera77", "esnext"]
         : ["esnext", "node20"],
     tsconfig,
     splitting,
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended"
+          preset: "recommended",
         }
       : false,
     projectRoot,
@@ -70,17 +62,11 @@ export function defaultConfig({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: joinPathFragments(outDir, "dist")
-        }
-      }
+          outDir: joinPathFragments(outDir, "dist"),
+        },
+      },
     },
-    /*minify: debug ? false : "terser",
-    terserOptions: {
-      compress: true,
-      ecma: 2020,
-      keep_classnames: true,
-      keep_fnames: true
-    },*/
+    minify: false,
     apiReport,
     docModel,
     tsdocMetadata,
@@ -89,7 +75,7 @@ export function defaultConfig({
     tsconfigDecoratorMetadata: true,
     plugins,
     getTransform,
-    outExtension
+    outExtension,
   } as Options;
 }
 
@@ -97,13 +83,7 @@ export function getConfig(
   workspaceRoot: string,
   projectRoot: string,
   getConfigFn: (options: GetConfigParams) => Options,
-  {
-    outputPath,
-    tsConfig,
-    additionalEntryPoints,
-    platform,
-    ...rest
-  }: TsupGetConfigOptions
+  { outputPath, tsConfig, additionalEntryPoints, platform, ...rest }: TsupGetConfigOptions
 ) {
   return getConfigFn({
     ...rest,
@@ -111,7 +91,7 @@ export function getConfig(
     tsconfig: tsConfig,
     workspaceRoot,
     projectRoot,
-    platform
+    platform,
   });
 }
 
@@ -132,6 +112,6 @@ export const outExtension = ({ format }) => {
 
   return {
     js: jsExtension,
-    dts: dtsExtension
+    dts: dtsExtension,
   };
 };

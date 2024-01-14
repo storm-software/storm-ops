@@ -26,7 +26,7 @@ export function nodeConfig({
   plugins,
   generatePackageJson,
   dtsTsConfig,
-  getTransform
+  getTransform,
 }: GetConfigParams) {
   const options = {
     name: "node",
@@ -38,7 +38,7 @@ export function nodeConfig({
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended"
+          preset: "recommended",
         }
       : false,
     projectRoot,
@@ -53,15 +53,16 @@ export function nodeConfig({
     define,
     env,
     dts: false,
+    minify: false,
     experimentalDts: {
       entry,
       compilerOptions: {
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: joinPathFragments(outDir, "dist")
-        }
-      }
+          outDir: joinPathFragments(outDir, "dist"),
+        },
+      },
     },
     apiReport,
     docModel,
@@ -71,7 +72,7 @@ export function nodeConfig({
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform
+    getTransform,
   } as Options;
 
   if (!debug) {
@@ -80,7 +81,7 @@ export function nodeConfig({
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true
+      keep_fnames: true,
     };
   }
 
@@ -109,7 +110,7 @@ export function workerConfig({
   plugins,
   generatePackageJson,
   dtsTsConfig,
-  getTransform
+  getTransform,
 }: GetConfigParams) {
   const options = {
     name: "worker",
@@ -122,7 +123,7 @@ export function workerConfig({
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended"
+          preset: "recommended",
         }
       : false,
     projectRoot,
@@ -137,15 +138,16 @@ export function workerConfig({
     define,
     env,
     dts: false,
+    minify: false,
     experimentalDts: {
       entry,
       compilerOptions: {
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: joinPathFragments(outDir, "dist")
-        }
-      }
+          outDir: joinPathFragments(outDir, "dist"),
+        },
+      },
     },
     apiReport,
     docModel,
@@ -155,7 +157,7 @@ export function workerConfig({
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform
+    getTransform,
   } as Options;
 
   if (!debug) {
@@ -164,7 +166,7 @@ export function workerConfig({
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true
+      keep_fnames: true,
     };
   }
 

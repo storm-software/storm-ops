@@ -23,9 +23,9 @@ export function neutralConfig({
   plugins,
   generatePackageJson,
   dtsTsConfig,
-  getTransform
+  getTransform,
 }: GetConfigParams) {
-  let outputPath = joinPathFragments(outDir, "dist");
+  const outputPath = joinPathFragments(outDir, "dist");
 
   const options = {
     name: "neutral",
@@ -37,7 +37,7 @@ export function neutralConfig({
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended"
+          preset: "recommended",
         }
       : false,
     projectRoot,
@@ -52,15 +52,16 @@ export function neutralConfig({
     define,
     env,
     dts: false,
+    minify: false,
     experimentalDts: {
       entry,
       compilerOptions: {
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: outputPath
-        }
-      }
+          outDir: outputPath,
+        },
+      },
     },
     apiReport: false,
     docModel: false,
@@ -70,7 +71,7 @@ export function neutralConfig({
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform
+    getTransform,
   } as Options;
 
   if (!debug) {
@@ -79,7 +80,7 @@ export function neutralConfig({
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true
+      keep_fnames: true,
     };
   }
 
@@ -109,9 +110,9 @@ export function legacyNeutralConfig({
   plugins,
   generatePackageJson,
   dtsTsConfig,
-  getTransform
+  getTransform,
 }: GetConfigParams) {
-  let outputPath = joinPathFragments(outDir, "dist", "legacy");
+  const outputPath = joinPathFragments(outDir, "dist", "legacy");
 
   const options = {
     name: "legacy",
@@ -123,7 +124,7 @@ export function legacyNeutralConfig({
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended"
+          preset: "recommended",
         }
       : false,
     projectRoot,
@@ -138,15 +139,16 @@ export function legacyNeutralConfig({
     define,
     env,
     dts: false,
+    minify: false,
     experimentalDts: {
       entry,
       compilerOptions: {
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: outputPath
-        }
-      }
+          outDir: outputPath,
+        },
+      },
     },
     apiReport,
     docModel,
@@ -156,7 +158,7 @@ export function legacyNeutralConfig({
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform
+    getTransform,
   } as Options;
 
   if (!debug) {
@@ -165,7 +167,7 @@ export function legacyNeutralConfig({
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true
+      keep_fnames: true,
     };
   }
 

@@ -1,4 +1,3 @@
-const isCi = process.env.CI !== undefined;
-if (!isCi) {
-  require("husky").install();
+if (!process.env.CI) {
+  require("lefthook").install();
 }

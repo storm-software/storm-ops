@@ -1,0 +1,30 @@
+#
+#   Refer for explanation to following link:
+#   https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+#
+
+pre-commit:
+  commands:
+    check:
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: npx biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index
+    build:
+      glob: "*.*"
+      run: pnpm build
+    readme-format:
+      glob: "**/{README.md,package.json}"
+      run: pnpm "dist/packages/git-tools/bin/cli.js" readme-gen --templates="dist/packages/git-tools/readme/templates" && git update-index
+
+commit-msg:
+  commands:
+    "lint commit message":
+      run: npx commitlint --edit {1}
+
+pre-push:
+  commands:
+    lint:
+      files: git diff --name-only HEAD @{push}
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true {files} && git update-index --again
+
+

@@ -23,29 +23,21 @@ export function modernBrowserConfig({
   plugins,
   generatePackageJson,
   dtsTsConfig,
-  getTransform
+  getTransform,
 }: GetConfigParams) {
-  let outputPath = joinPathFragments(outDir, "dist", "modern");
+  const outputPath = joinPathFragments(outDir, "dist", "modern");
 
   const options = {
     name: "modern",
     entry,
     format: ["cjs", "esm", "iife"],
-    target: [
-      "chrome91",
-      "firefox90",
-      "edge91",
-      "safari15",
-      "ios15",
-      "opera77",
-      "esnext"
-    ],
+    target: ["chrome91", "firefox90", "edge91", "safari15", "ios15", "opera77", "esnext"],
     tsconfig,
     splitting,
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended"
+          preset: "recommended",
         }
       : false,
     projectRoot,
@@ -60,15 +52,16 @@ export function modernBrowserConfig({
     define,
     env,
     dts: false,
+    minify: false,
     experimentalDts: {
       entry,
       compilerOptions: {
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: outputPath
-        }
-      }
+          outDir: outputPath,
+        },
+      },
     },
     apiReport: false,
     docModel: false,
@@ -78,7 +71,7 @@ export function modernBrowserConfig({
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform
+    getTransform,
   } as Options;
 
   if (!debug) {
@@ -87,7 +80,7 @@ export function modernBrowserConfig({
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true
+      keep_fnames: true,
     };
   }
 
@@ -117,9 +110,9 @@ export function legacyBrowserConfig({
   plugins,
   generatePackageJson,
   dtsTsConfig,
-  getTransform
+  getTransform,
 }: GetConfigParams) {
-  let outputPath = joinPathFragments(outDir, "dist", "legacy");
+  const outputPath = joinPathFragments(outDir, "dist", "legacy");
 
   const options = {
     name: "legacy",
@@ -131,7 +124,7 @@ export function legacyBrowserConfig({
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended"
+          preset: "recommended",
         }
       : false,
     projectRoot,
@@ -146,15 +139,16 @@ export function legacyBrowserConfig({
     define,
     env,
     dts: false,
+    minify: false,
     experimentalDts: {
       entry,
       compilerOptions: {
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: outputPath
-        }
-      }
+          outDir: outputPath,
+        },
+      },
     },
     apiReport,
     docModel,
@@ -164,7 +158,7 @@ export function legacyBrowserConfig({
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform
+    getTransform,
   } as Options;
 
   if (!debug) {
@@ -173,7 +167,7 @@ export function legacyBrowserConfig({
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true
+      keep_fnames: true,
     };
   }
 

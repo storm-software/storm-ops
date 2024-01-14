@@ -1,26 +1,19 @@
+import * as path from "path";
 import {
+  Tree,
   addDependenciesToPackageJson,
   addProjectConfiguration,
   formatFiles,
   generateFiles,
   joinPathFragments,
-  Tree,
-  updateJson
+  updateJson,
 } from "@nx/devkit";
-import * as path from "path";
 import { withRunGenerator } from "../../base/base-generator";
-import {
-  nodeVersion,
-  pnpmVersion,
-  typescriptVersion
-} from "../../utils/versions";
+import { nodeVersion, pnpmVersion, typescriptVersion } from "../../utils/versions";
 import { PresetGeneratorSchema } from "./schema";
 
-export async function presetGeneratorFn(
-  tree: Tree,
-  options: PresetGeneratorSchema
-) {
-  const projectRoot = `.`;
+export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSchema) {
+  const projectRoot = ".";
 
   options.description ??= `⚡The ${
     options.namespace ? options.namespace : options.name
@@ -32,17 +25,17 @@ export async function presetGeneratorFn(
     projectType: "application",
     targets: {
       "local-registry": {
-        "executor": "@nx/js:verdaccio",
-        "options": {
-          "port": 4873,
-          "config": ".verdaccio/config.yml",
-          "storage": "tmp/local-registry/storage"
-        }
-      }
-    }
+        executor: "@nx/js:verdaccio",
+        options: {
+          port: 4873,
+          config: ".verdaccio/config.yml",
+          storage: "tmp/local-registry/storage",
+        },
+      },
+    },
   });
 
-  updateJson(tree, "package.json", json => {
+  updateJson(tree, "package.json", (json) => {
     json.scripts = json.scripts || {};
 
     json.version = "0.0.0";
@@ -65,25 +58,25 @@ export async function presetGeneratorFn(
       "strapi",
       "graphql",
       "sullivanpj",
-      "monorepo"
+      "monorepo",
     ];
 
     json.homepage ??= "https://stormsoftware.org";
     json.bugs ??= {
       url: "https://stormsoftware.org/support",
-      email: "support@stormsoftware.org"
+      email: "support@stormsoftware.org",
     };
 
     json.license = "Apache License 2.0";
     json.author ??= {
       name: "Storm Software",
       email: "contact@stormsoftware.org",
-      url: "https://stormsoftware.org"
+      url: "https://stormsoftware.org",
     };
 
     json.funding ??= {
       type: "github",
-      url: "https://github.com/sponsors/storm-software"
+      url: "https://github.com/sponsors/storm-software",
     };
 
     json.namespace ??= `@${options.namespace}`;
@@ -92,17 +85,16 @@ export async function presetGeneratorFn(
     options.repositoryUrl ??= `https://github.com/${options.organization}/${options.name}}`;
     json.repository ??= {
       type: "github",
-      url: `${options.repositoryUrl}.git`
+      url: `${options.repositoryUrl}.git`,
     };
 
     // generate a start script into the package.json
 
     json.scripts.adr = "pnpm log4brains adr new";
     json.scripts["adr-preview"] = "pnpm log4brains preview";
-    json.scripts.prepare = "pnpm add husky -w && pnpm husky install";
+    json.scripts.prepare = "pnpm add lefthook -w && pnpm lefthook install";
     json.scripts.preinstall = "npx -y only-allow pnpm";
-    json.scripts["install:csb"] =
-      "corepack enable && pnpm install --frozen-lockfile";
+    json.scripts["install:csb"] = "corepack enable && pnpm install --frozen-lockfile";
 
     json.scripts.clean = "rimraf dist";
     json.scripts.prebuild = "pnpm clean";
@@ -119,21 +111,15 @@ export async function presetGeneratorFn(
 
     json.scripts.build = "nx affected -t build --parallel=5";
     json.scripts["build:all"] = "nx run-many -t build --all --parallel=5";
-    json.scripts["build:production"] =
-      "nx run-many -t build --all --prod --parallel=5";
-    json.scripts["build:tools"] =
-      "nx run-many -t build --projects=tools/* --parallel=5";
-    json.scripts["build:docs"] =
-      "nx run-many -t build --projects=docs/* --parallel=5";
+    json.scripts["build:production"] = "nx run-many -t build --all --prod --parallel=5";
+    json.scripts["build:tools"] = "nx run-many -t build --projects=tools/* --parallel=5";
+    json.scripts["build:docs"] = "nx run-many -t build --projects=docs/* --parallel=5";
 
     if (!options.includeApps) {
-      json.scripts["build:packages"] =
-        "nx run-many -t build --projects=packages/* --parallel=5";
+      json.scripts["build:packages"] = "nx run-many -t build --projects=packages/* --parallel=5";
     } else {
-      json.scripts["build:apps"] =
-        "nx run-many -t build --projects=apps/* --parallel=5";
-      json.scripts["build:libs"] =
-        "nx run-many -t build --projects=libs/* --parallel=5";
+      json.scripts["build:apps"] = "nx run-many -t build --projects=apps/* --parallel=5";
+      json.scripts["build:libs"] = "nx run-many -t build --projects=libs/* --parallel=5";
       json.scripts["build:storybook"] = "storybook build -s public";
     }
 
@@ -149,9 +135,7 @@ export async function presetGeneratorFn(
     json.scripts.format = "nx format:write";
     json.scripts.help = "nx help";
     json.scripts["dep-graph"] = "nx dep-graph";
-    json.scripts[
-      "local-registry"
-    ] = `nx local-registry @${options.namespace}/${options.name}`;
+    json.scripts["local-registry"] = `nx local-registry @${options.namespace}/${options.name}`;
 
     json.scripts.e2e = "nx e2e";
 
@@ -164,8 +148,7 @@ export async function presetGeneratorFn(
 
     json.scripts.lint = "pnpm storm-lint all --skip-cspell";
     json.scripts.commit = "pnpm storm-git commit";
-    json.scripts["readme-gen"] =
-      'pnpm storm-git readme-gen --templates="docs/readme-templates"';
+    json.scripts["readme-gen"] = 'pnpm storm-git readme-gen --templates="docs/readme-templates"';
     json.scripts["api-extractor"] =
       'pnpm storm-docs api-extractor --outputPath="docs/api-reference" --clean';
     json.scripts.release = "pnpm storm-git release";
@@ -173,7 +156,7 @@ export async function presetGeneratorFn(
     json.packageManager ??= `pnpm@${pnpmVersion}`;
     json.engines = {
       node: `>=${nodeVersion}`,
-      pnpm: `>=${pnpmVersion}`
+      pnpm: `>=${pnpmVersion}`,
     };
 
     json.prettier = "@storm-software/linting-tools/prettier/config.json";
@@ -183,21 +166,21 @@ export async function presetGeneratorFn(
         files: [
           {
             path: "dist/*/*.js",
-            maxSize: "200kB"
-          }
+            maxSize: "200kB",
+          },
         ],
         ci: {
-          trackBranches: ["main", "alpha", "beta"]
-        }
+          trackBranches: ["main", "alpha", "beta"],
+        },
       };
 
       json.nextBundleAnalysis = {
-        "buildOutputDirectory": "dist/apps/web/app/.next"
+        buildOutputDirectory: "dist/apps/web/app/.next",
       };
     }
 
     json.nx = {
-      includedScripts: ["lint", "format"]
+      includedScripts: ["lint", "format"],
     };
 
     return json;
@@ -206,15 +189,12 @@ export async function presetGeneratorFn(
   generateFiles(tree, path.join(__dirname, "files"), projectRoot, {
     ...options,
     pnpmVersion,
-    nodeVersion
+    nodeVersion,
   });
   await formatFiles(tree);
 
   let dependencies: Record<string, string> = {
-    "@eslint/eslintrc": "^2.1.3",
     "@nx/devkit": "^17.0.3",
-    "@nx/eslint": "^17.0.3",
-    "@nx/eslint-plugin": "^17.0.3",
     "@nx/jest": "^17.0.3",
     "@nx/js": "^17.0.3",
     "@semantic-release/changelog": "^6.0.3",
@@ -236,43 +216,41 @@ export async function presetGeneratorFn(
     "@types/node": "20.8.10",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
-    "eslint": "^8.53.0",
-    "husky": "^8.0.3",
-    "jest": "^29.7.0",
+    jest: "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-environment-node": "^29.7.0",
     "lint-staged": "^15.0.2",
-    "log4brains": "^1.0.1",
-    "prettier": "^3.0.3",
+    log4brains: "^1.0.1",
+    prettier: "^3.0.3",
     "prettier-plugin-packagejson": "^2.4.6",
     "prettier-plugin-prisma": "^5.0.0",
     "semantic-release": "^22.0.7",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
-    "tslib": "^2.6.2",
-    "terser": "^5.24.0",
-    "typescript": typescriptVersion,
-    "verdaccio": "^5.27.0"
+    tslib: "^2.6.2",
+    terser: "^5.24.0",
+    typescript: typescriptVersion,
+    verdaccio: "^5.27.0",
   };
   if (options.includeApps) {
     dependencies = {
       ...dependencies,
-      "bundlewatch": "latest",
-      "react": "latest",
+      bundlewatch: "latest",
+      react: "latest",
       "react-dom": "latest",
-      "storybook": "latest",
+      storybook: "latest",
       "@storybook/addons": "latest",
       "@nx/react": "latest",
       "@nx/next": "latest",
       "@nx/node": "latest",
-      "@nx/storybook": "latest"
+      "@nx/storybook": "latest",
     };
   }
 
   if (options.nxCloud) {
     dependencies = {
       ...dependencies,
-      "nx-cloud": "latest"
+      "nx-cloud": "latest",
     };
   }
 
