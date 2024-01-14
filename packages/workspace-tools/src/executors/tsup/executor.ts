@@ -497,7 +497,7 @@ ${externalDependencies
               ...options,
               watch: false,
               main: options.entry,
-              transformers: []
+              transformers: ["typia/lib/transform"]
             },
             context.root,
             sourceRoot,
@@ -570,8 +570,6 @@ function getNormalizedTsConfig(
         esModuleInterop: true,
         downlevelIteration: true,
         forceConsistentCasingInFileNames: true,
-        strict: true,
-        skipLibCheck: true,
         declaration: true,
         declarationMap: true,
         declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")

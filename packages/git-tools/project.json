@@ -23,7 +23,7 @@
           "packages/git-tools/src/release/config.ts",
           "packages/git-tools/src/semantic-release-plugin/index.ts"
         ],
-        "deleteOutputPath": false,
+        "deleteOutputPath": true,
         "bundle": true,
         "sourcemap": true,
         "minify": false,
