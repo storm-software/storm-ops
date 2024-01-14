@@ -1,3 +1,10 @@
+## [1.41.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.41.0...create-storm-workspace-v1.41.1) (2024-01-14)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Cleaned up dependanies and option defaulting in tsup ([0ae0dd3](https://github.com/storm-software/storm-ops/commit/0ae0dd327ed646e6dbcd1c33b44aef820403cd77))
+
 # [1.41.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.40.1...create-storm-workspace-v1.41.0) (2024-01-14)
 
 
