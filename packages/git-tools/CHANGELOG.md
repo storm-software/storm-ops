@@ -1,3 +1,10 @@
+## [1.22.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.22.0...git-tools-v1.22.1) (2024-01-14)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Cleaned up dependanies and option defaulting in tsup ([0ae0dd3](https://github.com/storm-software/storm-ops/commit/0ae0dd327ed646e6dbcd1c33b44aef820403cd77))
+
 # [1.22.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.21.1...git-tools-v1.22.0) (2024-01-14)
 
 
