@@ -1,3 +1,17 @@
+# [1.40.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.39.0...workspace-tools-v1.40.0) (2024-01-14)
+
+
+### Bug Fixes
+
+* **storm-ops:** Added missing dependencies ([4ab8aee](https://github.com/storm-software/storm-ops/commit/4ab8aeeab3b7ca4610a3ef0adb31332688c8346a))
+* **workspace-tools:** Resolved issue with typescript import ([3d63fbc](https://github.com/storm-software/storm-ops/commit/3d63fbc783d7549276cd89df383a15e2808b8ecb))
+
+
+### Features
+
+* **git-tools:** Re-added the Git hooks to drive workspace processing ([24311bf](https://github.com/storm-software/storm-ops/commit/24311bfde1becaba5573c4a55d1a6d68e84eb4fb))
+* **linting-tools:** Added Typia compiler transformer to tsup build ([5b39221](https://github.com/storm-software/storm-ops/commit/5b39221dedcc63c21b15f653f56efb4f5cf20989))
+
 # [1.39.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.38.1...workspace-tools-v1.39.0) (2024-01-13)
 
 
