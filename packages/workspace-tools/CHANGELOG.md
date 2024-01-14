@@ -1,3 +1,10 @@
+## [1.40.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.40.0...workspace-tools-v1.40.1) (2024-01-14)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved runtime issues with tsup build ([052c78c](https://github.com/storm-software/storm-ops/commit/052c78ca8258ba4acadbfce18b1bc3bee2aa0fe3))
+
 # [1.40.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.39.0...workspace-tools-v1.40.0) (2024-01-14)
 
 
