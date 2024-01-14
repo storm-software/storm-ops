@@ -1,3 +1,16 @@
+# [1.12.0](https://github.com/storm-software/storm-ops/compare/config-tools-v1.11.0...config-tools-v1.12.0) (2024-01-14)
+
+
+### Bug Fixes
+
+* **storm-ops:** Added missing dependencies ([4ab8aee](https://github.com/storm-software/storm-ops/commit/4ab8aeeab3b7ca4610a3ef0adb31332688c8346a))
+
+
+### Features
+
+* **git-tools:** Re-added the Git hooks to drive workspace processing ([24311bf](https://github.com/storm-software/storm-ops/commit/24311bfde1becaba5573c4a55d1a6d68e84eb4fb))
+* **linting-tools:** Added Typia compiler transformer to tsup build ([5b39221](https://github.com/storm-software/storm-ops/commit/5b39221dedcc63c21b15f653f56efb4f5cf20989))
+
 # [1.11.0](https://github.com/storm-software/storm-ops/compare/config-tools-v1.10.1...config-tools-v1.11.0) (2024-01-13)
 
 
