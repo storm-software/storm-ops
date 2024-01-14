@@ -1,3 +1,10 @@
+## [1.21.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.21.0...git-tools-v1.21.1) (2024-01-14)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved runtime issues with tsup build ([052c78c](https://github.com/storm-software/storm-ops/commit/052c78ca8258ba4acadbfce18b1bc3bee2aa0fe3))
+
 # [1.21.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.20.0...git-tools-v1.21.0) (2024-01-14)
 
 
