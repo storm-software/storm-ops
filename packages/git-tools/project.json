@@ -79,7 +79,7 @@
           },
           {
             "input": "./packages/git-tools/scripts",
-            "glob": "**/*.cjs",
+            "glob": "**/*.mjs",
             "output": "./scripts"
           },
           {

@@ -46,22 +46,22 @@
     "build:all": "nx run-many -t build --all --parallel=5",
     "clean": "rimraf dist",
     "clean:packages": "rimraf dist/packages",
-    "commit": "pnpm dist/packages/git-tools/bin/cli.js commit",
+    "commit": "zx ./dist/packages/git-tools/bin/cli.mjs commit",
     "dep-graph": "nx dep-graph",
     "e2e": "nx e2e",
     "format": "npx biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true",
     "help": "nx help",
-    "preinstall": "pnpm dist/packages/git-tools/scripts/pre-install.cjs || npx -y only-allow pnpm",
-    "postinstall": "is-ci || lefthook install",
-    "lint": "pnpm dist/packages/linting-tools/bin/cli.js all --skip-cspell --alex-config=\"dist/packages/linting-tools/alex/.alexrc\" --alex-config=\"dist/packages/linting-tools/alex/.alexignore\"",
+    "preinstall": "zx ./dist/packages/git-tools/scripts/pre-install.mjs || npx -y only-allow pnpm",
+    "lint": "zx ./dist/packages/linting-tools/bin/cli.mjs all --skip-cspell --alex-config=\"dist/packages/linting-tools/alex/.alexrc\" --alex-config=\"dist/packages/linting-tools/alex/.alexignore\"",
     "local-registry": "nx local-registry @storm-software/storm-ops",
     "nx": "nx",
-    "release": "pnpm dist/packages/git-tools/bin/cli.js release --plugin=\"dist/packages/git-tools/semantic-release-plugin\"",
+    "release": "zx ./dist/packages/git-tools/bin/cli.mjs release --plugin=\"dist/packages/git-tools/semantic-release-plugin\"",
     "start": "nx serve",
     "test": "nx test"
   },
   "prettier": "./dist/packages/linting-tools/prettier/config.json",
   "dependencies": {
+    "@biomejs/biome": "1.5.1",
     "@nx/devkit": "17.0.3",
     "@nx/esbuild": "17.0.3",
     "@nx/jest": "17.0.3",
@@ -83,7 +83,6 @@
     "@types/node": "20.9.0",
     "conventional-changelog-conventionalcommits": "^7.0.2",
     "esbuild": "0.19.5",
-    "is-ci": "^3.0.1",
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
     "jest-environment-node": "29.7.0",
@@ -95,7 +94,8 @@
     "ts-node": "10.9.1",
     "tslib": "2.6.2",
     "typescript": "5.2.2",
-    "verdaccio": "5.27.0"
+    "verdaccio": "5.27.0",
+    "zx": "^7.2.3"
   },
   "packageManager": "pnpm@8.10.2",
   "engines": {
@@ -104,10 +104,7 @@
   },
   "namespace": "@storm-software",
   "nx": {
-    "includedScripts": [
-      "lint",
-      "format"
-    ]
+    "includedScripts": ["lint", "format"]
   },
   "pnpm": {
     "overrides": {
@@ -125,8 +122,5 @@
       "tsup@8.0.0": "patches/tsup@8.0.0.patch"
     }
   },
-  "triggerEmptyDevReleaseByIncrementingThisNumber": 0,
-  "devDependencies": {
-    "@biomejs/biome": "1.5.1"
-  }
+  "triggerEmptyDevReleaseByIncrementingThisNumber": 0
 }

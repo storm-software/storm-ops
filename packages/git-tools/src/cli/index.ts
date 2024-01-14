@@ -4,7 +4,7 @@ import { runReadme } from "../readme";
 import { runRelease } from "../release";
 import { ReadMeOptions } from "../types";
 
-async function createProgram() {
+export async function createProgram() {
   try {
     console.log("⚡ Running Storm Git Tools");
 
@@ -70,20 +70,18 @@ async function createProgram() {
       .addOption(readmePrettier)
       .action(readmeAction);
 
-    const releaseConfig = new Option(
-      "--config <file>",
-      "Release config file path"
-    ).default("@storm-software/git-tools/release/config.js");
+    const releaseConfig = new Option("--config <file>", "Release config file path").default(
+      "@storm-software/git-tools/release/config.js"
+    );
 
     const releasePackageName = new Option(
       "--project <project>",
       "The specific project to run release for"
     );
 
-    const releasePlugin = new Option(
-      "--plugin <plugin>",
-      "Semantic Release plugin"
-    ).default("@storm-software/git-tools/semantic-release-plugin");
+    const releasePlugin = new Option("--plugin <plugin>", "Semantic Release plugin").default(
+      "@storm-software/git-tools/semantic-release-plugin"
+    );
 
     const releaseBase = new Option("--base <base>", "Git base tag value");
 
@@ -106,7 +104,7 @@ async function createProgram() {
   }
 }
 
-async function commitAction({
+export async function commitAction({
   config = "@storm-software/git-tools/commit/config.js",
   dryRun = false
 }: {
@@ -126,15 +124,13 @@ async function commitAction({
   }
 }
 
-async function readmeAction(options: ReadMeOptions) {
+export async function readmeAction(options: ReadMeOptions) {
   try {
     console.log("⚡ Formatting the workspace's README.md files \n");
 
     await runReadme(options);
 
-    console.log(
-      "✅ Formatting of the workspace's README.md files is complete \n"
-    );
+    console.log("✅ Formatting of the workspace's README.md files is complete \n");
     process.exit(0);
   } catch (e) {
     console.error(e);
@@ -142,7 +138,7 @@ async function readmeAction(options: ReadMeOptions) {
   }
 }
 
-async function releaseAction({
+export async function releaseAction({
   project,
   config = "@storm-software/git-tools/commit/config.js",
   plugin = "@storm-software/git-tools/semantic-release-plugin",
@@ -168,14 +164,3 @@ async function releaseAction({
   }
 }
 
-export default async function (): Promise<void> {
-  try {
-    const program = await createProgram();
-    program.exitOverride();
-
-    await program.parseAsync(process.argv);
-  } catch (e) {
-    console.error(e);
-    process.exit(1);
-  }
-}

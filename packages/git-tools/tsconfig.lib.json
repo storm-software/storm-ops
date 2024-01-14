@@ -13,6 +13,6 @@
     "scripts/**/*.cjs",
     "bin/**/*",
     "declarations.d.ts"
-  ],
+, "scripts/package-version-warning.mjs", "scripts/pre-install.mjs", "scripts/prepare.mjs"  ],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }

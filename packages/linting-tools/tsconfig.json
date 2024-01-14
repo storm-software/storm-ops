@@ -1,8 +1,7 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "ES2022",
-    "lib": ["es2021"],
+    "module": "ESNext",
     "forceConsistentCasingInFileNames": true,
     "strict": false,
     "allowJs": true,

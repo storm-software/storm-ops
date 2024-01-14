@@ -1,4 +1,6 @@
+#!/usr/bin/env zx
+
 if (process.env.CI) {
   console.log("Skipping preinstall...");
-  process.exit(1);
+  process.exit(0);
 }

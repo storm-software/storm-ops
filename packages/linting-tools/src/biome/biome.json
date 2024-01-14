@@ -30,8 +30,8 @@
     "rules": {
       "recommended": true,
       "style": {
+        "useDefaultParameterLast": "off",
         "useTemplate": "warn",
-        "useDefaultParameterLast": "warn",
         "noUselessElse": "warn"
       },
       "suspicious": {

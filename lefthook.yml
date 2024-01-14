@@ -3,6 +3,18 @@
 #   https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
 #
 
+pre-install:
+  commands:
+    hook-script:
+      glob: "*.*"
+      run: "npx zx ./dist/packages/git-tools/scripts/pre-install.mjs"
+
+prepare:
+  commands:
+    hook-script:
+      glob: "*.*"
+      run: "npx zx ./dist/packages/git-tools/scripts/pre-commit.mjs"
+
 pre-commit:
   commands:
     check:
@@ -13,12 +25,15 @@ pre-commit:
       run: pnpm build
     readme-format:
       glob: "**/{README.md,package.json}"
-      run: pnpm "dist/packages/git-tools/bin/cli.js" readme-gen --templates="dist/packages/git-tools/readme/templates" && git update-index
+      run: npx zx ./dist/packages/git-tools/bin/cli.mjs readme-gen --templates="dist/packages/git-tools/readme/templates" && git update-index
+    hook-script:
+      glob: "*.*"
+      run: "npx zx ./dist/packages/git-tools/bin/pre-commit.mjs"
 
 commit-msg:
   commands:
     "lint commit message":
-      run: npx commitlint --config "dist/packages/git-tools/commitlint.config.cjs" --edit {1}
+      run: npx commitlint --config dist/packages/git-tools/commitlint.config.cjs --edit {1}
 
 pre-push:
   commands:
@@ -26,18 +41,25 @@ pre-push:
       files: git diff --name-only HEAD @{push}
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true {files} && git update-index --again
+    hook-script:
+      glob: "*.*"
+      run: "npx zx ./dist/packages/git-tools/bin/pre-push.mjs"
 
 post-merge:
-  scripts:
-    "package-version-warning":
-      runner: bash
+  commands:
+    hook-script:
+      glob: "*.*"
+      run: "npx zx ./dist/packages/git-tools/bin/post-merge.mjs"
 
 post-checkout:
-  scripts:
-    "package-version-warning":
-      runner: bash
+  commands:
+    hook-script:
+      glob: "*.*"
+      run: "npx zx ./dist/packages/git-tools/bin/post-checkout.mjs"
+
 
 post-commit:
-  scripts:
-    "hook":
-      runner: bash
+  commands:
+    hook-script:
+      glob: "*.*"
+      run: "npx zx ./dist/packages/git-tools/bin/post-commit.mjs"

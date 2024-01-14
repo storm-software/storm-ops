@@ -1,4 +1,0 @@
-#!/bin/sh
-
-echo $HUSKY_GIT_STDIN | ./packages/git-tools/bin/post-commit.cjs $HUSKY_GIT_PARAMS
-

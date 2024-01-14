@@ -1,15 +1,15 @@
-import fs from "fs";
-import path from "path";
+import { findWorkspaceRootSafe } from "@storm-software/config-tools";
 import { Command, Option } from "commander";
 import { lint } from "cspell";
 import { parseCircular, parseDependencyTree, prettyCircular } from "dpdm";
 import { runAlex } from "../alex";
 import { runManypkg } from "../manypkg";
+export { findWorkspaceRootSafe } from "@storm-software/config-tools";
 
-function createProgram() {
+export function createProgram() {
   console.log("Running⚡Storm Linting Tools");
 
-  const root = findWorkspaceRoot();
+  const root = findWorkspaceRootSafe();
   process.env.STORM_WORKSPACE_ROOT ??= root;
   process.env.NX_WORKSPACE_ROOT_PATH ??= root;
   root && process.chdir(root);
@@ -172,7 +172,7 @@ async function cspellAction(cspellConfig: string) {
       gitignore: true,
       root: process.env.STORM_WORKSPACE_ROOT ? process.env.STORM_WORKSPACE_ROOT : process.cwd(),
       defaultConfiguration: false,
-      config: cspellConfig,
+      config: cspellConfig
     });
     if (result.errors) {
       console.log("❌ Spelling linting has failed");
@@ -235,7 +235,7 @@ async function circularDepsAction() {
     const tree = await parseDependencyTree("**/*.*", {
       tsconfig: "./tsconfig.base.json",
       transform: true,
-      skipDynamicImports: false,
+      skipDynamicImports: false
     });
 
     const circulars = parseCircular(tree);
@@ -259,44 +259,4 @@ async function manypkgAction(manypkgType = "check", manypkgArgs: string[], manyp
     console.error(e);
     process.exit(1);
   }
-}
-
-/**
- * Recursive function that walks back up the directory
- * tree to try and find a workspace file.
- *
- * @param dir Directory to start searching with
- */
-export function findWorkspaceRoot(): string | undefined {
-  return workspaceRootInner(process.cwd(), undefined);
-}
-
-export let workspaceRoot = workspaceRootInner(process.cwd(), process.cwd());
-
-// Required for integration tests in projects which depend on Nx at runtime, such as lerna and angular-eslint
-export function setWorkspaceRoot(root: string): void {
-  workspaceRoot = root;
-}
-
-export function workspaceRootInner(
-  dir: string,
-  candidateRoot: string | undefined
-): string | undefined {
-  if (process.env.STORM_WORKSPACE_ROOT) return process.env.STORM_WORKSPACE_ROOT;
-  if (path.dirname(dir) === dir) return candidateRoot;
-
-  const matches = [path.join(dir, "pnpm-workspace.yaml")];
-
-  if (matches.some((x) => fs.existsSync(x))) {
-    return dir;
-  } else {
-    return workspaceRootInner(path.dirname(dir), candidateRoot);
-  }
-}
-
-export default async function (): Promise<void> {
-  const program = createProgram();
-  program.exitOverride();
-
-  await program.parseAsync(process.argv);
 }
