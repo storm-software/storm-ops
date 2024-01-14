@@ -20,10 +20,13 @@ export function neutralConfig({
   metafile = false,
   define,
   env,
+  apiReport = true,
+  docModel = true,
+  tsdocMetadata = true,
   plugins,
   generatePackageJson,
   dtsTsConfig,
-  getTransform,
+  getTransform
 }: GetConfigParams) {
   const outputPath = joinPathFragments(outDir, "dist");
 
@@ -37,7 +40,7 @@ export function neutralConfig({
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended",
+          preset: "recommended"
         }
       : false,
     projectRoot,
@@ -59,19 +62,19 @@ export function neutralConfig({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: outputPath,
-        },
-      },
+          outDir: outputPath
+        }
+      }
     },
-    apiReport: false,
-    docModel: false,
-    tsdocMetadata: false,
+    apiReport,
+    docModel,
+    tsdocMetadata,
     sourcemap: debug,
     clean: false,
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform,
+    getTransform
   } as Options;
 
   if (!debug) {
@@ -80,7 +83,7 @@ export function neutralConfig({
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true,
+      keep_fnames: true
     };
   }
 
@@ -110,7 +113,7 @@ export function legacyNeutralConfig({
   plugins,
   generatePackageJson,
   dtsTsConfig,
-  getTransform,
+  getTransform
 }: GetConfigParams) {
   const outputPath = joinPathFragments(outDir, "dist", "legacy");
 
@@ -124,7 +127,7 @@ export function legacyNeutralConfig({
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended",
+          preset: "recommended"
         }
       : false,
     projectRoot,
@@ -146,9 +149,9 @@ export function legacyNeutralConfig({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: outputPath,
-        },
-      },
+          outDir: outputPath
+        }
+      }
     },
     apiReport,
     docModel,
@@ -158,7 +161,7 @@ export function legacyNeutralConfig({
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform,
+    getTransform
   } as Options;
 
   if (!debug) {
@@ -167,7 +170,7 @@ export function legacyNeutralConfig({
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true,
+      keep_fnames: true
     };
   }
 

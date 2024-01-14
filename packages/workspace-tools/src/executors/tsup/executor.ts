@@ -1,6 +1,3 @@
-import { readFileSync, writeFileSync } from "fs";
-import { dirname, join } from "path";
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { esbuildDecorators } from "@anatine/esbuild-decorators";
 import {
   ExecutorContext,
@@ -14,12 +11,14 @@ import { createTypeScriptCompilationOptions } from "@nx/js/src/executors/tsc/tsc
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
 import { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
 import { environmentPlugin } from "esbuild-plugin-environment";
+import { readFileSync, writeFileSync } from "fs";
 import { removeSync } from "fs-extra";
 import { writeFile } from "fs/promises";
 import { Path, globSync } from "glob";
 import { fileExists } from "nx/src/utils/fileutils";
+import { dirname, join } from "path";
 import { Options as PrettierOptions, format } from "prettier";
-import { Options, build as tsup, defineConfig } from "tsup";
+import { Options, defineConfig, build as tsup } from "tsup";
 import * as ts from "typescript";
 import { withRunExecutor } from "../../base/base-executor";
 import { defaultConfig, getConfig } from "../../base/get-tsup-config";
@@ -497,7 +496,7 @@ ${externalDependencies
               ...options,
               watch: false,
               main: options.entry,
-              transformers: ["typia/lib/transform"]
+              transformers: options.skipTypia ? [] : ["typia/lib/transform"]
             },
             context.root,
             sourceRoot,
@@ -570,6 +569,7 @@ function getNormalizedTsConfig(
         esModuleInterop: true,
         downlevelIteration: true,
         forceConsistentCasingInFileNames: true,
+        emitDeclarationOnly: true,
         declaration: true,
         declarationMap: true,
         declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
@@ -588,16 +588,21 @@ function getNormalizedTsConfig(
 }
 
 const build = async (options: Options | Options[]) => {
-  Array.isArray(options)
-    ? options.length > 0
-      ? options[0].silent
-      : false
-    : options.silent && console.log("⚙️  Tsup build config: \n", options, "\n");
+  try {
+    Array.isArray(options)
+      ? options.length > 0
+        ? options[0].silent
+        : false
+      : options.silent && console.log("⚙️  Tsup build config: \n", options, "\n");
 
-  if (Array.isArray(options)) {
-    await Promise.all(options.map((buildOptions) => tsup(buildOptions)));
-  } else {
-    await tsup(options);
+    if (Array.isArray(options)) {
+      await Promise.all(options.map((buildOptions) => tsup(buildOptions)));
+    } else {
+      await tsup(options);
+    }
+  } catch (e) {
+    console.error("⚠️  A failure occured during the Tsup Build executor");
+    console.error(e);
   }
 };
 
@@ -628,7 +633,6 @@ export const applyDefaultOptions = (options: TsupExecutorSchema): TsupExecutorSc
   options.skipTypia ??= false;
   options.define ??= {};
   options.env ??= {};
-  options.verbose ??= !!process.env.CI;
   options.getConfig ??= { dist: defaultConfig };
 
   return options;

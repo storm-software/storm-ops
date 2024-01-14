@@ -38,26 +38,18 @@ export const withRunExecutor =
       options: TExecutorSchema,
       context: ExecutorContext,
       config?: StormConfig
-    ) =>
-      | Promise<BaseExecutorResult | null | undefined>
-      | BaseExecutorResult
-      | null
-      | undefined,
+    ) => Promise<BaseExecutorResult | null | undefined> | BaseExecutorResult | null | undefined,
     executorOptions: BaseExecutorOptions<TExecutorSchema> = {
       skipReadingConfig: false,
       hooks: {}
     }
   ) =>
-  async (
-    options: TExecutorSchema,
-    context: ExecutorContext
-  ): Promise<{ success: boolean }> => {
+  async (_options: TExecutorSchema, context: ExecutorContext): Promise<{ success: boolean }> => {
     const startTime = Date.now();
+    let options = _options;
 
     try {
-      console.info(
-        chalk.bold.hex("#1fb2a6")(`⚡ Running the ${name} executor...\n\n`)
-      );
+      console.info(chalk.bold.hex("#1fb2a6")(`⚡ Running the ${name} executor...\n\n`));
 
       if (
         !context.projectsConfigurations?.projects ||
@@ -70,12 +62,9 @@ export const withRunExecutor =
       }
 
       const workspaceRoot = getWorkspaceRoot();
-      const projectRoot =
-        context.projectsConfigurations.projects[context.projectName].root;
-      const sourceRoot =
-        context.projectsConfigurations.projects[context.projectName].sourceRoot;
-      const projectName =
-        context.projectsConfigurations.projects[context.projectName].name;
+      const projectRoot = context.projectsConfigurations.projects[context.projectName].root;
+      const sourceRoot = context.projectsConfigurations.projects[context.projectName].sourceRoot;
+      const projectName = context.projectsConfigurations.projects[context.projectName].name;
 
       let config: StormConfig | undefined;
       if (!executorOptions.skipReadingConfig) {
@@ -89,7 +78,7 @@ export const withRunExecutor =
           console.debug(
             chalk.dim(
               `Loaded Storm config into env: \n${Object.keys(process.env)
-                .map(key => ` - ${key}=${process.env[key]}`)
+                .map((key) => ` - ${key}=${process.env[key]}`)
                 .join("\n")}`
             )
           );
@@ -97,19 +86,14 @@ export const withRunExecutor =
 
       if (executorOptions?.hooks?.applyDefaultOptions) {
         getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim(`Running the applyDefaultOptions hook...`));
-        options = await Promise.resolve(
-          executorOptions.hooks.applyDefaultOptions(options, config)
-        );
+          console.debug(chalk.dim("Running the applyDefaultOptions hook..."));
+        options = await Promise.resolve(executorOptions.hooks.applyDefaultOptions(options, config));
         getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim(`Completed the applyDefaultOptions hook...`));
+          console.debug(chalk.dim("Completed the applyDefaultOptions hook..."));
       }
 
       getLogLevel(config.logLevel) >= LogLevel.INFO &&
-        console.info(
-          chalk.hex("#0ea5e9").italic(`\n\n ⚙️  Executor schema options: \n`),
-          options
-        );
+        console.info(chalk.hex("#0ea5e9").italic("\n\n ⚙️  Executor schema options: \n"), options);
 
       const tokenized = applyWorkspaceTokens(
         options,
@@ -127,17 +111,13 @@ export const withRunExecutor =
 
       if (executorOptions?.hooks?.preProcess) {
         getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim(`Running the preProcess hook...`));
-        await Promise.resolve(
-          executorOptions.hooks.preProcess(tokenized, config)
-        );
+          console.debug(chalk.dim("Running the preProcess hook..."));
+        await Promise.resolve(executorOptions.hooks.preProcess(tokenized, config));
         getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim(`Completed the preProcess hook...`));
+          console.debug(chalk.dim("Completed the preProcess hook..."));
       }
 
-      const result = await Promise.resolve(
-        executorFn(tokenized, context, config)
-      );
+      const result = await Promise.resolve(executorFn(tokenized, context, config));
       if (
         result &&
         (!result.success ||
@@ -148,22 +128,20 @@ export const withRunExecutor =
             typeof (result?.error as Error)?.name === "string"))
       ) {
         throw new Error(`The ${name} executor failed to run`, {
-          cause: result!.error
+          cause: result?.error
         });
       }
 
       if (executorOptions?.hooks?.postProcess) {
         getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim(`Running the postProcess hook...`));
+          console.debug(chalk.dim("Running the postProcess hook..."));
         await Promise.resolve(executorOptions.hooks.postProcess(config));
         getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim(`Completed the postProcess hook...`));
+          console.debug(chalk.dim("Completed the postProcess hook..."));
       }
 
       console.info(
-        chalk.bold.hex("#087f5b")(
-          `\n\n🎉 Successfully completed running the ${name} executor!\n\n`
-        )
+        chalk.bold.hex("#087f5b")(`\n\n🎉 Successfully completed running the ${name} executor!\n\n`)
       );
 
       return {
@@ -171,9 +149,7 @@ export const withRunExecutor =
       };
     } catch (error) {
       console.error(
-        chalk.bold.hex("#7d1a1a")(
-          `❌  An error occurred while running the executor\n\n`
-        ),
+        chalk.bold.hex("#7d1a1a")("❌  An error occurred while running the executor\n\n"),
         error
       );
 
@@ -183,9 +159,7 @@ export const withRunExecutor =
     } finally {
       console.info(
         chalk.dim(
-          `⏱️  The${name ? ` ${name}` : ""} generator took ${
-            Date.now() - startTime
-          }ms to complete`
+          `⏱️  The${name ? ` ${name}` : ""} generator took ${Date.now() - startTime}ms to complete`
         )
       );
     }

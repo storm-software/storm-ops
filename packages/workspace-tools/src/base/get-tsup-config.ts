@@ -26,7 +26,7 @@ export function defaultConfig({
   plugins,
   generatePackageJson,
   dtsTsConfig,
-  getTransform,
+  getTransform
 }: GetConfigParams) {
   return {
     name: "default",
@@ -41,7 +41,7 @@ export function defaultConfig({
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended",
+          preset: "recommended"
         }
       : false,
     projectRoot,
@@ -62,9 +62,9 @@ export function defaultConfig({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: joinPathFragments(outDir, "dist"),
-        },
-      },
+          outDir: joinPathFragments(outDir, "dist")
+        }
+      }
     },
     minify: false,
     apiReport,
@@ -75,7 +75,7 @@ export function defaultConfig({
     tsconfigDecoratorMetadata: true,
     plugins,
     getTransform,
-    outExtension,
+    outExtension
   } as Options;
 }
 
@@ -91,7 +91,7 @@ export function getConfig(
     tsconfig: tsConfig,
     workspaceRoot,
     projectRoot,
-    platform,
+    platform
   });
 }
 
@@ -112,6 +112,6 @@ export const outExtension = ({ format }) => {
 
   return {
     js: jsExtension,
-    dts: dtsExtension,
+    dts: dtsExtension
   };
 };

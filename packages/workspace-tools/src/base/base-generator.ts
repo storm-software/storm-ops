@@ -6,13 +6,13 @@ import {
   getConfigFile,
   getDefaultConfig,
   getLogLevel,
-  setConfigEnv,
+  setConfigEnv
 } from "@storm-software/config-tools";
 import * as chalk from "chalk";
 import { BaseWorkspaceToolOptions } from "../types";
 import {
   applyWorkspaceGeneratorTokens,
-  applyWorkspaceTokens,
+  applyWorkspaceTokens
 } from "../utils/apply-workspace-tokens";
 
 export interface BaseGeneratorSchema extends Record<string, any> {
@@ -22,7 +22,7 @@ export interface BaseGeneratorSchema extends Record<string, any> {
 }
 
 export interface BaseGeneratorOptions<
-  TGeneratorSchema extends BaseGeneratorSchema = BaseGeneratorSchema,
+  TGeneratorSchema extends BaseGeneratorSchema = BaseGeneratorSchema
 > extends BaseWorkspaceToolOptions<TGeneratorSchema> {}
 
 export interface BaseGeneratorResult {
@@ -39,7 +39,7 @@ export const withRunGenerator =
       config?: StormConfig
     ) => Promise<BaseGeneratorResult | null | undefined> | BaseGeneratorResult | null | undefined,
     generatorOptions: BaseGeneratorOptions<TGeneratorSchema> = {
-      skipReadingConfig: false,
+      skipReadingConfig: false
     }
   ) =>
   async (tree: Tree, _options: TGeneratorSchema): Promise<{ success: boolean }> => {
@@ -53,7 +53,7 @@ export const withRunGenerator =
       if (!generatorOptions.skipReadingConfig) {
         config = getDefaultConfig({
           ...(await getConfigFile()),
-          ...getConfigEnv(),
+          ...getConfigEnv()
         });
         setConfigEnv(config);
 
@@ -105,7 +105,7 @@ export const withRunGenerator =
             typeof (result?.error as Error)?.name === "string"))
       ) {
         throw new Error(`The ${name} generator failed to run`, {
-          cause: result?.error,
+          cause: result?.error
         });
       }
 
@@ -122,7 +122,7 @@ export const withRunGenerator =
       );
 
       return {
-        success: true,
+        success: true
       };
     } catch (error) {
       console.error(
@@ -132,7 +132,7 @@ export const withRunGenerator =
       console.error(error);
 
       return {
-        success: false,
+        success: false
       };
     } finally {
       console.info(
