@@ -13,8 +13,8 @@ export async function getNxScopes(
 ) {
   const ctx = context || {};
 
-  process.env["NX_WORKSPACE_ROOT_PATH"] ??=
-    process.env["STORM_WORKSPACE_ROOT"] ?? ctx.cwd ?? process.cwd();
+  process.env.NX_WORKSPACE_ROOT_PATH ??=
+    process.env.STORM_WORKSPACE_ROOT ?? ctx.cwd ?? process.cwd();
 
   const projectConfigs = readProjectsConfigurationFromProjectGraph(
     await buildProjectGraphWithoutDaemon()
@@ -26,7 +26,7 @@ export async function getNxScopes(
       ...project
     }))
     .filter(selector)
-    .filter(project => project.targets)
-    .map(project => project.name)
-    .map(name => (name.charAt(0) === "@" ? name.split("/")[1] : name));
+    .filter((project) => project.targets)
+    .map((project) => project.name)
+    .map((name) => (name.charAt(0) === "@" ? name.split("/")[1] : name));
 }

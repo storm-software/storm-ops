@@ -15,27 +15,22 @@
         "additionalEntryPoints": [
           "packages/git-tools/src/cli/index.ts",
           "packages/git-tools/src/commitizen/index.ts",
-          "packages/git-tools/src/commit/config.ts",
           "packages/git-tools/src/commitlint/config.ts",
+          "packages/git-tools/src/commit/config.ts",
           "packages/git-tools/src/commitizen/config.ts",
           "packages/git-tools/src/commit/index.ts",
           "packages/git-tools/src/release/index.ts",
           "packages/git-tools/src/release/config.ts",
           "packages/git-tools/src/semantic-release-plugin/index.ts"
         ],
-        "deleteOutputPath": true,
+        "deleteOutputPath": false,
         "bundle": true,
         "sourcemap": true,
         "minify": false,
         "skipTypeCheck": true,
         "thirdParty": true,
         "format": ["esm"],
-        "external": [
-          "nx",
-          "@swc/wasm",
-          "@swc/core",
-          "@angular-devkit/architect"
-        ],
+        "external": ["nx", "@swc/wasm", "@swc/core", "@angular-devkit/architect"],
         "esbuildOptions": {
           "banner": {
             "js": "import { fileURLToPath as _fileURLToPath } from 'url';\nimport _path from 'node:path';\nimport { createRequire as topLevelCreateRequire } from 'module';\nconst require = topLevelCreateRequire(import.meta.url);"
@@ -69,6 +64,11 @@
           },
           {
             "input": "packages/git-tools/src",
+            "glob": "lefthook/**/lefthook.yml",
+            "output": "."
+          },
+          {
+            "input": "packages/git-tools/src",
             "glob": "prettier/.prettierignore_staged",
             "output": "."
           },
@@ -81,6 +81,11 @@
             "input": "./packages/git-tools/scripts",
             "glob": "**/*.cjs",
             "output": "./scripts"
+          },
+          {
+            "input": "packages/git-tools/src/commitlint",
+            "glob": "commitlint.config.cjs",
+            "output": "."
           }
         ]
       }

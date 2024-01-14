@@ -6,7 +6,7 @@ import {
   ExecutorContext,
   joinPathFragments,
   readCachedProjectGraph,
-  readJsonFile,
+  readJsonFile
 } from "@nx/devkit";
 import { copyAssets } from "@nx/js";
 import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options";
@@ -91,19 +91,19 @@ ${Object.keys(options)
     assets.push({
       input: projectRoot,
       glob: "*.md",
-      output: "/",
+      output: "/"
     });
     assets.push({
       input: "",
       glob: "LICENSE",
-      output: ".",
+      output: "."
     });
 
     if (options.generatePackageJson === false) {
       assets.push({
         input: projectRoot,
         glob: "**/package.json",
-        output: ".",
+        output: "."
       });
     }
 
@@ -111,7 +111,7 @@ ${Object.keys(options)
       assets.push({
         input: sourceRoot,
         glob: "**/{*.ts,*.tsx,*.js,*.jsx}",
-        output: "src/",
+        output: "src/"
       });
     }
 
@@ -155,7 +155,7 @@ ${Object.keys(options)
             ret.push({
               name,
               outputs: [],
-              node: externalNode,
+              node: externalNode
             });
           }
         }
@@ -225,7 +225,7 @@ ${externalDependencies
       printWidth: 80,
       bracketSpacing: true,
       arrowParens: "avoid",
-      endOfLine: "lf",
+      endOfLine: "lf"
     };
 
     const entryPoints = [];
@@ -240,7 +240,7 @@ ${externalDependencies
     }
 
     const entry = globSync(entryPoints, {
-      withFileTypes: true,
+      withFileTypes: true
     }).reduce((ret, filePath: Path) => {
       let formattedPath = workspaceRoot.replaceAll("\\", "/");
       if (formattedPath.toUpperCase().startsWith("C:")) {
@@ -289,7 +289,7 @@ ${externalDependencies
             workspacePackageJson.devDependencies?.[packageName] ||
             packageJson?.devDependencies?.[packageName]
           ) {
-            return;
+            return null;
           }
 
           packageJson.dependencies ??= {};
@@ -317,15 +317,15 @@ ${externalDependencies
           ".": {
             import: {
               types: `./${distPaths[0]}index.d.ts`,
-              default: `./${distPaths[0]}index.js`,
+              default: `./${distPaths[0]}index.js`
             },
             require: {
               types: `./${distPaths[0]}index.d.cts`,
-              default: `./${distPaths[0]}index.cjs`,
+              default: `./${distPaths[0]}index.cjs`
             },
             default: {
               types: `./${distPaths[0]}index.d.ts`,
-              default: `./${distPaths[0]}index.js`,
+              default: `./${distPaths[0]}index.js`
             },
             ...(options.additionalEntryPoints ?? []).map((entryPoint) => ({
               [removeExtension(entryPoint).replace(sourceRoot, "")]: {
@@ -336,11 +336,11 @@ ${externalDependencies
                 default: join(
                   `./${distPaths[0]}`,
                   `${removeExtension(entryPoint.replace(sourceRoot, ""))}.js`
-                ),
-              },
-            })),
+                )
+              }
+            }))
           },
-          "./package.json": "./package.json",
+          "./package.json": "./package.json"
         };
 
         packageJson.exports = Object.keys(entry).reduce((ret: Record<string, any>, key: string) => {
@@ -351,16 +351,16 @@ ${externalDependencies
             ret[packageJsonKey] = {
               import: {
                 types: `./${distPaths[0]}index.d.ts`,
-                default: `./${distPaths[0]}${key}.js`,
+                default: `./${distPaths[0]}${key}.js`
               },
               require: {
                 types: `./${distPaths[0]}index.d.cts`,
-                default: `./${distPaths[0]}${key}.cjs`,
+                default: `./${distPaths[0]}${key}.cjs`
               },
               default: {
                 types: `./${distPaths[0]}index.d.ts`,
-                default: `./${distPaths[0]}${key}.js`,
-              },
+                default: `./${distPaths[0]}${key}.js`
+              }
             };
           }
 
@@ -372,7 +372,7 @@ ${externalDependencies
         packageJson.types ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`;
         packageJson.typings ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`;
         packageJson.typescript ??= {
-          definition: `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`,
+          definition: `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`
         };
 
         packageJson.main ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.cjs`;
@@ -400,7 +400,7 @@ ${externalDependencies
       }
 
       packageJson.publishConfig ??= {
-        access: "public",
+        access: "public"
       };
 
       packageJson.description ??= workspacePackageJson.description;
@@ -422,7 +422,7 @@ ${externalDependencies
         packageJsonPath,
         await format(JSON.stringify(packageJson), {
           ...prettierOptions,
-          parser: "json",
+          parser: "json"
         })
       );
     }
@@ -432,7 +432,7 @@ ${externalDependencies
         joinPathFragments(context.root, options.outputPath, "src/**/*.ts"),
         joinPathFragments(context.root, options.outputPath, "src/**/*.tsx"),
         joinPathFragments(context.root, options.outputPath, "src/**/*.js"),
-        joinPathFragments(context.root, options.outputPath, "src/**/*.jsx"),
+        joinPathFragments(context.root, options.outputPath, "src/**/*.jsx")
       ]);
       await Promise.allSettled(
         files.map(async (file) =>
@@ -448,7 +448,7 @@ ${externalDependencies
               }\n\n${readFileSync(file, "utf-8")}`,
               {
                 ...prettierOptions,
-                parser: "typescript",
+                parser: "typescript"
               }
             ),
             "utf-8"
@@ -470,7 +470,7 @@ ${externalDependencies
     options.plugins.push(
       esbuildDecorators({
         tsconfig: options.tsConfig,
-        cwd: workspaceRoot,
+        cwd: workspaceRoot
       })
     );
     options.plugins.push(environmentPlugin(stormEnv));
@@ -482,11 +482,11 @@ ${externalDependencies
     const getConfigOptions = {
       ...options,
       define: {
-        __STORM_CONFIG: JSON.stringify(stormEnv),
+        __STORM_CONFIG: JSON.stringify(stormEnv)
       },
       env: {
         __STORM_CONFIG: JSON.stringify(stormEnv),
-        ...stormEnv,
+        ...stormEnv
       },
       dtsTsConfig: getNormalizedTsConfig(
         context.root,
@@ -497,7 +497,7 @@ ${externalDependencies
               ...options,
               watch: false,
               main: options.entry,
-              transformers: [],
+              transformers: []
             },
             context.root,
             sourceRoot,
@@ -509,12 +509,12 @@ ${externalDependencies
       banner: options.banner
         ? {
             js: `${options.banner}\n\n`,
-            css: `/* \n${options.banner}\n */\n\n`,
+            css: `/* \n${options.banner}\n */\n\n`
           }
         : undefined,
       outputPath: options.outputPath,
       entry,
-      getTransform: options.skipTypia ? undefined : getTypiaTransform,
+      getTransform: options.skipTypia ? undefined : getTypiaTransform
     };
 
     if (options.getConfig) {
@@ -541,12 +541,12 @@ ${externalDependencies
 
     console.log("⚡ The Build process has completed successfully");
     return {
-      success: true,
+      success: true
     };
   } catch (e) {
     console.error(e);
     return {
-      success: false,
+      success: false
     };
   }
 }
@@ -574,8 +574,8 @@ function getNormalizedTsConfig(
         skipLibCheck: true,
         declaration: true,
         declarationMap: true,
-        declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration"),
-      },
+        declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
+      }
     },
     ts.sys,
     dirname(options.tsConfig)
@@ -639,8 +639,8 @@ export const applyDefaultOptions = (options: TsupExecutorSchema): TsupExecutorSc
 export default withRunExecutor<TsupExecutorSchema>("TypeScript Build using tsup", tsupExecutorFn, {
   skipReadingConfig: false,
   hooks: {
-    applyDefaultOptions,
-  },
+    applyDefaultOptions
+  }
 });
 
 const _isPrimitive = (value: unknown): boolean => {

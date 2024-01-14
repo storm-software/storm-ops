@@ -1,9 +1,13 @@
-import { RuleConfigCondition, RuleConfigSeverity, TargetCaseType } from "@commitlint/types";
-import chalk from "chalk";
-
-export default {
-  extends: ["@commitlint/config-conventional"],
+module.exports = {
+  parserPreset: "conventional-changelog-conventionalcommits",
   rules: {
+    "body-leading-blank": [1, "always"],
+    "body-max-line-length": [2, "always", 100],
+    "footer-leading-blank": [1, "always"],
+    "footer-max-line-length": [2, "always", 100],
+    "header-max-length": [2, "always", 100],
+    "type-case": [2, "always", "lower-case"],
+    "type-empty": [2, "never"],
     "type-enum": [
       2,
       "always",
@@ -32,13 +36,11 @@ export default {
         // Used for automated releases-only
         "release"
       ]
-    ] as [RuleConfigSeverity, RuleConfigCondition, string[]],
-    "subject-case": [2, "always", ["sentence-case"]] as [
-      RuleConfigSeverity,
-      RuleConfigCondition,
-      TargetCaseType[]
     ],
-    "scope-empty": [1, "never"] as [RuleConfigSeverity, RuleConfigCondition]
+    "subject-empty": [2, "never"],
+    "subject-full-stop": [2, "never", "."],
+    "subject-case": [2, "always", ["sentence-case"]],
+    "scope-empty": [1, "never"]
   },
   prompt: {
     settings: {},
@@ -64,12 +66,10 @@ export default {
         description: "Provide a longer description of the change"
       },
       breaking: {
-        description: `List any ${chalk.bold("BREAKING CHANGES")}`
+        description: "List any BREAKING CHANGES"
       },
       issues: {
-        description: `Add issue references (e.g. "${chalk.bold("fix #123")}", "${chalk.bold(
-          "re #123"
-        )}".)`
+        description: "Add issue references (e.g. fix #123, re #123.)"
       }
     }
   }
