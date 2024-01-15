@@ -1,3 +1,15 @@
+# [1.21.0](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.20.1...testing-tools-v1.21.0) (2024-01-15)
+
+
+### Bug Fixes
+
+* **linting-tools:** Various improvements to the biome formatter and linter configuration ([1dfd480](https://github.com/storm-software/storm-ops/commit/1dfd4802024427b6041fc09f6bdaa01d7be8783b))
+
+
+### Features
+
+* **git-tools:** Added default `lefthook` and `biome` configuration ([489bec2](https://github.com/storm-software/storm-ops/commit/489bec287d5d8d556746df25ab44856c2ae368b7))
+
 ## [1.20.1](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.20.0...testing-tools-v1.20.1) (2024-01-14)
 
 
