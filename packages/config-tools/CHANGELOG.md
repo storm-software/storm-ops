@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/storm-software/storm-ops/compare/config-tools-v1.14.3...config-tools-v1.15.0) (2024-01-15)
+
+
+### Features
+
+* **workspace-tools:** Added logger functions to use in the repo's console CLI apps ([c38d262](https://github.com/storm-software/storm-ops/commit/c38d26271cfee4e8fd094526b431e098d186a667))
+
 ## [1.14.3](https://github.com/storm-software/storm-ops/compare/config-tools-v1.14.2...config-tools-v1.14.3) (2024-01-15)
 
 
