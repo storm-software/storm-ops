@@ -1,3 +1,0 @@
-name: infrastructure
-runtime: nodejs
-description: The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.
