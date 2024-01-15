@@ -1,3 +1,10 @@
+## [1.42.3](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.42.2...create-storm-workspace-v1.42.3) (2024-01-15)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved issue preventing neutral builds from running ([0939172](https://github.com/storm-software/storm-ops/commit/0939172f5e7cc9e0a940437cdf18d6cdf3766fb3))
+
 ## [1.42.2](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.42.1...create-storm-workspace-v1.42.2) (2024-01-15)
 
 
