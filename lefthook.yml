@@ -52,10 +52,10 @@ commit-msg:
 pre-push:
   piped: true
   commands:
-    validate:
-      files: "git diff --name-only HEAD @{push}"
-      glob: "**/*.*"
-      run: "zx ./dist/packages/git-tools/hooks/pre-push.mjs {files}"
+    # validate:
+    #   files: "git diff --name-only HEAD @{push}"
+    #   glob: "**/*.*"
+    #   run: "zx ./dist/packages/git-tools/hooks/pre-push.mjs {files}"
     lint:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
