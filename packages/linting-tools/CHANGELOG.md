@@ -1,3 +1,10 @@
+## [1.25.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.25.0...linting-tools-v1.25.1) (2024-01-15)
+
+
+### Bug Fixes
+
+* **linting-tools:** Resolve Dependabot Alerts [#1](https://github.com/storm-software/storm-ops/issues/1), [#2](https://github.com/storm-software/storm-ops/issues/2), [#3](https://github.com/storm-software/storm-ops/issues/3), and [#4](https://github.com/storm-software/storm-ops/issues/4) ([88253ba](https://github.com/storm-software/storm-ops/commit/88253ba59b21442d7af2f1f3cb958d9e9d13289e))
+
 # [1.25.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.24.1...linting-tools-v1.25.0) (2024-01-15)
 
 
