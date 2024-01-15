@@ -35,7 +35,8 @@ export const tsupNeutralBuildExecutorFn = (
         ...process.env
       }
     },
-    context
+    context,
+    config
   );
 };
 

@@ -24,7 +24,8 @@
     "globalBuildAffectingConfig": [
       "{workspaceRoot}/tsconfig.base.json",
       "{workspaceRoot}/package.json",
-      "{workspaceRoot}/storm.json"
+      "{workspaceRoot}/storm.json",
+      "{workspaceRoot}/storm.config.js"
     ],
     "globalNonBuildAffectingConfig": [
       "{workspaceRoot}/**/biome.json",
