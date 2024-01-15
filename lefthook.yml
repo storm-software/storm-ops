@@ -32,13 +32,13 @@ pre-commit:
       run: "pnpm lint && git update-index"
     check:
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: npx biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index"
+      run: "pnpm biome:check {staged_files} && git update-index"
     readme:
       glob: "**/{README.md,package.json}"
       run: "zx ./dist/packages/git-tools/bin/cli.mjs readme-gen --templates=\"dist/packages/git-tools/readme/templates\" && git update-index"
     format:
       glob: "**/{README.md,package.json}"
-      run: "npx biome format --write && git update-index"
+      run: "pnpm biome:format {staged_files} && git update-index"
     build:
       glob: "**/*.*"
       run: "pnpm build"
@@ -56,10 +56,10 @@ pre-push:
       glob: "**/*.*"
       run: "zx ./dist/packages/git-tools/hooks/pre-push.mjs {push_files}"
       stage_fixed: true
-    lint-biome:
+    lint:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true {files} && git update-index"
+      run: "pnpm biome:lint {files} && git update-index"
 
 post-merge:
   commands:

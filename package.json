@@ -49,7 +49,9 @@
     "commit": "zx ./dist/packages/git-tools/bin/cli.mjs commit",
     "dep-graph": "nx dep-graph",
     "e2e": "nx e2e",
-    "format": "npx biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true",
+    "biome:check": "npx biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true",
+    "biome:lint": "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true",
+    "biome:format": "npx biome format --write  --no-errors-on-unmatched --files-ignore-unknown=true",
     "help": "nx help",
     "preinstall": "zx ./dist/packages/git-tools/scripts/pre-install.mjs || npx -y only-allow pnpm",
     "lint": "zx ./dist/packages/linting-tools/bin/cli.mjs all --skip-cspell --alex-config=\"dist/packages/linting-tools/alex/.alexrc\" --alex-config=\"dist/packages/linting-tools/alex/.alexignore\"",
@@ -103,10 +105,7 @@
   },
   "namespace": "@storm-software",
   "nx": {
-    "includedScripts": [
-      "lint",
-      "format"
-    ]
+    "includedScripts": ["lint", "format"]
   },
   "pnpm": {
     "overrides": {
