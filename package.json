@@ -109,6 +109,10 @@
   },
   "pnpm": {
     "overrides": {
+      "axios": ">=1.6.0",
+      "got": ">=12.1.0",
+      "tough-cookie": ">=4.1.3",
+      "@cypress/request": ">=3.0.0",
       "create-storm-workspace": "workspace:*",
       "@storm-software/workspace-tools": "workspace:*",
       "@storm-software/linting-tools": "workspace:*",
