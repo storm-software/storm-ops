@@ -1,3 +1,18 @@
+# [1.23.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.22.1...git-tools-v1.23.0) (2024-01-15)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved git hook issue with git-lfs calls ([e7e7a57](https://github.com/storm-software/storm-ops/commit/e7e7a5723e84b23d28037954787fd01a868c6e58))
+* **linting-tools:** Various improvements to the biome formatter and linter configuration ([1dfd480](https://github.com/storm-software/storm-ops/commit/1dfd4802024427b6041fc09f6bdaa01d7be8783b))
+* **workspace-tools:** Enhanced tsup executor logging to use `LogLevel` from config ([75517d2](https://github.com/storm-software/storm-ops/commit/75517d24e663611c8b75c8ca5d9bcd04b4c4bc40))
+
+
+### Features
+
+* **git-tools:** Added default `lefthook` and `biome` configuration ([489bec2](https://github.com/storm-software/storm-ops/commit/489bec287d5d8d556746df25ab44856c2ae368b7))
+* **git-tools:** Added the `format` hook command to lefthook ([cca82b6](https://github.com/storm-software/storm-ops/commit/cca82b64aeba60d8bb6194e03c048fc044f7ef3d))
+
 ## [1.22.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.22.0...git-tools-v1.22.1) (2024-01-14)
 
 
