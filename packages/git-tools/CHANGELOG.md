@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.23.3...git-tools-v1.24.0) (2024-01-15)
+
+
+### Features
+
+* **workspace-tools:** Added logger functions to use in the repo's console CLI apps ([c38d262](https://github.com/storm-software/storm-ops/commit/c38d26271cfee4e8fd094526b431e098d186a667))
+
 ## [1.23.3](https://github.com/storm-software/storm-ops/compare/git-tools-v1.23.2...git-tools-v1.23.3) (2024-01-15)
 
 
