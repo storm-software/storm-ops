@@ -7,7 +7,7 @@ import { runManypkg } from "../manypkg";
 export { findWorkspaceRootSafe } from "@storm-software/config-tools";
 
 export function createProgram() {
-  console.log("Running⚡Storm Linting Tools");
+  console.log("⚡ Running Storm Linting Tools");
 
   const root = findWorkspaceRootSafe();
   process.env.STORM_WORKSPACE_ROOT ??= root;
@@ -15,10 +15,12 @@ export function createProgram() {
   root && process.chdir(root);
 
   const program = new Command("storm-lint");
-
   program.version("1.0.0", "-v --version", "display CLI version");
 
-  program.description("⚡Lint the Storm Workspace").showHelpAfterError().showSuggestionAfterError();
+  program
+    .description("⚡ Lint the Storm Workspace")
+    .showHelpAfterError()
+    .showSuggestionAfterError();
 
   const cspellConfig = new Option("--cspell-config <file>", "CSpell config file path").default(
     "@storm-software/linting-tools/cspell/config.js"
@@ -151,7 +153,7 @@ async function allAction(
     }
 
     await Promise.all(promises);
-    console.log("⚡ Linted the workspace");
+    console.log("✅ Successfully linted the workspace");
   } catch (e) {
     console.error(e);
     process.exit(1);

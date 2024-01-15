@@ -14,7 +14,7 @@
       "**/fallback*.js",
       "**/node_modules/**",
       "**/dist/**",
-      "**/build/**",
+      "**/out/**",
       "**/ios/**",
       "**/.git/**",
       "**/.vscode/**",
@@ -50,16 +50,32 @@
     "indentWidth": 2
   },
   "javascript": {
+    "parser": {
+      "unsafeParameterDecoratorsEnabled": true
+    },
     "formatter": {
+      "enabled": true,
       "quoteStyle": "double",
       "jsxQuoteStyle": "double",
       "trailingComma": "none",
-      "semicolons": "always"
+      "semicolons": "always",
+      "arrowParentheses": "always",
+      "quoteProperties": "asNeeded"
+    },
+    "globals": ["__STORM_CONFIG", "__STORM_CONTEXT"]
+  },
+  "json": {
+    "parser": {
+      "allowComments": true
+    },
+    "formatter": {
+      "enabled": true
     }
   },
   "vcs": {
     "enabled": true,
     "clientKind": "git",
-    "defaultBranch": "main"
+    "defaultBranch": "origin:main",
+    "useIgnoreFile": true
   }
 }
