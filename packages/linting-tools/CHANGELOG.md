@@ -1,3 +1,10 @@
+## [1.25.2](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.25.1...linting-tools-v1.25.2) (2024-01-15)
+
+
+### Bug Fixes
+
+* **git-tools:** Added dependency override for `request` package to prevent request forgery exposure ([1f42b96](https://github.com/storm-software/storm-ops/commit/1f42b96518e944a3b1e5a3e38dfc1c7dc1a7241f))
+
 ## [1.25.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.25.0...linting-tools-v1.25.1) (2024-01-15)
 
 
