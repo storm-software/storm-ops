@@ -1,3 +1,10 @@
+## [1.23.2](https://github.com/storm-software/storm-ops/compare/git-tools-v1.23.1...git-tools-v1.23.2) (2024-01-15)
+
+
+### Bug Fixes
+
+* **git-tools:** Added dependency override for `request` package to prevent request forgery exposure ([1f42b96](https://github.com/storm-software/storm-ops/commit/1f42b96518e944a3b1e5a3e38dfc1c7dc1a7241f))
+
 ## [1.23.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.23.0...git-tools-v1.23.1) (2024-01-15)
 
 
