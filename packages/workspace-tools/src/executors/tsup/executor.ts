@@ -537,20 +537,24 @@ ${externalDependencies
     };
 
     if (options.getConfig) {
+      if (getLogLevel(config?.logLevel) >= LogLevel.INFO) {
+        console.log("⚡ Running the Build process");
+      }
+
       const getConfigFns = _isFunction(options.getConfig)
         ? [options.getConfig]
         : Object.keys(options.getConfig).map((key) => options.getConfig[key]);
 
-      const config = defineConfig(
+      const tsupConfig = defineConfig(
         getConfigFns.map((getConfigFn) =>
           getConfig(context.root, projectRoot, getConfigFn, getConfigOptions)
         )
       );
 
-      if (_isFunction(config)) {
-        await build(await Promise.resolve(config({})));
+      if (_isFunction(tsupConfig)) {
+        await build(await Promise.resolve(tsupConfig({})), config);
       } else {
-        await build(config);
+        await build(tsupConfig, config);
       }
     } else if (getLogLevel(config?.logLevel) >= LogLevel.WARN) {
       console.warn("The Build process did not run because no `getConfig` parameter was provided");
@@ -610,17 +614,15 @@ function getNormalizedTsConfig(
   return tsConfig;
 }
 
-const build = async (options: Options | Options[]) => {
+const build = async (options: Options | Options[], config?: StormConfig) => {
   try {
-    Array.isArray(options)
-      ? options.length > 0
-        ? options[0].silent
-        : false
-      : options.silent && console.log("⚙️  Tsup build config: \n", options, "\n");
-
     if (Array.isArray(options)) {
-      await Promise.all(options.map((buildOptions) => tsup(buildOptions)));
+      await Promise.all(options.map((buildOptions) => build(buildOptions, config)));
     } else {
+      if (getLogLevel(config?.logLevel) >= LogLevel.TRACE && !options.silent) {
+        console.log("⚙️  Tsup build config: \n", options, "\n");
+      }
+
       await tsup(options);
     }
   } catch (e) {

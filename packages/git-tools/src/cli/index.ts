@@ -116,7 +116,7 @@ export async function commitAction({
 
     await runCommit(config, dryRun);
 
-    console.log("✅ Commit Message linting and Commitizen are complete \n");
+    console.log("\n✅ Commit Message linting and Commitizen are complete \n");
     process.exit(0);
   } catch (e) {
     console.error(e);
@@ -130,7 +130,7 @@ export async function readmeAction(options: ReadMeOptions) {
 
     await runReadme(options);
 
-    console.log("✅ Formatting of the workspace's README.md files is complete \n");
+    console.log("\n✅ Formatting of the workspace's README.md files is complete \n");
     process.exit(0);
   } catch (e) {
     console.error(e);
@@ -156,11 +156,10 @@ export async function releaseAction({
 
     await runRelease(project, config, plugin, base, head);
 
-    console.log("✅ Commit Message linting and Commitizen are complete \n");
+    console.log("\n✅ Commit linting completed successfully! Changes can be uploaded to Git. \n");
     process.exit(0);
   } catch (e) {
     console.error(e);
     process.exit(1);
   }
 }
-

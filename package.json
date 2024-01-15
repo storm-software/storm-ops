@@ -103,7 +103,10 @@
   },
   "namespace": "@storm-software",
   "nx": {
-    "includedScripts": ["lint", "format"]
+    "includedScripts": [
+      "lint",
+      "format"
+    ]
   },
   "pnpm": {
     "overrides": {
