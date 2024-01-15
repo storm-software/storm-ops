@@ -1,3 +1,10 @@
+## [1.21.2](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.21.1...testing-tools-v1.21.2) (2024-01-15)
+
+
+### Bug Fixes
+
+* **git-tools:** Added dependency override for `request` package to prevent request forgery exposure ([1f42b96](https://github.com/storm-software/storm-ops/commit/1f42b96518e944a3b1e5a3e38dfc1c7dc1a7241f))
+
 ## [1.21.1](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.21.0...testing-tools-v1.21.1) (2024-01-15)
 
 
