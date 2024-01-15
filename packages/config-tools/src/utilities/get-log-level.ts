@@ -8,6 +8,8 @@ import { LogLevel, LogLevelLabel } from "../types";
  */
 export const getLogLevel = (label: string): LogLevel => {
   switch (label) {
+    case "all":
+      return LogLevel.ALL;
     case "trace":
       return LogLevel.TRACE;
     case "debug":
@@ -34,6 +36,9 @@ export const getLogLevel = (label: string): LogLevel => {
  * @returns The log level label
  */
 export const getLogLevelLabel = (logLevel: number): LogLevelLabel => {
+  if (logLevel >= LogLevel.ALL) {
+    return LogLevelLabel.ALL;
+  }
   if (logLevel >= LogLevel.TRACE) {
     return LogLevelLabel.TRACE;
   }

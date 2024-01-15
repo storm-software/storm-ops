@@ -1,12 +1,16 @@
 import type { ExecutorContext } from "@nx/devkit";
 import {
-  LogLevel,
   type StormConfig,
   getConfigEnv,
   getConfigFile,
   getDefaultConfig,
-  getLogLevel,
-  setConfigEnv
+  setConfigEnv,
+  writeDebug,
+  writeError,
+  writeFatal,
+  writeInfo,
+  writeSuccess,
+  writeTrace
 } from "@storm-software/config-tools";
 import * as chalk from "chalk";
 import type { BaseWorkspaceToolOptions } from "../types";
@@ -45,8 +49,9 @@ export const withRunExecutor =
     const startTime = Date.now();
     let options = _options;
 
+    let config: StormConfig | undefined;
     try {
-      console.info(chalk.bold.hex("#1fb2a6")(`⚡ Running the ${name} executor...\n\n`));
+      writeInfo(config, `⚡ Running the ${name} executor...\n`);
 
       if (
         !context.projectsConfigurations?.projects ||
@@ -63,16 +68,15 @@ export const withRunExecutor =
       const sourceRoot = context.projectsConfigurations.projects[context.projectName].sourceRoot;
       const projectName = context.projectsConfigurations.projects[context.projectName].name;
 
-      let config: StormConfig | undefined;
       if (!executorOptions.skipReadingConfig) {
-        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.info(
-            chalk.dim(`Loading the Storm config...
-- workspaceRoot: ${workspaceRoot}
-- projectRoot: ${projectRoot}
-- sourceRoot: ${sourceRoot}
-- projectName: ${projectName}\n`)
-          );
+        writeDebug(
+          config,
+          `Loading the Storm Config from environment variables and storm.config.js file...
+ - workspaceRoot: ${workspaceRoot}
+ - projectRoot: ${projectRoot}
+ - sourceRoot: ${sourceRoot}
+ - projectName: ${projectName}\n`
+        );
 
         config = getDefaultConfig({
           ...(await getConfigFile()),
@@ -80,26 +84,26 @@ export const withRunExecutor =
         });
         setConfigEnv(config);
 
-        getLogLevel(config.logLevel) >= LogLevel.DEBUG &&
-          console.info(
-            chalk.dim(
-              `Loaded Storm config into env: \n${Object.keys(process.env)
-                .map((key) => ` - ${key}=${process.env[key]}`)
-                .join("\n")}\n`
-            )
-          );
+        writeTrace(
+          config,
+          `Loaded Storm config into env: \n${Object.keys(process.env)
+            .map((key) => ` - ${key}=${JSON.stringify(process.env[key])}`)
+            .join("\n")}`
+        );
       }
 
       if (executorOptions?.hooks?.applyDefaultOptions) {
-        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim("Running the applyDefaultOptions hook..."));
+        writeDebug(config, "Running the applyDefaultOptions hook...");
         options = await Promise.resolve(executorOptions.hooks.applyDefaultOptions(options, config));
-        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim("Completed the applyDefaultOptions hook..."));
+        writeDebug(config, "Completed the applyDefaultOptions hook");
       }
 
-      getLogLevel(config.logLevel) >= LogLevel.INFO &&
-        console.info(chalk.hex("#0ea5e9").italic("\n\n ⚙️  Executor schema options: \n"), options);
+      writeTrace(
+        config,
+        `Executor schema options ⚙️ \n${Object.keys(options)
+          .map((key) => ` - ${key}=${JSON.stringify(options[key])}`)
+          .join("\n")}`
+      );
 
       const tokenized = applyWorkspaceTokens(
         options,
@@ -116,11 +120,9 @@ export const withRunExecutor =
       ) as TExecutorSchema;
 
       if (executorOptions?.hooks?.preProcess) {
-        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim("Running the preProcess hook..."));
+        writeDebug(config, "Running the preProcess hook...");
         await Promise.resolve(executorOptions.hooks.preProcess(tokenized, config));
-        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim("Completed the preProcess hook..."));
+        writeDebug(config, "Completed the preProcess hook");
       }
 
       const result = await Promise.resolve(executorFn(tokenized, context, config));
@@ -139,24 +141,24 @@ export const withRunExecutor =
       }
 
       if (executorOptions?.hooks?.postProcess) {
-        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim("Running the postProcess hook..."));
+        writeDebug(config, "Running the postProcess hook...");
         await Promise.resolve(executorOptions.hooks.postProcess(config));
-        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim("Completed the postProcess hook..."));
+        writeDebug(config, "Completed the postProcess hook");
       }
 
-      console.info(
-        chalk.bold.hex("#087f5b")(`\n\n🎉 Successfully completed running the ${name} executor!\n\n`)
-      );
+      writeSuccess(config, `Completed running the ${name} task executor!\n`);
 
       return {
         success: true
       };
     } catch (error) {
-      console.error(
-        chalk.bold.hex("#7d1a1a")("❌  An error occurred while running the executor\n\n"),
-        error
+      writeFatal(
+        config,
+        "A fatal error occurred while running the executor - the process was forced to terminate"
+      );
+      writeError(
+        config,
+        `An exception was thrown in the executor's process \n - Details: ${error.message}\n - Stacktrace: ${error.stack}`
       );
 
       return {

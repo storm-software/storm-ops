@@ -141,6 +141,9 @@ importers:
 
   packages/config-tools:
     dependencies:
+      chalk:
+        specifier: 4.1.0
+        version: 4.1.0
       cosmiconfig:
         specifier: ^9.0.0
         version: 9.0.0(typescript@5.2.2)
