@@ -59,7 +59,6 @@
     "start": "nx serve",
     "test": "nx test"
   },
-  "prettier": "./dist/packages/linting-tools/prettier/config.json",
   "dependencies": {
     "@biomejs/biome": "1.5.1",
     "@nx/devkit": "17.0.3",

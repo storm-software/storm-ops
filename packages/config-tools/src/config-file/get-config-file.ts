@@ -14,9 +14,7 @@ const getConfigFileName = (
  *
  * @returns The config file for the current Storm workspace
  */
-export const getConfigFile = async (
-  filePath?: string
-): Promise<StormConfigInput> => {
+export const getConfigFile = async (filePath?: string): Promise<StormConfigInput> => {
   if (_static_cache) {
     return _static_cache as StormConfigInput;
   }
@@ -51,8 +49,9 @@ export const getConfigFile = async (
   }
 
   const config: Partial<StormConfigInput> = cosmiconfigResult.config ?? {};
-  cosmiconfigResult.filepath &&
-    (config.configFile = cosmiconfigResult.filepath);
+  if (cosmiconfigResult.filepath) {
+    config.configFile = cosmiconfigResult.filepath;
+  }
   config.runtimeVersion = "0.0.1";
 
   _static_cache = config;

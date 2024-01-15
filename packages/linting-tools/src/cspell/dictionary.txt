@@ -21,6 +21,8 @@ deepkit
 typeschema
 valibot
 lefthook
+biomejs
+contributorsrc
 hasura
 strapi
 tamagui

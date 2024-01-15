@@ -11,7 +11,8 @@ try {
   program.exitOverride();
 
   await program.parseAsync(process.argv.splice(1));
-} catch (p) {
-  console.error(`Error: ${p.stderr}`);
+} catch (e) {
+  console.error(`Error: ${e.stderr}`);
+  console.error(e);
   process.exit(1);
 }

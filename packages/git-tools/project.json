@@ -64,7 +64,12 @@
           },
           {
             "input": "packages/git-tools/src",
-            "glob": "lefthook/**/lefthook.yml",
+            "glob": "lefthook/lefthook.yml",
+            "output": "."
+          },
+          {
+            "input": "packages/git-tools/src",
+            "glob": "hooks/*.mjs",
             "output": "."
           },
           {

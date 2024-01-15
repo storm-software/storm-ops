@@ -1,10 +1,7 @@
 import { ExecutorContext } from "@nx/devkit";
 import { withRunExecutor } from "../../base/base-executor";
 import { getFileBanner } from "../../utils/get-file-banner";
-import {
-  applyDefaultOptions as tsupApplyDefault,
-  tsupExecutorFn
-} from "../tsup/executor";
+import { applyDefaultOptions as tsupApplyDefault, tsupExecutorFn } from "../tsup/executor";
 import { legacyBrowserConfig, modernBrowserConfig } from "./get-config";
 import { TsupBrowserExecutorSchema } from "./schema";
 
@@ -25,11 +22,9 @@ export const tsupBrowserBuildExecutorFn = (
         context.projectName
           ? context.projectName
               .split(/(?=[A-Z])|[\.\-\s_]/)
-              .map(s => s.trim())
-              .filter(s => !!s)
-              .map(s =>
-                s ? s.toUpperCase()[0] + s.toLowerCase().slice(1) : ""
-              )
+              .map((s) => s.trim())
+              .filter((s) => !!s)
+              .map((s) => (s ? s.toUpperCase()[0] + s.toLowerCase().slice(1) : ""))
               .join(" ")
           : "TypeScript (Browser Platforms)"
       ),
@@ -40,13 +35,12 @@ export const tsupBrowserBuildExecutorFn = (
         ...process.env
       }
     },
-    context
+    context,
+    config
   );
 };
 
-const applyDefaultOptions = (
-  options: TsupBrowserExecutorSchema
-): TsupBrowserExecutorSchema => {
+const applyDefaultOptions = (options: TsupBrowserExecutorSchema): TsupBrowserExecutorSchema => {
   return {
     ...tsupApplyDefault({ plugins: [], ...options, platform: "browser" })
   };

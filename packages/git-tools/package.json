@@ -30,11 +30,7 @@
   },
   "type": "module",
   "bin": {
-    "storm-git": "./bin/cli.mjs",
-    "storm-post-checkout": "./bin/post-checkout.mjs",
-    "storm-post-commit": "./bin/post-commit.mjs",
-    "storm-post-merge": "./bin/post-merge.mjs",
-    "storm-pre-push": "./bin/pre-push.mjs"
+    "storm-git": "./bin/cli.mjs"
   },
   "dependencies": {
     "@commitlint/cli": "18.2.0",

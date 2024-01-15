@@ -1,3 +1,5 @@
+import { readFileSync, writeFileSync } from "fs";
+import { dirname, join } from "path";
 import { esbuildDecorators } from "@anatine/esbuild-decorators";
 import {
   ExecutorContext,
@@ -10,15 +12,14 @@ import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options
 import { createTypeScriptCompilationOptions } from "@nx/js/src/executors/tsc/tsc.impl";
 import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
 import { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
+import { LogLevel, StormConfig, getLogLevel } from "@storm-software/config-tools";
 import { environmentPlugin } from "esbuild-plugin-environment";
-import { readFileSync, writeFileSync } from "fs";
 import { removeSync } from "fs-extra";
 import { writeFile } from "fs/promises";
 import { Path, globSync } from "glob";
 import { fileExists } from "nx/src/utils/fileutils";
-import { dirname, join } from "path";
 import { Options as PrettierOptions, format } from "prettier";
-import { Options, defineConfig, build as tsup } from "tsup";
+import { Options, build as tsup, defineConfig } from "tsup";
 import * as ts from "typescript";
 import { withRunExecutor } from "../../base/base-executor";
 import { defaultConfig, getConfig } from "../../base/get-tsup-config";
@@ -35,13 +36,17 @@ type PackageConfiguration = {
   hash?: string;
 };
 
-export async function tsupExecutorFn(options: TsupExecutorSchema, context: ExecutorContext) {
+export async function tsupExecutorFn(
+  options: TsupExecutorSchema,
+  context: ExecutorContext,
+  config?: StormConfig
+) {
   try {
     console.log("📦  Running Storm build executor on the workspace");
 
     // #region Apply default options
 
-    options.verbose &&
+    getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
       console.log(
         `⚙️  Executor options:
 ${Object.keys(options)
@@ -78,7 +83,10 @@ ${Object.keys(options)
     // #region Clean output directory
 
     if (options.clean !== false) {
-      console.log(`🧹 Cleaning output path: ${options.outputPath}`);
+      if (getLogLevel(config?.logLevel) >= LogLevel.DEBUG) {
+        console.log(`🧹 Cleaning output path: ${options.outputPath}`);
+      }
+
       removeSync(options.outputPath);
     }
 
@@ -169,12 +177,16 @@ ${Object.keys(options)
     const internalDependencies: string[] = [];
 
     const projectConfigs = await Promise.resolve(getProjectConfigurations());
-    console.log("Project Configs:");
-    console.log(projectConfigs);
+    if (getLogLevel(config?.logLevel) >= LogLevel.TRACE) {
+      console.log("Project Configs:");
+      console.log(projectConfigs);
+    }
 
     if (implicitDependencies && implicitDependencies.length > 0) {
       options.external = implicitDependencies.reduce((ret: string[], key: string) => {
-        console.log(`⚡ Adding implicit dependency: ${key}`);
+        if (getLogLevel(config?.logLevel) >= LogLevel.DEBUG) {
+          console.log(`⚡ Adding implicit dependency: ${key}`);
+        }
 
         const projectConfig = projectConfigs[key];
         if (projectConfig?.targets?.build) {
@@ -205,12 +217,14 @@ ${Object.keys(options)
       }
     }
 
-    console.log(`Building with the following dependencies marked as external:
+    if (getLogLevel(config?.logLevel) >= LogLevel.TRACE) {
+      console.log(`Building with the following dependencies marked as external:
 ${externalDependencies
   .map((dep) => {
     return `name: ${dep.name}, node: ${dep.node}, outputs: ${dep.outputs}`;
   })
   .join("\n")}`);
+    }
 
     const prettierOptions: PrettierOptions = {
       plugins: ["prettier-plugin-packagejson"],
@@ -258,12 +272,15 @@ ${externalDependencies
           propertyKey = propertyKey.substring(1);
         }
 
-        console.debug(
-          `Trying to add entry point ${propertyKey} at "${joinPathFragments(
-            filePath.path,
-            filePath.name
-          )}"`
-        );
+        if (getLogLevel(config?.logLevel) >= LogLevel.DEBUG) {
+          console.debug(
+            `Trying to add entry point ${propertyKey} at "${joinPathFragments(
+              filePath.path,
+              filePath.name
+            )}"`
+          );
+        }
+
         if (!(propertyKey in ret)) {
           ret[propertyKey] = joinPathFragments(filePath.path, filePath.name);
         }
@@ -415,7 +432,10 @@ ${externalDependencies
         : join("packages", context.projectName);
 
       const packageJsonPath = join(context.root, options.outputPath, "package.json");
-      console.log(`⚡ Writing package.json file to: ${packageJsonPath}`);
+
+      if (getLogLevel(config?.logLevel) >= LogLevel.DEBUG) {
+        console.debug(`⚡ Writing package.json file to: ${packageJsonPath}`);
+      }
 
       writeFileSync(
         packageJsonPath,
@@ -532,13 +552,16 @@ ${externalDependencies
       } else {
         await build(config);
       }
-    } else {
-      console.log("The Build process did not run because no `getConfig` parameter was provided");
+    } else if (getLogLevel(config?.logLevel) >= LogLevel.WARN) {
+      console.warn("The Build process did not run because no `getConfig` parameter was provided");
     }
 
     // #endregion Run the build process
 
-    console.log("⚡ The Build process has completed successfully");
+    if (getLogLevel(config?.logLevel) >= LogLevel.INFO) {
+      console.log("⚡ The Build process has completed successfully");
+    }
+
     return {
       success: true
     };

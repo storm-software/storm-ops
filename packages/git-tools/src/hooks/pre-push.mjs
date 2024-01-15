@@ -1,9 +1,12 @@
 #!/usr/bin/env zx
 
 import { findWorkspaceRootSafe } from "../../config-tools/utilities/find-workspace-root.js";
+import { checkPackageVersion } from "../scripts/check-package-version.mjs";
 
 try {
-  await spinner("Running Storm post-push hook...", async () => {
+  await spinner("Running Storm pre-push hook...", async () => {
+    checkPackageVersion(process.argv?.slice(2));
+
     console.log("🔒🔒🔒 Validating lock files 🔒🔒🔒\n");
 
     const workspaceRoot = findWorkspaceRootSafe();
@@ -37,27 +40,29 @@ try {
     }
 
     if (errors.length > 0) {
+      console.error("❌ Lock file validation failed");
       for (const error of errors) {
         console.error(error);
       }
 
       process.exit(1);
     } else {
-      console.log("Lock file is valid 👍");
+      console.log("✅ Lock file is valid");
 
-      const result = await $`git-lfs -v`;
+      const result = await $`git-lfs version`;
       if (result && Number.isInteger(Number.parseInt(result)) && Number(result)) {
         console.error(
-          `This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting .git/hooks/post-push.\nError: ${result}`
+          `This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting .git/hooks/pre-push.\nError: ${result}`
         );
 
         process.exit(1);
       }
 
-      await $`git lfs post-push origin ${$.env?.STORM_BRANCH ?? "main"}`;
+      await $`git lfs pre-push origin ${$.env?.STORM_BRANCH ?? "main"}`;
     }
   });
-} catch (p) {
-  console.error(`Error: ${p.stderr}`);
+} catch (e) {
+  console.error(`Error: ${e.stderr}`);
+  console.error(e);
   process.exit(1);
 }

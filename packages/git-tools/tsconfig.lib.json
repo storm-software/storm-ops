@@ -12,7 +12,15 @@
     "src/**/*.cjs",
     "scripts/**/*.cjs",
     "bin/**/*",
-    "declarations.d.ts"
-, "scripts/package-version-warning.mjs", "scripts/pre-install.mjs", "scripts/prepare.mjs"  ],
+    "declarations.d.ts",
+    "scripts/package-version-warning.mjs",
+    "scripts/pre-install.mjs",
+    "scripts/prepare.mjs",
+    "src/hooks/post-commit.mjs",
+    "src/hooks/post-merge.mjs",
+    "src/hooks/pre-commit.mjs",
+    "src/hooks/pre-push.mjs",
+    "src/hooks/post-checkout.mjs"
+  ],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }

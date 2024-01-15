@@ -3,41 +3,81 @@
 #   https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
 #
 
+assert_lefthook_installed: true
+colors: true
+no_tty: false
+min_version: 1.5.0
+
+pre-install:
+  commands:
+    validate:
+      glob: "**/*.*"
+      run: "zx @storm-software/git-tools/scripts/pre-install.mjs"
+
+prepare:
+  commands:
+    validate:
+      glob: "**/*.*"
+      run: "zx @storm-software/git-tools/scripts/prepare.mjs"
+
 pre-commit:
+  piped: true
   commands:
     check:
-      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: npx biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index
-    build:
-      glob: "*.*"
-      run: pnpm build
-    readme-format:
+      glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: npx biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index"
+      stage_fixed: true
+    readme:
       glob: "**/{README.md,package.json}"
-      run: pnpm @storm-software/git-tools/bin/cli.js readme-gen --templates @storm-software/git-tools/readme/templates && git update-index
+      run: "zx ./dist/packages/git-tools/bin/cli.mjs readme-gen --templates=\"dist/packages/git-tools/readme/templates\" && git update-index"
+      stage_fixed: true
+    build:
+      glob: "**/*.*"
+      run: "pnpm build"
+      stage_fixed: true
+    validate:
+      glob: "**/*.*"
+      run: "zx @storm-software/git-tools/hooks/pre-commit.mjs {staged_files}"
+      stage_fixed: true
 
 commit-msg:
   commands:
-    "lint commit message":
-      run: npx commitlint --config @storm-software/git-tools/commitlint.config.cjs --edit {1}
+    validate:
+      run: "npx commitlint --config @storm-software/git-tools/commitlint.config.cjs --edit {1}"
 
 pre-push:
+  piped: true
   commands:
-    lint:
-      files: git diff --name-only HEAD @{push}
-      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true {files} && git update-index --again
+    validate:
+      glob: "**/*.*"
+      run: "zx @storm-software/git-tools/hooks/pre-push.mjs {push_files}"
+      stage_fixed: true
+    lint-biome:
+      files: "git diff --name-only HEAD @{push}"
+      glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true {files} && git update-index"
+      stage_fixed: true
+    lint-storm:
+      files: "git diff --name-only HEAD @{push}"
+      glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: "pnpm lint && git update-index"
+      stage_fixed: true
 
 post-merge:
-  scripts:
-    "package-version-warning":
-      runner: bash
+  commands:
+    validate:
+      glob: "**/*.*"
+      run: "zx @storm-software/git-tools/hooks/post-merge.mjs {staged_files}"
+      stage_fixed: true
 
 post-checkout:
-  scripts:
-    "package-version-warning":
-      runner: bash
+  commands:
+    validate:
+      glob: "**/*.*"
+      run: "zx @storm-software/git-tools/hooks/post-checkout.mjs {staged_files}"
 
 post-commit:
-  scripts:
-    "hook":
-      runner: bash
+  commands:
+    validate:
+      glob: "**/*.*"
+      run: "zx @storm-software/git-tools/hooks/post-commit.mjs {staged_files}"
