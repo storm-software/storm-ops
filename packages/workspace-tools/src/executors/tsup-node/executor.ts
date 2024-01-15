@@ -1,9 +1,9 @@
-import { ExecutorContext } from "@nx/devkit";
+import type { ExecutorContext } from "@nx/devkit";
 import { withRunExecutor } from "../../base/base-executor";
 import { getFileBanner } from "../../utils/get-file-banner";
 import { applyDefaultOptions as tsupApplyDefault, tsupExecutorFn } from "../tsup/executor";
 import { nodeConfig } from "./get-config";
-import { TsupNodeExecutorSchema } from "./schema";
+import type { TsupNodeExecutorSchema } from "./schema";
 
 export const tsupNodeBuildExecutorFn = (
   options: TsupNodeExecutorSchema,

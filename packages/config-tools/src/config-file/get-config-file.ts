@@ -1,5 +1,5 @@
-import { CosmiconfigResult, cosmiconfig } from "cosmiconfig";
-import { StormConfigInput } from "../types";
+import { type CosmiconfigResult, cosmiconfig } from "cosmiconfig";
+import type { StormConfigInput } from "../types";
 
 let _static_cache: StormConfigInput | undefined = undefined;
 

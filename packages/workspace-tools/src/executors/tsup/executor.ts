@@ -1,25 +1,21 @@
 import { readFileSync, writeFileSync } from "fs";
 import { dirname, join } from "path";
 import { esbuildDecorators } from "@anatine/esbuild-decorators";
-import {
-  ExecutorContext,
-  joinPathFragments,
-  readCachedProjectGraph,
-  readJsonFile
-} from "@nx/devkit";
+import { joinPathFragments, readCachedProjectGraph, readJsonFile } from "@nx/devkit";
+import type { ExecutorContext } from "@nx/devkit";
 import { copyAssets } from "@nx/js";
 import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options";
 import { createTypeScriptCompilationOptions } from "@nx/js/src/executors/tsc/tsc.impl";
-import { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
-import { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
-import { LogLevel, StormConfig, getLogLevel } from "@storm-software/config-tools";
+import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
+import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
+import { LogLevel, type StormConfig, getLogLevel } from "@storm-software/config-tools";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import { removeSync } from "fs-extra";
 import { writeFile } from "fs/promises";
-import { Path, globSync } from "glob";
+import { type Path, globSync } from "glob";
 import { fileExists } from "nx/src/utils/fileutils";
-import { Options as PrettierOptions, format } from "prettier";
-import { Options, build as tsup, defineConfig } from "tsup";
+import { type Options as PrettierOptions, format } from "prettier";
+import { type Options, build as tsup, defineConfig } from "tsup";
 import * as ts from "typescript";
 import { withRunExecutor } from "../../base/base-executor";
 import { defaultConfig, getConfig } from "../../base/get-tsup-config";
@@ -28,7 +24,7 @@ import { getProjectConfigurations } from "../../utils/get-project-configurations
 import { getExternalDependencies } from "../../utils/get-project-deps";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
 import { getTypiaTransform } from "../../utils/typia-transform";
-import { TsupExecutorSchema } from "./schema";
+import type { TsupExecutorSchema } from "./schema";
 
 type PackageConfiguration = {
   version: string;

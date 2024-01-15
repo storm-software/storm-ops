@@ -1,6 +1,6 @@
 import { joinPathFragments } from "@nx/devkit";
-import { Options } from "tsup";
-import { GetConfigParams, TsupGetConfigOptions } from "../types";
+import type { Options } from "tsup";
+import type { GetConfigParams, TsupGetConfigOptions } from "../types";
 
 export function defaultConfig({
   entry,

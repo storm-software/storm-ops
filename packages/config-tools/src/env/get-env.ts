@@ -1,4 +1,4 @@
-import { LogLevelLabel, StormConfig } from "../types";
+import { LogLevelLabel, type StormConfig } from "../types";
 import { getLogLevelLabel } from "../utilities";
 
 /**
@@ -7,25 +7,21 @@ import { getLogLevelLabel } from "../utilities";
  * @param extensionName - The name of the extension module
  * @returns The config for the specified Storm extension module. If the module does not exist, `undefined` is returned.
  */
-export const getExtensionEnv = <
-  TConfig extends Record<string, any> = Record<string, any>
->(
+export const getExtensionEnv = <TConfig extends Record<string, any> = Record<string, any>>(
   extensionName: string
 ): TConfig | undefined => {
   const prefix = `STORM_EXTENSION_${extensionName.toUpperCase()}_`;
   return Object.keys(process.env)
-    .filter(key => key.startsWith(prefix))
+    .filter((key) => key.startsWith(prefix))
     .reduce((ret: Record<string, any>, key: string) => {
       const name = key
         .replace(prefix, "")
         .split("_")
-        .map(i =>
-          i.length > 0
-            ? i.trim().charAt(0).toUpperCase() + i.trim().slice(1)
-            : ""
-        )
+        .map((i) => (i.length > 0 ? i.trim().charAt(0).toUpperCase() + i.trim().slice(1) : ""))
         .join("");
-      name && (ret[name] = process.env[key]);
+      if (name) {
+        ret[name] = process.env[key];
+      }
 
       return ret;
     }, {}) as TConfig;
@@ -37,7 +33,7 @@ export const getExtensionEnv = <
  * @returns The config for the current Storm workspace from environment variables
  */
 export const getConfigEnv = (): Partial<StormConfig> => {
-  const prefix = `STORM_`;
+  const prefix = "STORM_";
 
   let config: Partial<StormConfig> = {
     name: process.env[`${prefix}NAME`],
@@ -45,9 +41,7 @@ export const getConfigEnv = (): Partial<StormConfig> => {
     owner: process.env[`${prefix}OWNER`],
     worker: process.env[`${prefix}WORKER`],
     organization: process.env[`${prefix}ORGANIZATION`],
-    packageManager: process.env[
-      `${prefix}PACKAGE_MANAGER`
-    ] as StormConfig["packageManager"],
+    packageManager: process.env[`${prefix}PACKAGE_MANAGER`] as StormConfig["packageManager"],
     license: process.env[`${prefix}LICENSE`],
     homepage: process.env[`${prefix}HOMEPAGE`],
     timezone: process.env[`${prefix}TIMEZONE`] ?? process.env.TZ,
@@ -61,11 +55,7 @@ export const getConfigEnv = (): Partial<StormConfig> => {
     env: (process.env[`${prefix}ENV`] ??
       process.env.NODE_ENV ??
       process.env.ENVIRONMENT) as StormConfig["env"],
-    ci: Boolean(
-      process.env[`${prefix}CI`] ??
-        process.env.CI ??
-        process.env.CONTINUOUS_INTEGRATION
-    ),
+    ci: Boolean(process.env[`${prefix}CI`] ?? process.env.CI ?? process.env.CONTINUOUS_INTEGRATION),
     colors: {
       primary: process.env[`${prefix}COLOR_PRIMARY`],
       background: process.env[`${prefix}COLOR_BACKGROUND`],
@@ -79,11 +69,8 @@ export const getConfigEnv = (): Partial<StormConfig> => {
     branch: process.env[`${prefix}BRANCH`],
     preMajor: Boolean(process.env[`${prefix}PRE_MAJOR`]),
     logLevel:
-      process.env[`${prefix}LOG_LEVEL`] !== null &&
-      process.env[`${prefix}LOG_LEVEL`] !== undefined
-        ? Number.isSafeInteger(
-            Number.parseInt(process.env[`${prefix}LOG_LEVEL`])
-          )
+      process.env[`${prefix}LOG_LEVEL`] !== null && process.env[`${prefix}LOG_LEVEL`] !== undefined
+        ? Number.isSafeInteger(Number.parseInt(process.env[`${prefix}LOG_LEVEL`]))
           ? getLogLevelLabel(Number.parseInt(process.env[`${prefix}LOG_LEVEL`]))
           : (process.env[`${prefix}LOG_LEVEL`] as LogLevelLabel)
         : LogLevelLabel.INFO,
@@ -103,19 +90,16 @@ export const getConfigEnv = (): Partial<StormConfig> => {
 
   const extensionPrefix = `${prefix}EXTENSION_`;
   return Object.keys(process.env)
-    .filter(key => key.startsWith(extensionPrefix))
+    .filter((key) => key.startsWith(extensionPrefix))
     .reduce((ret: StormConfig, key: string) => {
       const extensionName = key
         .substring(prefix.length, key.indexOf("_", prefix.length))
         .split("_")
-        .map(i =>
-          i.length > 0
-            ? i.trim().charAt(0).toUpperCase() + i.trim().slice(1)
-            : ""
-        )
+        .map((i) => (i.length > 0 ? i.trim().charAt(0).toUpperCase() + i.trim().slice(1) : ""))
         .join("");
-      extensionName &&
-        (ret.extensions[extensionName] = getExtensionEnv(extensionName));
+      if (extensionName) {
+        ret.extensions[extensionName] = getExtensionEnv(extensionName);
+      }
 
       return ret;
     }, config);

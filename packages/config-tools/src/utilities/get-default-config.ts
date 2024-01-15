@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from "fs";
 import { join } from "path";
 import { StormConfigSchema } from "../schema";
-import { ColorConfig, StormConfig } from "../types";
+import type { ColorConfig, StormConfig } from "../types";
 import { findWorkspaceRoot } from "./find-workspace-root";
 
 /**
@@ -47,10 +47,7 @@ export const DefaultStormConfig: StormConfig = {
  *
  * @returns The default Storm config values
  */
-export const getDefaultConfig = (
-  config: Partial<StormConfig> = {},
-  root?: string
-): StormConfig => {
+export const getDefaultConfig = (config: Partial<StormConfig> = {}, root?: string): StormConfig => {
   let name = "storm-workspace";
   let namespace = "storm-software";
   let repository = "https://github.com/storm-software/storm-ops";
@@ -66,11 +63,21 @@ export const getDefaultConfig = (
     if (file) {
       const packageJson = JSON.parse(file);
 
-      packageJson.name && (name = packageJson.name);
-      packageJson.namespace && (namespace = packageJson.namespace);
-      packageJson.repository?.url && (repository = packageJson.repository?.url);
-      packageJson.license && (license = packageJson.license);
-      packageJson.homepage && (homepage = packageJson.homepage);
+      if (packageJson.name) {
+        name = packageJson.name;
+      }
+      if (packageJson.namespace) {
+        namespace = packageJson.namespace;
+      }
+      if (packageJson.repository?.url) {
+        repository = packageJson.repository?.url;
+      }
+      if (packageJson.license) {
+        license = packageJson.license;
+      }
+      if (packageJson.homepage) {
+        homepage = packageJson.homepage;
+      }
     }
   }
 
@@ -82,8 +89,8 @@ export const getDefaultConfig = (
     name,
     namespace,
     repository,
-    license: license ?? DefaultStormConfig.license!,
-    homepage: homepage ?? DefaultStormConfig.homepage!,
+    license: license ?? DefaultStormConfig.license,
+    homepage: homepage ?? DefaultStormConfig.homepage,
     extensions: {
       ...config.extensions
     }

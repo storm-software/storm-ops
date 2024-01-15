@@ -69,18 +69,8 @@ export const ColorConfigSchema = z
  */
 export const StormConfigSchema = z
   .object({
-    name: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .optional()
-      .describe("The name of the package"),
-    namespace: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .optional()
-      .describe("The namespace of the package"),
+    name: z.string().trim().toLowerCase().optional().describe("The name of the package"),
+    namespace: z.string().trim().toLowerCase().optional().describe("The namespace of the package"),
     organization: z
       .string()
       .trim()
@@ -103,17 +93,11 @@ export const StormConfigSchema = z
       .url()
       .default("https://stormsoftware.org")
       .describe("The homepage of the workspace"),
-    branch: z
-      .string()
-      .trim()
-      .default("main")
-      .describe("The branch of the workspace"),
+    branch: z.string().trim().default("main").describe("The branch of the workspace"),
     preMajor: z
       .boolean()
       .default(false)
-      .describe(
-        "An indicator specifying if the package is still in it's pre-major version"
-      ),
+      .describe("An indicator specifying if the package is still in it's pre-major version"),
     owner: z
       .string()
       .trim()
@@ -133,19 +117,9 @@ export const StormConfigSchema = z
     ci: z
       .boolean()
       .default(true)
-      .describe(
-        "An indicator specifying if the current environment is a CI environment"
-      ),
-    workspaceRoot: z
-      .string()
-      .trim()
-      .optional()
-      .describe("The root directory of the workspace"),
-    packageDirectory: z
-      .string()
-      .trim()
-      .optional()
-      .describe("The root directory of the package"),
+      .describe("An indicator specifying if the current environment is a CI environment"),
+    workspaceRoot: z.string().trim().optional().describe("The root directory of the workspace"),
+    packageDirectory: z.string().trim().optional().describe("The root directory of the package"),
     buildDirectory: z
       .string()
       .trim()
@@ -173,13 +147,9 @@ export const StormConfigSchema = z
       .trim()
       .default("America/New_York")
       .describe("The default timezone of the workspace"),
-    locale: z
-      .string()
-      .trim()
-      .default("en-US")
-      .describe("The default locale of the workspace"),
+    locale: z.string().trim().default("en-US").describe("The default locale of the workspace"),
     logLevel: z
-      .enum(["silent", "fatal", "error", "warn", "info", "debug", "trace"])
+      .enum(["silent", "fatal", "error", "warn", "info", "debug", "trace", "all"])
       .default("debug")
       .describe(
         "The log level used to filter out lower priority log messages. If not provided, this is defaulted using the `environment` config value (if `environment` is set to `production` then `level` is `error`, else `level` is `debug`)."

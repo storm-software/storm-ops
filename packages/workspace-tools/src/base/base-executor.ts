@@ -1,7 +1,7 @@
-import { ExecutorContext } from "@nx/devkit";
+import type { ExecutorContext } from "@nx/devkit";
 import {
   LogLevel,
-  StormConfig,
+  type StormConfig,
   getConfigEnv,
   getConfigFile,
   getDefaultConfig,
@@ -9,7 +9,7 @@ import {
   setConfigEnv
 } from "@storm-software/config-tools";
 import * as chalk from "chalk";
-import { BaseWorkspaceToolOptions } from "../types";
+import type { BaseWorkspaceToolOptions } from "../types";
 import {
   applyWorkspaceExecutorTokens,
   applyWorkspaceTokens
@@ -39,10 +39,7 @@ export const withRunExecutor =
       context: ExecutorContext,
       config?: StormConfig
     ) => Promise<BaseExecutorResult | null | undefined> | BaseExecutorResult | null | undefined,
-    executorOptions: BaseExecutorOptions<TExecutorSchema> = {
-      skipReadingConfig: false,
-      hooks: {}
-    }
+    executorOptions: BaseExecutorOptions<TExecutorSchema>
   ) =>
   async (_options: TExecutorSchema, context: ExecutorContext): Promise<{ success: boolean }> => {
     const startTime = Date.now();
@@ -68,6 +65,15 @@ export const withRunExecutor =
 
       let config: StormConfig | undefined;
       if (!executorOptions.skipReadingConfig) {
+        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
+          console.info(
+            chalk.dim(`Loading the Storm config...
+- workspaceRoot: ${workspaceRoot}
+- projectRoot: ${projectRoot}
+- sourceRoot: ${sourceRoot}
+- projectName: ${projectName}\n`)
+          );
+
         config = getDefaultConfig({
           ...(await getConfigFile()),
           ...getConfigEnv()
@@ -75,11 +81,11 @@ export const withRunExecutor =
         setConfigEnv(config);
 
         getLogLevel(config.logLevel) >= LogLevel.DEBUG &&
-          console.debug(
+          console.info(
             chalk.dim(
               `Loaded Storm config into env: \n${Object.keys(process.env)
                 .map((key) => ` - ${key}=${process.env[key]}`)
-                .join("\n")}`
+                .join("\n")}\n`
             )
           );
       }

@@ -23,6 +23,9 @@ prepare:
 pre-commit:
   piped: true
   commands:
+    deps:
+      glob: "**/package.json"
+      run: "pnpm install --frozen-lockfile --ignore-scripts && git update-index"
     validate:
       glob: "**/*.*"
       run: "zx @storm-software/git-tools/hooks/pre-commit.mjs {staged_files}"
@@ -38,7 +41,7 @@ pre-commit:
       glob: "**/{README.md,package.json}"
       run: "zx @storm-software/git-tools/bin/cli.mjs readme-gen --templates=\"dist/packages/git-tools/readme/templates\" && git update-index"
     format:
-      glob: "**/{README.md,package.json}"
+      glob: "**/*.*"
       run: "npx biome format --write {staged_files} && git update-index"
     build:
       glob: "**/*.*"
@@ -54,13 +57,15 @@ pre-push:
   piped: true
   commands:
     validate:
+      files: "git diff --name-only HEAD @{push}"
       glob: "**/*.*"
-      run: "zx @storm-software/git-tools/hooks/pre-push.mjs {push_files}"
+      run: "zx @storm-software/git-tools/hooks/pre-push.mjs {files}"
       stage_fixed: true
     lint-biome:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true {files} && git update-index"
+      stage_fixed: true
 
 post-merge:
   commands:

@@ -35,11 +35,16 @@
         "noUselessElse": "warn"
       },
       "suspicious": {
+        "noAssignInExpressions": "warn",
         "noEmptyInterface": "off",
         "noExplicitAny": "off"
       },
       "security": {
         "noDangerouslySetInnerHtml": "off"
+      },
+      "nursery": {
+        "useImportType": "error",
+        "useExportType": "error"
       }
     }
   },

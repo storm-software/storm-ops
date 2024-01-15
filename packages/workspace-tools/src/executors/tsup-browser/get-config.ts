@@ -1,7 +1,7 @@
 import { joinPathFragments } from "@nx/devkit";
-import { Options } from "tsup";
+import type { Options } from "tsup";
 import { outExtension } from "../../base/get-tsup-config";
-import { GetConfigParams } from "../../types";
+import type { GetConfigParams } from "../../types";
 
 export function modernBrowserConfig({
   entry,
@@ -23,7 +23,7 @@ export function modernBrowserConfig({
   plugins,
   generatePackageJson,
   dtsTsConfig,
-  getTransform,
+  getTransform
 }: GetConfigParams) {
   const outputPath = joinPathFragments(outDir, "dist", "modern");
 
@@ -37,7 +37,7 @@ export function modernBrowserConfig({
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended",
+          preset: "recommended"
         }
       : false,
     projectRoot,
@@ -59,9 +59,9 @@ export function modernBrowserConfig({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: outputPath,
-        },
-      },
+          outDir: outputPath
+        }
+      }
     },
     apiReport: false,
     docModel: false,
@@ -71,7 +71,7 @@ export function modernBrowserConfig({
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform,
+    getTransform
   } as Options;
 
   if (!debug) {
@@ -80,7 +80,7 @@ export function modernBrowserConfig({
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true,
+      keep_fnames: true
     };
   }
 
@@ -110,7 +110,7 @@ export function legacyBrowserConfig({
   plugins,
   generatePackageJson,
   dtsTsConfig,
-  getTransform,
+  getTransform
 }: GetConfigParams) {
   const outputPath = joinPathFragments(outDir, "dist", "legacy");
 
@@ -124,7 +124,7 @@ export function legacyBrowserConfig({
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended",
+          preset: "recommended"
         }
       : false,
     projectRoot,
@@ -146,9 +146,9 @@ export function legacyBrowserConfig({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: outputPath,
-        },
-      },
+          outDir: outputPath
+        }
+      }
     },
     apiReport,
     docModel,
@@ -158,7 +158,7 @@ export function legacyBrowserConfig({
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform,
+    getTransform
   } as Options;
 
   if (!debug) {
@@ -167,7 +167,7 @@ export function legacyBrowserConfig({
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true,
+      keep_fnames: true
     };
   }
 

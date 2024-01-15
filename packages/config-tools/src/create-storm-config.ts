@@ -1,9 +1,9 @@
-import * as z from "zod";
+import type { ZodTypeAny } from "zod";
 import { getConfigFile } from "./config-file/get-config-file";
 import { getConfigEnv, getExtensionEnv } from "./env/get-env";
 import { setConfigEnv } from "./env/set-env";
 import { StormConfigSchema } from "./schema";
-import { StormConfig } from "./types";
+import type { StormConfig } from "./types";
 import { getDefaultConfig } from "./utilities/get-default-config";
 
 const _extension_cache = new WeakMap<{ extensionName: string }, any>();
@@ -24,10 +24,9 @@ export const createConfig = (workspaceRoot?: string): StormConfig => {
  * @returns The config for the current Storm workspace
  */
 export const createStormConfig = <
-  TExtensionName extends
-    keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
-  TExtensionConfig extends any = any,
-  TExtensionSchema extends z.ZodTypeAny = z.ZodTypeAny
+  TExtensionName extends keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
+  TExtensionConfig = any,
+  TExtensionSchema extends ZodTypeAny = ZodTypeAny
 >(
   extensionName?: TExtensionName,
   schema?: TExtensionSchema,
@@ -35,7 +34,7 @@ export const createStormConfig = <
 ): StormConfig<TExtensionName, TExtensionConfig> => {
   let result!: StormConfig<TExtensionName, TExtensionConfig>;
   if (!_static_cache) {
-    let config = getConfigEnv() as StormConfig & {
+    const config = getConfigEnv() as StormConfig & {
       [extensionName in TExtensionName]: TExtensionConfig;
     };
     const defaultConfig = getDefaultConfig(config, workspaceRoot);
@@ -55,11 +54,10 @@ export const createStormConfig = <
   if (schema && extensionName) {
     result.extensions = {
       ...result.extensions,
-      [extensionName]: createConfigExtension<
-        TExtensionName,
-        TExtensionConfig,
-        TExtensionSchema
-      >(extensionName, schema)
+      [extensionName]: createConfigExtension<TExtensionName, TExtensionConfig, TExtensionSchema>(
+        extensionName,
+        schema
+      )
     };
   }
 
@@ -75,10 +73,9 @@ export const createStormConfig = <
  * @returns The config for the specified Storm config extension. If the extension does not exist, `undefined` is returned.
  */
 export const createConfigExtension = <
-  TExtensionName extends
-    keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
-  TExtensionConfig extends any = any,
-  TExtensionSchema extends z.ZodTypeAny = z.ZodTypeAny
+  TExtensionName extends keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
+  TExtensionConfig = any,
+  TExtensionSchema extends ZodTypeAny = ZodTypeAny
 >(
   extensionName: TExtensionName,
   schema: TExtensionSchema

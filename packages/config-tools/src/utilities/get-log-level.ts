@@ -36,19 +36,24 @@ export const getLogLevel = (label: string): LogLevel => {
 export const getLogLevelLabel = (logLevel: number): LogLevelLabel => {
   if (logLevel >= LogLevel.TRACE) {
     return LogLevelLabel.TRACE;
-  } else if (logLevel >= LogLevel.DEBUG) {
+  }
+  if (logLevel >= LogLevel.DEBUG) {
     return LogLevelLabel.DEBUG;
-  } else if (logLevel >= LogLevel.INFO) {
-    return LogLevelLabel.INFO;
-  } else if (logLevel >= LogLevel.WARN) {
-    return LogLevelLabel.WARN;
-  } else if (logLevel >= LogLevel.ERROR) {
-    return LogLevelLabel.ERROR;
-  } else if (logLevel >= LogLevel.FATAL) {
-    return LogLevelLabel.FATAL;
-  } else if (logLevel <= LogLevel.SILENT) {
-    return LogLevelLabel.SILENT;
-  } else {
+  }
+  if (logLevel >= LogLevel.INFO) {
     return LogLevelLabel.INFO;
   }
+  if (logLevel >= LogLevel.WARN) {
+    return LogLevelLabel.WARN;
+  }
+  if (logLevel >= LogLevel.ERROR) {
+    return LogLevelLabel.ERROR;
+  }
+  if (logLevel >= LogLevel.FATAL) {
+    return LogLevelLabel.FATAL;
+  }
+  if (logLevel <= LogLevel.SILENT) {
+    return LogLevelLabel.SILENT;
+  }
+  return LogLevelLabel.INFO;
 };

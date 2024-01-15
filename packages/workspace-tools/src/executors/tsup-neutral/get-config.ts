@@ -1,7 +1,7 @@
 import { joinPathFragments } from "@nx/devkit";
-import { Options } from "tsup";
+import type { Options } from "tsup";
 import { outExtension } from "../../base/get-tsup-config";
-import { GetConfigParams } from "../../types";
+import type { GetConfigParams } from "../../types";
 
 export function neutralConfig({
   entry,

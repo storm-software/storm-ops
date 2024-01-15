@@ -45,13 +45,9 @@ const rootFiles = [
  * @param pathInsideMonorepo - The path inside the monorepo to start searching from
  * @returns The monorepo root directory
  */
-export function findWorkspaceRootSafe(
-  pathInsideMonorepo?: string
-): string | undefined {
+export function findWorkspaceRootSafe(pathInsideMonorepo?: string): string | undefined {
   if (process.env.STORM_WORKSPACE_ROOT || process.env.NX_WORKSPACE_ROOT_PATH) {
-    return (
-      process.env.STORM_WORKSPACE_ROOT ?? process.env.NX_WORKSPACE_ROOT_PATH
-    );
+    return process.env.STORM_WORKSPACE_ROOT ?? process.env.NX_WORKSPACE_ROOT_PATH;
   }
 
   return findFolderUp(pathInsideMonorepo ?? process.cwd(), rootFiles);

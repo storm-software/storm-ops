@@ -85,9 +85,7 @@
       "executor": "nx:run-commands",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "commands": [
-          "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true {projectRoot}"
-        ],
+        "command": "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true {projectRoot}",
         "color": true
       },
       "inputs": ["default", "{workspaceRoot}/**/biome.json"]

@@ -1,7 +1,7 @@
-import { Tree } from "@nx/devkit";
+import type { Tree } from "@nx/devkit";
 import {
   LogLevel,
-  StormConfig,
+  type StormConfig,
   getConfigEnv,
   getConfigFile,
   getDefaultConfig,
@@ -9,7 +9,7 @@ import {
   setConfigEnv
 } from "@storm-software/config-tools";
 import * as chalk from "chalk";
-import { BaseWorkspaceToolOptions } from "../types";
+import type { BaseWorkspaceToolOptions } from "../types";
 import {
   applyWorkspaceGeneratorTokens,
   applyWorkspaceTokens
