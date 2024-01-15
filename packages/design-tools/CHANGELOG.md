@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/storm-software/storm-ops/compare/design-tools-v1.4.1...design-tools-v1.5.0) (2024-01-15)
+
+
+### Bug Fixes
+
+* **linting-tools:** Various improvements to the biome formatter and linter configuration ([1dfd480](https://github.com/storm-software/storm-ops/commit/1dfd4802024427b6041fc09f6bdaa01d7be8783b))
+
+
+### Features
+
+* **git-tools:** Added default `lefthook` and `biome` configuration ([489bec2](https://github.com/storm-software/storm-ops/commit/489bec287d5d8d556746df25ab44856c2ae368b7))
+
 ## [1.4.1](https://github.com/storm-software/storm-ops/compare/design-tools-v1.4.0...design-tools-v1.4.1) (2024-01-14)
 
 
