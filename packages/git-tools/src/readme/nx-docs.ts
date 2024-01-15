@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from "fs";
 import { join } from "path";
-import { findFilePath } from "../common/file-utils";
+import { findFilePath } from "../utilities/file-utils";
 
 export const getExecutorMarkdown = (
   packageName: string,
@@ -23,14 +23,9 @@ export const getExecutorMarkdown = (
       let required = [];
 
       if (executor.schema) {
-        const schemaJsonPath = join(
-          findFilePath(executorsJsonFile),
-          executor.schema
-        );
+        const schemaJsonPath = join(findFilePath(executorsJsonFile), executor.schema);
         if (existsSync(schemaJsonPath)) {
-          const schemaJson = JSON.parse(
-            readFileSync(schemaJsonPath, "utf8") ?? "{}"
-          );
+          const schemaJson = JSON.parse(readFileSync(schemaJsonPath, "utf8") ?? "{}");
 
           if (schemaJson.title) {
             title = `## ${schemaJson.title}\n\n`;
@@ -43,15 +38,9 @@ export const getExecutorMarkdown = (
           }
 
           required =
-            schemaJson.required && Array.isArray(schemaJson.required)
-              ? schemaJson.required
-              : [];
-          if (
-            schemaJson.properties &&
-            Object.keys(schemaJson.properties).length > 0
-          ) {
-            result +=
-              "### Options\n\nThe following executor options are available:\n\n";
+            schemaJson.required && Array.isArray(schemaJson.required) ? schemaJson.required : [];
+          if (schemaJson.properties && Object.keys(schemaJson.properties).length > 0) {
+            result += "### Options\n\nThe following executor options are available:\n\n";
             result += "| Option    | Type   | Description   | Default   | \n";
             result += "| --------- | ------ | ------------- | --------- | \n";
 
@@ -63,16 +52,10 @@ export const getExecutorMarkdown = (
                     required.includes(name) ? " \\*" : "  "
                   }${required.includes(name) ? "**" : ""}   `;
                   if (schema.type) {
-                    if (
-                      schema.enum &&
-                      Array.isArray(schema.enum) &&
-                      schema.enum.length > 0
-                    ) {
+                    if (schema.enum && Array.isArray(schema.enum) && schema.enum.length > 0) {
                       result += ` | ${schema.enum
                         .map((x: any) =>
-                          !schema.type || schema.type === "string"
-                            ? `"${x}"`
-                            : `\`${x}\``
+                          !schema.type || schema.type === "string" ? `"${x}"` : `\`${x}\``
                         )
                         .join(" \\| ")}    `;
                     } else if (schema.type === "array" && schema.items?.type) {
@@ -81,7 +64,7 @@ export const getExecutorMarkdown = (
                       result += ` | \`${schema.type}\`   `;
                     }
                   } else {
-                    result += ` | \`string\`  `;
+                    result += " | `string`  ";
                   }
 
                   if (schema.description) {
@@ -89,7 +72,7 @@ export const getExecutorMarkdown = (
                       .replaceAll("`", "\\`")
                       .replaceAll("*", "\\*")}    `;
                   } else {
-                    result += ` |    `;
+                    result += " |    ";
                   }
 
                   if (schema.default) {
@@ -97,13 +80,13 @@ export const getExecutorMarkdown = (
                       schema.type === "string" || !schema.type
                         ? ` | "${schema.default}"    `
                         : schema.type === "array"
-                        ? ` | \`[]\`    `
-                        : ` | \`${schema.default}\`    `;
+                          ? " | `[]`    "
+                          : ` | \`${schema.default}\`    `;
                   } else {
-                    result += ` |    `;
+                    result += " |    ";
                   }
 
-                  result += ` | \n`;
+                  result += " | \n";
                 }
 
                 return result;
@@ -112,7 +95,8 @@ export const getExecutorMarkdown = (
 
             result += "\n\n";
             if (required.length > 0) {
-              result += `**Please note:** _Option names followed by \\* above are required, and must be provided to run the executor._ \n\n`;
+              result +=
+                "**Please note:** _Option names followed by \\* above are required, and must be provided to run the executor._ \n\n";
             }
           }
         }
@@ -123,22 +107,16 @@ export const getExecutorMarkdown = (
       }
 
       if (!description && executor.description) {
-        description = `${executor.description
-          .replaceAll("`", "\\`")
-          .replaceAll("*", "\\*")}\n\n`;
+        description = `${executor.description.replaceAll("`", "\\`").replaceAll("*", "\\*")}\n\n`;
       }
 
-      return (
-        title +
-        description +
-        `### Example \n\nThis executor can be used by executing the following in a command line utility: \n\n\`\`\`cmd \nnx run my-project:${name}\n\`\`\`\n\n` +
-        `**Please note:** _The ${name} executor should be included in the desired projects's \`project.json\` file.${
-          required.length > 0
-            ? `All required options must be included in the \`options\` property of the json.`
-            : ""
-        }_ \n\n` +
-        result
-      );
+      return `${
+        title + description
+      }### Example \n\nThis executor can be used by executing the following in a command line utility: \n\n\`\`\`cmd \nnx run my-project:${name}\n\`\`\`\n\n**Please note:** _The ${name} executor should be included in the desired projects's \`project.json\` file.${
+        required.length > 0
+          ? "All required options must be included in the `options` property of the json."
+          : ""
+      }_ \n\n${result}`;
     })
     .join("\n\n");
 };
@@ -162,40 +140,26 @@ export const getGeneratorMarkdown = (
       let title = "";
       let description = "";
       let example = "";
-      let required = [];
+      const required = [];
 
       if (generator.schema) {
-        const schemaJsonPath = join(
-          findFilePath(generatorsJsonFile),
-          generator.schema
-        );
+        const schemaJsonPath = join(findFilePath(generatorsJsonFile), generator.schema);
         if (existsSync(schemaJsonPath)) {
-          const schemaJson = JSON.parse(
-            readFileSync(schemaJsonPath, "utf8") ?? "{}"
-          );
+          const schemaJson = JSON.parse(readFileSync(schemaJsonPath, "utf8") ?? "{}");
 
           if (schemaJson.title) {
             title = `## ${schemaJson.title}\n\n`;
           }
 
           if (schemaJson.description) {
-            description = `${schemaJson.description.replaceAll(
-              "*",
-              "\\*"
-            )}\n\n`;
+            description = `${schemaJson.description.replaceAll("*", "\\*")}\n\n`;
           }
 
-          if (
-            schemaJson.properties &&
-            Object.keys(schemaJson.properties).length > 0
-          ) {
+          if (schemaJson.properties && Object.keys(schemaJson.properties).length > 0) {
             const required =
-              schemaJson.required && Array.isArray(schemaJson.required)
-                ? schemaJson.required
-                : [];
+              schemaJson.required && Array.isArray(schemaJson.required) ? schemaJson.required : [];
 
-            result +=
-              "### Options\n\nThe following executor options are available:\n\n";
+            result += "### Options\n\nThe following executor options are available:\n\n";
             result += "| Option    | Type   | Description   | Default   | \n";
             result += "| --------- | ------ | ------------- | --------- | \n";
 
@@ -203,22 +167,14 @@ export const getGeneratorMarkdown = (
               .map(([name, schema]: [string, any]) => {
                 let resultSchema = "";
                 if (name) {
-                  resultSchema += `| ${
-                    required.includes(name) ? "**" : ""
-                  }${name}${required.includes(name) ? " \\*" : "  "}${
-                    required.includes(name) ? "**" : ""
-                  }   `;
+                  resultSchema += `| ${required.includes(name) ? "**" : ""}${name}${
+                    required.includes(name) ? " \\*" : "  "
+                  }${required.includes(name) ? "**" : ""}   `;
                   if (schema.type) {
-                    if (
-                      schema.enum &&
-                      Array.isArray(schema.enum) &&
-                      schema.enum.length > 0
-                    ) {
+                    if (schema.enum && Array.isArray(schema.enum) && schema.enum.length > 0) {
                       resultSchema += ` | ${schema.enum
                         .map((x: any) =>
-                          !schema.type || schema.type === "string"
-                            ? `"${x}"`
-                            : `\`${x}\``
+                          !schema.type || schema.type === "string" ? `"${x}"` : `\`${x}\``
                         )
                         .join(" \\| ")}    `;
                     } else if (schema.type === "array" && schema.items?.type) {
@@ -227,16 +183,13 @@ export const getGeneratorMarkdown = (
                       resultSchema += ` | \`${schema.type}\`   `;
                     }
                   } else {
-                    resultSchema += ` | \`string\`  `;
+                    resultSchema += " | `string`  ";
                   }
 
                   if (schema.description) {
-                    resultSchema += ` | ${schema.description.replaceAll(
-                      "*",
-                      "\\*"
-                    )}    `;
+                    resultSchema += ` | ${schema.description.replaceAll("*", "\\*")}    `;
                   } else {
-                    resultSchema += ` |    `;
+                    resultSchema += " |    ";
                   }
 
                   if (schema.default) {
@@ -244,13 +197,13 @@ export const getGeneratorMarkdown = (
                       schema.type === "string" || !schema.type
                         ? ` | "${schema.default}"    `
                         : schema.type === "array"
-                        ? ` | \`[]\`    `
-                        : ` | \`${schema.default}\`    `;
+                          ? " | `[]`    "
+                          : ` | \`${schema.default}\`    `;
                   } else {
-                    resultSchema += ` |    `;
+                    resultSchema += " |    ";
                   }
 
-                  resultSchema += ` | \n`;
+                  resultSchema += " | \n";
                 }
 
                 return resultSchema;
@@ -259,33 +212,23 @@ export const getGeneratorMarkdown = (
 
             result += "\n\n";
             if (required.length > 0) {
-              result += `**Please note:** _Option names followed by \\* above are required, and must be provided to run the executor._ \n\n`;
+              result +=
+                "**Please note:** _Option names followed by \\* above are required, and must be provided to run the executor._ \n\n";
             }
           }
 
           if (schemaJson.example) {
-            if (
-              Array.isArray(schemaJson.example) &&
-              schemaJson.example.length > 0
-            ) {
-              example += `### Examples \n\nThis generator can be used by executing the following examples in a command line utility: \n\n`;
+            if (Array.isArray(schemaJson.example) && schemaJson.example.length > 0) {
+              example +=
+                "### Examples \n\nThis generator can be used by executing the following examples in a command line utility: \n\n";
               example += schemaJson.example
                 .map((exampleCmd: any) => {
                   let resultCmd = "";
-                  if (
-                    exampleCmd.description &&
-                    typeof exampleCmd.description === "string"
-                  ) {
-                    resultCmd += `${exampleCmd.description.replaceAll(
-                      "*",
-                      "\\*"
-                    )}\n\n`;
+                  if (exampleCmd.description && typeof exampleCmd.description === "string") {
+                    resultCmd += `${exampleCmd.description.replaceAll("*", "\\*")}\n\n`;
                   }
 
-                  if (
-                    exampleCmd.command &&
-                    typeof exampleCmd.command === "string"
-                  ) {
+                  if (exampleCmd.command && typeof exampleCmd.command === "string") {
                     resultCmd += `\`\`\`bash \n${exampleCmd.command}\n\`\`\`\n\n`;
                   } else if (typeof exampleCmd === "string") {
                     resultCmd += `\`\`\`bash \n${exampleCmd}\n\`\`\`\n\n`;
@@ -307,15 +250,18 @@ export const getGeneratorMarkdown = (
                   "\\*"
                 )} \n\n`;
               } else {
-                example = `### Example \n\nThis generator can be used by executing the following in a command line utility: \n\n`;
+                example =
+                  "### Example \n\nThis generator can be used by executing the following in a command line utility: \n\n";
               }
 
               example += `\`\`\`bash \n${schemaJson.example.command}\n\`\`\`\n\n`;
             } else if (typeof schemaJson.example === "string") {
-              example = `### Example \n\nThis generator can be used by executing the following in a command line utility: \n\n`;
+              example =
+                "### Example \n\nThis generator can be used by executing the following in a command line utility: \n\n";
               example += `\`\`\`bash \n${schemaJson.example}\n\`\`\`\n\n`;
             } else {
-              example = `### Example \n\nThis generator can be used by executing the following in a command line utility: \n\n`;
+              example =
+                "### Example \n\nThis generator can be used by executing the following in a command line utility: \n\n";
               example += `\`\`\`bash \nnx g ${packageName}:${name}\n\`\`\`\n\n`;
             }
 

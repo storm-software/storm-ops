@@ -2,6 +2,7 @@
 
 import { findWorkspaceRootSafe } from "../../config-tools/utilities/find-workspace-root.js";
 import { checkPackageVersion } from "../scripts/check-package-version.mjs";
+import { isError } from "../utilities/index.js";
 
 try {
   await spinner("Running Storm pre-push hook...", async () => {
@@ -50,7 +51,7 @@ try {
       console.log("✅ Lock file is valid");
 
       const result = await $`git-lfs version`;
-      if (result && Number.isInteger(Number.parseInt(result)) && Number(result)) {
+      if (!result || isError(result)) {
         console.error(
           `This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting .git/hooks/pre-push.\nError: ${result}`
         );
@@ -58,7 +59,7 @@ try {
         process.exit(1);
       }
 
-      await $`git lfs pre-push origin ${$.env?.STORM_BRANCH ?? "main"}`;
+      await $`git lfs pre-push origin`;
     }
   });
 } catch (e) {

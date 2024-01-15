@@ -3,13 +3,7 @@ import Path, { dirname, isAbsolute, join } from "path";
 export function findFileName(filePath: string): string {
   return (
     filePath
-      ?.split(
-        filePath?.includes(Path.sep)
-          ? Path.sep
-          : filePath?.includes("/")
-          ? "/"
-          : "\\"
-      )
+      ?.split(filePath?.includes(Path.sep) ? Path.sep : filePath?.includes("/") ? "/" : "\\")
       ?.pop() ?? ""
   );
 }
@@ -21,7 +15,8 @@ export function findFilePath(filePath: string): string {
 export function resolvePath(filePath: string, basePath?: string) {
   if (isAbsolute(filePath)) {
     return filePath;
-  } else if (basePath) {
+  }
+  if (basePath) {
     return join(dirname(basePath), filePath);
   }
 
@@ -37,8 +32,5 @@ export function resolvePath(filePath: string, basePath?: string) {
  */
 export function renameFile(filePath: string, newFileName: string): string {
   const file = Path.parse(filePath);
-  return Path.join(
-    file.dir,
-    newFileName.includes(".") ? newFileName : newFileName + file.ext
-  );
+  return Path.join(file.dir, newFileName.includes(".") ? newFileName : newFileName + file.ext);
 }

@@ -4,3 +4,4 @@ export * from "./commitizen";
 export * from "./commitizen/config";
 export * from "./commitlint";
 export * from "./types";
+export * from "./utilities";

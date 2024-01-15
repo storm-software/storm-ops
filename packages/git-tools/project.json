@@ -14,6 +14,7 @@
         "main": "packages/git-tools/src/index.ts",
         "additionalEntryPoints": [
           "packages/git-tools/src/cli/index.ts",
+          "packages/git-tools/src/utilities/index.ts",
           "packages/git-tools/src/commitizen/index.ts",
           "packages/git-tools/src/commitlint/config.ts",
           "packages/git-tools/src/commit/config.ts",

@@ -1,10 +1,7 @@
 import { readFileSync } from "fs";
-import { findFileName } from "../common/file-utils";
+import { findFileName } from "../utilities/file-utils";
 
-export const formatReadMe = (
-  templatePath: string,
-  readMeContent: string
-): string => {
+export const formatReadMe = (templatePath: string, readMeContent: string): string => {
   const templateContent = readFileSync(templatePath, "utf8");
 
   const section = findFileName(templatePath)
@@ -35,19 +32,11 @@ Content: "${readMeContent}"`
   return readMeContent.replace(
     regex,
     `${start}
-${
-  skipLint
-    ? "<!-- prettier-ignore-start -->\n" + "<!-- markdownlint-disable -->\n"
-    : ""
-}
+${skipLint ? "<!-- prettier-ignore-start -->\n" + "<!-- markdownlint-disable -->\n" : ""}
 
 ${templateContent}
 
-${
-  skipLint
-    ? "<!-- markdownlint-restore -->\n" + "<!-- prettier-ignore-end -->\n"
-    : ""
-}
+${skipLint ? "<!-- markdownlint-restore -->\n" + "<!-- prettier-ignore-end -->\n" : ""}
 ${end}`
   );
 };
