@@ -1,3 +1,10 @@
+## [1.43.1](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.43.0...create-storm-workspace-v1.43.1) (2024-01-16)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved logging issues with git hooks and tsup build ([daeec6e](https://github.com/storm-software/storm-ops/commit/daeec6efaad169b6947eedef1a07339c0b52409c))
+
 # [1.43.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.42.4...create-storm-workspace-v1.43.0) (2024-01-15)
 
 
