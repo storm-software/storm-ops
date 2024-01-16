@@ -1,4 +1,9 @@
-import { prepareWorkspace, writeFatal, writeInfo } from "@storm-software/config-tools";
+import {
+  prepareWorkspace,
+  writeFatal,
+  writeInfo,
+  writeSuccess
+} from "@storm-software/config-tools";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root.js";
 import { runCommit } from "../commit";
 import { runReadme } from "../readme";
@@ -87,7 +92,6 @@ export async function createProgram() {
     );
 
     const releaseBase = new Option("--base <base>", "Git base tag value");
-
     const releaseHead = new Option("--head <head>", "Git head tag value");
 
     program
@@ -117,9 +121,9 @@ export async function commitAction({
   try {
     writeInfo(_STORM_CONFIG, "⚡ Linting the Commit Message and running Commitizen \n");
     await runCommit(config, dryRun);
-    writeFatal(
+    writeSuccess(
       _STORM_CONFIG,
-      "\n✅ Commit linting completed successfully! Changes can be uploaded to Git. \n"
+      "\nCommit linting completed successfully! Changes can be uploaded to Git. \n"
     );
 
     process.exit(0);
@@ -133,7 +137,7 @@ export async function readmeAction(options: ReadMeOptions) {
   try {
     writeInfo(_STORM_CONFIG, "⚡ Formatting the workspace's README.md files \n");
     await runReadme(options);
-    writeInfo(_STORM_CONFIG, "\n✅ Formatting of the workspace's README.md files is complete \n");
+    writeSuccess(_STORM_CONFIG, "\nFormatting of the workspace's README.md files is complete\n");
 
     process.exit(0);
   } catch (e) {
@@ -161,10 +165,7 @@ export async function releaseAction({
   try {
     writeInfo(_STORM_CONFIG, "⚡ Linting the Commit Message and running Commitizen \n");
     await runRelease(project, config, plugin, base, head);
-    writeFatal(
-      _STORM_CONFIG,
-      "\n✅ Commit linting completed successfully! Changes can be uploaded to Git. \n"
-    );
+    writeSuccess(_STORM_CONFIG, "\n Release completed successfully!\n");
 
     process.exit(0);
   } catch (e) {

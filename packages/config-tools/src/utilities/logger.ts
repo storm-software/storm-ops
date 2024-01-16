@@ -33,7 +33,7 @@ export const getLogFn = (
       console.error(
         ` ${chalk.bold
           .bgHex(config?.colors?.fatal ? config.colors.fatal : "#1fb2a6")
-          .inverse("\n\n  💀 Fatal  ")} ${chalk.reset.hex(
+          .white("\n\n 💀 Fatal ")} ${chalk.reset.hex(
           config?.colors?.fatal ? config.colors.fatal : "#1fb2a6"
         )(message)} \n`
       );
@@ -48,7 +48,7 @@ export const getLogFn = (
       console.error(
         ` ${chalk.bold
           .bgHex(config?.colors?.error ? config.colors.error : "#7d1a1a")
-          .inverse("\n\n  🛑 Error  ")} ${chalk.reset.hex(
+          .white("\n\n 🛑 Error ")} ${chalk.reset.hex(
           config?.colors?.error ? config.colors.error : "#7d1a1a"
         )(message)} \n`
       );
@@ -63,7 +63,7 @@ export const getLogFn = (
       console.warn(
         ` ${chalk.bold
           .bgHex(config?.colors?.warning ? config.colors.warning : "#fcc419")
-          .inverse("\n\n  ⚠️ Warn  ")} ${chalk.reset.hex(
+          .white("\n\n ⚠️ Warn ")} ${chalk.reset.hex(
           config?.colors?.warning ? config.colors.warning : "#fcc419"
         )(message)} \n`
       );
@@ -78,7 +78,7 @@ export const getLogFn = (
       console.info(
         ` ${chalk.bold
           .bgHex(config?.colors?.info ? config.colors.info : "#0ea5e9")
-          .inverse("\n\n  📬 Info  ")} ${chalk.reset.hex(
+          .white("\n\n 📬 Info ")} ${chalk.reset.hex(
           config?.colors?.info ? config.colors.info : "#0ea5e9"
         )(message)} \n`
       );
@@ -93,7 +93,7 @@ export const getLogFn = (
       console.info(
         ` ${chalk.bold
           .bgHex(config?.colors?.success ? config.colors.success : "#087f5b")
-          .inverse("\n\n  🎉 Success  ")} ${chalk.reset.hex(
+          .white("\n\n 🎉 Success ")} ${chalk.reset.hex(
           config?.colors?.success ? config.colors.success : "#087f5b"
         )(message)} \n`
       );
@@ -108,7 +108,7 @@ export const getLogFn = (
       console.debug(
         ` ${chalk.bold
           .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-          .inverse("\n\n  🧪 Debug  ")} ${chalk.reset.hex(
+          .white("\n\n 🧪 Debug ")} ${chalk.reset.hex(
           config?.colors?.primary ? config.colors.primary : "#1fb2a6"
         )(message)} \n`
       );
@@ -119,7 +119,7 @@ export const getLogFn = (
     console.log(
       ` ${chalk.bold
         .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-        .inverse("\n\n  📢 System  ")} ${chalk.bold.hex(
+        .white("\n\n 📢 System ")} ${chalk.bold.hex(
         config?.colors?.primary ? config.colors.primary : "#1fb2a6"
       )(message)} \n`
     );
