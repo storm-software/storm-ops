@@ -1,3 +1,10 @@
+## [1.24.3](https://github.com/storm-software/storm-ops/compare/git-tools-v1.24.2...git-tools-v1.24.3) (2024-01-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Clean up code to apply getConfig option in tsup build ([96227fd](https://github.com/storm-software/storm-ops/commit/96227fde3d3f2871a88aa24be9206d555d373c9b))
+
 ## [1.24.2](https://github.com/storm-software/storm-ops/compare/git-tools-v1.24.1...git-tools-v1.24.2) (2024-01-16)
 
 
