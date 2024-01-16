@@ -1,3 +1,10 @@
+## [1.22.1](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.22.0...testing-tools-v1.22.1) (2024-01-16)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved logging issues with git hooks and tsup build ([daeec6e](https://github.com/storm-software/storm-ops/commit/daeec6efaad169b6947eedef1a07339c0b52409c))
+
 # [1.22.0](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.21.3...testing-tools-v1.22.0) (2024-01-15)
 
 
