@@ -1,10 +1,8 @@
 import type { ExecutorContext } from "@nx/devkit";
 import {
   type StormConfig,
-  getConfigEnv,
-  getConfigFile,
-  getDefaultConfig,
-  setConfigEnv,
+  getStopwatch,
+  prepareWorkspace,
   writeDebug,
   writeError,
   writeFatal,
@@ -12,7 +10,6 @@ import {
   writeSuccess,
   writeTrace
 } from "@storm-software/config-tools";
-import * as chalk from "chalk";
 import type { BaseWorkspaceToolOptions } from "../types";
 import {
   applyWorkspaceExecutorTokens,
@@ -46,7 +43,7 @@ export const withRunExecutor =
     executorOptions: BaseExecutorOptions<TExecutorSchema>
   ) =>
   async (_options: TExecutorSchema, context: ExecutorContext): Promise<{ success: boolean }> => {
-    const startTime = Date.now();
+    const stopwatch = getStopwatch(name);
     let options = _options;
 
     let config: StormConfig | undefined;
@@ -78,12 +75,7 @@ export const withRunExecutor =
  - projectName: ${projectName}\n`
         );
 
-        config = getDefaultConfig({
-          ...(await getConfigFile()),
-          ...getConfigEnv()
-        });
-        setConfigEnv(config);
-
+        config = await prepareWorkspace();
         writeTrace(
           config,
           `Loaded Storm config into env: \n${Object.keys(process.env)
@@ -165,10 +157,6 @@ export const withRunExecutor =
         success: false
       };
     } finally {
-      console.info(
-        chalk.dim(
-          `⏱️  The${name ? ` ${name}` : ""} generator took ${Date.now() - startTime}ms to complete`
-        )
-      );
+      stopwatch();
     }
   };

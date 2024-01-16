@@ -20,7 +20,7 @@ export const getLogFn = (
     (typeof logLevel === "string" &&
       getLogLevel(logLevel) >= getLogLevel(config.logLevel ?? process.env?.STORM_LOG_LEVEL))
   ) {
-    return (message: string) => {
+    return (_: string) => {
       /* noop */
     };
   }
@@ -197,3 +197,23 @@ export const writeTrace = (config: StormConfig, message: string) =>
  */
 export const writeSystem = (config: StormConfig, message: string) =>
   getLogFn(config, LogLevel.ALL)(message);
+
+/**
+ * Get a stopwatch function
+ *
+ * @param name - The name of the process
+ * @returns The stopwatch function
+ */
+export const getStopwatch = (name: string) => {
+  const start = process.hrtime();
+  return () => {
+    const end = process.hrtime(start);
+    console.info(
+      chalk.dim(
+        `⏱️  The${name ? ` ${name}` : ""} process took ${Math.round(
+          end[0] * 1000 + end[1] / 1000000
+        )}ms to complete`
+      )
+    );
+  };
+};

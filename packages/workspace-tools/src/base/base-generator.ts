@@ -1,19 +1,21 @@
 import type { Tree } from "@nx/devkit";
 import {
-  LogLevel,
   type StormConfig,
-  getConfigEnv,
-  getConfigFile,
-  getDefaultConfig,
-  getLogLevel,
-  setConfigEnv
+  getStopwatch,
+  prepareWorkspace,
+  writeDebug,
+  writeError,
+  writeFatal,
+  writeInfo,
+  writeSuccess,
+  writeTrace
 } from "@storm-software/config-tools";
-import * as chalk from "chalk";
 import type { BaseWorkspaceToolOptions } from "../types";
 import {
   applyWorkspaceGeneratorTokens,
   applyWorkspaceTokens
 } from "../utils/apply-workspace-tokens";
+import { getWorkspaceRoot } from "../utils/get-workspace-root";
 
 export interface BaseGeneratorSchema extends Record<string, any> {
   main?: string;
@@ -43,42 +45,44 @@ export const withRunGenerator =
     }
   ) =>
   async (tree: Tree, _options: TGeneratorSchema): Promise<{ success: boolean }> => {
-    const startTime = Date.now();
+    const stopwatch = getStopwatch(name);
     let options = _options;
 
+    let config: StormConfig | undefined;
     try {
-      console.info(chalk.bold.hex("#1fb2a6")(`⚡ Running the ${name} generator...\n\n`));
+      writeInfo(config, `⚡ Running the ${name} generator...\n\n`);
 
-      let config: any | undefined;
+      const workspaceRoot = getWorkspaceRoot();
       if (!generatorOptions.skipReadingConfig) {
-        config = getDefaultConfig({
-          ...(await getConfigFile()),
-          ...getConfigEnv()
-        });
-        setConfigEnv(config);
+        writeDebug(
+          config,
+          `Loading the Storm Config from environment variables and storm.config.js file...
+ - workspaceRoot: ${workspaceRoot}`
+        );
 
-        getLogLevel(config.logLevel) >= LogLevel.DEBUG &&
-          console.debug(
-            chalk.dim(
-              `Loaded Storm config into env: \n${Object.keys(process.env)
-                .map((key) => ` - ${key}=${process.env[key]}`)
-                .join("\n")}`
-            )
-          );
+        config = await prepareWorkspace();
+        writeTrace(
+          config,
+          `Loaded Storm config into env: \n${Object.keys(process.env)
+            .map((key) => ` - ${key}=${JSON.stringify(process.env[key])}`)
+            .join("\n")}`
+        );
       }
 
       if (generatorOptions?.hooks?.applyDefaultOptions) {
-        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim("Running the applyDefaultOptions hook..."));
+        writeDebug(config, "Running the applyDefaultOptions hook...");
         options = await Promise.resolve(
           generatorOptions.hooks.applyDefaultOptions(options, config)
         );
-        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim("Completed the applyDefaultOptions hook..."));
+        writeDebug(config, "Completed the applyDefaultOptions hook");
       }
 
-      getLogLevel(config.logLevel) >= LogLevel.INFO &&
-        console.info(chalk.hex("#0ea5e9").italic("\n\n ⚙️  Generator schema options: \n"), options);
+      writeTrace(
+        config,
+        `Generator schema options ⚙️ \n${Object.keys(options)
+          .map((key) => ` - ${key}=${JSON.stringify(options[key])}`)
+          .join("\n")}`
+      );
 
       const tokenized = applyWorkspaceTokens(
         options,
@@ -87,11 +91,9 @@ export const withRunGenerator =
       ) as TGeneratorSchema;
 
       if (generatorOptions?.hooks?.preProcess) {
-        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim("Running the preProcess hook..."));
-        await Promise.resolve(generatorOptions.hooks.preProcess(options, config));
-        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim("Completed the preProcess hook..."));
+        writeDebug(config, "Running the preProcess hook...");
+        await Promise.resolve(generatorOptions.hooks.preProcess(tokenized, config));
+        writeDebug(config, "Completed the preProcess hook");
       }
 
       const result = await Promise.resolve(generatorFn(tree, tokenized, config));
@@ -110,37 +112,30 @@ export const withRunGenerator =
       }
 
       if (generatorOptions?.hooks?.postProcess) {
-        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim("Running the postProcess hook..."));
+        writeDebug(config, "Running the postProcess hook...");
         await Promise.resolve(generatorOptions.hooks.postProcess(config));
-        getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-          console.debug(chalk.dim("Completed the postProcess hook..."));
+        writeDebug(config, "Completed the postProcess hook");
       }
 
-      console.info(
-        chalk.bold.hex("#087f5b")(`\n\n🎉 Successfully completed running the ${name} generator!`)
-      );
+      writeSuccess(config, `Completed running the ${name} task executor!\n`);
 
       return {
         success: true
       };
     } catch (error) {
-      console.error(
-        chalk.bold.hex("#7d1a1a")("❌  An error occurred while running the generator\n\n"),
-        error
+      writeFatal(
+        config,
+        "A fatal error occurred while running the generator - the process was forced to terminate"
       );
-      console.error(error);
+      writeError(
+        config,
+        `An exception was thrown in the generator's process \n - Details: ${error.message}\n - Stacktrace: ${error.stack}`
+      );
 
       return {
         success: false
       };
     } finally {
-      console.info(
-        chalk
-          .hex("#0ea5e9")
-          .italic(
-            `⏱️  The${name ? ` ${name}` : ""} generator took ${Date.now() - startTime}ms to complete`
-          )
-      );
+      stopwatch();
     }
   };

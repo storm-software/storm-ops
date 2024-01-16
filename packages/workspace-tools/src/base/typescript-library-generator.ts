@@ -1,7 +1,7 @@
 import {
-  GeneratorCallback,
-  ProjectConfiguration,
-  Tree,
+  type GeneratorCallback,
+  type ProjectConfiguration,
+  type Tree,
   addDependenciesToPackageJson,
   addProjectConfiguration,
   ensurePackage,
@@ -15,20 +15,13 @@ import {
   writeJson
 } from "@nx/devkit";
 import { determineProjectNameAndRootOptions } from "@nx/devkit/src/generators/project-name-and-root-utils";
-import {
-  addTsConfigPath,
-  getRelativePathToRootTsConfig,
-  tsConfigBaseOptions
-} from "@nx/js";
+import { addTsConfigPath, getRelativePathToRootTsConfig, tsConfigBaseOptions } from "@nx/js";
 import jsInitGenerator from "@nx/js/src/generators/init/init";
-import {
-  AddLintOptions,
-  NormalizedSchema
-} from "@nx/js/src/generators/library/library";
+import type { AddLintOptions, NormalizedSchema } from "@nx/js/src/generators/library/library";
 import setupVerdaccio from "@nx/js/src/generators/setup-verdaccio/generator";
-import { Bundler, LibraryGeneratorSchema } from "@nx/js/src/utils/schema";
-import { PackageJson } from "nx/src/utils/package-json";
-import { Platform, TsupExecutorSchema } from "../executors/tsup/schema";
+import type { Bundler, LibraryGeneratorSchema } from "@nx/js/src/utils/schema";
+import type { PackageJson } from "nx/src/utils/package-json";
+import type { Platform, TsupExecutorSchema } from "../executors/tsup/schema";
 import { nxVersion } from "../utils/versions";
 
 export type TypeScriptLibraryGeneratorSchema = Omit<
@@ -58,8 +51,8 @@ export type TypeScriptLibraryGeneratorSchema = Omit<
   tsConfigOptions?: Record<string, any>;
 };
 
-export type TypeScriptLibraryGeneratorNormalizedSchema =
-  TypeScriptLibraryGeneratorSchema & NormalizedSchema;
+export type TypeScriptLibraryGeneratorNormalizedSchema = TypeScriptLibraryGeneratorSchema &
+  NormalizedSchema;
 
 export async function typeScriptLibraryGeneratorFn(
   tree: Tree,
@@ -107,14 +100,14 @@ export async function typeScriptLibraryGeneratorFn(
           defaultConfiguration: "production",
           assets: [
             {
-              "input": options.projectRoot,
-              "glob": "*.md",
-              "output": "/"
+              input: options.projectRoot,
+              glob: "*.md",
+              output: "/"
             },
             {
-              "input": "",
-              "glob": "LICENSE",
-              "output": "/"
+              input: "",
+              glob: "LICENSE",
+              output: "/"
             }
           ]
         },
@@ -134,9 +127,9 @@ export async function typeScriptLibraryGeneratorFn(
     }
   };
 
-  schema.platform &&
-    ((projectConfig.targets.build.options as TsupExecutorSchema).platform =
-      schema.platform);
+  if (schema.platform) {
+    (projectConfig.targets.build.options as TsupExecutorSchema).platform = schema.platform;
+  }
 
   createProjectTsConfigJson(tree, options);
   addProjectConfiguration(tree, options.name, projectConfig);
@@ -147,8 +140,7 @@ export async function typeScriptLibraryGeneratorFn(
   };
 
   let description =
-    schema.description ??
-    "⚡ A Storm package used to create modern, scalable web applications.";
+    schema.description ?? "⚡ A Storm package used to create modern, scalable web applications.";
 
   if (tree.exists("package.json")) {
     const packageJson = readJson<{
@@ -156,14 +148,15 @@ export async function typeScriptLibraryGeneratorFn(
       description: string;
     }>(tree, "package.json");
 
-    packageJson?.repository && (repository = packageJson.repository);
-    packageJson?.description && (description = packageJson.description);
+    if (packageJson?.repository) {
+      repository = packageJson.repository;
+    }
+    if (packageJson?.description) {
+      description = packageJson.description;
+    }
   }
 
-  const packageJsonPath = joinPathFragments(
-    options.projectRoot,
-    "package.json"
-  );
+  const packageJsonPath = joinPathFragments(options.projectRoot, "package.json");
   if (tree.exists(packageJsonPath)) {
     updateJson<PackageJson>(tree, packageJsonPath, (json: PackageJson) => {
       json.name = options.importPath;
@@ -171,7 +164,7 @@ export async function typeScriptLibraryGeneratorFn(
 
       // If the package is publishable or root/standalone, we should remove the private field.
       if (json.private && (options.publishable || options.rootProject)) {
-        delete json.private;
+        json.private = undefined;
       }
 
       return {
@@ -209,7 +202,7 @@ export async function typeScriptLibraryGeneratorFn(
   }
 
   if (tree.exists("package.json")) {
-    updateJson(tree, "package.json", json => ({
+    updateJson(tree, "package.json", (json) => ({
       ...json,
       pnpm: {
         ...json?.pnpm,
@@ -222,11 +215,7 @@ export async function typeScriptLibraryGeneratorFn(
   }
 
   addTsConfigPath(tree, options.importPath, [
-    joinPathFragments(
-      options.projectRoot,
-      "./src",
-      "index." + (options.js ? "js" : "ts")
-    )
+    joinPathFragments(options.projectRoot, "./src", `index.${options.js ? "js" : "ts"}`)
   ]);
   addTsConfigPath(tree, joinPathFragments(options.importPath, "/*"), [
     joinPathFragments(options.projectRoot, "./src", "/*")
@@ -238,8 +227,12 @@ export async function typeScriptLibraryGeneratorFn(
       description: string;
     }>(tree, "package.json");
 
-    packageJson?.repository && (repository = packageJson.repository);
-    packageJson?.description && (description = packageJson.description);
+    if (packageJson?.repository) {
+      repository = packageJson.repository;
+    }
+    if (packageJson?.description) {
+      description = packageJson.description;
+    }
   }
 
   const tsconfigPath = joinPathFragments(options.projectRoot, "tsconfig.json");
@@ -270,10 +263,7 @@ export async function typeScriptLibraryGeneratorFn(
   return null;
 }
 
-export async function addLint(
-  tree: Tree,
-  options: AddLintOptions
-): Promise<GeneratorCallback> {
+export async function addLint(tree: Tree, options: AddLintOptions): Promise<GeneratorCallback> {
   const { lintProjectGenerator } = ensurePackage("@nx/eslint", nxVersion);
   const { mapLintPattern } =
     // nx-ignore-next-line
@@ -286,11 +276,7 @@ export async function addLint(
     tsConfigPaths: [joinPathFragments(options.projectRoot, "tsconfig.json")],
     unitTestRunner: options.unitTestRunner,
     eslintFilePatterns: [
-      mapLintPattern(
-        options.projectRoot,
-        options.js ? "js" : "ts",
-        options.rootProject
-      )
+      mapLintPattern(options.projectRoot, options.js ? "js" : "ts", options.rootProject)
     ],
     setParserOptionsProject: options.setParserOptionsProject,
     rootProject: options.rootProject
@@ -327,9 +313,9 @@ export async function addLint(
     lintConfigHasOverride(
       tree,
       projectConfiguration.root,
-      o =>
+      (o: { files: { some: (arg0: (f: any) => any) => any; match: (arg0: RegExp) => any } }) =>
         Array.isArray(o.files)
-          ? o.files.some(f => f.match(/\.json$/))
+          ? o.files.some((f) => f.match(/\.json$/))
           : !!o.files?.match(/\.json$/),
       true
     )
@@ -337,8 +323,8 @@ export async function addLint(
     updateOverrideInLintConfig(
       tree,
       projectConfiguration.root,
-      o => o.rules?.["@nx/dependency-checks"],
-      o => {
+      (o: { rules: { [x: string]: any } }) => o.rules?.["@nx/dependency-checks"],
+      (o: { rules: { [x: string]: any[] } }) => {
         const value = o.rules["@nx/dependency-checks"];
         let ruleSeverity: string;
         let ruleOptions: any;
@@ -351,9 +337,7 @@ export async function addLint(
         }
 
         if (options.bundler === "esbuild") {
-          ruleOptions.ignoredFiles = [
-            "{projectRoot}/esbuild.config.{js,ts,mjs,mts}"
-          ];
+          ruleOptions.ignoredFiles = ["{projectRoot}/esbuild.config.{js,ts,mjs,mts}"];
           o.rules["@nx/dependency-checks"] = [ruleSeverity, ruleOptions];
         }
         return o;
@@ -363,9 +347,7 @@ export async function addLint(
   return task;
 }
 
-export function getOutputPath(
-  options: TypeScriptLibraryGeneratorNormalizedSchema
-) {
+export function getOutputPath(options: TypeScriptLibraryGeneratorNormalizedSchema) {
   const parts = ["dist"];
   if (options.projectRoot === ".") {
     parts.push(options.name);
@@ -386,10 +368,7 @@ export function createProjectTsConfigJson(
     ...(options?.tsConfigOptions ?? {}),
     compilerOptions: {
       ...(options.rootProject ? tsConfigBaseOptions : {}),
-      outDir: joinPathFragments(
-        offsetFromRoot(options.projectRoot),
-        "dist/out-tsc"
-      ),
+      outDir: joinPathFragments(offsetFromRoot(options.projectRoot), "dist/out-tsc"),
       noEmit: true,
       ...(options?.tsConfigOptions?.compilerOptions ?? {})
     },
@@ -408,11 +387,7 @@ export function createProjectTsConfigJson(
     ]
   };
 
-  writeJson(
-    tree,
-    joinPathFragments(options.projectRoot, "tsconfig.json"),
-    tsconfig
-  );
+  writeJson(tree, joinPathFragments(options.projectRoot, "tsconfig.json"), tsconfig);
 }
 
 export async function normalizeOptions(
@@ -471,7 +446,7 @@ export async function normalizeOptions(
     name: projectName,
     projectNames,
     projectRoot,
-    parsedTags: options.tags ? options.tags.split(",").map(s => s.trim()) : [],
+    parsedTags: options.tags ? options.tags.split(",").map((s) => s.trim()) : [],
     importPath
   };
 }

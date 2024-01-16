@@ -83,10 +83,11 @@ export function getConfig(
   workspaceRoot: string,
   projectRoot: string,
   getConfigFn: (options: GetConfigParams) => Options,
-  { outputPath, tsConfig, additionalEntryPoints, platform, ...rest }: TsupGetConfigOptions
+  { outputPath, tsConfig, platform, ...rest }: TsupGetConfigOptions
 ) {
   return getConfigFn({
     ...rest,
+    additionalEntryPoints: [],
     outDir: outputPath,
     tsconfig: tsConfig,
     workspaceRoot,

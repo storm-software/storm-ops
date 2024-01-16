@@ -1,12 +1,15 @@
+import { prepareWorkspace, writeFatal, writeInfo } from "@storm-software/config-tools";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root.js";
 import { runCommit } from "../commit";
 import { runReadme } from "../readme";
 import { runRelease } from "../release";
-import { ReadMeOptions } from "../types";
+import type { ReadMeOptions } from "../types";
+
+const _STORM_CONFIG = await prepareWorkspace();
 
 export async function createProgram() {
   try {
-    console.log("⚡ Running Storm Git Tools");
+    writeInfo(_STORM_CONFIG, "⚡ Running Storm Git Tools");
 
     const { Command, Option } = await import("commander");
 
@@ -99,7 +102,7 @@ export async function createProgram() {
 
     return program;
   } catch (e) {
-    console.error(e);
+    writeFatal(_STORM_CONFIG, `A fatal error occurred while running the program: ${e.message}`);
     process.exit(1);
   }
 }
@@ -112,28 +115,32 @@ export async function commitAction({
   dryRun: boolean;
 }) {
   try {
-    console.log("⚡ Linting the Commit Message and running Commitizen \n");
-
+    writeInfo(_STORM_CONFIG, "⚡ Linting the Commit Message and running Commitizen \n");
     await runCommit(config, dryRun);
+    writeFatal(
+      _STORM_CONFIG,
+      "\n✅ Commit linting completed successfully! Changes can be uploaded to Git. \n"
+    );
 
-    console.log("\n✅ Commit Message linting and Commitizen are complete \n");
     process.exit(0);
   } catch (e) {
-    console.error(e);
+    writeFatal(_STORM_CONFIG, `A fatal error occurred while running commit action: ${e.message}`);
     process.exit(1);
   }
 }
 
 export async function readmeAction(options: ReadMeOptions) {
   try {
-    console.log("⚡ Formatting the workspace's README.md files \n");
-
+    writeInfo(_STORM_CONFIG, "⚡ Formatting the workspace's README.md files \n");
     await runReadme(options);
+    writeInfo(_STORM_CONFIG, "\n✅ Formatting of the workspace's README.md files is complete \n");
 
-    console.log("\n✅ Formatting of the workspace's README.md files is complete \n");
     process.exit(0);
   } catch (e) {
-    console.error(e);
+    writeFatal(
+      _STORM_CONFIG,
+      `A fatal error occurred while running README format action: ${e.message}`
+    );
     process.exit(1);
   }
 }
@@ -152,14 +159,16 @@ export async function releaseAction({
   head?: string;
 }) {
   try {
-    console.log("⚡ Linting the Commit Message and running Commitizen \n");
-
+    writeInfo(_STORM_CONFIG, "⚡ Linting the Commit Message and running Commitizen \n");
     await runRelease(project, config, plugin, base, head);
+    writeFatal(
+      _STORM_CONFIG,
+      "\n✅ Commit linting completed successfully! Changes can be uploaded to Git. \n"
+    );
 
-    console.log("\n✅ Commit linting completed successfully! Changes can be uploaded to Git. \n");
     process.exit(0);
   } catch (e) {
-    console.error(e);
+    writeFatal(_STORM_CONFIG, `A fatal error occurred while running release action: ${e.message}`);
     process.exit(1);
   }
 }

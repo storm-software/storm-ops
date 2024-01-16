@@ -26,11 +26,15 @@ pre-commit:
     deps:
       glob: "**/package.json"
       run: "pnpm install --frozen-lockfile --ignore-scripts && git update-index"
+    prebuild:
+      glob: "**/*.*"
+      run: "pnpm build"
+      stage_fixed: true
     validate:
       glob: "**/*.*"
       run: "zx @storm-software/git-tools/hooks/pre-commit.mjs {staged_files}"
       stage_fixed: true
-    lint-storm:
+    lint:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: "pnpm lint && git update-index"
@@ -43,7 +47,7 @@ pre-commit:
     format:
       glob: "**/*.*"
       run: "npx biome format --write {staged_files} && git update-index"
-    build:
+    postbuild:
       glob: "**/*.*"
       run: "pnpm build"
       stage_fixed: true

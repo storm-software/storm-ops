@@ -22,6 +22,10 @@ prepare:
 pre-commit:
   piped: true
   commands:
+    prebuild:
+      glob: "**/*.*"
+      run: "pnpm build"
+      stage_fixed: true
     validate:
       glob: "**/*.*"
       run: "zx ./dist/packages/git-tools/hooks/pre-commit.mjs {staged_files}"
@@ -39,7 +43,7 @@ pre-commit:
     format:
       glob: "**/{README.md,package.json}"
       run: "pnpm biome:format {staged_files} && git update-index"
-    build:
+    postbuild:
       glob: "**/*.*"
       run: "pnpm build"
       stage_fixed: true

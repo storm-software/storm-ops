@@ -44,7 +44,21 @@
       },
       "nursery": {
         "useImportType": "error",
-        "useExportType": "error"
+        "useExportType": "error",
+        "noDuplicateJsonKeys": "error",
+        "noMisleadingCharacterClass": "error",
+        "useAwait": "error",
+        "useConsistentArrayType": "error",
+        "useNodejsImportProtocol": "error",
+        "useShorthandFunctionType": "error",
+        "useImportRestrictions": "warn",
+        "useForOf": "error"
+      },
+      "correctness": {
+        "noUnusedVariables": "error",
+        "noUndeclaredVariables": "error",
+        "useHookAtTopLevel": "error",
+        "useExhaustiveDependencies": "warn"
       }
     }
   },
