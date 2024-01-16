@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/storm-software/storm-ops/compare/config-tools-v1.15.1...config-tools-v1.15.2) (2024-01-16)
+
+
+### Bug Fixes
+
+* **git-tools:** Updated console formatting and text colors ([82e869f](https://github.com/storm-software/storm-ops/commit/82e869f0395d112c0a2906223e0827fd9b243e54))
+
 ## [1.15.1](https://github.com/storm-software/storm-ops/compare/config-tools-v1.15.0...config-tools-v1.15.1) (2024-01-16)
 
 
