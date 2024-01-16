@@ -1,3 +1,10 @@
+## [1.43.3](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.2...workspace-tools-v1.43.3) (2024-01-16)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Clean up code to apply getConfig option in tsup build ([96227fd](https://github.com/storm-software/storm-ops/commit/96227fde3d3f2871a88aa24be9206d555d373c9b))
+
 ## [1.43.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.1...workspace-tools-v1.43.2) (2024-01-16)
 
 
