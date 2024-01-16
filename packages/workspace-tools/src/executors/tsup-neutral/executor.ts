@@ -14,9 +14,6 @@ export const tsupNeutralBuildExecutorFn = (
   return tsupExecutorFn(
     {
       ...options,
-      getConfig: {
-        dist: neutralConfig
-      },
       platform: "neutral",
       banner: getFileBanner(
         context.projectName
@@ -33,6 +30,9 @@ export const tsupNeutralBuildExecutorFn = (
       },
       env: {
         ...process.env
+      },
+      getConfig: {
+        dist: neutralConfig
       }
     },
     context,

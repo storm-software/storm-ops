@@ -3,7 +3,7 @@ import type { Options } from "tsup";
 import { outExtension } from "../../base/get-tsup-config";
 import type { GetConfigParams } from "../../types";
 
-export function modernBrowserConfig({
+export const modernBrowserConfig = ({
   entry,
   outDir,
   projectRoot,
@@ -24,7 +24,7 @@ export function modernBrowserConfig({
   generatePackageJson,
   dtsTsConfig,
   getTransform
-}: GetConfigParams) {
+}: GetConfigParams) => {
   const outputPath = joinPathFragments(outDir, "dist", "modern");
 
   const options = {
@@ -85,9 +85,9 @@ export function modernBrowserConfig({
   }
 
   return options;
-}
+};
 
-export function legacyBrowserConfig({
+export const legacyBrowserConfig = ({
   entry,
   outDir,
   projectRoot,
@@ -111,7 +111,7 @@ export function legacyBrowserConfig({
   generatePackageJson,
   dtsTsConfig,
   getTransform
-}: GetConfigParams) {
+}: GetConfigParams) => {
   const outputPath = joinPathFragments(outDir, "dist", "legacy");
 
   const options = {
@@ -172,4 +172,4 @@ export function legacyBrowserConfig({
   }
 
   return options;
-}
+};

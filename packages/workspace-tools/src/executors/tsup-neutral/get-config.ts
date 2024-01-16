@@ -3,7 +3,7 @@ import type { Options } from "tsup";
 import { outExtension } from "../../base/get-tsup-config";
 import type { GetConfigParams } from "../../types";
 
-export function neutralConfig({
+export const neutralConfig = ({
   entry,
   outDir,
   projectRoot,
@@ -27,7 +27,7 @@ export function neutralConfig({
   generatePackageJson,
   dtsTsConfig,
   getTransform
-}: GetConfigParams) {
+}: GetConfigParams) => {
   const outputPath = joinPathFragments(outDir, "dist");
 
   const options = {
@@ -88,7 +88,7 @@ export function neutralConfig({
   }
 
   return options;
-}
+};
 
 export function legacyNeutralConfig({
   entry,

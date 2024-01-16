@@ -13,10 +13,6 @@ export const tsupBrowserBuildExecutorFn = (
   return tsupExecutorFn(
     {
       ...options,
-      getConfig: {
-        "dist/modern": modernBrowserConfig,
-        "dist/legacy": legacyBrowserConfig
-      },
       platform: "browser",
       banner: getFileBanner(
         context.projectName
@@ -33,6 +29,10 @@ export const tsupBrowserBuildExecutorFn = (
       },
       env: {
         ...process.env
+      },
+      getConfig: {
+        "dist/modern": modernBrowserConfig,
+        "dist/legacy": legacyBrowserConfig
       }
     },
     context,
