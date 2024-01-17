@@ -109,7 +109,19 @@ export const loadStormConfig = async (workspaceRoot?: string): Promise<StormConf
 
   for (const key of Object.keys(configEnv)) {
     if (configEnv[key] !== undefined && configEnv[key] !== null) {
-      configFile[key] = configEnv[key];
+      if (key === "colors") {
+        configFile.colors = {
+          primary: process.env.STORM_COLOR_PRIMARY ?? configFile.colors?.primary,
+          background: process.env.STORM_COLOR_BACKGROUND ?? configFile.colors?.primary,
+          success: process.env.STORM_COLOR_SUCCESS ?? configFile.colors?.primary,
+          info: process.env.STORM_COLOR_INFO ?? configFile.colors?.primary,
+          warning: process.env.STORM_COLOR_WARNING ?? configFile.colors?.primary,
+          error: process.env.STORM_COLOR_ERROR ?? configFile.colors?.primary,
+          fatal: process.env.STORM_COLOR_FATAL ?? configFile.colors?.primary
+        };
+      } else {
+        configFile[key] = configEnv[key];
+      }
     }
   }
 
