@@ -1,3 +1,10 @@
+## [1.24.14](https://github.com/storm-software/storm-ops/compare/git-tools-v1.24.13...git-tools-v1.24.14) (2024-01-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patched transformer functions in tsup dependency ([f6412b4](https://github.com/storm-software/storm-ops/commit/f6412b437bb5d3122573f1e0ff877ac20f4ad947))
+
 ## [1.24.13](https://github.com/storm-software/storm-ops/compare/git-tools-v1.24.12...git-tools-v1.24.13) (2024-01-17)
 
 
