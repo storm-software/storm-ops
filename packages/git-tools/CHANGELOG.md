@@ -1,3 +1,10 @@
+## [1.24.9](https://github.com/storm-software/storm-ops/compare/git-tools-v1.24.8...git-tools-v1.24.9) (2024-01-17)
+
+
+### Bug Fixes
+
+* **config-tools:** Added code to print out config values added ([ea56410](https://github.com/storm-software/storm-ops/commit/ea56410f9e7e9f3e4f68268395a13127a1653d2d))
+
 ## [1.24.8](https://github.com/storm-software/storm-ops/compare/git-tools-v1.24.7...git-tools-v1.24.8) (2024-01-17)
 
 
