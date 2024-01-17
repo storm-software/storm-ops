@@ -1,3 +1,10 @@
+## [1.24.11](https://github.com/storm-software/storm-ops/compare/git-tools-v1.24.10...git-tools-v1.24.11) (2024-01-17)
+
+
+### Bug Fixes
+
+* **config-tools:** Fixed config value defaulting issue for booleans ([c54c60b](https://github.com/storm-software/storm-ops/commit/c54c60b1ddd533530571dd41fd9b6502c1cb2cb8))
+
 ## [1.24.10](https://github.com/storm-software/storm-ops/compare/git-tools-v1.24.9...git-tools-v1.24.10) (2024-01-17)
 
 
