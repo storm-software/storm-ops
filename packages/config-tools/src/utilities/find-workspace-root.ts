@@ -1,10 +1,3 @@
-/**
- * Find Workspace Root
- *
- * @remarks
- * Find the monorepo root directory
- */
-
 import { findFolderUp } from "./find-up";
 
 const rootFiles = [

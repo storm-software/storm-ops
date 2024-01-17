@@ -16,6 +16,7 @@ import {
   writeDebug,
   writeInfo,
   writeSuccess,
+  writeTrace,
   writeWarning
 } from "@storm-software/config-tools";
 import { environmentPlugin } from "esbuild-plugin-environment";
@@ -45,15 +46,14 @@ export async function tsupExecutorFn(
   context: ExecutorContext,
   config?: StormConfig
 ) {
-  try {
-    writeInfo(config, "📦  Running Storm build executor on the workspace");
+  writeInfo(config, "📦  Running Storm build executor on the workspace");
 
-    // #region Apply default options
+  // #region Apply default options
 
-    getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-      writeDebug(
-        config,
-        `⚙️  Executor options:
+  getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
+    writeDebug(
+      config,
+      `⚙️  Executor options:
 ${Object.keys(options)
   .map(
     (key) =>
@@ -63,526 +63,516 @@ ${Object.keys(options)
   )
   .join("\n")}
 `
-      );
+    );
 
-    // #endregion Apply default options
+  // #endregion Apply default options
 
-    // #region Prepare build context variables
+  // #region Prepare build context variables
 
-    if (
-      !context.projectsConfigurations?.projects ||
-      !context.projectName ||
-      !context.projectsConfigurations.projects[context.projectName]
-    ) {
-      throw new Error(
-        "The Build process failed because the context is not valid. Please run this command from a workspace."
-      );
+  if (
+    !context.projectsConfigurations?.projects ||
+    !context.projectName ||
+    !context.projectsConfigurations.projects[context.projectName]
+  ) {
+    throw new Error(
+      "The Build process failed because the context is not valid. Please run this command from a workspace."
+    );
+  }
+
+  const workspaceRoot = getWorkspaceRoot();
+  const projectRoot = context.projectsConfigurations.projects[context.projectName].root;
+  const sourceRoot = context.projectsConfigurations.projects[context.projectName].sourceRoot;
+
+  // #endregion Prepare build context variables
+
+  // #region Clean output directory
+
+  if (options.clean !== false) {
+    if (getLogLevel(config?.logLevel) >= LogLevel.DEBUG) {
+      writeInfo(config, `🧹 Cleaning output path: ${options.outputPath}`);
     }
 
-    const workspaceRoot = getWorkspaceRoot();
-    const projectRoot = context.projectsConfigurations.projects[context.projectName].root;
-    const sourceRoot = context.projectsConfigurations.projects[context.projectName].sourceRoot;
+    removeSync(options.outputPath);
+  }
 
-    // #endregion Prepare build context variables
+  // #endregion Clean output directory
 
-    // #region Clean output directory
+  // #region Copy asset files to output directory
 
-    if (options.clean !== false) {
-      if (getLogLevel(config?.logLevel) >= LogLevel.DEBUG) {
-        writeInfo(config, `🧹 Cleaning output path: ${options.outputPath}`);
-      }
+  const assets = Array.from(options.assets);
+  assets.push({
+    input: projectRoot,
+    glob: "*.md",
+    output: "/"
+  });
+  assets.push({
+    input: "",
+    glob: "LICENSE",
+    output: "."
+  });
 
-      removeSync(options.outputPath);
-    }
-
-    // #endregion Clean output directory
-
-    // #region Copy asset files to output directory
-
-    const assets = Array.from(options.assets);
+  if (options.generatePackageJson === false) {
     assets.push({
       input: projectRoot,
-      glob: "*.md",
-      output: "/"
-    });
-    assets.push({
-      input: "",
-      glob: "LICENSE",
+      glob: "**/package.json",
       output: "."
     });
+  }
 
-    if (options.generatePackageJson === false) {
-      assets.push({
-        input: projectRoot,
-        glob: "**/package.json",
-        output: "."
-      });
-    }
+  if (options.includeSrc === true) {
+    assets.push({
+      input: sourceRoot,
+      glob: "**/{*.ts,*.tsx,*.js,*.jsx}",
+      output: "src/"
+    });
+  }
 
-    if (options.includeSrc === true) {
-      assets.push({
-        input: sourceRoot,
-        glob: "**/{*.ts,*.tsx,*.js,*.jsx}",
-        output: "src/"
-      });
-    }
+  const result = await copyAssets(
+    { assets, watch: options.watch, outputPath: options.outputPath },
+    context
+  );
+  if (!result.success) {
+    throw new Error("The Build process failed trying to copy assets");
+  }
 
-    const result = await copyAssets(
-      { assets, watch: options.watch, outputPath: options.outputPath },
-      context
-    );
-    if (!result.success) {
-      throw new Error("The Build process failed trying to copy assets");
-    }
+  // #endregion Copy asset files to output directory
 
-    // #endregion Copy asset files to output directory
+  // #region Generate the package.json file
 
-    // #region Generate the package.json file
+  const pathToPackageJson = join(context.root, projectRoot, "package.json");
+  const packageJson = fileExists(pathToPackageJson)
+    ? readJsonFile(pathToPackageJson)
+    : { name: context.projectName, version: "0.0.1" };
+  const workspacePackageJson = readJsonFile(join(workspaceRoot, "package.json"));
 
-    const pathToPackageJson = join(context.root, projectRoot, "package.json");
-    const packageJson = fileExists(pathToPackageJson)
-      ? readJsonFile(pathToPackageJson)
-      : { name: context.projectName, version: "0.0.1" };
-    const workspacePackageJson = readJsonFile(join(workspaceRoot, "package.json"));
-
-    options.external = options.external || [];
-    if (workspacePackageJson?.dependencies) {
-      options.external = Object.keys(workspacePackageJson?.dependencies).reduce(
-        (ret: string[], key: string) => {
-          if (!ret.includes(key)) {
-            ret.push(key);
-          }
-
-          return ret;
-        },
-        options.external
-      );
-    }
-
-    const externalDependencies: DependentBuildableProjectNode[] = options.external.reduce(
-      (ret, name) => {
-        if (!packageJson?.devDependencies?.[name]) {
-          const externalNode = context.projectGraph.externalNodes[`npm:${name}`];
-          if (externalNode) {
-            ret.push({
-              name,
-              outputs: [],
-              node: externalNode
-            });
-          }
+  options.external = options.external || [];
+  if (workspacePackageJson?.dependencies) {
+    options.external = Object.keys(workspacePackageJson?.dependencies).reduce(
+      (ret: string[], key: string) => {
+        if (!ret.includes(key)) {
+          ret.push(key);
         }
 
         return ret;
       },
-      []
+      options.external
     );
+  }
 
-    const implicitDependencies =
-      context.projectsConfigurations.projects[context.projectName].implicitDependencies;
-    const internalDependencies: string[] = [];
-
-    const projectConfigs = await Promise.resolve(getProjectConfigurations());
-    if (getLogLevel(config?.logLevel) >= LogLevel.TRACE) {
-      writeDebug(config, "Project Configs:");
-      console.log(projectConfigs);
-    }
-
-    if (implicitDependencies && implicitDependencies.length > 0) {
-      options.external = implicitDependencies.reduce((ret: string[], key: string) => {
-        if (getLogLevel(config?.logLevel) >= LogLevel.DEBUG) {
-          writeDebug(config, `⚡ Adding implicit dependency: ${key}`);
-        }
-
-        const projectConfig = projectConfigs[key];
-        if (projectConfig?.targets?.build) {
-          const projectPackageJson = readJsonFile(projectConfig.targets?.build.options.project);
-
-          if (projectPackageJson?.name && !options.external.includes(projectPackageJson.name)) {
-            ret.push(projectPackageJson.name);
-            internalDependencies.push(projectPackageJson.name);
-          }
-        }
-
-        return ret;
-      }, options.external);
-    }
-
-    if (options.bundle === false) {
-      for (const thirdPartyDependency of getExternalDependencies(
-        context.projectName,
-        context.projectGraph
-      )) {
-        const packageConfig = thirdPartyDependency.node.data as PackageConfiguration;
-        if (packageConfig?.packageName) {
-          options.external.push(packageConfig.packageName);
-          if (!packageJson?.devDependencies?.[packageConfig.packageName]) {
-            externalDependencies.push(thirdPartyDependency);
-          }
-        }
-      }
-    }
-
-    if (getLogLevel(config?.logLevel) >= LogLevel.TRACE) {
-      console.log(`Building with the following dependencies marked as external:
-${externalDependencies
-  .map((dep) => {
-    return `name: ${dep.name}, node: ${dep.node}, outputs: ${dep.outputs}`;
-  })
-  .join("\n")}`);
-    }
-
-    const prettierOptions: PrettierOptions = {
-      plugins: ["prettier-plugin-packagejson"],
-      trailingComma: "none",
-      tabWidth: 2,
-      semi: true,
-      singleQuote: false,
-      quoteProps: "preserve",
-      insertPragma: false,
-      bracketSameLine: true,
-      printWidth: 80,
-      bracketSpacing: true,
-      arrowParens: "avoid",
-      endOfLine: "lf"
-    };
-
-    const entryPoints = [];
-    if (options.entry) {
-      entryPoints.push(options.entry);
-    }
-    if (options.emitOnAll === true) {
-      entryPoints.push(joinPathFragments(sourceRoot, "**/*.{ts,tsx}"));
-    }
-    if (options.additionalEntryPoints) {
-      entryPoints.push(...options.additionalEntryPoints);
-    }
-
-    const entry = globSync(entryPoints, {
-      withFileTypes: true
-    }).reduce((ret, filePath: Path) => {
-      let formattedPath = workspaceRoot.replaceAll("\\", "/");
-      if (formattedPath.toUpperCase().startsWith("C:")) {
-        // Handle starting pattern for Window's paths
-        formattedPath = formattedPath.substring(2);
-      }
-
-      let propertyKey = joinPathFragments(filePath.path, removeExtension(filePath.name))
-        .replaceAll("\\", "/")
-        .replaceAll(formattedPath, "")
-        .replaceAll(sourceRoot, "")
-        .replaceAll(projectRoot, "");
-
-      if (propertyKey) {
-        while (propertyKey.startsWith("/")) {
-          propertyKey = propertyKey.substring(1);
-        }
-
-        if (getLogLevel(config?.logLevel) >= LogLevel.DEBUG) {
-          console.debug(
-            `Trying to add entry point ${propertyKey} at "${joinPathFragments(
-              filePath.path,
-              filePath.name
-            )}"`
-          );
-        }
-
-        if (!(propertyKey in ret)) {
-          ret[propertyKey] = joinPathFragments(filePath.path, filePath.name);
+  const externalDependencies: DependentBuildableProjectNode[] = options.external.reduce(
+    (ret, name) => {
+      if (!packageJson?.devDependencies?.[name]) {
+        const externalNode = context.projectGraph.externalNodes[`npm:${name}`];
+        if (externalNode) {
+          ret.push({
+            name,
+            outputs: [],
+            node: externalNode
+          });
         }
       }
 
       return ret;
-    }, {});
+    },
+    []
+  );
 
-    if (options.generatePackageJson !== false) {
-      const projectGraph = readCachedProjectGraph();
+  const implicitDependencies =
+    context.projectsConfigurations.projects[context.projectName].implicitDependencies;
+  const internalDependencies: string[] = [];
 
-      packageJson.dependencies = undefined;
-      for (const externalDependency of externalDependencies) {
-        const packageConfig = externalDependency.node.data as PackageConfiguration;
+  const projectConfigs = await Promise.resolve(getProjectConfigurations());
+  if (getLogLevel(config?.logLevel) >= LogLevel.TRACE) {
+    writeDebug(config, "Project Configs:");
+    console.log(projectConfigs);
+  }
+
+  if (implicitDependencies && implicitDependencies.length > 0) {
+    options.external = implicitDependencies.reduce((ret: string[], key: string) => {
+      if (getLogLevel(config?.logLevel) >= LogLevel.DEBUG) {
+        writeDebug(config, `⚡ Adding implicit dependency: ${key}`);
+      }
+
+      const projectConfig = projectConfigs[key];
+      if (projectConfig?.targets?.build) {
+        const projectPackageJson = readJsonFile(projectConfig.targets?.build.options.project);
+
+        if (projectPackageJson?.name && !options.external.includes(projectPackageJson.name)) {
+          ret.push(projectPackageJson.name);
+          internalDependencies.push(projectPackageJson.name);
+        }
+      }
+
+      return ret;
+    }, options.external);
+  }
+
+  if (options.bundle === false) {
+    for (const thirdPartyDependency of getExternalDependencies(
+      context.projectName,
+      context.projectGraph
+    )) {
+      const packageConfig = thirdPartyDependency.node.data as PackageConfiguration;
+      if (packageConfig?.packageName) {
+        options.external.push(packageConfig.packageName);
+        if (!packageJson?.devDependencies?.[packageConfig.packageName]) {
+          externalDependencies.push(thirdPartyDependency);
+        }
+      }
+    }
+  }
+
+  writeTrace(
+    config,
+    `Building with the following dependencies marked as external:
+${externalDependencies
+  .map((dep) => {
+    return `name: ${dep.name}, node: ${dep.node}, outputs: ${dep.outputs}`;
+  })
+  .join("\n")}`
+  );
+
+  const prettierOptions: PrettierOptions = {
+    plugins: ["prettier-plugin-packagejson"],
+    trailingComma: "none",
+    tabWidth: 2,
+    semi: true,
+    singleQuote: false,
+    quoteProps: "preserve",
+    insertPragma: false,
+    bracketSameLine: true,
+    printWidth: 80,
+    bracketSpacing: true,
+    arrowParens: "avoid",
+    endOfLine: "lf"
+  };
+
+  const entryPoints = [];
+  if (options.entry) {
+    entryPoints.push(options.entry);
+  }
+  if (options.emitOnAll === true) {
+    entryPoints.push(joinPathFragments(sourceRoot, "**/*.{ts,tsx}"));
+  }
+  if (options.additionalEntryPoints) {
+    entryPoints.push(...options.additionalEntryPoints);
+  }
+
+  const entry = globSync(entryPoints, {
+    withFileTypes: true
+  }).reduce((ret, filePath: Path) => {
+    let formattedPath = workspaceRoot.replaceAll("\\", "/");
+    if (formattedPath.toUpperCase().startsWith("C:")) {
+      // Handle starting pattern for Window's paths
+      formattedPath = formattedPath.substring(2);
+    }
+
+    let propertyKey = joinPathFragments(filePath.path, removeExtension(filePath.name))
+      .replaceAll("\\", "/")
+      .replaceAll(formattedPath, "")
+      .replaceAll(sourceRoot, "")
+      .replaceAll(projectRoot, "");
+
+    if (propertyKey) {
+      while (propertyKey.startsWith("/")) {
+        propertyKey = propertyKey.substring(1);
+      }
+
+      writeDebug(
+        config,
+        `Trying to add entry point ${propertyKey} at "${joinPathFragments(
+          filePath.path,
+          filePath.name
+        )}"`
+      );
+
+      if (!(propertyKey in ret)) {
+        ret[propertyKey] = joinPathFragments(filePath.path, filePath.name);
+      }
+    }
+
+    return ret;
+  }, {});
+
+  if (options.generatePackageJson !== false) {
+    const projectGraph = readCachedProjectGraph();
+
+    packageJson.dependencies = undefined;
+    for (const externalDependency of externalDependencies) {
+      const packageConfig = externalDependency.node.data as PackageConfiguration;
+      if (
+        packageConfig?.packageName &&
+        !!(projectGraph.externalNodes[externalDependency.node.name]?.type === "npm")
+      ) {
+        const { packageName, version } = packageConfig;
         if (
-          packageConfig?.packageName &&
-          !!(projectGraph.externalNodes[externalDependency.node.name]?.type === "npm")
+          workspacePackageJson.dependencies?.[packageName] ||
+          workspacePackageJson.devDependencies?.[packageName] ||
+          packageJson?.devDependencies?.[packageName]
         ) {
-          const { packageName, version } = packageConfig;
-          if (
-            workspacePackageJson.dependencies?.[packageName] ||
-            workspacePackageJson.devDependencies?.[packageName] ||
-            packageJson?.devDependencies?.[packageName]
-          ) {
-            return null;
-          }
-
-          packageJson.dependencies ??= {};
-          packageJson.dependencies[packageName] = projectGraph.nodes[externalDependency.node.name]
-            ? "latest"
-            : version;
+          return null;
         }
+
+        packageJson.dependencies ??= {};
+        packageJson.dependencies[packageName] = projectGraph.nodes[externalDependency.node.name]
+          ? "latest"
+          : version;
       }
+    }
 
-      for (const packageName of internalDependencies) {
-        if (!packageJson?.devDependencies?.[packageName]) {
-          packageJson.dependencies ??= {};
-          packageJson.dependencies[packageName] = "latest";
-        }
+    for (const packageName of internalDependencies) {
+      if (!packageJson?.devDependencies?.[packageName]) {
+        packageJson.dependencies ??= {};
+        packageJson.dependencies[packageName] = "latest";
       }
+    }
 
-      const distPaths: string[] =
-        !options?.getConfig || _isFunction(options.getConfig)
-          ? ["dist/"]
-          : Object.keys(options.getConfig).map((key) => `${key}/`);
+    const distPaths: string[] =
+      !options?.getConfig || _isFunction(options.getConfig)
+        ? ["dist/"]
+        : Object.keys(options.getConfig).map((key) => `${key}/`);
 
-      packageJson.type = "module";
-      if (distPaths.length > 0) {
-        packageJson.exports ??= {
-          ".": {
+    packageJson.type = "module";
+    if (distPaths.length > 0) {
+      packageJson.exports ??= {
+        ".": {
+          import: {
+            types: `./${distPaths[0]}index.d.ts`,
+            default: `./${distPaths[0]}index.js`
+          },
+          require: {
+            types: `./${distPaths[0]}index.d.cts`,
+            default: `./${distPaths[0]}index.cjs`
+          },
+          default: {
+            types: `./${distPaths[0]}index.d.ts`,
+            default: `./${distPaths[0]}index.js`
+          },
+          ...(options.additionalEntryPoints ?? []).map((entryPoint) => ({
+            [removeExtension(entryPoint).replace(sourceRoot, "")]: {
+              types: join(
+                `./${distPaths[0]}`,
+                `${removeExtension(entryPoint.replace(sourceRoot, ""))}.d.ts`
+              ),
+              default: join(
+                `./${distPaths[0]}`,
+                `${removeExtension(entryPoint.replace(sourceRoot, ""))}.js`
+              )
+            }
+          }))
+        },
+        "./package.json": "./package.json"
+      };
+
+      packageJson.exports = Object.keys(entry).reduce((ret: Record<string, any>, key: string) => {
+        let packageJsonKey = key.startsWith("./") ? key : `./${key}`;
+        packageJsonKey = packageJsonKey.replaceAll("/index", "");
+
+        if (!ret[packageJsonKey]) {
+          ret[packageJsonKey] = {
             import: {
               types: `./${distPaths[0]}index.d.ts`,
-              default: `./${distPaths[0]}index.js`
+              default: `./${distPaths[0]}${key}.js`
             },
             require: {
               types: `./${distPaths[0]}index.d.cts`,
-              default: `./${distPaths[0]}index.cjs`
+              default: `./${distPaths[0]}${key}.cjs`
             },
             default: {
               types: `./${distPaths[0]}index.d.ts`,
-              default: `./${distPaths[0]}index.js`
-            },
-            ...(options.additionalEntryPoints ?? []).map((entryPoint) => ({
-              [removeExtension(entryPoint).replace(sourceRoot, "")]: {
-                types: join(
-                  `./${distPaths[0]}`,
-                  `${removeExtension(entryPoint.replace(sourceRoot, ""))}.d.ts`
-                ),
-                default: join(
-                  `./${distPaths[0]}`,
-                  `${removeExtension(entryPoint.replace(sourceRoot, ""))}.js`
-                )
-              }
-            }))
-          },
-          "./package.json": "./package.json"
-        };
-
-        packageJson.exports = Object.keys(entry).reduce((ret: Record<string, any>, key: string) => {
-          let packageJsonKey = key.startsWith("./") ? key : `./${key}`;
-          packageJsonKey = packageJsonKey.replaceAll("/index", "");
-
-          if (!ret[packageJsonKey]) {
-            ret[packageJsonKey] = {
-              import: {
-                types: `./${distPaths[0]}index.d.ts`,
-                default: `./${distPaths[0]}${key}.js`
-              },
-              require: {
-                types: `./${distPaths[0]}index.d.cts`,
-                default: `./${distPaths[0]}${key}.cjs`
-              },
-              default: {
-                types: `./${distPaths[0]}index.d.ts`,
-                default: `./${distPaths[0]}${key}.js`
-              }
-            };
-          }
-
-          return ret;
-        }, packageJson.exports);
-
-        packageJson.funding ??= workspacePackageJson.funding;
-
-        packageJson.types ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`;
-        packageJson.typings ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`;
-        packageJson.typescript ??= {
-          definition: `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`
-        };
-
-        packageJson.main ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.cjs`;
-        packageJson.module ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.js`;
-
-        if (options.platform && options.platform !== "node") {
-          packageJson.browser ??= `${distPaths[0]}index.global.js`;
+              default: `./${distPaths[0]}${key}.js`
+            }
+          };
         }
 
-        if (options.includeSrc === true) {
-          let distSrc = sourceRoot.replace(projectRoot, "");
-          if (distSrc.startsWith("/")) {
-            distSrc = distSrc.substring(1);
-          }
+        return ret;
+      }, packageJson.exports);
 
-          packageJson.source ??= `${join(distSrc, "index.ts").replaceAll("\\", "/")}`;
-        }
+      packageJson.funding ??= workspacePackageJson.funding;
 
-        packageJson.sideEffects ??= false;
-
-        packageJson.files ??= ["dist/**/*"];
-        if (options.includeSrc === true && !packageJson.files.includes("src")) {
-          packageJson.files.push("src/**/*");
-        }
-      }
-
-      packageJson.publishConfig ??= {
-        access: "public"
+      packageJson.types ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`;
+      packageJson.typings ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`;
+      packageJson.typescript ??= {
+        definition: `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`
       };
 
-      packageJson.description ??= workspacePackageJson.description;
-      packageJson.homepage ??= workspacePackageJson.homepage;
-      packageJson.bugs ??= workspacePackageJson.bugs;
-      packageJson.author ??= workspacePackageJson.author;
-      packageJson.license ??= workspacePackageJson.license;
-      packageJson.keywords ??= workspacePackageJson.keywords;
+      packageJson.main ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.cjs`;
+      packageJson.module ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.js`;
 
-      packageJson.repository ??= workspacePackageJson.repository;
-      packageJson.repository.directory ??= projectRoot
-        ? projectRoot
-        : join("packages", context.projectName);
-
-      const packageJsonPath = join(context.root, options.outputPath, "package.json");
-
-      if (getLogLevel(config?.logLevel) >= LogLevel.DEBUG) {
-        writeDebug(config, `⚡ Writing package.json file to: ${packageJsonPath}`);
+      if (options.platform && options.platform !== "node") {
+        packageJson.browser ??= `${distPaths[0]}index.global.js`;
       }
 
-      writeFileSync(
-        packageJsonPath,
-        await format(JSON.stringify(packageJson), {
-          ...prettierOptions,
-          parser: "json"
-        })
-      );
+      if (options.includeSrc === true) {
+        let distSrc = sourceRoot.replace(projectRoot, "");
+        if (distSrc.startsWith("/")) {
+          distSrc = distSrc.substring(1);
+        }
+
+        packageJson.source ??= `${join(distSrc, "index.ts").replaceAll("\\", "/")}`;
+      }
+
+      packageJson.sideEffects ??= false;
+
+      packageJson.files ??= ["dist/**/*"];
+      if (options.includeSrc === true && !packageJson.files.includes("src")) {
+        packageJson.files.push("src/**/*");
+      }
     }
 
-    if (options.includeSrc === true) {
-      const files = globSync([
-        joinPathFragments(context.root, options.outputPath, "src/**/*.ts"),
-        joinPathFragments(context.root, options.outputPath, "src/**/*.tsx"),
-        joinPathFragments(context.root, options.outputPath, "src/**/*.js"),
-        joinPathFragments(context.root, options.outputPath, "src/**/*.jsx")
-      ]);
-      await Promise.allSettled(
-        files.map(async (file) =>
-          writeFile(
-            file,
-            await format(
-              `${
-                options.banner
-                  ? options.banner.startsWith("//")
-                    ? options.banner
-                    : `// ${options.banner}`
-                  : ""
-              }\n\n${readFileSync(file, "utf-8")}`,
-              {
-                ...prettierOptions,
-                parser: "typescript"
-              }
-            ),
-            "utf-8"
-          )
-        )
-      );
-    }
+    packageJson.publishConfig ??= {
+      access: "public"
+    };
 
-    // #endregion Generate the package.json file
+    packageJson.description ??= workspacePackageJson.description;
+    packageJson.homepage ??= workspacePackageJson.homepage;
+    packageJson.bugs ??= workspacePackageJson.bugs;
+    packageJson.author ??= workspacePackageJson.author;
+    packageJson.license ??= workspacePackageJson.license;
+    packageJson.keywords ??= workspacePackageJson.keywords;
 
-    // #region Add default plugins
+    packageJson.repository ??= workspacePackageJson.repository;
+    packageJson.repository.directory ??= projectRoot
+      ? projectRoot
+      : join("packages", context.projectName);
 
-    const stormEnv = Object.keys(options.env)
-      .filter((key) => key.startsWith("STORM_"))
-      .reduce((ret, key) => {
-        ret[key] = options.env[key];
-        return ret;
-      }, {});
-    options.plugins.push(
-      esbuildDecorators({
-        tsconfig: options.tsConfig,
-        cwd: workspaceRoot
+    const packageJsonPath = join(context.root, options.outputPath, "package.json");
+
+    writeDebug(config, `⚡ Writing package.json file to: ${packageJsonPath}`);
+
+    writeFileSync(
+      packageJsonPath,
+      await format(JSON.stringify(packageJson), {
+        ...prettierOptions,
+        parser: "json"
       })
     );
-    options.plugins.push(environmentPlugin(stormEnv));
-
-    // #endregion Add default plugins
-
-    // #region Run the build process
-
-    const getConfigOptions = {
-      ...options,
-      define: {
-        __STORM_CONFIG: JSON.stringify(stormEnv)
-      },
-      env: {
-        __STORM_CONFIG: JSON.stringify(stormEnv),
-        ...stormEnv
-      },
-      dtsTsConfig: getNormalizedTsConfig(
-        context.root,
-        options.outputPath,
-        createTypeScriptCompilationOptions(
-          normalizeOptions(
-            {
-              ...options,
-              watch: false,
-              main: options.entry,
-              transformers: options.skipTypia ? [] : ["typia/lib/transform"]
-            },
-            context.root,
-            sourceRoot,
-            workspaceRoot
-          ),
-          context
-        )
-      ),
-      banner: options.banner
-        ? {
-            js: `${options.banner}\n\n`,
-            css: `/* \n${options.banner}\n */\n\n`
-          }
-        : undefined,
-      outputPath: options.outputPath,
-      entry,
-      getTransform: options.skipTypia ? undefined : getTypiaTransform
-    };
-
-    if (options.getConfig) {
-      if (getLogLevel(config?.logLevel) >= LogLevel.INFO) {
-        writeInfo(config, "⚡ Running the Build process");
-      }
-
-      const getConfigFns = _isFunction(options.getConfig)
-        ? [options.getConfig]
-        : Object.keys(options.getConfig).map((key) => options.getConfig[key]);
-
-      const tsupConfig = defineConfig(
-        getConfigFns.map((getConfigFn) =>
-          getConfig(context.root, projectRoot, getConfigFn, getConfigOptions)
-        )
-      );
-
-      if (_isFunction(tsupConfig)) {
-        await build(await Promise.resolve(tsupConfig({})), config);
-      } else {
-        await build(tsupConfig, config);
-      }
-    } else if (getLogLevel(config?.logLevel) >= LogLevel.WARN) {
-      writeWarning(
-        config,
-        "The Build process did not run because no `getConfig` parameter was provided"
-      );
-    }
-
-    // #endregion Run the build process
-
-    if (getLogLevel(config?.logLevel) >= LogLevel.INFO) {
-      writeSuccess(config, "⚡ The Build process has completed successfully");
-    }
-
-    return {
-      success: true
-    };
-  } catch (e) {
-    console.error(e);
-    return {
-      success: false
-    };
+  } else {
+    writeWarning(config, "Skipping writing to package.json file");
   }
+
+  if (options.includeSrc === true) {
+    const files = globSync([
+      joinPathFragments(context.root, options.outputPath, "src/**/*.ts"),
+      joinPathFragments(context.root, options.outputPath, "src/**/*.tsx"),
+      joinPathFragments(context.root, options.outputPath, "src/**/*.js"),
+      joinPathFragments(context.root, options.outputPath, "src/**/*.jsx")
+    ]);
+    await Promise.allSettled(
+      files.map(async (file) =>
+        writeFile(
+          file,
+          await format(
+            `${
+              options.banner
+                ? options.banner.startsWith("//")
+                  ? options.banner
+                  : `// ${options.banner}`
+                : ""
+            }\n\n${readFileSync(file, "utf-8")}`,
+            {
+              ...prettierOptions,
+              parser: "typescript"
+            }
+          ),
+          "utf-8"
+        )
+      )
+    );
+  }
+
+  // #endregion Generate the package.json file
+
+  // #region Add default plugins
+
+  const stormEnv = Object.keys(options.env)
+    .filter((key) => key.startsWith("STORM_"))
+    .reduce((ret, key) => {
+      ret[key] = options.env[key];
+      return ret;
+    }, {});
+  options.plugins.push(
+    esbuildDecorators({
+      tsconfig: options.tsConfig,
+      cwd: workspaceRoot
+    })
+  );
+  options.plugins.push(environmentPlugin(stormEnv));
+
+  // #endregion Add default plugins
+
+  // #region Run the build process
+
+  const getConfigOptions = {
+    ...options,
+    define: {
+      __STORM_CONFIG: JSON.stringify(stormEnv)
+    },
+    env: {
+      __STORM_CONFIG: JSON.stringify(stormEnv),
+      ...stormEnv
+    },
+    dtsTsConfig: getNormalizedTsConfig(
+      context.root,
+      options.outputPath,
+      createTypeScriptCompilationOptions(
+        normalizeOptions(
+          {
+            ...options,
+            watch: false,
+            main: options.entry,
+            transformers: options.skipTypia ? [] : ["typia/lib/transform"]
+          },
+          context.root,
+          sourceRoot,
+          workspaceRoot
+        ),
+        context
+      )
+    ),
+    banner: options.banner
+      ? {
+          js: `${options.banner}\n\n`,
+          css: `/* \n${options.banner}\n */\n\n`
+        }
+      : undefined,
+    outputPath: options.outputPath,
+    entry,
+    getTransform: options.skipTypia ? undefined : getTypiaTransform
+  };
+
+  if (options.getConfig) {
+    writeInfo(config, "⚡ Running the Build process");
+
+    const getConfigFns = _isFunction(options.getConfig)
+      ? [options.getConfig]
+      : Object.keys(options.getConfig).map((key) => options.getConfig[key]);
+
+    const tsupConfig = defineConfig(
+      getConfigFns.map((getConfigFn) =>
+        getConfig(context.root, projectRoot, getConfigFn, getConfigOptions)
+      )
+    );
+
+    if (_isFunction(tsupConfig)) {
+      await build(await Promise.resolve(tsupConfig({})), config);
+    } else {
+      await build(tsupConfig, config);
+    }
+  } else if (getLogLevel(config?.logLevel) >= LogLevel.WARN) {
+    writeWarning(
+      config,
+      "The Build process did not run because no `getConfig` parameter was provided"
+    );
+  }
+
+  // #endregion Run the build process
+
+  writeSuccess(config, "⚡ The Build process has completed successfully");
+
+  return {
+    success: true
+  };
 }
 
 function getNormalizedTsConfig(

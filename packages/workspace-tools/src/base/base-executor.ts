@@ -2,7 +2,7 @@ import type { ExecutorContext } from "@nx/devkit";
 import {
   type StormConfig,
   getStopwatch,
-  prepareWorkspace,
+  loadStormConfig,
   writeDebug,
   writeError,
   writeFatal,
@@ -75,7 +75,7 @@ export const withRunExecutor =
  - projectName: ${projectName}\n`
         );
 
-        config = await prepareWorkspace();
+        config = await loadStormConfig(workspaceRoot);
         writeTrace(
           config,
           `Loaded Storm config into env: \n${Object.keys(process.env)

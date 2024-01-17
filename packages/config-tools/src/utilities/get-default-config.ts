@@ -1,5 +1,5 @@
-import { existsSync, readFileSync } from "fs";
-import { join } from "path";
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import { StormConfigSchema } from "../schema";
 import type { ColorConfig, StormConfig } from "../types";
 import { findWorkspaceRoot } from "./find-workspace-root";

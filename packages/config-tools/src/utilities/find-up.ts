@@ -1,5 +1,5 @@
-import { existsSync } from "fs";
-import { join } from "path";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 
 const MAX_PATH_SEARCH_DEPTH = 30;
 let depth = 0;
