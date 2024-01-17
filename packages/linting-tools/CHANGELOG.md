@@ -1,3 +1,11 @@
+## [1.26.4](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.26.3...linting-tools-v1.26.4) (2024-01-17)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue with logging strings ([21d9e0d](https://github.com/storm-software/storm-ops/commit/21d9e0dc7f21820909697577931d0c7b339755b7))
+* **workspace-tools:** Remove the transform code from tsup patch ([399c910](https://github.com/storm-software/storm-ops/commit/399c910f0ca46741cc97b06f2a0812adbf7910f0))
+
 ## [1.26.3](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.26.2...linting-tools-v1.26.3) (2024-01-16)
 
 
