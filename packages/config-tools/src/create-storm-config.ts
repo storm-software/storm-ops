@@ -104,10 +104,14 @@ export const loadStormConfig = async (workspaceRoot?: string): Promise<StormConf
     _workspaceRoot = findWorkspaceRoot();
   }
 
-  const configFile = {
-    ...(await getConfigFile(_workspaceRoot)),
-    ...getConfigEnv()
-  };
+  const configFile = await getConfigFile(_workspaceRoot);
+  const configEnv = getConfigEnv();
+
+  for (const key of Object.keys(configEnv)) {
+    if (configEnv[key] !== undefined && configEnv[key] !== null) {
+      configFile[key] = configEnv[key];
+    }
+  }
 
   const config = StormConfigSchema.parse(configFile);
   setConfigEnv(config);
@@ -115,6 +119,7 @@ export const loadStormConfig = async (workspaceRoot?: string): Promise<StormConf
   console.debug("\n\n");
   console.debug(`Loaded Storm config from ${config.configFile}`);
   for (const key of Object.keys(configFile)) {
+    console.debug(` ----- ${key} ----- `);
     console.debug(configFile[key]);
   }
   console.debug("\n\n");
