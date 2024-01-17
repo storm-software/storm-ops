@@ -1,3 +1,11 @@
+## [1.43.15](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.14...workspace-tools-v1.43.15) (2024-01-17)
+
+
+### Bug Fixes
+
+* **config-tools:** Ensure colors are set correctly ([e6fffd0](https://github.com/storm-software/storm-ops/commit/e6fffd0c6554d2fa36e3a4b8b44b443c030aa831))
+* **workspace-tools:** Skip adding biome as external dependency ([0512735](https://github.com/storm-software/storm-ops/commit/051273598815a55c9e5f0ff7b39e1eefc2b93be3))
+
 ## [1.43.14](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.13...workspace-tools-v1.43.14) (2024-01-17)
 
 
