@@ -1,3 +1,10 @@
+## [1.43.15](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.43.14...create-storm-workspace-v1.43.15) (2024-01-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved blocking issue preventing tsup build completion ([e13f88f](https://github.com/storm-software/storm-ops/commit/e13f88f4c98eda68ec3d45c3b48caba533243b55))
+
 ## [1.43.14](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.43.13...create-storm-workspace-v1.43.14) (2024-01-17)
 
 
