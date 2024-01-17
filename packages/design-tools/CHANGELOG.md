@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/storm-software/storm-ops/compare/design-tools-v1.6.1...design-tools-v1.6.2) (2024-01-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Remove the transform code from tsup patch ([399c910](https://github.com/storm-software/storm-ops/commit/399c910f0ca46741cc97b06f2a0812adbf7910f0))
+
 ## [1.6.1](https://github.com/storm-software/storm-ops/compare/design-tools-v1.6.0...design-tools-v1.6.1) (2024-01-16)
 
 
