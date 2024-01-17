@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { esbuildDecorators } from "@anatine/esbuild-decorators";
-import { joinPathFragments, readCachedProjectGraph, readJsonFile } from "@nx/devkit";
+import { createProjectGraphAsync, joinPathFragments, readJsonFile } from "@nx/devkit";
 import type { ExecutorContext } from "@nx/devkit";
 import { copyAssets } from "@nx/js";
 import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options";
@@ -295,10 +295,14 @@ ${externalDependencies
   console.log("Conditional before checking entry points");
   if (options.generatePackageJson !== false) {
     console.log("Checking entry points");
-    const projectGraph = readCachedProjectGraph();
+    const projectGraph = await createProjectGraphAsync({
+      exitOnError: true
+    });
+    console.log("Read project graph");
 
     packageJson.dependencies = undefined;
     for (const externalDependency of externalDependencies) {
+      console.log(externalDependency);
       const packageConfig = externalDependency.node.data as PackageConfiguration;
       if (
         packageConfig?.packageName &&
