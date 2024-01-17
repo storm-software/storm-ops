@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/storm-software/storm-ops/compare/design-tools-v1.6.2...design-tools-v1.6.3) (2024-01-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed instance of JSDocs parser in tsup patch ([4c8448e](https://github.com/storm-software/storm-ops/commit/4c8448eed32092d203621d4e05526a89d4b8e216))
+
 ## [1.6.2](https://github.com/storm-software/storm-ops/compare/design-tools-v1.6.1...design-tools-v1.6.2) (2024-01-17)
 
 
