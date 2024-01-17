@@ -1,5 +1,6 @@
-import { readFileSync, writeFileSync } from "fs";
-import { dirname, join } from "path";
+import { readFileSync, writeFileSync } from "node:fs";
+import { writeFile } from "node:fs/promises";
+import { dirname, join } from "node:path";
 import { esbuildDecorators } from "@anatine/esbuild-decorators";
 import { joinPathFragments, readCachedProjectGraph, readJsonFile } from "@nx/devkit";
 import type { ExecutorContext } from "@nx/devkit";
@@ -8,10 +9,17 @@ import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options
 import { createTypeScriptCompilationOptions } from "@nx/js/src/executors/tsc/tsc.impl";
 import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
 import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
-import { LogLevel, type StormConfig, getLogLevel } from "@storm-software/config-tools";
+import {
+  LogLevel,
+  type StormConfig,
+  getLogLevel,
+  writeDebug,
+  writeInfo,
+  writeSuccess,
+  writeWarning
+} from "@storm-software/config-tools";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import { removeSync } from "fs-extra";
-import { writeFile } from "fs/promises";
 import { type Path, globSync } from "glob";
 import { fileExists } from "nx/src/utils/fileutils";
 import { type Options as PrettierOptions, format } from "prettier";
@@ -38,12 +46,13 @@ export async function tsupExecutorFn(
   config?: StormConfig
 ) {
   try {
-    console.log("📦  Running Storm build executor on the workspace");
+    writeInfo(config, "📦  Running Storm build executor on the workspace");
 
     // #region Apply default options
 
     getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-      console.log(
+      writeDebug(
+        config,
         `⚙️  Executor options:
 ${Object.keys(options)
   .map(
@@ -80,7 +89,7 @@ ${Object.keys(options)
 
     if (options.clean !== false) {
       if (getLogLevel(config?.logLevel) >= LogLevel.DEBUG) {
-        console.log(`🧹 Cleaning output path: ${options.outputPath}`);
+        writeInfo(config, `🧹 Cleaning output path: ${options.outputPath}`);
       }
 
       removeSync(options.outputPath);
@@ -174,14 +183,14 @@ ${Object.keys(options)
 
     const projectConfigs = await Promise.resolve(getProjectConfigurations());
     if (getLogLevel(config?.logLevel) >= LogLevel.TRACE) {
-      console.log("Project Configs:");
+      writeDebug(config, "Project Configs:");
       console.log(projectConfigs);
     }
 
     if (implicitDependencies && implicitDependencies.length > 0) {
       options.external = implicitDependencies.reduce((ret: string[], key: string) => {
         if (getLogLevel(config?.logLevel) >= LogLevel.DEBUG) {
-          console.log(`⚡ Adding implicit dependency: ${key}`);
+          writeDebug(config, `⚡ Adding implicit dependency: ${key}`);
         }
 
         const projectConfig = projectConfigs[key];
@@ -430,7 +439,7 @@ ${externalDependencies
       const packageJsonPath = join(context.root, options.outputPath, "package.json");
 
       if (getLogLevel(config?.logLevel) >= LogLevel.DEBUG) {
-        console.debug(`⚡ Writing package.json file to: ${packageJsonPath}`);
+        writeDebug(config, `⚡ Writing package.json file to: ${packageJsonPath}`);
       }
 
       writeFileSync(
@@ -534,7 +543,7 @@ ${externalDependencies
 
     if (options.getConfig) {
       if (getLogLevel(config?.logLevel) >= LogLevel.INFO) {
-        console.log("⚡ Running the Build process");
+        writeInfo(config, "⚡ Running the Build process");
       }
 
       const getConfigFns = _isFunction(options.getConfig)
@@ -553,13 +562,16 @@ ${externalDependencies
         await build(tsupConfig, config);
       }
     } else if (getLogLevel(config?.logLevel) >= LogLevel.WARN) {
-      console.warn("The Build process did not run because no `getConfig` parameter was provided");
+      writeWarning(
+        config,
+        "The Build process did not run because no `getConfig` parameter was provided"
+      );
     }
 
     // #endregion Run the build process
 
     if (getLogLevel(config?.logLevel) >= LogLevel.INFO) {
-      console.log("⚡ The Build process has completed successfully");
+      writeSuccess(config, "⚡ The Build process has completed successfully");
     }
 
     return {
@@ -673,6 +685,7 @@ const _isPrimitive = (value: unknown): boolean => {
       value === null ||
       (typeof value !== "object" && typeof value !== "function")
     );
+    // biome-ignore lint/correctness/noUnusedVariables: <explanation>
   } catch (e) {
     return false;
   }
@@ -687,6 +700,7 @@ const _isFunction = (
       typeof value === "function" ||
       !!(value?.constructor && (value as any)?.call && (value as any)?.apply)
     );
+    // biome-ignore lint/correctness/noUnusedVariables: <explanation>
   } catch (e) {
     return false;
   }

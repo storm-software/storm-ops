@@ -31,11 +31,11 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.error(
-        ` ${chalk.bold.hex(config?.colors?.fatal ? config.colors.fatal : "#1fb2a6")(
+        `\n\n ${chalk.bold.hex(config?.colors?.fatal ? config.colors.fatal : "#1fb2a6")(
           ">"
         )} ${chalk.bold
           .bgHex(config?.colors?.fatal ? config.colors.fatal : "#1fb2a6")
-          .white("\n\n 💀 Fatal ")}  ${chalk.reset.hex(
+          .white(" 💀 Fatal ")}  ${chalk.reset.hex(
           config?.colors?.fatal ? config.colors.fatal : "#1fb2a6"
         )(message)} \n\n`
       );
@@ -48,11 +48,11 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.error(
-        ` ${chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(
+        `\n\n ${chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(
           ">"
         )} ${chalk.bold
           .bgHex(config?.colors?.error ? config.colors.error : "#7d1a1a")
-          .white("\n\n 🛑 Error ")}  ${chalk.reset.hex(
+          .white(" 🛑 Error ")}  ${chalk.reset.hex(
           config?.colors?.error ? config.colors.error : "#7d1a1a"
         )(message)} \n\n`
       );
@@ -65,11 +65,11 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.warn(
-        ` ${chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")(
+        `\n\n ${chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")(
           ">"
         )} ${chalk.bold
           .bgHex(config?.colors?.warning ? config.colors.warning : "#fcc419")
-          .white("\n\n ⚠️ Warn ")}  ${chalk.reset.hex(
+          .white(" ⚠️ Warn ")}  ${chalk.reset.hex(
           config?.colors?.warning ? config.colors.warning : "#fcc419"
         )(message)} \n\n`
       );
@@ -82,9 +82,11 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.info(
-        ` ${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${chalk.bold
+        `\n\n ${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(
+          ">"
+        )} ${chalk.bold
           .bgHex(config?.colors?.info ? config.colors.info : "#0ea5e9")
-          .white("\n\n  📬 Info  ")}  ${chalk.reset.hex(
+          .white("  📬 Info  ")}  ${chalk.reset.hex(
           config?.colors?.info ? config.colors.info : "#0ea5e9"
         )(message)} \n\n`
       );
@@ -97,11 +99,11 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.info(
-        ` ${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(
+        `\n\n ${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(
           ">"
         )} ${chalk.bold
           .bgHex(config?.colors?.success ? config.colors.success : "#087f5b")
-          .white("\n\n 🎉 Success ")}  ${chalk.reset.hex(
+          .white(" 🎉 Success ")}  ${chalk.reset.hex(
           config?.colors?.success ? config.colors.success : "#087f5b"
         )(message)} \n\n`
       );
@@ -114,11 +116,11 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.debug(
-        ` ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(
+        `\n\n ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(
           ">"
         )} ${chalk.bold
           .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-          .white("\n\n 🧪 Debug  ")}  ${chalk.reset.hex(
+          .white(" 🧪 Debug  ")}  ${chalk.reset.hex(
           config?.colors?.primary ? config.colors.primary : "#1fb2a6"
         )(message)} \n\n`
       );
@@ -127,11 +129,11 @@ export const getLogFn = (
 
   return (message: string) => {
     console.log(
-      ` ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(
+      `\n\n ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(
         ">"
       )} ${chalk.bold
         .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-        .white("\n\n  📢 System  ")}  ${chalk.bold.hex(
+        .white("  📢 System  ")}  ${chalk.bold.hex(
         config?.colors?.primary ? config.colors.primary : "#1fb2a6"
       )(message)} \n\n`
     );
