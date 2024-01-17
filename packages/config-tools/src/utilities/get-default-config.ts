@@ -82,9 +82,9 @@ export const getDefaultConfig = (config: Partial<StormConfig> = {}, root?: strin
   }
 
   return StormConfigSchema.parse({
-    ...config,
     ...(DefaultStormConfig as Required<StormConfig>),
-    colors: { ...config.colors, ...DefaultColorConfig },
+    ...config,
+    colors: { ...DefaultColorConfig, ...config.colors },
     workspaceRoot,
     name,
     namespace,
