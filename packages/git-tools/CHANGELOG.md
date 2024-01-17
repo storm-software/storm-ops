@@ -1,3 +1,10 @@
+## [1.24.5](https://github.com/storm-software/storm-ops/compare/git-tools-v1.24.4...git-tools-v1.24.5) (2024-01-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed instance of JSDocs parser in tsup patch ([4c8448e](https://github.com/storm-software/storm-ops/commit/4c8448eed32092d203621d4e05526a89d4b8e216))
+
 ## [1.24.4](https://github.com/storm-software/storm-ops/compare/git-tools-v1.24.3...git-tools-v1.24.4) (2024-01-17)
 
 
