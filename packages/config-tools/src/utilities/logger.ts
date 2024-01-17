@@ -31,13 +31,13 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.error(
-        `\n\n ${chalk.bold.hex(config?.colors?.fatal ? config.colors.fatal : "#1fb2a6")(
+        `\n\n\n ${chalk.bold.hex(config?.colors?.fatal ? config.colors.fatal : "#1fb2a6")(
           ">"
         )} ${chalk.bold
           .bgHex(config?.colors?.fatal ? config.colors.fatal : "#1fb2a6")
           .white(" 💀 Fatal ")}  ${chalk.reset.hex(
           config?.colors?.fatal ? config.colors.fatal : "#1fb2a6"
-        )(message)} \n\n`
+        )(message)} \n\n\n`
       );
     };
   }
@@ -48,13 +48,13 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.error(
-        `\n\n ${chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(
+        `\n\n\n ${chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(
           ">"
         )} ${chalk.bold
           .bgHex(config?.colors?.error ? config.colors.error : "#7d1a1a")
           .white(" 🛑 Error ")}  ${chalk.reset.hex(
           config?.colors?.error ? config.colors.error : "#7d1a1a"
-        )(message)} \n\n`
+        )(message)} \n\n\n`
       );
     };
   }
@@ -65,13 +65,13 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.warn(
-        `\n\n ${chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")(
+        `\n\n\n ${chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")(
           ">"
         )} ${chalk.bold
           .bgHex(config?.colors?.warning ? config.colors.warning : "#fcc419")
           .white(" ⚠️ Warn ")}  ${chalk.reset.hex(
           config?.colors?.warning ? config.colors.warning : "#fcc419"
-        )(message)} \n\n`
+        )(message)} \n\n\n`
       );
     };
   }
@@ -82,13 +82,13 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.info(
-        `\n\n ${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(
+        `\n\n\n ${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(
           ">"
         )} ${chalk.bold
           .bgHex(config?.colors?.info ? config.colors.info : "#0ea5e9")
           .white("  📬 Info  ")}  ${chalk.reset.hex(
           config?.colors?.info ? config.colors.info : "#0ea5e9"
-        )(message)} \n\n`
+        )(message)} \n\n\n`
       );
     };
   }
@@ -99,13 +99,13 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.info(
-        `\n\n ${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(
+        `\n\n\n ${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(
           ">"
         )} ${chalk.bold
           .bgHex(config?.colors?.success ? config.colors.success : "#087f5b")
           .white(" 🎉 Success ")}  ${chalk.reset.hex(
           config?.colors?.success ? config.colors.success : "#087f5b"
-        )(message)} \n\n`
+        )(message)} \n\n\n`
       );
     };
   }
@@ -116,26 +116,26 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.debug(
-        `\n\n ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(
+        `\n\n\n ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(
           ">"
         )} ${chalk.bold
           .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
           .white(" 🧪 Debug  ")}  ${chalk.reset.hex(
           config?.colors?.primary ? config.colors.primary : "#1fb2a6"
-        )(message)} \n\n`
+        )(message)} \n\n\n`
       );
     };
   }
 
   return (message: string) => {
     console.log(
-      `\n\n ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(
+      `\n\n\n ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(
         ">"
       )} ${chalk.bold
         .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
         .white("  📢 System  ")}  ${chalk.bold.hex(
         config?.colors?.primary ? config.colors.primary : "#1fb2a6"
-      )(message)} \n\n`
+      )(message)} \n\n\n`
     );
   };
 };
