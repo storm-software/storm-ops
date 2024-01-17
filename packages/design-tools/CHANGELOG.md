@@ -1,3 +1,10 @@
+## [1.6.4](https://github.com/storm-software/storm-ops/compare/design-tools-v1.6.3...design-tools-v1.6.4) (2024-01-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved blocking issue preventing tsup build completion ([e13f88f](https://github.com/storm-software/storm-ops/commit/e13f88f4c98eda68ec3d45c3b48caba533243b55))
+
 ## [1.6.3](https://github.com/storm-software/storm-ops/compare/design-tools-v1.6.2...design-tools-v1.6.3) (2024-01-17)
 
 
