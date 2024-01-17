@@ -1,3 +1,11 @@
+## [1.43.7](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.6...workspace-tools-v1.43.7) (2024-01-17)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved issue with bad config file lookup logic ([9967de4](https://github.com/storm-software/storm-ops/commit/9967de48b063a83f42c74c3f6dd667d31123dc6f))
+* **workspace-tools:** Resolved issue with config file names changing ([f18c40c](https://github.com/storm-software/storm-ops/commit/f18c40c1be8c154aff163692e79351b34accb991))
+
 ## [1.43.6](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.5...workspace-tools-v1.43.6) (2024-01-17)
 
 
