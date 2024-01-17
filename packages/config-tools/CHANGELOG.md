@@ -1,3 +1,10 @@
+## [1.15.14](https://github.com/storm-software/storm-ops/compare/config-tools-v1.15.13...config-tools-v1.15.14) (2024-01-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patched transformer functions in tsup dependency ([f6412b4](https://github.com/storm-software/storm-ops/commit/f6412b437bb5d3122573f1e0ff877ac20f4ad947))
+
 ## [1.15.13](https://github.com/storm-software/storm-ops/compare/config-tools-v1.15.12...config-tools-v1.15.13) (2024-01-17)
 
 
