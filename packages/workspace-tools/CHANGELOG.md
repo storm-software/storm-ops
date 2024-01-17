@@ -1,3 +1,10 @@
+## [1.43.8](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.7...workspace-tools-v1.43.8) (2024-01-17)
+
+
+### Bug Fixes
+
+* **config-tools:** Removed unused defaulting logic for config file ([2770efd](https://github.com/storm-software/storm-ops/commit/2770efde7032b88e6bf20fb23c5b89060175db5d))
+
 ## [1.43.7](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.6...workspace-tools-v1.43.7) (2024-01-17)
 
 
