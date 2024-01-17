@@ -1,3 +1,10 @@
+## [1.43.12](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.11...workspace-tools-v1.43.12) (2024-01-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added tsup build logging ([35d8dae](https://github.com/storm-software/storm-ops/commit/35d8dae8dddc91627c5fcda73f01c16618aaafc6))
+
 ## [1.43.11](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.10...workspace-tools-v1.43.11) (2024-01-17)
 
 
