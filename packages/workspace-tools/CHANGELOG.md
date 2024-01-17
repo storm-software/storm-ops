@@ -1,3 +1,10 @@
+## [1.43.17](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.16...workspace-tools-v1.43.17) (2024-01-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patched transformer functions in tsup dependency ([f6412b4](https://github.com/storm-software/storm-ops/commit/f6412b437bb5d3122573f1e0ff877ac20f4ad947))
+
 ## [1.43.16](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.15...workspace-tools-v1.43.16) (2024-01-17)
 
 
