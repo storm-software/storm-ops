@@ -1,3 +1,11 @@
+## [1.43.11](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.43.10...create-storm-workspace-v1.43.11) (2024-01-17)
+
+
+### Bug Fixes
+
+* **config-tools:** Fixed config value defaulting issue for booleans ([c54c60b](https://github.com/storm-software/storm-ops/commit/c54c60b1ddd533530571dd41fd9b6502c1cb2cb8))
+* **workspace-tools:** Added tsup build logging ([35d8dae](https://github.com/storm-software/storm-ops/commit/35d8dae8dddc91627c5fcda73f01c16618aaafc6))
+
 ## [1.43.10](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.43.9...create-storm-workspace-v1.43.10) (2024-01-17)
 
 
