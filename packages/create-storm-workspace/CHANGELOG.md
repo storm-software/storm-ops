@@ -1,3 +1,10 @@
+## [1.43.6](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.43.5...create-storm-workspace-v1.43.6) (2024-01-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Added code to properly parse out the config file ([c345fef](https://github.com/storm-software/storm-ops/commit/c345fefc6389a9a10b3f5b8446eb76982f45e6f7))
+
 ## [1.43.5](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.43.4...create-storm-workspace-v1.43.5) (2024-01-17)
 
 
