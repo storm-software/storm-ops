@@ -63,7 +63,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..3165f63da893d94058af2ebda01f89fd
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..46e2322dad69c10f02a4978cc42258d07f51e2d3 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..14b5808ee10d863e54291105be64d07830017652 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1,4 +1,4 @@
@@ -1170,7 +1170,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..46e2322dad69c10f02a4978cc42258d0
      return host.writeFile(
        fileName,
        text,
-@@ -2253,10 +2339,19 @@ function emitDtsFiles(program, host) {
+@@ -2253,10 +2339,18 @@ function emitDtsFiles(program, host) {
        data
      );
    };
@@ -1179,12 +1179,11 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..46e2322dad69c10f02a4978cc42258d0
 +  logger.info("tsc", "Emitting DTS files");
 +
 +  let transformDiagnostics = [];
-+  /*let emitResult = program.emit(undefined, writeFile, undefined, true,
-+    options.getTransform 
-+      ? { before: [options.getTransform(program, transformDiagnostics)] } 
-+      : undefined);*/
++  let emitResult = program.emit(undefined, writeFile, undefined, true,
++    options.getTransform
++      ? { before: [options.getTransform(program, transformDiagnostics)] }
++      : undefined);
 +
-+  let emitResult = program.emit(undefined, writeFile, undefined, true);
    let diagnostics = _typescript2.default.getPreEmitDiagnostics(program).concat(emitResult.diagnostics);
    let diagnosticMessages = [];
 -  diagnostics.forEach((diagnostic) => {
@@ -1192,7 +1191,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..46e2322dad69c10f02a4978cc42258d0
      if (diagnostic.file) {
        let { line, character } = _typescript2.default.getLineAndCharacterOfPosition(
          diagnostic.file,
-@@ -2283,52 +2378,49 @@ function emitDtsFiles(program, host) {
+@@ -2283,52 +2377,54 @@ function emitDtsFiles(program, host) {
        "TSC",
        "Failed to emit declaration files.\n\n" + diagnosticMessage
      );
@@ -1216,7 +1215,12 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..46e2322dad69c10f02a4978cc42258d0
 +  const program = _typescript2.default.createProgram({
 +    rootNames: compilerOptions.fileNames,
 +    options: compilerOptions.options,
-+    host,
++    host: {
++      ...host,
++      jsDocParsingMode: _typescript2.default.JSDocParsingMode?.ParseAll !== undefined
++        ? _typescript2.default.JSDocParsingMode.ParseAll
++        : 0
++    }
 +  });
 +
 +  const fileMapping = emitDtsFiles(program, host, options);
@@ -1275,7 +1279,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..46e2322dad69c10f02a4978cc42258d0
      logger.success("tsc", `\u26A1\uFE0F Build success in ${getDuration()}`);
      return exports;
    } catch (error) {
-@@ -2352,7 +2444,7 @@ function formatAggregationExports(exports, declarationDirPath) {
+@@ -2352,7 +2448,7 @@ function formatAggregationExports(exports, declarationDirPath) {
    return lines.join("\n") + "\n";
  }
  function formatAggregationExport(declaration, declarationDirPath) {
@@ -1284,7 +1288,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..46e2322dad69c10f02a4978cc42258d0
      "./" + _path2.default.posix.normalize(
        _chunkGQ77QZBOjs.slash.call(void 0, _path2.default.relative(declarationDirPath, declaration.destFileName))
      )
-@@ -2374,7 +2466,7 @@ function formatAggregationExport(declaration, declarationDirPath) {
+@@ -2374,7 +2470,7 @@ function formatAggregationExport(declaration, declarationDirPath) {
    }
  }
  function formatDistributionExports(exports, fromFilePath, toFilePath) {
@@ -1293,7 +1297,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..46e2322dad69c10f02a4978cc42258d0
      _path2.default.posix.relative(
        _path2.default.posix.dirname(_path2.default.posix.normalize(_chunkGQ77QZBOjs.slash.call(void 0, fromFilePath))),
        _path2.default.posix.normalize(_chunkGQ77QZBOjs.slash.call(void 0, toFilePath))
-@@ -2427,41 +2519,83 @@ function formatDistributionExport(declaration, dest) {
+@@ -2427,41 +2523,83 @@ function formatDistributionExport(declaration, dest) {
  }
  
  // src/api-extractor.ts
@@ -1391,7 +1395,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..46e2322dad69c10f02a4978cc42258d0
    const extractorResult = Extractor.invoke(extractorConfig, {
      // Equivalent to the "--local" command-line parameter
      localBuild: true,
-@@ -2474,36 +2608,54 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+@@ -2474,36 +2612,54 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
      );
    }
  }
@@ -1455,7 +1459,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..46e2322dad69c10f02a4978cc42258d0
  }
  async function runDtsRollup(options, exports) {
    try {
-@@ -2592,11 +2744,14 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -2592,11 +2748,14 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
      options.entry = entry;
      logger3.info("CLI", `Building entry: ${JSON.stringify(entry)}`);
    }
@@ -1472,7 +1476,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..46e2322dad69c10f02a4978cc42258d0
      );
      options.tsconfig = tsconfig.path;
      options.tsconfigResolvePaths = _optionalChain([tsconfig, 'access', _20 => _20.data, 'optionalAccess', _21 => _21.compilerOptions, 'optionalAccess', _22 => _22.paths]) || {};
-@@ -2610,9 +2765,10 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -2610,9 +2769,10 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
      if (options.experimentalDts) {
        options.experimentalDts.compilerOptions = {
          ...tsconfig.data.compilerOptions || {},
@@ -1485,7 +1489,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..46e2322dad69c10f02a4978cc42258d0
          Object.keys(options.experimentalDts.entry).length > 0 ? options.experimentalDts.entry : options.entry
        );
      }
-@@ -2628,8 +2784,8 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -2628,8 +2788,8 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
    return options;
  };
  async function build(_options) {
@@ -1496,7 +1500,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..46e2322dad69c10f02a4978cc42258d0
      _options.config === true ? void 0 : _options.config
    );
    const configData = typeof config.data === "function" ? await config.data(_options) : config.data;
-@@ -2652,7 +2808,7 @@ async function build(_options) {
+@@ -2652,7 +2812,7 @@ async function build(_options) {
              );
            }
            if (options.experimentalDts) {
@@ -1505,7 +1509,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..46e2322dad69c10f02a4978cc42258d0
              await runDtsRollup(options, exports);
            }
            if (options.dts) {
-@@ -2695,7 +2851,7 @@ async function build(_options) {
+@@ -2695,7 +2855,7 @@ async function build(_options) {
              let onSuccessProcess;
              let onSuccessCleanup;
              const buildDependencies = /* @__PURE__ */ new Set();
@@ -1514,7 +1518,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..46e2322dad69c10f02a4978cc42258d0
              const doOnSuccessCleanup = async () => {
                if (onSuccessProcess) {
                  await killProcess({
-@@ -2708,7 +2864,7 @@ async function build(_options) {
+@@ -2708,7 +2868,7 @@ async function build(_options) {
                onSuccessProcess = void 0;
                onSuccessCleanup = void 0;
              };
@@ -1523,7 +1527,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..46e2322dad69c10f02a4978cc42258d0
                () => {
                  return buildAll();
                },
-@@ -2816,7 +2972,7 @@ async function build(_options) {
+@@ -2816,7 +2976,7 @@ async function build(_options) {
                  let shouldSkipChange = false;
                  if (options.watch === true) {
                    if (file === "package.json" && !buildDependencies.has(file)) {

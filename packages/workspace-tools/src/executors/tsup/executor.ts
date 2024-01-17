@@ -528,8 +528,14 @@ ${externalDependencies
     ),
     banner: options.banner
       ? {
-          js: `${options.banner}\n\n`,
-          css: `/* \n${options.banner}\n */\n\n`
+          js: `${options.banner}
+
+`,
+          css: `/*
+${options.banner}\n
+
+
+*/`
         }
       : undefined,
     outputPath: options.outputPath,

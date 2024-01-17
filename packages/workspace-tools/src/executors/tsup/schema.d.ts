@@ -1,5 +1,6 @@
-import { EsBuildExecutorOptions } from "@nx/esbuild/src/executors/esbuild/schema.d.ts";
-import { Options } from "tsup";
+import type { EsBuildExecutorOptions } from "@nx/esbuild/src/executors/esbuild/schema.d.ts";
+import type { Options } from "tsup";
+import type { GetConfigParams } from "../../types";
 
 export type Platform = "browser" | "neutral" | "node" | "worker";
 

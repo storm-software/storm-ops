@@ -112,12 +112,12 @@ export const loadStormConfig = async (workspaceRoot?: string): Promise<StormConf
       if (key === "colors") {
         configFile.colors = {
           primary: process.env.STORM_COLOR_PRIMARY ?? configFile.colors?.primary,
-          background: process.env.STORM_COLOR_BACKGROUND ?? configFile.colors?.primary,
-          success: process.env.STORM_COLOR_SUCCESS ?? configFile.colors?.primary,
-          info: process.env.STORM_COLOR_INFO ?? configFile.colors?.primary,
-          warning: process.env.STORM_COLOR_WARNING ?? configFile.colors?.primary,
-          error: process.env.STORM_COLOR_ERROR ?? configFile.colors?.primary,
-          fatal: process.env.STORM_COLOR_FATAL ?? configFile.colors?.primary
+          background: process.env.STORM_COLOR_BACKGROUND ?? configFile.colors?.background,
+          success: process.env.STORM_COLOR_SUCCESS ?? configFile.colors?.success,
+          info: process.env.STORM_COLOR_INFO ?? configFile.colors?.info,
+          warning: process.env.STORM_COLOR_WARNING ?? configFile.colors?.warning,
+          error: process.env.STORM_COLOR_ERROR ?? configFile.colors?.error,
+          fatal: process.env.STORM_COLOR_FATAL ?? configFile.colors?.fatal
         };
       } else {
         configFile[key] = configEnv[key];
@@ -128,13 +128,14 @@ export const loadStormConfig = async (workspaceRoot?: string): Promise<StormConf
   const config = StormConfigSchema.parse(configFile);
   setConfigEnv(config);
 
-  console.debug("\n\n");
+  console.debug("\r\n\r\n");
   console.debug(`Loaded Storm config from ${config.configFile}`);
   for (const key of Object.keys(configFile)) {
-    console.debug(` ----- ${key} ----- `);
+    console.debug(`
+ ----- ${key} ----- `);
     console.debug(configFile[key]);
   }
-  console.debug("\n\n");
+  console.debug("\r\n\r\n");
 
   return config;
 };

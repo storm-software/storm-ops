@@ -31,13 +31,14 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.error(
-        `\n\n\n ${chalk.bold.hex(config?.colors?.fatal ? config.colors.fatal : "#1fb2a6")(
-          ">"
-        )} ${chalk.bold
+        `
+${chalk.bold.hex(config?.colors?.fatal ? config.colors.fatal : "#1fb2a6")(">")} ${chalk.bold
           .bgHex(config?.colors?.fatal ? config.colors.fatal : "#1fb2a6")
-          .white(" 💀 Fatal ")}  ${chalk.reset.hex(
+          .white(" 💀 Fatal ")}  ${chalk.hex(
           config?.colors?.fatal ? config.colors.fatal : "#1fb2a6"
-        )(message)} \n\n\n`
+        )(message)}
+
+`
       );
     };
   }
@@ -48,13 +49,13 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.error(
-        `\n\n\n ${chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(
-          ">"
-        )} ${chalk.bold
+        `
+${chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")} ${chalk.bold
           .bgHex(config?.colors?.error ? config.colors.error : "#7d1a1a")
-          .white(" 🛑 Error ")}  ${chalk.reset.hex(
+          .white(" 🛑 Error ")}  ${chalk.hex(
           config?.colors?.error ? config.colors.error : "#7d1a1a"
-        )(message)} \n\n\n`
+        )(message)}
+`
       );
     };
   }
@@ -65,13 +66,13 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.warn(
-        `\n\n\n ${chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")(
-          ">"
-        )} ${chalk.bold
+        `
+${chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")(">")} ${chalk.bold
           .bgHex(config?.colors?.warning ? config.colors.warning : "#fcc419")
-          .white(" ⚠️ Warn ")}  ${chalk.reset.hex(
+          .white(" ⚠️ Warn ")}  ${chalk.hex(
           config?.colors?.warning ? config.colors.warning : "#fcc419"
-        )(message)} \n\n\n`
+        )(message)}
+`
       );
     };
   }
@@ -82,13 +83,13 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.info(
-        `\n\n\n ${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(
-          ">"
-        )} ${chalk.bold
+        `
+${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${chalk.bold
           .bgHex(config?.colors?.info ? config.colors.info : "#0ea5e9")
-          .white("  📬 Info  ")}  ${chalk.reset.hex(
+          .white("  📬 Info  ")}  ${chalk.hex(
           config?.colors?.info ? config.colors.info : "#0ea5e9"
-        )(message)} \n\n\n`
+        )(message)}
+`
       );
     };
   }
@@ -99,13 +100,13 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.info(
-        `\n\n\n ${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(
-          ">"
-        )} ${chalk.bold
+        `
+${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(">")} ${chalk.bold
           .bgHex(config?.colors?.success ? config.colors.success : "#087f5b")
-          .white(" 🎉 Success ")}  ${chalk.reset.hex(
+          .white(" 🎉 Success ")}  ${chalk.hex(
           config?.colors?.success ? config.colors.success : "#087f5b"
-        )(message)} \n\n\n`
+        )(message)}
+`
       );
     };
   }
@@ -116,26 +117,26 @@ export const getLogFn = (
   ) {
     return (message: string) => {
       console.debug(
-        `\n\n\n ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(
-          ">"
-        )} ${chalk.bold
+        `
+${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${chalk.bold
           .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-          .white(" 🧪 Debug  ")}  ${chalk.reset.hex(
+          .white(" 🧪 Debug  ")}  ${chalk.hex(
           config?.colors?.primary ? config.colors.primary : "#1fb2a6"
-        )(message)} \n\n\n`
+        )(message)}
+`
       );
     };
   }
 
   return (message: string) => {
     console.log(
-      `\n\n\n ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(
-        ">"
-      )} ${chalk.bold
+      `
+${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${chalk.bold
         .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-        .white("  📢 System  ")}  ${chalk.bold.hex(
+        .white("  📢 System  ")}  ${chalk.hex(
         config?.colors?.primary ? config.colors.primary : "#1fb2a6"
-      )(message)} \n\n\n`
+      )(message)}
+`
     );
   };
 };
