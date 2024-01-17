@@ -112,5 +112,12 @@ export const loadStormConfig = async (workspaceRoot?: string): Promise<StormConf
   const config = StormConfigSchema.parse(configFile);
   setConfigEnv(config);
 
+  console.debug("\n\n");
+  console.debug(`Loaded Storm config from ${config.configFile}`);
+  for (const key of Object.keys(configFile)) {
+    console.debug(configFile[key]);
+  }
+  console.debug("\n\n");
+
   return config;
 };
