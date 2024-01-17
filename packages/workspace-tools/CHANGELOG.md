@@ -1,3 +1,10 @@
+## [1.43.13](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.12...workspace-tools-v1.43.13) (2024-01-17)
+
+
+### Bug Fixes
+
+* **config-tools:** Added more logging and updated logic to create project graph ([f68d8e3](https://github.com/storm-software/storm-ops/commit/f68d8e358040d15cf8a20216c1aa09da9254ea09))
+
 ## [1.43.12](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.11...workspace-tools-v1.43.12) (2024-01-17)
 
 
