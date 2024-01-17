@@ -1,3 +1,10 @@
+## [1.26.14](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.26.13...linting-tools-v1.26.14) (2024-01-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patched transformer functions in tsup dependency ([f6412b4](https://github.com/storm-software/storm-ops/commit/f6412b437bb5d3122573f1e0ff877ac20f4ad947))
+
 ## [1.26.13](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.26.12...linting-tools-v1.26.13) (2024-01-17)
 
 
