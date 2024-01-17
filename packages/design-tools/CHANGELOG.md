@@ -1,3 +1,10 @@
+## [1.6.5](https://github.com/storm-software/storm-ops/compare/design-tools-v1.6.4...design-tools-v1.6.5) (2024-01-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Patched transformer functions in tsup dependency ([f6412b4](https://github.com/storm-software/storm-ops/commit/f6412b437bb5d3122573f1e0ff877ac20f4ad947))
+
 ## [1.6.4](https://github.com/storm-software/storm-ops/compare/design-tools-v1.6.3...design-tools-v1.6.4) (2024-01-17)
 
 
