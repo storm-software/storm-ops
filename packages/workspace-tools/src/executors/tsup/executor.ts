@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { esbuildDecorators } from "@anatine/esbuild-decorators";
-import { createProjectGraphAsync, joinPathFragments, readJsonFile } from "@nx/devkit";
+import { joinPathFragments, readCachedProjectGraph, readJsonFile } from "@nx/devkit";
 import type { ExecutorContext } from "@nx/devkit";
 import { copyAssets } from "@nx/js";
 import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options";
@@ -292,43 +292,30 @@ ${externalDependencies
     return ret;
   }, {});
 
-  console.log("Conditional before checking entry points");
   if (options.generatePackageJson !== false) {
-    console.log("Checking entry points");
-    const projectGraph = await createProjectGraphAsync({
-      exitOnError: true
-    });
-    console.log("Read project graph");
+    const projectGraph = readCachedProjectGraph();
 
     packageJson.dependencies = undefined;
     for (const externalDependency of externalDependencies) {
-      console.log(externalDependency);
       const packageConfig = externalDependency.node.data as PackageConfiguration;
       if (
         packageConfig?.packageName &&
-        externalDependency.node.type === "npm" &&
-        packageConfig?.packageName !== "@biomejs/biome"
+        !!(projectGraph.externalNodes[externalDependency.node.name]?.type === "npm")
       ) {
-        console.log("In if statement");
-        console.log(packageConfig);
-
         const { packageName, version } = packageConfig;
         if (
-          workspacePackageJson.dependencies?.[packageName] ||
-          workspacePackageJson.devDependencies?.[packageName] ||
-          packageJson?.devDependencies?.[packageName]
+          !workspacePackageJson.dependencies?.[packageName] &&
+          !workspacePackageJson.devDependencies?.[packageName] &&
+          !packageJson?.devDependencies?.[packageName]
         ) {
-          return null;
+          packageJson.dependencies ??= {};
+          packageJson.dependencies[packageName] = projectGraph.nodes[externalDependency.node.name]
+            ? "latest"
+            : version;
         }
-
-        packageJson.dependencies ??= {};
-        packageJson.dependencies[packageName] = projectGraph.nodes[externalDependency.node.name]
-          ? "latest"
-          : version;
       }
     }
 
-    console.log("Checking entry points - internalDependencies");
     for (const packageName of internalDependencies) {
       if (!packageJson?.devDependencies?.[packageName]) {
         packageJson.dependencies ??= {};
@@ -373,7 +360,6 @@ ${externalDependencies
         "./package.json": "./package.json"
       };
 
-      console.log("Checking entry points - packageJson.exports");
       packageJson.exports = Object.keys(entry).reduce((ret: Record<string, any>, key: string) => {
         let packageJsonKey = key.startsWith("./") ? key : `./${key}`;
         packageJsonKey = packageJsonKey.replaceAll("/index", "");
@@ -446,7 +432,6 @@ ${externalDependencies
       ? projectRoot
       : join("packages", context.projectName);
 
-    console.log("Checking entry points - packageJsonPath");
     const packageJsonPath = join(context.root, options.outputPath, "package.json");
 
     writeDebug(config, `⚡ Writing package.json file to: ${packageJsonPath}`);
@@ -462,7 +447,6 @@ ${externalDependencies
     writeWarning(config, "Skipping writing to package.json file");
   }
 
-  console.log("Checking entry points - options.includeSrc");
   if (options.includeSrc === true) {
     const files = globSync([
       joinPathFragments(context.root, options.outputPath, "src/**/*.ts"),

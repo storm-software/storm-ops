@@ -51,7 +51,7 @@
         "useConsistentArrayType": "error",
         "useNodejsImportProtocol": "error",
         "useShorthandFunctionType": "error",
-        "useImportRestrictions": "warn",
+        "useImportRestrictions": "off",
         "useForOf": "error"
       },
       "correctness": {
