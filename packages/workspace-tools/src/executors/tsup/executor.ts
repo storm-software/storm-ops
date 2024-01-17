@@ -292,7 +292,9 @@ ${externalDependencies
     return ret;
   }, {});
 
+  console.log("Conditional before checking entry points");
   if (options.generatePackageJson !== false) {
+    console.log("Checking entry points");
     const projectGraph = readCachedProjectGraph();
 
     packageJson.dependencies = undefined;
@@ -318,6 +320,7 @@ ${externalDependencies
       }
     }
 
+    console.log("Checking entry points - internalDependencies");
     for (const packageName of internalDependencies) {
       if (!packageJson?.devDependencies?.[packageName]) {
         packageJson.dependencies ??= {};
@@ -362,6 +365,7 @@ ${externalDependencies
         "./package.json": "./package.json"
       };
 
+      console.log("Checking entry points - packageJson.exports");
       packageJson.exports = Object.keys(entry).reduce((ret: Record<string, any>, key: string) => {
         let packageJsonKey = key.startsWith("./") ? key : `./${key}`;
         packageJsonKey = packageJsonKey.replaceAll("/index", "");
@@ -434,6 +438,7 @@ ${externalDependencies
       ? projectRoot
       : join("packages", context.projectName);
 
+    console.log("Checking entry points - packageJsonPath");
     const packageJsonPath = join(context.root, options.outputPath, "package.json");
 
     writeDebug(config, `⚡ Writing package.json file to: ${packageJsonPath}`);
@@ -449,6 +454,7 @@ ${externalDependencies
     writeWarning(config, "Skipping writing to package.json file");
   }
 
+  console.log("Checking entry points - options.includeSrc");
   if (options.includeSrc === true) {
     const files = globSync([
       joinPathFragments(context.root, options.outputPath, "src/**/*.ts"),
