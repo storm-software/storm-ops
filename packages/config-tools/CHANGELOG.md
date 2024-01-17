@@ -1,3 +1,11 @@
+## [1.15.4](https://github.com/storm-software/storm-ops/compare/config-tools-v1.15.3...config-tools-v1.15.4) (2024-01-17)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue with logging strings ([21d9e0d](https://github.com/storm-software/storm-ops/commit/21d9e0dc7f21820909697577931d0c7b339755b7))
+* **workspace-tools:** Remove the transform code from tsup patch ([399c910](https://github.com/storm-software/storm-ops/commit/399c910f0ca46741cc97b06f2a0812adbf7910f0))
+
 ## [1.15.3](https://github.com/storm-software/storm-ops/compare/config-tools-v1.15.2...config-tools-v1.15.3) (2024-01-16)
 
 
