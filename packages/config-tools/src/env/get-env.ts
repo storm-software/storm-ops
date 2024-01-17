@@ -1,4 +1,4 @@
-import { LogLevelLabel, type StormConfig } from "../types";
+import type { LogLevelLabel, StormConfig } from "../types";
 import { getLogLevelLabel } from "../utilities";
 
 /**
@@ -55,7 +55,12 @@ export const getConfigEnv = (): Partial<StormConfig> => {
     env: (process.env[`${prefix}ENV`] ??
       process.env.NODE_ENV ??
       process.env.ENVIRONMENT) as StormConfig["env"],
-    ci: Boolean(process.env[`${prefix}CI`] ?? process.env.CI ?? process.env.CONTINUOUS_INTEGRATION),
+    ci:
+      process.env[`${prefix}CI`] !== undefined
+        ? Boolean(
+            process.env[`${prefix}CI`] ?? process.env.CI ?? process.env.CONTINUOUS_INTEGRATION
+          )
+        : undefined,
     colors: {
       primary: process.env[`${prefix}COLOR_PRIMARY`],
       background: process.env[`${prefix}COLOR_BACKGROUND`],
@@ -67,14 +72,16 @@ export const getConfigEnv = (): Partial<StormConfig> => {
     },
     repository: process.env[`${prefix}REPOSITORY`],
     branch: process.env[`${prefix}BRANCH`],
-    preMajor: Boolean(process.env[`${prefix}PRE_MAJOR`]),
+    preMajor:
+      process.env[`${prefix}PRE_MAJOR`] !== undefined
+        ? Boolean(process.env[`${prefix}PRE_MAJOR`])
+        : undefined,
     logLevel:
       process.env[`${prefix}LOG_LEVEL`] !== null && process.env[`${prefix}LOG_LEVEL`] !== undefined
         ? Number.isSafeInteger(Number.parseInt(process.env[`${prefix}LOG_LEVEL`]))
           ? getLogLevelLabel(Number.parseInt(process.env[`${prefix}LOG_LEVEL`]))
           : (process.env[`${prefix}LOG_LEVEL`] as LogLevelLabel)
-        : LogLevelLabel.INFO,
-    extensions: {}
+        : undefined
   };
 
   const serializedConfig = process.env[`${prefix}CONFIG`];
@@ -88,7 +95,9 @@ export const getConfigEnv = (): Partial<StormConfig> => {
     };
   }
 
-  const extensionPrefix = `${prefix}EXTENSION_`;
+  return config;
+
+  /*const extensionPrefix = `${prefix}EXTENSION_`;
   return Object.keys(process.env)
     .filter((key) => key.startsWith(extensionPrefix))
     .reduce((ret: StormConfig, key: string) => {
@@ -102,5 +111,5 @@ export const getConfigEnv = (): Partial<StormConfig> => {
       }
 
       return ret;
-    }, config);
+    }, config);*/
 };
