@@ -1,3 +1,10 @@
+## [1.43.11](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.10...workspace-tools-v1.43.11) (2024-01-17)
+
+
+### Bug Fixes
+
+* **config-tools:** Fixed config value defaulting issue for booleans ([c54c60b](https://github.com/storm-software/storm-ops/commit/c54c60b1ddd533530571dd41fd9b6502c1cb2cb8))
+
 ## [1.43.10](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.9...workspace-tools-v1.43.10) (2024-01-17)
 
 
