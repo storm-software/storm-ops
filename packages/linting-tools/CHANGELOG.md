@@ -1,3 +1,10 @@
+## [1.26.12](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.26.11...linting-tools-v1.26.12) (2024-01-17)
+
+
+### Bug Fixes
+
+* **config-tools:** Ensure colors are set correctly ([e6fffd0](https://github.com/storm-software/storm-ops/commit/e6fffd0c6554d2fa36e3a4b8b44b443c030aa831))
+
 ## [1.26.11](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.26.10...linting-tools-v1.26.11) (2024-01-17)
 
 
