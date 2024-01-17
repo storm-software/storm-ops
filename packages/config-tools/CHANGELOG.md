@@ -1,3 +1,10 @@
+## [1.15.10](https://github.com/storm-software/storm-ops/compare/config-tools-v1.15.9...config-tools-v1.15.10) (2024-01-17)
+
+
+### Bug Fixes
+
+* **config-tools:** Ehanced config values assignement logic ([d66dcf7](https://github.com/storm-software/storm-ops/commit/d66dcf7500d15bc85065cb5676a1fb585d44d94b))
+
 ## [1.15.9](https://github.com/storm-software/storm-ops/compare/config-tools-v1.15.8...config-tools-v1.15.9) (2024-01-17)
 
 
