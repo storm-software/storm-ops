@@ -1,3 +1,10 @@
+## [1.43.5](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.4...workspace-tools-v1.43.5) (2024-01-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed instance of JSDocs parser in tsup patch ([4c8448e](https://github.com/storm-software/storm-ops/commit/4c8448eed32092d203621d4e05526a89d4b8e216))
+
 ## [1.43.4](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.3...workspace-tools-v1.43.4) (2024-01-17)
 
 
