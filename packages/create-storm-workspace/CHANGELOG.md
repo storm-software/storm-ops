@@ -1,3 +1,10 @@
+## [1.43.13](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.43.12...create-storm-workspace-v1.43.13) (2024-01-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Update the logic to apply external dependencies ([29b73ca](https://github.com/storm-software/storm-ops/commit/29b73ca3ee95539a3832adcc59043882d358eb53))
+
 ## [1.43.12](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.43.11...create-storm-workspace-v1.43.12) (2024-01-17)
 
 
