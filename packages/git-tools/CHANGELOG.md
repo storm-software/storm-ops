@@ -1,3 +1,10 @@
+## [1.24.10](https://github.com/storm-software/storm-ops/compare/git-tools-v1.24.9...git-tools-v1.24.10) (2024-01-17)
+
+
+### Bug Fixes
+
+* **config-tools:** Ehanced config values assignement logic ([d66dcf7](https://github.com/storm-software/storm-ops/commit/d66dcf7500d15bc85065cb5676a1fb585d44d94b))
+
 ## [1.24.9](https://github.com/storm-software/storm-ops/compare/git-tools-v1.24.8...git-tools-v1.24.9) (2024-01-17)
 
 
