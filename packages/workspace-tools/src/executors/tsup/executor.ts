@@ -304,10 +304,10 @@ ${externalDependencies
     for (const externalDependency of externalDependencies) {
       console.log(externalDependency);
       const packageConfig = externalDependency.node.data as PackageConfiguration;
-      if (
-        packageConfig?.packageName &&
-        !!(projectGraph.externalNodes[externalDependency.node.name]?.type === "npm")
-      ) {
+      if (packageConfig?.packageName && externalDependency.node.type === "npm") {
+        console.log("In if statement");
+        console.log(packageConfig);
+
         const { packageName, version } = packageConfig;
         if (
           workspacePackageJson.dependencies?.[packageName] ||
