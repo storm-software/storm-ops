@@ -1,3 +1,10 @@
+## [1.22.4](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.22.3...testing-tools-v1.22.4) (2024-01-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Resolved blocking issue preventing tsup build completion ([e13f88f](https://github.com/storm-software/storm-ops/commit/e13f88f4c98eda68ec3d45c3b48caba533243b55))
+
 ## [1.22.3](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.22.2...testing-tools-v1.22.3) (2024-01-17)
 
 
