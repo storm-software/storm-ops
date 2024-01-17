@@ -189,9 +189,7 @@ ${Object.keys(options)
 
   if (implicitDependencies && implicitDependencies.length > 0) {
     options.external = implicitDependencies.reduce((ret: string[], key: string) => {
-      if (getLogLevel(config?.logLevel) >= LogLevel.DEBUG) {
-        writeDebug(config, `⚡ Adding implicit dependency: ${key}`);
-      }
+      writeDebug(config, `⚡ Adding implicit dependency: ${key}`);
 
       const projectConfig = projectConfigs[key];
       if (projectConfig?.targets?.build) {
