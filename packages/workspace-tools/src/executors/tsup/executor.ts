@@ -304,7 +304,11 @@ ${externalDependencies
     for (const externalDependency of externalDependencies) {
       console.log(externalDependency);
       const packageConfig = externalDependency.node.data as PackageConfiguration;
-      if (packageConfig?.packageName && externalDependency.node.type === "npm") {
+      if (
+        packageConfig?.packageName &&
+        externalDependency.node.type === "npm" &&
+        packageConfig?.packageName !== "@biomejs/biome"
+      ) {
         console.log("In if statement");
         console.log(packageConfig);
 
