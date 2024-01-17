@@ -1,3 +1,10 @@
+## [1.22.3](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.22.2...testing-tools-v1.22.3) (2024-01-17)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed instance of JSDocs parser in tsup patch ([4c8448e](https://github.com/storm-software/storm-ops/commit/4c8448eed32092d203621d4e05526a89d4b8e216))
+
 ## [1.22.2](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.22.1...testing-tools-v1.22.2) (2024-01-17)
 
 
