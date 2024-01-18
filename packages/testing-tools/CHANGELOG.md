@@ -1,3 +1,10 @@
+## [1.22.6](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.22.5...testing-tools-v1.22.6) (2024-01-18)
+
+
+### Bug Fixes
+
+* **linting-tools:** Updated ignored files in biome linter ([54520d2](https://github.com/storm-software/storm-ops/commit/54520d24ffc860401b57cab2d28a2565c352a7e9))
+
 ## [1.22.5](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.22.4...testing-tools-v1.22.5) (2024-01-17)
 
 
