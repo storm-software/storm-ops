@@ -517,7 +517,7 @@ ${externalDependencies
             ...options,
             watch: false,
             main: options.entry,
-            transformers: options.skipTypia ? [] : ["typia/lib/transform"]
+            transformers: []
           },
           context.root,
           sourceRoot,
