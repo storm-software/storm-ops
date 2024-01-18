@@ -1,3 +1,10 @@
+## [1.15.15](https://github.com/storm-software/storm-ops/compare/config-tools-v1.15.14...config-tools-v1.15.15) (2024-01-18)
+
+
+### Bug Fixes
+
+* **linting-tools:** Updated ignored files in biome linter ([54520d2](https://github.com/storm-software/storm-ops/commit/54520d24ffc860401b57cab2d28a2565c352a7e9))
+
 ## [1.15.14](https://github.com/storm-software/storm-ops/compare/config-tools-v1.15.13...config-tools-v1.15.14) (2024-01-17)
 
 
