@@ -1,3 +1,10 @@
+## [1.26.15](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.26.14...linting-tools-v1.26.15) (2024-01-18)
+
+
+### Bug Fixes
+
+* **linting-tools:** Updated ignored files in biome linter ([54520d2](https://github.com/storm-software/storm-ops/commit/54520d24ffc860401b57cab2d28a2565c352a7e9))
+
 ## [1.26.14](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.26.13...linting-tools-v1.26.14) (2024-01-17)
 
 
