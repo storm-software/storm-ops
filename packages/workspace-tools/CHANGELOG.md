@@ -1,3 +1,10 @@
+## [1.43.20](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.19...workspace-tools-v1.43.20) (2024-01-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed inner try-catch from tsup build ([742e185](https://github.com/storm-software/storm-ops/commit/742e18517b2a71e17bb0848eb17127530f8ce2c3))
+
 ## [1.43.19](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.18...workspace-tools-v1.43.19) (2024-01-18)
 
 
