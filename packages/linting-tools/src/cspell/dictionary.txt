@@ -31,6 +31,7 @@ allcontributors
 probot
 smee
 remeda
+typia
 stormie
 npmjs
 noopener

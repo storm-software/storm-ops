@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "typia",
+  "version": 2,
+  "title": "Typia Generate Executor",
+  "description": "Run the Typia generator to create runtime type validators",
+  "type": "object",
+  "properties": {
+    "entry": {
+      "type": "string",
+      "description": "The path to the typia entry file, relative to project.",
+      "alias": "main",
+      "default": "{sourceRoot}/index.ts"
+    },
+    "outputPath": {
+      "type": "string",
+      "description": "The output path of the generated files.",
+      "x-completion-type": "directory",
+      "x-priority": "important",
+      "default": "{sourceRoot}/__generated__/typia/index.ts"
+    },
+    "tsConfig": {
+      "type": "string",
+      "description": "The path to the `tsconfig.json` file.",
+      "x-completion-type": "file",
+      "x-completion-glob": "tsconfig.*.json",
+      "x-priority": "important",
+      "default": "tsconfig.json"
+    }
+  },
+  "required": ["entry", "outputPath", "tsConfig"]
+}
