@@ -1,5 +1,6 @@
 import type { ExecutorContext } from "@nx/devkit";
-import type { StormConfig } from "@storm-software/config-tools";
+import { type StormConfig, writeInfo } from "@storm-software/config-tools";
+import { removeSync } from "fs-extra";
 import { TypiaProgrammer } from "typia/lib/programmers/TypiaProgrammer";
 import { withRunExecutor } from "../../base/base-executor";
 import type { TypiaExecutorSchema } from "./schema";
@@ -7,10 +8,15 @@ import type { TypiaExecutorSchema } from "./schema";
 export async function typiaExecutorFn(
   options: TypiaExecutorSchema,
   _: ExecutorContext,
-  __?: StormConfig
+  config?: StormConfig
 ) {
+  if (options.clean !== false) {
+    writeInfo(config, `🧹 Cleaning output path: ${options.outputPath}`);
+    removeSync(options.outputPath);
+  }
+
   await TypiaProgrammer.build({
-    input: options.entry,
+    input: options.entryPath,
     output: options.outputPath,
     project: options.tsConfig
   });
@@ -27,9 +33,10 @@ export default withRunExecutor<TypiaExecutorSchema>(
     skipReadingConfig: false,
     hooks: {
       applyDefaultOptions: (options: TypiaExecutorSchema): TypiaExecutorSchema => {
-        options.entry ??= "{sourceRoot}/index.ts";
+        options.entryPath ??= "{sourceRoot}";
         options.outputPath ??= "{sourceRoot}/__generated__/typia";
-        options.tsConfig ??= "tsconfig.json";
+        options.tsConfig ??= "{projectRoot}/tsconfig.json";
+        options.clean ??= true;
 
         return options;
       }

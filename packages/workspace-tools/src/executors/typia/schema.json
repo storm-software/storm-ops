@@ -6,18 +6,18 @@
   "description": "Run the Typia generator to create runtime type validators",
   "type": "object",
   "properties": {
-    "entry": {
+    "entryPath": {
       "type": "string",
-      "description": "The path to the typia entry file, relative to project.",
+      "description": "The path of the typescript files using `typia`.",
       "alias": "main",
-      "default": "{sourceRoot}/index.ts"
+      "default": "{sourceRoot}"
     },
     "outputPath": {
       "type": "string",
       "description": "The output path of the generated files.",
       "x-completion-type": "directory",
       "x-priority": "important",
-      "default": "{sourceRoot}/__generated__/typia/index.ts"
+      "default": "{sourceRoot}/__generated__/typia"
     },
     "tsConfig": {
       "type": "string",
@@ -25,8 +25,14 @@
       "x-completion-type": "file",
       "x-completion-glob": "tsconfig.*.json",
       "x-priority": "important",
-      "default": "tsconfig.json"
+      "default": "{projectRoot}/tsconfig.json"
+    },
+    "clean": {
+      "type": "boolean",
+      "description": "Remove previous output before build.",
+      "alias": "deleteOutputPath",
+      "default": true
     }
   },
-  "required": ["entry", "outputPath", "tsConfig"]
+  "required": ["entryPath", "outputPath", "tsConfig"]
 }

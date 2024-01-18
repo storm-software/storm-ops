@@ -88,10 +88,7 @@ ${Object.keys(options)
   // #region Clean output directory
 
   if (options.clean !== false) {
-    if (getLogLevel(config?.logLevel) >= LogLevel.DEBUG) {
-      writeInfo(config, `🧹 Cleaning output path: ${options.outputPath}`);
-    }
-
+    writeInfo(config, `🧹 Cleaning output path: ${options.outputPath}`);
     removeSync(options.outputPath);
   }
 
