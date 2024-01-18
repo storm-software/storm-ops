@@ -1,3 +1,10 @@
+## [1.43.18](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.43.17...create-storm-workspace-v1.43.18) (2024-01-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Ensure correct minify option is passed into tsup build ([0093304](https://github.com/storm-software/storm-ops/commit/00933044d216fa99bf64de883674fab24f624fbd))
+
 ## [1.43.17](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.43.16...create-storm-workspace-v1.43.17) (2024-01-18)
 
 
