@@ -1,3 +1,10 @@
+## [1.43.18](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.17...workspace-tools-v1.43.18) (2024-01-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed call to transformer in nx typescript options formatter ([fce06b5](https://github.com/storm-software/storm-ops/commit/fce06b5ea3a5e8bea5b718f181bd6a0c0c0288a6))
+
 ## [1.43.17](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.43.16...workspace-tools-v1.43.17) (2024-01-17)
 
 
