@@ -1,3 +1,10 @@
+# [1.25.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.24.15...git-tools-v1.25.0) (2024-01-18)
+
+
+### Features
+
+* **workspace-tools:** Added the `typia` executor ([feb49f7](https://github.com/storm-software/storm-ops/commit/feb49f71a2b54c14c4ea34ebbde529b89e6b4b42))
+
 ## [1.24.15](https://github.com/storm-software/storm-ops/compare/git-tools-v1.24.14...git-tools-v1.24.15) (2024-01-18)
 
 
