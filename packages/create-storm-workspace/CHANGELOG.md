@@ -1,3 +1,10 @@
+# [1.45.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.44.0...create-storm-workspace-v1.45.0) (2024-01-18)
+
+
+### Features
+
+* **workspace-tools:** Added the `clean` option to the typia executor ([56d8121](https://github.com/storm-software/storm-ops/commit/56d8121068cd63706e6fdd123259d5bb9b8860bc))
+
 # [1.44.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.43.20...create-storm-workspace-v1.44.0) (2024-01-18)
 
 
