@@ -45,5 +45,4 @@ export type TsupExecutorSchema = Omit<
   format?: string[];
   metafile?: boolean;
   minify?: boolean;
-  skipTypia?: boolean;
 };

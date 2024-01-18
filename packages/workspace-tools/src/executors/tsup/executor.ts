@@ -32,7 +32,6 @@ import { removeExtension } from "../../utils/file-path-utils";
 import { getProjectConfigurations } from "../../utils/get-project-configurations";
 import { getExternalDependencies } from "../../utils/get-project-deps";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
-import { getTypiaTransform } from "../../utils/typia-transform";
 import type { TsupExecutorSchema } from "./schema";
 
 type PackageConfiguration = {
@@ -536,8 +535,7 @@ ${options.banner}\n
         }
       : undefined,
     outputPath: options.outputPath,
-    entry,
-    getTransform: options.skipTypia ? undefined : getTypiaTransform
+    entry
   };
 
   if (options.getConfig) {
@@ -648,7 +646,6 @@ export const applyDefaultOptions = (options: TsupExecutorSchema): TsupExecutorSc
   options.tsdocMetadata ??= true;
   options.emitOnAll ??= false;
   options.metafile ??= false;
-  options.skipTypia ??= false;
   options.define ??= {};
   options.env ??= {};
   options.getConfig ??= { dist: defaultConfig };
