@@ -14,10 +14,8 @@
       "**/fallback*.js",
       "**/node_modules/**",
       "**/dist/**",
-      "**/out/**",
       "**/ios/**",
       "**/.git/**",
-      "**/.vscode/**",
       "**/.android/**",
       "**/.DS_Store/**",
       "**/Thumbs.db/**",
@@ -95,6 +93,6 @@
     "enabled": true,
     "clientKind": "git",
     "defaultBranch": "origin:main",
-    "useIgnoreFile": true
+    "useIgnoreFile": false
   }
 }
