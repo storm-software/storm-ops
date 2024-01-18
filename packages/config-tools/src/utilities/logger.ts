@@ -147,7 +147,7 @@ ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-export const writeFatal = (config: StormConfig, message: string) =>
+export const writeFatal = (config: Partial<StormConfig>, message: string) =>
   getLogFn(config, LogLevel.FATAL)(message);
 
 /**
@@ -156,7 +156,7 @@ export const writeFatal = (config: StormConfig, message: string) =>
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-export const writeError = (config: StormConfig, message: string) =>
+export const writeError = (config: Partial<StormConfig>, message: string) =>
   getLogFn(config, LogLevel.ERROR)(message);
 
 /**
@@ -165,7 +165,7 @@ export const writeError = (config: StormConfig, message: string) =>
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-export const writeWarning = (config: StormConfig, message: string) =>
+export const writeWarning = (config: Partial<StormConfig>, message: string) =>
   getLogFn(config, LogLevel.WARN)(message);
 
 /**
@@ -174,7 +174,7 @@ export const writeWarning = (config: StormConfig, message: string) =>
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-export const writeInfo = (config: StormConfig, message: string) =>
+export const writeInfo = (config: Partial<StormConfig>, message: string) =>
   getLogFn(config, LogLevel.INFO)(message);
 
 /**
@@ -183,7 +183,7 @@ export const writeInfo = (config: StormConfig, message: string) =>
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-export const writeSuccess = (config: StormConfig, message: string) =>
+export const writeSuccess = (config: Partial<StormConfig>, message: string) =>
   getLogFn(config, LogLevel.SUCCESS)(message);
 
 /**
@@ -192,7 +192,7 @@ export const writeSuccess = (config: StormConfig, message: string) =>
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-export const writeDebug = (config: StormConfig, message: string) =>
+export const writeDebug = (config: Partial<StormConfig>, message: string) =>
   getLogFn(config, LogLevel.DEBUG)(message);
 
 /**
@@ -201,7 +201,7 @@ export const writeDebug = (config: StormConfig, message: string) =>
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-export const writeTrace = (config: StormConfig, message: string) =>
+export const writeTrace = (config: Partial<StormConfig>, message: string) =>
   getLogFn(config, LogLevel.TRACE)(message);
 
 /**
@@ -210,7 +210,7 @@ export const writeTrace = (config: StormConfig, message: string) =>
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-export const writeSystem = (config: StormConfig, message: string) =>
+export const writeSystem = (config: Partial<StormConfig>, message: string) =>
   getLogFn(config, LogLevel.ALL)(message);
 
 /**

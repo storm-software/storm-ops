@@ -99,43 +99,23 @@ export const createConfigExtension = <
  * Load the config file values for the current Storm workspace into environment variables
  */
 export const loadStormConfig = async (workspaceRoot?: string): Promise<StormConfig> => {
+  let config = {} as StormConfig;
+
   let _workspaceRoot = workspaceRoot;
   if (!_workspaceRoot) {
     _workspaceRoot = findWorkspaceRoot();
   }
 
-  const configFile = await getConfigFile(_workspaceRoot);
-  const configEnv = getConfigEnv();
-
-  for (const key of Object.keys(configEnv)) {
-    if (configEnv[key] !== undefined && configEnv[key] !== null) {
-      if (key === "colors") {
-        configFile.colors = {
-          primary: process.env.STORM_COLOR_PRIMARY ?? configFile.colors?.primary,
-          background: process.env.STORM_COLOR_BACKGROUND ?? configFile.colors?.background,
-          success: process.env.STORM_COLOR_SUCCESS ?? configFile.colors?.success,
-          info: process.env.STORM_COLOR_INFO ?? configFile.colors?.info,
-          warning: process.env.STORM_COLOR_WARNING ?? configFile.colors?.warning,
-          error: process.env.STORM_COLOR_ERROR ?? configFile.colors?.error,
-          fatal: process.env.STORM_COLOR_FATAL ?? configFile.colors?.fatal
-        };
-      } else {
-        configFile[key] = configEnv[key];
-      }
-    }
-  }
-
-  const config = StormConfigSchema.parse(configFile);
+  config = StormConfigSchema.parse(
+    await getDefaultConfig(
+      {
+        ...(await getConfigFile(_workspaceRoot)),
+        ...getConfigEnv()
+      },
+      _workspaceRoot
+    )
+  );
   setConfigEnv(config);
-
-  console.debug("\r\n\r\n");
-  console.debug(`Loaded Storm config from ${config.configFile}`);
-  for (const key of Object.keys(configFile)) {
-    console.debug(`
- ----- ${key} ----- `);
-    console.debug(configFile[key]);
-  }
-  console.debug("\r\n\r\n");
 
   return config;
 };
