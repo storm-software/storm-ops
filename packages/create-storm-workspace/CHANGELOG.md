@@ -1,3 +1,10 @@
+## [1.43.20](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.43.19...create-storm-workspace-v1.43.20) (2024-01-18)
+
+
+### Bug Fixes
+
+* **linting-tools:** Updated ignored files in biome linter ([54520d2](https://github.com/storm-software/storm-ops/commit/54520d24ffc860401b57cab2d28a2565c352a7e9))
+
 ## [1.43.19](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.43.18...create-storm-workspace-v1.43.19) (2024-01-18)
 
 
