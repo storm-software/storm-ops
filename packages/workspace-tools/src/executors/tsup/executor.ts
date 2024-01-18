@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { writeFile } from "node:fs/promises";
-import { dirname, join } from "node:path";
+import { dirname } from "node:path";
 import { esbuildDecorators } from "@anatine/esbuild-decorators";
 import { joinPathFragments, readCachedProjectGraph, readJsonFile } from "@nx/devkit";
 import type { ExecutorContext } from "@nx/devkit";
@@ -139,11 +139,11 @@ ${Object.keys(options)
 
   // #region Generate the package.json file
 
-  const pathToPackageJson = join(context.root, projectRoot, "package.json");
+  const pathToPackageJson = joinPathFragments(context.root, projectRoot, "package.json");
   const packageJson = fileExists(pathToPackageJson)
     ? readJsonFile(pathToPackageJson)
     : { name: context.projectName, version: "0.0.1" };
-  const workspacePackageJson = readJsonFile(join(workspaceRoot, "package.json"));
+  const workspacePackageJson = readJsonFile(joinPathFragments(workspaceRoot, "package.json"));
 
   options.external = options.external || [];
   if (workspacePackageJson?.dependencies) {
@@ -346,11 +346,11 @@ ${externalDependencies
           },
           ...(options.additionalEntryPoints ?? []).map((entryPoint) => ({
             [removeExtension(entryPoint).replace(sourceRoot, "")]: {
-              types: join(
+              types: joinPathFragments(
                 `./${distPaths[0]}`,
                 `${removeExtension(entryPoint.replace(sourceRoot, ""))}.d.ts`
               ),
-              default: join(
+              default: joinPathFragments(
                 `./${distPaths[0]}`,
                 `${removeExtension(entryPoint.replace(sourceRoot, ""))}.js`
               )
@@ -405,7 +405,7 @@ ${externalDependencies
           distSrc = distSrc.substring(1);
         }
 
-        packageJson.source ??= `${join(distSrc, "index.ts").replaceAll("\\", "/")}`;
+        packageJson.source ??= `${joinPathFragments(distSrc, "index.ts").replaceAll("\\", "/")}`;
       }
 
       packageJson.sideEffects ??= false;
@@ -430,9 +430,9 @@ ${externalDependencies
     packageJson.repository ??= workspacePackageJson.repository;
     packageJson.repository.directory ??= projectRoot
       ? projectRoot
-      : join("packages", context.projectName);
+      : joinPathFragments("packages", context.projectName);
 
-    const packageJsonPath = join(context.root, options.outputPath, "package.json");
+    const packageJsonPath = joinPathFragments(context.root, options.outputPath, "package.json");
 
     writeDebug(config, `⚡ Writing package.json file to: ${packageJsonPath}`);
 
@@ -599,7 +599,7 @@ function getNormalizedTsConfig(
         emitDeclarationOnly: true,
         declaration: true,
         declarationMap: true,
-        declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
+        declarationDir: joinPathFragments(workspaceRoot, "tmp", ".tsup", "declaration")
       }
     },
     ts.sys,
@@ -646,6 +646,7 @@ export const applyDefaultOptions = (options: TsupExecutorSchema): TsupExecutorSc
   options.assets ??= [];
   options.plugins ??= [];
   options.includeSrc ??= false;
+  options.minify ??= false;
   options.clean ??= true;
   options.bundle ??= true;
   options.debug ??= false;

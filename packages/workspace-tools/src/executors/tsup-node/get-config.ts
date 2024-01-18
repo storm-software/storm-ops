@@ -26,6 +26,7 @@ export function nodeConfig({
   plugins,
   generatePackageJson,
   dtsTsConfig,
+  minify = false,
   getTransform
 }: GetConfigParams) {
   const options = {
@@ -53,7 +54,7 @@ export function nodeConfig({
     define,
     env,
     dts: false,
-    minify: false,
+    minify,
     experimentalDts: {
       entry,
       compilerOptions: {
@@ -75,7 +76,7 @@ export function nodeConfig({
     getTransform
   } as Options;
 
-  if (!debug) {
+  if (!debug || minify) {
     options.minify = "terser";
     options.terserOptions = {
       compress: true,

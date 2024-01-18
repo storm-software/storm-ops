@@ -26,6 +26,7 @@ export const neutralConfig = ({
   plugins,
   generatePackageJson,
   dtsTsConfig,
+  minify = false,
   getTransform
 }: GetConfigParams) => {
   const outputPath = joinPathFragments(outDir, "dist");
@@ -55,7 +56,7 @@ export const neutralConfig = ({
     define,
     env,
     dts: false,
-    minify: false,
+    minify,
     experimentalDts: {
       entry,
       compilerOptions: {
@@ -77,7 +78,7 @@ export const neutralConfig = ({
     getTransform
   } as Options;
 
-  if (!debug) {
+  if (!debug || minify) {
     options.minify = "terser";
     options.terserOptions = {
       compress: true,
@@ -113,6 +114,7 @@ export function legacyNeutralConfig({
   plugins,
   generatePackageJson,
   dtsTsConfig,
+  minify = false,
   getTransform
 }: GetConfigParams) {
   const outputPath = joinPathFragments(outDir, "dist", "legacy");
@@ -142,7 +144,7 @@ export function legacyNeutralConfig({
     define,
     env,
     dts: false,
-    minify: false,
+    minify,
     experimentalDts: {
       entry,
       compilerOptions: {
@@ -164,7 +166,7 @@ export function legacyNeutralConfig({
     getTransform
   } as Options;
 
-  if (!debug) {
+  if (!debug || minify) {
     options.minify = "terser";
     options.terserOptions = {
       compress: true,

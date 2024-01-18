@@ -26,6 +26,7 @@ export function defaultConfig({
   plugins,
   generatePackageJson,
   dtsTsConfig,
+  minify = false,
   getTransform
 }: GetConfigParams) {
   return {
@@ -66,7 +67,7 @@ export function defaultConfig({
         }
       }
     },
-    minify: false,
+    minify,
     apiReport,
     docModel,
     tsdocMetadata,

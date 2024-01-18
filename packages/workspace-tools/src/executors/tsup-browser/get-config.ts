@@ -23,6 +23,7 @@ export const modernBrowserConfig = ({
   plugins,
   generatePackageJson,
   dtsTsConfig,
+  minify = false,
   getTransform
 }: GetConfigParams) => {
   const outputPath = joinPathFragments(outDir, "dist", "modern");
@@ -52,7 +53,7 @@ export const modernBrowserConfig = ({
     define,
     env,
     dts: false,
-    minify: false,
+    minify,
     experimentalDts: {
       entry,
       compilerOptions: {
@@ -74,7 +75,7 @@ export const modernBrowserConfig = ({
     getTransform
   } as Options;
 
-  if (!debug) {
+  if (!debug || minify) {
     options.minify = "terser";
     options.terserOptions = {
       compress: true,
@@ -110,6 +111,7 @@ export const legacyBrowserConfig = ({
   plugins,
   generatePackageJson,
   dtsTsConfig,
+  minify = false,
   getTransform
 }: GetConfigParams) => {
   const outputPath = joinPathFragments(outDir, "dist", "legacy");
@@ -139,7 +141,7 @@ export const legacyBrowserConfig = ({
     define,
     env,
     dts: false,
-    minify: false,
+    minify,
     experimentalDts: {
       entry,
       compilerOptions: {
@@ -161,7 +163,7 @@ export const legacyBrowserConfig = ({
     getTransform
   } as Options;
 
-  if (!debug) {
+  if (!debug || minify) {
     options.minify = "terser";
     options.terserOptions = {
       compress: true,

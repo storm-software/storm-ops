@@ -125,6 +125,11 @@
       "description": "A short heading added to the top of each typescript file added in the output folder's `src` directory.",
       "default": "This code was developed by Storm Software (<https://stormsoftware.org>) and is licensed under the Apache License 2.0."
     },
+    "minify": {
+      "type": "boolean",
+      "description": "Should the build process minify the output files?",
+      "default": false
+    },
     "verbose": {
       "type": "boolean",
       "description": "Should write extra log outputs with details from the executor.",
