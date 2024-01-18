@@ -1,3 +1,10 @@
+## [1.6.6](https://github.com/storm-software/storm-ops/compare/design-tools-v1.6.5...design-tools-v1.6.6) (2024-01-18)
+
+
+### Bug Fixes
+
+* **linting-tools:** Updated ignored files in biome linter ([54520d2](https://github.com/storm-software/storm-ops/commit/54520d24ffc860401b57cab2d28a2565c352a7e9))
+
 ## [1.6.5](https://github.com/storm-software/storm-ops/compare/design-tools-v1.6.4...design-tools-v1.6.5) (2024-01-17)
 
 
