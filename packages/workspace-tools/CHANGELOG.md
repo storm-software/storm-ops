@@ -1,3 +1,10 @@
+## [1.45.2](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.45.1...workspace-tools-v1.45.2) (2024-01-18)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved empty config file loading error ([6b84a12](https://github.com/storm-software/storm-ops/commit/6b84a12f762ac038d9ca6131249c8b51979d0320))
+
 ## [1.45.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.45.0...workspace-tools-v1.45.1) (2024-01-18)
 
 
