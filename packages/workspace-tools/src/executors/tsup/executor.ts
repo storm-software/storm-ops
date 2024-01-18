@@ -615,19 +615,14 @@ function getNormalizedTsConfig(
 }
 
 const build = async (options: Options | Options[], config?: StormConfig) => {
-  try {
-    if (Array.isArray(options)) {
-      await Promise.all(options.map((buildOptions) => build(buildOptions, config)));
-    } else {
-      if (getLogLevel(config?.logLevel) >= LogLevel.TRACE && !options.silent) {
-        console.log("⚙️  Tsup build config: \n", options, "\n");
-      }
-
-      await tsup(options);
+  if (Array.isArray(options)) {
+    await Promise.all(options.map((buildOptions) => build(buildOptions, config)));
+  } else {
+    if (getLogLevel(config?.logLevel) >= LogLevel.TRACE && !options.silent) {
+      console.log("⚙️  Tsup build config: \n", options, "\n");
     }
-  } catch (e) {
-    console.error("⚠️  A failure occured during the Tsup Build executor");
-    console.error(e);
+
+    await tsup(options);
   }
 };
 
