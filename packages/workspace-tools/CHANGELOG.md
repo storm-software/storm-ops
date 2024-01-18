@@ -1,3 +1,10 @@
+## [1.45.1](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.45.0...workspace-tools-v1.45.1) (2024-01-18)
+
+
+### Bug Fixes
+
+* **workspace-tools:** Removed the `skipTypia` option from tsup build ([a2c78b1](https://github.com/storm-software/storm-ops/commit/a2c78b1c2dee90e253e321d7f1fb4398236a92c4))
+
 # [1.45.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.44.0...workspace-tools-v1.45.0) (2024-01-18)
 
 
