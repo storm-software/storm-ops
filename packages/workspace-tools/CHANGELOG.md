@@ -1,3 +1,23 @@
+# [1.46.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.45.3...workspace-tools-v1.46.0) (2024-01-19)
+
+
+### Bug Fixes
+
+* **config-tools:** Rerun ci pipeline ([d855670](https://github.com/storm-software/storm-ops/commit/d855670faf558969a592b8b6666754280c0dc829))
+* **config-tools:** Resolved the issue with the tsconfig properties ([5bc729e](https://github.com/storm-software/storm-ops/commit/5bc729e4680f2bb8ce67a2f6a85dff875bef9997))
+* **config-tools:** Skip type checks ([c7da786](https://github.com/storm-software/storm-ops/commit/c7da78609234d5eb0998465c9d38fe10eb02d205))
+* **config-tools:** Update lefthook config to call install prior to push ([6a81b6a](https://github.com/storm-software/storm-ops/commit/6a81b6a27359ab41549cb93227d28c5fc1b2ee01))
+* **git-tools:** Resolved issue preventing git-tools publish ([1bf9727](https://github.com/storm-software/storm-ops/commit/1bf97271e3421b5c485708ed2c59da815cde6c4b))
+* **git-tools:** Resolved the issue with the missing release plugin ([15cc054](https://github.com/storm-software/storm-ops/commit/15cc054a1e538f55fe246db79622281f48972193))
+* **git-tools:** Resovled issues with lock file versions ([3740dc2](https://github.com/storm-software/storm-ops/commit/3740dc2392a8c4fcb0beae0816afeaea1573f6ae))
+* **git-tools:** Upgrade Nx version and resolved import issues ([53432f2](https://github.com/storm-software/storm-ops/commit/53432f2b318c24bc0d65cf2509d01861c0c6f91b))
+* **git-tools:** Upgrade pnpm lock file ([daa3d32](https://github.com/storm-software/storm-ops/commit/daa3d32fd692799b036556ccf04279507410e4eb))
+
+
+### Features
+
+* **git-tools:** Redesigned the executable script structure ([a4c097b](https://github.com/storm-software/storm-ops/commit/a4c097bd38a68ca0c206686b592d994fb643a5d2))
+
 ## [1.45.3](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.45.2...workspace-tools-v1.45.3) (2024-01-19)
 
 
