@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/storm-software/storm-ops/compare/config-tools-v1.17.1...config-tools-v1.18.0) (2024-01-19)
+
+
+### Features
+
+* **config-tools:** Added the `getConfigFileByName` function export ([9f56a9c](https://github.com/storm-software/storm-ops/commit/9f56a9ca2c1df0bccbf533cc63f15602e8de0dff))
+
 ## [1.17.1](https://github.com/storm-software/storm-ops/compare/config-tools-v1.17.0...config-tools-v1.17.1) (2024-01-19)
 
 
