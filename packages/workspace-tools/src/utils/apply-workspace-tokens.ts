@@ -1,5 +1,5 @@
-import { ProjectConfiguration } from "@nx/devkit";
-import { StormConfig } from "@storm-software/config-tools";
+import type { ProjectConfiguration } from "@nx/devkit";
+import type { StormConfig } from "@storm-software/config-tools";
 import { getWorkspaceRoot } from "./get-workspace-root";
 
 export interface BaseTokenizerOptions {
@@ -40,15 +40,12 @@ export const applyWorkspaceExecutorTokens = (
 
   if (tokenizerOptions.config) {
     const configKeys = Object.keys(tokenizerOptions.config);
-    if (configKeys.some(configKey => result.includes(`{${configKey}}`))) {
-      configKeys.forEach(configKey => {
+    if (configKeys.some((configKey) => result.includes(`{${configKey}}`))) {
+      for (const configKey of configKeys) {
         if (result.includes(`{${configKey}}`)) {
-          result = result.replaceAll(
-            `{${configKey}}`,
-            tokenizerOptions.config[configKey]
-          );
+          result = result.replaceAll(`{${configKey}}`, tokenizerOptions.config[configKey]);
         }
-      });
+      }
     }
   }
   if (result.includes("{projectName}")) {
@@ -81,59 +78,45 @@ export const applyWorkspaceGeneratorTokens = (
 
   if (tokenizerOptions.config) {
     const configKeys = Object.keys(tokenizerOptions.config);
-    if (configKeys.some(configKey => result.includes(`{${configKey}}`))) {
-      configKeys.forEach(configKey => {
+    if (configKeys.some((configKey) => result.includes(`{${configKey}}`))) {
+      for (const configKey of configKeys) {
         if (result.includes(`{${configKey}}`)) {
-          result = result.replaceAll(
-            `{${configKey}}`,
-            tokenizerOptions.config[configKey]
-          );
+          result = result.replaceAll(`{${configKey}}`, tokenizerOptions.config[configKey]);
         }
-      });
+      }
     }
   }
   if (result.includes("{workspaceRoot}")) {
     result = result.replaceAll(
       "{workspaceRoot}",
-      tokenizerOptions.workspaceRoot ??
-        tokenizerOptions.config.workspaceRoot ??
-        getWorkspaceRoot()
+      tokenizerOptions.workspaceRoot ?? tokenizerOptions.config.workspaceRoot ?? getWorkspaceRoot()
     );
   }
 
   return result;
 };
 
-export const applyWorkspaceTokens = <
-  TConfig extends BaseTokenizerOptions = BaseTokenizerOptions
->(
+export const applyWorkspaceTokens = <TConfig extends BaseTokenizerOptions = BaseTokenizerOptions>(
   options: Record<string, any>,
   config: TConfig,
   tokenizerFn: (option: string, config: TConfig) => string
 ): Record<string, any> => {
-  let result = options;
+  const result = options;
   if (!result) {
     return {};
   }
 
-  return Object.keys(options).reduce(
-    (ret: Record<string, any>, option: string) => {
-      if (typeof options[option] === "string") {
-        ret[option] = tokenizerFn(options[option], config);
-      } else if (Array.isArray(options[option])) {
-        ret[option] = options[option].map((item: any) =>
-          typeof item === "string" ? tokenizerFn(item, config) : item
-        );
-      } else if (typeof options[option] === "object") {
-        ret[option] = applyWorkspaceTokens(
-          options[option],
-          config,
-          tokenizerFn
-        );
-      }
+  return Object.keys(options).reduce((ret: Record<string, any>, option: string) => {
+    if (typeof options[option] === "string") {
+      ret[option] = tokenizerFn(options[option], config);
+    } else if (Array.isArray(options[option])) {
+      ret[option] = options[option].map((item: any) =>
+        typeof item === "string" ? tokenizerFn(item, config) : item
+      );
+    } else if (typeof options[option] === "object") {
+      ret[option] = applyWorkspaceTokens(options[option], config, tokenizerFn);
+    }
 
-      return ret;
-    },
-    {}
-  );
+    return ret;
+  }, {});
 };

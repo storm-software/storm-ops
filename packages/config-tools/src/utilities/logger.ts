@@ -52,7 +52,7 @@ ${chalk.bold.hex(config?.colors?.fatal ? config.colors.fatal : "#1fb2a6")(">")} 
         `
 ${chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")} ${chalk.bold
           .bgHex(config?.colors?.error ? config.colors.error : "#7d1a1a")
-          .white(" 🛑 Error ")}  ${chalk.hex(
+          .white(" ✘ Error ")}  ${chalk.hex(
           config?.colors?.error ? config.colors.error : "#7d1a1a"
         )(message)}
 `
@@ -86,9 +86,9 @@ ${chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")(">
         `
 ${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${chalk.bold
           .bgHex(config?.colors?.info ? config.colors.info : "#0ea5e9")
-          .white("  📬 Info  ")}  ${chalk.hex(
-          config?.colors?.info ? config.colors.info : "#0ea5e9"
-        )(message)}
+          .white("  ℹ Info  ")}  ${chalk.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(
+          message
+        )}
 `
       );
     };

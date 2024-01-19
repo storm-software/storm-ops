@@ -1,16 +1,11 @@
-import type { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
-import "es6-weak-map";
 import { execSync } from "node:child_process";
 import { join } from "node:path";
+import type { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
+import "es6-weak-map";
 import { getAffectedGraphNodes } from "nx/src/command-line/affected/affected.js";
-import { buildProjectGraphWithoutDaemon } from "nx/src/project-graph/project-graph.js";
-import type {
-  Commit,
-  LastRelease,
-  NextRelease,
-  Release
-} from "semantic-release";
-import { ReleaseConfig, ReleaseContext } from "../types";
+import { buildProjectGraphAndSourceMapsWithoutDaemon } from "nx/src/project-graph/project-graph.js";
+import type { Commit, LastRelease, NextRelease, Release } from "semantic-release";
+import type { ReleaseConfig, ReleaseContext } from "../types";
 import defaultConfig from "./config";
 import { resolvePlugins } from "./plugins";
 import { applyTokensToReleaseConfig } from "./tokens";
@@ -24,14 +19,11 @@ export async function runRelease(
   base?: string,
   head?: string
 ) {
-  const { readProjectsConfigurationFromProjectGraph } = await import(
-    "@nx/devkit"
-  );
+  const { readProjectsConfigurationFromProjectGraph } = await import("@nx/devkit");
 
-  const projectGraph = await buildProjectGraphWithoutDaemon();
+  const { projectGraph } = await buildProjectGraphAndSourceMapsWithoutDaemon();
 
-  const projectConfigs =
-    readProjectsConfigurationFromProjectGraph(projectGraph);
+  const projectConfigs = readProjectsConfigurationFromProjectGraph(projectGraph);
 
   let config: ReleaseConfig = defaultConfig as ReleaseConfig;
   if (releaseConfig !== "@storm-software/git-tools/release/config.js") {
@@ -53,34 +45,24 @@ export async function runRelease(
   const results = [];
   if (projectName) {
     results.push(
-      await runProjectRelease(
-        config,
-        projectConfigs,
-        projectGraph,
-        projectName,
-        plugin
-      )
+      await runProjectRelease(config, projectConfigs, projectGraph, projectName, plugin)
     );
   } else {
     let currentBase = base ? base : process.env.NX_BASE;
     let currentHead = head ? head : process.env.NX_HEAD;
     if (!currentBase && !currentHead) {
-      const baseHead = execSync(
-        `git merge-base --fork-point origin/main HEAD`
-      ).toString();
+      const baseHead = execSync("git merge-base --fork-point origin/main HEAD").toString();
       const [base, head] = baseHead.split("\n");
       baseHead && (process.env.NX_BASE = base);
       baseHead && (process.env.NX_HEAD = head);
 
       if (!currentBase && !currentHead) {
-        currentBase = execSync(`git rev-parse origin/main`).toString();
-        currentHead = execSync(`git rev-parse HEAD`).toString();
+        currentBase = execSync("git rev-parse origin/main").toString();
+        currentHead = execSync("git rev-parse HEAD").toString();
       }
 
       if (!currentBase && !currentHead) {
-        throw new Error(
-          "Base and head are not specified and cannot be determined automatically."
-        );
+        throw new Error("Base and head are not specified and cannot be determined automatically.");
       }
     }
 
@@ -108,25 +90,23 @@ export async function runRelease(
     }
   }
 
-  const commits = results.filter(result => result.commits.length > 0);
-  const releases = results.filter(result => result.releases.length > 0);
+  const commits = results.filter((result) => result.commits.length > 0);
+  const releases = results.filter((result) => result.releases.length > 0);
 
   commits.length > 0
     ? console.log(
         `⚡Processed the following commits: ${[
-          ...commits.map(result =>
-            result.commits.map(commit => commit.subject).join("\n")
-          )
+          ...commits.map((result) => result.commits.map((commit) => commit.subject).join("\n"))
         ]}`
       )
-    : console.log(`ℹ No commits were processed.`);
+    : console.log("ℹ No commits were processed.");
   releases.length > 0
     ? console.log(
         `⚡Completed the following releases successfully: ${[
-          ...releases.map(result =>
+          ...releases.map((result) =>
             result.releases
               .map(
-                release =>
+                (release) =>
                   `${release.pluginName ? `${release.pluginName}: ` : ""}${
                     release.name ? `${release.name}: ` : "<missing>"
                   } v${release.version ? release.version : "<missing>"}`
@@ -135,11 +115,11 @@ export async function runRelease(
           )
         ]}`
       )
-    : console.log(`ℹ No releases were processed.`);
+    : console.log("ℹ No releases were processed.");
 }
 
 export async function runProjectRelease(
-  config: ReleaseConfig,
+  _config: ReleaseConfig,
   projectConfigs: ProjectsConfigurations,
   projectGraph: ProjectGraph,
   projectName: string,
@@ -150,6 +130,8 @@ export async function runProjectRelease(
   nextRelease?: NextRelease;
   releases: Release[];
 }> {
+  let config = _config;
+
   const projectConfig = projectConfigs.projects[projectName];
   if (projectConfig.targets?.build) {
     execSync(`pnpm nx run ${projectName}:build`, {
@@ -158,9 +140,7 @@ export async function runProjectRelease(
   }
 
   if (projectConfig.root === ".") {
-    console.warn(
-      `✘ Skipping release for workspace root project - ${projectName}`
-    );
+    console.warn(`✘ Skipping release for workspace root project - ${projectName}`);
     return {
       commits: [],
       releases: []
@@ -197,9 +177,7 @@ export async function runProjectRelease(
   };
 
   const plugins = resolvePlugins(context);
-  const tagFormat = config.tagFormat
-    ? parseTag(config.tagFormat)
-    : config.tagFormat;
+  const tagFormat = config.tagFormat ? parseTag(config.tagFormat) : config.tagFormat;
 
   let result!:
     | {
@@ -211,7 +189,7 @@ export async function runProjectRelease(
     | boolean;
 
   try {
-    result = await import("semantic-release").then(mod =>
+    result = await import("semantic-release").then((mod) =>
       mod.default(
         {
           extends: pluginPath,
@@ -227,9 +205,7 @@ export async function runProjectRelease(
       )
     );
   } catch (e) {
-    console.error(
-      `An error occurred while running semantic-release for ${projectName}`
-    );
+    console.error(`An error occurred while running semantic-release for ${projectName}`);
     console.error(e);
   }
 
@@ -247,19 +223,16 @@ export async function runProjectRelease(
 
 // Replace our token that is used for consistency with token required by semantic-release
 function parseTag(tag: string) {
-  return tag.replace("${VERSION}", match => match.toLowerCase());
+  return tag.replace("${VERSION}", (match) => match.toLowerCase());
 }
 
 // Replace our token that is used for consistency with token required by semantic-release
-function prepareEnv(
-  context: ReleaseContext,
-  env: Record<string, string> = process.env
-) {
+function prepareEnv(context: ReleaseContext, env: Record<string, string> = process.env) {
   const authorName = env.GITHUB_ACTOR
     ? env.GITHUB_ACTOR
     : env.STORM_WORKER
-    ? env.STORM_WORKER
-    : env.STORM_OWNER;
+      ? env.STORM_WORKER
+      : env.STORM_OWNER;
   const committerName = env.STORM_WORKER ? env.STORM_WORKER : env.STORM_OWNER;
 
   return Object.assign(env, {
@@ -269,8 +242,6 @@ function prepareEnv(
     GIT_COMMITTER_NAME: committerName,
     GIT_COMMITTER_EMAIL: `${committerName}@users.noreply.github.com`,
     ...env,
-    STORM_REPOSITORY: context.workspaceDir
-      ? context.workspaceDir
-      : env.STORM_REPOSITORY
+    STORM_REPOSITORY: context.workspaceDir ? context.workspaceDir : env.STORM_REPOSITORY
   });
 }

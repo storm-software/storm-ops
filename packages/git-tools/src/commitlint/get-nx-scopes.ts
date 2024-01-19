@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json.js";
+import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
 import {
-  buildProjectGraphWithoutDaemon,
+  buildProjectGraphAndSourceMapsWithoutDaemon,
   readProjectsConfigurationFromProjectGraph
 } from "nx/src/project-graph/project-graph.js";
 
@@ -16,9 +16,8 @@ export async function getNxScopes(
   process.env.NX_WORKSPACE_ROOT_PATH ??=
     process.env.STORM_WORKSPACE_ROOT ?? ctx.cwd ?? process.cwd();
 
-  const projectConfigs = readProjectsConfigurationFromProjectGraph(
-    await buildProjectGraphWithoutDaemon()
-  );
+  const { projectGraph } = await buildProjectGraphAndSourceMapsWithoutDaemon();
+  const projectConfigs = readProjectsConfigurationFromProjectGraph(projectGraph);
 
   return Object.entries(projectConfigs.projects || {})
     .map(([name, project]) => ({

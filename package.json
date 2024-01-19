@@ -63,12 +63,12 @@
   },
   "dependencies": {
     "@biomejs/biome": "1.5.1",
-    "@nx/devkit": "17.0.3",
-    "@nx/esbuild": "17.0.3",
-    "@nx/jest": "17.0.3",
-    "@nx/js": "17.0.3",
-    "@nx/plugin": "17.0.3",
-    "@nx/workspace": "17.0.3",
+    "@nx/devkit": "17.2.8",
+    "@nx/esbuild": "17.2.8",
+    "@nx/jest": "17.2.8",
+    "@nx/js": "17.2.8",
+    "@nx/plugin": "17.2.8",
+    "@nx/workspace": "17.2.8",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/commit-analyzer": "11.0.0",
     "@semantic-release/exec": "6.0.3",
@@ -88,7 +88,7 @@
     "jest-environment-jsdom": "29.7.0",
     "jest-environment-node": "29.7.0",
     "lefthook": "^1.5.6",
-    "nx": "17.0.3",
+    "nx": "17.2.8",
     "rimraf": "^5.0.5",
     "semantic-release": "22.0.7",
     "ts-jest": "29.1.1",
@@ -104,10 +104,7 @@
   },
   "namespace": "@storm-software",
   "nx": {
-    "includedScripts": [
-      "lint",
-      "format"
-    ]
+    "includedScripts": ["lint", "format"]
   },
   "pnpm": {
     "overrides": {

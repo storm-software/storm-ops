@@ -1,4 +1,4 @@
-import { ProjectConfiguration } from "@nx/devkit";
+import type { ProjectConfiguration } from "@nx/devkit";
 import { retrieveProjectConfigurationsWithoutPluginInference } from "nx/src/project-graph/utils/retrieve-workspace-files";
 import { getWorkspaceRoot } from "./get-workspace-root";
 
@@ -9,10 +9,10 @@ import { getWorkspaceRoot } from "./get-workspace-root";
  */
 export const getProjectConfigurations = <
   TConfig extends ProjectConfiguration = ProjectConfiguration
->(): Record<string, TConfig> =>
-  retrieveProjectConfigurationsWithoutPluginInference(
-    getWorkspaceRoot()
-  ) as Record<string, TConfig>;
+>(): Promise<Record<string, TConfig>> =>
+  retrieveProjectConfigurationsWithoutPluginInference(getWorkspaceRoot()) as Promise<
+    Record<string, TConfig>
+  >;
 
 /**
  * Retrieve the project configurations from the workspace.

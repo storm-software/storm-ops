@@ -1,10 +1,10 @@
-import { existsSync, readFileSync, readdirSync, rmSync, writeFileSync } from "fs";
-import { join } from "path";
+import { existsSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 import {
-  buildProjectGraphWithoutDaemon,
+  buildProjectGraphAndSourceMapsWithoutDaemon,
   readProjectsConfigurationFromProjectGraph
 } from "nx/src/project-graph/project-graph.js";
-import { ReadMeOptions } from "../types";
+import type { ReadMeOptions } from "../types";
 import { findFileName, findFilePath } from "../utilities/file-utils";
 import { doctoc } from "./doctoc";
 import { getExecutorMarkdown, getGeneratorMarkdown } from "./nx-docs";
@@ -17,7 +17,7 @@ export const runReadme = async ({
   clean = true,
   prettier = true
 }: ReadMeOptions) => {
-  const projectGraph = await buildProjectGraphWithoutDaemon();
+  const { projectGraph } = await buildProjectGraphAndSourceMapsWithoutDaemon();
   const projectConfigs = readProjectsConfigurationFromProjectGraph(projectGraph);
 
   if (project) {
@@ -43,7 +43,7 @@ export const runProjectReadme = async (
   projectName: string,
   { templates, output, clean = true, prettier = true }: ReadMeOptions
 ) => {
-  const projectGraph = await buildProjectGraphWithoutDaemon();
+  const { projectGraph } = await buildProjectGraphAndSourceMapsWithoutDaemon();
   const projectConfigs = readProjectsConfigurationFromProjectGraph(projectGraph);
 
   const project = projectConfigs.projects[projectName];
