@@ -1,16 +1,16 @@
-import * as path from "path";
+import * as path from "node:path";
 import {
-  Tree,
+  type Tree,
   addDependenciesToPackageJson,
   addProjectConfiguration,
   formatFiles,
   generateFiles,
   joinPathFragments,
-  updateJson,
+  updateJson
 } from "@nx/devkit";
 import { withRunGenerator } from "../../base/base-generator";
 import { nodeVersion, pnpmVersion, typescriptVersion } from "../../utils/versions";
-import { PresetGeneratorSchema } from "./schema";
+import type { PresetGeneratorSchema } from "./schema";
 
 export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSchema) {
   const projectRoot = ".";
@@ -29,10 +29,10 @@ export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSche
         options: {
           port: 4873,
           config: ".verdaccio/config.yml",
-          storage: "tmp/local-registry/storage",
-        },
-      },
-    },
+          storage: "tmp/local-registry/storage"
+        }
+      }
+    }
   });
 
   updateJson(tree, "package.json", (json) => {
@@ -58,25 +58,25 @@ export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSche
       "strapi",
       "graphql",
       "sullivanpj",
-      "monorepo",
+      "monorepo"
     ];
 
     json.homepage ??= "https://stormsoftware.org";
     json.bugs ??= {
       url: "https://stormsoftware.org/support",
-      email: "support@stormsoftware.org",
+      email: "support@stormsoftware.org"
     };
 
     json.license = "Apache License 2.0";
     json.author ??= {
       name: "Storm Software",
       email: "contact@stormsoftware.org",
-      url: "https://stormsoftware.org",
+      url: "https://stormsoftware.org"
     };
 
     json.funding ??= {
       type: "github",
-      url: "https://github.com/sponsors/storm-software",
+      url: "https://github.com/sponsors/storm-software"
     };
 
     json.namespace ??= `@${options.namespace}`;
@@ -85,7 +85,7 @@ export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSche
     options.repositoryUrl ??= `https://github.com/${options.organization}/${options.name}}`;
     json.repository ??= {
       type: "github",
-      url: `${options.repositoryUrl}.git`,
+      url: `${options.repositoryUrl}.git`
     };
 
     // generate a start script into the package.json
@@ -156,7 +156,7 @@ export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSche
     json.packageManager ??= `pnpm@${pnpmVersion}`;
     json.engines = {
       node: `>=${nodeVersion}`,
-      pnpm: `>=${pnpmVersion}`,
+      pnpm: `>=${pnpmVersion}`
     };
 
     json.prettier = "@storm-software/linting-tools/prettier/config.json";
@@ -166,21 +166,21 @@ export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSche
         files: [
           {
             path: "dist/*/*.js",
-            maxSize: "200kB",
-          },
+            maxSize: "200kB"
+          }
         ],
         ci: {
-          trackBranches: ["main", "alpha", "beta"],
-        },
+          trackBranches: ["main", "alpha", "beta"]
+        }
       };
 
       json.nextBundleAnalysis = {
-        buildOutputDirectory: "dist/apps/web/app/.next",
+        buildOutputDirectory: "dist/apps/web/app/.next"
       };
     }
 
     json.nx = {
-      includedScripts: ["lint", "format"],
+      includedScripts: ["lint", "format"]
     };
 
     return json;
@@ -189,14 +189,14 @@ export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSche
   generateFiles(tree, path.join(__dirname, "files"), projectRoot, {
     ...options,
     pnpmVersion,
-    nodeVersion,
+    nodeVersion
   });
   await formatFiles(tree);
 
   let dependencies: Record<string, string> = {
-    "@nx/devkit": "^17.0.3",
-    "@nx/jest": "^17.0.3",
-    "@nx/js": "^17.0.3",
+    "@nx/devkit": "^17.2.8",
+    "@nx/jest": "^17.2.8",
+    "@nx/js": "^17.2.8",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^11.1.0",
     "@semantic-release/exec": "^6.0.3",
@@ -230,7 +230,7 @@ export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSche
     tslib: "^2.6.2",
     terser: "^5.24.0",
     typescript: typescriptVersion,
-    verdaccio: "^5.27.0",
+    verdaccio: "^5.27.0"
   };
   if (options.includeApps) {
     dependencies = {
@@ -243,14 +243,14 @@ export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSche
       "@nx/react": "latest",
       "@nx/next": "latest",
       "@nx/node": "latest",
-      "@nx/storybook": "latest",
+      "@nx/storybook": "latest"
     };
   }
 
   if (options.nxCloud) {
     dependencies = {
       ...dependencies,
-      "nx-cloud": "latest",
+      "nx-cloud": "latest"
     };
   }
 

@@ -39,7 +39,9 @@ if (fs.existsSync(path.join(workspaceRoot, "yarn.lock"))) {
 }
 
 try {
-  const rawContent = await readFile("pnpm-lock.yaml", { encoding: "utf8" });
+  const rawContent = await readFile(path.join(workspaceRoot, "pnpm-lock.yaml"), {
+    encoding: "utf8"
+  });
   const content = JSON.parse(rawContent);
   if (content.match(/localhost:487/)) {
     errors.push(

@@ -67,7 +67,8 @@
   },
   "devDependencies": {
     "@types/inquirer": "9.0.6",
-    "@types/prettier": "3.0.0"
+    "@types/prettier": "3.0.0",
+    "nx": "17.2.8"
   },
   "publishConfig": {
     "access": "public"
