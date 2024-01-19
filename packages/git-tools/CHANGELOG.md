@@ -1,3 +1,10 @@
+# [1.27.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.26.2...git-tools-v1.27.0) (2024-01-19)
+
+
+### Features
+
+* **config-tools:** Added the `getConfigFileByName` function export ([9f56a9c](https://github.com/storm-software/storm-ops/commit/9f56a9ca2c1df0bccbf533cc63f15602e8de0dff))
+
 ## [1.26.2](https://github.com/storm-software/storm-ops/compare/git-tools-v1.26.1...git-tools-v1.26.2) (2024-01-19)
 
 
