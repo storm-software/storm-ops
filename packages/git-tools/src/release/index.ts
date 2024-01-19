@@ -14,8 +14,8 @@ const LARGE_BUFFER = 1024 * 1000000;
 
 export async function runRelease(
   projectName?: string,
-  releaseConfig = "@storm-software/git-tools/release/config.js",
-  plugin = "@storm-software/git-tools/semantic-release-plugin",
+  releaseConfig = "@storm-software/git-tools/src/release/config.js",
+  plugin = "@storm-software/git-tools/src/semantic-release-plugin",
   base?: string,
   head?: string
 ) {
@@ -26,7 +26,7 @@ export async function runRelease(
   const projectConfigs = readProjectsConfigurationFromProjectGraph(projectGraph);
 
   let config: ReleaseConfig = defaultConfig as ReleaseConfig;
-  if (releaseConfig !== "@storm-software/git-tools/release/config.js") {
+  if (releaseConfig !== "@storm-software/git-tools/src/release/config.js") {
     let userConfig = (await import(releaseConfig))?.default;
     if (userConfig?.default) {
       // Handle CommonJS modules that export default as a property
@@ -123,7 +123,7 @@ export async function runProjectRelease(
   projectConfigs: ProjectsConfigurations,
   projectGraph: ProjectGraph,
   projectName: string,
-  plugin = "@storm-software/git-tools/semantic-release-plugin"
+  plugin = "@storm-software/git-tools/src/semantic-release-plugin"
 ): Promise<{
   lastRelease?: LastRelease;
   commits: Commit[];

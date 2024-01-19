@@ -11,19 +11,23 @@ export const runRelease = async (
   }
 ) => {
   const { workspaceVersion, projectsVersionData } = await releaseVersion({
-    specifier: options.version,
     dryRun: !!options.dryRun,
-    verbose: true,
-    preid: config.preMajor,
+    verbose: !config.ci,
+    preid: config.preMajor ? "next" : undefined,
     stageChanges: true,
-    firstRelease: options.firstRelease
+    gitCommit: true,
+    gitCommitMessage: `chore(${options.project ? options.project : "repo"}): Release\${version} [skip ci]
+
+\${notes}`,
+    gitTag: true
   });
 
   await releaseChangelog({
-    versionData: projectsVersionData,
     version: workspaceVersion,
+    versionData: projectsVersionData,
     dryRun: !!options.dryRun,
-    verbose: true
+    verbose: !config.ci,
+    gitRemote: config.repository
   });
 
   await releasePublish({

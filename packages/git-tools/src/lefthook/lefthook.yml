@@ -60,7 +60,7 @@ pre-commit:
 commit-msg:
   commands:
     validate:
-      run: "npx commitlint --config dist/packages/git-tools/commitlint.config.cjs --edit {1}"
+      run: "npx commitlint --config=\"@storm-software/git-tools/commitlint.config.cjs\" --edit {1}"
 
 pre-push:
   piped: true

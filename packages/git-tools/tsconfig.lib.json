@@ -4,9 +4,23 @@
     "target": "es2022",
     "outDir": "../../dist/out-tsc",
     "declaration": true,
-    "types": ["node"]
+    "types": [
+      "node"
+    ]
   },
-  "files": ["declarations.d.ts"],
-  "include": ["src/**/*.ts", "src/**/*.js", "src/**/*.cjs", "bin/**/*", "declarations.d.ts"],
-  "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
+  "files": [
+    "declarations.d.ts"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.js",
+    "src/**/*.cjs",
+    "bin/**/*",
+    "declarations.d.ts"
+  ],
+  "exclude": [
+    "jest.config.ts",
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts"
+  ]
 }

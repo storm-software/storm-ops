@@ -31,7 +31,7 @@ export async function createProgram(config: StormConfig) {
     const commitlintConfig = new Option(
       "--config <file>",
       "Commitlint/Commitizen config file path"
-    ).default("@storm-software/git-tools/commit/config.js");
+    ).default("@storm-software/git-tools/src/commit/config.js");
 
     const commitlintDryRun = new Option(
       "--dry-run",
@@ -48,7 +48,7 @@ export async function createProgram(config: StormConfig) {
     const readmeTemplatePath = new Option(
       "--templates <path>",
       "The templates directory to use when generating the README.md files."
-    ).default("@storm-software/git-tools/readme/templates");
+    ).default("./docs/readme-templates");
 
     const readmePackageName = new Option(
       "--project <project>",
@@ -81,7 +81,7 @@ export async function createProgram(config: StormConfig) {
       .action(readmeAction);
 
     const releaseConfig = new Option("--config <file>", "Release config file path").default(
-      "@storm-software/git-tools/release/config.js"
+      "@storm-software/git-tools/src/release/config.js"
     );
 
     const releasePackageName = new Option(
@@ -90,7 +90,7 @@ export async function createProgram(config: StormConfig) {
     );
 
     const releasePlugin = new Option("--plugin <plugin>", "Semantic Release plugin").default(
-      "@storm-software/git-tools/semantic-release-plugin"
+      "@storm-software/git-tools/src/semantic-release-plugin"
     );
 
     const releaseBase = new Option("--base <base>", "Git base tag value");
@@ -122,7 +122,7 @@ export async function createProgram(config: StormConfig) {
 }
 
 export async function commitAction({
-  config = "@storm-software/git-tools/commit/config.js",
+  config = "@storm-software/git-tools/src/commit/config.js",
   dryRun = false
 }: {
   config: string;
@@ -157,8 +157,8 @@ export async function readmeAction(options: ReadMeOptions) {
 
 export async function releaseAction({
   project,
-  config = "@storm-software/git-tools/commit/config.js",
-  plugin = "@storm-software/git-tools/semantic-release-plugin",
+  config = "@storm-software/git-tools/src/commit/config.js",
+  plugin = "@storm-software/git-tools/src/semantic-release-plugin",
   base,
   head
 }: {

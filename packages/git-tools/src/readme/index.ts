@@ -11,7 +11,7 @@ import { getExecutorMarkdown, getGeneratorMarkdown } from "./nx-docs";
 import { createTokens, formatReadMeFromSectionName } from "./utils";
 
 export const runReadme = async ({
-  templates = "@storm-software/git-tools/readme/templates",
+  templates = "./docs/readme-templates",
   project,
   output,
   clean = true,
