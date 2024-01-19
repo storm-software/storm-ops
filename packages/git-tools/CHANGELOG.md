@@ -1,3 +1,10 @@
+## [1.26.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.26.0...git-tools-v1.26.1) (2024-01-19)
+
+
+### Bug Fixes
+
+* **git-tools:** Updated the base lefthook config file ([5fc8e10](https://github.com/storm-software/storm-ops/commit/5fc8e10a0eb176148bf57d45c176f8e6fdf309c6))
+
 # [1.26.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.25.2...git-tools-v1.26.0) (2024-01-19)
 
 

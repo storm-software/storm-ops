@@ -1,3 +1,18 @@
+# [1.8.0](https://github.com/storm-software/storm-ops/compare/design-tools-v1.7.1...design-tools-v1.8.0) (2024-01-19)
+
+
+### Bug Fixes
+
+* **git-tools:** Resolved issue preventing git-tools publish ([1bf9727](https://github.com/storm-software/storm-ops/commit/1bf97271e3421b5c485708ed2c59da815cde6c4b))
+* **git-tools:** Resovled issues with lock file versions ([3740dc2](https://github.com/storm-software/storm-ops/commit/3740dc2392a8c4fcb0beae0816afeaea1573f6ae))
+* **git-tools:** Upgrade Nx version and resolved import issues ([53432f2](https://github.com/storm-software/storm-ops/commit/53432f2b318c24bc0d65cf2509d01861c0c6f91b))
+* **git-tools:** Upgrade pnpm lock file ([daa3d32](https://github.com/storm-software/storm-ops/commit/daa3d32fd692799b036556ccf04279507410e4eb))
+
+
+### Features
+
+* **git-tools:** Redesigned the executable script structure ([a4c097b](https://github.com/storm-software/storm-ops/commit/a4c097bd38a68ca0c206686b592d994fb643a5d2))
+
 ## [1.7.1](https://github.com/storm-software/storm-ops/compare/design-tools-v1.7.0...design-tools-v1.7.1) (2024-01-19)
 
 
