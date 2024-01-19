@@ -1,12 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { PluginFn } from "semantic-release-plugin-decorators";
+import type { PluginFn } from "semantic-release-plugin-decorators";
 import { filterCommits } from "./get-commits-for-project";
 
 export const analyzeCommitsForProject =
-  (verbose?: boolean) =>
-  (_plugin: PluginFn) =>
-  async (config: any, context: any) => {
+  (verbose?: boolean) => (_plugin: PluginFn) => async (config: any, context: any) => {
     if (!config) {
       throw new Error("Release config is missing.");
     }
@@ -15,26 +13,14 @@ export const analyzeCommitsForProject =
       throw new Error("Commits are missing.");
     }
 
-    const filteredCommits = await filterCommits(
-      context.commits,
-      config,
-      context,
-      verbose
-    );
+    const filteredCommits = await filterCommits(context.commits, config, context, verbose);
     if (!filteredCommits || filteredCommits.length === 0) {
-      context.logger.warn(
-        `No commits found for the ${config.projectName} package. Skip analysis.`
-      );
+      context.logger.warn(`No commits found for the ${config.projectName} package. Skip analysis.`);
     }
 
     const releaseRules = (config.releaseRules ?? []).reduce(
       (ret: Array<{ type: string; release: string }>, rule: any) => {
-        if (
-          !ret.some(
-            r =>
-              r.type?.toLowerCase()?.trim() === rule.type?.toLowerCase()?.trim()
-          )
-        ) {
+        if (!ret.some((r) => r.type?.toLowerCase()?.trim() === rule.type?.toLowerCase()?.trim())) {
           ret.push(rule);
         }
 

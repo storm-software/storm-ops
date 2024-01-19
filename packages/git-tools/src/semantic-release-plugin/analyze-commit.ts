@@ -5,35 +5,26 @@ import { RELEASE_TYPES } from "../constants";
 import { compareReleaseTypes } from "./compare-release-types";
 
 export const analyzeCommit = (releaseRules, commit) => {
-  let releaseType;
+  let releaseType: string;
 
   releaseRules
     .filter(
-      ({ breaking, revert, release, ...rule }) =>
+      ({ breaking, revert, ...rule }) =>
         // If the rule is not `breaking` or the commit doesn't have a breaking change note
         (!breaking || (commit.notes && commit.notes.length > 0)) &&
         // If the rule is not `revert` or the commit is not a revert
         (!revert || commit.revert) &&
         // Otherwise match the regular rules
         isMatchWith(commit, rule, (object, src) =>
-          isString(src) && isString(object)
-            ? micromatch.isMatch(object, src)
-            : undefined
+          isString(src) && isString(object) ? micromatch.isMatch(object, src) : undefined
         )
     )
-    .every(match => {
+    .every((match) => {
       if (compareReleaseTypes(releaseType, match.release)) {
         releaseType = match.release;
-        console.debug(
-          "The rule %o match commit with release type %o",
-          match,
-          releaseType
-        );
+        console.debug("The rule %o match commit with release type %o", match, releaseType);
         if (releaseType === RELEASE_TYPES[0]) {
-          console.debug(
-            "Release type %o is the highest possible. Stop analysis.",
-            releaseType
-          );
+          console.debug("Release type %o is the highest possible. Stop analysis.", releaseType);
           return false;
         }
       } else {

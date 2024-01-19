@@ -4,13 +4,9 @@ import { getCommitsForProject } from "./get-commits-for-project";
 
 const wrapperName = "storm-semantic-release";
 
-const analyzeCommits = wrapStep(
-  "analyzeCommits",
-  analyzeCommitsForProject(true),
-  {
-    wrapperName
-  }
-);
+const analyzeCommits = wrapStep("analyzeCommits", analyzeCommitsForProject(true), {
+  wrapperName
+});
 
 const generateNotes = wrapStep("generateNotes", getCommitsForProject(false), {
   wrapperName

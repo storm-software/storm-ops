@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { ProjectGraph, createProjectGraphAsync } from "@nx/devkit";
-import { execSync } from "child_process";
+import { type ProjectGraph, createProjectGraphAsync } from "@nx/devkit";
+import { execSync } from "node:child_process";
 import { filterAffected } from "nx/src/project-graph/affected/affected-project-graph.js";
 import { calculateFileChanges } from "nx/src/project-graph/file-utils.js";
 import { filter, map, pipe } from "remeda";
-import { PluginFn } from "semantic-release-plugin-decorators";
-import { ReleaseContext } from "../types";
+import type { PluginFn } from "semantic-release-plugin-decorators";
+import type { ReleaseContext } from "../types";
 
 interface CommitAffectingProjectsParams {
   commit: Pick<any, "subject" | "commit" | "body">;
@@ -19,9 +19,7 @@ interface CommitAffectingProjectsParams {
 }
 
 export const getCommitsForProject =
-  (verbose?: boolean) =>
-  (plugin: PluginFn) =>
-  async (config: any, context: any) => {
+  (verbose?: boolean) => (plugin: PluginFn) => async (config: any, context: any) => {
     if (!config) {
       throw new Error("Release config is missing.");
     }
@@ -30,16 +28,9 @@ export const getCommitsForProject =
       throw new Error("Commits are missing.");
     }
 
-    const filteredCommits = await filterCommits(
-      context.commits,
-      config,
-      context,
-      verbose
-    );
+    const filteredCommits = await filterCommits(context.commits, config, context, verbose);
     if (!filteredCommits || filteredCommits.length === 0) {
-      context.logger.warn(
-        `No commits found for the ${config.projectName} package. Skip analysis.`
-      );
+      context.logger.warn(`No commits found for the ${config.projectName} package. Skip analysis.`);
     }
 
     return plugin(config, {
@@ -54,7 +45,7 @@ export async function filterCommits(
   context: any,
   verbose?: boolean
 ) {
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  // biome-ignore lint/style/noNonNullAssertion: <explanation>
   const projectName = releaseContext.projectName!;
   const graph = await createProjectGraphAsync();
   const dependencies = await getProjectDependencies(projectName, graph);
@@ -72,25 +63,18 @@ export async function filterCommits(
   );
 
   if (verbose) {
-    context.logger.log(
-      `Filtered ${result.length} commits out of ${commits.length}`
-    );
+    context.logger.log(`Filtered ${result.length} commits out of ${commits.length}`);
   }
 
   return result;
 }
 
-async function getProjectDependencies(
-  projectName: string,
-  graph: ProjectGraph
-) {
+// biome-ignore lint/nursery/useAwait: <explanation>
+async function getProjectDependencies(projectName: string, graph: ProjectGraph) {
   return getRecursiveDependencies(projectName, graph);
 }
 
-export function getRecursiveDependencies(
-  projectName: string,
-  graph: ProjectGraph
-): string[] {
+export function getRecursiveDependencies(projectName: string, graph: ProjectGraph): string[] {
   const deps = graph.dependencies[projectName];
 
   if (!deps) {
@@ -105,6 +89,7 @@ export function getRecursiveDependencies(
       filteredDeps.reduce((acc, target) => {
         const targetDeps = getRecursiveDependencies(target, graph);
 
+        // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
         return [...acc, ...targetDeps];
       }, filteredDeps)
   );
@@ -130,21 +115,15 @@ export async function isCommitAffectingProjects({
   const fileChanges = calculateFileChanges(affectedFiles, [], { projects });
   const filteredGraph = await filterAffected(graph, fileChanges);
 
-  const isAffected = projects.some(project =>
-    Boolean(filteredGraph.nodes[project])
-  );
+  const isAffected = projects.some((project) => Boolean(filteredGraph.nodes[project]));
 
   if (verbose) {
-    context.logger.log(
-      `Checking if commit ${commit.subject} affects dependencies`
-    );
+    context.logger.log(`Checking if commit ${commit.subject} affects dependencies`);
   }
 
   if (verbose) {
     if (isAffected) {
-      context.logger.log(
-        `✔  Commit "${commit.subject}" affects project or its dependencies`
-      );
+      context.logger.log(`✔  Commit "${commit.subject}" affects project or its dependencies`);
     } else {
       context.logger.log(
         `❌  Commit "${commit.subject}" does not affect project or its dependencies`
@@ -155,10 +134,7 @@ export async function isCommitAffectingProjects({
   return isAffected;
 }
 
-export function shouldSkipCommit(
-  commit: Pick<any, "body">,
-  projectName: string
-): boolean {
+export function shouldSkipCommit(commit: Pick<any, "body">, projectName: string): boolean {
   const onlyMatchRegex = /\[only (.*?)]/g;
   const skipMatchRegex = /\[skip (.*?)]/g;
 
@@ -201,7 +177,7 @@ function listAffectedFilesInCommit(commit: Pick<any, "commit">): string[] {
   return files
     .toString()
     .split("\n")
-    .map(line => line?.split("\t")?.[1])
+    .map((line) => line?.split("\t")?.[1])
     .filter(Boolean)
     .filter((filePath: string) => {
       // only include files inside the nx root
@@ -218,6 +194,6 @@ export const promiseFilter = <T>(
   array: T[],
   predicate: (item: T) => Promise<boolean>
 ): Promise<T[]> =>
-  Promise.all(
-    array.map(item => predicate(item).then(result => (result ? item : null)))
-  ).then(results => results.filter(Boolean)) as Promise<T[]>;
+  Promise.all(array.map((item) => predicate(item).then((result) => (result ? item : null)))).then(
+    (results) => results.filter(Boolean)
+  ) as Promise<T[]>;
