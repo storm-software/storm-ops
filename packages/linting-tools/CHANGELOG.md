@@ -1,3 +1,10 @@
+## [1.28.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.28.0...linting-tools-v1.28.1) (2024-01-19)
+
+
+### Bug Fixes
+
+* **config-tools:** Added the `defineConfig` function to type-check config options ([0676271](https://github.com/storm-software/storm-ops/commit/0676271161ec4a04715fb495f55042328a9f116f))
+
 # [1.28.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.27.2...linting-tools-v1.28.0) (2024-01-19)
 
 
