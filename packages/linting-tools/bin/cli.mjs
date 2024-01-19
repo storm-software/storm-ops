@@ -1,5 +1,8 @@
 #!/usr/bin/env zx
 
+// biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
+cd(__dirname);
+
 import { writeFatal, writeSuccess } from "../../config-tools/utilities/logger.js";
 import { prepareWorkspace } from "../../config-tools/utilities/prepare-workspace.js";
 import { createProgram } from "../cli/index.js";

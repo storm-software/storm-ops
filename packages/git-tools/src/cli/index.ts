@@ -94,6 +94,11 @@ export async function createProgram() {
     const releaseBase = new Option("--base <base>", "Git base tag value");
     const releaseHead = new Option("--head <head>", "Git head tag value");
 
+    const releaseDryRun = new Option(
+      "--dry-run",
+      "Should the release be run in dry-run mode (no updates are made)"
+    );
+
     program
       .command("release")
       .description("Run release for a project in the workspace.")
@@ -102,6 +107,7 @@ export async function createProgram() {
       .addOption(releasePlugin)
       .addOption(releaseBase)
       .addOption(releaseHead)
+      .addOption(releaseDryRun)
       .action(releaseAction);
 
     return program;
@@ -151,20 +157,18 @@ export async function readmeAction(options: ReadMeOptions) {
 
 export async function releaseAction({
   project,
-  config = "@storm-software/git-tools/commit/config.js",
-  plugin = "@storm-software/git-tools/semantic-release-plugin",
   base,
-  head
+  head,
+  dryRun = false
 }: {
-  plugin: string;
-  config: string;
-  project?: string;
+  project: string;
   base?: string;
   head?: string;
+  dryRun?: boolean;
 }) {
   try {
     writeInfo(_STORM_CONFIG, "⚡ Linting the Commit Message and running Commitizen \n");
-    await runRelease(project, config, plugin, base, head);
+    await runRelease(_STORM_CONFIG, { project, dryRun, base, head });
     writeSuccess(_STORM_CONFIG, "\n Release completed successfully!\n");
 
     process.exit(0);
