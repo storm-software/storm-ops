@@ -26,7 +26,7 @@ pre-commit:
     prepare:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/{lefthook.yml,biome.json}"
-      run: "node ./dist/packages/git-tools/bin/prepare.js"
+      run: "pnpm lefthook install"
     prebuild:
       glob: "**/*.*"
       run: "pnpm build"
@@ -40,9 +40,11 @@ pre-commit:
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: "pnpm lint && git update-index"
     check:
+      files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: "pnpm biome:check {staged_files} && git update-index"
     readme:
+      files: "git diff --name-only HEAD @{push}"
       glob: "**/{README.md,package.json}"
       run: "node ./dist/packages/git-tools/bin/git.js readme-gen --templates=\"dist/packages/git-tools/readme/templates\" && git update-index"
     format:
@@ -61,10 +63,10 @@ commit-msg:
 pre-push:
   piped: true
   commands:
-    # validate:
-    #   files: "git diff --name-only HEAD @{push}"
-    #   glob: "**/*.*"
-    #   run: "node ./dist/packages/git-tools/hooks/pre-push.js {files}"
+    validate:
+      files: "git diff --name-only HEAD @{push}"
+      glob: "**/*.*"
+      run: "node ./dist/packages/git-tools/hooks/pre-push.js {files} && git update-index"
     lint:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"

@@ -7,7 +7,7 @@ import { findWorkspaceRoot } from "./find-workspace-root";
 /**
  * Storm theme config values used for styling various workspace elements
  */
-export const DefaultColorConfig: ColorConfig = {
+export const DEFAULT_COLOR_CONFIG: ColorConfig = {
   primary: "#1fb2a6",
   background: "#1d232a",
   success: "#087f5b",
@@ -20,7 +20,7 @@ export const DefaultColorConfig: ColorConfig = {
 /**
  * Storm Workspace config values used during various dev-ops processes
  */
-export const DefaultStormConfig: StormConfig = {
+export const DEFAULT_STORM_CONFIG: StormConfig = {
   name: "storm",
   namespace: "storm-software",
   license: "Apache License 2.0",
@@ -38,7 +38,7 @@ export const DefaultStormConfig: StormConfig = {
   ci: true,
   configFile: null,
   runtimeVersion: "1.0.0",
-  colors: { ...DefaultColorConfig },
+  colors: { ...DEFAULT_COLOR_CONFIG },
   extensions: {}
 };
 
@@ -52,8 +52,8 @@ export const getDefaultConfig = (config: Partial<StormConfig> = {}, root?: strin
   let namespace = "storm-software";
   let repository = "https://github.com/storm-software/storm-ops";
 
-  let license = DefaultStormConfig.license;
-  let homepage = DefaultStormConfig.homepage;
+  let license = DEFAULT_STORM_CONFIG.license;
+  let homepage = DEFAULT_STORM_CONFIG.homepage;
 
   const workspaceRoot = findWorkspaceRoot(root);
   if (existsSync(join(workspaceRoot, "package.json"))) {
@@ -82,15 +82,15 @@ export const getDefaultConfig = (config: Partial<StormConfig> = {}, root?: strin
   }
 
   return StormConfigSchema.parse({
-    ...(DefaultStormConfig as Required<StormConfig>),
+    ...(DEFAULT_STORM_CONFIG as Required<StormConfig>),
     ...config,
-    colors: { ...DefaultColorConfig, ...config.colors },
+    colors: { ...DEFAULT_COLOR_CONFIG, ...config.colors },
     workspaceRoot,
     name,
     namespace,
     repository,
-    license: license ?? DefaultStormConfig.license,
-    homepage: homepage ?? DefaultStormConfig.homepage,
+    license: license ?? DEFAULT_STORM_CONFIG.license,
+    homepage: homepage ?? DEFAULT_STORM_CONFIG.homepage,
     extensions: {
       ...config.extensions
     }

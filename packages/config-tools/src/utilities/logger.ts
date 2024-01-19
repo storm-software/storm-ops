@@ -103,7 +103,7 @@ ${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${
         `
 ${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(">")} ${chalk.bold
           .bgHex(config?.colors?.success ? config.colors.success : "#087f5b")
-          .white(" 🎉 Success ")}  ${chalk.hex(
+          .white(" √ Success ")}  ${chalk.hex(
           config?.colors?.success ? config.colors.success : "#087f5b"
         )(message)}
 `
