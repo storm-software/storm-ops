@@ -107,7 +107,7 @@ jobs:
       #  uses: codecov/codecov-action@v3
 
       - name: Add permissions to git tools
-        run: chmod a=rwx dist/packages/git-tools/bin/cli.mjs
+        run: chmod a=rwx dist/packages/git-tools/bin/git.js
 
       - name: Release Library Version Updates
         run: pnpm release --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
