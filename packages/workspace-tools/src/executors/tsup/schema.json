@@ -74,7 +74,7 @@
     "metafile": {
       "type": "boolean",
       "description": "Should a meta file be created for the build package",
-      "default": false
+      "default": true
     },
     "emitOnAll": {
       "type": "boolean",
@@ -99,7 +99,10 @@
     "format": {
       "type": "array",
       "description": "The output format for the generated JavaScript files. There are currently three possible values that can be configured: iife, cjs, and esm.",
-      "default": ["cjs", "esm"],
+      "default": [
+        "cjs",
+        "esm"
+      ],
       "items": {
         "type": "string"
       }
@@ -112,7 +115,12 @@
     "platform": {
       "type": "string",
       "description": "Platform target for outputs.",
-      "enum": ["browser", "neutral", "node", "worker"],
+      "enum": [
+        "browser",
+        "neutral",
+        "node",
+        "worker"
+      ],
       "default": "neutral"
     },
     "banner": {
@@ -128,6 +136,11 @@
     "verbose": {
       "type": "boolean",
       "description": "Should write extra log outputs with details from the executor.",
+      "default": false
+    },
+    "skipNativeModulesPlugin": {
+      "type": "boolean",
+      "description": "Should we skip adding the Native Node Modules ESBuild plugin.",
       "default": false
     },
     "shims": {
@@ -174,7 +187,11 @@
       }
     }
   },
-  "required": ["tsConfig", "platform", "banner"],
+  "required": [
+    "tsConfig",
+    "platform",
+    "banner"
+  ],
   "definitions": {
     "assetPattern": {
       "oneOf": [
@@ -202,7 +219,11 @@
             }
           },
           "additionalProperties": false,
-          "required": ["glob", "input", "output"]
+          "required": [
+            "glob",
+            "input",
+            "output"
+          ]
         },
         {
           "type": "string"

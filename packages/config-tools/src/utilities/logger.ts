@@ -69,7 +69,7 @@ ${chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")} 
         `
 ${chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")(">")} ${chalk.bold
           .bgHex(config?.colors?.warning ? config.colors.warning : "#fcc419")
-          .white(" ! Warn  ")}  ${chalk.hex(
+          .white(" ⚠ Warn ")}  ${chalk.hex(
           config?.colors?.warning ? config.colors.warning : "#fcc419"
         )(message)}
 `
@@ -86,7 +86,7 @@ ${chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")(">
         `
 ${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${chalk.bold
           .bgHex(config?.colors?.info ? config.colors.info : "#0ea5e9")
-          .white("  ℹ Info  ")}  ${chalk.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(
+          .white(" ℹ Info ")}  ${chalk.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(
           message
         )}
 `
@@ -120,7 +120,7 @@ ${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(">
         `
 ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${chalk.bold
           .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-          .white(" 🧪 Debug  ")}  ${chalk.hex(
+          .white(" ! Debug ")}  ${chalk.hex(
           config?.colors?.primary ? config.colors.primary : "#1fb2a6"
         )(message)}
 `
@@ -133,7 +133,7 @@ ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">
       `
 ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${chalk.bold
         .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-        .white("  📢 System  ")}  ${chalk.hex(
+        .white(" ! System ")}  ${chalk.hex(
         config?.colors?.primary ? config.colors.primary : "#1fb2a6"
       )(message)}
 `
