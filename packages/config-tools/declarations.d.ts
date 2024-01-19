@@ -1,11 +1,10 @@
-import * as z from "zod";
-import { StormConfigSchema } from "./src/schema";
+import type * as z from "zod";
+import type { StormConfigSchema } from "./src/schema";
 
 type TStormConfig = z.infer<typeof StormConfigSchema>;
 
 declare type StormConfig<
-  TExtensionName extends
-    keyof TStormConfig["extensions"] = keyof TStormConfig["extensions"],
+  TExtensionName extends keyof TStormConfig["extensions"] = keyof TStormConfig["extensions"],
   TExtensionConfig extends
     TStormConfig["extensions"][TExtensionName] = TStormConfig["extensions"][TExtensionName]
 > = TStormConfig & {
@@ -13,12 +12,12 @@ declare type StormConfig<
     | (TStormConfig["extensions"] & {
         [extensionName in TExtensionName]: TExtensionConfig;
       })
-    | {};
+    | NonNullable;
 };
-export { StormConfig };
+export type { StormConfig };
 
 declare type StormConfigInput = z.input<typeof StormConfigSchema>;
-export { StormConfigInput };
+export type { StormConfigInput };
 
 /**
  * Find the root of the current monorepo
@@ -33,9 +32,7 @@ export { findWorkspaceRoot };
  *
  * @param pathInsideMonorepo - The path inside the monorepo
  */
-declare function findWorkspaceRootSafe(
-  pathInsideMonorepo?: string
-): string | undefined;
+declare function findWorkspaceRootSafe(pathInsideMonorepo?: string): string | undefined;
 export { findWorkspaceRootSafe };
 
 /**
@@ -66,9 +63,8 @@ export { loadStormConfig };
  * @returns The function isStormError is returning a boolean value.
  */
 declare function createStormConfig<
-  TExtensionName extends
-    keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
-  TExtensionConfig extends any = any,
+  TExtensionName extends keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
+  TExtensionConfig = any,
   TExtensionSchema extends z.ZodTypeAny = z.ZodTypeAny
 >(
   extensionName?: TExtensionName,

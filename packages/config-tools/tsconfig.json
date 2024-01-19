@@ -3,8 +3,7 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "noEmit": true
+    "esModuleInterop": true
   },
   "files": [],
   "include": ["src/**/*.ts", "src/**/*.js", "bin/**/*", "declarations.d.ts"],

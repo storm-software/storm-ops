@@ -22,7 +22,7 @@
         "bundle": true,
         "thirdParty": true,
         "skipTypeCheck": false,
-        "metafile": false,
+        "metafile": true,
         "minify": true,
         "format": ["cjs", "esm"],
         "assets": [
