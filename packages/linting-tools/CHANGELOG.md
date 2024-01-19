@@ -1,3 +1,10 @@
+# [1.29.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.28.1...linting-tools-v1.29.0) (2024-01-19)
+
+
+### Features
+
+* **config-tools:** Added the `getConfigFileByName` function export ([9f56a9c](https://github.com/storm-software/storm-ops/commit/9f56a9ca2c1df0bccbf533cc63f15602e8de0dff))
+
 ## [1.28.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.28.0...linting-tools-v1.28.1) (2024-01-19)
 
 
