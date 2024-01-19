@@ -39,10 +39,9 @@ if (fs.existsSync(path.join(workspaceRoot, "yarn.lock"))) {
 }
 
 try {
-  const rawContent = await readFile(path.join(workspaceRoot, "pnpm-lock.yaml"), {
+  const content = await readFile(path.join(workspaceRoot, "pnpm-lock.yaml"), {
     encoding: "utf8"
   });
-  const content = JSON.parse(rawContent);
   if (content.match(/localhost:487/)) {
     errors.push(
       'The "pnpm-lock.yaml" has reference to local repository ("localhost:4873"). Please use ensure you disable local registry before running "pnpm i"'
