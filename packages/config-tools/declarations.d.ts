@@ -72,3 +72,11 @@ declare function createStormConfig<
   workspaceRoot?: string
 ): StormConfig<TExtensionName, TExtensionConfig>;
 export { createStormConfig };
+
+/**
+ * Get the config file for the current Storm workspace
+ *
+ * @returns The config file for the current Storm workspace
+ */
+declare function defineConfig(input: StormConfigInput): StormConfigInput;
+export { defineConfig };
