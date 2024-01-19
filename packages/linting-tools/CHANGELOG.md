@@ -1,3 +1,10 @@
+## [1.27.2](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.27.1...linting-tools-v1.27.2) (2024-01-19)
+
+
+### Bug Fixes
+
+* **git-tools:** Updated executable scripts to use correct directory ([8bd14e7](https://github.com/storm-software/storm-ops/commit/8bd14e7b1d78ece17f314ef172c344e927c0736d))
+
 ## [1.27.1](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.27.0...linting-tools-v1.27.1) (2024-01-18)
 
 
