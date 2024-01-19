@@ -1,0 +1,40 @@
+import type { StormConfig } from "../types";
+import { writeError, writeFatal, writeSuccess, writeTrace } from "./logger";
+
+export const exitWithError = (config: StormConfig) => {
+  writeFatal(config, "Exiting script with an error status...");
+  process.exit(1);
+};
+
+export const exitWithSuccess = (config: StormConfig) => {
+  writeSuccess(config, "Script completed successfully. Exiting...");
+  process.exit(0);
+};
+
+export const handleProcess = (config: StormConfig) => {
+  writeTrace(
+    config,
+    `Using the following arguments to process the script: ${process.argv.join(", ")}`
+  );
+
+  process.on("unhandledRejection", (error) => {
+    writeError(config, `An Unhandled Rejection occurred while running the program: ${error}`);
+    exitWithError(config);
+  });
+  process.on("uncaughtException", (error) => {
+    writeError(
+      config,
+      `An Uncaught Exception occurred while running the program: ${error.message} \nStacktrace: ${error.stack}`
+    );
+    exitWithError(config);
+  });
+
+  process.on("SIGTERM", (signal: NodeJS.Signals) => {
+    writeError(config, `The program terminated with signal code: ${signal}`);
+    exitWithError(config);
+  });
+  process.on("SIGINT", (signal: NodeJS.Signals) => {
+    writeError(config, `The program terminated with signal code: ${signal}`);
+    exitWithError(config);
+  });
+};

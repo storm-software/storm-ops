@@ -1,4 +1,4 @@
-import { RuleConfigCondition, RuleConfigSeverity, TargetCaseType } from "@commitlint/types";
+import type { RuleConfigCondition, RuleConfigSeverity, TargetCaseType } from "@commitlint/types";
 import chalk from "chalk";
 
 export default {

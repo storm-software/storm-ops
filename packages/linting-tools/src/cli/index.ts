@@ -1,6 +1,6 @@
 import {
+  type StormConfig,
   findWorkspaceRootSafe,
-  prepareWorkspace,
   writeDebug,
   writeError,
   writeFatal,
@@ -15,11 +15,12 @@ import { runAlex } from "../alex";
 import { runManypkg } from "../manypkg";
 export { findWorkspaceRootSafe } from "@storm-software/config-tools";
 
-const _STORM_CONFIG = await prepareWorkspace();
+let _config: Partial<StormConfig> = {};
 
-export function createProgram() {
+export function createProgram(config: StormConfig) {
   try {
-    writeInfo(_STORM_CONFIG, "⚡ Running Storm Linting Tools");
+    _config = config;
+    writeInfo(config, "⚡ Running Storm Linting Tools");
 
     const root = findWorkspaceRootSafe();
     process.env.STORM_WORKSPACE_ROOT ??= root;
@@ -125,7 +126,7 @@ export function createProgram() {
 
     return program;
   } catch (e) {
-    writeFatal(_STORM_CONFIG, `A fatal error occurred while running the program: ${e.message}`);
+    writeFatal(config, `A fatal error occurred while running the program: ${e.message}`);
     process.exit(1);
   }
 }
@@ -144,7 +145,7 @@ async function allAction(
   manypkgFix: boolean
 ) {
   try {
-    writeInfo(_STORM_CONFIG, "⚡ Linting the Storm Workspace");
+    writeInfo(_config, "⚡ Linting the Storm Workspace");
 
     const promises = [];
     if (!cspellSkip) {
@@ -168,9 +169,9 @@ async function allAction(
     }
 
     await Promise.all(promises);
-    writeSuccess(_STORM_CONFIG, "Successfully linted the workspace ✅");
+    writeSuccess(_config, "Successfully linted the workspace ✅");
   } catch (e) {
-    writeFatal(_STORM_CONFIG, `A fatal error occurred while linting the workspace: ${e.message}`);
+    writeFatal(_config, `A fatal error occurred while linting the workspace: ${e.message}`);
     process.exit(1);
   }
 }
@@ -192,11 +193,11 @@ async function cspellAction(cspellConfig: string) {
       config: cspellConfig
     });
     if (result.errors) {
-      writeError(_STORM_CONFIG, "Spelling linting has failed ❌");
+      writeError(_config, "Spelling linting has failed ❌");
       process.exit(1);
     }
 
-    writeSuccess(_STORM_CONFIG, "Spelling linting is complete ✅");
+    writeSuccess(_config, "Spelling linting is complete ✅");
   } catch (e) {
     console.error(e);
     process.exit(1);
@@ -205,17 +206,17 @@ async function cspellAction(cspellConfig: string) {
 
 async function alexAction(alexConfig: string, alexIgnore: string) {
   try {
-    writeInfo(_STORM_CONFIG, "⚡ Linting the workspace language with alexjs.com");
+    writeInfo(_config, "⚡ Linting the workspace language with alexjs.com");
 
     if (await runAlex(alexConfig, alexIgnore)) {
-      writeError(_STORM_CONFIG, "Language linting has failed ❌");
+      writeError(_config, "Language linting has failed ❌");
       process.exit(1);
     }
 
-    writeSuccess(_STORM_CONFIG, "Language linting is complete ✅");
+    writeSuccess(_config, "Language linting is complete ✅");
   } catch (e) {
     writeFatal(
-      _STORM_CONFIG,
+      _config,
       `A fatal error occurred while language linting the workspace: ${e.message}`
     );
     process.exit(1);
@@ -224,27 +225,27 @@ async function alexAction(alexConfig: string, alexIgnore: string) {
 
 async function depsVersionAction() {
   try {
-    writeInfo(_STORM_CONFIG, "⚡ Linting the workspace dependency version consistency");
+    writeInfo(_config, "⚡ Linting the workspace dependency version consistency");
 
     const { CDVC } = await import("check-dependency-version-consistency");
     const cdvc = new CDVC(".", { fix: true });
 
     // Show output for dependencies we fixed.
     if (cdvc.hasMismatchingDependenciesFixable) {
-      writeDebug(_STORM_CONFIG, cdvc.toFixedSummary());
+      writeDebug(_config, cdvc.toFixedSummary());
     }
 
     // Show output for dependencies that still have mismatches.
     if (cdvc.hasMismatchingDependenciesNotFixable) {
-      writeError(_STORM_CONFIG, "Dependency version consistency linting has failed ❌");
-      writeError(_STORM_CONFIG, cdvc.toMismatchSummary());
+      writeError(_config, "Dependency version consistency linting has failed ❌");
+      writeError(_config, cdvc.toMismatchSummary());
       process.exit(1);
     }
 
-    writeSuccess(_STORM_CONFIG, "Dependency Version linting is complete ✅");
+    writeSuccess(_config, "Dependency Version linting is complete ✅");
   } catch (e) {
     writeFatal(
-      _STORM_CONFIG,
+      _config,
       `A fatal error occurred while dependency Version linting the workspace: ${e.message}`
     );
     process.exit(1);
@@ -253,7 +254,7 @@ async function depsVersionAction() {
 
 async function circularDepsAction() {
   try {
-    writeInfo(_STORM_CONFIG, "⚡ Linting the workspace circular dependency");
+    writeInfo(_config, "⚡ Linting the workspace circular dependency");
 
     const tree = await parseDependencyTree("**/*.*", {
       tsconfig: "./tsconfig.base.json",
@@ -262,12 +263,12 @@ async function circularDepsAction() {
     });
 
     const circulars = parseCircular(tree);
-    writeTrace(_STORM_CONFIG, prettyCircular(circulars));
+    writeTrace(_config, prettyCircular(circulars));
 
-    writeSuccess(_STORM_CONFIG, "Circular dependency linting is complete ✅");
+    writeSuccess(_config, "Circular dependency linting is complete ✅");
   } catch (e) {
     writeFatal(
-      _STORM_CONFIG,
+      _config,
       `A fatal error occurred while circular dependency linting the workspace: ${e.message}`
     );
     process.exit(1);
@@ -276,16 +277,13 @@ async function circularDepsAction() {
 
 async function manypkgAction(manypkgType = "check", manypkgArgs: string[], manypkgFix: boolean) {
   try {
-    writeInfo(_STORM_CONFIG, "⚡ Linting the workspace's packages with Manypkg");
+    writeInfo(_config, "⚡ Linting the workspace's packages with Manypkg");
 
     await runManypkg(manypkgType, manypkgArgs, manypkgFix);
 
-    writeSuccess(_STORM_CONFIG, "Manypkg linting is complete ✅");
+    writeSuccess(_config, "Manypkg linting is complete ✅");
   } catch (e) {
-    writeFatal(
-      _STORM_CONFIG,
-      `A fatal error occurred while manypkg linting the workspace: ${e.message}`
-    );
+    writeFatal(_config, `A fatal error occurred while manypkg linting the workspace: ${e.message}`);
     process.exit(1);
   }
 }

@@ -69,7 +69,7 @@ ${chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")} 
         `
 ${chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")(">")} ${chalk.bold
           .bgHex(config?.colors?.warning ? config.colors.warning : "#fcc419")
-          .white(" ⚠️ Warn ")}  ${chalk.hex(
+          .white(" ⚠️  Warn  ")}  ${chalk.hex(
           config?.colors?.warning ? config.colors.warning : "#fcc419"
         )(message)}
 `

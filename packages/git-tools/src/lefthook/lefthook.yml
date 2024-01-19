@@ -12,27 +12,32 @@ pre-install:
   commands:
     validate:
       glob: "**/*.*"
-      run: "zx @storm-software/git-tools/scripts/pre-install.mjs"
+      run: "npx storm-pre-install"
 
 prepare:
   commands:
     validate:
       glob: "**/*.*"
-      run: "zx @storm-software/git-tools/scripts/prepare.mjs"
+      run: "npx storm-prepare"
 
 pre-commit:
   piped: true
   commands:
-    deps:
+    install:
+      files: "git diff --name-only HEAD @{push}"
       glob: "**/package.json"
       run: "pnpm install --frozen-lockfile --ignore-scripts && git update-index"
+    prepare:
+      files: "git diff --name-only HEAD @{push}"
+      glob: "**/{lefthook.yml,biome.json}"
+      run: "npx storm-prepare"
     prebuild:
       glob: "**/*.*"
       run: "pnpm build"
       stage_fixed: true
     validate:
       glob: "**/*.*"
-      run: "zx @storm-software/git-tools/hooks/pre-commit.mjs {staged_files}"
+      run: "npx storm-pre-commit {staged_files}"
       stage_fixed: true
     lint:
       files: "git diff --name-only HEAD @{push}"
@@ -41,9 +46,9 @@ pre-commit:
     check:
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: npx biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index"
-    readme:
+    readme-gen:
       glob: "**/{README.md,package.json}"
-      run: "zx @storm-software/git-tools/bin/cli.mjs readme-gen --templates=\"dist/packages/git-tools/readme/templates\" && git update-index"
+      run: "npx storm-git readme-gen --templates=\"docs/readme-templates\" && git update-index"
     format:
       glob: "**/*.*"
       run: "npx biome format --write {staged_files} && git update-index"
@@ -63,9 +68,9 @@ pre-push:
     validate:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.*"
-      run: "zx @storm-software/git-tools/hooks/pre-push.mjs {files}"
+      run: "npx storm-pre-push {files}"
       stage_fixed: true
-    lint-biome:
+    lint:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true {files} && git update-index"
@@ -75,18 +80,18 @@ post-merge:
   commands:
     validate:
       glob: "**/*.*"
-      run: "zx @storm-software/git-tools/hooks/post-merge.mjs {staged_files}"
+      run: "npx storm-post-merge {staged_files}"
       stage_fixed: true
 
 post-checkout:
   commands:
     validate:
       glob: "**/*.*"
-      run: "zx @storm-software/git-tools/hooks/post-checkout.mjs {staged_files}"
+      run: "npx storm-post-checkout {staged_files}"
 
 post-commit:
   commands:
     validate:
       glob: "**/*.*"
-      run: "zx @storm-software/git-tools/hooks/post-commit.mjs {staged_files}"
+      run: "npx storm-post-commit {staged_files}"
 

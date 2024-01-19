@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { ProjectConfiguration } from "nx/src/config/workspace-json-project-json.js";
+import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json.js";
 import {
   buildProjectGraphWithoutDaemon,
   readProjectsConfigurationFromProjectGraph

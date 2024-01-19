@@ -12,25 +12,30 @@ pre-install:
   commands:
     validate:
       glob: "**/*.*"
-      run: "zx ./dist/packages/git-tools/scripts/pre-install.mjs"
+      run: "node ./dist/packages/git-tools/bin/pre-install.js"
+
 prepare:
   commands:
     validate:
       glob: "**/*.*"
-      run: "zx ./dist/packages/git-tools/scripts/prepare.mjs"
+      run: "node ./dist/packages/git-tools/bin/prepare.js"
 
 pre-commit:
   piped: true
   commands:
+    prepare:
+      files: "git diff --name-only HEAD @{push}"
+      glob: "**/{lefthook.yml,biome.json}"
+      run: "node ./dist/packages/git-tools/bin/prepare.js"
     prebuild:
       glob: "**/*.*"
       run: "pnpm build"
       stage_fixed: true
     validate:
       glob: "**/*.*"
-      run: "zx ./dist/packages/git-tools/hooks/pre-commit.mjs {staged_files}"
+      run: "node ./dist/packages/git-tools/bin/pre-commit.js {staged_files}"
       stage_fixed: true
-    lint-storm:
+    lint:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: "pnpm lint && git update-index"
@@ -39,7 +44,7 @@ pre-commit:
       run: "pnpm biome:check {staged_files} && git update-index"
     readme:
       glob: "**/{README.md,package.json}"
-      run: "zx ./dist/packages/git-tools/bin/cli.mjs readme-gen --templates=\"dist/packages/git-tools/readme/templates\" && git update-index"
+      run: "node ./dist/packages/git-tools/bin/git.js readme-gen --templates=\"dist/packages/git-tools/readme/templates\" && git update-index"
     format:
       glob: "**/{README.md,package.json}"
       run: "pnpm biome:format {staged_files} && git update-index"
@@ -59,7 +64,7 @@ pre-push:
     # validate:
     #   files: "git diff --name-only HEAD @{push}"
     #   glob: "**/*.*"
-    #   run: "zx ./dist/packages/git-tools/hooks/pre-push.mjs {files}"
+    #   run: "node ./dist/packages/git-tools/hooks/pre-push.js {files}"
     lint:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
@@ -69,17 +74,17 @@ post-merge:
   commands:
     validate:
       glob: "**/*.*"
-      run: "zx ./dist/packages/git-tools/hooks/post-merge.mjs {staged_files}"
+      run: "node ./dist/packages/git-tools/bin/post-merge.js {staged_files}"
       stage_fixed: true
 
 post-checkout:
   commands:
     validate:
       glob: "**/*.*"
-      run: "zx ./dist/packages/git-tools/hooks/post-checkout.mjs {staged_files}"
+      run: "node ./dist/packages/git-tools/bin/post-checkout.js {staged_files}"
 
 post-commit:
   commands:
     validate:
       glob: "**/*.*"
-      run: "zx ./dist/packages/git-tools/hooks/post-commit.mjs {staged_files}"
+      run: "node ./dist/packages/git-tools/bin/post-commit.js {staged_files}"

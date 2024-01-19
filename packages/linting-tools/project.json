@@ -13,6 +13,7 @@
         "project": "packages/linting-tools/package.json",
         "main": "packages/linting-tools/src/cli/index.ts",
         "additionalEntryPoints": [
+          "packages/linting-tools/bin/lint.ts",
           "packages/linting-tools/src/eslint/graphql/index.ts",
           "packages/linting-tools/src/eslint/javascript/index.ts",
           "packages/linting-tools/src/eslint/json/index.ts",

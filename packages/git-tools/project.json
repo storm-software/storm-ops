@@ -14,6 +14,15 @@
         "main": "packages/git-tools/src/index.ts",
         "additionalEntryPoints": [
           "packages/git-tools/src/cli/index.ts",
+          "packages/git-tools/bin/git.ts",
+          "packages/git-tools/bin/pre-install.ts",
+          "packages/git-tools/bin/prepare.ts",
+          "packages/git-tools/bin/post-checkout.ts",
+          "packages/git-tools/bin/post-commit.ts",
+          "packages/git-tools/bin/post-merge.ts",
+          "packages/git-tools/bin/pre-commit.ts",
+          "packages/git-tools/bin/pre-push.ts",
+          "packages/git-tools/bin/version-warning.ts",
           "packages/git-tools/src/utilities/index.ts",
           "packages/git-tools/src/commitizen/index.ts",
           "packages/git-tools/src/commitlint/config.ts",
@@ -70,11 +79,6 @@
           },
           {
             "input": "packages/git-tools/src",
-            "glob": "hooks/*.mjs",
-            "output": "."
-          },
-          {
-            "input": "packages/git-tools/src",
             "glob": "prettier/.prettierignore_staged",
             "output": "."
           },
@@ -82,11 +86,6 @@
             "input": "packages/git-tools/src",
             "glob": "readme/templates/**/*.*",
             "output": "."
-          },
-          {
-            "input": "./packages/git-tools/scripts",
-            "glob": "**/*.mjs",
-            "output": "./scripts"
           },
           {
             "input": "packages/git-tools/src/commitlint",

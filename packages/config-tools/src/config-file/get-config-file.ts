@@ -40,13 +40,9 @@ export const getConfigFile = async (filePath?: string): Promise<StormConfigInput
     cosmiconfigResult.isEmpty ||
     !cosmiconfigResult.filepath
   ) {
-    console.warn(
-      "No Storm config file found in the current workspace. Please ensure this is the expected behavior - you can add a `storm.config.js` file to the root of your workspace if it is not."
-    );
-
     writeWarning(
-      { logLevel: "error" },
-      "No Storm config file found in the current workspace. Please ensure this is the expected behavior - you can add a `storm.config.js` file to the root of your workspace if it is not."
+      { logLevel: "all" },
+      "No Storm config file found in the current workspace. Please ensure this is the expected behavior - you can add a `storm.config.js` file to the root of your workspace if it is not.\n"
     );
     return undefined;
   }

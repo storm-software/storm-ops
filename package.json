@@ -46,18 +46,18 @@
     "build:all": "nx run-many -t build --all --parallel=5",
     "clean": "rimraf dist",
     "clean:packages": "rimraf dist/packages",
-    "commit": "zx ./dist/packages/git-tools/bin/cli.mjs commit",
+    "commit": "node ./dist/packages/git-tools/bin/git.js commit",
     "dep-graph": "nx dep-graph",
     "e2e": "nx e2e",
     "biome:check": "biome check --apply-unsafe --no-errors-on-unmatched --files-ignore-unknown=true",
     "biome:lint": "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true",
     "biome:format": "npx biome format --write  --no-errors-on-unmatched --files-ignore-unknown=true",
     "help": "nx help",
-    "preinstall": "zx ./dist/packages/git-tools/scripts/pre-install.mjs || npx -y only-allow pnpm",
-    "lint": "zx ./dist/packages/linting-tools/bin/cli.mjs all --skip-cspell --alex-config=\"dist/packages/linting-tools/alex/.alexrc\" --alex-config=\"dist/packages/linting-tools/alex/.alexignore\"",
+    "preinstall": "node ./dist/packages/git-tools/bin/pre-install.js || npx -y only-allow pnpm",
+    "lint": "node ./dist/packages/linting-tools/bin/lint.js all --skip-cspell --alex-config=\"dist/packages/linting-tools/alex/.alexrc\" --alex-config=\"dist/packages/linting-tools/alex/.alexignore\"",
     "local-registry": "nx local-registry @storm-software/storm-ops",
     "nx": "nx",
-    "release": "zx ./dist/packages/git-tools/bin/cli.mjs release --plugin=\"dist/packages/git-tools/semantic-release-plugin\"",
+    "release": "node ./dist/packages/git-tools/bin/git.js release --plugin=\"dist/packages/git-tools/semantic-release-plugin\"",
     "start": "nx serve",
     "test": "nx test"
   },
@@ -95,8 +95,7 @@
     "ts-node": "10.9.1",
     "tslib": "2.6.2",
     "typescript": "5.2.2",
-    "verdaccio": "5.27.0",
-    "zx": "^7.2.3"
+    "verdaccio": "5.27.0"
   },
   "packageManager": "pnpm@8.10.2",
   "engines": {
