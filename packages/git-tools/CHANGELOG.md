@@ -1,3 +1,10 @@
+## [1.26.2](https://github.com/storm-software/storm-ops/compare/git-tools-v1.26.1...git-tools-v1.26.2) (2024-01-19)
+
+
+### Bug Fixes
+
+* **config-tools:** Added the `defineConfig` function to type-check config options ([0676271](https://github.com/storm-software/storm-ops/commit/0676271161ec4a04715fb495f55042328a9f116f))
+
 ## [1.26.1](https://github.com/storm-software/storm-ops/compare/git-tools-v1.26.0...git-tools-v1.26.1) (2024-01-19)
 
 
