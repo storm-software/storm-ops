@@ -1,3 +1,4 @@
+import type { CosmiconfigResult } from "cosmiconfig";
 import type * as z from "zod";
 import type { StormConfigSchema } from "./src/schema";
 
@@ -72,6 +73,19 @@ declare function createStormConfig<
   workspaceRoot?: string
 ): StormConfig<TExtensionName, TExtensionConfig>;
 export { createStormConfig };
+
+/**
+ * Get the config file for the current Storm workspace
+ *
+ * @param fileName - The name of the config file to search for
+ * @param filePath - The path to search for the config file in
+ * @returns The config file for the current Storm workspace
+ */
+declare function getConfigFileByName(
+  fileName: string,
+  filePath?: string
+): Promise<CosmiconfigResult>;
+export { getConfigFileByName };
 
 /**
  * Get the config file for the current Storm workspace

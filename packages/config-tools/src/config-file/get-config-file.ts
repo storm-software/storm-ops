@@ -1,11 +1,19 @@
 import { type CosmiconfigResult, cosmiconfig } from "cosmiconfig";
 import type { StormConfigInput } from "../types";
-import { writeWarning } from "../utilities/logger";
 
 let _static_cache: StormConfigInput | undefined = undefined;
 
-const getConfigFileName = async (fileName: string, filePath?: string): Promise<CosmiconfigResult> =>
-  cosmiconfig(fileName, { cache: true }).search(filePath);
+/**
+ * Get the config file for the current Storm workspace
+ *
+ * @param fileName - The name of the config file to search for
+ * @param filePath - The path to search for the config file in
+ * @returns The config file for the current Storm workspace
+ */
+export const getConfigFileByName = async (
+  fileName: string,
+  filePath?: string
+): Promise<CosmiconfigResult> => cosmiconfig(fileName, { cache: true }).search(filePath);
 
 /**
  * Get the config file for the current Storm workspace
@@ -17,19 +25,13 @@ export const getConfigFile = async (filePath?: string): Promise<StormConfigInput
     return _static_cache as StormConfigInput;
   }
 
-  let cosmiconfigResult = await getConfigFileName("storm", filePath);
+  let cosmiconfigResult = await getConfigFileByName("storm", filePath);
   if (!cosmiconfigResult || cosmiconfigResult.isEmpty) {
-    cosmiconfigResult = await getConfigFileName("storm-software", filePath);
+    cosmiconfigResult = await getConfigFileByName("storm-software", filePath);
     if (!cosmiconfigResult || cosmiconfigResult.isEmpty) {
-      cosmiconfigResult = await getConfigFileName("storm-stack", filePath);
+      cosmiconfigResult = await getConfigFileByName("storm-stack", filePath);
       if (!cosmiconfigResult || cosmiconfigResult.isEmpty) {
-        cosmiconfigResult = await getConfigFileName("storm-cloud", filePath);
-        if (!cosmiconfigResult || cosmiconfigResult.isEmpty) {
-          cosmiconfigResult = await getConfigFileName("acidic", filePath);
-          if (!cosmiconfigResult || cosmiconfigResult.isEmpty) {
-            cosmiconfigResult = await getConfigFileName("acid", filePath);
-          }
-        }
+        cosmiconfigResult = await getConfigFileByName("storm-cloud", filePath);
       }
     }
   }
@@ -40,10 +42,6 @@ export const getConfigFile = async (filePath?: string): Promise<StormConfigInput
     cosmiconfigResult.isEmpty ||
     !cosmiconfigResult.filepath
   ) {
-    writeWarning(
-      { logLevel: "all" },
-      "No Storm config file found in the current workspace. Please ensure this is the expected behavior - you can add a `storm.config.js` file to the root of your workspace if it is not.\n"
-    );
     return undefined;
   }
 

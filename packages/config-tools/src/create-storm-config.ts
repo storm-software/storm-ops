@@ -4,7 +4,7 @@ import { getConfigEnv, getExtensionEnv } from "./env/get-env";
 import { setConfigEnv } from "./env/set-env";
 import { StormConfigSchema } from "./schema";
 import type { StormConfig } from "./types";
-import { findWorkspaceRoot } from "./utilities";
+import { findWorkspaceRoot, writeWarning } from "./utilities";
 import { getDefaultConfig } from "./utilities/get-default-config";
 
 const _extension_cache = new WeakMap<{ extensionName: string }, any>();
@@ -106,10 +106,18 @@ export const loadStormConfig = async (workspaceRoot?: string): Promise<StormConf
     _workspaceRoot = findWorkspaceRoot();
   }
 
+  const configFile = await getConfigFile(_workspaceRoot);
+  if (!configFile) {
+    writeWarning(
+      { logLevel: "all" },
+      "No Storm config file found in the current workspace. Please ensure this is the expected behavior - you can add a `storm.config.js` file to the root of your workspace if it is not.\n"
+    );
+  }
+
   config = StormConfigSchema.parse(
     await getDefaultConfig(
       {
-        ...(await getConfigFile(_workspaceRoot)),
+        ...configFile,
         ...getConfigEnv()
       },
       _workspaceRoot
