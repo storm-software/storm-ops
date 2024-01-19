@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/storm-software/storm-ops/compare/config-tools-v1.16.0...config-tools-v1.16.1) (2024-01-18)
+
+
+### Bug Fixes
+
+* **config-tools:** Resolved empty config file loading error ([6b84a12](https://github.com/storm-software/storm-ops/commit/6b84a12f762ac038d9ca6131249c8b51979d0320))
+
 # [1.16.0](https://github.com/storm-software/storm-ops/compare/config-tools-v1.15.15...config-tools-v1.16.0) (2024-01-18)
 
 
