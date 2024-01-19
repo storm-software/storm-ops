@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/git-tools",
-  "version": "1.25.2",
+  "version": "1.26.0",
   "private": false,
   "description": "⚡ A package containing various git tools used in Storm workspaces.",
   "keywords": [
@@ -65,15 +65,17 @@
     "word-wrap": "1.2.5"
   },
   "devDependencies": {
+    "@nx/devkit": "17.2.8",
     "@types/inquirer": "9.0.6",
-    "@types/prettier": "3.0.0"
+    "@types/prettier": "3.0.0",
+    "nx": "17.2.8"
   },
   "publishConfig": {
     "access": "public"
   },
   "peerDependencies": {
-    "nx": ">=17.2.8",
-    "@nx/devkit": ">=17.2.8"
+    "@nx/devkit": ">=17.2.8",
+    "nx": ">=17.2.8"
   },
   "peerDependenciesMeta": {
     "nx": {
