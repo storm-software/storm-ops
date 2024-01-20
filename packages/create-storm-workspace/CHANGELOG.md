@@ -1,3 +1,10 @@
+# [1.48.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.47.0...create-storm-workspace-v1.48.0) (2024-01-20)
+
+
+### Features
+
+* **workspace-tools:** Added the `skipNativeModulesPlugin` option to tsup build ([eb5ade8](https://github.com/storm-software/storm-ops/commit/eb5ade8320372a792c9ca97fa9f843e63f2601d1))
+
 # [1.47.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.46.1...create-storm-workspace-v1.47.0) (2024-01-19)
 
 
