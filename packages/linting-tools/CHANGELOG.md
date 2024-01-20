@@ -1,3 +1,10 @@
+# [1.30.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.29.0...linting-tools-v1.30.0) (2024-01-20)
+
+
+### Features
+
+* **workspace-tools:** Added the `skipNativeModulesPlugin` option to tsup build ([eb5ade8](https://github.com/storm-software/storm-ops/commit/eb5ade8320372a792c9ca97fa9f843e63f2601d1))
+
 # [1.29.0](https://github.com/storm-software/storm-ops/compare/linting-tools-v1.28.1...linting-tools-v1.29.0) (2024-01-19)
 
 
