@@ -1,3 +1,10 @@
+# [1.28.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.27.0...git-tools-v1.28.0) (2024-01-20)
+
+
+### Features
+
+* **workspace-tools:** Added the `skipNativeModulesPlugin` option to tsup build ([eb5ade8](https://github.com/storm-software/storm-ops/commit/eb5ade8320372a792c9ca97fa9f843e63f2601d1))
+
 # [1.27.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.26.2...git-tools-v1.27.0) (2024-01-19)
 
 
