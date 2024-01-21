@@ -1,3 +1,15 @@
+## 1.26.0 (2024-01-21)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Update path to changelog renderer ([d4dd7006](https://github.com/storm-software/storm-ops/commit/d4dd7006))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.25.5 (2024-01-21)
 
 

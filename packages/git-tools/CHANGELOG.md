@@ -1,3 +1,22 @@
+## 1.29.0 (2024-01-21)
+
+
+### 🚀 Features
+
+- **git-tools:** Added custom storm `ChangelogRenderer` for releases ([922aa263](https://github.com/storm-software/storm-ops/commit/922aa263))
+
+
+### 🩹 Fixes
+
+- **git-tools:** Update path to changelog renderer ([d4dd7006](https://github.com/storm-software/storm-ops/commit/d4dd7006))
+
+- **git-tools:** Added separate changelog-renderer CommonJs build ([4da88acb](https://github.com/storm-software/storm-ops/commit/4da88acb))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.28.5 (2024-01-21)
 
 
