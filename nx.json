@@ -130,7 +130,9 @@
     "changelog": {
       "workspaceChangelog": false,
       "projectChangelogs": {
-        "createRelease": "github"
+        "createRelease": "github",
+        "entryWhenNoChanges": false,
+        "renderer": "./dist/packages/git-tools/src/release/changelog-renderer.js"
       }
     },
     "version": {
