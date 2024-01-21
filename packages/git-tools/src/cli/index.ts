@@ -80,17 +80,9 @@ export async function createProgram(config: StormConfig) {
       .addOption(readmePrettier)
       .action(readmeAction);
 
-    const releaseConfig = new Option("--config <file>", "Release config file path").default(
-      "@storm-software/git-tools/src/release/config.js"
-    );
-
     const releasePackageName = new Option(
       "--project <project>",
       "The specific project to run release for"
-    );
-
-    const releasePlugin = new Option("--plugin <plugin>", "Semantic Release plugin").default(
-      "@storm-software/git-tools/src/semantic-release-plugin"
     );
 
     const releaseBase = new Option("--base <base>", "Git base tag value");
@@ -105,8 +97,6 @@ export async function createProgram(config: StormConfig) {
       .command("release")
       .description("Run release for a project in the workspace.")
       .addOption(releasePackageName)
-      .addOption(releaseConfig)
-      .addOption(releasePlugin)
       .addOption(releaseBase)
       .addOption(releaseHead)
       .addOption(releaseDryRun)
@@ -157,13 +147,10 @@ export async function readmeAction(options: ReadMeOptions) {
 
 export async function releaseAction({
   project,
-  config = "@storm-software/git-tools/src/commit/config.js",
-  plugin = "@storm-software/git-tools/src/semantic-release-plugin",
   base,
-  head
+  head,
+  dryRun
 }: {
-  plugin: string;
-  config: string;
   project?: string;
   base?: string;
   head?: string;
@@ -171,7 +158,7 @@ export async function releaseAction({
 }) {
   try {
     writeInfo(_config, "⚡ Linting the Commit Message and running Commitizen \n");
-    await runRelease(project, config, plugin, base, head);
+    await runRelease(_config, { dryRun, project, base, head });
     writeSuccess(_config, "Release completed successfully!\n");
   } catch (error) {
     writeFatal(_config, `A fatal error occurred while running release action: ${error.message}`);

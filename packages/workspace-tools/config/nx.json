@@ -14,11 +14,6 @@
       }
     }
   },
-  "pluginsConfig": {
-    "@nrwl/js": {
-      "analyzeSourceFiles": false
-    }
-  },
   "defaultBase": "main",
   "namedInputs": {
     "globalBuildAffectingConfig": [
@@ -108,6 +103,35 @@
     },
     "e2e": {
       "cache": true
+    }
+  },
+  "release": {
+    "projects": "*",
+    "projectsRelationship": "independent",
+    "changelog": {
+      "workspaceChangelog": false,
+      "projectChangelogs": {
+        "createRelease": "github",
+        "entryWhenNoChanges": false,
+        "tagFormat": "${PROJECT_NAME}-v${version}"
+      }
+    },
+    "version": {
+      "conventionalCommits": true,
+      "generatorOptions": {
+        "currentVersionResolver": "git-tag",
+        "specifierSource": "conventional-commits"
+      }
+    },
+    "git": {
+      "commit": true,
+      "tag": true,
+      "tagFormat": "${PROJECT_NAME}-v${version}"
+    }
+  },
+  "pluginsConfig": {
+    "@nrwl/js": {
+      "analyzeSourceFiles": false
     }
   }
 }

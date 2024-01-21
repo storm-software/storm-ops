@@ -1,6 +1,6 @@
 import commitizenConfig from "../commitizen/config";
 import commitlintConfig from "../commitlint/config";
-import { CommitStateConfig } from "../types";
+import type { CommitStateConfig } from "../types";
 
 const config: CommitStateConfig = {
   ...commitizenConfig,

@@ -1,6 +1,6 @@
-import { execSync } from "child_process";
-import fs from "fs";
-import { join } from "path";
+import { execSync } from "node:child_process";
+import fs from "node:fs";
+import { join } from "node:path";
 import { commitPrompt } from "../commitizen/commit-prompt";
 import { createState, getGitDir } from "../commitizen/commit-state";
 import { formatCommitMessage } from "../commitizen/format-commit-message";
@@ -20,12 +20,7 @@ export const runCommit = async (
 
     const shellescape = await import("any-shell-escape");
 
-    const command = shellescape.default([
-      "git",
-      "commit",
-      "--file",
-      commitMsgFile
-    ]);
+    const command = shellescape.default(["git", "commit", "--file", commitMsgFile]);
 
     if (dryRun) {
       // The full path is replaced with a relative path to make the test pass on every machine

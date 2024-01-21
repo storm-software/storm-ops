@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/git-tools",
         "tsConfig": "packages/git-tools/tsconfig.lib.json",
@@ -30,9 +28,7 @@
           "packages/git-tools/src/commitlint/config.ts",
           "packages/git-tools/src/commit/index.ts",
           "packages/git-tools/src/commit/config.ts",
-          "packages/git-tools/src/release/index.ts",
-          "packages/git-tools/src/release/config.ts",
-          "packages/git-tools/src/semantic-release-plugin/index.ts"
+          "packages/git-tools/src/release/index.ts"
         ],
         "deleteOutputPath": true,
         "bundle": true,
@@ -40,15 +36,8 @@
         "minify": false,
         "skipTypeCheck": true,
         "thirdParty": true,
-        "format": [
-          "esm"
-        ],
-        "external": [
-          "nx",
-          "@swc/wasm",
-          "@swc/core",
-          "@angular-devkit/architect"
-        ],
+        "format": ["esm"],
+        "external": ["nx", "@swc/wasm", "@swc/core", "@angular-devkit/architect"],
         "esbuildOptions": {
           "banner": {
             "js": "import { fileURLToPath as _fileURLToPath } from 'url';\nimport _path from 'node:path';\nimport { createRequire as topLevelCreateRequire } from 'module';\nconst require = topLevelCreateRequire(import.meta.url);"
@@ -106,8 +95,5 @@
     "lint": {},
     "test": {}
   },
-  "tags": [
-    "type:util",
-    "scope:tools"
-  ]
+  "tags": ["type:util", "scope:tools"]
 }
