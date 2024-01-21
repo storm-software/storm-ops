@@ -1,12 +1,12 @@
-import { createNxReleaseConfig } from "nx/src/command-line/release/config/config";
+import { createNxReleaseConfig } from "nx/src/command-line/release/config/config.js";
 import {
   releaseChangelog,
   releasePublish,
   releaseVersion
 } from "nx/src/command-line/release/index.js";
-import { readNxJson } from "nx/src/config/nx-json";
-import { createProjectGraphAsync } from "nx/src/project-graph/project-graph";
-import { type StormConfig, writeInfo } from "@storm-software/config-tools";
+import { readNxJson } from "nx/src/config/nx-json.js";
+import { createProjectGraphAsync } from "nx/src/project-graph/project-graph.js";
+import { type StormConfig, writeInfo, writeSuccess } from "@storm-software/config-tools";
 
 export const runRelease = async (
   config: StormConfig,
@@ -53,7 +53,7 @@ export const runRelease = async (
     preid: config.preMajor ? "canary" : undefined,
     stageChanges: true,
     gitCommit: false,
-    gitCommitMessage: `chore(${options.project ? options.project : "repo"}): Release\${version} [skip ci]
+    gitCommitMessage: `chore(${options.project ? options.project : "monorepo"}): Release\${version} [skip ci]
 
 \${notes}`
   });
@@ -78,4 +78,6 @@ export const runRelease = async (
     dryRun: !!options.dryRun,
     verbose: true
   });
+
+  writeSuccess(config, "Completed the release process!");
 };
