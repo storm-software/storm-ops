@@ -132,7 +132,7 @@
       "projectChangelogs": {
         "createRelease": "github",
         "entryWhenNoChanges": false,
-        "renderer": "./dist/packages/git-tools/src/release/changelog-renderer.js"
+        "renderer": "./packages/git-tools/src/release/changelog-renderer"
       }
     },
     "version": {
