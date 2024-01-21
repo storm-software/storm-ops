@@ -1,3 +1,15 @@
+## 1.49.1 (2024-01-21)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added custom `releaseTagPattern` to default Nx configuration ([9380b38f](https://github.com/storm-software/storm-ops/commit/9380b38f))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.0 (2024-01-21)
 
 
