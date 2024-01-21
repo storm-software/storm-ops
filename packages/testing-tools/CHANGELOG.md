@@ -1,3 +1,10 @@
+# [1.25.0](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.24.0...testing-tools-v1.25.0) (2024-01-20)
+
+
+### Features
+
+* **workspace-tools:** Added the `skipNativeModulesPlugin` option to tsup build ([eb5ade8](https://github.com/storm-software/storm-ops/commit/eb5ade8320372a792c9ca97fa9f843e63f2601d1))
+
 # [1.24.0](https://github.com/storm-software/storm-ops/compare/testing-tools-v1.23.1...testing-tools-v1.24.0) (2024-01-19)
 
 

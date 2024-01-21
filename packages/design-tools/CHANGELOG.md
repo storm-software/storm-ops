@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/storm-software/storm-ops/compare/design-tools-v1.8.0...design-tools-v1.9.0) (2024-01-20)
+
+
+### Features
+
+* **workspace-tools:** Added the `skipNativeModulesPlugin` option to tsup build ([eb5ade8](https://github.com/storm-software/storm-ops/commit/eb5ade8320372a792c9ca97fa9f843e63f2601d1))
+
 # [1.8.0](https://github.com/storm-software/storm-ops/compare/design-tools-v1.7.1...design-tools-v1.8.0) (2024-01-19)
 
 
