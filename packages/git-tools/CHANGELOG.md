@@ -1,3 +1,46 @@
+## 1.28.3 (2024-01-21)
+
+
+### 🚀 Features
+
+- **git-tools:** Update release process to use built-in Nx functionality ([f592bd33](https://github.com/storm-software/storm-ops/commit/f592bd33))
+
+
+### 🩹 Fixes
+
+- **git-tools:** Clean up of various unused dependencies ([c39257b8](https://github.com/storm-software/storm-ops/commit/c39257b8))
+
+- **git-tools:** Add git format specification ([c5297382](https://github.com/storm-software/storm-ops/commit/c5297382))
+
+- **git-tools:** Changing format of the generated git tag ([55a19275](https://github.com/storm-software/storm-ops/commit/55a19275))
+
+- **git-tools:** Apply tag format through command line args ([b7d9294a](https://github.com/storm-software/storm-ops/commit/b7d9294a))
+
+- **git-tools:** Added missing git tags ([190d43f0](https://github.com/storm-software/storm-ops/commit/190d43f0))
+
+- **git-tools:** Update the order of commits ([b017bf1d](https://github.com/storm-software/storm-ops/commit/b017bf1d))
+
+- **git-tools:** Modified release to not commit on version processing ([4768a1ae](https://github.com/storm-software/storm-ops/commit/4768a1ae))
+
+- **workspace-tools:** Added logging to the release process ([2f905859](https://github.com/storm-software/storm-ops/commit/2f905859))
+
+- **git-tools:** Remove the git extension from the repository URL ([50a6de3d](https://github.com/storm-software/storm-ops/commit/50a6de3d))
+
+- **git-tools:** Update release logging level ([ea0f7e35](https://github.com/storm-software/storm-ops/commit/ea0f7e35))
+
+- **git-tools:** Update the remote name to point to origin ([ae84b6d5](https://github.com/storm-software/storm-ops/commit/ae84b6d5))
+
+- **git-tools:** Update tag to be false in release config ([e41d1327](https://github.com/storm-software/storm-ops/commit/e41d1327))
+
+- **git-tools:** Resolved issue with modules imports ([4aa7abed](https://github.com/storm-software/storm-ops/commit/4aa7abed))
+
+- **git-tools:** Update release to use Nx config relationship settings ([9f0a7519](https://github.com/storm-software/storm-ops/commit/9f0a7519))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.28.2 (2024-01-21)
 
 
