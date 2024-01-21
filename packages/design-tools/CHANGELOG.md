@@ -1,3 +1,17 @@
+## 1.9.2 (2024-01-21)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Remove the git extension from the repository URL ([50a6de3d](https://github.com/storm-software/storm-ops/commit/50a6de3d))
+
+- **design-tools:** Added publish config to the package.json ([a3d03674](https://github.com/storm-software/storm-ops/commit/a3d03674))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.9.1 (2024-01-21)
 
 
