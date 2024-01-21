@@ -3,23 +3,9 @@ import axios from "axios";
 import type { GitCommit } from "nx/src/command-line/release/utils/git.js";
 import { type RepoSlug, formatReferences } from "nx/src/command-line/release/utils/github.js";
 import { getCommitsRelevantToProjects } from "nx/src/command-line/release/utils/shared.js";
-import type { ProjectGraph } from "nx/src/config/project-graph.js";
 import type { ProjectConfiguration } from "nx/src/devkit-exports.js";
 import { major } from "semver";
-
-/**
- * A ChangelogRenderer function takes in the extracted commits and other relevant metadata
- * and returns a string, or a Promise of a string of changelog contents (usually markdown).
- */
-export type ChangelogRenderer = (config: {
-  projectGraph: ProjectGraph;
-  commits: GitCommit[];
-  releaseVersion: string;
-  project: string | null;
-  entryWhenNoChanges: string | false;
-  changelogRenderOptions: StormChangelogRenderOptions;
-  repoSlug?: RepoSlug;
-}) => Promise<string> | string;
+import type { ChangelogRenderer } from "nx/changelog-renderer/index.js";
 
 /**
  * The specific options available to the default implementation of the ChangelogRenderer that nx exports
