@@ -1,3 +1,7 @@
+## 1.9.4 (2024-01-21)
+
+This was a version bump only for design-tools to align it with other projects, there were no code changes.
+
 ## 1.9.3 (2024-01-21)
 
 

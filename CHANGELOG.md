@@ -1,3 +1,15 @@
+## 0.0.5 (2024-01-21)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added default `nx-release-publish` executor config to Nx json ([d3985074](https://github.com/storm-software/storm-ops/commit/d3985074))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.0.4 (2024-01-21)
 
 

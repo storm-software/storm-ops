@@ -1,3 +1,17 @@
+## 1.48.6 (2024-01-21)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Resolve issues with commit message formatting ([90bdc930](https://github.com/storm-software/storm-ops/commit/90bdc930))
+
+- **workspace-tools:** Added default `nx-release-publish` executor config to Nx json ([d3985074](https://github.com/storm-software/storm-ops/commit/d3985074))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.48.5 (2024-01-21)
 
 
