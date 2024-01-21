@@ -57,7 +57,7 @@
     "lint": "node ./dist/packages/linting-tools/bin/lint.js all --skip-cspell --alex-config=\"./dist/packages/linting-tools/alex/.alexrc\" --alex-config=\"dist/packages/linting-tools/alex/.alexignore\"",
     "local-registry": "nx local-registry @storm-software/storm-ops",
     "nx": "nx",
-    "release": "node ./dist/packages/git-tools/bin/git.js release --plugin=\"./dist/packages/git-tools/src/semantic-release-plugin\"",
+    "release": "node ./dist/packages/git-tools/bin/git.js release",
     "start": "nx serve",
     "test": "nx test"
   },
