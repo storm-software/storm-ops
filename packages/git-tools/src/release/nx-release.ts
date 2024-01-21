@@ -1,4 +1,4 @@
-import type { StormConfig } from "@storm-software/config-tools";
+import { writeDebug, type StormConfig } from "@storm-software/config-tools";
 import {
   releaseChangelog,
   releasePublish,
@@ -29,16 +29,21 @@ export const runRelease = async (
   process.env.GIT_COMMITTER_NAME = committerName;
   process.env.GIT_COMMITTER_EMAIL = `${committerName}@users.noreply.github.com`;
 
+  writeDebug(config, "Determining the current release version...");
+
   const { workspaceVersion, projectsVersionData } = await releaseVersion({
     dryRun: !!options.dryRun,
     verbose: !config.ci,
     preid: config.preMajor ? "canary" : undefined,
     stageChanges: true,
+    gitCommit: false,
     gitCommitMessage: `chore(${options.project ? options.project : "repo"}): Release\${version} [skip ci]
 
 \${notes}`,
     gitTag: true
   });
+
+  writeDebug(config, "Generating the release changelog...");
 
   await releaseChangelog({
     version: workspaceVersion,
