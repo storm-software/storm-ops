@@ -115,8 +115,7 @@
     "changelog": {
       "workspaceChangelog": false,
       "projectChangelogs": {
-        "createRelease": "github",
-        "entryWhenNoChanges": false
+        "createRelease": "github"
       }
     },
     "version": {
