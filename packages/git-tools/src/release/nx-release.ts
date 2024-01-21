@@ -52,7 +52,7 @@ export const runRelease = async (
     verbose: !config.ci,
     to: options.head,
     from: options.base,
-    gitRemote: config.repository,
+    gitRemote: "origin",
     gitCommit: true,
     workspaceChangelog: workspaceVersion !== undefined
   });

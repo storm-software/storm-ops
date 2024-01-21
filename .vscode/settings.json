@@ -15,8 +15,8 @@
         "package.json",
         "tsup.config.json"
       ]
-    },
-    {
+    }
+    /*{
       "url": "https://cdn.jsdelivr.net/npm/@storm-software/config/schema.json",
       "fileMatch": [
         "package.json",
@@ -81,7 +81,7 @@
         "storm-stack.config.mjs",
         "storm-stack.config.cjs"
       ]
-    }
+    }*/
   ],
   /******************************
    * VS Code Search
