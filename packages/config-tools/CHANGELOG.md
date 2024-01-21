@@ -1,3 +1,15 @@
+## 1.19.5 (2024-01-21)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Resolve issues with commit message formatting ([90bdc930](https://github.com/storm-software/storm-ops/commit/90bdc930))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.19.4 (2024-01-21)
 
 
