@@ -1,5 +1,5 @@
 import wrap from "word-wrap";
-import { CommitState } from "../types";
+import type { CommitState } from "../types";
 
 const MAX_LINE_WIDTH = 72;
 
@@ -37,7 +37,7 @@ export const formatCommitMessage = (state: CommitState) => {
 
   // @note(emoji) Add space after emoji (breakingChangePrefix/closedIssueEmoji)
   const head = format
-    .replace(/\{emoji\}/g, config.disableEmoji ? "" : emoji + " ")
+    .replace(/\{emoji\}/g, config.disableEmoji ? "" : `${emoji} `)
     .replace(/\{scope\}/g, scope)
     .replace(/\{subject\}/g, subject)
     .replace(/\{type\}/g, type);
@@ -45,23 +45,19 @@ export const formatCommitMessage = (state: CommitState) => {
   let msg = head;
 
   if (body) {
-    msg += "\n\n" + body;
+    msg += `\n\n${body}`;
   }
 
   if (breaking) {
-    const breakingEmoji = config.disableEmoji
-      ? ""
-      : config.breakingChangePrefix;
+    const breakingEmoji = config.disableEmoji ? "" : config.breakingChangePrefix;
 
-    msg += "\n\nBREAKING CHANGE: " + breakingEmoji + breaking;
+    msg += `\n\nBREAKING CHANGE: ${breakingEmoji}${breaking}`;
   }
 
   if (issues) {
-    const closedIssueEmoji = config.disableEmoji
-      ? ""
-      : config.closedIssuePrefix;
+    const closedIssueEmoji = config.disableEmoji ? "" : config.closedIssuePrefix;
 
-    msg += "\n\n" + closedIssueEmoji + config.closedIssueMessage + issues;
+    msg += `\n\n${closedIssueEmoji}${config.closedIssueMessage}${issues}`;
   }
 
   return msg;

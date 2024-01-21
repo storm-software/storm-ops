@@ -1,5 +1,9 @@
 import type { StormConfig } from "@storm-software/config-tools";
-import { releaseChangelog, releasePublish, releaseVersion } from "nx/src/command-line/release";
+import {
+  releaseChangelog,
+  releasePublish,
+  releaseVersion
+} from "nx/src/command-line/release/index.js";
 
 export const runRelease = async (
   config: StormConfig,

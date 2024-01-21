@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { CommitState } from "../types";
+import type { CommitState } from "../types";
 import { createQuestions } from "./commit-questions";
 
 export const commitPrompt = async (state: CommitState) => {
@@ -23,11 +23,11 @@ export const commitPrompt = async (state: CommitState) => {
   );*/
 
   const answers = await prompt(questions);
-  Object.keys(state.answers).forEach(key => {
+  for (const key of Object.keys(state.answers)) {
     if (answers[key]) {
       state.answers[key] = answers[key];
     }
-  });
+  }
 
   return state;
 };

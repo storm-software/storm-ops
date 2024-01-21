@@ -16,10 +16,13 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.org" target="_blank">stormsoftware.org</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.45.3-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
+[![Version](https://img.shields.io/badge/version-1.48.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
 [![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with docusaurus](https://img.shields.io/badge/documented_with-docusaurus-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://docusaurus.io/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
-<h3 align="center" bold="true">⚠️ <b>Attention</b> ⚠️ This repository, and the apps, libraries, and tools contained within, is still in it's initial development phase. As a result, bugs and issues are expected with it's usage. When the main development phase completes, a proper release will be performed, the packages will be availible through NPM (and other distributions), and this message will be removed. However, in the meantime, please feel free to report any issues you may come across.</h3><br />
+> [!IMPORTANT]
+> This repository, and the apps, libraries, and tools contained within, is still in it's initial development phase. As a result, bugs and issues are expected with it's usage. When the main development phase completes, a proper release will be performed, the packages will be availible through NPM (and other distributions), and this message will be removed. However, in the meantime, please feel free to report any issues you may come across.
+
+<br />
 
 
 <!-- markdownlint-restore -->
@@ -103,7 +106,7 @@ The following executor options are available:
  | assets      | `array`    | List of static assets.     | `[]`     | 
  | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
  | includeSrc      | `boolean`    | Should the source files be added to the distribution folder in an \`src\` directory.     |     | 
- | metafile      | `boolean`    | Should a meta file be created for the build package     |     | 
+ | metafile      | `boolean`    | Should a meta file be created for the build package     | `true`     | 
  | emitOnAll      | `boolean`    | Should each file contained in the package be emitted individually.     |     | 
  | generatePackageJson      | `boolean`    | Should a package.json file be generated in the output folder or should the existing one be copied in.     | `true`     | 
  | splitting      | `boolean`    | Should the build process preform \*code-splitting\*?     | `true`     | 
@@ -114,6 +117,7 @@ The following executor options are available:
  | **banner \***    | `string`    | A short heading added to the top of each typescript file added in the output folder's \`src\` directory.     | "This code was developed by Storm Software (<https://stormsoftware.org>) and is licensed under the Apache License 2.0."     | 
  | minify      | `boolean`    | Should the build process minify the output files?     |     | 
  | verbose      | `boolean`    | Should write extra log outputs with details from the executor.     |     | 
+ | skipNativeModulesPlugin      | `boolean`    | Should we skip adding the Native Node Modules ESBuild plugin.     |     | 
  | shims      | `boolean`    | Should the build process add shims for node.js modules that are not available in the browser?     |     | 
  | define      | `object`    | Define global constants that can be used in the source code. The value will be converted into a stringified JSON.     |     | 
  | env      | `object`    | Define environment variables that can be used in the source code. The value will be converted into a stringified JSON.     |     | 

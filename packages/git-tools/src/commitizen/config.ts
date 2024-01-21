@@ -6,17 +6,7 @@ export default {
   closedIssuePrefix: "✅ ",
   format: "{type}({scope}): {emoji}{subject}",
   disableEmoji: true,
-  list: [
-    "test",
-    "feat",
-    "fix",
-    "chore",
-    "docs",
-    "refactor",
-    "style",
-    "ci",
-    "perf"
-  ],
+  list: ["test", "feat", "fix", "chore", "docs", "refactor", "style", "ci", "perf"],
   maxMessageLength: 75,
   minMessageLength: 3,
   questions: CommitQuestionsKeys,
