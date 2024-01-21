@@ -1,4 +1,4 @@
-import { type StormConfig, writeDebug } from "@storm-software/config-tools";
+import { type StormConfig, writeInfo } from "@storm-software/config-tools";
 import {
   releaseChangelog,
   releasePublish,
@@ -29,7 +29,7 @@ export const runRelease = async (
   process.env.GIT_COMMITTER_NAME = committerName;
   process.env.GIT_COMMITTER_EMAIL = `${committerName}@users.noreply.github.com`;
 
-  writeDebug(config, "Determining the current release version...");
+  writeInfo(config, "Determining the current release version...");
 
   const { workspaceVersion, projectsVersionData } = await releaseVersion({
     dryRun: !!options.dryRun,
@@ -43,7 +43,7 @@ export const runRelease = async (
     gitTag: true
   });
 
-  writeDebug(config, "Generating the release changelog...");
+  writeInfo(config, "Generating the release changelog...");
 
   await releaseChangelog({
     version: workspaceVersion,
@@ -57,7 +57,7 @@ export const runRelease = async (
     workspaceChangelog: workspaceVersion !== undefined
   });
 
-  writeDebug(config, "Publishing the release...");
+  writeInfo(config, "Publishing the release...");
 
   await releasePublish({
     dryRun: !!options.dryRun,
