@@ -1,3 +1,15 @@
+## 1.49.3 (2024-01-21)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Removed `tag` from the Nx config file ([9930450f](https://github.com/storm-software/storm-ops/commit/9930450f))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.2 (2024-01-21)
 
 
