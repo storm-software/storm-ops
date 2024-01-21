@@ -4,9 +4,11 @@
   "sourceRoot": "packages/git-tools/src",
   "projectType": "library",
   "targets": {
-    "build": {
+    "build-base": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/git-tools",
         "tsConfig": "packages/git-tools/tsconfig.lib.json",
@@ -28,8 +30,7 @@
           "packages/git-tools/src/commitlint/config.ts",
           "packages/git-tools/src/commit/index.ts",
           "packages/git-tools/src/commit/config.ts",
-          "packages/git-tools/src/release/index.ts",
-          "packages/git-tools/src/release/changelog-renderer.ts"
+          "packages/git-tools/src/release/index.ts"
         ],
         "deleteOutputPath": true,
         "bundle": true,
@@ -37,8 +38,15 @@
         "minify": false,
         "skipTypeCheck": true,
         "thirdParty": true,
-        "format": ["esm"],
-        "external": ["nx", "@swc/wasm", "@swc/core", "@angular-devkit/architect"],
+        "format": [
+          "esm"
+        ],
+        "external": [
+          "nx",
+          "@swc/wasm",
+          "@swc/core",
+          "@angular-devkit/architect"
+        ],
         "esbuildOptions": {
           "banner": {
             "js": "import { fileURLToPath as _fileURLToPath } from 'url';\nimport _path from 'node:path';\nimport { createRequire as topLevelCreateRequire } from 'module';\nconst require = topLevelCreateRequire(import.meta.url);"
@@ -93,8 +101,57 @@
         ]
       }
     },
+    "build-changelog-renderer": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/packages/git-tools/changelog-renderer",
+        "tsConfig": "packages/git-tools/tsconfig.lib.json",
+        "project": "packages/git-tools/package.json",
+        "main": "packages/git-tools/src/changelog-renderer/index.ts",
+        "deleteOutputPath": true,
+        "bundle": true,
+        "sourcemap": true,
+        "minify": false,
+        "skipTypeCheck": true,
+        "thirdParty": true,
+        "format": [
+          "cjs"
+        ],
+        "external": [
+          "nx",
+          "@swc/wasm",
+          "@swc/core",
+          "@angular-devkit/architect"
+        ],
+        "esbuildOptions": {
+          "banner": {
+            "js": "import { fileURLToPath as _fileURLToPath } from 'url';\nimport _path from 'node:path';\nimport { createRequire as topLevelCreateRequire } from 'module';\nconst require = topLevelCreateRequire(import.meta.url);"
+          }
+        }
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "commands": [
+          "nx run git-tools:build-base",
+          "nx run git-tools:build-changelog-renderer"
+        ],
+        "parallel": false,
+        "color": true
+      }
+    },
     "lint": {},
     "test": {}
   },
-  "tags": ["type:util", "scope:tools"]
+  "tags": [
+    "type:util",
+    "scope:tools"
+  ]
 }

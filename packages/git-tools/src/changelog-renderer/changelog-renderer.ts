@@ -80,7 +80,10 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
       if (entryWhenNoChanges) {
         markdownLines.push(
           "",
-          `${createVersionTitle(releaseVersion, changelogRenderOptions)}\n\n${entryWhenNoChanges}`,
+          `${await createVersionTitle(
+            releaseVersion,
+            changelogRenderOptions
+          )}\n\n${entryWhenNoChanges}`,
           ""
         );
       }
@@ -91,7 +94,7 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
 
     markdownLines.push(
       "",
-      createVersionTitle(
+      await createVersionTitle(
         releaseVersion,
         changelogRenderOptions,
         project,
@@ -144,14 +147,28 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
       if (entryWhenNoChanges) {
         markdownLines.push(
           "",
-          `${createVersionTitle(releaseVersion, changelogRenderOptions)}\n\n${entryWhenNoChanges}`,
+          `${await createVersionTitle(
+            releaseVersion,
+            changelogRenderOptions,
+            project,
+            projectGraph.nodes[project].data
+          )}\n\n${entryWhenNoChanges}`,
           ""
         );
       }
       return markdownLines.join("\n").trim();
     }
 
-    markdownLines.push("", createVersionTitle(releaseVersion, changelogRenderOptions), "");
+    markdownLines.push(
+      "",
+      await createVersionTitle(
+        releaseVersion,
+        changelogRenderOptions,
+        project,
+        projectGraph.nodes[project].data
+      ),
+      ""
+    );
 
     const typeGroups = groupBy(
       // Sort the relevant commits to have the unscoped commits first, before grouping by type
@@ -194,10 +211,15 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
       if (!commit.author) {
         continue;
       }
-      const name = formatName(commit.author.name);
+
+      const name = commit.author.name
+        .split(" ")
+        .map((p) => p.trim())
+        .join(" ");
       if (!name || name.includes("[bot]")) {
         continue;
       }
+
       if (_authors.has(name)) {
         const entry = _authors.get(name);
         entry.email.add(commit.author.email);
@@ -263,13 +285,6 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
 
 export default stormChangelogRenderer;
 
-function formatName(name = "") {
-  return name
-    .split(" ")
-    .map((p) => p.trim())
-    .join(" ");
-}
-
 function groupBy(items: any[], key: string) {
   const groups = {};
   for (const item of items) {
@@ -319,7 +334,7 @@ function extractBreakingChangeExplanation(message: string): string | null {
   return message.substring(startOfBreakingChange, endOfBreakingChange).trim();
 }
 
-function createVersionTitle(
+async function createVersionTitle(
   version: string,
   changelogRenderOptions: StormChangelogRenderOptions,
   projectName?: string,
@@ -327,7 +342,7 @@ function createVersionTitle(
 ) {
   let previousVersion!: string;
   if (projectConfig && projectName && existsSync(projectConfig.root)) {
-    const packageJson = require(`${projectConfig.root}/package.json`);
+    const packageJson = await require(`${projectConfig.root}/package.json`);
     previousVersion = packageJson.version;
   }
 
