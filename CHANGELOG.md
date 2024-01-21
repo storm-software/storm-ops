@@ -1,3 +1,17 @@
+## 0.0.6 (2024-01-21)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added default `nx-release-publish` executor config to Nx json ([d3985074](https://github.com/storm-software/storm-ops/commit/d3985074))
+
+- **git-tools:** Update monorepo project.json to use different packageRoot ([3631fcc9](https://github.com/storm-software/storm-ops/commit/3631fcc9))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.0.5 (2024-01-21)
 
 
