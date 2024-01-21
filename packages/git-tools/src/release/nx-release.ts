@@ -39,7 +39,7 @@ export const runRelease = async (
 
 \${notes}`,
     gitTag: true,
-    gitTagMessage: "{projectName}-v{version}"
+    gitTagArgs: `--format="${options.project}-v{version}"`
   });
 
   await releaseChangelog({
