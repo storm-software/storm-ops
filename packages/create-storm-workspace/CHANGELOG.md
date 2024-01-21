@@ -1,3 +1,17 @@
+## 1.48.1 (2024-01-21)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Clean up of various unused dependencies ([c39257b8](https://github.com/storm-software/storm-ops/commit/c39257b8))
+
+- **git-tools:** Remove the git extension from the repository URL ([50a6de3d](https://github.com/storm-software/storm-ops/commit/50a6de3d))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 # [1.48.0](https://github.com/storm-software/storm-ops/compare/create-storm-workspace-v1.47.0...create-storm-workspace-v1.48.0) (2024-01-20)
 
 

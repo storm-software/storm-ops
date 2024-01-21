@@ -1,3 +1,24 @@
+## 1.48.3 (2024-01-21)
+
+
+### 🚀 Features
+
+- **git-tools:** Update release process to use built-in Nx functionality ([f592bd33](https://github.com/storm-software/storm-ops/commit/f592bd33))
+
+
+### 🩹 Fixes
+
+- **git-tools:** Clean up of various unused dependencies ([c39257b8](https://github.com/storm-software/storm-ops/commit/c39257b8))
+
+- **workspace-tools:** Push Nx config changes to default file ([ca883a9f](https://github.com/storm-software/storm-ops/commit/ca883a9f))
+
+- **git-tools:** Remove the git extension from the repository URL ([50a6de3d](https://github.com/storm-software/storm-ops/commit/50a6de3d))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 # [1.48.0](https://github.com/storm-software/storm-ops/compare/workspace-tools-v1.47.0...workspace-tools-v1.48.0) (2024-01-20)
 
 

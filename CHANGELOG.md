@@ -1,3 +1,32 @@
+## 0.0.2 (2024-01-21)
+
+
+### 🚀 Features
+
+- **git-tools:** Update release process to use built-in Nx functionality ([f592bd33](https://github.com/storm-software/storm-ops/commit/f592bd33))
+
+
+### 🩹 Fixes
+
+- **git-tools:** Clean up of various unused dependencies ([c39257b8](https://github.com/storm-software/storm-ops/commit/c39257b8))
+
+- **storm-ops:** Removed unused option in release script ([9ff93e06](https://github.com/storm-software/storm-ops/commit/9ff93e06))
+
+- **git-tools:** Add git format specification ([c5297382](https://github.com/storm-software/storm-ops/commit/c5297382))
+
+- **git-tools:** Added a storm config to the repository ([5ef91a67](https://github.com/storm-software/storm-ops/commit/5ef91a67))
+
+- **git-tools:** Update the remote name to point to origin ([ae84b6d5](https://github.com/storm-software/storm-ops/commit/ae84b6d5))
+
+- **storm-ops:** Update workspace to no longer check unused Nx config params ([820124ee](https://github.com/storm-software/storm-ops/commit/820124ee))
+
+- **git-tools:** Remove tag from commit options ([34a04c04](https://github.com/storm-software/storm-ops/commit/34a04c04))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## [1.16.8](https://github.com/storm-software/storm-ops/compare/@storm-software/storm-ops-v1.16.7...@storm-software/storm-ops-v1.16.8) (2023-12-05)
 
 
