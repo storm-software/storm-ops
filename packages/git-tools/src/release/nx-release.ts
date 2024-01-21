@@ -34,7 +34,6 @@ export const runRelease = async (
     verbose: !config.ci,
     preid: config.preMajor ? "canary" : undefined,
     stageChanges: true,
-    gitCommit: true,
     gitCommitMessage: `chore(${options.project ? options.project : "repo"}): Release\${version} [skip ci]
 
 \${notes}`,
@@ -48,7 +47,9 @@ export const runRelease = async (
     verbose: !config.ci,
     to: options.head,
     from: options.base,
-    gitRemote: config.repository
+    gitRemote: config.repository,
+    gitCommit: true,
+    workspaceChangelog: workspaceVersion !== undefined
   });
 
   await releasePublish({
