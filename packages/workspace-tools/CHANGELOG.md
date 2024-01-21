@@ -1,3 +1,15 @@
+## 1.49.2 (2024-01-21)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Temporary removal of the custom changelog renderer ([882d49c1](https://github.com/storm-software/storm-ops/commit/882d49c1))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.1 (2024-01-21)
 
 
