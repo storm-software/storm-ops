@@ -116,8 +116,7 @@
       "workspaceChangelog": false,
       "projectChangelogs": {
         "createRelease": "github",
-        "entryWhenNoChanges": false,
-        "tagFormat": "${PROJECT_NAME}-v${version}"
+        "entryWhenNoChanges": false
       }
     },
     "version": {
@@ -129,8 +128,7 @@
     },
     "git": {
       "commit": true,
-      "tag": true,
-      "tagFormat": "${PROJECT_NAME}-v${version}"
+      "tag": true
     }
   },
   "pluginsConfig": {
