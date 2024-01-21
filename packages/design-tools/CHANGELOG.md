@@ -1,3 +1,15 @@
+## 1.9.1 (2024-01-21)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Remove the git extension from the repository URL ([50a6de3d](https://github.com/storm-software/storm-ops/commit/50a6de3d))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 # [1.9.0](https://github.com/storm-software/storm-ops/compare/design-tools-v1.8.0...design-tools-v1.9.0) (2024-01-20)
 
 
