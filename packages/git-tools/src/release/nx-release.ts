@@ -38,8 +38,7 @@ export const runRelease = async (
     gitCommitMessage: `chore(${options.project ? options.project : "repo"}): Release\${version} [skip ci]
 
 \${notes}`,
-    gitTag: true,
-    gitTagArgs: `--format="${options.project}-v{version}"`
+    gitTag: true
   });
 
   await releaseChangelog({
