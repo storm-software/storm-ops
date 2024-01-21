@@ -126,8 +126,7 @@
       }
     },
     "git": {
-      "commit": true,
-      "tag": true
+      "commit": true
     }
   },
   "pluginsConfig": {
