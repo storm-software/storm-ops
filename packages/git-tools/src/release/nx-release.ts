@@ -1,3 +1,4 @@
+import { type StormConfig, writeInfo, writeSuccess } from "@storm-software/config-tools";
 import { createNxReleaseConfig } from "nx/src/command-line/release/config/config.js";
 import {
   releaseChangelog,
@@ -6,7 +7,6 @@ import {
 } from "nx/src/command-line/release/index.js";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import { createProjectGraphAsync } from "nx/src/project-graph/project-graph.js";
-import { type StormConfig, writeInfo, writeSuccess } from "@storm-software/config-tools";
 
 export const runRelease = async (
   config: StormConfig,
@@ -66,9 +66,11 @@ export const runRelease = async (
     from: options.base,
     gitRemote: "origin",
     gitCommit: true,
-    gitCommitMessage: `chore(${options.project ? options.project : "monorepo"}): Release\${version} [skip ci]
-
-    \${notes}`,
+    gitCommitMessage: `chore(${
+      options.project ? options.project : "monorepo"
+    }): Release packages ${Object.keys(projectsVersionData)
+      .map((key) => `${key} v${projectsVersionData[key].newVersion}`)
+      .join(", ")}`,
     workspaceChangelog: nxReleaseConfig.projectsRelationship === "fixed"
   });
 
