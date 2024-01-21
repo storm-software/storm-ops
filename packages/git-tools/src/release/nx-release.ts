@@ -1,4 +1,4 @@
-import { writeDebug, type StormConfig } from "@storm-software/config-tools";
+import { type StormConfig, writeDebug } from "@storm-software/config-tools";
 import {
   releaseChangelog,
   releasePublish,
@@ -56,6 +56,8 @@ export const runRelease = async (
     gitCommit: true,
     workspaceChangelog: workspaceVersion !== undefined
   });
+
+  writeDebug(config, "Publishing the release...");
 
   await releasePublish({
     dryRun: !!options.dryRun,
