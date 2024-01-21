@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "github",
-    "url": "https://github.com/storm-software/storm-ops.git",
+    "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/create-storm-workspace"
   },
   "license": "Apache License 2.0",

@@ -5,7 +5,7 @@
   "description": "⚡The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.",
   "repository": {
     "type": "github",
-    "url": "https://github.com/storm-software/storm-ops.git",
+    "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/config-tools"
   },
   "type": "module",
