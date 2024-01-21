@@ -34,7 +34,7 @@ export const runRelease = async (
 
   const projectGraph = await createProjectGraphAsync({ exitOnError: true });
   const nxJson = readNxJson();
-  const { error: configError /*, nxReleaseConfig*/ } = await createNxReleaseConfig(
+  const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
     projectGraph,
     nxJson.release,
     "nx-release-publish"
@@ -52,16 +52,13 @@ export const runRelease = async (
     verbose: !config.ci,
     preid: config.preMajor ? "canary" : undefined,
     stageChanges: true,
-    gitCommit: false,
-    gitCommitMessage: `chore(${options.project ? options.project : "monorepo"}): Release\${version} [skip ci]
-
-\${notes}`
+    gitCommit: false
   });
 
   writeInfo(config, "Generating the release changelog...");
 
   await releaseChangelog({
-    version: workspaceVersion,
+    version: nxReleaseConfig.projectsRelationship !== "fixed" ? undefined : workspaceVersion,
     versionData: projectsVersionData,
     dryRun: !!options.dryRun,
     verbose: !config.ci,
@@ -69,7 +66,10 @@ export const runRelease = async (
     from: options.base,
     gitRemote: "origin",
     gitCommit: true,
-    workspaceChangelog: workspaceVersion !== undefined
+    gitCommitMessage: `chore(${options.project ? options.project : "monorepo"}): Release\${version} [skip ci]
+
+    \${notes}`,
+    workspaceChangelog: nxReleaseConfig.projectsRelationship === "fixed"
   });
 
   writeInfo(config, "Publishing the release...");
