@@ -23,10 +23,10 @@ prepare:
 pre-commit:
   piped: true
   commands:
-    install:
-      files: "git diff --name-only HEAD @{push}"
-      glob: "**/package.json"
-      run: "pnpm install && git update-index"
+    # install:
+    #   files: "git diff --name-only HEAD @{push}"
+    #   glob: "**/package.json"
+    #   run: "pnpm install && git update-index"
     prepare:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/{lefthook.yml,biome.json}"
