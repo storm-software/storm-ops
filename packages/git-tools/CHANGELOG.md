@@ -1,3 +1,15 @@
+## 1.29.6 (2024-01-23)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Update the lefthook configuration to correctly handle install ([e27fd423](https://github.com/storm-software/storm-ops/commit/e27fd423))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
