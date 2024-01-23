@@ -10,9 +10,9 @@ export const tsupNodeBuildExecutorFn = (
   context: ExecutorContext,
   config?: any
 ) => {
-  if (options.transports && Array.isArray(options.transports) && options.transports.length > 0) {
+  /*if (options.transports && Array.isArray(options.transports) && options.transports.length > 0) {
     // options.plugins.push(esbuildPluginPino({ transports: options.transports }));
-  }
+  }*/
 
   return tsupExecutorFn(
     {
@@ -44,7 +44,9 @@ export const tsupNodeBuildExecutorFn = (
 const applyDefaultOptions = (options: TsupNodeExecutorSchema): TsupNodeExecutorSchema => {
   return {
     ...tsupApplyDefault({ plugins: [], ...options, platform: "node" }),
-    transports: ["pino-pretty", "pino-loki"]
+    transports: [
+      /*"pino-pretty", "pino-loki"*/
+    ]
   };
 };
 
