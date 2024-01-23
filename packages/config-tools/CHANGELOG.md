@@ -1,3 +1,15 @@
+## 1.20.8 (2024-01-23)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Updated typings to include newly added functions ([3b0b9495](https://github.com/storm-software/storm-ops/commit/3b0b9495))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
