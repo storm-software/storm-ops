@@ -1,3 +1,15 @@
+## 1.29.7 (2024-01-23)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Remove the install hook from pre-commit ([75104c7e](https://github.com/storm-software/storm-ops/commit/75104c7e))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.29.6 (2024-01-23)
 
 
