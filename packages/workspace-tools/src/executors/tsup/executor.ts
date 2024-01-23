@@ -618,6 +618,7 @@ const build = async (options: Options | Options[], config?: StormConfig) => {
     }
 
     await tsup(options);
+    await new Promise((r) => setTimeout(r, 100));
   }
 };
 

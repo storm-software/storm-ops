@@ -53,7 +53,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..3f5228a7289e79ae1d1231fee929800f
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c894a1d633 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..fe154dfcc10c6d2f889d97ccf923a6ba2e2791e8 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1,4 +1,4 @@
@@ -1057,7 +1057,13 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
        minify: options.minify === "terser" ? false : options.minify,
        minifyWhitespace: options.minifyWhitespace,
        minifyIdentifiers: options.minifyIdentifiers,
-@@ -1745,7 +1825,7 @@ async function runEsbuild(options, {
+@@ -1741,11 +1821,13 @@ async function runEsbuild(options, {
+       pure: typeof options.pure === "string" ? [options.pure] : options.pure,
+       metafile: true
+     });
++
++    await new Promise(r => setTimeout(r, 100));
+   } catch (error) {
      logger3.error(format, "Build failed");
      throw error;
    }
@@ -1066,7 +1072,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
      const messages = result.warnings.filter((warning) => {
        if (warning.text.includes(
          `This call to "require" will not be bundled because`
-@@ -1805,7 +1885,7 @@ var cjsSplitting = () => {
+@@ -1805,7 +1887,7 @@ var cjsSplitting = () => {
      name: "cjs-splitting",
      async renderChunk(code, info) {
        if (!this.splitting || this.options.treeshake || // <-- handled by rollup
@@ -1075,7 +1081,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
          return;
        }
        const { transform: transform3 } = await Promise.resolve().then(() => require("sucrase"));
-@@ -1861,8 +1941,8 @@ var parseSourceMap = (map) => {
+@@ -1861,8 +1943,8 @@ var parseSourceMap = (map) => {
  var isJS = (path11) => /\.(js|mjs|cjs)$/.test(path11);
  var isCSS = (path11) => /\.css$/.test(path11);
  var PluginContainer = class {
@@ -1086,7 +1092,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
    constructor(plugins) {
      this.plugins = plugins;
    }
-@@ -2043,7 +2123,7 @@ var sizeReporter = () => {
+@@ -2043,7 +2125,7 @@ var sizeReporter = () => {
    return {
      name: "size-reporter",
      buildEnd({ writtenFiles }) {
@@ -1095,7 +1101,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
          this.logger,
          this.format,
          writtenFiles.reduce((res, file) => {
-@@ -2122,7 +2202,7 @@ var copyPublicDir = (publicDir, outDir) => {
+@@ -2122,7 +2204,7 @@ var copyPublicDir = (publicDir, outDir) => {
  var isInPublicDir = (publicDir, filePath) => {
    if (!publicDir)
      return false;
@@ -1104,7 +1110,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
      _path2.default.resolve(publicDir === true ? "public" : publicDir)
    );
    return _chunkGQ77QZBOjs.slash.call(void 0, _path2.default.resolve(filePath)).startsWith(`${publicPath}/`);
-@@ -2177,10 +2257,10 @@ var terserPlugin = ({
+@@ -2177,10 +2259,10 @@ var terserPlugin = ({
  // src/tsc.ts
  
  var _typescript = require('typescript'); var _typescript2 = _interopRequireDefault(_typescript);
@@ -1119,7 +1125,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
    assign(name) {
      let suffix = 0;
      let alias = name === "default" ? "default_alias" : name;
-@@ -2196,18 +2276,24 @@ var AliasPool = (_class = class {constructor() { _class.prototype.__init.call(th
+@@ -2196,18 +2278,24 @@ var AliasPool = (_class = class {constructor() { _class.prototype.__init.call(th
      return alias;
    }
  }, _class);
@@ -1148,7 +1154,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
      if (!destFileName) {
        return [];
      }
-@@ -2228,22 +2314,26 @@ function getExports(program, fileMapping) {
+@@ -2228,22 +2316,26 @@ function getExports(program, fileMapping) {
          isTypeOnly: false
        });
      });
@@ -1180,7 +1186,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
      return host.writeFile(
        fileName,
        text,
-@@ -2253,10 +2343,15 @@ function emitDtsFiles(program, host) {
+@@ -2253,10 +2345,15 @@ function emitDtsFiles(program, host) {
        data
      );
    };
@@ -1198,7 +1204,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
      if (diagnostic.file) {
        let { line, character } = _typescript2.default.getLineAndCharacterOfPosition(
          diagnostic.file,
-@@ -2283,52 +2378,49 @@ function emitDtsFiles(program, host) {
+@@ -2283,52 +2380,49 @@ function emitDtsFiles(program, host) {
        "TSC",
        "Failed to emit declaration files.\n\n" + diagnosticMessage
      );
@@ -1281,7 +1287,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
      logger.success("tsc", `\u26A1\uFE0F Build success in ${getDuration()}`);
      return exports;
    } catch (error) {
-@@ -2352,7 +2444,7 @@ function formatAggregationExports(exports, declarationDirPath) {
+@@ -2352,7 +2446,7 @@ function formatAggregationExports(exports, declarationDirPath) {
    return lines.join("\n") + "\n";
  }
  function formatAggregationExport(declaration, declarationDirPath) {
@@ -1290,7 +1296,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
      "./" + _path2.default.posix.normalize(
        _chunkGQ77QZBOjs.slash.call(void 0, _path2.default.relative(declarationDirPath, declaration.destFileName))
      )
-@@ -2374,7 +2466,7 @@ function formatAggregationExport(declaration, declarationDirPath) {
+@@ -2374,7 +2468,7 @@ function formatAggregationExport(declaration, declarationDirPath) {
    }
  }
  function formatDistributionExports(exports, fromFilePath, toFilePath) {
@@ -1299,7 +1305,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
      _path2.default.posix.relative(
        _path2.default.posix.dirname(_path2.default.posix.normalize(_chunkGQ77QZBOjs.slash.call(void 0, fromFilePath))),
        _path2.default.posix.normalize(_chunkGQ77QZBOjs.slash.call(void 0, toFilePath))
-@@ -2427,41 +2519,83 @@ function formatDistributionExport(declaration, dest) {
+@@ -2427,41 +2521,83 @@ function formatDistributionExport(declaration, dest) {
  }
  
  // src/api-extractor.ts
@@ -1397,7 +1403,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
    const extractorResult = Extractor.invoke(extractorConfig, {
      // Equivalent to the "--local" command-line parameter
      localBuild: true,
-@@ -2474,36 +2608,54 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+@@ -2474,36 +2610,54 @@ function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
      );
    }
  }
@@ -1461,7 +1467,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
  }
  async function runDtsRollup(options, exports) {
    try {
-@@ -2592,11 +2744,14 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -2592,11 +2746,14 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
      options.entry = entry;
      logger3.info("CLI", `Building entry: ${JSON.stringify(entry)}`);
    }
@@ -1478,7 +1484,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
      );
      options.tsconfig = tsconfig.path;
      options.tsconfigResolvePaths = _optionalChain([tsconfig, 'access', _20 => _20.data, 'optionalAccess', _21 => _21.compilerOptions, 'optionalAccess', _22 => _22.paths]) || {};
-@@ -2610,9 +2765,10 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -2610,9 +2767,10 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
      if (options.experimentalDts) {
        options.experimentalDts.compilerOptions = {
          ...tsconfig.data.compilerOptions || {},
@@ -1491,7 +1497,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
          Object.keys(options.experimentalDts.entry).length > 0 ? options.experimentalDts.entry : options.entry
        );
      }
-@@ -2628,8 +2784,8 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -2628,8 +2786,8 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
    return options;
  };
  async function build(_options) {
@@ -1502,7 +1508,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
      _options.config === true ? void 0 : _options.config
    );
    const configData = typeof config.data === "function" ? await config.data(_options) : config.data;
-@@ -2652,7 +2808,7 @@ async function build(_options) {
+@@ -2652,7 +2810,7 @@ async function build(_options) {
              );
            }
            if (options.experimentalDts) {
@@ -1511,7 +1517,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
              await runDtsRollup(options, exports);
            }
            if (options.dts) {
-@@ -2695,7 +2851,7 @@ async function build(_options) {
+@@ -2695,7 +2853,7 @@ async function build(_options) {
              let onSuccessProcess;
              let onSuccessCleanup;
              const buildDependencies = /* @__PURE__ */ new Set();
@@ -1520,7 +1526,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
              const doOnSuccessCleanup = async () => {
                if (onSuccessProcess) {
                  await killProcess({
-@@ -2708,7 +2864,7 @@ async function build(_options) {
+@@ -2708,7 +2866,7 @@ async function build(_options) {
                onSuccessProcess = void 0;
                onSuccessCleanup = void 0;
              };
@@ -1529,7 +1535,7 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..b39039444b4f7cfb7c5e13f4923305c8
                () => {
                  return buildAll();
                },
-@@ -2816,7 +2972,7 @@ async function build(_options) {
+@@ -2816,7 +2974,7 @@ async function build(_options) {
                  let shouldSkipChange = false;
                  if (options.watch === true) {
                    if (file === "package.json" && !buildDependencies.has(file)) {
