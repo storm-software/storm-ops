@@ -1,3 +1,15 @@
+## 0.1.9 (2024-01-23)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Add delay between esbuild calls to prevent deadlock issue ([2d5d09a6](https://github.com/storm-software/storm-ops/commit/2d5d09a6))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
