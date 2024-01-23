@@ -94,3 +94,12 @@ export { getConfigFileByName };
  */
 declare function defineConfig(input: StormConfigInput): StormConfigInput;
 export { defineConfig };
+
+declare function exitWithError(config?: StormConfig): void;
+export { exitWithError };
+
+declare function exitWithSuccess(config?: StormConfig): void;
+export { exitWithSuccess };
+
+declare function handleProcess(config?: StormConfig): void;
+export { handleProcess };
