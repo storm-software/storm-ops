@@ -1,3 +1,15 @@
+## 1.31.4 (2024-01-23)
+
+
+### 🩹 Fixes
+
+- **linting-tools:** Update types on base tsconfig file ([8644d140](https://github.com/storm-software/storm-ops/commit/8644d140))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
