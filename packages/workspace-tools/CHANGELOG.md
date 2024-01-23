@@ -1,3 +1,15 @@
+## 1.49.5 (2024-01-23)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Republish changes to workspace tools ([741bb51e](https://github.com/storm-software/storm-ops/commit/741bb51e))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 ## 1.49.3 (2024-01-21)
