@@ -93,7 +93,7 @@ export const neutralConfig = ({
   return options;
 };
 
-export function legacyNeutralConfig({
+/*export function legacyNeutralConfig({
   entry,
   outDir,
   projectRoot,
@@ -181,4 +181,4 @@ export function legacyNeutralConfig({
   }
 
   return options;
-}
+}*/

@@ -383,6 +383,7 @@ ${externalDependencies
         return ret;
       }, packageJson.exports);*/
 
+      packageJson.sideEffects ??= false;
       packageJson.funding ??= workspacePackageJson.funding;
 
       packageJson.types ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`;
@@ -406,8 +407,6 @@ ${externalDependencies
 
         packageJson.source ??= `${joinPathFragments(distSrc, "index.ts").replaceAll("\\", "/")}`;
       }
-
-      packageJson.sideEffects ??= false;
 
       packageJson.files ??= ["dist/**/*"];
       if (options.includeSrc === true && !packageJson.files.includes("src")) {
@@ -489,11 +488,12 @@ ${externalDependencies
         {
           ...options,
           outputPath: joinPathFragments(
-            config.workspaceRoot,
             options.outputPath,
-            removeExtension(entryPoint)
-              .replace(sourceRoot, "")
-              .replace(findFileName(entryPoint), "")
+            "dist",
+            removeExtension(entryPoint.replace(sourceRoot, "")).replace(
+              findFileName(entryPoint),
+              ""
+            )
           )
         }
       )

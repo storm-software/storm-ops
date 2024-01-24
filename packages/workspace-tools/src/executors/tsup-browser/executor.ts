@@ -3,7 +3,7 @@ import { withRunExecutor } from "../../base/base-executor";
 import { getFileBanner } from "../../utils/get-file-banner";
 import { applyDefaultOptions as baseApplyDefaultOptions } from "../../utils/run-tsup-build";
 import { tsupExecutorFn } from "../tsup/executor";
-import { legacyBrowserConfig, modernBrowserConfig } from "./get-config";
+import { browserConfig } from "./get-config";
 import type { TsupBrowserExecutorSchema } from "./schema";
 
 export const tsupBrowserBuildExecutorFn = (
@@ -32,8 +32,7 @@ export const tsupBrowserBuildExecutorFn = (
         ...process.env
       },
       getConfig: {
-        "dist/modern": modernBrowserConfig,
-        "dist/legacy": legacyBrowserConfig
+        dist: browserConfig
       }
     },
     context,
