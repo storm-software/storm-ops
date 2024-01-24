@@ -1,3 +1,15 @@
+## 1.49.12 (2024-01-24)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved issue with duplicate `addtionalEntryPoint` export in package.json ([84685ad5](https://github.com/storm-software/storm-ops/commit/84685ad5))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.11 (2024-01-24)
 
 
