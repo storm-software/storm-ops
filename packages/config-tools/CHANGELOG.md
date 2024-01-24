@@ -1,3 +1,15 @@
+## 1.20.10 (2024-01-24)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Added console logging function typings ([c20aac44](https://github.com/storm-software/storm-ops/commit/c20aac44))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 ## 1.20.8 (2024-01-23)
