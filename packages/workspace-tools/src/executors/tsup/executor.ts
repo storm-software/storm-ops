@@ -476,8 +476,16 @@ ${externalDependencies
   }
 
   Promise.all(
-    entryPoints.map((entryPoint) =>
-      runTsupBuild(
+    entryPoints.map((entryPoint) => {
+      let outputPath = removeExtension(entryPoint).replace(sourceRoot, "");
+      if (outputPath.startsWith(".")) {
+        outputPath = outputPath.substring(1);
+      }
+      if (outputPath.startsWith("/")) {
+        outputPath = outputPath.substring(1);
+      }
+
+      return runTsupBuild(
         {
           entry: entryPoint,
           projectRoot,
@@ -490,14 +498,11 @@ ${externalDependencies
           outputPath: joinPathFragments(
             options.outputPath,
             "dist",
-            removeExtension(entryPoint.replace(sourceRoot, "")).replace(
-              findFileName(entryPoint),
-              ""
-            )
+            outputPath.replace(findFileName(entryPoint), "")
           )
         }
-      )
-    )
+      );
+    })
   );
 
   // #endregion Run the build process

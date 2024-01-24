@@ -81,6 +81,7 @@ export const runTsupBuild = async (
 
   const getConfigOptions = {
     ...options,
+    main: context.entry,
     define: {
       __STORM_CONFIG: JSON.stringify(stormEnv)
     },
