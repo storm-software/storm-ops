@@ -336,46 +336,42 @@ ${externalDependencies
       };
 
       for (const additionalEntryPoint of options.additionalEntryPoints) {
-        packageJson.exports[
-          `./${joinPathFragments(
-            distPaths[0],
-            removeExtension(additionalEntryPoint).replace(sourceRoot, "")
-          )}`
-        ] = {
-          import: {
-            types: `./${joinPathFragments(
-              distPaths[0],
-              removeExtension(additionalEntryPoint).replace(sourceRoot, "")
-            )}.d.ts`,
-            default: `./${joinPathFragments(
-              distPaths[0],
-              removeExtension(additionalEntryPoint).replace(sourceRoot, "")
-            )}.js`
-          },
-          require: {
-            types: `./${joinPathFragments(
-              distPaths[0],
-              removeExtension(additionalEntryPoint).replace(sourceRoot, "")
-            )}.d.cts`,
-            default: `./${joinPathFragments(
-              distPaths[0],
-              removeExtension(additionalEntryPoint).replace(sourceRoot, "")
-            )}.cjs`
-          },
-          default: {
-            types: `./${joinPathFragments(
-              distPaths[0],
-              removeExtension(additionalEntryPoint).replace(sourceRoot, "")
-            )}.d.ts`,
-            default: `./${joinPathFragments(
-              distPaths[0],
-              removeExtension(additionalEntryPoint).replace(sourceRoot, "")
-            )}.js`
-          }
-        };
+        packageJson.exports[`./${removeExtension(additionalEntryPoint).replace(sourceRoot, "")}`] =
+          {
+            import: {
+              types: `./${joinPathFragments(
+                distPaths[0],
+                removeExtension(additionalEntryPoint).replace(sourceRoot, "")
+              )}.d.ts`,
+              default: `./${joinPathFragments(
+                distPaths[0],
+                removeExtension(additionalEntryPoint).replace(sourceRoot, "")
+              )}.js`
+            },
+            require: {
+              types: `./${joinPathFragments(
+                distPaths[0],
+                removeExtension(additionalEntryPoint).replace(sourceRoot, "")
+              )}.d.cts`,
+              default: `./${joinPathFragments(
+                distPaths[0],
+                removeExtension(additionalEntryPoint).replace(sourceRoot, "")
+              )}.cjs`
+            },
+            default: {
+              types: `./${joinPathFragments(
+                distPaths[0],
+                removeExtension(additionalEntryPoint).replace(sourceRoot, "")
+              )}.d.ts`,
+              default: `./${joinPathFragments(
+                distPaths[0],
+                removeExtension(additionalEntryPoint).replace(sourceRoot, "")
+              )}.js`
+            }
+          };
       }
 
-      packageJson.exports = Object.keys(entry).reduce((ret: Record<string, any>, key: string) => {
+      /*packageJson.exports = Object.keys(entry).reduce((ret: Record<string, any>, key: string) => {
         let packageJsonKey = key.startsWith("./") ? key : `./${key}`;
         packageJsonKey = packageJsonKey.replaceAll("/index", "");
 
@@ -397,7 +393,7 @@ ${externalDependencies
         }
 
         return ret;
-      }, packageJson.exports);
+      }, packageJson.exports);*/
 
       packageJson.funding ??= workspacePackageJson.funding;
 
