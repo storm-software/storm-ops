@@ -475,7 +475,7 @@ ${externalDependencies
     );
   }
 
-  Promise.all(
+  await Promise.all(
     entryPoints.map((entryPoint) => {
       let outputPath = removeExtension(entryPoint).replace(sourceRoot, "");
       if (outputPath.startsWith(".")) {
