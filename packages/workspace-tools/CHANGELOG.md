@@ -1,3 +1,15 @@
+## 1.49.13 (2024-01-24)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added better support for multi entry point builds ([0fa395e7](https://github.com/storm-software/storm-ops/commit/0fa395e7))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.12 (2024-01-24)
 
 
