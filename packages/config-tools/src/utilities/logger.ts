@@ -103,7 +103,7 @@ ${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${
         `
 ${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(">")} ${chalk.bold
           .bgHex(config?.colors?.success ? config.colors.success : "#087f5b")
-          .white(" √ Success ")}  ${chalk.hex(
+          .white(" ✓ Success ")}  ${chalk.hex(
           config?.colors?.success ? config.colors.success : "#087f5b"
         )(message)}
 `
@@ -120,7 +120,7 @@ ${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(">
         `
 ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${chalk.bold
           .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-          .white(" ! Debug ")}  ${chalk.hex(
+          .white(" 🛠 Debug ")}  ${chalk.hex(
           config?.colors?.primary ? config.colors.primary : "#1fb2a6"
         )(message)}
 `
@@ -133,7 +133,7 @@ ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">
       `
 ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${chalk.bold
         .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-        .white(" ! System ")}  ${chalk.hex(
+        .white(" ✉ System ")}  ${chalk.hex(
         config?.colors?.primary ? config.colors.primary : "#1fb2a6"
       )(message)}
 `
@@ -225,9 +225,9 @@ export const getStopwatch = (name: string) => {
     const end = process.hrtime(start);
     console.info(
       chalk.dim(
-        `⏱️  The${name ? ` ${name}` : ""} process took ${Math.round(
+        `\n⏱️  The${name ? ` ${name}` : ""} process took ${Math.round(
           end[0] * 1000 + end[1] / 1000000
-        )}ms to complete`
+        )}ms to complete\n\n`
       )
     );
   };

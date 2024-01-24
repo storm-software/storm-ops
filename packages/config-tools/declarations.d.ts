@@ -103,3 +103,84 @@ export { exitWithSuccess };
 
 declare function handleProcess(config?: StormConfig): void;
 export { handleProcess };
+
+/**
+ * Write a message to the console at the `fatal` log level
+ *
+ * @param config - The Storm configuration
+ * @param message - The message to write
+ */
+declare function writeFatal(config: Partial<StormConfig>, message: string): void;
+export { writeFatal };
+
+/**
+ * Write a message to the console at the `error` log level
+ *
+ * @param config - The Storm configuration
+ * @param message - The message to write
+ */
+declare function writeError(config: Partial<StormConfig>, message: string): void;
+export { writeError };
+
+/**
+ * Write a message to the console at the `warning` log level
+ *
+ * @param config - The Storm configuration
+ * @param message - The message to write
+ */
+declare function writeWarning(config: Partial<StormConfig>, message: string): void;
+export { writeWarning };
+
+/**
+ * Write a message to the console at the `info` log level
+ *
+ * @param config - The Storm configuration
+ * @param message - The message to write
+ */
+declare function writeInfo(config: Partial<StormConfig>, message: string): void;
+export { writeInfo };
+
+/**
+ * Write a message to the console at the `success` log level
+ *
+ * @param config - The Storm configuration
+ * @param message - The message to write
+ */
+declare function writeSuccess(config: Partial<StormConfig>, message: string): void;
+export { writeSuccess };
+
+/**
+ * Write a message to the console at the `debug` log level
+ *
+ * @param config - The Storm configuration
+ * @param message - The message to write
+ */
+declare function writeDebug(config: Partial<StormConfig>, message: string): void;
+export { writeDebug };
+
+/**
+ * Write a message to the console at the `trace` log level
+ *
+ * @param config - The Storm configuration
+ * @param message - The message to write
+ */
+declare function writeTrace(config: Partial<StormConfig>, message: string): void;
+export { writeTrace };
+
+/**
+ * Write a message to the console at the `all` log level
+ *
+ * @param config - The Storm configuration
+ * @param message - The message to write
+ */
+declare function writeSystem(config: Partial<StormConfig>, message: string): void;
+export { writeSystem };
+
+/**
+ * Get a stopwatch function
+ *
+ * @param name - The name of the process
+ * @returns The stopwatch function
+ */
+declare function getStopwatch(name: string): () => void;
+export { getStopwatch };
