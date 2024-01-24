@@ -1,5 +1,3 @@
-import { readFileSync } from "node:fs";
-import { writeFile } from "node:fs/promises";
 import { dirname } from "node:path";
 import { esbuildDecorators } from "@anatine/esbuild-decorators";
 import { joinPathFragments } from "@nx/devkit";
@@ -15,9 +13,7 @@ import {
   writeWarning
 } from "@storm-software/config-tools";
 import { environmentPlugin } from "esbuild-plugin-environment";
-import { globSync } from "glob";
 import type { TsupContext } from "packages/workspace-tools/declarations";
-import { format } from "prettier";
 import { type Options, build as tsup, defineConfig } from "tsup";
 import * as ts from "typescript";
 import { defaultConfig, getConfig } from "../base/get-tsup-config";
@@ -61,49 +57,6 @@ export const runTsupBuild = async (
   config: Partial<StormConfig>,
   options: TsupExecutorSchema
 ) => {
-  if (options.includeSrc === true) {
-    const files = globSync([
-      joinPathFragments(config.workspaceRoot, options.outputPath, "src/**/*.ts"),
-      joinPathFragments(config.workspaceRoot, options.outputPath, "src/**/*.tsx"),
-      joinPathFragments(config.workspaceRoot, options.outputPath, "src/**/*.js"),
-      joinPathFragments(config.workspaceRoot, options.outputPath, "src/**/*.jsx")
-    ]);
-    await Promise.allSettled(
-      files.map(async (file) =>
-        writeFile(
-          file,
-          await format(
-            `${
-              options.banner
-                ? options.banner.startsWith("//")
-                  ? options.banner
-                  : `// ${options.banner}`
-                : ""
-            }\n\n${readFileSync(file, "utf-8")}`,
-            {
-              ...{
-                plugins: ["prettier-plugin-packagejson"],
-                trailingComma: "none",
-                tabWidth: 2,
-                semi: true,
-                singleQuote: false,
-                quoteProps: "preserve",
-                insertPragma: false,
-                bracketSameLine: true,
-                printWidth: 80,
-                bracketSpacing: true,
-                arrowParens: "avoid",
-                endOfLine: "lf"
-              },
-              parser: "typescript"
-            }
-          ),
-          "utf-8"
-        )
-      )
-    );
-  }
-
   // #endregion Generate the package.json file
 
   // #region Add default plugins
@@ -143,7 +96,7 @@ export const runTsupBuild = async (
           {
             ...options,
             watch: false,
-            main: options.entry,
+            main: context.entry,
             transformers: []
           },
           config.workspaceRoot,

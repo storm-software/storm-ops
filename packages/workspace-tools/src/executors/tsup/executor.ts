@@ -1,4 +1,5 @@
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
+import { writeFile } from "node:fs/promises";
 import { joinPathFragments, readCachedProjectGraph, readJsonFile } from "@nx/devkit";
 import type { ExecutorContext } from "@nx/devkit";
 import { copyAssets } from "@nx/js";
@@ -18,7 +19,7 @@ import { type Path, globSync } from "glob";
 import { fileExists } from "nx/src/utils/fileutils";
 import { type Options as PrettierOptions, format } from "prettier";
 import { withRunExecutor } from "../../base/base-executor";
-import { removeExtension } from "../../utils/file-path-utils";
+import { findFileName, removeExtension } from "../../utils/file-path-utils";
 import { getProjectConfigurations } from "../../utils/get-project-configurations";
 import { getExternalDependencies } from "../../utils/get-project-deps";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
@@ -232,52 +233,50 @@ ${externalDependencies
     endOfLine: "lf"
   };
 
-  const entryPoints = [];
+  let entryPoints: string[] = [];
   if (options.entry) {
     entryPoints.push(options.entry);
   }
   if (options.emitOnAll === true) {
-    entryPoints.push(joinPathFragments(sourceRoot, "**/*.{ts,tsx}"));
+    entryPoints = globSync(joinPathFragments(sourceRoot, "**/*.{ts,tsx}"), {
+      withFileTypes: true
+    }).reduce((ret, filePath: Path) => {
+      let formattedPath = workspaceRoot.replaceAll("\\", "/");
+      if (formattedPath.toUpperCase().startsWith("C:")) {
+        // Handle starting pattern for Window's paths
+        formattedPath = formattedPath.substring(2);
+      }
+
+      let propertyKey = joinPathFragments(filePath.path, removeExtension(filePath.name))
+        .replaceAll("\\", "/")
+        .replaceAll(formattedPath, "")
+        .replaceAll(sourceRoot, "")
+        .replaceAll(projectRoot, "");
+
+      if (propertyKey) {
+        while (propertyKey.startsWith("/")) {
+          propertyKey = propertyKey.substring(1);
+        }
+
+        writeDebug(
+          config,
+          `Trying to add entry point ${propertyKey} at "${joinPathFragments(
+            filePath.path,
+            filePath.name
+          )}"`
+        );
+
+        if (!ret.includes(propertyKey)) {
+          ret.push(joinPathFragments(filePath.path, filePath.name));
+        }
+      }
+
+      return ret;
+    }, entryPoints);
   }
   if (options.additionalEntryPoints) {
     entryPoints.push(...options.additionalEntryPoints);
   }
-
-  const entry = globSync(entryPoints, {
-    withFileTypes: true
-  }).reduce((ret, filePath: Path) => {
-    let formattedPath = workspaceRoot.replaceAll("\\", "/");
-    if (formattedPath.toUpperCase().startsWith("C:")) {
-      // Handle starting pattern for Window's paths
-      formattedPath = formattedPath.substring(2);
-    }
-
-    let propertyKey = joinPathFragments(filePath.path, removeExtension(filePath.name))
-      .replaceAll("\\", "/")
-      .replaceAll(formattedPath, "")
-      .replaceAll(sourceRoot, "")
-      .replaceAll(projectRoot, "");
-
-    if (propertyKey) {
-      while (propertyKey.startsWith("/")) {
-        propertyKey = propertyKey.substring(1);
-      }
-
-      writeDebug(
-        config,
-        `Trying to add entry point ${propertyKey} at "${joinPathFragments(
-          filePath.path,
-          filePath.name
-        )}"`
-      );
-
-      if (!(propertyKey in ret)) {
-        ret[propertyKey] = joinPathFragments(filePath.path, filePath.name);
-      }
-    }
-
-    return ret;
-  }, {});
 
   if (options.generatePackageJson !== false) {
     const projectGraph = readCachedProjectGraph();
@@ -335,40 +334,29 @@ ${externalDependencies
         "./package.json": "./package.json"
       };
 
-      for (const additionalEntryPoint of options.additionalEntryPoints) {
-        packageJson.exports[`./${removeExtension(additionalEntryPoint).replace(sourceRoot, "")}`] =
-          {
-            import: {
-              types: `./${joinPathFragments(
-                distPaths[0],
-                removeExtension(additionalEntryPoint).replace(sourceRoot, "")
-              )}.d.ts`,
-              default: `./${joinPathFragments(
-                distPaths[0],
-                removeExtension(additionalEntryPoint).replace(sourceRoot, "")
-              )}.js`
-            },
-            require: {
-              types: `./${joinPathFragments(
-                distPaths[0],
-                removeExtension(additionalEntryPoint).replace(sourceRoot, "")
-              )}.d.cts`,
-              default: `./${joinPathFragments(
-                distPaths[0],
-                removeExtension(additionalEntryPoint).replace(sourceRoot, "")
-              )}.cjs`
-            },
-            default: {
-              types: `./${joinPathFragments(
-                distPaths[0],
-                removeExtension(additionalEntryPoint).replace(sourceRoot, "")
-              )}.d.ts`,
-              default: `./${joinPathFragments(
-                distPaths[0],
-                removeExtension(additionalEntryPoint).replace(sourceRoot, "")
-              )}.js`
-            }
-          };
+      for (const entryPoint of entryPoints) {
+        let formattedEntryPoint = removeExtension(entryPoint).replace(sourceRoot, "");
+        if (formattedEntryPoint.startsWith(".")) {
+          formattedEntryPoint = formattedEntryPoint.substring(1);
+        }
+        if (formattedEntryPoint.startsWith("/")) {
+          formattedEntryPoint = formattedEntryPoint.substring(1);
+        }
+
+        packageJson.exports[`./${formattedEntryPoint}`] = {
+          import: {
+            types: `./${joinPathFragments(distPaths[0], formattedEntryPoint)}.d.ts`,
+            default: `./${joinPathFragments(distPaths[0], formattedEntryPoint)}.js`
+          },
+          require: {
+            types: `./${joinPathFragments(distPaths[0], formattedEntryPoint)}.d.cts`,
+            default: `./${joinPathFragments(distPaths[0], formattedEntryPoint)}.cjs`
+          },
+          default: {
+            types: `./${joinPathFragments(distPaths[0], formattedEntryPoint)}.d.ts`,
+            default: `./${joinPathFragments(distPaths[0], formattedEntryPoint)}.js`
+          }
+        };
       }
 
       /*packageJson.exports = Object.keys(entry).reduce((ret: Record<string, any>, key: string) => {
@@ -458,15 +446,58 @@ ${externalDependencies
     writeWarning(config, "Skipping writing to package.json file");
   }
 
-  await runTsupBuild(
-    {
-      entry,
-      projectRoot,
-      projectName: context.projectName,
-      sourceRoot
-    },
-    config,
-    options
+  if (options.includeSrc === true) {
+    const files = globSync([
+      joinPathFragments(config.workspaceRoot, options.outputPath, "src/**/*.ts"),
+      joinPathFragments(config.workspaceRoot, options.outputPath, "src/**/*.tsx"),
+      joinPathFragments(config.workspaceRoot, options.outputPath, "src/**/*.js"),
+      joinPathFragments(config.workspaceRoot, options.outputPath, "src/**/*.jsx")
+    ]);
+    await Promise.allSettled(
+      files.map(async (file) =>
+        writeFile(
+          file,
+          await format(
+            `${
+              options.banner
+                ? options.banner.startsWith("//")
+                  ? options.banner
+                  : `// ${options.banner}`
+                : ""
+            }\n\n${readFileSync(file, "utf-8")}`,
+            {
+              ...prettierOptions,
+              parser: "typescript"
+            }
+          ),
+          "utf-8"
+        )
+      )
+    );
+  }
+
+  Promise.all(
+    entryPoints.map((entryPoint) =>
+      runTsupBuild(
+        {
+          entry: entryPoint,
+          projectRoot,
+          projectName: context.projectName,
+          sourceRoot
+        },
+        config,
+        {
+          ...options,
+          outputPath: joinPathFragments(
+            config.workspaceRoot,
+            options.outputPath,
+            removeExtension(entryPoint)
+              .replace(sourceRoot, "")
+              .replace(findFileName(entryPoint), "")
+          )
+        }
+      )
+    )
   );
 
   // #endregion Run the build process
