@@ -1,3 +1,15 @@
+## 1.49.14 (2024-01-24)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Cleaned up the `dist` folder structure of tsup build ([a21802ea](https://github.com/storm-software/storm-ops/commit/a21802ea))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.13 (2024-01-24)
 
 
