@@ -1,7 +1,8 @@
 import type { ExecutorContext } from "@nx/devkit";
 import { withRunExecutor } from "../../base/base-executor";
 import { getFileBanner } from "../../utils/get-file-banner";
-import { applyDefaultOptions as tsupApplyDefault, tsupExecutorFn } from "../tsup/executor";
+import { applyDefaultOptions as baseApplyDefaultOptions } from "../../utils/run-tsup-build";
+import { tsupExecutorFn } from "../tsup/executor";
 import { legacyBrowserConfig, modernBrowserConfig } from "./get-config";
 import type { TsupBrowserExecutorSchema } from "./schema";
 
@@ -42,7 +43,7 @@ export const tsupBrowserBuildExecutorFn = (
 
 const applyDefaultOptions = (options: TsupBrowserExecutorSchema): TsupBrowserExecutorSchema => {
   return {
-    ...tsupApplyDefault({ plugins: [], ...options, platform: "browser" })
+    ...baseApplyDefaultOptions({ plugins: [], ...options, platform: "browser" })
   };
 };
 

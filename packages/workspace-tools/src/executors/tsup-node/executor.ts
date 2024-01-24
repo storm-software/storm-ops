@@ -1,7 +1,8 @@
 import type { ExecutorContext } from "@nx/devkit";
 import { withRunExecutor } from "../../base/base-executor";
 import { getFileBanner } from "../../utils/get-file-banner";
-import { applyDefaultOptions as tsupApplyDefault, tsupExecutorFn } from "../tsup/executor";
+import { applyDefaultOptions as baseApplyDefaultOptions } from "../../utils/run-tsup-build";
+import { tsupExecutorFn } from "../tsup/executor";
 import { nodeConfig } from "./get-config";
 import type { TsupNodeExecutorSchema } from "./schema";
 
@@ -43,7 +44,7 @@ export const tsupNodeBuildExecutorFn = (
 
 const applyDefaultOptions = (options: TsupNodeExecutorSchema): TsupNodeExecutorSchema => {
   return {
-    ...tsupApplyDefault({ plugins: [], ...options, platform: "node" }),
+    ...baseApplyDefaultOptions({ plugins: [], ...options, platform: "node" }),
     transports: [
       /*"pino-pretty", "pino-loki"*/
     ]

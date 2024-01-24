@@ -1,14 +1,8 @@
-import { readFileSync, writeFileSync } from "node:fs";
-import { writeFile } from "node:fs/promises";
-import { dirname } from "node:path";
-import { esbuildDecorators } from "@anatine/esbuild-decorators";
+import { writeFileSync } from "node:fs";
 import { joinPathFragments, readCachedProjectGraph, readJsonFile } from "@nx/devkit";
 import type { ExecutorContext } from "@nx/devkit";
 import { copyAssets } from "@nx/js";
-import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options";
-import { createTypeScriptCompilationOptions } from "@nx/js/src/executors/tsc/tsc.impl";
 import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
-import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
 import {
   LogLevel,
   type StormConfig,
@@ -19,19 +13,16 @@ import {
   writeTrace,
   writeWarning
 } from "@storm-software/config-tools";
-import { environmentPlugin } from "esbuild-plugin-environment";
 import { removeSync } from "fs-extra";
 import { type Path, globSync } from "glob";
 import { fileExists } from "nx/src/utils/fileutils";
 import { type Options as PrettierOptions, format } from "prettier";
-import { type Options, build as tsup, defineConfig } from "tsup";
-import * as ts from "typescript";
 import { withRunExecutor } from "../../base/base-executor";
-import { defaultConfig, getConfig } from "../../base/get-tsup-config";
 import { removeExtension } from "../../utils/file-path-utils";
 import { getProjectConfigurations } from "../../utils/get-project-configurations";
 import { getExternalDependencies } from "../../utils/get-project-deps";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
+import { applyDefaultOptions, runTsupBuild } from "../../utils/run-tsup-build";
 import type { TsupExecutorSchema } from "./schema";
 
 type PackageConfiguration = {
@@ -339,22 +330,50 @@ ${externalDependencies
           default: {
             types: `./${distPaths[0]}index.d.ts`,
             default: `./${distPaths[0]}index.js`
-          },
-          ...(options.additionalEntryPoints ?? []).map((entryPoint) => ({
-            [removeExtension(entryPoint).replace(sourceRoot, "")]: {
-              types: joinPathFragments(
-                `./${distPaths[0]}`,
-                `${removeExtension(entryPoint.replace(sourceRoot, ""))}.d.ts`
-              ),
-              default: joinPathFragments(
-                `./${distPaths[0]}`,
-                `${removeExtension(entryPoint.replace(sourceRoot, ""))}.js`
-              )
-            }
-          }))
+          }
         },
         "./package.json": "./package.json"
       };
+
+      for (const additionalEntryPoint of options.additionalEntryPoints) {
+        packageJson.exports[
+          `./${joinPathFragments(
+            distPaths[0],
+            removeExtension(additionalEntryPoint).replace(sourceRoot, "")
+          )}`
+        ] = {
+          import: {
+            types: `./${joinPathFragments(
+              distPaths[0],
+              removeExtension(additionalEntryPoint).replace(sourceRoot, "")
+            )}.d.ts`,
+            default: `./${joinPathFragments(
+              distPaths[0],
+              removeExtension(additionalEntryPoint).replace(sourceRoot, "")
+            )}.js`
+          },
+          require: {
+            types: `./${joinPathFragments(
+              distPaths[0],
+              removeExtension(additionalEntryPoint).replace(sourceRoot, "")
+            )}.d.cts`,
+            default: `./${joinPathFragments(
+              distPaths[0],
+              removeExtension(additionalEntryPoint).replace(sourceRoot, "")
+            )}.cjs`
+          },
+          default: {
+            types: `./${joinPathFragments(
+              distPaths[0],
+              removeExtension(additionalEntryPoint).replace(sourceRoot, "")
+            )}.d.ts`,
+            default: `./${joinPathFragments(
+              distPaths[0],
+              removeExtension(additionalEntryPoint).replace(sourceRoot, "")
+            )}.js`
+          }
+        };
+      }
 
       packageJson.exports = Object.keys(entry).reduce((ret: Record<string, any>, key: string) => {
         let packageJsonKey = key.startsWith("./") ? key : `./${key}`;
@@ -443,125 +462,16 @@ ${externalDependencies
     writeWarning(config, "Skipping writing to package.json file");
   }
 
-  if (options.includeSrc === true) {
-    const files = globSync([
-      joinPathFragments(context.root, options.outputPath, "src/**/*.ts"),
-      joinPathFragments(context.root, options.outputPath, "src/**/*.tsx"),
-      joinPathFragments(context.root, options.outputPath, "src/**/*.js"),
-      joinPathFragments(context.root, options.outputPath, "src/**/*.jsx")
-    ]);
-    await Promise.allSettled(
-      files.map(async (file) =>
-        writeFile(
-          file,
-          await format(
-            `${
-              options.banner
-                ? options.banner.startsWith("//")
-                  ? options.banner
-                  : `// ${options.banner}`
-                : ""
-            }\n\n${readFileSync(file, "utf-8")}`,
-            {
-              ...prettierOptions,
-              parser: "typescript"
-            }
-          ),
-          "utf-8"
-        )
-      )
-    );
-  }
-
-  // #endregion Generate the package.json file
-
-  // #region Add default plugins
-
-  const stormEnv = Object.keys(options.env)
-    .filter((key) => key.startsWith("STORM_"))
-    .reduce((ret, key) => {
-      ret[key] = options.env[key];
-      return ret;
-    }, {});
-  options.plugins.push(
-    esbuildDecorators({
-      tsconfig: options.tsConfig,
-      cwd: workspaceRoot
-    })
+  await runTsupBuild(
+    {
+      entry,
+      projectRoot,
+      projectName: context.projectName,
+      sourceRoot
+    },
+    config,
+    options
   );
-  options.plugins.push(environmentPlugin(stormEnv));
-
-  // #endregion Add default plugins
-
-  // #region Run the build process
-
-  const getConfigOptions = {
-    ...options,
-    define: {
-      __STORM_CONFIG: JSON.stringify(stormEnv)
-    },
-    env: {
-      __STORM_CONFIG: JSON.stringify(stormEnv),
-      ...stormEnv
-    },
-    dtsTsConfig: getNormalizedTsConfig(
-      context.root,
-      options.outputPath,
-      createTypeScriptCompilationOptions(
-        normalizeOptions(
-          {
-            ...options,
-            watch: false,
-            main: options.entry,
-            transformers: []
-          },
-          context.root,
-          sourceRoot,
-          workspaceRoot
-        ),
-        context
-      )
-    ),
-    banner: options.banner
-      ? {
-          js: `${options.banner}
-
-`,
-          css: `/*
-${options.banner}\n
-
-
-*/`
-        }
-      : undefined,
-    outputPath: options.outputPath,
-    entry
-  };
-
-  if (options.getConfig) {
-    writeInfo(config, "⚡ Running the Build process");
-
-    const getConfigFns = _isFunction(options.getConfig)
-      ? [options.getConfig]
-      : Object.keys(options.getConfig).map((key) => options.getConfig[key]);
-
-    const tsupConfig = defineConfig(
-      getConfigFns.map((getConfigFn) =>
-        getConfig(context.root, projectRoot, getConfigFn, getConfigOptions)
-      )
-    );
-
-    if (_isFunction(tsupConfig)) {
-      await build(await Promise.resolve(tsupConfig({})), config);
-    } else {
-      await build(tsupConfig, config);
-    }
-  } else if (getLogLevel(config?.logLevel) >= LogLevel.WARN) {
-    writeWarning(
-      config,
-      "The Build process did not run because no `getConfig` parameter was provided"
-    );
-  }
 
   // #endregion Run the build process
 
@@ -571,89 +481,6 @@ ${options.banner}\n
     success: true
   };
 }
-
-function getNormalizedTsConfig(
-  workspaceRoot: string,
-  outputPath: string,
-  options: TypeScriptCompilationOptions
-) {
-  const config = ts.readConfigFile(options.tsConfig, ts.sys.readFile).config;
-  const tsConfig = ts.parseJsonConfigFileContent(
-    {
-      ...config,
-      compilerOptions: {
-        ...config.compilerOptions,
-        outDir: outputPath,
-        rootDir: workspaceRoot,
-        baseUrl: workspaceRoot,
-        allowJs: true,
-        noEmit: false,
-        esModuleInterop: true,
-        downlevelIteration: true,
-        forceConsistentCasingInFileNames: true,
-        emitDeclarationOnly: true,
-        declaration: true,
-        declarationMap: true,
-        declarationDir: joinPathFragments(workspaceRoot, "tmp", ".tsup", "declaration")
-      }
-    },
-    ts.sys,
-    dirname(options.tsConfig)
-  );
-
-  tsConfig.options.pathsBasePath = workspaceRoot;
-  if (tsConfig.options.incremental && !tsConfig.options.tsBuildInfoFile) {
-    tsConfig.options.tsBuildInfoFile = joinPathFragments(outputPath, "tsconfig.tsbuildinfo");
-  }
-
-  return tsConfig;
-}
-
-const build = async (options: Options | Options[], config?: StormConfig) => {
-  if (Array.isArray(options)) {
-    await Promise.all(options.map((buildOptions) => build(buildOptions, config)));
-  } else {
-    if (getLogLevel(config?.logLevel) >= LogLevel.TRACE && !options.silent) {
-      console.log("⚙️  Tsup build config: \n", options, "\n");
-    }
-
-    await tsup(options);
-    await new Promise((r) => setTimeout(r, 100));
-  }
-};
-
-export const applyDefaultOptions = (options: TsupExecutorSchema): TsupExecutorSchema => {
-  options.entry ??= "{sourceRoot}/index.ts";
-  options.outputPath ??= "dist/{projectRoot}";
-  options.tsConfig ??= "tsconfig.json";
-  options.generatePackageJson ??= true;
-  options.splitting ??= true;
-  options.treeshake ??= true;
-  options.platform ??= "neutral";
-  options.format ??= ["cjs", "esm"];
-  options.verbose ??= false;
-  options.external ??= [];
-  options.additionalEntryPoints ??= [];
-  options.assets ??= [];
-  options.plugins ??= [];
-  options.includeSrc ??= false;
-  options.minify ??= false;
-  options.clean ??= true;
-  options.bundle ??= true;
-  options.debug ??= false;
-  options.watch ??= false;
-  options.apiReport ??= true;
-  options.docModel ??= true;
-  options.tsdocMetadata ??= true;
-  options.emitOnAll ??= false;
-  options.metafile ??= true;
-  options.skipNativeModulesPlugin ??= false;
-  options.define ??= {};
-  options.env ??= {};
-  options.getConfig ??= { dist: defaultConfig };
-
-  return options;
-};
 
 export default withRunExecutor<TsupExecutorSchema>("TypeScript Build using tsup", tsupExecutorFn, {
   skipReadingConfig: false,

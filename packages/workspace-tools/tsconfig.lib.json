@@ -8,7 +8,7 @@
     "esModuleInterop": true,
     "types": ["node"]
   },
-  "include": ["index.ts", "src/**/*.ts", "src/**/*.js", "**/*.json"],
+  "include": ["index.ts", "src/**/*.ts", "src/**/*.js", "**/*.json", "declarations.d.ts"],
   "exclude": [
     "jest.config.ts",
     "src/generators/**/files/**/*",

@@ -1,7 +1,7 @@
-import { StormConfig } from "@storm-software/config-tools";
-import * as ts from "typescript";
-import { ParsedCommandLine } from "typescript";
-import { TsupExecutorSchema } from "./executors/tsup/schema";
+import type { StormConfig } from "@storm-software/config-tools";
+import type * as ts from "typescript";
+import type { ParsedCommandLine } from "typescript";
+import type { TsupExecutorSchema } from "./executors/tsup/schema";
 
 export interface WorkspaceToolHooks<TSchema = any> {
   applyDefaultOptions?: (
@@ -19,10 +19,7 @@ export interface BaseWorkspaceToolOptions<TSchema = any> {
 
 type Entry = string | string[] | Record<string, string>;
 
-export type TsupGetConfigOptions = Omit<
-  TsupExecutorSchema,
-  "banner" | "entry"
-> & {
+export type TsupGetConfigOptions = Omit<TsupExecutorSchema, "banner" | "entry"> & {
   banner?: { js?: string; css?: string };
   dtsTsConfig: ParsedCommandLine;
   entry: Entry;

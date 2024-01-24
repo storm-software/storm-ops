@@ -2,7 +2,8 @@ import type { ExecutorContext } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config-tools";
 import { withRunExecutor } from "../../base/base-executor";
 import { getFileBanner } from "../../utils/get-file-banner";
-import { applyDefaultOptions as tsupApplyDefault, tsupExecutorFn } from "../tsup/executor";
+import { applyDefaultOptions as baseApplyDefaultOptions } from "../../utils/run-tsup-build";
+import { tsupExecutorFn } from "../tsup/executor";
 import { neutralConfig } from "./get-config";
 import type { TsupNeutralExecutorSchema } from "./schema";
 
@@ -42,7 +43,7 @@ export const tsupNeutralBuildExecutorFn = (
 
 const applyDefaultOptions = (options: TsupNeutralExecutorSchema): TsupNeutralExecutorSchema => {
   return {
-    ...tsupApplyDefault({
+    ...baseApplyDefaultOptions({
       plugins: [],
       ...options,
       platform: "neutral"

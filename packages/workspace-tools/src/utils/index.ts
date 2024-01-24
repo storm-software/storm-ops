@@ -8,3 +8,4 @@ export * from "./get-workspace-root";
 export * from "./typia-transform";
 export * from "./versions";
 export * from "./workspace-storage";
+export * from "./run-tsup-build";
