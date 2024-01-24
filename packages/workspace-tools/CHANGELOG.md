@@ -1,3 +1,15 @@
+## 1.49.15 (2024-01-24)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved issues with output path formatting ([6b73fc1e](https://github.com/storm-software/storm-ops/commit/6b73fc1e))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.14 (2024-01-24)
 
 
