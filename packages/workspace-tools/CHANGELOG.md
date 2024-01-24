@@ -1,3 +1,15 @@
+## 1.49.11 (2024-01-24)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Split out the tsup build code to a separate module ([a56cd86e](https://github.com/storm-software/storm-ops/commit/a56cd86e))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 ## 1.49.9 (2024-01-23)
