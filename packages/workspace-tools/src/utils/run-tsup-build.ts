@@ -10,7 +10,8 @@ import {
   type StormConfig,
   getLogLevel,
   writeInfo,
-  writeWarning
+  writeWarning,
+  writeDebug
 } from "@storm-software/config-tools";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import type { TsupContext } from "packages/workspace-tools/declarations";
@@ -126,6 +127,20 @@ ${options.banner}\n
   if (options.getConfig) {
     writeInfo(config, "⚡ Running the Build process");
 
+    writeDebug(
+      config,
+      `⚙️  Build options:
+  ${Object.keys(options)
+    .map(
+      (key) =>
+        `${key}: ${
+          !options[key] || _isPrimitive(options[key]) ? options[key] : JSON.stringify(options[key])
+        }`
+    )
+    .join("\n")}
+  `
+    );
+
     const getConfigFns = _isFunction(options.getConfig)
       ? [options.getConfig]
       : Object.keys(options.getConfig).map((key) => options.getConfig[key]);
@@ -196,6 +211,19 @@ const build = async (options: Options | Options[], config?: StormConfig) => {
 
     await tsup(options);
     await new Promise((r) => setTimeout(r, 100));
+  }
+};
+
+const _isPrimitive = (value: unknown): boolean => {
+  try {
+    return (
+      value === undefined ||
+      value === null ||
+      (typeof value !== "object" && typeof value !== "function")
+    );
+    // biome-ignore lint/correctness/noUnusedVariables: <explanation>
+  } catch (e) {
+    return false;
   }
 };
 
