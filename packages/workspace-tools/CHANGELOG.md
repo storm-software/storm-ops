@@ -1,3 +1,15 @@
+## 1.49.22 (2024-01-25)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Apply `getConfig` parameter through executor hook ([1ae84274](https://github.com/storm-software/storm-ops/commit/1ae84274))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.21 (2024-01-25)
 
 
