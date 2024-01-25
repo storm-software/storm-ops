@@ -1,3 +1,15 @@
+## 1.49.17 (2024-01-25)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added `ouputPath` logging to the tsup build ([81355feb](https://github.com/storm-software/storm-ops/commit/81355feb))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.16 (2024-01-25)
 
 
