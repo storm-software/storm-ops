@@ -1,3 +1,15 @@
+## 1.49.19 (2024-01-25)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Add build options logging to tsup processing ([2c1e2063](https://github.com/storm-software/storm-ops/commit/2c1e2063))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.18 (2024-01-25)
 
 
