@@ -44,7 +44,12 @@ export const tsupNodeBuildExecutorFn = (
 
 const applyDefaultOptions = (options: TsupNodeExecutorSchema): TsupNodeExecutorSchema => {
   return {
-    ...baseApplyDefaultOptions({ plugins: [], ...options, platform: "node" }),
+    ...baseApplyDefaultOptions({
+      plugins: [],
+      ...options,
+      platform: "node",
+      getConfig: nodeConfig
+    }),
     transports: ["pino-pretty", "pino-loki"]
   };
 };

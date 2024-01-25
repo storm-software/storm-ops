@@ -40,7 +40,12 @@ export const tsupBrowserBuildExecutorFn = (
 
 const applyDefaultOptions = (options: TsupBrowserExecutorSchema): TsupBrowserExecutorSchema => {
   return {
-    ...baseApplyDefaultOptions({ plugins: [], ...options, platform: "browser" })
+    ...baseApplyDefaultOptions({
+      plugins: [],
+      ...options,
+      platform: "browser",
+      getConfig: browserConfig
+    })
   };
 };
 
