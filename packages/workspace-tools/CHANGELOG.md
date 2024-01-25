@@ -1,3 +1,15 @@
+## 1.49.16 (2024-01-25)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Ensure tsup build is awaited in executor ([b81872df](https://github.com/storm-software/storm-ops/commit/b81872df))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.15 (2024-01-24)
 
 
