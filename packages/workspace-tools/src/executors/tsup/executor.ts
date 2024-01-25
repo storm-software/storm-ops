@@ -485,6 +485,13 @@ ${externalDependencies
         outputPath = outputPath.substring(1);
       }
 
+      outputPath = joinPathFragments(
+        options.outputPath,
+        "dist",
+        outputPath.replace(findFileName(entryPoint), "")
+      );
+      writeInfo(config, `*** Build output path: ${outputPath} ***`);
+
       return runTsupBuild(
         {
           entry: entryPoint,
@@ -495,11 +502,7 @@ ${externalDependencies
         config,
         {
           ...options,
-          outputPath: joinPathFragments(
-            options.outputPath,
-            "dist",
-            outputPath.replace(findFileName(entryPoint), "")
-          )
+          outputPath
         }
       );
     })
