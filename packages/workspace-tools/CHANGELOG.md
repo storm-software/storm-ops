@@ -1,3 +1,15 @@
+## 1.49.20 (2024-01-25)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Updated the `getConfig` option to use exclusively functions ([7e144ace](https://github.com/storm-software/storm-ops/commit/7e144ace))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.19 (2024-01-25)
 
 
