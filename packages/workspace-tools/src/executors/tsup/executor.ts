@@ -309,10 +309,12 @@ ${externalDependencies
       }
     }
 
-    const distPaths: string[] =
+    /*const distPaths: string[] =
       !options?.getConfig || _isFunction(options.getConfig)
         ? ["dist/"]
-        : Object.keys(options.getConfig).map((key) => `${key}/`);
+        : Object.keys(options.getConfig).map((key) => `${key}/`);*/
+
+    const distPaths: string[] = ["dist/"];
 
     packageJson.type = "module";
     if (distPaths.length > 0) {
@@ -444,6 +446,8 @@ ${externalDependencies
   } else {
     writeWarning(config, "Skipping writing to package.json file");
   }
+
+  // #endregion Generate the package.json file
 
   if (options.includeSrc === true) {
     const files = globSync([

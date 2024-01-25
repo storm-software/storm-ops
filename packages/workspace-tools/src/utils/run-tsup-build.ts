@@ -9,9 +9,9 @@ import {
   LogLevel,
   type StormConfig,
   getLogLevel,
+  writeDebug,
   writeInfo,
-  writeWarning,
-  writeDebug
+  writeWarning
 } from "@storm-software/config-tools";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import type { TsupContext } from "packages/workspace-tools/declarations";
@@ -58,8 +58,6 @@ export const runTsupBuild = async (
   config: Partial<StormConfig>,
   options: TsupExecutorSchema
 ) => {
-  // #endregion Generate the package.json file
-
   // #region Add default plugins
 
   const stormEnv = Object.keys(options.env)
@@ -141,10 +139,11 @@ ${options.banner}\n
   `
     );
 
-    const getConfigFns = _isFunction(options.getConfig)
+    /*const getConfigFns = _isFunction(options.getConfig)
       ? [options.getConfig]
-      : Object.keys(options.getConfig).map((key) => options.getConfig[key]);
+      : Object.keys(options.getConfig).map((key) => options.getConfig[key]);*/
 
+    const getConfigFns = [options.getConfig];
     const tsupConfig = defineConfig(
       getConfigFns.map((getConfigFn) =>
         getConfig(config.workspaceRoot, context.projectRoot, getConfigFn, getConfigOptions)

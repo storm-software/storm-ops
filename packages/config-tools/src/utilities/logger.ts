@@ -120,7 +120,7 @@ ${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(">
         `
 ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${chalk.bold
           .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-          .white(" 🛠 Debug ")}  ${chalk.hex(
+          .white(" 🛠  Debug ")}  ${chalk.hex(
           config?.colors?.primary ? config.colors.primary : "#1fb2a6"
         )(message)}
 `

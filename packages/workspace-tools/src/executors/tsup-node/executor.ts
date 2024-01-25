@@ -18,7 +18,6 @@ export const tsupNodeBuildExecutorFn = (
   return tsupExecutorFn(
     {
       ...options,
-      getConfig: nodeConfig,
       platform: "node",
       banner: getFileBanner(
         context.projectName
@@ -35,7 +34,8 @@ export const tsupNodeBuildExecutorFn = (
       },
       env: {
         ...process.env
-      }
+      },
+      getConfig: nodeConfig
     },
     context,
     config

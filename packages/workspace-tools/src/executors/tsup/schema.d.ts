@@ -39,9 +39,7 @@ export type TsupExecutorSchema = Omit<
   treeshake?: boolean;
   generatePackageJson?: boolean;
   emitOnAll?: boolean;
-  getConfig:
-    | Record<string, (params: GetConfigParams) => Options>
-    | ((params: GetConfigParams) => Options);
+  getConfig: (params: GetConfigParams) => Options;
   format?: string[];
   metafile?: boolean;
   minify?: boolean;
