@@ -1,3 +1,15 @@
+## 1.20.21 (2024-01-25)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Updates to method of providing `getConfig` parameter ([d4b95d86](https://github.com/storm-software/storm-ops/commit/d4b95d86))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
