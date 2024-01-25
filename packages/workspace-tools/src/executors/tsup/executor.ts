@@ -488,7 +488,7 @@ ${externalDependencies
       outputPath = joinPathFragments(
         options.outputPath,
         "dist",
-        outputPath.replace(findFileName(entryPoint), "")
+        outputPath.includes("/") ? outputPath.substring(0, outputPath.lastIndexOf("/")) : ""
       );
       writeInfo(config, `*** Build output path: ${outputPath} ***`);
 
