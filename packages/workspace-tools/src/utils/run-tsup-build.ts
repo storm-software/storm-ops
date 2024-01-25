@@ -48,7 +48,7 @@ export const applyDefaultOptions = (options: TsupExecutorSchema): TsupExecutorSc
   options.skipNativeModulesPlugin ??= false;
   options.define ??= {};
   options.env ??= {};
-  options.getConfig ??= { dist: defaultConfig };
+  options.getConfig ??= defaultConfig;
 
   return options;
 };

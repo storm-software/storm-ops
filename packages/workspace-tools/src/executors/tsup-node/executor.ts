@@ -18,7 +18,7 @@ export const tsupNodeBuildExecutorFn = (
   return tsupExecutorFn(
     {
       ...options,
-      getConfig: { dist: nodeConfig },
+      getConfig: nodeConfig,
       platform: "node",
       banner: getFileBanner(
         context.projectName

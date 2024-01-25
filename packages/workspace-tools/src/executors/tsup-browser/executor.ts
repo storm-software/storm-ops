@@ -31,9 +31,7 @@ export const tsupBrowserBuildExecutorFn = (
       env: {
         ...process.env
       },
-      getConfig: {
-        dist: browserConfig
-      }
+      getConfig: browserConfig
     },
     context,
     config

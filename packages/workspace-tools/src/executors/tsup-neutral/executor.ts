@@ -32,9 +32,7 @@ export const tsupNeutralBuildExecutorFn = (
       env: {
         ...process.env
       },
-      getConfig: {
-        dist: neutralConfig
-      }
+      getConfig: neutralConfig
     },
     context,
     config
