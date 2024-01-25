@@ -19,7 +19,7 @@ import { type Path, globSync } from "glob";
 import { fileExists } from "nx/src/utils/fileutils";
 import { type Options as PrettierOptions, format } from "prettier";
 import { withRunExecutor } from "../../base/base-executor";
-import { findFileName, removeExtension } from "../../utils/file-path-utils";
+import { removeExtension } from "../../utils/file-path-utils";
 import { getProjectConfigurations } from "../../utils/get-project-configurations";
 import { getExternalDependencies } from "../../utils/get-project-deps";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
