@@ -1,3 +1,15 @@
+## 1.50.5 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Correctly apply internal dependencies and print build ([e7d0c79a](https://github.com/storm-software/storm-ops/commit/e7d0c79a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 ## 1.50.3 (2024-01-26)
