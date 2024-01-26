@@ -1,3 +1,15 @@
+## 1.49.31 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Use the default `outputPath` for tsup build ([1078da89](https://github.com/storm-software/storm-ops/commit/1078da89))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.30 (2024-01-26)
 
 
