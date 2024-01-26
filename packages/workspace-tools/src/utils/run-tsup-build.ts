@@ -19,6 +19,7 @@ import { type Options, build as tsup, defineConfig } from "tsup";
 import * as ts from "typescript";
 import { defaultConfig, getConfig } from "../base/get-tsup-config";
 import type { TsupExecutorSchema } from "../executors/tsup/schema";
+import { removeExtension } from "./file-path-utils";
 
 export const applyDefaultOptions = (options: TsupExecutorSchema): TsupExecutorSchema => {
   options.entry ??= "{sourceRoot}/index.ts";
@@ -84,6 +85,7 @@ export const runTsupBuild = async (
   const getConfigOptions = {
     ...options,
     main: context.main,
+    entry: { [removeExtension(context.main).replace(context.sourceRoot, "")]: context.main },
     define: {
       __STORM_CONFIG: JSON.stringify(stormEnv)
     },
