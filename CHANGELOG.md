@@ -1,3 +1,15 @@
+## 0.3.1 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added npm-publish executor to additional entry points ([faf38bce](https://github.com/storm-software/storm-ops/commit/faf38bce))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.3.0 (2024-01-26)
 
 
