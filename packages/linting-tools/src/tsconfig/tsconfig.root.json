@@ -10,7 +10,6 @@
     "incremental": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "noUncheckedIndexedAccess": true,
     "strictNullChecks": true,
     "strict": true,
@@ -28,11 +27,20 @@
     "emitDecoratorMetadata": true,
     "target": "esnext",
     "module": "esnext",
-    "lib": ["esnext", "dom", "dom.iterable"],
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "esModuleInterop": true
   },
-  "include": ["./reset.d.ts"],
-  "exclude": ["**/node_modules", "**/tmp"]
+  "include": [
+    "./reset.d.ts"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/tmp"
+  ]
 }

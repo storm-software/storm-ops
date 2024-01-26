@@ -168,6 +168,7 @@ function getNormalizedTsConfig(
         noEmit: false,
         esModuleInterop: true,
         downlevelIteration: true,
+        noUnusedLocals: false,
         forceConsistentCasingInFileNames: true,
         emitDeclarationOnly: true,
         declaration: true,

@@ -30,6 +30,11 @@
       "implementation": "./src/executors/typia/executor",
       "schema": "./src/executors/typia/schema.json",
       "description": "Run the Typia generator to create runtime type validators"
+    },
+    "npm-publish": {
+      "implementation": "./src/executors/npm-publish/executor",
+      "schema": "./src/executors/npm-publish/schema.json",
+      "description": "Publish a package to the NPM registry"
     }
   }
 }

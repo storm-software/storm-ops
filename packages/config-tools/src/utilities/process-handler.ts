@@ -37,4 +37,8 @@ export const handleProcess = (config: StormConfig) => {
     writeError(config, `The program terminated with signal code: ${signal}`);
     exitWithError(config);
   });
+  process.on("SIGHUP", (signal: NodeJS.Signals) => {
+    writeError(config, `The program terminated with signal code: ${signal}`);
+    exitWithError(config);
+  });
 };
