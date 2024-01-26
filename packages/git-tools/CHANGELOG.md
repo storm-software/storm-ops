@@ -1,3 +1,15 @@
+## 1.31.2 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Added code to set providence on publish process ([06439ff3](https://github.com/storm-software/storm-ops/commit/06439ff3))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
