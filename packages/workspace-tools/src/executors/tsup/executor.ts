@@ -205,7 +205,7 @@ ${Object.keys(options)
     if (
       packageConfig?.packageName &&
       config?.externalPackagePatterns?.some((pattern) =>
-        pattern.includes(packageConfig.packageName)
+        packageConfig.packageName.includes(pattern)
       ) &&
       !externalDependencies?.some((externalDependency) =>
         externalDependency.name.includes(packageConfig.packageName)
@@ -491,23 +491,8 @@ ${externalDependencies
   }
 
   await Promise.all(
-    entryPoints.map((entryPoint: string) => {
-      /*let outputPath = removeExtension(entryPoint).replace(sourceRoot, "");
-      if (outputPath.startsWith(".")) {
-        outputPath = outputPath.substring(1);
-      }
-      if (outputPath.startsWith("/")) {
-        outputPath = outputPath.substring(1);
-      }
-
-      outputPath = joinPathFragments(
-        options.outputPath,
-        "dist",
-        outputPath.includes("/") ? outputPath.substring(0, outputPath.lastIndexOf("/")) : ""
-      );*/
-      writeInfo(config, `*** Build output path: ${options.outputPath} ***`);
-
-      return runTsupBuild(
+    entryPoints.map((entryPoint: string) =>
+      runTsupBuild(
         {
           main: entryPoint,
           projectRoot,
@@ -516,8 +501,8 @@ ${externalDependencies
         },
         config,
         options
-      );
-    })
+      )
+    )
   );
 
   // #endregion Run the build process

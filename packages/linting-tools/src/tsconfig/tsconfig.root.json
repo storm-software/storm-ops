@@ -5,8 +5,10 @@
   "compileOnSave": false,
   "compilerOptions": {
     "sourceMap": true,
+    "composite": true,
     "declaration": true,
     "declarationMap": true,
+    "incremental": true,
     "noImplicitReturns": true,
     "noUncheckedIndexedAccess": true,
     "strictNullChecks": true,
