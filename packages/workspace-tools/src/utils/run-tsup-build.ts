@@ -128,24 +128,6 @@ ${options.banner}\n
   if (options.getConfig) {
     writeInfo(config, "⚡ Running the Build process");
 
-    writeDebug(
-      config,
-      `⚙️  Build options:
-  ${Object.keys(options)
-    .map(
-      (key) =>
-        `${key}: ${
-          !options[key] || _isPrimitive(options[key])
-            ? options[key]
-            : _isFunction(options[key])
-              ? "<function>"
-              : JSON.stringify(options[key])
-        }`
-    )
-    .join("\n")}
-  `
-    );
-
     /*const getConfigFns = _isFunction(options.getConfig)
       ? [options.getConfig]
       : Object.keys(options.getConfig).map((key) => options.getConfig[key]);*/
@@ -155,6 +137,28 @@ ${options.banner}\n
       getConfigFns.map((getConfigFn) =>
         getConfig(config.workspaceRoot, context.projectRoot, getConfigFn, getConfigOptions)
       )
+    );
+
+    writeDebug(
+      config,
+      `⚙️  Build options:
+  ${
+    _isFunction(tsupConfig)
+      ? Object.keys(tsupConfig)
+          .map(
+            (key) =>
+              `${key}: ${
+                !tsupConfig[key] || _isPrimitive(tsupConfig[key])
+                  ? tsupConfig[key]
+                  : _isFunction(tsupConfig[key])
+                    ? "<function>"
+                    : JSON.stringify(tsupConfig[key])
+              }`
+          )
+          .join("\n")
+      : "<function>"
+  }
+  `
     );
 
     if (_isFunction(tsupConfig)) {
@@ -216,7 +220,6 @@ const build = async (options: Options | Options[], config?: StormConfig) => {
     }
 
     await tsup(options);
-    await new Promise((r) => setTimeout(r, 100));
   }
 };
 
