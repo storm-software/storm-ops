@@ -49,7 +49,11 @@ ${Object.keys(options)
   .map(
     (key) =>
       `${key}: ${
-        !options[key] || _isPrimitive(options[key]) ? options[key] : JSON.stringify(options[key])
+        !options[key] || _isPrimitive(options[key])
+          ? options[key]
+          : _isFunction(options[key])
+            ? "<function>"
+            : JSON.stringify(options[key])
       }`
   )
   .join("\n")}
@@ -506,7 +510,8 @@ ${externalDependencies
         config,
         {
           ...options,
-          outputPath
+          outputPath,
+          getConfig: options.getConfig
         }
       );
     })

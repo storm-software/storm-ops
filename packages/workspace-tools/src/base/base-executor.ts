@@ -79,7 +79,12 @@ export const withRunExecutor =
         writeTrace(
           config,
           `Loaded Storm config into env: \n${Object.keys(process.env)
-            .map((key) => ` - ${key}=${JSON.stringify(process.env[key])}`)
+            .map(
+              (key) =>
+                ` - ${key}=${
+                  _isFunction(process.env[key]) ? "<function>" : JSON.stringify(process.env[key])
+                }`
+            )
             .join("\n")}`
         );
       }
@@ -93,7 +98,10 @@ export const withRunExecutor =
       writeTrace(
         config,
         `Executor schema options ⚙️ \n${Object.keys(options)
-          .map((key) => ` - ${key}=${JSON.stringify(options[key])}`)
+          .map(
+            (key) =>
+              ` - ${key}=${_isFunction(options[key]) ? "<function>" : JSON.stringify(options[key])}`
+          )
           .join("\n")}`
       );
 
@@ -160,3 +168,18 @@ export const withRunExecutor =
       stopwatch();
     }
   };
+
+const _isFunction = (
+  value: unknown
+): value is ((params?: unknown) => unknown) & ((param?: any) => any) => {
+  try {
+    return (
+      value instanceof Function ||
+      typeof value === "function" ||
+      !!(value?.constructor && (value as any)?.call && (value as any)?.apply)
+    );
+    // biome-ignore lint/correctness/noUnusedVariables: <explanation>
+  } catch (e) {
+    return false;
+  }
+};

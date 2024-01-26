@@ -48,7 +48,10 @@ export const applyDefaultOptions = (options: TsupExecutorSchema): TsupExecutorSc
   options.skipNativeModulesPlugin ??= false;
   options.define ??= {};
   options.env ??= {};
-  options.getConfig ??= defaultConfig;
+
+  if (options.getConfig) {
+    options.getConfig = defaultConfig;
+  }
 
   return options;
 };
@@ -132,7 +135,11 @@ ${options.banner}\n
     .map(
       (key) =>
         `${key}: ${
-          !options[key] || _isPrimitive(options[key]) ? options[key] : JSON.stringify(options[key])
+          !options[key] || _isPrimitive(options[key])
+            ? options[key]
+            : _isFunction(options[key])
+              ? "<function>"
+              : JSON.stringify(options[key])
         }`
     )
     .join("\n")}

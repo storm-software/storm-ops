@@ -1,4 +1,4 @@
-import { accessSync, constants, existsSync, mkdirSync } from "node:fs";
+import { constants, accessSync, existsSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { env } from "node:process";
 import { getWorkspaceRoot } from "./get-workspace-root";
@@ -12,10 +12,7 @@ const isWritable = (path: string): boolean => {
   }
 };
 
-function useDirectory(
-  directory: string,
-  { create = true }: { create?: boolean }
-): string {
+function useDirectory(directory: string, { create = true }: { create?: boolean }): string {
   if (create) {
     mkdirSync(directory, { recursive: true });
   }
@@ -50,12 +47,11 @@ export function findCacheDirectory(
   }
 ): string {
   if (env.CACHE_DIR && !["true", "false", "1", "0"].includes(env.CACHE_DIR)) {
+    // biome-ignore lint/correctness/useHookAtTopLevel: <explanation>
     return useDirectory(join(env.CACHE_DIR, name, cacheName), { create });
   }
-  if (
-    env.STORM_CACHE_DIR &&
-    !["true", "false", "1", "0"].includes(env.STORM_CACHE_DIR)
-  ) {
+  if (env.STORM_CACHE_DIR && !["true", "false", "1", "0"].includes(env.STORM_CACHE_DIR)) {
+    // biome-ignore lint/correctness/useHookAtTopLevel: <explanation>
     return useDirectory(join(env.STORM_CACHE_DIR, name, cacheName), {
       create
     });
@@ -66,8 +62,6 @@ export function findCacheDirectory(
     throw new Error("Cannot find node_modules directory");
   }
 
-  return useDirectory(
-    join(workspaceRoot, "node_modules", ".cache", name, cacheName),
-    { create }
-  );
+  // biome-ignore lint/correctness/useHookAtTopLevel: <explanation>
+  return useDirectory(join(workspaceRoot, "node_modules", ".cache", name, cacheName), { create });
 }
