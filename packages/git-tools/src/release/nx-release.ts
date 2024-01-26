@@ -31,6 +31,7 @@ export const runRelease = async (
   process.env.GIT_AUTHOR_EMAIL = `${authorName}@users.noreply.github.com`;
   process.env.GIT_COMMITTER_NAME = committerName;
   process.env.GIT_COMMITTER_EMAIL = `${committerName}@users.noreply.github.com`;
+  process.env.NPM_CONFIG_PROVENANCE = "true";
 
   const projectGraph = await createProjectGraphAsync({ exitOnError: true });
   const nxJson = readNxJson();
@@ -50,7 +51,7 @@ export const runRelease = async (
   const { workspaceVersion, projectsVersionData } = await releaseVersion({
     dryRun: !!options.dryRun,
     verbose: !config.ci,
-    preid: config.preMajor ? "canary" : undefined,
+    preid: config.preMajor ? "next" : undefined,
     stageChanges: true,
     gitCommit: false
   });

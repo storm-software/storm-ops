@@ -47,7 +47,7 @@ pre-commit:
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: npx biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index"
     readme-gen:
-      glob: "**/{README.md,package.json}"
+      glob: "**/{README.md,package.json,executors.json,generators.json}"
       run: "npx storm-git readme-gen --templates=\"./docs/readme-templates\" && git update-index"
     format:
       glob: "**/*.*"
