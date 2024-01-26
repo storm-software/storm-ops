@@ -39,3 +39,22 @@ runs:
     - name: setup pnpm config registry
       run: pnpm install
       shell: bash
+
+    - name: Configure git
+      run: |
+        git config user.name "${{ env.STORM_WORKER }}"
+        git config user.email "${{ env.STORM_WORKER }}@users.noreply.github.com"
+        git config lfs.allowincompletepush true
+        npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+      shell: bash
+
+    - name: Get appropriate base and head commits for `nx affected` commands
+      uses: nrwl/nx-set-shas@v4
+      with:
+        main-branch-name: "main"
+
+    - name: Set appropriate base and head commits for `nx affected` commands
+      run: |
+        echo "BASE: ${{ env.NX_BASE }}"
+        echo "HEAD: ${{ env.NX_HEAD }}"
+      shell: bash

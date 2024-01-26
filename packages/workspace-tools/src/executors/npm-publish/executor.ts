@@ -3,8 +3,7 @@ import { execSync } from "node:child_process";
 import { type ProcessEnv, npmRunPathEnv } from "npm-run-path";
 import type { NpmPublishExecutorSchema } from "./schema";
 import chalk = require("chalk");
-
-const LARGE_BUFFER = 1024 * 1000000;
+import { LARGE_BUFFER } from "@storm-software/config-tools";
 
 function processEnv() {
   const env = {

@@ -66,10 +66,10 @@ if (errors.length > 0) {
 }
 
 writeSuccess(config, "✅ Lock file is valid");
-run("git lfs pre-push origin");
+run(config, "git lfs pre-push origin");
 
 try {
-  run("git-lfs version");
+  run(config, "git-lfs version");
 } catch (error) {
   writeError(
     config,
@@ -80,5 +80,5 @@ try {
   exitWithError(config);
 }
 
-run("git lfs pre-push origin");
+run(config, "git lfs pre-push origin");
 exitWithSuccess(config);

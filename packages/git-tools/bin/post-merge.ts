@@ -18,7 +18,7 @@ writeInfo(config, "Running post-merge hook...");
 checkPackageVersion(process.argv?.slice(1));
 
 try {
-  run("git-lfs version");
+  run(config, "git-lfs version");
 } catch (error) {
   writeError(
     config,
@@ -29,5 +29,5 @@ try {
   exitWithError(config);
 }
 
-run("git lfs post-merge");
+run(config, "git lfs post-merge");
 exitWithSuccess(config);

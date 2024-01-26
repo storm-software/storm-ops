@@ -1,10 +1,31 @@
 import { execaCommandSync } from "execa";
+import type { StormConfig } from "../types";
 
-// wrapper around execa to run our command line processes
-export const run = (command: string) => {
+export const LARGE_BUFFER = 1024 * 1000000;
+
+/**
+ *  Run a command line process
+ *
+ * @remarks
+ * A wrapper around execa to run our command line processes
+ *
+ * @param config - The Storm configuration object
+ * @param command - The command to run
+ * @param cwd - The current working directory
+ * @returns The result of the command
+ */
+export const run = (config: StormConfig, command: string, cwd: string = config.workspaceRoot) => {
   return execaCommandSync(command, {
     preferLocal: true,
     shell: true,
-    stdio: "inherit"
+    cwd,
+    env: {
+      ...process.env,
+      FORCE_COLOR: "true"
+    },
+    stdio: "inherit",
+    stderr: "inherit",
+    maxBuffer: LARGE_BUFFER,
+    killSignal: "SIGTERM"
   });
 };

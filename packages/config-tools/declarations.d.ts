@@ -184,3 +184,19 @@ export { writeSystem };
  */
 declare function getStopwatch(name: string): () => void;
 export { getStopwatch };
+
+declare const LARGE_BUFFER: number;
+
+/**
+ *  Run a command line process
+ *
+ * @remarks
+ * A wrapper around execa to run our command line processes
+ *
+ * @param config - The Storm configuration object
+ * @param command - The command to run
+ * @param cwd - The current working directory
+ * @returns The result of the command
+ */
+declare function run(config: StormConfig, command: string, cwd: string = config.workspaceRoot): any;
+export { run };

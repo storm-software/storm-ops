@@ -6,7 +6,7 @@ const config = await loadStormConfig();
 handleProcess(config);
 
 if (!config.ci) {
-  run("lefthook install");
+  run(config, "lefthook install");
 }
 
 exitWithSuccess(config);

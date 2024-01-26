@@ -40,7 +40,6 @@
   "scripts": {
     "adr": "pnpm log4brains adr new",
     "adr-preview": "pnpm log4brains preview",
-    "api-extractor": "nx g @storm-software/workspace-tools:api-extractor --outputPath 'docs/api-reference' --clean --no-interactive",
     "prebuild": "pnpm clean",
     "build": "nx affected -t build --parallel=5",
     "build:all": "nx run-many -t build --all --parallel=5",
@@ -53,7 +52,7 @@
     "biome:lint": "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true",
     "biome:format": "npx biome format --write  --no-errors-on-unmatched --files-ignore-unknown=true",
     "help": "nx help",
-    "preinstall": "node ./dist/packages/git-tools/bin/pre-install.js || npx -y only-allow pnpm",
+    "preinstall": "node ./dist/packages/git-tools/bin/pre-install.js",
     "lint": "node ./dist/packages/linting-tools/bin/lint.js all --skip-cspell --alex-config=\"./dist/packages/linting-tools/alex/.alexrc\" --alex-config=\"dist/packages/linting-tools/alex/.alexignore\"",
     "local-registry": "nx local-registry @storm-software/storm-ops",
     "nx": "nx",
@@ -91,7 +90,7 @@
   },
   "packageManager": "pnpm@8.10.2",
   "engines": {
-    "node": ">=18.17.1",
+    "node": ">=20.11.0",
     "pnpm": ">=8.10.2"
   },
   "namespace": "@storm-software",
