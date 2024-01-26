@@ -493,11 +493,11 @@ ${externalDependencies
         outputPath = outputPath.substring(1);
       }
 
-      outputPath = joinPathFragments(
+      /*outputPath = joinPathFragments(
         options.outputPath,
         "dist",
         outputPath.includes("/") ? outputPath.substring(0, outputPath.lastIndexOf("/")) : ""
-      );
+      );*/
       writeInfo(config, `*** Build output path: ${outputPath} ***`);
 
       return runTsupBuild(
