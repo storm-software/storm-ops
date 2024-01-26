@@ -1,3 +1,20 @@
+## 1.51.0 (2024-01-26)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Added custom `npm-publish` executor ([3e6292dd](https://github.com/storm-software/storm-ops/commit/3e6292dd))
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Temporarily comment out test file ([ac75cc2f](https://github.com/storm-software/storm-ops/commit/ac75cc2f))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.50.5 (2024-01-26)
 
 
