@@ -1,3 +1,15 @@
+## 1.49.30 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Updates to ouput path for tsup build ([dede0192](https://github.com/storm-software/storm-ops/commit/dede0192))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.29 (2024-01-26)
 
 
