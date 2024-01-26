@@ -200,7 +200,7 @@ const build = async (options: Options | Options[], config?: StormConfig) => {
       config,
       `⚙️  Tsup Build options:
 ${
-  _isFunction(tsupOptions)
+  !_isFunction(tsupOptions)
     ? Object.keys(tsupOptions)
         .map(
           (key) =>

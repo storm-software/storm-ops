@@ -21,7 +21,7 @@ import { type Options as PrettierOptions, format } from "prettier";
 import { withRunExecutor } from "../../base/base-executor";
 import { removeExtension } from "../../utils/file-path-utils";
 import { getProjectConfigurations } from "../../utils/get-project-configurations";
-import { getExternalDependencies } from "../../utils/get-project-deps";
+import { getExtraDependencies } from "../../utils/get-project-deps";
 import { getWorkspaceRoot } from "../../utils/get-workspace-root";
 import { applyDefaultOptions, runTsupBuild } from "../../utils/run-tsup-build";
 import type { TsupExecutorSchema } from "./schema";
@@ -197,7 +197,7 @@ ${Object.keys(options)
     }, options.external);
   }
 
-  for (const thirdPartyDependency of getExternalDependencies(
+  for (const thirdPartyDependency of getExtraDependencies(
     context.projectName,
     context.projectGraph
   )) {
@@ -207,8 +207,8 @@ ${Object.keys(options)
       config?.externalPackagePatterns?.some((pattern) =>
         packageConfig.packageName.includes(pattern)
       ) &&
-      !externalDependencies?.some((externalDependency) =>
-        externalDependency.name.includes(packageConfig.packageName)
+      !externalDependencies?.some(
+        (externalDependency) => externalDependency.name === packageConfig.packageName
       )
     ) {
       externalDependencies.push(thirdPartyDependency);
@@ -244,6 +244,10 @@ ${externalDependencies
   if (options.entry) {
     entryPoints.push(options.entry);
   }
+  if (options.additionalEntryPoints) {
+    entryPoints.push(...options.additionalEntryPoints);
+  }
+
   if (options.emitOnAll === true) {
     entryPoints = globSync(joinPathFragments(sourceRoot, "**/*.{ts,tsx}"), {
       withFileTypes: true
@@ -280,9 +284,6 @@ ${externalDependencies
 
       return ret;
     }, entryPoints);
-  }
-  if (options.additionalEntryPoints) {
-    entryPoints.push(...options.additionalEntryPoints);
   }
 
   if (options.generatePackageJson !== false) {
@@ -490,7 +491,7 @@ ${externalDependencies
     );
   }
 
-  await Promise.all(
+  await Promise.allSettled(
     entryPoints.map((entryPoint: string) =>
       runTsupBuild(
         {
