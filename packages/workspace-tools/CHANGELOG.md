@@ -1,3 +1,15 @@
+## 1.49.27 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added logic to resolve get options functions ([64fc9374](https://github.com/storm-software/storm-ops/commit/64fc9374))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.26 (2024-01-26)
 
 
