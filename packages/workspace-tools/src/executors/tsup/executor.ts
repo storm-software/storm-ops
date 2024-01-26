@@ -484,8 +484,8 @@ ${externalDependencies
   }
 
   await Promise.all(
-    entryPoints.map((entryPoint) => {
-      let outputPath = removeExtension(entryPoint).replace(sourceRoot, "");
+    entryPoints.map((entryPoint: string) => {
+      /*let outputPath = removeExtension(entryPoint).replace(sourceRoot, "");
       if (outputPath.startsWith(".")) {
         outputPath = outputPath.substring(1);
       }
@@ -493,12 +493,12 @@ ${externalDependencies
         outputPath = outputPath.substring(1);
       }
 
-      /*outputPath = joinPathFragments(
+      outputPath = joinPathFragments(
         options.outputPath,
         "dist",
         outputPath.includes("/") ? outputPath.substring(0, outputPath.lastIndexOf("/")) : ""
       );*/
-      writeInfo(config, `*** Build output path: ${outputPath} ***`);
+      writeInfo(config, `*** Build output path: ${options.outputPath} ***`);
 
       return runTsupBuild(
         {
@@ -508,11 +508,7 @@ ${externalDependencies
           sourceRoot
         },
         config,
-        {
-          ...options,
-          outputPath,
-          getConfig: options.getConfig
-        }
+        options
       );
     })
   );
