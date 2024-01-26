@@ -1,3 +1,15 @@
+## 1.32.4 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **linting-tools:** Remove `composite` from the base tsconfig json ([38a064a2](https://github.com/storm-software/storm-ops/commit/38a064a2))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.32.3 (2024-01-26)
 
 
