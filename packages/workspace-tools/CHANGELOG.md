@@ -1,3 +1,15 @@
+## 1.49.28 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved issue with entry build parameter ([7c86ce4d](https://github.com/storm-software/storm-ops/commit/7c86ce4d))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.27 (2024-01-26)
 
 
