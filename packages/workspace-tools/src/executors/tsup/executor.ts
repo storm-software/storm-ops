@@ -204,16 +204,14 @@ ${Object.keys(options)
     const packageConfig = thirdPartyDependency.node.data as PackageConfiguration;
     if (
       packageConfig?.packageName &&
-      !config?.externalPackagePatterns?.some((pattern) =>
+      config?.externalPackagePatterns?.some((pattern) =>
         pattern.includes(packageConfig.packageName)
       ) &&
       !externalDependencies?.some((externalDependency) =>
         externalDependency.name.includes(packageConfig.packageName)
       )
     ) {
-      if (!packageJson?.devDependencies?.[packageConfig.packageName] || !packageConfig.hash) {
-        externalDependencies.push(thirdPartyDependency);
-      }
+      externalDependencies.push(thirdPartyDependency);
     }
   }
 
