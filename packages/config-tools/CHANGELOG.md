@@ -1,3 +1,15 @@
+## 1.21.0 (2024-01-26)
+
+
+### 🚀 Features
+
+- **config-tools:** Added the `externalPackagePatterns` option to Storm config ([78f5c9d4](https://github.com/storm-software/storm-ops/commit/78f5c9d4))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
