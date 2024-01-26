@@ -1,3 +1,15 @@
+## 1.50.2 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added optional checking to external dependencies tracking ([5e414907](https://github.com/storm-software/storm-ops/commit/5e414907))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.50.1 (2024-01-26)
 
 
