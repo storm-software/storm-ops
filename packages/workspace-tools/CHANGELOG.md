@@ -1,3 +1,15 @@
+## 1.50.1 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Fixed issue with incorrect external package logic ([a8e7a52a](https://github.com/storm-software/storm-ops/commit/a8e7a52a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.50.0 (2024-01-26)
 
 
