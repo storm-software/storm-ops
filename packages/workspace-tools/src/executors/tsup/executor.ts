@@ -502,7 +502,7 @@ ${externalDependencies
 
       return runTsupBuild(
         {
-          entry: entryPoint,
+          main: entryPoint,
           projectRoot,
           projectName: context.projectName,
           sourceRoot

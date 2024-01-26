@@ -5,7 +5,7 @@ export interface TsupContext {
   projectRoot: string;
   sourceRoot: string;
   projectName: string;
-  entry: string;
+  main: string;
 }
 
 declare function applyDefaultOptions(options: TsupExecutorSchema): TsupExecutorSchema;

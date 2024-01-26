@@ -83,7 +83,7 @@ export const runTsupBuild = async (
 
   const getConfigOptions = {
     ...options,
-    main: context.entry,
+    main: context.main,
     define: {
       __STORM_CONFIG: JSON.stringify(stormEnv)
     },
@@ -99,7 +99,7 @@ export const runTsupBuild = async (
           {
             ...options,
             watch: false,
-            main: context.entry,
+            main: context.main,
             transformers: []
           },
           config.workspaceRoot,
@@ -121,8 +121,7 @@ ${options.banner}\n
 */`
         }
       : undefined,
-    outputPath: options.outputPath,
-    entry: context.entry
+    outputPath: options.outputPath
   };
 
   if (options.getConfig) {
