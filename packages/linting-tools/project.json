@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/linting-tools",
         "tsConfig": "packages/linting-tools/tsconfig.json",
@@ -29,7 +31,9 @@
         "minify": false,
         "skipTypeCheck": false,
         "thirdParty": true,
-        "format": ["esm"],
+        "format": [
+          "esm"
+        ],
         "esbuildOptions": {
           "banner": {
             "js": "import { fileURLToPath as _fileURLToPath } from 'url';\nimport _path from 'node:path';\nimport { createRequire as topLevelCreateRequire } from 'module';\nconst require = topLevelCreateRequire(import.meta.url);\nconst __filename = _fileURLToPath(import.meta.url);\nconst __dirname = _path.dirname(__filename);"
@@ -54,37 +58,37 @@
           {
             "input": "packages/linting-tools",
             "glob": "bin/**/*",
-            "output": "."
+            "output": "/"
           },
           {
             "input": "packages/linting-tools/src",
             "glob": "alex/**/.{alexrc,alexignore}",
-            "output": "."
+            "output": "/"
           },
           {
             "input": "packages/linting-tools/src",
             "glob": "biome/biome.json",
-            "output": "."
+            "output": "/"
           },
           {
             "input": "packages/linting-tools/src",
             "glob": "cspell/**/dictionary.txt",
-            "output": "."
+            "output": "/"
           },
           {
             "input": "packages/linting-tools/src",
             "glob": "cspell/**/*.json",
-            "output": "."
+            "output": "/"
           },
           {
             "input": "packages/linting-tools/src",
             "glob": "prettier/**/*.*",
-            "output": "."
+            "output": "/"
           },
           {
             "input": "packages/linting-tools/src",
             "glob": "tsconfig/**/*.*",
-            "output": "."
+            "output": "/"
           }
         ]
       }
@@ -92,5 +96,8 @@
     "lint": {},
     "test": {}
   },
-  "tags": ["type:util", "scope:tools"]
+  "tags": [
+    "type:util",
+    "scope:tools"
+  ]
 }
