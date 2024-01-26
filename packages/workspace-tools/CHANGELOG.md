@@ -1,3 +1,15 @@
+## 1.49.23 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved issue with providing getConfig function to defaulter ([e251eed9](https://github.com/storm-software/storm-ops/commit/e251eed9))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.22 (2024-01-25)
 
 
