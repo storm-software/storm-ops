@@ -1,3 +1,15 @@
+## 1.33.2 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **linting-tools:** Ensure assets are added to package root ([66881bd3](https://github.com/storm-software/storm-ops/commit/66881bd3))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
