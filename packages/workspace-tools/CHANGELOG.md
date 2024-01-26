@@ -1,3 +1,15 @@
+## 1.49.26 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Moved the tsup logging to separate function ([d3c78bb6](https://github.com/storm-software/storm-ops/commit/d3c78bb6))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.25 (2024-01-26)
 
 
