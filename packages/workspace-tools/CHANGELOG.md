@@ -1,3 +1,15 @@
+## 1.49.25 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Moved the tsup config logging ([451d4fcc](https://github.com/storm-software/storm-ops/commit/451d4fcc))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.24 (2024-01-26)
 
 
