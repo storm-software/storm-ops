@@ -43,9 +43,9 @@ const applyDefaultOptions = (options: TsupBrowserExecutorSchema): TsupBrowserExe
     ...baseApplyDefaultOptions({
       plugins: [],
       ...options,
-      platform: "browser",
-      getConfig: browserConfig
-    })
+      platform: "browser"
+    }),
+    getConfig: browserConfig
   };
 };
 

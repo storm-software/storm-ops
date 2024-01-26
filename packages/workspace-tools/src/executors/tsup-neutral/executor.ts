@@ -44,9 +44,9 @@ const applyDefaultOptions = (options: TsupNeutralExecutorSchema): TsupNeutralExe
     ...baseApplyDefaultOptions({
       plugins: [],
       ...options,
-      platform: "neutral",
-      getConfig: neutralConfig
-    })
+      platform: "neutral"
+    }),
+    getConfig: neutralConfig
   } as TsupNeutralExecutorSchema;
 };
 

@@ -47,10 +47,10 @@ const applyDefaultOptions = (options: TsupNodeExecutorSchema): TsupNodeExecutorS
     ...baseApplyDefaultOptions({
       plugins: [],
       ...options,
-      platform: "node",
-      getConfig: nodeConfig
+      platform: "node"
     }),
-    transports: ["pino-pretty", "pino-loki"]
+    transports: ["pino-pretty", "pino-loki"],
+    getConfig: nodeConfig
   };
 };
 
