@@ -1,3 +1,15 @@
+## 1.32.3 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved issue with determining the external dependencies ([b436cea7](https://github.com/storm-software/storm-ops/commit/b436cea7))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
