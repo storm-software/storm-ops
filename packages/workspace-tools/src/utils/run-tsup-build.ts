@@ -128,10 +128,6 @@ ${options.banner}\n
   if (options.getConfig) {
     writeInfo(config, "⚡ Running the Build process");
 
-    /*const getConfigFns = _isFunction(options.getConfig)
-      ? [options.getConfig]
-      : Object.keys(options.getConfig).map((key) => options.getConfig[key]);*/
-
     const getConfigFns = [options.getConfig];
     const tsupConfig = defineConfig(
       getConfigFns.map((getConfigFn) =>
@@ -194,22 +190,25 @@ const build = async (options: Options | Options[], config?: StormConfig) => {
   if (Array.isArray(options)) {
     await Promise.all(options.map((buildOptions) => build(buildOptions, config)));
   } else {
+    let tsupOptions = options;
+    if (_isFunction(tsupOptions)) {
+      tsupOptions = await Promise.resolve(tsupOptions({}));
+    }
+
     writeDebug(
       config,
-      `
-
-⚙️  Tsup Build options:
+      `⚙️  Tsup Build options:
 ${
-  _isFunction(options)
-    ? Object.keys(options)
+  _isFunction(tsupOptions)
+    ? Object.keys(tsupOptions)
         .map(
           (key) =>
             `${key}: ${
-              !options[key] || _isPrimitive(options[key])
-                ? options[key]
-                : _isFunction(options[key])
+              !tsupOptions[key] || _isPrimitive(tsupOptions[key])
+                ? tsupOptions[key]
+                : _isFunction(tsupOptions[key])
                   ? "<function>"
-                  : JSON.stringify(options[key])
+                  : JSON.stringify(tsupOptions[key])
             }`
         )
         .join("\n")
@@ -218,7 +217,7 @@ ${
 `
     );
 
-    await tsup(options);
+    await tsup(tsupOptions);
   }
 };
 
