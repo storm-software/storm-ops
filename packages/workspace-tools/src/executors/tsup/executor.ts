@@ -201,7 +201,7 @@ ${Object.keys(options)
     context.projectName,
     context.projectGraph
   )) {
-    const packageConfig = thirdPartyDependency.node.data as PackageConfiguration;
+    const packageConfig = thirdPartyDependency?.node?.data as PackageConfiguration;
     if (
       packageConfig?.packageName &&
       config?.externalPackagePatterns?.some((pattern) =>
@@ -290,7 +290,7 @@ ${externalDependencies
 
     packageJson.dependencies = undefined;
     for (const externalDependency of externalDependencies) {
-      const packageConfig = externalDependency.node.data as PackageConfiguration;
+      const packageConfig = externalDependency?.node?.data as PackageConfiguration;
       if (
         packageConfig?.packageName &&
         !!(projectGraph.externalNodes[externalDependency.node.name]?.type === "npm")
