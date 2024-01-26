@@ -1,3 +1,15 @@
+## 1.49.29 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added `entry` options to the tsup build ([b8cb9249](https://github.com/storm-software/storm-ops/commit/b8cb9249))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.28 (2024-01-26)
 
 
