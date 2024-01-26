@@ -120,6 +120,12 @@ export const StormConfigSchema = z
       .describe("An indicator specifying if the current environment is a CI environment"),
     workspaceRoot: z.string().trim().optional().describe("The root directory of the workspace"),
     packageDirectory: z.string().trim().optional().describe("The root directory of the package"),
+    externalPackagePatterns: z
+      .array(z.string())
+      .default([])
+      .describe(
+        "The build will use these package patterns to determine if they should be external to the bundle"
+      ),
     buildDirectory: z
       .string()
       .trim()

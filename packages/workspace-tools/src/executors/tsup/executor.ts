@@ -197,17 +197,22 @@ ${Object.keys(options)
     }, options.external);
   }
 
-  if (options.bundle === false) {
-    for (const thirdPartyDependency of getExternalDependencies(
-      context.projectName,
-      context.projectGraph
-    )) {
-      const packageConfig = thirdPartyDependency.node.data as PackageConfiguration;
-      if (packageConfig?.packageName) {
-        options.external.push(packageConfig.packageName);
-        if (!packageJson?.devDependencies?.[packageConfig.packageName]) {
-          externalDependencies.push(thirdPartyDependency);
-        }
+  for (const thirdPartyDependency of getExternalDependencies(
+    context.projectName,
+    context.projectGraph
+  )) {
+    const packageConfig = thirdPartyDependency.node.data as PackageConfiguration;
+    if (
+      packageConfig?.packageName &&
+      !config?.externalPackagePatterns?.some((pattern) =>
+        pattern.includes(packageConfig.packageName)
+      ) &&
+      !externalDependencies?.some((externalDependency) =>
+        externalDependency.name.includes(packageConfig.packageName)
+      )
+    ) {
+      if (!packageJson?.devDependencies?.[packageConfig.packageName] || !packageConfig.hash) {
+        externalDependencies.push(thirdPartyDependency);
       }
     }
   }
@@ -302,6 +307,10 @@ ${externalDependencies
           packageJson.dependencies[packageName] = projectGraph.nodes[externalDependency.node.name]
             ? "latest"
             : version;
+        }
+
+        if (!options.external.includes(packageName)) {
+          options.external.push(packageName);
         }
       }
     }
