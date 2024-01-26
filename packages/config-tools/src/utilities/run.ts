@@ -24,7 +24,6 @@ export const run = (config: StormConfig, command: string, cwd: string = config.w
       FORCE_COLOR: "true"
     },
     stdio: "inherit",
-    stderr: "inherit",
     maxBuffer: LARGE_BUFFER,
     killSignal: "SIGTERM"
   });
