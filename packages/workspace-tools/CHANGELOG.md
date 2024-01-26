@@ -1,3 +1,15 @@
+## 1.49.24 (2024-01-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Improvements to options printing process ([87342329](https://github.com/storm-software/storm-ops/commit/87342329))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.49.23 (2024-01-26)
 
 
