@@ -139,30 +139,9 @@ ${options.banner}\n
       )
     );
 
-    writeDebug(
-      config,
-      `⚙️  Build options:
-  ${
-    _isFunction(tsupConfig)
-      ? Object.keys(tsupConfig)
-          .map(
-            (key) =>
-              `${key}: ${
-                !tsupConfig[key] || _isPrimitive(tsupConfig[key])
-                  ? tsupConfig[key]
-                  : _isFunction(tsupConfig[key])
-                    ? "<function>"
-                    : JSON.stringify(tsupConfig[key])
-              }`
-          )
-          .join("\n")
-      : "<function>"
-  }
-  `
-    );
-
     if (_isFunction(tsupConfig)) {
-      await build(await Promise.resolve(tsupConfig({})), config);
+      const tsupOptions = await Promise.resolve(tsupConfig({}));
+      await build(tsupOptions, config);
     } else {
       await build(tsupConfig, config);
     }
@@ -215,9 +194,29 @@ const build = async (options: Options | Options[], config?: StormConfig) => {
   if (Array.isArray(options)) {
     await Promise.all(options.map((buildOptions) => build(buildOptions, config)));
   } else {
-    if (getLogLevel(config?.logLevel) >= LogLevel.TRACE && !options.silent) {
-      console.log("⚙️  Tsup build config: \n", options, "\n");
-    }
+    writeDebug(
+      config,
+      `
+
+⚙️  Tsup Build options:
+${
+  _isFunction(options)
+    ? Object.keys(options)
+        .map(
+          (key) =>
+            `${key}: ${
+              !options[key] || _isPrimitive(options[key])
+                ? options[key]
+                : _isFunction(options[key])
+                  ? "<function>"
+                  : JSON.stringify(options[key])
+            }`
+        )
+        .join("\n")
+    : "<function>"
+}
+`
+    );
 
     await tsup(options);
   }
