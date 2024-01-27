@@ -91,7 +91,7 @@
     "check-dependency-version-consistency": "4.1.0",
     "child_process": "1.0.2",
     "commander": "11.1.0",
-    "cspell": "7.3.9",
+    "cspell": "8.3.2",
     "dpdm": "3.14.0",
     "eslint": "8.56.0",
     "p-limit": "4.0.0",
