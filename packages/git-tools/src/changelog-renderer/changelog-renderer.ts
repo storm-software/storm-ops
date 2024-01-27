@@ -83,7 +83,7 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
           `${await createVersionTitle(
             releaseVersion,
             changelogRenderOptions
-          )}\n\n${entryWhenNoChanges}`,
+          )}${entryWhenNoChanges}`,
           ""
         );
       }
