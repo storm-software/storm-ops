@@ -1,3 +1,15 @@
+## 0.4.2 (2024-01-27)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Ensure all packages are built during workflow ([c5ae9b51](https://github.com/storm-software/storm-ops/commit/c5ae9b51))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.1 (2024-01-27)
 
 
