@@ -83,7 +83,7 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
           `${await createVersionTitle(
             releaseVersion,
             changelogRenderOptions
-          )}\n\n${entryWhenNoChanges}`,
+          )}${entryWhenNoChanges}`,
           ""
         );
       }
@@ -152,7 +152,7 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
             changelogRenderOptions,
             project,
             projectGraph.nodes[project].data
-          )}\n\n${entryWhenNoChanges}`,
+          )}${entryWhenNoChanges}`,
           ""
         );
       }
@@ -216,7 +216,11 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
         .split(" ")
         .map((p) => p.trim())
         .join(" ");
-      if (!name || name.includes("[bot]")) {
+      if (
+        !name ||
+        name.includes("[bot]") ||
+        name.toLowerCase() === process.env.STORM_WORKER?.toLowerCase()
+      ) {
         continue;
       }
 
