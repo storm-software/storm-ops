@@ -99,7 +99,7 @@ jobs:
         run: chmod a=rwx dist/packages/create-storm-workspace/package.json
 
       - name: Build repository packages
-        run: pnpm nx affected -t build --parallel=5 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
+        run: pnpm nx affected -t build --parallel=5
 
       #- name: Run Tests
       #  uses: nick-fields/retry@v2.8.3

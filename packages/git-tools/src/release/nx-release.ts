@@ -50,7 +50,7 @@ export const runRelease = async (
 
   const { workspaceVersion, projectsVersionData } = await releaseVersion({
     dryRun: !!options.dryRun,
-    verbose: !config.ci,
+    verbose: true,
     preid: config.preMajor ? "next" : undefined,
     stageChanges: true,
     gitCommit: false
@@ -62,9 +62,9 @@ export const runRelease = async (
     version: nxReleaseConfig.projectsRelationship !== "fixed" ? undefined : workspaceVersion,
     versionData: projectsVersionData,
     dryRun: !!options.dryRun,
-    verbose: !config.ci,
-    /*to: options.head,
-    from: options.base,*/
+    verbose: true,
+    to: options.head ?? process.env.NX_HEAD,
+    from: options.base ?? process.env.NX_BASE,
     gitRemote: "origin",
     gitCommit: true,
     gitCommitMessage: `chore(${
