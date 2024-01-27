@@ -49,6 +49,7 @@ jobs:
           git config user.email "${{ env.STORM_WORKER }}@users.noreply.github.com"
           git config lfs.allowincompletepush true
           npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+        shell: bash
 
       - name: Get appropriate base and head commits for `nx affected` commands
         uses: nrwl/nx-set-shas@v4
@@ -59,6 +60,7 @@ jobs:
         run: |
           echo "BASE: ${{ env.NX_BASE }}"
           echo "HEAD: ${{ env.NX_HEAD }}"
+        shell: bash
 
       - name: Build repository packages
         run: pnpm nx run-many -t build --parallel=5
