@@ -63,8 +63,8 @@ export const runRelease = async (
     versionData: projectsVersionData,
     dryRun: !!options.dryRun,
     verbose: !config.ci,
-    to: options.head,
-    from: options.base,
+    /*to: options.head,
+    from: options.base,*/
     gitRemote: "origin",
     gitCommit: true,
     gitCommitMessage: `chore(${
