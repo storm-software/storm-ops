@@ -53,7 +53,7 @@ export const runRelease = async (
     verbose: true,
     preid: config.preMajor ? "next" : undefined,
     stageChanges: true,
-    gitCommit: true
+    gitCommit: false
   });
 
   writeInfo(config, "Generating the release changelog...");
