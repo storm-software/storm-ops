@@ -152,7 +152,7 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
             changelogRenderOptions,
             project,
             projectGraph.nodes[project].data
-          )}\n\n${entryWhenNoChanges}`,
+          )}${entryWhenNoChanges}`,
           ""
         );
       }
