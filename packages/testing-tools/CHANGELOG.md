@@ -1,3 +1,15 @@
+## 1.28.2 (2024-01-27)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Prevent extra newlines added to changelog files ([0f7091f2](https://github.com/storm-software/storm-ops/commit/0f7091f2))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 ## 1.26.0 (2024-01-21)
 
