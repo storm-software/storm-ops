@@ -1,3 +1,15 @@
+## 1.32.3 (2024-01-27)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Added back newlines to the commit message ([114a3d71](https://github.com/storm-software/storm-ops/commit/114a3d71))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
