@@ -52,7 +52,6 @@
     "biome:lint": "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true",
     "biome:format": "npx biome format --write  --no-errors-on-unmatched --files-ignore-unknown=true",
     "help": "nx help",
-    "preinstall": "node ./dist/packages/git-tools/bin/pre-install.js",
     "lint": "node ./dist/packages/linting-tools/bin/lint.js all --skip-cspell --alex-config=\"./dist/packages/linting-tools/alex/.alexrc\" --alex-config=\"dist/packages/linting-tools/alex/.alexignore\"",
     "local-registry": "nx local-registry @storm-software/storm-ops",
     "nx": "nx",
