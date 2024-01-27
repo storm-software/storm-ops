@@ -71,7 +71,7 @@ export const runRelease = async (
       options.project ? options.project : "monorepo"
     }): Releasing monorepo packages ${Object.keys(projectsVersionData)
       .map((key) => `${key} v${projectsVersionData[key].newVersion}`)
-      .join(", ")} [skip ci]`,
+      .join(", ")}`,
     workspaceChangelog: nxReleaseConfig.projectsRelationship === "fixed"
   });
 
