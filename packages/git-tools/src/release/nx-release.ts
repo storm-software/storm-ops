@@ -69,7 +69,7 @@ export const runRelease = async (
     gitCommit: true,
     gitCommitMessage: `chore(${
       options.project ? options.project : "monorepo"
-    }): Release latest workspace packages`,
+    }): Release latest workspace packages [skip ci]`,
     workspaceChangelog: nxReleaseConfig.projectsRelationship === "fixed"
   });
 
