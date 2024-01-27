@@ -1,3 +1,15 @@
+## 1.22.2 (2024-01-27)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Resolved issue with stdio prefernce in `run` function ([81ac8a91](https://github.com/storm-software/storm-ops/commit/81ac8a91))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
