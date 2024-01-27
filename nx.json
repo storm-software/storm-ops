@@ -142,7 +142,7 @@
       }
     },
     "git": {
-      "commit": false
+      "commit": true
     }
   },
   "pluginsConfig": {
