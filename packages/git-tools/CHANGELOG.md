@@ -1,3 +1,15 @@
+## 1.32.0 (2024-01-27)
+
+
+### 🚀 Features
+
+- **config-tools:** Added the `preid` config option and removed `preMajor` ([0d8756dc](https://github.com/storm-software/storm-ops/commit/0d8756dc))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.31.2 (2024-01-26)
 
 
