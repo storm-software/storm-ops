@@ -33,7 +33,7 @@
   "typings": "./index.d.ts",
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
-    "@microsoft/api-extractor": "7.38.3",
+    "@microsoft/api-extractor": "7.38.5",
     "@nx/devkit": "17.2.8",
     "@nx/esbuild": "17.2.8",
     "@nxkit/style-dictionary": "4.0.0",
@@ -50,15 +50,15 @@
     "prettier-plugin-packagejson": "2.4.9",
     "resolve": "1.22.8",
     "resolve-from": "5.0.0",
-    "rollup": "4.5.0",
+    "rollup": "4.5.2",
     "rollup-plugin-dts": "6.1.0",
-    "style-dictionary": "3.9.1",
+    "style-dictionary": "3.9.2",
     "terser": "5.24.0",
     "tslib": "2.6.2",
     "tsup": "8.0.0",
     "typia": "5.4.1",
     "zod": "3.22.4",
-    "zod-to-json-schema": "3.22.1"
+    "zod-to-json-schema": "3.22.3"
   },
   "publishConfig": {
     "access": "public"
