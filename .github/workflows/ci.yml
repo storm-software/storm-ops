@@ -61,7 +61,7 @@ jobs:
           echo "HEAD: ${{ env.NX_HEAD }}"
 
       - name: Build repository packages
-        run: pnpm nx run-many -t build --parallel=5
+        run: pnpm build:all
 
       - name: Add permissions to linting tools
         run: chmod a=rwx dist/packages/linting-tools/bin/lint.js
@@ -97,7 +97,7 @@ jobs:
         run: chmod a=rwx dist/packages/create-storm-workspace/package.json
 
       - name: Build repository packages
-        run: pnpm nx affected -t build --parallel=5
+        run: pnpm nx affected -t build --parallel=5 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
 
       #- name: Run Tests
       #  uses: nick-fields/retry@v2.8.3
