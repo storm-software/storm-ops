@@ -37,7 +37,7 @@
     "@cspell/dict-aws": "4.0.0",
     "@cspell/dict-bash": "4.1.2",
     "@cspell/dict-companies": "3.0.27",
-    "@cspell/dict-cpp": "5.0.9",
+    "@cspell/dict-cpp": "5.1.1",
     "@cspell/dict-cryptocurrencies": "4.0.0",
     "@cspell/dict-csharp": "4.0.2",
     "@cspell/dict-css": "4.0.12",
@@ -93,7 +93,7 @@
     "commander": "11.1.0",
     "cspell": "7.3.9",
     "dpdm": "3.14.0",
-    "eslint": "8.53.0",
+    "eslint": "8.56.0",
     "p-limit": "4.0.0",
     "prettier-plugin-tailwindcss": "^0.5.9",
     "rehype-parse": "9.0.0",
@@ -111,7 +111,7 @@
     "supports-color": "9.4.0",
     "unified": "11.0.4",
     "unified-diff": "5.0.0",
-    "unified-engine": "11.1.1",
+    "unified-engine": "11.2.0",
     "vfile-reporter": "8.1.0"
   },
   "devDependencies": {
