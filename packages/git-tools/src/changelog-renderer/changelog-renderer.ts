@@ -216,7 +216,11 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
         .split(" ")
         .map((p) => p.trim())
         .join(" ");
-      if (!name || name.includes("[bot]")) {
+      if (
+        !name ||
+        name.includes("[bot]") ||
+        name?.toLowerCase() === process.env.STORM_WORKER?.toLowerCase()
+      ) {
         continue;
       }
 
@@ -243,6 +247,7 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
                 break;
               }
             }
+
             // Look up any other emails against the ungh.cc API
             const { data } = await axios
               .get<any, { data?: { user?: { username: string } } }>(
