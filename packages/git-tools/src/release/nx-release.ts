@@ -69,9 +69,7 @@ export const runRelease = async (
     gitCommit: true,
     gitCommitMessage: `chore(${
       options.project ? options.project : "monorepo"
-    }): Releasing monorepo packages ${Object.keys(projectsVersionData)
-      .map((key) => `${key} v${projectsVersionData[key].newVersion}`)
-      .join(", ")}`,
+    }): Release workspace packages`,
     workspaceChangelog: nxReleaseConfig.projectsRelationship === "fixed"
   });
 
