@@ -1,3 +1,15 @@
+## 1.32.4 (2024-01-27)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Added skip ci to release commit message ([2e808a18](https://github.com/storm-software/storm-ops/commit/2e808a18))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.32.3 (2024-01-27)
 
 
