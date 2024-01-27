@@ -2,7 +2,6 @@ module.exports = {
   name: "storm-ops",
   namespace: "storm-software",
   organization: "storm-software",
-  preMajor: false,
   ci: true,
   owner: "@storm-software/development",
   worker: "stormie-bot",

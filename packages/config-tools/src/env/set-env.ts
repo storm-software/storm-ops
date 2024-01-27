@@ -141,8 +141,8 @@ export const setConfigEnv = (config: StormConfig) => {
   if (config.branch) {
     process.env[`${prefix}BRANCH`] = config.branch;
   }
-  if (config.preMajor) {
-    process.env[`${prefix}PRE_MAJOR`] = String(config.preMajor);
+  if (config.preid) {
+    process.env[`${prefix}PRE_ID`] = String(config.preid);
   }
   if (config.logLevel) {
     process.env[`${prefix}LOG_LEVEL`] = String(config.logLevel);

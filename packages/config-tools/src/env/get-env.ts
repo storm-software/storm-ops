@@ -72,10 +72,7 @@ export const getConfigEnv = (): Partial<StormConfig> => {
     },
     repository: process.env[`${prefix}REPOSITORY`],
     branch: process.env[`${prefix}BRANCH`],
-    preMajor:
-      process.env[`${prefix}PRE_MAJOR`] !== undefined
-        ? Boolean(process.env[`${prefix}PRE_MAJOR`])
-        : undefined,
+    preid: process.env[`${prefix}PRE_ID`],
     logLevel:
       process.env[`${prefix}LOG_LEVEL`] !== null && process.env[`${prefix}LOG_LEVEL`] !== undefined
         ? Number.isSafeInteger(Number.parseInt(process.env[`${prefix}LOG_LEVEL`]))

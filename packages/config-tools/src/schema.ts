@@ -94,10 +94,7 @@ export const StormConfigSchema = z
       .default("https://stormsoftware.org")
       .describe("The homepage of the workspace"),
     branch: z.string().trim().default("main").describe("The branch of the workspace"),
-    preMajor: z
-      .boolean()
-      .default(false)
-      .describe("An indicator specifying if the package is still in it's pre-major version"),
+    preid: z.string().optional().describe("A tag specifying the version pre-release identifier"),
     owner: z
       .string()
       .trim()

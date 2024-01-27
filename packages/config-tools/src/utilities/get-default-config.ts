@@ -25,7 +25,6 @@ export const DEFAULT_STORM_CONFIG: StormConfig = {
   namespace: "storm-software",
   license: "Apache License 2.0",
   homepage: "https://stormsoftware.org",
-  preMajor: false,
   owner: "@storm-software/development",
   worker: "stormie-bot",
   runtimeDirectory: "node_modules/.storm",

@@ -51,7 +51,7 @@ export const runRelease = async (
   const { workspaceVersion, projectsVersionData } = await releaseVersion({
     dryRun: !!options.dryRun,
     verbose: true,
-    preid: config.preMajor ? "next" : undefined,
+    preid: config.preid,
     stageChanges: true,
     gitCommit: false
   });
