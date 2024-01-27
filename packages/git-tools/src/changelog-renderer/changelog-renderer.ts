@@ -219,7 +219,7 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
       if (
         !name ||
         name.includes("[bot]") ||
-        name?.toLowerCase() === process.env.STORM_WORKER?.toLowerCase()
+        name.toLowerCase() === process.env.STORM_WORKER?.toLowerCase()
       ) {
         continue;
       }
