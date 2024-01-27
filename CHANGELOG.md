@@ -1,3 +1,15 @@
+## 0.4.1 (2024-01-27)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Removed the duplicate nodejs from workflow setup ([6a452f4e](https://github.com/storm-software/storm-ops/commit/6a452f4e))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.0 (2024-01-27)
 
 
