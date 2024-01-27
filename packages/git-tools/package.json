@@ -64,7 +64,7 @@
   },
   "devDependencies": {
     "@nx/devkit": "17.2.8",
-    "@types/inquirer": "9.0.6",
+    "@types/inquirer": "9.0.7",
     "@types/prettier": "3.0.0",
     "nx": "17.2.8"
   },
