@@ -43,59 +43,73 @@
           {
             "input": "packages/linting-tools",
             "glob": "README.md",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "packages/linting-tools",
             "glob": "CHANGELOG.md",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "",
             "glob": "LICENSE",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "packages/linting-tools",
             "glob": "bin/**/*",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "packages/linting-tools/src",
             "glob": "alex/**/.{alexrc,alexignore}",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "packages/linting-tools/src",
             "glob": "biome/biome.json",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "packages/linting-tools/src",
             "glob": "cspell/**/dictionary.txt",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "packages/linting-tools/src",
             "glob": "cspell/**/*.json",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "packages/linting-tools/src",
             "glob": "prettier/**/*.*",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "packages/linting-tools/src",
             "glob": "tsconfig/**/*.*",
-            "output": "/"
+            "output": "."
           }
         ]
       }
     },
     "lint": {},
     "test": {},
-    "nx-release-publish": {}
+    "nx-release-publish": {
+      "cache": false,
+      "inputs": [
+        "default",
+        "^production"
+      ],
+      "dependsOn": [
+        "^build"
+      ],
+      "executor": "@storm-software/workspace-tools:npm-publish",
+      "options": {
+        "packageRoot": "dist/{projectRoot}",
+        "registry": "https://registry.npmjs.org/"
+      }
+    }
   },
   "tags": [
     "type:util",
