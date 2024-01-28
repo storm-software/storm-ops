@@ -1,3 +1,15 @@
+## 1.32.5 (2024-01-28)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Reformat display message ([7ec1ff23](https://github.com/storm-software/storm-ops/commit/7ec1ff23))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.32.4 (2024-01-27)
 
 
