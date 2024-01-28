@@ -1,3 +1,15 @@
+## 1.32.6 (2024-01-28)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Correct the asset output paths ([7cf40f6d](https://github.com/storm-software/storm-ops/commit/7cf40f6d))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.32.5 (2024-01-28)
 
 
