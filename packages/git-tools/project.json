@@ -56,47 +56,47 @@
           {
             "input": "packages/git-tools",
             "glob": "README.md",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "packages/git-tools",
             "glob": "CHANGELOG.md",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "",
             "glob": "LICENSE",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "packages/git-tools",
             "glob": "bin/**/{*,*.*}",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "packages/git-tools/src",
             "glob": "lint-staged/**/*.cjs",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "packages/git-tools/src",
             "glob": "lefthook/lefthook.yml",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "packages/git-tools/src",
             "glob": "prettier/.prettierignore_staged",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "packages/git-tools/src",
             "glob": "readme/templates/**/*.*",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "packages/git-tools/src/commitlint",
             "glob": "commitlint.config.cjs",
-            "output": "/"
+            "output": "."
           }
         ]
       }
