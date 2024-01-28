@@ -56,7 +56,7 @@ export const runRelease = async (
     gitCommit: false
   });
 
-  writeInfo(config, "Generating the release changelog...");
+  writeInfo(config, "Generating the release changelog files...");
 
   await releaseChangelog({
     version: nxReleaseConfig.projectsRelationship !== "fixed" ? undefined : workspaceVersion,
