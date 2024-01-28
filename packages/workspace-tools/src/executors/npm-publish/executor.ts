@@ -1,18 +1,8 @@
 import { type ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devkit";
 import { execSync } from "node:child_process";
-import { type ProcessEnv, npmRunPathEnv } from "npm-run-path";
 import type { NpmPublishExecutorSchema } from "./schema";
 import chalk = require("chalk");
 import { LARGE_BUFFER } from "@storm-software/config-tools";
-
-function processEnv() {
-  const env = {
-    ...process.env,
-    FORCE_COLOR: "true"
-  } as ProcessEnv;
-
-  return npmRunPathEnv({ env });
-}
 
 export default function runExecutor(options: NpmPublishExecutorSchema, context: ExecutorContext) {
   /**
@@ -79,7 +69,10 @@ export default function runExecutor(options: NpmPublishExecutorSchema, context: 
     const currentVersion = projectPackageJson.version;
     try {
       const result = execSync(npmViewCommandSegments.join(" "), {
-        env: processEnv(),
+        env: {
+          ...process.env,
+          FORCE_COLOR: "true"
+        },
         cwd: packageRoot,
         stdio: ["ignore", "pipe", "pipe"]
       });
@@ -101,7 +94,10 @@ export default function runExecutor(options: NpmPublishExecutorSchema, context: 
             execSync(
               `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${registry}`,
               {
-                env: processEnv(),
+                env: {
+                  ...process.env,
+                  FORCE_COLOR: "true"
+                },
                 cwd: packageRoot,
                 stdio: "ignore"
               }
@@ -192,7 +188,10 @@ export default function runExecutor(options: NpmPublishExecutorSchema, context: 
   try {
     const output = execSync(npmPublishCommandSegments.join(" "), {
       maxBuffer: LARGE_BUFFER,
-      env: processEnv(),
+      env: {
+        ...process.env,
+        FORCE_COLOR: "true"
+      },
       cwd: packageRoot,
       stdio: ["ignore", "pipe", "pipe"]
     });
