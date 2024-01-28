@@ -1,3 +1,15 @@
+## 1.13.7 (2024-01-28)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added the nx-release-publish task to project target ([cb6d7c17](https://github.com/storm-software/storm-ops/commit/cb6d7c17))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
