@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "main": "packages/config-tools/src/index.ts",
         "additionalEntryPoints": [
@@ -24,7 +26,10 @@
         "skipTypeCheck": true,
         "metafile": true,
         "minify": true,
-        "format": ["cjs", "esm"],
+        "format": [
+          "cjs",
+          "esm"
+        ],
         "assets": [
           {
             "input": "./packages/config-tools",
@@ -55,6 +60,7 @@
       }
     },
     "lint": {},
-    "test": {}
+    "test": {},
+    "nx-release-publish": {}
   }
 }

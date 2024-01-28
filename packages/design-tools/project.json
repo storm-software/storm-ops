@@ -6,13 +6,17 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/design-tools",
         "main": "packages/design-tools/src/index.ts",
         "tsConfig": "packages/design-tools/tsconfig.lib.json",
         "generatePackageJson": true,
-        "format": ["cjs"],
+        "format": [
+          "cjs"
+        ],
         "assets": [
           {
             "input": "packages/design-tools",
@@ -33,7 +37,8 @@
       }
     },
     "lint": {},
-    "test": {}
+    "test": {},
+    "nx-release-publish": {}
   },
   "tags": []
 }

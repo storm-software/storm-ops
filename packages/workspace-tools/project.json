@@ -111,7 +111,8 @@
       }
     },
     "lint": {},
-    "test": {}
+    "test": {},
+    "nx-release-publish": {}
   },
   "tags": [
     "type:util",
