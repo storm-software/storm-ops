@@ -1,5 +1,5 @@
-import { execaCommandSync } from "execa";
 import type { StormConfig } from "../types";
+const { execaCommandSync } = require("execa");
 
 export const LARGE_BUFFER = 1024 * 1000000;
 
