@@ -85,7 +85,11 @@ export const runTsupBuild = async (
   const getConfigOptions = {
     ...options,
     main: context.main,
-    entry: { [removeExtension(context.main).replace(context.sourceRoot, "")]: context.main },
+    entry: {
+      [removeExtension(context.main)
+        .replace(config.workspaceRoot, "")
+        .replace(context.sourceRoot, "")]: context.main
+    },
     define: {
       __STORM_CONFIG: JSON.stringify(stormEnv)
     },
@@ -163,7 +167,11 @@ function getNormalizedTsConfig(
       ...config,
       compilerOptions: {
         ...config.compilerOptions,
-        entry: { [removeExtension(context.main).replace(context.sourceRoot, "")]: context.main },
+        entry: {
+          [removeExtension(context.main)
+            .replace(workspaceRoot, "")
+            .replace(context.sourceRoot, "")]: context.main
+        },
         outDir: outputPath,
         rootDir: workspaceRoot,
         baseUrl: workspaceRoot,
