@@ -1,3 +1,21 @@
+## 1.52.12 (2024-01-29)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added full publish fields to target ([921dc2b6](https://github.com/storm-software/storm-ops/commit/921dc2b6))
+
+- **workspace-tools:** Resolved issue with npm publish executor build ([2e3cbaf9](https://github.com/storm-software/storm-ops/commit/2e3cbaf9))
+
+- **workspace-tools:** Removed unused dependency on execa ([ef923229](https://github.com/storm-software/storm-ops/commit/ef923229))
+
+- **workspace-tools:** Ensure a promise is returned back from the npm publish executor ([c2c2616c](https://github.com/storm-software/storm-ops/commit/c2c2616c))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.52.11 (2024-01-29)
 
 

@@ -1,3 +1,15 @@
+## 1.34.12 (2024-01-29)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added full publish fields to target ([921dc2b6](https://github.com/storm-software/storm-ops/commit/921dc2b6))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.34.11 (2024-01-29)
 
 
