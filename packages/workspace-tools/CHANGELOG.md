@@ -1,3 +1,15 @@
+## 1.52.18 (2024-01-29)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved issues with build entry path ([06b5d197](https://github.com/storm-software/storm-ops/commit/06b5d197))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.52.17 (2024-01-29)
 
 
