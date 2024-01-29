@@ -1,3 +1,15 @@
+## 1.34.16 (2024-01-29)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Added package.json to the biome ignore list ([ac07c8a5](https://github.com/storm-software/storm-ops/commit/ac07c8a5))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
