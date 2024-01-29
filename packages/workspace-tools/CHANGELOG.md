@@ -1,3 +1,15 @@
+## 1.52.15 (2024-01-29)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Remove the workspace root from the entry path ([b3916264](https://github.com/storm-software/storm-ops/commit/b3916264))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.52.13 (2024-01-29)
 
 
