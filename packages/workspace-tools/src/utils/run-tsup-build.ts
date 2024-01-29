@@ -84,7 +84,6 @@ export const runTsupBuild = async (
 
   const getConfigOptions = {
     ...options,
-    main: context.main,
     entry: {
       [removeExtension(context.main)
         .replace(config.workspaceRoot, "")
