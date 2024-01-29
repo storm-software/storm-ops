@@ -2,7 +2,8 @@ import { type ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devki
 import { execSync } from "node:child_process";
 import type { NpmPublishExecutorSchema } from "./schema";
 import chalk = require("chalk");
-import { LARGE_BUFFER } from "@storm-software/config-tools";
+
+const LARGE_BUFFER = 1024 * 1000000;
 
 export default function runExecutor(options: NpmPublishExecutorSchema, context: ExecutorContext) {
   /**
