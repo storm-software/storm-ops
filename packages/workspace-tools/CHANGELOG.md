@@ -1,3 +1,15 @@
+## 1.52.17 (2024-01-29)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update the entry paths passed to tsup ([36a1e839](https://github.com/storm-software/storm-ops/commit/36a1e839))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 ## 1.52.15 (2024-01-29)
