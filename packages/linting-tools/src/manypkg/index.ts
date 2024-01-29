@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { checks } from "@manypkg/cli/src/checks";
-import { Options } from "@manypkg/cli/src/checks/utils";
+import type { Options } from "@manypkg/cli/src/checks/utils";
 import { ExitError } from "@manypkg/cli/src/errors";
 import { npmTagAll } from "@manypkg/cli/src/npm-tag";
 import { runCmd } from "@manypkg/cli/src/run";
 import { upgradeDependency } from "@manypkg/cli/src/upgrade";
 import { install, writePackage } from "@manypkg/cli/src/utils";
-import { Package, Packages, getPackages } from "@manypkg/get-packages";
+import { type Package, type Packages, getPackages } from "@manypkg/get-packages";
 import pLimit from "p-limit";
 import spawn from "spawndamnit";
 
@@ -39,12 +39,7 @@ const runChecks = (
 
     if (check.type === "all") {
       for (const [, workspace] of allWorkspaces) {
-        const errors = check.validate(
-          workspace,
-          allWorkspaces,
-          rootWorkspace,
-          options
-        );
+        const errors = check.validate(workspace, allWorkspaces, rootWorkspace, options);
         if (shouldFix && check.fix !== undefined) {
           for (const error of errors) {
             const output = check.fix(error as any, options) || {
@@ -90,7 +85,7 @@ async function execCmd(args: string[]) {
   const { packages } = await getPackages(process.cwd());
   let highestExitCode = 0;
   await Promise.all(
-    packages.map(pkg => {
+    packages.map((pkg) => {
       return execLimit(async () => {
         const { code } = await spawn(args[0], args.slice(1), {
           cwd: pkg.dir,
@@ -103,11 +98,7 @@ async function execCmd(args: string[]) {
   throw new ExitError(highestExitCode);
 }
 
-export async function runManypkg(
-  manypkgType: string,
-  manypkgArgs: string[],
-  manypkgFix = true
-) {
+export async function runManypkg(manypkgType: string, manypkgArgs: string[], manypkgFix = true) {
   if (manypkgType === "exec") {
     return execCmd(manypkgArgs.slice(0));
   }
@@ -129,9 +120,7 @@ export async function runManypkg(
   }
 
   const { packages, rootPackage, rootDir } = (await getPackages(
-    process.env["STORM_WORKSPACE_ROOT"]
-      ? process.env["STORM_WORKSPACE_ROOT"]
-      : process.cwd()
+    process.env.STORM_WORKSPACE_ROOT ? process.env.STORM_WORKSPACE_ROOT : process.cwd()
   )) as PackagesWithConfig;
 
   const options: Options = {
@@ -139,9 +128,7 @@ export async function runManypkg(
     ...rootPackage?.packageJson.manypkg
   };
 
-  const packagesByName = new Map<string, Package>(
-    packages.map(x => [x.packageJson.name, x])
-  );
+  const packagesByName = new Map<string, Package>(packages.map((x) => [x.packageJson.name, x]));
 
   console.log(`🔍 Checking ${packages.length} packages...`);
   if (rootPackage) {
@@ -156,7 +143,7 @@ export async function runManypkg(
 
   if (manypkgFix) {
     await Promise.all(
-      [...packagesByName].map(async ([_, workspace]) => {
+      [...packagesByName].map(([_, workspace]) => {
         writePackage(workspace);
       })
     );
@@ -170,9 +157,7 @@ export async function runManypkg(
       console.log("🎉 Workspace packages are valid!");
     }
   } else if (hasErrored) {
-    console.info(
-      "⚠️ The above errors may be fixable if the --manypkg-fix flag is used"
-    );
+    console.info("⚠️ The above errors may be fixable if the --manypkg-fix flag is used");
   } else {
     console.log("🎉 Workspace packages are valid!");
   }

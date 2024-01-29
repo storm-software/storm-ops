@@ -6,6 +6,7 @@
   "files": {
     "ignoreUnknown": true,
     "ignore": [
+      "**/package.json/**",
       "**/.wrangler/**",
       "**/tamagui.css",
       "**/workbox*.js",
