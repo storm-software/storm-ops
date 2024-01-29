@@ -1,3 +1,15 @@
+## 1.52.13 (2024-01-29)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Updated `entry` parameter provided to tsup executor ([b97c7388](https://github.com/storm-software/storm-ops/commit/b97c7388))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.52.12 (2024-01-29)
 
 
