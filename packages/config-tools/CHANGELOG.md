@@ -1,3 +1,17 @@
+## 1.23.10 (2024-01-28)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added full publish fields to target ([921dc2b6](https://github.com/storm-software/storm-ops/commit/921dc2b6))
+
+- **config-tools:** Resolved issue with execa import ([457f41e7](https://github.com/storm-software/storm-ops/commit/457f41e7))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.23.9 (2024-01-28)
 
 
