@@ -1,4 +1,4 @@
-name: "CI/CD"
+name: "Build and Release"
 
 on:
   workflow_dispatch:
@@ -115,6 +115,8 @@ jobs:
       - name: Release Library Version Updates
         run: pnpm release --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
         env:
+          NX_BASE: ${{ env.NX_BASE }}
+          NX_HEAD: ${{ env.NX_HEAD }}
           GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
           GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
           GH_TOKEN: ${{ env.GITHUB_TOKEN }}

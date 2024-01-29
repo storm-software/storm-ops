@@ -289,27 +289,29 @@ ${externalDependencies
   if (options.generatePackageJson !== false) {
     const projectGraph = readCachedProjectGraph();
 
-    packageJson.dependencies = undefined;
-    for (const externalDependency of externalDependencies) {
-      const packageConfig = externalDependency?.node?.data as PackageConfiguration;
-      if (
-        packageConfig?.packageName &&
-        !!(projectGraph.externalNodes[externalDependency.node.name]?.type === "npm")
-      ) {
-        const { packageName, version } = packageConfig;
+    if (options.bundle === false) {
+      packageJson.dependencies = undefined;
+      for (const externalDependency of externalDependencies) {
+        const packageConfig = externalDependency?.node?.data as PackageConfiguration;
         if (
-          !workspacePackageJson.dependencies?.[packageName] &&
-          !workspacePackageJson.devDependencies?.[packageName] &&
-          !packageJson?.devDependencies?.[packageName]
+          packageConfig?.packageName &&
+          !!(projectGraph.externalNodes[externalDependency.node.name]?.type === "npm")
         ) {
-          packageJson.dependencies ??= {};
-          packageJson.dependencies[packageName] = projectGraph.nodes[externalDependency.node.name]
-            ? "latest"
-            : version;
-        }
+          const { packageName, version } = packageConfig;
+          if (
+            !workspacePackageJson.dependencies?.[packageName] &&
+            !workspacePackageJson.devDependencies?.[packageName] &&
+            !packageJson?.devDependencies?.[packageName]
+          ) {
+            packageJson.dependencies ??= {};
+            packageJson.dependencies[packageName] = projectGraph.nodes[externalDependency.node.name]
+              ? "latest"
+              : version;
+          }
 
-        if (!options.external.includes(packageName)) {
-          options.external.push(packageName);
+          if (!options.external.includes(packageName)) {
+            options.external.push(packageName);
+          }
         }
       }
     }
