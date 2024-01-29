@@ -1,4 +1,4 @@
-import { dirname } from "node:path";
+import { dirname, sep } from "node:path";
 import { esbuildDecorators } from "@anatine/esbuild-decorators";
 import { joinPathFragments } from "@nx/devkit";
 import { getCustomTrasformersFactory } from "@nx/js/src/executors/tsc/lib/get-custom-transformers-factory";
@@ -84,10 +84,13 @@ export const runTsupBuild = async (
 
   const getConfigOptions = {
     ...options,
+    main: context.main,
     entry: {
-      [removeExtension(context.main)
-        .replace(config.workspaceRoot, "")
-        .replace(context.sourceRoot, "")]: context.main
+      [removeExtension(
+        context.main
+          ?.split(context.main?.includes(sep) ? sep : context.main?.includes("/") ? "/" : "\\")
+          ?.pop()
+      )]: context.main
     },
     define: {
       __STORM_CONFIG: JSON.stringify(stormEnv)
