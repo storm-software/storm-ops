@@ -5,7 +5,10 @@ import chalk = require("chalk");
 
 const LARGE_BUFFER = 1024 * 1000000;
 
-export default function runExecutor(options: NpmPublishExecutorSchema, context: ExecutorContext) {
+export default function runExecutor(
+  options: NpmPublishExecutorSchema,
+  context: ExecutorContext
+): Promise<{ success: boolean }> {
   /**
    * We need to check both the env var and the option because the executor may have been triggered
    * indirectly via dependsOn, in which case the env var will be set, but the option will not.
@@ -27,9 +30,7 @@ export default function runExecutor(options: NpmPublishExecutorSchema, context: 
 
   if (projectPackageJson.private === true) {
     console.warn(`Skipped ${packageTxt}, because it has \`"private": true\` in ${packageJsonPath}`);
-    return {
-      success: true
-    };
+    return new Promise((resolve) => resolve({ success: true }));
   }
 
   const npmPublishCommandSegments = ["npm publish --json"];
@@ -84,9 +85,7 @@ export default function runExecutor(options: NpmPublishExecutorSchema, context: 
         console.warn(
           `Skipped ${packageTxt} because v${currentVersion} already exists in ${registry} with tag "${tag}"`
         );
-        return {
-          success: true
-        };
+        return new Promise((resolve) => resolve({ success: true }));
       }
 
       if (resultJson.versions.includes(currentVersion)) {
@@ -113,9 +112,7 @@ export default function runExecutor(options: NpmPublishExecutorSchema, context: 
               )("[dry-run]")} was set.\n`
             );
           }
-          return {
-            success: true
-          };
+          return new Promise((resolve) => resolve({ success: true }));
         } catch (err) {
           try {
             const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
@@ -143,18 +140,14 @@ export default function runExecutor(options: NpmPublishExecutorSchema, context: 
                 console.error("npm dist-tag add stdout:");
                 console.error(JSON.stringify(stdoutData, null, 2));
               }
-              return {
-                success: false
-              };
+              return new Promise((resolve) => resolve({ success: false }));
             }
           } catch (err) {
             console.error(
               "Something unexpected went wrong when processing the npm dist-tag add output\n",
               err
             );
-            return {
-              success: false
-            };
+            return new Promise((resolve) => resolve({ success: false }));
           }
         }
       }
@@ -175,9 +168,7 @@ export default function runExecutor(options: NpmPublishExecutorSchema, context: 
           "Something unexpected went wrong when checking for existing dist-tags.\n",
           err
         );
-        return {
-          success: false
-        };
+        return new Promise((resolve) => resolve({ success: false }));
       }
     }
   }
@@ -208,9 +199,7 @@ export default function runExecutor(options: NpmPublishExecutorSchema, context: 
       console.log(`Published to ${registry} with tag "${tag}"`);
     }
 
-    return {
-      success: true
-    };
+    return new Promise((resolve) => resolve({ success: true }));
   } catch (err) {
     try {
       const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
@@ -227,17 +216,13 @@ export default function runExecutor(options: NpmPublishExecutorSchema, context: 
         console.error("npm publish stdout:");
         console.error(JSON.stringify(stdoutData, null, 2));
       }
-      return {
-        success: false
-      };
+      return new Promise((resolve) => resolve({ success: false }));
     } catch (err) {
       console.error(
         "Something unexpected went wrong when processing the npm publish output\n",
         err
       );
-      return {
-        success: false
-      };
+      return new Promise((resolve) => resolve({ success: false }));
     }
   }
 }
