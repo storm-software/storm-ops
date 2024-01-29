@@ -1,3 +1,15 @@
+## 1.52.14 (2024-01-29)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved issue with missing ouput path in tsup build ([ff605965](https://github.com/storm-software/storm-ops/commit/ff605965))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.52.13 (2024-01-29)
 
 
