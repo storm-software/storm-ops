@@ -28,6 +28,8 @@ export const DEFAULT_STORM_CONFIG: StormConfig = {
   owner: "@storm-software/development",
   worker: "stormie-bot",
   runtimeDirectory: "node_modules/.storm",
+  cacheDirectory: "node_modules/.cache/storm",
+  skipCache: false,
   packageManager: "npm",
   timezone: "America/New_York",
   locale: "en-US",

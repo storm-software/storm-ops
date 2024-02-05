@@ -81,6 +81,11 @@
             "output": "."
           },
           {
+            "input": "packages/linting-tools/node_modules",
+            "glob": "@cspell/**/cspell-ext.json",
+            "output": "cspell"
+          },
+          {
             "input": "packages/linting-tools/src",
             "glob": "prettier/**/*.*",
             "output": "."

@@ -50,6 +50,11 @@ export const getConfigEnv = (): Partial<StormConfig> => {
     workspaceRoot: process.env[`${prefix}WORKSPACE_ROOT`],
     packageDirectory: process.env[`${prefix}PACKAGE_DIRECTORY`],
     buildDirectory: process.env[`${prefix}BUILD_DIRECTORY`],
+    skipCache:
+      process.env[`${prefix}SKIP_CACHE`] !== undefined
+        ? Boolean(process.env[`${prefix}SKIP_CACHE`])
+        : undefined,
+    cacheDirectory: process.env[`${prefix}CACHE_DIRECTORY`],
     runtimeVersion: process.env[`${prefix}RUNTIME_VERSION`],
     runtimeDirectory: process.env[`${prefix}RUNTIME_DIRECTORY`],
     env: (process.env[`${prefix}ENV`] ??

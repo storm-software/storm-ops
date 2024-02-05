@@ -1,3 +1,4 @@
+import { join } from "node:path";
 import { LogLevel, type StormConfig } from "../types";
 import { getLogLevel } from "../utilities/get-log-level";
 
@@ -97,6 +98,26 @@ export const setConfigEnv = (config: StormConfig) => {
   }
   if (config.buildDirectory) {
     process.env[`${prefix}BUILD_DIRECTORY`] = config.buildDirectory;
+  }
+  if (config.skipCache !== undefined) {
+    process.env[`${prefix}SKIP_CACHE`] = String(config.skipCache);
+    if (config.skipCache) {
+      process.env.NX_SKIP_NX_CACHE ??= String(config.skipCache);
+      process.env.NX_CACHE_PROJECT_GRAPH ??= String(config.skipCache);
+    }
+  }
+  if (!config.skipCache && config.cacheDirectory) {
+    process.env[`${prefix}CACHE_DIRECTORY`] = config.cacheDirectory;
+    if (config.cacheDirectory.includes("/storm") || config.cacheDirectory.includes("\\storm")) {
+      const nxCacheDirectory = join(
+        config.cacheDirectory.includes("/storm")
+          ? config.cacheDirectory.split("/storm")[0]
+          : config.cacheDirectory.split("\\storm")[0],
+        "nx"
+      );
+      process.env.NX_CACHE_DIRECTORY ??= nxCacheDirectory;
+      process.env.NX_PROJECT_GRAPH_CACHE_DIRECTORY ??= nxCacheDirectory;
+    }
   }
   if (config.runtimeVersion) {
     process.env[`${prefix}RUNTIME_VERSION`] = config.runtimeVersion;

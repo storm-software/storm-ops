@@ -123,6 +123,15 @@ export const StormConfigSchema = z
       .describe(
         "The build will use these package patterns to determine if they should be external to the bundle"
       ),
+    skipCache: z
+      .boolean()
+      .default(false)
+      .describe("Should all known types of workspace caching be skipped?"),
+    cacheDirectory: z
+      .string()
+      .trim()
+      .default("node_modules/.cache/storm")
+      .describe("The directory used to store the workspace's cached file data"),
     buildDirectory: z
       .string()
       .trim()
