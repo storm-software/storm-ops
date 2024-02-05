@@ -1,3 +1,20 @@
+## 1.24.1 (2024-02-05)
+
+
+### 🚀 Features
+
+- **config-tools:** Added the `cacheDirectory` and `skipCache` options to the base Storm config ([e9931c58](https://github.com/storm-software/storm-ops/commit/e9931c58))
+
+
+### 🩹 Fixes
+
+- **config-tools:** Remove code to change the Nx cache directory based on Storm config ([8996f4c8](https://github.com/storm-software/storm-ops/commit/8996f4c8))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.24.0 (2024-02-05)
 
 
