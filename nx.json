@@ -15,7 +15,8 @@
           "test",
           "e2e"
         ],
-        "parallel": 5
+        "parallel": 5,
+        "cacheDirectory": "node_modules/.cache/nx"
       }
     }
   },
