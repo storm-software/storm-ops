@@ -73,9 +73,9 @@
             "output": "./src"
           },
           {
-            "input": "./packages/workspace-tools/src",
+            "input": "./packages/workspace-tools",
             "glob": "**/*.d.ts",
-            "output": "./src"
+            "output": "."
           },
           {
             "input": "./packages/workspace-tools",
