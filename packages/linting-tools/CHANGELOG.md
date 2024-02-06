@@ -1,3 +1,15 @@
+## 1.36.2 (2024-02-06)
+
+
+### 🩹 Fixes
+
+- **linting-tools:** Update the base Storm tsconfig file ([44fd4a89](https://github.com/storm-software/storm-ops/commit/44fd4a89))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
