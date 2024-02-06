@@ -85,13 +85,14 @@ function normalizeConfig(
       resolve(options.projectRoot, include)
     ),
     platforms: Object.entries(styledDictionaryConfig.platforms).reduce(
-      (ret: { [key: string]: Platform }, [name, platform]) => ({
-        ...ret,
-        [name]: {
+      (ret: { [key: string]: Platform }, [name, platform]) => {
+        ret[name] = {
           ...platform,
           buildPath: joinPathFragments(options.outputPath, platform.buildPath)
-        }
-      }),
+        };
+
+        return ret;
+      },
       {}
     )
   };
