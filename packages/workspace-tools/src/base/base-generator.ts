@@ -10,27 +10,12 @@ import {
   writeSuccess,
   writeTrace
 } from "@storm-software/config-tools";
-import type { BaseWorkspaceToolOptions } from "../types";
 import {
   applyWorkspaceGeneratorTokens,
   applyWorkspaceTokens
 } from "../utils/apply-workspace-tokens";
 import { getWorkspaceRoot } from "../utils/get-workspace-root";
-
-export interface BaseGeneratorSchema extends Record<string, any> {
-  main?: string;
-  outputPath?: string;
-  tsConfig?: string;
-}
-
-export interface BaseGeneratorOptions<
-  TGeneratorSchema extends BaseGeneratorSchema = BaseGeneratorSchema
-> extends BaseWorkspaceToolOptions<TGeneratorSchema> {}
-
-export interface BaseGeneratorResult {
-  error?: Error;
-  success?: boolean;
-}
+import type { BaseGeneratorOptions, BaseGeneratorResult } from "../../declarations";
 
 export const withRunGenerator =
   <TGeneratorSchema = any>(

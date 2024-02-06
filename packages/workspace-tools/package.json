@@ -30,7 +30,7 @@
   },
   "type": "commonjs",
   "main": "./index.js",
-  "typings": "./index.d.ts",
+  "typings": "./declarations.d.ts",
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
     "@microsoft/api-extractor": "7.38.5",

@@ -10,27 +10,16 @@ import {
   writeSuccess,
   writeTrace
 } from "@storm-software/config-tools";
-import type { BaseWorkspaceToolOptions } from "../types";
 import {
   applyWorkspaceExecutorTokens,
   applyWorkspaceTokens
 } from "../utils/apply-workspace-tokens";
 import { getWorkspaceRoot } from "../utils/get-workspace-root";
-
-export interface BaseExecutorSchema extends Record<string, any> {
-  main?: string;
-  outputPath?: string;
-  tsConfig?: string;
-}
-
-export interface BaseExecutorOptions<
-  TExecutorSchema extends BaseExecutorSchema = BaseExecutorSchema
-> extends BaseWorkspaceToolOptions<TExecutorSchema> {}
-
-export interface BaseExecutorResult {
-  error?: Error;
-  success?: boolean;
-}
+import type {
+  BaseExecutorOptions,
+  BaseExecutorResult,
+  BaseExecutorSchema
+} from "../../declarations";
 
 export const withRunExecutor =
   <TExecutorSchema extends BaseExecutorSchema = BaseExecutorSchema>(
