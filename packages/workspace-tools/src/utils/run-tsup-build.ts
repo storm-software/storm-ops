@@ -7,12 +7,12 @@ import type { NormalizedExecutorOptions } from "@nx/js/src/utils/schema";
 import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
 import {
   LogLevel,
-  type StormConfig,
   getLogLevel,
   writeDebug,
   writeInfo,
   writeWarning
 } from "@storm-software/config-tools";
+import type { StormConfig } from "@storm-software/config";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import type { TsupContext } from "packages/workspace-tools/declarations";
 import { type Options, build as tsup, defineConfig } from "tsup";

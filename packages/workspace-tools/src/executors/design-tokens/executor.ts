@@ -1,20 +1,19 @@
-import { ExecutorContext } from "@nx/devkit";
+import type { ExecutorContext } from "@nx/devkit";
 import { normalizeStyleDictionaryConfig } from "@nxkit/style-dictionary/src/executors/build/lib/normalize-config";
 import { normalizeOptions } from "@nxkit/style-dictionary/src/executors/build/lib/normalize-options";
 import { runBuild } from "@nxkit/style-dictionary/src/executors/build/lib/style-dictionary/run-build";
 import { deleteOutputDir } from "@nxkit/style-dictionary/src/utils/fs/delete-output-path";
 import { createTailwindConfig } from "@storm-software/design-tools";
 import { ConfigType } from "@storm-software/design-tools/types";
-import { Config } from "style-dictionary";
+import type { Config } from "style-dictionary";
 import { withRunExecutor } from "../../base/base-executor";
-import { DesignTokensExecutorSchema } from "./schema";
+import type { DesignTokensExecutorSchema } from "./schema";
 
 export const designTokensExecutorFn = (
   options: DesignTokensExecutorSchema,
-  context: ExecutorContext,
-  config?: any
+  context: ExecutorContext
 ) => {
-  let styleDictionaryConfig: Config | Config[] = createTailwindConfig({
+  const styleDictionaryConfig: Config | Config[] = createTailwindConfig({
     type: ConfigType.TAILWINDCSS,
     inputPath: options.inputPath
   });
@@ -24,14 +23,11 @@ export const designTokensExecutorFn = (
   const { deleteOutputPath, outputPath } = normalizedOptions;
   const normalizedConfigs: Config[] = [];
 
-  (Array.isArray(styleDictionaryConfig)
+  for (const config of Array.isArray(styleDictionaryConfig)
     ? styleDictionaryConfig
-    : [styleDictionaryConfig]
-  ).forEach((config: Config) => {
-    normalizedConfigs.push(
-      normalizeStyleDictionaryConfig(config, normalizedOptions, context)
-    );
-  });
+    : [styleDictionaryConfig]) {
+    normalizedConfigs.push(normalizeStyleDictionaryConfig(config, normalizedOptions, context));
+  }
 
   if (options.outputPath && deleteOutputPath) {
     deleteOutputDir(context.root, outputPath);
@@ -44,9 +40,7 @@ export const designTokensExecutorFn = (
   };
 };
 
-const applyDefaultOptions = (
-  options: DesignTokensExecutorSchema
-): DesignTokensExecutorSchema => {
+const applyDefaultOptions = (options: DesignTokensExecutorSchema): DesignTokensExecutorSchema => {
   return {
     type: ConfigType.TAILWINDCSS,
     ...options

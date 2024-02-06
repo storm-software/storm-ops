@@ -1,10 +1,5 @@
-import {
-  type StormConfig,
-  exitWithError,
-  writeFatal,
-  writeInfo,
-  writeSuccess
-} from "@storm-software/config-tools";
+import { exitWithError, writeFatal, writeInfo, writeSuccess } from "@storm-software/config-tools";
+import type { StormConfig } from "@storm-software/config";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root.js";
 import { runCommit } from "../commit";
 import { runReadme } from "../readme";
@@ -119,7 +114,20 @@ export async function commitAction({
   dryRun: boolean;
 }) {
   try {
-    writeInfo(_config, "⚡ Linting the Commit Message and running Commitizen \n");
+    writeInfo(
+      _config,
+      `⚡ Preparing to commit your changes to the ${
+        _config.repository
+          ? _config.repository
+          : _config.namespace
+            ? _config.namespace
+            : _config.name
+              ? _config.name
+              : _config.organization
+                ? _config.organization
+                : "Storm-Software"
+      } Git repository. Please provide the requested details below...`
+    );
     await runCommit(config, dryRun);
     writeSuccess(
       _config,
@@ -133,7 +141,7 @@ export async function commitAction({
 
 export async function readmeAction(options: ReadMeOptions) {
   try {
-    writeInfo(_config, "⚡ Formatting the workspace's README.md files \n");
+    writeInfo(_config, "⚡ Formatting the workspace's README.md files");
     await runReadme(options);
     writeSuccess(_config, "Formatting of the workspace's README.md files is complete\n");
   } catch (error) {
@@ -157,7 +165,7 @@ export async function releaseAction({
   dryRun?: boolean;
 }) {
   try {
-    writeInfo(_config, "⚡ Linting the Commit Message and running Commitizen \n");
+    writeInfo(_config, "⚡ Linting the Commit Message and running Commitizen");
     await runRelease(_config, { dryRun, project, base, head });
     writeSuccess(_config, "Release completed successfully!\n");
   } catch (error) {

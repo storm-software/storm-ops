@@ -6,7 +6,6 @@ import { copyAssets } from "@nx/js";
 import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
 import {
   LogLevel,
-  type StormConfig,
   getLogLevel,
   writeDebug,
   writeInfo,
@@ -14,6 +13,7 @@ import {
   writeTrace,
   writeWarning
 } from "@storm-software/config-tools";
+import type { StormConfig } from "@storm-software/config";
 import { removeSync } from "fs-extra";
 import { type Path, globSync } from "glob";
 import { fileExists } from "nx/src/utils/fileutils";

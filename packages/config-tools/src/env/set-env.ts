@@ -1,4 +1,5 @@
-import { LogLevel, type StormConfig } from "../types";
+import { LogLevel } from "../types";
+import type { StormConfig } from "@storm-software/config";
 import { getLogLevel } from "../utilities/get-log-level";
 
 /**
@@ -7,16 +8,18 @@ import { getLogLevel } from "../utilities/get-log-level";
  * @param extensionName - The name of the extension module
  * @returns The config for the specified Storm extension module. If the module does not exist, `undefined` is returned.
  */
-export const setExtensionEnv = <TConfig extends Record<string, any> = Record<string, any>>(
+export const setExtensionEnv = <
+  TConfig extends Record<string, any> = Record<string, any>,
+>(
   extensionName: string,
-  extension: TConfig
+  extension: TConfig,
 ) => {
   for (const key of Object.keys(extension ?? {})) {
     if (extension[key]) {
       const result =
         key
           ?.replace(/([A-Z])+/g, (input?: string) =>
-            input ? input[0].toUpperCase() + input.slice(1) : ""
+            input ? input[0].toUpperCase() + input.slice(1) : "",
           )
           .split(/(?=[A-Z])|[\.\-\s_]/)
           .map((x: string) => x.toLowerCase()) ?? [];
@@ -33,8 +36,9 @@ export const setExtensionEnv = <TConfig extends Record<string, any> = Record<str
         });
       }
 
-      process.env[`STORM_EXTENSION_${extensionName.toUpperCase()}_${extensionKey.toUpperCase()}`] =
-        extension[key];
+      process.env[
+        `STORM_EXTENSION_${extensionName.toUpperCase()}_${extensionKey.toUpperCase()}`
+      ] = extension[key];
     }
   }
 };
@@ -168,9 +172,10 @@ export const setConfigEnv = (config: StormConfig) => {
     process.env[`${prefix}LOG_LEVEL`] = String(config.logLevel);
     process.env.LOG_LEVEL = String(config.logLevel);
     process.env.NX_VERBOSE_LOGGING = String(
-      getLogLevel(config.logLevel) >= LogLevel.DEBUG ? true : false
+      getLogLevel(config.logLevel) >= LogLevel.DEBUG ? true : false,
     );
-    process.env.RUST_BACKTRACE = getLogLevel(config.logLevel) >= LogLevel.DEBUG ? "full" : "none";
+    process.env.RUST_BACKTRACE =
+      getLogLevel(config.logLevel) >= LogLevel.DEBUG ? "full" : "none";
   }
   process.env[`${prefix}CONFIG`] = JSON.stringify(config);
 

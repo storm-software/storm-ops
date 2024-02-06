@@ -1,7 +1,10 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { StormConfigSchema } from "../schema";
-import type { ColorConfig, StormConfig } from "../types";
+import {
+  type StormConfig,
+  type ColorConfig,
+  StormConfigSchema,
+} from "@storm-software/config";
 import { findWorkspaceRoot } from "./find-workspace-root";
 
 /**
@@ -14,7 +17,7 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
   info: "#0ea5e9",
   warning: "#fcc419",
   error: "#990000",
-  fatal: "#7d1a1a"
+  fatal: "#7d1a1a",
 };
 
 /**
@@ -40,7 +43,7 @@ export const DEFAULT_STORM_CONFIG: StormConfig = {
   configFile: null,
   runtimeVersion: "1.0.0",
   colors: { ...DEFAULT_COLOR_CONFIG },
-  extensions: {}
+  extensions: {},
 };
 
 /**
@@ -48,7 +51,10 @@ export const DEFAULT_STORM_CONFIG: StormConfig = {
  *
  * @returns The default Storm config values
  */
-export const getDefaultConfig = (config: Partial<StormConfig> = {}, root?: string): StormConfig => {
+export const getDefaultConfig = (
+  config: Partial<StormConfig> = {},
+  root?: string,
+): StormConfig => {
   let name = "storm-workspace";
   let namespace = "storm-software";
   let repository = "https://github.com/storm-software/storm-ops";
@@ -59,7 +65,7 @@ export const getDefaultConfig = (config: Partial<StormConfig> = {}, root?: strin
   const workspaceRoot = findWorkspaceRoot(root);
   if (existsSync(join(workspaceRoot, "package.json"))) {
     const file = readFileSync(join(workspaceRoot, "package.json"), {
-      encoding: "utf-8"
+      encoding: "utf-8",
     });
     if (file) {
       const packageJson = JSON.parse(file);
@@ -93,7 +99,7 @@ export const getDefaultConfig = (config: Partial<StormConfig> = {}, root?: strin
     license: license ?? DEFAULT_STORM_CONFIG.license,
     homepage: homepage ?? DEFAULT_STORM_CONFIG.homepage,
     extensions: {
-      ...config.extensions
-    }
+      ...config.extensions,
+    },
   }) as StormConfig;
 };

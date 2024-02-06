@@ -8,6 +8,7 @@
     "ambar.bundle-size",
     "vscode-icons-team.vscode-icons",
     "davidanson.vscode-markdownlint",
-    "biomejs.biome"
+    "biomejs.biome",
+    "dbaeumer.vscode-eslint"
   ]
 }

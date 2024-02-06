@@ -6,6 +6,15 @@
     "esModuleInterop": true
   },
   "files": [],
-  "include": ["src/**/*.ts", "src/**/*.js", "bin/**/*", "declarations.d.ts"],
-  "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.js",
+    "bin/**/*",
+    "declarations.d.ts"
+  ],
+  "exclude": [
+    "jest.config.ts",
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts"
+  ]
 }

@@ -1,5 +1,6 @@
 import type { ExecutorContext } from "@nx/devkit";
-import { type StormConfig, writeInfo } from "@storm-software/config-tools";
+import { writeInfo } from "@storm-software/config-tools";
+import type { StormConfig } from "@storm-software/config";
 import { removeSync } from "fs-extra";
 import { TypiaProgrammer } from "typia/lib/programmers/TypiaProgrammer";
 import { withRunExecutor } from "../../base/base-executor";

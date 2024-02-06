@@ -1,23 +1,20 @@
-import { Tree, joinPathFragments } from "@nx/devkit";
+import { type Tree, joinPathFragments } from "@nx/devkit";
 import { runBuild } from "@nxkit/style-dictionary/src/executors/build/lib/style-dictionary/run-build";
 import { deleteOutputDir } from "@nxkit/style-dictionary/src/utils/fs/delete-output-path";
-import { StormConfig } from "@storm-software/config-tools";
+import type { StormConfig } from "@storm-software/config";
 import { createTailwindConfig } from "@storm-software/design-tools";
 import { ConfigType } from "@storm-software/design-tools/types";
-import { resolve } from "path";
-import { Config, Platform } from "style-dictionary";
+import { resolve } from "node:path";
+import type { Config, Platform } from "style-dictionary";
 import { withRunGenerator } from "../../base/base-generator";
-import {
-  DesignTokensGeneratorSchema,
-  NormalizedDesignTokensGeneratorSchema
-} from "./schema";
+import type { DesignTokensGeneratorSchema, NormalizedDesignTokensGeneratorSchema } from "./schema";
 
-export async function designTokensGeneratorFn(
-  tree: Tree,
+export function designTokensGeneratorFn(
+  _tree: Tree,
   schema: DesignTokensGeneratorSchema,
   stormConfig?: StormConfig
 ) {
-  let styleDictionaryConfig: Config | Config[] = createTailwindConfig({
+  const styleDictionaryConfig: Config | Config[] = createTailwindConfig({
     type: ConfigType.TAILWINDCSS,
     inputPath: schema.inputPath
   });
@@ -27,12 +24,11 @@ export async function designTokensGeneratorFn(
   const { deleteOutputPath, outputPath } = normalizedOptions;
   const normalizedConfigs: Config[] = [];
 
-  (Array.isArray(styleDictionaryConfig)
+  for (const config of Array.isArray(styleDictionaryConfig)
     ? styleDictionaryConfig
-    : [styleDictionaryConfig]
-  ).forEach((config: Config) => {
+    : [styleDictionaryConfig]) {
     normalizedConfigs.push(normalizeConfig(config, normalizedOptions));
-  });
+  }
 
   if (normalizedOptions.outputPath && deleteOutputPath) {
     deleteOutputDir(normalizedOptions.workspaceRoot, outputPath);
@@ -45,9 +41,7 @@ export async function designTokensGeneratorFn(
   };
 }
 
-const applyDefaultOptions = (
-  options: DesignTokensGeneratorSchema
-): DesignTokensGeneratorSchema => {
+const applyDefaultOptions = (options: DesignTokensGeneratorSchema): DesignTokensGeneratorSchema => {
   return {
     type: ConfigType.TAILWINDCSS,
     ...options
@@ -74,14 +68,8 @@ function normalizeOptions(
     root: config.workspaceRoot,
     projectRoot: config.runtimeDirectory,
     sourceRoot: config.runtimeDirectory,
-    outputPath: resolve(
-      config.workspaceRoot,
-      options.outputPath ?? config.runtimeDirectory ?? ""
-    ),
-    styleDictionaryConfig: resolve(
-      config.workspaceRoot,
-      options.styleDictionaryConfig
-    ),
+    outputPath: resolve(config.workspaceRoot, options.outputPath ?? config.runtimeDirectory ?? ""),
+    styleDictionaryConfig: resolve(config.workspaceRoot, options.styleDictionaryConfig),
     tsConfig: resolve(config.workspaceRoot, options.tsConfig)
   };
 }
@@ -92,10 +80,8 @@ function normalizeConfig(
 ): Config {
   const normalized: Config = {
     ...styledDictionaryConfig,
-    source: styledDictionaryConfig.source.map(src =>
-      resolve(options.projectRoot, src)
-    ),
-    include: styledDictionaryConfig?.include?.map(include =>
+    source: styledDictionaryConfig.source.map((src) => resolve(options.projectRoot, src)),
+    include: styledDictionaryConfig?.include?.map((include) =>
       resolve(options.projectRoot, include)
     ),
     platforms: Object.entries(styledDictionaryConfig.platforms).reduce(

@@ -1,4 +1,4 @@
-import type { StormConfig } from "../types";
+import type { StormConfig } from "@storm-software/config";
 import { writeError, writeFatal, writeSuccess, writeTrace } from "./logger";
 
 export const exitWithError = (config: StormConfig) => {
@@ -14,17 +14,20 @@ export const exitWithSuccess = (config: StormConfig) => {
 export const handleProcess = (config: StormConfig) => {
   writeTrace(
     config,
-    `Using the following arguments to process the script: ${process.argv.join(", ")}`
+    `Using the following arguments to process the script: ${process.argv.join(", ")}`,
   );
 
   process.on("unhandledRejection", (error) => {
-    writeError(config, `An Unhandled Rejection occurred while running the program: ${error}`);
+    writeError(
+      config,
+      `An Unhandled Rejection occurred while running the program: ${error}`,
+    );
     exitWithError(config);
   });
   process.on("uncaughtException", (error) => {
     writeError(
       config,
-      `An Uncaught Exception occurred while running the program: ${error.message} \nStacktrace: ${error.stack}`
+      `An Uncaught Exception occurred while running the program: ${error.message} \nStacktrace: ${error.stack}`,
     );
     exitWithError(config);
   });

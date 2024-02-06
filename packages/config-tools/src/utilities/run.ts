@@ -1,4 +1,4 @@
-import type { StormConfig } from "../types";
+import type { StormConfig } from "@storm-software/config";
 import { execaCommandSync } from "execa";
 
 export const LARGE_BUFFER = 1024 * 1000000;
@@ -14,17 +14,21 @@ export const LARGE_BUFFER = 1024 * 1000000;
  * @param cwd - The current working directory
  * @returns The result of the command
  */
-export const run = (config: StormConfig, command: string, cwd: string = config.workspaceRoot) => {
+export const run = (
+  config: StormConfig,
+  command: string,
+  cwd: string = config.workspaceRoot,
+) => {
   return execaCommandSync(command, {
     preferLocal: true,
     shell: true,
     cwd,
     env: {
       ...process.env,
-      FORCE_COLOR: "true"
+      FORCE_COLOR: "true",
     },
     stdio: "inherit",
     maxBuffer: LARGE_BUFFER,
-    killSignal: "SIGTERM"
+    killSignal: "SIGTERM",
   });
 };

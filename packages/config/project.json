@@ -1,0 +1,66 @@
+{
+  "name": "config",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/config/src",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "main": "packages/config/src/index.ts",
+        "outputPath": "dist/packages/config",
+        "tsConfig": "packages/config/tsconfig.json",
+        "project": "packages/config/package.json",
+        "defaultConfiguration": "production",
+        "platform": "neutral",
+        "deleteOutputPath": true,
+        "bundle": true,
+        "thirdParty": true,
+        "skipTypeCheck": true,
+        "metafile": true,
+        "minify": true,
+        "format": ["cjs", "esm"],
+        "assets": [
+          {
+            "input": "./packages/config",
+            "glob": "*.md",
+            "output": "."
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "."
+          },
+          {
+            "input": "./packages/config",
+            "glob": "declarations.d.ts",
+            "output": "."
+          }
+        ],
+        "configurations": {
+          "production": {
+            "debug": false,
+            "verbose": false
+          },
+          "development": {
+            "debug": true,
+            "verbose": true
+          }
+        }
+      }
+    },
+    "lint": {},
+    "test": {},
+    "nx-release-publish": {
+      "cache": false,
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^build"],
+      "executor": "@storm-software/workspace-tools:npm-publish",
+      "options": {
+        "packageRoot": "dist/{projectRoot}",
+        "registry": "https://registry.npmjs.org/"
+      }
+    }
+  }
+}

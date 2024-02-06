@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@storm-software/config": ["packages/config/src/index.ts"],
       "@storm-software/config-tools": ["packages/config-tools/src/index.ts"],
       "@storm-software/config-tools/*": ["packages/config-tools/src/*"],
       "@storm-software/design-tools": ["packages/design-tools/src/index.ts"],

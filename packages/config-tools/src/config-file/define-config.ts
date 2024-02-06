@@ -1,4 +1,4 @@
-import type { StormConfigInput } from "../types";
+import type { StormConfigInput } from "@storm-software/config";
 
 /**
  * Type the config values for the current Storm workspace

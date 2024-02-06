@@ -1,5 +1,5 @@
 import type { ExecutorContext } from "@nx/devkit";
-import type { StormConfig } from "@storm-software/config-tools";
+import type { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
 import { getFileBanner } from "../../utils/get-file-banner";
 import { applyDefaultOptions as baseApplyDefaultOptions } from "../../utils/run-tsup-build";

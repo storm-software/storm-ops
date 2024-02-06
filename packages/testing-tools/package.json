@@ -29,7 +29,8 @@
     "url": "https://stormsoftware.org"
   },
   "type": "commonjs",
-  "main": "./index.cjs",
+  "module": "./index.js",
+  "types": "./index.d.ts",
   "dependencies": {
     "@nx/jest": "17.2.8"
   },
