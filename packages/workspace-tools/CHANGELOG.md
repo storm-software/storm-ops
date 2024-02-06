@@ -1,3 +1,15 @@
+## 1.54.0 (2024-02-06)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Added the base storm nx-plugin helper's type declarations ([d0c5f7a3](https://github.com/storm-software/storm-ops/commit/d0c5f7a3))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
