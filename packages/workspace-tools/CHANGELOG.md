@@ -1,3 +1,15 @@
+## 1.54.1 (2024-02-06)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Fixed `project.json` issue with `assets` parameter excluding declarations file ([0a91e9d1](https://github.com/storm-software/storm-ops/commit/0a91e9d1))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.54.0 (2024-02-06)
 
 
