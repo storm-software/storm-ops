@@ -3,6 +3,14 @@ import type { TsupExecutorSchema } from "./src/executors/tsup/schema";
 import type { ExecutorContext } from "@nx/devkit";
 import type { Tree } from "@nx/devkit";
 import type { Options } from "tsup";
+import type { TsupGetConfigOptions } from "./src/types";
+import type {
+  Program,
+  Diagnostic,
+  TransformerFactory,
+  SourceFile,
+  ParsedCommandLine
+} from "typescript";
 
 export interface TsupContext {
   projectRoot: string;
@@ -12,6 +20,23 @@ export interface TsupContext {
 }
 
 export type BuildOptions = Options;
+export type Entry = string | string[] | Record<string, string>;
+export type GetConfigParams = Omit<
+  TsupGetConfigOptions,
+  "entry" | "assets" | "clean" | "outputPath" | "tsConfig" | "main"
+> & {
+  entry: Entry;
+  outDir: string;
+  projectRoot: string;
+  workspaceRoot: string;
+  tsconfig: string;
+  shims?: boolean;
+  apiReport?: boolean;
+  docModel?: boolean;
+  tsdocMetadata?: boolean;
+  dtsTsConfig: ParsedCommandLine;
+  getTransform?: (program: Program, diagnostics: Diagnostic[]) => TransformerFactory<SourceFile>;
+};
 
 declare function outExtension({ format }: { format?: string }): { js: string; dts: string };
 export { outExtension };
