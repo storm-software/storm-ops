@@ -1,3 +1,15 @@
+## 1.56.0 (2024-02-07)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Added the `useJsxModule` option to the build executor ([88955b31](https://github.com/storm-software/storm-ops/commit/88955b31))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.55.2 (2024-02-07)
 
 
