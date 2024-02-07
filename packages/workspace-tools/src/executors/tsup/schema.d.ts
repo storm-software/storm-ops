@@ -44,4 +44,5 @@ export type TsupExecutorSchema = Omit<
   metafile?: boolean;
   minify?: boolean;
   skipNativeModulesPlugin?: boolean;
+  useJsxModule?: boolean;
 };

@@ -51,6 +51,15 @@ declare function runTsupBuild(
 ): Promise<void>;
 export { runTsupBuild };
 
+declare function tsupExecutorFn(
+  options: TsupExecutorSchema,
+  context: ExecutorContext,
+  config?: StormConfig
+): Promise<{
+  success: boolean;
+}>;
+export { tsupExecutorFn };
+
 export interface BaseExecutorSchema extends Record<string, any> {
   main?: string;
   outputPath?: string;

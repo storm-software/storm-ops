@@ -323,10 +323,10 @@ ${externalDependencies
       }
     }
 
-    /*const distPaths: string[] =
-      !options?.getConfig || _isFunction(options.getConfig)
-        ? ["dist/"]
-        : Object.keys(options.getConfig).map((key) => `${key}/`);*/
+    // const distPaths: string[] =
+    //   !options?.getConfig || _isFunction(options.getConfig)
+    //     ? ["dist/"]
+    //     : Object.keys(options.getConfig).map((key) => `${key}/`);
 
     const distPaths: string[] = ["dist/"];
 
@@ -413,6 +413,12 @@ ${externalDependencies
 
       if (options.platform && options.platform !== "node") {
         packageJson.browser ??= `${distPaths[0]}index.global.js`;
+      }
+
+      if (options.useJsxModule) {
+        packageJson["module:jsx"] &&= `${
+          distPaths.length > 1 ? distPaths[1] : distPaths[0]
+        }index.jsx`;
       }
 
       if (options.includeSrc === true) {

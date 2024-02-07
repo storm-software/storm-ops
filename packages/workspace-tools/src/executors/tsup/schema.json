@@ -143,6 +143,11 @@
       "description": "Should we skip adding the Native Node Modules ESBuild plugin.",
       "default": false
     },
+    "useJsxModule": {
+      "type": "boolean",
+      "description": "Should the build process use the `jsx` module for JSX support?",
+      "default": false
+    },
     "shims": {
       "type": "boolean",
       "description": "Should the build process add shims for node.js modules that are not available in the browser?"
