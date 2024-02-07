@@ -1,3 +1,20 @@
+## 1.55.0 (2024-02-07)
+
+
+### 🚀 Features
+
+- **config:** Added a base config package to allow neutral access of `StormConfig` ([164eaa5b](https://github.com/storm-software/storm-ops/commit/164eaa5b))
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved accumulator spread linting issue ([ecf50f97](https://github.com/storm-software/storm-ops/commit/ecf50f97))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 ## 1.54.1 (2024-02-06)
