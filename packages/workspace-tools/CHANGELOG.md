@@ -1,3 +1,15 @@
+## 1.55.2 (2024-02-07)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added more missing types to package ([29cbe4c3](https://github.com/storm-software/storm-ops/commit/29cbe4c3))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.55.1 (2024-02-07)
 
 
