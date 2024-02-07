@@ -1,3 +1,15 @@
+## 1.55.1 (2024-02-07)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added various tsup types to exports ([68bd5d91](https://github.com/storm-software/storm-ops/commit/68bd5d91))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.55.0 (2024-02-07)
 
 
