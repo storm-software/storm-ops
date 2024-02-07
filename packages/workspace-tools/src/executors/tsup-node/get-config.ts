@@ -2,6 +2,7 @@ import { joinPathFragments } from "@nx/devkit";
 import type { Options } from "tsup";
 import { outExtension } from "../../base/get-tsup-config";
 import type { GetConfigParams } from "../../types";
+import type { BuildOptions } from "../../../declarations";
 
 export function nodeConfig({
   entry,
@@ -29,7 +30,7 @@ export function nodeConfig({
   dtsTsConfig,
   minify = false,
   getTransform
-}: GetConfigParams) {
+}: GetConfigParams): BuildOptions {
   const options = {
     name: "node",
     entry,
@@ -115,7 +116,7 @@ export function workerConfig({
   generatePackageJson,
   dtsTsConfig,
   getTransform
-}: GetConfigParams) {
+}: GetConfigParams): BuildOptions {
   const options = {
     name: "worker",
     entry,

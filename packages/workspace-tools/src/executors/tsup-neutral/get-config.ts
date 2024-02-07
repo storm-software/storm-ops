@@ -2,6 +2,7 @@ import { joinPathFragments } from "@nx/devkit";
 import type { Options } from "tsup";
 import { outExtension } from "../../base/get-tsup-config";
 import type { GetConfigParams } from "../../types";
+import type { BuildOptions } from "../../../declarations";
 
 export const neutralConfig = ({
   entry,
@@ -29,7 +30,7 @@ export const neutralConfig = ({
   dtsTsConfig,
   minify = false,
   getTransform
-}: GetConfigParams) => {
+}: GetConfigParams): BuildOptions => {
   const outputPath = joinPathFragments(outDir, "dist");
 
   const options = {

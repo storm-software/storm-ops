@@ -1,6 +1,7 @@
 import { joinPathFragments } from "@nx/devkit";
 import type { Options } from "tsup";
 import type { GetConfigParams, TsupGetConfigOptions } from "../types";
+import type { BuildOptions } from "../../declarations";
 
 export function defaultConfig({
   entry,
@@ -29,7 +30,7 @@ export function defaultConfig({
   dtsTsConfig,
   minify = false,
   getTransform
-}: GetConfigParams) {
+}: GetConfigParams): BuildOptions {
   return {
     name: "default",
     entry,
@@ -85,7 +86,7 @@ export function defaultConfig({
 export function getConfig(
   workspaceRoot: string,
   projectRoot: string,
-  getConfigFn: (options: GetConfigParams) => Options,
+  getConfigFn: (options: GetConfigParams) => BuildOptions,
   { outputPath, tsConfig, platform, ...rest }: TsupGetConfigOptions
 ) {
   return getConfigFn({
@@ -99,7 +100,7 @@ export function getConfig(
   });
 }
 
-export const outExtension = ({ format }) => {
+export const outExtension = ({ format }: { format?: string }): { js: string; dts: string } => {
   let jsExtension = ".js";
   let dtsExtension = ".d.ts";
   if (format === "cjs") {

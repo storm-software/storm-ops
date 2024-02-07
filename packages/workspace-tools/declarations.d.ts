@@ -2,6 +2,7 @@ import type { StormConfig } from "@storm-software/config-tools";
 import type { TsupExecutorSchema } from "./src/executors/tsup/schema";
 import type { ExecutorContext } from "@nx/devkit";
 import type { Tree } from "@nx/devkit";
+import type { Options } from "tsup";
 
 export interface TsupContext {
   projectRoot: string;
@@ -9,6 +10,11 @@ export interface TsupContext {
   projectName: string;
   main: string;
 }
+
+export type BuildOptions = Options;
+
+declare function outExtension({ format }: { format?: string }): { js: string; dts: string };
+export { outExtension };
 
 declare function applyDefaultOptions(options: TsupExecutorSchema): TsupExecutorSchema;
 export { applyDefaultOptions };
