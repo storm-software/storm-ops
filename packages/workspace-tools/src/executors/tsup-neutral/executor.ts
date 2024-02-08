@@ -27,7 +27,8 @@ export const tsupNeutralBuildExecutorFn = (
           : "TypeScript (Neutral Platform)"
       ),
       define: {
-        ...options.define
+        ...options.define,
+        process: `{ env: ${JSON.stringify(process.env)} }`
       },
       env: {
         ...process.env
