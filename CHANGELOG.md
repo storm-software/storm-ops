@@ -1,3 +1,15 @@
+## 0.8.1 (2024-02-08)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added `process` polyfill with `DefinePlugin` during Browser build ([564d81f8](https://github.com/storm-software/storm-ops/commit/564d81f8))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
