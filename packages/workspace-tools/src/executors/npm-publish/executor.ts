@@ -2,13 +2,17 @@ import { type ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devki
 import { execSync } from "node:child_process";
 import type { NpmPublishExecutorSchema } from "./schema";
 import chalk = require("chalk");
+import { writeError, writeInfo, writeWarning } from "@storm-software/config-tools";
+import type { StormConfig } from "@storm-software/config";
+import { withRunExecutor } from "../../base/base-executor";
 
 const LARGE_BUFFER = 1024 * 1000000;
 
-export default function runExecutor(
+export async function npmPublishExecutorFn(
   options: NpmPublishExecutorSchema,
-  context: ExecutorContext
-): Promise<{ success: boolean }> {
+  context: ExecutorContext,
+  config?: StormConfig
+) {
   /**
    * We need to check both the env var and the option because the executor may have been triggered
    * indirectly via dependsOn, in which case the env var will be set, but the option will not.
@@ -22,6 +26,8 @@ export default function runExecutor(
   const projectPackageJson = readJsonFile(packageJsonPath);
   const packageName = projectPackageJson.name;
 
+  writeInfo(config, `🚀  Running Storm NPM Publish executor on the ${packageName} package`);
+
   // If package and project name match, we can make log messages terser
   const packageTxt =
     packageName === context.projectName
@@ -29,7 +35,10 @@ export default function runExecutor(
       : `package "${packageName}" from project "${context.projectName}"`;
 
   if (projectPackageJson.private === true) {
-    console.warn(`Skipped ${packageTxt}, because it has \`"private": true\` in ${packageJsonPath}`);
+    writeWarning(
+      config,
+      `Skipped ${packageTxt}, because it has \`"private": true\` in ${packageJsonPath}`
+    );
     return new Promise((resolve) => resolve({ success: true }));
   }
 
@@ -68,88 +77,96 @@ export default function runExecutor(
    * perform the npm view step, and just show npm publish's dry-run output.
    */
 
-  if (!isDryRun && !options.firstRelease && projectPackageJson.version !== "1.0.1") {
+  if (!isDryRun && !options.firstRelease) {
     const currentVersion = projectPackageJson.version;
     try {
-      const result = execSync(npmViewCommandSegments.join(" "), {
-        env: {
-          ...process.env,
-          FORCE_COLOR: "true"
-        },
-        cwd: packageRoot,
-        stdio: ["ignore", "pipe", "pipe"]
-      });
+      try {
+        const result = execSync(npmViewCommandSegments.join(" "), {
+          env: {
+            ...process.env,
+            FORCE_COLOR: "true"
+          },
+          cwd: packageRoot,
+          stdio: ["ignore", "pipe", "pipe"]
+        });
 
-      const resultJson = JSON.parse(result.toString());
-      const distTags = resultJson["dist-tags"] || {};
-      if (distTags[tag] === currentVersion) {
-        console.warn(
-          `Skipped ${packageTxt} because v${currentVersion} already exists in ${registry} with tag "${tag}"`
+        const resultJson = JSON.parse(result.toString());
+        const distTags = resultJson["dist-tags"] || {};
+        if (distTags[tag] === currentVersion) {
+          writeWarning(
+            config,
+            `Skipped ${packageTxt} because v${currentVersion} already exists in ${registry} with tag "${tag}"`
+          );
+          return new Promise((resolve) => resolve({ success: true }));
+        }
+      } catch (err) {
+        writeWarning(
+          config,
+          `An error occurred while checking for existing dist-tags\n${err}\n\nNote: If this is the first time this package has been published to NPM, this can be ignored.`
         );
-        return new Promise((resolve) => resolve({ success: true }));
       }
 
-      if (resultJson.versions.includes(currentVersion)) {
-        try {
-          if (!isDryRun) {
-            execSync(
-              `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${registry}`,
-              {
-                env: {
-                  ...process.env,
-                  FORCE_COLOR: "true"
-                },
-                cwd: packageRoot,
-                stdio: "ignore"
-              }
-            );
-            console.log(
-              `Added the dist-tag ${tag} to v${currentVersion} for registry ${registry}.\n`
-            );
-          } else {
-            console.log(
-              `Would add the dist-tag ${tag} to v${currentVersion} for registry ${registry}, but ${chalk.keyword(
-                "orange"
-              )("[dry-run]")} was set.\n`
-            );
-          }
-          return new Promise((resolve) => resolve({ success: true }));
-        } catch (err) {
-          try {
-            const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
-
-            // If the error is that the package doesn't exist, then we can ignore it because we will be publishing it for the first time in the next step
-            if (
-              !(
-                stdoutData.error?.code?.includes("E404") &&
-                stdoutData.error?.summary?.includes("no such package available")
-              ) &&
-              !(
-                err.stderr?.toString().includes("E404") &&
-                err.stderr?.toString().includes("no such package available")
-              )
-            ) {
-              console.error("npm dist-tag add error:");
-              if (stdoutData.error.summary) {
-                console.error(stdoutData.error.summary);
-              }
-              if (stdoutData.error.detail) {
-                console.error(stdoutData.error.detail);
-              }
-
-              if (context.isVerbose) {
-                console.error("npm dist-tag add stdout:");
-                console.error(JSON.stringify(stdoutData, null, 2));
-              }
-              return new Promise((resolve) => resolve({ success: false }));
+      try {
+        if (!isDryRun) {
+          execSync(
+            `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${registry}`,
+            {
+              env: {
+                ...process.env,
+                FORCE_COLOR: "true"
+              },
+              cwd: packageRoot,
+              stdio: "ignore"
             }
-          } catch (err) {
-            console.error(
-              "Something unexpected went wrong when processing the npm dist-tag add output\n",
-              err
-            );
+          );
+
+          writeInfo(
+            config,
+            `Added the dist-tag ${tag} to v${currentVersion} for registry ${registry}.\n`
+          );
+        } else {
+          writeInfo(
+            config,
+            `Would add the dist-tag ${tag} to v${currentVersion} for registry ${registry}, but ${chalk.keyword(
+              "orange"
+            )("[dry-run]")} was set.\n`
+          );
+        }
+        return new Promise((resolve) => resolve({ success: true }));
+      } catch (err) {
+        try {
+          const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
+
+          // If the error is that the package doesn't exist, then we can ignore it because we will be publishing it for the first time in the next step
+          if (
+            !(
+              stdoutData.error?.code?.includes("E404") &&
+              stdoutData.error?.summary?.includes("no such package available")
+            ) &&
+            !(
+              err.stderr?.toString().includes("E404") &&
+              err.stderr?.toString().includes("no such package available")
+            )
+          ) {
+            writeError(config, "npm dist-tag add error please see below for more information:");
+            if (stdoutData.error.summary) {
+              writeError(config, stdoutData.error.summary);
+            }
+            if (stdoutData.error.detail) {
+              writeError(config, stdoutData.error.detail);
+            }
+
+            if (context.isVerbose) {
+              writeError(config, `npm dist-tag add stdout: ${JSON.stringify(stdoutData, null, 2)}`);
+            }
             return new Promise((resolve) => resolve({ success: false }));
           }
+        } catch (err) {
+          writeError(
+            config,
+            `Something unexpected went wrong when processing the npm dist-tag add output\n${err}`
+          );
+          return new Promise((resolve) => resolve({ success: false }));
         }
       }
     } catch (err) {
@@ -165,9 +182,9 @@ export default function runExecutor(
           err.stderr?.toString().toLowerCase().includes("not found")
         )
       ) {
-        console.error(
-          "Something unexpected went wrong when checking for existing dist-tags.\n",
-          err
+        writeError(
+          config,
+          `Something unexpected went wrong when checking for existing dist-tags.\n${err}`
         );
         return new Promise((resolve) => resolve({ success: false }));
       }
@@ -175,7 +192,7 @@ export default function runExecutor(
   }
 
   if (options.firstRelease && context.isVerbose) {
-    console.log("Skipped npm view because --first-release was set");
+    writeInfo(config, "Skipped npm view because --first-release was set");
   }
 
   try {
@@ -188,16 +205,17 @@ export default function runExecutor(
       cwd: packageRoot,
       stdio: ["ignore", "pipe", "pipe"]
     });
-    console.log(output.toString());
+    writeInfo(config, output.toString());
 
     if (isDryRun) {
-      console.log(
+      writeInfo(
+        config,
         `Would publish to ${registry} with tag "${tag}", but ${chalk.keyword("orange")(
           "[dry-run]"
         )} was set`
       );
     } else {
-      console.log(`Published to ${registry} with tag "${tag}"`);
+      writeInfo(config, `Published to ${registry} with tag "${tag}"`);
     }
 
     return new Promise((resolve) => resolve({ success: true }));
@@ -205,25 +223,30 @@ export default function runExecutor(
     try {
       const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
 
-      console.error("npm publish error:");
+      writeError(config, "npm publish error please see below for more information:");
       if (stdoutData.error.summary) {
+        writeError(config, stdoutData.error.summary);
         console.error(stdoutData.error.summary);
       }
       if (stdoutData.error.detail) {
-        console.error(stdoutData.error.detail);
+        writeError(config, stdoutData.error.detail);
       }
 
       if (context.isVerbose) {
-        console.error("npm publish stdout:");
-        console.error(JSON.stringify(stdoutData, null, 2));
+        writeError(config, `npm publish stdout:\n${JSON.stringify(stdoutData, null, 2)}`);
       }
       return new Promise((resolve) => resolve({ success: false }));
     } catch (err) {
-      console.error(
-        "Something unexpected went wrong when processing the npm publish output\n",
-        err
+      writeError(
+        config,
+        `Something unexpected went wrong when processing the npm publish output\n${err}`
       );
+
       return new Promise((resolve) => resolve({ success: false }));
     }
   }
 }
+
+export default withRunExecutor<NpmPublishExecutorSchema>("NPM Publish", npmPublishExecutorFn, {
+  skipReadingConfig: false
+});
