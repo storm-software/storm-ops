@@ -138,6 +138,7 @@ export async function npmPublishExecutorFn(
 
           // If the error is that the package doesn't exist, then we can ignore it because we will be publishing it for the first time in the next step
           if (
+            stdoutData?.error &&
             !(
               stdoutData.error?.code?.includes("E404") &&
               stdoutData.error?.summary?.includes("no such package available")
@@ -149,10 +150,10 @@ export async function npmPublishExecutorFn(
           ) {
             writeError(config, "npm dist-tag add error please see below for more information:");
             if (stdoutData.error.summary) {
-              writeError(config, stdoutData.error.summary);
+              writeError(config, stdoutData.error?.summary);
             }
             if (stdoutData.error.detail) {
-              writeError(config, stdoutData.error.detail);
+              writeError(config, stdoutData.error?.detail);
             }
 
             if (context.isVerbose) {
