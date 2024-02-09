@@ -1,3 +1,15 @@
+## 1.36.3 (2024-02-09)
+
+
+### 🩹 Fixes
+
+- **linting-tools:** Added `--no-errors-on-unmatched` to format command ([c7bd849a](https://github.com/storm-software/storm-ops/commit/c7bd849a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.36.2 (2024-02-09)
 
 
