@@ -2,7 +2,7 @@ import { type ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devki
 import { execSync } from "node:child_process";
 import type { NpmPublishExecutorSchema } from "./schema";
 import chalk = require("chalk");
-import { writeError, writeInfo, writeWarning } from "@storm-software/config-tools";
+import { writeError, writeInfo, writeWarning } from "@storm-software/config-tools/utilities/logger";
 import type { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
 
@@ -76,7 +76,6 @@ export async function npmPublishExecutorFn(
    * Therefore, so as to not produce misleading output in dry around dist-tags being altered, we do not
    * perform the npm view step, and just show npm publish's dry-run output.
    */
-
   if (!isDryRun && !options.firstRelease) {
     const currentVersion = projectPackageJson.version;
     try {
@@ -248,5 +247,14 @@ export async function npmPublishExecutorFn(
 }
 
 export default withRunExecutor<NpmPublishExecutorSchema>("NPM Publish", npmPublishExecutorFn, {
-  skipReadingConfig: false
+  skipReadingConfig: false,
+  hooks: {
+    applyDefaultOptions: (options: NpmPublishExecutorSchema): NpmPublishExecutorSchema => {
+      options.packageRoot ??= "{projectRoot}";
+      options.dryRun ??= false;
+      options.firstRelease ??= false;
+
+      return options;
+    }
+  }
 });
