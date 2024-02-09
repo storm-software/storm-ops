@@ -1,3 +1,15 @@
+## 1.27.12 (2024-02-09)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Cleaned up the config-tools logging display ([ce939d1a](https://github.com/storm-software/storm-ops/commit/ce939d1a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.27.11 (2024-02-09)
 
 
