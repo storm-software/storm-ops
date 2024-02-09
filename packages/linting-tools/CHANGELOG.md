@@ -1,3 +1,15 @@
+## 1.38.9 (2024-02-09)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update publish executor to handle newly release packages properly ([16a76eca](https://github.com/storm-software/storm-ops/commit/16a76eca))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.38.8 (2024-02-09)
 
 
