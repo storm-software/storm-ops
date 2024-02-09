@@ -1,3 +1,15 @@
+## 1.36.6 (2024-02-09)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved issue publishing first package releases to npm ([8205dfcf](https://github.com/storm-software/storm-ops/commit/8205dfcf))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 ## 1.36.4 (2024-02-09)

@@ -1,6 +1,6 @@
 {
   "name": "create-storm-workspace",
-  "version": "1.56.5",
+  "version": "1.56.6",
   "private": false,
   "description": "⚡A CLI tool used to generate and fully configure a Storm Workspace repository.",
   "keywords": [
