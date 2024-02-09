@@ -33,7 +33,7 @@ pre-commit:
       run: "npx storm-prepare"
     prebuild:
       glob: "**/*.*"
-      run: "pnpm build"
+      run: "pnpm build:all"
       stage_fixed: true
     validate:
       glob: "**/*.*"
@@ -54,7 +54,7 @@ pre-commit:
       run: "npx biome format --write {staged_files} && git update-index"
     postbuild:
       glob: "**/*.*"
-      run: "pnpm build"
+      run: "pnpm build:all"
       stage_fixed: true
 
 commit-msg:
