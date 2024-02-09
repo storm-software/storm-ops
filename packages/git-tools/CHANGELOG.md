@@ -1,3 +1,15 @@
+## 1.36.2 (2024-02-09)
+
+
+### 🩹 Fixes
+
+- **linting-tools:** Ensure we use `build:all` script during linting ([848bd1cf](https://github.com/storm-software/storm-ops/commit/848bd1cf))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
