@@ -1,3 +1,15 @@
+## 1.27.10 (2024-02-09)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Update `run` function to use a nodejs child process ([bef2780c](https://github.com/storm-software/storm-ops/commit/bef2780c))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.27.9 (2024-02-09)
 
 

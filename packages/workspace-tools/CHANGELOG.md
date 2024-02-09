@@ -1,3 +1,19 @@
+## 1.56.10 (2024-02-09)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update publish executor to handle newly release packages properly ([16a76eca](https://github.com/storm-software/storm-ops/commit/16a76eca))
+
+- **workspace-tools:** Resolved issue with the in import from config-tools ([57f1645f](https://github.com/storm-software/storm-ops/commit/57f1645f))
+
+- **workspace-tools:** Resolved issue with null reference on error object ([9afcb7bb](https://github.com/storm-software/storm-ops/commit/9afcb7bb))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.56.9 (2024-02-09)
 
 
