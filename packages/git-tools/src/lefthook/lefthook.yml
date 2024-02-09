@@ -44,14 +44,14 @@ pre-commit:
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: "pnpm lint && git update-index"
     check:
-      glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      glob: "**/*.*"
       run: npx biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index"
     readme-gen:
       glob: "**/{README.md,package.json,executors.json,generators.json}"
       run: "npx storm-git readme-gen --templates=\"./docs/readme-templates\" && git update-index"
     format:
       glob: "**/*.*"
-      run: "npx biome format --write {staged_files} && git update-index"
+      run: "npx biome format --write --no-errors-on-unmatched {staged_files} && git update-index"
     postbuild:
       glob: "**/*.*"
       run: "pnpm build:all"
@@ -73,7 +73,7 @@ pre-push:
     lint:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true {files} && git update-index"
+      run: "npx biome lint --apply --no-errors-on-unmatched --vcs-enabled --files-ignore-unknown=true {files} && git update-index"
       stage_fixed: true
 
 post-merge:
