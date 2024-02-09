@@ -1,4 +1,5 @@
-import { type StormConfig, writeInfo, writeSuccess } from "@storm-software/config-tools";
+import type { StormConfig } from "@storm-software/config";
+import { writeInfo, writeSuccess } from "@storm-software/config-tools";
 import { createNxReleaseConfig } from "nx/src/command-line/release/config/config.js";
 import {
   releaseChangelog,
