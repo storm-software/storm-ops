@@ -73,7 +73,7 @@ pre-push:
     lint:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: "npx biome lint --apply --no-errors-on-unmatched --vcs-enabled --files-ignore-unknown=true {files} && git update-index"
+      run: "npx biome lint --apply --no-errors-on-unmatched --vcs-enabled=true --files-ignore-unknown=true {files} && git update-index"
       stage_fixed: true
 
 post-merge:
