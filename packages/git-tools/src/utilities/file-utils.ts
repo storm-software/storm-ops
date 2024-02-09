@@ -1,4 +1,4 @@
-import Path, { dirname, isAbsolute, join } from "path";
+import Path, { dirname, isAbsolute, join } from "node:path";
 
 export function findFileName(filePath: string): string {
   return (

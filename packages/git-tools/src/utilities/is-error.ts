@@ -28,7 +28,7 @@ export const isObject = (value: unknown): value is object => {
     return (
       typeof value === "object" || (!!value && value.constructor === Object) || isPlainObject(value)
     );
-  } catch (e) {
+  } catch (_) {
     return false;
   }
 };

@@ -12,16 +12,14 @@ import { getLogLevel } from "./get-log-level";
  */
 export const getLogFn = (
   config: Partial<StormConfig> = {},
-  logLevel: number | LogLevel = LogLevel.INFO,
+  logLevel: number | LogLevel = LogLevel.INFO
 ): ((message: string) => void) => {
   if (
     (typeof logLevel === "number" &&
-      (logLevel >=
-        getLogLevel(config.logLevel ?? process.env?.STORM_LOG_LEVEL) ||
+      (logLevel >= getLogLevel(config.logLevel ?? process.env?.STORM_LOG_LEVEL) ||
         logLevel <= LogLevel.SILENT)) ||
     (typeof logLevel === "string" &&
-      getLogLevel(logLevel) >=
-        getLogLevel(config.logLevel ?? process.env?.STORM_LOG_LEVEL))
+      getLogLevel(logLevel) >= getLogLevel(config.logLevel ?? process.env?.STORM_LOG_LEVEL))
   ) {
     return (_: string) => {
       /* noop */
@@ -35,13 +33,13 @@ export const getLogFn = (
     return (message: string) => {
       console.error(
         `
-${chalk.bold.hex(config?.colors?.fatal ? config.colors.fatal : "#1fb2a6")(">")} ${chalk.bold
-          .bgHex(config?.colors?.fatal ? config.colors.fatal : "#1fb2a6")
-          .white(" 💀 Fatal ")}  ${chalk.hex(
-          config?.colors?.fatal ? config.colors.fatal : "#1fb2a6",
+${chalk.bold.hex(config?.colors?.fatal ? config.colors.fatal : "#7d1a1a")(">")} ${chalk.bold
+          .bgHex(config?.colors?.fatal ? config.colors.fatal : "#7d1a1a")
+          .inverse(" 💀 Fatal ")}  ${chalk.hex(
+          config?.colors?.fatal ? config.colors.fatal : "#1fb2a6"
         )(message)}
 
-`,
+`
       );
     };
   }
@@ -55,10 +53,10 @@ ${chalk.bold.hex(config?.colors?.fatal ? config.colors.fatal : "#1fb2a6")(">")} 
         `
 ${chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")} ${chalk.bold
           .bgHex(config?.colors?.error ? config.colors.error : "#7d1a1a")
-          .white(" ✘ Error ")}  ${chalk.hex(
-          config?.colors?.error ? config.colors.error : "#7d1a1a",
+          .inverse(" ✘ Error ")}  ${chalk.hex(
+          config?.colors?.error ? config.colors.error : "#7d1a1a"
         )(message)}
-`,
+`
       );
     };
   }
@@ -72,10 +70,10 @@ ${chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")} 
         `
 ${chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")(">")} ${chalk.bold
           .bgHex(config?.colors?.warning ? config.colors.warning : "#fcc419")
-          .white(" ⚠ Warn ")}  ${chalk.hex(
-          config?.colors?.warning ? config.colors.warning : "#fcc419",
+          .inverse(" ⚠ Warn ")}  ${chalk.hex(
+          config?.colors?.warning ? config.colors.warning : "#fcc419"
         )(message)}
-`,
+`
       );
     };
   }
@@ -89,10 +87,10 @@ ${chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")(">
         `
 ${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${chalk.bold
           .bgHex(config?.colors?.info ? config.colors.info : "#0ea5e9")
-          .white(" ℹ Info ")}  ${chalk.hex(
-          config?.colors?.info ? config.colors.info : "#0ea5e9",
-        )(message)}
-`,
+          .inverse(" ℹ Info ")}  ${chalk.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(
+          message
+        )}
+`
       );
     };
   }
@@ -106,10 +104,10 @@ ${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${
         `
 ${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(">")} ${chalk.bold
           .bgHex(config?.colors?.success ? config.colors.success : "#087f5b")
-          .white(" ✓ Success ")}  ${chalk.hex(
-          config?.colors?.success ? config.colors.success : "#087f5b",
+          .inverse(" ✓ Success ")}  ${chalk.hex(
+          config?.colors?.success ? config.colors.success : "#087f5b"
         )(message)}
-`,
+`
       );
     };
   }
@@ -123,10 +121,10 @@ ${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(">
         `
 ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${chalk.bold
           .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-          .white(" 🛠  Debug ")}  ${chalk.hex(
-          config?.colors?.primary ? config.colors.primary : "#1fb2a6",
+          .inverse(" 🛠  Debug ")}  ${chalk.hex(
+          config?.colors?.primary ? config.colors.primary : "#1fb2a6"
         )(message)}
-`,
+`
       );
     };
   }
@@ -136,10 +134,10 @@ ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">
       `
 ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${chalk.bold
         .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-        .white(" ✉ System ")}  ${chalk.hex(
-        config?.colors?.primary ? config.colors.primary : "#1fb2a6",
+        .inverse(" ✉ System ")}  ${chalk.hex(
+        config?.colors?.primary ? config.colors.primary : "#1fb2a6"
       )(message)}
-`,
+`
     );
   };
 };
@@ -229,9 +227,9 @@ export const getStopwatch = (name: string) => {
     console.info(
       chalk.dim(
         `\n⏱️  The${name ? ` ${name}` : ""} process took ${Math.round(
-          end[0] * 1000 + end[1] / 1000000,
-        )}ms to complete\n\n`,
-      ),
+          end[0] * 1000 + end[1] / 1000000
+        )}ms to complete\n\n`
+      )
     );
   };
 };
