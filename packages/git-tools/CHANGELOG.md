@@ -1,3 +1,15 @@
+## 1.36.11 (2024-02-09)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Updated the color of the logger text ([63016bd6](https://github.com/storm-software/storm-ops/commit/63016bd6))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
