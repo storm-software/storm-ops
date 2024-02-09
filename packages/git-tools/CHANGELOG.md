@@ -1,3 +1,15 @@
+## 1.36.4 (2024-02-09)
+
+
+### 🩹 Fixes
+
+- **linting-tools:** Ensure correct parameter is passed to lefthook ([3fe19f4b](https://github.com/storm-software/storm-ops/commit/3fe19f4b))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.36.3 (2024-02-09)
 
 
