@@ -1,3 +1,15 @@
+## 1.38.5 (2024-02-09)
+
+
+### 🩹 Fixes
+
+- **linting-tools:** Removed `noEmitOnError` from root tsconfig ([6329875e](https://github.com/storm-software/storm-ops/commit/6329875e))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
