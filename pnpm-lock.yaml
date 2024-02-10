@@ -287,8 +287,8 @@ importers:
         specifier: 4.0.3
         version: 4.0.3
       '@cspell/dict-en-common-misspellings':
-        specifier: 1.0.2
-        version: 1.0.2
+        specifier: 2.0.0
+        version: 2.0.0
       '@cspell/dict-en-gb':
         specifier: 4.1.31
         version: 4.1.31
@@ -2269,10 +2269,6 @@ packages:
 
   /@cspell/dict-elixir@4.0.3:
     resolution: {integrity: sha512-g+uKLWvOp9IEZvrIvBPTr/oaO6619uH/wyqypqvwpmnmpjcfi8+/hqZH8YNKt15oviK8k4CkINIqNhyndG9d9Q==}
-    dev: false
-
-  /@cspell/dict-en-common-misspellings@1.0.2:
-    resolution: {integrity: sha512-jg7ZQZpZH7+aAxNBlcAG4tGhYF6Ksy+QS5Df73Oo+XyckBjC9QS+PrRwLTeYoFIgXy5j3ICParK5r3MSSoL4gw==}
     dev: false
 
   /@cspell/dict-en-common-misspellings@2.0.0:
