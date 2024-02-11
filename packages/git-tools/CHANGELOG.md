@@ -1,3 +1,15 @@
+## 1.36.13 (2024-02-11)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Removed the emojis from the Changelog Renderer ([93d5d140](https://github.com/storm-software/storm-ops/commit/93d5d140))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 ## 1.36.11 (2024-02-09)
