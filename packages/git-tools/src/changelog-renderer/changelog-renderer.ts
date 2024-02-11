@@ -45,19 +45,19 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
   const breakingChanges = [];
 
   const commitTypes = {
-    feat: { title: "⚡ Features" },
-    perf: { title: "🚀 Performance" },
-    fix: { title: "🩹 Fixes" },
-    refactor: { title: "💅 Refactors" },
-    docs: { title: "📖 Documentation" },
-    build: { title: "📦 Build" },
-    types: { title: "🌊 Types" },
-    chore: { title: "🏡 Chore" },
-    examples: { title: "🏀 Examples" },
-    test: { title: "✅ Tests" },
-    style: { title: "🎨 Styles" },
-    ci: { title: "🤖 CI" },
-    revert: { title: "⏪ Revert" }
+    feat: { title: "Features" },
+    perf: { title: "Performance" },
+    fix: { title: "Bug Fixes" },
+    refactor: { title: "Refactoring" },
+    docs: { title: "Documentation" },
+    build: { title: "Build Improvements" },
+    types: { title: "Type Definitions" },
+    chore: { title: "Chore" },
+    examples: { title: "Examples" },
+    test: { title: "Tests" },
+    style: { title: "Styling" },
+    ci: { title: "Continuous Integration" },
+    revert: { title: "Revert" }
   };
 
   // If the current range of commits contains both a commit and its revert, we strip them both from the final list
@@ -83,7 +83,7 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
           `${await createVersionTitle(
             releaseVersion,
             changelogRenderOptions
-          )}\n\n${entryWhenNoChanges}`,
+          )}\n${entryWhenNoChanges}`,
           ""
         );
       }
@@ -152,7 +152,7 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
             changelogRenderOptions,
             project,
             projectGraph.nodes[project].data
-          )}\n\n${entryWhenNoChanges}`,
+          )}\n${entryWhenNoChanges}`,
           ""
         );
       }
