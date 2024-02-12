@@ -154,8 +154,8 @@ importers:
         specifier: 17.2.8
         version: 17.2.8(@swc-node/register@1.6.8)(@swc/core@1.3.106)
       create-nx-workspace:
-        specifier: 17.2.8
-        version: 17.2.8
+        specifier: 18.0.4
+        version: 18.0.4
       enquirer:
         specifier: 2.4.1
         version: 2.4.1
@@ -6162,8 +6162,8 @@ packages:
       - ts-node
     dev: false
 
-  /create-nx-workspace@17.2.8:
-    resolution: {integrity: sha512-HCECWXGEaWleZ1ro4biusd8ag95YS5BBcNwrJTMw81BgJztT+UkcoWB/aiEq1ODVCqNmJdMjFmFxEabh5CC7yQ==}
+  /create-nx-workspace@18.0.4:
+    resolution: {integrity: sha512-p9z8IAHuARGINW7a2wyXW9guhA8bvQ0jBO9dIAyYbYJS5v+Wv9z2UBxlLklCQ0rakHZuvRD8qb8GV1MAUWoZ1Q==}
     hasBin: true
     dependencies:
       axios: 1.6.5
