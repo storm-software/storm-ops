@@ -145,12 +145,10 @@
       }
     },
     "version": {
-      "conventionalCommits": true,
       "generatorOptions": {
         "packageRoot": "dist/{projectRoot}",
         "currentVersionResolver": "git-tag",
-        "specifierSource": "conventional-commits",
-        "skipLockFileUpdate": true
+        "specifierSource": "conventional-commits"
       }
     },
     "git": {
