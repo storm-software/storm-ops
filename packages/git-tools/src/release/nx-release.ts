@@ -59,19 +59,27 @@ export const runRelease = async (
     );
   }
 
-  writeInfo(config, "Determining the current release version...");
+  writeInfo(config, "Determining the current release versions...");
 
   const shouldCommit = nxJson.release?.git?.commit ?? true;
   const shouldStage = (shouldCommit || nxJson.release?.git?.stageChanges) ?? true;
   const shouldTag = nxJson.release?.git?.tag ?? true;
 
+  // const projects = Object.keys(projectGraph.nodes).filter(
+  //   (project: string) =>
+  //     project in projectGraph.nodes &&
+  //     projectGraph.nodes[project]?.data?.sourceRoot &&
+  //     projectGraph.nodes[project].data.sourceRoot !== config.workspaceRoot
+  // );
+
+  const projects = !nxJson.release.projects
+    ? undefined
+    : Array.isArray(nxJson.release.projects)
+      ? nxJson.release.projects
+      : [nxJson.release.projects];
+
   const { workspaceVersion, projectsVersionData } = await releaseVersion({
-    projects: Object.keys(projectGraph.nodes).filter(
-      (project: string) =>
-        project in projectGraph.nodes &&
-        projectGraph.nodes[project]?.data?.sourceRoot &&
-        projectGraph.nodes[project].data.sourceRoot !== config.workspaceRoot
-    ),
+    projects,
     dryRun: !!options.dryRun,
     verbose: true,
     preid: config.preid,
@@ -83,6 +91,7 @@ export const runRelease = async (
   writeInfo(config, "Generating the release changelog files...");
 
   await releaseChangelog({
+    projects,
     version: nxReleaseConfig.projectsRelationship !== "fixed" ? undefined : workspaceVersion,
     versionData: projectsVersionData,
     dryRun: !!options.dryRun,
