@@ -66,6 +66,12 @@ export const runRelease = async (
   const shouldTag = nxJson.release?.git?.tag ?? true;
 
   const { workspaceVersion, projectsVersionData } = await releaseVersion({
+    projects: Object.keys(projectGraph.nodes).filter(
+      (project: string) =>
+        project in projectGraph.nodes &&
+        projectGraph.nodes[project]?.data?.sourceRoot &&
+        projectGraph.nodes[project].data.sourceRoot !== config.workspaceRoot
+    ),
     dryRun: !!options.dryRun,
     verbose: true,
     preid: config.preid,
