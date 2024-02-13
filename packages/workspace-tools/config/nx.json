@@ -164,10 +164,10 @@
         "currentVersionResolver": "git-tag",
         "specifierSource": "conventional-commits",
         "skipLockFileUpdate": true
-      },
-      "git": {
-        "commit": true
       }
+    },
+    "git": {
+      "commit": true
     }
   },
   "plugins": [
