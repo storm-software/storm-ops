@@ -1,5 +1,5 @@
 import type { StormConfig } from "@storm-software/config";
-import { writeInfo, writeSuccess, writeTrace } from "@storm-software/config-tools";
+import { writeDebug, writeInfo, writeSuccess } from "@storm-software/config-tools";
 import { createNxReleaseConfig } from "nx/src/command-line/release/config/config.js";
 import {
   releaseChangelog,
@@ -39,7 +39,7 @@ export const runRelease = async (
   const projectGraph = await createProjectGraphAsync({ exitOnError: true });
   const nxJson = readNxJson();
 
-  writeTrace(config, "Calling `createNxReleaseConfig` to determine the release configuration...");
+  writeDebug(config, "Calling `createNxReleaseConfig` to determine the release configuration...");
   const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
     projectGraph,
     nxJson.release,
