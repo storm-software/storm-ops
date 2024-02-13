@@ -1,11 +1,5 @@
 import type { StormConfig } from "@storm-software/config";
-import {
-  writeDebug,
-  writeError,
-  writeInfo,
-  writeSuccess,
-  writeWarning
-} from "@storm-software/config-tools";
+import { writeError, writeInfo, writeSuccess, writeWarning } from "@storm-software/config-tools";
 import { createNxReleaseConfig } from "nx/src/command-line/release/config/config.js";
 import { filterReleaseGroups } from "nx/src/command-line/release/config/filter-release-groups.js";
 import {
