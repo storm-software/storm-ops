@@ -161,11 +161,11 @@
       }
     },
     "version": {
+      "generator": "@storm-software/workspace-tools:release-version",
       "generatorOptions": {
         "packageRoot": "dist/{projectRoot}",
         "currentVersionResolver": "git-tag",
-        "specifierSource": "conventional-commits",
-        "generator": "@storm-software/workspace-tools:release-version"
+        "specifierSource": "conventional-commits"
       }
     },
     "git": {
