@@ -19,4 +19,6 @@ export * from "./src/generators/node-library/generator";
 export * from "./src/generators/node-library/schema.d";
 export * from "./src/generators/preset/generator";
 export * from "./src/generators/preset/schema.d";
+export * from "./src/generators/release-version/generator";
+export * from "./src/generators/release-version/schema.d";
 export * from "./src/utils";

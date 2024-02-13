@@ -91,7 +91,6 @@ export const runRelease = async (
   writeInfo(config, "Generating the release changelog files...");
 
   await releaseChangelog({
-    projects,
     version: nxReleaseConfig.projectsRelationship !== "fixed" ? undefined : workspaceVersion,
     versionData: projectsVersionData,
     dryRun: !!options.dryRun,

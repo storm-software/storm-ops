@@ -149,7 +149,7 @@
         "packageRoot": "dist/{projectRoot}",
         "currentVersionResolver": "git-tag",
         "specifierSource": "conventional-commits",
-        "skipLockFileUpdate": true
+        "generator": "@storm-software/workspace-tools:release-version"
       }
     },
     "git": {
