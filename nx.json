@@ -131,9 +131,13 @@
     "sharedGlobals": []
   },
   "release": {
-    "projects": "*",
+    "projects": [
+      "packages/*"
+    ],
     "projectsRelationship": "independent",
+    "releaseTagPattern": "{projectName}-v{version}",
     "changelog": {
+      "automaticFromRef": true,
       "workspaceChangelog": false,
       "projectChangelogs": {
         "createRelease": "github",
@@ -143,12 +147,23 @@
     "version": {
       "conventionalCommits": true,
       "generatorOptions": {
+        "packageRoot": "dist/{projectRoot}",
         "currentVersionResolver": "git-tag",
-        "specifierSource": "conventional-commits"
+        "specifierSource": "conventional-commits",
+        "skipLockFileUpdate": true
+      },
+      "git": {
+        "commit": true
       }
-    },
-    "git": {
-      "commit": true
     }
-  }
+  },
+  "plugins": [
+    "@nx/plugin",
+    "@nx/js",
+    "@nx/jest",
+    "@nx/eslint",
+    "@nx/eslint-plugin",
+    "@nx/esbuild",
+    "@storm-software/workspace-tools"
+  ]
 }

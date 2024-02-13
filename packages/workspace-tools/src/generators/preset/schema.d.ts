@@ -8,7 +8,7 @@ export interface PresetGeneratorSchema {
   namespace?: string;
   description?: string;
   repositoryUrl?: string;
-  nxCloud: boolean;
+  nxCloud: "skip";
   mode: NxClientMode;
   packageManager: PackageManager;
 }

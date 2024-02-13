@@ -3,25 +3,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { getNpmPackageVersion } from "@nx/workspace/src/generators/utils/get-npm-package-version";
-import type {
-  NxClientMode,
-  PresetGeneratorSchema
-} from "@storm-software/workspace-tools";
+import type { NxClientMode, PresetGeneratorSchema } from "@storm-software/workspace-tools";
 import { createWorkspace } from "create-nx-workspace";
 import { prompt } from "enquirer";
 
 async function main() {
   try {
-    console.log(`⚡ Collecting required info to creating a Storm Workspace`);
+    console.log("⚡ Collecting required info to creating a Storm Workspace");
 
-    ["SIGTERM", "SIGINT", "SIGUSR2"].map(type => {
-      process.once(type, async () => {
+    ["SIGTERM", "SIGINT", "SIGUSR2"].map((type) => {
+      process.once(type, () => {
         try {
           console.info(`process.on ${type}`);
-          console.info(`shutdown process done, exiting with code 0`);
+          console.info("shutdown process done, exiting with code 0");
           process.exit(0);
         } catch (e) {
-          console.warn(`shutdown process failed, exiting with code 1`);
+          console.warn("shutdown process failed, exiting with code 1");
           console.error(e);
           process.exit(1);
         }
@@ -60,10 +57,7 @@ async function main() {
       namespace = response.namespace;
     }
 
-    let includeApps =
-      process.argv.length > 5 && process.argv[5]
-        ? Boolean(process.argv[5])
-        : null;
+    let includeApps = process.argv.length > 5 && process.argv[5] ? Boolean(process.argv[5]) : null;
     if (!includeApps && typeof includeApps !== "boolean") {
       const response = await prompt<{ includeApps: boolean }>({
         type: "confirm",
@@ -95,17 +89,12 @@ async function main() {
         type: "input",
         name: "repositoryUrl",
         message: "What is the workspace's Git repository's URL?",
-        initial: `https://github.com/${
-          organization ? organization : "storm-software"
-        }/${name}`
+        initial: `https://github.com/${organization ? organization : "storm-software"}/${name}`
       });
       repositoryUrl = response.repositoryUrl;
     }
 
-    let nxCloud =
-      process.argv.length > 8 && process.argv[8]
-        ? Boolean(process.argv[8])
-        : null;
+    let nxCloud = process.argv.length > 8 && process.argv[8] ? Boolean(process.argv[8]) : null;
     if (!nxCloud && typeof nxCloud !== "boolean") {
       const response = await prompt<{ nxCloud: boolean }>({
         type: "confirm",
@@ -117,9 +106,7 @@ async function main() {
       nxCloud = response.nxCloud;
     }
 
-    let mode: NxClientMode = (
-      process.argv.length > 9 ? process.argv[9] : null
-    ) as NxClientMode;
+    let mode: NxClientMode = (process.argv.length > 9 ? process.argv[9] : null) as NxClientMode;
     if (!mode) {
       mode = (
         await prompt<{ mode: "light" | "dark" }>({
@@ -138,20 +125,21 @@ async function main() {
     console.log(`⚡ Creating the Storm Workspace: ${name}`);
 
     const version = getNpmPackageVersion("@storm-software/workspace-tools");
-    const { directory } = await createWorkspace<
-      PresetGeneratorSchema & { interactive: boolean }
-    >(`@storm-software/workspace-tools@${version ? version : "latest"}`, {
-      name,
-      organization,
-      namespace,
-      description,
-      includeApps,
-      repositoryUrl,
-      packageManager: "pnpm",
-      nxCloud: false,
-      mode: "dark",
-      interactive: false
-    });
+    const { directory } = await createWorkspace<PresetGeneratorSchema & { interactive: boolean }>(
+      `@storm-software/workspace-tools@${version ? version : "latest"}`,
+      {
+        name,
+        organization,
+        namespace,
+        description,
+        includeApps,
+        repositoryUrl,
+        nxCloud: "skip",
+        packageManager: "pnpm",
+        mode: "dark",
+        interactive: false
+      }
+    );
 
     console.log(`⚡ Successfully created the workspace: ${directory}.`);
   } catch (error) {

@@ -31,8 +31,12 @@
   "type": "commonjs",
   "module": "./index.js",
   "types": "./index.d.ts",
-  "dependencies": {
-    "@nx/jest": "17.2.8"
+  "devDependencies": {
+    "jest-resolve": "^29.7.0"
+  },
+  "peerDependencies": {
+    "jest": "29.7.0",
+    "@nx/jest": "18.0.4"
   },
   "publishConfig": {
     "access": "public"

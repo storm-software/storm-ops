@@ -110,8 +110,6 @@
         ]
       }
     },
-    "lint": {},
-    "test": {},
     "nx-release-publish": {
       "cache": false,
       "inputs": [

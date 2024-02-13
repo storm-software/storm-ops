@@ -194,9 +194,9 @@ export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSche
   await formatFiles(tree);
 
   let dependencies: Record<string, string> = {
-    "@nx/devkit": "^17.2.8",
-    "@nx/jest": "^17.2.8",
-    "@nx/js": "^17.2.8",
+    "@nx/devkit": "^18.0.4",
+    "@nx/jest": "^18.0.4",
+    "@nx/js": "^18.0.4",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^11.1.0",
     "@semantic-release/exec": "^6.0.3",

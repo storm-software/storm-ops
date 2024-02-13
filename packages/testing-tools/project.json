@@ -25,10 +25,9 @@
           "esm"
         ],
         "external": [
-          "@swc/wasm",
-          "@swc/core",
+          "@nx/jest",
           "nx",
-          "@angular-devkit/architect"
+          "jest"
         ],
         "assets": [
           {
