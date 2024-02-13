@@ -1,3 +1,15 @@
+## 0.8.14 (2024-02-13)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Updated logging in the Storm-Git release hook ([669a289a](https://github.com/storm-software/storm-ops/commit/669a289a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
