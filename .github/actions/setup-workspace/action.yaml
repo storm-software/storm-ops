@@ -32,7 +32,7 @@ runs:
       shell: bash
 
     - name: setup pnpm config registry
-      run: pnpm install
+      run: pnpm install --no-frozen-lockfile
       shell: bash
 
 
