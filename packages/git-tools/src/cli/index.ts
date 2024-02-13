@@ -165,7 +165,7 @@ export async function releaseAction({
   dryRun?: boolean;
 }) {
   try {
-    writeInfo(_config, "⚡ Linting the Commit Message and running Commitizen");
+    writeInfo(_config, "⚡ Running the Storm Release and Publish process on the workspace");
     await runRelease(_config, { dryRun, project, base, head });
     writeSuccess(_config, "Release completed successfully!\n");
   } catch (error) {
