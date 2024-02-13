@@ -7,18 +7,18 @@ import {
   writeWarning
 } from "@storm-software/config-tools";
 import { createNxReleaseConfig } from "nx/src/command-line/release/config/config.js";
-import { filterReleaseGroups } from "nx/src/command-line/release/config/filter-release-groups";
+import { filterReleaseGroups } from "nx/src/command-line/release/config/filter-release-groups.js";
 import {
   releaseChangelog,
   releasePublish,
   releaseVersion
 } from "nx/src/command-line/release/index.js";
-import { gitCommit, gitTag } from "nx/src/command-line/release/utils/git";
+import { gitCommit, gitTag } from "nx/src/command-line/release/utils/git.js";
 import {
   createCommitMessageValues,
   createGitTagValues,
   handleDuplicateGitTags
-} from "nx/src/command-line/release/utils/shared";
+} from "nx/src/command-line/release/utils/shared.js";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import { createProjectGraphAsync } from "nx/src/project-graph/project-graph.js";
 
