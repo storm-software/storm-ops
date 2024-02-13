@@ -116,8 +116,8 @@ export const loadStormConfig = async (workspaceRoot?: string): Promise<StormConf
   config = StormConfigSchema.parse(
     await getDefaultConfig(
       {
-        ...configFile,
-        ...getConfigEnv()
+        ...getConfigEnv(),
+        ...configFile
       },
       _workspaceRoot
     )

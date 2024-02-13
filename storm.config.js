@@ -5,12 +5,11 @@ module.exports = {
   ci: true,
   owner: "@storm-software/development",
   worker: "stormie-bot",
-  workspaceRoot: "C:\\Development\\storm-ops",
   runtimeDirectory: "node_modules/.storm",
   repository: "https://github.com/storm-software/storm-ops",
   timezone: "America/New_York",
   locale: "en-US",
-  logLevel: "debug",
+  logLevel: "all",
   colors: {
     primary: "#1fb2a6",
     background: "#1d232a",
@@ -21,7 +20,7 @@ module.exports = {
     fatal: "#7d1a1a"
   },
   extensions: {
-    logging: {
+    telemetry: {
       fileName: "storm",
       fileExtension: "log",
       path: "tmp/storm/logs",

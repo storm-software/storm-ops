@@ -21,7 +21,7 @@ import { writeInfo } from "@storm-software/config-tools";
 import { updateLockFile } from "@nx/js/src/generators/release-version/utils/update-lock-file";
 import { withRunGenerator } from "../../base/base-generator";
 import { exec } from "node:child_process";
-import ora from "ora";
+// import ora from "ora";
 import {
   getFirstGitCommit,
   getLatestGitTagForPattern
@@ -134,13 +134,13 @@ To fix this you will either need to add a package.json file at that location, or
          * For independent projects, we need to make a request for each project individually as they will most likely have different versions.
          */
         if (!currentVersion || options.releaseGroup.projectsRelationship === "independent") {
-          const spinner = ora(
-            `${Array.from(new Array(projectName.length + 3)).join(
-              " "
-            )}Resolving the current version for tag "${tag}" on ${registry}`
-          );
-          spinner.color = "blue";
-          spinner.start();
+          // const spinner = ora(
+          //   `${Array.from(new Array(projectName.length + 3)).join(
+          //     " "
+          //   )}Resolving the current version for tag "${tag}" on ${registry}`
+          // );
+          // spinner.color = "blue";
+          // spinner.start();
 
           try {
             // Must be non-blocking async to allow spinner to render
@@ -159,13 +159,13 @@ To fix this you will either need to add a package.json file at that location, or
               );
             });
 
-            spinner.stop();
+            // spinner.stop();
 
             log(
               `📄 Resolved the current version as ${currentVersion} for tag "${tag}" from registry ${registry}`
             );
           } catch (_) {
-            spinner.stop();
+            // spinner.stop();
 
             if (options.fallbackCurrentVersionResolver === "disk") {
               log(

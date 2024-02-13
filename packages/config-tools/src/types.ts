@@ -1,11 +1,11 @@
-export type LogLevel = 0 | 10 | 20 | 30 | 40 | 45 | 60 | 70 | 100;
+export type LogLevel = 0 | 10 | 20 | 30 | 35 | 40 | 60 | 70 | 100;
 export const LogLevel = {
   SILENT: 0 as LogLevel,
   FATAL: 10 as LogLevel,
   ERROR: 20 as LogLevel,
   WARN: 30 as LogLevel,
+  SUCCESS: 35 as LogLevel,
   INFO: 40 as LogLevel,
-  SUCCESS: 45 as LogLevel,
   DEBUG: 60 as LogLevel,
   TRACE: 70 as LogLevel,
   ALL: 100 as LogLevel

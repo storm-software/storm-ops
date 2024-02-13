@@ -79,16 +79,16 @@ ${chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")(">
   }
 
   if (
-    (typeof logLevel === "number" && LogLevel.INFO >= logLevel) ||
-    (typeof logLevel === "string" && LogLevel.INFO >= getLogLevel(logLevel))
+    (typeof logLevel === "number" && LogLevel.SUCCESS >= logLevel) ||
+    (typeof logLevel === "string" && LogLevel.SUCCESS >= getLogLevel(logLevel))
   ) {
     return (message: string) => {
       console.info(
         `
-${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${chalk.bold
-          .bgHex(config?.colors?.info ? config.colors.info : "#0ea5e9")
-          .whiteBright(" ℹ Info ")}  ${chalk.hex(
-          config?.colors?.info ? config.colors.info : "#0ea5e9"
+${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(">")} ${chalk.bold
+          .bgHex(config?.colors?.success ? config.colors.success : "#087f5b")
+          .whiteBright(" ✓ Success ")}  ${chalk.hex(
+          config?.colors?.success ? config.colors.success : "#087f5b"
         )(message)}
 `
       );
@@ -102,10 +102,10 @@ ${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${
     return (message: string) => {
       console.info(
         `
-${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(">")} ${chalk.bold
-          .bgHex(config?.colors?.success ? config.colors.success : "#087f5b")
-          .whiteBright(" ✓ Success ")}  ${chalk.hex(
-          config?.colors?.success ? config.colors.success : "#087f5b"
+${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${chalk.bold
+          .bgHex(config?.colors?.info ? config.colors.info : "#0ea5e9")
+          .whiteBright(" ℹ  Info ")}  ${chalk.hex(
+          config?.colors?.info ? config.colors.info : "#0ea5e9"
         )(message)}
 `
       );
@@ -225,11 +225,9 @@ export const getStopwatch = (name: string) => {
   return () => {
     const end = process.hrtime(start);
     console.info(
-      chalk.dim(
-        `\n⏱️  The${name ? ` ${name}` : ""} process took ${Math.round(
-          end[0] * 1000 + end[1] / 1000000
-        )}ms to complete\n\n`
-      )
+      `\n⏱️  The${name ? ` ${name}` : ""} process took ${Math.round(
+        end[0] * 1000 + end[1] / 1000000
+      )}ms to complete\n\n`
     );
   };
 };
