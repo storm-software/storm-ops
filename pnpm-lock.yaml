@@ -263,8 +263,8 @@ importers:
         specifier: 5.1.1
         version: 5.1.1
       '@cspell/dict-cryptocurrencies':
-        specifier: 4.0.0
-        version: 4.0.0
+        specifier: 5.0.0
+        version: 5.0.0
       '@cspell/dict-csharp':
         specifier: 4.0.2
         version: 4.0.2
@@ -2229,10 +2229,6 @@ packages:
 
   /@cspell/dict-cpp@5.1.1:
     resolution: {integrity: sha512-Qy9fNsR/5RcQ6G85gDKFjvzh0AdgAilLQeSXPtqY21Fx1kCjUqdVVJYMmHUREgcxH6ptAxtn5knTWU4PIhQtOw==}
-    dev: false
-
-  /@cspell/dict-cryptocurrencies@4.0.0:
-    resolution: {integrity: sha512-EiZp91ATyRxTmauIQfOX9adLYCunKjHEh092rrM7o2eMXP9n7zpXAL9BK7LviL+LbB8VDOm21q+s83cKrrRrsg==}
     dev: false
 
   /@cspell/dict-cryptocurrencies@5.0.0:
