@@ -47,19 +47,21 @@ export const runRelease = async (
   process.env.GIT_COMMITTER_EMAIL = `${committerName}@users.noreply.github.com`;
   process.env.NPM_CONFIG_PROVENANCE = "true";
 
-  writeInfo(config, "Reading in the workspaces release configuration from the nx.json file...");
+  writeInfo(config, "Creating workspace Project Graph data...");
 
   const projectGraph = await createProjectGraphAsync({ exitOnError: true });
   const nxJson = readNxJson();
 
-  writeDebug(config, "Calling `createNxReleaseConfig` to determine the release configuration...");
+  writeInfo(config, "Reading in the workspaces release configuration from the nx.json file...");
   const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
     projectGraph,
     nxJson.release
   );
   if (configError) {
     throw new Error(
-      `An error occured determining the release configuration: (${configError.code}) ${configError.data}`
+      `An error occured determining the release configuration: (${
+        configError.code
+      }) ${JSON.stringify(configError.data)}`
     );
   }
 
