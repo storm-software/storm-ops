@@ -148,7 +148,8 @@
       "generatorOptions": {
         "packageRoot": "dist/{projectRoot}",
         "currentVersionResolver": "git-tag",
-        "specifierSource": "conventional-commits"
+        "specifierSource": "conventional-commits",
+        "skipLockFileUpdate": true
       }
     },
     "git": {
