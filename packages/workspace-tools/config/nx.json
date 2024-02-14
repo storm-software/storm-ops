@@ -55,6 +55,7 @@
       "!{projectRoot}/tsconfig.storybook.json"
     ],
     "sharedGlobals": [
+      "{workspaceRoot}/nx.json",
       "{workspaceRoot}/babel.config.json",
       "{workspaceRoot}/storm.json",
       "{workspaceRoot}/storm.config.js"
@@ -181,8 +182,12 @@
     "@nx/plugin",
     "@nx/js",
     "@nx/jest",
-    "@nx/eslint",
-    "@storm-software/workspace-tools"
+    {
+      "plugin": "@storm-software/workspace-tools",
+      "options": {
+        "targetName": "nx-release-publish"
+      }
+    }
   ],
   "pluginsConfig": {
     "@nx/js": {

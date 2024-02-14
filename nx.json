@@ -179,7 +179,12 @@
     "@nx/eslint",
     "@nx/eslint-plugin",
     "@nx/esbuild",
-    "@storm-software/workspace-tools",
+    {
+      "plugin": "@storm-software/workspace-tools",
+      "options": {
+        "targetName": "nx-release-publish"
+      }
+    },
     {
       "plugin": "@nx/eslint/plugin",
       "options": {
