@@ -1,9 +1,4 @@
 {
-  "pluginsConfig": {
-    "@nx/js": {
-      "analyzeSourceFiles": true
-    }
-  },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "extends": "nx/presets/npm.json",
   "affected": {
@@ -128,7 +123,9 @@
       "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/test-setup.[jt]s"
     ],
-    "sharedGlobals": []
+    "sharedGlobals": [
+      "{projectRoot}/storm.config.js"
+    ]
   },
   "release": {
     "projects": [
@@ -166,5 +163,10 @@
     "@nx/eslint-plugin",
     "@nx/esbuild",
     "@storm-software/workspace-tools"
-  ]
+  ],
+  "pluginsConfig": {
+    "@nx/js": {
+      "analyzeSourceFiles": true
+    }
+  }
 }

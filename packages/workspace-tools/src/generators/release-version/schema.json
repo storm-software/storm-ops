@@ -3,7 +3,7 @@
   "$id": "release-version",
   "version": 2,
   "title": "Storm Release Version Generator",
-  "description": "DO NOT INVOKE DIRECTLY WITH `nx generate`. Use `nx release version` instead.",
+  "description": "The release version generator used in Storm Workspaces",
   "type": "object",
   "properties": {
     "projects": {

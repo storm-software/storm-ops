@@ -4,8 +4,6 @@ module.exports = {
   organization: "storm-software",
   ci: true,
   owner: "@storm-software/development",
-  worker: "stormie-bot",
-  runtimeDirectory: "node_modules/.storm",
   repository: "https://github.com/storm-software/storm-ops",
   timezone: "America/New_York",
   locale: "en-US",
