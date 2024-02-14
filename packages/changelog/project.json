@@ -26,7 +26,8 @@
         "skipTypeCheck": true,
         "thirdParty": true,
         "format": [
-          "cjs"
+          "cjs",
+          "esm"
         ],
         "external": [
           "nx",

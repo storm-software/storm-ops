@@ -32,7 +32,7 @@ export interface StormChangelogRenderOptions extends Record<string, unknown> {
 /**
  * The Storm ChangelogRenderer for generating markdown from the given commits and other metadata.
  */
-const changelogRenderer: ChangelogRenderer = async ({
+export const changelogRenderer: ChangelogRenderer = async ({
   projectGraph,
   commits,
   releaseVersion,
