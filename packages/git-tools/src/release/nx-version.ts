@@ -36,7 +36,7 @@ import type { ProjectGraph } from "nx/src/config/project-graph.js";
 import { combineOptionsForGenerator } from "nx/src/utils/params.js";
 import { relative } from "node:path";
 import { readFileSync } from "node:fs";
-import { output, joinPathFragments, workspaceRoot } from "nx/src/devkit-exports.js";
+import { joinPathFragments, workspaceRoot } from "nx/src/devkit-exports.js";
 import { printDiff } from "nx/src/command-line/release/utils/print-changes.js";
 
 interface GeneratorData {
