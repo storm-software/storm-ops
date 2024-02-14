@@ -9,9 +9,8 @@ import {
 import { createNxReleaseConfig } from "nx/src/command-line/release/config/config.js";
 import { filterReleaseGroups } from "nx/src/command-line/release/config/filter-release-groups.js";
 import { releaseChangelog, releasePublish } from "nx/src/command-line/release/index.js";
-import { gitCommit, gitTag } from "nx/src/command-line/release/utils/git.js";
+import { gitTag } from "nx/src/command-line/release/utils/git.js";
 import {
-  createCommitMessageValues,
   createGitTagValues,
   handleDuplicateGitTags
 } from "nx/src/command-line/release/utils/shared.js";
