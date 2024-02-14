@@ -116,6 +116,11 @@ export async function releaseVersion(
 
     for (const releaseGroup of releaseGroups) {
       const releaseGroupName = releaseGroup.name;
+      writeInfo(
+        config,
+        `Running versioning for release group "${releaseGroupName}" and filtered projects within it`
+      );
+
       const releaseGroupProjectNames = Array.from(releaseGroupToFilteredProjects.get(releaseGroup));
       const projectBatches = batchProjectsByGeneratorConfig(
         projectGraph,
@@ -125,6 +130,13 @@ export async function releaseVersion(
       );
 
       for (const [generatorConfigString, projectNames] of projectBatches.entries()) {
+        writeInfo(
+          config,
+          `Running versioning for batch "${JSON.stringify(
+            projectNames
+          )}" for release-group "${releaseGroupName}"`
+        );
+
         const [generatorName, generatorOptions] = JSON.parse(generatorConfigString);
         // Resolve the generator for the batch and run versioning on the projects within the batch
         const generatorData = resolveGeneratorData({
