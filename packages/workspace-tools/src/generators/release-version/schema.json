@@ -27,7 +27,7 @@
     },
     "specifierSource": {
       "type": "string",
-      "default": "prompt",
+      "default": "conventional-commits",
       "description": "Which approach to use to determine the semver specifier used to bump the version of the project.",
       "enum": [
         "prompt",
