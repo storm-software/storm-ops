@@ -225,7 +225,7 @@ export const getStopwatch = (name: string) => {
   return () => {
     const end = process.hrtime(start);
     console.info(
-      `\n⏱️  The${name ? ` ${name}` : ""} process took ${Math.round(
+      `\n>  ⏱️  The${name ? ` ${name}` : ""} process took ${Math.round(
         end[0] * 1000 + end[1] / 1000000
       )}ms to complete\n\n`
     );

@@ -1,5 +1,5 @@
 import {
-  Tree,
+  type Tree,
   formatFiles,
   generateFiles,
   joinPathFragments,
@@ -8,17 +8,14 @@ import {
 } from "@nx/devkit";
 import { withRunGenerator } from "../../base/base-generator";
 import {
-  TypeScriptLibraryGeneratorSchema,
+  type TypeScriptLibraryGeneratorSchema,
   normalizeOptions,
   typeScriptLibraryGeneratorFn
 } from "../../base/typescript-library-generator";
 import { typesNodeVersion } from "../../utils/versions";
-import { NodeLibraryGeneratorSchema } from "./schema";
+import type { NodeLibraryGeneratorSchema } from "./schema";
 
-export async function nodeLibraryGeneratorFn(
-  tree: Tree,
-  schema: NodeLibraryGeneratorSchema
-) {
+export async function nodeLibraryGeneratorFn(tree: Tree, schema: NodeLibraryGeneratorSchema) {
   const filesDir = joinPathFragments(__dirname, "./files");
   const tsLibraryGeneratorOptions: TypeScriptLibraryGeneratorSchema = {
     ...schema,
@@ -30,9 +27,7 @@ export async function nodeLibraryGeneratorFn(
   };
 
   const options = await normalizeOptions(tree, tsLibraryGeneratorOptions);
-  const { className, name, propertyName } = names(
-    options.projectNames.projectFileName
-  );
+  const { className, name, propertyName } = names(options.projectNames.projectFileName);
 
   generateFiles(tree, filesDir, options.projectRoot, {
     ...schema,
