@@ -105,6 +105,7 @@ export const withRunGenerator =
       writeSuccess(config, `Completed running the ${name} task executor!\n`);
 
       return {
+        ...result,
         success: true
       };
     } catch (error) {

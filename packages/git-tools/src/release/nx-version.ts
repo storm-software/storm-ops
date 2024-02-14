@@ -1,5 +1,5 @@
 import type { StormConfig } from "@storm-software/config";
-import { writeError, writeInfo } from "@storm-software/config-tools";
+import { writeDebug, writeError, writeInfo } from "@storm-software/config-tools";
 import type { VersionOptions } from "nx/src/command-line/release/command-object.js";
 import {
   createNxReleaseConfig,
@@ -211,7 +211,7 @@ export async function releaseVersion(
         args.gitCommitArgs || nxReleaseConfig.version.git.commitArgs
       );
     } else if (args.stageChanges ?? nxReleaseConfig.version.git.stageChanges) {
-      output.logSingleLine("Staging changed files with git");
+      writeInfo(config, "Staging changed files with git");
       await gitAdd({
         changedFiles,
         dryRun: args.dryRun,
@@ -220,7 +220,7 @@ export async function releaseVersion(
     }
 
     if (args.gitTag ?? nxReleaseConfig.version.git.tag) {
-      output.logSingleLine("Tagging commit with git");
+      writeInfo(config, "Tagging commit with git");
       for (const tag of gitTagValues) {
         await gitTag({
           tag,
@@ -335,7 +335,7 @@ export async function releaseVersion(
       args.gitCommitArgs || nxReleaseConfig.version.git.commitArgs
     );
   } else if (args.stageChanges ?? nxReleaseConfig.version.git.stageChanges) {
-    output.logSingleLine("Staging changed files with git");
+    writeInfo(config, "Staging changed files with git");
     await gitAdd({
       changedFiles,
       dryRun: args.dryRun,
@@ -344,7 +344,7 @@ export async function releaseVersion(
   }
 
   if (args.gitTag ?? nxReleaseConfig.version.git.tag) {
-    output.logSingleLine("Tagging commit with git");
+    writeInfo(config, "Tagging commit with git");
     for (const tag of gitTagValues) {
       await gitTag({
         tag,
@@ -398,6 +398,8 @@ async function runVersionOnProjects(
     relative(process.cwd(), config.workspaceRoot),
     args.verbose
   );
+
+  writeDebug(config, `Generator options: ${JSON.stringify(combinedOpts, null, 2)}`);
 
   const releaseVersionGenerator: any = generatorData.implementationFactory();
 
