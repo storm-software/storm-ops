@@ -65,9 +65,9 @@ export const runRelease = async (
 
     writeInfo(config, "Determining the current release versions...");
 
-    const shouldCommit = nxJson.release?.git?.commit ?? true;
+    //const shouldCommit = nxJson.release?.git?.commit ?? true;
     // const shouldStage = (shouldCommit || nxJson.release?.git?.stageChanges) ?? true;
-    const shouldTag = nxJson.release?.git?.tag ?? true;
+    //const shouldTag = nxJson.release?.git?.tag ?? true;
 
     const projects = !nxJson.release.projects
       ? undefined
@@ -81,11 +81,27 @@ export const runRelease = async (
       verbose: true,
       preid: config.preid,
       stageChanges: true,
-      gitCommit: false,
-      gitTag: false
+      gitCommit: false
     });
 
     writeInfo(config, "Generating the release changelog files...");
+
+    const {
+      error: filterError,
+      releaseGroups,
+      releaseGroupToFilteredProjects
+    } = filterReleaseGroups(projectGraph, nxReleaseConfig);
+    if (filterError) {
+      writeError(config, "An error occurred filtering the release groups");
+      throw new Error(`${filterError.title}: \n${filterError.bodyLines.join("\n")}`);
+    }
+
+    // const commitMessageValues: string[] = createCommitMessageValues(
+    //   releaseGroups,
+    //   releaseGroupToFilteredProjects,
+    //   projectsVersionData,
+    //   "chore({projectName}): Release package v{version} [skip ci]"
+    // );
 
     await releaseChangelog({
       version: nxReleaseConfig.projectsRelationship !== "fixed" ? undefined : workspaceVersion,
@@ -94,11 +110,32 @@ export const runRelease = async (
       verbose: true,
       to: options.head ?? process.env.NX_HEAD,
       from: options.base ?? process.env.NX_BASE,
-      stageChanges: true,
-      gitRemote: "origin"
+      gitRemote: "origin",
+      gitCommit: true
     });
 
-    const {
+    // if (shouldTag) {
+    writeInfo(config, "Tagging commit with git");
+
+    // Resolve any git tags as early as possible so that we can hard error in case of any duplicates before reaching the actual git command
+    const gitTagValues: string[] = createGitTagValues(
+      releaseGroups,
+      releaseGroupToFilteredProjects,
+      projectsVersionData
+    );
+    handleDuplicateGitTags(gitTagValues);
+
+    for (const tag of gitTagValues) {
+      await gitTag({
+        tag,
+        message: nxReleaseConfig.git.tagMessage,
+        additionalArgs: nxReleaseConfig.git.tagArgs,
+        dryRun: false,
+        verbose: true
+      });
+    }
+
+    /*const {
       error: filterError,
       releaseGroups,
       releaseGroupToFilteredProjects
@@ -146,7 +183,7 @@ export const runRelease = async (
           verbose: true
         });
       }
-    }
+    }*/
 
     let hasNewVersion = false;
 
