@@ -69,13 +69,6 @@ export const runRelease = async (
     const shouldStage = (shouldCommit || nxJson.release?.git?.stageChanges) ?? true;
     const shouldTag = nxJson.release?.git?.tag ?? true;
 
-    // const projects = Object.keys(projectGraph.nodes).filter(
-    //   (project: string) =>
-    //     project in projectGraph.nodes &&
-    //     projectGraph.nodes[project]?.data?.sourceRoot &&
-    //     projectGraph.nodes[project].data.sourceRoot !== config.workspaceRoot
-    // );
-
     const projects = !nxJson.release.projects
       ? undefined
       : Array.isArray(nxJson.release.projects)

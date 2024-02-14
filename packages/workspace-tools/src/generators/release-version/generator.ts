@@ -65,7 +65,12 @@ Valid values are: ${validReleaseVersionPrefixes.map((s) => `"${s}"`).join(", ")}
     options.fallbackCurrentVersionResolver = "disk";
   }
 
-  const projects = options.projects;
+  const projects = options.projects.filter(
+    (project: ProjectGraphProjectNode) =>
+      project?.data?.sourceRoot &&
+      project.data.sourceRoot !== config.workspaceRoot &&
+      project?.data?.root !== config.workspaceRoot
+  );
 
   const createResolvePackageRoot =
     (customPackageRoot?: string) =>
