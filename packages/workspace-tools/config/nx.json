@@ -164,7 +164,7 @@
     "version": {
       "generator": "@storm-software/workspace-tools:release-version",
       "generatorOptions": {
-        "packageRoot": "dist/{projectRoot}",
+        "packageRoot": "{projectRoot}",
         "currentVersionResolver": "git-tag",
         "specifierSource": "conventional-commits"
       }
