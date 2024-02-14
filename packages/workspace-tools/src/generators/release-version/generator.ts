@@ -65,16 +65,22 @@ Valid values are: ${validReleaseVersionPrefixes.map((s) => `"${s}"`).join(", ")}
     options.fallbackCurrentVersionResolver = "disk";
   }
 
-  const projects = options.projects.filter(
-    (project: ProjectGraphProjectNode) =>
-      project?.data?.sourceRoot &&
-      project.data.sourceRoot !== config.workspaceRoot &&
-      project?.data?.root !== config.workspaceRoot
-  );
+  // const projects = options.projects.filter(
+  //   (project: ProjectGraphProjectNode) =>
+  //     project?.data?.sourceRoot &&
+  //     project.data.sourceRoot !== config.workspaceRoot &&
+  //     project?.data?.root !== config.workspaceRoot
+  // );
+
+  const projects = options.projects;
 
   const createResolvePackageRoot =
     (customPackageRoot?: string) =>
     (projectNode: ProjectGraphProjectNode): string => {
+      if (projectNode?.data?.root === config.workspaceRoot || projectNode?.data?.root === ".") {
+        return config.workspaceRoot;
+      }
+
       // Default to the project root if no custom packageRoot
       if (!customPackageRoot) {
         return projectNode.data.root;

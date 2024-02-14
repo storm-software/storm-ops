@@ -157,7 +157,8 @@
       "workspaceChangelog": false,
       "projectChangelogs": {
         "createRelease": "github",
-        "entryWhenNoChanges": false
+        "entryWhenNoChanges": false,
+        "generator": "@storm-software/git-tools/changelog-renderer"
       }
     },
     "version": {
