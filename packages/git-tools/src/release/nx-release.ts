@@ -66,7 +66,7 @@ export const runRelease = async (
     writeInfo(config, "Determining the current release versions...");
 
     const shouldCommit = nxJson.release?.git?.commit ?? true;
-    // const shouldStage = (shouldCommit || nxJson.release?.git?.stageChanges) ?? true;
+    const shouldStage = (shouldCommit || nxJson.release?.git?.stageChanges) ?? true;
     const shouldTag = nxJson.release?.git?.tag ?? true;
 
     const projects = !nxJson.release.projects
@@ -80,7 +80,7 @@ export const runRelease = async (
       dryRun: false,
       verbose: true,
       preid: config.preid,
-      stageChanges: true,
+      stageChanges: false,
       gitCommit: false,
       gitTag: false
     });
@@ -94,7 +94,7 @@ export const runRelease = async (
       verbose: true,
       to: options.head ?? process.env.NX_HEAD,
       from: options.base ?? process.env.NX_BASE,
-      stageChanges: true,
+      stageChanges: shouldStage,
       gitCommit: false,
       gitRemote: "origin",
       gitTag: false
