@@ -46,7 +46,6 @@
     "@commitlint/lint": "18.6.0",
     "@commitlint/types": "18.6.0",
     "any-shell-escape": "0.1.1",
-    "axios": "1.6.7",
     "chalk": "4.1.0",
     "commander": "11.1.0",
     "deep-map": "2.0.0",

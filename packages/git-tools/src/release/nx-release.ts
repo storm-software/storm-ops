@@ -7,13 +7,13 @@ import {
   writeWarning
 } from "@storm-software/config-tools";
 import { createNxReleaseConfig } from "nx/src/command-line/release/config/config.js";
-import { filterReleaseGroups } from "nx/src/command-line/release/config/filter-release-groups.js";
+// import { filterReleaseGroups } from "nx/src/command-line/release/config/filter-release-groups.js";
 import { releaseChangelog, releasePublish } from "nx/src/command-line/release/index.js";
-import { gitTag } from "nx/src/command-line/release/utils/git.js";
-import {
-  createGitTagValues,
-  handleDuplicateGitTags
-} from "nx/src/command-line/release/utils/shared.js";
+// import { gitTag } from "nx/src/command-line/release/utils/git.js";
+// import {
+//   createGitTagValues,
+//   handleDuplicateGitTags
+// } from "nx/src/command-line/release/utils/shared.js";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import { createProjectGraphAsync } from "nx/src/project-graph/project-graph.js";
 import { releaseVersion } from "./nx-version";
@@ -85,15 +85,15 @@ export const runRelease = async (
 
     writeInfo(config, "Generating the release changelog files...");
 
-    const {
-      error: filterError,
-      releaseGroups,
-      releaseGroupToFilteredProjects
-    } = filterReleaseGroups(projectGraph, nxReleaseConfig);
-    if (filterError) {
-      writeError(config, "An error occurred filtering the release groups");
-      throw new Error(`${filterError.title}: \n${filterError.bodyLines.join("\n")}`);
-    }
+    // const {
+    //   error: filterError,
+    //   releaseGroups,
+    //   releaseGroupToFilteredProjects
+    // } = filterReleaseGroups(projectGraph, nxReleaseConfig);
+    // if (filterError) {
+    //   writeError(config, "An error occurred filtering the release groups");
+    //   throw new Error(`${filterError.title}: \n${filterError.bodyLines.join("\n")}`);
+    // }
 
     // const commitMessageValues: string[] = createCommitMessageValues(
     //   releaseGroups,
@@ -110,29 +110,30 @@ export const runRelease = async (
       to: options.head ?? process.env.NX_HEAD,
       from: options.base ?? process.env.NX_BASE,
       gitRemote: "origin",
-      gitCommit: true
+      gitCommit: true,
+      gitTag: true
     });
 
     // if (shouldTag) {
     writeInfo(config, "Tagging commit with git");
 
     // Resolve any git tags as early as possible so that we can hard error in case of any duplicates before reaching the actual git command
-    const gitTagValues: string[] = createGitTagValues(
-      releaseGroups,
-      releaseGroupToFilteredProjects,
-      projectsVersionData
-    );
-    handleDuplicateGitTags(gitTagValues);
+    // const gitTagValues: string[] = createGitTagValues(
+    //   releaseGroups,
+    //   releaseGroupToFilteredProjects,
+    //   projectsVersionData
+    // );
+    // handleDuplicateGitTags(gitTagValues);
 
-    for (const tag of gitTagValues) {
-      await gitTag({
-        tag,
-        message: nxReleaseConfig.git.tagMessage,
-        additionalArgs: nxReleaseConfig.git.tagArgs,
-        dryRun: false,
-        verbose: true
-      });
-    }
+    // for (const tag of gitTagValues) {
+    //   await gitTag({
+    //     tag,
+    //     message: nxReleaseConfig.git.tagMessage,
+    //     additionalArgs: nxReleaseConfig.git.tagArgs,
+    //     dryRun: false,
+    //     verbose: true
+    //   });
+    // }
 
     /*const {
       error: filterError,

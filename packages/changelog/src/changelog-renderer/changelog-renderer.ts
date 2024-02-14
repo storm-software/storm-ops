@@ -32,7 +32,7 @@ export interface StormChangelogRenderOptions extends Record<string, unknown> {
 /**
  * The Storm ChangelogRenderer for generating markdown from the given commits and other metadata.
  */
-const stormChangelogRenderer: ChangelogRenderer = async ({
+const changelogRenderer: ChangelogRenderer = async ({
   projectGraph,
   commits,
   releaseVersion,
@@ -58,7 +58,7 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
     style: { title: "Styling" },
     ci: { title: "Continuous Integration" },
     revert: { title: "Revert" }
-  };
+  } as Record<string, { title: string }>;
 
   // If the current range of commits contains both a commit and its revert, we strip them both from the final list
   for (const commit of commits) {
@@ -98,7 +98,7 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
         releaseVersion,
         changelogRenderOptions,
         project,
-        projectGraph.nodes[project].data
+        project ? projectGraph.nodes[project].data : null
       ),
       ""
     );
@@ -181,7 +181,7 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
         continue;
       }
 
-      markdownLines.push("", `### ${commitTypes[type].title}`, "");
+      markdownLines.push("", `### ${commitTypes?.[type]?.title}`, "");
 
       const commitsInChronologicalOrder = group.reverse();
       for (const commit of commitsInChronologicalOrder) {
@@ -222,7 +222,7 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
 
       if (_authors.has(name)) {
         const entry = _authors.get(name);
-        entry.email.add(commit.author.email);
+        entry?.email.add(commit.author.email);
       } else {
         _authors.set(name, { email: new Set([commit.author.email]) });
       }
@@ -233,26 +233,28 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
       await Promise.all(
         [..._authors.keys()].map(async (authorName) => {
           const meta = _authors.get(authorName);
-          for (const email of meta.email) {
-            // For these pseudo-anonymized emails we can just extract the Github username from before the @
-            // It could either be in the format: username@ or github_id+username@
-            if (email.endsWith("@users.noreply.github.com")) {
-              const match = email.match(/^(\d+\+)?([^@]+)@users\.noreply\.github\.com$/);
-              if (match?.[2]) {
-                meta.github = match[2];
+          if (meta) {
+            for (const email of meta.email) {
+              // For these pseudo-anonymized emails we can just extract the Github username from before the @
+              // It could either be in the format: username@ or github_id+username@
+              if (email.endsWith("@users.noreply.github.com")) {
+                const match = email.match(/^(\d+\+)?([^@]+)@users\.noreply\.github\.com$/);
+                if (match?.[2]) {
+                  meta.github = match[2];
+                  break;
+                }
+              }
+
+              // Look up any other emails against the ungh.cc API
+              const { data } = await axios
+                .get<any, { data?: { user?: { username: string } } }>(
+                  `https://ungh.cc/users/find/${email}`
+                )
+                .catch(() => ({ data: { user: null } }));
+              if (data?.user) {
+                meta.github = data.user.username;
                 break;
               }
-            }
-
-            // Look up any other emails against the ungh.cc API
-            const { data } = await axios
-              .get<any, { data?: { user?: { username: string } } }>(
-                `https://ungh.cc/users/find/${email}`
-              )
-              .catch(() => ({ data: { user: null } }));
-            if (data?.user) {
-              meta.github = data.user.username;
-              break;
             }
           }
         })
@@ -284,10 +286,10 @@ const stormChangelogRenderer: ChangelogRenderer = async ({
   return markdownLines.join("\n").trim();
 };
 
-export default stormChangelogRenderer;
+export default changelogRenderer;
 
 function groupBy(items: any[], key: string) {
-  const groups = {};
+  const groups = {} as Record<string, any>;
   for (const item of items) {
     groups[item[key]] = groups[item[key]] || [];
     groups[item[key]].push(item);
@@ -338,8 +340,8 @@ function extractBreakingChangeExplanation(message: string): string | null {
 async function createVersionTitle(
   version: string,
   changelogRenderOptions: StormChangelogRenderOptions,
-  projectName?: string,
-  projectConfig?: ProjectConfiguration
+  projectName?: string | null,
+  projectConfig?: ProjectConfiguration | null
 ) {
   let previousVersion!: string;
   if (projectConfig && projectName && existsSync(projectConfig.root)) {

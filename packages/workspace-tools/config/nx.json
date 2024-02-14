@@ -157,7 +157,7 @@
       "automaticFromRef": true,
       "workspaceChangelog": false,
       "projectChangelogs": {
-        "renderer": "@storm-software/git-tools/changelog-renderer/index.cjs",
+        "renderer": "@storm-software/changelog",
         "createRelease": "github",
         "entryWhenNoChanges": false,
         "git": {

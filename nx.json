@@ -1,4 +1,9 @@
 {
+  "pluginsConfig": {
+    "@nx/js": {
+      "analyzeSourceFiles": true
+    }
+  },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "extends": "nx/presets/npm.json",
   "affected": {
@@ -106,6 +111,16 @@
         "packageRoot": "dist/{projectRoot}",
         "registry": "https://registry.npmjs.org/"
       }
+    },
+    "@nx/esbuild:esbuild": {
+      "cache": true,
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     }
   },
   "namedInputs": {
@@ -137,7 +152,7 @@
       "automaticFromRef": true,
       "workspaceChangelog": false,
       "projectChangelogs": {
-        "renderer": "@storm-software/git-tools/changelog-renderer/index.cjs",
+        "renderer": "@storm-software/changelog",
         "createRelease": "github",
         "entryWhenNoChanges": false,
         "git": {
@@ -164,11 +179,12 @@
     "@nx/eslint",
     "@nx/eslint-plugin",
     "@nx/esbuild",
-    "@storm-software/workspace-tools"
-  ],
-  "pluginsConfig": {
-    "@nx/js": {
-      "analyzeSourceFiles": true
+    "@storm-software/workspace-tools",
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
     }
-  }
+  ]
 }

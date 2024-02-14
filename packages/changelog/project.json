@@ -1,0 +1,58 @@
+{
+  "name": "changelog",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/changelog/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "cache": true,
+      "executor": "@nx/esbuild:esbuild",
+      "inputs": [
+        "default",
+        "^production"
+      ],
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/packages/changelog",
+        "tsConfig": "packages/changelog/tsconfig.lib.json",
+        "project": "packages/changelog/package.json",
+        "main": "packages/changelog/src/changelog-renderer/index.ts",
+        "deleteOutputPath": true,
+        "bundle": true,
+        "sourcemap": true,
+        "minify": false,
+        "skipTypeCheck": true,
+        "thirdParty": true,
+        "format": [
+          "cjs"
+        ],
+        "external": [
+          "nx",
+          "@swc/wasm",
+          "@swc/core",
+          "@angular-devkit/architect"
+        ]
+      }
+    },
+    "lint": {},
+    "test": {},
+    "nx-release-publish": {
+      "cache": false,
+      "inputs": [
+        "default",
+        "^production"
+      ],
+      "dependsOn": [
+        "^build"
+      ],
+      "executor": "@storm-software/workspace-tools:npm-publish",
+      "options": {
+        "packageRoot": "dist/{projectRoot}",
+        "registry": "https://registry.npmjs.org/"
+      }
+    }
+  },
+  "tags": []
+}

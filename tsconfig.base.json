@@ -22,6 +22,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
+      "@storm-software/changelog": [
+        "packages/changelog/src/index.ts"
+      ],
       "@storm-software/config": [
         "packages/config/src/index.ts"
       ],
