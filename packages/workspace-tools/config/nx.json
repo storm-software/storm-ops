@@ -166,7 +166,7 @@
       "generatorOptions": {
         "packageRoot": "dist/{projectRoot}",
         "currentVersionResolver": "git-tag",
-        "skipLockFileUpdate": true
+        "specifierSource": "conventional-commits"
       }
     },
     "git": {
