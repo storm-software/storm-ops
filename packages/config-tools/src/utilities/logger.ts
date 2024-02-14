@@ -104,7 +104,7 @@ ${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(">
         `
 ${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${chalk.bold
           .bgHex(config?.colors?.info ? config.colors.info : "#0ea5e9")
-          .whiteBright(" ℹ  Info ")}  ${chalk.hex(
+          .whiteBright("  ℹ Info  ")}  ${chalk.hex(
           config?.colors?.info ? config.colors.info : "#0ea5e9"
         )(message)}
 `

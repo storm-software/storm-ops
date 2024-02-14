@@ -359,7 +359,9 @@ To fix this you will either need to add a package.json file at that location, or
     const localPackageDependencies = resolveLocalPackageDependencies(
       tree,
       options.projectGraph,
-      projects,
+      projects.filter(
+        (project) => project?.data?.root && project?.data?.root !== config.workspaceRoot
+      ),
       projectNameToPackageRootMap,
       resolvePackageRoot,
       // includeAll when the release group is independent, as we may be filtering to a specific subset of projects, but we still want to update their dependents
