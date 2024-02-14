@@ -2,11 +2,7 @@ import type { StormConfig } from "@storm-software/config";
 import { writeError, writeInfo, writeSuccess, writeWarning } from "@storm-software/config-tools";
 import { createNxReleaseConfig } from "nx/src/command-line/release/config/config.js";
 import { filterReleaseGroups } from "nx/src/command-line/release/config/filter-release-groups.js";
-import {
-  releaseChangelog,
-  releasePublish,
-  releaseVersion
-} from "nx/src/command-line/release/index.js";
+import { releaseChangelog, releasePublish } from "nx/src/command-line/release/index.js";
 import { gitCommit, gitTag } from "nx/src/command-line/release/utils/git.js";
 import {
   createCommitMessageValues,
@@ -15,6 +11,7 @@ import {
 } from "nx/src/command-line/release/utils/shared.js";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import { createProjectGraphAsync } from "nx/src/project-graph/project-graph.js";
+import { releaseVersion } from "./nx-version";
 
 export const runRelease = async (
   config: StormConfig,
@@ -78,7 +75,7 @@ export const runRelease = async (
       ? nxJson.release.projects
       : [nxJson.release.projects];
 
-  const { workspaceVersion, projectsVersionData } = await releaseVersion({
+  const { workspaceVersion, projectsVersionData } = await releaseVersion(config, {
     projects,
     dryRun: !!options.dryRun,
     verbose: true,
@@ -119,7 +116,7 @@ export const runRelease = async (
       releaseGroups,
       releaseGroupToFilteredProjects,
       projectsVersionData,
-      "chore({projectName}): Release version {version} [skip ci]"
+      "chore({projectName}): Release package v{version} [skip ci]"
     );
 
     await gitCommit({
