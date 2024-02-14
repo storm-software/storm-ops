@@ -457,7 +457,7 @@ function extractGeneratorCollectionAndName(description: string, generatorString:
 
 function appendVersionData(
   existingVersionData: VersionData,
-  newVersionData: VersionData
+  newVersionData: VersionData = {}
 ): VersionData {
   // Mutate the existing version data
   for (const [key, value] of Object.entries(newVersionData)) {
