@@ -158,7 +158,10 @@
       "projectChangelogs": {
         "renderer": "@storm-software/git-tools/changelog-renderer/index.cjs",
         "createRelease": "github",
-        "entryWhenNoChanges": false
+        "entryWhenNoChanges": false,
+        "git": {
+          "commit": true
+        }
       }
     },
     "version": {
@@ -166,13 +169,11 @@
       "generatorOptions": {
         "packageRoot": "{projectRoot}",
         "currentVersionResolver": "git-tag",
-        "specifierSource": "conventional-commits"
+        "specifierSource": "conventional-commits",
+        "git": {
+          "stageChanges": true
+        }
       }
-    },
-    "git": {
-      "commit": true,
-      "stageChanges": true,
-      "tag": true
     }
   },
   "plugins": [
