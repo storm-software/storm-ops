@@ -129,7 +129,7 @@
   },
   "release": {
     "projects": [
-      "*"
+      "packages/*"
     ],
     "projectsRelationship": "independent",
     "releaseTagPattern": "{projectName}@{version}",

@@ -24,9 +24,7 @@
   "namedInputs": {
     "globalBuildAffectingConfig": [
       "{workspaceRoot}/tsconfig.base.json",
-      "{workspaceRoot}/package.json",
-      "{workspaceRoot}/storm.json",
-      "{workspaceRoot}/storm.config.js"
+      "{workspaceRoot}/package.json"
     ],
     "globalNonBuildAffectingConfig": [
       "{workspaceRoot}/**/biome.json",
@@ -35,6 +33,7 @@
       "{workspaceRoot}/.eslintrc.json",
       "{workspaceRoot}/.all-contributorsrc",
       "{workspaceRoot}/.markdownlint.json",
+      "{workspaceRoot}/.whitesource",
       "{workspaceRoot}/socket.yaml",
       "{workspaceRoot}/jest.config.ts"
     ],
@@ -56,7 +55,9 @@
       "!{projectRoot}/tsconfig.storybook.json"
     ],
     "sharedGlobals": [
-      "{workspaceRoot}/babel.config.json"
+      "{workspaceRoot}/babel.config.json",
+      "{workspaceRoot}/storm.json",
+      "{workspaceRoot}/storm.config.js"
     ]
   },
   "targetDefaults": {
@@ -148,7 +149,7 @@
   },
   "release": {
     "projects": [
-      "*"
+      "packages/*"
     ],
     "projectsRelationship": "independent",
     "releaseTagPattern": "{projectName}-v{version}",
