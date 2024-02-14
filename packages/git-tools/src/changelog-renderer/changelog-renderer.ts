@@ -5,7 +5,7 @@ import { type RepoSlug, formatReferences } from "nx/src/command-line/release/uti
 import { getCommitsRelevantToProjects } from "nx/src/command-line/release/utils/shared.js";
 import type { ProjectConfiguration } from "nx/src/devkit-exports.js";
 import { major } from "semver";
-import type { ChangelogRenderer } from "nx/changelog-renderer/index.js";
+import type { ChangelogRenderer } from "nx/release/changelog-renderer/index.js";
 
 /**
  * The specific options available to the default implementation of the ChangelogRenderer that nx exports
@@ -351,9 +351,8 @@ async function createVersionTitle(
   const isMajorVersion = `${major(version)}.0.0` === version.replace(/^v/, "");
   let maybeDateStr = "";
   if (changelogRenderOptions.versionTitleDate) {
-    // YYYY-MM-DD
-    const dateStr = new Date().toISOString().slice(0, 10);
-    maybeDateStr = ` (${dateStr})`;
+    // MM-DD-YYYY
+    maybeDateStr = ` (${new Date().getMonth()}-${new Date().getDay()}-${new Date().getFullYear()})`;
   }
 
   if (
