@@ -1,3 +1,30 @@
+## 1.58.0 (2024-02-15)
+
+
+### 🚀 Features
+
+- **changelog:** Added the `changelog` package to handle file creation during release ([d050648d](https://github.com/storm-software/storm-ops/commit/d050648d))
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Point the `nx.json` to the Storm ChangeLogRenderer class ([f6620cef](https://github.com/storm-software/storm-ops/commit/f6620cef))
+
+- **git-tools:** Update parameters passed to nx release functions ([1108f889](https://github.com/storm-software/storm-ops/commit/1108f889))
+
+- **workspace-tools:** Update path used on release version processing ([7902c063](https://github.com/storm-software/storm-ops/commit/7902c063))
+
+- **workspace-tools:** Update `git` property in the `nx.json` configuration ([50eb3b3b](https://github.com/storm-software/storm-ops/commit/50eb3b3b))
+
+- **workspace-tools:** Remove the root workspace project from release configuration ([572d12c2](https://github.com/storm-software/storm-ops/commit/572d12c2))
+
+- **workspace-tools:** Included updated plugin config in `nx.json` file ([477a67d5](https://github.com/storm-software/storm-ops/commit/477a67d5))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 

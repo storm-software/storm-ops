@@ -1,3 +1,26 @@
+## 1.37.0 (2024-02-15)
+
+
+### 🚀 Features
+
+- **changelog:** Added the `changelog` package to handle file creation during release ([d050648d](https://github.com/storm-software/storm-ops/commit/d050648d))
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Point the `nx.json` to the Storm ChangeLogRenderer class ([f6620cef](https://github.com/storm-software/storm-ops/commit/f6620cef))
+
+- **git-tools:** Update parameters passed to nx release functions ([1108f889](https://github.com/storm-software/storm-ops/commit/1108f889))
+
+- **git-tools:** Resolved issues around pushing changes to changelog files ([6d29c04f](https://github.com/storm-software/storm-ops/commit/6d29c04f))
+
+- **git-tools:** Resolved linting errors from previous commit ([0cc57b66](https://github.com/storm-software/storm-ops/commit/0cc57b66))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.36.14 (2024-02-13)
 
 
