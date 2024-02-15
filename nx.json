@@ -152,7 +152,6 @@
       "automaticFromRef": true,
       "workspaceChangelog": false,
       "projectChangelogs": {
-        "renderer": "./dist/packages/changelog/index.cjs",
         "createRelease": "github",
         "entryWhenNoChanges": false,
         "git": {
