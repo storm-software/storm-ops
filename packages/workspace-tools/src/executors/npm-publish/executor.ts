@@ -228,6 +228,7 @@ export async function npmPublishExecutorFn(
         writeError(config, stdoutData.error.summary);
         console.error(stdoutData.error.summary);
       }
+
       if (stdoutData.error.detail) {
         writeError(config, stdoutData.error.detail);
       }
