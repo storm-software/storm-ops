@@ -38,7 +38,7 @@
     "@nx/esbuild": "18.0.4",
     "@nxkit/style-dictionary": "4.0.0",
     "@rollup/plugin-json": "6.1.0",
-    "chalk": "4.1.0",
+    "chalk": "4.1.2",
     "decky": "1.1.1",
     "esbuild-plugin-environment": "0.3.0",
     "esbuild-plugin-handlebars": "1.0.2",
