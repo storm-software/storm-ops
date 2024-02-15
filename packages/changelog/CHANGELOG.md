@@ -1,3 +1,17 @@
+## 0.0.6 (2024-02-15)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Update the chalk version to v4.1.2 ([0d50334a](https://github.com/storm-software/storm-ops/commit/0d50334a))
+
+- **storm-ops:** Resolve issue with the pnpm version ([f124fd94](https://github.com/storm-software/storm-ops/commit/f124fd94))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.0.5 (2024-02-15)
 
 
