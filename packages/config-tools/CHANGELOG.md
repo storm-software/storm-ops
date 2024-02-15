@@ -1,3 +1,19 @@
+## 1.27.18 (2024-02-15)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Update chalk dependency for all modules ([d8a55c49](https://github.com/storm-software/storm-ops/commit/d8a55c49))
+
+- **storm-ops:** Downgrade dependencies to work with cjs task runners ([bece51de](https://github.com/storm-software/storm-ops/commit/bece51de))
+
+- **config-tools:** Update format to exlcusively cjs ([f4a4e026](https://github.com/storm-software/storm-ops/commit/f4a4e026))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.27.17 (2024-02-15)
 
 
