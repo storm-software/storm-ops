@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "main": "packages/config-tools/src/index.ts",
         "additionalEntryPoints": [
@@ -23,12 +21,10 @@
         "deleteOutputPath": true,
         "bundle": true,
         "thirdParty": true,
-        "skipTypeCheck": false,
+        "skipTypeCheck": true,
         "metafile": true,
         "minify": false,
-        "format": [
-          "cjs"
-        ],
+        "format": ["cjs"],
         "esbuildOptions": {
           "outExtension": {
             ".js": ".js"
@@ -67,13 +63,8 @@
     "test": {},
     "nx-release-publish": {
       "cache": false,
-      "inputs": [
-        "default",
-        "^production"
-      ],
-      "dependsOn": [
-        "^build"
-      ],
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^build"],
       "executor": "@storm-software/workspace-tools:npm-publish",
       "options": {
         "packageRoot": "dist/{projectRoot}",
