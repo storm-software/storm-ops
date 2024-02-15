@@ -1,3 +1,15 @@
+## 1.59.0 (2024-02-15)
+
+
+### 🚀 Features
+
+- **git-tools:** Completed release process changes and updated dependencies ([ebd33d5c](https://github.com/storm-software/storm-ops/commit/ebd33d5c))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.58.0 (2024-02-15)
 
 
