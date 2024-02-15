@@ -1,7 +1,6 @@
 import type { Tree } from "@nx/devkit";
 import {
   getStopwatch,
-  loadStormConfig,
   writeDebug,
   writeError,
   writeFatal,
@@ -9,6 +8,7 @@ import {
   writeSuccess,
   writeTrace
 } from "@storm-software/config-tools";
+import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
 import type { StormConfig } from "@storm-software/config";
 import {
   applyWorkspaceGeneratorTokens,
