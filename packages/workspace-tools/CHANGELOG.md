@@ -1,3 +1,21 @@
+## 1.59.6 (2024-02-15)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Update the chalk version to v4.1.2 ([0d50334a](https://github.com/storm-software/storm-ops/commit/0d50334a))
+
+- **storm-ops:** Resolve issue with the pnpm version ([f124fd94](https://github.com/storm-software/storm-ops/commit/f124fd94))
+
+- **workspace-tools:** Update path the logger utilities are imported from ([b04ad48e](https://github.com/storm-software/storm-ops/commit/b04ad48e))
+
+- **config-tools:** Update package type to a module to resolve import issues ([4a9649c9](https://github.com/storm-software/storm-ops/commit/4a9649c9))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.59.5 (2024-02-15)
 
 
