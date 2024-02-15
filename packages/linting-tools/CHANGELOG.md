@@ -1,3 +1,15 @@
+## 1.38.15 (2024-02-15)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Update chalk dependency for all modules ([d8a55c49](https://github.com/storm-software/storm-ops/commit/d8a55c49))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 
 
 
