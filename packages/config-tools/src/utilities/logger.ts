@@ -3,6 +3,22 @@ import { LogLevel } from "../types";
 import type { StormConfig } from "@storm-software/config";
 import { getLogLevel } from "./get-log-level";
 
+// Annoying chalk polyfill to temporarily fix the issue with the `chalk` import
+const chalkDefault = {
+  hex: (_: string) => (message: string) => message,
+  bgHex: (_: string) => ({
+    whiteBright: (message: string) => message
+  }),
+  whiteBright: (message: string) => message,
+  bold: {
+    hex: (_: string) => (message: string) => message,
+    bgHex: (_: string) => ({
+      whiteBright: (message: string) => message
+    }),
+    whiteBright: (message: string) => message
+  }
+} as any;
+
 /**
  * Get the log function for a log level
  *
@@ -14,6 +30,11 @@ export const getLogFn = (
   config: Partial<StormConfig> = {},
   logLevel: number | LogLevel = LogLevel.INFO
 ): ((message: string) => void) => {
+  let _chalk = chalk;
+  if (!_chalk?.hex || !_chalk?.bold?.hex || !_chalk?.bgHex || !_chalk?.whiteBright) {
+    _chalk = chalkDefault;
+  }
+
   if (
     (typeof logLevel === "number" &&
       (logLevel >= getLogLevel(config.logLevel ?? process.env?.STORM_LOG_LEVEL) ||
