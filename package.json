@@ -97,7 +97,7 @@
   "packageManager": "pnpm@8.14.3",
   "engines": {
     "node": ">=20.11.0",
-    "pnpm": ">=8.14.3"
+    "pnpm": ">=8.10.2"
   },
   "namespace": "@storm-software",
   "nx": {
