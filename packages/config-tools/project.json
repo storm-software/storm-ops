@@ -27,8 +27,7 @@
         "metafile": true,
         "minify": true,
         "format": [
-          "cjs",
-          "esm"
+          "cjs"
         ],
         "assets": [
           {
