@@ -23,11 +23,12 @@
         "deleteOutputPath": true,
         "bundle": true,
         "thirdParty": true,
-        "skipTypeCheck": true,
+        "skipTypeCheck": false,
         "metafile": true,
-        "minify": true,
+        "minify": false,
         "format": [
-          "cjs"
+          "cjs",
+          "esm"
         ],
         "assets": [
           {

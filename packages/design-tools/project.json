@@ -13,7 +13,6 @@
         "outputPath": "dist/packages/design-tools",
         "main": "packages/design-tools/src/index.ts",
         "tsConfig": "packages/design-tools/tsconfig.lib.json",
-        "generatePackageJson": true,
         "format": [
           "cjs"
         ],
