@@ -139,7 +139,9 @@
       "!{projectRoot}/test-setup.[jt]s"
     ],
     "sharedGlobals": [
-      "{projectRoot}/storm.config.js"
+      "{workspaceRoot}/tsconfig.base.json",
+      "{workspaceRoot}/storm.config.js",
+      "{workspaceRoot}/**/biome.json"
     ]
   },
   "release": {
