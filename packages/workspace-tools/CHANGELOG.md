@@ -1,3 +1,22 @@
+## 1.59.2 (2024-02-15)
+
+
+### 🚀 Features
+
+- **git-tools:** Completed release process changes and updated dependencies ([ebd33d5c](https://github.com/storm-software/storm-ops/commit/ebd33d5c))
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Update chalk dependency for all modules ([d8a55c49](https://github.com/storm-software/storm-ops/commit/d8a55c49))
+
+- **storm-ops:** Downgrade dependencies to work with cjs task runners ([bece51de](https://github.com/storm-software/storm-ops/commit/bece51de))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.59.1 (2024-02-15)
 
 
