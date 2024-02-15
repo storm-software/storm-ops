@@ -8,7 +8,6 @@ import {
   writeSuccess,
   writeTrace
 } from "@storm-software/config-tools";
-import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
 import type { StormConfig } from "@storm-software/config";
 import {
   applyWorkspaceExecutorTokens,
@@ -20,6 +19,7 @@ import type {
   BaseExecutorResult,
   BaseExecutorSchema
 } from "../../declarations";
+const { loadStormConfig } = require("@storm-software/config-tools/create-storm-config");
 
 export const withRunExecutor =
   <TExecutorSchema extends BaseExecutorSchema = BaseExecutorSchema>(

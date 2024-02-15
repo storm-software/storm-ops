@@ -8,7 +8,6 @@ import {
   writeSuccess,
   writeTrace
 } from "@storm-software/config-tools";
-import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
 import type { StormConfig } from "@storm-software/config";
 import {
   applyWorkspaceGeneratorTokens,
@@ -16,6 +15,7 @@ import {
 } from "../utils/apply-workspace-tokens";
 import { getWorkspaceRoot } from "../utils/get-workspace-root";
 import type { BaseGeneratorOptions, BaseGeneratorResult } from "../../declarations";
+const { loadStormConfig } = require("@storm-software/config-tools/create-storm-config");
 
 export const withRunGenerator =
   <TGeneratorSchema = any>(
