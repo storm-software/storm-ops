@@ -54,9 +54,9 @@ export const getLogFn = (
     return (message: string) => {
       console.error(
         `
-${chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")} ${chalk.bold
+${_chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")} ${_chalk.bold
           .bgHex(config?.colors?.fatal ? config.colors.fatal : "#7d1a1a")
-          .whiteBright(" 💀 Fatal ")}  ${chalk.hex(
+          .whiteBright(" 💀 Fatal ")}  ${_chalk.hex(
           config?.colors?.error ? config.colors.error : "#1fb2a6"
         )(message)}
 
@@ -72,9 +72,9 @@ ${chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")} 
     return (message: string) => {
       console.error(
         `
-${chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")} ${chalk.bold
+${_chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")} ${_chalk.bold
           .bgHex(config?.colors?.error ? config.colors.error : "#7d1a1a")
-          .whiteBright(" ✘ Error ")}  ${chalk.hex(
+          .whiteBright(" ✘ Error ")}  ${_chalk.hex(
           config?.colors?.error ? config.colors.error : "#7d1a1a"
         )(message)}
 `
@@ -89,9 +89,9 @@ ${chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")} 
     return (message: string) => {
       console.warn(
         `
-${chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")("> ")} ${chalk.bold
+${_chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")("> ")} ${_chalk.bold
           .bgHex(config?.colors?.warning ? config.colors.warning : "#fcc419")
-          .whiteBright(" ⚠ Warn ")}  ${chalk.hex(
+          .whiteBright(" ⚠ Warn ")}  ${_chalk.hex(
           config?.colors?.warning ? config.colors.warning : "#fcc419"
         )(message)}
 `
@@ -106,9 +106,9 @@ ${chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")(">
     return (message: string) => {
       console.info(
         `
-${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(">")} ${chalk.bold
+${_chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(">")} ${_chalk.bold
           .bgHex(config?.colors?.success ? config.colors.success : "#087f5b")
-          .whiteBright(" ✓ Success ")}  ${chalk.hex(
+          .whiteBright(" ✓ Success ")}  ${_chalk.hex(
           config?.colors?.success ? config.colors.success : "#087f5b"
         )(message)}
 `
@@ -123,9 +123,9 @@ ${chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(">
     return (message: string) => {
       console.info(
         `
-${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${chalk.bold
+${_chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${_chalk.bold
           .bgHex(config?.colors?.info ? config.colors.info : "#0ea5e9")
-          .whiteBright("  ℹ Info  ")}  ${chalk.hex(
+          .whiteBright("  ℹ Info  ")}  ${_chalk.hex(
           config?.colors?.info ? config.colors.info : "#0ea5e9"
         )(message)}
 `
@@ -140,9 +140,9 @@ ${chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${
     return (message: string) => {
       console.debug(
         `
-${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${chalk.bold
+${_chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${_chalk.bold
           .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-          .whiteBright(" 🛠  Debug ")}  ${chalk.hex(
+          .whiteBright(" 🛠  Debug ")}  ${_chalk.hex(
           config?.colors?.primary ? config.colors.primary : "#1fb2a6"
         )(message)}
 `
@@ -153,9 +153,9 @@ ${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">
   return (message: string) => {
     console.log(
       `
-${chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${chalk.bold
+${_chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${_chalk.bold
         .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-        .whiteBright(" ✉ System ")}  ${chalk.hex(
+        .whiteBright(" ✉ System ")}  ${_chalk.hex(
         config?.colors?.primary ? config.colors.primary : "#1fb2a6"
       )(message)}
 `
