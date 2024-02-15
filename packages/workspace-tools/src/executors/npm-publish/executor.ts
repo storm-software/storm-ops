@@ -2,7 +2,7 @@ import { type ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devki
 import { execSync } from "node:child_process";
 import type { NpmPublishExecutorSchema } from "./schema";
 import chalk = require("chalk");
-import { writeError, writeInfo, writeWarning } from "@storm-software/config-tools/utilities/logger";
+import { writeError, writeInfo, writeWarning } from "@storm-software/config-tools";
 import type { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
 
