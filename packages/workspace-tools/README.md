@@ -16,7 +16,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.org" target="_blank">stormsoftware.org</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.48.7-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
+[![Version](https://img.shields.io/badge/version-1.59.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
 [![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with docusaurus](https://img.shields.io/badge/documented_with-docusaurus-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://docusaurus.io/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 > [!IMPORTANT]
@@ -118,6 +118,7 @@ The following executor options are available:
  | minify      | `boolean`    | Should the build process minify the output files?     |     | 
  | verbose      | `boolean`    | Should write extra log outputs with details from the executor.     |     | 
  | skipNativeModulesPlugin      | `boolean`    | Should we skip adding the Native Node Modules ESBuild plugin.     |     | 
+ | useJsxModule      | `boolean`    | Should the build process use the \`jsx\` module for JSX support?     |     | 
  | shims      | `boolean`    | Should the build process add shims for node.js modules that are not available in the browser?     |     | 
  | define      | `object`    | Define global constants that can be used in the source code. The value will be converted into a stringified JSON.     |     | 
  | env      | `object`    | Define environment variables that can be used in the source code. The value will be converted into a stringified JSON.     |     | 
@@ -255,6 +256,34 @@ The following executor options are available:
 
 
 **Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+
+
+
+## Npm Publish executor
+
+Publish a package to the NPM registry
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:npm-publish
+```
+
+**Please note:** _The npm-publish executor should be included in the desired projects's `project.json` file._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| packageRoot      | `string`    | The root directory of the directory (containing a manifest file at its root) to publish. Defaults to the project root.     |     | 
+ | registry      | `string`    | The registry to publish the package to.     |     | 
+ | tag      | `string`    | The distribution tag to apply to the published package.     |     | 
+ | dryRun      | `boolean`    | Whether to run the command without actually publishing the package to the registry.     |     | 
+
 
 
 
@@ -471,6 +500,31 @@ The following executor options are available:
  | outputPath      | `string`    | The output path of the generated files.     |     | 
  | deleteOutputPath      | `boolean`    | Delete the output path before building.     | `true`     | 
  | platform      | `string`    | Build only the passed platform defined in the configuration.     |     | 
+
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+
+
+
+## Storm Release Version Generator
+
+The release version generator used in Storm Workspaces
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| **projects \***    | `object[]`   | The ProjectGraphProjectNodes being versioned in the current execution.     |     | 
+ | **projectGraph \***    | `object`    | ProjectGraph instance     |     | 
+ | specifier      | `string`    | Exact version or semver keyword to apply to the selected release group. Overrides specifierSource.     |     | 
+ | **releaseGroup \***    | `object`    | The resolved release group configuration, including name, relevant to all projects in the current execution.     |     | 
+ | specifierSource      | "prompt" \| "conventional-commits"     | Which approach to use to determine the semver specifier used to bump the version of the project.     | "conventional-commits"     | 
+ | preid      | `string`    | The optional prerelease identifier to apply to the version, in the case that specifier has been set to prerelease.     |     | 
+ | packageRoot      | `string`    | The root directory of the directory (containing a manifest file at its root) to publish. Defaults to the project root     |     | 
+ | currentVersionResolver      | "registry" \| "disk" \| "git-tag"     | Which approach to use to determine the current version of the project.     | "disk"     | 
+ | currentVersionResolverMetadata      | `object`    | Additional metadata to pass to the current version resolver.     | `[object Object]`     | 
 
 
 **Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 

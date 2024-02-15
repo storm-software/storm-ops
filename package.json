@@ -63,7 +63,9 @@
     "@biomejs/biome": "1.5.3",
     "@nx/devkit": "18.0.4",
     "@nx/esbuild": "18.0.4",
+    "@nx/eslint": "18.0.4",
     "@nx/eslint-plugin": "18.0.4",
+    "@nx/jest": "18.0.4",
     "@nx/js": "18.0.4",
     "@nx/plugin": "18.0.4",
     "@nx/workspace": "18.0.4",
@@ -84,6 +86,7 @@
     "jest-environment-node": "29.7.0",
     "lefthook": "1.6.1",
     "nx": "18.0.4",
+    "prettier": "3.2.5",
     "rimraf": "5.0.5",
     "ts-jest": "29.1.2",
     "ts-node": "10.9.2",
@@ -124,10 +127,5 @@
       "tsup@8.0.0": "patches/tsup@8.0.0.patch"
     }
   },
-  "triggerEmptyDevReleaseByIncrementingThisNumber": 0,
-  "devDependencies": {
-    "@nx/eslint": "18.0.4",
-    "@nx/jest": "18.0.4",
-    "prettier": "^2.6.2"
-  }
+  "triggerEmptyDevReleaseByIncrementingThisNumber": 0
 }
