@@ -1,3 +1,21 @@
+## 1.27.25 (2024-02-15)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Update the chalk version to v4.1.2 ([0d50334a](https://github.com/storm-software/storm-ops/commit/0d50334a))
+
+- **config-tools:** Changed the module type of the package ([d5571d36](https://github.com/storm-software/storm-ops/commit/d5571d36))
+
+- **storm-ops:** Resolve issue with the pnpm version ([f124fd94](https://github.com/storm-software/storm-ops/commit/f124fd94))
+
+- **config-tools:** Added back the esm option to build ([9e4171d0](https://github.com/storm-software/storm-ops/commit/9e4171d0))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.27.24 (2024-02-15)
 
 
