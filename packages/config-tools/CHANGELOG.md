@@ -1,3 +1,15 @@
+## 1.27.23 (2024-02-15)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Update the chalk version to v4.1.2 ([0d50334a](https://github.com/storm-software/storm-ops/commit/0d50334a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.27.22 (2024-02-15)
 
 
