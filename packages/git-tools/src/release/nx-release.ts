@@ -111,6 +111,7 @@ export const runRelease = async (
       from: options.base ?? process.env.NX_BASE,
       gitRemote: "origin",
       gitCommit: true,
+      gitCommitMessage: "chore(release): Publish updates to monorepo [skip ci]",
       gitTag: true
     });
 

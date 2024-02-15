@@ -160,7 +160,6 @@
       "projectChangelogs": {
         "renderer": "@storm-software/changelog",
         "createRelease": "github",
-        "entryWhenNoChanges": false,
         "git": {
           "commit": true
         }
