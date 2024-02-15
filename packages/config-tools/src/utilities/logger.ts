@@ -1,4 +1,4 @@
-import * as chalk from "chalk";
+import chalk = require("chalk");
 import { LogLevel } from "../types";
 import type { StormConfig } from "@storm-software/config";
 import { getLogLevel } from "./get-log-level";
