@@ -556,7 +556,7 @@ importers:
         specifier: 6.1.0
         version: 6.1.0(rollup@4.10.0)
       '@storm-software/config':
-        specifier: latest
+        specifier: 1.2.22
         version: link:../config
       '@storm-software/config-tools':
         specifier: workspace:*
