@@ -41,7 +41,7 @@
         ],
         "assets": [
           {
-            "input": "./packages/config",
+            "input": "./packages/changelog",
             "glob": "*.md",
             "output": "."
           },
@@ -51,7 +51,7 @@
             "output": "."
           },
           {
-            "input": "./packages/config",
+            "input": "./packages/changelog",
             "glob": "declarations.d.ts",
             "output": "."
           }
