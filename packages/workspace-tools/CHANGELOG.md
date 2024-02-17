@@ -1,3 +1,15 @@
+## 1.59.12 (2024-02-17)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Ensure only storm env values are displayed ([2fdb5e53](https://github.com/storm-software/storm-ops/commit/2fdb5e53))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.59.11 (2024-02-17)
 
 
