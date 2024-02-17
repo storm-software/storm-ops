@@ -26,14 +26,35 @@
         "skipTypeCheck": true,
         "thirdParty": true,
         "format": [
-          "cjs",
-          "esm"
+          "cjs"
         ],
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".js"
+          }
+        },
         "external": [
           "nx",
           "@swc/wasm",
           "@swc/core",
           "@angular-devkit/architect"
+        ],
+        "assets": [
+          {
+            "input": "./packages/config",
+            "glob": "*.md",
+            "output": "."
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "."
+          },
+          {
+            "input": "./packages/config",
+            "glob": "declarations.d.ts",
+            "output": "."
+          }
         ]
       }
     },
