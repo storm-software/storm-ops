@@ -55,6 +55,7 @@
           "@swc/wasm",
           "prettier",
           "esbuild",
+          "zod",
           "nx"
         ],
         "assets": [

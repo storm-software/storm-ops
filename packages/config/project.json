@@ -19,7 +19,7 @@
         "deleteOutputPath": true,
         "bundle": true,
         "thirdParty": true,
-        "skipTypeCheck": true,
+        "skipTypeCheck": false,
         "metafile": true,
         "minify": true,
         "format": [
