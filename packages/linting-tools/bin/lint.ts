@@ -8,13 +8,18 @@ import {
 } from "@storm-software/config-tools";
 import { createProgram } from "../src/cli";
 
-const config = await loadStormConfig();
-handleProcess(config);
+const handle = async () => {
+  const config = await loadStormConfig();
+  handleProcess(config);
 
-const program = createProgram(config);
-program.exitOverride();
+  const program = createProgram(config);
+  program.exitOverride();
 
-await program.parseAsync(process.argv);
+  await program.parseAsync(process.argv);
 
-writeSuccess(config, "Code linting and fixing completed successfully!");
-exitWithSuccess(config);
+  writeSuccess(config, "Code linting and fixing completed successfully!");
+};
+
+handle().then(() => {
+  loadStormConfig().then((config) => exitWithSuccess(config));
+});

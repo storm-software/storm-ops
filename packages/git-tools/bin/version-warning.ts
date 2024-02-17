@@ -3,8 +3,13 @@
 import { exitWithSuccess, handleProcess, loadStormConfig } from "@storm-software/config-tools";
 import { checkPackageVersion } from "../src/utilities/check-package-version";
 
-const config = await loadStormConfig();
-handleProcess(config);
+const handle = async () => {
+  const config = await loadStormConfig();
+  handleProcess(config);
 
-checkPackageVersion(process.argv.slice(1));
-exitWithSuccess(config);
+  checkPackageVersion(process.argv.slice(1));
+};
+
+handle().then(() => {
+  loadStormConfig().then((config) => exitWithSuccess(config));
+});

@@ -28,7 +28,6 @@
     "email": "contact@stormsoftware.org",
     "url": "https://stormsoftware.org"
   },
-  "type": "module",
   "bin": {
     "storm-git": "./bin/git.js",
     "storm-version-warning": "./bin/version-warning.js",

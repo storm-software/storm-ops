@@ -10,6 +10,7 @@ overrides:
   chalk: 4.1.2
   tough-cookie: '>=4.1.3'
   request: '>=2.88.2'
+  load-plugin: 3.0.0
   '@cypress/request': '>=3.0.0'
   create-storm-workspace: workspace:*
   '@storm-software/workspace-tools': workspace:*
@@ -511,7 +512,7 @@ importers:
         specifier: 11.2.0
         version: 11.2.0(supports-color@9.4.0)
       vfile-reporter:
-        specifier: 8.1.0
+        specifier: ^8.1.0
         version: 8.1.0
     devDependencies:
       '@types/eslint':
@@ -3043,49 +3044,6 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@npmcli/config@6.4.0:
-    resolution: {integrity: sha512-/fQjIbuNVIT/PbXvw178Tm97bxV0E0nVUFKHivMKtSI2pcs8xKdaWkHJxf9dTI0G/y5hp/KuCvgcUu5HwAtI1w==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-    dependencies:
-      '@npmcli/map-workspaces': 3.0.4
-      ci-info: 3.9.0
-      ini: 4.1.1
-      nopt: 7.2.0
-      proc-log: 3.0.0
-      read-package-json-fast: 3.0.2
-      semver: 7.5.4
-      walk-up-path: 3.0.1
-    dev: false
-
-  /@npmcli/config@8.0.1:
-    resolution: {integrity: sha512-NKGmMYv/YTLwJr+qK9CvADSe82NTM9AFwFFpsZpVcPCT3XTdxvJBdXi8xvXWjHSCMb0Cb+7FtU/a5qqguCOhxA==}
-    engines: {node: ^16.14.0 || >=18.0.0}
-    dependencies:
-      '@npmcli/map-workspaces': 3.0.4
-      ci-info: 3.9.0
-      ini: 4.1.1
-      nopt: 7.2.0
-      proc-log: 3.0.0
-      read-package-json-fast: 3.0.2
-      semver: 7.5.4
-      walk-up-path: 3.0.1
-    dev: false
-
-  /@npmcli/map-workspaces@3.0.4:
-    resolution: {integrity: sha512-Z0TbvXkRbacjFFLpVpV0e2mheCh+WzQpcqL+4xp49uNJOxOnIAPZyXtUxZ5Qn3QBTGKA11Exjd9a5411rBrhDg==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-    dependencies:
-      '@npmcli/name-from-folder': 2.0.0
-      glob: 10.3.10
-      minimatch: 9.0.3
-      read-package-json-fast: 3.0.2
-    dev: false
-
-  /@npmcli/name-from-folder@2.0.0:
-    resolution: {integrity: sha512-pwK+BfEBZJbKdNYpHHRTNBwBoqrN/iIMO0AiGvYsp3Hoaq0WbgGSWQR6SCldZovoDpY3yje5lkFUe6gsDgJ2vg==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-    dev: false
-
   /@nrwl/devkit@18.0.4(nx@18.0.4):
     resolution: {integrity: sha512-fKHnjg4/9MdFd2U4e8p6ja9fRa864DCyF70kB4YUB9NuUIgWLQ15Uj6wXC3xjdXmxQRyHDa7ORodVoFzdo4UCg==}
     dependencies:
@@ -4638,11 +4596,6 @@ packages:
   /abab@2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
     deprecated: Use your platform's native atob() and btoa() methods instead
-    dev: false
-
-  /abbrev@2.0.0:
-    resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dev: false
 
   /abort-controller@3.0.0:
@@ -7019,6 +6972,11 @@ packages:
       pend: 1.2.0
     dev: false
 
+  /figgy-pudding@3.5.2:
+    resolution: {integrity: sha512-0btnI/H8f2pavGMN8w40mlSKOfTK2SVJmBfBeVIj3kNw0swwgzyRq0d5TJVOwodFmtvpPeWPN/MCcfuWF0Ezbw==}
+    deprecated: This module is no longer supported.
+    dev: false
+
   /figures@3.2.0:
     resolution: {integrity: sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg==}
     engines: {node: '>=8'}
@@ -7107,6 +7065,13 @@ packages:
   /find-up-simple@1.0.0:
     resolution: {integrity: sha512-q7Us7kcjj2VMePAa02hDAF6d+MzsdsAWEwYyOpwUtlerRBkOEPBCRZrAV4XfcSN8fHAgaD0hP7miwoay6DCprw==}
     engines: {node: '>=18'}
+    dev: false
+
+  /find-up@3.0.0:
+    resolution: {integrity: sha512-1yD6RmLI1XBfxugvORwlck6f75tYL+iR0jqwsOrOxMZyGYqUuDhJ0l4AXdO1iX/FTs9cBAMEk1gWSEx1kSbylg==}
+    engines: {node: '>=6'}
+    dependencies:
+      locate-path: 3.0.0
     dev: false
 
   /find-up@4.1.0:
@@ -7970,10 +7935,6 @@ packages:
     dependencies:
       pkg-dir: 4.2.0
       resolve-cwd: 3.0.0
-
-  /import-meta-resolve@2.2.2:
-    resolution: {integrity: sha512-f8KcQ1D80V7RnqVm+/lirO9zkOxjGxhaTC1IPrBGd3MEfNgmNG67tSUO9gTi2F3Blr2Az6g1vocaxzkVnWl9MA==}
-    dev: false
 
   /import-meta-resolve@4.0.0:
     resolution: {integrity: sha512-okYUR7ZQPH+efeuMJGlq4f8ubUgO50kByRPyt/Cy1Io4PSRsPjxME+YlVaCOx+NIToW7hCsZNFJyTPFFKepRSA==}
@@ -9076,6 +9037,15 @@ packages:
       type-check: 0.4.0
     dev: false
 
+  /libnpmconfig@1.2.1:
+    resolution: {integrity: sha512-9esX8rTQAHqarx6qeZqmGQKBNZR5OIbl/Ayr0qQDy3oXja2iFVQQI81R6GZ2a02bSNZ9p3YOGX1O6HHCb1X7kA==}
+    deprecated: This module is not used anymore. npm config is parsed by npm itself and by @npmcli/config
+    dependencies:
+      figgy-pudding: 3.5.2
+      find-up: 3.0.0
+      ini: 1.3.8
+    dev: false
+
   /lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
     engines: {node: '>=10'}
@@ -9098,23 +9068,24 @@ packages:
     resolution: {integrity: sha512-wM1+Z03eypVAVUCE7QdSqpVIvelbOakn1M0bPDoA4SGWPx3sNDVUiMo3L6To6WWGClB7VyXnhQ4Sn7gxiJbE6A==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  /load-plugin@5.1.0:
-    resolution: {integrity: sha512-Lg1CZa1CFj2CbNaxijTL6PCbzd4qGTlZov+iH2p5Xwy/ApcZJh+i6jMN2cYePouTfjJfrNu3nXFdEw8LvbjPFQ==}
+  /load-plugin@3.0.0:
+    resolution: {integrity: sha512-od7eKCCZ62ITvFf8nHHrIiYmgOHb4xVNDRDqxBWSaao5FZyyZVX8OmRCbwjDGPrSrgIulwPNyBsWCGnhiDC0oQ==}
     dependencies:
-      '@npmcli/config': 6.4.0
-      import-meta-resolve: 2.2.2
-    dev: false
-
-  /load-plugin@6.0.1:
-    resolution: {integrity: sha512-YZyxJaWfN4F1xfPCyKFNIOL26vlFukmJY7wegxsriav4y2/0ZiICota6uFvyy52GjUj+tsPSjGLX+2m7kiU0+g==}
-    dependencies:
-      '@npmcli/config': 8.0.1
-      import-meta-resolve: 4.0.0
+      libnpmconfig: 1.2.1
+      resolve-from: 5.0.0
     dev: false
 
   /load-tsconfig@0.2.5:
     resolution: {integrity: sha512-IXO6OCs9yg8tMKzfPZ1YmheJbZCiEsnBdcB03l0OcfK9prKnJb96siuHCr5Fl37/yo9DnKU+TLpxzTUspw9shg==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dev: false
+
+  /locate-path@3.0.0:
+    resolution: {integrity: sha512-7AO748wWnIhNqAuaty2ZWHkQHRSNfPVIsPIfwEOWO22AmaoVrWavlOcMR5nzTLNYvp36X220/maaRsrec1G65A==}
+    engines: {node: '>=6'}
+    dependencies:
+      p-locate: 3.0.0
+      path-exists: 3.0.0
     dev: false
 
   /locate-path@5.0.0:
@@ -10962,14 +10933,6 @@ packages:
   /node-releases@2.0.14:
     resolution: {integrity: sha512-y10wOWt8yZpqXmOgRo77WaHEmhYQYGNA6y421PKsKYWEK8aW+cqAphborZDhqfyKrbZEN92CN1X2KbafY2s7Yw==}
 
-  /nopt@7.2.0:
-    resolution: {integrity: sha512-CVDtwCdhYIvnAzFoJ6NJ6dX3oga9/HyciQDnG1vQDjSLMeKLJ4A93ZqYKDrgYSr1FBY5/hMYC+2VCi24pgpkGA==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-    hasBin: true
-    dependencies:
-      abbrev: 2.0.0
-    dev: false
-
   /normalize-package-data@2.5.0:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
     dependencies:
@@ -11006,11 +10969,6 @@ packages:
   /normalize-url@8.0.0:
     resolution: {integrity: sha512-uVFpKhj5MheNBJRTiMZ9pE/7hD1QTeEvugSJW/OmLzAp78PB5O6adfMNTvmfKhXBkvCzC+rqifWcVYpGFwTjnw==}
     engines: {node: '>=14.16'}
-    dev: false
-
-  /npm-normalize-package-bin@3.0.1:
-    resolution: {integrity: sha512-dMxCf+zZ+3zeQZXKxmyuCKlIDPGuv8EF940xbkC4kQVDTtqoh6rJFO+JTKSA6/Rwi0getWmtuy4Itup0AMcaDQ==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dev: false
 
   /npm-package-arg@11.0.1:
@@ -11238,6 +11196,13 @@ packages:
       yocto-queue: 1.0.0
     dev: false
 
+  /p-locate@3.0.0:
+    resolution: {integrity: sha512-x+12w/To+4GFfgJhBEpiDcLozRJGegY+Ei7/z0tSLkMmxGZNybVMSfWj9aJn8Z5Fc7dBUNJOOVgPv2H7IwulSQ==}
+    engines: {node: '>=6'}
+    dependencies:
+      p-limit: 2.3.0
+    dev: false
+
   /p-locate@4.1.0:
     resolution: {integrity: sha512-R79ZZ/0wAxKGu3oYMlz8jy/kbhsNrS7SKZ7PxEHBgJ5+F2mtFW2fK2cOtBh1cHYkQsbzFV7I+EoRKe6Yt0oK7A==}
     engines: {node: '>=8'}
@@ -11441,6 +11406,11 @@ packages:
     dependencies:
       dot-case: 3.0.4
       tslib: 2.6.2
+    dev: false
+
+  /path-exists@3.0.0:
+    resolution: {integrity: sha512-bpC7GYwiDYQ4wYLe+FA8lhRjhQCMcQGuSgGGqDkg/QerRWw9CmGRT0iSOVRSZJ29NMLZgIzqaljJ63oaL4NIJQ==}
+    engines: {node: '>=4'}
     dev: false
 
   /path-exists@4.0.0:
@@ -11952,14 +11922,6 @@ packages:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}
     dependencies:
       pify: 2.3.0
-    dev: false
-
-  /read-package-json-fast@3.0.2:
-    resolution: {integrity: sha512-0J+Msgym3vrLOUB3hzQCuZHII0xkNGCtz/HJH9xZshwv9DbDwkw1KaE3gx/e2J5rpEY5rtOy6cyhKOPrkP7FZw==}
-    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
-    dependencies:
-      json-parse-even-better-errors: 3.0.0
-      npm-normalize-package-bin: 3.0.1
     dev: false
 
   /read-pkg-up@7.0.1:
@@ -13794,7 +13756,7 @@ packages:
       is-buffer: 2.0.5
       is-empty: 1.2.0
       is-plain-obj: 4.1.0
-      load-plugin: 5.1.0
+      load-plugin: 3.0.0
       parse-json: 6.0.2
       to-vfile: 7.2.4
       trough: 2.1.0
@@ -13822,7 +13784,7 @@ packages:
       ignore: 5.3.0
       is-empty: 1.2.0
       is-plain-obj: 4.1.0
-      load-plugin: 6.0.1
+      load-plugin: 3.0.0
       parse-json: 7.1.0
       trough: 2.1.0
       unist-util-inspect: 8.0.0
@@ -14435,10 +14397,6 @@ packages:
     engines: {node: '>=14'}
     dependencies:
       xml-name-validator: 4.0.0
-    dev: false
-
-  /walk-up-path@3.0.1:
-    resolution: {integrity: sha512-9YlCL/ynK3CTlrSRrDxZvUauLzAswPCrsaCgilqFevUYpeEW0/3ScEjaa3kbW/T0ghhkEr7mv+fpjqn1Y1YuTA==}
     dev: false
 
   /walker@1.0.8:

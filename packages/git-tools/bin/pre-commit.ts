@@ -12,13 +12,17 @@ import {
   isPackageVersionChanged
 } from "../src/utilities/check-package-version";
 
-const config = await loadStormConfig();
-handleProcess(config);
+const handle = async () => {
+  const config = await loadStormConfig();
+  handleProcess(config);
 
-checkPackageVersion(process.argv.slice(1));
-if (isPackageVersionChanged(process.argv?.slice(1))) {
-  writeError(config, "Please regenerate the package lock file before committing...");
-  exitWithError(config);
-}
+  checkPackageVersion(process.argv.slice(1));
+  if (isPackageVersionChanged(process.argv?.slice(1))) {
+    writeError(config, "Please regenerate the package lock file before committing...");
+    exitWithError(config);
+  }
+};
 
-exitWithSuccess(config);
+handle().then(() => {
+  loadStormConfig().then((config) => exitWithSuccess(config));
+});

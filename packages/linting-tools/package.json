@@ -28,7 +28,6 @@
     "email": "contact@stormsoftware.org",
     "url": "https://stormsoftware.org"
   },
-  "type": "module",
   "bin": {
     "storm-lint": "./bin/lint.js"
   },
@@ -113,7 +112,7 @@
     "unified": "11.0.4",
     "unified-diff": "5.0.0",
     "unified-engine": "11.2.0",
-    "vfile-reporter": "8.1.0"
+    "vfile-reporter": "^8.1.0"
   },
   "devDependencies": {
     "@types/eslint": "8.44.6"

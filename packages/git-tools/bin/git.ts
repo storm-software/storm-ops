@@ -8,13 +8,20 @@ import {
 } from "@storm-software/config-tools";
 import { createProgram } from "../src/cli/index.js";
 
-const config = await loadStormConfig();
-handleProcess(config);
+const handle = async () => {
+  const config = await loadStormConfig();
+  handleProcess(config);
 
-const program = await createProgram(config);
-program.exitOverride();
+  const program = await createProgram(config);
+  // program.exitOverride();
+  await program.parseAsync(process.argv);
 
-await program.parseAsync(process.argv);
+  writeSuccess(
+    config,
+    `Git ${process.argv.join(" ") ?? "tool"} processing completed successfully!`
+  );
+};
 
-writeSuccess(config, `Git ${process.argv.join(" ") ?? "tool"} processing completed successfully!`);
-exitWithSuccess(config);
+handle().then(() => {
+  loadStormConfig().then((config) => exitWithSuccess(config));
+});

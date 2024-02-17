@@ -29,16 +29,22 @@
         "bundle": true,
         "sourcemap": false,
         "minify": false,
-        "skipTypeCheck": false,
+        "skipTypeCheck": true,
         "thirdParty": true,
         "format": [
-          "esm"
+          "cjs"
         ],
         "esbuildOptions": {
-          "banner": {
-            "js": "import { fileURLToPath as _fileURLToPath } from 'url';\nimport _path from 'node:path';\nimport { createRequire as topLevelCreateRequire } from 'module';\nconst require = topLevelCreateRequire(import.meta.url);\nconst __filename = _fileURLToPath(import.meta.url);\nconst __dirname = _path.dirname(__filename);"
+          "outExtension": {
+            ".js": ".js"
           }
         },
+        "external": [
+          "nx",
+          "@swc/wasm",
+          "@swc/core",
+          "@angular-devkit/architect"
+        ],
         "assets": [
           {
             "input": "packages/linting-tools",

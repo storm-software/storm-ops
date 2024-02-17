@@ -3,7 +3,6 @@ import { filter } from "alex/filter";
 import retextEnglish from "retext-english";
 import retextEquality from "retext-equality";
 import retextProfanities from "retext-profanities";
-import supportsColor from "supports-color";
 import { type PluggableList, unified } from "unified";
 import { engine } from "unified-engine";
 import vfileReporter from "vfile-reporter";
@@ -19,14 +18,14 @@ export const runAlex = (
       {
         processor: unified(),
         files: ["**/*.{txt,js,jsx,ts,tsx,md,mdx,json}"],
-        extensions: ["txt", "text", "md", "markdown", "mkd", "mkdn", "mkdown", "ron"],
+        extensions: ["txt", "text", "md", "mdx", "markdown", "mkd", "mkdn", "mkdown", "ron"],
         configTransform: transform,
         out: false,
         output: false,
         rcName,
         rcPath: undefined,
         packageField: "alex",
-        color: Boolean(supportsColor.stderr),
+        color: true,
         reporter: vfileReporter,
         reporterOptions: {
           verbose: false
