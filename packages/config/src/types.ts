@@ -8,10 +8,9 @@ type TStormConfig = z.infer<typeof StormConfigSchema>;
 export type StormConfigInput = z.input<typeof StormConfigSchema>;
 
 export type StormConfig<
-  TExtensionName extends
-    keyof TStormConfig["extensions"] = keyof TStormConfig["extensions"],
+  TExtensionName extends keyof TStormConfig["extensions"] = keyof TStormConfig["extensions"],
   TExtensionConfig extends
-    TStormConfig["extensions"][TExtensionName] = TStormConfig["extensions"][TExtensionName],
+    TStormConfig["extensions"][TExtensionName] = TStormConfig["extensions"][TExtensionName]
 > = TStormConfig & {
   extensions?:
     | (TStormConfig["extensions"] & {

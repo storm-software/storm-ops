@@ -4,10 +4,9 @@ import type { StormConfigSchema } from "./src/schema";
 type TStormConfig = z.infer<typeof StormConfigSchema>;
 
 declare type StormConfig<
-  TExtensionName extends
-    keyof TStormConfig["extensions"] = keyof TStormConfig["extensions"],
+  TExtensionName extends keyof TStormConfig["extensions"] = keyof TStormConfig["extensions"],
   TExtensionConfig extends
-    TStormConfig["extensions"][TExtensionName] = TStormConfig["extensions"][TExtensionName],
+    TStormConfig["extensions"][TExtensionName] = TStormConfig["extensions"][TExtensionName]
 > = TStormConfig & {
   extensions:
     | (TStormConfig["extensions"] & {
