@@ -1,5 +1,10 @@
-import type * as ts from "typescript";
-import type { ParsedCommandLine } from "typescript";
+import type {
+  Diagnostic,
+  ParsedCommandLine,
+  Program,
+  SourceFile,
+  TransformerFactory
+} from "typescript";
 import type { TsupExecutorSchema } from "./executors/tsup/schema";
 
 type Entry = string | string[] | Record<string, string>;
@@ -24,8 +29,5 @@ export type GetConfigParams = Omit<
   docModel?: boolean;
   tsdocMetadata?: boolean;
   dtsTsConfig: ParsedCommandLine;
-  getTransform?: (
-    program: ts.Program,
-    diagnostics: ts.Diagnostic[]
-  ) => ts.TransformerFactory<ts.SourceFile>;
+  getTransform?: (program: Program, diagnostics: Diagnostic[]) => TransformerFactory<SourceFile>;
 };
