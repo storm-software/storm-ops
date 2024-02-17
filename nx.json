@@ -97,6 +97,16 @@
     "e2e": {
       "cache": true
     },
+    "@nx/esbuild:esbuild": {
+      "cache": true,
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
+    },
     "nx-release-publish": {
       "cache": false,
       "inputs": [
@@ -111,16 +121,6 @@
         "packageRoot": "dist/{projectRoot}",
         "registry": "https://registry.npmjs.org/"
       }
-    },
-    "@nx/esbuild:esbuild": {
-      "cache": true,
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ]
     }
   },
   "namedInputs": {
