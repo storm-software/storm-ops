@@ -1,3 +1,17 @@
+## 1.59.13 (2024-02-17)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Ensure only storm env values are displayed ([2fdb5e53](https://github.com/storm-software/storm-ops/commit/2fdb5e53))
+
+- **workspace-tools:** Add the storm config and config-tools packages as external ([7170c0dd](https://github.com/storm-software/storm-ops/commit/7170c0dd))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.59.12 (2024-02-17)
 
 
