@@ -1,4 +1,4 @@
-import { type CosmiconfigResult, cosmiconfig } from "cosmiconfig";
+import type { CosmiconfigResult } from "cosmiconfig";
 import type { StormConfigInput } from "@storm-software/config";
 
 let _static_cache: StormConfigInput | undefined = undefined;
@@ -12,18 +12,19 @@ let _static_cache: StormConfigInput | undefined = undefined;
  */
 export const getConfigFileByName = async (
   fileName: string,
-  filePath?: string,
-): Promise<CosmiconfigResult> =>
-  cosmiconfig(fileName, { cache: true }).search(filePath);
+  filePath?: string
+): Promise<CosmiconfigResult> => {
+  const cosmiconfig = await import("cosmiconfig");
+
+  return cosmiconfig?.cosmiconfig?.(fileName, { cache: true }).search(filePath);
+};
 
 /**
  * Get the config file for the current Storm workspace
  *
  * @returns The config file for the current Storm workspace
  */
-export const getConfigFile = async (
-  filePath?: string,
-): Promise<StormConfigInput> => {
+export const getConfigFile = async (filePath?: string): Promise<StormConfigInput> => {
   if (_static_cache) {
     return _static_cache as StormConfigInput;
   }
