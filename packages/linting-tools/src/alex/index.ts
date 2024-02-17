@@ -4,7 +4,7 @@ import retextEnglish from "retext-english";
 import retextEquality from "retext-equality";
 import retextProfanities from "retext-profanities";
 import supportsColor from "supports-color";
-import { PluggableList, unified } from "unified";
+import { type PluggableList, unified } from "unified";
 import { engine } from "unified-engine";
 import vfileReporter from "vfile-reporter";
 
@@ -14,53 +14,39 @@ export const runAlex = (
   rcName = "@storm-software/linting-tools/alex/.alexrc",
   ignoreName = "@storm-software/linting-tools/alex/.alexignore"
 ) => {
-  return new Promise(
-    (resolve: (value: unknown) => void, reject: (reason?: any) => void) =>
-      engine(
-        {
-          processor: unified(),
-          files: ["**/*.{txt,js,jsx,ts,tsx,md,mdx,json}"],
-          extensions: [
-            "txt",
-            "text",
-            "md",
-            "markdown",
-            "mkd",
-            "mkdn",
-            "mkdown",
-            "ron"
-          ],
-          configTransform: transform,
-          out: false,
-          output: false,
-          rcName,
-          rcPath: undefined,
-          packageField: "alex",
-          color: Boolean(supportsColor.stderr),
-          reporter: vfileReporter,
-          reporterOptions: {
-            verbose: false
-          },
-          quiet: true,
-          ignoreName,
-          ignorePatterns: [
-            "**/CODE_OF_CONDUCT.md",
-            "**/dist/**",
-            "**/node_modules/**"
-          ],
-          silent: false,
-          silentlyIgnore: true,
-          frail: true,
-          defaultConfig: transform({})
+  return new Promise((resolve: (value: unknown) => void, reject: (reason?: any) => void) =>
+    engine(
+      {
+        processor: unified(),
+        files: ["**/*.{txt,js,jsx,ts,tsx,md,mdx,json}"],
+        extensions: ["txt", "text", "md", "markdown", "mkd", "mkdn", "mkdown", "ron"],
+        configTransform: transform,
+        out: false,
+        output: false,
+        rcName,
+        rcPath: undefined,
+        packageField: "alex",
+        color: Boolean(supportsColor.stderr),
+        reporter: vfileReporter,
+        reporterOptions: {
+          verbose: false
         },
-        (error, code) => {
-          if (error) {
-            console.error(error.message);
-            return reject(code);
-          }
-          return resolve(code);
+        quiet: true,
+        ignoreName,
+        ignorePatterns: ["**/CODE_OF_CONDUCT.md", "**/dist/**", "**/node_modules/**"],
+        silent: false,
+        silentlyIgnore: true,
+        frail: true,
+        defaultConfig: transform({})
+      },
+      (error, code) => {
+        if (error) {
+          console.error(error.message);
+          return reject(code);
         }
-      )
+        return resolve(code);
+      }
+    )
   );
 };
 
