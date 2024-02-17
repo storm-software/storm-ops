@@ -16,7 +16,11 @@ import { releaseChangelog, releasePublish } from "nx/src/command-line/release/in
 // } from "nx/src/command-line/release/utils/shared.js";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import { createProjectGraphAsync } from "nx/src/project-graph/project-graph.js";
+import { resolveChangelogVersions } from "nx/src/command-line/release/changelog.js";
+
 import { releaseVersion } from "./nx-version";
+import { createCommitMessageValues } from "nx/src/command-line/release/utils/shared";
+import { filterReleaseGroups } from "nx/src/command-line/release/config/filter-release-groups";
 
 export const runRelease = async (
   config: StormConfig,
@@ -85,16 +89,6 @@ export const runRelease = async (
 
     writeInfo(config, "Generating the release changelog files...");
 
-    // const {
-    //   error: filterError,
-    //   releaseGroups,
-    //   releaseGroupToFilteredProjects
-    // } = filterReleaseGroups(projectGraph, nxReleaseConfig);
-    // if (filterError) {
-    //   writeError(config, "An error occurred filtering the release groups");
-    //   throw new Error(`${filterError.title}: \n${filterError.bodyLines.join("\n")}`);
-    // }
-
     // const commitMessageValues: string[] = createCommitMessageValues(
     //   releaseGroups,
     //   releaseGroupToFilteredProjects,
@@ -114,6 +108,23 @@ export const runRelease = async (
       gitCommitMessage: "chore(release): Publish updates to monorepo [skip ci]",
       gitTag: true
     });
+
+    // const {
+    //   error: filterError,
+    //   releaseGroups,
+    //   releaseGroupToFilteredProjects
+    // } = filterReleaseGroups(projectGraph, nxReleaseConfig);
+    // if (filterError) {
+    //   writeError(config, "An error occurred filtering the release groups");
+    //   throw new Error(`${filterError.title}: \n${filterError.bodyLines.join("\n")}`);
+    // }
+
+    // const commitMessageValues: string[] = createCommitMessageValues(
+    //   releaseGroups,
+    //   releaseGroupToFilteredProjects,
+    //   projectsVersionData,
+    //   "chore({projectName}): Release package v{version} [skip ci]"
+    // );
 
     // if (shouldTag) {
     writeInfo(config, "Tagging commit with git");
@@ -186,16 +197,7 @@ export const runRelease = async (
       }
     }*/
 
-    let hasNewVersion = false;
-
-    // null means that all projects are versioned together but there were no changes
-    if (workspaceVersion !== null) {
-      hasNewVersion = Object.values(projectsVersionData).some(
-        (version) => version.newVersion !== null
-      );
-    }
-
-    if (hasNewVersion) {
+    if (Object.values(projectsVersionData).some((version) => version.newVersion !== null)) {
       writeInfo(config, "Publishing the release...");
       await releasePublish(
         {
