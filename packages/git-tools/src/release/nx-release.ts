@@ -58,7 +58,7 @@ import { interpolate } from "nx/src/tasks-runner/utils.js";
 import type { ProjectGraph, ProjectGraphProjectNode } from "nx/src/config/project-graph.js";
 import { changelogRenderer } from "@storm-software/changelog";
 import { parseChangelogMarkdown } from "nx/src/command-line/release/utils/markdown.js";
-import { printAndFlushChanges } from "nx/src/command-line/release/utils/print-changes";
+import { printAndFlushChanges } from "nx/src/command-line/release/utils/print-changes.js";
 
 export interface NxReleaseChangelogResult {
   workspaceChangelog?: {
@@ -155,17 +155,23 @@ export const runRelease = async (
     } else {
       writeInfo(config, "Generating the release changelog files...");
 
+      const versionData = resolveChangelogVersions(
+        projectsVersionData,
+        releaseGroups,
+        releaseGroupToFilteredProjects
+      );
+
       const commitMessageValues: string[] = createCommitMessageValues(
         releaseGroups,
         releaseGroupToFilteredProjects,
-        projectsVersionData,
+        versionData,
         "chore({project}): Publish updates to monorepo [skip ci]"
       );
 
       const gitTagValues: string[] = createGitTagValues(
         releaseGroups,
         releaseGroupToFilteredProjects,
-        projectsVersionData
+        versionData
       );
       handleDuplicateGitTags(gitTagValues);
 
@@ -228,7 +234,7 @@ export const runRelease = async (
             projectGraph,
             githubRepoSlug,
             commits,
-            projectsVersionData,
+            versionData,
             releaseGroup,
             [project]
           );
@@ -411,59 +417,31 @@ export const runRelease = async (
   }
 };
 
-// function resolveChangelogVersions(
-//   args: ChangelogOptions,
-//   releaseGroups: ReleaseGroupWithName[],
-//   releaseGroupToFilteredProjects: Map<ReleaseGroupWithName, Set<string>>
-// ): {
-//   workspaceChangelogVersion: string | undefined;
-//   projectsVersionData: VersionData;
-// } {
-//   if (!args.version && !args.versionData) {
-//     throw new Error("You must provide a version string and/or a versionData object.");
-//   }
+function resolveChangelogVersions(
+  versionData: VersionData,
+  releaseGroups: ReleaseGroupWithName[],
+  releaseGroupToFilteredProjects: Map<ReleaseGroupWithName, Set<string>>
+) {
+  if (!versionData) {
+    throw new Error("You must provide a version string and/or a versionData object.");
+  }
 
-//   /**
-//    * TODO: revaluate this assumption holistically in a dedicated PR when we add support for calver
-//    * (e.g. the Release class also uses semver utils to check if prerelease).
-//    *
-//    * Right now, the given version must be valid semver in order to proceed
-//    */
-//   if (args.version && !valid(args.version)) {
-//     throw new Error(
-//       `The given version "${args.version}" is not a valid semver version. Please provide your version in the format "1.0.0", "1.0.0-beta.1" etc`
-//     );
-//   }
-
-//   const versionData: VersionData = releaseGroups.reduce((versionData, releaseGroup) => {
-//     const releaseGroupProjectNames = Array.from(releaseGroupToFilteredProjects.get(releaseGroup));
-//     for (const projectName of releaseGroupProjectNames) {
-//       if (!args.versionData) {
-//         versionData[projectName] = {
-//           newVersion: args.version,
-//           currentVersion: "", // not relevant within changelog/commit generation
-//           dependentProjects: [] // not relevant within changelog/commit generation
-//         };
-//         continue;
-//       }
-//       /**
-//        * In the case where a versionData object was provided, we need to make sure all projects are present,
-//        * otherwise it suggests a filtering mismatch between the version and changelog command invocations.
-//        */
-//       if (!args.versionData[projectName]) {
-//         throw new Error(
-//           `The provided versionData object does not contain a version for project "${projectName}". This suggests a filtering mismatch between the version and changelog command invocations.`
-//         );
-//       }
-//     }
-//     return versionData;
-//   }, args.versionData || {});
-
-//   return {
-//     workspaceChangelogVersion: args.version,
-//     projectsVersionData: versionData
-//   };
-// }
+  return releaseGroups.reduce((versionData, releaseGroup) => {
+    const releaseGroupProjectNames = Array.from(releaseGroupToFilteredProjects.get(releaseGroup));
+    for (const projectName of releaseGroupProjectNames) {
+      /**
+       * In the case where a versionData object was provided, we need to make sure all projects are present,
+       * otherwise it suggests a filtering mismatch between the version and changelog command invocations.
+       */
+      if (!versionData[projectName]) {
+        throw new Error(
+          `The provided versionData object does not contain a version for project "${projectName}". This suggests a filtering mismatch between the version and changelog command invocations.`
+        );
+      }
+    }
+    return versionData;
+  }, versionData || {});
+}
 
 async function applyChangesAndExit(
   args: ChangelogOptions,
