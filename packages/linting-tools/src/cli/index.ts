@@ -1,5 +1,4 @@
 import {
-  type StormConfig,
   findWorkspaceRootSafe,
   writeDebug,
   writeError,
@@ -8,6 +7,7 @@ import {
   writeSuccess,
   writeTrace
 } from "@storm-software/config-tools";
+import type { StormConfig } from "@storm-software/config";
 import { Command, Option } from "commander";
 import { lint } from "cspell";
 import { parseCircular, parseDependencyTree, prettyCircular } from "dpdm";
@@ -92,30 +92,30 @@ export function createProgram(config: StormConfig) {
       .addOption(manypkgFix)
       .action(manypkgAction);
 
-    const cspellSkip = new Option("--skip-cspell", "Should skip CSpell linting");
+    const skipCspell = new Option("--skip-cspell", "Should skip CSpell linting");
 
-    const alexSkip = new Option("--skip-alex", "Should skip Alex language linting");
+    const skipAlex = new Option("--skip-alex", "Should skip Alex language linting");
 
-    const depsVersionSkip = new Option(
+    const skipDepsVersion = new Option(
       "--skip-deps-version",
       "Should skip dependency version consistency linting"
     );
 
-    const circularDepsSkip = new Option(
+    const skipCircularDeps = new Option(
       "--skip-circular-deps",
       "Should skip circular dependency linting"
     );
 
-    const manypkgSkip = new Option("--skip-manypkg", "Should skip Manypkg linting");
+    const skipManypkg = new Option("--skip-manypkg", "Should skip Manypkg linting");
 
     program
       .command("all")
       .description("Run all linters for the workspace.")
-      .addOption(cspellSkip)
-      .addOption(alexSkip)
-      .addOption(depsVersionSkip)
-      .addOption(circularDepsSkip)
-      .addOption(manypkgSkip)
+      .addOption(skipCspell)
+      .addOption(skipAlex)
+      .addOption(skipDepsVersion)
+      .addOption(skipCircularDeps)
+      .addOption(skipManypkg)
       .addOption(cspellConfig)
       .addOption(alexConfig)
       .addOption(alexIgnore)
@@ -131,40 +131,52 @@ export function createProgram(config: StormConfig) {
   }
 }
 
-async function allAction(
-  cspellSkip: boolean,
-  alexSkip: boolean,
-  depsVersionSkip: boolean,
-  circularDepsSkip: boolean,
-  manypkgSkip: boolean,
-  cspellConfig: string,
-  alexConfig: string,
-  alexIgnore: string,
-  manypkgType: string,
-  manypkgArgs: string[],
-  manypkgFix: boolean
-) {
+async function allAction({
+  skipCspell,
+  skipAlex,
+  skipDepsVersion,
+  skipCircularDeps,
+  skipManypkg,
+  cspellConfig,
+  alexConfig,
+  alexIgnore,
+  manypkgType,
+  manypkgArgs,
+  manypkgFix
+}: {
+  skipCspell: boolean;
+  skipAlex: boolean;
+  skipDepsVersion: boolean;
+  skipCircularDeps: boolean;
+  skipManypkg: boolean;
+  cspellConfig: string;
+  alexConfig: string;
+  alexIgnore: string;
+  manypkgType: string;
+  manypkgArgs: string[];
+  manypkgFix: boolean;
+}) {
   try {
     writeInfo(_config, "⚡ Linting the Storm Workspace");
 
     const promises = [];
-    if (!cspellSkip) {
+    if (!skipCspell) {
       promises.push(cspellAction(cspellConfig));
     }
 
-    if (!alexSkip) {
+    if (!skipAlex) {
       promises.push(alexAction(alexConfig, alexIgnore));
     }
 
-    if (!depsVersionSkip) {
+    if (!skipDepsVersion) {
       promises.push(depsVersionAction());
     }
 
-    if (!circularDepsSkip) {
+    if (!skipCircularDeps) {
       promises.push(circularDepsAction());
     }
 
-    if (!manypkgSkip) {
+    if (!skipManypkg) {
       promises.push(manypkgAction(manypkgType, manypkgArgs, manypkgFix));
     }
 
