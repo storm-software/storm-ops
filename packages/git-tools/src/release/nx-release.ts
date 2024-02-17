@@ -148,18 +148,19 @@ export const runRelease = async (
       throw new Error(`${filterError.title}: \n${filterError.bodyLines.join("\n")}`);
     }
 
+    const versionData = resolveChangelogVersions(
+      projectsVersionData,
+      releaseGroups,
+      releaseGroupToFilteredProjects
+    );
+
     const changelogGenerationEnabled =
       !!nxReleaseConfig.changelog.workspaceChangelog ||
       Object.values(nxReleaseConfig.groups).some((g) => g.changelog);
     if (!changelogGenerationEnabled) {
+      writeWarning(config, "Release changelog generation is not enabled...");
     } else {
       writeInfo(config, "Generating the release changelog files...");
-
-      const versionData = resolveChangelogVersions(
-        projectsVersionData,
-        releaseGroups,
-        releaseGroupToFilteredProjects
-      );
 
       const commitMessageValues: string[] = createCommitMessageValues(
         releaseGroups,
@@ -177,8 +178,6 @@ export const runRelease = async (
 
       const tree = new FsTree(config.workspaceRoot, true);
       const postGitTasks: ((latestCommit: string) => Promise<void>)[] = [];
-
-      const allProjectChangelogs: NxReleaseChangelogResult["projectChangelogs"] = {};
 
       for (const releaseGroup of releaseGroups) {
         // The entire feature is disabled at the release group level, exit early
@@ -240,7 +239,7 @@ export const runRelease = async (
           );
 
           let hasPushed = false;
-          for (const [projectName, projectChangelog] of Object.entries(projectChangelogs)) {
+          for (const [_, projectChangelog] of Object.entries(projectChangelogs)) {
             postGitTasks.push(async (latestCommit) => {
               if (!hasPushed) {
                 writeDebug(config, "Pushing to git remote");
@@ -274,8 +273,6 @@ export const runRelease = async (
                 existingGithubReleaseForVersion
               );
             });
-
-            allProjectChangelogs[projectName] = projectChangelog;
           }
         }
 
@@ -389,7 +386,7 @@ export const runRelease = async (
       }
     }*/
 
-    if (Object.values(projectsVersionData).some((version) => version.newVersion !== null)) {
+    if (Object.values(versionData).some((version) => version.newVersion !== null)) {
       writeInfo(config, "Publishing the release...");
       await releasePublish(
         {
@@ -467,8 +464,8 @@ async function applyChangesAndExit(
   if (args.gitCommit ?? nxReleaseConfig.changelog.git.commit) {
     await commitChanges(
       changes.map((f) => f.path),
-      !!args.dryRun,
-      !!args.verbose,
+      false,
+      true,
       commitMessageValues,
       args.gitCommitArgs || nxReleaseConfig.changelog.git.commitArgs
     );

@@ -427,10 +427,10 @@ function printAndFlushChanges(config: StormConfig, tree: Tree, isDryRun: boolean
   // Print the changes
   for (const f of changes) {
     if (f.type === "CREATE") {
-      writeError(config, `CREATE ${f.path}${isDryRun ? " [dry-run]" : ""}`);
+      writeInfo(config, `CREATE ${f.path}${isDryRun ? " [dry-run]" : ""}`);
       printDiff("", f.content?.toString() || "");
     } else if (f.type === "UPDATE") {
-      writeError(config, `UPDATE ${f.path}${isDryRun ? " [dry-run]" : ""}`);
+      writeInfo(config, `UPDATE ${f.path}${isDryRun ? " [dry-run]" : ""}`);
       const currentContentsOnDisk = readFileSync(joinPathFragments(tree.root, f.path)).toString();
       printDiff(currentContentsOnDisk, f.content?.toString() || "");
     } else if (f.type === "DELETE") {

@@ -255,6 +255,9 @@ importers:
       word-wrap:
         specifier: 1.2.5
         version: 1.2.5
+      zod:
+        specifier: 3.22.4
+        version: 3.22.4
     devDependencies:
       '@nx/devkit':
         specifier: 18.0.4
