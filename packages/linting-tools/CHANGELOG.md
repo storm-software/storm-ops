@@ -1,3 +1,29 @@
+## 1.38.20 (2024-02-17)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Update the chalk version to v4.1.2 ([0d50334a](https://github.com/storm-software/storm-ops/commit/0d50334a))
+
+- **storm-ops:** Resolve issue with the pnpm version ([f124fd94](https://github.com/storm-software/storm-ops/commit/f124fd94))
+
+- **config-tools:** Update package type to a module to resolve import issues ([4a9649c9](https://github.com/storm-software/storm-ops/commit/4a9649c9))
+
+- **workspace-tools:** Update method of referencing the internal packages ([b3f127c4](https://github.com/storm-software/storm-ops/commit/b3f127c4))
+
+- **linting-tools:** Resolved issue with options parameter passed to linting cli ([46e60940](https://github.com/storm-software/storm-ops/commit/46e60940))
+
+- **linting-tools:** Updated the alexignore file list ([39ec3afb](https://github.com/storm-software/storm-ops/commit/39ec3afb))
+
+- **linting-tools:** Correction to alex linting ignore ([d9663bff](https://github.com/storm-software/storm-ops/commit/d9663bff))
+
+- **linting-tools:** Resolved issues with linting tool options ([4b08d9fd](https://github.com/storm-software/storm-ops/commit/4b08d9fd))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.38.19 (2024-02-15)
 
 

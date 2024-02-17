@@ -1,3 +1,25 @@
+## 1.2.22 (2024-02-17)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Update the chalk version to v4.1.2 ([0d50334a](https://github.com/storm-software/storm-ops/commit/0d50334a))
+
+- **storm-ops:** Resolve issue with the pnpm version ([f124fd94](https://github.com/storm-software/storm-ops/commit/f124fd94))
+
+- **config-tools:** Update package type to a module to resolve import issues ([4a9649c9](https://github.com/storm-software/storm-ops/commit/4a9649c9))
+
+- **config:** Updated the default import method ([3556e215](https://github.com/storm-software/storm-ops/commit/3556e215))
+
+- **workspace-tools:** Add `zod` as external depencency ([05b66136](https://github.com/storm-software/storm-ops/commit/05b66136))
+
+- **workspace-tools:** Update method of referencing the internal packages ([b3f127c4](https://github.com/storm-software/storm-ops/commit/b3f127c4))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.2.21 (2024-02-17)
 
 

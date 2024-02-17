@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/testing-tools",
-  "version": "1.33.20",
+  "version": "1.33.21",
   "private": false,
   "description": "⚡ A package containing various testing tools used by Storm workspaces to drive unit and e2e testing.",
   "keywords": [

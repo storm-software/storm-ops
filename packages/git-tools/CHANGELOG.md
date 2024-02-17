@@ -1,3 +1,31 @@
+## 2.0.1 (2024-02-17)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Update the chalk version to v4.1.2 ([0d50334a](https://github.com/storm-software/storm-ops/commit/0d50334a))
+
+- **storm-ops:** Resolve issue with the pnpm version ([f124fd94](https://github.com/storm-software/storm-ops/commit/f124fd94))
+
+- **config-tools:** Update package type to a module to resolve import issues ([4a9649c9](https://github.com/storm-software/storm-ops/commit/4a9649c9))
+
+- ⚠️  **git-tools:** Arbitrary commit changes ([040f4cd2](https://github.com/storm-software/storm-ops/commit/040f4cd2))
+
+- **git-tools:** Resolve linting failures ([5715afb9](https://github.com/storm-software/storm-ops/commit/5715afb9))
+
+- **workspace-tools:** Update method of referencing the internal packages ([b3f127c4](https://github.com/storm-software/storm-ops/commit/b3f127c4))
+
+- **linting-tools:** Resolved previous linting issues ([83b3b199](https://github.com/storm-software/storm-ops/commit/83b3b199))
+
+
+#### ⚠️  Breaking Changes
+
+- **git-tools:** \
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 # 2.0.0 (2024-02-17)
 
 

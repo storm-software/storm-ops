@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/workspace-tools",
-  "version": "1.59.10",
+  "version": "1.59.11",
   "private": false,
   "description": "⚡ A Nx plugin package that contains various executors and generators used in a Storm workspaces.",
   "keywords": [
@@ -38,8 +38,8 @@
     "@nx/esbuild": "18.0.4",
     "@nxkit/style-dictionary": "4.0.0",
     "@rollup/plugin-json": "6.1.0",
-    "@storm-software/config": "file:../config",
-    "@storm-software/config-tools": "file:../config-tools",
+    "@storm-software/config": "1.2.22",
+    "@storm-software/config-tools": "1.27.31",
     "chalk": "4.1.2",
     "decky": "1.1.1",
     "esbuild-plugin-environment": "0.3.0",
