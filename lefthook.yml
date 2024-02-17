@@ -40,9 +40,9 @@ pre-commit:
       run: "node ./dist/packages/git-tools/bin/pre-commit.js {staged_files}"
       stage_fixed: true
     lint:
-      files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: "pnpm lint && git update-index"
+      run: "pnpm lint"
+      stage_fixed: true
     check:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
