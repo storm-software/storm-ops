@@ -6,7 +6,7 @@
   "targets": {
     "build": {
       "cache": true,
-      "executor": "@nx/esbuild:esbuild",
+      "executor": "@nx/js:tsc",
       "inputs": [
         "default",
         "^production"
@@ -19,20 +19,6 @@
         "tsConfig": "packages/changelog/tsconfig.lib.json",
         "project": "packages/changelog/package.json",
         "main": "packages/changelog/src/changelog-renderer/index.ts",
-        "deleteOutputPath": true,
-        "bundle": true,
-        "sourcemap": true,
-        "minify": false,
-        "skipTypeCheck": true,
-        "thirdParty": true,
-        "format": [
-          "cjs"
-        ],
-        "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
-          }
-        },
         "external": [
           "nx",
           "@swc/wasm",
