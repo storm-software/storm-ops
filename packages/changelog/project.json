@@ -35,11 +35,6 @@
             "input": "",
             "glob": "LICENSE",
             "output": "."
-          },
-          {
-            "input": "./packages/changelog",
-            "glob": "declarations.d.ts",
-            "output": "."
           }
         ]
       }
