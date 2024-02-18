@@ -29,8 +29,6 @@
     "url": "https://stormsoftware.org"
   },
   "type": "commonjs",
-  "main": "./index.js",
-  "types": "declarations.d.ts",
   "dependencies": {
     "axios": "1.6.7",
     "chalk": "4.1.2",
