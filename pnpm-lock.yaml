@@ -217,7 +217,7 @@ importers:
         specifier: 0.1.1
         version: 0.1.1
       axios:
-        specifier: 1.6.7
+        specifier: '>=1.6.0'
         version: 1.6.7
       chalk:
         specifier: 4.1.2
@@ -631,8 +631,8 @@ importers:
         specifier: 3.22.4
         version: 3.22.4
       zod-to-json-schema:
-        specifier: 3.22.3
-        version: 3.22.3(zod@3.22.4)
+        specifier: 3.22.4
+        version: 3.22.4(zod@3.22.4)
 
 packages:
 
@@ -14666,8 +14666,8 @@ packages:
       commander: 9.5.0
     dev: false
 
-  /zod-to-json-schema@3.22.3(zod@3.22.4):
-    resolution: {integrity: sha512-9isG8SqRe07p+Aio2ruBZmLm2Q6Sq4EqmXOiNpDxp+7f0LV6Q/LX65fs5Nn+FV/CzfF3NLBoksXbS2jNYIfpKw==}
+  /zod-to-json-schema@3.22.4(zod@3.22.4):
+    resolution: {integrity: sha512-2Ed5dJ+n/O3cU383xSY28cuVi0BCQhF8nYqWU5paEpl7fVdqdAmiLdqLyfblbNdfOFwFfi/mqU4O1pwc60iBhQ==}
     peerDependencies:
       zod: ^3.22.4
     dependencies:
