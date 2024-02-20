@@ -1,3 +1,24 @@
+## 1.3.2 (2024-02-20)
+
+
+### 🚀 Features
+
+- **git-tools:** Support for updated Nx Release processing ([92f99126](https://github.com/storm-software/storm-ops/commit/92f99126))
+
+
+### 🩹 Fixes
+
+- **changelog:** Resolved type issues when calling changelogRenderer ([3c84ddd5](https://github.com/storm-software/storm-ops/commit/3c84ddd5))
+
+- **config:** Update type of package ([60f75b96](https://github.com/storm-software/storm-ops/commit/60f75b96))
+
+- **config:** Update package to use CommonJs ([f8c863cd](https://github.com/storm-software/storm-ops/commit/f8c863cd))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.3.1 (2024-02-20)
 
 
