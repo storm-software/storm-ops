@@ -53,7 +53,7 @@
     "biome:lint": "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true",
     "biome:format": "npx biome format --write  --no-errors-on-unmatched --files-ignore-unknown=true",
     "help": "nx help",
-    "lint": "npx ./dist/packages/linting-tools/bin/lint.js all --skip-cspell --skip-deps-version --skip-alex",
+    "lint": "node ./dist/packages/linting-tools/bin/lint.js all --skip-cspell --skip-deps-version --skip-alex",
     "local-registry": "nx local-registry @storm-software/storm-ops",
     "nx": "nx",
     "release": "node ./dist/packages/git-tools/bin/git.js release",
