@@ -1,7 +1,7 @@
 import { type ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devkit";
 import { execSync } from "node:child_process";
 import type { NpmPublishExecutorSchema } from "./schema";
-import { writeError, writeInfo, writeWarning } from "@storm-software/config-tools";
+import { writeError, writeInfo, writeWarning } from "@storm-software/config-tools/utilities/logger";
 
 const LARGE_BUFFER = 1024 * 1000000;
 
