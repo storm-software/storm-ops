@@ -1,3 +1,34 @@
+## 2.1.1 (2024-02-20)
+
+
+### 🚀 Features
+
+- **git-tools:** Update the package to build as CommonJs to support Nx executors ([affad63c](https://github.com/storm-software/storm-ops/commit/affad63c))
+
+- **git-tools:** Support for updated Nx Release processing ([92f99126](https://github.com/storm-software/storm-ops/commit/92f99126))
+
+
+### 🩹 Fixes
+
+- **git-tools:** Resolve issue preventing changelogRenderer from being applied ([f7880bae](https://github.com/storm-software/storm-ops/commit/f7880bae))
+
+- **git-tools:** Resolve issue with missing version updates ([16385359](https://github.com/storm-software/storm-ops/commit/16385359))
+
+- **git-tools:** Updates to how the changelog renderer is invoked ([f38c85fb](https://github.com/storm-software/storm-ops/commit/f38c85fb))
+
+- **git-tools:** Remove custom changelog handling logic ([a8015108](https://github.com/storm-software/storm-ops/commit/a8015108))
+
+- **changelog:** Resolve issue with changelog renderer imports ([09fe5cb2](https://github.com/storm-software/storm-ops/commit/09fe5cb2))
+
+- **git-tools:** Add reference to local changelog-renderer in release process ([3ea469e1](https://github.com/storm-software/storm-ops/commit/3ea469e1))
+
+- **git-tools:** Update method of calling the release action ([7c74ffc7](https://github.com/storm-software/storm-ops/commit/7c74ffc7))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.1.0 (2024-02-20)
 
 
