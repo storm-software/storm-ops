@@ -1,3 +1,36 @@
+## 1.60.4 (2024-02-20)
+
+
+### 🚀 Features
+
+- **git-tools:** Support for updated Nx Release processing ([92f99126](https://github.com/storm-software/storm-ops/commit/92f99126))
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Ensure only storm env values are displayed ([2fdb5e53](https://github.com/storm-software/storm-ops/commit/2fdb5e53))
+
+- **workspace-tools:** Add the storm config and config-tools packages as external ([7170c0dd](https://github.com/storm-software/storm-ops/commit/7170c0dd))
+
+- **workspace-tools:** Update storm dependencies to use latest version ([369493b6](https://github.com/storm-software/storm-ops/commit/369493b6))
+
+- **workspace-tools:** Resolve issue with missing changelogRenderer type ([a81b6fe1](https://github.com/storm-software/storm-ops/commit/a81b6fe1))
+
+- **git-tools:** Removed the changelog-renderer from release ([75997e8e](https://github.com/storm-software/storm-ops/commit/75997e8e))
+
+- **workspace-tools:** Resolved issue with `loadStormConfig` import ([64d755bf](https://github.com/storm-software/storm-ops/commit/64d755bf))
+
+- **config:** Mark config to no longer bundle code ([2b97e77e](https://github.com/storm-software/storm-ops/commit/2b97e77e))
+
+- **workspace-tools:** Remove references to config-tools in publisher ([79970785](https://github.com/storm-software/storm-ops/commit/79970785))
+
+- **workspace-tools:** Update imports for logging methods ([7dcaa39b](https://github.com/storm-software/storm-ops/commit/7dcaa39b))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.3 (2024-02-20)
 
 
