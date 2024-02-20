@@ -153,6 +153,7 @@
     "changelog": {
       "automaticFromRef": true,
       "projectChangelogs": {
+        "renderer": "@storm-software/changelog",
         "createRelease": "github"
       }
     },

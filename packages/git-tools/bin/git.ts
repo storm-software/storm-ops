@@ -1,5 +1,3 @@
-#!/usr/local/bin/tsm
-
 import { exitWithSuccess, handleProcess, writeSuccess } from "@storm-software/config-tools";
 import { loadStormConfig } from "@storm-software/config-tools";
 import { createProgram } from "../src/cli/index.js";
