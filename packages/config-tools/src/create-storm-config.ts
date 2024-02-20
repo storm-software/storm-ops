@@ -2,7 +2,8 @@ import type { ZodTypeAny } from "zod";
 import { getConfigFile } from "./config-file/get-config-file";
 import { getConfigEnv, getExtensionEnv } from "./env/get-env";
 import { setConfigEnv } from "./env/set-env";
-import { type StormConfig, StormConfigSchema } from "@storm-software/config";
+import type { StormConfig } from "@storm-software/config";
+import { StormConfigSchema } from "@storm-software/config/schema";
 import { findWorkspaceRoot, writeWarning } from "./utilities";
 import { getDefaultConfig } from "./utilities/get-default-config";
 
