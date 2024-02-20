@@ -35,7 +35,8 @@
           "packages/git-tools/src/commitlint/config.ts",
           "packages/git-tools/src/commit/index.ts",
           "packages/git-tools/src/commit/config.ts",
-          "packages/git-tools/src/release/index.ts"
+          "packages/git-tools/src/release/index.ts",
+          "packages/git-tools/src/release/changelog-renderer.ts"
         ],
         "deleteOutputPath": true,
         "bundle": true,
