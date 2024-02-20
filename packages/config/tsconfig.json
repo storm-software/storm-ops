@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
+    "module": "CommonJS",
     "allowSyntheticDefaultImports": false,
     "esModuleInterop": false,
   },
