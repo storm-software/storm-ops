@@ -8,8 +8,7 @@
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/config"
   },
-  "main": "./index.cjs",
-  "module": "./index.js",
+  "type": "module",
   "types": "declarations.d.ts",
   "dependencies": {
     "zod": "3.22.4"

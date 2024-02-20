@@ -1,4 +1,4 @@
-import * as z from "zod";
+import z from "zod";
 
 /**
  * Storm theme color config values used for styling various workspace elements

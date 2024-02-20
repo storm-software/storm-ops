@@ -1,4 +1,4 @@
-import type * as z from "zod";
+import type z from "zod";
 import type { ColorConfigSchema, StormConfigSchema } from "./schema";
 
 export type ColorConfig = z.infer<typeof ColorConfigSchema>;
