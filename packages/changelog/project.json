@@ -19,12 +19,6 @@
         "tsConfig": "packages/changelog/tsconfig.lib.json",
         "project": "packages/changelog/package.json",
         "main": "packages/changelog/src/changelog-renderer/index.ts",
-        "external": [
-          "nx",
-          "@swc/wasm",
-          "@swc/core",
-          "@angular-devkit/architect"
-        ],
         "assets": [
           {
             "input": "./packages/changelog",

@@ -1,13 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
-    "target": "es2021",
-    "lib": [
-      "es2021",
-      "dom"
-    ],
-    "skipLibCheck": true
+    "outDir": "../../dist/out-tsc"
   },
   "include": [
     "src/**/*.ts"
