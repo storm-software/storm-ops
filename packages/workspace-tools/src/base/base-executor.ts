@@ -19,7 +19,6 @@ import type {
   BaseExecutorResult,
   BaseExecutorSchema
 } from "../../declarations";
-const { loadStormConfig } = require("@storm-software/config-tools/create-storm-config");
 
 export const withRunExecutor =
   <TExecutorSchema extends BaseExecutorSchema = BaseExecutorSchema>(
@@ -55,6 +54,8 @@ export const withRunExecutor =
       const projectName = context.projectsConfigurations.projects[context.projectName].name;
 
       if (!executorOptions.skipReadingConfig) {
+        const { loadStormConfig } = await import("@storm-software/config-tools");
+
         writeDebug(
           config,
           `Loading the Storm Config from environment variables and storm.config.js file...

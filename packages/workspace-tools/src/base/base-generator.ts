@@ -16,8 +16,6 @@ import {
 import { findWorkspaceRootSafe } from "@storm-software/config-tools";
 import type { BaseGeneratorOptions, BaseGeneratorResult } from "../../declarations";
 
-const { loadStormConfig } = require("@storm-software/config-tools/create-storm-config");
-
 export const withRunGenerator =
   <TGeneratorSchema = any>(
     name: string,
@@ -40,6 +38,8 @@ export const withRunGenerator =
 
       const workspaceRoot = findWorkspaceRootSafe();
       if (!generatorOptions.skipReadingConfig) {
+        const { loadStormConfig } = await import("@storm-software/config-tools");
+
         writeDebug(
           config,
           `Loading the Storm Config from environment variables and storm.config.js file...
