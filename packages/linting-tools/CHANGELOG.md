@@ -1,3 +1,17 @@
+## 1.39.0 (2024-02-20)
+
+
+### 🚀 Features
+
+- **git-tools:** Update the package to build as CommonJs to support Nx executors ([affad63c](https://github.com/storm-software/storm-ops/commit/affad63c))
+
+- **git-tools:** Support for updated Nx Release processing ([92f99126](https://github.com/storm-software/storm-ops/commit/92f99126))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.38.20 (2024-02-17)
 
 

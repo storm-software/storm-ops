@@ -1,3 +1,20 @@
+## 1.28.0 (2024-02-20)
+
+
+### 🚀 Features
+
+- **git-tools:** Support for updated Nx Release processing ([92f99126](https://github.com/storm-software/storm-ops/commit/92f99126))
+
+
+### 🩹 Fixes
+
+- **changelog:** Resolved type issues when calling changelogRenderer ([3c84ddd5](https://github.com/storm-software/storm-ops/commit/3c84ddd5))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.27.31 (2024-02-17)
 
 

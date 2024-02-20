@@ -1,3 +1,34 @@
+## 0.1.0 (2024-02-20)
+
+
+### 🚀 Features
+
+- **git-tools:** Support for updated Nx Release processing ([92f99126](https://github.com/storm-software/storm-ops/commit/92f99126))
+
+
+### 🩹 Fixes
+
+- **changelog:** Resolved type issues when calling changelogRenderer ([3c84ddd5](https://github.com/storm-software/storm-ops/commit/3c84ddd5))
+
+- **changelog:** Resolved issue with assets path ([f3400b42](https://github.com/storm-software/storm-ops/commit/f3400b42))
+
+- **changelog:** Resolve issue with changelog renderer imports ([09fe5cb2](https://github.com/storm-software/storm-ops/commit/09fe5cb2))
+
+- **changelog:** Update compiler to tsc ([028d6029](https://github.com/storm-software/storm-ops/commit/028d6029))
+
+- **changelog:** Resolve issue with declaration file ([a6c89fe6](https://github.com/storm-software/storm-ops/commit/a6c89fe6))
+
+- **changelog:** Update method of invoking release action ([34f45dd9](https://github.com/storm-software/storm-ops/commit/34f45dd9))
+
+- **changelog:** Update changelogRenderer to use ESM ([f99f6881](https://github.com/storm-software/storm-ops/commit/f99f6881))
+
+- **git-tools:** Add reference to local changelog-renderer in release process ([3ea469e1](https://github.com/storm-software/storm-ops/commit/3ea469e1))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.0.8 (2024-02-17)
 
 

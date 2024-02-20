@@ -1,3 +1,15 @@
+## 1.18.0 (2024-02-20)
+
+
+### 🚀 Features
+
+- **git-tools:** Support for updated Nx Release processing ([92f99126](https://github.com/storm-software/storm-ops/commit/92f99126))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.17.18 (2024-02-15)
 
 

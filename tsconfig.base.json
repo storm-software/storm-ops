@@ -15,73 +15,29 @@
     "importHelpers": true,
     "target": "es2022",
     "module": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-      "@storm-software/changelog": [
-        "packages/changelog/src/index.ts"
-      ],
-      "@storm-software/changelog/*": [
-        "packages/changelog/src/*"
-      ],
-      "@storm-software/config": [
-        "packages/config/src/index.ts"
-      ],
-      "@storm-software/config-tools": [
-        "packages/config-tools/src/index.ts"
-      ],
-      "@storm-software/config-tools/*": [
-        "packages/config-tools/src/*"
-      ],
-      "@storm-software/config/*": [
-        "packages/config/src/*"
-      ],
-      "@storm-software/design-tools": [
-        "packages/design-tools/src/index.ts"
-      ],
-      "@storm-software/design-tools/*": [
-        "packages/design-tools/src/*"
-      ],
-      "@storm-software/git-tools": [
-        "packages/git-tools/src/index.ts"
-      ],
-      "@storm-software/git-tools/*": [
-        "packages/git-tools/*"
-      ],
-      "@storm-software/linting-tools": [
-        "packages/linting-tools/src/index.ts"
-      ],
-      "@storm-software/linting-tools/*": [
-        "packages/linting-tools/*"
-      ],
-      "@storm-software/testing-tools": [
-        "packages/testing-tools/src/index.ts"
-      ],
-      "@storm-software/testing-tools/*": [
-        "packages/testing-tools/src/*"
-      ],
-      "@storm-software/workspace-tools": [
-        "packages/workspace-tools/index.ts"
-      ],
-      "@storm-software/workspace-tools/*": [
-        "packages/workspace-tools/src/*"
-      ],
-      "create-storm-workspace": [
-        "packages/create-storm-workspace/bin/index.ts"
-      ]
+      "@storm-software/changelog": ["packages/changelog/src/index.ts"],
+      "@storm-software/changelog/*": ["packages/changelog/src/*"],
+      "@storm-software/config": ["packages/config/src/index.ts"],
+      "@storm-software/config-tools": ["packages/config-tools/src/index.ts"],
+      "@storm-software/config-tools/*": ["packages/config-tools/src/*"],
+      "@storm-software/config/*": ["packages/config/src/*"],
+      "@storm-software/design-tools": ["packages/design-tools/src/index.ts"],
+      "@storm-software/design-tools/*": ["packages/design-tools/src/*"],
+      "@storm-software/git-tools": ["packages/git-tools/src/index.ts"],
+      "@storm-software/git-tools/*": ["packages/git-tools/*"],
+      "@storm-software/linting-tools": ["packages/linting-tools/src/index.ts"],
+      "@storm-software/linting-tools/*": ["packages/linting-tools/*"],
+      "@storm-software/testing-tools": ["packages/testing-tools/src/index.ts"],
+      "@storm-software/testing-tools/*": ["packages/testing-tools/src/*"],
+      "@storm-software/workspace-tools": ["packages/workspace-tools/index.ts"],
+      "@storm-software/workspace-tools/*": ["packages/workspace-tools/src/*"],
+      "create-storm-workspace": ["packages/create-storm-workspace/bin/index.ts"]
     }
   },
-  "include": [
-    "storm.json",
-    "packages/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "include": ["storm.json", "packages/**/*"],
+  "exclude": ["node_modules", "tmp"]
 }
