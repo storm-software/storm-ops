@@ -2,15 +2,12 @@ import { type ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devki
 import { execSync } from "node:child_process";
 import type { NpmPublishExecutorSchema } from "./schema";
 import { writeError, writeInfo, writeWarning } from "@storm-software/config-tools";
-import type { StormConfig } from "@storm-software/config";
-import { withRunExecutor } from "../../base/base-executor";
 
 const LARGE_BUFFER = 1024 * 1000000;
 
-export async function npmPublishExecutorFn(
+export default async function npmPublishExecutorFn(
   options: NpmPublishExecutorSchema,
-  context: ExecutorContext,
-  config?: StormConfig
+  context: ExecutorContext
 ) {
   /**
    * We need to check both the env var and the option because the executor may have been triggered
@@ -25,7 +22,7 @@ export async function npmPublishExecutorFn(
   const projectPackageJson = readJsonFile(packageJsonPath);
   const packageName = projectPackageJson.name;
 
-  writeInfo(config, `🚀  Running Storm NPM Publish executor on the ${packageName} package`);
+  writeInfo({}, `🚀  Running Storm NPM Publish executor on the ${packageName} package`);
 
   // If package and project name match, we can make log messages terser
   const packageTxt =
@@ -35,7 +32,7 @@ export async function npmPublishExecutorFn(
 
   if (projectPackageJson.private === true) {
     writeWarning(
-      config,
+      {},
       `Skipped ${packageTxt}, because it has \`"private": true\` in ${packageJsonPath}`
     );
     return new Promise((resolve) => resolve({ success: true }));
@@ -92,14 +89,14 @@ export async function npmPublishExecutorFn(
         const distTags = resultJson["dist-tags"] || {};
         if (distTags[tag] === currentVersion) {
           writeWarning(
-            config,
+            {},
             `Skipped ${packageTxt} because v${currentVersion} already exists in ${registry} with tag "${tag}"`
           );
           return new Promise((resolve) => resolve({ success: true }));
         }
       } catch (err) {
         writeWarning(
-          config,
+          {},
           `An error occurred while checking for existing dist-tags\n${err}\n\nNote: If this is the first time this package has been published to NPM, this can be ignored.`
         );
       }
@@ -119,12 +116,12 @@ export async function npmPublishExecutorFn(
           );
 
           writeInfo(
-            config,
+            {},
             `Added the dist-tag ${tag} to v${currentVersion} for registry ${registry}.\n`
           );
         } else {
           writeInfo(
-            config,
+            {},
             `Would add the dist-tag ${tag} to v${currentVersion} for registry ${registry}, but [dry-run] was set.\n`
           );
         }
@@ -145,22 +142,22 @@ export async function npmPublishExecutorFn(
               err.stderr?.toString().includes("no such package available")
             )
           ) {
-            writeError(config, "npm dist-tag add error please see below for more information:");
+            writeError({}, "npm dist-tag add error please see below for more information:");
             if (stdoutData.error.summary) {
-              writeError(config, stdoutData.error?.summary);
+              writeError({}, stdoutData.error?.summary);
             }
             if (stdoutData.error.detail) {
-              writeError(config, stdoutData.error?.detail);
+              writeError({}, stdoutData.error?.detail);
             }
 
             if (context.isVerbose) {
-              writeError(config, `npm dist-tag add stdout: ${JSON.stringify(stdoutData, null, 2)}`);
+              writeError({}, `npm dist-tag add stdout: ${JSON.stringify(stdoutData, null, 2)}`);
             }
             return new Promise((resolve) => resolve({ success: false }));
           }
         } catch (err) {
           writeError(
-            config,
+            {},
             `Something unexpected went wrong when processing the npm dist-tag add output\n${err}`
           );
           return new Promise((resolve) => resolve({ success: false }));
@@ -180,7 +177,7 @@ export async function npmPublishExecutorFn(
         )
       ) {
         writeError(
-          config,
+          {},
           `Something unexpected went wrong when checking for existing dist-tags.\n${err}`
         );
         return new Promise((resolve) => resolve({ success: false }));
@@ -189,7 +186,7 @@ export async function npmPublishExecutorFn(
   }
 
   if (options.firstRelease && context.isVerbose) {
-    writeInfo(config, "Skipped npm view because --first-release was set");
+    writeInfo({}, "Skipped npm view because --first-release was set");
   }
 
   try {
@@ -202,12 +199,12 @@ export async function npmPublishExecutorFn(
       cwd: packageRoot,
       stdio: ["ignore", "pipe", "pipe"]
     });
-    writeInfo(config, output.toString());
+    writeInfo({}, output.toString());
 
     if (isDryRun) {
-      writeInfo(config, `Would publish to ${registry} with tag "${tag}", but [dry-run] was set`);
+      writeInfo({}, `Would publish to ${registry} with tag "${tag}", but [dry-run] was set`);
     } else {
-      writeInfo(config, `Published to ${registry} with tag "${tag}"`);
+      writeInfo({}, `Published to ${registry} with tag "${tag}"`);
     }
 
     return new Promise((resolve) => resolve({ success: true }));
@@ -215,23 +212,23 @@ export async function npmPublishExecutorFn(
     try {
       const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
 
-      writeError(config, "npm publish error please see below for more information:");
+      writeError({}, "npm publish error please see below for more information:");
       if (stdoutData.error.summary) {
-        writeError(config, stdoutData.error.summary);
+        writeError({}, stdoutData.error.summary);
         console.error(stdoutData.error.summary);
       }
 
       if (stdoutData.error.detail) {
-        writeError(config, stdoutData.error.detail);
+        writeError({}, stdoutData.error.detail);
       }
 
       if (context.isVerbose) {
-        writeError(config, `npm publish stdout:\n${JSON.stringify(stdoutData, null, 2)}`);
+        writeError({}, `npm publish stdout:\n${JSON.stringify(stdoutData, null, 2)}`);
       }
       return new Promise((resolve) => resolve({ success: false }));
     } catch (err) {
       writeError(
-        config,
+        {},
         `Something unexpected went wrong when processing the npm publish output\n${err}`
       );
 
@@ -240,15 +237,15 @@ export async function npmPublishExecutorFn(
   }
 }
 
-export default withRunExecutor<NpmPublishExecutorSchema>("NPM Publish", npmPublishExecutorFn, {
-  skipReadingConfig: false,
-  hooks: {
-    applyDefaultOptions: (options: NpmPublishExecutorSchema): NpmPublishExecutorSchema => {
-      options.packageRoot ??= "{projectRoot}";
-      options.dryRun ??= false;
-      options.firstRelease ??= false;
+// export default withRunExecutor<NpmPublishExecutorSchema>("NPM Publish", npmPublishExecutorFn, {
+//   skipReadingConfig: false,
+//   hooks: {
+//     applyDefaultOptions: (options: NpmPublishExecutorSchema): NpmPublishExecutorSchema => {
+//       options.packageRoot ??= "{projectRoot}";
+//       options.dryRun ??= false;
+//       options.firstRelease ??= false;
 
-      return options;
-    }
-  }
-});
+//       return options;
+//     }
+//   }
+// });
