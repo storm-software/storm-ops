@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/changelog",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "description": "⚡ A package containing the release changelog renderer used in Storm workspaces.",
   "keywords": [
