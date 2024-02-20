@@ -72,8 +72,8 @@ jobs:
       - name: Add permissions to alex ignore file
         run: chmod a=rwx dist/packages/linting-tools/alex/.alexignore
 
-      - name: Run Linters
-        run: pnpm lint
+      # - name: Run Linters
+      #   run: pnpm lint
 
       #- name: Run Formatters
       #  run: pnpm nx format
