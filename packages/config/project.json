@@ -44,6 +44,11 @@
           },
           {
             "input": "./packages/config",
+            "glob": "presets/*.json",
+            "output": "."
+          },
+          {
+            "input": "./packages/config",
             "glob": "schema/storm.schema.json",
             "output": "."
           }

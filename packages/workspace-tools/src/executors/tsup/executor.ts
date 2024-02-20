@@ -1,9 +1,8 @@
 import { readFileSync, writeFileSync } from "node:fs";
-import { writeFile } from "node:fs/promises";
 import { joinPathFragments, readCachedProjectGraph, readJsonFile } from "@nx/devkit";
 import type { ExecutorContext } from "@nx/devkit";
 import { copyAssets } from "@nx/js";
-import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
+import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils.js";
 import {
   LogLevel,
   getLogLevel,
@@ -14,15 +13,15 @@ import {
   writeWarning
 } from "@storm-software/config-tools";
 import type { StormConfig } from "@storm-software/config";
-import { removeSync } from "fs-extra";
+import { removeSync, writeFile } from "fs-extra";
 import { type Path, globSync } from "glob";
-import { fileExists } from "nx/src/utils/fileutils";
+import { fileExists } from "nx/src/utils/fileutils.js";
 import { type Options as PrettierOptions, format } from "prettier";
 import { withRunExecutor } from "../../base/base-executor";
 import { removeExtension } from "../../utils/file-path-utils";
 import { getProjectConfigurations } from "../../utils/get-project-configurations";
 import { getExtraDependencies } from "../../utils/get-project-deps";
-import { getWorkspaceRoot } from "../../utils/get-workspace-root";
+import { findWorkspaceRootSafe } from "@storm-software/config-tools";
 import { applyDefaultOptions, runTsupBuild } from "../../utils/run-tsup-build";
 import type { TsupExecutorSchema } from "./schema";
 
@@ -74,7 +73,7 @@ ${Object.keys(options)
     );
   }
 
-  const workspaceRoot = getWorkspaceRoot();
+  const workspaceRoot = findWorkspaceRootSafe();
   const projectRoot = context.projectsConfigurations.projects[context.projectName].root;
   const sourceRoot = context.projectsConfigurations.projects[context.projectName].sourceRoot;
 

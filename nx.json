@@ -140,7 +140,7 @@
     ],
     "sharedGlobals": [
       "{workspaceRoot}/tsconfig.base.json",
-      "{workspaceRoot}/storm.config.js",
+      "{workspaceRoot}/storm.*",
       "{workspaceRoot}/**/biome.json"
     ]
   },

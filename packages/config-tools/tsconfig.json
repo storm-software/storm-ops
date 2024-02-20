@@ -1,7 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc"
+    "outDir": "../../dist/out-tsc",
+    "strict": false,
+    "skipLibCheck": true,
+    "moduleResolution": "node"
   },
   "files": [],
   "include": [

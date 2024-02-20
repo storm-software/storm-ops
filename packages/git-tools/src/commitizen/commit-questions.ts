@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import chalk from "chalk";
 import fuzzy from "fuzzy";
 import type { DistinctQuestion } from "inquirer";
 import type { CommitQuestions, CommitState, CommitStateAnswers } from "../types";
@@ -50,10 +49,10 @@ export const createQuestion = (
 
   return {
     message: `${question.description}:`,
-    suffix: question.body ? chalk.dim(question.body) : undefined,
+    suffix: question.body ? question.body : undefined,
     name,
     type: selectOptionsExist ? "list" : "input",
-    prefix: chalk.bold(`${typeof index === "string" ? index : index + 1}.`),
+    prefix: `${typeof index === "string" ? index : index + 1}.`,
     choices: selectOptionsExist ? question.enum : undefined,
     source: selectOptionsExist
       ? (_answers?: any, input?: string) =>

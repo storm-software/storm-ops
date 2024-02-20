@@ -1,6 +1,6 @@
 import type { ProjectConfiguration } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
-import { getWorkspaceRoot } from "./get-workspace-root";
+import { findWorkspaceRootSafe } from "@storm-software/config-tools";
 
 export interface BaseTokenizerOptions {
   workspaceRoot?: string;
@@ -60,7 +60,7 @@ export const applyWorkspaceExecutorTokens = (
   if (result.includes("{workspaceRoot}")) {
     result = result.replaceAll(
       "{workspaceRoot}",
-      tokenizerOptions.workspaceRoot ?? getWorkspaceRoot()
+      tokenizerOptions.workspaceRoot ?? findWorkspaceRootSafe()
     );
   }
 
@@ -89,7 +89,9 @@ export const applyWorkspaceGeneratorTokens = (
   if (result.includes("{workspaceRoot}")) {
     result = result.replaceAll(
       "{workspaceRoot}",
-      tokenizerOptions.workspaceRoot ?? tokenizerOptions.config.workspaceRoot ?? getWorkspaceRoot()
+      tokenizerOptions.workspaceRoot ??
+        tokenizerOptions.config.workspaceRoot ??
+        findWorkspaceRootSafe()
     );
   }
 

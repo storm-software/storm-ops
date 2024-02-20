@@ -10,7 +10,9 @@
     ":pinAllExceptPeerDependencies"
   ],
   "semanticCommits": "enabled",
-  "reviewers": ["@sullivanpj"],
+  "reviewers": [
+    "@sullivanpj"
+  ],
   "rebaseWhen": "conflicted",
   "rangeStrategy": "pin",
   "automerge": true,
@@ -22,22 +24,26 @@
   },
   "packageRules": [
     {
-      "matchPackagePatterns": ["^@storm-software/"],
+      "matchPackagePatterns": [
+        "^@storm-software/"
+      ],
       "enabled": true
     },
     {
       "matchPackagePatterns": [
         "tsup",
         "chalk",
-        "semantic-release",
         "p-limit",
         "request",
-        "@cypress/request"
+        "@cypress/request",
+        "@humanfs/node"
       ],
       "enabled": false
     },
     {
-      "matchPackageNames": ["@nx"],
+      "matchPackageNames": [
+        "@nx"
+      ],
       "postUpgradeTasks": {
         "commands": [
           "pnpm nx migrate latest --run-migrations --create-commits --commit-message='chore(@storm-software/storm-ops): update @nx dependencies [skip ci]'"
@@ -46,17 +52,34 @@
     },
     {
       "groupName": "dependencies-non-major",
-      "matchUpdateTypes": ["digest", "minor", "patch", "pin"]
+      "matchUpdateTypes": [
+        "digest",
+        "minor",
+        "patch",
+        "pin"
+      ]
     },
     {
       "groupName": "patch & minor dev dependencies",
-      "depTypeList": ["devDependencies"],
-      "updateTypes": ["digest", "minor", "patch", "pin"]
+      "depTypeList": [
+        "devDependencies"
+      ],
+      "updateTypes": [
+        "digest",
+        "minor",
+        "patch",
+        "pin"
+      ]
     },
     {
       "groupName": "patch prod dependencies",
-      "depTypeList": ["dependencies"],
-      "updateTypes": ["patch", "pin"]
+      "depTypeList": [
+        "dependencies"
+      ],
+      "updateTypes": [
+        "patch",
+        "pin"
+      ]
     }
   ]
 }

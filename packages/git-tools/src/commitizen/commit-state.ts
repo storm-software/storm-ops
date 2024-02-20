@@ -1,6 +1,5 @@
 import { execSync } from "node:child_process";
 import { writeInfo } from "@storm-software/config-tools";
-import chalk from "chalk";
 import defaultConfig from "../commit/config";
 import { getScopeEnum } from "../commitlint/get-scope-enum";
 import type { CommitQuestions, CommitState, CommitStateConfig, CommitType } from "../types";
@@ -80,9 +79,7 @@ export const createState = async (
           ? ((defaultConfig.types as Record<string, CommitType>)?.[key] as CommitType)
           : undefined;
       if (type) {
-        name = `${chalk.bold(key)} - ${chalk.italic(type.title)} ${type.emoji} ${chalk.italic(
-          type.description ? type.description : ""
-        )}`;
+        name = `${key} - ${type.title} ${type.emoji} ${type.description ? type.description : ""}`;
         description = type.description;
       }
 

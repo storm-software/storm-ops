@@ -14,7 +14,11 @@ export const LARGE_BUFFER = 1024 * 1000000;
  * @param cwd - The current working directory
  * @returns The result of the command
  */
-export const run = (config: StormConfig, command: string, cwd: string = config.workspaceRoot) => {
+export const run = (
+  config: StormConfig,
+  command: string,
+  cwd: string = config.workspaceRoot ?? process.cwd()
+) => {
   return execSync(command, {
     cwd,
     env: {

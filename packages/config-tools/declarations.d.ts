@@ -20,6 +20,12 @@ export type { StormConfig };
 declare type StormConfigInput = z.input<typeof StormConfigSchema>;
 export type { StormConfigInput };
 
+export type DeepPartial<T> = T extends object
+  ? {
+      [P in keyof T]?: DeepPartial<T[P]>;
+    }
+  : T;
+
 /**
  * Find the root of the current monorepo
  *
@@ -48,7 +54,10 @@ export { createConfig };
 /**
  * Get the config file values for the current Storm workspace
  */
-declare function getConfigFile(): Promise<Partial<StormConfigInput>>;
+declare function getConfigFile(
+  filePath?: string,
+  additionalFileNames: string[] = []
+): Promise<Partial<StormConfigInput>>;
 export { getConfigFile };
 
 /**
@@ -200,3 +209,5 @@ declare const LARGE_BUFFER: number;
  */
 declare function run(config: StormConfig, command: string, cwd: string = config.workspaceRoot): any;
 export { run };
+
+declare module "fs-extra/esm" {}

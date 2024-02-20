@@ -8,14 +8,14 @@ import {
   writeTrace
 } from "@storm-software/config-tools";
 import type { StormConfig } from "@storm-software/config";
-import { Command, Option } from "commander";
 import { lint } from "cspell";
 import { parseCircular, parseDependencyTree, prettyCircular } from "dpdm";
 import { runAlex } from "../alex";
 import { runManypkg } from "../manypkg";
-export { findWorkspaceRootSafe } from "@storm-software/config-tools";
 
 let _config: Partial<StormConfig> = {};
+
+const { Command, Option } = await import("commander");
 
 export function createProgram(config: StormConfig) {
   try {

@@ -35,29 +35,27 @@
           "packages/git-tools/src/commitlint/config.ts",
           "packages/git-tools/src/commit/index.ts",
           "packages/git-tools/src/commit/config.ts",
-          "packages/git-tools/src/release/index.ts",
-          "packages/git-tools/src/release/changelog-renderer.ts"
+          "packages/git-tools/src/release/index.ts"
         ],
-        "deleteOutputPath": false,
+        "deleteOutputPath": true,
         "bundle": true,
         "sourcemap": true,
         "minify": false,
         "skipTypeCheck": true,
         "thirdParty": true,
+        "platform": "node",
         "format": [
-          "cjs"
+          "esm"
+        ],
+        "external": [
+          "nx"
         ],
         "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
+          "legalComments": "inline",
+          "banner": {
+            "js": "const require = (await import('node:module')).createRequire(import.meta.url);const __filename = (await import('node:url')).fileURLToPath(import.meta.url);const __dirname = (await import('node:path')).dirname(__filename);"
           }
         },
-        "external": [
-          "nx",
-          "@swc/wasm",
-          "@swc/core",
-          "@angular-devkit/architect"
-        ],
         "assets": [
           {
             "input": "packages/git-tools",

@@ -118,7 +118,7 @@ export const loadStormConfig = async (workspaceRoot?: string): Promise<StormConf
       {
         ...getConfigEnv(),
         ...configFile
-      },
+      } as Partial<StormConfig>,
       _workspaceRoot
     )
   );

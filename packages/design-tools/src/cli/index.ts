@@ -1,4 +1,4 @@
-import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root.js";
+import { findWorkspaceRootSafe } from "@storm-software/config-tools";
 import { processTokens } from "../program";
 
 async function createProgram() {
@@ -7,10 +7,10 @@ async function createProgram() {
 
     const { Command, Option } = await import("commander");
 
-    const root = findWorkspaceRoot(process.cwd());
-    process.env.STORM_WORKSPACE_ROOT ??= root?.dir;
-    process.env.NX_WORKSPACE_ROOT_PATH ??= root?.dir;
-    root?.dir && process.chdir(root.dir);
+    const root = findWorkspaceRootSafe(process.cwd());
+    process.env.STORM_WORKSPACE_ROOT ??= root;
+    process.env.NX_WORKSPACE_ROOT_PATH ??= root;
+    root && process.chdir(root);
 
     const program = new Command("storm-design");
     program.version("1.0.0", "-v --version", "display CLI version");

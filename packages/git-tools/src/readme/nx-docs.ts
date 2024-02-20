@@ -1,9 +1,9 @@
-import { existsSync, readFileSync } from "fs";
-import { join } from "path";
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import { findFilePath } from "../utilities/file-utils";
 
 export const getExecutorMarkdown = (
-  packageName: string,
+  _packageName: string,
   executorsJsonFile: string,
   executorsJson: Record<string, any>
 ): string => {

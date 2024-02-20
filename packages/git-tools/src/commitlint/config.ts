@@ -1,5 +1,4 @@
 import type { RuleConfigCondition, RuleConfigSeverity, TargetCaseType } from "@commitlint/types";
-import chalk from "chalk";
 
 export default {
   extends: ["@commitlint/config-conventional"],
@@ -64,12 +63,10 @@ export default {
         description: "Provide a longer description of the change"
       },
       breaking: {
-        description: `List any ${chalk.bold("BREAKING CHANGES")}`
+        description: "List any BREAKING CHANGES"
       },
       issues: {
-        description: `Add issue references (e.g. "${chalk.bold("fix #123")}", "${chalk.bold(
-          "re #123"
-        )}".)`
+        description: "Add issue references (e.g. fix #123, re #123.)"
       }
     }
   }

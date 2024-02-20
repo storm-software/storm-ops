@@ -1,14 +1,10 @@
-#!/usr/bin/env node
+#!/usr/local/bin/tsm
 
-import {
-  exitWithSuccess,
-  handleProcess,
-  loadStormConfig,
-  writeSuccess
-} from "@storm-software/config-tools";
+import { exitWithSuccess, handleProcess, writeSuccess } from "@storm-software/config-tools";
+import { loadStormConfig } from "@storm-software/config-tools";
 import { createProgram } from "../src/cli/index.js";
 
-const handle = async () => {
+void (async () => {
   const config = await loadStormConfig();
   handleProcess(config);
 
@@ -20,8 +16,10 @@ const handle = async () => {
     config,
     `Git ${process.argv.join(" ") ?? "tool"} processing completed successfully!`
   );
-};
 
-handle().then(() => {
-  loadStormConfig().then((config) => exitWithSuccess(config));
-});
+  exitWithSuccess(config);
+})();
+
+// .then(() => {
+//   loadStormConfig().then((config) => exitWithSuccess(config));
+// });

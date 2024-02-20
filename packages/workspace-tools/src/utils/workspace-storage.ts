@@ -1,10 +1,4 @@
-import {
-  existsSync,
-  readFileSync,
-  readdirSync,
-  rmSync,
-  writeFileSync
-} from "node:fs";
+import { existsSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { findCacheDirectory } from "./find-cache-dir";
 
@@ -67,9 +61,9 @@ export class WorkspaceStorage {
    * Clear the cache
    */
   clear() {
-    readdirSync(this.cacheDir).forEach(cacheFile => {
+    for (const cacheFile of readdirSync(this.cacheDir)) {
       rmSync(cacheFile, { force: true, recursive: true });
-    });
+    }
   }
 
   /**

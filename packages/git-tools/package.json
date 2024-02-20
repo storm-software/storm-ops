@@ -39,14 +39,15 @@
     "storm-pre-commit": "./bin/pre-commit.js",
     "storm-pre-push": "./bin/pre-push.js"
   },
+  "type": "module",
   "dependencies": {
     "@commitlint/cli": "18.6.0",
     "@commitlint/config-conventional": "18.6.0",
     "@commitlint/lint": "18.6.0",
     "@commitlint/types": "18.6.0",
+    "@nx/devkit": "18.0.4",
     "any-shell-escape": "0.1.1",
     "axios": "1.6.7",
-    "chalk": "4.1.2",
     "commander": "11.1.0",
     "deep-map": "2.0.0",
     "doctoc": "2.2.1",
@@ -55,31 +56,19 @@
     "inquirer": "9.2.12",
     "lodash-es": "4.17.21",
     "micromatch": "4.0.5",
+    "nx": "18.0.4",
     "prettier": "3.2.5",
     "remeda": "1.38.0",
     "semver": "7.5.4",
+    "ts-node": "10.9.2",
     "word-wrap": "1.2.5",
     "zod": "3.22.4"
   },
   "devDependencies": {
-    "@nx/devkit": "18.0.4",
     "@types/inquirer": "9.0.6",
-    "@types/prettier": "3.0.0",
-    "nx": "18.0.4"
+    "@types/prettier": "3.0.0"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "peerDependencies": {
-    "@nx/devkit": ">=18.0.4",
-    "nx": ">=18.0.4"
-  },
-  "peerDependenciesMeta": {
-    "nx": {
-      "optional": false
-    },
-    "@nx/devkit": {
-      "optional": false
-    }
   }
 }

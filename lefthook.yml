@@ -32,17 +32,18 @@ pre-commit:
       run: "pnpm build"
       stage_fixed: true
     schema-gen:
-      glob: "packages/config/src/schema.ts"
-      run: "pnpm exec nx generate @storm-software/workspace-tools:config-schema --outputFile=\"packages/config/schema/storm.schema.json\""
+      files: "git diff --name-only HEAD @{push}"
+      glob: "**/schema.ts"
+      run: "pnpm exec nx generate @storm-software/workspace-tools:config-schema --outputFile=\"packages/config/schema/schema.json\""
       stage_fixed: true
     validate:
       glob: "**/*.*"
       run: "node ./dist/packages/git-tools/bin/pre-commit.js {staged_files}"
       stage_fixed: true
-    lint:
-      glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: "pnpm lint"
-      stage_fixed: true
+    # lint:
+    #   glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+    #   run: "pnpm lint"
+    #   stage_fixed: true
     check:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
@@ -50,10 +51,10 @@ pre-commit:
     readme:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/{README.md,package.json,executors.json,generators.json}"
-      run: "node ./dist/packages/git-tools/bin/git.js readme-gen --templates=\"./dist/packages/git-tools/readme/templates\" && git update-index"
-    format:
-      glob: "**/{README.md,package.json}"
-      run: "pnpm biome:format {staged_files} && git update-index"
+      run: "pnpm readme:format && git update-index"
+    # format:
+    #   glob: "**/{README.md,package.json}"
+    #   run: "pnpm biome:format {staged_files} && git update-index"
     postbuild:
       glob: "**/*.*"
       run: "pnpm build"

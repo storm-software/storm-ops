@@ -13,8 +13,9 @@ import {
   applyWorkspaceGeneratorTokens,
   applyWorkspaceTokens
 } from "../utils/apply-workspace-tokens";
-import { getWorkspaceRoot } from "../utils/get-workspace-root";
+import { findWorkspaceRootSafe } from "@storm-software/config-tools";
 import type { BaseGeneratorOptions, BaseGeneratorResult } from "../../declarations";
+
 const { loadStormConfig } = require("@storm-software/config-tools/create-storm-config");
 
 export const withRunGenerator =
@@ -37,7 +38,7 @@ export const withRunGenerator =
     try {
       writeInfo(config, `⚡ Running the ${name} generator...\n\n`);
 
-      const workspaceRoot = getWorkspaceRoot();
+      const workspaceRoot = findWorkspaceRootSafe();
       if (!generatorOptions.skipReadingConfig) {
         writeDebug(
           config,

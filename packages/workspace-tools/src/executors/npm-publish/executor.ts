@@ -1,7 +1,6 @@
 import { type ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devkit";
 import { execSync } from "node:child_process";
 import type { NpmPublishExecutorSchema } from "./schema";
-import chalk = require("chalk");
 import { writeError, writeInfo, writeWarning } from "@storm-software/config-tools";
 import type { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
@@ -126,9 +125,7 @@ export async function npmPublishExecutorFn(
         } else {
           writeInfo(
             config,
-            `Would add the dist-tag ${tag} to v${currentVersion} for registry ${registry}, but ${chalk.keyword(
-              "orange"
-            )("[dry-run]")} was set.\n`
+            `Would add the dist-tag ${tag} to v${currentVersion} for registry ${registry}, but [dry-run] was set.\n`
           );
         }
         return new Promise((resolve) => resolve({ success: true }));
@@ -208,12 +205,7 @@ export async function npmPublishExecutorFn(
     writeInfo(config, output.toString());
 
     if (isDryRun) {
-      writeInfo(
-        config,
-        `Would publish to ${registry} with tag "${tag}", but ${chalk.keyword("orange")(
-          "[dry-run]"
-        )} was set`
-      );
+      writeInfo(config, `Would publish to ${registry} with tag "${tag}", but [dry-run] was set`);
     } else {
       writeInfo(config, `Published to ${registry} with tag "${tag}"`);
     }

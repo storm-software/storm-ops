@@ -31,6 +31,7 @@
   "bin": {
     "storm-lint": "./bin/lint.js"
   },
+  "type": "module",
   "dependencies": {
     "@cspell/dict-ada": "4.0.2",
     "@cspell/dict-aws": "4.0.1",
@@ -87,7 +88,6 @@
     "@total-typescript/ts-reset": "0.5.1",
     "@tsconfig/recommended": "1.0.3",
     "alex": "11.0.1",
-    "chalk": "4.1.2",
     "check-dependency-version-consistency": "4.1.0",
     "child_process": "1.0.2",
     "commander": "11.1.0",

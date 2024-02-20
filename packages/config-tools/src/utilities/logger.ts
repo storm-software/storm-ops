@@ -1,7 +1,7 @@
-import chalk from "chalk";
-import { LogLevel } from "../types";
+import { LogLevel, LogLevelLabel } from "../types";
 import type { StormConfig } from "@storm-software/config";
 import { getLogLevel } from "./get-log-level";
+import chalk from "chalk";
 
 // Annoying chalk polyfill to temporarily fix the issue with the `chalk` import
 const chalkDefault = {
@@ -18,6 +18,7 @@ const chalkDefault = {
     whiteBright: (message: string) => message
   }
 } as any;
+// const chalk = chalkDefault;
 
 /**
  * Get the log function for a log level
@@ -35,12 +36,14 @@ export const getLogFn = (
     _chalk = chalkDefault;
   }
 
+  const configLogLevel = (config.logLevel ??
+    process.env?.STORM_LOG_LEVEL ??
+    LogLevelLabel.INFO) as LogLevelLabel;
+
   if (
     (typeof logLevel === "number" &&
-      (logLevel >= getLogLevel(config.logLevel ?? process.env?.STORM_LOG_LEVEL) ||
-        logLevel <= LogLevel.SILENT)) ||
-    (typeof logLevel === "string" &&
-      getLogLevel(logLevel) >= getLogLevel(config.logLevel ?? process.env?.STORM_LOG_LEVEL))
+      (logLevel >= getLogLevel(configLogLevel) || logLevel <= LogLevel.SILENT)) ||
+    (typeof logLevel === "string" && getLogLevel(logLevel) >= getLogLevel(configLogLevel))
   ) {
     return (_: string) => {
       /* noop */

@@ -1,7 +1,7 @@
 import { constants, accessSync, existsSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { env } from "node:process";
-import { getWorkspaceRoot } from "./get-workspace-root";
+import { findWorkspaceRootSafe } from "@storm-software/config-tools";
 
 const isWritable = (path: string): boolean => {
   try {
@@ -42,7 +42,7 @@ export function findCacheDirectory(
     create?: boolean;
   } = {
     name: "storm",
-    workspaceRoot: getWorkspaceRoot(),
+    workspaceRoot: findWorkspaceRootSafe(),
     create: true
   }
 ): string {

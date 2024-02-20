@@ -1,10 +1,16 @@
-import { exitWithError, writeFatal, writeInfo, writeSuccess } from "@storm-software/config-tools";
+import {
+  findWorkspaceRootSafe,
+  exitWithError,
+  writeFatal,
+  writeInfo,
+  writeSuccess
+} from "@storm-software/config-tools";
 import type { StormConfig } from "@storm-software/config";
-import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root.js";
 import { runCommit } from "../commit";
 import { runReadme } from "../readme";
 import { runRelease } from "../release";
 import type { ReadMeOptions } from "../types";
+// import { Command, Option } from "commander";
 
 let _config: Partial<StormConfig> = {};
 
@@ -13,22 +19,22 @@ export async function createProgram(config: StormConfig) {
     _config = config;
     writeInfo(config, "⚡ Running Storm Git Tools");
 
-    const { Command, Option } = await import("commander");
+    const commander = await import("commander");
 
-    const root = findWorkspaceRoot(process.cwd());
-    process.env.STORM_WORKSPACE_ROOT ??= root?.dir;
-    process.env.NX_WORKSPACE_ROOT_PATH ??= root?.dir;
-    root?.dir && process.chdir(root.dir);
+    const root = findWorkspaceRootSafe(process.cwd());
+    process.env.STORM_WORKSPACE_ROOT ??= root;
+    process.env.NX_WORKSPACE_ROOT_PATH ??= root;
+    root && process.chdir(root);
 
-    const program = new Command("storm-git");
+    const program = new commander.Command("storm-git");
     program.version("1.0.0", "-v --version", "display CLI version");
 
-    const commitlintConfig = new Option(
+    const commitlintConfig = new commander.Option(
       "--config <file>",
       "Commitlint/Commitizen config file path"
     ).default("@storm-software/git-tools/src/commit/config.js");
 
-    const commitlintDryRun = new Option(
+    const commitlintDryRun = new commander.Option(
       "--dry-run",
       "Should the commit be run in dry-run mode (no updates are made)"
     );
@@ -40,27 +46,27 @@ export async function createProgram(config: StormConfig) {
       .addOption(commitlintDryRun)
       .action(commitAction);
 
-    const readmeTemplatePath = new Option(
+    const readmeTemplatePath = new commander.Option(
       "--templates <path>",
       "The templates directory to use when generating the README.md files."
     ).default("./docs/readme-templates");
 
-    const readmePackageName = new Option(
+    const readmePackageName = new commander.Option(
       "--project <project>",
       "The specific project to generate a README.md file for"
     );
 
-    const readmeOutput = new Option(
+    const readmeOutput = new commander.Option(
       "--output <path>",
       "Where to output the generated README.md file"
     );
 
-    const readmeClean = new Option(
+    const readmeClean = new commander.Option(
       "--clean",
       "Should the output README.md file be cleaned before generation"
     ).default(true);
 
-    const readmePrettier = new Option(
+    const readmePrettier = new commander.Option(
       "--prettier",
       "Should the output README.md file have prettier applied to it"
     ).default(true);
@@ -75,15 +81,15 @@ export async function createProgram(config: StormConfig) {
       .addOption(readmePrettier)
       .action(readmeAction);
 
-    const releasePackageName = new Option(
+    const releasePackageName = new commander.Option(
       "--project <project>",
       "The specific project to run release for"
     );
 
-    const releaseBase = new Option("--base <base>", "Git base tag value");
-    const releaseHead = new Option("--head <head>", "Git head tag value");
+    const releaseBase = new commander.Option("--base <base>", "Git base tag value");
+    const releaseHead = new commander.Option("--head <head>", "Git head tag value");
 
-    const releaseDryRun = new Option(
+    const releaseDryRun = new commander.Option(
       "--dry-run",
       "Should the release be run in dry-run mode (no updates are made)"
     );

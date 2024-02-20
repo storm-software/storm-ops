@@ -13,7 +13,7 @@ import {
   applyWorkspaceExecutorTokens,
   applyWorkspaceTokens
 } from "../utils/apply-workspace-tokens";
-import { getWorkspaceRoot } from "../utils/get-workspace-root";
+import { findWorkspaceRootSafe } from "@storm-software/config-tools";
 import type {
   BaseExecutorOptions,
   BaseExecutorResult,
@@ -49,7 +49,7 @@ export const withRunExecutor =
         );
       }
 
-      const workspaceRoot = getWorkspaceRoot();
+      const workspaceRoot = findWorkspaceRootSafe();
       const projectRoot = context.projectsConfigurations.projects[context.projectName].root;
       const sourceRoot = context.projectsConfigurations.projects[context.projectName].sourceRoot;
       const projectName = context.projectsConfigurations.projects[context.projectName].name;

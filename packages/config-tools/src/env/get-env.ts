@@ -1,6 +1,7 @@
 import type { LogLevelLabel } from "../types";
 import type { StormConfig } from "@storm-software/config";
 import { getLogLevelLabel } from "../utilities";
+import type { DeepPartial } from "../../declarations.d";
 
 /**
  * Get the config for an extension module of Storm workspace from environment variables
@@ -8,10 +9,8 @@ import { getLogLevelLabel } from "../utilities";
  * @param extensionName - The name of the extension module
  * @returns The config for the specified Storm extension module. If the module does not exist, `undefined` is returned.
  */
-export const getExtensionEnv = <
-  TConfig extends Record<string, any> = Record<string, any>,
->(
-  extensionName: string,
+export const getExtensionEnv = <TConfig extends Record<string, any> = Record<string, any>>(
+  extensionName: string
 ): TConfig | undefined => {
   const prefix = `STORM_EXTENSION_${extensionName.toUpperCase()}_`;
   return Object.keys(process.env)
@@ -20,11 +19,7 @@ export const getExtensionEnv = <
       const name = key
         .replace(prefix, "")
         .split("_")
-        .map((i) =>
-          i.length > 0
-            ? i.trim().charAt(0).toUpperCase() + i.trim().slice(1)
-            : "",
-        )
+        .map((i) => (i.length > 0 ? i.trim().charAt(0).toUpperCase() + i.trim().slice(1) : ""))
         .join("");
       if (name) {
         ret[name] = process.env[key];
@@ -39,18 +34,17 @@ export const getExtensionEnv = <
  *
  * @returns The config for the current Storm workspace from environment variables
  */
-export const getConfigEnv = (): Partial<StormConfig> => {
+export const getConfigEnv = (): DeepPartial<StormConfig> => {
   const prefix = "STORM_";
 
-  let config: Partial<StormConfig> = {
+  let config: DeepPartial<StormConfig> = {
+    extends: process.env[`${prefix}EXTENDS`],
     name: process.env[`${prefix}NAME`],
     namespace: process.env[`${prefix}NAMESPACE`],
     owner: process.env[`${prefix}OWNER`],
     worker: process.env[`${prefix}WORKER`],
     organization: process.env[`${prefix}ORGANIZATION`],
-    packageManager: process.env[
-      `${prefix}PACKAGE_MANAGER`
-    ] as StormConfig["packageManager"],
+    packageManager: process.env[`${prefix}PACKAGE_MANAGER`] as StormConfig["packageManager"],
     license: process.env[`${prefix}LICENSE`],
     homepage: process.env[`${prefix}HOMEPAGE`],
     timezone: process.env[`${prefix}TIMEZONE`] ?? process.env.TZ,
@@ -72,9 +66,7 @@ export const getConfigEnv = (): Partial<StormConfig> => {
     ci:
       process.env[`${prefix}CI`] !== undefined
         ? Boolean(
-            process.env[`${prefix}CI`] ??
-              process.env.CI ??
-              process.env.CONTINUOUS_INTEGRATION,
+            process.env[`${prefix}CI`] ?? process.env.CI ?? process.env.CONTINUOUS_INTEGRATION
           )
         : undefined,
     colors: {
@@ -84,20 +76,18 @@ export const getConfigEnv = (): Partial<StormConfig> => {
       info: process.env[`${prefix}COLOR_INFO`],
       warning: process.env[`${prefix}COLOR_WARNING`],
       error: process.env[`${prefix}COLOR_ERROR`],
-      fatal: process.env[`${prefix}COLOR_FATAL`],
+      fatal: process.env[`${prefix}COLOR_FATAL`]
     },
     repository: process.env[`${prefix}REPOSITORY`],
     branch: process.env[`${prefix}BRANCH`],
     preid: process.env[`${prefix}PRE_ID`],
     logLevel:
-      process.env[`${prefix}LOG_LEVEL`] !== null &&
-      process.env[`${prefix}LOG_LEVEL`] !== undefined
-        ? Number.isSafeInteger(
-            Number.parseInt(process.env[`${prefix}LOG_LEVEL`]),
-          )
-          ? getLogLevelLabel(Number.parseInt(process.env[`${prefix}LOG_LEVEL`]))
+      process.env[`${prefix}LOG_LEVEL`] !== null && process.env[`${prefix}LOG_LEVEL`] !== undefined
+        ? process.env[`${prefix}LOG_LEVEL`] &&
+          Number.isSafeInteger(Number.parseInt(process.env[`${prefix}LOG_LEVEL`] as string))
+          ? getLogLevelLabel(Number.parseInt(process.env[`${prefix}LOG_LEVEL`] as string))
           : (process.env[`${prefix}LOG_LEVEL`] as LogLevelLabel)
-        : undefined,
+        : undefined
   };
 
   const serializedConfig = process.env[`${prefix}CONFIG`];
@@ -107,7 +97,7 @@ export const getConfigEnv = (): Partial<StormConfig> => {
       ...config,
       ...parsed,
       colors: { ...config.colors, ...parsed.colors },
-      extensions: { ...config.extensions, ...parsed.extensions },
+      extensions: { ...config.extensions, ...parsed.extensions }
     };
   }
 

@@ -13,7 +13,6 @@
   "module": "./index.js",
   "types": "declarations.d.ts",
   "dependencies": {
-    "chalk": "4.1.2",
     "zod": "3.22.4"
   },
   "publishConfig": {

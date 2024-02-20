@@ -69,6 +69,11 @@ export const ColorConfigSchema = z
  */
 export const StormConfigSchema = z
   .object({
+    extends: z
+      .string()
+      .trim()
+      .optional()
+      .describe("The path to a base JSON file to use as a configuration preset file"),
     name: z.string().trim().toLowerCase().optional().describe("The name of the package"),
     namespace: z.string().trim().toLowerCase().optional().describe("The namespace of the package"),
     organization: z
@@ -103,7 +108,7 @@ export const StormConfigSchema = z
     worker: z
       .string()
       .trim()
-      .default("stormie-bot")
+      .default("Stormie-Bot")
       .describe(
         "The worker of the package (this is the bot that will be used to perform various tasks)"
       ),

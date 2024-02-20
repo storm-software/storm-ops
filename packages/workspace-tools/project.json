@@ -44,21 +44,15 @@
         ],
         "esbuildOptions": {
           "outExtension": {
-            ".js": ".js"
+            ".js": ".js",
+            ".mjs": ".mjs"
           }
         },
         "external": [
-          "@angular-devkit/core",
-          "@angular-devkit/architect",
-          "@angular-devkit/schematics",
-          "@storm-software/config",
-          "@storm-software/config-tools",
-          "typescript",
+          "nx",
           "@swc/wasm",
-          "prettier",
-          "esbuild",
-          "zod",
-          "nx"
+          "@swc/core",
+          "@angular-devkit/architect"
         ],
         "assets": [
           {
