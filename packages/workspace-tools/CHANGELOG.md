@@ -1,3 +1,15 @@
+## 1.60.7 (2024-02-22)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Import prettier dynamically to ensure loading ([46dd5ea7](https://github.com/storm-software/storm-ops/commit/46dd5ea7))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.6 (2024-02-22)
 
 
