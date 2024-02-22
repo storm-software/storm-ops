@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/workspace-tools",
         "tsConfig": "packages/workspace-tools/tsconfig.lib.json",
@@ -18,7 +20,6 @@
           "packages/workspace-tools/src/executors/tsup-node/executor.ts",
           "packages/workspace-tools/src/executors/tsup-browser/executor.ts",
           "packages/workspace-tools/src/executors/typia/executor.ts",
-          "packages/workspace-tools/src/executors/design-tokens/executor.ts",
           "packages/workspace-tools/src/executors/npm-publish/executor.ts",
           "packages/workspace-tools/src/generators/init/init.ts",
           "packages/workspace-tools/src/generators/node-library/generator.ts",
@@ -37,8 +38,12 @@
         "skipTypeCheck": false,
         "metafile": true,
         "minify": false,
-        "format": ["cjs"],
-        "external": ["nx"],
+        "format": [
+          "cjs"
+        ],
+        "external": [
+          "nx"
+        ],
         "esbuildOptions": {
           "outExtension": {
             ".js": ".js"
@@ -100,8 +105,13 @@
     },
     "nx-release-publish": {
       "cache": false,
-      "inputs": ["default", "^production"],
-      "dependsOn": ["^build"],
+      "inputs": [
+        "default",
+        "^production"
+      ],
+      "dependsOn": [
+        "^build"
+      ],
       "executor": "@storm-software/workspace-tools:npm-publish",
       "options": {
         "packageRoot": "dist/{projectRoot}",
@@ -109,5 +119,8 @@
       }
     }
   },
-  "tags": ["type:util", "scope:tools"]
+  "tags": [
+    "type:util",
+    "scope:tools"
+  ]
 }

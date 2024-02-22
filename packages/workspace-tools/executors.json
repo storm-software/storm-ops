@@ -21,11 +21,6 @@
       "schema": "./src/executors/tsup-browser/schema.json",
       "description": "Runs a browser platform TypeScript build"
     },
-    "design-tokens": {
-      "implementation": "./src/executors/design-tokens/executor",
-      "schema": "./src/executors/design-tokens/schema.json",
-      "description": "Generate code (TailWind CSS, Tamagui, CSS variables, etc.) from a tokens.json file exported from Figma Tokens Studio"
-    },
     "typia": {
       "implementation": "./src/executors/typia/executor",
       "schema": "./src/executors/typia/schema.json",

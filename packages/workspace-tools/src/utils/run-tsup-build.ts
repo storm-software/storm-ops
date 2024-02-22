@@ -14,9 +14,9 @@ import {
 } from "@storm-software/config-tools";
 import type { StormConfig } from "@storm-software/config";
 import { environmentPlugin } from "esbuild-plugin-environment";
-import type { TsupContext } from "packages/workspace-tools/declarations";
+import type { TsupContext } from "../../declarations";
 import { type Options, build as tsup, defineConfig } from "tsup";
-import * as ts from "typescript";
+import ts from "typescript";
 import { defaultConfig, getConfig } from "../base/get-tsup-config";
 import type { TsupExecutorSchema } from "../executors/tsup/schema";
 import { removeExtension } from "./file-path-utils";
