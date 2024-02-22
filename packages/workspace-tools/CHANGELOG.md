@@ -1,3 +1,15 @@
+## 1.60.9 (2024-02-22)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added require to banner statement ([78e45866](https://github.com/storm-software/storm-ops/commit/78e45866))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.8 (2024-02-22)
 
 
