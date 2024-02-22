@@ -1,3 +1,15 @@
+## 1.60.8 (2024-02-22)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update built file extensions ([8bcb58ad](https://github.com/storm-software/storm-ops/commit/8bcb58ad))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.7 (2024-02-22)
 
 
