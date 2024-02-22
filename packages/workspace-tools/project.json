@@ -42,18 +42,14 @@
         "format": [
           "cjs"
         ],
+        "external": [
+          "nx"
+        ],
         "esbuildOptions": {
           "outExtension": {
-            ".js": ".js",
-            ".mjs": ".mjs"
+            ".js": ".js"
           }
         },
-        "external": [
-          "nx",
-          "@swc/wasm",
-          "@swc/core",
-          "@angular-devkit/architect"
-        ],
         "assets": [
           {
             "input": "./packages/workspace-tools",
