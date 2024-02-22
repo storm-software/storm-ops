@@ -1,3 +1,15 @@
+## 1.60.11 (2024-02-22)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Remove prettier imports from tsup build ([5513d93d](https://github.com/storm-software/storm-ops/commit/5513d93d))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.10 (2024-02-22)
 
 
