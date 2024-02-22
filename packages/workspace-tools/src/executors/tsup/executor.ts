@@ -16,7 +16,7 @@ import type { StormConfig } from "@storm-software/config";
 import { removeSync, writeFile } from "fs-extra";
 import { type Path, globSync } from "glob";
 import { fileExists } from "nx/src/utils/fileutils.js";
-import { type Options as PrettierOptions, format } from "prettier";
+import type { Options as PrettierOptions } from "prettier";
 import { withRunExecutor } from "../../base/base-executor";
 import { removeExtension } from "../../utils/file-path-utils";
 import { getProjectConfigurations } from "../../utils/get-project-configurations";
@@ -224,6 +224,7 @@ ${externalDependencies
   .join("\n")}`
   );
 
+  const prettier = await import("prettier");
   const prettierOptions: PrettierOptions = {
     plugins: ["prettier-plugin-packagejson"],
     trailingComma: "none",
@@ -457,7 +458,7 @@ ${externalDependencies
 
     writeFileSync(
       packageJsonPath,
-      await format(JSON.stringify(packageJson), {
+      await prettier.format(JSON.stringify(packageJson), {
         ...prettierOptions,
         parser: "json"
       })
@@ -479,7 +480,7 @@ ${externalDependencies
       files.map(async (file) =>
         writeFile(
           file,
-          await format(
+          await prettier.format(
             `${
               options.banner
                 ? options.banner.startsWith("//")
