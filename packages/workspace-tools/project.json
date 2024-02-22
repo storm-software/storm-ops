@@ -45,11 +45,6 @@
         "external": [
           "nx"
         ],
-        "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
-          }
-        },
         "assets": [
           {
             "input": "./packages/workspace-tools",
