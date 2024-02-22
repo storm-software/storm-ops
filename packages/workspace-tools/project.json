@@ -42,10 +42,6 @@
         "esbuildOptions": {
           "outExtension": {
             ".js": ".js"
-          },
-          "legalComments": "inline",
-          "banner": {
-            "js": "const require = (await import('node:module')).createRequire(import.meta.url);"
           }
         },
         "assets": [

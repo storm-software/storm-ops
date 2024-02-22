@@ -16,7 +16,6 @@ import type { StormConfig } from "@storm-software/config";
 import { removeSync, writeFile } from "fs-extra";
 import { type Path, globSync } from "glob";
 import { fileExists } from "nx/src/utils/fileutils.js";
-import type { Options as PrettierOptions } from "prettier";
 import { withRunExecutor } from "../../base/base-executor";
 import { removeExtension } from "../../utils/file-path-utils";
 import { getProjectConfigurations } from "../../utils/get-project-configurations";
@@ -225,19 +224,19 @@ ${externalDependencies
   );
 
   const prettier = await import("prettier");
-  const prettierOptions: PrettierOptions = {
+  const prettierOptions = {
     plugins: ["prettier-plugin-packagejson"],
-    trailingComma: "none",
+    trailingComma: "none" as "all" | "none" | "es5",
     tabWidth: 2,
     semi: true,
     singleQuote: false,
-    quoteProps: "preserve",
+    quoteProps: "preserve" as "preserve" | "as-needed" | "consistent",
     insertPragma: false,
     bracketSameLine: true,
     printWidth: 80,
     bracketSpacing: true,
-    arrowParens: "avoid",
-    endOfLine: "lf"
+    arrowParens: "avoid" as "avoid" | "always",
+    endOfLine: "lf" as "lf" | "auto" | "crlf" | "cr"
   };
 
   let entryPoints: string[] = [];
