@@ -1,3 +1,15 @@
+## 1.60.6 (2024-02-22)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve issue with excluded packages ([198e115a](https://github.com/storm-software/storm-ops/commit/198e115a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.5 (2024-02-21)
 
 
