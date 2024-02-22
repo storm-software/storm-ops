@@ -223,21 +223,21 @@ ${externalDependencies
   .join("\n")}`
   );
 
-  const prettier = await import("prettier");
-  const prettierOptions = {
-    plugins: ["prettier-plugin-packagejson"],
-    trailingComma: "none" as "all" | "none" | "es5",
-    tabWidth: 2,
-    semi: true,
-    singleQuote: false,
-    quoteProps: "preserve" as "preserve" | "as-needed" | "consistent",
-    insertPragma: false,
-    bracketSameLine: true,
-    printWidth: 80,
-    bracketSpacing: true,
-    arrowParens: "avoid" as "avoid" | "always",
-    endOfLine: "lf" as "lf" | "auto" | "crlf" | "cr"
-  };
+  // const prettier = await import("prettier");
+  // const prettierOptions = {
+  //   plugins: ["prettier-plugin-packagejson"],
+  //   trailingComma: "none" as "all" | "none" | "es5",
+  //   tabWidth: 2,
+  //   semi: true,
+  //   singleQuote: false,
+  //   quoteProps: "preserve" as "preserve" | "as-needed" | "consistent",
+  //   insertPragma: false,
+  //   bracketSameLine: true,
+  //   printWidth: 80,
+  //   bracketSpacing: true,
+  //   arrowParens: "avoid" as "avoid" | "always",
+  //   endOfLine: "lf" as "lf" | "auto" | "crlf" | "cr"
+  // };
 
   let entryPoints: string[] = [];
   if (options.entry) {
@@ -455,13 +455,15 @@ ${externalDependencies
 
     writeDebug(config, `⚡ Writing package.json file to: ${packageJsonPath}`);
 
-    writeFileSync(
-      packageJsonPath,
-      await prettier.format(JSON.stringify(packageJson), {
-        ...prettierOptions,
-        parser: "json"
-      })
-    );
+    // writeFileSync(
+    //   packageJsonPath,
+    //   await prettier.format(JSON.stringify(packageJson), {
+    //     ...prettierOptions,
+    //     parser: "json"
+    //   })
+    // );
+
+    writeFileSync(packageJsonPath, JSON.stringify(packageJson));
   } else {
     writeWarning(config, "Skipping writing to package.json file");
   }
@@ -475,23 +477,39 @@ ${externalDependencies
       joinPathFragments(config.workspaceRoot, options.outputPath, "src/**/*.js"),
       joinPathFragments(config.workspaceRoot, options.outputPath, "src/**/*.jsx")
     ]);
+    // await Promise.allSettled(
+    //   files.map(async (file) =>
+    //     writeFile(
+    //       file,
+    //       await prettier.format(
+    //         `${
+    //           options.banner
+    //             ? options.banner.startsWith("//")
+    //               ? options.banner
+    //               : `// ${options.banner}`
+    //             : ""
+    //         }\n\n${readFileSync(file, "utf-8")}`,
+    //         {
+    //           ...prettierOptions,
+    //           parser: "typescript"
+    //         }
+    //       ),
+    //       "utf-8"
+    //     )
+    //   )
+    // );
+
     await Promise.allSettled(
       files.map(async (file) =>
         writeFile(
           file,
-          await prettier.format(
-            `${
-              options.banner
-                ? options.banner.startsWith("//")
-                  ? options.banner
-                  : `// ${options.banner}`
-                : ""
-            }\n\n${readFileSync(file, "utf-8")}`,
-            {
-              ...prettierOptions,
-              parser: "typescript"
-            }
-          ),
+          `${
+            options.banner
+              ? options.banner.startsWith("//")
+                ? options.banner
+                : `// ${options.banner}`
+              : ""
+          }\n\n${readFileSync(file, "utf-8")}`,
           "utf-8"
         )
       )
