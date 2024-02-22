@@ -1,3 +1,15 @@
+## 1.60.10 (2024-02-22)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve issue with multi-require imports ([711dca38](https://github.com/storm-software/storm-ops/commit/711dca38))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.9 (2024-02-22)
 
 
