@@ -135,6 +135,7 @@ export const runRelease = async (
       verbose: true,
       preid: config.preid,
       stageChanges: true,
+      gitCommit: false,
       gitTag: true
     });
 
@@ -148,8 +149,7 @@ export const runRelease = async (
       gitRemote: "origin",
       gitCommit: true,
       stageChanges: true,
-      gitCommitMessage: "chore(release): Publish package updates to monorepo",
-      gitTag: true
+      gitCommitMessage: "chore(release): Publish package updates to monorepo"
     });
 
     // const {
