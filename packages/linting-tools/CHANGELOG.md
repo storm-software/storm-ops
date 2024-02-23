@@ -1,3 +1,15 @@
+## 1.39.2 (2024-02-23)
+
+
+### 🩹 Fixes
+
+- **linting-tools:** Added the `preserveSymlinks` option back to root tsconfig file ([a06f4a6b](https://github.com/storm-software/storm-ops/commit/a06f4a6b))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.39.1 (2024-02-20)
 
 
