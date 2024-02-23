@@ -177,6 +177,7 @@ function getNormalizedTsConfig(
         outDir: outputPath,
         rootDir: workspaceRoot,
         baseUrl: workspaceRoot,
+        moduleResolution: "node",
         noEmit: false,
         esModuleInterop: true,
         downlevelIteration: true,
