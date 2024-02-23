@@ -135,7 +135,7 @@ export const runRelease = async (
       verbose: true,
       preid: config.preid,
       stageChanges: true,
-      gitCommit: false
+      gitTag: true
     });
 
     await releaseChangelog({
@@ -147,7 +147,8 @@ export const runRelease = async (
       from: options.base ?? process.env.NX_BASE,
       gitRemote: "origin",
       gitCommit: true,
-      gitCommitMessage: "chore(release): Publish updates to monorepo [skip ci]",
+      stageChanges: true,
+      gitCommitMessage: "chore(release): Publish package updates to monorepo",
       gitTag: true
     });
 

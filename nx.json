@@ -165,10 +165,7 @@
       "generator": "@storm-software/workspace-tools:release-version",
       "generatorOptions": {
         "currentVersionResolver": "git-tag",
-        "specifierSource": "conventional-commits",
-        "git": {
-          "stageChanges": true
-        }
+        "specifierSource": "conventional-commits"
       }
     }
   },
