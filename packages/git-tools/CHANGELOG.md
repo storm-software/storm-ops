@@ -1,3 +1,19 @@
+## 2.1.3 (2024-02-23)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Ensure tag generation during versioning ([d08a89cd](https://github.com/storm-software/storm-ops/commit/d08a89cd))
+
+- **git-tools:** Resolved duplicate tag version error ([fa743fa6](https://github.com/storm-software/storm-ops/commit/fa743fa6))
+
+- **git-tools:** Resolve issue with release versioning ([24bfe5e9](https://github.com/storm-software/storm-ops/commit/24bfe5e9))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.1.2 (2024-02-20)
 
 
