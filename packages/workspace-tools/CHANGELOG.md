@@ -1,3 +1,15 @@
+## 1.60.14 (2024-02-23)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Updates to compiler options for declarations build ([62dcf6e7](https://github.com/storm-software/storm-ops/commit/62dcf6e7))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.13 (2024-02-23)
 
 
