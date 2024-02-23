@@ -155,10 +155,7 @@
       "automaticFromRef": true,
       "projectChangelogs": {
         "createRelease": "github",
-        "entryWhenNoChanges": false,
-        "git": {
-          "commit": true
-        }
+        "entryWhenNoChanges": false
       }
     },
     "version": {
