@@ -1,3 +1,15 @@
+## 1.60.17 (2024-02-23)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added `target` and `module` values to declarations build options ([165e8c17](https://github.com/storm-software/storm-ops/commit/165e8c17))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.16 (2024-02-23)
 
 
