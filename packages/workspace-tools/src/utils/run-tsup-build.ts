@@ -16,7 +16,7 @@ import type { StormConfig } from "@storm-software/config";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import type { TsupContext } from "../../declarations";
 import { type Options, build as tsup, defineConfig } from "tsup";
-import ts from "typescript";
+import { parseJsonConfigFileContent, readConfigFile, sys } from "typescript";
 import { defaultConfig, getConfig } from "../base/get-tsup-config";
 import type { TsupExecutorSchema } from "../executors/tsup/schema";
 import { removeExtension } from "./file-path-utils";
@@ -163,8 +163,8 @@ function getNormalizedTsConfig(
   outputPath: string,
   options: TypeScriptCompilationOptions
 ) {
-  const config = ts.readConfigFile(options.tsConfig, ts.sys.readFile).config;
-  const tsConfig = ts.parseJsonConfigFileContent(
+  const config = readConfigFile(options.tsConfig, sys.readFile).config;
+  const tsConfig = parseJsonConfigFileContent(
     {
       ...config,
       compilerOptions: {
@@ -177,19 +177,17 @@ function getNormalizedTsConfig(
         outDir: outputPath,
         rootDir: workspaceRoot,
         baseUrl: workspaceRoot,
-        allowJs: true,
         noEmit: false,
         esModuleInterop: true,
         downlevelIteration: true,
         noUnusedLocals: false,
-        forceConsistentCasingInFileNames: true,
         emitDeclarationOnly: true,
         declaration: true,
         declarationMap: true,
         declarationDir: joinPathFragments(workspaceRoot, "tmp", ".tsup", "declaration")
       }
     },
-    ts.sys,
+    sys,
     dirname(options.tsConfig)
   );
 
