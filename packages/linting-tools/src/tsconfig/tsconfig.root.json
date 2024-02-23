@@ -5,8 +5,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
     "incremental": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
@@ -29,7 +27,8 @@
     "lib": ["esnext", "dom", "dom.iterable"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "preserveSymlinks": true
   },
   "include": ["./reset.d.ts"],
   "exclude": ["**/node_modules", "**/tmp"]
