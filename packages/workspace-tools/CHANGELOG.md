@@ -1,3 +1,15 @@
+## 1.60.13 (2024-02-23)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Fixes for release publishing issues ([4fce701b](https://github.com/storm-software/storm-ops/commit/4fce701b))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.12 (2024-02-22)
 
 
