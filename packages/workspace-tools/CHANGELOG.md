@@ -1,3 +1,15 @@
+## 1.60.12 (2024-02-22)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Update workspace and remove unused packages ([3f61e534](https://github.com/storm-software/storm-ops/commit/3f61e534))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.11 (2024-02-22)
 
 
