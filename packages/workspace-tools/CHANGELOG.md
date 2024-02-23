@@ -1,3 +1,15 @@
+## 1.60.16 (2024-02-23)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update `libs` to use full names in `compilerOptions` for declarations build ([ced91edc](https://github.com/storm-software/storm-ops/commit/ced91edc))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.15 (2024-02-23)
 
 
