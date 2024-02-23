@@ -177,6 +177,8 @@ function getNormalizedTsConfig(
         outDir: outputPath,
         rootDir: workspaceRoot,
         baseUrl: workspaceRoot,
+        target: "esnext",
+        module: "esnext",
         moduleResolution: "node",
         lib: ["lib.esnext.d.ts", "lib.dom.d.ts", "lib.dom.iterable.d.ts"],
         noEmit: false,
