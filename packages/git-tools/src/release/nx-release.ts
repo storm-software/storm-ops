@@ -140,7 +140,7 @@ export const runRelease = async (
       to: options.head ?? process.env.NX_HEAD,
       from: options.base ?? process.env.NX_BASE,
       gitCommit: true,
-      gitCommitMessage: "chore(release): Publish release updates {projectName} v{version}"
+      gitCommitMessage: "chore(release): Publish release updates [skip ci]"
     });
 
     // const {
