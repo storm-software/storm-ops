@@ -134,8 +134,11 @@ export const runRelease = async (
       versionData: projectsVersionData,
       dryRun: false,
       verbose: true,
-      to: options.head ?? process.env.NX_HEAD,
-      from: options.base ?? process.env.NX_BASE
+      // to: options.head ?? process.env.NX_HEAD,
+      // from: options.base ?? process.env.NX_BASE,
+      stageChanges: true,
+      gitCommit: true,
+      gitCommitMessage: "chore(release): Publish release updates {projectName} v{version}"
     });
 
     // const {
