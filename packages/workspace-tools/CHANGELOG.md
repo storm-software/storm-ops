@@ -1,3 +1,15 @@
+## 1.60.19 (2024-02-24)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve issue with incremental build ([50538773](https://github.com/storm-software/storm-ops/commit/50538773))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.18 (2024-02-24)
 
 
