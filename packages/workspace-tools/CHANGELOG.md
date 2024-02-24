@@ -1,3 +1,15 @@
+## 1.60.18 (2024-02-24)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Updated configuration file values ([40a7e13d](https://github.com/storm-software/storm-ops/commit/40a7e13d))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.17 (2024-02-23)
 
 
