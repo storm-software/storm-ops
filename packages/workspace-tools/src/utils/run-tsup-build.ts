@@ -168,7 +168,7 @@ function getNormalizedTsConfig(
     {
       ...config,
       compilerOptions: {
-        ...config.compilerOptions,
+        ...config?.compilerOptions,
         entry: {
           [removeExtension(context.main)
             .replace(workspaceRoot, "")
@@ -196,7 +196,7 @@ function getNormalizedTsConfig(
   );
 
   tsConfig.options.pathsBasePath = workspaceRoot;
-  if (tsConfig.options.incremental && !tsConfig.options.tsBuildInfoFile) {
+  if (config?.compilerOptions?.incremental && !tsConfig.options.tsBuildInfoFile) {
     tsConfig.options.tsBuildInfoFile = joinPathFragments(outputPath, "tsconfig.tsbuildinfo");
   }
 
