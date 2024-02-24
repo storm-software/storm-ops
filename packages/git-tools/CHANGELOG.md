@@ -1,3 +1,23 @@
+## 2.1.6 (2024-02-24)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Updates to git release workflow processing ([3c3dc58f](https://github.com/storm-software/storm-ops/commit/3c3dc58f))
+
+- **git-tools:** Add skip ci to the commit message ([74366350](https://github.com/storm-software/storm-ops/commit/74366350))
+
+- **git-tools:** Temporary removal of commit message skip ([cc021ec8](https://github.com/storm-software/storm-ops/commit/cc021ec8))
+
+- **git-tools:** Update release processing to skip second commit ([fa8fe8f3](https://github.com/storm-software/storm-ops/commit/fa8fe8f3))
+
+- **git-tools:** Update versioning to no longer apply git tag ([288c81ca](https://github.com/storm-software/storm-ops/commit/288c81ca))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.1.5 (2024-02-24)
 
 
