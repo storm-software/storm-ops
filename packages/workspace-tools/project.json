@@ -48,8 +48,6 @@
         },
         "external": [
           "nx",
-          "@swc/wasm",
-          "@swc/core",
           "esbuild"
         ],
         "assets": [
