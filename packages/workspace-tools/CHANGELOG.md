@@ -1,3 +1,15 @@
+## 1.60.21 (2024-02-24)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update build compiler parameters ([3c6cb525](https://github.com/storm-software/storm-ops/commit/3c6cb525))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.20 (2024-02-24)
 
 
