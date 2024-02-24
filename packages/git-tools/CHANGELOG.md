@@ -1,3 +1,15 @@
+## 2.1.4 (2024-02-24)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Updates to release configuration parameters ([482d18ee](https://github.com/storm-software/storm-ops/commit/482d18ee))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.1.3 (2024-02-23)
 
 
