@@ -1,3 +1,15 @@
+## 1.60.22 (2024-02-24)
+
+
+### 🩹 Fixes
+
+- **linting-tools:** Various updates to module resolution ([5f312f00](https://github.com/storm-software/storm-ops/commit/5f312f00))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.21 (2024-02-24)
 
 
