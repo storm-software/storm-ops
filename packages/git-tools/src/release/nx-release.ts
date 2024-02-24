@@ -126,7 +126,10 @@ export const runRelease = async (
     const { workspaceVersion, projectsVersionData } = await releaseVersion(config, {
       dryRun: false,
       verbose: true,
-      preid: config.preid
+      preid: config.preid,
+      stageChanges: true,
+      gitCommit: false,
+      gitTag: true
     });
 
     await releaseChangelog({
@@ -134,9 +137,8 @@ export const runRelease = async (
       versionData: projectsVersionData,
       dryRun: false,
       verbose: true,
-      // to: options.head ?? process.env.NX_HEAD,
-      // from: options.base ?? process.env.NX_BASE,
-      stageChanges: true,
+      to: options.head ?? process.env.NX_HEAD,
+      from: options.base ?? process.env.NX_BASE,
       gitCommit: true,
       gitCommitMessage: "chore(release): Publish release updates {projectName} v{version}"
     });
