@@ -1,3 +1,17 @@
+## 2.1.5 (2024-02-24)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Use proper git tag to publish changes ([0c8d3230](https://github.com/storm-software/storm-ops/commit/0c8d3230))
+
+- **git-tools:** Updates to the release tag processing ([937056c9](https://github.com/storm-software/storm-ops/commit/937056c9))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.1.4 (2024-02-24)
 
 
