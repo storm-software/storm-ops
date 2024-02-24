@@ -135,9 +135,7 @@ export const runRelease = async (
       dryRun: false,
       verbose: true,
       to: options.head ?? process.env.NX_HEAD,
-      from: options.base ?? process.env.NX_BASE,
-      gitRemote: "origin",
-      gitCommitMessage: "chore(release): Publish package updates to monorepo"
+      from: options.base ?? process.env.NX_BASE
     });
 
     // const {
