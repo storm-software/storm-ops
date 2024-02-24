@@ -153,16 +153,24 @@
     "releaseTagPattern": "{projectName}@{version}",
     "changelog": {
       "automaticFromRef": true,
+      "workspaceChangelog": false,
       "projectChangelogs": {
         "createRelease": "github",
-        "entryWhenNoChanges": false
+        "entryWhenNoChanges": false,
+        "git": {
+          "commit": true
+        }
       }
     },
     "version": {
       "generator": "@storm-software/workspace-tools:release-version",
       "generatorOptions": {
+        "packageRoot": "{projectRoot}",
         "currentVersionResolver": "git-tag",
-        "specifierSource": "conventional-commits"
+        "specifierSource": "conventional-commits",
+        "git": {
+          "stageChanges": true
+        }
       }
     }
   },

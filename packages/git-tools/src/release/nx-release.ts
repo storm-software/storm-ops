@@ -123,18 +123,10 @@ export const runRelease = async (
     // const shouldStage = (shouldCommit || nxJson.release?.git?.stageChanges) ?? true;
     //const shouldTag = nxJson.release?.git?.tag ?? true;
 
-    const projects = !nxJson.release.projects
-      ? undefined
-      : Array.isArray(nxJson.release.projects)
-        ? nxJson.release.projects
-        : [nxJson.release.projects];
-
     const { workspaceVersion, projectsVersionData } = await releaseVersion(config, {
-      projects,
       dryRun: false,
       verbose: true,
-      preid: config.preid,
-      stageChanges: true
+      preid: config.preid
     });
 
     await releaseChangelog({
@@ -145,7 +137,6 @@ export const runRelease = async (
       to: options.head ?? process.env.NX_HEAD,
       from: options.base ?? process.env.NX_BASE,
       gitRemote: "origin",
-      gitCommit: true,
       gitCommitMessage: "chore(release): Publish package updates to monorepo"
     });
 
