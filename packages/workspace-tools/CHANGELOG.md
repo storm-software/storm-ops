@@ -1,3 +1,15 @@
+## 1.60.20 (2024-02-24)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added esbuild to externals list ([28e99927](https://github.com/storm-software/storm-ops/commit/28e99927))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.19 (2024-02-24)
 
 
