@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/workspace-tools",
         "tsConfig": "packages/workspace-tools/tsconfig.lib.json",
@@ -38,12 +36,8 @@
         "skipTypeCheck": false,
         "metafile": true,
         "minify": false,
-        "format": [
-          "cjs"
-        ],
-        "external": [
-          "nx"
-        ],
+        "format": ["cjs"],
+        "external": ["nx", "tslib", "esbuild"],
         "esbuildOptions": {
           "outExtension": {
             ".js": ".js"
@@ -105,13 +99,8 @@
     },
     "nx-release-publish": {
       "cache": false,
-      "inputs": [
-        "default",
-        "^production"
-      ],
-      "dependsOn": [
-        "^build"
-      ],
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^build"],
       "executor": "@storm-software/workspace-tools:npm-publish",
       "options": {
         "packageRoot": "dist/{projectRoot}",
@@ -119,8 +108,5 @@
       }
     }
   },
-  "tags": [
-    "type:util",
-    "scope:tools"
-  ]
+  "tags": ["type:util", "scope:tools"]
 }
