@@ -118,7 +118,6 @@
       ],
       "executor": "@storm-software/workspace-tools:npm-publish",
       "options": {
-        "packageRoot": "dist/{projectRoot}",
         "registry": "https://registry.npmjs.org/"
       }
     }
@@ -165,7 +164,6 @@
     "version": {
       "generator": "@storm-software/workspace-tools:release-version",
       "generatorOptions": {
-        "packageRoot": "{projectRoot}",
         "currentVersionResolver": "git-tag",
         "specifierSource": "conventional-commits",
         "git": {
