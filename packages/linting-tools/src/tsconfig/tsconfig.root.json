@@ -35,7 +35,9 @@
     "preserveSymlinks": true
   },
   "include": [
-    "**/*.ts"
+    "**/*.ts",
+    "**/*.d.ts",
+    "**/*.json"
   ],
   "exclude": [
     "**/node_modules",
