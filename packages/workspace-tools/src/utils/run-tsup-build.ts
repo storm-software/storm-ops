@@ -7,6 +7,7 @@ import type { NormalizedExecutorOptions } from "@nx/js/src/utils/schema";
 import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
 import {
   LogLevel,
+  findWorkspaceRoot,
   getLogLevel,
   writeDebug,
   writeInfo,
@@ -62,6 +63,8 @@ export const runTsupBuild = async (
   config: Partial<StormConfig>,
   options: TsupExecutorSchema
 ) => {
+  const workspaceRoot = config?.workspaceRoot ?? findWorkspaceRoot();
+
   // #region Add default plugins
 
   const stormEnv = Object.keys(options.env ?? {})
@@ -100,8 +103,7 @@ export const runTsupBuild = async (
       ...stormEnv
     },
     dtsTsConfig: getNormalizedTsConfig(
-      context,
-      config.workspaceRoot ?? ".",
+      workspaceRoot,
       options.outputPath,
       createTypeScriptCompilationOptions(
         normalizeOptions(
@@ -111,9 +113,9 @@ export const runTsupBuild = async (
             main: context.main,
             transformers: []
           },
-          config.workspaceRoot ?? ".",
+          workspaceRoot,
           context.sourceRoot,
-          config.workspaceRoot ?? "."
+          workspaceRoot
         ),
         context.projectName
       )
@@ -158,7 +160,6 @@ ${options.banner}\n
 };
 
 function getNormalizedTsConfig(
-  context: TsupContext,
   workspaceRoot: string,
   outputPath: string,
   options: TypeScriptCompilationOptions
@@ -170,11 +171,6 @@ function getNormalizedTsConfig(
       compilerOptions: {
         ...config?.compilerOptions,
         include: ["**/*"],
-        entry: {
-          [removeExtension(context.main)
-            .replace(workspaceRoot, "")
-            .replace(context.sourceRoot, "")]: context.main
-        },
         outDir: outputPath,
         rootDir: workspaceRoot,
         baseUrl: workspaceRoot,
