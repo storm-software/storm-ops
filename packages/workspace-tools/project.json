@@ -5,17 +5,14 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/workspace-tools",
         "tsConfig": "packages/workspace-tools/tsconfig.lib.json",
         "project": "packages/workspace-tools/package.json",
-        "main": "packages/workspace-tools/index.ts",
+        "main": "packages/workspace-tools/src/executors/tsup/executor.ts",
         "additionalEntryPoints": [
-          "packages/workspace-tools/src/executors/tsup/executor.ts",
           "packages/workspace-tools/src/executors/tsup-neutral/executor.ts",
           "packages/workspace-tools/src/executors/tsup-node/executor.ts",
           "packages/workspace-tools/src/executors/tsup-browser/executor.ts",
@@ -35,21 +32,11 @@
         "deleteOutputPath": true,
         "bundle": true,
         "thirdParty": true,
-        "skipTypeCheck": false,
+        "skipTypeCheck": true,
         "metafile": true,
         "minify": false,
-        "format": [
-          "cjs"
-        ],
-        "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
-          }
-        },
-        "external": [
-          "nx",
-          "esbuild"
-        ],
+        "format": ["cjs"],
+        "external": ["nx", "@storm-software/config", "@storm-software/config-tools"],
         "assets": [
           {
             "input": "./packages/workspace-tools",
@@ -106,13 +93,8 @@
     },
     "nx-release-publish": {
       "cache": false,
-      "inputs": [
-        "default",
-        "^production"
-      ],
-      "dependsOn": [
-        "^build"
-      ],
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^build"],
       "executor": "@storm-software/workspace-tools:npm-publish",
       "options": {
         "packageRoot": "dist/{projectRoot}",
@@ -120,8 +102,5 @@
       }
     }
   },
-  "tags": [
-    "type:util",
-    "scope:tools"
-  ]
+  "tags": ["type:util", "scope:tools"]
 }
