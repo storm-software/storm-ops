@@ -170,7 +170,6 @@ function getNormalizedTsConfig(
       ...config,
       compilerOptions: {
         ...config?.compilerOptions,
-        include: ["**/*"],
         outDir: outputPath,
         noEmit: false,
         esModuleInterop: true,
@@ -180,7 +179,8 @@ function getNormalizedTsConfig(
         declaration: true,
         declarationMap: true,
         declarationDir: joinPathFragments(workspaceRoot, "tmp", ".tsup", "declaration")
-      }
+      },
+      include: ["**/*"]
     },
     sys,
     dirname(options.tsConfig)
