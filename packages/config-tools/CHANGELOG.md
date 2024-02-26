@@ -1,3 +1,15 @@
+## 1.29.0 (2024-02-26)
+
+
+### 🚀 Features
+
+- **storm-ops:** Major updates to tsconfig values ([a3638fae](https://github.com/storm-software/storm-ops/commit/a3638fae))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.28.3 (2024-02-24)
 
 

@@ -1,3 +1,15 @@
+## 2.2.0 (2024-02-26)
+
+
+### 🚀 Features
+
+- **storm-ops:** Major updates to tsconfig values ([a3638fae](https://github.com/storm-software/storm-ops/commit/a3638fae))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.1.7 (2024-02-24)
 
 
