@@ -316,8 +316,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       '@cspell/dict-en-gb':
-        specifier: 4.1.31
-        version: 4.1.31
+        specifier: 4.1.35
+        version: 4.1.35
       '@cspell/dict-en_us':
         specifier: 4.3.14
         version: 4.3.14
@@ -2213,8 +2213,8 @@ packages:
     resolution: {integrity: sha512-tKSSUf9BJEV+GJQAYGw5e+ouhEe2ZXE620S7BLKe3ZmpnjlNG9JqlnaBhkIMxKnNFkLY2BP/EARzw31AZnOv4g==}
     dev: false
 
-  /@cspell/dict-en-gb@4.1.31:
-    resolution: {integrity: sha512-P5XdfVVL8bLz4DZP9vhZ94V+DWAdVklv/vi8d+KnrAhv7wx7qD2LZuVch9gjU1XMxO3zf3PxPjj8UR96ukuEpw==}
+  /@cspell/dict-en-gb@4.1.35:
+    resolution: {integrity: sha512-fcDHlv5Wa4f2AStaN1F7H2qFobVFz7veUe6VYFETHDdsOPbpUBvAmWKzOL+hVlgtQmA2P5AjjdCLRUyqYioRwQ==}
     dev: false
 
   /@cspell/dict-en_us@4.3.14:
