@@ -17,7 +17,7 @@ export const setExtensionEnv = <TConfig extends Record<string, any> = Record<str
       const result =
         key
           ?.replace(/([A-Z])+/g, (input?: string) =>
-            input ? input[0].toUpperCase() + input.slice(1) : ""
+            input ? input[0]?.toUpperCase() + input.slice(1) : ""
           )
           .split(/(?=[A-Z])|[\.\-\s_]/)
           .map((x: string) => x.toLowerCase()) ?? [];
@@ -27,7 +27,7 @@ export const setExtensionEnv = <TConfig extends Record<string, any> = Record<str
         return;
       }
       if (result.length === 1) {
-        extensionKey = result[0].toUpperCase();
+        extensionKey = result[0]?.toUpperCase() ?? "";
       } else {
         extensionKey = result.reduce((ret: string, part: string) => {
           return `${ret}_${part.toLowerCase()}`;

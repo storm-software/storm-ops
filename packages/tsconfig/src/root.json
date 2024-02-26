@@ -4,6 +4,8 @@
   "extends": "@tsconfig/recommended/tsconfig.json",
   "compileOnSave": false,
   "compilerOptions": {
+    "target": "es2022",
+    "module": "commonjs",
     "sourceMap": true,
     "incremental": true,
     "noImplicitReturns": true,
@@ -25,13 +27,6 @@
     "skipDefaultLibCheck": true,
     "esModuleInterop": true
   },
-  "include": [
-    "**/*.ts",
-    "**/*.d.ts",
-    "**/*.json"
-  ],
-  "exclude": [
-    "**/node_modules",
-    "**/tmp"
-  ]
+  "include": ["**/*.ts", "**/*.js", "**/*.tsx", "**/*.jsx", "**/*.d.ts", "**/*.json"],
+  "exclude": ["**/node_modules", "**/tmp"]
 }

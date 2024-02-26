@@ -3,17 +3,10 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "esModuleInterop": true,
-    "types": [
-      "node"
-    ]
+    "strict": false,
+    "types": ["node"]
   },
-  "include": [
-    "index.ts",
-    "src/**/*.ts",
-    "src/**/*.js",
-    "**/*.json",
-    "declarations.d.ts"
-  ],
+  "include": ["index.ts", "src/**/*.ts", "src/**/*.js", "**/*.json", "declarations.d.ts"],
   "exclude": [
     "jest.config.ts",
     "src/generators/**/files/**/*",

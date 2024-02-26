@@ -17,7 +17,7 @@ import { interpolate } from "nx/src/tasks-runner/utils";
 import { isValidSemverSpecifier } from "nx/src/command-line/release/utils/semver";
 import { relative } from "node:path";
 import type { StormConfig } from "@storm-software/config";
-import { writeInfo } from "@storm-software/config-tools";
+import { findWorkspaceRoot, writeInfo } from "@storm-software/config-tools";
 import { updateLockFile } from "@nx/js/src/generators/release-version/utils/update-lock-file";
 import { withRunGenerator } from "../../base/base-generator";
 import { exec } from "node:child_process";
@@ -77,8 +77,8 @@ Valid values are: ${validReleaseVersionPrefixes.map((s) => `"${s}"`).join(", ")}
   const createResolvePackageRoot =
     (customPackageRoot?: string) =>
     (projectNode: ProjectGraphProjectNode): string => {
-      if (projectNode?.data?.root === config.workspaceRoot || projectNode?.data?.root === ".") {
-        return config.workspaceRoot;
+      if (projectNode?.data?.root === config?.workspaceRoot || projectNode?.data?.root === ".") {
+        return config?.workspaceRoot ?? findWorkspaceRoot();
       }
 
       // Default to the project root if no custom packageRoot
@@ -100,17 +100,20 @@ Valid values are: ${validReleaseVersionPrefixes.map((s) => `"${s}"`).join(", ")}
     projectNameToPackageRootMap.set(project.name, resolvePackageRoot(project));
   }
 
-  let currentVersion: string;
+  let currentVersion: string | null = null;
   let currentVersionResolvedFromFallback = false;
 
-  let latestMatchingGitTag: { tag: string; extractedVersion: string };
+  let latestMatchingGitTag: any = null;
   let specifier = options.specifier ? options.specifier : undefined;
 
   for (const project of projects) {
     const projectName = project.name;
     const packageRoot = projectNameToPackageRootMap.get(projectName);
-    const packageJsonPath = joinPathFragments(packageRoot, "package.json");
-    const workspaceRelativePackageJsonPath = relative(config.workspaceRoot, packageJsonPath);
+    const packageJsonPath = joinPathFragments(packageRoot ?? "./", "package.json");
+    const workspaceRelativePackageJsonPath = relative(
+      config?.workspaceRoot ?? findWorkspaceRoot(),
+      packageJsonPath
+    );
 
     const log = (msg: string) => {
       writeInfo(config, `${projectName}: ${msg}`);
@@ -144,7 +147,7 @@ To fix this you will either need to add a package.json file at that location, or
          * If the currentVersionResolver is set to registry, and the projects are not independent, we only want to make the request once for the whole batch of projects.
          * For independent projects, we need to make a request for each project individually as they will most likely have different versions.
          */
-        if (!currentVersion || options.releaseGroup.projectsRelationship === "independent") {
+        if (options.releaseGroup.projectsRelationship === "independent") {
           // const spinner = ora(
           //   `${Array.from(new Array(projectName.length + 3)).join(
           //     " "
@@ -201,6 +204,7 @@ To fix this you will either need to add a package.json file at that location, or
             );
           }
         }
+
         break;
       }
       case "disk":
@@ -209,7 +213,6 @@ To fix this you will either need to add a package.json file at that location, or
         break;
       case "git-tag": {
         if (
-          !currentVersion ||
           // We always need to independently resolve the current version from git tag per project if the projects are independent
           options.releaseGroup.projectsRelationship === "independent"
         ) {
@@ -303,11 +306,12 @@ To fix this you will either need to add a package.json file at that location, or
             );
           }
 
-          specifier = await resolveSemverSpecifierFromConventionalCommits(
-            previousVersionRef,
-            options.projectGraph,
-            affectedProjects
-          );
+          specifier =
+            (await resolveSemverSpecifierFromConventionalCommits(
+              previousVersionRef,
+              options.projectGraph,
+              affectedProjects
+            )) ?? undefined;
 
           if (!specifier) {
             log(
@@ -371,7 +375,7 @@ To fix this you will either need to add a package.json file at that location, or
       tree,
       options.projectGraph,
       projects.filter(
-        (project) => project?.data?.root && project?.data?.root !== config.workspaceRoot
+        (project) => project?.data?.root && project?.data?.root !== config?.workspaceRoot
       ),
       projectNameToPackageRootMap,
       resolvePackageRoot,
@@ -386,18 +390,25 @@ To fix this you will either need to add a package.json file at that location, or
       });
 
     versionData[projectName] = {
-      currentVersion,
+      currentVersion: currentVersion ? currentVersion : "0.0.1",
       dependentProjects,
       newVersion: null // will stay as null in the final result in the case that no changes are detected
-    };
+    } as any;
 
     if (!specifier) {
       log(`🚫 Skipping versioning "${projectPackageJson.name}" as no changes were detected.`);
       continue;
     }
 
+    if (!currentVersion) {
+      throw new Error(`Unable to determine the current version for project "${projectName}"`);
+    }
+
     const newVersion = deriveNewSemverVersion(currentVersion, specifier, options.preid);
-    versionData[projectName].newVersion = newVersion;
+    if (versionData[projectName]) {
+      // biome-ignore lint/style/noNonNullAssertion: <explanation>
+      versionData[projectName]!.newVersion = newVersion;
+    }
 
     writeJson(tree, packageJsonPath, {
       ...projectPackageJson,
@@ -417,7 +428,10 @@ To fix this you will either need to add a package.json file at that location, or
     for (const dependentProject of dependentProjects) {
       updateJson(
         tree,
-        joinPathFragments(projectNameToPackageRootMap.get(dependentProject.source), "package.json"),
+        joinPathFragments(
+          projectNameToPackageRootMap.get(dependentProject.source) ?? "./",
+          "package.json"
+        ),
         (json) => {
           // Auto (i.e.infer existing) by default
           let versionPrefix = options.versionPrefix ?? "auto";

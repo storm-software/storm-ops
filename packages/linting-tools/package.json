@@ -85,8 +85,6 @@
     "@manypkg/get-packages": "2.2.0",
     "@size-limit/file": "11.0.2",
     "@size-limit/time": "11.0.2",
-    "@total-typescript/ts-reset": "0.5.1",
-    "@tsconfig/recommended": "1.0.3",
     "alex": "11.0.1",
     "check-dependency-version-consistency": "4.1.0",
     "child_process": "1.0.2",

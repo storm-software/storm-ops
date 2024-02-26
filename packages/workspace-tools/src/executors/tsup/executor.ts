@@ -1,10 +1,11 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { joinPathFragments, readCachedProjectGraph, readJsonFile } from "@nx/devkit";
-import type { ExecutorContext } from "@nx/devkit";
+import type { ExecutorContext, ProjectGraph } from "@nx/devkit";
 import { copyAssets } from "@nx/js";
 import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils.js";
 import {
   LogLevel,
+  findWorkspaceRoot,
   getLogLevel,
   writeDebug,
   writeInfo,
@@ -20,7 +21,6 @@ import { withRunExecutor } from "../../base/base-executor";
 import { removeExtension } from "../../utils/file-path-utils";
 import { getProjectConfigurations } from "../../utils/get-project-configurations";
 import { getExtraDependencies } from "../../utils/get-project-deps";
-import { findWorkspaceRootSafe } from "@storm-software/config-tools";
 import { applyDefaultOptions, runTsupBuild } from "../../utils/run-tsup-build";
 import type { TsupExecutorSchema } from "./schema";
 
@@ -72,9 +72,11 @@ ${Object.keys(options)
     );
   }
 
-  const workspaceRoot = findWorkspaceRootSafe();
-  const projectRoot = context.projectsConfigurations.projects[context.projectName].root;
-  const sourceRoot = context.projectsConfigurations.projects[context.projectName].sourceRoot;
+  const workspaceRoot = findWorkspaceRoot();
+  const projectRoot =
+    context.projectsConfigurations.projects[context.projectName]?.root ?? workspaceRoot;
+  const sourceRoot =
+    context.projectsConfigurations.projects[context.projectName]?.sourceRoot ?? workspaceRoot;
 
   // #endregion Prepare build context variables
 
@@ -150,9 +152,9 @@ ${Object.keys(options)
   }
 
   const externalDependencies: DependentBuildableProjectNode[] = options.external.reduce(
-    (ret, name) => {
+    (ret: DependentBuildableProjectNode[], name: string) => {
       if (!packageJson?.devDependencies?.[name]) {
-        const externalNode = context.projectGraph.externalNodes[`npm:${name}`];
+        const externalNode = context.projectGraph?.externalNodes?.[`npm:${name}`];
         if (externalNode) {
           ret.push({
             name,
@@ -168,7 +170,7 @@ ${Object.keys(options)
   );
 
   const implicitDependencies =
-    context.projectsConfigurations.projects[context.projectName].implicitDependencies;
+    context.projectsConfigurations.projects[context.projectName]?.implicitDependencies;
   const internalDependencies: string[] = [];
 
   const projectConfigs = await Promise.resolve(getProjectConfigurations());
@@ -185,7 +187,7 @@ ${Object.keys(options)
       if (projectConfig?.targets?.build) {
         const projectPackageJson = readJsonFile(projectConfig.targets?.build.options.project);
 
-        if (projectPackageJson?.name && !options.external.includes(projectPackageJson.name)) {
+        if (projectPackageJson?.name && !options.external?.includes(projectPackageJson.name)) {
           ret.push(projectPackageJson.name);
           internalDependencies.push(projectPackageJson.name);
         }
@@ -197,7 +199,7 @@ ${Object.keys(options)
 
   for (const thirdPartyDependency of getExtraDependencies(
     context.projectName,
-    context.projectGraph
+    context.projectGraph as ProjectGraph
   )) {
     const packageConfig = thirdPartyDependency?.node?.data as PackageConfiguration;
     if (
@@ -294,7 +296,7 @@ ${externalDependencies
         const packageConfig = externalDependency?.node?.data as PackageConfiguration;
         if (
           packageConfig?.packageName &&
-          !!(projectGraph.externalNodes[externalDependency.node.name]?.type === "npm")
+          !!(projectGraph.externalNodes?.[externalDependency.node.name]?.type === "npm")
         ) {
           const { packageName, version } = packageConfig;
           if (
@@ -360,16 +362,16 @@ ${externalDependencies
 
         packageJson.exports[`./${formattedEntryPoint}`] = {
           import: {
-            types: `./${joinPathFragments(distPaths[0], formattedEntryPoint)}.d.ts`,
-            default: `./${joinPathFragments(distPaths[0], formattedEntryPoint)}.js`
+            types: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.d.ts`,
+            default: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.js`
           },
           require: {
-            types: `./${joinPathFragments(distPaths[0], formattedEntryPoint)}.d.cts`,
-            default: `./${joinPathFragments(distPaths[0], formattedEntryPoint)}.cjs`
+            types: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.d.cts`,
+            default: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.cjs`
           },
           default: {
-            types: `./${joinPathFragments(distPaths[0], formattedEntryPoint)}.d.ts`,
-            default: `./${joinPathFragments(distPaths[0], formattedEntryPoint)}.js`
+            types: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.d.ts`,
+            default: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.js`
           }
         };
       }
@@ -472,10 +474,10 @@ ${externalDependencies
 
   if (options.includeSrc === true) {
     const files = globSync([
-      joinPathFragments(config.workspaceRoot, options.outputPath, "src/**/*.ts"),
-      joinPathFragments(config.workspaceRoot, options.outputPath, "src/**/*.tsx"),
-      joinPathFragments(config.workspaceRoot, options.outputPath, "src/**/*.js"),
-      joinPathFragments(config.workspaceRoot, options.outputPath, "src/**/*.jsx")
+      joinPathFragments(workspaceRoot, options.outputPath, "src/**/*.ts"),
+      joinPathFragments(workspaceRoot, options.outputPath, "src/**/*.tsx"),
+      joinPathFragments(workspaceRoot, options.outputPath, "src/**/*.js"),
+      joinPathFragments(workspaceRoot, options.outputPath, "src/**/*.jsx")
     ]);
     // await Promise.allSettled(
     //   files.map(async (file) =>
@@ -522,10 +524,11 @@ ${externalDependencies
         {
           main: entryPoint,
           projectRoot,
-          projectName: context.projectName,
+          // biome-ignore lint/style/noNonNullAssertion: <explanation>
+          projectName: context.projectName!,
           sourceRoot
         },
-        config,
+        config ?? {},
         options
       )
     )

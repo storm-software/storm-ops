@@ -7,6 +7,7 @@ import { zodToJsonSchema } from "zod-to-json-schema";
 import { withRunGenerator } from "../../base/base-generator";
 import { getProjectConfigurations } from "../../utils/get-project-configurations";
 import type { ConfigSchemaGeneratorSchema } from "./schema";
+import { findWorkspaceRoot } from "@storm-software/config-tools";
 
 export type ModuleSchema = {
   name: string;
@@ -19,11 +20,12 @@ export async function configSchemaGeneratorFn(
   config?: StormConfig
 ) {
   const projectConfigurations = getProjectConfigurations<ProjectConfiguration & { config: any }>();
+  const workspaceRoot = config?.workspaceRoot ?? findWorkspaceRoot();
 
   const modules = await Promise.all(
     Object.keys(projectConfigurations).map(async (key) => {
       if (projectConfigurations[key]?.config) {
-        const configPath = join(config?.workspaceRoot, projectConfigurations[key].config);
+        const configPath = join(workspaceRoot, projectConfigurations[key].config);
         if (existsSync(configPath)) {
           const mod = await import(configPath);
           if (mod.default) {
@@ -61,8 +63,8 @@ export async function configSchemaGeneratorFn(
   writeJson(
     tree,
     options.outputFile
-      ? join(config?.workspaceRoot, options.outputFile)
-      : join(config?.workspaceRoot, "storm.schema.json"),
+      ? join(workspaceRoot, options.outputFile)
+      : join(workspaceRoot, "storm.schema.json"),
     zodToJsonSchema(ModulesSchema, "StormConfig")
   );
   await formatFiles(tree);

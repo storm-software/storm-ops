@@ -5,17 +5,17 @@ import chalk from "chalk";
 
 // Annoying chalk polyfill to temporarily fix the issue with the `chalk` import
 const chalkDefault = {
-  hex: (_: string) => (message: string) => message,
+  hex: (_: string) => (message?: string) => message,
   bgHex: (_: string) => ({
-    whiteBright: (message: string) => message
+    whiteBright: (message?: string) => message
   }),
-  whiteBright: (message: string) => message,
+  whiteBright: (message?: string) => message,
   bold: {
-    hex: (_: string) => (message: string) => message,
+    hex: (_: string) => (message?: string) => message,
     bgHex: (_: string) => ({
-      whiteBright: (message: string) => message
+      whiteBright: (message?: string) => message
     }),
-    whiteBright: (message: string) => message
+    whiteBright: (message?: string) => message
   }
 } as any;
 // const chalk = chalkDefault;
@@ -30,7 +30,7 @@ const chalkDefault = {
 export const getLogFn = (
   config: Partial<StormConfig> = {},
   logLevel: number | LogLevel = LogLevel.INFO
-): ((message: string) => void) => {
+): ((message?: string) => void) => {
   let _chalk = chalk;
   if (!_chalk?.hex || !_chalk?.bold?.hex || !_chalk?.bgHex || !_chalk?.whiteBright) {
     _chalk = chalkDefault;
@@ -54,7 +54,7 @@ export const getLogFn = (
     (typeof logLevel === "number" && LogLevel.FATAL >= logLevel) ||
     (typeof logLevel === "string" && LogLevel.FATAL >= getLogLevel(logLevel))
   ) {
-    return (message: string) => {
+    return (message?: string) => {
       console.error(
         `
 ${_chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")} ${_chalk.bold
@@ -72,7 +72,7 @@ ${_chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")}
     (typeof logLevel === "number" && LogLevel.ERROR >= logLevel) ||
     (typeof logLevel === "string" && LogLevel.ERROR >= getLogLevel(logLevel))
   ) {
-    return (message: string) => {
+    return (message?: string) => {
       console.error(
         `
 ${_chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")} ${_chalk.bold
@@ -89,7 +89,7 @@ ${_chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")}
     (typeof logLevel === "number" && LogLevel.WARN >= logLevel) ||
     (typeof logLevel === "string" && LogLevel.WARN >= getLogLevel(logLevel))
   ) {
-    return (message: string) => {
+    return (message?: string) => {
       console.warn(
         `
 ${_chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")("> ")} ${_chalk.bold
@@ -106,7 +106,7 @@ ${_chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")("
     (typeof logLevel === "number" && LogLevel.SUCCESS >= logLevel) ||
     (typeof logLevel === "string" && LogLevel.SUCCESS >= getLogLevel(logLevel))
   ) {
-    return (message: string) => {
+    return (message?: string) => {
       console.info(
         `
 ${_chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(">")} ${_chalk.bold
@@ -123,7 +123,7 @@ ${_chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")("
     (typeof logLevel === "number" && LogLevel.INFO >= logLevel) ||
     (typeof logLevel === "string" && LogLevel.INFO >= getLogLevel(logLevel))
   ) {
-    return (message: string) => {
+    return (message?: string) => {
       console.info(
         `
 ${_chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${_chalk.bold
@@ -140,7 +140,7 @@ ${_chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} $
     (typeof logLevel === "number" && LogLevel.DEBUG >= logLevel) ||
     (typeof logLevel === "string" && LogLevel.DEBUG >= getLogLevel(logLevel))
   ) {
-    return (message: string) => {
+    return (message?: string) => {
       console.debug(
         `
 ${_chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${_chalk.bold
@@ -153,7 +153,7 @@ ${_chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")("
     };
   }
 
-  return (message: string) => {
+  return (message?: string) => {
     console.log(
       `
 ${_chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${_chalk.bold
@@ -172,7 +172,7 @@ ${_chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")("
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-export const writeFatal = (config: Partial<StormConfig>, message: string) =>
+export const writeFatal = (config?: Partial<StormConfig>, message?: string) =>
   getLogFn(config, LogLevel.FATAL)(message);
 
 /**
@@ -181,7 +181,7 @@ export const writeFatal = (config: Partial<StormConfig>, message: string) =>
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-export const writeError = (config: Partial<StormConfig>, message: string) =>
+export const writeError = (config?: Partial<StormConfig>, message?: string) =>
   getLogFn(config, LogLevel.ERROR)(message);
 
 /**
@@ -190,7 +190,7 @@ export const writeError = (config: Partial<StormConfig>, message: string) =>
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-export const writeWarning = (config: Partial<StormConfig>, message: string) =>
+export const writeWarning = (config?: Partial<StormConfig>, message?: string) =>
   getLogFn(config, LogLevel.WARN)(message);
 
 /**
@@ -199,7 +199,7 @@ export const writeWarning = (config: Partial<StormConfig>, message: string) =>
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-export const writeInfo = (config: Partial<StormConfig>, message: string) =>
+export const writeInfo = (config?: Partial<StormConfig>, message?: string) =>
   getLogFn(config, LogLevel.INFO)(message);
 
 /**
@@ -208,7 +208,7 @@ export const writeInfo = (config: Partial<StormConfig>, message: string) =>
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-export const writeSuccess = (config: Partial<StormConfig>, message: string) =>
+export const writeSuccess = (config?: Partial<StormConfig>, message?: string) =>
   getLogFn(config, LogLevel.SUCCESS)(message);
 
 /**
@@ -217,7 +217,7 @@ export const writeSuccess = (config: Partial<StormConfig>, message: string) =>
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-export const writeDebug = (config: Partial<StormConfig>, message: string) =>
+export const writeDebug = (config?: Partial<StormConfig>, message?: string) =>
   getLogFn(config, LogLevel.DEBUG)(message);
 
 /**
@@ -226,7 +226,7 @@ export const writeDebug = (config: Partial<StormConfig>, message: string) =>
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-export const writeTrace = (config: Partial<StormConfig>, message: string) =>
+export const writeTrace = (config?: Partial<StormConfig>, message?: string) =>
   getLogFn(config, LogLevel.TRACE)(message);
 
 /**
@@ -235,7 +235,7 @@ export const writeTrace = (config: Partial<StormConfig>, message: string) =>
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-export const writeSystem = (config: Partial<StormConfig>, message: string) =>
+export const writeSystem = (config?: Partial<StormConfig>, message?: string) =>
   getLogFn(config, LogLevel.ALL)(message);
 
 /**

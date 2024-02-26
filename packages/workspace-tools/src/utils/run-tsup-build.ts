@@ -64,19 +64,19 @@ export const runTsupBuild = async (
 ) => {
   // #region Add default plugins
 
-  const stormEnv = Object.keys(options.env)
+  const stormEnv = Object.keys(options.env ?? {})
     .filter((key) => key.startsWith("STORM_"))
     .reduce((ret, key) => {
-      ret[key] = options.env[key];
+      ret[key] = options.env?.[key];
       return ret;
     }, {});
-  options.plugins.push(
+  options.plugins?.push(
     esbuildDecorators({
       tsconfig: options.tsConfig,
       cwd: config.workspaceRoot
     })
   );
-  options.plugins.push(environmentPlugin(stormEnv));
+  options.plugins?.push(environmentPlugin(stormEnv));
 
   // #endregion Add default plugins
 
@@ -101,7 +101,7 @@ export const runTsupBuild = async (
     },
     dtsTsConfig: getNormalizedTsConfig(
       context,
-      config.workspaceRoot,
+      config.workspaceRoot ?? ".",
       options.outputPath,
       createTypeScriptCompilationOptions(
         normalizeOptions(
@@ -111,9 +111,9 @@ export const runTsupBuild = async (
             main: context.main,
             transformers: []
           },
-          config.workspaceRoot,
+          config.workspaceRoot ?? ".",
           context.sourceRoot,
-          config.workspaceRoot
+          config.workspaceRoot ?? "."
         ),
         context.projectName
       )
@@ -139,17 +139,17 @@ ${options.banner}\n
     const getConfigFns = [options.getConfig];
     const tsupConfig = defineConfig(
       getConfigFns.map((getConfigFn) =>
-        getConfig(config.workspaceRoot, context.projectRoot, getConfigFn, getConfigOptions)
+        getConfig(config.workspaceRoot ?? ".", context.projectRoot, getConfigFn, getConfigOptions)
       )
     );
 
     if (_isFunction(tsupConfig)) {
       const tsupOptions = await Promise.resolve(tsupConfig({}));
-      await build(tsupOptions, config);
+      await build(tsupOptions, config as StormConfig);
     } else {
-      await build(tsupConfig, config);
+      await build(tsupConfig, config as StormConfig);
     }
-  } else if (getLogLevel(config?.logLevel) >= LogLevel.WARN) {
+  } else if (getLogLevel(config?.logLevel ?? "debug") >= LogLevel.WARN) {
     writeWarning(
       config,
       "The Build process did not run because no `getConfig` parameter was provided"
@@ -208,7 +208,7 @@ const build = async (options: Options | Options[], config?: StormConfig) => {
   } else {
     let tsupOptions = options;
     if (_isFunction(tsupOptions)) {
-      tsupOptions = await Promise.resolve(tsupOptions({}));
+      tsupOptions = (await Promise.resolve(tsupOptions({}))) as Options;
     }
 
     writeDebug(

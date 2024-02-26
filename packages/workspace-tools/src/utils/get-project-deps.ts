@@ -1,4 +1,9 @@
-import type { ProjectGraph, ProjectGraphProjectNode } from "@nx/devkit";
+import type {
+  ProjectGraph,
+  ProjectGraphDependency,
+  ProjectGraphExternalNode,
+  ProjectGraphProjectNode
+} from "@nx/devkit";
 import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
 
 export function getExtraDependencies(
@@ -10,16 +15,20 @@ export function getExtraDependencies(
 
   function recur(currProjectName) {
     const allDeps = graph.dependencies[currProjectName];
-    const externalDeps = allDeps.reduce((acc, node) => {
-      const found = graph.externalNodes[node.target];
-      if (found) acc.push(found);
-      return acc;
-    }, []);
-    const internalDeps = allDeps.reduce((acc, node) => {
-      const found = graph.nodes[node.target];
-      if (found) acc.push(found);
-      return acc;
-    }, []);
+    const externalDeps =
+      allDeps?.reduce((acc: ProjectGraphExternalNode[], node: ProjectGraphDependency) => {
+        const found = graph.externalNodes?.[node.target];
+        if (found) {
+          acc.push(found);
+        }
+        return acc;
+      }, []) ?? [];
+    const internalDeps =
+      allDeps?.reduce((acc: ProjectGraphProjectNode[], node: ProjectGraphDependency) => {
+        const found = graph.nodes[node.target];
+        if (found) acc.push(found);
+        return acc;
+      }, []) ?? [];
 
     for (const externalDep of externalDeps) {
       deps.set(externalDep.name, {
@@ -41,10 +50,10 @@ export function getInternalDependencies(
   projectName: string,
   graph: ProjectGraph
 ): ProjectGraphProjectNode[] {
-  const allDeps = graph.dependencies[projectName];
+  const allDeps = graph.dependencies[projectName] ?? [];
 
   return Array.from(
-    allDeps.reduce((acc, node) => {
+    allDeps.reduce((acc: ProjectGraphProjectNode[], node: ProjectGraphDependency) => {
       const found = graph.nodes[node.target];
       if (found) acc.push(found);
       return acc;
@@ -55,14 +64,16 @@ export function getInternalDependencies(
 export function getExternalDependencies(
   projectName: string,
   graph: ProjectGraph
-): DependentBuildableProjectNode[] {
+): ProjectGraphExternalNode[] {
   const allDeps = graph.dependencies[projectName];
 
-  return Array.from(
-    allDeps.reduce((acc, node) => {
-      const found = graph.externalNodes[node.target];
-      if (found) acc.push(found);
-      return acc;
-    }, [])
+  return (
+    Array.from(
+      allDeps?.reduce((acc: ProjectGraphExternalNode[], node: ProjectGraphDependency) => {
+        const found = graph.externalNodes?.[node.target];
+        if (found) acc.push(found);
+        return acc;
+      }, []) ?? []
+    ) ?? []
   );
 }

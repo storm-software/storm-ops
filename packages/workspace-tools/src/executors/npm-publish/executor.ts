@@ -14,7 +14,14 @@ export default async function npmPublishExecutorFn(
    */
   const isDryRun = process.env.NX_DRY_RUN === "true" || options.dryRun || false;
 
+  if (!context.projectName) {
+    throw new Error("The executor requires a projectName.");
+  }
+
   const projectConfig = context.projectsConfigurations?.projects?.[context.projectName];
+  if (!projectConfig) {
+    throw new Error(`Could not find project configuration for ${context.projectName}`);
+  }
   const packageRoot = joinPathFragments(context.root, options.packageRoot ?? projectConfig.root);
 
   const packageJsonPath = joinPathFragments(packageRoot, "package.json");

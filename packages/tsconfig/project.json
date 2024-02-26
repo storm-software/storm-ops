@@ -1,0 +1,53 @@
+{
+  "name": "tsconfig",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/tsconfig/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/tsconfig",
+        "tsConfig": "packages/tsconfig/tsconfig.json",
+        "project": "packages/tsconfig/package.json",
+        "main": "packages/tsconfig/src/index.ts",
+        "platform": "node",
+        "deleteOutputPath": true,
+        "bundle": true,
+        "thirdParty": true,
+        "skipTypeCheck": false,
+        "metafile": true,
+        "minify": false,
+        "assets": [
+          {
+            "input": "./packages/tsconfig",
+            "glob": "*.md",
+            "output": "/"
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "/"
+          },
+          {
+            "input": "./packages/tsconfig/src",
+            "glob": "{*.json,*.ts}",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "nx-release-publish": {
+      "cache": false,
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^build"],
+      "executor": "@storm-software/workspace-tools:npm-publish",
+      "options": {
+        "packageRoot": "dist/{projectRoot}",
+        "registry": "https://registry.npmjs.org/"
+      }
+    }
+  },
+  "tags": []
+}

@@ -14,10 +14,14 @@ import {
   applyWorkspaceTokens
 } from "../utils/apply-workspace-tokens";
 import { findWorkspaceRootSafe } from "@storm-software/config-tools";
-import type { BaseGeneratorOptions, BaseGeneratorResult } from "../../declarations";
+import type {
+  BaseGeneratorOptions,
+  BaseGeneratorResult,
+  BaseGeneratorSchema
+} from "../../declarations";
 
 export const withRunGenerator =
-  <TGeneratorSchema = any>(
+  <TGeneratorSchema extends BaseGeneratorSchema = any>(
     name: string,
     generatorFn: (
       tree: Tree,
@@ -65,13 +69,13 @@ export const withRunGenerator =
 
       writeTrace(
         config,
-        `Generator schema options ⚙️ \n${Object.keys(options)
+        `Generator schema options ⚙️ \n${Object.keys(options ?? {})
           .map((key) => ` - ${key}=${JSON.stringify(options[key])}`)
           .join("\n")}`
       );
 
       const tokenized = applyWorkspaceTokens(
-        options,
+        options as Record<string, any>,
         { workspaceRoot: tree.root, config },
         applyWorkspaceGeneratorTokens
       ) as TGeneratorSchema;

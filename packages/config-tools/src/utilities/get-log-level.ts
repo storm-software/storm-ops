@@ -6,7 +6,7 @@ import { LogLevel, LogLevelLabel } from "../types";
  * @param label - The log level label to convert
  * @returns The log level
  */
-export const getLogLevel = (label: string): LogLevel => {
+export const getLogLevel = (label?: string): LogLevel => {
   switch (label) {
     case "all":
       return LogLevel.ALL;
@@ -35,7 +35,7 @@ export const getLogLevel = (label: string): LogLevel => {
  * @param logLevel - The log level to convert
  * @returns The log level label
  */
-export const getLogLevelLabel = (logLevel: number): LogLevelLabel => {
+export const getLogLevelLabel = (logLevel: number = LogLevel.INFO): LogLevelLabel => {
   if (logLevel >= LogLevel.ALL) {
     return LogLevelLabel.ALL;
   }

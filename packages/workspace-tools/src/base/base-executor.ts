@@ -1,5 +1,6 @@
 import type { ExecutorContext } from "@nx/devkit";
 import {
+  findWorkspaceRoot,
   getStopwatch,
   writeDebug,
   writeError,
@@ -10,10 +11,10 @@ import {
 } from "@storm-software/config-tools";
 import type { StormConfig } from "@storm-software/config";
 import {
+  type BaseTokenizerOptions,
   applyWorkspaceExecutorTokens,
   applyWorkspaceTokens
 } from "../utils/apply-workspace-tokens";
-import { findWorkspaceRootSafe } from "@storm-software/config-tools";
 import type {
   BaseExecutorOptions,
   BaseExecutorResult,
@@ -48,10 +49,13 @@ export const withRunExecutor =
         );
       }
 
-      const workspaceRoot = findWorkspaceRootSafe();
-      const projectRoot = context.projectsConfigurations.projects[context.projectName].root;
-      const sourceRoot = context.projectsConfigurations.projects[context.projectName].sourceRoot;
-      const projectName = context.projectsConfigurations.projects[context.projectName].name;
+      const workspaceRoot = findWorkspaceRoot();
+      const projectRoot =
+        context.projectsConfigurations.projects[context.projectName]?.root ?? workspaceRoot;
+      const sourceRoot =
+        context.projectsConfigurations.projects[context.projectName]?.sourceRoot ?? workspaceRoot;
+      const projectName =
+        context.projectsConfigurations.projects[context.projectName]?.name ?? context.projectName;
 
       if (!executorOptions.skipReadingConfig) {
         const { loadStormConfig } = await import("@storm-software/config-tools");
@@ -106,7 +110,7 @@ export const withRunExecutor =
           projectName,
           ...context.projectsConfigurations.projects[context.projectName],
           ...executorOptions
-        },
+        } as BaseTokenizerOptions,
         applyWorkspaceExecutorTokens
       ) as TExecutorSchema;
 

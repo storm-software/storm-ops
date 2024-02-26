@@ -84,10 +84,10 @@ export async function typeScriptLibraryGeneratorFn(
     tasks.push(await setupVerdaccio(tree, { ...options, skipFormat: true }));
   }
 
-  const projectConfig: ProjectConfiguration = {
+  const projectConfig = {
     root: options.directory,
     projectType: "library",
-    sourceRoot: joinPathFragments(options.directory, "src"),
+    sourceRoot: joinPathFragments(options.directory ?? "", "src"),
     targets: {
       build: {
         executor: schema.buildExecutor,
@@ -125,9 +125,9 @@ export async function typeScriptLibraryGeneratorFn(
       lint: {},
       test: {}
     }
-  };
+  } as ProjectConfiguration;
 
-  if (schema.platform) {
+  if (schema.platform && projectConfig?.targets?.build) {
     (projectConfig.targets.build.options as TsupExecutorSchema).platform = schema.platform;
   }
 
@@ -156,9 +156,17 @@ export async function typeScriptLibraryGeneratorFn(
     }
   }
 
+  if (!options.importPath) {
+    options.importPath = options.name;
+  }
+
   const packageJsonPath = joinPathFragments(options.projectRoot, "package.json");
   if (tree.exists(packageJsonPath)) {
     updateJson<PackageJson>(tree, packageJsonPath, (json: PackageJson) => {
+      if (!options.importPath) {
+        options.importPath = options.name;
+      }
+
       json.name = options.importPath;
       json.version = "0.0.1";
 
@@ -201,14 +209,14 @@ export async function typeScriptLibraryGeneratorFn(
     } as unknown as PackageJson);
   }
 
-  if (tree.exists("package.json")) {
+  if (tree.exists("package.json") && options.importPath) {
     updateJson(tree, "package.json", (json) => ({
       ...json,
       pnpm: {
         ...json?.pnpm,
         overrides: {
           ...json?.pnpm?.overrides,
-          [options.importPath]: "workspace:*"
+          [options.importPath ?? ""]: "workspace:*"
         }
       }
     }));
@@ -332,7 +340,7 @@ export async function addLint(tree: Tree, options: AddLintOptions): Promise<Gene
           ruleSeverity = value[0];
           ruleOptions = value[1];
         } else {
-          ruleSeverity = value;
+          ruleSeverity = value ?? "error";
           ruleOptions = {};
         }
 
