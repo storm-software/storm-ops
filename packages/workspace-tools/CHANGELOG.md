@@ -1,3 +1,17 @@
+## 1.62.2 (2024-02-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Remove `entry` from the tsconfig for dts build ([628a4034](https://github.com/storm-software/storm-ops/commit/628a4034))
+
+- **workspace-tools:** Removed updated workspace root from compiler config ([f6c09bad](https://github.com/storm-software/storm-ops/commit/f6c09bad))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.1 (2024-02-26)
 
 
