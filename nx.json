@@ -156,8 +156,7 @@
       "workspaceChangelog": false,
       "projectChangelogs": {
         "createRelease": "github",
-        "entryWhenNoChanges": false,
-        "renderer": "./dist/packages/git-tools/src/release/changelog-renderer.js"
+        "entryWhenNoChanges": false
       }
     },
     "version": {
