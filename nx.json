@@ -157,7 +157,7 @@
       "projectChangelogs": {
         "createRelease": "github",
         "entryWhenNoChanges": false,
-        "renderer": "@storm-software/git-tools/src/release/changelog-renderer.js"
+        "renderer": "./dist/packages/git-tools/src/release/changelog-renderer.js"
       }
     },
     "version": {
