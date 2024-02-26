@@ -2,7 +2,7 @@
   "$schema": "https://cdn.jsdelivr.net/npm/nx/schemas/nx-schema.json",
   "pluginsConfig": {
     "@nx/js": {
-      "analyzeSourceFiles": true
+      "analyzeSourceFiles": false
     }
   },
   "extends": "nx/presets/npm.json",
