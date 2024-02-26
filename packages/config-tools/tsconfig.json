@@ -2,16 +2,10 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "strict": false,
-    "skipLibCheck": true,
-    "moduleResolution": "node"
+    "strict": false
   },
-  "files": [],
   "include": [
-    "src/**/*.ts",
-    "src/**/*.js",
-    "bin/**/*",
-    "declarations.d.ts"
+    "**/*"
   ],
   "exclude": [
     "jest.config.ts",

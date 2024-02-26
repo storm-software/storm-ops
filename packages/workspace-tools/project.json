@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/workspace-tools",
         "tsConfig": "packages/workspace-tools/tsconfig.lib.json",
@@ -36,13 +38,18 @@
         "skipTypeCheck": false,
         "metafile": true,
         "minify": false,
-        "format": ["cjs"],
+        "format": [
+          "cjs"
+        ],
         "esbuildOptions": {
           "outExtension": {
             ".js": ".js"
           }
         },
-        "external": ["nx", "esbuild"],
+        "external": [
+          "nx",
+          "esbuild"
+        ],
         "assets": [
           {
             "input": "./packages/workspace-tools",
@@ -93,34 +100,19 @@
             "input": "./packages/workspace-tools/assets",
             "glob": "**/*.*",
             "output": "./assets"
-          },
-          {
-            "input": "./packages/workspace-tools/libs",
-            "glob": "**/*.*",
-            "output": "./src/executors/tsup"
-          },
-          {
-            "input": "./packages/workspace-tools/libs",
-            "glob": "**/*.*",
-            "output": "./src/executors/tsup-node"
-          },
-          {
-            "input": "./packages/workspace-tools/libs",
-            "glob": "**/*.*",
-            "output": "./src/executors/tsup-browser"
-          },
-          {
-            "input": "./packages/workspace-tools/libs",
-            "glob": "**/*.*",
-            "output": "./src/executors/tsup-neutral"
           }
         ]
       }
     },
     "nx-release-publish": {
       "cache": false,
-      "inputs": ["default", "^production"],
-      "dependsOn": ["^build"],
+      "inputs": [
+        "default",
+        "^production"
+      ],
+      "dependsOn": [
+        "^build"
+      ],
       "executor": "@storm-software/workspace-tools:npm-publish",
       "options": {
         "packageRoot": "dist/{projectRoot}",
@@ -128,5 +120,8 @@
       }
     }
   },
-  "tags": ["type:util", "scope:tools"]
+  "tags": [
+    "type:util",
+    "scope:tools"
+  ]
 }
