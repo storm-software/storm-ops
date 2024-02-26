@@ -76,7 +76,7 @@ export const runTsupBuild = async (
   options.plugins?.push(
     esbuildDecorators({
       tsconfig: options.tsConfig,
-      cwd: config.workspaceRoot
+      cwd: workspaceRoot
     })
   );
   options.plugins?.push(environmentPlugin(stormEnv));
@@ -141,7 +141,7 @@ ${options.banner}\n
     const getConfigFns = [options.getConfig];
     const tsupConfig = defineConfig(
       getConfigFns.map((getConfigFn) =>
-        getConfig(config.workspaceRoot ?? ".", context.projectRoot, getConfigFn, getConfigOptions)
+        getConfig(workspaceRoot, context.projectRoot, getConfigFn, getConfigOptions)
       )
     );
 
@@ -172,8 +172,6 @@ function getNormalizedTsConfig(
         ...config?.compilerOptions,
         include: ["**/*"],
         outDir: outputPath,
-        rootDir: workspaceRoot,
-        baseUrl: workspaceRoot,
         noEmit: false,
         esModuleInterop: true,
         downlevelIteration: true,
