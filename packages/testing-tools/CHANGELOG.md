@@ -1,3 +1,15 @@
+## 1.34.3 (2024-02-26)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Resolved linting issues with the nx-version module ([9b5f02d0](https://github.com/storm-software/storm-ops/commit/9b5f02d0))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.34.2 (2024-02-24)
 
 

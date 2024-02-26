@@ -1,3 +1,20 @@
+## 1.5.0 (2024-02-26)
+
+
+### 🚀 Features
+
+- **tsconfig:** Added package to contain default base tsconfig files ([1b341f9a](https://github.com/storm-software/storm-ops/commit/1b341f9a))
+
+
+### 🩹 Fixes
+
+- **git-tools:** Resolved linting issues with the nx-version module ([9b5f02d0](https://github.com/storm-software/storm-ops/commit/9b5f02d0))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.4.0 (2024-02-26)
 
 
