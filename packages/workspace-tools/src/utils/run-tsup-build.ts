@@ -169,6 +169,7 @@ function getNormalizedTsConfig(
       ...config,
       compilerOptions: {
         ...config?.compilerOptions,
+        include: ["**/*"],
         entry: {
           [removeExtension(context.main)
             .replace(workspaceRoot, "")
