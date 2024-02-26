@@ -85,9 +85,6 @@ importers:
       '@swc/wasm':
         specifier: ^1.4.2
         version: 1.4.2
-      '@tsconfig/node21':
-        specifier: ^21.0.1
-        version: 21.0.1
       '@tsconfig/recommended':
         specifier: 1.0.3
         version: 1.0.3
@@ -435,9 +432,6 @@ importers:
       '@total-typescript/ts-reset':
         specifier: 0.5.1
         version: 0.5.1
-      '@tsconfig/node21':
-        specifier: ^21.0.1
-        version: 21.0.1
       '@tsconfig/recommended':
         specifier: 1.0.3
         version: 1.0.3
@@ -4049,10 +4043,6 @@ packages:
 
   /@tsconfig/node16@1.0.4:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
-
-  /@tsconfig/node21@21.0.1:
-    resolution: {integrity: sha512-2Khg79N+z2Qkb9SjLzOi8cz2PSa/oUpHIeQm1YWzmWXkoFcPXFZSHgs+Z8iPCDjIoXFqMNYntiTXxfLYQMcRhw==}
-    dev: false
 
   /@tsconfig/recommended@1.0.3:
     resolution: {integrity: sha512-+jby/Guq9H8O7NWgCv6X8VAiQE8Dr/nccsCtL74xyHKhu2Knu5EAKmOZj3nLCnLm1KooUzKY+5DsnGVqhM8/wQ==}
