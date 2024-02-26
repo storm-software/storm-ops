@@ -1,3 +1,15 @@
+## 1.60.23 (2024-02-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added the libs declaration files ([da5a05db](https://github.com/storm-software/storm-ops/commit/da5a05db))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.22 (2024-02-24)
 
 
