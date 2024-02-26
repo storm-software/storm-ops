@@ -1,3 +1,15 @@
+## 1.30.1 (2024-02-26)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Update config loading to ensure workspace root is set properly ([75a4d506](https://github.com/storm-software/storm-ops/commit/75a4d506))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.30.0 (2024-02-26)
 
 
