@@ -56,7 +56,7 @@
     "lint": "node ./dist/packages/linting-tools/bin/lint.js all --skip-cspell --skip-deps-version --skip-alex",
     "local-registry": "nx local-registry @storm-software/storm-ops",
     "nx": "nx",
-    "release": "node -r @swc-node/register ./dist/packages/git-tools/bin/git.js release",
+    "release": "SWC_NODE_PROJECT=./tsconfig.base.json node -r @swc-node/register ./dist/packages/git-tools/bin/git.js release",
     "start": "nx serve",
     "test": "nx test"
   },
