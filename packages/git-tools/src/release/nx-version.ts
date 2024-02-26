@@ -1,7 +1,8 @@
 import type { StormConfig } from "@storm-software/config";
-import { writeDebug, writeError, writeInfo } from "@storm-software/config-tools";
+import { findWorkspaceRoot, writeDebug, writeError, writeInfo } from "@storm-software/config-tools";
 import type { VersionOptions } from "nx/src/command-line/release/command-object.js";
 import {
+  type NxReleaseConfig,
   createNxReleaseConfig,
   handleNxReleaseConfigError
 } from "nx/src/command-line/release/config/config.js";
@@ -42,7 +43,7 @@ import { printDiff } from "nx/src/command-line/release/utils/print-changes.js";
 interface GeneratorData {
   collectionName: string;
   generatorName: string;
-  configGeneratorOptions: NxJsonConfiguration["release"]["groups"][number]["version"]["generatorOptions"];
+  configGeneratorOptions: any;
   normalizedGeneratorName: string;
   schema: any;
   implementationFactory: () => Generator<unknown>;
@@ -57,6 +58,8 @@ export async function releaseVersion(
   const projectGraph = await createProjectGraphAsync({ exitOnError: true });
   const { projects } = readProjectsConfigurationFromProjectGraph(projectGraph);
   const nxJson = readNxJson();
+
+  const workspaceRoot = config?.workspaceRoot ?? findWorkspaceRoot();
 
   if (args.verbose) {
     process.env.NX_VERBOSE_LOGGING = "true";
@@ -94,17 +97,22 @@ export async function releaseVersion(
     error: filterError,
     releaseGroups,
     releaseGroupToFilteredProjects
-  } = filterReleaseGroups(projectGraph, nxReleaseConfig, args.projects, args.groups);
+  } = filterReleaseGroups(
+    projectGraph,
+    nxReleaseConfig as NxReleaseConfig,
+    args.projects,
+    args.groups
+  );
   if (filterError) {
     writeError(config, filterError.title);
     throw new Error(filterError.title);
   }
 
-  const tree = new FsTree(config.workspaceRoot, args.verbose);
+  const tree = new FsTree(workspaceRoot, true);
 
   const versionData: VersionData = {};
   const commitMessage: string | undefined =
-    args.gitCommitMessage || nxReleaseConfig.version.git.commitMessage;
+    args.gitCommitMessage || nxReleaseConfig?.version.git.commitMessage;
   const additionalChangedFiles = new Set<string>();
   const generatorCallbacks: (() => Promise<void>)[] = [];
 
@@ -121,7 +129,9 @@ export async function releaseVersion(
         `Running versioning for release group "${releaseGroupName}" and filtered projects within it`
       );
 
-      const releaseGroupProjectNames = Array.from(releaseGroupToFilteredProjects.get(releaseGroup));
+      const releaseGroupProjectNames = Array.from(
+        releaseGroupToFilteredProjects.get(releaseGroup) ?? []
+      );
       const projectBatches = batchProjectsByGeneratorConfig(
         projectGraph,
         releaseGroup,
@@ -175,7 +185,7 @@ export async function releaseVersion(
 
     // Resolve any git tags as early as possible so that we can hard error in case of any duplicates before reaching the actual git command
     const gitTagValues: string[] =
-      args.gitTag ?? nxReleaseConfig.version.git.tag
+      args.gitTag ?? nxReleaseConfig?.version.git.tag
         ? createGitTagValues(releaseGroups, releaseGroupToFilteredProjects, versionData)
         : [];
     handleDuplicateGitTags(gitTagValues);
@@ -197,7 +207,7 @@ export async function releaseVersion(
       };
     }
 
-    if (args.gitCommit ?? nxReleaseConfig.version.git.commit) {
+    if (args.gitCommit ?? nxReleaseConfig?.version.git.commit) {
       await commitChanges(
         changedFiles,
         !!args.dryRun,
@@ -206,11 +216,11 @@ export async function releaseVersion(
           releaseGroups,
           releaseGroupToFilteredProjects,
           versionData,
-          commitMessage
+          commitMessage as string
         ),
-        args.gitCommitArgs || nxReleaseConfig.version.git.commitArgs
+        args.gitCommitArgs || nxReleaseConfig?.version.git.commitArgs
       );
-    } else if (args.stageChanges ?? nxReleaseConfig.version.git.stageChanges) {
+    } else if (args.stageChanges ?? nxReleaseConfig?.version.git.stageChanges) {
       writeInfo(config, "Staging changed files with git");
       await gitAdd({
         changedFiles,
@@ -219,13 +229,13 @@ export async function releaseVersion(
       });
     }
 
-    if (args.gitTag ?? nxReleaseConfig.version.git.tag) {
+    if (args.gitTag ?? nxReleaseConfig?.version.git.tag) {
       writeInfo(config, "Tagging commit with git");
       for (const tag of gitTagValues) {
         await gitTag({
           tag,
-          message: args.gitTagMessage || nxReleaseConfig.version.git.tagMessage,
-          additionalArgs: args.gitTagArgs || nxReleaseConfig.version.git.tagArgs,
+          message: args.gitTagMessage || nxReleaseConfig?.version.git.tagMessage,
+          additionalArgs: args.gitTagArgs || nxReleaseConfig?.version.git.tagArgs,
           dryRun: args.dryRun,
           verbose: args.verbose
         });
@@ -290,7 +300,7 @@ export async function releaseVersion(
 
   // Resolve any git tags as early as possible so that we can hard error in case of any duplicates before reaching the actual git command
   const gitTagValues: string[] =
-    args.gitTag ?? nxReleaseConfig.version.git.tag
+    args.gitTag ?? nxReleaseConfig?.version.git.tag
       ? createGitTagValues(releaseGroups, releaseGroupToFilteredProjects, versionData)
       : [];
   handleDuplicateGitTags(gitTagValues);
@@ -306,8 +316,12 @@ export async function releaseVersion(
   if (releaseGroups.length === 1) {
     const releaseGroup = releaseGroups[0];
     if (releaseGroup.projectsRelationship === "fixed") {
-      const releaseGroupProjectNames = Array.from(releaseGroupToFilteredProjects.get(releaseGroup));
-      workspaceVersion = versionData[releaseGroupProjectNames[0]].newVersion; // all projects have the same version so we can just grab the first
+      const releaseGroupProjectNames = Array.from(
+        releaseGroupToFilteredProjects.get(releaseGroup) ?? []
+      );
+      if (releaseGroupProjectNames.length > 0 && releaseGroupProjectNames[0]) {
+        workspaceVersion = versionData[releaseGroupProjectNames[0]]?.newVersion; // all projects have the same version so we can just grab the first
+      }
     }
   }
 
@@ -321,7 +335,7 @@ export async function releaseVersion(
     };
   }
 
-  if (args.gitCommit ?? nxReleaseConfig.version.git.commit) {
+  if (args.gitCommit ?? nxReleaseConfig?.version.git.commit) {
     await commitChanges(
       changedFiles,
       !!args.dryRun,
@@ -330,11 +344,11 @@ export async function releaseVersion(
         releaseGroups,
         releaseGroupToFilteredProjects,
         versionData,
-        commitMessage
+        commitMessage as string
       ),
-      args.gitCommitArgs || nxReleaseConfig.version.git.commitArgs
+      args.gitCommitArgs || nxReleaseConfig?.version.git.commitArgs
     );
-  } else if (args.stageChanges ?? nxReleaseConfig.version.git.stageChanges) {
+  } else if (args.stageChanges ?? nxReleaseConfig?.version.git.stageChanges) {
     writeInfo(config, "Staging changed files with git");
     await gitAdd({
       changedFiles,
@@ -343,13 +357,13 @@ export async function releaseVersion(
     });
   }
 
-  if (args.gitTag ?? nxReleaseConfig.version.git.tag) {
+  if (args.gitTag ?? nxReleaseConfig?.version.git.tag) {
     writeInfo(config, "Tagging commit with git");
     for (const tag of gitTagValues) {
       await gitTag({
         tag,
-        message: args.gitTagMessage || nxReleaseConfig.version.git.tagMessage,
-        additionalArgs: args.gitTagArgs || nxReleaseConfig.version.git.tagArgs,
+        message: args.gitTagMessage || nxReleaseConfig?.version.git.tagMessage,
+        additionalArgs: args.gitTagArgs || nxReleaseConfig?.version.git.tagArgs,
         dryRun: args.dryRun,
         verbose: args.verbose
       });
@@ -373,6 +387,8 @@ async function runVersionOnProjects(
   releaseGroup: ReleaseGroupWithName,
   versionData: VersionData
 ): Promise<ReleaseVersionGeneratorResult["callback"]> {
+  const workspaceRoot = config?.workspaceRoot ?? findWorkspaceRoot();
+
   const generatorOptions: ReleaseVersionGeneratorSchema = {
     // Always ensure a string to avoid generator schema validation errors
     specifier: args.specifier ?? "",
@@ -395,7 +411,7 @@ async function runVersionOnProjects(
     generatorData.schema,
     false,
     null,
-    relative(process.cwd(), config.workspaceRoot),
+    relative(process.cwd(), workspaceRoot),
     args.verbose
   );
 
