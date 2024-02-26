@@ -1,3 +1,15 @@
+## 1.62.1 (2024-02-26)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve issue with bad entry path ([9dc79475](https://github.com/storm-software/storm-ops/commit/9dc79475))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.0 (2024-02-26)
 
 
