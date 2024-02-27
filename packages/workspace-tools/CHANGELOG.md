@@ -1,3 +1,15 @@
+## 1.62.5 (2024-02-27)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update the build executor back to esbuild ([ff200547](https://github.com/storm-software/storm-ops/commit/ff200547))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.4 (2024-02-27)
 
 
