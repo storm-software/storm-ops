@@ -1,3 +1,15 @@
+## 1.62.7 (2024-02-27)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update base methods to no longer use dynamic imports ([e3f68252](https://github.com/storm-software/storm-ops/commit/e3f68252))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.6 (2024-02-27)
 
 
