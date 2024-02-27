@@ -20,9 +20,6 @@ overrides:
   '@storm-software/config-tools': workspace:*
 
 patchedDependencies:
-  '@humanfs/node@0.11.0':
-    hash: 4tfxtdamasi7q3i2ycsji3ilf4
-    path: patches/@humanfs__node@0.11.0.patch
   cosmiconfig@9.0.0:
     hash: kvwqsvntptc5dck76ulq454vwi
     path: patches/cosmiconfig@9.0.0.patch
@@ -160,9 +157,6 @@ importers:
 
   packages/config-tools:
     dependencies:
-      '@humanfs/node':
-        specifier: ^0.11.0
-        version: 0.11.0(patch_hash=4tfxtdamasi7q3i2ycsji3ilf4)
       chalk:
         specifier: 4.1.2
         version: 4.1.2
@@ -2646,20 +2640,6 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: false
 
-  /@humanfs/core@0.11.0:
-    resolution: {integrity: sha512-T8sVP2Xqbm3sfPW1NFaPrsGVKYbHj2tiF5WdaadRv4kCmxsb23Zrv2WUSLhhZWQGPUHnylLt7gtvf0OOy4mopQ==}
-    engines: {node: '>=18.18.0'}
-    dev: false
-
-  /@humanfs/node@0.11.0(patch_hash=4tfxtdamasi7q3i2ycsji3ilf4):
-    resolution: {integrity: sha512-PgjHbg1AswZzE9GeUcTLCAfZXVLTpjlZozjmzPMEl8gLAZrga6IpZ0zTWnCFMu0lNTE5YADaGpPqVXNSsOdMxg==}
-    engines: {node: '>=18.18.0'}
-    dependencies:
-      '@humanfs/core': 0.11.0
-      '@humanwhocodes/retry': 0.1.2
-    dev: false
-    patched: true
-
   /@humanwhocodes/config-array@0.11.13(supports-color@9.4.0):
     resolution: {integrity: sha512-JSBDMiDKSzQVngfRjOdFXgFfklaXI4K9nLF49Auh21lmBWRLIK3+xTErTWD4KU54pb6coM6ESE7Awz/FNU3zgQ==}
     engines: {node: '>=10.10.0'}
@@ -2678,11 +2658,6 @@ packages:
 
   /@humanwhocodes/object-schema@2.0.1:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
-    dev: false
-
-  /@humanwhocodes/retry@0.1.2:
-    resolution: {integrity: sha512-JNWGHkYfWI0+YgRHOwkFKjOuelfypQtp0GSx0lsOP9jU1Tj4f8k0x4dcaJSEZTp61THZJ+f9PJRh1GzYlQqHOQ==}
-    engines: {node: '>=18.18'}
     dev: false
 
   /@isaacs/cliui@8.0.2:
