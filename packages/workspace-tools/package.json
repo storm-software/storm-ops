@@ -44,6 +44,7 @@
     "fs-extra": "11.2.0",
     "glob": "10.3.10",
     "npm-run-path": "5.2.0",
+    "pkg-types": "^1.0.3",
     "prettier": "3.2.5",
     "prettier-plugin-packagejson": "2.4.9",
     "rollup": "4.10.0",

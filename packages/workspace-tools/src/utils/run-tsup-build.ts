@@ -8,11 +8,12 @@ import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/t
 import type { StormConfig } from "@storm-software/config";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import type { TsupContext } from "../../declarations";
-import { parseJsonConfigFileContent, readConfigFile, sys } from "typescript";
+import { parseJsonConfigFileContent, sys } from "typescript";
 import { defaultConfig, getConfig } from "../base/get-tsup-config";
 import type { TsupExecutorSchema } from "../executors/tsup/schema";
 import { removeExtension } from "./file-path-utils";
 import type { Options } from "tsup";
+import { readTSConfig } from "pkg-types";
 
 export const applyDefaultOptions = (options: TsupExecutorSchema): TsupExecutorSchema => {
   options.entry ??= "{sourceRoot}/index.ts";
@@ -98,7 +99,8 @@ export const runTsupBuild = async (
       __STORM_CONFIG: JSON.stringify(stormEnv),
       ...stormEnv
     },
-    dtsTsConfig: getNormalizedTsConfig(
+    dtsTsConfig: await getNormalizedTsConfig(
+      context,
       workspaceRoot,
       options.outputPath,
       createTypeScriptCompilationOptions(
@@ -157,17 +159,26 @@ ${options.banner}
   }
 };
 
-function getNormalizedTsConfig(
+async function getNormalizedTsConfig(
+  context: TsupContext,
   workspaceRoot: string,
   outputPath: string,
   options: TypeScriptCompilationOptions
 ) {
-  const config = readConfigFile(options.tsConfig, sys.readFile).config;
+  let config = await readTSConfig(options.tsConfig);
+  if (!config) {
+    config = await readTSConfig(context.projectRoot);
+    if (!config) {
+      throw new Error("No tsconfig file found");
+    }
+  }
+
+  // const config = readConfigFile(options.tsConfig, sys.readFile).config;
   const tsConfig = parseJsonConfigFileContent(
     {
       ...config,
       compilerOptions: {
-        ...config?.compilerOptions,
+        ...config.compilerOptions,
         outDir: outputPath,
         noEmit: false,
         esModuleInterop: true,
@@ -186,8 +197,8 @@ function getNormalizedTsConfig(
 
   tsConfig.options.pathsBasePath = workspaceRoot;
   if (
-    (config?.compilerOptions?.incremental || tsConfig?.options?.incremental) &&
-    !tsConfig?.options.tsBuildInfoFile
+    (config.compilerOptions?.incremental || tsConfig.options.incremental) &&
+    !tsConfig.options.tsBuildInfoFile
   ) {
     tsConfig.options.tsBuildInfoFile = joinPathFragments(outputPath, "tsconfig.tsbuildinfo");
   }
