@@ -1,3 +1,15 @@
+## 1.62.8 (2024-02-27)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update the imports of `config-tools` to dynamic ([cff2a536](https://github.com/storm-software/storm-ops/commit/cff2a536))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.7 (2024-02-27)
 
 
