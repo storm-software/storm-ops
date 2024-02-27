@@ -44,9 +44,23 @@ ${commentStart}    Website: ${process.env.STORM_HOMEPAGE ?? "https://stormsoftwa
 ${commentStart}    Repository: ${
     process.env.STORM_REPOSITORY ?? "https://github.com/storm-software/storm-stack"
   }
-${commentStart}    Documentation: https://stormsoftware.org/docs/storm-stack
-${commentStart}    Contact: https://stormsoftware.org/contact
-${commentStart}    Licensing: https://stormsoftware.org/licensing
+${commentStart}    Documentation: https://stormsoftware.org/docs${
+    titleName?.startsWith("@") ? `/${titleName.slice(1)}` : ""
+  }
+${commentStart}    Contact: ${
+    process.env.STORM_HOMEPAGE
+      ? process.env.STORM_HOMEPAGE.endsWith("/")
+        ? process.env.STORM_HOMEPAGE.slice(-1)
+        : process.env.STORM_HOMEPAGE
+      : "https://stormsoftware.org"
+  }/contact
+${commentStart}    Licensing: ${
+    process.env.STORM_HOMEPAGE
+      ? process.env.STORM_HOMEPAGE.endsWith("/")
+        ? process.env.STORM_HOMEPAGE.slice(-1)
+        : process.env.STORM_HOMEPAGE
+      : "https://stormsoftware.org"
+  }/licensing
 ${commentStart}
 ${commentStart} -------------------------------------------------------------------
 
