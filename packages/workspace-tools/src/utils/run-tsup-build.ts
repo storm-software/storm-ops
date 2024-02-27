@@ -8,13 +8,12 @@ import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/t
 import type { StormConfig } from "@storm-software/config";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import type { TsupContext } from "../../declarations";
-import { parseJsonConfigFileContent, sys } from "typescript";
+import { parseJsonConfigFileContent, sys, readConfigFile } from "typescript";
 import { defaultConfig, getConfig } from "../base/get-tsup-config";
 import type { TsupExecutorSchema } from "../executors/tsup/schema";
 import { removeExtension } from "./file-path-utils";
-import type { Options } from "tsup";
-import { type TSConfig, readTSConfig } from "pkg-types";
-import { build as tsup, defineConfig } from "tsup";
+// import { type TSConfig, readTSConfig } from "pkg-types";
+import { type Options, build as tsup, defineConfig } from "tsup";
 
 export const applyDefaultOptions = (options: TsupExecutorSchema): TsupExecutorSchema => {
   options.entry ??= "{sourceRoot}/index.ts";
@@ -57,7 +56,7 @@ export const runTsupBuild = async (
   config: Partial<StormConfig>,
   options: TsupExecutorSchema
 ) => {
-  const { writeInfo, writeDebug, writeWarning, findWorkspaceRoot } = await import(
+  const { writeInfo, writeWarning, findWorkspaceRoot } = await import(
     "@storm-software/config-tools"
   );
 
@@ -83,13 +82,13 @@ export const runTsupBuild = async (
 
   // #region Run the build process
 
-  let tsconfig = await readTSConfig(options.tsConfig);
-  if (!tsconfig) {
-    tsconfig = await readTSConfig(context.projectRoot);
-    if (!tsconfig) {
-      throw new Error("No tsconfig file found");
-    }
-  }
+  // let tsconfig = await readTSConfig(options.tsConfig);
+  // if (!tsconfig) {
+  //   tsconfig = await readTSConfig(context.projectRoot);
+  //   if (!tsconfig) {
+  //     throw new Error("No tsconfig file found");
+  //   }
+  // }
 
   const getConfigOptions = {
     ...options,
@@ -108,7 +107,6 @@ export const runTsupBuild = async (
       ...stormEnv
     },
     dtsTsConfig: getNormalizedTsConfig(
-      tsconfig,
       workspaceRoot,
       options.outputPath,
       createTypeScriptCompilationOptions(
@@ -145,7 +143,6 @@ ${options.banner}
 
   if (options.getConfig) {
     writeInfo(config, "⚡ Running the Build process");
-    writeDebug(config, JSON.stringify(getConfigOptions));
 
     const getConfigFns = [options.getConfig];
     const tsupConfig = defineConfig(
@@ -169,12 +166,11 @@ ${options.banner}
 };
 
 function getNormalizedTsConfig(
-  config: TSConfig,
   workspaceRoot: string,
   outputPath: string,
   options: TypeScriptCompilationOptions
 ) {
-  // const config = readConfigFile(options.tsConfig, sys.readFile).config;
+  const config = readConfigFile(options.tsConfig, sys.readFile).config;
   const tsConfig = parseJsonConfigFileContent(
     {
       ...config,
