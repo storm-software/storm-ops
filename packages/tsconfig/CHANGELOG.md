@@ -1,3 +1,15 @@
+## 0.0.6 (2024-02-27)
+
+
+### 🩹 Fixes
+
+- **tsconfig:** Update the base `tsconfig.json` file with module resolution options ([972e1110](https://github.com/storm-software/storm-ops/commit/972e1110))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.0.5 (2024-02-27)
 
 
