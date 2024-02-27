@@ -17,7 +17,6 @@ import { interpolate } from "nx/src/tasks-runner/utils";
 import { isValidSemverSpecifier } from "nx/src/command-line/release/utils/semver";
 import { relative } from "node:path";
 import type { StormConfig } from "@storm-software/config";
-import { findWorkspaceRoot, writeInfo } from "@storm-software/config-tools";
 import { updateLockFile } from "@nx/js/src/generators/release-version/utils/update-lock-file";
 import { withRunGenerator } from "../../base/base-generator";
 import { exec } from "node:child_process";
@@ -39,6 +38,8 @@ export async function releaseVersionGeneratorFn(
   options: ReleaseVersionGeneratorSchema,
   config?: StormConfig
 ) {
+  const { writeInfo, findWorkspaceRoot } = await import("@storm-software/config-tools");
+
   const versionData: VersionData = {};
 
   // If the user provided a specifier, validate that it is valid semver or a relative semver keyword

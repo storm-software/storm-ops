@@ -100,7 +100,7 @@ export const withRunExecutor =
           .join("\n")}`
       );
 
-      const tokenized = applyWorkspaceTokens(
+      const tokenized = (await applyWorkspaceTokens(
         options,
         {
           config,
@@ -112,7 +112,7 @@ export const withRunExecutor =
           ...executorOptions
         } as BaseTokenizerOptions,
         applyWorkspaceExecutorTokens
-      ) as TExecutorSchema;
+      )) as TExecutorSchema;
 
       if (executorOptions?.hooks?.preProcess) {
         writeDebug(config, "Running the preProcess hook...");

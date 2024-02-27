@@ -1,6 +1,5 @@
 import type { ProjectConfiguration } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
-import { findWorkspaceRoot } from "@storm-software/config-tools";
 
 export interface BaseTokenizerOptions {
   workspaceRoot?: string;
@@ -14,10 +13,10 @@ export type ExecutorTokenizerOptions = BaseTokenizerOptions &
     sourceRoot: string;
   };
 
-export const applyWorkspaceExecutorTokens = (
+export const applyWorkspaceExecutorTokens = async (
   option: string,
   tokenizerOptions: ExecutorTokenizerOptions
-): string => {
+): Promise<string> => {
   let result = option;
   if (!result) {
     return result;
@@ -63,6 +62,8 @@ export const applyWorkspaceExecutorTokens = (
     result = result.replaceAll("{sourceRoot}", sourceRoot);
   }
   if (result.includes("{workspaceRoot}")) {
+    const { findWorkspaceRoot } = await import("@storm-software/config-tools");
+
     result = result.replaceAll(
       "{workspaceRoot}",
       tokenizerOptions.workspaceRoot ?? findWorkspaceRoot()
@@ -72,10 +73,10 @@ export const applyWorkspaceExecutorTokens = (
   return result;
 };
 
-export const applyWorkspaceGeneratorTokens = (
+export const applyWorkspaceGeneratorTokens = async (
   option: string,
   tokenizerOptions: BaseTokenizerOptions
-): string => {
+): Promise<string> => {
   let result = option;
   if (!result) {
     return result;
@@ -92,6 +93,8 @@ export const applyWorkspaceGeneratorTokens = (
     }
   }
   if (result.includes("{workspaceRoot}")) {
+    const { findWorkspaceRoot } = await import("@storm-software/config-tools");
+
     result = result.replaceAll(
       "{workspaceRoot}",
       tokenizerOptions.workspaceRoot ??
@@ -103,27 +106,32 @@ export const applyWorkspaceGeneratorTokens = (
   return result;
 };
 
-export const applyWorkspaceTokens = <TConfig extends BaseTokenizerOptions = BaseTokenizerOptions>(
+export const applyWorkspaceTokens = async <
+  TConfig extends BaseTokenizerOptions = BaseTokenizerOptions
+>(
   options: Record<string, any>,
   config: TConfig,
-  tokenizerFn: (option: string, config: TConfig) => string
-): Record<string, any> => {
-  const result = options;
-  if (!result) {
+  tokenizerFn: (option: string, config: TConfig) => string | Promise<string>
+): Promise<Record<string, any>> => {
+  if (!options) {
     return {};
   }
 
-  return Object.keys(options).reduce((ret: Record<string, any>, option: string) => {
+  const result: Record<string, any> = {};
+
+  for (const option of Object.keys(options)) {
     if (typeof options[option] === "string") {
-      ret[option] = tokenizerFn(options[option], config);
+      result[option] = await Promise.resolve(tokenizerFn(options[option], config));
     } else if (Array.isArray(options[option])) {
-      ret[option] = options[option].map((item: any) =>
-        typeof item === "string" ? tokenizerFn(item, config) : item
+      result[option] = await Promise.all(
+        options[option].map(async (item: any) =>
+          typeof item === "string" ? await Promise.resolve(tokenizerFn(item, config)) : item
+        )
       );
     } else if (typeof options[option] === "object") {
-      ret[option] = applyWorkspaceTokens(options[option], config, tokenizerFn);
+      result[option] = await applyWorkspaceTokens(options[option], config, tokenizerFn);
     }
+  }
 
-    return ret;
-  }, {});
+  return result;
 };

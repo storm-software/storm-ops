@@ -74,7 +74,7 @@ export const withRunGenerator =
           .join("\n")}`
       );
 
-      const tokenized = applyWorkspaceTokens(
+      const tokenized = await applyWorkspaceTokens(
         options as Record<string, any>,
         { workspaceRoot: tree.root, config },
         applyWorkspaceGeneratorTokens

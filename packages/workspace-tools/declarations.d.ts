@@ -1,4 +1,4 @@
-import type { StormConfig } from "@storm-software/config-tools";
+import type { StormConfig } from "@storm-software/config";
 import type { TsupExecutorSchema } from "./src/executors/tsup/schema";
 import type { ExecutorContext } from "@nx/devkit";
 import type { Tree } from "@nx/devkit";
