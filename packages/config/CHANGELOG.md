@@ -1,3 +1,17 @@
+## 1.5.2 (2024-02-27)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update module type on config packages to support imports ([a0b2bff4](https://github.com/storm-software/storm-ops/commit/a0b2bff4))
+
+- **config-tools:** Update config packages to only use cjs ([75e4a16b](https://github.com/storm-software/storm-ops/commit/75e4a16b))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.5.1 (2024-02-27)
 
 

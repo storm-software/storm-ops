@@ -1,3 +1,15 @@
+## 2.2.3 (2024-02-27)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Update config packages to only use cjs ([75e4a16b](https://github.com/storm-software/storm-ops/commit/75e4a16b))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.2.2 (2024-02-27)
 
 
