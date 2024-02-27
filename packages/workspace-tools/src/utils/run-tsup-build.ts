@@ -13,7 +13,8 @@ import { defaultConfig, getConfig } from "../base/get-tsup-config";
 import type { TsupExecutorSchema } from "../executors/tsup/schema";
 import { removeExtension } from "./file-path-utils";
 import type { Options } from "tsup";
-import { readTSConfig } from "pkg-types";
+import { type TSConfig, readTSConfig } from "pkg-types";
+import { build as tsup, defineConfig } from "tsup";
 
 export const applyDefaultOptions = (options: TsupExecutorSchema): TsupExecutorSchema => {
   options.entry ??= "{sourceRoot}/index.ts";
@@ -56,10 +57,9 @@ export const runTsupBuild = async (
   config: Partial<StormConfig>,
   options: TsupExecutorSchema
 ) => {
-  const { writeInfo, writeWarning, findWorkspaceRoot } = await import(
+  const { writeInfo, writeDebug, writeWarning, findWorkspaceRoot } = await import(
     "@storm-software/config-tools"
   );
-  const { build: tsup, defineConfig } = await import("tsup");
 
   const workspaceRoot = config?.workspaceRoot ?? findWorkspaceRoot();
 
@@ -83,6 +83,14 @@ export const runTsupBuild = async (
 
   // #region Run the build process
 
+  let tsconfig = await readTSConfig(options.tsConfig);
+  if (!tsconfig) {
+    tsconfig = await readTSConfig(context.projectRoot);
+    if (!tsconfig) {
+      throw new Error("No tsconfig file found");
+    }
+  }
+
   const getConfigOptions = {
     ...options,
     entry: {
@@ -99,8 +107,8 @@ export const runTsupBuild = async (
       __STORM_CONFIG: JSON.stringify(stormEnv),
       ...stormEnv
     },
-    dtsTsConfig: await getNormalizedTsConfig(
-      context,
+    dtsTsConfig: getNormalizedTsConfig(
+      tsconfig,
       workspaceRoot,
       options.outputPath,
       createTypeScriptCompilationOptions(
@@ -137,6 +145,7 @@ ${options.banner}
 
   if (options.getConfig) {
     writeInfo(config, "⚡ Running the Build process");
+    writeDebug(config, JSON.stringify(getConfigOptions));
 
     const getConfigFns = [options.getConfig];
     const tsupConfig = defineConfig(
@@ -147,9 +156,9 @@ ${options.banner}
 
     if (_isFunction(tsupConfig)) {
       const tsupOptions = await Promise.resolve(tsupConfig({}));
-      await build(tsup, tsupOptions, config as StormConfig);
+      await build(tsupOptions, config as StormConfig);
     } else {
-      await build(tsup, tsupConfig, config as StormConfig);
+      await build(tsupConfig, config as StormConfig);
     }
   } else {
     writeWarning(
@@ -159,20 +168,12 @@ ${options.banner}
   }
 };
 
-async function getNormalizedTsConfig(
-  context: TsupContext,
+function getNormalizedTsConfig(
+  config: TSConfig,
   workspaceRoot: string,
   outputPath: string,
   options: TypeScriptCompilationOptions
 ) {
-  let config = await readTSConfig(options.tsConfig);
-  if (!config) {
-    config = await readTSConfig(context.projectRoot);
-    if (!config) {
-      throw new Error("No tsconfig file found");
-    }
-  }
-
   // const config = readConfigFile(options.tsConfig, sys.readFile).config;
   const tsConfig = parseJsonConfigFileContent(
     {
@@ -206,15 +207,11 @@ async function getNormalizedTsConfig(
   return tsConfig;
 }
 
-const build = async (
-  tsup: (opts: Options) => Promise<void>,
-  options: Options | Options[],
-  config?: StormConfig
-) => {
+const build = async (options: Options | Options[], config?: StormConfig) => {
   const { writeDebug } = await import("@storm-software/config-tools");
 
   if (Array.isArray(options)) {
-    await Promise.all(options.map((buildOptions) => build(tsup, buildOptions, config)));
+    await Promise.all(options.map((buildOptions) => build(buildOptions, config)));
   } else {
     let tsupOptions = options;
     if (_isFunction(tsupOptions)) {
