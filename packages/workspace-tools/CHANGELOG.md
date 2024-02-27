@@ -1,3 +1,17 @@
+## 1.62.11 (2024-02-27)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved issue with formatting of package name in banner ([0b9165bc](https://github.com/storm-software/storm-ops/commit/0b9165bc))
+
+- **workspace-tools:** Clean up the URLs displayed in the file banner ([8c596823](https://github.com/storm-software/storm-ops/commit/8c596823))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.10 (2024-02-27)
 
 
