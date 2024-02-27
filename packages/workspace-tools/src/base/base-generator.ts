@@ -13,7 +13,7 @@ import {
   applyWorkspaceGeneratorTokens,
   applyWorkspaceTokens
 } from "../utils/apply-workspace-tokens";
-import { findWorkspaceRootSafe } from "@storm-software/config-tools";
+import { findWorkspaceRootSafe, loadStormConfig } from "@storm-software/config-tools";
 import type {
   BaseGeneratorOptions,
   BaseGeneratorResult,
@@ -42,8 +42,6 @@ export const withRunGenerator =
 
       const workspaceRoot = findWorkspaceRootSafe();
       if (!generatorOptions.skipReadingConfig) {
-        const { loadStormConfig } = await import("@storm-software/config-tools");
-
         writeDebug(
           config,
           `Loading the Storm Config from environment variables and storm.config.js file...

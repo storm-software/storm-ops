@@ -7,7 +7,8 @@ import {
   writeFatal,
   writeInfo,
   writeSuccess,
-  writeTrace
+  writeTrace,
+  loadStormConfig
 } from "@storm-software/config-tools";
 import type { StormConfig } from "@storm-software/config";
 import {
@@ -58,8 +59,6 @@ export const withRunExecutor =
         context.projectsConfigurations.projects[context.projectName]?.name ?? context.projectName;
 
       if (!executorOptions.skipReadingConfig) {
-        const { loadStormConfig } = await import("@storm-software/config-tools");
-
         writeDebug(
           config,
           `Loading the Storm Config from environment variables and storm.config.js file...
