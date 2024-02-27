@@ -5,14 +5,6 @@ import { getCustomTrasformersFactory } from "@nx/js/src/executors/tsc/lib/get-cu
 import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options";
 import type { NormalizedExecutorOptions } from "@nx/js/src/utils/schema";
 import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
-import {
-  LogLevel,
-  findWorkspaceRoot,
-  getLogLevel,
-  writeDebug,
-  writeInfo,
-  writeWarning
-} from "@storm-software/config-tools";
 import type { StormConfig } from "@storm-software/config";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import type { TsupContext } from "../../declarations";
@@ -63,6 +55,10 @@ export const runTsupBuild = async (
   config: Partial<StormConfig>,
   options: TsupExecutorSchema
 ) => {
+  const { LogLevel, getLogLevel, writeInfo, writeWarning, findWorkspaceRoot } = await import(
+    "@storm-software/config-tools"
+  );
+
   const workspaceRoot = config?.workspaceRoot ?? findWorkspaceRoot();
 
   // #region Add default plugins
@@ -198,6 +194,8 @@ function getNormalizedTsConfig(
 }
 
 const build = async (options: Options | Options[], config?: StormConfig) => {
+  const { writeDebug } = await import("@storm-software/config-tools");
+
   if (Array.isArray(options)) {
     await Promise.all(options.map((buildOptions) => build(buildOptions, config)));
   } else {

@@ -1,15 +1,4 @@
 import type { ExecutorContext } from "@nx/devkit";
-import {
-  findWorkspaceRoot,
-  getStopwatch,
-  writeDebug,
-  writeError,
-  writeFatal,
-  writeInfo,
-  writeSuccess,
-  writeTrace,
-  loadStormConfig
-} from "@storm-software/config-tools";
 import type { StormConfig } from "@storm-software/config";
 import {
   type BaseTokenizerOptions,
@@ -33,6 +22,18 @@ export const withRunExecutor =
     executorOptions: BaseExecutorOptions<TExecutorSchema>
   ) =>
   async (_options: TExecutorSchema, context: ExecutorContext): Promise<{ success: boolean }> => {
+    const {
+      getStopwatch,
+      writeDebug,
+      writeError,
+      writeFatal,
+      writeInfo,
+      writeSuccess,
+      writeTrace,
+      findWorkspaceRoot,
+      loadStormConfig
+    } = await import("@storm-software/config-tools");
+
     const stopwatch = getStopwatch(name);
     let options = _options;
 

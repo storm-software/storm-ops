@@ -1,19 +1,9 @@
 import type { Tree } from "@nx/devkit";
-import {
-  getStopwatch,
-  writeDebug,
-  writeError,
-  writeFatal,
-  writeInfo,
-  writeSuccess,
-  writeTrace
-} from "@storm-software/config-tools";
 import type { StormConfig } from "@storm-software/config";
 import {
   applyWorkspaceGeneratorTokens,
   applyWorkspaceTokens
 } from "../utils/apply-workspace-tokens";
-import { findWorkspaceRootSafe, loadStormConfig } from "@storm-software/config-tools";
 import type {
   BaseGeneratorOptions,
   BaseGeneratorResult,
@@ -33,6 +23,18 @@ export const withRunGenerator =
     }
   ) =>
   async (tree: Tree, _options: TGeneratorSchema): Promise<{ success: boolean }> => {
+    const {
+      getStopwatch,
+      writeDebug,
+      writeError,
+      writeFatal,
+      writeInfo,
+      writeSuccess,
+      writeTrace,
+      findWorkspaceRootSafe,
+      loadStormConfig
+    } = await import("@storm-software/config-tools");
+
     const stopwatch = getStopwatch(name);
     let options = _options;
 

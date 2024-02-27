@@ -3,16 +3,6 @@ import { joinPathFragments, readCachedProjectGraph, readJsonFile } from "@nx/dev
 import type { ExecutorContext, ProjectGraph } from "@nx/devkit";
 import { copyAssets } from "@nx/js";
 import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils.js";
-import {
-  LogLevel,
-  findWorkspaceRoot,
-  getLogLevel,
-  writeDebug,
-  writeInfo,
-  writeSuccess,
-  writeTrace,
-  writeWarning
-} from "@storm-software/config-tools";
 import type { StormConfig } from "@storm-software/config";
 import { removeSync, writeFile } from "fs-extra";
 import { type Path, globSync } from "glob";
@@ -35,14 +25,24 @@ export async function tsupExecutorFn(
   context: ExecutorContext,
   config?: StormConfig
 ) {
+  const {
+    LogLevel,
+    getLogLevel,
+    writeDebug,
+    writeInfo,
+    writeSuccess,
+    writeTrace,
+    writeWarning,
+    findWorkspaceRoot
+  } = await import("@storm-software/config-tools");
+
   writeInfo(config, "📦  Running Storm build executor on the workspace");
 
   // #region Apply default options
 
-  getLogLevel(config?.logLevel) >= LogLevel.TRACE &&
-    writeDebug(
-      config,
-      `⚙️  Executor options:
+  writeDebug(
+    config,
+    `⚙️  Executor options:
 ${Object.keys(options)
   .map(
     (key) =>
@@ -56,7 +56,7 @@ ${Object.keys(options)
   )
   .join("\n")}
 `
-    );
+  );
 
   // #endregion Apply default options
 
