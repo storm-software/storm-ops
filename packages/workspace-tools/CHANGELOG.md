@@ -1,3 +1,15 @@
+## 1.62.13 (2024-02-27)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve issue with tsconfig file resolution ([0254e50a](https://github.com/storm-software/storm-ops/commit/0254e50a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.12 (2024-02-27)
 
 
