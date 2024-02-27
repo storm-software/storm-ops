@@ -11,15 +11,28 @@ export const getFileBanner = (name: string, commentStart = "//") => {
     padding += " ";
   }
 
+  let titleName = process.env.STORM_NAMESPACE ?? "";
+  if (titleName) {
+    if (titleName?.startsWith("@")) {
+      titleName = titleName.slice(1);
+    }
+
+    titleName = (titleName.charAt(0).toUpperCase() + titleName.slice(1))
+      .split("-")
+      .filter((word) => word && word.length > 0)
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
+
   return `
 
 ${commentStart} -------------------------------------------------------------------
 ${commentStart}
 ${commentStart}                         ${padding}Storm Software
-${commentStart}                 ⚡ ${process.env.STORM_NAMESPACE} - ${name}
+${commentStart}                 ⚡ ${titleName ? `${titleName} - ` : ""}${name}
 ${commentStart}
-${commentStart} This code was released as part of the ${process.env.STORM_NAMESPACE} project. ${
-    process.env.STORM_NAMESPACE
+${commentStart} This code was released as part of the ${titleName ? `${titleName} ` : ""}project. ${
+    titleName ? titleName : "This project"
   }
 ${commentStart} is maintained by Storm Software under the ${
     process.env.STORM_LICENSE ?? "Apache License 2.0"
