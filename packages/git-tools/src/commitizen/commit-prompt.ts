@@ -25,7 +25,7 @@ export const commitPrompt = async (state: CommitState) => {
   const answers = await prompt(questions);
   for (const key of Object.keys(state.answers)) {
     if (answers[key]) {
-      state.answers[key] = answers[key];
+      state.answers[key] = answers[key] as string;
     }
   }
 

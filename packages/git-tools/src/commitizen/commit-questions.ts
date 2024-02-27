@@ -45,11 +45,11 @@ export const createQuestion = (
   index: number | string
 ) => {
   const question = questions[name];
-  const selectOptionsExist = Array.isArray(question.enum) && question.enum.length > 0;
+  const selectOptionsExist = Array.isArray(question?.enum) && question.enum.length > 0;
 
   return {
-    message: `${question.description}:`,
-    suffix: question.body ? question.body : undefined,
+    message: `${question?.description}:`,
+    suffix: question?.body ? question.body : undefined,
     name,
     type: selectOptionsExist ? "list" : "input",
     prefix: `${typeof index === "string" ? index : index + 1}.`,

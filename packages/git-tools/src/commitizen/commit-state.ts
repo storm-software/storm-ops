@@ -72,7 +72,7 @@ export const createState = async (
   state.config.questions.type.enum = Object.keys(defaultCommitizenConfig.types).map(
     (key: string) => {
       let name = key;
-      let description = undefined;
+      let description: string | undefined = undefined;
 
       const type: CommitType | undefined =
         key in defaultConfig.types

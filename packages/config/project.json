@@ -23,9 +23,13 @@
         "metafile": true,
         "minify": true,
         "format": [
-          "cjs",
-          "esm"
+          "cjs"
         ],
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".js"
+          }
+        },
         "assets": [
           {
             "input": "./packages/config",

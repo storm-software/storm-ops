@@ -63,12 +63,12 @@ export default {
     chore: {
       description: "Other changes that don't modify src or test files",
       title: "Chores",
-      emoji: "⚙️"
+      emoji: "⚙️ "
     },
     revert: {
       description: "Reverts a previous commit",
       title: "Reverts",
-      emoji: "🗑️"
+      emoji: "🗑️  "
     }
   }
 };
