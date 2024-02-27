@@ -1,3 +1,15 @@
+## 1.62.10 (2024-02-27)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update all imports to `config-tools` in the package ([85202800](https://github.com/storm-software/storm-ops/commit/85202800))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.9 (2024-02-27)
 
 
