@@ -5,8 +5,10 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/rollup:rollup",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/workspace-tools",
         "tsConfig": "packages/workspace-tools/tsconfig.lib.json",
@@ -35,8 +37,19 @@
         "skipTypeCheck": true,
         "metafile": true,
         "minify": false,
-        "format": ["cjs"],
-        "external": ["nx", "@storm-software/config", "@storm-software/config-tools"],
+        "format": [
+          "cjs"
+        ],
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".js"
+          }
+        },
+        "external": [
+          "nx",
+          "@storm-software/config",
+          "@storm-software/config-tools"
+        ],
         "assets": [
           {
             "input": "./packages/workspace-tools",
@@ -93,8 +106,13 @@
     },
     "nx-release-publish": {
       "cache": false,
-      "inputs": ["default", "^production"],
-      "dependsOn": ["^build"],
+      "inputs": [
+        "default",
+        "^production"
+      ],
+      "dependsOn": [
+        "^build"
+      ],
       "executor": "@storm-software/workspace-tools:npm-publish",
       "options": {
         "packageRoot": "dist/{projectRoot}",
@@ -102,5 +120,8 @@
       }
     }
   },
-  "tags": ["type:util", "scope:tools"]
+  "tags": [
+    "type:util",
+    "scope:tools"
+  ]
 }
