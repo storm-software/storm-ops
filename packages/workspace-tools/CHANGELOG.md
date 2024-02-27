@@ -1,3 +1,15 @@
+## 1.62.6 (2024-02-27)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved issue with missing index.ts entry point ([8d1401ca](https://github.com/storm-software/storm-ops/commit/8d1401ca))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.5 (2024-02-27)
 
 
