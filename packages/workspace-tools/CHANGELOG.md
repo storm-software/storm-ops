@@ -1,3 +1,15 @@
+## 1.62.15 (2024-02-27)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Rollback changes to use tsconfig read package ([f55d604d](https://github.com/storm-software/storm-ops/commit/f55d604d))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.14 (2024-02-27)
 
 
