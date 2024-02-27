@@ -6,6 +6,12 @@
   "compilerOptions": {
     "target": "es2022",
     "module": "commonjs",
+    "types": [
+      "node",
+      "jest"
+    ],
+    "moduleResolution": "node",
+    "importsNotUsedAsValues": "remove",
     "sourceMap": true,
     "incremental": true,
     "noImplicitReturns": true,
@@ -25,9 +31,18 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "esModuleInterop": true,
-    "importsNotUsedAsValues": "remove"
+    "esModuleInterop": true
   },
-  "include": ["**/*.ts", "**/*.js", "**/*.tsx", "**/*.jsx", "**/*.d.ts", "**/*.json"],
-  "exclude": ["**/node_modules", "**/tmp"]
+  "include": [
+    "**/*.ts",
+    "**/*.js",
+    "**/*.tsx",
+    "**/*.jsx",
+    "**/*.d.ts",
+    "**/*.json"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/tmp"
+  ]
 }
