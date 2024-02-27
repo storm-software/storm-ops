@@ -1,3 +1,15 @@
+## 0.0.3 (2024-02-27)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Dynamically load tsup module and resolve `testing-tools` type issues ([c1d51975](https://github.com/storm-software/storm-ops/commit/c1d51975))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.0.2 (2024-02-27)
 
 
