@@ -8,16 +8,16 @@ import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/t
 import type { StormConfig } from "@storm-software/config";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import type { TsupContext } from "../../declarations";
-import { type Options, build as tsup, defineConfig } from "tsup";
 import { parseJsonConfigFileContent, readConfigFile, sys } from "typescript";
 import { defaultConfig, getConfig } from "../base/get-tsup-config";
 import type { TsupExecutorSchema } from "../executors/tsup/schema";
 import { removeExtension } from "./file-path-utils";
+import type { Options } from "tsup";
 
 export const applyDefaultOptions = (options: TsupExecutorSchema): TsupExecutorSchema => {
   options.entry ??= "{sourceRoot}/index.ts";
   options.outputPath ??= "dist/{projectRoot}";
-  options.tsConfig ??= "tsconfig.json";
+  options.tsConfig ??= "{projectRoot}/tsconfig.json";
   options.generatePackageJson ??= true;
   options.splitting ??= true;
   options.treeshake ??= true;
@@ -55,9 +55,10 @@ export const runTsupBuild = async (
   config: Partial<StormConfig>,
   options: TsupExecutorSchema
 ) => {
-  const { LogLevel, getLogLevel, writeInfo, writeWarning, findWorkspaceRoot } = await import(
+  const { writeInfo, writeWarning, findWorkspaceRoot } = await import(
     "@storm-software/config-tools"
   );
+  const { build: tsup, defineConfig } = await import("tsup");
 
   const workspaceRoot = config?.workspaceRoot ?? findWorkspaceRoot();
 
@@ -83,7 +84,6 @@ export const runTsupBuild = async (
 
   const getConfigOptions = {
     ...options,
-    main: context.main,
     entry: {
       [removeExtension(
         context.main
@@ -118,12 +118,14 @@ export const runTsupBuild = async (
     ),
     banner: options.banner
       ? {
-          js: `${options.banner}
+          js: `
+
+${options.banner}
 
 `,
           css: `/*
-${options.banner}\n
 
+${options.banner}
 
 */`
         }
@@ -143,11 +145,11 @@ ${options.banner}\n
 
     if (_isFunction(tsupConfig)) {
       const tsupOptions = await Promise.resolve(tsupConfig({}));
-      await build(tsupOptions, config as StormConfig);
+      await build(tsup, tsupOptions, config as StormConfig);
     } else {
-      await build(tsupConfig, config as StormConfig);
+      await build(tsup, tsupConfig, config as StormConfig);
     }
-  } else if (getLogLevel(config?.logLevel ?? "debug") >= LogLevel.WARN) {
+  } else {
     writeWarning(
       config,
       "The Build process did not run because no `getConfig` parameter was provided"
@@ -193,11 +195,15 @@ function getNormalizedTsConfig(
   return tsConfig;
 }
 
-const build = async (options: Options | Options[], config?: StormConfig) => {
+const build = async (
+  tsup: (opts: Options) => Promise<void>,
+  options: Options | Options[],
+  config?: StormConfig
+) => {
   const { writeDebug } = await import("@storm-software/config-tools");
 
   if (Array.isArray(options)) {
-    await Promise.all(options.map((buildOptions) => build(buildOptions, config)));
+    await Promise.all(options.map((buildOptions) => build(tsup, buildOptions, config)));
   } else {
     let tsupOptions = options;
     if (_isFunction(tsupOptions)) {

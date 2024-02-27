@@ -37,7 +37,6 @@
     "@nx/devkit": "18.0.4",
     "@nx/esbuild": "18.0.4",
     "@rollup/plugin-json": "6.1.0",
-    "@swc-node/register": "^1.8.0",
     "decky": "1.1.1",
     "esbuild-plugin-environment": "0.3.0",
     "esbuild-plugin-handlebars": "1.0.2",

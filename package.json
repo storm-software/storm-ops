@@ -72,7 +72,6 @@
     "@nx/jest": "18.0.4",
     "@nx/js": "18.0.4",
     "@nx/plugin": "18.0.4",
-    "@nx/rollup": "^18.0.5",
     "@nx/workspace": "18.0.4",
     "@swc-node/register": "^1.8.0",
     "@swc/cli": "0.3.2",

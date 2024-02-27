@@ -1,4 +1,3 @@
-import { join } from "node:path";
 import type { Config } from "jest";
 
 /**
@@ -17,13 +16,5 @@ import type { Config } from "jest";
  * @param displayName The name to display in the Jest output
  * @returns The Jest configuration
  */
-export const getJestConfig = (projectDir: string, isNode = true, displayName?: string): Config => ({
-  displayName: displayName ? displayName : projectDir.replaceAll("\\", "-").replaceAll("/", "-"),
-  preset: "@storm-software/testing-tools/jest/preset.js",
-  testEnvironment: isNode ? "node" : "jsdom",
-  transform: {
-    "^.+\\.[tj]s$": ["ts-jest", { tsconfig: "<rootDir>/tsconfig.spec.json" }]
-  },
-  moduleFileExtensions: ["ts", "js", "html"],
-  coverageDirectory: join("../../coverage", projectDir)
-});
+declare function getJestConfig(projectDir: string, isNode?: boolean, displayName?: string): Config;
+export { getJestConfig };

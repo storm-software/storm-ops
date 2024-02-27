@@ -42,7 +42,12 @@
             ".js": ".js"
           }
         },
-        "external": ["nx", "@storm-software/config", "@storm-software/config-tools"],
+        "external": [
+          "nx",
+          "@swc-node/register",
+          "@storm-software/config",
+          "@storm-software/config-tools"
+        ],
         "assets": [
           {
             "input": "./packages/workspace-tools",

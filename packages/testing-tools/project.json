@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/testing-tools",
         "main": "packages/testing-tools/src/index.ts",
@@ -20,34 +18,27 @@
         "minify": false,
         "skipTypeCheck": false,
         "thirdParty": true,
-        "format": [
-          "cjs",
-          "esm"
-        ],
-        "external": [
-          "@nx/jest",
-          "nx",
-          "jest"
-        ],
+        "format": ["cjs", "esm"],
+        "external": ["nx", "@nx/jest", "jest"],
         "assets": [
           {
             "input": "packages/testing-tools",
-            "glob": "README.md",
-            "output": "/"
-          },
-          {
-            "input": "packages/testing-tools",
-            "glob": "CHANGELOG.md",
-            "output": "/"
+            "glob": "*.md",
+            "output": "."
           },
           {
             "input": "",
             "glob": "LICENSE",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "packages/testing-tools/src",
             "glob": "jest/**/*.*",
+            "output": "."
+          },
+          {
+            "input": "./packages/testing-tools",
+            "glob": "declarations.d.ts",
             "output": "."
           }
         ]
@@ -57,13 +48,8 @@
     "test": {},
     "nx-release-publish": {
       "cache": false,
-      "inputs": [
-        "default",
-        "^production"
-      ],
-      "dependsOn": [
-        "^build"
-      ],
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^build"],
       "executor": "@storm-software/workspace-tools:npm-publish",
       "options": {
         "packageRoot": "dist/{projectRoot}",
@@ -71,8 +57,5 @@
       }
     }
   },
-  "tags": [
-    "type:util",
-    "scope:tools"
-  ]
+  "tags": ["type:util", "scope:tools"]
 }

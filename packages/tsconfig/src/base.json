@@ -28,16 +28,6 @@
     "esModuleInterop": true,
     "importsNotUsedAsValues": "remove"
   },
-  "include": [
-    "**/*.ts",
-    "**/*.js",
-    "**/*.tsx",
-    "**/*.jsx",
-    "**/*.d.ts",
-    "**/*.json"
-  ],
-  "exclude": [
-    "**/node_modules",
-    "**/tmp"
-  ]
+  "include": ["**/*.ts", "**/*.js", "**/*.tsx", "**/*.jsx", "**/*.d.ts", "**/*.json"],
+  "exclude": ["**/node_modules", "**/tmp"]
 }

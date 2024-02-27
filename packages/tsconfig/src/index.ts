@@ -1,1 +1,1 @@
-export = "./root.json";
+export = "./base.json";

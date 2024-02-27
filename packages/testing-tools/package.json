@@ -30,7 +30,7 @@
   },
   "type": "commonjs",
   "module": "./index.js",
-  "types": "./index.d.ts",
+  "types": "./declarations.d.ts",
   "devDependencies": {
     "@nx/jest": "18.0.4",
     "jest": "29.7.0",
