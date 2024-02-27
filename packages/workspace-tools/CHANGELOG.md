@@ -1,3 +1,15 @@
+## 1.62.14 (2024-02-27)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Relocation config parser code to build function ([fa27dea4](https://github.com/storm-software/storm-ops/commit/fa27dea4))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.13 (2024-02-27)
 
 
