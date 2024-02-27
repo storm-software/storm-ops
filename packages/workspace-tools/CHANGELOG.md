@@ -1,3 +1,15 @@
+## 1.62.4 (2024-02-27)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update bundler to use rollup ([29f70c3e](https://github.com/storm-software/storm-ops/commit/29f70c3e))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.3 (2024-02-26)
 
 
