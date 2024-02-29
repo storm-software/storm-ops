@@ -1,3 +1,15 @@
+## 1.62.16 (2024-02-29)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Dynamically import typia ([d7a966ff](https://github.com/storm-software/storm-ops/commit/d7a966ff))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.15 (2024-02-27)
 
 
