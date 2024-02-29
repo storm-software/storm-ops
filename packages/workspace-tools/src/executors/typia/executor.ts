@@ -1,7 +1,6 @@
 import type { ExecutorContext } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import { removeSync } from "fs-extra";
-import { TypiaProgrammer } from "typia/lib/programmers/TypiaProgrammer";
 import { withRunExecutor } from "../../base/base-executor";
 import type { TypiaExecutorSchema } from "./schema";
 
@@ -17,6 +16,7 @@ export async function typiaExecutorFn(
     removeSync(options.outputPath);
   }
 
+  const { TypiaProgrammer } = await import("typia/lib/programmers/TypiaProgrammer");
   await TypiaProgrammer.build({
     input: options.entryPath,
     output: options.outputPath,
