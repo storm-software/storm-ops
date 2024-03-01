@@ -179,7 +179,7 @@ function getNormalizedTsConfig(
         outDir: outputPath,
         noEmit: false,
         esModuleInterop: true,
-        downlevelIteration: true,
+        incremental: false,
         noUnusedLocals: false,
         emitDeclarationOnly: true,
         declaration: true,
