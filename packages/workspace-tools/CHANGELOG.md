@@ -1,3 +1,15 @@
+## 1.62.18 (2024-03-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Use ESBuild to compile and bundle package ([1a9c77db](https://github.com/storm-software/storm-ops/commit/1a9c77db))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.17 (2024-03-01)
 
 
