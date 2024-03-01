@@ -1,3 +1,15 @@
+## 1.62.29 (2024-03-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Dynamically import `bundle-require` in tsup build ([4403d64f](https://github.com/storm-software/storm-ops/commit/4403d64f))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.28 (2024-03-01)
 
 
