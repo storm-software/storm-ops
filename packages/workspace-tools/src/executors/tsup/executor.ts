@@ -501,6 +501,7 @@ ${externalDependencies
     //   )
     // );
 
+    options.verbose = options.verbose || getLogLevel(config?.logLevel) >= LogLevel.DEBUG;
     await Promise.allSettled(
       files.map(async (file) =>
         writeFile(

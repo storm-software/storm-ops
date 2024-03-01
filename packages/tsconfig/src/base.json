@@ -13,7 +13,7 @@
       "node",
       "jest"
     ],
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importsNotUsedAsValues": "remove",
     "sourceMap": true,
     "incremental": true,

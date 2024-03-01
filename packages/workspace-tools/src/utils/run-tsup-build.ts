@@ -1,4 +1,4 @@
-import { dirname, sep } from "node:path";
+import { dirname, sep, join } from "node:path";
 import { esbuildDecorators } from "@anatine/esbuild-decorators";
 import { joinPathFragments } from "@nx/devkit";
 import { getCustomTrasformersFactory } from "@nx/js/src/executors/tsc/lib/get-custom-transformers-factory";
@@ -81,14 +81,6 @@ export const runTsupBuild = async (
   // #endregion Add default plugins
 
   // #region Run the build process
-
-  // let tsconfig = await readTSConfig(options.tsConfig);
-  // if (!tsconfig) {
-  //   tsconfig = await readTSConfig(context.projectRoot);
-  //   if (!tsconfig) {
-  //     throw new Error("No tsconfig file found");
-  //   }
-  // }
 
   const getConfigOptions = {
     ...options,
@@ -176,26 +168,16 @@ function getNormalizedTsConfig(
   options: TypeScriptCompilationOptions
 ) {
   const config = readConfigFile(options.tsConfig, sys.readFile).config;
-  const tsConfig = parseJsonConfigFileContent(
-    {
-      ...config,
-      compilerOptions: {
-        ...config.compilerOptions,
-        outDir: outputPath,
-        noEmit: false,
-        esModuleInterop: true,
-        incremental: false,
-        noUnusedLocals: false,
-        emitDeclarationOnly: true,
-        declaration: true,
-        declarationMap: true,
-        declarationDir: joinPathFragments(workspaceRoot, "tmp", ".tsup", "declaration")
-      },
-      include: ["**/*"]
-    },
-    sys,
-    dirname(options.tsConfig)
-  );
+  const tsConfig = parseJsonConfigFileContent(config, sys, dirname(options.tsConfig), {
+    outDir: outputPath,
+    noEmit: false,
+    esModuleInterop: true,
+    noUnusedLocals: false,
+    emitDeclarationOnly: true,
+    declaration: true,
+    declarationMap: true,
+    declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
+  });
 
   tsConfig.options.pathsBasePath = workspaceRoot;
   if (
