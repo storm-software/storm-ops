@@ -1,3 +1,15 @@
+## 0.0.10 (2024-03-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Updates to compiler options for dts build ([bcee387e](https://github.com/storm-software/storm-ops/commit/bcee387e))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.0.9 (2024-03-01)
 
 
