@@ -14,7 +14,6 @@ import type { TsupExecutorSchema } from "../executors/tsup/schema";
 import { findFileName, removeExtension } from "./file-path-utils";
 // import { type TSConfig, readTSConfig } from "pkg-types";
 import { type Options, build as tsup, defineConfig } from "tsup";
-import { loadTsConfig } from "bundle-require";
 
 export const applyDefaultOptions = (options: TsupExecutorSchema): TsupExecutorSchema => {
   options.entry ??= "{sourceRoot}/index.ts";
@@ -104,7 +103,7 @@ export const runTsupBuild = async (
           return ret;
         }, {})
     },
-    dtsTsConfig: getNormalizedTsConfig(
+    dtsTsConfig: await getNormalizedTsConfig(
       workspaceRoot,
       options.outputPath,
       createTypeScriptCompilationOptions(
@@ -163,12 +162,13 @@ ${options.banner}
   }
 };
 
-function getNormalizedTsConfig(
+async function getNormalizedTsConfig(
   workspaceRoot: string,
   outputPath: string,
   options: TypeScriptCompilationOptions
 ) {
   // const rawTsconfig = readConfigFile(options.tsConfig, sys.readFile).config;
+  const { loadTsConfig } = await import("bundle-require");
 
   let rawTsconfig: { data: { compilerOptions: any } } | null;
   try {
