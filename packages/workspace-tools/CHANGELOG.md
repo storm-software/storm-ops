@@ -1,3 +1,15 @@
+## 1.62.19 (2024-03-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added back additional entry points ([790e9029](https://github.com/storm-software/storm-ops/commit/790e9029))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.18 (2024-03-01)
 
 
