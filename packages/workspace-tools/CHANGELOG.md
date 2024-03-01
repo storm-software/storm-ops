@@ -1,3 +1,15 @@
+## 1.62.30 (2024-03-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update tsup build to use `readConfigFile` function for tsconfig loader ([66186de6](https://github.com/storm-software/storm-ops/commit/66186de6))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.29 (2024-03-01)
 
 
