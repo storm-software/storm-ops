@@ -1,3 +1,15 @@
+## 1.62.27 (2024-03-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update method of parsing the tsconfig json values for dts build ([4bb4d0fe](https://github.com/storm-software/storm-ops/commit/4bb4d0fe))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.26 (2024-03-01)
 
 
