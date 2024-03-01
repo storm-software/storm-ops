@@ -73,7 +73,7 @@ export const withRunExecutor =
         writeTrace(
           config,
           `Loaded Storm config into env: \n${Object.keys(process.env)
-            // .filter((key) => key.startsWith("STORM_"))
+            .filter((key) => key.startsWith("STORM_"))
             .map(
               (key) =>
                 ` - ${key}=${
