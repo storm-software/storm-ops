@@ -38,6 +38,7 @@
         "skipTypeCheck": false,
         "metafile": true,
         "minify": false,
+        "generatePackageJson": true,
         "format": [
           "cjs"
         ],
@@ -48,61 +49,61 @@
         },
         "external": [
           "nx",
+          "esbuild",
           "@swc-node/register",
-          "@storm-software/config",
-          "@storm-software/config-tools"
+          "@storm-software/*"
         ],
         "assets": [
           {
-            "input": "./packages/workspace-tool",
+            "input": "packages/workspace-tools",
             "glob": "**/files/**",
             "output": "/"
           },
           {
-            "input": "./packages/workspace-tool",
+            "input": "packages/workspace-tools",
             "glob": "**/files/**/.gitkeep",
             "output": "/"
           },
           {
-            "input": "./packages/workspace-tool",
+            "input": "packages/workspace-tools",
             "glob": "**/*.json",
             "ignore": [
               "**/tsconfig*.json",
               "project.json",
               ".eslintrc.json"
             ],
-            "output": "/"
+            "output": "."
           },
           {
-            "input": "./packages/workspace-tool",
+            "input": "packages/workspace-tools",
             "glob": "**/*.js",
             "ignore": [
               "**/jest.config.js"
             ],
-            "output": "/"
+            "output": "."
           },
           {
-            "input": "./packages/workspace-tool",
+            "input": "packages/workspace-tools",
             "glob": "**/*.d.ts",
-            "output": "/"
+            "output": "."
           },
           {
-            "input": "./packages/workspace-tools",
+            "input": "packages/workspace-tools",
             "glob": "*.md",
-            "output": "/"
+            "output": "."
           },
           {
             "input": "",
             "glob": "LICENSE",
-            "output": "/"
+            "output": "."
           },
           {
-            "input": "./packages/workspace-tools/config",
+            "input": "packages/workspace-tools/config",
             "glob": "**/*.*",
             "output": "./config"
           },
           {
-            "input": "./packages/workspace-tools/assets",
+            "input": "packages/workspace-tools/assets",
             "glob": "**/*.*",
             "output": "./assets"
           }
