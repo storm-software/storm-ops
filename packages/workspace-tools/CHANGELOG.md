@@ -1,3 +1,15 @@
+## 1.62.25 (2024-03-01)
+
+
+### 🩹 Fixes
+
+- **tsconfig:** Added `lib` option to base tsconfig file ([7e7a848c](https://github.com/storm-software/storm-ops/commit/7e7a848c))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.24 (2024-03-01)
 
 
