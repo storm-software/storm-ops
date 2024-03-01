@@ -170,7 +170,15 @@ function getNormalizedTsConfig(
 ) {
   // const rawTsconfig = readConfigFile(options.tsConfig, sys.readFile).config;
 
-  const rawTsconfig = loadTsConfig(dirname(options.tsConfig), findFileName(options.tsConfig));
+  let rawTsconfig: { data: { compilerOptions: any } } | null;
+  try {
+    rawTsconfig = loadTsConfig({
+      filepath: options.tsConfig
+    });
+  } catch (_) {
+    rawTsconfig = null;
+  }
+
   if (!rawTsconfig) {
     throw new Error(
       `Unable to find ${findFileName(options.tsConfig) || "tsconfig.json"} in ${dirname(
@@ -195,10 +203,9 @@ function getNormalizedTsConfig(
       ...rawTsconfig.data,
       compilerOptions: {
         ...rawTsconfig.data?.compilerOptions,
-        tsBuildInfoFile: rawTsconfig.compilerOptions?.incremental
+        tsBuildInfoFile: rawTsconfig.data?.compilerOptions?.incremental
           ? joinPathFragments(outputPath, "tsconfig.tsbuildinfo")
           : undefined,
-
         outDir: outputPath,
         noEmit: false,
         emitDeclarationOnly: true,
