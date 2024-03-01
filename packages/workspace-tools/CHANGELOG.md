@@ -1,3 +1,15 @@
+## 1.62.20 (2024-03-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved issue with missing asset files ([7be5832f](https://github.com/storm-software/storm-ops/commit/7be5832f))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.19 (2024-03-01)
 
 
