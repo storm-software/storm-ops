@@ -1,3 +1,15 @@
+## 1.57.7 (2024-03-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Remove the storm env filter ([48259eea](https://github.com/storm-software/storm-ops/commit/48259eea))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.57.6 (2024-02-27)
 
 
