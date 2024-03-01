@@ -104,8 +104,12 @@ export const runTsupBuild = async (
     },
     env: {
       __STORM_CONFIG: JSON.stringify(stormEnv),
-      ...process.env,
-      ...options.env
+      ...Object.keys(options.env ?? {})
+        .filter((key) => !key.includes("(") && !key.includes(")"))
+        .reduce((ret, key) => {
+          ret[key] = options.env?.[key];
+          return ret;
+        }, {})
     },
     dtsTsConfig: getNormalizedTsConfig(
       workspaceRoot,
