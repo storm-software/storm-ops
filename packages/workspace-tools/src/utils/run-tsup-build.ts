@@ -8,7 +8,7 @@ import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/t
 import type { StormConfig } from "@storm-software/config";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import type { TsupContext } from "../../declarations";
-import { parseJsonConfigFileContent, sys } from "typescript";
+import { parseJsonConfigFileContent, sys, readConfigFile } from "typescript";
 import { defaultConfig, getConfig } from "../base/get-tsup-config";
 import type { TsupExecutorSchema } from "../executors/tsup/schema";
 import { findFileName, removeExtension } from "./file-path-utils";
@@ -103,7 +103,7 @@ export const runTsupBuild = async (
           return ret;
         }, {})
     },
-    dtsTsConfig: await getNormalizedTsConfig(
+    dtsTsConfig: getNormalizedTsConfig(
       workspaceRoot,
       options.outputPath,
       createTypeScriptCompilationOptions(
@@ -162,28 +162,17 @@ ${options.banner}
   }
 };
 
-async function getNormalizedTsConfig(
+function getNormalizedTsConfig(
   workspaceRoot: string,
   outputPath: string,
   options: TypeScriptCompilationOptions
 ) {
-  // const rawTsconfig = readConfigFile(options.tsConfig, sys.readFile).config;
-  const { loadTsConfig } = await import("bundle-require");
-
-  let rawTsconfig: { data: { compilerOptions: any } } | null;
-  try {
-    rawTsconfig = loadTsConfig({
-      filepath: options.tsConfig
-    });
-  } catch (_) {
-    rawTsconfig = null;
-  }
-
-  if (!rawTsconfig) {
+  const rawTsconfig = readConfigFile(options.tsConfig, sys.readFile);
+  if (!rawTsconfig?.config || rawTsconfig?.error) {
     throw new Error(
       `Unable to find ${findFileName(options.tsConfig) || "tsconfig.json"} in ${dirname(
         options.tsConfig
-      )}`
+      )}${rawTsconfig?.error ? ` \nError: ${rawTsconfig.error.messageText}` : ""}`
     );
   }
 
@@ -200,10 +189,10 @@ async function getNormalizedTsConfig(
 
   const parsedTsconfig = parseJsonConfigFileContent(
     {
-      ...rawTsconfig.data,
+      ...rawTsconfig.config,
       compilerOptions: {
-        ...rawTsconfig.data?.compilerOptions,
-        tsBuildInfoFile: rawTsconfig.data?.compilerOptions?.incremental
+        ...rawTsconfig.config?.compilerOptions,
+        tsBuildInfoFile: rawTsconfig.config?.compilerOptions?.incremental
           ? joinPathFragments(outputPath, "tsconfig.tsbuildinfo")
           : undefined,
         outDir: outputPath,
