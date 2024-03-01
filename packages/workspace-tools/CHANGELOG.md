@@ -1,3 +1,15 @@
+## 1.62.24 (2024-03-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Ensure invalid env are not provided to build ([e6921ea7](https://github.com/storm-software/storm-ops/commit/e6921ea7))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.23 (2024-03-01)
 
 
