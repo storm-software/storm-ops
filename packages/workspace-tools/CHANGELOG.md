@@ -1,3 +1,15 @@
+## 1.62.28 (2024-03-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Updates to handle errors with tsconfig loading ([0ff72b22](https://github.com/storm-software/storm-ops/commit/0ff72b22))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.27 (2024-03-01)
 
 
