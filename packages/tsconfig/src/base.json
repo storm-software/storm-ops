@@ -44,5 +44,8 @@
   "exclude": [
     "**/node_modules",
     "**/tmp"
-  ]
+  ],
+  "typeAcquisition": {
+    "enable": true
+  }
 }
