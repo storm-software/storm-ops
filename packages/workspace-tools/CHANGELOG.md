@@ -1,3 +1,15 @@
+## 1.62.31 (2024-03-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Enhance collecting compiler options and logging ([a1c4d41f](https://github.com/storm-software/storm-ops/commit/a1c4d41f))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.30 (2024-03-01)
 
 
