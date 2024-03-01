@@ -1,6 +1,5 @@
 import { dirname, sep, join } from "node:path";
 import { esbuildDecorators } from "@anatine/esbuild-decorators";
-import { joinPathFragments } from "@nx/devkit";
 import { getCustomTrasformersFactory } from "@nx/js/src/executors/tsc/lib/get-custom-transformers-factory";
 import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options";
 import type { NormalizedExecutorOptions } from "@nx/js/src/utils/schema";
@@ -56,7 +55,7 @@ export const runTsupBuild = async (
   config: Partial<StormConfig>,
   options: TsupExecutorSchema
 ) => {
-  const { writeInfo, writeWarning, findWorkspaceRoot } = await import(
+  const { writeInfo, writeTrace, writeWarning, findWorkspaceRoot } = await import(
     "@storm-software/config-tools"
   );
 
@@ -77,6 +76,45 @@ export const runTsupBuild = async (
     })
   );
   options.plugins?.push(environmentPlugin(stormEnv));
+
+  // #endregion Add default plugins
+
+  // #region Run the build process
+
+  const dtsTsConfig = getNormalizedTsConfig(
+    workspaceRoot,
+    options.outputPath,
+    createTypeScriptCompilationOptions(
+      normalizeOptions(
+        {
+          ...options,
+          watch: false,
+          main: context.main,
+          transformers: []
+        },
+        workspaceRoot,
+        context.sourceRoot,
+        workspaceRoot
+      ),
+      context.projectName
+    )
+  );
+
+  writeTrace(
+    config,
+    `⚙️  TSC (Type Declarations) Build options:
+${Object.keys(dtsTsConfig.options)
+  .map(
+    (key) =>
+      `${key}: ${
+        !dtsTsConfig.options[key] || _isPrimitive(dtsTsConfig.options[key])
+          ? dtsTsConfig.options[key]
+          : JSON.stringify(dtsTsConfig.options[key])
+      }`
+  )
+  .join("\n")}
+`
+  );
 
   // #endregion Add default plugins
 
@@ -103,24 +141,7 @@ export const runTsupBuild = async (
           return ret;
         }, {})
     },
-    dtsTsConfig: getNormalizedTsConfig(
-      workspaceRoot,
-      options.outputPath,
-      createTypeScriptCompilationOptions(
-        normalizeOptions(
-          {
-            ...options,
-            watch: false,
-            main: context.main,
-            transformers: []
-          },
-          workspaceRoot,
-          context.sourceRoot,
-          workspaceRoot
-        ),
-        context.projectName
-      )
-    ),
+    dtsTsConfig,
     banner: options.banner
       ? {
           js: `
@@ -192,9 +213,8 @@ function getNormalizedTsConfig(
       ...rawTsconfig.config,
       compilerOptions: {
         ...rawTsconfig.config?.compilerOptions,
-        tsBuildInfoFile: rawTsconfig.config?.compilerOptions?.incremental
-          ? joinPathFragments(outputPath, "tsconfig.tsbuildinfo")
-          : undefined,
+        rootDir: workspaceRoot,
+        baseUrl: workspaceRoot,
         outDir: outputPath,
         noEmit: false,
         emitDeclarationOnly: true,
@@ -208,6 +228,25 @@ function getNormalizedTsConfig(
   );
 
   parsedTsconfig.options.pathsBasePath = workspaceRoot;
+  if (parsedTsconfig.options.paths) {
+    parsedTsconfig.options.paths = Object.keys(parsedTsconfig.options.paths).reduce(
+      (ret: Record<string, string[]>, key: string) => {
+        if (parsedTsconfig.options.paths?.[key]) {
+          ret[key] = parsedTsconfig.options.paths[key]?.map((path) =>
+            join(workspaceRoot, path)
+          ) as string[];
+        }
+
+        return ret;
+      },
+      {} as Record<string, string[]>
+    );
+  }
+
+  if (parsedTsconfig.options.incremental) {
+    parsedTsconfig.options.tsBuildInfoFile = join(outputPath, "tsconfig.tsbuildinfo");
+  }
+
   return parsedTsconfig;
 }
 
