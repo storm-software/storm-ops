@@ -8,12 +8,13 @@ import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/t
 import type { StormConfig } from "@storm-software/config";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import type { TsupContext } from "../../declarations";
-import { parseJsonConfigFileContent, sys, readConfigFile } from "typescript";
+import { parseJsonConfigFileContent, sys } from "typescript";
 import { defaultConfig, getConfig } from "../base/get-tsup-config";
 import type { TsupExecutorSchema } from "../executors/tsup/schema";
-import { removeExtension } from "./file-path-utils";
+import { findFileName, removeExtension } from "./file-path-utils";
 // import { type TSConfig, readTSConfig } from "pkg-types";
 import { type Options, build as tsup, defineConfig } from "tsup";
+import { loadTsConfig } from "bundle-require";
 
 export const applyDefaultOptions = (options: TsupExecutorSchema): TsupExecutorSchema => {
   options.entry ??= "{sourceRoot}/index.ts";
@@ -167,27 +168,51 @@ function getNormalizedTsConfig(
   outputPath: string,
   options: TypeScriptCompilationOptions
 ) {
-  const config = readConfigFile(options.tsConfig, sys.readFile).config;
-  const tsConfig = parseJsonConfigFileContent(config, sys, dirname(options.tsConfig), {
-    outDir: outputPath,
-    noEmit: false,
-    esModuleInterop: true,
-    noUnusedLocals: false,
-    emitDeclarationOnly: true,
-    declaration: true,
-    declarationMap: true,
-    declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
-  });
+  // const rawTsconfig = readConfigFile(options.tsConfig, sys.readFile).config;
 
-  tsConfig.options.pathsBasePath = workspaceRoot;
-  if (
-    (config.compilerOptions?.incremental || tsConfig.options.incremental) &&
-    !tsConfig.options.tsBuildInfoFile
-  ) {
-    tsConfig.options.tsBuildInfoFile = joinPathFragments(outputPath, "tsconfig.tsbuildinfo");
+  const rawTsconfig = loadTsConfig(dirname(options.tsConfig), findFileName(options.tsConfig));
+  if (!rawTsconfig) {
+    throw new Error(
+      `Unable to find ${findFileName(options.tsConfig) || "tsconfig.json"} in ${dirname(
+        options.tsConfig
+      )}`
+    );
   }
 
-  return tsConfig;
+  // const tsConfig = parseJsonConfigFileContent(config, sys, dirname(options.tsConfig), {
+  //   outDir: outputPath,
+  //   noEmit: false,
+  //   esModuleInterop: true,
+  //   noUnusedLocals: false,
+  //   emitDeclarationOnly: true,
+  //   declaration: true,
+  //   declarationMap: true,
+  //   declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
+  // });
+
+  const parsedTsconfig = parseJsonConfigFileContent(
+    {
+      ...rawTsconfig.data,
+      compilerOptions: {
+        ...rawTsconfig.data?.compilerOptions,
+        tsBuildInfoFile: rawTsconfig.compilerOptions?.incremental
+          ? joinPathFragments(outputPath, "tsconfig.tsbuildinfo")
+          : undefined,
+
+        outDir: outputPath,
+        noEmit: false,
+        emitDeclarationOnly: true,
+        declaration: true,
+        declarationMap: true,
+        declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
+      }
+    },
+    sys,
+    dirname(options.tsConfig)
+  );
+
+  parsedTsconfig.options.pathsBasePath = workspaceRoot;
+  return parsedTsconfig;
 }
 
 const build = async (options: Options | Options[], config?: StormConfig) => {
