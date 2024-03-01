@@ -1,3 +1,15 @@
+## 1.62.17 (2024-03-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Use tsc to build package ([05780f07](https://github.com/storm-software/storm-ops/commit/05780f07))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.16 (2024-02-29)
 
 
