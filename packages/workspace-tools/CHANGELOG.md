@@ -1,3 +1,15 @@
+## 1.62.23 (2024-03-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update the env values passed into tsup builder ([43b65257](https://github.com/storm-software/storm-ops/commit/43b65257))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.22 (2024-03-01)
 
 
