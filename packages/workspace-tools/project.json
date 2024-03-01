@@ -5,43 +5,22 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/workspace-tools",
         "tsConfig": "packages/workspace-tools/tsconfig.lib.json",
         "project": "packages/workspace-tools/package.json",
         "main": "packages/workspace-tools/index.ts",
-        "additionalEntryPoints": [
-          "packages/workspace-tools/src/executors/tsup/executor.ts",
-          "packages/workspace-tools/src/executors/tsup-neutral/executor.ts",
-          "packages/workspace-tools/src/executors/tsup-node/executor.ts",
-          "packages/workspace-tools/src/executors/tsup-browser/executor.ts",
-          "packages/workspace-tools/src/executors/typia/executor.ts",
-          "packages/workspace-tools/src/executors/npm-publish/executor.ts",
-          "packages/workspace-tools/src/generators/init/init.ts",
-          "packages/workspace-tools/src/generators/node-library/generator.ts",
-          "packages/workspace-tools/src/generators/neutral-library/generator.ts",
-          "packages/workspace-tools/src/generators/browser-library/generator.ts",
-          "packages/workspace-tools/src/generators/release-version/generator.ts",
-          "packages/workspace-tools/src/generators/preset/generator.ts",
-          "packages/workspace-tools/src/generators/config-schema/generator.ts",
-          "packages/workspace-tools/src/utils/index.ts",
-          "packages/workspace-tools/src/base/index.ts"
-        ],
         "platform": "node",
         "deleteOutputPath": true,
         "bundle": true,
         "thirdParty": true,
-        "skipTypeCheck": true,
+        "skipTypeCheck": false,
         "metafile": true,
         "minify": false,
-        "format": ["cjs"],
-        "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
-          }
-        },
         "external": [
           "nx",
           "@swc-node/register",
@@ -49,6 +28,39 @@
           "@storm-software/config-tools"
         ],
         "assets": [
+          {
+            "input": "./packages/workspace-tool",
+            "glob": "**/files/**",
+            "output": "/"
+          },
+          {
+            "input": "./packages/workspace-tool",
+            "glob": "**/files/**/.gitkeep",
+            "output": "/"
+          },
+          {
+            "input": "./packages/workspace-tool",
+            "glob": "**/*.json",
+            "ignore": [
+              "**/tsconfig*.json",
+              "project.json",
+              ".eslintrc.json"
+            ],
+            "output": "/"
+          },
+          {
+            "input": "./packages/workspace-tool",
+            "glob": "**/*.js",
+            "ignore": [
+              "**/jest.config.js"
+            ],
+            "output": "/"
+          },
+          {
+            "input": "./packages/workspace-tool",
+            "glob": "**/*.d.ts",
+            "output": "/"
+          },
           {
             "input": "./packages/workspace-tools",
             "glob": "*.md",
@@ -60,39 +72,9 @@
             "output": "/"
           },
           {
-            "input": "./packages/workspace-tools/src",
-            "glob": "**/!(*.ts)",
-            "output": "./src"
-          },
-          {
-            "input": "./packages/workspace-tools",
-            "glob": "**/*.d.ts",
-            "output": "."
-          },
-          {
-            "input": "./packages/workspace-tools",
-            "glob": "generators.json",
-            "output": "."
-          },
-          {
-            "input": "./packages/workspace-tools",
-            "glob": "executors.json",
-            "output": "."
-          },
-          {
             "input": "./packages/workspace-tools/config",
             "glob": "**/*.*",
             "output": "./config"
-          },
-          {
-            "input": "./packages/workspace-tools",
-            "glob": "**/schema.json",
-            "output": "."
-          },
-          {
-            "input": "./packages/workspace-tools",
-            "glob": "**/files/**/{*.*,*}",
-            "output": "."
           },
           {
             "input": "./packages/workspace-tools/assets",
@@ -104,8 +86,13 @@
     },
     "nx-release-publish": {
       "cache": false,
-      "inputs": ["default", "^production"],
-      "dependsOn": ["^build"],
+      "inputs": [
+        "default",
+        "^production"
+      ],
+      "dependsOn": [
+        "^build"
+      ],
       "executor": "@storm-software/workspace-tools:npm-publish",
       "options": {
         "packageRoot": "dist/{projectRoot}",
@@ -113,5 +100,8 @@
       }
     }
   },
-  "tags": ["type:util", "scope:tools"]
+  "tags": [
+    "type:util",
+    "scope:tools"
+  ]
 }

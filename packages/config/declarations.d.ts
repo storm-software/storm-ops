@@ -18,3 +18,5 @@ export type { StormConfig };
 
 declare type StormConfigInput = z.input<typeof StormConfigSchema>;
 export type { StormConfigInput };
+
+export { StormConfigSchema } from "./src/schema";

@@ -20,6 +20,9 @@ overrides:
   '@storm-software/config-tools': workspace:*
 
 patchedDependencies:
+  '@microsoft/api-extractor@7.40.1':
+    hash: 4xavxhlm5ajgpjtk4cppjtijly
+    path: patches/@microsoft__api-extractor@7.40.1.patch
   cosmiconfig@9.0.0:
     hash: kvwqsvntptc5dck76ulq454vwi
     path: patches/cosmiconfig@9.0.0.patch
@@ -534,7 +537,7 @@ importers:
         version: 0.2.19(esbuild@0.19.12)
       '@microsoft/api-extractor':
         specifier: 7.40.1
-        version: 7.40.1(@types/node@20.11.20)
+        version: 7.40.1(patch_hash=4xavxhlm5ajgpjtk4cppjtijly)(@types/node@20.11.20)
       '@nx/devkit':
         specifier: 18.0.4
         version: 18.0.4(nx@18.0.4)
@@ -2985,7 +2988,7 @@ packages:
       - '@types/node'
     dev: false
 
-  /@microsoft/api-extractor@7.40.1(@types/node@20.11.20):
+  /@microsoft/api-extractor@7.40.1(patch_hash=4xavxhlm5ajgpjtk4cppjtijly)(@types/node@20.11.20):
     resolution: {integrity: sha512-xHn2Zkh6s5JIjP94SG6VtIlIeRJcASgfZpDKV+bgoddMt1X4ujSZFOz7uEGNYNO7mEtdVOvpNKBpC4CDytD8KQ==}
     hasBin: true
     dependencies:
@@ -3004,6 +3007,7 @@ packages:
     transitivePeerDependencies:
       - '@types/node'
     dev: false
+    patched: true
 
   /@microsoft/tsdoc-config@0.16.2:
     resolution: {integrity: sha512-OGiIzzoBLgWWR0UdRJX98oYO+XKGf7tiK4Zk6tQ/E4IJqGCe7dvkTvgDZV5cFJUzLGDOjeAXrnZoA6QkVySuxw==}
@@ -13327,7 +13331,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@microsoft/api-extractor': 7.40.1(@types/node@20.11.20)
+      '@microsoft/api-extractor': 7.40.1(patch_hash=4xavxhlm5ajgpjtk4cppjtijly)(@types/node@20.11.20)
       '@swc/core': 1.4.2(@swc/helpers@0.5.3)
       bundle-require: 4.0.2(esbuild@0.19.12)
       cac: 6.7.14
