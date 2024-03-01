@@ -17,7 +17,7 @@ export const browserConfig = ({
   external,
   banner = {},
   platform = "browser",
-  verbose = false,
+  verbose = true,
   metafile = true,
   skipNativeModulesPlugin = false,
   define,

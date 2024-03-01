@@ -17,7 +17,7 @@ export function nodeConfig({
   external,
   banner = {},
   platform = "node",
-  verbose = false,
+  verbose = true,
   apiReport = true,
   docModel = true,
   tsdocMetadata = true,

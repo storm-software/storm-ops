@@ -4,8 +4,11 @@
   "extends": "@tsconfig/recommended/tsconfig.json",
   "compileOnSave": false,
   "compilerOptions": {
-    "target": "es2022",
-    "module": "commonjs",
+    "target": "esnext",
+    "module": "esnext",
+    "lib": [
+      "esnext"
+    ],
     "types": [
       "node",
       "jest"
@@ -42,8 +45,7 @@
     "**/*.json"
   ],
   "exclude": [
-    "**/node_modules",
-    "**/tmp"
+    "**/node_modules"
   ],
   "typeAcquisition": {
     "enable": true

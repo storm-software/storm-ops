@@ -17,7 +17,7 @@ export const neutralConfig = ({
   external,
   banner = {},
   platform = "neutral",
-  verbose = false,
+  verbose = true,
   metafile = true,
   skipNativeModulesPlugin = false,
   define,
