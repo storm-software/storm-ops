@@ -65,7 +65,7 @@ export const runTsupBuild = async (
   // #region Add default plugins
 
   const stormEnv = Object.keys(options.env ?? {})
-    .filter((key) => key.startsWith("STORM_"))
+    // .filter((key) => key.startsWith("STORM_"))
     .reduce((ret, key) => {
       ret[key] = options.env?.[key];
       return ret;
