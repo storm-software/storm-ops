@@ -1,3 +1,15 @@
+## 0.0.7 (2024-03-01)
+
+
+### 🩹 Fixes
+
+- **tsconfig:** Added `typeAcquisition` to compiler options ([2bd60053](https://github.com/storm-software/storm-ops/commit/2bd60053))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.0.6 (2024-02-27)
 
 
