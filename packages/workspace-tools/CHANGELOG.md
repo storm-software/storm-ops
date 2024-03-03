@@ -1,3 +1,15 @@
+## 1.62.39 (2024-03-03)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update import method for typia executor ([8ecc276f](https://github.com/storm-software/storm-ops/commit/8ecc276f))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.38 (2024-03-03)
 
 
