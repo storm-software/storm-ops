@@ -224,7 +224,7 @@ async function getNormalizedTsConfig(
       }
     },
     sys,
-    correctPaths(workspaceRoot)
+    correctPaths(dirname(options.tsConfig))
   );
 
   parsedTsconfig.options.pathsBasePath = correctPaths(workspaceRoot);

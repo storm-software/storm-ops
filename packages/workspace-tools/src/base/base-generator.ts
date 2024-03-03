@@ -31,7 +31,7 @@ export const withRunGenerator =
       writeInfo,
       writeSuccess,
       writeTrace,
-      findWorkspaceRootSafe,
+      findWorkspaceRoot,
       loadStormConfig
     } = await import("@storm-software/config-tools");
 
@@ -42,7 +42,7 @@ export const withRunGenerator =
     try {
       writeInfo(config, `⚡ Running the ${name} generator...\n\n`);
 
-      const workspaceRoot = findWorkspaceRootSafe();
+      const workspaceRoot = findWorkspaceRoot();
       if (!generatorOptions.skipReadingConfig) {
         writeDebug(
           config,
@@ -59,6 +59,8 @@ export const withRunGenerator =
         );
       }
 
+      process.chdir(workspaceRoot);
+
       if (generatorOptions?.hooks?.applyDefaultOptions) {
         writeDebug(config, "Running the applyDefaultOptions hook...");
         options = await Promise.resolve(
@@ -74,11 +76,11 @@ export const withRunGenerator =
           .join("\n")}`
       );
 
-      const tokenized = await applyWorkspaceTokens(
+      const tokenized = (await applyWorkspaceTokens(
         options as Record<string, any>,
         { workspaceRoot: tree.root, config },
         applyWorkspaceGeneratorTokens
-      ) as TGeneratorSchema;
+      )) as TGeneratorSchema;
 
       if (generatorOptions?.hooks?.preProcess) {
         writeDebug(config, "Running the preProcess hook...");
