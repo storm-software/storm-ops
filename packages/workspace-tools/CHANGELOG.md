@@ -1,3 +1,15 @@
+## 1.62.33 (2024-03-03)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added code to resolve issues with paths saved to `StormConfig` ([bafecf5b](https://github.com/storm-software/storm-ops/commit/bafecf5b))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.32 (2024-03-03)
 
 
