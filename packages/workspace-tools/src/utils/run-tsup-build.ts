@@ -213,27 +213,27 @@ function getNormalizedTsConfig(
       ...rawTsconfig.config,
       compilerOptions: {
         ...rawTsconfig.config?.compilerOptions,
-        rootDir: workspaceRoot,
-        baseUrl: workspaceRoot,
+        rootDir: workspaceRoot.replaceAll("\\", "/"),
+        baseUrl: workspaceRoot.replaceAll("\\", "/"),
         outDir: outputPath,
         noEmit: false,
         emitDeclarationOnly: true,
         declaration: true,
         declarationMap: true,
-        declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
+        declarationDir: join(workspaceRoot.replaceAll("\\", "/"), "tmp", ".tsup", "declaration")
       }
     },
     sys,
     dirname(options.tsConfig)
   );
 
-  parsedTsconfig.options.pathsBasePath = workspaceRoot;
+  parsedTsconfig.options.pathsBasePath = workspaceRoot.replaceAll("\\", "/");
   if (parsedTsconfig.options.paths) {
     parsedTsconfig.options.paths = Object.keys(parsedTsconfig.options.paths).reduce(
       (ret: Record<string, string[]>, key: string) => {
         if (parsedTsconfig.options.paths?.[key]) {
           ret[key] = parsedTsconfig.options.paths[key]?.map((path) =>
-            join(workspaceRoot, path)
+            join(workspaceRoot.replaceAll("\\", "/"), path)
           ) as string[];
         }
 
