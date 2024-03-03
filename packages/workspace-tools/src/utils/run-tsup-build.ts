@@ -229,7 +229,10 @@ async function getNormalizedTsConfig(
     correctPaths(dirname(options.tsConfig))
   );
 
-  parsedTsconfig.options.pathsBasePath = workspaceRoot;
+  parsedTsconfig.options.rootDir = correctPaths(workspaceRoot);
+  parsedTsconfig.options.baseUrl = correctPaths(workspaceRoot);
+
+  parsedTsconfig.options.pathsBasePath = correctPaths(workspaceRoot);
   if (parsedTsconfig.options.paths) {
     parsedTsconfig.options.paths = Object.keys(parsedTsconfig.options.paths).reduce(
       (ret: Record<string, string[]>, key: string) => {
