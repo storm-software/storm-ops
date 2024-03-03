@@ -1,3 +1,15 @@
+## 1.63.3 (2024-03-03)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update workspace tools to change directory to workspace root ([c76a4782](https://github.com/storm-software/storm-ops/commit/c76a4782))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.63.2 (2024-03-03)
 
 
