@@ -1,3 +1,15 @@
+## 1.62.34 (2024-03-03)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved issues with inconsistent path formats ([f34a6029](https://github.com/storm-software/storm-ops/commit/f34a6029))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.33 (2024-03-03)
 
 
