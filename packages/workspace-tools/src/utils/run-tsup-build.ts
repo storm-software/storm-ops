@@ -226,7 +226,7 @@ async function getNormalizedTsConfig(
       }
     },
     sys,
-    dirname(options.tsConfig)
+    correctPaths(dirname(options.tsConfig))
   );
 
   parsedTsconfig.options.pathsBasePath = workspaceRoot;
@@ -243,6 +243,10 @@ async function getNormalizedTsConfig(
       },
       {} as Record<string, string[]>
     );
+  }
+
+  if (parsedTsconfig.fileNames) {
+    parsedTsconfig.fileNames = parsedTsconfig.fileNames.map((fileName) => correctPaths(fileName));
   }
 
   if (parsedTsconfig.options.incremental) {
