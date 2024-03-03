@@ -1,3 +1,15 @@
+## 1.62.38 (2024-03-03)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update base path passed to config normalizer ([a146c0e0](https://github.com/storm-software/storm-ops/commit/a146c0e0))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.37 (2024-03-03)
 
 
