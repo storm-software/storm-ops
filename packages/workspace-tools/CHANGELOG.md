@@ -1,3 +1,15 @@
+## 1.63.2 (2024-03-03)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added back the correct basePath configuration ([61627951](https://github.com/storm-software/storm-ops/commit/61627951))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.63.1 (2024-03-03)
 
 
