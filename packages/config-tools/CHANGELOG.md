@@ -1,3 +1,15 @@
+## 1.31.0 (2024-03-03)
+
+
+### 🚀 Features
+
+- **config:** Added the implementation for the `externalPackagePatterns` config parameter ([73762463](https://github.com/storm-software/storm-ops/commit/73762463))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.30.9 (2024-03-03)
 
 
