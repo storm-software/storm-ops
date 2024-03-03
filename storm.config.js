@@ -9,6 +9,7 @@ exports.default = {
   timezone: "America/New_York",
   locale: "en-US",
   logLevel: "debug",
+  externalPackagePatterns: ["@storm-software/"],
   colors: {
     primary: "#1fb2a6",
     background: "#1d232a",

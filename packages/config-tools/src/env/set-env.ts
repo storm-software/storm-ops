@@ -169,6 +169,11 @@ export const setConfigEnv = (config: StormConfig) => {
   if (config.preid) {
     process.env[`${prefix}PRE_ID`] = String(config.preid);
   }
+  if (config.externalPackagePatterns) {
+    process.env[`${prefix}EXTERNAL_PACKAGE_PATTERNS`] = JSON.stringify(
+      config.externalPackagePatterns
+    );
+  }
   if (config.logLevel) {
     process.env[`${prefix}LOG_LEVEL`] = String(config.logLevel);
     process.env.LOG_LEVEL = String(config.logLevel);

@@ -82,6 +82,9 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
     repository: process.env[`${prefix}REPOSITORY`],
     branch: process.env[`${prefix}BRANCH`],
     preid: process.env[`${prefix}PRE_ID`],
+    externalPackagePatterns: process.env[`${prefix}EXTERNAL_PACKAGE_PATTERNS`]
+      ? JSON.parse(process.env[`${prefix}EXTERNAL_PACKAGE_PATTERNS`] as string)
+      : [],
     logLevel:
       process.env[`${prefix}LOG_LEVEL`] !== null && process.env[`${prefix}LOG_LEVEL`] !== undefined
         ? process.env[`${prefix}LOG_LEVEL`] &&

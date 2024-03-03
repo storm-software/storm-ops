@@ -10,7 +10,7 @@ import { fileExists } from "nx/src/utils/fileutils.js";
 import { withRunExecutor } from "../../base/base-executor";
 import { removeExtension } from "../../utils/file-path-utils";
 import { getProjectConfigurations } from "../../utils/get-project-configurations";
-import { getExtraDependencies } from "../../utils/get-project-deps";
+import { getExtraDependencies, getInternalDependencies } from "../../utils/get-project-deps";
 import { applyDefaultOptions, runTsupBuild } from "../../utils/run-tsup-build";
 import type { TsupExecutorSchema } from "./schema";
 
@@ -197,6 +197,27 @@ ${Object.keys(options)
     }, options.external);
   }
 
+  for (const internalDependency of getInternalDependencies(
+    context.projectName,
+    context.projectGraph as ProjectGraph
+  )) {
+    if (
+      internalDependency?.name &&
+      config?.externalPackagePatterns?.some((pattern) =>
+        internalDependency.name.includes(pattern)
+      ) &&
+      !externalDependencies?.some(
+        (externalDependency) => externalDependency.name === internalDependency.name
+      )
+    ) {
+      externalDependencies.push({
+        name: internalDependency.name,
+        outputs: [],
+        node: internalDependency
+      });
+    }
+  }
+
   for (const thirdPartyDependency of getExtraDependencies(
     context.projectName,
     context.projectGraph as ProjectGraph
@@ -318,16 +339,15 @@ ${externalDependencies
     }
 
     for (const packageName of internalDependencies) {
-      if (!packageJson?.devDependencies?.[packageName]) {
-        packageJson.dependencies ??= {};
+      packageJson.dependencies ??= {};
+      if (!packageJson.dependencies[packageName]) {
         packageJson.dependencies[packageName] = "latest";
+
+        if (!options.external.includes(packageName)) {
+          options.external.push(packageName);
+        }
       }
     }
-
-    // const distPaths: string[] =
-    //   !options?.getConfig || _isFunction(options.getConfig)
-    //     ? ["dist/"]
-    //     : Object.keys(options.getConfig).map((key) => `${key}/`);
 
     const distPaths: string[] = ["dist/"];
 
