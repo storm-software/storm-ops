@@ -1,3 +1,17 @@
+## 1.63.1 (2024-03-03)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update typia executor to import js files directly ([00ed2561](https://github.com/storm-software/storm-ops/commit/00ed2561))
+
+- **workspace-tools:** Update the base tsconfig path to use in the dts build ([c07b0f2b](https://github.com/storm-software/storm-ops/commit/c07b0f2b))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.63.0 (2024-03-03)
 
 
