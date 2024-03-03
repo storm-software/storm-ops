@@ -1,6 +1,7 @@
 import { LogLevel } from "../types";
 import type { StormConfig } from "@storm-software/config";
 import { getLogLevel } from "../utilities/get-log-level";
+import { correctPaths } from "../utilities/correct-paths";
 
 /**
  * Get the config for an extension module of Storm workspace from environment variables
@@ -89,18 +90,18 @@ export const setConfigEnv = (config: StormConfig) => {
       : "en_US.UTF-8";
   }
   if (config.configFile) {
-    process.env[`${prefix}CONFIG_FILE`] = config.configFile;
+    process.env[`${prefix}CONFIG_FILE`] = correctPaths(config.configFile);
   }
   if (config.workspaceRoot) {
-    process.env[`${prefix}WORKSPACE_ROOT`] = config.workspaceRoot;
-    process.env.NX_WORKSPACE_ROOT = config.workspaceRoot;
-    process.env.NX_WORKSPACE_ROOT_PATH = config.workspaceRoot;
+    process.env[`${prefix}WORKSPACE_ROOT`] = correctPaths(config.workspaceRoot);
+    process.env.NX_WORKSPACE_ROOT = correctPaths(config.workspaceRoot);
+    process.env.NX_WORKSPACE_ROOT_PATH = correctPaths(config.workspaceRoot);
   }
   if (config.packageDirectory) {
-    process.env[`${prefix}PACKAGE_DIRECTORY`] = config.packageDirectory;
+    process.env[`${prefix}PACKAGE_DIRECTORY`] = correctPaths(config.packageDirectory);
   }
   if (config.buildDirectory) {
-    process.env[`${prefix}BUILD_DIRECTORY`] = config.buildDirectory;
+    process.env[`${prefix}BUILD_DIRECTORY`] = correctPaths(config.buildDirectory);
   }
   if (config.skipCache !== undefined) {
     process.env[`${prefix}SKIP_CACHE`] = String(config.skipCache);
@@ -110,7 +111,7 @@ export const setConfigEnv = (config: StormConfig) => {
     }
   }
   if (!config.skipCache && config.cacheDirectory) {
-    process.env[`${prefix}CACHE_DIRECTORY`] = config.cacheDirectory;
+    process.env[`${prefix}CACHE_DIRECTORY`] = correctPaths(config.cacheDirectory);
     // if (config.cacheDirectory.includes("/storm") || config.cacheDirectory.includes("\\storm")) {
     //   const nxCacheDirectory = join(
     //     config.cacheDirectory.includes("/storm")
@@ -126,7 +127,7 @@ export const setConfigEnv = (config: StormConfig) => {
     process.env[`${prefix}RUNTIME_VERSION`] = config.runtimeVersion;
   }
   if (config.runtimeDirectory) {
-    process.env[`${prefix}RUNTIME_DIRECTORY`] = config.runtimeDirectory;
+    process.env[`${prefix}RUNTIME_DIRECTORY`] = correctPaths(config.runtimeDirectory);
   }
   if (config.env) {
     process.env[`${prefix}ENV`] = config.env;

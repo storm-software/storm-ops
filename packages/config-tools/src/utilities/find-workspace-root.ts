@@ -1,3 +1,4 @@
+import { correctPaths } from "./correct-paths";
 import { findFolderUp } from "./find-up";
 
 const rootFiles = [
@@ -41,10 +42,10 @@ const rootFiles = [
  */
 export function findWorkspaceRootSafe(pathInsideMonorepo?: string): string | undefined {
   if (process.env.STORM_WORKSPACE_ROOT || process.env.NX_WORKSPACE_ROOT_PATH) {
-    return process.env.STORM_WORKSPACE_ROOT ?? process.env.NX_WORKSPACE_ROOT_PATH;
+    return correctPaths(process.env.STORM_WORKSPACE_ROOT ?? process.env.NX_WORKSPACE_ROOT_PATH);
   }
 
-  return findFolderUp(pathInsideMonorepo ?? process.cwd(), rootFiles);
+  return correctPaths(findFolderUp(pathInsideMonorepo ?? process.cwd(), rootFiles));
 }
 
 /**

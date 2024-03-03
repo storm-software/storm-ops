@@ -2,6 +2,7 @@ import type { LogLevelLabel } from "../types";
 import type { StormConfig } from "@storm-software/config";
 import { getLogLevelLabel } from "../utilities";
 import type { DeepPartial } from "../../declarations.d";
+import { correctPaths } from "../utilities/correct-paths";
 
 /**
  * Get the config for an extension module of Storm workspace from environment variables
@@ -49,17 +50,17 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
     homepage: process.env[`${prefix}HOMEPAGE`],
     timezone: process.env[`${prefix}TIMEZONE`] ?? process.env.TZ,
     locale: process.env[`${prefix}LOCALE`] ?? process.env.LOCALE,
-    configFile: process.env[`${prefix}CONFIG_FILE`],
-    workspaceRoot: process.env[`${prefix}WORKSPACE_ROOT`],
-    packageDirectory: process.env[`${prefix}PACKAGE_DIRECTORY`],
-    buildDirectory: process.env[`${prefix}BUILD_DIRECTORY`],
+    configFile: correctPaths(process.env[`${prefix}CONFIG_FILE`]),
+    workspaceRoot: correctPaths(process.env[`${prefix}WORKSPACE_ROOT`]),
+    packageDirectory: correctPaths(process.env[`${prefix}PACKAGE_DIRECTORY`]),
+    buildDirectory: correctPaths(process.env[`${prefix}BUILD_DIRECTORY`]),
     skipCache:
       process.env[`${prefix}SKIP_CACHE`] !== undefined
         ? Boolean(process.env[`${prefix}SKIP_CACHE`])
         : undefined,
-    cacheDirectory: process.env[`${prefix}CACHE_DIRECTORY`],
+    cacheDirectory: correctPaths(process.env[`${prefix}CACHE_DIRECTORY`]),
     runtimeVersion: process.env[`${prefix}RUNTIME_VERSION`],
-    runtimeDirectory: process.env[`${prefix}RUNTIME_DIRECTORY`],
+    runtimeDirectory: correctPaths(process.env[`${prefix}RUNTIME_DIRECTORY`]),
     env: (process.env[`${prefix}ENV`] ??
       process.env.NODE_ENV ??
       process.env.ENVIRONMENT) as StormConfig["env"],
