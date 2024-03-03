@@ -1,3 +1,15 @@
+## 1.62.35 (2024-03-03)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Ensure file paths are valid in `fileNames` array ([0f15dabc](https://github.com/storm-software/storm-ops/commit/0f15dabc))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.34 (2024-03-03)
 
 
