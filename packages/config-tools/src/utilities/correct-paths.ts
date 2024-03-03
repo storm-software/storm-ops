@@ -1,6 +1,6 @@
-export const correctPaths = (path?: string): string | undefined => {
+export const correctPaths = (path?: string): string => {
   if (!path) {
-    return path;
+    return "";
   }
 
   if (process.platform === "win32" && path.includes("C:")) {

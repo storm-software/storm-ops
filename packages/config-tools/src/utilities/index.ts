@@ -4,3 +4,4 @@ export * from "./get-log-level";
 export * from "./logger";
 export * from "./process-handler";
 export * from "./run";
+export * from "./correct-paths";

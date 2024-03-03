@@ -55,11 +55,11 @@ export const runTsupBuild = async (
   config: Partial<StormConfig>,
   options: TsupExecutorSchema
 ) => {
-  const { writeInfo, writeTrace, writeWarning, findWorkspaceRoot } = await import(
+  const { writeInfo, writeTrace, writeWarning, correctPaths, findWorkspaceRoot } = await import(
     "@storm-software/config-tools"
   );
 
-  const workspaceRoot = config?.workspaceRoot ?? findWorkspaceRoot();
+  const workspaceRoot = correctPaths(config?.workspaceRoot ?? findWorkspaceRoot());
 
   // #region Add default plugins
 
@@ -81,7 +81,7 @@ export const runTsupBuild = async (
 
   // #region Run the build process
 
-  const dtsTsConfig = getNormalizedTsConfig(
+  const dtsTsConfig = await getNormalizedTsConfig(
     workspaceRoot,
     options.outputPath,
     createTypeScriptCompilationOptions(
@@ -183,11 +183,13 @@ ${options.banner}
   }
 };
 
-function getNormalizedTsConfig(
+async function getNormalizedTsConfig(
   workspaceRoot: string,
   outputPath: string,
   options: TypeScriptCompilationOptions
 ) {
+  const { correctPaths } = await import("@storm-software/config-tools");
+
   const rawTsconfig = readConfigFile(options.tsConfig, sys.readFile);
   if (!rawTsconfig?.config || rawTsconfig?.error) {
     throw new Error(
@@ -220,7 +222,7 @@ function getNormalizedTsConfig(
         emitDeclarationOnly: true,
         declaration: true,
         declarationMap: true,
-        declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
+        declarationDir: correctPaths(join(workspaceRoot, "tmp", ".tsup", "declaration"))
       }
     },
     sys,
@@ -233,7 +235,7 @@ function getNormalizedTsConfig(
       (ret: Record<string, string[]>, key: string) => {
         if (parsedTsconfig.options.paths?.[key]) {
           ret[key] = parsedTsconfig.options.paths[key]?.map((path) =>
-            join(workspaceRoot, path)
+            correctPaths(join(workspaceRoot, path))
           ) as string[];
         }
 
@@ -244,7 +246,7 @@ function getNormalizedTsConfig(
   }
 
   if (parsedTsconfig.options.incremental) {
-    parsedTsconfig.options.tsBuildInfoFile = join(outputPath, "tsconfig.tsbuildinfo");
+    parsedTsconfig.options.tsBuildInfoFile = correctPaths(join(outputPath, "tsconfig.tsbuildinfo"));
   }
 
   return parsedTsconfig;
