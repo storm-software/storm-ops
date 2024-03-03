@@ -215,8 +215,8 @@ async function getNormalizedTsConfig(
       ...rawTsconfig.config,
       compilerOptions: {
         ...rawTsconfig.config?.compilerOptions,
-        rootDir: workspaceRoot,
-        baseUrl: workspaceRoot,
+        rootDir: ".",
+        baseUrl: ".",
         outDir: outputPath,
         noEmit: false,
         emitDeclarationOnly: true,
@@ -228,9 +228,6 @@ async function getNormalizedTsConfig(
     sys,
     correctPaths(dirname(options.tsConfig))
   );
-
-  parsedTsconfig.options.rootDir = correctPaths(workspaceRoot);
-  parsedTsconfig.options.baseUrl = correctPaths(workspaceRoot);
 
   parsedTsconfig.options.pathsBasePath = correctPaths(workspaceRoot);
   if (parsedTsconfig.options.paths) {
