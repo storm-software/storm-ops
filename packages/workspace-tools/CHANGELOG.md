@@ -1,3 +1,15 @@
+## 1.62.36 (2024-03-03)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Updated the `workspaceRoot` applied to compiler options ([8b18d8c3](https://github.com/storm-software/storm-ops/commit/8b18d8c3))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.35 (2024-03-03)
 
 
