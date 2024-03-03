@@ -1,3 +1,15 @@
+## 1.62.37 (2024-03-03)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update the path used by the compiler options ([da22cae4](https://github.com/storm-software/storm-ops/commit/da22cae4))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.36 (2024-03-03)
 
 
