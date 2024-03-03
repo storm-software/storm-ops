@@ -1,3 +1,15 @@
+## 1.62.32 (2024-03-03)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update `workspaceRoot` to no longer include backslash characters ([f2190736](https://github.com/storm-software/storm-ops/commit/f2190736))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.62.31 (2024-03-01)
 
 
