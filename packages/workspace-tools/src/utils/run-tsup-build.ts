@@ -216,6 +216,8 @@ async function getNormalizedTsConfig(
       compilerOptions: {
         ...rawTsconfig.config?.compilerOptions,
         outDir: outputPath,
+        rootDir: ".",
+        baseUrl: correctPaths(workspaceRoot),
         noEmit: false,
         emitDeclarationOnly: true,
         declaration: true,

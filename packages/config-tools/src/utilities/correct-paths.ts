@@ -3,7 +3,8 @@ export const correctPaths = (path?: string): string => {
     return "";
   }
 
-  if (process.platform === "win32" && path.includes("C:")) {
+  // Handle Windows absolute paths
+  if (path?.toUpperCase()?.startsWith("C:")) {
     return path.replaceAll("/", "\\");
   }
 
