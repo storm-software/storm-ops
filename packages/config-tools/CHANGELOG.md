@@ -1,3 +1,15 @@
+## 1.32.1 (2024-03-05)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolved issue determining project name prior to build ([62d4332d](https://github.com/storm-software/storm-ops/commit/62d4332d))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.32.0 (2024-03-05)
 
 
