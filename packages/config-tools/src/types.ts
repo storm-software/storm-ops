@@ -40,4 +40,5 @@ export interface BaseTokenizerOptions {
 
 export interface ProjectTokenizerOptions extends BaseTokenizerOptions {
   projectRoot?: string;
+  projectName?: string;
 }
