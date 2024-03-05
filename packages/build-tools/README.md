@@ -30,17 +30,9 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- END header -->
 
-# Storm Linting Tools
+# Storm Build Tools
 
-This package combines various linting tools used to validate syntax, enforce design standards, and format code in a Storm workspace. The following packages are included and combined into an easy to use CLI tool:
-
--   [ESLint](https://eslint.org/)
--   [Prettier](https://prettier.io/)
--   [Alex](https://alexjs.com/)
--   [ManyPkg](https://github.com/Thinkmill/manypkg)
--   [CSpell](https://cspell.org/)
--   [TSConfig](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
--   [DPDM](https://github.com/acrazing/dpdm)
+This package contains the build tools used by the Storm Software monorepo. It is a collection of tools and utilities that are used to build, test, and deploy the various applications and libraries that are part of the Storm Software monorepo.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -75,7 +67,7 @@ yarn add -D @storm-software/build-tools
 
 ## Building
 
-Run `nx build-tools build-tools` to build-tools the library.
+Run `nx build build-tools` to build-tools the library.
 
 ## Running unit tests
 

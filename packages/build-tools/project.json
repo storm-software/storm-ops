@@ -27,17 +27,12 @@
         "thirdParty": true,
         "platform": "node",
         "format": [
-          "esm"
+          "esm",
+          "cjs"
         ],
         "external": [
           "nx"
         ],
-        "esbuildOptions": {
-          "legalComments": "inline",
-          "banner": {
-            "js": "const require = (await import('node:module')).createRequire(import.meta.url);"
-          }
-        },
         "assets": [
           {
             "input": "packages/build-tools",
