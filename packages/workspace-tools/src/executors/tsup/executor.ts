@@ -1,19 +1,17 @@
 import type { ExecutorContext } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
-import {
-  applyDefaultOptions,
-  type TypeScriptBuildOptions,
-} from "@storm-software/build-tools";
+import { applyDefaultOptions, type TypeScriptBuildOptions } from "@storm-software/build-tools";
 import type { TsupExecutorSchema } from "./schema";
 
 export async function tsupExecutorFn(
   options: TsupExecutorSchema,
   context: ExecutorContext,
-  config?: StormConfig,
+  config?: StormConfig
 ) {
-  const { writeDebug, writeInfo, writeSuccess, findWorkspaceRoot } =
-    await import("@storm-software/config-tools");
+  const { writeDebug, writeInfo, writeSuccess, findWorkspaceRoot } = await import(
+    "@storm-software/config-tools"
+  );
   const { tsBuild } = await import("@storm-software/build-tools");
 
   writeInfo(config, "📦  Running Storm build executor on the workspace");
@@ -32,10 +30,10 @@ ${Object.keys(options)
           : _isFunction(options[key])
             ? "<function>"
             : JSON.stringify(options[key])
-      }`,
+      }`
   )
   .join("\n")}
-`,
+`
   );
 
   // #endregion Apply default options
@@ -48,47 +46,36 @@ ${Object.keys(options)
     !context.projectsConfigurations.projects[context.projectName]
   ) {
     throw new Error(
-      "The Build process failed because the context is not valid. Please run this command from a workspace.",
+      "The Build process failed because the context is not valid. Please run this command from a workspace."
     );
   }
 
   const workspaceRoot = findWorkspaceRoot();
   const projectRoot =
-    context.projectsConfigurations.projects[context.projectName]?.root ??
-    workspaceRoot;
+    context.projectsConfigurations.projects[context.projectName]?.root ?? workspaceRoot;
   const sourceRoot =
-    context.projectsConfigurations.projects[context.projectName]?.sourceRoot ??
-    workspaceRoot;
+    context.projectsConfigurations.projects[context.projectName]?.sourceRoot ?? workspaceRoot;
 
   // #endregion Prepare build context variables
 
   // biome-ignore lint/style/noNonNullAssertion: <explanation>
-  await tsBuild(
-    config!,
-    projectRoot,
-    sourceRoot,
-    options as TypeScriptBuildOptions,
-  );
+  await tsBuild(config!, projectRoot, sourceRoot, options as TypeScriptBuildOptions);
 
   // #endregion Run the build process
 
   writeSuccess(config, "⚡ The Build process has completed successfully");
 
   return {
-    success: true,
+    success: true
   };
 }
 
-export default withRunExecutor<TsupExecutorSchema>(
-  "TypeScript Build using tsup",
-  tsupExecutorFn,
-  {
-    skipReadingConfig: false,
-    hooks: {
-      applyDefaultOptions,
-    },
-  },
-);
+export default withRunExecutor<TsupExecutorSchema>("TypeScript Build using tsup", tsupExecutorFn, {
+  skipReadingConfig: false,
+  hooks: {
+    applyDefaultOptions
+  }
+});
 
 const _isPrimitive = (value: unknown): boolean => {
   try {
@@ -104,7 +91,7 @@ const _isPrimitive = (value: unknown): boolean => {
 };
 
 const _isFunction = (
-  value: unknown,
+  value: unknown
 ): value is ((params?: unknown) => unknown) & ((param?: any) => any) => {
   try {
     return (
