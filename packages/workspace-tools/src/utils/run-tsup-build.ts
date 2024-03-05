@@ -210,32 +210,37 @@ async function getNormalizedTsConfig(
   //   declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
   // });
 
+  const basePath = correctPaths(workspaceRoot);
+  const declarationDir = correctPaths(join(basePath, "tmp", ".tsup", "declaration"));
+
   const parsedTsconfig = parseJsonConfigFileContent(
     {
       ...rawTsconfig.config,
       compilerOptions: {
         ...rawTsconfig.config?.compilerOptions,
         outDir: outputPath,
-        rootDir: ".",
-        baseUrl: correctPaths(workspaceRoot),
         noEmit: false,
         emitDeclarationOnly: true,
         declaration: true,
         declarationMap: true,
-        declarationDir: correctPaths(join(workspaceRoot, "tmp", ".tsup", "declaration"))
+        declarationDir
       }
     },
     sys,
     correctPaths(dirname(options.tsConfig))
   );
 
-  parsedTsconfig.options.pathsBasePath = correctPaths(workspaceRoot);
+  parsedTsconfig.options.rootDir = basePath;
+  parsedTsconfig.options.baseUrl = basePath;
+  parsedTsconfig.options.pathsBasePath = basePath;
+  parsedTsconfig.options.declarationDir = declarationDir;
+
   if (parsedTsconfig.options.paths) {
     parsedTsconfig.options.paths = Object.keys(parsedTsconfig.options.paths).reduce(
       (ret: Record<string, string[]>, key: string) => {
         if (parsedTsconfig.options.paths?.[key]) {
           ret[key] = parsedTsconfig.options.paths[key]?.map((path) =>
-            correctPaths(join(workspaceRoot, path))
+            correctPaths(join(basePath, path))
           ) as string[];
         }
 
