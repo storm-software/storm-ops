@@ -30,6 +30,7 @@ export const applyWorkspaceBaseTokens = async (
       }
     }
   }
+
   if (result.includes("{workspaceRoot}")) {
     result = result.replaceAll(
       "{workspaceRoot}",

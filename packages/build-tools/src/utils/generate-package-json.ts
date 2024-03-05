@@ -1,29 +1,23 @@
 import type { TypeScriptBuildOptions } from "../../declarations";
 import { writeFileSync } from "node:fs";
-import {
-  createProjectGraphAsync,
-  joinPathFragments,
-  readJsonFile,
-} from "@nx/devkit";
+import { joinPathFragments, readJsonFile } from "@nx/devkit";
 import type { ProjectGraph } from "@nx/devkit";
 import { retrieveProjectConfigurationsWithoutPluginInference } from "nx/src/project-graph/utils/retrieve-workspace-files";
 import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils.js";
 import type { StormConfig } from "@storm-software/config";
 import { fileExists } from "nx/src/utils/fileutils.js";
 import { removeExtension } from "@storm-software/config-tools";
-import {
-  getExtraDependencies,
-  getInternalDependencies,
-} from "./get-project-deps";
+import { getExtraDependencies, getInternalDependencies } from "./get-project-deps";
 import {
   findWorkspaceRoot,
   LogLevel,
   getLogLevel,
   writeDebug,
   writeTrace,
-  writeWarning,
+  writeWarning
 } from "@storm-software/config-tools";
 import { getEntryPoints } from "./get-entry-points";
+import { readCachedProjectGraph } from "nx/src/project-graph/project-graph";
 
 type DependencyNodeData = {
   version: string;
@@ -36,21 +30,13 @@ export const generatePackageJson = async (
   projectRoot: string,
   sourceRoot: string,
   projectName: string,
-  options: TypeScriptBuildOptions,
+  options: TypeScriptBuildOptions
 ): Promise<Record<string, any>> => {
   // #region Generate the package.json file
 
-  const workspaceRoot = config.workspaceRoot
-    ? config.workspaceRoot
-    : findWorkspaceRoot();
-  const workspacePackageJson = readJsonFile(
-    joinPathFragments(workspaceRoot, "package.json"),
-  );
-  const pathToPackageJson = joinPathFragments(
-    workspaceRoot,
-    projectRoot,
-    "package.json",
-  );
+  const workspaceRoot = config.workspaceRoot ? config.workspaceRoot : findWorkspaceRoot();
+  const workspacePackageJson = readJsonFile(joinPathFragments(workspaceRoot, "package.json"));
+  const pathToPackageJson = joinPathFragments(workspaceRoot, projectRoot, "package.json");
 
   // let projectName = projectRoot.replace(config.packageDirectory ?? "", "");
   // if (projectName.startsWith("/")) {
@@ -60,13 +46,11 @@ export const generatePackageJson = async (
   //   projectName = projectName.substring(-1);
   // }
 
-  const packageJson: Record<string, any> | undefined = fileExists(
-    pathToPackageJson,
-  )
+  const packageJson: Record<string, any> | undefined = fileExists(pathToPackageJson)
     ? readJsonFile(pathToPackageJson)
     : {
         name: `@${config.namespace}/${projectName}`,
-        version: "0.0.1",
+        version: "0.0.1"
       };
 
   options.external = options.external || [];
@@ -79,13 +63,14 @@ export const generatePackageJson = async (
 
         return ret;
       },
-      options.external,
+      options.external
     );
   }
 
-  const projectGraph = await createProjectGraphAsync({
-    exitOnError: true,
-  });
+  const projectGraph = readCachedProjectGraph();
+  if (!projectGraph) {
+    throw new Error("No project graph found in cache");
+  }
 
   const projectsConfigurations =
     await retrieveProjectConfigurationsWithoutPluginInference(workspaceRoot);
@@ -97,91 +82,78 @@ export const generatePackageJson = async (
     throw new Error("No project configurations found");
   }
 
-  const externalDependencies: DependentBuildableProjectNode[] =
-    options.external.reduce(
-      (ret: DependentBuildableProjectNode[], name: string) => {
-        if (!packageJson?.devDependencies?.[name]) {
-          const externalNode = projectGraph?.externalNodes?.[`npm:${name}`];
-          if (externalNode) {
-            ret.push({
-              name,
-              outputs: [],
-              node: externalNode,
-            });
-          }
+  const externalDependencies: DependentBuildableProjectNode[] = options.external.reduce(
+    (ret: DependentBuildableProjectNode[], name: string) => {
+      if (!packageJson?.devDependencies?.[name]) {
+        const externalNode = projectGraph?.externalNodes?.[`npm:${name}`];
+        if (externalNode) {
+          ret.push({
+            name,
+            outputs: [],
+            node: externalNode
+          });
         }
+      }
 
-        return ret;
-      },
-      [],
-    );
+      return ret;
+    },
+    []
+  );
 
-  const implicitDependencies =
-    projectsConfigurations.projects?.[projectName]?.implicitDependencies;
+  const implicitDependencies = projectsConfigurations.projects?.[projectName]?.implicitDependencies;
   const internalDependencies: string[] = [];
 
   if (implicitDependencies && implicitDependencies.length > 0) {
-    options.external = implicitDependencies.reduce(
-      (ret: string[], key: string) => {
-        writeDebug(config, `⚡ Adding implicit dependency: ${key}`);
+    options.external = implicitDependencies.reduce((ret: string[], key: string) => {
+      writeDebug(config, `⚡ Adding implicit dependency: ${key}`);
 
-        const projectConfig = projectsConfigurations[key];
-        if (projectConfig?.targets?.build) {
-          const projectPackageJson = readJsonFile(
-            projectConfig.targets?.build.options.project,
-          );
+      const projectConfig = projectsConfigurations[key];
+      if (projectConfig?.targets?.build) {
+        const projectPackageJson = readJsonFile(projectConfig.targets?.build.options.project);
 
-          if (
-            projectPackageJson?.name &&
-            !options.external?.includes(projectPackageJson.name)
-          ) {
-            ret.push(projectPackageJson.name);
-            internalDependencies.push(projectPackageJson.name);
-          }
+        if (projectPackageJson?.name && !options.external?.includes(projectPackageJson.name)) {
+          ret.push(projectPackageJson.name);
+          internalDependencies.push(projectPackageJson.name);
         }
+      }
 
-        return ret;
-      },
-      options.external,
-    );
+      return ret;
+    }, options.external);
   }
 
   for (const internalDependency of getInternalDependencies(
     projectName,
-    projectGraph as ProjectGraph,
+    projectGraph as ProjectGraph
   )) {
     if (
       internalDependency?.name &&
       config?.externalPackagePatterns?.some((pattern) =>
-        internalDependency.name.includes(pattern),
+        internalDependency.name.includes(pattern)
       ) &&
       !externalDependencies?.some(
-        (externalDependency) =>
-          externalDependency.name === internalDependency.name,
+        (externalDependency) => externalDependency.name === internalDependency.name
       )
     ) {
       externalDependencies.push({
         name: internalDependency.name,
         outputs: [],
-        node: internalDependency,
+        node: internalDependency
       });
     }
   }
 
   for (const thirdPartyDependency of getExtraDependencies(
     projectName,
-    projectGraph as ProjectGraph,
+    projectGraph as ProjectGraph
   )) {
-    const packageConfig = thirdPartyDependency?.node
-      ?.data as DependencyNodeData;
+    const packageConfig = thirdPartyDependency?.node?.data as DependencyNodeData;
     if (
       packageConfig?.packageName &&
       config?.externalPackagePatterns?.some((pattern) =>
-        packageConfig.packageName.includes(pattern),
+        packageConfig.packageName.includes(pattern)
       ) &&
       !externalDependencies?.some(
-        (externalDependency) =>
-          externalDependency.name === packageConfig.packageName,
+        (externalDependency) => externalDependency.name === packageConfig.packageName
       )
     ) {
       externalDependencies.push(thirdPartyDependency);
@@ -195,7 +167,7 @@ export const generatePackageJson = async (
     .map((dep) => {
       return `name: ${dep.name}, node: ${dep.node}, outputs: ${dep.outputs}`;
     })
-    .join("\n")}`,
+    .join("\n")}`
   );
 
   // const prettier = await import("prettier");
@@ -218,14 +190,10 @@ export const generatePackageJson = async (
     if (options.bundle === false) {
       packageJson.dependencies = undefined;
       for (const externalDependency of externalDependencies) {
-        const packageConfig = externalDependency?.node
-          ?.data as DependencyNodeData;
+        const packageConfig = externalDependency?.node?.data as DependencyNodeData;
         if (
           packageConfig?.packageName &&
-          !!(
-            projectGraph.externalNodes?.[externalDependency.node.name]?.type ===
-            "npm"
-          )
+          !!(projectGraph.externalNodes?.[externalDependency.node.name]?.type === "npm")
         ) {
           const { packageName, version } = packageConfig;
           if (
@@ -234,9 +202,7 @@ export const generatePackageJson = async (
             !packageJson?.devDependencies?.[packageName]
           ) {
             packageJson.dependencies ??= {};
-            packageJson.dependencies[packageName] = projectGraph.nodes[
-              externalDependency.node.name
-            ]
+            packageJson.dependencies[packageName] = projectGraph.nodes[externalDependency.node.name]
               ? "latest"
               : version;
           }
@@ -259,31 +225,23 @@ export const generatePackageJson = async (
         ".": {
           import: {
             types: `./${distPaths[0]}index.d.ts`,
-            default: `./${distPaths[0]}index.js`,
+            default: `./${distPaths[0]}index.js`
           },
           require: {
             types: `./${distPaths[0]}index.d.cts`,
-            default: `./${distPaths[0]}index.cjs`,
+            default: `./${distPaths[0]}index.cjs`
           },
           default: {
             types: `./${distPaths[0]}index.d.ts`,
-            default: `./${distPaths[0]}index.js`,
-          },
+            default: `./${distPaths[0]}index.js`
+          }
         },
-        "./package.json": "./package.json",
+        "./package.json": "./package.json"
       };
 
-      const entryPoints = getEntryPoints(
-        config,
-        projectRoot,
-        sourceRoot,
-        options,
-      );
+      const entryPoints = getEntryPoints(config, projectRoot, sourceRoot, options);
       for (const entryPoint of entryPoints) {
-        let formattedEntryPoint = removeExtension(entryPoint).replace(
-          sourceRoot,
-          "",
-        );
+        let formattedEntryPoint = removeExtension(entryPoint).replace(sourceRoot, "");
         if (formattedEntryPoint.startsWith(".")) {
           formattedEntryPoint = formattedEntryPoint.substring(1);
         }
@@ -294,16 +252,16 @@ export const generatePackageJson = async (
         packageJson.exports[`./${formattedEntryPoint}`] = {
           import: {
             types: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.d.ts`,
-            default: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.js`,
+            default: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.js`
           },
           require: {
             types: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.d.cts`,
-            default: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.cjs`,
+            default: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.cjs`
           },
           default: {
             types: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.d.ts`,
-            default: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.js`,
-          },
+            default: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.js`
+          }
         };
       }
 
@@ -337,7 +295,7 @@ export const generatePackageJson = async (
       packageJson.types ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`;
       packageJson.typings ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`;
       packageJson.typescript ??= {
-        definition: `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`,
+        definition: `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`
       };
 
       packageJson.main ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.cjs`;
@@ -369,7 +327,7 @@ export const generatePackageJson = async (
     }
 
     packageJson.publishConfig ??= {
-      access: "public",
+      access: "public"
     };
 
     packageJson.description ??= workspacePackageJson.description;
@@ -384,11 +342,7 @@ export const generatePackageJson = async (
       ? projectRoot
       : joinPathFragments("packages", projectName);
 
-    const packageJsonPath = joinPathFragments(
-      workspaceRoot,
-      options.outputPath,
-      "package.json",
-    );
+    const packageJsonPath = joinPathFragments(workspaceRoot, options.outputPath, "package.json");
 
     writeDebug(config, `⚡ Writing package.json file to: ${packageJsonPath}`);
 

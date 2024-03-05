@@ -5,7 +5,7 @@ import { getLogLevel, LogLevel } from "@storm-software/config-tools";
 
 export const applyDefaultOptions = (
   options: Partial<TypeScriptBuildOptions>,
-  config?: StormConfig,
+  config?: StormConfig
 ): TypeScriptBuildOptions => {
   options.entry ??= "{sourceRoot}/index.ts";
   options.outputPath ??= "dist/{projectRoot}";
@@ -40,8 +40,7 @@ export const applyDefaultOptions = (
     options.getConfig = defaultConfig;
   }
 
-  options.verbose =
-    options.verbose || getLogLevel(config?.logLevel) >= LogLevel.DEBUG;
+  options.verbose = options.verbose || getLogLevel(config?.logLevel) >= LogLevel.DEBUG;
 
   return options as TypeScriptBuildOptions;
 };
