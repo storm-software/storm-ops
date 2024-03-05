@@ -1,9 +1,6 @@
 import type { Tree } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
-import {
-  applyWorkspaceGeneratorTokens,
-  applyWorkspaceTokens
-} from "../utils/apply-workspace-tokens";
+import { applyWorkspaceBaseTokens, applyWorkspaceTokens } from "@storm-software/config-tools";
 import type {
   BaseGeneratorOptions,
   BaseGeneratorResult,
@@ -79,7 +76,7 @@ export const withRunGenerator =
       const tokenized = (await applyWorkspaceTokens(
         options as Record<string, any>,
         { workspaceRoot: tree.root, config },
-        applyWorkspaceGeneratorTokens
+        applyWorkspaceBaseTokens
       )) as TGeneratorSchema;
 
       if (generatorOptions?.hooks?.preProcess) {

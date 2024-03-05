@@ -1,7 +1,7 @@
 import { joinPathFragments } from "@nx/devkit";
 import type { Options } from "tsup";
-import type { GetConfigParams, TsupGetConfigOptions } from "../types";
-import type { BuildOptions } from "../../declarations";
+import type { BuildOptions, GetConfigParams } from "../../declarations";
+import { outExtension } from "../utils";
 
 export function defaultConfig({
   entry,
@@ -29,7 +29,7 @@ export function defaultConfig({
   generatePackageJson,
   dtsTsConfig,
   minify = false,
-  getTransform
+  getTransform,
 }: GetConfigParams): BuildOptions {
   return {
     name: "default",
@@ -37,14 +37,22 @@ export function defaultConfig({
     format,
     target:
       platform !== "node"
-        ? ["chrome91", "firefox90", "edge91", "safari15", "ios15", "opera77", "esnext"]
+        ? [
+            "chrome91",
+            "firefox90",
+            "edge91",
+            "safari15",
+            "ios15",
+            "opera77",
+            "esnext",
+          ]
         : ["esnext", "node20"],
     tsconfig,
     splitting,
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended"
+          preset: "recommended",
         }
       : false,
     projectRoot,
@@ -65,9 +73,9 @@ export function defaultConfig({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: joinPathFragments(outDir, "dist")
-        }
-      }
+          outDir: joinPathFragments(outDir, "dist"),
+        },
+      },
     },
     minify,
     apiReport,
@@ -79,44 +87,6 @@ export function defaultConfig({
     tsconfigDecoratorMetadata: true,
     plugins,
     getTransform,
-    outExtension
+    outExtension,
   } as Options;
 }
-
-export function getConfig(
-  workspaceRoot: string,
-  projectRoot: string,
-  getConfigFn: (options: GetConfigParams) => BuildOptions,
-  { outputPath, tsConfig, platform, ...rest }: TsupGetConfigOptions
-) {
-  return getConfigFn({
-    ...rest,
-    additionalEntryPoints: [],
-    outDir: outputPath,
-    tsconfig: tsConfig,
-    workspaceRoot,
-    projectRoot,
-    platform
-  });
-}
-
-export const outExtension = ({ format }: { format?: string }): { js: string; dts: string } => {
-  let jsExtension = ".js";
-  let dtsExtension = ".d.ts";
-  if (format === "cjs") {
-    jsExtension = ".cjs";
-    dtsExtension = ".d.cts";
-  }
-  if (format === "esm") {
-    jsExtension = ".js";
-    dtsExtension = ".d.ts";
-  }
-  if (format === "iife") {
-    jsExtension = ".global.js";
-  }
-
-  return {
-    js: jsExtension,
-    dts: dtsExtension
-  };
-};

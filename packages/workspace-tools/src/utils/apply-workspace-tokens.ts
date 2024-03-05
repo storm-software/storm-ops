@@ -1,10 +1,5 @@
 import type { ProjectConfiguration } from "@nx/devkit";
-import type { StormConfig } from "@storm-software/config";
-
-export interface BaseTokenizerOptions {
-  workspaceRoot?: string;
-  config?: StormConfig;
-}
+import type { BaseTokenizerOptions } from "@storm-software/config-tools";
 
 export type ExecutorTokenizerOptions = BaseTokenizerOptions &
   ProjectConfiguration & {
@@ -68,69 +63,6 @@ export const applyWorkspaceExecutorTokens = async (
       "{workspaceRoot}",
       tokenizerOptions.workspaceRoot ?? findWorkspaceRoot()
     );
-  }
-
-  return result;
-};
-
-export const applyWorkspaceGeneratorTokens = async (
-  option: string,
-  tokenizerOptions: BaseTokenizerOptions
-): Promise<string> => {
-  let result = option;
-  if (!result) {
-    return result;
-  }
-
-  if (tokenizerOptions.config) {
-    const configKeys = Object.keys(tokenizerOptions.config);
-    if (configKeys.some((configKey) => result.includes(`{${configKey}}`))) {
-      for (const configKey of configKeys) {
-        if (result.includes(`{${configKey}}`)) {
-          result = result.replaceAll(`{${configKey}}`, tokenizerOptions.config[configKey]);
-        }
-      }
-    }
-  }
-  if (result.includes("{workspaceRoot}")) {
-    const { findWorkspaceRoot } = await import("@storm-software/config-tools");
-
-    result = result.replaceAll(
-      "{workspaceRoot}",
-      tokenizerOptions.workspaceRoot ??
-        tokenizerOptions.config?.workspaceRoot ??
-        findWorkspaceRoot()
-    );
-  }
-
-  return result;
-};
-
-export const applyWorkspaceTokens = async <
-  TConfig extends BaseTokenizerOptions = BaseTokenizerOptions
->(
-  options: Record<string, any>,
-  config: TConfig,
-  tokenizerFn: (option: string, config: TConfig) => string | Promise<string>
-): Promise<Record<string, any>> => {
-  if (!options) {
-    return {};
-  }
-
-  const result: Record<string, any> = {};
-
-  for (const option of Object.keys(options)) {
-    if (typeof options[option] === "string") {
-      result[option] = await Promise.resolve(tokenizerFn(options[option], config));
-    } else if (Array.isArray(options[option])) {
-      result[option] = await Promise.all(
-        options[option].map(async (item: any) =>
-          typeof item === "string" ? await Promise.resolve(tokenizerFn(item, config)) : item
-        )
-      );
-    } else if (typeof options[option] === "object") {
-      result[option] = await applyWorkspaceTokens(options[option], config, tokenizerFn);
-    }
   }
 
   return result;

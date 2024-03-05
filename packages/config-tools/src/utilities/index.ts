@@ -5,3 +5,5 @@ export * from "./logger";
 export * from "./process-handler";
 export * from "./run";
 export * from "./correct-paths";
+export * from "./file-path-utils";
+export * from "./apply-workspace-tokens";

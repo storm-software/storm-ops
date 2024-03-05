@@ -1,24 +1,14 @@
 import type { CosmiconfigResult } from "cosmiconfig";
 import type * as z from "zod";
-import type { StormConfigSchema } from "./src/schema";
+import type { StormConfig, StormConfigInput } from "@storm-software/config";
+import type {
+  LogLevel,
+  LogLevelLabel,
+  BaseTokenizerOptions,
+  ProjectTokenizerOptions
+} from "./src/types";
 
-type TStormConfig = z.infer<typeof StormConfigSchema>;
-
-declare type StormConfig<
-  TExtensionName extends keyof TStormConfig["extensions"] = keyof TStormConfig["extensions"],
-  TExtensionConfig extends
-    TStormConfig["extensions"][TExtensionName] = TStormConfig["extensions"][TExtensionName]
-> = TStormConfig & {
-  extensions:
-    | (TStormConfig["extensions"] & {
-        [extensionName in TExtensionName]: TExtensionConfig;
-      })
-    | NonNullable;
-};
-export type { StormConfig };
-
-declare type StormConfigInput = z.input<typeof StormConfigSchema>;
-export type { StormConfigInput };
+export * from "./src/types";
 
 export type DeepPartial<T> = T extends object
   ? {
@@ -216,37 +206,29 @@ export { getLogLevel };
 declare function getLogLevelLabel(logLevel: number): LogLevelLabel;
 export { getLogLevelLabel };
 
-export type LogLevel = 0 | 10 | 20 | 30 | 35 | 40 | 60 | 70 | 100;
-export const LogLevel = {
-  SILENT: 0 as LogLevel,
-  FATAL: 10 as LogLevel,
-  ERROR: 20 as LogLevel,
-  WARN: 30 as LogLevel,
-  SUCCESS: 35 as LogLevel,
-  INFO: 40 as LogLevel,
-  DEBUG: 60 as LogLevel,
-  TRACE: 70 as LogLevel,
-  ALL: 100 as LogLevel
-} as const;
-
-export type LogLevelLabel =
-  | "silent"
-  | "fatal"
-  | "error"
-  | "warn"
-  | "info"
-  | "debug"
-  | "trace"
-  | "all";
-export const LogLevelLabel = {
-  SILENT: "silent" as LogLevelLabel,
-  FATAL: "fatal" as LogLevelLabel,
-  ERROR: "error" as LogLevelLabel,
-  WARN: "warn" as LogLevelLabel,
-  INFO: "info" as LogLevelLabel,
-  DEBUG: "debug" as LogLevelLabel,
-  TRACE: "trace" as LogLevelLabel,
-  ALL: "all" as LogLevelLabel
-} as const;
-
 declare module "fs-extra/esm" {}
+
+declare function removeExtension(filePath?: string): string;
+export { removeExtension };
+
+declare function findFileName(filePath?: string): string;
+export { findFileName };
+
+declare function applyWorkspaceBaseTokens(
+  option: string,
+  tokenizerOptions: BaseTokenizerOptions
+): Promise<string>;
+export { applyWorkspaceBaseTokens };
+
+declare function applyWorkspaceProjectTokens(
+  option: string,
+  tokenizerOptions: ProjectTokenizerOptions
+): Promise<string>;
+export { applyWorkspaceProjectTokens };
+
+declare function applyWorkspaceTokens<TConfig extends BaseTokenizerOptions = BaseTokenizerOptions>(
+  options: Record<string, any>,
+  config: TConfig,
+  tokenizerFn: (option: string, config: TConfig) => string | Promise<string>
+): Promise<Record<string, any>>;
+export { applyWorkspaceTokens };

@@ -18,6 +18,7 @@ overrides:
   '@storm-software/git-tools': workspace:*
   '@storm-software/testing-tools': workspace:*
   '@storm-software/config-tools': workspace:*
+  '@storm-software/build-tools': workspace:*
 
 patchedDependencies:
   '@microsoft/api-extractor@7.40.1':
@@ -148,6 +149,39 @@ importers:
       verdaccio:
         specifier: 5.29.0
         version: 5.29.0(typanion@3.14.0)
+
+  packages/build-tools:
+    dependencies:
+      '@anatine/esbuild-decorators':
+        specifier: 0.2.19
+        version: 0.2.19(esbuild@0.19.12)
+      '@nx/devkit':
+        specifier: 18.0.4
+        version: 18.0.4(nx@18.0.4)
+      '@nx/js':
+        specifier: 18.0.4
+        version: 18.0.4(@swc-node/register@1.8.0)(@swc/core@1.4.2)(@swc/wasm@1.4.2)(@types/node@20.11.20)(nx@18.0.4)(typescript@5.3.3)(verdaccio@5.29.0)
+      '@nx/workspace':
+        specifier: 18.0.4
+        version: 18.0.4(@swc-node/register@1.8.0)(@swc/core@1.4.2)
+      commander:
+        specifier: 11.1.0
+        version: 11.1.0
+      esbuild-plugin-environment:
+        specifier: 0.3.0
+        version: 0.3.0(esbuild@0.19.12)
+      fs-extra:
+        specifier: 11.2.0
+        version: 11.2.0
+      glob:
+        specifier: 10.3.10
+        version: 10.3.10
+      tsup:
+        specifier: 8.0.0
+        version: 8.0.0(patch_hash=fecszixvz36nsmruxbct32ggt4)(@microsoft/api-extractor@7.40.1)(@swc/core@1.4.2)(ts-node@10.9.2)(typescript@5.3.3)
+      typescript:
+        specifier: 5.3.3
+        version: 5.3.3
 
   packages/config:
     dependencies:

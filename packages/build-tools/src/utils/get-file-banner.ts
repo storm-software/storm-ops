@@ -42,7 +42,8 @@ ${commentStart} our licensing page.
 ${commentStart}
 ${commentStart}    Website: ${process.env.STORM_HOMEPAGE ?? "https://stormsoftware.org"}
 ${commentStart}    Repository: ${
-    process.env.STORM_REPOSITORY ?? "https://github.com/storm-software/storm-stack"
+    process.env.STORM_REPOSITORY ??
+    "https://github.com/storm-software/storm-stack"
   }
 ${commentStart}    Documentation: https://stormsoftware.org/docs${
     titleName?.startsWith("@") ? `/${titleName.slice(1)}` : ""

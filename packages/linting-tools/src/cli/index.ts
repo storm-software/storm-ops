@@ -15,9 +15,9 @@ import { runManypkg } from "../manypkg";
 
 let _config: Partial<StormConfig> = {};
 
-const { Command, Option } = await import("commander");
+export async function createProgram(config: StormConfig) {
+  const { Command, Option } = await import("commander");
 
-export function createProgram(config: StormConfig) {
   try {
     _config = config;
     writeInfo(config, "⚡ Running Storm Linting Tools");
@@ -159,7 +159,7 @@ async function allAction({
   try {
     writeInfo(_config, "⚡ Linting the Storm Workspace");
 
-    const promises = [];
+    const promises = [] as Promise<any>[];
     if (!skipCspell) {
       promises.push(cspellAction(cspellConfig));
     }

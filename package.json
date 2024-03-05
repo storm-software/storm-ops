@@ -67,8 +67,8 @@
     "@biomejs/biome": "1.5.3",
     "@nx/devkit": "18.0.4",
     "@nx/esbuild": "18.0.4",
-    "@nx/eslint": "18.0.4",
     "@nx/eslint-plugin": "18.0.4",
+    "@nx/eslint": "18.0.4",
     "@nx/jest": "18.0.4",
     "@nx/js": "18.0.4",
     "@nx/plugin": "18.0.4",
@@ -126,7 +126,8 @@
       "@storm-software/linting-tools": "workspace:*",
       "@storm-software/git-tools": "workspace:*",
       "@storm-software/testing-tools": "workspace:*",
-      "@storm-software/config-tools": "workspace:*"
+      "@storm-software/config-tools": "workspace:*",
+      "@storm-software/build-tools": "workspace:*"
     },
     "patchedDependencies": {
       "tsup@8.0.0": "patches/tsup@8.0.0.patch",

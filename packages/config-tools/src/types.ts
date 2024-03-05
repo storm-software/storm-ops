@@ -1,3 +1,5 @@
+import type { StormConfig } from "@storm-software/config";
+
 export type LogLevel = 0 | 10 | 20 | 30 | 35 | 40 | 60 | 70 | 100;
 export const LogLevel = {
   SILENT: 0 as LogLevel,
@@ -30,3 +32,12 @@ export const LogLevelLabel = {
   TRACE: "trace" as LogLevelLabel,
   ALL: "all" as LogLevelLabel
 } as const;
+
+export interface BaseTokenizerOptions {
+  workspaceRoot?: string;
+  config?: StormConfig;
+}
+
+export interface ProjectTokenizerOptions extends BaseTokenizerOptions {
+  projectRoot?: string;
+}

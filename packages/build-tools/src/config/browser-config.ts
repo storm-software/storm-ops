@@ -1,8 +1,7 @@
 import { joinPathFragments } from "@nx/devkit";
 import type { Options } from "tsup";
-import { outExtension } from "../../base/get-tsup-config";
-import type { GetConfigParams } from "../../types";
-import type { BuildOptions } from "../../../declarations";
+import type { BuildOptions, GetConfigParams } from "../../declarations";
+import { outExtension } from "../utils";
 
 export const browserConfig = ({
   entry,
@@ -26,7 +25,7 @@ export const browserConfig = ({
   generatePackageJson,
   dtsTsConfig,
   minify = false,
-  getTransform
+  getTransform,
 }: GetConfigParams): BuildOptions => {
   const outputPath = joinPathFragments(outDir, "dist");
 
@@ -34,13 +33,21 @@ export const browserConfig = ({
     name: "modern",
     entry,
     format: ["cjs", "esm", "iife"],
-    target: ["chrome91", "firefox90", "edge91", "safari15", "ios15", "opera77", "esnext"],
+    target: [
+      "chrome91",
+      "firefox90",
+      "edge91",
+      "safari15",
+      "ios15",
+      "opera77",
+      "esnext",
+    ],
     tsconfig,
     splitting,
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended"
+          preset: "recommended",
         }
       : false,
     projectRoot,
@@ -62,9 +69,9 @@ export const browserConfig = ({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: outputPath
-        }
-      }
+          outDir: outputPath,
+        },
+      },
     },
     apiReport: false,
     docModel: false,
@@ -75,7 +82,7 @@ export const browserConfig = ({
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform
+    getTransform,
   } as Options;
 
   if (!debug || minify) {
@@ -84,7 +91,7 @@ export const browserConfig = ({
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true
+      keep_fnames: true,
     };
   }
 

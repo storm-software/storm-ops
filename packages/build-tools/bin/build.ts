@@ -4,7 +4,7 @@ import {
   exitWithSuccess,
   handleProcess,
   loadStormConfig,
-  writeSuccess
+  writeSuccess,
 } from "@storm-software/config-tools";
 import { createProgram } from "../src/cli";
 
@@ -17,7 +17,7 @@ const handle = async () => {
 
   await program.parseAsync(process.argv);
 
-  writeSuccess(config, "Code linting and fixing completed successfully!");
+  writeSuccess(config, "The Storm Build process completed successfully!");
 };
 
 handle().then(() => {

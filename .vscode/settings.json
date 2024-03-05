@@ -442,5 +442,8 @@
       "quickfix.biome": "explicit",
       "source.sortMembers": "explicit"
     }
-  }
+  },
+  "cSpell.words": [
+    "Tsup"
+  ]
 }

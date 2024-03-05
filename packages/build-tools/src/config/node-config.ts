@@ -1,10 +1,9 @@
 import { joinPathFragments } from "@nx/devkit";
 import type { Options } from "tsup";
-import { outExtension } from "../../base/get-tsup-config";
-import type { GetConfigParams } from "../../types";
-import type { BuildOptions } from "../../../declarations";
+import { outExtension } from "../utils";
+import type { BuildOptions, GetConfigParams } from "../../declarations";
 
-export const neutralConfig = ({
+export function nodeConfig({
   entry,
   outDir,
   projectRoot,
@@ -16,39 +15,37 @@ export const neutralConfig = ({
   shims = true,
   external,
   banner = {},
-  platform = "neutral",
+  platform = "node",
   verbose = true,
+  apiReport = true,
+  docModel = true,
+  tsdocMetadata = true,
   metafile = true,
   skipNativeModulesPlugin = false,
   define,
   env,
-  apiReport = true,
-  docModel = true,
-  tsdocMetadata = true,
   plugins,
   generatePackageJson,
   dtsTsConfig,
   minify = false,
-  getTransform
-}: GetConfigParams): BuildOptions => {
-  const outputPath = joinPathFragments(outDir, "dist");
-
+  getTransform,
+}: GetConfigParams): BuildOptions {
   const options = {
-    name: "neutral",
+    name: "node",
     entry,
-    format: ["cjs", "esm", "iife"],
-    target: ["esnext"],
+    format: ["cjs", "esm"],
+    target: ["esnext", "node20"],
     tsconfig,
     splitting,
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended"
+          preset: "recommended",
         }
       : false,
     projectRoot,
     workspaceRoot,
-    outDir: outputPath,
+    outDir: joinPathFragments(outDir, "dist"),
     silent: !verbose,
     metafile,
     shims,
@@ -65,9 +62,9 @@ export const neutralConfig = ({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: outputPath
-        }
-      }
+          outDir: joinPathFragments(outDir, "dist"),
+        },
+      },
     },
     apiReport,
     docModel,
@@ -78,7 +75,7 @@ export const neutralConfig = ({
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform
+    getTransform,
   } as Options;
 
   if (!debug || minify) {
@@ -87,14 +84,14 @@ export const neutralConfig = ({
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true
+      keep_fnames: true,
     };
   }
 
   return options;
-};
+}
 
-/*export function legacyNeutralConfig({
+export function workerConfig({
   entry,
   outDir,
   projectRoot,
@@ -102,14 +99,13 @@ export const neutralConfig = ({
   tsconfig = "tsconfig.json",
   splitting,
   treeshake,
-  apiReport = true,
-  docModel = true,
-  tsdocMetadata = true,
   debug = false,
   external,
   banner = {},
-  platform = "neutral",
   verbose = false,
+  apiReport = true,
+  docModel = true,
+  tsdocMetadata = true,
   shims = true,
   metafile = true,
   skipNativeModulesPlugin = false,
@@ -118,46 +114,44 @@ export const neutralConfig = ({
   plugins,
   generatePackageJson,
   dtsTsConfig,
-  minify = false,
-  getTransform
-}: GetConfigParams) {
-  const outputPath = joinPathFragments(outDir, "dist", "legacy");
-
+  getTransform,
+}: GetConfigParams): BuildOptions {
   const options = {
-    name: "legacy",
+    name: "worker",
     entry,
-    format: ["cjs", "esm", "iife"],
-    target: ["es2022"],
+    format: ["esm"],
+    target: ["chrome95"],
+    bundle: true,
     tsconfig,
     splitting,
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended"
+          preset: "recommended",
         }
       : false,
     projectRoot,
     workspaceRoot,
-    outDir: outputPath,
+    outDir: joinPathFragments(outDir, "dist"),
     silent: !verbose,
     metafile,
     shims,
     external,
-    platform,
+    platform: "browser",
     banner,
     define,
     env,
     dts: false,
-    minify,
+    minify: false,
     experimentalDts: {
       entry,
       compilerOptions: {
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: outputPath
-        }
-      }
+          outDir: joinPathFragments(outDir, "dist"),
+        },
+      },
     },
     apiReport,
     docModel,
@@ -168,18 +162,18 @@ export const neutralConfig = ({
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform
+    getTransform,
   } as Options;
 
-  if (!debug || minify) {
+  if (!debug) {
     options.minify = "terser";
     options.terserOptions = {
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true
+      keep_fnames: true,
     };
   }
 
   return options;
-}*/
+}

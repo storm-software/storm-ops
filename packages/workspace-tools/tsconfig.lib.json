@@ -10,7 +10,9 @@
   "include": [
     "**/*.ts",
     "**/*.json",
-    "declarations.d.ts"
+    "declarations.d.ts",
+    "../build/src/config/default-config.ts",
+    "../config-tools/src/utilities/file-path-utils.ts"
   ],
   "exclude": [
     "jest.config.ts",
