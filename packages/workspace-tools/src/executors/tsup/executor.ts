@@ -9,9 +9,7 @@ export async function tsupExecutorFn(
   context: ExecutorContext,
   config?: StormConfig
 ) {
-  const { writeDebug, writeInfo, writeSuccess, findWorkspaceRoot } = await import(
-    "@storm-software/config-tools"
-  );
+  const { writeDebug, writeInfo, writeSuccess } = await import("@storm-software/config-tools");
   const { tsBuild } = await import("@storm-software/build-tools");
 
   writeInfo(config, "📦  Running Storm build executor on the workspace");
@@ -50,16 +48,15 @@ ${Object.keys(options)
     );
   }
 
-  const workspaceRoot = findWorkspaceRoot();
-  const projectRoot =
-    context.projectsConfigurations.projects[context.projectName]?.root ?? workspaceRoot;
-  const sourceRoot =
-    context.projectsConfigurations.projects[context.projectName]?.sourceRoot ?? workspaceRoot;
-
   // #endregion Prepare build context variables
 
   // biome-ignore lint/style/noNonNullAssertion: <explanation>
-  await tsBuild(config!, projectRoot, sourceRoot, options as TypeScriptBuildOptions);
+  await tsBuild(config!, {
+    ...options,
+    projectRoot: context.projectsConfigurations.projects?.[context.projectName]?.root,
+    projectName: context.projectName,
+    sourceRoot: context.projectsConfigurations.projects?.[context.projectName]?.sourceRoot
+  } as TypeScriptBuildOptions);
 
   // #endregion Run the build process
 

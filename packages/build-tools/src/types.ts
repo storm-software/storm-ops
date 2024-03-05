@@ -4,7 +4,7 @@ import type {
   Diagnostic,
   TransformerFactory,
   SourceFile,
-  ParsedCommandLine,
+  ParsedCommandLine
 } from "typescript";
 
 export interface TsupContext {
@@ -30,16 +30,10 @@ export type GetConfigParams = Omit<
   docModel?: boolean;
   tsdocMetadata?: boolean;
   dtsTsConfig: ParsedCommandLine;
-  getTransform?: (
-    program: Program,
-    diagnostics: Diagnostic[],
-  ) => TransformerFactory<SourceFile>;
+  getTransform?: (program: Program, diagnostics: Diagnostic[]) => TransformerFactory<SourceFile>;
 };
 
-export type TsupGetConfigOptions = Omit<
-  TypeScriptBuildOptions,
-  "banner" | "entry"
-> & {
+export type TsupGetConfigOptions = Omit<TypeScriptBuildOptions, "banner" | "entry"> & {
   banner?: { js?: string; css?: string };
   dtsTsConfig: ParsedCommandLine;
   entry: Entry;
@@ -57,7 +51,13 @@ export type AssetGlob = FileInputOutput & {
   dot?: boolean;
 };
 
-export interface TypeScriptBuildOptions {
+export interface AdditionalCLIOptions {
+  projectRoot: string;
+  sourceRoot: string;
+  projectName: string;
+}
+
+export interface TypeScriptBuildOptions extends AdditionalCLIOptions {
   additionalEntryPoints?: string[];
   assets: (AssetGlob | string)[];
   bundle?: boolean;

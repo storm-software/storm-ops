@@ -148,36 +148,36 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "biomejs.biome",
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true,
-      "quickfix.biome": true,
-      "source.sortMembers": true
+      "source.fixAll.eslint": "explicit",
+      "quickfix.biome": "explicit",
+      "source.sortMembers": "explicit"
     }
   },
   "[javascriptreact]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "biomejs.biome",
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true,
-      "quickfix.biome": true,
-      "source.sortMembers": true
+      "source.fixAll.eslint": "explicit",
+      "quickfix.biome": "explicit",
+      "source.sortMembers": "explicit"
     }
   },
   "[typescript]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "biomejs.biome",
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true,
-      "quickfix.biome": true,
-      "source.sortMembers": true
+      "source.fixAll.eslint": "explicit",
+      "quickfix.biome": "explicit",
+      "source.sortMembers": "explicit"
     }
   },
   "[typescriptreact]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "biomejs.biome",
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true,
-      "quickfix.biome": true,
-      "source.sortMembers": true
+      "source.fixAll.eslint": "explicit",
+      "quickfix.biome": "explicit",
+      "source.sortMembers": "explicit"
     }
   },
   "[json]": {

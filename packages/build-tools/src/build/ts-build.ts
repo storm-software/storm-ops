@@ -6,12 +6,18 @@ import {
   writeInfo,
   type ProjectTokenizerOptions,
   findWorkspaceRoot,
-  writeDebug
+  writeDebug,
+  writeTrace
 } from "@storm-software/config-tools";
 import type { StormConfig } from "@storm-software/config";
 import { removeSync } from "fs-extra";
 import { copyAssets } from "@nx/js";
-import { joinPathFragments, createProjectGraphAsync, type ExecutorContext } from "@nx/devkit";
+import {
+  joinPathFragments,
+  createProjectGraphAsync,
+  type ExecutorContext,
+  type ProjectConfiguration
+} from "@nx/devkit";
 import { writeJsonFile } from "nx/src/utils/fileutils";
 import { globSync } from "glob";
 import { writeFile } from "node:fs/promises";
@@ -29,16 +35,19 @@ import { registerPluginTSTranspiler } from "nx/src/utils/nx-plugin";
  * Build the TypeScript project using the tsup build tools.
  *
  * @param config - The storm configuration.
- * @param projectRoot - The project root.
- * @param sourceRoot - The source root.
  * @param options - The build options.
  */
-export async function tsBuild(
-  config: StormConfig,
-  projectRoot: string,
-  sourceRoot?: string,
-  options: Partial<TypeScriptBuildOptions> = {}
-) {
+export async function tsBuild(config: StormConfig, options: Partial<TypeScriptBuildOptions> = {}) {
+  let projectRoot = options?.projectRoot as string;
+  let projectName = options?.projectName as string;
+  let sourceRoot = options?.sourceRoot as string;
+
+  if (!projectRoot && !projectName) {
+    throw new Error(
+      "The Build process failed because both the `projectRoot` and the `projectName` options were not provided"
+    );
+  }
+
   const workspaceRoot = config.workspaceRoot ? config.workspaceRoot : findWorkspaceRoot();
 
   registerPluginTSTranspiler();
@@ -51,26 +60,36 @@ export async function tsBuild(
   const projectsConfigurations = readProjectsConfigurationFromProjectGraph(projectGraph);
   const projectRootMap = createProjectRootMappings(projectGraph.nodes);
 
-  const projectName = findProjectForPath(projectRoot, projectRootMap);
-  if (!projectName || typeof projectName !== "string") {
-    throw new Error(
-      `The Build process failed because the project does not have a valid name in the project.json file. Check if the file exists in the root of the project at ${joinPathFragments(
-        projectRoot,
-        "project.json"
-      )}`
-    );
+  let projectConfiguration!: ProjectConfiguration;
+  if (projectRoot) {
+    projectName = findProjectForPath(projectRoot, projectRootMap) as string;
+    if (!projectName || typeof projectName !== "string") {
+      throw new Error(
+        `The Build process failed because the project does not have a valid name in the project.json file. Check if the file exists in the root of the project at ${joinPathFragments(
+          projectRoot,
+          "project.json"
+        )}`
+      );
+    }
+
+    projectConfiguration = projectsConfigurations?.projects?.[projectName] as ProjectConfiguration;
+    if (!projectConfiguration) {
+      throw new Error(
+        "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
+      );
+    }
+  } else if (projectName) {
+    projectConfiguration = projectsConfigurations?.projects?.[projectName] as ProjectConfiguration;
+    if (!projectConfiguration) {
+      throw new Error(
+        "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
+      );
+    }
+
+    projectRoot = projectConfiguration.root;
   }
 
-  const projectConfiguration = projectsConfigurations?.projects?.[projectName];
-  if (!projectConfiguration) {
-    throw new Error(
-      `The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project at ${joinPathFragments(
-        projectRoot,
-        "project.json"
-      )}`
-    );
-  }
-
+  sourceRoot ??= projectConfiguration.sourceRoot as string;
   const buildTarget = projectConfiguration?.targets?.build;
   if (!buildTarget) {
     throw new Error(
@@ -81,10 +100,9 @@ export async function tsBuild(
     );
   }
 
-  const _sourceRoot = (sourceRoot ? sourceRoot : projectConfiguration.sourceRoot) as string;
   const enhancedOptions = (await applyWorkspaceTokens<ProjectTokenizerOptions>(
     applyDefaultOptions(options, config),
-    { projectRoot, projectName, sourceRoot: _sourceRoot, config },
+    { projectRoot, projectName, sourceRoot, config },
     applyWorkspaceProjectTokens
   )) as TypeScriptBuildOptions;
 
@@ -128,7 +146,7 @@ export async function tsBuild(
 
   if (enhancedOptions.includeSrc === true) {
     assets.push({
-      input: _sourceRoot,
+      input: sourceRoot,
       glob: "**/{*.ts,*.tsx,*.js,*.jsx}",
       output: "src/"
     });
@@ -144,10 +162,10 @@ export async function tsBuild(
     },
     {
       root: workspaceRoot,
-      projectName,
       targetName: "build",
       target: buildTarget,
       ...enhancedOptions,
+      projectName,
       projectGraph,
       projectsConfigurations,
       nxJsonConfiguration: nxJson,
@@ -216,17 +234,17 @@ export async function tsBuild(
     );
   }
 
-  writeDebug(config, "📦 Generating package.json file");
+  writeDebug(config, "🎁 Generating package.json file");
   const packageJson = await generatePackageJson(
     config,
     projectRoot,
-    _sourceRoot,
+    sourceRoot,
     projectName,
     enhancedOptions
   );
 
   if (enhancedOptions.generatePackageJson !== false) {
-    writeDebug(config, "📝 Writing package.json file");
+    writeDebug(config, "✍️ Writing package.json file");
     await writeJsonFile(
       joinPathFragments(workspaceRoot, enhancedOptions.outputPath, "package.json"),
       packageJson
@@ -240,12 +258,17 @@ export async function tsBuild(
     }
   }
 
-  writeDebug(config, " Detecting entry points for the build process");
-  const entryPoints = getEntryPoints(config, projectRoot, _sourceRoot, enhancedOptions);
+  writeDebug(config, "🔍 Detecting entry points for the build process");
+  const entryPoints = getEntryPoints(config, projectRoot, sourceRoot, enhancedOptions);
+
+  writeTrace(
+    config,
+    `Found entry points: \n${entryPoints.map((entryPoint) => `- ${entryPoint}`).join(" \n")}`
+  );
 
   // #region Run the build process
 
-  writeDebug(config, "🛠 Running the build process for each entry point");
+  writeDebug(config, "🤖 Running the build process for each entry point");
   await Promise.allSettled(
     entryPoints.map((entryPoint: string) =>
       runTsupBuild(
@@ -253,7 +276,7 @@ export async function tsBuild(
           main: entryPoint,
           projectRoot,
           projectName,
-          sourceRoot: _sourceRoot
+          sourceRoot
         },
         config,
         enhancedOptions
