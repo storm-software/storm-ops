@@ -1,3 +1,15 @@
+## 0.0.5 (2024-03-05)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolved issues with created context in build process ([186ac3c7](https://github.com/storm-software/storm-ops/commit/186ac3c7))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.0.4 (2024-03-05)
 
 
