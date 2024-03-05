@@ -1,3 +1,15 @@
+## 1.31.1 (2024-03-05)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Resolve issue with path corrections logic ([2f84316c](https://github.com/storm-software/storm-ops/commit/2f84316c))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.31.0 (2024-03-03)
 
 
