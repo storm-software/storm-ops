@@ -1,3 +1,15 @@
+## 1.63.5 (2024-03-05)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update the compiler option paths after normalization ([98128e4e](https://github.com/storm-software/storm-ops/commit/98128e4e))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.63.4 (2024-03-05)
 
 
