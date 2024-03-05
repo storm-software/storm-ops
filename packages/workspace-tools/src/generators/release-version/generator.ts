@@ -61,10 +61,8 @@ Valid values are: ${validReleaseVersionPrefixes.map((s) => `"${s}"`).join(", ")}
     );
   }
 
-  if (options.firstRelease) {
-    // always use disk as a fallback for the first release
-    options.fallbackCurrentVersionResolver = "disk";
-  }
+  // always use disk as a fallback in case this is the first release
+  options.fallbackCurrentVersionResolver ??= "disk";
 
   // const projects = options.projects.filter(
   //   (project: ProjectGraphProjectNode) =>
