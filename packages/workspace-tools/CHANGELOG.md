@@ -1,3 +1,15 @@
+## 1.63.6 (2024-03-05)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update tsup build to change directory to workspace root ([31ac5008](https://github.com/storm-software/storm-ops/commit/31ac5008))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.63.5 (2024-03-05)
 
 
