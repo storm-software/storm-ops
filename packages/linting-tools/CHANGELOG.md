@@ -1,3 +1,15 @@
+## 1.42.0 (2024-03-05)
+
+
+### 🚀 Features
+
+- **build-tools:** Split out Build CLI and supporting code to separate package ([9376ed39](https://github.com/storm-software/storm-ops/commit/9376ed39))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.41.4 (2024-03-01)
 
 
