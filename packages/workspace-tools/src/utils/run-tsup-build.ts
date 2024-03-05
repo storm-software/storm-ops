@@ -61,6 +61,8 @@ export const runTsupBuild = async (
 
   const workspaceRoot = correctPaths(config?.workspaceRoot ?? findWorkspaceRoot());
 
+  process.chdir(workspaceRoot);
+
   // #region Add default plugins
 
   const stormEnv = Object.keys(options.env ?? {})
