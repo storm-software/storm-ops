@@ -1,3 +1,15 @@
+## 0.0.6 (2024-03-05)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolved issue determining package name ([9e407562](https://github.com/storm-software/storm-ops/commit/9e407562))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.0.5 (2024-03-05)
 
 
