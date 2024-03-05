@@ -12,7 +12,7 @@ import type { StormConfig } from "@storm-software/config";
 import { removeSync } from "fs-extra";
 import { copyAssets } from "@nx/js";
 import { joinPathFragments, createProjectGraphAsync, type ExecutorContext } from "@nx/devkit";
-import { fileExists, writeJsonFile } from "nx/src/utils/fileutils";
+import { writeJsonFile } from "nx/src/utils/fileutils";
 import { globSync } from "glob";
 import { writeFile } from "node:fs/promises";
 import { readFileSync } from "node:fs";
@@ -43,19 +43,6 @@ export async function tsBuild(
 
   registerPluginTSTranspiler();
 
-  let tsconfigFile = joinPathFragments(workspaceRoot, "tsconfig.json");
-  if (!fileExists(tsconfigFile)) {
-    tsconfigFile = joinPathFragments(workspaceRoot, "tsconfig.base.json");
-  }
-  if (!fileExists(tsconfigFile)) {
-    throw new Error(
-      `The Build process failed because the workspace does not have a valid tsconfig file. Check if the file exists in the root of the workspace at ${joinPathFragments(
-        projectRoot,
-        "tsconfig.json"
-      )} or ${joinPathFragments(projectRoot, "tsconfig.base.json")}`
-    );
-  }
-
   const projectGraph = await createProjectGraphAsync({
     exitOnError: true
   });
@@ -64,7 +51,7 @@ export async function tsBuild(
   const projectsConfigurations = readProjectsConfigurationFromProjectGraph(projectGraph);
   const projectRootMap = createProjectRootMappings(projectGraph.nodes);
 
-  const projectName = findProjectForPath(tsconfigFile, projectRootMap);
+  const projectName = findProjectForPath(projectRoot, projectRootMap);
   if (!projectName || typeof projectName !== "string") {
     throw new Error(
       `The Build process failed because the project does not have a valid name in the project.json file. Check if the file exists in the root of the project at ${joinPathFragments(
