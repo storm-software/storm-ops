@@ -1,3 +1,15 @@
+## 1.65.1 (2024-03-06)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Added item to `additionalEntryPoints` for bin/build ([e2e256a5](https://github.com/storm-software/storm-ops/commit/e2e256a5))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.65.0 (2024-03-06)
 
 
