@@ -42,7 +42,7 @@
     "adr:preview": "pnpm log4brains preview",
     "prebuild": "pnpm clean",
     "build": "nx affected -t build --parallel=5",
-    "build:all": "nx run-many -t build --all --parallel=5",
+    "build:all": "nx run-many -t build --all --parallel=1",
     "clean": "rimraf dist",
     "clean:packages": "rimraf dist/packages",
     "commit": "node ./dist/packages/git-tools/bin/git.js commit --config=\"../src/commit/config.js\"",

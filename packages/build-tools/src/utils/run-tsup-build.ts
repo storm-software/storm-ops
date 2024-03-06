@@ -6,9 +6,9 @@ import type { NormalizedExecutorOptions } from "@nx/js/src/utils/schema";
 import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
 import type { StormConfig } from "@storm-software/config";
 import { environmentPlugin } from "esbuild-plugin-environment";
-import type { TsupContext, TypeScriptBuildOptions } from "../../declarations";
+import type { TsupContext, TypeScriptBuildOptions } from "../types";
 import { parseJsonConfigFileContent, sys, readConfigFile } from "typescript";
-import { getConfig } from "../config";
+import { defaultConfig, getConfig } from "../config";
 import { findFileName, removeExtension } from "@storm-software/config-tools";
 // import { type TSConfig, readTSConfig } from "pkg-types";
 import { type Options, build as tsup, defineConfig } from "tsup";
@@ -24,7 +24,21 @@ export const runTsupBuild = async (
 
   const workspaceRoot = correctPaths(config?.workspaceRoot ?? findWorkspaceRoot());
 
-  process.chdir(workspaceRoot);
+  writeTrace(
+    config,
+    `⚙️  TSUP (ESBuild) Build options:
+${Object.keys(options)
+  .map(
+    (key) =>
+      `${key}: ${
+        !options[key] || _isPrimitive(options[key]) ? options[key] : JSON.stringify(options[key])
+      }`
+  )
+  .join("\n")}
+`
+  );
+
+  // process.chdir(workspaceRoot);
 
   // #region Add default plugins
 
@@ -124,27 +138,28 @@ ${options.banner}
     outputPath: options.outputPath
   };
 
-  if (options.getConfig) {
-    writeInfo(config, "⚡ Running the Build process");
-
-    const getConfigFns = [options.getConfig];
-    const tsupConfig = defineConfig(
-      getConfigFns.map((getConfigFn) =>
-        getConfig(workspaceRoot, context.projectRoot, getConfigFn, getConfigOptions)
-      )
-    );
-
-    if (_isFunction(tsupConfig)) {
-      const tsupOptions = await Promise.resolve(tsupConfig({}));
-      await build(tsupOptions, config as StormConfig);
-    } else {
-      await build(tsupConfig, config as StormConfig);
-    }
-  } else {
+  if (!options.getConfig) {
+    options.getConfig = defaultConfig;
     writeWarning(
       config,
-      "The Build process did not run because no `getConfig` parameter was provided"
+      "Applying the default configuration for Build process because no `getConfig` parameter was provided"
     );
+  }
+
+  writeInfo(config, "⚡ Running the Build process");
+
+  const getConfigFns = [options.getConfig];
+  const tsupConfig = defineConfig(
+    getConfigFns.map((getConfigFn) =>
+      getConfig(workspaceRoot, context.projectRoot, getConfigFn, getConfigOptions)
+    )
+  );
+
+  if (_isFunction(tsupConfig)) {
+    const tsupOptions = await Promise.resolve(tsupConfig({}));
+    await build(tsupOptions, config as StormConfig);
+  } else {
+    await build(tsupConfig, config as StormConfig);
   }
 };
 
