@@ -1,3 +1,15 @@
+## 1.65.3 (2024-03-06)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve issue adding default `getConfig` options ([e318216f](https://github.com/storm-software/storm-ops/commit/e318216f))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.65.2 (2024-03-06)
 
 
