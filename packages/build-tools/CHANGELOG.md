@@ -1,3 +1,15 @@
+## 0.1.6 (2024-03-06)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Enhanced logging and defaulting logic when `getConfig` is missing ([b353a08f](https://github.com/storm-software/storm-ops/commit/b353a08f))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.1.5 (2024-03-06)
 
 
