@@ -1,3 +1,15 @@
+## 0.1.5 (2024-03-06)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Update the package to use the `module` type ([068a3d72](https://github.com/storm-software/storm-ops/commit/068a3d72))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.1.4 (2024-03-06)
 
 
