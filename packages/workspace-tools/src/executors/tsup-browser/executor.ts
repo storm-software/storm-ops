@@ -1,17 +1,13 @@
 import type { ExecutorContext } from "@nx/devkit";
 import { withRunExecutor } from "../../base/base-executor";
 import { tsupExecutorFn } from "../tsup/executor";
-import {
-  getFileBanner,
-  browserConfig,
-  applyDefaultOptions as baseApplyDefaultOptions,
-} from "@storm-software/build-tools";
+import { getFileBanner, browserConfig, applyDefaultOptions } from "@storm-software/build-tools";
 import type { TsupBrowserExecutorSchema } from "./schema";
 
 export const tsupBrowserBuildExecutorFn = (
   options: TsupBrowserExecutorSchema,
   context: ExecutorContext,
-  config?: any,
+  config?: any
 ) => {
   return tsupExecutorFn(
     {
@@ -23,36 +19,21 @@ export const tsupBrowserBuildExecutorFn = (
               .split(/(?=[A-Z])|[\.\-\s_]/)
               .map((s) => s.trim())
               .filter((s) => !!s)
-              .map((s) =>
-                s ? s.toUpperCase()[0] + s.toLowerCase().slice(1) : "",
-              )
+              .map((s) => (s ? s.toUpperCase()[0] + s.toLowerCase().slice(1) : ""))
               .join(" ")
-          : "TypeScript (Browser Platforms)",
+          : "TypeScript (Browser Platforms)"
       ),
       define: {
-        ...options.define,
+        ...options.define
       },
       env: {
-        ...process.env,
+        ...process.env
       },
-      getConfig: browserConfig,
+      getConfig: browserConfig
     },
     context,
-    config,
+    config
   );
-};
-
-const applyDefaultOptions = (
-  options: TsupBrowserExecutorSchema,
-): TsupBrowserExecutorSchema => {
-  return {
-    ...baseApplyDefaultOptions({
-      plugins: [],
-      ...options,
-      platform: "browser",
-    }),
-    getConfig: browserConfig,
-  };
 };
 
 export default withRunExecutor<TsupBrowserExecutorSchema>(
@@ -61,7 +42,16 @@ export default withRunExecutor<TsupBrowserExecutorSchema>(
   {
     skipReadingConfig: false,
     hooks: {
-      applyDefaultOptions,
-    },
-  },
+      applyDefaultOptions: (options: TsupBrowserExecutorSchema): TsupBrowserExecutorSchema => {
+        return {
+          ...applyDefaultOptions({
+            plugins: [],
+            ...options,
+            platform: "browser"
+          }),
+          getConfig: browserConfig
+        };
+      }
+    }
+  }
 );

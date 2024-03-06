@@ -3,7 +3,7 @@ import type { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
 import { applyDefaultOptions, type TypeScriptBuildOptions } from "@storm-software/build-tools";
 import type { TsupExecutorSchema } from "./schema";
-import { buildWithOptions } from "@storm-software/build-tools";
+import { build } from "@storm-software/build-tools";
 
 export async function tsupExecutorFn(
   options: TsupExecutorSchema,
@@ -51,7 +51,7 @@ ${Object.keys(options)
   // #endregion Prepare build context variables
 
   // biome-ignore lint/style/noNonNullAssertion: <explanation>
-  await buildWithOptions(config!, {
+  await build(config!, {
     ...options,
     projectRoot: context.projectsConfigurations.projects?.[context.projectName]?.root,
     projectName: context.projectName,

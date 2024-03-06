@@ -1,11 +1,7 @@
 import type { ExecutorContext } from "@nx/devkit";
 import { withRunExecutor } from "../../base/base-executor";
 import { tsupExecutorFn } from "../tsup/executor";
-import {
-  getFileBanner,
-  nodeConfig,
-  applyDefaultOptions as baseApplyDefaultOptions
-} from "@storm-software/build-tools";
+import { getFileBanner, nodeConfig, applyDefaultOptions } from "@storm-software/build-tools";
 import type { TsupNodeExecutorSchema } from "./schema";
 
 export const tsupNodeBuildExecutorFn = (
@@ -44,25 +40,23 @@ export const tsupNodeBuildExecutorFn = (
   );
 };
 
-const applyDefaultOptions = (options: TsupNodeExecutorSchema): TsupNodeExecutorSchema => {
-  return {
-    ...baseApplyDefaultOptions({
-      plugins: [],
-      ...options,
-      platform: "node",
-      getConfig: nodeConfig
-    }),
-    transports: ["pino-pretty", "pino-loki"]
-  };
-};
-
 export default withRunExecutor<TsupNodeExecutorSchema>(
   "TypeScript Build (NodeJs Platform)",
   tsupNodeBuildExecutorFn,
   {
     skipReadingConfig: false,
     hooks: {
-      applyDefaultOptions
+      applyDefaultOptions: (options: TsupNodeExecutorSchema): TsupNodeExecutorSchema => {
+        return {
+          ...applyDefaultOptions({
+            plugins: [],
+            ...options,
+            platform: "node"
+          }),
+          getConfig: nodeConfig,
+          transports: ["pino-pretty", "pino-loki"]
+        };
+      }
     }
   }
 );

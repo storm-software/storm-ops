@@ -35,11 +35,7 @@ export const applyDefaultOptions = (
   options.skipNativeModulesPlugin ??= false;
   options.define ??= {};
   options.env ??= {};
-
-  if (!options.getConfig) {
-    options.getConfig = defaultConfig;
-  }
-
+  options.getConfig ??= defaultConfig;
   options.verbose = options.verbose || getLogLevel(config?.logLevel) >= LogLevel.DEBUG;
 
   return options as TypeScriptBuildOptions;
