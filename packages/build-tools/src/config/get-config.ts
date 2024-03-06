@@ -1,14 +1,10 @@
-import type {
-  BuildOptions,
-  GetConfigParams,
-  TsupGetConfigOptions,
-} from "../../declarations";
+import type { BuildOptions, GetConfigParams, TsupGetConfigOptions } from "../types";
 
 export const getConfig = (
   workspaceRoot: string,
   projectRoot: string,
   getConfigFn: (options: GetConfigParams) => BuildOptions,
-  { outputPath, tsConfig, platform, ...rest }: TsupGetConfigOptions,
+  { outputPath, tsConfig, platform, ...rest }: TsupGetConfigOptions
 ) => {
   return getConfigFn({
     ...rest,
@@ -17,6 +13,6 @@ export const getConfig = (
     tsconfig: tsConfig,
     workspaceRoot,
     projectRoot,
-    platform,
+    platform
   });
 };

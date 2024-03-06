@@ -126,7 +126,7 @@ export async function buildWithOptions(config: StormConfig, options: TypeScriptB
 
   // #region Copy asset files to output directory
 
-  writeDebug(config, `📦 Copying asset files to output directory: ${enhancedOptions.outputPath}`);
+  writeDebug(config, `📦  Copying asset files to output directory: ${enhancedOptions.outputPath}`);
 
   const assets = Array.from(options.assets ?? []);
   if (!enhancedOptions.assets?.some((asset: AssetGlob) => asset?.glob === "*.md")) {
@@ -213,7 +213,7 @@ export async function buildWithOptions(config: StormConfig, options: TypeScriptB
   if (options.includeSrc === true) {
     writeDebug(
       config,
-      `📝 Adding banner and writing source files: ${joinPathFragments(
+      `📝  Adding banner and writing source files: ${joinPathFragments(
         enhancedOptions.outputPath,
         "src"
       )}`
@@ -265,7 +265,7 @@ export async function buildWithOptions(config: StormConfig, options: TypeScriptB
     );
   }
 
-  writeDebug(config, "🎁 Generating package.json file");
+  writeDebug(config, "🎁  Generating package.json file");
   const packageJson = await generatePackageJson(
     config,
     projectRoot,
@@ -275,7 +275,7 @@ export async function buildWithOptions(config: StormConfig, options: TypeScriptB
   );
 
   if (enhancedOptions.generatePackageJson !== false) {
-    writeDebug(config, "✍️ Writing package.json file");
+    writeDebug(config, "✍️   Writing package.json file");
     await writeJsonFile(
       joinPathFragments(workspaceRoot, enhancedOptions.outputPath, "package.json"),
       packageJson
@@ -289,7 +289,7 @@ export async function buildWithOptions(config: StormConfig, options: TypeScriptB
     }
   }
 
-  writeDebug(config, "🔍 Detecting entry points for the build process");
+  writeDebug(config, "🔍  Detecting entry points for the build process");
   const entryPoints = getEntryPoints(config, projectRoot, sourceRoot, enhancedOptions);
 
   writeTrace(
@@ -299,7 +299,7 @@ export async function buildWithOptions(config: StormConfig, options: TypeScriptB
 
   // #region Run the build process
 
-  writeDebug(config, "🤖 Running the build process for each entry point");
+  writeDebug(config, "⚡  Running the build process for each entry point");
   await Promise.allSettled(
     entryPoints.map((entryPoint: string) =>
       runTsupBuild(

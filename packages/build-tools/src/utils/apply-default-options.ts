@@ -36,7 +36,7 @@ export const applyDefaultOptions = (
   options.define ??= {};
   options.env ??= {};
 
-  if (options.getConfig) {
+  if (!options.getConfig) {
     options.getConfig = defaultConfig;
   }
 
