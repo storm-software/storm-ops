@@ -65,7 +65,6 @@ const tsBuildAction =
   async (projectRoot?: string, projectName?: string, sourceRoot?: string) => {
     try {
       writeInfo(config, "⚡ Building the Storm TypeScript package");
-
       await build(config, applyDefaultOptions({ projectRoot, projectName, sourceRoot }, config));
 
       writeSuccess(config, "Building has completed successfully ✅");

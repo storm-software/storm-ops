@@ -3,6 +3,7 @@ import type { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
 import { applyDefaultOptions, type TypeScriptBuildOptions } from "@storm-software/build-tools";
 import type { TsupExecutorSchema } from "./schema";
+import { buildWithOptions } from "@storm-software/build-tools";
 
 export async function tsupExecutorFn(
   options: TsupExecutorSchema,
@@ -10,7 +11,6 @@ export async function tsupExecutorFn(
   config?: StormConfig
 ) {
   const { writeDebug, writeInfo, writeSuccess } = await import("@storm-software/config-tools");
-  const { buildWithOptions } = await import("@storm-software/build-tools");
 
   writeInfo(config, "📦  Running Storm build executor on the workspace");
 

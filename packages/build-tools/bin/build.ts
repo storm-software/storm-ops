@@ -4,7 +4,7 @@ import {
   exitWithSuccess,
   handleProcess,
   loadStormConfig,
-  writeSuccess,
+  writeSuccess
 } from "@storm-software/config-tools";
 import { createProgram } from "../src/cli";
 

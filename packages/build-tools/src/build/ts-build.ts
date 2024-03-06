@@ -32,10 +32,13 @@ import {
 import { registerPluginTSTranspiler } from "nx/src/utils/nx-plugin";
 
 /**
- * Build the TypeScript project using the tsup build tools.
+ * Build and bundle a TypeScript project using the tsup build tools.
+ *
+ * @remarks
+ * This function is a wrapper around the `buildWithOptions` function that provides a default set of options.
  *
  * @param config - The storm configuration.
- * @param options - The build options.
+ * @param options - A build options partial. The minimum required options are `projectRoot` or `projectName`.
  */
 export async function build(config: StormConfig, options: Partial<TypeScriptBuildOptions> = {}) {
   let projectRoot = options?.projectRoot as string;
@@ -94,7 +97,7 @@ export async function build(config: StormConfig, options: Partial<TypeScriptBuil
 }
 
 /**
- * Build the TypeScript project using the tsup build tools.
+ * Build and bundle a TypeScript project using the tsup build tools.
  *
  * @param config - The storm configuration.
  * @param options - The build options.
