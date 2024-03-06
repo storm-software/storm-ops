@@ -1,3 +1,17 @@
+## 0.1.0 (2024-03-06)
+
+
+### 🚀 Features
+
+- **build-tools:** Update parameters passed to `tsBuild` process ([5a976c3e](https://github.com/storm-software/storm-ops/commit/5a976c3e))
+
+- **build-tools:** Added `buildWithOptions` function to support Nx executors ([4616cf46](https://github.com/storm-software/storm-ops/commit/4616cf46))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.0.6 (2024-03-05)
 
 
