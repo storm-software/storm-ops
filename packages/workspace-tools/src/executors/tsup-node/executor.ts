@@ -4,14 +4,14 @@ import { tsupExecutorFn } from "../tsup/executor";
 import {
   getFileBanner,
   nodeConfig,
-  applyDefaultOptions as baseApplyDefaultOptions,
+  applyDefaultOptions as baseApplyDefaultOptions
 } from "@storm-software/build-tools";
 import type { TsupNodeExecutorSchema } from "./schema";
 
 export const tsupNodeBuildExecutorFn = (
   options: TsupNodeExecutorSchema,
   context: ExecutorContext,
-  config?: any,
+  config?: any
 ) => {
   /*if (options.transports && Array.isArray(options.transports) && options.transports.length > 0) {
     // options.plugins.push(esbuildPluginPino({ transports: options.transports }));
@@ -27,36 +27,32 @@ export const tsupNodeBuildExecutorFn = (
               .split(/(?=[A-Z])|[\.\-\s_]/)
               .map((s) => s.trim())
               .filter((s) => !!s)
-              .map((s) =>
-                s ? s.toUpperCase()[0] + s.toLowerCase().slice(1) : "",
-              )
+              .map((s) => (s ? s.toUpperCase()[0] + s.toLowerCase().slice(1) : ""))
               .join(" ")
-          : "TypeScript (NodeJs Platform)",
+          : "TypeScript (NodeJs Platform)"
       ),
       define: {
-        ...options.define,
+        ...options.define
       },
       env: {
-        ...process.env,
+        ...process.env
       },
-      getConfig: nodeConfig,
+      getConfig: nodeConfig
     },
     context,
-    config,
+    config
   );
 };
 
-const applyDefaultOptions = (
-  options: TsupNodeExecutorSchema,
-): TsupNodeExecutorSchema => {
+const applyDefaultOptions = (options: TsupNodeExecutorSchema): TsupNodeExecutorSchema => {
   return {
     ...baseApplyDefaultOptions({
       plugins: [],
       ...options,
       platform: "node",
+      getConfig: nodeConfig
     }),
-    transports: ["pino-pretty", "pino-loki"],
-    getConfig: nodeConfig,
+    transports: ["pino-pretty", "pino-loki"]
   };
 };
 
@@ -66,7 +62,7 @@ export default withRunExecutor<TsupNodeExecutorSchema>(
   {
     skipReadingConfig: false,
     hooks: {
-      applyDefaultOptions,
-    },
-  },
+      applyDefaultOptions
+    }
+  }
 );

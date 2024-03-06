@@ -7,13 +7,13 @@ import type {
   Diagnostic,
   TransformerFactory,
   SourceFile,
-  ParsedCommandLine,
+  ParsedCommandLine
 } from "typescript";
 import type {
   TypeScriptBuildOptions,
   TsupContext,
   GetConfigParams,
-  BuildOptions,
+  BuildOptions
 } from "./src/types";
 
 export * from "./src/types";
@@ -24,15 +24,13 @@ declare function outExtension({ format }: { format?: string }): {
 };
 export { outExtension };
 
-declare function applyDefaultOptions(
-  options: TypeScriptBuildOptions,
-): TypeScriptBuildOptions;
+declare function applyDefaultOptions(options: TypeScriptBuildOptions): TypeScriptBuildOptions;
 export { applyDefaultOptions };
 
 declare function runTsupBuild(
   context: TsupContext,
   config: Partial<StormConfig>,
-  options: TypeScriptBuildOptions,
+  options: TypeScriptBuildOptions
 ): Promise<void>;
 export { runTsupBuild };
 
@@ -47,3 +45,27 @@ export { neutralConfig };
 
 declare function nodeConfig(params: GetConfigParams): BuildOptions;
 export { nodeConfig };
+
+/**
+ * Build the TypeScript project using the tsup build tools.
+ *
+ * @param config - The storm configuration.
+ * @param options - The build options.
+ */
+declare function build(
+  config: StormConfig,
+  options: Partial<TypeScriptBuildOptions> = {}
+): Promise<void>;
+export { build };
+
+/**
+ * Build the TypeScript project using the tsup build tools.
+ *
+ * @param config - The storm configuration.
+ * @param options - The build options.
+ */
+declare function buildWithOptions(
+  config: StormConfig,
+  options: TypeScriptBuildOptions
+): Promise<void>;
+export { buildWithOptions };

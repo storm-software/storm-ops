@@ -37,10 +37,9 @@ import { registerPluginTSTranspiler } from "nx/src/utils/nx-plugin";
  * @param config - The storm configuration.
  * @param options - The build options.
  */
-export async function tsBuild(config: StormConfig, options: Partial<TypeScriptBuildOptions> = {}) {
+export async function build(config: StormConfig, options: Partial<TypeScriptBuildOptions> = {}) {
   let projectRoot = options?.projectRoot as string;
   let projectName = options?.projectName as string;
-  let sourceRoot = options?.sourceRoot as string;
 
   if (!projectRoot && !projectName) {
     throw new Error(
@@ -48,15 +47,11 @@ export async function tsBuild(config: StormConfig, options: Partial<TypeScriptBu
     );
   }
 
-  const workspaceRoot = config.workspaceRoot ? config.workspaceRoot : findWorkspaceRoot();
-
   registerPluginTSTranspiler();
-
   const projectGraph = await createProjectGraphAsync({
     exitOnError: true
   });
 
-  const nxJson = readNxJson(workspaceRoot);
   const projectsConfigurations = readProjectsConfigurationFromProjectGraph(projectGraph);
   const projectRootMap = createProjectRootMappings(projectGraph.nodes);
 
@@ -89,19 +84,30 @@ export async function tsBuild(config: StormConfig, options: Partial<TypeScriptBu
     projectRoot = projectConfiguration.root;
   }
 
-  sourceRoot ??= projectConfiguration.sourceRoot as string;
-  const buildTarget = projectConfiguration?.targets?.build;
-  if (!buildTarget) {
-    throw new Error(
-      `The Build process failed because the project does not have a valid build target in the project.json file. Check if the file exists in the root of the project at ${joinPathFragments(
-        projectRoot,
-        "project.json"
-      )}`
-    );
-  }
+  await buildWithOptions(
+    config,
+    applyDefaultOptions(
+      { projectRoot, projectName, sourceRoot: projectConfiguration.sourceRoot, ...options },
+      config
+    )
+  );
+}
+
+/**
+ * Build the TypeScript project using the tsup build tools.
+ *
+ * @param config - The storm configuration.
+ * @param options - The build options.
+ */
+export async function buildWithOptions(config: StormConfig, options: TypeScriptBuildOptions) {
+  const workspaceRoot = config.workspaceRoot ? config.workspaceRoot : findWorkspaceRoot();
+
+  const projectRoot = options.projectRoot;
+  const projectName = options.projectName;
+  const sourceRoot = options.sourceRoot;
 
   const enhancedOptions = (await applyWorkspaceTokens<ProjectTokenizerOptions>(
-    applyDefaultOptions(options, config),
+    options,
     { projectRoot, projectName, sourceRoot, config },
     applyWorkspaceProjectTokens
   )) as TypeScriptBuildOptions;
@@ -153,6 +159,28 @@ export async function tsBuild(config: StormConfig, options: Partial<TypeScriptBu
   }
 
   // await retrieveProjectConfigurationsWithoutPluginInference(workspaceRoot);
+
+  const nxJson = readNxJson(workspaceRoot);
+  const projectGraph = await createProjectGraphAsync({
+    exitOnError: true
+  });
+
+  const projectsConfigurations = readProjectsConfigurationFromProjectGraph(projectGraph);
+  if (!projectsConfigurations?.projects?.[projectName]) {
+    throw new Error(
+      "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
+    );
+  }
+
+  const buildTarget = projectsConfigurations.projects[projectName]?.targets?.build;
+  if (!buildTarget) {
+    throw new Error(
+      `The Build process failed because the project does not have a valid build target in the project.json file. Check if the file exists in the root of the project at ${joinPathFragments(
+        projectRoot,
+        "project.json"
+      )}`
+    );
+  }
 
   const result = await copyAssets(
     {
@@ -222,10 +250,10 @@ export async function tsBuild(config: StormConfig, options: Partial<TypeScriptBu
         writeFile(
           file,
           `${
-            options.banner
-              ? options.banner.startsWith("//")
-                ? options.banner
-                : `// ${options.banner}`
+            enhancedOptions.banner
+              ? enhancedOptions.banner.startsWith("//")
+                ? enhancedOptions.banner
+                : `// ${enhancedOptions.banner}`
               : ""
           }\n\n${readFileSync(file, "utf-8")}`,
           "utf-8"

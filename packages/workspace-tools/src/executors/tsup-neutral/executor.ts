@@ -4,7 +4,7 @@ import { withRunExecutor } from "../../base/base-executor";
 import {
   getFileBanner,
   neutralConfig,
-  applyDefaultOptions as baseApplyDefaultOptions,
+  applyDefaultOptions as baseApplyDefaultOptions
 } from "@storm-software/build-tools";
 import { tsupExecutorFn } from "../tsup/executor";
 import type { TsupNeutralExecutorSchema } from "./schema";
@@ -12,7 +12,7 @@ import type { TsupNeutralExecutorSchema } from "./schema";
 export const tsupNeutralBuildExecutorFn = (
   options: TsupNeutralExecutorSchema,
   context: ExecutorContext,
-  config?: StormConfig,
+  config?: StormConfig
 ) => {
   return tsupExecutorFn(
     {
@@ -24,36 +24,32 @@ export const tsupNeutralBuildExecutorFn = (
               .split(/(?=[A-Z])|[\.\-\s_]/)
               .map((s) => s.trim())
               .filter((s) => !!s)
-              .map((s) =>
-                s ? s.toUpperCase()[0] + s.toLowerCase().slice(1) : "",
-              )
+              .map((s) => (s ? s.toUpperCase()[0] + s.toLowerCase().slice(1) : ""))
               .join(" ")
-          : "TypeScript (Neutral Platform)",
+          : "TypeScript (Neutral Platform)"
       ),
       define: {
         ...options.define,
-        process: `{ env: ${JSON.stringify(process.env)} }`,
+        process: `{ env: ${JSON.stringify(process.env)} }`
       },
       env: {
-        ...process.env,
+        ...process.env
       },
-      getConfig: neutralConfig,
+      getConfig: neutralConfig
     },
     context,
-    config,
+    config
   );
 };
 
-const applyDefaultOptions = (
-  options: TsupNeutralExecutorSchema,
-): TsupNeutralExecutorSchema => {
+const applyDefaultOptions = (options: TsupNeutralExecutorSchema): TsupNeutralExecutorSchema => {
   return {
     ...baseApplyDefaultOptions({
       plugins: [],
       ...options,
       platform: "neutral",
-    }),
-    getConfig: neutralConfig,
+      getConfig: neutralConfig
+    })
   } as TsupNeutralExecutorSchema;
 };
 
@@ -63,7 +59,7 @@ export default withRunExecutor<TsupNeutralExecutorSchema>(
   {
     skipReadingConfig: false,
     hooks: {
-      applyDefaultOptions,
-    },
-  },
+      applyDefaultOptions
+    }
+  }
 );

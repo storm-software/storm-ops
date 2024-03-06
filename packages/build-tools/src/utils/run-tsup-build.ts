@@ -16,19 +16,13 @@ import { type Options, build as tsup, defineConfig } from "tsup";
 export const runTsupBuild = async (
   context: TsupContext,
   config: Partial<StormConfig>,
-  options: TypeScriptBuildOptions,
+  options: TypeScriptBuildOptions
 ) => {
-  const {
-    writeInfo,
-    writeTrace,
-    writeWarning,
-    correctPaths,
-    findWorkspaceRoot,
-  } = await import("@storm-software/config-tools");
-
-  const workspaceRoot = correctPaths(
-    config?.workspaceRoot ?? findWorkspaceRoot(),
+  const { writeInfo, writeTrace, writeWarning, correctPaths, findWorkspaceRoot } = await import(
+    "@storm-software/config-tools"
   );
+
+  const workspaceRoot = correctPaths(config?.workspaceRoot ?? findWorkspaceRoot());
 
   process.chdir(workspaceRoot);
 
@@ -43,8 +37,8 @@ export const runTsupBuild = async (
   options.plugins?.push(
     esbuildDecorators({
       tsconfig: options.tsConfig,
-      cwd: workspaceRoot,
-    }),
+      cwd: workspaceRoot
+    })
   );
   options.plugins?.push(environmentPlugin(stormEnv));
 
@@ -61,14 +55,14 @@ export const runTsupBuild = async (
           ...options,
           watch: false,
           main: context.main,
-          transformers: [],
+          transformers: []
         },
         workspaceRoot,
         context.sourceRoot,
-        workspaceRoot,
+        workspaceRoot
       ),
-      context.projectName,
-    ),
+      context.projectName
+    )
   );
 
   writeTrace(
@@ -81,10 +75,10 @@ ${Object.keys(dtsTsConfig.options)
         !dtsTsConfig.options[key] || _isPrimitive(dtsTsConfig.options[key])
           ? dtsTsConfig.options[key]
           : JSON.stringify(dtsTsConfig.options[key])
-      }`,
+      }`
   )
   .join("\n")}
-`,
+`
   );
 
   // #endregion Add default plugins
@@ -96,18 +90,12 @@ ${Object.keys(dtsTsConfig.options)
     entry: {
       [removeExtension(
         context.main
-          ?.split(
-            context.main?.includes(sep)
-              ? sep
-              : context.main?.includes("/")
-                ? "/"
-                : "\\",
-          )
-          ?.pop(),
-      )]: context.main,
+          ?.split(context.main?.includes(sep) ? sep : context.main?.includes("/") ? "/" : "\\")
+          ?.pop()
+      )]: context.main
     },
     define: {
-      __STORM_CONFIG: JSON.stringify(stormEnv),
+      __STORM_CONFIG: JSON.stringify(stormEnv)
     },
     env: {
       __STORM_CONFIG: JSON.stringify(stormEnv),
@@ -116,7 +104,7 @@ ${Object.keys(dtsTsConfig.options)
         .reduce((ret, key) => {
           ret[key] = options.env?.[key];
           return ret;
-        }, {}),
+        }, {})
     },
     dtsTsConfig,
     banner: options.banner
@@ -130,10 +118,10 @@ ${options.banner}
 
 ${options.banner}
 
-*/`,
+*/`
         }
       : undefined,
-    outputPath: options.outputPath,
+    outputPath: options.outputPath
   };
 
   if (options.getConfig) {
@@ -142,13 +130,8 @@ ${options.banner}
     const getConfigFns = [options.getConfig];
     const tsupConfig = defineConfig(
       getConfigFns.map((getConfigFn) =>
-        getConfig(
-          workspaceRoot,
-          context.projectRoot,
-          getConfigFn,
-          getConfigOptions,
-        ),
-      ),
+        getConfig(workspaceRoot, context.projectRoot, getConfigFn, getConfigOptions)
+      )
     );
 
     if (_isFunction(tsupConfig)) {
@@ -160,7 +143,7 @@ ${options.banner}
   } else {
     writeWarning(
       config,
-      "The Build process did not run because no `getConfig` parameter was provided",
+      "The Build process did not run because no `getConfig` parameter was provided"
     );
   }
 };
@@ -168,7 +151,7 @@ ${options.banner}
 async function getNormalizedTsConfig(
   workspaceRoot: string,
   outputPath: string,
-  options: TypeScriptCompilationOptions,
+  options: TypeScriptCompilationOptions
 ) {
   const { correctPaths } = await import("@storm-software/config-tools");
 
@@ -176,8 +159,8 @@ async function getNormalizedTsConfig(
   if (!rawTsconfig?.config || rawTsconfig?.error) {
     throw new Error(
       `Unable to find ${findFileName(options.tsConfig) || "tsconfig.json"} in ${dirname(
-        options.tsConfig,
-      )}${rawTsconfig?.error ? ` \nError: ${rawTsconfig.error.messageText}` : ""}`,
+        options.tsConfig
+      )}${rawTsconfig?.error ? ` \nError: ${rawTsconfig.error.messageText}` : ""}`
     );
   }
 
@@ -193,9 +176,7 @@ async function getNormalizedTsConfig(
   // });
 
   const basePath = correctPaths(workspaceRoot);
-  const declarationDir = correctPaths(
-    join(basePath, "tmp", ".tsup", "declaration"),
-  );
+  const declarationDir = correctPaths(join(basePath, "tmp", ".tsup", "declaration"));
 
   const parsedTsconfig = parseJsonConfigFileContent(
     {
@@ -207,11 +188,11 @@ async function getNormalizedTsConfig(
         emitDeclarationOnly: true,
         declaration: true,
         declarationMap: true,
-        declarationDir,
-      },
+        declarationDir
+      }
     },
     sys,
-    correctPaths(dirname(options.tsConfig)),
+    correctPaths(dirname(options.tsConfig))
   );
 
   parsedTsconfig.options.rootDir = basePath;
@@ -220,32 +201,26 @@ async function getNormalizedTsConfig(
   parsedTsconfig.options.declarationDir = declarationDir;
 
   if (parsedTsconfig.options.paths) {
-    parsedTsconfig.options.paths = Object.keys(
-      parsedTsconfig.options.paths,
-    ).reduce(
+    parsedTsconfig.options.paths = Object.keys(parsedTsconfig.options.paths).reduce(
       (ret: Record<string, string[]>, key: string) => {
         if (parsedTsconfig.options.paths?.[key]) {
           ret[key] = parsedTsconfig.options.paths[key]?.map((path) =>
-            correctPaths(join(basePath, path)),
+            correctPaths(join(basePath, path))
           ) as string[];
         }
 
         return ret;
       },
-      {} as Record<string, string[]>,
+      {} as Record<string, string[]>
     );
   }
 
   if (parsedTsconfig.fileNames) {
-    parsedTsconfig.fileNames = parsedTsconfig.fileNames.map((fileName) =>
-      correctPaths(fileName),
-    );
+    parsedTsconfig.fileNames = parsedTsconfig.fileNames.map((fileName) => correctPaths(fileName));
   }
 
   if (parsedTsconfig.options.incremental) {
-    parsedTsconfig.options.tsBuildInfoFile = correctPaths(
-      join(outputPath, "tsconfig.tsbuildinfo"),
-    );
+    parsedTsconfig.options.tsBuildInfoFile = correctPaths(join(outputPath, "tsconfig.tsbuildinfo"));
   }
 
   return parsedTsconfig;
@@ -255,9 +230,7 @@ const build = async (options: Options | Options[], config?: StormConfig) => {
   const { writeDebug } = await import("@storm-software/config-tools");
 
   if (Array.isArray(options)) {
-    await Promise.all(
-      options.map((buildOptions) => build(buildOptions, config)),
-    );
+    await Promise.all(options.map((buildOptions) => build(buildOptions, config)));
   } else {
     let tsupOptions = options;
     if (_isFunction(tsupOptions)) {
@@ -278,12 +251,12 @@ ${
                 : _isFunction(tsupOptions[key])
                   ? "<function>"
                   : JSON.stringify(tsupOptions[key])
-            }`,
+            }`
         )
         .join("\n")
     : "<function>"
 }
-`,
+`
     );
 
     await tsup(tsupOptions);
@@ -304,7 +277,7 @@ const _isPrimitive = (value: unknown): boolean => {
 };
 
 const _isFunction = (
-  value: unknown,
+  value: unknown
 ): value is ((params?: unknown) => unknown) & ((param?: any) => any) => {
   try {
     return (
@@ -320,7 +293,7 @@ const _isFunction = (
 
 const createTypeScriptCompilationOptions = (
   normalizedOptions: NormalizedExecutorOptions,
-  projectName: string,
+  projectName: string
 ): TypeScriptCompilationOptions => {
   return {
     outputPath: normalizedOptions.outputPath,
@@ -330,8 +303,6 @@ const createTypeScriptCompilationOptions = (
     tsConfig: normalizedOptions.tsConfig,
     watch: normalizedOptions.watch,
     deleteOutputPath: normalizedOptions.clean,
-    getCustomTransformers: getCustomTrasformersFactory(
-      normalizedOptions.transformers,
-    ),
+    getCustomTransformers: getCustomTrasformersFactory(normalizedOptions.transformers)
   };
 };
