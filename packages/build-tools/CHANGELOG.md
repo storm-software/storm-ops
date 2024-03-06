@@ -1,3 +1,15 @@
+## 0.1.7 (2024-03-06)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Added the esbuild shims to build-tools ([a24174e3](https://github.com/storm-software/storm-ops/commit/a24174e3))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.1.6 (2024-03-06)
 
 
