@@ -1,3 +1,15 @@
+## 0.1.2 (2024-03-06)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolved issues with `main` and `module` paths in `package.json` file ([9add5772](https://github.com/storm-software/storm-ops/commit/9add5772))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.1.1 (2024-03-06)
 
 
