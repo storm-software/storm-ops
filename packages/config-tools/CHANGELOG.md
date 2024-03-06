@@ -1,3 +1,15 @@
+## 1.32.3 (2024-03-06)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Fix `applyDefaultOptions` issue that cleared out `getConfig` values ([baab6f94](https://github.com/storm-software/storm-ops/commit/baab6f94))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.32.2 (2024-03-05)
 
 
