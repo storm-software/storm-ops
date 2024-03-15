@@ -28,7 +28,7 @@ patchedDependencies:
     hash: kvwqsvntptc5dck76ulq454vwi
     path: patches/cosmiconfig@9.0.0.patch
   tsup@8.0.0:
-    hash: fecszixvz36nsmruxbct32ggt4
+    hash: aogoruotloqylvnlbggbmjwega
     path: patches/tsup@8.0.0.patch
 
 importers:
@@ -181,7 +181,7 @@ importers:
         version: 10.3.10
       tsup:
         specifier: 8.0.0
-        version: 8.0.0(patch_hash=fecszixvz36nsmruxbct32ggt4)(@microsoft/api-extractor@7.40.1)(@swc/core@1.4.2)(ts-node@10.9.2)(typescript@5.3.3)
+        version: 8.0.0(patch_hash=aogoruotloqylvnlbggbmjwega)(@microsoft/api-extractor@7.40.1)(@swc/core@1.4.2)(ts-node@10.9.2)(typescript@5.3.3)
       typescript:
         specifier: 5.3.3
         version: 5.3.3
@@ -631,7 +631,7 @@ importers:
         version: 5.24.0
       tsup:
         specifier: 8.0.0
-        version: 8.0.0(patch_hash=fecszixvz36nsmruxbct32ggt4)(@microsoft/api-extractor@7.40.1)(@swc/core@1.4.2)(ts-node@10.9.2)(typescript@5.3.3)
+        version: 8.0.0(patch_hash=aogoruotloqylvnlbggbmjwega)(@microsoft/api-extractor@7.40.1)(@swc/core@1.4.2)(ts-node@10.9.2)(typescript@5.3.3)
       typia:
         specifier: 5.4.1
         version: 5.4.1(typescript@5.3.3)
@@ -13352,7 +13352,7 @@ packages:
     resolution: {integrity: sha512-LxhtAkPDTkVCMQjt2h6eBVY28KCjikZqZfMcC15YBeNjkgUpdCfBu5HoiOTDu86v6smE8yOjyEktJ8hlbANHQA==}
     engines: {node: '>=0.6.x'}
 
-  /tsup@8.0.0(patch_hash=fecszixvz36nsmruxbct32ggt4)(@microsoft/api-extractor@7.40.1)(@swc/core@1.4.2)(ts-node@10.9.2)(typescript@5.3.3):
+  /tsup@8.0.0(patch_hash=aogoruotloqylvnlbggbmjwega)(@microsoft/api-extractor@7.40.1)(@swc/core@1.4.2)(ts-node@10.9.2)(typescript@5.3.3):
     resolution: {integrity: sha512-9rOGn8LsFn2iAg2pCB1jnH7ygVuGjlzIomjw0jKXUxAii3iL5cXgm0jZMPKfFH1bSAjQovJ1DUVPSw+oDuIu8A==}
     engines: {node: '>=18'}
     hasBin: true

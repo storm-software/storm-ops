@@ -17,7 +17,7 @@ export function defaultConfig({
   external,
   banner = {},
   platform = "neutral",
-  verbose = false,
+  verbose = true,
   apiReport = true,
   docModel = true,
   tsdocMetadata = true,
