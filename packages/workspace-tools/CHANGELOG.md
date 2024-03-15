@@ -1,3 +1,15 @@
+## 1.65.4 (2024-03-15)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Remove unneeded chdir lines from base methods ([b65ef683](https://github.com/storm-software/storm-ops/commit/b65ef683))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.65.3 (2024-03-06)
 
 
