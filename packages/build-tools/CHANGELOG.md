@@ -1,3 +1,15 @@
+## 0.1.14 (2024-03-15)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Manually add the typescript libs to the `fileNames` build parameter ([d7462a4e](https://github.com/storm-software/storm-ops/commit/d7462a4e))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.1.13 (2024-03-15)
 
 
