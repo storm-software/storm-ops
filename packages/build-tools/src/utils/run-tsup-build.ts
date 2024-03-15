@@ -38,7 +38,7 @@ ${Object.keys(options)
 `
   );
 
-  // process.chdir(workspaceRoot);
+  process.chdir(workspaceRoot);
 
   // #region Add default plugins
 
