@@ -191,7 +191,6 @@ async function getNormalizedTsConfig(
   // });
 
   const basePath = correctPaths(workspaceRoot);
-  const declarationDir = correctPaths(join(basePath, "tmp", ".tsup", "declaration"));
 
   const parsedTsconfig = parseJsonConfigFileContent(
     {
@@ -203,17 +202,16 @@ async function getNormalizedTsConfig(
         emitDeclarationOnly: true,
         declaration: true,
         declarationMap: true,
-        declarationDir
+        declarationDir: join("tmp", ".tsup", "declaration")
       }
     },
     sys,
-    correctPaths(dirname(options.tsConfig))
+    dirname(options.tsConfig)
   );
 
-  parsedTsconfig.options.rootDir = basePath;
+  parsedTsconfig.options.rootDir = ".";
   parsedTsconfig.options.baseUrl = basePath;
-  parsedTsconfig.options.pathsBasePath = basePath;
-  parsedTsconfig.options.declarationDir = declarationDir;
+  // parsedTsconfig.options.pathsBasePath = basePath;
 
   // if (parsedTsconfig.options.paths) {
   //   parsedTsconfig.options.paths = Object.keys(parsedTsconfig.options.paths).reduce(
