@@ -1,3 +1,15 @@
+## 0.1.11 (2024-03-15)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Update issues with invalid path to build shim files ([dae25dfd](https://github.com/storm-software/storm-ops/commit/dae25dfd))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.1.10 (2024-03-15)
 
 
