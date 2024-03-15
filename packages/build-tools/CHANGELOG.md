@@ -1,3 +1,15 @@
+## 0.1.9 (2024-03-15)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Removed the chdir command from build ([1ba6be2c](https://github.com/storm-software/storm-ops/commit/1ba6be2c))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.1.8 (2024-03-15)
 
 
