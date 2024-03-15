@@ -56,7 +56,7 @@ export const withRunExecutor =
       const projectName =
         context.projectsConfigurations.projects[context.projectName]?.name ?? context.projectName;
 
-      process.chdir(workspaceRoot);
+      // process.chdir(workspaceRoot);
 
       if (!executorOptions.skipReadingConfig) {
         writeDebug(

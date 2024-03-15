@@ -56,7 +56,7 @@ export const withRunGenerator =
         );
       }
 
-      process.chdir(workspaceRoot);
+      // process.chdir(workspaceRoot);
 
       if (generatorOptions?.hooks?.applyDefaultOptions) {
         writeDebug(config, "Running the applyDefaultOptions hook...");

@@ -215,20 +215,20 @@ async function getNormalizedTsConfig(
   parsedTsconfig.options.pathsBasePath = basePath;
   parsedTsconfig.options.declarationDir = declarationDir;
 
-  if (parsedTsconfig.options.paths) {
-    parsedTsconfig.options.paths = Object.keys(parsedTsconfig.options.paths).reduce(
-      (ret: Record<string, string[]>, key: string) => {
-        if (parsedTsconfig.options.paths?.[key]) {
-          ret[key] = parsedTsconfig.options.paths[key]?.map((path) =>
-            correctPaths(join(basePath, path))
-          ) as string[];
-        }
+  // if (parsedTsconfig.options.paths) {
+  //   parsedTsconfig.options.paths = Object.keys(parsedTsconfig.options.paths).reduce(
+  //     (ret: Record<string, string[]>, key: string) => {
+  //       if (parsedTsconfig.options.paths?.[key]) {
+  //         ret[key] = parsedTsconfig.options.paths[key]?.map((path) =>
+  //           correctPaths(join(basePath, path))
+  //         ) as string[];
+  //       }
 
-        return ret;
-      },
-      {} as Record<string, string[]>
-    );
-  }
+  //       return ret;
+  //     },
+  //     {} as Record<string, string[]>
+  //   );
+  // }
 
   if (parsedTsconfig.fileNames) {
     parsedTsconfig.fileNames = parsedTsconfig.fileNames.map((fileName) => correctPaths(fileName));
