@@ -1,3 +1,15 @@
+## 0.1.13 (2024-03-15)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Updates to typescript build processing ([ae081b8e](https://github.com/storm-software/storm-ops/commit/ae081b8e))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.1.12 (2024-03-15)
 
 
