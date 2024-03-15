@@ -232,6 +232,9 @@ async function getNormalizedTsConfig(
 
   if (parsedTsconfig.fileNames) {
     parsedTsconfig.fileNames = parsedTsconfig.fileNames.map((fileName) => correctPaths(fileName));
+    parsedTsconfig.fileNames.push(
+      correctPaths(join(basePath, "node_modules", "typescript", "lib", "lib.esnext.d.ts"))
+    );
   }
 
   if (parsedTsconfig.options.incremental) {
