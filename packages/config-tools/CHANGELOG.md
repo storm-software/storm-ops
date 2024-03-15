@@ -1,3 +1,15 @@
+## 1.32.4 (2024-03-15)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolved issue with improper token application ([53398629](https://github.com/storm-software/storm-ops/commit/53398629))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.32.3 (2024-03-06)
 
 
