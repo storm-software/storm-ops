@@ -74,6 +74,8 @@ export const applyWorkspaceTokens = async <
       );
     } else if (typeof options[option] === "object") {
       result[option] = await applyWorkspaceTokens(options[option], config, tokenizerFn);
+    } else {
+      result[option] = options[option];
     }
   }
 
