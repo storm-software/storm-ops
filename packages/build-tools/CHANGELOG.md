@@ -1,3 +1,15 @@
+## 0.1.12 (2024-03-15)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Updates to paths provided to compiler options ([c559006f](https://github.com/storm-software/storm-ops/commit/c559006f))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.1.11 (2024-03-15)
 
 
