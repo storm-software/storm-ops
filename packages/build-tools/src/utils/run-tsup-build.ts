@@ -7,11 +7,11 @@ import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/t
 import type { StormConfig } from "@storm-software/config";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import type { TsupContext, TypeScriptBuildOptions } from "../types";
-import { parseJsonConfigFileContent, sys, readConfigFile } from "typescript";
 import { defaultConfig, getConfig } from "../config";
 import { findFileName, removeExtension } from "@storm-software/config-tools";
 // import { type TSConfig, readTSConfig } from "pkg-types";
 import { type Options, build as tsup, defineConfig } from "tsup";
+import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript";
 
 export const runTsupBuild = async (
   context: TsupContext,
@@ -170,7 +170,9 @@ async function getNormalizedTsConfig(
 ) {
   const { correctPaths } = await import("@storm-software/config-tools");
 
-  const rawTsconfig = readConfigFile(options.tsConfig, sys.readFile);
+  const tsModule = ensureTypescript();
+
+  const rawTsconfig = tsModule.readConfigFile(options.tsConfig, tsModule.sys.readFile);
   if (!rawTsconfig?.config || rawTsconfig?.error) {
     throw new Error(
       `Unable to find ${findFileName(options.tsConfig) || "tsconfig.json"} in ${dirname(
@@ -192,7 +194,7 @@ async function getNormalizedTsConfig(
 
   const basePath = correctPaths(workspaceRoot);
 
-  const parsedTsconfig = parseJsonConfigFileContent(
+  const parsedTsconfig = tsModule.parseJsonConfigFileContent(
     {
       ...rawTsconfig.config,
       compilerOptions: {
@@ -205,12 +207,12 @@ async function getNormalizedTsConfig(
         declarationDir: join("tmp", ".tsup", "declaration")
       }
     },
-    sys,
+    tsModule.sys,
     dirname(options.tsConfig)
   );
 
-  parsedTsconfig.options.rootDir = ".";
-  parsedTsconfig.options.baseUrl = basePath;
+  parsedTsconfig.options.rootDir = basePath;
+  parsedTsconfig.options.baseUrl = ".";
   // parsedTsconfig.options.pathsBasePath = basePath;
 
   // if (parsedTsconfig.options.paths) {

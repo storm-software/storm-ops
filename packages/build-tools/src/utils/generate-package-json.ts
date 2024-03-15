@@ -293,10 +293,10 @@ export const generatePackageJson = async (
       packageJson.funding ??= workspacePackageJson.funding;
 
       packageJson.types ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`;
-      packageJson.typings ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`;
-      packageJson.typescript ??= {
+      // packageJson.typings ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`;
+      /*packageJson.typescript ??= {
         definition: `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`
-      };
+      };*/
 
       packageJson.main ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.cjs`;
       packageJson.module ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.js`;
