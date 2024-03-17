@@ -42,7 +42,7 @@
             ".js": ".js"
           }
         },
-        "external": ["nx", "esbuild", "@swc-node/register", "@storm-software/*"],
+        "external": ["nx", "esbuild", "@swc-node/register", "@swc/core", "@storm-software/*"],
         "assets": [
           {
             "input": "packages/workspace-tools",
