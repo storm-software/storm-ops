@@ -204,13 +204,17 @@ async function getNormalizedTsConfig(
         emitDeclarationOnly: true,
         declaration: true,
         declarationMap: true,
-        declarationDir: correctPaths(join(basePath, "tmp", ".tsup", "declaration"))
+        declarationDir: join("tmp", ".tsup", "declaration")
       }
     },
     tsModule.sys,
     dirname(options.tsConfig)
   );
 
+  parsedTsconfig.options.declarationDir = correctPaths(
+    join(basePath, "tmp", ".tsup", "declaration")
+  );
+  parsedTsconfig.options.pathsBasePath = basePath;
   parsedTsconfig.options.rootDir = basePath;
   parsedTsconfig.options.baseUrl = ".";
   // parsedTsconfig.options.pathsBasePath = basePath;
@@ -230,12 +234,12 @@ async function getNormalizedTsConfig(
   //   );
   // }
 
-  if (parsedTsconfig.fileNames) {
-    parsedTsconfig.fileNames = parsedTsconfig.fileNames.map((fileName) => correctPaths(fileName));
-    parsedTsconfig.fileNames.push(
-      correctPaths(join(basePath, "node_modules", "typescript", "lib", "lib.esnext.d.ts"))
-    );
-  }
+  // if (parsedTsconfig.fileNames) {
+  //   parsedTsconfig.fileNames = parsedTsconfig.fileNames.map((fileName) => correctPaths(fileName));
+  //   parsedTsconfig.fileNames.push(
+  //     correctPaths(join(basePath, "node_modules", "typescript", "lib", "lib.esnext.d.ts"))
+  //   );
+  // }
 
   if (parsedTsconfig.options.incremental) {
     parsedTsconfig.options.tsBuildInfoFile = correctPaths(join(outputPath, "tsconfig.tsbuildinfo"));
