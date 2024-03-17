@@ -1,3 +1,15 @@
+## 1.65.5 (2024-03-17)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Mark swc packages as external ([bb4bed30](https://github.com/storm-software/storm-ops/commit/bb4bed30))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.65.4 (2024-03-15)
 
 
