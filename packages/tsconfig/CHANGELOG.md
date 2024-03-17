@@ -1,3 +1,15 @@
+## 0.0.13 (2024-03-17)
+
+
+### 🩹 Fixes
+
+- **tsconfig:** Remove unused options from root tsconfig ([b36ca687](https://github.com/storm-software/storm-ops/commit/b36ca687))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.0.12 (2024-03-15)
 
 
