@@ -204,7 +204,7 @@ async function getNormalizedTsConfig(
         emitDeclarationOnly: true,
         declaration: true,
         declarationMap: true,
-        declarationDir: join("tmp", ".tsup", "declaration")
+        declarationDir: correctPaths(join(basePath, "tmp", ".tsup", "declaration"))
       }
     },
     tsModule.sys,
