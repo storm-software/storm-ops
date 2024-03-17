@@ -1,3 +1,15 @@
+## 1.65.6 (2024-03-17)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolve issue with bad declaration folder path ([a46f403b](https://github.com/storm-software/storm-ops/commit/a46f403b))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.65.5 (2024-03-17)
 
 
