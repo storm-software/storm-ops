@@ -1,3 +1,15 @@
+## 0.0.14 (2024-03-17)
+
+
+### 🩹 Fixes
+
+- **tsconfig:** Repush changes to tsconfig updates ([1939b194](https://github.com/storm-software/storm-ops/commit/1939b194))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.0.13 (2024-03-17)
 
 
