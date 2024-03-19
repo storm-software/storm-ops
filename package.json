@@ -49,10 +49,10 @@
     "readme:format": "node ./dist/packages/git-tools/bin/git.js readme-gen --templates=\"./dist/packages/git-tools/readme/templates\"",
     "dep-graph": "nx dep-graph",
     "e2e": "nx e2e",
-    "biome:check": "biome check --apply-unsafe --no-errors-on-unmatched --files-ignore-unknown=true",
-    "biome:lint": "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true",
-    "biome:format": "npx biome format --write  --no-errors-on-unmatched --files-ignore-unknown=true",
     "help": "nx help",
+    "lint-biome": "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true",
+    "lint-biome:check": "biome check --apply-unsafe --no-errors-on-unmatched --files-ignore-unknown=true",
+    "lint-biome:fix": "npx biome format --write  --no-errors-on-unmatched --files-ignore-unknown=true",
     "lint": "node ./dist/packages/linting-tools/bin/lint.js all --skip-cspell --skip-deps-version --skip-alex",
     "local-registry": "nx local-registry @storm-software/storm-ops",
     "nx": "nx",
@@ -102,7 +102,7 @@
   },
   "packageManager": "pnpm@8.14.3",
   "engines": {
-    "node": ">=21.0.0",
+    "node": ">=20.11.0",
     "pnpm": ">=8.10.2"
   },
   "namespace": "@storm-software",

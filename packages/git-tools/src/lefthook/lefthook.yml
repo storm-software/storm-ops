@@ -12,13 +12,13 @@ pre-install:
   commands:
     validate:
       glob: "**/*.*"
-      run: "npx storm-pre-install"
+      run: "pnpm exec storm-pre-install"
 
 prepare:
   commands:
     validate:
       glob: "**/*.*"
-      run: "npx storm-prepare"
+      run: "pnpm exec storm-prepare"
 
 pre-commit:
   piped: true
@@ -30,14 +30,14 @@ pre-commit:
     prepare:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/{lefthook.yml,biome.json}"
-      run: "npx storm-prepare"
+      run: "pnpm exec storm-prepare"
     prebuild:
       glob: "**/*.*"
       run: "pnpm build:all"
       stage_fixed: true
     validate:
       glob: "**/*.*"
-      run: "npx storm-pre-commit {staged_files}"
+      run: "pnpm exec storm-pre-commit {staged_files}"
       stage_fixed: true
     lint:
       files: "git diff --name-only HEAD @{push}"
@@ -45,13 +45,13 @@ pre-commit:
       run: "pnpm lint && git update-index"
     check:
       glob: "**/*.*"
-      run: npx biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index"
+      run: "pnpm exec biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index"
     readme-gen:
       glob: "**/{README.md,package.json,executors.json,generators.json}"
-      run: "npx storm-git readme-gen --templates=\"./docs/readme-templates\" && git update-index"
+      run: "pnpm exec storm-git readme-gen --templates=\"./docs/readme-templates\" && git update-index"
     format:
       glob: "**/*.*"
-      run: "npx biome format --write --no-errors-on-unmatched {staged_files} && git update-index"
+      run: "pnpm exec biome format --write --no-errors-on-unmatched {staged_files} && git update-index"
     postbuild:
       glob: "**/*.*"
       run: "pnpm build:all"
@@ -60,7 +60,7 @@ pre-commit:
 commit-msg:
   commands:
     validate:
-      run: "npx commitlint --config=\"./node_modules/@storm-software/git-tools/commitlint.config.cjs\" --edit {1}"
+      run: "pnpm exec commitlint --config=\"./node_modules/@storm-software/git-tools/commitlint.config.cjs\" --edit {1}"
 
 pre-push:
   piped: true
@@ -68,30 +68,30 @@ pre-push:
     validate:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.*"
-      run: "npx storm-pre-push {files}"
+      run: "pnpm exec storm-pre-push {files}"
       stage_fixed: true
     lint:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: "npx biome lint --apply --no-errors-on-unmatched --vcs-enabled=true --files-ignore-unknown=true {files} && git update-index"
+      run: "pnpm exec biome lint --apply --no-errors-on-unmatched --vcs-enabled=true --files-ignore-unknown=true {files} && git update-index"
       stage_fixed: true
 
 post-merge:
   commands:
     validate:
       glob: "**/*.*"
-      run: "npx storm-post-merge {staged_files}"
+      run: "pnpm exec storm-post-merge {staged_files}"
       stage_fixed: true
 
 post-checkout:
   commands:
     validate:
       glob: "**/*.*"
-      run: "npx storm-post-checkout {staged_files}"
+      run: "pnpm exec storm-post-checkout {staged_files}"
 
 post-commit:
   commands:
     validate:
       glob: "**/*.*"
-      run: "npx storm-post-commit {staged_files}"
+      run: "pnpm exec storm-post-commit {staged_files}"
 

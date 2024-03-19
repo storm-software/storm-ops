@@ -47,14 +47,14 @@ pre-commit:
     check:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: "pnpm biome:check {staged_files} && git update-index"
+      run: "pnpm lint-biome:check {staged_files} && git update-index"
     readme:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/{README.md,package.json,executors.json,generators.json}"
       run: "pnpm readme:format && git update-index"
     format:
       glob: "**/{README.md,package.json}"
-      run: "pnpm biome:format {staged_files} && git update-index"
+      run: "pnpm lint-biome:fix {staged_files} && git update-index"
     postbuild:
       glob: "**/*.*"
       run: "pnpm build"
@@ -75,7 +75,7 @@ pre-push:
     lint:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: "pnpm biome:lint {files} && git update-index"
+      run: "pnpm lint-biome {files} && git update-index"
 
 post-merge:
   commands:
