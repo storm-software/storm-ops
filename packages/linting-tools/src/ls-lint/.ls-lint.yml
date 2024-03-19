@@ -1,0 +1,13 @@
+ls:
+  .rs: snake_case
+  .ts: kebab-case
+  .js: kebab-case
+  .d.ts: kebab-case
+
+ignore:
+  - '**/node_modules'
+  - '**/tmp'
+  - '**/dist'
+  - '**/coverage'
+  - '**/__generated__'
+  - '**/__test__'

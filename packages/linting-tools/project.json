@@ -76,6 +76,16 @@
           },
           {
             "input": "packages/linting-tools/src",
+            "glob": "taplo/.taplo.toml",
+            "output": "."
+          },
+          {
+            "input": "packages/linting-tools/src",
+            "glob": "ls-lint/.ls-lint.yml",
+            "output": "."
+          },
+          {
+            "input": "packages/linting-tools/src",
             "glob": "cspell/**/dictionary.txt",
             "output": "."
           },

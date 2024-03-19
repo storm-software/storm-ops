@@ -22,6 +22,8 @@ typeschema
 valibot
 lefthook
 biomejs
+taplo
+napi
 contributorsrc
 hasura
 strapi

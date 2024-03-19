@@ -43,6 +43,12 @@ pre-commit:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
       run: "pnpm lint && git update-index"
+    lint-toml:
+      glob: "**/*.toml"
+      run: "pnpm run lint-toml"
+    lint-filename:
+      glob: "**/*.*"
+      run: "pnpm run lint-filenames"
     check:
       glob: "**/*.*"
       run: "pnpm exec biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index"
@@ -52,6 +58,9 @@ pre-commit:
     format:
       glob: "**/*.*"
       run: "pnpm exec biome format --write --no-errors-on-unmatched {staged_files} && git update-index"
+    format-toml:
+      glob: "**/*.toml"
+      run: "pnpm run lint-toml:fix && git update-index"
     postbuild:
       glob: "**/*.*"
       run: "pnpm build:all"
