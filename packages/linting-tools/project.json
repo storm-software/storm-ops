@@ -76,12 +76,12 @@
           },
           {
             "input": "packages/linting-tools/src",
-            "glob": "taplo/.taplo.toml",
+            "glob": "taplo/*",
             "output": "."
           },
           {
             "input": "packages/linting-tools/src",
-            "glob": "ls-lint/.ls-lint.yml",
+            "glob": "ls-lint/*",
             "output": "."
           },
           {
