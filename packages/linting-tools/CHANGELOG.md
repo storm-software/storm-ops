@@ -1,3 +1,15 @@
+## 1.43.0 (2024-03-19)
+
+
+### 🚀 Features
+
+- **linting-tools:** Added the `taplo` and `ls-lint` tools ([24c984eb](https://github.com/storm-software/storm-ops/commit/24c984eb))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.42.0 (2024-03-05)
 
 

@@ -1,3 +1,20 @@
+## 2.4.0 (2024-03-19)
+
+
+### 🚀 Features
+
+- **linting-tools:** Added the `taplo` and `ls-lint` tools ([24c984eb](https://github.com/storm-software/storm-ops/commit/24c984eb))
+
+
+### 🩹 Fixes
+
+- **git-tools:** Updates to the lefthook scripts execution ([ac1f85f3](https://github.com/storm-software/storm-ops/commit/ac1f85f3))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.3.0 (2024-03-05)
 
 
