@@ -1,3 +1,15 @@
+## 1.43.1 (2024-03-19)
+
+
+### 🩹 Fixes
+
+- **linting-tools:** Update the linting-tools asset configuration ([c35e2491](https://github.com/storm-software/storm-ops/commit/c35e2491))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.43.0 (2024-03-19)
 
 
