@@ -45,7 +45,10 @@
       "dependsOn": [
         "^build"
       ],
-      "executor": "@storm-software/workspace-tools:crates-publish"
+      "executor": "@storm-software/workspace-tools:crates-publish",
+      "options": {
+        "packageRoot": "crates/storm-workspace"
+      }
     }
   },
   "tags": []
