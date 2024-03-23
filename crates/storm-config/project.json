@@ -47,7 +47,7 @@
       ],
       "executor": "@storm-software/workspace-tools:crates-publish",
       "options": {
-        "packageRoot": "crates/storm-workspace"
+        "packageRoot": "crates/storm-config"
       }
     }
   },
