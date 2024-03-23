@@ -126,7 +126,12 @@
       "{workspaceRoot}/tsconfig.base.json",
       "{workspaceRoot}/storm.*",
       "{workspaceRoot}/nx.json",
-      "{workspaceRoot}/**/biome.json"
+      "{workspaceRoot}/biome.json",
+      "{workspaceRoot}/rustfmt.toml",
+      "{workspaceRoot}/deny.toml",
+      "{workspaceRoot}/Cargo.toml",
+      "{workspaceRoot}/Cargo.lock",
+      "{workspaceRoot}/.cargo/config.toml"
     ]
   },
   "release": {
@@ -159,8 +164,8 @@
     "@nx/eslint",
     "@nx/eslint-plugin",
     "@nx/esbuild",
-    "@storm-software/workspace-tools",
     "@nx/eslint/plugin",
-    "@monodon/rust"
+    "@monodon/rust",
+    "@storm-software/workspace-tools"
   ]
 }

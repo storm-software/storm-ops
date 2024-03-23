@@ -209,11 +209,23 @@ impl StormConfig {
               .required(false),
           )
           .add_source(
+            File::with_name(&format!("{}/.storm/config.json", workspace_root.to_string_lossy()))
+              .required(false),
+          )
+          .add_source(
             File::with_name(&format!("{}/storm.toml", workspace_root.to_string_lossy()))
               .required(false),
           )
           .add_source(
+            File::with_name(&format!("{}/.storm/config.toml", workspace_root.to_string_lossy()))
+              .required(false),
+          )
+          .add_source(
             File::with_name(&format!("{}/storm.yaml", workspace_root.to_string_lossy()))
+              .required(false),
+          )
+          .add_source(
+            File::with_name(&format!("{}/.storm/config.yaml", workspace_root.to_string_lossy()))
               .required(false),
           )
           .add_source(Environment::with_prefix("storm"))

@@ -1,7 +1,7 @@
 
 [workspace]
 resolver = '2'
-members = ['crates/storm-workspace', 'crates/storm-config']
+members = ['crates/*']
 
 [workspace.package]
 version = '0.0.1'

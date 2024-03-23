@@ -38,8 +38,8 @@
       "{workspaceRoot}/jest.config.ts"
     ],
     "default": [
-      "{projectRoot}/**/*",
       "sharedGlobals",
+      "{projectRoot}/**/*",
       "{workspaceRoot}/testing/jest-setup.[jt]s",
       "{projectRoot}/src/test-setup.[jt]s",
       "{projectRoot}/test-setup.[jt]s"
@@ -55,10 +55,18 @@
       "!{projectRoot}/tsconfig.storybook.json"
     ],
     "sharedGlobals": [
+      "{workspaceRoot}/tsconfig.base.json",
+      "{workspaceRoot}/package.json",
+      "{workspaceRoot}/pnpm-workspace.yaml",
+      "{workspaceRoot}/pnpm-lock.yaml",
       "{workspaceRoot}/nx.json",
-      "{workspaceRoot}/babel.config.json",
       "{workspaceRoot}/storm.json",
-      "{workspaceRoot}/storm.config.js"
+      "{workspaceRoot}/.storm/config.json",
+      "{workspaceRoot}/storm.config.js",
+      "{workspaceRoot}/Cargo.toml",
+      "{workspaceRoot}/Cargo.lock",
+      "{workspaceRoot}/.cargo/config.toml",
+      "{workspaceRoot}/rust-toolchain"
     ]
   },
   "targetDefaults": {
