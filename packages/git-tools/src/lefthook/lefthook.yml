@@ -33,7 +33,7 @@ pre-commit:
       run: "pnpm exec storm-prepare"
     prebuild:
       glob: "**/*.*"
-      run: "pnpm build:all"
+      run: "pnpm build-all"
       stage_fixed: true
     validate:
       glob: "**/*.*"
@@ -45,31 +45,31 @@ pre-commit:
       run: "pnpm lint && git update-index"
     lint-toml:
       glob: "**/*.toml"
-      run: "pnpm run lint-toml"
+      run: 'pnpm exec taplo format --check --config="@storm-software/linting-tools/taplo/.taplo.toml"'
     lint-filename:
       glob: "**/*.*"
-      run: "pnpm run lint-filenames"
+      run: 'pnpm exec ls-lint --config="@storm-software/linting-tools/ls-lint/ls-lint.yml"'
     check:
       glob: "**/*.*"
       run: "pnpm exec biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index"
     readme-gen:
       glob: "**/{README.md,package.json,executors.json,generators.json}"
-      run: "pnpm exec storm-git readme-gen --templates=\"./docs/readme-templates\" && git update-index"
+      run: 'pnpm exec storm-git readme-gen --templates="./docs/readme-templates" && git update-index'
     format:
       glob: "**/*.*"
-      run: "pnpm exec biome format --write --no-errors-on-unmatched {staged_files} && git update-index"
+      run: "pnpm exec biome format --write  --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index"
     format-toml:
       glob: "**/*.toml"
-      run: "pnpm run lint-toml:fix && git update-index"
+      run: 'pnpm exec taplo format --config="@storm-software/linting-tools/taplo/.taplo.toml" && git update-index'
     postbuild:
       glob: "**/*.*"
-      run: "pnpm build:all"
+      run: "pnpm build-all"
       stage_fixed: true
 
 commit-msg:
   commands:
     validate:
-      run: "pnpm exec commitlint --config=\"./node_modules/@storm-software/git-tools/commitlint.config.cjs\" --edit {1}"
+      run: 'pnpm exec commitlint --config="./node_modules/@storm-software/git-tools/commitlint.config.cjs" --edit {1}'
 
 pre-push:
   piped: true
@@ -103,4 +103,3 @@ post-commit:
     validate:
       glob: "**/*.*"
       run: "pnpm exec storm-post-commit {staged_files}"
-

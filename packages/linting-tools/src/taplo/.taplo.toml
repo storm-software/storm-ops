@@ -2,5 +2,5 @@ include = [".taplo.toml", "Cargo.toml", "crates/*/*.toml"]
 
 [formatting]
 align_entries = true
-column_width  = 120
-reorder_keys  = true
+column_width = 120
+reorder_keys = true
