@@ -1,0 +1,19 @@
+[package]
+name = "storm-workspace"
+description = "A crate containing various utilities and tools used by Storm Software to manage monorepos."
+version = "0.0.1"
+edition = { workspace = true }
+repository = { workspace = true }
+authors = { workspace = true }
+license = { workspace = true }
+categories = { workspace = true }
+keywords = { workspace = true }
+homepage = { workspace = true }
+documentation = "https://docs.rs/storm-workspace"
+readme = "./README.md"
+
+[dependencies]
+thiserror = "1.0.58"
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

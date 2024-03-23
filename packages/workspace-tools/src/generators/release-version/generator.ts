@@ -5,7 +5,10 @@ import {
   type ProjectGraphProjectNode,
   joinPathFragments,
   readJson,
-  updateJson
+  updateJson,
+  output,
+  type ProjectGraph,
+  type ProjectGraphDependency
 } from "@nx/devkit";
 import type { ReleaseVersionGeneratorSchema } from "./schema";
 import {
@@ -19,7 +22,7 @@ import { relative } from "node:path";
 import type { StormConfig } from "@storm-software/config";
 import { updateLockFile } from "@nx/js/src/generators/release-version/utils/update-lock-file";
 import { withRunGenerator } from "../../base/base-generator";
-import { exec } from "node:child_process";
+import { exec, execSync } from "node:child_process";
 // import ora from "ora";
 import {
   getFirstGitCommit,
@@ -31,7 +34,13 @@ import {
 } from "nx/src/command-line/release/utils/resolve-semver-specifier";
 import { IMPLICIT_DEFAULT_RELEASE_GROUP } from "nx/src/command-line/release/config/config";
 import { prerelease } from "semver";
-import { resolveLocalPackageDependencies } from "@nx/js/src/generators/release-version/utils/resolve-local-package-dependencies";
+import { resolveLocalPackageDependencies as resolveLocalPackageJsonDependencies } from "@nx/js/src/generators/release-version/utils/resolve-local-package-dependencies";
+import {
+  modifyCargoTable,
+  parseCargoToml,
+  parseCargoTomlWithTree,
+  stringifyCargoToml
+} from "../../utils/toml";
 
 export async function releaseVersionGeneratorFn(
   tree: Tree,
@@ -63,13 +72,6 @@ Valid values are: ${validReleaseVersionPrefixes.map((s) => `"${s}"`).join(", ")}
 
   // always use disk as a fallback in case this is the first release
   options.fallbackCurrentVersionResolver ??= "disk";
-
-  // const projects = options.projects.filter(
-  //   (project: ProjectGraphProjectNode) =>
-  //     project?.data?.sourceRoot &&
-  //     project.data.sourceRoot !== config.workspaceRoot &&
-  //     project?.data?.root !== config.workspaceRoot
-  // );
 
   const projects = options.projects;
 
@@ -108,32 +110,57 @@ Valid values are: ${validReleaseVersionPrefixes.map((s) => `"${s}"`).join(", ")}
   for (const project of projects) {
     const projectName = project.name;
     const packageRoot = projectNameToPackageRootMap.get(projectName);
+
     const packageJsonPath = joinPathFragments(packageRoot ?? "./", "package.json");
-    const workspaceRelativePackageJsonPath = relative(
+    const cargoTomlPath = joinPathFragments(packageRoot ?? "./", "Cargo.toml");
+    if (!tree.exists(packageJsonPath) && !tree.exists(cargoTomlPath)) {
+      throw new Error(
+        `The project "${projectName}" does not have a package.json available at ${packageJsonPath} or a Cargo.toml file available at ${cargoTomlPath}.
+
+To fix this you will either need to add a package.json or Cargo.toml file at that location, or configure "release" within your nx.json to exclude "${projectName}" from the current release group, or amend the packageRoot configuration to point to where the package.json should be.`
+      );
+    }
+
+    const workspaceRelativePackagePath = relative(
       config?.workspaceRoot ?? findWorkspaceRoot(),
-      packageJsonPath
+      tree.exists(packageJsonPath) ? packageJsonPath : cargoTomlPath
     );
 
     const log = (msg: string) => {
       writeInfo(config, `${projectName}: ${msg}`);
     };
 
-    if (!tree.exists(packageJsonPath)) {
-      throw new Error(
-        `The project "${projectName}" does not have a package.json available at ${workspaceRelativePackageJsonPath}.
-
-To fix this you will either need to add a package.json file at that location, or configure "release" within your nx.json to exclude "${projectName}" from the current release group, or amend the packageRoot configuration to point to where the package.json should be.`
-      );
-    }
-
     writeInfo(config, `Running release version for project: ${project.name}`);
 
-    const projectPackageJson = readJson(tree, packageJsonPath);
-    log(
-      `🔍 Reading data for package "${projectPackageJson.name}" from ${workspaceRelativePackageJsonPath}`
-    );
+    let packageName!: string;
+    let currentVersionFromDisk!: string;
+    if (tree.exists(packageJsonPath)) {
+      const projectPackageJson = readJson(tree, packageJsonPath);
+      log(
+        `🔍 Reading data for package "${projectPackageJson.name}" from ${workspaceRelativePackagePath}`
+      );
 
-    const { name: packageName, version: currentVersionFromDisk } = projectPackageJson;
+      packageName = projectPackageJson.name;
+      currentVersionFromDisk = projectPackageJson.version;
+    } else if (tree.exists(cargoTomlPath)) {
+      const cargoToml = parseCargoToml(tree.read(cargoTomlPath)?.toString("utf-8"));
+      log(
+        `🔍 Reading data for package "${cargoToml.package.name}" from ${workspaceRelativePackagePath}`
+      );
+
+      packageName = cargoToml.package.name;
+      currentVersionFromDisk = cargoToml.package.version;
+
+      if (options.currentVersionResolver === "registry") {
+        options.currentVersionResolver = "disk";
+      }
+    } else {
+      throw new Error(
+        `The project "${projectName}" does not have a package.json available at ${workspaceRelativePackagePath} or a Cargo.toml file available at ${cargoTomlPath}.
+
+To fix this you will either need to add a package.json or Cargo.toml file at that location, or configure "release" within your nx.json to exclude "${projectName}" from the current release group, or amend the packageRoot configuration to point to where the package.json should be.`
+      );
+    }
 
     switch (options.currentVersionResolver) {
       case "registry": {
@@ -147,14 +174,6 @@ To fix this you will either need to add a package.json file at that location, or
          * For independent projects, we need to make a request for each project individually as they will most likely have different versions.
          */
         if (options.releaseGroup.projectsRelationship === "independent") {
-          // const spinner = ora(
-          //   `${Array.from(new Array(projectName.length + 3)).join(
-          //     " "
-          //   )}Resolving the current version for tag "${tag}" on ${registry}`
-          // );
-          // spinner.color = "blue";
-          // spinner.start();
-
           try {
             // Must be non-blocking async to allow spinner to render
             currentVersion = await new Promise<string>((resolve, reject) => {
@@ -379,7 +398,8 @@ To fix this you will either need to add a package.json file at that location, or
       projectNameToPackageRootMap,
       resolvePackageRoot,
       // includeAll when the release group is independent, as we may be filtering to a specific subset of projects, but we still want to update their dependents
-      options.releaseGroup.projectsRelationship === "independent"
+      options.releaseGroup.projectsRelationship === "independent",
+      tree.exists(packageJsonPath)
     );
 
     const dependentProjects = Object.values(localPackageDependencies)
@@ -388,6 +408,10 @@ To fix this you will either need to add a package.json file at that location, or
         return localPackageDependency.target === project.name;
       });
 
+    if (!currentVersion) {
+      throw new Error(`Unable to determine the current version for project "${projectName}"`);
+    }
+
     versionData[projectName] = {
       currentVersion: currentVersion ? currentVersion : "0.0.1",
       dependentProjects,
@@ -395,12 +419,8 @@ To fix this you will either need to add a package.json file at that location, or
     } as any;
 
     if (!specifier) {
-      log(`🚫 Skipping versioning "${projectPackageJson.name}" as no changes were detected.`);
+      log(`🚫 Skipping versioning "${packageName}" as no changes were detected.`);
       continue;
-    }
-
-    if (!currentVersion) {
-      throw new Error(`Unable to determine the current version for project "${projectName}"`);
     }
 
     const newVersion = deriveNewSemverVersion(currentVersion, specifier, options.preid);
@@ -409,12 +429,21 @@ To fix this you will either need to add a package.json file at that location, or
       versionData[projectName]!.newVersion = newVersion;
     }
 
-    writeJson(tree, packageJsonPath, {
-      ...projectPackageJson,
-      version: newVersion
-    });
+    if (tree.exists(packageJsonPath)) {
+      const projectPackageJson = readJson(tree, packageJsonPath);
 
-    log(`✍️  New version ${newVersion} written to ${workspaceRelativePackageJsonPath}`);
+      writeJson(tree, packageJsonPath, {
+        ...projectPackageJson,
+        version: newVersion
+      });
+    } else if (tree.exists(cargoTomlPath)) {
+      const cargoToml = parseCargoToml(tree.read(cargoTomlPath)?.toString("utf-8"));
+
+      cargoToml.version = newVersion;
+      tree.write(cargoTomlPath, stringifyCargoToml(cargoToml));
+    }
+
+    log(`✍️  New version ${newVersion} written to ${workspaceRelativePackagePath}`);
 
     if (dependentProjects.length > 0) {
       log(
@@ -425,13 +454,18 @@ To fix this you will either need to add a package.json file at that location, or
     }
 
     for (const dependentProject of dependentProjects) {
-      updateJson(
-        tree,
-        joinPathFragments(
-          projectNameToPackageRootMap.get(dependentProject.source) ?? "./",
-          "package.json"
-        ),
-        (json) => {
+      const dependentPackageRoot = projectNameToPackageRootMap.get(dependentProject.source);
+      if (!dependentPackageRoot) {
+        throw new Error(
+          `The dependent project "${dependentProject.source}" does not have a packageRoot available. Please report this issue on https://github.com/nrwl/nx`
+        );
+      }
+
+      const dependentPackageJsonPath = joinPathFragments(dependentPackageRoot, "package.json");
+      const dependentCargoTomlPath = joinPathFragments(dependentPackageRoot, "Cargo.toml");
+
+      if (tree.exists(dependentPackageJsonPath)) {
+        updateJson(tree, dependentPackageJsonPath, (json) => {
           // Auto (i.e.infer existing) by default
           let versionPrefix = options.versionPrefix ?? "auto";
 
@@ -452,8 +486,77 @@ To fix this you will either need to add a package.json file at that location, or
           json[dependentProject.dependencyCollection][packageName] =
             `${versionPrefix}${newVersion}`;
           return json;
+        });
+      } else if (tree.exists(dependentCargoTomlPath)) {
+        const dependentPkg = parseCargoTomlWithTree(
+          tree,
+          dependentPackageRoot,
+          dependentProject.source
+        );
+
+        // Auto (i.e.infer existing) by default
+        let versionPrefix = options.versionPrefix ?? "auto";
+        let updatedDependencyData: string | Record<string, string> = "";
+
+        for (const dependency of Object.entries(
+          dependentPkg[dependentProject.dependencyCollection] ?? {}
+        )) {
+          const [dependencyName, dependencyData] = dependency as [
+            string,
+            string | Record<string, string>
+          ];
+
+          if (dependencyName !== dependentProject.target) {
+            continue;
+          }
+
+          // For auto, we infer the prefix based on the current version of the dependent
+          if (versionPrefix === "auto") {
+            versionPrefix = ""; // we don't want to end up printing auto
+
+            if (currentVersion) {
+              const dependencyVersion =
+                typeof dependencyData === "string" ? dependencyData : dependencyData.version;
+              const prefixMatch = dependencyVersion?.match(/^[~^=]/);
+              if (prefixMatch) {
+                versionPrefix = prefixMatch[0];
+              } else {
+                versionPrefix = "";
+              }
+
+              // In rust the default version prefix/behavior is ^, so a ^ may have been inferred by cargo metadata via no prefix or an explicit ^.
+              if (versionPrefix === "^") {
+                if (
+                  typeof dependencyData !== "string" &&
+                  !dependencyData.version?.startsWith("^")
+                ) {
+                  versionPrefix = "";
+                }
+              }
+            }
+          }
+          const newVersionWithPrefix = `${versionPrefix}${newVersion}`;
+          updatedDependencyData =
+            typeof dependencyData === "string"
+              ? newVersionWithPrefix
+              : {
+                  ...dependencyData,
+                  version: newVersionWithPrefix
+                };
+          break;
         }
-      );
+
+        const cargoTomlToUpdate = joinPathFragments(dependentPackageRoot, "Cargo.toml");
+
+        modifyCargoTable(
+          dependentPkg,
+          dependentProject.dependencyCollection,
+          dependentProject.target,
+          updatedDependencyData
+        );
+
+        tree.write(cargoTomlToUpdate, stringifyCargoToml(dependentPkg));
+      }
     }
   }
 
@@ -467,8 +570,38 @@ To fix this you will either need to add a package.json file at that location, or
   return {
     data: versionData,
     callback: async (tree, opts) => {
+      output.logSingleLine("Updating Cargo.lock file");
       const cwd = tree.root;
       const updatedFiles = await updateLockFile(cwd, opts);
+
+      const updatedCargoPackages: string[] = [];
+      for (const [projectName, projectVersionData] of Object.entries(versionData)) {
+        const project = projects.find((proj) => proj.name === projectName);
+        if (
+          projectVersionData.newVersion &&
+          project?.name &&
+          projectNameToPackageRootMap.get(project.name)
+        ) {
+          const projectRoot = projectNameToPackageRootMap.get(project.name);
+          if (projectRoot && tree.exists(joinPathFragments(projectRoot, "Cargo.toml"))) {
+            updatedCargoPackages.push(projectName);
+          }
+        }
+      }
+      if (updatedCargoPackages.length > 0) {
+        execSync(`cargo update ${updatedCargoPackages.join(" ")}`, {
+          maxBuffer: 1024 * 1024 * 1024,
+          env: {
+            ...process.env
+          },
+          cwd: tree.root
+        });
+      }
+
+      if (hasGitDiff("Cargo.lock")) {
+        updatedFiles.push("Cargo.lock");
+      }
+
       return updatedFiles;
     },
     success: true
@@ -493,4 +626,117 @@ async function getNpmRegistry() {
       return resolve(stdout.trim());
     });
   });
+}
+
+function hasGitDiff(filePath: string) {
+  try {
+    const result = execSync(`git diff --name-only "${filePath}"`).toString();
+    return result.trim() === filePath;
+  } catch (_) {
+    // Assuming any error means no diff or a problem executing git command
+    return false;
+  }
+}
+
+interface LocalPackageDependency extends ProjectGraphDependency {
+  dependencyCollection: "dependencies" | "dev-dependencies";
+}
+
+function resolveLocalPackageDependencies(
+  tree: Tree,
+  projectGraph: ProjectGraph,
+  filteredProjects: ProjectGraphProjectNode[],
+  projectNameToPackageRootMap: Map<string, string>,
+  resolvePackageRoot: (projectNode: ProjectGraphProjectNode) => string,
+  includeAll = false,
+  isNodeProject = true
+): Record<string, LocalPackageDependency[]> {
+  if (isNodeProject) {
+    return resolveLocalPackageJsonDependencies(
+      tree,
+      projectGraph,
+      filteredProjects,
+      projectNameToPackageRootMap,
+      resolvePackageRoot,
+      includeAll
+    ) as Record<string, LocalPackageDependency[]>;
+  }
+
+  return resolveLocalPackageCargoDependencies(
+    tree,
+    projectGraph,
+    filteredProjects,
+    projectNameToPackageRootMap,
+    resolvePackageRoot,
+    includeAll
+  );
+}
+
+function resolveLocalPackageCargoDependencies(
+  tree: Tree,
+  projectGraph: ProjectGraph,
+  filteredProjects: ProjectGraphProjectNode[],
+  projectNameToPackageRootMap: Map<string, string>,
+  resolvePackageRoot: (projectNode: ProjectGraphProjectNode) => string,
+  includeAll = false
+): Record<string, LocalPackageDependency[]> {
+  const localPackageDependencies: Record<string, LocalPackageDependency[]> = {};
+
+  const projects = includeAll ? Object.values(projectGraph.nodes) : filteredProjects;
+
+  for (const projectNode of projects) {
+    // Resolve the Cargo.toml path for the project, taking into account any custom packageRoot settings
+    let packageRoot = projectNameToPackageRootMap.get(projectNode.name);
+    // packageRoot wasn't added to the map yet, try to resolve it dynamically
+    if (!packageRoot && includeAll) {
+      packageRoot = resolvePackageRoot(projectNode);
+      if (!packageRoot) {
+        continue;
+      }
+      // Append it to the map for later use within the release version generator
+      projectNameToPackageRootMap.set(projectNode.name, packageRoot);
+    }
+    const projectDeps = projectGraph.dependencies[projectNode.name];
+    if (!projectDeps) {
+      continue;
+    }
+    const localPackageDepsForProject: LocalPackageDependency[] = [];
+    for (const dep of projectDeps) {
+      const depProject = projectGraph.nodes[dep.target];
+      if (!depProject) {
+        continue;
+      }
+      const depProjectRoot = projectNameToPackageRootMap.get(dep.target);
+      if (!depProjectRoot) {
+        throw new Error(`The project "${dep.target}" does not have a packageRoot available.`);
+      }
+      const cargoToml = parseCargoTomlWithTree(
+        tree,
+        resolvePackageRoot(projectNode),
+        projectNode.name
+      );
+      const dependencies = cargoToml.dependencies ?? {};
+      const devDependencies = cargoToml["dev-dependencies"] ?? {};
+      const dependencyCollection: "dependencies" | "dev-dependencies" | null = dependencies[
+        depProject.name
+      ]
+        ? "dependencies"
+        : devDependencies[depProject.name]
+          ? "dev-dependencies"
+          : null;
+      if (!dependencyCollection) {
+        throw new Error(
+          `The project "${projectNode.name}" does not have a local dependency on "${depProject.name}" in its Cargo.toml`
+        );
+      }
+      localPackageDepsForProject.push({
+        ...dep,
+        dependencyCollection
+      });
+    }
+
+    localPackageDependencies[projectNode.name] = localPackageDepsForProject;
+  }
+
+  return localPackageDependencies;
 }

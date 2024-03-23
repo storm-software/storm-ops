@@ -39,20 +39,23 @@
   },
   "scripts": {
     "adr": "pnpm log4brains adr new",
-    "adr:preview": "pnpm log4brains preview",
+    "adr-preview": "pnpm log4brains preview",
     "prebuild": "pnpm clean",
     "build": "nx affected -t build --parallel=5",
     "build:all": "nx run-many -t build --all --parallel=1",
     "clean": "rimraf dist",
     "clean:packages": "rimraf dist/packages",
     "commit": "node ./dist/packages/git-tools/bin/git.js commit --config=\"../src/commit/config.js\"",
-    "readme:format": "node ./dist/packages/git-tools/bin/git.js readme-gen --templates=\"./dist/packages/git-tools/readme/templates\"",
+    "readme-gen": "node ./dist/packages/git-tools/bin/git.js readme-gen --templates=\"./dist/packages/git-tools/readme/templates\"",
     "dep-graph": "nx dep-graph",
     "e2e": "nx e2e",
     "help": "nx help",
     "lint-biome": "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true",
     "lint-biome:check": "biome check --apply-unsafe --no-errors-on-unmatched --files-ignore-unknown=true",
     "lint-biome:fix": "npx biome format --write  --no-errors-on-unmatched --files-ignore-unknown=true",
+    "lint-filenames": "npx ls-lint --config=\"./dist/packages/linting-tools/ls-lint/ls-lint.yml\"",
+    "lint-toml": "npx taplo format --check --config=\"./dist/packages/linting-tools/taplo/.taplo.toml\"",
+    "lint-toml:fix": "npx taplo format --config=\"./dist/packages/linting-tools/taplo/.taplo.toml\"",
     "lint": "node ./dist/packages/linting-tools/bin/lint.js all --skip-cspell --skip-deps-version --skip-alex",
     "local-registry": "nx local-registry @storm-software/storm-ops",
     "nx": "nx",
@@ -65,10 +68,11 @@
     "@angular-devkit/core": "^17.2.0",
     "@angular-devkit/schematics": "^17.2.0",
     "@biomejs/biome": "1.5.3",
+    "@ls-lint/ls-lint": "^2.2.3",
     "@nx/devkit": "18.0.4",
     "@nx/esbuild": "18.0.4",
-    "@nx/eslint-plugin": "18.0.4",
     "@nx/eslint": "18.0.4",
+    "@nx/eslint-plugin": "18.0.4",
     "@nx/jest": "18.0.4",
     "@nx/js": "18.0.4",
     "@nx/plugin": "18.0.4",
@@ -78,6 +82,7 @@
     "@swc/core": "1.4.2",
     "@swc/helpers": "0.5.3",
     "@swc/wasm": "^1.4.2",
+    "@taplo/cli": "^0.7.0",
     "@tsconfig/recommended": "1.0.3",
     "@types/jest": "29.5.11",
     "@types/node": "20.11.20",
@@ -135,5 +140,8 @@
       "@microsoft/api-extractor@7.40.1": "patches/@microsoft__api-extractor@7.40.1.patch"
     }
   },
-  "triggerEmptyDevReleaseByIncrementingThisNumber": 0
+  "triggerEmptyDevReleaseByIncrementingThisNumber": 0,
+  "devDependencies": {
+    "@monodon/rust": "^1.4.0"
+  }
 }

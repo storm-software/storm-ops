@@ -21,6 +21,7 @@
           "packages/workspace-tools/src/executors/tsup-browser/executor.ts",
           "packages/workspace-tools/src/executors/typia/executor.ts",
           "packages/workspace-tools/src/executors/npm-publish/executor.ts",
+          "packages/workspace-tools/src/executors/crates-publish/executor.ts",
           "packages/workspace-tools/src/generators/init/init.ts",
           "packages/workspace-tools/src/generators/node-library/generator.ts",
           "packages/workspace-tools/src/generators/neutral-library/generator.ts",

@@ -33,6 +33,7 @@
   "typings": "./declarations.d.ts",
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
+    "@ltd/j-toml": "^1.38.0",
     "@microsoft/api-extractor": "7.40.1",
     "@nx/devkit": "18.0.4",
     "@nx/esbuild": "18.0.4",

@@ -1,0 +1,38 @@
+
+[workspace]
+resolver = '2'
+members = ['crates/storm-workspace', 'crates/storm-config']
+
+[workspace.package]
+version = '0.0.1'
+name = 'storm-ops'
+description = '⚡The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.'
+repository = 'https://github.com/storm-software/storm-ops'
+edition = '2021'
+authors = ['storm-software']
+license = 'Apache-2.0'
+documentation = 'https://stormsoftware.org/docs'
+homepage = 'https://stormsoftware.org'
+categories = ['config', 'development-tools']
+keywords = [
+    'storm',
+    'stormstack',
+    'storm-ops',
+    'storm-software',
+    'build-tools',
+    'nx',
+    'tsup',
+    'rolldown',
+    'sullivanpj',
+    'monorepo',
+]
+
+[workspace.metadata.release]
+pre-release-commit-message = 'Release workspace crates v{{version}}'
+shared-version = true
+tag-prefix = ''
+publish = false
+
+[profile.release]
+lto = true
+debug = 1

@@ -6,6 +6,18 @@
   "relay.rootDirectory": "../",
   "relay.pathToConfig": "../packages/graphql-tools/config/relay.config.js",
   /******************************
+   * Rust Analyzer
+   ******************************/
+  "rust-analyzer.procMacro.ignored": {
+    "napi-derive": [
+      "napi"
+    ]
+  },
+  "rust-analyzer.linkedProjects": [
+    "crates\\storm-workspace\\Cargo.toml",
+    "crates\\storm-config\\Cargo.toml"
+  ],
+  /******************************
    * JSON Schemas
    ******************************/
   "json.schemas": [
@@ -222,6 +234,18 @@
   "[csharp]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[toml]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "[yaml]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[rust]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
   /******************************
    * vscode-icons
@@ -442,8 +466,5 @@
       "quickfix.biome": "explicit",
       "source.sortMembers": "explicit"
     }
-  },
-  "cSpell.words": [
-    "Tsup"
-  ]
+  }
 }

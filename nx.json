@@ -13,7 +13,13 @@
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "format", "test", "e2e"],
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "format",
+          "test",
+          "e2e"
+        ],
         "parallel": 5,
         "cacheDirectory": "node_modules/.cache/nx"
       }
@@ -22,43 +28,45 @@
   "targetDefaults": {
     "build": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"],
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/{projectRoot}",
-        "tsConfig": "{projectRoot}/tsconfig.lib.json",
-        "assets": [
-          {
-            "glob": "*.md",
-            "input": "{projectRoot}",
-            "output": "."
-          },
-          {
-            "glob": "LICENSE",
-            "input": ".",
-            "output": "."
-          }
-        ]
-      }
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ],
+      "outputs": [
+        "{options.outputPath}"
+      ]
     },
     "lint": {
       "cache": true,
       "executor": "nx:run-commands",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
         "commands": [
           "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true {projectRoot}"
         ],
         "color": true
       },
-      "inputs": ["default", "{workspaceRoot}/**/biome.json"]
+      "inputs": [
+        "default",
+        "{workspaceRoot}/**/biome.json"
+      ]
     },
     "test": {
       "cache": true,
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js"
+      ],
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "{projectRoot}/jest.config.ts",
         "passWithNoTests": true
@@ -75,13 +83,23 @@
     },
     "@nx/esbuild:esbuild": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     },
     "nx-release-publish": {
       "cache": false,
-      "inputs": ["default", "^production"],
-      "dependsOn": ["^build"],
+      "inputs": [
+        "default",
+        "^production"
+      ],
+      "dependsOn": [
+        "^build"
+      ],
       "executor": "@storm-software/workspace-tools:npm-publish",
       "options": {
         "packageRoot": "dist/{projectRoot}",
@@ -90,7 +108,10 @@
     }
   },
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "production": [
       "default",
       "!{projectRoot}/.eslintrc.json",
@@ -109,7 +130,10 @@
     ]
   },
   "release": {
-    "projects": ["packages/*"],
+    "projects": [
+      "packages/*",
+      "crates/*"
+    ],
     "projectsRelationship": "independent",
     "releaseTagPattern": "{projectName}@{version}",
     "changelog": {
@@ -136,6 +160,7 @@
     "@nx/eslint-plugin",
     "@nx/esbuild",
     "@storm-software/workspace-tools",
-    "@nx/eslint/plugin"
+    "@nx/eslint/plugin",
+    "@monodon/rust"
   ]
 }

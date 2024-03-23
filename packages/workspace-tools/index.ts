@@ -9,6 +9,8 @@ export * from "./src/executors/tsup/executor";
 export * from "./src/executors/tsup/schema.d";
 export * from "./src/executors/typia/executor";
 export * from "./src/executors/typia/schema.d";
+export * from "./src/executors/crates-publish/executor";
+export * from "./src/executors/crates-publish/schema.d";
 export * from "./src/executors/npm-publish/executor";
 export * from "./src/executors/npm-publish/schema.d";
 export * from "./src/generators/config-schema/generator";

@@ -1,0 +1,52 @@
+{
+  "name": "storm-config",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "crates/storm-config/src",
+  "targets": {
+    "build": {
+      "executor": "@monodon/rust:check",
+      "outputs": [
+        "{options.target-dir}"
+      ],
+      "options": {
+        "target-dir": "dist/target/storm-config"
+      }
+    },
+    "test": {
+      "executor": "@monodon/rust:test",
+      "outputs": [
+        "{options.target-dir}"
+      ],
+      "options": {
+        "target-dir": "dist/target/storm-config"
+      },
+      "configurations": {
+        "production": {
+          "release": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@monodon/rust:lint",
+      "outputs": [
+        "{options.target-dir}"
+      ],
+      "options": {
+        "target-dir": "dist/target/storm-config"
+      }
+    },
+    "nx-release-publish": {
+      "cache": false,
+      "inputs": [
+        "default",
+        "^production"
+      ],
+      "dependsOn": [
+        "^build"
+      ],
+      "executor": "@storm-software/workspace-tools:crates-publish"
+    }
+  },
+  "tags": []
+}

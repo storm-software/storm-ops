@@ -30,6 +30,11 @@
       "implementation": "./src/executors/npm-publish/executor",
       "schema": "./src/executors/npm-publish/schema.json",
       "description": "Publish a package to the NPM registry"
+    },
+    "crates-publish": {
+      "implementation": "./src/executors/crates-publish/executor",
+      "schema": "./src/executors/crates-publish/schema.json",
+      "description": "An executor used by Storm Software to publish Rust crates"
     }
   }
 }
