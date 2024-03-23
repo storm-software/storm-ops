@@ -188,8 +188,8 @@ export async function releaseVersion(
       args.gitTag ?? nxReleaseConfig?.version.git.tag
         ? createGitTagValues(releaseGroups, releaseGroupToFilteredProjects, versionData)
         : [];
-    handleDuplicateGitTags(gitTagValues);
 
+    handleDuplicateGitTags(gitTagValues);
     printAndFlushChanges(config, tree, !!args.dryRun);
 
     for (const generatorCallback of generatorCallbacks) {
@@ -273,6 +273,7 @@ export async function releaseVersion(
         // all project data from the project graph (not to be confused with projectNamesToRunVersionOn)
         projects
       });
+
       const generatorCallback = await runVersionOnProjects(
         config,
         projectGraph,
@@ -284,6 +285,7 @@ export async function releaseVersion(
         releaseGroup,
         versionData
       );
+
       // Capture the callback so that we can run it after flushing the changes to disk
       generatorCallbacks.push(async () => {
         const changedFiles = await generatorCallback(tree, {
@@ -303,8 +305,8 @@ export async function releaseVersion(
     args.gitTag ?? nxReleaseConfig?.version.git.tag
       ? createGitTagValues(releaseGroups, releaseGroupToFilteredProjects, versionData)
       : [];
-  handleDuplicateGitTags(gitTagValues);
 
+  handleDuplicateGitTags(gitTagValues);
   printAndFlushChanges(config, tree, !!args.dryRun);
 
   for (const generatorCallback of generatorCallbacks) {

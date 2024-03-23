@@ -139,21 +139,6 @@
     },
     "e2e": {
       "cache": true
-    },
-    "nx-release-publish": {
-      "cache": false,
-      "inputs": [
-        "default",
-        "^production"
-      ],
-      "dependsOn": [
-        "^build"
-      ],
-      "executor": "@storm-software/workspace-tools:npm-publish",
-      "options": {
-        "packageRoot": "dist/{projectRoot}",
-        "registry": "https://registry.npmjs.org/"
-      }
     }
   },
   "release": {

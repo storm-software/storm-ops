@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/schema",
   "version": 2,
-  "title": "Implementation details of `nx release publish`",
-  "description": "DO NOT INVOKE DIRECTLY WITH `nx run`. Use `nx release publish` instead.",
+  "title": "Cargo Publish executor",
+  "description": "Publish a package to the crates.io registry - DO NOT INVOKE DIRECTLY WITH `nx run`. Use `nx release publish` instead.",
   "type": "object",
   "properties": {
     "packageRoot": {
@@ -14,7 +14,5 @@
       "description": "Whether to run the command without actually publishing the package to the registry."
     }
   },
-  "required": [
-    "registry"
-  ]
+  "required": []
 }

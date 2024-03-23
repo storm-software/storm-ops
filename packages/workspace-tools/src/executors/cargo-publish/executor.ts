@@ -2,13 +2,13 @@ import { type ExecutorContext, joinPathFragments, output } from "@nx/devkit";
 import { execSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { parseCargoToml } from "../../utils/toml";
-import type { CratesPublishExecutorSchema } from "./schema";
+import type { CargoPublishExecutorSchema } from "./schema";
 
 const LARGE_BUFFER = 1024 * 1000000;
 
 // biome-ignore lint/nursery/useAwait: <explanation>
 export default async function runExecutor(
-  options: CratesPublishExecutorSchema,
+  options: CargoPublishExecutorSchema,
   context: ExecutorContext
 ) {
   /**

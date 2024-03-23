@@ -133,7 +133,7 @@ export const runRelease = async (
     });
 
     await releaseChangelog({
-      version: nxReleaseConfig.projectsRelationship !== "fixed" ? undefined : workspaceVersion,
+      version: nxReleaseConfig?.projectsRelationship !== "fixed" ? undefined : workspaceVersion,
       versionData: projectsVersionData,
       dryRun: false,
       verbose: true,

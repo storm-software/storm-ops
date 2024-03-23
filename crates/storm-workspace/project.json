@@ -35,20 +35,6 @@
       "options": {
         "target-dir": "dist/target/storm-workspace"
       }
-    },
-    "nx-release-publish": {
-      "cache": false,
-      "inputs": [
-        "default",
-        "^production"
-      ],
-      "dependsOn": [
-        "^build"
-      ],
-      "executor": "@storm-software/workspace-tools:crates-publish",
-      "options": {
-        "packageRoot": "crates/storm-workspace"
-      }
     }
   },
   "tags": []

@@ -1,7 +1,9 @@
 {
   "pluginsConfig": {
     "@nx/js": {
-      "analyzeSourceFiles": true
+      "analyzeSourceFiles": true,
+      "analyzeLockfile": true,
+      "analyzePackageJson": true
     }
   },
   "$schema": "https://cdn.jsdelivr.net/npm/nx/schemas/nx-schema.json",
@@ -90,21 +92,6 @@
         "production",
         "^production"
       ]
-    },
-    "nx-release-publish": {
-      "cache": false,
-      "inputs": [
-        "default",
-        "^production"
-      ],
-      "dependsOn": [
-        "^build"
-      ],
-      "executor": "@storm-software/workspace-tools:npm-publish",
-      "options": {
-        "packageRoot": "dist/{projectRoot}",
-        "registry": "https://registry.npmjs.org/"
-      }
     }
   },
   "namedInputs": {

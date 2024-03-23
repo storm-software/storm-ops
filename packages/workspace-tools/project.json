@@ -21,7 +21,7 @@
           "packages/workspace-tools/src/executors/tsup-browser/executor.ts",
           "packages/workspace-tools/src/executors/typia/executor.ts",
           "packages/workspace-tools/src/executors/npm-publish/executor.ts",
-          "packages/workspace-tools/src/executors/crates-publish/executor.ts",
+          "packages/workspace-tools/src/executors/cargo-publish/executor.ts",
           "packages/workspace-tools/src/generators/init/init.ts",
           "packages/workspace-tools/src/generators/node-library/generator.ts",
           "packages/workspace-tools/src/generators/neutral-library/generator.ts",
@@ -29,6 +29,9 @@
           "packages/workspace-tools/src/generators/release-version/generator.ts",
           "packages/workspace-tools/src/generators/preset/generator.ts",
           "packages/workspace-tools/src/generators/config-schema/generator.ts",
+          "packages/workspace-tools/src/plugins/rust/cargo-toml.ts",
+          "packages/workspace-tools/src/plugins/typescript/package-lock-file.ts",
+          "packages/workspace-tools/src/plugins/typescript/project-config.ts",
           "packages/workspace-tools/src/utils/index.ts",
           "packages/workspace-tools/src/base/index.ts"
         ],
@@ -106,21 +109,6 @@
             "output": "./assets"
           }
         ]
-      }
-    },
-    "nx-release-publish": {
-      "cache": false,
-      "inputs": [
-        "default",
-        "^production"
-      ],
-      "dependsOn": [
-        "^build"
-      ],
-      "executor": "@storm-software/workspace-tools:npm-publish",
-      "options": {
-        "packageRoot": "dist/{projectRoot}",
-        "registry": "https://registry.npmjs.org/"
       }
     }
   },
