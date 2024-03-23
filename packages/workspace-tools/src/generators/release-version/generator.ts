@@ -457,7 +457,9 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
       const dependentPackageRoot = projectNameToPackageRootMap.get(dependentProject.source);
       if (!dependentPackageRoot) {
         throw new Error(
-          `The dependent project "${dependentProject.source}" does not have a packageRoot available. Please report this issue on https://github.com/nrwl/nx`
+          `The dependent project "${dependentProject.source}" does not have a packageRoot available.
+
+Projects with packageRoot configured: ${Array.from(projectNameToPackageRootMap.keys()).join(", ")}`
         );
       }
 
