@@ -32,7 +32,6 @@
     "@nx/eslint-plugin",
     "@nx/esbuild",
     "@nx/eslint/plugin",
-    "@monodon/rust",
     "@storm-software/workspace-tools"
   ],
   "pluginsConfig": {

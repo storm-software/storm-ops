@@ -5,7 +5,14 @@
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["lint", "format", "build", "test", "e2e", "docs"],
+        "cacheableOperations": [
+          "lint",
+          "format",
+          "build",
+          "test",
+          "e2e",
+          "docs"
+        ],
         "parallel": 3,
         "cacheDirectory": "node_modules/.cache/nx"
       }
@@ -89,7 +96,12 @@
       "{workspaceRoot}/docs/**/*",
       "{workspaceRoot}/.storybook/**/*"
     ],
-    "global": ["globalRust", "globalTypeScript", "globalTesting", "globalDocs"],
+    "global": [
+      "globalRust",
+      "globalTypeScript",
+      "globalTesting",
+      "globalDocs"
+    ],
     "defaultTesting": [
       "globalTesting",
       "{projectRoot}/jest.config.ts",
@@ -155,7 +167,13 @@
       "{projectRoot}/tsconfig.storybook.json",
       "{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)"
     ],
-    "default": ["global", "defaultRust", "defaultTypeScript", "defaultTesting", "defaultDocs"],
+    "default": [
+      "global",
+      "defaultRust",
+      "defaultTypeScript",
+      "defaultTesting",
+      "defaultDocs"
+    ],
     "production": [
       "defaultRust",
       "defaultTypeScript",
@@ -171,15 +189,28 @@
   "targetDefaults": {
     "lint": {
       "cache": true,
-      "inputs": ["default"],
-      "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^lint"]
+      "inputs": [
+        "default"
+      ],
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "dependsOn": [
+        "^lint"
+      ]
     },
     "build": {
       "cache": true,
-      "inputs": ["default", "^production"],
-      "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^build"],
+      "inputs": [
+        "default",
+        "^production"
+      ],
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "dependsOn": [
+        "^build"
+      ],
       "options": {
         "main": "{projectRoot}/src/index.ts",
         "outputPath": "dist/{projectRoot}",
@@ -200,31 +231,66 @@
     },
     "docs": {
       "cache": true,
-      "inputs": ["defaultDocs", "^production"],
-      "outputs": ["{options.outputPath}"],
-      "dependsOn": ["build", "^docs"]
+      "inputs": [
+        "defaultDocs",
+        "^production"
+      ],
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "dependsOn": [
+        "build",
+        "^docs"
+      ]
     },
     "test": {
       "cache": true,
-      "inputs": ["defaultTesting", "^production"],
-      "outputs": ["{options.outputPath}"],
-      "dependsOn": ["build", "^test"]
+      "inputs": [
+        "defaultTesting",
+        "^production"
+      ],
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "dependsOn": [
+        "build",
+        "^test"
+      ]
     },
     "e2e": {
       "cache": true,
-      "inputs": ["defaultTesting", "^production"],
-      "outputs": ["{options.outputPath}"],
-      "dependsOn": ["test", "^e2e"]
+      "inputs": [
+        "defaultTesting",
+        "^production"
+      ],
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "dependsOn": [
+        "test",
+        "^e2e"
+      ]
     },
     "nx-release-publish": {
       "cache": false,
-      "inputs": ["default", "^production"],
-      "outputs": ["{options.outputPath}"],
-      "dependsOn": ["test", "^nx-release-publish"]
+      "inputs": [
+        "default",
+        "^production"
+      ],
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "dependsOn": [
+        "test",
+        "^nx-release-publish"
+      ]
     }
   },
   "release": {
-    "projects": ["packages/*", "crates/*"],
+    "projects": [
+      "packages/*",
+      "crates/*"
+    ],
     "projectsRelationship": "independent",
     "releaseTagPattern": "{projectName}-v{version}",
     "changelog": {
@@ -247,7 +313,6 @@
     "@nx/js",
     "@nx/jest",
     "@nx/eslint",
-    "@monodon/rust",
     "@storm-software/workspace-tools"
   ],
   "pluginsConfig": {
