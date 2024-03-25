@@ -33,6 +33,18 @@
   "typings": "./declarations.d.ts",
   "executors": "./executors.json",
   "generators": "./generators.json",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json",
+    "./migrations.json": "./migrations.json",
+    "./generators.json": "./generators.json",
+    "./generators/*/schema.json": "./src/generators/*/schema.json",
+    "./executors.json": "./executors.json",
+    "./executors/*/schema.json": "./src/executors/*/schema.json",
+    "./plugins/rust": "./src/plugins/rust/index.js",
+    "./plugins/typescript": "./src/plugins/typescript/index.js",
+    "./preset": "./src/generators/preset/preset.js"
+  },
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
     "@ltd/j-toml": "^1.38.0",

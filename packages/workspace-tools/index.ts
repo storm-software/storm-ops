@@ -1,4 +1,5 @@
 export * from "./src/base";
+export * from "./src/utils";
 export * from "./src/executors/tsup-neutral/executor";
 export * from "./src/executors/tsup-neutral/schema";
 export * from "./src/executors/tsup-node/executor";
@@ -23,7 +24,3 @@ export * from "./src/generators/preset/generator";
 export * from "./src/generators/preset/schema";
 export * from "./src/generators/release-version/generator";
 export * from "./src/generators/release-version/schema";
-export * from "./src/plugins/rust/cargo-toml";
-export * from "./src/plugins/typescript/package-lock-file";
-export * from "./src/plugins/typescript/project-config";
-export * from "./src/utils";

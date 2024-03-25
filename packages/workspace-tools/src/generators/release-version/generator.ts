@@ -440,7 +440,8 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
     } else if (tree.exists(cargoTomlPath)) {
       const cargoToml = parseCargoToml(tree.read(cargoTomlPath)?.toString("utf-8"));
 
-      cargoToml.version = newVersion;
+      cargoToml.package ??= {};
+      cargoToml.package.version = newVersion;
       tree.write(cargoTomlPath, stringifyCargoToml(cargoToml));
     }
 

@@ -25,14 +25,9 @@
     }
   },
   "plugins": [
-    "@nx/plugin",
-    "@nx/js",
-    "@nx/jest",
-    "@nx/eslint",
-    "@nx/eslint-plugin",
-    "@nx/esbuild",
     "@nx/eslint/plugin",
-    "@storm-software/workspace-tools"
+    "@storm-software/workspace-tools/plugins/rust",
+    "@storm-software/workspace-tools/plugins/typescript"
   ],
   "pluginsConfig": {
     "@nx/js": {
@@ -40,5 +35,6 @@
       "analyzeLockfile": true,
       "analyzePackageJson": true
     }
-  }
+  },
+  "defaultBase": "main"
 }

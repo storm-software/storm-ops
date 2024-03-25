@@ -18,7 +18,6 @@
       }
     }
   },
-  "defaultBase": "main",
   "namedInputs": {
     "globalTesting": [
       "{workspaceRoot}/jest.config.ts",
@@ -205,29 +204,9 @@
         "default",
         "^production"
       ],
-      "outputs": [
-        "{options.outputPath}"
-      ],
       "dependsOn": [
         "^build"
-      ],
-      "options": {
-        "main": "{projectRoot}/src/index.ts",
-        "outputPath": "dist/{projectRoot}",
-        "tsConfig": "{projectRoot}/tsconfig.json",
-        "assets": [
-          {
-            "glob": "*.md",
-            "input": "{projectRoot}",
-            "output": "."
-          },
-          {
-            "glob": "LICENSE",
-            "input": ".",
-            "output": "."
-          }
-        ]
-      }
+      ]
     },
     "docs": {
       "cache": true,
@@ -310,10 +289,9 @@
     }
   },
   "plugins": [
-    "@nx/js",
-    "@nx/jest",
-    "@nx/eslint",
-    "@storm-software/workspace-tools"
+    "@nx/eslint/plugin",
+    "@storm-software/workspace-tools/plugins/rust",
+    "@storm-software/workspace-tools/plugins/typescript"
   ],
   "pluginsConfig": {
     "@nx/js": {
@@ -321,5 +299,6 @@
       "analyzeLockfile": true,
       "analyzePackageJson": true
     }
-  }
+  },
+  "defaultBase": "main"
 }

@@ -1,6 +1,3 @@
-
-version = '0.1.0'
-
 [package]
 name = 'storm-workspace'
 description = 'A crate containing various utilities and tools used by Storm Software to manage monorepos.'
