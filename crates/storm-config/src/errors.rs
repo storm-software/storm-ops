@@ -3,15 +3,14 @@ use serde::ser;
 use std::error::Error;
 use std::fmt;
 use std::result;
-use thiserror::Error;
 
-#[derive(Error, Debug)]
-pub enum StormConfigError {
-  #[error("Unable to locate the configuration file - {0}")]
-  SpecificConfigFileNotFound(String),
-  #[error("Unable to locate the package.json file - {0}")]
-  PackageJsonNotFound(String),
-}
+// #[derive(Error, Debug)]
+// pub enum StormConfigError {
+//   #[error("Unable to locate the configuration file - {0}")]
+//   SpecificConfigFileNotFound(String),
+//   #[error("Unable to locate the package.json file - {0}")]
+//   PackageJsonNotFound(String),
+// }
 
 #[derive(Debug)]
 pub enum Unexpected {

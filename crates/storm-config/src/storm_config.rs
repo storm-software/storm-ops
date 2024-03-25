@@ -1,6 +1,6 @@
-use crate::{types::PackageJson, Config, ConfigError, Environment, File};
+use crate::{types::PackageJson, Config, ConfigError, Environment, File, Value};
 use serde::{Deserialize, Serialize};
-use std::{collections::HashMap, fmt, fs, path::Path, str::FromStr};
+use std::{cell::RefCell, collections::HashMap, fmt, fs, path::Path, str::FromStr};
 use storm_workspace::utils::get_workspace_root;
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
@@ -112,7 +112,7 @@ impl fmt::Display for LogLevel {
 }
 
 /// Storm Workspace config values used during various dev-ops processes. It represents the config of the entire monorepo.
-#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone)]
 pub struct StormConfig {
   /// The name of the package
   pub name: String,
@@ -161,19 +161,14 @@ pub struct StormConfig {
   /// The filepath of the Storm config. When this field is null, no config file was found in the current workspace.
   pub config_file: Option<String>,
   /// Configuration of each used extension
-  pub extensions: HashMap<String, HashMap<String, String>>,
-}
-
-lazy_static! {
-  static ref STORM_CONFIG: Option<StormConfig> =
-    Some(StormConfig::new().expect("Unable to determine the Storm configuration"));
+  pub extensions: RefCell<HashMap<String, HashMap<String, Value>>>,
+  /// The configuration values parsed from the file
+  pub config: Option<Config>,
 }
 
 impl StormConfig {
   pub fn new() -> Result<Self, ConfigError> {
-    if STORM_CONFIG.is_some() {
-      return Ok(<std::option::Option<StormConfig> as Clone>::clone(&STORM_CONFIG).unwrap());
-    }
+    let mut storm_config = StormConfig::default();
 
     let workspace_root = get_workspace_root().expect("No workspace root could be found");
     match fs::metadata(format!("{}/package.json", workspace_root.to_string_lossy())) {
@@ -186,54 +181,108 @@ impl StormConfig {
         )
         .expect("error while reading or parsing");
 
-        let s = Config::builder()
-          .set_default("organization", "storm-software")?
-          .set_default("owner", "@storm-software/development")?
-          .set_default("ci", true)?
-          .set_default("timezone", "America/New_York")?
-          .set_default("locale", "en-US")?
-          .set_default("log_level", LogLevel::Info.to_string())?
-          .set_default("name", package_json.name)?
-          .set_default("namespace", package_json.namespace)?
-          .set_default("repository", package_json.repository.get("url").unwrap().to_string())?
-          .set_default("license", package_json.license)?
-          .set_default("homepage", package_json.homepage)?
-          .set_default("branch", "main")?
-          .set_default("worker", "Stormie-Bot")?
-          .set_default("env", EnvironmentType::Production.to_string())?
-          .set_default("workspace_root", workspace_root.to_str().unwrap().to_string())?
-          .set_default("skip_cache", false)?
-          .set_default("cache_directory", "node_modules/.cache/storm")?
-          .set_default("build_directory", "dist")?
-          .set_default("package_manager", PackageManagerType::Npm.to_string())?
-          .add_source(
-            File::with_name(&format!("{}/storm.json", workspace_root.to_string_lossy()))
-              .required(false),
-          )
-          .add_source(
-            File::with_name(&format!("{}/.storm/config.json", workspace_root.to_string_lossy()))
-              .required(false),
-          )
-          .add_source(
-            File::with_name(&format!("{}/storm.toml", workspace_root.to_string_lossy()))
-              .required(false),
-          )
-          .add_source(
-            File::with_name(&format!("{}/.storm/config.toml", workspace_root.to_string_lossy()))
-              .required(false),
-          )
-          .add_source(
-            File::with_name(&format!("{}/storm.yaml", workspace_root.to_string_lossy()))
-              .required(false),
-          )
-          .add_source(
-            File::with_name(&format!("{}/.storm/config.yaml", workspace_root.to_string_lossy()))
-              .required(false),
-          )
-          .add_source(Environment::with_prefix("storm"))
-          .build()?;
+        storm_config.config = Some(
+          Config::builder()
+            .set_default("name", package_json.name)?
+            .set_default("namespace", package_json.namespace)?
+            .set_default("repository", package_json.repository.get("url").unwrap().to_string())?
+            .set_default("license", package_json.license)?
+            .set_default("homepage", package_json.homepage)?
+            .set_default("workspace_root", workspace_root.to_str().unwrap().to_string())?
+            .add_source(
+              File::with_name(&format!("{}/storm.json", workspace_root.to_string_lossy()))
+                .required(false),
+            )
+            .add_source(
+              File::with_name(&format!("{}/.storm/config.json", workspace_root.to_string_lossy()))
+                .required(false),
+            )
+            .add_source(
+              File::with_name(&format!("{}/storm.toml", workspace_root.to_string_lossy()))
+                .required(false),
+            )
+            .add_source(
+              File::with_name(&format!("{}/.storm/config.toml", workspace_root.to_string_lossy()))
+                .required(false),
+            )
+            .add_source(
+              File::with_name(&format!("{}/storm.yaml", workspace_root.to_string_lossy()))
+                .required(false),
+            )
+            .add_source(
+              File::with_name(&format!("{}/.storm/config.yaml", workspace_root.to_string_lossy()))
+                .required(false),
+            )
+            .add_source(Environment::with_prefix("storm"))
+            .build()?,
+        );
 
-        s.try_deserialize()
+        let config = storm_config.config.as_ref().unwrap();
+        if let Ok(found) = config.get_string("name") {
+          storm_config.name = found;
+        }
+        if let Ok(found) = config.get_string("namespace") {
+          storm_config.namespace = found;
+        }
+        if let Ok(found) = config.get_string("organization") {
+          storm_config.organization = found;
+        }
+        if let Ok(found) = config.get_string("repository") {
+          storm_config.repository = found;
+        }
+        if let Ok(found) = config.get_string("license") {
+          storm_config.license = found;
+        }
+        if let Ok(found) = config.get_string("homepage") {
+          storm_config.homepage = found;
+        }
+        if let Ok(found) = config.get_string("branch") {
+          storm_config.branch = found;
+        }
+        if let Ok(found) = config.get_string("preid") {
+          storm_config.preid = Some(found);
+        }
+        if let Ok(found) = config.get_string("owner") {
+          storm_config.owner = found;
+        }
+        if let Ok(found) = config.get_string("worker") {
+          storm_config.worker = found;
+        }
+        if let Ok(found) = config.get_string("env") {
+          storm_config.env = EnvironmentType::from_str(&found).unwrap();
+        }
+        if let Ok(found) = config.get_string("profile") {
+          storm_config.profile = Some(found);
+        }
+        if let Ok(found) = config.get_bool("ci") {
+          storm_config.ci = found;
+        }
+        if let Ok(found) = config.get_string("workspace_root") {
+          storm_config.workspace_root = found;
+        }
+        if let Ok(found) = config.get_string("cache_directory") {
+          storm_config.cache_directory = found;
+        }
+        if let Ok(found) = config.get_string("build_directory") {
+          storm_config.build_directory = found;
+        }
+        if let Ok(found) = config.get_string("package_manager") {
+          storm_config.package_manager = PackageManagerType::from_str(&found).unwrap();
+        }
+        if let Ok(found) = config.get_string("timezone") {
+          storm_config.timezone = found;
+        }
+        if let Ok(found) = config.get_string("locale") {
+          storm_config.locale = found;
+        }
+        if let Ok(found) = config.get_string("log_level") {
+          storm_config.log_level = LogLevel::from_str(&found).unwrap();
+        }
+        if let Ok(found) = config.get_string("config_file") {
+          storm_config.config_file = Some(found);
+        }
+
+        Ok(storm_config)
       }
       Err(_) => {
         return Err(ConfigError::NotFound(format!(
@@ -241,6 +290,53 @@ impl StormConfig {
           workspace_root.to_string_lossy()
         )))
       }
+    }
+  }
+
+  pub fn get_extension(&self, name: &str) -> Option<HashMap<String, Value>> {
+    if let Some(existing) = self.extensions.borrow().get(name) {
+      return Some(existing.clone());
+    }
+
+    let extension = self.config.as_ref().expect("Config value must be determined").get_table(name);
+    match extension.is_ok() {
+      true => {
+        self.extensions.borrow_mut().insert(name.to_string(), extension.ok().unwrap());
+        return self.extensions.borrow().get(name).cloned();
+      }
+      false => None,
+    }
+  }
+}
+
+impl Default for StormConfig {
+  fn default() -> Self {
+    StormConfig {
+      name: "storm-ops".to_string(),
+      namespace: "storm".to_string(),
+      organization: "storm-software".to_string(),
+      log_level: LogLevel::Info,
+      owner: "@storm-software/development".to_string(),
+      worker: "Stormie-Bot".to_string(),
+      env: EnvironmentType::Production,
+      profile: None,
+      ci: true,
+      workspace_root: get_workspace_root().unwrap().to_str().unwrap().to_string(),
+      external_package_patterns: vec![],
+      skip_cache: false,
+      cache_directory: "node_modules/.cache/storm".to_string(),
+      build_directory: "dist".to_string(),
+      package_manager: PackageManagerType::Npm,
+      timezone: "America/New_York".to_string(),
+      locale: "en-US".to_string(),
+      repository: "".to_string(),
+      license: "MIT".to_string(),
+      homepage: "https://stormsoftware.org".to_string(),
+      branch: "main".to_string(),
+      preid: None,
+      config_file: None,
+      extensions: HashMap::new().into(),
+      config: None,
     }
   }
 }
