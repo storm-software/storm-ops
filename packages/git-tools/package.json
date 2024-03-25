@@ -52,7 +52,7 @@
     "nx": "18.0.4",
     "prettier": "3.2.5",
     "semver": "7.5.4",
-    "tsconfig-paths": "^4.2.0",
+    "tsconfig-paths": "4.2.0",
     "word-wrap": "1.2.5"
   },
   "devDependencies": {
