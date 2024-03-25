@@ -1,3 +1,15 @@
+## 1.44.1 (2024-03-25)
+
+
+### 🩹 Fixes
+
+- **storm-workspace:** Resolved issue with failed unit-test ([42e5a411](https://github.com/storm-software/storm-ops/commit/42e5a411))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.44.0 (2024-03-25)
 
 
