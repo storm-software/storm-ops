@@ -113,7 +113,7 @@
   "devDependencies": {
     "@storm-software/config": "1.6.0",
     "@storm-software/config-tools": "1.32.4",
-    "@types/eslint": "8.44.6"
+    "@types/eslint": "8.44.9"
   },
   "publishConfig": {
     "access": "public"
