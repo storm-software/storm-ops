@@ -1,3 +1,30 @@
+## 1.66.0 (2024-03-25)
+
+
+### 🚀 Features
+
+- **storm-config:** Added rust crates and release/publish workspace tools ([eab906b1](https://github.com/storm-software/storm-ops/commit/eab906b1))
+
+- **workspace-tools:** Added Nx plugin to apply rust and typescript targets ([5738161f](https://github.com/storm-software/storm-ops/commit/5738161f))
+
+- **workspace-tools:** Major updates to base nx.json configuration ([06ec9a6a](https://github.com/storm-software/storm-ops/commit/06ec9a6a))
+
+
+### 🩹 Fixes
+
+- **storm-config:** Added support for the `.storm` configuration folder ([1b0b0dd6](https://github.com/storm-software/storm-ops/commit/1b0b0dd6))
+
+- **workspace-tools:** Cleaned up the error logging in `release-version` generator ([e6dbda76](https://github.com/storm-software/storm-ops/commit/e6dbda76))
+
+- **workspace-tools:** Resolved issues with mismatched plugins ([f22ac490](https://github.com/storm-software/storm-ops/commit/f22ac490))
+
+- **workspace-tools:** Resolved issue with `release-version` generator ([bae668e5](https://github.com/storm-software/storm-ops/commit/bae668e5))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.65.6 (2024-03-17)
 
 

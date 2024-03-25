@@ -1,3 +1,22 @@
+## 2.5.0 (2024-03-25)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Added Nx plugin to apply rust and typescript targets ([5738161f](https://github.com/storm-software/storm-ops/commit/5738161f))
+
+- **workspace-tools:** Major updates to base nx.json configuration ([06ec9a6a](https://github.com/storm-software/storm-ops/commit/06ec9a6a))
+
+
+### 🩹 Fixes
+
+- **git-tools:** Resolved issues with `left-hook` scripts ([daf28aa2](https://github.com/storm-software/storm-ops/commit/daf28aa2))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.4.0 (2024-03-19)
 
 

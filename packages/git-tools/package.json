@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/git-tools",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "private": false,
   "description": "⚡ A package containing various git tools used in Storm workspaces.",
   "keywords": [
@@ -56,8 +56,8 @@
     "word-wrap": "1.2.5"
   },
   "devDependencies": {
-    "@storm-software/config": "1.6.0",
-    "@storm-software/config-tools": "1.32.4",
+    "@storm-software/config": "1.7.0",
+    "@storm-software/config-tools": "1.33.0",
     "@types/inquirer": "9.0.6",
     "@types/prettier": "3.0.0"
   },

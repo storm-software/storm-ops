@@ -214,9 +214,6 @@ importers:
 
   packages/config-tools:
     dependencies:
-      '@storm-software/config':
-        specifier: workspace:*
-        version: link:../config
       chalk:
         specifier: 4.1.2
         version: 4.1.2
@@ -226,6 +223,10 @@ importers:
       zod:
         specifier: 3.22.4
         version: 3.22.4
+    devDependencies:
+      '@storm-software/config':
+        specifier: workspace:*
+        version: link:../config
 
   packages/create-storm-workspace:
     dependencies:

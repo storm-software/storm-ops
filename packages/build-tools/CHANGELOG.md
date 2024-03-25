@@ -1,3 +1,19 @@
+## 0.2.0 (2024-03-25)
+
+
+### 🚀 Features
+
+- **storm-config:** Added rust crates and release/publish workspace tools ([eab906b1](https://github.com/storm-software/storm-ops/commit/eab906b1))
+
+- **workspace-tools:** Added Nx plugin to apply rust and typescript targets ([5738161f](https://github.com/storm-software/storm-ops/commit/5738161f))
+
+- **workspace-tools:** Major updates to base nx.json configuration ([06ec9a6a](https://github.com/storm-software/storm-ops/commit/06ec9a6a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.1.16 (2024-03-17)
 
 
