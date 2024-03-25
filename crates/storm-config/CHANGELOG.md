@@ -1,3 +1,15 @@
+## 0.2.3 (2024-03-25)
+
+
+### 🩹 Fixes
+
+- **storm-config:** Resolve crates.io publish issues ([a5e76abc](https://github.com/storm-software/storm-ops/commit/a5e76abc))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.2.2 (2024-03-25)
 
 
