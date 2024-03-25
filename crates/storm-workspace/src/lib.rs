@@ -10,8 +10,8 @@ mod tests {
   fn it_should_find_workspace_root() {
     let crate_name = "name = 'storm-ops'";
 
-    let project_root = get_workspace_root().expect("There is no project root");
-    let toml_path = project_root.to_str().unwrap().to_owned() + "/Cargo.toml";
+    let workspace_root = get_workspace_root().expect("There is no project root");
+    let toml_path = workspace_root.to_str().unwrap().to_owned() + "/Cargo.toml";
     let toml_string = read_to_string(toml_path).unwrap();
 
     assert!(toml_string.contains(crate_name));

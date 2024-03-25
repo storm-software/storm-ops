@@ -84,7 +84,7 @@ const WORKSPACE_ROOT_FILES: [&str; 35] = [
 /// - bun.lockb
 ///
 /// ```rust,no_run
-/// match project_root::get_project_root() {
+/// match storm_workspace::get_workspace_root() {
 ///     Ok(p) => println!("Current project root is {:?}", p),
 ///     Err(e) => println!("Error obtaining project root {:?}", e)
 /// };
