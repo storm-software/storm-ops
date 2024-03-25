@@ -53,9 +53,6 @@ pub use crate::builder::AsyncConfigBuilder;
 #[cfg(feature = "convert-case")]
 pub use convert_case::Case;
 
-#[macro_use]
-extern crate lazy_static;
-
 pub mod storm_config;
 pub mod types;
 
