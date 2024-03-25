@@ -2,7 +2,7 @@
 [package]
 name = 'storm-config'
 description = 'A crate containing the configuration structure and utilities used by Storm Software monorepos.'
-version = '0.2.1'
+version = '0.2.2'
 publish = true
 edition = { workspace = true }
 repository = { workspace = true }

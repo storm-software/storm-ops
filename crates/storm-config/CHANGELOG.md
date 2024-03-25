@@ -1,3 +1,15 @@
+## 0.2.2 (2024-03-25)
+
+
+### 🩹 Fixes
+
+- **storm-config:** Resolved issues with missing formatter dependency ([250f24c9](https://github.com/storm-software/storm-ops/commit/250f24c9))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.2.1 (2024-03-25)
 
 
