@@ -57,10 +57,10 @@ pub struct Environment {
   /// ## Example
   ///
   /// ```rust
-  /// # use config::{Environment, Config};
-  /// # use serde::Deserialize;
-  /// # use std::collections::HashMap;
-  /// # use std::convert::TryInto;
+  /// use storm_config::{Environment, Config};
+  /// use serde::Deserialize;
+  /// use std::collections::HashMap;
+  /// use std::convert::TryInto;
   /// #
   /// #[test]
   /// fn test_config() -> Result<(), config::ConfigError> {
@@ -185,10 +185,10 @@ impl Environment {
   /// ## Example
   ///
   /// ```rust
-  /// # use config::{Environment, Config};
-  /// # use serde::Deserialize;
-  /// # use std::collections::HashMap;
-  /// # use std::convert::TryInto;
+  /// use storm_config::{Environment, Config};
+  /// use serde::Deserialize;
+  /// use std::collections::HashMap;
+  /// use std::convert::TryInto;
   /// #
   /// #[test]
   /// fn test_config() -> Result<(), config::ConfigError> {

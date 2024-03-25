@@ -34,9 +34,9 @@ use std::str::FromStr;
 /// # Examples
 ///
 /// ```rust
-/// # use config::*;
-/// # use std::error::Error;
-/// # fn main() -> Result<(), Box<dyn Error>> {
+/// use storm_config::*;
+/// use std::error::Error;
+/// fn main() -> Result<(), Box<dyn Error>> {
 /// let mut builder = Config::builder()
 ///     .set_default("default", "1")?
 ///     .add_source(File::new("config/settings", FileFormat::Json))
@@ -61,7 +61,7 @@ use std::str::FromStr;
 /// Calls can be not chained as well
 /// ```rust
 /// # use std::error::Error;
-/// # use config::*;
+/// # use storm_config::*;
 /// # fn main() -> Result<(), Box<dyn Error>> {
 /// let mut builder = Config::builder();
 /// builder = builder.set_default("default", "1")?;
@@ -75,14 +75,14 @@ use std::str::FromStr;
 /// Calling [`Config::builder`](Config::builder) yields builder in the default state.
 /// If having an asynchronous state as the initial state is desired, _turbofish_ notation needs to be used.
 /// ```rust
-/// # use config::{*, builder::AsyncState};
+/// use storm_config::{*, builder::AsyncState};
 /// let mut builder = ConfigBuilder::<AsyncState>::default();
 /// ```
 ///
 /// If for some reason acquiring builder in default state is required without calling [`Config::builder`](Config::builder)
 /// it can also be achieved.
 /// ```rust
-/// # use config::{*, builder::DefaultState};
+/// use storm_config::{*, builder::DefaultState};
 /// let mut builder = ConfigBuilder::<DefaultState>::default();
 /// ```
 #[derive(Debug, Clone, Default)]
