@@ -86,6 +86,7 @@ Valid values are: ${validReleaseVersionPrefixes.map((s) => `"${s}"`).join(", ")}
       if (!customPackageRoot) {
         return projectNode.data.root;
       }
+
       return interpolate(customPackageRoot, {
         workspaceRoot: "",
         projectRoot: projectNode.data.root,
@@ -698,6 +699,12 @@ function resolveLocalPackageCargoDependencies(
       // Append it to the map for later use within the release version generator
       projectNameToPackageRootMap.set(projectNode.name, packageRoot);
     }
+
+    const cargoTomlPath = joinPathFragments(packageRoot ?? "./", "Cargo.toml");
+    if (!tree.exists(cargoTomlPath)) {
+      continue;
+    }
+
     const projectDeps = projectGraph.dependencies[projectNode.name];
     if (!projectDeps) {
       continue;
