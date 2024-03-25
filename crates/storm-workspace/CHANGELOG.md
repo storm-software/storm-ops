@@ -1,3 +1,15 @@
+## 0.2.1 (2024-03-25)
+
+
+### 🩹 Fixes
+
+- **storm-workspace:** Added import to example code in documentation ([52f651ae](https://github.com/storm-software/storm-ops/commit/52f651ae))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.2.0 (2024-03-25)
 
 
