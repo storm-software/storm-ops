@@ -1,0 +1,97 @@
+{
+  "extends": ["../../.eslintrc.json", "../../.eslintrc.base.json"],
+  "ignorePatterns": ["!**/*", "node_modules/*"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {}
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {}
+    },
+    {
+      "files": ["*.json"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "@nx/dependency-checks": [
+          "error",
+          {
+            "buildTargets": ["build"],
+            "ignoredFiles": [
+              "{projectRoot}/esbuild.config.{js,ts,mjs,mts}",
+              "{projectRoot}/jest.config.ts"
+            ],
+            "ignoredDependencies": [
+              "@cspell/dict-ada",
+              "@cspell/dict-aws",
+              "@cspell/dict-bash",
+              "@cspell/dict-companies",
+              "@cspell/dict-cpp",
+              "@cspell/dict-cryptocurrencies",
+              "@cspell/dict-csharp",
+              "@cspell/dict-css",
+              "@cspell/dict-dart",
+              "@cspell/dict-django",
+              "@cspell/dict-docker",
+              "@cspell/dict-dotnet",
+              "@cspell/dict-elixir",
+              "@cspell/dict-en_us",
+              "@cspell/dict-en-common-misspellings",
+              "@cspell/dict-en-gb",
+              "@cspell/dict-filetypes",
+              "@cspell/dict-fonts",
+              "@cspell/dict-fsharp",
+              "@cspell/dict-fullstack",
+              "@cspell/dict-gaming-terms",
+              "@cspell/dict-git",
+              "@cspell/dict-golang",
+              "@cspell/dict-haskell",
+              "@cspell/dict-html-symbol-entities",
+              "@cspell/dict-html",
+              "@cspell/dict-java",
+              "@cspell/dict-k8s",
+              "@cspell/dict-latex",
+              "@cspell/dict-lorem-ipsum",
+              "@cspell/dict-lua",
+              "@cspell/dict-makefile",
+              "@cspell/dict-node",
+              "@cspell/dict-npm",
+              "@cspell/dict-php",
+              "@cspell/dict-powershell",
+              "@cspell/dict-public-licenses",
+              "@cspell/dict-python",
+              "@cspell/dict-r",
+              "@cspell/dict-ruby",
+              "@cspell/dict-rust",
+              "@cspell/dict-scala",
+              "@cspell/dict-sql",
+              "@cspell/dict-software-terms",
+              "@cspell/dict-svelte",
+              "@cspell/dict-swift",
+              "@cspell/dict-typescript",
+              "@cspell/dict-vue",
+              "@size-limit/file",
+              "@size-limit/time",
+              "size-limit",
+              "remark-retext",
+              "remark-parse",
+              "remark-mdx",
+              "remark-gfm",
+              "remark-frontmatter",
+              "rehype-retext",
+              "rehype-parse"
+            ],
+            "checkMissingDependencies": true,
+            "checkObsoleteDependencies": true,
+            "checkVersionMismatches": false
+          }
+        ]
+      }
+    }
+  ]
+}

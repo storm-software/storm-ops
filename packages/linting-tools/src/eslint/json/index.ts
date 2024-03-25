@@ -1,12 +1,7 @@
-import { Linter } from "eslint";
+import type { Linter } from "eslint";
 import { CODE_BLOCK } from "../constants";
 
-const JSONC_FILES = [
-  "tsconfig.json",
-  "tsconfig.base.json",
-  "nx.json",
-  ".vscode/launch.json"
-];
+const JSONC_FILES = ["tsconfig.json", "tsconfig.base.json", "nx.json", ".vscode/launch.json"];
 const config: Linter.Config = {
   root: true,
   overrides: [

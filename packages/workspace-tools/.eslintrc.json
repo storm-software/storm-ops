@@ -15,20 +15,29 @@
       "rules": {}
     },
     {
+      "files": ["./package.json", "./executors.json", "./generators.json"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "@nx/nx-plugin-checks": "error"
+      }
+    },
+    {
       "files": ["*.json"],
       "parser": "jsonc-eslint-parser",
       "rules": {
         "@nx/dependency-checks": [
           "error",
           {
-            "buildTargets": ["build"],
+            "buildTargets": [
+              "build"
+            ],
             "ignoredFiles": [
               "{projectRoot}/esbuild.config.{js,ts,mjs,mts}",
               "{projectRoot}/jest.config.ts"
             ],
             "checkMissingDependencies": true,
             "checkObsoleteDependencies": true,
-            "checkVersionMismatches": false
+            "checkVersionMismatches": false,
           }
         ]
       }

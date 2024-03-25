@@ -48,7 +48,7 @@ export const runProjectReadme = async (
 
   const project = projectConfigs.projects[projectName];
 
-  const inputFile = join(project.root, "README.md");
+  const inputFile = join(project?.root ?? "./", "README.md");
   if (existsSync(inputFile)) {
     console.info(`Formatting ${projectName}'s README file at "${inputFile}"`);
 

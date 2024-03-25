@@ -1,4 +1,4 @@
-import { Linter } from "eslint";
+import type { Linter } from "eslint";
 import reactRules from "../rules/react";
 import jsxA11yRules from "../rules/ts-docs";
 

@@ -1,126 +1,6 @@
 {
-  "pluginsConfig": {
-    "@nx/js": {
-      "analyzeSourceFiles": true,
-      "analyzeLockfile": true,
-      "analyzePackageJson": true
-    }
-  },
   "$schema": "https://cdn.jsdelivr.net/npm/nx/schemas/nx-schema.json",
-  "extends": "nx/presets/npm.json",
-  "affected": {
-    "defaultBase": "main"
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx/tasks-runners/default",
-      "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "format",
-          "test",
-          "e2e"
-        ],
-        "parallel": 5,
-        "cacheDirectory": "node_modules/.cache/nx"
-      }
-    }
-  },
-  "targetDefaults": {
-    "build": {
-      "cache": true,
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ],
-      "outputs": [
-        "{options.outputPath}"
-      ]
-    },
-    "lint": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "outputs": [
-        "{options.outputFile}"
-      ],
-      "options": {
-        "commands": [
-          "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true {projectRoot}"
-        ],
-        "color": true
-      },
-      "inputs": [
-        "default",
-        "{workspaceRoot}/**/biome.json"
-      ]
-    },
-    "test": {
-      "cache": true,
-      "inputs": [
-        "default",
-        "^production",
-        "{workspaceRoot}/jest.preset.js"
-      ],
-      "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
-      "options": {
-        "jestConfig": "{projectRoot}/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
-      }
-    },
-    "e2e": {
-      "cache": true
-    },
-    "@nx/esbuild:esbuild": {
-      "cache": true,
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ]
-    }
-  },
-  "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
-    "production": [
-      "default",
-      "!{projectRoot}/.eslintrc.json",
-      "!{projectRoot}/eslint.config.js",
-      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/tsconfig.spec.json",
-      "!{projectRoot}/jest.config.[jt]s",
-      "!{projectRoot}/src/test-setup.[jt]s",
-      "!{projectRoot}/test-setup.[jt]s"
-    ],
-    "sharedGlobals": [
-      "{workspaceRoot}/tsconfig.base.json",
-      "{workspaceRoot}/storm.*",
-      "{workspaceRoot}/nx.json",
-      "{workspaceRoot}/biome.json",
-      "{workspaceRoot}/rustfmt.toml",
-      "{workspaceRoot}/deny.toml",
-      "{workspaceRoot}/Cargo.toml",
-      "{workspaceRoot}/Cargo.lock",
-      "{workspaceRoot}/.cargo/config.toml"
-    ]
-  },
+  "extends": "./packages/workspace-tools/config/nx.json",
   "release": {
     "projects": [
       "packages/*",
@@ -154,5 +34,12 @@
     "@nx/eslint/plugin",
     "@monodon/rust",
     "@storm-software/workspace-tools"
-  ]
+  ],
+  "pluginsConfig": {
+    "@nx/js": {
+      "analyzeSourceFiles": true,
+      "analyzeLockfile": true,
+      "analyzePackageJson": true
+    }
+  }
 }

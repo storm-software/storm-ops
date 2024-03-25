@@ -2,7 +2,7 @@ import type { ExecutorContext } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
 import { applyDefaultOptions, type TypeScriptBuildOptions } from "@storm-software/build-tools";
-import type { TsupExecutorSchema } from "./schema";
+import type { TsupExecutorSchema } from "./schema.d";
 import { build } from "@storm-software/build-tools";
 
 export async function tsupExecutorFn(

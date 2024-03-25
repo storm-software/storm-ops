@@ -1,4 +1,4 @@
-import { Linter } from "eslint";
+import type { Linter } from "eslint";
 
 const config: Linter.RulesRecord = {
   // This rule has been deprecated, but not yet removed.

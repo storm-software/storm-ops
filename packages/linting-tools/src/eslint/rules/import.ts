@@ -1,4 +1,4 @@
-import { Linter } from "eslint";
+import type { Linter } from "eslint";
 
 const config: Linter.RulesRecord = {
   /**
@@ -36,10 +36,7 @@ const config: Linter.RulesRecord = {
    *
    * 🚫 Not fixable - https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-extraneous-dependencies.md
    */
-  "import/no-extraneous-dependencies": [
-    "error",
-    { includeInternal: true, includeTypes: true }
-  ],
+  "import/no-extraneous-dependencies": ["error", { includeInternal: true, includeTypes: true }],
   /**
    * Disallow mutable exports.
    *

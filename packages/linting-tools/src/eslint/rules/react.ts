@@ -1,4 +1,4 @@
-import { Linter } from "eslint";
+import type { Linter } from "eslint";
 
 const config: Linter.RulesRecord = {
   // We recommend using TypeScript over `prop-types`, as `prop-types` can add

@@ -31,7 +31,8 @@
       "style": {
         "useDefaultParameterLast": "off",
         "useTemplate": "warn",
-        "noUselessElse": "warn"
+        "noUselessElse": "warn",
+        "noNonNullAssertion": "warn"
       },
       "suspicious": {
         "noAssignInExpressions": "warn",

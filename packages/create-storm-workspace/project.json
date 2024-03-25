@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/create-storm-workspace",
         "tsConfig": "packages/create-storm-workspace/tsconfig.lib.json",
@@ -20,10 +18,7 @@
         "minify": true,
         "skipTypeCheck": false,
         "thirdParty": true,
-        "format": [
-          "esm",
-          "cjs"
-        ],
+        "format": ["esm", "cjs"],
         "esbuildOptions": {
           "outExtension": {
             ".js": ".js"
@@ -52,11 +47,7 @@
           }
         ]
       }
-    },
-    "lint": {}
+    }
   },
-  "tags": [
-    "type:util",
-    "scope:tools"
-  ]
+  "tags": ["type:util", "scope:tools"]
 }

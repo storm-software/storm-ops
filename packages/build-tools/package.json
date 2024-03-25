@@ -8,7 +8,6 @@
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/build-tools"
   },
-  "type": "module",
   "main": "./src/index.cjs",
   "module": "./src/index.js",
   "types": "declarations.d.ts",

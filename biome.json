@@ -4,8 +4,9 @@
     "./packages/linting-tools/src/biome/biome.json"
   ],
   "files": {
+    "ignoreUnknown": true,
     "ignore": [
-      "packages/workspace-tools/libs/**/*.*"
+      "./packages/workspace-tools/src/generators/**/libs/**/*"
     ]
   }
 }

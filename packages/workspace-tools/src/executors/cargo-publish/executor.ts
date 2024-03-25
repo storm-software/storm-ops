@@ -2,7 +2,7 @@ import { type ExecutorContext, joinPathFragments, output } from "@nx/devkit";
 import { execSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { parseCargoToml } from "../../utils/toml";
-import type { CargoPublishExecutorSchema } from "./schema";
+import type { CargoPublishExecutorSchema } from "./schema.d";
 
 const LARGE_BUFFER = 1024 * 1000000;
 

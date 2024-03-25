@@ -22,7 +22,7 @@
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/workspace-tools"
   },
-  "license": "Apache License 2.0",
+  "license": "Apache 2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.org",
@@ -31,6 +31,8 @@
   "type": "commonjs",
   "main": "./index.js",
   "typings": "./declarations.d.ts",
+  "executors": "./executors.json",
+  "generators": "./generators.json",
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
     "@ltd/j-toml": "^1.38.0",
@@ -60,7 +62,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "executors": "./executors.json",
-  "generators": "./generators.json"
+  }
 }

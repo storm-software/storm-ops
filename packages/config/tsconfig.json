@@ -6,8 +6,6 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.js",
-    "bin/**/*",
     "declarations.d.ts"
   ],
   "exclude": [

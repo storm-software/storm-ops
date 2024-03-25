@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/linting-tools",
         "tsConfig": "packages/linting-tools/tsconfig.json",
@@ -31,12 +29,8 @@
         "minify": false,
         "skipTypeCheck": true,
         "thirdParty": true,
-        "format": [
-          "esm"
-        ],
-        "external": [
-          "nx"
-        ],
+        "format": ["cjs", "esm"],
+        "external": ["nx"],
         "esbuildOptions": {
           "legalComments": "inline",
           "banner": {
@@ -111,12 +105,7 @@
           }
         ]
       }
-    },
-    "lint": {},
-    "test": {}
+    }
   },
-  "tags": [
-    "type:util",
-    "scope:tools"
-  ]
+  "tags": ["type:util", "scope:tools"]
 }

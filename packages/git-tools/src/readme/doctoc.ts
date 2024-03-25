@@ -63,7 +63,7 @@ export const doctoc = (
   processAll = false,
   updateOnly = false
 ) => {
-  let files = [];
+  let files: any[] = [];
 
   const stat = statSync(directory);
   if (stat.isDirectory()) {

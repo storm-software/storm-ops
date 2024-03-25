@@ -1,18 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Storm Software",
-  "extends": "@tsconfig/recommended/tsconfig.json",
+  "display": "Storm Software - Base TypeScript Config",
   "compileOnSave": false,
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "lib": [
-      "esnext"
-    ],
-    "types": [
-      "node",
-      "jest"
-    ],
+    "lib": ["esnext"],
+    "types": ["node", "jest"],
     "moduleResolution": "bundler",
     "sourceMap": true,
     "incremental": true,
@@ -35,15 +29,6 @@
     "skipDefaultLibCheck": true,
     "esModuleInterop": true
   },
-  "include": [
-    "**/*.ts",
-    "**/*.js",
-    "**/*.tsx",
-    "**/*.jsx",
-    "**/*.d.ts",
-    "**/*.json"
-  ],
-  "exclude": [
-    "**/node_modules"
-  ]
+  "include": ["**/*.ts", "**/*.js", "**/*.tsx", "**/*.jsx", "**/*.d.ts", "**/*.json"],
+  "exclude": ["**/node_modules"]
 }

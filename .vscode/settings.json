@@ -9,9 +9,7 @@
    * Rust Analyzer
    ******************************/
   "rust-analyzer.procMacro.ignored": {
-    "napi-derive": [
-      "napi"
-    ]
+    "napi-derive": ["napi"]
   },
   "rust-analyzer.linkedProjects": [
     "crates\\storm-workspace\\Cargo.toml",
@@ -23,16 +21,11 @@
   "json.schemas": [
     {
       "url": "https://cdn.jsdelivr.net/npm/tsup/schema.json",
-      "fileMatch": [
-        "package.json",
-        "tsup.config.json"
-      ]
+      "fileMatch": ["package.json", "tsup.config.json"]
     },
     {
       "url": "https://cdn.jsdelivr.net/npm/nx/schemas/nx-schema.json",
-      "fileMatch": [
-        "nx.json"
-      ]
+      "fileMatch": ["nx.json"]
     }
     /*{
       "url": "https://cdn.jsdelivr.net/npm/@storm-software/config/schema.json",
@@ -253,68 +246,48 @@
   "vsicons.associations.files": [
     {
       "icon": "registry",
-      "extensions": [
-        "routes.config.ts"
-      ],
+      "extensions": ["routes.config.ts"],
       "filename": true,
       "format": "svg"
     },
     {
       "icon": "dependencies",
-      "extensions": [
-        "dependencies.config.ts"
-      ],
+      "extensions": ["dependencies.config.ts"],
       "filename": true,
       "format": "svg"
     },
     {
       "icon": "swagger",
-      "extensions": [
-        "api-spec.json"
-      ],
+      "extensions": ["api-spec.json"],
       "filename": true,
       "format": "svg"
     },
     {
       "icon": "tailwind",
-      "extensions": [
-        "tailwind.preset.js"
-      ],
+      "extensions": ["tailwind.preset.js"],
       "filename": true,
       "format": "svg"
     },
     {
       "icon": "jest",
-      "extensions": [
-        "jest.preset.js"
-      ],
+      "extensions": ["jest.preset.js"],
       "filename": true,
       "format": "svg"
     },
     {
       "icon": "config",
-      "extensions": [
-        "environment.ts"
-      ],
+      "extensions": ["environment.ts"],
       "format": "svg"
     },
     {
       "icon": "config",
-      "extensions": [
-        "environment.ts"
-      ],
+      "extensions": ["environment.ts"],
       "format": "svg"
     },
     {
       "icon": "dotenv",
-      "extensions": [
-        ".env",
-        ".env.local",
-        ".env.production"
-      ],
-      "languages": [
-        "dotenv"
-      ],
+      "extensions": [".env", ".env.local", ".env.production"],
+      "languages": ["dotenv"],
       "format": "svg"
     },
     {
@@ -331,126 +304,87 @@
   "vsicons.associations.folders": [
     {
       "icon": "graphql",
-      "extensions": [
-        "graphql",
-        "gql"
-      ],
+      "extensions": ["graphql", "gql"],
       "format": "svg"
     },
     {
       "icon": "www",
-      "extensions": [
-        "shell"
-      ],
+      "extensions": ["shell"],
       "format": "svg"
     },
     {
       "icon": "config",
-      "extensions": [
-        "environment"
-      ],
+      "extensions": ["environment"],
       "format": "svg"
     },
     {
       "icon": "tools",
-      "extensions": [
-        "tools",
-        "executors",
-        "generators"
-      ],
+      "extensions": ["tools", "executors", "generators"],
       "format": "svg"
     },
     {
       "icon": "helper",
-      "extensions": [
-        "utilities"
-      ],
+      "extensions": ["utilities"],
       "format": "svg"
     },
     {
       "icon": "typescript",
-      "extensions": [
-        "constants"
-      ],
+      "extensions": ["constants"],
       "format": "svg"
     },
     {
       "icon": "typings2",
-      "extensions": [
-        "enums"
-      ],
+      "extensions": ["enums"],
       "format": "svg"
     },
     {
       "icon": "typings",
-      "extensions": [
-        "types"
-      ],
+      "extensions": ["types"],
       "format": "svg"
     },
     {
       "icon": "db",
-      "extensions": [
-        "state"
-      ],
+      "extensions": ["state"],
       "format": "svg"
     },
     {
       "icon": "api",
-      "extensions": [
-        ".openapi-generator",
-        "openapi",
-        "asyncapi"
-      ],
+      "extensions": [".openapi-generator", "openapi", "asyncapi"],
       "format": "svg"
     },
     {
       "icon": "route",
-      "extensions": [
-        "inversion"
-      ],
+      "extensions": ["inversion"],
       "format": "svg"
     },
     {
       "icon": "route",
-      "extensions": [
-        "inversion"
-      ],
+      "extensions": ["inversion"],
       "format": "svg"
     },
     {
       "icon": "include",
-      "extensions": [
-        "external"
-      ],
+      "extensions": ["external"],
       "format": "svg"
     },
     {
       "icon": "library",
-      "extensions": [
-        "shared"
-      ],
+      "extensions": ["shared"],
       "format": "svg"
     },
     {
       "icon": "server",
-      "extensions": [
-        "dotnet"
-      ],
+      "extensions": ["dotnet"],
       "format": "svg"
     },
     {
       "icon": "style",
-      "extensions": [
-        "design-system"
-      ],
+      "extensions": ["design-system"],
       "format": "svg"
     },
     {
       "icon": "theme",
-      "extensions": [
-        "tokens"
-      ],
+      "extensions": ["tokens"],
       "format": "svg"
     }
   ],
@@ -459,12 +393,5 @@
    ******************************/
   "commitizen.capitalizeWindowsDriveLetter": true,
   "commitizen.autoSync": false,
-  "commitizen.showOutputChannel": "always",
-  "[javascript][javascriptreact][typescript][typescriptreact]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit",
-      "quickfix.biome": "explicit",
-      "source.sortMembers": "explicit"
-    }
-  }
+  "commitizen.showOutputChannel": "always"
 }

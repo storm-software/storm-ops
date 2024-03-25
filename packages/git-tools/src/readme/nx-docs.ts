@@ -20,7 +20,7 @@ export const getExecutorMarkdown = (
       let result = "";
       let title = "";
       let description = "";
-      let required = [];
+      let required: string[] = [];
 
       if (executor.schema) {
         const schemaJsonPath = join(findFilePath(executorsJsonFile), executor.schema);

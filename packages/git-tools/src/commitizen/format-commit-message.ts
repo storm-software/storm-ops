@@ -21,9 +21,9 @@ export const formatCommitMessage = (state: CommitState) => {
     width: MAX_LINE_WIDTH
   };
 
-  const emoji = !!config.types[answers.type]?.emoji;
+  const emoji = answers.type?.[answers.type]?.emoji ? answers.type[answers.type].emoji : "";
   const scope = answers.scope ? answers.scope.trim() : "";
-  const subject = answers.subject.trim();
+  const subject = answers.subject?.trim();
   const type = answers.type;
 
   const format = config.format || "{type}({scope}): {emoji}{subject}";
@@ -32,15 +32,15 @@ export const formatCommitMessage = (state: CommitState) => {
 
   // Wrap these lines at MAX_LINE_WIDTH character
   const body = wrap(answers.body || "", wrapOptions);
-  const breaking = wrap(answers.breaking, wrapOptions);
-  const issues = wrap(answers.issues, wrapOptions);
+  const breaking = wrap(answers.breaking || "", wrapOptions);
+  const issues = wrap(answers.issues || "", wrapOptions);
 
   // @note(emoji) Add space after emoji (breakingChangePrefix/closedIssueEmoji)
   const head = format
     .replace(/\{emoji\}/g, config.disableEmoji ? "" : `${emoji} `)
     .replace(/\{scope\}/g, scope)
-    .replace(/\{subject\}/g, subject)
-    .replace(/\{type\}/g, type);
+    .replace(/\{subject\}/g, subject || "")
+    .replace(/\{type\}/g, type || "");
 
   let msg = head;
 

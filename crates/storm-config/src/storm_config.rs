@@ -136,6 +136,8 @@ pub struct StormConfig {
   pub worker: String,
   /// The current runtime environment of the package
   pub env: EnvironmentType,
+  /// The current profile id to use during processing
+  pub profile: Option<String>,
   /// An indicator specifying if the current environment is a CI environment
   pub ci: bool,
   /// The root directory of the package

@@ -24,7 +24,15 @@
         "@nx/dependency-checks": [
           "error",
           {
-            "ignoredFiles": ["{projectRoot}/esbuild.config.{js,ts,mjs,mts}"]
+            "buildTargets": ["build"],
+            "ignoredFiles": [
+              "{projectRoot}/esbuild.config.{js,ts,mjs,mts}",
+              "{projectRoot}/jest.config.ts",
+              "{projectRoot}/node_modules/**"
+            ],
+            "checkMissingDependencies": true,
+            "checkObsoleteDependencies": true,
+            "checkVersionMismatches": false
           }
         ]
       }

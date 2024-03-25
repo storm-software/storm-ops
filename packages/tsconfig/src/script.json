@@ -1,0 +1,22 @@
+{
+  "extends": "./base.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Storm Software - Script TypeScript Config",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "strict": false,
+    "module": "commonjs",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "preserveSymlinks": true,
+    "isolatedModules": true,
+    "types": ["node"]
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["**/*.spec.ts", "**/*.test.ts", "**/*.d.ts"],
+  "ts-node": {
+    "files": true,
+    "require": ["tsconfig-paths/register"]
+  }
+}

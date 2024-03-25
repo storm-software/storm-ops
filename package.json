@@ -14,7 +14,6 @@
     "impact",
     "nextjs",
     "prisma",
-    "zenstack",
     "hasura",
     "strapi",
     "graphql",
@@ -41,25 +40,25 @@
     "adr": "pnpm log4brains adr new",
     "adr-preview": "pnpm log4brains preview",
     "prebuild": "pnpm clean",
-    "build": "nx affected -t build --parallel=5",
-    "build:all": "nx run-many -t build --all --parallel=1",
+    "build": "nx affected -t build --parallel=3",
+    "build-all": "nx run-many -t build --all --parallel=3",
     "clean": "rimraf dist",
     "clean:packages": "rimraf dist/packages",
-    "commit": "node ./dist/packages/git-tools/bin/git.js commit --config=\"../src/commit/config.js\"",
-    "format-readme": "nx exec -- node ./dist/packages/git-tools/bin/git.js readme-gen --templates=\"./dist/packages/git-tools/readme/templates\"",
+    "commit": "node ./dist/packages/git-tools/bin/git.js commit",
+    "format-readme": "node ./dist/packages/git-tools/bin/git.js readme-gen --templates=\"./dist/packages/git-tools/readme/templates\"",
     "dep-graph": "nx dep-graph",
     "e2e": "nx e2e",
     "help": "nx help",
-    "lint-biome": "nx exec -- biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true",
-    "lint-biome-check": "nx exec -- biome check --apply-unsafe --no-errors-on-unmatched --files-ignore-unknown=true",
-    "format-biome": "nx exec -- biome format --write  --no-errors-on-unmatched --files-ignore-unknown=true",
-    "lint-filenames": "nx exec -- ls-lint --config=\"./dist/packages/linting-tools/ls-lint/ls-lint.yml\"",
-    "lint-toml": "nx exec -- taplo format --check --config=\"./dist/packages/linting-tools/taplo/.taplo.toml\"",
-    "format-toml": "nx exec -- taplo format --config=\"./dist/packages/linting-tools/taplo/.taplo.toml\"",
-    "lint": "nx exec -- node ./dist/packages/linting-tools/bin/lint.js all --skip-cspell --skip-deps-version --skip-alex",
+    "lint-biome": "pnpm exec biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true",
+    "lint-biome-check": "pnpm exec biome check --apply-unsafe --no-errors-on-unmatched --files-ignore-unknown=true",
+    "format-biome": "pnpm exec biome format --write  --no-errors-on-unmatched --files-ignore-unknown=true",
+    "lint-filenames": "pnpm exec ls-lint --config=\"./dist/packages/linting-tools/ls-lint/ls-lint.yml\"",
+    "lint-toml": "pnpm exec taplo format --check --config=\"./dist/packages/linting-tools/taplo/.taplo.toml\"",
+    "format-toml": "pnpm exec taplo format --config=\"./dist/packages/linting-tools/taplo/.taplo.toml\"",
+    "lint": "node ./dist/packages/linting-tools/bin/lint.js all --skip-cspell --skip-deps-version --skip-alex",
     "local-registry": "nx local-registry @storm-software/storm-ops",
     "nx": "nx",
-    "release": "nx exec -- node ./dist/packages/git-tools/bin/git.js release",
+    "release": "node ./dist/packages/git-tools/bin/git.js release",
     "start": "nx serve",
     "test": "nx test"
   },
@@ -70,6 +69,7 @@
     "@biomejs/biome": "1.5.3",
     "@commitlint/cli": "^19.2.1",
     "@ls-lint/ls-lint": "^2.2.3",
+    "@monodon/rust": "^1.4.0",
     "@nx/devkit": "18.0.4",
     "@nx/esbuild": "18.0.4",
     "@nx/eslint": "18.0.4",
@@ -101,7 +101,9 @@
     "prettier": "3.2.5",
     "rimraf": "5.0.5",
     "ts-jest": "29.1.2",
+    "ts-loader": "^9.5.1",
     "ts-node": "10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "tslib": "2.6.2",
     "typescript": "5.3.3",
     "verdaccio": "5.29.0"
@@ -115,14 +117,9 @@
   "nx": {
     "includedScripts": [
       "lint",
-      "lint-biome",
-      "lint-biome-check",
-      "lint-filenames",
-      "lint-toml",
       "format",
-      "format-biome",
       "format-readme",
-      "format-toml",
+      "commit",
       "release"
     ]
   },
@@ -139,7 +136,9 @@
       "@storm-software/workspace-tools": "workspace:*",
       "@storm-software/linting-tools": "workspace:*",
       "@storm-software/git-tools": "workspace:*",
+      "@storm-software/tsconfig": "workspace:*",
       "@storm-software/testing-tools": "workspace:*",
+      "@storm-software/config": "workspace:*",
       "@storm-software/config-tools": "workspace:*",
       "@storm-software/build-tools": "workspace:*"
     },
@@ -149,8 +148,5 @@
       "@microsoft/api-extractor@7.40.1": "patches/@microsoft__api-extractor@7.40.1.patch"
     }
   },
-  "triggerEmptyDevReleaseByIncrementingThisNumber": 0,
-  "devDependencies": {
-    "@monodon/rust": "^1.4.0"
-  }
+  "triggerEmptyDevReleaseByIncrementingThisNumber": 0
 }

@@ -2,7 +2,7 @@ import type { ExecutorContext } from "@nx/devkit";
 import { withRunExecutor } from "../../base/base-executor";
 import { tsupExecutorFn } from "../tsup/executor";
 import { getFileBanner, browserConfig, applyDefaultOptions } from "@storm-software/build-tools";
-import type { TsupBrowserExecutorSchema } from "./schema";
+import type { TsupBrowserExecutorSchema } from "./schema.d";
 
 export const tsupBrowserBuildExecutorFn = (
   options: TsupBrowserExecutorSchema,

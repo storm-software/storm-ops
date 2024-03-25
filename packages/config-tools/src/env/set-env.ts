@@ -20,7 +20,7 @@ export const setExtensionEnv = <TConfig extends Record<string, any> = Record<str
           ?.replace(/([A-Z])+/g, (input?: string) =>
             input ? input[0]?.toUpperCase() + input.slice(1) : ""
           )
-          .split(/(?=[A-Z])|[\.\-\s_]/)
+          .split(/(?=[A-Z])|[.\-\s_]/)
           .map((x: string) => x.toLowerCase()) ?? [];
 
       let extensionKey: string;

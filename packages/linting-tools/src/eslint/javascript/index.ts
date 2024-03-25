@@ -1,4 +1,4 @@
-import { Linter } from "eslint";
+import type { Linter } from "eslint";
 import importRules from "../rules/import";
 import stormRules from "../rules/storm";
 import unicornRules from "../rules/unicorn";

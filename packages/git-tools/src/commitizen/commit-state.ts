@@ -20,7 +20,7 @@ export const getGitRootDir = () => {
 };
 
 export const createState = async (
-  commitConfig = "@storm-software/git-tools/commit/config.js"
+  commitConfig = "@storm-software/git-tools/src/commit/config.js"
 ): Promise<CommitState> => {
   let root: string;
 
@@ -31,7 +31,7 @@ export const createState = async (
   }
 
   let state!: CommitState;
-  if (commitConfig === "@storm-software/git-tools/commit/config.js") {
+  if (commitConfig === "@storm-software/git-tools/src/commit/config.js") {
     state = {
       config: {
         ...defaultConfig

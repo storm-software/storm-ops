@@ -10,31 +10,31 @@ import { runCommit } from "../commit";
 import { runReadme } from "../readme";
 import { runRelease } from "../release";
 import type { ReadMeOptions } from "../types";
-// import { Command, Option } from "commander";
+import { Command, Option } from "commander";
 
 let _config: Partial<StormConfig> = {};
 
-export async function createProgram(config: StormConfig) {
+export function createProgram(config: StormConfig) {
   try {
     _config = config;
     writeInfo(config, "⚡ Running Storm Git Tools");
 
-    const commander = await import("commander");
+    // const commander = await import("commander");
 
     const root = findWorkspaceRootSafe(process.cwd());
     process.env.STORM_WORKSPACE_ROOT ??= root;
     process.env.NX_WORKSPACE_ROOT_PATH ??= root;
     root && process.chdir(root);
 
-    const program = new commander.Command("storm-git");
+    const program = new Command("storm-git");
     program.version("1.0.0", "-v --version", "display CLI version");
 
-    const commitlintConfig = new commander.Option(
+    const commitlintConfig = new Option(
       "--config <file>",
       "Commitlint/Commitizen config file path"
     ).default("@storm-software/git-tools/src/commit/config.js");
 
-    const commitlintDryRun = new commander.Option(
+    const commitlintDryRun = new Option(
       "--dry-run",
       "Should the commit be run in dry-run mode (no updates are made)"
     );
@@ -46,27 +46,27 @@ export async function createProgram(config: StormConfig) {
       .addOption(commitlintDryRun)
       .action(commitAction);
 
-    const readmeTemplatePath = new commander.Option(
+    const readmeTemplatePath = new Option(
       "--templates <path>",
       "The templates directory to use when generating the README.md files."
     ).default("./docs/readme-templates");
 
-    const readmePackageName = new commander.Option(
+    const readmePackageName = new Option(
       "--project <project>",
       "The specific project to generate a README.md file for"
     );
 
-    const readmeOutput = new commander.Option(
+    const readmeOutput = new Option(
       "--output <path>",
       "Where to output the generated README.md file"
     );
 
-    const readmeClean = new commander.Option(
+    const readmeClean = new Option(
       "--clean",
       "Should the output README.md file be cleaned before generation"
     ).default(true);
 
-    const readmePrettier = new commander.Option(
+    const readmePrettier = new Option(
       "--prettier",
       "Should the output README.md file have prettier applied to it"
     ).default(true);
@@ -81,15 +81,15 @@ export async function createProgram(config: StormConfig) {
       .addOption(readmePrettier)
       .action(readmeAction);
 
-    const releasePackageName = new commander.Option(
+    const releasePackageName = new Option(
       "--project <project>",
       "The specific project to run release for"
     );
 
-    const releaseBase = new commander.Option("--base <base>", "Git base tag value");
-    const releaseHead = new commander.Option("--head <head>", "Git head tag value");
+    const releaseBase = new Option("--base <base>", "Git base tag value");
+    const releaseHead = new Option("--head <head>", "Git head tag value");
 
-    const releaseDryRun = new commander.Option(
+    const releaseDryRun = new Option(
       "--dry-run",
       "Should the release be run in dry-run mode (no updates are made)"
     );
@@ -107,8 +107,7 @@ export async function createProgram(config: StormConfig) {
   } catch (error) {
     writeFatal(config, `A fatal error occurred while running the program: ${error.message}`);
     exitWithError(config);
-
-    return null;
+    process.exit(1);
   }
 }
 
@@ -172,7 +171,7 @@ export async function releaseAction({
 }) {
   try {
     writeInfo(_config, "⚡ Running the Storm Release and Publish process on the workspace");
-    await runRelease(_config, { dryRun, project, base, head });
+    await runRelease(_config as StormConfig, { dryRun, project, base, head });
     writeSuccess(_config, "Release completed successfully!\n");
   } catch (error) {
     writeFatal(_config, `A fatal error occurred while running release action: ${error.message}`);

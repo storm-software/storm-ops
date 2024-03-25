@@ -1,25 +1,36 @@
-#!/usr/bin/env node
-
 import {
   exitWithSuccess,
   handleProcess,
   loadStormConfig,
-  writeSuccess
+  writeSuccess,
+  writeFatal,
+  exitWithError
 } from "@storm-software/config-tools";
 import { createProgram } from "../src/cli";
+import { register as registerTsConfigPaths } from "tsconfig-paths";
+import { join } from "node:path";
+import { readJsonSync } from "fs-extra";
 
-const handle = async () => {
+void (async () => {
   const config = await loadStormConfig();
-  handleProcess(config);
+  try {
+    handleProcess(config);
 
-  const program = await createProgram(config);
-  program.exitOverride();
+    const compilerOptions = readJsonSync(
+      join(config.workspaceRoot ?? "./", "tsconfig.base.json")
+    ).compilerOptions;
+    registerTsConfigPaths(compilerOptions);
 
-  await program.parseAsync(process.argv);
+    const program = await createProgram(config);
+    program.exitOverride();
 
-  writeSuccess(config, "Code linting and fixing completed successfully!");
-};
+    await program.parseAsync(process.argv);
 
-handle().then(() => {
-  loadStormConfig().then((config) => exitWithSuccess(config));
-});
+    writeSuccess(config, "Code linting and fixing completed successfully!");
+    exitWithSuccess(config);
+  } catch (error) {
+    writeFatal(config, `A fatal error occurred while running the program: ${error.message}`);
+    exitWithError(config);
+    process.exit(1);
+  }
+})();

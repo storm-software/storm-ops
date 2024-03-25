@@ -1,91 +1,189 @@
 {
   "$schema": "https://cdn.jsdelivr.net/npm/nx/schemas/nx-schema.json",
   "extends": "nx/presets/npm.json",
-  "affected": {
-    "defaultBase": "main"
-  },
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "format",
-          "test",
-          "e2e"
-        ],
-        "parallel": 4,
+        "cacheableOperations": ["lint", "format", "build", "test", "e2e", "docs"],
+        "parallel": 3,
         "cacheDirectory": "node_modules/.cache/nx"
       }
     }
   },
   "defaultBase": "main",
   "namedInputs": {
-    "globalBuildAffectingConfig": [
-      "{workspaceRoot}/tsconfig.base.json",
-      "{workspaceRoot}/package.json"
+    "globalTesting": [
+      "{workspaceRoot}/jest.config.ts",
+      "{workspaceRoot}/jest.preset.js",
+      "{workspaceRoot}/benches/**/*",
+      "{workspaceRoot}/e2e/**/*",
+      "{workspaceRoot}/tests/**/*",
+      "{workspaceRoot}/testing/**/*",
+      "{workspaceRoot}/coverage/**/*"
     ],
-    "globalNonBuildAffectingConfig": [
-      "{workspaceRoot}/**/biome.json",
-      "{workspaceRoot}/**/lefthook.json",
-      "{workspaceRoot}/.log4brains.yml",
-      "{workspaceRoot}/.eslintrc.json",
-      "{workspaceRoot}/.all-contributorsrc",
-      "{workspaceRoot}/.markdownlint.json",
-      "{workspaceRoot}/.whitesource",
-      "{workspaceRoot}/socket.yaml",
-      "{workspaceRoot}/jest.config.ts"
-    ],
-    "default": [
-      "sharedGlobals",
-      "{projectRoot}/**/*",
-      "{workspaceRoot}/testing/jest-setup.[jt]s",
-      "{projectRoot}/src/test-setup.[jt]s",
-      "{projectRoot}/test-setup.[jt]s"
-    ],
-    "production": [
-      "default",
-      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/tsconfig.spec.json",
-      "!{projectRoot}/jest.config.[jt]s",
-      "!{projectRoot}/.eslintrc.json",
-      "!{projectRoot}/.storybook/**/*",
-      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
-      "!{projectRoot}/tsconfig.storybook.json"
-    ],
-    "sharedGlobals": [
-      "{workspaceRoot}/tsconfig.base.json",
-      "{workspaceRoot}/package.json",
-      "{workspaceRoot}/pnpm-workspace.yaml",
-      "{workspaceRoot}/pnpm-lock.yaml",
+    "globalShared": [
+      "{workspaceRoot}/assets/**/*",
+      "{workspaceRoot}/LICENSE",
+      "{workspaceRoot}/.gitattributes",
+      "{workspaceRoot}/.gitignore",
       "{workspaceRoot}/nx.json",
+      "{workspaceRoot}/.nxignore",
       "{workspaceRoot}/storm.json",
+      "{workspaceRoot}/storm.*.json",
       "{workspaceRoot}/.storm/config.json",
+      "{workspaceRoot}/.storm/config.*.json",
+      "{workspaceRoot}/storm.yaml",
+      "{workspaceRoot}/storm.*.yaml",
+      "{workspaceRoot}/.storm/config.yaml",
+      "{workspaceRoot}/.storm/config.*.yaml",
+      "{workspaceRoot}/storm.toml",
+      "{workspaceRoot}/storm.*.toml",
+      "{workspaceRoot}/.storm/config.toml",
+      "{workspaceRoot}/.storm/config.*.toml",
       "{workspaceRoot}/storm.config.js",
+      "{workspaceRoot}/.env",
+      "{workspaceRoot}/.env.local"
+    ],
+    "globalRust": [
+      "globalShared",
       "{workspaceRoot}/Cargo.toml",
       "{workspaceRoot}/Cargo.lock",
       "{workspaceRoot}/.cargo/config.toml",
-      "{workspaceRoot}/rust-toolchain"
+      "{workspaceRoot}/rust-toolchain",
+      "{workspaceRoot}/rustfmt.toml",
+      "{workspaceRoot}/deny.toml"
+    ],
+    "globalTypeScript": [
+      "globalShared",
+      "{workspaceRoot}/tsconfig.*.json",
+      "{workspaceRoot}/.npmrc",
+      "{workspaceRoot}/.npmignore",
+      "{workspaceRoot}/package.json",
+      "{workspaceRoot}/pnpm-workspace.yaml",
+      "{workspaceRoot}/pnpm-lock.yaml",
+      "{workspaceRoot}/package-lock.yaml",
+      "{workspaceRoot}/yarn-lock.yaml",
+      "{workspaceRoot}/bun.lockb",
+      "{workspaceRoot}/biome.toml",
+      "{workspaceRoot}/biome.json",
+      "{workspaceRoot}/lefthook.yaml",
+      "{workspaceRoot}/.markdownlint.json",
+      "{workspaceRoot}/eslint.config.js",
+      "{workspaceRoot}/.eslintrc.json",
+      "{workspaceRoot}/.eslintrc.base.json",
+      "{workspaceRoot}/.eslintrc.cjs",
+      "{workspaceRoot}/.eslintignore",
+      "{workspaceRoot}/.prettierrc",
+      "{workspaceRoot}/.prettierignore"
+    ],
+    "globalDocs": [
+      "globalRust",
+      "globalTypeScript",
+      "{workspaceRoot}/api-extractor.json",
+      "{workspaceRoot}/tsdoc.json",
+      "{workspaceRoot}/typedoc.json",
+      "{workspaceRoot}/contentlayer.config.ts",
+      "{workspaceRoot}/*.md",
+      "{workspaceRoot}/*.mdx",
+      "{workspaceRoot}/docs/**/*",
+      "{workspaceRoot}/.storybook/**/*"
+    ],
+    "global": ["globalRust", "globalTypeScript", "globalTesting", "globalDocs"],
+    "defaultTesting": [
+      "globalTesting",
+      "{projectRoot}/jest.config.ts",
+      "{projectRoot}/benches/**/*",
+      "{projectRoot}/e2e/**/*",
+      "{projectRoot}/tests/**/*",
+      "{projectRoot}/testing/**/*",
+      "{projectRoot}/tsconfig.spec.json",
+      "{projectRoot}/src/test-setup.[jt]s",
+      "{projectRoot}/test-setup.[jt]s",
+      "{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "{projectRoot}/tsconfig.spec.json"
+    ],
+    "defaultShared": [
+      "globalShared",
+      "{projectRoot}/project.json",
+      "{projectRoot}/README.md",
+      "{projectRoot}/CHANGELOG.md",
+      "{projectRoot}/.env",
+      "{projectRoot}/.env.local"
+    ],
+    "defaultRust": [
+      "globalRust",
+      "defaultShared",
+      "{projectRoot}/**/*.rs",
+      "{projectRoot}/Cargo.toml",
+      "{projectRoot}/.cargo/config.toml",
+      {
+        "runtime": "node -p '`${process.platform}_${process.arch}`'"
+      }
+    ],
+    "defaultTypeScript": [
+      "globalTypeScript",
+      "defaultShared",
+      "{projectRoot}/package.json",
+      "{projectRoot}/eslint.config.js",
+      "{projectRoot}/.eslintrc.json",
+      "{projectRoot}/.eslintrc.cjs",
+      "{projectRoot}/.eslintignore",
+      "{projectRoot}/tsconfig.json",
+      "{projectRoot}/tsconfig.*.json",
+      "{projectRoot}/**/*.ts",
+      "{projectRoot}/**/*.tsx",
+      "{projectRoot}/**/*.js",
+      "{projectRoot}/**/*.jsx",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/tsconfig.storybook.json",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)"
+    ],
+    "defaultDocs": [
+      "globalDocs",
+      "defaultRust",
+      "defaultTypeScript",
+      "{projectRoot}/api-extractor.json",
+      "{projectRoot}/tsdoc.json",
+      "{projectRoot}/typedoc.json",
+      "{projectRoot}/contentlayer.config.ts",
+      "{projectRoot}/**/*.md",
+      "{projectRoot}/**/*.mdx",
+      "{projectRoot}/docs/**/*",
+      "{projectRoot}/.storybook/**/*",
+      "{projectRoot}/tsconfig.storybook.json",
+      "{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)"
+    ],
+    "default": ["global", "defaultRust", "defaultTypeScript", "defaultTesting", "defaultDocs"],
+    "production": [
+      "defaultRust",
+      "defaultTypeScript",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/tsconfig.storybook.json",
+      "!{projectRoot}/.storybook/**/*",
+      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/.eslintrc.json"
     ]
   },
   "targetDefaults": {
+    "lint": {
+      "cache": true,
+      "inputs": ["default"],
+      "outputs": ["{options.outputPath}"],
+      "dependsOn": ["^lint"]
+    },
     "build": {
       "cache": true,
-      "inputs": [
-        "default",
-        "^production"
-      ],
-      "outputs": [
-        "{options.outputPath}"
-      ],
-      "dependsOn": [
-        "^build"
-      ],
+      "inputs": ["default", "^production"],
+      "outputs": ["{options.outputPath}"],
+      "dependsOn": ["^build"],
       "options": {
         "main": "{projectRoot}/src/index.ts",
         "outputPath": "dist/{projectRoot}",
-        "tsConfig": "{projectRoot}/tsconfig.lib.json",
+        "tsConfig": "{projectRoot}/tsconfig.json",
         "assets": [
           {
             "glob": "*.md",
@@ -100,78 +198,63 @@
         ]
       }
     },
-    "lint": {
+    "docs": {
       "cache": true,
-      "executor": "nx:run-commands",
-      "outputs": [
-        "{options.outputFile}"
-      ],
-      "options": {
-        "command": "npx biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true {projectRoot}",
-        "color": true
-      },
-      "inputs": [
-        "default",
-        "{workspaceRoot}/**/biome.json"
-      ]
+      "inputs": ["defaultDocs", "^production"],
+      "outputs": ["{options.outputPath}"],
+      "dependsOn": ["build", "^docs"]
     },
     "test": {
       "cache": true,
-      "inputs": [
-        "default",
-        "^production",
-        "{workspaceRoot}/jest.preset.js"
-      ],
-      "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
-      "options": {
-        "jestConfig": "{projectRoot}/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
-      }
+      "inputs": ["defaultTesting", "^production"],
+      "outputs": ["{options.outputPath}"],
+      "dependsOn": ["build", "^test"]
     },
     "e2e": {
-      "cache": true
+      "cache": true,
+      "inputs": ["defaultTesting", "^production"],
+      "outputs": ["{options.outputPath}"],
+      "dependsOn": ["test", "^e2e"]
+    },
+    "nx-release-publish": {
+      "cache": false,
+      "inputs": ["default", "^production"],
+      "outputs": ["{options.outputPath}"],
+      "dependsOn": ["test", "^nx-release-publish"]
     }
   },
   "release": {
-    "projects": [
-      "packages/*"
-    ],
+    "projects": ["packages/*", "crates/*"],
     "projectsRelationship": "independent",
     "releaseTagPattern": "{projectName}-v{version}",
     "changelog": {
       "automaticFromRef": true,
+      "workspaceChangelog": false,
       "projectChangelogs": {
-        "createRelease": "github"
+        "createRelease": "github",
+        "entryWhenNoChanges": false
       }
     },
     "version": {
-      "conventionalCommits": true,
-      "generator": "@storm-software/workspace-tools:release-version"
+      "generator": "@storm-software/workspace-tools:release-version",
+      "generatorOptions": {
+        "currentVersionResolver": "git-tag",
+        "specifierSource": "conventional-commits"
+      }
     }
   },
   "plugins": [
-    "@nx/plugin",
     "@nx/js",
     "@nx/jest",
-    {
-      "plugin": "@storm-software/workspace-tools",
-      "options": {
-        "targetName": "nx-release-publish"
-      }
-    }
+    "@nx/eslint",
+    "@monodon/rust",
+    "@storm-software/workspace-tools"
   ],
   "pluginsConfig": {
     "@nx/js": {
-      "analyzeSourceFiles": true
+      "analyzeSourceFiles": true,
+      "analyzeLockfile": true,
+      "analyzePackageJson": true
     }
   }
 }

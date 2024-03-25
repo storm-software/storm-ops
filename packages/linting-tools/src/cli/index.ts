@@ -12,12 +12,11 @@ import { lint } from "cspell";
 import { parseCircular, parseDependencyTree, prettyCircular } from "dpdm";
 import { runAlex } from "../alex";
 import { runManypkg } from "../manypkg";
+import { Command, Option } from "commander";
 
 let _config: Partial<StormConfig> = {};
 
-export async function createProgram(config: StormConfig) {
-  const { Command, Option } = await import("commander");
-
+export function createProgram(config: StormConfig) {
   try {
     _config = config;
     writeInfo(config, "⚡ Running Storm Linting Tools");

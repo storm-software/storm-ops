@@ -22,15 +22,14 @@
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/tsconfig"
   },
-  "license": "Apache License 2.0",
+  "license": "Apache 2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.org",
     "url": "https://stormsoftware.org"
   },
   "dependencies": {
-    "@total-typescript/ts-reset": "0.5.1",
-    "@tsconfig/recommended": "1.0.3"
+    "@total-typescript/ts-reset": "0.5.1"
   },
   "publishConfig": {
     "access": "public"

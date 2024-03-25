@@ -36,7 +36,43 @@ export const cargoTomlPlugin: NxPluginV2 = {
         if (!isExternal(pkg, ctx.workspaceRoot)) {
           const root = normalizePath(dirname(relative(ctx.workspaceRoot, pkg.manifest_path)));
 
-          const targets: ProjectConfiguration["targets"] = {};
+          const targets: ProjectConfiguration["targets"] = {
+            lint: {
+              cache: true,
+              inputs: ["default", "^production"],
+              dependsOn: ["^lint"],
+              executor: "@monodon/rust:lint",
+              outputs: ["{options.target-dir}"],
+              options: {
+                "target-dir": `dist/target/${pkg.name}`
+              }
+            },
+            build: {
+              cache: true,
+              inputs: ["default", "^production"],
+              dependsOn: ["lint", "^build"],
+              executor: "@monodon/rust:check",
+              outputs: ["{options.target-dir}"],
+              options: {
+                "target-dir": `dist/target/${pkg.name}`
+              }
+            },
+            test: {
+              cache: true,
+              inputs: ["defaultTesting", "^production"],
+              dependsOn: ["test", "^build"],
+              executor: "@monodon/rust:test",
+              outputs: ["{options.target-dir}"],
+              options: {
+                "target-dir": `dist/target/${pkg.name}`
+              },
+              configurations: {
+                production: {
+                  release: true
+                }
+              }
+            }
+          };
 
           // Apply nx-release-publish target for non-private projects
           const isPrivate = pkg.publish?.length === 0;
@@ -44,7 +80,7 @@ export const cargoTomlPlugin: NxPluginV2 = {
             targets["nx-release-publish"] = {
               cache: false,
               inputs: ["default", "^production"],
-              dependsOn: ["^build", "^nx-release-publish"],
+              dependsOn: ["test", "^nx-release-publish"],
               executor: "@storm-software/workspace-tools:cargo-publish",
               options: {
                 packageRoot: root

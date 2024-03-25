@@ -2,17 +2,22 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "strict": false
+    "strict": false,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "types": [
+      "node"
+    ]
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.js",
-    "bin/**/*",
-    "declarations.d.ts"
+    "bin/**/*.ts",
+    "src/**/*.js"
   ],
   "exclude": [
     "jest.config.ts",
     "src/**/*.spec.ts",
     "src/**/*.test.ts"
-  ]
+  ],
 }

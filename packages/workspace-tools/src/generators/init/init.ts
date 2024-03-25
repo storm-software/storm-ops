@@ -1,12 +1,12 @@
-import { addDependenciesToPackageJson, formatFiles, Tree } from "@nx/devkit";
+import { addDependenciesToPackageJson, formatFiles, type Tree } from "@nx/devkit";
 import { nxVersion } from "../../utils/versions";
-import { Schema } from "./schema";
+import type { Schema } from "./schema";
 
 export async function stormInitGenerator(tree: Tree, schema: Schema) {
   const task = addDependenciesToPackageJson(
     tree,
     {
-      "nx": nxVersion,
+      nx: nxVersion,
       "@nx/workspace": nxVersion,
       "@storm-software/config-tools": "latest",
       "@storm-software/testing-tools": "latest",

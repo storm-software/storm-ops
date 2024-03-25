@@ -1,6 +1,6 @@
 import { type ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devkit";
 import { execSync } from "node:child_process";
-import type { NpmPublishExecutorSchema } from "./schema";
+import type { NpmPublishExecutorSchema } from "./schema.d";
 
 const LARGE_BUFFER = 1024 * 1000000;
 

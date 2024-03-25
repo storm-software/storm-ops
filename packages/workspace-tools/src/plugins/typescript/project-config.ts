@@ -18,13 +18,50 @@ export const ProjectJsonProjectsPlugin: NxPluginV2 = {
       const project = createProjectFromPackageJsonNextToProjectJson(file, packageJson);
       const targets: ProjectConfiguration["targets"] = readTargetsFromPackageJson(packageJson);
 
+      if (!targets.lint) {
+        targets.lint = {
+          cache: true,
+          inputs: ["default"],
+          dependsOn: ["^lint"],
+          executor: "@nx/eslint:lint",
+          outputs: ["{options.outputFile}"],
+          options: {
+            format: "stylish",
+            fix: true,
+            cache: true,
+            errorOnUnmatchedPattern: false,
+            printConfig: true
+          }
+        };
+      }
+
+      if (!targets.test) {
+        targets.test = {
+          cache: true,
+          inputs: ["default", "^production"],
+          dependsOn: ["build", "^test"],
+          executor: "@nx/jest:jest",
+          outputs: ["{workspaceRoot}/coverage/{projectRoot}"],
+          options: {
+            jestConfig: "{projectRoot}/jest.config.ts",
+            passWithNoTests: true
+          },
+          configurations: {
+            ci: {
+              ci: true,
+              codeCoverage: true
+            }
+          }
+        };
+      }
+
       // Apply nx-release-publish target for non-private projects
       const isPrivate = packageJson.private ?? false;
       if (!isPrivate) {
         targets["nx-release-publish"] = {
           cache: false,
           inputs: ["default", "^production"],
-          dependsOn: ["^build", "^nx-release-publish"],
+          dependsOn: ["build", "^nx-release-publish"],
           executor: "@storm-software/workspace-tools:cargo-publish",
           options: {
             packageRoot: `dist/${project.root}`,

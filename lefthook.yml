@@ -12,13 +12,13 @@ pre-install:
   commands:
     validate:
       glob: "**/*.*"
-      run: "pnpm exec node ./dist/packages/git-tools/bin/pre-install.js"
+      run: "node ./dist/packages/git-tools/bin/pre-install.js"
 
 prepare:
   commands:
     validate:
       glob: "**/*.*"
-      run: "pnpm exec node ./dist/packages/git-tools/bin/prepare.js"
+      run: "node ./dist/packages/git-tools/bin/prepare.js"
 
 pre-commit:
   piped: true
@@ -29,7 +29,7 @@ pre-commit:
       run: "pnpm lefthook install"
     prebuild:
       glob: "**/*.*"
-      run: "pnpm build"
+      run: "pnpm build-all"
       stage_fixed: true
     schema-gen:
       files: "git diff --name-only HEAD @{push}"
@@ -38,16 +38,16 @@ pre-commit:
       stage_fixed: true
     validate:
       glob: "**/*.*"
-      run: "pnpm exec node ./dist/packages/git-tools/bin/pre-commit.js {staged_files}"
+      run: "node ./dist/packages/git-tools/bin/pre-commit.js {staged_files}"
       stage_fixed: true
-    # lint:
-    #   glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-    #   run: "pnpm lint"
-    #   stage_fixed: true
+    lint:
+      glob: "**/*.{js,ts,rs,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: "pnpm lint"
+      stage_fixed: true
     check:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: "pnpm lint-biome:check {staged_files} && git update-index"
+      run: "pnpm lint-biome-check {staged_files} && git update-index"
     readme:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/{README.md,package.json,executors.json,generators.json}"
@@ -57,7 +57,7 @@ pre-commit:
       run: "pnpm format-biome {staged_files} && git update-index"
     postbuild:
       glob: "**/*.*"
-      run: "pnpm build"
+      run: "pnpm build-all"
       stage_fixed: true
 
 commit-msg:
@@ -71,7 +71,7 @@ pre-push:
     validate:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.*"
-      run: "pnpm exec node ./dist/packages/git-tools/bin/pre-push.js {files} && git update-index"
+      run: "node ./dist/packages/git-tools/bin/pre-push.js {files} && git update-index"
     lint:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
@@ -81,17 +81,17 @@ post-merge:
   commands:
     validate:
       glob: "**/*.*"
-      run: "pnpm exec node ./dist/packages/git-tools/bin/post-merge.js {staged_files}"
+      run: "node ./dist/packages/git-tools/bin/post-merge.js {staged_files}"
       stage_fixed: true
 
 post-checkout:
   commands:
     validate:
       glob: "**/*.*"
-      run: "pnpm exec node ./dist/packages/git-tools/bin/post-checkout.js {staged_files}"
+      run: "node ./dist/packages/git-tools/bin/post-checkout.js {staged_files}"
 
 post-commit:
   commands:
     validate:
       glob: "**/*.*"
-      run: "pnpm exec node ./dist/packages/git-tools/bin/post-commit.js {staged_files}"
+      run: "node ./dist/packages/git-tools/bin/post-commit.js {staged_files}"

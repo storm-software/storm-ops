@@ -61,7 +61,7 @@ jobs:
           echo "HEAD: ${{ env.NX_HEAD }}"
 
       - name: Build repository packages
-        run: pnpm build:all
+        run: pnpm build-all
 
       - name: Add permissions to linting tools
         run: chmod a=rwx dist/packages/linting-tools/bin/lint.js

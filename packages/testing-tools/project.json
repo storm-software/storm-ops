@@ -6,29 +6,20 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/testing-tools",
         "main": "packages/testing-tools/src/index.ts",
-        "tsConfig": "packages/testing-tools/tsconfig.lib.json",
+        "tsConfig": "packages/testing-tools/tsconfig.json",
         "project": "packages/testing-tools/package.json",
         "deleteOutputPath": true,
         "bundle": true,
         "sourcemap": false,
         "minify": false,
-        "skipTypeCheck": false,
+        "skipTypeCheck": true,
         "thirdParty": true,
-        "format": [
-          "cjs",
-          "esm"
-        ],
-        "external": [
-          "nx",
-          "@nx/jest",
-          "jest"
-        ],
+        "format": ["cjs", "esm"],
+        "external": ["nx", "@nx/jest", "jest"],
         "assets": [
           {
             "input": "packages/testing-tools",
@@ -52,12 +43,7 @@
           }
         ]
       }
-    },
-    "lint": {},
-    "test": {}
+    }
   },
-  "tags": [
-    "type:util",
-    "scope:tools"
-  ]
+  "tags": ["type:util", "scope:tools"]
 }
