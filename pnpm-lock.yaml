@@ -214,9 +214,6 @@ importers:
 
   packages/config-tools:
     dependencies:
-      '@storm-software/config':
-        specifier: workspace:*
-        version: link:../config
       chalk:
         specifier: 4.1.2
         version: 4.1.2
@@ -226,6 +223,10 @@ importers:
       zod:
         specifier: 3.22.4
         version: 3.22.4
+    devDependencies:
+      '@storm-software/config':
+        specifier: workspace:*
+        version: link:../config
 
   packages/create-storm-workspace:
     dependencies:
@@ -242,8 +243,8 @@ importers:
   packages/git-tools:
     dependencies:
       '@commitlint/types':
-        specifier: 18.6.0
-        version: 18.6.0
+        specifier: 19.0.3
+        version: 19.0.3
       any-shell-escape:
         specifier: 0.1.1
         version: 0.1.1
@@ -2076,13 +2077,6 @@ packages:
     engines: {node: '>=v18'}
     dependencies:
       find-up: 7.0.0
-    dev: false
-
-  /@commitlint/types@18.6.0:
-    resolution: {integrity: sha512-oavoKLML/eJa2rJeyYSbyGAYzTxQ6voG5oeX3OrxpfrkRWhJfm4ACnhoRf5tgiybx2MZ+EVFqC1Lw3W8/uwpZA==}
-    engines: {node: '>=v18'}
-    dependencies:
-      chalk: 4.1.2
     dev: false
 
   /@commitlint/types@19.0.3:
