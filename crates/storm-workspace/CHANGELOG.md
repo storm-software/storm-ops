@@ -1,3 +1,15 @@
+## 0.1.3 (2024-03-25)
+
+
+### 🩹 Fixes
+
+- **storm-workspace:** Resolve crate `doctest` issues ([40ab6e9f](https://github.com/storm-software/storm-ops/commit/40ab6e9f))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.1.2 (2024-03-25)
 
 
