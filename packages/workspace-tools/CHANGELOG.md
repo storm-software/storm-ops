@@ -1,3 +1,15 @@
+## 1.66.1 (2024-03-25)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved issue with applying Storm Nx plugins ([db3de8a6](https://github.com/storm-software/storm-ops/commit/db3de8a6))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.0 (2024-03-25)
 
 
