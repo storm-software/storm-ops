@@ -16,16 +16,16 @@
   },
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
-    "@microsoft/api-extractor": "7.40.1",
-    "@nx/devkit": "18.0.4",
-    "@nx/js": "18.0.4",
-    "@nx/workspace": "18.0.4",
+    "@microsoft/api-extractor": "7.43.0",
+    "@nx/devkit": "18.1.2",
+    "@nx/js": "18.1.2",
+    "@nx/workspace": "18.1.2",
     "commander": "11.1.0",
     "esbuild-plugin-environment": "0.3.0",
     "fs-extra": "11.2.0",
     "glob": "10.3.10",
     "tsup": "8.0.0",
-    "typescript": "5.3.3"
+    "typescript": "5.4.3"
   },
   "publishConfig": {
     "access": "public"
