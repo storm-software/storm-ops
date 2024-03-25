@@ -69,6 +69,7 @@
     "@biomejs/biome": "1.5.3",
     "@commitlint/cli": "^19.2.1",
     "@ls-lint/ls-lint": "^2.2.3",
+    "@ltd/j-toml": "^1.38.0",
     "@monodon/rust": "^1.4.0",
     "@nx/devkit": "18.0.4",
     "@nx/esbuild": "18.0.4",

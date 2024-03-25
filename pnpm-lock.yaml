@@ -55,6 +55,9 @@ importers:
       '@ls-lint/ls-lint':
         specifier: ^2.2.3
         version: 2.2.3
+      '@ltd/j-toml':
+        specifier: ^1.38.0
+        version: 1.38.0
       '@monodon/rust':
         specifier: ^1.4.0
         version: 1.4.0(@swc-node/register@1.8.0)(@swc/core@1.4.2)
