@@ -1,3 +1,15 @@
+## 0.2.0 (2024-03-25)
+
+
+### 🚀 Features
+
+- **storm-config:** Added `extensions` table on `StormConfig` object ([9451f295](https://github.com/storm-software/storm-ops/commit/9451f295))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.1.1 (2024-03-25)
 
 
