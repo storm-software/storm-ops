@@ -97,7 +97,8 @@ export const createNodes: CreateNodes = [
             version: {
               generator: "@storm-software/workspace-tools:release-version"
             }
-          }
+          },
+          tags: ["rust", "cargo"]
         };
       }
       for (const dep of pkg.dependencies) {

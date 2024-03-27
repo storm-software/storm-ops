@@ -77,6 +77,7 @@ export const createNodes = [
       ? {
           projects: {
             [project.name]: {
+              tags: ["typescript", "npm"],
               ...project,
               targets,
               release: {
