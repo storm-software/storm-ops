@@ -140,7 +140,7 @@ export const runRelease = async (
       to: options.head ?? process.env.NX_HEAD,
       from: options.base ?? process.env.NX_BASE,
       gitCommit: true,
-      gitCommitMessage: "chore(release): Publish monorepo release updates"
+      gitCommitMessage: "chore(release): Publish monorepo release updates [skip-ci]"
     });
 
     // const {

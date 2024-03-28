@@ -672,7 +672,7 @@ function resolveLocalPackageDependencies(
     filteredProjects,
     projectNameToPackageRootMap,
     resolvePackageRoot,
-    false
+    includeAll
   );
 }
 
