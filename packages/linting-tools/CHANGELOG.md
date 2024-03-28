@@ -1,3 +1,15 @@
+## 1.44.3 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Update to executable git hook scripts ([d1e0cb22](https://github.com/storm-software/storm-ops/commit/d1e0cb22))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.44.2 (2024-03-28)
 
 
