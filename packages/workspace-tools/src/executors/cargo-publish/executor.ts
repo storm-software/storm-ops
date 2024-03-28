@@ -1,12 +1,12 @@
-import { type ExecutorContext, joinPathFragments, output } from "@nx/devkit";
+import { type ExecutorContext, joinPathFragments } from "@nx/devkit";
 import { execSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { parseCargoToml } from "../../utils/toml";
 import type { CargoPublishExecutorSchema } from "./schema.d";
+import { CratesIO } from "crates.io";
 
 const LARGE_BUFFER = 1024 * 1000000;
 
-// biome-ignore lint/nursery/useAwait: <explanation>
 export default async function runExecutor(
   options: CargoPublishExecutorSchema,
   context: ExecutorContext
@@ -40,6 +40,25 @@ export default async function runExecutor(
     readFileSync(joinPathFragments(packageRoot, "Cargo.toml"), "utf-8")
   );
 
+  try {
+    const currentVersion = cargoToml.package.version;
+    const packageName = cargoToml.package.name;
+
+    const result = await new CratesIO().api.crates.getVersion(packageName, currentVersion);
+    if (result) {
+      console.warn(
+        `Skipped package "${packageName}" from project "${context.projectName}" because v${currentVersion} already exists in https://crates.io with tag "latest"`
+      );
+
+      return {
+        success: true
+      };
+    }
+  } catch (error: any) {
+    console.log("No results returned while checking the crate version in https://crates.io");
+    console.warn(error);
+  }
+
   const cargoPublishCommandSegments = [`cargo publish --allow-dirty -p ${cargoToml.package.name}`];
   if (isDryRun) {
     cargoPublishCommandSegments.push("--dry-run");
@@ -47,9 +66,11 @@ export default async function runExecutor(
 
   try {
     const command = cargoPublishCommandSegments.join(" ");
-    output.logSingleLine(`Running "${command}"...`);
+    console.log("");
+    console.log(`Running "${command}"...`);
+    console.log("");
 
-    const result = execSync(command, {
+    execSync(command, {
       maxBuffer: LARGE_BUFFER,
       env: {
         ...process.env,
@@ -59,27 +80,6 @@ export default async function runExecutor(
       stdio: ["ignore", "pipe", "pipe"]
     });
     console.log("");
-    console.log(result ? result.toString() : "No Result");
-
-    const resultJson = JSON.parse(result.toString());
-    if (
-      (resultJson?.message &&
-        typeof resultJson.message === "string" &&
-        resultJson.message.toLowerCase().includes("crate version") &&
-        resultJson.message.toLowerCase().includes("is already uploaded")) ||
-      (resultJson?.cause?.message &&
-        typeof resultJson.cause.message === "string" &&
-        resultJson.cause.message.toLowerCase().includes("crate version") &&
-        resultJson.cause.message.toLowerCase().includes("is already uploaded"))
-    ) {
-      console.warn(
-        `Skipped package "${cargoToml.package.name}" from project "${cargoToml.package.name}" because v${cargoToml.package.version} already exists in https://crates.io with tag "latest"`
-      );
-
-      return {
-        success: true
-      };
-    }
 
     if (isDryRun) {
       console.log("Would publish to https://crates.io, but [dry-run] was set");
@@ -100,19 +100,3 @@ export default async function runExecutor(
     };
   }
 }
-
-const formatLog = (message?: any, name?: string): string =>
-  typeof message === "boolean"
-    ? String(message)
-    : !message
-      ? "<None>"
-      : typeof message === "string"
-        ? `"${message}"`
-        : typeof message === "number"
-          ? message.toString()
-          : typeof message === "object"
-            ? (name ? ` --- ${name} ---\n` : "") +
-              Object.keys(message)
-                .map((key) => ` - ${key}=${formatLog(message[key], key)}`)
-                .join("\n")
-            : JSON.stringify(message);
