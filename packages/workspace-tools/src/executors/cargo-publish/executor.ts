@@ -7,14 +7,6 @@ import { encode } from "node:querystring";
 const axios = require("axios");
 
 const LARGE_BUFFER = 1024 * 1000000;
-const RegistryApi = axios.default.create({
-  baseURL: "https://crates.io/api/v1/crates",
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: process.env.CARGO_REGISTRY_TOKEN
-  },
-  timeout: 8000
-});
 
 export default async function runExecutor(
   options: CargoPublishExecutorSchema,
@@ -50,9 +42,17 @@ export default async function runExecutor(
   );
 
   try {
-    const result = await RegistryApi.get(
-      `/${encode(cargoToml.package.name)}/${encode(cargoToml.package.version)}`
-    );
+    const result = await axios({
+      method: "get",
+      url: `https://crates.io/api/v1/crates/${encode(cargoToml.package.name)}/${encode(
+        cargoToml.package.version
+      )}`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: process.env.CARGO_REGISTRY_TOKEN
+      },
+      timeout: 8000
+    });
     if (result?.data) {
       console.warn(
         `Skipped package "${cargoToml.package.name}" from project "${context.projectName}" because v${cargoToml.package.version} already exists in https://crates.io with tag "latest"`
