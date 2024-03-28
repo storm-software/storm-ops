@@ -1,3 +1,15 @@
+## 1.33.3 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Added code to add ts plugin transpilers ([ec514d57](https://github.com/storm-software/storm-ops/commit/ec514d57))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.33.2 (2024-03-28)
 
 

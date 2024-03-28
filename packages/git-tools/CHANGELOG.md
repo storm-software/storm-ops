@@ -1,3 +1,17 @@
+## 2.5.8 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Added code to add ts plugin transpilers ([ec514d57](https://github.com/storm-software/storm-ops/commit/ec514d57))
+
+- **workspace-tools:** Remove `axios` reference from `cargo-publish` executor ([7a2e3570](https://github.com/storm-software/storm-ops/commit/7a2e3570))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.5.7 (2024-03-28)
 
 
