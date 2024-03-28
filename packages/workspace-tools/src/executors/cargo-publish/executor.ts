@@ -4,23 +4,22 @@ import { readFileSync } from "node:fs";
 import { parseCargoToml } from "../../utils/toml";
 import type { CargoPublishExecutorSchema } from "./schema.d";
 import { encode } from "node:querystring";
+const axios = require("axios");
 
 const LARGE_BUFFER = 1024 * 1000000;
+const RegistryApi = axios.default.create({
+  baseURL: "https://crates.io/api/v1/crates",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: process.env.CARGO_REGISTRY_TOKEN
+  },
+  timeout: 8000
+});
 
 export default async function runExecutor(
   options: CargoPublishExecutorSchema,
   context: ExecutorContext
 ) {
-  const axios = await import("axios");
-  const registryApi = axios.default.create({
-    baseURL: "https://crates.io/api/v1/crates",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: process.env.CARGO_REGISTRY_TOKEN
-    },
-    timeout: 8000
-  });
-
   /**
    * We need to check both the env var and the option because the executor may have been triggered
    * indirectly via dependsOn, in which case the env var will be set, but the option will not.
@@ -51,7 +50,7 @@ export default async function runExecutor(
   );
 
   try {
-    const result = await registryApi.get(
+    const result = await RegistryApi.get(
       `/${encode(cargoToml.package.name)}/${encode(cargoToml.package.version)}`
     );
     if (result?.data) {
