@@ -1,3 +1,15 @@
+## 2.5.4 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Ensure we skip ci on publish commit ([ab2e0655](https://github.com/storm-software/storm-ops/commit/ab2e0655))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.5.3 (2024-03-28)
 
 
