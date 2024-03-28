@@ -1,3 +1,15 @@
+## 1.66.17 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve issues with `axios` calls ([53306912](https://github.com/storm-software/storm-ops/commit/53306912))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.16 (2024-03-28)
 
 
