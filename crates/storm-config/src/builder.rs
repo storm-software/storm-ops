@@ -60,8 +60,8 @@ use std::str::FromStr;
 ///
 /// Calls can be not chained as well
 /// ```rust
-/// # use std::error::Error;
-/// # use storm_config::*;
+/// use std::error::Error;
+/// use storm_config::*;
 /// # fn main() -> Result<(), Box<dyn Error>> {
 /// let mut builder = Config::builder();
 /// builder = builder.set_default("default", "1")?;
@@ -82,7 +82,7 @@ use std::str::FromStr;
 /// If for some reason acquiring builder in default state is required without calling [`Config::builder`](Config::builder)
 /// it can also be achieved.
 /// ```rust
-/// use storm_config::{*, builder::DefaultState};
+/// use storm_config::{builder::ConfigBuilder, builder::DefaultState};
 /// let mut builder = ConfigBuilder::<DefaultState>::default();
 /// ```
 #[derive(Debug, Clone, Default)]

@@ -14,18 +14,7 @@ license = 'Apache-2.0'
 documentation = 'https://stormsoftware.org/docs'
 homepage = 'https://stormsoftware.org'
 categories = ['config', 'development-tools']
-keywords = [
-    'storm',
-    'stormstack',
-    'storm-ops',
-    'storm-software',
-    'build-tools',
-    'nx',
-    'tsup',
-    'rolldown',
-    'sullivanpj',
-    'monorepo',
-]
+keywords = ['storm', 'storm-ops', 'storm-software', 'build-tools', 'monorepo']
 
 [workspace.metadata.release]
 pre-release-commit-message = 'Release workspace crates v{{version}}'
