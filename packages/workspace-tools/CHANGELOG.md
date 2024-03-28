@@ -1,3 +1,15 @@
+## 1.66.11 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Enhance code to check crates.io version through API ([1cec1ccd](https://github.com/storm-software/storm-ops/commit/1cec1ccd))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.10 (2024-03-28)
 
 
