@@ -75,7 +75,7 @@ use std::str::FromStr;
 /// Calling [`Config::builder`](Config::builder) yields builder in the default state.
 /// If having an asynchronous state as the initial state is desired, _turbofish_ notation needs to be used.
 /// ```rust
-/// use storm_config::{*, builder::AsyncState};
+/// use storm_config::{builder::ConfigBuilder, builder::AsyncState};
 /// let mut builder = ConfigBuilder::<AsyncState>::default();
 /// ```
 ///
