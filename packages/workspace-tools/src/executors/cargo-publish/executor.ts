@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { parseCargoToml } from "../../utils/toml";
 import type { CargoPublishExecutorSchema } from "./schema.d";
 import { encode } from "node:querystring";
-const axios = require("axios");
+import axios from "axios";
 
 const LARGE_BUFFER = 1024 * 1000000;
 
