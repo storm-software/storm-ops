@@ -1,3 +1,15 @@
+## 1.66.10 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Add logic to get current version from crates.io during publish ([0e70268c](https://github.com/storm-software/storm-ops/commit/0e70268c))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.9 (2024-03-28)
 
 
