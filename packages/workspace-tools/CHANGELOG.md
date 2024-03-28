@@ -1,3 +1,15 @@
+## 1.66.14 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Add proper invocation of `axios` module ([a6ba8116](https://github.com/storm-software/storm-ops/commit/a6ba8116))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.13 (2024-03-28)
 
 
