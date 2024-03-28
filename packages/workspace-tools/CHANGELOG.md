@@ -1,3 +1,15 @@
+## 1.66.8 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Correctly handle all value types in error logging ([4b072154](https://github.com/storm-software/storm-ops/commit/4b072154))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.7 (2024-03-28)
 
 
