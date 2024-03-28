@@ -561,9 +561,6 @@ importers:
       '@rollup/plugin-json':
         specifier: 6.1.0
         version: 6.1.0(rollup@4.10.0)
-      axios:
-        specifier: '>=1.6.0'
-        version: 1.6.7
       bundle-require:
         specifier: ^4.0.2
         version: 4.0.2(esbuild@0.19.12)

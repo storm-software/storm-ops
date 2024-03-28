@@ -52,7 +52,6 @@
     "@nx/devkit": "18.0.4",
     "@nx/esbuild": "18.0.4",
     "@rollup/plugin-json": "6.1.0",
-    "axios": "^0.27.2",
     "bundle-require": "^4.0.2",
     "decky": "1.1.1",
     "esbuild-plugin-environment": "0.3.0",

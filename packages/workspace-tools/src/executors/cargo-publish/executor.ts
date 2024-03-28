@@ -3,8 +3,7 @@ import { execSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { parseCargoToml } from "../../utils/toml";
 import type { CargoPublishExecutorSchema } from "./schema.d";
-import { encode } from "node:querystring";
-import axios from "axios";
+import https from "node:https";
 
 const LARGE_BUFFER = 1024 * 1000000;
 
@@ -22,7 +21,7 @@ export default async function runExecutor(
     throw new Error("The executor requires a projectName.");
   }
 
-  console.info(`🚀  Running Storm Crate.io Publish executor on the ${context.projectName} crate`);
+  console.info(`🚀  Running Storm Crates.io Publish executor on the ${context.projectName} crate`);
 
   if (
     !context.projectName ||
@@ -44,18 +43,8 @@ export default async function runExecutor(
   );
 
   try {
-    const result = await axios.request({
-      method: "get",
-      url: `https://crates.io/api/v1/crates/${encode(cargoToml.package.name)}/${encode(
-        cargoToml.package.version
-      )}`,
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: process.env.CARGO_REGISTRY_TOKEN
-      },
-      timeout: 8000
-    });
-    if (result?.data) {
+    const result = await getRegistryVersion(cargoToml.package.name, cargoToml.package.version);
+    if (result) {
       console.warn(
         `Skipped package "${cargoToml.package.name}" from project "${context.projectName}" because v${cargoToml.package.version} already exists in https://crates.io with tag "latest"`
       );
@@ -107,3 +96,22 @@ export default async function runExecutor(
     };
   }
 }
+
+export const getRegistryVersion = (name: string, version: string): Promise<string> => {
+  return new Promise((resolve: (value: string) => void) =>
+    https
+      .get(
+        `https://crates.io/api/v1/crates/${encodeURIComponent(name)}/${encodeURIComponent(
+          version
+        )}`,
+        (res) => {
+          res.on("data", (d) => {
+            resolve(d);
+          });
+        }
+      )
+      .on("error", (e) => {
+        throw e;
+      })
+  );
+};
