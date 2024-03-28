@@ -1,3 +1,15 @@
+## 2.5.5 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Resolve issue with module type compiler options ([5c4a20b7](https://github.com/storm-software/storm-ops/commit/5c4a20b7))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.5.4 (2024-03-28)
 
 
