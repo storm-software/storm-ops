@@ -22,6 +22,8 @@ export default async function runExecutor(
     throw new Error("The executor requires a projectName.");
   }
 
+  console.info(`🚀  Running Storm Crate.io Publish executor on the ${context.projectName} crate`);
+
   if (
     !context.projectName ||
     !context.projectsConfigurations?.projects ||
@@ -42,7 +44,7 @@ export default async function runExecutor(
   );
 
   try {
-    const result = await axios({
+    const result = await axios.request({
       method: "get",
       url: `https://crates.io/api/v1/crates/${encode(cargoToml.package.name)}/${encode(
         cargoToml.package.version
