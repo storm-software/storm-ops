@@ -1,3 +1,15 @@
+## 0.2.7 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **storm-config:** Fixes to doctest execution ([12a1fe2b](https://github.com/storm-software/storm-ops/commit/12a1fe2b))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.2.6 (2024-03-28)
 
 
