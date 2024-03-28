@@ -2,7 +2,7 @@
 [package]
 name = 'storm-config'
 description = 'A crate containing the configuration structure and utilities used by Storm Software monorepos.'
-version = '0.2.7'
+version = '0.2.8'
 publish = true
 edition = { workspace = true }
 repository = { workspace = true }
@@ -36,7 +36,7 @@ nom = '7.1.3'
 serde = { version = '1.0.197', features = ['derive'] }
 serde_derive = { version = '1.0.197', optional = true }
 serde_json = { version = '1.0.114' }
-storm-workspace = { path = '../storm-workspace', version = '0.2.2' }
+storm-workspace = { path = '../storm-workspace', version = '0.2.3' }
 thiserror = { version = '1.0.58' }
 json5_rs = { version = '0.4', optional = true, package = 'json5' }
 toml = { version = '0.8.12', optional = true }

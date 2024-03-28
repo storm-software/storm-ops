@@ -1,3 +1,15 @@
+## 0.2.3 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Update the links in the README files to use proper repository ([decc0db3](https://github.com/storm-software/storm-ops/commit/decc0db3))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.2.2 (2024-03-28)
 
 
