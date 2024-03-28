@@ -3,9 +3,16 @@ import { execSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { parseCargoToml } from "../../utils/toml";
 import type { CargoPublishExecutorSchema } from "./schema.d";
-import { CratesIO } from "crates.io";
+import axios from "axios";
+import { encode } from "node:querystring";
 
 const LARGE_BUFFER = 1024 * 1000000;
+
+const REGISTRY = axios.create({
+  baseURL: "https://crates.io/api/v1/crates",
+  headers: { "Content-Type": "application/json", Authorization: process.env.CARGO_REGISTRY_TOKEN },
+  timeout: 8000
+});
 
 export default async function runExecutor(
   options: CargoPublishExecutorSchema,
@@ -41,23 +48,19 @@ export default async function runExecutor(
   );
 
   try {
-    const currentVersion = cargoToml.package.version;
-    const packageName = cargoToml.package.name;
-
-    const result = await new CratesIO().api.crates.getVersion(packageName, currentVersion);
-    if (result) {
+    const result = await REGISTRY.get(
+      `/${encode(cargoToml.package.name)}/${encode(cargoToml.package.version)}`
+    );
+    if (result?.data) {
       console.warn(
-        `Skipped package "${packageName}" from project "${context.projectName}" because v${currentVersion} already exists in https://crates.io with tag "latest"`
+        `Skipped package "${cargoToml.package.name}" from project "${context.projectName}" because v${cargoToml.package.version} already exists in https://crates.io with tag "latest"`
       );
 
       return {
         success: true
       };
     }
-  } catch (error: any) {
-    console.log("No results returned while checking the crate version in https://crates.io");
-    console.warn(error);
-  }
+  } catch (_: any) {}
 
   const cargoPublishCommandSegments = [`cargo publish --allow-dirty -p ${cargoToml.package.name}`];
   if (isDryRun) {

@@ -561,12 +561,12 @@ importers:
       '@rollup/plugin-json':
         specifier: 6.1.0
         version: 6.1.0(rollup@4.10.0)
+      axios:
+        specifier: '>=1.6.0'
+        version: 1.6.7
       bundle-require:
         specifier: ^4.0.2
         version: 4.0.2(esbuild@0.19.12)
-      crates.io:
-        specifier: ^2.2.7
-        version: 2.2.7
       decky:
         specifier: 1.1.1
         version: 1.1.1
@@ -6014,15 +6014,6 @@ packages:
       typescript: 5.3.3
     dev: false
     patched: true
-
-  /crates.io@2.2.7:
-    resolution: {integrity: sha512-mjVKhg72XTQZV3odV+DPyM080f12/CpPzZ9+9JYDHJyDAkFLmS4guOHzFswU2azWAsEwPVVsmq3sQGmk95rv3g==}
-    engines: {node: '>= 10.9'}
-    dependencies:
-      axios: 1.6.7
-    transitivePeerDependencies:
-      - debug
-    dev: false
 
   /create-jest@29.7.0(@types/node@20.11.20)(ts-node@10.9.2):
     resolution: {integrity: sha512-Adz2bdH0Vq3F53KEMJOoftQFutWCukm6J24wbPWRO4k1kMY7gS7ds/uoJkNuV8wDCtWWnuwGcJwpWcih+zEW1Q==}
