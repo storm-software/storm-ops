@@ -51,8 +51,8 @@ use std::str::FromStr;
 ///         // something went wrong
 ///     }
 /// }
-/// # Ok(())
-/// # }
+/// Ok(())
+/// }
 /// ```
 ///
 /// If any [`AsyncSource`] is used, the builder will transition to [`AsyncState`].
@@ -62,14 +62,14 @@ use std::str::FromStr;
 /// ```rust
 /// use std::error::Error;
 /// use storm_config::*;
-/// # fn main() -> Result<(), Box<dyn Error>> {
+/// fn main() -> Result<(), Box<dyn Error>> {
 /// let mut builder = Config::builder();
 /// builder = builder.set_default("default", "1")?;
 /// builder = builder.add_source(File::new("config/settings", FileFormat::Json));
 /// builder = builder.add_source(File::new("config/settings.prod", FileFormat::Json));
 /// builder = builder.set_override("override", "1")?;
-/// # Ok(())
-/// # }
+/// Ok(())
+/// }
 /// ```
 ///
 /// Calling [`Config::builder`](Config::builder) yields builder in the default state.
