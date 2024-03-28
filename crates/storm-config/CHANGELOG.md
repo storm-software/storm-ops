@@ -1,3 +1,15 @@
+## 0.2.5 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **storm-workspace:** Resolved Cargo publishing issues ([eebae608](https://github.com/storm-software/storm-ops/commit/eebae608))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.2.4 (2024-03-28)
 
 
