@@ -1,3 +1,15 @@
+## 2.5.6 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Update `moduleResolution` option to use `Bundler` value ([132eb929](https://github.com/storm-software/storm-ops/commit/132eb929))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.5.5 (2024-03-28)
 
 
