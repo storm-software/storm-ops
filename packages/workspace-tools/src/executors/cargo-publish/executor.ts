@@ -69,6 +69,21 @@ export default async function runExecutor(
       success: true
     };
   } catch (error: any) {
+    if (
+      error?.cause?.message &&
+      typeof error.cause.message === "string" &&
+      error.cause.message.includes("crate version") &&
+      error.cause.message.includes("is already uploaded")
+    ) {
+      console.log(
+        `Skipped package "${cargoToml.package.name}" from project "${cargoToml.package.name}" because v${cargoToml.package.version} already exists in https://crates.io with tag "latest"`
+      );
+
+      return {
+        success: true
+      };
+    }
+
     console.error("Failed to publish to https://crates.io");
     console.error(error);
 
