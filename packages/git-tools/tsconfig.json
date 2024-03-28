@@ -4,6 +4,7 @@
     "outDir": "../../dist/out-tsc",
     "strict": false,
     "module": "ESNext",
+    "moduleResolution": "Bundler",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "types": [
