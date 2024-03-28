@@ -1,3 +1,15 @@
+## 1.66.12 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved `axios` module import issue ([a2bf92c2](https://github.com/storm-software/storm-ops/commit/a2bf92c2))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.11 (2024-03-28)
 
 
