@@ -1,3 +1,15 @@
+## 1.66.7 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Enhance error formatting and handling in `cargo-publish` executor ([a0423bc6](https://github.com/storm-software/storm-ops/commit/a0423bc6))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.6 (2024-03-28)
 
 
