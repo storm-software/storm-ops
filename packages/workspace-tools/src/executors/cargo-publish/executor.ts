@@ -70,10 +70,14 @@ export default async function runExecutor(
     };
   } catch (error: any) {
     if (
-      error?.cause?.message &&
-      typeof error.cause.message === "string" &&
-      error.cause.message.includes("crate version") &&
-      error.cause.message.includes("is already uploaded")
+      (error?.message &&
+        typeof error.message === "string" &&
+        error.message.toLowerCase().includes("crate version") &&
+        error.message.toLowerCase().includes("is already uploaded")) ||
+      (error?.cause?.message &&
+        typeof error.cause.message === "string" &&
+        error.cause.message.toLowerCase().includes("crate version") &&
+        error.cause.message.toLowerCase().includes("is already uploaded"))
     ) {
       console.log(
         `Skipped package "${cargoToml.package.name}" from project "${cargoToml.package.name}" because v${cargoToml.package.version} already exists in https://crates.io with tag "latest"`
@@ -86,9 +90,18 @@ export default async function runExecutor(
 
     console.error("Failed to publish to https://crates.io");
     console.error(error);
+    console.log("");
+    console.error(formatLog(error));
 
     return {
       success: false
     };
   }
 }
+
+const formatLog = (message: any): string =>
+  typeof message === "object"
+    ? Object.keys(message)
+        .map((key) => ` - ${key}=${formatLog(message[key])}`)
+        .join("\n")
+    : JSON.stringify(message);
