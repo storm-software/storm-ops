@@ -1,3 +1,15 @@
+## 1.66.6 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Updated `cargo-publish` to skip publishing when neccesary ([01ec5e99](https://github.com/storm-software/storm-ops/commit/01ec5e99))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.5 (2024-03-28)
 
 
