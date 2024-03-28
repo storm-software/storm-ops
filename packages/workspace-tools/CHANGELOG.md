@@ -1,3 +1,15 @@
+## 1.66.9 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve result handling in `cargo-publish` executor ([09a25a73](https://github.com/storm-software/storm-ops/commit/09a25a73))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.8 (2024-03-28)
 
 
