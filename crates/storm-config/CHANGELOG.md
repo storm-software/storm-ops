@@ -1,3 +1,15 @@
+## 0.2.6 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **storm-config:** Resolved issue with imports in docs ([0f8a5bf8](https://github.com/storm-software/storm-ops/commit/0f8a5bf8))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.2.5 (2024-03-28)
 
 
