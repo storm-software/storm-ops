@@ -111,15 +111,9 @@
     "vfile-reporter": "^8.1.0"
   },
   "devDependencies": {
-    "@storm-software/config": "1.7.1",
-    "@storm-software/config-tools": "1.33.1",
     "@types/eslint": "8.44.6"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "peerDependencies": {
-    "@storm-software/config": "workspace:^",
-    "@storm-software/config-tools": "workspace:^"
   }
 }

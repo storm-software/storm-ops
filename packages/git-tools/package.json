@@ -56,16 +56,10 @@
     "word-wrap": "1.2.5"
   },
   "devDependencies": {
-    "@storm-software/config": "1.7.1",
-    "@storm-software/config-tools": "1.33.1",
     "@types/inquirer": "9.0.6",
     "@types/prettier": "3.0.0"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "peerDependencies": {
-    "@storm-software/config": "workspace:^",
-    "@storm-software/config-tools": "workspace:^"
   }
 }
