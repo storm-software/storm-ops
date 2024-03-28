@@ -49,15 +49,37 @@ export default async function runExecutor(
     const command = cargoPublishCommandSegments.join(" ");
     output.logSingleLine(`Running "${command}"...`);
 
-    execSync(command, {
+    const result = execSync(command, {
       maxBuffer: LARGE_BUFFER,
       env: {
-        ...process.env
+        ...process.env,
+        FORCE_COLOR: "true"
       },
       cwd: packageRoot,
-      stdio: "inherit"
+      stdio: ["ignore", "pipe", "pipe"]
     });
     console.log("");
+    console.log(result ? result.toString() : "No Result");
+
+    const resultJson = JSON.parse(result.toString());
+    if (
+      (resultJson?.message &&
+        typeof resultJson.message === "string" &&
+        resultJson.message.toLowerCase().includes("crate version") &&
+        resultJson.message.toLowerCase().includes("is already uploaded")) ||
+      (resultJson?.cause?.message &&
+        typeof resultJson.cause.message === "string" &&
+        resultJson.cause.message.toLowerCase().includes("crate version") &&
+        resultJson.cause.message.toLowerCase().includes("is already uploaded"))
+    ) {
+      console.warn(
+        `Skipped package "${cargoToml.package.name}" from project "${cargoToml.package.name}" because v${cargoToml.package.version} already exists in https://crates.io with tag "latest"`
+      );
+
+      return {
+        success: true
+      };
+    }
 
     if (isDryRun) {
       console.log("Would publish to https://crates.io, but [dry-run] was set");
@@ -69,29 +91,9 @@ export default async function runExecutor(
       success: true
     };
   } catch (error: any) {
-    if (
-      (error?.message &&
-        typeof error.message === "string" &&
-        error.message.toLowerCase().includes("crate version") &&
-        error.message.toLowerCase().includes("is already uploaded")) ||
-      (error?.cause?.message &&
-        typeof error.cause.message === "string" &&
-        error.cause.message.toLowerCase().includes("crate version") &&
-        error.cause.message.toLowerCase().includes("is already uploaded"))
-    ) {
-      console.log(
-        `Skipped package "${cargoToml.package.name}" from project "${cargoToml.package.name}" because v${cargoToml.package.version} already exists in https://crates.io with tag "latest"`
-      );
-
-      return {
-        success: true
-      };
-    }
-
     console.error("Failed to publish to https://crates.io");
     console.error(error);
     console.log("");
-    console.error(formatLog(error));
 
     return {
       success: false
@@ -111,6 +113,6 @@ const formatLog = (message?: any, name?: string): string =>
           : typeof message === "object"
             ? (name ? ` --- ${name} ---\n` : "") +
               Object.keys(message)
-                .map((key) => ` - ${key}=${formatLog(message[key])}`)
+                .map((key) => ` - ${key}=${formatLog(message[key], key)}`)
                 .join("\n")
             : JSON.stringify(message);
