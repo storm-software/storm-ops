@@ -1,3 +1,15 @@
+## 1.66.4 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve issue releasing cargo dependency crates ([6c14fb2d](https://github.com/storm-software/storm-ops/commit/6c14fb2d))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.3 (2024-03-28)
 
 
