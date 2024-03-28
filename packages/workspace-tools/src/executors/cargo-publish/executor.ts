@@ -99,9 +99,18 @@ export default async function runExecutor(
   }
 }
 
-const formatLog = (message: any): string =>
-  typeof message === "object"
-    ? Object.keys(message)
-        .map((key) => ` - ${key}=${formatLog(message[key])}`)
-        .join("\n")
-    : JSON.stringify(message);
+const formatLog = (message?: any, name?: string): string =>
+  typeof message === "boolean"
+    ? String(message)
+    : !message
+      ? "<None>"
+      : typeof message === "string"
+        ? `"${message}"`
+        : typeof message === "number"
+          ? message.toString()
+          : typeof message === "object"
+            ? (name ? ` --- ${name} ---\n` : "") +
+              Object.keys(message)
+                .map((key) => ` - ${key}=${formatLog(message[key])}`)
+                .join("\n")
+            : JSON.stringify(message);
