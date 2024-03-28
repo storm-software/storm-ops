@@ -1,3 +1,15 @@
+## 1.44.4 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Resolve issue with workspace dependencies ([041dcc78](https://github.com/storm-software/storm-ops/commit/041dcc78))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.44.3 (2024-03-28)
 
 

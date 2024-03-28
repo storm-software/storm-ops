@@ -226,10 +226,6 @@ importers:
       zod:
         specifier: 3.22.4
         version: 3.22.4
-    devDependencies:
-      '@storm-software/config':
-        specifier: workspace:*
-        version: link:../config
 
   packages/create-storm-workspace:
     dependencies:
@@ -285,12 +281,6 @@ importers:
         specifier: 1.2.5
         version: 1.2.5
     devDependencies:
-      '@storm-software/config':
-        specifier: workspace:*
-        version: link:../config
-      '@storm-software/config-tools':
-        specifier: workspace:*
-        version: link:../config-tools
       '@types/inquirer':
         specifier: 9.0.6
         version: 9.0.6
@@ -529,12 +519,6 @@ importers:
         specifier: ^8.1.0
         version: 8.1.0
     devDependencies:
-      '@storm-software/config':
-        specifier: workspace:*
-        version: link:../config
-      '@storm-software/config-tools':
-        specifier: workspace:*
-        version: link:../config-tools
       '@types/eslint':
         specifier: 8.44.6
         version: 8.44.6
