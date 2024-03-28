@@ -1,3 +1,15 @@
+## 0.2.2 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update the Nx plugins to provide tags to workspace projects ([980a0203](https://github.com/storm-software/storm-ops/commit/980a0203))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.2.1 (2024-03-25)
 
 
