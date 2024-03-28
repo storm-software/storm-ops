@@ -1,15 +1,22 @@
 #!/usr/bin/env node
 
-import { exitWithSuccess, handleProcess, loadStormConfig } from "@storm-software/config-tools";
+import {
+  exitWithError,
+  handleProcess,
+  loadStormConfig,
+  writeFatal
+} from "@storm-software/config-tools";
 import { checkPackageVersion } from "../src/utilities/check-package-version";
 
-const handle = async () => {
+void (async () => {
   const config = await loadStormConfig();
-  handleProcess(config);
+  try {
+    handleProcess(config);
 
-  checkPackageVersion(process.argv.slice(1));
-};
-
-handle().then(() => {
-  loadStormConfig().then((config) => exitWithSuccess(config));
-});
+    checkPackageVersion(process.argv.slice(1));
+  } catch (error) {
+    writeFatal(config, `A fatal error occurred while running the program: ${error.message}`);
+    exitWithError(config);
+    process.exit(1);
+  }
+})();

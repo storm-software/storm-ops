@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import {
   loadStormConfig,
   exitWithSuccess,
@@ -37,7 +39,3 @@ void (async () => {
     process.exit(1);
   }
 })();
-
-// .then(() => {
-//   loadStormConfig().then((config) => exitWithSuccess(config));
-// });

@@ -7,8 +7,13 @@
     "build": {
       "cache": true,
       "executor": "@nx/esbuild:esbuild",
-      "inputs": ["default", "^production"],
-      "outputs": ["{options.outputPath}"],
+      "inputs": [
+        "default",
+        "^production"
+      ],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/git-tools",
         "tsConfig": "packages/git-tools/tsconfig.json",
@@ -40,8 +45,12 @@
         "skipTypeCheck": true,
         "thirdParty": true,
         "platform": "node",
-        "format": ["cjs", "esm"],
-        "external": ["nx"],
+        "format": [
+          "esm"
+        ],
+        "external": [
+          "nx"
+        ],
         "esbuildOptions": {
           "legalComments": "inline",
           "banner": {
@@ -98,5 +107,8 @@
       }
     }
   },
-  "tags": ["type:util", "scope:tools"]
+  "tags": [
+    "type:util",
+    "scope:tools"
+  ]
 }

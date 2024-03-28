@@ -1,25 +1,33 @@
 #!/usr/bin/env node
 
 import {
+  exitWithError,
   exitWithSuccess,
   handleProcess,
   loadStormConfig,
   run,
+  writeFatal,
   writeInfo
 } from "@storm-software/config-tools";
 
-const handle = async () => {
+void (async () => {
   const config = await loadStormConfig();
-  handleProcess(config);
+  try {
+    handleProcess(config);
 
-  if (config.ci) {
-    writeInfo(config, "Skipping pre-install for CI process...");
+    writeInfo(config, "Running pre-install hook...");
+
+    if (config.ci) {
+      writeInfo(config, "Skipping pre-install for CI process...");
+      exitWithSuccess(config);
+    }
+
+    run(config, "npx -y only-allow pnpm");
+
     exitWithSuccess(config);
+  } catch (error) {
+    writeFatal(config, `A fatal error occurred while running the program: ${error.message}`);
+    exitWithError(config);
+    process.exit(1);
   }
-
-  run(config, "npx -y only-allow pnpm");
-};
-
-handle().then(() => {
-  loadStormConfig().then((config) => exitWithSuccess(config));
-});
+})();

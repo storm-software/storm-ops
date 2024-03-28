@@ -7,32 +7,37 @@ import {
   loadStormConfig,
   run,
   writeError,
+  writeFatal,
   writeInfo
 } from "@storm-software/config-tools";
 import { checkPackageVersion } from "../src/utilities";
 
-const handle = async () => {
+void (async () => {
   const config = await loadStormConfig();
-  handleProcess(config);
-
-  writeInfo(config, "Running post-checkout hook...");
-  checkPackageVersion(process.argv?.slice(1));
-
   try {
-    run(config, "git-lfs version");
+    handleProcess(config);
+
+    writeInfo(config, "Running post-checkout hook...");
+    checkPackageVersion(process.argv?.slice(1));
+
+    try {
+      run(config, "git-lfs version");
+    } catch (error) {
+      writeError(
+        config,
+        `This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting .git/hooks/post-checkout.\nError: ${
+          (error as Error)?.message
+        }`
+      );
+      exitWithError(config);
+    }
+
+    run(config, "git lfs post-checkout");
+
+    exitWithSuccess(config);
   } catch (error) {
-    writeError(
-      config,
-      `This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting .git/hooks/post-checkout.\nError: ${
-        (error as Error)?.message
-      }`
-    );
+    writeFatal(config, `A fatal error occurred while running the program: ${error.message}`);
     exitWithError(config);
+    process.exit(1);
   }
-
-  run(config, "git lfs post-checkout");
-};
-
-handle().then(() => {
-  loadStormConfig().then((config) => exitWithSuccess(config));
-});
+})();

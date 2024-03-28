@@ -5,24 +5,32 @@ import {
   exitWithSuccess,
   handleProcess,
   loadStormConfig,
-  writeError
+  writeError,
+  writeFatal,
+  writeInfo
 } from "@storm-software/config-tools";
 import {
   checkPackageVersion,
   isPackageVersionChanged
 } from "../src/utilities/check-package-version";
 
-const handle = async () => {
+void (async () => {
   const config = await loadStormConfig();
-  handleProcess(config);
+  try {
+    handleProcess(config);
 
-  checkPackageVersion(process.argv.slice(1));
-  if (isPackageVersionChanged(process.argv?.slice(1))) {
-    writeError(config, "Please regenerate the package lock file before committing...");
+    writeInfo(config, "Running pre-commit hook...");
+
+    checkPackageVersion(process.argv.slice(1));
+    if (isPackageVersionChanged(process.argv?.slice(1))) {
+      writeError(config, "Please regenerate the package lock file before committing...");
+      exitWithError(config);
+    }
+
+    exitWithSuccess(config);
+  } catch (error) {
+    writeFatal(config, `A fatal error occurred while running the program: ${error.message}`);
     exitWithError(config);
+    process.exit(1);
   }
-};
-
-handle().then(() => {
-  loadStormConfig().then((config) => exitWithSuccess(config));
-});
+})();

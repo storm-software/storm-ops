@@ -1,16 +1,30 @@
 #!/usr/bin/env node
 
-import { exitWithSuccess, handleProcess, loadStormConfig, run } from "@storm-software/config-tools";
+import {
+  exitWithError,
+  exitWithSuccess,
+  handleProcess,
+  loadStormConfig,
+  run,
+  writeFatal,
+  writeInfo
+} from "@storm-software/config-tools";
 
-const handle = async () => {
+void (async () => {
   const config = await loadStormConfig();
-  handleProcess(config);
+  try {
+    handleProcess(config);
 
-  if (!config.ci) {
-    run(config, "lefthook install");
+    writeInfo(config, "Running prepare hook...");
+
+    if (!config.ci) {
+      run(config, "lefthook install");
+    }
+
+    exitWithSuccess(config);
+  } catch (error) {
+    writeFatal(config, `A fatal error occurred while running the program: ${error.message}`);
+    exitWithError(config);
+    process.exit(1);
   }
-};
-
-handle().then(() => {
-  loadStormConfig().then((config) => exitWithSuccess(config));
-});
+})();
