@@ -1,3 +1,15 @@
+## 1.66.16 (2024-03-28)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Mark the `axios` dependency as external ([389dfbd9](https://github.com/storm-software/storm-ops/commit/389dfbd9))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.15 (2024-03-28)
 
 
