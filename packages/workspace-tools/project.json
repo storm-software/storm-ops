@@ -51,7 +51,8 @@
         },
         "external": [
           "nx",
-          "@storm-software/*"
+          "@storm-software/*",
+          "axios"
         ],
         "assets": [
           {
