@@ -67,7 +67,6 @@ export const createNodes = [
         dependsOn: ["build", "^nx-release-publish"],
         executor: "@storm-software/workspace-tools:npm-publish",
         options: {
-          packageRoot: `dist/${project.root}`,
           registry: "https://registry.npmjs.org/"
         }
       };
