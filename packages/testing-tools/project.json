@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/testing-tools",
         "main": "packages/testing-tools/src/index.ts",
@@ -18,8 +20,15 @@
         "minify": false,
         "skipTypeCheck": true,
         "thirdParty": true,
-        "format": ["cjs", "esm"],
-        "external": ["nx", "@nx/jest", "jest"],
+        "format": [
+          "cjs",
+          "esm"
+        ],
+        "external": [
+          "nx",
+          "@nx/jest",
+          "jest"
+        ],
         "assets": [
           {
             "input": "packages/testing-tools",
@@ -43,7 +52,13 @@
           }
         ]
       }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
     }
   },
-  "tags": ["type:util", "scope:tools"]
+  "tags": [
+    "type:util",
+    "scope:tools"
+  ]
 }

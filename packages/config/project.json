@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "main": "packages/config/src/index.ts",
         "outputPath": "dist/packages/config",
@@ -20,7 +22,10 @@
         "skipTypeCheck": false,
         "metafile": true,
         "minify": true,
-        "format": ["cjs", "esm"],
+        "format": [
+          "cjs",
+          "esm"
+        ],
         "assets": [
           {
             "input": "./packages/config",
@@ -59,6 +64,9 @@
           }
         }
       }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
     }
   }
 }
