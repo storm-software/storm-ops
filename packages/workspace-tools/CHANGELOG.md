@@ -1,3 +1,15 @@
+## 1.66.19 (2024-03-29)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Update the package root during publish ([ec87434f](https://github.com/storm-software/storm-ops/commit/ec87434f))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.18 (2024-03-28)
 
 
