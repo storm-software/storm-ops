@@ -1,3 +1,17 @@
+## 1.66.23 (2024-03-29)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved issues with declaring local Storm nx-plugins ([a5eed1f0](https://github.com/storm-software/storm-ops/commit/a5eed1f0))
+
+- **workspace-tools:** Resolved issue with generating local Nx plugins prior to build ([68ef2815](https://github.com/storm-software/storm-ops/commit/68ef2815))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.22 (2024-03-29)
 
 
