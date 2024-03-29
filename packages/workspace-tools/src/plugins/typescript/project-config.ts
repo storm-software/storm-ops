@@ -86,7 +86,11 @@ export const createNodes = [
                   ...project?.release?.version,
                   generator: "@storm-software/workspace-tools:release-version"
                 }
-              }
+              },
+              implicitDependencies:
+                packageJson.name !== "@storm-software/testing-tools"
+                  ? ["@storm-software/testing-tools"]
+                  : []
             }
           }
         }
