@@ -1,3 +1,15 @@
+## 1.66.20 (2024-03-29)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Enhance `npm-publish` executor to better handle publish directory ([9101ca92](https://github.com/storm-software/storm-ops/commit/9101ca92))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.19 (2024-03-29)
 
 
