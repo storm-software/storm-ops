@@ -1,3 +1,15 @@
+## 1.44.8 (2024-03-29)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Further updates to Nx plugin modules ([82b6ab01](https://github.com/storm-software/storm-ops/commit/82b6ab01))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.44.7 (2024-03-28)
 
 
