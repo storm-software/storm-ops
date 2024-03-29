@@ -6,6 +6,14 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
+      "inputs": [
+        "default",
+        "^production"
+      ],
+      "dependsOn": [
+        "clean",
+        "^build"
+      ],
       "outputs": [
         "{options.outputPath}"
       ],

@@ -197,6 +197,13 @@
         "^lint"
       ]
     },
+    "clean": {
+      "cache": false,
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm exec rimraf dist/{projectRoot}"
+      }
+    },
     "build": {
       "cache": true,
       "inputs": [
