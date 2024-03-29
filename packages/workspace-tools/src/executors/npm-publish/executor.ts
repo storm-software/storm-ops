@@ -22,9 +22,13 @@ export default async function npmPublishExecutorFn(
   if (!projectConfig) {
     throw new Error(`Could not find project configuration for ${context.projectName}`);
   }
+
+  const outputs = projectConfig?.targets?.build?.outputs;
   const packageRoot = joinPathFragments(
     context.root,
-    options.packageRoot ? options.packageRoot : joinPathFragments("dist", projectConfig.root)
+    options.packageRoot ??
+      (outputs && outputs.length > 0 ? outputs[0] : null) ??
+      joinPathFragments("dist", projectConfig.root)
   );
 
   const packageJsonPath = joinPathFragments(packageRoot, "package.json");

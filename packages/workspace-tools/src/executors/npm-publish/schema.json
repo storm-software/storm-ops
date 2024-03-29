@@ -11,7 +11,9 @@
     },
     "registry": {
       "type": "string",
-      "description": "The registry to publish the package to."
+      "description": "The registry to publish the package to.",
+      "format": "uri",
+      "default": "https://registry.npmjs.org/"
     },
     "tag": {
       "type": "string",
@@ -22,5 +24,5 @@
       "description": "Whether to run the command without actually publishing the package to the registry."
     }
   },
-  "required": []
+  "required": ["registry"]
 }
