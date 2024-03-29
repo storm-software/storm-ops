@@ -259,7 +259,6 @@
         "{options.outputPath}"
       ],
       "dependsOn": [
-        "test",
         "^nx-release-publish"
       ]
     }
@@ -287,17 +286,7 @@
       }
     }
   },
-  "plugins": [
-    "@nx/eslint/plugin",
-    "@storm-software/workspace-tools/plugins/rust",
-    "@storm-software/workspace-tools/plugins/typescript"
-  ],
-  "pluginsConfig": {
-    "@nx/js": {
-      "analyzeSourceFiles": true,
-      "analyzeLockfile": true,
-      "analyzePackageJson": false
-    }
-  },
+  "parallel": 3,
+  "cacheDirectory": "tmp/nx-cache",
   "defaultBase": "main"
 }

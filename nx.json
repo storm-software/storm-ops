@@ -26,8 +26,8 @@
   },
   "plugins": [
     "@nx/eslint/plugin",
-    "@storm-software/workspace-tools/plugins/rust",
-    "@storm-software/workspace-tools/plugins/typescript"
+    "./dist/packages/workspace-tools/src/plugins/rust/index.js",
+    "./dist/packages/workspace-tools/src/plugins/typescript/index.js"
   ],
   "defaultBase": "main"
 }
