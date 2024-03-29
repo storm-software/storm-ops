@@ -81,7 +81,7 @@ export const createNodes: CreateNodes = [
           targets["nx-release-publish"] = {
             cache: false,
             inputs: ["default", "^production"],
-            dependsOn: ["test", "^nx-release-publish"],
+            dependsOn: ["test", "build", "^nx-release-publish"],
             executor: "@storm-software/workspace-tools:cargo-publish",
             options: {
               packageRoot: root

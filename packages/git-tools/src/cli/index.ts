@@ -11,15 +11,13 @@ import { runReadme } from "../readme";
 import { runRelease } from "../release";
 import type { ReadMeOptions } from "../types";
 import { Command, Option } from "commander";
-import { registerPluginTSTranspiler } from "nx/src/utils/nx-plugin.js";
+
 let _config: Partial<StormConfig> = {};
 
 export function createProgram(config: StormConfig) {
   try {
     _config = config;
     writeInfo(config, "⚡ Running Storm Git Tools");
-
-    registerPluginTSTranspiler();
 
     // const commander = await import("commander");
 

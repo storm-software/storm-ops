@@ -25,6 +25,7 @@
     }
   },
   "plugins": [
+    "@nx/js",
     "@nx/eslint/plugin",
     "@storm-software/workspace-tools/plugins/rust",
     "@storm-software/workspace-tools/plugins/typescript"
