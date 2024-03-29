@@ -29,7 +29,6 @@ import {
   createProjectRootMappings,
   findProjectForPath
 } from "nx/src/project-graph/utils/find-project-for-path";
-import { registerPluginTSTranspiler } from "nx/src/utils/nx-plugin";
 
 /**
  * Build and bundle a TypeScript project using the tsup build tools.
@@ -50,7 +49,6 @@ export async function build(config: StormConfig, options: Partial<TypeScriptBuil
     );
   }
 
-  registerPluginTSTranspiler();
   const projectGraph = await createProjectGraphAsync({
     exitOnError: true
   });

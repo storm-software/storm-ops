@@ -5,6 +5,7 @@ import { readJsonFile } from "nx/src/utils/fileutils";
 import { type PackageJson, readTargetsFromPackageJson } from "nx/src/utils/package-json";
 
 export const name = "storm-software/typescript/project-config";
+
 export const createNodes = [
   "{project.json,**/project.json}",
   (file, _, ctx) => {
@@ -76,7 +77,7 @@ export const createNodes = [
       ? {
           projects: {
             [project.name]: {
-              tags: ["typescript", "npm"],
+              tags: ["lang:typescript"],
               ...project,
               targets,
               release: {

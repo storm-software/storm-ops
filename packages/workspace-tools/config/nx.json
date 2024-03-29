@@ -13,8 +13,7 @@
           "e2e",
           "docs"
         ],
-        "parallel": 3,
-        "cacheDirectory": "node_modules/.cache/nx"
+        "parallel": 3
       }
     }
   },
@@ -249,6 +248,20 @@
         "test",
         "^e2e"
       ]
+    },
+    "nx-release-publish": {
+      "cache": false,
+      "inputs": [
+        "default",
+        "^production"
+      ],
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "dependsOn": [
+        "test",
+        "^nx-release-publish"
+      ]
     }
   },
   "release": {
@@ -283,7 +296,7 @@
     "@nx/js": {
       "analyzeSourceFiles": true,
       "analyzeLockfile": true,
-      "analyzePackageJson": true
+      "analyzePackageJson": false
     }
   },
   "defaultBase": "main"

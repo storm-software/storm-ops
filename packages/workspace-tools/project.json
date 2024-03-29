@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/packages/workspace-tools",
         "tsConfig": "packages/workspace-tools/tsconfig.lib.json",
@@ -39,13 +41,19 @@
         "skipTypeCheck": false,
         "metafile": true,
         "minify": false,
-        "format": ["cjs"],
+        "format": [
+          "cjs"
+        ],
         "esbuildOptions": {
           "outExtension": {
             ".js": ".js"
           }
         },
-        "external": ["nx", "@storm-software/*"],
+        "external": [
+          "nx",
+          "@nx/devkit",
+          "esbuild"
+        ],
         "assets": [
           {
             "input": "packages/workspace-tools",
@@ -60,13 +68,19 @@
           {
             "input": "packages/workspace-tools",
             "glob": "**/*.json",
-            "ignore": ["**/tsconfig*.json", "project.json", ".eslintrc.json"],
+            "ignore": [
+              "**/tsconfig*.json",
+              "project.json",
+              ".eslintrc.json"
+            ],
             "output": "."
           },
           {
             "input": "packages/workspace-tools",
             "glob": "**/*.js",
-            "ignore": ["**/jest.config.js"],
+            "ignore": [
+              "**/jest.config.js"
+            ],
             "output": "."
           },
           {
@@ -97,6 +111,5 @@
         ]
       }
     }
-  },
-  "tags": ["type:util", "scope:tools"]
+  }
 }

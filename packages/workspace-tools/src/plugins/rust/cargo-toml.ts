@@ -32,9 +32,8 @@ export const createNodes: CreateNodes = [
       return acc;
     }, new Map<string, Package>());
 
-    for (const pkg of cargoPackages) {
-      if (!isExternal(pkg, ctx.workspaceRoot)) {
-        // const root = normalizePath(dirname(relative(ctx.workspaceRoot, pkg.manifest_path)));
+    for (const cargoPackage of cargoPackages) {
+      if (!isExternal(cargoPackage, ctx.workspaceRoot)) {
         const root = dirname(cargoFile);
 
         const targets: ProjectConfiguration["targets"] = {
@@ -45,7 +44,7 @@ export const createNodes: CreateNodes = [
             executor: "@monodon/rust:lint",
             outputs: ["{options.target-dir}"],
             options: {
-              "target-dir": `dist/target/${pkg.name}`
+              "target-dir": `dist/target/${cargoPackage.name}`
             }
           },
           build: {
@@ -55,7 +54,7 @@ export const createNodes: CreateNodes = [
             executor: "@monodon/rust:check",
             outputs: ["{options.target-dir}"],
             options: {
-              "target-dir": `dist/target/${pkg.name}`
+              "target-dir": `dist/target/${cargoPackage.name}`
             }
           },
           test: {
@@ -65,7 +64,7 @@ export const createNodes: CreateNodes = [
             executor: "@monodon/rust:test",
             outputs: ["{options.target-dir}"],
             options: {
-              "target-dir": `dist/target/${pkg.name}`
+              "target-dir": `dist/target/${cargoPackage.name}`
             },
             configurations: {
               production: {
@@ -75,8 +74,7 @@ export const createNodes: CreateNodes = [
           }
         };
 
-        // Apply nx-release-publish target for non-private projects
-        const isPrivate = pkg.publish?.length === 0;
+        const isPrivate = cargoPackage.publish?.length === 0;
         if (!isPrivate) {
           targets["nx-release-publish"] = {
             cache: false,
@@ -91,17 +89,17 @@ export const createNodes: CreateNodes = [
 
         projects[root] = {
           root,
-          name: pkg.name,
+          name: cargoPackage.name,
           targets,
           release: {
             version: {
               generator: "@storm-software/workspace-tools:release-version"
             }
           },
-          tags: ["rust", "cargo"]
+          tags: ["lang:rust"]
         };
       }
-      for (const dep of pkg.dependencies) {
+      for (const dep of cargoPackage.dependencies) {
         if (isExternal(dep, ctx.workspaceRoot)) {
           const externalDepName = `cargo:${dep.name}`;
           if (!externalNodes?.[externalDepName]) {
@@ -132,7 +130,6 @@ export const createDependencies: CreateDependencies = (_, { projects, externalNo
   }
 
   const { packages: cargoPackages } = metadata;
-
   const dependencies: RawProjectGraphDependency[] = [];
 
   for (const pkg of cargoPackages) {

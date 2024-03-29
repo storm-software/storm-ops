@@ -63,9 +63,7 @@
     "test": "echo Skipping all workspace testing..."
   },
   "dependencies": {
-    "@angular-devkit/architect": "^0.1702.0",
-    "@angular-devkit/core": "^17.2.0",
-    "@angular-devkit/schematics": "^17.2.0",
+    "@angular-devkit/architect": "^0.1703.2",
     "@biomejs/biome": "1.5.3",
     "@commitlint/cli": "^19.2.1",
     "@ls-lint/ls-lint": "^2.2.3",
@@ -85,7 +83,6 @@
     "@swc/helpers": "0.5.3",
     "@swc/wasm": "^1.4.2",
     "@taplo/cli": "^0.7.0",
-    "@tsconfig/recommended": "1.0.3",
     "@types/jest": "29.5.11",
     "@types/node": "20.11.20",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
