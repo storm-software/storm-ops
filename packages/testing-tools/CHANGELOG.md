@@ -1,3 +1,15 @@
+## 1.35.4 (2024-03-29)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added the `nx-release-publish` target to TypeScript projects ([52b61117](https://github.com/storm-software/storm-ops/commit/52b61117))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.35.3 (2024-03-28)
 
 
