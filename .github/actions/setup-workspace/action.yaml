@@ -27,12 +27,14 @@ runs:
         cache: pnpm
         cache-dependency-path: pnpm-lock.yaml
 
-    - name: setup pnpm config registry
+    - name: Setup pnpm config registry
       run: pnpm config set registry https://registry.npmjs.org
       shell: bash
 
-    - name: setup pnpm config registry
+    - name: Setup pnpm config registry
       run: pnpm install --no-frozen-lockfile
       shell: bash
 
-
+    - name: Build Storm Nx-Plugin packages
+      run: pnpm build-plugins
+      shell: bash

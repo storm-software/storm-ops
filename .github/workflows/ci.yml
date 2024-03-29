@@ -17,7 +17,7 @@ env:
   CI: true
   NX_DAEMON: false
   NX_VERBOSE_LOGGING: true
-  STORM_WORKER: stormie-bot
+  STORM_WORKER: Stormie-Bot
   STORM_REPOSITORY: ${{ github.repositoryUrl }}
   STORM_WORKSPACE_ROOT: ${{ github.workspace }}
   NX_BASE: ${{ github.base_ref }}
