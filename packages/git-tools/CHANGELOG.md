@@ -1,3 +1,15 @@
+## 2.5.12 (2024-04-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve issue with bad release path in npm publish ([4f5ba3db](https://github.com/storm-software/storm-ops/commit/4f5ba3db))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.5.11 (2024-03-29)
 
 
