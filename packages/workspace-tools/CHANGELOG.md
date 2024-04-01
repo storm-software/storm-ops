@@ -1,3 +1,17 @@
+## 1.66.25 (2024-04-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved issue with missing `testing-tools` dependencies ([10c6659b](https://github.com/storm-software/storm-ops/commit/10c6659b))
+
+- **workspace-tools:** Resovled issue with bad `implicitDependencies` properties ([7964e450](https://github.com/storm-software/storm-ops/commit/7964e450))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.24 (2024-03-29)
 
 
