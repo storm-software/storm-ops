@@ -1,3 +1,15 @@
+## 1.66.29 (2024-04-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve issue with missing nx.json file in package.json ([d0d09dd4](https://github.com/storm-software/storm-ops/commit/d0d09dd4))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.28 (2024-04-01)
 
 
