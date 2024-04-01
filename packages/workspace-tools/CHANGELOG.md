@@ -1,3 +1,15 @@
+## 1.66.27 (2024-04-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Remove unused implicit dependency ([57cd56e6](https://github.com/storm-software/storm-ops/commit/57cd56e6))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.26 (2024-04-01)
 
 
