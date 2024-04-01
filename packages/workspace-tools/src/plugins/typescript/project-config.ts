@@ -88,9 +88,7 @@ export const createNodes = [
                 }
               },
               implicitDependencies:
-                packageJson.name !== "@storm-software/testing-tools"
-                  ? ["@storm-software/testing-tools"]
-                  : []
+                packageJson.name !== "@storm-software/testing-tools" ? ["testing-tools"] : []
             }
           }
         }
