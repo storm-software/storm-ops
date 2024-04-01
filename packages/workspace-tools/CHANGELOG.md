@@ -1,3 +1,15 @@
+## 1.66.30 (2024-04-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added shim files to workspace packages ([68abc261](https://github.com/storm-software/storm-ops/commit/68abc261))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.29 (2024-04-01)
 
 
