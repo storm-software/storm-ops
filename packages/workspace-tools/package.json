@@ -36,6 +36,7 @@
   "exports": {
     ".": "./index.js",
     "./package.json": "./package.json",
+    "./config/nx.json": "./config/nx.json",
     "./migrations.json": "./migrations.json",
     "./generators.json": "./generators.json",
     "./generators/*/schema.json": "./src/generators/*/schema.json",
