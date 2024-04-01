@@ -262,11 +262,7 @@
         "default",
         "^production"
       ],
-      "outputs": [
-        "{options.outputPath}"
-      ],
       "dependsOn": [
-        "test",
         "build",
         "^nx-release-publish"
       ]
