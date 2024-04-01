@@ -1,3 +1,15 @@
+## 1.66.26 (2024-04-01)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Removed test input parameter ([3939101e](https://github.com/storm-software/storm-ops/commit/3939101e))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.66.25 (2024-04-01)
 
 
