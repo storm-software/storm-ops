@@ -37,7 +37,8 @@ export const applyDefaultOptions = (
   options.define ??= {};
   options.env ??= {};
   options.getConfig ??= defaultConfig;
-  options.verbose = options.verbose || getLogLevel(config?.logLevel) >= LogLevel.DEBUG;
+  options.verbose =
+    options.verbose || getLogLevel(config?.logLevel) >= LogLevel.DEBUG;
 
   return options as TypeScriptBuildOptions;
 };
@@ -58,7 +59,7 @@ export const applyDefaultRolldownOptions = (
       process.env.STORM_EXTERNAL_PACKAGE_PATTERNS &&
       process.env.STORM_EXTERNAL_PACKAGE_PATTERNS.split(",")?.length > 0 &&
       process.env.STORM_EXTERNAL_PACKAGE_PATTERNS.split(",").some(
-        (pkg) => pkg.replaceAll("*", "") && source?.includes(pkg)
+        pkg => pkg.replaceAll("*", "") && source?.includes(pkg)
       )
     );
   options.additionalEntryPoints ??= [];
@@ -68,7 +69,8 @@ export const applyDefaultRolldownOptions = (
   options.minify ??= false;
   options.clean ??= true;
   options.watch ??= false;
-  options.verbose = options.verbose || getLogLevel(config?.logLevel) >= LogLevel.DEBUG;
+  options.verbose =
+    options.verbose || getLogLevel(config?.logLevel) >= LogLevel.DEBUG;
   options.plugins = [];
   options.exports ??= "auto";
   options.sourcemap ??= true;

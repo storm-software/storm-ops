@@ -4,8 +4,100 @@
    ******************************/
   "relay.autoStartCompiler": true,
   "relay.rootDirectory": "../",
-  "relay.pathToConfig": "@storm-stack/graphql-tools/config/relay.config.js",
-
+  "relay.pathToConfig": "../packages/graphql-tools/config/relay.config.js",
+  /******************************
+   * Rust Analyzer
+   ******************************/
+  "rust-analyzer.procMacro.ignored": {
+    "napi-derive": ["napi"]
+  },
+  "rust-analyzer.linkedProjects": [
+    "crates\\storm-workspace\\Cargo.toml",
+    "crates\\storm-config\\Cargo.toml"
+  ],
+  /******************************
+   * JSON Schemas
+   ******************************/
+  "json.schemas": [
+    {
+      "url": "https://cdn.jsdelivr.net/npm/tsup/schema.json",
+      "fileMatch": ["package.json", "tsup.config.json"]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/npm/nx/schemas/nx-schema.json",
+      "fileMatch": ["nx.json"]
+    }
+    /*{
+      "url": "https://cdn.jsdelivr.net/npm/@storm-software/config/schema.json",
+      "fileMatch": [
+        "package.json",
+        ".stormrc",
+        ".stormrc.json",
+        ".stormrc.yaml",
+        ".stormrc.yml",
+        ".stormrc.js",
+        ".stormrc.ts",
+        ".stormrc.mjs",
+        ".stormrc.cjs ",
+        ".config/stormrc",
+        ".config/stormrc.json",
+        ".config/stormrc.yaml",
+        ".config/stormrc.yml",
+        ".config/stormrc.js",
+        ".config/stormrc.ts",
+        ".config/stormrc.mjs",
+        ".config/stormrc.cjs ",
+        "storm.config.js",
+        "storm.config.ts",
+        "storm.config.mjs",
+        "storm.config.cjs",
+        ".storm-softwarerc",
+        ".storm-softwarerc.json",
+        ".storm-softwarerc.yaml",
+        ".storm-softwarerc.yml",
+        ".storm-softwarerc.js",
+        ".storm-softwarerc.ts",
+        ".storm-softwarerc.mjs",
+        ".storm-softwarerc.cjs ",
+        ".config/storm-softwarerc",
+        ".config/storm-softwarerc.json",
+        ".config/storm-softwarerc.yaml",
+        ".config/storm-softwarerc.yml",
+        ".config/storm-softwarerc.js",
+        ".config/storm-softwarerc.ts",
+        ".config/storm-softwarerc.mjs",
+        ".config/storm-softwarerc.cjs ",
+        "storm-software.config.js",
+        "storm-software.config.ts",
+        "storm-software.config.mjs",
+        "storm-software.config.cjs",
+        ".storm-stackrc",
+        ".storm-stackrc.json",
+        ".storm-stackrc.yaml",
+        ".storm-stackrc.yml",
+        ".storm-stackrc.js",
+        ".storm-stackrc.ts",
+        ".storm-stackrc.mjs",
+        ".storm-stackrc.cjs ",
+        ".config/storm-stackrc",
+        ".config/storm-stackrc.json",
+        ".config/storm-stackrc.yaml",
+        ".config/storm-stackrc.yml",
+        ".config/storm-stackrc.js",
+        ".config/storm-stackrc.ts",
+        ".config/storm-stackrc.mjs",
+        ".config/storm-stackrc.cjs ",
+        "storm-stack.config.js",
+        "storm-stack.config.ts",
+        "storm-stack.config.mjs",
+        "storm-stack.config.cjs"
+      ]
+    }*/
+  ],
+  "yaml.schemas": {
+    "url": "https://json.schemastore.org/github-action.json",
+    "fileMatch": [".github/actions/setup/action.yml"]
+  },
   /******************************
    * VS Code Search
    ******************************/
@@ -17,7 +109,6 @@
     "**/.next": true,
     "**/dist": true
   },
-
   /******************************
    * VS Code colorization
    ******************************/
@@ -26,26 +117,22 @@
     "statusBarItem.hoverBackground": "#313C47",
     "statusBar.foreground": "#1fb2a6"
   },
-
   /******************************
    * Peacock colorization
    ******************************/
   "peacock.color": "#1fb2a6",
-
   /******************************
    * bracket pair colorization
    ******************************/
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.bracketPairs": "active",
   "editor.tabCompletion": "on",
-
   /******************************
    * Typescript
    ******************************/
   "typescript.tsserver.log": "verbose",
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-
   /******************************
    * Tailwind CSS
    ******************************/
@@ -56,68 +143,60 @@
       "(?:twMerge|twJoin)\\(([^\\);]*)[\\);]"
     ]
   ],
-
-  /******************************
-   * BiomeJs
-   ******************************/
-  "biome.rename": true,
-
   /******************************
    * eslint / prettier
    ******************************/
   "editor.formatOnSave": false,
-  "editor.defaultFormatter": "biomejs.biome",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "files.associations": {
     "*.hbs": "handlebars",
     "*.acid": "acidic",
     "*.acidic": "acidic"
   },
-
   "[javascript]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true,
-      "quickfix.biome": true,
-      "source.sortMembers": true
+      "source.fixAll.eslint": "explicit",
+      "quickfix.biome": "explicit",
+      "source.sortMembers": "explicit"
     }
   },
   "[javascriptreact]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true,
-      "quickfix.biome": true,
-      "source.sortMembers": true
+      "source.fixAll.eslint": "explicit",
+      "quickfix.biome": "explicit",
+      "source.sortMembers": "explicit"
     }
   },
   "[typescript]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true,
-      "quickfix.biome": true,
-      "source.sortMembers": true
+      "source.fixAll.eslint": "explicit",
+      "quickfix.biome": "explicit",
+      "source.sortMembers": "explicit"
     }
   },
   "[typescriptreact]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true,
-      "quickfix.biome": true,
-      "source.sortMembers": true
+      "source.fixAll.eslint": "explicit",
+      "quickfix.biome": "explicit",
+      "source.sortMembers": "explicit"
     }
   },
   "[json]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
   /******************************
    * Markdown
    ******************************/
@@ -125,7 +204,6 @@
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true
   },
-
   /******************************
    * Prisma
    ******************************/
@@ -133,7 +211,6 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "Prisma.prisma"
   },
-
   /******************************
    * Acidic
    ******************************/
@@ -141,23 +218,32 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "Prisma.prisma"
   },
-
   /******************************
    * Handlebars
    ******************************/
   "[handlebars]": {
     "editor.formatOnSave": false,
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
   /******************************
    * csharpier
    ******************************/
   "[csharp]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
+  "[toml]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "[yaml]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[rust]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
   /******************************
    * vscode-icons
    ******************************/
@@ -306,7 +392,6 @@
       "format": "svg"
     }
   ],
-
   /******************************
    * commitizen
    ******************************/

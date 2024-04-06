@@ -1,7 +1,11 @@
 import type Rolldown from "rolldown";
 import { defineConfig } from "rolldown";
 import esbuild from "rollup-plugin-esbuild";
-import type { RolldownBuildOptions, RolldownOptions, RolldownUserDefinedConfig } from "../types";
+import type {
+  RolldownBuildOptions,
+  RolldownOptions,
+  RolldownUserDefinedConfig
+} from "../types";
 import { pathToFileURL } from "node:url";
 import merge from "deepmerge";
 import { createEntryPoints } from "@nx/js/src/utils/package-json/create-entry-points";
@@ -50,7 +54,9 @@ export async function getRolldownBuildOptions(
   packageJson: PackageJson,
   npmDeps: string[]
 ): Promise<RolldownBuildOptions[]> {
-  const buildOptions = defineConfig(merge(DefaultConfig, options)) as RolldownBuildOptions;
+  const buildOptions = defineConfig(
+    merge(DefaultConfig, options)
+  ) as RolldownBuildOptions;
 
   buildOptions.output ??= DefaultConfig.output;
   buildOptions.output!.dir = options?.outputPath;
@@ -64,15 +70,23 @@ export async function getRolldownBuildOptions(
   buildOptions.output!.footer = options.footer;
   buildOptions.cwd = config.workspaceRoot as string;
 
-  const tsConfigPath = joinPathFragments(config.workspaceRoot ?? "./", options.tsConfig);
+  const tsConfigPath = joinPathFragments(
+    config.workspaceRoot ?? "./",
+    options.tsConfig
+  );
   const configFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile);
-  const tsconfig = ts.parseJsonConfigFileContent(configFile.config, ts.sys, dirname(tsConfigPath));
+  const tsconfig = ts.parseJsonConfigFileContent(
+    configFile.config,
+    ts.sys,
+    dirname(tsConfigPath)
+  );
 
   let externalPackages = [...Object.keys(packageJson.peerDependencies || {})];
   externalPackages.push(
     ...Object.keys(packageJson.dependencies || {}).filter(
-      (dep) =>
-        !npmDeps.includes(dep) && (!options.external || !options.external(dep, undefined, true))
+      dep =>
+        !npmDeps.includes(dep) &&
+        (!options.external || !options.external(dep, undefined, true))
     )
   );
   externalPackages = [...new Set(externalPackages)];
@@ -95,7 +109,11 @@ export async function getRolldownBuildOptions(
             check: !options.skipTypeCheck,
             tsconfig: options.tsConfig,
             tsconfigOverride: {
-              compilerOptions: createTsCompilerOptions(tsconfig, dependencies, options)
+              compilerOptions: createTsCompilerOptions(
+                tsconfig,
+                dependencies,
+                options
+              )
             }
           }),
         typeDefinitions({
@@ -103,7 +121,10 @@ export async function getRolldownBuildOptions(
           projectRoot: options.projectRoot
         }),
         peerDepsExternal({
-          packageJsonPath: joinPathFragments(options.projectRoot, "package.json")
+          packageJsonPath: joinPathFragments(
+            options.projectRoot,
+            "package.json"
+          )
         }),
         postcss({
           inject: true,
@@ -126,9 +147,11 @@ export async function getRolldownBuildOptions(
 
       let nextConfig = {
         ...buildOpts,
-        plugins: buildOpts.plugins.map((plugin) => loadConfigFile(plugin)),
+        plugins: buildOpts.plugins.map(plugin => loadConfigFile(plugin)),
         external: (id: string) =>
-          externalPackages.some((name) => id === name || id.startsWith(`${name}/`)),
+          externalPackages.some(
+            name => id === name || id.startsWith(`${name}/`)
+          ),
         cwd: config.workspaceRoot,
         platform: options.platform
       } as RolldownBuildOptions;
@@ -147,7 +170,9 @@ export async function getRolldownBuildOptions(
           nextConfig = await Promise.resolve(customConfig(nextConfig));
         } else if (typeof customConfig === "string") {
           const customConfigFile = await loadConfig(customConfig as string);
-          nextConfig = customConfigFile ? merge(nextConfig, customConfigFile) : nextConfig;
+          nextConfig = customConfigFile
+            ? merge(nextConfig, customConfigFile)
+            : nextConfig;
         } else {
           nextConfig = merge(nextConfig, customConfig);
         }
@@ -181,11 +206,15 @@ function createTsCompilerOptions(
 /**
  * Load a rolldown configuration file
  */
-export async function loadConfig(configPath: string): Promise<RolldownBuildOptions | undefined> {
+export async function loadConfig(
+  configPath: string
+): Promise<RolldownBuildOptions | undefined> {
   if (!isSupportedFormat(configPath)) {
     throw new Error("Unsupported config file format");
   }
-  return import(pathToFileURL(configPath).toString()).then((config) => config.default);
+  return import(pathToFileURL(configPath).toString()).then(
+    config => config.default
+  );
 }
 
 /**

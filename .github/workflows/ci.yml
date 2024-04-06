@@ -1,4 +1,5 @@
-name: "Build and Release"
+# Note: this pipelines is for the `storm-ops` repository, it should be used to build and release the Storm Nx-Plugin packages.
+name: "CI/CD"
 
 on:
   workflow_dispatch:
@@ -6,7 +7,7 @@ on:
       tag:
         description: override release tag
         required: false
-  push:
+  pull_request:
     branches:
       - "main"
       - "next"
@@ -17,52 +18,42 @@ env:
   CI: true
   NX_DAEMON: false
   NX_VERBOSE_LOGGING: true
-  STORM_WORKER: Stormie-Bot
+  STORM_BOT: Stormie-Bot
   STORM_REPOSITORY: ${{ github.repositoryUrl }}
   STORM_WORKSPACE_ROOT: ${{ github.workspace }}
   NX_BASE: ${{ github.base_ref }}
   NX_HEAD: ${{ github.head_ref }}
   GITHUB_ACTOR: ${{ github.actor }}
   GITHUB_TOKEN: ${{ github.token }}
-  NPM_TOKEN: ${{ secrets.STORMIE_NPM_TOKEN }}
-  CARGO_REGISTRY_TOKEN: ${{ secrets.STORMIE_CARGO_TOKEN }}
+  NPM_TOKEN: ${{ secrets.STORM_BOT_NPM_TOKEN }}
+  CARGO_REGISTRY_TOKEN: ${{ secrets.STORM_BOT_CARGO_TOKEN }}
 
 jobs:
-  build-and-release:
+  ci:
     if: github.repository == 'storm-software/storm-ops' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/next' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta')
-    name: "Build & Release"
+    name: "CI/CD"
     runs-on: ubuntu-latest
     permissions:
       contents: write
       id-token: write
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.STORMIE_GITHUB_TOKEN }}
-
       - name: Setup workspace
-        uses: ./.github/actions/setup-workspace
-
-      - name: Configure git
-        run: |
-          git config user.name "${{ env.STORM_WORKER }}"
-          git config user.email "${{ env.STORM_WORKER }}@users.noreply.github.com"
-          git config lfs.allowincompletepush true
-          npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
-
-      - name: Get appropriate base and head commits for `nx affected` commands
-        uses: nrwl/nx-set-shas@v4
+        uses: ./.github/actions/setup
         with:
-          main-branch-name: "main"
+          packageManager: pnpm
+          packageManagerVersion: 8.10.2
+          stormBot: ${{ env.STORM_BOT }}
 
-      - name: Set appropriate base and head commits for `nx affected` commands
-        run: |
-          echo "BASE: ${{ env.NX_BASE }}"
-          echo "HEAD: ${{ env.NX_HEAD }}"
+      - name: Build Storm Nx-Plugin packages
+        run: pnpm build-plugins
+        shell: bash
 
-      - name: Build repository packages
-        run: pnpm build-all
+      - name: Build workspace
+        uses: ./.github/actions/build
+        with:
+          packageManager: pnpm
+          packageManagerVersion: 8.10.2
+          stormBot: ${{ env.STORM_BOT }}
 
       - name: Add permissions to linting tools
         run: chmod a=rwx dist/packages/linting-tools/bin/lint.js
@@ -72,12 +63,6 @@ jobs:
 
       - name: Add permissions to alex ignore file
         run: chmod a=rwx dist/packages/linting-tools/alex/.alexignore
-
-      # - name: Run Linters
-      #   run: pnpm lint
-
-      #- name: Run Formatters
-      #  run: pnpm nx format
 
       - name: Add permissions to linting-tools package.json file
         run: chmod a=rwx packages/linting-tools/package.json
@@ -100,32 +85,17 @@ jobs:
       - name: Build repository packages
         run: pnpm nx affected -t build --parallel=5 --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
 
-      #- name: Run Tests
-      #  uses: nick-fields/retry@v2.8.3
-      #  with:
-      #    command: npx nx affected -t test --parallel=3 --configuration=ci --base=${{ github.event.before }}
-      #    timeout_minutes: 10
-      #    max_attempts: 3
-
-      #- name: Upload coverage to Codecov
-      #  uses: codecov/codecov-action@v3
-
       - name: Add permissions to git tools
         run: chmod a=rwx dist/packages/git-tools/bin/git.js
 
       - name: Release Library Version Updates
         run: pnpm release --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
         env:
-          NX_BASE: ${{ env.NX_BASE }}
-          NX_HEAD: ${{ env.NX_HEAD }}
           GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
-          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ env.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ env.NPM_TOKEN }}
-          NPM_AUTH_TOKEN: ${{ env.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ env.NPM_TOKEN }}
-          CARGO_REGISTRY_TOKEN: ${{ env.CARGO_REGISTRY_TOKEN }}
-          STORM_WORKER: ${{ env.STORM_WORKER }}
+          GITHUB_TOKEN: ${{ github.token }}
+          NPM_TOKEN: ${{ secrets.STORM_BOT_NPM_TOKEN }}
+          CARGO_REGISTRY_TOKEN: ${{ secrets.STORM_BOT_CARGO_TOKEN }}
+          STORM_BOT: Stormie-Bot
           STORM_WORKSPACE_ROOT: ${{ github.workspace }}
           STORM_REPOSITORY: ${{ github.repositoryUrl }}
           TAG: ${{ inputs.tag }}

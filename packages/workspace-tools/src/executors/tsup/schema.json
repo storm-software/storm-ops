@@ -99,10 +99,7 @@
     "format": {
       "type": "array",
       "description": "The output format for the generated JavaScript files. There are currently three possible values that can be configured: iife, cjs, and esm.",
-      "default": [
-        "cjs",
-        "esm"
-      ],
+      "default": ["cjs", "esm"],
       "items": {
         "type": "string"
       }
@@ -115,12 +112,7 @@
     "platform": {
       "type": "string",
       "description": "Platform target for outputs.",
-      "enum": [
-        "browser",
-        "neutral",
-        "node",
-        "worker"
-      ],
+      "enum": ["browser", "neutral", "node", "worker"],
       "default": "neutral"
     },
     "banner": {
@@ -192,11 +184,7 @@
       }
     }
   },
-  "required": [
-    "tsConfig",
-    "platform",
-    "banner"
-  ],
+  "required": ["tsConfig", "platform", "banner"],
   "definitions": {
     "assetPattern": {
       "oneOf": [
@@ -224,11 +212,7 @@
             }
           },
           "additionalProperties": false,
-          "required": [
-            "glob",
-            "input",
-            "output"
-          ]
+          "required": ["glob", "input", "output"]
         },
         {
           "type": "string"

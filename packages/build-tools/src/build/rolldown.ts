@@ -42,7 +42,10 @@ import { rolldown as rolldownBuild } from "rolldown";
  * @param config - The storm configuration.
  * @param options - A build options partial. The minimum required options are `projectRoot` or `projectName`.
  */
-export async function rolldown(config: StormConfig, options: Partial<RolldownOptions> = {}) {
+export async function rolldown(
+  config: StormConfig,
+  options: Partial<RolldownOptions> = {}
+) {
   let projectRoot = options?.projectRoot as string;
   let projectName = options?.projectName as string;
 
@@ -56,7 +59,8 @@ export async function rolldown(config: StormConfig, options: Partial<RolldownOpt
     exitOnError: true
   });
 
-  const projectsConfigurations = readProjectsConfigurationFromProjectGraph(projectGraph);
+  const projectsConfigurations =
+    readProjectsConfigurationFromProjectGraph(projectGraph);
   const projectRootMap = createProjectRootMappings(projectGraph.nodes);
 
   let projectConfiguration!: ProjectConfiguration;
@@ -71,14 +75,18 @@ export async function rolldown(config: StormConfig, options: Partial<RolldownOpt
       );
     }
 
-    projectConfiguration = projectsConfigurations?.projects?.[projectName] as ProjectConfiguration;
+    projectConfiguration = projectsConfigurations?.projects?.[
+      projectName
+    ] as ProjectConfiguration;
     if (!projectConfiguration) {
       throw new Error(
         "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
       );
     }
   } else if (projectName) {
-    projectConfiguration = projectsConfigurations?.projects?.[projectName] as ProjectConfiguration;
+    projectConfiguration = projectsConfigurations?.projects?.[
+      projectName
+    ] as ProjectConfiguration;
     if (!projectConfiguration) {
       throw new Error(
         "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
@@ -108,8 +116,13 @@ export async function rolldown(config: StormConfig, options: Partial<RolldownOpt
  * @param config - The storm configuration.
  * @param options - The build options.
  */
-export async function rolldownWithOptions(config: StormConfig, options: RolldownOptions) {
-  const workspaceRoot = config.workspaceRoot ? config.workspaceRoot : findWorkspaceRoot();
+export async function rolldownWithOptions(
+  config: StormConfig,
+  options: RolldownOptions
+) {
+  const workspaceRoot = config.workspaceRoot
+    ? config.workspaceRoot
+    : findWorkspaceRoot();
 
   const projectRoot = options.projectRoot;
   const projectName = options.projectName;
@@ -132,10 +145,15 @@ export async function rolldownWithOptions(config: StormConfig, options: Rolldown
 
   // #region Copy asset files to output directory
 
-  writeDebug(config, `📦  Copying asset files to output directory: ${enhancedOptions.outputPath}`);
+  writeDebug(
+    config,
+    `📦  Copying asset files to output directory: ${enhancedOptions.outputPath}`
+  );
 
   const assets = Array.from(options.assets ?? []);
-  if (!enhancedOptions.assets?.some((asset: AssetGlob) => asset?.glob === "*.md")) {
+  if (
+    !enhancedOptions.assets?.some((asset: AssetGlob) => asset?.glob === "*.md")
+  ) {
     assets.push({
       input: projectRoot,
       glob: "*.md",
@@ -143,7 +161,11 @@ export async function rolldownWithOptions(config: StormConfig, options: Rolldown
     });
   }
 
-  if (!enhancedOptions.assets?.some((asset: AssetGlob) => asset?.glob === "LICENSE")) {
+  if (
+    !enhancedOptions.assets?.some(
+      (asset: AssetGlob) => asset?.glob === "LICENSE"
+    )
+  ) {
     assets.push({
       input: "",
       glob: "LICENSE",
@@ -175,14 +197,16 @@ export async function rolldownWithOptions(config: StormConfig, options: Rolldown
   });
   const taskGraphs = getAllWorkspaceTaskGraphs(nxJson, projectGraph);
 
-  const projectsConfigurations = readProjectsConfigurationFromProjectGraph(projectGraph);
+  const projectsConfigurations =
+    readProjectsConfigurationFromProjectGraph(projectGraph);
   if (!projectsConfigurations?.projects?.[projectName]) {
     throw new Error(
       "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
     );
   }
 
-  const buildTarget = projectsConfigurations.projects[projectName]?.targets?.build;
+  const buildTarget =
+    projectsConfigurations.projects[projectName]?.targets?.build;
   if (!buildTarget) {
     throw new Error(
       `The Build process failed because the project does not have a valid build target in the project.json file. Check if the file exists in the root of the project at ${joinPathFragments(
@@ -227,10 +251,26 @@ export async function rolldownWithOptions(config: StormConfig, options: Rolldown
     );
 
     const files = globSync([
-      joinPathFragments(workspaceRoot, enhancedOptions.outputPath, "src/**/*.ts"),
-      joinPathFragments(workspaceRoot, enhancedOptions.outputPath, "src/**/*.tsx"),
-      joinPathFragments(workspaceRoot, enhancedOptions.outputPath, "src/**/*.js"),
-      joinPathFragments(workspaceRoot, enhancedOptions.outputPath, "src/**/*.jsx")
+      joinPathFragments(
+        workspaceRoot,
+        enhancedOptions.outputPath,
+        "src/**/*.ts"
+      ),
+      joinPathFragments(
+        workspaceRoot,
+        enhancedOptions.outputPath,
+        "src/**/*.tsx"
+      ),
+      joinPathFragments(
+        workspaceRoot,
+        enhancedOptions.outputPath,
+        "src/**/*.js"
+      ),
+      joinPathFragments(
+        workspaceRoot,
+        enhancedOptions.outputPath,
+        "src/**/*.jsx"
+      )
     ]);
 
     // await Promise.allSettled(
@@ -256,7 +296,7 @@ export async function rolldownWithOptions(config: StormConfig, options: Rolldown
     // );
 
     await Promise.allSettled(
-      files.map((file) =>
+      files.map(file =>
         writeFile(
           file,
           `${
@@ -290,12 +330,16 @@ export async function rolldownWithOptions(config: StormConfig, options: Rolldown
   );
 
   const packageJson = readJsonFile(
-    joinPathFragments(workspaceRoot, enhancedOptions.projectRoot, "package.json")
+    joinPathFragments(
+      workspaceRoot,
+      enhancedOptions.projectRoot,
+      "package.json"
+    )
   );
 
   const npmDeps = (projectGraph.dependencies[projectName] ?? [])
-    .filter((d) => d.target.startsWith("npm:"))
-    .map((d) => d.target.slice(4));
+    .filter(d => d.target.startsWith("npm:"))
+    .map(d => d.target.slice(4));
 
   // if (enhancedOptions.generatePackageJson !== false) {
   //   writeDebug(config, "✍️   Writing package.json file");
@@ -335,8 +379,8 @@ export async function rolldownWithOptions(config: StormConfig, options: Rolldown
   const start = process.hrtime.bigint();
 
   await Promise.allSettled(
-    rolldownBuildOptions.map((opts) =>
-      rolldownBuild(opts).then((build) => build.write(opts.output))
+    rolldownBuildOptions.map(opts =>
+      rolldownBuild(opts).then(build => build.write(opts.output))
     )
   );
 

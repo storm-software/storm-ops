@@ -94,6 +94,10 @@
       ]
     }*/
   ],
+  "yaml.schemas": {
+    "url": "https://json.schemastore.org/github-action.json",
+    "fileMatch": [".github/actions/setup/action.yml"]
+  },
   /******************************
    * VS Code Search
    ******************************/
@@ -143,7 +147,7 @@
    * eslint / prettier
    ******************************/
   "editor.formatOnSave": false,
-  "editor.defaultFormatter": "biomejs.biome",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "files.associations": {
     "*.hbs": "handlebars",
     "*.acid": "acidic",
@@ -151,7 +155,7 @@
   },
   "[javascript]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit",
       "quickfix.biome": "explicit",
@@ -160,7 +164,7 @@
   },
   "[javascriptreact]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit",
       "quickfix.biome": "explicit",
@@ -169,7 +173,7 @@
   },
   "[typescript]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit",
       "quickfix.biome": "explicit",
@@ -178,7 +182,7 @@
   },
   "[typescriptreact]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": "explicit",
       "quickfix.biome": "explicit",
@@ -187,11 +191,11 @@
   },
   "[json]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   /******************************
    * Markdown
@@ -219,14 +223,14 @@
    ******************************/
   "[handlebars]": {
     "editor.formatOnSave": false,
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   /******************************
    * csharpier
    ******************************/
   "[csharp]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[toml]": {
     "editor.formatOnSave": true,

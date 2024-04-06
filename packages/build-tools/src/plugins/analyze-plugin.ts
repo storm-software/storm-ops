@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import { logger } from "@nx/devkit";
 
-const formatBytes = (bytes) => {
+const formatBytes = bytes => {
   if (bytes === 0) return "0 Byte";
   const k = 1000;
   const dm = 3;

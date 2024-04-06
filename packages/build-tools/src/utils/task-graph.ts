@@ -11,7 +11,9 @@ export function getAllWorkspaceTaskGraphs(
   taskGraphs: Record<string, TaskGraph>;
   errors: Record<string, string>;
 } {
-  const defaultDependencyConfigs = mapTargetDefaultsToDependencies(nxJson.targetDefaults);
+  const defaultDependencyConfigs = mapTargetDefaultsToDependencies(
+    nxJson.targetDefaults
+  );
 
   const taskGraphs: Record<string, TaskGraph> = {};
   const taskGraphErrors: Record<string, string> = {};
@@ -41,7 +43,9 @@ export function getAllWorkspaceTaskGraphs(
         taskGraphErrors[taskId] = err.message;
       }
 
-      const configurations = Object.keys(project?.data?.targets?.[target]?.configurations || {});
+      const configurations = Object.keys(
+        project?.data?.targets?.[target]?.configurations || {}
+      );
       if (configurations.length > 0) {
         for (const configuration of configurations) {
           const taskId = createTaskId(projectName, target, configuration);
@@ -71,7 +75,11 @@ export function getAllWorkspaceTaskGraphs(
   return { taskGraphs, errors: taskGraphErrors };
 }
 
-export function createTaskId(projectId: string, targetId: string, configurationId?: string) {
+export function createTaskId(
+  projectId: string,
+  targetId: string,
+  configurationId?: string
+) {
   if (configurationId) {
     return `${projectId}:${targetId}:${configurationId}`;
   }

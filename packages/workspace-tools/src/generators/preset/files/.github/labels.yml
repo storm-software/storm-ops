@@ -39,6 +39,9 @@
 - name: "no-stale"
   color: fef2c0
   description: "This issue or PR is exempted from the stable bot."
+- name: "confirmed"
+  color: fbca04
+  description: "The issue has been confirmed by a developer."
 
 - name: "security"
   color: ee0701

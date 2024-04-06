@@ -16,7 +16,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.66.28-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
+[![Version](https://img.shields.io/badge/version-1.66.30-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
 [![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with docusaurus](https://img.shields.io/badge/documented_with-docusaurus-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://docusaurus.io/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 > [!IMPORTANT]
@@ -273,6 +273,47 @@ The following executor options are available:
 | packageRoot      | `string`    | The root directory of the directory (containing a manifest file at its root) to publish. Defaults to the project root.     |     | 
  | dryRun      | `boolean`    | Whether to run the command without actually publishing the package to the registry.     |     | 
 
+
+
+
+## Rolldown Builder
+
+An executor used by Storm Software to run the Rolldown build process
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:rolldown
+```
+
+**Please note:** _The rolldown executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| entry      | `string`    | The path to the entry file, relative to project.     | "{sourceRoot}/index.ts"     | 
+ | outputPath      | `string`    | The output path of the generated files.     | "dist/{projectRoot}"     | 
+ | **tsConfig \***    | `string`    | The path to the \`tsconfig.json\` file.     | "{projectRoot}/tsconfig.json"     | 
+ | additionalEntryPoints      | `string[]`   | List of additional entry points.     | `[]`     | 
+ | watch      | `boolean`    | Enable re-building when files change.     |     | 
+ | assets      | `array`    | List of static assets.     | `[]`     | 
+ | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
+ | includeSrc      | `boolean`    | Should the source files be added to the distribution folder in an \`src\` directory.     |     | 
+ | generatePackageJson      | `boolean`    | Should a package.json file be generated in the output folder or should the existing one be copied in.     | `true`     | 
+ | debug      | `boolean`    | Should output be unminified with source mappings.     |     | 
+ | **platform \***    | "browser" \| "neutral" \| "node" \| "worker"     | Platform target for outputs.     | "neutral"     | 
+ | **banner \***    | `string`    | A short heading added to the top of each typescript file added in the output folder's \`src\` directory.     | "This code was developed by Storm Software (<https://stormsoftware.com>) and is licensed under the Apache License 2.0."     | 
+ | minify      | `boolean`    | Should the build process minify the output files?     |     | 
+ | verbose      | `boolean`    | Should write extra log outputs with details from the executor.     |     | 
+ | plugins      | `object[]`   | List of Rollup plugins to use during processing     | `[]`     | 
+
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
 
 
 

@@ -6,17 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "inputs": [
-        "default",
-        "^production"
-      ],
-      "dependsOn": [
-        "clean",
-        "^build"
-      ],
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "inputs": ["default", "^production"],
+      "dependsOn": ["clean", "^build"],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/workspace-tools",
         "tsConfig": "packages/workspace-tools/tsconfig.lib.json",
@@ -50,20 +42,13 @@
         "skipTypeCheck": false,
         "metafile": true,
         "minify": false,
-        "format": [
-          "cjs"
-        ],
+        "format": ["cjs"],
         "esbuildOptions": {
           "outExtension": {
             ".js": ".js"
           }
         },
-        "external": [
-          "nx",
-          "@nx/devkit",
-          "esbuild",
-          "@swc/*"
-        ],
+        "external": ["nx", "@nx/devkit", "esbuild", "@swc/*"],
         "assets": [
           {
             "input": "packages/workspace-tools",
@@ -78,19 +63,13 @@
           {
             "input": "packages/workspace-tools",
             "glob": "**/*.json",
-            "ignore": [
-              "**/tsconfig*.json",
-              "project.json",
-              ".eslintrc.json"
-            ],
+            "ignore": ["**/tsconfig*.json", "project.json", ".eslintrc.json"],
             "output": "."
           },
           {
             "input": "packages/workspace-tools",
             "glob": "**/*.js",
-            "ignore": [
-              "**/jest.config.js"
-            ],
+            "ignore": ["**/jest.config.js"],
             "output": "."
           },
           {

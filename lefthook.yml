@@ -47,7 +47,7 @@ pre-commit:
     check:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: "pnpm exec prettier {staged_files} --check --ignore-unknown --cache && git update-index"
+      run: "pnpm exec prettier {staged_files} --check --ignore-unknown --no-error-on-unmatched-pattern --cache && git update-index"
     readme:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/{README.md,package.json,executors.json,generators.json}"
@@ -55,7 +55,7 @@ pre-commit:
     format:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*"
-      run: "pnpm exec prettier {staged_files} --write --ignore-unknown --cache && git update-index"
+      run: "pnpm exec prettier {staged_files} --write --ignore-unknown --no-error-on-unmatched-pattern --cache && git update-index"
     postbuild:
       glob: "**/*"
       run: "pnpm build-all"
@@ -76,7 +76,7 @@ pre-push:
     lint:
       files: "git diff --name-only HEAD @{push}"
       glob:
-      run: "pnpm exec prettier {files} --write --ignore-unknown && git update-index"
+      run: "pnpm exec prettier {files} --write --ignore-unknown --no-error-on-unmatched-pattern --cache && git update-index"
 
 post-merge:
   commands:

@@ -1,3 +1,4 @@
+
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
@@ -22,14 +23,25 @@
   },
   "packageRules": [
     {
-      "matchPackagePatterns": ["^@<%= namespace %>/"],
+      "matchPackagePatterns": ["^@storm-software/"],
       "enabled": true
+    },
+    {
+      "matchPackagePatterns": [
+        "tsup",
+        "chalk",
+        "p-limit",
+        "request",
+        "@cypress/request",
+        "@humanfs/node"
+      ],
+      "enabled": false
     },
     {
       "matchPackageNames": ["@nx"],
       "postUpgradeTasks": {
         "commands": [
-          "npx nx migrate latest --run-migrations --create-commits --commit-message='chore(<%= name %>): update @nx dependencies [skip ci]'"
+          "pnpm nx migrate latest --run-migrations --create-commits --commit-message='chore(<%= name %>): update @nx dependencies [skip ci]'"
         ]
       }
     },

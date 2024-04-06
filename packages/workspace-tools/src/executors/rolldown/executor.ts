@@ -1,7 +1,10 @@
 import type { ExecutorContext } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
-import { applyDefaultRolldownOptions, type RolldownOptions } from "@storm-software/build-tools";
+import {
+  applyDefaultRolldownOptions,
+  type RolldownOptions
+} from "@storm-software/build-tools";
 import type { RolldownExecutorSchema } from "./schema.d";
 import { rolldown } from "@storm-software/build-tools";
 
@@ -10,7 +13,9 @@ export async function rolldownExecutorFn(
   context: ExecutorContext,
   config?: StormConfig
 ) {
-  const { writeDebug, writeInfo, writeSuccess } = await import("@storm-software/config-tools");
+  const { writeDebug, writeInfo, writeSuccess } = await import(
+    "@storm-software/config-tools"
+  );
 
   writeInfo(config, "📦  Running Storm build executor on the workspace");
 
@@ -21,7 +26,7 @@ export async function rolldownExecutorFn(
     `⚙️  Executor options:
 ${Object.keys(options)
   .map(
-    (key) =>
+    key =>
       `${key}: ${
         !options[key] || _isPrimitive(options[key])
           ? options[key]
@@ -53,9 +58,11 @@ ${Object.keys(options)
   // biome-ignore lint/style/noNonNullAssertion: <explanation>
   await rolldown(config!, {
     ...options,
-    projectRoot: context.projectsConfigurations.projects?.[context.projectName]?.root,
+    projectRoot:
+      context.projectsConfigurations.projects?.[context.projectName]?.root,
     projectName: context.projectName,
-    sourceRoot: context.projectsConfigurations.projects?.[context.projectName]?.sourceRoot
+    sourceRoot:
+      context.projectsConfigurations.projects?.[context.projectName]?.sourceRoot
   } as RolldownOptions);
 
   // #endregion Run the build process

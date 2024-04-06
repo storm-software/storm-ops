@@ -11,5 +11,5 @@
 **/__snapshots__/**
 **/catalog-package/**
 **/*.hbs
-
+**/CODEOWNERS
 # tailwind.config.js

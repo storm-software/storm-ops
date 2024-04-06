@@ -55,7 +55,7 @@ Below is a list of the available configuration values that can be set through en
 | STORM_RUNTIME_DIRECTORY | The default directory of the storm runtime for storage/generation                      | "node_modules/.storm"       |
 | STORM_RUNTIME_VERSION   | The global version of the Storm runtime                                                | "1.0.0"                     |
 | STORM_TIMEZONE          | The default timezone of the workspace                                                  | "America/New_York"          |
-| STORM_WORKER            | The worker of the package (this is the bot that will be used to perform various tasks) | "stormie-bot"               |
+| STORM_BOT               | The worker of the package (this is the bot that will be used to perform various tasks) | "stormie-bot"               |
 
 <!-- START doctoc -->
 <!-- END doctoc -->

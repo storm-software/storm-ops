@@ -32,10 +32,16 @@ export type GetConfigParams = Omit<
   docModel?: boolean;
   tsdocMetadata?: boolean;
   dtsTsConfig: ParsedCommandLine;
-  getTransform?: (program: Program, diagnostics: Diagnostic[]) => TransformerFactory<SourceFile>;
+  getTransform?: (
+    program: Program,
+    diagnostics: Diagnostic[]
+  ) => TransformerFactory<SourceFile>;
 };
 
-export type TsupGetConfigOptions = Omit<TypeScriptBuildOptions, "banner" | "entry"> & {
+export type TsupGetConfigOptions = Omit<
+  TypeScriptBuildOptions,
+  "banner" | "entry"
+> & {
   banner?: { js?: string; css?: string };
   dtsTsConfig: ParsedCommandLine;
   entry: Entry;
@@ -187,7 +193,9 @@ export interface RolldownBuildOptions extends InputOptions {
 export type RolldownUserDefinedConfig =
   | string
   | RolldownBuildOptions
-  | ((config: RolldownBuildOptions) => RolldownBuildOptions | Promise<RolldownBuildOptions>);
+  | ((
+      config: RolldownBuildOptions
+    ) => RolldownBuildOptions | Promise<RolldownBuildOptions>);
 
 export type RolldownOptions = AdditionalCLIOptions & {
   clean: boolean;

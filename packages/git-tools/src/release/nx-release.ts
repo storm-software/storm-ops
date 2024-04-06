@@ -15,7 +15,10 @@ import {
 //   type ReleaseGroupWithName,
 //   filterReleaseGroups
 // } from "nx/src/command-line/release/config/filter-release-groups.js";
-import { releaseChangelog, releasePublish } from "nx/src/command-line/release/index.js";
+import {
+  releaseChangelog,
+  releasePublish
+} from "nx/src/command-line/release/index.js";
 // import { gitTag } from "nx/src/command-line/release/utils/git.js";
 // import {
 //   createGitTagValues,
@@ -86,11 +89,11 @@ export const runRelease = async (
   try {
     const authorName = process.env.GITHUB_ACTOR
       ? process.env.GITHUB_ACTOR
-      : process.env.STORM_WORKER
-        ? process.env.STORM_WORKER
+      : process.env.STORM_BOT
+        ? process.env.STORM_BOT
         : process.env.STORM_OWNER;
-    const committerName = process.env.STORM_WORKER
-      ? process.env.STORM_WORKER
+    const committerName = process.env.STORM_BOT
+      ? process.env.STORM_BOT
       : process.env.STORM_OWNER;
 
     process.env.GIT_AUTHOR_NAME = authorName;
@@ -99,12 +102,18 @@ export const runRelease = async (
     process.env.GIT_COMMITTER_EMAIL = `${committerName}@users.noreply.github.com`;
     process.env.NPM_CONFIG_PROVENANCE = "true";
 
+    process.env.NPM_AUTH_TOKEN = process.env.NPM_TOKEN;
+    process.env.NODE_AUTH_TOKEN = process.env.NPM_TOKEN;
+
     writeInfo(config, "Creating workspace Project Graph data...");
 
     const projectGraph = await createProjectGraphAsync({ exitOnError: true });
     const nxJson = readNxJson();
 
-    writeInfo(config, "Reading in the workspaces release configuration from the nx.json file...");
+    writeInfo(
+      config,
+      "Reading in the workspaces release configuration from the nx.json file..."
+    );
     const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
       projectGraph,
       nxJson.release
@@ -123,17 +132,23 @@ export const runRelease = async (
     // const shouldStage = (shouldCommit || nxJson.release?.git?.stageChanges) ?? true;
     //const shouldTag = nxJson.release?.git?.tag ?? true;
 
-    const { workspaceVersion, projectsVersionData } = await releaseVersion(config, {
-      dryRun: false,
-      verbose: true,
-      preid: config.preid,
-      stageChanges: true,
-      gitCommit: false,
-      gitTag: false
-    });
+    const { workspaceVersion, projectsVersionData } = await releaseVersion(
+      config,
+      {
+        dryRun: false,
+        verbose: true,
+        preid: config.preid,
+        stageChanges: true,
+        gitCommit: false,
+        gitTag: false
+      }
+    );
 
     await releaseChangelog({
-      version: nxReleaseConfig?.projectsRelationship !== "fixed" ? undefined : workspaceVersion,
+      version:
+        nxReleaseConfig?.projectsRelationship !== "fixed"
+          ? undefined
+          : workspaceVersion,
       versionData: projectsVersionData,
       dryRun: false,
       verbose: true,
@@ -391,7 +406,11 @@ export const runRelease = async (
       }
     }*/
 
-    if (Object.values(projectsVersionData).some((version) => version.newVersion !== null)) {
+    if (
+      Object.values(projectsVersionData).some(
+        version => version.newVersion !== null
+      )
+    ) {
       writeInfo(config, "Publishing the release...");
       await releasePublish(
         {
@@ -406,7 +425,10 @@ export const runRelease = async (
 
     writeSuccess(config, "Completed the release process!");
   } catch (error) {
-    writeFatal(config, "An exception was thrown while running the release version command.");
+    writeFatal(
+      config,
+      "An exception was thrown while running the release version command."
+    );
     error.message &&
       writeError(
         config,

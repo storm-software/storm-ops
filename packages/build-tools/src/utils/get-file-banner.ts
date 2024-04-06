@@ -19,8 +19,8 @@ export const getFileBanner = (name: string, commentStart = "//") => {
 
     titleName = (titleName.charAt(0).toUpperCase() + titleName.slice(1))
       .split("-")
-      .filter((word) => word && word.length > 0)
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .filter(word => word && word.length > 0)
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
   }
 
@@ -42,7 +42,8 @@ ${commentStart} our licensing page.
 ${commentStart}
 ${commentStart}    Website: ${process.env.STORM_HOMEPAGE ?? "https://stormsoftware.com"}
 ${commentStart}    Repository: ${
-    process.env.STORM_REPOSITORY ?? "https://github.com/storm-software/storm-stack"
+    process.env.STORM_REPOSITORY ??
+    "https://github.com/storm-software/storm-stack"
   }
 ${commentStart}    Documentation: https://stormsoftware.com/docs${
     titleName?.startsWith("@") ? `/${titleName.slice(1)}` : ""

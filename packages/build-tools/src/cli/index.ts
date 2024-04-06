@@ -71,7 +71,10 @@ export async function createProgram(config: StormConfig) {
 
     return program;
   } catch (e) {
-    writeFatal(config, `A fatal error occurred while running the program: ${e.message}`);
+    writeFatal(
+      config,
+      `A fatal error occurred while running the program: ${e.message}`
+    );
     process.exit(1);
   }
 }
@@ -81,11 +84,17 @@ const tsBuildAction =
   async (projectRoot?: string, projectName?: string, sourceRoot?: string) => {
     try {
       writeInfo(config, "⚡ Building the Storm TypeScript package");
-      await build(config, applyDefaultOptions({ projectRoot, projectName, sourceRoot }, config));
+      await build(
+        config,
+        applyDefaultOptions({ projectRoot, projectName, sourceRoot }, config)
+      );
 
       writeSuccess(config, "Building has completed successfully ✅");
     } catch (e) {
-      writeFatal(config, `❌ A fatal error occurred while building the package: ${e.message}`);
+      writeFatal(
+        config,
+        `❌ A fatal error occurred while building the package: ${e.message}`
+      );
       console.error(e);
 
       process.exit(1);
@@ -94,9 +103,17 @@ const tsBuildAction =
 
 const rolldownAction =
   (config: StormConfig) =>
-  async (projectRoot?: string, projectName?: string, sourceRoot?: string, configPath?: string) => {
+  async (
+    projectRoot?: string,
+    projectName?: string,
+    sourceRoot?: string,
+    configPath?: string
+  ) => {
     try {
-      writeInfo(config, "⚡ Building the Storm TypeScript package with Rolldown");
+      writeInfo(
+        config,
+        "⚡ Building the Storm TypeScript package with Rolldown"
+      );
       await rolldown(
         config,
         applyDefaultRolldownOptions(
@@ -112,7 +129,10 @@ const rolldownAction =
 
       writeSuccess(config, "Rolldown has completed successfully ✅");
     } catch (e) {
-      writeFatal(config, `❌ A fatal error occurred while running Rolldown: ${e.message}`);
+      writeFatal(
+        config,
+        `❌ A fatal error occurred while running Rolldown: ${e.message}`
+      );
       console.error(e);
 
       process.exit(1);

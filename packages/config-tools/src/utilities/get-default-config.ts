@@ -1,6 +1,10 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { type StormConfig, type ColorConfig, StormConfigSchema } from "@storm-software/config";
+import {
+  type StormConfig,
+  type ColorConfig,
+  StormConfigSchema
+} from "@storm-software/config";
 import { findWorkspaceRoot } from "./find-workspace-root";
 
 /**
@@ -47,7 +51,10 @@ export const DEFAULT_STORM_CONFIG: any = {
  *
  * @returns The default Storm config values
  */
-export const getDefaultConfig = (config: Partial<StormConfig> = {}, root?: string): StormConfig => {
+export const getDefaultConfig = (
+  config: Partial<StormConfig> = {},
+  root?: string
+): StormConfig => {
   let name = "storm-workspace";
   let namespace = "storm-software";
   let repository = "https://github.com/storm-software/storm-ops";

@@ -9,10 +9,17 @@ import {
   updateJson
 } from "@nx/devkit";
 import { withRunGenerator } from "../../base/base-generator";
-import { nodeVersion, pnpmVersion, typescriptVersion } from "../../utils/versions";
+import {
+  nodeVersion,
+  pnpmVersion,
+  typescriptVersion
+} from "../../utils/versions";
 import type { PresetGeneratorSchema } from "./schema";
 
-export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSchema) {
+export async function presetGeneratorFn(
+  tree: Tree,
+  options: PresetGeneratorSchema
+) {
   const projectRoot = ".";
 
   options.description ??= `⚡The ${
@@ -35,7 +42,7 @@ export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSche
     }
   });
 
-  updateJson(tree, "package.json", (json) => {
+  updateJson(tree, "package.json", json => {
     json.scripts = json.scripts || {};
 
     json.version = "0.0.0";
@@ -94,7 +101,8 @@ export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSche
     json.scripts["adr-preview"] = "pnpm log4brains preview";
     json.scripts.prepare = "pnpm add lefthook -w && pnpm lefthook install";
     json.scripts.preinstall = "npx -y only-allow pnpm";
-    json.scripts["install:csb"] = "corepack enable && pnpm install --frozen-lockfile";
+    json.scripts["install:csb"] =
+      "corepack enable && pnpm install --frozen-lockfile";
 
     json.scripts.clean = "rimraf dist";
     json.scripts.prebuild = "pnpm clean";
@@ -111,15 +119,21 @@ export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSche
 
     json.scripts.build = "nx affected -t build --parallel=5";
     json.scripts["build:all"] = "nx run-many -t build --all --parallel=5";
-    json.scripts["build:production"] = "nx run-many -t build --all --prod --parallel=5";
-    json.scripts["build:tools"] = "nx run-many -t build --projects=tools/* --parallel=5";
-    json.scripts["build:docs"] = "nx run-many -t build --projects=docs/* --parallel=5";
+    json.scripts["build:production"] =
+      "nx run-many -t build --all --prod --parallel=5";
+    json.scripts["build:tools"] =
+      "nx run-many -t build --projects=tools/* --parallel=5";
+    json.scripts["build:docs"] =
+      "nx run-many -t build --projects=docs/* --parallel=5";
 
     if (!options.includeApps) {
-      json.scripts["build:packages"] = "nx run-many -t build --projects=packages/* --parallel=5";
+      json.scripts["build:packages"] =
+        "nx run-many -t build --projects=packages/* --parallel=5";
     } else {
-      json.scripts["build:apps"] = "nx run-many -t build --projects=apps/* --parallel=5";
-      json.scripts["build:libs"] = "nx run-many -t build --projects=libs/* --parallel=5";
+      json.scripts["build:apps"] =
+        "nx run-many -t build --projects=apps/* --parallel=5";
+      json.scripts["build:libs"] =
+        "nx run-many -t build --projects=libs/* --parallel=5";
       json.scripts["build:storybook"] = "storybook build -s public";
     }
 
@@ -135,7 +149,8 @@ export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSche
     json.scripts.format = "nx format:write";
     json.scripts.help = "nx help";
     json.scripts["dep-graph"] = "nx dep-graph";
-    json.scripts["local-registry"] = `nx local-registry @${options.namespace}/${options.name}`;
+    json.scripts["local-registry"] =
+      `nx local-registry @${options.namespace}/${options.name}`;
 
     json.scripts.e2e = "nx e2e";
 
@@ -148,7 +163,8 @@ export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSche
 
     json.scripts.lint = "pnpm storm-lint all --skip-cspell";
     json.scripts.commit = "pnpm storm-git commit";
-    json.scripts["readme-gen"] = 'pnpm storm-git readme-gen --templates="docs/readme-templates"';
+    json.scripts["readme-gen"] =
+      'pnpm storm-git readme-gen --templates="docs/readme-templates"';
     json.scripts["api-extractor"] =
       'pnpm storm-docs api-extractor --outputPath="docs/api-reference" --clean';
     json.scripts.release = "pnpm storm-git release";

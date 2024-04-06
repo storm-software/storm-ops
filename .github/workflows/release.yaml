@@ -1,0 +1,91 @@
+# Note: this is a shared pipeline used by other repositories.
+# Docs: https://docs.github.com/en/actions/using-workflows/reusing-workflows
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        description: Override release tag
+        type: string
+        required: false
+      stormBot:
+        description: The github username of the Storm bot
+        required: false
+        type: string
+        default: ""
+    secrets:
+      githubToken:
+        required: true
+      npmToken:
+        required: true
+      cargoToken:
+        required: true
+
+jobs:
+  release:
+    name: "Release"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/next' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta')
+    steps:
+      - name: Setup workspace
+        uses: ./.github/actions/setup
+        with:
+          packageManager: pnpm
+          packageManagerVersion: 8.10.2
+          stormBot: ${{ env.STORM_BOT }}
+
+      - name: Configure git
+        run: |
+          git config user.name "${{ inputs.stormBot }}"
+          git config user.email "${{ inputs.stormBot }}@users.noreply.github.com"
+          git config lfs.allowincompletepush true
+          npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+        shell: bash
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.githubToken }}
+
+      - name: Get appropriate base and head commits for `nx affected` commands
+        uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: "main"
+
+      - name: Set appropriate base and head commits for `nx affected` commands
+        run: |
+          echo "BASE: ${{ env.NX_BASE }}"
+          echo "HEAD: ${{ env.NX_HEAD }}"
+        shell: bash
+
+      - name: Run build script
+        run: pnpm build-all
+        shell: bash
+
+      - name: Run linters scripts
+        run: pnpm lint
+        shell: bash
+
+      - name: Run formatters scripts
+        run: pnpm nx format
+        shell: bash
+
+      - name: Re-run build script
+        run: pnpm build-all
+        shell: bash
+
+      - name: Release repository updates
+        run: pnpm release --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
+        env:
+          GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
+          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ inputs.npmToken }}
+          CARGO_REGISTRY_TOKEN: ${{ inputs.cargoToken }}
+          STORM_BOT: ${{ inputs.stormBot }}
+          STORM_WORKSPACE_ROOT: ${{ github.workspace }}
+          STORM_REPOSITORY: ${{ github.repositoryUrl }}
+          TAG: ${{ inputs.tag }}
