@@ -1,3 +1,15 @@
+## 0.3.0 (2024-04-06)
+
+
+### 🚀 Features
+
+- **build-tools:** Added support for `rolldown` builds ([46de2e63](https://github.com/storm-software/storm-ops/commit/46de2e63))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.2.9 (2024-03-29)
 
 
