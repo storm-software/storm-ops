@@ -118,6 +118,32 @@
     "node": ">=20.11.0",
     "pnpm": ">=8.10.2"
   },
+  "pnpm": {
+    "overrides": {
+      "@cypress/request": ">=3.0.0",
+      "@storm-software/build-tools": "workspace:*",
+      "@storm-software/cloudflare-tools": "workspace:*",
+      "@storm-software/config": "workspace:*",
+      "@storm-software/config-tools": "workspace:*",
+      "@storm-software/git-tools": "workspace:*",
+      "@storm-software/linting-tools": "workspace:*",
+      "@storm-software/testing-tools": "workspace:*",
+      "@storm-software/tsconfig": "workspace:*",
+      "@storm-software/workspace-tools": "workspace:*",
+      "axios": ">=1.6.0",
+      "chalk": "4.1.2",
+      "create-storm-workspace": "workspace:*",
+      "got": ">=12.1.0",
+      "load-plugin": "3.0.0",
+      "request": ">=2.88.2",
+      "tough-cookie": ">=4.1.3"
+    },
+    "patchedDependencies": {
+      "@microsoft/api-extractor@7.40.1": "patches/@microsoft__api-extractor@7.40.1.patch",
+      "cosmiconfig@9.0.0": "patches/cosmiconfig@9.0.0.patch",
+      "tsup@8.0.0": "patches/tsup@8.0.0.patch"
+    }
+  },
   "namespace": "@storm-software",
   "nx": {
     "includedScripts": [
@@ -127,32 +153,6 @@
       "commit",
       "release"
     ]
-  },
-  "pnpm": {
-    "overrides": {
-      "axios": ">=1.6.0",
-      "got": ">=12.1.0",
-      "chalk": "4.1.2",
-      "tough-cookie": ">=4.1.3",
-      "request": ">=2.88.2",
-      "load-plugin": "3.0.0",
-      "@cypress/request": ">=3.0.0",
-      "create-storm-workspace": "workspace:*",
-      "@storm-software/workspace-tools": "workspace:*",
-      "@storm-software/cloudflare-tools": "workspace:*",
-      "@storm-software/linting-tools": "workspace:*",
-      "@storm-software/git-tools": "workspace:*",
-      "@storm-software/tsconfig": "workspace:*",
-      "@storm-software/testing-tools": "workspace:*",
-      "@storm-software/config": "workspace:*",
-      "@storm-software/config-tools": "workspace:*",
-      "@storm-software/build-tools": "workspace:*"
-    },
-    "patchedDependencies": {
-      "tsup@8.0.0": "patches/tsup@8.0.0.patch",
-      "cosmiconfig@9.0.0": "patches/cosmiconfig@9.0.0.patch",
-      "@microsoft/api-extractor@7.40.1": "patches/@microsoft__api-extractor@7.40.1.patch"
-    }
   },
   "triggerEmptyDevReleaseByIncrementingThisNumber": 0
 }
