@@ -30,6 +30,12 @@ jobs:
       id-token: write
     if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/next' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta')
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.githubToken }}
+
       - name: Setup workspace
         uses: ./.github/actions/setup
         with:
@@ -44,12 +50,6 @@ jobs:
           git config lfs.allowincompletepush true
           npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
         shell: bash
-
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.githubToken }}
 
       - name: Get appropriate base and head commits for `nx affected` commands
         uses: nrwl/nx-set-shas@v4
