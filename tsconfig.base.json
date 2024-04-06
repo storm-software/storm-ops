@@ -10,6 +10,10 @@
     "paths": {
       "@storm-software/build-tools": ["packages/build-tools/src/index.ts"],
       "@storm-software/build-tools/*": ["packages/build-tools/src/index.ts"],
+      "@storm-software/cloudflare-tools": [
+        "packages/cloudflare-tools/src/index.ts"
+      ],
+      "@storm-software/cloudflare-tools/*": ["packages/cloudflare-tools/src/*"],
       "@storm-software/config": ["packages/config/src/index.ts"],
       "@storm-software/config-tools": ["packages/config-tools/src/index.ts"],
       "@storm-software/config-tools/*": ["packages/config-tools/src/*"],

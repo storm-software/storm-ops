@@ -74,7 +74,6 @@
     "@nx/esbuild": "18.0.4",
     "@nx/eslint": "18.0.4",
     "@nx/eslint-plugin": "18.0.4",
-    "@nx/jest": "18.0.4",
     "@nx/js": "18.0.4",
     "@nx/plugin": "18.0.4",
     "@nx/workspace": "18.0.4",
@@ -111,6 +110,9 @@
     "typescript": "5.3.3",
     "verdaccio": "5.29.0"
   },
+  "devDependencies": {
+    "@nx/jest": "18.0.4"
+  },
   "packageManager": "pnpm@8.14.3",
   "engines": {
     "node": ">=20.11.0",
@@ -137,6 +139,7 @@
       "@cypress/request": ">=3.0.0",
       "create-storm-workspace": "workspace:*",
       "@storm-software/workspace-tools": "workspace:*",
+      "@storm-software/cloudflare-tools": "workspace:*",
       "@storm-software/linting-tools": "workspace:*",
       "@storm-software/git-tools": "workspace:*",
       "@storm-software/tsconfig": "workspace:*",

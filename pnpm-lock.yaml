@@ -67,9 +67,6 @@ importers:
       '@nx/eslint-plugin':
         specifier: 18.0.4
         version: 18.0.4(@swc-node/register@1.8.0)(@swc/core@1.4.2)(@swc/wasm@1.4.2)(@types/node@20.11.20)(@typescript-eslint/parser@6.21.0)(eslint-config-prettier@9.1.0)(eslint@8.56.0)(nx@18.0.4)(typescript@5.3.3)(verdaccio@5.29.0)
-      '@nx/jest':
-        specifier: 18.0.4
-        version: 18.0.4(@swc-node/register@1.8.0)(@swc/core@1.4.2)(@swc/wasm@1.4.2)(@types/node@20.11.20)(nx@18.0.4)(ts-node@10.9.2)(typescript@5.3.3)(verdaccio@5.29.0)
       '@nx/js':
         specifier: 18.0.4
         version: 18.0.4(@swc-node/register@1.8.0)(@swc/core@1.4.2)(@swc/wasm@1.4.2)(@types/node@20.11.20)(nx@18.0.4)(typescript@5.3.3)(verdaccio@5.29.0)
@@ -175,6 +172,10 @@ importers:
       verdaccio:
         specifier: 5.29.0
         version: 5.29.0(typanion@3.14.0)
+    devDependencies:
+      '@nx/jest':
+        specifier: 18.0.4
+        version: 18.0.4(@swc-node/register@1.8.0)(@swc/core@1.4.2)(@swc/wasm@1.4.2)(@types/node@20.11.20)(nx@18.0.4)(ts-node@10.9.2)(typescript@5.3.3)(verdaccio@5.29.0)
 
   packages/build-tools:
     dependencies:
@@ -253,6 +254,12 @@ importers:
       typescript:
         specifier: 5.3.3
         version: 5.3.3
+
+  packages/cloudflare-tools:
+    dependencies:
+      tslib:
+        specifier: ^2.3.0
+        version: 2.6.2
 
   packages/config:
     dependencies:

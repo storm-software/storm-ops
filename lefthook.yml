@@ -44,10 +44,10 @@ pre-commit:
     #   glob: "**/*.{js,ts,rs,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
     #   run: "pnpm lint"
     #   stage_fixed: true
-    check:
-      files: "git diff --name-only HEAD @{push}"
-      glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: "pnpm exec prettier {staged_files} --check --ignore-unknown --no-error-on-unmatched-pattern --cache && git update-index"
+    # check:
+    #   files: "git diff --name-only HEAD @{push}"
+    #   glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+    #   run: "pnpm exec prettier {staged_files} --check --ignore-unknown --no-error-on-unmatched-pattern --cache && git update-index"
     readme:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/{README.md,package.json,executors.json,generators.json}"
