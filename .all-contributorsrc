@@ -3,9 +3,7 @@
   "projectOwner": "storm-software",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "files": [
-    "README.md"
-  ],
+  "files": ["README.md"],
   "imageSize": 100,
   "commit": true,
   "commitConvention": "angular",
@@ -15,31 +13,21 @@
       "name": "Patrick Sullivan",
       "avatar_url": "https://avatars.githubusercontent.com/u/99053093?v=4",
       "profile": "http://www.sullypat.com/",
-      "contributions": [
-        "design",
-        "code",
-        "tool",
-        "doc",
-        "test"
-      ]
+      "contributions": ["design", "code", "tool", "doc", "test"]
     },
     {
       "login": "tbenning",
       "name": "Tyler Benning",
       "avatar_url": "https://avatars.githubusercontent.com/u/7265547?v=4",
       "profile": "https://tylerbenning.com/",
-      "contributions": [
-        "design"
-      ]
+      "contributions": ["design"]
     },
     {
       "login": "stormie-bot",
       "name": "Stormie",
       "avatar_url": "https://avatars.githubusercontent.com/u/149802440?v=4",
-      "profile": "http://stormsoftware.org",
-      "contributions": [
-        "maintenance"
-      ]
+      "profile": "http://stormsoftware.com",
+      "contributions": ["maintenance"]
     }
   ],
   "contributorsPerLine": 7,

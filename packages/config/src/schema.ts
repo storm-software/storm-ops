@@ -96,7 +96,7 @@ export const StormConfigSchema = z
       .string()
       .trim()
       .url()
-      .default("https://stormsoftware.org")
+      .default("https://stormsoftware.com")
       .describe("The homepage of the workspace"),
     branch: z.string().trim().default("main").describe("The branch of the workspace"),
     preid: z.string().optional().describe("A tag specifying the version pre-release identifier"),

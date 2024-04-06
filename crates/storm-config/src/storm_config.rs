@@ -331,7 +331,7 @@ impl Default for StormConfig {
       locale: "en-US".to_string(),
       repository: "".to_string(),
       license: "MIT".to_string(),
-      homepage: "https://stormsoftware.org".to_string(),
+      homepage: "https://stormsoftware.com".to_string(),
       branch: "main".to_string(),
       preid: None,
       config_file: None,

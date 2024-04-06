@@ -1,34 +1,37 @@
-import type { AssetGlob, TypeScriptBuildOptions } from "../../declarations";
-import { applyDefaultOptions, generatePackageJson, runTsupBuild } from "../utils";
-import {
-  applyWorkspaceProjectTokens,
-  applyWorkspaceTokens,
-  writeInfo,
-  type ProjectTokenizerOptions,
-  findWorkspaceRoot,
-  writeDebug,
-  writeTrace
-} from "@storm-software/config-tools";
-import type { StormConfig } from "@storm-software/config";
-import { removeSync } from "fs-extra";
-import { copyAssets } from "@nx/js";
 import {
   joinPathFragments,
   createProjectGraphAsync,
+  type ProjectConfiguration,
+  readProjectsConfigurationFromProjectGraph,
   type ExecutorContext,
-  type ProjectConfiguration
+  readJsonFile
 } from "@nx/devkit";
-import { writeJsonFile } from "nx/src/utils/fileutils";
-import { globSync } from "glob";
-import { writeFile } from "node:fs/promises";
-import { readFileSync } from "node:fs";
-import { getEntryPoints } from "../utils/get-entry-points";
-import { readProjectsConfigurationFromProjectGraph } from "nx/src/project-graph/project-graph";
-import { readNxJson } from "nx/src/config/nx-json";
+import type { StormConfig } from "@storm-software/config";
 import {
   createProjectRootMappings,
   findProjectForPath
 } from "nx/src/project-graph/utils/find-project-for-path";
+import type { RolldownOptions } from "../types";
+import {
+  type ProjectTokenizerOptions,
+  findWorkspaceRoot,
+  writeDebug,
+  writeInfo,
+  applyWorkspaceProjectTokens,
+  applyWorkspaceTokens
+} from "@storm-software/config-tools";
+import { globSync } from "glob";
+import { copyAssets } from "@nx/js";
+import type { AssetGlob } from "@nx/js/src/utils/assets/assets";
+import { removeSync } from "fs-extra";
+import { applyDefaultRolldownOptions } from "../utils/apply-default-options";
+import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
+import { readFileSync } from "node:fs";
+import { writeFile } from "node:fs/promises";
+import { readNxJson } from "nx/src/config/nx-json";
+import { createTaskId, getAllWorkspaceTaskGraphs } from "../utils/task-graph";
+import { getRolldownBuildOptions } from "../config/get-rolldown-config";
+import { rolldown as rolldownBuild } from "rolldown";
 
 /**
  * Build and bundle a TypeScript project using the tsup build tools.
@@ -39,7 +42,7 @@ import {
  * @param config - The storm configuration.
  * @param options - A build options partial. The minimum required options are `projectRoot` or `projectName`.
  */
-export async function build(config: StormConfig, options: Partial<TypeScriptBuildOptions> = {}) {
+export async function rolldown(config: StormConfig, options: Partial<RolldownOptions> = {}) {
   let projectRoot = options?.projectRoot as string;
   let projectName = options?.projectName as string;
 
@@ -85,10 +88,15 @@ export async function build(config: StormConfig, options: Partial<TypeScriptBuil
     projectRoot = projectConfiguration.root;
   }
 
-  await buildWithOptions(
+  await rolldownWithOptions(
     config,
-    applyDefaultOptions(
-      { projectRoot, projectName, sourceRoot: projectConfiguration.sourceRoot, ...options },
+    applyDefaultRolldownOptions(
+      {
+        projectRoot,
+        projectName,
+        sourceRoot: projectConfiguration.sourceRoot!,
+        ...options
+      },
       config
     )
   );
@@ -100,7 +108,7 @@ export async function build(config: StormConfig, options: Partial<TypeScriptBuil
  * @param config - The storm configuration.
  * @param options - The build options.
  */
-export async function buildWithOptions(config: StormConfig, options: TypeScriptBuildOptions) {
+export async function rolldownWithOptions(config: StormConfig, options: RolldownOptions) {
   const workspaceRoot = config.workspaceRoot ? config.workspaceRoot : findWorkspaceRoot();
 
   const projectRoot = options.projectRoot;
@@ -111,11 +119,11 @@ export async function buildWithOptions(config: StormConfig, options: TypeScriptB
     options,
     { projectRoot, projectName, sourceRoot, config },
     applyWorkspaceProjectTokens
-  )) as TypeScriptBuildOptions;
+  )) as RolldownOptions;
 
   // #region Clean output directory
 
-  if (enhancedOptions.clean !== false) {
+  if (enhancedOptions.clean !== false && enhancedOptions.outputPath) {
     writeInfo(config, `🧹 Cleaning output path: ${enhancedOptions.outputPath}`);
     removeSync(enhancedOptions.outputPath);
   }
@@ -165,6 +173,7 @@ export async function buildWithOptions(config: StormConfig, options: TypeScriptB
   const projectGraph = await createProjectGraphAsync({
     exitOnError: true
   });
+  const taskGraphs = getAllWorkspaceTaskGraphs(nxJson, projectGraph);
 
   const projectsConfigurations = readProjectsConfigurationFromProjectGraph(projectGraph);
   if (!projectsConfigurations?.projects?.[projectName]) {
@@ -251,67 +260,90 @@ export async function buildWithOptions(config: StormConfig, options: TypeScriptB
         writeFile(
           file,
           `${
-            enhancedOptions.banner
+            enhancedOptions.banner && typeof enhancedOptions.banner === "string"
               ? enhancedOptions.banner.startsWith("//")
                 ? enhancedOptions.banner
                 : `// ${enhancedOptions.banner}`
               : ""
-          }\n\n${readFileSync(file, "utf-8")}`,
-          "utf-8"
+          }\n\n${readFileSync(file, "utf-8")}\n\n${
+            enhancedOptions.footer && typeof enhancedOptions.footer === "string"
+              ? enhancedOptions.footer.startsWith("//")
+                ? enhancedOptions.footer
+                : `// ${enhancedOptions.footer}`
+              : ""
+          }`
         )
       )
     );
   }
 
   writeDebug(config, "🎁  Generating package.json file");
-  const packageJson = await generatePackageJson(
-    config,
-    projectRoot,
-    sourceRoot,
+
+  const { dependencies } = calculateProjectBuildableDependencies(
+    taskGraphs[createTaskId(projectName, "build")],
+    projectGraph,
+    workspaceRoot,
     projectName,
-    enhancedOptions
+    "build",
+    "production",
+    true
   );
 
-  if (enhancedOptions.generatePackageJson !== false) {
-    writeDebug(config, "✍️   Writing package.json file");
-    await writeJsonFile(
-      joinPathFragments(workspaceRoot, enhancedOptions.outputPath, "package.json"),
-      packageJson
-    );
+  const packageJson = readJsonFile(
+    joinPathFragments(workspaceRoot, enhancedOptions.projectRoot, "package.json")
+  );
 
-    enhancedOptions.external ??= [];
-    for (const packageName of Object.keys(packageJson.dependencies)) {
-      if (!enhancedOptions.external.includes(packageName)) {
-        enhancedOptions.external.push(packageName);
-      }
-    }
-  }
+  const npmDeps = (projectGraph.dependencies[projectName] ?? [])
+    .filter((d) => d.target.startsWith("npm:"))
+    .map((d) => d.target.slice(4));
+
+  // if (enhancedOptions.generatePackageJson !== false) {
+  //   writeDebug(config, "✍️   Writing package.json file");
+  //   await writeJsonFile(
+  //     joinPathFragments(workspaceRoot, enhancedOptions.outputPath, "package.json"),
+  //     packageJson
+  //   );
+
+  //   enhancedOptions.external ??= [];
+  //   for (const packageName of Object.keys(packageJson.dependencies)) {
+  //     if (!enhancedOptions.external.includes(packageName)) {
+  //       enhancedOptions.external.push(packageName);
+  //     }
+  //   }
+  // }
 
   writeDebug(config, "🔍  Detecting entry points for the build process");
-  const entryPoints = getEntryPoints(config, projectRoot, sourceRoot, enhancedOptions);
+  //const entryPoints = getEntryPoints(config, projectRoot, sourceRoot, enhancedOptions);
 
-  writeTrace(
+  // writeTrace(
+  //   config,
+  //   `Found entry points: \n${entryPoints.map((entryPoint) => `- ${entryPoint}`).join(" \n")}`
+  // );
+
+  const rolldownBuildOptions = await getRolldownBuildOptions(
     config,
-    `Found entry points: \n${entryPoints.map((entryPoint) => `- ${entryPoint}`).join(" \n")}`
+    enhancedOptions,
+    dependencies,
+    packageJson,
+    npmDeps
   );
 
   // #region Run the build process
 
   writeDebug(config, "⚡  Running the build process for each entry point");
+
+  const start = process.hrtime.bigint();
+
   await Promise.allSettled(
-    entryPoints.map((entryPoint: string) =>
-      runTsupBuild(
-        {
-          main: entryPoint,
-          projectRoot,
-          projectName,
-          sourceRoot
-        },
-        config,
-        enhancedOptions
-      )
+    rolldownBuildOptions.map((opts) =>
+      rolldownBuild(opts).then((build) => build.write(opts.output))
     )
   );
+
+  const end = process.hrtime.bigint();
+  const duration = `${(Number(end - start) / 1_000_000_000).toFixed(2)}s`;
+
+  writeInfo(config, `🚀 Build process completed in ${duration}`);
 
   // #endregion Run the build process
 }

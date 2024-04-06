@@ -35,7 +35,10 @@
         ],
         "external": [
           "nx",
-          "esbuild"
+          "esbuild",
+          "@swc/core",
+          "./transpilers/swc.js",
+          "style-inject/dist/style-inject.es"
         ],
         "assets": [
           {

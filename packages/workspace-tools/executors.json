@@ -35,6 +35,11 @@
       "implementation": "./src/executors/cargo-publish/executor",
       "schema": "./src/executors/cargo-publish/schema.json",
       "description": "Publish a Rust crate to the crates.io registry"
+    },
+    "rolldown": {
+      "implementation": "./src/executors/rolldown/executor",
+      "schema": "./src/executors/rolldown/schema.json",
+      "description": "An executor used by Storm Software to run the Rolldown build process"
     }
   }
 }

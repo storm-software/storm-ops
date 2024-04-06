@@ -12,10 +12,10 @@
     "open-system",
     "monorepo"
   ],
-  "homepage": "https://stormsoftware.org",
+  "homepage": "https://stormsoftware.com",
   "bugs": {
     "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.org"
+    "email": "support@stormsoftware.com"
   },
   "repository": {
     "type": "github",
@@ -25,14 +25,10 @@
   "license": "Apache 2.0",
   "author": {
     "name": "Storm Software",
-    "email": "contact@stormsoftware.org",
-    "url": "https://stormsoftware.org"
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
   },
   "type": "commonjs",
-  "main": "./index.js",
-  "typings": "./declarations.d.ts",
-  "executors": "./executors.json",
-  "generators": "./generators.json",
   "exports": {
     ".": "./index.js",
     "./package.json": "./package.json",
@@ -48,6 +44,8 @@
     "./plugins/typescript": "./src/plugins/typescript/index.js",
     "./preset": "./src/generators/preset/preset.js"
   },
+  "main": "./index.js",
+  "typings": "./declarations.d.ts",
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
     "@ltd/j-toml": "^1.38.0",
@@ -77,5 +75,7 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "executors": "./executors.json",
+  "generators": "./generators.json"
 }

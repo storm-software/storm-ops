@@ -61,17 +61,17 @@ export async function presetGeneratorFn(tree: Tree, options: PresetGeneratorSche
       "monorepo"
     ];
 
-    json.homepage ??= "https://stormsoftware.org";
+    json.homepage ??= "https://stormsoftware.com";
     json.bugs ??= {
-      url: "https://stormsoftware.org/support",
-      email: "support@stormsoftware.org"
+      url: "https://stormsoftware.com/support",
+      email: "support@stormsoftware.com"
     };
 
     json.license = "Apache License 2.0";
     json.author ??= {
       name: "Storm Software",
-      email: "contact@stormsoftware.org",
-      url: "https://stormsoftware.org"
+      email: "contact@stormsoftware.com",
+      url: "https://stormsoftware.com"
     };
 
     json.funding ??= {

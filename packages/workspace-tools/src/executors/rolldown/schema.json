@@ -1,9 +1,9 @@
 {
-  "$schema": "http://json-schema.org/schema",
-  "$id": "tsup",
+  "$schema": "https://json-schema.org/schema",
+  "$id": "rolldown",
   "version": 2,
-  "title": "Tsup Builder",
-  "description": "Run a build on the project using ESBuild with a patched tsup configuration",
+  "title": "Rolldown Builder",
+  "description": "An executor used by Storm Software to run the Rolldown build process",
   "type": "object",
   "properties": {
     "entry": {
@@ -35,18 +35,6 @@
       },
       "default": []
     },
-    "external": {
-      "type": "array",
-      "description": "Mark one or more module as external. Can use * wildcards, such as *.png.",
-      "items": {
-        "type": "string"
-      }
-    },
-    "bundle": {
-      "type": "boolean",
-      "description": "Whether to bundle the main entry point and additional entry points. Set to false to keep individual output files.",
-      "default": true
-    },
     "watch": {
       "type": "boolean",
       "description": "Enable re-building when files change.",
@@ -71,41 +59,10 @@
       "description": "Should the source files be added to the distribution folder in an `src` directory.",
       "default": false
     },
-    "metafile": {
-      "type": "boolean",
-      "description": "Should a meta file be created for the build package",
-      "default": true
-    },
-    "emitOnAll": {
-      "type": "boolean",
-      "description": "Should each file contained in the package be emitted individually.",
-      "default": false
-    },
     "generatePackageJson": {
       "type": "boolean",
       "description": "Should a package.json file be generated in the output folder or should the existing one be copied in.",
       "default": true
-    },
-    "splitting": {
-      "type": "boolean",
-      "description": "Should the build process preform *code-splitting*?",
-      "default": true
-    },
-    "treeshake": {
-      "type": "boolean",
-      "description": "Should the build process *tree-shake* to remove unused code?",
-      "default": true
-    },
-    "format": {
-      "type": "array",
-      "description": "The output format for the generated JavaScript files. There are currently three possible values that can be configured: iife, cjs, and esm.",
-      "default": [
-        "cjs",
-        "esm"
-      ],
-      "items": {
-        "type": "string"
-      }
     },
     "debug": {
       "type": "boolean",
@@ -138,54 +95,9 @@
       "description": "Should write extra log outputs with details from the executor.",
       "default": false
     },
-    "skipNativeModulesPlugin": {
-      "type": "boolean",
-      "description": "Should we skip adding the Native Node Modules ESBuild plugin.",
-      "default": false
-    },
-    "useJsxModule": {
-      "type": "boolean",
-      "description": "Should the build process use the `jsx` module for JSX support?",
-      "default": false
-    },
-    "shims": {
-      "type": "boolean",
-      "description": "Should the build process add shims for node.js modules that are not available in the browser?"
-    },
-    "define": {
-      "type": "object",
-      "description": "Define global constants that can be used in the source code. The value will be converted into a stringified JSON.",
-      "additionalProperties": true
-    },
-    "env": {
-      "type": "object",
-      "description": "Define environment variables that can be used in the source code. The value will be converted into a stringified JSON.",
-      "additionalProperties": true
-    },
-    "apiReport": {
-      "type": "boolean",
-      "description": "Should API Extractor generate an API Report file.",
-      "default": true
-    },
-    "docModel": {
-      "type": "boolean",
-      "description": "Should API Extractor generate an Doc Model markdown file.",
-      "default": true
-    },
-    "tsdocMetadata": {
-      "type": "boolean",
-      "description": "Should API Extractor generate an TSDoc Metadata file.",
-      "default": true
-    },
-    "options": {
-      "type": "object",
-      "description": "Additional options to pass to tsup. See <https://paka.dev/npm/tsup@7.2.0/api#d35d54aca71eb26e>.",
-      "additionalProperties": true,
-      "x-priority": "important"
-    },
     "plugins": {
       "type": "array",
-      "description": "List of ESBuild plugins to use during processing",
+      "description": "List of Rollup plugins to use during processing",
       "default": [],
       "items": {
         "type": "object"

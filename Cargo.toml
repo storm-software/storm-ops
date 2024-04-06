@@ -10,8 +10,8 @@ repository = 'https://github.com/storm-software/storm-ops'
 edition = '2021'
 authors = ['storm-software']
 license = 'Apache 2.0'
-documentation = 'https://stormsoftware.org/docs'
-homepage = 'https://stormsoftware.org'
+documentation = 'https://stormsoftware.com/docs'
+homepage = 'https://stormsoftware.com'
 categories = ['config', 'development-tools']
 keywords = ['storm', 'storm-ops', 'storm-software', 'build-tools', 'monorepo']
 

@@ -12,6 +12,7 @@ cdvc
 mkdn
 mkdown
 Pluggable
+Rolldown
 retext
 vfile
 autoincrement

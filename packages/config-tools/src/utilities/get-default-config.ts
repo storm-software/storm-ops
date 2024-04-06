@@ -23,7 +23,7 @@ export const DEFAULT_STORM_CONFIG: any = {
   name: "storm",
   namespace: "storm-software",
   license: "Apache License 2.0",
-  homepage: "https://stormsoftware.org",
+  homepage: "https://stormsoftware.com",
   owner: "@storm-software/development",
   worker: "stormie-bot",
   runtimeDirectory: "node_modules/.storm",

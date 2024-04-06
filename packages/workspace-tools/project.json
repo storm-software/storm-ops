@@ -23,6 +23,7 @@
         "project": "packages/workspace-tools/package.json",
         "main": "packages/workspace-tools/index.ts",
         "additionalEntryPoints": [
+          "packages/workspace-tools/src/executors/rolldown/executor.ts",
           "packages/workspace-tools/src/executors/tsup/executor.ts",
           "packages/workspace-tools/src/executors/tsup-neutral/executor.ts",
           "packages/workspace-tools/src/executors/tsup-node/executor.ts",
@@ -60,7 +61,8 @@
         "external": [
           "nx",
           "@nx/devkit",
-          "esbuild"
+          "esbuild",
+          "@swc/*"
         ],
         "assets": [
           {

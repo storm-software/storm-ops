@@ -35,17 +35,16 @@ ${commentStart} This code was released as part of the ${titleName ? `${titleName
     titleName ? titleName : "This project"
   }
 ${commentStart} is maintained by Storm Software under the ${
-    process.env.STORM_LICENSE ?? "Apache License 2.0"
+    process.env.STORM_LICENSE ?? "Apache 2.0 License"
   }, and is
 ${commentStart} free for commercial and private use. For more information, please visit
 ${commentStart} our licensing page.
 ${commentStart}
-${commentStart}    Website: ${process.env.STORM_HOMEPAGE ?? "https://stormsoftware.org"}
+${commentStart}    Website: ${process.env.STORM_HOMEPAGE ?? "https://stormsoftware.com"}
 ${commentStart}    Repository: ${
-    process.env.STORM_REPOSITORY ??
-    "https://github.com/storm-software/storm-stack"
+    process.env.STORM_REPOSITORY ?? "https://github.com/storm-software/storm-stack"
   }
-${commentStart}    Documentation: https://stormsoftware.org/docs${
+${commentStart}    Documentation: https://stormsoftware.com/docs${
     titleName?.startsWith("@") ? `/${titleName.slice(1)}` : ""
   }
 ${commentStart}    Contact: ${
@@ -53,14 +52,14 @@ ${commentStart}    Contact: ${
       ? process.env.STORM_HOMEPAGE.endsWith("/")
         ? process.env.STORM_HOMEPAGE.slice(-1)
         : process.env.STORM_HOMEPAGE
-      : "https://stormsoftware.org"
+      : "https://stormsoftware.com"
   }/contact
 ${commentStart}    Licensing: ${
     process.env.STORM_HOMEPAGE
       ? process.env.STORM_HOMEPAGE.endsWith("/")
         ? process.env.STORM_HOMEPAGE.slice(-1)
         : process.env.STORM_HOMEPAGE
-      : "https://stormsoftware.org"
+      : "https://stormsoftware.com"
   }/licensing
 ${commentStart}
 ${commentStart} -------------------------------------------------------------------

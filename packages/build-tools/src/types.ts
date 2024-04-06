@@ -1,4 +1,5 @@
 import type { Options } from "tsup";
+import type Rolldown from "rolldown";
 import type {
   Program,
   Diagnostic,
@@ -6,6 +7,7 @@ import type {
   SourceFile,
   ParsedCommandLine
 } from "typescript";
+import type { Plugin } from "rolldown";
 
 export interface TsupContext {
   projectRoot: string;
@@ -98,3 +100,116 @@ export interface TypeScriptBuildOptions extends AdditionalCLIOptions {
   skipNativeModulesPlugin?: boolean;
   useJsxModule?: boolean;
 }
+
+export type RolldownFormat = "cjs" | "es";
+export const RolldownFormat = {
+  COMMONJS: "cjs" as RolldownFormat,
+  ES_MODULE: "es" as RolldownFormat
+};
+
+export type IsExternal = (
+  source: string,
+  importer: string | undefined,
+  isResolved: boolean
+) => boolean;
+
+export type RolldownResolveOptions = Omit<BindingResolveOptions, "alias"> & {
+  alias?: Record<string, string>;
+};
+
+export interface BindingResolveOptions {
+  alias?: Record<string, string[]>;
+  aliasFields?: string[][];
+  conditionNames?: string[];
+  exportsFields?: string[][];
+  extensions?: string[];
+  mainFields?: string[];
+  mainFiles?: string[];
+  modules?: string[];
+  symlinks?: boolean;
+}
+
+export interface RenderedModule {
+  readonly code: string | null;
+  originalLength: number;
+  removedExports: string[];
+  renderedExports: string[];
+  renderedLength: number;
+}
+
+export interface PreRenderedChunk {
+  exports: string[];
+  facadeModuleId: string | null;
+  isDynamicEntry: boolean;
+  isEntry: boolean;
+  isImplicitEntry: boolean;
+  moduleIds: string[];
+  name: string;
+  type: "chunk";
+}
+
+export interface RenderedChunk extends PreRenderedChunk {
+  dynamicImports: string[];
+  fileName: string;
+  implicitlyLoadedBefore: string[];
+  importedBindings: {
+    [imported: string]: string[];
+  };
+  imports: string[];
+  modules: {
+    [id: string]: RenderedModule;
+  };
+  referencedFiles: string[];
+}
+
+export interface InputOptions {
+  input?: Rolldown.RollupOptions["input"];
+  plugins?: Plugin[];
+  external?: IsExternal;
+  resolve?: RolldownResolveOptions;
+  cwd: string;
+  platform: Platform;
+}
+
+export interface OutputOptions extends Rolldown.OutputOptions {
+  dir?: string;
+  format?: "es";
+  exports?: "default" | "named" | "none" | "auto";
+  sourcemap?: boolean | "inline" | "hidden";
+  banner?: string | ((chunk: RenderedChunk) => string | Promise<string>);
+  footer?: string | ((chunk: RenderedChunk) => string | Promise<string>);
+}
+
+export interface RolldownBuildOptions extends InputOptions {
+  output?: OutputOptions;
+}
+
+export type RolldownUserDefinedConfig =
+  | string
+  | RolldownBuildOptions
+  | ((config: RolldownBuildOptions) => RolldownBuildOptions | Promise<RolldownBuildOptions>);
+
+export type RolldownOptions = AdditionalCLIOptions & {
+  clean: boolean;
+  watch: boolean;
+  entry: string;
+  additionalEntryPoints?: string[];
+  assets: (AssetGlob | string)[];
+  generatePackageJson: boolean;
+  includeSrc: boolean;
+  banner?: OutputOptions["banner"];
+  footer?: OutputOptions["footer"];
+  outputPath: string;
+  skipTypeCheck: boolean;
+  verbose: boolean;
+  tsConfig: string;
+  minify: boolean;
+  extractCss: boolean;
+  sourcemap?: OutputOptions["sourcemap"];
+  exports?: OutputOptions["exports"];
+  platform: InputOptions["platform"];
+  resolve: InputOptions["resolve"];
+  external: InputOptions["external"];
+  plugins: Plugin[];
+  rolldownConfig?: RolldownUserDefinedConfig | RolldownUserDefinedConfig[];
+};

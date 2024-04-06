@@ -4,6 +4,6 @@ If you believe you have found a security vulnerability in this repository, we en
 
 We will investigate all legitimate reports and do our best to quickly fix the problem.
 
-Email `admin@stormsoftware.org` to disclose any security vulnerabilities.
+Email `admin@stormsoftware.com` to disclose any security vulnerabilities.
 
-<https://stormsoftware.org/security>
+<https://stormsoftware.com/security>

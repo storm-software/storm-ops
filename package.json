@@ -21,10 +21,10 @@
     "open-system",
     "monorepo"
   ],
-  "homepage": "https://stormsoftware.org",
+  "homepage": "https://stormsoftware.com",
   "bugs": {
     "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.org"
+    "email": "support@stormsoftware.com"
   },
   "repository": {
     "type": "github",
@@ -33,16 +33,16 @@
   "license": "Apache 2.0",
   "author": {
     "name": "Storm Software",
-    "email": "contact@stormsoftware.org",
-    "url": "https://stormsoftware.org"
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
   },
   "scripts": {
     "adr": "pnpm log4brains adr new",
     "adr-preview": "pnpm log4brains preview",
     "prebuild": "pnpm clean && pnpm build-plugins",
     "build-plugins": "node -r esbuild-register tools/scripts/build-plugins.ts",
-    "build": "nx affected -t build --parallel=3",
-    "build-all": "nx run-many -t build --all --parallel=3",
+    "build": "nx affected -t build --parallel=1",
+    "build-all": "nx run-many -t build --all --parallel=1",
     "clean": "rimraf dist",
     "clean:packages": "rimraf dist/packages",
     "commit": "node ./dist/packages/git-tools/bin/git.js commit",
@@ -50,9 +50,8 @@
     "dep-graph": "nx dep-graph",
     "e2e": "nx e2e",
     "help": "nx help",
-    "lint-biome": "pnpm exec biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true",
-    "lint-biome-check": "pnpm exec biome check --apply-unsafe --no-errors-on-unmatched --files-ignore-unknown=true",
-    "format-biome": "pnpm exec biome format --write  --no-errors-on-unmatched --files-ignore-unknown=true",
+    "lint-prettier": "pnpm exec prettier **/* --check --cache",
+    "format-prettier": "pnpm exec prettier **/* --write --cache",
     "lint-filenames": "pnpm exec ls-lint --config=\"./dist/packages/linting-tools/ls-lint/ls-lint.yml\"",
     "lint-toml": "pnpm exec taplo format --check --config=\"./dist/packages/linting-tools/taplo/.taplo.toml\"",
     "format-toml": "pnpm exec taplo format --config=\"./dist/packages/linting-tools/taplo/.taplo.toml\"",
@@ -63,6 +62,7 @@
     "start": "nx serve",
     "test": "echo Skipping all workspace testing..."
   },
+  "prettier": "./packages/linting-tools/src/prettier/config.json",
   "dependencies": {
     "@angular-devkit/architect": "^0.1703.2",
     "@biomejs/biome": "1.5.3",
@@ -99,6 +99,8 @@
     "lefthook": "1.6.1",
     "nx": "18.0.4",
     "prettier": "3.2.5",
+    "prettier-plugin-prisma": "^5.0.0",
+    "prettier-plugin-tailwindcss": "^0.5.13",
     "rimraf": "5.0.5",
     "ts-jest": "29.1.2",
     "ts-loader": "^9.5.1",

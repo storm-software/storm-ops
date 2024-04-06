@@ -12,10 +12,10 @@
     "open-system",
     "monorepo"
   ],
-  "homepage": "https://stormsoftware.org",
+  "homepage": "https://stormsoftware.com",
   "bugs": {
     "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.org"
+    "email": "support@stormsoftware.com"
   },
   "repository": {
     "type": "github",
@@ -25,13 +25,13 @@
   "license": "Apache 2.0",
   "author": {
     "name": "Storm Software",
-    "email": "contact@stormsoftware.org",
-    "url": "https://stormsoftware.org"
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
   },
+  "type": "module",
   "bin": {
     "storm-lint": "./bin/lint.js"
   },
-  "type": "module",
   "dependencies": {
     "@cspell/dict-ada": "4.0.2",
     "@cspell/dict-aws": "4.0.1",
