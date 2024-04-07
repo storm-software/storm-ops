@@ -77,10 +77,6 @@ jobs:
         run: pnpm build-all
         shell: bash
 
-      # - name: Run linters scripts
-      #   run: pnpm lint
-      #   shell: bash
-
       - name: Run formatters scripts
         run: pnpm nx format
         shell: bash
