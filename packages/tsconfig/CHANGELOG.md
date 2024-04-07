@@ -1,3 +1,15 @@
+## 0.3.0 (2024-04-07)
+
+
+### 🚀 Features
+
+- **storm-ops:** Merged in change to the main branch ([ce79c572](https://github.com/storm-software/storm-ops/commit/ce79c572))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.2.0 (2024-04-06)
 
 
