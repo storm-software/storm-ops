@@ -120,7 +120,7 @@ jobs:
         run: pnpm release --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
         env:
           GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.STORM_BOT_NPM_TOKEN }}
           CARGO_REGISTRY_TOKEN: ${{ secrets.STORM_BOT_CARGO_TOKEN }}
           STORM_BOT: Stormie-Bot
