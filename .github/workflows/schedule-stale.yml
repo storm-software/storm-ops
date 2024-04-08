@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: stale-more-info-needed
         id: stale-more-info-needed
-        uses: actions/stale@v3.0.13
+        uses: actions/stale@v9.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 14
@@ -34,7 +34,7 @@ jobs:
 
       - name: stale-needs-rebase
         id: stale-needs-rebase
-        uses: actions/stale@v3.0.13
+        uses: actions/stale@v9.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 14
@@ -50,7 +50,7 @@ jobs:
 
       - name: stale-repro-needed
         id: stale-repro-needed
-        uses: actions/stale@v3.0.13
+        uses: actions/stale@v9.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 14
@@ -66,7 +66,7 @@ jobs:
 
       - name: stale-retry-with-latest
         id: stale-retry-with-latest
-        uses: actions/stale@v3.0.13
+        uses: actions/stale@v9.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 14
@@ -82,7 +82,7 @@ jobs:
 
       - name: stale-bug
         id: stale-bug
-        uses: actions/stale@v3.0.13
+        uses: actions/stale@v9.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 180
@@ -98,7 +98,7 @@ jobs:
 
       - name: stale-cleanup
         id: stale-cleanup
-        uses: actions/stale@v3.0.13
+        uses: actions/stale@v9.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 180
@@ -114,7 +114,7 @@ jobs:
 
       - name: stale-docs
         id: stale-docs
-        uses: actions/stale@v3.0.13
+        uses: actions/stale@v9.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 180
@@ -130,7 +130,7 @@ jobs:
 
       - name: stale-enhancement
         id: stale-enhancement
-        uses: actions/stale@v3.0.13
+        uses: actions/stale@v9.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 250
@@ -146,7 +146,7 @@ jobs:
 
       - name: stale-feature
         id: stale-feature
-        uses: actions/stale@v3.0.13
+        uses: actions/stale@v9.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 250
@@ -162,7 +162,7 @@ jobs:
 
       - name: stale-question
         id: stale-question
-        uses: actions/stale@v3.0.13
+        uses: actions/stale@v9.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 45
