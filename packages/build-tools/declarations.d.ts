@@ -72,12 +72,24 @@ declare function buildWithOptions(
 ): Promise<void>;
 export { buildWithOptions };
 
+/**
+ * Run the TypeScript compiler on the project.
+ *
+ * @param config - The storm configuration.
+ * @param options - The TypeScript compiler options.
+ */
 declare async function rolldown(
   config: StormConfig,
   options: Partial<RolldownOptions> = {}
 ): Promise<void>;
 export { rolldown };
 
+/**
+ * Run the TypeScript compiler on the project.
+ *
+ * @param config - The storm configuration.
+ * @param options - The TypeScript compiler options.
+ */
 declare async function rolldownWithOptions(
   config: StormConfig,
   options: RolldownOptions
