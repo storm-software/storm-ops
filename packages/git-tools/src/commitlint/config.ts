@@ -1,4 +1,8 @@
-import type { RuleConfigCondition, RuleConfigSeverity, TargetCaseType } from "@commitlint/types";
+import type {
+  RuleConfigCondition,
+  RuleConfigSeverity,
+  TargetCaseType
+} from "@commitlint/types";
 
 export default {
   extends: ["@commitlint/config-conventional"],
@@ -54,7 +58,8 @@ export default {
         description: "Select the type of change that you're committing"
       },
       scope: {
-        description: "Select the scope of this change (package name in the monorepo)"
+        description:
+          "Select the scope of this change (package name in the monorepo)"
       },
       subject: {
         description: "Write a short, imperative tense description of the change"
