@@ -168,8 +168,10 @@ export interface RenderedChunk extends PreRenderedChunk {
   referencedFiles: string[];
 }
 
+type InputOption = string | string[] | { [entryAlias: string]: string };
+
 export interface InputOptions {
-  input?: Rolldown.RollupOptions["input"];
+  input?: InputOption;
   plugins?: Plugin[];
   external?: IsExternal;
   resolve?: RolldownResolveOptions;

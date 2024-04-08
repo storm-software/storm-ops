@@ -18,7 +18,10 @@ import {
   writeDebug,
   writeInfo,
   applyWorkspaceProjectTokens,
-  applyWorkspaceTokens
+  applyWorkspaceTokens,
+  writeTrace,
+  writeWarning,
+  writeError
 } from "@storm-software/config-tools";
 import { globSync } from "glob";
 import { copyAssets } from "@nx/js";
@@ -371,25 +374,96 @@ export async function rolldownWithOptions(
     packageJson,
     npmDeps
   );
+  if (rolldownBuildOptions.length === 0) {
+    writeWarning(
+      config,
+      "🚫 The Build process failed because no entry points were found for the build process"
+    );
+
+    return;
+  }
 
   // #region Run the build process
 
   writeDebug(config, "⚡  Running the build process for each entry point");
 
+  writeTrace(
+    config,
+    `\n⚙️  Build options:
+${rolldownBuildOptions
+  .map(rolldownBuildOption =>
+    Object.keys(rolldownBuildOptions)
+      .map(
+        key =>
+          `${key}: ${
+            !rolldownBuildOption[key] || _isPrimitive(rolldownBuildOption[key])
+              ? rolldownBuildOption[key]
+              : _isFunction(rolldownBuildOption[key])
+                ? "<function>"
+                : JSON.stringify(rolldownBuildOption[key])
+          }`
+      )
+      .join("\n")
+  )
+  .join("\n----------\n\n")}
+`
+  );
+
   const start = process.hrtime.bigint();
 
   await Promise.allSettled(
-    rolldownBuildOptions.map(opts =>
-      rolldownBuild(opts).then(build => build.write(opts.output))
-    )
+    rolldownBuildOptions
+      .filter(opts => opts.input)
+      .map(opts =>
+        rolldownBuild(opts)
+          .then(build => build.write(opts.output))
+          .then(opt => {
+            writeInfo(
+              config,
+              `📦  Build process completed for entry point: ${opts.input}`
+            );
+          })
+          .catch(err => {
+            writeError(
+              config,
+              `🚫 The Build process failed for entry point: ${opts.input} - ${err?.message ? err.message : "No failure message could be identified"}`
+            );
+          })
+      )
   );
 
-  const end = process.hrtime.bigint();
-  const duration = `${(Number(end - start) / 1_000_000_000).toFixed(2)}s`;
-
-  writeInfo(config, `🚀 Build process completed in ${duration}`);
+  writeInfo(
+    config,
+    `🚀 Build process completed in ${(Number(process.hrtime.bigint() - start) / 1_000_000_000).toFixed(2)}s`
+  );
 
   // #endregion Run the build process
 }
 
 export default rolldown;
+
+const _isPrimitive = (value: unknown): boolean => {
+  try {
+    return (
+      value === undefined ||
+      value === null ||
+      (typeof value !== "object" && typeof value !== "function")
+    );
+  } catch (e) {
+    return false;
+  }
+};
+
+const _isFunction = (
+  value: unknown
+): value is ((params?: unknown) => unknown) & ((param?: any) => any) => {
+  try {
+    return (
+      value instanceof Function ||
+      typeof value === "function" ||
+      !!(value?.constructor && (value as any)?.call && (value as any)?.apply)
+    );
+  } catch (e) {
+    return false;
+  }
+};
