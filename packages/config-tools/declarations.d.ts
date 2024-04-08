@@ -267,3 +267,29 @@ declare function applyWorkspaceTokens<
   tokenizerFn: (option: string, config: TConfig) => string | Promise<string>
 ): Promise<Record<string, any>>;
 export { applyWorkspaceTokens };
+
+export type GetChalkReturn = {
+  hex: (_: string) => (message?: string) => string | undefined;
+  bgHex: (_: string) => {
+    whiteBright: (message?: string) => string | undefined;
+  };
+  whiteBright: (message?: string) => string | undefined;
+  bold: {
+    hex: (_: string) => (message?: string) => string | undefined;
+    bgHex: (_: string) => {
+      whiteBright: (message?: string) => string | undefined;
+    };
+    whiteBright: (message?: string) => string | undefined;
+  };
+};
+
+/**
+ * Get the chalk instance
+ *
+ * @remarks
+ * Annoying polyfill to temporarily fix the issue with the `chalk` import
+ *
+ * @returns The chalk instance
+ */
+declare function getChalk(): GetChalkReturn;
+export { getChalk };

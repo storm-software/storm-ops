@@ -11,6 +11,7 @@
         "main": "packages/config-tools/src/index.ts",
         "additionalEntryPoints": [
           "packages/config-tools/src/utilities/find-workspace-root.ts",
+          "packages/config-tools/src/utilities/chalk.ts",
           "packages/config-tools/src/utilities/logger.ts"
         ],
         "outputPath": "dist/packages/config-tools",

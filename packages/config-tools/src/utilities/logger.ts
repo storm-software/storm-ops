@@ -1,24 +1,7 @@
 import { LogLevel, LogLevelLabel } from "../types";
 import type { StormConfig } from "@storm-software/config";
 import { getLogLevel } from "./get-log-level";
-import chalk from "chalk";
-
-// Annoying chalk polyfill to temporarily fix the issue with the `chalk` import
-const chalkDefault = {
-  hex: (_: string) => (message?: string) => message,
-  bgHex: (_: string) => ({
-    whiteBright: (message?: string) => message
-  }),
-  whiteBright: (message?: string) => message,
-  bold: {
-    hex: (_: string) => (message?: string) => message,
-    bgHex: (_: string) => ({
-      whiteBright: (message?: string) => message
-    }),
-    whiteBright: (message?: string) => message
-  }
-} as any;
-// const chalk = chalkDefault;
+import { getChalk } from "./chalk";
 
 /**
  * Get the log function for a log level
@@ -31,10 +14,7 @@ export const getLogFn = (
   config: Partial<StormConfig> = {},
   logLevel: number | LogLevel = LogLevel.INFO
 ): ((message?: string) => void) => {
-  let _chalk = chalk;
-  if (!_chalk?.hex || !_chalk?.bold?.hex || !_chalk?.bgHex || !_chalk?.whiteBright) {
-    _chalk = chalkDefault;
-  }
+  let _chalk = getChalk();
 
   const configLogLevel = (config.logLevel ??
     process.env?.STORM_LOG_LEVEL ??
@@ -42,8 +22,10 @@ export const getLogFn = (
 
   if (
     (typeof logLevel === "number" &&
-      (logLevel >= getLogLevel(configLogLevel) || logLevel <= LogLevel.SILENT)) ||
-    (typeof logLevel === "string" && getLogLevel(logLevel) >= getLogLevel(configLogLevel))
+      (logLevel >= getLogLevel(configLogLevel) ||
+        logLevel <= LogLevel.SILENT)) ||
+    (typeof logLevel === "string" &&
+      getLogLevel(logLevel) >= getLogLevel(configLogLevel))
   ) {
     return (_: string) => {
       /* noop */
