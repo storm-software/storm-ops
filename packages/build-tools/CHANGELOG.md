@@ -1,3 +1,15 @@
+## 0.4.10 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Update the package as a `module` type ([e1f610db](https://github.com/storm-software/storm-ops/commit/e1f610db))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.9 (2024-04-08)
 
 
