@@ -1,3 +1,15 @@
+## 0.4.1 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Marked the module as esm ([9059a516](https://github.com/storm-software/storm-ops/commit/9059a516))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.0 (2024-04-07)
 
 
