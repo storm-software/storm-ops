@@ -4,7 +4,7 @@
   "sourceRoot": "packages/build-tools/src",
   "projectType": "library",
   "targets": {
-    "build": {
+    "build-lib": {
       "cache": true,
       "executor": "@nx/esbuild:esbuild",
       "inputs": ["default", "^production"],
@@ -32,7 +32,8 @@
           "outExtension": {
             ".js": ".js"
           },
-          "inject": ["packages/build-tools/assets/cjs_shims.js"]
+          "inject": ["packages/build-tools/assets/cjs_shims.js"],
+          "define": { "import.meta.url": "importMetaUrl" }
         },
         "assets": [
           {
@@ -52,14 +53,49 @@
           },
           {
             "input": "packages/build-tools",
-            "glob": "bin/**/{*,*.*}",
-            "output": "."
-          },
-          {
-            "input": "packages/build-tools",
             "glob": "assets/*.*",
             "output": "."
           }
+        ]
+      }
+    },
+    "build-bin": {
+      "cache": true,
+      "executor": "@nx/esbuild:esbuild",
+      "inputs": ["default", "^production"],
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/build-tools/bin",
+        "tsConfig": "packages/build-tools/tsconfig.json",
+        "project": "packages/build-tools/package.json",
+        "main": "packages/build-tools/bin/build.ts",
+        "deleteOutputPath": true,
+        "bundle": true,
+        "sourcemap": true,
+        "minify": false,
+        "skipTypeCheck": false,
+        "thirdParty": true,
+        "platform": "node",
+        "external": ["nx", "@swc/core"],
+        "format": ["esm"],
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".mjs"
+          }
+        }
+      }
+    },
+    "build": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": ["default", "^production"],
+      "dependsOn": ["build-lib", "build-bin"],
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/build-tools",
+        "commands": [
+          "nx run build-tools:build-lib",
+          "nx run build-tools:build-bin"
         ]
       }
     },

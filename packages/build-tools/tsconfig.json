@@ -8,7 +8,7 @@
     "allowSyntheticDefaultImports": true,
     "types": ["node"]
   },
-  "include": ["src/**/*.ts", "assets/*", "declarations.d.ts"],
+  "include": ["src/**/*.ts", "bin/**/*.ts", "assets/*", "declarations.d.ts"],
   "exclude": [
     "node_modules",
     "jest.config.ts",
