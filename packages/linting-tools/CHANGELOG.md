@@ -1,3 +1,15 @@
+## 1.46.6 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolved issue with module types used in build ([50a368d3](https://github.com/storm-software/storm-ops/commit/50a368d3))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.46.5 (2024-04-08)
 
 
