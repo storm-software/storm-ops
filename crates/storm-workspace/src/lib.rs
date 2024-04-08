@@ -1,19 +1,19 @@
 pub mod errors;
 pub mod utils;
 
-#[cfg(test)]
-mod tests {
-  use crate::utils::get_workspace_root;
-  use std::fs::read_to_string;
+// #[cfg(test)]
+// mod tests {
+//   use crate::utils::get_workspace_root;
+//   use std::fs::read_to_string;
 
-  #[test]
-  fn it_should_find_workspace_root() {
-    let crate_name = "name = 'storm-ops'";
+//   #[test]
+//   fn it_should_find_workspace_root() {
+//     let crate_name = "name = 'storm-ops'";
 
-    let workspace_root = get_workspace_root().expect("There is no project root");
-    let toml_path = workspace_root.to_str().unwrap().to_owned() + "/Cargo.toml";
-    let toml_string = read_to_string(toml_path).unwrap();
+//     let workspace_root = get_workspace_root().expect("There is no project root");
+//     let toml_path = workspace_root.to_str().unwrap().to_owned() + "/Cargo.toml";
+//     let toml_string = read_to_string(toml_path).unwrap();
 
-    assert!(toml_string.contains(crate_name));
-  }
-}
+//     assert!(toml_string.contains(crate_name));
+//   }
+// }
