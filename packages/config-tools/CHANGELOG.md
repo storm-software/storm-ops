@@ -1,3 +1,15 @@
+## 1.35.2 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Added code to invoke rolldown via command-line ([b365a74e](https://github.com/storm-software/storm-ops/commit/b365a74e))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.35.1 (2024-04-08)
 
 
