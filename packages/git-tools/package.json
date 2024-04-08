@@ -41,7 +41,7 @@
     "storm-version-warning": "./bin/version-warning.js"
   },
   "dependencies": {
-    "@commitlint/types": "18.6.1",
+    "@commitlint/types": "19.0.3",
     "any-shell-escape": "0.1.1",
     "axios": "0.27.2",
     "commander": "12.0.0",
