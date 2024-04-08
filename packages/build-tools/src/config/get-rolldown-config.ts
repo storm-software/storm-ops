@@ -32,7 +32,7 @@ const image = require("@rollup/plugin-image");
 const json = require("@rollup/plugin-json");
 const postcss = require("rollup-plugin-postcss");
 
-export const DefaultConfig = {
+export const DEFAULT_CONFIG = {
   input: "./src/index.ts",
   plugins: [
     esbuild({
@@ -55,19 +55,21 @@ export async function getRolldownBuildOptions(
   npmDeps: string[]
 ): Promise<RolldownBuildOptions[]> {
   const buildOptions = defineConfig(
-    merge(DefaultConfig, options)
+    merge(DEFAULT_CONFIG, options)
   ) as RolldownBuildOptions;
 
-  buildOptions.output ??= DefaultConfig.output;
-  buildOptions.output!.dir = options?.outputPath;
+  buildOptions.output = {
+    dir: options.outputPath,
+    exports: options.exports,
+    sourcemap: options.sourcemap,
+    banner: options.banner,
+    footer: options.footer
+  };
+
   buildOptions.resolve = options.resolve;
   buildOptions.plugins = options.plugins;
-  buildOptions.output!.exports = options.exports;
   buildOptions.platform = options.platform;
   buildOptions.external = options.external;
-  buildOptions.output!.sourcemap = options.sourcemap;
-  buildOptions.output!.banner = options.banner;
-  buildOptions.output!.footer = options.footer;
   buildOptions.cwd = config.workspaceRoot as string;
 
   const tsConfigPath = joinPathFragments(
@@ -139,7 +141,7 @@ export async function getRolldownBuildOptions(
         }),
         nodeResolve({
           preferBuiltins: true,
-          extensions: DefaultConfig.resolve?.extensions
+          extensions: DEFAULT_CONFIG.resolve?.extensions
         }),
         commonjs(),
         analyze()
