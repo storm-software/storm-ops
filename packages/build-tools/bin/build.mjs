@@ -21,5 +21,5 @@ const handle = async () => {
 };
 
 handle().then(() => {
-  loadStormConfig().then((config) => exitWithSuccess(config));
+  loadStormConfig().then(config => exitWithSuccess(config));
 });

@@ -8,17 +8,17 @@ import type {
 } from "../types";
 import { pathToFileURL } from "node:url";
 import merge from "deepmerge";
-import { createEntryPoints } from "@nx/js/src/utils/package-json/create-entry-points.js";
+import { createEntryPoints } from "@nx/js/src/utils/package-json/create-entry-points";
 import { joinPathFragments } from "@nx/devkit";
 import ts from "typescript";
 import {
   computeCompilerOptionsPaths,
   type DependentBuildableProjectNode
-} from "@nx/js/src/utils/buildable-libs-utils.js";
-import type { PackageJson } from "nx/src/utils/package-json.js";
+} from "@nx/js/src/utils/buildable-libs-utils";
+import type { PackageJson } from "nx/src/utils/package-json";
 import type { StormConfig } from "@storm-software/config";
 import { analyze } from "../plugins/analyze-plugin";
-import { typeDefinitions } from "@nx/js/src/plugins/rollup/type-definitions.js";
+import { typeDefinitions } from "@nx/js/src/plugins/rollup/type-definitions";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import deepClone from "deep-clone";
