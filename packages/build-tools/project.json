@@ -22,7 +22,7 @@
         "skipTypeCheck": false,
         "thirdParty": true,
         "platform": "node",
-        "format": ["esm"],
+        "format": ["esm", "cjs"],
         "external": ["nx", "@swc/core"],
         "esbuildOptions": {
           "legalComments": "inline",
