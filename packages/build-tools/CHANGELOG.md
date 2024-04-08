@@ -1,3 +1,15 @@
+## 0.4.4 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolve issue with build format ([02cd5c44](https://github.com/storm-software/storm-ops/commit/02cd5c44))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.3 (2024-04-08)
 
 
