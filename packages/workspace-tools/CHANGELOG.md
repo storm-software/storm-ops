@@ -1,3 +1,15 @@
+## 1.68.9 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **cloudflare-tools:** Added plugin code for cloudflare packages ([84c95f19](https://github.com/storm-software/storm-ops/commit/84c95f19))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.68.8 (2024-04-08)
 
 
