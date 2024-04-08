@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { createProgram } from "../src/cli";
+import { createProgram } from "../cli";
 
 const handle = async () => {
   const { exitWithSuccess, handleProcess, loadStormConfig, writeSuccess } =

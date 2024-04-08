@@ -15,6 +15,7 @@
         "project": "packages/build-tools/package.json",
         "main": "packages/build-tools/src/index.ts",
         "additionalEntryPoints": [
+          "packages/build-tools/src/cli/index.ts",
           "packages/build-tools/src/build/rolldown.ts",
           "packages/build-tools/src/build/ts-build.ts"
         ],
@@ -30,7 +31,8 @@
         "esbuildOptions": {
           "outExtension": {
             ".js": ".js"
-          }
+          },
+          "inject": ["packages/build-tools/assets/cjs_shims.js"]
         },
         "assets": [
           {
