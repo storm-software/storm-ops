@@ -1,3 +1,17 @@
+## 0.4.19 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolved null reference issue creating build config ([35fa37aa](https://github.com/storm-software/storm-ops/commit/35fa37aa))
+
+- **build-tools:** Update the `build` task configuration ([31b98d50](https://github.com/storm-software/storm-ops/commit/31b98d50))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.18 (2024-04-08)
 
 

@@ -1,3 +1,15 @@
+## 0.0.7 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Update the `build` task configuration ([31b98d50](https://github.com/storm-software/storm-ops/commit/31b98d50))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.0.6 (2024-04-08)
 
 
