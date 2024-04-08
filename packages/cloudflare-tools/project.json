@@ -5,32 +5,68 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
+      "executor": "@nx/esbuild:esbuild",
+      "inputs": ["default", "^production"],
+      "dependsOn": ["clean", "^build"],
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/cloudflare-tools",
-        "main": "packages/cloudflare-tools/src/index.ts",
         "tsConfig": "packages/cloudflare-tools/tsconfig.lib.json",
+        "project": "packages/cloudflare-tools/package.json",
+        "main": "packages/cloudflare-tools/index.ts",
+        "additionalEntryPoints": [
+          "packages/cloudflare-tools/src/plugin/index.ts"
+        ],
+        "platform": "node",
+        "deleteOutputPath": true,
+        "bundle": true,
+        "thirdParty": true,
+        "skipTypeCheck": false,
+        "metafile": true,
+        "minify": false,
+        "format": ["cjs"],
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".js"
+          }
+        },
+        "external": ["nx", "@nx/devkit", "@storm-software/build-tools"],
         "assets": [
-          "packages/cloudflare-tools/*.md",
           {
-            "input": "./packages/cloudflare-tools/src",
-            "glob": "**/!(*.ts)",
-            "output": "./src"
+            "input": "packages/cloudflare-tools",
+            "glob": "**/files/**",
+            "output": "/"
           },
           {
-            "input": "./packages/cloudflare-tools/src",
-            "glob": "**/*.d.ts",
-            "output": "./src"
+            "input": "packages/cloudflare-tools",
+            "glob": "**/files/**/.gitkeep",
+            "output": "/"
           },
           {
-            "input": "./packages/cloudflare-tools",
-            "glob": "generators.json",
+            "input": "packages/cloudflare-tools",
+            "glob": "**/*.json",
+            "ignore": ["**/tsconfig*.json", "project.json", ".eslintrc.json"],
             "output": "."
           },
           {
-            "input": "./packages/cloudflare-tools",
-            "glob": "executors.json",
+            "input": "packages/cloudflare-tools",
+            "glob": "**/*.js",
+            "ignore": ["**/jest.config.js"],
+            "output": "."
+          },
+          {
+            "input": "packages/cloudflare-tools",
+            "glob": "**/*.d.ts",
+            "output": "."
+          },
+          {
+            "input": "packages/cloudflare-tools",
+            "glob": "*.md",
+            "output": "."
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
             "output": "."
           }
         ]

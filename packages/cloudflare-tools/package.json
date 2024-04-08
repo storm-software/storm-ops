@@ -3,18 +3,49 @@
   "version": "0.0.4",
   "private": false,
   "description": "⚡The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.",
+  "keywords": [
+    "storm",
+    "storm-ops",
+    "stormstack",
+    "storm-stack",
+    "sullivanpj",
+    "open-system",
+    "monorepo"
+  ],
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.com"
+  },
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/cloudflare-tools"
   },
+  "license": "Apache 2.0",
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
   "type": "commonjs",
-  "main": "./src/index.js",
-  "typings": "./src/index.d.ts",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json",
+    "./generators.json": "./generators.json",
+    "./generators/*/schema.json": "./src/generators/*/schema.json",
+    "./executors.json": "./executors.json",
+    "./executors/*/schema.json": "./src/executors/*/schema.json",
+    "./plugin": "./src/plugin/index.js"
+  },
+  "main": "./index.js",
+  "typings": "./declarations.d.ts",
   "dependencies": {
     "tslib": "2.6.2"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "executors": "./executors.json",
+  "generators": "./generators.json"
 }
