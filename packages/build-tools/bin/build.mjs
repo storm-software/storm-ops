@@ -1,14 +1,11 @@
 #!/usr/bin/env node
 
-import {
-  exitWithSuccess,
-  handleProcess,
-  loadStormConfig,
-  writeSuccess
-} from "@storm-software/config-tools";
 import { createProgram } from "../src/cli";
 
 const handle = async () => {
+  const { exitWithSuccess, handleProcess, loadStormConfig, writeSuccess } =
+    await import("@storm-software/config-tools");
+
   const config = await loadStormConfig();
   handleProcess(config);
 
@@ -21,5 +18,7 @@ const handle = async () => {
 };
 
 handle().then(() => {
-  loadStormConfig().then(config => exitWithSuccess(config));
+  return import("@storm-software/config-tools").then(mod => {
+    mod.loadStormConfig().then(config => mod.exitWithSuccess(config));
+  });
 });
