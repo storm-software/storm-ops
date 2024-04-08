@@ -705,7 +705,7 @@ export async function createNxReleaseConfig(
     (userConfig.projectsRelationship === "independent" &&
       !userGroups.some(g => g.projectsRelationship === "fixed"));
 
-  const defaultRendererPath = join(__dirname, "./changelog-renderer");
+  const defaultRendererPath = "./changelog-renderer";
   const WORKSPACE_DEFAULTS: Omit<NxReleaseConfig, "groups"> = {
     // By default all projects in all groups are released together
     projectsRelationship: workspaceProjectsRelationship,
@@ -911,6 +911,10 @@ export async function createNxReleaseConfig(
       projectGraph.nodes
     );
     if (!matchingProjects.length) {
+      if (releaseGroupName === IMPLICIT_DEFAULT_RELEASE_GROUP) {
+        continue;
+      }
+
       return {
         error: {
           code: "RELEASE_GROUP_MATCHES_NO_PROJECTS",
