@@ -1,3 +1,15 @@
+## 1.35.5 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolve issue with Nx file imports ([e86eff43](https://github.com/storm-software/storm-ops/commit/e86eff43))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.35.4 (2024-04-08)
 
 
