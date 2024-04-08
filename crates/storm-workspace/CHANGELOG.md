@@ -1,3 +1,15 @@
+## 0.3.2 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **storm-workspace:** Remove test to prevent CI failures ([bed38911](https://github.com/storm-software/storm-ops/commit/bed38911))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.3.1 (2024-04-08)
 
 ### 🩹 Fixes
