@@ -1,3 +1,15 @@
+## 1.35.6 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Export `getChalk` function so that it can be used in other packages ([2ca2241a](https://github.com/storm-software/storm-ops/commit/2ca2241a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.35.5 (2024-04-08)
 
 

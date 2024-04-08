@@ -1,3 +1,15 @@
+## 0.4.15 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Update module typings for bin and package files ([f3ecfe59](https://github.com/storm-software/storm-ops/commit/f3ecfe59))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.14 (2024-04-08)
 
 
