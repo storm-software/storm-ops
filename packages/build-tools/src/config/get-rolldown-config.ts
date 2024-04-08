@@ -25,6 +25,7 @@ import deepClone from "deep-clone";
 import autoprefixer from "autoprefixer";
 import { dirname, extname } from "node:path";
 import { loadConfigFile } from "@nx/devkit/src/utils/config-utils";
+import { writeDebug } from "@storm-software/config-tools";
 
 // These use require because the ES import isn't correct.
 const commonjs = require("@rollup/plugin-commonjs");
@@ -93,95 +94,100 @@ export async function getRolldownBuildOptions(
   );
   externalPackages = [...new Set(externalPackages)];
 
-  const buildOptionsList = [] as RolldownBuildOptions[];
-  if (options.additionalEntryPoints) {
-    for (const entry of [
-      options.entry,
+  const entryPoints = [options.entry];
+  if (
+    options.additionalEntryPoints &&
+    options.additionalEntryPoints.length > 0
+  ) {
+    entryPoints.push(
       ...createEntryPoints(options.additionalEntryPoints, options.projectRoot)
-    ]) {
-      const buildOpts = deepClone(buildOptions as { [key: string]: any });
-      buildOpts.input = entry;
+    );
+  }
 
-      buildOpts.plugins.push([
-        image(),
-        json(),
-        // Needed to generate type definitions, even if we're using babel or swc.
-        !options.skipTypeCheck &&
-          require("rollup-plugin-typescript2")({
-            check: !options.skipTypeCheck,
-            tsconfig: options.tsConfig,
-            tsconfigOverride: {
-              compilerOptions: createTsCompilerOptions(
-                tsconfig,
-                dependencies,
-                options
-              )
-            }
-          }),
-        typeDefinitions({
-          main: entry,
-          projectRoot: options.projectRoot
-        }),
-        peerDepsExternal({
-          packageJsonPath: joinPathFragments(
-            options.projectRoot,
-            "package.json"
-          )
-        }),
-        postcss({
-          inject: true,
-          extract: options.extractCss,
-          autoModules: true,
-          plugins: [autoprefixer],
-          use: {
-            less: {
-              javascriptEnabled: true
-            }
+  writeDebug(
+    config,
+    `Found the following build entry points: ${entryPoints.join(", ")}`
+  );
+
+  const buildOptionsList = [] as RolldownBuildOptions[];
+  for (const entry of entryPoints) {
+    const buildOpts = deepClone(buildOptions as { [key: string]: any });
+    buildOpts.input = entry;
+
+    buildOpts.plugins.push([
+      image(),
+      json(),
+      // Needed to generate type definitions, even if we're using babel or swc.
+      !options.skipTypeCheck &&
+        require("rollup-plugin-typescript2")({
+          check: !options.skipTypeCheck,
+          tsconfig: options.tsConfig,
+          tsconfigOverride: {
+            compilerOptions: createTsCompilerOptions(
+              tsconfig,
+              dependencies,
+              options
+            )
           }
         }),
-        nodeResolve({
-          preferBuiltins: true,
-          extensions: DEFAULT_CONFIG.resolve?.extensions
-        }),
-        commonjs(),
-        analyze()
-      ]);
-
-      let nextConfig = {
-        ...buildOpts,
-        plugins: buildOpts.plugins.map(plugin => loadConfigFile(plugin)),
-        external: (id: string) =>
-          externalPackages.some(
-            name => id === name || id.startsWith(`${name}/`)
-          ),
-        cwd: config.workspaceRoot,
-        platform: options.platform
-      } as RolldownBuildOptions;
-
-      let customConfigs = [] as RolldownUserDefinedConfig[];
-      if (options.rolldownConfig) {
-        if (!Array.isArray(options.rolldownConfig)) {
-          customConfigs = [options.rolldownConfig];
-        } else {
-          customConfigs = options.rolldownConfig;
+      typeDefinitions({
+        main: entry,
+        projectRoot: options.projectRoot
+      }),
+      peerDepsExternal({
+        packageJsonPath: joinPathFragments(options.projectRoot, "package.json")
+      }),
+      postcss({
+        inject: true,
+        extract: options.extractCss,
+        autoModules: true,
+        plugins: [autoprefixer],
+        use: {
+          less: {
+            javascriptEnabled: true
+          }
         }
-      }
+      }),
+      nodeResolve({
+        preferBuiltins: true,
+        extensions: DEFAULT_CONFIG.resolve?.extensions
+      }),
+      commonjs(),
+      analyze()
+    ]);
 
-      for (const customConfig of customConfigs) {
-        if (typeof customConfig === "function") {
-          nextConfig = await Promise.resolve(customConfig(nextConfig));
-        } else if (typeof customConfig === "string") {
-          const customConfigFile = await loadConfig(customConfig as string);
-          nextConfig = customConfigFile
-            ? merge(nextConfig, customConfigFile)
-            : nextConfig;
-        } else {
-          nextConfig = merge(nextConfig, customConfig);
-        }
-      }
+    let nextConfig = {
+      ...buildOpts,
+      plugins: buildOpts.plugins.map(plugin => loadConfigFile(plugin)),
+      external: (id: string) =>
+        externalPackages.some(name => id === name || id.startsWith(`${name}/`)),
+      cwd: config.workspaceRoot,
+      platform: options.platform
+    } as RolldownBuildOptions;
 
-      buildOptionsList.push(nextConfig);
+    let customConfigs = [] as RolldownUserDefinedConfig[];
+    if (options.rolldownConfig) {
+      if (!Array.isArray(options.rolldownConfig)) {
+        customConfigs = [options.rolldownConfig];
+      } else {
+        customConfigs = options.rolldownConfig;
+      }
     }
+
+    for (const customConfig of customConfigs) {
+      if (typeof customConfig === "function") {
+        nextConfig = await Promise.resolve(customConfig(nextConfig));
+      } else if (typeof customConfig === "string") {
+        const customConfigFile = await loadConfig(customConfig as string);
+        nextConfig = customConfigFile
+          ? merge(nextConfig, customConfigFile)
+          : nextConfig;
+      } else {
+        nextConfig = merge(nextConfig, customConfig);
+      }
+    }
+
+    buildOptionsList.push(nextConfig);
   }
 
   return buildOptionsList;
