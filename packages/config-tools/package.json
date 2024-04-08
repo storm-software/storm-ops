@@ -11,7 +11,7 @@
   "main": "./index.js",
   "types": "declarations.d.ts",
   "dependencies": {
-    "chalk": "4.1.2",
+    "chalk": "5.3.0",
     "cosmiconfig": "9.0.0",
     "zod": "3.22.4"
   },
