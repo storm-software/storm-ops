@@ -1,3 +1,15 @@
+## 1.37.2 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve issues with `build-tools` import ([fc040f71](https://github.com/storm-software/storm-ops/commit/fc040f71))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.37.1 (2024-04-08)
 
 
