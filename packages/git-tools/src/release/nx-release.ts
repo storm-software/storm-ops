@@ -10,7 +10,7 @@ import {
 import {
   // type NxReleaseConfig,
   createNxReleaseConfig
-} from "nx/src/command-line/release/config/config.js";
+} from "./release-config";
 // import {
 //   type ReleaseGroupWithName,
 //   filterReleaseGroups
