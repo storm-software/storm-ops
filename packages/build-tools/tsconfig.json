@@ -3,19 +3,12 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "strict": false,
-    "module": "commonjs",
+    "module": "ESNext",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "types": [
-      "node"
-    ]
+    "types": ["node"]
   },
-  "include": [
-    "src/**/*.ts",
-    "bin/**/*.ts",
-    "assets/*",
-    "declarations.d.ts"
-  ],
+  "include": ["src/**/*.ts", "bin/**/*.ts", "assets/*", "declarations.d.ts"],
   "exclude": [
     "node_modules",
     "jest.config.ts",
