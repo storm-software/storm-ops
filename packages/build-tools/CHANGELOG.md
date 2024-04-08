@@ -1,3 +1,15 @@
+## 0.4.21 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Enhance the logic to apply multiple entry points ([962e72b7](https://github.com/storm-software/storm-ops/commit/962e72b7))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.20 (2024-04-08)
 
 
