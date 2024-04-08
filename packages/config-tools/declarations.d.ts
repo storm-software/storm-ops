@@ -29,7 +29,9 @@ export { findWorkspaceRoot };
  *
  * @param pathInsideMonorepo - The path inside the monorepo
  */
-declare function findWorkspaceRootSafe(pathInsideMonorepo?: string): string | undefined;
+declare function findWorkspaceRootSafe(
+  pathInsideMonorepo?: string
+): string | undefined;
 export { findWorkspaceRootSafe };
 
 /**
@@ -63,7 +65,8 @@ export { loadStormConfig };
  * @returns The function isStormError is returning a boolean value.
  */
 declare function createStormConfig<
-  TExtensionName extends keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
+  TExtensionName extends
+    keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
   TExtensionConfig = any,
   TExtensionSchema extends z.ZodTypeAny = z.ZodTypeAny
 >(
@@ -109,7 +112,10 @@ export { handleProcess };
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-declare function writeFatal(config: Partial<StormConfig>, message: string): void;
+declare function writeFatal(
+  config: Partial<StormConfig>,
+  message: string
+): void;
 export { writeFatal };
 
 /**
@@ -118,7 +124,10 @@ export { writeFatal };
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-declare function writeError(config: Partial<StormConfig>, message: string): void;
+declare function writeError(
+  config: Partial<StormConfig>,
+  message: string
+): void;
 export { writeError };
 
 /**
@@ -127,7 +136,10 @@ export { writeError };
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-declare function writeWarning(config: Partial<StormConfig>, message: string): void;
+declare function writeWarning(
+  config: Partial<StormConfig>,
+  message: string
+): void;
 export { writeWarning };
 
 /**
@@ -145,7 +157,10 @@ export { writeInfo };
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-declare function writeSuccess(config: Partial<StormConfig>, message: string): void;
+declare function writeSuccess(
+  config: Partial<StormConfig>,
+  message: string
+): void;
 export { writeSuccess };
 
 /**
@@ -154,7 +169,10 @@ export { writeSuccess };
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-declare function writeDebug(config: Partial<StormConfig>, message: string): void;
+declare function writeDebug(
+  config: Partial<StormConfig>,
+  message: string
+): void;
 export { writeDebug };
 
 /**
@@ -163,7 +181,10 @@ export { writeDebug };
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-declare function writeTrace(config: Partial<StormConfig>, message: string): void;
+declare function writeTrace(
+  config: Partial<StormConfig>,
+  message: string
+): void;
 export { writeTrace };
 
 /**
@@ -172,7 +193,10 @@ export { writeTrace };
  * @param config - The Storm configuration
  * @param message - The message to write
  */
-declare function writeSystem(config: Partial<StormConfig>, message: string): void;
+declare function writeSystem(
+  config: Partial<StormConfig>,
+  message: string
+): void;
 export { writeSystem };
 
 /**
@@ -185,6 +209,10 @@ declare function getStopwatch(name: string): () => void;
 export { getStopwatch };
 
 declare const LARGE_BUFFER: number;
+export type IOType = "overlapped" | "pipe" | "ignore" | "inherit";
+export type StdioOptions =
+  | IOType
+  | Array<IOType | "ipc" | number | null | undefined>;
 
 /**
  *  Run a command line process
@@ -197,7 +225,12 @@ declare const LARGE_BUFFER: number;
  * @param cwd - The current working directory
  * @returns The result of the command
  */
-declare function run(config: StormConfig, command: string, cwd: string = config.workspaceRoot): any;
+declare function run(
+  config: StormConfig,
+  command: string,
+  cwd: string = config.workspaceRoot,
+  stdio: StdioOptions = "inherit"
+): any;
 export { run };
 
 declare function getLogLevel(label?: string): LogLevel;
@@ -226,7 +259,9 @@ declare function applyWorkspaceProjectTokens(
 ): Promise<string>;
 export { applyWorkspaceProjectTokens };
 
-declare function applyWorkspaceTokens<TConfig extends BaseTokenizerOptions = BaseTokenizerOptions>(
+declare function applyWorkspaceTokens<
+  TConfig extends BaseTokenizerOptions = BaseTokenizerOptions
+>(
   options: Record<string, any>,
   config: TConfig,
   tokenizerFn: (option: string, config: TConfig) => string | Promise<string>
