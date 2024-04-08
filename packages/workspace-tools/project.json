@@ -53,8 +53,7 @@
           "@nx/devkit",
           "esbuild",
           "@swc/*",
-          "./transpilers/swc.js",
-          "style-inject/dist/style-inject.es"
+          "@storm-software/build-tools"
         ],
         "assets": [
           {

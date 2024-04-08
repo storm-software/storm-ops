@@ -24,7 +24,9 @@ declare function outExtension({ format }: { format?: string }): {
 };
 export { outExtension };
 
-declare function applyDefaultOptions(options: TypeScriptBuildOptions): TypeScriptBuildOptions;
+declare function applyDefaultOptions(
+  options: TypeScriptBuildOptions
+): TypeScriptBuildOptions;
 export { applyDefaultOptions };
 
 declare function runTsupBuild(
@@ -69,3 +71,15 @@ declare function buildWithOptions(
   options: TypeScriptBuildOptions
 ): Promise<void>;
 export { buildWithOptions };
+
+declare async function rolldown(
+  config: StormConfig,
+  options: Partial<RolldownOptions> = {}
+): Promise<void>;
+export { rolldown };
+
+declare async function rolldownWithOptions(
+  config: StormConfig,
+  options: RolldownOptions
+): Promise<void>;
+export { rolldownWithOptions };

@@ -3,15 +3,9 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "declaration": true,
-    "types": [
-      "node"
-    ]
+    "types": ["node"]
   },
-  "include": [
-    "**/*.ts",
-    "**/*.json",
-    "declarations.d.ts"
-  ],
+  "include": ["**/*.ts", "**/*.json", "declarations.d.ts"],
   "exclude": [
     "jest.config.ts",
     "src/generators/**/files/**/*",

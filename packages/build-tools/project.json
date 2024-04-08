@@ -23,13 +23,13 @@
         "thirdParty": true,
         "platform": "node",
         "format": ["esm"],
-        "external": [
-          "nx",
-          "esbuild",
-          "@swc/core",
-          "./transpilers/swc.js",
-          "style-inject/dist/style-inject.es"
-        ],
+        "external": ["nx", "@swc/core"],
+        "esbuildOptions": {
+          "legalComments": "inline",
+          "banner": {
+            "js": "const require = (await import('node:module')).createRequire(import.meta.url);"
+          }
+        },
         "assets": [
           {
             "input": "packages/build-tools",
@@ -39,6 +39,11 @@
           {
             "input": "",
             "glob": "LICENSE",
+            "output": "."
+          },
+          {
+            "input": "packages/build-tools",
+            "glob": "declarations.d.ts",
             "output": "."
           },
           {

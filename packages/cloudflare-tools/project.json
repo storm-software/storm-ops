@@ -36,16 +36,8 @@
         ]
       }
     },
-    "publish": {
-      "command": "node tools/scripts/publish.mjs cloudflare-tools {args.ver} {args.tag}",
-      "dependsOn": ["build"]
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "packages/cloudflare-tools/jest.config.ts"
-      }
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
     }
   },
   "tags": []
