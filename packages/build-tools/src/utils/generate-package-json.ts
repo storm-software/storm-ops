@@ -20,7 +20,7 @@ import {
   writeWarning
 } from "@storm-software/config-tools";
 import { getEntryPoints } from "./get-entry-points";
-import { readCachedProjectGraph } from "nx/src/project-graph/project-graph";
+import { readCachedProjectGraph } from "nx/src/project-graph/project-graph.js";
 
 type DependencyNodeData = {
   version: string;
