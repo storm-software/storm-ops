@@ -1,3 +1,15 @@
+## 0.4.14 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Remove unused chalk depenency ([ac82cd1a](https://github.com/storm-software/storm-ops/commit/ac82cd1a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.13 (2024-04-08)
 
 
