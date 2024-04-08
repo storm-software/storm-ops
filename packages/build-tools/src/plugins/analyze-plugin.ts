@@ -1,4 +1,3 @@
-import chalk from "chalk";
 import { logger } from "@nx/devkit";
 
 const formatBytes = bytes => {
@@ -16,7 +15,7 @@ export function analyze() {
     renderChunk(source, chunk) {
       const sourceBytes = formatBytes(source.length);
       const fileName = chunk.fileName;
-      logger.info(`  ${chalk.bold(fileName)} ${chalk.cyan(sourceBytes)}`);
+      logger.info(`  ${fileName} ${sourceBytes}`);
     }
   };
 }
