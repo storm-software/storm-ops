@@ -1,3 +1,15 @@
+## 0.4.20 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Added better build logging and validations ([03b595a4](https://github.com/storm-software/storm-ops/commit/03b595a4))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.19 (2024-04-08)
 
 
