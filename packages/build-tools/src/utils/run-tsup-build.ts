@@ -1,9 +1,9 @@
 import { dirname, sep, join } from "node:path";
 import { esbuildDecorators } from "@anatine/esbuild-decorators";
-import { getCustomTrasformersFactory } from "@nx/js/src/executors/tsc/lib/get-custom-transformers-factory";
-import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options";
-import type { NormalizedExecutorOptions } from "@nx/js/src/utils/schema";
-import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
+import { getCustomTrasformersFactory } from "@nx/js/src/executors/tsc/lib/get-custom-transformers-factory.js";
+import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options.js";
+import type { NormalizedExecutorOptions } from "@nx/js/src/utils/schema.js";
+import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation.js";
 import type { StormConfig } from "@storm-software/config";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import type { TsupContext, TypeScriptBuildOptions } from "../types";
@@ -11,27 +11,35 @@ import { defaultConfig, getConfig } from "../config";
 import { findFileName, removeExtension } from "@storm-software/config-tools";
 // import { type TSConfig, readTSConfig } from "pkg-types";
 import { type Options, build as tsup, defineConfig } from "tsup";
-import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript";
+import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript.js";
 
 export const runTsupBuild = async (
   context: TsupContext,
   config: Partial<StormConfig>,
   options: TypeScriptBuildOptions
 ) => {
-  const { writeInfo, writeTrace, writeWarning, correctPaths, findWorkspaceRoot } = await import(
-    "@storm-software/config-tools"
-  );
+  const {
+    writeInfo,
+    writeTrace,
+    writeWarning,
+    correctPaths,
+    findWorkspaceRoot
+  } = await import("@storm-software/config-tools");
 
-  const workspaceRoot = correctPaths(config?.workspaceRoot ?? findWorkspaceRoot());
+  const workspaceRoot = correctPaths(
+    config?.workspaceRoot ?? findWorkspaceRoot()
+  );
 
   writeTrace(
     config,
     `⚙️  TSUP (ESBuild) Build options:
 ${Object.keys(options)
   .map(
-    (key) =>
+    key =>
       `${key}: ${
-        !options[key] || _isPrimitive(options[key]) ? options[key] : JSON.stringify(options[key])
+        !options[key] || _isPrimitive(options[key])
+          ? options[key]
+          : JSON.stringify(options[key])
       }`
   )
   .join("\n")}
@@ -43,7 +51,7 @@ ${Object.keys(options)
   // #region Add default plugins
 
   const stormEnv = Object.keys(options.env ?? {})
-    .filter((key) => key.startsWith("STORM_"))
+    .filter(key => key.startsWith("STORM_"))
     .reduce((ret, key) => {
       ret[key] = options.env?.[key];
       return ret;
@@ -84,7 +92,7 @@ ${Object.keys(options)
     `⚙️  TSC (Type Declarations) Build options:
 ${Object.keys(dtsTsConfig.options)
   .map(
-    (key) =>
+    key =>
       `${key}: ${
         !dtsTsConfig.options[key] || _isPrimitive(dtsTsConfig.options[key])
           ? dtsTsConfig.options[key]
@@ -104,7 +112,13 @@ ${Object.keys(dtsTsConfig.options)
     entry: {
       [removeExtension(
         context.main
-          ?.split(context.main?.includes(sep) ? sep : context.main?.includes("/") ? "/" : "\\")
+          ?.split(
+            context.main?.includes(sep)
+              ? sep
+              : context.main?.includes("/")
+                ? "/"
+                : "\\"
+          )
           ?.pop()
       )]: context.main
     },
@@ -114,7 +128,7 @@ ${Object.keys(dtsTsConfig.options)
     env: {
       __STORM_CONFIG: JSON.stringify(stormEnv),
       ...Object.keys(options.env ?? {})
-        .filter((key) => !key.includes("(") && !key.includes(")"))
+        .filter(key => !key.includes("(") && !key.includes(")"))
         .reduce((ret, key) => {
           ret[key] = options.env?.[key];
           return ret;
@@ -150,8 +164,13 @@ ${options.banner}
 
   const getConfigFns = [options.getConfig];
   const tsupConfig = defineConfig(
-    getConfigFns.map((getConfigFn) =>
-      getConfig(workspaceRoot, context.projectRoot, getConfigFn, getConfigOptions)
+    getConfigFns.map(getConfigFn =>
+      getConfig(
+        workspaceRoot,
+        context.projectRoot,
+        getConfigFn,
+        getConfigOptions
+      )
     )
   );
 
@@ -172,7 +191,10 @@ async function getNormalizedTsConfig(
 
   const tsModule = ensureTypescript();
 
-  const rawTsconfig = tsModule.readConfigFile(options.tsConfig, tsModule.sys.readFile);
+  const rawTsconfig = tsModule.readConfigFile(
+    options.tsConfig,
+    tsModule.sys.readFile
+  );
   if (!rawTsconfig?.config || rawTsconfig?.error) {
     throw new Error(
       `Unable to find ${findFileName(options.tsConfig) || "tsconfig.json"} in ${dirname(
@@ -242,7 +264,9 @@ async function getNormalizedTsConfig(
   // }
 
   if (parsedTsconfig.options.incremental) {
-    parsedTsconfig.options.tsBuildInfoFile = correctPaths(join(outputPath, "tsconfig.tsbuildinfo"));
+    parsedTsconfig.options.tsBuildInfoFile = correctPaths(
+      join(outputPath, "tsconfig.tsbuildinfo")
+    );
   }
 
   return parsedTsconfig;
@@ -252,7 +276,7 @@ const build = async (options: Options | Options[], config?: StormConfig) => {
   const { writeDebug } = await import("@storm-software/config-tools");
 
   if (Array.isArray(options)) {
-    await Promise.all(options.map((buildOptions) => build(buildOptions, config)));
+    await Promise.all(options.map(buildOptions => build(buildOptions, config)));
   } else {
     let tsupOptions = options;
     if (_isFunction(tsupOptions)) {
@@ -266,7 +290,7 @@ ${
   !_isFunction(tsupOptions)
     ? Object.keys(tsupOptions)
         .map(
-          (key) =>
+          key =>
             `${key}: ${
               !tsupOptions[key] || _isPrimitive(tsupOptions[key])
                 ? tsupOptions[key]
@@ -325,6 +349,8 @@ const createTypeScriptCompilationOptions = (
     tsConfig: normalizedOptions.tsConfig,
     watch: normalizedOptions.watch,
     deleteOutputPath: normalizedOptions.clean,
-    getCustomTransformers: getCustomTrasformersFactory(normalizedOptions.transformers)
+    getCustomTransformers: getCustomTrasformersFactory(
+      normalizedOptions.transformers
+    )
   };
 };

@@ -2,7 +2,7 @@ import type { NxJsonConfiguration, TaskGraph, ProjectGraph } from "@nx/devkit";
 import {
   createTaskGraph,
   mapTargetDefaultsToDependencies
-} from "nx/src/tasks-runner/create-task-graph";
+} from "nx/src/tasks-runner/create-task-graph.js";
 
 export function getAllWorkspaceTaskGraphs(
   nxJson: NxJsonConfiguration,

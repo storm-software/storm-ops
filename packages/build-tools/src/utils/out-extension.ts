@@ -1,5 +1,5 @@
 export const outExtension = ({
-  format,
+  format
 }: {
   format?: string;
 }): { js: string; dts: string } => {
@@ -19,6 +19,6 @@ export const outExtension = ({
 
   return {
     js: jsExtension,
-    dts: dtsExtension,
+    dts: dtsExtension
   };
 };

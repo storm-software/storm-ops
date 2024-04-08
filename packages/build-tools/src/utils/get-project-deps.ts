@@ -2,13 +2,13 @@ import type {
   ProjectGraph,
   ProjectGraphDependency,
   ProjectGraphExternalNode,
-  ProjectGraphProjectNode,
+  ProjectGraphProjectNode
 } from "@nx/devkit";
-import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
+import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils.js";
 
 export function getExtraDependencies(
   projectName: string,
-  graph: ProjectGraph,
+  graph: ProjectGraph
 ): DependentBuildableProjectNode[] {
   const deps = new Map<string, DependentBuildableProjectNode>();
   recur(projectName);
@@ -24,7 +24,7 @@ export function getExtraDependencies(
           }
           return acc;
         },
-        [],
+        []
       ) ?? [];
     const internalDeps =
       allDeps?.reduce(
@@ -33,14 +33,14 @@ export function getExtraDependencies(
           if (found) acc.push(found);
           return acc;
         },
-        [],
+        []
       ) ?? [];
 
     for (const externalDep of externalDeps) {
       deps.set(externalDep.name, {
         name: externalDep.name,
         outputs: [],
-        node: externalDep,
+        node: externalDep
       });
     }
 
@@ -54,7 +54,7 @@ export function getExtraDependencies(
 
 export function getInternalDependencies(
   projectName: string,
-  graph: ProjectGraph,
+  graph: ProjectGraph
 ): ProjectGraphProjectNode[] {
   const allDeps = graph.dependencies[projectName] ?? [];
 
@@ -65,14 +65,14 @@ export function getInternalDependencies(
         if (found) acc.push(found);
         return acc;
       },
-      [],
-    ),
+      []
+    )
   );
 }
 
 export function getExternalDependencies(
   projectName: string,
-  graph: ProjectGraph,
+  graph: ProjectGraph
 ): ProjectGraphExternalNode[] {
   const allDeps = graph.dependencies[projectName];
 
@@ -84,8 +84,8 @@ export function getExternalDependencies(
           if (found) acc.push(found);
           return acc;
         },
-        [],
-      ) ?? [],
+        []
+      ) ?? []
     ) ?? []
   );
 }

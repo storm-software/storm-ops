@@ -22,17 +22,17 @@ import {
   type ExecutorContext,
   type ProjectConfiguration
 } from "@nx/devkit";
-import { writeJsonFile } from "nx/src/utils/fileutils";
+import { writeJsonFile } from "nx/src/utils/fileutils.js";
 import { globSync } from "glob";
 import { writeFile } from "node:fs/promises";
 import { readFileSync } from "node:fs";
 import { getEntryPoints } from "../utils/get-entry-points";
-import { readProjectsConfigurationFromProjectGraph } from "nx/src/project-graph/project-graph";
-import { readNxJson } from "nx/src/config/nx-json";
+import { readProjectsConfigurationFromProjectGraph } from "nx/src/project-graph/project-graph.js";
+import { readNxJson } from "nx/src/config/nx-json.js";
 import {
   createProjectRootMappings,
   findProjectForPath
-} from "nx/src/project-graph/utils/find-project-for-path";
+} from "nx/src/project-graph/utils/find-project-for-path.js";
 
 /**
  * Build and bundle a TypeScript project using the tsup build tools.
