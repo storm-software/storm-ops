@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/workspace-tools",
-  "version": "1.68.6",
+  "version": "1.68.7",
   "private": false,
   "description": "⚡ A Nx plugin package that contains various executors and generators used in a Storm workspaces.",
   "keywords": [

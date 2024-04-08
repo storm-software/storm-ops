@@ -1,3 +1,15 @@
+## 2.7.5 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolved issue with duplicate require definition ([63aa1d16](https://github.com/storm-software/storm-ops/commit/63aa1d16))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.7.4 (2024-04-08)
 
 ### 🩹 Fixes

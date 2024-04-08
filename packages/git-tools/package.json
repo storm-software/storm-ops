@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/git-tools",
-  "version": "2.7.4",
+  "version": "2.7.5",
   "private": false,
   "description": "⚡ A package containing various git tools used in Storm workspaces.",
   "keywords": [
