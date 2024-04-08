@@ -24,12 +24,6 @@
         "platform": "node",
         "format": ["esm", "cjs"],
         "external": ["nx", "@swc/core"],
-        "esbuildOptions": {
-          "legalComments": "inline",
-          "banner": {
-            "js": "const require = (await import('node:module')).createRequire(import.meta.url);"
-          }
-        },
         "assets": [
           {
             "input": "packages/build-tools",
