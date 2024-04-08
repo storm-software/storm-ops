@@ -130,7 +130,6 @@ const _isPrimitive = (value: unknown): boolean => {
       value === null ||
       (typeof value !== "object" && typeof value !== "function")
     );
-    // biome-ignore lint/correctness/noUnusedVariables: <explanation>
   } catch (e) {
     return false;
   }
@@ -145,7 +144,6 @@ const _isFunction = (
       typeof value === "function" ||
       !!(value?.constructor && (value as any)?.call && (value as any)?.apply)
     );
-    // biome-ignore lint/correctness/noUnusedVariables: <explanation>
   } catch (e) {
     return false;
   }

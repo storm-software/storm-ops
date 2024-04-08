@@ -2,7 +2,10 @@ import { dirname, join } from "node:path";
 import { existsSync } from "node:fs";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
 import { readJsonFile } from "nx/src/utils/fileutils";
-import { type PackageJson, readTargetsFromPackageJson } from "nx/src/utils/package-json";
+import {
+  type PackageJson,
+  readTargetsFromPackageJson
+} from "nx/src/utils/package-json";
 
 export const name = "storm-software/typescript/project-config";
 
@@ -14,8 +17,12 @@ export const createNodes = [
       return {};
     }
 
-    const project = createProjectFromPackageJsonNextToProjectJson(file, packageJson);
-    const targets: ProjectConfiguration["targets"] = readTargetsFromPackageJson(packageJson);
+    const project = createProjectFromPackageJsonNextToProjectJson(
+      file,
+      packageJson
+    );
+    const targets: ProjectConfiguration["targets"] =
+      readTargetsFromPackageJson(packageJson);
 
     if (!targets.lint) {
       targets.lint = {
@@ -109,7 +116,10 @@ function createProjectFromPackageJsonNextToProjectJson(
   } as ProjectConfiguration;
 }
 
-function createPackageJson(projectJsonPath: string, workspaceRoot: string): PackageJson | null {
+function createPackageJson(
+  projectJsonPath: string,
+  workspaceRoot: string
+): PackageJson | null {
   try {
     const root = dirname(projectJsonPath);
     const packageJsonPath = join(workspaceRoot, root, "package.json");
