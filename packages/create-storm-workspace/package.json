@@ -34,8 +34,8 @@
     "create-storm-workspace": "./index.js"
   },
   "dependencies": {
-    "@nx/workspace": "18.0.4",
-    "create-nx-workspace": "18.0.4",
+    "@nx/workspace": "18.0.8",
+    "create-nx-workspace": "18.0.8",
     "enquirer": "2.4.1"
   },
   "publishConfig": {
