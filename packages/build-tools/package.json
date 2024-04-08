@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/build-tools",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "private": false,
   "description": "⚡The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.",
   "repository": {
@@ -16,30 +16,30 @@
   },
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
-    "@microsoft/api-extractor": "7.40.1",
-    "@nx/devkit": "18.0.4",
-    "@nx/js": "18.0.4",
-    "@nx/workspace": "18.0.4",
+    "@microsoft/api-extractor": "7.43.0",
+    "@nx/devkit": "18.2.3",
+    "@nx/js": "18.2.3",
+    "@nx/workspace": "18.2.3",
     "@rollup/plugin-commonjs": "25.0.7",
     "@rollup/plugin-image": "3.0.3",
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "15.2.3",
     "autoprefixer": "10.4.19",
     "chalk": "4.1.2",
-    "commander": "11.1.0",
+    "commander": "12.0.0",
     "deep-clone": "4.0.0",
     "deepmerge": "4.3.1",
     "esbuild-plugin-environment": "0.3.0",
     "fs-extra": "11.2.0",
-    "glob": "10.3.10",
-    "rolldown": "0.10.0",
-    "rollup": "4.10.0",
+    "glob": "10.3.12",
+    "rolldown": "0.10.1",
+    "rollup": "4.14.1",
     "rollup-plugin-esbuild": "6.1.1",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "rollup-plugin-postcss": "4.0.2",
     "rollup-plugin-typescript2": "0.36.0",
     "tsup": "8.0.0",
-    "typescript": "5.3.3"
+    "typescript": "5.4.4"
   },
   "publishConfig": {
     "access": "public"
