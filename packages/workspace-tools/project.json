@@ -48,7 +48,14 @@
             ".js": ".js"
           }
         },
-        "external": ["nx", "@nx/devkit", "esbuild", "@swc/*"],
+        "external": [
+          "nx",
+          "@nx/devkit",
+          "esbuild",
+          "@swc/*",
+          "./transpilers/swc.js",
+          "style-inject/dist/style-inject.es"
+        ],
         "assets": [
           {
             "input": "packages/workspace-tools",

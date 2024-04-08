@@ -22,7 +22,7 @@
         "skipTypeCheck": false,
         "thirdParty": true,
         "platform": "node",
-        "format": ["esm", "cjs"],
+        "format": ["esm"],
         "external": [
           "nx",
           "esbuild",
