@@ -389,10 +389,10 @@ export async function rolldownWithOptions(
 
   writeTrace(
     config,
-    `\n⚙️  Build options:
+    `⚙️  Build options:
 ${rolldownBuildOptions
   .map(rolldownBuildOption =>
-    Object.keys(rolldownBuildOptions)
+    Object.keys(rolldownBuildOption)
       .map(
         key =>
           `${key}: ${
@@ -414,9 +414,21 @@ ${rolldownBuildOptions
   await Promise.allSettled(
     rolldownBuildOptions
       .filter(opts => opts.input)
-      .map(opts =>
-        rolldownBuild(opts)
-          .then(build => build.write(opts.output))
+      .map(opts => {
+        writeDebug(
+          config,
+          `⚡  Running the build process for entry point: ${opts.input}`
+        );
+
+        return rolldownBuild(opts)
+          .then(build => {
+            writeDebug(
+              config,
+              `✍️ Writing bundled files for entry point: ${opts.input}`
+            );
+
+            return build.write(opts.output);
+          })
           .then(opt => {
             writeInfo(
               config,
@@ -428,8 +440,8 @@ ${rolldownBuildOptions
               config,
               `🚫 The Build process failed for entry point: ${opts.input} - ${err?.message ? err.message : "No failure message could be identified"}`
             );
-          })
-      )
+          });
+      })
   );
 
   writeInfo(
