@@ -214,8 +214,8 @@ importers:
         specifier: 4.1.2
         version: 4.1.2
       commander:
-        specifier: 11.1.0
-        version: 11.1.0
+        specifier: 12.0.0
+        version: 12.0.0
       deep-clone:
         specifier: 4.0.0
         version: 4.0.0
@@ -304,8 +304,8 @@ importers:
         specifier: '>=1.6.0'
         version: 1.6.7
       commander:
-        specifier: 11.1.0
-        version: 11.1.0
+        specifier: 12.0.0
+        version: 12.0.0
       doctoc:
         specifier: 2.2.1
         version: 2.2.1
@@ -506,8 +506,8 @@ importers:
         specifier: 4.1.0
         version: 4.1.0
       commander:
-        specifier: 11.1.0
-        version: 11.1.0
+        specifier: 12.0.0
+        version: 12.0.0
       cspell:
         specifier: 8.3.2
         version: 8.3.2
@@ -6325,6 +6325,11 @@ packages:
   /commander@11.1.0:
     resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
     engines: {node: '>=16'}
+    dev: false
+
+  /commander@12.0.0:
+    resolution: {integrity: sha512-MwVNWlYjDTtOjX5PiD7o5pK0UrFU/OYgcJfjjK4RaHZETNtjJqrZa9Y9ds88+A+f+d5lv+561eZ+yCKoS3gbAA==}
+    engines: {node: '>=18'}
     dev: false
 
   /commander@2.20.3:
