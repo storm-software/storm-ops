@@ -38,6 +38,7 @@ import type {
   // createGitTagValues,
   // handleDuplicateGitTags
 } from "nx/src/command-line/release/utils/shared.js";
+import { createProjectFileMapUsingProjectGraph } from "nx/src/project-graph/file-map-utils.js";
 // import {
 //   type GitCommit,
 //   getFirstGitCommit,
@@ -116,6 +117,7 @@ export const runRelease = async (
     );
     const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
       projectGraph,
+      await createProjectFileMapUsingProjectGraph(projectGraph),
       nxJson.release
     );
     if (configError) {
