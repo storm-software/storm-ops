@@ -1,3 +1,15 @@
+## 0.4.11 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Add comments to declaration file ([47ece361](https://github.com/storm-software/storm-ops/commit/47ece361))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.10 (2024-04-08)
 
 
