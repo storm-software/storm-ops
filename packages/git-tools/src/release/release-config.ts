@@ -1,3 +1,631 @@
+import { join, relative } from "node:path";
+import { NxJsonConfiguration } from "nx/src/config/nx-json.js";
+import { ProjectFileMap, ProjectGraph } from "nx/src/config/project-graph.js";
+import { readJsonFile } from "nx/src/utils/fileutils.js";
+import { findMatchingProjects } from "nx/src/utils/find-matching-projects.js";
+import { output } from "nx/src/utils/output.js";
+import { PackageJson } from "nx/src/utils/package-json.js";
+import { workspaceRoot } from "nx/src/utils/workspace-root.js";
+import { readFileSync } from "node:fs";
+import { joinPathFragments, workspaceRoot } from "nx/src/devkit-exports.js";
+
+export async function resolveNxJsonConfigErrorMessage(
+  propPath: string[]
+): Promise<string> {
+  const errorLines = await getJsonConfigLinesForErrorMessage(
+    readFileSync(joinPathFragments(workspaceRoot, "nx.json"), "utf-8"),
+    propPath
+  );
+  let nxJsonMessage = `The relevant config is defined here: ${relative(
+    process.cwd(),
+    joinPathFragments(workspaceRoot, "nx.json")
+  )}`;
+  if (errorLines) {
+    nxJsonMessage +=
+      errorLines.startLine === errorLines.endLine
+        ? `, line ${errorLines.startLine}`
+        : `, lines ${errorLines.startLine}-${errorLines.endLine}`;
+  }
+  return nxJsonMessage;
+}
+
+async function getJsonConfigLinesForErrorMessage(
+  rawConfig: string,
+  jsonPath: string[]
+): Promise<{ startLine: number; endLine: number } | null> {
+  try {
+    const jsonParser = await import("jsonc-parser");
+    const rootNode = jsonParser.parseTree(rawConfig);
+    const node = jsonParser.findNodeAtLocation(rootNode, jsonPath);
+    return computeJsonLineNumbers(rawConfig, node?.offset, node?.length);
+  } catch {
+    return null;
+  }
+}
+
+function computeJsonLineNumbers(
+  inputText: string,
+  startOffset: number,
+  characterCount: number
+) {
+  let lines = inputText.split("\n");
+  let totalChars = 0;
+  let startLine = 0;
+  let endLine = 0;
+
+  for (let i = 0; i < lines.length; i++) {
+    totalChars += lines[i].length + 1; // +1 for '\n' character
+
+    if (!startLine && totalChars >= startOffset) {
+      startLine = i + 1; // +1 because arrays are 0-based
+    }
+    if (totalChars >= startOffset + characterCount) {
+      endLine = i + 1; // +1 because arrays are 0-based
+      break;
+    }
+  }
+
+  if (!startLine) {
+    throw new Error("Start offset exceeds the text length");
+  }
+  if (!endLine) {
+    throw new Error(
+      "Character count exceeds the text length after start offset"
+    );
+  }
+
+  return { startLine, endLine };
+}
+type DeepRequired<T> = Required<{
+  [K in keyof T]: T[K] extends Required<T[K]> ? T[K] : DeepRequired<T[K]>;
+}>;
+
+type EnsureProjectsArray<T> = {
+  [K in keyof T]: T[K] extends { projects: any }
+    ? Omit<T[K], "projects"> & { projects: string[] }
+    : T[K];
+};
+
+type RemoveTrueFromType<T> = T extends true ? never : T;
+type RemoveTrueFromProperties<T, K extends keyof T> = {
+  [P in keyof T]: P extends K ? RemoveTrueFromType<T[P]> : T[P];
+};
+type RemoveTrueFromPropertiesOnEach<T, K extends keyof T[keyof T]> = {
+  [U in keyof T]: RemoveTrueFromProperties<T[U], K>;
+};
+
+type RemoveFalseFromType<T> = T extends false ? never : T;
+type RemoveFalseFromProperties<T, K extends keyof T> = {
+  [P in keyof T]: P extends K ? RemoveFalseFromType<T[P]> : T[P];
+};
+type RemoveFalseFromPropertiesOnEach<T, K extends keyof T[keyof T]> = {
+  [U in keyof T]: RemoveFalseFromProperties<T[U], K>;
+};
+
+type RemoveBooleanFromType<T> = T extends boolean ? never : T;
+type RemoveBooleanFromProperties<T, K extends keyof T> = {
+  [P in keyof T]: P extends K ? RemoveBooleanFromType<T[P]> : T[P];
+};
+type RemoveBooleanFromPropertiesOnEach<T, K extends keyof T[keyof T]> = {
+  [U in keyof T]: RemoveBooleanFromProperties<T[U], K>;
+};
+
+export const IMPLICIT_DEFAULT_RELEASE_GROUP = "__default__";
+
+export const DEFAULT_CONVENTIONAL_COMMITS_CONFIG = {
+  types: {
+    feat: {
+      semverBump: "minor",
+      changelog: {
+        title: "Features",
+        hidden: false
+      }
+    },
+    fix: {
+      semverBump: "patch",
+      changelog: {
+        title: "Fixes",
+        hidden: false
+      }
+    },
+    perf: {
+      semverBump: "none",
+      changelog: {
+        title: "Performance",
+        hidden: false
+      }
+    },
+    refactor: {
+      semverBump: "none",
+      changelog: {
+        title: "Refactors",
+        hidden: true
+      }
+    },
+    docs: {
+      semverBump: "none",
+      changelog: {
+        title: "Documentation",
+        hidden: true
+      }
+    },
+    build: {
+      semverBump: "none",
+      changelog: {
+        title: "Build",
+        hidden: true
+      }
+    },
+    types: {
+      semverBump: "none",
+      changelog: {
+        title: "Types",
+        hidden: true
+      }
+    },
+    chore: {
+      semverBump: "none",
+      changelog: {
+        title: "Chore",
+        hidden: true
+      }
+    },
+    examples: {
+      semverBump: "none",
+      changelog: {
+        title: "Examples",
+        hidden: true
+      }
+    },
+    test: {
+      semverBump: "none",
+      changelog: {
+        title: "Tests",
+        hidden: true
+      }
+    },
+    style: {
+      semverBump: "none",
+      changelog: {
+        title: "Styles",
+        hidden: true
+      }
+    },
+    ci: {
+      semverBump: "none",
+      changelog: {
+        title: "CI",
+        hidden: true
+      }
+    },
+    revert: {
+      semverBump: "none",
+      changelog: {
+        title: "Revert",
+        hidden: true
+      }
+    }
+  }
+} as NxReleaseConfig["conventionalCommits"];
+
+/**
+ * Our source of truth is a deeply required variant of the user-facing config interface, so that command
+ * implementations can be sure that properties will exist and do not need to repeat the same checks over
+ * and over again.
+ *
+ * We also normalize the projects property on release groups to always be an array of project names to make
+ * it easier to work with (the user could be specifying a single string, and they can also use any valid matcher
+ * pattern such as directories and globs).
+ */
+export type NxReleaseConfig = Omit<
+  DeepRequired<
+    NxJsonConfiguration["release"] & {
+      groups: DeepRequired<
+        RemoveTrueFromPropertiesOnEach<
+          EnsureProjectsArray<NxJsonConfiguration["release"]["groups"]>,
+          "changelog"
+        >
+      >;
+      // Remove the true shorthand from the changelog config types, it will be normalized to a default object
+      changelog: RemoveTrueFromProperties<
+        DeepRequired<NxJsonConfiguration["release"]["changelog"]>,
+        "workspaceChangelog" | "projectChangelogs"
+      >;
+      // Remove the false shorthand from the conventionalCommits config types, it will be normalized to a semver bump of "none" and to be hidden on the changelog
+      conventionalCommits: {
+        types: RemoveBooleanFromPropertiesOnEach<
+          DeepRequired<
+            RemoveBooleanFromProperties<
+              DeepRequired<
+                NxJsonConfiguration["release"]["conventionalCommits"]["types"]
+              >,
+              string
+            >
+          >,
+          "changelog"
+        >;
+      };
+    }
+  >,
+  // projects is just a shorthand for the default group's projects configuration, it does not exist in the final config
+  "projects"
+>;
+
+// We explicitly handle some possible errors in order to provide the best possible DX
+export interface CreateNxReleaseConfigError {
+  code:
+    | "PROJECTS_AND_GROUPS_DEFINED"
+    | "RELEASE_GROUP_MATCHES_NO_PROJECTS"
+    | "RELEASE_GROUP_RELEASE_TAG_PATTERN_VERSION_PLACEHOLDER_MISSING_OR_EXCESSIVE"
+    | "PROJECT_MATCHES_MULTIPLE_GROUPS"
+    | "CONVENTIONAL_COMMITS_SHORTHAND_MIXED_WITH_OVERLAPPING_GENERATOR_OPTIONS"
+    | "GLOBAL_GIT_CONFIG_MIXED_WITH_GRANULAR_GIT_CONFIG";
+  data: Record<string, string | string[]>;
+}
+
+/**
+ * In some cases it is much cleaner and more intuitive for the user to be able to
+ * specify `true` in their config when they want to use the default config for a
+ * particular property, rather than having to specify an empty object.
+ */
+function normalizeTrueToEmptyObject<T>(value: T | boolean): T | {} {
+  return value === true ? {} : value;
+}
+
+function normalizeConventionalCommitsConfig(
+  userConventionalCommitsConfig: NxJsonConfiguration["release"]["conventionalCommits"]
+): NxJsonConfiguration["release"]["conventionalCommits"] {
+  if (!userConventionalCommitsConfig || !userConventionalCommitsConfig.types) {
+    return userConventionalCommitsConfig;
+  }
+
+  const types: NxJsonConfiguration["release"]["conventionalCommits"]["types"] =
+    {};
+  for (const [t, typeConfig] of Object.entries(
+    userConventionalCommitsConfig.types
+  )) {
+    if (typeConfig === false) {
+      types[t] = {
+        semverBump: "none",
+        changelog: {
+          hidden: true
+        }
+      };
+      continue;
+    }
+    if (typeConfig === true) {
+      types[t] = {};
+      continue;
+    }
+    if (typeConfig.changelog === false) {
+      types[t] = {
+        ...typeConfig,
+        changelog: {
+          hidden: true
+        }
+      };
+      continue;
+    }
+    if (typeConfig.changelog === true) {
+      types[t] = {
+        ...typeConfig,
+        changelog: {}
+      };
+      continue;
+    }
+
+    types[t] = typeConfig;
+  }
+
+  return {
+    ...userConventionalCommitsConfig,
+    types
+  };
+}
+
+/**
+ * New, custom types specified by users will not be given the appropriate
+ * defaults with `deepMergeDefaults`, so we need to fill in the gaps here.
+ */
+function fillUnspecifiedConventionalCommitsProperties(
+  config: NxReleaseConfig["conventionalCommits"]
+) {
+  if (!config || !config.types) {
+    return config;
+  }
+  const types: NxReleaseConfig["conventionalCommits"]["types"] = {};
+  for (const [t, typeConfig] of Object.entries(config.types)) {
+    const defaultTypeConfig = DEFAULT_CONVENTIONAL_COMMITS_CONFIG.types[t];
+
+    const semverBump =
+      typeConfig.semverBump ||
+      // preserve our default semver bump if it's not 'none'
+      // this prevents a 'feat' from becoming a 'patch' just
+      // because they modified the changelog config for 'feat'
+      (defaultTypeConfig?.semverBump !== "none" &&
+        defaultTypeConfig?.semverBump) ||
+      "patch";
+    // don't preserve our default behavior for hidden, ever.
+    // we should assume that if users are explicitly enabling a
+    // type, then they intend it to be visible in the changelog
+    const hidden = typeConfig.changelog?.hidden || false;
+    const title =
+      typeConfig.changelog?.title ||
+      // our default title is better than just the unmodified type name
+      defaultTypeConfig?.changelog.title ||
+      t;
+
+    types[t] = {
+      semverBump,
+      changelog: {
+        hidden,
+        title
+      }
+    };
+  }
+  return {
+    ...config,
+    types
+  };
+}
+
+export async function handleNxReleaseConfigError(
+  error: CreateNxReleaseConfigError
+): Promise<never> {
+  switch (error.code) {
+    case "PROJECTS_AND_GROUPS_DEFINED":
+      {
+        const nxJsonMessage = await resolveNxJsonConfigErrorMessage([
+          "release",
+          "projects"
+        ]);
+        output.error({
+          title: `"projects" is not valid when explicitly defining release groups, and everything should be expressed within "groups" in that case. If you are using "groups" then you should remove the "projects" property`,
+          bodyLines: [nxJsonMessage]
+        });
+      }
+      break;
+    case "RELEASE_GROUP_MATCHES_NO_PROJECTS":
+      {
+        const nxJsonMessage = await resolveNxJsonConfigErrorMessage([
+          "release",
+          "groups"
+        ]);
+        output.error({
+          title: `Release group "${error.data.releaseGroupName}" matches no projects. Please ensure all release groups match at least one project:`,
+          bodyLines: [nxJsonMessage]
+        });
+      }
+      break;
+    case "PROJECT_MATCHES_MULTIPLE_GROUPS":
+      {
+        const nxJsonMessage = await resolveNxJsonConfigErrorMessage([
+          "release",
+          "groups"
+        ]);
+        output.error({
+          title: `Project "${error.data.project}" matches multiple release groups. Please ensure all projects are part of only one release group:`,
+          bodyLines: [nxJsonMessage]
+        });
+      }
+      break;
+    case "RELEASE_GROUP_RELEASE_TAG_PATTERN_VERSION_PLACEHOLDER_MISSING_OR_EXCESSIVE":
+      {
+        const nxJsonMessage = await resolveNxJsonConfigErrorMessage([
+          "release",
+          "groups",
+          error.data.releaseGroupName as string,
+          "releaseTagPattern"
+        ]);
+        output.error({
+          title: `Release group "${error.data.releaseGroupName}" has an invalid releaseTagPattern. Please ensure the pattern contains exactly one instance of the "{version}" placeholder`,
+          bodyLines: [nxJsonMessage]
+        });
+      }
+      break;
+    case "CONVENTIONAL_COMMITS_SHORTHAND_MIXED_WITH_OVERLAPPING_GENERATOR_OPTIONS":
+      {
+        const nxJsonMessage = await resolveNxJsonConfigErrorMessage([
+          "release"
+        ]);
+        output.error({
+          title: `You have configured both the shorthand "version.conventionalCommits" and one or more of the related "version.generatorOptions" that it sets for you. Please use one or the other:`,
+          bodyLines: [nxJsonMessage]
+        });
+      }
+      break;
+    case "GLOBAL_GIT_CONFIG_MIXED_WITH_GRANULAR_GIT_CONFIG":
+      {
+        const nxJsonMessage = await resolveNxJsonConfigErrorMessage([
+          "release",
+          "git"
+        ]);
+        output.error({
+          title: `You have duplicate conflicting git configurations. If you are using the top level 'nx release' command, then remove the 'release.version.git' and 'release.changelog.git' properties in favor of 'release.git'. If you are using the subcommands or the programmatic API, then remove the 'release.git' property in favor of 'release.version.git' and 'release.changelog.git':`,
+          bodyLines: [nxJsonMessage]
+        });
+      }
+      break;
+    default:
+      throw new Error(`Unhandled error code: ${error.code}`);
+  }
+
+  process.exit(1);
+}
+
+function ensureReleaseGroupReleaseTagPatternIsValid(
+  releaseTagPattern: string,
+  releaseGroupName: string
+): null | CreateNxReleaseConfigError {
+  // ensure that any provided releaseTagPattern contains exactly one instance of {version}
+  return releaseTagPattern.split("{version}").length === 2
+    ? null
+    : {
+        code: "RELEASE_GROUP_RELEASE_TAG_PATTERN_VERSION_PLACEHOLDER_MISSING_OR_EXCESSIVE",
+        data: {
+          releaseGroupName
+        }
+      };
+}
+
+function ensureProjectsConfigIsArray(
+  groups: NxJsonConfiguration["release"]["groups"]
+): NxReleaseConfig["groups"] {
+  const result: NxJsonConfiguration["release"]["groups"] = {};
+  for (const [groupName, groupConfig] of Object.entries(groups)) {
+    result[groupName] = {
+      ...groupConfig,
+      projects: ensureArray(groupConfig.projects)
+    };
+  }
+  return result as NxReleaseConfig["groups"];
+}
+
+function ensureArray(value: string | string[]): string[] {
+  return Array.isArray(value) ? value : [value];
+}
+
+function isObject(value: any): value is Record<string, any> {
+  return value && typeof value === "object" && !Array.isArray(value);
+}
+
+// Helper function to merge two config objects
+function mergeConfig<T>(
+  objA: DeepRequired<T>,
+  objB: Partial<T>
+): DeepRequired<T> {
+  const merged: any = { ...objA };
+
+  for (const key in objB) {
+    if (objB.hasOwnProperty(key)) {
+      // If objB[key] is explicitly set to false, null or 0, respect that value
+      if (objB[key] === false || objB[key] === null || objB[key] === 0) {
+        merged[key] = objB[key];
+      }
+      // If both objA[key] and objB[key] are objects, recursively merge them
+      else if (isObject(merged[key]) && isObject(objB[key])) {
+        merged[key] = mergeConfig(merged[key], objB[key]);
+      }
+      // If objB[key] is defined, use it (this will overwrite any existing value in merged[key])
+      else if (objB[key] !== undefined) {
+        merged[key] = objB[key];
+      }
+    }
+  }
+
+  return merged as DeepRequired<T>;
+}
+
+/**
+ * This function takes in a strictly typed collection of all possible default values in a particular section of config,
+ * and an optional set of partial user config, and returns a single, deeply merged config object, where the user
+ * config takes priority over the defaults in all cases (only an `undefined` value in the user config will be
+ * overwritten by the defaults, all other falsey values from the user will be respected).
+ */
+function deepMergeDefaults<T>(
+  defaultConfigs: DeepRequired<T>[],
+  userConfig?: Partial<T>
+): DeepRequired<T> {
+  let result: any;
+
+  // First merge defaultConfigs sequentially (meaning later defaults will override earlier ones)
+  for (const defaultConfig of defaultConfigs) {
+    if (!result) {
+      result = defaultConfig;
+      continue;
+    }
+    result = mergeConfig(result, defaultConfig as Partial<T>);
+  }
+
+  // Finally, merge the userConfig
+  if (userConfig) {
+    result = mergeConfig(result, userConfig);
+  }
+
+  return result as DeepRequired<T>;
+}
+
+/**
+ * We want to prevent users from setting both the conventionalCommits shorthand and any of the related
+ * generatorOptions at the same time, since it is at best redundant, and at worst invalid.
+ */
+function hasInvalidConventionalCommitsConfig(
+  userConfig: NxJsonConfiguration["release"]
+): boolean {
+  // at the root
+  if (
+    userConfig.version?.conventionalCommits === true &&
+    (userConfig.version?.generatorOptions?.currentVersionResolver ||
+      userConfig.version?.generatorOptions?.specifierSource)
+  ) {
+    return true;
+  }
+  // within any groups
+  if (userConfig.groups) {
+    for (const group of Object.values(userConfig.groups)) {
+      if (
+        group.version?.conventionalCommits === true &&
+        (group.version?.generatorOptions?.currentVersionResolver ||
+          group.version?.generatorOptions?.specifierSource)
+      ) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+/**
+ * We want to prevent users from setting both the global and granular git configurations. Users should prefer the
+ * global configuration if using the top level nx release command and the granular configuration if using
+ * the subcommands or the programmatic API.
+ */
+function hasInvalidGitConfig(
+  userConfig: NxJsonConfiguration["release"]
+): boolean {
+  return (
+    !!userConfig.git && !!(userConfig.version?.git || userConfig.changelog?.git)
+  );
+}
+
+async function getDefaultProjects(
+  projectGraph: ProjectGraph,
+  projectFileMap: ProjectFileMap
+): Promise<string[]> {
+  // default to all library projects in the workspace with a package.json file
+  return findMatchingProjects(["*"], projectGraph.nodes).filter(
+    project =>
+      projectGraph.nodes[project].type === "lib" &&
+      // Exclude all projects with "private": true in their package.json because this is
+      // a common indicator that a project is not intended for release.
+      // Users can override this behavior by explicitly defining the projects they want to release.
+      isProjectPublic(project, projectGraph, projectFileMap)
+  );
+}
+
+function isProjectPublic(
+  project: string,
+  projectGraph: ProjectGraph,
+  projectFileMap: ProjectFileMap
+): boolean {
+  const projectNode = projectGraph.nodes[project];
+  const packageJsonPath = join(projectNode.data.root, "package.json");
+
+  if (!projectFileMap[project]?.find(f => f.file === packageJsonPath)) {
+    return false;
+  }
+
+  try {
+    const fullPackageJsonPath = join(workspaceRoot, packageJsonPath);
+    const packageJson = readJsonFile<PackageJson>(fullPackageJsonPath);
+    return !(packageJson.private === true);
+  } catch (e) {
+    // do nothing and assume that the project is not public if there is a parsing issue
+    // this will result in it being excluded from the default projects list
+    return false;
+  }
+}
+
 // Apply default configuration to any optional user configuration and handle known errors
 export async function createNxReleaseConfig(
   projectGraph: ProjectGraph,

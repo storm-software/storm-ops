@@ -1,5 +1,5 @@
 {
-  "extends": ["../../.eslintrc.json", "../../.eslintrc.base.json"],
+  "extends": ["../../.eslintrc.base.json"],
   "ignorePatterns": ["!**/*", "node_modules/*"],
   "overrides": [
     {
@@ -28,16 +28,14 @@
         "@nx/dependency-checks": [
           "error",
           {
-            "buildTargets": [
-              "build"
-            ],
+            "buildTargets": ["build"],
             "ignoredFiles": [
               "{projectRoot}/esbuild.config.{js,ts,mjs,mts}",
               "{projectRoot}/jest.config.ts"
             ],
             "checkMissingDependencies": true,
             "checkObsoleteDependencies": true,
-            "checkVersionMismatches": false,
+            "checkVersionMismatches": false
           }
         ]
       }

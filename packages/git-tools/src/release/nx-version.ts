@@ -1,5 +1,10 @@
 import type { StormConfig } from "@storm-software/config";
-import { findWorkspaceRoot, writeDebug, writeError, writeInfo } from "@storm-software/config-tools";
+import {
+  findWorkspaceRoot,
+  writeDebug,
+  writeError,
+  writeInfo
+} from "@storm-software/config-tools";
 import type { VersionOptions } from "nx/src/command-line/release/command-object.js";
 import {
   type NxReleaseConfig,
@@ -39,6 +44,7 @@ import { relative } from "node:path";
 import { readFileSync } from "node:fs";
 import { joinPathFragments, workspaceRoot } from "nx/src/devkit-exports.js";
 import { printDiff } from "nx/src/command-line/release/utils/print-changes.js";
+import { createProjectFileMapUsingProjectGraph } from "nx/src/project-graph/file-map-utils.js";
 
 interface GeneratorData {
   collectionName: string;
@@ -68,6 +74,7 @@ export async function releaseVersion(
   // Apply default configuration to any optional user configuration
   const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
     projectGraph,
+    await createProjectFileMapUsingProjectGraph(projectGraph),
     nxJson.release
   );
   if (configError) {
@@ -139,7 +146,10 @@ export async function releaseVersion(
         releaseGroupProjectNames
       );
 
-      for (const [generatorConfigString, projectNames] of projectBatches.entries()) {
+      for (const [
+        generatorConfigString,
+        projectNames
+      ] of projectBatches.entries()) {
         writeInfo(
           config,
           `Running versioning for batch "${JSON.stringify(
@@ -147,7 +157,9 @@ export async function releaseVersion(
           )}" for release-group "${releaseGroupName}"`
         );
 
-        const [generatorName, generatorOptions] = JSON.parse(generatorConfigString);
+        const [generatorName, generatorOptions] = JSON.parse(
+          generatorConfigString
+        );
         // Resolve the generator for the batch and run versioning on the projects within the batch
         const generatorData = resolveGeneratorData({
           ...extractGeneratorCollectionAndName(
@@ -186,7 +198,11 @@ export async function releaseVersion(
     // Resolve any git tags as early as possible so that we can hard error in case of any duplicates before reaching the actual git command
     const gitTagValues: string[] =
       args.gitTag ?? nxReleaseConfig?.version.git.tag
-        ? createGitTagValues(releaseGroups, releaseGroupToFilteredProjects, versionData)
+        ? createGitTagValues(
+            releaseGroups,
+            releaseGroupToFilteredProjects,
+            versionData
+          )
         : [];
 
     handleDuplicateGitTags(gitTagValues);
@@ -196,7 +212,10 @@ export async function releaseVersion(
       await generatorCallback();
     }
 
-    const changedFiles = [...tree.listChanges().map((f) => f.path), ...additionalChangedFiles];
+    const changedFiles = [
+      ...tree.listChanges().map(f => f.path),
+      ...additionalChangedFiles
+    ];
 
     // No further actions are necessary in this scenario (e.g. if conventional commits detected no changes)
     if (!changedFiles.length) {
@@ -234,8 +253,10 @@ export async function releaseVersion(
       for (const tag of gitTagValues) {
         await gitTag({
           tag,
-          message: args.gitTagMessage || nxReleaseConfig?.version.git.tagMessage,
-          additionalArgs: args.gitTagArgs || nxReleaseConfig?.version.git.tagArgs,
+          message:
+            args.gitTagMessage || nxReleaseConfig?.version.git.tagMessage,
+          additionalArgs:
+            args.gitTagArgs || nxReleaseConfig?.version.git.tagArgs,
           dryRun: args.dryRun,
           verbose: args.verbose
         });
@@ -261,8 +282,13 @@ export async function releaseVersion(
       releaseGroup.projects
     );
 
-    for (const [generatorConfigString, projectNames] of projectBatches.entries()) {
-      const [generatorName, generatorOptions] = JSON.parse(generatorConfigString);
+    for (const [
+      generatorConfigString,
+      projectNames
+    ] of projectBatches.entries()) {
+      const [generatorName, generatorOptions] = JSON.parse(
+        generatorConfigString
+      );
       // Resolve the generator for the batch and run versioning on the projects within the batch
       const generatorData = resolveGeneratorData({
         ...extractGeneratorCollectionAndName(
@@ -303,7 +329,11 @@ export async function releaseVersion(
   // Resolve any git tags as early as possible so that we can hard error in case of any duplicates before reaching the actual git command
   const gitTagValues: string[] =
     args.gitTag ?? nxReleaseConfig?.version.git.tag
-      ? createGitTagValues(releaseGroups, releaseGroupToFilteredProjects, versionData)
+      ? createGitTagValues(
+          releaseGroups,
+          releaseGroupToFilteredProjects,
+          versionData
+        )
       : [];
 
   handleDuplicateGitTags(gitTagValues);
@@ -327,7 +357,10 @@ export async function releaseVersion(
     }
   }
 
-  const changedFiles = [...tree.listChanges().map((f) => f.path), ...additionalChangedFiles];
+  const changedFiles = [
+    ...tree.listChanges().map(f => f.path),
+    ...additionalChangedFiles
+  ];
 
   // No further actions are necessary in this scenario (e.g. if conventional commits detected no changes)
   if (!changedFiles.length) {
@@ -397,7 +430,7 @@ async function runVersionOnProjects(
     preid: args.preid ?? "",
     ...generatorData.configGeneratorOptions,
     // The following are not overridable by user config
-    projects: projectNames.map((p) => projectGraph.nodes[p]),
+    projects: projectNames.map(p => projectGraph.nodes[p]),
     projectGraph,
     releaseGroup,
     firstRelease: args.firstRelease ?? false
@@ -417,7 +450,10 @@ async function runVersionOnProjects(
     args.verbose
   );
 
-  writeDebug(config, `Generator options: ${JSON.stringify(combinedOpts, null, 2)}`);
+  writeDebug(
+    config,
+    `Generator options: ${JSON.stringify(combinedOpts, null, 2)}`
+  );
 
   const releaseVersionGenerator: any = generatorData.implementationFactory();
 
@@ -439,7 +475,11 @@ async function runVersionOnProjects(
   return versionResult.callback;
 }
 
-function printAndFlushChanges(config: StormConfig, tree: Tree, isDryRun: boolean) {
+function printAndFlushChanges(
+  config: StormConfig,
+  tree: Tree,
+  isDryRun: boolean
+) {
   const changes = tree.listChanges();
 
   // Print the changes
@@ -449,10 +489,14 @@ function printAndFlushChanges(config: StormConfig, tree: Tree, isDryRun: boolean
       printDiff("", f.content?.toString() || "");
     } else if (f.type === "UPDATE") {
       writeInfo(config, `UPDATE ${f.path}${isDryRun ? " [dry-run]" : ""}`);
-      const currentContentsOnDisk = readFileSync(joinPathFragments(tree.root, f.path)).toString();
+      const currentContentsOnDisk = readFileSync(
+        joinPathFragments(tree.root, f.path)
+      ).toString();
       printDiff(currentContentsOnDisk, f.content?.toString() || "");
     } else if (f.type === "DELETE") {
-      throw new Error("Unexpected DELETE change, please report this as an issue");
+      throw new Error(
+        "Unexpected DELETE change, please report this as an issue"
+      );
     }
   }
 
@@ -461,7 +505,10 @@ function printAndFlushChanges(config: StormConfig, tree: Tree, isDryRun: boolean
   }
 }
 
-function extractGeneratorCollectionAndName(description: string, generatorString: string) {
+function extractGeneratorCollectionAndName(
+  description: string,
+  generatorString: string
+) {
   const parsedGeneratorString = parseGeneratorString(generatorString);
   const collectionName = parsedGeneratorString.collection;
   const generatorName = parsedGeneratorString.generator;
@@ -498,12 +545,13 @@ function resolveGeneratorData({
   projects
 }): GeneratorData {
   try {
-    const { normalizedGeneratorName, schema, implementationFactory } = getGeneratorInformation(
-      collectionName,
-      generatorName,
-      workspaceRoot,
-      projects
-    );
+    const { normalizedGeneratorName, schema, implementationFactory } =
+      getGeneratorInformation(
+        collectionName,
+        generatorName,
+        workspaceRoot,
+        projects
+      );
 
     return {
       collectionName,
