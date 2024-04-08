@@ -1,7 +1,7 @@
 import type { ExecutorContext } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
-import { applyDefaultRolldownOptions } from "@storm-software/build-tools";
+import type { RolldownOptions } from "@storm-software/build-tools";
 import type { RolldownExecutorSchema } from "./schema.d";
 import { fork } from "child_process";
 
@@ -109,7 +109,16 @@ export default withRunExecutor<RolldownExecutorSchema>(
   {
     skipReadingConfig: false,
     hooks: {
-      applyDefaultOptions: applyDefaultRolldownOptions
+      applyDefaultOptions: async (
+        options: Partial<RolldownOptions>,
+        config?: StormConfig | undefined
+      ) => {
+        const { applyDefaultRolldownOptions } = await import(
+          "@storm-software/build-tools"
+        );
+
+        return applyDefaultRolldownOptions(options, config);
+      }
     }
   }
 );
