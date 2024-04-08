@@ -1,3 +1,15 @@
+## 0.4.16 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Dynamically import `config-tools` in build executable ([7746d327](https://github.com/storm-software/storm-ops/commit/7746d327))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.15 (2024-04-08)
 
 
