@@ -1,3 +1,15 @@
+## 0.4.6 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Remove unused main import from package.json ([6b141732](https://github.com/storm-software/storm-ops/commit/6b141732))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.5 (2024-04-08)
 
 
