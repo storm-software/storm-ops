@@ -111,7 +111,7 @@
     "verdaccio": "5.29.0"
   },
   "devDependencies": {
-    "@nx/jest": "18.0.4"
+    "@nx/jest": "18.0.8"
   },
   "packageManager": "pnpm@8.14.3",
   "engines": {
