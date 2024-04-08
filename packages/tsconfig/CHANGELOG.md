@@ -1,3 +1,15 @@
+## 0.3.1 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Update release tool to use local function to get configuration ([53db7520](https://github.com/storm-software/storm-ops/commit/53db7520))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.3.0 (2024-04-07)
 
 

@@ -1,3 +1,21 @@
+## 1.68.2 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **deps:** update patch prod dependencies ([3bce6c5e](https://github.com/storm-software/storm-ops/commit/3bce6c5e))
+
+- **deps:** update dependencies-non-major ([#38](https://github.com/storm-software/storm-ops/pull/38))
+
+- **workspace-tools:** Resolved build issue with typings ([97ac0141](https://github.com/storm-software/storm-ops/commit/97ac0141))
+
+- **git-tools:** Update release tool to use local function to get configuration ([53db7520](https://github.com/storm-software/storm-ops/commit/53db7520))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.68.1 (2024-04-08)
 
 ### 🩹 Fixes

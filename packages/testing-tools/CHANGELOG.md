@@ -1,3 +1,17 @@
+## 1.37.1 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **deps:** update dependencies-non-major ([#38](https://github.com/storm-software/storm-ops/pull/38))
+
+- **git-tools:** Update release tool to use local function to get configuration ([53db7520](https://github.com/storm-software/storm-ops/commit/53db7520))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.37.0 (2024-04-07)
 
 

@@ -1,3 +1,31 @@
+## 2.7.2 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **deps:** update patch prod dependencies ([3bce6c5e](https://github.com/storm-software/storm-ops/commit/3bce6c5e))
+
+- **deps:** update dependency commander to v12 ([#63](https://github.com/storm-software/storm-ops/pull/63))
+
+- **deps:** update dependencies-non-major ([#38](https://github.com/storm-software/storm-ops/pull/38))
+
+- **deps:** update dependency @commitlint/types to v19 ([#72](https://github.com/storm-software/storm-ops/pull/72))
+
+- **workspace-tools:** Resolved build issue with typings ([97ac0141](https://github.com/storm-software/storm-ops/commit/97ac0141))
+
+- **build-tools:** Resolve issue with Nx API updates ([bff53cdc](https://github.com/storm-software/storm-ops/commit/bff53cdc))
+
+- **git-tools:** Resolved issue with invalid release config ([382dc9bc](https://github.com/storm-software/storm-ops/commit/382dc9bc))
+
+- **git-tools:** Update release tool to use local function to get configuration ([53db7520](https://github.com/storm-software/storm-ops/commit/53db7520))
+
+- **git-tools:** Resolve issue with dependencies ([b536fd82](https://github.com/storm-software/storm-ops/commit/b536fd82))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.7.1 (2024-04-08)
 
 ### 🩹 Fixes
