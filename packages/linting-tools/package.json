@@ -105,13 +105,13 @@
     "retext-profanities": "8.0.0",
     "size-limit": "11.0.2",
     "spawndamnit": "2.0.0",
-    "tsconfig-paths": "^4.2.0",
+    "tsconfig-paths": "4.2.0",
     "unified": "11.0.4",
     "unified-engine": "11.2.0",
-    "vfile-reporter": "^8.1.0"
+    "vfile-reporter": "8.1.0"
   },
   "devDependencies": {
-    "@types/eslint": "8.44.6"
+    "@types/eslint": "8.44.9"
   },
   "publishConfig": {
     "access": "public"
