@@ -1,41 +1,44 @@
-## 0.4.6 (2024-04-08)
+## 0.4.7 (2024-04-08)
 
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve issues with `build-tools` import ([fc040f71](https://github.com/storm-software/storm-ops/commit/fc040f71))
+
+### ❤️ Thank You
+
+- Patrick Sullivan
+
+## 0.4.6 (2024-04-08)
 
 ### 🩹 Fixes
 
 - **build-tools:** Remove unused main import from package.json ([6b141732](https://github.com/storm-software/storm-ops/commit/6b141732))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.5 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **workspace-tools:** Update module types of imports ([9d09009b](https://github.com/storm-software/storm-ops/commit/9d09009b))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.4 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolve issue with build format ([02cd5c44](https://github.com/storm-software/storm-ops/commit/02cd5c44))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.3 (2024-04-08)
-
 
 ### 🩹 Fixes
 
@@ -47,8 +50,7 @@
 
 - **workspace-tools:** Resolved build issue with typings ([97ac0141](https://github.com/storm-software/storm-ops/commit/97ac0141))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 

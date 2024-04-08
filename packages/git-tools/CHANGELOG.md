@@ -1,17 +1,24 @@
-## 2.7.3 (2024-04-08)
+## 2.7.4 (2024-04-08)
 
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve issues with `build-tools` import ([fc040f71](https://github.com/storm-software/storm-ops/commit/fc040f71))
+
+### ❤️ Thank You
+
+- Patrick Sullivan
+
+## 2.7.3 (2024-04-08)
 
 ### 🩹 Fixes
 
 - **workspace-tools:** Update module types of imports ([9d09009b](https://github.com/storm-software/storm-ops/commit/9d09009b))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 2.7.2 (2024-04-08)
-
 
 ### 🩹 Fixes
 
@@ -33,8 +40,7 @@
 
 - **git-tools:** Resolve issue with dependencies ([b536fd82](https://github.com/storm-software/storm-ops/commit/b536fd82))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
