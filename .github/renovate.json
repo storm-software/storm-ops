@@ -27,6 +27,8 @@
     },
     {
       "matchPackagePatterns": [
+        "nx",
+        "@nx/*",
         "tsup",
         "chalk",
         "p-limit",
@@ -35,14 +37,6 @@
         "@humanfs/node"
       ],
       "enabled": false
-    },
-    {
-      "matchPackageNames": ["@nx"],
-      "postUpgradeTasks": {
-        "commands": [
-          "pnpm nx migrate latest --run-migrations --create-commits --commit-message='chore(storm-ops): update @nx dependencies [skip ci]'"
-        ]
-      }
     },
     {
       "groupName": "dependencies-non-major",
