@@ -1,3 +1,10 @@
+## 1.68.1 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **deps:** pin dependencies ([7406e605](https://github.com/storm-software/storm-ops/commit/7406e605))
+
 ## 1.68.0 (2024-04-07)
 
 
