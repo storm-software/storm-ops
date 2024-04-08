@@ -1,96 +1,90 @@
-## 0.4.15 (2024-04-08)
+## 0.4.16 (2024-04-08)
 
+### 🩹 Fixes
+
+- **build-tools:** Dynamically import `config-tools` in build executable ([7746d327](https://github.com/storm-software/storm-ops/commit/7746d327))
+
+### ❤️ Thank You
+
+- Patrick Sullivan
+
+## 0.4.15 (2024-04-08)
 
 ### 🩹 Fixes
 
 - **build-tools:** Update module typings for bin and package files ([f3ecfe59](https://github.com/storm-software/storm-ops/commit/f3ecfe59))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.14 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Remove unused chalk depenency ([ac82cd1a](https://github.com/storm-software/storm-ops/commit/ac82cd1a))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.13 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolve last remaining invalid Nx import ([c73d0b9a](https://github.com/storm-software/storm-ops/commit/c73d0b9a))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.12 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolve issue with Nx file imports ([e86eff43](https://github.com/storm-software/storm-ops/commit/e86eff43))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.11 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Add comments to declaration file ([47ece361](https://github.com/storm-software/storm-ops/commit/47ece361))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.10 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Update the package as a `module` type ([e1f610db](https://github.com/storm-software/storm-ops/commit/e1f610db))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.9 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolved issue with duplicate require definition ([63aa1d16](https://github.com/storm-software/storm-ops/commit/63aa1d16))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.8 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Add back the cjs module format to package ([8283f153](https://github.com/storm-software/storm-ops/commit/8283f153))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
