@@ -4,10 +4,19 @@
   "sourceRoot": "packages/build-tools/src",
   "projectType": "library",
   "targets": {
+    "clean": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": ["default", "^production"],
+      "options": {
+        "command": "pnpm rimraf dist/packages/build-tools"
+      }
+    },
     "build-lib": {
       "cache": true,
       "executor": "@nx/esbuild:esbuild",
       "inputs": ["default", "^production"],
+      "dependsOn": ["clean", "^build"],
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/build-tools",
@@ -15,11 +24,10 @@
         "project": "packages/build-tools/package.json",
         "main": "packages/build-tools/src/index.ts",
         "additionalEntryPoints": [
-          "packages/build-tools/src/cli/index.ts",
           "packages/build-tools/src/build/rolldown.ts",
           "packages/build-tools/src/build/ts-build.ts"
         ],
-        "deleteOutputPath": true,
+        "deleteOutputPath": false,
         "bundle": true,
         "sourcemap": true,
         "minify": false,
@@ -59,17 +67,18 @@
         ]
       }
     },
-    "build-bin": {
+    "build": {
       "cache": true,
       "executor": "@nx/esbuild:esbuild",
       "inputs": ["default", "^production"],
+      "dependsOn": ["build-lib", "^build"],
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/build-tools/bin",
         "tsConfig": "packages/build-tools/tsconfig.json",
         "project": "packages/build-tools/package.json",
         "main": "packages/build-tools/bin/build.ts",
-        "deleteOutputPath": true,
+        "deleteOutputPath": false,
         "bundle": true,
         "sourcemap": true,
         "minify": false,
@@ -83,20 +92,6 @@
             ".js": ".mjs"
           }
         }
-      }
-    },
-    "build": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": ["default", "^production"],
-      "dependsOn": ["build-lib", "build-bin"],
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/packages/build-tools",
-        "commands": [
-          "nx run build-tools:build-lib",
-          "nx run build-tools:build-bin"
-        ]
       }
     },
     "nx-release-publish": {
