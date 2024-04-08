@@ -1,3 +1,15 @@
+## 0.4.8 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Add back the cjs module format to package ([8283f153](https://github.com/storm-software/storm-ops/commit/8283f153))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.7 (2024-04-08)
 
 ### 🩹 Fixes
