@@ -1,3 +1,15 @@
+## 0.4.17 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Add cjs shims to `esbuild` output ([63336f55](https://github.com/storm-software/storm-ops/commit/63336f55))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.16 (2024-04-08)
 
 ### 🩹 Fixes
