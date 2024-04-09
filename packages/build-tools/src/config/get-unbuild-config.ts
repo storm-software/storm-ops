@@ -50,7 +50,7 @@ export async function getUnbuildBuildOptions(
   const buildOptions = defineBuildConfig(buildConfig);
   for (const buildOpt of buildOptions) {
     let rollupConfig: any = options.rollup;
-    if (typeof rollupConfig === "string") {
+    if (rollupConfig && typeof rollupConfig === "string") {
       const rollupConfigFile = await loadConfig(rollupConfig as string);
       rollupConfig = rollupConfigFile;
     }
@@ -82,18 +82,10 @@ export async function getUnbuildBuildOptions(
 async function loadConfig(
   configPath: string
 ): Promise<UnbuildBuildOptions | undefined> {
-  if (!isSupportedFormat(configPath)) {
+  if (!/\.(js|mjs)$/.test(extname(configPath))) {
     throw new Error("Unsupported config file format");
   }
   return import(pathToFileURL(configPath).toString()).then(
     config => config.default
   );
-}
-
-/**
- * Check whether the configuration file is supported
- */
-function isSupportedFormat(configPath: string): boolean {
-  const ext = extname(configPath);
-  return /\.(js|mjs)$/.test(ext);
 }
