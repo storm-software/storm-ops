@@ -1,3 +1,15 @@
+## 0.4.26 (2024-04-09)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolved import issues with external Nx modules ([203ffe22](https://github.com/storm-software/storm-ops/commit/203ffe22))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.25 (2024-04-09)
 
 
