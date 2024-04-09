@@ -75,6 +75,7 @@ export const applyDefaultRolldownOptions = (
   options.exports ??= "auto";
   options.sourcemap ??= true;
   options.extractCss ??= true;
+  options.treeshake ??= true;
 
   return options as RolldownOptions;
 };

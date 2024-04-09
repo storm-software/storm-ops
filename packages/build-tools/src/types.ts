@@ -177,6 +177,7 @@ export interface InputOptions {
   resolve?: RolldownResolveOptions;
   cwd: string;
   platform: Platform;
+  treeshake: boolean;
 }
 
 export interface OutputOptions extends Rolldown.OutputOptions {
@@ -214,6 +215,7 @@ export type RolldownOptions = AdditionalCLIOptions & {
   verbose: boolean;
   tsConfig: string;
   minify: boolean;
+  treeshake: boolean;
   extractCss: boolean;
   sourcemap?: OutputOptions["sourcemap"];
   exports?: OutputOptions["exports"];

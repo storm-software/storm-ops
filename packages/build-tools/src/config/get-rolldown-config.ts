@@ -35,6 +35,7 @@ const postcss = require("rollup-plugin-postcss");
 
 export const DEFAULT_CONFIG = {
   input: "./src/index.ts",
+  treeshake: true,
   plugins: [
     esbuild({
       loaders: {
@@ -68,7 +69,14 @@ export async function getRolldownBuildOptions(
   };
 
   buildOptions.resolve = options.resolve;
+  buildOptions.resolve ??= DEFAULT_CONFIG.resolve;
+
   buildOptions.plugins = options.plugins;
+  buildOptions.plugins ??= DEFAULT_CONFIG.plugins;
+
+  buildOptions.treeshake = options.treeshake;
+  buildOptions.treeshake ??= DEFAULT_CONFIG.treeshake;
+
   buildOptions.platform = options.platform;
   buildOptions.external = options.external;
   buildOptions.cwd = config.workspaceRoot as string;
@@ -158,6 +166,7 @@ export async function getRolldownBuildOptions(
 
     let nextConfig = {
       ...buildOpts,
+      treeshake: buildOpts.treeshake,
       // plugins: buildOpts.plugins.map(plugin => loadConfigFile(plugin)),
       external: (id: string) =>
         externalPackages.some(name => id === name || id.startsWith(`${name}/`)),
