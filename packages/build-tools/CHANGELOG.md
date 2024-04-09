@@ -1,3 +1,15 @@
+## 0.6.1 (2024-04-09)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolve issue with empty config file path option ([5216a888](https://github.com/storm-software/storm-ops/commit/5216a888))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.6.0 (2024-04-09)
 
 
