@@ -424,7 +424,7 @@ ${rolldownBuildOptions
           .then(build => {
             writeDebug(
               config,
-              `✍️ Writing bundled files for entry point: ${opts.input}`
+              `✍️   Writing bundled files for entry point: ${opts.input}`
             );
 
             return build.write(opts.output);
@@ -438,7 +438,7 @@ ${rolldownBuildOptions
           .catch(err => {
             writeError(
               config,
-              `🚫 The Build process failed for entry point: ${opts.input} - ${err?.message ? err.message : "No failure message could be identified"}`
+              `🚫  The Build process failed for entry point: ${opts.input} - ${err?.message ? err.message + (err.stack ? "\nStack Trace: \n" + err.stack : "") : "No failure message could be identified"}`
             );
           });
       })

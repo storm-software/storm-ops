@@ -5,3 +5,4 @@ export * from "./versions";
 export * from "./toml";
 export * from "./cargo";
 export * from "./lock-file";
+export * from "./create-cli-options";

@@ -24,7 +24,7 @@ import nodeResolve from "@rollup/plugin-node-resolve";
 import deepClone from "deep-clone";
 import autoprefixer from "autoprefixer";
 import { dirname, extname } from "node:path";
-import { loadConfigFile } from "@nx/devkit/src/utils/config-utils";
+// import { loadConfigFile } from "@nx/devkit/src/utils/config-utils";
 import { writeDebug } from "@storm-software/config-tools";
 
 // These use require because the ES import isn't correct.
@@ -158,7 +158,7 @@ export async function getRolldownBuildOptions(
 
     let nextConfig = {
       ...buildOpts,
-      plugins: buildOpts.plugins.map(plugin => loadConfigFile(plugin)),
+      // plugins: buildOpts.plugins.map(plugin => loadConfigFile(plugin)),
       external: (id: string) =>
         externalPackages.some(name => id === name || id.startsWith(`${name}/`)),
       cwd: config.workspaceRoot,
