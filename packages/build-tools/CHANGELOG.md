@@ -1,3 +1,15 @@
+## 0.4.28 (2024-04-09)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Updates to dts compiler options ([b3aa2692](https://github.com/storm-software/storm-ops/commit/b3aa2692))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.27 (2024-04-09)
 
 
