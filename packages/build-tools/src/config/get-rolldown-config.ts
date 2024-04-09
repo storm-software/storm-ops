@@ -8,30 +8,27 @@ import type {
 } from "../types";
 import { pathToFileURL } from "node:url";
 import merge from "deepmerge";
-import { createEntryPoints } from "@nx/js/src/utils/package-json/create-entry-points";
-import { joinPathFragments } from "@nx/devkit";
-import ts from "typescript";
-import {
-  computeCompilerOptionsPaths,
-  type DependentBuildableProjectNode
-} from "@nx/js/src/utils/buildable-libs-utils";
-import type { PackageJson } from "nx/src/utils/package-json";
+import { createEntryPoints } from "@nx/js/src/utils/package-json/create-entry-points.js";
+// import { joinPathFragments } from "@nx/devkit";
+// import ts from "typescript";
+import { type DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils.js";
+import type { PackageJson } from "nx/src/utils/package-json.js";
 import type { StormConfig } from "@storm-software/config";
-import { analyze } from "../plugins/analyze-plugin";
-import { typeDefinitions } from "@nx/js/src/plugins/rollup/type-definitions";
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
-import nodeResolve from "@rollup/plugin-node-resolve";
+// import { analyze } from "../plugins/analyze-plugin";
+// import { typeDefinitions } from "@nx/js/src/plugins/rollup/type-definitions";
+// import peerDepsExternal from "rollup-plugin-peer-deps-external";
+// import nodeResolve from "@rollup/plugin-node-resolve";
 import deepClone from "deep-clone";
-import autoprefixer from "autoprefixer";
-import { dirname, extname } from "node:path";
+// import autoprefixer from "autoprefixer";
+import { extname } from "node:path";
 // import { loadConfigFile } from "@nx/devkit/src/utils/config-utils";
 import { writeDebug } from "@storm-software/config-tools";
 
 // These use require because the ES import isn't correct.
-const commonjs = require("@rollup/plugin-commonjs");
-const image = require("@rollup/plugin-image");
-const json = require("@rollup/plugin-json");
-const postcss = require("rollup-plugin-postcss");
+// const commonjs = require("@rollup/plugin-commonjs");
+// const image = require("@rollup/plugin-image");
+// const json = require("@rollup/plugin-json");
+// const postcss = require("rollup-plugin-postcss");
 
 export const DEFAULT_CONFIG = {
   input: "./src/index.ts",
@@ -81,16 +78,16 @@ export async function getRolldownBuildOptions(
   buildOptions.external = options.external;
   buildOptions.cwd = config.workspaceRoot as string;
 
-  const tsConfigPath = joinPathFragments(
-    config.workspaceRoot ?? "./",
-    options.tsConfig
-  );
-  const configFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile);
-  const tsconfig = ts.parseJsonConfigFileContent(
-    configFile.config,
-    ts.sys,
-    dirname(tsConfigPath)
-  );
+  // const tsConfigPath = joinPathFragments(
+  //   config.workspaceRoot ?? "./",
+  //   options.tsConfig
+  // );
+  // const configFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile);
+  // const tsconfig = ts.parseJsonConfigFileContent(
+  //   configFile.config,
+  //   ts.sys,
+  //   dirname(tsConfigPath)
+  // );
 
   let externalPackages = [...Object.keys(packageJson.peerDependencies || {})];
   externalPackages.push(
@@ -122,47 +119,47 @@ export async function getRolldownBuildOptions(
     const buildOpts = deepClone(buildOptions as { [key: string]: any });
     buildOpts.input = entry;
 
-    buildOpts.plugins.push([
-      image(),
-      json(),
-      // Needed to generate type definitions, even if we're using babel or swc.
-      !options.skipTypeCheck &&
-        require("rollup-plugin-typescript2")({
-          check: !options.skipTypeCheck,
-          tsconfig: options.tsConfig,
-          tsconfigOverride: {
-            compilerOptions: createTsCompilerOptions(
-              tsconfig,
-              dependencies,
-              options
-            )
-          }
-        }),
-      typeDefinitions({
-        main: entry,
-        projectRoot: options.projectRoot
-      }),
-      peerDepsExternal({
-        packageJsonPath: joinPathFragments(options.projectRoot, "package.json")
-      }),
-      postcss({
-        inject: true,
-        extract: options.extractCss,
-        autoModules: true,
-        plugins: [autoprefixer],
-        use: {
-          less: {
-            javascriptEnabled: true
-          }
-        }
-      }),
-      nodeResolve({
-        preferBuiltins: true,
-        extensions: DEFAULT_CONFIG.resolve?.extensions
-      }),
-      commonjs(),
-      analyze()
-    ]);
+    // buildOpts.plugins.push([
+    //   image(),
+    //   json(),
+    //   // Needed to generate type definitions, even if we're using babel or swc.
+    //   !options.skipTypeCheck &&
+    //     require("rollup-plugin-typescript2")({
+    //       check: !options.skipTypeCheck,
+    //       tsconfig: options.tsConfig,
+    //       tsconfigOverride: {
+    //         compilerOptions: createTsCompilerOptions(
+    //           tsconfig,
+    //           dependencies,
+    //           options
+    //         )
+    //       }
+    //     }),
+    //   typeDefinitions({
+    //     main: entry,
+    //     projectRoot: options.projectRoot
+    //   }),
+    //   peerDepsExternal({
+    //     packageJsonPath: joinPathFragments(options.projectRoot, "package.json")
+    //   }),
+    //   postcss({
+    //     inject: true,
+    //     extract: options.extractCss,
+    //     autoModules: true,
+    //     plugins: [autoprefixer],
+    //     use: {
+    //       less: {
+    //         javascriptEnabled: true
+    //       }
+    //     }
+    //   }),
+    //   nodeResolve({
+    //     preferBuiltins: true,
+    //     extensions: DEFAULT_CONFIG.resolve?.extensions
+    //   }),
+    //   commonjs(),
+    //   analyze()
+    // ]);
 
     let nextConfig = {
       ...buildOpts,
@@ -202,23 +199,23 @@ export async function getRolldownBuildOptions(
   return buildOptionsList;
 }
 
-function createTsCompilerOptions(
-  config: ts.ParsedCommandLine,
-  dependencies: DependentBuildableProjectNode[],
-  options: RolldownOptions
-) {
-  const compilerOptionPaths = computeCompilerOptionsPaths(config, dependencies);
-  const compilerOptions: Record<string, any> = {
-    rootDir: options.projectRoot,
-    declaration: true,
-    paths: compilerOptionPaths
-  };
-  if (config.options.module === ts.ModuleKind.CommonJS) {
-    compilerOptions.module = "ESNext";
-  }
+// function createTsCompilerOptions(
+//   config: ts.ParsedCommandLine,
+//   dependencies: DependentBuildableProjectNode[],
+//   options: RolldownOptions
+// ) {
+//   const compilerOptionPaths = computeCompilerOptionsPaths(config, dependencies);
+//   const compilerOptions: Record<string, any> = {
+//     rootDir: options.projectRoot,
+//     declaration: true,
+//     paths: compilerOptionPaths
+//   };
+//   if (config.options.module === ts.ModuleKind.CommonJS) {
+//     compilerOptions.module = "ESNext";
+//   }
 
-  return compilerOptions;
-}
+//   return compilerOptions;
+// }
 
 /**
  * Load a rolldown configuration file
@@ -241,41 +238,3 @@ function isSupportedFormat(configPath: string): boolean {
   const ext = extname(configPath);
   return /\.(js|mjs)$/.test(ext);
 }
-
-// // biome-ignore lint/suspicious/noConfusingVoidType: <explanation>
-// function normalizePluginPath(pluginPath: void | string, root: string) {
-//   if (!pluginPath) {
-//     return "";
-//   }
-//   try {
-//     return require.resolve(pluginPath);
-//   } catch {
-//     return resolve(root, pluginPath);
-//   }
-// }
-
-// export function normalizeRolldownOptions(
-//   options: RolldownBuildOptions,
-//   context: ExecutorContext,
-//   sourceRoot: string
-// ): RolldownBuildOptions {
-//   const { root } = context;
-//   const main = `${root}/${options.main}`;
-//   const entryRoot = dirname(main);
-
-//   const project = options.project ? `${root}/${options.project}` : join(root, "package.json");
-//   const projectRoot = dirname(project);
-//   const outputPath = `${root}/${options.outputPath}`;
-
-//   return {
-//     ...options,
-//     format: Array.from(new Set(options.format)),
-//     main,
-//     entryRoot,
-//     project,
-//     projectRoot,
-//     outputPath,
-//     skipTypeCheck: options.skipTypeCheck || false,
-//     additionalEntryPoints: createEntryPoints(options.additionalEntryPoints, context.root)
-//   };
-// }

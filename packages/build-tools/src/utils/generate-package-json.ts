@@ -2,10 +2,10 @@ import type { TypeScriptBuildOptions } from "../../declarations";
 import { writeFileSync } from "node:fs";
 import { joinPathFragments, readJsonFile } from "@nx/devkit";
 import type { ProjectGraph } from "@nx/devkit";
-import { retrieveProjectConfigurationsWithoutPluginInference } from "nx/src/project-graph/utils/retrieve-workspace-files";
-import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils";
+import { retrieveProjectConfigurationsWithoutPluginInference } from "nx/src/project-graph/utils/retrieve-workspace-files.js";
+import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils.js";
 import type { StormConfig } from "@storm-software/config";
-import { fileExists } from "nx/src/utils/fileutils";
+import { fileExists } from "nx/src/utils/fileutils.js";
 import { removeExtension } from "@storm-software/config-tools";
 import {
   getExtraDependencies,
@@ -20,7 +20,11 @@ import {
   writeWarning
 } from "@storm-software/config-tools";
 import { getEntryPoints } from "./get-entry-points";
-import { readCachedProjectGraph } from "nx/src/project-graph/project-graph";
+import { readCachedProjectGraph } from "nx/src/project-graph/project-graph.js";
+import {
+  HelperDependency,
+  getHelperDependency
+} from "@nx/js/src/utils/compiler-helper-dependency.js";
 
 type DependencyNodeData = {
   version: string;
@@ -113,6 +117,18 @@ export const generatePackageJson = async (
       },
       []
     );
+
+  const tsLibDependency = getHelperDependency(
+    HelperDependency.tsc,
+    options.tsConfig,
+    externalDependencies,
+    projectGraph,
+    true
+  );
+
+  if (tsLibDependency) {
+    externalDependencies.push(tsLibDependency);
+  }
 
   const implicitDependencies =
     projectsConfigurations.projects?.[projectName]?.implicitDependencies;

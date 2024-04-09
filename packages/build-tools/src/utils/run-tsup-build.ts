@@ -1,9 +1,9 @@
 import { dirname, sep, join } from "node:path";
 import { esbuildDecorators } from "@anatine/esbuild-decorators";
-import { getCustomTrasformersFactory } from "@nx/js/src/executors/tsc/lib/get-custom-transformers-factory";
-import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options";
-import type { NormalizedExecutorOptions } from "@nx/js/src/utils/schema";
-import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
+import { getCustomTrasformersFactory } from "@nx/js/src/executors/tsc/lib/get-custom-transformers-factory.js";
+import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options.js";
+import type { NormalizedExecutorOptions } from "@nx/js/src/utils/schema.js";
+import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation.js";
 import type { StormConfig } from "@storm-software/config";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import type { TsupContext, TypeScriptBuildOptions } from "../types";
@@ -11,7 +11,7 @@ import { defaultConfig, getConfig } from "../config";
 import { findFileName, removeExtension } from "@storm-software/config-tools";
 // import { type TSConfig, readTSConfig } from "pkg-types";
 import { type Options, build as tsup, defineConfig } from "tsup";
-import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript";
+import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript.js";
 
 export const runTsupBuild = async (
   context: TsupContext,

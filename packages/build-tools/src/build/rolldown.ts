@@ -10,7 +10,7 @@ import type { StormConfig } from "@storm-software/config";
 import {
   createProjectRootMappings,
   findProjectForPath
-} from "nx/src/project-graph/utils/find-project-for-path";
+} from "nx/src/project-graph/utils/find-project-for-path.js";
 import type { RolldownOptions } from "../types";
 import {
   type ProjectTokenizerOptions,
@@ -25,13 +25,13 @@ import {
 } from "@storm-software/config-tools";
 import { globSync } from "glob";
 import { copyAssets } from "@nx/js";
-import type { AssetGlob } from "@nx/js/src/utils/assets/assets";
+import type { AssetGlob } from "@nx/js/src/utils/assets/assets.js";
 import { removeSync } from "fs-extra";
 import { applyDefaultRolldownOptions } from "../utils/apply-default-options";
-import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
+import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils.js";
 import { readFileSync } from "node:fs";
 import { writeFile } from "node:fs/promises";
-import { readNxJson } from "nx/src/config/nx-json";
+import { readNxJson } from "nx/src/config/nx-json.js";
 import { createTaskId, getAllWorkspaceTaskGraphs } from "../utils/task-graph";
 import { getRolldownBuildOptions } from "../config/get-rolldown-config";
 import { rolldown as rolldownBuild } from "rolldown";
