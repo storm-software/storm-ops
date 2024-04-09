@@ -1,3 +1,15 @@
+## 0.3.6 (2024-04-09)
+
+
+### 🩹 Fixes
+
+- **tsconfig:** Resolve invalid base tsconfig modules ([af07fcdb](https://github.com/storm-software/storm-ops/commit/af07fcdb))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.3.5 (2024-04-09)
 
 
