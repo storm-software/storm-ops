@@ -1,3 +1,15 @@
+## 0.4.27 (2024-04-09)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Updates to base tsconfig and build tools ([97648eac](https://github.com/storm-software/storm-ops/commit/97648eac))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.26 (2024-04-09)
 
 
