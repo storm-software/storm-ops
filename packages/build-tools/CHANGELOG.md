@@ -1,3 +1,15 @@
+## 0.4.22 (2024-04-08)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolve issues with logging during build execution ([911ca3c6](https://github.com/storm-software/storm-ops/commit/911ca3c6))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.21 (2024-04-08)
 
 
