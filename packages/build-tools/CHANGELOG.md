@@ -1,3 +1,15 @@
+## 0.4.24 (2024-04-09)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Added error object logging to rolldown ([01aabe2d](https://github.com/storm-software/storm-ops/commit/01aabe2d))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.23 (2024-04-09)
 
 
