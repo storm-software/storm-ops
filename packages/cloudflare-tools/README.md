@@ -16,7 +16,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-0.0.5-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
+[![Version](https://img.shields.io/badge/version-0.1.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
 [![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with docusaurus](https://img.shields.io/badge/documented_with-docusaurus-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://docusaurus.io/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 > [!IMPORTANT]
@@ -74,6 +74,50 @@ The following executors are available in this package to invoke common tasks for
 <!-- START executors -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+
+
+## Cloudflare Worker - Publish Executor
+
+Publish a Cloudflare worker using the Wrangler CLI
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:cloudflare-publish
+```
+
+**Please note:** _The cloudflare-publish executor should be included in the desired projects's `project.json` file._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| name      | `string`    | Name of the Worker.     |     | 
+ | noBundle      | `boolean`    | Skip Wrangler’s build steps and directly deploy script without modification. Particularly useful when using custom builds.     |     | 
+ | env      | `string`    | Perform on a specific environment.     |     | 
+ | outdir      | `string`    | Path to directory where Wrangler will write the bundled Worker files.     |     | 
+ | compatibilityDate      | `string`    | A date in the form yyyy-mm-dd, which will be used to determine which version of the Workers runtime is used.     |     | 
+ | compatibilityFlags      | `string[]`   | Flags to use for compatibility checks.     |     | 
+ | latest      | `boolean`    | Use the latest version of the Workers runtime.     | `true`     | 
+ | assets      | `string`    | Root folder of static assets to be served. Unlike --site, --assets does not require a Worker script to serve your assets.     |     | 
+ | site      | `string`    | Root folder of static assets for Workers Sites.     |     | 
+ | siteInclude      | `string[]`   | Array of .gitignore-style patterns that match file or directory names from the sites directory. Only matched items will be uploaded.     |     | 
+ | siteExclude      | `string[]`   | Array of .gitignore-style patterns that match file or directory names from the sites directory. Matched items will not be uploaded.     |     | 
+ | var      | `string[]`   | Array of key:value pairs to inject as variables into your code. The value will always be passed as a string to your Worker.     |     | 
+ | define      | `string[]`   | Array of key:value pairs to replace global identifiers in your code.     |     | 
+ | triggers      | `string[]`   | Cron schedules to attach to the deployed Worker. Refer to Cron Trigger Examples.     |     | 
+ | routes      | `string[]`   | Routes where this Worker will be deployed.     |     | 
+ | tsConfig      | `string`    | Path to a custom tsconfig.json file.     |     | 
+ | minify      | `boolean`    | Minify the bundled script before deploying.     |     | 
+ | nodeCompat      | `boolean`    | Enable node.js compatibility.     |     | 
+ | keepVars      | `boolean`    | It is recommended best practice to treat your Wrangler developer environment as a source of truth for your Worker configuration, and avoid making changes via the Cloudflare dashboard. If you change your environment variables or bindings in the Cloudflare dashboard, Wrangler will override them the next time you deploy. If you want to disable this behavior set keepVars to true.     |     | 
+
+
+
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
