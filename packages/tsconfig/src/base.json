@@ -5,9 +5,10 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "lib": ["esnext"],
-    "types": ["node", "jest"],
-    "moduleResolution": "bundler",
+    "lib": ["ESNext"],
+    "noLib": false,
+    "moduleResolution": "nodenext",
+    "pretty": true,
     "sourceMap": true,
     "incremental": true,
     "noImplicitReturns": true,
@@ -29,6 +30,13 @@
     "skipDefaultLibCheck": true,
     "esModuleInterop": true
   },
-  "include": ["**/*.ts", "**/*.js", "**/*.tsx", "**/*.jsx", "**/*.d.ts", "**/*.json"],
+  "include": [
+    "**/*.ts",
+    "**/*.js",
+    "**/*.tsx",
+    "**/*.jsx",
+    "**/*.d.ts",
+    "**/*.json"
+  ],
   "exclude": ["**/node_modules"]
 }

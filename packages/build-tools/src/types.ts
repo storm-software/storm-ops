@@ -133,6 +133,7 @@ export interface BindingResolveOptions {
   mainFiles?: string[];
   modules?: string[];
   symlinks?: boolean;
+  tsconfigFilename?: string;
 }
 
 export interface RenderedModule {

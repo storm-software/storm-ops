@@ -66,7 +66,8 @@ export async function getRolldownBuildOptions(
   };
 
   buildOptions.resolve = options.resolve;
-  buildOptions.resolve ??= DEFAULT_CONFIG.resolve;
+  buildOptions.resolve ??= DEFAULT_CONFIG.resolve ?? {};
+  buildOptions.resolve!.tsconfigFilename = options.tsConfig;
 
   buildOptions.plugins = options.plugins;
   buildOptions.plugins ??= DEFAULT_CONFIG.plugins;

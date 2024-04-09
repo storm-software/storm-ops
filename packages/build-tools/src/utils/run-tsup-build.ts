@@ -221,6 +221,10 @@ async function getNormalizedTsConfig(
       ...rawTsconfig.config,
       compilerOptions: {
         ...rawTsconfig.config?.compilerOptions,
+        typeRoots: [join(basePath, "node_modules/@types")],
+        preserveSymlinks: true,
+        skipLibCheck: false,
+        skipDefaultLibCheck: false,
         outDir: outputPath,
         noEmit: false,
         emitDeclarationOnly: true,
