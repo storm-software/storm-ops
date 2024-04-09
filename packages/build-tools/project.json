@@ -25,7 +25,8 @@
         "main": "packages/build-tools/src/index.ts",
         "additionalEntryPoints": [
           "packages/build-tools/src/build/rolldown.ts",
-          "packages/build-tools/src/build/ts-build.ts"
+          "packages/build-tools/src/build/ts-build.ts",
+          "packages/build-tools/src/build/unbuild.ts"
         ],
         "deleteOutputPath": false,
         "bundle": true,

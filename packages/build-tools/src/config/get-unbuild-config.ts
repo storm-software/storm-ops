@@ -16,8 +16,10 @@ export async function getUnbuildBuildOptions(
   packageJson: PackageJson,
   npmDeps: string[]
 ): Promise<BuildConfig[]> {
-  const configFile = await loadConfig(options.configPath as string);
-  options = configFile ? merge(options, configFile) : options;
+  if (options.configPath) {
+    const configFile = await loadConfig(options.configPath as string);
+    options = configFile ? merge(options, configFile) : options;
+  }
 
   const buildConfig = {
     ...options,
