@@ -1,3 +1,15 @@
+## 1.70.1 (2024-04-09)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Cleaned up unbuild executor schema ([e539fed6](https://github.com/storm-software/storm-ops/commit/e539fed6))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.70.0 (2024-04-09)
 
 
