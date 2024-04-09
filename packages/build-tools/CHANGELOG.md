@@ -1,113 +1,104 @@
-## 0.4.28 (2024-04-09)
+## 0.4.29 (2024-04-09)
 
+### 🩹 Fixes
+
+- **tsconfig:** Resolve invalid base tsconfig modules ([af07fcdb](https://github.com/storm-software/storm-ops/commit/af07fcdb))
+
+### ❤️ Thank You
+
+- Patrick Sullivan
+
+## 0.4.28 (2024-04-09)
 
 ### 🩹 Fixes
 
 - **build-tools:** Updates to dts compiler options ([b3aa2692](https://github.com/storm-software/storm-ops/commit/b3aa2692))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.27 (2024-04-09)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Updates to base tsconfig and build tools ([97648eac](https://github.com/storm-software/storm-ops/commit/97648eac))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.26 (2024-04-09)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolved import issues with external Nx modules ([203ffe22](https://github.com/storm-software/storm-ops/commit/203ffe22))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.25 (2024-04-09)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Apply missing defaults to rolldown options ([3ed61c68](https://github.com/storm-software/storm-ops/commit/3ed61c68))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.24 (2024-04-09)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Added error object logging to rolldown ([01aabe2d](https://github.com/storm-software/storm-ops/commit/01aabe2d))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.23 (2024-04-09)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolved issue with empty plugin array ([03da3618](https://github.com/storm-software/storm-ops/commit/03da3618))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.22 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolve issues with logging during build execution ([911ca3c6](https://github.com/storm-software/storm-ops/commit/911ca3c6))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.21 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Enhance the logic to apply multiple entry points ([962e72b7](https://github.com/storm-software/storm-ops/commit/962e72b7))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.20 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Added better build logging and validations ([03b595a4](https://github.com/storm-software/storm-ops/commit/03b595a4))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.19 (2024-04-08)
-
 
 ### 🩹 Fixes
 
@@ -115,32 +106,27 @@
 
 - **build-tools:** Update the `build` task configuration ([31b98d50](https://github.com/storm-software/storm-ops/commit/31b98d50))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.18 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolved issue with module types used in build ([50a368d3](https://github.com/storm-software/storm-ops/commit/50a368d3))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.4.17 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Add cjs shims to `esbuild` output ([63336f55](https://github.com/storm-software/storm-ops/commit/63336f55))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 

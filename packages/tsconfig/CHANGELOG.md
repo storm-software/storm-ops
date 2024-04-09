@@ -1,36 +1,40 @@
-## 0.3.5 (2024-04-09)
+## 0.3.6 (2024-04-09)
 
+### 🩹 Fixes
+
+- **tsconfig:** Resolve invalid base tsconfig modules ([af07fcdb](https://github.com/storm-software/storm-ops/commit/af07fcdb))
+
+### ❤️ Thank You
+
+- Patrick Sullivan
+
+## 0.3.5 (2024-04-09)
 
 ### 🩹 Fixes
 
 - **build-tools:** Updates to base tsconfig and build tools ([97648eac](https://github.com/storm-software/storm-ops/commit/97648eac))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.3.4 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolved issue with module types used in build ([50a368d3](https://github.com/storm-software/storm-ops/commit/50a368d3))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.3.3 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolved issue with duplicate require definition ([63aa1d16](https://github.com/storm-software/storm-ops/commit/63aa1d16))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
