@@ -440,6 +440,24 @@ ${rolldownBuildOptions
               config,
               `🚫  The Build process failed for entry point: ${opts.input} - ${err?.message ? err.message + (err.stack ? "\nStack Trace: \n" + err.stack : "") : "No failure message could be identified"}`
             );
+
+            writeError(
+              config,
+              `Build Error:
+          ${Object.keys(err)
+            .map(
+              key =>
+                `${key}: ${
+                  !err[key] || _isPrimitive(err[key])
+                    ? err[key]
+                    : _isFunction(err[key])
+                      ? "<function>"
+                      : JSON.stringify(err[key])
+                }`
+            )
+            .join("\n")}
+          `
+            );
           });
       })
   );
