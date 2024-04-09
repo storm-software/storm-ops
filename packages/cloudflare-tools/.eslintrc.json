@@ -25,7 +25,7 @@
       }
     },
     {
-      "files": ["./package.json"],
+      "files": ["./package.json", "./generators.json", "./executors.json"],
       "parser": "jsonc-eslint-parser",
       "rules": {
         "@nx/nx-plugin-checks": "error"

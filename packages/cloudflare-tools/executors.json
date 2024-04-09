@@ -1,0 +1,9 @@
+{
+  "executors": {
+    "cloudflare-publish": {
+      "implementation": "./src/executors/cloudflare-publish/executor",
+      "schema": "./src/executors/cloudflare-publish/schema.json",
+      "description": "Publish a Cloudflare worker/pages using the Wrangler CLI"
+    }
+  }
+}

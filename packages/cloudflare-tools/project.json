@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/cloudflare-tools/src",
   "projectType": "library",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
@@ -15,7 +16,8 @@
         "project": "packages/cloudflare-tools/package.json",
         "main": "packages/cloudflare-tools/index.ts",
         "additionalEntryPoints": [
-          "packages/cloudflare-tools/src/plugin/index.ts"
+          "packages/cloudflare-tools/src/plugin/index.ts",
+          "packages/cloudflare-tools/src/executors/cloudflare-publish/executor.ts"
         ],
         "platform": "node",
         "deleteOutputPath": true,
@@ -75,6 +77,5 @@
     "nx-release-publish": {
       "executor": "@storm-software/workspace-tools:npm-publish"
     }
-  },
-  "tags": []
+  }
 }

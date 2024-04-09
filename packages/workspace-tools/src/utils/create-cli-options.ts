@@ -8,13 +8,13 @@ export function createCliOptions<
   for (const key in obj) {
     const value = obj[key];
     if (value) {
-      // kebab-case
       const arg = names(key).fileName;
-
       if (Array.isArray(value)) {
-        args.push(`--${arg}=${value.map(v => v.trim()).join(",")}`);
+        args.push(
+          `--${arg.toLowerCase()}=${value.map(v => v.trim()).join(",")}`
+        );
       } else {
-        args.push(`--${arg}=${value}`);
+        args.push(`--${arg.toLowerCase()}=${value}`);
       }
     }
   }

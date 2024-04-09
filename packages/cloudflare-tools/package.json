@@ -41,7 +41,9 @@
   "main": "./index.js",
   "typings": "./declarations.d.ts",
   "dependencies": {
-    "tslib": "2.6.2"
+    "@nx/devkit": "18.2.3",
+    "tslib": "2.6.2",
+    "wrangler": "^3.48.0"
   },
   "publishConfig": {
     "access": "public"

@@ -66,6 +66,7 @@
   "plugins": [
     "@nx/eslint/plugin",
     "./dist/plugins/rust/index.js",
-    "./dist/plugins/typescript/index.js"
+    "./dist/plugins/typescript/index.js",
+    "./dist/plugins/cloudflare/index.js"
   ]
 }
