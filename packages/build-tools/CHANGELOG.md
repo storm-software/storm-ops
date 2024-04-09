@@ -1,3 +1,15 @@
+## 0.4.25 (2024-04-09)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Apply missing defaults to rolldown options ([3ed61c68](https://github.com/storm-software/storm-ops/commit/3ed61c68))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.24 (2024-04-09)
 
 
