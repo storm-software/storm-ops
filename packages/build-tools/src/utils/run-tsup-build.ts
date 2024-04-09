@@ -222,8 +222,10 @@ async function getNormalizedTsConfig(
       compilerOptions: {
         ...rawTsconfig.config?.compilerOptions,
         typeRoots: [
-          join(basePath, "node_modules/@types"),
-          join(basePath, "node_modules/typescript/lib")
+          correctPaths(join(basePath, "node_modules/@types")),
+          correctPaths(
+            join(basePath, "node_modules/typescript/lib/lib.esnext.d.ts")
+          )
         ],
         preserveSymlinks: true,
         outDir: outputPath,
