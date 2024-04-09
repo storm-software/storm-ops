@@ -8,6 +8,10 @@ import type {
   ParsedCommandLine
 } from "typescript";
 import type { Plugin } from "rolldown";
+import type {
+  BuildOptions as UnbuildOptions,
+  RollupBuildOptions as UnbuildRollupBuildOptions
+} from "unbuild";
 
 export interface TsupContext {
   projectRoot: string;
@@ -226,3 +230,31 @@ export type RolldownOptions = AdditionalCLIOptions & {
   plugins: Plugin[];
   rolldownConfig?: RolldownUserDefinedConfig | RolldownUserDefinedConfig[];
 };
+
+export type DeepPartial<T> = T extends object
+  ? {
+      [P in keyof T]?: DeepPartial<T[P]>;
+    }
+  : T;
+
+export type UnbuildBuildOptions = AdditionalCLIOptions &
+  Omit<
+    UnbuildOptions,
+    "name" | "rootDir" | "entries" | "externals" | "outDir"
+  > & {
+    clean: boolean;
+    watch: boolean;
+    verbose: boolean;
+    minify: boolean;
+    includeSrc: boolean;
+    tsConfig: string;
+    outputPath: string;
+    entry?: string;
+    additionalEntryPoints?: string[];
+    external?: (string | RegExp)[];
+    assets: (AssetGlob | string)[];
+    banner?: OutputOptions["banner"];
+    footer?: OutputOptions["footer"];
+    rollupConfig?: DeepPartial<UnbuildRollupBuildOptions> | string;
+    configPath?: string;
+  };

@@ -2,7 +2,8 @@ import type { StormConfig } from "@storm-software/config";
 import type { TypeScriptBuildOptions } from "../../declarations";
 import { defaultConfig } from "../config";
 import { getLogLevel, LogLevel } from "@storm-software/config-tools";
-import type { RolldownOptions } from "../types";
+import type { RolldownOptions, UnbuildBuildOptions } from "../types";
+import { getFileBanner } from "./get-file-banner";
 
 export const applyDefaultOptions = (
   options: Partial<TypeScriptBuildOptions>,
@@ -78,4 +79,31 @@ export const applyDefaultRolldownOptions = (
   options.treeshake ??= true;
 
   return options as RolldownOptions;
+};
+
+export const applyDefaultUnbuildOptions = (
+  options: Partial<UnbuildBuildOptions>,
+  config?: StormConfig
+): UnbuildBuildOptions => {
+  options.entry ??= "{sourceRoot}/index.ts";
+  options.outputPath ??= "dist/{projectRoot}";
+  options.tsConfig ??= "{projectRoot}/tsconfig.json";
+  options.external ??=
+    process.env.STORM_EXTERNAL_PACKAGE_PATTERNS &&
+    process.env.STORM_EXTERNAL_PACKAGE_PATTERNS.split(",")?.length > 0
+      ? process.env.STORM_EXTERNAL_PACKAGE_PATTERNS.split(",")
+      : [];
+  options.additionalEntryPoints ??= [];
+  options.assets ??= [];
+  options.includeSrc ??= false;
+  options.minify ??= false;
+  options.clean ??= true;
+  options.watch ??= false;
+  options.verbose =
+    options.verbose || getLogLevel(config?.logLevel) >= LogLevel.DEBUG;
+  options.sourcemap ??= true;
+  options.declaration ??= "compatible";
+  options.banner = getFileBanner(options.projectName ?? "Storm Software");
+
+  return options as UnbuildBuildOptions;
 };

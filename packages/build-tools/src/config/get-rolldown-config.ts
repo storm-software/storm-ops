@@ -221,7 +221,7 @@ export async function getRolldownBuildOptions(
 /**
  * Load a rolldown configuration file
  */
-export async function loadConfig(
+async function loadConfig(
   configPath: string
 ): Promise<RolldownBuildOptions | undefined> {
   if (!isSupportedFormat(configPath)) {

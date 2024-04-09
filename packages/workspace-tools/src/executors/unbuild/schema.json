@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "unbuild",
+  "version": 2,
+  "title": "Unbuild Builder",
+  "description": "An executor used by Storm Software to run the Unbuild build process",
+  "type": "object",
+  "properties": {
+    "entry": {
+      "type": "string",
+      "description": "The path to the entry file, relative to project.",
+      "alias": "main",
+      "default": "{sourceRoot}/index.ts"
+    },
+    "outputPath": {
+      "type": "string",
+      "description": "The output path of the generated files.",
+      "x-completion-type": "directory",
+      "x-priority": "important",
+      "default": "dist/{projectRoot}"
+    },
+    "tsConfig": {
+      "type": "string",
+      "description": "The path to the `tsconfig.json` file.",
+      "x-completion-type": "file",
+      "x-completion-glob": "tsconfig*.json",
+      "x-priority": "important",
+      "default": "{projectRoot}/tsconfig.json"
+    },
+    "additionalEntryPoints": {
+      "type": "array",
+      "description": "List of additional entry points.",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "watch": {
+      "type": "boolean",
+      "description": "Enable re-building when files change.",
+      "default": false
+    },
+    "assets": {
+      "type": "array",
+      "description": "List of static assets.",
+      "default": [],
+      "items": {
+        "$ref": "#/definitions/assetPattern"
+      }
+    },
+    "clean": {
+      "type": "boolean",
+      "description": "Remove previous output before build.",
+      "alias": "deleteOutputPath",
+      "default": true
+    },
+    "includeSrc": {
+      "type": "boolean",
+      "description": "Should the source files be added to the distribution folder in an `src` directory.",
+      "default": false
+    },
+    "debug": {
+      "type": "boolean",
+      "description": "Should output be unminified with source mappings.",
+      "default": false
+    },
+    "banner": {
+      "type": "string",
+      "description": "A short heading added to the top of each typescript file added in the output folder's `src` directory.",
+      "default": "This code was developed by Storm Software (<https://stormsoftware.com>) and is licensed under the Apache License 2.0."
+    },
+    "minify": {
+      "type": "boolean",
+      "description": "Should the build process minify the output files?",
+      "default": false
+    },
+    "verbose": {
+      "type": "boolean",
+      "description": "Should write extra log outputs with details from the executor.",
+      "default": false
+    },
+    "plugins": {
+      "type": "array",
+      "description": "List of Rollup plugins to use during processing",
+      "default": [],
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "required": ["tsConfig", "platform", "banner"],
+  "definitions": {
+    "assetPattern": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "glob": {
+              "type": "string",
+              "description": "The pattern to match."
+            },
+            "input": {
+              "type": "string",
+              "description": "The input directory path in which to apply `glob`. Defaults to the project root."
+            },
+            "output": {
+              "type": "string",
+              "description": "Relative path within the output folder."
+            },
+            "ignore": {
+              "description": "An array of globs to ignore.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "required": ["glob", "input", "output"]
+        },
+        {
+          "type": "string"
+        }
+      ]
+    }
+  }
+}

@@ -1,21 +1,21 @@
 import type { ExecutorContext } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
-import type { RolldownOptions } from "@storm-software/build-tools";
-import type { RolldownExecutorSchema } from "./schema.d";
+import type { UnbuildBuildOptions } from "@storm-software/build-tools";
+import type { UnbuildExecutorSchema } from "./schema.d";
 // import { fork } from "child_process";
 
-export async function rolldownExecutorFn(
-  options: RolldownExecutorSchema,
+export async function unbuildExecutorFn(
+  options: UnbuildExecutorSchema,
   context: ExecutorContext,
   config?: StormConfig
 ) {
   const { writeDebug, writeInfo, writeSuccess } = await import(
     "@storm-software/config-tools"
   );
-  const { rolldown } = await import("@storm-software/build-tools");
+  const { unbuild } = await import("@storm-software/build-tools");
 
-  writeInfo(config, "📦  Running Storm build executor on the workspace");
+  writeInfo(config, "📦  Running Storm unbuild executor on the workspace");
 
   // #region Apply default options
 
@@ -53,14 +53,14 @@ ${Object.keys(options)
 
   // #endregion Prepare build context variables
 
-  await rolldown(config!, {
+  await unbuild(config!, {
     ...options,
     projectRoot:
       context.projectsConfigurations.projects?.[context.projectName]?.root,
     projectName: context.projectName,
     sourceRoot:
       context.projectsConfigurations.projects?.[context.projectName]?.sourceRoot
-  } as RolldownOptions);
+  } as UnbuildBuildOptions);
 
   // #endregion Run the build process
 
@@ -71,21 +71,21 @@ ${Object.keys(options)
   };
 }
 
-export default withRunExecutor<RolldownExecutorSchema>(
-  "TypeScript Build using Rolldown",
-  rolldownExecutorFn,
+export default withRunExecutor<UnbuildExecutorSchema>(
+  "TypeScript Build using Unbuild",
+  unbuildExecutorFn,
   {
     skipReadingConfig: false,
     hooks: {
       applyDefaultOptions: async (
-        options: Partial<RolldownOptions>,
+        options: Partial<UnbuildBuildOptions>,
         config?: StormConfig | undefined
       ) => {
-        const { applyDefaultRolldownOptions } = await import(
+        const { applyDefaultUnbuildOptions } = await import(
           "@storm-software/build-tools"
         );
 
-        return applyDefaultRolldownOptions(options, config);
+        return applyDefaultUnbuildOptions(options, config);
       }
     }
   }

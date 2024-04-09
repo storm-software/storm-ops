@@ -15,6 +15,7 @@
         "project": "packages/workspace-tools/package.json",
         "main": "packages/workspace-tools/index.ts",
         "additionalEntryPoints": [
+          "packages/workspace-tools/src/executors/unbuild/executor.ts",
           "packages/workspace-tools/src/executors/rolldown/executor.ts",
           "packages/workspace-tools/src/executors/tsup/executor.ts",
           "packages/workspace-tools/src/executors/tsup-neutral/executor.ts",

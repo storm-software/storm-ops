@@ -4,3 +4,4 @@ export * from "./browser-config";
 export * from "./node-config";
 export * from "./neutral-config";
 export * from "./get-rolldown-config";
+export * from "./get-unbuild-config";

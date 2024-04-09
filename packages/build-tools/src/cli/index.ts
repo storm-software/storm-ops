@@ -6,7 +6,12 @@ import {
 } from "@storm-software/config-tools";
 import type { StormConfig } from "@storm-software/config";
 import { build, rolldown } from "../build";
-import { applyDefaultOptions, applyDefaultRolldownOptions } from "../utils";
+import {
+  applyDefaultOptions,
+  applyDefaultRolldownOptions,
+  applyDefaultUnbuildOptions
+} from "../utils";
+import unbuild from "../build/unbuild";
 
 export async function createProgram(config: StormConfig) {
   const { Command, Option } = await import("commander");
@@ -55,7 +60,7 @@ export async function createProgram(config: StormConfig) {
 
     const configPathOption = new Option(
       "--config-path <file>",
-      "The path of a Rolldown configuration file to use for the build"
+      "The path of a build configuration file to use for the build"
     );
 
     program
@@ -68,6 +73,17 @@ export async function createProgram(config: StormConfig) {
       .addOption(sourceRootOption)
       .addOption(configPathOption)
       .action(rolldownAction(config));
+
+    program
+      .command("unbuild")
+      .description(
+        "Run a build using [Unbuild](https://unjs.io/packages/unbuild/)."
+      )
+      .addOption(projectNameOption)
+      .addOption(projectRootOption)
+      .addOption(sourceRootOption)
+      .addOption(configPathOption)
+      .action(unbuildAction(config));
 
     return program;
   } catch (e) {
@@ -132,6 +148,45 @@ const rolldownAction =
       writeFatal(
         config,
         `❌ A fatal error occurred while running Rolldown: ${e.message}`
+      );
+      console.error(e);
+
+      process.exit(1);
+    }
+  };
+
+const unbuildAction =
+  (config: StormConfig) =>
+  async (
+    projectRoot?: string,
+    projectName?: string,
+    sourceRoot?: string,
+    configPath?: string
+  ) => {
+    try {
+      writeInfo(
+        config,
+        "⚡ Building the Storm TypeScript package with Unbuild"
+      );
+
+      await unbuild(
+        config,
+        applyDefaultUnbuildOptions(
+          {
+            projectRoot,
+            projectName,
+            sourceRoot,
+            configPath
+          },
+          config
+        )
+      );
+
+      writeSuccess(config, "Unbuild has completed successfully ✅");
+    } catch (e) {
+      writeFatal(
+        config,
+        `❌ A fatal error occurred while running Unbuild: ${e.message}`
       );
       console.error(e);
 

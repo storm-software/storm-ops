@@ -1,5 +1,7 @@
 export * from "./src/base";
 export * from "./src/utils";
+export * from "./src/executors/unbuild/executor";
+export * from "./src/executors/unbuild/schema";
 export * from "./src/executors/rolldown/executor";
 export * from "./src/executors/rolldown/schema";
 export * from "./src/executors/tsup-neutral/executor";

@@ -40,6 +40,11 @@
       "implementation": "./src/executors/rolldown/executor",
       "schema": "./src/executors/rolldown/schema.json",
       "description": "An executor used by Storm Software to run the Rolldown build process"
+    },
+    "unbuild": {
+      "implementation": "./src/executors/unbuild/executor",
+      "schema": "./src/executors/unbuild/schema.json",
+      "description": "Run an unbuild build process on a selected project"
     }
   }
 }
