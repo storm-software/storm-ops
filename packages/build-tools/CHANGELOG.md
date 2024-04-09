@@ -1,3 +1,15 @@
+## 0.4.23 (2024-04-09)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolved issue with empty plugin array ([03da3618](https://github.com/storm-software/storm-ops/commit/03da3618))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.4.22 (2024-04-08)
 
 
