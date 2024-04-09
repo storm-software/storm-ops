@@ -23,6 +23,7 @@ export async function getUnbuildBuildOptions(
 
   const buildConfig = {
     ...options,
+    clean: false,
     name: options.projectName,
     rootDir: options.projectRoot,
     entries: options.entry ? [options.entry] : [],
