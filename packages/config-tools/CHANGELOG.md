@@ -1,3 +1,15 @@
+## 1.36.0 (2024-04-09)
+
+
+### 🚀 Features
+
+- **config-tools:** Significant improvements to logic to get config files ([0a0ac895](https://github.com/storm-software/storm-ops/commit/0a0ac895))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.35.7 (2024-04-08)
 
 
