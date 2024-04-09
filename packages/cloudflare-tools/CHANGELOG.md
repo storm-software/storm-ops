@@ -1,3 +1,15 @@
+## 0.1.0 (2024-04-09)
+
+
+### 🚀 Features
+
+- **cloudflare-tools:** Added the `cloudflare-publish` executor ([45701720](https://github.com/storm-software/storm-ops/commit/45701720))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.0.7 (2024-04-08)
 
 
