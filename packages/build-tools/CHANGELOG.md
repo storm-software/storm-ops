@@ -1,3 +1,15 @@
+## 0.5.1 (2024-04-09)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolved issue with invalid rollup path ([4e20c795](https://github.com/storm-software/storm-ops/commit/4e20c795))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.5.0 (2024-04-09)
 
 
