@@ -64,11 +64,6 @@
       "description": "Should output be unminified with source mappings.",
       "default": false
     },
-    "banner": {
-      "type": "string",
-      "description": "A short heading added to the top of each typescript file added in the output folder's `src` directory.",
-      "default": "This code was developed by Storm Software (<https://stormsoftware.com>) and is licensed under the Apache License 2.0."
-    },
     "minify": {
       "type": "boolean",
       "description": "Should the build process minify the output files?",
@@ -88,7 +83,7 @@
       }
     }
   },
-  "required": ["tsConfig", "platform", "banner"],
+  "required": ["tsConfig"],
   "definitions": {
     "assetPattern": {
       "oneOf": [

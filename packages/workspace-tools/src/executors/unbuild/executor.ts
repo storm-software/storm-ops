@@ -3,7 +3,6 @@ import type { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
 import type { UnbuildBuildOptions } from "@storm-software/build-tools";
 import type { UnbuildExecutorSchema } from "./schema.d";
-// import { fork } from "child_process";
 
 export async function unbuildExecutorFn(
   options: UnbuildExecutorSchema,
@@ -15,7 +14,7 @@ export async function unbuildExecutorFn(
   );
   const { unbuild } = await import("@storm-software/build-tools");
 
-  writeInfo(config, "📦  Running Storm unbuild executor on the workspace");
+  writeInfo(config, "📦  Running Storm Unbuild executor on the workspace");
 
   // #region Apply default options
 
@@ -64,7 +63,7 @@ ${Object.keys(options)
 
   // #endregion Run the build process
 
-  writeSuccess(config, "⚡ The Build process has completed successfully");
+  writeSuccess(config, "⚡ The Unbuild process has completed successfully");
 
   return {
     success: true
@@ -72,7 +71,7 @@ ${Object.keys(options)
 }
 
 export default withRunExecutor<UnbuildExecutorSchema>(
-  "TypeScript Build using Unbuild",
+  "TypeScript Unbuild processing",
   unbuildExecutorFn,
   {
     skipReadingConfig: false,
