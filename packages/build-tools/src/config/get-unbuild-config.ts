@@ -25,7 +25,7 @@ export async function getUnbuildBuildOptions(
     ...options,
     clean: false,
     name: options.projectName,
-    rootDir: options.projectRoot,
+    rootDir: config.workspaceRoot!,
     entries: options.entry ? [options.entry] : [],
     outDir: join(config.workspaceRoot!, options.outputPath),
     externals: options.external,
