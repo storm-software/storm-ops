@@ -41,14 +41,14 @@ export async function getUnbuildBuildOptions(
     }
   }
 
-  buildConfig.entries!.push(
-    // mkdist builder transpiles file-to-file keeping original sources structure
-    {
-      builder: "mkdist",
-      input: "./src",
-      outDir: "./lib"
-    }
-  );
+  // buildConfig.entries!.push(
+  //   // mkdist builder transpiles file-to-file keeping original sources structure
+  //   {
+  //     builder: "mkdist",
+  //     input: "./src",
+  //     outDir: "./lib"
+  //   }
+  // );
 
   const buildOptions = defineBuildConfig(buildConfig);
   for (const buildOpt of buildOptions) {
