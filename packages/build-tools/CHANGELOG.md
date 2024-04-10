@@ -1,3 +1,15 @@
+## 0.6.3 (2024-04-10)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolve issue with invalid `rootDir` value ([16b7e378](https://github.com/storm-software/storm-ops/commit/16b7e378))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.6.2 (2024-04-09)
 
 
