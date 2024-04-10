@@ -1,3 +1,15 @@
+## 0.6.4 (2024-04-10)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Temporarily removed `mkdist` build from config ([56f8e104](https://github.com/storm-software/storm-ops/commit/56f8e104))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.6.3 (2024-04-10)
 
 
