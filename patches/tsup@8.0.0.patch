@@ -53,7 +53,7 @@ index 36191e8e511f9cc413d70403ac86c989890f8d65..3f5228a7289e79ae1d1231fee929800f
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index 2c8ba016932710c259e84a7a070271eb4f73da5b..fe154dfcc10c6d2f889d97ccf923a6ba2e2791e8 100644
+index 2c8ba016932710c259e84a7a070271eb4f73da5b..c524f0c734944e7117c5d320c5feeb3eaa3c5dc0 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -1,4 +1,4 @@
@@ -1043,8 +1043,8 @@ index 2c8ba016932710c259e84a7a070271eb4f73da5b..fe154dfcc10c6d2f889d97ccf923a6ba
        inject: [
 -        format === "cjs" && injectShims ? _path2.default.join(__dirname, "../assets/cjs_shims.js") : "",
 -        format === "esm" && injectShims && platform === "node" ? _path2.default.join(__dirname, "../assets/esm_shims.js") : "",
-+        format === "cjs" && injectShims ? _path2.default.join(__dirname, "../../../assets/cjs_shims.js") : "",
-+        format === "esm" && injectShims && platform === "node" ? _path2.default.join(__dirname, "../../../assets/esm_shims.js") : "",
++        format === "cjs" && injectShims ? _path2.default.join(__dirname, "assets/cjs_shims.js") : "",
++        format === "esm" && injectShims && platform === "node" ? _path2.default.join(__dirname, "assets/esm_shims.js") : "",
          ...options.inject || []
        ].filter(Boolean),
        outdir: options.legacyOutput && format !== "cjs" ? _path2.default.join(outDir, format) : outDir,
