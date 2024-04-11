@@ -1,3 +1,15 @@
+## 0.6.12 (2024-04-11)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolve issues with missing TypeScript lib files ([032daaf9](https://github.com/storm-software/storm-ops/commit/032daaf9))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.6.11 (2024-04-11)
 
 
