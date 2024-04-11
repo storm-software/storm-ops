@@ -222,12 +222,6 @@ async function getNormalizedTsConfig(
       ...rawTsconfig.config,
       compilerOptions: {
         ...rawTsconfig.config?.compilerOptions,
-        typeRoots: [
-          correctPaths(join(basePath, "node_modules/@types")),
-          correctPaths(
-            join(basePath, "node_modules/typescript/lib/lib.esnext.d.ts")
-          )
-        ],
         preserveSymlinks: true,
         outDir: outputPath,
         noEmit: false,
@@ -245,10 +239,12 @@ async function getNormalizedTsConfig(
     dirname(options.tsConfig)
   );
 
-  const tsLibs = await glob(
-    correctPaths(join(basePath, "node_modules/typescript/**/*.d.ts"))
-  );
-  parsedTsconfig.fileNames = [...parsedTsconfig.fileNames, ...tsLibs];
+  parsedTsconfig.fileNames = [
+    ...parsedTsconfig.fileNames,
+    ...(await glob(
+      correctPaths(join(workspaceRoot, "node_modules/typescript/**/*.d.ts"))
+    ))
+  ];
 
   parsedTsconfig.options.declarationDir = correctPaths(
     join(basePath, "tmp", ".tsup", "declaration")
