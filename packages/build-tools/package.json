@@ -28,7 +28,6 @@
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "main": "./src/index.js",
   "types": "declarations.d.ts",
   "bin": {
     "storm-build": "./bin/build.mjs"

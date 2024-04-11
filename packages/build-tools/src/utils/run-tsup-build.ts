@@ -12,6 +12,7 @@ import { findFileName, removeExtension } from "@storm-software/config-tools";
 // import { type TSConfig, readTSConfig } from "pkg-types";
 import { type Options, build as tsup, defineConfig } from "tsup";
 import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript.js";
+import { glob } from "glob";
 
 export const runTsupBuild = async (
   context: TsupContext,
@@ -243,6 +244,11 @@ async function getNormalizedTsConfig(
     tsModule.sys,
     dirname(options.tsConfig)
   );
+
+  const tsLibs = await glob(
+    correctPaths(join(basePath, "node_modules/typescript/**/*.d.ts"))
+  );
+  parsedTsconfig.fileNames = [...parsedTsconfig.fileNames, ...tsLibs];
 
   parsedTsconfig.options.declarationDir = correctPaths(
     join(basePath, "tmp", ".tsup", "declaration")
