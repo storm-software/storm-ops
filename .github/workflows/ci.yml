@@ -167,7 +167,7 @@ jobs:
           update-ts: ${{ steps.ci.outputs.ts }}
           payload: |
             {
-              "text": "Storm-Ops Deployment finished (Completed) \n\nStatus: ${{ job.status }} \nOutput: ${{ job.output }} \nLogs: ${{ job.logs }}\nSteps: ${{ job.steps }} \nActions: ${{ job.actions }} \nServices: ${{ job.services }} \nEnvironment: ${{ job.environment}} \nClick here to see the full job details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+              "text": "Storm-Ops Deployment finished (Completed) \n\nStatus: ${{ job.status }} \nClick here to see the full job details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
               "attachments": [
                 {
                   "pretext": "Storm-Ops Deployment finished",
