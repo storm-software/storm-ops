@@ -62,7 +62,7 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.STORM_BOT_DISCORD_WEBHOOK }}
           DISCORD_USERNAME: ${{ env.STORM_BOT }}
           DISCORD_AVATAR: "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-stormie.png"
-          DISCORD_EMBEDS: '[{"title": "Deployment #${{ github.run_number }} has started", "description": "Deployment for ${{ github.repository }} is currently in process - #${{ github.run_number }}", "thumbnail": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "image": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "author": { "name": "${{ github.actor }}", "url": "https://github.com/${{ github.actor }}", "icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4" }, "fields": [ { "name": "Repository", "value": "${{ github.repository }}" }, { "name": "Repository URL", "value": "${{ github.repositoryUrl }}" }, { "name": "Pipeline Status", "value": "In Progress" }], "color": 2077350, "timestamp": "${{ github.event.repository.updated_at }}", "url": "${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "footer": { "text": "Click here to see the full job details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "icon_url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png" } }]'
+          DISCORD_EMBEDS: '[{"title": "Deployment #${{ github.run_number }} has started", "description": "Deployment for ${{ github.repository }} is currently in process - #${{ github.run_number }}", "thumbnail": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "image": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "author": { "name": "${{ github.actor }}", "url": "https://github.com/${{ github.actor }}", "icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4" }, "fields": [ { "name": "Repository", "value": "${{ github.repository }}" }, { "name": "Repository URL", "value": "${{ github.repositoryUrl }}" }, { "name": "Pipeline Status", "value": "In Progress" }], "color": 2077350, "timestamp": "${{ github.event.repository.updated_at }}", "url": "${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "footer": { "text": "Click here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "icon_url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png" } }]'
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -138,7 +138,7 @@ jobs:
           update-ts: ${{ steps.release.outputs.ts }}
           payload: |
             {
-              "text": "Deployment for ${{ github.repository }} has finished (Completed) \n\nPipeline Status: Success \nClick here to see the full job details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+              "text": "Deployment for ${{ github.repository }} has finished (Completed) \n\nPipeline Status: Success \nClick here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
               "attachments": [
                 {
                   "pretext": "Deployment for ${{ github.repository }} has finished successfully",
@@ -164,7 +164,7 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.STORM_BOT_DISCORD_WEBHOOK }}
           DISCORD_USERNAME: ${{ env.STORM_BOT }}
           DISCORD_AVATAR: "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-stormie.png"
-          DISCORD_EMBEDS: '[{"title": "Deployment #${{ github.run_number }} was successful", "description": "Deployment for ${{ github.repository }} has finished successfully - #${{ github.run_number }}", "thumbnail": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "image": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "author": { "name": "${{ github.actor }}", "url": "https://github.com/${{ github.actor }}", "icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4" }, "fields": [ { "name": "Repository", "value": "${{ github.repository }}" }, { "name": "Repository URL", "value": "${{ github.repositoryUrl }}" }, { "name": "Pipeline Status", "value": "Success" }, { "name": "Conclusion", "value": "${{ job.conclusion }}" }, { "name": "Output", "value": "${{ job.output }}" }, { "name": "Logs", "value": "${{ job.logs }}" }], "color": 556891, "timestamp": "${{ date + "%Y-%m-%dT%H:%M:%S" }}", "url": "${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "footer": { "text": "Click here to see the full job details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "icon_url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png" }}]'
+          DISCORD_EMBEDS: '[{"title": "Deployment #${{ github.run_number }} was successful", "description": "Deployment for ${{ github.repository }} has finished successfully - #${{ github.run_number }}", "thumbnail": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "image": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "author": { "name": "${{ github.actor }}", "url": "https://github.com/${{ github.actor }}", "icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4" }, "fields": [ { "name": "Repository", "value": "${{ github.repository }}" }, { "name": "Repository URL", "value": "${{ github.repositoryUrl }}" }, { "name": "Pipeline Status", "value": "Success" }, { "name": "Conclusion", "value": "${{ job.conclusion }}" }, { "name": "Output", "value": "${{ job.output }}" }, { "name": "Logs", "value": "${{ job.logs }}" }], "color": 556891, "timestamp": "${{ github.event.repository.updated_at }}", "url": "${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "footer": { "text": "Click here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "icon_url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png" }}]'
 
   failure:
     needs:
@@ -180,7 +180,7 @@ jobs:
           update-ts: ${{ steps.release.outputs.ts }}
           payload: |
             {
-              "text": "Deployment for ${{ github.repository }} has finished (Failure) \n\nPipeline Status: Failure\nError: ${{ job.conclusion }}\nReason: ${{ job.cancelled }}\nConclusion: ${{ job.conclusion }}\nOutput: ${{ job.output }}\nLogs: ${{ job.logs }} \nSteps: ${{ job.steps }} \nActions: ${{ job.actions }} \nServices: ${{ job.services }} \nEnvironment: ${{ job.environment}} \nClick here to see the full job details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+              "text": "Deployment for ${{ github.repository }} has finished (Failure) \n\nPipeline Status: Failure\nError: ${{ job.conclusion }}\nReason: ${{ job.cancelled }}\nConclusion: ${{ job.conclusion }}\nOutput: ${{ job.output }}\nLogs: ${{ job.logs }} \nSteps: ${{ job.steps }} \nActions: ${{ job.actions }} \nServices: ${{ job.services }} \nEnvironment: ${{ job.environment}} \nClick here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
               "attachments": [
                 {
                   "pretext": "Deployment for ${{ github.repository }} has finished with failures",
@@ -206,4 +206,46 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.STORM_BOT_DISCORD_WEBHOOK }}
           DISCORD_USERNAME: ${{ env.STORM_BOT }}
           DISCORD_AVATAR: "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-stormie.png"
-          DISCORD_EMBEDS: '[{"title": "Deployment #${{ github.run_number }} has failed", "description": "Deployment for ${{ github.repository }} finished with failures - #${{ github.run_number }}", "thumbnail": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "image": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "author": { "name": "${{ github.actor }}", "url": "https://github.com/${{ github.actor }}", "icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4" }, "fields": [ { "name": "Repository", "value": "${{ github.repository }}" }, { "name": "Repository URL", "value": "${{ github.repositoryUrl }}" }, { "name": "Pipeline Status", "value": "Failure" }, { "name": "Error", "value": "${{ job.conclusion }}" }, { "name": "Reason", "value": "${{ job.cancelled }}" }, { "name": "Conclusion", "value": "${{ job.conclusion }}" }, { "name": "Output", "value": "${{ job.output }}" }, { "name": "Logs", "value": "${{ job.logs }}" }], "color": 10027008, "timestamp": "${{ date + "%Y-%m-%dT%H:%M:%S" }}", "url": "${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "footer": { "text": "Click here to see the full job details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "icon_url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png" } }]'
+          DISCORD_EMBEDS: '[{"title": "Deployment #${{ github.run_number }} has failed", "description": "Deployment for ${{ github.repository }} finished with failures - #${{ github.run_number }}", "thumbnail": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "image": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "author": { "name": "${{ github.actor }}", "url": "https://github.com/${{ github.actor }}", "icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4" }, "fields": [ { "name": "Repository", "value": "${{ github.repository }}" }, { "name": "Repository URL", "value": "${{ github.repositoryUrl }}" }, { "name": "Pipeline Status", "value": "Failure" }, { "name": "Event", "value": "${{ github.event_name }}" }, { "name": "Result", "value": "${{ jobs.release.result }}" }, { "name": "Conclusion", "value": "${{ jobs.release.conclusion }}" }, { "name": "Output", "value": "${{ toJSON(jobs.release.outputs) }}" }], "color": 10027008, "timestamp": "${{ github.event.repository.updated_at }}", "url": "${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "footer": { "text": "Click here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "icon_url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png" } }]'
+
+  cancelled:
+    needs:
+      - release
+    if: ${{ cancelled() }}
+    name: Send cancelled notification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack notification - Deployment cancelled
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          channel-id: "notifications"
+          update-ts: ${{ steps.release.outputs.ts }}
+          payload: |
+            {
+              "text": "Deployment for ${{ github.repository }} has finished (Cancelled) \n\nPipeline Status: Cancelled\nError: ${{ job.conclusion }}\nReason: ${{ job.cancelled }}\nConclusion: ${{ job.conclusion }}\nOutput: ${{ job.output }}\nLogs: ${{ job.logs }} \nSteps: ${{ job.steps }} \nActions: ${{ job.actions }} \nServices: ${{ job.services }} \nEnvironment: ${{ job.environment}} \nClick here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+              "attachments": [
+                {
+                  "pretext": "Deployment for ${{ github.repository }} has been cancelled",
+                  "color": "990000",
+                  "fields": [
+                    {
+                      "title": "Status",
+                      "short": true,
+                      "value": "Cancelled"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.STORM_BOT_SLACK_TOKEN }}
+
+      - name: Send Discord notification - Deployment cancelled
+        uses: Ilshidur/action-discord@master
+        with:
+          args: "Deployment for ${{ github.repository }} has been cancelled - #${{ github.run_number }}"
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.STORM_BOT_DISCORD_WEBHOOK }}
+          DISCORD_USERNAME: ${{ env.STORM_BOT }}
+          DISCORD_AVATAR: "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-stormie.png"
+          DISCORD_EMBEDS: '[{"title": "Deployment #${{ github.run_number }} was cancelled", "description": "Deployment for ${{ github.repository }} was cancelled before it could complete normal execution - #${{ github.run_number }}", "thumbnail": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "image": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "author": { "name": "${{ github.actor }}", "url": "https://github.com/${{ github.actor }}", "icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4" }, "fields": [ { "name": "Repository", "value": "${{ github.repository }}" }, { "name": "Repository URL", "value": "${{ github.repositoryUrl }}" }, { "name": "Pipeline Status", "value": "Cancelled" }, { "name": "Event", "value": "${{ github.event_name }}" }, { "name": "Result", "value": "${{ jobs.release.result }}" }, { "name": "Conclusion", "value": "${{ jobs.release.conclusion }}" }, { "name": "Output", "value": "${{ toJSON(jobs.release.outputs) }}" }], "color": 16565273, "timestamp": "${{ github.event.repository.updated_at }}", "url": "${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "footer": { "text": "Click here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "icon_url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png" } }]'
