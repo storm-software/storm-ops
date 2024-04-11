@@ -381,11 +381,21 @@ ${unbuildBuildOptions
 
   const start = process.hrtime.bigint();
 
-  await Promise.allSettled(
-    unbuildBuildOptions.map(opts => {
-      return build(enhancedOptions.projectRoot, false, opts);
-    })
-  );
+  try {
+    await Promise.allSettled(
+      unbuildBuildOptions.map(opts => {
+        writeInfo(config, `📦 Building ${opts.name}...`);
+
+        return build(enhancedOptions.projectRoot, false, opts);
+      })
+    );
+  } catch (e) {
+    writeWarning(
+      config,
+      `🚫 The Build process failed because an error occurred: ${e.message}`
+    );
+    return;
+  }
 
   writeInfo(
     config,
