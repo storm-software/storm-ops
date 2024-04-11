@@ -43,21 +43,21 @@ jobs:
           channel-id: "notifications"
           payload: |
             {
-              "text": "Storm-Ops Deployment started (In Progress)",
-              "attachments": [
-                {
-                  "pretext": "Storm-Ops Deployment started",
-                  "color": "1fb2a6",
-                  "fields": [
-                    {
-                      "title": "Status",
-                      "short": true,
-                      "value": "In Progress"
-                    }
-                  ]
-                }
-              ]
-            }
+               "text": "Deployment for ${{ github.repository }} has started (In Progress)",
+               "attachments": [
+                 {
+                   "pretext": "Deployment for ${{ github.repository }} has started",
+                   "color": "1fb2a6",
+                   "fields": [
+                     {
+                       "title": "Status",
+                       "short": true,
+                       "value": "In Progress"
+                     }
+                   ]
+                 }
+               ]
+             }
         env:
           SLACK_BOT_TOKEN: ${{ secrets.STORM_BOT_SLACK_TOKEN }}
 
@@ -167,10 +167,10 @@ jobs:
           update-ts: ${{ steps.ci.outputs.ts }}
           payload: |
             {
-              "text": "Storm-Ops Deployment finished (Completed) \n\Pipeline Status: ${{ job.status }} \nClick here to see the full job details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+              "text": "Deployment for ${{ github.repository }} has finished (Completed) \n\nPipeline Status: ${{ job.status }} \nClick here to see the full job details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
               "attachments": [
                 {
-                  "pretext": "Storm-Ops Deployment finished",
+                  "pretext": "Deployment for ${{ github.repository }} has finished successfully",
                   "color": "087f5b",
                   "fields": [
                     {
@@ -199,10 +199,10 @@ jobs:
           update-ts: ${{ steps.ci.outputs.ts }}
           payload: |
             {
-              "text": "Storm-Ops Deployment finished (Failure) \n\nPipeline Status: ${{ job.status }}\nError: ${{ job.conclusion }}\nReason: ${{ job.cancelled }}\nConclusion: ${{ job.conclusion }}\nOutput: ${{ job.output }}\nLogs: ${{ job.logs }} \nSteps: ${{ job.steps }} \nActions: ${{ job.actions }} \nServices: ${{ job.services }} \nEnvironment: ${{ job.environment}} \nClick here to see the full job details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+              "text": "Deployment for ${{ github.repository }} has finished (Failure) \n\nPipeline Status: ${{ job.status }}\nError: ${{ job.conclusion }}\nReason: ${{ job.cancelled }}\nConclusion: ${{ job.conclusion }}\nOutput: ${{ job.output }}\nLogs: ${{ job.logs }} \nSteps: ${{ job.steps }} \nActions: ${{ job.actions }} \nServices: ${{ job.services }} \nEnvironment: ${{ job.environment}} \nClick here to see the full job details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
               "attachments": [
                 {
-                  "pretext": "Storm-Ops Deployment finished",
+                  "pretext": "Deployment for ${{ github.repository }} has finished with failures",
                   "color": "990000",
                   "fields": [
                     {

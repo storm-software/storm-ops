@@ -30,6 +30,30 @@ jobs:
       id-token: write
     if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/next' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta')
     steps:
+      - name: Send Slack notification - Deployment started
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          channel-id: "notifications"
+          payload: |
+            {
+              "text": "Deployment for ${{ github.repository }} has started (In Progress)",
+              "attachments": [
+                {
+                  "pretext": "Deployment for ${{ github.repository }} has started",
+                  "color": "1fb2a6",
+                  "fields": [
+                    {
+                      "title": "Status",
+                      "short": true,
+                      "value": "In Progress"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.STORM_BOT_SLACK_TOKEN }}
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
@@ -89,3 +113,67 @@ jobs:
           STORM_WORKSPACE_ROOT: ${{ github.workspace }}
           STORM_REPOSITORY: ${{ github.repositoryUrl }}
           TAG: ${{ inputs.tag }}
+
+  success:
+    needs:
+      - release
+    if: ${{ success() }}
+    name: Send success notification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack notification - Deployment completed
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          channel-id: "notifications"
+          update-ts: ${{ steps.release.outputs.ts }}
+          payload: |
+            {
+              "text": "Deployment for ${{ github.repository }} has finished (Completed) \n\nPipeline Status: ${{ job.status }} \nClick here to see the full job details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+              "attachments": [
+                {
+                  "pretext": "Deployment for ${{ github.repository }} has finished successfully",
+                  "color": "087f5b",
+                  "fields": [
+                    {
+                      "title": "Status",
+                      "short": true,
+                      "value": "Completed"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.STORM_BOT_SLACK_TOKEN }}
+
+  failure:
+    needs:
+      - release
+    if: ${{ failure() }}
+    name: Send failure notification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack notification - Deployment completed
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          channel-id: "notifications"
+          update-ts: ${{ steps.release.outputs.ts }}
+          payload: |
+            {
+              "text": "Deployment for ${{ github.repository }} has finished (Failure) \n\nPipeline Status: ${{ job.status }}\nError: ${{ job.conclusion }}\nReason: ${{ job.cancelled }}\nConclusion: ${{ job.conclusion }}\nOutput: ${{ job.output }}\nLogs: ${{ job.logs }} \nSteps: ${{ job.steps }} \nActions: ${{ job.actions }} \nServices: ${{ job.services }} \nEnvironment: ${{ job.environment}} \nClick here to see the full job details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+              "attachments": [
+                {
+                  "pretext": "Deployment for ${{ github.repository }} has finished with failures",
+                  "color": "990000",
+                  "fields": [
+                    {
+                      "title": "Status",
+                      "short": true,
+                      "value": "Failure"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.STORM_BOT_SLACK_TOKEN }}
