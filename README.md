@@ -2,7 +2,9 @@
 
 <br />
 <div align="center">
+<b>
 <a href="https://stormsoftware.com" target="_blank">Website</a>  |  <a href="https://stormsoftware.com/contact" target="_blank">Contact</a>  |  <a href="https://github.com/storm-software/storm-ops" target="_blank">Repository</a>  |  <a href="https://storm-software.github.io/storm-ops/" target="_blank">Documentation</a>  |  <a href="https://github.com/storm-software/storm-ops/issues/new?assignees=&labels=bug&template=bug-report.yml&title=Bug Report%3A+">Report a Bug</a> | <a href="https://github.com/storm-software/storm-ops/issues/new?assignees=&labels=enhancement&template=feature-request.yml&title=Feature Request%3A+">Request a Feature</a> | <a href="https://github.com/storm-software/storm-ops/discussions">Ask a Question</a>
+</b>
 </div>
 <br />
 
@@ -26,8 +28,6 @@ Storm-Ops is built using <a href="https://nx.dev/" target="_blank">Nx</a>, a set
 [![GitHub Actions Build History](https://buildstats.info/github/chart/storm-software/storm-ops?branch=main&includeBuildsFromPullRequest=false)](https://github.com/storm-software/storm-ops/actions)
 
 <!--#endif-->
-
-<hr />
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -75,7 +75,12 @@ The following are some of the features/publishable code that are included in thi
 - React Suspense + Fetch-As-You-Render Query Prefetching
 - Dedicated Devtools
 
-<div align="center"><b>Be sure to ⭐ this repository on GitHub so you can keep up to date on any daily progress!</b></div>
+<div align="center">
+<b>Be sure to ⭐ this repository on GitHub so you can keep up to date on any daily progress!</b>
+</div>
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
 
 ## Tech Stack
 
@@ -84,7 +89,9 @@ The following are some of the features/publishable code that are included in thi
 </div>
 
 **Note:** The above list of technologies is far from exhaustive. It is just meant to serve as a short list of _some_ of the technologies that are used in this repository.
-<br /><br />
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
 
 # Getting Started
 
@@ -92,18 +99,29 @@ Once the code is pulled locally, open a command prompt and run `pnpm install` in
 
 More information can be found in the [Open System documentation](https://storm-software.github.io/storm-ops/docs/getting-started/installation).
 
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
+
 ## Build
 
 Run `pnpm build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
+
 ## Development Server
 
 Run `pnpm serve` for a dev server. Navigate to <http://localhost:4200/>. The app will automatically reload if you change any of the source files.
-<br /><br />
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
 
 # Environment Configuration Help
 
 If you run into any issues while trying to run any of the above steps, please reach out to Patrick Sullivan. See the [Support](#support) section for more information.
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
 
 ## Plug-Ins
 
@@ -120,6 +138,9 @@ Some of the plug-ins used by this repository are:
 - [@nx/jest](https://nx.dev/packages/jest)
 - And more...
 
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
+
 ## Generate an Application
 
 Run `nx g @storm-software/workspace:app my-app` to generate an application.
@@ -127,6 +148,9 @@ Run `nx g @storm-software/workspace:app my-app` to generate an application.
 > You can use any of the plugins above to generate applications as well.
 
 When using Nx, you can create multiple applications and libraries in the same workspace.
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
 
 ## Generate a Library
 
@@ -136,14 +160,22 @@ Run `nx g @storm-software/workspace:lib my-lib` to generate a library.
 
 Libraries are shareable across libraries and applications. They can be imported from `@storm-ops/my-lib`.
 
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
+
 ## Code Scaffolding
 
 Run `nx g @nx/react:component my-component --project=storm-ops` to generate a new component.
-<br /><br />
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
 
 # Testing
 
 Open System uses [Jest](https://jestjs.io/) for unit testing and [Cypress](https://www.cypress.io/) for end-to-end testing.
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
 
 ## Running Unit Tests
 
@@ -151,22 +183,35 @@ Run `pnpm test` to execute the unit tests via [Jest](https://jestjs.io).
 
 Run `pnpm affected:test` to execute the unit tests affected by a change.
 
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
+
 ## Running End-to-End Tests
 
 Run `pnpm e2e` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
 
 Run `pnpm affected:e2e` to execute the end-to-end tests affected by a change.
 
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
+
 ## Understand your workspace
 
 Run `pnpm graph` to see a diagram of the dependencies of the Open System projects.
-<br /><br />
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
 
 # ☁ Nx Cloud
 
 Nx caches the output of any previously run command such as testing and building, so it can replay the cached results instead of rerunning it. Nx Cloud allows you to share the computation cache across everyone in your team and CI.
 
-<p align="center"><img src="https://pub-4661138852db4e5da99a6660fbf9b633.r2.dev/Nx Cloud - Dashboard.png" width="100%" altText="Nx Cloud - Dashboard" /></p>
+<div align="center">
+<img src="https://pub-4661138852db4e5da99a6660fbf9b633.r2.dev/Nx Cloud - Dashboard.png" width="100%" alt="Nx Cloud - Dashboard" />
+</div>
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
 
 ## Distributed Computation Caching & Distributed Task Execution
 
@@ -175,7 +220,9 @@ Nx Cloud pairs with Nx in order to enable you to build and test code more rapidl
 Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
 
 Visit [Nx Cloud](https://nx.app/) to learn more.
-<br /><br />
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
 
 # Roadmap
 
@@ -184,7 +231,9 @@ See the [open issues](https://github.com/storm-software/storm-ops/issues) for a 
 - [Top Feature Requests](https://github.com/storm-software/storm-ops/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
 - [Top Bugs](https://github.com/storm-software/storm-ops/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
 - [Newest Bugs](https://github.com/storm-software/storm-ops/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
-  <br /><br />
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
 
 # Contributing
 
@@ -200,7 +249,9 @@ Please try to create bug reports that are:
 Please adhere to this project's [code of conduct](.github/CODE_OF_CONDUCT.md).
 
 You can use [markdownlint-cli](https://github.com/storm-software/storm-ops/markdownlint-cli) to check for common markdown style inconsistency.
-<br /><br />
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
 
 # Support
 
@@ -210,11 +261,17 @@ Reach out to the maintainer at one of the following places:
 - [GitHub discussions](https://github.com/storm-software/storm-ops/discussions)
 - <contact@stormsoftware.com>
 
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
+
 # License
 
 This project is licensed under the **Apache License 2.0**. Feel free to edit and distribute this template as you like. If you have any specific questions, please reach out to the Storm Software development team.
 
 See [LICENSE](LICENSE) for more information.
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
 
 # Contributors ✨
 
@@ -248,6 +305,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
 <br />
 
 <hr />
@@ -275,5 +334,8 @@ If this sounds interesting, and you would like to help us in creating the next g
 
 <br />
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3>
+<br />
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
 <br />
 <br />

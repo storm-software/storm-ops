@@ -2,6 +2,9 @@
 
 Storm workspaces are built using <a href="https://nx.dev/" target="_blank">Nx</a>, a set of extensible dev tools for monorepos, which helps you develop like Google, Facebook, and Microsoft. Building on top of Nx, the Open System provides a set of tools and patterns that help you scale your monorepo to many teams while keeping the codebase maintainable.
 
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
+
 ## Roadmap
 
 See the [open issues](https://github.com/<%= organization %>/<%= name %>/issues) for a list of proposed features (and known issues).
@@ -9,6 +12,9 @@ See the [open issues](https://github.com/<%= organization %>/<%= name %>/issues)
 - [Top Feature Requests](https://github.com/<%= organization %>/<%= name %>/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
 - [Top Bugs](https://github.com/<%= organization %>/<%= name %>/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc) (Add your votes using the 👍 reaction)
 - [Newest Bugs](https://github.com/<%= organization %>/<%= name %>/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
 
 ## Support
 
@@ -18,15 +24,24 @@ Reach out to the maintainer at one of the following places:
 - [GitHub discussions](https://github.com/<%= organization %>/<%= name %>/discussions)
 - <support@stormsoftware.com>
 
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
+
 ## License
 
 This project is licensed under the **Apache License 2.0**. Feel free to edit and distribute this template as you like.
 
 See [LICENSE](LICENSE) for more information.
 
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
+
 ## Changelog
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Every release, along with the migration instructions, is documented in the [CHANGELOG](CHANGELOG.md) file
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
 
 ## Contributing
 
@@ -42,6 +57,9 @@ Please try to create bug reports that are:
 Please adhere to this project's [code of conduct](.github/CODE_OF_CONDUCT.md).
 
 You can use [markdownlint-cli](https://github.com/<%= organization %>/<%= name %>/markdownlint-cli) to check for common markdown style inconsistency.
+
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
+<br />
 
 ## Contributors
 
@@ -71,7 +89,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
 <br />
+
 <hr />
 <br />
 
@@ -97,5 +117,7 @@ If this sounds interesting, and you would like to help us in creating the next g
 
 <br />
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3>
+
 <br />
+<div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
 <br />
