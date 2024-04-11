@@ -1,3 +1,15 @@
+## 0.6.11 (2024-04-11)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Added the TypeScript libs files to the compiler options ([963d533a](https://github.com/storm-software/storm-ops/commit/963d533a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.6.10 (2024-04-11)
 
 
