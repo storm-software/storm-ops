@@ -1,3 +1,15 @@
+## 0.6.6 (2024-04-11)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Update the `rootDir` passed to the build method ([d4d4409e](https://github.com/storm-software/storm-ops/commit/d4d4409e))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.6.5 (2024-04-11)
 
 
