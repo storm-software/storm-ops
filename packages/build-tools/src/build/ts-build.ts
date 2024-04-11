@@ -333,7 +333,7 @@ export async function buildWithOptions(
     );
 
     enhancedOptions.external ??= [];
-    for (const packageName of Object.keys(packageJson.dependencies)) {
+    for (const packageName of Object.keys(packageJson.dependencies ?? {})) {
       if (!enhancedOptions.external.includes(packageName)) {
         enhancedOptions.external.push(packageName);
       }
