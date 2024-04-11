@@ -53,14 +53,6 @@ export const generatePackageJson = async (
     "package.json"
   );
 
-  // let projectName = projectRoot.replace(config.packageDirectory ?? "", "");
-  // if (projectName.startsWith("/")) {
-  //   projectName = projectName.substring(1);
-  // }
-  // if (projectName.endsWith("/")) {
-  //   projectName = projectName.substring(-1);
-  // }
-
   const packageJson: Record<string, any> | undefined = fileExists(
     pathToPackageJson
   )
@@ -71,18 +63,18 @@ export const generatePackageJson = async (
       };
 
   options.external = options.external || [];
-  if (workspacePackageJson?.dependencies) {
-    options.external = Object.keys(workspacePackageJson?.dependencies).reduce(
-      (ret: string[], key: string) => {
-        if (!ret.includes(key)) {
-          ret.push(key);
-        }
+  // if (workspacePackageJson?.dependencies) {
+  //   options.external = Object.keys(workspacePackageJson?.dependencies).reduce(
+  //     (ret: string[], key: string) => {
+  //       if (!ret.includes(key)) {
+  //         ret.push(key);
+  //       }
 
-        return ret;
-      },
-      options.external
-    );
-  }
+  //       return ret;
+  //     },
+  //     options.external
+  //   );
+  // }
 
   const projectGraph = readCachedProjectGraph();
   if (!projectGraph) {
@@ -242,11 +234,7 @@ export const generatePackageJson = async (
           )
         ) {
           const { packageName, version } = packageConfig;
-          if (
-            !workspacePackageJson.dependencies?.[packageName] &&
-            !workspacePackageJson.devDependencies?.[packageName] &&
-            !packageJson?.devDependencies?.[packageName]
-          ) {
+          if (!packageJson?.devDependencies?.[packageName]) {
             packageJson.dependencies ??= {};
             packageJson.dependencies[packageName] = projectGraph.nodes[
               externalDependency.node.name
