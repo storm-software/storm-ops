@@ -1,3 +1,15 @@
+## 0.6.9 (2024-04-11)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Add the typescript type libraries to the `tsup` build  include path ([c7125729](https://github.com/storm-software/storm-ops/commit/c7125729))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.6.8 (2024-04-11)
 
 
