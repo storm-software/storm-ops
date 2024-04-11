@@ -37,6 +37,30 @@ jobs:
       contents: write
       id-token: write
     steps:
+      - name: Send Slack notification - Deployment started
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          channel-id: "notifications"
+          payload: |
+            {
+              "text": "Storm-Ops Deployment started (In Progress)",
+              "attachments": [
+                {
+                  "pretext": "Storm-Ops Deployment started",
+                  "color": "1fb2a6",
+                  "fields": [
+                    {
+                      "title": "Status",
+                      "short": true,
+                      "value": "In Progress"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.STORM_BOT_SLACK_TOKEN }}
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
@@ -128,3 +152,67 @@ jobs:
           STORM_WORKSPACE_ROOT: ${{ github.workspace }}
           STORM_REPOSITORY: ${{ github.repositoryUrl }}
           TAG: ${{ inputs.tag }}
+
+  success:
+    needs:
+      - ci
+    if: ${{ success() }}
+    name: Send success notification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack notification - Deployment completed
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          channel-id: "notifications"
+          update-ts: ${{ steps.ci.outputs.ts }}
+          payload: |
+            {
+              "text": "Storm-Ops Deployment finished (Completed)",
+              "attachments": [
+                {
+                  "pretext": "Storm-Ops Deployment finished",
+                  "color": "087f5b",
+                  "fields": [
+                    {
+                      "title": "Status",
+                      "short": true,
+                      "value": "Completed"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.STORM_BOT_SLACK_TOKEN }}
+
+  failure:
+    needs:
+      - ci
+    if: ${{ failure() }}
+    name: Send failure notification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack notification - Deployment completed
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          channel-id: "notifications"
+          update-ts: ${{ steps.ci.outputs.ts }}
+          payload: |
+            {
+              "text": "Storm-Ops Deployment finished (Failure)",
+              "attachments": [
+                {
+                  "pretext": "Storm-Ops Deployment finished",
+                  "color": "990000",
+                  "fields": [
+                    {
+                      "title": "Status",
+                      "short": true,
+                      "value": "Failure"
+                    }
+                  ]
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.STORM_BOT_SLACK_TOKEN }}
