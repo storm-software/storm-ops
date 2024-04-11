@@ -384,7 +384,7 @@ ${unbuildBuildOptions
   try {
     await Promise.allSettled(
       unbuildBuildOptions.map(opts => {
-        writeInfo(config, `📦 Building ${opts.name}...`);
+        writeInfo(config, `📦  Building ${opts.name}...`);
 
         return build(config.workspaceRoot!, false, opts);
       })
@@ -392,14 +392,14 @@ ${unbuildBuildOptions
   } catch (e) {
     writeWarning(
       config,
-      `🚫 The Build process failed because an error occurred: ${e.message}`
+      `🚫  The Build process failed because an error occurred: ${e.message}`
     );
     return;
   }
 
   writeInfo(
     config,
-    `🚀 Build process for ${enhancedOptions.projectName} completed in ${(Number(process.hrtime.bigint() - start) / 1_000_000_000).toFixed(2)}s`
+    `🚀  Build process for ${enhancedOptions.projectName} completed in ${(Number(process.hrtime.bigint() - start) / 1_000_000_000).toFixed(2)}s`
   );
 
   // #endregion Run the build process

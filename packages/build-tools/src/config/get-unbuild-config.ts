@@ -22,14 +22,20 @@ export async function getUnbuildBuildOptions(
   }
 
   const buildConfig = {
-    ...options,
     clean: false,
     name: options.projectName,
     rootDir: config.workspaceRoot!,
-    entries: options.entry ? [options.entry] : [],
+    entries: options.entry
+      ? [
+          options.entry.startsWith("./") || options.entry.startsWith("C:")
+            ? options.entry
+            : `./${options.entry}`
+        ]
+      : [],
     outDir: join(config.workspaceRoot!, options.outputPath),
     externals: options.external,
-    dependencies: npmDeps
+    dependencies: npmDeps,
+    declaration: "compatible"
   } as BuildConfig;
 
   if (
@@ -41,14 +47,14 @@ export async function getUnbuildBuildOptions(
     }
   }
 
-  // buildConfig.entries!.push(
-  //   // mkdist builder transpiles file-to-file keeping original sources structure
-  //   {
-  //     builder: "mkdist",
-  //     input: "./src",
-  //     outDir: "./lib"
-  //   }
-  // );
+  buildConfig.entries!.push(
+    // mkdist builder transpiles file-to-file keeping original sources structure
+    {
+      builder: "mkdist",
+      input: "./src/",
+      outDir: "./lib"
+    }
+  );
 
   const buildOptions = defineBuildConfig(buildConfig);
   for (const buildOpt of buildOptions) {

@@ -35,7 +35,7 @@
         "skipTypeCheck": false,
         "thirdParty": true,
         "platform": "node",
-        "external": ["nx", "@swc/core"],
+        "external": ["nx", "@swc/core", "esbuild"],
         "format": ["cjs"],
         "esbuildOptions": {
           "outExtension": {
@@ -86,7 +86,7 @@
         "skipTypeCheck": false,
         "thirdParty": true,
         "platform": "node",
-        "external": ["nx", "@swc/core"],
+        "external": ["nx", "@swc/core", "esbuild"],
         "format": ["esm"],
         "esbuildOptions": {
           "outExtension": {
