@@ -1,3 +1,15 @@
+## 0.6.8 (2024-04-11)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Resolve object ref error with empty dependencies ([6abbd534](https://github.com/storm-software/storm-ops/commit/6abbd534))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.6.7 (2024-04-11)
 
 
