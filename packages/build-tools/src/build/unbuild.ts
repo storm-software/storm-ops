@@ -386,7 +386,7 @@ ${unbuildBuildOptions
       unbuildBuildOptions.map(opts => {
         writeInfo(config, `📦 Building ${opts.name}...`);
 
-        return build(enhancedOptions.projectRoot, false, opts);
+        return build(config.workspaceRoot!, false, opts);
       })
     );
   } catch (e) {
