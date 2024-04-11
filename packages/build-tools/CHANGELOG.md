@@ -1,3 +1,15 @@
+## 0.6.7 (2024-04-11)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Enhance the entry string logic and output path ([10801885](https://github.com/storm-software/storm-ops/commit/10801885))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.6.6 (2024-04-11)
 
 
