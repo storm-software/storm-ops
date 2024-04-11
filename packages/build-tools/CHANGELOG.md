@@ -1,3 +1,15 @@
+## 0.6.5 (2024-04-11)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Update the logging prior to the build ([dd83b930](https://github.com/storm-software/storm-ops/commit/dd83b930))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.6.4 (2024-04-10)
 
 
