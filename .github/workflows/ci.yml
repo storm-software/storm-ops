@@ -165,7 +165,7 @@ jobs:
 
   success:
     needs:
-      - release
+      - ci
     if: ${{ success() }}
     name: Send success notification
     runs-on: ubuntu-latest
@@ -174,7 +174,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.25.0
         with:
           channel-id: "notifications"
-          update-ts: ${{ steps.release.outputs.ts }}
+          update-ts: ${{ steps.ci.outputs.ts }}
           payload: |
             {
               "text": "Deployment for ${{ github.repository }} has finished (Completed) \n\nPipeline Status: Success \nClick here to see the full job details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
@@ -207,7 +207,7 @@ jobs:
 
   failure:
     needs:
-      - release
+      - ci
     if: ${{ failure() }}
     name: Send failure notification
     runs-on: ubuntu-latest
@@ -216,7 +216,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.25.0
         with:
           channel-id: "notifications"
-          update-ts: ${{ steps.release.outputs.ts }}
+          update-ts: ${{ steps.ci.outputs.ts }}
           payload: |
             {
               "text": "Deployment for ${{ github.repository }} has finished (Failure) \n\nPipeline Status: Failure\nError: ${{ job.conclusion }}\nReason: ${{ job.cancelled }}\nConclusion: ${{ job.conclusion }}\nOutput: ${{ job.output }}\nLogs: ${{ job.logs }} \nSteps: ${{ job.steps }} \nActions: ${{ job.actions }} \nServices: ${{ job.services }} \nEnvironment: ${{ job.environment}} \nClick here to see the full job details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
