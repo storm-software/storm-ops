@@ -1,3 +1,15 @@
+## 1.71.1 (2024-04-11)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Update `tsup` build to no longer add workspace dependencies ([84da4a76](https://github.com/storm-software/storm-ops/commit/84da4a76))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.71.0 (2024-04-09)
 
 
