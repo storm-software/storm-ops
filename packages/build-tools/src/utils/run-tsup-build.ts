@@ -234,7 +234,11 @@ async function getNormalizedTsConfig(
         declaration: true,
         declarationMap: true,
         declarationDir: join("tmp", ".tsup", "declaration")
-      }
+      },
+      include: [
+        correctPaths(join(basePath, "node_modules/typescript/**/*.d.ts")),
+        ...rawTsconfig.config?.include
+      ]
     },
     tsModule.sys,
     dirname(options.tsConfig)

@@ -160,7 +160,7 @@ jobs:
     name: Send success notification
     runs-on: ubuntu-latest
     steps:
-      - name: Send Slack notification - Deployment completed
+      - name: Send Slack notification - Deployment successful
         uses: slackapi/slack-github-action@v1.25.0
         with:
           channel-id: "notifications"
@@ -192,7 +192,7 @@ jobs:
     name: Send failure notification
     runs-on: ubuntu-latest
     steps:
-      - name: Send Slack notification - Deployment completed
+      - name: Send Slack notification - Deployment failed
         uses: slackapi/slack-github-action@v1.25.0
         with:
           channel-id: "notifications"
