@@ -1,3 +1,15 @@
+## 1.46.7 (2024-04-13)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Resolved issue with bad `project.json` tasks ([744c7eef](https://github.com/storm-software/storm-ops/commit/744c7eef))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.46.6 (2024-04-08)
 
 
