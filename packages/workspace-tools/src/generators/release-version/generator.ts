@@ -140,10 +140,10 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
     );
 
     const log = (msg: string) => {
-      writeInfo(config, `${projectName}: ${msg}`);
+      writeInfo(`${projectName}: ${msg}`, config);
     };
 
-    writeInfo(config, `Running release version for project: ${project.name}`);
+    writeInfo(`Running release version for project: ${project.name}`, config);
 
     let packageName!: string;
     let currentVersionFromDisk!: string;

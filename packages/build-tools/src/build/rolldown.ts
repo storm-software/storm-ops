@@ -140,7 +140,7 @@ export async function rolldownWithOptions(
   // #region Clean output directory
 
   if (enhancedOptions.clean !== false && enhancedOptions.outputPath) {
-    writeInfo(config, `🧹 Cleaning output path: ${enhancedOptions.outputPath}`);
+    writeInfo(`🧹 Cleaning output path: ${enhancedOptions.outputPath}`, config);
     removeSync(enhancedOptions.outputPath);
   }
 
@@ -149,8 +149,8 @@ export async function rolldownWithOptions(
   // #region Copy asset files to output directory
 
   writeDebug(
-    config,
-    `📦  Copying asset files to output directory: ${enhancedOptions.outputPath}`
+    `📦  Copying asset files to output directory: ${enhancedOptions.outputPath}`,
+    config
   );
 
   const assets = Array.from(options.assets ?? []);
@@ -246,11 +246,11 @@ export async function rolldownWithOptions(
 
   if (options.includeSrc === true) {
     writeDebug(
-      config,
       `📝  Adding banner and writing source files: ${joinPathFragments(
         enhancedOptions.outputPath,
         "src"
-      )}`
+      )}`,
+      config
     );
 
     const files = globSync([
@@ -320,7 +320,7 @@ export async function rolldownWithOptions(
     );
   }
 
-  writeDebug(config, "🎁  Generating package.json file");
+  writeDebug("🎁  Generating package.json file", config);
 
   const { dependencies } = calculateProjectBuildableDependencies(
     taskGraphs[createTaskId(projectName, "build")],
@@ -359,7 +359,7 @@ export async function rolldownWithOptions(
   //   }
   // }
 
-  writeDebug(config, "🔍  Detecting entry points for the build process");
+  writeDebug("🔍  Detecting entry points for the build process", config);
   //const entryPoints = getEntryPoints(config, projectRoot, sourceRoot, enhancedOptions);
 
   // writeTrace(
@@ -376,8 +376,8 @@ export async function rolldownWithOptions(
   );
   if (rolldownBuildOptions.length === 0) {
     writeWarning(
-      config,
-      "🚫 The Build process failed because no entry points were found for the build process"
+      "🚫 The Build process failed because no entry points were found for the build process",
+      config
     );
 
     return;
@@ -385,10 +385,9 @@ export async function rolldownWithOptions(
 
   // #region Run the build process
 
-  writeDebug(config, "⚡  Running the build process for each entry point");
+  writeDebug("⚡  Running the build process for each entry point", config);
 
   writeTrace(
-    config,
     `⚙️  Build options:
 ${rolldownBuildOptions
   .map(rolldownBuildOption =>
@@ -406,7 +405,8 @@ ${rolldownBuildOptions
       .join("\n")
   )
   .join("\n----------\n\n")}
-`
+`,
+    config
   );
 
   const start = process.hrtime.bigint();
@@ -416,33 +416,32 @@ ${rolldownBuildOptions
       .filter(opts => opts.input)
       .map(opts => {
         writeDebug(
-          config,
-          `⚡  Running the build process for entry point: ${opts.input}`
+          `⚡  Running the build process for entry point: ${opts.input}`,
+          config
         );
 
         return rolldownBuild(opts)
           .then(build => {
             writeDebug(
-              config,
-              `✍️   Writing bundled files for entry point: ${opts.input}`
+              `✍️   Writing bundled files for entry point: ${opts.input}`,
+              config
             );
 
             return build.write(opts.output);
           })
           .then(opt => {
             writeInfo(
-              config,
-              `📦  Build process completed for entry point: ${opts.input}`
+              `📦  Build process completed for entry point: ${opts.input}`,
+              config
             );
           })
           .catch(err => {
             writeError(
-              config,
-              `🚫  The Build process failed for entry point: ${opts.input} - ${err?.message ? err.message + (err.stack ? "\nStack Trace: \n" + err.stack : "") : "No failure message could be identified"}`
+              `🚫  The Build process failed for entry point: ${opts.input} - ${err?.message ? err.message + (err.stack ? "\nStack Trace: \n" + err.stack : "") : "No failure message could be identified"}`,
+              config
             );
 
             writeError(
-              config,
               `Build Error:
           ${Object.keys(err)
             .map(
@@ -456,15 +455,16 @@ ${rolldownBuildOptions
                 }`
             )
             .join("\n")}
-          `
+          `,
+              config
             );
           });
       })
   );
 
   writeInfo(
-    config,
-    `🚀 Build process completed in ${(Number(process.hrtime.bigint() - start) / 1_000_000_000).toFixed(2)}s`
+    `🚀 Build process completed in ${(Number(process.hrtime.bigint() - start) / 1_000_000_000).toFixed(2)}s`,
+    config
   );
 
   // #endregion Run the build process

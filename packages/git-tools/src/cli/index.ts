@@ -17,7 +17,7 @@ let _config: Partial<StormConfig> = {};
 export function createProgram(config: StormConfig) {
   try {
     _config = config;
-    writeInfo(config, "⚡ Running Storm Git Tools");
+    writeInfo("⚡ Running Storm Git Tools", config);
 
     // const commander = await import("commander");
 
@@ -105,7 +105,10 @@ export function createProgram(config: StormConfig) {
 
     return program;
   } catch (error) {
-    writeFatal(config, `A fatal error occurred while running the program: ${error.message}`);
+    writeFatal(
+      `A fatal error occurred while running the program: ${error.message}`,
+      config
+    );
     exitWithError(config);
     process.exit(1);
   }
@@ -120,7 +123,6 @@ export async function commitAction({
 }) {
   try {
     writeInfo(
-      _config,
       `⚡ Preparing to commit your changes to the ${
         _config.repository
           ? _config.repository
@@ -131,27 +133,33 @@ export async function commitAction({
               : _config.organization
                 ? _config.organization
                 : "Storm-Software"
-      } Git repository. Please provide the requested details below...`
+      } Git repository. Please provide the requested details below...`,
+      _config
     );
     await runCommit(config, dryRun);
     writeSuccess(
-      _config,
-      "Commit linting completed successfully! Changes can be uploaded to Git. \n"
+      "Commit linting completed successfully! Changes can be uploaded to Git. \n",
+      _config
     );
   } catch (error) {
-    writeFatal(_config, `A fatal error occurred while running commit action: ${error.message}`);
+    writeFatal(
+      `A fatal error occurred while running commit action: ${error.message}`,
+      _config
+    );
     exitWithError(_config);
   }
 }
 
 export async function readmeAction(options: ReadMeOptions) {
   try {
-    writeInfo(_config, "⚡ Formatting the workspace's README.md files");
+    writeInfo("⚡ Formatting the workspace's README.md files", _config);
     await runReadme(options);
-    writeSuccess(_config, "Formatting of the workspace's README.md files is complete\n");
+    writeSuccess(
+      "Formatting of the workspace's README.md files is complete\n",
+      _config
+    );
   } catch (error) {
     writeFatal(
-      _config,
       `A fatal error occurred while running README format action: ${error.message}`
     );
     exitWithError(_config);
@@ -170,11 +178,17 @@ export async function releaseAction({
   dryRun?: boolean;
 }) {
   try {
-    writeInfo(_config, "⚡ Running the Storm Release and Publish process on the workspace");
+    writeInfo(
+      "⚡ Running the Storm Release and Publish process on the workspace",
+      _config
+    );
     await runRelease(_config as StormConfig, { dryRun, project, base, head });
-    writeSuccess(_config, "Release completed successfully!\n");
+    writeSuccess("Release completed successfully!\n", _config);
   } catch (error) {
-    writeFatal(_config, `A fatal error occurred while running release action: ${error.message}`);
+    writeFatal(
+      `A fatal error occurred while running release action: ${error.message}`,
+      _config
+    );
     exitWithError(_config);
   }
 }

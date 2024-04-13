@@ -15,7 +15,7 @@ const handle = async () => {
 
   await program.parseAsync(process.argv);
 
-  writeSuccess(config, "The Storm Build process completed successfully!");
+  writeSuccess("The Storm Build process completed successfully!", config);
 };
 
 handle().then(() => {

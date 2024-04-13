@@ -139,7 +139,7 @@ export async function unbuildWithOptions(
   // #region Clean output directory
 
   if (enhancedOptions.clean !== false && enhancedOptions.outputPath) {
-    writeInfo(config, `🧹 Cleaning output path: ${enhancedOptions.outputPath}`);
+    writeInfo(`🧹 Cleaning output path: ${enhancedOptions.outputPath}`, config);
     removeSync(enhancedOptions.outputPath);
   }
 
@@ -148,8 +148,8 @@ export async function unbuildWithOptions(
   // #region Copy asset files to output directory
 
   writeDebug(
-    config,
-    `📦  Copying asset files to output directory: ${enhancedOptions.outputPath}`
+    `📦  Copying asset files to output directory: ${enhancedOptions.outputPath}`,
+    config
   );
 
   const assets = Array.from(options.assets ?? []);
@@ -237,11 +237,11 @@ export async function unbuildWithOptions(
 
   if (options.includeSrc === true) {
     writeDebug(
-      config,
       `📝  Adding banner and writing source files: ${joinPathFragments(
         enhancedOptions.outputPath,
         "src"
-      )}`
+      )}`,
+      config
     );
 
     const files = globSync([
@@ -311,7 +311,7 @@ export async function unbuildWithOptions(
     );
   }
 
-  writeDebug(config, "🎁  Generating package.json file");
+  writeDebug("🎁  Generating package.json file", config);
 
   const { dependencies } = calculateProjectBuildableDependencies(
     taskGraphs[createTaskId(projectName, "build")],
@@ -335,7 +335,7 @@ export async function unbuildWithOptions(
     .filter(d => d.target.startsWith("npm:"))
     .map(d => d.target.slice(4));
 
-  writeDebug(config, "🔍  Detecting the configuration for the build process");
+  writeDebug("🔍  Detecting the configuration for the build process", config);
 
   const unbuildBuildOptions = await getUnbuildBuildOptions(
     config,
@@ -346,8 +346,8 @@ export async function unbuildWithOptions(
   );
   if (unbuildBuildOptions.length === 0) {
     writeWarning(
-      config,
-      "🚫 The Build process failed because no entry points were found for the build process"
+      "🚫 The Build process failed because no entry points were found for the build process",
+      config
     );
 
     return;
@@ -355,10 +355,9 @@ export async function unbuildWithOptions(
 
   // #region Run the build process
 
-  writeDebug(config, "⚡  Running the build process for each entry point");
+  writeDebug("⚡  Running the build process for each entry point", config);
 
   writeTrace(
-    config,
     `⚙️  Build options:
 ${unbuildBuildOptions
   .map(unbuildBuildOption =>
@@ -376,7 +375,8 @@ ${unbuildBuildOptions
       .join("\n")
   )
   .join("\n-----------\n")}
-`
+`,
+    config
   );
 
   const start = process.hrtime.bigint();
@@ -384,22 +384,22 @@ ${unbuildBuildOptions
   try {
     await Promise.allSettled(
       unbuildBuildOptions.map(opts => {
-        writeInfo(config, `📦  Building ${opts.name}...`);
+        writeInfo(`📦  Building ${opts.name}...`, config);
 
         return build(config.workspaceRoot!, false, opts);
       })
     );
   } catch (e) {
     writeWarning(
-      config,
-      `🚫  The Build process failed because an error occurred: ${e.message}`
+      `🚫  The Build process failed because an error occurred: ${e.message}`,
+      config
     );
     return;
   }
 
   writeInfo(
-    config,
-    `🚀  Build process for ${enhancedOptions.projectName} completed in ${(Number(process.hrtime.bigint() - start) / 1_000_000_000).toFixed(2)}s`
+    `🚀  Build process for ${enhancedOptions.projectName} completed in ${(Number(process.hrtime.bigint() - start) / 1_000_000_000).toFixed(2)}s`,
+    config
   );
 
   // #endregion Run the build process

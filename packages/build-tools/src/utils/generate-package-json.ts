@@ -84,7 +84,7 @@ export const generatePackageJson = async (
   const projectsConfigurations =
     await retrieveProjectConfigurationsWithoutPluginInference(workspaceRoot);
   if (getLogLevel(config?.logLevel) >= LogLevel.TRACE) {
-    writeDebug(config, "Project Configs:");
+    writeDebug("Project Configs:", config);
     console.log(projectsConfigurations);
   }
   if (!projectsConfigurations) {
@@ -129,7 +129,7 @@ export const generatePackageJson = async (
   if (implicitDependencies && implicitDependencies.length > 0) {
     options.external = implicitDependencies.reduce(
       (ret: string[], key: string) => {
-        writeDebug(config, `⚡ Adding implicit dependency: ${key}`);
+        writeDebug(`⚡ Adding implicit dependency: ${key}`, config);
 
         const projectConfig = projectsConfigurations[key];
         if (projectConfig?.targets?.build) {
@@ -195,13 +195,13 @@ export const generatePackageJson = async (
   }
 
   writeTrace(
-    config,
     `Building with the following dependencies marked as external:
   ${externalDependencies
     .map(dep => {
       return `name: ${dep.name}, node: ${dep.node}, outputs: ${dep.outputs}`;
     })
-    .join("\n")}`
+    .join("\n")}`,
+    config
   );
 
   // const prettier = await import("prettier");
@@ -392,7 +392,7 @@ export const generatePackageJson = async (
       "package.json"
     );
 
-    writeDebug(config, `⚡ Writing package.json file to: ${packageJsonPath}`);
+    writeDebug(`⚡ Writing package.json file to: ${packageJsonPath}`, config);
 
     // writeFileSync(
     //   packageJsonPath,
@@ -404,7 +404,7 @@ export const generatePackageJson = async (
 
     writeFileSync(packageJsonPath, JSON.stringify(packageJson));
   } else {
-    writeWarning(config, "Skipping writing to package.json file");
+    writeWarning("Skipping writing to package.json file", config);
   }
 
   // #endregion Generate the package.json file

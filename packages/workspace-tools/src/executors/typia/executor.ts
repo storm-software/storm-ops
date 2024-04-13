@@ -13,7 +13,7 @@ export async function typiaExecutorFn(
   const { writeInfo } = await import("@storm-software/config-tools");
 
   if (options.clean !== false) {
-    writeInfo(config, `🧹 Cleaning output path: ${options.outputPath}`);
+    writeInfo(`🧹 Cleaning output path: ${options.outputPath}`, config);
     removeSync(options.outputPath);
   }
 
@@ -34,7 +34,9 @@ export default withRunExecutor<TypiaExecutorSchema>(
   {
     skipReadingConfig: false,
     hooks: {
-      applyDefaultOptions: (options: TypiaExecutorSchema): TypiaExecutorSchema => {
+      applyDefaultOptions: (
+        options: TypiaExecutorSchema
+      ): TypiaExecutorSchema => {
         options.entryPath ??= "{sourceRoot}";
         options.outputPath ??= "{sourceRoot}/__generated__/typia";
         options.tsConfig ??= "{projectRoot}/tsconfig.json";

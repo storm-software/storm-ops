@@ -1,7 +1,10 @@
 import type { ExecutorContext } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
-import { applyDefaultOptions, type TypeScriptBuildOptions } from "@storm-software/build-tools";
+import {
+  applyDefaultOptions,
+  type TypeScriptBuildOptions
+} from "@storm-software/build-tools";
 import type { TsupExecutorSchema } from "./schema.d";
 import { build } from "@storm-software/build-tools";
 
@@ -10,18 +13,19 @@ export async function tsupExecutorFn(
   context: ExecutorContext,
   config?: StormConfig
 ) {
-  const { writeDebug, writeInfo, writeSuccess } = await import("@storm-software/config-tools");
+  const { writeDebug, writeInfo, writeSuccess } = await import(
+    "@storm-software/config-tools"
+  );
 
-  writeInfo(config, "📦  Running Storm build executor on the workspace");
+  writeInfo("📦  Running Storm build executor on the workspace", config);
 
   // #region Apply default options
 
   writeDebug(
-    config,
     `⚙️  Executor options:
 ${Object.keys(options)
   .map(
-    (key) =>
+    key =>
       `${key}: ${
         !options[key] || _isPrimitive(options[key])
           ? options[key]
@@ -31,7 +35,8 @@ ${Object.keys(options)
       }`
   )
   .join("\n")}
-`
+`,
+    config
   );
 
   // #endregion Apply default options
@@ -53,26 +58,32 @@ ${Object.keys(options)
   // biome-ignore lint/style/noNonNullAssertion: <explanation>
   await build(config!, {
     ...options,
-    projectRoot: context.projectsConfigurations.projects?.[context.projectName]?.root,
+    projectRoot:
+      context.projectsConfigurations.projects?.[context.projectName]?.root,
     projectName: context.projectName,
-    sourceRoot: context.projectsConfigurations.projects?.[context.projectName]?.sourceRoot
+    sourceRoot:
+      context.projectsConfigurations.projects?.[context.projectName]?.sourceRoot
   } as TypeScriptBuildOptions);
 
   // #endregion Run the build process
 
-  writeSuccess(config, "⚡ The Build process has completed successfully");
+  writeSuccess("⚡ The Build process has completed successfully", config);
 
   return {
     success: true
   };
 }
 
-export default withRunExecutor<TsupExecutorSchema>("TypeScript Build using tsup", tsupExecutorFn, {
-  skipReadingConfig: false,
-  hooks: {
-    applyDefaultOptions
+export default withRunExecutor<TsupExecutorSchema>(
+  "TypeScript Build using tsup",
+  tsupExecutorFn,
+  {
+    skipReadingConfig: false,
+    hooks: {
+      applyDefaultOptions
+    }
   }
-});
+);
 
 const _isPrimitive = (value: unknown): boolean => {
   try {

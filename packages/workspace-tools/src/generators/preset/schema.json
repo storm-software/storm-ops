@@ -76,6 +76,16 @@
       },
       "x-prompt": "What is the workspace's GitHub repository URL?"
     },
+    "includeRust": {
+      "type": "boolean",
+      "description": "Should the workspace include Rust support?",
+      "default": false,
+      "$default": {
+        "$source": "argv",
+        "index": 6
+      },
+      "x-prompt": "Should the workspace include Rust support?"
+    },
     "nxCloud": {
       "type": "boolean",
       "description": "Should distributed caching with Nx Cloud be enabled for the workspace?",

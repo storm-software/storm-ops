@@ -6,13 +6,13 @@ import { getChalk } from "./chalk";
 /**
  * Get the log function for a log level
  *
- * @param config - The Storm configuration
  * @param logLevel - The log level
+ * @param config - The Storm configuration
  * @returns The log function
  */
 export const getLogFn = (
-  config: Partial<StormConfig> = {},
-  logLevel: number | LogLevel = LogLevel.INFO
+  logLevel: number | LogLevel = LogLevel.INFO,
+  config: Partial<StormConfig> = {}
 ): ((message?: string) => void) => {
   let _chalk = getChalk();
 
@@ -151,74 +151,74 @@ ${_chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")("
 /**
  * Write a message to the console at the `fatal` log level
  *
- * @param config - The Storm configuration
  * @param message - The message to write
+ * @param config - The Storm configuration
  */
-export const writeFatal = (config?: Partial<StormConfig>, message?: string) =>
-  getLogFn(config, LogLevel.FATAL)(message);
+export const writeFatal = (message?: string, config?: Partial<StormConfig>) =>
+  getLogFn(LogLevel.FATAL, config)(message);
 
 /**
  * Write a message to the console at the `error` log level
  *
- * @param config - The Storm configuration
  * @param message - The message to write
+ * @param config - The Storm configuration
  */
-export const writeError = (config?: Partial<StormConfig>, message?: string) =>
-  getLogFn(config, LogLevel.ERROR)(message);
+export const writeError = (message?: string, config?: Partial<StormConfig>) =>
+  getLogFn(LogLevel.ERROR, config)(message);
 
 /**
  * Write a message to the console at the `warning` log level
  *
- * @param config - The Storm configuration
  * @param message - The message to write
+ * @param config - The Storm configuration
  */
-export const writeWarning = (config?: Partial<StormConfig>, message?: string) =>
-  getLogFn(config, LogLevel.WARN)(message);
+export const writeWarning = (message?: string, config?: Partial<StormConfig>) =>
+  getLogFn(LogLevel.WARN, config)(message);
 
 /**
  * Write a message to the console at the `info` log level
  *
- * @param config - The Storm configuration
  * @param message - The message to write
+ * @param config - The Storm configuration
  */
-export const writeInfo = (config?: Partial<StormConfig>, message?: string) =>
-  getLogFn(config, LogLevel.INFO)(message);
+export const writeInfo = (message?: string, config?: Partial<StormConfig>) =>
+  getLogFn(LogLevel.INFO, config)(message);
 
 /**
  * Write a message to the console at the `success` log level
  *
- * @param config - The Storm configuration
  * @param message - The message to write
+ * @param config - The Storm configuration
  */
-export const writeSuccess = (config?: Partial<StormConfig>, message?: string) =>
-  getLogFn(config, LogLevel.SUCCESS)(message);
+export const writeSuccess = (message?: string, config?: Partial<StormConfig>) =>
+  getLogFn(LogLevel.SUCCESS, config)(message);
 
 /**
  * Write a message to the console at the `debug` log level
  *
- * @param config - The Storm configuration
  * @param message - The message to write
+ * @param config - The Storm configuration
  */
-export const writeDebug = (config?: Partial<StormConfig>, message?: string) =>
-  getLogFn(config, LogLevel.DEBUG)(message);
+export const writeDebug = (message?: string, config?: Partial<StormConfig>) =>
+  getLogFn(LogLevel.DEBUG, config)(message);
 
 /**
  * Write a message to the console at the `trace` log level
  *
- * @param config - The Storm configuration
  * @param message - The message to write
+ * @param config - The Storm configuration
  */
-export const writeTrace = (config?: Partial<StormConfig>, message?: string) =>
-  getLogFn(config, LogLevel.TRACE)(message);
+export const writeTrace = (message?: string, config?: Partial<StormConfig>) =>
+  getLogFn(LogLevel.TRACE, config)(message);
 
 /**
  * Write a message to the console at the `all` log level
  *
- * @param config - The Storm configuration
  * @param message - The message to write
+ * @param config - The Storm configuration
  */
-export const writeSystem = (config?: Partial<StormConfig>, message?: string) =>
-  getLogFn(config, LogLevel.ALL)(message);
+export const writeSystem = (message?: string, config?: Partial<StormConfig>) =>
+  getLogFn(LogLevel.ALL, config)(message);
 
 /**
  * Get a stopwatch function

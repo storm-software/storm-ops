@@ -15,9 +15,16 @@ import {
   writeJson
 } from "@nx/devkit";
 import { determineProjectNameAndRootOptions } from "@nx/devkit/src/generators/project-name-and-root-utils";
-import { addTsConfigPath, getRelativePathToRootTsConfig, tsConfigBaseOptions } from "@nx/js";
+import {
+  addTsConfigPath,
+  getRelativePathToRootTsConfig,
+  tsConfigBaseOptions
+} from "@nx/js";
 import jsInitGenerator from "@nx/js/src/generators/init/init";
-import type { AddLintOptions, NormalizedSchema } from "@nx/js/src/generators/library/library";
+import type {
+  AddLintOptions,
+  NormalizedSchema
+} from "@nx/js/src/generators/library/library";
 import setupVerdaccio from "@nx/js/src/generators/setup-verdaccio/generator";
 import type { Bundler, LibraryGeneratorSchema } from "@nx/js/src/utils/schema";
 import type { PackageJson } from "nx/src/utils/package-json";
@@ -51,8 +58,8 @@ export type TypeScriptLibraryGeneratorSchema = Omit<
   tsConfigOptions?: Record<string, any>;
 };
 
-export type TypeScriptLibraryGeneratorNormalizedSchema = TypeScriptLibraryGeneratorSchema &
-  NormalizedSchema;
+export type TypeScriptLibraryGeneratorNormalizedSchema =
+  TypeScriptLibraryGeneratorSchema & NormalizedSchema;
 
 export async function typeScriptLibraryGeneratorFn(
   tree: Tree,
@@ -128,7 +135,8 @@ export async function typeScriptLibraryGeneratorFn(
   } as ProjectConfiguration;
 
   if (schema.platform && projectConfig?.targets?.build) {
-    (projectConfig.targets.build.options as TsupExecutorSchema).platform = schema.platform;
+    (projectConfig.targets.build.options as TsupExecutorSchema).platform =
+      schema.platform;
   }
 
   createProjectTsConfigJson(tree, options);
@@ -140,7 +148,8 @@ export async function typeScriptLibraryGeneratorFn(
   };
 
   let description =
-    schema.description ?? "⚡ A Storm package used to create modern, scalable web applications.";
+    schema.description ??
+    "⚡ A Storm package used to create modern, scalable web applications.";
 
   if (tree.exists("package.json")) {
     const packageJson = readJson<{
@@ -160,7 +169,10 @@ export async function typeScriptLibraryGeneratorFn(
     options.importPath = options.name;
   }
 
-  const packageJsonPath = joinPathFragments(options.projectRoot, "package.json");
+  const packageJsonPath = joinPathFragments(
+    options.projectRoot,
+    "package.json"
+  );
   if (tree.exists(packageJsonPath)) {
     updateJson<PackageJson>(tree, packageJsonPath, (json: PackageJson) => {
       if (!options.importPath) {
@@ -210,7 +222,7 @@ export async function typeScriptLibraryGeneratorFn(
   }
 
   if (tree.exists("package.json") && options.importPath) {
-    updateJson(tree, "package.json", (json) => ({
+    updateJson(tree, "package.json", json => ({
       ...json,
       pnpm: {
         ...json?.pnpm,
@@ -223,7 +235,11 @@ export async function typeScriptLibraryGeneratorFn(
   }
 
   addTsConfigPath(tree, options.importPath, [
-    joinPathFragments(options.projectRoot, "./src", `index.${options.js ? "js" : "ts"}`)
+    joinPathFragments(
+      options.projectRoot,
+      "./src",
+      `index.${options.js ? "js" : "ts"}`
+    )
   ]);
   addTsConfigPath(tree, joinPathFragments(options.importPath, "/*"), [
     joinPathFragments(options.projectRoot, "./src", "/*")
@@ -271,7 +287,10 @@ export async function typeScriptLibraryGeneratorFn(
   return null;
 }
 
-export async function addLint(tree: Tree, options: AddLintOptions): Promise<GeneratorCallback> {
+export async function addLint(
+  tree: Tree,
+  options: AddLintOptions
+): Promise<GeneratorCallback> {
   const { lintProjectGenerator } = ensurePackage("@nx/eslint", nxVersion);
   const { mapLintPattern } =
     // nx-ignore-next-line
@@ -284,7 +303,11 @@ export async function addLint(tree: Tree, options: AddLintOptions): Promise<Gene
     tsConfigPaths: [joinPathFragments(options.projectRoot, "tsconfig.json")],
     unitTestRunner: options.unitTestRunner,
     eslintFilePatterns: [
-      mapLintPattern(options.projectRoot, options.js ? "js" : "ts", options.rootProject)
+      mapLintPattern(
+        options.projectRoot,
+        options.js ? "js" : "ts",
+        options.rootProject
+      )
     ],
     setParserOptionsProject: options.setParserOptionsProject,
     rootProject: options.rootProject
@@ -321,9 +344,14 @@ export async function addLint(tree: Tree, options: AddLintOptions): Promise<Gene
     lintConfigHasOverride(
       tree,
       projectConfiguration.root,
-      (o: { files: { some: (arg0: (f: any) => any) => any; match: (arg0: RegExp) => any } }) =>
+      (o: {
+        files: {
+          some: (arg0: (f: any) => any) => any;
+          match: (arg0: RegExp) => any;
+        };
+      }) =>
         Array.isArray(o.files)
-          ? o.files.some((f) => f.match(/\.json$/))
+          ? o.files.some(f => f.match(/\.json$/))
           : !!o.files?.match(/\.json$/),
       true
     )
@@ -331,7 +359,8 @@ export async function addLint(tree: Tree, options: AddLintOptions): Promise<Gene
     updateOverrideInLintConfig(
       tree,
       projectConfiguration.root,
-      (o: { rules: { [x: string]: any } }) => o.rules?.["@nx/dependency-checks"],
+      (o: { rules: { [x: string]: any } }) =>
+        o.rules?.["@nx/dependency-checks"],
       (o: { rules: { [x: string]: any[] } }) => {
         const value = o.rules["@nx/dependency-checks"];
         let ruleSeverity: string;
@@ -345,7 +374,9 @@ export async function addLint(tree: Tree, options: AddLintOptions): Promise<Gene
         }
 
         if (options.bundler === "esbuild") {
-          ruleOptions.ignoredFiles = ["{projectRoot}/esbuild.config.{js,ts,mjs,mts}"];
+          ruleOptions.ignoredFiles = [
+            "{projectRoot}/esbuild.config.{js,ts,mjs,mts}"
+          ];
           o.rules["@nx/dependency-checks"] = [ruleSeverity, ruleOptions];
         }
         return o;
@@ -355,7 +386,9 @@ export async function addLint(tree: Tree, options: AddLintOptions): Promise<Gene
   return task;
 }
 
-export function getOutputPath(options: TypeScriptLibraryGeneratorNormalizedSchema) {
+export function getOutputPath(
+  options: TypeScriptLibraryGeneratorNormalizedSchema
+) {
   const parts = ["dist"];
   if (options.projectRoot === ".") {
     parts.push(options.name);
@@ -376,7 +409,10 @@ export function createProjectTsConfigJson(
     ...(options?.tsConfigOptions ?? {}),
     compilerOptions: {
       ...(options.rootProject ? tsConfigBaseOptions : {}),
-      outDir: joinPathFragments(offsetFromRoot(options.projectRoot), "dist/out-tsc"),
+      outDir: joinPathFragments(
+        offsetFromRoot(options.projectRoot),
+        "dist/out-tsc"
+      ),
       noEmit: true,
       ...(options?.tsConfigOptions?.compilerOptions ?? {})
     },
@@ -395,7 +431,11 @@ export function createProjectTsConfigJson(
     ]
   };
 
-  writeJson(tree, joinPathFragments(options.projectRoot, "tsconfig.json"), tsconfig);
+  writeJson(
+    tree,
+    joinPathFragments(options.projectRoot, "tsconfig.json"),
+    tsconfig
+  );
 }
 
 export async function normalizeOptions(
@@ -454,7 +494,7 @@ export async function normalizeOptions(
     name: projectName,
     projectNames,
     projectRoot,
-    parsedTags: options.tags ? options.tags.split(",").map((s) => s.trim()) : [],
+    parsedTags: options.tags ? options.tags.split(",").map(s => s.trim()) : [],
     importPath
   };
 }

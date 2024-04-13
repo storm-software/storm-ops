@@ -14,12 +14,11 @@ export async function unbuildExecutorFn(
   );
   const { unbuild } = await import("@storm-software/build-tools");
 
-  writeInfo(config, "📦  Running Storm Unbuild executor on the workspace");
+  writeInfo("📦  Running Storm Unbuild executor on the workspace", config);
 
   // #region Apply default options
 
   writeDebug(
-    config,
     `⚙️  Executor options:
 ${Object.keys(options)
   .map(
@@ -33,7 +32,8 @@ ${Object.keys(options)
       }`
   )
   .join("\n")}
-`
+`,
+    config
   );
 
   // #endregion Apply default options
@@ -63,7 +63,7 @@ ${Object.keys(options)
 
   // #endregion Run the build process
 
-  writeSuccess(config, "⚡ The Unbuild process has completed successfully");
+  writeSuccess("⚡ The Unbuild process has completed successfully", config);
 
   return {
     success: true

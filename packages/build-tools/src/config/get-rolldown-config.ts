@@ -111,8 +111,8 @@ export async function getRolldownBuildOptions(
   }
 
   writeDebug(
-    config,
-    `Found the following build entry points: ${entryPoints.join(", ")}`
+    `Found the following build entry points: ${entryPoints.join(", ")}`,
+    config
   );
 
   const buildOptionsList = [] as RolldownBuildOptions[];

@@ -5,6 +5,7 @@ export interface PresetGeneratorSchema {
   name: string;
   organization: string;
   includeApps: boolean;
+  includeRust: boolean;
   namespace?: string;
   description?: string;
   repositoryUrl?: string;

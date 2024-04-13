@@ -1,6 +1,9 @@
 import type { Tree } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
-import { applyWorkspaceBaseTokens, applyWorkspaceTokens } from "@storm-software/config-tools";
+import {
+  applyWorkspaceBaseTokens,
+  applyWorkspaceTokens
+} from "@storm-software/config-tools";
 import type {
   BaseGeneratorOptions,
   BaseGeneratorResult,
@@ -14,12 +17,19 @@ export const withRunGenerator =
       tree: Tree,
       options: TGeneratorSchema,
       config?: StormConfig
-    ) => Promise<BaseGeneratorResult | null | undefined> | BaseGeneratorResult | null | undefined,
+    ) =>
+      | Promise<BaseGeneratorResult | null | undefined>
+      | BaseGeneratorResult
+      | null
+      | undefined,
     generatorOptions: BaseGeneratorOptions<TGeneratorSchema> = {
       skipReadingConfig: false
     }
   ) =>
-  async (tree: Tree, _options: TGeneratorSchema): Promise<{ success: boolean }> => {
+  async (
+    tree: Tree,
+    _options: TGeneratorSchema
+  ): Promise<{ success: boolean }> => {
     const {
       getStopwatch,
       writeDebug,
@@ -37,40 +47,40 @@ export const withRunGenerator =
 
     let config: StormConfig | undefined;
     try {
-      writeInfo(config, `⚡ Running the ${name} generator...\n\n`);
+      writeInfo(`⚡ Running the ${name} generator...\n\n`, config);
 
       const workspaceRoot = findWorkspaceRoot();
       if (!generatorOptions.skipReadingConfig) {
         writeDebug(
-          config,
           `Loading the Storm Config from environment variables and storm.config.js file...
- - workspaceRoot: ${workspaceRoot}`
+ - workspaceRoot: ${workspaceRoot}`,
+          config
         );
 
         config = await loadStormConfig(workspaceRoot);
         writeTrace(
-          config,
           `Loaded Storm config into env: \n${Object.keys(process.env)
-            .map((key) => ` - ${key}=${JSON.stringify(process.env[key])}`)
-            .join("\n")}`
+            .map(key => ` - ${key}=${JSON.stringify(process.env[key])}`)
+            .join("\n")}`,
+          config
         );
       }
 
       // process.chdir(workspaceRoot);
 
       if (generatorOptions?.hooks?.applyDefaultOptions) {
-        writeDebug(config, "Running the applyDefaultOptions hook...");
+        writeDebug("Running the applyDefaultOptions hook...", config);
         options = await Promise.resolve(
           generatorOptions.hooks.applyDefaultOptions(options, config)
         );
-        writeDebug(config, "Completed the applyDefaultOptions hook");
+        writeDebug("Completed the applyDefaultOptions hook", config);
       }
 
       writeTrace(
-        config,
         `Generator schema options ⚙️ \n${Object.keys(options ?? {})
-          .map((key) => ` - ${key}=${JSON.stringify(options[key])}`)
-          .join("\n")}`
+          .map(key => ` - ${key}=${JSON.stringify(options[key])}`)
+          .join("\n")}`,
+        config
       );
 
       const tokenized = (await applyWorkspaceTokens(
@@ -80,12 +90,16 @@ export const withRunGenerator =
       )) as TGeneratorSchema;
 
       if (generatorOptions?.hooks?.preProcess) {
-        writeDebug(config, "Running the preProcess hook...");
-        await Promise.resolve(generatorOptions.hooks.preProcess(tokenized, config));
-        writeDebug(config, "Completed the preProcess hook");
+        writeDebug("Running the preProcess hook...", config);
+        await Promise.resolve(
+          generatorOptions.hooks.preProcess(tokenized, config)
+        );
+        writeDebug("Completed the preProcess hook", config);
       }
 
-      const result = await Promise.resolve(generatorFn(tree, tokenized, config));
+      const result = await Promise.resolve(
+        generatorFn(tree, tokenized, config)
+      );
       if (
         result &&
         (!result.success ||
@@ -101,12 +115,12 @@ export const withRunGenerator =
       }
 
       if (generatorOptions?.hooks?.postProcess) {
-        writeDebug(config, "Running the postProcess hook...");
+        writeDebug("Running the postProcess hook...", config);
         await Promise.resolve(generatorOptions.hooks.postProcess(config));
-        writeDebug(config, "Completed the postProcess hook");
+        writeDebug("Completed the postProcess hook", config);
       }
 
-      writeSuccess(config, `Completed running the ${name} task executor!\n`);
+      writeSuccess(`Completed running the ${name} task executor!\n`, config);
 
       return {
         ...result,
@@ -114,12 +128,12 @@ export const withRunGenerator =
       };
     } catch (error) {
       writeFatal(
-        config,
-        "A fatal error occurred while running the generator - the process was forced to terminate"
+        "A fatal error occurred while running the generator - the process was forced to terminate",
+        config
       );
       writeError(
-        config,
-        `An exception was thrown in the generator's process \n - Details: ${error.message}\n - Stacktrace: ${error.stack}`
+        `An exception was thrown in the generator's process \n - Details: ${error.message}\n - Stacktrace: ${error.stack}`,
+        config
       );
 
       return {

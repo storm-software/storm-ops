@@ -17,7 +17,7 @@ export async function createProgram(config: StormConfig) {
   const { Command, Option } = await import("commander");
 
   try {
-    writeInfo(config, "⚡ Running Storm Build Tools");
+    writeInfo("⚡ Running Storm Build Tools", config);
 
     const root = findWorkspaceRootSafe();
     process.env.STORM_WORKSPACE_ROOT ??= root;
@@ -88,8 +88,8 @@ export async function createProgram(config: StormConfig) {
     return program;
   } catch (e) {
     writeFatal(
-      config,
-      `A fatal error occurred while running the program: ${e.message}`
+      `A fatal error occurred while running the program: ${e.message}`,
+      config
     );
     process.exit(1);
   }
@@ -99,17 +99,17 @@ const tsBuildAction =
   (config: StormConfig) =>
   async (projectRoot?: string, projectName?: string, sourceRoot?: string) => {
     try {
-      writeInfo(config, "⚡ Building the Storm TypeScript package");
+      writeInfo("⚡ Building the Storm TypeScript package", config);
       await build(
         config,
-        applyDefaultOptions({ projectRoot, projectName, sourceRoot }, config)
+        applyDefaultOptions({ projectRoot, projectName, sourceRoot })
       );
 
-      writeSuccess(config, "Building has completed successfully ✅");
+      writeSuccess("Building has completed successfully ✅", config);
     } catch (e) {
       writeFatal(
-        config,
-        `❌ A fatal error occurred while building the package: ${e.message}`
+        `❌ A fatal error occurred while building the package: ${e.message}`,
+        config
       );
       console.error(e);
 
@@ -127,8 +127,8 @@ const rolldownAction =
   ) => {
     try {
       writeInfo(
-        config,
-        "⚡ Building the Storm TypeScript package with Rolldown"
+        "⚡ Building the Storm TypeScript package with Rolldown",
+        config
       );
       await rolldown(
         config,
@@ -143,11 +143,11 @@ const rolldownAction =
         )
       );
 
-      writeSuccess(config, "Rolldown has completed successfully ✅");
+      writeSuccess("Rolldown has completed successfully ✅", config);
     } catch (e) {
       writeFatal(
-        config,
-        `❌ A fatal error occurred while running Rolldown: ${e.message}`
+        `❌ A fatal error occurred while running Rolldown: ${e.message}`,
+        config
       );
       console.error(e);
 
@@ -164,10 +164,7 @@ const unbuildAction =
     configPath?: string
   ) => {
     try {
-      writeInfo(
-        config,
-        "⚡ Building the Storm TypeScript package with Unbuild"
-      );
+      writeInfo("⚡ Building the Storm TypeScript package with Unbuild");
 
       await unbuild(
         config,
@@ -182,11 +179,11 @@ const unbuildAction =
         )
       );
 
-      writeSuccess(config, "Unbuild has completed successfully ✅");
+      writeSuccess("Unbuild has completed successfully ✅", config);
     } catch (e) {
       writeFatal(
-        config,
-        `❌ A fatal error occurred while running Unbuild: ${e.message}`
+        `❌ A fatal error occurred while running Unbuild: ${e.message}`,
+        config
       );
       console.error(e);
 

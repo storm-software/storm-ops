@@ -138,7 +138,7 @@ export async function buildWithOptions(
   // #region Clean output directory
 
   if (enhancedOptions.clean !== false) {
-    writeInfo(config, `🧹 Cleaning output path: ${enhancedOptions.outputPath}`);
+    writeInfo(`🧹 Cleaning output path: ${enhancedOptions.outputPath}`, config);
     removeSync(enhancedOptions.outputPath);
   }
 
@@ -147,8 +147,8 @@ export async function buildWithOptions(
   // #region Copy asset files to output directory
 
   writeDebug(
-    config,
-    `📦  Copying asset files to output directory: ${enhancedOptions.outputPath}`
+    `📦  Copying asset files to output directory: ${enhancedOptions.outputPath}`,
+    config
   );
 
   const assets = Array.from(options.assets ?? []);
@@ -243,11 +243,11 @@ export async function buildWithOptions(
 
   if (options.includeSrc === true) {
     writeDebug(
-      config,
       `📝  Adding banner and writing source files: ${joinPathFragments(
         enhancedOptions.outputPath,
         "src"
-      )}`
+      )}`,
+      config
     );
 
     const files = globSync([
@@ -312,7 +312,7 @@ export async function buildWithOptions(
     );
   }
 
-  writeDebug(config, "🎁  Generating package.json file");
+  writeDebug("🎁  Generating package.json file", config);
   const packageJson = await generatePackageJson(
     config,
     projectRoot,
@@ -322,7 +322,7 @@ export async function buildWithOptions(
   );
 
   if (enhancedOptions.generatePackageJson !== false) {
-    writeDebug(config, "✍️   Writing package.json file");
+    writeDebug("✍️   Writing package.json file", config);
     await writeJsonFile(
       joinPathFragments(
         workspaceRoot,
@@ -340,7 +340,7 @@ export async function buildWithOptions(
     }
   }
 
-  writeDebug(config, "🔍  Detecting entry points for the build process");
+  writeDebug("🔍  Detecting entry points for the build process", config);
   const entryPoints = getEntryPoints(
     config,
     projectRoot,
@@ -349,13 +349,13 @@ export async function buildWithOptions(
   );
 
   writeTrace(
-    config,
-    `Found entry points: \n${entryPoints.map(entryPoint => `- ${entryPoint}`).join(" \n")}`
+    `Found entry points: \n${entryPoints.map(entryPoint => `- ${entryPoint}`).join(" \n")}`,
+    config
   );
 
   // #region Run the build process
 
-  writeDebug(config, "⚡  Running the build process for each entry point");
+  writeDebug("⚡  Running the build process for each entry point", config);
   await Promise.allSettled(
     entryPoints.map((entryPoint: string) =>
       runTsupBuild(

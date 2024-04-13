@@ -32,8 +32,7 @@ export const runTsupBuild = async (
   );
 
   writeTrace(
-    config,
-    `⚙️  TSUP (ESBuild) Build options:
+    `⚙️  Tsup (ESBuild) Build options:
 ${Object.keys(options)
   .map(
     key =>
@@ -44,7 +43,8 @@ ${Object.keys(options)
       }`
   )
   .join("\n")}
-`
+`,
+    config
   );
 
   // process.chdir(workspaceRoot);
@@ -89,7 +89,6 @@ ${Object.keys(options)
   );
 
   writeTrace(
-    config,
     `⚙️  TSC (Type Declarations) Build options:
 ${Object.keys(dtsTsConfig.options)
   .map(
@@ -101,7 +100,8 @@ ${Object.keys(dtsTsConfig.options)
       }`
   )
   .join("\n")}
-`
+`,
+    config
   );
 
   // #endregion Add default plugins
@@ -156,12 +156,12 @@ ${options.banner}
   if (!options.getConfig) {
     options.getConfig = defaultConfig;
     writeWarning(
-      config,
-      "Applying the default configuration for Build process because no `getConfig` parameter was provided"
+      "Applying the default configuration for Build process because no `getConfig` parameter was provided",
+      config
     );
   }
 
-  writeInfo(config, "⚡ Running the Build process");
+  writeInfo("⚡ Running the Build process", config);
 
   const getConfigFns = [options.getConfig];
   const tsupConfig = defineConfig(
@@ -300,7 +300,6 @@ const build = async (options: Options | Options[], config?: StormConfig) => {
     }
 
     writeDebug(
-      config,
       `⚙️  Tsup Build options:
 ${
   !_isFunction(tsupOptions)
@@ -318,7 +317,8 @@ ${
         .join("\n")
     : "<function>"
 }
-`
+`,
+      config
     );
 
     await tsup(tsupOptions);

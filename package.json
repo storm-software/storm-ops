@@ -74,6 +74,7 @@
     "@nx/esbuild": "18.2.3",
     "@nx/eslint": "18.2.3",
     "@nx/eslint-plugin": "18.2.3",
+    "@nx/jest": "18.2.3",
     "@nx/js": "18.2.3",
     "@nx/plugin": "18.2.3",
     "@nx/workspace": "18.2.3",
@@ -106,12 +107,8 @@
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
     "tslib": "2.6.2",
-    "tsx": "4.7.2",
     "typescript": "5.4.4",
     "verdaccio": "5.30.3"
-  },
-  "devDependencies": {
-    "@nx/jest": "18.2.3"
   },
   "packageManager": "pnpm@8.15.6",
   "engines": {

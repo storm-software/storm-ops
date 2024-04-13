@@ -4,7 +4,7 @@ import type { StormConfig } from "@storm-software/config";
 import {
   findWorkspaceRoot,
   removeExtension,
-  writeDebug,
+  writeDebug
 } from "@storm-software/config-tools";
 import { type Path, globSync } from "glob";
 
@@ -12,7 +12,7 @@ export const getEntryPoints = (
   config: StormConfig,
   projectRoot: string,
   sourceRoot: string,
-  options: TypeScriptBuildOptions,
+  options: TypeScriptBuildOptions
 ): string[] => {
   const workspaceRoot = config.workspaceRoot
     ? config.workspaceRoot
@@ -28,7 +28,7 @@ export const getEntryPoints = (
 
   if (options.emitOnAll === true) {
     entryPoints = globSync(joinPathFragments(sourceRoot, "**/*.{ts,tsx}"), {
-      withFileTypes: true,
+      withFileTypes: true
     }).reduce((ret, filePath: Path) => {
       let formattedPath = workspaceRoot.replaceAll("\\", "/");
       if (formattedPath.toUpperCase().startsWith("C:")) {
@@ -38,7 +38,7 @@ export const getEntryPoints = (
 
       let propertyKey = joinPathFragments(
         filePath.path,
-        removeExtension(filePath.name),
+        removeExtension(filePath.name)
       )
         .replaceAll("\\", "/")
         .replaceAll(formattedPath, "")
@@ -51,11 +51,11 @@ export const getEntryPoints = (
         }
 
         writeDebug(
-          config,
           `Trying to add entry point ${propertyKey} at "${joinPathFragments(
             filePath.path,
-            filePath.name,
+            filePath.name
           )}"`,
+          config
         );
 
         if (!ret.includes(propertyKey)) {

@@ -1,17 +1,23 @@
 #!/usr/bin/env node
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { getNpmPackageVersion } from "@nx/workspace/src/generators/utils/get-npm-package-version";
-import type { NxClientMode, PresetGeneratorSchema } from "@storm-software/workspace-tools";
+import type {
+  NxClientMode,
+  PresetGeneratorSchema
+} from "@storm-software/workspace-tools";
 import { createWorkspace } from "create-nx-workspace";
 import { prompt } from "enquirer";
 
 async function main() {
-  try {
-    console.log("⚡ Collecting required info to creating a Storm Workspace");
+  const { getStopwatch, writeFatal, writeInfo, writeSuccess, loadStormConfig } =
+    await import("@storm-software/config-tools");
 
-    ["SIGTERM", "SIGINT", "SIGUSR2"].map((type) => {
+  const stopwatch = getStopwatch("create-storm-workspace");
+  const config = await loadStormConfig();
+  try {
+    writeInfo("⚡ Preparing to create the Storm Workspace", config);
+
+    ["SIGTERM", "SIGINT", "SIGUSR2"].map(type => {
       process.once(type, () => {
         try {
           console.info(`process.on ${type}`);
@@ -57,7 +63,10 @@ async function main() {
       namespace = response.namespace;
     }
 
-    let includeApps = process.argv.length > 5 && process.argv[5] ? Boolean(process.argv[5]) : null;
+    let includeApps =
+      process.argv.length > 5 && process.argv[5]
+        ? Boolean(process.argv[5])
+        : null;
     if (!includeApps && typeof includeApps !== "boolean") {
       const response = await prompt<{ includeApps: boolean }>({
         type: "confirm",
@@ -69,7 +78,22 @@ async function main() {
       includeApps = response.includeApps;
     }
 
-    let description = process.argv.length > 6 ? process.argv[6] : null;
+    let includeRust =
+      process.argv.length > 6 && process.argv[6]
+        ? Boolean(process.argv[6])
+        : null;
+    if (!includeRust && typeof includeRust !== "boolean") {
+      const response = await prompt<{ includeRust: boolean }>({
+        type: "confirm",
+        name: "includeRust",
+        message:
+          "Should Rust be included in the workspace (adds a `rust` folder with a `Cargo.toml` file)?",
+        initial: false
+      });
+      includeRust = response.includeRust;
+    }
+
+    let description = process.argv.length > 7 ? process.argv[7] : null;
     if (!description) {
       const response = await prompt<{ description: string }>({
         type: "input",
@@ -83,7 +107,7 @@ async function main() {
       description = response.description;
     }
 
-    let repositoryUrl = process.argv.length > 7 ? process.argv[7] : null;
+    let repositoryUrl = process.argv.length > 8 ? process.argv[8] : null;
     if (!repositoryUrl) {
       const response = await prompt<{ repositoryUrl: string }>({
         type: "input",
@@ -94,7 +118,10 @@ async function main() {
       repositoryUrl = response.repositoryUrl;
     }
 
-    let nxCloud = process.argv.length > 8 && process.argv[8] ? Boolean(process.argv[8]) : null;
+    let nxCloud =
+      process.argv.length > 9 && process.argv[9]
+        ? Boolean(process.argv[9])
+        : null;
     if (!nxCloud && typeof nxCloud !== "boolean") {
       const response = await prompt<{ nxCloud: boolean }>({
         type: "confirm",
@@ -106,7 +133,9 @@ async function main() {
       nxCloud = response.nxCloud;
     }
 
-    let mode: NxClientMode = (process.argv.length > 9 ? process.argv[9] : null) as NxClientMode;
+    let mode: NxClientMode = (
+      process.argv.length > 9 ? process.argv[9] : null
+    ) as NxClientMode;
     if (!mode) {
       mode = (
         await prompt<{ mode: "light" | "dark" }>({
@@ -122,32 +151,38 @@ async function main() {
       ).mode;
     }
 
-    console.log(`⚡ Creating the Storm Workspace: ${name}`);
+    writeInfo(`⚡ Creating the Storm Workspace: ${name}`, config);
 
     const version = getNpmPackageVersion("@storm-software/workspace-tools");
-    const { directory } = await createWorkspace<PresetGeneratorSchema & { interactive: boolean }>(
-      `@storm-software/workspace-tools@${version ? version : "latest"}`,
-      {
-        name,
-        organization,
-        namespace,
-        description,
-        includeApps,
-        repositoryUrl,
-        nxCloud: "skip",
-        packageManager: "pnpm",
-        mode: "dark",
-        interactive: false
-      }
-    );
+    const { directory } = await createWorkspace<
+      PresetGeneratorSchema & { interactive: boolean }
+    >(`@storm-software/workspace-tools@${version ? version : "latest"}`, {
+      name,
+      organization,
+      namespace,
+      description,
+      includeApps,
+      includeRust,
+      repositoryUrl,
+      nxCloud: "skip",
+      packageManager: "pnpm",
+      mode: "dark",
+      interactive: false
+    });
 
-    console.log(`⚡ Successfully created the workspace: ${directory}.`);
+    writeSuccess(
+      `⚡ Successfully created the workspace: ${directory}.`,
+      config
+    );
   } catch (error) {
-    console.log(
-      "❌ An error occurred while creating the workspace. Please correct the below issue:"
+    writeFatal(
+      "❌ An error occurred while creating the workspace. Please correct the below issue:",
+      config
     );
     console.error(error);
     process.exit(1);
+  } finally {
+    stopwatch();
   }
 }
 

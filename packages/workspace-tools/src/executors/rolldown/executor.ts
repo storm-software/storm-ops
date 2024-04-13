@@ -15,12 +15,11 @@ export async function rolldownExecutorFn(
   );
   const { rolldown } = await import("@storm-software/build-tools");
 
-  writeInfo(config, "📦  Running Storm build executor on the workspace");
+  writeInfo("📦  Running Storm build executor on the workspace", config);
 
   // #region Apply default options
 
   writeDebug(
-    config,
     `⚙️  Executor options:
 ${Object.keys(options)
   .map(
@@ -34,7 +33,8 @@ ${Object.keys(options)
       }`
   )
   .join("\n")}
-`
+`,
+    config
   );
 
   // #endregion Apply default options
@@ -64,7 +64,7 @@ ${Object.keys(options)
 
   // #endregion Run the build process
 
-  writeSuccess(config, "⚡ The Build process has completed successfully");
+  writeSuccess("⚡ The Build process has completed successfully", config);
 
   return {
     success: true
