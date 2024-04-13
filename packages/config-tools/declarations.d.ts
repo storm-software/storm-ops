@@ -55,7 +55,7 @@ export { getConfigFile };
 /**
  * Load the config file values for the current Storm workspace into environment variables
  */
-declare function loadStormConfig(workspaceRoot?: string): Promise<void>;
+declare function loadStormConfig(workspaceRoot?: string): Promise<StormConfig>;
 export { loadStormConfig };
 
 /**

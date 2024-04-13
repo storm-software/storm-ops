@@ -153,8 +153,11 @@ export const setConfigEnv = (config: StormConfig) => {
   if (config.colors.primary) {
     process.env[`${prefix}COLOR_PRIMARY`] = config.colors.primary;
   }
-  if (config.colors.background) {
-    process.env[`${prefix}COLOR_BACKGROUND`] = config.colors.background;
+  if (config.colors.dark) {
+    process.env[`${prefix}COLOR_DARK`] = config.colors.dark;
+  }
+  if (config.colors.light) {
+    process.env[`${prefix}COLOR_LIGHT`] = config.colors.light;
   }
   if (config.colors.success) {
     process.env[`${prefix}COLOR_SUCCESS`] = config.colors.success;

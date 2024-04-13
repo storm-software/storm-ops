@@ -5,6 +5,22 @@ import z from "zod";
  */
 export const ColorConfigSchema = z
   .object({
+    dark: z
+      .string()
+      .trim()
+      .toLowerCase()
+      .regex(/^#([0-9a-f]{3}){1,2}$/i)
+      .length(7)
+      .default("#1d232a")
+      .describe("The dark background color of the workspace"),
+    light: z
+      .string()
+      .trim()
+      .toLowerCase()
+      .regex(/^#([0-9a-f]{3}){1,2}$/i)
+      .length(7)
+      .default("#f4f4f5")
+      .describe("The light background color of the workspace"),
     primary: z
       .string()
       .trim()
@@ -13,14 +29,6 @@ export const ColorConfigSchema = z
       .length(7)
       .default("#0ea5e9")
       .describe("The primary color of the workspace"),
-    background: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .regex(/^#([0-9a-f]{3}){1,2}$/i)
-      .length(7)
-      .default("#1d232a")
-      .describe("The background color of the workspace"),
     success: z
       .string()
       .trim()

@@ -82,7 +82,8 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
         : undefined,
     colors: {
       primary: process.env[`${prefix}COLOR_PRIMARY`],
-      background: process.env[`${prefix}COLOR_BACKGROUND`],
+      dark: process.env[`${prefix}COLOR_DARK`],
+      light: process.env[`${prefix}COLOR_LIGHT`],
       success: process.env[`${prefix}COLOR_SUCCESS`],
       info: process.env[`${prefix}COLOR_INFO`],
       warning: process.env[`${prefix}COLOR_WARNING`],
