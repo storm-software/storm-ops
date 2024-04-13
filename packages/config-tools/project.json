@@ -25,12 +25,7 @@
         "skipTypeCheck": false,
         "metafile": true,
         "minify": false,
-        "format": ["cjs"],
-        "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
-          }
-        },
+        "format": ["cjs", "esm"],
         "assets": [
           {
             "input": "./packages/config-tools",

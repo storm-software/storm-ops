@@ -5,9 +5,7 @@
   "timezone": "America/New_York",
   "locale": "en-US",
   "logLevel": "debug",
-  "externalPackagePatterns": [
-    "@storm-software/"
-  ],
+  "externalPackagePatterns": ["@storm-software/"],
   "colors": {
     "primary": "#1fb2a6",
     "dark": "#1d232a",
