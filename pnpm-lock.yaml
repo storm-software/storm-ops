@@ -65,6 +65,9 @@ importers:
       '@nx/eslint-plugin':
         specifier: 18.2.3
         version: 18.2.3(@swc-node/register@1.9.0)(@swc/core@1.4.12)(@swc/wasm@1.4.12)(@types/node@20.12.5)(@typescript-eslint/parser@7.6.0)(eslint-config-prettier@9.1.0)(eslint@9.0.0)(nx@18.2.3)(typescript@5.4.4)(verdaccio@5.30.3)
+      '@nx/jest':
+        specifier: 18.2.3
+        version: 18.2.3(@swc-node/register@1.9.0)(@swc/core@1.4.12)(@swc/wasm@1.4.12)(@types/node@20.12.5)(nx@18.2.3)(ts-node@10.9.2)(typescript@5.4.4)(verdaccio@5.30.3)
       '@nx/js':
         specifier: 18.2.3
         version: 18.2.3(@swc-node/register@1.9.0)(@swc/core@1.4.12)(@swc/wasm@1.4.12)(@types/node@20.12.5)(nx@18.2.3)(typescript@5.4.4)(verdaccio@5.30.3)
@@ -161,19 +164,12 @@ importers:
       tslib:
         specifier: 2.6.2
         version: 2.6.2
-      tsx:
-        specifier: 4.7.2
-        version: 4.7.2
       typescript:
         specifier: 5.4.4
         version: 5.4.4
       verdaccio:
         specifier: 5.30.3
         version: 5.30.3(typanion@3.14.0)
-    devDependencies:
-      '@nx/jest':
-        specifier: 18.2.3
-        version: 18.2.3(@swc-node/register@1.9.0)(@swc/core@1.4.12)(@swc/wasm@1.4.12)(@types/node@20.12.5)(nx@18.2.3)(ts-node@10.9.2)(typescript@5.4.4)(verdaccio@5.30.3)
 
   packages/build-tools:
     dependencies:
@@ -16415,17 +16411,6 @@ packages:
       - ts-node
     dev: false
     patched: true
-
-  /tsx@4.7.2:
-    resolution: {integrity: sha512-BCNd4kz6fz12fyrgCTEdZHGJ9fWTGeUzXmQysh0RVocDY3h4frk05ZNCXSy4kIenF7y/QnrdiVpTsyNRn6vlAw==}
-    engines: {node: '>=18.0.0'}
-    hasBin: true
-    dependencies:
-      esbuild: 0.19.12
-      get-tsconfig: 4.7.3
-    optionalDependencies:
-      fsevents: 2.3.3
-    dev: false
 
   /tunnel-agent@0.6.0:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}

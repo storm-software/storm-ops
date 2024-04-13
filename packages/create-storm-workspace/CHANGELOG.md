@@ -1,3 +1,15 @@
+## 1.61.0 (2024-04-13)
+
+
+### 🚀 Features
+
+- **config-tools:** No longer require `config` in storm console write functions ([ad8c6511](https://github.com/storm-software/storm-ops/commit/ad8c6511))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.60.4 (2024-04-08)
 
 
