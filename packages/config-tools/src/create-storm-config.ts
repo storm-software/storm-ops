@@ -25,7 +25,8 @@ export const createConfig = (workspaceRoot?: string): StormConfig => {
  * @returns The config for the current Storm workspace
  */
 export const createStormConfig = <
-  TExtensionName extends keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
+  TExtensionName extends
+    keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
   TExtensionConfig = any,
   TExtensionSchema extends ZodTypeAny = ZodTypeAny
 >(
@@ -55,10 +56,11 @@ export const createStormConfig = <
   if (schema && extensionName) {
     result.extensions = {
       ...result.extensions,
-      [extensionName]: createConfigExtension<TExtensionName, TExtensionConfig, TExtensionSchema>(
-        extensionName,
-        schema
-      )
+      [extensionName]: createConfigExtension<
+        TExtensionName,
+        TExtensionConfig,
+        TExtensionSchema
+      >(extensionName, schema)
     };
   }
 
@@ -74,7 +76,8 @@ export const createStormConfig = <
  * @returns The config for the specified Storm config extension. If the extension does not exist, `undefined` is returned.
  */
 export const createConfigExtension = <
-  TExtensionName extends keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
+  TExtensionName extends
+    keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
   TExtensionConfig = any,
   TExtensionSchema extends ZodTypeAny = ZodTypeAny
 >(
@@ -98,7 +101,9 @@ export const createConfigExtension = <
 /**
  * Load the config file values for the current Storm workspace into environment variables
  */
-export const loadStormConfig = async (workspaceRoot?: string): Promise<StormConfig> => {
+export const loadStormConfig = async (
+  workspaceRoot?: string
+): Promise<StormConfig> => {
   let config = {} as StormConfig;
 
   let _workspaceRoot = workspaceRoot;

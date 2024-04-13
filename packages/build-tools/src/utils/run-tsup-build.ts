@@ -231,7 +231,10 @@ async function getNormalizedTsConfig(
         declarationDir: join("tmp", ".tsup", "declaration")
       },
       include: [
-        correctPaths(join(basePath, "node_modules/typescript/**/*.d.ts")),
+        join(
+          basePath.replaceAll("\\", "/"),
+          "node_modules/typescript/**/*.d.ts"
+        ),
         ...rawTsconfig.config?.include
       ]
     },
