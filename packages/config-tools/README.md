@@ -16,7 +16,9 @@
 This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages include CLI utility applications, tools, and various libraries used to create modern, scalable web applications.
 <br />
 
-<h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
+<h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3>
+
+<br />
 
 [![Version](https://img.shields.io/badge/version-1.38.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;
 [![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with docusaurus](https://img.shields.io/badge/documented_with-docusaurus-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://docusaurus.io/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
@@ -25,7 +27,6 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 > This repository, and the apps, libraries, and tools contained within, is still in it's initial development phase. As a result, bugs and issues are expected with it's usage. When the main development phase completes, a proper release will be performed, the packages will be availible through NPM (and other distributions), and this message will be removed. However, in the meantime, please feel free to report any issues you may come across.
 
 <br />
-
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
@@ -40,7 +41,8 @@ Below is a list of the available configuration values that can be set through en
 
 | Name                    | Description                                                                            | Default                     |
 | ----------------------- | -------------------------------------------------------------------------------------- | --------------------------- |
-| STORM_COLOR_BACKGROUND  | The workspace's background theme color                                                 | `#1d232a`                   |
+| STORM_COLOR_LIGHT       | The workspace's light background theme color                                           | `#f4f4f5`                   |
+| STORM_COLOR_DARK        | The workspace's dark background theme color                                            | `#1d232a`                   |
 | STORM_COLOR_ERROR       | The workspace's error theme color                                                      | `#990000`                   |
 | STORM_COLOR_FATAL       | The workspace's fatal theme color                                                      | `#7d1a1a`                   |
 | STORM_COLOR_INFO        | The workspace's info theme color                                                       | `#0ea5e9`                   |
@@ -54,7 +56,7 @@ Below is a list of the available configuration values that can be set through en
 | STORM_LOG_LEVEL         | The current maximum level of messages to write to the logs                             | "info"                      |
 | STORM_ORGANIZATION      | The organization of the workspace                                                      | "storm-software"            |
 | STORM_REPOSITORY        | The repo URL of the workspace (i.e. GitHub URL)                                        |
-| STORM_RUNTIME_DIRECTORY | The default directory of the storm runtime for storage/generation                      | "node_modules/.storm"       |
+| STORM_RUNTIME_DIRECTORY | The default directory of the storm runtime for storage/generation                      | "./.storm"                  |
 | STORM_RUNTIME_VERSION   | The global version of the Storm runtime                                                | "1.0.0"                     |
 | STORM_TIMEZONE          | The default timezone of the workspace                                                  | "America/New_York"          |
 | STORM_BOT               | The worker of the package (this is the bot that will be used to perform various tasks) | "stormie-bot"               |
