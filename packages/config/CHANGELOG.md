@@ -1,3 +1,15 @@
+## 1.9.5 (2024-04-13)
+
+
+### 🩹 Fixes
+
+- **config:** Update config to use `outputDirectory` value ([42604faf](https://github.com/storm-software/storm-ops/commit/42604faf))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.9.4 (2024-04-08)
 
 
