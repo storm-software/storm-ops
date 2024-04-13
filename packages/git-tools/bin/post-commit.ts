@@ -17,17 +17,17 @@ void (async () => {
   try {
     handleProcess(config);
 
-    writeInfo(config, "Running post-commit hook...");
+    writeInfo("Running post-commit hook...", config);
     checkPackageVersion(process.argv?.slice(1));
 
     try {
       run(config, "git-lfs version");
     } catch (error) {
       writeError(
-        config,
         `This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting .git/hooks/post-commit.\nError: ${
           (error as Error)?.message
-        }`
+        }`,
+        config
       );
       exitWithError(config);
     }
@@ -36,7 +36,10 @@ void (async () => {
 
     exitWithSuccess(config);
   } catch (error) {
-    writeFatal(config, `A fatal error occurred while running the program: ${error.message}`);
+    writeFatal(
+      `A fatal error occurred while running the program: ${error.message}`,
+      config
+    );
     exitWithError(config);
     process.exit(1);
   }

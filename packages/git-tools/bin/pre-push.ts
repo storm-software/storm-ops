@@ -21,14 +21,18 @@ void (async () => {
   try {
     handleProcess(config);
 
-    writeInfo(config, "Running pre-push hook...");
+    writeInfo("Running pre-push hook...", config);
     checkPackageVersion(process.argv?.slice(1));
 
-    writeInfo(config, "🔒🔒🔒 Validating lock files 🔒🔒🔒\n");
+    writeInfo("🔒🔒🔒 Validating lock files 🔒🔒🔒\n", config);
 
     const errors = [] as string[];
 
-    if (fs.existsSync(path.join(config.workspaceRoot ?? "./", "package-lock.json"))) {
+    if (
+      fs.existsSync(
+        path.join(config.workspaceRoot ?? "./", "package-lock.json")
+      )
+    ) {
       errors.push(
         'Invalid occurrence of "package-lock.json" file. Please remove it and use only "pnpm-lock.yaml"'
       );
@@ -40,9 +44,12 @@ void (async () => {
     }
 
     try {
-      const content = await readFile(path.join(config.workspaceRoot ?? "./", "pnpm-lock.yaml"), {
-        encoding: "utf8"
-      });
+      const content = await readFile(
+        path.join(config.workspaceRoot ?? "./", "pnpm-lock.yaml"),
+        {
+          encoding: "utf8"
+        }
+      );
       if (content.match(/localhost:487/)) {
         errors.push(
           'The "pnpm-lock.yaml" has reference to local repository ("localhost:4873"). Please use ensure you disable local registry before running "pnpm i"'
@@ -58,7 +65,7 @@ void (async () => {
     }
 
     if (errors.length > 0) {
-      writeError(config, "❌ Lock file validation failed");
+      writeError("❌ Lock file validation failed", config);
       for (const error of errors) {
         console.error(error);
       }
@@ -66,17 +73,17 @@ void (async () => {
       exitWithError(config);
     }
 
-    writeSuccess(config, "✅ Lock file is valid");
+    writeSuccess("Lock file is valid ✅", config);
     run(config, "git lfs pre-push origin");
 
     try {
       run(config, "git-lfs version");
     } catch (error) {
       writeError(
-        config,
         `This repository is configured for Git LFS but 'git-lfs' was not found on your path. If you no longer wish to use Git LFS, remove this hook by deleting .git/hooks/pre-push.\nError: ${
           (error as Error)?.message
-        }`
+        }`,
+        config
       );
       exitWithError(config);
     }
@@ -85,7 +92,10 @@ void (async () => {
 
     exitWithSuccess(config);
   } catch (error) {
-    writeFatal(config, `A fatal error occurred while running the program: ${error.message}`);
+    writeFatal(
+      `A fatal error occurred while running the program: ${error.message}`,
+      config
+    );
     exitWithError(config);
     process.exit(1);
   }

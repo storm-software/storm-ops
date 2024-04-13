@@ -15,10 +15,10 @@ void (async () => {
   try {
     handleProcess(config);
 
-    writeInfo(config, "Running pre-install hook...");
+    writeInfo("Running pre-install hook...", config);
 
     if (config.ci) {
-      writeInfo(config, "Skipping pre-install for CI process...");
+      writeInfo("Skipping pre-install for CI process...", config);
       exitWithSuccess(config);
     }
 
@@ -26,7 +26,10 @@ void (async () => {
 
     exitWithSuccess(config);
   } catch (error) {
-    writeFatal(config, `A fatal error occurred while running the program: ${error.message}`);
+    writeFatal(
+      `A fatal error occurred while running the program: ${error.message}`,
+      config
+    );
     exitWithError(config);
     process.exit(1);
   }

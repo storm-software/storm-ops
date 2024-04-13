@@ -26,10 +26,13 @@ void (async () => {
 
     await program.parseAsync(process.argv);
 
-    writeSuccess(config, "Code linting and fixing completed successfully!");
+    writeSuccess("Code linting and fixing completed successfully!", config);
     exitWithSuccess(config);
   } catch (error) {
-    writeFatal(config, `A fatal error occurred while running the program: ${error.message}`);
+    writeFatal(
+      `A fatal error occurred while running the program: ${error.message}`,
+      config
+    );
     exitWithError(config);
     process.exit(1);
   }

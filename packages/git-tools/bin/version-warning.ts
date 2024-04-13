@@ -15,7 +15,10 @@ void (async () => {
 
     checkPackageVersion(process.argv.slice(1));
   } catch (error) {
-    writeFatal(config, `A fatal error occurred while running the program: ${error.message}`);
+    writeFatal(
+      `A fatal error occurred while running the program: ${error.message}`,
+      config
+    );
     exitWithError(config);
     process.exit(1);
   }

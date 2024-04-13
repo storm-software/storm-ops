@@ -28,13 +28,16 @@ void (async () => {
     await program.parseAsync(process.argv);
 
     writeSuccess(
-      config,
-      `Git ${process.argv.join(" ") ?? "tool"} processing completed successfully!`
+      `Git ${process.argv.join(" ") ?? "tool"} processing completed successfully!`,
+      config
     );
 
     exitWithSuccess(config);
   } catch (error) {
-    writeFatal(config, `A fatal error occurred while running the program: ${error.message}`);
+    writeFatal(
+      `A fatal error occurred while running the program: ${error.message}`,
+      config
+    );
     exitWithError(config);
     process.exit(1);
   }

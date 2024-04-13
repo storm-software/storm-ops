@@ -15,7 +15,7 @@ void (async () => {
   try {
     handleProcess(config);
 
-    writeInfo(config, "Running prepare hook...");
+    writeInfo("Running prepare hook...", config);
 
     if (!config.ci) {
       run(config, "lefthook install");
@@ -23,7 +23,10 @@ void (async () => {
 
     exitWithSuccess(config);
   } catch (error) {
-    writeFatal(config, `A fatal error occurred while running the program: ${error.message}`);
+    writeFatal(
+      `A fatal error occurred while running the program: ${error.message}`,
+      config
+    );
     exitWithError(config);
     process.exit(1);
   }

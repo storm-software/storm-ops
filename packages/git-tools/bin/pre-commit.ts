@@ -19,17 +19,23 @@ void (async () => {
   try {
     handleProcess(config);
 
-    writeInfo(config, "Running pre-commit hook...");
+    writeInfo("Running pre-commit hook...", config);
 
     checkPackageVersion(process.argv.slice(1));
     if (isPackageVersionChanged(process.argv?.slice(1))) {
-      writeError(config, "Please regenerate the package lock file before committing...");
+      writeError(
+        "Please regenerate the package lock file before committing...",
+        config
+      );
       exitWithError(config);
     }
 
     exitWithSuccess(config);
   } catch (error) {
-    writeFatal(config, `A fatal error occurred while running the program: ${error.message}`);
+    writeFatal(
+      `A fatal error occurred while running the program: ${error.message}`,
+      config
+    );
     exitWithError(config);
     process.exit(1);
   }
