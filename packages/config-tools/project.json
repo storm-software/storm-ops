@@ -53,10 +53,10 @@
             "verbose": true
           }
         }
-      },
-      "nx-release-publish": {
-        "executor": "@storm-software/workspace-tools:npm-publish"
       }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
     }
   }
 }
