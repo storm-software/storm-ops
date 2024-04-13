@@ -1,3 +1,15 @@
+## 0.6.13 (2024-04-13)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Update the path provided to include TypeScript declarations ([a1a74b21](https://github.com/storm-software/storm-ops/commit/a1a74b21))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.6.12 (2024-04-11)
 
 
