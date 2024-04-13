@@ -1,3 +1,15 @@
+## 1.38.0 (2024-04-13)
+
+
+### 🚀 Features
+
+- **config-tools:** Added esm support ([fd9dbda5](https://github.com/storm-software/storm-ops/commit/fd9dbda5))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.37.0 (2024-04-13)
 
 
