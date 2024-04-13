@@ -171,7 +171,7 @@ export const StormConfigSchema = z
       .trim()
       .default("dist")
       .describe("The build directory for the workspace"),
-    runtimeDirectory: z
+    outputDirectory: z
       .string()
       .trim()
       .default("node_modules/.storm")

@@ -10,17 +10,23 @@ import { correctPaths } from "../utilities/correct-paths";
  * @param extensionName - The name of the extension module
  * @returns The config for the specified Storm extension module. If the module does not exist, `undefined` is returned.
  */
-export const getExtensionEnv = <TConfig extends Record<string, any> = Record<string, any>>(
+export const getExtensionEnv = <
+  TConfig extends Record<string, any> = Record<string, any>
+>(
   extensionName: string
 ): TConfig | undefined => {
   const prefix = `STORM_EXTENSION_${extensionName.toUpperCase()}_`;
   return Object.keys(process.env)
-    .filter((key) => key.startsWith(prefix))
+    .filter(key => key.startsWith(prefix))
     .reduce((ret: Record<string, any>, key: string) => {
       const name = key
         .replace(prefix, "")
         .split("_")
-        .map((i) => (i.length > 0 ? i.trim().charAt(0).toUpperCase() + i.trim().slice(1) : ""))
+        .map(i =>
+          i.length > 0
+            ? i.trim().charAt(0).toUpperCase() + i.trim().slice(1)
+            : ""
+        )
         .join("");
       if (name) {
         ret[name] = process.env[key];
@@ -45,7 +51,9 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
     owner: process.env[`${prefix}OWNER`],
     worker: process.env[`${prefix}WORKER`],
     organization: process.env[`${prefix}ORGANIZATION`],
-    packageManager: process.env[`${prefix}PACKAGE_MANAGER`] as StormConfig["packageManager"],
+    packageManager: process.env[
+      `${prefix}PACKAGE_MANAGER`
+    ] as StormConfig["packageManager"],
     license: process.env[`${prefix}LICENSE`],
     homepage: process.env[`${prefix}HOMEPAGE`],
     timezone: process.env[`${prefix}TIMEZONE`] ?? process.env.TZ,
@@ -60,14 +68,16 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
         : undefined,
     cacheDirectory: correctPaths(process.env[`${prefix}CACHE_DIRECTORY`]),
     runtimeVersion: process.env[`${prefix}RUNTIME_VERSION`],
-    runtimeDirectory: correctPaths(process.env[`${prefix}RUNTIME_DIRECTORY`]),
+    outputDirectory: correctPaths(process.env[`${prefix}OUTPUT_DIRECTORY`]),
     env: (process.env[`${prefix}ENV`] ??
       process.env.NODE_ENV ??
       process.env.ENVIRONMENT) as StormConfig["env"],
     ci:
       process.env[`${prefix}CI`] !== undefined
         ? Boolean(
-            process.env[`${prefix}CI`] ?? process.env.CI ?? process.env.CONTINUOUS_INTEGRATION
+            process.env[`${prefix}CI`] ??
+              process.env.CI ??
+              process.env.CONTINUOUS_INTEGRATION
           )
         : undefined,
     colors: {
@@ -86,10 +96,15 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
       ? JSON.parse(process.env[`${prefix}EXTERNAL_PACKAGE_PATTERNS`] as string)
       : [],
     logLevel:
-      process.env[`${prefix}LOG_LEVEL`] !== null && process.env[`${prefix}LOG_LEVEL`] !== undefined
+      process.env[`${prefix}LOG_LEVEL`] !== null &&
+      process.env[`${prefix}LOG_LEVEL`] !== undefined
         ? process.env[`${prefix}LOG_LEVEL`] &&
-          Number.isSafeInteger(Number.parseInt(process.env[`${prefix}LOG_LEVEL`] as string))
-          ? getLogLevelLabel(Number.parseInt(process.env[`${prefix}LOG_LEVEL`] as string))
+          Number.isSafeInteger(
+            Number.parseInt(process.env[`${prefix}LOG_LEVEL`] as string)
+          )
+          ? getLogLevelLabel(
+              Number.parseInt(process.env[`${prefix}LOG_LEVEL`] as string)
+            )
           : (process.env[`${prefix}LOG_LEVEL`] as LogLevelLabel)
         : undefined
   };

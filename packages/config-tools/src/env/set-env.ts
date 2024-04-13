@@ -9,7 +9,9 @@ import { correctPaths } from "../utilities/correct-paths";
  * @param extensionName - The name of the extension module
  * @returns The config for the specified Storm extension module. If the module does not exist, `undefined` is returned.
  */
-export const setExtensionEnv = <TConfig extends Record<string, any> = Record<string, any>>(
+export const setExtensionEnv = <
+  TConfig extends Record<string, any> = Record<string, any>
+>(
   extensionName: string,
   extension: TConfig
 ) => {
@@ -35,8 +37,9 @@ export const setExtensionEnv = <TConfig extends Record<string, any> = Record<str
         });
       }
 
-      process.env[`STORM_EXTENSION_${extensionName.toUpperCase()}_${extensionKey.toUpperCase()}`] =
-        extension[key];
+      process.env[
+        `STORM_EXTENSION_${extensionName.toUpperCase()}_${extensionKey.toUpperCase()}`
+      ] = extension[key];
     }
   }
 };
@@ -98,10 +101,14 @@ export const setConfigEnv = (config: StormConfig) => {
     process.env.NX_WORKSPACE_ROOT_PATH = correctPaths(config.workspaceRoot);
   }
   if (config.packageDirectory) {
-    process.env[`${prefix}PACKAGE_DIRECTORY`] = correctPaths(config.packageDirectory);
+    process.env[`${prefix}PACKAGE_DIRECTORY`] = correctPaths(
+      config.packageDirectory
+    );
   }
   if (config.buildDirectory) {
-    process.env[`${prefix}BUILD_DIRECTORY`] = correctPaths(config.buildDirectory);
+    process.env[`${prefix}BUILD_DIRECTORY`] = correctPaths(
+      config.buildDirectory
+    );
   }
   if (config.skipCache !== undefined) {
     process.env[`${prefix}SKIP_CACHE`] = String(config.skipCache);
@@ -111,7 +118,9 @@ export const setConfigEnv = (config: StormConfig) => {
     }
   }
   if (!config.skipCache && config.cacheDirectory) {
-    process.env[`${prefix}CACHE_DIRECTORY`] = correctPaths(config.cacheDirectory);
+    process.env[`${prefix}CACHE_DIRECTORY`] = correctPaths(
+      config.cacheDirectory
+    );
     // if (config.cacheDirectory.includes("/storm") || config.cacheDirectory.includes("\\storm")) {
     //   const nxCacheDirectory = join(
     //     config.cacheDirectory.includes("/storm")
@@ -126,8 +135,10 @@ export const setConfigEnv = (config: StormConfig) => {
   if (config.runtimeVersion) {
     process.env[`${prefix}RUNTIME_VERSION`] = config.runtimeVersion;
   }
-  if (config.runtimeDirectory) {
-    process.env[`${prefix}RUNTIME_DIRECTORY`] = correctPaths(config.runtimeDirectory);
+  if (config.outputDirectory) {
+    process.env[`${prefix}OUTPUT_DIRECTORY`] = correctPaths(
+      config.outputDirectory
+    );
   }
   if (config.env) {
     process.env[`${prefix}ENV`] = config.env;
@@ -180,7 +191,8 @@ export const setConfigEnv = (config: StormConfig) => {
     process.env.NX_VERBOSE_LOGGING = String(
       getLogLevel(config.logLevel) >= LogLevel.DEBUG ? true : false
     );
-    process.env.RUST_BACKTRACE = getLogLevel(config.logLevel) >= LogLevel.DEBUG ? "full" : "none";
+    process.env.RUST_BACKTRACE =
+      getLogLevel(config.logLevel) >= LogLevel.DEBUG ? "full" : "none";
   }
   process.env[`${prefix}CONFIG`] = JSON.stringify(config);
 
