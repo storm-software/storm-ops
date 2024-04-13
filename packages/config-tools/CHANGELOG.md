@@ -1,96 +1,90 @@
-## 1.37.0 (2024-04-13)
+## 1.38.0 (2024-04-13)
 
+### 🚀 Features
+
+- **config-tools:** Added esm support ([fd9dbda5](https://github.com/storm-software/storm-ops/commit/fd9dbda5))
+
+### ❤️ Thank You
+
+- Patrick Sullivan
+
+## 1.37.0 (2024-04-13)
 
 ### 🚀 Features
 
 - **config:** Add `light` and `dark` colors to configuration ([654cd1d0](https://github.com/storm-software/storm-ops/commit/654cd1d0))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.36.2 (2024-04-13)
 
-
 ### 🩹 Fixes
 
 - **config:** Update config to use `outputDirectory` value ([42604faf](https://github.com/storm-software/storm-ops/commit/42604faf))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.36.1 (2024-04-13)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Update the path provided to include TypeScript declarations ([a1a74b21](https://github.com/storm-software/storm-ops/commit/a1a74b21))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.36.0 (2024-04-09)
 
-
 ### 🚀 Features
 
 - **config-tools:** Significant improvements to logic to get config files ([0a0ac895](https://github.com/storm-software/storm-ops/commit/0a0ac895))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.35.7 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolved issue with module types used in build ([50a368d3](https://github.com/storm-software/storm-ops/commit/50a368d3))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.35.6 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **config-tools:** Export `getChalk` function so that it can be used in other packages ([2ca2241a](https://github.com/storm-software/storm-ops/commit/2ca2241a))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.35.5 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolve issue with Nx file imports ([e86eff43](https://github.com/storm-software/storm-ops/commit/e86eff43))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.35.4 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolved issue with duplicate require definition ([63aa1d16](https://github.com/storm-software/storm-ops/commit/63aa1d16))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 

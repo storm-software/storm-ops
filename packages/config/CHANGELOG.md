@@ -1,48 +1,50 @@
-## 1.10.0 (2024-04-13)
+## 1.11.0 (2024-04-13)
 
+### 🚀 Features
+
+- **config-tools:** Added esm support ([fd9dbda5](https://github.com/storm-software/storm-ops/commit/fd9dbda5))
+
+### ❤️ Thank You
+
+- Patrick Sullivan
+
+## 1.10.0 (2024-04-13)
 
 ### 🚀 Features
 
 - **config:** Add `light` and `dark` colors to configuration ([654cd1d0](https://github.com/storm-software/storm-ops/commit/654cd1d0))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.9.5 (2024-04-13)
 
-
 ### 🩹 Fixes
 
 - **config:** Update config to use `outputDirectory` value ([42604faf](https://github.com/storm-software/storm-ops/commit/42604faf))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.9.4 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolved issue with module types used in build ([50a368d3](https://github.com/storm-software/storm-ops/commit/50a368d3))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.9.3 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolved issue with duplicate require definition ([63aa1d16](https://github.com/storm-software/storm-ops/commit/63aa1d16))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
