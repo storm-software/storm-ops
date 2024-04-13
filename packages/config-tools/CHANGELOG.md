@@ -1,3 +1,15 @@
+## 1.37.0 (2024-04-13)
+
+
+### 🚀 Features
+
+- **config:** Add `light` and `dark` colors to configuration ([654cd1d0](https://github.com/storm-software/storm-ops/commit/654cd1d0))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.36.2 (2024-04-13)
 
 

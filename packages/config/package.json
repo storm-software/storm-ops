@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/config",
-  "version": "1.9.5",
+  "version": "1.10.0",
   "private": false,
   "description": "⚡The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.",
   "repository": {
