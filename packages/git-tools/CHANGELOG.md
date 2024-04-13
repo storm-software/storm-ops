@@ -1,3 +1,15 @@
+## 2.9.0 (2024-04-13)
+
+
+### 🚀 Features
+
+- **git-tools:** Updated the console write calls to use updated method signature ([d2d7cc8b](https://github.com/storm-software/storm-ops/commit/d2d7cc8b))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.8.0 (2024-04-13)
 
 
