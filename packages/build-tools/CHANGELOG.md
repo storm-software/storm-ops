@@ -1,3 +1,15 @@
+## 0.6.14 (2024-04-13)
+
+
+### 🩹 Fixes
+
+- **build-tools:** Replace slashes in libraries path ([3b01d54d](https://github.com/storm-software/storm-ops/commit/3b01d54d))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.6.13 (2024-04-13)
 
 
