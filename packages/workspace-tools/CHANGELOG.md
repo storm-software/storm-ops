@@ -1,3 +1,15 @@
+## 1.72.2 (2024-04-15)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Resolved issue with missing fields in Storm configuration ([cf157d2a](https://github.com/storm-software/storm-ops/commit/cf157d2a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.72.1 (2024-04-15)
 
 
