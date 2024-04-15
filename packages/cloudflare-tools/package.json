@@ -43,7 +43,7 @@
   "dependencies": {
     "@nx/devkit": "18.2.3",
     "tslib": "2.6.2",
-    "wrangler": "^3.48.0"
+    "wrangler": "3.48.0"
   },
   "publishConfig": {
     "access": "public"
