@@ -74,7 +74,7 @@
     "@nx/esbuild": "18.2.3",
     "@nx/eslint": "18.2.3",
     "@nx/eslint-plugin": "18.2.3",
-    "@nx/jest": "18.2.3",
+    "@nx/jest": "18.2.4",
     "@nx/js": "18.2.3",
     "@nx/plugin": "18.2.3",
     "@nx/workspace": "18.2.3",
