@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/build-tools",
-  "version": "0.7.0",
+  "version": "0.7.2",
   "private": false,
   "description": "⚡The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.",
   "keywords": [
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
-    "@microsoft/api-extractor": "7.43.0",
+    "@microsoft/api-extractor": "7.43.1",
     "@nx/devkit": "18.2.3",
     "@nx/js": "18.2.3",
     "@nx/workspace": "18.2.3",
@@ -51,15 +51,15 @@
     "fs-extra": "11.2.0",
     "glob": "10.3.12",
     "rolldown": "0.10.1",
-    "rollup": "4.14.1",
+    "rollup": "4.14.2",
     "rollup-plugin-esbuild": "6.1.1",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "rollup-plugin-postcss": "4.0.2",
     "rollup-plugin-typescript2": "0.36.0",
-    "sass": "^1.74.1",
+    "sass": "1.74.1",
     "tsup": "8.0.0",
-    "typescript": "5.4.4",
-    "unbuild": "^2.0.0"
+    "typescript": "5.4.5",
+    "unbuild": "2.0.0"
   },
   "publishConfig": {
     "access": "public"

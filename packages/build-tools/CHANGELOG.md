@@ -1,3 +1,17 @@
+## 0.7.2 (2024-04-15)
+
+
+### 🩹 Fixes
+
+- **deps:** update patch prod dependencies ([7f710f58](https://github.com/storm-software/storm-ops/commit/7f710f58))
+
+## 0.7.1 (2024-04-15)
+
+
+### 🩹 Fixes
+
+- **deps:** pin dependencies ([36d5dd8e](https://github.com/storm-software/storm-ops/commit/36d5dd8e))
+
 ## 0.7.0 (2024-04-13)
 
 
