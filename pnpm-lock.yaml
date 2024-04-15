@@ -54,8 +54,8 @@ importers:
         specifier: 1.4.0
         version: 1.4.0(@swc-node/register@1.9.0)(@swc/core@1.4.13)
       '@nx/devkit':
-        specifier: 18.2.3
-        version: 18.2.3(nx@18.2.3)
+        specifier: 18.2.4
+        version: 18.2.4(nx@18.2.3)
       '@nx/esbuild':
         specifier: 18.2.3
         version: 18.2.3(@swc-node/register@1.9.0)(@swc/core@1.4.13)(@swc/wasm@1.4.14)(@types/node@20.12.7)(esbuild@0.20.2)(nx@18.2.3)(typescript@5.4.5)(verdaccio@5.30.3)
@@ -180,8 +180,8 @@ importers:
         specifier: 7.43.1
         version: 7.43.1(@types/node@20.12.7)
       '@nx/devkit':
-        specifier: 18.2.3
-        version: 18.2.3(nx@18.2.3)
+        specifier: 18.2.4
+        version: 18.2.4(nx@18.2.3)
       '@nx/js':
         specifier: 18.2.3
         version: 18.2.3(@swc-node/register@1.9.0)(@swc/core@1.4.13)(@swc/wasm@1.4.14)(@types/node@20.12.7)(nx@18.2.3)(typescript@5.4.5)(verdaccio@5.30.3)
@@ -258,8 +258,8 @@ importers:
   packages/cloudflare-tools:
     dependencies:
       '@nx/devkit':
-        specifier: 18.2.3
-        version: 18.2.3(nx@18.2.3)
+        specifier: 18.2.4
+        version: 18.2.4(nx@18.2.3)
       tslib:
         specifier: 2.6.2
         version: 2.6.2
@@ -617,8 +617,8 @@ importers:
         specifier: 7.43.1
         version: 7.43.1(@types/node@20.12.7)
       '@nx/devkit':
-        specifier: 18.2.3
-        version: 18.2.3(nx@18.2.3)
+        specifier: 18.2.4
+        version: 18.2.4(nx@18.2.3)
       '@nx/esbuild':
         specifier: 18.2.3
         version: 18.2.3(@swc-node/register@1.9.0)(@swc/core@1.4.13)(@swc/wasm@1.4.14)(@types/node@20.12.7)(esbuild@0.19.12)(nx@18.2.3)(typescript@5.4.5)(verdaccio@5.30.3)
@@ -3707,6 +3707,14 @@ packages:
     transitivePeerDependencies:
       - nx
 
+  /@nrwl/devkit@18.2.4(nx@18.2.3):
+    resolution: {integrity: sha512-dLK8MMb3eEFWlhtI1kNDNbWIT1Xbrgg3eAQ+Ix/N5JDbxJkJhE28WsIJgQb1NTwe/N87O5JtOpxz4/TsSLJCsQ==}
+    dependencies:
+      '@nx/devkit': 18.2.4(nx@18.2.3)
+    transitivePeerDependencies:
+      - nx
+    dev: false
+
   /@nrwl/esbuild@18.2.3(@swc-node/register@1.9.0)(@swc/core@1.4.13)(@swc/wasm@1.4.14)(@types/node@20.12.7)(esbuild@0.19.12)(nx@18.2.3)(typescript@5.4.5)(verdaccio@5.30.3):
     resolution: {integrity: sha512-qtJRpfE2p8h6aXIrVHOHJwschjDREXakpkM1xaki70cVOuyz2BlCvz7n8lRt1gnQhFcHhW0TM5roUcAbv2qF9w==}
     dependencies:
@@ -3970,6 +3978,22 @@ packages:
       tmp: 0.2.1
       tslib: 2.6.2
       yargs-parser: 21.1.1
+
+  /@nx/devkit@18.2.4(nx@18.2.3):
+    resolution: {integrity: sha512-Ws3BcA/aeXuwsCQ5e7PYy2H7DswareTOEfgs7izxNyGugpydktVH9DZZTOFNDsc06yzgvyTucDbDQ+JsrJ9PcQ==}
+    peerDependencies:
+      nx: '>= 16 <= 18'
+    dependencies:
+      '@nrwl/devkit': 18.2.4(nx@18.2.3)
+      ejs: 3.1.9
+      enquirer: 2.3.6
+      ignore: 5.3.1
+      nx: 18.2.3(@swc-node/register@1.9.0)(@swc/core@1.4.13)
+      semver: 7.6.0
+      tmp: 0.2.1
+      tslib: 2.6.2
+      yargs-parser: 21.1.1
+    dev: false
 
   /@nx/esbuild@18.2.3(@swc-node/register@1.9.0)(@swc/core@1.4.13)(@swc/wasm@1.4.14)(@types/node@20.12.7)(esbuild@0.19.12)(nx@18.2.3)(typescript@5.4.5)(verdaccio@5.30.3):
     resolution: {integrity: sha512-0gufjWI7TtaBFO8n/uOBo0psdZY/Hax98lZ0n6nnOgys5czMgLHu+dwLJq1CJV56HwmgIHxtwntk5ZE+aMli7g==}
