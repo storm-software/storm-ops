@@ -56,10 +56,10 @@
     "rollup-plugin-peer-deps-external": "2.2.4",
     "rollup-plugin-postcss": "4.0.2",
     "rollup-plugin-typescript2": "0.36.0",
-    "sass": "^1.74.1",
+    "sass": "1.74.1",
     "tsup": "8.0.0",
     "typescript": "5.4.4",
-    "unbuild": "^2.0.0"
+    "unbuild": "2.0.0"
   },
   "publishConfig": {
     "access": "public"

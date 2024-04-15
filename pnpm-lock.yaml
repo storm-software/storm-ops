@@ -243,7 +243,7 @@ importers:
         specifier: 0.36.0
         version: 0.36.0(rollup@4.14.1)(typescript@5.4.4)
       sass:
-        specifier: ^1.74.1
+        specifier: 1.74.1
         version: 1.74.1
       tsup:
         specifier: 8.0.0
@@ -252,7 +252,7 @@ importers:
         specifier: 5.4.4
         version: 5.4.4
       unbuild:
-        specifier: ^2.0.0
+        specifier: 2.0.0
         version: 2.0.0(sass@1.74.1)(typescript@5.4.4)
 
   packages/cloudflare-tools:
@@ -264,7 +264,7 @@ importers:
         specifier: 2.6.2
         version: 2.6.2
       wrangler:
-        specifier: ^3.48.0
+        specifier: 3.48.0
         version: 3.48.0
 
   packages/config:
@@ -276,7 +276,7 @@ importers:
   packages/config-tools:
     dependencies:
       c12:
-        specifier: ^1.10.0
+        specifier: 1.10.0
         version: 1.10.0
       chalk:
         specifier: 4.1.2
@@ -963,6 +963,7 @@ packages:
   /@babel/highlight@7.24.2:
     resolution: {integrity: sha512-Yac1ao4flkTxTteCDZLEvdxg2fZfz1v8M4QpaGypq/WPDqg3ijHYbDfs+LG5hvzSoqaSZ9/Z9lKSP3CjZjv+pA==}
     engines: {node: '>=6.9.0'}
+    requiresBuild: true
     dependencies:
       '@babel/helper-validator-identifier': 7.22.20
       chalk: 4.1.2
