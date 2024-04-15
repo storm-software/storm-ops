@@ -41,7 +41,7 @@
   "main": "./index.js",
   "typings": "./declarations.d.ts",
   "dependencies": {
-    "@nx/devkit": "18.2.3",
+    "@nx/devkit": "18.2.4",
     "tslib": "2.6.2",
     "wrangler": "3.48.0"
   },
