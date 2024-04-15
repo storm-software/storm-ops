@@ -386,7 +386,7 @@ dependencies = [
 
 [[package]]
 name = "storm-config"
-version = "0.3.2"
+version = "0.3.3"
 dependencies = [
  "async-trait",
  "convert_case",

@@ -1,3 +1,10 @@
+## 0.3.3 (2024-04-15)
+
+
+### 🩹 Fixes
+
+- **deps:** update patch prod dependencies ([7f710f58](https://github.com/storm-software/storm-ops/commit/7f710f58))
+
 ## 0.3.2 (2024-04-08)
 
 
