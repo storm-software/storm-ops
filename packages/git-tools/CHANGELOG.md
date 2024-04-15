@@ -1,3 +1,15 @@
+## 2.9.2 (2024-04-15)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Clean up the README markdown ([676d23d3](https://github.com/storm-software/storm-ops/commit/676d23d3))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.9.1 (2024-04-15)
 
 
