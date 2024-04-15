@@ -11,9 +11,12 @@ import { findWorkspaceRoot } from "./find-workspace-root";
  * Storm theme config values used for styling various workspace elements
  */
 export const DEFAULT_COLOR_CONFIG: ColorConfig = {
-  primary: "#1fb2a6",
   dark: "#1d232a",
   light: "#f4f4f5",
+  primary: "#1fb2a6",
+  secondary: "#0ea5e9",
+  tertiary: "#ec5990",
+  accent: "#6366f1",
   success: "#087f5b",
   info: "#0ea5e9",
   warning: "#fcc419",

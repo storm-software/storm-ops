@@ -1,4 +1,8 @@
 {
+  "extends": "./packages/config/presets/base.json",
+  "name": "storm-ops",
+  "namespace": "storm-software",
+  "repository": "https://github.com/storm-software/storm-ops",
   "organization": "storm-software",
   "ci": true,
   "owner": "@storm-software/development",

@@ -114,7 +114,7 @@ export const loadStormConfig = async (
   const configFile = await getConfigFile(_workspaceRoot);
   if (!configFile) {
     writeWarning(
-      "No Storm config file found in the current workspace. Please ensure this is the expected behavior - you can add a `storm.config.js` file to the root of your workspace if it is not.\n",
+      "No Storm config file found in the current workspace. Please ensure this is the expected behavior - you can add a `storm.json` file to the root of your workspace if it is not.\n",
       { logLevel: "all" }
     );
   }

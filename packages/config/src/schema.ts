@@ -27,8 +27,32 @@ export const ColorConfigSchema = z
       .toLowerCase()
       .regex(/^#([0-9a-f]{3}){1,2}$/i)
       .length(7)
-      .default("#0ea5e9")
+      .default("#1fb2a6")
       .describe("The primary color of the workspace"),
+    secondary: z
+      .string()
+      .trim()
+      .toLowerCase()
+      .regex(/^#([0-9a-f]{3}){1,2}$/i)
+      .length(7)
+      .default("#0ea5e9")
+      .describe("The secondary color of the workspace"),
+    tertiary: z
+      .string()
+      .trim()
+      .toLowerCase()
+      .regex(/^#([0-9a-f]{3}){1,2}$/i)
+      .length(7)
+      .default("#ec5990")
+      .describe("The tertiary color of the workspace"),
+    accent: z
+      .string()
+      .trim()
+      .toLowerCase()
+      .regex(/^#([0-9a-f]{3}){1,2}$/i)
+      .length(7)
+      .default("#6366f1")
+      .describe("The accent color of the workspace"),
     success: z
       .string()
       .trim()

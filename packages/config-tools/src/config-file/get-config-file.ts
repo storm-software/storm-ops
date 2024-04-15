@@ -21,7 +21,13 @@ export const getConfigFileByName = async (
 
   return loadConfig<Partial<StormConfigInput>>({
     cwd: workspacePath,
-    name: fileName
+    packageJson: true,
+    name: fileName,
+    envName: fileName?.toUpperCase(),
+    jitiOptions: {
+      debug: true,
+      cache: process.env.STORM_CACHE ? process.env.STORM_CACHE_DIRECTORY : false
+    }
   });
 };
 
@@ -41,7 +47,7 @@ export const getConfigFile = async (
     name: "storm"
   });
 
-  if (additionalFileNames) {
+  if (additionalFileNames && additionalFileNames.length > 0) {
     const results = await Promise.all(
       additionalFileNames.map(fileName =>
         loadConfig({

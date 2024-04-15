@@ -41,7 +41,7 @@
     "adr-preview": "pnpm log4brains preview",
     "prebuild": "pnpm clean && pnpm build-plugins",
     "build": "nx affected -t build --parallel=1",
-    "build-all": "nx run-many -t build --all --parallel=1",
+    "build-all": "nx run-many -t build --all --parallel=3",
     "build-plugins": "node -r esbuild-register tools/scripts/build-plugins.ts",
     "clean": "rimraf dist",
     "clean:packages": "rimraf dist/packages",
