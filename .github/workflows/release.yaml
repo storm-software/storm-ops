@@ -31,7 +31,7 @@ jobs:
     if: startsWith(github.repository, 'storm-software/') && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/next' || github.ref == 'refs/heads/alpha' || github.ref == 'refs/heads/beta')
     steps:
       - name: Send Slack notification - Deployment started
-        uses: slackapi/slack-github-action@v1.25.0
+        uses: slackapi/slack-github-action@v1.26.0
         with:
           channel-id: "notifications"
           payload: |
@@ -132,7 +132,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Slack notification - Deployment successful
-        uses: slackapi/slack-github-action@v1.25.0
+        uses: slackapi/slack-github-action@v1.26.0
         with:
           channel-id: "notifications"
           update-ts: ${{ steps.release.outputs.ts }}
@@ -174,7 +174,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Slack notification - Deployment failed
-        uses: slackapi/slack-github-action@v1.25.0
+        uses: slackapi/slack-github-action@v1.26.0
         with:
           channel-id: "notifications"
           update-ts: ${{ steps.release.outputs.ts }}
@@ -216,7 +216,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send Slack notification - Deployment cancelled
-        uses: slackapi/slack-github-action@v1.25.0
+        uses: slackapi/slack-github-action@v1.26.0
         with:
           channel-id: "notifications"
           update-ts: ${{ steps.release.outputs.ts }}
