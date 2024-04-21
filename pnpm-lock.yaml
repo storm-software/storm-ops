@@ -963,7 +963,6 @@ packages:
   /@babel/highlight@7.24.2:
     resolution: {integrity: sha512-Yac1ao4flkTxTteCDZLEvdxg2fZfz1v8M4QpaGypq/WPDqg3ijHYbDfs+LG5hvzSoqaSZ9/Z9lKSP3CjZjv+pA==}
     engines: {node: '>=6.9.0'}
-    requiresBuild: true
     dependencies:
       '@babel/helper-validator-identifier': 7.22.20
       chalk: 4.1.2
@@ -3258,8 +3257,8 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     dev: false
 
-  /@inquirer/figures@1.0.0:
-    resolution: {integrity: sha512-3fw+7+77/duTnMJTeSS44wneszghI4tkr0m0xdIJabbYRe36ElzmsqyboMZ1nFRon6sT+ckVvYDVjwapKv+2sw==}
+  /@inquirer/figures@1.0.1:
+    resolution: {integrity: sha512-mtup3wVKia3ZwULPHcbs4Mor8Voi+iIXEWD7wCNbIO6lYR62oPCTQyrddi5OMYVXHzeCSoneZwJuS8sBvlEwDw==}
     engines: {node: '>=18'}
     dev: false
 
@@ -3707,13 +3706,12 @@ packages:
     transitivePeerDependencies:
       - nx
 
-  /@nrwl/devkit@18.2.4(nx@18.2.3):
+  /@nrwl/devkit@18.2.4(nx@18.2.4):
     resolution: {integrity: sha512-dLK8MMb3eEFWlhtI1kNDNbWIT1Xbrgg3eAQ+Ix/N5JDbxJkJhE28WsIJgQb1NTwe/N87O5JtOpxz4/TsSLJCsQ==}
     dependencies:
-      '@nx/devkit': 18.2.4(nx@18.2.3)
+      '@nx/devkit': 18.2.4(nx@18.2.4)
     transitivePeerDependencies:
       - nx
-    dev: false
 
   /@nrwl/esbuild@18.2.3(@swc-node/register@1.9.0)(@swc/core@1.4.13)(@swc/wasm@1.4.14)(@types/node@20.12.7)(esbuild@0.19.12)(nx@18.2.3)(typescript@5.4.5)(verdaccio@5.30.3):
     resolution: {integrity: sha512-qtJRpfE2p8h6aXIrVHOHJwschjDREXakpkM1xaki70cVOuyz2BlCvz7n8lRt1gnQhFcHhW0TM5roUcAbv2qF9w==}
@@ -3969,7 +3967,7 @@ packages:
     peerDependencies:
       nx: '>= 16 <= 18'
     dependencies:
-      '@nrwl/devkit': 18.2.4(nx@18.2.3)
+      '@nrwl/devkit': 18.2.4(nx@18.2.4)
       ejs: 3.1.9
       enquirer: 2.3.6
       ignore: 5.3.1
@@ -3978,22 +3976,6 @@ packages:
       tmp: 0.2.1
       tslib: 2.6.2
       yargs-parser: 21.1.1
-
-  /@nx/devkit@18.2.4(nx@18.2.3):
-    resolution: {integrity: sha512-Ws3BcA/aeXuwsCQ5e7PYy2H7DswareTOEfgs7izxNyGugpydktVH9DZZTOFNDsc06yzgvyTucDbDQ+JsrJ9PcQ==}
-    peerDependencies:
-      nx: '>= 16 <= 18'
-    dependencies:
-      '@nrwl/devkit': 18.2.4(nx@18.2.3)
-      ejs: 3.1.9
-      enquirer: 2.3.6
-      ignore: 5.3.1
-      nx: 18.2.3(@swc-node/register@1.9.0)(@swc/core@1.4.13)
-      semver: 7.6.0
-      tmp: 0.2.1
-      tslib: 2.6.2
-      yargs-parser: 21.1.1
-    dev: false
 
   /@nx/esbuild@18.2.3(@swc-node/register@1.9.0)(@swc/core@1.4.13)(@swc/wasm@1.4.14)(@types/node@20.12.7)(esbuild@0.19.12)(nx@18.2.3)(typescript@5.4.5)(verdaccio@5.30.3):
     resolution: {integrity: sha512-0gufjWI7TtaBFO8n/uOBo0psdZY/Hax98lZ0n6nnOgys5czMgLHu+dwLJq1CJV56HwmgIHxtwntk5ZE+aMli7g==}
@@ -10100,7 +10082,7 @@ packages:
     resolution: {integrity: sha512-Qzm+UP7L9beFyycZ9Nxzqj7WBgeJIaT4Ue0+2bmQp9yZXiUW2azrmBnp3vlInMw1wXkUmaM0hiMcht7CjJzASw==}
     engines: {node: '>=18'}
     dependencies:
-      '@inquirer/figures': 1.0.0
+      '@inquirer/figures': 1.0.1
       '@ljharb/through': 2.3.13
       ansi-escapes: 4.3.2
       chalk: 4.1.2
