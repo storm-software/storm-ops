@@ -1,17 +1,24 @@
-## 1.72.2 (2024-04-15)
+## 1.72.3 (2024-04-21)
 
+### 🩹 Fixes
+
+- **workspace-tools:** Add `AssetGlob` typings ([c42da685](https://github.com/storm-software/storm-ops/commit/c42da685))
+
+### ❤️ Thank You
+
+- Patrick Sullivan
+
+## 1.72.2 (2024-04-15)
 
 ### 🩹 Fixes
 
 - **config-tools:** Resolved issue with missing fields in Storm configuration ([cf157d2a](https://github.com/storm-software/storm-ops/commit/cf157d2a))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.72.1 (2024-04-15)
-
 
 ### 🩹 Fixes
 
@@ -19,37 +26,31 @@
 
 ## 1.72.0 (2024-04-13)
 
-
 ### 🚀 Features
 
 - **config-tools:** No longer require `config` in storm console write functions ([ad8c6511](https://github.com/storm-software/storm-ops/commit/ad8c6511))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.71.1 (2024-04-11)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Update `tsup` build to no longer add workspace dependencies ([84da4a76](https://github.com/storm-software/storm-ops/commit/84da4a76))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.71.0 (2024-04-09)
 
-
 ### 🚀 Features
 
 - **config-tools:** Significant improvements to logic to get config files ([0a0ac895](https://github.com/storm-software/storm-ops/commit/0a0ac895))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 

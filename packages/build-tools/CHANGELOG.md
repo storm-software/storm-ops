@@ -1,5 +1,14 @@
-## 0.7.2 (2024-04-15)
+## 0.7.3 (2024-04-21)
 
+### 🩹 Fixes
+
+- **workspace-tools:** Add `AssetGlob` typings ([c42da685](https://github.com/storm-software/storm-ops/commit/c42da685))
+
+### ❤️ Thank You
+
+- Patrick Sullivan
+
+## 0.7.2 (2024-04-15)
 
 ### 🩹 Fixes
 
@@ -7,224 +16,187 @@
 
 ## 0.7.1 (2024-04-15)
 
-
 ### 🩹 Fixes
 
 - **deps:** pin dependencies ([36d5dd8e](https://github.com/storm-software/storm-ops/commit/36d5dd8e))
 
 ## 0.7.0 (2024-04-13)
 
-
 ### 🚀 Features
 
 - **config-tools:** No longer require `config` in storm console write functions ([ad8c6511](https://github.com/storm-software/storm-ops/commit/ad8c6511))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.6.14 (2024-04-13)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Replace slashes in libraries path ([3b01d54d](https://github.com/storm-software/storm-ops/commit/3b01d54d))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.6.13 (2024-04-13)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Update the path provided to include TypeScript declarations ([a1a74b21](https://github.com/storm-software/storm-ops/commit/a1a74b21))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.6.12 (2024-04-11)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolve issues with missing TypeScript lib files ([032daaf9](https://github.com/storm-software/storm-ops/commit/032daaf9))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.6.11 (2024-04-11)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Added the TypeScript libs files to the compiler options ([963d533a](https://github.com/storm-software/storm-ops/commit/963d533a))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.6.10 (2024-04-11)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Update `tsup` build to no longer add workspace dependencies ([84da4a76](https://github.com/storm-software/storm-ops/commit/84da4a76))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.6.9 (2024-04-11)
 
-
 ### 🩹 Fixes
 
-- **build-tools:** Add the typescript type libraries to the `tsup` build  include path ([c7125729](https://github.com/storm-software/storm-ops/commit/c7125729))
+- **build-tools:** Add the typescript type libraries to the `tsup` build include path ([c7125729](https://github.com/storm-software/storm-ops/commit/c7125729))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.6.8 (2024-04-11)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolve object ref error with empty dependencies ([6abbd534](https://github.com/storm-software/storm-ops/commit/6abbd534))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.6.7 (2024-04-11)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Enhance the entry string logic and output path ([10801885](https://github.com/storm-software/storm-ops/commit/10801885))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.6.6 (2024-04-11)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Update the `rootDir` passed to the build method ([d4d4409e](https://github.com/storm-software/storm-ops/commit/d4d4409e))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.6.5 (2024-04-11)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Update the logging prior to the build ([dd83b930](https://github.com/storm-software/storm-ops/commit/dd83b930))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.6.4 (2024-04-10)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Temporarily removed `mkdist` build from config ([56f8e104](https://github.com/storm-software/storm-ops/commit/56f8e104))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.6.3 (2024-04-10)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolve issue with invalid `rootDir` value ([16b7e378](https://github.com/storm-software/storm-ops/commit/16b7e378))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.6.2 (2024-04-09)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolve the multiple `clean` step issue in `unbuild` executable ([9c2727da](https://github.com/storm-software/storm-ops/commit/9c2727da))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.6.1 (2024-04-09)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolve issue with empty config file path option ([5216a888](https://github.com/storm-software/storm-ops/commit/5216a888))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.6.0 (2024-04-09)
 
-
 ### 🚀 Features
 
 - **config-tools:** Significant improvements to logic to get config files ([0a0ac895](https://github.com/storm-software/storm-ops/commit/0a0ac895))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.5.1 (2024-04-09)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolved issue with invalid rollup path ([4e20c795](https://github.com/storm-software/storm-ops/commit/4e20c795))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 0.5.0 (2024-04-09)
 
-
 ### 🚀 Features
 
 - **build-tools:** Added `unbuild` to the build tools ([b62cd15b](https://github.com/storm-software/storm-ops/commit/b62cd15b))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
