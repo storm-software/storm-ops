@@ -55,6 +55,8 @@ ${Object.keys(options)
 
   // #endregion Prepare build context variables
 
+  // #region Run the build process
+
   // biome-ignore lint/style/noNonNullAssertion: <explanation>
   await build(config!, {
     ...options,

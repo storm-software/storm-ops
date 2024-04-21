@@ -95,3 +95,16 @@ declare async function rolldownWithOptions(
   options: RolldownOptions
 ): Promise<void>;
 export { rolldownWithOptions };
+
+export type Platform = "browser" | "node" | "neutral";
+
+export type FileInputOutput = {
+  input: string;
+  output: string;
+};
+
+export type AssetGlob = FileInputOutput & {
+  glob: string;
+  ignore?: string[];
+  dot?: boolean;
+};
