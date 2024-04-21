@@ -1,3 +1,15 @@
+## 1.72.3 (2024-04-21)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Add `AssetGlob` typings ([c42da685](https://github.com/storm-software/storm-ops/commit/c42da685))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.72.2 (2024-04-15)
 
 
