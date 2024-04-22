@@ -189,8 +189,8 @@ importers:
         specifier: 18.2.3
         version: 18.2.3(@swc-node/register@1.9.0)(@swc/core@1.4.13)(@swc/wasm@1.4.14)(@types/node@20.12.7)(nx@18.3.3)(typescript@5.4.5)(verdaccio@5.30.3)
       '@nx/workspace':
-        specifier: 18.2.3
-        version: 18.2.3(@swc-node/register@1.9.0)(@swc/core@1.4.13)
+        specifier: 18.3.3
+        version: 18.3.3(@swc-node/register@1.9.0)(@swc/core@1.4.13)
       '@rollup/plugin-commonjs':
         specifier: 25.0.7
         version: 25.0.7(rollup@4.14.2)
@@ -309,8 +309,8 @@ importers:
   packages/create-storm-workspace:
     dependencies:
       '@nx/workspace':
-        specifier: 18.2.3
-        version: 18.2.3(@swc-node/register@1.9.0)(@swc/core@1.4.13)
+        specifier: 18.3.3
+        version: 18.3.3(@swc-node/register@1.9.0)(@swc/core@1.4.13)
       create-nx-workspace:
         specifier: 18.2.3
         version: 18.2.3
@@ -12478,8 +12478,6 @@ packages:
       webpack: '*'
     peerDependenciesMeta:
       webpack:
-        optional: true
-      webpack-sources:
         optional: true
     dependencies:
       webpack: 5.91.0(@swc/core@1.4.13)(esbuild@0.17.19)
