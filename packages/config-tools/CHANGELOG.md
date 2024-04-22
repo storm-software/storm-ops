@@ -1,3 +1,15 @@
+## 1.40.1 (2024-04-22)
+
+
+### 🩹 Fixes
+
+- **config:** Added updates to repository logging ([2b871dc3](https://github.com/storm-software/storm-ops/commit/2b871dc3))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.40.0 (2024-04-22)
 
 
