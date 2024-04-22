@@ -1,100 +1,152 @@
 import z from "zod";
 
+const DarkColorSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^#([0-9a-f]{3}){1,2}$/i)
+  .length(7)
+  .default("#1d232a")
+  .describe("The dark background color of the workspace");
+const LightColorSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^#([0-9a-f]{3}){1,2}$/i)
+  .length(7)
+  .default("#f4f4f5")
+  .describe("The light background color of the workspace");
+const PrimaryColorSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^#([0-9a-f]{3}){1,2}$/i)
+  .length(7)
+  .default("#1fb2a6")
+  .describe("The primary color of the workspace");
+const SecondaryColorSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^#([0-9a-f]{3}){1,2}$/i)
+  .length(7)
+  .default("#0ea5e9")
+  .describe("The secondary color of the workspace");
+const TertiaryColorSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^#([0-9a-f]{3}){1,2}$/i)
+  .length(7)
+  .default("#ec5990")
+  .describe("The tertiary color of the workspace");
+const AccentColorSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^#([0-9a-f]{3}){1,2}$/i)
+  .length(7)
+  .default("#6366f1")
+  .describe("The accent color of the workspace");
+const SuccessColorSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^#([0-9a-f]{3}){1,2}$/i)
+  .length(7)
+  .default("#087f5b")
+  .describe("The success color of the workspace");
+const InfoColorSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^#([0-9a-f]{3}){1,2}$/i)
+  .length(7)
+  .default("#0ea5e9")
+  .describe("The informational color of the workspace");
+const WarningColorSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^#([0-9a-f]{3}){1,2}$/i)
+  .length(7)
+  .default("#fcc419")
+  .describe("The warning color of the workspace");
+const ErrorColorSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^#([0-9a-f]{3}){1,2}$/i)
+  .length(7)
+  .default("#990000")
+  .describe("The error color of the workspace");
+const FatalColorSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^#([0-9a-f]{3}){1,2}$/i)
+  .length(7)
+  .default("#7d1a1a")
+  .describe("The fatal color of the workspace");
+
+export const DarkThemeColorConfigSchema = z.object({
+  foreground: LightColorSchema,
+  background: DarkColorSchema,
+  primary: PrimaryColorSchema,
+  secondary: SecondaryColorSchema,
+  tertiary: TertiaryColorSchema,
+  accent: AccentColorSchema,
+  success: SuccessColorSchema,
+  info: InfoColorSchema,
+  warning: WarningColorSchema,
+  error: ErrorColorSchema,
+  fatal: FatalColorSchema
+});
+
+export const LightThemeColorConfigSchema = z.object({
+  foreground: DarkColorSchema,
+  background: LightColorSchema,
+  primary: PrimaryColorSchema,
+  secondary: SecondaryColorSchema,
+  tertiary: TertiaryColorSchema,
+  accent: AccentColorSchema,
+  success: SuccessColorSchema,
+  info: InfoColorSchema,
+  warning: WarningColorSchema,
+  error: ErrorColorSchema,
+  fatal: FatalColorSchema
+});
+
+export const MultiThemeColorConfigSchema = z.object({
+  dark: DarkThemeColorConfigSchema,
+  light: LightThemeColorConfigSchema
+});
+
+export const SingleThemeColorConfigSchema = z.object({
+  dark: DarkColorSchema,
+  light: LightColorSchema,
+  primary: PrimaryColorSchema,
+  secondary: SecondaryColorSchema,
+  tertiary: TertiaryColorSchema,
+  accent: AccentColorSchema,
+  success: SuccessColorSchema,
+  info: InfoColorSchema,
+  warning: WarningColorSchema,
+  error: ErrorColorSchema,
+  fatal: FatalColorSchema
+});
+
 /**
  * Storm theme color config values used for styling various workspace elements
  */
-export const ColorConfigSchema = z
-  .object({
-    dark: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .regex(/^#([0-9a-f]{3}){1,2}$/i)
-      .length(7)
-      .default("#1d232a")
-      .describe("The dark background color of the workspace"),
-    light: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .regex(/^#([0-9a-f]{3}){1,2}$/i)
-      .length(7)
-      .default("#f4f4f5")
-      .describe("The light background color of the workspace"),
-    primary: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .regex(/^#([0-9a-f]{3}){1,2}$/i)
-      .length(7)
-      .default("#1fb2a6")
-      .describe("The primary color of the workspace"),
-    secondary: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .regex(/^#([0-9a-f]{3}){1,2}$/i)
-      .length(7)
-      .default("#0ea5e9")
-      .describe("The secondary color of the workspace"),
-    tertiary: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .regex(/^#([0-9a-f]{3}){1,2}$/i)
-      .length(7)
-      .default("#ec5990")
-      .describe("The tertiary color of the workspace"),
-    accent: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .regex(/^#([0-9a-f]{3}){1,2}$/i)
-      .length(7)
-      .default("#6366f1")
-      .describe("The accent color of the workspace"),
-    success: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .regex(/^#([0-9a-f]{3}){1,2}$/i)
-      .length(7)
-      .default("#087f5b")
-      .describe("The success color of the workspace"),
-    info: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .regex(/^#([0-9a-f]{3}){1,2}$/i)
-      .length(7)
-      .default("#0ea5e9")
-      .describe("The informational color of the workspace"),
-    warning: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .regex(/^#([0-9a-f]{3}){1,2}$/i)
-      .length(7)
-      .default("#fcc419")
-      .describe("The warning color of the workspace"),
-    error: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .regex(/^#([0-9a-f]{3}){1,2}$/i)
-      .length(7)
-      .default("#990000")
-      .describe("The error color of the workspace"),
-    fatal: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .regex(/^#([0-9a-f]{3}){1,2}$/i)
-      .length(7)
-      .default("#7d1a1a")
-      .describe("The fatal color of the workspace")
-  })
-  .describe("Colors used for various workspace elements");
+export const ColorConfigSchema = SingleThemeColorConfigSchema.or(
+  MultiThemeColorConfigSchema
+).describe("Colors used for various workspace elements");
+
+export const ColorConfigMapSchema = z.union([
+  z.object({ "base": ColorConfigSchema }),
+  z.record(z.string(), ColorConfigSchema)
+]);
 
 /**
  * Storm Workspace config values used during various dev-ops processes. It represents the config of the entire monorepo.
@@ -253,7 +305,7 @@ export const StormConfigSchema = z
       .describe(
         "The filepath of the Storm config. When this field is null, no config file was found in the current workspace."
       ),
-    colors: ColorConfigSchema.describe(
+    colors: ColorConfigSchema.or(ColorConfigMapSchema).describe(
       "Storm theme config values used for styling various package elements"
     ),
     extensions: z

@@ -1,5 +1,12 @@
 import { LogLevel } from "../types";
-import type { StormConfig } from "@storm-software/config";
+import type {
+  ColorConfigMap,
+  DarkThemeColorConfig,
+  LightThemeColorConfig,
+  MultiThemeColorConfig,
+  SingleThemeColorConfig,
+  StormConfig
+} from "@storm-software/config";
 import { getLogLevel } from "../utilities/get-log-level";
 import { correctPaths } from "../utilities/correct-paths";
 
@@ -150,30 +157,23 @@ export const setConfigEnv = (config: StormConfig) => {
     process.env.CI = String(config.ci);
     process.env.CONTINUOUS_INTEGRATION = String(config.ci);
   }
-  if (config.colors.primary) {
-    process.env[`${prefix}COLOR_PRIMARY`] = config.colors.primary;
+
+  // Check if the color configuration is set using separate dark and light color
+  // palettes or a single multi-theme color palettes
+  if (
+    (config.colors as ColorConfigMap)?.base?.light ||
+    (config.colors as ColorConfigMap)?.base?.dark
+  ) {
+    for (const key of Object.keys(config.colors as ColorConfigMap)) {
+      setThemeColorConfigEnv(`${prefix}COLOR_${key}_`, config.colors[key]);
+    }
+  } else {
+    setThemeColorConfigEnv(
+      `${prefix}COLOR_`,
+      config.colors as MultiThemeColorConfig | SingleThemeColorConfig
+    );
   }
-  if (config.colors.dark) {
-    process.env[`${prefix}COLOR_DARK`] = config.colors.dark;
-  }
-  if (config.colors.light) {
-    process.env[`${prefix}COLOR_LIGHT`] = config.colors.light;
-  }
-  if (config.colors.success) {
-    process.env[`${prefix}COLOR_SUCCESS`] = config.colors.success;
-  }
-  if (config.colors.info) {
-    process.env[`${prefix}COLOR_INFO`] = config.colors.info;
-  }
-  if (config.colors.warning) {
-    process.env[`${prefix}COLOR_WARNING`] = config.colors.warning;
-  }
-  if (config.colors.error) {
-    process.env[`${prefix}COLOR_ERROR`] = config.colors.error;
-  }
-  if (config.colors.fatal) {
-    process.env[`${prefix}COLOR_FATAL`] = config.colors.fatal;
-  }
+
   if (config.repository) {
     process.env[`${prefix}REPOSITORY`] = config.repository;
   }
@@ -203,5 +203,105 @@ export const setConfigEnv = (config: StormConfig) => {
     config.extensions[key] &&
       Object.keys(config.extensions[key]) &&
       setExtensionEnv(key, config.extensions[key]);
+  }
+};
+
+const setThemeColorConfigEnv = (
+  prefix: string,
+  config: MultiThemeColorConfig | SingleThemeColorConfig
+) => {
+  // Check if the color configuration is set using separate dark and light color
+  // palettes or a single multi-theme color palettes
+  return (config as MultiThemeColorConfig)?.light?.primary ||
+    (config as MultiThemeColorConfig)?.dark?.primary
+    ? setMultiThemeColorConfigEnv(prefix, config as MultiThemeColorConfig)
+    : setSingleThemeColorConfigEnv(prefix, config as SingleThemeColorConfig);
+};
+
+const setSingleThemeColorConfigEnv = (
+  prefix: string,
+  config: SingleThemeColorConfig
+) => {
+  if (config.dark) {
+    process.env[`${prefix}DARK`] = config.dark;
+  }
+  if (config.light) {
+    process.env[`${prefix}LIGHT`] = config.light;
+  }
+  if (config.primary) {
+    process.env[`${prefix}PRIMARY`] = config.primary;
+  }
+  if (config.secondary) {
+    process.env[`${prefix}SECONDARY`] = config.secondary;
+  }
+  if (config.tertiary) {
+    process.env[`${prefix}TERTIARY`] = config.tertiary;
+  }
+  if (config.accent) {
+    process.env[`${prefix}ACCENT`] = config.accent;
+  }
+  if (config.success) {
+    process.env[`${prefix}SUCCESS`] = config.success;
+  }
+  if (config.info) {
+    process.env[`${prefix}INFO`] = config.info;
+  }
+  if (config.warning) {
+    process.env[`${prefix}WARNING`] = config.warning;
+  }
+  if (config.error) {
+    process.env[`${prefix}ERROR`] = config.error;
+  }
+  if (config.fatal) {
+    process.env[`${prefix}FATAL`] = config.fatal;
+  }
+};
+
+const setMultiThemeColorConfigEnv = (
+  prefix: string,
+  config: MultiThemeColorConfig
+) => {
+  return {
+    light: setBaseThemeColorConfigEnv(`${prefix}_LIGHT_`, config.light),
+    dark: setBaseThemeColorConfigEnv(`${prefix}_DARK_`, config.dark)
+  };
+};
+
+const setBaseThemeColorConfigEnv = (
+  prefix: string,
+  config: DarkThemeColorConfig | LightThemeColorConfig
+) => {
+  if (config.foreground) {
+    process.env[`${prefix}FOREGROUND`] = config.foreground;
+  }
+  if (config.background) {
+    process.env[`${prefix}BACKGROUND`] = config.background;
+  }
+  if (config.primary) {
+    process.env[`${prefix}PRIMARY`] = config.primary;
+  }
+  if (config.secondary) {
+    process.env[`${prefix}SECONDARY`] = config.secondary;
+  }
+  if (config.tertiary) {
+    process.env[`${prefix}TERTIARY`] = config.tertiary;
+  }
+  if (config.accent) {
+    process.env[`${prefix}ACCENT`] = config.accent;
+  }
+  if (config.success) {
+    process.env[`${prefix}SUCCESS`] = config.success;
+  }
+  if (config.info) {
+    process.env[`${prefix}INFO`] = config.info;
+  }
+  if (config.warning) {
+    process.env[`${prefix}WARNING`] = config.warning;
+  }
+  if (config.error) {
+    process.env[`${prefix}ERROR`] = config.error;
+  }
+  if (config.fatal) {
+    process.env[`${prefix}FATAL`] = config.fatal;
   }
 };

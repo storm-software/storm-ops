@@ -1,5 +1,13 @@
 import type { LogLevelLabel } from "../types";
-import type { StormConfig } from "@storm-software/config";
+import {
+  type ColorConfigInput,
+  type DarkThemeColorConfigInput,
+  type LightThemeColorConfigInput,
+  type MultiThemeColorConfigInput,
+  type SingleThemeColorConfigInput,
+  type StormConfig,
+  COLOR_KEYS
+} from "@storm-software/config";
 import { getLogLevelLabel } from "../utilities";
 import type { DeepPartial } from "../../declarations.d";
 import { correctPaths } from "../utilities/correct-paths";
@@ -80,16 +88,7 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
               process.env.CONTINUOUS_INTEGRATION
           )
         : undefined,
-    colors: {
-      primary: process.env[`${prefix}COLOR_PRIMARY`],
-      dark: process.env[`${prefix}COLOR_DARK`],
-      light: process.env[`${prefix}COLOR_LIGHT`],
-      success: process.env[`${prefix}COLOR_SUCCESS`],
-      info: process.env[`${prefix}COLOR_INFO`],
-      warning: process.env[`${prefix}COLOR_WARNING`],
-      error: process.env[`${prefix}COLOR_ERROR`],
-      fatal: process.env[`${prefix}COLOR_FATAL`]
-    },
+
     repository: process.env[`${prefix}REPOSITORY`],
     branch: process.env[`${prefix}BRANCH`],
     preid: process.env[`${prefix}PRE_ID`],
@@ -109,6 +108,28 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
           : (process.env[`${prefix}LOG_LEVEL`] as LogLevelLabel)
         : undefined
   };
+
+  const themeNames = Object.keys(process.env).filter(
+    envKey =>
+      envKey.startsWith(`${prefix}COLOR_`) &&
+      COLOR_KEYS.every(
+        colorKey =>
+          !envKey.startsWith(`${prefix}COLOR_LIGHT_${colorKey}`) &&
+          !envKey.startsWith(`${prefix}COLOR_DARK_${colorKey}`)
+      )
+  );
+
+  config.colors =
+    themeNames.length > 0
+      ? themeNames.reduce(
+          (ret: Record<string, ColorConfigInput>, themeName: string) => {
+            ret[themeName] = getThemeColorConfigEnv(prefix, themeName);
+
+            return ret;
+          },
+          {}
+        )
+      : getThemeColorConfigEnv(prefix);
 
   const serializedConfig = process.env[`${prefix}CONFIG`];
   if (serializedConfig) {
@@ -138,4 +159,72 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
 
       return ret;
     }, config);*/
+};
+
+const getThemeColorConfigEnv = (
+  prefix: string,
+  theme?: string
+): ColorConfigInput => {
+  const themeName =
+    `COLOR_${theme && theme !== "base" ? `${theme}_` : ""}`.toUpperCase();
+
+  return process.env[`${prefix}${themeName}LIGHT_PRIMARY`] ||
+    process.env[`${prefix}${themeName}DARK_PRIMARY`]
+    ? getMultiThemeColorConfigEnv(prefix + themeName)
+    : getSingleThemeColorConfigEnv(prefix + themeName);
+};
+
+const getSingleThemeColorConfigEnv = (
+  prefix: string
+): SingleThemeColorConfigInput => {
+  return {
+    dark: process.env[`${prefix}DARK`],
+    light: process.env[`${prefix}LIGHT`],
+    primary: process.env[`${prefix}PRIMARY`],
+    secondary: process.env[`${prefix}SECONDARY`],
+    tertiary: process.env[`${prefix}TERTIARY`],
+    accent: process.env[`${prefix}ACCENT`],
+    success: process.env[`${prefix}SUCCESS`],
+    info: process.env[`${prefix}INFO`],
+    warning: process.env[`${prefix}WARNING`],
+    error: process.env[`${prefix}ERROR`],
+    fatal: process.env[`${prefix}FATAL`]
+  };
+};
+
+const getMultiThemeColorConfigEnv = (
+  prefix: string
+): MultiThemeColorConfigInput => {
+  return {
+    light: getBaseThemeColorConfigEnv<"light", typeof prefix>(
+      `${prefix}_LIGHT_`
+    ),
+    dark: getBaseThemeColorConfigEnv<"dark", typeof prefix>(`${prefix}_DARK_`)
+  };
+};
+
+type ColorThemeTypes = "dark" | "light";
+
+const getBaseThemeColorConfigEnv = <
+  TColorThemeType extends ColorThemeTypes = ColorThemeTypes,
+  TExistingPrefix extends string = string,
+  TResult = TColorThemeType extends "dark"
+    ? DarkThemeColorConfigInput
+    : LightThemeColorConfigInput
+>(
+  prefix: `${TExistingPrefix}_${Uppercase<TColorThemeType>}_`
+): TResult => {
+  return {
+    foreground: process.env[`${prefix}FOREGROUND`],
+    background: process.env[`${prefix}BACKGROUND`],
+    primary: process.env[`${prefix}PRIMARY`],
+    secondary: process.env[`${prefix}SECONDARY`],
+    tertiary: process.env[`${prefix}TERTIARY`],
+    accent: process.env[`${prefix}ACCENT`],
+    success: process.env[`${prefix}SUCCESS`],
+    info: process.env[`${prefix}INFO`],
+    warning: process.env[`${prefix}WARNING`],
+    error: process.env[`${prefix}ERROR`],
+    fatal: process.env[`${prefix}FATAL`]
+  } as TResult;
 };

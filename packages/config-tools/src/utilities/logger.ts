@@ -1,7 +1,8 @@
 import { LogLevel, LogLevelLabel } from "../types";
-import type { StormConfig } from "@storm-software/config";
+import type { ColorConfig, StormConfig } from "@storm-software/config";
 import { getLogLevel } from "./get-log-level";
 import { getChalk } from "./chalk";
+import { DEFAULT_COLOR_CONFIG } from "./get-default-config";
 
 /**
  * Get the log function for a log level
@@ -15,6 +16,25 @@ export const getLogFn = (
   config: Partial<StormConfig> = {}
 ): ((message?: string) => void) => {
   let _chalk = getChalk();
+
+  const colors =
+    !(config.colors as ColorConfig)?.dark &&
+    !config.colors?.["base"] &&
+    !config.colors?.["base"]?.dark
+      ? DEFAULT_COLOR_CONFIG
+      : (config.colors as ColorConfig)?.dark &&
+          typeof (config.colors as ColorConfig).dark === "string"
+        ? config.colors
+        : config.colors?.["base"]?.dark &&
+            typeof config.colors["base"].dark === "string"
+          ? config.colors["base"].dark
+          : config.colors?.["base"]
+            ? config.colors?.["base"]
+            : DEFAULT_COLOR_CONFIG;
+
+  // (config.colors?.dark && typeof config.colors.dark === "string"
+  //   ? config.colors
+  //   : typeof config?.colors?.dark === "object" ?) ?? DEFAULT_COLOR_CONFIG;
 
   const configLogLevel = (config.logLevel ??
     process.env?.STORM_LOG_LEVEL ??
@@ -39,11 +59,9 @@ export const getLogFn = (
     return (message?: string) => {
       console.error(
         `
-${_chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")} ${_chalk.bold
-          .bgHex(config?.colors?.fatal ? config.colors.fatal : "#7d1a1a")
-          .whiteBright(" 💀 Fatal ")}  ${_chalk.hex(
-          config?.colors?.error ? config.colors.error : "#1fb2a6"
-        )(message)}
+${_chalk.bold.hex(colors.error)(">")} ${_chalk.bold
+          .bgHex(colors.fatal)
+          .whiteBright(" 💀 Fatal ")}  ${_chalk.hex(colors.error)(message)}
 
 `
       );
@@ -57,11 +75,9 @@ ${_chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")}
     return (message?: string) => {
       console.error(
         `
-${_chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")} ${_chalk.bold
-          .bgHex(config?.colors?.error ? config.colors.error : "#7d1a1a")
-          .whiteBright(" ✘ Error ")}  ${_chalk.hex(
-          config?.colors?.error ? config.colors.error : "#7d1a1a"
-        )(message)}
+${_chalk.bold.hex(colors.error)(">")} ${_chalk.bold
+          .bgHex(colors.error)
+          .whiteBright(" ✘ Error ")}  ${_chalk.hex(colors.error)(message)}
 `
       );
     };
@@ -74,11 +90,9 @@ ${_chalk.bold.hex(config?.colors?.error ? config.colors.error : "#7d1a1a")(">")}
     return (message?: string) => {
       console.warn(
         `
-${_chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")("> ")} ${_chalk.bold
-          .bgHex(config?.colors?.warning ? config.colors.warning : "#fcc419")
-          .whiteBright("  ⚠ Warn  ")}  ${_chalk.hex(
-          config?.colors?.warning ? config.colors.warning : "#fcc419"
-        )(message)}
+${_chalk.bold.hex(colors.warning)("> ")} ${_chalk.bold
+          .bgHex(colors.warning)
+          .whiteBright("  ⚠ Warn  ")}  ${_chalk.hex(colors.warning)(message)}
 `
       );
     };
@@ -91,11 +105,9 @@ ${_chalk.bold.hex(config?.colors?.warning ? config.colors.warning : "#fcc419")("
     return (message?: string) => {
       console.info(
         `
-${_chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")(">")} ${_chalk.bold
-          .bgHex(config?.colors?.success ? config.colors.success : "#087f5b")
-          .whiteBright(" ✓ Success ")}  ${_chalk.hex(
-          config?.colors?.success ? config.colors.success : "#087f5b"
-        )(message)}
+${_chalk.bold.hex(colors.success)(">")} ${_chalk.bold
+          .bgHex(colors.success)
+          .whiteBright(" ✓ Success ")}  ${_chalk.hex(colors.success)(message)}
 `
       );
     };
@@ -108,11 +120,9 @@ ${_chalk.bold.hex(config?.colors?.success ? config.colors.success : "#087f5b")("
     return (message?: string) => {
       console.info(
         `
-${_chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} ${_chalk.bold
-          .bgHex(config?.colors?.info ? config.colors.info : "#0ea5e9")
-          .whiteBright("  ℹ Info  ")}  ${_chalk.hex(
-          config?.colors?.info ? config.colors.info : "#0ea5e9"
-        )(message)}
+${_chalk.bold.hex(colors.info)(">")} ${_chalk.bold
+          .bgHex(colors.info)
+          .whiteBright("  ℹ Info  ")}  ${_chalk.hex(colors.info)(message)}
 `
       );
     };
@@ -125,11 +135,9 @@ ${_chalk.bold.hex(config?.colors?.info ? config.colors.info : "#0ea5e9")(">")} $
     return (message?: string) => {
       console.debug(
         `
-${_chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${_chalk.bold
-          .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-          .whiteBright(" 🛠  Debug ")}  ${_chalk.hex(
-          config?.colors?.primary ? config.colors.primary : "#1fb2a6"
-        )(message)}
+${_chalk.bold.hex(colors.primary)(">")} ${_chalk.bold
+          .bgHex(colors.primary)
+          .whiteBright(" 🛠  Debug ")}  ${_chalk.hex(colors.primary)(message)}
 `
       );
     };
@@ -138,11 +146,9 @@ ${_chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")("
   return (message?: string) => {
     console.log(
       `
-${_chalk.bold.hex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")(">")} ${_chalk.bold
-        .bgHex(config?.colors?.primary ? config.colors.primary : "#1fb2a6")
-        .whiteBright(" ✉ System ")}  ${_chalk.hex(
-        config?.colors?.primary ? config.colors.primary : "#1fb2a6"
-      )(message)}
+${_chalk.bold.hex(colors.primary)(">")} ${_chalk.bold
+        .bgHex(colors.primary)
+        .whiteBright(" ✉ System ")}  ${_chalk.hex(colors.primary)(message)}
 `
     );
   };
