@@ -3,8 +3,11 @@ import { findFolderUp } from "./find-up";
 
 const rootFiles = [
   "storm.json",
-  "storm.config.js",
-  "storm.config.ts",
+  "storm.json",
+  "storm.yaml",
+  "storm.yml",
+  "storm.js",
+  "storm.ts",
   ".storm.json",
   ".storm.yaml",
   ".storm.yml",
@@ -40,12 +43,18 @@ const rootFiles = [
  * @param pathInsideMonorepo - The path inside the monorepo to start searching from
  * @returns The monorepo root directory
  */
-export function findWorkspaceRootSafe(pathInsideMonorepo?: string): string | undefined {
+export function findWorkspaceRootSafe(
+  pathInsideMonorepo?: string
+): string | undefined {
   if (process.env.STORM_WORKSPACE_ROOT || process.env.NX_WORKSPACE_ROOT_PATH) {
-    return correctPaths(process.env.STORM_WORKSPACE_ROOT ?? process.env.NX_WORKSPACE_ROOT_PATH);
+    return correctPaths(
+      process.env.STORM_WORKSPACE_ROOT ?? process.env.NX_WORKSPACE_ROOT_PATH
+    );
   }
 
-  return correctPaths(findFolderUp(pathInsideMonorepo ?? process.cwd(), rootFiles));
+  return correctPaths(
+    findFolderUp(pathInsideMonorepo ?? process.cwd(), rootFiles)
+  );
 }
 
 /**

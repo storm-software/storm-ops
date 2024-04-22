@@ -12,12 +12,15 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/cloudflare-tools",
-        "tsConfig": "packages/cloudflare-tools/tsconfig.lib.json",
+        "tsConfig": "packages/cloudflare-tools/tsconfig.json",
         "project": "packages/cloudflare-tools/package.json",
         "main": "packages/cloudflare-tools/index.ts",
         "additionalEntryPoints": [
           "packages/cloudflare-tools/src/plugin/index.ts",
-          "packages/cloudflare-tools/src/executors/cloudflare-publish/executor.ts"
+          "packages/cloudflare-tools/src/executors/cloudflare-publish/executor.ts",
+          "packages/cloudflare-tools/src/executors/serve/executor.ts",
+          "packages/cloudflare-tools/src/generators/init/generator.ts",
+          "packages/cloudflare-tools/src/generators/worker/generator.ts"
         ],
         "platform": "node",
         "deleteOutputPath": true,
@@ -32,7 +35,12 @@
             ".js": ".js"
           }
         },
-        "external": ["nx", "@nx/devkit", "@storm-software/build-tools"],
+        "external": [
+          "nx",
+          "@nx/devkit",
+          "@storm-software/build-tools",
+          "jest-resolve/build/default_resolver"
+        ],
         "assets": [
           {
             "input": "packages/cloudflare-tools",

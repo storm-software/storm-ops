@@ -35,13 +35,21 @@ export type GetConfigParams = Omit<
   docModel?: boolean;
   tsdocMetadata?: boolean;
   dtsTsConfig: ParsedCommandLine;
-  getTransform?: (program: Program, diagnostics: Diagnostic[]) => TransformerFactory<SourceFile>;
+  getTransform?: (
+    program: Program,
+    diagnostics: Diagnostic[]
+  ) => TransformerFactory<SourceFile>;
 };
 
-declare function outExtension({ format }: { format?: string }): { js: string; dts: string };
+declare function outExtension({ format }: { format?: string }): {
+  js: string;
+  dts: string;
+};
 export { outExtension };
 
-declare function applyDefaultOptions(options: TsupExecutorSchema): TsupExecutorSchema;
+declare function applyDefaultOptions(
+  options: TsupExecutorSchema
+): TsupExecutorSchema;
 export { applyDefaultOptions };
 
 declare function runTsupBuild(
@@ -89,15 +97,25 @@ export interface BaseExecutorResult {
   success?: boolean;
 }
 
-declare function withRunExecutor<TExecutorSchema extends BaseExecutorSchema = BaseExecutorSchema>(
+declare function withRunExecutor<
+  TExecutorSchema extends BaseExecutorSchema = BaseExecutorSchema
+>(
   name: string,
   executorFn: (
     options: TExecutorSchema,
     context: ExecutorContext,
     config?: StormConfig
-  ) => Promise<BaseExecutorResult | null | undefined> | BaseExecutorResult | null | undefined,
+  ) =>
+    | Promise<BaseExecutorResult | null | undefined>
+    | AsyncGenerator<any, BaseExecutorResult | null | undefined>
+    | BaseExecutorResult
+    | null
+    | undefined,
   executorOptions: BaseExecutorOptions<TExecutorSchema>
-): (_options: TExecutorSchema, context: ExecutorContext) => Promise<{ success: boolean }>;
+): (
+  _options: TExecutorSchema,
+  context: ExecutorContext
+) => Promise<{ success: boolean }>;
 export { withRunExecutor };
 
 export interface BaseGeneratorSchema extends Record<string, any> {
@@ -121,7 +139,11 @@ declare function withRunGenerator<TGeneratorSchema = any>(
     tree: Tree,
     options: TGeneratorSchema,
     config?: StormConfig
-  ) => Promise<BaseGeneratorResult | null | undefined> | BaseGeneratorResult | null | undefined,
+  ) =>
+    | Promise<BaseGeneratorResult | null | undefined>
+    | BaseGeneratorResult
+    | null
+    | undefined,
   generatorOptions: BaseGeneratorOptions<TGeneratorSchema> = {
     skipReadingConfig: false
   }

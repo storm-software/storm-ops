@@ -1,0 +1,14 @@
+{
+  "generators": {
+    "init": {
+      "factory": "./src/generators/init/generator",
+      "schema": "./src/generators/init/schema.json",
+      "description": "Init Cloudflare tools Nx Plugin in the Storm Workspace"
+    },
+    "worker": {
+      "factory": "./src/generators/worker/generator",
+      "schema": "./src/generators/worker/schema.json",
+      "description": "Add a worker application project to the current Storm workspace"
+    }
+  }
+}

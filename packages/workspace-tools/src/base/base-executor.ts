@@ -20,6 +20,7 @@ export const withRunExecutor =
       config?: StormConfig
     ) =>
       | Promise<BaseExecutorResult | null | undefined>
+      | AsyncGenerator<any, BaseExecutorResult | null | undefined>
       | BaseExecutorResult
       | null
       | undefined,
@@ -138,8 +139,20 @@ export const withRunExecutor =
         writeDebug("Completed the preProcess hook", config);
       }
 
+      const ret = executorFn(tokenized, context, config);
+      if (_isFunction((ret as AsyncGenerator)?.next)) {
+        const asyncGen = ret as AsyncGenerator;
+        for await (const iter of asyncGen) {
+          void iter;
+        }
+      }
+
       const result = await Promise.resolve(
-        executorFn(tokenized, context, config)
+        ret as
+          | Promise<BaseExecutorResult | null | undefined>
+          | BaseExecutorResult
+          | null
+          | undefined
       );
       if (
         result &&

@@ -13,8 +13,8 @@
 **/.DS_Store/**
 **/Thumbs.db/**
 **/.tamagui*
-**/.next*
-**/CODEOWNERS
-/dist
-/coverage
-/.nx/cache
+.next/**
+CODEOWNERS
+dist/**
+coverage/**
+.nx/cache/**

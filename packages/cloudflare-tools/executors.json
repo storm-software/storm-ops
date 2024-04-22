@@ -4,6 +4,11 @@
       "implementation": "./src/executors/cloudflare-publish/executor",
       "schema": "./src/executors/cloudflare-publish/schema.json",
       "description": "Publish a Cloudflare worker/pages using the Wrangler CLI"
+    },
+    "serve": {
+      "implementation": "./src/executors/serve/executor",
+      "schema": "./src/executors/serve/schema.json",
+      "description": "Serve a worker locally for development using the Wrangler CLI"
     }
   }
 }

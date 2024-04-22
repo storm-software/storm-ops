@@ -25,16 +25,24 @@ export const createNodes = [
       readTargetsFromPackageJson(packageJson);
 
     // Apply nx-release-publish target for non-private projects
-    const isPrivate = packageJson.private ?? false;
-    if (!isPrivate) {
-      targets["nx-release-publish"] = {
-        cache: false,
-        inputs: ["default", "^production"],
-        dependsOn: ["build", "^nx-release-publish"],
-        executor: "@storm-software/cloudflare-tools:cloudflare-publish",
-        options: {}
-      };
-    }
+
+    targets["serve"] = {
+      cache: false,
+      inputs: ["default", "^production"],
+      dependsOn: ["build"],
+      executor: "@storm-software/cloudflare-tools:serve",
+      options: {
+        port: 4500
+      }
+    };
+
+    targets["nx-release-publish"] = {
+      cache: false,
+      inputs: ["default", "^production"],
+      dependsOn: ["build", "^nx-release-publish"],
+      executor: "@storm-software/cloudflare-tools:cloudflare-publish",
+      options: {}
+    };
 
     return project?.name
       ? {
