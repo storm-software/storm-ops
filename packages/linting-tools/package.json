@@ -111,7 +111,7 @@
     "vfile-reporter": "8.1.1"
   },
   "devDependencies": {
-    "@types/eslint": "8.56.9"
+    "@types/eslint": "8.56.10"
   },
   "publishConfig": {
     "access": "public"
