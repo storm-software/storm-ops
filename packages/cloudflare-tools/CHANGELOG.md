@@ -1,3 +1,20 @@
+## 0.2.0 (2024-04-22)
+
+
+### 🚀 Features
+
+- **cloudflare-tools:** Added the `worker`, `init`, and `serve` tools ([b4b92c2c](https://github.com/storm-software/storm-ops/commit/b4b92c2c))
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Update the Nx versions across packages ([29ff17a8](https://github.com/storm-software/storm-ops/commit/29ff17a8))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.1.1 (2024-04-15)
 
 

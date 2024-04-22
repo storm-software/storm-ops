@@ -1,3 +1,15 @@
+## 1.73.0 (2024-04-22)
+
+
+### 🚀 Features
+
+- **cloudflare-tools:** Added the `worker`, `init`, and `serve` tools ([b4b92c2c](https://github.com/storm-software/storm-ops/commit/b4b92c2c))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.72.3 (2024-04-21)
 
 ### 🩹 Fixes
