@@ -5,7 +5,7 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "parserOptions": {
-        "project": ["packages/cloudflare-tools/tsconfig.*?.json"]
+        "project": ["packages/cloudflare-tools/tsconfig.lib.json"]
       },
       "rules": {}
     },

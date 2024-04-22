@@ -12,7 +12,7 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/cloudflare-tools",
-        "tsConfig": "packages/cloudflare-tools/tsconfig.json",
+        "tsConfig": "packages/cloudflare-tools/tsconfig.lib.json",
         "project": "packages/cloudflare-tools/package.json",
         "main": "packages/cloudflare-tools/index.ts",
         "additionalEntryPoints": [
