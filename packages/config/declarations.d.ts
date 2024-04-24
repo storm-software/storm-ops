@@ -1,5 +1,41 @@
 import type * as z from "zod";
-import type { StormConfigSchema } from "./src/schema";
+import {
+  ColorConfigMapSchema,
+  ColorConfigSchema,
+  DarkThemeColorConfigSchema,
+  LightThemeColorConfigSchema,
+  MultiThemeColorConfigSchema,
+  SingleThemeColorConfigSchema,
+  StormConfigSchema
+} from "./src/schema";
+
+export type DarkThemeColorConfig = z.infer<typeof DarkThemeColorConfigSchema>;
+export type DarkThemeColorConfigInput = z.input<
+  typeof DarkThemeColorConfigSchema
+>;
+
+export type LightThemeColorConfig = z.infer<typeof LightThemeColorConfigSchema>;
+export type LightThemeColorConfigInput = z.input<
+  typeof LightThemeColorConfigSchema
+>;
+
+export type MultiThemeColorConfig = z.infer<typeof MultiThemeColorConfigSchema>;
+export type MultiThemeColorConfigInput = z.input<
+  typeof MultiThemeColorConfigSchema
+>;
+
+export type SingleThemeColorConfig = z.infer<
+  typeof SingleThemeColorConfigSchema
+>;
+export type SingleThemeColorConfigInput = z.input<
+  typeof SingleThemeColorConfigSchema
+>;
+
+export type ColorConfig = z.infer<typeof ColorConfigSchema>;
+export type ColorConfigInput = z.input<typeof ColorConfigSchema>;
+
+export type ColorConfigMap = z.infer<typeof ColorConfigMapSchema>;
+export type ColorConfigMapInput = z.input<typeof ColorConfigMapSchema>;
 
 type TStormConfig = z.infer<typeof StormConfigSchema>;
 
