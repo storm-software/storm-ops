@@ -1,3 +1,15 @@
+## 1.41.0 (2024-04-24)
+
+
+### 🚀 Features
+
+- **config-tools:** Enhanced the config loading and logging processes ([0e3b7cef](https://github.com/storm-software/storm-ops/commit/0e3b7cef))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.40.1 (2024-04-22)
 
 
