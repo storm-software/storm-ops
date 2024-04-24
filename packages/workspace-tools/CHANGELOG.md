@@ -1,3 +1,15 @@
+## 1.73.1 (2024-04-24)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Resolved issue with reusable workflow name ([e23ab12a](https://github.com/storm-software/storm-ops/commit/e23ab12a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.73.0 (2024-04-22)
 
 
