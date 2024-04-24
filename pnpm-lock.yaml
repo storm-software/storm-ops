@@ -134,9 +134,6 @@ importers:
       lefthook:
         specifier: 1.6.10
         version: 1.6.10
-      mimic-fn:
-        specifier: ^5.0.0
-        version: 5.0.0
       nx:
         specifier: 18.3.3
         version: 18.3.3(@swc-node/register@1.9.0)(@swc/core@1.4.13)
@@ -12235,6 +12232,8 @@ packages:
     peerDependenciesMeta:
       webpack:
         optional: true
+      webpack-sources:
+        optional: true
     dependencies:
       webpack: 5.91.0(@swc/core@1.4.13)(esbuild@0.17.19)
       webpack-sources: 3.2.3
@@ -13879,12 +13878,6 @@ packages:
   /mimic-fn@4.0.0:
     resolution: {integrity: sha512-vqiC06CuhBTUdZH+RYl8sFrL096vA45Ok5ISO6sE/Mr1jRbGH4Csnhi8f3wKVl7x8mO4Au7Ir9D3Oyv1VYMFJw==}
     engines: {node: '>=12'}
-    dev: false
-
-  /mimic-fn@5.0.0:
-    resolution: {integrity: sha512-VqpBkpWXT3jLrdlFSgrx0z9r1kuIqEudeXDGWTTaOhIKEny5XYqLesgGQSa7Nlsde1jrMqGM/zF3w0zhQUc6Ag==}
-    engines: {node: '>=12'}
-    deprecated: Renamed to mimic-function
     dev: false
 
   /mimic-response@3.1.0:
