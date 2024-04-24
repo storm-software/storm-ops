@@ -1,3 +1,15 @@
+## 1.12.0 (2024-04-24)
+
+
+### 🚀 Features
+
+- **config:** Add type exports for theme color typings ([61fe73f9](https://github.com/storm-software/storm-ops/commit/61fe73f9))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.11.3 (2024-04-22)
 
 
