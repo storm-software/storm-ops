@@ -106,6 +106,9 @@ export { exitWithSuccess };
 declare function handleProcess(config?: StormConfig): void;
 export { handleProcess };
 
+declare function formatLogMessage(message?: any, prefix?: string): string;
+export { formatLogMessage };
+
 /**
  * Write a message to the console at the `fatal` log level
  *

@@ -6,6 +6,7 @@ import type { StormConfig } from "@storm-software/config";
 import { StormConfigSchema } from "@storm-software/config/schema";
 import { findWorkspaceRoot, writeWarning } from "./utilities";
 import { getDefaultConfig } from "./utilities/get-default-config";
+import merge from "deepmerge";
 
 const _extension_cache = new WeakMap<{ extensionName: string }, any>();
 let _static_cache: StormConfig | undefined = undefined;
@@ -111,7 +112,9 @@ export const loadStormConfig = async (
     _workspaceRoot = findWorkspaceRoot();
   }
 
-  const configFile = await getConfigFile(_workspaceRoot);
+  let configFile = (await getConfigFile(
+    _workspaceRoot
+  )) as Partial<StormConfig>;
   if (!configFile) {
     writeWarning(
       "No Storm config file found in the current workspace. Please ensure this is the expected behavior - you can add a `storm.json` file to the root of your workspace if it is not.\n",
@@ -121,10 +124,7 @@ export const loadStormConfig = async (
 
   config = StormConfigSchema.parse(
     await getDefaultConfig(
-      {
-        ...getConfigEnv(),
-        ...configFile
-      } as Partial<StormConfig>,
+      merge(getConfigEnv() as Partial<StormConfig>, configFile, {}),
       _workspaceRoot
     )
   );

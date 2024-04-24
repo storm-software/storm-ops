@@ -1,7 +1,8 @@
 import type { StormConfigInput } from "@storm-software/config";
 import { findWorkspaceRoot } from "../utilities/find-workspace-root";
-import { loadConfig } from "c12";
+import { type LoadConfigOptions, loadConfig, ResolvedConfig } from "c12";
 import merge from "deepmerge";
+import { writeTrace } from "../utilities";
 
 // let _cosmiconfig: any = undefined;
 // let defaultExplorer: PublicExplorer | undefined;
@@ -15,11 +16,12 @@ import merge from "deepmerge";
  */
 export const getConfigFileByName = async (
   fileName: string,
-  filePath?: string
-): Promise<Partial<StormConfigInput> | undefined> => {
+  filePath?: string,
+  options: LoadConfigOptions<Partial<StormConfigInput>> = {}
+): Promise<ResolvedConfig<Partial<StormConfigInput>>> => {
   const workspacePath = filePath ? filePath : findWorkspaceRoot(filePath);
 
-  return loadConfig<Partial<StormConfigInput>>({
+  let config = loadConfig<Partial<StormConfigInput>>({
     cwd: workspacePath,
     packageJson: true,
     name: fileName,
@@ -27,8 +29,27 @@ export const getConfigFileByName = async (
     jitiOptions: {
       debug: true,
       cache: process.env.STORM_CACHE ? process.env.STORM_CACHE_DIRECTORY : false
-    }
+    },
+    ...options
   });
+  if (!config || Object.keys(config).length === 0) {
+    config = loadConfig<Partial<StormConfigInput>>({
+      cwd: workspacePath,
+      packageJson: true,
+      name: fileName,
+      envName: fileName?.toUpperCase(),
+      jitiOptions: {
+        debug: true,
+        cache: process.env.STORM_CACHE
+          ? process.env.STORM_CACHE_DIRECTORY
+          : false
+      },
+      configFile: fileName,
+      ...options
+    });
+  }
+
+  return config;
 };
 
 /**
@@ -42,23 +63,36 @@ export const getConfigFile = async (
 ): Promise<Partial<StormConfigInput> | undefined> => {
   const workspacePath = filePath ? filePath : findWorkspaceRoot(filePath);
 
-  let { config, configFile } = await loadConfig<Partial<StormConfigInput>>({
-    cwd: workspacePath,
-    name: "storm"
-  });
+  let { config, configFile } = await getConfigFileByName(
+    "storm",
+    workspacePath
+  );
+  if (config && Object.keys(config).length > 0) {
+    writeTrace(
+      `Found Storm configuration file "${configFile}" at "${workspacePath}"`,
+      {
+        logLevel: "all"
+      }
+    );
+    writeTrace(config, { logLevel: "all" });
+  }
 
   if (additionalFileNames && additionalFileNames.length > 0) {
     const results = await Promise.all(
       additionalFileNames.map(fileName =>
-        loadConfig({
-          cwd: workspacePath,
-          name: fileName
-        })
+        getConfigFileByName(fileName, workspacePath)
       )
     );
-
     for (const result of results) {
-      if (result) {
+      if (result?.config && Object.keys(result.config).length > 0) {
+        writeTrace(
+          `Found additional configuration file "${result.configFile}" at "${workspacePath}"`,
+          {
+            logLevel: "all"
+          }
+        );
+        writeTrace(result.config, { logLevel: "all" });
+
         config = merge(config ?? {}, result.config ?? {});
       }
     }
