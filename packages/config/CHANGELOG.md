@@ -1,3 +1,15 @@
+## 1.12.1 (2024-04-24)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Updates to the default values applied to the Storm config ([4cc78a98](https://github.com/storm-software/storm-ops/commit/4cc78a98))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.12.0 (2024-04-24)
 
 
