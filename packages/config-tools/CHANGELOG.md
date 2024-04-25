@@ -1,3 +1,15 @@
+## 1.41.1 (2024-04-25)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Resovled issue with parsing env values ([bb0e395a](https://github.com/storm-software/storm-ops/commit/bb0e395a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.41.0 (2024-04-24)
 
 
