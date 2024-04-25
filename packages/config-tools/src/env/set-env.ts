@@ -262,8 +262,8 @@ const setMultiThemeColorConfigEnv = (
   config: MultiThemeColorConfig
 ) => {
   return {
-    light: setBaseThemeColorConfigEnv(`${prefix}_LIGHT_`, config.light),
-    dark: setBaseThemeColorConfigEnv(`${prefix}_DARK_`, config.dark)
+    light: setBaseThemeColorConfigEnv(`${prefix}LIGHT_`, config.light),
+    dark: setBaseThemeColorConfigEnv(`${prefix}DARK_`, config.dark)
   };
 };
 
