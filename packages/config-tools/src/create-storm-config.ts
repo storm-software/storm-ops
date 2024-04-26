@@ -4,7 +4,12 @@ import { getConfigEnv, getExtensionEnv } from "./env/get-env";
 import { setConfigEnv } from "./env/set-env";
 import type { StormConfig } from "@storm-software/config";
 import { StormConfigSchema } from "@storm-software/config/schema";
-import { findWorkspaceRoot, writeWarning } from "./utilities";
+import {
+  findWorkspaceRoot,
+  formatLogMessage,
+  writeInfo,
+  writeWarning
+} from "./utilities";
 import { getDefaultConfig } from "./utilities/get-default-config";
 import merge from "deepmerge";
 
@@ -122,13 +127,15 @@ export const loadStormConfig = async (
     );
   }
 
-  config = StormConfigSchema.parse(
-    await getDefaultConfig(
-      merge(configFile, getConfigEnv() as Partial<StormConfig>, {}),
-      _workspaceRoot
-    )
+  config = getDefaultConfig(
+    merge(getConfigEnv() as Partial<StormConfig>, configFile, {}),
+    _workspaceRoot
   );
   setConfigEnv(config);
+
+  writeInfo(`Using Storm configuration: \n${formatLogMessage(config)}`, {
+    logLevel: "all"
+  });
 
   return config;
 };

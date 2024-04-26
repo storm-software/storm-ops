@@ -94,7 +94,15 @@ export const getDefaultConfig = (
 
   return StormConfigSchema.parse({
     ...(DEFAULT_STORM_CONFIG as Required<StormConfig>),
-    ...config,
+    ...Object.keys(config).reduce((ret, key) => {
+      if (typeof config[key] === "string" && !config[key]) {
+        ret[key] = undefined;
+      } else {
+        ret[key] = config[key];
+      }
+
+      return ret;
+    }, {}),
     colors: { ...DEFAULT_COLOR_CONFIG, ...config.colors },
     workspaceRoot,
     name,
