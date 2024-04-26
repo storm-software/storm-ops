@@ -124,7 +124,7 @@ export const loadStormConfig = async (
 
   config = StormConfigSchema.parse(
     await getDefaultConfig(
-      merge(getConfigEnv() as Partial<StormConfig>, configFile, {}),
+      merge(configFile, getConfigEnv() as Partial<StormConfig>, {}),
       _workspaceRoot
     )
   );
