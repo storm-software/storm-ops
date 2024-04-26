@@ -1,3 +1,15 @@
+## 1.41.2 (2024-04-26)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Ensure defaulting doesn't overwrite file ([d14794e5](https://github.com/storm-software/storm-ops/commit/d14794e5))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.41.1 (2024-04-25)
 
 
