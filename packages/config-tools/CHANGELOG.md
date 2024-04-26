@@ -1,3 +1,15 @@
+## 1.41.3 (2024-04-26)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Resolved issue applying default config ([8e1403b3](https://github.com/storm-software/storm-ops/commit/8e1403b3))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.41.2 (2024-04-26)
 
 
