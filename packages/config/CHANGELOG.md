@@ -1,3 +1,15 @@
+## 1.12.2 (2024-04-26)
+
+
+### 🩹 Fixes
+
+- **config-tools:** Improved logging and enhanced config json preset ([5dabb1ae](https://github.com/storm-software/storm-ops/commit/5dabb1ae))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.12.1 (2024-04-24)
 
 
