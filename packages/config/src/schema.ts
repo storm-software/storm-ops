@@ -186,7 +186,7 @@ export const StormConfigSchema = z
     license: z
       .string()
       .trim()
-      .default("Apache License 2.0")
+      .default("Apache 2.0")
       .describe("The root directory of the package"),
     homepage: z
       .string()

@@ -5,6 +5,11 @@
   "timezone": "America/New_York",
   "locale": "en-US",
   "logLevel": "all",
+  "skipCache": false,
+  "cacheDirectory": "node_modules/.cache/storm",
+  "buildDirectory": "dist",
+  "outputDirectory": "node_modules/.storm",
+  "packageManager": "npm",
   "externalPackagePatterns": ["@storm-software/"],
   "colors": {
     "light": {

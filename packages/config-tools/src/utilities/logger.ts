@@ -262,22 +262,24 @@ export const formatLogMessage = (
   message?: any,
   prefix: string = "-"
 ): string => {
-  return typeof message === "string"
-    ? message
-    : typeof message === "object"
-      ? Object.keys(message)
-          .map(
-            key =>
-              ` ${prefix} ${key} = ${
-                _isFunction(message[key])
-                  ? "<function>"
-                  : typeof message[key] === "object"
-                    ? `\n${formatLogMessage(message[key], `${prefix}-`)}`
-                    : message[key]
-              }`
-          )
-          .join("\n")
-      : message;
+  return `\n${
+    typeof message === "string"
+      ? message
+      : typeof message === "object"
+        ? Object.keys(message)
+            .map(
+              key =>
+                ` ${prefix}> ${key} = ${
+                  _isFunction(message[key])
+                    ? "<function>"
+                    : typeof message[key] === "object"
+                      ? formatLogMessage(message[key], `${prefix}-`)
+                      : message[key]
+                }`
+            )
+            .join("\n")
+        : message
+  }`;
 };
 
 const _isFunction = (

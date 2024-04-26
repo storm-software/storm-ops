@@ -30,7 +30,7 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
 export const DEFAULT_STORM_CONFIG: any = {
   name: "storm",
   namespace: "storm-software",
-  license: "Apache License 2.0",
+  license: "Apache 2.0",
   homepage: "https://stormsoftware.com",
   owner: "@storm-software/development",
   worker: "stormie-bot",
