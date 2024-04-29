@@ -1,3 +1,15 @@
+## 2.9.4 (2024-04-29)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Update scripts to use deamon to generate Nx Project Graphs ([6b6ad2b6](https://github.com/storm-software/storm-ops/commit/6b6ad2b6))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.9.3 (2024-04-29)
 
 
