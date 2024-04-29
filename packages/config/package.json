@@ -12,7 +12,7 @@
   "module": "./index.js",
   "types": "declarations.d.ts",
   "dependencies": {
-    "zod": "3.22.5"
+    "zod": "3.23.4"
   },
   "publishConfig": {
     "access": "public"
