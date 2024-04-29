@@ -35,7 +35,7 @@
         "skipTypeCheck": false,
         "thirdParty": true,
         "platform": "node",
-        "external": ["nx", "@swc/core", "esbuild"],
+        "external": ["nx", "@swc/core", "esbuild", "vue-tsc"],
         "format": ["cjs"],
         "esbuildOptions": {
           "outExtension": {
@@ -86,7 +86,7 @@
         "skipTypeCheck": false,
         "thirdParty": true,
         "platform": "node",
-        "external": ["nx", "@swc/core", "esbuild"],
+        "external": ["nx", "@swc/core", "esbuild", "vue-tsc"],
         "format": ["esm"],
         "esbuildOptions": {
           "outExtension": {
