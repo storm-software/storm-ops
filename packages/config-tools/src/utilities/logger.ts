@@ -58,14 +58,11 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.error(
-        `
-${_chalk.bold.hex(colors.error ?? "#f85149")(">")} ${_chalk.bold
+        `\n${_chalk.bold.hex(colors.error ?? "#f85149")(">")} ${_chalk.bold
           .bgHex(colors.fatal ?? "#b62324")
           .whiteBright(
             " 💀 Fatal "
-          )}  ${_chalk.hex(colors.error ?? "#f85149")(formatLogMessage(message))}
-
-`
+          )}  ${_chalk.hex(colors.error ?? "#f85149")(formatLogMessage(message))}\n`
       );
     };
   }
@@ -76,13 +73,11 @@ ${_chalk.bold.hex(colors.error ?? "#f85149")(">")} ${_chalk.bold
   ) {
     return (message?: any) => {
       console.error(
-        `
-${_chalk.bold.hex(colors.error ?? "#f85149")(">")} ${_chalk.bold
+        `\n${_chalk.bold.hex(colors.error ?? "#f85149")(">")} ${_chalk.bold
           .bgHex(colors.error ?? "#f85149")
           .whiteBright(
             " ✘ Error "
-          )}  ${_chalk.hex(colors.error ?? "#f85149")(formatLogMessage(message))}
-`
+          )}  ${_chalk.hex(colors.error ?? "#f85149")(formatLogMessage(message))}\n`
       );
     };
   }
@@ -93,13 +88,11 @@ ${_chalk.bold.hex(colors.error ?? "#f85149")(">")} ${_chalk.bold
   ) {
     return (message?: any) => {
       console.warn(
-        `
-${_chalk.bold.hex(colors.warning ?? "#e3b341")("> ")} ${_chalk.bold
+        `\n${_chalk.bold.hex(colors.warning ?? "#e3b341")("> ")} ${_chalk.bold
           .bgHex(colors.warning ?? "#e3b341")
           .whiteBright(
             "  ⚠ Warn  "
-          )}  ${_chalk.hex(colors.warning ?? "#e3b341")(formatLogMessage(message))}
-`
+          )}  ${_chalk.hex(colors.warning ?? "#e3b341")(formatLogMessage(message))}\n`
       );
     };
   }
@@ -110,13 +103,11 @@ ${_chalk.bold.hex(colors.warning ?? "#e3b341")("> ")} ${_chalk.bold
   ) {
     return (message?: any) => {
       console.info(
-        `
-${_chalk.bold.hex(colors.success ?? "#56d364")(">")} ${_chalk.bold
+        `\n${_chalk.bold.hex(colors.success ?? "#56d364")(">")} ${_chalk.bold
           .bgHex(colors.success ?? "#56d364")
           .whiteBright(
             " ✓ Success "
-          )}  ${_chalk.hex(colors.success ?? "#56d364")(formatLogMessage(message))}
-`
+          )}  ${_chalk.hex(colors.success ?? "#56d364")(formatLogMessage(message))}\n`
       );
     };
   }
@@ -127,13 +118,11 @@ ${_chalk.bold.hex(colors.success ?? "#56d364")(">")} ${_chalk.bold
   ) {
     return (message?: any) => {
       console.info(
-        `
-${_chalk.bold.hex(colors.info ?? "#58a6ff")(">")} ${_chalk.bold
+        `\n${_chalk.bold.hex(colors.info ?? "#58a6ff")(">")} ${_chalk.bold
           .bgHex(colors.info ?? "#58a6ff")
           .whiteBright(
             "  ℹ Info  "
-          )}  ${_chalk.hex(colors.info ?? "#58a6ff")(formatLogMessage(message))}
-`
+          )}  ${_chalk.hex(colors.info ?? "#58a6ff")(formatLogMessage(message))}\n`
       );
     };
   }
@@ -144,26 +133,22 @@ ${_chalk.bold.hex(colors.info ?? "#58a6ff")(">")} ${_chalk.bold
   ) {
     return (message?: any) => {
       console.debug(
-        `
-${_chalk.bold.hex(colors.primary ?? "#1fb2a6")(">")} ${_chalk.bold
+        `\n${_chalk.bold.hex(colors.primary ?? "#1fb2a6")(">")} ${_chalk.bold
           .bgHex(colors.primary ?? "#1fb2a6")
           .whiteBright(
             " 🛠  Debug "
-          )}  ${_chalk.hex(colors.primary ?? "#1fb2a6")(formatLogMessage(message))}
-`
+          )}  ${_chalk.hex(colors.primary ?? "#1fb2a6")(formatLogMessage(message))}\n`
       );
     };
   }
 
   return (message?: any) => {
     console.log(
-      `
-${_chalk.bold.hex(colors.primary ?? "#1fb2a6")(">")} ${_chalk.bold
+      `\n${_chalk.bold.hex(colors.primary ?? "#1fb2a6")(">")} ${_chalk.bold
         .bgHex(colors.primary ?? "#1fb2a6")
         .whiteBright(
           " ✉ System "
-        )}  ${_chalk.hex(colors.primary ?? "#1fb2a6")(formatLogMessage(message))}
-`
+        )}  ${_chalk.hex(colors.primary ?? "#1fb2a6")(formatLogMessage(message))}\n`
     );
   };
 };
@@ -262,24 +247,22 @@ export const formatLogMessage = (
   message?: any,
   prefix: string = "-"
 ): string => {
-  return `\n${
-    typeof message === "string"
-      ? message
-      : typeof message === "object"
-        ? Object.keys(message)
-            .map(
-              key =>
-                ` ${prefix}> ${key} = ${
-                  _isFunction(message[key])
-                    ? "<function>"
-                    : typeof message[key] === "object"
-                      ? formatLogMessage(message[key], `${prefix}-`)
-                      : message[key]
-                }`
-            )
-            .join("\n")
-        : message
-  }`;
+  return typeof message === "string"
+    ? message
+    : typeof message === "object"
+      ? `\n${Object.keys(message)
+          .map(
+            key =>
+              ` ${prefix}> ${key} = ${
+                _isFunction(message[key])
+                  ? "<function>"
+                  : typeof message[key] === "object"
+                    ? formatLogMessage(message[key], `${prefix}-`)
+                    : message[key]
+              }`
+          )
+          .join("\n")}`
+      : message;
 };
 
 const _isFunction = (
