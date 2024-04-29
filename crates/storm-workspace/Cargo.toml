@@ -15,4 +15,4 @@ documentation = 'https://docs.rs/storm-workspace'
 readme = './README.md'
 
 [dependencies]
-thiserror = '=1.0.58'
+thiserror = '=1.0.59'
