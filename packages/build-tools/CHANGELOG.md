@@ -1,3 +1,19 @@
+## 0.7.4 (2024-04-29)
+
+
+### 🩹 Fixes
+
+- **deps:** update patch prod dependencies ([c427e132](https://github.com/storm-software/storm-ops/commit/c427e132))
+
+- **deps:** update dependencies-non-major ([#130](https://github.com/storm-software/storm-ops/pull/130))
+
+- **build-tools:** Resolved issue with missing external dependency ([ea89d348](https://github.com/storm-software/storm-ops/commit/ea89d348))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.7.3 (2024-04-21)
 
 ### 🩹 Fixes

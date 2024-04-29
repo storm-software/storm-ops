@@ -1,3 +1,15 @@
+## 2.9.3 (2024-04-29)
+
+
+### 🩹 Fixes
+
+- **deps:** update patch prod dependencies ([c427e132](https://github.com/storm-software/storm-ops/commit/c427e132))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 2.9.2 (2024-04-15)
 
 

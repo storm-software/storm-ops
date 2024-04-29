@@ -1,3 +1,21 @@
+## 1.47.2 (2024-04-29)
+
+
+### 🩹 Fixes
+
+- **deps:** update patch prod dependencies ([c427e132](https://github.com/storm-software/storm-ops/commit/c427e132))
+
+- **deps:** update dependency @cspell/dict-git to v3 ([#52](https://github.com/storm-software/storm-ops/pull/52))
+
+- **deps:** update dependencies-non-major ([#130](https://github.com/storm-software/storm-ops/pull/130))
+
+- **deps:** update dependency @cspell/dict-node to v5 ([#133](https://github.com/storm-software/storm-ops/pull/133))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.47.1 (2024-04-15)
 
 

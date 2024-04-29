@@ -1,3 +1,17 @@
+## 1.73.2 (2024-04-29)
+
+
+### 🩹 Fixes
+
+- **deps:** update patch prod dependencies ([c427e132](https://github.com/storm-software/storm-ops/commit/c427e132))
+
+- **deps:** update dependencies-non-major ([#130](https://github.com/storm-software/storm-ops/pull/130))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.73.1 (2024-04-24)
 
 

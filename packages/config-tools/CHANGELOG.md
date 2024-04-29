@@ -1,3 +1,19 @@
+## 1.41.5 (2024-04-29)
+
+
+### 🩹 Fixes
+
+- **deps:** update patch prod dependencies ([c427e132](https://github.com/storm-software/storm-ops/commit/c427e132))
+
+- **deps:** update dependencies-non-major ([#130](https://github.com/storm-software/storm-ops/pull/130))
+
+- **config-tools:** Resolved issue with newlines in console logger ([f69501b7](https://github.com/storm-software/storm-ops/commit/f69501b7))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.41.4 (2024-04-26)
 
 
