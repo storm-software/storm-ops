@@ -131,7 +131,7 @@
       "chalk": "4.1.2",
       "create-storm-workspace": "workspace:*",
       "got": ">=12.1.0",
-      "load-plugin": "3.0.0",
+      "load-plugin": "6.0.3",
       "request": ">=2.88.2",
       "tough-cookie": ">=4.1.3"
     },
