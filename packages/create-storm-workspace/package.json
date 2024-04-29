@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@nx/workspace": "18.3.3",
-    "create-nx-workspace": "18.2.3",
+    "create-nx-workspace": "18.3.4",
     "enquirer": "2.4.1"
   },
   "publishConfig": {
