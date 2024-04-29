@@ -430,8 +430,8 @@ importers:
         specifier: 1.0.5
         version: 1.0.5
       '@cspell/dict-git':
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 3.0.0
+        version: 3.0.0
       '@cspell/dict-golang':
         specifier: 6.0.5
         version: 6.0.5
@@ -2381,10 +2381,6 @@ packages:
 
   /@cspell/dict-gaming-terms@1.0.5:
     resolution: {integrity: sha512-C3riccZDD3d9caJQQs1+MPfrUrQ+0KHdlj9iUR1QD92FgTOF6UxoBpvHUUZ9YSezslcmpFQK4xQQ5FUGS7uWfw==}
-    dev: false
-
-  /@cspell/dict-git@2.0.0:
-    resolution: {integrity: sha512-n1AxyX5Kgxij/sZFkxFJlzn3K9y/sCcgVPg/vz4WNJ4K9YeTsUmyGLA2OQI7d10GJeiuAo2AP1iZf2A8j9aj2w==}
     dev: false
 
   /@cspell/dict-git@3.0.0:
@@ -12231,8 +12227,6 @@ packages:
       webpack: '*'
     peerDependenciesMeta:
       webpack:
-        optional: true
-      webpack-sources:
         optional: true
     dependencies:
       webpack: 5.91.0(@swc/core@1.4.13)(esbuild@0.17.19)
