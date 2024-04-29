@@ -1,7 +1,13 @@
-import { existsSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  writeFileSync
+} from "node:fs";
 import { join } from "node:path";
 import {
-  buildProjectGraphAndSourceMapsWithoutDaemon,
+  createProjectGraphAsync,
   readProjectsConfigurationFromProjectGraph
 } from "nx/src/project-graph/project-graph.js";
 import type { ReadMeOptions } from "../types";
@@ -17,8 +23,11 @@ export const runReadme = async ({
   clean = true,
   prettier = true
 }: ReadMeOptions) => {
-  const { projectGraph } = await buildProjectGraphAndSourceMapsWithoutDaemon();
-  const projectConfigs = readProjectsConfigurationFromProjectGraph(projectGraph);
+  const projectGraph = await createProjectGraphAsync({
+    exitOnError: true
+  });
+  const projectConfigs =
+    readProjectsConfigurationFromProjectGraph(projectGraph);
 
   if (project) {
     await runProjectReadme(project, {
@@ -43,8 +52,11 @@ export const runProjectReadme = async (
   projectName: string,
   { templates, output, clean = true, prettier = true }: ReadMeOptions
 ) => {
-  const { projectGraph } = await buildProjectGraphAndSourceMapsWithoutDaemon();
-  const projectConfigs = readProjectsConfigurationFromProjectGraph(projectGraph);
+  const projectGraph = await createProjectGraphAsync({
+    exitOnError: true
+  });
+  const projectConfigs =
+    readProjectsConfigurationFromProjectGraph(projectGraph);
 
   const project = projectConfigs.projects[projectName];
 
@@ -64,7 +76,9 @@ export const runProjectReadme = async (
           "Skipping cleaning since output directory + file name is the same as input directory + file name."
         );
       } else {
-        console.info("Cleaning output directory (set `clean` parameter to false to skip)...");
+        console.info(
+          "Cleaning output directory (set `clean` parameter to false to skip)..."
+        );
         rmSync(outputFilePath);
       }
     }
@@ -89,10 +103,15 @@ export const runProjectReadme = async (
     let packageName = projectName;
     const packageJsonPath = join(findFilePath(inputFile), "package.json");
     if (existsSync(packageJsonPath)) {
-      const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf8") ?? "{}");
+      const packageJson = JSON.parse(
+        readFileSync(packageJsonPath, "utf8") ?? "{}"
+      );
       if (packageJson?.version) {
         console.info("Adding version...");
-        newContent = newContent.replace("<!-- VERSION -->", packageJson.version);
+        newContent = newContent.replace(
+          "<!-- VERSION -->",
+          packageJson.version
+        );
       }
       if (packageJson?.name) {
         packageName = packageJson.name;
@@ -102,7 +121,9 @@ export const runProjectReadme = async (
     if (newContent.includes("<!-- START executors -->")) {
       const executorsJsonPath = join(findFilePath(inputFile), "executors.json");
       if (existsSync(executorsJsonPath)) {
-        const executorsJson = JSON.parse(readFileSync(executorsJsonPath, "utf8") ?? "{}");
+        const executorsJson = JSON.parse(
+          readFileSync(executorsJsonPath, "utf8") ?? "{}"
+        );
         if (executorsJson?.executors) {
           console.info("Adding executors...");
 
@@ -116,15 +137,24 @@ export const runProjectReadme = async (
     }
 
     if (newContent.includes("<!-- START generators -->")) {
-      const generatorsJsonPath = join(findFilePath(inputFile), "generators.json");
+      const generatorsJsonPath = join(
+        findFilePath(inputFile),
+        "generators.json"
+      );
       if (existsSync(generatorsJsonPath)) {
-        const generatorsJson = JSON.parse(readFileSync(generatorsJsonPath, "utf8") ?? "{}");
+        const generatorsJson = JSON.parse(
+          readFileSync(generatorsJsonPath, "utf8") ?? "{}"
+        );
         if (generatorsJson?.generators) {
           console.info("Adding generators...");
 
           newContent = formatReadMeFromSectionName(
             "generators",
-            getGeneratorMarkdown(packageName, generatorsJsonPath, generatorsJson),
+            getGeneratorMarkdown(
+              packageName,
+              generatorsJsonPath,
+              generatorsJson
+            ),
             newContent
           );
         }
