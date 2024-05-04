@@ -6,7 +6,7 @@ const DarkColorSchema = z
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
-  .default("#1d232a")
+  .default("#22272E")
   .describe("The dark background color of the workspace");
 const LightColorSchema = z
   .string()
@@ -30,7 +30,7 @@ const Brand2ColorSchema = z
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
-  .default("#6366f1")
+  .default("#8256D0")
   .describe("The second brand specific color of the workspace");
 const Brand3ColorSchema = z
   .string()
@@ -38,7 +38,7 @@ const Brand3ColorSchema = z
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
-  .default("#ec5990")
+  .optional()
   .describe("The third brand specific color of the workspace");
 const SuccessColorSchema = z
   .string()
@@ -54,7 +54,7 @@ const InfoColorSchema = z
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
-  .default("#0ea5e9")
+  .default("#316DCA")
   .describe("The informational color of the workspace");
 const WarningColorSchema = z
   .string()
@@ -70,7 +70,7 @@ const ErrorColorSchema = z
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
-  .default("#990000")
+  .default("#a40e26")
   .describe("The error color of the workspace");
 const FatalColorSchema = z
   .string()
@@ -78,7 +78,7 @@ const FatalColorSchema = z
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
-  .default("#7d1a1a")
+  .optional()
   .describe("The fatal color of the workspace");
 
 export const DarkThemeColorConfigSchema = z.object({
