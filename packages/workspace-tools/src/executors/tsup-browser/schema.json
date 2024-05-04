@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
   "$id": "tsup-browser",
-  "extends": "../tsup-browser/schema.json",
+  "extends": "../tsup/schema.json",
   "version": 2,
   "title": "Browser TypeScript Builder",
   "description": "Runs a browser platform TypeScript build",

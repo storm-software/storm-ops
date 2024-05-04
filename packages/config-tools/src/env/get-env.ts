@@ -168,8 +168,8 @@ const getThemeColorConfigEnv = (
   const themeName =
     `COLOR_${theme && theme !== "base" ? `${theme}_` : ""}`.toUpperCase();
 
-  return process.env[`${prefix}${themeName}LIGHT_PRIMARY`] ||
-    process.env[`${prefix}${themeName}DARK_PRIMARY`]
+  return process.env[`${prefix}${themeName}LIGHT_BRAND1`] ||
+    process.env[`${prefix}${themeName}DARK_BRAND1`]
     ? getMultiThemeColorConfigEnv(prefix + themeName)
     : getSingleThemeColorConfigEnv(prefix + themeName);
 };
@@ -180,10 +180,9 @@ const getSingleThemeColorConfigEnv = (
   return {
     dark: process.env[`${prefix}DARK`],
     light: process.env[`${prefix}LIGHT`],
-    primary: process.env[`${prefix}PRIMARY`],
-    secondary: process.env[`${prefix}SECONDARY`],
-    tertiary: process.env[`${prefix}TERTIARY`],
-    accent: process.env[`${prefix}ACCENT`],
+    brand1: process.env[`${prefix}BRAND1`],
+    brand2: process.env[`${prefix}BRAND2`],
+    brand3: process.env[`${prefix}BRAND3`],
     success: process.env[`${prefix}SUCCESS`],
     info: process.env[`${prefix}INFO`],
     warning: process.env[`${prefix}WARNING`],
@@ -217,10 +216,9 @@ const getBaseThemeColorConfigEnv = <
   return {
     foreground: process.env[`${prefix}FOREGROUND`],
     background: process.env[`${prefix}BACKGROUND`],
-    primary: process.env[`${prefix}PRIMARY`],
-    secondary: process.env[`${prefix}SECONDARY`],
-    tertiary: process.env[`${prefix}TERTIARY`],
-    accent: process.env[`${prefix}ACCENT`],
+    brand1: process.env[`${prefix}BRAND1`],
+    brand2: process.env[`${prefix}BRAND2`],
+    brand3: process.env[`${prefix}BRAND3`],
     success: process.env[`${prefix}SUCCESS`],
     info: process.env[`${prefix}INFO`],
     warning: process.env[`${prefix}WARNING`],

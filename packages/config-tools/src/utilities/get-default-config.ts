@@ -13,10 +13,9 @@ import { findWorkspaceRoot } from "./find-workspace-root";
 export const DEFAULT_COLOR_CONFIG: ColorConfig = {
   dark: "#1d232a",
   light: "#f4f4f5",
-  primary: "#1fb2a6",
-  secondary: "#0ea5e9",
-  tertiary: "#ec5990",
-  accent: "#6366f1",
+  brand1: "#1fb2a6",
+  brand2: "#6366f1",
+  brand3: "#ec5990",
   success: "#087f5b",
   info: "#0ea5e9",
   warning: "#fcc419",

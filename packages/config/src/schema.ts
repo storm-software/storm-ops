@@ -16,38 +16,30 @@ const LightColorSchema = z
   .length(7)
   .default("#f4f4f5")
   .describe("The light background color of the workspace");
-const PrimaryColorSchema = z
+const Brand1ColorSchema = z
   .string()
   .trim()
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
   .default("#1fb2a6")
-  .describe("The primary color of the workspace");
-const SecondaryColorSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
-  .default("#0ea5e9")
-  .describe("The secondary color of the workspace");
-const TertiaryColorSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
-  .default("#ec5990")
-  .describe("The tertiary color of the workspace");
-const AccentColorSchema = z
+  .describe("The first brand specific color of the workspace");
+const Brand2ColorSchema = z
   .string()
   .trim()
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
   .default("#6366f1")
-  .describe("The accent color of the workspace");
+  .describe("The second brand specific color of the workspace");
+const Brand3ColorSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^#([0-9a-f]{3}){1,2}$/i)
+  .length(7)
+  .default("#ec5990")
+  .describe("The third brand specific color of the workspace");
 const SuccessColorSchema = z
   .string()
   .trim()
@@ -92,10 +84,9 @@ const FatalColorSchema = z
 export const DarkThemeColorConfigSchema = z.object({
   foreground: LightColorSchema,
   background: DarkColorSchema,
-  primary: PrimaryColorSchema,
-  secondary: SecondaryColorSchema,
-  tertiary: TertiaryColorSchema,
-  accent: AccentColorSchema,
+  brand1: Brand1ColorSchema,
+  brand2: Brand2ColorSchema,
+  brand3: Brand3ColorSchema,
   success: SuccessColorSchema,
   info: InfoColorSchema,
   warning: WarningColorSchema,
@@ -106,10 +97,9 @@ export const DarkThemeColorConfigSchema = z.object({
 export const LightThemeColorConfigSchema = z.object({
   foreground: DarkColorSchema,
   background: LightColorSchema,
-  primary: PrimaryColorSchema,
-  secondary: SecondaryColorSchema,
-  tertiary: TertiaryColorSchema,
-  accent: AccentColorSchema,
+  brand1: Brand1ColorSchema,
+  brand2: Brand2ColorSchema,
+  brand3: Brand3ColorSchema,
   success: SuccessColorSchema,
   info: InfoColorSchema,
   warning: WarningColorSchema,
@@ -125,10 +115,9 @@ export const MultiThemeColorConfigSchema = z.object({
 export const SingleThemeColorConfigSchema = z.object({
   dark: DarkColorSchema,
   light: LightColorSchema,
-  primary: PrimaryColorSchema,
-  secondary: SecondaryColorSchema,
-  tertiary: TertiaryColorSchema,
-  accent: AccentColorSchema,
+  brand1: Brand1ColorSchema,
+  brand2: Brand2ColorSchema,
+  brand3: Brand3ColorSchema,
   success: SuccessColorSchema,
   info: InfoColorSchema,
   warning: WarningColorSchema,

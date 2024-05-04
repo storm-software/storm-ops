@@ -133,22 +133,22 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.debug(
-        `\n${_chalk.bold.hex(colors.primary ?? "#1fb2a6")(">")} ${_chalk.bold
-          .bgHex(colors.primary ?? "#1fb2a6")
+        `\n${_chalk.bold.hex(colors.brand1 ?? "#1fb2a6")(">")} ${_chalk.bold
+          .bgHex(colors.brand1 ?? "#1fb2a6")
           .whiteBright(
             " 🛠  Debug "
-          )}  ${_chalk.hex(colors.primary ?? "#1fb2a6")(formatLogMessage(message))}\n`
+          )}  ${_chalk.hex(colors.brand1 ?? "#1fb2a6")(formatLogMessage(message))}\n`
       );
     };
   }
 
   return (message?: any) => {
     console.log(
-      `\n${_chalk.bold.hex(colors.primary ?? "#1fb2a6")(">")} ${_chalk.bold
-        .bgHex(colors.primary ?? "#1fb2a6")
+      `\n${_chalk.bold.hex(colors.brand1 ?? "#1fb2a6")(">")} ${_chalk.bold
+        .bgHex(colors.brand1 ?? "#1fb2a6")
         .whiteBright(
           " ✉ System "
-        )}  ${_chalk.hex(colors.primary ?? "#1fb2a6")(formatLogMessage(message))}\n`
+        )}  ${_chalk.hex(colors.brand1 ?? "#1fb2a6")(formatLogMessage(message))}\n`
     );
   };
 };
