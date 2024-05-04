@@ -1,3 +1,15 @@
+## 1.16.2 (2024-05-04)
+
+
+### 🩹 Fixes
+
+- **config:** Ensure `schemas` folder is specified in `package.json` file ([23f25d69](https://github.com/storm-software/storm-ops/commit/23f25d69))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.16.1 (2024-05-04)
 
 
