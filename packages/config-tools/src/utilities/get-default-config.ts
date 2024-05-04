@@ -11,16 +11,26 @@ import { findWorkspaceRoot } from "./find-workspace-root";
  * Storm theme config values used for styling various workspace elements
  */
 export const DEFAULT_COLOR_CONFIG: ColorConfig = {
-  dark: "#1d232a",
-  light: "#f4f4f5",
-  brand1: "#1fb2a6",
-  brand2: "#6366f1",
-  brand3: "#ec5990",
-  success: "#087f5b",
-  info: "#0ea5e9",
-  warning: "#fcc419",
-  error: "#990000",
-  fatal: "#7d1a1a"
+  light: {
+    background: "#f4f4f5",
+    foreground: "#1d232a",
+    brand: "#1fb2a6",
+    accent: "#8250df",
+    success: "#087f5b",
+    info: "#0550ae",
+    warning: "#e3b341",
+    error: "#a40e26"
+  },
+  dark: {
+    background: "#22272E",
+    foreground: "#fcfcf5",
+    brand: "#1fb2a6",
+    accent: "#8256D0",
+    success: "#087f5b",
+    info: "#316DCA",
+    warning: "#F3D371",
+    error: "#d1242f"
+  }
 };
 
 /**

@@ -212,8 +212,8 @@ const setThemeColorConfigEnv = (
 ) => {
   // Check if the color configuration is set using separate dark and light color
   // palettes or a single multi-theme color palettes
-  return (config as MultiThemeColorConfig)?.light?.brand1 ||
-    (config as MultiThemeColorConfig)?.dark?.brand1
+  return (config as MultiThemeColorConfig)?.light?.brand ||
+    (config as MultiThemeColorConfig)?.dark?.brand
     ? setMultiThemeColorConfigEnv(prefix, config as MultiThemeColorConfig)
     : setSingleThemeColorConfigEnv(prefix, config as SingleThemeColorConfig);
 };
@@ -228,14 +228,11 @@ const setSingleThemeColorConfigEnv = (
   if (config.light) {
     process.env[`${prefix}LIGHT`] = config.light;
   }
-  if (config.brand1) {
-    process.env[`${prefix}BRAND1`] = config.brand1;
+  if (config.brand) {
+    process.env[`${prefix}BRAND`] = config.brand;
   }
-  if (config.brand2) {
-    process.env[`${prefix}BRAND2`] = config.brand2;
-  }
-  if (config.brand3) {
-    process.env[`${prefix}BRAND3`] = config.brand3;
+  if (config.accent) {
+    process.env[`${prefix}ACCENT`] = config.accent;
   }
   if (config.success) {
     process.env[`${prefix}SUCCESS`] = config.success;
@@ -274,14 +271,11 @@ const setBaseThemeColorConfigEnv = (
   if (config.background) {
     process.env[`${prefix}BACKGROUND`] = config.background;
   }
-  if (config.brand1) {
-    process.env[`${prefix}BRAND1`] = config.brand1;
+  if (config.brand) {
+    process.env[`${prefix}BRAND`] = config.brand;
   }
-  if (config.brand2) {
-    process.env[`${prefix}BRAND2`] = config.brand2;
-  }
-  if (config.brand3) {
-    process.env[`${prefix}BRAND3`] = config.brand3;
+  if (config.accent) {
+    process.env[`${prefix}ACCENT`] = config.accent;
   }
   if (config.success) {
     process.env[`${prefix}SUCCESS`] = config.success;

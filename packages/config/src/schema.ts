@@ -16,7 +16,7 @@ const LightColorSchema = z
   .length(7)
   .default("#f4f4f5")
   .describe("The light background color of the workspace");
-const Brand1ColorSchema = z
+const BrandColorSchema = z
   .string()
   .trim()
   .toLowerCase()
@@ -24,7 +24,7 @@ const Brand1ColorSchema = z
   .length(7)
   .default("#1fb2a6")
   .describe("The first brand specific color of the workspace");
-const Brand2ColorSchema = z
+const AccentColorSchema = z
   .string()
   .trim()
   .toLowerCase()
@@ -32,14 +32,6 @@ const Brand2ColorSchema = z
   .length(7)
   .default("#8256D0")
   .describe("The second brand specific color of the workspace");
-const Brand3ColorSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^#([0-9a-f]{3}){1,2}$/i)
-  .length(7)
-  .optional()
-  .describe("The third brand specific color of the workspace");
 const SuccessColorSchema = z
   .string()
   .trim()
@@ -84,9 +76,8 @@ const FatalColorSchema = z
 export const DarkThemeColorConfigSchema = z.object({
   foreground: LightColorSchema,
   background: DarkColorSchema,
-  brand1: Brand1ColorSchema,
-  brand2: Brand2ColorSchema,
-  brand3: Brand3ColorSchema,
+  brand: BrandColorSchema,
+  accent: AccentColorSchema,
   success: SuccessColorSchema,
   info: InfoColorSchema,
   warning: WarningColorSchema,
@@ -97,9 +88,8 @@ export const DarkThemeColorConfigSchema = z.object({
 export const LightThemeColorConfigSchema = z.object({
   foreground: DarkColorSchema,
   background: LightColorSchema,
-  brand1: Brand1ColorSchema,
-  brand2: Brand2ColorSchema,
-  brand3: Brand3ColorSchema,
+  brand: BrandColorSchema,
+  accent: AccentColorSchema,
   success: SuccessColorSchema,
   info: InfoColorSchema,
   warning: WarningColorSchema,
@@ -115,9 +105,8 @@ export const MultiThemeColorConfigSchema = z.object({
 export const SingleThemeColorConfigSchema = z.object({
   dark: DarkColorSchema,
   light: LightColorSchema,
-  brand1: Brand1ColorSchema,
-  brand2: Brand2ColorSchema,
-  brand3: Brand3ColorSchema,
+  brand: BrandColorSchema,
+  accent: AccentColorSchema,
   success: SuccessColorSchema,
   info: InfoColorSchema,
   warning: WarningColorSchema,
