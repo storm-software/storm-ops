@@ -39,12 +39,12 @@
           },
           {
             "input": "./packages/config",
-            "glob": "presets/*.json",
+            "glob": "presets/*",
             "output": "."
           },
           {
             "input": "./packages/config",
-            "glob": "schemas/*.json",
+            "glob": "schemas/*",
             "output": "."
           }
         ],
