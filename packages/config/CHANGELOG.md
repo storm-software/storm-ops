@@ -1,3 +1,15 @@
+## 1.16.1 (2024-05-04)
+
+
+### 🩹 Fixes
+
+- **config:** Ensure JSON schema asset gets copied into dist folder ([cde736ce](https://github.com/storm-software/storm-ops/commit/cde736ce))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.16.0 (2024-05-04)
 
 
