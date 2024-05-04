@@ -1,3 +1,15 @@
+## 1.15.0 (2024-05-04)
+
+
+### 🚀 Features
+
+- **config:** Update the structure of the theme color names ([4c087334](https://github.com/storm-software/storm-ops/commit/4c087334))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.14.0 (2024-05-04)
 
 
