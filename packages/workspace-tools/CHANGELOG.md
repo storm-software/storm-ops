@@ -1,3 +1,15 @@
+## 1.74.0 (2024-05-04)
+
+
+### 🚀 Features
+
+- **config:** Update the theme to use brand colors instead of hierarchy colors ([bcff6b80](https://github.com/storm-software/storm-ops/commit/bcff6b80))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.73.2 (2024-04-29)
 
 
