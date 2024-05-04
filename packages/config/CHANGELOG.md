@@ -1,3 +1,15 @@
+## 1.16.5 (2024-05-04)
+
+
+### 🩹 Fixes
+
+- **config:** Update the imports used in the `package.json` file ([63a6cf2a](https://github.com/storm-software/storm-ops/commit/63a6cf2a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.16.4 (2024-05-04)
 
 
