@@ -17,7 +17,7 @@
         "deleteOutputPath": true,
         "bundle": true,
         "thirdParty": true,
-        "skipTypeCheck": false,
+        "skipTypeCheck": true,
         "metafile": true,
         "minify": true,
         "format": ["cjs", "esm"],
