@@ -20,7 +20,7 @@ jobs:
         id: stale-more-info-needed
         uses: actions/stale@v9.0.0
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           days-before-stale: 14
           days-before-close: 14
           stale-issue-label: "stale"
@@ -36,7 +36,7 @@ jobs:
         id: stale-needs-rebase
         uses: actions/stale@v9.0.0
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           days-before-stale: 14
           days-before-close: 14
           stale-issue-label: "stale"
@@ -52,7 +52,7 @@ jobs:
         id: stale-repro-needed
         uses: actions/stale@v9.0.0
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           days-before-stale: 14
           days-before-close: 14
           stale-issue-label: "stale"
@@ -68,7 +68,7 @@ jobs:
         id: stale-retry-with-latest
         uses: actions/stale@v9.0.0
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           days-before-stale: 14
           days-before-close: 14
           stale-issue-label: "stale"
@@ -84,7 +84,7 @@ jobs:
         id: stale-bug
         uses: actions/stale@v9.0.0
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           days-before-stale: 180
           days-before-close: 14
           stale-issue-label: "stale"
@@ -100,7 +100,7 @@ jobs:
         id: stale-cleanup
         uses: actions/stale@v9.0.0
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           days-before-stale: 180
           days-before-close: 14
           stale-issue-label: "stale"
@@ -116,7 +116,7 @@ jobs:
         id: stale-docs
         uses: actions/stale@v9.0.0
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           days-before-stale: 180
           days-before-close: 14
           stale-issue-label: "stale"
@@ -132,7 +132,7 @@ jobs:
         id: stale-enhancement
         uses: actions/stale@v9.0.0
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           days-before-stale: 250
           days-before-close: 14
           stale-issue-label: "stale"
@@ -148,7 +148,7 @@ jobs:
         id: stale-feature
         uses: actions/stale@v9.0.0
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           days-before-stale: 250
           days-before-close: 14
           stale-issue-label: "stale"
@@ -164,7 +164,7 @@ jobs:
         id: stale-question
         uses: actions/stale@v9.0.0
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           days-before-stale: 45
           days-before-close: 14
           stale-issue-label: "stale"
