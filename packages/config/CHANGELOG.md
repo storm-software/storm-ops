@@ -1,3 +1,15 @@
+## 1.14.0 (2024-05-04)
+
+
+### 🚀 Features
+
+- **config:** Reorganized the required theme config schema values ([3ec7b029](https://github.com/storm-software/storm-ops/commit/3ec7b029))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.13.0 (2024-05-04)
 
 
