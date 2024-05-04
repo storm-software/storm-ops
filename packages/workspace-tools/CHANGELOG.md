@@ -1,3 +1,15 @@
+## 1.75.0 (2024-05-04)
+
+
+### 🚀 Features
+
+- **config:** Generated the Storm Configuration JSON schema package asset ([0a5c9bb2](https://github.com/storm-software/storm-ops/commit/0a5c9bb2))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.74.0 (2024-05-04)
 
 
