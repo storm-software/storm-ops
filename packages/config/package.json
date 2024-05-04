@@ -20,7 +20,7 @@
   },
   "main": "./index.cjs",
   "module": "./index.js",
-  "types": "declarations.d.ts",
+  "types": "./declarations.d.ts",
   "files": [
     "presets",
     "schemas",

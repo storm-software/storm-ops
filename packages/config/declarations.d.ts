@@ -61,9 +61,8 @@ export { StormConfigSchema } from "./src/schema";
 export const COLOR_KEYS = [
   "dark",
   "light",
-  "primary",
-  "secondary",
-  "tertiary",
+  "base",
+  "brand",
   "accent",
   "success",
   "info",
