@@ -21,10 +21,6 @@
   "main": "./index.cjs",
   "module": "./index.js",
   "types": "./declarations.d.ts",
-  "files": [
-    "presets",
-    "schemas"
-  ],
   "dependencies": {
     "zod": "3.23.4"
   },

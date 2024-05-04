@@ -17,9 +17,9 @@
         "deleteOutputPath": true,
         "bundle": true,
         "thirdParty": true,
-        "skipTypeCheck": true,
+        "skipTypeCheck": false,
         "metafile": true,
-        "minify": true,
+        "minify": false,
         "format": ["cjs", "esm"],
         "assets": [
           {
@@ -39,12 +39,12 @@
           },
           {
             "input": "./packages/config",
-            "glob": "presets/*",
+            "glob": "presets/*.json",
             "output": "."
           },
           {
             "input": "./packages/config",
-            "glob": "schemas/*",
+            "glob": "schemas/*.json",
             "output": "."
           }
         ],
