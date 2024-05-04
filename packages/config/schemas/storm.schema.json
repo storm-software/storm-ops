@@ -1,0 +1,348 @@
+{
+  "$ref": "#/definitions/StormConfiguration",
+  "definitions": {
+    "StormConfiguration": {
+      "type": "object",
+      "properties": {
+        "extends": {
+          "type": "string",
+          "description": "The path to a base JSON file to use as a configuration preset file"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the package"
+        },
+        "namespace": {
+          "type": "string",
+          "description": "The namespace of the package"
+        },
+        "organization": {
+          "type": "string",
+          "default": "storm-software",
+          "description": "The organization of the workspace"
+        },
+        "repository": {
+          "type": "string",
+          "format": "uri",
+          "description": "The repo URL of the workspace (i.e. GitHub)"
+        },
+        "license": {
+          "type": "string",
+          "default": "Apache 2.0",
+          "description": "The root directory of the package"
+        },
+        "homepage": {
+          "type": "string",
+          "format": "uri",
+          "default": "https://stormsoftware.com",
+          "description": "The homepage of the workspace"
+        },
+        "branch": {
+          "type": "string",
+          "default": "main",
+          "description": "The branch of the workspace"
+        },
+        "preid": {
+          "type": "string",
+          "description": "A tag specifying the version pre-release identifier"
+        },
+        "owner": {
+          "type": "string",
+          "default": "@storm-software/development",
+          "description": "The owner of the package"
+        },
+        "worker": {
+          "type": "string",
+          "default": "Stormie-Bot",
+          "description": "The worker of the package (this is the bot that will be used to perform various tasks)"
+        },
+        "env": {
+          "type": "string",
+          "enum": ["development", "staging", "production"],
+          "default": "production",
+          "description": "The current runtime environment of the package"
+        },
+        "ci": {
+          "type": "boolean",
+          "default": true,
+          "description": "An indicator specifying if the current environment is a CI environment"
+        },
+        "workspaceRoot": {
+          "type": "string",
+          "description": "The root directory of the workspace"
+        },
+        "packageDirectory": {
+          "type": "string",
+          "description": "The root directory of the package"
+        },
+        "externalPackagePatterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "The build will use these package patterns to determine if they should be external to the bundle"
+        },
+        "skipCache": {
+          "type": "boolean",
+          "default": false,
+          "description": "Should all known types of workspace caching be skipped?"
+        },
+        "cacheDirectory": {
+          "type": "string",
+          "default": "node_modules/.cache/storm",
+          "description": "The directory used to store the workspace's cached file data"
+        },
+        "buildDirectory": {
+          "type": "string",
+          "default": "dist",
+          "description": "The build directory for the workspace"
+        },
+        "outputDirectory": {
+          "type": "string",
+          "default": "node_modules/.storm",
+          "description": "The runtime directory of Storm"
+        },
+        "runtimeVersion": {
+          "type": "string",
+          "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
+          "default": "1.0.0",
+          "description": "The global version of the Storm runtime"
+        },
+        "packageManager": {
+          "type": "string",
+          "enum": ["npm", "yarn", "pnpm", "bun"],
+          "default": "pnpm",
+          "description": "The package manager used by the repository"
+        },
+        "timezone": {
+          "type": "string",
+          "default": "America/New_York",
+          "description": "The default timezone of the workspace"
+        },
+        "locale": {
+          "type": "string",
+          "default": "en-US",
+          "description": "The default locale of the workspace"
+        },
+        "logLevel": {
+          "type": "string",
+          "enum": [
+            "silent",
+            "fatal",
+            "error",
+            "warn",
+            "info",
+            "debug",
+            "trace",
+            "all"
+          ],
+          "default": "debug",
+          "description": "The log level used to filter out lower priority log messages. If not provided, this is defaulted using the `environment` config value (if `environment` is set to `production` then `level` is `error`, else `level` is `debug`)."
+        },
+        "configFile": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The filepath of the Storm config. When this field is null, no config file was found in the current workspace."
+        },
+        "colors": {
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "dark": {
+                      "type": "string",
+                      "pattern": "^#([0-9a-f]{3}){1,2}$",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "default": "#22272E",
+                      "description": "The dark background color of the workspace"
+                    },
+                    "light": {
+                      "type": "string",
+                      "pattern": "^#([0-9a-f]{3}){1,2}$",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "default": "#f4f4f5",
+                      "description": "The light background color of the workspace"
+                    },
+                    "brand": {
+                      "type": "string",
+                      "pattern": "^#([0-9a-f]{3}){1,2}$",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "default": "#1fb2a6",
+                      "description": "The first brand specific color of the workspace"
+                    },
+                    "accent": {
+                      "type": "string",
+                      "pattern": "^#([0-9a-f]{3}){1,2}$",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "default": "#8256D0",
+                      "description": "The second brand specific color of the workspace"
+                    },
+                    "success": {
+                      "type": "string",
+                      "pattern": "^#([0-9a-f]{3}){1,2}$",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "default": "#087f5b",
+                      "description": "The success color of the workspace"
+                    },
+                    "info": {
+                      "type": "string",
+                      "pattern": "^#([0-9a-f]{3}){1,2}$",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "default": "#316DCA",
+                      "description": "The informational color of the workspace"
+                    },
+                    "warning": {
+                      "type": "string",
+                      "pattern": "^#([0-9a-f]{3}){1,2}$",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "default": "#fcc419",
+                      "description": "The warning color of the workspace"
+                    },
+                    "error": {
+                      "type": "string",
+                      "pattern": "^#([0-9a-f]{3}){1,2}$",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "default": "#a40e26",
+                      "description": "The error color of the workspace"
+                    },
+                    "fatal": {
+                      "type": "string",
+                      "pattern": "^#([0-9a-f]{3}){1,2}$",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "description": "The fatal color of the workspace"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "dark": {
+                      "type": "object",
+                      "properties": {
+                        "foreground": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/light"
+                        },
+                        "background": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/dark"
+                        },
+                        "brand": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/brand"
+                        },
+                        "accent": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/accent"
+                        },
+                        "success": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/success"
+                        },
+                        "info": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/info"
+                        },
+                        "warning": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/warning"
+                        },
+                        "error": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/error"
+                        },
+                        "fatal": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/fatal"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "light": {
+                      "type": "object",
+                      "properties": {
+                        "foreground": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/dark"
+                        },
+                        "background": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/light"
+                        },
+                        "brand": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/brand"
+                        },
+                        "accent": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/accent"
+                        },
+                        "success": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/success"
+                        },
+                        "info": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/info"
+                        },
+                        "warning": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/warning"
+                        },
+                        "error": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/error"
+                        },
+                        "fatal": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/fatal"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": ["dark", "light"],
+                  "additionalProperties": false
+                }
+              ],
+              "description": "Colors used for various workspace elements"
+            },
+            {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "base": {
+                      "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0"
+                    }
+                  },
+                  "required": ["base"],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0"
+                  }
+                }
+              ]
+            }
+          ],
+          "description": "Storm theme config values used for styling various package elements"
+        },
+        "extensions": {
+          "type": "object",
+          "additionalProperties": {},
+          "default": {},
+          "description": "Configuration of each used extension"
+        }
+      },
+      "required": ["colors"],
+      "additionalProperties": false,
+      "description": "Storm Workspace config values used during various dev-ops processes. This type is a combination of the StormPackageConfig and StormProject types. It represents the config of the entire monorepo."
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

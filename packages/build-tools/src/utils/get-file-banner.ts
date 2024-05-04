@@ -35,7 +35,11 @@ ${commentStart} This code was released as part of the ${titleName ? `${titleName
     titleName ? titleName : "This project"
   }
 ${commentStart} is maintained by Storm Software under the ${
-    process.env.STORM_LICENSE ?? "Apache 2.0 License"
+    (process.env.STORM_LICENSE ?? "Apache 2.0")
+      ?.toLowerCase()
+      ?.includes("license")
+      ? process.env.STORM_LICENSE ?? "Apache 2.0"
+      : `${process.env.STORM_LICENSE ?? "Apache 2.0"} License`
   }, and is
 ${commentStart} free for commercial and private use. For more information, please visit
 ${commentStart} our licensing page.

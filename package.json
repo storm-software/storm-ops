@@ -30,7 +30,7 @@
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops.git"
   },
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",

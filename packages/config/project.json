@@ -44,7 +44,7 @@
           },
           {
             "input": "./packages/config",
-            "glob": "schema/storm.schema.json",
+            "glob": "schemas/*.json",
             "output": "."
           }
         ],

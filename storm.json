@@ -1,4 +1,5 @@
 {
+  "$schema": "./packages/config/schemas/storm.schema.json",
   "extends": "./packages/config/presets/base.json",
   "name": "storm-ops",
   "namespace": "storm-software",
@@ -8,7 +9,7 @@
   "owner": "@storm-software/development",
   "timezone": "America/New_York",
   "locale": "en-US",
-  "logLevel": "info",
+  "logLevel": "all",
   "packageManager": "pnpm",
   "externalPackagePatterns": ["@storm-software/"],
   "colors": {

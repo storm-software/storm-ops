@@ -59,7 +59,7 @@ export const getLogFn = (
     return (message?: any) => {
       console.error(
         `\n${_chalk.bold.hex(colors.error ?? "#f85149")(">")} ${_chalk.bold
-          .bgHex(colors.fatal ?? "#b62324")
+          .bgHex(colors.fatal ?? "#7d1a1a")
           .whiteBright(
             " 💀 Fatal "
           )}  ${_chalk.hex(colors.error ?? "#f85149")(formatLogMessage(message))}\n`
@@ -247,22 +247,26 @@ export const formatLogMessage = (
   message?: any,
   prefix: string = "-"
 ): string => {
-  return typeof message === "string"
-    ? message
-    : typeof message === "object"
-      ? `\n${Object.keys(message)
-          .map(
-            key =>
-              ` ${prefix}> ${key} = ${
-                _isFunction(message[key])
-                  ? "<function>"
-                  : typeof message[key] === "object"
-                    ? formatLogMessage(message[key], `${prefix}-`)
-                    : message[key]
-              }`
-          )
-          .join("\n")}`
-      : message;
+  return typeof message === "undefined" ||
+    message === null ||
+    (!message && typeof message !== "boolean")
+    ? "<none>"
+    : typeof message === "string"
+      ? message
+      : typeof message === "object"
+        ? `\n${Object.keys(message)
+            .map(
+              key =>
+                ` ${prefix}> ${key} = ${
+                  _isFunction(message[key])
+                    ? "<function>"
+                    : typeof message[key] === "object"
+                      ? formatLogMessage(message[key], `${prefix}-`)
+                      : message[key]
+                }`
+            )
+            .join("\n")}`
+        : message;
 };
 
 const _isFunction = (

@@ -1,11 +1,10 @@
 import { formatFiles, type Tree, writeJson } from "@nx/devkit";
 import { type StormConfig, StormConfigSchema } from "@storm-software/config";
-import { join } from "node:path";
 import * as z from "zod";
-import { zodToJsonSchema } from "zod-to-json-schema";
+import { JsonSchema7Type, zodToJsonSchema } from "zod-to-json-schema";
 import { withRunGenerator } from "../../base/base-generator";
-// import { getProjectConfigurations } from "../../utils/get-project-configurations";
 import type { ConfigSchemaGeneratorSchema } from "./schema";
+import { writeTrace } from "@storm-software/config-tools";
 
 export type ModuleSchema = {
   name: string;
@@ -17,12 +16,11 @@ export async function configSchemaGeneratorFn(
   options: ConfigSchemaGeneratorSchema,
   config?: StormConfig
 ) {
-  const { findWorkspaceRoot } = await import("@storm-software/config-tools");
+  const { findWorkspaceRoot, writeInfo, writeSuccess } = await import(
+    "@storm-software/config-tools"
+  );
 
-  // const projectConfigurations = getProjectConfigurations<
-  //   ProjectConfiguration & { config: any }
-  // >();
-  const workspaceRoot = config?.workspaceRoot ?? findWorkspaceRoot();
+  writeInfo("📦  Running Storm Configuration JSON Schema generator", config);
 
   // const modules = await Promise.all(
   //   Object.keys(projectConfigurations).map(async (key) => {
@@ -62,14 +60,42 @@ export async function configSchemaGeneratorFn(
   //     "The values set in the Storm config file. This file is expected to be named `storm.json`, `storm.config.ts`, or `storm.config.js` and be located in the root of the workspace"
   //   );
 
-  writeJson(
-    tree,
-    options.outputFile
-      ? join(workspaceRoot, options.outputFile)
-      : join(workspaceRoot, "storm.schema.json"),
-    zodToJsonSchema(StormConfigSchema, { name: "StormConfiguration" })
+  writeTrace(`Determining the Storm Configuration JSON Schema...`, config);
+
+  const jsonSchema = zodToJsonSchema(StormConfigSchema, {
+    name: "StormConfiguration"
+  });
+  writeTrace(jsonSchema, config);
+
+  let outputPath = options.outputFile
+    ? options.outputFile.replaceAll("{workspaceRoot}", "")
+    : "storm.schema.json";
+  outputPath = outputPath.replaceAll(
+    config?.workspaceRoot ?? findWorkspaceRoot(),
+    outputPath.startsWith("./") ? "" : "./"
   );
+
+  writeTrace(
+    `📝  Writing Storm Configuration JSON Schema to "${outputPath}"`,
+    config
+  );
+
+  writeJson<
+    JsonSchema7Type & {
+      $schema?: string | undefined;
+      definitions?:
+        | {
+            [key: string]: JsonSchema7Type;
+          }
+        | undefined;
+    }
+  >(tree, outputPath, jsonSchema, { spaces: 2 });
   await formatFiles(tree);
+
+  writeSuccess(
+    "🚀  Storm Configuration JSON Schema creation has completed successfully!",
+    config
+  );
 
   return {
     success: true

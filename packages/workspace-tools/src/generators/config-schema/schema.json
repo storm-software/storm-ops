@@ -13,7 +13,7 @@
         "index": 0
       },
       "x-prompt": "Where should the schema json be written (relative to the workspace root)?",
-      "default": "{workspaceRoot}/storm.schema.json"
+      "default": "./storm.schema.json"
     }
   },
   "required": ["outputFile"]

@@ -8,9 +8,24 @@
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/config"
   },
+  "exports": {
+    "./package.json": "./package.json",
+    "./schemas/storm.schema.json": "./schemas/storm.schema.json",
+    "./presets/base.json": "./presets/base.json",
+    ".": {
+      "types": "./declarations.d.ts",
+      "import": "./index.js",
+      "require": "./index.cjs"
+    }
+  },
   "main": "./index.cjs",
   "module": "./index.js",
   "types": "declarations.d.ts",
+  "files": [
+    "presets",
+    "schema",
+    "dist"
+  ],
   "dependencies": {
     "zod": "3.23.4"
   },
