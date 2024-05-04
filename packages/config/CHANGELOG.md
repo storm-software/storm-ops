@@ -1,3 +1,15 @@
+## 1.16.4 (2024-05-04)
+
+
+### 🩹 Fixes
+
+- **config:** Resolve issue with previous dist package ([23abea7a](https://github.com/storm-software/storm-ops/commit/23abea7a))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.16.3 (2024-05-04)
 
 
