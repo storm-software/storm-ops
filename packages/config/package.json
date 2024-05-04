@@ -23,7 +23,7 @@
   "types": "declarations.d.ts",
   "files": [
     "presets",
-    "schema",
+    "schemas",
     "dist"
   ],
   "dependencies": {
