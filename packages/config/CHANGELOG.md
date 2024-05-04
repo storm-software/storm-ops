@@ -1,3 +1,15 @@
+## 1.16.6 (2024-05-04)
+
+
+### 🩹 Fixes
+
+- **config:** Resolve issue with invalid export paths ([890deaec](https://github.com/storm-software/storm-ops/commit/890deaec))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.16.5 (2024-05-04)
 
 
