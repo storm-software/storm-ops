@@ -1,3 +1,15 @@
+## 1.16.3 (2024-05-04)
+
+
+### 🩹 Fixes
+
+- **config:** Update type declarations on shared config package ([0a560583](https://github.com/storm-software/storm-ops/commit/0a560583))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.16.2 (2024-05-04)
 
 
