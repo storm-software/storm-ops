@@ -1,6 +1,8 @@
 # Note: this is a shared pipeline used by other repositories.
 # Docs: https://docs.github.com/en/actions/using-workflows/reusing-workflows
 
+name: "Continuous Integration"
+
 on:
   workflow_call:
     inputs:
@@ -22,8 +24,8 @@ on:
         required: true
 
 jobs:
-  release:
-    name: "Release"
+  ci:
+    name: "Continuous Integration"
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -104,6 +106,11 @@ jobs:
         run: pnpm lint
         shell: bash
 
+      - name: Super-linter
+        uses: super-linter/super-linter@v6.4.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.githubToken }}
+
       - name: Run formatters scripts
         run: pnpm nx format
         shell: bash
@@ -126,7 +133,7 @@ jobs:
 
   success:
     needs:
-      - release
+      - ci
     if: ${{ success() }}
     name: Send success notification
     runs-on: ubuntu-latest
@@ -135,7 +142,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.26.0
         with:
           channel-id: "notifications"
-          update-ts: ${{ steps.release.outputs.ts }}
+          update-ts: ${{ steps.ci.outputs.ts }}
           payload: |
             {
               "text": "Deployment for ${{ github.repository }} has finished (Completed) \n\nPipeline Status: Success \nClick here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
@@ -168,7 +175,7 @@ jobs:
 
   failure:
     needs:
-      - release
+      - ci
     if: ${{ failure() }}
     name: Send failure notification
     runs-on: ubuntu-latest
@@ -177,7 +184,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.26.0
         with:
           channel-id: "notifications"
-          update-ts: ${{ steps.release.outputs.ts }}
+          update-ts: ${{ steps.ci.outputs.ts }}
           payload: |
             {
               "text": "Deployment for ${{ github.repository }} has finished (Failure) \n\nPipeline Status: Failure\nError: ${{ job.conclusion }}\nReason: ${{ job.cancelled }}\nConclusion: ${{ job.conclusion }}\nOutput: ${{ job.output }}\nLogs: ${{ job.logs }} \nSteps: ${{ job.steps }} \nActions: ${{ job.actions }} \nServices: ${{ job.services }} \nEnvironment: ${{ job.environment}} \nClick here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
@@ -206,11 +213,11 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.STORM_BOT_DISCORD_WEBHOOK }}
           DISCORD_USERNAME: ${{ env.STORM_BOT }}
           DISCORD_AVATAR: "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-stormie.png"
-          DISCORD_EMBEDS: '[{"title": "Deployment #${{ github.run_number }} has failed", "description": "Deployment for ${{ github.repository }} finished with failures - #${{ github.run_number }}", "thumbnail": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png" }, "image": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "author": { "name": "${{ github.actor }}", "url": "https://github.com/${{ github.actor }}", "icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4" }, "fields": [ { "name": "Repository", "value": "${{ github.repository }}" }, { "name": "Repository URL", "value": "${{ github.repositoryUrl }}" }, { "name": "Pipeline Status", "value": "Failure" }, { "name": "Event", "value": "${{ github.event_name }}" }, { "name": "Result", "value": "${{ steps.release.result }}" }, { "name": "Conclusion", "value": "${{ steps.release.conclusion }}" }, { "name": "Output", "value": "${{ toJSON(steps.release.outputs) }}" }], "color": 10027008, "timestamp": "${{ github.event.repository.updated_at }}", "url": "${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "footer": { "text": "Click here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "icon_url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png" } }]'
+          DISCORD_EMBEDS: '[{"title": "Deployment #${{ github.run_number }} has failed", "description": "Deployment for ${{ github.repository }} finished with failures - #${{ github.run_number }}", "thumbnail": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png" }, "image": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "author": { "name": "${{ github.actor }}", "url": "https://github.com/${{ github.actor }}", "icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4" }, "fields": [ { "name": "Repository", "value": "${{ github.repository }}" }, { "name": "Repository URL", "value": "${{ github.repositoryUrl }}" }, { "name": "Pipeline Status", "value": "Failure" }, { "name": "Event", "value": "${{ github.event_name }}" }, { "name": "Result", "value": "${{ steps.ci.result }}" }, { "name": "Conclusion", "value": "${{ steps.ci.conclusion }}" }, { "name": "Output", "value": "${{ toJSON(steps.ci.outputs) }}" }], "color": 10027008, "timestamp": "${{ github.event.repository.updated_at }}", "url": "${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "footer": { "text": "Click here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "icon_url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png" } }]'
 
   cancelled:
     needs:
-      - release
+      - ci
     if: ${{ cancelled() }}
     name: Send cancelled notification
     runs-on: ubuntu-latest
@@ -219,7 +226,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.26.0
         with:
           channel-id: "notifications"
-          update-ts: ${{ steps.release.outputs.ts }}
+          update-ts: ${{ steps.ci.outputs.ts }}
           payload: |
             {
               "text": "Deployment for ${{ github.repository }} has finished (Cancelled) \n\nPipeline Status: Cancelled\nError: ${{ job.conclusion }}\nReason: ${{ job.cancelled }}\nConclusion: ${{ job.conclusion }}\nOutput: ${{ job.output }}\nLogs: ${{ job.logs }} \nSteps: ${{ job.steps }} \nActions: ${{ job.actions }} \nServices: ${{ job.services }} \nEnvironment: ${{ job.environment}} \nClick here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
@@ -248,4 +255,4 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.STORM_BOT_DISCORD_WEBHOOK }}
           DISCORD_USERNAME: ${{ env.STORM_BOT }}
           DISCORD_AVATAR: "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-stormie.png"
-          DISCORD_EMBEDS: '[{"title": "Deployment #${{ github.run_number }} was cancelled", "description": "Deployment for ${{ github.repository }} was cancelled before it could complete normal execution - #${{ github.run_number }}", "thumbnail": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png" }, "image": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "author": { "name": "${{ github.actor }}", "url": "https://github.com/${{ github.actor }}", "icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4" }, "fields": [ { "name": "Repository", "value": "${{ github.repository }}" }, { "name": "Repository URL", "value": "${{ github.repositoryUrl }}" }, { "name": "Pipeline Status", "value": "Cancelled" }, { "name": "Event", "value": "${{ github.event_name }}" }, { "name": "Result", "value": "${{ steps.release.result }}" }, { "name": "Conclusion", "value": "${{ steps.release.conclusion }}" }, { "name": "Output", "value": "${{ toJSON(steps.release.outputs) }}" }], "color": 16565273, "timestamp": "${{ github.event.repository.updated_at }}", "url": "${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "footer": { "text": "Click here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "icon_url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png" } }]'
+          DISCORD_EMBEDS: '[{"title": "Deployment #${{ github.run_number }} was cancelled", "description": "Deployment for ${{ github.repository }} was cancelled before it could complete normal execution - #${{ github.run_number }}", "thumbnail": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png" }, "image": { "url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/logo-fill.png" }, "author": { "name": "${{ github.actor }}", "url": "https://github.com/${{ github.actor }}", "icon_url": "https://avatars.githubusercontent.com/u/${{ github.actor_id }}?v=4" }, "fields": [ { "name": "Repository", "value": "${{ github.repository }}" }, { "name": "Repository URL", "value": "${{ github.repositoryUrl }}" }, { "name": "Pipeline Status", "value": "Cancelled" }, { "name": "Event", "value": "${{ github.event_name }}" }, { "name": "Result", "value": "${{ steps.ci.result }}" }, { "name": "Conclusion", "value": "${{ steps.ci.conclusion }}" }, { "name": "Output", "value": "${{ toJSON(steps.ci.outputs) }}" }], "color": 16565273, "timestamp": "${{ github.event.repository.updated_at }}", "url": "${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "footer": { "text": "Click here to see the full workflow details: ${{ github.event.pull_request.html_url || github.event.head_commit.url }}", "icon_url": "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png" } }]'
