@@ -1,5 +1,5 @@
 const options = require("./dist/packages/markdownlint/index.js").init({
-  "default": true,
+  default: true,
   "line-length": false
 });
 

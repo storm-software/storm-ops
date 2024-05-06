@@ -1,6 +1,6 @@
 const options =
   require("./node_modules/@storm-software/markdownlint/index.js").init({
-    "default": true,
+    default: true,
     "line-length": false
   });
 
