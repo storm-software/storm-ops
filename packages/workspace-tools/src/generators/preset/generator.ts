@@ -74,7 +74,7 @@ export async function presetGeneratorFn(
       email: "support@stormsoftware.com"
     };
 
-    json.license = "Apache License 2.0";
+    json.license = "Apache-2.0";
     json.author ??= {
       name: "Storm Software",
       email: "contact@stormsoftware.com",

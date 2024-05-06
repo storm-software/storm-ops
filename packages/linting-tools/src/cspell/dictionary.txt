@@ -34,6 +34,7 @@ allcontributors
 probot
 smee
 remeda
+blockquote
 typia
 stormie
 npmjs

@@ -111,6 +111,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.githubToken }}
 
+      - name: Markdown-linter
+        uses: DavidAnson/markdownlint-cli2-action@v9
+
       - name: Run formatters scripts
         run: pnpm nx format
         shell: bash

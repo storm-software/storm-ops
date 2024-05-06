@@ -97,6 +97,7 @@
     "jest-environment-jsdom": "29.7.0",
     "jest-environment-node": "29.7.0",
     "lefthook": "1.6.10",
+    "markdownlint-cli2": "^0.13.0",
     "nx": "18.3.4",
     "prettier": "3.2.5",
     "prettier-plugin-prisma": "5.0.0",
@@ -133,7 +134,8 @@
       "got": "14.2.1",
       "load-plugin": "6.0.3",
       "request": ">=2.88.2",
-      "tough-cookie": "4.1.3"
+      "tough-cookie": "4.1.3",
+      "@storm-software/markdownlint": "workspace:*"
     },
     "patchedDependencies": {
       "cosmiconfig@9.0.0": "patches/cosmiconfig@9.0.0.patch",
@@ -150,5 +152,9 @@
       "release"
     ]
   },
-  "triggerEmptyDevReleaseByIncrementingThisNumber": 0
+  "triggerEmptyDevReleaseByIncrementingThisNumber": 0,
+  "devDependencies": {
+    "@storm-software/testing-tools": "latest",
+    "@storm-software/workspace-tools": "latest"
+  }
 }

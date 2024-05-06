@@ -93,7 +93,7 @@ export const getConfigFile = async (
         );
         writeTrace(result.config, { logLevel: "all" });
 
-        config = merge(config ?? {}, result.config ?? {});
+        config = merge(result.config ?? {}, config ?? {});
       }
     }
   }

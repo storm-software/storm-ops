@@ -1,0 +1,57 @@
+{
+  "name": "markdownlint",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/markdownlint/src",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/markdownlint",
+        "tsConfig": "packages/markdownlint/tsconfig.json",
+        "project": "packages/markdownlint/package.json",
+        "main": "packages/markdownlint/src/index.ts",
+        "defaultConfiguration": "production",
+        "deleteOutputPath": true,
+        "sourcemap": false,
+        "minify": false,
+        "skipTypeCheck": true,
+        "platform": "node",
+        "format": ["cjs"],
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".js"
+          }
+        },
+        "assets": [
+          {
+            "input": "packages/markdownlint",
+            "glob": "README.md",
+            "output": "."
+          },
+          {
+            "input": "packages/markdownlint",
+            "glob": "CHANGELOG.md",
+            "output": "."
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "."
+          }
+        ]
+      },
+      "configurations": {
+        "production": {
+          "debug": false,
+          "verbose": false
+        },
+        "development": {
+          "debug": true,
+          "verbose": true
+        }
+      }
+    }
+  }
+}
