@@ -111,6 +111,10 @@
     "typescript": "5.4.5",
     "verdaccio": "5.30.3"
   },
+  "devDependencies": {
+    "@storm-software/testing-tools": "latest",
+    "@storm-software/workspace-tools": "latest"
+  },
   "packageManager": "pnpm@9.0.6",
   "engines": {
     "node": ">=20.11.0",
@@ -125,6 +129,7 @@
       "@storm-software/config-tools": "workspace:*",
       "@storm-software/git-tools": "workspace:*",
       "@storm-software/linting-tools": "workspace:*",
+      "@storm-software/markdownlint": "workspace:*",
       "@storm-software/testing-tools": "workspace:*",
       "@storm-software/tsconfig": "workspace:*",
       "@storm-software/workspace-tools": "workspace:*",
@@ -134,8 +139,7 @@
       "got": "14.2.1",
       "load-plugin": "6.0.3",
       "request": ">=2.88.2",
-      "tough-cookie": "4.1.3",
-      "@storm-software/markdownlint": "workspace:*"
+      "tough-cookie": "4.1.3"
     },
     "patchedDependencies": {
       "cosmiconfig@9.0.0": "patches/cosmiconfig@9.0.0.patch",
@@ -152,9 +156,5 @@
       "release"
     ]
   },
-  "triggerEmptyDevReleaseByIncrementingThisNumber": 0,
-  "devDependencies": {
-    "@storm-software/testing-tools": "latest",
-    "@storm-software/workspace-tools": "latest"
-  }
+  "triggerEmptyDevReleaseByIncrementingThisNumber": 0
 }

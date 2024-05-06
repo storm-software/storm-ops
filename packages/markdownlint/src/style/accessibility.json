@@ -9,6 +9,6 @@
   "ol-prefix": "ordered",
   "single-h1": true,
   "ul-style": {
-      "style": "asterisk"
+    "style": "asterisk"
   }
 }

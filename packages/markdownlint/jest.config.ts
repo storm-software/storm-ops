@@ -1,3 +1,3 @@
-import { getJestConfig } from '@storm-software/testing-tools';
+import { getJestConfig } from "@storm-software/testing-tools";
 
-export default getJestConfig('packages/markdownlint', true, 'markdownlint');
+export default getJestConfig("packages/markdownlint", true, "markdownlint");

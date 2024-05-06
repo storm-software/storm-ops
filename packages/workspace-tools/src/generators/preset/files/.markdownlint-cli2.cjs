@@ -1,9 +1,10 @@
-const options = require('./node_modules/@storm-software/markdownlint/index.js').init({
+const options =
+  require("./node_modules/@storm-software/markdownlint/index.js").init({
     "default": true,
-    "line-length": false,
-})
+    "line-length": false
+  });
 
 module.exports = {
-    config: options,
-    customRules: ["./node_modules/@storm-software/markdownlint/index.js"],
-}
+  config: options,
+  customRules: ["./node_modules/@storm-software/markdownlint/index.js"]
+};

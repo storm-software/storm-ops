@@ -12,7 +12,6 @@ import accessibilityRules from "./style/accessibility.json";
 import base from "./style/base.json";
 import { rules } from "./rules";
 
-
 const offByDefault = ["no-empty-alt-text"];
 
 for (const rule of rules) {
