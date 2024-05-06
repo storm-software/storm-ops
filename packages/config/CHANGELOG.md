@@ -1,3 +1,15 @@
+## 1.16.7 (2024-05-06)
+
+
+### 🩹 Fixes
+
+- **markdownlint:** Resolved issue with bad config in lint file ([95b3aba7](https://github.com/storm-software/storm-ops/commit/95b3aba7))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.16.6 (2024-05-04)
 
 
