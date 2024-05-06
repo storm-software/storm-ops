@@ -1,5 +1,14 @@
-## 1.47.2 (2024-04-29)
+## 1.48.0 (2024-05-06)
 
+### 🚀 Features
+
+- **markdownlint:** Added the `markdownlint` package for shared configurations ([abd6fa38](https://github.com/storm-software/storm-ops/commit/abd6fa38))
+
+### ❤️ Thank You
+
+- Patrick Sullivan
+
+## 1.47.2 (2024-04-29)
 
 ### 🩹 Fixes
 
@@ -11,13 +20,11 @@
 
 - **deps:** update dependency @cspell/dict-node to v5 ([#133](https://github.com/storm-software/storm-ops/pull/133))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.47.1 (2024-04-15)
-
 
 ### 🩹 Fixes
 
@@ -25,49 +32,41 @@
 
 ## 1.47.0 (2024-04-13)
 
-
 ### 🚀 Features
 
 - **git-tools:** Updated the console write calls to use updated method signature ([d2d7cc8b](https://github.com/storm-software/storm-ops/commit/d2d7cc8b))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.46.7 (2024-04-13)
 
-
 ### 🩹 Fixes
 
 - **config-tools:** Resolved issue with bad `project.json` tasks ([744c7eef](https://github.com/storm-software/storm-ops/commit/744c7eef))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.46.6 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolved issue with module types used in build ([50a368d3](https://github.com/storm-software/storm-ops/commit/50a368d3))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.46.5 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolved issue with duplicate require definition ([63aa1d16](https://github.com/storm-software/storm-ops/commit/63aa1d16))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 

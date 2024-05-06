@@ -1,41 +1,44 @@
-## 1.44.0 (2024-05-04)
+## 1.45.0 (2024-05-06)
 
+### 🚀 Features
+
+- **markdownlint:** Added the `markdownlint` package for shared configurations ([abd6fa38](https://github.com/storm-software/storm-ops/commit/abd6fa38))
+
+### ❤️ Thank You
+
+- Patrick Sullivan
+
+## 1.44.0 (2024-05-04)
 
 ### 🚀 Features
 
 - **config:** Generated the Storm Configuration JSON schema package asset ([0a5c9bb2](https://github.com/storm-software/storm-ops/commit/0a5c9bb2))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.43.0 (2024-05-04)
 
-
 ### 🚀 Features
 
 - **config:** Update the structure of the theme color names ([4c087334](https://github.com/storm-software/storm-ops/commit/4c087334))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.42.0 (2024-05-04)
 
-
 ### 🚀 Features
 
 - **config:** Update the theme to use brand colors instead of hierarchy colors ([bcff6b80](https://github.com/storm-software/storm-ops/commit/bcff6b80))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.41.5 (2024-04-29)
-
 
 ### 🩹 Fixes
 
@@ -45,121 +48,101 @@
 
 - **config-tools:** Resolved issue with newlines in console logger ([f69501b7](https://github.com/storm-software/storm-ops/commit/f69501b7))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.41.4 (2024-04-26)
 
-
 ### 🩹 Fixes
 
 - **config-tools:** Improved logging and enhanced config json preset ([5dabb1ae](https://github.com/storm-software/storm-ops/commit/5dabb1ae))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.41.3 (2024-04-26)
 
-
 ### 🩹 Fixes
 
 - **config-tools:** Resolved issue applying default config ([8e1403b3](https://github.com/storm-software/storm-ops/commit/8e1403b3))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.41.2 (2024-04-26)
 
-
 ### 🩹 Fixes
 
 - **config-tools:** Ensure defaulting doesn't overwrite file ([d14794e5](https://github.com/storm-software/storm-ops/commit/d14794e5))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.41.1 (2024-04-25)
 
-
 ### 🩹 Fixes
 
 - **config-tools:** Resovled issue with parsing env values ([bb0e395a](https://github.com/storm-software/storm-ops/commit/bb0e395a))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.41.0 (2024-04-24)
 
-
 ### 🚀 Features
 
 - **config-tools:** Enhanced the config loading and logging processes ([0e3b7cef](https://github.com/storm-software/storm-ops/commit/0e3b7cef))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.40.1 (2024-04-22)
 
-
 ### 🩹 Fixes
 
 - **config:** Added updates to repository logging ([2b871dc3](https://github.com/storm-software/storm-ops/commit/2b871dc3))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.40.0 (2024-04-22)
 
-
 ### 🚀 Features
 
 - **cloudflare-tools:** Added the `worker`, `init`, and `serve` tools ([b4b92c2c](https://github.com/storm-software/storm-ops/commit/b4b92c2c))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.39.3 (2024-04-15)
 
-
 ### 🩹 Fixes
 
 - **config-tools:** Resolved issue with missing fields in Storm configuration ([cf157d2a](https://github.com/storm-software/storm-ops/commit/cf157d2a))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.39.2 (2024-04-15)
 
-
 ### 🩹 Fixes
 
 - **config-tools:** Clean up the README markdown ([676d23d3](https://github.com/storm-software/storm-ops/commit/676d23d3))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.39.1 (2024-04-15)
-
 
 ### 🩹 Fixes
 
@@ -167,25 +150,21 @@
 
 ## 1.39.0 (2024-04-13)
 
-
 ### 🚀 Features
 
 - **config-tools:** No longer require `config` in storm console write functions ([ad8c6511](https://github.com/storm-software/storm-ops/commit/ad8c6511))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.38.1 (2024-04-13)
 
-
 ### 🩹 Fixes
 
 - **config-tools:** Resolved issue with bad `project.json` tasks ([744c7eef](https://github.com/storm-software/storm-ops/commit/744c7eef))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 

@@ -1,41 +1,44 @@
-## 2.9.4 (2024-04-29)
+## 2.10.0 (2024-05-06)
 
+### 🚀 Features
+
+- **markdownlint:** Added the `markdownlint` package for shared configurations ([abd6fa38](https://github.com/storm-software/storm-ops/commit/abd6fa38))
+
+### ❤️ Thank You
+
+- Patrick Sullivan
+
+## 2.9.4 (2024-04-29)
 
 ### 🩹 Fixes
 
 - **git-tools:** Update scripts to use deamon to generate Nx Project Graphs ([6b6ad2b6](https://github.com/storm-software/storm-ops/commit/6b6ad2b6))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 2.9.3 (2024-04-29)
 
-
 ### 🩹 Fixes
 
 - **deps:** update patch prod dependencies ([c427e132](https://github.com/storm-software/storm-ops/commit/c427e132))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 2.9.2 (2024-04-15)
 
-
 ### 🩹 Fixes
 
 - **config-tools:** Clean up the README markdown ([676d23d3](https://github.com/storm-software/storm-ops/commit/676d23d3))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 2.9.1 (2024-04-15)
-
 
 ### 🩹 Fixes
 
@@ -43,49 +46,41 @@
 
 ## 2.9.0 (2024-04-13)
 
-
 ### 🚀 Features
 
 - **git-tools:** Updated the console write calls to use updated method signature ([d2d7cc8b](https://github.com/storm-software/storm-ops/commit/d2d7cc8b))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 2.8.0 (2024-04-13)
 
-
 ### 🚀 Features
 
 - **config-tools:** No longer require `config` in storm console write functions ([ad8c6511](https://github.com/storm-software/storm-ops/commit/ad8c6511))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 2.7.6 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolved issue with module types used in build ([50a368d3](https://github.com/storm-software/storm-ops/commit/50a368d3))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 2.7.5 (2024-04-08)
 
-
 ### 🩹 Fixes
 
 - **build-tools:** Resolved issue with duplicate require definition ([63aa1d16](https://github.com/storm-software/storm-ops/commit/63aa1d16))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 

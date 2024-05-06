@@ -1,29 +1,34 @@
-## 1.75.0 (2024-05-04)
+## 1.76.0 (2024-05-06)
 
+### 🚀 Features
+
+- **markdownlint:** Added the `markdownlint` package for shared configurations ([abd6fa38](https://github.com/storm-software/storm-ops/commit/abd6fa38))
+
+### ❤️ Thank You
+
+- Patrick Sullivan
+
+## 1.75.0 (2024-05-04)
 
 ### 🚀 Features
 
 - **config:** Generated the Storm Configuration JSON schema package asset ([0a5c9bb2](https://github.com/storm-software/storm-ops/commit/0a5c9bb2))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.74.0 (2024-05-04)
 
-
 ### 🚀 Features
 
 - **config:** Update the theme to use brand colors instead of hierarchy colors ([bcff6b80](https://github.com/storm-software/storm-ops/commit/bcff6b80))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.73.2 (2024-04-29)
-
 
 ### 🩹 Fixes
 
@@ -31,32 +36,27 @@
 
 - **deps:** update dependencies-non-major ([#130](https://github.com/storm-software/storm-ops/pull/130))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.73.1 (2024-04-24)
 
-
 ### 🩹 Fixes
 
 - **storm-ops:** Resolved issue with reusable workflow name ([e23ab12a](https://github.com/storm-software/storm-ops/commit/e23ab12a))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.73.0 (2024-04-22)
 
-
 ### 🚀 Features
 
 - **cloudflare-tools:** Added the `worker`, `init`, and `serve` tools ([b4b92c2c](https://github.com/storm-software/storm-ops/commit/b4b92c2c))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
