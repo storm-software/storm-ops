@@ -1,7 +1,6 @@
 import type { StormConfig } from "@storm-software/config";
 import type { TsupExecutorSchema } from "./src/executors/tsup/schema";
-import type { ExecutorContext } from "@nx/devkit";
-import type { Tree } from "@nx/devkit";
+import type { GeneratorCallback, Tree, ExecutorContext } from "@nx/devkit";
 import type { Options } from "tsup";
 import type { TsupGetConfigOptions } from "./src/types";
 import type {
@@ -128,9 +127,10 @@ export interface BaseGeneratorOptions<
   TGeneratorSchema extends BaseGeneratorSchema = BaseGeneratorSchema
 > extends BaseWorkspaceToolOptions<TGeneratorSchema> {}
 
-export interface BaseGeneratorResult {
+export interface BaseGeneratorResult extends Record<string, any> {
   error?: Error;
   success?: boolean;
+  data?: any;
 }
 
 declare function withRunGenerator<TGeneratorSchema = any>(
@@ -147,5 +147,8 @@ declare function withRunGenerator<TGeneratorSchema = any>(
   generatorOptions: BaseGeneratorOptions<TGeneratorSchema> = {
     skipReadingConfig: false
   }
-): (tree: Tree, _options: TGeneratorSchema) => Promise<{ success: boolean }>;
+): (
+  tree: Tree,
+  _options: TGeneratorSchema
+) => Promise<GeneratorCallback | BaseGeneratorResult>;
 export { withRunGenerator };

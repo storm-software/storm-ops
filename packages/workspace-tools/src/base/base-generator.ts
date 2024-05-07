@@ -1,4 +1,4 @@
-import { type GeneratorCallback, type Tree } from "@nx/devkit";
+import type { GeneratorCallback, Tree } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import {
   applyWorkspaceBaseTokens,
@@ -29,7 +29,7 @@ export const withRunGenerator =
   async (
     tree: Tree,
     _options: TGeneratorSchema
-  ): Promise<GeneratorCallback> => {
+  ): Promise<GeneratorCallback | BaseGeneratorResult> => {
     const {
       getStopwatch,
       writeDebug,
@@ -99,18 +99,21 @@ export const withRunGenerator =
       const result = await Promise.resolve(
         generatorFn(tree, tokenized, config)
       );
-      if (
-        result &&
-        (!result.success ||
+      if (result) {
+        if (
+          result.success === false ||
           (result.error &&
             (result?.error as Error)?.message &&
             typeof (result?.error as Error)?.message === "string" &&
             (result?.error as Error)?.name &&
-            typeof (result?.error as Error)?.name === "string"))
-      ) {
-        throw new Error(`The ${name} generator failed to run`, {
-          cause: result?.error
-        });
+            typeof (result?.error as Error)?.name === "string")
+        ) {
+          throw new Error(`The ${name} generator failed to run`, {
+            cause: result?.error
+          });
+        } else if (result.success && result.data) {
+          return result as any;
+        }
       }
 
       if (generatorOptions?.hooks?.postProcess) {
