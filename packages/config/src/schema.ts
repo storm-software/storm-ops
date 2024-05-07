@@ -30,7 +30,7 @@ const AccentColorSchema = z
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
-  .default("#1fb2a6")
+  .optional()
   .describe("The secondary brand specific color of the workspace");
 const HelpColorSchema = z
   .string()

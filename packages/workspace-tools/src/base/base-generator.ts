@@ -1,4 +1,4 @@
-import type { Tree } from "@nx/devkit";
+import { type GeneratorCallback, type Tree } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import {
   applyWorkspaceBaseTokens,
@@ -29,7 +29,7 @@ export const withRunGenerator =
   async (
     tree: Tree,
     _options: TGeneratorSchema
-  ): Promise<{ success: boolean }> => {
+  ): Promise<GeneratorCallback> => {
     const {
       getStopwatch,
       writeDebug,
@@ -66,8 +66,6 @@ export const withRunGenerator =
         );
       }
 
-      // process.chdir(workspaceRoot);
-
       if (generatorOptions?.hooks?.applyDefaultOptions) {
         writeDebug("Running the applyDefaultOptions hook...", config);
         options = await Promise.resolve(
@@ -97,6 +95,7 @@ export const withRunGenerator =
         writeDebug("Completed the preProcess hook", config);
       }
 
+      // Run the generator function
       const result = await Promise.resolve(
         generatorFn(tree, tokenized, config)
       );
@@ -120,24 +119,19 @@ export const withRunGenerator =
         writeDebug("Completed the postProcess hook", config);
       }
 
-      writeSuccess(`Completed running the ${name} task executor!\n`, config);
-
-      return {
-        ...result,
-        success: true
+      return () => {
+        writeSuccess(`Completed running the ${name} task executor!\n`, config);
       };
     } catch (error) {
-      writeFatal(
-        "A fatal error occurred while running the generator - the process was forced to terminate",
-        config
-      );
-      writeError(
-        `An exception was thrown in the generator's process \n - Details: ${error.message}\n - Stacktrace: ${error.stack}`,
-        config
-      );
-
-      return {
-        success: false
+      return () => {
+        writeFatal(
+          "A fatal error occurred while running the generator - the process was forced to terminate",
+          config
+        );
+        writeError(
+          `An exception was thrown in the generator's process \n - Details: ${error.message}\n - Stacktrace: ${error.stack}`,
+          config
+        );
       };
     } finally {
       stopwatch();
