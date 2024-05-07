@@ -1,3 +1,20 @@
+## 1.47.0 (2024-05-07)
+
+
+### 🚀 Features
+
+- **config:** Added the `accent` color token to configuration ([a7a24ec1](https://github.com/storm-software/storm-ops/commit/a7a24ec1))
+
+
+### 🩹 Fixes
+
+- **config:** Mark the `accent` color as optional ([156921b6](https://github.com/storm-software/storm-ops/commit/156921b6))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.46.0 (2024-05-07)
 
 
