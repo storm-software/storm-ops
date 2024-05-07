@@ -15,6 +15,16 @@ on:
         required: false
         type: string
         default: "Stormie-Bot"
+      packageManager:
+        description: Package manager
+        type: string
+        required: false
+        default: pnpm
+      packageManagerVersion:
+        description: Package manager version
+        type: string
+        required: false
+        default: 8.10.2
     secrets:
       githubToken:
         required: true
@@ -77,10 +87,10 @@ jobs:
           token: ${{ secrets.githubToken }}
 
       - name: Setup workspace
-        uses: storm-software/storm-ops/.github/actions/setup
+        uses: storm-software/storm-ops/.github/actions/setup/action.yml@main
         with:
-          packageManager: pnpm
-          packageManagerVersion: 8.10.2
+          packageManager: ${{ inputs.packageManager }}
+          packageManagerVersion: ${{ inputs.packageManagerVersion }}
           stormBot: ${{ inputs.stormBot }}
 
       - name: Configure git
