@@ -231,6 +231,9 @@ const setSingleThemeColorConfigEnv = (
   if (config.brand) {
     process.env[`${prefix}BRAND`] = config.brand;
   }
+  if (config.accent) {
+    process.env[`${prefix}ACCENT`] = config.accent;
+  }
   if (config.help) {
     process.env[`${prefix}HELP`] = config.help;
   }
@@ -273,6 +276,9 @@ const setBaseThemeColorConfigEnv = (
   }
   if (config.brand) {
     process.env[`${prefix}BRAND`] = config.brand;
+  }
+  if (config.accent) {
+    process.env[`${prefix}ACCENT`] = config.accent;
   }
   if (config.help) {
     process.env[`${prefix}HELP`] = config.help;

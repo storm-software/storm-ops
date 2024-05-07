@@ -58,6 +58,7 @@ export const COLOR_KEYS = [
   "light",
   "brand",
   "accent",
+  "help",
   "success",
   "info",
   "warning",
