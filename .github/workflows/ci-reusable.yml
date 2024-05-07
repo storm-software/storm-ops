@@ -77,7 +77,7 @@ jobs:
           token: ${{ secrets.githubToken }}
 
       - name: Setup workspace
-        uses: storm-software/storm-ops/.github/actions/setup/action.yml@main
+        uses: storm-software/storm-ops/.github/actions/setup
         with:
           packageManager: pnpm
           packageManagerVersion: 8.10.2

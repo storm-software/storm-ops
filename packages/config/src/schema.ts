@@ -24,7 +24,7 @@ const BrandColorSchema = z
   .length(7)
   .default("#1fb2a6")
   .describe("The first brand specific color of the workspace");
-const AccentColorSchema = z
+const HelpColorSchema = z
   .string()
   .trim()
   .toLowerCase()
@@ -77,7 +77,7 @@ export const DarkThemeColorConfigSchema = z.object({
   foreground: LightColorSchema,
   background: DarkColorSchema,
   brand: BrandColorSchema,
-  accent: AccentColorSchema,
+  help: HelpColorSchema,
   success: SuccessColorSchema,
   info: InfoColorSchema,
   warning: WarningColorSchema,
@@ -89,7 +89,7 @@ export const LightThemeColorConfigSchema = z.object({
   foreground: DarkColorSchema,
   background: LightColorSchema,
   brand: BrandColorSchema,
-  accent: AccentColorSchema,
+  help: HelpColorSchema,
   success: SuccessColorSchema,
   info: InfoColorSchema,
   warning: WarningColorSchema,
@@ -106,7 +106,7 @@ export const SingleThemeColorConfigSchema = z.object({
   dark: DarkColorSchema,
   light: LightColorSchema,
   brand: BrandColorSchema,
-  accent: AccentColorSchema,
+  help: HelpColorSchema,
   success: SuccessColorSchema,
   info: InfoColorSchema,
   warning: WarningColorSchema,
