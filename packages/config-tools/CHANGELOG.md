@@ -1,3 +1,15 @@
+## 1.46.0 (2024-05-07)
+
+
+### 🚀 Features
+
+- **config:** Add the `help` color token type ([8a466466](https://github.com/storm-software/storm-ops/commit/8a466466))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.45.1 (2024-05-06)
 
 
