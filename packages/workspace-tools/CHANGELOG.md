@@ -1,3 +1,17 @@
+## 1.76.2 (2024-05-07)
+
+
+### 🩹 Fixes
+
+- **config:** Mark the `accent` color as optional ([156921b6](https://github.com/storm-software/storm-ops/commit/156921b6))
+
+- **workspace-tools:** Resolved issue with invalid result returned from versioning generator ([a489eac5](https://github.com/storm-software/storm-ops/commit/a489eac5))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.76.1 (2024-05-06)
 
 
