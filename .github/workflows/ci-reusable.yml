@@ -131,8 +131,9 @@ jobs:
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ github.token }}
-          NPM_TOKEN: ${{ inputs.npmToken }}
-          CARGO_REGISTRY_TOKEN: ${{ inputs.cargoToken }}
+          GH_TOKEN: ${{ github.token }}
+          NPM_TOKEN: ${{ secrets.npmToken }}
+          CARGO_REGISTRY_TOKEN: ${{ secrets.cargoToken }}
           STORM_BOT: ${{ inputs.stormBot }}
           STORM_WORKSPACE_ROOT: ${{ github.workspace }}
           STORM_REPOSITORY: ${{ github.repositoryUrl }}
