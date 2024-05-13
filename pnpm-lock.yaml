@@ -703,8 +703,8 @@ importers:
         specifier: 8.0.0
         version: 8.0.0(patch_hash=drf3yjuy45jg6lcmd5ihmmvct4)(@microsoft/api-extractor@7.43.4(@types/node@20.12.11))(@swc/core@1.5.5(@swc/helpers@0.5.11))(postcss@8.4.38)(ts-node@10.9.2(@swc/core@1.5.5(@swc/helpers@0.5.11))(@swc/wasm@1.5.5)(@types/node@20.12.11)(typescript@5.4.5))(typescript@5.4.5)
       typia:
-        specifier: 5.5.10
-        version: 5.5.10(typescript@5.4.5)
+        specifier: 6.0.3
+        version: 6.0.3(typescript@5.4.5)
       zod:
         specifier: 3.23.8
         version: 3.23.8
@@ -3193,6 +3193,9 @@ packages:
 
   '@rushstack/ts-command-line@4.19.5':
     resolution: {integrity: sha512-0baDWdyMeB2LFHn1T8PKmy2rGclJoDruOjxwARrM4Oe66YjO9GfVZYwpM8ePdzJprWhkCnYLSxGUKJiWmUpapg==}
+
+  '@samchon/openapi@0.1.21':
+    resolution: {integrity: sha512-IUCOZpLOx8IZzxW87ySvFRSyGMRRQS5vpUwhUddzVR9vlDvTfVYjQjFuiJBqQIeGSdZExV3JzuHJCogacmd0/g==}
 
   '@sinclair/typebox@0.27.8':
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
@@ -10239,8 +10242,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typia@5.5.10:
-    resolution: {integrity: sha512-IhSzSNW/CrFmrP9cgBMFj6oEJpDD9+mXSepaJu/E0/5mOUkH+riXsZSM6BjaMtBRtlhYeYyTRSyToL7XxZlueg==}
+  typia@6.0.3:
+    resolution: {integrity: sha512-Yq69N1EbVcU3kXxeEQEdl9J9mhWRJLfGiKBl9e2zLCIVfzYt/WVjEidlpy1BAPybfOTuIZ+jFtsooZ4FQNJffw==}
     hasBin: true
     peerDependencies:
       typescript: '>=4.8.0 <5.5.0'
@@ -13493,7 +13496,7 @@ snapshots:
       npm-package-arg: 11.0.1
       npm-run-path: 4.0.1
       ora: 5.3.0
-      semver: 7.6.2
+      semver: 7.6.0
       source-map-support: 0.5.19
       ts-node: 10.9.1(@swc/core@1.5.5(@swc/helpers@0.5.11))(@swc/wasm@1.5.5)(@types/node@20.12.11)(typescript@5.4.5)
       tsconfig-paths: 4.2.0
@@ -14132,6 +14135,8 @@ snapshots:
       string-argv: 0.3.2
     transitivePeerDependencies:
       - '@types/node'
+
+  '@samchon/openapi@0.1.21': {}
 
   '@sinclair/typebox@0.27.8': {}
 
@@ -23149,8 +23154,9 @@ snapshots:
 
   typescript@5.4.5: {}
 
-  typia@5.5.10(typescript@5.4.5):
+  typia@6.0.3(typescript@5.4.5):
     dependencies:
+      '@samchon/openapi': 0.1.21
       commander: 10.0.1
       comment-json: 4.2.3
       inquirer: 8.2.6
