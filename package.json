@@ -80,18 +80,18 @@
     "@nx/workspace": "18.3.3",
     "@swc-node/register": "1.9.1",
     "@swc/cli": "0.3.12",
-    "@swc/core": "1.4.17",
+    "@swc/core": "1.5.5",
     "@swc/helpers": "0.5.11",
     "@swc/wasm": "1.5.5",
     "@taplo/cli": "0.7.0",
     "@types/jest": "29.5.12",
     "@types/node": "20.12.11",
-    "@typescript-eslint/eslint-plugin": "7.7.1",
+    "@typescript-eslint/eslint-plugin": "7.8.0",
     "@typescript-eslint/parser": "7.8.0",
     "conventional-changelog-conventionalcommits": "8.0.0",
-    "esbuild": "0.20.2",
+    "esbuild": "0.21.2",
     "esbuild-register": "3.5.0",
-    "eslint": "9.1.1",
+    "eslint": "9.2.0",
     "eslint-config-prettier": "9.1.0",
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
@@ -109,13 +109,13 @@
     "tsconfig-paths": "4.2.0",
     "tslib": "2.6.2",
     "typescript": "5.4.5",
-    "verdaccio": "5.30.3"
+    "verdaccio": "5.31.0"
   },
   "devDependencies": {
     "@storm-software/testing-tools": "latest",
     "@storm-software/workspace-tools": "latest"
   },
-  "packageManager": "pnpm@9.0.6",
+  "packageManager": "pnpm@9.1.1",
   "engines": {
     "node": ">=20.11.0",
     "pnpm": ">=8.10.2"
