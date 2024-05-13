@@ -36,7 +36,7 @@
     "@anatine/esbuild-decorators": "0.2.19",
     "@microsoft/api-extractor": "7.43.4",
     "@nx/devkit": "18.2.4",
-    "@nx/js": "18.3.3",
+    "@nx/js": "19.0.3",
     "@nx/workspace": "18.3.3",
     "@rollup/plugin-commonjs": "25.0.7",
     "@rollup/plugin-image": "3.0.3",
