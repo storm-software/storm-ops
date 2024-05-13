@@ -43,7 +43,7 @@
   "dependencies": {
     "@nx/devkit": "18.2.4",
     "@nx/node": "^18.3.3",
-    "@nx/web": "^18.3.3",
+    "@nx/web": "^19.0.3",
     "@nx/webpack": "^18.3.3",
     "jest-resolve": "29.7.0",
     "tslib": "2.6.2",
