@@ -51,7 +51,7 @@
     "inquirer": "9.2.20",
     "nx": "18.3.4",
     "prettier": "3.2.5",
-    "semver": "7.6.0",
+    "semver": "7.6.2",
     "tsconfig-paths": "4.2.0",
     "word-wrap": "1.2.5"
   },
