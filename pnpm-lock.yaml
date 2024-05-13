@@ -227,8 +227,8 @@ importers:
         specifier: 4.3.1
         version: 4.3.1
       esbuild-plugin-environment:
-        specifier: 0.3.0
-        version: 0.3.0(esbuild@0.19.12)
+        specifier: 0.4.0
+        version: 0.4.0(esbuild@0.19.12)
       fs-extra:
         specifier: 11.2.0
         version: 11.2.0
@@ -661,8 +661,8 @@ importers:
         specifier: 1.1.1
         version: 1.1.1
       esbuild-plugin-environment:
-        specifier: 0.3.0
-        version: 0.3.0(esbuild@0.19.12)
+        specifier: 0.4.0
+        version: 0.4.0(esbuild@0.19.12)
       esbuild-plugin-handlebars:
         specifier: 1.0.3
         version: 1.0.3
@@ -5342,15 +5342,15 @@ packages:
     resolution: {integrity: sha512-QCOllgZJtaUo9miYBcLChTUaHNjJF3PYs1VidD7AwiEj1kYxKeQTctLAezAOH5ZKRH0g2IgPn6KwB4IT8iRpvA==}
     engines: {node: '>= 0.4'}
 
-  esbuild-plugin-define@0.4.0:
-    resolution: {integrity: sha512-ylJeiuafplaDsKE+S9hDRF/puxZ+uymHzr/lOYEmSD8jnDewKDMgl9e/YzBpSd3IvdfbxxyK3xCs2josZjSwPQ==}
-    engines: {node: '>=16.0.0'}
+  esbuild-plugin-define@0.5.0:
+    resolution: {integrity: sha512-GNchZYjo8nQHLYbvTIi9w6MXj1lzi1yPEnfsHpeTRbTx2g0+g79ngoU0N5hS5EQwfpzTUzZKETx16UO8W8dW0g==}
+    engines: {node: '>=18.14.0'}
     peerDependencies:
       esbuild: '>=0.15'
 
-  esbuild-plugin-environment@0.3.0:
-    resolution: {integrity: sha512-r+zquuUd3JmtbYei8ZpkP124zVZjTExFjkt34G8nJqRe5uU468u08a97NhSONINfVuMzQyoKj+B5lkduJ0+fKQ==}
-    engines: {node: '>=16.0.0'}
+  esbuild-plugin-environment@0.4.0:
+    resolution: {integrity: sha512-GtZCsiT/Fk9e7HWSwcE3HnpKD07yvpNh2jTJ0U0CsMc/I3wA3CSSO2eT1psxD3jgLCIWiSw4i1LY0BHH27VmBg==}
+    engines: {node: '>=18.14.0'}
     peerDependencies:
       esbuild: '>=0.15'
 
@@ -16868,14 +16868,14 @@ snapshots:
       is-date-object: 1.0.5
       is-symbol: 1.0.4
 
-  esbuild-plugin-define@0.4.0(esbuild@0.19.12):
+  esbuild-plugin-define@0.5.0(esbuild@0.19.12):
     dependencies:
       esbuild: 0.19.12
 
-  esbuild-plugin-environment@0.3.0(esbuild@0.19.12):
+  esbuild-plugin-environment@0.4.0(esbuild@0.19.12):
     dependencies:
       esbuild: 0.19.12
-      esbuild-plugin-define: 0.4.0(esbuild@0.19.12)
+      esbuild-plugin-define: 0.5.0(esbuild@0.19.12)
 
   esbuild-plugin-handlebars@1.0.3:
     dependencies:
