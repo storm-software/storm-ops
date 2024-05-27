@@ -87,7 +87,7 @@ jobs:
           token: ${{ secrets.githubToken }}
 
       - name: Setup workspace
-        uses: storm-software/actions-setup@main
+        uses: storm-software/action-setup@main
         with:
           packageManager: ${{ inputs.packageManager }}
           packageManagerVersion: ${{ inputs.packageManagerVersion }}

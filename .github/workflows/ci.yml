@@ -78,7 +78,7 @@ jobs:
           token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
       - name: Setup workspace
-        uses: ./.github/actions/setup
+        uses: storm-software/action-setup@main
         with:
           packageManager: pnpm
           packageManagerVersion: 8.10.2
