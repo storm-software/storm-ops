@@ -94,10 +94,10 @@
       ]
     }*/
   ],
-  "yaml.schemas": {
+  /*"yaml.schemas": {
     "url": "https://json.schemastore.org/github-action.json",
     "fileMatch": [".github/actions/setup/action.yml"]
-  },
+  },*/
   /******************************
    * VS Code Search
    ******************************/

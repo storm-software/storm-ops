@@ -19,10 +19,6 @@
       "fileMatch": ["nx.json"]
     }
   ],
-  "yaml.schemas": {
-    "url": "https://json.schemastore.org/github-action.json",
-    "fileMatch": [".github/actions/setup/action.yml"]
-  },
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
