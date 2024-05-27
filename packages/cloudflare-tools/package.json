@@ -44,7 +44,7 @@
     "@nx/devkit": "19.0.4",
     "@nx/node": "^18.3.3",
     "@nx/web": "^19.0.3",
-    "@nx/webpack": "^18.3.3",
+    "@nx/webpack": "^19.1.0",
     "jest-resolve": "29.7.0",
     "tslib": "2.6.2",
     "wrangler": "3.55.0"
