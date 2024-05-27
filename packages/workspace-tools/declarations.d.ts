@@ -10,6 +10,8 @@ import type {
   SourceFile,
   ParsedCommandLine
 } from "typescript";
+import type { NormalizedSchema } from "@nx/js/src/generators/library/library";
+import type { LibraryGeneratorSchema } from "@nx/js/src/utils/schema";
 
 export interface TsupContext {
   projectRoot: string;
@@ -152,3 +154,39 @@ declare function withRunGenerator<TGeneratorSchema = any>(
   _options: TGeneratorSchema
 ) => Promise<GeneratorCallback | BaseGeneratorResult>;
 export { withRunGenerator };
+
+export type TypeScriptLibraryGeneratorSchema = Omit<
+  LibraryGeneratorSchema,
+  | "js"
+  | "pascalCaseFiles"
+  | "skipFormat"
+  | "skipTsConfig"
+  | "skipPackageJson"
+  | "includeBabelRc"
+  | "unitTestRunner"
+  | "linter"
+  | "testEnvironment"
+  | "config"
+  | "compiler"
+  | "bundler"
+  | "skipTypeCheck"
+  | "minimal"
+> & {
+  name: string;
+  description: string;
+  buildExecutor: string;
+  platform?: Platform;
+  devDependencies?: Record<string, string>;
+  peerDependencies?: Record<string, string>;
+  peerDependenciesMeta?: Record<string, any>;
+  tsConfigOptions?: Record<string, any>;
+};
+
+export type TypeScriptLibraryGeneratorNormalizedSchema =
+  TypeScriptLibraryGeneratorSchema & NormalizedSchema;
+
+declare function typeScriptLibraryGeneratorFn(
+  tree: Tree,
+  schema: TypeScriptLibraryGeneratorSchema
+): Promise<any>;
+export { typeScriptLibraryGeneratorFn };
