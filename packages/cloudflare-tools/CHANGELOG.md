@@ -1,3 +1,17 @@
+## 0.2.2 (2024-05-27)
+
+
+### 🩹 Fixes
+
+- **deps:** update dependencies-non-major ([#145](https://github.com/storm-software/storm-ops/pull/145))
+
+- **deps:** update dependencies-non-major ([#159](https://github.com/storm-software/storm-ops/pull/159))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.2.1 (2024-04-29)
 
 

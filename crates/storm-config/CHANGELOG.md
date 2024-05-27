@@ -1,3 +1,19 @@
+## 0.3.5 (2024-05-27)
+
+
+### 🩹 Fixes
+
+- **deps:** update patch prod dependencies ([a8113435](https://github.com/storm-software/storm-ops/commit/a8113435))
+
+- **deps:** update patch prod dependencies ([20ed7f14](https://github.com/storm-software/storm-ops/commit/20ed7f14))
+
+- **deps:** update patch prod dependencies ([bef67d5d](https://github.com/storm-software/storm-ops/commit/bef67d5d))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 0.3.4 (2024-04-29)
 
 

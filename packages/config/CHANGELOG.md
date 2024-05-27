@@ -1,3 +1,15 @@
+## 1.18.1 (2024-05-27)
+
+
+### 🩹 Fixes
+
+- **deps:** update patch prod dependencies ([a8113435](https://github.com/storm-software/storm-ops/commit/a8113435))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.18.0 (2024-05-07)
 
 

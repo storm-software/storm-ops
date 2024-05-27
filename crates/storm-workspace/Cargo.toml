@@ -2,7 +2,7 @@
 [package]
 name = 'storm-workspace'
 description = 'A crate containing various utilities and tools used by Storm Software to manage monorepos.'
-version = '0.3.3'
+version = '0.3.4'
 publish = true
 edition = { workspace = true }
 repository = { workspace = true }
