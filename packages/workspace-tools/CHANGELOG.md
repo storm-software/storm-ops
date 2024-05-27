@@ -1,3 +1,15 @@
+## 1.77.0 (2024-05-27)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Added the `TypeScriptLibraryGenerator` executor types to exports ([3e9432b1](https://github.com/storm-software/storm-ops/commit/3e9432b1))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.76.3 (2024-05-27)
 
 
