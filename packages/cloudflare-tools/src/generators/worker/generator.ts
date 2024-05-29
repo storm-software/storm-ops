@@ -60,7 +60,6 @@ export async function applicationGenerator(
     );
 
     const options = await normalizeOptions(tree, schema, config);
-
     const tasks: GeneratorCallback[] = [];
 
     // Set up the needed packages.
@@ -260,7 +259,9 @@ async function normalizeOptions(
 
   return {
     addPlugin: process.env.NX_ADD_PLUGINS !== "false",
-    accountId: config?.cloudflareAccountId,
+    accountId: config?.cloudflareAccountId
+      ? config.cloudflareAccountId
+      : undefined,
     ...options,
     name: names(appProjectName).fileName,
     frontendProject: options.frontendProject
