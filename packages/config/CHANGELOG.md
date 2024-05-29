@@ -1,178 +1,162 @@
-## 1.18.1 (2024-05-27)
+## 1.19.0 (2024-05-29)
 
+### 🚀 Features
+
+- **config:** Added the `cloudflareAccountId` configuration parameter ([db4cbd7d](https://github.com/storm-software/storm-ops/commit/db4cbd7d))
+
+### 🩹 Fixes
+
+- **storm-ops:** Upgrade the monorepo's Nx package versions ([29c7e48d](https://github.com/storm-software/storm-ops/commit/29c7e48d))
+
+### ❤️ Thank You
+
+- Patrick Sullivan
+
+## 1.18.1 (2024-05-27)
 
 ### 🩹 Fixes
 
 - **deps:** update patch prod dependencies ([a8113435](https://github.com/storm-software/storm-ops/commit/a8113435))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.18.0 (2024-05-07)
 
-
 ### 🚀 Features
 
 - **config:** Added the `accent` color token to configuration ([a7a24ec1](https://github.com/storm-software/storm-ops/commit/a7a24ec1))
-
 
 ### 🩹 Fixes
 
 - **config:** Mark the `accent` color as optional ([156921b6](https://github.com/storm-software/storm-ops/commit/156921b6))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.17.0 (2024-05-07)
 
-
 ### 🚀 Features
 
 - **config:** Add the `help` color token type ([8a466466](https://github.com/storm-software/storm-ops/commit/8a466466))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.16.7 (2024-05-06)
 
-
 ### 🩹 Fixes
 
 - **markdownlint:** Resolved issue with bad config in lint file ([95b3aba7](https://github.com/storm-software/storm-ops/commit/95b3aba7))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.16.6 (2024-05-04)
 
-
 ### 🩹 Fixes
 
 - **config:** Resolve issue with invalid export paths ([890deaec](https://github.com/storm-software/storm-ops/commit/890deaec))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.16.5 (2024-05-04)
 
-
 ### 🩹 Fixes
 
 - **config:** Update the imports used in the `package.json` file ([63a6cf2a](https://github.com/storm-software/storm-ops/commit/63a6cf2a))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.16.4 (2024-05-04)
 
-
 ### 🩹 Fixes
 
 - **config:** Resolve issue with previous dist package ([23abea7a](https://github.com/storm-software/storm-ops/commit/23abea7a))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.16.3 (2024-05-04)
 
-
 ### 🩹 Fixes
 
 - **config:** Update type declarations on shared config package ([0a560583](https://github.com/storm-software/storm-ops/commit/0a560583))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.16.2 (2024-05-04)
 
-
 ### 🩹 Fixes
 
 - **config:** Ensure `schemas` folder is specified in `package.json` file ([23f25d69](https://github.com/storm-software/storm-ops/commit/23f25d69))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.16.1 (2024-05-04)
 
-
 ### 🩹 Fixes
 
 - **config:** Ensure JSON schema asset gets copied into dist folder ([cde736ce](https://github.com/storm-software/storm-ops/commit/cde736ce))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.16.0 (2024-05-04)
 
-
 ### 🚀 Features
 
 - **config:** Generated the Storm Configuration JSON schema package asset ([0a5c9bb2](https://github.com/storm-software/storm-ops/commit/0a5c9bb2))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.15.0 (2024-05-04)
 
-
 ### 🚀 Features
 
 - **config:** Update the structure of the theme color names ([4c087334](https://github.com/storm-software/storm-ops/commit/4c087334))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.14.0 (2024-05-04)
 
-
 ### 🚀 Features
 
 - **config:** Reorganized the required theme config schema values ([3ec7b029](https://github.com/storm-software/storm-ops/commit/3ec7b029))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.13.0 (2024-05-04)
 
-
 ### 🚀 Features
 
 - **config:** Update the theme to use brand colors instead of hierarchy colors ([bcff6b80](https://github.com/storm-software/storm-ops/commit/bcff6b80))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.12.3 (2024-04-29)
-
 
 ### 🩹 Fixes
 
@@ -180,80 +164,67 @@
 
 - **deps:** update dependencies-non-major ([#130](https://github.com/storm-software/storm-ops/pull/130))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.12.2 (2024-04-26)
 
-
 ### 🩹 Fixes
 
 - **config-tools:** Improved logging and enhanced config json preset ([5dabb1ae](https://github.com/storm-software/storm-ops/commit/5dabb1ae))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.12.1 (2024-04-24)
 
-
 ### 🩹 Fixes
 
 - **config-tools:** Updates to the default values applied to the Storm config ([4cc78a98](https://github.com/storm-software/storm-ops/commit/4cc78a98))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.12.0 (2024-04-24)
 
-
 ### 🚀 Features
 
 - **config:** Add type exports for theme color typings ([61fe73f9](https://github.com/storm-software/storm-ops/commit/61fe73f9))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.11.3 (2024-04-22)
 
-
 ### 🩹 Fixes
 
 - **config:** Added updates to repository logging ([2b871dc3](https://github.com/storm-software/storm-ops/commit/2b871dc3))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.11.2 (2024-04-15)
 
-
 ### 🩹 Fixes
 
 - **config-tools:** Resolved issue with missing fields in Storm configuration ([cf157d2a](https://github.com/storm-software/storm-ops/commit/cf157d2a))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.11.1 (2024-04-13)
 
-
 ### 🩹 Fixes
 
 - **config-tools:** Resolved issue with bad `project.json` tasks ([744c7eef](https://github.com/storm-software/storm-ops/commit/744c7eef))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 

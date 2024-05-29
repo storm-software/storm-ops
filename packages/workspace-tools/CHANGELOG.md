@@ -1,17 +1,24 @@
-## 1.77.0 (2024-05-27)
+## 1.78.0 (2024-05-29)
 
+### 🚀 Features
+
+- **config:** Added the `cloudflareAccountId` configuration parameter ([db4cbd7d](https://github.com/storm-software/storm-ops/commit/db4cbd7d))
+
+### ❤️ Thank You
+
+- Patrick Sullivan
+
+## 1.77.0 (2024-05-27)
 
 ### 🚀 Features
 
 - **workspace-tools:** Added the `TypeScriptLibraryGenerator` executor types to exports ([3e9432b1](https://github.com/storm-software/storm-ops/commit/3e9432b1))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.76.3 (2024-05-27)
-
 
 ### 🩹 Fixes
 
@@ -27,13 +34,11 @@
 
 - **deps:** update dependencies-non-major ([#159](https://github.com/storm-software/storm-ops/pull/159))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.76.2 (2024-05-07)
-
 
 ### 🩹 Fixes
 
@@ -41,20 +46,17 @@
 
 - **workspace-tools:** Resolved issue with invalid result returned from versioning generator ([a489eac5](https://github.com/storm-software/storm-ops/commit/a489eac5))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.76.1 (2024-05-06)
 
-
 ### 🩹 Fixes
 
 - **markdownlint:** Resolved issue with bad config in lint file ([95b3aba7](https://github.com/storm-software/storm-ops/commit/95b3aba7))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 

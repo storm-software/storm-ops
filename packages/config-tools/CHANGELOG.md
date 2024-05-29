@@ -1,53 +1,54 @@
-## 1.47.1 (2024-05-27)
+## 1.48.0 (2024-05-29)
 
+### 🚀 Features
+
+- **config:** Added the `cloudflareAccountId` configuration parameter ([db4cbd7d](https://github.com/storm-software/storm-ops/commit/db4cbd7d))
+
+### ❤️ Thank You
+
+- Patrick Sullivan
+
+## 1.47.1 (2024-05-27)
 
 ### 🩹 Fixes
 
 - **deps:** update patch prod dependencies ([a8113435](https://github.com/storm-software/storm-ops/commit/a8113435))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.47.0 (2024-05-07)
 
-
 ### 🚀 Features
 
 - **config:** Added the `accent` color token to configuration ([a7a24ec1](https://github.com/storm-software/storm-ops/commit/a7a24ec1))
-
 
 ### 🩹 Fixes
 
 - **config:** Mark the `accent` color as optional ([156921b6](https://github.com/storm-software/storm-ops/commit/156921b6))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.46.0 (2024-05-07)
 
-
 ### 🚀 Features
 
 - **config:** Add the `help` color token type ([8a466466](https://github.com/storm-software/storm-ops/commit/8a466466))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
 ## 1.45.1 (2024-05-06)
 
-
 ### 🩹 Fixes
 
 - **markdownlint:** Resolved issue with bad config in lint file ([95b3aba7](https://github.com/storm-software/storm-ops/commit/95b3aba7))
 
-
-### ❤️  Thank You
+### ❤️ Thank You
 
 - Patrick Sullivan
 
