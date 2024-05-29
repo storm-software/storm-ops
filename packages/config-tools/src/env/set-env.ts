@@ -188,6 +188,11 @@ export const setConfigEnv = (config: StormConfig) => {
       config.externalPackagePatterns
     );
   }
+  if (config.cloudflareAccountId) {
+    process.env[`${prefix}CLOUDFLARE_ACCOUNT_ID`] = String(
+      config.cloudflareAccountId
+    );
+  }
   if (config.logLevel) {
     process.env[`${prefix}LOG_LEVEL`] = String(config.logLevel);
     process.env.LOG_LEVEL = String(config.logLevel);

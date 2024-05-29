@@ -286,6 +286,11 @@ export const StormConfigSchema = z
       .describe(
         "The log level used to filter out lower priority log messages. If not provided, this is defaulted using the `environment` config value (if `environment` is set to `production` then `level` is `error`, else `level` is `debug`)."
       ),
+    cloudflareAccountId: z
+      .string()
+      .trim()
+      .optional()
+      .describe("The default Cloudflare account ID of the workspace"),
     configFile: z
       .string()
       .trim()

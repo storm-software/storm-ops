@@ -7,7 +7,6 @@ import {
   names,
   readProjectConfiguration,
   runTasksInSerial,
-  toJS,
   Tree,
   updateJson,
   updateProjectConfiguration
@@ -21,73 +20,121 @@ import { getAccountId } from "./libs/get-account-id";
 import { vitestScript } from "./libs/vitest-script";
 import { determineProjectNameAndRootOptions } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import { nxVersion } from "@nx/node/src/utils/versions";
+import { StormConfig } from "@storm-software/config";
 
 export async function applicationGenerator(
   tree: Tree,
   schema: WorkerGeneratorSchema
 ) {
-  const options = await normalizeOptions(tree, schema);
+  const {
+    getStopwatch,
+    writeDebug,
+    writeError,
+    writeFatal,
+    writeInfo,
+    writeTrace,
+    findWorkspaceRoot,
+    loadStormConfig
+  } = await import("@storm-software/config-tools");
 
-  const tasks: GeneratorCallback[] = [];
+  const stopwatch = getStopwatch("Storm Worker generator");
 
-  // Set up the needed packages.
-  tasks.push(
-    await initGenerator(tree, {
-      ...options,
-      skipFormat: true
-    })
-  );
+  let config: StormConfig | undefined;
+  try {
+    writeInfo(`⚡ Running the Storm Worker generator...\n\n`, config);
 
-  tasks.push(
-    await nodeApplicationGenerator(tree, {
-      ...options,
-      framework: "none",
-      skipFormat: true,
-      unitTestRunner:
-        options.unitTestRunner == "vitest" ? "none" : options.unitTestRunner,
-      e2eTestRunner: "none",
-      name: schema.name
-    })
-  );
+    const workspaceRoot = findWorkspaceRoot();
 
-  if (options.unitTestRunner === "vitest") {
-    const { vitestGenerator, createOrEditViteConfig } = ensurePackage(
-      "@nx/vite",
-      nxVersion
+    writeDebug(
+      `Loading the Storm Config from environment variables and storm.json file...
+- workspaceRoot: ${workspaceRoot}`,
+      config
     );
-    const vitestTask = await vitestGenerator(tree, {
-      project: options.name,
-      uiFramework: "none",
-      coverageProvider: "v8",
-      skipFormat: true,
-      testEnvironment: "node"
-    });
-    tasks.push(vitestTask);
-    createOrEditViteConfig(
-      tree,
-      {
+
+    config = await loadStormConfig(workspaceRoot);
+    writeTrace(
+      `Loaded Storm config into env: \n${Object.keys(process.env)
+        .map(key => ` - ${key}=${JSON.stringify(process.env[key])}`)
+        .join("\n")}`,
+      config
+    );
+
+    const options = await normalizeOptions(tree, schema, config);
+
+    const tasks: GeneratorCallback[] = [];
+
+    // Set up the needed packages.
+    tasks.push(
+      await initGenerator(tree, {
+        ...options,
+        skipFormat: true
+      })
+    );
+
+    tasks.push(
+      await nodeApplicationGenerator(tree, {
+        ...options,
+        framework: "none",
+        skipFormat: true,
+        unitTestRunner:
+          options.unitTestRunner == "vitest" ? "none" : options.unitTestRunner,
+        e2eTestRunner: "none",
+        name: schema.name
+      })
+    );
+
+    if (options.unitTestRunner === "vitest") {
+      const { vitestGenerator, createOrEditViteConfig } = ensurePackage(
+        "@nx/vite",
+        nxVersion
+      );
+      const vitestTask = await vitestGenerator(tree, {
         project: options.name,
-        includeLib: false,
-        includeVitest: true,
+        uiFramework: "none",
+        coverageProvider: "v8",
+        skipFormat: true,
         testEnvironment: "node"
-      },
-      true
-    );
+      });
+      tasks.push(vitestTask);
+      createOrEditViteConfig(
+        tree,
+        {
+          project: options.name,
+          includeLib: false,
+          includeVitest: true,
+          testEnvironment: "node"
+        },
+        true
+      );
+    }
+
+    addCloudflareFiles(tree, options);
+    updateTsAppConfig(tree, options);
+    addTargets(tree, options);
+
+    if (options.unitTestRunner === "none") {
+      removeTestFiles(tree, options);
+    }
+
+    if (!options.skipFormat) {
+      await formatFiles(tree);
+    }
+
+    return runTasksInSerial(...tasks);
+  } catch (error) {
+    return () => {
+      writeFatal(
+        "A fatal error occurred while running the generator - the process was forced to terminate",
+        config
+      );
+      writeError(
+        `An exception was thrown in the generator's process \n - Details: ${error.message}\n - Stacktrace: ${error.stack}`,
+        config
+      );
+    };
+  } finally {
+    stopwatch();
   }
-
-  addCloudflareFiles(tree, options);
-  updateTsAppConfig(tree, options);
-  addTargets(tree, options);
-
-  if (options.unitTestRunner === "none") {
-    removeTestFiles(tree, options);
-  }
-
-  if (!options.skipFormat) {
-    await formatFiles(tree);
-  }
-
-  return runTasksInSerial(...tasks);
 }
 
 // Modify the default tsconfig.app.json generate by the node application generator to support workers.
@@ -124,9 +171,7 @@ function updateTsAppConfig(tree: Tree, options: NormalizedSchema) {
 // Adds the needed files from the common folder and the selected template folder
 function addCloudflareFiles(tree: Tree, options: NormalizedSchema) {
   // Delete main.ts. Workers convention is a file named `index.js` or `index.ts
-  tree.delete(
-    join(options.appProjectRoot, `src/main.${options.js ? "js" : "ts"}`)
-  );
+  tree.delete(join(options.appProjectRoot, "src/main.ts"));
 
   // General configuration files for workers
   generateFiles(
@@ -137,7 +182,6 @@ function addCloudflareFiles(tree: Tree, options: NormalizedSchema) {
       ...options,
       tmpl: "",
       name: options.name,
-      extension: options.js ? "js" : "ts",
       accountId: options.accountId ? getAccountId(options.accountId) : "",
       vitestScript: options.unitTestRunner === "vitest" ? vitestScript : ""
     }
@@ -153,14 +197,11 @@ function addCloudflareFiles(tree: Tree, options: NormalizedSchema) {
         ...options,
         tmpl: "",
         name: options.name,
+        accountId: options.accountId ? getAccountId(options.accountId) : "",
+        vitestScript: options.unitTestRunner === "vitest" ? vitestScript : "",
         vitestImports: options.unitTestRunner === "vitest" ? vitestImports : ""
       }
     );
-  }
-
-  // Modify the files extension and content to use vanilla JavaScript
-  if (options.js) {
-    toJS(tree);
   }
 }
 
@@ -199,7 +240,8 @@ function removeTestFiles(tree: Tree, options: NormalizedSchema) {
 // Transform the options to the normalized schema. Loads defaults options.
 async function normalizeOptions(
   host: Tree,
-  options: WorkerGeneratorSchema
+  options: WorkerGeneratorSchema,
+  config?: StormConfig
 ): Promise<NormalizedSchema> {
   const {
     projectName: appProjectName,
@@ -218,6 +260,7 @@ async function normalizeOptions(
 
   return {
     addPlugin: process.env.NX_ADD_PLUGINS !== "false",
+    accountId: config?.cloudflareAccountId,
     ...options,
     name: names(appProjectName).fileName,
     frontendProject: options.frontendProject

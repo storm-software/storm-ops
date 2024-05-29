@@ -1,4 +1,4 @@
 name = "<%=name %>"
 compatibility_date = "2024-04-21"
-main = "src/index.<%=extension %>"
+main = "src/index.ts"
 <%-accountId %>

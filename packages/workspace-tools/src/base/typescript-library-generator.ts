@@ -325,17 +325,25 @@ export async function addLint(
     return task;
   }
 
-  // Also update the root ESLint config. The lintProjectGenerator will not generate it for root projects.
-  // But we need to set the package.json checks.
-  if (options.rootProject) {
-    addOverrideToLintConfig(tree, "", {
-      files: ["*.json"],
-      parser: "jsonc-eslint-parser",
-      rules: {
-        "@nx/dependency-checks": "error"
-      }
-    });
-  }
+  addOverrideToLintConfig(tree, "", {
+    files: ["*.json"],
+    parser: "jsonc-eslint-parser",
+    rules: {
+      "@nx/dependency-checks": [
+        "error",
+        {
+          "buildTargets": ["build"],
+          "ignoredFiles": [
+            "{projectRoot}/esbuild.config.{js,ts,mjs,mts}",
+            "{projectRoot}/jest.config.ts"
+          ],
+          "checkMissingDependencies": true,
+          "checkObsoleteDependencies": true,
+          "checkVersionMismatches": false
+        }
+      ]
+    }
+  });
 
   // If project lints package.json with @nx/dependency-checks, then add ignore files for
   // build configuration files such as vite.config.ts. These config files need to be
