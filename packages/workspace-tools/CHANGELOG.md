@@ -1,3 +1,15 @@
+## 1.79.0 (2024-05-29)
+
+
+### 🚀 Features
+
+- **cloudflare-tools:** Update worker generator to add hono depenendency ([946a9e59](https://github.com/storm-software/storm-ops/commit/946a9e59))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.78.0 (2024-05-29)
 
 ### 🚀 Features
