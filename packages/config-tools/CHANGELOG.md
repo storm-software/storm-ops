@@ -1,3 +1,15 @@
+## 1.48.0 (2024-05-29)
+
+
+### 🚀 Features
+
+- **config:** Added the `cloudflareAccountId` configuration parameter ([db4cbd7d](https://github.com/storm-software/storm-ops/commit/db4cbd7d))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.47.1 (2024-05-27)
 
 

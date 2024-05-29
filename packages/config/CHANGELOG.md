@@ -1,3 +1,20 @@
+## 1.19.0 (2024-05-29)
+
+
+### 🚀 Features
+
+- **config:** Added the `cloudflareAccountId` configuration parameter ([db4cbd7d](https://github.com/storm-software/storm-ops/commit/db4cbd7d))
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Upgrade the monorepo's Nx package versions ([29c7e48d](https://github.com/storm-software/storm-ops/commit/29c7e48d))
+
+
+### ❤️  Thank You
+
+- Patrick Sullivan
+
 ## 1.18.1 (2024-05-27)
 
 
