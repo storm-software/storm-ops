@@ -4,6 +4,7 @@ import {
   formatFiles,
   generateFiles,
   GeneratorCallback,
+  joinPathFragments,
   names,
   readProjectConfiguration,
   runTasksInSerial,
@@ -117,6 +118,24 @@ export async function applicationGenerator(
 
     if (!options.skipFormat) {
       await formatFiles(tree);
+    }
+
+    if (options.template === "hono") {
+      tasks.push(() => {
+        const packageJsonPath = joinPathFragments(
+          options.directory ?? "",
+          "package.json"
+        );
+        if (tree.exists(packageJsonPath)) {
+          updateJson(tree, packageJsonPath, json => ({
+            ...json,
+            dependencies: {
+              hono: "4.4.0",
+              ...json?.dependencies
+            }
+          }));
+        }
+      });
     }
 
     return runTasksInSerial(...tasks);
