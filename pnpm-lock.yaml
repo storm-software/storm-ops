@@ -320,8 +320,8 @@ importers:
         specifier: 18.3.3
         version: 18.3.3(@swc-node/register@1.9.1(@swc/core@1.5.7(@swc/helpers@0.5.11))(@swc/types@0.1.7)(typescript@5.4.5))(@swc/core@1.5.7(@swc/helpers@0.5.11))
       create-nx-workspace:
-        specifier: 18.3.4
-        version: 18.3.4
+        specifier: 19.1.0
+        version: 19.1.0
       enquirer:
         specifier: 2.4.1
         version: 2.4.1
@@ -4695,8 +4695,8 @@ packages:
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     hasBin: true
 
-  create-nx-workspace@18.3.4:
-    resolution: {integrity: sha512-bY2uEryqKd1smFKkc/qKoTdMpp46Ut1LAQR2jZGQXTqYCUG0FoCJaoniv/Wl0j7KydcMqKKrF2ZytJIr0gt1mQ==}
+  create-nx-workspace@19.1.0:
+    resolution: {integrity: sha512-wii2Q4zXmNCHbZGnffMTbtN87NUUfta3HbkVa5R7EWabKq7AmOkm6TP1Y78tPWzElNO7RRb/N0lQr9ohahdiLw==}
     hasBin: true
 
   create-require@1.1.1:
@@ -15745,7 +15745,7 @@ snapshots:
       - supports-color
       - ts-node
 
-  create-nx-workspace@18.3.4:
+  create-nx-workspace@19.1.0:
     dependencies:
       axios: 1.7.2
       chalk: 4.1.2
