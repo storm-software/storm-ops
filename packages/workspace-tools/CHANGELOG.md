@@ -1,3 +1,10 @@
+## 1.80.0 (2024-06-02)
+
+
+### 🚀 Features
+
+- **config-tools:** Enhance the validations for the `cloudflareAccountId` configuration ([9fbc1954](https://github.com/storm-software/storm-ops/commit/9fbc1954))
+
 ## 1.79.0 (2024-05-29)
 
 
