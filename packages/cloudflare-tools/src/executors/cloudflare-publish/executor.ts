@@ -50,6 +50,7 @@ export default async function runExecutor(
       fork(require.resolve("wrangler/bin/wrangler"), ["deploy", ...args], {
         env: {
           CLOUDFLARE_API_TOKEN: process.env.STORM_BOT_CLOUDFLARE_TOKEN,
+          WRANGLER_LOG: "debug",
           ...process.env,
           FORCE_COLOR: "true"
         },
