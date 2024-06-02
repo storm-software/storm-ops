@@ -1,3 +1,10 @@
+## 1.22.0 (2024-06-02)
+
+
+### 🚀 Features
+
+- **config:** Update the Storm Configuration JSON Schema file ([0376baa5](https://github.com/storm-software/storm-ops/commit/0376baa5))
+
 ## 1.21.0 (2024-06-02)
 
 
