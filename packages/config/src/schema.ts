@@ -289,6 +289,9 @@ export const StormConfigSchema = z
     cloudflareAccountId: z
       .string()
       .trim()
+      .toLowerCase()
+      .length(32)
+      .regex(/^([0-9a-fA-F]{32})$/i)
       .nullable()
       .default(null)
       .describe("The default Cloudflare account ID of the workspace"),

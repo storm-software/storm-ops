@@ -189,6 +189,11 @@ export const setConfigEnv = (config: StormConfig) => {
     );
   }
   if (config.cloudflareAccountId) {
+    process.env.STORM_BOT_CLOUDFLARE_ACCOUNT ??= String(
+      config.cloudflareAccountId
+    );
+    process.env.CLOUDFLARE_ACCOUNT_ID ??= String(config.cloudflareAccountId);
+
     process.env[`${prefix}CLOUDFLARE_ACCOUNT_ID`] = String(
       config.cloudflareAccountId
     );

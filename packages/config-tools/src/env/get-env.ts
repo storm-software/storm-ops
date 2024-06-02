@@ -95,7 +95,11 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
     externalPackagePatterns: process.env[`${prefix}EXTERNAL_PACKAGE_PATTERNS`]
       ? JSON.parse(process.env[`${prefix}EXTERNAL_PACKAGE_PATTERNS`] as string)
       : [],
-    cloudflareAccountId: process.env[`${prefix}CLOUDFLARE_ACCOUNT_ID`],
+    cloudflareAccountId: process.env[`${prefix}CLOUDFLARE_ACCOUNT_ID`]
+      ? process.env[`${prefix}CLOUDFLARE_ACCOUNT_ID`]
+      : process.env.CLOUDFLARE_ACCOUNT_ID
+        ? process.env.CLOUDFLARE_ACCOUNT_ID
+        : process.env.STORM_BOT_CLOUDFLARE_ACCOUNT,
     logLevel:
       process.env[`${prefix}LOG_LEVEL`] !== null &&
       process.env[`${prefix}LOG_LEVEL`] !== undefined
