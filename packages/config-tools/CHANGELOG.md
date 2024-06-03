@@ -1,3 +1,10 @@
+## 1.51.0 (2024-06-03)
+
+
+### 🚀 Features
+
+- **config:** Added the `registry` configuration node ([708668a4](https://github.com/storm-software/storm-ops/commit/708668a4))
+
 ## 1.50.0 (2024-06-02)
 
 

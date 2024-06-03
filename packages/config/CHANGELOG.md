@@ -1,3 +1,12 @@
+## 1.23.0 (2024-06-03)
+
+
+### 🚀 Features
+
+- **config:** Added the `registry` configuration node ([708668a4](https://github.com/storm-software/storm-ops/commit/708668a4))
+
+- **config:** Updates to Storm config JSON schema file ([5075774d](https://github.com/storm-software/storm-ops/commit/5075774d))
+
 ## 1.22.1 (2024-06-03)
 
 
