@@ -5,14 +5,9 @@
   "description": "Publish a package to the crates.io registry - DO NOT INVOKE DIRECTLY WITH `nx run`. Use `nx release publish` instead.",
   "type": "object",
   "properties": {
-    "cargoRegistry": {
+    "registry": {
       "type": "string",
       "description": "The Cargo registry URL to publish the package to.",
-      "format": "uri"
-    },
-    "githubRegistry": {
-      "type": "string",
-      "description": "The GitHub registry URL to publish the package to.",
       "format": "uri"
     },
     "packageRoot": {

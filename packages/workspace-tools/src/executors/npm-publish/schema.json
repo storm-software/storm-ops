@@ -9,14 +9,9 @@
       "type": "string",
       "description": "The root directory of the directory (containing a manifest file at its root) to publish. Defaults to the project root."
     },
-    "npmRegistry": {
+    "registry": {
       "type": "string",
       "description": "The NPM registry URL to publish the package to.",
-      "format": "uri"
-    },
-    "githubRegistry": {
-      "type": "string",
-      "description": "The GitHub registry URL to publish the package to.",
       "format": "uri"
     },
     "tag": {

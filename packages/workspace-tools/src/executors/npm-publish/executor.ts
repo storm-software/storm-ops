@@ -3,7 +3,7 @@ import {
   joinPathFragments,
   readJsonFile
 } from "@nx/devkit";
-import { exec, execSync } from "node:child_process";
+import { execSync } from "node:child_process";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
 const LARGE_BUFFER = 1024 * 1000000;
@@ -61,18 +61,13 @@ export default async function npmPublishExecutorFn(
     `npm view ${packageName} versions dist-tags --json`
   ];
 
-  const npmRegistry = options.npmRegistry
-    ? options.npmRegistry
-    : process.env.STORM_REGISTRY_NPM
-      ? process.env.STORM_REGISTRY_NPM
-      : execSync("npm config get registry").toString().trim();
-  const githubRegistry = options.githubRegistry
-    ? options.githubRegistry
-    : process.env.STORM_REGISTRY_GITHUB;
+  const registry = options.registry
+    ? options.registry
+    : execSync("npm config get registry").toString().trim();
 
-  if (options.npmRegistry) {
-    npmPublishCommandSegments.push(`--registry=${npmRegistry}`);
-    npmViewCommandSegments.push(`--registry=${npmRegistry}`);
+  if (options.registry) {
+    npmPublishCommandSegments.push(`--registry=${registry}`);
+    npmViewCommandSegments.push(`--registry=${registry}`);
   }
 
   if (options.tag) {
@@ -117,7 +112,7 @@ export default async function npmPublishExecutorFn(
         const distTags = resultJson["dist-tags"] || {};
         if (distTags[tag] === currentVersion) {
           console.warn(
-            `Skipped ${packageTxt} because v${currentVersion} already exists in ${npmRegistry} with tag "${tag}"`
+            `Skipped ${packageTxt} because v${currentVersion} already exists in ${registry} with tag "${tag}"`
           );
           return new Promise(resolve => resolve({ success: true }));
         }
@@ -129,35 +124,24 @@ export default async function npmPublishExecutorFn(
 
       try {
         if (!isDryRun) {
-          await Promise.all([
-            exec(
-              `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${npmRegistry}`,
-              {
-                env: {
-                  ...process.env,
-                  FORCE_COLOR: "true"
-                },
-                cwd: packageRoot
-              }
-            ),
-            exec(
-              `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${githubRegistry}`,
-              {
-                env: {
-                  ...process.env,
-                  FORCE_COLOR: "true"
-                },
-                cwd: packageRoot
-              }
-            )
-          ]);
+          execSync(
+            `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${registry}`,
+            {
+              env: {
+                ...process.env,
+                FORCE_COLOR: "true"
+              },
+              cwd: packageRoot,
+              stdio: ["ignore", "pipe", "pipe"]
+            }
+          );
 
           console.info(
-            `Added the dist-tag ${tag} to v${currentVersion} for registries "${npmRegistry}" and "${githubRegistry}".\n`
+            `Added the dist-tag ${tag} to v${currentVersion} for registries "${registry}".\n`
           );
         } else {
           console.info(
-            `Would add the dist-tag ${tag} to v${currentVersion} for registries "${npmRegistry}" and "${githubRegistry}", but [dry-run] was set.\n`
+            `Would add the dist-tag ${tag} to v${currentVersion} for registries "${registry}", but [dry-run] was set.\n`
           );
         }
         return new Promise(resolve => resolve({ success: true }));
@@ -236,10 +220,10 @@ export default async function npmPublishExecutorFn(
 
     if (isDryRun) {
       console.info(
-        `Would publish to ${npmRegistry} with tag "${tag}", but [dry-run] was set`
+        `Would publish to ${registry} with tag "${tag}", but [dry-run] was set`
       );
     } else {
-      console.info(`Published to ${npmRegistry} with tag "${tag}"`);
+      console.info(`Published to ${registry} with tag "${tag}"`);
     }
 
     return new Promise(resolve => resolve({ success: true }));

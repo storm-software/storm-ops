@@ -1,6 +1,5 @@
 export interface CargoPublishExecutorSchema {
-  cargoRegistry?: string;
-  githubRegistry?: string;
+  registry?: string;
   packageRoot?: string;
   dryRun?: boolean;
 }
