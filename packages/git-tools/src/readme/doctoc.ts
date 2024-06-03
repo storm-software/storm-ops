@@ -12,10 +12,22 @@ async function transformAndSave(
   processAll = false,
   updateOnly = false
 ) {
-  const doctoc = await import("doctoc/lib/transform");
-  if (!doctoc?.transform) {
-    console.warn('Unable to import "doctoc/lib/transform"');
-    return;
+  let doctoc;
+  try {
+    doctoc = await import("doctoc/lib/transform.js");
+    if (!doctoc?.transform) {
+      console.warn(
+        'Unable to import "doctoc/lib/transform.js". Table of Content generation will be skipped.'
+      );
+      return;
+    }
+  } catch (e) {
+    if (!doctoc?.transform) {
+      console.warn(
+        'An error occured while trying to import "doctoc/lib/transform.js". Table of Content generation will be skipped.'
+      );
+      return;
+    }
   }
 
   if (processAll) {
