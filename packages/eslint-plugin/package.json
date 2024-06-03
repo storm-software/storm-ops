@@ -1,0 +1,64 @@
+{
+  "name": "@storm-software/eslint-plugin",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "description": "⚡ The eslint-plugin package is an ESLint plugin that contains a collection of recommended ESLint rule configurations which you can extend from in your own ESLint configs, as well as an Nx-specific lint rule called enforce-module-boundaries.",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/eslint-plugin"
+  },
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.com"
+  },
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "license": "Apache-2.0",
+  "private": false,
+  "exports": {
+    ".": "./src/index.js",
+    "./index": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "keywords": [
+    "storm",
+    "storm-ops",
+    "sullivanpj",
+    "eslint",
+    "monorepo"
+  ],
+  "peerDependencies": {
+    "@typescript-eslint/parser": "^6.13.2 || ^7.0.0",
+    "eslint-config-prettier": "^9.0.0"
+  },
+  "peerDependenciesMeta": {
+    "eslint-config-prettier": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@nx/devkit": "^19.1.0",
+    "@nx/eslint": "^19.1.0",
+    "@nx/eslint-plugin": "^19.1.0",
+    "@nx/js": "^19.1.0",
+    "@nx/workspace": "^19.1.0",
+    "@typescript-eslint/type-utils": "^7.3.0",
+    "@typescript-eslint/utils": "^7.3.0",
+    "chalk": "^4.1.0",
+    "confusing-browser-globals": "^1.0.9",
+    "jsonc-eslint-parser": "^2.1.0",
+    "semver": "^7.5.3",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/eslint": "8.56.10"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

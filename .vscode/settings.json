@@ -19,6 +19,9 @@
       "fileMatch": ["nx.json"]
     }
   ],
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-action.json": ".github/workflows/ci.yml"
+  },
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,

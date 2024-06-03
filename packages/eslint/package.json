@@ -1,0 +1,65 @@
+{
+  "name": "@storm-software/eslint",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "description": "⚡ A package containing the base ESLint configuration used by Storm Software across many projects.",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/eslint"
+  },
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.com"
+  },
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "license": "Apache-2.0",
+  "private": false,
+  "exports": {
+    ".": "./src/index.js",
+    "./index": "./src/index.js",
+    "./*": "./src/*.js",
+    "./rules": "./src/rules/index.js",
+    "./rules/*": "./src/rules/*.js",
+    "./package.json": "./package.json"
+  },
+  "keywords": [
+    "storm",
+    "storm-ops",
+    "sullivanpj",
+    "eslint",
+    "monorepo"
+  ],
+  "dependencies": {
+    "@graphql-eslint/eslint-plugin": "^3.20.1",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "9.4.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsonc": "^2.11.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-mdx": "^3.0.0",
+    "eslint-plugin-n": "^17.0.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-sonarjs": "^1.0.0",
+    "eslint-plugin-unicorn": "^52.0.0",
+    "eslint-plugin-yml": "^1.11.0",
+    "relay": "0.8.0-1"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.6.1",
+    "@types/eslint": "8.56.10"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

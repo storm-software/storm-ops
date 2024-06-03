@@ -1,17 +1,17 @@
 {
-  "name": "tsconfig",
+  "name": "prettier",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/tsconfig/src",
+  "sourceRoot": "packages/prettier/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/tsconfig",
-        "tsConfig": "packages/tsconfig/tsconfig.json",
-        "project": "packages/tsconfig/package.json",
-        "main": "packages/tsconfig/src/index.ts",
+        "outputPath": "dist/packages/prettier",
+        "tsConfig": "packages/prettier/tsconfig.json",
+        "project": "packages/prettier/package.json",
+        "main": "packages/prettier/src/index.ts",
         "platform": "node",
         "deleteOutputPath": true,
         "bundle": true,
@@ -21,7 +21,7 @@
         "minify": false,
         "assets": [
           {
-            "input": "./packages/tsconfig",
+            "input": "./packages/prettier",
             "glob": "*.md",
             "output": "/"
           },
@@ -31,8 +31,8 @@
             "output": "/"
           },
           {
-            "input": "./packages/tsconfig/src",
-            "glob": "{*.json,*.ts}",
+            "input": "./packages/prettier/src",
+            "glob": "{config.json,.prettierignore}",
             "output": "."
           }
         ]

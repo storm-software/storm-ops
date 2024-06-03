@@ -31,7 +31,7 @@
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
     "lodash": "4.17.21"
   },

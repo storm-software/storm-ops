@@ -19,7 +19,7 @@ let _config: Partial<StormConfig> = {};
 export function createProgram(config: StormConfig) {
   try {
     _config = config;
-    writeInfo(config, "⚡ Running Storm Linting Tools");
+    writeInfo("⚡ Running Storm Linting Tools", config);
 
     const root = findWorkspaceRootSafe();
     process.env.STORM_WORKSPACE_ROOT ??= root;
@@ -34,9 +34,10 @@ export function createProgram(config: StormConfig) {
       .showHelpAfterError()
       .showSuggestionAfterError();
 
-    const cspellConfig = new Option("--cspell-config <file>", "CSpell config file path").default(
-      "@storm-software/linting-tools/cspell/config.js"
-    );
+    const cspellConfig = new Option(
+      "--cspell-config <file>",
+      "CSpell config file path"
+    ).default("@storm-software/linting-tools/cspell/config.js");
 
     program
       .command("cspell")
@@ -44,13 +45,15 @@ export function createProgram(config: StormConfig) {
       .addOption(cspellConfig)
       .action(cspellAction);
 
-    const alexConfig = new Option("--alex-config <file>", "Alex.js config file path").default(
-      "@storm-software/linting-tools/alex/.alexrc"
-    );
+    const alexConfig = new Option(
+      "--alex-config <file>",
+      "Alex.js config file path"
+    ).default("@storm-software/linting-tools/alex/.alexrc");
 
-    const alexIgnore = new Option("--alex-ignore <file>", "Alex.js Ignore file path").default(
-      "@storm-software/linting-tools/alex/.alexignore"
-    );
+    const alexIgnore = new Option(
+      "--alex-ignore <file>",
+      "Alex.js Ignore file path"
+    ).default("@storm-software/linting-tools/alex/.alexignore");
 
     program
       .command("alex")
@@ -69,9 +72,10 @@ export function createProgram(config: StormConfig) {
       .description("Run circular dependency lint for the workspace.")
       .action(circularDepsAction);
 
-    const manypkgType = new Option("--manypkg-type <type>", "The manypkg command to run").default(
-      "check"
-    );
+    const manypkgType = new Option(
+      "--manypkg-type <type>",
+      "The manypkg command to run"
+    ).default("check");
 
     const manypkgArgs = new Option(
       "--manypkg-args <args>",
@@ -91,9 +95,15 @@ export function createProgram(config: StormConfig) {
       .addOption(manypkgFix)
       .action(manypkgAction);
 
-    const skipCspell = new Option("--skip-cspell", "Should skip CSpell linting");
+    const skipCspell = new Option(
+      "--skip-cspell",
+      "Should skip CSpell linting"
+    ).default(true);
 
-    const skipAlex = new Option("--skip-alex", "Should skip Alex language linting");
+    const skipAlex = new Option(
+      "--skip-alex",
+      "Should skip Alex language linting"
+    ).default(true);
 
     const skipDepsVersion = new Option(
       "--skip-deps-version",
@@ -105,7 +115,10 @@ export function createProgram(config: StormConfig) {
       "Should skip circular dependency linting"
     );
 
-    const skipManypkg = new Option("--skip-manypkg", "Should skip Manypkg linting");
+    const skipManypkg = new Option(
+      "--skip-manypkg",
+      "Should skip Manypkg linting"
+    );
 
     program
       .command("all")
@@ -125,7 +138,10 @@ export function createProgram(config: StormConfig) {
 
     return program;
   } catch (e) {
-    writeFatal(config, `A fatal error occurred while running the program: ${e.message}`);
+    writeFatal(
+      `A fatal error occurred while running the program: ${e.message}`,
+      config
+    );
     process.exit(1);
   }
 }
@@ -156,7 +172,7 @@ async function allAction({
   manypkgFix: boolean;
 }) {
   try {
-    writeInfo(_config, "⚡ Linting the Storm Workspace");
+    writeInfo("⚡ Linting the Storm Workspace", _config);
 
     const promises = [] as Promise<any>[];
     if (!skipCspell) {
@@ -180,9 +196,12 @@ async function allAction({
     }
 
     await Promise.all(promises);
-    writeSuccess(_config, "Successfully linted the workspace ✅");
+    writeSuccess("Successfully linted the workspace ✅", _config);
   } catch (e) {
-    writeFatal(_config, `A fatal error occurred while linting the workspace: ${e.message}`);
+    writeFatal(
+      `A fatal error occurred while linting the workspace: ${e.message}`,
+      _config
+    );
     process.exit(1);
   }
 }
@@ -199,16 +218,18 @@ async function cspellAction(cspellConfig: string) {
       dot: true,
       debug: true,
       gitignore: true,
-      root: process.env.STORM_WORKSPACE_ROOT ? process.env.STORM_WORKSPACE_ROOT : process.cwd(),
+      root: process.env.STORM_WORKSPACE_ROOT
+        ? process.env.STORM_WORKSPACE_ROOT
+        : process.cwd(),
       defaultConfiguration: false,
       config: cspellConfig
     });
     if (result.errors) {
-      writeError(_config, "Spelling linting has failed ❌");
+      writeError("Spelling linting has failed ❌", _config);
       process.exit(1);
     }
 
-    writeSuccess(_config, "Spelling linting is complete ✅");
+    writeSuccess("Spelling linting is complete ✅", _config);
   } catch (e) {
     console.error(e);
     process.exit(1);
@@ -217,18 +238,18 @@ async function cspellAction(cspellConfig: string) {
 
 async function alexAction(alexConfig: string, alexIgnore: string) {
   try {
-    writeInfo(_config, "⚡ Linting the workspace language with alexjs.com");
+    writeInfo("⚡ Linting the workspace language with alexjs.com", _config);
 
     if (await runAlex(alexConfig, alexIgnore)) {
-      writeError(_config, "Language linting has failed ❌");
+      writeError("Language linting has failed ❌", _config);
       process.exit(1);
     }
 
-    writeSuccess(_config, "Language linting is complete ✅");
+    writeSuccess("Language linting is complete ✅", _config);
   } catch (e) {
     writeFatal(
-      _config,
-      `A fatal error occurred while language linting the workspace: ${e.message}`
+      `A fatal error occurred while language linting the workspace: ${e.message}`,
+      _config
     );
     process.exit(1);
   }
@@ -236,28 +257,34 @@ async function alexAction(alexConfig: string, alexIgnore: string) {
 
 async function depsVersionAction() {
   try {
-    writeInfo(_config, "⚡ Linting the workspace dependency version consistency");
+    writeInfo(
+      "⚡ Linting the workspace dependency version consistency",
+      _config
+    );
 
     const { CDVC } = await import("check-dependency-version-consistency");
     const cdvc = new CDVC(".", { fix: true });
 
     // Show output for dependencies we fixed.
     if (cdvc.hasMismatchingDependenciesFixable) {
-      writeDebug(_config, cdvc.toFixedSummary());
+      writeDebug(cdvc.toFixedSummary(), _config);
     }
 
     // Show output for dependencies that still have mismatches.
     if (cdvc.hasMismatchingDependenciesNotFixable) {
-      writeError(_config, "Dependency version consistency linting has failed ❌");
-      writeError(_config, cdvc.toMismatchSummary());
+      writeError(
+        "Dependency version consistency linting has failed ❌",
+        _config
+      );
+      writeError(cdvc.toMismatchSummary(), _config);
       process.exit(1);
     }
 
-    writeSuccess(_config, "Dependency Version linting is complete ✅");
+    writeSuccess("Dependency Version linting is complete ✅", _config);
   } catch (e) {
     writeFatal(
-      _config,
-      `A fatal error occurred while dependency Version linting the workspace: ${e.message}`
+      `A fatal error occurred while dependency Version linting the workspace: ${e.message}`,
+      _config
     );
     process.exit(1);
   }
@@ -265,7 +292,7 @@ async function depsVersionAction() {
 
 async function circularDepsAction() {
   try {
-    writeInfo(_config, "⚡ Linting the workspace circular dependency");
+    writeInfo("⚡ Linting the workspace circular dependency", _config);
 
     const tree = await parseDependencyTree("**/*.*", {
       tsconfig: "./tsconfig.base.json",
@@ -274,27 +301,34 @@ async function circularDepsAction() {
     });
 
     const circulars = parseCircular(tree);
-    writeTrace(_config, prettyCircular(circulars));
+    writeTrace(prettyCircular(circulars), _config);
 
-    writeSuccess(_config, "Circular dependency linting is complete ✅");
+    writeSuccess("Circular dependency linting is complete ✅", _config);
   } catch (e) {
     writeFatal(
-      _config,
-      `A fatal error occurred while circular dependency linting the workspace: ${e.message}`
+      `A fatal error occurred while circular dependency linting the workspace: ${e.message}`,
+      _config
     );
     process.exit(1);
   }
 }
 
-async function manypkgAction(manypkgType = "check", manypkgArgs: string[], manypkgFix: boolean) {
+async function manypkgAction(
+  manypkgType = "check",
+  manypkgArgs: string[],
+  manypkgFix: boolean
+) {
   try {
-    writeInfo(_config, "⚡ Linting the workspace's packages with Manypkg");
+    writeInfo("⚡ Linting the workspace's packages with Manypkg", _config);
 
     await runManypkg(manypkgType, manypkgArgs, manypkgFix);
 
-    writeSuccess(_config, "Manypkg linting is complete ✅");
+    writeSuccess("Manypkg linting is complete ✅", _config);
   } catch (e) {
-    writeFatal(_config, `A fatal error occurred while manypkg linting the workspace: ${e.message}`);
+    writeFatal(
+      `A fatal error occurred while manypkg linting the workspace: ${e.message}`,
+      _config
+    );
     process.exit(1);
   }
 }

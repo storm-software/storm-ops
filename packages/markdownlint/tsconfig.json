@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "resolveJsonModule": true,
+    "module": "commonjs",
     "noEmit": true
   },
   "files": [],

@@ -3,7 +3,8 @@ export const RESTRICTED_SYNTAX = [
     // ❌ readFile(…, { encoding: … })
     selector:
       "CallExpression[callee.name=/readFileSync|readFile|writeFileSync|writeFile/] > .arguments:last-child[type=ObjectExpression][properties.length=1] Property[key.name=encoding]",
-    message: "Specify encoding as last argument instead of object with encoding key"
+    message:
+      "Specify encoding as last argument instead of object with encoding key"
   },
   {
     // ❌ readFile(…, {})
@@ -13,14 +14,16 @@ export const RESTRICTED_SYNTAX = [
   },
   {
     // ❌ readFileSync(…).toString(…)
-    selector: "CallExpression[callee.name=readFileSync][parent.property.name=toString]",
+    selector:
+      "CallExpression[callee.name=readFileSync][parent.property.name=toString]",
     message: "toString is redundant, specify encoding as last argument"
   },
   {
     // ❌ ….readFile(…, { encoding: … })
     selector:
       "CallExpression[callee.type=MemberExpression][callee.property.name=/readFileSync|readFile|writeFileSync|writeFile/] > .arguments:last-child[type=ObjectExpression][properties.length=1] Property[key.name=encoding]",
-    message: "Specify encoding as last argument instead of object with encoding key"
+    message:
+      "Specify encoding as last argument instead of object with encoding key"
   },
   {
     // ❌ ….readFile(…, {})
@@ -30,7 +33,8 @@ export const RESTRICTED_SYNTAX = [
   },
   {
     // ❌ Boolean(…)
-    selector: "CallExpression[callee.name=Boolean][arguments.1.elements.length!=0]",
+    selector:
+      "CallExpression[callee.name=Boolean][arguments.1.elements.length!=0]",
     message:
       "Prefer `!!…` over `Boolean(…)` because TypeScript infers a narrow literal boolean `type: true` instead of `type: boolean`."
   },
@@ -61,7 +65,10 @@ export const REACT_RESTRICTED_SYNTAX = [
   }
 ];
 
-export const RESTRICTED_GLOBALS = ["stop", { name: "isNaN", message: "Use Number.isNaN instead" }];
+export const RESTRICTED_GLOBALS = [
+  "stop",
+  { name: "isNaN", message: "Use Number.isNaN instead" }
+];
 
 export const RESTRICTED_MODULES = [
   { name: "axios", message: "Use `fetch/node-fetch` instead." },

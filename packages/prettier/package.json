@@ -1,0 +1,52 @@
+{
+  "name": "@storm-software/prettier",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "description": "⚡ A package containing the base Prettier configuration used by Storm Software across many projects.",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/prettier"
+  },
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.com"
+  },
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "license": "Apache-2.0",
+  "private": false,
+  "exports": {
+    ".": "./index.js",
+    "./.prettierignore": "./.prettierignore",
+    "./config.json": "./config.json",
+    "./package.json": "./package.json"
+  },
+  "keywords": [
+    "storm",
+    "storm-ops",
+    "sullivanpj",
+    "prettier",
+    "monorepo"
+  ],
+  "peerDependencies": {
+    "prettier": "^3.3.0"
+  },
+  "dependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "4.2.1",
+    "prettier-plugin-pkg": "^0.18.0",
+    "prettier-plugin-prisma": "^5.0.0",
+    "prettier-plugin-sh": "^0.14.0",
+    "prettier-plugin-tailwindcss": "^0.6.1"
+  },
+  "devDependencies": {
+    "@types/prettier": "^3.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

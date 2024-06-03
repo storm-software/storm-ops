@@ -1,6 +1,6 @@
 import type { Linter } from "eslint";
-import reactRules from "../rules/react";
-import jsxA11yRules from "../rules/ts-docs";
+import reactRules from "./rules/react";
+import jsxA11yRules from "./rules/ts-docs";
 
 const config: Linter.Config = {
   root: true,

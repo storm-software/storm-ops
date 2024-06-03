@@ -1,8 +1,28 @@
 {
   "name": "@storm-software/storm-ops",
   "version": "0.0.1",
-  "private": true,
   "description": "⚡The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git"
+  },
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.com"
+  },
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "license": "Apache-2.0",
+  "private": true,
+  "packageManager": "pnpm@9.1.4",
+  "engines": {
+    "node": ">=20.11.0",
+    "pnpm": ">=8.10.2"
+  },
   "keywords": [
     "storm",
     "storm-ops",
@@ -21,25 +41,9 @@
     "open-system",
     "monorepo"
   ],
-  "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/storm-software/storm-ops.git"
-  },
-  "license": "Apache-2.0",
-  "author": {
-    "name": "Storm Software",
-    "email": "contact@stormsoftware.com",
-    "url": "https://stormsoftware.com"
-  },
   "scripts": {
     "adr": "pnpm log4brains adr new",
     "adr-preview": "pnpm log4brains preview",
-    "prebuild": "pnpm clean && pnpm build-plugins",
     "build": "nx affected -t build --parallel=1",
     "build-all": "nx run-many -t build --all --parallel=3",
     "build-plugins": "node -r esbuild-register tools/scripts/build-plugins.ts",
@@ -58,11 +62,11 @@
     "lint-toml": "pnpm exec taplo format --check --config=\"./dist/packages/linting-tools/taplo/.taplo.toml\"",
     "local-registry": "nx local-registry @storm-software/storm-ops",
     "nx": "nx",
+    "prebuild": "pnpm clean && pnpm build-plugins",
     "release": "node ./dist/packages/git-tools/bin/git.js release",
     "start": "nx serve",
     "test": "echo Skipping all workspace testing..."
   },
-  "prettier": "./packages/linting-tools/src/prettier/config.json",
   "dependencies": {
     "@angular-devkit/architect": "0.1800.2",
     "@biomejs/biome": "1.7.3",
@@ -71,11 +75,11 @@
     "@ltd/j-toml": "1.38.0",
     "@monodon/rust": "1.4.0",
     "@nx/devkit": "^19.1.0",
-    "@nx/esbuild": "^19.1.0",
+    "@nx/esbuild": "19.1.1",
     "@nx/eslint": "^19.1.0",
     "@nx/eslint-plugin": "^19.1.0",
     "@nx/jest": "^19.1.0",
-    "@nx/js": "^19.1.0",
+    "@nx/js": "19.1.1",
     "@nx/plugin": "^19.1.0",
     "@nx/workspace": "^19.1.0",
     "@swc-node/register": "1.9.1",
@@ -111,10 +115,16 @@
     "typescript": "5.4.5",
     "verdaccio": "5.31.0"
   },
-  "packageManager": "pnpm@9.1.4",
-  "engines": {
-    "node": ">=20.11.0",
-    "pnpm": ">=8.10.2"
+  "devDependencies": {},
+  "namespace": "@storm-software",
+  "nx": {
+    "includedScripts": [
+      "lint",
+      "format",
+      "format-readme",
+      "commit",
+      "release"
+    ]
   },
   "pnpm": {
     "overrides": {
@@ -123,9 +133,12 @@
       "@storm-software/cloudflare-tools": "workspace:*",
       "@storm-software/config": "workspace:*",
       "@storm-software/config-tools": "workspace:*",
+      "@storm-software/eslint": "workspace:*",
+      "@storm-software/eslint-plugin": "workspace:*",
       "@storm-software/git-tools": "workspace:*",
       "@storm-software/linting-tools": "workspace:*",
       "@storm-software/markdownlint": "workspace:*",
+      "@storm-software/prettier": "workspace:*",
       "@storm-software/testing-tools": "workspace:*",
       "@storm-software/tsconfig": "workspace:*",
       "@storm-software/workspace-tools": "workspace:*",
@@ -142,15 +155,6 @@
       "tsup@8.0.0": "patches/tsup@8.0.0.patch"
     }
   },
-  "namespace": "@storm-software",
-  "nx": {
-    "includedScripts": [
-      "lint",
-      "format",
-      "format-readme",
-      "commit",
-      "release"
-    ]
-  },
+  "prettier": "./packages/prettier/src/config.json",
   "triggerEmptyDevReleaseByIncrementingThisNumber": 0
 }

@@ -1,9 +1,13 @@
 import type { Linter } from "eslint";
-import { RESTRICTED_GLOBALS, RESTRICTED_MODULES, RESTRICTED_SYNTAX } from "../constants";
-import importRules from "../rules/import";
-import stormRules from "../rules/storm";
-import tsDocsRules from "../rules/ts-docs";
-import unicornRules from "../rules/unicorn";
+import {
+  RESTRICTED_GLOBALS,
+  RESTRICTED_MODULES,
+  RESTRICTED_SYNTAX
+} from "./constants";
+import importRules from "./rules/import";
+import stormRules from "./rules/storm";
+import tsDocsRules from "./rules/ts-docs";
+import unicornRules from "./rules/unicorn";
 
 const config: Linter.Config = {
   root: true,
@@ -15,7 +19,11 @@ const config: Linter.Config = {
     }
   ],
   parser: "@typescript-eslint/parser",
-  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
   plugins: ["sonarjs", "unicorn", "promise", "import", "eslint-plugin-tsdoc"],
   rules: {
     // Disallows if statements as the only statement in else blocks
@@ -104,7 +112,11 @@ const config: Linter.Config = {
     "import/no-duplicates": "error",
     "import/newline-after-import": "off", // prettified by prettier-plugin-sort-imports
     "prefer-object-has-own": "error",
-    "logical-assignment-operators": ["error", "always", { enforceForIfStatements: true }],
+    "logical-assignment-operators": [
+      "error",
+      "always",
+      { enforceForIfStatements: true }
+    ],
     "@typescript-eslint/prefer-optional-chain": "error",
     yoda: "error",
     "unicorn/prefer-export-from": ["error", { ignoreUsedVariables: true }],

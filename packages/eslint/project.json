@@ -1,0 +1,54 @@
+{
+  "name": "eslint",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/eslint/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/eslint",
+        "main": "packages/eslint/src/index.ts",
+        "additionalEntryPoints": [
+          "packages/eslint/src/base.ts",
+          "packages/eslint/src/graphql.ts",
+          "packages/eslint/src/javascript.ts",
+          "packages/eslint/src/json.ts",
+          "packages/eslint/src/jest.ts",
+          "packages/eslint/src/next.ts",
+          "packages/eslint/src/react.ts",
+          "packages/eslint/src/mdx.ts",
+          "packages/eslint/src/yml.ts",
+          "packages/eslint/src/typescript.ts",
+          "packages/eslint/src/recommended.ts"
+        ],
+        "tsConfig": "packages/eslint/tsconfig.json",
+        "format": ["cjs"],
+        "platform": "node",
+        "deleteOutputPath": true,
+        "bundle": true,
+        "thirdParty": true,
+        "skipTypeCheck": false,
+        "metafile": true,
+        "minify": false,
+        "assets": [
+          {
+            "input": "./packages/eslint",
+            "glob": "*.md",
+            "output": "/"
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "/"
+          }
+        ]
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  },
+  "tags": []
+}

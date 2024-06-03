@@ -1,7 +1,13 @@
 import type { Linter } from "eslint";
-import { CODE_BLOCK } from "../constants";
+import { CODE_BLOCK } from "./constants";
 
-const JSONC_FILES = ["tsconfig.json", "tsconfig.base.json", "nx.json", ".vscode/launch.json"];
+const JSONC_FILES = [
+  "tsconfig.json",
+  "tsconfig.base.json",
+  "nx.json",
+  ".vscode/launch.json"
+];
+
 const config: Linter.Config = {
   root: true,
   overrides: [
@@ -9,6 +15,13 @@ const config: Linter.Config = {
       files: "*.json",
       excludedFiles: JSONC_FILES,
       extends: "plugin:jsonc/recommended-with-json"
+    },
+    {
+      "files": ["**/executors/**/schema.json", "**/generators/**/schema.json"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "@nx/workspace/valid-schema-description": "error"
+      }
     },
     {
       files: ["*.jsonc", ...JSONC_FILES],

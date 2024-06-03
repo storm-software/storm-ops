@@ -1,5 +1,184 @@
 {
+  "$schema": "https://cdn.jsdelivr.net/npm/nx/schemas/nx-schema.json",
   "extends": "./packages/workspace-tools/config/nx.json",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "lint",
+          "format",
+          "build",
+          "test",
+          "e2e",
+          "docs"
+        ],
+        "parallel": 3
+      }
+    }
+  },
+  "namedInputs": {
+    "globalTesting": [
+      "{workspaceRoot}/jest.config.ts",
+      "{workspaceRoot}/jest.preset.js",
+      "{workspaceRoot}/benches/**/*",
+      "{workspaceRoot}/e2e/**/*",
+      "{workspaceRoot}/tests/**/*",
+      "{workspaceRoot}/testing/**/*",
+      "{workspaceRoot}/coverage/**/*"
+    ],
+    "globalShared": [
+      "{workspaceRoot}/assets/**/*",
+      "{workspaceRoot}/LICENSE",
+      "{workspaceRoot}/.gitattributes",
+      "{workspaceRoot}/.gitignore",
+      "{workspaceRoot}/nx.json",
+      "{workspaceRoot}/.nxignore",
+      "{workspaceRoot}/storm.json",
+      "{workspaceRoot}/storm.*.json",
+      "{workspaceRoot}/.storm/config.json",
+      "{workspaceRoot}/.storm/config.*.json",
+      "{workspaceRoot}/storm.yaml",
+      "{workspaceRoot}/storm.*.yaml",
+      "{workspaceRoot}/.storm/config.yaml",
+      "{workspaceRoot}/.storm/config.*.yaml",
+      "{workspaceRoot}/storm.toml",
+      "{workspaceRoot}/storm.*.toml",
+      "{workspaceRoot}/.storm/config.toml",
+      "{workspaceRoot}/.storm/config.*.toml",
+      "{workspaceRoot}/storm.config.js",
+      "{workspaceRoot}/.env",
+      "{workspaceRoot}/.env.local"
+    ],
+    "globalRust": [
+      "globalShared",
+      "{workspaceRoot}/Cargo.toml",
+      "{workspaceRoot}/Cargo.lock",
+      "{workspaceRoot}/.cargo/config.toml",
+      "{workspaceRoot}/rust-toolchain",
+      "{workspaceRoot}/rustfmt.toml",
+      "{workspaceRoot}/deny.toml"
+    ],
+    "globalTypeScript": [
+      "globalShared",
+      "{workspaceRoot}/tsconfig.*.json",
+      "{workspaceRoot}/.npmrc",
+      "{workspaceRoot}/.npmignore",
+      "{workspaceRoot}/package.json",
+      "{workspaceRoot}/pnpm-workspace.yaml",
+      "{workspaceRoot}/pnpm-lock.yaml",
+      "{workspaceRoot}/package-lock.yaml",
+      "{workspaceRoot}/yarn-lock.yaml",
+      "{workspaceRoot}/bun.lockb",
+      "{workspaceRoot}/biome.toml",
+      "{workspaceRoot}/biome.json",
+      "{workspaceRoot}/lefthook.yaml",
+      "{workspaceRoot}/.markdownlint.json",
+      "{workspaceRoot}/eslint.config.js",
+      "{workspaceRoot}/.eslintrc.json",
+      "{workspaceRoot}/.eslintrc.base.json",
+      "{workspaceRoot}/.eslintrc.cjs",
+      "{workspaceRoot}/.eslintignore",
+      "{workspaceRoot}/.prettierrc",
+      "{workspaceRoot}/.prettierignore"
+    ],
+    "globalDocs": [
+      "globalRust",
+      "globalTypeScript",
+      "{workspaceRoot}/api-extractor.json",
+      "{workspaceRoot}/tsdoc.json",
+      "{workspaceRoot}/typedoc.json",
+      "{workspaceRoot}/contentlayer.config.ts",
+      "{workspaceRoot}/*.md",
+      "{workspaceRoot}/*.mdx",
+      "{workspaceRoot}/docs/**/*",
+      "{workspaceRoot}/.storybook/**/*"
+    ],
+    "global": ["globalRust", "globalTypeScript", "globalTesting", "globalDocs"],
+    "defaultTesting": [
+      "globalTesting",
+      "{projectRoot}/jest.config.ts",
+      "{projectRoot}/benches/**/*",
+      "{projectRoot}/e2e/**/*",
+      "{projectRoot}/tests/**/*",
+      "{projectRoot}/testing/**/*",
+      "{projectRoot}/tsconfig.spec.json",
+      "{projectRoot}/src/test-setup.[jt]s",
+      "{projectRoot}/test-setup.[jt]s",
+      "{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "{projectRoot}/tsconfig.spec.json"
+    ],
+    "defaultShared": [
+      "globalShared",
+      "{projectRoot}/project.json",
+      "{projectRoot}/README.md",
+      "{projectRoot}/CHANGELOG.md",
+      "{projectRoot}/.env",
+      "{projectRoot}/.env.local"
+    ],
+    "defaultRust": [
+      "globalRust",
+      "defaultShared",
+      "{projectRoot}/**/*.rs",
+      "{projectRoot}/Cargo.toml",
+      "{projectRoot}/.cargo/config.toml",
+      {
+        "runtime": "node -p '`${process.platform}_${process.arch}`'"
+      }
+    ],
+    "defaultTypeScript": [
+      "globalTypeScript",
+      "defaultShared",
+      "{projectRoot}/package.json",
+      "{projectRoot}/eslint.config.js",
+      "{projectRoot}/.eslintrc.json",
+      "{projectRoot}/.eslintrc.cjs",
+      "{projectRoot}/.eslintignore",
+      "{projectRoot}/tsconfig.json",
+      "{projectRoot}/tsconfig.*.json",
+      "{projectRoot}/**/*.ts",
+      "{projectRoot}/**/*.tsx",
+      "{projectRoot}/**/*.js",
+      "{projectRoot}/**/*.jsx",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/tsconfig.storybook.json",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)"
+    ],
+    "defaultDocs": [
+      "globalDocs",
+      "defaultRust",
+      "defaultTypeScript",
+      "{projectRoot}/api-extractor.json",
+      "{projectRoot}/tsdoc.json",
+      "{projectRoot}/typedoc.json",
+      "{projectRoot}/contentlayer.config.ts",
+      "{projectRoot}/**/*.md",
+      "{projectRoot}/**/*.mdx",
+      "{projectRoot}/docs/**/*",
+      "{projectRoot}/.storybook/**/*",
+      "{projectRoot}/tsconfig.storybook.json",
+      "{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)"
+    ],
+    "default": [
+      "global",
+      "defaultRust",
+      "defaultTypeScript",
+      "defaultTesting",
+      "defaultDocs"
+    ],
+    "production": [
+      "defaultRust",
+      "defaultTypeScript",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/tsconfig.storybook.json",
+      "!{projectRoot}/.storybook/**/*",
+      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/.eslintrc.json"
+    ]
+  },
   "targetDefaults": {
     "lint": {
       "cache": true,
@@ -41,6 +220,16 @@
       "cache": false,
       "inputs": ["default", "^production"],
       "dependsOn": ["build", "^nx-release-publish"]
+    },
+    "@nx/esbuild:esbuild": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "@nx/js:tsc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "release": {
@@ -69,6 +258,9 @@
       }
     }
   },
+  "parallel": 3,
+  "cacheDirectory": "tmp/nx-cache",
+  "defaultBase": "main",
   "plugins": [
     "@nx/eslint/plugin",
     "./dist/plugins/rust/index.js",

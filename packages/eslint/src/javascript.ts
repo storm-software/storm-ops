@@ -1,10 +1,9 @@
 import type { Linter } from "eslint";
-import importRules from "../rules/import";
-import stormRules from "../rules/storm";
-import unicornRules from "../rules/unicorn";
+import importRules from "./rules/import";
+import stormRules from "./rules/storm";
+import unicornRules from "./rules/unicorn";
 
 const config: Linter.Config = {
-  root: true,
   overrides: [
     {
       files: ["*.js", "*.jsx"],

@@ -1,7 +1,6 @@
 import type { Linter } from "eslint";
 
 const config: Linter.Config = {
-  root: true,
   overrides: [
     {
       files: ["*.js", "*.ts", "*.jsx", "*.tsx"],

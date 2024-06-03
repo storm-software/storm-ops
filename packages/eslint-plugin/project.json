@@ -1,17 +1,17 @@
 {
-  "name": "tsconfig",
+  "name": "eslint-plugin",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/tsconfig/src",
+  "sourceRoot": "packages/eslint-plugin/src",
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/esbuild:esbuild",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/tsconfig",
-        "tsConfig": "packages/tsconfig/tsconfig.json",
-        "project": "packages/tsconfig/package.json",
-        "main": "packages/tsconfig/src/index.ts",
+        "outputPath": "dist/packages/eslint-plugin",
+        "main": "packages/eslint-plugin/src/index.ts",
+        "tsConfig": "packages/eslint-plugin/tsconfig.json",
+        "format": ["cjs"],
         "platform": "node",
         "deleteOutputPath": true,
         "bundle": true,
@@ -21,7 +21,7 @@
         "minify": false,
         "assets": [
           {
-            "input": "./packages/tsconfig",
+            "input": "./packages/eslint-plugin",
             "glob": "*.md",
             "output": "/"
           },
@@ -29,11 +29,6 @@
             "input": "",
             "glob": "LICENSE",
             "output": "/"
-          },
-          {
-            "input": "./packages/tsconfig/src",
-            "glob": "{*.json,*.ts}",
-            "output": "."
           }
         ]
       }
