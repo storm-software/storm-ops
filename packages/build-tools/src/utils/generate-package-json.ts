@@ -20,7 +20,10 @@ import {
   writeWarning
 } from "@storm-software/config-tools";
 import { getEntryPoints } from "./get-entry-points";
-import { readCachedProjectGraph } from "nx/src/project-graph/project-graph.js";
+import {
+  createProjectGraphAsync,
+  readCachedProjectGraph
+} from "nx/src/project-graph/project-graph.js";
 import {
   HelperDependency,
   getHelperDependency
@@ -61,22 +64,17 @@ export const generatePackageJson = async (
         name: `@${config.namespace}/${projectName}`,
         version: "0.0.1"
       };
-
   options.external = options.external || [];
-  // if (workspacePackageJson?.dependencies) {
-  //   options.external = Object.keys(workspacePackageJson?.dependencies).reduce(
-  //     (ret: string[], key: string) => {
-  //       if (!ret.includes(key)) {
-  //         ret.push(key);
-  //       }
 
-  //       return ret;
-  //     },
-  //     options.external
-  //   );
-  // }
+  let projectGraph;
+  try {
+    projectGraph = readCachedProjectGraph();
+  } catch (e) {
+    projectGraph = await createProjectGraphAsync({
+      exitOnError: true
+    });
+  }
 
-  const projectGraph = readCachedProjectGraph();
   if (!projectGraph) {
     throw new Error("No project graph found in cache");
   }

@@ -16,7 +16,9 @@ const offByDefault = ["no-empty-alt-text"];
 
 for (const rule of rules) {
   const ruleName = rule.names[1];
-  base[ruleName] = offByDefault.includes(ruleName) ? false : true;
+  if (ruleName) {
+    base[ruleName] = offByDefault.includes(ruleName) ? false : true;
+  }
 }
 
 export const init = function init(defaultConfig) {
