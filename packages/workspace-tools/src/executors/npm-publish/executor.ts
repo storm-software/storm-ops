@@ -1,5 +1,9 @@
-import { type ExecutorContext, joinPathFragments, readJsonFile } from "@nx/devkit";
-import { execSync } from "node:child_process";
+import {
+  type ExecutorContext,
+  joinPathFragments,
+  readJsonFile
+} from "@nx/devkit";
+import { exec, execSync } from "node:child_process";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
 const LARGE_BUFFER = 1024 * 1000000;
@@ -18,9 +22,12 @@ export default async function npmPublishExecutorFn(
     throw new Error("The executor requires a projectName.");
   }
 
-  const projectConfig = context.projectsConfigurations?.projects?.[context.projectName];
+  const projectConfig =
+    context.projectsConfigurations?.projects?.[context.projectName];
   if (!projectConfig) {
-    throw new Error(`Could not find project configuration for ${context.projectName}`);
+    throw new Error(
+      `Could not find project configuration for ${context.projectName}`
+    );
   }
 
   const packageRoot = joinPathFragments(
@@ -32,7 +39,9 @@ export default async function npmPublishExecutorFn(
   const projectPackageJson = readJsonFile(packageJsonPath);
   const packageName = projectPackageJson.name;
 
-  console.info(`🚀  Running Storm NPM Publish executor on the ${packageName} package`);
+  console.info(
+    `🚀  Running Storm NPM Publish executor on the ${packageName} package`
+  );
 
   // If package and project name match, we can make log messages terser
   const packageTxt =
@@ -41,16 +50,29 @@ export default async function npmPublishExecutorFn(
       : `package "${packageName}" from project "${context.projectName}"`;
 
   if (projectPackageJson.private === true) {
-    console.warn(`Skipped ${packageTxt}, because it has \`"private": true\` in ${packageJsonPath}`);
-    return new Promise((resolve) => resolve({ success: true }));
+    console.warn(
+      `Skipped ${packageTxt}, because it has \`"private": true\` in ${packageJsonPath}`
+    );
+    return new Promise(resolve => resolve({ success: true }));
   }
 
   const npmPublishCommandSegments = ["npm publish --json"];
-  const npmViewCommandSegments = [`npm view ${packageName} versions dist-tags --json`];
+  const npmViewCommandSegments = [
+    `npm view ${packageName} versions dist-tags --json`
+  ];
 
-  if (options.registry) {
-    npmPublishCommandSegments.push(`--registry=${options.registry}`);
-    npmViewCommandSegments.push(`--registry=${options.registry}`);
+  const npmRegistry = options.npmRegistry
+    ? options.npmRegistry
+    : process.env.STORM_REGISTRY_NPM
+      ? process.env.STORM_REGISTRY_NPM
+      : execSync("npm config get registry").toString().trim();
+  const githubRegistry = options.githubRegistry
+    ? options.githubRegistry
+    : process.env.STORM_REGISTRY_GITHUB;
+
+  if (options.npmRegistry) {
+    npmPublishCommandSegments.push(`--registry=${npmRegistry}`);
+    npmViewCommandSegments.push(`--registry=${npmRegistry}`);
   }
 
   if (options.tag) {
@@ -68,7 +90,6 @@ export default async function npmPublishExecutorFn(
   npmPublishCommandSegments.push("--provenance --access public");
 
   // Resolve values using the `npm config` command so that things like environment variables and `publishConfig`s are accounted for
-  const registry = options.registry ?? execSync("npm config get registry").toString().trim();
   const tag = options.tag ?? execSync("npm config get tag").toString().trim();
 
   /**
@@ -79,7 +100,7 @@ export default async function npmPublishExecutorFn(
    * Therefore, so as to not produce misleading output in dry around dist-tags being altered, we do not
    * perform the npm view step, and just show npm publish's dry-run output.
    */
-  if (!isDryRun && !options.firstRelease) {
+  if (!isDryRun) {
     const currentVersion = projectPackageJson.version;
     try {
       try {
@@ -96,9 +117,9 @@ export default async function npmPublishExecutorFn(
         const distTags = resultJson["dist-tags"] || {};
         if (distTags[tag] === currentVersion) {
           console.warn(
-            `Skipped ${packageTxt} because v${currentVersion} already exists in ${registry} with tag "${tag}"`
+            `Skipped ${packageTxt} because v${currentVersion} already exists in ${npmRegistry} with tag "${tag}"`
           );
-          return new Promise((resolve) => resolve({ success: true }));
+          return new Promise(resolve => resolve({ success: true }));
         }
       } catch (err) {
         console.warn(
@@ -108,27 +129,38 @@ export default async function npmPublishExecutorFn(
 
       try {
         if (!isDryRun) {
-          execSync(
-            `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${registry}`,
-            {
-              env: {
-                ...process.env,
-                FORCE_COLOR: "true"
-              },
-              cwd: packageRoot,
-              stdio: "ignore"
-            }
-          );
+          await Promise.all([
+            exec(
+              `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${npmRegistry}`,
+              {
+                env: {
+                  ...process.env,
+                  FORCE_COLOR: "true"
+                },
+                cwd: packageRoot
+              }
+            ),
+            exec(
+              `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${githubRegistry}`,
+              {
+                env: {
+                  ...process.env,
+                  FORCE_COLOR: "true"
+                },
+                cwd: packageRoot
+              }
+            )
+          ]);
 
           console.info(
-            `Added the dist-tag ${tag} to v${currentVersion} for registry ${registry}.\n`
+            `Added the dist-tag ${tag} to v${currentVersion} for registries "${npmRegistry}" and "${githubRegistry}".\n`
           );
         } else {
           console.info(
-            `Would add the dist-tag ${tag} to v${currentVersion} for registry ${registry}, but [dry-run] was set.\n`
+            `Would add the dist-tag ${tag} to v${currentVersion} for registries "${npmRegistry}" and "${githubRegistry}", but [dry-run] was set.\n`
           );
         }
-        return new Promise((resolve) => resolve({ success: true }));
+        return new Promise(resolve => resolve({ success: true }));
       } catch (err) {
         try {
           const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
@@ -145,7 +177,9 @@ export default async function npmPublishExecutorFn(
               err.stderr?.toString().includes("no such package available")
             )
           ) {
-            console.error("npm dist-tag add error please see below for more information:");
+            console.error(
+              "npm dist-tag add error please see below for more information:"
+            );
             if (stdoutData.error.summary) {
               console.error(stdoutData.error?.summary);
             }
@@ -154,15 +188,17 @@ export default async function npmPublishExecutorFn(
             }
 
             if (context.isVerbose) {
-              console.error(`npm dist-tag add stdout: ${JSON.stringify(stdoutData, null, 2)}`);
+              console.error(
+                `npm dist-tag add stdout: ${JSON.stringify(stdoutData, null, 2)}`
+              );
             }
-            return new Promise((resolve) => resolve({ success: false }));
+            return new Promise(resolve => resolve({ success: false }));
           }
         } catch (err) {
           console.error(
             `Something unexpected went wrong when processing the npm dist-tag add output\n${err}`
           );
-          return new Promise((resolve) => resolve({ success: false }));
+          return new Promise(resolve => resolve({ success: false }));
         }
       }
     } catch (err) {
@@ -181,13 +217,9 @@ export default async function npmPublishExecutorFn(
         console.error(
           `Something unexpected went wrong when checking for existing dist-tags.\n${err}`
         );
-        return new Promise((resolve) => resolve({ success: false }));
+        return new Promise(resolve => resolve({ success: false }));
       }
     }
-  }
-
-  if (options.firstRelease && context.isVerbose) {
-    console.info("Skipped npm view because --first-release was set");
   }
 
   try {
@@ -203,12 +235,14 @@ export default async function npmPublishExecutorFn(
     console.info(output.toString());
 
     if (isDryRun) {
-      console.info(`Would publish to ${registry} with tag "${tag}", but [dry-run] was set`);
+      console.info(
+        `Would publish to ${npmRegistry} with tag "${tag}", but [dry-run] was set`
+      );
     } else {
-      console.info(`Published to ${registry} with tag "${tag}"`);
+      console.info(`Published to ${npmRegistry} with tag "${tag}"`);
     }
 
-    return new Promise((resolve) => resolve({ success: true }));
+    return new Promise(resolve => resolve({ success: true }));
   } catch (err) {
     try {
       const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
@@ -224,15 +258,17 @@ export default async function npmPublishExecutorFn(
       }
 
       if (context.isVerbose) {
-        console.error(`npm publish stdout:\n${JSON.stringify(stdoutData, null, 2)}`);
+        console.error(
+          `npm publish stdout:\n${JSON.stringify(stdoutData, null, 2)}`
+        );
       }
-      return new Promise((resolve) => resolve({ success: false }));
+      return new Promise(resolve => resolve({ success: false }));
     } catch (err) {
       console.error(
         `Something unexpected went wrong when processing the npm publish output\n${err}`
       );
 
-      return new Promise((resolve) => resolve({ success: false }));
+      return new Promise(resolve => resolve({ success: false }));
     }
   }
 }

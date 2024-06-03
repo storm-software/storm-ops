@@ -125,6 +125,23 @@ export const SingleThemeColorConfigSchema = z.object({
   fatal: FatalColorSchema
 });
 
+export const RegistryUrlConfigSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .url()
+  .optional()
+  .describe("A remote registry URL used to publish distributable packages");
+
+export const RegistryConfigSchema = z
+  .object({
+    github: RegistryUrlConfigSchema,
+    npm: RegistryUrlConfigSchema,
+    cargo: RegistryUrlConfigSchema,
+    cyclone: RegistryUrlConfigSchema
+  })
+  .describe("A list of remote registry URLs used by Storm Software");
+
 /**
  * Storm theme color config values used for styling various workspace elements
  */
@@ -295,6 +312,7 @@ export const StormConfigSchema = z
       .nullable()
       .default(null)
       .describe("The default Cloudflare account ID of the workspace"),
+    registry: RegistryConfigSchema,
     configFile: z
       .string()
       .trim()

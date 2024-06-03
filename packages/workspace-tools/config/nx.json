@@ -225,7 +225,7 @@
   "release": {
     "projects": ["packages/*", "crates/*"],
     "projectsRelationship": "independent",
-    "releaseTagPattern": "{projectName}-v{version}",
+    "releaseTagPattern": "{projectName}@{version}",
     "changelog": {
       "automaticFromRef": true,
       "workspaceChangelog": false,

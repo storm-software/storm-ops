@@ -11,6 +11,12 @@
   "outputDirectory": "node_modules/.storm",
   "packageManager": "pnpm",
   "externalPackagePatterns": ["@storm-software/"],
+  "registry": {
+    "github": "https://npm.pkg.github.com",
+    "npm": "https://registry.npmjs.org",
+    "cargo": "https://crates.io",
+    "cyclone": "https://registry.cyclone-ui.com/components"
+  },
   "colors": {
     "light": {
       "background": "#f4f4f5",

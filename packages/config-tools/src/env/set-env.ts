@@ -198,6 +198,22 @@ export const setConfigEnv = (config: StormConfig) => {
       config.cloudflareAccountId
     );
   }
+  if (config.registry) {
+    if (config.registry.github) {
+      process.env[`${prefix}REGISTRY_GITHUB`] = String(config.registry.github);
+    }
+    if (config.registry.npm) {
+      process.env[`${prefix}REGISTRY_NPM`] = String(config.registry.npm);
+    }
+    if (config.registry.cargo) {
+      process.env[`${prefix}REGISTRY_CARGO`] = String(config.registry.cargo);
+    }
+    if (config.registry.cyclone) {
+      process.env[`${prefix}REGISTRY_CYCLONE`] = String(
+        config.registry.cyclone
+      );
+    }
+  }
   if (config.logLevel) {
     process.env[`${prefix}LOG_LEVEL`] = String(config.logLevel);
     process.env.LOG_LEVEL = String(config.logLevel);

@@ -5,7 +5,10 @@ import {
   type CreateNodes,
   type CreateDependencies
 } from "@nx/devkit";
-import { DependencyType, type ProjectGraphExternalNode } from "nx/src/config/project-graph";
+import {
+  DependencyType,
+  type ProjectGraphExternalNode
+} from "nx/src/config/project-graph";
 import { dirname } from "node:path";
 import type { Package } from "../../utils/toml";
 import { cargoMetadata, isExternal } from "../../utils/cargo";
@@ -123,7 +126,10 @@ export const createNodes: CreateNodes = [
   }
 ];
 
-export const createDependencies: CreateDependencies = (_, { projects, externalNodes }) => {
+export const createDependencies: CreateDependencies = (
+  _,
+  { projects, externalNodes }
+) => {
   const metadata = cargoMetadata();
   if (!metadata) {
     return [];
@@ -135,17 +141,21 @@ export const createDependencies: CreateDependencies = (_, { projects, externalNo
   for (const pkg of cargoPackages) {
     if (projects[pkg.name]) {
       for (const deps of pkg.dependencies) {
-        if (!cargoPackages.find((p) => p.name === deps.name)) {
+        if (!cargoPackages.find(p => p.name === deps.name)) {
           continue;
         }
 
         // if the dependency is listed in nx projects, it's not an external dependency
         if (projects[deps.name]) {
-          dependencies.push(createDependency(pkg, deps.name, DependencyType.static));
+          dependencies.push(
+            createDependency(pkg, deps.name, DependencyType.static)
+          );
         } else {
           const externalDepName = `cargo:${deps.name}`;
           if (externalDepName in (externalNodes ?? {})) {
-            dependencies.push(createDependency(pkg, externalDepName, DependencyType.static));
+            dependencies.push(
+              createDependency(pkg, externalDepName, DependencyType.static)
+            );
           }
         }
       }

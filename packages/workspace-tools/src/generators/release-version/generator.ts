@@ -147,6 +147,7 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
 
     let packageName!: string;
     let currentVersionFromDisk!: string;
+
     if (tree.exists(packageJsonPath)) {
       const projectPackageJson = readJson(tree, packageJsonPath);
       log(
@@ -180,10 +181,9 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
     switch (options.currentVersionResolver) {
       case "registry": {
         const metadata = options.currentVersionResolverMetadata;
-        const registry =
-          metadata?.registry ??
-          (await getNpmRegistry()) ??
-          "https://registry.npmjs.org";
+        const npmRegistry = metadata?.registry ?? (await getNpmRegistry());
+        const githubRegistry =
+          metadata?.registry ?? (await getGitHubRegistry());
         const tag = metadata?.tag ?? "latest";
 
         /**
@@ -195,7 +195,7 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
             // Must be non-blocking async to allow spinner to render
             currentVersion = await new Promise<string>((resolve, reject) => {
               exec(
-                `npm view ${packageName} version --registry=${registry} --tag=${tag}`,
+                `npm view ${packageName} version --registry=${npmRegistry} --tag=${tag}`,
                 (error, stdout, stderr) => {
                   if (error) {
                     return reject(error);
@@ -211,21 +211,43 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
             // spinner.stop();
 
             log(
-              `📄 Resolved the current version as ${currentVersion} for tag "${tag}" from registry ${registry}`
+              `📄 Resolved the current version as ${currentVersion} for tag "${tag}" from registry ${npmRegistry}`
             );
           } catch (_) {
-            // spinner.stop();
+            try {
+              // Try getting the version from the GitHub registry
+              currentVersion = await new Promise<string>((resolve, reject) => {
+                exec(
+                  `npm view ${packageName} version --registry=${githubRegistry} --tag=${tag}`,
+                  (error, stdout, stderr) => {
+                    if (error) {
+                      return reject(error);
+                    }
+                    if (stderr) {
+                      return reject(stderr);
+                    }
+                    return resolve(stdout.trim());
+                  }
+                );
+              });
 
-            if (options.fallbackCurrentVersionResolver === "disk") {
+              // spinner.stop();
+
               log(
-                `📄 Unable to resolve the current version from the registry ${registry}. Falling back to the version on disk of ${currentVersionFromDisk}`
+                `📄 Resolved the current version as ${currentVersion} for tag "${tag}" from registry ${githubRegistry}`
               );
-              currentVersion = currentVersionFromDisk;
-              currentVersionResolvedFromFallback = true;
-            } else {
-              throw new Error(
-                `Unable to resolve the current version from the registry ${registry}. Please ensure that the package exists in the registry in order to use the "registry" currentVersionResolver. Alternatively, you can use the --first-release option or set "release.version.generatorOptions.fallbackCurrentVersionResolver" to "disk" in order to fallback to the version on disk when the registry lookup fails.`
-              );
+            } catch (_) {
+              if (options.fallbackCurrentVersionResolver === "disk") {
+                log(
+                  `📄 Unable to resolve the current version from the registry ${npmRegistry}${githubRegistry ? ` or ${githubRegistry}` : ""}. Falling back to the version on disk of ${currentVersionFromDisk}`
+                );
+                currentVersion = currentVersionFromDisk;
+                currentVersionResolvedFromFallback = true;
+              } else {
+                throw new Error(
+                  `Unable to resolve the current version from the registry ${npmRegistry}${githubRegistry ? ` or ${githubRegistry}` : ""}. Please ensure that the package exists in the registry in order to use the "registry" currentVersionResolver. Alternatively, you can use the --first-release option or set "release.version.generatorOptions.fallbackCurrentVersionResolver" to "disk" in order to fallback to the version on disk when the registry lookup fails.`
+                );
+              }
             }
           }
         } else {
@@ -235,7 +257,7 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
             );
           } else {
             log(
-              `📄 Using the current version ${currentVersion} already resolved from the registry ${registry}`
+              `📄 Using the current version ${currentVersion} already resolved from the registry ${npmRegistry ?? githubRegistry}`
             );
           }
         }
@@ -261,17 +283,19 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
             }
           );
           if (!latestMatchingGitTag) {
-            if (options.fallbackCurrentVersionResolver === "disk") {
+            if (currentVersionFromDisk) {
               log(
                 `📄 Unable to resolve the current version from git tag using pattern "${releaseTagPattern}". Falling back to the version on disk of ${currentVersionFromDisk}`
               );
               currentVersion = currentVersionFromDisk;
-              currentVersionResolvedFromFallback = true;
             } else {
-              throw new Error(
-                `No git tags matching pattern "${releaseTagPattern}" for project "${project.name}" were found. You will need to create an initial matching tag to use as a base for determining the next version. Alternatively, you can use the --first-release option or set "release.version.generatorOptions.fallbackCurrentVersionResolver" to "disk" in order to fallback to the version on disk when no matching git tags are found.`
+              log(
+                `No git tags matching pattern "${releaseTagPattern}" for project "${project.name}" were found. This process also could not determine the version by checking the package files on disk, so we will attempt to use the default version value: "0.0.1".`
               );
+              currentVersion = "0.0.1";
             }
+
+            currentVersionResolvedFromFallback = true;
           } else {
             currentVersion = latestMatchingGitTag.extractedVersion;
             log(
@@ -332,19 +356,17 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
 
           // latestMatchingGitTag will be undefined if the current version was resolved from the disk fallback.
           // In this case, we want to use the first commit as the ref to be consistent with the changelog command.
-          const previousVersionRef = latestMatchingGitTag
+          let previousVersionRef = latestMatchingGitTag?.tag
             ? latestMatchingGitTag.tag
-            : options.fallbackCurrentVersionResolver === "disk"
-              ? await getFirstGitCommit()
-              : undefined;
-
+            : await getFirstGitCommit();
           if (!previousVersionRef) {
-            // This should never happen since the checks above should catch if the current version couldn't be resolved
-            throw new Error(
+            log(
               `Unable to determine previous version ref for the projects ${affectedProjects.join(
                 ", "
-              )}. This is likely a bug in Nx.`
+              )}. This is likely a bug in Storm's Release Versioning. We will attempt to use the default version value "0.0.1" and continue with the process.`
             );
+
+            previousVersionRef = "0.0.1";
           }
 
           specifier =
@@ -673,8 +695,11 @@ export default withRunGenerator<ReleaseVersionGeneratorSchema>(
 );
 
 async function getNpmRegistry() {
-  // Must be non-blocking async to allow spinner to render
-  return await new Promise<string>((resolve, reject) => {
+  if (process.env.STORM_REGISTRY_NPM) {
+    return process.env.STORM_REGISTRY_NPM;
+  }
+
+  const registry = await new Promise<string>((resolve, reject) => {
     exec("npm config get registry", (error, stdout, stderr) => {
       if (error) {
         return reject(error);
@@ -685,6 +710,16 @@ async function getNpmRegistry() {
       return resolve(stdout.trim());
     });
   });
+
+  return registry ? registry : "https://registry.npmjs.org";
+}
+
+function getGitHubRegistry() {
+  if (process.env.STORM_REGISTRY_GITHUB) {
+    return process.env.STORM_REGISTRY_GITHUB;
+  }
+
+  return "https://npm.pkg.github.com";
 }
 
 function hasGitDiff(filePath: string) {

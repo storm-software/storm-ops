@@ -1,6 +1,7 @@
 export interface NpmPublishExecutorSchema {
   packageRoot?: string;
-  registry?: string;
+  npmRegistry?: string;
+  githubRegistry?: string;
   tag?: string;
   otp?: number;
   dryRun?: boolean;

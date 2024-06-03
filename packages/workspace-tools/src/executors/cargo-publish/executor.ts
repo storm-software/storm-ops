@@ -1,5 +1,5 @@
 import { type ExecutorContext, joinPathFragments } from "@nx/devkit";
-import { execSync } from "node:child_process";
+import { exec } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { parseCargoToml } from "../../utils/toml";
 import type { CargoPublishExecutorSchema } from "./schema.d";
@@ -21,7 +21,9 @@ export default async function runExecutor(
     throw new Error("The executor requires a projectName.");
   }
 
-  console.info(`🚀  Running Storm Crates.io Publish executor on the ${context.projectName} crate`);
+  console.info(
+    `🚀  Running Storm Cargo Publish executor on the ${context.projectName} crate`
+  );
 
   if (
     !context.projectName ||
@@ -32,7 +34,17 @@ export default async function runExecutor(
     throw new Error("The executor requires projectsConfigurations.");
   }
 
-  const root = context.projectsConfigurations.projects[context.projectName]?.root;
+  const githubRegistry = options.githubRegistry
+    ? options.githubRegistry
+    : process.env.STORM_REGISTRY_GITHUB;
+  const cargoRegistry = options.cargoRegistry
+    ? options.cargoRegistry
+    : process.env.STORM_REGISTRY_CARGO
+      ? process.env.STORM_REGISTRY_CARGO
+      : "https://crates.io";
+
+  const root =
+    context.projectsConfigurations.projects[context.projectName]?.root;
   const packageRoot = joinPathFragments(
     context.root,
     (options.packageRoot ? options.packageRoot : root) as string
@@ -43,10 +55,14 @@ export default async function runExecutor(
   );
 
   try {
-    const result = await getRegistryVersion(cargoToml.package.name, cargoToml.package.version);
+    const result = await getRegistryVersion(
+      cargoToml.package.name,
+      cargoToml.package.version,
+      cargoRegistry
+    );
     if (result) {
       console.warn(
-        `Skipped package "${cargoToml.package.name}" from project "${context.projectName}" because v${cargoToml.package.version} already exists in https://crates.io with tag "latest"`
+        `Skipped package "${cargoToml.package.name}" from project "${context.projectName}" because v${cargoToml.package.version} already exists in ${cargoRegistry} with tag "latest"`
       );
 
       return {
@@ -55,39 +71,66 @@ export default async function runExecutor(
     }
   } catch (_: any) {}
 
-  const cargoPublishCommandSegments = [`cargo publish --allow-dirty -p ${cargoToml.package.name}`];
+  const cargoPublishCommandSegments = [
+    `cargo publish --allow-dirty -p ${cargoToml.package.name}`
+  ];
+  const githubPublishCommandSegments = [
+    `npm dist-tag add ${cargoToml.package.name}@${cargoToml.package.version} "latest" `
+  ];
+  if (githubRegistry) {
+    githubPublishCommandSegments.push(`--registry=${githubRegistry}`);
+  }
+
   if (isDryRun) {
     cargoPublishCommandSegments.push("--dry-run");
   }
 
   try {
-    const command = cargoPublishCommandSegments.join(" ");
+    const cargoPublishCommand = cargoPublishCommandSegments.join(" ");
+    const githubPublishCommand = githubPublishCommandSegments.join(" ");
     console.log("");
-    console.log(`Running "${command}"...`);
+    console.log(
+      `Running "${cargoPublishCommand}" and "${githubPublishCommand}"...`
+    );
     console.log("");
 
-    execSync(command, {
-      maxBuffer: LARGE_BUFFER,
-      env: {
-        ...process.env,
-        FORCE_COLOR: "true"
-      },
-      cwd: packageRoot,
-      stdio: ["ignore", "pipe", "pipe"]
-    });
+    await Promise.all([
+      exec(cargoPublishCommand, {
+        maxBuffer: LARGE_BUFFER,
+        env: {
+          ...process.env,
+          FORCE_COLOR: "true"
+        },
+        cwd: packageRoot
+      }),
+      exec(githubPublishCommand, {
+        env: {
+          ...process.env,
+          FORCE_COLOR: "true"
+        },
+        cwd: packageRoot
+      })
+    ]);
+
     console.log("");
 
     if (isDryRun) {
-      console.log("Would publish to https://crates.io, but [dry-run] was set");
+      console.log(
+        `Would publish to ${cargoRegistry}${githubRegistry ? ` and ${githubRegistry}` : ""}, but [dry-run] was set`
+      );
     } else {
-      console.log("Published to https://crates.io");
+      console.log(
+        `Published to ${cargoRegistry}${githubRegistry ? ` and ${githubRegistry}` : ""}`
+      );
     }
 
     return {
       success: true
     };
   } catch (error: any) {
-    console.error("Failed to publish to https://crates.io");
+    console.error(
+      `Failed to publish to ${cargoRegistry}${githubRegistry ? ` and ${githubRegistry}` : ""}`
+    );
     console.error(error);
     console.log("");
 
@@ -97,20 +140,24 @@ export default async function runExecutor(
   }
 }
 
-export const getRegistryVersion = (name: string, version: string): Promise<string> => {
+export const getRegistryVersion = (
+  name: string,
+  version: string,
+  cargoRegistry: string
+): Promise<string> => {
   return new Promise((resolve: (value: string) => void) =>
     https
       .get(
-        `https://crates.io/api/v1/crates/${encodeURIComponent(name)}/${encodeURIComponent(
+        `${cargoRegistry}/api/v1/crates/${encodeURIComponent(name)}/${encodeURIComponent(
           version
         )}`,
-        (res) => {
-          res.on("data", (d) => {
+        res => {
+          res.on("data", d => {
             resolve(d);
           });
         }
       )
-      .on("error", (e) => {
+      .on("error", e => {
         throw e;
       })
   );

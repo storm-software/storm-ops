@@ -74,9 +74,7 @@ export const createNodes = [
         inputs: ["default", "^production"],
         dependsOn: ["build", "^nx-release-publish"],
         executor: "@storm-software/workspace-tools:npm-publish",
-        options: {
-          registry: "https://registry.npmjs.org/"
-        }
+        options: {}
       };
     }
 

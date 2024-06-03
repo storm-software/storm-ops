@@ -100,6 +100,12 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
       : process.env.CLOUDFLARE_ACCOUNT_ID
         ? process.env.CLOUDFLARE_ACCOUNT_ID
         : process.env.STORM_BOT_CLOUDFLARE_ACCOUNT,
+    registry: {
+      github: process.env[`${prefix}REGISTRY_GITHUB`],
+      npm: process.env[`${prefix}REGISTRY_NPM`],
+      cargo: process.env[`${prefix}REGISTRY_CARGO`],
+      cyclone: process.env[`${prefix}REGISTRY_CYCLONE`]
+    },
     logLevel:
       process.env[`${prefix}LOG_LEVEL`] !== null &&
       process.env[`${prefix}LOG_LEVEL`] !== undefined
