@@ -1,12 +1,12 @@
 import * as path from "node:path";
 import {
-  type Tree,
   addDependenciesToPackageJson,
   addProjectConfiguration,
   formatFiles,
   generateFiles,
   joinPathFragments,
-  updateJson
+  updateJson,
+  type Tree
 } from "@nx/devkit";
 import { withRunGenerator } from "../../base/base-generator";
 import {
@@ -139,7 +139,7 @@ export async function presetGeneratorFn(
 
     json.scripts.nx = "nx";
     json.scripts.graph = "nx graph";
-    json.scripts.lint = "pnpm storm-lint all";
+    json.scripts.lint = "pnpm storm-lint all --skip-cspell --skip-alex";
 
     if (options.includeApps) {
       json.scripts.start = "nx serve";
@@ -161,7 +161,7 @@ export async function presetGeneratorFn(
       json.scripts.test = "nx test";
     }
 
-    json.scripts.lint = "pnpm storm-lint all --skip-cspell";
+    json.scripts.lint = "pnpm storm-lint all --skip-cspell --skip-alex";
     json.scripts.commit = "pnpm storm-git commit";
     json.scripts["readme-gen"] =
       'pnpm storm-git readme-gen --templates="docs/readme-templates"';
@@ -174,8 +174,6 @@ export async function presetGeneratorFn(
       node: `>=${nodeVersion}`,
       pnpm: `>=${pnpmVersion}`
     };
-
-    json.prettier = "@storm-software/linting-tools/prettier/config.json";
 
     if (options.includeApps) {
       json.bundlewatch = {
@@ -210,14 +208,12 @@ export async function presetGeneratorFn(
   await formatFiles(tree);
 
   let dependencies: Record<string, string> = {
-    "@biomejs/biome": "1.6.4",
     "@commitlint/cli": "19.2.1",
     "@ls-lint/ls-lint": "2.2.3",
     "@ltd/j-toml": "1.38.0",
     "@nx/devkit": "19.1.0",
     "@nx/esbuild": "19.1.0",
     "@nx/eslint": "19.1.0",
-    "@nx/eslint-plugin": "19.1.0",
     "@nx/js": "19.1.0",
     "@nx/plugin": "19.1.0",
     "@nx/workspace": "19.1.0",
@@ -227,6 +223,9 @@ export async function presetGeneratorFn(
     "@storm-software/linting-tools": "latest",
     "@storm-software/testing-tools": "latest",
     "@storm-software/workspace-tools": "latest",
+    "@storm-software/eslint": "latest",
+    "@storm-software/eslint-plugin": "latest",
+    "@storm-software/prettier": "latest",
     "@swc-node/register": "1.9.0",
     "@swc/cli": "0.3.12",
     "@swc/core": "1.4.12",
@@ -235,21 +234,17 @@ export async function presetGeneratorFn(
     "@taplo/cli": "0.7.0",
     "@types/jest": "29.5.12",
     "@types/node": "20.12.5",
-    "@typescript-eslint/eslint-plugin": "7.6.0",
     "@typescript-eslint/parser": "7.6.0",
     "conventional-changelog-conventionalcommits": "7.0.2",
     "esbuild": "0.20.2",
     "esbuild-register": "3.5.0",
     "eslint": "9.0.0",
-    "eslint-config-prettier": "9.1.0",
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
     "jest-environment-node": "29.7.0",
     "lefthook": "1.6.8",
     "nx": "19.1.0",
     "prettier": "3.2.5",
-    "prettier-plugin-prisma": "5.0.0",
-    "prettier-plugin-tailwindcss": "0.5.13",
     "rimraf": "5.0.5",
     "ts-jest": "29.1.2",
     "ts-loader": "9.5.1",

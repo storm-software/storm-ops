@@ -1,8 +1,25 @@
 {
   "name": "@storm-software/markdownlint",
   "version": "0.3.0",
-  "private": false,
+  "type": "commonjs",
   "description": "⚡An opinionated collection of markdownlint rules used by Storm Software.",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git",
+    "directory": "packages/markdownlint"
+  },
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.com"
+  },
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "license": "Apache-2.0",
+  "private": false,
   "keywords": [
     "storm",
     "storm-ops",
@@ -15,23 +32,6 @@
     "markdownlint-cli",
     "markdownlint-cli2"
   ],
-  "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/storm-software/storm-ops.git",
-    "directory": "packages/markdownlint"
-  },
-  "license": "Apache-2.0",
-  "author": {
-    "name": "Storm Software",
-    "email": "contact@stormsoftware.com",
-    "url": "https://stormsoftware.com"
-  },
-  "type": "commonjs",
   "dependencies": {
     "lodash": "4.17.21"
   },

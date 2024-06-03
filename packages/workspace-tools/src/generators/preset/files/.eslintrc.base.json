@@ -1,7 +1,12 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*", "**/node_modules/**"],
-  "plugins": ["@nx"],
+  "ignorePatterns": ["**/*"],
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "node": true
+  },
+  "plugins": ["@storm-software"],
+  "extends": ["plugin:@storm-software/recommended"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],

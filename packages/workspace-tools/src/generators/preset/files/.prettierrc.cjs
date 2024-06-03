@@ -1,7 +1,7 @@
 const {
   plugins,
   ...prettierConfig
-} = require("@storm-software/prettier/src/config.json");
+} = require("@storm-software/prettier/config.json");
 
 module.exports = {
   ...prettierConfig,

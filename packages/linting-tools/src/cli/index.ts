@@ -1,3 +1,7 @@
+import { Command, Option } from "commander";
+import { lint } from "cspell";
+import { parseCircular, parseDependencyTree, prettyCircular } from "dpdm";
+import type { StormConfig } from "@storm-software/config";
 import {
   findWorkspaceRootSafe,
   writeDebug,
@@ -7,12 +11,8 @@ import {
   writeSuccess,
   writeTrace
 } from "@storm-software/config-tools";
-import type { StormConfig } from "@storm-software/config";
-import { lint } from "cspell";
-import { parseCircular, parseDependencyTree, prettyCircular } from "dpdm";
 import { runAlex } from "../alex";
 import { runManypkg } from "../manypkg";
-import { Command, Option } from "commander";
 
 let _config: Partial<StormConfig> = {};
 

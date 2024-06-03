@@ -18,3 +18,4 @@ CODEOWNERS
 dist/**
 coverage/**
 .nx/cache/**
+**/src/generators/**/files/**/*
