@@ -13,18 +13,25 @@ async function transformAndSave(
   updateOnly = false
 ) {
   const doctoc = await import("doctoc/lib/transform");
+  if (!doctoc?.transform) {
+    console.warn('Unable to import "doctoc/lib/transform"');
+    return;
+  }
 
   if (processAll) {
-    console.log("--all flag is enabled. Including headers before the TOC location.");
+    console.log(
+      "--all flag is enabled. Including headers before the TOC location."
+    );
   }
 
   if (updateOnly) {
-    console.log("--update-only flag is enabled. Only updating files that already have a TOC.");
+    console.log(
+      "--update-only flag is enabled. Only updating files that already have a TOC."
+    );
   }
 
   console.log("\n==================\n");
-
-  const transformed = files.map((x) => {
+  const transformed = files.map(x => {
     const result = doctoc.transform(
       readFileSync(x.path, "utf8"),
       mode,
@@ -39,8 +46,8 @@ async function transformAndSave(
     return result;
   });
 
-  const changed = transformed.filter((x) => x.transformed);
-  const unchanged = transformed.filter((x) => {
+  const changed = transformed.filter(x => x.transformed);
+  const unchanged = transformed.filter(x => {
     return !x.transformed;
   });
 
@@ -67,7 +74,11 @@ export const doctoc = (
 
   const stat = statSync(directory);
   if (stat.isDirectory()) {
-    console.log('\nDocToccing "%s" and its sub directories for %s.', directory, mode);
+    console.log(
+      '\nDocToccing "%s" and its sub directories for %s.',
+      directory,
+      mode
+    );
     files = findMarkdownFiles(directory);
   } else {
     console.log('\nDocToccing single file "%s" for %s.', directory, mode);
@@ -93,11 +104,11 @@ const ignoredDirs = [".", "..", ".git", "node_modules"];
 
 function separateFilesAndDirs(fileInfos: FileInfo[]) {
   return {
-    directories: fileInfos.filter((x) => {
+    directories: fileInfos.filter(x => {
       const stats = statSync(x.path);
       return stats.isDirectory() && !ignoredDirs.includes(x.name);
     }),
-    markdownFiles: fileInfos.filter((x) => {
+    markdownFiles: fileInfos.filter(x => {
       const stats = statSync(x.path);
       return stats.isFile() && markdownExts.includes(extname(x.name));
     })
@@ -121,12 +132,12 @@ function findMarkdownFiles(currentPath: string) {
 
   function process(fileInfos: FileInfo[]) {
     const res = separateFilesAndDirs(fileInfos);
-    const targets = res.directories.map((directory) => directory.path);
+    const targets = res.directories.map(directory => directory.path);
 
     if (res.markdownFiles.length > 0)
       console.log(
         '\nFound %s in "%s"',
-        res.markdownFiles.map((markdownFile) => markdownFile.name).join(", "),
+        res.markdownFiles.map(markdownFile => markdownFile.name).join(", "),
         currentPath
       );
     else console.log('\nFound nothing in "%s"', currentPath);
