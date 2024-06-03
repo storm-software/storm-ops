@@ -22,11 +22,8 @@
   },
   "packageRules": [
     {
-      "matchPackagePatterns": ["^@storm-software/"],
-      "enabled": true
-    },
-    {
       "matchPackagePatterns": [
+        "pnpm",
         "nx",
         "@nx/*",
         "tsup",
@@ -37,6 +34,10 @@
         "@humanfs/node"
       ],
       "enabled": false
+    },
+    {
+      "matchPackagePatterns": ["^@storm-software/"],
+      "enabled": true
     },
     {
       "groupName": "dependencies-non-major",

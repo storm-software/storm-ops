@@ -1,8 +1,43 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*", "**/node_modules/**"],
-  "plugins": ["@nx"],
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "node": true
+  },
+  "ignorePatterns": ["**/*.ts"],
+  "plugins": ["@typescript-eslint", "@nx"],
+  "rules": {
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "no-restricted-imports": ["error", "create-nx-workspace"],
+    "@typescript-eslint/no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["nx/src/plugins/js*"],
+            "message": "Imports from 'nx/src/plugins/js' are not allowed. Use '@nx/js' instead"
+          },
+          {
+            "group": ["**/native-bindings", "**/native-bindings.js", ""],
+            "message": "Direct imports from native-bindings.js are not allowed. Import from index.js instead."
+          }
+        ]
+      }
+    ]
+  },
   "overrides": [
+    {
+      "files": ["*.json"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {}
+    },
+    {
+      "files": ["**/executors/**/schema.json", "**/generators/**/schema.json"],
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "@nx/workspace/valid-schema-description": "error"
+      }
+    },
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
@@ -10,6 +45,7 @@
           "error",
           {
             "enforceBuildableLibDependency": true,
+            "checkDynamicDependenciesExceptions": [".*"],
             "allow": [],
             "depConstraints": [
               {
