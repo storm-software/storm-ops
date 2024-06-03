@@ -1,3 +1,17 @@
+## 1.81.0 (2024-06-03)
+
+
+### 🚀 Features
+
+- **storm-ops:** Upgrade Nx packages and resolve linting issues ([685c2bb9](https://github.com/storm-software/storm-ops/commit/685c2bb9))
+
+
+### 🩹 Fixes
+
+- **deps:** update dependencies-non-major ([#181](https://github.com/storm-software/storm-ops/pull/181))
+
+- **deps:** update dependency bundle-require to v5 ([#182](https://github.com/storm-software/storm-ops/pull/182))
+
 ## 1.80.0 (2024-06-02)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/markdownlint",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": false,
   "description": "⚡An opinionated collection of markdownlint rules used by Storm Software.",
   "keywords": [

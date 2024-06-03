@@ -1,3 +1,10 @@
+## 1.22.1 (2024-06-03)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Resolved issue with import in markdown formatter ([5e3963de](https://github.com/storm-software/storm-ops/commit/5e3963de))
+
 ## 1.22.0 (2024-06-02)
 
 

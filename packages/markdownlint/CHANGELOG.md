@@ -1,3 +1,15 @@
+## 0.3.0 (2024-06-03)
+
+
+### 🚀 Features
+
+- **storm-ops:** Upgrade Nx packages and resolve linting issues ([685c2bb9](https://github.com/storm-software/storm-ops/commit/685c2bb9))
+
+
+### 🩹 Fixes
+
+- **git-tools:** Resolved issue with import in markdown formatter ([5e3963de](https://github.com/storm-software/storm-ops/commit/5e3963de))
+
 ## 0.2.0 (2024-05-29)
 
 

@@ -1,3 +1,12 @@
+## 0.6.1 (2024-06-03)
+
+
+### 🩹 Fixes
+
+- **deps:** update patch prod dependencies ([072b4763](https://github.com/storm-software/storm-ops/commit/072b4763))
+
+- **deps:** update dependencies-non-major ([#181](https://github.com/storm-software/storm-ops/pull/181))
+
 ## 0.6.0 (2024-06-02)
 
 

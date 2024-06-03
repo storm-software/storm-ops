@@ -1,3 +1,10 @@
+## 1.62.0 (2024-06-03)
+
+
+### 🚀 Features
+
+- **storm-ops:** Upgrade Nx packages and resolve linting issues ([685c2bb9](https://github.com/storm-software/storm-ops/commit/685c2bb9))
+
 ## 1.61.0 (2024-04-13)
 
 
