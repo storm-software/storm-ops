@@ -155,6 +155,27 @@
           "default": null,
           "description": "The default Cloudflare account ID of the workspace"
         },
+        "registry": {
+          "type": "object",
+          "properties": {
+            "github": {
+              "type": "string",
+              "format": "uri",
+              "description": "A remote registry URL used to publish distributable packages"
+            },
+            "npm": {
+              "$ref": "#/definitions/StormConfiguration/properties/registry/properties/github"
+            },
+            "cargo": {
+              "$ref": "#/definitions/StormConfiguration/properties/registry/properties/github"
+            },
+            "cyclone": {
+              "$ref": "#/definitions/StormConfiguration/properties/registry/properties/github"
+            }
+          },
+          "additionalProperties": false,
+          "description": "A list of remote registry URLs used by Storm Software"
+        },
         "configFile": {
           "anyOf": [
             {
@@ -367,7 +388,7 @@
           "description": "Configuration of each used extension"
         }
       },
-      "required": ["colors"],
+      "required": ["registry", "colors"],
       "additionalProperties": false,
       "description": "Storm Workspace config values used during various dev-ops processes. This type is a combination of the StormPackageConfig and StormProject types. It represents the config of the entire monorepo."
     }
