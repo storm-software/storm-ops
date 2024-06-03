@@ -648,8 +648,8 @@ importers:
         specifier: 6.1.0
         version: 6.1.0(rollup@4.18.0)
       bundle-require:
-        specifier: 4.2.1
-        version: 4.2.1(esbuild@0.21.4)
+        specifier: 5.0.0
+        version: 5.0.0(esbuild@0.21.4)
       decky:
         specifier: 1.1.1
         version: 1.1.1
@@ -4060,11 +4060,11 @@ packages:
     peerDependencies:
       esbuild: '>=0.17'
 
-  bundle-require@4.2.1:
-    resolution: {integrity: sha512-7Q/6vkyYAwOmQNRw75x+4yRtZCZJXUDmHHlFdkiV0wgv/reNjtJwpu1jPJ0w2kbEpIM0uoKI3S4/f39dU7AjSA==}
+  bundle-require@5.0.0:
+    resolution: {integrity: sha512-GuziW3fSSmopcx4KRymQEJVbZUfqlCqcq7dvs6TYwKRZiegK/2buMxQTPs6MGlNv50wms1699qYO54R8XfRX4w==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     peerDependencies:
-      esbuild: '>=0.17'
+      esbuild: '>=0.18'
 
   bytes-iec@3.1.1:
     resolution: {integrity: sha512-fey6+4jDK7TFtFg/klGSvNKJctyU7n2aQdnM+CO0ruLPbqqMOM8Tio0Pc+deqUeVKX1tL5DQep1zQ7+37aTAsA==}
@@ -14657,7 +14657,7 @@ snapshots:
       esbuild: 0.19.12
       load-tsconfig: 0.2.5
 
-  bundle-require@4.2.1(esbuild@0.21.4):
+  bundle-require@5.0.0(esbuild@0.21.4):
     dependencies:
       esbuild: 0.21.4
       load-tsconfig: 0.2.5
