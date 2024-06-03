@@ -1,3 +1,10 @@
+## 1.82.1 (2024-06-03)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve issues with publish executors tagging ([0358af73](https://github.com/storm-software/storm-ops/commit/0358af73))
+
 ## 1.82.0 (2024-06-03)
 
 
