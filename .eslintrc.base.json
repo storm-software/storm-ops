@@ -5,7 +5,7 @@
   "env": {
     "node": true
   },
-  "plugins": ["@typescript-eslint", "@nx"],
+  "plugins": ["@nx"],
   "extends": ["plugin:@nx/react-typescript"],
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": "off",
@@ -44,6 +44,23 @@
       "rules": {
         "@nx/workspace/valid-schema-description": "error"
       }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["plugin:@nx/typescript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nx/javascript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
+      "env": {
+        "jest": true
+      },
+      "rules": {}
     },
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
