@@ -37,7 +37,10 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 # Storm Markdownlint Rules
 
-An opinionated collection of markdownlint rules used by Storm Software. This package includes the rules used by GitHub in the [markdownlint-github](https://github.com/github/markdownlint-github) package, as well as additional rules that are specific to Storm Software.
+An opinionated collection of markdownlint rules used by Storm Software. This
+package includes the rules used by GitHub in the
+[markdownlint-github](https://github.com/github/markdownlint-github) package, as
+well as additional rules that are specific to Storm Software.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -76,7 +79,8 @@ Run `nx build markdownlint` to build the library.
 
 ## Running unit tests
 
-Run `nx test markdownlint` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test markdownlint` to execute the unit tests via
+[Jest](https://jestjs.io).
 
 <!-- START footer -->
 <!-- prettier-ignore-start -->

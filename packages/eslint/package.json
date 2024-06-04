@@ -37,7 +37,7 @@
   ],
   "dependencies": {
     "@graphql-eslint/eslint-plugin": "^3.20.1",
-    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.11.0",
     "@typescript-eslint/parser": "^7.0.0",
     "eslint": "9.4.0",
     "eslint-config-prettier": "^9.1.0",

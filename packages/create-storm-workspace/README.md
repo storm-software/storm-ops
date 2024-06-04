@@ -39,7 +39,8 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 This package can be used to generate a Storm workspace.
 
-It is essentially a wrapper around the [Nx CLI](https://nx.dev) that adds some additional functionality.
+It is essentially a wrapper around the [Nx CLI](https://nx.dev) that adds some
+additional functionality.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -78,7 +79,8 @@ Run `nx build create-storm-workspace` to build the library.
 
 ## Running unit tests
 
-Run `nx test create-storm-workspace` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test create-storm-workspace` to execute the unit tests via
+[Jest](https://jestjs.io).
 
 <!-- START footer -->
 <!-- prettier-ignore-start -->

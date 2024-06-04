@@ -37,7 +37,8 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 # Storm Cloudflare Tools
 
-A package containing tools for managing a Storm workspace. It includes various [Nx](https://nx.dev) generators and executors for common development tasks.
+A package containing tools for managing a Storm workspace. It includes various
+[Nx](https://nx.dev) generators and executors for common development tasks.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -74,7 +75,8 @@ yarn add -D @storm-software/cloudflare-tools
 
 ## Executors
 
-The following executors are available in this package to invoke common tasks for the workspace's projects:
+The following executors are available in this package to invoke common tasks for
+the workspace's projects:
 
 <!-- START executors -->
 <!-- prettier-ignore-start -->
@@ -182,7 +184,8 @@ The following executor options are available:
 
 ## Generators
 
-The following generators are available with this package to assist in workspace management:
+The following generators are available with this package to assist in workspace
+management:
 
 <!-- START generators -->
 <!-- prettier-ignore-start -->
@@ -248,7 +251,8 @@ Run `nx build cloudflare-tools` to build the library.
 
 ## Running unit tests
 
-Run `nx test cloudflare-tools` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test cloudflare-tools` to execute the unit tests via
+[Jest](https://jestjs.io).
 
 <!-- START footer -->
 <!-- prettier-ignore-start -->

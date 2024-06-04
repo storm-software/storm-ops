@@ -37,7 +37,9 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 # Storm Testing Tools
 
-This package contains various testing tools used by Storm workspaces to drive unit and e2e testing. The following packages are included and combined into an easy to use CLI tool:
+This package contains various testing tools used by Storm workspaces to drive
+unit and e2e testing. The following packages are included and combined into an
+easy to use CLI tool:
 
 - [Jest](https://jestjs.io/)
 - [Vitest](https://vitest.dev/)
@@ -80,7 +82,8 @@ Run `nx build testing-tools` to build the library.
 
 ## Running unit tests
 
-Run `nx test testing-tools` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test testing-tools` to execute the unit tests via
+[Jest](https://jestjs.io).
 
 <!-- START footer -->
 <!-- prettier-ignore-start -->

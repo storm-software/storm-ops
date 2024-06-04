@@ -37,7 +37,9 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 # Storm Git Tools
 
-This package contains various [Git](https://git-scm.com/) management tools combined to make the process of management a workspace easier. Included within is an easy to use CLI tool that combines the following functionality:
+This package contains various [Git](https://git-scm.com/) management tools
+combined to make the process of management a workspace easier. Included within
+is an easy to use CLI tool that combines the following functionality:
 
 - [Commitlint](https://commitlint.js.org/#/)
 - [Commitizen](https://commitizen-tools.github.io/commitizen/)

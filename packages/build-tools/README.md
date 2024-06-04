@@ -37,7 +37,9 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 # Storm Build Tools
 
-This package contains the build tools used by the Storm Software monorepo. It is a collection of tools and utilities that are used to build, test, and deploy the various applications and libraries that are part of the Storm Software monorepo.
+This package contains the build tools used by the Storm Software monorepo. It is
+a collection of tools and utilities that are used to build, test, and deploy the
+various applications and libraries that are part of the Storm Software monorepo.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -76,7 +78,8 @@ Run `nx build build-tools` to build-tools the library.
 
 ## Running unit tests
 
-Run `nx test build-tools` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test build-tools` to execute the unit tests via
+[Jest](https://jestjs.io).
 
 <!-- START footer -->
 <!-- prettier-ignore-start -->

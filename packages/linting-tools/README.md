@@ -37,7 +37,9 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 # Storm Linting Tools
 
-This package combines various linting tools used to validate syntax, enforce design standards, and format code in a Storm workspace. The following packages are included and combined into an easy to use CLI tool:
+This package combines various linting tools used to validate syntax, enforce
+design standards, and format code in a Storm workspace. The following packages
+are included and combined into an easy to use CLI tool:
 
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
@@ -84,7 +86,8 @@ Run `nx build linting-tools` to build the library.
 
 ## Running unit tests
 
-Run `nx test linting-tools` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test linting-tools` to execute the unit tests via
+[Jest](https://jestjs.io).
 
 <!-- START footer -->
 <!-- prettier-ignore-start -->
