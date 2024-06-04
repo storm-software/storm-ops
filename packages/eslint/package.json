@@ -56,7 +56,6 @@
     "relay": "0.8.0-1"
   },
   "devDependencies": {
-    "@rushstack/eslint-patch": "^1.6.1",
     "@types/eslint": "8.56.10"
   },
   "publishConfig": {

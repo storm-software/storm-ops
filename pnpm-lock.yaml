@@ -379,9 +379,6 @@ importers:
         specifier: 0.8.0-1
         version: 0.8.0-1
     devDependencies:
-      '@rushstack/eslint-patch':
-        specifier: ^1.6.1
-        version: 1.10.3
       '@types/eslint':
         specifier: 8.56.10
         version: 8.56.10
@@ -4808,7 +4805,7 @@ packages:
       '@typescript-eslint/utils': 7.11.0(eslint@8.57.0)(typescript@5.4.5)
       chalk: 4.1.2
       confusing-browser-globals: 1.0.11
-      eslint-config-prettier: 9.1.0(eslint@9.4.0)
+      eslint-config-prettier: 9.1.0(eslint@8.57.0)
       jsonc-eslint-parser: 2.4.0
       semver: 7.6.2
       tslib: 2.6.2
@@ -5874,10 +5871,6 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
-
-  /@rushstack/eslint-patch@1.10.3:
-    resolution: {integrity: sha512-qC/xYId4NMebE6w/V33Fh9gWxLgURiNYgVNObbJl2LZv0GUUItCcCqC5axQSwRaAgaxl2mELq1rMzlswaQ0Zxg==}
-    dev: true
 
   /@rushstack/node-core-library@5.4.1(@types/node@20.14.0):
     resolution: {integrity: sha512-WNnwdS8r9NZ/2K3u29tNoSRldscFa7SxU0RT+82B6Dy2I4Hl2MeCSKm4EXLXPKeNzLGvJ1cqbUhTLviSF8E6iA==}
