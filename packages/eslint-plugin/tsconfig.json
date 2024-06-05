@@ -8,7 +8,7 @@
     "types": ["node"]
   },
   "references": [{ "path": "../eslint" }],
-  "include": ["**/*.ts", "../eslint/src/**/*.ts"],
+  "include": ["**/*.ts", "../eslint/src/**/*.ts", "src/index.cts"],
   "exclude": [
     "**/*.spec.ts",
     "**/*.test.ts",

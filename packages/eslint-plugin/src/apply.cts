@@ -1,5 +1,6 @@
 import { FlatCompat } from "@eslint/eslintrc";
-import { eslintPlugin } from "./index.cts";
+import * as recommended from "../../eslint/src/recommended";
+import * as eslintPlugin from "./index.cts";
 
 export interface ApplyOptions {
   baseDirectory: string;
@@ -9,8 +10,8 @@ export interface ApplyOptions {
 
 export const apply = ({ baseDirectory, useReact, useNext }: ApplyOptions) => {
   const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    recommendedConfig: eslintPlugin.configs.recommended
+    baseDirectory,
+    recommendedConfig: recommended
   });
 
   const typescriptExtends = ["plugin:@storm-software/typescript"];

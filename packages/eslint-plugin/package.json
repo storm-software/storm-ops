@@ -22,8 +22,10 @@
   "private": false,
   "exports": {
     ".": "./index.cjs",
+    "./index.cjs": "./index.cjs",
     "./index": "./index.cjs",
     "./apply": "./apply.cjs",
+    "./apply.cjs": "./apply.cjs",
     "./package.json": "./package.json"
   },
   "keywords": [
