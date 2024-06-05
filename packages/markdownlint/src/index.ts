@@ -12,10 +12,10 @@ import { rules } from "./rules";
 import accessibilityRules from "./style/accessibility.json";
 import base from "./style/base.json";
 
-const offByDefault = ["no-empty-alt-text"];
+const offByDefault = [] as string[];
 
 for (const rule of rules) {
-  const ruleName = rule.names[1];
+  const ruleName = (rule as any)?.names[1];
   if (ruleName) {
     base[ruleName] = offByDefault.includes(ruleName) ? false : true;
   }

@@ -11,7 +11,8 @@ export interface ApplyOptions {
 export const apply = ({ baseDirectory, useReact, useNext }: ApplyOptions) => {
   const compat = new FlatCompat({
     baseDirectory,
-    recommendedConfig: recommended
+    recommendedConfig: recommended,
+    allConfig: undefined
   });
 
   const typescriptExtends = ["plugin:@storm-software/typescript"];
