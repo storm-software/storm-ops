@@ -138,6 +138,9 @@ importers:
       lefthook:
         specifier: 1.6.14
         version: 1.6.14
+      lodash:
+        specifier: 4.17.21
+        version: 4.17.21
       markdownlint-cli2:
         specifier: 0.13.0
         version: 0.13.0
