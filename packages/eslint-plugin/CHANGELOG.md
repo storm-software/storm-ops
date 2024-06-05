@@ -1,3 +1,10 @@
+## 0.3.2 (2024-06-05)
+
+
+### 🩹 Fixes
+
+- **markdownlint:** Resolve issue with bad rules export ([7e6e5375](https://github.com/storm-software/storm-ops/commit/7e6e5375))
+
 ## 0.3.1 (2024-06-05)
 
 
