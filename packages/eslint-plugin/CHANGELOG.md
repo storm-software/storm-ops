@@ -1,3 +1,10 @@
+## 0.3.1 (2024-06-05)
+
+
+### 🩹 Fixes
+
+- **eslint-plugin:** Resolve issues with `apply` module syntax ([de90c861](https://github.com/storm-software/storm-ops/commit/de90c861))
+
 ## 0.3.0 (2024-06-05)
 
 ### 🚀 Features
