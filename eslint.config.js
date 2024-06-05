@@ -1,6 +1,6 @@
 const { FlatCompat } = require("@eslint/eslintrc");
 const nxEslintPlugin = require("@nx/eslint-plugin");
-const eslintPlugin = require("./dist/packages/eslint-plugin/index.cjs");
+const eslintPlugin = require("./dist/plugins/eslint");
 
 const js = require("@eslint/js");
 const compat = new FlatCompat({
