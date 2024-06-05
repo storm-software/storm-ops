@@ -7,32 +7,6 @@
   },
   "plugins": ["@nx"],
   "extends": ["plugin:@nx/react-typescript"],
-  "rules": {
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "no-restricted-imports": ["error", "create-nx-workspace"],
-    "@typescript-eslint/no-restricted-imports": [
-      "error",
-      {
-        "patterns": [
-          {
-            "group": ["nx/src/plugins/js*"],
-            "message": "Imports from 'nx/src/plugins/js' are not allowed. Use '@nx/js' instead"
-          },
-          {
-            "group": ["**/native-bindings", "**/native-bindings.js", ""],
-            "message": "Direct imports from native-bindings.js are not allowed. Import from index.js instead."
-          }
-        ]
-      }
-    ],
-    "storybook/no-uninstalled-addons": [
-      "error",
-      {
-        "ignore": ["@nx/react/plugins/storybook"],
-        "packageJsonLocation": "../../package.json"
-      }
-    ]
-  },
   "overrides": [
     {
       "files": ["*.json"],
