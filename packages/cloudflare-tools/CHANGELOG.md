@@ -1,3 +1,10 @@
+## 0.7.0 (2024-06-05)
+
+
+### 🚀 Features
+
+- **cloudflare-tools:** Ensure the account id is provided from config during publish ([629e76c6](https://github.com/storm-software/storm-ops/commit/629e76c6))
+
 ## 0.6.2 (2024-06-05)
 
 
