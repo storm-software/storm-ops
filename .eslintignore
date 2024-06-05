@@ -19,3 +19,5 @@ dist/**
 coverage/**
 .nx/cache/**
 **/src/generators/**/files/**/*
+packages/eslint/**
+packages/eslint-plugin/**
