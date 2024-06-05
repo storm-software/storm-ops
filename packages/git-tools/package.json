@@ -1,34 +1,25 @@
 {
   "name": "@storm-software/git-tools",
-  "version": "2.12.0",
-  "private": false,
+  "version": "2.12.1",
+  "type": "module",
   "description": "⚡ A package containing various git tools used in Storm workspaces.",
-  "keywords": [
-    "storm",
-    "storm-ops",
-    "stormstack",
-    "storm-stack",
-    "sullivanpj",
-    "open-system",
-    "monorepo"
-  ],
-  "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/git-tools"
   },
-  "license": "Apache-2.0",
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.com"
+  },
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "type": "module",
+  "license": "Apache-2.0",
+  "private": false,
   "bin": {
     "storm-git": "./bin/git.js",
     "storm-post-checkout": "./bin/post-checkout.js",
@@ -40,6 +31,15 @@
     "storm-prepare": "./bin/prepare.js",
     "storm-version-warning": "./bin/version-warning.js"
   },
+  "keywords": [
+    "storm",
+    "storm-ops",
+    "stormstack",
+    "storm-stack",
+    "sullivanpj",
+    "open-system",
+    "monorepo"
+  ],
   "dependencies": {
     "@commitlint/types": "19.0.3",
     "any-shell-escape": "0.1.1",

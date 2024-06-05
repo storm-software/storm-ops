@@ -1,13 +1,15 @@
 {
   "name": "@storm-software/config",
-  "version": "1.23.0",
-  "private": false,
+  "version": "1.23.1",
   "description": "⚡The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/config"
   },
+  "private": false,
+  "main": "./index.cjs",
+  "module": "./index.js",
   "exports": {
     "./package.json": "./package.json",
     "./schemas/storm.schema.json": "./schemas/storm.schema.json",
@@ -18,8 +20,6 @@
       "require": "./index.cjs"
     }
   },
-  "main": "./index.cjs",
-  "module": "./index.js",
   "types": "./declarations.d.ts",
   "dependencies": {
     "zod": "3.23.8"

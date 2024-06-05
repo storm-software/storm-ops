@@ -1,8 +1,27 @@
 {
   "name": "@storm-software/testing-tools",
-  "version": "1.38.0",
-  "private": false,
+  "version": "1.38.1",
+  "type": "commonjs",
   "description": "⚡ A package containing various testing tools used by Storm workspaces to drive unit and e2e testing.",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/testing-tools"
+  },
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.com"
+  },
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "license": "Apache 2.0",
+  "private": false,
+  "module": "./index.js",
+  "types": "./declarations.d.ts",
   "keywords": [
     "storm",
     "storm-ops",
@@ -12,33 +31,14 @@
     "open-system",
     "monorepo"
   ],
-  "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
+  "peerDependencies": {
+    "@nx/jest": "^19.1.0",
+    "jest": "29.7.0"
   },
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
-    "directory": "packages/testing-tools"
-  },
-  "license": "Apache 2.0",
-  "author": {
-    "name": "Storm Software",
-    "email": "contact@stormsoftware.com",
-    "url": "https://stormsoftware.com"
-  },
-  "type": "commonjs",
-  "module": "./index.js",
-  "types": "./declarations.d.ts",
   "devDependencies": {
     "@nx/jest": "^19.1.0",
     "jest": "29.7.0",
     "jest-resolve": "29.7.0"
-  },
-  "peerDependencies": {
-    "@nx/jest": "^19.1.0",
-    "jest": "29.7.0"
   },
   "publishConfig": {
     "access": "public"

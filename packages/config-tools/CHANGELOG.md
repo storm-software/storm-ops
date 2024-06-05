@@ -1,3 +1,10 @@
+## 1.51.1 (2024-06-05)
+
+
+### 🩹 Fixes
+
+- **eslint:** Resolve issue with missing dependencies ([b0f43454](https://github.com/storm-software/storm-ops/commit/b0f43454))
+
 ## 1.51.0 (2024-06-03)
 
 

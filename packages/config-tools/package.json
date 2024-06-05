@@ -1,13 +1,13 @@
 {
   "name": "@storm-software/config-tools",
-  "version": "1.51.0",
-  "private": false,
+  "version": "1.51.1",
   "description": "⚡The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/config-tools"
   },
+  "private": false,
   "main": "./index.cjs",
   "module": "./index.js",
   "types": "declarations.d.ts",

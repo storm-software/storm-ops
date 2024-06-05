@@ -1,8 +1,28 @@
 {
   "name": "@storm-software/build-tools",
-  "version": "0.10.0",
-  "private": false,
+  "version": "0.10.1",
   "description": "⚡The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/build-tools"
+  },
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.com"
+  },
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "license": "Apache-2.0",
+  "private": false,
+  "bin": {
+    "storm-build": "./bin/build.mjs"
+  },
+  "types": "declarations.d.ts",
   "keywords": [
     "storm",
     "storm-ops",
@@ -12,26 +32,6 @@
     "open-system",
     "monorepo"
   ],
-  "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
-    "directory": "packages/build-tools"
-  },
-  "license": "Apache-2.0",
-  "author": {
-    "name": "Storm Software",
-    "email": "contact@stormsoftware.com",
-    "url": "https://stormsoftware.com"
-  },
-  "types": "declarations.d.ts",
-  "bin": {
-    "storm-build": "./bin/build.mjs"
-  },
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
     "@microsoft/api-extractor": "7.46.2",

@@ -1,3 +1,10 @@
+## 0.4.0 (2024-06-05)
+
+
+### 🚀 Features
+
+- **eslint-plugin:** Added the `eslint` and `prittier` base packages ([b2d63d0f](https://github.com/storm-software/storm-ops/commit/b2d63d0f))
+
 ## 0.3.6 (2024-04-09)
 
 ### 🩹 Fixes

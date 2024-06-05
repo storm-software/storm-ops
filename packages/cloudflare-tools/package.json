@@ -1,34 +1,26 @@
 {
   "name": "@storm-software/cloudflare-tools",
-  "version": "0.6.1",
-  "private": false,
+  "version": "0.6.2",
+  "type": "commonjs",
   "description": "⚡The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.",
-  "keywords": [
-    "storm",
-    "storm-ops",
-    "stormstack",
-    "storm-stack",
-    "sullivanpj",
-    "open-system",
-    "monorepo"
-  ],
-  "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/cloudflare-tools"
   },
-  "license": "Apache 2.0",
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.com"
+  },
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "type": "commonjs",
+  "license": "Apache 2.0",
+  "private": false,
+  "main": "./index.js",
   "exports": {
     ".": "./index.js",
     "./package.json": "./package.json",
@@ -38,8 +30,16 @@
     "./executors/*/schema.json": "./src/executors/*/schema.json",
     "./plugin": "./src/plugin/index.js"
   },
-  "main": "./index.js",
   "typings": "./declarations.d.ts",
+  "keywords": [
+    "storm",
+    "storm-ops",
+    "stormstack",
+    "storm-stack",
+    "sullivanpj",
+    "open-system",
+    "monorepo"
+  ],
   "dependencies": {
     "@nx/devkit": "^19.1.0",
     "@nx/node": "^19.1.0",

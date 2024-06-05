@@ -1,34 +1,26 @@
 {
   "name": "@storm-software/workspace-tools",
-  "version": "1.82.1",
-  "private": false,
+  "version": "1.83.0",
+  "type": "commonjs",
   "description": "⚡ A Nx plugin package that contains various executors and generators used in a Storm workspaces.",
-  "keywords": [
-    "storm",
-    "storm-ops",
-    "stormstack",
-    "storm-stack",
-    "sullivanpj",
-    "open-system",
-    "monorepo"
-  ],
-  "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
     "directory": "packages/workspace-tools"
   },
-  "license": "Apache 2.0",
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.com"
+  },
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "type": "commonjs",
+  "license": "Apache 2.0",
+  "private": false,
+  "main": "./index.js",
   "exports": {
     ".": "./index.js",
     "./package.json": "./package.json",
@@ -44,8 +36,16 @@
     "./plugins/typescript": "./src/plugins/typescript/index.js",
     "./preset": "./src/generators/preset/preset.js"
   },
-  "main": "./index.js",
   "typings": "./declarations.d.ts",
+  "keywords": [
+    "storm",
+    "storm-ops",
+    "stormstack",
+    "storm-stack",
+    "sullivanpj",
+    "open-system",
+    "monorepo"
+  ],
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
     "@ltd/j-toml": "1.38.0",

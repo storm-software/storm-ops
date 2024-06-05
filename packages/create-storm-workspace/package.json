@@ -1,8 +1,29 @@
 {
   "name": "create-storm-workspace",
-  "version": "1.62.0",
-  "private": false,
+  "version": "1.62.1",
+  "type": "commonjs",
   "description": "⚡A CLI tool used to generate and fully configure a Storm Workspace repository.",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/create-storm-workspace"
+  },
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.com"
+  },
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "license": "Apache License 2.0",
+  "private": false,
+  "bin": {
+    "create-storm-workspace": "./index.js"
+  },
+  "typings": "./src/index.d.ts",
   "keywords": [
     "storm",
     "storm-ops",
@@ -12,27 +33,6 @@
     "open-system",
     "monorepo"
   ],
-  "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
-    "directory": "packages/create-storm-workspace"
-  },
-  "license": "Apache License 2.0",
-  "author": {
-    "name": "Storm Software",
-    "email": "contact@stormsoftware.com",
-    "url": "https://stormsoftware.com"
-  },
-  "type": "commonjs",
-  "typings": "./src/index.d.ts",
-  "bin": {
-    "create-storm-workspace": "./index.js"
-  },
   "dependencies": {
     "@nx/workspace": "^19.1.0",
     "create-nx-workspace": "^19.1.0",
