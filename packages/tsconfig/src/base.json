@@ -29,7 +29,8 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "preserveSymlinks": true
   },
   "include": [
     "**/*.ts",
