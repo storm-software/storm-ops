@@ -1,9 +1,7 @@
-import type { Linter } from "eslint";
 import reactRules from "./rules/react";
 import jsxA11yRules from "./rules/ts-docs";
 
-const config: Linter.Config = {
-  root: true,
+module.exports = {
   extends: [
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
@@ -21,5 +19,3 @@ const config: Linter.Config = {
     ...reactRules
   }
 };
-
-export default config;

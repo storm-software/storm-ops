@@ -32,6 +32,11 @@
         "skipTypeCheck": false,
         "metafile": true,
         "minify": false,
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".js"
+          }
+        },
         "assets": [
           {
             "input": "./packages/eslint",

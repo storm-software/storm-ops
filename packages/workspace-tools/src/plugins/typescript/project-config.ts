@@ -1,10 +1,10 @@
-import { dirname, join } from "node:path";
 import { existsSync } from "node:fs";
+import { dirname, join } from "node:path";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
 import { readJsonFile } from "nx/src/utils/fileutils";
 import {
-  type PackageJson,
-  readTargetsFromPackageJson
+  readTargetsFromPackageJson,
+  type PackageJson
 } from "nx/src/utils/package-json";
 
 export const name = "storm-software/typescript/project-config";

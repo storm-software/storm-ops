@@ -1,7 +1,6 @@
-import { Linter } from "eslint";
 import { CODE_BLOCK, CODE_FILE, TS_FILE } from "./constants";
 
-const config: Linter.Config = {
+module.exports = {
   extends: [
     "./base",
     "./nx",
@@ -82,5 +81,3 @@ const config: Linter.Config = {
     "BigInt": true
   }
 };
-
-export default config;

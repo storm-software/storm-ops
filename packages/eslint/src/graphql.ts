@@ -1,6 +1,4 @@
-import type { Linter } from "eslint";
-
-const config: Linter.Config = {
+module.exports = {
   overrides: [
     {
       files: ["*.js", "*.ts", "*.jsx", "*.tsx"],
@@ -120,5 +118,3 @@ const config: Linter.Config = {
     }
   ]
 };
-
-export default config;

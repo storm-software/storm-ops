@@ -1,11 +1,10 @@
-import type { Linter } from "eslint";
 import {
   RESTRICTED_GLOBALS,
   RESTRICTED_MODULES,
   RESTRICTED_SYNTAX
 } from "./constants";
 
-const config: Linter.Config = {
+module.exports = {
   parser: "@typescript-eslint/parser",
   extends: [
     "eslint:recommended",
@@ -144,5 +143,3 @@ const config: Linter.Config = {
     // '@typescript-eslint/return-await': 'error', // TODO: enable
   }
 };
-
-export default config;

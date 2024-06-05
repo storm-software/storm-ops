@@ -1,6 +1,4 @@
-import type { Linter } from "eslint";
-
-const config: Linter.Config = {
+module.exports = {
   plugins: ["@nx"],
   extends: [
     "plugin:@nx/eslint",
@@ -70,5 +68,3 @@ const config: Linter.Config = {
     }
   ]
 };
-
-export default config;

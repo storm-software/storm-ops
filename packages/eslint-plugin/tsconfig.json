@@ -2,13 +2,13 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "declaration": true,
+    "noEmit": true,
     "module": "node16",
     "moduleResolution": "node16",
     "types": ["node"]
   },
-  "files": [],
-  "include": ["**/*.ts"],
+  "references": [{ "path": "../eslint" }],
+  "include": ["**/*.ts", "../eslint/src/**/*.ts"],
   "exclude": [
     "**/*.spec.ts",
     "**/*.test.ts",

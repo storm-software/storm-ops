@@ -76,7 +76,7 @@
       "{workspaceRoot}/.markdownlint.json",
       "{workspaceRoot}/eslint.config.js",
       "{workspaceRoot}/.eslintrc.json",
-      "{workspaceRoot}/.eslintrc.base.json",
+      "{workspaceRoot}/.eslintrc.json",
       "{workspaceRoot}/.eslintrc.cjs",
       "{workspaceRoot}/.eslintignore",
       "{workspaceRoot}/.prettierrc",

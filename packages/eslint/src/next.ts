@@ -11,7 +11,7 @@ const babelOptions = {
   })()
 };
 
-const config = {
+module.exports = {
   root: true,
   ignorePatterns: ["next-env.d.ts"],
   extends: ["plugin:@next/next/recommended"],
@@ -43,5 +43,3 @@ const config = {
     }
   ]
 };
-
-export default config;

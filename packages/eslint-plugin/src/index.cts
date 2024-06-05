@@ -1,15 +1,15 @@
-import base from "@storm-software/eslint/base";
-import graphql from "@storm-software/eslint/graphql";
-import javascript from "@storm-software/eslint/javascript";
-import jest from "@storm-software/eslint/jest";
-import json from "@storm-software/eslint/json";
-import mdx from "@storm-software/eslint/mdx";
-import next from "@storm-software/eslint/next";
-import nx from "@storm-software/eslint/nx";
-import react from "@storm-software/eslint/react";
-import recommended from "@storm-software/eslint/recommended";
-import typescript from "@storm-software/eslint/typescript";
-import yml from "@storm-software/eslint/yml";
+import * as base from "../../eslint/src/base";
+import * as graphql from "../../eslint/src/graphql";
+import * as javascript from "../../eslint/src/javascript";
+import * as jest from "../../eslint/src/jest";
+import * as json from "../../eslint/src/json";
+import * as mdx from "../../eslint/src/mdx";
+import * as next from "../../eslint/src/next";
+import * as nx from "../../eslint/src/nx";
+import * as react from "../../eslint/src/react";
+import * as recommended from "../../eslint/src/recommended";
+import * as typescript from "../../eslint/src/typescript";
+import * as yml from "../../eslint/src/yml";
 
 // import importRules from "./rules/import";
 // import jsxA11yRules from "./rules/jsx-a11y";
@@ -27,6 +27,29 @@ module.exports = {
     "plugin:@nx/react-jsx",
     "plugin:@nx/typescript",
     "plugin:@nx/javascript"
+  ],
+  ignores: [
+    "**/package.json/**",
+    "**/.wrangler/**",
+    "**/tamagui.css",
+    "**/workbox*.js",
+    "**/sw*.js",
+    "**/service-worker.js",
+    "**/fallback*.js",
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/ios/**",
+    "**/.git/**",
+    "**/.android/**",
+    "**/.DS_Store/**",
+    "**/Thumbs.db/**",
+    "**/.tamagui*",
+    ".next/**",
+    "CODEOWNERS",
+    "dist/**",
+    "coverage/**",
+    ".nx/cache/**",
+    "**/src/generators/**/files/**/*"
   ],
   configs: {
     base,

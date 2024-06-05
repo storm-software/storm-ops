@@ -1,4 +1,3 @@
-import type { Linter } from "eslint";
 import {
   RESTRICTED_GLOBALS,
   RESTRICTED_MODULES,
@@ -9,7 +8,7 @@ import stormRules from "./rules/storm";
 import tsDocsRules from "./rules/ts-docs";
 import unicornRules from "./rules/unicorn";
 
-const config: Linter.Config = {
+module.exports = {
   root: true,
   overrides: [
     {
@@ -140,5 +139,3 @@ const config: Linter.Config = {
     ...stormRules
   }
 };
-
-export default config;

@@ -1,7 +1,6 @@
-import type { Linter } from "eslint";
 import { CODE_BLOCK } from "./constants";
 
-const config: Linter.Config = {
+module.exports = {
   ignorePatterns: ["pnpm-lock.yaml"],
   overrides: [
     {
@@ -15,5 +14,3 @@ const config: Linter.Config = {
     }
   ]
 };
-
-export default config;

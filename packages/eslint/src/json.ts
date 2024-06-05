@@ -1,4 +1,3 @@
-import type { Linter } from "eslint";
 import { CODE_BLOCK } from "./constants";
 
 const JSONC_FILES = [
@@ -8,7 +7,7 @@ const JSONC_FILES = [
   ".vscode/launch.json"
 ];
 
-const config: Linter.Config = {
+module.exports = {
   root: true,
   overrides: [
     {
@@ -41,5 +40,3 @@ const config: Linter.Config = {
     }
   ]
 };
-
-export default config;

@@ -1,9 +1,8 @@
-import type { Linter } from "eslint";
 import importRules from "./rules/import";
 import stormRules from "./rules/storm";
 import unicornRules from "./rules/unicorn";
 
-const config: Linter.Config = {
+module.exports = {
   overrides: [
     {
       files: ["*.js", "*.jsx"],
@@ -17,5 +16,3 @@ const config: Linter.Config = {
     }
   ]
 };
-
-export default config;
