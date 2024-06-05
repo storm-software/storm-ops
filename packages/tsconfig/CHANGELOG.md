@@ -1,3 +1,10 @@
+## 0.5.0 (2024-06-05)
+
+
+### 🚀 Features
+
+- **tsconfig:** Added `preserveSymlinks` to base tsconfig ([40522881](https://github.com/storm-software/storm-ops/commit/40522881))
+
 ## 0.4.0 (2024-06-05)
 
 

@@ -1,3 +1,10 @@
+## 0.2.0 (2024-06-05)
+
+
+### 🚀 Features
+
+- **eslint:** Major updates to resolve eslint issues ([50e7c988](https://github.com/storm-software/storm-ops/commit/50e7c988))
+
 ## 0.1.0 (2024-06-05)
 
 
