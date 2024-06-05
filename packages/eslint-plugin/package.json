@@ -23,6 +23,7 @@
   "exports": {
     ".": "./index.cjs",
     "./index": "./index.cjs",
+    "./apply": "./apply.cjs",
     "./package.json": "./package.json"
   },
   "keywords": [

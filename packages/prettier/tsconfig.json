@@ -1,15 +1,18 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "forceConsistentCasingInFileNames": true,
-    "strict": false,
-    "resolveJsonModule": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "outDir": "../../dist/out-tsc",
+    "noEmit": true,
+    "module": "node16",
+    "moduleResolution": "node16",
+    "types": ["node"]
   },
-  "include": ["src/**/*.ts", "src/config.json", "src/.prettierignore"],
-  "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
+  "include": ["src/**/*.ts", "src/**/*.json", "src/**/.prettierignore"],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*_spec.ts",
+    "**/*_test.ts",
+    "jest.config.ts"
+  ]
 }

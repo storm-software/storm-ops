@@ -40,6 +40,7 @@
       "options": {
         "outputPath": "dist/packages/eslint-plugin",
         "main": "packages/eslint-plugin/src/index.cts",
+        "additionalEntryPoints": ["packages/eslint-plugin/src/apply.cts"],
         "tsConfig": "packages/eslint-plugin/tsconfig.json",
         "format": ["cjs"],
         "platform": "node",
@@ -63,7 +64,6 @@
         ]
       }
     },
-
     "nx-release-publish": {
       "executor": "@storm-software/workspace-tools:npm-publish"
     }

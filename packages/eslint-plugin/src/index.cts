@@ -20,7 +20,7 @@ import * as yml from "../../eslint/src/yml";
 
 module.exports = {
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "@nx"],
+  plugins: ["@nx", "@typescript-eslint"],
   extends: [
     "plugin:@nx/react-base",
     "plugin:@nx/react-typescript",

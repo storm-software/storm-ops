@@ -21,7 +21,8 @@
   "license": "Apache-2.0",
   "private": false,
   "exports": {
-    ".": "./index.js",
+    ".": "./index.cjs",
+    "./index": "./index.cjs",
     "./.prettierignore": "./.prettierignore",
     "./config.json": "./config.json",
     "./package.json": "./package.json"

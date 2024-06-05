@@ -12,6 +12,7 @@
         "tsConfig": "packages/prettier/tsconfig.json",
         "project": "packages/prettier/package.json",
         "main": "packages/prettier/src/index.ts",
+        "format": ["cjs"],
         "platform": "node",
         "deleteOutputPath": true,
         "bundle": true,
