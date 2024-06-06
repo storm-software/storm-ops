@@ -9,21 +9,21 @@ import tsDocsRules from "./rules/ts-docs";
 import unicornRules from "./rules/unicorn";
 
 module.exports = {
-  root: true,
-  overrides: [
-    {
-      files: ["*.ts", "*.tsx"],
-      extends: ["plugin:@nx/typescript"],
-      rules: {}
-    }
+  plugins: [
+    "@nx",
+    "sonarjs",
+    "unicorn",
+    "promise",
+    "import",
+    "eslint-plugin-tsdoc"
   ],
   parser: "@typescript-eslint/parser",
   extends: [
+    "plugin:@nx/typescript",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
-  plugins: ["sonarjs", "unicorn", "promise", "import", "eslint-plugin-tsdoc"],
   rules: {
     // Disallows if statements as the only statement in else blocks
     // https://eslint.org/docs/rules/no-lonely-if
@@ -132,7 +132,6 @@ module.exports = {
     "import/no-useless-path-segments": "error",
     "require-await": "off",
     "no-return-await": "off",
-
     ...importRules,
     ...unicornRules,
     ...tsDocsRules,

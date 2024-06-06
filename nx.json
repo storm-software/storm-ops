@@ -263,6 +263,13 @@
   "plugins": [
     "./dist/plugins/rust/index.js",
     "./dist/plugins/typescript/index.js",
-    "./dist/plugins/cloudflare/index.js"
+    "./dist/plugins/cloudflare/index.js",
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "eslint:lint",
+        "extensions": ["ts", "tsx", "js", "jsx", "html", "vue"]
+      }
+    }
   ]
 }

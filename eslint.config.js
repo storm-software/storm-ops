@@ -2,9 +2,6 @@ const { FlatCompat } = require("@eslint/eslintrc");
 const nxEslintPlugin = require("@nx/eslint-plugin");
 const eslintPluginReact = require("eslint-plugin-react");
 const typescriptEslintEslintPlugin = require("@typescript-eslint/eslint-plugin");
-const eslintPluginPrettier = require("eslint-plugin-prettier");
-const eslintPluginSimpleImportSort = require("eslint-plugin-simple-import-sort");
-const eslintPluginImport = require("eslint-plugin-import");
 const typescriptEslintParser = require("@typescript-eslint/parser");
 const js = require("@eslint/js");
 
@@ -18,17 +15,13 @@ module.exports = [
     "airbnb",
     "airbnb-typescript",
     "airbnb/hooks",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    "plugin:@typescript-eslint/recommended"
   ),
   {
     plugins: {
       "@nx": nxEslintPlugin,
       "react": eslintPluginReact,
-      "@typescript-eslint": typescriptEslintEslintPlugin,
-      "prettier": eslintPluginPrettier,
-      "simple-import-sort": eslintPluginSimpleImportSort,
-      "import": eslintPluginImport
+      "@typescript-eslint": typescriptEslintEslintPlugin
     }
   },
   {
@@ -43,9 +36,6 @@ module.exports = [
   },
   {
     rules: {
-      "simple-import-sort/imports": "error",
-      "import/no-extraneous-dependencies": "off",
-      "import/no-named-as-default": "off",
       "react/react-in-jsx-scope": "off",
       "linebreak-style": "error",
       "react/jsx-props-no-spreading": "off",
@@ -65,7 +55,6 @@ module.exports = [
       "max-len": ["error", { code: 120 }],
       "consistent-return": "off",
       "array-callback-return": "warn",
-      "import/prefer-default-export": "off",
       "@typescript-eslint/no-non-null-assertion": "off",
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/prefer-optional-chain": "error",
@@ -146,31 +135,6 @@ module.exports = [
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
     rules: {
-      "simple-import-sort/imports": [
-        "error",
-        {
-          groups: [
-            ["^@nx", "^react", "^\\w"],
-            ["^@store(/.*|$)"],
-            ["^@components(/.*|$)"],
-            ["^@ui(/.*|$)"],
-            ["^@lib(/.*|$)"],
-            ["^@pages(/.*|$)"],
-            ["^@routes(/.*|$)"],
-            ["^@layouts(/.*|$)"],
-            ["^@utils(/.*|$)"],
-            ["^@assets(/.*|$)"],
-            ["^@helpers(/.*|$)"],
-            ["^@hooks(/.*|$)"],
-            ["^@providers(/.*|$)"],
-            ["^@services(/.*|$)"],
-            ["^\\u0000"],
-            ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
-            ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
-            ["^.+\\.?(css)$"]
-          ]
-        }
-      ],
       "@nx/enforce-module-boundaries": [
         "error",
         {

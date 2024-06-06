@@ -59,7 +59,7 @@ module.exports = {
       }
     },
     {
-      files: ["*.graphql"],
+      files: ["*.graphql", "*.gql"],
       parser: "@graphql-eslint/eslint-plugin",
       extends: ["plugin:relay/recommended"],
       plugins: ["@graphql-eslint", "relay"],

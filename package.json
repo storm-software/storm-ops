@@ -150,6 +150,7 @@
       "@storm-software/testing-tools": "workspace:*",
       "@storm-software/tsconfig": "workspace:*",
       "@storm-software/workspace-tools": "workspace:*",
+      "eslint-config-storm": "workspace:*",
       "axios": "1.7.2",
       "chalk": "4.1.2",
       "create-storm-workspace": "workspace:*",

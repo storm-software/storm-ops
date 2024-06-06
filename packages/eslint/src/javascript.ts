@@ -5,9 +5,9 @@ import unicornRules from "./rules/unicorn";
 module.exports = {
   overrides: [
     {
-      files: ["*.js", "*.jsx"],
+      plugins: ["@nx", "unicorn", "import"],
       extends: ["plugin:@nx/javascript"],
-      plugins: ["unicorn", "import"],
+      files: ["*.js", "*.jsx"],
       rules: {
         ...importRules,
         ...unicornRules,

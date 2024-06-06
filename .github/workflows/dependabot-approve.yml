@@ -9,7 +9,9 @@ permissions:
 jobs:
   dependabot:
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' || github.actor == 'renovate[bot]' || github.actor == 'Stormie-Bot' }}
+    if:
+      ${{ github.actor == 'dependabot[bot]' || github.actor == 'renovate[bot]'
+      || github.actor == 'Stormie-Bot' }}
     steps:
       - name: Approve a PR
         run: gh pr review --approve "$PR_URL"
