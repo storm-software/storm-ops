@@ -1,28 +1,9 @@
-import {
-  formatFiles,
-  type Tree,
-  writeJson,
-  type ProjectGraphProjectNode,
-  joinPathFragments,
-  readJson,
-  updateJson,
-  output,
-  type ProjectGraph,
-  type ProjectGraphDependency
-} from "@nx/devkit";
-import type { ReleaseVersionGeneratorSchema } from "./schema";
-import {
-  type VersionData,
-  deriveNewSemverVersion,
-  validReleaseVersionPrefixes
-} from "nx/src/command-line/release/version";
-import { interpolate } from "nx/src/tasks-runner/utils";
-import { isValidSemverSpecifier } from "nx/src/command-line/release/utils/semver";
-import { relative } from "node:path";
-import type { StormConfig } from "@storm-software/config";
-import { updateLockFile } from "@nx/js/src/generators/release-version/utils/update-lock-file";
-import { withRunGenerator } from "../../base/base-generator";
 import { exec, execSync } from "node:child_process";
+import { relative } from "node:path";
+import {
+  IMPLICIT_DEFAULT_RELEASE_GROUP,
+  NxReleaseConfig
+} from "nx/src/command-line/release/config/config";
 // import ora from "ora";
 import {
   getFirstGitCommit,
@@ -32,16 +13,37 @@ import {
   resolveSemverSpecifierFromConventionalCommits,
   resolveSemverSpecifierFromPrompt
 } from "nx/src/command-line/release/utils/resolve-semver-specifier";
-import { IMPLICIT_DEFAULT_RELEASE_GROUP } from "nx/src/command-line/release/config/config";
+import { isValidSemverSpecifier } from "nx/src/command-line/release/utils/semver";
+import {
+  deriveNewSemverVersion,
+  validReleaseVersionPrefixes,
+  type VersionData
+} from "nx/src/command-line/release/version";
+import { interpolate } from "nx/src/tasks-runner/utils";
 import { prerelease } from "semver";
+import {
+  formatFiles,
+  joinPathFragments,
+  output,
+  readJson,
+  updateJson,
+  writeJson,
+  type ProjectGraph,
+  type ProjectGraphDependency,
+  type ProjectGraphProjectNode,
+  type Tree
+} from "@nx/devkit";
 import { resolveLocalPackageDependencies as resolveLocalPackageJsonDependencies } from "@nx/js/src/generators/release-version/utils/resolve-local-package-dependencies";
+import { updateLockFile } from "@nx/js/src/generators/release-version/utils/update-lock-file";
+import type { StormConfig } from "@storm-software/config";
+import { withRunGenerator } from "../../base/base-generator";
 import {
   modifyCargoTable,
   parseCargoToml,
   parseCargoTomlWithTree,
   stringifyCargoToml
 } from "../../utils/toml";
-import { NxReleaseConfig } from "nx/src/command-line/release/config/config";
+import type { ReleaseVersionGeneratorSchema } from "./schema";
 
 export async function releaseVersionGeneratorFn(
   tree: Tree,
@@ -637,7 +639,7 @@ Projects with packageRoot configured: ${Array.from(projectNameToPackageRootMap.k
   }
 
   /**
-   * Ensure that formatting is applied so that version bump diffs are as mimimal as possible
+   * Ensure that formatting is applied so that version bump diffs are as minimal as possible
    * within the context of the user's workspace.
    */
   await formatFiles(tree);
@@ -669,6 +671,7 @@ Projects with packageRoot configured: ${Array.from(projectNameToPackageRootMap.k
           }
         }
       }
+
       if (updatedCargoPackages.length > 0) {
         execSync(`cargo update ${updatedCargoPackages.join(" ")}`, {
           maxBuffer: 1024 * 1024 * 1024,
@@ -677,10 +680,10 @@ Projects with packageRoot configured: ${Array.from(projectNameToPackageRootMap.k
           },
           cwd: tree.root
         });
-      }
 
-      if (hasGitDiff("Cargo.lock")) {
-        updatedFiles.push("Cargo.lock");
+        if (hasGitDiff("Cargo.lock")) {
+          updatedFiles.push("Cargo.lock");
+        }
       }
 
       return updatedFiles;
