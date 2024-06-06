@@ -418,7 +418,7 @@ importers:
         specifier: '*'
         version: 19.2.0(@swc-node/register@1.9.1)(@swc/core@1.5.7)(@swc/wasm@1.5.24)(@types/node@20.14.0)(eslint@8.57.0)(nx@19.2.0)(verdaccio@5.31.0)
       '@nx/eslint-plugin':
-        specifier: 19.2.0
+        specifier: '*'
         version: 19.2.0(@swc-node/register@1.9.1)(@swc/core@1.5.7)(@swc/wasm@1.5.24)(@types/node@20.14.0)(@typescript-eslint/parser@7.11.0)(eslint-config-prettier@9.1.0)(eslint@8.57.0)(nx@19.2.0)(typescript@5.4.5)(verdaccio@5.31.0)
       '@typescript-eslint/eslint-plugin':
         specifier: 7.11.0
