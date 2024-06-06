@@ -1,3 +1,17 @@
+## 1.85.0 (2024-06-06)
+
+
+### 🚀 Features
+
+- **storm-ops:** Upgrade the Nx package versions ([4c9777a9](https://github.com/storm-software/storm-ops/commit/4c9777a9))
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve release issue in workspaces without Cargo ([3e1c614a](https://github.com/storm-software/storm-ops/commit/3e1c614a))
+
+- **workspace-tools:** Resolved issue with null iterable ([71460157](https://github.com/storm-software/storm-ops/commit/71460157))
+
 ## 1.84.0 (2024-06-05)
 
 

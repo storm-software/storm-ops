@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/workspace-tools",
-  "version": "1.84.0",
+  "version": "1.85.0",
   "type": "commonjs",
   "description": "⚡ A Nx plugin package that contains various executors and generators used in a Storm workspaces.",
   "repository": {
@@ -73,12 +73,12 @@
     "zod": "3.23.8",
     "zod-to-json-schema": "3.23.0"
   },
+  "devDependencies": {
+    "@types/semver": "7.5.8"
+  },
   "publishConfig": {
     "access": "public"
   },
   "executors": "./executors.json",
-  "generators": "./generators.json",
-  "devDependencies": {
-    "@types/semver": "7.5.8"
-  }
+  "generators": "./generators.json"
 }
