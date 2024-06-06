@@ -77,5 +77,8 @@
     "access": "public"
   },
   "executors": "./executors.json",
-  "generators": "./generators.json"
+  "generators": "./generators.json",
+  "devDependencies": {
+    "@types/semver": "7.5.8"
+  }
 }

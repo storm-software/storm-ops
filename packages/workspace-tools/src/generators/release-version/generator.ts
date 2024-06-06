@@ -388,7 +388,7 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
 
           // Always assume that if the current version is a prerelease, then the next version should be a prerelease.
           // Users must manually graduate from a prerelease to a release by providing an explicit specifier.
-          if (prerelease(currentVersion)) {
+          if (currentVersion && prerelease(currentVersion)) {
             specifier = "prerelease";
             log(
               `📄 Resolved the specifier as "${specifier}" since the current version is a prerelease.`

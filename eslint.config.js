@@ -1,29 +1,176 @@
 const { FlatCompat } = require("@eslint/eslintrc");
 const nxEslintPlugin = require("@nx/eslint-plugin");
-const eslintPlugin = require("./dist/plugins/eslint");
-
+const eslintPluginReact = require("eslint-plugin-react");
+const typescriptEslintEslintPlugin = require("@typescript-eslint/eslint-plugin");
+const eslintPluginPrettier = require("eslint-plugin-prettier");
+const eslintPluginSimpleImportSort = require("eslint-plugin-simple-import-sort");
+const eslintPluginImport = require("eslint-plugin-import");
+const typescriptEslintParser = require("@typescript-eslint/parser");
 const js = require("@eslint/js");
+
 const compat = new FlatCompat({
   baseDirectory: __dirname,
   recommendedConfig: js.configs.recommended
 });
 
 module.exports = [
-  { plugins: { "@nx": nxEslintPlugin, "@storm-software": eslintPlugin } },
-  ...compat.config({ parser: "jsonc-eslint-parser" }).map(config => ({
-    ...config,
-    files: ["**/*.json"],
-    rules: {}
-  })),
+  ...compat.extends(
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ),
   {
-    files: ["**/executors/**/schema.json", "**/generators/**/schema.json"],
+    plugins: {
+      "@nx": nxEslintPlugin,
+      "react": eslintPluginReact,
+      "@typescript-eslint": typescriptEslintEslintPlugin,
+      "prettier": eslintPluginPrettier,
+      "simple-import-sort": eslintPluginSimpleImportSort,
+      "import": eslintPluginImport
+    }
+  },
+  {
+    languageOptions: {
+      parser: typescriptEslintParser,
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        project: "./tsconfig.base.json"
+      }
+    }
+  },
+  {
     rules: {
-      "@nx/workspace/valid-schema-description": "error"
+      "simple-import-sort/imports": "error",
+      "import/no-extraneous-dependencies": "off",
+      "import/no-named-as-default": "off",
+      "react/react-in-jsx-scope": "off",
+      "linebreak-style": "error",
+      "react/jsx-props-no-spreading": "off",
+      "no-console": "error",
+      "no-var": "error",
+      "react/jsx-sort-props": ["error", { shorthandFirst: true }],
+      "@typescript-eslint/no-floating-promises": "off",
+      "react/jsx-one-expression-per-line": "off",
+      "spaced-comment": ["error", "always"],
+      eqeqeq: ["error", "smart"],
+      "no-else-return": "error",
+      "no-empty-function": "error",
+      "react/require-default-props": "off",
+      "@typescript-eslint/no-unsafe-argument": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/ban-ts-ignore": "off",
+      "max-len": ["error", { code: 120 }],
+      "consistent-return": "off",
+      "array-callback-return": "warn",
+      "import/prefer-default-export": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/prefer-optional-chain": "error",
+      "@typescript-eslint/no-loss-of-precision": "off",
+      "react/button-has-type": "off",
+      "no-plusplus": "off",
+      "no-param-reassign": "off",
+      "@typescript-eslint/no-misused-promises": [
+        2,
+        { checksVoidReturn: { attributes: false } }
+      ],
+      "padding-line-between-statements": [
+        "error",
+        {
+          blankLine: "always",
+          prev: "*",
+          next: "return"
+        },
+        {
+          blankLine: "always",
+          prev: ["const", "let", "import"],
+          next: "*"
+        },
+        {
+          blankLine: "any",
+          prev: ["import"],
+          next: ["import"]
+        },
+        {
+          blankLine: "never",
+          prev: ["const", "let"],
+          next: ["const", "let"]
+        },
+        {
+          blankLine: "always",
+          prev: ["multiline-const", "multiline-let"],
+          next: ["*"]
+        },
+        {
+          blankLine: "always",
+          prev: ["*"],
+          next: ["multiline-const", "multiline-let"]
+        },
+        {
+          blankLine: "always",
+          prev: ["*"],
+          next: ["if", "switch", "for", "while", "try", "function", "class"]
+        },
+        {
+          blankLine: "always",
+          prev: ["if", "switch", "for", "while", "try", "function", "class"],
+          next: ["*"]
+        },
+        {
+          blankLine: "never",
+          prev: ["case"],
+          next: ["case"]
+        }
+      ],
+      "object-curly-spacing": [
+        "error",
+        "always",
+        {
+          objectsInObjects: true,
+          arraysInObjects: true
+        }
+      ],
+      "array-bracket-spacing": [
+        "error",
+        "always",
+        {
+          objectsInArrays: true,
+          arraysInArrays: false
+        }
+      ]
     }
   },
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
     rules: {
+      "simple-import-sort/imports": [
+        "error",
+        {
+          groups: [
+            ["^@nx", "^react", "^\\w"],
+            ["^@store(/.*|$)"],
+            ["^@components(/.*|$)"],
+            ["^@ui(/.*|$)"],
+            ["^@lib(/.*|$)"],
+            ["^@pages(/.*|$)"],
+            ["^@routes(/.*|$)"],
+            ["^@layouts(/.*|$)"],
+            ["^@utils(/.*|$)"],
+            ["^@assets(/.*|$)"],
+            ["^@helpers(/.*|$)"],
+            ["^@hooks(/.*|$)"],
+            ["^@providers(/.*|$)"],
+            ["^@services(/.*|$)"],
+            ["^\\u0000"],
+            ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+            ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+            ["^.+\\.?(css)$"]
+          ]
+        }
+      ],
       "@nx/enforce-module-boundaries": [
         "error",
         {
@@ -42,71 +189,22 @@ module.exports = [
   ...compat.config({ extends: ["plugin:@nx/typescript"] }).map(config => ({
     ...config,
     files: ["**/*.ts", "**/*.tsx"],
-    rules: {}
+    rules: {
+      ...config.rules
+    }
   })),
   ...compat.config({ extends: ["plugin:@nx/javascript"] }).map(config => ({
     ...config,
     files: ["**/*.js", "**/*.jsx"],
-    rules: {}
+    rules: {
+      ...config.rules
+    }
+  })),
+  ...compat.config({ env: { jest: true } }).map(config => ({
+    ...config,
+    files: ["**/*.spec.ts", "**/*.spec.tsx", "**/*.spec.js", "**/*.spec.jsx"],
+    rules: {
+      ...config.rules
+    }
   }))
 ];
-
-//   "root": true,
-//   "ignorePatterns": ["**/*.ts"],
-//   "parser": "@typescript-eslint/parser",
-//   "env": {
-//     "node": true
-//   },
-//   "plugins": ["@nx"],
-//   "extends": ["plugin:@nx/react-typescript"],
-//   "overrides": [
-//     {
-//       "files": ["*.json"],
-//       "parser": "jsonc-eslint-parser",
-//       "rules": {}
-//     },
-//     {
-//       "files": ["**/executors/**/schema.json", "**/generators/**/schema.json"],
-//       "rules": {
-//         "@nx/workspace/valid-schema-description": "error"
-//       }
-//     },
-//     {
-//       "files": ["*.ts", "*.tsx"],
-//       "extends": ["plugin:@nx/typescript"],
-//       "rules": {}
-//     },
-//     {
-//       "files": ["*.js", "*.jsx"],
-//       "extends": ["plugin:@nx/javascript"],
-//       "rules": {}
-//     },
-//     {
-//       "files": ["*.spec.ts", "*.spec.tsx", "*.spec.js", "*.spec.jsx"],
-//       "env": {
-//         "jest": true
-//       },
-//       "rules": {}
-//     },
-//     {
-//       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-//       "rules": {
-//         "@nx/enforce-module-boundaries": [
-//           "error",
-//           {
-//             "enforceBuildableLibDependency": true,
-//             "checkDynamicDependenciesExceptions": [".*"],
-//             "allow": [],
-//             "depConstraints": [
-//               {
-//                 "sourceTag": "*",
-//                 "onlyDependOnLibsWithTags": ["*"]
-//               }
-//             ]
-//           }
-//         ]
-//       }
-//     }
-//   ]
-// }
-// ]

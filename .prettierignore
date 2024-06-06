@@ -28,3 +28,5 @@ bun.lockb
 **/LICENSE.md
 **/LICENSE.txt
 **/src/generators/**/files/**/*
+
+/.nx/workspace-data
