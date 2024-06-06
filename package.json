@@ -150,7 +150,7 @@
       "@storm-software/testing-tools": "workspace:*",
       "@storm-software/tsconfig": "workspace:*",
       "@storm-software/workspace-tools": "workspace:*",
-      "eslint-config-storm": "workspace:*",
+      "eslint-config-storm-software": "workspace:*",
       "axios": "1.7.2",
       "chalk": "4.1.2",
       "create-storm-workspace": "workspace:*",
@@ -164,6 +164,5 @@
       "tsup@8.0.0": "patches/tsup@8.0.0.patch"
     }
   },
-  "prettier": "./packages/prettier/src/config.json",
   "triggerEmptyDevReleaseByIncrementingThisNumber": 0
 }

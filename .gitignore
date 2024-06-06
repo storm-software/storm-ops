@@ -23,6 +23,7 @@ node_modules
 *.launch
 .settings/
 *.sublime-workspace
+Heap.*
 
 # IDE - VSCode
 .vscode/*
