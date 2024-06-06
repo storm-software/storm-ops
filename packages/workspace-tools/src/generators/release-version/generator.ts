@@ -649,10 +649,11 @@ Projects with packageRoot configured: ${Array.from(projectNameToPackageRootMap.k
     data: versionData,
     callback: async (tree, opts) => {
       output.logSingleLine("Updating Cargo.lock file");
-      const cwd = tree.root;
-      const updatedFiles = await updateLockFile(cwd, opts);
 
-      const updatedCargoPackages: string[] = [];
+      const cwd = tree.root;
+      const updatedFiles: string[] = (await updateLockFile(cwd, opts)) ?? [];
+
+      const updatedCargoPackages = [] as string[];
       for (const [projectName, projectVersionData] of Object.entries(
         versionData
       )) {
