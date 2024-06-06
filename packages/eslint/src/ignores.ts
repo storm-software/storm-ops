@@ -1,0 +1,23 @@
+export const ignores = [
+  "**/package.json/**",
+  "**/.wrangler/**",
+  "**/tamagui.css",
+  "**/workbox*.js",
+  "**/sw*.js",
+  "**/service-worker.js",
+  "**/fallback*.js",
+  "**/node_modules/**",
+  "**/dist/**",
+  "**/ios/**",
+  "**/.git/**",
+  "**/.android/**",
+  "**/.DS_Store/**",
+  "**/Thumbs.db/**",
+  "**/.tamagui*",
+  ".next/**",
+  "CODEOWNERS",
+  "dist/**",
+  "coverage/**",
+  ".nx/cache/**",
+  "**/src/generators/**/files/**/*"
+];

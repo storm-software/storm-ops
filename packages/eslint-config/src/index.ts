@@ -4,12 +4,14 @@ import js from "@eslint/js";
 import nxEslintPlugin from "@nx/eslint-plugin";
 import { findWorkspaceRoot } from "@storm-software/config-tools";
 import * as eslintPlugin from "@storm-software/eslint-plugin";
+import { ignores } from "@storm-software/eslint/ignores";
 import typescriptEslintParser from "@typescript-eslint/parser";
 
 const workspaceRoot = findWorkspaceRoot();
 const compat = new FlatCompat({
   baseDirectory: workspaceRoot,
-  recommendedConfig: js.configs.recommended
+  recommendedConfig: js.configs.recommended,
+  ignores
 });
 
 module.exports = [
@@ -18,7 +20,8 @@ module.exports = [
     plugins: {
       "@storm-software": eslintPlugin,
       "@nx": nxEslintPlugin
-    }
+    },
+    ignores
   },
   {
     languageOptions: {
@@ -28,7 +31,8 @@ module.exports = [
         sourceType: "module",
         project: join(workspaceRoot, "tsconfig.base.json")
       }
-    }
+    },
+    ignores
   },
   ...compat
     .config({

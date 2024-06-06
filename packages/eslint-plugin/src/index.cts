@@ -1,5 +1,6 @@
 import * as base from "../../eslint/src/base";
 import * as graphql from "../../eslint/src/graphql";
+import { ignores } from "../../eslint/src/ignores";
 import * as javascript from "../../eslint/src/javascript";
 import * as jest from "../../eslint/src/jest";
 import * as json from "../../eslint/src/json";
@@ -28,29 +29,7 @@ module.exports = {
     "plugin:@nx/typescript",
     "plugin:@nx/javascript"
   ],
-  ignores: [
-    "**/package.json/**",
-    "**/.wrangler/**",
-    "**/tamagui.css",
-    "**/workbox*.js",
-    "**/sw*.js",
-    "**/service-worker.js",
-    "**/fallback*.js",
-    "**/node_modules/**",
-    "**/dist/**",
-    "**/ios/**",
-    "**/.git/**",
-    "**/.android/**",
-    "**/.DS_Store/**",
-    "**/Thumbs.db/**",
-    "**/.tamagui*",
-    ".next/**",
-    "CODEOWNERS",
-    "dist/**",
-    "coverage/**",
-    ".nx/cache/**",
-    "**/src/generators/**/files/**/*"
-  ],
+  ignores,
   configs: {
     base,
     nx,
