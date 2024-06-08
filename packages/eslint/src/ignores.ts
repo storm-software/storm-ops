@@ -14,10 +14,11 @@ export const ignores = [
   "**/.DS_Store/**",
   "**/Thumbs.db/**",
   "**/.tamagui*",
-  ".next/**",
-  "CODEOWNERS",
-  "dist/**",
-  "coverage/**",
-  ".nx/cache/**",
+  "**/next-env.d.ts",
+  "**/.next/**",
+  "**/CODEOWNERS",
+  "**/dist/**",
+  "**/coverage/**",
+  "**/.nx/**",
   "**/src/generators/**/files/**/*"
 ];

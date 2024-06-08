@@ -1,7 +1,7 @@
 {
   "name": "eslint-config-storm-software",
   "version": "0.1.0",
-  "type": "commonjs",
+  "type": "module",
   "description": "⚡ The eslint-config package is a shared ESLint config that contains a collection of recommended ESLint rule configurations which you can extend from in your own ESLint configs, as well as an Nx-specific lint rule called enforce-module-boundaries.",
   "repository": {
     "type": "github",
@@ -20,11 +20,11 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "main": "./index.cjs",
+  "module": "./index.js",
   "exports": {
-    ".": "./index.cjs",
-    "./index.cjs": "./index.cjs",
-    "./index": "./index.cjs",
+    ".": "./index.js",
+    "./index.js": "./index.js",
+    "./index": "./index.js",
     "./package.json": "./package.json"
   },
   "keywords": [
@@ -32,12 +32,21 @@
     "storm-ops",
     "sullivanpj",
     "eslint",
+    "eslintconfig",
     "eslint-config",
     "monorepo"
   ],
   "peerDependencies": {
-    "@nx/eslint": "*",
-    "@nx/eslint-plugin": "*"
+    "@nx/eslint": ">=18.3.0",
+    "@nx/eslint-plugin": ">=18.3.0"
+  },
+  "peerDependenciesMeta": {
+    "@nx/eslint": {
+      "optional": true
+    },
+    "@nx/eslint-plugin": {
+      "optional": true
+    }
   },
   "dependencies": {
     "@eslint/eslintrc": "^2.1.1",
@@ -46,6 +55,8 @@
     "@typescript-eslint/parser": "7.11.0"
   },
   "devDependencies": {
+    "@nx/eslint": ">=18.3.0",
+    "@nx/eslint-plugin": ">=18.3.0",
     "@types/eslint": "8.56.10"
   },
   "publishConfig": {

@@ -1,4 +1,8 @@
-import { CODE_FILE, JS_FILES } from "./constants";
+import type { Linter } from "eslint";
+import nextPlugin from "@next/eslint-plugin-next";
+import { CODE_FILE } from "./constants";
+import { ignores } from "./ignores";
+import react from "./react";
 
 const babelOptions = {
   presets: (() => {
@@ -11,35 +15,34 @@ const babelOptions = {
   })()
 };
 
-module.exports = {
-  root: true,
-  ignorePatterns: ["next-env.d.ts"],
-  extends: ["plugin:@next/next/recommended"],
-  overrides: [
-    {
-      files: CODE_FILE,
-      extends: "./react-base"
+const config: Linter.FlatConfig[] = [
+  ...react,
+  ...nextPlugin.configs.recommended,
+  {
+    files: [CODE_FILE],
+    ignores,
+    plugins: {
+      "@next/next": nextPlugin
     },
-    {
-      files: [
-        "**/pages/**", // Next.js pages directory use default export
-        "next.config.{js,mjs}",
-        "**/*.stories.tsx",
-        ".storybook/main.ts"
-      ],
-      rules: {
-        "import/no-default-export": "off"
-      }
-    },
-    {
-      files: ["next.config.{js,mjs}"],
-      env: {
-        node: true
-      }
-    },
-    {
-      files: JS_FILES,
+    languageOptions: {
       parserOptions: { babelOptions }
     }
-  ]
-};
+  },
+  {
+    files: [
+      "**/pages/**", // Next.js pages directory use default export
+      "**/next.config.{js,mjs}",
+      "**/*.stories.tsx",
+      "**/.storybook/main.ts"
+    ],
+    ignores,
+    languageOptions: {
+      parserOptions: { babelOptions }
+    },
+    rules: {
+      "import/no-default-export": "off"
+    }
+  }
+];
+
+export default config;

@@ -7,7 +7,30 @@ const js = require("@eslint/js");
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended
+  recommendedConfig: js.configs.recommended,
+  ignores: [
+    "**/package.json/**",
+    "**/.wrangler/**",
+    "**/tamagui.css",
+    "**/workbox*.js",
+    "**/sw*.js",
+    "**/service-worker.js",
+    "**/fallback*.js",
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/ios/**",
+    "**/.git/**",
+    "**/.android/**",
+    "**/.DS_Store/**",
+    "**/Thumbs.db/**",
+    "**/.tamagui*",
+    ".next/**",
+    "CODEOWNERS",
+    "dist/**",
+    "coverage/**",
+    ".nx/cache/**",
+    "**/src/generators/**/files/**/*"
+  ]
 });
 
 module.exports = [

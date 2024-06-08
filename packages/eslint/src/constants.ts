@@ -90,5 +90,6 @@ export const RESTRICTED_MODULES = [
 export const JS_FILES = ["*.js?(x)", "*.mjs"];
 
 export const CODE_BLOCK = "**/*.md{,x}/*";
-export const CODE_FILE = "*.{,c,m}{j,t}s{,x}";
-export const TS_FILE = "*.{,c,m}ts{,x}";
+export const CODE_FILE = "**/*.{,c,m}{j,t}s{,x}";
+export const TS_FILE = "**/*.{,c,m}ts{,x}";
+export const JS_FILE = "**/*.{,c}js{,x}";

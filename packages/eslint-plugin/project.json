@@ -4,45 +4,16 @@
   "sourceRoot": "packages/eslint-plugin/src",
   "projectType": "library",
   "targets": {
-    // "build": {
-    //   "executor": "@nx/js:tsc",
-    //   "outputs": ["{options.outputPath}"],
-    //   "options": {
-    //     "outputPath": "dist/packages/eslint-plugin",
-    //     "main": "packages/eslint-plugin/src/index.ts",
-    //     "tsConfig": "packages/eslint-plugin/tsconfig.json",
-    //     "format": ["cjs"],
-    //     "platform": "node",
-    //     "deleteOutputPath": true,
-    //     "bundle": true,
-    //     "thirdParty": true,
-    //     "skipTypeCheck": false,
-    //     "metafile": true,
-    //     "minify": false,
-    //     "assets": [
-    //       {
-    //         "input": "./packages/eslint-plugin",
-    //         "glob": "*.md",
-    //         "output": "/"
-    //       },
-    //       {
-    //         "input": "",
-    //         "glob": "LICENSE",
-    //         "output": "/"
-    //       }
-    //     ]
-    //   }
-    // },
-
     "build": {
       "executor": "@nx/esbuild:esbuild",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/eslint-plugin",
-        "main": "packages/eslint-plugin/src/index.cts",
-        "additionalEntryPoints": ["packages/eslint-plugin/src/apply.cts"],
+        "main": "packages/eslint-plugin/src/index.ts",
+        "additionalEntryPoints": ["packages/eslint-plugin/src/types.ts"],
         "tsConfig": "packages/eslint-plugin/tsconfig.json",
-        "format": ["cjs"],
+        "external": ["@nx/*", "@storm-software/*", "eslint"],
+        "format": ["esm"],
         "platform": "node",
         "deleteOutputPath": true,
         "bundle": true,
