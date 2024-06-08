@@ -1,3 +1,10 @@
+## 0.4.0 (2024-06-08)
+
+
+### 🚀 Features
+
+- **eslint:** Converted all eslint configurations to use new flat style ([281de429](https://github.com/storm-software/storm-ops/commit/281de429))
+
 ## 0.3.2 (2024-06-05)
 
 

@@ -1,3 +1,12 @@
+## 0.4.0 (2024-06-08)
+
+
+### 🚀 Features
+
+- **eslint:** Added the `ignores` module to include in ESLint configurations ([7ba523b0](https://github.com/storm-software/storm-ops/commit/7ba523b0))
+
+- **eslint:** Converted all eslint configurations to use new flat style ([281de429](https://github.com/storm-software/storm-ops/commit/281de429))
+
 ## 0.3.0 (2024-06-06)
 
 

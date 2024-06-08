@@ -1,3 +1,10 @@
+## 1.87.0 (2024-06-08)
+
+
+### 🚀 Features
+
+- **eslint-config:** Renamed the `eslint-config-storm-software` package to avoid conflicts ([3ff32ab0](https://github.com/storm-software/storm-ops/commit/3ff32ab0))
+
 ## 1.86.0 (2024-06-06)
 
 
