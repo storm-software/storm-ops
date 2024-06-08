@@ -2,13 +2,13 @@ import { build } from "esbuild";
 
 Promise.all([
   build({
-    entryPoints: ["packages/eslint-plugin/src/index.cts"],
+    entryPoints: ["packages/eslint-plugin/src/index.ts"],
     outdir: "dist/plugins/eslint",
     tsconfig: "packages/eslint-plugin/tsconfig.json",
     logLevel: "silent",
     bundle: true,
     minify: false,
-    format: "cjs",
+    format: "esm",
     platform: "node"
   }).then(() => {
     console.log("Storm ESLint plugin built successfully");
