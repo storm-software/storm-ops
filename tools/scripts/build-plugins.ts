@@ -10,7 +10,7 @@ Promise.all([
     minify: false,
     format: "esm",
     platform: "node",
-    external: ["@nx/*"]
+    external: ["@nx/*", "eslint"]
   }).then(() => {
     console.log("Storm ESLint plugin built successfully");
   }),
