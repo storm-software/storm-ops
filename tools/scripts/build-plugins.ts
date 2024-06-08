@@ -9,7 +9,8 @@ Promise.all([
     bundle: true,
     minify: false,
     format: "esm",
-    platform: "node"
+    platform: "node",
+    external: ["@angular-devkit/schematics"]
   }).then(() => {
     console.log("Storm ESLint plugin built successfully");
   }),
