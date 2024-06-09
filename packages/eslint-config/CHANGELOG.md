@@ -1,3 +1,10 @@
+## 0.3.0 (2024-06-09)
+
+
+### 🚀 Features
+
+- **eslint:** Update eslint packages to use `CommonJs` instead of `ESNext` ([d6a48043](https://github.com/storm-software/storm-ops/commit/d6a48043))
+
 ## 0.2.0 (2024-06-08)
 
 
