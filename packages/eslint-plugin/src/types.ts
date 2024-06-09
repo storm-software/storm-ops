@@ -24,7 +24,7 @@ export const StormESLintPluginConfigType = {
 
 export type StormESLintPluginConfigs = Record<
   StormESLintPluginConfigType,
-  Linter.FlatConfig<Linter.RulesRecord>[]
+  Linter.FlatConfig[]
 >;
 
 export type StormESLintPluginMeta = ESLint.Plugin["meta"];

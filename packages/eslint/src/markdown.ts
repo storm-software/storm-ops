@@ -1,5 +1,5 @@
 import type { Linter } from "eslint";
-import mdxParser from "eslint-mdx";
+import mdxParser from "eslint-mdx/lib/parser";
 import markdownPlugin from "eslint-plugin-markdown";
 import markdownLintParser from "eslint-plugin-markdownlint/parser";
 import mdxPlugin from "eslint-plugin-mdx";
@@ -27,19 +27,21 @@ const config: Linter.FlatConfig[] = [
       "mdx": mdxPlugin,
       "markdownlint": markdownPlugin
     },
-    parser: mdxParser
+    languageOptions: {
+      parser: mdxParser.parser
+    }
   },
   ...compat
     .config({
       extends: ["plugin:mdx/recommended", "plugin:markdownlint/recommended"]
     })
-    .map(config => ({
+    .map((config: Linter.FlatConfig) => ({
       ...config,
       files: ["**/.md", "**/.mdx", "**/.markdown"],
       ignores,
-      parser: mdxParser,
       processor: "mdx/remark",
       languageOptions: {
+        parser: mdxParser.parser,
         parserOptions: {
           ecmaVersion: 13
         }
@@ -66,7 +68,9 @@ const config: Linter.FlatConfig[] = [
       ...config,
       files: ["**/*.md", "**/*.markdown"],
       ignores,
-      parser: markdownLintParser,
+      languageOptions: {
+        parser: markdownLintParser
+      },
       rules: {
         ...config.rules,
         "markdownlint/md001": "off",
@@ -96,7 +100,9 @@ const config: Linter.FlatConfig[] = [
         "README.md"
       ],
       ignores,
-      parser: markdownLintParser,
+      languageOptions: {
+        parser: markdownLintParser
+      },
       rules: {
         ...config.rules,
         "unicorn/filename-case": "off",
@@ -108,4 +114,4 @@ const config: Linter.FlatConfig[] = [
     }))
 ];
 
-export default config;
+export = config;

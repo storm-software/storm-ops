@@ -50,7 +50,6 @@ const config: Linter.FlatConfig[] = [
       "n": nPlugin,
       "tsdoc": tsdocPlugin
     },
-
     rules: {
       // Disallows if statements as the only statement in else blocks
       // https://eslint.org/docs/rules/no-lonely-if
@@ -177,4 +176,4 @@ const config: Linter.FlatConfig[] = [
   }
 ];
 
-export default config;
+export = config;

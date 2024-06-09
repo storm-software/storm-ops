@@ -18,7 +18,9 @@ const config: Linter.FlatConfig[] = [
       "@graphql-eslint": graphqlPlugin,
       "relay": relayPlugin
     },
-    parser: graphqlPlugin.parseForESLint,
+    languageOptions: {
+      parser: graphqlPlugin.parseForESLint
+    },
     rules: {
       "@graphql-eslint/relay-arguments": "error",
       "@graphql-eslint/relay-connection-types": "error",
@@ -135,4 +137,4 @@ const config: Linter.FlatConfig[] = [
   }
 ];
 
-export default config;
+export = config;

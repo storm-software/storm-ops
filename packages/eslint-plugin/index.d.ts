@@ -1,9 +1,6 @@
 import type { ESLint, Linter } from "eslint";
 
-type StormESLintPluginConfigs = Record<
-  string,
-  Linter.FlatConfig<Linter.RulesRecord>[]
->;
+type StormESLintPluginConfigs = Record<string, Linter.FlatConfig[]>;
 
 type StormESLintPluginMeta = ESLint.Plugin["meta"];
 

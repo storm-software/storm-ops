@@ -68,4 +68,4 @@ const config: Linter.FlatConfig[] = [
   }
 ];
 
-export default config;
+export = config;

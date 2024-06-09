@@ -19,13 +19,13 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "module": "./index.js",
+  "main": "./index.cjs",
   "exports": {
-    ".": "./index.js",
-    "./index": "./index.js",
-    "./*": "./*.js",
-    "./rules": "./rules/index.js",
-    "./rules/*": "./rules/*.js",
+    ".": "./index.cjs",
+    "./index": "./index.cjs",
+    "./*": "./*.cjs",
+    "./rules": "./rules/index.cjs",
+    "./rules/*": "./rules/*.cjs",
     "./package.json": "./package.json"
   },
   "keywords": [
@@ -60,6 +60,7 @@
     "@typescript-eslint/parser": "^7.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-es-x": "7.6.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsonc": "^2.11.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
@@ -74,7 +75,9 @@
     "eslint-plugin-sonarjs": "^1.0.0",
     "eslint-plugin-tsdoc": "0.3.0",
     "eslint-plugin-unicorn": "^52.0.0",
-    "eslint-plugin-yml": "^1.11.0"
+    "eslint-plugin-yml": "^1.11.0",
+    "jsonc-eslint-parser": "^2.4.0",
+    "yaml-eslint-parser": "^1.2.3"
   },
   "devDependencies": {
     "@types/eslint": "8.56.10"

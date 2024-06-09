@@ -1,4 +1,4 @@
 import type { Linter } from "eslint";
 
-declare const cjsExport: Linter.FlatConfig<Linter.RulesRecord>;
+declare const cjsExport: Linter.FlatConfig;
 export = cjsExport;

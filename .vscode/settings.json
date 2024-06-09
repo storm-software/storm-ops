@@ -288,7 +288,10 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "json",
+    "markdown"
   ],
-  "eslint.format.enable": true
+  "eslint.format.enable": true,
+  "eslint.experimental.useFlatConfig": true
 }
