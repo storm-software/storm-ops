@@ -1,16 +1,16 @@
+import { Command, Option } from "commander";
+import type { StormConfig } from "@storm-software/config";
 import {
-  findWorkspaceRootSafe,
   exitWithError,
+  findWorkspaceRootSafe,
   writeFatal,
   writeInfo,
   writeSuccess
 } from "@storm-software/config-tools";
-import type { StormConfig } from "@storm-software/config";
 import { runCommit } from "../commit";
 import { runReadme } from "../readme";
 import { runRelease } from "../release";
 import type { ReadMeOptions } from "../types";
-import { Command, Option } from "commander";
 
 let _config: Partial<StormConfig> = {};
 
@@ -189,10 +189,7 @@ export async function releaseAction({
       `A fatal error occurred while running release action: ${error.message}`,
       _config
     );
-    writeFatal(
-      error,
-      _config
-    );
+    writeFatal(error, _config);
 
     exitWithError(_config);
   }
