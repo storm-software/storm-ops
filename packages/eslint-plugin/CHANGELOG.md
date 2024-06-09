@@ -1,3 +1,10 @@
+## 0.7.0 (2024-06-09)
+
+
+### 🚀 Features
+
+- **eslint:** Change module formats for eslint packages ([2be209ea](https://github.com/storm-software/storm-ops/commit/2be209ea))
+
 ## 0.6.0 (2024-06-09)
 
 ### 🚀 Features
