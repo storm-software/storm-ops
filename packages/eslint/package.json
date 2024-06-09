@@ -1,7 +1,6 @@
 {
   "name": "@storm-software/eslint",
   "version": "0.5.0",
-  "type": "commonjs",
   "description": "⚡ A package containing the base ESLint configuration used by Storm Software across many projects.",
   "repository": {
     "type": "github",
@@ -20,13 +19,13 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "main": "./index.cjs",
+  "module": "./index.js",
   "exports": {
-    ".": "./index.cjs",
-    "./index": "./index.cjs",
-    "./*": "./*.cjs",
-    "./rules": "./rules/index.cjs",
-    "./rules/*": "./rules/*.cjs",
+    ".": "./index.js",
+    "./index": "./index.js",
+    "./*": "./*.js",
+    "./rules": "./rules/index.js",
+    "./rules/*": "./rules/*.js",
     "./package.json": "./package.json"
   },
   "keywords": [

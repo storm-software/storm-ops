@@ -22,7 +22,7 @@
         ],
         "tsConfig": "packages/eslint/tsconfig.json",
         "external": ["@nx/*", "@storm-software/*", "eslint"],
-        "format": ["cjs"],
+        "format": ["esm"],
         "platform": "node",
         "deleteOutputPath": true,
         "bundle": true,

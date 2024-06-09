@@ -1,7 +1,7 @@
 import eslintPlugin from "@storm-software/eslint-plugin";
 import { ignores } from "@storm-software/eslint/ignores";
 
-const config = [
+export = [
   ...eslintPlugin.configs.recommended,
   {
     plugins: {
@@ -16,5 +16,3 @@ const config = [
     ignores
   }
 ];
-
-export default config;

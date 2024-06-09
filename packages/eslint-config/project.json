@@ -12,7 +12,7 @@
         "main": "packages/eslint-config/src/index.ts",
         "tsConfig": "packages/eslint-config/tsconfig.json",
         "external": ["@nx/*", "@storm-software/*", "eslint"],
-        "format": ["cjs"],
+        "format": ["cjs", "esm"],
         "platform": "node",
         "deleteOutputPath": true,
         "bundle": true,
@@ -24,6 +24,11 @@
           {
             "input": "./packages/eslint-config",
             "glob": "*.md",
+            "output": "/"
+          },
+          {
+            "input": "./packages/eslint-config",
+            "glob": "./index.d.ts",
             "output": "/"
           },
           {
