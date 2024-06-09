@@ -1,3 +1,10 @@
+## 0.6.0 (2024-06-09)
+
+
+### 🚀 Features
+
+- **eslint:** Add dependencies and convert to `CommonJs` package ([bd4bc22c](https://github.com/storm-software/storm-ops/commit/bd4bc22c))
+
 ## 0.5.0 (2024-06-09)
 
 
