@@ -1,3 +1,10 @@
+## 1.88.1 (2024-06-09)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Ensure the correct registry URL is provided to npm release commands ([89a9b0db](https://github.com/storm-software/storm-ops/commit/89a9b0db))
+
 ## 1.88.0 (2024-06-09)
 
 
