@@ -1,30 +1,40 @@
-## 1.88.1 (2024-06-09)
+## 1.89.0 (2024-06-09)
 
+### 🚀 Features
+
+- **eslint:** Updated markup documentation files
+  ([0097f19e](https://github.com/storm-software/storm-ops/commit/0097f19e))
+
+## 1.88.1 (2024-06-09)
 
 ### 🩹 Fixes
 
-- **workspace-tools:** Ensure the correct registry URL is provided to npm release commands ([89a9b0db](https://github.com/storm-software/storm-ops/commit/89a9b0db))
+- **workspace-tools:** Ensure the correct registry URL is provided to npm
+  release commands
+  ([89a9b0db](https://github.com/storm-software/storm-ops/commit/89a9b0db))
 
 ## 1.88.0 (2024-06-09)
 
-
 ### 🚀 Features
 
-- **git-tools:** Enhance the fatal error logging ([89b0e089](https://github.com/storm-software/storm-ops/commit/89b0e089))
+- **git-tools:** Enhance the fatal error logging
+  ([89b0e089](https://github.com/storm-software/storm-ops/commit/89b0e089))
 
 ## 1.87.0 (2024-06-08)
 
-
 ### 🚀 Features
 
-- **eslint-config:** Renamed the `eslint-config-storm-software` package to avoid conflicts ([3ff32ab0](https://github.com/storm-software/storm-ops/commit/3ff32ab0))
+- **eslint-config:** Renamed the `eslint-config-storm-software` package to avoid
+  conflicts
+  ([3ff32ab0](https://github.com/storm-software/storm-ops/commit/3ff32ab0))
 
 ## 1.86.0 (2024-06-06)
 
-
 ### 🚀 Features
 
-- **eslint-config:** Added a package to share the base Storm ESLint configuration ([af128ebd](https://github.com/storm-software/storm-ops/commit/af128ebd))
+- **eslint-config:** Added a package to share the base Storm ESLint
+  configuration
+  ([af128ebd](https://github.com/storm-software/storm-ops/commit/af128ebd))
 
 ## 1.85.0 (2024-06-06)
 

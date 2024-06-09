@@ -1,30 +1,37 @@
-## 0.5.0 (2024-06-09)
-
+## 0.6.0 (2024-06-09)
 
 ### 🚀 Features
 
-- **eslint:** Update eslint packages to use `CommonJs` instead of `ESNext` ([d6a48043](https://github.com/storm-software/storm-ops/commit/d6a48043))
+- **eslint:** Updated markup documentation files
+  ([0097f19e](https://github.com/storm-software/storm-ops/commit/0097f19e))
+
+## 0.5.0 (2024-06-09)
+
+### 🚀 Features
+
+- **eslint:** Update eslint packages to use `CommonJs` instead of `ESNext`
+  ([d6a48043](https://github.com/storm-software/storm-ops/commit/d6a48043))
 
 ## 0.4.0 (2024-06-08)
 
-
 ### 🚀 Features
 
-- **eslint:** Converted all eslint configurations to use new flat style ([281de429](https://github.com/storm-software/storm-ops/commit/281de429))
+- **eslint:** Converted all eslint configurations to use new flat style
+  ([281de429](https://github.com/storm-software/storm-ops/commit/281de429))
 
 ## 0.3.2 (2024-06-05)
 
-
 ### 🩹 Fixes
 
-- **markdownlint:** Resolve issue with bad rules export ([7e6e5375](https://github.com/storm-software/storm-ops/commit/7e6e5375))
+- **markdownlint:** Resolve issue with bad rules export
+  ([7e6e5375](https://github.com/storm-software/storm-ops/commit/7e6e5375))
 
 ## 0.3.1 (2024-06-05)
 
-
 ### 🩹 Fixes
 
-- **eslint-plugin:** Resolve issues with `apply` module syntax ([de90c861](https://github.com/storm-software/storm-ops/commit/de90c861))
+- **eslint-plugin:** Resolve issues with `apply` module syntax
+  ([de90c861](https://github.com/storm-software/storm-ops/commit/de90c861))
 
 ## 0.3.0 (2024-06-05)
 
