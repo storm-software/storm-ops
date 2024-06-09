@@ -65,7 +65,7 @@ export default async function npmPublishExecutorFn(
     ? options.registry
     : execSync("npm config get registry").toString().trim();
 
-  if (options.registry) {
+  if (registry) {
     npmPublishCommandSegments.push(`--registry=${registry}`);
     npmViewCommandSegments.push(`--registry=${registry}`);
   }
