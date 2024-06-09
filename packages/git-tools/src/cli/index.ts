@@ -191,6 +191,11 @@ export async function releaseAction({
     );
     writeFatal(error, _config);
 
+    console.error("");
+    console.error("Fatal release error: ");
+    console.error(error);
+    console.error("");
+
     exitWithError(_config);
   }
 }
