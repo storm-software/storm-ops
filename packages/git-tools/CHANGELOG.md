@@ -1,3 +1,10 @@
+## 2.14.0 (2024-06-09)
+
+
+### 🚀 Features
+
+- **git-tools:** Added additional error logging to release action ([d990f9f5](https://github.com/storm-software/storm-ops/commit/d990f9f5))
+
 ## 2.13.1 (2024-06-09)
 
 
