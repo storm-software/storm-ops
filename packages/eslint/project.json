@@ -22,7 +22,7 @@
         ],
         "tsConfig": "packages/eslint/tsconfig.json",
         "external": ["@nx/*", "@storm-software/*", "eslint"],
-        "format": ["esm"],
+        "format": ["cjs"],
         "platform": "node",
         "deleteOutputPath": true,
         "bundle": true,
@@ -30,11 +30,6 @@
         "skipTypeCheck": false,
         "metafile": true,
         "minify": false,
-        "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
-          }
-        },
         "assets": [
           {
             "input": "./packages/eslint",
