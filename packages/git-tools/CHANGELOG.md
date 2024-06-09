@@ -1,3 +1,10 @@
+## 2.13.0 (2024-06-09)
+
+
+### 🚀 Features
+
+- **git-tools:** Enhance the fatal error logging ([89b0e089](https://github.com/storm-software/storm-ops/commit/89b0e089))
+
 ## 2.12.1 (2024-06-05)
 
 
