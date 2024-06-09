@@ -1,3 +1,10 @@
+## 2.13.1 (2024-06-09)
+
+
+### 🩹 Fixes
+
+- **git-tools:** File formatting changes ([f6c39863](https://github.com/storm-software/storm-ops/commit/f6c39863))
+
 ## 2.13.0 (2024-06-09)
 
 
