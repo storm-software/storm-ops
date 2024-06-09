@@ -1,3 +1,10 @@
+## 1.89.0 (2024-06-09)
+
+
+### 🚀 Features
+
+- **eslint:** Updated markup documentation files ([0097f19e](https://github.com/storm-software/storm-ops/commit/0097f19e))
+
 ## 1.88.1 (2024-06-09)
 
 
