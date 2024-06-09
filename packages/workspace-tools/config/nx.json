@@ -249,6 +249,5 @@
     }
   },
   "parallel": 3,
-  "cacheDirectory": "tmp/nx-cache",
   "defaultBase": "main"
 }

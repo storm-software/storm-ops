@@ -189,6 +189,11 @@ export async function releaseAction({
       `A fatal error occurred while running release action: ${error.message}`,
       _config
     );
+    writeFatal(
+      error,
+      _config
+    );
+
     exitWithError(_config);
   }
 }
