@@ -88,7 +88,7 @@
     "alex": "11.0.1",
     "check-dependency-version-consistency": "4.1.0",
     "commander": "12.1.0",
-    "cspell": "8.8.3",
+    "cspell": "8.8.4",
     "dpdm": "3.14.0",
     "fs-extra": "11.2.0",
     "p-limit": "5.0.0",
