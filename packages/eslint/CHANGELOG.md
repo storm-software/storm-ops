@@ -1,3 +1,15 @@
+## 0.9.0 (2024-06-10)
+
+
+### 🚀 Features
+
+- **eslint:** Updated package configuration back to `ESNext` from `CommonJs` ([565143d4](https://github.com/storm-software/storm-ops/commit/565143d4))
+
+
+### 🩹 Fixes
+
+- **deps:** pin dependencies ([e2f9fcbc](https://github.com/storm-software/storm-ops/commit/e2f9fcbc))
+
 ## 0.8.0 (2024-06-09)
 
 
