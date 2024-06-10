@@ -3,7 +3,7 @@ import ymlPlugin from "eslint-plugin-yml";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import { findWorkspaceRoot } from "@storm-software/config-tools";
-import * as base from "./base";
+import base from "./base";
 import { CODE_BLOCK } from "./constants";
 import { ignores } from "./ignores";
 
@@ -41,4 +41,4 @@ const config: Linter.FlatConfig[] = [
     }))
 ];
 
-export = config;
+export default config;
