@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-storm-software",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "⚡ The eslint-config package is a shared ESLint config that contains a collection of recommended ESLint rule configurations which you can extend from in your own ESLint configs, as well as an Nx-specific lint rule called enforce-module-boundaries.",
   "repository": {
     "type": "github",
@@ -43,7 +43,7 @@
     }
   },
   "dependencies": {
-    "@eslint/eslintrc": "^2.1.1",
+    "@eslint/eslintrc": "2.1.4",
     "@eslint/js": "9.4.0",
     "@typescript-eslint/eslint-plugin": "7.11.0",
     "@typescript-eslint/parser": "7.11.0"
