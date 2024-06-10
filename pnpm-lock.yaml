@@ -186,7 +186,7 @@ importers:
         version: 5.31.0(typanion@3.14.0)
     devDependencies:
       '@eslint/eslintrc':
-        specifier: ^2.1.1
+        specifier: 2.1.4
         version: 2.1.4
       eslint-config-airbnb:
         specifier: 19.0.4
@@ -794,7 +794,7 @@ importers:
         version: 0.6.1(@ianvs/prettier-plugin-sort-imports@4.2.1(prettier@3.3.0))(prettier@3.3.0)
     devDependencies:
       '@types/prettier':
-        specifier: ^3.0.0
+        specifier: 3.0.0
         version: 3.0.0
 
   packages/testing-tools:
