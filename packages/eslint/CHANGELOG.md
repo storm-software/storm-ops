@@ -1,3 +1,10 @@
+## 0.9.2 (2024-06-15)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolved issue with invalid package name in tags ([e40b5387](https://github.com/storm-software/storm-ops/commit/e40b5387))
+
 ## 0.9.1 (2024-06-15)
 
 
