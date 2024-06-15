@@ -1,3 +1,10 @@
+## 1.89.1 (2024-06-15)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Resolved issue populating the git tag during publishing ([9ac9f1be](https://github.com/storm-software/storm-ops/commit/9ac9f1be))
+
 ## 1.89.0 (2024-06-09)
 
 ### 🚀 Features
