@@ -58,7 +58,7 @@ export default async function npmPublishExecutorFn(
 
   const npmPublishCommandSegments = ["npm publish --json"];
   const npmViewCommandSegments = [
-    `npm view ${packageName} versions dist-tags --json`
+    `npm view ${context.projectName} versions dist-tags --json`
   ];
 
   const registry = options.registry
@@ -125,7 +125,7 @@ export default async function npmPublishExecutorFn(
       try {
         if (!isDryRun) {
           execSync(
-            `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${registry}`,
+            `npm dist-tag add ${context.projectName}@${currentVersion} ${tag} --registry=${registry}`,
             {
               env: {
                 ...process.env,
