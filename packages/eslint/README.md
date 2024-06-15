@@ -2,7 +2,6 @@
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 
-
 <div align="center"><img src="https://pub-761b436209f44a4d886487c917806c08.r2.dev/storm-banner.gif" width="100%" alt="Storm Software" /></div>
 <br />
 
@@ -28,7 +27,6 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 > This repository, and the apps, libraries, and tools contained within, is still in it's initial development phase. As a result, bugs and issues are expected with it's usage. When the main development phase completes, a proper release will be performed, the packages will be availible through NPM (and other distributions), and this message will be removed. However, in the meantime, please feel free to report any issues you may come across.
 
 <br />
-
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
@@ -84,7 +82,6 @@ Run `nx test eslint` to execute the unit tests via [Jest](https://jestjs.io).
 <!-- START footer -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-
 
 ## Storm Workspaces
 
