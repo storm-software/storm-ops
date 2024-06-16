@@ -1,3 +1,10 @@
+## 1.90.0 (2024-06-16)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Enhanced logging in npm publish executor ([91befa2c](https://github.com/storm-software/storm-ops/commit/91befa2c))
+
 ## 1.89.2 (2024-06-15)
 
 
