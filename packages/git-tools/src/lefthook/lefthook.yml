@@ -23,47 +23,47 @@ prepare:
 pre-commit:
   piped: true
   commands:
-    # install:
-    #   files: "git diff --name-only HEAD @{push}"
-    #   glob: "**/package.json"
-    #   run: "pnpm install && git update-index"
+    install:
+      files: "git diff --name-only HEAD @{push}"
+      glob: "./{pnpm-lock.yaml,lefthook.yml}"
+      run: "pnpm install && git update-index"
     prepare:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/{lefthook.yml,biome.json}"
       run: "pnpm exec storm-prepare"
     prebuild:
       glob: "**/*.*"
-      run: "pnpm build-all"
+      run: "pnpm build"
       stage_fixed: true
     validate:
+      files: "git diff --name-only HEAD @{push}"
       glob: "**/*.*"
       run: "pnpm exec storm-pre-commit {staged_files}"
       stage_fixed: true
     lint:
-      files: "git diff --name-only HEAD @{push}"
-      glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: "pnpm lint && git update-index"
+      glob: "**/*.*"
+      run: "pnpm lint"
+      stage_fixed: true
     lint-toml:
       glob: "**/*.toml"
       run: 'pnpm exec taplo format --check --config="@storm-software/linting-tools/taplo/.taplo.toml"'
     lint-filename:
       glob: "**/*.*"
       run: 'pnpm exec ls-lint --config="@storm-software/linting-tools/ls-lint/ls-lint.yml"'
-    check:
-      glob: "**/*.*"
-      run: "pnpm exec biome check --apply --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index"
     readme-gen:
       glob: "**/{README.md,package.json,executors.json,generators.json}"
-      run: 'pnpm exec storm-git readme-gen --templates="./docs/readme-templates" && git update-index'
+      run: 'pnpm exec storm-git readme-gen --templates="./docs/readme-templates"'
+      stage_fixed: true
     format:
       glob: "**/*.*"
-      run: "pnpm exec biome format --write  --no-errors-on-unmatched --files-ignore-unknown=true {staged_files} && git update-index"
+      run: "pnpm format"
+      stage_fixed: true
     format-toml:
       glob: "**/*.toml"
       run: 'pnpm exec taplo format --config="@storm-software/linting-tools/taplo/.taplo.toml" && git update-index'
     postbuild:
       glob: "**/*.*"
-      run: "pnpm build-all"
+      run: "pnpm build"
       stage_fixed: true
 
 commit-msg:
@@ -82,7 +82,7 @@ pre-push:
     lint:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: "pnpm exec biome lint --apply --no-errors-on-unmatched --vcs-enabled=true --files-ignore-unknown=true {files} && git update-index"
+      run: "pnpm lint"
       stage_fixed: true
 
 post-merge:
