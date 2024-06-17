@@ -1,3 +1,10 @@
+## 1.96.0 (2024-06-17)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Add `clean` targets to the Cargo and TypeScript plugins ([8a41617e](https://github.com/storm-software/storm-ops/commit/8a41617e))
+
 ## 1.95.0 (2024-06-17)
 
 
