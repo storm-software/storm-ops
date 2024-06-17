@@ -1,3 +1,10 @@
+## 0.6.0 (2024-06-17)
+
+
+### 🚀 Features
+
+- **tsconfig:** Improve the Typescript configuration inheritance and linting ([b84c881f](https://github.com/storm-software/storm-ops/commit/b84c881f))
+
 ## 0.5.0 (2024-06-05)
 
 
