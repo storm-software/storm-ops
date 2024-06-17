@@ -149,13 +149,13 @@ export default async function npmPublishExecutorFn(
         return new Promise(resolve => resolve({ success: true }));
       } catch (err) {
         console.log("");
-        console.error("An error occured checking existing dist-tags.");
+        console.error("An error occured adding dist-tags.");
         console.error(err);
         console.log("");
 
         try {
           console.warn(
-            `An error occurred while checking for existing dist-tags\n${err}\n\nNote: If this is the first time this package has been published to NPM, this can be ignored.`
+            `An error occurred while adding dist-tags\n${err}\n\nNote: If this is the first time this package has been published to NPM, this can be ignored.`
           );
           console.log("");
 
