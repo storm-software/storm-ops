@@ -1,3 +1,12 @@
+## 1.94.0 (2024-06-17)
+
+
+### 🚀 Features
+
+- **git-tools:** Add proper export values to package and resolve type issues ([46f45709](https://github.com/storm-software/storm-ops/commit/46f45709))
+
+- **workspace-tools:** Enhance the Storm `nx.json` preset values ([4255e9a8](https://github.com/storm-software/storm-ops/commit/4255e9a8))
+
 ## 1.93.0 (2024-06-17)
 
 

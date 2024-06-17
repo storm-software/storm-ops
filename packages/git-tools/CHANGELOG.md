@@ -1,3 +1,10 @@
+## 2.17.0 (2024-06-17)
+
+
+### 🚀 Features
+
+- **git-tools:** Add proper export values to package and resolve type issues ([46f45709](https://github.com/storm-software/storm-ops/commit/46f45709))
+
 ## 2.16.1 (2024-06-17)
 
 
