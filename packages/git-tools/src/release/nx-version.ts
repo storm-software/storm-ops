@@ -1,3 +1,43 @@
+import { readFileSync } from "node:fs";
+import { relative } from "node:path";
+import { parseGeneratorString } from "nx/src/command-line/generate/generate.js";
+import { getGeneratorInformation } from "nx/src/command-line/generate/generator-utils.js";
+import type { VersionOptions } from "nx/src/command-line/release/command-object.js";
+import {
+  createNxReleaseConfig,
+  handleNxReleaseConfigError,
+  type NxReleaseConfig
+} from "nx/src/command-line/release/config/config.js";
+import {
+  filterReleaseGroups,
+  type ReleaseGroupWithName
+} from "nx/src/command-line/release/config/filter-release-groups.js";
+import { batchProjectsByGeneratorConfig } from "nx/src/command-line/release/utils/batch-projects-by-generator-config.js";
+import { gitAdd, gitTag } from "nx/src/command-line/release/utils/git.js";
+import { printDiff } from "nx/src/command-line/release/utils/print-changes.js";
+import { resolveNxJsonConfigErrorMessage } from "nx/src/command-line/release/utils/resolve-nx-json-error-message.js";
+import {
+  commitChanges,
+  createCommitMessageValues,
+  createGitTagValues,
+  handleDuplicateGitTags,
+  type VersionData
+} from "nx/src/command-line/release/utils/shared.js";
+import type {
+  NxReleaseVersionResult,
+  ReleaseVersionGeneratorResult,
+  ReleaseVersionGeneratorSchema
+} from "nx/src/command-line/release/version.js";
+import { readNxJson, type NxJsonConfiguration } from "nx/src/config/nx-json.js";
+import type { ProjectGraph } from "nx/src/config/project-graph.js";
+import { joinPathFragments, workspaceRoot } from "nx/src/devkit-exports.js";
+import { flushChanges, FsTree, type Tree } from "nx/src/generators/tree.js";
+import { createProjectFileMapUsingProjectGraph } from "nx/src/project-graph/file-map-utils.js";
+import {
+  createProjectGraphAsync,
+  readProjectsConfigurationFromProjectGraph
+} from "nx/src/project-graph/project-graph.js";
+import { combineOptionsForGenerator } from "nx/src/utils/params.js";
 import type { StormConfig } from "@storm-software/config";
 import {
   findWorkspaceRoot,
@@ -5,46 +45,6 @@ import {
   writeError,
   writeInfo
 } from "@storm-software/config-tools";
-import type { VersionOptions } from "nx/src/command-line/release/command-object.js";
-import {
-  type NxReleaseConfig,
-  createNxReleaseConfig,
-  handleNxReleaseConfigError
-} from "nx/src/command-line/release/config/config.js";
-import {
-  type ReleaseGroupWithName,
-  filterReleaseGroups
-} from "nx/src/command-line/release/config/filter-release-groups.js";
-import { gitAdd, gitTag } from "nx/src/command-line/release/utils/git.js";
-import {
-  type VersionData,
-  createCommitMessageValues,
-  createGitTagValues,
-  handleDuplicateGitTags,
-  commitChanges
-} from "nx/src/command-line/release/utils/shared.js";
-import { type NxJsonConfiguration, readNxJson } from "nx/src/config/nx-json.js";
-import {
-  createProjectGraphAsync,
-  readProjectsConfigurationFromProjectGraph
-} from "nx/src/project-graph/project-graph.js";
-import { resolveNxJsonConfigErrorMessage } from "nx/src/command-line/release/utils/resolve-nx-json-error-message.js";
-import { FsTree, flushChanges, type Tree } from "nx/src/generators/tree.js";
-import { batchProjectsByGeneratorConfig } from "nx/src/command-line/release/utils/batch-projects-by-generator-config.js";
-import { getGeneratorInformation } from "nx/src/command-line/generate/generator-utils.js";
-import type {
-  NxReleaseVersionResult,
-  ReleaseVersionGeneratorResult,
-  ReleaseVersionGeneratorSchema
-} from "nx/src/command-line/release/version.js";
-import { parseGeneratorString } from "nx/src/command-line/generate/generate.js";
-import type { ProjectGraph } from "nx/src/config/project-graph.js";
-import { combineOptionsForGenerator } from "nx/src/utils/params.js";
-import { relative } from "node:path";
-import { readFileSync } from "node:fs";
-import { joinPathFragments, workspaceRoot } from "nx/src/devkit-exports.js";
-import { printDiff } from "nx/src/command-line/release/utils/print-changes.js";
-import { createProjectFileMapUsingProjectGraph } from "nx/src/project-graph/file-map-utils.js";
 
 interface GeneratorData {
   collectionName: string;
@@ -59,7 +59,7 @@ export async function releaseVersion(
   config: StormConfig,
   args: VersionOptions
 ): Promise<NxReleaseVersionResult> {
-  writeInfo(config, "Running release version command");
+  writeInfo("Running release version command", config);
 
   const projectGraph = await createProjectGraphAsync({ exitOnError: true });
   const { projects } = readProjectsConfigurationFromProjectGraph(projectGraph);
@@ -98,7 +98,7 @@ export async function releaseVersion(
     );
   }
 
-  writeInfo(config, "Filtering projects and release groups");
+  writeInfo("Filtering projects and release groups", config);
 
   const {
     error: filterError,
@@ -111,7 +111,7 @@ export async function releaseVersion(
     args.groups
   );
   if (filterError) {
-    writeError(config, filterError.title);
+    writeError(filterError.title, config);
     throw new Error(filterError.title);
   }
 
@@ -125,15 +125,15 @@ export async function releaseVersion(
 
   if (args.projects?.length) {
     writeInfo(
-      config,
-      "Run versioning for all remaining release groups and filtered projects within them"
+      "Run versioning for all remaining release groups and filtered projects within them",
+      config
     );
 
     for (const releaseGroup of releaseGroups) {
       const releaseGroupName = releaseGroup.name;
       writeInfo(
-        config,
-        `Running versioning for release group "${releaseGroupName}" and filtered projects within it`
+        `Running versioning for release group "${releaseGroupName}" and filtered projects within it`,
+        config
       );
 
       const releaseGroupProjectNames = Array.from(
@@ -151,10 +151,10 @@ export async function releaseVersion(
         projectNames
       ] of projectBatches.entries()) {
         writeInfo(
-          config,
           `Running versioning for batch "${JSON.stringify(
             projectNames
-          )}" for release-group "${releaseGroupName}"`
+          )}" for release-group "${releaseGroupName}"`,
+          config
         );
 
         const [generatorName, generatorOptions] = JSON.parse(
@@ -240,7 +240,7 @@ export async function releaseVersion(
         args.gitCommitArgs || nxReleaseConfig?.version.git.commitArgs
       );
     } else if (args.stageChanges ?? nxReleaseConfig?.version.git.stageChanges) {
-      writeInfo(config, "Staging changed files with git");
+      writeInfo("Staging changed files with git", config);
       await gitAdd({
         changedFiles,
         dryRun: args.dryRun,
@@ -249,7 +249,7 @@ export async function releaseVersion(
     }
 
     if (args.gitTag ?? nxReleaseConfig?.version.git.tag) {
-      writeInfo(config, "Tagging commit with git");
+      writeInfo("Tagging commit with git", config);
       for (const tag of gitTagValues) {
         await gitTag({
           tag,
@@ -384,7 +384,7 @@ export async function releaseVersion(
       args.gitCommitArgs || nxReleaseConfig?.version.git.commitArgs
     );
   } else if (args.stageChanges ?? nxReleaseConfig?.version.git.stageChanges) {
-    writeInfo(config, "Staging changed files with git");
+    writeInfo("Staging changed files with git", config);
     await gitAdd({
       changedFiles,
       dryRun: args.dryRun,
@@ -393,7 +393,7 @@ export async function releaseVersion(
   }
 
   if (args.gitTag ?? nxReleaseConfig?.version.git.tag) {
-    writeInfo(config, "Tagging commit with git");
+    writeInfo("Tagging commit with git", config);
     for (const tag of gitTagValues) {
       await gitTag({
         tag,
@@ -451,8 +451,8 @@ async function runVersionOnProjects(
   );
 
   writeDebug(
-    config,
-    `Generator options: ${JSON.stringify(combinedOpts, null, 2)}`
+    `Generator options: ${JSON.stringify(combinedOpts, null, 2)}`,
+    config
   );
 
   const releaseVersionGenerator: any = generatorData.implementationFactory();
@@ -485,10 +485,10 @@ function printAndFlushChanges(
   // Print the changes
   for (const f of changes) {
     if (f.type === "CREATE") {
-      writeInfo(config, `CREATE ${f.path}${isDryRun ? " [dry-run]" : ""}`);
+      writeInfo(`CREATE ${f.path}${isDryRun ? " [dry-run]" : ""}`, config);
       printDiff("", f.content?.toString() || "");
     } else if (f.type === "UPDATE") {
-      writeInfo(config, `UPDATE ${f.path}${isDryRun ? " [dry-run]" : ""}`);
+      writeInfo(`UPDATE ${f.path}${isDryRun ? " [dry-run]" : ""}`, config);
       const currentContentsOnDisk = readFileSync(
         joinPathFragments(tree.root, f.path)
       ).toString();

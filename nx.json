@@ -242,6 +242,7 @@
       "projectChangelogs": {
         "createRelease": "github",
         "entryWhenNoChanges": false,
+        "renderer": "@storm-software/git-tools/changelog-renderer",
         "renderOptions": {
           "authors": false,
           "commitReferences": true,
@@ -264,5 +265,7 @@
     "./dist/plugins/rust/index.js",
     "./dist/plugins/typescript/index.js",
     "./dist/plugins/cloudflare/index.js"
-  ]
+  ],
+  "useDaemonProcess": true,
+  "useInferencePlugins": true
 }

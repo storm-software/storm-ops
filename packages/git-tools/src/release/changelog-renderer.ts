@@ -1,11 +1,14 @@
 import { existsSync } from "node:fs";
 import axios from "axios";
+import type { ChangelogRenderer } from "nx/release/changelog-renderer/index.js";
 import type { GitCommit } from "nx/src/command-line/release/utils/git.js";
-import { type RepoSlug, formatReferences } from "nx/src/command-line/release/utils/github.js";
+import {
+  formatReferences,
+  type RepoSlug
+} from "nx/src/command-line/release/utils/github.js";
 import { getCommitsRelevantToProjects } from "nx/src/command-line/release/utils/shared.js";
 import type { ProjectConfiguration } from "nx/src/devkit-exports.js";
 import { major } from "semver";
-import type { ChangelogRenderer } from "nx/release/changelog-renderer/index.js";
 
 /**
  * The specific options available to the default implementation of the ChangelogRenderer that nx exports
@@ -41,8 +44,8 @@ export const changelogRenderer: ChangelogRenderer = async ({
   changelogRenderOptions,
   repoSlug
 }): Promise<string> => {
-  const markdownLines: string[] = [];
-  const breakingChanges = [];
+  const markdownLines = [] as string[];
+  const breakingChanges = [] as string[];
 
   const commitTypes = {
     feat: { title: "Features" },
@@ -64,7 +67,9 @@ export const changelogRenderer: ChangelogRenderer = async ({
   for (const commit of commits) {
     if (commit.type === "revert") {
       for (const revertedHash of commit.revertedHashes) {
-        const revertedCommit = commits.find((c) => revertedHash.startsWith(c.shortHash));
+        const revertedCommit = commits.find(c =>
+          revertedHash.startsWith(c.shortHash)
+        );
         if (revertedCommit) {
           commits.splice(commits.indexOf(revertedCommit), 1);
           commits.splice(commits.indexOf(commit), 1);
@@ -98,7 +103,7 @@ export const changelogRenderer: ChangelogRenderer = async ({
         releaseVersion,
         changelogRenderOptions,
         project,
-        project ? projectGraph.nodes[project].data : null
+        project ? projectGraph.nodes[project]?.data : null
       ),
       ""
     );
@@ -109,7 +114,7 @@ export const changelogRenderer: ChangelogRenderer = async ({
         continue;
       }
 
-      markdownLines.push("", `### ${commitTypes[type].title}`, "");
+      markdownLines.push("", `### ${commitTypes[type]?.title}`, "");
 
       /**
        * In order to make the final changelog most readable, we organize commits as follows:
@@ -117,8 +122,13 @@ export const changelogRenderer: ChangelogRenderer = async ({
        * - Within a particular scope grouping, we list commits in chronological order
        */
       const commitsInChronologicalOrder = group.reverse();
-      const commitsGroupedByScope = groupBy(commitsInChronologicalOrder, "scope");
-      const scopesSortedAlphabetically = Object.keys(commitsGroupedByScope).sort();
+      const commitsGroupedByScope = groupBy(
+        commitsInChronologicalOrder,
+        "scope"
+      );
+      const scopesSortedAlphabetically = Object.keys(
+        commitsGroupedByScope
+      ).sort();
 
       for (const scope of scopesSortedAlphabetically) {
         const commits = commitsGroupedByScope[scope];
@@ -126,7 +136,9 @@ export const changelogRenderer: ChangelogRenderer = async ({
           const line = formatCommit(commit, changelogRenderOptions, repoSlug);
           markdownLines.push(line);
           if (commit.isBreaking) {
-            const breakingChangeExplanation = extractBreakingChangeExplanation(commit.body);
+            const breakingChangeExplanation = extractBreakingChangeExplanation(
+              commit.body
+            );
             breakingChanges.push(
               breakingChangeExplanation
                 ? `- ${
@@ -140,7 +152,11 @@ export const changelogRenderer: ChangelogRenderer = async ({
     }
   } else {
     // project level changelog
-    const relevantCommits = await getCommitsRelevantToProjects(projectGraph, commits, [project]);
+    const relevantCommits = await getCommitsRelevantToProjects(
+      projectGraph,
+      commits,
+      [project]
+    );
 
     // Generating for a named project, but that project has no relevant changes in the current set of commits, exit early
     if (relevantCommits.length === 0) {
@@ -151,7 +167,7 @@ export const changelogRenderer: ChangelogRenderer = async ({
             releaseVersion,
             changelogRenderOptions,
             project,
-            projectGraph.nodes[project].data
+            projectGraph.nodes[project]?.data
           )}\n${entryWhenNoChanges}`,
           ""
         );
@@ -165,7 +181,7 @@ export const changelogRenderer: ChangelogRenderer = async ({
         releaseVersion,
         changelogRenderOptions,
         project,
-        projectGraph.nodes[project].data
+        projectGraph.nodes[project]?.data
       ),
       ""
     );
@@ -188,7 +204,9 @@ export const changelogRenderer: ChangelogRenderer = async ({
         const line = formatCommit(commit, changelogRenderOptions, repoSlug);
         markdownLines.push(`${line}\n`);
         if (commit.isBreaking) {
-          const breakingChangeExplanation = extractBreakingChangeExplanation(commit.body);
+          const breakingChangeExplanation = extractBreakingChangeExplanation(
+            commit.body
+          );
           breakingChanges.push(
             breakingChangeExplanation
               ? `- ${
@@ -214,7 +232,7 @@ export const changelogRenderer: ChangelogRenderer = async ({
 
       const name = commit.author.name
         .split(" ")
-        .map((p) => p.trim())
+        .map(p => p.trim())
         .join(" ");
       if (!name || name.includes("[bot]")) {
         continue;
@@ -231,14 +249,16 @@ export const changelogRenderer: ChangelogRenderer = async ({
     // Try to map authors to github usernames
     if (repoSlug) {
       await Promise.all(
-        [..._authors.keys()].map(async (authorName) => {
+        [..._authors.keys()].map(async authorName => {
           const meta = _authors.get(authorName);
           if (meta) {
             for (const email of meta.email) {
               // For these pseudo-anonymized emails we can just extract the Github username from before the @
               // It could either be in the format: username@ or github_id+username@
               if (email.endsWith("@users.noreply.github.com")) {
-                const match = email.match(/^(\d+\+)?([^@]+)@users\.noreply\.github\.com$/);
+                const match = email.match(
+                  /^(\d+\+)?([^@]+)@users\.noreply\.github\.com$/
+                );
                 if (match?.[2]) {
                   meta.github = match[2];
                   break;
@@ -247,9 +267,10 @@ export const changelogRenderer: ChangelogRenderer = async ({
 
               // Look up any other emails against the ungh.cc API
               const { data } = await axios
-                .get<any, { data?: { user?: { username: string } } }>(
-                  `https://ungh.cc/users/find/${email}`
-                )
+                .get<
+                  any,
+                  { data?: { user?: { username: string } } }
+                >(`https://ungh.cc/users/find/${email}`)
                 .catch(() => ({ data: { user: null } }));
               if (data?.user) {
                 meta.github = data.user.username;
@@ -261,7 +282,7 @@ export const changelogRenderer: ChangelogRenderer = async ({
       );
     }
 
-    const authors = [..._authors.entries()].map((e) => ({
+    const authors = [..._authors.entries()].map(e => ({
       name: e[0],
       ...e[1]
     }));
@@ -274,7 +295,7 @@ export const changelogRenderer: ChangelogRenderer = async ({
         ...authors
           // Sort the contributors by name
           .sort((a, b) => a.name.localeCompare(b.name))
-          .map((i) => {
+          .map(i => {
             // Tag the author's Github username if we were able to resolve it so that Github adds them as a contributor
             const github = i.github ? ` @${i.github}` : "";
             return `- ${i.name}${github}`;

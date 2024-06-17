@@ -31,6 +31,22 @@
     "storm-prepare": "./bin/prepare.js",
     "storm-version-warning": "./bin/version-warning.js"
   },
+  "module": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./*": "./src/*.js",
+    "./bin/*": "./bin/*.js",
+    "./readme/*": "./readme/*",
+    "./lint-staged/*": "./lint-staged/*",
+    "./lefthook/*": "./lefthook/*",
+    "./lint-staged": "./lint-staged/config.cjs",
+    "./lefthook": "./lefthook/lefthook.yml",
+    "./changelog-renderer": "./src/release/changelog-renderer.js",
+    "./release": "./src/release/index.js",
+    "./cli": "./src/cli/index.js",
+    "./commit": "./src/commit/index.js",
+    "./package.json": "./package.json"
+  },
   "keywords": [
     "storm",
     "storm-ops",
@@ -49,6 +65,7 @@
     "fs-extra": "11.2.0",
     "fuzzy": "0.1.3",
     "inquirer": "9.2.23",
+    "jsonc-parser": "3.2.1",
     "nx": "^19.1.0",
     "prettier": "3.3.2",
     "semver": "7.6.2",

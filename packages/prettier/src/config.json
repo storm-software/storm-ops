@@ -33,6 +33,12 @@
       }
     },
     {
+      "files": "**/*.aci",
+      "options": {
+        "parser": "prisma-parse"
+      }
+    },
+    {
       "files": "**/*.acid",
       "options": {
         "parser": "prisma-parse"
@@ -49,8 +55,7 @@
     "prettier-plugin-sh",
     "prettier-plugin-pkg",
     "@ianvs/prettier-plugin-sort-imports",
-    "prettier-plugin-prisma",
-    "prettier-plugin-tailwindcss"
+    "prettier-plugin-prisma"
   ],
   "importOrder": [
     "^react(-dom)?$",

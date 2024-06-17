@@ -187,16 +187,21 @@
       "dependsOn": ["^lint"]
     },
     "clean": {
-      "cache": false,
+      "cache": true,
       "executor": "nx:run-commands",
       "options": {
         "command": "pnpm exec rimraf dist/{projectRoot}"
       }
     },
-    "build": {
+    "build-base": {
       "cache": true,
       "inputs": ["default", "^production"],
       "dependsOn": ["^build"]
+    },
+    "build": {
+      "cache": true,
+      "inputs": ["default", "^production"],
+      "dependsOn": ["build-base", "^build"]
     },
     "docs": {
       "cache": true,
@@ -249,5 +254,7 @@
     }
   },
   "parallel": 3,
-  "defaultBase": "main"
+  "defaultBase": "main",
+  "useDaemonProcess": true,
+  "useInferencePlugins": true
 }

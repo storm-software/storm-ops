@@ -28,7 +28,7 @@ const compat = new FlatCompat({
     "CODEOWNERS",
     "dist/**",
     "coverage/**",
-    ".nx/cache/**",
+    ".nx/**",
     "**/src/generators/**/files/**/*"
   ]
 });

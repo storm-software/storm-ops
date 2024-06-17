@@ -11,6 +11,8 @@ pnpm-lock.yaml
 yarn.lock.yaml
 bun.lockb
 
+**/.nx/workspace-data/**
+**/.nx/cache/**
 **/.git/**
 **/.docusaurus/**
 **/dist/**
@@ -27,3 +29,4 @@ bun.lockb
 **/LICENSE
 **/LICENSE.md
 **/LICENSE.txt
+**/src/generators/*/files/**
