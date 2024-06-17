@@ -24,20 +24,6 @@ export const createNodes = [
     const targets: ProjectConfiguration["targets"] =
       readTargetsFromPackageJson(packageJson);
 
-    // if (!targets.clean) {
-    //   targets.clean = {
-    //     "cache": true,
-    //     "inputs": ["default", "^production"],
-    //     "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
-    //     "executor": "nx:run-commands",
-    //     "options": {
-    //       "command": "pnpm exec rimraf dist/{projectRoot}",
-    //       "color": true,
-    //       "cwd": "{workspaceRoot}"
-    //     }
-    //   };
-    // }
-
     if (!targets.lint) {
       targets.lint = {
         cache: true,
@@ -51,6 +37,20 @@ export const createNodes = [
           cache: true,
           errorOnUnmatchedPattern: false,
           printConfig: true
+        }
+      };
+    }
+
+    if (!targets.clean) {
+      targets.clean = {
+        "cache": true,
+        "inputs": ["default", "^production"],
+        "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "pnpm exec rimraf dist/{projectRoot}",
+          "color": true,
+          "cwd": "{workspaceRoot}"
         }
       };
     }

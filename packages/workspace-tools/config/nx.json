@@ -192,12 +192,7 @@
       "cache": true,
       "inputs": ["default", "^production"],
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm exec rimraf dist/{projectRoot}",
-        "color": true,
-        "cwd": "{workspaceRoot}"
-      }
+      "executor": "nx:run-commands"
     },
     "build-base": {
       "cache": true,

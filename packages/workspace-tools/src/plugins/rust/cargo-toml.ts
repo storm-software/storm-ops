@@ -50,10 +50,21 @@ export const createNodes: CreateNodes = [
               "target-dir": `dist/target/${cargoPackage.name}`
             }
           },
+          clean: {
+            "cache": true,
+            "inputs": ["default", "^production"],
+            "outputs": [`dist/target/${cargoPackage.name}`],
+            "executor": "nx:run-commands",
+            "options": {
+              "command": `pnpm exec rimraf dist/target/${cargoPackage.name}`,
+              "color": true,
+              "cwd": "{workspaceRoot}"
+            }
+          },
           build: {
             cache: true,
             inputs: ["default", "^production"],
-            dependsOn: ["lint", "^build"],
+            dependsOn: ["lint", "clean", "^build"],
             executor: "@monodon/rust:check",
             outputs: ["{options.target-dir}"],
             options: {
