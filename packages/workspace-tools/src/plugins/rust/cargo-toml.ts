@@ -1,17 +1,17 @@
-import {
-  type ProjectConfiguration,
-  type RawProjectGraphDependency,
-  workspaceRoot,
-  type CreateNodes,
-  type CreateDependencies
-} from "@nx/devkit";
+import { dirname } from "node:path";
 import {
   DependencyType,
   type ProjectGraphExternalNode
 } from "nx/src/config/project-graph";
-import { dirname } from "node:path";
-import type { Package } from "../../utils/toml";
+import {
+  workspaceRoot,
+  type CreateDependencies,
+  type CreateNodes,
+  type ProjectConfiguration,
+  type RawProjectGraphDependency
+} from "@nx/devkit";
 import { cargoMetadata, isExternal } from "../../utils/cargo";
+import type { Package } from "../../utils/toml";
 
 export const name = "storm-software/rust/cargo-toml";
 
@@ -63,7 +63,7 @@ export const createNodes: CreateNodes = [
           test: {
             cache: true,
             inputs: ["defaultTesting", "^production"],
-            dependsOn: ["test", "^build"],
+            dependsOn: ["build", "^test"],
             executor: "@monodon/rust:test",
             outputs: ["{options.target-dir}"],
             options: {
