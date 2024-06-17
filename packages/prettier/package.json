@@ -42,7 +42,7 @@
     "prettier-plugin-pkg": "0.18.1",
     "prettier-plugin-prisma": "5.0.0",
     "prettier-plugin-sh": "0.14.0",
-    "prettier-plugin-tailwindcss": "0.6.1"
+    "prettier-plugin-tailwindcss": "0.6.4"
   },
   "devDependencies": {
     "@types/prettier": "3.0.0"

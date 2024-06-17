@@ -50,7 +50,7 @@
     "fuzzy": "0.1.3",
     "inquirer": "9.2.23",
     "nx": "^19.1.0",
-    "prettier": "3.3.0",
+    "prettier": "3.3.2",
     "semver": "7.6.2",
     "tsconfig-paths": "4.2.0",
     "word-wrap": "1.2.5"
