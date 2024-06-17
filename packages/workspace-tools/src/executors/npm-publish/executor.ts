@@ -122,7 +122,7 @@ export default async function npmPublishExecutorFn(
         console.warn(
           `An error occurred while checking for existing dist-tags\n${err}\n\nNote: If this is the first time this package has been published to NPM, this can be ignored.`
         );
-        console.log("");
+        console.info("");
       }
 
       try {
@@ -155,7 +155,7 @@ export default async function npmPublishExecutorFn(
           console.warn(
             `An error occurred while adding dist-tags\n${err}\n\nNote: If this is the first time this package has been published to NPM, this can be ignored.`
           );
-          console.log("");
+          console.info("");
 
           const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
 
@@ -199,12 +199,12 @@ export default async function npmPublishExecutorFn(
       }
     } catch (err) {
       console.error("\n ********************** \n");
-      console.log("");
+      console.info("");
       console.error(
         "An error occured trying to run the npm dist-tag add command."
       );
       console.error(err);
-      console.log("");
+      console.info("");
 
       const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
       // If the error is that the package doesn't exist, then we can ignore it because we will be publishing it for the first time in the next step
@@ -254,10 +254,10 @@ export default async function npmPublishExecutorFn(
   } catch (err) {
     try {
       console.error("\n ********************** \n");
-      console.log("");
+      console.info("");
       console.error("An error occured running npm publish.");
       console.error("Please see below for more information:");
-      console.log("");
+      console.info("");
 
       const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
 
