@@ -1,3 +1,10 @@
+## 1.97.0 (2024-06-17)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Improve the shared configuration in `nx.json` presets ([9e11839d](https://github.com/storm-software/storm-ops/commit/9e11839d))
+
 ## 1.96.0 (2024-06-17)
 
 
