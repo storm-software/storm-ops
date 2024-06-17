@@ -76,7 +76,7 @@
     "@ltd/j-toml": "1.38.0",
     "@monodon/rust": "1.4.0",
     "@nx/devkit": "19.2.0",
-    "@nx/esbuild": "19.2.0",
+    "@nx/esbuild": "19.3.0",
     "@nx/eslint": "19.2.0",
     "@nx/eslint-plugin": "19.2.0",
     "@nx/jest": "19.2.0",
