@@ -1,3 +1,10 @@
+## 1.91.0 (2024-06-17)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Enhanced error logging in publish executor ([e422eecd](https://github.com/storm-software/storm-ops/commit/e422eecd))
+
 ## 1.90.1 (2024-06-17)
 
 
