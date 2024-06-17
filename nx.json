@@ -8,6 +8,7 @@
         "cacheableOperations": [
           "lint",
           "format",
+          "build-base",
           "build",
           "test",
           "e2e",
@@ -187,16 +188,21 @@
       "dependsOn": ["^lint"]
     },
     "clean": {
-      "cache": false,
+      "cache": true,
       "executor": "nx:run-commands",
       "options": {
         "command": "pnpm exec rimraf dist/{projectRoot}"
       }
     },
-    "build": {
+    "build-base": {
       "cache": true,
       "inputs": ["default", "^production"],
       "dependsOn": ["^build"]
+    },
+    "build": {
+      "cache": true,
+      "inputs": ["default", "^production"],
+      "dependsOn": ["build-base", "^build"]
     },
     "docs": {
       "cache": true,
@@ -220,16 +226,6 @@
       "cache": false,
       "inputs": ["default", "^production"],
       "dependsOn": ["build", "^nx-release-publish"]
-    },
-    "@nx/esbuild:esbuild": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    },
-    "@nx/js:tsc": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
     }
   },
   "release": {
@@ -242,7 +238,6 @@
       "projectChangelogs": {
         "createRelease": "github",
         "entryWhenNoChanges": false,
-        "renderer": "@storm-software/git-tools/changelog-renderer",
         "renderOptions": {
           "authors": false,
           "commitReferences": true,
