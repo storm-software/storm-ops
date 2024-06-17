@@ -1,3 +1,10 @@
+## 1.95.0 (2024-06-17)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Improved the task dependency list for Cargo projects ([9fd64900](https://github.com/storm-software/storm-ops/commit/9fd64900))
+
 ## 1.94.0 (2024-06-17)
 
 
