@@ -1,23 +1,6 @@
 {
   "$schema": "https://cdn.jsdelivr.net/npm/nx/schemas/nx-schema.json",
   "extends": "./packages/workspace-tools/config/nx.json",
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx/tasks-runners/default",
-      "options": {
-        "cacheableOperations": [
-          "lint",
-          "format",
-          "build-base",
-          "build",
-          "test",
-          "e2e",
-          "docs"
-        ],
-        "parallel": 3
-      }
-    }
-  },
   "namedInputs": {
     "globalTesting": [
       "{workspaceRoot}/jest.config.ts",
@@ -180,54 +163,6 @@
       "!{projectRoot}/.eslintrc.json"
     ]
   },
-  "targetDefaults": {
-    "lint": {
-      "cache": true,
-      "inputs": ["default"],
-      "outputs": ["{options.outputPath}"],
-      "dependsOn": ["^lint"]
-    },
-    "clean": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm exec rimraf dist/{projectRoot}"
-      }
-    },
-    "build-base": {
-      "cache": true,
-      "inputs": ["default", "^production"],
-      "dependsOn": ["^build"]
-    },
-    "build": {
-      "cache": true,
-      "inputs": ["default", "^production"],
-      "dependsOn": ["build-base", "^build"]
-    },
-    "docs": {
-      "cache": true,
-      "inputs": ["defaultDocs", "^production"],
-      "outputs": ["{options.outputPath}"],
-      "dependsOn": ["build", "^docs"]
-    },
-    "test": {
-      "cache": true,
-      "inputs": ["defaultTesting", "^production"],
-      "outputs": ["{options.outputPath}"],
-      "dependsOn": ["build", "^test"]
-    },
-    "e2e": {
-      "cache": true,
-      "inputs": ["defaultTesting", "^production"],
-      "outputs": ["{options.outputPath}"],
-      "dependsOn": ["test", "^e2e"]
-    },
-    "nx-release-publish": {
-      "cache": false,
-      "inputs": ["default", "^production"],
-      "dependsOn": ["build", "^nx-release-publish"]
-    }
-  },
   "release": {
     "projects": ["packages/*", "crates/*"],
     "projectsRelationship": "independent",
@@ -254,13 +189,9 @@
       }
     }
   },
-  "parallel": 3,
-  "defaultBase": "main",
   "plugins": [
     "./dist/plugins/rust/index.js",
     "./dist/plugins/typescript/index.js",
     "./dist/plugins/cloudflare/index.js"
-  ],
-  "useDaemonProcess": true,
-  "useInferencePlugins": true
+  ]
 }
