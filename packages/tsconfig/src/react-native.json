@@ -1,4 +1,5 @@
 {
+  "extends": "./base.json",
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Storm Software - React Native TypeScript Config",
   "_version": "3.0.2",
@@ -33,6 +34,13 @@
     "esModuleInterop": true,
     "skipLibCheck": true
   },
-  "include": ["**/*.ts", "**/*.js", "**/*.tsx", "**/*.jsx", "**/*.d.ts", "**/*.json"],
+  "include": [
+    "**/*.ts",
+    "**/*.js",
+    "**/*.tsx",
+    "**/*.jsx",
+    "**/*.d.ts",
+    "**/*.json"
+  ],
   "exclude": ["**/node_modules"]
 }
