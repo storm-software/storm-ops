@@ -1,3 +1,10 @@
+## 2.16.1 (2024-06-17)
+
+
+### 🩹 Fixes
+
+- **deps:** update patch prod dependencies ([ec613e8a](https://github.com/storm-software/storm-ops/commit/ec613e8a))
+
 ## 2.16.0 (2024-06-09)
 
 

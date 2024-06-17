@@ -1,3 +1,10 @@
+## 1.90.1 (2024-06-17)
+
+
+### 🩹 Fixes
+
+- **deps:** update patch prod dependencies ([ec613e8a](https://github.com/storm-software/storm-ops/commit/ec613e8a))
+
 ## 1.90.0 (2024-06-16)
 
 

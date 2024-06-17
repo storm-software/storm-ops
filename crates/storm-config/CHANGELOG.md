@@ -1,3 +1,15 @@
+## 0.3.6 (2024-06-17)
+
+
+### 🩹 Fixes
+
+- **deps:** update patch prod dependencies ([ec613e8a](https://github.com/storm-software/storm-ops/commit/ec613e8a))
+
+
+### 🧱 Updated Dependencies
+
+- Updated storm-workspace to null
+
 ## 0.3.5 (2024-05-27)
 
 
