@@ -1,3 +1,10 @@
+## 1.92.0 (2024-06-17)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Increase buffer size of npm commands in publish executor ([e37a9145](https://github.com/storm-software/storm-ops/commit/e37a9145))
+
 ## 1.91.0 (2024-06-17)
 
 
