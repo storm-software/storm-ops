@@ -1,4 +1,4 @@
-import { execSync } from "node:child_process";
+import { exec, execSync } from "node:child_process";
 import {
   joinPathFragments,
   readJsonFile,
@@ -53,7 +53,7 @@ export default async function npmPublishExecutorFn(
     console.warn(
       `Skipped ${packageTxt}, because it has \`"private": true\` in ${packageJsonPath}`
     );
-    return new Promise(resolve => resolve({ success: true }));
+    return { success: true };
   }
 
   const npmPublishCommandSegments = ["npm publish --json"];
@@ -99,13 +99,13 @@ export default async function npmPublishExecutorFn(
     const currentVersion = projectPackageJson.version;
     try {
       try {
-        const result = execSync(npmViewCommandSegments.join(" "), {
+        const result = await exec(npmViewCommandSegments.join(" "), {
+          maxBuffer: LARGE_BUFFER,
           env: {
             ...process.env,
             FORCE_COLOR: "true"
           },
-          cwd: packageRoot,
-          stdio: ["ignore", "pipe", "pipe"]
+          cwd: packageRoot
         });
 
         const resultJson = JSON.parse(result.toString());
@@ -114,9 +114,11 @@ export default async function npmPublishExecutorFn(
           console.warn(
             `Skipped ${packageTxt} because v${currentVersion} already exists in ${registry} with tag "${tag}"`
           );
-          return new Promise(resolve => resolve({ success: true }));
+
+          return { success: true };
         }
       } catch (err) {
+        console.warn("\n ********************** \n");
         console.warn(
           `An error occurred while checking for existing dist-tags\n${err}\n\nNote: If this is the first time this package has been published to NPM, this can be ignored.`
         );
@@ -125,15 +127,15 @@ export default async function npmPublishExecutorFn(
 
       try {
         if (!isDryRun) {
-          execSync(
+          await exec(
             `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${registry}`,
             {
+              maxBuffer: LARGE_BUFFER,
               env: {
                 ...process.env,
                 FORCE_COLOR: "true"
               },
-              cwd: packageRoot,
-              stdio: ["ignore", "pipe", "pipe"]
+              cwd: packageRoot
             }
           );
 
@@ -146,14 +148,10 @@ export default async function npmPublishExecutorFn(
           );
         }
 
-        return new Promise(resolve => resolve({ success: true }));
+        return { success: true };
       } catch (err) {
-        console.log("");
-        console.error("An error occured adding dist-tags.");
-        console.error(err);
-        console.log("");
-
         try {
+          console.warn("\n ********************** \n");
           console.warn(
             `An error occurred while adding dist-tags\n${err}\n\nNote: If this is the first time this package has been published to NPM, this can be ignored.`
           );
@@ -189,17 +187,18 @@ export default async function npmPublishExecutorFn(
               );
             }
 
-            return new Promise(resolve => resolve({ success: false }));
+            return { success: false };
           }
         } catch (err) {
           console.error(
             `Something unexpected went wrong when processing the npm dist-tag add output\n${err}`
           );
 
-          return new Promise(resolve => resolve({ success: false }));
+          return { success: false };
         }
       }
     } catch (err) {
+      console.error("\n ********************** \n");
       console.log("");
       console.error(
         "An error occured trying to run the npm dist-tag add command."
@@ -223,20 +222,23 @@ export default async function npmPublishExecutorFn(
           `Something unexpected went wrong when checking for existing dist-tags.\n${err}`
         );
 
-        return new Promise(resolve => resolve({ success: false }));
+        return { success: false };
       }
     }
   }
 
   try {
-    const output = execSync(npmPublishCommandSegments.join(" "), {
+    console.info(
+      `Running publish command ${npmPublishCommandSegments.join(" ")}`
+    );
+
+    const output = await exec(npmPublishCommandSegments.join(" "), {
       maxBuffer: LARGE_BUFFER,
       env: {
         ...process.env,
         FORCE_COLOR: "true"
       },
-      cwd: packageRoot,
-      stdio: ["ignore", "pipe", "pipe"]
+      cwd: packageRoot
     });
     console.info(output.toString());
 
@@ -248,17 +250,17 @@ export default async function npmPublishExecutorFn(
       console.info(`Published to ${registry} with tag "${tag}"`);
     }
 
-    return new Promise(resolve => resolve({ success: true }));
+    return { success: true };
   } catch (err) {
-    console.log("");
-    console.error("An error occured running npm publish.");
-    console.error(err);
-    console.log("");
-
     try {
+      console.error("\n ********************** \n");
+      console.log("");
+      console.error("An error occured running npm publish.");
+      console.error("Please see below for more information:");
+      console.log("");
+
       const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
 
-      console.error("npm publish error please see below for more information:");
       if (stdoutData.error.summary) {
         console.error(stdoutData.error.summary);
         console.error(stdoutData.error.summary);
@@ -274,13 +276,15 @@ export default async function npmPublishExecutorFn(
         );
       }
 
-      return new Promise(resolve => resolve({ success: false }));
+      console.error("\n ********************** \n");
+      return { success: false };
     } catch (err) {
       console.error(
         `Something unexpected went wrong when processing the npm publish output\n${err}`
       );
 
-      return new Promise(resolve => resolve({ success: false }));
+      console.error("\n ********************** \n");
+      return { success: false };
     }
   }
 }
