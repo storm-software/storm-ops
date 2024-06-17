@@ -1,3 +1,10 @@
+## 1.93.0 (2024-06-17)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Upgrade base package versions ([506071e8](https://github.com/storm-software/storm-ops/commit/506071e8))
+
 ## 1.92.0 (2024-06-17)
 
 
