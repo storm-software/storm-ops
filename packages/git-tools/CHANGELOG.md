@@ -1,3 +1,10 @@
+## 2.18.0 (2024-06-17)
+
+
+### 🚀 Features
+
+- **git-tools:** Use repository scripts in base `lefthook` configuration ([771a76d9](https://github.com/storm-software/storm-ops/commit/771a76d9))
+
 ## 2.17.0 (2024-06-17)
 
 
