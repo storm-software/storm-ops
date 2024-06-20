@@ -1,3 +1,10 @@
+## 2.19.0 (2024-06-20)
+
+
+### 🚀 Features
+
+- **git-tools:** Updated the shared `lefthook` configuration to use npm scripts ([68cfb767](https://github.com/storm-software/storm-ops/commit/68cfb767))
+
 ## 2.18.0 (2024-06-17)
 
 
