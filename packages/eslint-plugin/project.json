@@ -43,6 +43,5 @@
     "nx-release-publish": {
       "executor": "@storm-software/workspace-tools:npm-publish"
     }
-  },
-  "tags": []
+  }
 }

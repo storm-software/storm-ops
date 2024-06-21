@@ -1,167 +1,51 @@
 {
   "$schema": "https://cdn.jsdelivr.net/npm/nx/schemas/nx-schema.json",
   "extends": "./packages/workspace-tools/config/nx.json",
-  "namedInputs": {
-    "globalTesting": [
-      "{workspaceRoot}/jest.config.ts",
-      "{workspaceRoot}/jest.preset.js",
-      "{workspaceRoot}/benches/**/*",
-      "{workspaceRoot}/e2e/**/*",
-      "{workspaceRoot}/tests/**/*",
-      "{workspaceRoot}/testing/**/*",
-      "{workspaceRoot}/coverage/**/*"
-    ],
-    "globalShared": [
-      "{workspaceRoot}/assets/**/*",
-      "{workspaceRoot}/LICENSE",
-      "{workspaceRoot}/.gitattributes",
-      "{workspaceRoot}/.gitignore",
-      "{workspaceRoot}/nx.json",
-      "{workspaceRoot}/.nxignore",
-      "{workspaceRoot}/storm.json",
-      "{workspaceRoot}/storm.*.json",
-      "{workspaceRoot}/.storm/config.json",
-      "{workspaceRoot}/.storm/config.*.json",
-      "{workspaceRoot}/storm.yaml",
-      "{workspaceRoot}/storm.*.yaml",
-      "{workspaceRoot}/.storm/config.yaml",
-      "{workspaceRoot}/.storm/config.*.yaml",
-      "{workspaceRoot}/storm.toml",
-      "{workspaceRoot}/storm.*.toml",
-      "{workspaceRoot}/.storm/config.toml",
-      "{workspaceRoot}/.storm/config.*.toml",
-      "{workspaceRoot}/storm.config.js",
-      "{workspaceRoot}/.env",
-      "{workspaceRoot}/.env.local"
-    ],
-    "globalRust": [
-      "globalShared",
-      "{workspaceRoot}/Cargo.toml",
-      "{workspaceRoot}/Cargo.lock",
-      "{workspaceRoot}/.cargo/config.toml",
-      "{workspaceRoot}/rust-toolchain",
-      "{workspaceRoot}/rustfmt.toml",
-      "{workspaceRoot}/deny.toml"
-    ],
-    "globalTypeScript": [
-      "globalShared",
-      "{workspaceRoot}/tsconfig.*.json",
-      "{workspaceRoot}/.npmrc",
-      "{workspaceRoot}/.npmignore",
-      "{workspaceRoot}/package.json",
-      "{workspaceRoot}/pnpm-workspace.yaml",
-      "{workspaceRoot}/pnpm-lock.yaml",
-      "{workspaceRoot}/package-lock.yaml",
-      "{workspaceRoot}/yarn-lock.yaml",
-      "{workspaceRoot}/bun.lockb",
-      "{workspaceRoot}/biome.toml",
-      "{workspaceRoot}/biome.json",
-      "{workspaceRoot}/lefthook.yaml",
-      "{workspaceRoot}/.markdownlint.json",
-      "{workspaceRoot}/eslint.config.js",
-      "{workspaceRoot}/.eslintrc.json",
-      "{workspaceRoot}/.eslintrc.json",
-      "{workspaceRoot}/.eslintrc.cjs",
-      "{workspaceRoot}/.eslintignore",
-      "{workspaceRoot}/.prettierrc",
-      "{workspaceRoot}/.prettierignore"
-    ],
-    "globalDocs": [
-      "globalRust",
-      "globalTypeScript",
-      "{workspaceRoot}/api-extractor.json",
-      "{workspaceRoot}/tsdoc.json",
-      "{workspaceRoot}/typedoc.json",
-      "{workspaceRoot}/contentlayer.config.ts",
-      "{workspaceRoot}/*.md",
-      "{workspaceRoot}/*.mdx",
-      "{workspaceRoot}/docs/**/*",
-      "{workspaceRoot}/.storybook/**/*"
-    ],
-    "global": ["globalRust", "globalTypeScript", "globalTesting", "globalDocs"],
-    "defaultTesting": [
-      "globalTesting",
-      "{projectRoot}/jest.config.ts",
-      "{projectRoot}/benches/**/*",
-      "{projectRoot}/e2e/**/*",
-      "{projectRoot}/tests/**/*",
-      "{projectRoot}/testing/**/*",
-      "{projectRoot}/tsconfig.spec.json",
-      "{projectRoot}/src/test-setup.[jt]s",
-      "{projectRoot}/test-setup.[jt]s",
-      "{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "{projectRoot}/tsconfig.spec.json"
-    ],
-    "defaultShared": [
-      "globalShared",
-      "{projectRoot}/project.json",
-      "{projectRoot}/README.md",
-      "{projectRoot}/CHANGELOG.md",
-      "{projectRoot}/.env",
-      "{projectRoot}/.env.local"
-    ],
-    "defaultRust": [
-      "globalRust",
-      "defaultShared",
-      "{projectRoot}/**/*.rs",
-      "{projectRoot}/Cargo.toml",
-      "{projectRoot}/.cargo/config.toml",
-      {
-        "runtime": "node -p '`${process.platform}_${process.arch}`'"
+  "targetDefaults": {
+    "lint-ls": {
+      "cache": true,
+      "outputs": ["{workspaceRoot}/{projectRoot}"],
+      "dependsOn": ["^lint-ls"],
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm exec ls-lint --config=\"./packages/linting-tools/src/ls-lint/ls-lint.yml\" ",
+        "color": true
       }
-    ],
-    "defaultTypeScript": [
-      "globalTypeScript",
-      "defaultShared",
-      "{projectRoot}/package.json",
-      "{projectRoot}/eslint.config.js",
-      "{projectRoot}/.eslintrc.json",
-      "{projectRoot}/.eslintrc.cjs",
-      "{projectRoot}/.eslintignore",
-      "{projectRoot}/tsconfig.json",
-      "{projectRoot}/tsconfig.*.json",
-      "{projectRoot}/**/*.ts",
-      "{projectRoot}/**/*.tsx",
-      "{projectRoot}/**/*.js",
-      "{projectRoot}/**/*.jsx",
-      "!{projectRoot}/tsconfig.spec.json",
-      "!{projectRoot}/tsconfig.storybook.json",
-      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)"
-    ],
-    "defaultDocs": [
-      "globalDocs",
-      "defaultRust",
-      "defaultTypeScript",
-      "{projectRoot}/api-extractor.json",
-      "{projectRoot}/tsdoc.json",
-      "{projectRoot}/typedoc.json",
-      "{projectRoot}/contentlayer.config.ts",
-      "{projectRoot}/**/*.md",
-      "{projectRoot}/**/*.mdx",
-      "{projectRoot}/docs/**/*",
-      "{projectRoot}/.storybook/**/*",
-      "{projectRoot}/tsconfig.storybook.json",
-      "{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)"
-    ],
-    "default": [
-      "global",
-      "defaultRust",
-      "defaultTypeScript",
-      "defaultTesting",
-      "defaultDocs"
-    ],
-    "production": [
-      "defaultRust",
-      "defaultTypeScript",
-      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/tsconfig.spec.json",
-      "!{projectRoot}/tsconfig.storybook.json",
-      "!{projectRoot}/.storybook/**/*",
-      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
-      "!{projectRoot}/jest.config.[jt]s",
-      "!{projectRoot}/.eslintrc.json"
-    ]
+    },
+    "format-toml": {
+      "cache": true,
+      "inputs": ["config_linting", "{projectRoot}/**/*.toml"],
+      "outputs": ["{workspaceRoot}/{projectRoot}/**/*.toml"],
+      "dependsOn": ["^format-toml"],
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm exec taplo format --colors=\"always\" --config=\"./packages/linting-tools/src/taplo/.taplo.toml\" --cache-path=\"tmp/taplo/{projectRoot}\"",
+        "color": true
+      }
+    },
+    "format-readme": {
+      "cache": true,
+      "inputs": [
+        "config_linting",
+        "{projectRoot}/{README.md,package.json,Cargo.toml,executors.json,generators.json}"
+      ],
+      "outputs": ["{workspaceRoot}/{projectRoot}/README.md"],
+      "dependsOn": ["^format-readme"],
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node ./dist/packages/git-tools/bin/git.js readme-gen --templates=\"./packages/git-tools/src/readme/templates\"",
+        "color": true
+      }
+    },
+    "format-prettier": {
+      "cache": true,
+      "inputs": ["config_linting", "typescript", "^production"],
+      "dependsOn": ["^format-prettier"],
+      "options": {
+        "command": "pnpm exec prettier \"{projectRoot}/**/*\" --write --ignore-unknown --no-error-on-unmatched-pattern --config=\"packages/prettier/src/config.json\" --ignore-path=\"packages/prettier/src/.prettierignore\" --cache --cache-location=\"tmp/prettier/{projectRoot}\" ",
+        "color": true
+      }
+    }
   },
   "release": {
     "projects": ["packages/*", "crates/*"],

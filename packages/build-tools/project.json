@@ -4,19 +4,9 @@
   "sourceRoot": "packages/build-tools/src",
   "projectType": "library",
   "targets": {
-    "clean": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": ["default", "^production"],
-      "options": {
-        "command": "pnpm rimraf dist/packages/build-tools"
-      }
-    },
-    "build-lib": {
+    "build-base": {
       "cache": true,
       "executor": "@nx/esbuild:esbuild",
-      "inputs": ["default", "^production"],
-      "dependsOn": ["clean", "^build"],
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/build-tools",
@@ -42,7 +32,9 @@
             ".js": ".js"
           },
           "inject": ["packages/build-tools/assets/cjs_shims.js"],
-          "define": { "import.meta.url": "importMetaUrl" }
+          "define": {
+            "import.meta.url": "importMetaUrl"
+          }
         },
         "assets": [
           {
@@ -71,8 +63,7 @@
     "build": {
       "cache": true,
       "executor": "@nx/esbuild:esbuild",
-      "inputs": ["default", "^production"],
-      "dependsOn": ["build-lib", "^build"],
+      "dependsOn": ["build-base", "^build"],
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/build-tools/bin",
@@ -98,6 +89,5 @@
     "nx-release-publish": {
       "executor": "@storm-software/workspace-tools:npm-publish"
     }
-  },
-  "tags": []
+  }
 }

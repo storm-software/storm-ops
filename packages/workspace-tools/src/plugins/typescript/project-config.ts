@@ -24,13 +24,26 @@ export const createNodes = [
     const targets: ProjectConfiguration["targets"] =
       readTargetsFromPackageJson(packageJson);
 
+    if (!targets["lint-ls"]) {
+      targets["lint-ls"] = {
+        cache: true,
+        inputs: ["config_linting", "typescript", "^production"],
+        dependsOn: ["^lint-ls"],
+        executor: "nx:run-commands",
+        options: {
+          command:
+            'pnpm exec ls-lint --config="@storm-software/linting-tools/ls-lint/ls-lint.yml" ',
+          color: true
+        }
+      };
+    }
+
     if (!targets.lint) {
       targets.lint = {
         cache: true,
-        inputs: ["default"],
-        dependsOn: ["^lint"],
+        inputs: ["config_linting", "typescript", "^production"],
+        dependsOn: ["lint-ls", "^lint"],
         executor: "@nx/eslint:lint",
-        outputs: ["{options.outputFile}"],
         options: {
           format: "stylish",
           fix: true,
@@ -41,16 +54,56 @@ export const createNodes = [
       };
     }
 
+    if (!targets["format-readme"]) {
+      targets["format-readme"] = {
+        cache: true,
+        dependsOn: ["^format-readme"]
+      };
+    }
+
+    if (!targets["format-toml"]) {
+      targets["format-toml"] = {
+        cache: true,
+        dependsOn: ["^format-toml"]
+      };
+    }
+
+    if (!targets["format-prettier"]) {
+      targets["format-prettier"] = {
+        cache: true,
+        inputs: ["config_linting", "typescript", "^production"],
+        dependsOn: ["^format-prettier"]
+      };
+    }
+
+    if (!targets.format) {
+      targets.format = {
+        cache: true,
+        inputs: ["config_linting", "typescript", "^production"],
+        dependsOn: [
+          "format-readme",
+          "format-toml",
+          "format-prettier",
+          "^format"
+        ],
+        executor: "nx:run-commands",
+        options: {
+          command: "echo 'Formatting the project files in \"{projectRoot}\"' ",
+          color: true
+        }
+      };
+    }
+
     if (!targets.clean) {
       targets.clean = {
-        "cache": true,
-        "inputs": ["default", "^production"],
-        "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
-        "executor": "nx:run-commands",
-        "options": {
-          "command": "pnpm exec rimraf dist/{projectRoot}",
-          "color": true,
-          "cwd": "{workspaceRoot}"
+        cache: true,
+        executor: "nx:run-commands",
+        inputs: ["typescript", "^production"],
+        outputs: ["{workspaceRoot}/dist/{projectRoot}"],
+        options: {
+          command: "pnpm exec rimraf dist/{projectRoot}",
+          color: true,
+          cwd: "{workspaceRoot}"
         }
       };
     }
@@ -58,9 +111,13 @@ export const createNodes = [
     if (!targets.test) {
       targets.test = {
         cache: true,
-        inputs: ["default", "^production"],
-        dependsOn: ["build", "^test"],
         executor: "@nx/jest:jest",
+        inputs: [
+          "config_testing",
+          "source_testing",
+          "typescript",
+          "^production"
+        ],
         outputs: ["{workspaceRoot}/coverage/{projectRoot}"],
         defaultConfiguration: "local",
         options: {
@@ -85,8 +142,7 @@ export const createNodes = [
     if (!isPrivate) {
       targets["nx-release-publish"] = {
         cache: false,
-        inputs: ["default", "^production"],
-        dependsOn: ["build", "^nx-release-publish"],
+        inputs: ["typescript", "^production"],
         executor: "@storm-software/workspace-tools:npm-publish",
         options: {}
       };
@@ -96,7 +152,7 @@ export const createNodes = [
       ? {
           projects: {
             [project.name]: {
-              tags: ["lang:typescript"],
+              tags: ["language:typescript"],
               ...project,
               targets,
               release: {

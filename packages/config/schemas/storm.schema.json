@@ -4,6 +4,11 @@
     "StormConfiguration": {
       "type": "object",
       "properties": {
+        "$schema": {
+          "type": "string",
+          "default": "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm.schema.json",
+          "description": "The URL to the JSON schema file that describes the Storm configuration file"
+        },
         "extends": {
           "type": "string",
           "description": "The path to a base JSON file to use as a configuration preset file"
@@ -174,6 +179,7 @@
             }
           },
           "additionalProperties": false,
+          "default": {},
           "description": "A list of remote registry URLs used by Storm Software"
         },
         "configFile": {
@@ -388,7 +394,7 @@
           "description": "Configuration of each used extension"
         }
       },
-      "required": ["registry", "colors"],
+      "required": ["colors"],
       "additionalProperties": false,
       "description": "Storm Workspace config values used during various dev-ops processes. This type is a combination of the StormPackageConfig and StormProject types. It represents the config of the entire monorepo."
     }

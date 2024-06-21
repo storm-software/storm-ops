@@ -26,19 +26,17 @@ pre-commit:
     prepare:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/{lefthook.yml,biome.json}"
-      run: "pnpm lefthook install"
-    prebuild:
-      glob: "**/*"
-      run: "pnpm build-all"
-      stage_fixed: true
+      run: "pnpm lefthook install && git update-index"
     schema-gen:
       glob: "packages/config/src/schema.ts"
-      run: 'pnpm nx generate @storm-software/workspace-tools:config-schema --outputFile="./packages/config/schemas/storm.schema.json"'
-      stage_fixed: true
+      run: 'pnpm nx generate @storm-software/workspace-tools:config-schema --outputFile="./packages/config/schemas/storm.schema.json" && git update-index'
     validate:
       glob: "**/*"
-      run: "node ./dist/packages/git-tools/bin/pre-commit.js {staged_files}"
-      stage_fixed: true
+      run: "node ./dist/packages/git-tools/bin/pre-commit.js {staged_files} && git update-index"
+    build:
+      glob: "**/*"
+      run: "pnpm build-all"
+
     # lint:
     #   glob: "**/*.{js,ts,rs,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
     #   run: "pnpm lint"
@@ -47,18 +45,22 @@ pre-commit:
     #   files: "git diff --name-only HEAD @{push}"
     #   glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
     #   run: "pnpm exec prettier {staged_files} --check --ignore-unknown --no-error-on-unmatched-pattern --cache && git update-index"
-    readme:
-      files: "git diff --name-only HEAD @{push}"
-      glob: "**/{README.md,package.json,executors.json,generators.json}"
-      run: "pnpm format-readme && git update-index"
-    format:
-      files: "git diff --name-only HEAD @{push}"
-      glob: "**/*"
-      run: "pnpm exec prettier {staged_files} --write --ignore-unknown --no-error-on-unmatched-pattern --cache && git update-index"
-    postbuild:
-      glob: "**/*"
-      run: "pnpm build-all"
-      stage_fixed: true
+    # toml:
+    #   files: "git diff --name-only HEAD @{push}"
+    #   glob: "**/*.{toml}"
+    #   run: "pnpm format-toml && git update-index"
+    # readme:
+    #   files: "git diff --name-only HEAD @{push}"
+    #   glob: "**/{README.md,package.json,executors.json,generators.json}"
+    #   run: "pnpm format-readme && git update-index"
+    # format:
+    #   files: "git diff --name-only HEAD @{push}"
+    #   glob: "**/*"
+    #   run: "pnpm exec prettier {staged_files} --write --ignore-unknown --no-error-on-unmatched-pattern --cache && git update-index"
+    # postbuild:
+    #   files: "git diff --name-only HEAD @{push}"
+    #   glob: "**/*"
+    #   run: "pnpm build-all && git update-index"
 
 commit-msg:
   commands:
@@ -81,7 +83,7 @@ post-merge:
   commands:
     validate:
       glob: "**/*"
-      run: "node ./dist/packages/git-tools/bin/post-merge.js {staged_files}"
+      run: "node ./dist/packages/git-tools/bin/post-merge.js {staged_files} && git update-index"
       stage_fixed: true
 
 post-checkout:

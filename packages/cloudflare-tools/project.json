@@ -3,12 +3,9 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/cloudflare-tools/src",
   "projectType": "library",
-  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "inputs": ["default", "^production"],
-      "dependsOn": ["clean", "^build"],
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/cloudflare-tools",

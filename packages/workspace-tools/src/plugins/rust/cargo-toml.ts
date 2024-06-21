@@ -40,45 +40,68 @@ export const createNodes: CreateNodes = [
         const root = dirname(cargoFile);
 
         const targets: ProjectConfiguration["targets"] = {
+          "lint-ls": {
+            cache: true,
+            inputs: ["config_linting", "rust", "^production"],
+            dependsOn: ["^lint-ls"]
+          },
           lint: {
             cache: true,
-            inputs: ["default", "^production"],
-            dependsOn: ["^lint"],
+            inputs: ["config_linting", "rust", "^production"],
+            dependsOn: ["lint-ls", "^lint"],
             executor: "@monodon/rust:lint",
-            outputs: ["{options.target-dir}"],
             options: {
-              "target-dir": `dist/target/${cargoPackage.name}`
+              "target-dir": `{workspaceRoot}/dist/target/${cargoPackage.name}`
+            }
+          },
+          "format-readme": {
+            cache: true,
+            dependsOn: ["^format-readme"]
+          },
+          "format-toml": {
+            cache: true,
+            dependsOn: ["^format-toml"]
+          },
+          format: {
+            cache: true,
+            inputs: ["config_linting", "rust", "^production"],
+            dependsOn: ["format-readme", "format-toml", "^format"],
+            executor: "nx:run-commands",
+            options: {
+              command:
+                "echo 'Formatting the project files in \"{projectRoot}\"' ",
+              color: true
             }
           },
           clean: {
-            "cache": true,
-            "inputs": ["default", "^production"],
-            "outputs": [`dist/target/${cargoPackage.name}`],
-            "executor": "nx:run-commands",
-            "options": {
-              "command": `pnpm exec rimraf dist/target/${cargoPackage.name}`,
-              "color": true,
-              "cwd": "{workspaceRoot}"
+            cache: true,
+            inputs: ["rust", "^production"],
+            outputs: [`{workspaceRoot}/dist/target/${cargoPackage.name}`],
+            executor: "nx:run-commands",
+            options: {
+              command: `pnpm exec rimraf dist/target/${cargoPackage.name}`,
+              color: true,
+              cwd: "{workspaceRoot}"
             }
           },
           build: {
             cache: true,
-            inputs: ["default", "^production"],
-            dependsOn: ["lint", "clean", "^build"],
+            inputs: ["rust", "^production"],
+            dependsOn: ["format", "clean", "^build"],
             executor: "@monodon/rust:check",
             outputs: ["{options.target-dir}"],
             options: {
-              "target-dir": `dist/target/${cargoPackage.name}`
+              "target-dir": `{workspaceRoot}/dist/target/${cargoPackage.name}`
             }
           },
           test: {
             cache: true,
-            inputs: ["defaultTesting", "^production"],
+            inputs: ["config_testing", "source_testing", "rust", "^production"],
             dependsOn: ["build", "^test"],
             executor: "@monodon/rust:test",
             outputs: ["{options.target-dir}"],
             options: {
-              "target-dir": `dist/target/${cargoPackage.name}`
+              "target-dir": `{workspaceRoot}/dist/target/${cargoPackage.name}`
             },
             configurations: {
               production: {
@@ -92,8 +115,7 @@ export const createNodes: CreateNodes = [
         if (!isPrivate) {
           targets["nx-release-publish"] = {
             cache: false,
-            inputs: ["default", "^production"],
-            dependsOn: ["build", "^nx-release-publish"],
+            inputs: ["rust", "^production"],
             executor: "@storm-software/workspace-tools:cargo-publish",
             options: {
               packageRoot: root
@@ -110,7 +132,7 @@ export const createNodes: CreateNodes = [
               generator: "@storm-software/workspace-tools:release-version"
             }
           },
-          tags: ["lang:rust"]
+          tags: ["language:rust"]
         };
       }
       for (const dep of cargoPackage.dependencies) {

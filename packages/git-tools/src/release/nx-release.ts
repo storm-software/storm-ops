@@ -54,10 +54,10 @@ export const runRelease = async (
     process.env.GIT_AUTHOR_EMAIL = `${authorName}@users.noreply.github.com`;
     process.env.GIT_COMMITTER_NAME = committerName;
     process.env.GIT_COMMITTER_EMAIL = `${committerName}@users.noreply.github.com`;
-    process.env.NPM_CONFIG_PROVENANCE = "true";
 
     process.env.NPM_AUTH_TOKEN = process.env.NPM_TOKEN;
     process.env.NODE_AUTH_TOKEN = process.env.NPM_TOKEN;
+    process.env.NPM_CONFIG_PROVENANCE = "true";
 
     writeInfo("Creating workspace Project Graph data...", config);
 

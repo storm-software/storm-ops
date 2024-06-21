@@ -3,11 +3,12 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/workspace-tools/src",
   "projectType": "library",
+  "implicitDependencies": ["build-tools"],
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
-      "inputs": ["default", "^production"],
-      "dependsOn": ["clean", "^build"],
+      "inputs": ["typescript", "^production"],
+      "dependsOn": ["clean", "format", "^build"],
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/workspace-tools",
@@ -110,6 +111,5 @@
     "nx-release-publish": {
       "executor": "@storm-software/workspace-tools:npm-publish"
     }
-  },
-  "implicitDependencies": ["build-tools"]
+  }
 }

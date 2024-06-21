@@ -19,8 +19,6 @@
       "@storm-software/eslint": ["packages/eslint/src/index.ts"],
       "@storm-software/eslint-plugin": ["packages/eslint-plugin/src/index.ts"],
       "@storm-software/eslint-plugin/*": ["packages/eslint-plugin/src/*"],
-      "eslint-config-storm-software": ["packages/eslint-config/src/index.ts"],
-      "eslint-config-storm-software/*": ["packages/eslint-config/src/*"],
       "@storm-software/eslint/*": ["packages/eslint/src/*"],
       "@storm-software/git-tools": ["packages/git-tools/src/index.ts"],
       "@storm-software/git-tools/*": ["packages/git-tools/*"],
@@ -36,7 +34,11 @@
       "@storm-software/tsconfig/*": ["packages/tsconfig/src/*"],
       "@storm-software/workspace-tools": ["packages/workspace-tools/index.ts"],
       "@storm-software/workspace-tools/*": ["packages/workspace-tools/src/*"],
-      "create-storm-workspace": ["packages/create-storm-workspace/bin/index.ts"]
+      "create-storm-workspace": [
+        "packages/create-storm-workspace/bin/index.ts"
+      ],
+      "eslint-config-storm-software": ["packages/eslint-config/src/index.ts"],
+      "eslint-config-storm-software/*": ["packages/eslint-config/src/*"]
     }
   },
   "include": ["**/*.ts", "**/*.js", "**/*.json"],
