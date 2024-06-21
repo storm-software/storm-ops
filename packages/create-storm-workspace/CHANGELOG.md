@@ -1,3 +1,10 @@
+## 1.63.0 (2024-06-21)
+
+
+### 🚀 Features
+
+- **eslint-plugin:** Resolve issues with eslint module types ([ca513974](https://github.com/storm-software/storm-ops/commit/ca513974))
+
 ## 1.62.1 (2024-06-05)
 
 

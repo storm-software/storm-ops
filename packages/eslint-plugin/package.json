@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/eslint-plugin",
-  "version": "0.9.2",
+  "version": "0.10.0",
   "type": "module",
   "description": "⚡ The eslint-plugin package is an ESLint plugin that contains a collection of recommended ESLint rule configurations which you can extend from in your own ESLint configs, as well as an Nx-specific lint rule called enforce-module-boundaries.",
   "repository": {
