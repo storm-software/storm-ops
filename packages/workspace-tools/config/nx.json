@@ -307,7 +307,7 @@
       "dependsOn": ["^format-readme"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec storm-git readme-gen --templates=\"docs/readme-templates\"",
+        "command": "pnpm exec storm-git readme-gen --templates=\"docs/readme-templates\" --project=\"{projectName}\"",
         "color": true
       }
     },

@@ -33,7 +33,7 @@
       "dependsOn": ["^format-readme"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "node ./dist/packages/git-tools/bin/git.js readme-gen --templates=\"./packages/git-tools/src/readme/templates\"",
+        "command": "node ./dist/packages/git-tools/bin/git.js readme-gen --templates=\"./packages/git-tools/src/readme/templates\" --project=\"{projectName}\"",
         "color": true
       }
     },
