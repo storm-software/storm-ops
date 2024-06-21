@@ -140,6 +140,7 @@ export const RegistryConfigSchema = z
     cargo: RegistryUrlConfigSchema,
     cyclone: RegistryUrlConfigSchema
   })
+  .default({})
   .describe("A list of remote registry URLs used by Storm Software");
 
 /**
@@ -159,6 +160,15 @@ export const ColorConfigMapSchema = z.union([
  */
 export const StormConfigSchema = z
   .object({
+    $schema: z
+      .string()
+      .trim()
+      .default(
+        "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm.schema.json"
+      )
+      .describe(
+        "The URL to the JSON schema file that describes the Storm configuration file"
+      ),
     extends: z
       .string()
       .trim()

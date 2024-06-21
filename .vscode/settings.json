@@ -297,7 +297,7 @@
   "eslint.run": "onSave",
   "eslint.packageManager": "pnpm",
   "eslint.nodePath": "node",
-  "eslint.workingDirectories": ["./packages"],
+  "eslint.workingDirectories": ["./"],
   "eslint.probe": [
     "javascript",
     "javascriptreact",
@@ -306,6 +306,9 @@
     "json",
     "markdown"
   ],
+  "eslint.options": {
+    "overrideConfigFile": "eslint.config.mjs"
+  },
   "eslint.codeAction.disableRuleComment": {
     "enable": true,
     "location": "separateLine"

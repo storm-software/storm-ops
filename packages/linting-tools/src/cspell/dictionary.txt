@@ -26,6 +26,9 @@ biomejs
 taplo
 napi
 immer
+zustand
+jotai
+valtio
 contributorsrc
 hasura
 strapi
