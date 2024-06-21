@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node"
+  },
+  "include": ["**/*.ts", "**/*.js", "**/*.json", "eslint.config.mjs"],
+  "exclude": ["node_modules", "tmp"]
+}

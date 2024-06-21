@@ -294,19 +294,6 @@
   ],
   "eslint.format.enable": true,
   "eslint.alwaysShowStatus": true,
-  "eslint.options": {
-    "extensions": [
-      ".cjs",
-      ".mjs",
-      ".js",
-      ".jsx",
-      ".ts",
-      ".tsx",
-      ".json",
-      ".md",
-      ".mdx"
-    ]
-  },
   "eslint.run": "onSave",
   "eslint.packageManager": "pnpm",
   "eslint.nodePath": "node",

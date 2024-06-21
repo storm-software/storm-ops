@@ -5,8 +5,6 @@
     "rootDir": ".",
     "baseUrl": ".",
     "strict": false,
-    "module": "commonjs",
-    "moduleResolution": "node",
     "paths": {
       "@storm-software/build-tools": ["packages/build-tools/src/index.ts"],
       "@storm-software/build-tools/*": ["packages/build-tools/src/index.ts"],

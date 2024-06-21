@@ -8,6 +8,9 @@ Promise.all([
     logLevel: "silent",
     bundle: true,
     minify: false,
+    outExtension: {
+      ".js": ".mjs"
+    },
     format: "esm",
     platform: "node",
     external: ["@nx/*", "eslint"]

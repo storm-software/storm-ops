@@ -25,6 +25,7 @@ lefthook
 biomejs
 taplo
 napi
+immer
 contributorsrc
 hasura
 strapi

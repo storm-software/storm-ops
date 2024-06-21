@@ -36,10 +36,13 @@ const config: Linter.FlatConfig[] = [
     languageOptions: {
       parser: typescriptEslintParser,
       ecmaVersion: "latest",
-      project: "./tsconfig.base.json"
-    },
-    globals: {
-      "BigInt": true
+      globals: {
+        "BigInt": true
+      },
+      parserOptions: {
+        ecmaVersion: "latest",
+        project: "./tsconfig.base.json"
+      }
     },
     plugins: {
       "@typescript-eslint": tsPlugin,

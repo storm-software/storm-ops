@@ -13,7 +13,7 @@
         "additionalEntryPoints": ["packages/eslint-plugin/src/types.ts"],
         "tsConfig": "packages/eslint-plugin/tsconfig.json",
         "external": ["@nx/*", "@storm-software/*", "eslint"],
-        "format": ["esm"],
+        "format": ["esm", "cjs"],
         "platform": "node",
         "deleteOutputPath": true,
         "bundle": true,
