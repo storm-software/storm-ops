@@ -1,3 +1,10 @@
+## 1.105.0 (2024-06-22)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Update the publish executor to include separate CLI code ([79419a9a](https://github.com/storm-software/storm-ops/commit/79419a9a))
+
 ## 1.104.0 (2024-06-22)
 
 
