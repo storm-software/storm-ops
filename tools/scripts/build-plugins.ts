@@ -2,6 +2,22 @@ import { build } from "esbuild";
 
 Promise.all([
   build({
+    entryPoints: ["packages/git-tools/bin/git.ts"],
+    outdir: "dist/plugins/storm-git",
+    tsconfig: "packages/git-tools/tsconfig.json",
+    logLevel: "silent",
+    bundle: true,
+    minify: false,
+    outExtension: {
+      ".js": ".js"
+    },
+    platform: "node",
+    format: "cjs",
+    external: ["nx"]
+  }).then(() => {
+    console.log("Storm-Git script built successfully");
+  }),
+  build({
     entryPoints: ["packages/eslint-plugin/src/index.ts"],
     outdir: "dist/plugins/eslint",
     tsconfig: "packages/eslint-plugin/tsconfig.json",

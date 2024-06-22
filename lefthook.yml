@@ -29,8 +29,7 @@ pre-commit:
       run: "pnpm lefthook install && git update-index"
     schema-gen:
       glob: "packages/config/src/schema.ts"
-      run:
-        'pnpm nx generate @storm-software/workspace-tools:config-schema
+      run: 'pnpm nx generate @storm-software/workspace-tools:config-schema
         --outputFile="./packages/config/schemas/storm.schema.json" && git
         update-index'
     validate:
@@ -54,10 +53,10 @@ pre-commit:
     #   files: "git diff --name-only HEAD @{push}"
     #   glob: "**/*.{toml}"
     #   run: "pnpm format-toml && git update-index"
-    # readme:
-    #   files: "git diff --name-only HEAD @{push}"
-    #   glob: "**/{README.md,package.json,executors.json,generators.json}"
-    #   run: "pnpm format-readme && git update-index"
+    readme:
+      files: "git diff --name-only HEAD @{push}"
+      glob: "**/{README.md,package.json,executors.json,generators.json}"
+      run: "pnpm format-readme && git update-index"
     # format:
     #   files: "git diff --name-only HEAD @{push}"
     #   glob: "**/*"
@@ -70,8 +69,7 @@ pre-commit:
 commit-msg:
   commands:
     validate:
-      run:
-        'pnpm exec commitlint
+      run: 'pnpm exec commitlint
         --config="./dist/packages/git-tools/commitlint.config.cjs" --edit {1}'
 
 pre-push:
@@ -80,14 +78,12 @@ pre-push:
     validate:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*"
-      run:
-        "node ./dist/packages/git-tools/bin/pre-push.js {files} && git
+      run: "node ./dist/packages/git-tools/bin/pre-push.js {files} && git
         update-index"
     lint:
       files: "git diff --name-only HEAD @{push}"
       glob:
-      run:
-        "pnpm exec prettier {files} --write --ignore-unknown
+      run: "pnpm exec prettier {files} --write --ignore-unknown
         --no-error-on-unmatched-pattern --cache && git update-index"
 
 post-merge:
