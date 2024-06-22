@@ -3,18 +3,19 @@ import {
   readJsonFile,
   type ExecutorContext
 } from "@nx/devkit";
+import type { StormConfig } from "@storm-software/config";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
 export default async function npmPublishExecutorFn(
   options: NpmPublishExecutorSchema,
   context: ExecutorContext
 ) {
-  const { run, findWorkspaceRoot, loadStormConfig } = await import(
+  const { run, findWorkspaceRoot } = await import(
     "@storm-software/config-tools"
   );
 
   const workspaceRoot = findWorkspaceRoot(context.root);
-  const config = await loadStormConfig(workspaceRoot);
+  const config = { workspaceRoot } as StormConfig; // await loadStormConfig(workspaceRoot);
 
   /**
    * We need to check both the env var and the option because the executor may have been triggered
