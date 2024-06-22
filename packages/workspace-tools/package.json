@@ -54,6 +54,7 @@
     "@nx/esbuild": "^19.1.0",
     "@rollup/plugin-json": "6.1.0",
     "bundle-require": "5.0.0",
+    "c12": "1.10.0",
     "decky": "1.1.1",
     "esbuild-plugin-environment": "0.4.0",
     "esbuild-plugin-handlebars": "1.0.3",
