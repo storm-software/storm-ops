@@ -1,3 +1,10 @@
+## 0.13.0 (2024-06-22)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Upgrade the workspace pnpm-lock file ([d33c20cb](https://github.com/storm-software/storm-ops/commit/d33c20cb))
+
 ## 0.12.0 (2024-06-22)
 
 

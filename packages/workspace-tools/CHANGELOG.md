@@ -1,130 +1,142 @@
-## 1.102.0 (2024-06-22)
+## 1.103.0 (2024-06-22)
 
 
 ### 🚀 Features
 
 - **workspace-tools:** Remove the calls to get storm config ([f4c9d07f](https://github.com/storm-software/storm-ops/commit/f4c9d07f))
 
-## 1.101.0 (2024-06-22)
+- **workspace-tools:** Upgrade the workspace pnpm-lock file ([d33c20cb](https://github.com/storm-software/storm-ops/commit/d33c20cb))
 
+## 1.102.0 (2024-06-22)
 
 ### 🚀 Features
 
-- **storm-ops:** Updated pnpm-lock file ([22be1efd](https://github.com/storm-software/storm-ops/commit/22be1efd))
+- **workspace-tools:** Remove the calls to get storm config
+  ([f4c9d07f](https://github.com/storm-software/storm-ops/commit/f4c9d07f))
+
+## 1.101.0 (2024-06-22)
+
+### 🚀 Features
+
+- **storm-ops:** Updated pnpm-lock file
+  ([22be1efd](https://github.com/storm-software/storm-ops/commit/22be1efd))
 
 ## 1.100.1 (2024-06-22)
 
-
 ### 🩹 Fixes
 
-- **workspace-tools:** Ensure the `c12` package is included in project ([97ad3052](https://github.com/storm-software/storm-ops/commit/97ad3052))
+- **workspace-tools:** Ensure the `c12` package is included in project
+  ([97ad3052](https://github.com/storm-software/storm-ops/commit/97ad3052))
 
 ## 1.100.0 (2024-06-22)
 
-
 ### 🚀 Features
 
-- **workspace-tools:** Improved `npm-publish` executor error logging display ([866528f8](https://github.com/storm-software/storm-ops/commit/866528f8))
+- **workspace-tools:** Improved `npm-publish` executor error logging display
+  ([866528f8](https://github.com/storm-software/storm-ops/commit/866528f8))
 
-- **workspace-tools:** Enhance the CLI invocation in publish executor ([575a9487](https://github.com/storm-software/storm-ops/commit/575a9487))
+- **workspace-tools:** Enhance the CLI invocation in publish executor
+  ([575a9487](https://github.com/storm-software/storm-ops/commit/575a9487))
 
 ## 1.99.0 (2024-06-22)
 
-
 ### 🚀 Features
 
-- **workspace-tools:** Added `lint` and `format` tasks and improved cache input management ([f2ade202](https://github.com/storm-software/storm-ops/commit/f2ade202))
-
+- **workspace-tools:** Added `lint` and `format` tasks and improved cache input
+  management
+  ([f2ade202](https://github.com/storm-software/storm-ops/commit/f2ade202))
 
 ### 🩹 Fixes
 
-- **workspace-tools:** Provide the `project` flag to `format-readme` task ([352fbf15](https://github.com/storm-software/storm-ops/commit/352fbf15))
+- **workspace-tools:** Provide the `project` flag to `format-readme` task
+  ([352fbf15](https://github.com/storm-software/storm-ops/commit/352fbf15))
 
 ## 1.98.0 (2024-06-21)
 
-
 ### 🚀 Features
 
-- **eslint-plugin:** Resolve issues with eslint module types ([ca513974](https://github.com/storm-software/storm-ops/commit/ca513974))
+- **eslint-plugin:** Resolve issues with eslint module types
+  ([ca513974](https://github.com/storm-software/storm-ops/commit/ca513974))
 
 ## 1.97.0 (2024-06-17)
 
-
 ### 🚀 Features
 
-- **workspace-tools:** Improve the shared configuration in `nx.json` presets ([9e11839d](https://github.com/storm-software/storm-ops/commit/9e11839d))
+- **workspace-tools:** Improve the shared configuration in `nx.json` presets
+  ([9e11839d](https://github.com/storm-software/storm-ops/commit/9e11839d))
 
 ## 1.96.0 (2024-06-17)
 
-
 ### 🚀 Features
 
-- **workspace-tools:** Add `clean` targets to the Cargo and TypeScript plugins ([8a41617e](https://github.com/storm-software/storm-ops/commit/8a41617e))
+- **workspace-tools:** Add `clean` targets to the Cargo and TypeScript plugins
+  ([8a41617e](https://github.com/storm-software/storm-ops/commit/8a41617e))
 
 ## 1.95.0 (2024-06-17)
 
-
 ### 🚀 Features
 
-- **workspace-tools:** Improved the task dependency list for Cargo projects ([9fd64900](https://github.com/storm-software/storm-ops/commit/9fd64900))
+- **workspace-tools:** Improved the task dependency list for Cargo projects
+  ([9fd64900](https://github.com/storm-software/storm-ops/commit/9fd64900))
 
 ## 1.94.0 (2024-06-17)
 
-
 ### 🚀 Features
 
-- **git-tools:** Add proper export values to package and resolve type issues ([46f45709](https://github.com/storm-software/storm-ops/commit/46f45709))
+- **git-tools:** Add proper export values to package and resolve type issues
+  ([46f45709](https://github.com/storm-software/storm-ops/commit/46f45709))
 
-- **workspace-tools:** Enhance the Storm `nx.json` preset values ([4255e9a8](https://github.com/storm-software/storm-ops/commit/4255e9a8))
+- **workspace-tools:** Enhance the Storm `nx.json` preset values
+  ([4255e9a8](https://github.com/storm-software/storm-ops/commit/4255e9a8))
 
 ## 1.93.0 (2024-06-17)
 
-
 ### 🚀 Features
 
-- **workspace-tools:** Upgrade base package versions ([506071e8](https://github.com/storm-software/storm-ops/commit/506071e8))
+- **workspace-tools:** Upgrade base package versions
+  ([506071e8](https://github.com/storm-software/storm-ops/commit/506071e8))
 
 ## 1.92.0 (2024-06-17)
 
-
 ### 🚀 Features
 
-- **workspace-tools:** Increase buffer size of npm commands in publish executor ([e37a9145](https://github.com/storm-software/storm-ops/commit/e37a9145))
+- **workspace-tools:** Increase buffer size of npm commands in publish executor
+  ([e37a9145](https://github.com/storm-software/storm-ops/commit/e37a9145))
 
 ## 1.91.0 (2024-06-17)
 
-
 ### 🚀 Features
 
-- **workspace-tools:** Enhanced error logging in publish executor ([e422eecd](https://github.com/storm-software/storm-ops/commit/e422eecd))
+- **workspace-tools:** Enhanced error logging in publish executor
+  ([e422eecd](https://github.com/storm-software/storm-ops/commit/e422eecd))
 
 ## 1.90.1 (2024-06-17)
 
-
 ### 🩹 Fixes
 
-- **deps:** update patch prod dependencies ([ec613e8a](https://github.com/storm-software/storm-ops/commit/ec613e8a))
+- **deps:** update patch prod dependencies
+  ([ec613e8a](https://github.com/storm-software/storm-ops/commit/ec613e8a))
 
 ## 1.90.0 (2024-06-16)
 
-
 ### 🚀 Features
 
-- **workspace-tools:** Enhanced logging in npm publish executor ([91befa2c](https://github.com/storm-software/storm-ops/commit/91befa2c))
+- **workspace-tools:** Enhanced logging in npm publish executor
+  ([91befa2c](https://github.com/storm-software/storm-ops/commit/91befa2c))
 
 ## 1.89.2 (2024-06-15)
 
-
 ### 🩹 Fixes
 
-- **workspace-tools:** Resolved issue with invalid package name in tags ([e40b5387](https://github.com/storm-software/storm-ops/commit/e40b5387))
+- **workspace-tools:** Resolved issue with invalid package name in tags
+  ([e40b5387](https://github.com/storm-software/storm-ops/commit/e40b5387))
 
 ## 1.89.1 (2024-06-15)
 
-
 ### 🩹 Fixes
 
-- **storm-ops:** Resolved issue populating the git tag during publishing ([9ac9f1be](https://github.com/storm-software/storm-ops/commit/9ac9f1be))
+- **storm-ops:** Resolved issue populating the git tag during publishing
+  ([9ac9f1be](https://github.com/storm-software/storm-ops/commit/9ac9f1be))
 
 ## 1.89.0 (2024-06-09)
 
