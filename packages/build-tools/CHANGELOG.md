@@ -1,3 +1,10 @@
+## 0.13.0 (2024-06-22)
+
+
+### 🚀 Features
+
+- **storm-ops:** Updated pnpm-lock file ([22be1efd](https://github.com/storm-software/storm-ops/commit/22be1efd))
+
 ## 0.12.0 (2024-06-22)
 
 
