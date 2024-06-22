@@ -38,6 +38,8 @@ allcontributors
 probot
 smee
 remeda
+jiti
+deepmerge
 blockquote
 typia
 stormie

@@ -1,8 +1,8 @@
-import type { StormConfigInput } from "@storm-software/config";
-import { findWorkspaceRoot } from "../utilities/find-workspace-root";
-import { type LoadConfigOptions, loadConfig, ResolvedConfig } from "c12";
+import { loadConfig, ResolvedConfig, type LoadConfigOptions } from "c12";
 import merge from "deepmerge";
+import type { StormConfigInput } from "@storm-software/config";
 import { writeTrace } from "../utilities";
+import { findWorkspaceRoot } from "../utilities/find-workspace-root";
 
 // let _cosmiconfig: any = undefined;
 // let defaultExplorer: PublicExplorer | undefined;

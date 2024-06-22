@@ -1,9 +1,10 @@
+import merge, { ArrayMergeOptions } from "deepmerge";
 import type { ZodTypeAny } from "zod";
+import type { StormConfig } from "@storm-software/config";
+import { StormConfigSchema } from "@storm-software/config/schema";
 import { getConfigFile } from "./config-file/get-config-file";
 import { getConfigEnv, getExtensionEnv } from "./env/get-env";
 import { setConfigEnv } from "./env/set-env";
-import type { StormConfig } from "@storm-software/config";
-import { StormConfigSchema } from "@storm-software/config/schema";
 import {
   findWorkspaceRoot,
   formatLogMessage,
@@ -11,7 +12,6 @@ import {
   writeWarning
 } from "./utilities";
 import { getDefaultConfig } from "./utilities/get-default-config";
-import merge from "deepmerge";
 
 const _extension_cache = new WeakMap<{ extensionName: string }, any>();
 let _static_cache: StormConfig | undefined = undefined;
@@ -128,7 +128,22 @@ export const loadStormConfig = async (
   }
 
   config = getDefaultConfig(
-    merge(getConfigEnv() as Partial<StormConfig>, configFile, {}),
+    merge(getConfigEnv() as Partial<StormConfig>, configFile, {
+      arrayMerge: (
+        target: any[],
+        source: any[],
+        options?: ArrayMergeOptions
+      ): any[] => {
+        const result = [...target];
+        for (const item of source) {
+          if (!result.includes(item)) {
+            result.push(item);
+          }
+        }
+
+        return result;
+      }
+    }),
     _workspaceRoot
   );
   setConfigEnv(config);

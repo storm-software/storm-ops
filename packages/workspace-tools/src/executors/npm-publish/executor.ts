@@ -1,22 +1,17 @@
+import { execSync } from "node:child_process";
 import {
   joinPathFragments,
   readJsonFile,
   type ExecutorContext
 } from "@nx/devkit";
-import type { StormConfig } from "@storm-software/config";
 import type { NpmPublishExecutorSchema } from "./schema.d";
+
+export const LARGE_BUFFER = 1024 * 1000000;
 
 export default async function npmPublishExecutorFn(
   options: NpmPublishExecutorSchema,
   context: ExecutorContext
 ) {
-  const { run, findWorkspaceRoot } = await import(
-    "@storm-software/config-tools"
-  );
-
-  const workspaceRoot = findWorkspaceRoot(context.root);
-  const config = { workspaceRoot } as StormConfig; // await loadStormConfig(workspaceRoot);
-
   /**
    * We need to check both the env var and the option because the executor may have been triggered
    * indirectly via dependsOn, in which case the env var will be set, but the option will not.
@@ -68,7 +63,18 @@ export default async function npmPublishExecutorFn(
 
   const registry = options.registry
     ? options.registry
-    : run(config, "npm config get registry", packageRoot).toString().trim();
+    : execSync("npm config get registry", {
+        cwd: packageRoot,
+        env: {
+          ...process.env,
+          FORCE_COLOR: "true"
+        },
+        stdio: "inherit",
+        maxBuffer: LARGE_BUFFER,
+        killSignal: "SIGTERM"
+      })
+        .toString()
+        .trim();
 
   if (registry) {
     npmPublishCommandSegments.push(`--registry=${registry}`);
@@ -92,7 +98,18 @@ export default async function npmPublishExecutorFn(
   // Resolve values using the `npm config` command so that things like environment variables and `publishConfig`s are accounted for
   const tag =
     options.tag ??
-    run(config, "npm config get tag", packageRoot).toString().trim();
+    execSync("npm config get tag", {
+      cwd: packageRoot,
+      env: {
+        ...process.env,
+        FORCE_COLOR: "true"
+      },
+      stdio: "inherit",
+      maxBuffer: LARGE_BUFFER,
+      killSignal: "SIGTERM"
+    })
+      .toString()
+      .trim();
 
   /**
    * In a dry-run scenario, it is most likely that all commands are being run with dry-run, therefore
@@ -106,11 +123,16 @@ export default async function npmPublishExecutorFn(
     const currentVersion = projectPackageJson.version;
     try {
       try {
-        const result = run(
-          config,
-          npmViewCommandSegments.join(" "),
-          packageRoot
-        );
+        const result = execSync(npmViewCommandSegments.join(" "), {
+          cwd: packageRoot,
+          env: {
+            ...process.env,
+            FORCE_COLOR: "true"
+          },
+          stdio: "inherit",
+          maxBuffer: LARGE_BUFFER,
+          killSignal: "SIGTERM"
+        });
 
         const resultJson = JSON.parse(result.toString());
         const distTags = resultJson["dist-tags"] || {};
@@ -131,10 +153,18 @@ export default async function npmPublishExecutorFn(
 
       try {
         if (!isDryRun) {
-          run(
-            config,
+          execSync(
             `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${registry}`,
-            packageRoot
+            {
+              cwd: packageRoot,
+              env: {
+                ...process.env,
+                FORCE_COLOR: "true"
+              },
+              stdio: "inherit",
+              maxBuffer: LARGE_BUFFER,
+              killSignal: "SIGTERM"
+            }
           );
 
           console.info(
@@ -230,11 +260,17 @@ export default async function npmPublishExecutorFn(
       `Running publish command ${npmPublishCommandSegments.join(" ")}`
     );
 
-    const output = run(
-      config,
-      npmPublishCommandSegments.join(" "),
-      packageRoot
-    );
+    const output = execSync(npmPublishCommandSegments.join(" "), {
+      cwd: packageRoot,
+      env: {
+        ...process.env,
+        FORCE_COLOR: "true"
+      },
+      stdio: "inherit",
+      maxBuffer: LARGE_BUFFER,
+      killSignal: "SIGTERM"
+    });
+
     console.info(output.toString());
 
     if (isDryRun) {
