@@ -1,15 +1,15 @@
 import type { ExecutorContext } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
-import { applyWorkspaceExecutorTokens } from "../utils/apply-workspace-tokens";
+import {
+  applyWorkspaceTokens,
+  type BaseTokenizerOptions
+} from "@storm-software/config-tools";
 import type {
   BaseExecutorOptions,
   BaseExecutorResult,
   BaseExecutorSchema
 } from "../../declarations";
-import {
-  applyWorkspaceTokens,
-  type BaseTokenizerOptions
-} from "@storm-software/config-tools";
+import { applyWorkspaceExecutorTokens } from "../utils/apply-workspace-tokens";
 
 export const withRunExecutor =
   <TExecutorSchema extends BaseExecutorSchema = BaseExecutorSchema>(
