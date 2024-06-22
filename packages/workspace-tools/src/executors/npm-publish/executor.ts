@@ -120,7 +120,7 @@ export default async function npmPublishExecutorFn(
       } catch (err) {
         console.warn("\n ********************** \n");
         console.warn(
-          `An error occurred while checking for existing dist-tags\n${err}\n\nNote: If this is the first time this package has been published to NPM, this can be ignored.`
+          `An error occurred while checking for existing dist-tags\n${JSON.stringify(err)}\n\nNote: If this is the first time this package has been published to NPM, this can be ignored.`
         );
         console.info("");
       }
@@ -153,7 +153,7 @@ export default async function npmPublishExecutorFn(
         try {
           console.warn("\n ********************** \n");
           console.warn(
-            `An error occurred while adding dist-tags\n${err}\n\nNote: If this is the first time this package has been published to NPM, this can be ignored.`
+            `An error occurred while adding dist-tags\n${JSON.stringify(err)}\n\nNote: If this is the first time this package has been published to NPM, this can be ignored.`
           );
           console.info("");
 
@@ -191,7 +191,7 @@ export default async function npmPublishExecutorFn(
           }
         } catch (err) {
           console.error(
-            `Something unexpected went wrong when processing the npm dist-tag add output\n${err}`
+            `Something unexpected went wrong when processing the npm dist-tag add output\n${JSON.stringify(err)}`
           );
 
           return { success: false };
@@ -219,7 +219,7 @@ export default async function npmPublishExecutorFn(
         )
       ) {
         console.error(
-          `Something unexpected went wrong when checking for existing dist-tags.\n${err}`
+          `Something unexpected went wrong when checking for existing dist-tags.\n${JSON.stringify(err)}`
         );
 
         return { success: false };
@@ -280,7 +280,7 @@ export default async function npmPublishExecutorFn(
       return { success: false };
     } catch (err) {
       console.error(
-        `Something unexpected went wrong when processing the npm publish output\n${err}`
+        `Something unexpected went wrong when processing the npm publish output\n${JSON.stringify(err)}`
       );
 
       console.error("\n ********************** \n");
