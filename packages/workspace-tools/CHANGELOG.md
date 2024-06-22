@@ -1,3 +1,10 @@
+## 1.104.0 (2024-06-22)
+
+
+### 🚀 Features
+
+- **storm-ops:** Upgrade the workspace's Nx package versions ([19ce2a07](https://github.com/storm-software/storm-ops/commit/19ce2a07))
+
 ## 1.103.0 (2024-06-22)
 
 
