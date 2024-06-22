@@ -1,3 +1,10 @@
+## 1.100.1 (2024-06-22)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Ensure the `c12` package is included in project ([97ad3052](https://github.com/storm-software/storm-ops/commit/97ad3052))
+
 ## 1.100.0 (2024-06-22)
 
 
