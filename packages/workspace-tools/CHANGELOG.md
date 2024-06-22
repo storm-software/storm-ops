@@ -1,3 +1,12 @@
+## 1.100.0 (2024-06-22)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Improved `npm-publish` executor error logging display ([866528f8](https://github.com/storm-software/storm-ops/commit/866528f8))
+
+- **workspace-tools:** Enhance the CLI invocation in publish executor ([575a9487](https://github.com/storm-software/storm-ops/commit/575a9487))
+
 ## 1.99.0 (2024-06-22)
 
 
