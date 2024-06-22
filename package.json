@@ -81,7 +81,7 @@
     "@nx/eslint": "19.2.0",
     "@nx/eslint-plugin": "19.2.0",
     "@nx/jest": "19.2.0",
-    "@nx/js": "19.2.0",
+    "@nx/js": "19.3.1",
     "@nx/plugin": "19.2.0",
     "@nx/workspace": "19.2.0",
     "@swc-node/register": "1.9.2",
