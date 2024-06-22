@@ -2,22 +2,6 @@ import { build } from "esbuild";
 
 Promise.all([
   build({
-    entryPoints: ["packages/git-tools/bin/git.ts"],
-    outdir: "dist/plugins/storm-git",
-    tsconfig: "packages/git-tools/tsconfig.json",
-    logLevel: "silent",
-    bundle: true,
-    minify: false,
-    outExtension: {
-      ".js": ".js"
-    },
-    platform: "node",
-    format: "cjs",
-    external: ["nx"]
-  }).then(() => {
-    console.log("Storm-Git script built successfully");
-  }),
-  build({
     entryPoints: ["packages/eslint-plugin/src/index.ts"],
     outdir: "dist/plugins/eslint",
     tsconfig: "packages/eslint-plugin/tsconfig.json",
@@ -29,7 +13,11 @@ Promise.all([
     },
     format: "esm",
     platform: "node",
-    external: ["@nx/*", "eslint"]
+    external: ["@nx/*", "eslint"],
+    legalComments: "inline",
+    banner: {
+      js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst getFilename = () => fileURLToPath(import.meta.url); \nconst getDirname = () => path.dirname(getFilename()); \nconst __dirname = /* @__PURE__ */ getDirname(); \nconst __filename = /* @__PURE__ */ getFilename(); \n"
+    }
   }).then(() => {
     console.log("Storm ESLint plugin built successfully");
   }),

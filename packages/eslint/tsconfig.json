@@ -5,6 +5,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "module": "ESNext",
+    "target": "ESNext",
     "moduleResolution": "Bundler"
   },
   "include": ["src/**/*.ts"],

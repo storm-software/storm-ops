@@ -1,4 +1,5 @@
 import type { Linter } from "eslint";
+import esXPlugin from "eslint-plugin-es-x";
 import importPlugin from "eslint-plugin-import";
 import nPlugin from "eslint-plugin-n";
 import prettierPlugin from "eslint-plugin-prettier";
@@ -29,6 +30,7 @@ const config: Linter.FlatConfig[] = [
   sonarjsPlugin.configs.recommended,
   ...unicornPlugin.configs.recommended,
   sonarjsPlugin.configs.recommended,
+  ...esXPlugin.configs.recommended,
   {
     name: "storm-base",
     files: [CODE_FILE],
@@ -51,7 +53,8 @@ const config: Linter.FlatConfig[] = [
       "promise": promisePlugin,
       "import": importPlugin,
       "n": nPlugin,
-      "tsdoc": tsdocPlugin
+      "tsdoc": tsdocPlugin,
+      "es-x": esXPlugin
     },
     rules: {
       // Disallows if statements as the only statement in else blocks
