@@ -1,18 +1,18 @@
 
 [package]
-name = 'storm-workspace'
-description = 'A crate containing various utilities and tools used by Storm Software to manage monorepos.'
-version = '0.3.4'
-publish = true
-edition = { workspace = true }
-repository = { workspace = true }
 authors = { workspace = true }
-license = { workspace = true }
 categories = { workspace = true }
-keywords = { workspace = true }
-homepage = { workspace = true }
+description = 'A crate containing various utilities and tools used by Storm Software to manage monorepos.'
 documentation = 'https://docs.rs/storm-workspace'
+edition = { workspace = true }
+homepage = { workspace = true }
+keywords = { workspace = true }
+license = { workspace = true }
+name = 'storm-workspace'
+publish = true
 readme = './README.md'
+repository = { workspace = true }
+version = '0.4.0'
 
 [dependencies]
 thiserror = '=1.0.61'

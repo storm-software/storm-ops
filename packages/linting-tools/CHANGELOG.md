@@ -1,3 +1,12 @@
+## 1.52.0 (2024-06-22)
+
+
+### 🚀 Features
+
+- **config:** Added `$schema` field to Storm configuration schema ([b4b3323a](https://github.com/storm-software/storm-ops/commit/b4b3323a))
+
+- **workspace-tools:** Added `lint` and `format` tasks and improved cache input management ([f2ade202](https://github.com/storm-software/storm-ops/commit/f2ade202))
+
 ## 1.51.0 (2024-06-21)
 
 

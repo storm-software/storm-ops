@@ -1,3 +1,10 @@
+## 2.21.0 (2024-06-22)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Added `lint` and `format` tasks and improved cache input management ([f2ade202](https://github.com/storm-software/storm-ops/commit/f2ade202))
+
 ## 2.20.0 (2024-06-21)
 
 

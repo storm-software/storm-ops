@@ -1,3 +1,15 @@
+## 1.99.0 (2024-06-22)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Added `lint` and `format` tasks and improved cache input management ([f2ade202](https://github.com/storm-software/storm-ops/commit/f2ade202))
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Provide the `project` flag to `format-readme` task ([352fbf15](https://github.com/storm-software/storm-ops/commit/352fbf15))
+
 ## 1.98.0 (2024-06-21)
 
 
