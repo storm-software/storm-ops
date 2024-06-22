@@ -1,3 +1,10 @@
+## 1.105.1 (2024-06-22)
+
+
+### 🩹 Fixes
+
+- **workspace-tools:** Resolve issue with `execSync` output ([1de2b651](https://github.com/storm-software/storm-ops/commit/1de2b651))
+
 ## 1.105.0 (2024-06-22)
 
 
