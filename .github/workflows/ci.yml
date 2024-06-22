@@ -116,7 +116,7 @@ jobs:
         shell: bash
 
       - name: Re-run build script
-        run: pnpm build-all
+        run: pnpm build
         shell: bash
 
       - name: Add permissions to linting tools
