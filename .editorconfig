@@ -65,6 +65,10 @@ end_of_line = lf
 [Makefile]
 indent_style = tab
 
+# Commit Messages
+[COMMIT_EDITMSG]
+max_line_length = 0
+
 ##########################################
 # Default .NET Code Style Severities
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/configuration-options#scope

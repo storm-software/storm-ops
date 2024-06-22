@@ -69,7 +69,6 @@ export default async function npmPublishExecutorFn(
           ...process.env,
           FORCE_COLOR: "true"
         },
-        stdio: "inherit",
         maxBuffer: LARGE_BUFFER,
         killSignal: "SIGTERM"
       })
@@ -104,7 +103,6 @@ export default async function npmPublishExecutorFn(
         ...process.env,
         FORCE_COLOR: "true"
       },
-      stdio: "inherit",
       maxBuffer: LARGE_BUFFER,
       killSignal: "SIGTERM"
     })
@@ -129,7 +127,6 @@ export default async function npmPublishExecutorFn(
             ...process.env,
             FORCE_COLOR: "true"
           },
-          stdio: "inherit",
           maxBuffer: LARGE_BUFFER,
           killSignal: "SIGTERM"
         });
@@ -266,7 +263,6 @@ export default async function npmPublishExecutorFn(
         ...process.env,
         FORCE_COLOR: "true"
       },
-      stdio: "inherit",
       maxBuffer: LARGE_BUFFER,
       killSignal: "SIGTERM"
     });
