@@ -1,3 +1,10 @@
+## 1.102.0 (2024-06-22)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Remove the calls to get storm config ([f4c9d07f](https://github.com/storm-software/storm-ops/commit/f4c9d07f))
+
 ## 1.101.0 (2024-06-22)
 
 
