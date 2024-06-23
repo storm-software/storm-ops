@@ -1,23 +1,13 @@
-import eslintPlugin from "./dist/plugins/eslint/index.mjs";
+import pluginPlugin from "eslint-plugin-eslint-plugin";
+import stormPlugin from "./dist/plugins/eslint/index.mjs";
 
 export default [
-  ...eslintPlugin.configs.base,
+  ...stormPlugin.configs.recommended,
   {
+    ...pluginPlugin.configs.recommended,
     plugins: {
-      "@storm-software": eslintPlugin
+      "eslint-plugin": pluginPlugin
     },
-    languageOptions: {
-      parserOptions: {
-        ecmaVersion: "latest",
-        project: "./tsconfig.eslint.json"
-      }
-    },
-    ignores: [
-      "**/node_modules/**",
-      "**/dist/**",
-      "**/tmp/**",
-      "**/.nx/**",
-      "**/.tamagui/**"
-    ]
+    files: ["packages/{eslint-plugin,eslint-plugin-*}/**/*"]
   }
 ];

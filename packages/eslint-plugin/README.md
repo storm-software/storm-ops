@@ -50,14 +50,14 @@ enforce code quality and style standards across all Storm Software projects.
 Using [pnpm](http://pnpm.io):
 
 ```bash
-pnpm add -D @storm-software/eslint-plugin
+pnpm add -D eslint-plugin-storm-software
 ```
 
 <details>
   <summary>Using npm</summary>
 
 ```bash
-npm install -D @storm-software/eslint-plugin
+npm install -D eslint-plugin-storm-software
 ```
 
 </details>
@@ -66,10 +66,27 @@ npm install -D @storm-software/eslint-plugin
   <summary>Using yarn</summary>
 
 ```bash
-yarn add -D @storm-software/eslint-plugin
+yarn add -D eslint-plugin-storm-software
 ```
 
 </details>
+
+## ESLint Configurations
+
+This plugin provides the following ESLint configurations:
+
+<!-- begin auto-generated configs list -->
+<!-- end auto-generated configs list -->
+
+## ESLint Plugin Rules
+
+This plugin provides the following ESLint configurations:
+
+<!-- begin auto-generated rule header -->
+<!-- end auto-generated rule header -->
+
+<!-- begin auto-generated rule options list -->
+<!-- end auto-generated rule options list -->
 
 ## Building
 
@@ -83,7 +100,6 @@ Run `nx test eslint-plugin` to execute the unit tests via
 <!-- START footer -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-
 
 ## Storm Workspaces
 

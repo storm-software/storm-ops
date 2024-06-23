@@ -1,0 +1,24 @@
+import packageJson from "../../../package.json";
+
+const repoUrl = "https://github.com/storm-software/storm-ops";
+
+/** @returns {{ [ruleName: string]: import('eslint').Rule.RuleModule }} */
+function createDeprecatedRules(data) {
+  return Object.fromEntries(
+    Object.entries(data).map(([ruleId, replacedBy = []]) => [
+      ruleId,
+      {
+        create: () => ({}),
+        meta: {
+          docs: {
+            url: `${repoUrl}/blob/v${packageJson.version}/docs/deprecated-rules.md#${ruleId}`
+          },
+          deprecated: true,
+          replacedBy: Array.isArray(replacedBy) ? replacedBy : [replacedBy]
+        }
+      }
+    ])
+  );
+}
+
+export default createDeprecatedRules;

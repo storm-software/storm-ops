@@ -2,8 +2,9 @@ import type { Linter } from "eslint";
 import relayPlugin from "eslint-plugin-relay";
 import * as graphqlPlugin from "@graphql-eslint/eslint-plugin";
 import base from "./base";
-import { CODE_FILE } from "./constants";
-import { ignores } from "./ignores";
+import { CODE_FILE } from "./utils/constants";
+import { formatConfig } from "./utils/format-config";
+import { ignores } from "./utils/ignores";
 
 const config: Linter.FlatConfig[] = [
   ...base,
@@ -137,4 +138,4 @@ const config: Linter.FlatConfig[] = [
   }
 ];
 
-export default config;
+export default formatConfig("GraphQL", config);

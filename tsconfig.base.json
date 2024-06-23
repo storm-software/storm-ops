@@ -17,8 +17,6 @@
       "@storm-software/config-tools/*": ["packages/config-tools/src/*"],
       "@storm-software/config/*": ["packages/config/src/*"],
       "@storm-software/eslint": ["packages/eslint/src/index.ts"],
-      "@storm-software/eslint-plugin": ["packages/eslint-plugin/src/index.ts"],
-      "@storm-software/eslint-plugin/*": ["packages/eslint-plugin/src/*"],
       "@storm-software/eslint/*": ["packages/eslint/src/*"],
       "@storm-software/git-tools": ["packages/git-tools/src/index.ts"],
       "@storm-software/git-tools/*": ["packages/git-tools/*"],
@@ -38,7 +36,17 @@
         "packages/create-storm-workspace/bin/index.ts"
       ],
       "eslint-config-storm-software": ["packages/eslint-config/src/index.ts"],
-      "eslint-config-storm-software/*": ["packages/eslint-config/src/*"]
+      "eslint-config-storm-software/*": ["packages/eslint-config/src/*"],
+      "eslint-plugin-storm-software": ["packages/eslint-plugin/src/index.ts"],
+      "eslint-plugin-storm-software/*": ["packages/eslint-plugin/src/*"],
+      "eslint-plugin-storm-graphql": [
+        "packages/eslint-plugin-graphql/src/index.ts"
+      ],
+      "eslint-plugin-storm-graphql/*": ["packages/eslint-plugin-graphql/src/*"],
+      "eslint-plugin-storm-react": [
+        "packages/eslint-plugin-react/src/index.ts"
+      ],
+      "eslint-plugin-storm-react/*": ["packages/eslint-plugin-react/src/*"]
     }
   },
   "include": ["**/*.ts", "**/*.js", "**/*.json"],

@@ -2,12 +2,18 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "module": "ESNext",
     "target": "ESNext",
-    "moduleResolution": "Bundler"
+    "noEmit": true,
+    "esModuleInterop": true,
+    "types": ["node", "@typescript-eslint/parser/dist/index.d.ts"]
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*_spec.ts",
+    "**/*_test.ts",
+    "jest.config.ts"
+  ]
 }

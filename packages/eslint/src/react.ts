@@ -3,18 +3,29 @@ import importPlugin from "eslint-plugin-import";
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
-import base from "./base";
-import { CODE_FILE } from "./constants";
-import { ignores } from "./ignores";
+import { FlatCompat } from "@eslint/eslintrc";
+import reactTypescriptConfigs from "@nx/eslint-plugin/src/configs/react-typescript.js";
+import { findWorkspaceRoot } from "@storm-software/config-tools";
+import nx from "./nx";
 import jsxA11yRules from "./rules/jsx-a11y";
 import reactRules from "./rules/react";
+import { CODE_FILE } from "./utils/constants";
+import { formatConfig } from "./utils/format-config";
+import { ignores } from "./utils/ignores";
+
+const workspaceRoot = findWorkspaceRoot();
+const compat = new FlatCompat({
+  baseDirectory: workspaceRoot,
+  recommendedConfig: reactTypescriptConfigs,
+  ignores
+});
 
 const config: Linter.FlatConfig[] = [
-  ...base,
-  ...importPlugin.configs.react,
+  ...nx,
   ...jsxA11yPlugin.configs.recommended,
   ...reactPlugin.configs.recommended,
   ...reactHooksPlugin.configs.recommended,
+  importPlugin.configs.react,
   {
     files: [CODE_FILE],
     ignores,
@@ -32,7 +43,20 @@ const config: Linter.FlatConfig[] = [
       ...jsxA11yRules,
       ...reactRules
     }
-  }
+  },
+  ...compat.plugins("@nx").map(config => ({
+    ...config,
+    files: [
+      "**/*.ts",
+      "**/*.mts",
+      "**/*.cts",
+      "**/*.tsx",
+      "**/*.cjs",
+      "**/*.js",
+      "**/*.jsx"
+    ],
+    ignores
+  }))
 ];
 
-export default config;
+export default formatConfig("React", config);

@@ -75,7 +75,7 @@ export function createProgram(config: StormConfig) {
     const manypkgType = new Option(
       "--manypkg-type <type>",
       "The manypkg command to run"
-    ).default("check");
+    ).default("fix");
 
     const manypkgArgs = new Option(
       "--manypkg-args <args>",
@@ -108,17 +108,17 @@ export function createProgram(config: StormConfig) {
     const skipDepsVersion = new Option(
       "--skip-deps-version",
       "Should skip dependency version consistency linting"
-    );
+    ).default(false);
 
     const skipCircularDeps = new Option(
       "--skip-circular-deps",
       "Should skip circular dependency linting"
-    );
+    ).default(false);
 
     const skipManypkg = new Option(
       "--skip-manypkg",
       "Should skip Manypkg linting"
-    );
+    ).default(false);
 
     program
       .command("all")
@@ -314,7 +314,7 @@ async function circularDepsAction() {
 }
 
 async function manypkgAction(
-  manypkgType = "check",
+  manypkgType = "fix",
   manypkgArgs: string[],
   manypkgFix: boolean
 ) {

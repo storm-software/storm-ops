@@ -1,17 +1,12 @@
 import type { Linter } from "eslint";
 import base from "./base";
-import { CODE_BLOCK, CODE_FILE, TS_FILE } from "./constants";
-import { ignores } from "./ignores";
-import json from "./json";
-import markdown from "./markdown";
 import nx from "./nx";
-import yml from "./yml";
+import { CODE_BLOCK, CODE_FILE, TS_FILE } from "./utils/constants";
+import { formatConfig } from "./utils/format-config";
+import { ignores } from "./utils/ignores";
 
 const config: Linter.FlatConfig[] = [
   ...base,
-  ...yml,
-  ...json,
-  ...markdown,
   ...nx,
   {
     files: [CODE_FILE],
@@ -68,4 +63,4 @@ const config: Linter.FlatConfig[] = [
   }
 ];
 
-export default config;
+export default formatConfig("Recommended", config);

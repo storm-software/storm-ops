@@ -7,8 +7,9 @@ import js from "@eslint/js";
 import nxEslintPlugin from "@nx/eslint-plugin";
 import { findWorkspaceRoot } from "@storm-software/config-tools";
 import base from "./base";
-import { CODE_BLOCK } from "./constants";
-import { ignores } from "./ignores";
+import { CODE_BLOCK } from "./utils/constants";
+import { formatConfig } from "./utils/format-config";
+import { ignores } from "./utils/ignores";
 
 const JSONC_FILES = [
   "**/tsconfig.json",
@@ -38,59 +39,39 @@ const config: Linter.FlatConfig[] = [
       parser: jsoncParser
     }
   },
-  ...compat
-    .config({
-      extends: ["plugin:jsonc/recommended-with-json"]
-    })
-    .map(config => ({
-      ...config,
-      files: ["**/*.json"],
-      ignores: [...ignores, JSONC_FILES]
-    })),
-  ...compat
-    .config({
-      extends: ["plugin:jsonc/recommended-with-json"]
-    })
-    .map(config => ({
-      ...config,
-      files: ["**/executors/**/schema.json", "**/generators/**/schema.json"],
-      ignores: [...ignores, JSONC_FILES],
-      rules: {
-        ...config.rules,
-        "@nx/workspace/valid-schema-description": "error"
-      }
-    })),
-  ...compat
-    .config({
-      extends: ["plugin:jsonc/recommended-with-jsonc"]
-    })
-    .map(config => ({
-      ...config,
-      files: ["**/*.jsonc", ...JSONC_FILES],
-      ignores
-    })),
-  ...compat
-    .config({
-      extends: ["plugin:jsonc/recommended-with-json5"]
-    })
-    .map(config => ({
-      ...config,
-      files: ["**/*.json5"],
-      ignores
-    })),
-  ...compat
-    .config({
-      extends: ["plugin:jsonc/recommended-with-json5"]
-    })
-    .map(config => ({
-      ...config,
-      files: ["**/*.json{,c,5}"],
-      ignores: [CODE_BLOCK],
-      rules: {
-        ...config.rules,
-        "unicorn/filename-case": "error"
-      }
-    }))
+  ...compat.extends("plugin:jsonc/recommended-with-json").map(config => ({
+    ...config,
+    files: ["**/*.json"],
+    ignores: [...ignores, JSONC_FILES]
+  })),
+  ...compat.extends("plugin:jsonc/recommended-with-json").map(config => ({
+    ...config,
+    files: ["**/executors/**/schema.json", "**/generators/**/schema.json"],
+    ignores: [...ignores, JSONC_FILES],
+    rules: {
+      ...config.rules,
+      "@nx/workspace/valid-schema-description": "error"
+    }
+  })),
+  ...compat.extends("plugin:jsonc/recommended-with-jsonc").map(config => ({
+    ...config,
+    files: ["**/*.jsonc", ...JSONC_FILES],
+    ignores
+  })),
+  ...compat.extends("plugin:jsonc/recommended-with-json5").map(config => ({
+    ...config,
+    files: ["**/*.json5"],
+    ignores
+  })),
+  ...compat.extends("plugin:jsonc/recommended-with-json5").map(config => ({
+    ...config,
+    files: ["**/*.json{,c,5}"],
+    ignores: [CODE_BLOCK],
+    rules: {
+      ...config.rules,
+      "unicorn/filename-case": "error"
+    }
+  }))
 ];
 
-export default config;
+export default formatConfig("JSON", config);

@@ -6,9 +6,10 @@ import mdxPlugin from "eslint-plugin-mdx";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import { findWorkspaceRoot } from "@storm-software/config-tools";
-import { CODE_BLOCK } from "./constants";
-import { ignores } from "./ignores";
-import react from "./react";
+import base from "./base";
+import { CODE_BLOCK } from "./utils/constants";
+import { formatConfig } from "./utils/format-config";
+import { ignores } from "./utils/ignores";
 
 const workspaceRoot = findWorkspaceRoot();
 const compat = new FlatCompat({
@@ -18,7 +19,7 @@ const compat = new FlatCompat({
 });
 
 const config: Linter.FlatConfig[] = [
-  ...react,
+  ...base,
   mdxPlugin.configs.recommended,
   {
     files: ["**/.md", "**/.mdx", "**/.markdown"],
@@ -114,4 +115,4 @@ const config: Linter.FlatConfig[] = [
     }))
 ];
 
-export default config;
+export default formatConfig("Markdown", config);

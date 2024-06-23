@@ -1,21 +1,24 @@
 import type { Linter } from "eslint";
 import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
-import nxEslintPlugin from "@nx/eslint-plugin";
+import nxPlugin from "@nx/eslint-plugin";
+import typescriptConfigs from "@nx/eslint-plugin/src/configs/typescript.js";
 import { findWorkspaceRoot } from "@storm-software/config-tools";
 import base from "./base";
-import { ignores } from "./ignores";
+import { formatConfig } from "./utils/format-config";
+import { ignores } from "./utils/ignores";
 
 const workspaceRoot = findWorkspaceRoot();
 const compat = new FlatCompat({
   baseDirectory: workspaceRoot,
-  recommendedConfig: js.configs.recommended,
+  recommendedConfig: typescriptConfigs,
   ignores
 });
 
 const config: Linter.FlatConfig[] = [
   ...base,
-  {
+  { plugins: { "@nx": nxPlugin } },
+  ...compat.plugins("@nx").map(config => ({
+    ...config,
     files: [
       "**/*.ts",
       "**/*.mts",
@@ -26,70 +29,43 @@ const config: Linter.FlatConfig[] = [
       "**/*.jsx"
     ],
     ignores,
-    plugins: {
-      "@nx": nxEslintPlugin
-    }
-  },
-  ...compat
-    .config({
-      extends: [
-        "plugin:@nx/eslint",
-        "plugin:@nx/react",
-        "plugin:@nx/next",
-        "plugin:@nx/typescript",
-        "plugin:@nx/javascript",
-        "plugin:@nx/prettier"
-      ]
-    })
-    .map(config => ({
-      ...config,
-      files: [
-        "**/*.ts",
-        "**/*.mts",
-        "**/*.cts",
-        "**/*.tsx",
-        "**/*.cjs",
-        "**/*.js",
-        "**/*.jsx"
+    rules: {
+      ...config.rules,
+      "@nx/enforce-module-boundaries": [
+        "error",
+        {
+          enforceBuildableLibDependency: true,
+          "checkDynamicDependenciesExceptions": [".*"],
+          allow: [],
+          depConstraints: [
+            {
+              sourceTag: "*",
+              onlyDependOnLibsWithTags: ["*"]
+            }
+          ]
+        }
       ],
-      ignores,
-      rules: {
-        ...config.rules,
-        "@nx/enforce-module-boundaries": [
-          "error",
-          {
-            enforceBuildableLibDependency: true,
-            "checkDynamicDependenciesExceptions": [".*"],
-            allow: [],
-            depConstraints: [
-              {
-                sourceTag: "*",
-                onlyDependOnLibsWithTags: ["*"]
-              }
-            ]
-          }
-        ],
-        "@typescript-eslint/explicit-module-boundary-types": "off",
-        "no-restricted-imports": ["error", "create-nx-workspace"],
-        "@typescript-eslint/no-restricted-imports": [
-          "error",
-          {
-            "patterns": [
-              {
-                "group": ["nx/src/plugins/js*"],
-                "message":
-                  "Imports from 'nx/src/plugins/js' are not allowed. Use '@nx/js' instead"
-              },
-              {
-                "group": ["**/native-bindings", "**/native-bindings.js", ""],
-                "message":
-                  "Direct imports from native-bindings.js are not allowed. Import from index.js instead."
-              }
-            ]
-          }
-        ]
-      }
-    }))
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "no-restricted-imports": ["error", "create-nx-workspace"],
+      "@typescript-eslint/no-restricted-imports": [
+        "error",
+        {
+          "patterns": [
+            {
+              "group": ["nx/src/plugins/js*"],
+              "message":
+                "Imports from 'nx/src/plugins/js' are not allowed. Use '@nx/js' instead"
+            },
+            {
+              "group": ["**/native-bindings", "**/native-bindings.js", ""],
+              "message":
+                "Direct imports from native-bindings.js are not allowed. Import from index.js instead."
+            }
+          ]
+        }
+      ]
+    }
+  }))
 ];
 
-export default config;
+export default formatConfig("Nx", config);

@@ -1,5 +1,5 @@
 import eslintPlugin from "@storm-software/eslint-plugin";
-import { ignores } from "@storm-software/eslint/ignores";
+import { ignores } from "@storm-software/eslint/utils/ignores";
 
 export default [
   ...eslintPlugin.configs.recommended,

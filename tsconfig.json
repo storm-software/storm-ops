@@ -5,6 +5,6 @@
     "module": "commonjs",
     "moduleResolution": "node"
   },
-  "include": ["**/*.ts", "**/*.js", "**/*.json", "eslint.config.mjs"],
+  "include": ["**/*.ts", "**/*.js", "**/*.json"],
   "exclude": ["node_modules", "tmp"]
 }

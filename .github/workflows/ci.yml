@@ -30,8 +30,7 @@ env:
 
 jobs:
   release:
-    if:
-      github.repository == 'storm-software/storm-ops' && (github.ref ==
+    if: github.repository == 'storm-software/storm-ops' && (github.ref ==
       'refs/heads/main' || github.ref == 'refs/heads/next' || github.ref ==
       'refs/heads/alpha' || github.ref == 'refs/heads/beta')
     name: "CI/CD"
@@ -67,8 +66,7 @@ jobs:
       - name: Send Discord notification - Deployment started
         uses: Ilshidur/action-discord@master
         with:
-          args:
-            "Deployment for ${{ github.repository }} has started - #${{
+          args: "Deployment for ${{ github.repository }} has started - #${{
             github.run_number }}"
         env:
           DISCORD_WEBHOOK: ${{ secrets.STORM_BOT_DISCORD_WEBHOOK }}
@@ -172,8 +170,7 @@ jobs:
         run: chmod a=rwx dist/packages/create-storm-workspace/package.json
 
       - name: Build repository packages
-        run:
-          pnpm nx affected -t build --parallel=5 --base=${{ env.NX_BASE }}
+        run: pnpm nx affected -t build --parallel=5 --base=${{ env.NX_BASE }}
           --head=${{ env.NX_HEAD }}
 
       - name: Add permissions to git tools
@@ -227,8 +224,7 @@ jobs:
       - name: Send Discord notification - Deployment successful
         uses: Ilshidur/action-discord@master
         with:
-          args:
-            "Deployment for ${{ github.repository }} finished successfully -
+          args: "Deployment for ${{ github.repository }} finished successfully -
             #${{ github.run_number }}"
         env:
           DISCORD_WEBHOOK: ${{ secrets.STORM_BOT_DISCORD_WEBHOOK }}

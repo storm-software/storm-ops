@@ -295,6 +295,7 @@
   "eslint.format.enable": true,
   "eslint.alwaysShowStatus": true,
   "eslint.run": "onSave",
+  "eslint.debug": true,
   "eslint.packageManager": "pnpm",
   "eslint.nodePath": "node",
   "eslint.workingDirectories": ["./"],

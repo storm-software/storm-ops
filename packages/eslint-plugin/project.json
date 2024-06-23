@@ -4,40 +4,124 @@
   "sourceRoot": "packages/eslint-plugin/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+    // "build-cjs": {
+    //   "cache": true,
+    //   "executor": "@nx/esbuild:esbuild",
+    //   "dependsOn": ["clean", "^build"],
+    //   "inputs": ["typescript"],
+    //   "outputs": ["{options.outputPath}"],
+    //   "options": {
+    //     "outputPath": "dist/packages/eslint-plugin/cjs",
+    //     "main": "packages/eslint-plugin/src/index.ts",
+    //     "additionalEntryPoints": ["packages/eslint-plugin/src/types.ts"],
+    //     "tsConfig": "packages/eslint-plugin/tsconfig.cjs.json",
+    //     "external": ["@nx/*", "@storm-software/*", "eslint"],
+    //     "format": ["cjs"],
+    //     "platform": "node",
+    //     "deleteOutputPath": true,
+    //     "bundle": true,
+    //     "thirdParty": true,
+    //     "skipTypeCheck": false,
+    //     "metafile": true,
+    //     "minify": false,
+    //     "assets": [
+    //       {
+    //         "input": "./packages/eslint-plugin",
+    //         "glob": "*.md",
+    //         "output": "/"
+    //       },
+    //       {
+    //         "input": "./packages/eslint-plugin",
+    //         "glob": "./index.d.ts",
+    //         "output": "./cjs"
+    //       },
+    //       {
+    //         "input": "",
+    //         "glob": "LICENSE",
+    //         "output": "/"
+    //       }
+    //     ]
+    //   }
+    // },
+    // "build-esm": {
+    //   "cache": true,
+    //   "executor": "@nx/esbuild:esbuild",
+    //   "dependsOn": ["clean", "^build"],
+    //   "inputs": ["typescript"],
+    //   "outputs": ["{options.outputPath}"],
+    //   "options": {
+    //     "outputPath": "dist/packages/eslint-plugin/esm",
+    //     "main": "packages/eslint-plugin/src/index.ts",
+    //     "additionalEntryPoints": ["packages/eslint-plugin/src/types.ts"],
+    //     "tsConfig": "packages/eslint-plugin/tsconfig.esm.json",
+    //     "external": ["@nx/*", "@storm-software/*", "eslint"],
+    //     "format": ["esm"],
+    //     "platform": "node",
+    //     "deleteOutputPath": true,
+    //     "bundle": true,
+    //     "thirdParty": true,
+    //     "skipTypeCheck": false,
+    //     "metafile": true,
+    //     "minify": false,
+    //     "assets": [
+    //       {
+    //         "input": "./packages/eslint-plugin",
+    //         "glob": "./index.d.ts",
+    //         "output": "./esm"
+    //       }
+    //     ]
+    //   }
+    // },
+    // "build": {
+    //   "cache": false,
+    //   "dependsOn": ["build-esm", "build-cjs", "clean", "^build"],
+    //   "executor": "nx:run-commands",
+    //   "options": {
+    //     "command": "echo \"ESLint Plugin build is complete\"",
+    //     "parallel": false
+    //   }
+    // },
+
+    "lint-docs": {
+      "executor": "nx:run-commands",
+      "inputs": [
+        "config_linting",
+        "config_docs",
+        "source_docs",
+        "typescript",
+        "^production"
+      ],
+      "outputs": ["{projectRoot}/README.md"],
+      "dependsOn": ["build", "^lint"],
       "options": {
-        "outputPath": "dist/packages/eslint-plugin",
-        "main": "packages/eslint-plugin/src/index.ts",
-        "additionalEntryPoints": ["packages/eslint-plugin/src/types.ts"],
-        "tsConfig": "packages/eslint-plugin/tsconfig.json",
-        "external": ["@nx/*", "@storm-software/*", "eslint"],
-        "format": ["esm", "cjs"],
-        "platform": "node",
-        "deleteOutputPath": true,
-        "bundle": true,
-        "thirdParty": true,
-        "skipTypeCheck": false,
-        "metafile": true,
-        "minify": false,
-        "assets": [
-          {
-            "input": "./packages/eslint-plugin",
-            "glob": "*.md",
-            "output": "/"
-          },
-          {
-            "input": "./packages/eslint-plugin",
-            "glob": "./index.d.ts",
-            "output": "/"
-          },
-          {
-            "input": "",
-            "glob": "LICENSE",
-            "output": "/"
-          }
-        ]
+        "command": "pnpm exec eslint-doc-generator -- --check",
+        "parallel": false,
+        "cwd": "packages/eslint-plugin"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "node -r esbuild-register packages/eslint-plugin/tools/build.js",
+        "parallel": false
+      }
+    },
+    "docs": {
+      "executor": "nx:run-commands",
+      "inputs": [
+        "config_linting",
+        "config_docs",
+        "source_docs",
+        "typescript",
+        "^production"
+      ],
+      "outputs": ["{projectRoot}/README.md"],
+      "dependsOn": ["build", "lint-docs", "^docs"],
+      "options": {
+        "command": "pnpm exec eslint-doc-generator",
+        "parallel": false,
+        "cwd": "packages/eslint-plugin"
       }
     },
     "nx-release-publish": {

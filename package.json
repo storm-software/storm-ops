@@ -16,6 +16,17 @@
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
+  "maintainers": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    }
+  ],
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
   "license": "Apache-2.0",
   "private": true,
   "packageManager": "pnpm@9.1.4",
@@ -49,6 +60,7 @@
     "build-plugins": "node -r esbuild-register tools/scripts/build-plugins.ts",
     "clean": "rimraf dist",
     "clean:packages": "rimraf dist/packages",
+    "nuke": "nx clear-cache && rimraf tmp && rimraf .nx/cache && rimraf **/node_modules && pnpm clear",
     "commit": "node ./dist/packages/git-tools/bin/git.js commit",
     "dep-graph": "nx dep-graph",
     "e2e": "nx e2e",
@@ -57,7 +69,7 @@
     "format-readme": "node ./dist/packages/git-tools/bin/git.js readme-gen --templates=\"./dist/packages/git-tools/readme/templates\"",
     "format-toml": "pnpm exec taplo format --config=\"./dist/packages/linting-tools/taplo/.taplo.toml\" --cache-path=\"./tmp/taplo\"",
     "help": "nx help",
-    "lint": "node ./dist/packages/linting-tools/bin/lint.js all --skip-cspell --skip-alex",
+    "lint": "node -r esbuild-register ./dist/packages/linting-tools/bin/lint.js all --skip-cspell --skip-alex",
     "lint-ls": "pnpm exec ls-lint --config=\"./dist/packages/linting-tools/ls-lint/ls-lint.yml\"",
     "lint-prettier": "pnpm exec prettier --check --config=\"prettier.config.js\" --ignore-path=\"./packages/prettier/src/.prettierignore\" --cache ",
     "lint-toml": "pnpm exec taplo format --check --config=\"./dist/packages/linting-tools/taplo/.taplo.toml\"",
@@ -79,9 +91,7 @@
     "@monodon/rust": "1.4.0",
     "@nx/devkit": "19.3.1",
     "@nx/esbuild": "19.3.1",
-    "@nx/eslint": "19.3.1",
     "@nx/eslint-plugin": "19.3.1",
-    "@nx/jest": "19.3.1",
     "@nx/js": "19.3.1",
     "@nx/plugin": "19.3.1",
     "@nx/workspace": "19.3.1",
@@ -118,6 +128,14 @@
     "typescript": "5.4.5",
     "verdaccio": "5.31.1"
   },
+  "devDependencies": {
+    "@chialab/esbuild-plugin-require-resolve": "0.18.0",
+    "@microsoft/tsdoc": "0.15.0",
+    "@nx/eslint": "19.3.1",
+    "@nx/jest": "19.3.1",
+    "copyfiles": "2.4.1",
+    "eslint-plugin-eslint-plugin": "6.1.0"
+  },
   "devEngines": {
     "node": "20.x || 21.x"
   },
@@ -142,7 +160,6 @@
       "@storm-software/config": "workspace:*",
       "@storm-software/config-tools": "workspace:*",
       "@storm-software/eslint": "workspace:*",
-      "@storm-software/eslint-plugin": "workspace:*",
       "@storm-software/git-tools": "workspace:*",
       "@storm-software/linting-tools": "workspace:*",
       "@storm-software/markdownlint": "workspace:*",
@@ -151,6 +168,9 @@
       "@storm-software/tsconfig": "workspace:*",
       "@storm-software/workspace-tools": "workspace:*",
       "eslint-config-storm-software": "workspace:*",
+      "eslint-plugin-storm-software": "workspace:*",
+      "eslint-plugin-storm-graphql": "workspace:*",
+      "eslint-plugin-storm-react": "workspace:*",
       "axios": "1.7.2",
       "chalk": "4.1.2",
       "create-storm-workspace": "workspace:*",

@@ -1,5 +1,5 @@
 {
-  "name": "@storm-software/eslint-plugin",
+  "name": "eslint-plugin-storm-software",
   "version": "0.13.0",
   "type": "module",
   "description": "⚡ The eslint-plugin package is an ESLint plugin that contains a collection of recommended ESLint rule configurations which you can extend from in your own ESLint configs, as well as an Nx-specific lint rule called enforce-module-boundaries.",
@@ -20,22 +20,64 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "main": "./index.cjs",
-  "module": "./index.js",
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.js",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "import": {
         "types": "./index.d.ts",
-        "default": "./index.js"
+        "default": "./esm/index.js"
       },
       "require": {
         "types": "./index.d.ts",
-        "default": "./index.cjs"
+        "default": "./cjs/index.cjs"
       },
       "default": {
         "types": "./index.d.ts",
-        "default": "./index.js"
+        "default": "./esm/index.js"
+      }
+    },
+    "./configs": {
+      "import": {
+        "types": "./index.d.ts",
+        "default": "./esm/configs.js"
+      },
+      "require": {
+        "types": "./index.d.ts",
+        "default": "./cjs/configs.cjs"
+      },
+      "default": {
+        "types": "./index.d.ts",
+        "default": "./esm/configs.js"
+      }
+    },
+    "./utils": {
+      "import": {
+        "types": "./index.d.ts",
+        "default": "./esm/utils.js"
+      },
+      "require": {
+        "types": "./index.d.ts",
+        "default": "./cjs/utils.cjs"
+      },
+      "default": {
+        "types": "./index.d.ts",
+        "default": "./esm/utils.js"
+      }
+    },
+    "./types": {
+      "import": {
+        "types": "./index.d.ts",
+        "default": "./esm/types.js"
+      },
+      "require": {
+        "types": "./index.d.ts",
+        "default": "./cjs/types.cjs"
+      },
+      "default": {
+        "types": "./index.d.ts",
+        "default": "./esm/types.js"
       }
     }
   },
@@ -56,6 +98,7 @@
   "peerDependencies": {
     "@nx/eslint": ">=18.3.0",
     "@nx/eslint-plugin": ">=18.3.0",
+    "@storm-software/eslint": "latest",
     "eslint": ">=9.0.0"
   },
   "peerDependenciesMeta": {
@@ -65,19 +108,39 @@
     "@nx/eslint-plugin": {
       "optional": true
     },
+    "@storm-software/eslint": {
+      "optional": false
+    },
     "eslint": {
       "optional": false
     }
   },
   "dependencies": {
+    "@babel/helper-validator-identifier": "7.24.7",
+    "@eslint-community/eslint-utils": "4.4.0",
     "@typescript-eslint/eslint-plugin": "7.12.0",
     "@typescript-eslint/type-utils": "7.12.0",
     "@typescript-eslint/utils": "7.12.0",
+    "ci-info": "4.0.0",
+    "clean-regexp": "1.0.0",
+    "core-js-compat": "3.37.1",
+    "esquery": "1.5.0",
     "fs-extra": "11.2.0",
+    "indent-string": "5.0.0",
+    "is-builtin-module": "4.0.0",
+    "jsesc": "3.0.2",
+    "lodash-es": "4.17.21",
+    "pluralize": "8.0.0",
+    "read-pkg-up": "11.0.0",
+    "regexp-tree": "0.1.27",
+    "regjsparser": "0.10.0",
+    "semver": "7.6.2",
+    "strip-indent": "4.0.0",
     "tslib": "2.6.3"
   },
   "devDependencies": {
-    "@types/eslint": "8.56.10"
+    "@types/eslint": "8.56.10",
+    "eslint-doc-generator": "1.7.1"
   },
   "publishConfig": {
     "access": "public"

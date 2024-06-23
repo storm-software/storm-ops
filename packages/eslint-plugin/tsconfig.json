@@ -5,10 +5,10 @@
     "module": "ESNext",
     "target": "ESNext",
     "moduleResolution": "Bundler",
-    "declaration": false,
-    "declarationMap": false,
+    "strict": false,
     "noEmit": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "types": ["node"]
   },
   "include": ["src/**/*.ts"],

@@ -18,16 +18,162 @@
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
+  "maintainers": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    }
+  ],
   "license": "Apache-2.0",
   "private": false,
-  "module": "./index.js",
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.js",
   "exports": {
-    ".": "./index.js",
-    "./index": "./index.js",
-    "./*": "./*.js",
-    "./rules": "./rules/index.js",
-    "./rules/*": "./rules/*.js",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "default": "./esm/index.js"
+      },
+      "require": {
+        "default": "./cjs/index.cjs"
+      },
+      "default": {
+        "default": "./esm/index.js"
+      }
+    },
+    "./utils": {
+      "import": {
+        "default": "./esm/utils/index.js"
+      },
+      "require": {
+        "default": "./cjs/utils/index.cjs"
+      },
+      "default": {
+        "default": "./esm/utils/index.js"
+      }
+    },
+    "./base": {
+      "import": {
+        "default": "./esm/base.js"
+      },
+      "require": {
+        "default": "./cjs/base.cjs"
+      },
+      "default": {
+        "default": "./esm/base.js"
+      }
+    },
+    "./json": {
+      "import": {
+        "default": "./esm/json.js"
+      },
+      "require": {
+        "default": "./cjs/json.cjs"
+      },
+      "default": {
+        "default": "./esm/json.js"
+      }
+    },
+    "./yml": {
+      "import": {
+        "default": "./esm/yml.js"
+      },
+      "require": {
+        "default": "./cjs/yml.cjs"
+      },
+      "default": {
+        "default": "./esm/yml.js"
+      }
+    },
+    "./nx": {
+      "import": {
+        "default": "./esm/nx.js"
+      },
+      "require": {
+        "default": "./cjs/nx.cjs"
+      },
+      "default": {
+        "default": "./esm/nx.js"
+      }
+    },
+    "./markdown": {
+      "import": {
+        "default": "./esm/markdown.js"
+      },
+      "require": {
+        "default": "./cjs/markdown.cjs"
+      },
+      "default": {
+        "default": "./esm/markdown.js"
+      }
+    },
+    "./recommended": {
+      "import": {
+        "default": "./esm/recommended.js"
+      },
+      "require": {
+        "default": "./cjs/recommended.cjs"
+      },
+      "default": {
+        "default": "./esm/recommended.js"
+      }
+    },
+    "./graphql": {
+      "import": {
+        "default": "./esm/graphql.js"
+      },
+      "require": {
+        "default": "./cjs/graphql.cjs"
+      },
+      "default": {
+        "default": "./esm/graphql.js"
+      }
+    },
+    "./react": {
+      "import": {
+        "default": "./esm/react.js"
+      },
+      "require": {
+        "default": "./cjs/react.cjs"
+      },
+      "default": {
+        "default": "./esm/react.js"
+      }
+    },
+    "./react-native": {
+      "import": {
+        "default": "./esm/react-native.js"
+      },
+      "require": {
+        "default": "./cjs/react-native.cjs"
+      },
+      "default": {
+        "default": "./esm/react-native.js"
+      }
+    },
+    "./next": {
+      "import": {
+        "default": "./esm/next.js"
+      },
+      "require": {
+        "default": "./cjs/next.cjs"
+      },
+      "default": {
+        "default": "./esm/next.js"
+      }
+    },
+    "./electron": {
+      "import": {
+        "default": "./esm/electron.js"
+      },
+      "require": {
+        "default": "./cjs/electron.cjs"
+      },
+      "default": {
+        "default": "./esm/electron.js"
+      }
+    }
   },
   "keywords": [
     "storm",
@@ -41,7 +187,8 @@
   "peerDependencies": {
     "@nx/eslint": ">=18.3.0",
     "@nx/eslint-plugin": ">=18.3.0",
-    "eslint": ">=9.0.0"
+    "eslint": ">=9.0.0",
+    "graphql": ">=16.9.0"
   },
   "peerDependenciesMeta": {
     "@nx/eslint": {
@@ -52,6 +199,9 @@
     },
     "eslint": {
       "optional": false
+    },
+    "graphql": {
+      "optional": true
     }
   },
   "dependencies": {
@@ -75,9 +225,11 @@
     "eslint-plugin-relay": "1.8.3",
     "eslint-plugin-sonarjs": "1.0.3",
     "eslint-plugin-tsdoc": "0.3.0",
-    "eslint-plugin-unicorn": "52.0.0",
+    "eslint-plugin-unicorn": "54.0.0",
     "eslint-plugin-yml": "1.14.0",
     "jsonc-eslint-parser": "2.4.0",
+    "synckit": "0.9.0",
+    "ws": "8.17.1",
     "yaml-eslint-parser": "1.2.3"
   },
   "devDependencies": {

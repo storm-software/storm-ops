@@ -6,11 +6,13 @@
       "runner": "nx/tasks-runners/default",
       "options": {
         "cacheableOperations": [
+          "lint-docs",
+          "lint-ls",
           "lint",
-          "format",
           "format-readme",
           "format-toml",
           "format-prettier",
+          "format",
           "clean",
           "build-base",
           "build",
@@ -43,6 +45,7 @@
       "{workspaceRoot}/biome.json",
       "{workspaceRoot}/lefthook.yaml",
       "{workspaceRoot}/.markdownlint.json",
+      "{workspaceRoot}/.markdownlint-cli2.cjs",
       "{workspaceRoot}/.prettierrc",
       "{workspaceRoot}/.prettierignore"
     ],
@@ -96,6 +99,8 @@
       "{workspaceRoot}/api-extractor.json",
       "{workspaceRoot}/tsdoc.json",
       "{workspaceRoot}/typedoc.json",
+      "{workspaceRoot}/.eslint-doc-generatorrc.js",
+      "{workspaceRoot}/.eslint-doc-generatorrc.json",
       "{workspaceRoot}/contentlayer.config.ts",
       "{workspaceRoot}/*.md",
       "{workspaceRoot}/*.mdx",
@@ -139,6 +144,7 @@
       "{projectRoot}/biome.json",
       "{projectRoot}/lefthook.yaml",
       "{projectRoot}/.markdownlint.json",
+      "{projectRoot}/.markdownlint-cli2.cjs",
       "{projectRoot}/.prettierrc",
       "{projectRoot}/.prettierignore"
     ],
@@ -147,6 +153,8 @@
       "{projectRoot}/api-extractor.json",
       "{projectRoot}/tsdoc.json",
       "{projectRoot}/typedoc.json",
+      "{projectRoot}/.eslint-doc-generatorrc.js",
+      "{projectRoot}/.eslint-doc-generatorrc.json",
       "{projectRoot}/contentlayer.config.ts",
       "{projectRoot}/.storybook/**/*",
       "{projectRoot}/tsconfig.storybook.json"
@@ -228,6 +236,8 @@
       "{projectRoot}/src/**/*.toml",
       "{projectRoot}/src/**/*.md",
       "{projectRoot}/src/**/*.mdx",
+      "{projectRoot}/tools/**/*",
+      "{projectRoot}/scripts/**/*",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
       "!{projectRoot}/node_modules/**/*"
@@ -235,10 +245,14 @@
     "typescript": ["config_typescript", "source_typescript"],
     "production": [
       "{projectRoot}/**/*",
+      "!{projectRoot}/tools/**/*",
+      "!{projectRoot}/scripts/**/*",
       "!{projectRoot}/node_modules/**/*",
       "!{projectRoot}/api-extractor.json",
       "!{projectRoot}/tsdoc.json",
       "!{projectRoot}/typedoc.json",
+      "!{projectRoot}/.eslint-doc-generatorrc.js",
+      "!{projectRoot}/.eslint-doc-generatorrc.json",
       "!{projectRoot}/contentlayer.config.ts",
       "!{projectRoot}/.storybook/**/*",
       "!{projectRoot}/tsconfig.storybook.json",
@@ -257,6 +271,7 @@
       "!{projectRoot}/biome.json",
       "!{projectRoot}/lefthook.yaml",
       "!{projectRoot}/.markdownlint.json",
+      "!{projectRoot}/.markdownlint-cli2.cjs",
       "!{projectRoot}/.prettierrc",
       "!{projectRoot}/.prettierignore",
       "!{projectRoot}/docs/**/*",
@@ -271,6 +286,19 @@
     "default": ["{projectRoot}/**/*"]
   },
   "targetDefaults": {
+    "lint-docs": {
+      "cache": true,
+      "outputs": ["{workspaceRoot}/{projectRoot}"],
+      "inputs": [
+        "config_linting",
+        "config_docs",
+        "source_docs",
+        "typescript",
+        "^production"
+      ],
+      "executor": "nx:run-commands",
+      "dependsOn": ["build", "^lint-docs"]
+    },
     "lint-ls": {
       "cache": true,
       "outputs": ["{workspaceRoot}/{projectRoot}"],
@@ -284,7 +312,14 @@
     "lint": {
       "cache": true,
       "outputs": ["{workspaceRoot}/{projectRoot}"],
-      "dependsOn": ["lint-ls", "^lint"]
+      "inputs": [
+        "config_linting",
+        "config_docs",
+        "source_docs",
+        "typescript",
+        "^production"
+      ],
+      "dependsOn": ["lint-ls", "lint-docs", "^lint"]
     },
     "format-toml": {
       "cache": true,
@@ -346,7 +381,14 @@
     "docs": {
       "cache": true,
       "outputs": ["{options.outputPath}"],
-      "dependsOn": ["build", "^docs"]
+      "inputs": [
+        "config_linting",
+        "config_docs",
+        "source_docs",
+        "typescript",
+        "^production"
+      ],
+      "dependsOn": ["build", "lint-docs", "^docs"]
     },
     "test": {
       "cache": true,
@@ -379,7 +421,7 @@
       }
     },
     "version": {
-      "preVersionCommand": "pnpm nx run-many -t build --all --parallel=1 --verbose",
+      "preVersionCommand": "pnpm nx run-many --target=build --all --parallel=3",
       "generator": "@storm-software/workspace-tools:release-version",
       "generatorOptions": {
         "currentVersionResolver": "git-tag",

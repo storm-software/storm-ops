@@ -1,10 +1,23 @@
-import configs from "./configs";
-import meta from "./meta";
-import type { StormESLintPlugin } from "./types";
+import { createConfigs } from "./configs";
+import type {
+  StormESLintPlugin,
+  StormESLintPluginConfigKeys,
+  StormESLintPluginConfigs
+} from "./types";
+import { createMeta } from "./utils/create-meta";
+import { createRules } from "./utils/create-rules";
 
-export default {
-  meta,
-  configs,
-  rules: {},
+const plugin = {
+  meta: createMeta(),
+  configs: {} as StormESLintPluginConfigs<typeof StormESLintPluginConfigKeys>,
+  rules: {
+    ...createRules()
+  },
   processors: {}
-} satisfies StormESLintPlugin;
+} satisfies StormESLintPlugin<
+  StormESLintPluginConfigs<typeof StormESLintPluginConfigKeys>
+>;
+
+plugin.configs = createConfigs(plugin);
+
+export default plugin;

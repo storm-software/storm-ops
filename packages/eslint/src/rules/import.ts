@@ -36,7 +36,10 @@ const config: Linter.RulesRecord = {
    *
    * 🚫 Not fixable - https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-extraneous-dependencies.md
    */
-  "import/no-extraneous-dependencies": ["error", { includeInternal: true, includeTypes: true }],
+  "import/no-extraneous-dependencies": [
+    "error",
+    { includeInternal: true, includeTypes: true }
+  ],
   /**
    * Disallow mutable exports.
    *
@@ -79,7 +82,14 @@ const config: Linter.RulesRecord = {
       ],
       "newlines-between": "never"
     }
-  ]
+  ],
+
+  "import/no-unresolved": "off",
+  "import/extensions": ["error", "ignorePackages"], // Bob when bundling requires to have `.js` extension
+  "import/prefer-default-export": "off", // disable opposite of 'import/no-default-export'
+  // Reports any imports that come after non-import statements
+  // https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/first.md
+  "import/no-duplicates": "error"
 };
 
 export default config;

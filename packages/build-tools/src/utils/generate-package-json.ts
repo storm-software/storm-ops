@@ -1,33 +1,33 @@
-import type { TypeScriptBuildOptions } from "../../declarations";
 import { writeFileSync } from "node:fs";
-import { joinPathFragments, readJsonFile } from "@nx/devkit";
-import type { ProjectGraph } from "@nx/devkit";
-import { retrieveProjectConfigurationsWithoutPluginInference } from "nx/src/project-graph/utils/retrieve-workspace-files.js";
-import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils.js";
-import type { StormConfig } from "@storm-software/config";
-import { fileExists } from "nx/src/utils/fileutils.js";
-import { removeExtension } from "@storm-software/config-tools";
-import {
-  getExtraDependencies,
-  getInternalDependencies
-} from "./get-project-deps";
-import {
-  findWorkspaceRoot,
-  LogLevel,
-  getLogLevel,
-  writeDebug,
-  writeTrace,
-  writeWarning
-} from "@storm-software/config-tools";
-import { getEntryPoints } from "./get-entry-points";
 import {
   createProjectGraphAsync,
   readCachedProjectGraph
 } from "nx/src/project-graph/project-graph.js";
+import { retrieveProjectConfigurationsWithoutPluginInference } from "nx/src/project-graph/utils/retrieve-workspace-files.js";
+import { fileExists } from "nx/src/utils/fileutils.js";
+import { joinPathFragments, readJsonFile } from "@nx/devkit";
+import type { ProjectGraph } from "@nx/devkit";
+import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils.js";
 import {
-  HelperDependency,
-  getHelperDependency
+  getHelperDependency,
+  HelperDependency
 } from "@nx/js/src/utils/compiler-helper-dependency.js";
+import type { StormConfig } from "@storm-software/config";
+import {
+  findWorkspaceRoot,
+  getLogLevel,
+  LogLevel,
+  removeExtension,
+  writeDebug,
+  writeTrace,
+  writeWarning
+} from "@storm-software/config-tools";
+import type { TypeScriptBuildOptions } from "../../declarations";
+import { getEntryPoints } from "./get-entry-points";
+import {
+  getExtraDependencies,
+  getInternalDependencies
+} from "./get-project-deps";
 
 type DependencyNodeData = {
   version: string;
@@ -375,9 +375,15 @@ export const generatePackageJson = async (
     packageJson.description ??= workspacePackageJson.description;
     packageJson.homepage ??= workspacePackageJson.homepage;
     packageJson.bugs ??= workspacePackageJson.bugs;
-    packageJson.author ??= workspacePackageJson.author;
     packageJson.license ??= workspacePackageJson.license;
     packageJson.keywords ??= workspacePackageJson.keywords;
+    packageJson.funding ??= workspacePackageJson.funding;
+    packageJson.author ??= workspacePackageJson.author;
+
+    packageJson.maintainers ??= workspacePackageJson.maintainers;
+    if (!packageJson.maintainers && packageJson.author) {
+      packageJson.contributors = [packageJson.author];
+    }
 
     packageJson.repository ??= workspacePackageJson.repository;
     packageJson.repository.directory ??= projectRoot

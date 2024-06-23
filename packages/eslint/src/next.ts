@@ -1,8 +1,9 @@
 import type { Linter } from "eslint";
 import nextPlugin from "@next/eslint-plugin-next";
-import { CODE_FILE } from "./constants";
-import { ignores } from "./ignores";
 import react from "./react";
+import { CODE_FILE } from "./utils/constants";
+import { formatConfig } from "./utils/format-config";
+import { ignores } from "./utils/ignores";
 
 const babelOptions = {
   presets: (() => {
@@ -45,4 +46,4 @@ const config: Linter.FlatConfig[] = [
   }
 ];
 
-export default config;
+export default formatConfig("NextJS", config);

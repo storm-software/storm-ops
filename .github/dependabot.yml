@@ -1,5 +1,7 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
+#################################
+# GitHub Dependabot Config info #
+#################################
+
 # Please see the documentation for all configuration options:
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
@@ -7,18 +9,38 @@ version: 2
 updates:
   # Maintain dependencies for npm
   - package-ecosystem: "npm"
+    commit-message:
+      prefix: "deps(monorepo):"
     directory: "/"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "@nx/**"
+    open-pull-requests-limit: 5
 
   # Maintain dependencies for cargo
   - package-ecosystem: "cargo"
+    commit-message:
+      prefix: "deps(monorepo):"
     directory: "/"
     schedule:
       interval: "weekly"
+    open-pull-requests-limit: 5
 
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
+    commit-message:
+      prefix: "deps(monorepo):"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    open-pull-requests-limit: 5
+
+  # Maintain dependencies for bundler
+  - package-ecosystem: "bundler"
+    commit-message:
+      prefix: "deps(monorepo):"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5

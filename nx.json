@@ -1,5 +1,4 @@
 {
-  "$schema": "https://cdn.jsdelivr.net/npm/nx/schemas/nx-schema.json",
   "extends": "./packages/workspace-tools/config/nx.json",
   "targetDefaults": {
     "lint-ls": {
@@ -45,37 +44,22 @@
         "command": "pnpm exec prettier \"{projectRoot}/**/*\" --write --ignore-unknown --no-error-on-unmatched-pattern --config=\"packages/prettier/src/config.json\" --ignore-path=\"packages/prettier/src/.prettierignore\" --cache --cache-location=\"tmp/prettier/{projectRoot}\" ",
         "color": true
       }
-    }
-  },
-  "release": {
-    "projects": ["packages/*", "crates/*"],
-    "projectsRelationship": "independent",
-    "releaseTagPattern": "{projectName}@{version}",
-    "changelog": {
-      "automaticFromRef": true,
-      "workspaceChangelog": false,
-      "projectChangelogs": {
-        "createRelease": "github",
-        "entryWhenNoChanges": false,
-        "renderOptions": {
-          "authors": false,
-          "commitReferences": true,
-          "versionTitleDate": true
-        }
-      }
     },
-    "version": {
-      "preVersionCommand": "pnpm nx run-many -t build --all --parallel=1 --verbose",
-      "generator": "@storm-software/workspace-tools:release-version",
-      "generatorOptions": {
-        "currentVersionResolver": "git-tag",
-        "specifierSource": "conventional-commits"
-      }
+    "@nx/esbuild:esbuild": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     }
   },
   "plugins": [
     "./dist/plugins/rust/index.js",
     "./dist/plugins/typescript/index.js",
-    "./dist/plugins/cloudflare/index.js"
+    "./dist/plugins/cloudflare/index.js",
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    }
   ]
 }
