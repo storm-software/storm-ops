@@ -34,4 +34,3 @@ export type StormESLintReactPluginConfigs = StormESLintPluginConfigs<
 
 export type StormESLintReactPlugin =
   StormESLintPlugin<StormESLintReactPluginConfigs>;
-

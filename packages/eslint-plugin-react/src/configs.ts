@@ -17,4 +17,3 @@ const configs = {
 } as StormESLintReactPluginConfigs;
 
 export default configs;
-
