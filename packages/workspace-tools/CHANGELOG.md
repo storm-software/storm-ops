@@ -1,3 +1,10 @@
+## 1.106.1 (2024-06-24)
+
+
+### 🩹 Fixes
+
+- **deps:** update patch prod dependencies ([f26698a8](https://github.com/storm-software/storm-ops/commit/f26698a8))
+
 ## 1.106.0 (2024-06-22)
 
 
