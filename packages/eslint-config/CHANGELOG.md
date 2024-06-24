@@ -1,3 +1,10 @@
+## 0.13.0 (2024-06-24)
+
+
+### 🚀 Features
+
+- **eslint:** Added back `nx` and removed `recommended` base configurations ([1661bde9](https://github.com/storm-software/storm-ops/commit/1661bde9))
+
 ## 0.12.1 (2024-06-24)
 
 ### 🩹 Fixes
