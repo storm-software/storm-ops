@@ -11,7 +11,7 @@ const messages = {
   zero: "The empty check is useless as `Array#every()` returns `true` for an empty array."
 };
 
-// We assume the user already follows `unicorn/explicit-length-check`. These are allowed in that rule.
+// We assume the user already follows `storm-software/explicit-length-check`. These are allowed in that rule.
 const isLengthCompareZero = node =>
   node.type === "BinaryExpression" &&
   node.right.type === "Literal" &&

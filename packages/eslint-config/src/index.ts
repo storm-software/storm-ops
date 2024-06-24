@@ -1,8 +1,8 @@
-import eslintPlugin from "@storm-software/eslint-plugin";
+import eslintPlugin from "eslint-plugin-storm-software";
 import { ignores } from "@storm-software/eslint/utils/ignores";
 
 export default [
-  ...eslintPlugin.configs.recommended,
+  ...eslintPlugin.configs.recommended!,
   {
     plugins: {
       "@storm-software": eslintPlugin

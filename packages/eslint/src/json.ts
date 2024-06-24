@@ -1,13 +1,13 @@
 import type { Linter } from "eslint";
 import jsoncPlugin from "eslint-plugin-jsonc";
-import unicornPlugin from "eslint-plugin-unicorn";
+// import unicornPlugin from "eslint-plugin-unicorn";
 import jsoncParser from "jsonc-eslint-parser";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
 import nxEslintPlugin from "@nx/eslint-plugin";
 import { findWorkspaceRoot } from "@storm-software/config-tools";
 import base from "./base";
-import { CODE_BLOCK } from "./utils/constants";
+// import { CODE_BLOCK } from "./utils/constants";
 import { formatConfig } from "./utils/format-config";
 import { ignores } from "./utils/ignores";
 
@@ -32,8 +32,8 @@ const config: Linter.FlatConfig[] = [
     ignores,
     plugins: {
       "jsonc": jsoncPlugin,
-      "@nx": nxEslintPlugin,
-      "unicorn": unicornPlugin
+      "@nx": nxEslintPlugin
+      // "unicorn": unicornPlugin
     },
     languageOptions: {
       parser: jsoncParser
@@ -62,16 +62,16 @@ const config: Linter.FlatConfig[] = [
     ...config,
     files: ["**/*.json5"],
     ignores
-  })),
-  ...compat.extends("plugin:jsonc/recommended-with-json5").map(config => ({
-    ...config,
-    files: ["**/*.json{,c,5}"],
-    ignores: [CODE_BLOCK],
-    rules: {
-      ...config.rules,
-      "unicorn/filename-case": "error"
-    }
   }))
+  // ...compat.extends("plugin:jsonc/recommended-with-json5").map(config => ({
+  //   ...config,
+  //   files: ["**/*.json{,c,5}"],
+  //   ignores: [CODE_BLOCK],
+  //   rules: {
+  //     ...config.rules,
+  //     "unicorn/filename-case": "error"
+  //   }
+  // }))
 ];
 
 export default formatConfig("JSON", config);

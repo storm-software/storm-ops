@@ -106,7 +106,7 @@ const config: Linter.FlatConfig[] = [
       },
       rules: {
         ...config.rules,
-        "unicorn/filename-case": "off",
+        "storm-software/filename-case": "off",
         "no-console": "off",
         "@typescript-eslint/no-unused-vars": "off",
         "no-undef": "off",

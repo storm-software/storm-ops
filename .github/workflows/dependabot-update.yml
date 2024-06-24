@@ -18,8 +18,8 @@ jobs:
       GITHUB_TOKEN: ${{secrets.STORM_BOT_GITHUB_TOKEN}}
     runs-on: ubuntu-latest
     if:
-      github.actor == 'dependabot[bot]' || github.actor == 'renovate[bot]' || github.actor == 'renovatebot' ||
-      github.actor == 'Stormie-Bot'
+      github.actor == 'dependabot[bot]' || github.actor == 'renovate[bot]' ||
+      github.actor == 'renovatebot' || github.actor == 'Stormie-Bot'
     steps:
       - name: Fetch Dependabot metadata
         id: metadata

@@ -86,11 +86,11 @@ Unresolved reference is probably from the global scope. We should avoid using th
 For example, like `foo` and `bar` below.
 
 ```
-function unicorn() {
+function storm-software() {
 	return foo;
 }
 
-function unicorn() {
+function storm-software() {
 	return function() {
 		return bar;
 	};

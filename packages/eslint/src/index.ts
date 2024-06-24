@@ -7,7 +7,6 @@ import next from "./next";
 import nx from "./nx";
 import react from "./react";
 import reactNative from "./react-native";
-import recommended from "./recommended";
 import tsdoc from "./tsdoc";
 import yml from "./yml";
 
@@ -28,8 +27,7 @@ export const configs = {
   yml,
   tsdoc,
   markdown,
-  graphql,
-  recommended
+  graphql
 };
 
 export default configs;

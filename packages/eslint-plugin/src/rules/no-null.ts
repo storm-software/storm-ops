@@ -24,7 +24,7 @@ const create = context => {
   return {
     Literal(node) {
       if (
-        // eslint-disable-next-line unicorn/no-null
+        // eslint-disable-next-line storm-software/no-null
         !isLiteral(node, null) ||
         (!createOptions.checkStrictEquality && isStrictEqual(node.parent)) ||
         // `Object.create(null)`, `Object.create(null, foo)`

@@ -5,7 +5,6 @@ import base from "@storm-software/eslint/base";
 import json from "@storm-software/eslint/json";
 import markdown from "@storm-software/eslint/markdown";
 import nx from "@storm-software/eslint/nx";
-import recommended from "@storm-software/eslint/recommended";
 import { ignores } from "@storm-software/eslint/utils";
 import { formatConfig } from "@storm-software/eslint/utils/format-config";
 import yml from "@storm-software/eslint/yml";
@@ -32,6 +31,7 @@ export const createRecommendedConfig = <
   plugin: StormESLintPlugin<TStormESLintPluginConfigs>
 ): Linter.FlatConfig[] => {
   const config: Linter.FlatConfig[] = [
+    ...base,
     ...tsCompat
       .extends(
         "plugin:@typescript-eslint/recommended",
@@ -54,7 +54,7 @@ export const createRecommendedConfig = <
           "import/resolver": "node"
         }
       })),
-    ...recommended,
+    ...nx,
     {
       files: ["**/*.{,c,m}{j,t}s{,x}"],
       ignores,
@@ -68,7 +68,7 @@ export const createRecommendedConfig = <
         /**
          * Require consistent filename case for all linted files.
          *
-         * 🚫 Not fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/filename-case.md
+         * 🚫 Not fixable - https://github.com/storm-software/storm-ops/blob/main/docs/rules/filename-case.md
          */
         "storm-software/filename-case": [
           "error",
@@ -79,11 +79,11 @@ export const createRecommendedConfig = <
         /**
          * Require using the `node:` protocol when importing Node.js built-in modules.
          *
-         * 🔧 Fixable - https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-node-protocol.md
+         * 🔧 Fixable - https://github.com/storm-software/storm-ops/blob/main/docs/rules/prefer-node-protocol.md
          */
         "storm-software/prefer-node-protocol": "warn",
         // Enforce the style of numeric separators by correctly grouping digits
-        // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/numeric-separators-style.md
+        // https://github.com/storm-software/storm-ops/blob/main/docs/rules/numeric-separators-style.md
         "storm-software/numeric-separators-style": "error",
         "storm-software/no-array-push-push": "error",
         "storm-software/no-instanceof-array": "error",

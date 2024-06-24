@@ -6,18 +6,19 @@ import getBuiltinRule from "./utils/get-builtin-rule";
 
 const baseRule = getBuiltinRule("no-warning-comments");
 
-// `unicorn/` prefix is added to avoid conflicts with core rule
-const MESSAGE_ID_AVOID_MULTIPLE_DATES = "unicorn/avoidMultipleDates";
-const MESSAGE_ID_EXPIRED_TODO = "unicorn/expiredTodo";
+// `storm-software/` prefix is added to avoid conflicts with core rule
+const MESSAGE_ID_AVOID_MULTIPLE_DATES = "storm-software/avoidMultipleDates";
+const MESSAGE_ID_EXPIRED_TODO = "storm-software/expiredTodo";
 const MESSAGE_ID_AVOID_MULTIPLE_PACKAGE_VERSIONS =
-  "unicorn/avoidMultiplePackageVersions";
-const MESSAGE_ID_REACHED_PACKAGE_VERSION = "unicorn/reachedPackageVersion";
-const MESSAGE_ID_HAVE_PACKAGE = "unicorn/havePackage";
-const MESSAGE_ID_DONT_HAVE_PACKAGE = "unicorn/dontHavePackage";
-const MESSAGE_ID_VERSION_MATCHES = "unicorn/versionMatches";
-const MESSAGE_ID_ENGINE_MATCHES = "unicorn/engineMatches";
-const MESSAGE_ID_REMOVE_WHITESPACE = "unicorn/removeWhitespaces";
-const MESSAGE_ID_MISSING_AT_SYMBOL = "unicorn/missingAtSymbol";
+  "storm-software/avoidMultiplePackageVersions";
+const MESSAGE_ID_REACHED_PACKAGE_VERSION =
+  "storm-software/reachedPackageVersion";
+const MESSAGE_ID_HAVE_PACKAGE = "storm-software/havePackage";
+const MESSAGE_ID_DONT_HAVE_PACKAGE = "storm-software/dontHavePackage";
+const MESSAGE_ID_VERSION_MATCHES = "storm-software/versionMatches";
+const MESSAGE_ID_ENGINE_MATCHES = "storm-software/engineMatches";
+const MESSAGE_ID_REMOVE_WHITESPACE = "storm-software/removeWhitespaces";
+const MESSAGE_ID_MISSING_AT_SYMBOL = "storm-software/missingAtSymbol";
 
 // Override of core rule message with a more specific one - no prefix
 const MESSAGE_ID_CORE_RULE_UNEXPECTED_COMMENT = "unexpectedComment";

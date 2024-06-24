@@ -32,7 +32,7 @@ const isCheckingUndefined = node =>
     node.parent.operator === "!==") &&
     isUndefined(node.parent.right)) ||
     ((node.parent.operator === "!=" || node.parent.operator === "==") &&
-      // eslint-disable-next-line unicorn/no-null
+      // eslint-disable-next-line storm-software/no-null
       isLiteral(node.parent.right, null)));
 const isNegativeOne = node =>
   node.type === "UnaryExpression" &&
@@ -158,7 +158,7 @@ const create = context => {
   context.on("BinaryExpression", binaryExpression => {
     if (
       !(
-        // We assume the user already follows `unicorn/explicit-length-check`. These are allowed in that rule.
+        // We assume the user already follows `storm-software/explicit-length-check`. These are allowed in that rule.
         (
           (binaryExpression.operator === ">" ||
             binaryExpression.operator === "!==") &&

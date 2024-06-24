@@ -49,39 +49,7 @@
     //     ]
     //   }
     // },
-    // "build-esm": {
-    //   "cache": true,
-    //   "executor": "@nx/esbuild:esbuild",
-    //   "dependsOn": ["clean", "^build"],
-    //   "inputs": ["typescript"],
-    //   "outputs": ["{options.outputPath}"],
-    //   "options": {
-    //     "outputPath": "dist/packages/eslint/esm",
-    //     "main": "packages/eslint/src/index.ts",
-    //     "additionalEntryPoints": [
-    //       "packages/eslint/src/base.ts",
-    //       "packages/eslint/src/graphql.ts",
-    //       "packages/eslint/src/json.ts",
-    //       "packages/eslint/src/next.ts",
-    //       "packages/eslint/src/react.ts",
-    //       "packages/eslint/src/markdown.ts",
-    //       "packages/eslint/src/yml.ts",
-    //       "packages/eslint/src/recommended.ts"
-    //     ],
-    //     "tsConfig": "packages/eslint/tsconfig.esm.json",
-    //     "external": ["@nx/*", "@storm-software/*", "eslint"],
-    //     "format": ["esm"],
-    //     "platform": "node",
-    //     "deleteOutputPath": true,
-    //     "bundle": true,
-    //     "thirdParty": true,
-    //     "skipTypeCheck": true,
-    //     "metafile": true,
-    //     "minify": false,
-    //     "generatePackageJson": false,
-    //     "esbuildConfig": "packages/eslint/esbuild.config.cjs"
-    //   }
-    // },
+
     "build": {
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],

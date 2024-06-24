@@ -26,7 +26,7 @@ copyFiles(["LICENSE", "dist/packages/eslint"], {}, () => {
             "packages/eslint/src/markdown.ts",
             "packages/eslint/src/yml.ts",
             "packages/eslint/src/tsdoc.ts",
-            "packages/eslint/src/recommended.ts"
+            "packages/eslint/src/nx.ts"
           ],
           outdir: "dist/packages/eslint/esm",
           tsconfig: "packages/eslint/tsconfig.esm.json",
@@ -63,7 +63,7 @@ copyFiles(["LICENSE", "dist/packages/eslint"], {}, () => {
             "packages/eslint/src/markdown.ts",
             "packages/eslint/src/yml.ts",
             "packages/eslint/src/tsdoc.ts",
-            "packages/eslint/src/recommended.ts"
+            "packages/eslint/src/nx.ts"
           ],
           outdir: "dist/packages/eslint/cjs",
           tsconfig: "packages/eslint/tsconfig.cjs.json",
