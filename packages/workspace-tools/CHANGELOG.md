@@ -1,60 +1,69 @@
-## 1.107.1 (2024-06-24)
-
+## 1.107.2 (2024-06-24)
 
 ### 🩹 Fixes
 
-- **storm-ops:** Remove the `lint-commit` actions ([a502e8c0](https://github.com/storm-software/storm-ops/commit/a502e8c0))
+- **storm-ops:** Resolve issue with renovatebot in workflow action
+  ([e587423a](https://github.com/storm-software/storm-ops/commit/e587423a))
+
+## 1.107.1 (2024-06-24)
+
+### 🩹 Fixes
+
+- **storm-ops:** Remove the `lint-commit` actions
+  ([a502e8c0](https://github.com/storm-software/storm-ops/commit/a502e8c0))
 
 ## 1.107.0 (2024-06-24)
 
-
 ### 🚀 Features
 
-- **eslint-plugin:** Split up the eslint plugin implementation into separate packages ([aba11be4](https://github.com/storm-software/storm-ops/commit/aba11be4))
+- **eslint-plugin:** Split up the eslint plugin implementation into separate
+  packages
+  ([aba11be4](https://github.com/storm-software/storm-ops/commit/aba11be4))
 
 ## 1.106.1 (2024-06-24)
 
-
 ### 🩹 Fixes
 
-- **deps:** update patch prod dependencies ([f26698a8](https://github.com/storm-software/storm-ops/commit/f26698a8))
+- **deps:** update patch prod dependencies
+  ([f26698a8](https://github.com/storm-software/storm-ops/commit/f26698a8))
 
 ## 1.106.0 (2024-06-22)
 
-
 ### 🚀 Features
 
-- **workspace-tools:** Enhance the Nx workspace task base configuration ([3799d938](https://github.com/storm-software/storm-ops/commit/3799d938))
+- **workspace-tools:** Enhance the Nx workspace task base configuration
+  ([3799d938](https://github.com/storm-software/storm-ops/commit/3799d938))
 
 ## 1.105.1 (2024-06-22)
 
-
 ### 🩹 Fixes
 
-- **workspace-tools:** Resolve issue with `execSync` output ([1de2b651](https://github.com/storm-software/storm-ops/commit/1de2b651))
+- **workspace-tools:** Resolve issue with `execSync` output
+  ([1de2b651](https://github.com/storm-software/storm-ops/commit/1de2b651))
 
 ## 1.105.0 (2024-06-22)
 
-
 ### 🚀 Features
 
-- **workspace-tools:** Update the publish executor to include separate CLI code ([79419a9a](https://github.com/storm-software/storm-ops/commit/79419a9a))
+- **workspace-tools:** Update the publish executor to include separate CLI code
+  ([79419a9a](https://github.com/storm-software/storm-ops/commit/79419a9a))
 
 ## 1.104.0 (2024-06-22)
 
-
 ### 🚀 Features
 
-- **storm-ops:** Upgrade the workspace's Nx package versions ([19ce2a07](https://github.com/storm-software/storm-ops/commit/19ce2a07))
+- **storm-ops:** Upgrade the workspace's Nx package versions
+  ([19ce2a07](https://github.com/storm-software/storm-ops/commit/19ce2a07))
 
 ## 1.103.0 (2024-06-22)
 
-
 ### 🚀 Features
 
-- **workspace-tools:** Remove the calls to get storm config ([f4c9d07f](https://github.com/storm-software/storm-ops/commit/f4c9d07f))
+- **workspace-tools:** Remove the calls to get storm config
+  ([f4c9d07f](https://github.com/storm-software/storm-ops/commit/f4c9d07f))
 
-- **workspace-tools:** Upgrade the workspace pnpm-lock file ([d33c20cb](https://github.com/storm-software/storm-ops/commit/d33c20cb))
+- **workspace-tools:** Upgrade the workspace pnpm-lock file
+  ([d33c20cb](https://github.com/storm-software/storm-ops/commit/d33c20cb))
 
 ## 1.102.0 (2024-06-22)
 

@@ -1,105 +1,114 @@
-## 0.15.1 (2024-06-24)
-
+## 0.15.2 (2024-06-24)
 
 ### 🩹 Fixes
 
-- **storm-ops:** Remove the `lint-commit` actions ([a502e8c0](https://github.com/storm-software/storm-ops/commit/a502e8c0))
+- **storm-ops:** Resolve issue with renovatebot in workflow action
+  ([e587423a](https://github.com/storm-software/storm-ops/commit/e587423a))
+
+## 0.15.1 (2024-06-24)
+
+### 🩹 Fixes
+
+- **storm-ops:** Remove the `lint-commit` actions
+  ([a502e8c0](https://github.com/storm-software/storm-ops/commit/a502e8c0))
 
 ## 0.15.0 (2024-06-24)
 
-
 ### 🚀 Features
 
-- **eslint-plugin:** Split up the eslint plugin implementation into separate packages ([aba11be4](https://github.com/storm-software/storm-ops/commit/aba11be4))
+- **eslint-plugin:** Split up the eslint plugin implementation into separate
+  packages
+  ([aba11be4](https://github.com/storm-software/storm-ops/commit/aba11be4))
 
 ## 0.14.1 (2024-06-24)
 
-
 ### 🩹 Fixes
 
-- **deps:** update patch prod dependencies ([f26698a8](https://github.com/storm-software/storm-ops/commit/f26698a8))
+- **deps:** update patch prod dependencies
+  ([f26698a8](https://github.com/storm-software/storm-ops/commit/f26698a8))
 
 ## 0.14.0 (2024-06-22)
 
-
 ### 🚀 Features
 
-- **workspace-tools:** Enhance the Nx workspace task base configuration ([3799d938](https://github.com/storm-software/storm-ops/commit/3799d938))
+- **workspace-tools:** Enhance the Nx workspace task base configuration
+  ([3799d938](https://github.com/storm-software/storm-ops/commit/3799d938))
 
 ## 0.13.0 (2024-06-22)
 
-
 ### 🚀 Features
 
-- **workspace-tools:** Upgrade the workspace pnpm-lock file ([d33c20cb](https://github.com/storm-software/storm-ops/commit/d33c20cb))
+- **workspace-tools:** Upgrade the workspace pnpm-lock file
+  ([d33c20cb](https://github.com/storm-software/storm-ops/commit/d33c20cb))
 
 ## 0.12.0 (2024-06-22)
 
-
 ### 🚀 Features
 
-- **storm-ops:** Updated pnpm-lock file ([22be1efd](https://github.com/storm-software/storm-ops/commit/22be1efd))
+- **storm-ops:** Updated pnpm-lock file
+  ([22be1efd](https://github.com/storm-software/storm-ops/commit/22be1efd))
 
 ## 0.11.0 (2024-06-22)
 
-
 ### 🚀 Features
 
-- **workspace-tools:** Added `lint` and `format` tasks and improved cache input management ([f2ade202](https://github.com/storm-software/storm-ops/commit/f2ade202))
+- **workspace-tools:** Added `lint` and `format` tasks and improved cache input
+  management
+  ([f2ade202](https://github.com/storm-software/storm-ops/commit/f2ade202))
 
 ## 0.10.0 (2024-06-21)
 
-
 ### 🚀 Features
 
-- **eslint-plugin:** Resolve issues with eslint module types ([ca513974](https://github.com/storm-software/storm-ops/commit/ca513974))
+- **eslint-plugin:** Resolve issues with eslint module types
+  ([ca513974](https://github.com/storm-software/storm-ops/commit/ca513974))
 
 ## 0.9.3 (2024-06-17)
 
-
 ### 🩹 Fixes
 
-- **deps:** update patch prod dependencies ([ec613e8a](https://github.com/storm-software/storm-ops/commit/ec613e8a))
+- **deps:** update patch prod dependencies
+  ([ec613e8a](https://github.com/storm-software/storm-ops/commit/ec613e8a))
 
 ## 0.9.2 (2024-06-15)
 
-
 ### 🩹 Fixes
 
-- **workspace-tools:** Resolved issue with invalid package name in tags ([e40b5387](https://github.com/storm-software/storm-ops/commit/e40b5387))
+- **workspace-tools:** Resolved issue with invalid package name in tags
+  ([e40b5387](https://github.com/storm-software/storm-ops/commit/e40b5387))
 
 ## 0.9.1 (2024-06-15)
 
-
 ### 🩹 Fixes
 
-- **storm-ops:** Resolved issue populating the git tag during publishing ([9ac9f1be](https://github.com/storm-software/storm-ops/commit/9ac9f1be))
+- **storm-ops:** Resolved issue populating the git tag during publishing
+  ([9ac9f1be](https://github.com/storm-software/storm-ops/commit/9ac9f1be))
 
 ## 0.9.0 (2024-06-10)
 
-
 ### 🚀 Features
 
-- **eslint:** Updated package configuration back to `ESNext` from `CommonJs` ([565143d4](https://github.com/storm-software/storm-ops/commit/565143d4))
-
+- **eslint:** Updated package configuration back to `ESNext` from `CommonJs`
+  ([565143d4](https://github.com/storm-software/storm-ops/commit/565143d4))
 
 ### 🩹 Fixes
 
-- **deps:** pin dependencies ([e2f9fcbc](https://github.com/storm-software/storm-ops/commit/e2f9fcbc))
+- **deps:** pin dependencies
+  ([e2f9fcbc](https://github.com/storm-software/storm-ops/commit/e2f9fcbc))
 
 ## 0.8.0 (2024-06-09)
 
-
 ### 🚀 Features
 
-- **eslint:** Add dependencies and convert to `CommonJs` package ([bd4bc22c](https://github.com/storm-software/storm-ops/commit/bd4bc22c))
+- **eslint:** Add dependencies and convert to `CommonJs` package
+  ([bd4bc22c](https://github.com/storm-software/storm-ops/commit/bd4bc22c))
 
 ## 0.7.0 (2024-06-09)
 
-
 ### 🚀 Features
 
-- **eslint:** Change module formats for eslint packages ([2be209ea](https://github.com/storm-software/storm-ops/commit/2be209ea))
+- **eslint:** Change module formats for eslint packages
+  ([2be209ea](https://github.com/storm-software/storm-ops/commit/2be209ea))
 
 ## 0.6.0 (2024-06-09)
 
