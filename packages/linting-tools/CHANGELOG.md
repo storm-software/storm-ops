@@ -1,3 +1,10 @@
+## 1.56.2 (2024-06-24)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Resolve issue with renovatebot in workflow action ([e587423a](https://github.com/storm-software/storm-ops/commit/e587423a))
+
 ## 1.56.1 (2024-06-24)
 
 
