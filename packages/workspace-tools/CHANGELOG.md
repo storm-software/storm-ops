@@ -1,3 +1,10 @@
+## 1.106.0 (2024-06-22)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Enhance the Nx workspace task base configuration ([3799d938](https://github.com/storm-software/storm-ops/commit/3799d938))
+
 ## 1.105.1 (2024-06-22)
 
 

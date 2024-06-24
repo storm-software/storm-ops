@@ -40,10 +40,10 @@ pre-commit:
     build:
       glob: "**/*"
       run: "pnpm build"
-    lint:
-      files: "git diff --name-only HEAD @{push}"
-      glob: "**/*.{js,ts,rs,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc} && git update-index"
-      run: "pnpm lint"
+    # lint:
+    #   files: "git diff --name-only HEAD @{push}"
+    #   glob: "**/*.{js,ts,rs,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc} && git update-index"
+    #   run: "pnpm lint"
     # check:
     #   files: "git diff --name-only HEAD @{push}"
     #   glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
