@@ -1,3 +1,10 @@
+## 0.15.1 (2024-06-24)
+
+
+### 🩹 Fixes
+
+- **storm-ops:** Remove the `lint-commit` actions ([a502e8c0](https://github.com/storm-software/storm-ops/commit/a502e8c0))
+
 ## 0.15.0 (2024-06-24)
 
 
