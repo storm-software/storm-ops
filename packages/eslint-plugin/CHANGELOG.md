@@ -1,3 +1,10 @@
+## 0.19.0 (2024-06-26)
+
+
+### 🚀 Features
+
+- **eslint-plugin:** No longer provide duplicate require methods ([10bf27a6](https://github.com/storm-software/storm-ops/commit/10bf27a6))
+
 ## 0.18.0 (2024-06-26)
 
 
