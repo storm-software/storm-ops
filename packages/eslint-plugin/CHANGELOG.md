@@ -1,3 +1,10 @@
+## 0.17.1 (2024-06-26)
+
+
+### 🩹 Fixes
+
+- **eslint-plugin:** Include resolver plugin in package builds ([38ab95b2](https://github.com/storm-software/storm-ops/commit/38ab95b2))
+
 ## 0.17.0 (2024-06-26)
 
 
