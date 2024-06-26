@@ -1,16 +1,23 @@
-## 0.17.0 (2024-06-26)
+## 0.17.1 (2024-06-26)
 
+### 🩹 Fixes
+
+- **eslint-plugin:** Include resolver plugin in package builds
+  ([38ab95b2](https://github.com/storm-software/storm-ops/commit/38ab95b2))
+
+## 0.17.0 (2024-06-26)
 
 ### 🚀 Features
 
-- **eslint-plugin:** Bundle storm software packages ([f2daca8c](https://github.com/storm-software/storm-ops/commit/f2daca8c))
+- **eslint-plugin:** Bundle storm software packages
+  ([f2daca8c](https://github.com/storm-software/storm-ops/commit/f2daca8c))
 
 ## 0.16.0 (2024-06-24)
 
-
 ### 🚀 Features
 
-- **eslint:** Added back `nx` and removed `recommended` base configurations ([1661bde9](https://github.com/storm-software/storm-ops/commit/1661bde9))
+- **eslint:** Added back `nx` and removed `recommended` base configurations
+  ([1661bde9](https://github.com/storm-software/storm-ops/commit/1661bde9))
 
 ## 0.15.1 (2024-06-24)
 
