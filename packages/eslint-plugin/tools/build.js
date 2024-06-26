@@ -6,6 +6,7 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin"], {}, () => {
   copyFiles(
     [
       "packages/eslint-plugin/package.json",
+      "packages/eslint-plugin/index.d.ts",
       "packages/eslint-plugin/*.md",
       "dist/packages/eslint-plugin"
     ],
