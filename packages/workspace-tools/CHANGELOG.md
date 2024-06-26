@@ -1,3 +1,10 @@
+## 1.109.0 (2024-06-26)
+
+
+### 🚀 Features
+
+- **eslint-plugin:** Bundle storm software packages ([f2daca8c](https://github.com/storm-software/storm-ops/commit/f2daca8c))
+
 ## 1.108.0 (2024-06-24)
 
 
