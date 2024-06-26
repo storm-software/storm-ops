@@ -1,3 +1,10 @@
+## 0.18.0 (2024-06-26)
+
+
+### 🚀 Features
+
+- **eslint-plugin:** Include typings in published package ([19902d74](https://github.com/storm-software/storm-ops/commit/19902d74))
+
 ## 0.17.1 (2024-06-26)
 
 ### 🩹 Fixes
