@@ -25,12 +25,7 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin-react"], {}, () => {
           // },
           format: "esm",
           platform: "node",
-          external: [
-            "@nx/*",
-            "@storm-software/*",
-            "eslint-module-utils",
-            "eslint"
-          ],
+          external: ["@nx/*", "eslint-module-utils", "eslint"],
           legalComments: "inline",
           banner: {
             js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
@@ -52,12 +47,7 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin-react"], {}, () => {
           },
           format: "cjs",
           platform: "node",
-          external: [
-            "@nx/*",
-            "@storm-software/*",
-            "eslint-module-utils",
-            "eslint"
-          ]
+          external: ["@nx/*", "eslint-module-utils", "eslint"]
         }).then(() => {
           console.log("Storm ESLint React Plugin (CJS) built successfully");
         }),
@@ -75,12 +65,7 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin-react"], {}, () => {
           // },
           format: "esm",
           platform: "node",
-          external: [
-            "@nx/*",
-            "@storm-software/*",
-            "eslint",
-            "eslint-module-utils"
-          ],
+          external: ["@nx/*", "eslint", "eslint-module-utils"],
           legalComments: "inline",
           banner: {
             js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
@@ -104,12 +89,7 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin-react"], {}, () => {
           },
           format: "cjs",
           platform: "node",
-          external: [
-            "@nx/*",
-            "@storm-software/*",
-            "eslint",
-            "eslint-module-utils"
-          ]
+          external: ["@nx/*", "eslint", "eslint-module-utils"]
         }).then(() => {
           console.log(
             "Storm ESLint React Plugin Types (CJS) built successfully"
@@ -129,12 +109,7 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin-react"], {}, () => {
           // },
           format: "esm",
           platform: "node",
-          external: [
-            "@nx/*",
-            "@storm-software/*",
-            "eslint-module-utils",
-            "eslint"
-          ],
+          external: ["@nx/*", "eslint-module-utils", "eslint"],
           legalComments: "inline",
           banner: {
             js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
@@ -158,12 +133,7 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin-react"], {}, () => {
           },
           format: "cjs",
           platform: "node",
-          external: [
-            "@nx/*",
-            "@storm-software/*",
-            "eslint-module-utils",
-            "eslint"
-          ]
+          external: ["@nx/*", "eslint-module-utils", "eslint"]
         }).then(() => {
           console.log(
             "Storm ESLint React Plugin Configuration (CJS) built successfully"

@@ -25,13 +25,7 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin-graphql"], {}, () => {
           // },
           format: "esm",
           platform: "node",
-          external: [
-            "@nx/*",
-            "@storm-software/*",
-            "eslint-module-utils",
-            "eslint",
-            "graphql"
-          ],
+          external: ["@nx/*", "eslint-module-utils", "eslint", "graphql"],
           legalComments: "inline",
           banner: {
             js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
@@ -53,12 +47,7 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin-graphql"], {}, () => {
           },
           format: "cjs",
           platform: "node",
-          external: [
-            "@nx/*",
-            "@storm-software/*",
-            "eslint-module-utils",
-            "eslint"
-          ]
+          external: ["@nx/*", "eslint-module-utils", "eslint"]
         }).then(() => {
           console.log("Storm ESLint GraphQL Plugin (CJS) built successfully");
         }),
@@ -76,13 +65,7 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin-graphql"], {}, () => {
           // },
           format: "esm",
           platform: "node",
-          external: [
-            "@nx/*",
-            "@storm-software/*",
-            "eslint",
-            "eslint-module-utils",
-            "graphql"
-          ],
+          external: ["@nx/*", "eslint", "eslint-module-utils", "graphql"],
           legalComments: "inline",
           banner: {
             js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
@@ -106,13 +89,7 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin-graphql"], {}, () => {
           },
           format: "cjs",
           platform: "node",
-          external: [
-            "@nx/*",
-            "@storm-software/*",
-            "eslint",
-            "eslint-module-utils",
-            "graphql"
-          ]
+          external: ["@nx/*", "eslint", "eslint-module-utils", "graphql"]
         }).then(() => {
           console.log(
             "Storm ESLint GraphQL Plugin Types (CJS) built successfully"
@@ -132,12 +109,7 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin-graphql"], {}, () => {
           // },
           format: "esm",
           platform: "node",
-          external: [
-            "@nx/*",
-            "@storm-software/*",
-            "eslint-module-utils",
-            "eslint"
-          ],
+          external: ["@nx/*", "eslint-module-utils", "eslint"],
           legalComments: "inline",
           banner: {
             js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
@@ -161,12 +133,7 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin-graphql"], {}, () => {
           },
           format: "cjs",
           platform: "node",
-          external: [
-            "@nx/*",
-            "@storm-software/*",
-            "eslint-module-utils",
-            "eslint"
-          ]
+          external: ["@nx/*", "eslint-module-utils", "eslint"]
         }).then(() => {
           console.log(
             "Storm ESLint GraphQL Plugin Configuration (CJS) built successfully"

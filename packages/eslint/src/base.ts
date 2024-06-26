@@ -11,6 +11,7 @@ import tsPlugin from "@typescript-eslint/eslint-plugin";
 import typescriptEslintParser from "@typescript-eslint/parser";
 import importRules from "./rules/import";
 import stormRules from "./rules/storm";
+import { formatConfig, ignores } from "./utils";
 import {
   CODE_BLOCK,
   CODE_FILE,
@@ -19,8 +20,6 @@ import {
   RESTRICTED_SYNTAX,
   TS_FILE
 } from "./utils/constants";
-import { formatConfig } from "./utils/format-config";
-import { ignores } from "./utils/ignores";
 
 const workspaceRoot = findWorkspaceRoot();
 // const importCompat = new FlatCompat({
