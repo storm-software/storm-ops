@@ -29,9 +29,9 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin"], {}, () => {
           platform: "node",
           external: ["@nx/*", "eslint-module-utils", "eslint", "graphql"],
           legalComments: "inline",
-          banner: {
-            js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
-          },
+          // banner: {
+          //   js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
+          // },
           plugins: [requireResolvePlugin()]
         }).then(() => {
           console.log("Storm ESLint Plugin (ESM) built successfully");
@@ -71,9 +71,9 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin"], {}, () => {
           platform: "node",
           external: ["@nx/*", "eslint", "eslint-module-utils", "graphql"],
           legalComments: "inline",
-          banner: {
-            js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
-          },
+          // banner: {
+          //   js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
+          // },
           plugins: [requireResolvePlugin()]
         }).then(() => {
           console.log("Storm ESLint Plugin Types (ESM) built successfully");
@@ -113,9 +113,9 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin"], {}, () => {
           platform: "node",
           external: ["@nx/*", "eslint-module-utils", "eslint"],
           legalComments: "inline",
-          banner: {
-            js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
-          },
+          // banner: {
+          //   js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
+          // },
           plugins: [requireResolvePlugin()]
         }).then(() => {
           console.log(
