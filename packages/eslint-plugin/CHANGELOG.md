@@ -1,3 +1,10 @@
+## 0.20.0 (2024-06-28)
+
+
+### 🚀 Features
+
+- **eslint-plugin:** Update package type to `module` in `package.json` file ([36c1c2c9](https://github.com/storm-software/storm-ops/commit/36c1c2c9))
+
 ## 0.19.0 (2024-06-26)
 
 ### 🚀 Features
