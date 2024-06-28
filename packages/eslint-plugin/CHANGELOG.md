@@ -1,9 +1,16 @@
-## 0.18.0 (2024-06-26)
-
+## 0.19.0 (2024-06-26)
 
 ### 🚀 Features
 
-- **eslint-plugin:** Include typings in published package ([19902d74](https://github.com/storm-software/storm-ops/commit/19902d74))
+- **eslint-plugin:** No longer provide duplicate require methods
+  ([10bf27a6](https://github.com/storm-software/storm-ops/commit/10bf27a6))
+
+## 0.18.0 (2024-06-26)
+
+### 🚀 Features
+
+- **eslint-plugin:** Include typings in published package
+  ([19902d74](https://github.com/storm-software/storm-ops/commit/19902d74))
 
 ## 0.17.1 (2024-06-26)
 
