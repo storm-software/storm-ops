@@ -26,10 +26,10 @@ jobs:
         uses: dependabot/fetch-metadata@v2
         with:
           github-token: "${{ secrets.STORM_BOT_GITHUB_TOKEN }}"
+
       # This doesn't trigger an automated merge because we require at approvals
       - name: Enable auto-merge
         run: gh pr merge --auto --squash --delete-branch "${PR_URL}"
         env:
+          GITHUB_ACTOR: Stormie-Bot
           GITHUB_TOKEN: ${{secrets.STORM_BOT_GITHUB_TOKEN}}
-        with:
-          github-token: "${{ secrets.STORM_BOT_GITHUB_TOKEN }}"
