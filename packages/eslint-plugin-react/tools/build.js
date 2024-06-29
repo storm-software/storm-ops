@@ -28,9 +28,9 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin-react"], {}, () => {
           platform: "node",
           external: ["@nx/*", "eslint-module-utils", "eslint"],
           legalComments: "inline",
-          // banner: {
-          //   js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
-          // },
+          banner: {
+            js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
+          },
           plugins: [requireResolvePlugin()]
         }).then(() => {
           console.log("Storm ESLint React Plugin (ESM) built successfully");
@@ -70,9 +70,9 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin-react"], {}, () => {
           platform: "node",
           external: ["@nx/*", "eslint", "eslint-module-utils"],
           legalComments: "inline",
-          // banner: {
-          //   js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
-          // },
+          banner: {
+            js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
+          },
           plugins: [requireResolvePlugin()]
         }).then(() => {
           console.log(
@@ -116,9 +116,9 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin-react"], {}, () => {
           platform: "node",
           external: ["@nx/*", "eslint-module-utils", "eslint"],
           legalComments: "inline",
-          // banner: {
-          //   js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
-          // },
+          banner: {
+            js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
+          },
           plugins: [requireResolvePlugin()]
         }).then(() => {
           console.log(

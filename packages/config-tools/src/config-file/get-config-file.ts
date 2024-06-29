@@ -74,7 +74,6 @@ export const getConfigFile = async (
         logLevel: "all"
       }
     );
-    writeTrace(config, { logLevel: "all" });
   }
 
   if (additionalFileNames && additionalFileNames.length > 0) {
@@ -91,7 +90,6 @@ export const getConfigFile = async (
             logLevel: "all"
           }
         );
-        writeTrace(result.config, { logLevel: "all" });
 
         config = merge(result.config ?? {}, config ?? {});
       }

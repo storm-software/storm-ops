@@ -58,12 +58,6 @@ export const withRunGenerator =
         );
 
         config = await loadStormConfig(workspaceRoot);
-        writeTrace(
-          `Loaded Storm config into env: \n${Object.keys(process.env)
-            .map(key => ` - ${key}=${JSON.stringify(process.env[key])}`)
-            .join("\n")}`,
-          config
-        );
       }
 
       if (generatorOptions?.hooks?.applyDefaultOptions) {

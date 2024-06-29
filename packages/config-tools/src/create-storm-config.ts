@@ -148,7 +148,7 @@ export const loadStormConfig = async (
   );
   setConfigEnv(config);
 
-  writeInfo(`Using Storm configuration: \n${formatLogMessage(config)}`, {
+  writeInfo(`⚙️ Using Storm configuration: \n${formatLogMessage(config)}`, {
     logLevel: "all"
   });
 

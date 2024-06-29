@@ -83,20 +83,6 @@ export const withRunExecutor =
         );
 
         config = await loadStormConfig(workspaceRoot);
-        writeTrace(
-          `Loaded Storm config into env: \n${Object.keys(process.env)
-            .filter(key => key.startsWith("STORM_"))
-            .map(
-              key =>
-                ` - ${key}=${
-                  _isFunction(process.env[key])
-                    ? "<function>"
-                    : JSON.stringify(process.env[key])
-                }`
-            )
-            .join("\n")}`,
-          config
-        );
       }
 
       if (executorOptions?.hooks?.applyDefaultOptions) {
