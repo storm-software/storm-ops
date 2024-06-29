@@ -1,3 +1,10 @@
+## 1.57.0 (2024-06-29)
+
+
+### 🚀 Features
+
+- **eslint-plugin:** Polyfill `require` in esm build output ([67f1fbab](https://github.com/storm-software/storm-ops/commit/67f1fbab))
+
 ## 1.56.0 (2024-06-22)
 
 
