@@ -42,7 +42,7 @@ pre-commit:
       stage_fixed: true
     build:
       glob: "**/*"
-      run: "pnpm build"
+      run: "pnpm build-all"
       stage_fixed: true
     # lint:
     #   files: "git diff --name-only HEAD @{push}"
@@ -76,7 +76,8 @@ commit-msg:
   commands:
     validate:
       run: 'pnpm exec commitlint
-        --config="./dist/packages/git-tools/commitlint/commitlint.config.cjs" --edit {1}'
+        --config="./dist/packages/git-tools/commitlint/commitlint.config.cjs"
+        --edit {1}'
 
 pre-push:
   piped: true

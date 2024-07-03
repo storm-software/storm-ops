@@ -69,11 +69,7 @@ jobs:
             echo "Skip updating GITHUB_ENV. SET_INTERVAL_VALUES: ${SET_INTERVAL_VALUES}"
           fi
 
-      - name: Validate commit messages
-        run: |
-          pnpm exec commitlint --config="./dist/packages/git-tools/commitlint/commitlint.config.cjs" --edit {1}
-        shell: bash
-
-      # - name: Validate commits
+      # - name: Validate commit messages
       #   run: |
-      #     pnpm exec commitlint --config="./dist/packages/git-tools/commitlint.config.cjs" --edit {1}
+      #     pnpm exec commitlint --config="./dist/packages/git-tools/commitlint/commitlint.config.cjs" --edit {1}
+      #   shell: bash
