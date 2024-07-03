@@ -87,7 +87,17 @@ export const createNodes: CreateNodes = [
           build: {
             cache: true,
             inputs: ["rust", "^production"],
-            dependsOn: ["format", "clean", "^build"],
+            dependsOn: ["format", "^build"],
+            executor: "@monodon/rust:check",
+            outputs: ["{options.target-dir}"],
+            options: {
+              "target-dir": `{workspaceRoot}/dist/target/${cargoPackage.name}`
+            }
+          },
+          rebuild: {
+            cache: false,
+            inputs: ["rust", "^production"],
+            dependsOn: ["clean", "^build"],
             executor: "@monodon/rust:check",
             outputs: ["{options.target-dir}"],
             options: {

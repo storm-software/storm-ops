@@ -108,6 +108,21 @@ export const createNodes = [
       };
     }
 
+    if (!targets.rebuild) {
+      targets.rebuild = {
+        cache: false,
+        executor: "nx:run-commands",
+        dependsOn: ["clean", "^build"],
+        inputs: ["typescript", "^production"],
+        outputs: ["{workspaceRoot}/dist/{projectRoot}"],
+        options: {
+          command: `pnpm exec nx run ${project.name}:build`,
+          color: true,
+          cwd: "{workspaceRoot}"
+        }
+      };
+    }
+
     if (!targets.test) {
       targets.test = {
         cache: true,

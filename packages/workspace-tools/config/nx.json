@@ -376,7 +376,17 @@
     },
     "build": {
       "cache": true,
-      "dependsOn": ["build-base", "format", "clean", "^build"]
+      "dependsOn": ["build-base", "format", "^build"]
+    },
+    "rebuild": {
+      "cache": false,
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "pnpm exec nx run {projectName}:build",
+        "color": true,
+        "cwd": "{workspaceRoot}"
+      }
     },
     "docs": {
       "cache": true,
