@@ -1,7 +1,7 @@
 ---
 name: Dependabot Update
 
-on: # yamllint disable-line rule:truthy
+on:
   pull_request:
     types:
       - opened
@@ -25,10 +25,9 @@ jobs:
         id: metadata
         uses: dependabot/fetch-metadata@v2
         with:
-          github-token: "${{ secrets.STORM_BOT_GITHUB_TOKEN }}"
+          github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
-      # This doesn't trigger an automated merge because we require at approvals
-      - name: Enable auto-merge
+      - name: Auto-merge the pull request in GitHub
         run: gh pr merge --auto --squash --delete-branch "${PR_URL}"
         env:
           GITHUB_ACTOR: Stormie-Bot
