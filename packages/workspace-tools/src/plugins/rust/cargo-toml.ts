@@ -135,6 +135,7 @@ export const createNodes: CreateNodes = [
           tags: ["language:rust"]
         };
       }
+
       for (const dep of cargoPackage.dependencies) {
         if (isExternal(dep, ctx.workspaceRoot)) {
           const externalDepName = `cargo:${dep.name}`;
