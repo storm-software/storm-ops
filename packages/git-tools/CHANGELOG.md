@@ -1,3 +1,12 @@
+## 2.25.0 (2024-07-03)
+
+
+### 🚀 Features
+
+- **storm-ops:** Upgrade `pnpm` package manager version to 9.4.0 ([2269cf67](https://github.com/storm-software/storm-ops/commit/2269cf67))
+
+- **git-tools:** Added a table of content to the `README.md` header template ([227c234f](https://github.com/storm-software/storm-ops/commit/227c234f))
+
 ## 2.24.0 (2024-06-29)
 
 

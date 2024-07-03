@@ -1,3 +1,10 @@
+## 0.5.0 (2024-07-03)
+
+
+### 🚀 Features
+
+- **git-tools:** Added a table of content to the `README.md` header template ([227c234f](https://github.com/storm-software/storm-ops/commit/227c234f))
+
 ## 0.4.0 (2024-06-22)
 
 

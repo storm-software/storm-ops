@@ -1,3 +1,12 @@
+## 1.111.0 (2024-07-03)
+
+
+### 🚀 Features
+
+- **git-tools:** Added a table of content to the `README.md` header template ([227c234f](https://github.com/storm-software/storm-ops/commit/227c234f))
+
+- **workspace-tools:** Added the `rebuild` task targets to Nx plugins ([07552000](https://github.com/storm-software/storm-ops/commit/07552000))
+
 ## 1.110.0 (2024-06-29)
 
 
