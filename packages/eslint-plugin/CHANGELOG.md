@@ -1,3 +1,10 @@
+## 0.22.0 (2024-07-09)
+
+
+### 🚀 Features
+
+- **eslint-plugin:** Update ESM build to exclude require resolver plugin ([48601eb1](https://github.com/storm-software/storm-ops/commit/48601eb1))
+
 ## 0.21.0 (2024-06-29)
 
 
