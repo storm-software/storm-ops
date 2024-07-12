@@ -20,13 +20,13 @@
   "license": "Apache-2.0",
   "private": false,
   "main": "./cjs/index.cjs",
-  "module": "./esm/index.js",
+  "module": "./esm/index.mjs",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "import": {
         "types": "./index.d.ts",
-        "default": "./esm/index.js"
+        "default": "./esm/index.mjs"
       },
       "require": {
         "types": "./index.d.ts",
@@ -34,13 +34,13 @@
       },
       "default": {
         "types": "./index.d.ts",
-        "default": "./esm/index.js"
+        "default": "./esm/index.mjs"
       }
     },
     "./configs": {
       "import": {
         "types": "./index.d.ts",
-        "default": "./esm/configs.js"
+        "default": "./esm/configs.mjs"
       },
       "require": {
         "types": "./index.d.ts",
@@ -48,27 +48,13 @@
       },
       "default": {
         "types": "./index.d.ts",
-        "default": "./esm/configs.js"
-      }
-    },
-    "./utils": {
-      "import": {
-        "types": "./index.d.ts",
-        "default": "./esm/utils.js"
-      },
-      "require": {
-        "types": "./index.d.ts",
-        "default": "./cjs/utils.cjs"
-      },
-      "default": {
-        "types": "./index.d.ts",
-        "default": "./esm/utils.js"
+        "default": "./esm/configs.mjs"
       }
     },
     "./types": {
       "import": {
         "types": "./index.d.ts",
-        "default": "./esm/types.js"
+        "default": "./esm/types.mjs"
       },
       "require": {
         "types": "./index.d.ts",
@@ -76,7 +62,7 @@
       },
       "default": {
         "types": "./index.d.ts",
-        "default": "./esm/types.js"
+        "default": "./esm/types.mjs"
       }
     }
   },

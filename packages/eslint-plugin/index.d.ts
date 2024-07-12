@@ -23,4 +23,4 @@ type StormESLintPlugin<
   configs: TStormESLintPluginConfigs;
 };
 
-export = StormESLintPlugin;
+export default StormESLintPlugin;

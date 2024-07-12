@@ -22,9 +22,9 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin"], {}, () => {
           minify: false,
           allowOverwrite: true,
           write: true,
-          // outExtension: {
-          //   ".js": ".mjs"
-          // },
+          outExtension: {
+            ".js": ".mjs"
+          },
           format: "esm",
           platform: "node",
           external: ["@nx/*", "eslint-module-utils", "eslint", "graphql"],
@@ -63,9 +63,9 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin"], {}, () => {
           minify: false,
           allowOverwrite: true,
           write: true,
-          // outExtension: {
-          //   ".js": ".mjs"
-          // },
+          outExtension: {
+            ".js": ".mjs"
+          },
           format: "esm",
           platform: "node",
           external: ["@nx/*", "eslint", "eslint-module-utils", "graphql"],
@@ -104,9 +104,9 @@ copyFiles(["LICENSE", "dist/packages/eslint-plugin"], {}, () => {
           minify: false,
           allowOverwrite: true,
           write: true,
-          // outExtension: {
-          //   ".js": ".mjs"
-          // },
+          outExtension: {
+            ".js": ".mjs"
+          },
           format: "esm",
           platform: "node",
           external: ["@nx/*", "eslint-module-utils", "eslint"],
