@@ -1,3 +1,10 @@
+## 1.112.0 (2024-07-12)
+
+
+### 🚀 Features
+
+- **workspace-tools:** Added `knip` and `sherif` linting tasks ([10418f2b](https://github.com/storm-software/storm-ops/commit/10418f2b))
+
 ## 1.111.0 (2024-07-03)
 
 

@@ -1,3 +1,10 @@
+## 0.22.1 (2024-07-12)
+
+
+### 🩹 Fixes
+
+- **eslint-plugin:** Update the typings to correctly export plugin as default ([9140b58a](https://github.com/storm-software/storm-ops/commit/9140b58a))
+
 ## 0.22.0 (2024-07-09)
 
 
