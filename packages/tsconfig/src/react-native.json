@@ -1,5 +1,5 @@
 {
-  "extends": "./base.json",
+  "extends": "./react.json",
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Storm Software - React Native TypeScript Config",
   "_version": "3.0.2",
@@ -23,24 +23,8 @@
       "es2022.object",
       "es2022.string"
     ],
-    "allowJs": true,
     "jsx": "react-native",
     "noEmit": true,
-    "isolatedModules": true,
-    "strict": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true
-  },
-  "include": [
-    "**/*.ts",
-    "**/*.js",
-    "**/*.tsx",
-    "**/*.jsx",
-    "**/*.d.ts",
-    "**/*.json"
-  ],
-  "exclude": ["**/node_modules"]
+    "moduleResolution": "node"
+  }
 }

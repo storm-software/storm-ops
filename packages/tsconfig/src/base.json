@@ -31,14 +31,5 @@
     "skipDefaultLibCheck": true,
     "esModuleInterop": true,
     "preserveSymlinks": true
-  },
-  "include": [
-    "**/*.ts",
-    "**/*.js",
-    "**/*.tsx",
-    "**/*.jsx",
-    "**/*.d.ts",
-    "**/*.json"
-  ],
-  "exclude": ["**/node_modules"]
+  }
 }
