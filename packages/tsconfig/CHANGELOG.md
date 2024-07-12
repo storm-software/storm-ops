@@ -1,3 +1,10 @@
+## 0.13.0 (2024-07-12)
+
+
+### 🚀 Features
+
+- **tsconfig:** Added various new base `tsconfig` file types ([09e5d275](https://github.com/storm-software/storm-ops/commit/09e5d275))
+
 ## 0.12.0 (2024-06-26)
 
 
