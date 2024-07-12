@@ -30,8 +30,7 @@ pre-commit:
       stage_fixed: true
     schema-gen:
       glob: "packages/config/src/schema.ts"
-      run:
-        'pnpm nx generate @storm-software/workspace-tools:config-schema
+      run: 'pnpm nx generate @storm-software/workspace-tools:config-schema
         --outputFile="./packages/config/schemas/storm.schema.json" && git
         update-index'
       stage_fixed: true
@@ -40,10 +39,6 @@ pre-commit:
       run:
         "node ./dist/packages/git-tools/bin/pre-commit.js {staged_files} && git
         update-index"
-      stage_fixed: true
-    build:
-      glob: "**/*"
-      run: "pnpm build-all"
       stage_fixed: true
     # lint:
     #   files: "git diff --name-only HEAD @{push}"
@@ -65,8 +60,7 @@ pre-commit:
     format:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*"
-      run:
-        "pnpm exec prettier {staged_files} --write --ignore-unknown
+      run: "pnpm exec prettier {staged_files} --write --ignore-unknown
         --no-error-on-unmatched-pattern --cache && git update-index"
       stage_fixed: true
     # postbuild:
@@ -77,8 +71,7 @@ pre-commit:
 commit-msg:
   commands:
     validate:
-      run:
-        'pnpm exec commitlint
+      run: 'pnpm exec commitlint
         --config="./dist/packages/git-tools/commitlint/commitlint.config.cjs"
         --edit {1}'
 
@@ -88,16 +81,18 @@ pre-push:
     validate:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*"
-      run:
-        "node ./dist/packages/git-tools/bin/pre-push.js {files} && git
+      run: "node ./dist/packages/git-tools/bin/pre-push.js {files} && git
         update-index"
       stage_fixed: true
     format:
       files: "git diff --name-only HEAD @{push}"
       glob:
-      run:
-        "pnpm exec prettier {files} --write --ignore-unknown
+      run: "pnpm exec prettier {files} --write --ignore-unknown
         --no-error-on-unmatched-pattern --cache && git update-index"
+      stage_fixed: true
+    build:
+      glob: "**/*"
+      run: "pnpm build-all"
       stage_fixed: true
 
 post-merge:

@@ -6,6 +6,8 @@
       "runner": "nx/tasks-runners/default",
       "options": {
         "cacheableOperations": [
+          "lint-sherif",
+          "lint-knip",
           "lint-docs",
           "lint-ls",
           "lint",
@@ -288,7 +290,7 @@
   "targetDefaults": {
     "lint-docs": {
       "cache": true,
-      "outputs": ["{workspaceRoot}/{projectRoot}"],
+      "outputs": ["{projectRoot}"],
       "inputs": [
         "config_linting",
         "config_docs",
@@ -301,7 +303,7 @@
     },
     "lint-ls": {
       "cache": true,
-      "outputs": ["{workspaceRoot}/{projectRoot}"],
+      "outputs": ["{projectRoot}"],
       "dependsOn": ["^lint-ls"],
       "executor": "nx:run-commands",
       "options": {
@@ -309,9 +311,34 @@
         "color": true
       }
     },
+    "lint-sherif": {
+      "cache": true,
+      "outputs": ["{projectRoot}/package.jso"],
+      "inputs": ["{workspaceRoot}/package.json", "{projectRoot}/package.json"],
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm exec sherif -i react -i react-dom",
+        "color": true
+      }
+    },
+    "lint-knip": {
+      "cache": true,
+      "outputs": [
+        "config_linting",
+        "config_docs",
+        "source_docs",
+        "typescript",
+        "^production"
+      ],
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm exec knip",
+        "color": true
+      }
+    },
     "lint": {
       "cache": true,
-      "outputs": ["{workspaceRoot}/{projectRoot}"],
+      "outputs": ["{projectRoot}"],
       "inputs": [
         "config_linting",
         "config_docs",
@@ -319,12 +346,12 @@
         "typescript",
         "^production"
       ],
-      "dependsOn": ["lint-ls", "lint-docs", "^lint"]
+      "dependsOn": ["lint-ls", "lint-sherif", "lint-knip", "lint-docs", "^lint"]
     },
     "format-toml": {
       "cache": true,
       "inputs": ["config_linting", "{projectRoot}/**/*.toml"],
-      "outputs": ["{workspaceRoot}/{projectRoot}/**/*.toml"],
+      "outputs": ["{projectRoot}/**/*.toml"],
       "dependsOn": ["^format-toml"],
       "executor": "nx:run-commands",
       "options": {
@@ -338,7 +365,7 @@
         "config_linting",
         "{projectRoot}/{README.md,package.json,Cargo.toml,executors.json,generators.json}"
       ],
-      "outputs": ["{workspaceRoot}/{projectRoot}/README.md"],
+      "outputs": ["{projectRoot}/README.md"],
       "dependsOn": ["^format-readme"],
       "executor": "nx:run-commands",
       "options": {
@@ -358,7 +385,7 @@
     },
     "format": {
       "cache": true,
-      "outputs": ["{workspaceRoot}/{projectRoot}"],
+      "outputs": ["{projectRoot}"],
       "executor": "nx:run-commands",
       "options": {
         "command": "echo Formatting the project files in \"{projectRoot}\" ",

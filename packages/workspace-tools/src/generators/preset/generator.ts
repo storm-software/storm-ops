@@ -252,7 +252,9 @@ export async function presetGeneratorFn(
     "tsconfig-paths": "4.2.0",
     "tslib": "2.6.2",
     "typescript": typescriptVersion,
-    "verdaccio": "5.30.3"
+    "verdaccio": "5.30.3",
+    "knip": "5.25.2",
+    "sherif": "0.10.0"
   };
 
   if (options.includeApps) {
