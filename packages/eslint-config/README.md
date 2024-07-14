@@ -66,14 +66,14 @@ style standards across all Storm Software projects.
 Using [pnpm](http://pnpm.io):
 
 ```bash
-pnpm add -D eslint-config-storm-software
+pnpm add -D @storm-software/eslint-config
 ```
 
 <details>
   <summary>Using npm</summary>
 
 ```bash
-npm install -D eslint-config-storm-software
+npm install -D @storm-software/eslint-config
 ```
 
 </details>
@@ -82,7 +82,7 @@ npm install -D eslint-config-storm-software
   <summary>Using yarn</summary>
 
 ```bash
-yarn add -D eslint-config-storm-software
+yarn add -D @storm-software/eslint-config
 ```
 
 </details>

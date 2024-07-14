@@ -171,7 +171,7 @@
       "@storm-software/testing-tools": "workspace:*",
       "@storm-software/tsconfig": "workspace:*",
       "@storm-software/workspace-tools": "workspace:*",
-      "eslint-config-storm-software": "workspace:*",
+      "@storm-software/eslint-config": "workspace:*",
       "eslint-plugin-storm-software": "workspace:*",
       "eslint-plugin-storm-graphql": "workspace:*",
       "eslint-plugin-storm-react": "workspace:*",

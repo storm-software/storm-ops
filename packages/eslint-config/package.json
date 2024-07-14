@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-storm-software",
+  "name": "@storm-software/eslint-config",
   "version": "0.16.0",
   "description": "⚡ The eslint-config package is a shared ESLint config that contains a collection of recommended ESLint rule configurations which you can extend from in your own ESLint configs, as well as an Nx-specific lint rule called enforce-module-boundaries.",
   "repository": {
@@ -56,17 +56,18 @@
     "monorepo"
   ],
   "peerDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-perfectionist": "^2.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-regexp": "^1.15.0"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "6.6.0",
-    "@typescript-eslint/parser": "6.6.0",
     "confusing-browser-globals": "1.0.11",
     "eslint-config-prettier": "9.0.0"
   },
@@ -74,12 +75,15 @@
     "@nx/eslint": ">=18.3.0",
     "@nx/eslint-plugin": ">=18.3.0",
     "@types/eslint": "^8.44.2",
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
     "eslint": "^8.48.0",
     "eslint-find-rules": "^4.1.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-perfectionist": "^2.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-regexp": "^1.15.0"
