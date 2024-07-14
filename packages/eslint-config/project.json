@@ -18,7 +18,8 @@
       "dependsOn": ["test", "^build"],
       "options": {
         "commands": [
-          "pnpm copyfiles --up=3 packages/eslint-config/src/**/*.js dist/packages/eslint-config",
+          "pnpm copyfiles --up=3 packages/eslint-config/src/rules/*.js dist/packages/eslint-config",
+          "pnpm copyfiles --up=3 packages/eslint-config/src/*.js dist/packages/eslint-config",
           "pnpm copyfiles --up=2 packages/eslint-config/README.md packages/eslint-config/CHANGELOG.md packages/eslint-config/package.json dist/packages/eslint-config",
           "pnpm copyfiles LICENSE dist/packages/eslint-config"
         ],
