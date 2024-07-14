@@ -1,3 +1,10 @@
+## 0.19.0 (2024-07-14)
+
+
+### 🚀 Features
+
+- **eslint-config:** Added entry points to the base of the package ([a76af4fd](https://github.com/storm-software/storm-ops/commit/a76af4fd))
+
 ## 0.18.0 (2024-07-14)
 
 
