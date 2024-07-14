@@ -9,7 +9,6 @@
       "dependsOn": ["clean", "^build"],
       "options": {
         "command": "eslint-find-rules --unused ./src/index.js",
-        "parallel": false,
         "cwd": "packages/eslint-config"
       }
     },
@@ -22,7 +21,7 @@
           "pnpm copyfiles --up=2 packages/eslint-config/README.md packages/eslint-config/CHANGELOG.md packages/eslint-config/package.json dist/packages/eslint-config",
           "pnpm copyfiles LICENSE dist/packages/eslint-config"
         ],
-        "parallel": false
+        "parallel": true
       }
     },
     "nx-release-publish": {
