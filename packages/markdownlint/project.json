@@ -39,6 +39,11 @@
             "input": "",
             "glob": "LICENSE",
             "output": "."
+          },
+          {
+            "input": "packages/markdownlint/src",
+            "glob": ".markdownlint.json",
+            "output": "."
           }
         ]
       },
