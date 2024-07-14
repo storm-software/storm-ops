@@ -1,3 +1,10 @@
+## 2.25.1 (2024-07-14)
+
+
+### 🩹 Fixes
+
+- **git-tools:** Update README.md formatting for IMPORTANT message ([2290ee67](https://github.com/storm-software/storm-ops/commit/2290ee67))
+
 ## 2.25.0 (2024-07-03)
 
 

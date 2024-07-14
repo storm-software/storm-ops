@@ -1,3 +1,10 @@
+## 0.15.0 (2024-07-14)
+
+
+### 🚀 Features
+
+- **eslint-config:** Add custom eslint rules based on AirBnB config ([f4ce1582](https://github.com/storm-software/storm-ops/commit/f4ce1582))
+
 ## 0.14.0 (2024-06-26)
 
 

@@ -1,3 +1,17 @@
+## 1.113.0 (2024-07-14)
+
+
+### 🚀 Features
+
+- **eslint-config:** Add custom eslint rules based on AirBnB config ([f4ce1582](https://github.com/storm-software/storm-ops/commit/f4ce1582))
+
+- **markdownlint:** Added markdownlint v1 json configuration ([9fbd4fd0](https://github.com/storm-software/storm-ops/commit/9fbd4fd0))
+
+
+### 🩹 Fixes
+
+- **git-tools:** Update README.md formatting for IMPORTANT message ([2290ee67](https://github.com/storm-software/storm-ops/commit/2290ee67))
+
 ## 1.112.0 (2024-07-12)
 
 

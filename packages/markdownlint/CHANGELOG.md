@@ -1,3 +1,12 @@
+## 0.10.0 (2024-07-14)
+
+
+### 🚀 Features
+
+- **markdownlint:** Added markdownlint v1 json configuration ([9fbd4fd0](https://github.com/storm-software/storm-ops/commit/9fbd4fd0))
+
+- **markdownlint:** Ensure markdownlint.json is included in package ([ddc5639b](https://github.com/storm-software/storm-ops/commit/ddc5639b))
+
 ## 0.9.0 (2024-06-22)
 
 
