@@ -8,7 +8,8 @@
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "options": {
-        "command": "eslint-find-rules --unused ./src/index.js",
+        "commands": ["eslint-find-rules --unused ./src/base.js"],
+        "parallel": true,
         "cwd": "packages/eslint-config"
       }
     },

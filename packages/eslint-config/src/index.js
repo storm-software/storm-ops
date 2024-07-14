@@ -11,18 +11,10 @@ module.exports = {
     "plugin:regexp/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "./rules/best-practices",
-    "./rules/errors",
-    "./rules/node",
-    "./rules/style",
-    "./rules/variables",
-    "./rules/es6",
-    "./rules/imports",
-    "./rules/strict",
-    "./rules/react",
-    "./rules/react-a11y",
+    "./base",
+    "./hooks",
     "prettier"
-  ].map(require.resolve),
+  ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {

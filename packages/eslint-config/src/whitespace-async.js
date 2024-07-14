@@ -22,7 +22,6 @@ function getSeverity(ruleConfig) {
 async function onlyErrorOnRules(rulesToError, config) {
   const errorsOnly = { ...config };
   const cli = new ESLint({
-    useEslintrc: false,
     baseConfig: config
   });
   const baseRules = (await cli.calculateConfigForFile(require.resolve("./")))

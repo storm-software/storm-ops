@@ -24,7 +24,7 @@ if (CLIEngine) {
 
   function onlyErrorOnRules(rulesToError, config) {
     const errorsOnly = { ...config };
-    const cli = new CLIEngine({ baseConfig: config, useEslintrc: false });
+    const cli = new CLIEngine({ baseConfig: config });
     const baseRules = cli.getConfigForFile(require.resolve("./")).rules;
 
     entries(baseRules).forEach(rule => {
