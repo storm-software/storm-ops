@@ -1,3 +1,12 @@
+## 0.17.0 (2024-07-14)
+
+
+### 🚀 Features
+
+- **eslint-config:** Added perfectionist plugins to improve base configuration ([d9a3f383](https://github.com/storm-software/storm-ops/commit/d9a3f383))
+
+- **eslint-config:** Separate out the base and extended configurations ([e81d9070](https://github.com/storm-software/storm-ops/commit/e81d9070))
+
 ## 0.16.0 (2024-07-14)
 
 
