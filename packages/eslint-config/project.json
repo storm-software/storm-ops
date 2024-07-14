@@ -4,39 +4,25 @@
   "sourceRoot": "packages/eslint-config/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+    "test": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
       "options": {
-        "outputPath": "dist/packages/eslint-config",
-        "main": "packages/eslint-config/src/index.ts",
-        "tsConfig": "packages/eslint-config/tsconfig.json",
-        "external": ["@nx/*", "@storm-software/*", "eslint"],
-        "format": ["esm"],
-        "platform": "node",
-        "deleteOutputPath": true,
-        "bundle": true,
-        "thirdParty": true,
-        "skipTypeCheck": true,
-        "metafile": true,
-        "minify": false,
-        "assets": [
-          {
-            "input": "./packages/eslint-config",
-            "glob": "*.md",
-            "output": "/"
-          },
-          {
-            "input": "./packages/eslint-config",
-            "glob": "./index.d.ts",
-            "output": "/"
-          },
-          {
-            "input": "",
-            "glob": "LICENSE",
-            "output": "/"
-          }
-        ]
+        "command": "eslint-find-rules --unused ./src/index.js",
+        "parallel": false,
+        "cwd": "packages/eslint-config"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["test", "^build"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles --up=3 packages/eslint-config/src/**/*.js dist/packages/eslint-config",
+          "pnpm copyfiles --up=2 packages/eslint-config/README.md packages/eslint-config/CHANGELOG.md packages/eslint-config/package.json dist/packages/eslint-config",
+          "pnpm copyfiles LICENSE dist/packages/eslint-config"
+        ],
+        "parallel": false
       }
     },
     "nx-release-publish": {

@@ -19,8 +19,28 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "module": "./index.js",
-  "types": "./index.d.ts",
+  "engines": {
+    "node": "^10.12.0 || ^12.22.0 || ^14.17.0 || >=16.0.0"
+  },
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./hooks": "./hooks.js",
+    "./legacy": "./legacy.js",
+    "./whitespace": "./whitespace.js",
+    "./rules/best-practices": "./rules/best-practices.js",
+    "./rules/es6": "./rules/es6.js",
+    "./rules/node": "./rules/node.js",
+    "./rules/style": "./rules/style.js",
+    "./rules/errors": "./rules/errors.js",
+    "./rules/imports": "./rules/imports.js",
+    "./rules/strict": "./rules/strict.js",
+    "./rules/variables": "./rules/variables.js",
+    "./rules/react": "./rules/react.js",
+    "./rules/react-a11y": "./rules/react-a11y.js",
+    "./rules/react-hooks": "./rules/react-hooks.js",
+    "./package.json": "./package.json"
+  },
   "keywords": [
     "storm",
     "storm-ops",
@@ -31,27 +51,24 @@
     "monorepo"
   ],
   "peerDependencies": {
-    "@nx/eslint": ">=18.3.0",
-    "@nx/eslint-plugin": ">=18.3.0"
-  },
-  "peerDependenciesMeta": {
-    "@nx/eslint": {
-      "optional": true
-    },
-    "@nx/eslint-plugin": {
-      "optional": true
-    }
+    "eslint": "^8.2.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0"
   },
   "dependencies": {
-    "@eslint/eslintrc": "2.1.4",
-    "@eslint/js": "9.4.0",
-    "@typescript-eslint/eslint-plugin": "7.11.0",
-    "@typescript-eslint/parser": "7.11.0"
+    "confusing-browser-globals": "^1.0.11"
   },
   "devDependencies": {
     "@nx/eslint": ">=18.3.0",
     "@nx/eslint-plugin": ">=18.3.0",
-    "@types/eslint": "8.56.10"
+    "@types/eslint": "8.56.10",
+    "eslint-find-rules": "^4.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0"
   },
   "publishConfig": {
     "access": "public"

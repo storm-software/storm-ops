@@ -35,8 +35,6 @@
       "create-storm-workspace": [
         "packages/create-storm-workspace/bin/index.ts"
       ],
-      "eslint-config-storm-software": ["packages/eslint-config/src/index.ts"],
-      "eslint-config-storm-software/*": ["packages/eslint-config/src/*"],
       "eslint-plugin-storm-software": ["packages/eslint-plugin/src/index.ts"],
       "eslint-plugin-storm-software/*": ["packages/eslint-plugin/src/*"],
       "eslint-plugin-storm-graphql": [
