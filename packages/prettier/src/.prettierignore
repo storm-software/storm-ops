@@ -29,4 +29,4 @@ bun.lockb
 **/LICENSE
 **/LICENSE.md
 **/LICENSE.txt
-**/src/generators/*/files/**
+**/src/generators/**/files/**
