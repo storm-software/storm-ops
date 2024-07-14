@@ -1,3 +1,10 @@
+## 0.16.0 (2024-07-14)
+
+
+### 🚀 Features
+
+- **eslint-config:** Publish the base eslint configuration changes ([276ed890](https://github.com/storm-software/storm-ops/commit/276ed890))
+
 ## 0.15.0 (2024-07-14)
 
 
