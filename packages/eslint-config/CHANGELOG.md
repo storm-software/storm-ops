@@ -1,3 +1,10 @@
+## 0.18.0 (2024-07-14)
+
+
+### 🚀 Features
+
+- **eslint-config:** Update the package name to use a scope ([f83f44cc](https://github.com/storm-software/storm-ops/commit/f83f44cc))
+
 ## 0.17.0 (2024-07-14)
 
 
