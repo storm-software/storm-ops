@@ -15,4 +15,4 @@ repository = { workspace = true }
 version = '0.5.0'
 
 [dependencies]
-thiserror = '=1.0.61'
+thiserror = '=1.0.62'
