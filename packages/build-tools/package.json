@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
-    "@microsoft/api-extractor": "7.46.2",
+    "@microsoft/api-extractor": "7.47.0",
     "@nx/devkit": "^19.1.0",
     "@nx/js": "^19.1.0",
     "@nx/workspace": "^19.1.0",
@@ -50,7 +50,7 @@
     "esbuild-plugin-environment": "0.4.0",
     "fs-extra": "11.2.0",
     "glob": "10.4.2",
-    "rolldown": "0.10.4",
+    "rolldown": "0.12.1",
     "rollup": "4.18.0",
     "rollup-plugin-esbuild": "6.1.1",
     "rollup-plugin-peer-deps-external": "2.2.4",
@@ -58,7 +58,7 @@
     "rollup-plugin-typescript2": "0.36.0",
     "sass": "1.77.6",
     "tsup": "8.0.0",
-    "typescript": "5.4.5",
+    "typescript": "5.5.3",
     "unbuild": "2.0.0"
   },
   "publishConfig": {

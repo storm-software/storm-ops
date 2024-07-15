@@ -69,7 +69,7 @@
   },
   "dependencies": {
     "confusing-browser-globals": "1.0.11",
-    "eslint-config-prettier": "9.0.0"
+    "eslint-config-prettier": "9.1.0"
   },
   "devDependencies": {
     "@nx/eslint": ">=18.3.0",
