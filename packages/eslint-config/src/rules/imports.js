@@ -14,7 +14,7 @@ module.exports = {
         extensions: [".mjs", ".js", ".json"]
       }
     },
-    "import/extensions": [".js", ".mjs", ".jsx"],
+    "import/extensions": ["error", "never"],
     "import/core-modules": [],
     "import/ignore": ["node_modules", "\\.(coffee|scss|css|less|hbs|svg|json)$"]
   },
@@ -130,15 +130,7 @@ module.exports = {
 
     // Ensure consistent use of file extension within the import path
     // https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/extensions.md
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        js: "never",
-        mjs: "never",
-        jsx: "never"
-      }
-    ],
+    "import/extensions": ["error", "never"],
 
     // ensure absolute imports are above relative imports and that unassigned imports are ignored
     // https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/order.md
