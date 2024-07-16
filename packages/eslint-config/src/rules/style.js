@@ -396,14 +396,14 @@ module.exports = {
     "no-negated-condition": "off",
 
     // disallow nested ternary expressions
-    "no-nested-ternary": "error",
+    "no-nested-ternary": "off",
 
     // disallow use of the Object constructor
     "no-new-object": "error",
 
     // disallow use of unary operators, ++ and --
     // https://eslint.org/docs/rules/no-plusplus
-    "no-plusplus": "error",
+    "no-plusplus": "off",
 
     // disallow certain syntax forms
     // https://eslint.org/docs/rules/no-restricted-syntax

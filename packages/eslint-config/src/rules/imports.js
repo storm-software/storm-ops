@@ -24,7 +24,7 @@ module.exports = {
 
     // ensure imports point to files/modules that can be resolved
     // https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
-    "import/no-unresolved": ["error", { commonjs: true, caseSensitive: true }],
+    "import/no-unresolved": ["error", { commonjs: false, caseSensitive: true }],
 
     // ensure named imports coupled with named exports
     // https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/named.md#when-not-to-use-it
@@ -154,7 +154,7 @@ module.exports = {
 
     // Require modules with a single export to use a default export
     // https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/prefer-default-export.md
-    "import/prefer-default-export": "error",
+    "import/prefer-default-export": "off",
 
     // Restrict which files can be imported in a given folder
     // https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-restricted-paths.md
