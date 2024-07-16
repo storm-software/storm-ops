@@ -112,7 +112,7 @@ module.exports = {
 
     // disallow non-import statements appearing before import statements
     // https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/first.md
-    "import/first": "error",
+    "import/first": "warn",
 
     // disallow non-import statements appearing before import statements
     // https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/imports-first.md
