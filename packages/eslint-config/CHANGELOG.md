@@ -1,3 +1,10 @@
+## 0.21.0 (2024-07-16)
+
+
+### 🚀 Features
+
+- **eslint-config:** Fix unused imports and variables automatically ([f9443086](https://github.com/storm-software/storm-ops/commit/f9443086))
+
 ## 0.20.0 (2024-07-16)
 
 
