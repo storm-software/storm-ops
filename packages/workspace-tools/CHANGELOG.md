@@ -1,3 +1,10 @@
+## 1.114.0 (2024-07-16)
+
+
+### 🚀 Features
+
+- **eslint-config:** Regenerated README.md file ([d562f7e1](https://github.com/storm-software/storm-ops/commit/d562f7e1))
+
 ## 1.113.0 (2024-07-14)
 
 
