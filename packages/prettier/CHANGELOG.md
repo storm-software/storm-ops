@@ -1,3 +1,10 @@
+## 0.9.0 (2024-07-16)
+
+
+### 🚀 Features
+
+- **prettier:** Added TailwindCSS configuration json ([0fc2558a](https://github.com/storm-software/storm-ops/commit/0fc2558a))
+
 ## 0.8.0 (2024-07-16)
 
 
