@@ -1,3 +1,10 @@
+## 0.8.0 (2024-07-16)
+
+
+### 🚀 Features
+
+- **prettier:** Added a separate configuration json for import sorting ([c29219a4](https://github.com/storm-software/storm-ops/commit/c29219a4))
+
 ## 0.7.0 (2024-07-16)
 
 
