@@ -1,3 +1,10 @@
+## 0.24.0 (2024-07-16)
+
+
+### 🚀 Features
+
+- **eslint-config:** Update `import/extensions` rule to `never` ([27d122cd](https://github.com/storm-software/storm-ops/commit/27d122cd))
+
 ## 0.23.0 (2024-07-16)
 
 
