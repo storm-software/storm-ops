@@ -1,3 +1,10 @@
+## 0.23.0 (2024-07-16)
+
+
+### 🚀 Features
+
+- **eslint-config:** Update the import and style rule defaults ([74bd6eed](https://github.com/storm-software/storm-ops/commit/74bd6eed))
+
 ## 0.22.0 (2024-07-16)
 
 
