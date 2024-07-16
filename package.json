@@ -76,6 +76,7 @@
     "nuke": "nx clear-cache && rimraf tmp && rimraf .nx/cache && rimraf **/node_modules && pnpm clear",
     "nx": "nx",
     "prebuild": "pnpm build-plugins",
+    "prebuild-all": "pnpm build-plugins",
     "rebuild": "pnpm clean && pnpm build",
     "rebuild-all": "pnpm clean-all && pnpm build-all",
     "release": "node ./dist/packages/git-tools/bin/git.js release",

@@ -2,7 +2,6 @@
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 
-
 <div align="center"><img src="https://pub-761b436209f44a4d886487c917806c08.r2.dev/storm-banner.gif" width="100%" alt="Storm Software" /></div>
 <br />
 

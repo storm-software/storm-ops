@@ -458,7 +458,7 @@
       }
     },
     "version": {
-      "preVersionCommand": "pnpm nx run-many --target=build --all --parallel=3",
+      "preVersionCommand": "pnpm build-all",
       "generator": "@storm-software/workspace-tools:release-version",
       "generatorOptions": {
         "currentVersionResolver": "git-tag",
