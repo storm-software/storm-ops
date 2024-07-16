@@ -1,3 +1,10 @@
+## 0.7.0 (2024-07-16)
+
+
+### 🚀 Features
+
+- **prettier:** Remove duplicate import sorting plugin ([bcb27e5a](https://github.com/storm-software/storm-ops/commit/bcb27e5a))
+
 ## 0.6.0 (2024-07-14)
 
 
