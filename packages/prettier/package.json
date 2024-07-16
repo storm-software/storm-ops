@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/prettier",
-  "version": "0.7.0",
+  "version": "0.6.0",
   "type": "commonjs",
   "description": "⚡ A package containing the base Prettier configuration used by Storm Software across many projects.",
   "repository": {
@@ -35,7 +35,16 @@
     "monorepo"
   ],
   "peerDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "4.2.1",
     "prettier": "^3.3.0"
+  },
+  "peerDependenciesMeta": {
+    "@ianvs/prettier-plugin-sort-imports": {
+      "optional": true
+    },
+    "prettier": {
+      "optional": false
+    }
   },
   "dependencies": {
     "prettier-plugin-pkg": "0.18.1",

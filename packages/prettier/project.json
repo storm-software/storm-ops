@@ -33,7 +33,7 @@
           },
           {
             "input": "./packages/prettier/src",
-            "glob": "{config.json,.prettierignore}",
+            "glob": "{*.json,.prettierignore}",
             "output": "."
           }
         ]
