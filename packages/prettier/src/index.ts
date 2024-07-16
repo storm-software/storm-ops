@@ -48,9 +48,7 @@ module.exports = {
   "plugins": [
     "prettier-plugin-sh",
     "prettier-plugin-pkg",
-    "@ianvs/prettier-plugin-sort-imports",
-    "prettier-plugin-prisma",
-    "prettier-plugin-tailwindcss"
+    "prettier-plugin-prisma"
   ],
   "importOrder": [
     "^react(-dom)?$",

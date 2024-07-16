@@ -54,7 +54,6 @@
   "plugins": [
     "prettier-plugin-sh",
     "prettier-plugin-pkg",
-    "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-prisma"
   ],
   "importOrder": [
