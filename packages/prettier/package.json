@@ -36,7 +36,8 @@
   ],
   "peerDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "4.2.1",
-    "prettier": "^3.3.0"
+    "prettier": "^3.3.0",
+    "prettier-plugin-tailwindcss": "0.6.5"
   },
   "peerDependenciesMeta": {
     "@ianvs/prettier-plugin-sort-imports": {
@@ -44,6 +45,9 @@
     },
     "prettier": {
       "optional": false
+    },
+    "prettier-plugin-tailwindcss": {
+      "optional": true
     }
   },
   "dependencies": {

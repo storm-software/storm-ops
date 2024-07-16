@@ -1,4 +1,4 @@
-module.exports = {
+{
   "proseWrap": "always",
   "trailingComma": "none",
   "tabWidth": 2,
@@ -33,6 +33,12 @@ module.exports = {
       }
     },
     {
+      "files": "**/*.aci",
+      "options": {
+        "parser": "prisma-parse"
+      }
+    },
+    {
       "files": "**/*.acid",
       "options": {
         "parser": "prisma-parse"
@@ -48,6 +54,7 @@ module.exports = {
   "plugins": [
     "prettier-plugin-sh",
     "prettier-plugin-pkg",
+    "prettier-plugin-tailwindcss",
     "prettier-plugin-prisma"
   ]
-};
+}
