@@ -1,3 +1,17 @@
+## 1.117.0 (2024-07-17)
+
+
+### Features
+
+- **workspace-tools:** Include Documentation and Examples in the CHANGELOG files ([39b694b7](https://github.com/storm-software/storm-ops/commit/39b694b7))
+
+
+### Documentation
+
+- **storm-ops:** Remove emojis from monorepo CHANGELOG files ([441b36b1](https://github.com/storm-software/storm-ops/commit/441b36b1))
+
+- **workspace-tools:** Regenerate README markdown content ([3dc140fc](https://github.com/storm-software/storm-ops/commit/3dc140fc))
+
 ## 2.29.0 (2024-07-17)
 
 ### Features
