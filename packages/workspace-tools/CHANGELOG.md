@@ -1,3 +1,10 @@
+## 1.116.0 (2024-07-17)
+
+
+### Features
+
+- **workspace-tools:** Added custom `conventional-commits` configuration ([aac74a55](https://github.com/storm-software/storm-ops/commit/aac74a55))
+
 ## 1.115.0 (2024-07-17)
 
 
