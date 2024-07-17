@@ -1,3 +1,10 @@
+## 0.25.0 (2024-07-17)
+
+
+### 🚀 Features
+
+- **eslint-config:** Remove the `import/no-unresolved` rule ([ec96f648](https://github.com/storm-software/storm-ops/commit/ec96f648))
+
 ## 0.24.0 (2024-07-16)
 
 
