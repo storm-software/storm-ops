@@ -1,3 +1,10 @@
+## 2.26.0 (2024-07-17)
+
+
+### 🚀 Features
+
+- **git-tools:** Added internal `doctoc` implementation ([82c4cf40](https://github.com/storm-software/storm-ops/commit/82c4cf40))
+
 ## 2.25.1 (2024-07-14)
 
 
