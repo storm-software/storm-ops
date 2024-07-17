@@ -1,3 +1,10 @@
+## 1.67.0 (2024-07-17)
+
+
+### 🚀 Features
+
+- **git-tools:** Added README header template to include table of contents ([6841042e](https://github.com/storm-software/storm-ops/commit/6841042e))
+
 ## 1.66.0 (2024-06-22)
 
 
