@@ -14,7 +14,7 @@ module.exports = {
       [
         "chore",
         // Changes that affect the build system or dependency-only changes
-        "build",
+        "deps",
         // Changes to CI workflows
         "ci",
         // Documentation-only changes
@@ -57,7 +57,8 @@ module.exports = {
         description: "Select the type of change that you're committing"
       },
       scope: {
-        description: "Select the scope of this change (package name in the monorepo)"
+        description:
+          "Select the scope of this change (package name in the monorepo)"
       },
       subject: {
         description: "Write a short, imperative tense description of the change"

@@ -37,7 +37,7 @@ export interface StormChangelogRenderOptions extends Record<string, unknown> {
  */
 export const changelogRenderer: ChangelogRenderer = async ({
   projectGraph,
-  commits,
+  commits = [],
   releaseVersion,
   project,
   entryWhenNoChanges,
@@ -53,7 +53,7 @@ export const changelogRenderer: ChangelogRenderer = async ({
     fix: { title: "Bug Fixes" },
     refactor: { title: "Refactoring" },
     docs: { title: "Documentation" },
-    build: { title: "Build Improvements" },
+    deps: { title: "Dependency Upgrades" },
     types: { title: "Type Definitions" },
     chore: { title: "Chore" },
     examples: { title: "Examples" },
@@ -220,7 +220,7 @@ export const changelogRenderer: ChangelogRenderer = async ({
   }
 
   if (breakingChanges.length > 0) {
-    markdownLines.push("", "#### ⚠️  Breaking Changes", "", ...breakingChanges);
+    markdownLines.push("", "#### Breaking Changes", "", ...breakingChanges);
   }
 
   if (changelogRenderOptions.authors) {
@@ -290,7 +290,7 @@ export const changelogRenderer: ChangelogRenderer = async ({
     if (authors.length > 0) {
       markdownLines.push(
         "",
-        "### " + "❤️  Thank you to our wonderful contributors",
+        "### " + "Thank you to our wonderful contributors",
         "",
         ...authors
           // Sort the contributors by name

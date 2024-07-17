@@ -50,7 +50,7 @@ export type CommitTypes = Record<string, CommitType> & {
   refactor: CommitType;
   perf: CommitType;
   test: CommitType;
-  build: CommitType;
+  deps: CommitType;
   ci: CommitType;
   chore: CommitType;
   revert: CommitType;
@@ -64,7 +64,7 @@ export type CommitTypeKeys = [
   "refactor",
   "perf",
   "test",
-  "build",
+  "deps",
   "ci",
   "chore",
   "revert"

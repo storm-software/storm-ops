@@ -3,6 +3,7 @@ import type {
   RuleConfigSeverity,
   TargetCaseType
 } from "@commitlint/types";
+import { NxReleaseConfig } from "../types";
 
 export default {
   extends: ["@commitlint/config-conventional"],
@@ -13,7 +14,7 @@ export default {
       [
         "chore",
         // Changes that affect the build system or dependency-only changes
-        "build",
+        "deps",
         // Changes to CI workflows
         "ci",
         // Documentation-only changes
@@ -76,3 +77,100 @@ export default {
     }
   }
 };
+
+export const DEFAULT_CONVENTIONAL_COMMITS_CONFIG: NxReleaseConfig["conventionalCommits"] =
+  {
+    types: {
+      feat: {
+        semverBump: "minor",
+        changelog: {
+          title: "Features",
+          hidden: false
+        }
+      },
+      fix: {
+        semverBump: "patch",
+        changelog: {
+          title: "Bug Fixes",
+          hidden: false
+        }
+      },
+      perf: {
+        semverBump: "none",
+        changelog: {
+          title: "Performance Improvements",
+          hidden: false
+        }
+      },
+      refactor: {
+        semverBump: "patch",
+        changelog: {
+          title: "Refactoring",
+          hidden: false
+        }
+      },
+      docs: {
+        semverBump: "none",
+        changelog: {
+          title: "Documentation",
+          hidden: true
+        }
+      },
+      deps: {
+        semverBump: "patch",
+        changelog: {
+          title: "Dependency Upgrades",
+          hidden: false
+        }
+      },
+      types: {
+        semverBump: "minor",
+        changelog: {
+          title: "Type Definitions",
+          hidden: false
+        }
+      },
+      chore: {
+        semverBump: "none",
+        changelog: {
+          title: "Chores",
+          hidden: true
+        }
+      },
+      examples: {
+        semverBump: "none",
+        changelog: {
+          title: "Examples",
+          hidden: true
+        }
+      },
+      test: {
+        semverBump: "none",
+        changelog: {
+          title: "Testing",
+          hidden: true
+        }
+      },
+      style: {
+        semverBump: "minor",
+        changelog: {
+          title: "Styling",
+          hidden: false
+        }
+      },
+      ci: {
+        semverBump: "patch",
+        changelog: {
+          title: "Continuous Integration",
+          hidden: false
+        }
+      },
+      revert: {
+        semverBump: "patch",
+        changelog: {
+          title: "Revert",
+          hidden: false
+        }
+      }
+    }
+  };

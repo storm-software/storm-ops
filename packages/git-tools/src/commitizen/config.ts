@@ -6,7 +6,17 @@ export default {
   closedIssuePrefix: "✅ ",
   format: "{type}({scope}): {emoji}{subject}",
   disableEmoji: true,
-  list: ["test", "feat", "fix", "chore", "docs", "refactor", "style", "ci", "perf"],
+  list: [
+    "test",
+    "feat",
+    "fix",
+    "chore",
+    "docs",
+    "refactor",
+    "style",
+    "ci",
+    "perf"
+  ],
   maxMessageLength: 75,
   minMessageLength: 3,
   questions: CommitQuestionsKeys,
@@ -30,7 +40,7 @@ export default {
     style: {
       description:
         "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
-      title: "Styles",
+      title: "Styling",
       emoji: "💎"
     },
     refactor: {
@@ -45,13 +55,13 @@ export default {
     },
     test: {
       description: "Adding missing tests or correcting existing tests",
-      title: "Tests",
+      title: "Testing",
       emoji: "🚨"
     },
-    build: {
+    deps: {
       description:
         "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)",
-      title: "Builds",
+      title: "Dependency Upgrades",
       emoji: "📦"
     },
     ci: {
