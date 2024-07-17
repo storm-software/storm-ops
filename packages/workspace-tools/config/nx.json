@@ -478,7 +478,7 @@
           "semverBump": "none",
           "changelog": {
             "title": "Documentation",
-            "hidden": true
+            "hidden": false
           }
         },
         "deps": {
@@ -506,7 +506,7 @@
           "semverBump": "none",
           "changelog": {
             "title": "Examples",
-            "hidden": true
+            "hidden": false
           }
         },
         "test": {
