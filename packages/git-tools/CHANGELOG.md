@@ -1,160 +1,162 @@
 ## 2.29.0 (2024-07-17)
 
-
 ### Features
 
-- **workspace-tools:** Added custom `conventional-commits` configuration ([aac74a55](https://github.com/storm-software/storm-ops/commit/aac74a55))
+- **workspace-tools:** Added custom `conventional-commits` configuration
+  ([aac74a55](https://github.com/storm-software/storm-ops/commit/aac74a55))
 
 ## 2.28.0 (2024-07-17)
 
+### Features
 
-### 🚀 Features
-
-- **git-tools:** Improve README footer template markdown ([0450800f](https://github.com/storm-software/storm-ops/commit/0450800f))
+- **git-tools:** Improve README footer template markdown
+  ([0450800f](https://github.com/storm-software/storm-ops/commit/0450800f))
 
 ## 2.27.0 (2024-07-17)
 
+### Features
 
-### 🚀 Features
-
-- **git-tools:** Added README header template to include table of contents ([6841042e](https://github.com/storm-software/storm-ops/commit/6841042e))
+- **git-tools:** Added README header template to include table of contents
+  ([6841042e](https://github.com/storm-software/storm-ops/commit/6841042e))
 
 ## 2.26.0 (2024-07-17)
 
+### Features
 
-### 🚀 Features
-
-- **git-tools:** Added internal `doctoc` implementation ([82c4cf40](https://github.com/storm-software/storm-ops/commit/82c4cf40))
+- **git-tools:** Added internal `doctoc` implementation
+  ([82c4cf40](https://github.com/storm-software/storm-ops/commit/82c4cf40))
 
 ## 2.25.1 (2024-07-14)
 
+### Bug Fixes
 
-### 🩹 Fixes
-
-- **git-tools:** Update README.md formatting for IMPORTANT message ([2290ee67](https://github.com/storm-software/storm-ops/commit/2290ee67))
+- **git-tools:** Update README.md formatting for IMPORTANT message
+  ([2290ee67](https://github.com/storm-software/storm-ops/commit/2290ee67))
 
 ## 2.25.0 (2024-07-03)
 
+### Features
 
-### 🚀 Features
+- **storm-ops:** Upgrade `pnpm` package manager version to 9.4.0
+  ([2269cf67](https://github.com/storm-software/storm-ops/commit/2269cf67))
 
-- **storm-ops:** Upgrade `pnpm` package manager version to 9.4.0 ([2269cf67](https://github.com/storm-software/storm-ops/commit/2269cf67))
-
-- **git-tools:** Added a table of content to the `README.md` header template ([227c234f](https://github.com/storm-software/storm-ops/commit/227c234f))
+- **git-tools:** Added a table of content to the `README.md` header template
+  ([227c234f](https://github.com/storm-software/storm-ops/commit/227c234f))
 
 ## 2.24.0 (2024-06-29)
 
+### Features
 
-### 🚀 Features
-
-- **eslint-plugin:** Polyfill `require` in esm build output ([67f1fbab](https://github.com/storm-software/storm-ops/commit/67f1fbab))
+- **eslint-plugin:** Polyfill `require` in esm build output
+  ([67f1fbab](https://github.com/storm-software/storm-ops/commit/67f1fbab))
 
 ## 2.23.0 (2024-06-22)
 
+### Features
 
-### 🚀 Features
-
-- **workspace-tools:** Upgrade the workspace pnpm-lock file ([d33c20cb](https://github.com/storm-software/storm-ops/commit/d33c20cb))
+- **workspace-tools:** Upgrade the workspace pnpm-lock file
+  ([d33c20cb](https://github.com/storm-software/storm-ops/commit/d33c20cb))
 
 ## 2.22.0 (2024-06-22)
 
+### Features
 
-### 🚀 Features
-
-- **storm-ops:** Updated pnpm-lock file ([22be1efd](https://github.com/storm-software/storm-ops/commit/22be1efd))
+- **storm-ops:** Updated pnpm-lock file
+  ([22be1efd](https://github.com/storm-software/storm-ops/commit/22be1efd))
 
 ## 2.21.0 (2024-06-22)
 
+### Features
 
-### 🚀 Features
-
-- **workspace-tools:** Added `lint` and `format` tasks and improved cache input management ([f2ade202](https://github.com/storm-software/storm-ops/commit/f2ade202))
+- **workspace-tools:** Added `lint` and `format` tasks and improved cache input
+  management
+  ([f2ade202](https://github.com/storm-software/storm-ops/commit/f2ade202))
 
 ## 2.20.0 (2024-06-21)
 
+### Features
 
-### 🚀 Features
-
-- **eslint-plugin:** Resolve issues with eslint module types ([ca513974](https://github.com/storm-software/storm-ops/commit/ca513974))
+- **eslint-plugin:** Resolve issues with eslint module types
+  ([ca513974](https://github.com/storm-software/storm-ops/commit/ca513974))
 
 ## 2.19.0 (2024-06-20)
 
+### Features
 
-### 🚀 Features
-
-- **git-tools:** Updated the shared `lefthook` configuration to use npm scripts ([68cfb767](https://github.com/storm-software/storm-ops/commit/68cfb767))
+- **git-tools:** Updated the shared `lefthook` configuration to use npm scripts
+  ([68cfb767](https://github.com/storm-software/storm-ops/commit/68cfb767))
 
 ## 2.18.0 (2024-06-17)
 
+### Features
 
-### 🚀 Features
-
-- **git-tools:** Use repository scripts in base `lefthook` configuration ([771a76d9](https://github.com/storm-software/storm-ops/commit/771a76d9))
+- **git-tools:** Use repository scripts in base `lefthook` configuration
+  ([771a76d9](https://github.com/storm-software/storm-ops/commit/771a76d9))
 
 ## 2.17.0 (2024-06-17)
 
+### Features
 
-### 🚀 Features
-
-- **git-tools:** Add proper export values to package and resolve type issues ([46f45709](https://github.com/storm-software/storm-ops/commit/46f45709))
+- **git-tools:** Add proper export values to package and resolve type issues
+  ([46f45709](https://github.com/storm-software/storm-ops/commit/46f45709))
 
 ## 2.16.1 (2024-06-17)
 
+### Bug Fixes
 
-### 🩹 Fixes
-
-- **deps:** update patch prod dependencies ([ec613e8a](https://github.com/storm-software/storm-ops/commit/ec613e8a))
+- **deps:** update patch prod dependencies
+  ([ec613e8a](https://github.com/storm-software/storm-ops/commit/ec613e8a))
 
 ## 2.16.0 (2024-06-09)
 
+### Features
 
-### 🚀 Features
-
-- **eslint:** Add dependencies and convert to `CommonJs` package ([bd4bc22c](https://github.com/storm-software/storm-ops/commit/bd4bc22c))
+- **eslint:** Add dependencies and convert to `CommonJs` package
+  ([bd4bc22c](https://github.com/storm-software/storm-ops/commit/bd4bc22c))
 
 ## 2.15.0 (2024-06-09)
 
-### 🚀 Features
+### Features
 
 - **eslint:** Updated markup documentation files
   ([0097f19e](https://github.com/storm-software/storm-ops/commit/0097f19e))
 
 ## 2.14.0 (2024-06-09)
 
-### 🚀 Features
+### Features
 
 - **git-tools:** Added additional error logging to release action
   ([d990f9f5](https://github.com/storm-software/storm-ops/commit/d990f9f5))
 
 ## 2.13.1 (2024-06-09)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** File formatting changes
   ([f6c39863](https://github.com/storm-software/storm-ops/commit/f6c39863))
 
 ## 2.13.0 (2024-06-09)
 
-### 🚀 Features
+### Features
 
 - **git-tools:** Enhance the fatal error logging
   ([89b0e089](https://github.com/storm-software/storm-ops/commit/89b0e089))
 
 ## 2.12.1 (2024-06-05)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **eslint:** Resolve issue with missing dependencies
   ([b0f43454](https://github.com/storm-software/storm-ops/commit/b0f43454))
 
 ## 2.12.0 (2024-06-03)
 
-### 🚀 Features
+### Features
 
 - **storm-ops:** Upgrade Nx packages and resolve linting issues
   ([685c2bb9](https://github.com/storm-software/storm-ops/commit/685c2bb9))
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **deps:** update patch prod dependencies
   ([072b4763](https://github.com/storm-software/storm-ops/commit/072b4763))
@@ -167,18 +169,14 @@
 
 ## 2.11.0 (2024-05-29)
 
-### 🚀 Features
+### Features
 
 - **cloudflare-tools:** Update worker generator to add hono depenendency
   ([946a9e59](https://github.com/storm-software/storm-ops/commit/946a9e59))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.10.2 (2024-05-27)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **deps:** update patch prod dependencies
   ([a8113435](https://github.com/storm-software/storm-ops/commit/a8113435))
@@ -189,141 +187,93 @@
 - **deps:** update dependencies-non-major
   ([#159](https://github.com/storm-software/storm-ops/pull/159))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.10.1 (2024-05-06)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **markdownlint:** Resolved issue with bad config in lint file
   ([95b3aba7](https://github.com/storm-software/storm-ops/commit/95b3aba7))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.10.0 (2024-05-06)
 
-### 🚀 Features
+### Features
 
 - **markdownlint:** Added the `markdownlint` package for shared configurations
   ([abd6fa38](https://github.com/storm-software/storm-ops/commit/abd6fa38))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.9.4 (2024-04-29)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Update scripts to use deamon to generate Nx Project Graphs
   ([6b6ad2b6](https://github.com/storm-software/storm-ops/commit/6b6ad2b6))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.9.3 (2024-04-29)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **deps:** update patch prod dependencies
   ([c427e132](https://github.com/storm-software/storm-ops/commit/c427e132))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.9.2 (2024-04-15)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **config-tools:** Clean up the README markdown
   ([676d23d3](https://github.com/storm-software/storm-ops/commit/676d23d3))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.9.1 (2024-04-15)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **deps:** update patch prod dependencies
   ([7f710f58](https://github.com/storm-software/storm-ops/commit/7f710f58))
 
 ## 2.9.0 (2024-04-13)
 
-### 🚀 Features
+### Features
 
 - **git-tools:** Updated the console write calls to use updated method signature
   ([d2d7cc8b](https://github.com/storm-software/storm-ops/commit/d2d7cc8b))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.8.0 (2024-04-13)
 
-### 🚀 Features
+### Features
 
 - **config-tools:** No longer require `config` in storm console write functions
   ([ad8c6511](https://github.com/storm-software/storm-ops/commit/ad8c6511))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.7.6 (2024-04-08)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **build-tools:** Resolved issue with module types used in build
   ([50a368d3](https://github.com/storm-software/storm-ops/commit/50a368d3))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.7.5 (2024-04-08)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **build-tools:** Resolved issue with duplicate require definition
   ([63aa1d16](https://github.com/storm-software/storm-ops/commit/63aa1d16))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.7.4 (2024-04-08)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Resolve issues with `build-tools` import
   ([fc040f71](https://github.com/storm-software/storm-ops/commit/fc040f71))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.7.3 (2024-04-08)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Update module types of imports
   ([9d09009b](https://github.com/storm-software/storm-ops/commit/9d09009b))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.7.2 (2024-04-08)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **deps:** update patch prod dependencies
   ([3bce6c5e](https://github.com/storm-software/storm-ops/commit/3bce6c5e))
@@ -352,20 +302,16 @@
 - **git-tools:** Resolve issue with dependencies
   ([b536fd82](https://github.com/storm-software/storm-ops/commit/b536fd82))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.7.1 (2024-04-08)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **deps:** pin dependencies
   ([7406e605](https://github.com/storm-software/storm-ops/commit/7406e605))
 
 ## 2.7.0 (2024-04-07)
 
-### 🚀 Features
+### Features
 
 - **git-tools:** Added reusable GitHub `workflows` and `actions`
   ([1c9a5391](https://github.com/storm-software/storm-ops/commit/1c9a5391))
@@ -373,69 +319,45 @@
 - **storm-ops:** Merged in change to the main branch
   ([ce79c572](https://github.com/storm-software/storm-ops/commit/ce79c572))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.6.0 (2024-04-06)
 
-### 🚀 Features
+### Features
 
 - **build-tools:** Added support for `rolldown` builds
   ([46de2e63](https://github.com/storm-software/storm-ops/commit/46de2e63))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.5.12 (2024-04-01)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Resolve issue with bad release path in npm publish
   ([4f5ba3db](https://github.com/storm-software/storm-ops/commit/4f5ba3db))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.5.11 (2024-03-29)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Added the `nx-release-publish` target to TypeScript
   projects
   ([52b61117](https://github.com/storm-software/storm-ops/commit/52b61117))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.5.10 (2024-03-29)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Further updates to Nx plugin modules
   ([82b6ab01](https://github.com/storm-software/storm-ops/commit/82b6ab01))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.5.9 (2024-03-29)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Resolve issues applying Nx plugins
   ([7dd277e6](https://github.com/storm-software/storm-ops/commit/7dd277e6))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.5.8 (2024-03-28)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Added code to add ts plugin transpilers
   ([ec514d57](https://github.com/storm-software/storm-ops/commit/ec514d57))
@@ -443,90 +365,58 @@
 - **workspace-tools:** Remove `axios` reference from `cargo-publish` executor
   ([7a2e3570](https://github.com/storm-software/storm-ops/commit/7a2e3570))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.5.7 (2024-03-28)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Resolve issues with `axios` calls
   ([53306912](https://github.com/storm-software/storm-ops/commit/53306912))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.5.6 (2024-03-28)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Update `moduleResolution` option to use `Bundler` value
   ([132eb929](https://github.com/storm-software/storm-ops/commit/132eb929))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.5.5 (2024-03-28)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Resolve issue with module type compiler options
   ([5c4a20b7](https://github.com/storm-software/storm-ops/commit/5c4a20b7))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.5.4 (2024-03-28)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Ensure we skip ci on publish commit
   ([ab2e0655](https://github.com/storm-software/storm-ops/commit/ab2e0655))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.5.3 (2024-03-28)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **storm-ops:** Resolve issue with workspace dependencies
   ([041dcc78](https://github.com/storm-software/storm-ops/commit/041dcc78))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.5.2 (2024-03-28)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Update to executable git hook scripts
   ([d1e0cb22](https://github.com/storm-software/storm-ops/commit/d1e0cb22))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.5.1 (2024-03-28)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **storm-ops:** Update the links in the README files to use proper repository
   ([decc0db3](https://github.com/storm-software/storm-ops/commit/decc0db3))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.5.0 (2024-03-25)
 
-### 🚀 Features
+### Features
 
 - **workspace-tools:** Added Nx plugin to apply rust and typescript targets
   ([5738161f](https://github.com/storm-software/storm-ops/commit/5738161f))
@@ -534,145 +424,97 @@
 - **workspace-tools:** Major updates to base nx.json configuration
   ([06ec9a6a](https://github.com/storm-software/storm-ops/commit/06ec9a6a))
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Resolved issues with `left-hook` scripts
   ([daf28aa2](https://github.com/storm-software/storm-ops/commit/daf28aa2))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.4.0 (2024-03-19)
 
-### 🚀 Features
+### Features
 
 - **linting-tools:** Added the `taplo` and `ls-lint` tools
   ([24c984eb](https://github.com/storm-software/storm-ops/commit/24c984eb))
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Updates to the lefthook scripts execution
   ([ac1f85f3](https://github.com/storm-software/storm-ops/commit/ac1f85f3))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.3.0 (2024-03-05)
 
-### 🚀 Features
+### Features
 
 - **build-tools:** Split out Build CLI and supporting code to separate package
   ([9376ed39](https://github.com/storm-software/storm-ops/commit/9376ed39))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.2.7 (2024-03-01)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Remove the storm env filter
   ([48259eea](https://github.com/storm-software/storm-ops/commit/48259eea))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.2.6 (2024-02-27)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Relocation config parser code to build function
   ([fa27dea4](https://github.com/storm-software/storm-ops/commit/fa27dea4))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.2.5 (2024-02-27)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Resolve issue with tsconfig file resolution
   ([0254e50a](https://github.com/storm-software/storm-ops/commit/0254e50a))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.2.4 (2024-02-27)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Dynamically load tsup module and resolve `testing-tools`
   type issues
   ([c1d51975](https://github.com/storm-software/storm-ops/commit/c1d51975))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.2.3 (2024-02-27)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **config-tools:** Update config packages to only use cjs
   ([75e4a16b](https://github.com/storm-software/storm-ops/commit/75e4a16b))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.2.2 (2024-02-27)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Update the build executor back to esbuild
   ([ff200547](https://github.com/storm-software/storm-ops/commit/ff200547))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.2.1 (2024-02-26)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Resolved linting issues with the nx-version module
   ([9b5f02d0](https://github.com/storm-software/storm-ops/commit/9b5f02d0))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.2.0 (2024-02-26)
 
-### 🚀 Features
+### Features
 
 - **storm-ops:** Major updates to tsconfig values
   ([a3638fae](https://github.com/storm-software/storm-ops/commit/a3638fae))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.1.7 (2024-02-24)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Update build compiler parameters
   ([3c6cb525](https://github.com/storm-software/storm-ops/commit/3c6cb525))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.1.6 (2024-02-24)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Updates to git release workflow processing
   ([3c3dc58f](https://github.com/storm-software/storm-ops/commit/3c3dc58f))
@@ -689,13 +531,9 @@
 - **git-tools:** Update versioning to no longer apply git tag
   ([288c81ca](https://github.com/storm-software/storm-ops/commit/288c81ca))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.1.5 (2024-02-24)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Use proper git tag to publish changes
   ([0c8d3230](https://github.com/storm-software/storm-ops/commit/0c8d3230))
@@ -703,24 +541,16 @@
 - **git-tools:** Updates to the release tag processing
   ([937056c9](https://github.com/storm-software/storm-ops/commit/937056c9))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.1.4 (2024-02-24)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Updates to release configuration parameters
   ([482d18ee](https://github.com/storm-software/storm-ops/commit/482d18ee))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.1.3 (2024-02-23)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Ensure tag generation during versioning
   ([d08a89cd](https://github.com/storm-software/storm-ops/commit/d08a89cd))
@@ -731,13 +561,9 @@
 - **git-tools:** Resolve issue with release versioning
   ([24bfe5e9](https://github.com/storm-software/storm-ops/commit/24bfe5e9))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.1.2 (2024-02-20)
 
-### 🚀 Features
+### Features
 
 - **git-tools:** Update the package to build as CommonJs to support Nx executors
   ([affad63c](https://github.com/storm-software/storm-ops/commit/affad63c))
@@ -745,7 +571,7 @@
 - **git-tools:** Support for updated Nx Release processing
   ([92f99126](https://github.com/storm-software/storm-ops/commit/92f99126))
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Resolve issue preventing changelogRenderer from being applied
   ([f7880bae](https://github.com/storm-software/storm-ops/commit/f7880bae))
@@ -771,13 +597,9 @@
 - **config:** Mark config to no longer bundle code
   ([2b97e77e](https://github.com/storm-software/storm-ops/commit/2b97e77e))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.1.1 (2024-02-20)
 
-### 🚀 Features
+### Features
 
 - **git-tools:** Update the package to build as CommonJs to support Nx executors
   ([affad63c](https://github.com/storm-software/storm-ops/commit/affad63c))
@@ -785,7 +607,7 @@
 - **git-tools:** Support for updated Nx Release processing
   ([92f99126](https://github.com/storm-software/storm-ops/commit/92f99126))
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Resolve issue preventing changelogRenderer from being applied
   ([f7880bae](https://github.com/storm-software/storm-ops/commit/f7880bae))
@@ -808,13 +630,9 @@
 - **git-tools:** Update method of calling the release action
   ([7c74ffc7](https://github.com/storm-software/storm-ops/commit/7c74ffc7))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.1.0 (2024-02-20)
 
-### 🚀 Features
+### Features
 
 - **git-tools:** Update the package to build as CommonJs to support Nx executors
   ([affad63c](https://github.com/storm-software/storm-ops/commit/affad63c))
@@ -822,7 +640,7 @@
 - **git-tools:** Support for updated Nx Release processing
   ([92f99126](https://github.com/storm-software/storm-ops/commit/92f99126))
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Resolve issue preventing changelogRenderer from being applied
   ([f7880bae](https://github.com/storm-software/storm-ops/commit/f7880bae))
@@ -842,13 +660,9 @@
 - **git-tools:** Add reference to local changelog-renderer in release process
   ([3ea469e1](https://github.com/storm-software/storm-ops/commit/3ea469e1))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 2.0.1 (2024-02-17)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **storm-ops:** Update the chalk version to v4.1.2
   ([0d50334a](https://github.com/storm-software/storm-ops/commit/0d50334a))
@@ -875,13 +689,9 @@
 
 - **git-tools:** \
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 # 2.0.0 (2024-02-17)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **storm-ops:** Update the chalk version to v4.1.2
   ([0d50334a](https://github.com/storm-software/storm-ops/commit/0d50334a))
@@ -902,13 +712,9 @@
 
 - **git-tools:** \
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.38.5 (2024-02-15)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **storm-ops:** Update the chalk version to v4.1.2
   ([0d50334a](https://github.com/storm-software/storm-ops/commit/0d50334a))
@@ -919,13 +725,9 @@
 - **config-tools:** Update package type to a module to resolve import issues
   ([4a9649c9](https://github.com/storm-software/storm-ops/commit/4a9649c9))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.38.4 (2024-02-15)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **storm-ops:** Update the chalk version to v4.1.2
   ([0d50334a](https://github.com/storm-software/storm-ops/commit/0d50334a))
@@ -933,29 +735,21 @@
 - **storm-ops:** Resolve issue with the pnpm version
   ([f124fd94](https://github.com/storm-software/storm-ops/commit/f124fd94))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.38.3 (2024-02-15)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **storm-ops:** Update the chalk version to v4.1.2
   ([0d50334a](https://github.com/storm-software/storm-ops/commit/0d50334a))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.38.2 (2024-02-15)
 
-### 🚀 Features
+### Features
 
 - **git-tools:** Completed release process changes and updated dependencies
   ([ebd33d5c](https://github.com/storm-software/storm-ops/commit/ebd33d5c))
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **storm-ops:** Update chalk dependency for all modules
   ([d8a55c49](https://github.com/storm-software/storm-ops/commit/d8a55c49))
@@ -963,46 +757,34 @@
 - **storm-ops:** Downgrade dependencies to work with cjs task runners
   ([bece51de](https://github.com/storm-software/storm-ops/commit/bece51de))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.38.1 (2024-02-15)
 
-### 🚀 Features
+### Features
 
 - **git-tools:** Completed release process changes and updated dependencies
   ([ebd33d5c](https://github.com/storm-software/storm-ops/commit/ebd33d5c))
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **storm-ops:** Update chalk dependency for all modules
   ([d8a55c49](https://github.com/storm-software/storm-ops/commit/d8a55c49))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.38.0 (2024-02-15)
 
-### 🚀 Features
+### Features
 
 - **git-tools:** Completed release process changes and updated dependencies
   ([ebd33d5c](https://github.com/storm-software/storm-ops/commit/ebd33d5c))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.37.0 (2024-02-15)
 
-### 🚀 Features
+### Features
 
 - **changelog:** Added the `changelog` package to handle file creation during
   release
   ([d050648d](https://github.com/storm-software/storm-ops/commit/d050648d))
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Point the `nx.json` to the Storm ChangeLogRenderer class
   ([f6620cef](https://github.com/storm-software/storm-ops/commit/f6620cef))
@@ -1016,261 +798,169 @@
 - **git-tools:** Resolved linting errors from previous commit
   ([0cc57b66](https://github.com/storm-software/storm-ops/commit/0cc57b66))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.36.14 (2024-02-13)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Updated logging in the Storm-Git release hook
   ([669a289a](https://github.com/storm-software/storm-ops/commit/669a289a))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.36.13 (2024-02-11)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Removed the emojis from the Changelog Renderer
   ([93d5d140](https://github.com/storm-software/storm-ops/commit/93d5d140))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.36.11 (2024-02-09)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **config-tools:** Updated the color of the logger text
   ([63016bd6](https://github.com/storm-software/storm-ops/commit/63016bd6))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.36.6 (2024-02-09)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Resolved issue publishing first package releases to npm
   ([8205dfcf](https://github.com/storm-software/storm-ops/commit/8205dfcf))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.36.4 (2024-02-09)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **linting-tools:** Ensure correct parameter is passed to lefthook
   ([3fe19f4b](https://github.com/storm-software/storm-ops/commit/3fe19f4b))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.36.3 (2024-02-09)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **linting-tools:** Added `--no-errors-on-unmatched` to format command
   ([c7bd849a](https://github.com/storm-software/storm-ops/commit/c7bd849a))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.36.2 (2024-02-09)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **linting-tools:** Ensure we use `build:all` script during linting
   ([848bd1cf](https://github.com/storm-software/storm-ops/commit/848bd1cf))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.35.0 (2024-02-07)
 
-### 🚀 Features
+### Features
 
 - **config:** Added a base config package to allow neutral access of
   `StormConfig`
   ([164eaa5b](https://github.com/storm-software/storm-ops/commit/164eaa5b))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.32.12 (2024-01-29)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Added full publish fields to target
   ([921dc2b6](https://github.com/storm-software/storm-ops/commit/921dc2b6))
-
-### ❤️ Thank You
-
-- Patrick Sullivan
 
 ## 1.32.11 (2024-01-29)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Added full publish fields to target
   ([921dc2b6](https://github.com/storm-software/storm-ops/commit/921dc2b6))
-
-### ❤️ Thank You
-
-- Patrick Sullivan
 
 ## 1.32.10 (2024-01-28)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Added full publish fields to target
   ([921dc2b6](https://github.com/storm-software/storm-ops/commit/921dc2b6))
-
-### ❤️ Thank You
-
-- Patrick Sullivan
 
 ## 1.32.9 (2024-01-28)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Added full publish fields to target
   ([921dc2b6](https://github.com/storm-software/storm-ops/commit/921dc2b6))
-
-### ❤️ Thank You
-
-- Patrick Sullivan
 
 ## 1.32.8 (2024-01-28)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Added full publish fields to target
   ([921dc2b6](https://github.com/storm-software/storm-ops/commit/921dc2b6))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.32.7 (2024-01-28)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **workspace-tools:** Added the nx-release-publish task to project target
   ([cb6d7c17](https://github.com/storm-software/storm-ops/commit/cb6d7c17))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.32.6 (2024-01-28)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Correct the asset output paths
   ([7cf40f6d](https://github.com/storm-software/storm-ops/commit/7cf40f6d))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.32.5 (2024-01-28)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Reformat display message
   ([7ec1ff23](https://github.com/storm-software/storm-ops/commit/7ec1ff23))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.32.4 (2024-01-27)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Added skip ci to release commit message
   ([2e808a18](https://github.com/storm-software/storm-ops/commit/2e808a18))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.32.3 (2024-01-27)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Added back newlines to the commit message
   ([114a3d71](https://github.com/storm-software/storm-ops/commit/114a3d71))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.32.0 (2024-01-27)
 
-### 🚀 Features
+### Features
 
 - **config-tools:** Added the `preid` config option and removed `preMajor`
   ([0d8756dc](https://github.com/storm-software/storm-ops/commit/0d8756dc))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.31.2 (2024-01-26)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Added code to set providence on publish process
   ([06439ff3](https://github.com/storm-software/storm-ops/commit/06439ff3))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.29.7 (2024-01-23)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Remove the install hook from pre-commit
   ([75104c7e](https://github.com/storm-software/storm-ops/commit/75104c7e))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.29.6 (2024-01-23)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Update the lefthook configuration to correctly handle install
   ([e27fd423](https://github.com/storm-software/storm-ops/commit/e27fd423))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.29.0 (2024-01-21)
 
-### 🚀 Features
+### Features
 
 - **git-tools:** Added custom storm `ChangelogRenderer` for releases
   ([922aa263](https://github.com/storm-software/storm-ops/commit/922aa263))
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Update path to changelog renderer
   ([d4dd7006](https://github.com/storm-software/storm-ops/commit/d4dd7006))
@@ -1278,40 +968,28 @@
 - **git-tools:** Added separate changelog-renderer CommonJs build
   ([4da88acb](https://github.com/storm-software/storm-ops/commit/4da88acb))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.28.5 (2024-01-21)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Resolve issues with commit message formatting
   ([90bdc930](https://github.com/storm-software/storm-ops/commit/90bdc930))
-
-### ❤️ Thank You
-
-- Patrick Sullivan
 
 ## 1.28.4 (2024-01-21)
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Resolve issues with commit message formatting
   ([90bdc930](https://github.com/storm-software/storm-ops/commit/90bdc930))
 
-### ❤️ Thank You
-
-- Patrick Sullivan
-
 ## 1.28.3 (2024-01-21)
 
-### 🚀 Features
+### Features
 
 - **git-tools:** Update release process to use built-in Nx functionality
   ([f592bd33](https://github.com/storm-software/storm-ops/commit/f592bd33))
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Clean up of various unused dependencies
   ([c39257b8](https://github.com/storm-software/storm-ops/commit/c39257b8))
@@ -1354,19 +1032,15 @@
 
 - **git-tools:** Update release to use Nx config relationship settings
   ([9f0a7519](https://github.com/storm-software/storm-ops/commit/9f0a7519))
-
-### ❤️ Thank You
-
-- Patrick Sullivan
 
 ## 1.28.2 (2024-01-21)
 
-### 🚀 Features
+### Features
 
 - **git-tools:** Update release process to use built-in Nx functionality
   ([f592bd33](https://github.com/storm-software/storm-ops/commit/f592bd33))
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Clean up of various unused dependencies
   ([c39257b8](https://github.com/storm-software/storm-ops/commit/c39257b8))
@@ -1409,19 +1083,15 @@
 
 - **git-tools:** Update release to use Nx config relationship settings
   ([9f0a7519](https://github.com/storm-software/storm-ops/commit/9f0a7519))
-
-### ❤️ Thank You
-
-- Patrick Sullivan
 
 ## 1.28.1 (2024-01-21)
 
-### 🚀 Features
+### Features
 
 - **git-tools:** Update release process to use built-in Nx functionality
   ([f592bd33](https://github.com/storm-software/storm-ops/commit/f592bd33))
 
-### 🩹 Fixes
+### Bug Fixes
 
 - **git-tools:** Clean up of various unused dependencies
   ([c39257b8](https://github.com/storm-software/storm-ops/commit/c39257b8))
@@ -1464,10 +1134,6 @@
 
 - **git-tools:** Update release to use Nx config relationship settings
   ([9f0a7519](https://github.com/storm-software/storm-ops/commit/9f0a7519))
-
-### ❤️ Thank You
-
-- Patrick Sullivan
 
 # [1.28.0](https://github.com/storm-software/storm-ops/compare/git-tools-v1.27.0...git-tools-v1.28.0) (2024-01-20)
 
