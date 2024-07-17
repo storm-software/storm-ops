@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { extname, join } from "node:path";
+import { transform } from "./transform";
 
 async function transformAndSave(
   files: any[],
@@ -12,24 +13,6 @@ async function transformAndSave(
   processAll = false,
   updateOnly = false
 ) {
-  let doctoc;
-  try {
-    doctoc = await import("doctoc/lib/transform.js");
-    if (!doctoc?.transform) {
-      console.warn(
-        'Unable to import "doctoc/lib/transform.js". Table of Content generation will be skipped.'
-      );
-      return;
-    }
-  } catch (e) {
-    if (!doctoc?.transform) {
-      console.warn(
-        'An error occured while trying to import "doctoc/lib/transform.js". Table of Content generation will be skipped.'
-      );
-      return;
-    }
-  }
-
   if (processAll) {
     console.log(
       "--all flag is enabled. Including headers before the TOC location."
@@ -44,7 +27,7 @@ async function transformAndSave(
 
   console.log("\n==================\n");
   const transformed = files.map(x => {
-    const result = doctoc.transform(
+    const result = transform(
       readFileSync(x.path, "utf8"),
       mode,
       maxHeaderLevel,
