@@ -1,3 +1,10 @@
+## 0.29.0 (2024-07-17)
+
+
+### Features
+
+- **eslint-config:** Enable React component props sorting rules ([45c86e76](https://github.com/storm-software/storm-ops/commit/45c86e76))
+
 ## 0.28.0 (2024-07-17)
 
 
