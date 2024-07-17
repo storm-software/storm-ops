@@ -1,3 +1,10 @@
+## 2.28.0 (2024-07-17)
+
+
+### 🚀 Features
+
+- **git-tools:** Improve README footer template markdown ([0450800f](https://github.com/storm-software/storm-ops/commit/0450800f))
+
 ## 2.27.0 (2024-07-17)
 
 
