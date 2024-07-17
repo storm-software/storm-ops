@@ -161,7 +161,7 @@ module.exports = {
     // Enforce propTypes declarations alphabetical sorting
     // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/sort-prop-types.md
     "react/sort-prop-types": [
-      "off",
+      "warn",
       {
         ignoreCase: true,
         callbacksLast: false,
@@ -171,12 +171,12 @@ module.exports = {
     ],
 
     // Deprecated in favor of react/jsx-sort-props
-    "react/jsx-sort-prop-types": "off",
+    "react/jsx-sort-prop-types": "warn",
 
     // Enforce props alphabetical sorting
     // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md
     "react/jsx-sort-props": [
-      "off",
+      "warn",
       {
         ignoreCase: true,
         callbacksLast: false,
@@ -190,7 +190,7 @@ module.exports = {
     // Enforce defaultProps declarations alphabetical sorting
     // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/jsx-sort-default-props.md
     "react/jsx-sort-default-props": [
-      "off",
+      "warn",
       {
         ignoreCase: true
       }
@@ -366,7 +366,7 @@ module.exports = {
     // https://github.com/jsx-eslint/eslint-plugin-react/blob/ac102885765be5ff37847a871f239c6703e1c7cc/docs/rules/jsx-no-target-blank.md
     "react/jsx-no-target-blank": ["error", { enforceDynamicLinks: "always" }],
 
-    // only .jsx files may have JSX
+    // only ".jsx", ".tsx", or ".mdx" files may have JSX
     // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
     "react/jsx-filename-extension": [
       "error",

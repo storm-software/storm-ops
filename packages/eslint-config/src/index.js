@@ -74,9 +74,7 @@ module.exports = {
     "no-use-before-define": "off",
     "object-shorthand": "warn",
     "react/no-unused-prop-types": "off",
-    "react/prop-types": "off",
     "react/require-default-props": "off",
-
     "perfectionist/sort-objects": [
       "error",
       {
