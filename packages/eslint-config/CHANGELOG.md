@@ -1,3 +1,10 @@
+## 0.28.0 (2024-07-17)
+
+
+### Features
+
+- **eslint-config:** Added `.tsx` and `.mdx` as valid JSX files ([25f6478d](https://github.com/storm-software/storm-ops/commit/25f6478d))
+
 ## 0.27.0 (2024-07-17)
 
 ### Features
