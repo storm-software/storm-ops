@@ -38,10 +38,36 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <br />
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of Contents
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+- [Storm Cloudflare Tools](#storm-cloudflare-tools)
+  - [Installing](#installing)
+  - [Executors](#executors)
+  - [Cloudflare Worker Publish](#cloudflare-worker-publish)
+    - [Example](#example)
+    - [Options](#options)
+  - [Cloudflare Worker - Serve executor](#cloudflare-worker---serve-executor)
+    - [Example](#example-1)
+    - [Options](#options-1)
+  - [Generators](#generators)
+  - [Init Cloudflare tools Nx Plugin for Storm Workspace](#init-cloudflare-tools-nx-plugin-for-storm-workspace)
+    - [Options](#options-2)
+  - [Create a Cloudflare Worker Application](#create-a-cloudflare-worker-application)
+    - [Options](#options-3)
+  - [Building](#building)
+  - [Running unit tests](#running-unit-tests)
+  - [Storm Workspaces](#storm-workspaces)
+  - [Roadmap](#roadmap)
+  - [Support](#support)
+  - [License](#license)
+  - [Changelog](#changelog)
+  - [Contributing](#contributing)
+  - [Contributors](#contributors)
+    - [💻 Visit stormsoftware.com to stay up to date with this developer](#-visit-stormsoftwarecom-to-stay-up-to-date-with-this-developer)
+
+<!-- END doctoc -->
 
 <br />
 
@@ -54,11 +80,6 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 A package containing tools for managing a Storm workspace. It includes various
 [Nx](https://nx.dev) generators and executors for common development tasks.
-
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 This library was generated with [Nx](https://nx.dev).
 

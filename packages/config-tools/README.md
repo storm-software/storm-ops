@@ -38,10 +38,27 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <br />
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of Contents
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+- [Storm Configuration Tools](#storm-configuration-tools)
+  - [Installing](#installing)
+  - [Reduced Package Size](#reduced-package-size)
+  - [Development](#development)
+    - [Building](#building)
+    - [Running unit tests](#running-unit-tests)
+    - [Linting](#linting)
+  - [Storm Workspaces](#storm-workspaces)
+  - [Roadmap](#roadmap)
+  - [Support](#support)
+  - [License](#license)
+  - [Changelog](#changelog)
+  - [Contributing](#contributing)
+  - [Contributors](#contributors)
+    - [💻 Visit stormsoftware.com to stay up to date with this developer](#-visit-stormsoftwarecom-to-stay-up-to-date-with-this-developer)
+
+<!-- END doctoc -->
 
 <br />
 
@@ -79,9 +96,6 @@ environment variables:
 | STORM_RUNTIME_VERSION   | The global version of the Storm runtime                                                | "1.0.0"                     |
 | STORM_TIMEZONE          | The default timezone of the workspace                                                  | "America/New_York"          |
 | STORM_BOT               | The worker of the package (this is the bot that will be used to perform various tasks) | "stormie-bot"               |
-
-<!-- START doctoc -->
-<!-- END doctoc -->
 
 ## Installing
 

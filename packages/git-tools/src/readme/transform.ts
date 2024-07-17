@@ -5,10 +5,9 @@ import md from "@textlint/markdown-to-ast";
 import { Parser } from "htmlparser2";
 
 export const start =
-  "<!-- START doctoc generated TOC please keep comment here to allow auto update -->\n" +
+  "<!-- START doctoc -->\n" +
   "<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->";
-export const end =
-  "<!-- END doctoc generated TOC please keep comment here to allow auto update -->";
+export const end = "<!-- END doctoc -->";
 export const skipTag = "<!-- DOCTOC SKIP -->";
 
 function matchesStart(line) {

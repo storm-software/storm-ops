@@ -38,10 +38,24 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <br />
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of Contents
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+- [Storm Linting Tools](#storm-linting-tools)
+  - [Installing](#installing)
+  - [Building](#building)
+  - [Running unit tests](#running-unit-tests)
+  - [Storm Workspaces](#storm-workspaces)
+  - [Roadmap](#roadmap)
+  - [Support](#support)
+  - [License](#license)
+  - [Changelog](#changelog)
+  - [Contributing](#contributing)
+  - [Contributors](#contributors)
+    - [💻 Visit stormsoftware.com to stay up to date with this developer](#-visit-stormsoftwarecom-to-stay-up-to-date-with-this-developer)
+
+<!-- END doctoc -->
 
 <br />
 
@@ -63,11 +77,6 @@ are included and combined into an easy to use CLI tool:
 - [CSpell](https://cspell.org/)
 - [TSConfig](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
 - [DPDM](https://github.com/acrazing/dpdm)
-
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Installing
 

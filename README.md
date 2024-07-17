@@ -44,7 +44,7 @@ keeping the codebase maintainable.
 
 <!--#endif-->
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 ## Table of Contents
@@ -71,7 +71,7 @@ keeping the codebase maintainable.
 - [License](#license)
 - [Contributors ✨](#contributors-)
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<!-- END doctoc -->
 
 <br />
 
