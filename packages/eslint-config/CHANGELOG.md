@@ -1,3 +1,10 @@
+## 0.26.0 (2024-07-17)
+
+
+### 🚀 Features
+
+- **eslint-config:** Added `eslint-plugin-prettier` recommended configuration ([2abcf85a](https://github.com/storm-software/storm-ops/commit/2abcf85a))
+
 ## 0.25.0 (2024-07-17)
 
 
