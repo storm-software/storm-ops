@@ -24,7 +24,6 @@ pre-commit:
   piped: true
   commands:
     prepare:
-      files: "git diff --name-only HEAD @{push}"
       glob: "**/{lefthook.yml,biome.json}"
       run: "pnpm lefthook install && git update-index"
       stage_fixed: true
@@ -53,13 +52,12 @@ pre-commit:
     #   glob: "**/*.{toml}"
     #   run: "pnpm format-toml && git update-index"
     readme:
-      files: "git diff --name-only HEAD @{push}"
-      glob: "**/{README.md,package.json,executors.json,generators.json}"
+      glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}"
       run: "pnpm format-readme && git update-index"
       stage_fixed: true
     format:
-      files: "git diff --name-only HEAD @{push}"
-      glob: "!packages/workspace-tools/src/generators/*/files/**/*"
+      glob: "**/*"
+      exclude: "packages/workspace-tools/src/generators/*/files/**/*"
       run: "pnpm exec prettier {staged_files} --write --ignore-unknown
         --no-error-on-unmatched-pattern --cache && git update-index"
       stage_fixed: true
@@ -79,15 +77,13 @@ pre-push:
   piped: true
   commands:
     validate:
-      files: "git diff --name-only HEAD @{push}"
       glob: "**/*"
-      run: "node ./dist/packages/git-tools/bin/pre-push.js {files} && git
+      run: "node ./dist/packages/git-tools/bin/pre-push.js {staged_files} && git
         update-index"
       stage_fixed: true
     format:
-      files: "git diff --name-only HEAD @{push}"
       glob: "!packages/workspace-tools/src/generators/*/files/**/*"
-      run: "pnpm exec prettier {files} --write --ignore-unknown
+      run: "pnpm exec prettier {staged_files} --write --ignore-unknown
         --no-error-on-unmatched-pattern --cache && git update-index"
       stage_fixed: true
     build:
