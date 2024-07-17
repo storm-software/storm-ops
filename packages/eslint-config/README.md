@@ -55,6 +55,17 @@ This package contains a shared ESLint configuration used across the Storm
 Software organization. This configuration is used to enforce code quality and
 style standards across all Storm Software projects.
 
+The following ESLint plugins are included in this configuration:
+
+- [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)
+- [eslint-plugin-jsdoc](https://www.npmjs.com/package/eslint-plugin-jsdoc)
+- [eslint-plugin-prettier](https://www.npmjs.com/package/eslint-plugin-prettier)
+- [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
+- [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks)
+- [eslint-plugin-react-native](https://www.npmjs.com/package/eslint-plugin-react-native)
+- [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y)
+- [eslint-plugin-perfectionist](https://www.npmjs.com/package/eslint-plugin-perfectionist)
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 

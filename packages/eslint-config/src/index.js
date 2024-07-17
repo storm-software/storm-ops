@@ -13,7 +13,7 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "./base",
     "./hooks",
-    "prettier"
+    "plugin:prettier/recommended"
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
