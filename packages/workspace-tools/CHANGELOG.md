@@ -1,3 +1,15 @@
+## 1.122.0 (2024-07-19)
+
+
+### Features
+
+- **workspace-tools:** Added separate exports for utilities ([2e62f379](https://github.com/storm-software/storm-ops/commit/2e62f379))
+
+
+### Continuous Integration
+
+- **storm-ops:** Track git branch in `nrwl/nx-set-shas` step ([e53ee0bc](https://github.com/storm-software/storm-ops/commit/e53ee0bc))
+
 ## 1.121.0 (2024-07-19)
 
 

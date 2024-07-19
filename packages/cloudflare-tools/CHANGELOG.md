@@ -1,3 +1,20 @@
+## 0.13.0 (2024-07-19)
+
+
+### Features
+
+- **cloudflare-tools:** Added project tag functionality to plugin ([ef83e214](https://github.com/storm-software/storm-ops/commit/ef83e214))
+
+
+### Documentation
+
+- **storm-ops:** Remove emojis from monorepo CHANGELOG files ([441b36b1](https://github.com/storm-software/storm-ops/commit/441b36b1))
+
+
+### Continuous Integration
+
+- **storm-ops:** Update the lefthook configuration to properly glob staged files ([366dc251](https://github.com/storm-software/storm-ops/commit/366dc251))
+
 ## 0.12.0 (2024-07-17)
 
 ### Features
