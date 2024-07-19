@@ -171,7 +171,7 @@ module.exports = {
     ],
 
     // Deprecated in favor of react/jsx-sort-props
-    "react/jsx-sort-prop-types": "warn",
+    "react/jsx-sort-prop-types": "off",
 
     // Enforce props alphabetical sorting
     // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md
