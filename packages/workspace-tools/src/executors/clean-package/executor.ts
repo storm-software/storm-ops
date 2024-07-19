@@ -67,6 +67,11 @@ export async function cleanPackageExecutorFn(
     tempPackageJson
   );
 
+  await copy(tempDirectoryName, options.outputPath, {
+    override: true,
+    preserveTimestamps: true
+  });
+
   await remove(tempDirectoryName);
 
   return {

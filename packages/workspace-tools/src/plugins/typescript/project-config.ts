@@ -161,14 +161,47 @@ export const createNodes = [
         executor: "@storm-software/workspace-tools:npm-publish",
         options: {}
       };
+
+      if (
+        project.projectType === "application" ||
+        project.tags?.includes("type:application") ||
+        project.tags?.includes("dist-style:clean")
+      ) {
+        targets["clean-package"] = {
+          cache: false,
+          dependsOn: ["build"],
+          executor: "@storm-software/workspace-tools:clean-package",
+          options: {
+            cleanReadMe: true,
+            cleanComments: true
+          }
+        };
+
+        targets["nx-release-publish"].dependsOn = ["clean-package"];
+      }
+    }
+
+    const tags = project.tags ?? [];
+    if (!tags.some(tag => tag.startsWith("language:"))) {
+      tags.push("language:typescript");
+    }
+    if (!tags.some(tag => tag.startsWith("type:"))) {
+      tags.push(
+        `type:${project.projectType ? project.projectType : "library"}`
+      );
+    }
+    if (!tags.some(tag => tag.startsWith("dist-style:"))) {
+      tags.push(
+        `dist-style:${Object.keys(targets).includes("clean-package") ? "dist-style:clean" : "dist-style:normal"}`
+      );
     }
 
     return project?.name
       ? {
           projects: {
             [project.name]: {
-              tags: ["language:typescript"],
               ...project,
+              tags,
               targets,
               release: {
                 ...project?.release,

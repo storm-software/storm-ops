@@ -4,6 +4,8 @@ import {
   type ProjectGraphExternalNode
 } from "nx/src/config/project-graph";
 import {
+  joinPathFragments,
+  readJsonFile,
   workspaceRoot,
   type CreateDependencies,
   type CreateNodes,
@@ -12,6 +14,7 @@ import {
 } from "@nx/devkit";
 import { cargoMetadata, isExternal } from "../../utils/cargo";
 import type { Package } from "../../utils/toml";
+import { existsSync } from "node:fs";
 
 export const name = "storm-software/rust/cargo-toml";
 
@@ -39,7 +42,24 @@ export const createNodes: CreateNodes = [
       if (!isExternal(cargoPackage, ctx.workspaceRoot)) {
         const root = dirname(cargoFile);
 
-        const targets: ProjectConfiguration["targets"] = {
+        const project: ProjectConfiguration = {
+          root,
+          name: cargoPackage.name
+        };
+        if (existsSync(joinPathFragments(root, "project.json"))) {
+          const projectJson = readJsonFile<ProjectConfiguration>(
+            joinPathFragments(root, "project.json")
+          );
+          if (projectJson) {
+            Object.keys(projectJson).forEach(key => {
+              if (!project[key]) {
+                project[key] = projectJson[key];
+              }
+            });
+          }
+        }
+
+        project.targets = {
           "lint-ls": {
             cache: true,
             inputs: ["config_linting", "rust", "^production"],
@@ -123,7 +143,7 @@ export const createNodes: CreateNodes = [
 
         const isPrivate = cargoPackage.publish?.length === 0;
         if (!isPrivate) {
-          targets["nx-release-publish"] = {
+          project.targets["nx-release-publish"] = {
             cache: false,
             inputs: ["rust", "^production"],
             executor: "@storm-software/workspace-tools:cargo-publish",
@@ -133,16 +153,31 @@ export const createNodes: CreateNodes = [
           };
         }
 
+        const tags = project.tags ?? [];
+        if (!tags.some(tag => tag.startsWith("language:"))) {
+          tags.push("language:rust");
+        }
+        if (!tags.some(tag => tag.startsWith("type:"))) {
+          tags.push(
+            `type:${project.projectType ? project.projectType : "library"}`
+          );
+        }
+        if (!tags.some(tag => tag.startsWith("dist-style:"))) {
+          tags.push(
+            `dist-style:${Object.keys(project.targets).includes("clean-package") ? "dist-style:clean" : "dist-style:normal"}`
+          );
+        }
+
         projects[root] = {
-          root,
-          name: cargoPackage.name,
-          targets,
+          ...project,
+          tags,
           release: {
+            ...project.release,
             version: {
+              ...project.release?.version,
               generator: "@storm-software/workspace-tools:release-version"
             }
-          },
-          tags: ["language:rust"]
+          }
         };
       }
 
