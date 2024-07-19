@@ -34,7 +34,9 @@
     "./executors/*/schema.json": "./src/executors/*/schema.json",
     "./plugins/rust": "./src/plugins/rust/index.js",
     "./plugins/typescript": "./src/plugins/typescript/index.js",
-    "./preset": "./src/generators/preset/preset.js"
+    "./preset": "./src/generators/preset/preset.js",
+    "./utils": "./src/utils/index.js",
+    "./utils/*": "./src/utils/*.js"
   },
   "typings": "./declarations.d.ts",
   "keywords": [

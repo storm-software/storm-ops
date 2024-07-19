@@ -182,8 +182,10 @@ export const createNodes = [
         )
       ) {
         targets["clean-package"] = {
-          cache: false,
+          cache: true,
           dependsOn: ["build"],
+          inputs: ["typescript", "^production"],
+          outputs: ["{workspaceRoot}/dist/{projectRoot}"],
           executor: "@storm-software/workspace-tools:clean-package",
           options: {
             cleanReadMe: true,
