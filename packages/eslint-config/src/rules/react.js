@@ -100,7 +100,7 @@ module.exports = {
     // Enforce event handler naming conventions in JSX
     // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md
     "react/jsx-handler-names": [
-      "off",
+      "warn",
       {
         eventHandlerPrefix: "handle",
         eventHandlerPropPrefix: "on"
@@ -114,7 +114,7 @@ module.exports = {
     // Validate JSX has key prop when in array or iterator
     // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-key.md
     // Turned off because it has too many false positives
-    "react/jsx-key": "off",
+    "react/jsx-key": "warn",
 
     // Limit maximum of props on a single line in JSX
     // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md
@@ -569,7 +569,7 @@ module.exports = {
     // Disallow JSX props spreading
     // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-props-no-spreading.md
     "react/jsx-props-no-spreading": [
-      "error",
+      "off",
       {
         html: "enforce",
         custom: "enforce",
