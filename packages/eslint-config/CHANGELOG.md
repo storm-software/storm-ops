@@ -1,3 +1,10 @@
+## 0.30.2 (2024-07-19)
+
+
+### Bug Fixes
+
+- **eslint-config:** Disable the `no-magic-numbers` rule due to excesive false positives ([14097de0](https://github.com/storm-software/storm-ops/commit/14097de0))
+
 ## 0.30.1 (2024-07-19)
 
 
