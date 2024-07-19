@@ -1,3 +1,12 @@
+## 1.119.0 (2024-07-19)
+
+
+### Features
+
+- **workspace-tools:** Added the `clean-package` executor ([a1763e45](https://github.com/storm-software/storm-ops/commit/a1763e45))
+
+- **config:** Updated `workspaceRoot` with a default value ([5ee3fb09](https://github.com/storm-software/storm-ops/commit/5ee3fb09))
+
 ## 1.118.0 (2024-07-19)
 
 

@@ -1,3 +1,10 @@
+## 1.59.0 (2024-07-19)
+
+
+### Features
+
+- **workspace-tools:** Added the `clean-package` executor ([a1763e45](https://github.com/storm-software/storm-ops/commit/a1763e45))
+
 ## 1.58.0 (2024-07-17)
 
 ### Features

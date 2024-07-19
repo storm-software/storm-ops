@@ -1,3 +1,10 @@
+## 0.31.0 (2024-07-19)
+
+
+### Features
+
+- **config:** Updated `workspaceRoot` with a default value ([5ee3fb09](https://github.com/storm-software/storm-ops/commit/5ee3fb09))
+
 ## 0.30.2 (2024-07-19)
 
 
