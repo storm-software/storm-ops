@@ -126,7 +126,11 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         with:
           main-branch-name: "main"
+
+      - name: Track main branch
+        if: ${{ github.event_name == 'pull_request' }}
         run: git branch --track main origin/main
+        shell: bash
 
       - name: Set appropriate base and head commits for `nx affected` commands
         run: |
