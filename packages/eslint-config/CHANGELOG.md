@@ -1,3 +1,10 @@
+## 0.30.0 (2024-07-19)
+
+
+### Features
+
+- **eslint-config:** Allow props spreading in React components ([803a5cc2](https://github.com/storm-software/storm-ops/commit/803a5cc2))
+
 ## 0.29.1 (2024-07-19)
 
 
