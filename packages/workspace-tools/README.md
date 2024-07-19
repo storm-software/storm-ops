@@ -21,7 +21,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.116.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
+[![Version](https://img.shields.io/badge/version-1.118.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -70,23 +70,26 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
   - [Unbuild Builder](#unbuild-builder)
     - [Example](#example-8)
     - [Options](#options-6)
+  - [Clean Publish Executor](#clean-publish-executor)
+    - [Example](#example-9)
+    - [Options](#options-7)
   - [Generators](#generators)
   - [Init Storm Workspace Plugin](#init-storm-workspace-plugin)
-    - [Options](#options-7)
+    - [Options](#options-8)
   - [Workspace Preset](#workspace-preset)
     - [Examples](#examples)
-    - [Options](#options-8)
-  - [Add Node Library](#add-node-library)
     - [Options](#options-9)
-  - [Configuration Schema Creator](#configuration-schema-creator)
+  - [Add Node Library](#add-node-library)
     - [Options](#options-10)
-  - [Add Neutral Library](#add-neutral-library)
+  - [Configuration Schema Creator](#configuration-schema-creator)
     - [Options](#options-11)
-  - [Add browser Library](#add-browser-library)
+  - [Add Neutral Library](#add-neutral-library)
     - [Options](#options-12)
+  - [Add browser Library](#add-browser-library)
+    - [Options](#options-13)
   - [design-tokens](#design-tokens)
   - [Storm Release Version Generator](#storm-release-version-generator)
-    - [Options](#options-13)
+    - [Options](#options-14)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
   - [Storm Workspaces](#storm-workspaces)
@@ -421,6 +424,38 @@ The following executor options are available:
  | minify      | `boolean`    | Should the build process minify the output files?     |     | 
  | verbose      | `boolean`    | Should write extra log outputs with details from the executor.     |     | 
  | plugins      | `object[]`   | List of Rollup plugins to use during processing     | `[]`     | 
+
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+
+
+
+## Clean Publish Executor
+
+Remove configuration files, fields, and scripts for development before publishing package. This tool is inspired by the [clean-publish](https://github.com/shashkovdanil/clean-publish/tree/master) package
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:clean-package
+```
+
+**Please note:** _The clean-package executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| **outputPath \***    | `string`    | The output path of the generated files.     | "dist/{projectRoot}"     | 
+ | packageJsonPath      | `string`    | The path to the package.json file, relative to the workspace root.     |     | 
+ | **cleanReadMe \***    | `boolean`    | Should API Extractor generate an TSDoc Metadata file.     | `true`     | 
+ | **cleanComments \***    | `boolean`    | Should API Extractor generate an TSDoc Metadata file.     | `true`     | 
+ | ignoredFiles      | `string`    | List of ESBuild plugins to use during processing     |     | 
+ | fields      | `string`    | List of ESBuild plugins to use during processing     |     | 
 
 
 **Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 

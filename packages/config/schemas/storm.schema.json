@@ -74,6 +74,7 @@
         },
         "workspaceRoot": {
           "type": "string",
+          "default": "",
           "description": "The root directory of the workspace"
         },
         "packageDirectory": {
