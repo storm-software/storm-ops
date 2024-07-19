@@ -123,8 +123,10 @@ jobs:
 
       - name: Get appropriate base and head commits for `nx affected` commands
         uses: nrwl/nx-set-shas@v4
+        if: ${{ github.event_name == 'pull_request' }}
         with:
           main-branch-name: "main"
+        run: git branch --track main origin/main
 
       - name: Set appropriate base and head commits for `nx affected` commands
         run: |
@@ -137,11 +139,7 @@ jobs:
         shell: bash
 
       - name: Run formatters scripts
-        run: pnpm nx format
-        shell: bash
-
-      - name: Re-run build script
-        run: pnpm build-all
+        run: pnpm nx affected -t format --parallel=5
         shell: bash
 
       - name: Add permissions to linting tools
@@ -172,9 +170,7 @@ jobs:
         run: chmod a=rwx dist/packages/create-storm-workspace/package.json
 
       - name: Build repository packages
-        run:
-          pnpm nx affected -t build --parallel=5 --base=${{ env.NX_BASE }}
-          --head=${{ env.NX_HEAD }}
+        run: pnpm nx affected -t build --parallel=5
 
       - name: Add permissions to git tools
         run: chmod a=rwx dist/packages/git-tools/bin/git.js
