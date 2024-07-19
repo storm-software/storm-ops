@@ -1,3 +1,10 @@
+## 1.118.0 (2024-07-19)
+
+
+### Features
+
+- **storm-ops:** Use renovate with shared preset and update dependabot config ([b85fba8a](https://github.com/storm-software/storm-ops/commit/b85fba8a))
+
 ## 1.117.0 (2024-07-17)
 
 
