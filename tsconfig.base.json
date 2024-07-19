@@ -35,8 +35,6 @@
       "create-storm-workspace": [
         "packages/create-storm-workspace/bin/index.ts"
       ],
-      "eslint-plugin-storm-software": ["packages/eslint-plugin/src/index.ts"],
-      "eslint-plugin-storm-software/*": ["packages/eslint-plugin/src/*"],
       "eslint-plugin-storm-graphql": [
         "packages/eslint-plugin-graphql/src/index.ts"
       ],
@@ -44,7 +42,9 @@
       "eslint-plugin-storm-react": [
         "packages/eslint-plugin-react/src/index.ts"
       ],
-      "eslint-plugin-storm-react/*": ["packages/eslint-plugin-react/src/*"]
+      "eslint-plugin-storm-react/*": ["packages/eslint-plugin-react/src/*"],
+      "eslint-plugin-storm-software": ["packages/eslint-plugin/src/index.ts"],
+      "eslint-plugin-storm-software/*": ["packages/eslint-plugin/src/*"]
     }
   },
   "include": ["**/*.ts", "**/*.js", "**/*.json"],
