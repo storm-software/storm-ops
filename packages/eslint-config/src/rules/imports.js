@@ -154,7 +154,7 @@ module.exports = {
 
     // Forbid modules to have too many dependencies
     // https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/max-dependencies.md
-    "import/max-dependencies": ["off", { max: 10 }],
+    "import/max-dependencies": ["warn", { max: 50 }],
 
     // Forbid import of modules using absolute paths
     // https://github.com/import-js/eslint-plugin-import/blob/master/docs/rules/no-absolute-path.md

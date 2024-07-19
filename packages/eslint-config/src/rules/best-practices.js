@@ -189,8 +189,9 @@ module.exports = {
 
     // disallow magic numbers
     // https://eslint.org/docs/rules/no-magic-numbers
+    // Disable because too many false positives
     "no-magic-numbers": [
-      "warn",
+      "off",
       {
         ignore: [],
         ignoreArrayIndexes: true,
