@@ -1,3 +1,10 @@
+## 1.120.0 (2024-07-19)
+
+
+### Features
+
+- **workspace-tools:** Added tag population to the workspace plugins ([f473de63](https://github.com/storm-software/storm-ops/commit/f473de63))
+
 ## 1.119.0 (2024-07-19)
 
 
