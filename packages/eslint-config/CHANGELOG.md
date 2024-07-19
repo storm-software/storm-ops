@@ -1,3 +1,10 @@
+## 0.29.1 (2024-07-19)
+
+
+### Bug Fixes
+
+- **eslint-config:** Remove unused `react/jsx-sort-prop-types` rule ([9cfc32b8](https://github.com/storm-software/storm-ops/commit/9cfc32b8))
+
 ## 0.29.0 (2024-07-17)
 
 
