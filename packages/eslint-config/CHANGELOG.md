@@ -1,3 +1,10 @@
+## 0.30.1 (2024-07-19)
+
+
+### Bug Fixes
+
+- **eslint-config:** Adjusted various default rule configurations ([6e0faae5](https://github.com/storm-software/storm-ops/commit/6e0faae5))
+
 ## 0.30.0 (2024-07-19)
 
 
