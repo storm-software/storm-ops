@@ -202,7 +202,10 @@
       "!{projectRoot}/tests/**/*",
       "!{projectRoot}/testing/**/*"
     ],
-    "rust": ["config_rust", "source_rust"],
+    "rust": [
+      "config_rust",
+      "source_rust"
+    ],
     "config_typescript": [
       "global_typescript",
       "{projectRoot}/package.json",
@@ -244,7 +247,10 @@
       "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
       "!{projectRoot}/node_modules/**/*"
     ],
-    "typescript": ["config_typescript", "source_typescript"],
+    "typescript": [
+      "config_typescript",
+      "source_typescript"
+    ],
     "production": [
       "{projectRoot}/**/*",
       "!{projectRoot}/tools/**/*",
@@ -285,13 +291,19 @@
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json"
     ],
-    "default": ["{projectRoot}/**/*"]
+    "default": [
+      "{projectRoot}/**/*"
+    ]
   },
   "targetDefaults": {
     "lint-ls": {
       "cache": true,
-      "outputs": ["{workspaceRoot}/{projectRoot}"],
-      "dependsOn": ["^lint-ls"],
+      "outputs": [
+        "{workspaceRoot}/{projectRoot}"
+      ],
+      "dependsOn": [
+        "^lint-ls"
+      ],
       "executor": "nx:run-commands",
       "options": {
         "command": "pnpm exec ls-lint --config=\"./packages/linting-tools/src/ls-lint/ls-lint.yml\" ",
@@ -300,9 +312,16 @@
     },
     "format-toml": {
       "cache": true,
-      "inputs": ["config_linting", "{projectRoot}/**/*.toml"],
-      "outputs": ["{workspaceRoot}/{projectRoot}/**/*.toml"],
-      "dependsOn": ["^format-toml"],
+      "inputs": [
+        "config_linting",
+        "{projectRoot}/**/*.toml"
+      ],
+      "outputs": [
+        "{workspaceRoot}/{projectRoot}/**/*.toml"
+      ],
+      "dependsOn": [
+        "^format-toml"
+      ],
       "executor": "nx:run-commands",
       "options": {
         "command": "pnpm exec taplo format --colors=\"always\" --config=\"./packages/linting-tools/src/taplo/.taplo.toml\" --cache-path=\"tmp/taplo/{projectRoot}\"",
@@ -315,8 +334,12 @@
         "config_linting",
         "{projectRoot}/{README.md,package.json,Cargo.toml,executors.json,generators.json}"
       ],
-      "outputs": ["{workspaceRoot}/{projectRoot}/README.md"],
-      "dependsOn": ["^format-readme"],
+      "outputs": [
+        "{workspaceRoot}/{projectRoot}/README.md"
+      ],
+      "dependsOn": [
+        "^format-readme"
+      ],
       "executor": "nx:run-commands",
       "options": {
         "command": "echo Skipping Readme formatting...",
@@ -325,8 +348,14 @@
     },
     "format-prettier": {
       "cache": true,
-      "inputs": ["config_linting", "typescript", "^production"],
-      "dependsOn": ["^format-prettier"],
+      "inputs": [
+        "config_linting",
+        "typescript",
+        "^production"
+      ],
+      "dependsOn": [
+        "^format-prettier"
+      ],
       "options": {
         "command": "pnpm exec prettier \"{projectRoot}/**/*\" --write --ignore-unknown --no-error-on-unmatched-pattern --config=\"packages/prettier/src/config.json\" --ignore-path=\"packages/prettier/src/.prettierignore\" --cache --cache-location=\"tmp/prettier/{projectRoot}\" ",
         "color": true
@@ -334,12 +363,20 @@
     },
     "@nx/esbuild:esbuild": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     }
   },
   "release": {
-    "projects": ["packages/*", "crates/*"],
+    "projects": [
+      "packages/*",
+      "crates/*"
+    ],
     "projectsRelationship": "independent",
     "releaseTagPattern": "{projectName}@{version}",
     "conventionalCommits": {
@@ -473,5 +510,6 @@
         "targetName": "lint"
       }
     }
-  ]
+  ],
+  "nxCloudAccessToken": "ZDc2Nzk5ZDAtZGQ0YS00ODUzLWIxZDktMjQzOTM4MTJhNGUxfHJlYWQtd3JpdGU="
 }
