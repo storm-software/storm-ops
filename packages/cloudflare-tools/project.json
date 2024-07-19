@@ -35,6 +35,8 @@
         "external": [
           "nx",
           "@nx/devkit",
+          "esbuild",
+          "@swc/*",
           "@storm-software/build-tools",
           "jest-resolve/build/default_resolver"
         ],

@@ -6,6 +6,10 @@ import {
   type PackageJson,
   readTargetsFromPackageJson
 } from "nx/src/utils/package-json";
+import {
+  ProjectTagConstants,
+  addProjectTag
+} from "@storm-software/workspace-tools/utils/project-tags";
 
 export const name = "storm-software/cloudflare";
 
@@ -28,7 +32,7 @@ export const createNodes = [
 
     targets["serve"] = {
       cache: false,
-      inputs: ["default", "^production"],
+      inputs: ["typescript", "^production"],
       dependsOn: ["build"],
       executor: "@storm-software/cloudflare-tools:serve",
       options: {
@@ -36,19 +40,48 @@ export const createNodes = [
       }
     };
 
+    targets["clean-package"] = {
+      cache: true,
+      dependsOn: ["build"],
+      inputs: ["typescript", "^production"],
+      outputs: ["{workspaceRoot}/dist/{projectRoot}"],
+      executor: "@storm-software/workspace-tools:clean-package",
+      options: {
+        cleanReadMe: true,
+        cleanComments: true
+      }
+    };
+
     targets["nx-release-publish"] = {
       cache: false,
-      inputs: ["default", "^production"],
-      dependsOn: ["build", "^nx-release-publish"],
+      inputs: ["typescript", "^production"],
+      dependsOn: ["clean-package", "^nx-release-publish"],
       executor: "@storm-software/cloudflare-tools:cloudflare-publish",
       options: {}
     };
+
+    addProjectTag(
+      project,
+      ProjectTagConstants.ProjectType.TAG_ID,
+      project.projectType === "application"
+        ? ProjectTagConstants.ProjectType.APPLICATION
+        : ProjectTagConstants.ProjectType.LIBRARY,
+      { overwrite: true }
+    );
+    addProjectTag(
+      project,
+      ProjectTagConstants.DistStyle.TAG_ID,
+      ProjectTagConstants.DistStyle.CLEAN,
+      { overwrite: true }
+    );
+    addProjectTag(project, ProjectTagConstants.Provider.TAG_ID, "cloudflare", {
+      overwrite: true
+    });
 
     return project?.name
       ? {
           projects: {
             [project.name]: {
-              tags: ["lang:typescript", "app:cloudflare"],
               ...project,
               targets,
               release: {
