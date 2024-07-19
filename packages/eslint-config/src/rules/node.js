@@ -9,14 +9,14 @@ module.exports = {
 
     // require all requires be top-level
     // https://eslint.org/docs/rules/global-require
-    "global-require": "error",
+    "global-require": "warn",
 
     // enforces error handling in callbacks (node environment)
     "handle-callback-err": "off",
 
     // disallow use of the Buffer() constructor
     // https://eslint.org/docs/rules/no-buffer-constructor
-    "no-buffer-constructor": "error",
+    "no-buffer-constructor": "warn",
 
     // disallow mixing regular variable and require declarations
     "no-mixed-requires": ["off", false],

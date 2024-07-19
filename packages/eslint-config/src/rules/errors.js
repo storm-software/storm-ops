@@ -38,7 +38,7 @@ module.exports = {
     "no-control-regex": "error",
 
     // disallow use of debugger
-    "no-debugger": "error",
+    "no-debugger": "warn",
 
     // disallow duplicate arguments in functions
     "no-dupe-args": "error",
@@ -84,13 +84,13 @@ module.exports = {
     "no-extra-semi": "error",
 
     // disallow overwriting functions written as function declarations
-    "no-func-assign": "error",
+    "no-func-assign": "off",
 
     // https://eslint.org/docs/rules/no-import-assign
     "no-import-assign": "error",
 
     // disallow function or variable declarations in nested blocks
-    "no-inner-declarations": "error",
+    "no-inner-declarations": "warn",
 
     // disallow invalid regular expression strings in the RegExp constructor
     "no-invalid-regexp": "error",

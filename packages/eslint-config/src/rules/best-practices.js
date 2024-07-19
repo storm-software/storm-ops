@@ -71,7 +71,7 @@ module.exports = {
     // disallow the use of alert, confirm, and prompt
     // https://eslint.org/docs/rules/no-alert
     // TODO: enable, semver-major
-    "no-alert": "warn",
+    "no-alert": "error",
 
     // disallow use of arguments.caller or arguments.callee
     // https://eslint.org/docs/rules/no-caller
@@ -121,7 +121,7 @@ module.exports = {
 
     // disallow adding to native types
     // https://eslint.org/docs/rules/no-extend-native
-    "no-extend-native": "error",
+    "no-extend-native": "warn",
 
     // disallow unnecessary function binding
     // https://eslint.org/docs/rules/no-extra-bind
@@ -190,7 +190,7 @@ module.exports = {
     // disallow magic numbers
     // https://eslint.org/docs/rules/no-magic-numbers
     "no-magic-numbers": [
-      "off",
+      "warn",
       {
         ignore: [],
         ignoreArrayIndexes: true,
@@ -358,7 +358,7 @@ module.exports = {
 
     // restrict what can be thrown as an exception
     // https://eslint.org/docs/rules/no-throw-literal
-    "no-throw-literal": "error",
+    "no-throw-literal": "warn",
 
     // disallow unmodified conditions of loops
     // https://eslint.org/docs/rules/no-unmodified-loop-condition
