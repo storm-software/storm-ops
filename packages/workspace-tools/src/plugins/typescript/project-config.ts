@@ -6,6 +6,17 @@ import {
   readTargetsFromPackageJson,
   type PackageJson
 } from "nx/src/utils/package-json";
+import {
+  addProjectTag,
+  isEqualProjectTag,
+  setDefaultProjectTags
+} from "../../utils/project-tags";
+import {
+  ProjectTagDistStyleValue,
+  ProjectTagLanguageValue,
+  ProjectTagTypeValue,
+  ProjectTagVariant
+} from "../../../declarations";
 
 export const name = "storm-software/typescript/project-config";
 
@@ -164,8 +175,16 @@ export const createNodes = [
 
       if (
         project.projectType === "application" ||
-        project.tags?.includes("type:application") ||
-        project.tags?.includes("dist-style:clean")
+        isEqualProjectTag(
+          project,
+          ProjectTagVariant.TYPE,
+          ProjectTagTypeValue.APPLICATION
+        ) ||
+        isEqualProjectTag(
+          project,
+          ProjectTagVariant.DIST_STYLE,
+          ProjectTagDistStyleValue.CLEAN
+        )
       ) {
         targets["clean-package"] = {
           cache: false,
@@ -181,27 +200,19 @@ export const createNodes = [
       }
     }
 
-    const tags = project.tags ?? [];
-    if (!tags.some(tag => tag.startsWith("language:"))) {
-      tags.push("language:typescript");
-    }
-    if (!tags.some(tag => tag.startsWith("type:"))) {
-      tags.push(
-        `type:${project.projectType ? project.projectType : "library"}`
-      );
-    }
-    if (!tags.some(tag => tag.startsWith("dist-style:"))) {
-      tags.push(
-        `dist-style:${Object.keys(targets).includes("clean-package") ? "dist-style:clean" : "dist-style:normal"}`
-      );
-    }
+    addProjectTag(
+      project,
+      ProjectTagVariant.LANGUAGE,
+      ProjectTagLanguageValue.TYPESCRIPT,
+      { overwrite: true }
+    );
+    setDefaultProjectTags(project);
 
     return project?.name
       ? {
           projects: {
             [project.name]: {
               ...project,
-              tags,
               targets,
               release: {
                 ...project?.release,

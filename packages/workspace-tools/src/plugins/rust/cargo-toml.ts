@@ -15,6 +15,11 @@ import {
 import { cargoMetadata, isExternal } from "../../utils/cargo";
 import type { Package } from "../../utils/toml";
 import { existsSync } from "node:fs";
+import { addProjectTag, setDefaultProjectTags } from "../../utils/project-tags";
+import {
+  ProjectTagLanguageValue,
+  ProjectTagVariant
+} from "../../../declarations";
 
 export const name = "storm-software/rust/cargo-toml";
 
@@ -153,24 +158,16 @@ export const createNodes: CreateNodes = [
           };
         }
 
-        const tags = project.tags ?? [];
-        if (!tags.some(tag => tag.startsWith("language:"))) {
-          tags.push("language:rust");
-        }
-        if (!tags.some(tag => tag.startsWith("type:"))) {
-          tags.push(
-            `type:${project.projectType ? project.projectType : "library"}`
-          );
-        }
-        if (!tags.some(tag => tag.startsWith("dist-style:"))) {
-          tags.push(
-            `dist-style:${Object.keys(project.targets).includes("clean-package") ? "dist-style:clean" : "dist-style:normal"}`
-          );
-        }
+        addProjectTag(
+          project,
+          ProjectTagVariant.LANGUAGE,
+          ProjectTagLanguageValue.RUST,
+          { overwrite: true }
+        );
+        setDefaultProjectTags(project);
 
         projects[root] = {
           ...project,
-          tags,
           release: {
             ...project.release,
             version: {

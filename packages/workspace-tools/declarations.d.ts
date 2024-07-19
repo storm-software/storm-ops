@@ -190,3 +190,69 @@ declare function typeScriptLibraryGeneratorFn(
   schema: TypeScriptLibraryGeneratorSchema
 ): Promise<any>;
 export { typeScriptLibraryGeneratorFn };
+
+export type ProjectTagVariant = "language" | "type" | "dist-style" | "provider";
+export const ProjectTagVariant = {
+  LANGUAGE: "language" as ProjectTagVariant,
+  TYPE: "type" as ProjectTagVariant,
+  DIST_STYLE: "dist-style" as ProjectTagVariant,
+  PROVIDER: "provider" as ProjectTagVariant
+};
+
+export type ProjectTagLanguageValue = "typescript" | "rust";
+export const ProjectTagLanguageValue = {
+  TYPESCRIPT: "typescript" as ProjectTagLanguageValue,
+  RUST: "rust" as ProjectTagLanguageValue
+};
+
+export type ProjectTagTypeValue = "library" | "application";
+export const ProjectTagTypeValue = {
+  LIBRARY: "library" as ProjectTagTypeValue,
+  APPLICATION: "application" as ProjectTagTypeValue
+};
+
+export type ProjectTagDistStyleValue = "normal" | "clean";
+export const ProjectTagDistStyleValue = {
+  NORMAL: "normal" as ProjectTagDistStyleValue,
+  CLEAN: "clean" as ProjectTagDistStyleValue
+};
+
+declare function formatProjectTag(
+  variant: ProjectTagVariant,
+  value: string
+): string;
+export { formatProjectTag };
+
+declare function hasProjectTag(
+  project: ProjectConfiguration,
+  variant: ProjectTagVariant
+): boolean;
+export { hasProjectTag };
+
+declare function getProjectTag(
+  project: ProjectConfiguration,
+  variant: ProjectTagVariant
+): string | undefined;
+export { getProjectTag };
+
+declare function isEqualProjectTag(
+  project: ProjectConfiguration,
+  variant: ProjectTagVariant,
+  value: string
+): boolean;
+export { isEqualProjectTag };
+
+declare function addProjectTag(
+  project: ProjectConfiguration,
+  variant: ProjectTagVariant,
+  value: string,
+  options: {
+    overwrite?: boolean;
+  } = {
+    overwrite: false
+  }
+): void;
+export { addProjectTag };
+
+declare function setDefaultProjectTags(project: ProjectConfiguration): void;
+export { setDefaultProjectTags };

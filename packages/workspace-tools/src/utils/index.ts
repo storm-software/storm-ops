@@ -6,3 +6,4 @@ export * from "./toml";
 export * from "./cargo";
 export * from "./lock-file";
 export * from "./create-cli-options";
+export * from "./project-tags";
