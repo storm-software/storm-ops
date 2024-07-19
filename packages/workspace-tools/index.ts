@@ -12,6 +12,8 @@ export * from "./src/executors/tsup-browser/executor";
 export * from "./src/executors/tsup-browser/schema";
 export * from "./src/executors/typia/executor";
 export * from "./src/executors/typia/schema";
+export * from "./src/executors/clean-package/executor";
+export * from "./src/executors/clean-package/schema";
 export * from "./src/executors/cargo-publish/executor";
 export * from "./src/executors/cargo-publish/schema";
 export * from "./src/executors/npm-publish/executor";

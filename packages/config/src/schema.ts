@@ -244,7 +244,7 @@ export const StormConfigSchema = z
     workspaceRoot: z
       .string()
       .trim()
-      .optional()
+      .default("")
       .describe("The root directory of the workspace"),
     packageDirectory: z
       .string()

@@ -23,6 +23,7 @@
           "packages/workspace-tools/src/executors/tsup-node/executor.ts",
           "packages/workspace-tools/src/executors/tsup-browser/executor.ts",
           "packages/workspace-tools/src/executors/typia/executor.ts",
+          "packages/workspace-tools/src/executors/clean-package/executor.ts",
           "packages/workspace-tools/src/executors/npm-publish/executor.ts",
           "packages/workspace-tools/src/executors/cargo-publish/executor.ts",
           "packages/workspace-tools/src/generators/init/init.ts",

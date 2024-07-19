@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "clean-publish",
+  "version": 2,
+  "title": "Clean Publish Executor",
+  "description": "Remove configuration files, fields, and scripts for development before publishing package. This tool is inspired by the [clean-publish](https://github.com/shashkovdanil/clean-publish/tree/master) package",
+  "type": "object",
+  "properties": {
+    "outputPath": {
+      "type": "string",
+      "description": "The output path of the generated files.",
+      "x-completion-type": "directory",
+      "x-priority": "important",
+      "default": "dist/{projectRoot}"
+    },
+    "packageJsonPath": {
+      "type": "string",
+      "description": "The path to the package.json file, relative to the workspace root.",
+      "x-completion-type": "directory"
+    },
+    "cleanReadMe": {
+      "type": "boolean",
+      "description": "Should API Extractor generate an TSDoc Metadata file.",
+      "default": true
+    },
+    "cleanComments": {
+      "type": "boolean",
+      "description": "Should API Extractor generate an TSDoc Metadata file.",
+      "default": true
+    },
+    "ignoredFiles": {
+      "type": "string",
+      "description": "List of ESBuild plugins to use during processing"
+    },
+    "fields": {
+      "type": "string",
+      "description": "List of ESBuild plugins to use during processing"
+    }
+  },
+  "required": ["outputPath", "cleanReadMe", "cleanComments"]
+}

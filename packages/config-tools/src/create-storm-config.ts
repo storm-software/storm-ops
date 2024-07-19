@@ -55,6 +55,10 @@ export const createStormConfig = <
         ...config.colors
       }
     }) as StormConfig<TExtensionName, TExtensionConfig>;
+
+    result.workspaceRoot ??= defaultConfig.workspaceRoot
+      ? defaultConfig.workspaceRoot
+      : findWorkspaceRoot(workspaceRoot);
   } else {
     result = _static_cache as StormConfig<TExtensionName, TExtensionConfig>;
   }

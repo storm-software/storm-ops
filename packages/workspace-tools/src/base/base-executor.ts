@@ -1,4 +1,4 @@
-import type { ExecutorContext } from "@nx/devkit";
+import type { ExecutorContext, PromiseExecutor } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import {
   applyWorkspaceTokens,
@@ -17,7 +17,7 @@ export const withRunExecutor =
     executorFn: (
       options: TExecutorSchema,
       context: ExecutorContext,
-      config?: StormConfig
+      config: StormConfig
     ) =>
       | Promise<BaseExecutorResult | null | undefined>
       | AsyncGenerator<any, BaseExecutorResult | null | undefined>
@@ -25,7 +25,7 @@ export const withRunExecutor =
       | null
       | undefined,
     executorOptions: BaseExecutorOptions<TExecutorSchema>
-  ) =>
+  ): PromiseExecutor<TExecutorSchema> =>
   async (
     _options: TExecutorSchema,
     context: ExecutorContext
@@ -45,7 +45,7 @@ export const withRunExecutor =
     const stopwatch = getStopwatch(name);
     let options = _options;
 
-    let config: StormConfig | undefined;
+    let config = {} as StormConfig;
     try {
       writeInfo(`⚡ Running the ${name} executor...\n`, config);
 
@@ -69,6 +69,7 @@ export const withRunExecutor =
       const projectName =
         context.projectsConfigurations.projects[context.projectName]?.name ??
         context.projectName;
+      config.workspaceRoot = workspaceRoot;
 
       // process.chdir(workspaceRoot);
 

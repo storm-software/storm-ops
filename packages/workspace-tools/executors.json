@@ -45,6 +45,11 @@
       "implementation": "./src/executors/unbuild/executor",
       "schema": "./src/executors/unbuild/schema.json",
       "description": "Run an unbuild build process on a selected project"
+    },
+    "clean-package": {
+      "implementation": "./src/executors/clean-package/executor",
+      "schema": "./src/executors/clean-package/schema.json",
+      "description": "Remove configuration files, fields, and scripts for development before publishing package"
     }
   }
 }
