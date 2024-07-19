@@ -1,3 +1,12 @@
+## 1.121.0 (2024-07-19)
+
+
+### Features
+
+- **workspace-tools:** Added helper functions to support reading/writing project tags ([507b5747](https://github.com/storm-software/storm-ops/commit/507b5747))
+
+- **workspace-tools:** Added project tags constants and type declarations ([88cd1de2](https://github.com/storm-software/storm-ops/commit/88cd1de2))
+
 ## 1.120.0 (2024-07-19)
 
 
