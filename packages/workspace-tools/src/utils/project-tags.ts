@@ -1,9 +1,34 @@
 import { ProjectConfiguration } from "@nx/devkit";
 import {
   ProjectTagDistStyleValue,
+  ProjectTagLanguageValue,
   ProjectTagTypeValue,
   ProjectTagVariant
-} from "../../declarations";
+} from "../../declarations.d";
+
+export const ProjectTagConstants = {
+  Language: {
+    TAG_ID: "language" as ProjectTagVariant,
+
+    TYPESCRIPT: "typescript" as ProjectTagLanguageValue,
+    RUST: "rust" as ProjectTagLanguageValue
+  },
+  ProjectType: {
+    TAG_ID: "type" as ProjectTagVariant,
+
+    LIBRARY: "library" as ProjectTagTypeValue,
+    APPLICATION: "application" as ProjectTagTypeValue
+  },
+  DistStyle: {
+    TAG_ID: "dist-style" as ProjectTagVariant,
+
+    NORMAL: "normal" as ProjectTagDistStyleValue,
+    CLEAN: "clean" as ProjectTagDistStyleValue
+  },
+  Provider: {
+    TAG_ID: "provider" as ProjectTagVariant
+  }
+} as const;
 
 export const formatProjectTag = (variant: ProjectTagVariant, value: string) => {
   return `${variant}:${value}`;
@@ -70,18 +95,18 @@ export const setDefaultProjectTags = (project: ProjectConfiguration) => {
 
   addProjectTag(
     project,
-    ProjectTagVariant.TYPE,
+    ProjectTagConstants.ProjectType.TAG_ID,
     project.projectType === "application"
-      ? ProjectTagTypeValue.APPLICATION
-      : ProjectTagTypeValue.LIBRARY,
+      ? ProjectTagConstants.ProjectType.APPLICATION
+      : ProjectTagConstants.ProjectType.LIBRARY,
     { overwrite: true }
   );
   addProjectTag(
     project,
-    ProjectTagVariant.DIST_STYLE,
+    ProjectTagConstants.DistStyle.TAG_ID,
     project.targets && Object.keys(project.targets).includes("clean-package")
-      ? ProjectTagDistStyleValue.CLEAN
-      : ProjectTagDistStyleValue.NORMAL,
+      ? ProjectTagConstants.DistStyle.CLEAN
+      : ProjectTagConstants.DistStyle.NORMAL,
     { overwrite: true }
   );
 };

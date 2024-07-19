@@ -8,11 +8,11 @@ import {
 } from "@nx/devkit";
 import { withRunGenerator } from "../../base/base-generator";
 import {
-  TypeScriptLibraryGeneratorSchema,
   normalizeOptions,
   typeScriptLibraryGeneratorFn
 } from "../../base/typescript-library-generator";
 import { NeutralLibraryGeneratorSchema } from "./schema";
+import type { TypeScriptLibraryGeneratorSchema } from "../../../declarations.d";
 
 export async function neutralLibraryGeneratorFn(
   tree: Tree,

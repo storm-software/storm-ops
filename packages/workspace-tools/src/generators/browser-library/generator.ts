@@ -8,13 +8,16 @@ import {
 } from "@nx/devkit";
 import { withRunGenerator } from "../../base/base-generator";
 import {
-  type TypeScriptLibraryGeneratorSchema,
   normalizeOptions,
   typeScriptLibraryGeneratorFn
 } from "../../base/typescript-library-generator";
 import type { BrowserLibraryGeneratorSchema } from "./schema";
+import type { TypeScriptLibraryGeneratorSchema } from "../../../declarations.d";
 
-export async function browserLibraryGeneratorFn(tree: Tree, schema: BrowserLibraryGeneratorSchema) {
+export async function browserLibraryGeneratorFn(
+  tree: Tree,
+  schema: BrowserLibraryGeneratorSchema
+) {
   const filesDir = joinPathFragments(__dirname, "./files");
   const tsLibraryGeneratorOptions: TypeScriptLibraryGeneratorSchema = {
     ...schema,
@@ -40,7 +43,9 @@ export async function browserLibraryGeneratorFn(tree: Tree, schema: BrowserLibra
   };
 
   const options = await normalizeOptions(tree, tsLibraryGeneratorOptions);
-  const { className, name, propertyName } = names(options.projectNames.projectFileName);
+  const { className, name, propertyName } = names(
+    options.projectNames.projectFileName
+  );
 
   generateFiles(tree, filesDir, options.projectRoot, {
     ...schema,
@@ -60,7 +65,11 @@ export async function browserLibraryGeneratorFn(tree: Tree, schema: BrowserLibra
     tsConfigOptions: {
       compilerOptions: {
         jsx: "react",
-        types: ["node", "@nx/react/typings/cssmodule.d.ts", "@nx/react/typings/image.d.ts"]
+        types: [
+          "node",
+          "@nx/react/typings/cssmodule.d.ts",
+          "@nx/react/typings/image.d.ts"
+        ]
       }
     }
   });

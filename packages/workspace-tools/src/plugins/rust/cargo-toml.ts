@@ -15,11 +15,11 @@ import {
 import { cargoMetadata, isExternal } from "../../utils/cargo";
 import type { Package } from "../../utils/toml";
 import { existsSync } from "node:fs";
-import { addProjectTag, setDefaultProjectTags } from "../../utils/project-tags";
 import {
-  ProjectTagLanguageValue,
-  ProjectTagVariant
-} from "../../../declarations";
+  ProjectTagConstants,
+  addProjectTag,
+  setDefaultProjectTags
+} from "../../utils/project-tags";
 
 export const name = "storm-software/rust/cargo-toml";
 
@@ -160,8 +160,8 @@ export const createNodes: CreateNodes = [
 
         addProjectTag(
           project,
-          ProjectTagVariant.LANGUAGE,
-          ProjectTagLanguageValue.RUST,
+          ProjectTagConstants.Language.TAG_ID,
+          ProjectTagConstants.Language.RUST,
           { overwrite: true }
         );
         setDefaultProjectTags(project);

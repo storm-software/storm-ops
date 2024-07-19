@@ -7,16 +7,11 @@ import {
   type PackageJson
 } from "nx/src/utils/package-json";
 import {
+  ProjectTagConstants,
   addProjectTag,
   isEqualProjectTag,
   setDefaultProjectTags
 } from "../../utils/project-tags";
-import {
-  ProjectTagDistStyleValue,
-  ProjectTagLanguageValue,
-  ProjectTagTypeValue,
-  ProjectTagVariant
-} from "../../../declarations";
 
 export const name = "storm-software/typescript/project-config";
 
@@ -177,13 +172,13 @@ export const createNodes = [
         project.projectType === "application" ||
         isEqualProjectTag(
           project,
-          ProjectTagVariant.TYPE,
-          ProjectTagTypeValue.APPLICATION
+          ProjectTagConstants.ProjectType.TAG_ID,
+          ProjectTagConstants.ProjectType.APPLICATION
         ) ||
         isEqualProjectTag(
           project,
-          ProjectTagVariant.DIST_STYLE,
-          ProjectTagDistStyleValue.CLEAN
+          ProjectTagConstants.DistStyle.TAG_ID,
+          ProjectTagConstants.DistStyle.CLEAN
         )
       ) {
         targets["clean-package"] = {
@@ -202,8 +197,8 @@ export const createNodes = [
 
     addProjectTag(
       project,
-      ProjectTagVariant.LANGUAGE,
-      ProjectTagLanguageValue.TYPESCRIPT,
+      ProjectTagConstants.Language.TAG_ID,
+      ProjectTagConstants.Language.TYPESCRIPT,
       { overwrite: true }
     );
     setDefaultProjectTags(project);

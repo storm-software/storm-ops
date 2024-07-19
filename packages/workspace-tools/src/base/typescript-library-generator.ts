@@ -21,45 +21,16 @@ import {
   tsConfigBaseOptions
 } from "@nx/js";
 import jsInitGenerator from "@nx/js/src/generators/init/init";
-import type {
-  AddLintOptions,
-  NormalizedSchema
-} from "@nx/js/src/generators/library/library";
+import type { AddLintOptions } from "@nx/js/src/generators/library/library";
 import setupVerdaccio from "@nx/js/src/generators/setup-verdaccio/generator";
-import type { Bundler, LibraryGeneratorSchema } from "@nx/js/src/utils/schema";
+import type { Bundler } from "@nx/js/src/utils/schema";
 import type { PackageJson } from "nx/src/utils/package-json";
-import type { Platform, TsupExecutorSchema } from "../executors/tsup/schema";
+import type { TsupExecutorSchema } from "../executors/tsup/schema";
 import { nxVersion } from "../utils/versions";
-
-export type TypeScriptLibraryGeneratorSchema = Omit<
-  LibraryGeneratorSchema,
-  | "js"
-  | "pascalCaseFiles"
-  | "skipFormat"
-  | "skipTsConfig"
-  | "skipPackageJson"
-  | "includeBabelRc"
-  | "unitTestRunner"
-  | "linter"
-  | "testEnvironment"
-  | "config"
-  | "compiler"
-  | "bundler"
-  | "skipTypeCheck"
-  | "minimal"
-> & {
-  name: string;
-  description: string;
-  buildExecutor: string;
-  platform?: Platform;
-  devDependencies?: Record<string, string>;
-  peerDependencies?: Record<string, string>;
-  peerDependenciesMeta?: Record<string, any>;
-  tsConfigOptions?: Record<string, any>;
-};
-
-export type TypeScriptLibraryGeneratorNormalizedSchema =
-  TypeScriptLibraryGeneratorSchema & NormalizedSchema;
+import type {
+  TypeScriptLibraryGeneratorNormalizedSchema,
+  TypeScriptLibraryGeneratorSchema
+} from "../../declarations.d";
 
 export async function typeScriptLibraryGeneratorFn(
   tree: Tree,

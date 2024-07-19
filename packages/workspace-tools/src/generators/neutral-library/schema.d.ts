@@ -1,4 +1,4 @@
-import { TypeScriptLibraryGeneratorSchema } from "../../base/typescript-library-generator";
+import { TypeScriptLibraryGeneratorSchema } from "../../../declarations.d";
 
 export type NeutralLibraryGeneratorSchema = Omit<
   TypeScriptLibraryGeneratorSchema,
