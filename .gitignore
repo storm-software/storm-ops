@@ -8,7 +8,8 @@ dist
 tmp
 /out-tsc
 out
-.nx
+.nx/workspace-data
+.nx/cache
 
 # build
 

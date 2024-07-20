@@ -1,31 +1,31 @@
 {
   "$schema": "https://cdn.jsdelivr.net/npm/nx/schemas/nx-schema.json",
   "extends": "nx/presets/npm.json",
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx/tasks-runners/default",
-      "options": {
-        "cacheableOperations": [
-          "lint-sherif",
-          "lint-knip",
-          "lint-docs",
-          "lint-ls",
-          "lint",
-          "format-readme",
-          "format-toml",
-          "format-prettier",
-          "format",
-          "clean",
-          "build-base",
-          "build",
-          "test",
-          "e2e",
-          "docs"
-        ],
-        "parallel": 3
-      }
-    }
-  },
+  // "tasksRunnerOptions": {
+  //   "default": {
+  //     "runner": "nx/tasks-runners/default",
+  //     "options": {
+  //       "cacheableOperations": [
+  //         "lint-sherif",
+  //         "lint-knip",
+  //         "lint-docs",
+  //         "lint-ls",
+  //         "lint",
+  //         "format-readme",
+  //         "format-toml",
+  //         "format-prettier",
+  //         "format",
+  //         "clean",
+  //         "build-base",
+  //         "build",
+  //         "test",
+  //         "e2e",
+  //         "docs"
+  //       ],
+  //       "parallel": 3
+  //     }
+  //   }
+  // },
   "namedInputs": {
     "global_testing": [
       "{workspaceRoot}/jest.config.ts",
@@ -564,5 +564,6 @@
   "parallel": 3,
   "defaultBase": "main",
   "useDaemonProcess": true,
-  "useInferencePlugins": true
+  "useInferencePlugins": true,
+  "cacheDirectory": "node_modules/.cache/nx"
 }

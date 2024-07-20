@@ -16,13 +16,13 @@ on:
 
 env:
   CI: true
-  NX_DAEMON: false
-  NX_VERBOSE_LOGGING: true
+  NX_CLOUD_DISTRIBUTED_EXECUTION: true # this enables DTE
+  NX_CLOUD_DISTRIBUTED_EXECUTION_AGENT_COUNT: 3 # expected number of agents
+  NX_BRANCH: ${{ github.event.number || github.ref_name }}
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
   STORM_BOT: Stormie-Bot
   STORM_REPOSITORY: ${{ github.repositoryUrl }}
   STORM_WORKSPACE_ROOT: ${{ github.workspace }}
-  NX_BASE: ${{ github.base_ref }}
-  NX_HEAD: ${{ github.head_ref }}
   GITHUB_ACTOR: ${{ github.actor }}
   GITHUB_TOKEN: ${{ github.token }}
   NPM_TOKEN: ${{ secrets.STORM_BOT_NPM_TOKEN }}
@@ -33,13 +33,21 @@ jobs:
     if:
       github.repository == 'storm-software/storm-ops' && (github.ref ==
       'refs/heads/main' || github.ref == 'refs/heads/next' || github.ref ==
-      'refs/heads/alpha' || github.ref == 'refs/heads/beta')
+      'refs/heads/dev' || github.ref == 'refs/heads/beta')
     name: "CI/CD"
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      actions: read
+      contents: read-write
       id-token: write
+
     steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+        continue-on-error: true
+        with:
+          access_token: ${{ secrets.STORM_BOT_NPM_TOKEN }}
+
       - name: Send Slack notification - Deployment started
         uses: slackapi/slack-github-action@v1.26.0
         with:
@@ -96,55 +104,71 @@ jobs:
             "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png"
             } }]'
 
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
-
       - name: Setup workspace
         uses: storm-software/action-setup@main
         with:
           packageManager: pnpm
           packageManagerVersion: 9.4.0
           stormBot: ${{ env.STORM_BOT }}
+          stormBotGitHubToken: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
       - name: Build Storm Nx-Plugin packages
         run: pnpm build-plugins
         shell: bash
 
-      - name: Configure git
-        run: |
-          git config user.name "${{ inputs.stormBot }}"
-          git config user.email "${{ inputs.stormBot }}@users.noreply.github.com"
-          git config lfs.allowincompletepush true
-          npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
-        shell: bash
-
-      - name: Get appropriate base and head commits for `nx affected` commands
-        uses: nrwl/nx-set-shas@v4
-        if: ${{ github.event_name == 'pull_request' }}
+      - uses: nrwl/nx-set-shas@v4
         with:
-          main-branch-name: "main"
+          main-branch-name: main
 
-      - name: Track main branch
-        if: ${{ github.event_name == 'pull_request' }}
-        run: git branch --track main origin/main
-        shell: bash
+      - run: pnpm exec nx-cloud record -- nx format:check
+      - run: pnpm nx affected -t lint,format,build --parallel=5
 
-      - name: Set appropriate base and head commits for `nx affected` commands
-        run: |
-          echo "BASE: ${{ env.NX_BASE }}"
-          echo "HEAD: ${{ env.NX_HEAD }}"
-        shell: bash
+      # - name: Run commands in parallel
+      #   run: |
+      #     # initialize an array to store process IDs (PIDs)
+      #     pids=()
 
-      - name: Run build script
-        run: pnpm build-all
-        shell: bash
+      #     # function to run commands and store the PID
+      #     function run_command() {
+      #       local command=$1
+      #       $command &  # run the command in the background
+      #       pids+=($!)  # store the PID of the background process
+      #     }
 
-      - name: Run formatters scripts
-        run: pnpm nx affected -t format --parallel=5
-        shell: bash
+      #     # list of commands to be run on main has env flag NX_CLOUD_DISTRIBUTED_EXECUTION set to false
+      #     run_command "NX_CLOUD_DISTRIBUTED_EXECUTION=false pnpm exec nx-cloud record -- nx format:check"
+
+      #     # list of commands to be run on agents
+      #     run_command "pnpm nx affected -t lint,format,build --parallel=5"
+
+      #     # wait for all background processes to finish
+      #     for pid in ${pids[*]}; do
+      #       if ! wait $pid; then
+      #         exit 1  # exit with an error status if any process fails
+      #       fi
+      #     done
+
+      #     exit 0 # exits with success status if a all processes complete successfully
+
+      # - name: Get appropriate base and head commits for `nx affected` commands
+      #   uses: nrwl/nx-set-shas@v4
+      #   if: ${{ github.event_name == 'pull_request' }}
+      #   with:
+      #     main-branch-name: "main"
+
+      # - name: Set appropriate base and head commits for `nx affected` commands
+      #   run: |
+      #     echo "BASE: ${{ env.NX_BASE }}"
+      #     echo "HEAD: ${{ env.NX_HEAD }}"
+      #   shell: bash
+
+      # - name: Run build script
+      #   run: pnpm build-all
+      #   shell: bash
+
+      # - name: Run formatters scripts
+      #   run: pnpm nx affected -t lint,format,build --parallel=5
+      #   shell: bash
 
       - name: Add permissions to linting tools
         run: chmod a=rwx dist/packages/linting-tools/bin/lint.js
@@ -173,8 +197,8 @@ jobs:
           file
         run: chmod a=rwx dist/packages/create-storm-workspace/package.json
 
-      - name: Build repository packages
-        run: pnpm nx affected -t build --parallel=5
+      # - name: Build repository packages
+      #   run: pnpm nx affected -t build --parallel=5
 
       - name: Add permissions to git tools
         run: chmod a=rwx dist/packages/git-tools/bin/git.js
