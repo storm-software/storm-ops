@@ -1,3 +1,10 @@
+## 1.125.0 (2024-07-22)
+
+
+### Features
+
+- **eslint:** Added Nx plugin to eslint preset ([1933027f](https://github.com/storm-software/storm-ops/commit/1933027f))
+
 ## 1.124.0 (2024-07-22)
 
 
