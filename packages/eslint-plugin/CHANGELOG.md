@@ -1,3 +1,10 @@
+## 0.24.0 (2024-07-22)
+
+
+### Features
+
+- **eslint:** Added the base eslint preset ([0b2aeea2](https://github.com/storm-software/storm-ops/commit/0b2aeea2))
+
 ## 0.23.0 (2024-07-17)
 
 ### Features
