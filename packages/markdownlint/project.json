@@ -5,6 +5,7 @@
   "sourceRoot": "packages/markdownlint/src",
   "targets": {
     "build": {
+      "cache": true,
       "executor": "@nx/esbuild:esbuild",
       "outputs": ["{options.outputPath}"],
       "options": {
