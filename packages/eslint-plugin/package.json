@@ -83,7 +83,6 @@
   "peerDependencies": {
     "@nx/eslint": ">=18.3.0",
     "@nx/eslint-plugin": ">=18.3.0",
-    "@storm-software/eslint": "latest",
     "eslint": ">=9.0.0"
   },
   "peerDependenciesMeta": {

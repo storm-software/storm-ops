@@ -4,9 +4,10 @@
     "outDir": "../../dist/out-tsc",
     "module": "ESNext",
     "target": "ESNext",
-    "noEmit": true,
-    "esModuleInterop": true,
-    "types": ["node", "@typescript-eslint/parser/dist/index.d.ts"]
+    "moduleResolution": "Bundler",
+    "incremental": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   },
   "include": ["src/**/*.ts"],
   "exclude": [

@@ -4,59 +4,27 @@
   "sourceRoot": "packages/eslint/src",
   "projectType": "library",
   "targets": {
-    // "build-cjs": {
-    //   "cache": true,
-    //   "executor": "@nx/esbuild:esbuild",
-    //   "dependsOn": ["clean", "^build"],
-    //   "inputs": ["typescript"],
-    //   "outputs": ["{options.outputPath}"],
-    //   "options": {
-    //     "outputPath": "dist/packages/eslint/cjs",
-    //     "main": "packages/eslint/src/index.ts",
-    //     "additionalEntryPoints": [
-    //       "packages/eslint/src/base.ts",
-    //       "packages/eslint/src/graphql.ts",
-    //       "packages/eslint/src/json.ts",
-    //       "packages/eslint/src/next.ts",
-    //       "packages/eslint/src/react.ts",
-    //       "packages/eslint/src/markdown.ts",
-    //       "packages/eslint/src/yml.ts",
-    //       "packages/eslint/src/recommended.ts"
-    //     ],
-    //     "tsConfig": "packages/eslint/tsconfig.cjs.json",
-    //     "external": ["@nx/*", "@storm-software/*", "eslint"],
-    //     "format": ["cjs"],
-    //     "platform": "node",
-    //     "deleteOutputPath": true,
-    //     "bundle": true,
-    //     "thirdParty": true,
-    //     "skipTypeCheck": true,
-    //     "metafile": true,
-    //     "minify": false,
-    //     "generatePackageJson": false,
-    //     "esbuildConfig": "packages/eslint/esbuild.config.cjs",
-    //     "assets": [
-    //       {
-    //         "input": "./packages/eslint",
-    //         "glob": "*.md",
-    //         "output": "/"
-    //       },
-    //       {
-    //         "input": "",
-    //         "glob": "LICENSE",
-    //         "output": "/"
-    //       }
-    //     ]
-    //   }
-    // },
-
-    "build": {
+    "build-base": {
       "cache": true,
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "options": {
-        "command": "node -r esbuild-register packages/eslint/tools/build.js",
-        "parallel": false
+        "command": "pnpm exec unbuild",
+        "parallel": false,
+        "cwd": "packages/eslint"
+      }
+    },
+    "build": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base", "^build"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles --up=3 packages/eslint/dist/* dist/packages/eslint/dist",
+          "pnpm copyfiles --up=2 packages/eslint/README.md packages/eslint/CHANGELOG.md packages/eslint/package.json dist/packages/eslint",
+          "pnpm copyfiles LICENSE dist/packages/eslint"
+        ],
+        "parallel": true
       }
     },
     "nx-release-publish": {
