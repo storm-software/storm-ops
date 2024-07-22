@@ -4,6 +4,20 @@ import type { Linter } from 'eslint'
 
 export interface RuleOptions {
   /**
+   * Checks dependencies in project's package.json for version mismatches
+   * @see https://github.com/nrwl/nx/blob/19.5.1/docs/generated/packages/eslint-plugin/documents/dependency-checks.md
+   */
+  "@nx/dependency-checks"?: Linter.RuleEntry<NxDependencyChecks>;
+  /**
+   * Ensure that module boundaries are respected within the monorepo
+   * @see https://github.com/nrwl/nx/blob/19.5.1/docs/generated/packages/eslint-plugin/documents/enforce-module-boundaries.md
+   */
+  "@nx/enforce-module-boundaries"?: Linter.RuleEntry<NxEnforceModuleBoundaries>;
+  /**
+   * Checks common nx-plugin configuration files for validity
+   */
+  "@nx/nx-plugin-checks"?: Linter.RuleEntry<NxNxPluginChecks>;
+  /**
    * Require that function overload signatures be consecutive
    * @see https://typescript-eslint.io/rules/adjacent-overload-signatures
    */
@@ -1457,6 +1471,67 @@ export interface RuleOptions {
 }
 
 /* ======= Declarations ======= */
+// ----- @nx/dependency-checks -----
+type NxDependencyChecks =
+  | []
+  | [
+      {
+        buildTargets?: string[];
+        ignoredDependencies?: string[];
+        ignoredFiles?: string[];
+        checkMissingDependencies?: boolean;
+        checkObsoleteDependencies?: boolean;
+        checkVersionMismatches?: boolean;
+        includeTransitiveDependencies?: boolean;
+        useLocalPathsForWorkspaceDependencies?: boolean;
+      }
+    ];
+// ----- @nx/enforce-module-boundaries -----
+type NxEnforceModuleBoundaries =
+  | []
+  | [
+      {
+        enforceBuildableLibDependency?: boolean;
+        allowCircularSelfDependency?: boolean;
+        checkDynamicDependenciesExceptions?: string[];
+        banTransitiveDependencies?: boolean;
+        checkNestedExternalImports?: boolean;
+        allow?: string[];
+        buildTargets?: string[];
+        depConstraints?: (
+          | {
+              sourceTag?: string;
+              onlyDependOnLibsWithTags?: string[];
+              allowedExternalImports?: string[];
+              bannedExternalImports?: string[];
+              notDependOnLibsWithTags?: string[];
+            }
+          | {
+              allSourceTags?: [string, string, ...string[]];
+              onlyDependOnLibsWithTags?: string[];
+              allowedExternalImports?: string[];
+              bannedExternalImports?: string[];
+              notDependOnLibsWithTags?: string[];
+            }
+        )[];
+      }
+    ];
+// ----- @nx/nx-plugin-checks -----
+type NxNxPluginChecks =
+  | []
+  | [
+      {
+        generatorsJson?: string;
+
+        executorsJson?: string;
+
+        migrationsJson?: string;
+
+        packageJson?: string;
+
+        allowedVersionStrings?: string[];
+      }
+    ];
 // ----- @typescript-eslint/array-type -----
 type TypescriptEslintArrayType =
   | []

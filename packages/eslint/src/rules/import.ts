@@ -6,7 +6,7 @@ const config: Linter.RulesRecord = {
    *
    * 🚫 Not fixable - https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/first.md
    */
-  "import/first": "error",
+  "import/first": "warn",
   /**
    * Require a newline after the last import/require.
    *

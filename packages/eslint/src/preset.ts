@@ -10,6 +10,14 @@ import globals from "globals";
 import { formatConfig } from "./utils/format-config";
 import nxPlugin from "@nx/eslint-plugin";
 import jsoncParser from "jsonc-eslint-parser";
+import react from "eslint-plugin-react";
+import jsxA11y from "eslint-plugin-jsx-a11y";
+import reactHooks from "eslint-plugin-react-hooks";
+import jsxA11yRules from "./rules/jsx-a11y";
+import reactRules from "./rules/react";
+import reactHooksRules from "./rules/react-hooks";
+import tsdoc from "eslint-plugin-tsdoc";
+import tsdocRules from "./rules/ts-docs";
 
 export type PresetModuleBoundaryDepConstraints = {
   sourceTag: string;
@@ -25,6 +33,7 @@ export type PresetModuleBoundary = {
 export interface PresetOptions {
   rules?: RuleOptions;
   markdown?: false | { rules: RuleOptions };
+  react?: false | { rules: RuleOptions };
   ignores?: string[];
   moduleBoundaries?: PresetModuleBoundary;
 }
@@ -116,6 +125,31 @@ export default function stormPreset(
         "no-import-assign": 0,
         ...options.markdown?.rules
       }) as any
+    },
+
+    // React
+    // https://www.npmjs.com/package/eslint-plugin-react
+    options.react !== false && {
+      plugins: { react, "react-hooks": reactHooks, "jsx-a11y": jsxA11y }
+    },
+    options.react !== false && {
+      files: ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      rules: (<RuleOptions>{
+        ...reactRules,
+        ...reactHooksRules,
+        ...jsxA11yRules,
+        ...options.react?.rules
+      }) as any
+    },
+
+    // TSDoc
+    // https://www.npmjs.com/package/eslint-plugin-tsdoc
+    { plugins: { tsdoc } },
+    {
+      files: ["*.ts", "*.tsx"],
+      rules: {
+        ...tsdocRules
+      }
     },
 
     // Nx plugin
