@@ -162,7 +162,16 @@ export default function stormPreset(
         }
       },
       rules: {
-        "@typescript-eslint/explicit-module-boundary-types": ["error"]
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/explicit-function-return-type": [
+          "warn",
+          {
+            allowExpressions: true,
+            allowConciseArrowFunctionExpressionsStartingWithVoid: true,
+            allowFunctionsWithoutTypeParameters: true,
+            allowIIFEs: true
+          }
+        ]
       }
     },
 
