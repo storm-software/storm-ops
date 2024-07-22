@@ -1,3 +1,26 @@
+## 1.123.0 (2024-07-22)
+
+
+### Features
+
+- **workspace-tools:** Enable distributed task execution and remote caching ([307bc05a](https://github.com/storm-software/storm-ops/commit/307bc05a))
+
+- **workspace-tools:** Improve the `nx.config` shared imports ([2b298691](https://github.com/storm-software/storm-ops/commit/2b298691))
+
+
+### Bug Fixes
+
+- **storm-ops:** Resolved issue with cross-project typings ([aed5a357](https://github.com/storm-software/storm-ops/commit/aed5a357))
+
+- **workspace-tools:** Improve the inputs used for `build` and `release` tasks ([9887f360](https://github.com/storm-software/storm-ops/commit/9887f360))
+
+- **workspace-tools:** Resolve issues with `namedInputs` in base Nx configuration ([879fc147](https://github.com/storm-software/storm-ops/commit/879fc147))
+
+
+### Continuous Integration
+
+- **storm-ops:** Resolve permissions issue in CI action ([2dd8c79e](https://github.com/storm-software/storm-ops/commit/2dd8c79e))
+
 ## 1.122.0 (2024-07-19)
 
 

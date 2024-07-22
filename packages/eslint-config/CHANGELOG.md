@@ -1,3 +1,17 @@
+## 0.31.1 (2024-07-22)
+
+
+### Bug Fixes
+
+- **eslint-config:** Mark the build task as cachable ([a074ad1c](https://github.com/storm-software/storm-ops/commit/a074ad1c))
+
+- **workspace-tools:** Resolve issues with `namedInputs` in base Nx configuration ([879fc147](https://github.com/storm-software/storm-ops/commit/879fc147))
+
+
+### Continuous Integration
+
+- **eslint-config:** Ensure the `test` task is cachable ([45d7b578](https://github.com/storm-software/storm-ops/commit/45d7b578))
+
 ## 0.31.0 (2024-07-19)
 
 

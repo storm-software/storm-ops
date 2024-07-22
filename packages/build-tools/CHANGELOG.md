@@ -1,3 +1,10 @@
+## 0.18.1 (2024-07-22)
+
+
+### Bug Fixes
+
+- **storm-ops:** Resolved issue with cross-project typings ([aed5a357](https://github.com/storm-software/storm-ops/commit/aed5a357))
+
 ## 0.18.0 (2024-07-17)
 
 ### Features

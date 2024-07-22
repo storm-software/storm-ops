@@ -1,3 +1,17 @@
+## 0.13.1 (2024-07-22)
+
+
+### Bug Fixes
+
+- **storm-ops:** Resolved issue with cross-project typings ([aed5a357](https://github.com/storm-software/storm-ops/commit/aed5a357))
+
+
+### Continuous Integration
+
+- **storm-ops:** Resolve permissions issue in CI action ([2dd8c79e](https://github.com/storm-software/storm-ops/commit/2dd8c79e))
+
+- **eslint:** Update `build` tasks to be cachable ([f24e2897](https://github.com/storm-software/storm-ops/commit/f24e2897))
+
 ## 0.13.0 (2024-07-19)
 
 
