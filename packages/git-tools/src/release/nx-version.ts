@@ -188,8 +188,14 @@ export async function releaseVersion(
             verbose: !!args.verbose,
             generatorOptions
           });
-          for (const f of changedFiles) {
-            additionalChangedFiles.add(f);
+          if (Array.isArray(changedFiles)) {
+            for (const f of changedFiles) {
+              additionalChangedFiles.add(f);
+            }
+          } else {
+            for (const f of changedFiles.changedFiles) {
+              additionalChangedFiles.add(f);
+            }
           }
         });
       }
@@ -227,18 +233,19 @@ export async function releaseVersion(
     }
 
     if (args.gitCommit ?? nxReleaseConfig?.version.git.commit) {
-      await commitChanges(
+      await commitChanges({
         changedFiles,
-        !!args.dryRun,
-        !!args.verbose,
-        createCommitMessageValues(
+        isDryRun: !!args.dryRun,
+        isVerbose: !!args.verbose,
+        gitCommitMessages: createCommitMessageValues(
           releaseGroups,
           releaseGroupToFilteredProjects,
           versionData,
           commitMessage as string
         ),
-        args.gitCommitArgs || nxReleaseConfig?.version.git.commitArgs
-      );
+        gitCommitArgs:
+          args.gitCommitArgs || nxReleaseConfig?.version.git.commitArgs
+      });
     } else if (args.stageChanges ?? nxReleaseConfig?.version.git.stageChanges) {
       writeInfo("Staging changed files with git", config);
       await gitAdd({
@@ -319,8 +326,14 @@ export async function releaseVersion(
           verbose: !!args.verbose,
           generatorOptions
         });
-        for (const f of changedFiles) {
-          additionalChangedFiles.add(f);
+        if (Array.isArray(changedFiles)) {
+          for (const f of changedFiles) {
+            additionalChangedFiles.add(f);
+          }
+        } else {
+          for (const f of changedFiles.changedFiles) {
+            additionalChangedFiles.add(f);
+          }
         }
       });
     }
@@ -347,7 +360,7 @@ export async function releaseVersion(
   let workspaceVersion: string | null | undefined = undefined;
   if (releaseGroups.length === 1) {
     const releaseGroup = releaseGroups[0];
-    if (releaseGroup.projectsRelationship === "fixed") {
+    if (releaseGroup?.projectsRelationship === "fixed") {
       const releaseGroupProjectNames = Array.from(
         releaseGroupToFilteredProjects.get(releaseGroup) ?? []
       );
@@ -371,18 +384,19 @@ export async function releaseVersion(
   }
 
   if (args.gitCommit ?? nxReleaseConfig?.version.git.commit) {
-    await commitChanges(
+    await commitChanges({
       changedFiles,
-      !!args.dryRun,
-      !!args.verbose,
-      createCommitMessageValues(
+      isDryRun: !!args.dryRun,
+      isVerbose: !!args.verbose,
+      gitCommitMessages: createCommitMessageValues(
         releaseGroups,
         releaseGroupToFilteredProjects,
         versionData,
         commitMessage as string
       ),
-      args.gitCommitArgs || nxReleaseConfig?.version.git.commitArgs
-    );
+      gitCommitArgs:
+        args.gitCommitArgs || nxReleaseConfig?.version.git.commitArgs
+    });
   } else if (args.stageChanges ?? nxReleaseConfig?.version.git.stageChanges) {
     writeInfo("Staging changed files with git", config);
     await gitAdd({

@@ -437,7 +437,7 @@
   },
   "parallel": 3,
   "defaultBase": "main",
-  "useDaemonProcess": true,
+  "useDaemonProcess": false,
   "useInferencePlugins": true,
   "plugins": [
     "./dist/plugins/rust/index.js",
