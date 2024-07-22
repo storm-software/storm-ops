@@ -1,3 +1,10 @@
+## 2.30.0 (2024-07-22)
+
+
+### Features
+
+- **eslint:** Added optional react rules to preset ([bc33a12d](https://github.com/storm-software/storm-ops/commit/bc33a12d))
+
 ## 2.29.1 (2024-07-22)
 
 
