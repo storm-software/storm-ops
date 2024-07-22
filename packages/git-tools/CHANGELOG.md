@@ -1,3 +1,10 @@
+## 2.29.1 (2024-07-22)
+
+
+### Bug Fixes
+
+- **git-tools:** Resolved issue with version calculation during release ([97e23127](https://github.com/storm-software/storm-ops/commit/97e23127))
+
 ## 2.29.0 (2024-07-17)
 
 ### Features
