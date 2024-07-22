@@ -653,6 +653,7 @@
     },
     "build": {
       "cache": true,
+      "inputs": ["default", "^production"],
       "dependsOn": ["build-base", "format", "^build"]
     },
     "rebuild": {
@@ -687,6 +688,7 @@
     },
     "nx-release-publish": {
       "cache": false,
+      "inputs": ["default", "^production"],
       "dependsOn": ["build", "^nx-release-publish"]
     }
   },
@@ -814,6 +816,5 @@
   "parallel": 3,
   "defaultBase": "main",
   "useDaemonProcess": true,
-  "useInferencePlugins": true,
-  "cacheDirectory": "node_modules/.cache/nx"
+  "useInferencePlugins": true
 }

@@ -104,7 +104,7 @@ export const createNodes = [
       targets.clean = {
         cache: true,
         executor: "nx:run-commands",
-        inputs: ["typescript", "^production"],
+        inputs: ["default", "^production"],
         outputs: ["{workspaceRoot}/dist/{projectRoot}"],
         options: {
           command: "pnpm exec rimraf dist/{projectRoot}",
@@ -119,7 +119,7 @@ export const createNodes = [
         cache: false,
         executor: "nx:run-commands",
         dependsOn: ["clean", "^build"],
-        inputs: ["typescript", "^production"],
+        inputs: ["default", "^production"],
         outputs: ["{workspaceRoot}/dist/{projectRoot}"],
         options: {
           command: `pnpm exec nx run ${project.name}:build`,
@@ -163,7 +163,7 @@ export const createNodes = [
     if (!isPrivate) {
       targets["nx-release-publish"] = {
         cache: false,
-        inputs: ["typescript", "^production"],
+        inputs: ["default", "^production"],
         executor: "@storm-software/workspace-tools:npm-publish",
         options: {}
       };
@@ -184,7 +184,7 @@ export const createNodes = [
         targets["clean-package"] = {
           cache: true,
           dependsOn: ["build"],
-          inputs: ["typescript", "^production"],
+          inputs: ["default", "^production"],
           outputs: ["{workspaceRoot}/dist/{projectRoot}"],
           executor: "@storm-software/workspace-tools:clean-package",
           options: {
