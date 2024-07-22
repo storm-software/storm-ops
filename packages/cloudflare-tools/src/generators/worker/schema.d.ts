@@ -1,5 +1,8 @@
 import type { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
-import { TypeScriptLibraryGeneratorSchema } from "@storm-software/workspace-tools";
+import type {
+  TypeScriptLibraryGeneratorSchema,
+  TypeScriptLibraryGeneratorNormalizedSchema
+} from "@storm-software/workspace-tools";
 
 export type WorkerGeneratorSchema = TypeScriptLibraryGeneratorSchema & {
   template?: "fetch-handler" | "scheduled-handler" | "hono" | "none";
@@ -16,6 +19,7 @@ export type WorkerGeneratorSchema = TypeScriptLibraryGeneratorSchema & {
   addPlugin?: boolean;
 };
 
-export interface NormalizedSchema extends WorkerGeneratorSchema {
-  appProjectRoot: string;
-}
+export type NormalizedSchema = TypeScriptLibraryGeneratorNormalizedSchema &
+  WorkerGeneratorSchema & {
+    appProjectRoot: string;
+  };

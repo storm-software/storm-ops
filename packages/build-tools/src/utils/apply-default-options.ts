@@ -6,7 +6,7 @@ import type { RolldownOptions, UnbuildBuildOptions } from "../types";
 import { getFileBanner } from "./get-file-banner";
 
 export const applyDefaultOptions = (
-  options: Partial<TypeScriptBuildOptions>,
+  options: Partial<any>,
   config?: StormConfig
 ): TypeScriptBuildOptions => {
   options.entry ??= "{sourceRoot}/index.ts";

@@ -12,6 +12,7 @@ import type {
 } from "typescript";
 import type { NormalizedSchema } from "@nx/js/src/generators/library/library";
 import type { LibraryGeneratorSchema } from "@nx/js/src/utils/schema";
+import type { GetConfigParams } from "@storm-software/build-tools";
 
 export interface TsupContext {
   projectRoot: string;
@@ -22,25 +23,25 @@ export interface TsupContext {
 
 export type BuildOptions = Options;
 export type Entry = string | string[] | Record<string, string>;
-export type GetConfigParams = Omit<
-  TsupGetConfigOptions,
-  "entry" | "assets" | "clean" | "outputPath" | "tsConfig" | "main"
-> & {
-  entry: Entry;
-  outDir: string;
-  projectRoot: string;
-  workspaceRoot: string;
-  tsconfig: string;
-  shims?: boolean;
-  apiReport?: boolean;
-  docModel?: boolean;
-  tsdocMetadata?: boolean;
-  dtsTsConfig: ParsedCommandLine;
-  getTransform?: (
-    program: Program,
-    diagnostics: Diagnostic[]
-  ) => TransformerFactory<SourceFile>;
-};
+// export type GetConfigParams = Omit<
+//   TsupGetConfigOptions,
+//   "entry" | "assets" | "clean" | "outputPath" | "tsConfig" | "main"
+// > & {
+//   entry: Entry;
+//   outDir: string;
+//   projectRoot: string;
+//   workspaceRoot: string;
+//   tsconfig: string;
+//   shims?: boolean;
+//   apiReport?: boolean;
+//   docModel?: boolean;
+//   tsdocMetadata?: boolean;
+//   dtsTsConfig: ParsedCommandLine;
+//   getTransform?: (
+//     program: Program,
+//     diagnostics: Diagnostic[]
+//   ) => TransformerFactory<SourceFile>;
+// };
 
 declare function outExtension({ format }: { format?: string }): {
   js: string;
@@ -175,7 +176,7 @@ export type TypeScriptLibraryGeneratorSchema = Omit<
   name: string;
   description: string;
   buildExecutor: string;
-  platform?: Platform;
+  platform?: Platform | "worker";
   devDependencies?: Record<string, string>;
   peerDependencies?: Record<string, string>;
   peerDependenciesMeta?: Record<string, any>;

@@ -1,6 +1,5 @@
 import type { EsBuildExecutorOptions } from "@nx/esbuild/src/executors/esbuild/schema.d.ts";
-import type { Options } from "tsup";
-import type { GetConfigParams } from "../../../declarations";
+import type { GetConfigParams } from "@storm-software/build-tools";
 
 export type Platform = "browser" | "neutral" | "node" | "worker";
 
@@ -39,7 +38,7 @@ export type TsupExecutorSchema = Omit<
   treeshake?: boolean;
   generatePackageJson?: boolean;
   emitOnAll?: boolean;
-  getConfig: (params: GetConfigParams) => Options;
+  getConfig: (params: GetConfigParams) => any;
   format?: string[];
   metafile?: boolean;
   minify?: boolean;

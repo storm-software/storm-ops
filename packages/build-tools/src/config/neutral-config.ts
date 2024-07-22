@@ -28,7 +28,7 @@ export const neutralConfig = ({
   generatePackageJson,
   dtsTsConfig,
   minify = false,
-  getTransform,
+  getTransform
 }: GetConfigParams): BuildOptions => {
   const outputPath = joinPathFragments(outDir, "dist");
 
@@ -42,7 +42,7 @@ export const neutralConfig = ({
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended",
+          preset: "recommended"
         }
       : false,
     projectRoot,
@@ -64,9 +64,9 @@ export const neutralConfig = ({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: outputPath,
-        },
-      },
+          outDir: outputPath
+        }
+      }
     },
     apiReport,
     docModel,
@@ -77,7 +77,7 @@ export const neutralConfig = ({
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform,
+    getTransform
   } as Options;
 
   if (!debug || minify) {
@@ -86,7 +86,7 @@ export const neutralConfig = ({
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true,
+      keep_fnames: true
     };
   }
 

@@ -28,7 +28,7 @@ export function nodeConfig({
   generatePackageJson,
   dtsTsConfig,
   minify = false,
-  getTransform,
+  getTransform
 }: GetConfigParams): BuildOptions {
   const options = {
     name: "node",
@@ -40,7 +40,7 @@ export function nodeConfig({
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended",
+          preset: "recommended"
         }
       : false,
     projectRoot,
@@ -62,9 +62,9 @@ export function nodeConfig({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: joinPathFragments(outDir, "dist"),
-        },
-      },
+          outDir: joinPathFragments(outDir, "dist")
+        }
+      }
     },
     apiReport,
     docModel,
@@ -75,7 +75,7 @@ export function nodeConfig({
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform,
+    getTransform
   } as Options;
 
   if (!debug || minify) {
@@ -84,7 +84,7 @@ export function nodeConfig({
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true,
+      keep_fnames: true
     };
   }
 
@@ -114,7 +114,7 @@ export function workerConfig({
   plugins,
   generatePackageJson,
   dtsTsConfig,
-  getTransform,
+  getTransform
 }: GetConfigParams): BuildOptions {
   const options = {
     name: "worker",
@@ -127,7 +127,7 @@ export function workerConfig({
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended",
+          preset: "recommended"
         }
       : false,
     projectRoot,
@@ -149,9 +149,9 @@ export function workerConfig({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: joinPathFragments(outDir, "dist"),
-        },
-      },
+          outDir: joinPathFragments(outDir, "dist")
+        }
+      }
     },
     apiReport,
     docModel,
@@ -162,7 +162,7 @@ export function workerConfig({
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform,
+    getTransform
   } as Options;
 
   if (!debug) {
@@ -171,7 +171,7 @@ export function workerConfig({
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true,
+      keep_fnames: true
     };
   }
 

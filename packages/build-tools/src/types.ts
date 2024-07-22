@@ -80,7 +80,7 @@ export interface TypeScriptBuildOptions extends AdditionalCLIOptions {
   outputFileName?: string;
   outputHashing?: "none" | "all";
   outputPath: string;
-  platform?: "node" | "browser" | "neutral";
+  platform?: "node" | "browser" | "neutral" | "worker";
   sourcemap?: boolean | "linked" | "inline" | "external" | "both";
   target?: string;
   tsConfig: string;

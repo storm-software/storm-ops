@@ -1,7 +1,11 @@
 import type { ExecutorContext } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
-import { getFileBanner, neutralConfig, applyDefaultOptions } from "@storm-software/build-tools";
+import {
+  getFileBanner,
+  neutralConfig,
+  applyDefaultOptions
+} from "@storm-software/build-tools";
 import { tsupExecutorFn } from "../tsup/executor";
 import type { TsupNeutralExecutorSchema } from "./schema";
 
@@ -18,9 +22,11 @@ export const tsupNeutralBuildExecutorFn = (
         context.projectName
           ? context.projectName
               .split(/(?=[A-Z])|[\.\-\s_]/)
-              .map((s) => s.trim())
-              .filter((s) => !!s)
-              .map((s) => (s ? s.toUpperCase()[0] + s.toLowerCase().slice(1) : ""))
+              .map(s => s.trim())
+              .filter(s => !!s)
+              .map(s =>
+                s ? s.toUpperCase()[0] + s.toLowerCase().slice(1) : ""
+              )
               .join(" ")
           : "TypeScript (Neutral Platform)"
       ),
@@ -31,7 +37,7 @@ export const tsupNeutralBuildExecutorFn = (
       env: {
         ...process.env
       },
-      getConfig: neutralConfig
+      getConfig: neutralConfig as any
     },
     context,
     config
@@ -44,7 +50,9 @@ export default withRunExecutor<TsupNeutralExecutorSchema>(
   {
     skipReadingConfig: false,
     hooks: {
-      applyDefaultOptions: (options: TsupNeutralExecutorSchema): TsupNeutralExecutorSchema => {
+      applyDefaultOptions: (
+        options: TsupNeutralExecutorSchema
+      ): TsupNeutralExecutorSchema => {
         return {
           ...applyDefaultOptions({
             plugins: [],

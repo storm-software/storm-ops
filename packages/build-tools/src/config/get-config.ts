@@ -1,4 +1,8 @@
-import type { BuildOptions, GetConfigParams, TsupGetConfigOptions } from "../types";
+import type {
+  BuildOptions,
+  GetConfigParams,
+  TsupGetConfigOptions
+} from "../types";
 
 export const getConfig = (
   workspaceRoot: string,
