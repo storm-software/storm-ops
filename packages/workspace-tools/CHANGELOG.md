@@ -1,3 +1,10 @@
+## 1.124.0 (2024-07-22)
+
+
+### Features
+
+- **eslint:** Add config formatter to eslint preset ([050dadcd](https://github.com/storm-software/storm-ops/commit/050dadcd))
+
 ## 1.123.0 (2024-07-22)
 
 
