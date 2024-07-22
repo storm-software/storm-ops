@@ -1,5 +1,5 @@
 import eslint from "@eslint/js";
-import tseslint from "typescript-eslint";
+import tsEslint from "typescript-eslint";
 // @ts-ignore
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 // @ts-ignore
@@ -8,11 +8,25 @@ import type { Linter } from "eslint";
 import type { RuleOptions } from "./preset.d";
 import globals from "globals";
 import { formatConfig } from "./utils/format-config";
+import nxPlugin from "@nx/eslint-plugin";
+import jsoncParser from "jsonc-eslint-parser";
+
+export type PresetModuleBoundaryDepConstraints = {
+  sourceTag: string;
+  onlyDependOnLibsWithTags: string[];
+};
+
+export type PresetModuleBoundary = {
+  enforceBuildableLibDependency: boolean;
+  allow: any[];
+  depConstraints: PresetModuleBoundaryDepConstraints[];
+};
 
 export interface PresetOptions {
   rules?: RuleOptions;
   markdown?: false | { rules: RuleOptions };
   ignores?: string[];
+  moduleBoundaries?: PresetModuleBoundary;
 }
 
 export interface TypedFlatConfig extends Omit<Linter.FlatConfig, "rules"> {
@@ -20,7 +34,18 @@ export interface TypedFlatConfig extends Omit<Linter.FlatConfig, "rules"> {
 }
 
 export default function stormPreset(
-  options: PresetOptions = {},
+  options: PresetOptions = {
+    moduleBoundaries: {
+      enforceBuildableLibDependency: true,
+      allow: [],
+      depConstraints: [
+        {
+          sourceTag: "*",
+          onlyDependOnLibsWithTags: ["*"]
+        }
+      ]
+    }
+  },
   ...userConfigs: TypedFlatConfig[]
 ): Linter.FlatConfig[] {
   const rules: RuleOptions = {
@@ -51,7 +76,7 @@ export default function stormPreset(
     // https://eslint.org/docs/latest/rules/
     eslint.configs.recommended,
     // https://typescript-eslint.io/
-    ...(tseslint.configs.recommended as Linter.FlatConfig[]),
+    ...(tsEslint.configs.recommended as Linter.FlatConfig[]),
     // https://github.com/sindresorhus/eslint-plugin-unicorn
     eslintPluginUnicorn.configs["flat/recommended"] as Linter.FlatConfig,
 
@@ -91,6 +116,48 @@ export default function stormPreset(
         "no-import-assign": 0,
         ...options.markdown?.rules
       }) as any
+    },
+
+    // Nx plugin
+    { plugins: { "@nx": nxPlugin } },
+    {
+      languageOptions: {
+        parser: tsEslint.parser,
+        globals: {
+          ...globals.node
+        }
+      },
+      rules: {
+        "@typescript-eslint/explicit-module-boundary-types": ["error"]
+      }
+    },
+
+    {
+      files: ["*.json", "*.jsonc"],
+      languageOptions: {
+        parser: jsoncParser
+      },
+      rules: {}
+    },
+    {
+      files: ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      rules: {
+        "@nx/enforce-module-boundaries": [
+          "error",
+          options.moduleBoundaries
+            ? options.moduleBoundaries
+            : {
+                enforceBuildableLibDependency: true,
+                allow: [],
+                depConstraints: [
+                  {
+                    sourceTag: "*",
+                    onlyDependOnLibsWithTags: ["*"]
+                  }
+                ]
+              }
+        ]
+      }
     },
 
     // User overrides
