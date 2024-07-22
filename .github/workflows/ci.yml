@@ -121,7 +121,7 @@ jobs:
           main-branch-name: main
 
       - run: pnpm exec nx-cloud record -- nx format:check
-      - run: pnpm nx affected -t lint,format,build --parallel=5
+      - run: pnpm nx affected -t lint format build --parallel=5
 
       # - name: Run commands in parallel
       #   run: |
