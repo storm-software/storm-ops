@@ -121,7 +121,7 @@ jobs:
           main-branch-name: main
 
       # - run: pnpm exec nx-cloud record -- nx format:write
-      - run: pnpm nx affected -t build --parallel=5
+      # - run: pnpm nx affected -t build --parallel=5
 
       # - name: Run commands in parallel
       #   run: |
@@ -162,9 +162,9 @@ jobs:
       #     echo "HEAD: ${{ env.NX_HEAD }}"
       #   shell: bash
 
-      # - name: Run build script
-      #   run: pnpm build-all
-      #   shell: bash
+      - name: Run build script
+        run: pnpm build-all
+        shell: bash
 
       # - name: Run formatters scripts
       #   run: pnpm nx affected -t lint,format,build --parallel=5
