@@ -51,6 +51,7 @@
     // },
 
     "build": {
+      "cache": true,
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "options": {
