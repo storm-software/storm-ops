@@ -7,6 +7,7 @@ import markdown from "eslint-plugin-markdown";
 import type { Linter } from "eslint";
 import type { RuleOptions } from "./preset.d";
 import globals from "globals";
+import { formatConfig } from "./utils/format-config";
 
 export interface PresetOptions {
   rules?: RuleOptions;
@@ -96,5 +97,5 @@ export default function stormPreset(
     ...(userConfigs as Linter.FlatConfig[])
   ].filter(Boolean) as Linter.FlatConfig[];
 
-  return configs;
+  return formatConfig("Preset", configs);
 }
