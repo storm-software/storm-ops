@@ -18,6 +18,9 @@ import reactRules from "./rules/react";
 import reactHooksRules from "./rules/react-hooks";
 import tsdoc from "eslint-plugin-tsdoc";
 import tsdocRules from "./rules/ts-docs";
+import prettierConfig from "eslint-plugin-prettier/recommended";
+import importEslint from "eslint-plugin-import";
+import importRules from "./rules/import";
 
 export type PresetModuleBoundaryDepConstraints = {
   sourceTag: string;
@@ -89,6 +92,9 @@ export default function stormPreset(
     // https://github.com/sindresorhus/eslint-plugin-unicorn
     eslintPluginUnicorn.configs["flat/recommended"] as Linter.FlatConfig,
 
+    // Prettier
+    prettierConfig,
+
     // Preset overrides
     { rules: rules as Linter.RulesRecord },
     {
@@ -142,6 +148,16 @@ export default function stormPreset(
       }) as any
     },
 
+    // Import
+    // https://www.npmjs.com/package/eslint-plugin-import
+    { plugins: { import: importEslint } },
+    {
+      files: ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      rules: {
+        ...importRules
+      }
+    },
+
     // TSDoc
     // https://www.npmjs.com/package/eslint-plugin-tsdoc
     { plugins: { tsdoc } },
@@ -163,15 +179,7 @@ export default function stormPreset(
       },
       rules: {
         "@typescript-eslint/explicit-module-boundary-types": "off",
-        "@typescript-eslint/explicit-function-return-type": [
-          "warn",
-          {
-            allowExpressions: true,
-            allowConciseArrowFunctionExpressionsStartingWithVoid: true,
-            allowFunctionsWithoutTypeParameters: true,
-            allowIIFEs: true
-          }
-        ]
+        "@typescript-eslint/explicit-function-return-type": "off"
       }
     },
 
