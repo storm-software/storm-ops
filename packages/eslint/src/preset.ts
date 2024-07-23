@@ -3,25 +3,23 @@ import tsEslint from "typescript-eslint";
 // @ts-ignore
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 // @ts-ignore
-import markdown from "eslint-plugin-markdown";
-import type { Linter } from "eslint";
-import type { RuleOptions } from "./preset.d";
-import globals from "globals";
-import { formatConfig } from "./utils/format-config";
 import nxPlugin from "@nx/eslint-plugin";
-import jsoncParser from "jsonc-eslint-parser";
-import react from "eslint-plugin-react";
+import type { Linter } from "eslint";
 import jsxA11y from "eslint-plugin-jsx-a11y";
+import markdown from "eslint-plugin-markdown";
+import prettierConfig from "eslint-plugin-prettier/recommended";
+import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
+import tsdoc from "eslint-plugin-tsdoc";
+import globals from "globals";
+import jsoncParser from "jsonc-eslint-parser";
+import type { RuleOptions } from "./preset.d";
 import jsxA11yRules from "./rules/jsx-a11y";
 import reactRules from "./rules/react";
 import reactHooksRules from "./rules/react-hooks";
-import tsdoc from "eslint-plugin-tsdoc";
 import tsdocRules from "./rules/ts-docs";
-import prettierConfig from "eslint-plugin-prettier/recommended";
-import importEslint from "./utils/create-flat-import-plugin";
-import importRules from "./rules/import";
 import { CODE_BLOCK, CODE_FILE, TS_FILE } from "./utils/constants";
+import { formatConfig } from "./utils/format-config";
 
 export type PresetModuleBoundaryDepConstraints = {
   sourceTag: string;
@@ -151,11 +149,11 @@ export default function stormPreset(
 
     // Import
     // https://www.npmjs.com/package/eslint-plugin-import
-    { plugins: { import: importEslint } },
-    {
-      files: [CODE_FILE],
-      rules: importRules
-    },
+    // { plugins: { import: importEslint } },
+    // {
+    //   files: [CODE_FILE],
+    //   rules: importRules
+    // },
 
     // TSDoc
     // https://www.npmjs.com/package/eslint-plugin-tsdoc

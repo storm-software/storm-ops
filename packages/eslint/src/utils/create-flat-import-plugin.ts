@@ -1,4 +1,4 @@
-import { rules, config } from "eslint-plugin-import";
+import pkg from "eslint-plugin-import";
 
 export default {
   meta: {
@@ -6,10 +6,10 @@ export default {
     version: "2.29.1"
   },
   configs: {
-    ...config
+    ...pkg.config
   },
   rules: {
-    ...rules
+    ...pkg.rules
   },
   processors: {}
 };
