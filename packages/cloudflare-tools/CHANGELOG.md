@@ -1,3 +1,10 @@
+## 0.16.0 (2024-07-22)
+
+
+### Features
+
+- **eslint:** Update rules around handling TypeScript function returns ([a9859cd4](https://github.com/storm-software/storm-ops/commit/a9859cd4))
+
 ## 0.15.0 (2024-07-22)
 
 
