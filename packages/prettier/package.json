@@ -25,6 +25,7 @@
     "./index": "./index.cjs",
     "./.prettierignore": "./.prettierignore",
     "./config.json": "./config.json",
+    "./tailwindcss.json": "./tailwindcss.json",
     "./package.json": "./package.json"
   },
   "keywords": [
@@ -32,17 +33,14 @@
     "storm-ops",
     "sullivanpj",
     "prettier",
+    "prettier-config",
     "monorepo"
   ],
   "peerDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "4.2.1",
     "prettier": "^3.3.0",
     "prettier-plugin-tailwindcss": "0.6.5"
   },
   "peerDependenciesMeta": {
-    "@ianvs/prettier-plugin-sort-imports": {
-      "optional": true
-    },
     "prettier": {
       "optional": false
     },
