@@ -54,6 +54,8 @@
   "plugins": [
     "prettier-plugin-sh",
     "prettier-plugin-pkg",
-    "prettier-plugin-prisma"
-  ]
+    "prettier-plugin-prisma",
+    "prettier-plugin-organize-imports"
+  ],
+  "organizeImportsSkipDestructiveCodeActions": false
 }
