@@ -1,3 +1,10 @@
+## 0.35.1 (2024-07-23)
+
+
+### Bug Fixes
+
+- **eslint:** Resolve issues with `json` plugin config spread ([088d498a](https://github.com/storm-software/storm-ops/commit/088d498a))
+
 ## 0.35.0 (2024-07-23)
 
 

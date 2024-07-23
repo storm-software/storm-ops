@@ -1,3 +1,15 @@
+## 0.27.0 (2024-07-23)
+
+
+### Features
+
+- **eslint:** Add the `json` and `yml` plugins to preset ([27310d44](https://github.com/storm-software/storm-ops/commit/27310d44))
+
+
+### Bug Fixes
+
+- **eslint:** Resolve issues with `json` plugin config spread ([088d498a](https://github.com/storm-software/storm-ops/commit/088d498a))
+
 ## 0.26.1 (2024-07-23)
 
 
