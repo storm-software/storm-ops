@@ -979,9 +979,6 @@ importers:
 
   packages/prettier:
     dependencies:
-      '@ianvs/prettier-plugin-sort-imports':
-        specifier: 4.2.1
-        version: 4.2.1(prettier@3.3.2)
       prettier:
         specifier: ^3.3.0
         version: 3.3.2
@@ -999,7 +996,7 @@ importers:
         version: 0.14.0(prettier@3.3.2)
       prettier-plugin-tailwindcss:
         specifier: 0.6.5
-        version: 0.6.5(@ianvs/prettier-plugin-sort-imports@4.2.1(prettier@3.3.2))(prettier@3.3.2)
+        version: 0.6.5(@ianvs/prettier-plugin-sort-imports@4.2.1(prettier@3.3.2))(prettier-plugin-organize-imports@4.0.0(prettier@3.3.2)(typescript@5.5.3))(prettier@3.3.2)
     devDependencies:
       '@types/prettier':
         specifier: 3.0.0
@@ -14353,6 +14350,7 @@ snapshots:
       semver: 7.6.2
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   '@inquirer/figures@1.0.3': {}
 
@@ -25535,11 +25533,12 @@ snapshots:
       prettier: 3.3.2
       sh-syntax: 0.4.2
 
-  prettier-plugin-tailwindcss@0.6.5(@ianvs/prettier-plugin-sort-imports@4.2.1(prettier@3.3.2))(prettier@3.3.2):
+  prettier-plugin-tailwindcss@0.6.5(@ianvs/prettier-plugin-sort-imports@4.2.1(prettier@3.3.2))(prettier-plugin-organize-imports@4.0.0(prettier@3.3.2)(typescript@5.5.3))(prettier@3.3.2):
     dependencies:
       prettier: 3.3.2
     optionalDependencies:
       '@ianvs/prettier-plugin-sort-imports': 4.2.1(prettier@3.3.2)
+      prettier-plugin-organize-imports: 4.0.0(prettier@3.3.2)(typescript@5.5.3)
 
   prettier@3.3.2: {}
 

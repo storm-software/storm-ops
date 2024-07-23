@@ -1,3 +1,10 @@
+## 1.128.0 (2024-07-23)
+
+
+### Features
+
+- **prettier:** Export default `config.json` and `tailwindcss.json` from package ([c8711a52](https://github.com/storm-software/storm-ops/commit/c8711a52))
+
 ## 1.127.0 (2024-07-23)
 
 
