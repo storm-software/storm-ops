@@ -4,6 +4,7 @@
   "targetDefaults": {
     "lint-ls": {
       "cache": true,
+      "inputs": ["linting", "typescript", "^production"],
       "outputs": ["{workspaceRoot}/{projectRoot}"],
       "dependsOn": ["^lint-ls"],
       "executor": "nx:run-commands",
@@ -14,7 +15,7 @@
     },
     "format-toml": {
       "cache": true,
-      "inputs": ["config_linting", "{projectRoot}/**/*.toml"],
+      "inputs": ["linting", "{projectRoot}/**/*.toml"],
       "outputs": ["{workspaceRoot}/{projectRoot}/**/*.toml"],
       "dependsOn": ["^format-toml"],
       "executor": "nx:run-commands",
@@ -26,7 +27,9 @@
     "format-readme": {
       "cache": true,
       "inputs": [
-        "config_linting",
+        "linting",
+        "documentation",
+        "typescript",
         "{projectRoot}/{README.md,package.json,Cargo.toml,executors.json,generators.json}"
       ],
       "outputs": ["{workspaceRoot}/{projectRoot}/README.md"],
@@ -39,7 +42,7 @@
     },
     "format-prettier": {
       "cache": true,
-      "inputs": ["config_linting", "typescript", "^production"],
+      "inputs": ["linting", "typescript", "^production"],
       "dependsOn": ["^format-prettier"],
       "options": {
         "command": "pnpm exec prettier \"{projectRoot}/**/*\" --write --ignore-unknown --no-error-on-unmatched-pattern --config=\"packages/prettier/src/config.json\" --ignore-path=\"packages/prettier/src/.prettierignore\" --cache --cache-location=\"tmp/prettier/{projectRoot}\" ",
