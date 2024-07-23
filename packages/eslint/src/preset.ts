@@ -5,12 +5,14 @@ import eslintPluginUnicorn from "eslint-plugin-unicorn";
 // @ts-ignore
 import nxPlugin from "@nx/eslint-plugin";
 import type { Linter } from "eslint";
+import json from "eslint-plugin-json";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import markdown from "eslint-plugin-markdown";
 import prettierConfig from "eslint-plugin-prettier/recommended";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import tsdoc from "eslint-plugin-tsdoc";
+import yml from "eslint-plugin-yml";
 import globals from "globals";
 import jsoncParser from "jsonc-eslint-parser";
 import type { RuleOptions } from "./preset.d";
@@ -73,6 +75,8 @@ export default function stormPreset(
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/ban-ts-comment": 0,
     "@typescript-eslint/no-empty-interface": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/no-unused-vars": [
       "warn",
       { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }
@@ -166,28 +170,14 @@ export default function stormPreset(
     },
 
     // Nx plugin
-    { plugins: { "@nx": nxPlugin } },
     {
+      plugins: { "@nx": nxPlugin },
       languageOptions: {
         parser: tsEslint.parser,
         globals: {
           ...globals.node
         }
       },
-      rules: {
-        "@typescript-eslint/explicit-module-boundary-types": "off",
-        "@typescript-eslint/explicit-function-return-type": "off"
-      }
-    },
-
-    {
-      files: ["*.json", "*.jsonc"],
-      languageOptions: {
-        parser: jsoncParser
-      },
-      rules: {}
-    },
-    {
       files: [CODE_FILE],
       rules: {
         "@nx/enforce-module-boundaries": [
@@ -226,6 +216,27 @@ export default function stormPreset(
         ]
       }
     },
+
+    // Json
+    // https://www.npmjs.com/package/eslint-plugin-json
+    ...json.configs["recommended"],
+    {
+      files: ["*.json", "*.jsonc"],
+      languageOptions: {
+        parser: jsoncParser
+      }
+    },
+    {
+      files: ["**/executors/**/schema.json", "**/generators/**/schema.json"],
+      rules: {
+        "@nx/workspace/valid-schema-description": "error"
+      }
+    },
+
+    // YML
+    // https://www.npmjs.com/package/eslint-plugin-yml
+    ...yml.configs["flat/recommended"],
+    ...yml.configs["flat/prettier"],
 
     // User overrides
     ...(userConfigs as Linter.FlatConfig[])
