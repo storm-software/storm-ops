@@ -11,7 +11,6 @@ jobs:
   contributor_report:
     name: contributor report
     runs-on: ubuntu-latest
-
     steps:
       - name: Get dates for last month
         shell: bash
@@ -29,7 +28,7 @@ jobs:
       - name: Run contributor action
         uses: github/contributors@v1
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           START_DATE: ${{ env.START_DATE }}
           END_DATE: ${{ env.END_DATE }}
           REPOSITORY: storm-software/storm-ops
@@ -40,5 +39,5 @@ jobs:
           title:
             Thank you Storm-Ops contributors (${{ env.START_DATE }}..${{
             env.END_DATE }})
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           content-filepath: ./contributors.md

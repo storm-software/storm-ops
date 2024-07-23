@@ -5,6 +5,11 @@ on:
   push:
   pull_request:
   merge_group:
+    branches:
+      - main
+      - next
+      - beta
+      - experimental
 
 # Don't grant any access by default
 permissions: {}

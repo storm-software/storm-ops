@@ -49,6 +49,10 @@
       "(?:twMerge|twJoin)\\(([^\\);]*)[\\);]"
     ]
   ],
+  "prettier.requireConfig": true,
+  "prettier.bracketSameLine": true,
+  "prettier.ignorePath": "./node_modules/@storm-software/prettier/.prettierignore",
+  "prettier.enableDebugLogs": true,
   "editor.formatOnSave": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "files.associations": {
@@ -132,151 +136,6 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
-  "vsicons.associations.files": [
-    {
-      "icon": "registry",
-      "extensions": ["routes.config.ts"],
-      "filename": true,
-      "format": "svg"
-    },
-    {
-      "icon": "dependencies",
-      "extensions": ["dependencies.config.ts"],
-      "filename": true,
-      "format": "svg"
-    },
-    {
-      "icon": "swagger",
-      "extensions": ["api-spec.json"],
-      "filename": true,
-      "format": "svg"
-    },
-    {
-      "icon": "tailwind",
-      "extensions": ["tailwind.preset.js"],
-      "filename": true,
-      "format": "svg"
-    },
-    {
-      "icon": "jest",
-      "extensions": ["jest.preset.js"],
-      "filename": true,
-      "format": "svg"
-    },
-    {
-      "icon": "config",
-      "extensions": ["environment.ts"],
-      "format": "svg"
-    },
-    {
-      "icon": "config",
-      "extensions": ["environment.ts"],
-      "format": "svg"
-    },
-    {
-      "icon": "dotenv",
-      "extensions": [".env", ".env.local", ".env.production"],
-      "languages": ["dotenv"],
-      "format": "svg"
-    },
-    {
-      "icon": "sentry",
-      "extensions": [
-        ".sentryclirc",
-        "sentry.client.config.js",
-        "sentry.server.config.js",
-        "sentry.properties"
-      ],
-      "format": "svg"
-    }
-  ],
-  "vsicons.associations.folders": [
-    {
-      "icon": "graphql",
-      "extensions": ["graphql", "gql"],
-      "format": "svg"
-    },
-    {
-      "icon": "www",
-      "extensions": ["shell"],
-      "format": "svg"
-    },
-    {
-      "icon": "config",
-      "extensions": ["environment"],
-      "format": "svg"
-    },
-    {
-      "icon": "tools",
-      "extensions": ["tools", "executors", "generators"],
-      "format": "svg"
-    },
-    {
-      "icon": "helper",
-      "extensions": ["utilities"],
-      "format": "svg"
-    },
-    {
-      "icon": "typescript",
-      "extensions": ["constants"],
-      "format": "svg"
-    },
-    {
-      "icon": "typings2",
-      "extensions": ["enums"],
-      "format": "svg"
-    },
-    {
-      "icon": "typings",
-      "extensions": ["types"],
-      "format": "svg"
-    },
-    {
-      "icon": "db",
-      "extensions": ["state"],
-      "format": "svg"
-    },
-    {
-      "icon": "api",
-      "extensions": [".openapi-generator", "openapi", "asyncapi"],
-      "format": "svg"
-    },
-    {
-      "icon": "route",
-      "extensions": ["inversion"],
-      "format": "svg"
-    },
-    {
-      "icon": "route",
-      "extensions": ["inversion"],
-      "format": "svg"
-    },
-    {
-      "icon": "include",
-      "extensions": ["external"],
-      "format": "svg"
-    },
-    {
-      "icon": "library",
-      "extensions": ["shared"],
-      "format": "svg"
-    },
-    {
-      "icon": "server",
-      "extensions": ["dotnet"],
-      "format": "svg"
-    },
-    {
-      "icon": "style",
-      "extensions": ["design-system"],
-      "format": "svg"
-    },
-    {
-      "icon": "theme",
-      "extensions": ["tokens"],
-      "format": "svg"
-    }
-  ],
   "commitizen.capitalizeWindowsDriveLetter": true,
   "commitizen.autoSync": false,
   "commitizen.showOutputChannel": "always",

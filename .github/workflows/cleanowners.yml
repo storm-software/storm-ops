@@ -21,4 +21,3 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           ORGANIZATION: storm-software
-          EXEMPT_REPOS: "storm-software/stormstack"

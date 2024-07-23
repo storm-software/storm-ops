@@ -24,8 +24,9 @@ updates:
       - dependency-name: "{@storm-software/*,@storm-stack/*,@cyclone-ui/*,@acidic/*,@nx/*,nx}"
     open-pull-requests-limit: 1
     labels:
-      - "dependencies"
-      - "dependabot"
+      - dependencies
+      - dependabot
+    target-branch: dependabot
 
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
@@ -42,8 +43,9 @@ updates:
       interval: "monthly"
     open-pull-requests-limit: 1
     labels:
-      - "dependencies"
-      - "dependabot"
+      - dependencies
+      - dependabot
+    target-branch: dependabot
 
   # Maintain dependencies for bundler
   - package-ecosystem: "bundler"
@@ -60,5 +62,6 @@ updates:
       interval: "monthly"
     open-pull-requests-limit: 1
     labels:
-      - "dependencies"
-      - "dependabot"
+      - dependencies
+      - dependabot
+    target-branch: dependabot

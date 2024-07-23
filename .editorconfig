@@ -69,6 +69,11 @@ indent_style = tab
 [COMMIT_EDITMSG]
 max_line_length = 0
 
+# Commit Messages
+[CODEOWNERS]
+max_line_length = 0
+indent_size = 0
+
 ##########################################
 # Default .NET Code Style Severities
 # https://docs.microsoft.com/dotnet/fundamentals/code-analysis/configuration-options#scope
