@@ -14,7 +14,7 @@ on:
         description: The github username of the Storm bot
         required: false
         type: string
-        default: "Stormie-Bot"
+        default: Stormie-Bot
       packageManager:
         description: Package manager
         type: string
