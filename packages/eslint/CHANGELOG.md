@@ -1,3 +1,10 @@
+## 0.28.0 (2024-07-23)
+
+
+### Features
+
+- **eslint:** Added dependency-checks rule to preset ([bbad6d50](https://github.com/storm-software/storm-ops/commit/bbad6d50))
+
 ## 0.27.0 (2024-07-23)
 
 
