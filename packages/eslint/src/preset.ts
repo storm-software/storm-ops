@@ -219,7 +219,7 @@ export default function stormPreset(
 
     // Json
     // https://www.npmjs.com/package/eslint-plugin-json
-    ...json.configs["recommended"],
+    json.configs["recommended"],
     {
       files: ["*.json", "*.jsonc"],
       languageOptions: {
