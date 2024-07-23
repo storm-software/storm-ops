@@ -178,7 +178,7 @@ const config: Linter.RulesRecord = {
 
   // Validate closing bracket location in JSX
   // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md
-  "react/jsx-closing-bracket-location": ["error", "line-aligned"],
+  "react/jsx-closing-bracket-location": ["error", "after-props"],
 
   // Validate closing tag location in JSX
   // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-closing-tag-location.md
@@ -191,9 +191,9 @@ const config: Linter.RulesRecord = {
   // Enforce event handler naming conventions in JSX
   // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md
   "react/jsx-handler-names": [
-    "warn",
+    "error",
     {
-      eventHandlerPrefix: "handle",
+      eventHandlerPrefix: "on",
       eventHandlerPropPrefix: "on"
     }
   ],

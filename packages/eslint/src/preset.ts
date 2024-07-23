@@ -66,6 +66,8 @@ export default function stormPreset(
     "unicorn/no-await-expression-member": 0,
     "unicorn/no-useless-undefined": 0,
     "unicorn/no-array-push-push": 0,
+    "unicorn/no-array-reduce": 0,
+    "unicorn/no-useless-switch-case": 0,
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/no-var-requires": 0,
