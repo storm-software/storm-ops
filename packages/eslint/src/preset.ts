@@ -196,6 +196,7 @@ export default function stormPreset(
                 ]
               }
         ],
+
         "no-restricted-imports": ["error", "create-nx-workspace"],
         "@typescript-eslint/no-restricted-imports": [
           "error",
@@ -230,6 +231,24 @@ export default function stormPreset(
       files: ["**/executors/**/schema.json", "**/generators/**/schema.json"],
       rules: {
         "@nx/workspace/valid-schema-description": "error"
+      }
+    },
+    {
+      files: ["**/package.json"],
+      rules: {
+        "@nx/dependency-checks": [
+          "error",
+          {
+            buildTargets: ["build"],
+            ignoredDependencies: ["typescript"],
+            ignoredFiles: [],
+            checkMissingDependencies: true,
+            checkObsoleteDependencies: true,
+            checkVersionMismatches: false,
+            includeTransitiveDependencies: true,
+            useLocalPathsForWorkspaceDependencies: true
+          }
+        ]
       }
     },
 
