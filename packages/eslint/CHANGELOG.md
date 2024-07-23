@@ -1,3 +1,10 @@
+## 0.26.1 (2024-07-23)
+
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with handler props naming and unicorn defaults ([31333a6a](https://github.com/storm-software/storm-ops/commit/31333a6a))
+
 ## 0.26.0 (2024-07-23)
 
 
