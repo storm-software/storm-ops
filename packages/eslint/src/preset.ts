@@ -19,8 +19,9 @@ import reactHooksRules from "./rules/react-hooks";
 import tsdoc from "eslint-plugin-tsdoc";
 import tsdocRules from "./rules/ts-docs";
 import prettierConfig from "eslint-plugin-prettier/recommended";
-import importEslint from "eslint-plugin-import";
+import importEslint from "./utils/create-flat-import-plugin";
 import importRules from "./rules/import";
+import { CODE_BLOCK, CODE_FILE, TS_FILE } from "./utils/constants";
 
 export type PresetModuleBoundaryDepConstraints = {
   sourceTag: string;
@@ -115,7 +116,7 @@ export default function stormPreset(
     // https://www.npmjs.com/package/eslint-plugin-markdown
     options.markdown !== false && { plugins: { markdown } },
     options.markdown !== false && {
-      files: ["*.md"],
+      files: [CODE_BLOCK],
       processor: "markdown/markdown"
     },
     options.markdown !== false && {
@@ -139,7 +140,7 @@ export default function stormPreset(
       plugins: { react, "react-hooks": reactHooks, "jsx-a11y": jsxA11y }
     },
     options.react !== false && {
-      files: ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      files: [CODE_FILE],
       rules: (<RuleOptions>{
         ...reactRules,
         ...reactHooksRules,
@@ -152,20 +153,16 @@ export default function stormPreset(
     // https://www.npmjs.com/package/eslint-plugin-import
     { plugins: { import: importEslint } },
     {
-      files: ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      rules: {
-        ...importRules
-      }
+      files: [CODE_FILE],
+      rules: importRules
     },
 
     // TSDoc
     // https://www.npmjs.com/package/eslint-plugin-tsdoc
     { plugins: { tsdoc } },
     {
-      files: ["*.ts", "*.tsx"],
-      rules: {
-        ...tsdocRules
-      }
+      files: [TS_FILE],
+      rules: tsdocRules
     },
 
     // Nx plugin
@@ -191,7 +188,7 @@ export default function stormPreset(
       rules: {}
     },
     {
-      files: ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      files: [CODE_FILE],
       rules: {
         "@nx/enforce-module-boundaries": [
           "error",
@@ -199,6 +196,7 @@ export default function stormPreset(
             ? options.moduleBoundaries
             : {
                 enforceBuildableLibDependency: true,
+                checkDynamicDependenciesExceptions: [".*"],
                 allow: [],
                 depConstraints: [
                   {
@@ -207,6 +205,24 @@ export default function stormPreset(
                   }
                 ]
               }
+        ],
+        "no-restricted-imports": ["error", "create-nx-workspace"],
+        "@typescript-eslint/no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": ["nx/src/plugins/js*"],
+                "message":
+                  "Imports from 'nx/src/plugins/js' are not allowed. Use '@nx/js' instead"
+              },
+              {
+                "group": ["**/native-bindings", "**/native-bindings.js", ""],
+                "message":
+                  "Direct imports from native-bindings.js are not allowed. Import from index.js instead."
+              }
+            ]
+          }
         ]
       }
     },
