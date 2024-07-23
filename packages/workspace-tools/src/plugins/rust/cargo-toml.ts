@@ -1,8 +1,3 @@
-import { dirname } from "node:path";
-import {
-  DependencyType,
-  type ProjectGraphExternalNode
-} from "nx/src/config/project-graph";
 import {
   joinPathFragments,
   readJsonFile,
@@ -12,14 +7,19 @@ import {
   type ProjectConfiguration,
   type RawProjectGraphDependency
 } from "@nx/devkit";
-import { cargoMetadata, isExternal } from "../../utils/cargo";
-import type { Package } from "../../utils/toml";
 import { existsSync } from "node:fs";
+import { dirname } from "node:path";
+import {
+  DependencyType,
+  type ProjectGraphExternalNode
+} from "nx/src/config/project-graph";
+import { cargoMetadata, isExternal } from "../../utils/cargo";
 import {
   ProjectTagConstants,
   addProjectTag,
   setDefaultProjectTags
 } from "../../utils/project-tags";
+import type { Package } from "../../utils/toml";
 
 export const name = "storm-software/rust/cargo-toml";
 
@@ -67,12 +67,12 @@ export const createNodes: CreateNodes = [
         project.targets = {
           "lint-ls": {
             cache: true,
-            inputs: ["config_linting", "rust", "^production"],
+            inputs: ["linting", "rust", "^production"],
             dependsOn: ["^lint-ls"]
           },
           lint: {
             cache: true,
-            inputs: ["config_linting", "rust", "^production"],
+            inputs: ["linting", "rust", "^production"],
             dependsOn: ["lint-ls", "^lint"],
             executor: "@monodon/rust:lint",
             options: {
@@ -81,15 +81,17 @@ export const createNodes: CreateNodes = [
           },
           "format-readme": {
             cache: true,
+            inputs: ["linting", "documentation", "rust", "^production"],
             dependsOn: ["^format-readme"]
           },
           "format-toml": {
             cache: true,
+            inputs: ["linting", "rust", "^production"],
             dependsOn: ["^format-toml"]
           },
           format: {
             cache: true,
-            inputs: ["config_linting", "rust", "^production"],
+            inputs: ["linting", "documentation", "rust", "^production"],
             dependsOn: ["format-readme", "format-toml", "^format"],
             executor: "nx:run-commands",
             options: {
@@ -131,7 +133,7 @@ export const createNodes: CreateNodes = [
           },
           test: {
             cache: true,
-            inputs: ["config_testing", "source_testing", "rust", "^production"],
+            inputs: ["testing", "rust", "^production"],
             dependsOn: ["build", "^test"],
             executor: "@monodon/rust:test",
             outputs: ["{options.target-dir}"],
@@ -149,8 +151,14 @@ export const createNodes: CreateNodes = [
         const isPrivate = cargoPackage.publish?.length === 0;
         if (!isPrivate) {
           project.targets["nx-release-publish"] = {
-            cache: false,
-            inputs: ["rust", "^production"],
+            cache: true,
+            inputs: [
+              "linting",
+              "testing",
+              "documentation",
+              "rust",
+              "^production"
+            ],
             executor: "@storm-software/workspace-tools:cargo-publish",
             options: {
               packageRoot: root
