@@ -1,3 +1,10 @@
+## 0.25.0 (2024-07-23)
+
+
+### Features
+
+- **eslint:** Remove the `import` plugin from the preset ([6c8551ae](https://github.com/storm-software/storm-ops/commit/6c8551ae))
+
 ## 0.24.0 (2024-07-23)
 
 
