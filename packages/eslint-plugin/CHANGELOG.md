@@ -1,3 +1,10 @@
+## 0.26.0 (2024-07-23)
+
+
+### Features
+
+- **eslint:** Added `import` and `prettier` plugins to preset ([a8084123](https://github.com/storm-software/storm-ops/commit/a8084123))
+
 ## 0.25.0 (2024-07-22)
 
 
