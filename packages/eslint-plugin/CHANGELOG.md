@@ -1,3 +1,10 @@
+## 0.27.2 (2024-07-23)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Removed deprecated input names from configurations ([e713c484](https://github.com/storm-software/storm-ops/commit/e713c484))
+
 ## 0.27.1 (2024-07-23)
 
 

@@ -1,3 +1,12 @@
+## 1.128.2 (2024-07-23)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Simplified the `namedImports` in the base Nx configuration ([2982defb](https://github.com/storm-software/storm-ops/commit/2982defb))
+
+- **workspace-tools:** Add the new `namedImports` to workspace plugins ([357b9b73](https://github.com/storm-software/storm-ops/commit/357b9b73))
+
 ## 1.128.1 (2024-07-23)
 
 
