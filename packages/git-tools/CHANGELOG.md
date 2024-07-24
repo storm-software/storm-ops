@@ -1,3 +1,10 @@
+## 2.34.0 (2024-07-24)
+
+
+### Features
+
+- **workspace-tools:** Added the `size-limit` executor ([6ce22bab](https://github.com/storm-software/storm-ops/commit/6ce22bab))
+
 ## 2.33.0 (2024-07-24)
 
 
