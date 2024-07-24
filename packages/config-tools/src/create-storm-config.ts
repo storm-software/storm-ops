@@ -1,7 +1,7 @@
-import merge, { ArrayMergeOptions } from "deepmerge";
-import type { ZodTypeAny } from "zod";
 import type { StormConfig } from "@storm-software/config";
 import { StormConfigSchema } from "@storm-software/config/schema";
+import merge, { ArrayMergeOptions } from "deepmerge";
+import type { ZodTypeAny } from "zod";
 import { getConfigFile } from "./config-file/get-config-file";
 import { getConfigEnv, getExtensionEnv } from "./env/get-env";
 import { setConfigEnv } from "./env/set-env";
@@ -152,7 +152,7 @@ export const loadStormConfig = async (
   );
   setConfigEnv(config);
 
-  writeInfo(`⚙️ Using Storm configuration: \n${formatLogMessage(config)}`, {
+  writeInfo(`⚙️  Using Storm configuration: \n${formatLogMessage(config)}`, {
     logLevel: "all"
   });
 

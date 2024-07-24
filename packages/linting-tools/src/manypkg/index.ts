@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import pLimit from "p-limit";
-import spawn from "spawndamnit";
 import { checks } from "@manypkg/cli/src/checks";
 import type { Options } from "@manypkg/cli/src/checks/utils";
 import { ExitError } from "@manypkg/cli/src/errors";
@@ -13,6 +11,8 @@ import {
   type Package,
   type Packages
 } from "@manypkg/get-packages";
+import pLimit from "p-limit";
+import spawn from "spawndamnit";
 
 type RootPackage = Package & {
   packageJson: {
@@ -107,11 +107,16 @@ async function execCmd(args: string[]) {
   throw new ExitError(highestExitCode);
 }
 
-export async function runManypkg(
-  manypkgType = "fix",
-  manypkgArgs: string[],
-  manypkgFix = true
-) {
+export const MANY_PKG_TYPE_OPTIONS = [
+  "fix",
+  "check",
+  "exec",
+  "run",
+  "upgrade",
+  "npm-tag"
+];
+
+export async function runManypkg(manypkgType = "fix", manypkgArgs: string[]) {
   if (manypkgType === "exec") {
     return execCmd(manypkgArgs.slice(0));
   }
@@ -154,11 +159,11 @@ export async function runManypkg(
   const { hasErrored, requiresInstall } = runChecks(
     packagesByName,
     rootPackage,
-    manypkgFix,
+    manypkgType === "fix",
     options
   );
 
-  if (manypkgFix) {
+  if (manypkgType === "fix") {
     await Promise.all(
       [...packagesByName].map(([_, workspace]) => {
         writePackage(workspace);

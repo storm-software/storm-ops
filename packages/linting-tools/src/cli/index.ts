@@ -12,7 +12,7 @@ import { Command, Option } from "commander";
 import { lint } from "cspell";
 import { parseCircular, parseDependencyTree, prettyCircular } from "dpdm";
 import { runAlex } from "../alex";
-import { runManypkg } from "../manypkg";
+import { MANY_PKG_TYPE_OPTIONS, runManypkg } from "../manypkg";
 
 let _config: Partial<StormConfig> = {};
 
@@ -75,24 +75,31 @@ export function createProgram(config: StormConfig) {
     const manypkgType = new Option(
       "--manypkg-type <type>",
       "The manypkg command to run"
-    ).default("fix");
+    )
+      .choices(MANY_PKG_TYPE_OPTIONS)
+      .argParser(val =>
+        !val || !MANY_PKG_TYPE_OPTIONS.includes(val.trim().toLowerCase())
+          ? "fix"
+          : val.trim().toLowerCase()
+      )
+      .default("fix");
 
     const manypkgArgs = new Option(
       "--manypkg-args <args>",
       "The args provided to the manypkg command"
-    ).default([]);
-
-    const manypkgFix = new Option(
-      "--manypkg-fix <args>",
-      "The args provided to the manypkg command"
-    ).default(true);
+    )
+      .argParser(val =>
+        !val || !val.replaceAll("", ",")
+          ? []
+          : val.split(",").map(v => v.trim().toLowerCase())
+      )
+      .default([]);
 
     program
       .command("manypkg")
       .description("Run package lint with Manypkg for the workspace.")
       .addOption(manypkgType)
       .addOption(manypkgArgs)
-      .addOption(manypkgFix)
       .action(manypkgAction);
 
     const skipCspell = new Option(
@@ -133,7 +140,6 @@ export function createProgram(config: StormConfig) {
       .addOption(alexIgnore)
       .addOption(manypkgType)
       .addOption(manypkgArgs)
-      .addOption(manypkgFix)
       .action(allAction);
 
     return program;
@@ -156,8 +162,7 @@ async function allAction({
   alexConfig,
   alexIgnore,
   manypkgType,
-  manypkgArgs,
-  manypkgFix
+  manypkgArgs
 }: {
   skipCspell: boolean;
   skipAlex: boolean;
@@ -169,7 +174,6 @@ async function allAction({
   alexIgnore: string;
   manypkgType: string;
   manypkgArgs: string[];
-  manypkgFix: boolean;
 }) {
   try {
     writeInfo("⚡ Linting the Storm Workspace", _config);
@@ -192,7 +196,7 @@ async function allAction({
     }
 
     if (!skipManypkg) {
-      promises.push(manypkgAction({ manypkgType, manypkgArgs, manypkgFix }));
+      promises.push(manypkgAction({ manypkgType, manypkgArgs }));
     }
 
     await Promise.all(promises);
@@ -325,17 +329,15 @@ async function circularDepsAction() {
 
 async function manypkgAction({
   manypkgType = "fix",
-  manypkgArgs = [],
-  manypkgFix = true
+  manypkgArgs = []
 }: {
   manypkgType: string;
   manypkgArgs: string[];
-  manypkgFix: boolean;
 }) {
   try {
     writeInfo("⚡ Linting the workspace's packages with Manypkg", _config);
 
-    await runManypkg(manypkgType, manypkgArgs, manypkgFix);
+    await runManypkg(manypkgType, manypkgArgs);
 
     writeSuccess("Manypkg linting is complete ✅", _config);
   } catch (e) {
