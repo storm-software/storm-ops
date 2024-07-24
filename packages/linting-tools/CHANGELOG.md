@@ -1,3 +1,10 @@
+## 1.60.1 (2024-07-24)
+
+
+### Bug Fixes
+
+- **linting-tools:** Resolved issue with CLI args passing ([d5812a21](https://github.com/storm-software/storm-ops/commit/d5812a21))
+
 ## 1.60.0 (2024-07-17)
 
 ### Features
