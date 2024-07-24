@@ -1,11 +1,3 @@
-import {
-  releaseChangelog,
-  releasePublish
-} from "nx/src/command-line/release/index.js";
-import type { ReleaseVersion } from "nx/src/command-line/release/utils/shared.js";
-import { readNxJson } from "nx/src/config/nx-json.js";
-import { createProjectFileMapUsingProjectGraph } from "nx/src/project-graph/file-map-utils.js";
-import { createProjectGraphAsync } from "nx/src/project-graph/project-graph.js";
 import type { StormConfig } from "@storm-software/config";
 import {
   writeError,
@@ -14,6 +6,14 @@ import {
   writeSuccess,
   writeWarning
 } from "@storm-software/config-tools";
+import {
+  releaseChangelog,
+  releasePublish
+} from "nx/src/command-line/release/index.js";
+import type { ReleaseVersion } from "nx/src/command-line/release/utils/shared.js";
+import { readNxJson } from "nx/src/config/nx-json.js";
+import { createProjectFileMapUsingProjectGraph } from "nx/src/project-graph/file-map-utils.js";
+import { createProjectGraphAsync } from "nx/src/project-graph/project-graph.js";
 import { releaseVersion } from "./nx-version";
 import { createNxReleaseConfig } from "./release-config";
 
@@ -106,7 +106,8 @@ export const runRelease = async (
       to: options.head ?? process.env.NX_HEAD,
       from: options.base ?? process.env.NX_BASE,
       gitCommit: true,
-      gitCommitMessage: "chore(release): Publish monorepo release updates"
+      gitCommitMessage: "chore(release): Publish monorepo release updates",
+      createRelease: "github"
     });
 
     writeInfo("Tagging commit with git", config);

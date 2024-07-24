@@ -155,6 +155,13 @@ export const createNodes = [
       };
     }
 
+    targets["size-limit"] = {
+      cache: true,
+      inputs: ["typescript", "^production"],
+      dependsOn: ["build", "^size-limit"],
+      options: {}
+    };
+
     // Apply nx-release-publish target for non-private projects
     const isPrivate = packageJson.private ?? false;
     if (!isPrivate) {
@@ -164,9 +171,10 @@ export const createNodes = [
           "linting",
           "testing",
           "documentation",
-          "typescript",
+          "default",
           "^production"
         ],
+        dependsOn: ["build", "size-limit", "^nx-release-publish"],
         executor: "@storm-software/workspace-tools:npm-publish",
         options: {}
       };
@@ -187,7 +195,13 @@ export const createNodes = [
         targets["clean-package"] = {
           cache: true,
           dependsOn: ["build"],
-          inputs: ["typescript", "^production"],
+          inputs: [
+            "linting",
+            "testing",
+            "documentation",
+            "default",
+            "^production"
+          ],
           outputs: ["{workspaceRoot}/dist/{projectRoot}"],
           executor: "@storm-software/workspace-tools:clean-package",
           options: {
@@ -196,7 +210,8 @@ export const createNodes = [
           }
         };
 
-        targets["nx-release-publish"].dependsOn = ["clean-package"];
+        targets["nx-release-publish"].dependsOn!.push("clean-package");
+        targets["size-limit"].dependsOn!.push("clean-package");
       }
     }
 

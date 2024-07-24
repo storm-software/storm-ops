@@ -50,6 +50,11 @@
       "implementation": "./src/executors/clean-package/executor",
       "schema": "./src/executors/clean-package/schema.json",
       "description": "Remove configuration files, fields, and scripts for development before publishing package"
+    },
+    "size-limit": {
+      "implementation": "./src/executors/size-limit/executor",
+      "schema": "./src/executors/size-limit/schema.json",
+      "description": "Run a size-limit performance test on the project"
     }
   }
 }

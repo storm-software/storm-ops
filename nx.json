@@ -176,10 +176,6 @@
       }
     }
   },
-  "parallel": 3,
-  "defaultBase": "main",
-  "useDaemonProcess": true,
-  "useInferencePlugins": true,
   "plugins": [
     "./dist/plugins/rust/index.js",
     "./dist/plugins/typescript/index.js",
@@ -191,5 +187,6 @@
       }
     }
   ],
+  "parallel": 1,
   "nxCloudAccessToken": "NmRkNjYxNzgtMTI4ZC00YmVkLWFkM2YtYjhjNTdmNzJmYTcyfHJlYWQ="
 }
