@@ -1,6 +1,3 @@
-import { Command, Option } from "commander";
-import { lint } from "cspell";
-import { parseCircular, parseDependencyTree, prettyCircular } from "dpdm";
 import type { StormConfig } from "@storm-software/config";
 import {
   findWorkspaceRootSafe,
@@ -11,6 +8,9 @@ import {
   writeSuccess,
   writeTrace
 } from "@storm-software/config-tools";
+import { Command, Option } from "commander";
+import { lint } from "cspell";
+import { parseCircular, parseDependencyTree, prettyCircular } from "dpdm";
 import { runAlex } from "../alex";
 import { runManypkg } from "../manypkg";
 
@@ -176,11 +176,11 @@ async function allAction({
 
     const promises = [] as Promise<any>[];
     if (!skipCspell) {
-      promises.push(cspellAction(cspellConfig));
+      promises.push(cspellAction({ cspellConfig }));
     }
 
     if (!skipAlex) {
-      promises.push(alexAction(alexConfig, alexIgnore));
+      promises.push(alexAction({ alexConfig, alexIgnore }));
     }
 
     if (!skipDepsVersion) {
@@ -192,7 +192,7 @@ async function allAction({
     }
 
     if (!skipManypkg) {
-      promises.push(manypkgAction(manypkgType, manypkgArgs, manypkgFix));
+      promises.push(manypkgAction({ manypkgType, manypkgArgs, manypkgFix }));
     }
 
     await Promise.all(promises);
@@ -206,7 +206,11 @@ async function allAction({
   }
 }
 
-async function cspellAction(cspellConfig: string) {
+async function cspellAction({
+  cspellConfig = "@storm-software/linting-tools/cspell/config.js"
+}: {
+  cspellConfig: string;
+}) {
   try {
     console.log("⚡Linting the workspace spelling");
     const result = await lint(["**/*.{txt,js,jsx,ts,tsx,md,mdx}"], {
@@ -236,7 +240,13 @@ async function cspellAction(cspellConfig: string) {
   }
 }
 
-async function alexAction(alexConfig: string, alexIgnore: string) {
+async function alexAction({
+  alexConfig = "@storm-software/linting-tools/alex/.alexrc",
+  alexIgnore = "@storm-software/linting-tools/alex/.alexignore"
+}: {
+  alexConfig: string;
+  alexIgnore: string;
+}) {
   try {
     writeInfo("⚡ Linting the workspace language with alexjs.com", _config);
 
@@ -313,11 +323,15 @@ async function circularDepsAction() {
   }
 }
 
-async function manypkgAction(
+async function manypkgAction({
   manypkgType = "fix",
-  manypkgArgs: string[],
-  manypkgFix: boolean
-) {
+  manypkgArgs = [],
+  manypkgFix = true
+}: {
+  manypkgType: string;
+  manypkgArgs: string[];
+  manypkgFix: boolean;
+}) {
   try {
     writeInfo("⚡ Linting the workspace's packages with Manypkg", _config);
 
