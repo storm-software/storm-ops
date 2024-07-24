@@ -1,3 +1,10 @@
+## 2.33.0 (2024-07-24)
+
+
+### Features
+
+- **git-tools:** Enhance logging for release version generator ([7f76b908](https://github.com/storm-software/storm-ops/commit/7f76b908))
+
 ## 2.32.1 (2024-07-23)
 
 
