@@ -1,3 +1,10 @@
+import type { StormConfig } from "@storm-software/config";
+import {
+  findWorkspaceRoot,
+  writeDebug,
+  writeError,
+  writeInfo
+} from "@storm-software/config-tools";
 import { readFileSync } from "node:fs";
 import { relative } from "node:path";
 import { parseGeneratorString } from "nx/src/command-line/generate/generate.js";
@@ -38,13 +45,6 @@ import {
   readProjectsConfigurationFromProjectGraph
 } from "nx/src/project-graph/project-graph.js";
 import { combineOptionsForGenerator } from "nx/src/utils/params.js";
-import type { StormConfig } from "@storm-software/config";
-import {
-  findWorkspaceRoot,
-  writeDebug,
-  writeError,
-  writeInfo
-} from "@storm-software/config-tools";
 
 interface GeneratorData {
   collectionName: string;
@@ -464,10 +464,10 @@ async function runVersionOnProjects(
     args.verbose
   );
 
-  writeDebug(
-    `Generator options: ${JSON.stringify(combinedOpts, null, 2)}`,
-    config
-  );
+  // writeDebug(
+  //   `Generator options: ${JSON.stringify(combinedOpts, null, 2)}`,
+  //   config
+  // );
 
   const releaseVersionGenerator: any = generatorData.implementationFactory();
 
@@ -485,6 +485,11 @@ async function runVersionOnProjects(
 
   // Merge the extra version data into the existing
   appendVersionData(versionData, versionResult.data);
+
+  writeDebug(
+    `Updated version data: ${JSON.stringify(versionData, null, 2)}`,
+    config
+  );
 
   return versionResult.callback;
 }

@@ -119,14 +119,6 @@ jobs:
           packageManagerVersion: ${{ inputs.packageManagerVersion }}
           stormBot: ${{ inputs.stormBot }}
 
-      - name: Configure git
-        run: |
-          git config user.name "${{ inputs.stormBot }}"
-          git config user.email "${{ inputs.stormBot }}@users.noreply.github.com"
-          git config lfs.allowincompletepush true
-          npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
-        shell: bash
-
       - name: Get appropriate base and head commits for `nx affected` commands
         uses: nrwl/nx-set-shas@v4
         with:
