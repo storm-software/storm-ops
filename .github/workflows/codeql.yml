@@ -58,7 +58,7 @@ jobs:
         uses: storm-software/action-setup@main
         with:
           packageManager: pnpm
-          packageManagerVersion: 9.4.0
+          packageManagerVersion: 9.6.0
           stormBot: Stormie-Bot
           stormBotGitHubToken: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
