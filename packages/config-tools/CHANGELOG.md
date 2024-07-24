@@ -1,3 +1,10 @@
+## 1.60.0 (2024-07-24)
+
+
+### Features
+
+- **linting-tools:** Added choices and parsers to `manypkg` linter CLI ([9a545641](https://github.com/storm-software/storm-ops/commit/9a545641))
+
 ## 1.59.0 (2024-07-19)
 
 
