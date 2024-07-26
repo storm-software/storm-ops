@@ -1,3 +1,10 @@
+## 0.29.0 (2024-07-26)
+
+
+### Features
+
+- **eslint:** Update the `tsdocs/syntax` to warn instead of error ([5da2f059](https://github.com/storm-software/storm-ops/commit/5da2f059))
+
 ## 0.28.1 (2024-07-26)
 
 
