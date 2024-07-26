@@ -1,3 +1,10 @@
+## 0.28.1 (2024-07-26)
+
+
+### Bug Fixes
+
+- **storm-ops:** Resolved issue with missing token in CI action ([4db79d8e](https://github.com/storm-software/storm-ops/commit/4db79d8e))
+
 ## 0.28.0 (2024-07-23)
 
 
