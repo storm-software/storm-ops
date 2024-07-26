@@ -6,7 +6,7 @@ const config: Linter.RulesRecord = {
    *
    * 🚫 Not fixable - https://github.com/microsoft/tsdoc/tree/master/eslint-plugin
    */
-  "tsdoc/syntax": "error"
+  "tsdoc/syntax": "warn"
 };
 
 export default config;
