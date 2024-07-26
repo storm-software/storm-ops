@@ -12,6 +12,7 @@ on:
         required: false
       workingDirectory:
         description: "The working directory of your node package"
+        type: string
         required: false
         default: ./
       stormBot:
@@ -30,18 +31,23 @@ on:
         required: false
         default: 9.6.0
       githubToken:
+        description: GitHub token
         type: string
         required: true
       npmToken:
+        description: NPM token
         type: string
         required: true
       cargoToken:
+        description: Cargo token
         type: string
         required: true
       slackToken:
+        description: Slack token
         type: string
         required: true
       discordWebhook:
+        description: Discord webhook
         type: string
         required: true
 
