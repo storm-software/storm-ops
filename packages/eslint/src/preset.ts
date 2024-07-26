@@ -214,8 +214,7 @@ export default function stormPreset(
             ]
           }
         ],
-        "unicorn/prefer-logical-operator-over-ternary": 0,
-        "@typescript-eslint/no-unused-vars": 0
+        "unicorn/prefer-logical-operator-over-ternary": "warn"
       }
     },
 
