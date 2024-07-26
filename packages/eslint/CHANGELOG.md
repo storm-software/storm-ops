@@ -1,3 +1,12 @@
+## 0.30.0 (2024-07-26)
+
+
+### Features
+
+- **eslint:** Remove the `unicorn/prefer-logical-operator-over-ternary` rule from linting ([84b84b73](https://github.com/storm-software/storm-ops/commit/84b84b73))
+
+- **eslint:** Update the `unicorn/prefer-logical-operator-over-ternary` rule to warn ([31de2fe9](https://github.com/storm-software/storm-ops/commit/31de2fe9))
+
 ## 0.29.0 (2024-07-26)
 
 
