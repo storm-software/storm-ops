@@ -1,3 +1,10 @@
+## 0.23.2 (2024-07-28)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolve issues checking dependency node types ([15517428](https://github.com/storm-software/storm-ops/commit/15517428))
+
 ## 0.23.1 (2024-07-28)
 
 
