@@ -181,7 +181,7 @@ export async function getUnbuildBuildOptions(
     {
       builder: "mkdist",
       input: "./src/",
-      outDir: "./"
+      outDir: relative(options.projectRoot, options.outputPath)
     }
   );
 

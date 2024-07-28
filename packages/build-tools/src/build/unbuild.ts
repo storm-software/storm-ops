@@ -22,7 +22,7 @@ import {
 } from "@storm-software/config-tools";
 import { removeSync } from "fs-extra";
 import { globSync } from "glob";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { writeFile } from "node:fs/promises";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import {
@@ -376,7 +376,16 @@ ${unbuildBuildOptions
       })
     );
 
-    if (enhancedOptions.generatePackageJson !== false) {
+    if (
+      enhancedOptions.generatePackageJson !== false &&
+      existsSync(
+        joinPathFragments(
+          workspaceRoot,
+          enhancedOptions.outputPath,
+          "package.json"
+        )
+      )
+    ) {
       writeDebug("✍️   Writing package.json file", config);
       const outputPackageJson = readJsonFile(
         joinPathFragments(
