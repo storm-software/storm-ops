@@ -1,3 +1,10 @@
+## 1.129.2 (2024-07-28)
+
+
+### Bug Fixes
+
+- **build-tools:** Split out the code to format the `package.json` file ([a47b98d5](https://github.com/storm-software/storm-ops/commit/a47b98d5))
+
 ## 1.129.1 (2024-07-26)
 
 
