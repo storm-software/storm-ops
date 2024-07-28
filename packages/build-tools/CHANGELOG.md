@@ -1,3 +1,10 @@
+## 0.25.0 (2024-07-28)
+
+
+### Features
+
+- **build-tools:** Calculate the tsconfig paths during unbuild process ([469485ff](https://github.com/storm-software/storm-ops/commit/469485ff))
+
 ## 0.24.1 (2024-07-28)
 
 
