@@ -19,7 +19,7 @@ import {
 import merge from "deepmerge";
 import { LogLevel, TsconfigRaw } from "esbuild";
 import { glob } from "glob";
-import { dirname, extname, relative } from "node:path";
+import { dirname, extname, join, relative } from "node:path";
 import { pathToFileURL } from "node:url";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import type { PackageJson } from "nx/src/utils/package-json.js";
@@ -316,15 +316,17 @@ async function getNormalizedTsConfig(
   ) as string[];
 
   const basePath = correctPaths(workspaceRoot);
-  const tsLibsPath = joinPathFragments(
-    basePath,
-    `node_modules/typescript/**/${
-      lib.length > 1
-        ? `{${lib.map(file => `lib.${file.toLowerCase()}.d.ts`).join(",")}}`
-        : lib.length === 1 && lib[0]
-          ? `lib.${lib[0].toLowerCase()}.d.ts`
-          : "*.d.ts"
-    }`
+  const tsLibsPath = correctPaths(
+    join(
+      basePath,
+      `node_modules/typescript/**/${
+        lib.length > 1
+          ? `{${lib.map(file => `lib.${file.toLowerCase()}.d.ts`).join(",")}}`
+          : lib.length === 1 && lib[0]
+            ? `lib.${lib[0].toLowerCase()}.d.ts`
+            : "*.d.ts"
+      }`
+    )
   );
 
   const parsedTsconfig = tsModule.parseJsonConfigFileContent(
@@ -343,10 +345,7 @@ async function getNormalizedTsConfig(
         declarationMap: true,
         paths: compilerOptionPaths
       },
-      include: [
-        tsLibsPath.replaceAll("\\", "/"),
-        ...rawTsconfig.config?.include
-      ]
+      include: [tsLibsPath, ...rawTsconfig.config?.include]
     },
     tsModule.sys,
     dirname(options.tsConfig)
