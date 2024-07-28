@@ -1,8 +1,8 @@
-import { LogLevel, LogLevelLabel } from "../types";
 import type { ColorConfig, StormConfig } from "@storm-software/config";
-import { getLogLevel } from "./get-log-level";
+import { LogLevel, LogLevelLabel } from "../types";
 import { getChalk } from "./chalk";
 import { DEFAULT_COLOR_CONFIG } from "./get-default-config";
+import { getLogLevel } from "./get-log-level";
 
 /**
  * Get the log function for a log level
@@ -88,7 +88,7 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.warn(
-        `\n${_chalk.bold.hex(colors.warning ?? "#e3b341")("> ")} ${_chalk.bold
+        `\n${_chalk.bold.hex(colors.warning ?? "#e3b341")(">")} ${_chalk.bold
           .bgHex(colors.warning ?? "#e3b341")
           .whiteBright(
             "  ⚠ Warn  "

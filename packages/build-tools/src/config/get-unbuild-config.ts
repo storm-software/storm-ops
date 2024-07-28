@@ -1,13 +1,24 @@
 import { joinPathFragments, ProjectGraph } from "@nx/devkit";
 import { getHelperDependency, HelperDependency } from "@nx/js";
+import { getCustomTrasformersFactory } from "@nx/js/src/executors/tsc/lib/get-custom-transformers-factory";
+import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options.js";
 import {
   calculateProjectBuildableDependencies,
-  computeCompilerOptionsPaths
+  computeCompilerOptionsPaths,
+  DependentBuildableProjectNode
 } from "@nx/js/src/utils/buildable-libs-utils.js";
+import { NormalizedExecutorOptions } from "@nx/js/src/utils/schema";
+import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript";
+import { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
 import type { StormConfig } from "@storm-software/config";
-import { LogLevelLabel } from "@storm-software/config-tools";
+import {
+  LogLevelLabel,
+  writeDebug,
+  writeTrace
+} from "@storm-software/config-tools";
 import merge from "deepmerge";
 import { LogLevel, TsconfigRaw } from "esbuild";
+import { glob } from "glob";
 import { dirname, extname, relative } from "node:path";
 import { pathToFileURL } from "node:url";
 import { readNxJson } from "nx/src/config/nx-json.js";
@@ -42,15 +53,9 @@ export async function getUnbuildBuildOptions(
     return new RegExp(regex);
   });
 
-  const tsConfigPath = joinPathFragments(
-    config.workspaceRoot,
-    options.tsConfig
-  );
-  const tsConfigFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile);
-  const tsConfig = ts.parseJsonConfigFileContent(
-    tsConfigFile.config,
-    ts.sys,
-    dirname(tsConfigPath)
+  writeDebug(
+    "✍️  Generating TypeScript Compiler Options (tsconfig.json) to use for build process",
+    config
   );
 
   const nxJson = readNxJson(config.workspaceRoot);
@@ -78,16 +83,44 @@ export async function getUnbuildBuildOptions(
     dependencies.push(tsLibDependency);
   }
 
-  const compilerOptionPaths = computeCompilerOptionsPaths(
-    tsConfig,
-    dependencies ?? []
+  // const compilerOptionPaths = computeCompilerOptionsPaths(
+  //   tsConfig,
+  //   dependencies ?? []
+  // );
+  // const compilerOptions: TsconfigRaw = {
+  //   rootDir: options.projectRoot,
+  //   module: "ESNext",
+  //   bundle:
+  //   // allowJs: options.allowJs,
+  //   declaration: true,
+  //   paths: compilerOptionPaths
+  // };
+
+  const _options = { ...options };
+  delete _options.external;
+
+  const tsConfig = await getNormalizedTsConfig(
+    config.workspaceRoot,
+    options.outputPath,
+    createTypeScriptCompilationOptions(
+      normalizeOptions(
+        {
+          ..._options,
+          external: undefined,
+          watch: false,
+          main: options.entry ?? `${options.sourceRoot}/index.ts`,
+          transformers: []
+        },
+        config.workspaceRoot,
+        options.sourceRoot,
+        config.workspaceRoot
+      ),
+      options.projectName
+    ),
+    dependencies
   );
-  const compilerOptions = {
-    rootDir: options.projectRoot,
-    // allowJs: options.allowJs,
-    declaration: true,
-    paths: compilerOptionPaths
-  };
+
+  writeTrace(tsConfig, config);
 
   // if (config.options.module === ts.ModuleKind.CommonJS) {
   //   compilerOptions["module"] = "ESNext";
@@ -126,11 +159,10 @@ export async function getUnbuildBuildOptions(
       output: {
         plugins: [
           tsPlugin({
+            cwd: config.workspaceRoot,
             check: true,
             tsconfig: options.tsConfig,
-            tsconfigOverride: {
-              compilerOptions
-            }
+            tsconfigOverride: tsConfig
           } as any)
         ]
       } as any
@@ -181,7 +213,10 @@ export async function getUnbuildBuildOptions(
     {
       builder: "mkdist",
       input: "./src/",
-      outDir: relative(options.projectRoot, options.outputPath)
+      outDir: relative(
+        options.projectRoot,
+        joinPathFragments(options.outputPath, "dist")
+      )
     }
   );
 
@@ -227,3 +262,113 @@ async function loadConfig(
     config => config.default
   );
 }
+
+async function getNormalizedTsConfig(
+  workspaceRoot: string,
+  outputPath: string,
+  options: TypeScriptCompilationOptions,
+  dependencies: DependentBuildableProjectNode[]
+) {
+  const { correctPaths } = await import("@storm-software/config-tools");
+
+  const tsModule = ensureTypescript();
+  const rawTsconfig = tsModule.readConfigFile(
+    options.tsConfig,
+    tsModule.sys.readFile
+  );
+  if (!rawTsconfig?.config || rawTsconfig?.error) {
+    throw new Error(
+      `Unable to find ${options.tsConfig || "tsconfig.json"} in ${dirname(
+        options.tsConfig
+      )}${rawTsconfig?.error ? ` \nError: ${rawTsconfig.error.messageText}` : ""}`
+    );
+  }
+
+  const tsConfigPath = joinPathFragments(workspaceRoot, options.tsConfig);
+  const tsConfigFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile);
+  const tsConfig = ts.parseJsonConfigFileContent(
+    tsConfigFile.config,
+    ts.sys,
+    dirname(tsConfigPath)
+  );
+
+  const compilerOptionPaths = computeCompilerOptionsPaths(
+    tsConfig,
+    dependencies ?? []
+  );
+
+  // const tsConfig = parseJsonConfigFileContent(config, sys, dirname(options.tsConfig), {
+  //   outDir: outputPath,
+  //   noEmit: false,
+  //   esModuleInterop: true,
+  //   noUnusedLocals: false,
+  //   emitDeclarationOnly: true,
+  //   declaration: true,
+  //   declarationMap: true,
+  //   declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
+  // });
+
+  const basePath = correctPaths(workspaceRoot);
+  const parsedTsconfig = tsModule.parseJsonConfigFileContent(
+    {
+      ...rawTsconfig.config,
+      compilerOptions: {
+        ...rawTsconfig.config?.compilerOptions,
+        module: ts.ModuleKind.ESNext,
+        moduleResolution: ts.ModuleResolutionKind.Bundler,
+        outDir: outputPath,
+        noEmit: false,
+        declaration: true,
+        paths: compilerOptionPaths
+      },
+      include: [
+        joinPathFragments(
+          basePath,
+          "node_modules/typescript/**/*.d.ts"
+        ).replaceAll("\\", "/"),
+        ...rawTsconfig.config?.include
+      ]
+    },
+    tsModule.sys,
+    dirname(options.tsConfig)
+  );
+
+  parsedTsconfig.fileNames = [
+    ...parsedTsconfig.fileNames,
+    ...(await glob(
+      correctPaths(
+        joinPathFragments(workspaceRoot, "node_modules/typescript/**/*.d.ts")
+      )
+    ))
+  ];
+
+  parsedTsconfig.options.pathsBasePath = basePath;
+  parsedTsconfig.options.rootDir = basePath;
+  parsedTsconfig.options.baseUrl = ".";
+
+  if (parsedTsconfig.options.incremental) {
+    parsedTsconfig.options.tsBuildInfoFile = correctPaths(
+      joinPathFragments(outputPath, "tsconfig.tsbuildinfo")
+    );
+  }
+
+  return parsedTsconfig;
+}
+
+const createTypeScriptCompilationOptions = (
+  normalizedOptions: NormalizedExecutorOptions,
+  projectName: string
+): TypeScriptCompilationOptions => {
+  return {
+    outputPath: normalizedOptions.outputPath,
+    projectName,
+    projectRoot: normalizedOptions.projectRoot,
+    rootDir: normalizedOptions.rootDir,
+    tsConfig: normalizedOptions.tsConfig,
+    watch: normalizedOptions.watch,
+    deleteOutputPath: normalizedOptions.clean,
+    getCustomTransformers: getCustomTrasformersFactory(
+      normalizedOptions.transformers
+    )
+  };
+};
