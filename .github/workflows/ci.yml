@@ -34,7 +34,7 @@ jobs:
       github.repository == 'storm-software/storm-ops' && (github.ref ==
       'refs/heads/main' || github.ref == 'refs/heads/next' || github.ref ==
       'refs/heads/beta' || github.ref == 'refs/heads/experimental')
-    name: "CI/CD"
+    name: "Continuous Integration"
     runs-on: ubuntu-latest
     permissions:
       actions: read

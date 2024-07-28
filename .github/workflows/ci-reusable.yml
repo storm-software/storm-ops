@@ -15,11 +15,6 @@ on:
         type: string
         required: false
         default: ./
-      stormBot:
-        description: The github username of the Storm bot
-        required: false
-        type: string
-        default: Stormie-Bot
       packageManager:
         description: Package manager
         type: string
@@ -30,6 +25,15 @@ on:
         type: string
         required: false
         default: 9.6.0
+      stormBot:
+        description: The github username of the Storm bot
+        required: false
+        type: string
+        default: Stormie-Bot
+      stormBotGithubToken:
+        description: GitHub token of the Storm bot
+        type: string
+        required: true
       githubToken:
         description: GitHub token
         type: string
@@ -133,7 +137,7 @@ jobs:
           packageManager: ${{ inputs.packageManager }}
           packageManagerVersion: ${{ inputs.packageManagerVersion }}
           stormBot: ${{ inputs.stormBot }}
-          stormBotGitHubToken: ${{ inputs.githubToken }}
+          stormBotGitHubToken: ${{ inputs.stormBotGithubToken }}
 
       - name: Get appropriate base and head commits for `nx affected` commands
         uses: nrwl/nx-set-shas@v4
@@ -157,7 +161,7 @@ jobs:
       - name: Super-linter
         uses: super-linter/super-linter@v6.6.0
         env:
-          GITHUB_TOKEN: ${{ inputs.githubToken }}
+          GITHUB_TOKEN: ${{ inputs.stormBotGithubToken }}
 
       # - name: Markdown-linter
       #   uses: DavidAnson/markdownlint-cli2-action@v16
