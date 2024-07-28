@@ -1,3 +1,10 @@
+## 0.24.0 (2024-07-28)
+
+
+### Features
+
+- **build-tools:** Read tsconfig paths while generating types for unbuild ([3fad8634](https://github.com/storm-software/storm-ops/commit/3fad8634))
+
 ## 0.23.2 (2024-07-28)
 
 
