@@ -54,8 +54,13 @@ export async function getUnbuildBuildOptions(
 
   if (packageJson.dependencies) {
     buildConfig.dependencies = dependencies
-      .filter(dep => dep.name.startsWith("npm:"))
-      .map(dep => dep.name.slice(4));
+      .filter(
+        dep =>
+          dep.node.type === "npm" ||
+          dep.node.type === "lib" ||
+          dep.node.type === "app"
+      )
+      .map(dep => dep.name);
 
     // buildConfig.dependencies = Object.keys(packageJson.dependencies);
   }

@@ -86,6 +86,7 @@ export default function stormPreset(
     "unicorn/import-style": 0,
     "unicorn/prefer-module": 0,
     "unicorn/consistent-function-scoping": 0,
+    "class-methods-use-this": 0,
     ...options.rules
   };
 
@@ -174,7 +175,12 @@ export default function stormPreset(
       languageOptions: {
         parser: tsEslint.parser,
         globals: {
-          ...globals.node
+          ...globals.node,
+          ...globals.browser,
+          "stormGlobal": {
+            "config": true,
+            "logger": true
+          }
         }
       },
       files: [CODE_FILE],
@@ -214,8 +220,7 @@ export default function stormPreset(
             ]
           }
         ],
-        "unicorn/prefer-logical-operator-over-ternary": "warn",
-        "class-methods-use-this": "off"
+        "unicorn/prefer-logical-operator-over-ternary": "warn"
       }
     },
 
