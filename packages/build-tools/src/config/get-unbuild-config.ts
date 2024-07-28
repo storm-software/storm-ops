@@ -146,31 +146,7 @@ export async function getUnbuildBuildOptions(
       : [],
     outDir: relative(options.projectRoot, options.outputPath),
     externals: [...externals, ...(options.external ?? [])],
-    declaration: "compatible",
-    rollup: {
-      esbuild: {
-        minify: options.minify,
-        treeShaking: true,
-        color: true,
-        logLevel: (config.logLevel === LogLevelLabel.FATAL
-          ? LogLevelLabel.ERROR
-          : config.logLevel === LogLevelLabel.ALL ||
-              config.logLevel === LogLevelLabel.TRACE
-            ? "verbose"
-            : config.logLevel) as LogLevel,
-        tsconfigRaw: tsConfig as TsconfigRaw
-      },
-      output: {
-        plugins: [
-          tsPlugin({
-            cwd: config.workspaceRoot,
-            check: true,
-            tsconfig: options.tsConfig,
-            tsconfigOverride: tsConfig
-          } as any)
-        ]
-      } as any
-    }
+    declaration: "compatible"
   };
 
   // const result = calculateProjectBuildableDependencies(
@@ -225,32 +201,50 @@ export async function getUnbuildBuildOptions(
   );
 
   const buildOptions = defineBuildConfig(buildConfig);
-  for (const buildOpt of buildOptions) {
-    let rollupConfig: any = options.rollup;
-    if (rollupConfig && typeof rollupConfig === "string") {
-      const rollupConfigFile = await loadConfig(rollupConfig as string);
-      rollupConfig = rollupConfigFile;
-    }
-    if (!rollupConfig) {
-      rollupConfig = {};
-    }
-
-    buildOpt.rollup = {
-      ...rollupConfig,
-      output: {
-        ...rollupConfig?.output,
-        banner: getFileBanner(options.projectName),
-        footer: options.footer,
-        sourcemap: options.sourcemap
-      },
-      esbuild: {
-        ...rollupConfig?.esbuild,
-        minify: options.minify
+  return Promise.all(
+    buildOptions.map(async buildOpt => {
+      let rollupConfig: any = options.rollup;
+      if (rollupConfig && typeof rollupConfig === "string") {
+        const rollupConfigFile = await loadConfig(rollupConfig as string);
+        rollupConfig = rollupConfigFile;
       }
-    };
-  }
 
-  return buildOptions;
+      rollupConfig ??= {};
+      buildOpt.rollup = {
+        ...rollupConfig,
+        emitCJS: true,
+        output: {
+          ...rollupConfig?.output,
+          banner: getFileBanner(options.projectName),
+          footer: options.footer,
+          sourcemap: options.sourcemap,
+          plugins: [
+            tsPlugin({
+              cwd: config.workspaceRoot,
+              check: true,
+              tsconfig: options.tsConfig,
+              tsconfigOverride: tsConfig
+            } as any)
+          ] as any
+        },
+        esbuild: {
+          ...rollupConfig?.esbuild,
+          minify: options.minify,
+          treeShaking: true,
+          color: true,
+          logLevel: (config.logLevel === LogLevelLabel.FATAL
+            ? LogLevelLabel.ERROR
+            : config.logLevel === LogLevelLabel.ALL ||
+                config.logLevel === LogLevelLabel.TRACE
+              ? "verbose"
+              : config.logLevel) as LogLevel,
+          tsconfigRaw: tsConfig as TsconfigRaw
+        }
+      };
+
+      return buildOpt;
+    })
+  );
 }
 
 /**
@@ -322,6 +316,17 @@ async function getNormalizedTsConfig(
   ) as string[];
 
   const basePath = correctPaths(workspaceRoot);
+  const tsLibsPath = joinPathFragments(
+    basePath,
+    `node_modules/typescript/**/${
+      lib.length > 1
+        ? `{${lib.map(file => `lib.${file.toLowerCase()}.d.ts`).join(",")}}`
+        : lib.length === 1 && lib[0]
+          ? `lib.${lib[0].toLowerCase()}.d.ts`
+          : "*.d.ts"
+    }`
+  );
+
   const parsedTsconfig = tsModule.parseJsonConfigFileContent(
     {
       ...rawTsconfig.config,
@@ -331,18 +336,15 @@ async function getNormalizedTsConfig(
         moduleResolution: "Bundler",
         ...rawTsconfig.config?.compilerOptions,
         lib,
-        outDir: outputPath,
         skipLibCheck: true,
+        skipDefaultLibCheck: true,
         noEmit: false,
         declaration: true,
         declarationMap: true,
         paths: compilerOptionPaths
       },
       include: [
-        joinPathFragments(
-          basePath,
-          `node_modules/typescript/**/{${lib.map(file => `lib.${file.toLowerCase()}.d.ts`).join(",")}}`
-        ).replaceAll("\\", "/"),
+        tsLibsPath.replaceAll("\\", "/"),
         ...rawTsconfig.config?.include
       ]
     },
@@ -352,14 +354,7 @@ async function getNormalizedTsConfig(
 
   parsedTsconfig.fileNames = [
     ...parsedTsconfig.fileNames,
-    ...(await glob(
-      correctPaths(
-        joinPathFragments(
-          workspaceRoot,
-          `node_modules/typescript/**/{${lib.map(file => `lib.${file.toLowerCase()}.d.ts`).join(",")}}`
-        )
-      )
-    ))
+    ...(await glob(correctPaths(tsLibsPath)))
   ];
 
   parsedTsconfig.options.pathsBasePath = basePath;

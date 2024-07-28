@@ -386,19 +386,15 @@ ${unbuildBuildOptions
 
     if (
       enhancedOptions.generatePackageJson !== false &&
-      existsSync(joinPathFragments(workspaceRoot, sourceRoot, "package.json"))
+      existsSync(joinPathFragments(sourceRoot, "package.json"))
     ) {
       writeDebug("✍️   Writing package.json file", config);
       const outputPackageJson = readJsonFile(
-        joinPathFragments(workspaceRoot, sourceRoot, "package.json")
+        joinPathFragments(sourceRoot, "package.json")
       );
 
       await writeJsonFile(
-        joinPathFragments(
-          workspaceRoot,
-          enhancedOptions.outputPath,
-          "package.json"
-        ),
+        joinPathFragments(enhancedOptions.outputPath, "package.json"),
         addWorkspacePackageJsonFields(
           config,
           projectRoot,
