@@ -1,7 +1,7 @@
 import type { StormConfig } from "@storm-software/config";
+import { getLogLevel, LogLevel } from "@storm-software/config-tools";
 import type { TypeScriptBuildOptions } from "../../declarations";
 import { defaultConfig } from "../config";
-import { getLogLevel, LogLevel } from "@storm-software/config-tools";
 import type { RolldownOptions, UnbuildBuildOptions } from "../types";
 import { getFileBanner } from "./get-file-banner";
 
@@ -88,11 +88,7 @@ export const applyDefaultUnbuildOptions = (
   options.entry ??= "{sourceRoot}/index.ts";
   options.outputPath ??= "dist/{projectRoot}";
   options.tsConfig ??= "{projectRoot}/tsconfig.json";
-  options.external ??=
-    process.env.STORM_EXTERNAL_PACKAGE_PATTERNS &&
-    process.env.STORM_EXTERNAL_PACKAGE_PATTERNS.split(",")?.length > 0
-      ? process.env.STORM_EXTERNAL_PACKAGE_PATTERNS.split(",")
-      : [];
+  options.external ??= [];
   options.additionalEntryPoints ??= [];
   options.assets ??= [];
   options.includeSrc ??= false;
@@ -104,6 +100,8 @@ export const applyDefaultUnbuildOptions = (
   options.sourcemap ??= true;
   options.declaration ??= "compatible";
   options.banner = getFileBanner(options.projectName ?? "Storm Software");
+  options.tsLibs ??= [];
+  options.generatePackageJson ??= true;
 
   return options as UnbuildBuildOptions;
 };

@@ -248,6 +248,7 @@ export type UnbuildBuildOptions = AdditionalCLIOptions &
     minify: boolean;
     tsLibs: string[];
     includeSrc: boolean;
+    generatePackageJson: boolean;
     tsConfig: string;
     outputPath: string;
     entry?: string;

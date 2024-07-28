@@ -62,8 +62,6 @@ export default withRunExecutor<UnbuildExecutorSchema>(
           "@storm-software/build-tools"
         );
 
-        options.tsLibs ??= [];
-
         return applyDefaultUnbuildOptions(options, config);
       }
     }

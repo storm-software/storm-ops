@@ -62,6 +62,11 @@
       "alias": "deleteOutputPath",
       "default": true
     },
+    "generatePackageJson": {
+      "type": "boolean",
+      "description": "Should the package.json file be generated or copied directly into the output folder (if false the file will be copied directly).",
+      "default": true
+    },
     "includeSrc": {
       "type": "boolean",
       "description": "Should the source files be added to the distribution folder in an `src` directory.",

@@ -163,6 +163,14 @@ export async function unbuildWithOptions(
     });
   }
 
+  if (enhancedOptions.generatePackageJson === false) {
+    assets.push({
+      input: sourceRoot,
+      glob: "package.json",
+      output: "."
+    });
+  }
+
   if (
     !enhancedOptions.assets?.some(
       (asset: AssetGlob) => asset?.glob === "LICENSE"
@@ -378,21 +386,11 @@ ${unbuildBuildOptions
 
     if (
       enhancedOptions.generatePackageJson !== false &&
-      existsSync(
-        joinPathFragments(
-          workspaceRoot,
-          enhancedOptions.outputPath,
-          "package.json"
-        )
-      )
+      existsSync(joinPathFragments(workspaceRoot, sourceRoot, "package.json"))
     ) {
       writeDebug("✍️   Writing package.json file", config);
       const outputPackageJson = readJsonFile(
-        joinPathFragments(
-          workspaceRoot,
-          enhancedOptions.outputPath,
-          "package.json"
-        )
+        joinPathFragments(workspaceRoot, sourceRoot, "package.json")
       );
 
       await writeJsonFile(

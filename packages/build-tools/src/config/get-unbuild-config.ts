@@ -145,7 +145,7 @@ export async function getUnbuildBuildOptions(
         ]
       : [],
     outDir: relative(options.projectRoot, options.outputPath),
-    externals,
+    externals: [...externals, ...(options.external ?? [])],
     declaration: "compatible",
     rollup: {
       esbuild: {
