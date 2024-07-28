@@ -1,3 +1,10 @@
+## 0.31.2 (2024-07-28)
+
+
+### Bug Fixes
+
+- **eslint:** Resolved the issues with the provided globals ([62094231](https://github.com/storm-software/storm-ops/commit/62094231))
+
 ## 0.31.1 (2024-07-28)
 
 
