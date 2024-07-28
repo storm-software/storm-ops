@@ -4,7 +4,8 @@ import {
   joinPathFragments,
   type ProjectConfiguration,
   readJsonFile,
-  readProjectsConfigurationFromProjectGraph
+  readProjectsConfigurationFromProjectGraph,
+  writeJsonFile
 } from "@nx/devkit";
 import { copyAssets } from "@nx/js";
 import type { AssetGlob } from "@nx/js/src/utils/assets/assets.js";
@@ -33,6 +34,7 @@ import { build } from "unbuild";
 import { getUnbuildBuildOptions } from "../config/get-unbuild-config";
 import type { UnbuildBuildOptions } from "../types";
 import { applyDefaultUnbuildOptions } from "../utils/apply-default-options";
+import { formatPackageJson } from "../utils/generate-package-json";
 import { createTaskId, getAllWorkspaceTaskGraphs } from "../utils/task-graph";
 
 /**
@@ -311,8 +313,6 @@ export async function unbuildWithOptions(
     );
   }
 
-  writeDebug("🎁  Generating package.json file", config);
-
   const { dependencies } = calculateProjectBuildableDependencies(
     taskGraphs[createTaskId(projectName, "build")],
     projectGraph,
@@ -330,6 +330,26 @@ export async function unbuildWithOptions(
       "package.json"
     )
   );
+  if (enhancedOptions.generatePackageJson !== false) {
+    writeDebug("✍️   Writing package.json file", config);
+    await writeJsonFile(
+      joinPathFragments(
+        workspaceRoot,
+        enhancedOptions.outputPath,
+        "package.json"
+      ),
+      await formatPackageJson(
+        config,
+        projectRoot,
+        sourceRoot,
+        projectName,
+        { ...options, external: [] as string[] },
+        packageJson,
+        projectGraph,
+        projectsConfigurations.projects
+      )
+    );
+  }
 
   const npmDeps = (projectGraph.dependencies[projectName] ?? [])
     .filter(d => d.target.startsWith("npm:"))

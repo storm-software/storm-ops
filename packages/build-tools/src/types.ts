@@ -1,13 +1,13 @@
-import type { Options } from "tsup";
 import type Rolldown from "rolldown";
-import type {
-  Program,
-  Diagnostic,
-  TransformerFactory,
-  SourceFile,
-  ParsedCommandLine
-} from "typescript";
 import type { Plugin } from "rolldown";
+import type { Options } from "tsup";
+import type {
+  Diagnostic,
+  ParsedCommandLine,
+  Program,
+  SourceFile,
+  TransformerFactory
+} from "typescript";
 import type {
   BuildOptions as UnbuildOptions,
   RollupBuildOptions as UnbuildRollupBuildOptions
@@ -249,6 +249,7 @@ export type UnbuildBuildOptions = AdditionalCLIOptions &
     includeSrc: boolean;
     tsConfig: string;
     outputPath: string;
+    generatePackageJson?: boolean;
     entry?: string;
     additionalEntryPoints?: string[];
     external?: (string | RegExp)[];
