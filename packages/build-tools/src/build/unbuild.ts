@@ -7,9 +7,8 @@ import {
   readProjectsConfigurationFromProjectGraph,
   writeJsonFile
 } from "@nx/devkit";
-import { copyAssets, getHelperDependency, HelperDependency } from "@nx/js";
+import { copyAssets } from "@nx/js";
 import type { AssetGlob } from "@nx/js/src/utils/assets/assets.js";
-import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils.js";
 import type { StormConfig } from "@storm-software/config";
 import {
   applyWorkspaceProjectTokens,
@@ -35,7 +34,6 @@ import { getUnbuildBuildOptions } from "../config/get-unbuild-config";
 import type { UnbuildBuildOptions } from "../types";
 import { applyDefaultUnbuildOptions } from "../utils/apply-default-options";
 import { addWorkspacePackageJsonFields } from "../utils/generate-package-json";
-import { createTaskId, getAllWorkspaceTaskGraphs } from "../utils/task-graph";
 
 /**
  * Build and bundle a TypeScript project using the tsup build tools.
@@ -191,7 +189,6 @@ export async function unbuildWithOptions(
   const projectGraph = await createProjectGraphAsync({
     exitOnError: true
   });
-  const taskGraphs = getAllWorkspaceTaskGraphs(nxJson, projectGraph);
 
   const projectsConfigurations =
     readProjectsConfigurationFromProjectGraph(projectGraph);
@@ -313,28 +310,6 @@ export async function unbuildWithOptions(
     );
   }
 
-  const { dependencies } = calculateProjectBuildableDependencies(
-    taskGraphs[createTaskId(projectName, "build")],
-    projectGraph,
-    workspaceRoot,
-    projectName,
-    "build",
-    "production",
-    true
-  );
-
-  const tsLibDependency = getHelperDependency(
-    HelperDependency.tsc,
-    options.tsConfig,
-    dependencies,
-    projectGraph,
-    true
-  );
-
-  if (tsLibDependency) {
-    dependencies.push(tsLibDependency);
-  }
-
   const packageJson = readJsonFile(
     joinPathFragments(
       workspaceRoot,
@@ -352,8 +327,8 @@ export async function unbuildWithOptions(
   const unbuildBuildOptions = await getUnbuildBuildOptions(
     config,
     enhancedOptions,
-    dependencies,
-    packageJson
+    packageJson,
+    projectGraph
   );
   if (unbuildBuildOptions.length === 0) {
     writeWarning(
