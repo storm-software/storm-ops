@@ -269,13 +269,6 @@ export const formatPackageJson = async (
 ): Promise<Record<string, any>> => {
   // #region Generate the package.json file
 
-  const workspaceRoot = config.workspaceRoot
-    ? config.workspaceRoot
-    : findWorkspaceRoot();
-  const workspacePackageJson = readJsonFile(
-    joinPathFragments(workspaceRoot, "package.json")
-  );
-
   const externalDependencies: DependentBuildableProjectNode[] =
     options.external?.reduce(
       (ret: DependentBuildableProjectNode[], name: string) => {
@@ -421,25 +414,51 @@ export const formatPackageJson = async (
         packageJson.dependencies[packageName] = "latest";
       }
     }
+  }
 
-    packageJson.type = "module";
+  return addWorkspacePackageJsonFields(
+    config,
+    projectRoot,
+    sourceRoot,
+    projectName,
+    options.includeSrc,
+    packageJson
+  );
+};
 
-    packageJson.sideEffects ??= false;
-    packageJson.funding ??= workspacePackageJson.funding;
+export const addWorkspacePackageJsonFields = (
+  config: StormConfig,
+  projectRoot: string,
+  sourceRoot: string,
+  projectName: string,
+  includeSrc: boolean = false,
+  packageJson: Record<string, any>
+): Record<string, any> => {
+  // #region Generate the package.json file
 
-    if (options.includeSrc === true) {
-      let distSrc = sourceRoot.replace(projectRoot, "");
-      if (distSrc.startsWith("/")) {
-        distSrc = distSrc.substring(1);
-      }
+  const workspaceRoot = config.workspaceRoot
+    ? config.workspaceRoot
+    : findWorkspaceRoot();
+  const workspacePackageJson = readJsonFile<Record<string, any>>(
+    joinPathFragments(workspaceRoot, "package.json")
+  );
 
-      packageJson.source ??= `${joinPathFragments(distSrc, "index.ts").replaceAll("\\", "/")}`;
+  packageJson.type ??= "module";
+  packageJson.sideEffects ??= false;
+  packageJson.funding ??= workspacePackageJson.funding;
+
+  if (includeSrc === true) {
+    let distSrc = sourceRoot.replace(projectRoot, "");
+    if (distSrc.startsWith("/")) {
+      distSrc = distSrc.substring(1);
     }
 
-    packageJson.files ??= ["dist/**/*"];
-    if (options.includeSrc === true && !packageJson.files.includes("src")) {
-      packageJson.files.push("src/**/*");
-    }
+    packageJson.source ??= `${joinPathFragments(distSrc, "index.ts").replaceAll("\\", "/")}`;
+  }
+
+  packageJson.files ??= ["dist/**/*"];
+  if (includeSrc === true && !packageJson.files.includes("src")) {
+    packageJson.files.push("src/**/*");
   }
 
   packageJson.publishConfig ??= {

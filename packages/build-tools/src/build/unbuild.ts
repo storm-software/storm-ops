@@ -7,7 +7,7 @@ import {
   readProjectsConfigurationFromProjectGraph,
   writeJsonFile
 } from "@nx/devkit";
-import { copyAssets } from "@nx/js";
+import { copyAssets, getHelperDependency, HelperDependency } from "@nx/js";
 import type { AssetGlob } from "@nx/js/src/utils/assets/assets.js";
 import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils.js";
 import type { StormConfig } from "@storm-software/config";
@@ -34,7 +34,7 @@ import { build } from "unbuild";
 import { getUnbuildBuildOptions } from "../config/get-unbuild-config";
 import type { UnbuildBuildOptions } from "../types";
 import { applyDefaultUnbuildOptions } from "../utils/apply-default-options";
-import { formatPackageJson } from "../utils/generate-package-json";
+import { addWorkspacePackageJsonFields } from "../utils/generate-package-json";
 import { createTaskId, getAllWorkspaceTaskGraphs } from "../utils/task-graph";
 
 /**
@@ -323,6 +323,18 @@ export async function unbuildWithOptions(
     true
   );
 
+  const tsLibDependency = getHelperDependency(
+    HelperDependency.tsc,
+    options.tsConfig,
+    dependencies,
+    projectGraph,
+    true
+  );
+
+  if (tsLibDependency) {
+    dependencies.push(tsLibDependency);
+  }
+
   const packageJson = readJsonFile(
     joinPathFragments(
       workspaceRoot,
@@ -330,30 +342,10 @@ export async function unbuildWithOptions(
       "package.json"
     )
   );
-  if (enhancedOptions.generatePackageJson !== false) {
-    writeDebug("✍️   Writing package.json file", config);
-    await writeJsonFile(
-      joinPathFragments(
-        workspaceRoot,
-        enhancedOptions.outputPath,
-        "package.json"
-      ),
-      await formatPackageJson(
-        config,
-        projectRoot,
-        sourceRoot,
-        projectName,
-        { ...options, external: [] as string[] },
-        packageJson,
-        projectGraph,
-        projectsConfigurations.projects
-      )
-    );
-  }
 
-  const npmDeps = (projectGraph.dependencies[projectName] ?? [])
-    .filter(d => d.target.startsWith("npm:"))
-    .map(d => d.target.slice(4));
+  // const npmDeps = (projectGraph.dependencies[projectName] ?? [])
+  //   .filter(d => d.target.startsWith("npm:"))
+  //   .map(d => d.target.slice(4));
 
   writeDebug("🔍  Detecting the configuration for the build process", config);
 
@@ -361,8 +353,7 @@ export async function unbuildWithOptions(
     config,
     enhancedOptions,
     dependencies,
-    packageJson,
-    npmDeps
+    packageJson
   );
   if (unbuildBuildOptions.length === 0) {
     writeWarning(
@@ -409,6 +400,33 @@ ${unbuildBuildOptions
         return build(config.workspaceRoot!, false, opts);
       })
     );
+
+    if (enhancedOptions.generatePackageJson !== false) {
+      writeDebug("✍️   Writing package.json file", config);
+      const outputPackageJson = readJsonFile(
+        joinPathFragments(
+          workspaceRoot,
+          enhancedOptions.outputPath,
+          "package.json"
+        )
+      );
+
+      await writeJsonFile(
+        joinPathFragments(
+          workspaceRoot,
+          enhancedOptions.outputPath,
+          "package.json"
+        ),
+        addWorkspacePackageJsonFields(
+          config,
+          projectRoot,
+          sourceRoot,
+          projectName,
+          options.includeSrc,
+          outputPackageJson
+        )
+      );
+    }
   } catch (e) {
     writeWarning(
       `🚫  The Build process failed because an error occurred: ${e.message}`,

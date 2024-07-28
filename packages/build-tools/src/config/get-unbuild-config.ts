@@ -1,30 +1,40 @@
+import { type DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils.js";
+import type { StormConfig } from "@storm-software/config";
+import merge from "deepmerge";
+import { extname, relative } from "node:path";
+import { pathToFileURL } from "node:url";
+import type { PackageJson } from "nx/src/utils/package-json.js";
+import { defineBuildConfig, type BuildConfig } from "unbuild";
 import type { UnbuildBuildOptions } from "../types";
 import { getFileBanner } from "../utils/get-file-banner";
-import { pathToFileURL } from "node:url";
-import { join } from "node:path";
-import merge from "deepmerge";
-import { type DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils.js";
-import type { PackageJson } from "nx/src/utils/package-json.js";
-import type { StormConfig } from "@storm-software/config";
-import { extname } from "node:path";
-import { defineBuildConfig, type BuildConfig } from "unbuild";
 
 export async function getUnbuildBuildOptions(
   config: StormConfig,
   options: UnbuildBuildOptions,
   dependencies: DependentBuildableProjectNode[],
-  packageJson: PackageJson,
-  npmDeps: string[]
+  packageJson: PackageJson
 ): Promise<BuildConfig[]> {
   if (options.configPath) {
     const configFile = await loadConfig(options.configPath as string);
     options = configFile ? merge(options, configFile) : options;
   }
 
-  const buildConfig = {
+  const externals = config.externalPackagePatterns.map(dep => {
+    let regex = dep;
+    if (!dep.endsWith("*")) {
+      if (!dep.endsWith("/")) {
+        regex = dep + "/";
+      }
+      regex += "*";
+    }
+
+    return new RegExp(regex);
+  });
+
+  const buildConfig: BuildConfig = {
     clean: false,
     name: options.projectName,
-    rootDir: config.workspaceRoot!,
+    rootDir: options.projectRoot,
     entries: options.entry
       ? [
           options.entry.startsWith("./") || options.entry.startsWith("C:")
@@ -32,11 +42,29 @@ export async function getUnbuildBuildOptions(
             : `./${options.entry}`
         ]
       : [],
-    outDir: join(config.workspaceRoot!, options.outputPath),
-    externals: options.external,
-    dependencies: npmDeps,
-    declaration: "compatible"
-  } as BuildConfig;
+    outDir: relative(options.projectRoot, options.outputPath),
+    externals,
+    declaration: "compatible",
+    rollup: {
+      esbuild: {
+        minify: options.minify
+      }
+    }
+  };
+
+  if (packageJson.dependencies) {
+    buildConfig.dependencies = dependencies
+      .filter(dep => dep.name.startsWith("npm:"))
+      .map(dep => dep.name.slice(4));
+
+    // buildConfig.dependencies = Object.keys(packageJson.dependencies);
+  }
+  if (packageJson.devDependencies) {
+    buildConfig.devDependencies = Object.keys(packageJson.devDependencies);
+  }
+  if (packageJson.peerDependencies) {
+    buildConfig.peerDependencies = Object.keys(packageJson.peerDependencies);
+  }
 
   if (
     options.additionalEntryPoints &&
@@ -52,7 +80,7 @@ export async function getUnbuildBuildOptions(
     {
       builder: "mkdist",
       input: "./src/",
-      outDir: "./lib"
+      outDir: "./"
     }
   );
 
