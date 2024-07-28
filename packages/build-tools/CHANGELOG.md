@@ -1,3 +1,12 @@
+## 0.26.0 (2024-07-28)
+
+
+### Features
+
+- **build-tools:** Added code to include TypeScript lib declarations in bundle ([689e8a47](https://github.com/storm-software/storm-ops/commit/689e8a47))
+
+- **build-tools:** Added the `generatePackageJson` functionality for unbuild ([218c72d4](https://github.com/storm-software/storm-ops/commit/218c72d4))
+
 ## 0.25.0 (2024-07-28)
 
 
