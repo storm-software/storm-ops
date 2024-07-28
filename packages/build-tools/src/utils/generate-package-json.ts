@@ -1,12 +1,5 @@
-import { writeFileSync } from "node:fs";
-import {
-  createProjectGraphAsync,
-  readCachedProjectGraph
-} from "nx/src/project-graph/project-graph.js";
-import { retrieveProjectConfigurationsWithoutPluginInference } from "nx/src/project-graph/utils/retrieve-workspace-files.js";
-import { fileExists } from "nx/src/utils/fileutils.js";
+import type { ProjectConfiguration, ProjectGraph } from "@nx/devkit";
 import { joinPathFragments, readJsonFile } from "@nx/devkit";
-import type { ProjectGraph } from "@nx/devkit";
 import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils.js";
 import {
   getHelperDependency,
@@ -22,6 +15,13 @@ import {
   writeTrace,
   writeWarning
 } from "@storm-software/config-tools";
+import { writeFileSync } from "node:fs";
+import {
+  createProjectGraphAsync,
+  readCachedProjectGraph
+} from "nx/src/project-graph/project-graph.js";
+import { retrieveProjectConfigurationsWithoutPluginInference } from "nx/src/project-graph/utils/retrieve-workspace-files.js";
+import { fileExists } from "nx/src/utils/fileutils.js";
 import type { TypeScriptBuildOptions } from "../../declarations";
 import { getEntryPoints } from "./get-entry-points";
 import {
@@ -47,16 +47,13 @@ export const generatePackageJson = async (
   const workspaceRoot = config.workspaceRoot
     ? config.workspaceRoot
     : findWorkspaceRoot();
-  const workspacePackageJson = readJsonFile(
-    joinPathFragments(workspaceRoot, "package.json")
-  );
   const pathToPackageJson = joinPathFragments(
     workspaceRoot,
     projectRoot,
     "package.json"
   );
 
-  const packageJson: Record<string, any> | undefined = fileExists(
+  let packageJson: Record<string, any> | undefined = fileExists(
     pathToPackageJson
   )
     ? readJsonFile(pathToPackageJson)
@@ -64,33 +61,223 @@ export const generatePackageJson = async (
         name: `@${config.namespace}/${projectName}`,
         version: "0.0.1"
       };
-  options.external = options.external || [];
 
-  let projectGraph;
-  try {
-    projectGraph = readCachedProjectGraph();
-  } catch (e) {
-    projectGraph = await createProjectGraphAsync({
-      exitOnError: true
-    });
+  if (options.generatePackageJson !== false) {
+    options.external = options.external || [];
+
+    let projectGraph;
+    try {
+      projectGraph = readCachedProjectGraph();
+    } catch (e) {
+      projectGraph = await createProjectGraphAsync({
+        exitOnError: true
+      });
+    }
+
+    if (!projectGraph) {
+      throw new Error("No project graph found in cache");
+    }
+
+    const projectsConfigurations =
+      await retrieveProjectConfigurationsWithoutPluginInference(workspaceRoot);
+    if (getLogLevel(config?.logLevel) >= LogLevel.TRACE) {
+      writeDebug("Project Configs:", config);
+      console.log(projectsConfigurations);
+    }
+    if (!projectsConfigurations) {
+      throw new Error("No project configurations found");
+    }
+
+    // const prettier = await import("prettier");
+    // const prettierOptions = {
+    //   plugins: ["prettier-plugin-packagejson"],
+    //   trailingComma: "none" as "all" | "none" | "es5",
+    //   tabWidth: 2,
+    //   semi: true,
+    //   singleQuote: false,
+    //   quoteProps: "preserve" as "preserve" | "as-needed" | "consistent",
+    //   insertPragma: false,
+    //   bracketSameLine: true,
+    //   printWidth: 80,
+    //   bracketSpacing: true,
+    //   arrowParens: "avoid" as "avoid" | "always",
+    //   endOfLine: "lf" as "lf" | "auto" | "crlf" | "cr"
+    // };
+
+    packageJson = await formatPackageJson(
+      config,
+      projectRoot,
+      sourceRoot,
+      projectName,
+      options,
+      packageJson,
+      projectGraph,
+      projectsConfigurations
+    );
+
+    const distPaths: string[] = ["dist/"];
+    packageJson.type = "module";
+    if (distPaths.length > 0) {
+      packageJson.exports ??= {
+        ".": {
+          import: {
+            types: `./${distPaths[0]}index.d.ts`,
+            default: `./${distPaths[0]}index.js`
+          },
+          require: {
+            types: `./${distPaths[0]}index.d.cts`,
+            default: `./${distPaths[0]}index.cjs`
+          },
+          default: {
+            types: `./${distPaths[0]}index.d.ts`,
+            default: `./${distPaths[0]}index.js`
+          }
+        },
+        "./package.json": "./package.json"
+      };
+
+      const entryPoints = getEntryPoints(
+        config,
+        projectRoot,
+        sourceRoot,
+        options
+      );
+      for (const entryPoint of entryPoints) {
+        let formattedEntryPoint = removeExtension(entryPoint).replace(
+          sourceRoot,
+          ""
+        );
+        if (formattedEntryPoint.startsWith(".")) {
+          formattedEntryPoint = formattedEntryPoint.substring(1);
+        }
+        if (formattedEntryPoint.startsWith("/")) {
+          formattedEntryPoint = formattedEntryPoint.substring(1);
+        }
+
+        packageJson.exports[`./${formattedEntryPoint}`] = {
+          import: {
+            types: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.d.ts`,
+            default: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.js`
+          },
+          require: {
+            types: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.d.cts`,
+            default: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.cjs`
+          },
+          default: {
+            types: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.d.ts`,
+            default: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.js`
+          }
+        };
+      }
+
+      /*packageJson.exports = Object.keys(entry).reduce((ret: Record<string, any>, key: string) => {
+          let packageJsonKey = key.startsWith("./") ? key : `./${key}`;
+          packageJsonKey = packageJsonKey.replaceAll("/index", "");
+
+          if (!ret[packageJsonKey]) {
+            ret[packageJsonKey] = {
+              import: {
+                types: `./${distPaths[0]}index.d.ts`,
+                default: `./${distPaths[0]}${key}.js`
+              },
+              require: {
+                types: `./${distPaths[0]}index.d.cts`,
+                default: `./${distPaths[0]}${key}.cjs`
+              },
+              default: {
+                types: `./${distPaths[0]}index.d.ts`,
+                default: `./${distPaths[0]}${key}.js`
+              }
+            };
+          }
+
+          return ret;
+        }, packageJson.exports);*/
+
+      packageJson.types ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`;
+      // packageJson.typings ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`;
+      /*packageJson.typescript ??= {
+        definition: `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`
+      };*/
+
+      packageJson.main ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.cjs`;
+      packageJson.module ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.js`;
+
+      if (options.platform && options.platform !== "node") {
+        packageJson.browser ??= `${distPaths[0]}index.global.js`;
+      }
+
+      if (options.useJsxModule) {
+        packageJson["module:jsx"] &&= `${
+          distPaths.length > 1 ? distPaths[1] : distPaths[0]
+        }index.jsx`;
+      }
+
+      if (options.includeSrc === true) {
+        let distSrc = sourceRoot.replace(projectRoot, "");
+        if (distSrc.startsWith("/")) {
+          distSrc = distSrc.substring(1);
+        }
+
+        packageJson.source ??= `${joinPathFragments(distSrc, "index.ts").replaceAll("\\", "/")}`;
+      }
+
+      packageJson.files ??= ["dist/**/*"];
+      if (options.includeSrc === true && !packageJson.files.includes("src")) {
+        packageJson.files.push("src/**/*");
+      }
+    }
+
+    const packageJsonPath = joinPathFragments(
+      workspaceRoot,
+      options.outputPath,
+      "package.json"
+    );
+
+    writeDebug(`⚡ Writing package.json file to: ${packageJsonPath}`, config);
+
+    // writeFileSync(
+    //   packageJsonPath,
+    //   await prettier.format(JSON.stringify(packageJson), {
+    //     ...prettierOptions,
+    //     parser: "json"
+    //   })
+    // );
+
+    writeFileSync(packageJsonPath, JSON.stringify(packageJson));
+  } else {
+    writeWarning("Skipping writing to package.json file", config);
   }
 
-  if (!projectGraph) {
-    throw new Error("No project graph found in cache");
-  }
+  // #endregion Generate the package.json file
 
-  const projectsConfigurations =
-    await retrieveProjectConfigurationsWithoutPluginInference(workspaceRoot);
-  if (getLogLevel(config?.logLevel) >= LogLevel.TRACE) {
-    writeDebug("Project Configs:", config);
-    console.log(projectsConfigurations);
-  }
-  if (!projectsConfigurations) {
-    throw new Error("No project configurations found");
-  }
+  return packageJson;
+};
+
+export const formatPackageJson = async (
+  config: StormConfig,
+  projectRoot: string,
+  sourceRoot: string,
+  projectName: string,
+  options: Pick<
+    TypeScriptBuildOptions,
+    "tsConfig" | "external" | "generatePackageJson" | "bundle" | "includeSrc"
+  >,
+  packageJson: Record<string, any>,
+  projectGraph: ProjectGraph,
+  projectsConfigurations: Record<string, ProjectConfiguration>
+): Promise<Record<string, any>> => {
+  // #region Generate the package.json file
+
+  const workspaceRoot = config.workspaceRoot
+    ? config.workspaceRoot
+    : findWorkspaceRoot();
+  const workspacePackageJson = readJsonFile(
+    joinPathFragments(workspaceRoot, "package.json")
+  );
 
   const externalDependencies: DependentBuildableProjectNode[] =
-    options.external.reduce(
+    options.external?.reduce(
       (ret: DependentBuildableProjectNode[], name: string) => {
         if (!packageJson?.devDependencies?.[name]) {
           const externalNode = projectGraph?.externalNodes?.[`npm:${name}`];
@@ -106,7 +293,7 @@ export const generatePackageJson = async (
         return ret;
       },
       []
-    );
+    ) ?? [];
 
   const tsLibDependency = getHelperDependency(
     HelperDependency.tsc,
@@ -202,22 +389,6 @@ export const generatePackageJson = async (
     config
   );
 
-  // const prettier = await import("prettier");
-  // const prettierOptions = {
-  //   plugins: ["prettier-plugin-packagejson"],
-  //   trailingComma: "none" as "all" | "none" | "es5",
-  //   tabWidth: 2,
-  //   semi: true,
-  //   singleQuote: false,
-  //   quoteProps: "preserve" as "preserve" | "as-needed" | "consistent",
-  //   insertPragma: false,
-  //   bracketSameLine: true,
-  //   printWidth: 80,
-  //   bracketSpacing: true,
-  //   arrowParens: "avoid" as "avoid" | "always",
-  //   endOfLine: "lf" as "lf" | "auto" | "crlf" | "cr"
-  // };
-
   if (options.generatePackageJson !== false) {
     if (options.bundle === false) {
       packageJson.dependencies = undefined;
@@ -251,167 +422,47 @@ export const generatePackageJson = async (
       }
     }
 
-    const distPaths: string[] = ["dist/"];
-
     packageJson.type = "module";
-    if (distPaths.length > 0) {
-      packageJson.exports ??= {
-        ".": {
-          import: {
-            types: `./${distPaths[0]}index.d.ts`,
-            default: `./${distPaths[0]}index.js`
-          },
-          require: {
-            types: `./${distPaths[0]}index.d.cts`,
-            default: `./${distPaths[0]}index.cjs`
-          },
-          default: {
-            types: `./${distPaths[0]}index.d.ts`,
-            default: `./${distPaths[0]}index.js`
-          }
-        },
-        "./package.json": "./package.json"
-      };
 
-      const entryPoints = getEntryPoints(
-        config,
-        projectRoot,
-        sourceRoot,
-        options
-      );
-      for (const entryPoint of entryPoints) {
-        let formattedEntryPoint = removeExtension(entryPoint).replace(
-          sourceRoot,
-          ""
-        );
-        if (formattedEntryPoint.startsWith(".")) {
-          formattedEntryPoint = formattedEntryPoint.substring(1);
-        }
-        if (formattedEntryPoint.startsWith("/")) {
-          formattedEntryPoint = formattedEntryPoint.substring(1);
-        }
-
-        packageJson.exports[`./${formattedEntryPoint}`] = {
-          import: {
-            types: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.d.ts`,
-            default: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.js`
-          },
-          require: {
-            types: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.d.cts`,
-            default: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.cjs`
-          },
-          default: {
-            types: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.d.ts`,
-            default: `./${joinPathFragments(distPaths[0] ?? "./", formattedEntryPoint)}.js`
-          }
-        };
-      }
-
-      /*packageJson.exports = Object.keys(entry).reduce((ret: Record<string, any>, key: string) => {
-          let packageJsonKey = key.startsWith("./") ? key : `./${key}`;
-          packageJsonKey = packageJsonKey.replaceAll("/index", "");
-
-          if (!ret[packageJsonKey]) {
-            ret[packageJsonKey] = {
-              import: {
-                types: `./${distPaths[0]}index.d.ts`,
-                default: `./${distPaths[0]}${key}.js`
-              },
-              require: {
-                types: `./${distPaths[0]}index.d.cts`,
-                default: `./${distPaths[0]}${key}.cjs`
-              },
-              default: {
-                types: `./${distPaths[0]}index.d.ts`,
-                default: `./${distPaths[0]}${key}.js`
-              }
-            };
-          }
-
-          return ret;
-        }, packageJson.exports);*/
-
-      packageJson.sideEffects ??= false;
-      packageJson.funding ??= workspacePackageJson.funding;
-
-      packageJson.types ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`;
-      // packageJson.typings ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`;
-      /*packageJson.typescript ??= {
-        definition: `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.d.ts`
-      };*/
-
-      packageJson.main ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.cjs`;
-      packageJson.module ??= `${distPaths.length > 1 ? distPaths[1] : distPaths[0]}index.js`;
-
-      if (options.platform && options.platform !== "node") {
-        packageJson.browser ??= `${distPaths[0]}index.global.js`;
-      }
-
-      if (options.useJsxModule) {
-        packageJson["module:jsx"] &&= `${
-          distPaths.length > 1 ? distPaths[1] : distPaths[0]
-        }index.jsx`;
-      }
-
-      if (options.includeSrc === true) {
-        let distSrc = sourceRoot.replace(projectRoot, "");
-        if (distSrc.startsWith("/")) {
-          distSrc = distSrc.substring(1);
-        }
-
-        packageJson.source ??= `${joinPathFragments(distSrc, "index.ts").replaceAll("\\", "/")}`;
-      }
-
-      packageJson.files ??= ["dist/**/*"];
-      if (options.includeSrc === true && !packageJson.files.includes("src")) {
-        packageJson.files.push("src/**/*");
-      }
-    }
-
-    packageJson.publishConfig ??= {
-      access: "public"
-    };
-
-    packageJson.description ??= workspacePackageJson.description;
-    packageJson.homepage ??= workspacePackageJson.homepage;
-    packageJson.bugs ??= workspacePackageJson.bugs;
-    packageJson.license ??= workspacePackageJson.license;
-    packageJson.keywords ??= workspacePackageJson.keywords;
+    packageJson.sideEffects ??= false;
     packageJson.funding ??= workspacePackageJson.funding;
-    packageJson.author ??= workspacePackageJson.author;
 
-    packageJson.maintainers ??= workspacePackageJson.maintainers;
-    if (!packageJson.maintainers && packageJson.author) {
-      packageJson.contributors = [packageJson.author];
+    if (options.includeSrc === true) {
+      let distSrc = sourceRoot.replace(projectRoot, "");
+      if (distSrc.startsWith("/")) {
+        distSrc = distSrc.substring(1);
+      }
+
+      packageJson.source ??= `${joinPathFragments(distSrc, "index.ts").replaceAll("\\", "/")}`;
     }
 
-    packageJson.repository ??= workspacePackageJson.repository;
-    packageJson.repository.directory ??= projectRoot
-      ? projectRoot
-      : joinPathFragments("packages", projectName);
-
-    const packageJsonPath = joinPathFragments(
-      workspaceRoot,
-      options.outputPath,
-      "package.json"
-    );
-
-    writeDebug(`⚡ Writing package.json file to: ${packageJsonPath}`, config);
-
-    // writeFileSync(
-    //   packageJsonPath,
-    //   await prettier.format(JSON.stringify(packageJson), {
-    //     ...prettierOptions,
-    //     parser: "json"
-    //   })
-    // );
-
-    writeFileSync(packageJsonPath, JSON.stringify(packageJson));
-  } else {
-    writeWarning("Skipping writing to package.json file", config);
+    packageJson.files ??= ["dist/**/*"];
+    if (options.includeSrc === true && !packageJson.files.includes("src")) {
+      packageJson.files.push("src/**/*");
+    }
   }
 
-  // #endregion Generate the package.json file
+  packageJson.publishConfig ??= {
+    access: "public"
+  };
+
+  packageJson.description ??= workspacePackageJson.description;
+  packageJson.homepage ??= workspacePackageJson.homepage;
+  packageJson.bugs ??= workspacePackageJson.bugs;
+  packageJson.license ??= workspacePackageJson.license;
+  packageJson.keywords ??= workspacePackageJson.keywords;
+  packageJson.funding ??= workspacePackageJson.funding;
+  packageJson.author ??= workspacePackageJson.author;
+
+  packageJson.maintainers ??= workspacePackageJson.maintainers;
+  if (!packageJson.maintainers && packageJson.author) {
+    packageJson.contributors = [packageJson.author];
+  }
+
+  packageJson.repository ??= workspacePackageJson.repository;
+  packageJson.repository.directory ??= projectRoot
+    ? projectRoot
+    : joinPathFragments("packages", projectName);
 
   return packageJson;
 };

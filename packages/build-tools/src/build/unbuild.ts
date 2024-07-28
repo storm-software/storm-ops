@@ -1,39 +1,39 @@
 import {
-  joinPathFragments,
   createProjectGraphAsync,
-  type ProjectConfiguration,
-  readProjectsConfigurationFromProjectGraph,
   type ExecutorContext,
-  readJsonFile
+  joinPathFragments,
+  type ProjectConfiguration,
+  readJsonFile,
+  readProjectsConfigurationFromProjectGraph
 } from "@nx/devkit";
+import { copyAssets } from "@nx/js";
+import type { AssetGlob } from "@nx/js/src/utils/assets/assets.js";
+import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils.js";
 import type { StormConfig } from "@storm-software/config";
+import {
+  applyWorkspaceProjectTokens,
+  applyWorkspaceTokens,
+  findWorkspaceRoot,
+  type ProjectTokenizerOptions,
+  writeDebug,
+  writeInfo,
+  writeTrace,
+  writeWarning
+} from "@storm-software/config-tools";
+import { removeSync } from "fs-extra";
+import { globSync } from "glob";
+import { readFileSync } from "node:fs";
+import { writeFile } from "node:fs/promises";
+import { readNxJson } from "nx/src/config/nx-json.js";
 import {
   createProjectRootMappings,
   findProjectForPath
 } from "nx/src/project-graph/utils/find-project-for-path.js";
-import type { UnbuildBuildOptions } from "../types";
-import {
-  type ProjectTokenizerOptions,
-  findWorkspaceRoot,
-  writeDebug,
-  writeInfo,
-  applyWorkspaceProjectTokens,
-  applyWorkspaceTokens,
-  writeTrace,
-  writeWarning
-} from "@storm-software/config-tools";
-import { globSync } from "glob";
-import { copyAssets } from "@nx/js";
-import type { AssetGlob } from "@nx/js/src/utils/assets/assets.js";
-import { removeSync } from "fs-extra";
-import { applyDefaultUnbuildOptions } from "../utils/apply-default-options";
-import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils.js";
-import { readFileSync } from "node:fs";
-import { writeFile } from "node:fs/promises";
-import { readNxJson } from "nx/src/config/nx-json.js";
-import { createTaskId, getAllWorkspaceTaskGraphs } from "../utils/task-graph";
-import { getUnbuildBuildOptions } from "../config/get-unbuild-config";
 import { build } from "unbuild";
+import { getUnbuildBuildOptions } from "../config/get-unbuild-config";
+import type { UnbuildBuildOptions } from "../types";
+import { applyDefaultUnbuildOptions } from "../utils/apply-default-options";
+import { createTaskId, getAllWorkspaceTaskGraphs } from "../utils/task-graph";
 
 /**
  * Build and bundle a TypeScript project using the tsup build tools.

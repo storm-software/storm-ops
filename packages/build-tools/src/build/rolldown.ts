@@ -1,40 +1,42 @@
 import {
-  joinPathFragments,
   createProjectGraphAsync,
-  type ProjectConfiguration,
-  readProjectsConfigurationFromProjectGraph,
   type ExecutorContext,
-  readJsonFile
+  joinPathFragments,
+  type ProjectConfiguration,
+  readJsonFile,
+  readProjectsConfigurationFromProjectGraph,
+  writeJsonFile
 } from "@nx/devkit";
+import { copyAssets } from "@nx/js";
+import type { AssetGlob } from "@nx/js/src/utils/assets/assets.js";
+import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils.js";
 import type { StormConfig } from "@storm-software/config";
+import {
+  applyWorkspaceProjectTokens,
+  applyWorkspaceTokens,
+  findWorkspaceRoot,
+  type ProjectTokenizerOptions,
+  writeDebug,
+  writeError,
+  writeInfo,
+  writeTrace,
+  writeWarning
+} from "@storm-software/config-tools";
+import { removeSync } from "fs-extra";
+import { globSync } from "glob";
+import { readFileSync } from "node:fs";
+import { writeFile } from "node:fs/promises";
+import { readNxJson } from "nx/src/config/nx-json.js";
 import {
   createProjectRootMappings,
   findProjectForPath
 } from "nx/src/project-graph/utils/find-project-for-path.js";
-import type { RolldownOptions } from "../types";
-import {
-  type ProjectTokenizerOptions,
-  findWorkspaceRoot,
-  writeDebug,
-  writeInfo,
-  applyWorkspaceProjectTokens,
-  applyWorkspaceTokens,
-  writeTrace,
-  writeWarning,
-  writeError
-} from "@storm-software/config-tools";
-import { globSync } from "glob";
-import { copyAssets } from "@nx/js";
-import type { AssetGlob } from "@nx/js/src/utils/assets/assets.js";
-import { removeSync } from "fs-extra";
-import { applyDefaultRolldownOptions } from "../utils/apply-default-options";
-import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils.js";
-import { readFileSync } from "node:fs";
-import { writeFile } from "node:fs/promises";
-import { readNxJson } from "nx/src/config/nx-json.js";
-import { createTaskId, getAllWorkspaceTaskGraphs } from "../utils/task-graph";
-import { getRolldownBuildOptions } from "../config/get-rolldown-config";
 import { rolldown as rolldownBuild } from "rolldown";
+import { getRolldownBuildOptions } from "../config/get-rolldown-config";
+import type { RolldownOptions } from "../types";
+import { applyDefaultRolldownOptions } from "../utils/apply-default-options";
+import { formatPackageJson } from "../utils/generate-package-json";
+import { createTaskId, getAllWorkspaceTaskGraphs } from "../utils/task-graph";
 
 /**
  * Build and bundle a TypeScript project using the tsup build tools.
@@ -276,28 +278,6 @@ export async function rolldownWithOptions(
       )
     ]);
 
-    // await Promise.allSettled(
-    //   files.map(async (file) =>
-    //     writeFile(
-    //       file,
-    //       await prettier.format(
-    //         `${
-    //           options.banner
-    //             ? options.banner.startsWith("//")
-    //               ? options.banner
-    //               : `// ${options.banner}`
-    //             : ""
-    //         }\n\n${readFileSync(file, "utf-8")}`,
-    //         {
-    //           ...prettierOptions,
-    //           parser: "typescript"
-    //         }
-    //       ),
-    //       "utf-8"
-    //     )
-    //   )
-    // );
-
     await Promise.allSettled(
       files.map(file =>
         writeFile(
@@ -344,22 +324,28 @@ export async function rolldownWithOptions(
     .filter(d => d.target.startsWith("npm:"))
     .map(d => d.target.slice(4));
 
-  // if (enhancedOptions.generatePackageJson !== false) {
-  //   writeDebug(config, "✍️   Writing package.json file");
-  //   await writeJsonFile(
-  //     joinPathFragments(workspaceRoot, enhancedOptions.outputPath, "package.json"),
-  //     packageJson
-  //   );
+  if (enhancedOptions.generatePackageJson !== false) {
+    writeDebug("✍️   Writing package.json file", config);
+    await writeJsonFile(
+      joinPathFragments(
+        workspaceRoot,
+        enhancedOptions.outputPath,
+        "package.json"
+      ),
+      await formatPackageJson(
+        config,
+        projectRoot,
+        sourceRoot,
+        projectName,
+        { ...options, external: undefined },
+        packageJson,
+        projectGraph,
+        projectsConfigurations.projects
+      )
+    );
+  }
 
-  //   enhancedOptions.external ??= [];
-  //   for (const packageName of Object.keys(packageJson.dependencies)) {
-  //     if (!enhancedOptions.external.includes(packageName)) {
-  //       enhancedOptions.external.push(packageName);
-  //     }
-  //   }
-  // }
-
-  writeDebug("🔍  Detecting entry points for the build process", config);
+  // writeDebug("🔍  Detecting entry points for the build process", config);
   //const entryPoints = getEntryPoints(config, projectRoot, sourceRoot, enhancedOptions);
 
   // writeTrace(
