@@ -177,10 +177,7 @@ export default function stormPreset(
         globals: {
           ...globals.node,
           ...globals.browser,
-          "stormGlobal": {
-            "config": true,
-            "logger": true
-          }
+          "stormGlobal": true
         }
       },
       files: [CODE_FILE],
