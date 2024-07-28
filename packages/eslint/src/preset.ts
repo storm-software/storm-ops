@@ -214,7 +214,8 @@ export default function stormPreset(
             ]
           }
         ],
-        "unicorn/prefer-logical-operator-over-ternary": "warn"
+        "unicorn/prefer-logical-operator-over-ternary": "warn",
+        "class-methods-use-this": "off"
       }
     },
 
