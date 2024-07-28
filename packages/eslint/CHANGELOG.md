@@ -1,3 +1,10 @@
+## 0.31.0 (2024-07-28)
+
+
+### Features
+
+- **eslint:** Update `class-methods-use-this` rule to be off ([480f4fa3](https://github.com/storm-software/storm-ops/commit/480f4fa3))
+
 ## 0.30.0 (2024-07-26)
 
 
