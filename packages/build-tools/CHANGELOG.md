@@ -1,3 +1,10 @@
+## 0.24.1 (2024-07-28)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with dist path provided in unbuild ([a98a543d](https://github.com/storm-software/storm-ops/commit/a98a543d))
+
 ## 0.24.0 (2024-07-28)
 
 
