@@ -1,3 +1,10 @@
+## 0.23.1 (2024-07-28)
+
+
+### Bug Fixes
+
+- **build-tools:** Added dependency bundling logic to unbuild ([9aece08d](https://github.com/storm-software/storm-ops/commit/9aece08d))
+
 ## 0.23.0 (2024-07-28)
 
 
