@@ -1,3 +1,10 @@
+## 0.26.1 (2024-07-28)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolved issues with options provided to unbuild ([58c7a2f9](https://github.com/storm-software/storm-ops/commit/58c7a2f9))
+
 ## 0.26.0 (2024-07-28)
 
 
