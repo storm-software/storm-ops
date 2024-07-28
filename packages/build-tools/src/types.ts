@@ -246,10 +246,10 @@ export type UnbuildBuildOptions = AdditionalCLIOptions &
     watch: boolean;
     verbose: boolean;
     minify: boolean;
+    tsLibs: string[];
     includeSrc: boolean;
     tsConfig: string;
     outputPath: string;
-    generatePackageJson?: boolean;
     entry?: string;
     additionalEntryPoints?: string[];
     external?: (string | RegExp)[];

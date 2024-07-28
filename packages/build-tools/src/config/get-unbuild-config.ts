@@ -9,7 +9,7 @@ import {
 } from "@nx/js/src/utils/buildable-libs-utils.js";
 import { NormalizedExecutorOptions } from "@nx/js/src/utils/schema";
 import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript";
-import { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
+import { TypeScriptCompilationOptions as BaseTypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
 import type { StormConfig } from "@storm-software/config";
 import {
   LogLevelLabel,
@@ -24,11 +24,15 @@ import { pathToFileURL } from "node:url";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import type { PackageJson } from "nx/src/utils/package-json.js";
 import tsPlugin from "rollup-plugin-typescript2";
-import ts from "typescript";
+import ts, { CompilerOptions } from "typescript";
 import { defineBuildConfig, type BuildConfig } from "unbuild";
 import type { UnbuildBuildOptions } from "../types";
 import { getFileBanner } from "../utils/get-file-banner";
 import { createTaskId, getAllWorkspaceTaskGraphs } from "../utils/task-graph";
+
+type TypeScriptCompilationOptions = BaseTypeScriptCompilationOptions & {
+  lib: CompilerOptions["lib"];
+};
 
 export async function getUnbuildBuildOptions(
   config: StormConfig,
@@ -115,7 +119,7 @@ export async function getUnbuildBuildOptions(
         options.sourceRoot,
         config.workspaceRoot
       ),
-      options.projectName
+      options
     ),
     dependencies
   );
@@ -308,23 +312,36 @@ async function getNormalizedTsConfig(
   //   declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
   // });
 
+  const lib = (
+    options.lib && options.lib.length > 0
+      ? options.lib
+      : rawTsconfig.config?.compilerOptions?.lib &&
+          rawTsconfig.config?.compilerOptions?.lib.length > 0
+        ? rawTsconfig.config?.compilerOptions?.lib
+        : ["ESNext"]
+  ) as string[];
+
   const basePath = correctPaths(workspaceRoot);
   const parsedTsconfig = tsModule.parseJsonConfigFileContent(
     {
       ...rawTsconfig.config,
       compilerOptions: {
+        module: "ESNext",
+        target: "ESNext",
+        moduleResolution: "Bundler",
         ...rawTsconfig.config?.compilerOptions,
-        module: ts.ModuleKind.ESNext,
-        moduleResolution: ts.ModuleResolutionKind.Bundler,
+        lib,
         outDir: outputPath,
+        skipLibCheck: true,
         noEmit: false,
         declaration: true,
+        declarationMap: true,
         paths: compilerOptionPaths
       },
       include: [
         joinPathFragments(
           basePath,
-          "node_modules/typescript/**/*.d.ts"
+          `node_modules/typescript/**/{${lib.map(file => `lib.${file.toLowerCase()}.d.ts`).join(",")}}`
         ).replaceAll("\\", "/"),
         ...rawTsconfig.config?.include
       ]
@@ -337,7 +354,10 @@ async function getNormalizedTsConfig(
     ...parsedTsconfig.fileNames,
     ...(await glob(
       correctPaths(
-        joinPathFragments(workspaceRoot, "node_modules/typescript/**/*.d.ts")
+        joinPathFragments(
+          workspaceRoot,
+          `node_modules/typescript/**/{${lib.map(file => `lib.${file.toLowerCase()}.d.ts`).join(",")}}`
+        )
       )
     ))
   ];
@@ -357,13 +377,14 @@ async function getNormalizedTsConfig(
 
 const createTypeScriptCompilationOptions = (
   normalizedOptions: NormalizedExecutorOptions,
-  projectName: string
+  buildOptions: UnbuildBuildOptions
 ): TypeScriptCompilationOptions => {
   return {
     outputPath: normalizedOptions.outputPath,
-    projectName,
+    projectName: buildOptions.projectName,
     projectRoot: normalizedOptions.projectRoot,
     rootDir: normalizedOptions.rootDir,
+    lib: buildOptions.tsLibs,
     tsConfig: normalizedOptions.tsConfig,
     watch: normalizedOptions.watch,
     deleteOutputPath: normalizedOptions.clean,
