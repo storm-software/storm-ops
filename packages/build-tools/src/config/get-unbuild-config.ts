@@ -18,11 +18,11 @@ import {
 } from "@storm-software/config-tools";
 import merge from "deepmerge";
 import { LogLevel, TsconfigRaw } from "esbuild";
-import { glob } from "glob";
 import { dirname, extname, join, relative } from "node:path";
 import { pathToFileURL } from "node:url";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import type { PackageJson } from "nx/src/utils/package-json.js";
+import { readTSConfig } from "pkg-types";
 import tsPlugin from "rollup-plugin-typescript2";
 import ts, { CompilerOptions } from "typescript";
 import { defineBuildConfig, type BuildConfig } from "unbuild";
@@ -222,8 +222,17 @@ export async function getUnbuildBuildOptions(
             tsPlugin({
               cwd: config.workspaceRoot,
               check: true,
-              tsconfig: options.tsConfig,
-              tsconfigOverride: tsConfig
+              tsconfigOverride: {
+                ...tsConfig,
+                compilerOptions: {
+                  ...tsConfig.compilerOptions,
+                  skipLibCheck: true,
+                  skipDefaultLibCheck: true,
+                  noEmit: false,
+                  declaration: true,
+                  declarationMap: true
+                }
+              }
             } as any)
           ] as any
         },
@@ -283,6 +292,9 @@ async function getNormalizedTsConfig(
   }
 
   const tsConfigPath = joinPathFragments(workspaceRoot, options.tsConfig);
+  const result = await readTSConfig(tsConfigPath);
+  result.compilerOptions ??= {};
+
   const tsConfigFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile);
   const tsConfig = ts.parseJsonConfigFileContent(
     tsConfigFile.config,
@@ -290,7 +302,7 @@ async function getNormalizedTsConfig(
     dirname(tsConfigPath)
   );
 
-  const compilerOptionPaths = computeCompilerOptionsPaths(
+  result.compilerOptions.paths = computeCompilerOptionsPaths(
     tsConfig,
     dependencies ?? []
   );
@@ -306,67 +318,73 @@ async function getNormalizedTsConfig(
   //   declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
   // });
 
-  const lib = (
+  result.compilerOptions.lib = (
     options.lib && options.lib.length > 0
       ? options.lib
-      : rawTsconfig.config?.compilerOptions?.lib &&
-          rawTsconfig.config?.compilerOptions?.lib.length > 0
-        ? rawTsconfig.config?.compilerOptions?.lib
+      : result.compilerOptions.lib && result.compilerOptions.lib.length > 0
+        ? result.compilerOptions.lib
         : ["ESNext"]
   ) as string[];
 
   const basePath = correctPaths(workspaceRoot);
-  const tsLibsPath = correctPaths(
-    join(
-      basePath,
-      `node_modules/typescript/**/${
-        lib.length > 1
-          ? `{${lib.map(file => `lib.${file.toLowerCase()}.d.ts`).join(",")}}`
-          : lib.length === 1 && lib[0]
-            ? `lib.${lib[0].toLowerCase()}.d.ts`
-            : "*.d.ts"
-      }`
-    )
-  );
 
-  const parsedTsconfig = tsModule.parseJsonConfigFileContent(
-    {
-      ...rawTsconfig.config,
-      compilerOptions: {
-        module: "ESNext",
-        target: "ESNext",
-        moduleResolution: "Bundler",
-        ...rawTsconfig.config?.compilerOptions,
-        lib,
-        skipLibCheck: true,
-        skipDefaultLibCheck: true,
-        noEmit: false,
-        declaration: true,
-        declarationMap: true,
-        paths: compilerOptionPaths
-      },
-      include: [tsLibsPath, ...rawTsconfig.config?.include]
-    },
-    tsModule.sys,
-    dirname(options.tsConfig)
-  );
+  const tsLibsPaths =
+    result.compilerOptions.lib.length > 0
+      ? result.compilerOptions.lib.map(file =>
+          correctPaths(
+            join(
+              workspaceRoot,
+              `node_modules/typescript/**/lib.${file.toLowerCase()}.d.ts`
+            )
+          )
+        )
+      : [
+          correctPaths(join(workspaceRoot, "node_modules/typescript/**/*.d.ts"))
+        ];
+  result.compilerOptions.include.push(...tsLibsPaths);
 
-  parsedTsconfig.fileNames = [
-    ...parsedTsconfig.fileNames,
-    ...(await glob(correctPaths(tsLibsPath)))
-  ];
+  result.compilerOptions.pathsBasePath = basePath;
+  result.compilerOptions.rootDir = basePath;
+  result.compilerOptions.baseUrl = ".";
 
-  parsedTsconfig.options.pathsBasePath = basePath;
-  parsedTsconfig.options.rootDir = basePath;
-  parsedTsconfig.options.baseUrl = ".";
+  // const parsedTsconfig = tsModule.parseJsonConfigFileContent(
+  //   {
+  //     ...rawTsconfig.config,
+  //     compilerOptions: {
+  //       module: "ESNext",
+  //       target: "ESNext",
+  //       moduleResolution: "Bundler",
+  //       ...rawTsconfig.config?.compilerOptions,
+  //       lib,
+  //       skipLibCheck: true,
+  //       skipDefaultLibCheck: true,
+  //       noEmit: false,
+  //       declaration: true,
+  //       declarationMap: true,
+  //       paths: compilerOptionPaths
+  //     },
+  //     include: [tsLibsPath, ...rawTsconfig.config?.include]
+  //   },
+  //   tsModule.sys,
+  //   dirname(options.tsConfig)
+  // );
 
-  if (parsedTsconfig.options.incremental) {
-    parsedTsconfig.options.tsBuildInfoFile = correctPaths(
-      joinPathFragments(outputPath, "tsconfig.tsbuildinfo")
-    );
-  }
+  // parsedTsconfig.fileNames = [
+  //   ...parsedTsconfig.fileNames,
+  //   ...(await glob(correctPaths(tsLibsPath)))
+  // ];
 
-  return parsedTsconfig;
+  // parsedTsconfig.options.pathsBasePath = basePath;
+  // parsedTsconfig.options.rootDir = basePath;
+  // parsedTsconfig.options.baseUrl = ".";
+
+  // if (parsedTsconfig.options.incremental) {
+  //   parsedTsconfig.options.tsBuildInfoFile = correctPaths(
+  //     joinPathFragments(outputPath, "tsconfig.tsbuildinfo")
+  //   );
+  // }
+
+  return result;
 }
 
 const createTypeScriptCompilationOptions = (
