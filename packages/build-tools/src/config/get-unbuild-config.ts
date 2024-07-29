@@ -133,7 +133,7 @@ export async function getUnbuildBuildOptions(
   const buildConfig: BuildConfig = {
     clean: false,
     name: options.projectName,
-    rootDir: options.projectRoot,
+    rootDir: config.workspaceRoot,
     entries: options.entry
       ? [
           options.entry.startsWith("./") || options.entry.startsWith("C:")
@@ -189,11 +189,8 @@ export async function getUnbuildBuildOptions(
     // mkdist builder transpiles file-to-file keeping original sources structure
     {
       builder: "mkdist",
-      input: "./src/",
-      outDir: relative(
-        options.projectRoot,
-        joinPathFragments(options.outputPath, "dist")
-      )
+      input: options.sourceRoot,
+      outDir: joinPathFragments(options.outputPath, "dist")
     }
   );
 
@@ -219,7 +216,7 @@ export async function getUnbuildBuildOptions(
 
       buildOpt.externals = [...externals, ...(options.external ?? [])];
       buildOpt.declaration ??= "compatible";
-      buildOpt.sourcemap ??= options.sourcemap;
+      buildOpt.sourcemap ??= options.sourcemap ?? true;
       buildOpt.rollup = {
         ...rollupConfig,
         emitCJS: true,
@@ -248,7 +245,7 @@ export async function getUnbuildBuildOptions(
         },
         esbuild: {
           ...rollupConfig?.esbuild,
-          minify: options.minify,
+          minify: !!options.minify,
           treeShaking: true,
           color: true,
           logLevel: (config.logLevel === LogLevelLabel.FATAL
