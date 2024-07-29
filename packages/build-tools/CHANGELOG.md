@@ -1,3 +1,10 @@
+## 0.29.0 (2024-07-29)
+
+
+### Features
+
+- **build-tools:** Update tsconfig to include `lib.*.full.d.ts` by default ([8eaf2ed6](https://github.com/storm-software/storm-ops/commit/8eaf2ed6))
+
 ## 0.28.0 (2024-07-29)
 
 
