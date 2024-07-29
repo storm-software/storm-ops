@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Storm Software - Core TypeScript Config",
+  "extends": "./base.json",
+  "compileOnSave": false,
+  "compilerOptions": {
+    /* Base Options: */
+    "allowJs": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    /* Strictness */
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    /* If transpiling with TypeScript: */
+    "sourceMap": true,
+    /* AND if you're building for a library: */
+    "declaration": true,
+    /* AND if you're building for a library in a monorepo: */
+    "composite": true,
+    "declarationMap": true
+  }
+}
