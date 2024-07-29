@@ -1,3 +1,10 @@
+## 0.18.0 (2024-07-29)
+
+
+### Features
+
+- **tsconfig:** Updates around `base` and `core` tsconfig files ([18b553df](https://github.com/storm-software/storm-ops/commit/18b553df))
+
 ## 0.17.0 (2024-07-29)
 
 
