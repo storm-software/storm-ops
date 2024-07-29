@@ -1,3 +1,10 @@
+## 0.28.0 (2024-07-29)
+
+
+### Features
+
+- **build-tools:** Added CommonJs and DTS plugin options ([bba876f7](https://github.com/storm-software/storm-ops/commit/bba876f7))
+
 ## 0.27.2 (2024-07-29)
 
 
