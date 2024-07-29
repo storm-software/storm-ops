@@ -1,3 +1,10 @@
+## 0.35.0 (2024-07-29)
+
+
+### Features
+
+- **tsconfig:** Update base TypeScript config to use `NodeNext` modules ([21f3d3f5](https://github.com/storm-software/storm-ops/commit/21f3d3f5))
+
 ## 0.34.0 (2024-07-29)
 
 
