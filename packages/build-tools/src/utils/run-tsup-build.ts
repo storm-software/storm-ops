@@ -1,18 +1,18 @@
-import { dirname, sep, join } from "node:path";
 import { esbuildDecorators } from "@anatine/esbuild-decorators";
 import { getCustomTrasformersFactory } from "@nx/js/src/executors/tsc/lib/get-custom-transformers-factory.js";
 import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options.js";
 import type { NormalizedExecutorOptions } from "@nx/js/src/utils/schema.js";
 import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation.js";
 import type { StormConfig } from "@storm-software/config";
-import { environmentPlugin } from "esbuild-plugin-environment";
-import type { TsupContext, TypeScriptBuildOptions } from "../types";
-import { defaultConfig, getConfig } from "../config";
 import { findFileName, removeExtension } from "@storm-software/config-tools";
+import { environmentPlugin } from "esbuild-plugin-environment";
+import { dirname, join, sep } from "node:path";
+import { defaultConfig, getConfig } from "../config";
+import type { TsupContext, TypeScriptBuildOptions } from "../types";
 // import { type TSConfig, readTSConfig } from "pkg-types";
-import { type Options, build as tsup, defineConfig } from "tsup";
 import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript.js";
 import { glob } from "glob";
+import { defineConfig, type Options, build as tsup } from "tsup";
 
 export const runTsupBuild = async (
   context: TsupContext,
@@ -255,6 +255,7 @@ async function getNormalizedTsConfig(
   parsedTsconfig.options.pathsBasePath = basePath;
   parsedTsconfig.options.rootDir = basePath;
   parsedTsconfig.options.baseUrl = ".";
+
   // parsedTsconfig.options.pathsBasePath = basePath;
 
   // if (parsedTsconfig.options.paths) {

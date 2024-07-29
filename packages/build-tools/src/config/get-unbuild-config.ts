@@ -291,15 +291,14 @@ async function getNormalizedTsConfig(
     );
   }
 
-  const tsConfigPath = joinPathFragments(workspaceRoot, options.tsConfig);
-  const result = await readTSConfig(tsConfigPath);
+  const result = await readTSConfig(options.tsConfig);
   result.compilerOptions ??= {};
 
-  const tsConfigFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile);
+  const tsConfigFile = ts.readConfigFile(options.tsConfig, ts.sys.readFile);
   const tsConfig = ts.parseJsonConfigFileContent(
     tsConfigFile.config,
     ts.sys,
-    dirname(tsConfigPath)
+    dirname(options.tsConfig)
   );
 
   result.compilerOptions.paths = computeCompilerOptionsPaths(
