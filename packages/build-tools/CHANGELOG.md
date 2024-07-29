@@ -1,16 +1,16 @@
 ## 0.33.1 (2024-07-29)
 
-
 ### Bug Fixes
 
-- **build-tools:** Ensure the TypeScript Declaration library files are included ([ce55fa8a](https://github.com/storm-software/storm-ops/commit/ce55fa8a))
+- **build-tools:** Ensure the TypeScript Declaration library files are included
+  ([ce55fa8a](https://github.com/storm-software/storm-ops/commit/ce55fa8a))
 
 ## 0.33.0 (2024-07-29)
 
-
 ### Features
 
-- **build-tools:** Added logging to checks for full declaration libraries ([c96ccd0a](https://github.com/storm-software/storm-ops/commit/c96ccd0a))
+- **build-tools:** Added logging to checks for full declaration libraries
+  ([c96ccd0a](https://github.com/storm-software/storm-ops/commit/c96ccd0a))
 
 ## 0.32.0 (2024-07-29)
 
