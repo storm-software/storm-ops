@@ -76,7 +76,7 @@ export const getLogFn = (
         `\n${_chalk.bold.hex(colors.error ?? "#f85149")(">")} ${_chalk.bold
           .bgHex(colors.error ?? "#f85149")
           .whiteBright(
-            " ✘ Error "
+            " ✘  Error "
           )}  ${_chalk.hex(colors.error ?? "#f85149")(formatLogMessage(message))}\n`
       );
     };

@@ -340,7 +340,8 @@ async function getNormalizedTsConfig(
       : [
           correctPaths(join(workspaceRoot, "node_modules/typescript/**/*.d.ts"))
         ];
-  result.compilerOptions.include.push(...tsLibsPaths);
+  result.include ??= [];
+  result.include.push(...tsLibsPaths);
 
   result.compilerOptions.pathsBasePath = basePath;
   result.compilerOptions.rootDir = basePath;
