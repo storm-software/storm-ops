@@ -1,3 +1,10 @@
+## 0.27.1 (2024-07-29)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with path to tsconfig file ([18f261da](https://github.com/storm-software/storm-ops/commit/18f261da))
+
 ## 0.27.0 (2024-07-29)
 
 
