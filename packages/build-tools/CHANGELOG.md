@@ -1,163 +1,165 @@
 ## 0.30.0 (2024-07-29)
 
-
 ### Features
 
-- **prettier:** Added `prettier-plugin-solidity` configuration ([2f20befd](https://github.com/storm-software/storm-ops/commit/2f20befd))
+- **prettier:** Added `prettier-plugin-solidity` configuration
+  ([2f20befd](https://github.com/storm-software/storm-ops/commit/2f20befd))
 
-- **tsconfig:** Added the `core` shared TypeScript configuration file ([de64188b](https://github.com/storm-software/storm-ops/commit/de64188b))
+- **tsconfig:** Added the `core` shared TypeScript configuration file
+  ([de64188b](https://github.com/storm-software/storm-ops/commit/de64188b))
 
 ## 0.29.0 (2024-07-29)
 
-
 ### Features
 
-- **build-tools:** Update tsconfig to include `lib.*.full.d.ts` by default ([8eaf2ed6](https://github.com/storm-software/storm-ops/commit/8eaf2ed6))
+- **build-tools:** Update tsconfig to include `lib.*.full.d.ts` by default
+  ([8eaf2ed6](https://github.com/storm-software/storm-ops/commit/8eaf2ed6))
 
 ## 0.28.0 (2024-07-29)
 
-
 ### Features
 
-- **build-tools:** Added CommonJs and DTS plugin options ([bba876f7](https://github.com/storm-software/storm-ops/commit/bba876f7))
+- **build-tools:** Added CommonJs and DTS plugin options
+  ([bba876f7](https://github.com/storm-software/storm-ops/commit/bba876f7))
 
 ## 0.27.2 (2024-07-29)
 
-
 ### Bug Fixes
 
-- **build-tools:** Resolve issue writing `include` paths ([63a1acb1](https://github.com/storm-software/storm-ops/commit/63a1acb1))
+- **build-tools:** Resolve issue writing `include` paths
+  ([63a1acb1](https://github.com/storm-software/storm-ops/commit/63a1acb1))
 
 ## 0.27.1 (2024-07-29)
 
-
 ### Bug Fixes
 
-- **build-tools:** Resolve issue with path to tsconfig file ([18f261da](https://github.com/storm-software/storm-ops/commit/18f261da))
+- **build-tools:** Resolve issue with path to tsconfig file
+  ([18f261da](https://github.com/storm-software/storm-ops/commit/18f261da))
 
 ## 0.27.0 (2024-07-29)
 
-
 ### Features
 
-- **build-tools:** Use `pkg-types` to extract TypeScript configurations ([989f81d8](https://github.com/storm-software/storm-ops/commit/989f81d8))
-
+- **build-tools:** Use `pkg-types` to extract TypeScript configurations
+  ([989f81d8](https://github.com/storm-software/storm-ops/commit/989f81d8))
 
 ### Bug Fixes
 
-- **build-tools:** Resolve issues with TypeScript library paths in unbuild ([428265de](https://github.com/storm-software/storm-ops/commit/428265de))
-
+- **build-tools:** Resolve issues with TypeScript library paths in unbuild
+  ([428265de](https://github.com/storm-software/storm-ops/commit/428265de))
 
 ### Documentation
 
-- **storm-ops:** Format monorepo projects' README.md files ([9dc9ac22](https://github.com/storm-software/storm-ops/commit/9dc9ac22))
+- **storm-ops:** Format monorepo projects' README.md files
+  ([9dc9ac22](https://github.com/storm-software/storm-ops/commit/9dc9ac22))
 
 ## 0.26.1 (2024-07-28)
 
-
 ### Bug Fixes
 
-- **build-tools:** Resolved issues with options provided to unbuild ([58c7a2f9](https://github.com/storm-software/storm-ops/commit/58c7a2f9))
+- **build-tools:** Resolved issues with options provided to unbuild
+  ([58c7a2f9](https://github.com/storm-software/storm-ops/commit/58c7a2f9))
 
 ## 0.26.0 (2024-07-28)
 
-
 ### Features
 
-- **build-tools:** Added code to include TypeScript lib declarations in bundle ([689e8a47](https://github.com/storm-software/storm-ops/commit/689e8a47))
+- **build-tools:** Added code to include TypeScript lib declarations in bundle
+  ([689e8a47](https://github.com/storm-software/storm-ops/commit/689e8a47))
 
-- **build-tools:** Added the `generatePackageJson` functionality for unbuild ([218c72d4](https://github.com/storm-software/storm-ops/commit/218c72d4))
+- **build-tools:** Added the `generatePackageJson` functionality for unbuild
+  ([218c72d4](https://github.com/storm-software/storm-ops/commit/218c72d4))
 
 ## 0.25.0 (2024-07-28)
 
-
 ### Features
 
-- **build-tools:** Calculate the tsconfig paths during unbuild process ([469485ff](https://github.com/storm-software/storm-ops/commit/469485ff))
+- **build-tools:** Calculate the tsconfig paths during unbuild process
+  ([469485ff](https://github.com/storm-software/storm-ops/commit/469485ff))
 
 ## 0.24.1 (2024-07-28)
 
-
 ### Bug Fixes
 
-- **build-tools:** Resolved issue with dist path provided in unbuild ([a98a543d](https://github.com/storm-software/storm-ops/commit/a98a543d))
+- **build-tools:** Resolved issue with dist path provided in unbuild
+  ([a98a543d](https://github.com/storm-software/storm-ops/commit/a98a543d))
 
 ## 0.24.0 (2024-07-28)
 
-
 ### Features
 
-- **build-tools:** Read tsconfig paths while generating types for unbuild ([3fad8634](https://github.com/storm-software/storm-ops/commit/3fad8634))
+- **build-tools:** Read tsconfig paths while generating types for unbuild
+  ([3fad8634](https://github.com/storm-software/storm-ops/commit/3fad8634))
 
 ## 0.23.2 (2024-07-28)
 
-
 ### Bug Fixes
 
-- **build-tools:** Resolve issues checking dependency node types ([15517428](https://github.com/storm-software/storm-ops/commit/15517428))
+- **build-tools:** Resolve issues checking dependency node types
+  ([15517428](https://github.com/storm-software/storm-ops/commit/15517428))
 
 ## 0.23.1 (2024-07-28)
 
-
 ### Bug Fixes
 
-- **build-tools:** Added dependency bundling logic to unbuild ([9aece08d](https://github.com/storm-software/storm-ops/commit/9aece08d))
+- **build-tools:** Added dependency bundling logic to unbuild
+  ([9aece08d](https://github.com/storm-software/storm-ops/commit/9aece08d))
 
 ## 0.23.0 (2024-07-28)
 
-
 ### Features
 
-- **build-tools:** Added `formatPackageJson` functionality to unbuild ([6da1a518](https://github.com/storm-software/storm-ops/commit/6da1a518))
+- **build-tools:** Added `formatPackageJson` functionality to unbuild
+  ([6da1a518](https://github.com/storm-software/storm-ops/commit/6da1a518))
 
 ## 0.22.2 (2024-07-28)
 
-
 ### Bug Fixes
 
-- **build-tools:** Split out the code to format the `package.json` file ([a47b98d5](https://github.com/storm-software/storm-ops/commit/a47b98d5))
+- **build-tools:** Split out the code to format the `package.json` file
+  ([a47b98d5](https://github.com/storm-software/storm-ops/commit/a47b98d5))
 
 ## 0.22.1 (2024-07-23)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolve issues with `json` plugin config spread ([088d498a](https://github.com/storm-software/storm-ops/commit/088d498a))
+- **eslint:** Resolve issues with `json` plugin config spread
+  ([088d498a](https://github.com/storm-software/storm-ops/commit/088d498a))
 
 ## 0.22.0 (2024-07-23)
 
-
 ### Features
 
-- **eslint:** Remove the `import` plugin from the preset ([6c8551ae](https://github.com/storm-software/storm-ops/commit/6c8551ae))
+- **eslint:** Remove the `import` plugin from the preset
+  ([6c8551ae](https://github.com/storm-software/storm-ops/commit/6c8551ae))
 
 ## 0.21.0 (2024-07-22)
 
-
 ### Features
 
-- **eslint:** Update rules around handling TypeScript function returns ([a9859cd4](https://github.com/storm-software/storm-ops/commit/a9859cd4))
+- **eslint:** Update rules around handling TypeScript function returns
+  ([a9859cd4](https://github.com/storm-software/storm-ops/commit/a9859cd4))
 
 ## 0.20.0 (2024-07-22)
 
-
 ### Features
 
-- **eslint:** Added Nx plugin to eslint preset ([1933027f](https://github.com/storm-software/storm-ops/commit/1933027f))
+- **eslint:** Added Nx plugin to eslint preset
+  ([1933027f](https://github.com/storm-software/storm-ops/commit/1933027f))
 
 ## 0.19.0 (2024-07-22)
 
-
 ### Features
 
-- **eslint:** Add config formatter to eslint preset ([050dadcd](https://github.com/storm-software/storm-ops/commit/050dadcd))
+- **eslint:** Add config formatter to eslint preset
+  ([050dadcd](https://github.com/storm-software/storm-ops/commit/050dadcd))
 
 ## 0.18.1 (2024-07-22)
 
-
 ### Bug Fixes
 
-- **storm-ops:** Resolved issue with cross-project typings ([aed5a357](https://github.com/storm-software/storm-ops/commit/aed5a357))
+- **storm-ops:** Resolved issue with cross-project typings
+  ([aed5a357](https://github.com/storm-software/storm-ops/commit/aed5a357))
 
 ## 0.18.0 (2024-07-17)
 

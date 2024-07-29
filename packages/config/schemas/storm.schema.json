@@ -207,7 +207,7 @@
                       "pattern": "^#([0-9a-f]{3}){1,2}$",
                       "minLength": 7,
                       "maxLength": 7,
-                      "default": "#22272E",
+                      "default": "#0D1017",
                       "description": "The dark background color of the workspace"
                     },
                     "light": {
@@ -225,6 +225,22 @@
                       "maxLength": 7,
                       "default": "#1fb2a6",
                       "description": "The primary brand specific color of the workspace"
+                    },
+                    "brand2": {
+                      "type": "string",
+                      "pattern": "^#([0-9a-f]{3}){1,2}$",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "default": "#7434DB",
+                      "description": "The secondary brand specific color of the workspace"
+                    },
+                    "brand3": {
+                      "type": "string",
+                      "pattern": "^#([0-9a-f]{3}){1,2}$",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "default": "#00C2CE",
+                      "description": "The tertiary brand specific color of the workspace"
                     },
                     "accent": {
                       "type": "string",
@@ -298,6 +314,12 @@
                         "brand": {
                           "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/brand"
                         },
+                        "brand2": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/brand2"
+                        },
+                        "brand3": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/brand3"
+                        },
                         "accent": {
                           "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/accent"
                         },
@@ -333,6 +355,12 @@
                         },
                         "brand": {
                           "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/brand"
+                        },
+                        "brand2": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/brand2"
+                        },
+                        "brand3": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/brand3"
                         },
                         "accent": {
                           "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/accent"

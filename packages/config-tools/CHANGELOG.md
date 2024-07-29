@@ -1,61 +1,61 @@
 ## 1.63.0 (2024-07-29)
 
-
 ### Features
 
-- **tsconfig:** Added the `core` shared TypeScript configuration file ([de64188b](https://github.com/storm-software/storm-ops/commit/de64188b))
+- **tsconfig:** Added the `core` shared TypeScript configuration file
+  ([de64188b](https://github.com/storm-software/storm-ops/commit/de64188b))
 
 ## 1.62.1 (2024-07-29)
 
-
 ### Bug Fixes
 
-- **build-tools:** Resolve issue writing `include` paths ([63a1acb1](https://github.com/storm-software/storm-ops/commit/63a1acb1))
+- **build-tools:** Resolve issue writing `include` paths
+  ([63a1acb1](https://github.com/storm-software/storm-ops/commit/63a1acb1))
 
 ## 1.62.0 (2024-07-29)
 
-
 ### Features
 
-- **build-tools:** Use `pkg-types` to extract TypeScript configurations ([989f81d8](https://github.com/storm-software/storm-ops/commit/989f81d8))
-
+- **build-tools:** Use `pkg-types` to extract TypeScript configurations
+  ([989f81d8](https://github.com/storm-software/storm-ops/commit/989f81d8))
 
 ### Bug Fixes
 
-- **build-tools:** Resolve issues with TypeScript library paths in unbuild ([428265de](https://github.com/storm-software/storm-ops/commit/428265de))
-
+- **build-tools:** Resolve issues with TypeScript library paths in unbuild
+  ([428265de](https://github.com/storm-software/storm-ops/commit/428265de))
 
 ### Documentation
 
-- **storm-ops:** Format monorepo projects' README.md files ([9dc9ac22](https://github.com/storm-software/storm-ops/commit/9dc9ac22))
+- **storm-ops:** Format monorepo projects' README.md files
+  ([9dc9ac22](https://github.com/storm-software/storm-ops/commit/9dc9ac22))
 
 ## 1.61.0 (2024-07-28)
 
-
 ### Features
 
-- **build-tools:** Calculate the tsconfig paths during unbuild process ([469485ff](https://github.com/storm-software/storm-ops/commit/469485ff))
+- **build-tools:** Calculate the tsconfig paths during unbuild process
+  ([469485ff](https://github.com/storm-software/storm-ops/commit/469485ff))
 
 ## 1.60.1 (2024-07-26)
 
-
 ### Bug Fixes
 
-- **storm-ops:** Resolved issue with missing token in CI action ([4db79d8e](https://github.com/storm-software/storm-ops/commit/4db79d8e))
+- **storm-ops:** Resolved issue with missing token in CI action
+  ([4db79d8e](https://github.com/storm-software/storm-ops/commit/4db79d8e))
 
 ## 1.60.0 (2024-07-24)
 
-
 ### Features
 
-- **linting-tools:** Added choices and parsers to `manypkg` linter CLI ([9a545641](https://github.com/storm-software/storm-ops/commit/9a545641))
+- **linting-tools:** Added choices and parsers to `manypkg` linter CLI
+  ([9a545641](https://github.com/storm-software/storm-ops/commit/9a545641))
 
 ## 1.59.0 (2024-07-19)
 
-
 ### Features
 
-- **workspace-tools:** Added the `clean-package` executor ([a1763e45](https://github.com/storm-software/storm-ops/commit/a1763e45))
+- **workspace-tools:** Added the `clean-package` executor
+  ([a1763e45](https://github.com/storm-software/storm-ops/commit/a1763e45))
 
 ## 1.58.0 (2024-07-17)
 

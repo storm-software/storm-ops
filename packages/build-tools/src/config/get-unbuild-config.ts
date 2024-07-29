@@ -23,8 +23,8 @@ import { dirname, extname, join, relative } from "node:path";
 import { pathToFileURL } from "node:url";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import type { PackageJson } from "nx/src/utils/package-json.js";
-import { readTSConfig } from "pkg-types";
 import tsPlugin from "rollup-plugin-typescript2";
+import { parse } from "tsconfck";
 import ts, { CompilerOptions } from "typescript";
 import {
   defineBuildConfig,
@@ -302,8 +302,8 @@ async function getNormalizedTsConfig(
     );
   }
 
-  const result = await readTSConfig(options.tsConfig);
-  result.compilerOptions ??= {};
+  const result = await parse(options.tsConfig, { root: workspaceRoot });
+  result.tsconfig.compilerOptions ??= {};
 
   const tsConfigFile = ts.readConfigFile(options.tsConfig, ts.sys.readFile);
   const tsConfig = ts.parseJsonConfigFileContent(
@@ -312,7 +312,7 @@ async function getNormalizedTsConfig(
     dirname(options.tsConfig)
   );
 
-  result.compilerOptions.paths = computeCompilerOptionsPaths(
+  result.tsconfig.compilerOptions.paths = computeCompilerOptionsPaths(
     tsConfig,
     dependencies ?? []
   );
@@ -328,20 +328,21 @@ async function getNormalizedTsConfig(
   //   declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
   // });
 
-  result.compilerOptions.lib = (
+  result.tsconfig.compilerOptions.lib = (
     options.lib && options.lib.length > 0
       ? options.lib
-      : result.compilerOptions.lib && result.compilerOptions.lib.length > 0
-        ? result.compilerOptions.lib
+      : result.tsconfig.compilerOptions.lib &&
+          result.tsconfig.compilerOptions.lib.length > 0
+        ? result.tsconfig.compilerOptions.lib
         : []
   ) as string[];
 
   const basePath = correctPaths(workspaceRoot);
 
-  result.include ??= [];
-  if (result.compilerOptions.lib.length > 0) {
-    result.include = result.compilerOptions.lib.reduce(
-      (ret, file) => {
+  result.tsconfig.include ??= [];
+  if (result.tsconfig.compilerOptions.lib.length > 0) {
+    result.tsconfig.include = result.tsconfig.compilerOptions.lib?.reduce(
+      (ret: string[], file: string) => {
         const fullLibPath = `${file.slice(0, -5)}.full.d.ts`;
         if (existsSync(fullLibPath) && !ret.includes(fullLibPath)) {
           ret.push(fullLibPath);
@@ -349,7 +350,7 @@ async function getNormalizedTsConfig(
 
         return ret;
       },
-      result.compilerOptions.lib.map(file =>
+      result.tsconfig.compilerOptions.lib?.map(file =>
         correctPaths(
           join(
             workspaceRoot,
@@ -359,14 +360,14 @@ async function getNormalizedTsConfig(
       )
     );
   } else {
-    result.include.push(
+    result.tsconfig.include.push(
       correctPaths(join(workspaceRoot, "node_modules/typescript/lib/*.d.ts"))
     );
   }
 
-  result.compilerOptions.pathsBasePath = basePath;
-  result.compilerOptions.rootDir = basePath;
-  result.compilerOptions.baseUrl = ".";
+  result.tsconfig.compilerOptions.pathsBasePath = basePath;
+  result.tsconfig.compilerOptions.rootDir = basePath;
+  result.tsconfig.compilerOptions.baseUrl = ".";
 
   // const parsedTsconfig = tsModule.parseJsonConfigFileContent(
   //   {
@@ -405,7 +406,7 @@ async function getNormalizedTsConfig(
   //   );
   // }
 
-  return result;
+  return result.tsconfig;
 }
 
 const createTypeScriptCompilationOptions = (

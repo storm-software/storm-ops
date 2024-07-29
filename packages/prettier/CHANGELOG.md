@@ -1,30 +1,30 @@
 ## 0.12.0 (2024-07-29)
 
-
 ### Features
 
-- **prettier:** Added `prettier-plugin-solidity` configuration ([2f20befd](https://github.com/storm-software/storm-ops/commit/2f20befd))
+- **prettier:** Added `prettier-plugin-solidity` configuration
+  ([2f20befd](https://github.com/storm-software/storm-ops/commit/2f20befd))
 
 ## 0.11.1 (2024-07-23)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolve issues with `json` plugin config spread ([088d498a](https://github.com/storm-software/storm-ops/commit/088d498a))
+- **eslint:** Resolve issues with `json` plugin config spread
+  ([088d498a](https://github.com/storm-software/storm-ops/commit/088d498a))
 
 ## 0.11.0 (2024-07-23)
 
-
 ### Features
 
-- **prettier:** Export default `config.json` and `tailwindcss.json` from package ([c8711a52](https://github.com/storm-software/storm-ops/commit/c8711a52))
+- **prettier:** Export default `config.json` and `tailwindcss.json` from package
+  ([c8711a52](https://github.com/storm-software/storm-ops/commit/c8711a52))
 
 ## 0.10.0 (2024-07-23)
 
-
 ### Features
 
-- **prettier:** Added the `prettier-plugin-organize-imports` plugin ([1f7b24ee](https://github.com/storm-software/storm-ops/commit/1f7b24ee))
+- **prettier:** Added the `prettier-plugin-organize-imports` plugin
+  ([1f7b24ee](https://github.com/storm-software/storm-ops/commit/1f7b24ee))
 
 ## 0.9.0 (2024-07-16)
 

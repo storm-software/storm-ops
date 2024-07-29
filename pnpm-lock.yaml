@@ -259,9 +259,6 @@ importers:
       glob:
         specifier: 10.4.2
         version: 10.4.2
-      pkg-types:
-        specifier: 1.1.1
-        version: 1.1.1
       rolldown:
         specifier: 0.10.4
         version: 0.10.4
@@ -283,6 +280,9 @@ importers:
       sass:
         specifier: 1.77.6
         version: 1.77.6
+      tsconfck:
+        specifier: 3.1.1
+        version: 3.1.1(typescript@5.4.5)
       tsup:
         specifier: 8.0.0
         version: 8.0.0(patch_hash=drf3yjuy45jg6lcmd5ihmmvct4)(@microsoft/api-extractor@7.46.2(@types/node@20.14.11))(@swc/core@1.5.29(@swc/helpers@0.5.11))(postcss@8.4.38)(ts-node@10.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@20.14.11)(typescript@5.4.5))(typescript@5.4.5)
@@ -11576,6 +11576,16 @@ packages:
       '@swc/core':
         optional: true
       '@swc/wasm':
+        optional: true
+
+  tsconfck@3.1.1:
+    resolution: {integrity: sha512-00eoI6WY57SvZEVjm13stEVE90VkEdJAFGgpFLTsZbJyW/LwFQ7uQxJHWpZ2hzSWgCPKc9AnBnNP+0X7o3hAmQ==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+    peerDependencies:
+      typescript: ^5.0.0
+    peerDependenciesMeta:
+      typescript:
         optional: true
 
   tsconfig-paths-webpack-plugin@4.0.0:
@@ -27110,6 +27120,10 @@ snapshots:
     optionalDependencies:
       '@swc/core': 1.5.29(@swc/helpers@0.5.11)
       '@swc/wasm': 1.6.5
+
+  tsconfck@3.1.1(typescript@5.4.5):
+    optionalDependencies:
+      typescript: 5.4.5
 
   tsconfig-paths-webpack-plugin@4.0.0:
     dependencies:
