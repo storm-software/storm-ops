@@ -341,8 +341,23 @@ async function getNormalizedTsConfig(
 
   result.tsconfig.include ??= [];
   if (result.tsconfig.compilerOptions.lib.length > 0) {
-    result.tsconfig.include = result.tsconfig.compilerOptions.lib?.reduce(
-      (ret: string[], file: string) => {
+    result.tsconfig.include = result.tsconfig.compilerOptions.lib
+      ?.map(file =>
+        correctPaths(
+          join(
+            config.workspaceRoot,
+            `node_modules/typescript/lib/lib.${file.toLowerCase()}.d.ts`
+          )
+        )
+      )
+      ?.reduce((ret: string[], file: string) => {
+        writeTrace(
+          `Checking if TypeScript Declarations library exists: ${file}`
+        );
+        if (fileExists(file) && !ret.includes(file)) {
+          ret.push(file);
+        }
+
         const fullLibPath = `${file.slice(0, -5)}.full.d.ts`;
         writeTrace(
           `Checking if full TypeScript Declarations library exists: ${fullLibPath}`
@@ -353,16 +368,7 @@ async function getNormalizedTsConfig(
         }
 
         return ret;
-      },
-      result.tsconfig.compilerOptions.lib?.map(file =>
-        correctPaths(
-          join(
-            config.workspaceRoot,
-            `node_modules/typescript/lib/lib.${file.toLowerCase()}.d.ts`
-          )
-        )
-      )
-    );
+      }, []);
   } else {
     result.tsconfig.include.push(
       correctPaths(

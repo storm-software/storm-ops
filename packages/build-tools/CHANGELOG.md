@@ -1,16 +1,16 @@
 ## 0.32.0 (2024-07-29)
 
-
 ### Features
 
-- **build-tools:** Update unbuild process to use the `tsconfck` package ([d0e4dbf6](https://github.com/storm-software/storm-ops/commit/d0e4dbf6))
+- **build-tools:** Update unbuild process to use the `tsconfck` package
+  ([d0e4dbf6](https://github.com/storm-software/storm-ops/commit/d0e4dbf6))
 
 ## 0.31.0 (2024-07-29)
 
-
 ### Features
 
-- **config:** Added the `brand2` and `brand3` color tokens ([58705631](https://github.com/storm-software/storm-ops/commit/58705631))
+- **config:** Added the `brand2` and `brand3` color tokens
+  ([58705631](https://github.com/storm-software/storm-ops/commit/58705631))
 
 ## 0.30.0 (2024-07-29)
 
