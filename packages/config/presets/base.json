@@ -22,6 +22,8 @@
       "background": "#f4f4f5",
       "foreground": "#1d232a",
       "brand": "#1fb2a6",
+      "brand2": "#7434DB",
+      "brand3": "#00C2CE",
       "help": "#8250df",
       "success": "#087f5b",
       "info": "#0550ae",
@@ -29,9 +31,11 @@
       "error": "#a40e26"
     },
     "dark": {
-      "background": "#22272E",
+      "background": "#0D1017",
       "foreground": "#fcfcf5",
       "brand": "#1fb2a6",
+      "brand2": "#7434DB",
+      "brand3": "#00C2CE",
       "help": "#8256D0",
       "success": "#087f5b",
       "info": "#316DCA",

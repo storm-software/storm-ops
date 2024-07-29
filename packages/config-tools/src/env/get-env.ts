@@ -1,4 +1,3 @@
-import type { LogLevelLabel } from "../types";
 import {
   type ColorConfigInput,
   type DarkThemeColorConfigInput,
@@ -8,8 +7,9 @@ import {
   type StormConfig,
   COLOR_KEYS
 } from "@storm-software/config";
-import { getLogLevelLabel } from "../utilities";
 import type { DeepPartial } from "../../declarations.d";
+import type { LogLevelLabel } from "../types";
+import { getLogLevelLabel } from "../utilities";
 import { correctPaths } from "../utilities/correct-paths";
 
 /**
@@ -192,6 +192,8 @@ const getSingleThemeColorConfigEnv = (
     dark: process.env[`${prefix}DARK`],
     light: process.env[`${prefix}LIGHT`],
     brand: process.env[`${prefix}BRAND`],
+    brand2: process.env[`${prefix}BRAND2`],
+    brand3: process.env[`${prefix}BRAND3`],
     accent: process.env[`${prefix}ACCENT`],
     help: process.env[`${prefix}HELP`],
     success: process.env[`${prefix}SUCCESS`],
@@ -228,6 +230,8 @@ const getBaseThemeColorConfigEnv = <
     foreground: process.env[`${prefix}FOREGROUND`],
     background: process.env[`${prefix}BACKGROUND`],
     brand: process.env[`${prefix}BRAND`],
+    brand2: process.env[`${prefix}BRAND2`],
+    brand3: process.env[`${prefix}BRAND3`],
     accent: process.env[`${prefix}ACCENT`],
     help: process.env[`${prefix}HELP`],
     success: process.env[`${prefix}SUCCESS`],

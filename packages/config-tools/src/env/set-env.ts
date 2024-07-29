@@ -1,4 +1,3 @@
-import { LogLevel } from "../types";
 import type {
   ColorConfigMap,
   DarkThemeColorConfig,
@@ -7,8 +6,9 @@ import type {
   SingleThemeColorConfig,
   StormConfig
 } from "@storm-software/config";
-import { getLogLevel } from "../utilities/get-log-level";
+import { LogLevel } from "../types";
 import { correctPaths } from "../utilities/correct-paths";
+import { getLogLevel } from "../utilities/get-log-level";
 
 /**
  * Get the config for an extension module of Storm workspace from environment variables
@@ -257,6 +257,12 @@ const setSingleThemeColorConfigEnv = (
   if (config.brand) {
     process.env[`${prefix}BRAND`] = config.brand;
   }
+  if (config.brand2) {
+    process.env[`${prefix}BRAND2`] = config.brand2;
+  }
+  if (config.brand3) {
+    process.env[`${prefix}BRAND3`] = config.brand3;
+  }
   if (config.accent) {
     process.env[`${prefix}ACCENT`] = config.accent;
   }
@@ -302,6 +308,12 @@ const setBaseThemeColorConfigEnv = (
   }
   if (config.brand) {
     process.env[`${prefix}BRAND`] = config.brand;
+  }
+  if (config.brand2) {
+    process.env[`${prefix}BRAND2`] = config.brand2;
+  }
+  if (config.brand3) {
+    process.env[`${prefix}BRAND3`] = config.brand3;
   }
   if (config.accent) {
     process.env[`${prefix}ACCENT`] = config.accent;

@@ -1,10 +1,10 @@
-import { existsSync, readFileSync } from "node:fs";
-import { join } from "node:path";
 import {
-  type StormConfig,
   type ColorConfig,
+  type StormConfig,
   StormConfigSchema
 } from "@storm-software/config";
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import { findWorkspaceRoot } from "./find-workspace-root";
 
 /**
@@ -15,6 +15,8 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
     background: "#f4f4f5",
     foreground: "#1d232a",
     brand: "#1fb2a6",
+    brand2: "#7434DB",
+    brand3: "#00C2CE",
     help: "#8250df",
     success: "#087f5b",
     info: "#0550ae",
@@ -25,6 +27,8 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
     background: "#22272E",
     foreground: "#fcfcf5",
     brand: "#1fb2a6",
+    brand2: "#7434DB",
+    brand3: "#00C2CE",
     help: "#8256D0",
     success: "#087f5b",
     info: "#316DCA",

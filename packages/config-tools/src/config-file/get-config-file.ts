@@ -1,6 +1,6 @@
+import type { StormConfigInput } from "@storm-software/config";
 import { loadConfig, ResolvedConfig, type LoadConfigOptions } from "c12";
 import merge from "deepmerge";
-import type { StormConfigInput } from "@storm-software/config";
 import { writeTrace } from "../utilities";
 import { findWorkspaceRoot } from "../utilities/find-workspace-root";
 
