@@ -1,4 +1,3 @@
-import * as path from "node:path";
 import {
   addDependenciesToPackageJson,
   addProjectConfiguration,
@@ -8,6 +7,7 @@ import {
   updateJson,
   type Tree
 } from "@nx/devkit";
+import * as path from "node:path";
 import { withRunGenerator } from "../../base/base-generator";
 import {
   nodeVersion,
@@ -164,7 +164,7 @@ export async function presetGeneratorFn(
     json.scripts.lint = "pnpm storm-lint all --skip-cspell --skip-alex";
     json.scripts.commit = "pnpm storm-git commit";
     json.scripts["readme-gen"] =
-      'pnpm storm-git readme-gen --templates="docs/readme-templates"';
+      'pnpm storm-git readme-gen --templates="tools/readme-templates"';
     json.scripts["api-extractor"] =
       'pnpm storm-docs api-extractor --outputPath="docs/api-reference" --clean';
     json.scripts.release = "pnpm storm-git release";

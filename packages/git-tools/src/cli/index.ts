@@ -1,4 +1,3 @@
-import { Command, Option } from "commander";
 import type { StormConfig } from "@storm-software/config";
 import {
   exitWithError,
@@ -7,6 +6,7 @@ import {
   writeInfo,
   writeSuccess
 } from "@storm-software/config-tools";
+import { Command, Option } from "commander";
 import { runCommit } from "../commit";
 import { runReadme } from "../readme";
 import { runRelease } from "../release";
@@ -49,7 +49,7 @@ export function createProgram(config: StormConfig) {
     const readmeTemplatePath = new Option(
       "--templates <path>",
       "The templates directory to use when generating the README.md files."
-    ).default("./docs/readme-templates");
+    ).default("./tools/readme-templates");
 
     const readmePackageName = new Option(
       "--project <project>",

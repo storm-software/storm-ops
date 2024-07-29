@@ -24,7 +24,7 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
     error: "#a40e26"
   },
   dark: {
-    background: "#22272E",
+    background: "#0D1017",
     foreground: "#fcfcf5",
     brand: "#1fb2a6",
     brand2: "#7434DB",

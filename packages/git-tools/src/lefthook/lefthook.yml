@@ -54,7 +54,7 @@ pre-commit:
         --config="@storm-software/linting-tools/ls-lint/ls-lint.yml"'
     readme-gen:
       glob: "**/{README.md,package.json,executors.json,generators.json}"
-      run: 'pnpm exec storm-git readme-gen --templates="./docs/readme-templates"'
+      run: 'pnpm exec storm-git readme-gen --templates="./tools/readme-templates"'
       stage_fixed: true
     format:
       glob: "**/*.*"

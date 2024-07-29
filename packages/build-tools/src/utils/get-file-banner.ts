@@ -29,17 +29,17 @@ export const getFileBanner = (name: string, commentStart = "//") => {
 ${commentStart} -------------------------------------------------------------------
 ${commentStart}
 ${commentStart}                         ${padding}Storm Software
-${commentStart}                 ⚡ ${titleName ? `${titleName} - ` : ""}${name}
+${commentStart}                 ⚡ ${titleName ? (name ? `${titleName} - ` : titleName) : ""}${name && name.length > 0 ? name.charAt(0).toUpperCase() + name.slice(1) : name}
 ${commentStart}
 ${commentStart} This code was released as part of the ${titleName ? `${titleName} ` : ""}project. ${
     titleName ? titleName : "This project"
   }
 ${commentStart} is maintained by Storm Software under the ${
-    (process.env.STORM_LICENSE ?? "Apache 2.0")
+    (process.env.STORM_LICENSE ?? "Apache-2.0")
       ?.toLowerCase()
       ?.includes("license")
-      ? process.env.STORM_LICENSE ?? "Apache 2.0"
-      : `${process.env.STORM_LICENSE ?? "Apache 2.0"} License`
+      ? process.env.STORM_LICENSE ?? "Apache-2.0"
+      : `${process.env.STORM_LICENSE ?? "Apache-2.0"} License`
   }, and is
 ${commentStart} free for commercial and private use. For more information, please visit
 ${commentStart} our licensing page.

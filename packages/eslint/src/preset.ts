@@ -4,6 +4,7 @@ import tsEslint from "typescript-eslint";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 // @ts-ignore
 import nxPlugin from "@nx/eslint-plugin";
+import { getFileBanner } from "@storm-software/build-tools";
 import type { Linter } from "eslint";
 import json from "eslint-plugin-json";
 import jsxA11y from "eslint-plugin-jsx-a11y";
@@ -21,6 +22,7 @@ import reactRules from "./rules/react";
 import reactHooksRules from "./rules/react-hooks";
 import tsdocRules from "./rules/ts-docs";
 import { CODE_BLOCK, CODE_FILE, TS_FILE } from "./utils/constants";
+import headerEslint from "./utils/create-flat-header-plugin";
 import { formatConfig } from "./utils/format-config";
 
 export type PresetModuleBoundaryDepConstraints = {
@@ -61,7 +63,7 @@ export default function stormPreset(
   },
   ...userConfigs: TypedFlatConfig[]
 ): Linter.FlatConfig[] {
-  const rules: RuleOptions = {
+  const rules = {
     "unicorn/number-literal-case": 0,
     "unicorn/template-indent": 0,
     "unicorn/prevent-abbreviations": 0,
@@ -160,6 +162,14 @@ export default function stormPreset(
     //   files: [CODE_FILE],
     //   rules: importRules
     // },
+
+    // Header
+    // https://www.npmjs.com/package/eslint-plugin-header
+    { plugins: { header: headerEslint } },
+    {
+      files: [CODE_FILE],
+      rules: { "header/header": [2, "block", getFileBanner("")] }
+    },
 
     // TSDoc
     // https://www.npmjs.com/package/eslint-plugin-tsdoc

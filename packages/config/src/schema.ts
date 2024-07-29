@@ -6,7 +6,7 @@ const DarkColorSchema = z
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
-  .default("#22272E")
+  .default("#0D1017")
   .describe("The dark background color of the workspace");
 const LightColorSchema = z
   .string()

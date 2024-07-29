@@ -1,207 +1,308 @@
 import {
-  existsSync,
-  readFileSync,
-  readdirSync,
-  rmSync,
-  writeFileSync
-} from "node:fs";
-import { join } from "node:path";
+  addDependenciesToPackageJson,
+  addProjectConfiguration,
+  formatFiles,
+  generateFiles,
+  joinPathFragments,
+  updateJson,
+  type Tree
+} from "@nx/devkit";
+import * as path from "node:path";
+import { withRunGenerator } from "../../base/base-generator";
 import {
-  createProjectGraphAsync,
-  readProjectsConfigurationFromProjectGraph
-} from "nx/src/project-graph/project-graph.js";
-import type { ReadMeOptions } from "../types";
-import { findFileName, findFilePath } from "../utilities/file-utils";
-import { doctoc } from "./doctoc";
-import { getExecutorMarkdown, getGeneratorMarkdown } from "./nx-docs";
-import { createTokens, formatReadMeFromSectionName } from "./utils";
+  nodeVersion,
+  pnpmVersion,
+  typescriptVersion
+} from "../../utils/versions";
+import type { PresetGeneratorSchema } from "./schema";
 
-export const runReadme = async ({
-  templates = "./docs/readme-templates",
-  project,
-  output,
-  clean = true,
-  prettier = true
-}: ReadMeOptions) => {
-  const projectGraph = await createProjectGraphAsync({
-    exitOnError: true
-  });
-  const projectConfigs =
-    readProjectsConfigurationFromProjectGraph(projectGraph);
+export async function presetGeneratorFn(
+  tree: Tree,
+  options: PresetGeneratorSchema
+) {
+  const projectRoot = ".";
 
-  if (project) {
-    await runProjectReadme(project, {
-      templates,
-      output,
-      clean,
-      prettier
-    });
-  } else {
-    for (const projectName of Object.keys(projectConfigs.projects)) {
-      await runProjectReadme(projectName, {
-        templates,
-        output,
-        clean,
-        prettier
-      });
-    }
-  }
-};
+  options.description ??= `⚡The ${
+    options.namespace ? options.namespace : options.name
+  } monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.`;
+  options.namespace ??= options.organization;
 
-export const runProjectReadme = async (
-  projectName: string,
-  { templates, output, clean = true, prettier = true }: ReadMeOptions
-) => {
-  const projectGraph = await createProjectGraphAsync({
-    exitOnError: true
-  });
-  const projectConfigs =
-    readProjectsConfigurationFromProjectGraph(projectGraph);
-
-  const project = projectConfigs.projects[projectName];
-
-  const inputFile = join(project?.root ?? "./", "README.md");
-  if (existsSync(inputFile)) {
-    console.info(`Formatting ${projectName}'s README file at "${inputFile}"`);
-
-    const outputFilePath = output
-      ? output.includes("README.md")
-        ? output
-        : join(findFilePath(output), "README.md")
-      : inputFile;
-
-    if (clean && existsSync(outputFilePath)) {
-      if (outputFilePath === inputFile) {
-        console.warn(
-          "Skipping cleaning since output directory + file name is the same as input directory + file name."
-        );
-      } else {
-        console.info(
-          "Cleaning output directory (set `clean` parameter to false to skip)..."
-        );
-        rmSync(outputFilePath);
-      }
-    }
-
-    let newContent = readdirSync(templates).reduce(
-      (ret: string, fileName: string) => {
-        console.info(`Using template "${fileName}" to format file...`);
-
-        const templateFilePath = join(templates, fileName);
-        const templateContent = readFileSync(templateFilePath, "utf8");
-
-        const section = findFileName(templateFilePath)
-          .replace(templates, "")
-          .replace("README.", "")
-          .replace(".md", "");
-
-        return formatReadMeFromSectionName(section, templateContent, ret);
-      },
-      readFileSync(inputFile, "utf8")
-    );
-
-    let packageName = projectName;
-    const packageJsonPath = join(findFilePath(inputFile), "package.json");
-    if (existsSync(packageJsonPath)) {
-      const packageJson = JSON.parse(
-        readFileSync(packageJsonPath, "utf8") ?? "{}"
-      );
-      if (packageJson?.version) {
-        console.info("Adding version...");
-        newContent = newContent.replace(
-          "<!-- VERSION -->",
-          packageJson.version
-        );
-      }
-      if (packageJson?.name) {
-        packageName = packageJson.name;
-      }
-    }
-
-    if (newContent.includes("<!-- START executors -->")) {
-      const executorsJsonPath = join(findFilePath(inputFile), "executors.json");
-      if (existsSync(executorsJsonPath)) {
-        const executorsJson = JSON.parse(
-          readFileSync(executorsJsonPath, "utf8") ?? "{}"
-        );
-        if (executorsJson?.executors) {
-          console.info("Adding executors...");
-
-          newContent = formatReadMeFromSectionName(
-            "executors",
-            getExecutorMarkdown(packageName, executorsJsonPath, executorsJson),
-            newContent
-          );
+  addProjectConfiguration(tree, `@${options.namespace}/${options.name}`, {
+    root: projectRoot,
+    projectType: "application",
+    targets: {
+      "local-registry": {
+        executor: "@nx/js:verdaccio",
+        options: {
+          port: 4873,
+          config: ".verdaccio/config.yml",
+          storage: "tmp/local-registry/storage"
         }
       }
     }
+  });
 
-    if (newContent.includes("<!-- START generators -->")) {
-      const generatorsJsonPath = join(
-        findFilePath(inputFile),
-        "generators.json"
-      );
-      if (existsSync(generatorsJsonPath)) {
-        const generatorsJson = JSON.parse(
-          readFileSync(generatorsJsonPath, "utf8") ?? "{}"
-        );
-        if (generatorsJson?.generators) {
-          console.info("Adding generators...");
+  updateJson(tree, "package.json", json => {
+    json.scripts = json.scripts || {};
 
-          newContent = formatReadMeFromSectionName(
-            "generators",
-            getGeneratorMarkdown(
-              packageName,
-              generatorsJsonPath,
-              generatorsJson
-            ),
-            newContent
-          );
+    json.version = "0.0.0";
+    json.triggerEmptyDevReleaseByIncrementingThisNumber = 0;
+    json.private = true;
+    json.keywords ??= [
+      options.name,
+      options.namespace,
+      "storm",
+      "stormstack",
+      "storm-ops",
+      "acidic",
+      "acidic-lang",
+      "acidic-model",
+      "impact",
+      "nextjs",
+      "prisma",
+      "zenstack",
+      "hasura",
+      "strapi",
+      "graphql",
+      "sullivanpj",
+      "monorepo"
+    ];
+
+    json.homepage ??= "https://stormsoftware.com";
+    json.bugs ??= {
+      url: "https://stormsoftware.com/support",
+      email: "support@stormsoftware.com"
+    };
+
+    json.license = "Apache-2.0";
+    json.author ??= {
+      name: "Storm Software",
+      email: "contact@stormsoftware.com",
+      url: "https://stormsoftware.com"
+    };
+
+    json.funding ??= {
+      type: "github",
+      url: "https://github.com/sponsors/storm-software"
+    };
+
+    json.namespace ??= `@${options.namespace}`;
+    json.description ??= options.description;
+
+    options.repositoryUrl ??= `https://github.com/${options.organization}/${options.name}}`;
+    json.repository ??= {
+      type: "github",
+      url: `${options.repositoryUrl}.git`
+    };
+
+    // generate a start script into the package.json
+
+    json.scripts.adr = "pnpm log4brains adr new";
+    json.scripts["adr-preview"] = "pnpm log4brains preview";
+    json.scripts.prepare = "pnpm add lefthook -w && pnpm lefthook install";
+    json.scripts.preinstall = "npx -y only-allow pnpm";
+    json.scripts["install:csb"] =
+      "corepack enable && pnpm install --frozen-lockfile";
+
+    json.scripts.clean = "rimraf dist";
+    json.scripts.prebuild = "pnpm clean";
+    json.scripts["clean:tools"] = "rimraf dist/tools";
+    json.scripts["clean:docs"] = "rimraf dist/docs";
+
+    if (!options.includeApps) {
+      json.scripts["clean:packages"] = "rimraf dist/packages";
+    } else {
+      json.scripts["clean:apps"] = "rimraf dist/apps";
+      json.scripts["clean:libs"] = "rimraf dist/libs";
+      json.scripts["clean:storybook"] = "rimraf dist/storybook";
+    }
+
+    json.scripts.build = "nx affected -t build --parallel=5";
+    json.scripts["build:all"] = "nx run-many -t build --all --parallel=5";
+    json.scripts["build:production"] =
+      "nx run-many -t build --all --prod --parallel=5";
+    json.scripts["build:tools"] =
+      "nx run-many -t build --projects=tools/* --parallel=5";
+    json.scripts["build:docs"] =
+      "nx run-many -t build --projects=docs/* --parallel=5";
+
+    if (!options.includeApps) {
+      json.scripts["build:packages"] =
+        "nx run-many -t build --projects=packages/* --parallel=5";
+    } else {
+      json.scripts["build:apps"] =
+        "nx run-many -t build --projects=apps/* --parallel=5";
+      json.scripts["build:libs"] =
+        "nx run-many -t build --projects=libs/* --parallel=5";
+      json.scripts["build:storybook"] = "storybook build -s public";
+    }
+
+    json.scripts.nx = "nx";
+    json.scripts.graph = "nx graph";
+    json.scripts.lint = "pnpm storm-lint all --skip-cspell --skip-alex";
+
+    if (options.includeApps) {
+      json.scripts.start = "nx serve";
+      json.scripts.storybook = "pnpm storybook dev -p 6006";
+    }
+
+    json.scripts.format = "nx format:write";
+    json.scripts.help = "nx help";
+    json.scripts["dep-graph"] = "nx dep-graph";
+    json.scripts["local-registry"] =
+      `nx local-registry @${options.namespace}/${options.name}`;
+
+    json.scripts.e2e = "nx e2e";
+
+    if (options.includeApps) {
+      json.scripts.test = "nx test && pnpm test:storybook";
+      json.scripts["test:storybook"] = "pnpm test-storybook";
+    } else {
+      json.scripts.test = "nx test";
+    }
+
+    json.scripts.lint = "pnpm storm-lint all --skip-cspell --skip-alex";
+    json.scripts.commit = "pnpm storm-git commit";
+    json.scripts["readme-gen"] =
+      'pnpm storm-git readme-gen --templates="tools/readme-templates"';
+    json.scripts["api-extractor"] =
+      'pnpm storm-docs api-extractor --outputPath="docs/api-reference" --clean';
+    json.scripts.release = "pnpm storm-git release";
+
+    json.packageManager ??= `pnpm@${pnpmVersion}`;
+    json.engines = {
+      node: `>=${nodeVersion}`,
+      pnpm: `>=${pnpmVersion}`
+    };
+
+    if (options.includeApps) {
+      json.bundlewatch = {
+        files: [
+          {
+            path: "dist/*/*.js",
+            maxSize: "200kB"
+          }
+        ],
+        ci: {
+          trackBranches: ["main", "alpha", "beta"]
         }
-      }
+      };
+
+      json.nextBundleAnalysis = {
+        buildOutputDirectory: "dist/apps/web/app/.next"
+      };
     }
 
-    if (prettier) {
-      const prettier = await import("prettier");
-      console.info("Formatting output with Prettier");
+    json.nx = {
+      includedScripts: ["lint", "format"]
+    };
 
-      newContent = await prettier.format(newContent, {
-        parser: "markdown",
-        trailingComma: "none",
-        tabWidth: 2,
-        semi: true,
-        singleQuote: false,
-        quoteProps: "preserve",
-        insertPragma: false,
-        bracketSameLine: true,
-        printWidth: 80,
-        bracketSpacing: true,
-        arrowParens: "avoid",
-        endOfLine: "lf"
-      });
-    }
+    return json;
+  });
 
-    console.info(`Writing output markdown to "${outputFilePath}"`);
-    writeFileSync(outputFilePath, newContent);
+  generateFiles(tree, path.join(__dirname, "files"), projectRoot, {
+    ...options,
+    pnpmVersion,
+    nodeVersion
+  });
+  await formatFiles(tree);
 
-    try {
-      const { start, end } = createTokens("doctoc");
-      if (newContent.includes(start) || newContent.includes(end)) {
-        console.info("Formatting Table of Contents...");
+  let dependencies: Record<string, string> = {
+    "@commitlint/cli": "19.2.1",
+    "@ls-lint/ls-lint": "2.2.3",
+    "@ltd/j-toml": "1.38.0",
+    "@nx/devkit": "19.1.0",
+    "@nx/esbuild": "19.1.0",
+    "@nx/eslint": "19.1.0",
+    "@nx/js": "19.1.0",
+    "@nx/plugin": "19.1.0",
+    "@nx/workspace": "19.1.0",
+    "@storm-software/config": "latest",
+    "@storm-software/config-tools": "latest",
+    "@storm-software/git-tools": "latest",
+    "@storm-software/linting-tools": "latest",
+    "@storm-software/testing-tools": "latest",
+    "@storm-software/workspace-tools": "latest",
+    "@storm-software/eslint": "latest",
+    "@storm-software/eslint-plugin": "latest",
+    "@storm-software/prettier": "latest",
+    "@swc-node/register": "1.9.0",
+    "@swc/cli": "0.3.12",
+    "@swc/core": "1.4.12",
+    "@swc/helpers": "0.5.8",
+    "@swc/wasm": "1.4.12",
+    "@taplo/cli": "0.7.0",
+    "@types/jest": "29.5.12",
+    "@types/node": "20.12.5",
+    "conventional-changelog-conventionalcommits": "7.0.2",
+    "esbuild": "0.20.2",
+    "esbuild-register": "3.5.0",
+    "eslint": "^9.0.0",
+    "eslint-config-storm-software": "latest",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "29.7.0",
+    "jest-environment-jsdom": "29.7.0",
+    "jest-environment-node": "29.7.0",
+    "lefthook": "1.6.8",
+    "nx": "19.1.0",
+    "prettier": "3.2.5",
+    "rimraf": "5.0.5",
+    "ts-jest": "29.1.2",
+    "ts-loader": "9.5.1",
+    "ts-node": "10.9.2",
+    "tsconfig-paths": "4.2.0",
+    "tslib": "2.6.2",
+    "typescript": typescriptVersion,
+    "verdaccio": "5.30.3",
+    "knip": "5.25.2",
+    "sherif": "0.10.0"
+  };
 
-        doctoc(outputFilePath);
-      } else {
-        console.warn(
-          `Contents do not contain start/end comments for section "doctoc", skipping  table of contents generation...`
-        );
-      }
-    } catch (e) {
-      console.warn(`Failed to format Table of Contents for ${outputFilePath}.`);
-      console.warn(e);
-    }
-
-    console.log(`ReadMe Formatting successfully ran for ${projectName}.`);
-  } else {
-    console.warn(`Cannot find the input file at ${inputFile}`);
+  if (options.includeApps) {
+    dependencies = {
+      ...dependencies,
+      bundlewatch: "latest",
+      react: "latest",
+      "react-dom": "latest",
+      storybook: "latest",
+      "@storybook/addons": "latest",
+      "@nx/react": "latest",
+      "@nx/next": "latest",
+      "@nx/node": "latest",
+      "@nx/storybook": "latest"
+    };
   }
-};
+
+  if (options.includeRust) {
+    dependencies = {
+      ...dependencies,
+      "@monodon/rust": "1.4.0"
+    };
+  }
+
+  if (options.nxCloud) {
+    dependencies = {
+      ...dependencies,
+      "nx-cloud": "latest"
+    };
+  }
+
+  await Promise.resolve(
+    addDependenciesToPackageJson(
+      tree,
+      dependencies,
+      {},
+      joinPathFragments(projectRoot, "package.json")
+    )
+  );
+
+  return null;
+}
+
+export default withRunGenerator<PresetGeneratorSchema>(
+  "Storm Workspace Preset Generator",
+  presetGeneratorFn
+);
