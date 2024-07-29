@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/tsconfig",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "⚡ A package containing various linting tools used to validate syntax, enforce design standards, and format code in a Storm workspace.",
   "repository": {
     "type": "github",

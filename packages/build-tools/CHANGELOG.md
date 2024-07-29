@@ -1,3 +1,12 @@
+## 0.30.0 (2024-07-29)
+
+
+### Features
+
+- **prettier:** Added `prettier-plugin-solidity` configuration ([2f20befd](https://github.com/storm-software/storm-ops/commit/2f20befd))
+
+- **tsconfig:** Added the `core` shared TypeScript configuration file ([de64188b](https://github.com/storm-software/storm-ops/commit/de64188b))
+
 ## 0.29.0 (2024-07-29)
 
 

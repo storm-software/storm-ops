@@ -1,3 +1,10 @@
+## 0.12.0 (2024-07-29)
+
+
+### Features
+
+- **prettier:** Added `prettier-plugin-solidity` configuration ([2f20befd](https://github.com/storm-software/storm-ops/commit/2f20befd))
+
 ## 0.11.1 (2024-07-23)
 
 

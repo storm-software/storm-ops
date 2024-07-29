@@ -1,3 +1,10 @@
+## 1.63.0 (2024-07-29)
+
+
+### Features
+
+- **tsconfig:** Added the `core` shared TypeScript configuration file ([de64188b](https://github.com/storm-software/storm-ops/commit/de64188b))
+
 ## 1.62.1 (2024-07-29)
 
 
