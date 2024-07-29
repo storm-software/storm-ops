@@ -1,3 +1,10 @@
+## 0.13.0 (2024-07-29)
+
+
+### Features
+
+- **config:** Added the `brand2` and `brand3` color tokens ([58705631](https://github.com/storm-software/storm-ops/commit/58705631))
+
 ## 0.12.0 (2024-07-29)
 
 

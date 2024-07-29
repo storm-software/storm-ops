@@ -1,3 +1,12 @@
+## 0.16.0 (2024-07-29)
+
+
+### Features
+
+- **tsconfig:** Added an accurate package description ([b95b0987](https://github.com/storm-software/storm-ops/commit/b95b0987))
+
+- **config:** Added the `brand2` and `brand3` color tokens ([58705631](https://github.com/storm-software/storm-ops/commit/58705631))
+
 ## 0.15.0 (2024-07-29)
 
 
