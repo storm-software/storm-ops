@@ -1,3 +1,10 @@
+## 0.33.1 (2024-07-29)
+
+
+### Bug Fixes
+
+- **build-tools:** Ensure the TypeScript Declaration library files are included ([ce55fa8a](https://github.com/storm-software/storm-ops/commit/ce55fa8a))
+
 ## 0.33.0 (2024-07-29)
 
 
