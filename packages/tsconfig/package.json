@@ -1,7 +1,7 @@
 {
   "name": "@storm-software/tsconfig",
   "version": "0.15.0",
-  "description": "⚡ A package containing various linting tools used to validate syntax, enforce design standards, and format code in a Storm workspace.",
+  "description": "⚡ A package containing shared `tsconfig.json` files used in various other repositories by Storm Software.",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
