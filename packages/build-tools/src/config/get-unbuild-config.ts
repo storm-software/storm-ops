@@ -25,7 +25,11 @@ import type { PackageJson } from "nx/src/utils/package-json.js";
 import { readTSConfig } from "pkg-types";
 import tsPlugin from "rollup-plugin-typescript2";
 import ts, { CompilerOptions } from "typescript";
-import { defineBuildConfig, type BuildConfig } from "unbuild";
+import {
+  defineBuildConfig,
+  RollupBuildOptions,
+  type BuildConfig
+} from "unbuild";
 import type { UnbuildBuildOptions } from "../types";
 import { getFileBanner } from "../utils/get-file-banner";
 import { createTaskId, getAllWorkspaceTaskGraphs } from "../utils/task-graph";
@@ -39,7 +43,7 @@ export async function getUnbuildBuildOptions(
   options: UnbuildBuildOptions,
   packageJson: PackageJson,
   projectGraph: ProjectGraph
-): Promise<BuildConfig[]> {
+) {
   if (options.configPath) {
     const configFile = await loadConfig(options.configPath as string);
     options = configFile ? merge(options, configFile) : options;
@@ -126,13 +130,6 @@ export async function getUnbuildBuildOptions(
 
   writeTrace(tsConfig, config);
 
-  // if (config.options.module === ts.ModuleKind.CommonJS) {
-  //   compilerOptions["module"] = "ESNext";
-  // }
-  // if (options.compiler === "swc") {
-  //   compilerOptions["emitDeclarationOnly"] = true;
-  // }
-
   const buildConfig: BuildConfig = {
     clean: false,
     name: options.projectName,
@@ -200,41 +197,54 @@ export async function getUnbuildBuildOptions(
     }
   );
 
+  const dtsCompilerOptions = {
+    ...tsConfig.compilerOptions,
+    skipLibCheck: true,
+    skipDefaultLibCheck: true,
+    noEmit: false,
+    declaration: true,
+    declarationMap: true
+  };
+
   const buildOptions = defineBuildConfig(buildConfig);
   return Promise.all(
     buildOptions.map(async buildOpt => {
-      let rollupConfig: any = options.rollup;
+      let rollupConfig: RollupBuildOptions = options.rollup;
       if (rollupConfig && typeof rollupConfig === "string") {
         const rollupConfigFile = await loadConfig(rollupConfig as string);
-        rollupConfig = rollupConfigFile;
+        if (rollupConfigFile) {
+          rollupConfig = rollupConfigFile;
+        }
       }
 
-      rollupConfig ??= {};
+      buildOpt.externals = [...externals, ...(options.external ?? [])];
+      buildOpt.declaration ??= "compatible";
+      buildOpt.sourcemap ??= options.sourcemap;
       buildOpt.rollup = {
         ...rollupConfig,
         emitCJS: true,
+        dts: {
+          respectExternal: true,
+          compilerOptions: dtsCompilerOptions
+        },
         output: {
           ...rollupConfig?.output,
           banner: getFileBanner(options.projectName),
           footer: options.footer,
-          sourcemap: options.sourcemap,
           plugins: [
             tsPlugin({
               cwd: config.workspaceRoot,
               check: true,
               tsconfigOverride: {
                 ...tsConfig,
-                compilerOptions: {
-                  ...tsConfig.compilerOptions,
-                  skipLibCheck: true,
-                  skipDefaultLibCheck: true,
-                  noEmit: false,
-                  declaration: true,
-                  declarationMap: true
-                }
+                compilerOptions: dtsCompilerOptions
               }
-            } as any)
-          ] as any
+            })
+          ]
+        },
+        commonjs: {
+          include: /node_modules/,
+          sourceMap: options.sourcemap
         },
         esbuild: {
           ...rollupConfig?.esbuild,
@@ -249,7 +259,7 @@ export async function getUnbuildBuildOptions(
               : config.logLevel) as LogLevel,
           tsconfigRaw: tsConfig as TsconfigRaw
         }
-      };
+      } as any;
 
       return buildOpt;
     })
@@ -261,7 +271,7 @@ export async function getUnbuildBuildOptions(
  */
 async function loadConfig(
   configPath: string
-): Promise<UnbuildBuildOptions | undefined> {
+): Promise<RollupBuildOptions | undefined> {
   if (!/\.(js|mjs)$/.test(extname(configPath))) {
     throw new Error("Unsupported config file format");
   }
