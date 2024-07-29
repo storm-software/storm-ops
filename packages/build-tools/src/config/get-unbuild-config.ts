@@ -18,10 +18,10 @@ import {
 } from "@storm-software/config-tools";
 import merge from "deepmerge";
 import { LogLevel, TsconfigRaw } from "esbuild";
-import { existsSync } from "node:fs";
 import { dirname, extname, join, relative } from "node:path";
 import { pathToFileURL } from "node:url";
 import { readNxJson } from "nx/src/config/nx-json.js";
+import { fileExists } from "nx/src/utils/fileutils";
 import type { PackageJson } from "nx/src/utils/package-json.js";
 import tsPlugin from "rollup-plugin-typescript2";
 import { parse } from "tsconfck";
@@ -109,8 +109,7 @@ export async function getUnbuildBuildOptions(
   delete _options.external;
 
   const tsConfig = await getNormalizedTsConfig(
-    config.workspaceRoot,
-    options.outputPath,
+    config,
     createTypeScriptCompilationOptions(
       normalizeOptions(
         {
@@ -282,12 +281,13 @@ async function loadConfig(
 }
 
 async function getNormalizedTsConfig(
-  workspaceRoot: string,
-  outputPath: string,
+  config: StormConfig,
   options: TypeScriptCompilationOptions,
   dependencies: DependentBuildableProjectNode[]
 ) {
-  const { correctPaths } = await import("@storm-software/config-tools");
+  const { correctPaths, writeTrace } = await import(
+    "@storm-software/config-tools"
+  );
 
   const tsModule = ensureTypescript();
   const rawTsconfig = tsModule.readConfigFile(
@@ -302,7 +302,7 @@ async function getNormalizedTsConfig(
     );
   }
 
-  const result = await parse(options.tsConfig, { root: workspaceRoot });
+  const result = await parse(options.tsConfig, { root: config.workspaceRoot });
   result.tsconfig.compilerOptions ??= {};
 
   const tsConfigFile = ts.readConfigFile(options.tsConfig, ts.sys.readFile);
@@ -337,14 +337,18 @@ async function getNormalizedTsConfig(
         : []
   ) as string[];
 
-  const basePath = correctPaths(workspaceRoot);
+  const basePath = correctPaths(config.workspaceRoot);
 
   result.tsconfig.include ??= [];
   if (result.tsconfig.compilerOptions.lib.length > 0) {
     result.tsconfig.include = result.tsconfig.compilerOptions.lib?.reduce(
       (ret: string[], file: string) => {
         const fullLibPath = `${file.slice(0, -5)}.full.d.ts`;
-        if (existsSync(fullLibPath) && !ret.includes(fullLibPath)) {
+        writeTrace(
+          `Checking if full TypeScript Declarations library exists: ${fullLibPath}`
+        );
+
+        if (fileExists(fullLibPath) && !ret.includes(fullLibPath)) {
           ret.push(fullLibPath);
         }
 
@@ -353,7 +357,7 @@ async function getNormalizedTsConfig(
       result.tsconfig.compilerOptions.lib?.map(file =>
         correctPaths(
           join(
-            workspaceRoot,
+            config.workspaceRoot,
             `node_modules/typescript/lib/lib.${file.toLowerCase()}.d.ts`
           )
         )
@@ -361,7 +365,9 @@ async function getNormalizedTsConfig(
     );
   } else {
     result.tsconfig.include.push(
-      correctPaths(join(workspaceRoot, "node_modules/typescript/lib/*.d.ts"))
+      correctPaths(
+        join(config.workspaceRoot, "node_modules/typescript/lib/*.d.ts")
+      )
     );
   }
 
