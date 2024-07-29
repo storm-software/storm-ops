@@ -1,3 +1,10 @@
+## 0.33.0 (2024-07-29)
+
+
+### Features
+
+- **build-tools:** Added logging to checks for full declaration libraries ([c96ccd0a](https://github.com/storm-software/storm-ops/commit/c96ccd0a))
+
 ## 0.32.0 (2024-07-29)
 
 ### Features
