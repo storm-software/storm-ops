@@ -13,19 +13,19 @@ module.exports = {
   "endOfLine": "lf",
   "overrides": [
     {
-      "files": "*.md{,x}",
+      "files": "**/*.md{,x}",
       "options": {
         "semi": false,
         "trailingComma": "none"
       }
     },
     {
-      "files": "*.svg",
+      "files": "**/*.svg",
       "options": {
         "parser": "html"
       }
     },
-    { "files": "*.json", "options": { "trailingComma": "none" } },
+    { "files": "**/*.json", "options": { "trailingComma": "none" } },
     {
       "files": "**/*.hbs",
       "options": {
@@ -33,21 +33,35 @@ module.exports = {
       }
     },
     {
-      "files": "**/*.acid",
+      "files": "**/*.prisma",
       "options": {
         "parser": "prisma-parse"
       }
     },
     {
-      "files": "**/*.acidic",
+      "files": "**/{*.acid,*.aci,*.acidic}",
       "options": {
         "parser": "prisma-parse"
+      }
+    },
+    {
+      "files": "**/*.sol",
+      "options": {
+        "parser": "solidity-parse",
+        "printWidth": 80,
+        "tabWidth": 4,
+        "useTabs": false,
+        "singleQuote": false,
+        "bracketSpacing": false
       }
     }
   ],
   "plugins": [
     "prettier-plugin-sh",
     "prettier-plugin-pkg",
-    "prettier-plugin-prisma"
-  ]
+    "prettier-plugin-prisma",
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-solidity"
+  ],
+  "organizeImportsSkipDestructiveCodeActions": false
 };

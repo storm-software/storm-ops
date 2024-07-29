@@ -306,7 +306,7 @@ export async function unbuildWithOptions(
                 ? enhancedOptions.banner
                 : `// ${enhancedOptions.banner}`
               : ""
-          }\n\n${readFileSync(file, "utf-8")}\n\n${
+          }\n\n${readFileSync(file, "utf8")}\n\n${
             enhancedOptions.footer && typeof enhancedOptions.footer === "string"
               ? enhancedOptions.footer.startsWith("//")
                 ? enhancedOptions.footer
