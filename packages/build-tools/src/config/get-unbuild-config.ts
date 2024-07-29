@@ -18,6 +18,7 @@ import {
 } from "@storm-software/config-tools";
 import merge from "deepmerge";
 import { LogLevel, TsconfigRaw } from "esbuild";
+import { existsSync } from "node:fs";
 import { dirname, extname, join, relative } from "node:path";
 import { pathToFileURL } from "node:url";
 import { readNxJson } from "nx/src/config/nx-json.js";
@@ -332,26 +333,36 @@ async function getNormalizedTsConfig(
       ? options.lib
       : result.compilerOptions.lib && result.compilerOptions.lib.length > 0
         ? result.compilerOptions.lib
-        : ["ESNext"]
+        : []
   ) as string[];
 
   const basePath = correctPaths(workspaceRoot);
 
-  const tsLibsPaths =
-    result.compilerOptions.lib.length > 0
-      ? result.compilerOptions.lib.map(file =>
-          correctPaths(
-            join(
-              workspaceRoot,
-              `node_modules/typescript/**/lib.${file.toLowerCase()}.d.ts`
-            )
+  result.include ??= [];
+  if (result.compilerOptions.lib.length > 0) {
+    result.include = result.compilerOptions.lib.reduce(
+      (ret, file) => {
+        const fullLibPath = `${file.slice(0, -5)}.full.d.ts`;
+        if (existsSync(fullLibPath) && !ret.includes(fullLibPath)) {
+          ret.push(fullLibPath);
+        }
+
+        return ret;
+      },
+      result.compilerOptions.lib.map(file =>
+        correctPaths(
+          join(
+            workspaceRoot,
+            `node_modules/typescript/lib/lib.${file.toLowerCase()}.d.ts`
           )
         )
-      : [
-          correctPaths(join(workspaceRoot, "node_modules/typescript/**/*.d.ts"))
-        ];
-  result.include ??= [];
-  result.include.push(...tsLibsPaths);
+      )
+    );
+  } else {
+    result.include.push(
+      correctPaths(join(workspaceRoot, "node_modules/typescript/lib/*.d.ts"))
+    );
+  }
 
   result.compilerOptions.pathsBasePath = basePath;
   result.compilerOptions.rootDir = basePath;
