@@ -1,3 +1,20 @@
+## 1.62.0 (2024-07-29)
+
+
+### Features
+
+- **build-tools:** Use `pkg-types` to extract TypeScript configurations ([989f81d8](https://github.com/storm-software/storm-ops/commit/989f81d8))
+
+
+### Bug Fixes
+
+- **build-tools:** Resolve issues with TypeScript library paths in unbuild ([428265de](https://github.com/storm-software/storm-ops/commit/428265de))
+
+
+### Documentation
+
+- **storm-ops:** Format monorepo projects' README.md files ([9dc9ac22](https://github.com/storm-software/storm-ops/commit/9dc9ac22))
+
 ## 1.61.0 (2024-07-28)
 
 
