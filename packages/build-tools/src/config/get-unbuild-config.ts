@@ -368,7 +368,7 @@ async function getNormalizedTsConfig(
         }
 
         return ret;
-      }, []);
+      }, result.tsconfig.include);
   } else {
     result.tsconfig.include.push(
       correctPaths(

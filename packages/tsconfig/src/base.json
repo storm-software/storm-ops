@@ -10,8 +10,6 @@
     "moduleDetection": "force",
     "moduleResolution": "bundler",
     "pretty": true,
-    "sourceMap": true,
-    "incremental": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUncheckedIndexedAccess": true,

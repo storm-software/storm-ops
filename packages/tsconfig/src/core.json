@@ -2,15 +2,12 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Storm Software - Core TypeScript Config",
   "extends": "./base.json",
-  "compileOnSave": false,
   "compilerOptions": {
     /* Base Options: */
     "allowJs": true,
+    "incremental": true,
     "isolatedModules": true,
-    "verbatimModuleSyntax": true,
-    /* Strictness */
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
+    "preserveSymlinks": true,
     /* If transpiling with TypeScript: */
     "sourceMap": true,
     /* AND if you're building for a library: */
