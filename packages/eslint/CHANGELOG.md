@@ -1,3 +1,17 @@
+## 0.32.0 (2024-07-30)
+
+
+### Features
+
+- **eslint:** Added the header plugin ([cc0cbbea](https://github.com/storm-software/storm-ops/commit/cc0cbbea))
+
+- **eslint:** Removed invalid JSON configuration from package ([2622ee7e](https://github.com/storm-software/storm-ops/commit/2622ee7e))
+
+
+### Continuous Integration
+
+- **storm-ops:** Update actions to skip CodeQL when auto-updating dependencies ([29b6b604](https://github.com/storm-software/storm-ops/commit/29b6b604))
+
 ## 0.31.2 (2024-07-28)
 
 

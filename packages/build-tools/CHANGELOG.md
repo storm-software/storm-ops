@@ -1,3 +1,14 @@
+## 0.36.0 (2024-07-30)
+
+
+### Features
+
+- **storm-ops:** Prevent duplicate workflow action runs ([2d854022](https://github.com/storm-software/storm-ops/commit/2d854022))
+
+- **eslint:** Added the header plugin ([cc0cbbea](https://github.com/storm-software/storm-ops/commit/cc0cbbea))
+
+- **eslint:** Removed invalid JSON configuration from package ([2622ee7e](https://github.com/storm-software/storm-ops/commit/2622ee7e))
+
 ## 0.35.0 (2024-07-29)
 
 

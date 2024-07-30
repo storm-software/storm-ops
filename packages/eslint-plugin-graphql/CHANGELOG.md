@@ -1,3 +1,10 @@
+## 0.5.0 (2024-07-30)
+
+
+### Features
+
+- **eslint:** Added the header plugin ([cc0cbbea](https://github.com/storm-software/storm-ops/commit/cc0cbbea))
+
 ## 0.4.0 (2024-06-29)
 
 ### Features

@@ -1,3 +1,12 @@
+## 1.33.0 (2024-07-30)
+
+
+### Features
+
+- **eslint:** Added the header plugin ([cc0cbbea](https://github.com/storm-software/storm-ops/commit/cc0cbbea))
+
+- **eslint:** Removed invalid JSON configuration from package ([2622ee7e](https://github.com/storm-software/storm-ops/commit/2622ee7e))
+
 ## 1.32.0 (2024-07-29)
 
 
