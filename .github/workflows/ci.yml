@@ -41,13 +41,6 @@ jobs:
       id-token: write
 
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.12.1
-        with:
-          all_but_latest: true
-          access_token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
-          workflow_id: ${{ github.event.workflow.id }}
-
       - name: Send Slack notification - Deployment started
         uses: slackapi/slack-github-action@v1.26.0
         with:
