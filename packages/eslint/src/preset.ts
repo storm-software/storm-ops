@@ -19,8 +19,8 @@ import jsxA11yRules from "./rules/jsx-a11y";
 import reactRules from "./rules/react";
 import reactHooksRules from "./rules/react-hooks";
 import tsdocRules from "./rules/ts-docs";
+import bannerEslint from "./utils/banner-plugin";
 import { CODE_FILE, TS_FILE } from "./utils/constants";
-import headerEslint from "./utils/create-flat-header-plugin";
 import { formatConfig } from "./utils/format-config";
 
 export type PresetModuleBoundaryDepConstraints = {
@@ -161,12 +161,8 @@ export default function stormPreset(
     //   rules: importRules
     // },
 
-    // Header
-    // https://www.npmjs.com/package/eslint-plugin-header
-    {
-      plugins: { header: headerEslint },
-      ...headerEslint.configs["recommended"]
-    },
+    // Banner
+    bannerEslint.configs!["recommended"],
 
     // TSDoc
     // https://www.npmjs.com/package/eslint-plugin-tsdoc

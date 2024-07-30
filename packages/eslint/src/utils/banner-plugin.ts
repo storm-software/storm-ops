@@ -1,3 +1,4 @@
+import { ESLint, Rule } from "eslint";
 import os from "node:os";
 import { getFileBanner } from "./get-file-banner";
 
@@ -136,7 +137,7 @@ function matchesLineEndings(src, num) {
   return true;
 }
 
-const headerRule = {
+const bannerRule: Rule.RuleModule = {
   meta: {
     type: "layout",
     fixable: "whitespace"
@@ -342,27 +343,30 @@ const headerRule = {
   }
 };
 
-export default {
+const plugin: ESLint.Plugin = {
   meta: {
-    name: "eslint-plugin-header",
-    version: "3.1.1"
+    name: "eslint-plugin-banner",
+    version: "0.0.1"
   },
-  configs: {
-    recommended: {
-      files: [
-        "**/*.{,c,m}{j,t}s{,x}",
-        "!tools/**/*",
-        "!docs/**/*",
-        "!crates/**/*",
-        "!.*/**/*"
-      ],
-      rules: {
-        "header/header": [2, "block", getFileBanner("")]
-      }
-    }
-  },
+  configs: {},
   rules: {
-    "header": headerRule
+    banner: bannerRule
   },
   processors: {}
 };
+
+plugin.configs!.recommended = {
+  plugins: { banner: plugin },
+  files: [
+    "**/*.{,c,m}{j,t}s{,x}",
+    "!tools/**/*",
+    "!docs/**/*",
+    "!crates/**/*",
+    "!.*/**/*"
+  ],
+  rules: {
+    "banner/banner": [2, "block", getFileBanner("")]
+  }
+};
+
+export default plugin;
