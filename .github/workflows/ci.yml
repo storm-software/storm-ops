@@ -30,8 +30,7 @@ env:
 
 jobs:
   release:
-    if:
-      github.repository == 'storm-software/storm-ops' && (github.ref ==
+    if: github.repository == 'storm-software/storm-ops' && (github.ref ==
       'refs/heads/main' || github.ref == 'refs/heads/next' || github.ref ==
       'refs/heads/beta' || github.ref == 'refs/heads/experimental')
     name: "Continuous Integration"
@@ -46,7 +45,7 @@ jobs:
         uses: styfle/cancel-workflow-action@0.12.1
         with:
           all_but_latest: true
-          access_token: ${{ secrets.STORM_BOT_NPM_TOKEN }}
+          access_token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           workflow_id: ${{ github.event.workflow.id }}
 
       - name: Send Slack notification - Deployment started
@@ -76,8 +75,7 @@ jobs:
       - name: Send Discord notification - Deployment started
         uses: Ilshidur/action-discord@master
         with:
-          args:
-            "Deployment for ${{ github.repository }} has started - #${{
+          args: "Deployment for ${{ github.repository }} has started - #${{
             github.run_number }}"
         env:
           DISCORD_WEBHOOK: ${{ secrets.STORM_BOT_DISCORD_WEBHOOK }}
@@ -252,8 +250,7 @@ jobs:
       - name: Send Discord notification - Deployment successful
         uses: Ilshidur/action-discord@master
         with:
-          args:
-            "Deployment for ${{ github.repository }} finished successfully -
+          args: "Deployment for ${{ github.repository }} finished successfully -
             #${{ github.run_number }}"
         env:
           DISCORD_WEBHOOK: ${{ secrets.STORM_BOT_DISCORD_WEBHOOK }}

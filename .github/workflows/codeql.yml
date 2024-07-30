@@ -51,7 +51,7 @@ jobs:
         uses: styfle/cancel-workflow-action@0.12.1
         with:
           all_but_latest: true
-          access_token: ${{ secrets.STORM_BOT_NPM_TOKEN }}
+          access_token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           workflow_id: ${{ github.event.workflow.id }}
 
       - name: Checkout code
