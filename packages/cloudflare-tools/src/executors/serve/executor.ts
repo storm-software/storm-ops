@@ -1,43 +1,19 @@
-import { ExecutorContext } from "@nx/devkit";
-import { ServeExecutorSchema } from "./schema";
-import { fork } from "child_process";
+import type { ExecutorContext, PromiseExecutor } from "@nx/devkit";
 import { createAsyncIterable } from "@nx/devkit/src/utils/async-iterable";
 import { waitForPortOpen } from "@nx/web/src/utils/wait-for-port-open";
+import type { StormConfig } from "@storm-software/config";
 import {
   createCliOptions,
   withRunExecutor
 } from "@storm-software/workspace-tools";
-import type { StormConfig } from "@storm-software/config";
+import { fork } from "child_process";
+import { ServeExecutorSchema } from "./schema";
 
 export async function* serveExecutor(
   options: ServeExecutorSchema,
   context: ExecutorContext,
   config?: StormConfig
 ) {
-  const { writeDebug, writeInfo, writeSuccess } = await import(
-    "@storm-software/config-tools"
-  );
-
-  writeInfo("⚡  Running Cloudflare serve executor on the workspace", config);
-
-  writeDebug(
-    `⚙️  Executor options:
-${Object.keys(options)
-  .map(
-    key =>
-      `${key}: ${
-        !options[key] || _isPrimitive(options[key])
-          ? options[key]
-          : _isFunction(options[key])
-            ? "<function>"
-            : JSON.stringify(options[key])
-      }`
-  )
-  .join("\n")}
-`,
-    config
-  );
-
   if (
     !context?.projectName ||
     !context?.projectsConfigurations?.projects?.[context.projectName]?.root
@@ -87,8 +63,6 @@ ${Object.keys(options)
     }
   );
 
-  writeSuccess("⚡ The Serve process has completed successfully", config);
-
   return {
     success: true
   };
@@ -107,32 +81,4 @@ export default withRunExecutor<ServeExecutorSchema>(
       }
     }
   }
-);
-
-const _isPrimitive = (value: unknown): boolean => {
-  try {
-    return (
-      value === undefined ||
-      value === null ||
-      (typeof value !== "object" && typeof value !== "function")
-    );
-    // biome-ignore lint/correctness/noUnusedVariables: <explanation>
-  } catch (e) {
-    return false;
-  }
-};
-
-const _isFunction = (
-  value: unknown
-): value is ((params?: unknown) => unknown) & ((param?: any) => any) => {
-  try {
-    return (
-      value instanceof Function ||
-      typeof value === "function" ||
-      !!(value?.constructor && (value as any)?.call && (value as any)?.apply)
-    );
-    // biome-ignore lint/correctness/noUnusedVariables: <explanation>
-  } catch (e) {
-    return false;
-  }
-};
+) as PromiseExecutor<ServeExecutorSchema>;

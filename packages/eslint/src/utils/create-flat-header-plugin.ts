@@ -1,5 +1,5 @@
-import { getFileBanner } from "@storm-software/build-tools";
-import os from "os";
+import os from "node:os";
+import { getFileBanner } from "./get-file-banner";
 
 function isPattern(object) {
   return (
@@ -347,7 +347,20 @@ export default {
     name: "eslint-plugin-header",
     version: "3.1.1"
   },
-  configs: {},
+  configs: {
+    recommended: {
+      files: [
+        "**/*.{,c,m}{j,t}s{,x}",
+        "!tools/**/*",
+        "!docs/**/*",
+        "!crates/**/*",
+        "!.*/**/*"
+      ],
+      rules: {
+        "header/header": [2, "block", getFileBanner("")]
+      }
+    }
+  },
   rules: {
     "header": headerRule
   },

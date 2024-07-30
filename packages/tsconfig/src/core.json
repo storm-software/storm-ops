@@ -7,7 +7,6 @@
     "allowJs": true,
     "incremental": true,
     "isolatedModules": true,
-    "preserveSymlinks": true,
     /* If transpiling with TypeScript: */
     "sourceMap": true,
     /* AND if you're building for a library: */

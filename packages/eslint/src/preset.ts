@@ -4,9 +4,7 @@ import tsEslint from "typescript-eslint";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 // @ts-ignore
 import nxPlugin from "@nx/eslint-plugin";
-import { getFileBanner } from "@storm-software/build-tools";
 import type { Linter } from "eslint";
-import json from "eslint-plugin-json";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import markdown from "eslint-plugin-markdown";
 import prettierConfig from "eslint-plugin-prettier/recommended";
@@ -21,7 +19,7 @@ import jsxA11yRules from "./rules/jsx-a11y";
 import reactRules from "./rules/react";
 import reactHooksRules from "./rules/react-hooks";
 import tsdocRules from "./rules/ts-docs";
-import { CODE_BLOCK, CODE_FILE, TS_FILE } from "./utils/constants";
+import { CODE_FILE, TS_FILE } from "./utils/constants";
 import headerEslint from "./utils/create-flat-header-plugin";
 import { formatConfig } from "./utils/format-config";
 
@@ -123,7 +121,7 @@ export default function stormPreset(
     // https://www.npmjs.com/package/eslint-plugin-markdown
     options.markdown !== false && { plugins: { markdown } },
     options.markdown !== false && {
-      files: [CODE_BLOCK],
+      files: [CODE_FILE],
       processor: "markdown/markdown"
     },
     options.markdown !== false && {
@@ -165,10 +163,9 @@ export default function stormPreset(
 
     // Header
     // https://www.npmjs.com/package/eslint-plugin-header
-    { plugins: { header: headerEslint } },
     {
-      files: [CODE_FILE],
-      rules: { "header/header": [2, "block", getFileBanner("")] }
+      plugins: { header: headerEslint },
+      ...headerEslint.configs["recommended"]
     },
 
     // TSDoc
@@ -187,7 +184,7 @@ export default function stormPreset(
         globals: {
           ...globals.node,
           ...globals.browser,
-          "stormGlobal": true
+          "StormProvider": true
         }
       },
       files: [CODE_FILE],
@@ -233,7 +230,7 @@ export default function stormPreset(
 
     // Json
     // https://www.npmjs.com/package/eslint-plugin-json
-    json.configs["recommended"],
+    // json.configs["recommended-with-comments"],
     {
       files: ["*.json", "*.jsonc"],
       languageOptions: {

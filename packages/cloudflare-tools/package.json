@@ -18,7 +18,7 @@
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "private": false,
   "main": "./index.js",
   "exports": {
@@ -71,6 +71,9 @@
   "dependencies": {
     "c12": "1.10.0",
     "jest-resolve": "29.7.0"
+  },
+  "devDependencies": {
+    "@nx/devkit": "^19.5.0"
   },
   "publishConfig": {
     "access": "public"
