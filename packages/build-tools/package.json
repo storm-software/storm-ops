@@ -38,7 +38,7 @@
     "@nx/devkit": "^19.1.0",
     "@nx/js": "^19.1.0",
     "@nx/workspace": "^19.1.0",
-    "@rollup/plugin-commonjs": "25.0.8",
+    "@rollup/plugin-commonjs": "26.0.1",
     "@rollup/plugin-image": "3.0.3",
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "15.2.3",
