@@ -1,3 +1,15 @@
+## 0.36.0 (2024-07-31)
+
+
+### Features
+
+- **eslint:** Include all TypeScript rules in preset ([e5b913b1](https://github.com/storm-software/storm-ops/commit/e5b913b1))
+
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with configuration spread ([c0adeb60](https://github.com/storm-software/storm-ops/commit/c0adeb60))
+
 ## 0.35.0 (2024-07-31)
 
 
