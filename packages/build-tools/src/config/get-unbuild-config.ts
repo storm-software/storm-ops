@@ -18,7 +18,7 @@ import {
 } from "@storm-software/config-tools";
 import merge from "deepmerge";
 import { LogLevel, TsconfigRaw } from "esbuild";
-import { dirname, extname, join, relative } from "node:path";
+import { dirname, extname, join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import { fileExists } from "nx/src/utils/fileutils";
@@ -31,7 +31,6 @@ import {
   type BuildConfig
 } from "unbuild";
 import type { UnbuildBuildOptions } from "../types";
-import { getFileBanner } from "../utils/get-file-banner";
 import { createTaskId, getAllWorkspaceTaskGraphs } from "../utils/task-graph";
 
 type TypeScriptCompilationOptions = BaseTypeScriptCompilationOptions & {
@@ -133,14 +132,8 @@ export async function getUnbuildBuildOptions(
     clean: false,
     name: options.projectName,
     rootDir: config.workspaceRoot,
-    entries: options.entry
-      ? [
-          options.entry.startsWith("./") || options.entry.startsWith("C:")
-            ? options.entry
-            : `./${options.entry}`
-        ]
-      : [],
-    outDir: relative(options.projectRoot, options.outputPath),
+    entries: [],
+    outDir: options.outputPath,
     externals: [...externals, ...(options.external ?? [])],
     declaration: "compatible"
   };
@@ -225,7 +218,7 @@ export async function getUnbuildBuildOptions(
         },
         output: {
           ...rollupConfig?.output,
-          banner: getFileBanner(options.projectName),
+          banner: options.banner,
           footer: options.footer
           // plugins: [
           //   tsPlugin({
