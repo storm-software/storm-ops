@@ -1,45 +1,23 @@
 import type { ExecutorContext } from "@nx/devkit";
-import type { StormConfig } from "@storm-software/config";
-import { withRunExecutor } from "../../base/base-executor";
 import {
   applyDefaultOptions,
+  build,
   type TypeScriptBuildOptions
 } from "@storm-software/build-tools";
+import type { StormConfig } from "@storm-software/config";
+import { withRunExecutor } from "../../base/base-executor";
 import type { TsupExecutorSchema } from "./schema.d";
-import { build } from "@storm-software/build-tools";
 
 export async function tsupExecutorFn(
   options: TsupExecutorSchema,
   context: ExecutorContext,
   config?: StormConfig
 ) {
-  const { writeDebug, writeInfo, writeSuccess } = await import(
+  const { writeInfo, writeSuccess } = await import(
     "@storm-software/config-tools"
   );
 
   writeInfo("📦  Running Storm build executor on the workspace", config);
-
-  // #region Apply default options
-
-  writeDebug(
-    `⚙️  Executor options:
-${Object.keys(options)
-  .map(
-    key =>
-      `${key}: ${
-        !options[key] || _isPrimitive(options[key])
-          ? options[key]
-          : _isFunction(options[key])
-            ? "<function>"
-            : JSON.stringify(options[key])
-      }`
-  )
-  .join("\n")}
-`,
-    config
-  );
-
-  // #endregion Apply default options
 
   // #region Prepare build context variables
 
@@ -86,31 +64,3 @@ export default withRunExecutor<TsupExecutorSchema>(
     }
   }
 );
-
-const _isPrimitive = (value: unknown): boolean => {
-  try {
-    return (
-      value === undefined ||
-      value === null ||
-      (typeof value !== "object" && typeof value !== "function")
-    );
-    // biome-ignore lint/correctness/noUnusedVariables: <explanation>
-  } catch (e) {
-    return false;
-  }
-};
-
-const _isFunction = (
-  value: unknown
-): value is ((params?: unknown) => unknown) & ((param?: any) => any) => {
-  try {
-    return (
-      value instanceof Function ||
-      typeof value === "function" ||
-      !!(value?.constructor && (value as any)?.call && (value as any)?.apply)
-    );
-    // biome-ignore lint/correctness/noUnusedVariables: <explanation>
-  } catch (e) {
-    return false;
-  }
-};

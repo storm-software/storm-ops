@@ -178,13 +178,12 @@ export async function getUnbuildBuildOptions(
     }
   };
 
-  (
-    await new Glob("**/*.{ts,tsx}", {
-      absolute: false,
-      cwd: options.sourceRoot,
-      root: options.sourceRoot
-    }).walk()
-  ).forEach(file => {
+  const files = await new Glob("**/*.{ts,tsx}", {
+    absolute: false,
+    cwd: options.sourceRoot,
+    root: options.sourceRoot
+  }).walk();
+  files.forEach(file => {
     const split = file.split(".");
     split.pop();
 
