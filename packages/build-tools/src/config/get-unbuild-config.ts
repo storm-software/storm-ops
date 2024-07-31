@@ -23,9 +23,12 @@ import { pathToFileURL } from "node:url";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import { fileExists } from "nx/src/utils/fileutils";
 import type { PackageJson } from "nx/src/utils/package-json.js";
+import { InputPluginOption, RollupOptions } from "rollup";
+import tsPlugin from "rollup-plugin-typescript2";
 import { parse } from "tsconfck";
 import ts, { CompilerOptions } from "typescript";
 import {
+  BuildContext,
   defineBuildConfig,
   RollupBuildOptions,
   type BuildConfig
@@ -128,14 +131,46 @@ export async function getUnbuildBuildOptions(
 
   writeTrace(tsConfig, config);
 
+  const dtsCompilerOptions = {
+    ...tsConfig.compilerOptions,
+    skipLibCheck: true,
+    skipDefaultLibCheck: true,
+    noEmit: false,
+    declaration: true,
+    declarationMap: true
+  };
+
   const buildConfig: BuildConfig = {
     clean: false,
     name: options.projectName,
     rootDir: config.workspaceRoot,
-    entries: [],
+    entries: [
+      // mkdist builder transpiles file-to-file keeping original sources structure
+      {
+        builder: "mkdist",
+        input: options.sourceRoot,
+        outDir: joinPathFragments(options.outputPath, "dist"),
+        declaration: "compatible"
+      }
+    ],
     outDir: options.outputPath,
     externals: [...externals, ...(options.external ?? [])],
-    declaration: "compatible"
+    declaration: "compatible",
+    hooks: {
+      "rollup:options": (ctx: BuildContext, options: RollupOptions) => {
+        options.plugins = [
+          ...(options.plugins as InputPluginOption[]),
+          tsPlugin({
+            cwd: config.workspaceRoot,
+            check: true,
+            tsconfigOverride: {
+              ...tsConfig,
+              compilerOptions: dtsCompilerOptions
+            }
+          })
+        ];
+      }
+    }
   };
 
   // const result = calculateProjectBuildableDependencies(
@@ -177,24 +212,6 @@ export async function getUnbuildBuildOptions(
     }
   }
 
-  buildConfig.entries!.push(
-    // mkdist builder transpiles file-to-file keeping original sources structure
-    {
-      builder: "mkdist",
-      input: options.sourceRoot,
-      outDir: joinPathFragments(options.outputPath, "dist")
-    }
-  );
-
-  const dtsCompilerOptions = {
-    ...tsConfig.compilerOptions,
-    skipLibCheck: true,
-    skipDefaultLibCheck: true,
-    noEmit: false,
-    declaration: true,
-    declarationMap: true
-  };
-
   const buildOptions = defineBuildConfig(buildConfig);
   return Promise.all(
     buildOptions.map(async buildOpt => {
@@ -207,7 +224,6 @@ export async function getUnbuildBuildOptions(
       }
 
       buildOpt.externals = [...externals, ...(options.external ?? [])];
-      buildOpt.declaration ??= "compatible";
       buildOpt.sourcemap ??= options.sourcemap ?? true;
       buildOpt.rollup = {
         ...rollupConfig,
@@ -220,16 +236,6 @@ export async function getUnbuildBuildOptions(
           ...rollupConfig?.output,
           banner: options.banner,
           footer: options.footer
-          // plugins: [
-          //   tsPlugin({
-          //     cwd: config.workspaceRoot,
-          //     check: true,
-          //     tsconfigOverride: {
-          //       ...tsConfig,
-          //       compilerOptions: dtsCompilerOptions
-          //     }
-          //   })
-          // ]
         },
         commonjs: {
           include: /node_modules/,
