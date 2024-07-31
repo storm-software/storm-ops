@@ -151,7 +151,7 @@ export default function stormPreset(
             ])
           )
         ),
-        "StormProvider": true
+        "Storm": true
       }
     },
     rules: {
