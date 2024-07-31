@@ -5,7 +5,7 @@
  * @param commentStart - The comment starting token
  * @returns The banner header
  */
-export const getFileBanner = (name: string, commentStart = "//") => {
+export const getFileBanner = (name: string) => {
   let padding = "";
   while (name.length + padding.length < 12) {
     padding += " ";
@@ -24,51 +24,46 @@ export const getFileBanner = (name: string, commentStart = "//") => {
       .join(" ");
   }
 
-  return `
+  return `-------------------------------------------------------------------
 
-${commentStart} -------------------------------------------------------------------
-${commentStart}
-${commentStart}                         ${padding}Storm Software
-${commentStart}                 ⚡ ${titleName ? (name ? `${titleName} - ` : titleName) : ""}${name && name.length > 0 ? name.charAt(0).toUpperCase() + name.slice(1) : name}
-${commentStart}
-${commentStart} This code was released as part of the ${titleName ? `${titleName} ` : ""}project. ${
-    titleName ? titleName : "This project"
-  }
-${commentStart} is maintained by Storm Software under the ${
-    (process.env.STORM_LICENSE ?? "Apache-2.0")
-      ?.toLowerCase()
-      ?.includes("license")
-      ? process.env.STORM_LICENSE ?? "Apache-2.0"
-      : `${process.env.STORM_LICENSE ?? "Apache-2.0"} License`
-  }, and is
-${commentStart} free for commercial and private use. For more information, please visit
-${commentStart} our licensing page.
-${commentStart}
-${commentStart}    Website: ${process.env.STORM_HOMEPAGE ?? "https://stormsoftware.com"}
-${commentStart}    Repository: ${
-    process.env.STORM_REPOSITORY ??
-    "https://github.com/storm-software/storm-stack"
-  }
-${commentStart}    Documentation: https://stormsoftware.com/docs${
-    titleName?.startsWith("@") ? `/${titleName.slice(1)}` : ""
-  }
-${commentStart}    Contact: ${
-    process.env.STORM_HOMEPAGE
-      ? process.env.STORM_HOMEPAGE.endsWith("/")
-        ? process.env.STORM_HOMEPAGE.slice(-1)
-        : process.env.STORM_HOMEPAGE
-      : "https://stormsoftware.com"
-  }/contact
-${commentStart}    Licensing: ${
-    process.env.STORM_HOMEPAGE
-      ? process.env.STORM_HOMEPAGE.endsWith("/")
-        ? process.env.STORM_HOMEPAGE.slice(-1)
-        : process.env.STORM_HOMEPAGE
-      : "https://stormsoftware.com"
-  }/licensing
-${commentStart}
-${commentStart} -------------------------------------------------------------------
+                         ${padding}Storm Software
+                 ⚡ ${titleName ? (name ? `${titleName} - ` : titleName) : ""}${name && name.length > 0 ? name.charAt(0).toUpperCase() + name.slice(1) : name}
 
+ This code was released as part of the ${titleName ? `${titleName} ` : ""}project. ${
+   titleName ? titleName : "This project"
+ }
+ is maintained by Storm Software under the ${
+   (process.env.STORM_LICENSE ?? "Apache-2.0")
+     ?.toLowerCase()
+     ?.includes("license")
+     ? process.env.STORM_LICENSE ?? "Apache-2.0"
+     : `${process.env.STORM_LICENSE ?? "Apache-2.0"} License`
+ }, and is
+ free for commercial and private use. For more information, please visit
+ our licensing page.
 
-`;
+    Website: ${process.env.STORM_HOMEPAGE ?? "https://stormsoftware.com"}
+    Repository: ${
+      process.env.STORM_REPOSITORY ??
+      "https://github.com/storm-software/storm-stack"
+    }
+    Documentation: https://stormsoftware.com/docs${
+      titleName?.startsWith("@") ? `/${titleName.slice(1)}` : ""
+    }
+    Contact: ${
+      process.env.STORM_HOMEPAGE
+        ? process.env.STORM_HOMEPAGE.endsWith("/")
+          ? process.env.STORM_HOMEPAGE.slice(-1)
+          : process.env.STORM_HOMEPAGE
+        : "https://stormsoftware.com"
+    }/contact
+    Licensing: ${
+      process.env.STORM_HOMEPAGE
+        ? process.env.STORM_HOMEPAGE.endsWith("/")
+          ? process.env.STORM_HOMEPAGE.slice(-1)
+          : process.env.STORM_HOMEPAGE
+        : "https://stormsoftware.com"
+    }/licensing
+
+ -------------------------------------------------------------------`;
 };

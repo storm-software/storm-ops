@@ -1,13 +1,7 @@
+import { ESLintUtils } from "@typescript-eslint/utils";
 import { ESLint, Rule } from "eslint";
 import os from "node:os";
 import { getFileBanner } from "./get-file-banner";
-
-function isPattern(object) {
-  return (
-    typeof object === "object" &&
-    Object.prototype.hasOwnProperty.call(object, "pattern")
-  );
-}
 
 function match(actual, expected) {
   if (expected.test) {
@@ -26,9 +20,9 @@ function excludeShebangs(comments) {
 // Returns either the first block comment or the first set of line comments that
 // are ONLY separated by a single newline. Note that this does not actually
 // check if they are at the start of the file since that is already checked by
-// hasHeader().
+// hasBanner().
 function getLeadingComments(context, node) {
-  var all = excludeShebangs(
+  let all = excludeShebangs(
     context
       .getSourceCode()
       .getAllComments(node.body.length ? node.body[0] : node)
@@ -36,8 +30,9 @@ function getLeadingComments(context, node) {
   if (all[0].type.toLowerCase() === "block") {
     return [all[0]];
   }
-  for (var i = 1; i < all.length; ++i) {
-    var txt = context
+  let i = 1;
+  for (i = 1; i < all.length; ++i) {
+    let txt = context
       .getSourceCode()
       .getText()
       .slice(all[i - 1].range[1], all[i].range[0]);
@@ -45,11 +40,12 @@ function getLeadingComments(context, node) {
       break;
     }
   }
+
   return all.slice(0, i);
 }
 
 function genCommentBody(commentType, textArray, eol, numNewlines) {
-  var eols = eol.repeat(numNewlines);
+  let eols = eol.repeat(numNewlines);
   if (commentType === "block") {
     return "/*" + textArray.join(eol) + "*/" + eols;
   } else {
@@ -58,19 +54,19 @@ function genCommentBody(commentType, textArray, eol, numNewlines) {
 }
 
 function genCommentsRange(context, comments, eol) {
-  var start = comments[0].range[0];
-  var end = comments.slice(-1)[0].range[1];
+  let start = comments[0].range[0];
+  let end = comments.slice(-1)[0].range[1];
   if (context.getSourceCode().text[end] === eol) {
     end += eol.length;
   }
   return [start, end];
 }
 
-function genPrependFixer(commentType, node, headerLines, eol, numNewlines) {
+function genPrependFixer(commentType, node, bannerLines, eol, numNewlines) {
   return function (fixer) {
     return fixer.insertTextBefore(
       node,
-      genCommentBody(commentType, headerLines, eol, numNewlines)
+      genCommentBody(commentType, bannerLines, eol, numNewlines)
     );
   };
 }
@@ -79,45 +75,32 @@ function genReplaceFixer(
   commentType,
   context,
   leadingComments,
-  headerLines,
+  bannerLines,
   eol,
   numNewlines
 ) {
   return function (fixer) {
     return fixer.replaceTextRange(
       genCommentsRange(context, leadingComments, eol),
-      genCommentBody(commentType, headerLines, eol, numNewlines)
+      genCommentBody(commentType, bannerLines, eol, numNewlines)
     );
   };
 }
 
-function findSettings(options) {
-  var lastOption = options.length > 0 ? options[options.length - 1] : null;
-  if (
-    typeof lastOption === "object" &&
-    !Array.isArray(lastOption) &&
-    lastOption !== null &&
-    !Object.prototype.hasOwnProperty.call(lastOption, "pattern")
-  ) {
-    return lastOption;
-  }
-  return null;
-}
-
 function getEOL(options) {
-  var settings = findSettings(options);
-  if (settings && settings.lineEndings === "unix") {
+  if (options.lineEndings === "unix") {
     return "\n";
   }
-  if (settings && settings.lineEndings === "windows") {
+  if (options.lineEndings === "windows") {
     return "\r\n";
   }
+
   return os.EOL;
 }
 
-function hasHeader(src) {
+function hasBanner(src) {
   if (src.substr(0, 2) === "#!") {
-    var m = src.match(/(\r\n|\r|\n)/);
+    let m = src.match(/(\r\n|\r|\n)/);
     if (m) {
       src = src.slice(m.index + m[0].length);
     }
@@ -126,8 +109,8 @@ function hasHeader(src) {
 }
 
 function matchesLineEndings(src, num) {
-  for (var j = 0; j < num; ++j) {
-    var m = src.match(/^(\r\n|\r|\n)/);
+  for (let j = 0; j < num; ++j) {
+    let m = src.match(/^(\r\n|\r|\n)/);
     if (m) {
       src = src.slice(m.index + m[0].length);
     } else {
@@ -137,65 +120,100 @@ function matchesLineEndings(src, num) {
   return true;
 }
 
-const bannerRule: Rule.RuleModule = {
+type Options = [
+  {
+    banner?: string;
+    commentType?: "block" | "line" | string;
+    numNewlines?: number;
+    lineEndings?: "unix" | "windows";
+  }
+];
+
+export type MessageIds =
+  | "missingBanner"
+  | "incorrectComment"
+  | "incorrectBanner"
+  | "noNewlineAfterBanner";
+
+const bannerRule = ESLintUtils.RuleCreator(
+  () => `https://docs.stormsoftware.com/eslint-rules/banner`
+)<Options, MessageIds>({
+  name: "banner",
   meta: {
+    docs: {
+      description: "Ensures the file has a Storm Software banner",
+      recommended: "recommended"
+    },
+    schema: [
+      {
+        type: "object",
+        properties: {
+          banner: {
+            type: "string",
+            description:
+              "The banner to enforce at the top of the file. If not provided, the banner will be read from the file specified in the commentStart option"
+          },
+          commentType: {
+            type: "string",
+            description:
+              "The comment token to use for the banner. Defaults to block ('/* <banner> */')"
+          },
+          numNewlines: {
+            type: "number",
+            description:
+              "The number of newlines to use after the banner. Defaults to 2"
+          }
+        },
+        additionalProperties: false
+      }
+    ],
     type: "layout",
+    messages: {
+      missingBanner: "Missing banner",
+      incorrectComment: "Banner should use the {{commentType}} comment type",
+      incorrectBanner: "Incorrect banner",
+      noNewlineAfterBanner: "No newline after banner"
+    },
     fixable: "whitespace"
   },
-  create: function (context) {
-    var options = context.options;
-    var numNewlines = options.length > 2 ? options[2] : 1;
-    var eol = getEOL(options);
+  defaultOptions: [
+    {
+      banner: getFileBanner(""),
+      commentType: "block",
+      numNewlines: 2
+    }
+  ],
+  create(
+    context,
+    [{ banner = getFileBanner(""), commentType = "block", numNewlines = 2 }]
+  ) {
+    let options = context.options;
+    let eol = getEOL(options);
 
     // If just one option then read comment from file
 
-    var header = options.length <= 1 ? getFileBanner("") : options[1];
-
-    var commentType = options[0].toLowerCase();
-    var headerLines,
-      fixLines = [] as string[];
     // If any of the lines are regular expressions, then we can't
     // automatically fix them. We set this to true below once we
     // ensure none of the lines are of type RegExp
-    var canFix = false;
-    if (Array.isArray(header)) {
-      canFix = true;
-      headerLines = header.map(function (line) {
-        var isRegex = isPattern(line);
-        // Can only fix regex option if a template is also provided
-        if (isRegex && !line.template) {
-          canFix = false;
-        }
-        fixLines.push(line.template || line);
-        return isRegex ? new RegExp(line.pattern) : line;
-      });
-    } else if (isPattern(header)) {
-      var line = header;
-      headerLines = [new RegExp(line.pattern)];
-      fixLines.push(line.template || line);
-      // Same as above for regex and template
-      canFix = !!line.template;
-    } else {
-      canFix = true;
-      headerLines = header.split(/\r?\n/);
-      fixLines = headerLines;
-    }
+    let canFix = true;
+    let bannerLines = banner.split(/\r?\n/);
+    let fixLines = bannerLines;
 
     return {
       Program: function (node) {
-        if (!hasHeader(context.getSourceCode().getText())) {
+        if (!hasBanner(context.getSourceCode().getText())) {
           context.report({
             loc: node.loc,
-            message: "missing header",
+            messageId: "missingBanner",
             fix: genPrependFixer(commentType, node, fixLines, eol, numNewlines)
           });
         } else {
-          var leadingComments = getLeadingComments(context, node);
+          let leadingComments = getLeadingComments(context, node);
 
           if (!leadingComments.length) {
             context.report({
               loc: node.loc,
-              message: "missing header",
+              messageId: "missingBanner",
               fix: canFix
                 ? genPrependFixer(commentType, node, fixLines, eol, numNewlines)
                 : null
@@ -203,9 +221,9 @@ const bannerRule: Rule.RuleModule = {
           } else if (leadingComments[0].type.toLowerCase() !== commentType) {
             context.report({
               loc: node.loc,
-              message: "header should be a {{commentType}} comment",
+              messageId: "incorrectComment",
               data: {
-                commentType: commentType
+                commentType
               },
               fix: canFix
                 ? genReplaceFixer(
@@ -220,10 +238,10 @@ const bannerRule: Rule.RuleModule = {
             });
           } else {
             if (commentType === "line") {
-              if (leadingComments.length < headerLines.length) {
+              if (leadingComments.length < bannerLines.length) {
                 context.report({
                   loc: node.loc,
-                  message: "incorrect header",
+                  messageId: "missingBanner",
                   fix: canFix
                     ? genReplaceFixer(
                         commentType,
@@ -237,11 +255,11 @@ const bannerRule: Rule.RuleModule = {
                 });
                 return;
               }
-              for (var i = 0; i < headerLines.length; i++) {
-                if (!match(leadingComments[i].value, headerLines[i])) {
+              for (let i = 0; i < bannerLines.length; i++) {
+                if (!match(leadingComments[i].value, bannerLines[i])) {
                   context.report({
                     loc: node.loc,
-                    message: "incorrect header",
+                    messageId: "incorrectBanner",
                     fix: canFix
                       ? genReplaceFixer(
                           commentType,
@@ -257,16 +275,16 @@ const bannerRule: Rule.RuleModule = {
                 }
               }
 
-              var postLineHeader = context
+              let postLineBanner = context
                 .getSourceCode()
                 .text.substr(
-                  leadingComments[headerLines.length - 1].range[1],
-                  numNewlines * 2
+                  leadingComments[bannerLines.length - 1].range[1],
+                  (numNewlines ?? 1) * 2
                 );
-              if (!matchesLineEndings(postLineHeader, numNewlines)) {
+              if (!matchesLineEndings(postLineBanner, numNewlines)) {
                 context.report({
                   loc: node.loc,
-                  message: "no newline after header",
+                  messageId: "noNewlineAfterBanner",
                   fix: canFix
                     ? genReplaceFixer(
                         commentType,
@@ -281,28 +299,28 @@ const bannerRule: Rule.RuleModule = {
               }
             } else {
               // if block comment pattern has more than 1 line, we also split the comment
-              var leadingLines = [leadingComments[0].value];
-              if (headerLines.length > 1) {
+              let leadingLines = [leadingComments[0].value];
+              if (bannerLines.length > 1) {
                 leadingLines = leadingComments[0].value.split(/\r?\n/);
               }
 
-              var hasError = false;
-              if (leadingLines.length > headerLines.length) {
+              let hasError = false;
+              if (leadingLines.length > bannerLines.length) {
                 hasError = true;
               }
-              for (i = 0; !hasError && i < headerLines.length; i++) {
-                if (!match(leadingLines[i], headerLines[i])) {
+              for (let i = 0; !hasError && i < bannerLines.length; i++) {
+                if (!match(leadingLines[i], bannerLines[i])) {
                   hasError = true;
                 }
               }
 
               if (hasError) {
-                if (canFix && headerLines.length > 1) {
+                if (canFix && bannerLines.length > 1) {
                   fixLines = [fixLines.join(eol)];
                 }
                 context.report({
                   loc: node.loc,
-                  message: "incorrect header",
+                  messageId: "incorrectBanner",
                   fix: canFix
                     ? genReplaceFixer(
                         commentType,
@@ -315,13 +333,16 @@ const bannerRule: Rule.RuleModule = {
                     : null
                 });
               } else {
-                var postBlockHeader = context
+                let postBlockBanner = context
                   .getSourceCode()
-                  .text.substr(leadingComments[0].range[1], numNewlines * 2);
-                if (!matchesLineEndings(postBlockHeader, numNewlines)) {
+                  .text.substr(
+                    leadingComments[0].range[1],
+                    (numNewlines ?? 1) * 2
+                  );
+                if (!matchesLineEndings(postBlockBanner, numNewlines)) {
                   context.report({
                     loc: node.loc,
-                    message: "no newline after header",
+                    messageId: "noNewlineAfterBanner",
                     fix: canFix
                       ? genReplaceFixer(
                           commentType,
@@ -341,7 +362,7 @@ const bannerRule: Rule.RuleModule = {
       }
     };
   }
-};
+});
 
 const plugin: ESLint.Plugin = {
   meta: {
@@ -350,7 +371,9 @@ const plugin: ESLint.Plugin = {
   },
   configs: {},
   rules: {
-    banner: bannerRule
+    banner: bannerRule as unknown as
+      | Rule.RuleModule
+      | ((context: Rule.RuleContext) => Rule.RuleListener)
   },
   processors: {}
 };
@@ -365,7 +388,10 @@ plugin.configs!.recommended = {
     "!.*/**/*"
   ],
   rules: {
-    "banner/banner": [2, "block", getFileBanner("")]
+    "banner/banner": [
+      "error",
+      { banner: getFileBanner(""), commentType: "block", numNewlines: 2 }
+    ]
   }
 };
 
