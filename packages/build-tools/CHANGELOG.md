@@ -1,3 +1,10 @@
+## 0.38.0 (2024-07-31)
+
+
+### Features
+
+- **build-tools:** Include the `rollup-plugin-typescript2` plugin in configuration hook ([d7e5f74e](https://github.com/storm-software/storm-ops/commit/d7e5f74e))
+
 ## 0.37.2 (2024-07-31)
 
 
