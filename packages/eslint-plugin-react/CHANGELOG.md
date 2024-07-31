@@ -1,3 +1,15 @@
+## 0.5.0 (2024-07-31)
+
+
+### Features
+
+- **build-tools:** Added the CODEOWNERS linting tool ([63099b1b](https://github.com/storm-software/storm-ops/commit/63099b1b))
+
+
+### 🧱 Updated Dependencies
+
+- Updated eslint to 0.38.0
+
 ## 0.4.0 (2024-06-29)
 
 ### Features

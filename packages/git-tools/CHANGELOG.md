@@ -1,3 +1,10 @@
+## 2.37.0 (2024-07-31)
+
+
+### Features
+
+- **build-tools:** Added the CODEOWNERS linting tool ([63099b1b](https://github.com/storm-software/storm-ops/commit/63099b1b))
+
 ## 2.36.1 (2024-07-31)
 
 
