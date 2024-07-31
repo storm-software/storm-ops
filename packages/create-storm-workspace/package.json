@@ -34,8 +34,8 @@
     "monorepo"
   ],
   "dependencies": {
-    "@nx/workspace": "^19.1.0",
-    "create-nx-workspace": "^19.1.0",
+    "@nx/workspace": "^19.5.3",
+    "create-nx-workspace": "^19.5.3",
     "enquirer": "2.4.1"
   },
   "publishConfig": {

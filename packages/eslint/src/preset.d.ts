@@ -778,7 +778,7 @@ export interface RuleOptions {
    * @see https://typescript-eslint.io/rules/use-unknown-in-catch-callback-variable
    */
   '@typescript-eslint/use-unknown-in-catch-callback-variable'?: Linter.RuleEntry<[]>
-  'header/header'?: Linter.RuleEntry<[]>
+  'banner/banner'?: Linter.RuleEntry<[]>
   /**
    * Enforce emojis are wrapped in `<span>` and provide screenreader access.
    * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/accessible-emoji.md

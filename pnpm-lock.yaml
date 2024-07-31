@@ -348,11 +348,11 @@ importers:
   packages/create-storm-workspace:
     dependencies:
       '@nx/workspace':
-        specifier: ^19.1.0
-        version: 19.3.1(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))
+        specifier: ^19.5.3
+        version: 19.5.3(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))
       create-nx-workspace:
-        specifier: ^19.1.0
-        version: 19.3.1
+        specifier: ^19.5.3
+        version: 19.5.3
       enquirer:
         specifier: 2.4.1
         version: 2.4.1
@@ -5521,8 +5521,8 @@ packages:
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     hasBin: true
 
-  create-nx-workspace@19.3.1:
-    resolution: {integrity: sha512-OhEa0asVy0zyIfshCRAZ1n+3l8KfuZjKDtY+WlYzCO0/ogp2rJ8ramnlcH8FJtBk5nmgaBYemqt3JTiDc8U/fQ==}
+  create-nx-workspace@19.5.3:
+    resolution: {integrity: sha512-fIcX/N9rFDovOq69AXSyYmDK04nq2sc543E5lFmIgBpOc2Tw2FOMEwrR37uYASE65wd7ByvAB/rwffGxTHT9qQ==}
     hasBin: true
 
   create-require@1.1.1:
@@ -15104,12 +15104,6 @@ snapshots:
     transitivePeerDependencies:
       - nx
 
-  '@nrwl/devkit@19.3.1(nx@19.3.1(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))':
-    dependencies:
-      '@nx/devkit': 19.3.1(nx@19.3.1(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))
-    transitivePeerDependencies:
-      - nx
-
   '@nrwl/devkit@19.3.1(nx@19.5.3(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))':
     dependencies:
       '@nx/devkit': 19.3.1(nx@19.5.3(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))
@@ -15585,7 +15579,7 @@ snapshots:
 
   '@nx/devkit@19.3.1(nx@19.3.1(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))':
     dependencies:
-      '@nrwl/devkit': 19.3.1(nx@19.3.1(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))
+      '@nrwl/devkit': 19.3.1(nx@19.5.3(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))
       ejs: 3.1.10
       enquirer: 2.3.6
       ignore: 5.3.1
@@ -19109,7 +19103,7 @@ snapshots:
       - supports-color
       - ts-node
 
-  create-nx-workspace@19.3.1:
+  create-nx-workspace@19.5.3:
     dependencies:
       axios: 1.7.2
       chalk: 4.1.2

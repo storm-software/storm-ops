@@ -1,10 +1,7 @@
 #!/usr/bin/env node
 
 import { getNpmPackageVersion } from "@nx/workspace/src/generators/utils/get-npm-package-version";
-import type {
-  NxClientMode,
-  PresetGeneratorSchema
-} from "@storm-software/workspace-tools";
+import type { NxClientMode } from "@storm-software/workspace-tools";
 import { createWorkspace } from "create-nx-workspace";
 import { prompt } from "enquirer";
 
@@ -118,20 +115,20 @@ async function main() {
       repositoryUrl = response.repositoryUrl;
     }
 
-    let nxCloud =
-      process.argv.length > 9 && process.argv[9]
-        ? Boolean(process.argv[9])
-        : null;
-    if (!nxCloud && typeof nxCloud !== "boolean") {
-      const response = await prompt<{ nxCloud: boolean }>({
-        type: "confirm",
-        name: "nxCloud",
-        message:
-          "Should Nx Cloud be enabled for the workspace (allows for remote workspace caching)?",
-        initial: false
-      });
-      nxCloud = response.nxCloud;
-    }
+    // let nxCloud =
+    //   process.argv.length > 9 && process.argv[9]
+    //     ? Boolean(process.argv[9])
+    //     : null;
+    // if (!nxCloud && typeof nxCloud !== "boolean") {
+    //   const response = await prompt<{ nxCloud: boolean }>({
+    //     type: "confirm",
+    //     name: "nxCloud",
+    //     message:
+    //       "Should Nx Cloud be enabled for the workspace (allows for remote workspace caching)?",
+    //     initial: false
+    //   });
+    //   nxCloud = response.nxCloud;
+    // }
 
     let mode: NxClientMode = (
       process.argv.length > 9 ? process.argv[9] : null
@@ -154,21 +151,26 @@ async function main() {
     writeInfo(`⚡ Creating the Storm Workspace: ${name}`, config);
 
     const version = getNpmPackageVersion("@storm-software/workspace-tools");
-    const { directory } = await createWorkspace<
-      PresetGeneratorSchema & { interactive: boolean }
-    >(`@storm-software/workspace-tools@${version ? version : "latest"}`, {
-      name,
-      organization,
-      namespace,
-      description,
-      includeApps,
-      includeRust,
-      repositoryUrl,
-      nxCloud: "skip",
-      packageManager: "pnpm",
-      mode: "dark",
-      interactive: false
-    });
+    const { directory } = await createWorkspace(
+      `@storm-software/workspace-tools@${version ? version : "latest"}`,
+      {
+        name,
+        organization,
+        namespace,
+        description,
+        includeApps,
+        includeRust,
+        repositoryUrl,
+        nxCloud: "skip",
+        packageManager: "pnpm",
+        mode: "dark",
+        interactive: false,
+        defaultBase: "main",
+        useGitHub: true,
+        skipGit: false,
+        cliName: "Storm Workspace Generator"
+      }
+    );
 
     writeSuccess(
       `⚡ Successfully created the workspace: ${directory}.`,

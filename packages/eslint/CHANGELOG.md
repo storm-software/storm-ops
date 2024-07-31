@@ -1,151 +1,155 @@
 ## 0.32.0 (2024-07-30)
 
-
 ### Features
 
-- **eslint:** Added the header plugin ([cc0cbbea](https://github.com/storm-software/storm-ops/commit/cc0cbbea))
+- **eslint:** Added the header plugin
+  ([cc0cbbea](https://github.com/storm-software/storm-ops/commit/cc0cbbea))
 
-- **eslint:** Removed invalid JSON configuration from package ([2622ee7e](https://github.com/storm-software/storm-ops/commit/2622ee7e))
-
+- **eslint:** Removed invalid JSON configuration from package
+  ([2622ee7e](https://github.com/storm-software/storm-ops/commit/2622ee7e))
 
 ### Continuous Integration
 
-- **storm-ops:** Update actions to skip CodeQL when auto-updating dependencies ([29b6b604](https://github.com/storm-software/storm-ops/commit/29b6b604))
+- **storm-ops:** Update actions to skip CodeQL when auto-updating dependencies
+  ([29b6b604](https://github.com/storm-software/storm-ops/commit/29b6b604))
 
 ## 0.31.2 (2024-07-28)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolved the issues with the provided globals ([62094231](https://github.com/storm-software/storm-ops/commit/62094231))
+- **eslint:** Resolved the issues with the provided globals
+  ([62094231](https://github.com/storm-software/storm-ops/commit/62094231))
 
 ## 0.31.1 (2024-07-28)
 
-
 ### Bug Fixes
 
-- **build-tools:** Resolve issues checking dependency node types ([15517428](https://github.com/storm-software/storm-ops/commit/15517428))
+- **build-tools:** Resolve issues checking dependency node types
+  ([15517428](https://github.com/storm-software/storm-ops/commit/15517428))
 
 ## 0.31.0 (2024-07-28)
 
-
 ### Features
 
-- **eslint:** Update `class-methods-use-this` rule to be off ([480f4fa3](https://github.com/storm-software/storm-ops/commit/480f4fa3))
+- **eslint:** Update `class-methods-use-this` rule to be off
+  ([480f4fa3](https://github.com/storm-software/storm-ops/commit/480f4fa3))
 
 ## 0.30.0 (2024-07-26)
 
-
 ### Features
 
-- **eslint:** Remove the `unicorn/prefer-logical-operator-over-ternary` rule from linting ([84b84b73](https://github.com/storm-software/storm-ops/commit/84b84b73))
+- **eslint:** Remove the `unicorn/prefer-logical-operator-over-ternary` rule
+  from linting
+  ([84b84b73](https://github.com/storm-software/storm-ops/commit/84b84b73))
 
-- **eslint:** Update the `unicorn/prefer-logical-operator-over-ternary` rule to warn ([31de2fe9](https://github.com/storm-software/storm-ops/commit/31de2fe9))
+- **eslint:** Update the `unicorn/prefer-logical-operator-over-ternary` rule to
+  warn ([31de2fe9](https://github.com/storm-software/storm-ops/commit/31de2fe9))
 
 ## 0.29.0 (2024-07-26)
 
-
 ### Features
 
-- **eslint:** Update the `tsdocs/syntax` to warn instead of error ([5da2f059](https://github.com/storm-software/storm-ops/commit/5da2f059))
+- **eslint:** Update the `tsdocs/syntax` to warn instead of error
+  ([5da2f059](https://github.com/storm-software/storm-ops/commit/5da2f059))
 
 ## 0.28.1 (2024-07-26)
 
-
 ### Bug Fixes
 
-- **storm-ops:** Resolved issue with missing token in CI action ([4db79d8e](https://github.com/storm-software/storm-ops/commit/4db79d8e))
+- **storm-ops:** Resolved issue with missing token in CI action
+  ([4db79d8e](https://github.com/storm-software/storm-ops/commit/4db79d8e))
 
 ## 0.28.0 (2024-07-23)
 
-
 ### Features
 
-- **eslint:** Added dependency-checks rule to preset ([bbad6d50](https://github.com/storm-software/storm-ops/commit/bbad6d50))
+- **eslint:** Added dependency-checks rule to preset
+  ([bbad6d50](https://github.com/storm-software/storm-ops/commit/bbad6d50))
 
 ## 0.27.0 (2024-07-23)
 
-
 ### Features
 
-- **eslint:** Add the `json` and `yml` plugins to preset ([27310d44](https://github.com/storm-software/storm-ops/commit/27310d44))
-
+- **eslint:** Add the `json` and `yml` plugins to preset
+  ([27310d44](https://github.com/storm-software/storm-ops/commit/27310d44))
 
 ### Bug Fixes
 
-- **eslint:** Resolve issues with `json` plugin config spread ([088d498a](https://github.com/storm-software/storm-ops/commit/088d498a))
+- **eslint:** Resolve issues with `json` plugin config spread
+  ([088d498a](https://github.com/storm-software/storm-ops/commit/088d498a))
 
 ## 0.26.1 (2024-07-23)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolve issue with handler props naming and unicorn defaults ([31333a6a](https://github.com/storm-software/storm-ops/commit/31333a6a))
+- **eslint:** Resolve issue with handler props naming and unicorn defaults
+  ([31333a6a](https://github.com/storm-software/storm-ops/commit/31333a6a))
 
 ## 0.26.0 (2024-07-23)
 
-
 ### Features
 
-- **prettier:** Export default `config.json` and `tailwindcss.json` from package ([c8711a52](https://github.com/storm-software/storm-ops/commit/c8711a52))
+- **prettier:** Export default `config.json` and `tailwindcss.json` from package
+  ([c8711a52](https://github.com/storm-software/storm-ops/commit/c8711a52))
 
 ## 0.25.0 (2024-07-23)
 
-
 ### Features
 
-- **eslint:** Remove the `import` plugin from the preset ([6c8551ae](https://github.com/storm-software/storm-ops/commit/6c8551ae))
+- **eslint:** Remove the `import` plugin from the preset
+  ([6c8551ae](https://github.com/storm-software/storm-ops/commit/6c8551ae))
 
 ## 0.24.0 (2024-07-23)
 
-
 ### Features
 
-- **eslint:** Added `import` and `prettier` plugins to preset ([a8084123](https://github.com/storm-software/storm-ops/commit/a8084123))
+- **eslint:** Added `import` and `prettier` plugins to preset
+  ([a8084123](https://github.com/storm-software/storm-ops/commit/a8084123))
 
-- **eslint:** Resolved issues with legacy import plugin ([ff2ff86e](https://github.com/storm-software/storm-ops/commit/ff2ff86e))
+- **eslint:** Resolved issues with legacy import plugin
+  ([ff2ff86e](https://github.com/storm-software/storm-ops/commit/ff2ff86e))
 
 ## 0.23.0 (2024-07-22)
 
-
 ### Features
 
-- **eslint:** Update rules around handling TypeScript function returns ([a9859cd4](https://github.com/storm-software/storm-ops/commit/a9859cd4))
+- **eslint:** Update rules around handling TypeScript function returns
+  ([a9859cd4](https://github.com/storm-software/storm-ops/commit/a9859cd4))
 
 ## 0.22.0 (2024-07-22)
 
-
 ### Features
 
-- **eslint:** Added optional react rules to preset ([bc33a12d](https://github.com/storm-software/storm-ops/commit/bc33a12d))
+- **eslint:** Added optional react rules to preset
+  ([bc33a12d](https://github.com/storm-software/storm-ops/commit/bc33a12d))
 
 ## 0.21.0 (2024-07-22)
 
-
 ### Features
 
-- **eslint:** Added Nx plugin to eslint preset ([1933027f](https://github.com/storm-software/storm-ops/commit/1933027f))
+- **eslint:** Added Nx plugin to eslint preset
+  ([1933027f](https://github.com/storm-software/storm-ops/commit/1933027f))
 
 ## 0.20.1 (2024-07-22)
 
-
 ### Bug Fixes
 
-- **git-tools:** Resolved issue with version calculation during release ([97e23127](https://github.com/storm-software/storm-ops/commit/97e23127))
+- **git-tools:** Resolved issue with version calculation during release
+  ([97e23127](https://github.com/storm-software/storm-ops/commit/97e23127))
 
 ## 0.20.0 (2024-07-22)
 
-
 ### Features
 
-- **eslint:** Add config formatter to eslint preset ([050dadcd](https://github.com/storm-software/storm-ops/commit/050dadcd))
+- **eslint:** Add config formatter to eslint preset
+  ([050dadcd](https://github.com/storm-software/storm-ops/commit/050dadcd))
 
 ## 0.19.0 (2024-07-22)
 
-
 ### Features
 
-- **eslint:** Added the base eslint preset ([0b2aeea2](https://github.com/storm-software/storm-ops/commit/0b2aeea2))
+- **eslint:** Added the base eslint preset
+  ([0b2aeea2](https://github.com/storm-software/storm-ops/commit/0b2aeea2))
 
 ## 0.18.0 (2024-07-17)
 
