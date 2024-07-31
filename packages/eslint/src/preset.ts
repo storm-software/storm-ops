@@ -144,7 +144,7 @@ export default function stormPreset(
     // },
 
     // Banner
-    ...banner.configs!["recommended"]![0],
+    banner.configs!["recommended"]![0],
 
     // TSDoc
     // https://www.npmjs.com/package/eslint-plugin-tsdoc
