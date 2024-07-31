@@ -1,3 +1,10 @@
+## 1.63.2 (2024-07-31)
+
+
+### Bug Fixes
+
+- **git-tools:** Resolved issue when `commitlint` is called without a `message` parameter ([624b24bc](https://github.com/storm-software/storm-ops/commit/624b24bc))
+
 ## 1.63.1 (2024-07-31)
 
 
