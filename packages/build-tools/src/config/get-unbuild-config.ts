@@ -1,7 +1,6 @@
 import { joinPathFragments, ProjectGraph } from "@nx/devkit";
 import { getHelperDependency, HelperDependency } from "@nx/js";
 import { getCustomTrasformersFactory } from "@nx/js/src/executors/tsc/lib/get-custom-transformers-factory";
-import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options.js";
 import {
   calculateProjectBuildableDependencies,
   computeCompilerOptionsPaths,
@@ -11,16 +10,11 @@ import { NormalizedExecutorOptions } from "@nx/js/src/utils/schema";
 import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript";
 import { TypeScriptCompilationOptions as BaseTypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
 import type { StormConfig } from "@storm-software/config";
-import {
-  LogLevelLabel,
-  writeDebug,
-  writeTrace
-} from "@storm-software/config-tools";
+import { LogLevelLabel, writeDebug } from "@storm-software/config-tools";
 import merge from "deepmerge";
-import { LogLevel, TsconfigRaw } from "esbuild";
+import { LogLevel } from "esbuild";
 import { dirname, extname, join } from "node:path";
 import { pathToFileURL } from "node:url";
-import { readNxJson } from "nx/src/config/nx-json.js";
 import { fileExists } from "nx/src/utils/fileutils";
 import type { PackageJson } from "nx/src/utils/package-json.js";
 import { InputPluginOption, RollupOptions } from "rollup";
@@ -33,8 +27,8 @@ import {
   RollupBuildOptions,
   type BuildConfig
 } from "unbuild";
+import { typeDefinitions } from "../plugins/type-definitions";
 import type { UnbuildBuildOptions } from "../types";
-import { createTaskId, getAllWorkspaceTaskGraphs } from "../utils/task-graph";
 
 type TypeScriptCompilationOptions = BaseTypeScriptCompilationOptions & {
   lib: CompilerOptions["lib"];
@@ -68,11 +62,8 @@ export async function getUnbuildBuildOptions(
     config
   );
 
-  const nxJson = readNxJson(config.workspaceRoot);
-  const taskGraphs = getAllWorkspaceTaskGraphs(nxJson, projectGraph);
-
-  const { dependencies } = calculateProjectBuildableDependencies(
-    taskGraphs[createTaskId(options.projectName, "build")],
+  let { dependencies } = calculateProjectBuildableDependencies(
+    undefined,
     projectGraph,
     config.workspaceRoot,
     options.projectName,
@@ -90,6 +81,9 @@ export async function getUnbuildBuildOptions(
   );
 
   if (tsLibDependency) {
+    dependencies = dependencies.filter(
+      deps => deps.name !== tsLibDependency.name
+    );
     dependencies.push(tsLibDependency);
   }
 
@@ -109,36 +103,36 @@ export async function getUnbuildBuildOptions(
   const _options = { ...options };
   delete _options.external;
 
-  const tsConfig = await getNormalizedTsConfig(
-    config,
-    createTypeScriptCompilationOptions(
-      normalizeOptions(
-        {
-          ..._options,
-          external: undefined,
-          watch: false,
-          main: options.entry ?? `${options.sourceRoot}/index.ts`,
-          transformers: []
-        },
-        config.workspaceRoot,
-        options.sourceRoot,
-        config.workspaceRoot
-      ),
-      options
-    ),
-    dependencies
-  );
+  // const tsConfig = await getNormalizedTsConfig(
+  //   config,
+  //   createTypeScriptCompilationOptions(
+  //     normalizeOptions(
+  //       {
+  //         ..._options,
+  //         external: undefined,
+  //         watch: false,
+  //         main: options.entry ?? `${options.sourceRoot}/index.ts`,
+  //         transformers: []
+  //       },
+  //       config.workspaceRoot,
+  //       options.sourceRoot,
+  //       config.workspaceRoot
+  //     ),
+  //     options
+  //   ),
+  //   dependencies
+  // );
 
-  writeTrace(tsConfig, config);
+  // writeTrace(tsConfig, config);
 
-  const dtsCompilerOptions = {
-    ...tsConfig.compilerOptions,
-    skipLibCheck: true,
-    skipDefaultLibCheck: true,
-    noEmit: false,
-    declaration: true,
-    declarationMap: true
-  };
+  // const dtsCompilerOptions = {
+  //   ...tsConfig.compilerOptions,
+  //   skipLibCheck: true,
+  //   skipDefaultLibCheck: true,
+  //   noEmit: false,
+  //   declaration: true,
+  //   declarationMap: true
+  // };
 
   const buildConfig: BuildConfig = {
     clean: false,
@@ -157,17 +151,19 @@ export async function getUnbuildBuildOptions(
     externals: [...externals, ...(options.external ?? [])],
     declaration: "compatible",
     hooks: {
-      "rollup:options": (ctx: BuildContext, options: RollupOptions) => {
-        options.plugins = [
-          ...(options.plugins as InputPluginOption[]),
+      "rollup:options": async (ctx: BuildContext, opts: RollupOptions) => {
+        opts.plugins = [
           tsPlugin({
-            cwd: config.workspaceRoot,
             check: true,
-            tsconfigOverride: {
-              ...tsConfig,
-              compilerOptions: dtsCompilerOptions
-            }
-          })
+            tsconfig: options.tsConfig,
+            tsconfigOverride: await createTsCompilerOptions(
+              config,
+              options,
+              dependencies
+            )
+          }),
+          typeDefinitions({ projectRoot: options.projectRoot }),
+          ...(opts.plugins as InputPluginOption[])
         ];
       }
     }
@@ -227,10 +223,12 @@ export async function getUnbuildBuildOptions(
       buildOpt.sourcemap ??= options.sourcemap ?? true;
       buildOpt.rollup = {
         ...rollupConfig,
+        ...(buildOpt.rollup as any),
         emitCJS: true,
         dts: {
           respectExternal: true,
-          compilerOptions: dtsCompilerOptions
+          projectRoot: options.projectRoot
+          // compilerOptions: dtsCompilerOptions
         },
         output: {
           ...rollupConfig?.output,
@@ -240,6 +238,10 @@ export async function getUnbuildBuildOptions(
         commonjs: {
           include: /node_modules/,
           sourceMap: options.sourcemap
+        },
+        resolve: {
+          preferBuiltins: true,
+          extensions: [".cjs", ".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"]
         },
         esbuild: {
           ...rollupConfig?.esbuild,
@@ -251,10 +253,10 @@ export async function getUnbuildBuildOptions(
             : config.logLevel === LogLevelLabel.ALL ||
                 config.logLevel === LogLevelLabel.TRACE
               ? "verbose"
-              : config.logLevel) as LogLevel,
-          tsconfigRaw: tsConfig as TsconfigRaw
+              : config.logLevel) as LogLevel
+          // tsconfigRaw: tsConfig as TsconfigRaw
         }
-      } as any;
+      };
 
       return buildOpt;
     })
@@ -273,6 +275,34 @@ async function loadConfig(
   return import(pathToFileURL(configPath).toString()).then(
     config => config.default
   );
+}
+
+async function createTsCompilerOptions(
+  config: StormConfig,
+  options: UnbuildBuildOptions,
+  dependencies?: DependentBuildableProjectNode[]
+) {
+  const { writeTrace } = await import("@storm-software/config-tools");
+
+  const tsConfigPath = joinPathFragments(
+    config.workspaceRoot,
+    options.tsConfig
+  );
+  const tsConfigFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile);
+  const tsConfig = ts.parseJsonConfigFileContent(
+    tsConfigFile.config,
+    ts.sys,
+    dirname(tsConfigPath)
+  );
+
+  const compilerOptions = {
+    rootDir: options.projectRoot,
+    declaration: true,
+    paths: computeCompilerOptionsPaths(tsConfig, dependencies ?? [])
+  };
+  writeTrace(compilerOptions, config);
+
+  return compilerOptions;
 }
 
 async function getNormalizedTsConfig(
