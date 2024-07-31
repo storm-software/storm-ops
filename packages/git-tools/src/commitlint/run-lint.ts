@@ -18,7 +18,13 @@ export const runCommitLint = async (commitMessageArg?: string) => {
   const config = await loadStormConfig();
 
   let commitMessage;
-  if (!commitMessageArg) {
+  if (commitMessageArg && commitMessageArg !== COMMIT_EDITMSG_PATH) {
+    commitMessage = commitMessageArg;
+  } else if (commitMessageArg !== COMMIT_EDITMSG_PATH) {
+    commitMessage = await readCommitMessageFile();
+  }
+
+  if (!commitMessage) {
     let gitLogCmd = "git log -1 --no-merges";
     const gitRemotes = childProcess
       .execSync("git remote -v")
@@ -26,13 +32,13 @@ export const runCommitLint = async (commitMessageArg?: string) => {
       .trim()
       .split("\n");
     const upstreamRemote = gitRemotes.find(remote =>
-      remote.includes(`${config.namespace}/${config.name}.git`)
+      remote.includes(`${config.name}.git`)
     );
     if (upstreamRemote) {
       const upstreamRemoteIdentifier = upstreamRemote.split("\t")[0]?.trim();
       if (!upstreamRemoteIdentifier) {
         throw new Error(
-          `No upstream remote found for ${config.namespace}/${config.name}.git. Skipping comparison.`
+          `No upstream remote found for ${config.name}.git. Skipping comparison.`
         );
       }
 
@@ -47,24 +53,13 @@ export const runCommitLint = async (commitMessageArg?: string) => {
         gitLogCmd + ` ${currentBranch} ^${upstreamRemoteIdentifier}/main`;
     } else {
       throw new Error(
-        `No upstream remote found for ${config.namespace}/${config.name}.git. Skipping comparison against upstream main.`
+        `No upstream remote found for ${config.name}.git. Skipping comparison against upstream main.`
       );
     }
 
     commitMessage = childProcess.execSync(gitLogCmd).toString().trim();
     if (!commitMessage) {
       throw new Error("No commits found. Skipping commit message validation.");
-    }
-  } else if (commitMessageArg !== COMMIT_EDITMSG_PATH) {
-    commitMessage = commitMessageArg;
-  }
-
-  if (!commitMessage) {
-    commitMessage = await readCommitMessageFile();
-    if (!commitMessage) {
-      throw new Error(
-        "No commit message found. Skipping commit message validation."
-      );
     }
   }
 
