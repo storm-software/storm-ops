@@ -23,7 +23,6 @@ import { pathToFileURL } from "node:url";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import { fileExists } from "nx/src/utils/fileutils";
 import type { PackageJson } from "nx/src/utils/package-json.js";
-import tsPlugin from "rollup-plugin-typescript2";
 import { parse } from "tsconfck";
 import ts, { CompilerOptions } from "typescript";
 import {
@@ -227,17 +226,17 @@ export async function getUnbuildBuildOptions(
         output: {
           ...rollupConfig?.output,
           banner: getFileBanner(options.projectName),
-          footer: options.footer,
-          plugins: [
-            tsPlugin({
-              cwd: config.workspaceRoot,
-              check: true,
-              tsconfigOverride: {
-                ...tsConfig,
-                compilerOptions: dtsCompilerOptions
-              }
-            })
-          ]
+          footer: options.footer
+          // plugins: [
+          //   tsPlugin({
+          //     cwd: config.workspaceRoot,
+          //     check: true,
+          //     tsconfigOverride: {
+          //       ...tsConfig,
+          //       compilerOptions: dtsCompilerOptions
+          //     }
+          //   })
+          // ]
         },
         commonjs: {
           include: /node_modules/,
