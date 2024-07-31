@@ -1,3 +1,10 @@
+## 0.33.0 (2024-07-30)
+
+
+### Features
+
+- **eslint:** Split out the `banner` plugin code ([f49ff5fe](https://github.com/storm-software/storm-ops/commit/f49ff5fe))
+
 ## 0.32.0 (2024-07-30)
 
 ### Features
