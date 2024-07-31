@@ -21,7 +21,7 @@ import { fileExists } from "nx/src/utils/fileutils";
 import type { PackageJson } from "nx/src/utils/package-json.js";
 import { InputPluginOption, RollupOptions } from "rollup";
 import tsPlugin from "rollup-plugin-typescript2";
-import parse from "tsconfck";
+import { parse } from "tsconfck";
 import ts, { CompilerOptions } from "typescript";
 import {
   BuildContext,
