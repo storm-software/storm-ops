@@ -47,31 +47,31 @@ export interface TypedFlatConfig extends Omit<Linter.FlatConfig, "rules"> {
 }
 
 export const DEFAULT_TYPESCRIPT_RULES = {
-  "unicorn/number-literal-case": 0,
-  "unicorn/template-indent": 0,
-  "unicorn/prevent-abbreviations": 0,
-  "unicorn/no-await-expression-member": 0,
-  "unicorn/no-useless-undefined": 0,
-  "unicorn/no-array-push-push": 0,
-  "unicorn/no-array-reduce": 0,
-  "unicorn/no-useless-switch-case": 0,
-  "@typescript-eslint/no-explicit-any": 0,
-  "@typescript-eslint/no-empty-function": 0,
-  "@typescript-eslint/no-var-requires": 0,
-  "@typescript-eslint/ban-ts-comment": 0,
-  "@typescript-eslint/no-empty-interface": 0,
-  "@typescript-eslint/explicit-module-boundary-types": 0,
-  "@typescript-eslint/explicit-function-return-type": 0,
+  "unicorn/number-literal-case": "off",
+  "unicorn/template-indent": "off",
+  "unicorn/prevent-abbreviations": "off",
+  "unicorn/no-await-expression-member": "off",
+  "unicorn/no-useless-undefined": "off",
+  "unicorn/no-array-push-push": "off",
+  "unicorn/no-array-reduce": "off",
+  "unicorn/no-useless-switch-case": "off",
+  "@typescript-eslint/no-explicit-any": "off",
+  "@typescript-eslint/no-empty-function": "off",
+  "@typescript-eslint/no-var-requires": "off",
+  "@typescript-eslint/ban-ts-comment": "off",
+  "@typescript-eslint/no-empty-interface": "off",
+  "@typescript-eslint/explicit-module-boundary-types": "off",
+  "@typescript-eslint/explicit-function-return-type": "off",
   "@typescript-eslint/no-unused-vars": [
     "warn",
     { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }
   ],
-  "unicorn/prefer-string-replace-all": 0,
-  "unicorn/no-abusive-eslint-disable": 0,
-  "unicorn/import-style": 0,
-  "unicorn/prefer-module": 0,
-  "unicorn/consistent-function-scoping": 0,
-  "class-methods-use-this": 0,
+  "unicorn/prefer-string-replace-all": "off",
+  "unicorn/no-abusive-eslint-disable": "off",
+  "unicorn/import-style": "off",
+  "unicorn/prefer-module": "off",
+  "unicorn/consistent-function-scoping": "off",
+  "class-methods-use-this": "off",
   "@typescript-eslint/no-restricted-imports": [
     "error",
     {
@@ -204,7 +204,10 @@ export default function stormPreset(
 
   // TypeScript and JavaScript
   const typescriptConfig: Linter.FlatConfig<Linter.RulesRecord> = {
+    // https://typescript-eslint.io/
     ...tsEslint.configs.stylisticTypeChecked,
+
+    // https://www.npmjs.com/package/eslint-plugin-unicorn
     ...eslintPluginUnicorn.configs["flat/recommended"],
 
     files: [CODE_FILE],
@@ -236,7 +239,10 @@ export default function stormPreset(
       ...prettierConfig.rules,
 
       // https://www.npmjs.com/package/eslint-plugin-unicorn
-      ...eslintPluginUnicorn.configs["flat/recommended"].rules,
+      ...eslintPluginUnicorn.configs["flat/recommended"].reduce(
+        (ret, record) => ({ ...ret, ...record.rules }),
+        {}
+      ),
 
       // Banner
       ...banner.configs!["recommended"]![1].rules,
@@ -293,26 +299,26 @@ export default function stormPreset(
       files: [CODE_BLOCK],
       processor: "markdown/markdown",
       rules: (<RuleOptions>{
-        "unicorn/filename-case": 0,
-        "no-undef": 0,
-        "no-unused-expressions": 0,
-        "padded-blocks": 0,
-        "no-empty-pattern": 0,
-        "no-redeclare": 0,
-        "no-import-assign": 0,
+        "unicorn/filename-case": "off",
+        "no-undef": "off",
+        "no-unused-expressions": "off",
+        "padded-blocks": "off",
+        "no-empty-pattern": "off",
+        "no-redeclare": "off",
+        "no-import-assign": "off",
         ...options.markdown?.rules
       }) as any
     });
     configs.push({
       files: ["**/*.md/*.js", "**/*.md/*.ts"],
       rules: (<RuleOptions>{
-        "unicorn/filename-case": 0,
-        "no-undef": 0,
-        "no-unused-expressions": 0,
-        "padded-blocks": 0,
-        "no-empty-pattern": 0,
-        "no-redeclare": 0,
-        "no-import-assign": 0,
+        "unicorn/filename-case": "off",
+        "no-undef": "off",
+        "no-unused-expressions": "off",
+        "padded-blocks": "off",
+        "no-empty-pattern": "off",
+        "no-redeclare": "off",
+        "no-import-assign": "off",
         ...options.markdown?.rules
       }) as any
     });
