@@ -1,3 +1,10 @@
+## 0.37.0 (2024-07-31)
+
+
+### Features
+
+- **create-storm-workspace:** Configure workspace to include GitHub ([eea71de7](https://github.com/storm-software/storm-ops/commit/eea71de7))
+
 ## 0.36.0 (2024-07-30)
 
 
