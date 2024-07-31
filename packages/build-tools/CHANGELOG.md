@@ -1,3 +1,10 @@
+## 0.37.2 (2024-07-31)
+
+
+### Bug Fixes
+
+- **build-tools:** Update unbuild configuration to include proper `rootDir` option ([11e7f38b](https://github.com/storm-software/storm-ops/commit/11e7f38b))
+
 ## 0.37.1 (2024-07-31)
 
 
