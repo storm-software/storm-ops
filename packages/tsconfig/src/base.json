@@ -3,9 +3,9 @@
   "display": "Storm Software - Base TypeScript Config",
   "compileOnSave": false,
   "compilerOptions": {
-    "target": "es2022",
-    "module": "NodeNext",
-    "lib": ["es2022"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ESNext"],
     "noLib": false,
     "moduleDetection": "force",
     "pretty": true,

@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 
 import {
-  loadStormConfig,
+  exitWithError,
   exitWithSuccess,
   handleProcess,
+  loadStormConfig,
   writeFatal,
-  writeSuccess,
-  exitWithError
+  writeSuccess
 } from "@storm-software/config-tools";
-import { createProgram } from "../src/cli";
-import { register as registerTsConfigPaths } from "tsconfig-paths";
-import { join } from "node:path";
 import { readJsonSync } from "fs-extra";
+import { join } from "node:path";
+import { register as registerTsConfigPaths } from "tsconfig-paths";
+import { createProgram } from "../src/cli";
 
 void (async () => {
   const config = await loadStormConfig();
@@ -28,14 +28,13 @@ void (async () => {
     await program.parseAsync(process.argv);
 
     writeSuccess(
-      `Git ${process.argv.join(" ") ?? "tool"} processing completed successfully!`,
+      `🎉  Git ${process.argv.join(" ") ?? "tool"} processing completed successfully!`,
       config
     );
-
     exitWithSuccess(config);
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running the program: ${error.message}`,
+      `A fatal error occurred while running the Git tool: \n\n${error.message}`,
       config
     );
     exitWithError(config);

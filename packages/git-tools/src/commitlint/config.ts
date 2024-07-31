@@ -1,15 +1,24 @@
-import type {
-  RuleConfigCondition,
-  RuleConfigSeverity,
-  TargetCaseType
-} from "@commitlint/types";
+import { RuleConfigCondition, RuleConfigSeverity } from "@commitlint/types";
 import { NxReleaseConfig } from "../types";
+import { getScopeEnum } from "./get-scope-enum";
 
 export default {
-  extends: ["@commitlint/config-conventional"],
+  utils: { getScopeEnum },
+  parserPreset: "conventional-changelog-conventionalcommits",
   rules: {
+    "body-leading-blank": [RuleConfigSeverity.Warning, "always"],
+    "body-max-line-length": [RuleConfigSeverity.Error, "always", 150],
+    "footer-leading-blank": [RuleConfigSeverity.Warning, "always"],
+    "footer-max-line-length": [RuleConfigSeverity.Error, "always", 150],
+    "header-max-length": [RuleConfigSeverity.Error, "always", 150],
+    "header-trim": [RuleConfigSeverity.Error, "always"],
+    "subject-case": [RuleConfigSeverity.Error, "always", ["sentence-case"]],
+    "subject-empty": [RuleConfigSeverity.Error, "never"],
+    "subject-full-stop": [RuleConfigSeverity.Error, "never", "."],
+    "type-case": [RuleConfigSeverity.Error, "always", "lower-case"],
+    "type-empty": [RuleConfigSeverity.Error, "never"],
     "type-enum": [
-      2,
+      RuleConfigSeverity.Error,
       "always",
       [
         "chore",
@@ -33,16 +42,17 @@ export default {
         "style",
         // Adding missing tests or correcting existing tests
         "test",
+        // Changes that affect the project's type definitions
+        "types",
+        // Changes to the repository's example projects
+        // "examples",
         // Used for automated releases-only
         "release"
       ]
     ] as [RuleConfigSeverity, RuleConfigCondition, string[]],
-    "subject-case": [2, "always", ["sentence-case"]] as [
-      RuleConfigSeverity,
-      RuleConfigCondition,
-      TargetCaseType[]
-    ],
-    "scope-empty": [1, "never"] as [RuleConfigSeverity, RuleConfigCondition]
+    "scope-empty": [RuleConfigSeverity.Error, "never"],
+    "scope-enum": ctx =>
+      Promise.resolve([RuleConfigSeverity.Error, "always", getScopeEnum(ctx)])
   },
   prompt: {
     settings: {},
@@ -56,7 +66,73 @@ export default {
     },
     questions: {
       type: {
-        description: "Select the type of change that you're committing"
+        description: "Select the type of change that you're committing",
+        enum: {
+          feat: {
+            description: "A new feature",
+            title: "Features",
+            emoji: "✨"
+          },
+          fix: {
+            description: "A bug fix",
+            title: "Bug Fixes",
+            emoji: "🐛"
+          },
+          types: {
+            description: "Changes that affect the project's type definitions",
+            title: "Type Definitions",
+            emoji: "📓"
+          },
+          docs: {
+            description: "Documentation only changes",
+            title: "Documentation",
+            emoji: "📚"
+          },
+          style: {
+            description:
+              "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
+            title: "Styles",
+            emoji: "💎"
+          },
+          refactor: {
+            description:
+              "A code change that neither fixes a bug nor adds a feature",
+            title: "Code Refactoring",
+            emoji: "📦"
+          },
+          perf: {
+            description: "A code change that improves performance",
+            title: "Performance Improvements",
+            emoji: "🚀"
+          },
+          test: {
+            description: "Adding missing tests or correcting existing tests",
+            title: "Tests",
+            emoji: "🚨"
+          },
+          deps: {
+            description:
+              "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)",
+            title: "Dependency Upgrades",
+            emoji: "🛠"
+          },
+          ci: {
+            description:
+              "Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)",
+            title: "Continuous Integrations",
+            emoji: "⚙️"
+          },
+          chore: {
+            description: "Other changes that don't modify src or test files",
+            title: "Chores",
+            emoji: "♻️"
+          },
+          revert: {
+            description: "Reverts a previous commit",
+            title: "Reverts",
+            emoji: "🗑"
+          }
+        }
       },
       scope: {
         description:
@@ -68,11 +144,25 @@ export default {
       body: {
         description: "Provide a longer description of the change"
       },
+      isBreaking: {
+        description: "Are there any breaking changes?"
+      },
+      breakingBody: {
+        description:
+          "A BREAKING CHANGE commit requires a body. Please enter a longer description of the commit itself"
+      },
       breaking: {
-        description: "List any BREAKING CHANGES"
+        description: "Describe the breaking changes"
+      },
+      isIssueAffected: {
+        description: "Does this change affect any open issues?"
+      },
+      issuesBody: {
+        description:
+          "If issues are closed, the commit requires a body. Please enter a longer description of the commit itself"
       },
       issues: {
-        description: "Add issue references (e.g. fix #123, re #123.)"
+        description: 'Add issue references (e.g. "fix #123", "re #123".)'
       }
     }
   }
@@ -131,19 +221,27 @@ export const DEFAULT_CONVENTIONAL_COMMITS_CONFIG: NxReleaseConfig["conventionalC
         }
       },
       chore: {
-        semverBump: "none",
+        semverBump: "patch",
         changelog: {
           title: "Chores",
-          hidden: true
+          hidden: false
         }
       },
-      examples: {
+      release: {
         semverBump: "none",
         changelog: {
-          title: "Examples",
+          title: "Release",
           hidden: true
         }
       },
+
+      // examples: {
+      //   semverBump: "none",
+      //   changelog: {
+      //     title: "Examples",
+      //     hidden: true
+      //   }
+      // },
       test: {
         semverBump: "none",
         changelog: {

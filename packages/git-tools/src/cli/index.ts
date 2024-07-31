@@ -1,6 +1,5 @@
 import type { StormConfig } from "@storm-software/config";
 import {
-  exitWithError,
   findWorkspaceRootSafe,
   writeFatal,
   writeInfo,
@@ -8,6 +7,7 @@ import {
 } from "@storm-software/config-tools";
 import { Command, Option } from "commander";
 import { runCommit } from "../commit";
+import { runCommitLint } from "../commitlint/run-lint";
 import { runReadme } from "../readme";
 import { runRelease } from "../release";
 import type { ReadMeOptions } from "../types";
@@ -29,21 +29,21 @@ export function createProgram(config: StormConfig) {
     const program = new Command("storm-git");
     program.version("1.0.0", "-v --version", "display CLI version");
 
-    const commitlintConfig = new Option(
+    const commitConfig = new Option(
       "--config <file>",
-      "Commitlint/Commitizen config file path"
+      "The Commitizen config file path"
     ).default("@storm-software/git-tools/src/commit/config.js");
 
-    const commitlintDryRun = new Option(
+    const commitDryRun = new Option(
       "--dry-run",
       "Should the commit be run in dry-run mode (no updates are made)"
     );
 
     program
       .command("commit")
-      .description("Run commitlint and commitizen for the workspace.")
-      .addOption(commitlintConfig)
-      .addOption(commitlintDryRun)
+      .description("Commit changes to git for the workspace.")
+      .addOption(commitConfig)
+      .addOption(commitDryRun)
       .action(commitAction);
 
     const readmeTemplatePath = new Option(
@@ -103,14 +103,24 @@ export function createProgram(config: StormConfig) {
       .addOption(releaseDryRun)
       .action(releaseAction);
 
+    const commitMessage = new Option(
+      "--message <commit-message>",
+      "The commit message to lint"
+    );
+
+    program
+      .command("commitlint")
+      .description("Run commitlint for the workspace's commit message.")
+      .addOption(commitMessage)
+      .action(commitLintAction);
+
     return program;
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running the program: ${error.message}`,
+      `A fatal error occurred while preparing the Storm Git-Tools program: \n\n${error.message}`,
       config
     );
-    exitWithError(config);
-    process.exit(1);
+    throw new Error(error.message, { cause: error });
   }
 }
 
@@ -136,33 +146,37 @@ export async function commitAction({
       } Git repository. Please provide the requested details below...`,
       _config
     );
+
     await runCommit(config, dryRun);
+
     writeSuccess(
-      "Commit linting completed successfully! Changes can be uploaded to Git. \n",
+      "Commit processing completed successfully! Changes can be uploaded to Git. \n",
       _config
     );
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running commit action: ${error.message}`,
+      `A fatal error occurred while running commit action: \n\n${error.message}`,
       _config
     );
-    exitWithError(_config);
+    throw new Error(error.message, { cause: error });
   }
 }
 
 export async function readmeAction(options: ReadMeOptions) {
   try {
     writeInfo("⚡ Formatting the workspace's README.md files", _config);
+
     await runReadme(options);
+
     writeSuccess(
       "Formatting of the workspace's README.md files is complete\n",
       _config
     );
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running README format action: ${error.message}`
+      `A fatal error occurred while running README format action: \n\n${error.message}`
     );
-    exitWithError(_config);
+    throw new Error(error.message, { cause: error });
   }
 }
 
@@ -182,11 +196,13 @@ export async function releaseAction({
       "⚡ Running the Storm Release and Publish process on the workspace",
       _config
     );
+
     await runRelease(_config as StormConfig, { dryRun, project, base, head });
+
     writeSuccess("Release completed successfully!\n", _config);
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running release action: ${error.message}`,
+      `A fatal error occurred while running release action: \n\n${error.message}`,
       _config
     );
     writeFatal(error, _config);
@@ -196,6 +212,38 @@ export async function releaseAction({
     console.error(error);
     console.error("");
 
-    exitWithError(_config);
+    throw new Error(error.message, { cause: error });
+  }
+}
+
+export async function commitLintAction({ message }: { message?: string }) {
+  try {
+    writeInfo(
+      `⚡ Linting the ${
+        _config.repository
+          ? _config.repository
+          : _config.namespace
+            ? _config.namespace
+            : _config.name
+              ? _config.name
+              : _config.organization
+                ? _config.organization
+                : "Storm-Software"
+      } repository's commit messages.`,
+      _config
+    );
+
+    await runCommitLint(message);
+
+    writeSuccess(
+      "Linting the commit messages completed successfully!\n",
+      _config
+    );
+  } catch (error) {
+    writeFatal(
+      `A fatal error occurred while linting the commit messages: \n\n${error.message}`,
+      _config
+    );
+    throw new Error(error.message, { cause: error });
   }
 }

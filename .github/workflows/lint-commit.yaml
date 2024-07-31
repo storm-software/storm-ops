@@ -74,7 +74,23 @@ jobs:
             echo "Skip updating GITHUB_ENV. SET_INTERVAL_VALUES: ${SET_INTERVAL_VALUES}"
           fi
 
-      # - name: Validate commit messages
-      #   run: |
-      #     pnpm exec commitlint --config="./dist/packages/git-tools/commitlint/commitlint.config.cjs" --edit {1}
-      #   shell: bash
+      - name: Setup workspace
+        uses: storm-software/action-setup@main
+        with:
+          packageManager: pnpm
+          packageManagerVersion: 9.6.0
+          stormBot: Stormie-Bot
+          stormBotGitHubToken: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
+
+      - name: Build Storm Nx-Plugin packages
+        run: pnpm build-plugins
+        shell: bash
+
+      - name: Build Storm Nx-Plugin packages
+        run: pnpm nx run git-tools:build
+        shell: bash
+
+      - name: Validate commit messages
+        run: |
+          pnpm node -r esbuild-register ./dist/packages/git-tools/bin/git.js commitlint
+        shell: bash

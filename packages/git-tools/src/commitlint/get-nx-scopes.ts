@@ -8,7 +8,7 @@ import {
 } from "nx/src/project-graph/project-graph.js";
 
 export async function getNxScopes(
-  context: any,
+  context?: any,
   selector = (_params?: ProjectConfiguration) => true
 ) {
   const ctx = context || {};

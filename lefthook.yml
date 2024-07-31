@@ -62,9 +62,9 @@ pre-commit:
 commit-msg:
   commands:
     validate:
-      run: 'pnpm exec commitlint
-        --config="./dist/packages/git-tools/commitlint/commitlint.config.cjs"
-        --edit {1}'
+      run:
+        "pnpm node -r esbuild-register ./dist/packages/git-tools/bin/git.js commitlint
+        --message {1}"
 
 pre-push:
   piped: true

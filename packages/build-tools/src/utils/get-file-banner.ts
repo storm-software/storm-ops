@@ -49,8 +49,10 @@ ${commentStart}    Repository: ${
     process.env.STORM_REPOSITORY ??
     "https://github.com/storm-software/storm-stack"
   }
-${commentStart}    Documentation: https://stormsoftware.com/docs${
-    titleName?.startsWith("@") ? `/${titleName.slice(1)}` : ""
+${commentStart}    Documentation: https://docs.stormsoftware.com${
+    titleName?.startsWith("@")
+      ? `/projects/${titleName.slice(1).trim().replaceAll(/\s+/g, "-").toLowerCase()}`
+      : ""
   }
 ${commentStart}    Contact: ${
     process.env.STORM_HOMEPAGE
