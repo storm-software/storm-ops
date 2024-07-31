@@ -18,6 +18,7 @@ import type { RuleOptions } from "./preset.d";
 import jsxA11yRules from "./rules/jsx-a11y";
 import reactRules from "./rules/react";
 import reactHooksRules from "./rules/react-hooks";
+import stormRules from "./rules/storm";
 import tsdocRules from "./rules/ts-docs";
 import banner from "./utils/banner-plugin";
 import { CODE_BLOCK, CODE_FILE, TS_FILE } from "./utils/constants";
@@ -35,86 +36,20 @@ export type PresetModuleBoundary = {
 };
 
 export interface PresetOptions {
-  typescript?: RuleOptions;
-  markdown?: false | { rules: RuleOptions };
-  react?: false | { rules: RuleOptions };
+  rules?: Linter.RulesRecord;
   ignores?: string[];
-  moduleBoundaries?: PresetModuleBoundary;
+  markdown?: false | Linter.RulesRecord;
+  react?: false | Linter.RulesRecord;
 }
-
-export interface TypedFlatConfig extends Omit<Linter.FlatConfig, "rules"> {
-  rules?: RuleOptions;
-}
-
-export const DEFAULT_TYPESCRIPT_RULES = {
-  "unicorn/number-literal-case": "off",
-  "unicorn/template-indent": "off",
-  "unicorn/prevent-abbreviations": "off",
-  "unicorn/no-await-expression-member": "off",
-  "unicorn/no-useless-undefined": "off",
-  "unicorn/no-array-push-push": "off",
-  "unicorn/no-array-reduce": "off",
-  "unicorn/no-useless-switch-case": "off",
-  "@typescript-eslint/no-explicit-any": "off",
-  "@typescript-eslint/no-empty-function": "off",
-  "@typescript-eslint/no-var-requires": "off",
-  "@typescript-eslint/ban-ts-comment": "off",
-  "@typescript-eslint/no-empty-interface": "off",
-  "@typescript-eslint/explicit-module-boundary-types": "off",
-  "@typescript-eslint/explicit-function-return-type": "off",
-  "@typescript-eslint/no-unused-vars": [
-    "warn",
-    { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }
-  ],
-  "unicorn/prefer-string-replace-all": "off",
-  "unicorn/no-abusive-eslint-disable": "off",
-  "unicorn/import-style": "off",
-  "unicorn/prefer-module": "off",
-  "unicorn/consistent-function-scoping": "off",
-  "class-methods-use-this": "off",
-  "@typescript-eslint/no-restricted-imports": [
-    "error",
-    {
-      "patterns": [
-        {
-          "group": ["nx/src/plugins/js*"],
-          "message":
-            "Imports from 'nx/src/plugins/js' are not allowed. Use '@nx/js' instead"
-        },
-        {
-          "group": ["**/native-bindings", "**/native-bindings.js"],
-          "message":
-            "Direct imports from native-bindings.js are not allowed. Import from index.js instead."
-        },
-        {
-          "group": ["create-storm-workspace"],
-          "message":
-            "Direct imports from `create-storm-workspace` are not allowed. Instead install this package globally (example: 'npm i create-storm-workspace -g')."
-        },
-        {
-          "group": ["create-nx-workspace"],
-          "message":
-            "Direct imports from `create-nx-workspace` are not allowed. Instead install this package globally (example: 'npm i create-nx-workspace -g')."
-        }
-      ]
-    }
-  ]
-};
 
 export default function stormPreset(
   options: PresetOptions = {
-    moduleBoundaries: {
-      enforceBuildableLibDependency: true,
-      allow: [],
-      depConstraints: [
-        {
-          sourceTag: "*",
-          onlyDependOnLibsWithTags: ["*"]
-        }
-      ]
-    }
+    rules: {},
+    ignores: [],
+    markdown: {},
+    react: {}
   },
-  ...userConfigs: TypedFlatConfig[]
+  ...userConfigs: Linter.FlatConfig[]
 ): Linter.FlatConfig[] {
   const configs: Linter.FlatConfig[] = [
     // https://eslint.org/docs/latest/rules/
@@ -128,12 +63,6 @@ export default function stormPreset(
 
     // Prettier
     prettierConfig,
-
-    // React
-    // https://www.npmjs.com/package/eslint-plugin-react
-    options.react !== false && {
-      plugins: { react, "react-hooks": reactHooks, "jsx-a11y": jsxA11y }
-    },
 
     // Import
     // https://www.npmjs.com/package/eslint-plugin-import
@@ -239,61 +168,44 @@ export default function stormPreset(
       ...prettierConfig.rules,
 
       // https://www.npmjs.com/package/eslint-plugin-unicorn
-      ...eslintPluginUnicorn.configs["flat/recommended"].reduce(
-        (ret, record) => ({ ...ret, ...record.rules }),
-        {}
-      ),
+      ...eslintPluginUnicorn.configs["flat/recommended"].rules,
 
       // Banner
       ...banner.configs!["recommended"]![1].rules,
 
-      // NX
-      "@nx/enforce-module-boundaries": [
-        "error",
-        options.moduleBoundaries
-          ? options.moduleBoundaries
-          : {
-              enforceBuildableLibDependency: true,
-              checkDynamicDependenciesExceptions: [".*"],
-              allow: [],
-              depConstraints: [
-                {
-                  sourceTag: "*",
-                  onlyDependOnLibsWithTags: ["*"]
-                }
-              ]
-            }
-      ],
-
-      ...DEFAULT_TYPESCRIPT_RULES,
-      ...(options.typescript ?? {})
+      ...stormRules,
+      ...(options.rules ?? {})
     },
     ignores: ["dist", "coverage", "tmp", ...(options.ignores || [])]
   };
 
-  if (options.react !== false) {
+  // React
+  // https://www.npmjs.com/package/eslint-plugin-react
+  if (options.react) {
+    typescriptConfig.plugins = {
+      ...typescriptConfig.plugins,
+      react,
+      "react-hooks": reactHooks,
+      "jsx-a11y": jsxA11y
+    };
+
     typescriptConfig.rules = {
       ...typescriptConfig.rules,
 
       // React
       ...reactRules,
       ...reactHooksRules,
-      ...jsxA11yRules
-    };
+      ...jsxA11yRules,
 
-    if (options.react?.rules) {
-      typescriptConfig.rules = {
-        ...typescriptConfig.rules,
-        ...options.react.rules
-      };
-    }
+      ...options.react
+    };
   }
 
   configs.push(typescriptConfig);
 
   // Markdown
   // https://www.npmjs.com/package/eslint-plugin-markdown
-  if (options.markdown !== false) {
+  if (options.markdown) {
     configs.push(...markdown.configs.recommended);
     configs.push({
       files: [CODE_BLOCK],
@@ -306,7 +218,7 @@ export default function stormPreset(
         "no-empty-pattern": "off",
         "no-redeclare": "off",
         "no-import-assign": "off",
-        ...options.markdown?.rules
+        ...options.markdown
       }) as any
     });
     configs.push({
@@ -319,7 +231,7 @@ export default function stormPreset(
         "no-empty-pattern": "off",
         "no-redeclare": "off",
         "no-import-assign": "off",
-        ...options.markdown?.rules
+        ...options.markdown
       }) as any
     });
   }

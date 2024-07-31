@@ -31,6 +31,10 @@
     ".": {
       "types": "./dist/preset.d.mts",
       "import": "./dist/preset.mjs"
+    },
+    "./preset": {
+      "types": "./dist/preset.d.mts",
+      "import": "./dist/preset.mjs"
     }
   },
   "files": [

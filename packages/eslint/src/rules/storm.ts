@@ -229,7 +229,74 @@ const config: Linter.RulesRecord = {
    *
    * 🔧 Fixable - https://eslint.org/docs/rules/yoda
    */
-  yoda: "warn"
+  yoda: "warn",
+
+  "unicorn/number-literal-case": "off",
+  "unicorn/template-indent": "off",
+  "unicorn/prevent-abbreviations": "off",
+  "unicorn/no-await-expression-member": "off",
+  "unicorn/no-useless-undefined": "off",
+  "unicorn/no-array-push-push": "off",
+  "unicorn/no-array-reduce": "off",
+  "unicorn/no-useless-switch-case": "off",
+  "@typescript-eslint/no-explicit-any": "off",
+  "@typescript-eslint/no-empty-function": "off",
+  "@typescript-eslint/no-var-requires": "off",
+  "@typescript-eslint/ban-ts-comment": "off",
+  "@typescript-eslint/no-empty-interface": "off",
+  "@typescript-eslint/explicit-module-boundary-types": "off",
+  "@typescript-eslint/explicit-function-return-type": "off",
+  "@typescript-eslint/no-unused-vars": [
+    "warn",
+    { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }
+  ],
+  "unicorn/prefer-string-replace-all": "off",
+  "unicorn/no-abusive-eslint-disable": "off",
+  "unicorn/import-style": "off",
+  "unicorn/prefer-module": "off",
+  "unicorn/consistent-function-scoping": "off",
+  "class-methods-use-this": "off",
+  "@typescript-eslint/no-restricted-imports": [
+    "error",
+    {
+      "patterns": [
+        {
+          "group": ["nx/src/plugins/js*"],
+          "message":
+            "Imports from 'nx/src/plugins/js' are not allowed. Use '@nx/js' instead"
+        },
+        {
+          "group": ["**/native-bindings", "**/native-bindings.js"],
+          "message":
+            "Direct imports from native-bindings.js are not allowed. Import from index.js instead."
+        },
+        {
+          "group": ["create-storm-workspace"],
+          "message":
+            "Direct imports from `create-storm-workspace` are not allowed. Instead install this package globally (example: 'npm i create-storm-workspace -g')."
+        },
+        {
+          "group": ["create-nx-workspace"],
+          "message":
+            "Direct imports from `create-nx-workspace` are not allowed. Instead install this package globally (example: 'npm i create-nx-workspace -g')."
+        }
+      ]
+    }
+  ],
+  "@nx/enforce-module-boundaries": [
+    "error",
+    {
+      enforceBuildableLibDependency: true,
+      checkDynamicDependenciesExceptions: [".*"],
+      allow: [],
+      depConstraints: [
+        {
+          sourceTag: "*",
+          onlyDependOnLibsWithTags: ["*"]
+        }
+      ]
+    }
+  ]
 };
 
 export default config;
