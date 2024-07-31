@@ -1,3 +1,15 @@
+## 0.39.0 (2024-07-31)
+
+
+### Features
+
+- **build-tools:** Added the `typeDefinitions` rollup plugin ([8a0e0f8a](https://github.com/storm-software/storm-ops/commit/8a0e0f8a))
+
+
+### Bug Fixes
+
+- **build-tools:** Removed unused variables ([d48e358b](https://github.com/storm-software/storm-ops/commit/d48e358b))
+
 ## 0.38.0 (2024-07-31)
 
 
