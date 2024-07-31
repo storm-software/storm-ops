@@ -1,3 +1,15 @@
+## 0.40.0 (2024-07-31)
+
+
+### Features
+
+- **build-tools:** Added a hook prior to `mkdist` to set custom options ([5c15681b](https://github.com/storm-software/storm-ops/commit/5c15681b))
+
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with `tsconfck` import ([4e5b4667](https://github.com/storm-software/storm-ops/commit/4e5b4667))
+
 ## 0.39.0 (2024-07-31)
 
 
