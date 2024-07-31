@@ -1,3 +1,10 @@
+## 0.39.2 (2024-07-31)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue iterating unbuild entry files ([17703513](https://github.com/storm-software/storm-ops/commit/17703513))
+
 ## 0.39.1 (2024-07-31)
 
 
