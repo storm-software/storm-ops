@@ -14,6 +14,7 @@ import type { StormConfig } from "@storm-software/config";
 import { LogLevelLabel, writeDebug } from "@storm-software/config-tools";
 import merge from "deepmerge";
 import { LogLevel } from "esbuild";
+import { Glob } from "glob";
 import { MkdistOptions } from "mkdist";
 import { dirname, extname, join } from "node:path";
 import { pathToFileURL } from "node:url";
@@ -110,15 +111,7 @@ export async function getUnbuildBuildOptions(
     clean: false,
     name: options.projectName,
     rootDir: config.workspaceRoot,
-    entries: [
-      // mkdist builder transpiles file-to-file keeping original sources structure
-      {
-        builder: "mkdist",
-        input: options.sourceRoot,
-        outDir: joinPathFragments(options.outputPath, "dist"),
-        declaration: "compatible"
-      }
-    ],
+    entries: [],
     outDir: options.outputPath,
     externals: [...externals, ...(options.external ?? [])],
     declaration: "compatible",
@@ -128,6 +121,8 @@ export async function getUnbuildBuildOptions(
         entry: MkdistBuildEntry,
         opts: MkdistOptions
       ) => {
+        opts.rootDir;
+
         const tsConfig = await getNormalizedTsConfig(
           config,
           createTypeScriptCompilationOptions(
@@ -183,6 +178,28 @@ export async function getUnbuildBuildOptions(
     }
   };
 
+  (
+    await new Glob("**/*.{ts,tsx}", {
+      absolute: false,
+      cwd: options.sourceRoot,
+      root: options.sourceRoot
+    }).walk()
+  ).forEach(file => {
+    const split = file.split(".");
+    split.pop();
+
+    buildConfig.entries!.push({
+      builder: "mkdist",
+      input: file,
+      outDir: joinPathFragments(
+        options.outputPath,
+        "dist",
+        `${split.join(".")}.mjs`
+      ),
+      declaration: "compatible"
+    });
+  });
+
   if (packageJson.dependencies) {
     buildConfig.dependencies = dependencies
       .filter(
@@ -228,11 +245,12 @@ export async function getUnbuildBuildOptions(
         ...rollupConfig,
         ...(buildOpt.rollup as any),
         emitCJS: true,
-        dts: {
-          respectExternal: true,
-          projectRoot: options.projectRoot
-          // compilerOptions: dtsCompilerOptions
-        },
+        // dts: {
+        //   respectExternal: true,
+        //   projectRoot: options.projectRoot
+        // compilerOptions: dtsCompilerOptions
+        // },
+        dts: true,
         output: {
           ...rollupConfig?.output,
           banner: options.banner,
