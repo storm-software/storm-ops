@@ -1,15 +1,17 @@
 import {
+  exitWithError,
   exitWithSuccess,
   handleProcess,
   loadStormConfig,
-  writeSuccess,
   writeFatal,
-  exitWithError
+  writeSuccess
 } from "@storm-software/config-tools";
-import { createProgram } from "../src/cli";
-import { register as registerTsConfigPaths } from "tsconfig-paths";
-import { join } from "node:path";
 import { readJsonSync } from "fs-extra";
+import { join } from "node:path";
+import { register as registerTsConfigPaths } from "tsconfig-paths";
+import { createProgram } from "../src/cli";
+
+Error.stackTraceLimit = Infinity;
 
 void (async () => {
   const config = await loadStormConfig();
@@ -26,13 +28,14 @@ void (async () => {
 
     await program.parseAsync(process.argv);
 
-    writeSuccess("Code linting and fixing completed successfully!", config);
+    writeSuccess("🎉  Code linting and fixing completed successfully!", config);
     exitWithSuccess(config);
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running the program: ${error.message}`,
+      `A fatal error occurred while linting the workspace: ${error.message}`,
       config
     );
+
     exitWithError(config);
     process.exit(1);
   }

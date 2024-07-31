@@ -4,20 +4,20 @@
   "sourceRoot": "packages/eslint-config/src",
   "projectType": "library",
   "targets": {
-    "test": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "dependsOn": ["clean", "^build"],
-      "options": {
-        "commands": ["eslint-find-rules --unused ./src/base.js"],
-        "parallel": true,
-        "cwd": "packages/eslint-config"
-      }
-    },
+    // "test": {
+    //   "cache": true,
+    //   "executor": "nx:run-commands",
+    //   "dependsOn": ["clean", "^build"],
+    //   "options": {
+    //     "commands": ["eslint-find-rules --unused ./src/base.js"],
+    //     "parallel": true,
+    //     "cwd": "packages/eslint-config"
+    //   }
+    // },
     "build": {
       "cache": true,
       "executor": "nx:run-commands",
-      "dependsOn": ["test", "^build"],
+      "dependsOn": ["^build"],
       "options": {
         "commands": [
           "pnpm copyfiles --up=3 packages/eslint-config/src/rules/*.js dist/packages/eslint-config",

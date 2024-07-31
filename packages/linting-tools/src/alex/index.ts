@@ -13,39 +13,54 @@ export const runAlex = (
   rcName = "@storm-software/linting-tools/alex/.alexrc",
   ignoreName = "@storm-software/linting-tools/alex/.alexignore"
 ) => {
-  return new Promise((resolve: (value: unknown) => void, reject: (reason?: any) => void) =>
-    engine(
-      {
-        processor: unified(),
-        files: ["**/*.{txt,js,jsx,ts,tsx,md,mdx,json}"],
-        extensions: ["txt", "text", "md", "mdx", "markdown", "mkd", "mkdn", "mkdown", "ron"],
-        configTransform: transform,
-        out: false,
-        output: false,
-        rcName,
-        rcPath: undefined,
-        packageField: "alex",
-        color: true,
-        reporter: vfileReporter,
-        reporterOptions: {
-          verbose: false
+  return new Promise(
+    (resolve: (value: unknown) => void, reject: (reason?: any) => void) =>
+      engine(
+        {
+          processor: unified(),
+          files: ["**/*.{txt,js,jsx,ts,tsx,md,mdx,json}"],
+          extensions: [
+            "txt",
+            "text",
+            "md",
+            "mdx",
+            "markdown",
+            "mkd",
+            "mkdn",
+            "mkdown",
+            "ron"
+          ],
+          configTransform: transform,
+          out: false,
+          output: false,
+          rcName,
+          rcPath: undefined,
+          packageField: "alex",
+          color: true,
+          reporter: vfileReporter,
+          reporterOptions: {
+            verbose: false
+          },
+          quiet: true,
+          ignoreName,
+          ignorePatterns: [
+            "**/CODE_OF_CONDUCT.md",
+            "**/dist/**",
+            "**/node_modules/**"
+          ],
+          silent: false,
+          silentlyIgnore: true,
+          frail: true,
+          defaultConfig: transform({})
         },
-        quiet: true,
-        ignoreName,
-        ignorePatterns: ["**/CODE_OF_CONDUCT.md", "**/dist/**", "**/node_modules/**"],
-        silent: false,
-        silentlyIgnore: true,
-        frail: true,
-        defaultConfig: transform({})
-      },
-      (error, code) => {
-        if (error) {
-          console.error(error.message);
-          return reject(code);
+        (error, code) => {
+          if (error) {
+            console.error(error.message);
+            return reject(code);
+          }
+          return resolve(code);
         }
-        return resolve(code);
-      }
-    )
+      )
   );
 };
 

@@ -64,6 +64,7 @@ jdbc
 sqlserver
 EDITMSG
 shellescape
+codeowners
 uploadables
 visibillitychange
 preid

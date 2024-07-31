@@ -57,12 +57,9 @@ export async function presetGeneratorFn(
       "acidic",
       "acidic-lang",
       "acidic-model",
-      "impact",
+      "cyclone-ui",
       "nextjs",
       "prisma",
-      "zenstack",
-      "hasura",
-      "strapi",
       "graphql",
       "sullivanpj",
       "monorepo"
@@ -102,7 +99,7 @@ export async function presetGeneratorFn(
     json.scripts.prepare = "pnpm add lefthook -w && pnpm lefthook install";
     json.scripts.preinstall = "npx -y only-allow pnpm";
     json.scripts["install:csb"] =
-      "corepack enable && pnpm install --frozen-lockfile";
+      "corepack enable && pnpm install --no-frozen-lockfile";
 
     json.scripts.clean = "rimraf dist";
     json.scripts.prebuild = "pnpm clean";

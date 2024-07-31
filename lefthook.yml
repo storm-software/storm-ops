@@ -21,7 +21,7 @@ prepare:
       run: "node ./dist/packages/git-tools/bin/prepare.js"
 
 pre-commit:
-  piped: true
+  # piped: true
   commands:
     prepare:
       glob: "**/{lefthook.yml,biome.json}"
@@ -37,33 +37,27 @@ pre-commit:
       glob: "**/*"
       run: "node ./dist/packages/git-tools/bin/pre-commit.js {files}"
       stage_fixed: true
-    # lint:
-    #   files: "git diff --name-only HEAD @{push}"
-    #   glob: "**/*.{js,ts,rs,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-    #   run: "pnpm lint"
+    lint:
+      files: "git diff --name-only HEAD @{push}"
+      glob: "**/*.{js,ts,rs,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+      run: "pnpm lint"
+      stage_fixed: true
+    lint-codeowners:
+      files: "git diff --name-only HEAD @{push}"
+      glob: "**/CODEOWNERS"
+      run: "pnpm node -r esbuild-register ./dist/packages/linting-tools/bin/lint.js codeowners"
+
     # check:
     #   files: "git diff --name-only HEAD @{push}"
     #   glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
     #   run: "pnpm exec prettier {staged_files} --check --ignore-unknown --no-error-on-unmatched-pattern --cache"
-    # toml:
-    #   files: "git diff --name-only HEAD @{push}"
-    #   glob: "**/*.{toml}"
-    #   run: "pnpm format-toml"
-    readme:
-      glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}"
-      run: "pnpm format-readme"
-      stage_fixed: true
-    format:
-      files: "git diff --name-only HEAD @{push}"
-      glob: "**/*"
-      exclude: "packages/workspace-tools/src/generators/*/files/**/*"
-      run: "pnpm exec prettier {files} --write --ignore-unknown
-        --no-error-on-unmatched-pattern --cache"
-      stage_fixed: true
-    # postbuild:
+    # format:
     #   files: "git diff --name-only HEAD @{push}"
     #   glob: "**/*"
-    #   run: "pnpm build-all"
+    #   exclude: "packages/workspace-tools/src/generators/*/files/**/*"
+    #   run: "pnpm exec prettier {files} --write --ignore-unknown
+    #     --no-error-on-unmatched-pattern --cache"
+    #   stage_fixed: true
 
 commit-msg:
   commands:
@@ -80,6 +74,15 @@ pre-push:
       glob: "**/*"
       run: "node ./dist/packages/git-tools/bin/pre-push.js {files}"
       stage_fixed: true
+    toml:
+      files: "git diff --name-only HEAD @{push}"
+      glob: "**/*.{toml}"
+      run: "pnpm format-toml"
+      stage_fixed: true
+    readme:
+      glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}"
+      run: "pnpm format-readme"
+      stage_fixed: true
     format:
       files: "git diff --name-only HEAD @{push}"
       glob: "!packages/workspace-tools/src/generators/*/files/**/*"
@@ -88,7 +91,7 @@ pre-push:
       stage_fixed: true
     build:
       glob: "**/*"
-      run: "pnpm build-all"
+      run: "pnpm build"
       stage_fixed: true
 
 post-merge:

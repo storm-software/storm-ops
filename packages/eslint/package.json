@@ -50,9 +50,9 @@
     "monorepo"
   ],
   "peerDependencies": {
-    "@nx/eslint": ">=18.3.0",
-    "@nx/eslint-plugin": ">=18.3.0",
-    "eslint": ">=9.0.0",
+    "@nx/eslint": ">=19.5.3",
+    "@nx/eslint-plugin": ">=19.5.3",
+    "eslint": "9.5.0",
     "graphql": ">=16.9.0"
   },
   "peerDependenciesMeta": {
@@ -76,15 +76,15 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-json": "4.0.0",
     "eslint-plugin-jsonc": "2.16.0",
-    "eslint-plugin-jsx-a11y": "6.8.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-markdown": "^5.1.0",
     "eslint-plugin-markdownlint": "0.6.0",
     "eslint-plugin-mdx": "3.1.5",
     "eslint-plugin-n": "17.8.1",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-promise": "6.2.0",
-    "eslint-plugin-react": "7.34.3",
-    "eslint-plugin-react-hooks": "4.6.2",
+    "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-relay": "1.8.3",
     "eslint-plugin-sonarjs": "1.0.3",
     "eslint-plugin-tsdoc": "0.3.0",
@@ -99,10 +99,14 @@
   },
   "devDependencies": {
     "@eslint/config-inspector": "^0.5.1",
+    "@nx/eslint": ">=19.5.3",
+    "@nx/eslint-plugin": ">=19.5.3",
     "@types/eslint": "^8.56.10",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^20.14.10",
+    "eslint": "9.5.0",
     "eslint-typegen": "^0.2.4",
+    "graphql": ">=16.9.0",
     "unbuild": "^2.0.0"
   },
   "publishConfig": {

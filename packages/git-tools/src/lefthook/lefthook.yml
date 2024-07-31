@@ -26,7 +26,7 @@ pre-commit:
     install:
       files: "git diff --name-only HEAD @{push}"
       glob: "./{pnpm-lock.yaml,lefthook.yml}"
-      run: "pnpm install && git update-index"
+      run: "pnpm install --no-frozen-lockfile && git update-index"
     prepare:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/{lefthook.yml,biome.json}"
@@ -46,18 +46,15 @@ pre-commit:
       stage_fixed: true
     lint-toml:
       glob: "**/*.toml"
-      run:
-        'pnpm exec taplo format --check
+      run: 'pnpm exec taplo format --check
         --config="./node_modules/@storm-software/linting-tools/taplo/.taplo.toml"'
     lint-filename:
       glob: "**/*.*"
-      run:
-        'pnpm exec ls-lint
+      run: 'pnpm exec ls-lint
         --config="@storm-software/linting-tools/ls-lint/ls-lint.yml"'
     readme-gen:
       glob: "**/{README.md,package.json,executors.json,generators.json}"
-      run:
-        'pnpm exec storm-git readme-gen --templates="./tools/readme-templates"'
+      run: 'pnpm exec storm-git readme-gen --templates="./tools/readme-templates"'
       stage_fixed: true
     format:
       glob: "**/*.*"
@@ -65,8 +62,7 @@ pre-commit:
       stage_fixed: true
     format-toml:
       glob: "**/*.toml"
-      run:
-        'pnpm exec taplo format
+      run: 'pnpm exec taplo format
         --config="@storm-software/linting-tools/taplo/.taplo.toml" && git
         update-index'
     postbuild:
@@ -77,8 +73,7 @@ pre-commit:
 commit-msg:
   commands:
     validate:
-      run:
-        'pnpm exec commitlint
+      run: 'pnpm exec commitlint
         --config="./node_modules/@storm-software/git-tools/commitlint.config.cjs"
         --edit {1}'
 
