@@ -1,3 +1,10 @@
+## 0.42.1 (2024-07-31)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolve issues with the output path provided to unbuild ([ee9c2353](https://github.com/storm-software/storm-ops/commit/ee9c2353))
+
 ## 0.42.0 (2024-07-31)
 
 
