@@ -19,8 +19,8 @@ import jsxA11yRules from "./rules/jsx-a11y";
 import reactRules from "./rules/react";
 import reactHooksRules from "./rules/react-hooks";
 import tsdocRules from "./rules/ts-docs";
-import bannerEslint from "./utils/banner-plugin";
-import { CODE_FILE, TS_FILE } from "./utils/constants";
+import banner from "./utils/banner-plugin";
+import { CODE_BLOCK, CODE_FILE, TS_FILE } from "./utils/constants";
 import { formatConfig } from "./utils/format-config";
 
 export type PresetModuleBoundaryDepConstraints = {
@@ -35,7 +35,7 @@ export type PresetModuleBoundary = {
 };
 
 export interface PresetOptions {
-  rules?: RuleOptions;
+  typescript?: RuleOptions;
   markdown?: false | { rules: RuleOptions };
   react?: false | { rules: RuleOptions };
   ignores?: string[];
@@ -45,6 +45,61 @@ export interface PresetOptions {
 export interface TypedFlatConfig extends Omit<Linter.FlatConfig, "rules"> {
   rules?: RuleOptions;
 }
+
+export const DEFAULT_TYPESCRIPT_RULES = {
+  "unicorn/number-literal-case": 0,
+  "unicorn/template-indent": 0,
+  "unicorn/prevent-abbreviations": 0,
+  "unicorn/no-await-expression-member": 0,
+  "unicorn/no-useless-undefined": 0,
+  "unicorn/no-array-push-push": 0,
+  "unicorn/no-array-reduce": 0,
+  "unicorn/no-useless-switch-case": 0,
+  "@typescript-eslint/no-explicit-any": 0,
+  "@typescript-eslint/no-empty-function": 0,
+  "@typescript-eslint/no-var-requires": 0,
+  "@typescript-eslint/ban-ts-comment": 0,
+  "@typescript-eslint/no-empty-interface": 0,
+  "@typescript-eslint/explicit-module-boundary-types": 0,
+  "@typescript-eslint/explicit-function-return-type": 0,
+  "@typescript-eslint/no-unused-vars": [
+    "warn",
+    { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }
+  ],
+  "unicorn/prefer-string-replace-all": 0,
+  "unicorn/no-abusive-eslint-disable": 0,
+  "unicorn/import-style": 0,
+  "unicorn/prefer-module": 0,
+  "unicorn/consistent-function-scoping": 0,
+  "class-methods-use-this": 0,
+  "@typescript-eslint/no-restricted-imports": [
+    "error",
+    {
+      "patterns": [
+        {
+          "group": ["nx/src/plugins/js*"],
+          "message":
+            "Imports from 'nx/src/plugins/js' are not allowed. Use '@nx/js' instead"
+        },
+        {
+          "group": ["**/native-bindings", "**/native-bindings.js"],
+          "message":
+            "Direct imports from native-bindings.js are not allowed. Import from index.js instead."
+        },
+        {
+          "group": ["create-storm-workspace"],
+          "message":
+            "Direct imports from `create-storm-workspace` are not allowed. Instead install this package globally (example: 'npm i create-storm-workspace -g')."
+        },
+        {
+          "group": ["create-nx-workspace"],
+          "message":
+            "Direct imports from `create-nx-workspace` are not allowed. Instead install this package globally (example: 'npm i create-nx-workspace -g')."
+        }
+      ]
+    }
+  ]
+};
 
 export default function stormPreset(
   options: PresetOptions = {
@@ -61,96 +116,23 @@ export default function stormPreset(
   },
   ...userConfigs: TypedFlatConfig[]
 ): Linter.FlatConfig[] {
-  const rules = {
-    "unicorn/number-literal-case": 0,
-    "unicorn/template-indent": 0,
-    "unicorn/prevent-abbreviations": 0,
-    "unicorn/no-await-expression-member": 0,
-    "unicorn/no-useless-undefined": 0,
-    "unicorn/no-array-push-push": 0,
-    "unicorn/no-array-reduce": 0,
-    "unicorn/no-useless-switch-case": 0,
-    "@typescript-eslint/no-explicit-any": 0,
-    "@typescript-eslint/no-empty-function": 0,
-    "@typescript-eslint/no-var-requires": 0,
-    "@typescript-eslint/ban-ts-comment": 0,
-    "@typescript-eslint/no-empty-interface": 0,
-    "@typescript-eslint/explicit-module-boundary-types": 0,
-    "@typescript-eslint/explicit-function-return-type": 0,
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
-      { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }
-    ],
-    "unicorn/prefer-string-replace-all": 0,
-    "unicorn/no-abusive-eslint-disable": 0,
-    "unicorn/import-style": 0,
-    "unicorn/prefer-module": 0,
-    "unicorn/consistent-function-scoping": 0,
-    "class-methods-use-this": 0,
-    ...options.rules
-  };
-
   const configs: Linter.FlatConfig[] = [
     // https://eslint.org/docs/latest/rules/
     eslint.configs.recommended,
+
     // https://typescript-eslint.io/
-    ...(tsEslint.configs.recommended as Linter.FlatConfig[]),
+    ...(tsEslint.configs.stylisticTypeChecked as Linter.FlatConfig[]),
+
     // https://github.com/sindresorhus/eslint-plugin-unicorn
     eslintPluginUnicorn.configs["flat/recommended"] as Linter.FlatConfig,
 
     // Prettier
     prettierConfig,
 
-    // Preset overrides
-    { rules: rules as Linter.RulesRecord },
-    {
-      languageOptions: {
-        globals: Object.fromEntries(
-          Object.keys(globals).flatMap(group =>
-            Object.keys(globals[group as keyof typeof globals]).map(k => [
-              k,
-              true
-            ])
-          )
-        )
-      }
-    },
-    { ignores: ["dist", "coverage", ...(options.ignores || [])] },
-
-    // Markdown
-    // https://www.npmjs.com/package/eslint-plugin-markdown
-    options.markdown !== false && { plugins: { markdown } },
-    options.markdown !== false && {
-      files: [CODE_FILE],
-      processor: "markdown/markdown"
-    },
-    options.markdown !== false && {
-      files: ["**/*.md/*.js", "**/*.md/*.ts"],
-      rules: (<RuleOptions>{
-        "unicorn/filename-case": 0,
-        "no-undef": 0,
-        "no-unused-expressions": 0,
-        "padded-blocks": 0,
-        "no-empty-pattern": 0,
-        "no-redeclare": 0,
-        "no-import-assign": 0,
-        ...options.markdown?.rules
-      }) as any
-    },
-
     // React
     // https://www.npmjs.com/package/eslint-plugin-react
     options.react !== false && {
       plugins: { react, "react-hooks": reactHooks, "jsx-a11y": jsxA11y }
-    },
-    options.react !== false && {
-      files: [CODE_FILE],
-      rules: (<RuleOptions>{
-        ...reactRules,
-        ...reactHooksRules,
-        ...jsxA11yRules,
-        ...options.react?.rules
-      }) as any
     },
 
     // Import
@@ -162,7 +144,7 @@ export default function stormPreset(
     // },
 
     // Banner
-    bannerEslint.configs!["recommended"],
+    ...banner.configs!["recommended"]![0],
 
     // TSDoc
     // https://www.npmjs.com/package/eslint-plugin-tsdoc
@@ -172,56 +154,9 @@ export default function stormPreset(
       rules: tsdocRules
     },
 
-    // Nx plugin
+    // NX
     {
-      plugins: { "@nx": nxPlugin },
-      languageOptions: {
-        parser: tsEslint.parser,
-        globals: {
-          ...globals.node,
-          ...globals.browser,
-          "StormProvider": true
-        }
-      },
-      files: [CODE_FILE],
-      rules: {
-        "@nx/enforce-module-boundaries": [
-          "error",
-          options.moduleBoundaries
-            ? options.moduleBoundaries
-            : {
-                enforceBuildableLibDependency: true,
-                checkDynamicDependenciesExceptions: [".*"],
-                allow: [],
-                depConstraints: [
-                  {
-                    sourceTag: "*",
-                    onlyDependOnLibsWithTags: ["*"]
-                  }
-                ]
-              }
-        ],
-
-        "no-restricted-imports": ["error", "create-nx-workspace"],
-        "@typescript-eslint/no-restricted-imports": [
-          "error",
-          {
-            "patterns": [
-              {
-                "group": ["nx/src/plugins/js*"],
-                "message":
-                  "Imports from 'nx/src/plugins/js' are not allowed. Use '@nx/js' instead"
-              },
-              {
-                "group": ["**/native-bindings", "**/native-bindings.js", ""],
-                "message":
-                  "Direct imports from native-bindings.js are not allowed. Import from index.js instead."
-              }
-            ]
-          }
-        ],
-        "unicorn/prefer-logical-operator-over-ternary": "warn"
-      }
+      plugins: { "@nx": nxPlugin }
     },
 
     // Json
@@ -266,6 +201,122 @@ export default function stormPreset(
     // User overrides
     ...(userConfigs as Linter.FlatConfig[])
   ].filter(Boolean) as Linter.FlatConfig[];
+
+  // TypeScript and JavaScript
+  const typescriptConfig: Linter.FlatConfig<Linter.RulesRecord> = {
+    ...tsEslint.configs.stylisticTypeChecked,
+    ...eslintPluginUnicorn.configs["flat/recommended"],
+
+    files: [CODE_FILE],
+    languageOptions: {
+      parser: tsEslint.parser as Linter.FlatConfigParserModule,
+      globals: {
+        ...Object.fromEntries(
+          Object.keys(globals).flatMap(group =>
+            Object.keys(globals[group as keyof typeof globals]).map(k => [
+              k,
+              true
+            ])
+          )
+        ),
+        "StormProvider": true
+      }
+    },
+    rules: {
+      // https://eslint.org/docs/latest/rules/
+      ...eslint.configs.recommended.rules,
+
+      // https://typescript-eslint.io/
+      ...tsEslint.configs.stylisticTypeChecked.reduce(
+        (ret, record) => ({ ...ret, ...record.rules }),
+        {}
+      ),
+
+      // Prettier
+      ...prettierConfig.rules,
+
+      // https://www.npmjs.com/package/eslint-plugin-unicorn
+      ...eslintPluginUnicorn.configs["flat/recommended"].rules,
+
+      // Banner
+      ...banner.configs!["recommended"]![1].rules,
+
+      // NX
+      "@nx/enforce-module-boundaries": [
+        "error",
+        options.moduleBoundaries
+          ? options.moduleBoundaries
+          : {
+              enforceBuildableLibDependency: true,
+              checkDynamicDependenciesExceptions: [".*"],
+              allow: [],
+              depConstraints: [
+                {
+                  sourceTag: "*",
+                  onlyDependOnLibsWithTags: ["*"]
+                }
+              ]
+            }
+      ],
+
+      ...DEFAULT_TYPESCRIPT_RULES,
+      ...(options.typescript ?? {})
+    },
+    ignores: ["dist", "coverage", "tmp", ...(options.ignores || [])]
+  };
+
+  if (options.react !== false) {
+    typescriptConfig.rules = {
+      ...typescriptConfig.rules,
+
+      // React
+      ...reactRules,
+      ...reactHooksRules,
+      ...jsxA11yRules
+    };
+
+    if (options.react?.rules) {
+      typescriptConfig.rules = {
+        ...typescriptConfig.rules,
+        ...options.react.rules
+      };
+    }
+  }
+
+  configs.push(typescriptConfig);
+
+  // Markdown
+  // https://www.npmjs.com/package/eslint-plugin-markdown
+  if (options.markdown !== false) {
+    configs.push(...markdown.configs.recommended);
+    configs.push({
+      files: [CODE_BLOCK],
+      processor: "markdown/markdown",
+      rules: (<RuleOptions>{
+        "unicorn/filename-case": 0,
+        "no-undef": 0,
+        "no-unused-expressions": 0,
+        "padded-blocks": 0,
+        "no-empty-pattern": 0,
+        "no-redeclare": 0,
+        "no-import-assign": 0,
+        ...options.markdown?.rules
+      }) as any
+    });
+    configs.push({
+      files: ["**/*.md/*.js", "**/*.md/*.ts"],
+      rules: (<RuleOptions>{
+        "unicorn/filename-case": 0,
+        "no-undef": 0,
+        "no-unused-expressions": 0,
+        "padded-blocks": 0,
+        "no-empty-pattern": 0,
+        "no-redeclare": 0,
+        "no-import-assign": 0,
+        ...options.markdown?.rules
+      }) as any
+    });
+  }
 
   return formatConfig("Preset", configs);
 }

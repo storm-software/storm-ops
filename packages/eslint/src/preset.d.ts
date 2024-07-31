@@ -778,7 +778,11 @@ export interface RuleOptions {
    * @see https://typescript-eslint.io/rules/use-unknown-in-catch-callback-variable
    */
   '@typescript-eslint/use-unknown-in-catch-callback-variable'?: Linter.RuleEntry<[]>
-  'banner/banner'?: Linter.RuleEntry<[]>
+  /**
+   * Ensures the file has a Storm Software banner
+   * @see https://docs.stormsoftware.com/eslint-rules/banner
+   */
+  'banner/banner'?: Linter.RuleEntry<BannerBanner>
   /**
    * Enforce emojis are wrapped in `<span>` and provide screenreader access.
    * @see https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/accessible-emoji.md
@@ -3865,6 +3869,15 @@ type TypescriptEslintUnboundMethod = []|[{
 type TypescriptEslintUnifiedSignatures = []|[{
   
   ignoreDifferentlyNamedParameters?: boolean
+}]
+// ----- banner/banner -----
+type BannerBanner = []|[{
+  
+  banner?: string
+  
+  commentType?: string
+  
+  numNewlines?: number
 }]
 // ----- jsx-a11y/accessible-emoji -----
 type _JsxA11YAccessibleEmoji_JsxA11YAccessibleEmoji = []|[{

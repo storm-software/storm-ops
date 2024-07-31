@@ -378,21 +378,24 @@ const plugin: ESLint.Plugin = {
   processors: {}
 };
 
-plugin.configs!.recommended = {
-  plugins: { banner: plugin },
-  files: [
-    "**/*.{,c,m}{j,t}s{,x}",
-    "!tools/**/*",
-    "!docs/**/*",
-    "!crates/**/*",
-    "!.*/**/*"
-  ],
-  rules: {
-    "banner/banner": [
-      "error",
-      { banner: getFileBanner(""), commentType: "block", numNewlines: 2 }
-    ]
+plugin.configs!.recommended = [
+  { name: "banner/recommended/plugin", plugins: { banner: plugin } },
+  {
+    name: "banner/recommended/code-files",
+    files: [
+      "**/*.{,c,m}{j,t}s{,x}",
+      "!tools/**/*",
+      "!docs/**/*",
+      "!crates/**/*",
+      "!.*/**/*"
+    ],
+    rules: {
+      "banner/banner": [
+        "error",
+        { banner: getFileBanner(""), commentType: "block", numNewlines: 2 }
+      ]
+    }
   }
-};
+];
 
 export default plugin;

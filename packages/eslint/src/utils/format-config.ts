@@ -11,7 +11,7 @@ export const formatConfig = (
 
     return {
       ...config,
-      name: `Storm Software (${name}) #${index + 1}`,
+      name: `Storm Software (${config.name ? config.name : name}) #${index + 1}`,
       settings: {
         "import/resolver": "node",
         ...(config.settings ?? {})
