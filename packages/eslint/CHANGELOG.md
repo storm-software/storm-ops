@@ -1,3 +1,10 @@
+## 0.39.0 (2024-07-31)
+
+
+### Features
+
+- **git-tools:** Added the `commitlint` git tools ([250875e7](https://github.com/storm-software/storm-ops/commit/250875e7))
+
 ## 0.38.0 (2024-07-31)
 
 
