@@ -2,9 +2,9 @@ import { build } from "esbuild";
 
 Promise.all([
   build({
-    entryPoints: ["packages/eslint-plugin/src/index.ts"],
+    entryPoints: ["packages/eslint/src/preset.ts"],
     outdir: "dist/plugins/eslint",
-    tsconfig: "packages/eslint-plugin/tsconfig.esm.json",
+    tsconfig: "packages/eslint/tsconfig.json",
     logLevel: "info",
     bundle: true,
     minify: false,
@@ -19,8 +19,8 @@ Promise.all([
     legalComments: "inline",
     banner: {
       js: "const require = (await import('node:module')).createRequire(import.meta.url); \nconst __filename = (await import('node:url')).fileURLToPath(import.meta.url); \nconst __dirname = (await import('node:path')).dirname(__filename);"
-    },
-    plugins: [requireResolvePlugin()]
+    }
+    // plugins: [requireResolvePlugin()]
   }).then(() => {
     console.log("Storm ESLint plugin built successfully");
   }),

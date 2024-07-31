@@ -1,13 +1,23 @@
 import pluginPlugin from "eslint-plugin-eslint-plugin";
-import stormPlugin from "./dist/plugins/eslint/index.mjs";
+import storm from "./dist/plugins/eslint/preset.mjs";
 
-export default [
-  ...stormPlugin.configs.recommended,
+export default storm(
   {
-    ...pluginPlugin.configs.recommended,
+    typescript: {
+      "unicorn/no-null": 0,
+      "react/require-default-props": 0,
+      "unicorn/no-useless-switch-case": 0,
+      "react/jsx-closing-bracket-location": 0,
+      "no-undef": 0,
+      "unicorn/consistent-function-scoping": 0,
+      "class-methods-use-this": 0
+    },
+    ignores: ["**/dist", "**/node_modules", "**/.nx"]
+  },
+  {
     plugins: {
       "eslint-plugin": pluginPlugin
     },
     files: ["packages/{eslint-plugin,eslint-plugin-*}/**/*"]
   }
-];
+);
