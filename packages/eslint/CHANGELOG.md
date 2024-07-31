@@ -1,3 +1,10 @@
+## 0.35.0 (2024-07-31)
+
+
+### Features
+
+- **eslint:** Update the `banner/banner` eslint rule to include default options ([d952ac65](https://github.com/storm-software/storm-ops/commit/d952ac65))
+
 ## 0.34.0 (2024-07-31)
 
 
