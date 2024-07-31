@@ -1,3 +1,14 @@
+## 0.36.1 (2024-07-31)
+
+
+### Bug Fixes
+
+- **eslint:** Resolved issues applying `unicorn` rules ([b2be1a4d](https://github.com/storm-software/storm-ops/commit/b2be1a4d))
+
+- **eslint:** Ensure rules are spread correctly ([321435c8](https://github.com/storm-software/storm-ops/commit/321435c8))
+
+- **build-tools:** Remove unused plugin from unbuild ([ad8a5991](https://github.com/storm-software/storm-ops/commit/ad8a5991))
+
 ## 0.36.0 (2024-07-31)
 
 

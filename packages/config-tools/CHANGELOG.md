@@ -1,3 +1,10 @@
+## 1.67.1 (2024-07-31)
+
+
+### Bug Fixes
+
+- **build-tools:** Remove unused plugin from unbuild ([ad8a5991](https://github.com/storm-software/storm-ops/commit/ad8a5991))
+
 ## 1.67.0 (2024-07-31)
 
 
