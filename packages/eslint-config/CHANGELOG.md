@@ -1,3 +1,10 @@
+## 0.37.1 (2024-08-01)
+
+
+### Bug Fixes
+
+- **eslint:** Resolved issues with invalid TypeScript flat configuration ([88166ab1](https://github.com/storm-software/storm-ops/commit/88166ab1))
+
 ## 0.37.0 (2024-08-01)
 
 
