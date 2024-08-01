@@ -188,7 +188,6 @@ export function getStormConfig(
         emitDecoratorMetadata: true,
         experimentalDecorators: true,
         warnOnUnsupportedTypeScriptVersion: true,
-        tsconfigRootDir: __dirname,
         projectService: true,
         projectFolderIgnoreList: [
           "**/node_modules/**",
