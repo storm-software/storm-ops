@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/tsconfig",
-  "version": "0.23.0",
+  "version": "0.24.0",
   "description": "⚡ A package containing shared `tsconfig.json` files used in various other repositories by Storm Software.",
   "repository": {
     "type": "github",

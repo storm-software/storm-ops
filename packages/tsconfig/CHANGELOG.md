@@ -1,3 +1,10 @@
+## 0.24.0 (2024-08-01)
+
+
+### Features
+
+- **eslint:** Added initial typinges for the distribution package ([5a6a9dd1](https://github.com/storm-software/storm-ops/commit/5a6a9dd1))
+
 ## 0.23.0 (2024-08-01)
 
 
