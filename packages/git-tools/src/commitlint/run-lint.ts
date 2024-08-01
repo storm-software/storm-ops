@@ -3,7 +3,8 @@
 import {
   loadStormConfig,
   writeDebug,
-  writeSuccess
+  writeSuccess,
+  writeWarning
 } from "@storm-software/config-tools";
 import { readFile } from "fs/promises";
 import childProcess from "node:child_process";
@@ -37,9 +38,11 @@ export const runCommitLint = async (commitMessageArg?: string) => {
     if (upstreamRemote) {
       const upstreamRemoteIdentifier = upstreamRemote.split("\t")[0]?.trim();
       if (!upstreamRemoteIdentifier) {
-        throw new Error(
-          `No upstream remote found for ${config.name}.git. Skipping comparison.`
+        writeWarning(
+          `No upstream remote found for ${config.name}.git. Skipping comparison.`,
+          config
         );
+        return;
       }
 
       writeDebug(`Comparing against remote ${upstreamRemoteIdentifier}`);
@@ -52,14 +55,20 @@ export const runCommitLint = async (commitMessageArg?: string) => {
       gitLogCmd =
         gitLogCmd + ` ${currentBranch} ^${upstreamRemoteIdentifier}/main`;
     } else {
-      throw new Error(
-        `No upstream remote found for ${config.name}.git. Skipping comparison against upstream main.`
+      writeWarning(
+        `No upstream remote found for ${config.name}.git. Skipping comparison against upstream main.`,
+        config
       );
+      return;
     }
 
     commitMessage = childProcess.execSync(gitLogCmd).toString().trim();
     if (!commitMessage) {
-      throw new Error("No commits found. Skipping commit message validation.");
+      writeWarning(
+        "No commits found. Skipping commit message validation.",
+        config
+      );
+      return;
     }
   }
 
