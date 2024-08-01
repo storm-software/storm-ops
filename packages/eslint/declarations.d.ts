@@ -24,6 +24,7 @@ export type PresetModuleBoundary = {
 export interface PresetOptions {
   rules?: RuleOptions;
   ignores?: string[];
+  parserOptions?: Linter.ParserOptions;
   markdown?: false | Linter.RulesRecord;
   react?: false | Linter.RulesRecord;
 }

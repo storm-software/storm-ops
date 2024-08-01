@@ -1,12 +1,14 @@
 import eslint from "@eslint/js";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
 import tsEslint from "typescript-eslint";
 // @ts-ignore
-import eslintPluginUnicorn from "eslint-plugin-unicorn";
+import unicorn from "eslint-plugin-unicorn";
 // @ts-ignore
 import nxPlugin from "@nx/eslint-plugin";
 import type { Linter } from "eslint";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import markdown from "eslint-plugin-markdown";
+import prettier from "eslint-plugin-prettier";
 import prettierConfig from "eslint-plugin-prettier/recommended";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
@@ -21,7 +23,7 @@ import reactHooksRules from "./rules/react-hooks";
 import stormRules from "./rules/storm";
 import tsdocRules from "./rules/ts-docs";
 import banner from "./utils/banner-plugin";
-import { CODE_BLOCK, CODE_FILE, TS_FILE } from "./utils/constants";
+import { CODE_BLOCK, TS_FILE } from "./utils/constants";
 import { formatConfig } from "./utils/format-config";
 
 /**
@@ -47,6 +49,7 @@ export type PresetModuleBoundary = {
 export interface PresetOptions {
   rules?: RuleOptions;
   ignores?: string[];
+  parserOptions?: Linter.ParserOptions;
   markdown?: false | Linter.RulesRecord;
   react?: false | Linter.RulesRecord;
 }
@@ -61,6 +64,7 @@ export function getStormConfig(
   options: PresetOptions = {
     rules: {},
     ignores: [],
+    parserOptions: {},
     markdown: {},
     react: {}
   },
@@ -71,10 +75,13 @@ export function getStormConfig(
     eslint.configs.recommended,
 
     // https://typescript-eslint.io/
-    ...(tsEslint.configs.stylisticTypeChecked as Linter.FlatConfig[]),
+    ...tsEslint.configs.stylisticTypeChecked.map(config => ({
+      ...config,
+      files: ["**/*.ts"] // We use TS config only for TS files
+    })),
 
     // https://github.com/sindresorhus/eslint-plugin-unicorn
-    eslintPluginUnicorn.configs["flat/recommended"] as Linter.FlatConfig,
+    unicorn.configs["flat/recommended"] as Linter.FlatConfig,
 
     // Prettier
     prettierConfig,
@@ -152,9 +159,18 @@ export function getStormConfig(
     // ...tsEslint.configs.stylisticTypeChecked,
 
     // https://www.npmjs.com/package/eslint-plugin-unicorn
-    ...eslintPluginUnicorn.configs["flat/recommended"],
+    ...unicorn.configs["flat/recommended"],
 
-    files: [CODE_FILE],
+    plugins: {
+      "@typescript-eslint": tsPlugin,
+      "@nx": nxPlugin,
+      unicorn,
+      prettier,
+      banner,
+      tsdoc
+    },
+
+    files: [TS_FILE],
     languageOptions: {
       globals: {
         ...Object.fromEntries(
@@ -167,7 +183,22 @@ export function getStormConfig(
         ),
         "Storm": "readonly"
       },
-      ecmaVersion: "latest"
+      ecmaVersion: "latest",
+      parserOptions: {
+        emitDecoratorMetadata: true,
+        experimentalDecorators: true,
+        warnOnUnsupportedTypeScriptVersion: true,
+        tsconfigRootDir: __dirname,
+        projectService: true,
+        projectFolderIgnoreList: [
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/coverage/**",
+          "**/tmp/**",
+          "**/.nx/**"
+        ],
+        ...options.parserOptions
+      }
     },
     rules: {
       // https://eslint.org/docs/latest/rules/
@@ -183,7 +214,7 @@ export function getStormConfig(
       ...prettierConfig.rules,
 
       // https://www.npmjs.com/package/eslint-plugin-unicorn
-      ...eslintPluginUnicorn.configs["flat/recommended"].rules,
+      ...unicorn.configs["flat/recommended"].rules,
 
       // Banner
       ...banner.configs!["recommended"]![1].rules,
@@ -191,7 +222,7 @@ export function getStormConfig(
       ...stormRules,
       ...(options.rules ?? {})
     },
-    ignores: ["dist", "coverage", "tmp", ...(options.ignores || [])]
+    ignores: ["dist", "coverage", "tmp", ".nx", ...(options.ignores || [])]
   };
 
   // React
