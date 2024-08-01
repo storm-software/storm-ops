@@ -136,7 +136,7 @@ export function getStormConfig(
   // TypeScript and JavaScript
   const typescriptConfig: Linter.FlatConfig<Linter.RulesRecord> = {
     // https://typescript-eslint.io/
-    ...tsEslint.configs.stylisticTypeChecked,
+    // ...tsEslint.configs.stylisticTypeChecked,
 
     // https://www.npmjs.com/package/eslint-plugin-unicorn
     ...eslintPluginUnicorn.configs["flat/recommended"],
