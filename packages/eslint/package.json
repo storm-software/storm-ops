@@ -29,14 +29,15 @@
   "private": false,
   "exports": {
     ".": {
-      "types": "./dist/preset.d.mts",
+      "types": "./declarations.d.ts",
       "import": "./dist/preset.mjs"
     },
     "./preset": {
-      "types": "./dist/preset.d.mts",
+      "types": "./declarations.d.ts",
       "import": "./dist/preset.mjs"
     }
   },
+  "types": "declarations.d.ts",
   "files": [
     "dist"
   ],

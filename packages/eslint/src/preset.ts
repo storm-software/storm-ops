@@ -36,16 +36,18 @@ export type PresetModuleBoundary = {
 };
 
 export interface PresetOptions {
-  rules?: Linter.RulesRecord;
+  rules?: RuleOptions;
   ignores?: string[];
+  tsconfig?: string;
   markdown?: false | Linter.RulesRecord;
   react?: false | Linter.RulesRecord;
 }
 
-export default function stormPreset(
+export function getStormConfig(
   options: PresetOptions = {
     rules: {},
     ignores: [],
+    tsconfig: "./tsconfig.base.json",
     markdown: {},
     react: {}
   },
@@ -141,7 +143,6 @@ export default function stormPreset(
 
     files: [CODE_FILE],
     languageOptions: {
-      parser: tsEslint.parser as Linter.FlatConfigParserModule,
       globals: {
         ...Object.fromEntries(
           Object.keys(globals).flatMap(group =>
@@ -152,7 +153,8 @@ export default function stormPreset(
           )
         ),
         "Storm": true
-      }
+      },
+      project: options.tsconfig ? options.tsconfig : "./tsconfig.base.json"
     },
     rules: {
       // https://eslint.org/docs/latest/rules/
