@@ -1,3 +1,10 @@
+## 0.44.1 (2024-08-01)
+
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid path definition ([be930a74](https://github.com/storm-software/storm-ops/commit/be930a74))
+
 ## 0.44.0 (2024-08-01)
 
 
