@@ -1,3 +1,10 @@
+## 0.23.0 (2024-08-01)
+
+
+### Features
+
+- **git-tools:** Update `commitlint` to warn users when no commit message is provided instead of throwing errors ([04942ee2](https://github.com/storm-software/storm-ops/commit/04942ee2))
+
 ## 0.22.1 (2024-07-31)
 
 
