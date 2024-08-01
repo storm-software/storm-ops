@@ -1,3 +1,10 @@
+## 2.43.0 (2024-08-01)
+
+
+### Features
+
+- **eslint:** Added the `parserOptions` parameter to the preset's options ([344db07c](https://github.com/storm-software/storm-ops/commit/344db07c))
+
 ## 2.42.0 (2024-08-01)
 
 
