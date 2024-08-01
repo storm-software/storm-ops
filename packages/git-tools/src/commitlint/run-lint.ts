@@ -6,8 +6,10 @@ import {
   writeSuccess,
   writeWarning
 } from "@storm-software/config-tools";
+import { existsSync } from "fs";
 import { readFile } from "fs/promises";
 import childProcess from "node:child_process";
+import { join } from "node:path";
 import commitlintConfig from "./config";
 import { getNxScopes } from "./get-nx-scopes";
 
@@ -21,8 +23,8 @@ export const runCommitLint = async (commitMessageArg?: string) => {
   let commitMessage;
   if (commitMessageArg && commitMessageArg !== COMMIT_EDITMSG_PATH) {
     commitMessage = commitMessageArg;
-  } else if (commitMessageArg !== COMMIT_EDITMSG_PATH) {
-    commitMessage = await readCommitMessageFile();
+  } else if (existsSync(join(config.workspaceRoot, COMMIT_EDITMSG_PATH))) {
+    commitMessage = await readCommitMessageFile(config.workspaceRoot);
   }
 
   if (!commitMessage) {
@@ -104,6 +106,10 @@ export const runCommitLint = async (commitMessageArg?: string) => {
   }
 };
 
-const readCommitMessageFile = async (): Promise<string> => {
-  return (await readFile(COMMIT_EDITMSG_PATH, "utf8"))?.trim();
+const readCommitMessageFile = async (
+  workspaceRoot: string
+): Promise<string> => {
+  return (
+    await readFile(join(workspaceRoot, COMMIT_EDITMSG_PATH), "utf8")
+  )?.trim();
 };
