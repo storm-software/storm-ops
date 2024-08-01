@@ -1,21 +1,29 @@
 import type { Linter } from "eslint";
 import type { RuleOptions } from "./dist/preset.d";
 
+/**
+ * The module boundary dependency constraints.
+ */
 export type PresetModuleBoundaryDepConstraints = {
   sourceTag: string;
   onlyDependOnLibsWithTags: string[];
 };
 
+/**
+ * The module boundary options.
+ */
 export type PresetModuleBoundary = {
   enforceBuildableLibDependency: boolean;
   allow: any[];
   depConstraints: PresetModuleBoundaryDepConstraints[];
 };
 
+/**
+ * The ESLint preset options.
+ */
 export interface PresetOptions {
   rules?: RuleOptions;
   ignores?: string[];
-  tsconfig?: string;
   markdown?: false | Linter.RulesRecord;
   react?: false | Linter.RulesRecord;
 }

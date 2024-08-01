@@ -24,30 +24,43 @@ import banner from "./utils/banner-plugin";
 import { CODE_BLOCK, CODE_FILE, TS_FILE } from "./utils/constants";
 import { formatConfig } from "./utils/format-config";
 
+/**
+ * The module boundary dependency constraints.
+ */
 export type PresetModuleBoundaryDepConstraints = {
   sourceTag: string;
   onlyDependOnLibsWithTags: string[];
 };
 
+/**
+ * The module boundary options.
+ */
 export type PresetModuleBoundary = {
   enforceBuildableLibDependency: boolean;
   allow: any[];
   depConstraints: PresetModuleBoundaryDepConstraints[];
 };
 
+/**
+ * The ESLint preset options.
+ */
 export interface PresetOptions {
   rules?: RuleOptions;
   ignores?: string[];
-  tsconfig?: string;
   markdown?: false | Linter.RulesRecord;
   react?: false | Linter.RulesRecord;
 }
 
+/**
+ * Get the ESLint configuration for a Storm workspace.
+ *
+ * @param options - The preset options.
+ * @param userConfigs - Additional ESLint configurations.
+ */
 export function getStormConfig(
   options: PresetOptions = {
     rules: {},
     ignores: [],
-    tsconfig: "./tsconfig.base.json",
     markdown: {},
     react: {}
   },
@@ -152,9 +165,9 @@ export function getStormConfig(
             ])
           )
         ),
-        "Storm": true
+        "Storm": "readonly"
       },
-      project: options.tsconfig ? options.tsconfig : "./tsconfig.base.json"
+      ecmaVersion: "latest"
     },
     rules: {
       // https://eslint.org/docs/latest/rules/
@@ -200,6 +213,17 @@ export function getStormConfig(
       ...jsxA11yRules,
 
       ...options.react
+    };
+
+    typescriptConfig.languageOptions = {
+      ...typescriptConfig.languageOptions,
+      parserOptions: {
+        ...typescriptConfig.languageOptions?.parserOptions,
+        ecmaFeatures: {
+          ...typescriptConfig.languageOptions?.parserOptions?.ecmaFeatures,
+          jsx: true
+        }
+      }
     };
   }
 
