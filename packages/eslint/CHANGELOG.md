@@ -1,3 +1,10 @@
+## 0.43.0 (2024-08-01)
+
+
+### Features
+
+- **eslint:** Added JSX parser options when `react` is enabled ([2700e009](https://github.com/storm-software/storm-ops/commit/2700e009))
+
 ## 0.42.1 (2024-08-01)
 
 
