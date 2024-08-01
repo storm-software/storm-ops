@@ -1,3 +1,10 @@
+## 2.40.0 (2024-08-01)
+
+
+### Features
+
+- **git-tools:** Ensure `.git/COMMIT_EDITMSG` exists before reading from disk ([7abae7ae](https://github.com/storm-software/storm-ops/commit/7abae7ae))
+
 ## 2.39.0 (2024-08-01)
 
 
