@@ -33,6 +33,18 @@
     "open-system",
     "monorepo"
   ],
+  "peerDependencies": {
+    "@nx/devkit": "^19.5.3",
+    "nx": "^19.5.3"
+  },
+  "peerDependenciesMeta": {
+    "@nx/devkit": {
+      "optional": false
+    },
+    "nx": {
+      "optional": false
+    }
+  },
   "dependencies": {
     "@nx/workspace": "^19.5.3",
     "create-nx-workspace": "^19.5.3",

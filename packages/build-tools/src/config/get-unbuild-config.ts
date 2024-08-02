@@ -13,7 +13,6 @@ import type { StormConfig } from "@storm-software/config";
 import { LogLevelLabel, writeDebug } from "@storm-software/config-tools";
 import merge from "deepmerge";
 import { LogLevel } from "esbuild";
-import { Glob } from "glob";
 import { dirname, extname, join } from "node:path";
 import { pathToFileURL } from "node:url";
 // import { fileExists } from "nx/src/utils/fileutils";
@@ -108,7 +107,14 @@ export async function getUnbuildBuildOptions(
     clean: false,
     name: options.projectName,
     rootDir: config.workspaceRoot,
-    entries: [],
+    entries: [
+      {
+        builder: "mkdist",
+        input: options.sourceRoot,
+        outDir: join(options.outputPath, "dist"),
+        declaration: "compatible"
+      }
+    ],
     outDir: options.outputPath,
     externals: [...externals, ...(options.external ?? [])],
     declaration: "compatible",
@@ -174,23 +180,23 @@ export async function getUnbuildBuildOptions(
     }
   };
 
-  const files = await new Glob("**/*.{ts,tsx}", {
-    absolute: false,
-    cwd: options.projectRoot,
-    root: options.projectRoot
-  }).walk();
-  files.forEach(file => {
-    const split = file.split(".");
-    split.pop();
+  // const files = await new Glob("**/*.{ts,tsx}", {
+  //   absolute: false,
+  //   cwd: options.projectRoot,
+  //   root: options.projectRoot
+  // }).walk();
+  // files.forEach(file => {
+  //   const split = file.split(".");
+  //   split.pop();
 
-    buildConfig.entries!.push({
-      builder: "mkdist",
-      name: split.join(".").replaceAll("\\", "/"),
-      input: join(options.projectRoot, file.replace(config.workspaceRoot, "")),
-      outDir: join(options.outputPath, "dist", `${split.join(".")}.mjs`),
-      declaration: "compatible"
-    });
-  });
+  //   buildConfig.entries!.push({
+  //     builder: "mkdist",
+  //     name: split.join(".").replaceAll("\\", "/"),
+  //     input: join(options.projectRoot, file.replace(config.workspaceRoot, "")),
+  //     outDir: join(options.outputPath, "dist", `${split.join(".")}.mjs`),
+  //     declaration: "compatible"
+  //   });
+  // });
 
   if (packageJson.dependencies) {
     buildConfig.dependencies = dependencies
@@ -252,10 +258,10 @@ export async function getUnbuildBuildOptions(
         //   include: /node_modules/,
         //   sourceMap: options.sourcemap
         // },
-        resolve: {
-          preferBuiltins: true,
-          extensions: [".cjs", ".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"]
-        },
+        // resolve: {
+        //   preferBuiltins: true,
+        //   extensions: [".cjs", ".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"]
+        // },
         esbuild: {
           ...rollupConfig?.esbuild,
           minify: !!options.minify,
