@@ -1,3 +1,10 @@
+## 1.67.1 (2024-08-02)
+
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with duplicate plugins ([23c09494](https://github.com/storm-software/storm-ops/commit/23c09494))
+
 ## 1.67.0 (2024-08-02)
 
 
