@@ -1,3 +1,10 @@
+## 0.53.3 (2024-08-02)
+
+
+### Bug Fixes
+
+- **build-tools:** Update `rootDir` provided to unbuild ([3efbdebc](https://github.com/storm-software/storm-ops/commit/3efbdebc))
+
 ## 0.53.2 (2024-08-02)
 
 
