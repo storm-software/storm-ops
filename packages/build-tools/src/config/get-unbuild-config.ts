@@ -13,7 +13,7 @@ import type { StormConfig } from "@storm-software/config";
 import { LogLevelLabel, writeDebug } from "@storm-software/config-tools";
 import merge from "deepmerge";
 import { LogLevel } from "esbuild";
-import { dirname, extname } from "node:path";
+import { dirname, extname, join, relative } from "node:path";
 import { pathToFileURL } from "node:url";
 // import { fileExists } from "nx/src/utils/fileutils";
 import type { PackageJson } from "nx/src/utils/package-json.js";
@@ -106,16 +106,22 @@ export async function getUnbuildBuildOptions(
   const buildConfig: BuildConfig = {
     clean: false,
     name: options.projectName,
-    rootDir: config.workspaceRoot,
+    rootDir: options.projectRoot,
     entries: [
-      // {
-      //   builder: "mkdist",
-      //   input: options.sourceRoot,
-      //   outDir: join(options.outputPath, "dist"),
-      //   declaration: "compatible"
-      // }
+      {
+        builder: "mkdist",
+        input: options.sourceRoot.replace(options.projectRoot, ""),
+        outDir: join(
+          relative(
+            join(config.workspaceRoot, options.projectRoot),
+            config.workspaceRoot
+          ),
+          options.outputPath,
+          "dist"
+        ),
+        declaration: "compatible"
+      }
     ],
-    outDir: options.outputPath,
     externals: [...externals, ...(options.external ?? [])],
     declaration: "compatible",
     failOnWarn: false,
@@ -244,12 +250,11 @@ export async function getUnbuildBuildOptions(
         ...rollupConfig,
         ...(buildOpt.rollup as any),
         emitCJS: true,
-        // dts: {
-        //   respectExternal: true,
-        //   projectRoot: options.projectRoot
-        // compilerOptions: dtsCompilerOptions
-        // },
-        dts: true,
+        cjsBridge: true,
+        dts: {
+          respectExternal: true,
+          projectRoot: options.projectRoot
+        },
         output: {
           ...rollupConfig?.output,
           banner: options.banner,
