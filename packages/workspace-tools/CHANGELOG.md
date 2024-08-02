@@ -1,3 +1,10 @@
+## 1.140.0 (2024-08-02)
+
+
+### Features
+
+- **eslint:** Improved the logic around determining the banner ([4bbb321d](https://github.com/storm-software/storm-ops/commit/4bbb321d))
+
 ## 1.139.1 (2024-08-01)
 
 
