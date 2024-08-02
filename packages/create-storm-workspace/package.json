@@ -52,5 +52,9 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "@nx/devkit": "^19.5.3",
+    "nx": "^19.5.3"
   }
 }

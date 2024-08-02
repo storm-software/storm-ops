@@ -120,7 +120,7 @@
     "regjsparser": "0.10.0",
     "semver": "7.6.2",
     "strip-indent": "4.0.0",
-    "tslib": "2.6.3"
+    "tslib": "^2.6.3"
   },
   "devDependencies": {
     "@nx/eslint": ">=19.5.3",
