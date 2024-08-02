@@ -80,14 +80,14 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
     env: (process.env[`${prefix}ENV`] ??
       process.env.NODE_ENV ??
       process.env.ENVIRONMENT) as StormConfig["env"],
-    ci:
-      process.env[`${prefix}CI`] !== undefined
-        ? Boolean(
-            process.env[`${prefix}CI`] ??
-              process.env.CI ??
-              process.env.CONTINUOUS_INTEGRATION
-          )
-        : undefined,
+    // ci:
+    //   process.env[`${prefix}CI`] !== undefined
+    //     ? Boolean(
+    //         process.env[`${prefix}CI`] ??
+    //           process.env.CI ??
+    //           process.env.CONTINUOUS_INTEGRATION
+    //       )
+    //     : undefined,
 
     repository: process.env[`${prefix}REPOSITORY`],
     branch: process.env[`${prefix}BRANCH`],

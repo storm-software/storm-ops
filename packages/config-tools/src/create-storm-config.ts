@@ -14,7 +14,9 @@ import {
 import { getDefaultConfig } from "./utilities/get-default-config";
 
 const _extension_cache = new WeakMap<{ extensionName: string }, any>();
-let _static_cache: StormConfig | undefined = undefined;
+
+type StaticCache = { data: StormConfig; timestamp: number };
+let _static_cache = undefined as StaticCache | undefined;
 
 /**
  * Get the config for the current Storm workspace
@@ -41,7 +43,11 @@ export const createStormConfig = <
   workspaceRoot?: string
 ): StormConfig<TExtensionName, TExtensionConfig> => {
   let result!: StormConfig<TExtensionName, TExtensionConfig>;
-  if (!_static_cache) {
+  if (
+    !_static_cache?.data ||
+    !_static_cache?.timestamp ||
+    _static_cache.timestamp < Date.now() - 30000
+  ) {
     const config = getConfigEnv() as StormConfig & {
       [extensionName in TExtensionName]: TExtensionConfig;
     };
@@ -60,7 +66,10 @@ export const createStormConfig = <
       ? defaultConfig.workspaceRoot
       : findWorkspaceRoot(workspaceRoot);
   } else {
-    result = _static_cache as StormConfig<TExtensionName, TExtensionConfig>;
+    result = _static_cache.data as StormConfig<
+      TExtensionName,
+      TExtensionConfig
+    >;
   }
 
   if (schema && extensionName) {
@@ -74,7 +83,10 @@ export const createStormConfig = <
     };
   }
 
-  _static_cache = result;
+  _static_cache = {
+    timestamp: Date.now(),
+    data: result
+  };
   return result;
 };
 
@@ -115,6 +127,18 @@ export const loadStormConfig = async (
   workspaceRoot?: string
 ): Promise<StormConfig> => {
   let config = {} as StormConfig;
+  if (
+    _static_cache?.data &&
+    _static_cache?.timestamp &&
+    _static_cache.timestamp >= Date.now() + 30000
+  ) {
+    writeInfo(
+      `Configuration cache hit - ${_static_cache.timestamp}`,
+      _static_cache.data
+    );
+
+    return _static_cache.data;
+  }
 
   let _workspaceRoot = workspaceRoot;
   if (!_workspaceRoot) {

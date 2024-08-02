@@ -152,11 +152,11 @@ export const setConfigEnv = (config: StormConfig) => {
     process.env.NODE_ENV = config.env;
     process.env.ENVIRONMENT = config.env;
   }
-  if (config.ci) {
-    process.env[`${prefix}CI`] = String(config.ci);
-    process.env.CI = String(config.ci);
-    process.env.CONTINUOUS_INTEGRATION = String(config.ci);
-  }
+  // if (config.ci) {
+  //   process.env[`${prefix}CI`] = String(config.ci);
+  //   process.env.CI = String(config.ci);
+  //   process.env.CONTINUOUS_INTEGRATION = String(config.ci);
+  // }
 
   // Check if the color configuration is set using separate dark and light color
   // palettes or a single multi-theme color palettes

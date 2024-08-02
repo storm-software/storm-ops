@@ -56,7 +56,6 @@ export const DEFAULT_STORM_CONFIG: any = {
   env: "production",
   branch: "main",
   organization: "storm-software",
-  ci: true,
   configFile: null,
   runtimeVersion: "1.0.0",
   colors: { ...DEFAULT_COLOR_CONFIG },

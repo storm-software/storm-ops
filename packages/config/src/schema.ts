@@ -257,12 +257,6 @@ export const StormConfigSchema = z
       .enum(["development", "staging", "production"])
       .default("production")
       .describe("The current runtime environment of the package"),
-    ci: z
-      .boolean()
-      .default(true)
-      .describe(
-        "An indicator specifying if the current environment is a CI environment"
-      ),
     workspaceRoot: z
       .string()
       .trim()
