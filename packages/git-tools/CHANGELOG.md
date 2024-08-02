@@ -1,3 +1,10 @@
+## 2.45.0 (2024-08-02)
+
+
+### Features
+
+- **eslint:** Update the build process to include the preset declaration file ([1b5fe953](https://github.com/storm-software/storm-ops/commit/1b5fe953))
+
 ## 2.44.0 (2024-08-02)
 
 
