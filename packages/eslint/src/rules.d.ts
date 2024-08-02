@@ -3875,6 +3875,8 @@ type BannerBanner = []|[{
   
   banner?: string
   
+  repositoryName?: string
+  
   commentType?: string
   
   numNewlines?: number

@@ -9,7 +9,7 @@ export const getFileBanner = (name: string = "") => {
     name = process.env.STORM_NAMESPACE || "";
   }
 
-  let padding = "                   ";
+  let padding = "                               ";
   for (let i = 0; i < name.length + 2 && padding.length > 4; i++) {
     padding = padding.slice(0, -1);
   }
@@ -44,20 +44,20 @@ ${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
  free for commercial and private use. For more information, please visit
  our licensing page.
 
- Website: ${process.env.STORM_HOMEPAGE ?? "https://stormsoftware.com"}
- Repository: ${
+ Website:         ${process.env.STORM_HOMEPAGE ?? "https://stormsoftware.com"}
+ Repository:      ${
    process.env.STORM_REPOSITORY ??
    `https://github.com/storm-software${name ? `/${name}` : ""}`
  }
- Documentation: https://docs.stormsoftware.com${name ? `/projects/${name}` : ""}
- Contact: ${
+ Documentation:   https://docs.stormsoftware.com${name ? `/projects/${name}` : ""}
+ Contact:         ${
    process.env.STORM_HOMEPAGE
      ? process.env.STORM_HOMEPAGE.endsWith("/")
        ? process.env.STORM_HOMEPAGE.slice(-1)
        : process.env.STORM_HOMEPAGE
      : "https://stormsoftware.com"
  }/contact
- Licensing: ${
+ Licensing:       ${
    process.env.STORM_HOMEPAGE
      ? process.env.STORM_HOMEPAGE.endsWith("/")
        ? process.env.STORM_HOMEPAGE.slice(-1)
