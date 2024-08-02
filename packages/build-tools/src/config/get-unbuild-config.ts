@@ -118,6 +118,7 @@ export async function getUnbuildBuildOptions(
     outDir: options.outputPath,
     externals: [...externals, ...(options.external ?? [])],
     declaration: "compatible",
+    failOnWarn: false,
     hooks: {
       // "mkdist:entry:options": async (
       //   ctx: BuildContext,
