@@ -1,3 +1,17 @@
+## 1.145.0 (2024-08-02)
+
+
+### Features
+
+- **eslint:** Reformatted the banner string whitespace ([2df75cbb](https://github.com/storm-software/storm-ops/commit/2df75cbb))
+
+- **tsconfig:** Added `moduleResolution` to the base tsconfig file ([6ed67bbc](https://github.com/storm-software/storm-ops/commit/6ed67bbc))
+
+
+### Bug Fixes
+
+- **build-tools:** Remove the unused variables in the updated code ([b01c4999](https://github.com/storm-software/storm-ops/commit/b01c4999))
+
 ## 1.144.0 (2024-08-02)
 
 

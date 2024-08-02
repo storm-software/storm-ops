@@ -1,3 +1,15 @@
+## 0.29.0 (2024-08-02)
+
+
+### Features
+
+- **tsconfig:** Added `moduleResolution` to the base tsconfig file ([6ed67bbc](https://github.com/storm-software/storm-ops/commit/6ed67bbc))
+
+
+### Bug Fixes
+
+- **build-tools:** Remove the unused variables in the updated code ([b01c4999](https://github.com/storm-software/storm-ops/commit/b01c4999))
+
 ## 0.28.0 (2024-08-02)
 
 

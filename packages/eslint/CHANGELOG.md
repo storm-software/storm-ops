@@ -1,3 +1,15 @@
+## 0.50.0 (2024-08-02)
+
+
+### Features
+
+- **eslint:** Reformatted the banner string whitespace ([2df75cbb](https://github.com/storm-software/storm-ops/commit/2df75cbb))
+
+
+### Bug Fixes
+
+- **build-tools:** Remove the unused variables in the updated code ([b01c4999](https://github.com/storm-software/storm-ops/commit/b01c4999))
+
 ## 0.49.0 (2024-08-02)
 
 
