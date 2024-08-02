@@ -27,6 +27,7 @@
   ],
   "license": "Apache-2.0",
   "private": false,
+  "module": "dist/preset.mjs",
   "exports": {
     ".": {
       "types": "./dist/preset.d.ts",
