@@ -1,3 +1,10 @@
+## 1.69.0 (2024-08-02)
+
+
+### Features
+
+- **terraform-tools:** Update build to exclude other storm package from the distribution ([96294aac](https://github.com/storm-software/storm-ops/commit/96294aac))
+
 ## 1.68.2 (2024-08-02)
 
 

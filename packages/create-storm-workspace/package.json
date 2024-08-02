@@ -1,6 +1,6 @@
 {
   "name": "create-storm-workspace",
-  "version": "1.68.2",
+  "version": "1.69.0",
   "type": "commonjs",
   "description": "⚡A CLI tool used to generate and fully configure a Storm Workspace repository.",
   "repository": {
@@ -50,11 +50,11 @@
     "create-nx-workspace": "^19.5.3",
     "enquirer": "2.4.1"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "devDependencies": {
     "@nx/devkit": "^19.5.3",
     "nx": "^19.5.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

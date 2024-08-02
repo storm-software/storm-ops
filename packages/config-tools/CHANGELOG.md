@@ -1,3 +1,10 @@
+## 1.68.0 (2024-08-02)
+
+
+### Features
+
+- **terraform-tools:** Added terraform options to the plugin's executor schemas ([fb555cb4](https://github.com/storm-software/storm-ops/commit/fb555cb4))
+
 ## 1.67.1 (2024-07-31)
 
 
