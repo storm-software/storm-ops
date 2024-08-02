@@ -1,3 +1,10 @@
+## 1.69.0 (2024-08-02)
+
+
+### Features
+
+- **config:** Removed the `ci` option from config and enabled better caching ([2456c216](https://github.com/storm-software/storm-ops/commit/2456c216))
+
 ## 1.68.0 (2024-08-02)
 
 

@@ -1,3 +1,10 @@
+## 0.55.0 (2024-08-02)
+
+
+### Features
+
+- **build-tools:** Populate the distribution's package.json with `exports` based on project structure ([cf0eed52](https://github.com/storm-software/storm-ops/commit/cf0eed52))
+
 ## 0.54.0 (2024-08-02)
 
 
