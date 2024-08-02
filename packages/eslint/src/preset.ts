@@ -177,12 +177,15 @@ export function getStormConfig(
       globals: {
         ...Object.fromEntries(
           Object.keys(globals).flatMap(group =>
-            Object.keys(globals[group as keyof typeof globals]).map(k => [
-              k,
-              true
+            Object.keys(globals[group as keyof typeof globals]).map(key => [
+              key,
+              "readonly"
             ])
           )
         ),
+        ...globals.browser,
+        ...globals.node,
+        "window": "readonly",
         "Storm": "readonly"
       },
       ecmaVersion: "latest",

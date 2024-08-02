@@ -14,7 +14,7 @@ import { LogLevelLabel, writeDebug } from "@storm-software/config-tools";
 import merge from "deepmerge";
 import { LogLevel } from "esbuild";
 import { Glob } from "glob";
-import { dirname, extname } from "node:path";
+import { dirname, extname, join } from "node:path";
 import { pathToFileURL } from "node:url";
 // import { fileExists } from "nx/src/utils/fileutils";
 import type { PackageJson } from "nx/src/utils/package-json.js";
@@ -185,12 +185,9 @@ export async function getUnbuildBuildOptions(
 
     buildConfig.entries!.push({
       builder: "mkdist",
-      input: file,
-      outDir: joinPathFragments(
-        options.outputPath,
-        "dist",
-        `${split.join(".")}.mjs`
-      ),
+      name: split.join("."),
+      input: join(options.sourceRoot, file.replace(config.workspaceRoot, "")),
+      outDir: join(options.outputPath, "dist", `${split.join(".")}.mjs`),
       declaration: "compatible"
     });
   });
