@@ -85,7 +85,7 @@
       }
     },
     "nx-release-publish": {
-      "executor": "@storm-software/open-tofu-tools:npm-publish"
+      "executor": "@storm-software/workspace-tools:npm-publish"
     }
   }
 }
