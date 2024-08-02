@@ -1,5 +1,6 @@
 import type { ExecutorContext } from "@nx/devkit";
-import { run } from "@storm-software/config-tools";
+import { StormConfig } from "@storm-software/config";
+import { ProjectTokenizerOptions, run } from "@storm-software/config-tools";
 import type {
   BaseExecutorOptions,
   BaseExecutorSchema
@@ -7,11 +8,10 @@ import type {
 import { withRunExecutor } from "@storm-software/workspace-tools";
 import { which } from "shelljs";
 
-export interface ExecutorOptions {
+interface TerraformCommandOptions {
   backendConfig: { key: string; name: string }[];
   autoApproval: boolean;
   planFile: string;
-  ciMode: boolean;
   formatWrite: boolean;
   upgrade: boolean;
   migrateState: boolean;
@@ -19,12 +19,16 @@ export interface ExecutorOptions {
   varFile: string;
   varString: string;
   reconfigure: boolean;
-
-  [key: string]: string | unknown;
 }
 
+export type TerraformExecutorSchema = BaseExecutorSchema &
+  Partial<TerraformCommandOptions>;
+
+export type NormalizedTerraformExecutorOptions = ProjectTokenizerOptions &
+  TerraformExecutorSchema;
+
 export const withTerraformExecutor =
-  <TExecutorSchema extends BaseExecutorSchema = BaseExecutorSchema>(
+  <TExecutorSchema extends TerraformExecutorSchema = TerraformExecutorSchema>(
     command: string,
     executorOptions: BaseExecutorOptions<TExecutorSchema> = {}
   ) =>
@@ -34,7 +38,11 @@ export const withTerraformExecutor =
   ): Promise<{ success: boolean }> => {
     return withRunExecutor<TExecutorSchema>(
       `Terraform \`${command}\` Command Executor`,
-      async (options, context, config) => {
+      async (
+        options: NormalizedTerraformExecutorOptions,
+        context: ExecutorContext,
+        config: StormConfig
+      ) => {
         if (!which("tofu") || !which("terraform")) {
           throw new Error(
             "Both OpenTofu and Terraform are not installed. Please install one of the two before running this executor."
@@ -49,7 +57,6 @@ export const withTerraformExecutor =
         const {
           backendConfig = [],
           planFile,
-          ciMode,
           autoApproval,
           formatWrite,
           upgrade,
@@ -59,14 +66,6 @@ export const withTerraformExecutor =
           varString,
           reconfigure
         } = options;
-
-        let env = {};
-        if (ciMode) {
-          env = {
-            TF_IN_AUTOMATION: true,
-            TF_INPUT: 0
-          };
-        }
 
         let jsonBackendConfig = backendConfig;
         if (typeof jsonBackendConfig === "string") {
@@ -99,7 +98,14 @@ export const withTerraformExecutor =
           ]
             .filter(Boolean)
             .join(" "),
-          options.sourceRoot
+          options.sourceRoot,
+          "inherit",
+          process.env.CI
+            ? {
+                TF_IN_AUTOMATION: "true",
+                TF_INPUT: "0"
+              }
+            : {}
         );
 
         return null;

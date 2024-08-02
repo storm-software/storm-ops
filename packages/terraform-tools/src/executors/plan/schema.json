@@ -5,6 +5,12 @@
   "title": "Terraform `plan` Command Executor",
   "description": "Run the `plan` command using the workspaces Terraform IoC configuration files",
   "type": "object",
-  "properties": {},
+  "properties": {
+    "planFile": {
+      "type": "string",
+      "description": "The path to the plan file to create",
+      "default": "defaultplan"
+    }
+  },
   "required": []
 }

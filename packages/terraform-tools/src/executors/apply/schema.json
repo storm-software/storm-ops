@@ -5,6 +5,17 @@
   "title": "Terraform `apply` Command Executor",
   "description": "Run the `apply` command using the workspaces Terraform IoC configuration files",
   "type": "object",
-  "properties": {},
+  "properties": {
+    "planFile": {
+      "type": "string",
+      "description": "The path to the plan file to create",
+      "default": "defaultplan"
+    },
+    "autoApproval": {
+      "type": "boolean",
+      "description": "A boolean flag to automatically approve the apply",
+      "default": false
+    }
+  },
   "required": []
 }

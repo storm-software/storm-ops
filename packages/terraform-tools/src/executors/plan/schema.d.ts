@@ -1,1 +1,5 @@
-export interface PlanExecutorSchema {} // eslint-disable-line
+import { TerraformExecutorSchema } from "../../base/base-executor";
+
+export type PlanExecutorSchema = Required<
+  Pick<TerraformExecutorSchema, "planFile">
+>;

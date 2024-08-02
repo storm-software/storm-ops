@@ -16,18 +16,23 @@ export type StdioOptions =
  * @param config - The Storm configuration object
  * @param command - The command to run
  * @param cwd - The current working directory
+ * @param stdio - The standard input/output options
+ * @param env - The environment variables
  * @returns The result of the command
  */
 export const run = (
   config: StormConfig,
   command: string,
   cwd: string = config.workspaceRoot ?? process.cwd(),
-  stdio: StdioOptions = "inherit"
+  stdio: StdioOptions = "inherit",
+  env: NodeJS.ProcessEnv = process.env
 ) => {
   return execSync(command, {
     cwd,
     env: {
       ...process.env,
+      ...env,
+      CLICOLOR: "true",
       FORCE_COLOR: "true"
     },
     stdio,

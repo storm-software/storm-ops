@@ -1,1 +1,5 @@
-export interface DestroyExecutorSchema {} // eslint-disable-line
+import { TerraformExecutorSchema } from "../../base/base-executor";
+
+export type DestroyExecutorSchema = Required<
+  Pick<TerraformExecutorSchema, "autoApproval">
+>;
