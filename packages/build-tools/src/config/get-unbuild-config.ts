@@ -176,8 +176,8 @@ export async function getUnbuildBuildOptions(
 
   const files = await new Glob("**/*.{ts,tsx}", {
     absolute: false,
-    cwd: options.sourceRoot,
-    root: options.sourceRoot
+    cwd: options.projectRoot,
+    root: options.projectRoot
   }).walk();
   files.forEach(file => {
     const split = file.split(".");
@@ -185,8 +185,8 @@ export async function getUnbuildBuildOptions(
 
     buildConfig.entries!.push({
       builder: "mkdist",
-      name: split.join("."),
-      input: join(options.sourceRoot, file.replace(config.workspaceRoot, "")),
+      name: split.join(".").replaceAll("\\", "/"),
+      input: join(options.projectRoot, file.replace(config.workspaceRoot, "")),
       outDir: join(options.outputPath, "dist", `${split.join(".")}.mjs`),
       declaration: "compatible"
     });
