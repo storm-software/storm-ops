@@ -1,3 +1,10 @@
+## 1.68.2 (2024-08-02)
+
+
+### Bug Fixes
+
+- **create-storm-workspace:** Upgrade the package.json to include `peerDependencies` ([f15d7eb4](https://github.com/storm-software/storm-ops/commit/f15d7eb4))
+
 ## 1.68.1 (2024-07-31)
 
 
