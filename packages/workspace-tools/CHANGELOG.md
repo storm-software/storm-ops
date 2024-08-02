@@ -1,3 +1,10 @@
+## 1.144.0 (2024-08-02)
+
+
+### Features
+
+- **eslint:** Added the `name` and `banner` options to format banner from preset ([ee542ed6](https://github.com/storm-software/storm-ops/commit/ee542ed6))
+
 ## 1.143.1 (2024-08-02)
 
 
