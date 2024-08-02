@@ -187,7 +187,6 @@ export function getStormConfig(
       parserOptions: {
         emitDecoratorMetadata: true,
         experimentalDecorators: true,
-        warnOnUnsupportedTypeScriptVersion: true,
         projectService: true,
         projectFolderIgnoreList: [
           "**/node_modules/**",

@@ -98,19 +98,56 @@ function getEOL(options) {
   return os.EOL;
 }
 
-function hasBanner(src) {
+function hasBanner(commentType: "block" | "line" | string, src: string) {
   if (src.substr(0, 2) === "#!") {
-    let m = src.match(/(\r\n|\r|\n)/);
-    if (m) {
+    const m = src.match(/(\r\n|\r|\n)/);
+    if (m?.index) {
       src = src.slice(m.index + m[0].length);
     }
   }
-  return src.substr(0, 2) === "/*" || src.substr(0, 2) === "//";
+  return (
+    (commentType === "block" && src.substr(0, 2) === "/*") ||
+    (commentType === "lint" && src.substr(0, 2) === "//") ||
+    (commentType !== "block" &&
+      commentType !== "lint" &&
+      src.substr(0, commentType?.length) === commentType)
+  );
 }
+
+// function hasBanner(
+//   banner: string,
+//   src: string,
+//   commentType?: "block" | "line" | string
+// ) {
+//   if (src.substr(0, 2) === "#!") {
+//     const m = src.match(/(\r\n|\r|\n)/);
+//     if (m?.index) {
+//       src = src.slice(m.index + m[0].length);
+//     }
+//   }
+//   return (
+//     ((commentType === "block" && src.substr(0, 2) === "/*") ||
+//       (commentType === "lint" && src.substr(0, 2) === "//") ||
+//       (commentType !== "block" &&
+//         commentType !== "lint" &&
+//         src.substr(0, commentType?.length) === commentType)) &&
+//     src
+//       .replaceAll(
+//         commentType === "block"
+//           ? "/*"
+//           : commentType === "lint"
+//             ? "//"
+//             : commentType,
+//         ""
+//       )
+//       .replaceAll("*/", "")
+//       .includes(banner)
+//   );
+// }
 
 function matchesLineEndings(src, num) {
   for (let j = 0; j < num; ++j) {
-    let m = src.match(/^(\r\n|\r|\n)/);
+    const m = src.match(/^(\r\n|\r|\n)/);
     if (m) {
       src = src.slice(m.index + m[0].length);
     } else {
@@ -136,7 +173,7 @@ export type MessageIds =
   | "noNewlineAfterBanner";
 
 const bannerRule = ESLintUtils.RuleCreator(
-  () => `https://docs.stormsoftware.com/eslint-rules/banner`
+  () => `https://docs.stormsoftware.com/eslint/rules/banner`
 )<Options, MessageIds>({
   name: "banner",
   meta: {
@@ -201,7 +238,7 @@ const bannerRule = ESLintUtils.RuleCreator(
 
     return {
       Program: function (node) {
-        if (!hasBanner(context.getSourceCode().getText())) {
+        if (!hasBanner(commentType, context.sourceCode.getText())) {
           context.report({
             loc: node.loc,
             messageId: "missingBanner",
