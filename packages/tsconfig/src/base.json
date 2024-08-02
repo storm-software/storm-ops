@@ -7,6 +7,7 @@
     "module": "ESNext",
     "lib": ["ESNext"],
     "noLib": false,
+    "moduleResolution": "Bundler",
     "moduleDetection": "force",
     "pretty": true,
     "noImplicitReturns": true,
