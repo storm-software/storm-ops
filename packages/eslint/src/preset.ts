@@ -1,5 +1,4 @@
 import eslint from "@eslint/js";
-import tsPlugin from "@typescript-eslint/eslint-plugin";
 import tsEslint from "typescript-eslint";
 // @ts-ignore
 import unicorn from "eslint-plugin-unicorn";
@@ -8,7 +7,6 @@ import nxPlugin from "@nx/eslint-plugin";
 import type { Linter } from "eslint";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import markdown from "eslint-plugin-markdown";
-import prettier from "eslint-plugin-prettier";
 import prettierConfig from "eslint-plugin-prettier/recommended";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
@@ -159,16 +157,16 @@ export function getStormConfig(
     // ...tsEslint.configs.stylisticTypeChecked,
 
     // https://www.npmjs.com/package/eslint-plugin-unicorn
-    ...unicorn.configs["flat/recommended"],
+    // ...unicorn.configs["flat/recommended"],
 
-    plugins: {
-      "@typescript-eslint": tsPlugin,
-      "@nx": nxPlugin,
-      unicorn,
-      prettier,
-      banner,
-      tsdoc
-    },
+    // plugins: {
+    //   "@typescript-eslint": tsPlugin,
+    //   "@nx": nxPlugin,
+    //   unicorn,
+    //   prettier,
+    //   banner,
+    //   tsdoc
+    // },
 
     files: [TS_FILE],
     languageOptions: {
