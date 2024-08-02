@@ -33,7 +33,10 @@ import { build } from "unbuild";
 import { getUnbuildBuildOptions } from "../config/get-unbuild-config";
 import type { UnbuildBuildOptions } from "../types";
 import { applyDefaultUnbuildOptions } from "../utils/apply-default-options";
-import { addWorkspacePackageJsonFields } from "../utils/generate-package-json";
+import {
+  addPackageJsonExports,
+  addWorkspacePackageJsonFields
+} from "../utils/generate-package-json";
 
 /**
  * Build and bundle a TypeScript project using the tsup build tools.
@@ -389,20 +392,26 @@ ${unbuildBuildOptions
       existsSync(joinPathFragments(projectRoot, "package.json"))
     ) {
       writeDebug("✍️   Writing package.json file", config);
-      const outputPackageJson = readJsonFile(
+      let outputPackageJson = readJsonFile(
         joinPathFragments(projectRoot, "package.json")
+      );
+
+      outputPackageJson = addWorkspacePackageJsonFields(
+        config,
+        projectRoot,
+        sourceRoot,
+        projectName,
+        options.includeSrc,
+        outputPackageJson
+      );
+      outputPackageJson = await addPackageJsonExports(
+        sourceRoot,
+        outputPackageJson
       );
 
       await writeJsonFile(
         joinPathFragments(enhancedOptions.outputPath, "package.json"),
-        addWorkspacePackageJsonFields(
-          config,
-          projectRoot,
-          sourceRoot,
-          projectName,
-          options.includeSrc,
-          outputPackageJson
-        )
+        outputPackageJson
       );
     }
   } catch (e) {

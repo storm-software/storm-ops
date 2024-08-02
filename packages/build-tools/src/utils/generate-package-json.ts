@@ -15,6 +15,7 @@ import {
   writeTrace,
   writeWarning
 } from "@storm-software/config-tools";
+import { Glob } from "glob";
 import { writeFileSync } from "node:fs";
 import {
   createProjectGraphAsync,
@@ -483,5 +484,33 @@ export const addWorkspacePackageJsonFields = (
     ? projectRoot
     : joinPathFragments("packages", projectName);
 
+  return packageJson;
+};
+
+export const addPackageJsonExports = async (
+  sourceRoot: string,
+  packageJson: Record<string, any>
+): Promise<Record<string, any>> => {
+  // #region Generate the package.json file
+
+  const exports = {};
+  const files = await new Glob("**/*.{ts,tsx}", {
+    absolute: false,
+    cwd: sourceRoot,
+    root: sourceRoot
+  }).walk();
+  files.forEach(file => {
+    const split = file.split(".");
+    split.pop();
+    const entry = split.join(".").replaceAll("\\", "/");
+
+    exports[`./${entry}`] = {
+      import: `./dist/${entry}.mjs`,
+      require: `./dist/${entry}.cjs`,
+      types: `./dist/${entry}.d.ts`
+    };
+  });
+
+  packageJson.exports = exports;
   return packageJson;
 };

@@ -67,11 +67,6 @@
           "default": "production",
           "description": "The current runtime environment of the package"
         },
-        "ci": {
-          "type": "boolean",
-          "default": true,
-          "description": "An indicator specifying if the current environment is a CI environment"
-        },
         "workspaceRoot": {
           "type": "string",
           "default": "",
