@@ -1,5 +1,5 @@
 import type { Linter } from "eslint";
-import type { RuleOptions } from "./dist/preset.d";
+import type { RuleOptions } from "./dist/rules.d";
 
 /**
  * The module boundary dependency constraints.

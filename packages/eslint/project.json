@@ -22,7 +22,7 @@
     "build-base": {
       "cache": true,
       "inputs": ["typescript", "^production"],
-      "outputs": ["{workspaceRoot}/packages/eslint/dist/**"],
+      "outputs": ["{workspaceRoot}/dist/packages/eslint/**"],
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "options": {
@@ -40,7 +40,9 @@
       "options": {
         "commands": [
           "pnpm copyfiles --up=3 packages/eslint/dist/* dist/packages/eslint/dist",
-          "pnpm copyfiles --up=2 packages/eslint/README.md packages/eslint/CHANGELOG.md packages/eslint/package.json packages/eslint/declarations.d.ts dist/packages/eslint",
+          "pnpm copyfiles --up=3 packages/eslint/src/rules.d.ts dist/packages/eslint/dist",
+          "pnpm copyfiles --up=2 packages/eslint/declarations.d.ts dist/packages/eslint",
+          "pnpm copyfiles --up=2 packages/eslint/README.md packages/eslint/CHANGELOG.md packages/eslint/package.json dist/packages/eslint",
           "pnpm copyfiles LICENSE dist/packages/eslint"
         ],
         "parallel": true,

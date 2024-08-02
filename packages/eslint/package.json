@@ -32,10 +32,6 @@
     ".": {
       "types": "./dist/preset.d.ts",
       "import": "./dist/preset.mjs"
-    },
-    "./preset": {
-      "types": "./dist/preset.d.ts",
-      "import": "./dist/preset.mjs"
     }
   },
   "types": "declarations.d.ts",

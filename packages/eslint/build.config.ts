@@ -7,11 +7,11 @@ export default defineBuildConfig({
   declaration: "compatible",
   rollup: {
     output: {
-      banner: `import path from 'path';
-import { fileURLToPath } from 'url';
+      banner: `import { dirname as banner_dirname } from 'node:path';
+import { fileURLToPath as banner_fileURLToPath } from 'node:url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = banner_fileURLToPath(import.meta.url);
+const __dirname = banner_dirname(__filename);
 `
     }
   },
@@ -24,7 +24,7 @@ const __dirname = path.dirname(__filename);
       const dts = await flatConfigsToRulesDTS(getStormConfig(), {
         includeAugmentation: false
       });
-      await fs.writeFile("src/preset.d.ts", dts);
+      await fs.writeFile("src/rules.d.ts", dts);
     }
   }
 });

@@ -16,7 +16,7 @@ import tsdoc from "eslint-plugin-tsdoc";
 import yml from "eslint-plugin-yml";
 import globals from "globals";
 import jsoncParser from "jsonc-eslint-parser";
-import type { RuleOptions } from "./preset.d";
+import type { RuleOptions } from "./rules.d";
 import jsxA11yRules from "./rules/jsx-a11y";
 import reactRules from "./rules/react";
 import reactHooksRules from "./rules/react-hooks";
