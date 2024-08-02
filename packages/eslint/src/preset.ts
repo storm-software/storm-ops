@@ -45,8 +45,11 @@ export type PresetModuleBoundary = {
  * The ESLint preset options.
  */
 export interface PresetOptions {
+  name?: string;
+  banner?: string;
   rules?: RuleOptions;
   ignores?: string[];
+  tsconfig?: string;
   parserOptions?: Linter.ParserOptions;
   markdown?: false | Linter.RulesRecord;
   react?: false | Linter.RulesRecord;
@@ -62,6 +65,7 @@ export function getStormConfig(
   options: PresetOptions = {
     rules: {},
     ignores: [],
+    tsconfig: "./tsconfig.base.json",
     parserOptions: {},
     markdown: {},
     react: {}
@@ -185,6 +189,7 @@ export function getStormConfig(
       parserOptions: {
         emitDecoratorMetadata: true,
         experimentalDecorators: true,
+        project: options.tsconfig ? options.tsconfig : "./tsconfig.base.json",
         projectService: true,
         sourceType: "module",
         projectFolderIgnoreList: [
@@ -217,6 +222,17 @@ export function getStormConfig(
       ...banner.configs!["recommended"]![1].rules,
 
       ...stormRules,
+
+      "banner/banner": [
+        "error",
+        {
+          repositoryName: options.name,
+          banner: options.banner,
+          commentType: "block",
+          numNewlines: 2
+        }
+      ],
+
       ...(options.rules ?? {})
     },
     ignores: ["dist", "coverage", "tmp", ".nx", ...(options.ignores || [])]

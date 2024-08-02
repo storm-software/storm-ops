@@ -2,16 +2,19 @@
  * Get a banner header to display at the top of a file
  *
  * @param name - The name to use in the display
- * @param commentStart - The comment starting token
  * @returns The banner header
  */
-export const getFileBanner = (name: string) => {
-  let padding = "";
-  while (name.length + padding.length < 12) {
-    padding += " ";
+export const getFileBanner = (name: string = "") => {
+  if (!name) {
+    name = process.env.STORM_NAMESPACE || "";
   }
 
-  let titleName = process.env.STORM_NAMESPACE ?? "";
+  let padding = "                   ";
+  for (let i = 0; i < name.length + 2 && padding.length > 4; i++) {
+    padding = padding.slice(0, -1);
+  }
+
+  let titleName = name;
   if (titleName) {
     if (titleName?.startsWith("@")) {
       titleName = titleName.slice(1);
@@ -26,11 +29,10 @@ export const getFileBanner = (name: string) => {
 
   return `-------------------------------------------------------------------
 
-                         ${padding}Storm Software
-                 ⚡ ${titleName ? (name ? `${titleName} - ` : titleName) : ""}${name && name.length > 0 ? name.charAt(0).toUpperCase() + name.slice(1) : name}
+${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
 
- This code was released as part of the ${titleName ? `${titleName} ` : ""}project. ${
-   titleName ? titleName : "This project"
+ This code was released as part of ${titleName ? `the ${titleName}` : "a Storm Software"} project. ${
+   titleName ? titleName : "The project"
  }
  is maintained by Storm Software under the ${
    (process.env.STORM_LICENSE ?? "Apache-2.0")
@@ -42,30 +44,26 @@ export const getFileBanner = (name: string) => {
  free for commercial and private use. For more information, please visit
  our licensing page.
 
-    Website: ${process.env.STORM_HOMEPAGE ?? "https://stormsoftware.com"}
-    Repository: ${
-      process.env.STORM_REPOSITORY ??
-      "https://github.com/storm-software/storm-stack"
-    }
-    Documentation: https://docs.stormsoftware.com${
-      titleName?.startsWith("@")
-        ? `/projects/${titleName.slice(1).trim().replaceAll(/\s+/g, "-").toLowerCase()}`
-        : ""
-    }
-    Contact: ${
-      process.env.STORM_HOMEPAGE
-        ? process.env.STORM_HOMEPAGE.endsWith("/")
-          ? process.env.STORM_HOMEPAGE.slice(-1)
-          : process.env.STORM_HOMEPAGE
-        : "https://stormsoftware.com"
-    }/contact
-    Licensing: ${
-      process.env.STORM_HOMEPAGE
-        ? process.env.STORM_HOMEPAGE.endsWith("/")
-          ? process.env.STORM_HOMEPAGE.slice(-1)
-          : process.env.STORM_HOMEPAGE
-        : "https://stormsoftware.com"
-    }/licensing
+ Website: ${process.env.STORM_HOMEPAGE ?? "https://stormsoftware.com"}
+ Repository: ${
+   process.env.STORM_REPOSITORY ??
+   `https://github.com/storm-software${name ? `/${name}` : ""}`
+ }
+ Documentation: https://docs.stormsoftware.com${name ? `/projects/${name}` : ""}
+ Contact: ${
+   process.env.STORM_HOMEPAGE
+     ? process.env.STORM_HOMEPAGE.endsWith("/")
+       ? process.env.STORM_HOMEPAGE.slice(-1)
+       : process.env.STORM_HOMEPAGE
+     : "https://stormsoftware.com"
+ }/contact
+ Licensing: ${
+   process.env.STORM_HOMEPAGE
+     ? process.env.STORM_HOMEPAGE.endsWith("/")
+       ? process.env.STORM_HOMEPAGE.slice(-1)
+       : process.env.STORM_HOMEPAGE
+     : "https://stormsoftware.com"
+ }/licensing
 
  -------------------------------------------------------------------`;
 };
