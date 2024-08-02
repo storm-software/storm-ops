@@ -111,7 +111,7 @@
   "devDependencies": {
     "@nx/eslint": ">=19.5.3",
     "@nx/eslint-plugin": ">=19.5.3",
-    "@storm-software/eslint": "0.51.0",
+    "@storm-software/eslint": "0.52.0",
     "@types/eslint": "^8.56.10",
     "eslint": "9.5.0",
     "eslint-doc-generator": "1.7.1"

@@ -1,3 +1,10 @@
+## 0.2.0 (2024-08-02)
+
+
+### Features
+
+- **build-tools:** Update the unbuild configuration to get exports from `package.json` files ([bb2fc78f](https://github.com/storm-software/storm-ops/commit/bb2fc78f))
+
 ## 0.1.1 (2024-08-02)
 
 
