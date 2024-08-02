@@ -1,3 +1,10 @@
+## 0.50.0 (2024-08-02)
+
+
+### Features
+
+- **eslint:** Added a banner with `__filename` and `__dirname` to the distribution ([594c0e9a](https://github.com/storm-software/storm-ops/commit/594c0e9a))
+
 ## 0.49.0 (2024-08-02)
 
 
