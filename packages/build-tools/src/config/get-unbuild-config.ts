@@ -1,27 +1,27 @@
 import { joinPathFragments, ProjectGraph } from "@nx/devkit";
 import { getHelperDependency, HelperDependency } from "@nx/js";
-import { getCustomTrasformersFactory } from "@nx/js/src/executors/tsc/lib/get-custom-transformers-factory";
+// import { getCustomTrasformersFactory } from "@nx/js/src/executors/tsc/lib/get-custom-transformers-factory";
 import {
   calculateProjectBuildableDependencies,
   computeCompilerOptionsPaths,
   DependentBuildableProjectNode
 } from "@nx/js/src/utils/buildable-libs-utils";
-import { NormalizedExecutorOptions } from "@nx/js/src/utils/schema";
-import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript";
-import { TypeScriptCompilationOptions as BaseTypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
+// import { NormalizedExecutorOptions } from "@nx/js/src/utils/schema";
+// import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript";
+// import { TypeScriptCompilationOptions as BaseTypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
 import type { StormConfig } from "@storm-software/config";
 import { LogLevelLabel, writeDebug } from "@storm-software/config-tools";
 import merge from "deepmerge";
 import { LogLevel } from "esbuild";
 import { Glob } from "glob";
-import { dirname, extname, join } from "node:path";
+import { dirname, extname } from "node:path";
 import { pathToFileURL } from "node:url";
-import { fileExists } from "nx/src/utils/fileutils";
+// import { fileExists } from "nx/src/utils/fileutils";
 import type { PackageJson } from "nx/src/utils/package-json.js";
 import { InputPluginOption, RollupOptions } from "rollup";
 import tsPlugin from "rollup-plugin-typescript2";
-import { parse } from "tsconfck";
-import ts, { CompilerOptions } from "typescript";
+// import { parse } from "tsconfck";
+import ts from "typescript";
 import {
   BuildContext,
   defineBuildConfig,
@@ -31,9 +31,9 @@ import {
 import { typeDefinitions } from "../plugins/type-definitions";
 import type { UnbuildBuildOptions } from "../types";
 
-type TypeScriptCompilationOptions = BaseTypeScriptCompilationOptions & {
-  lib: CompilerOptions["lib"];
-};
+// type TypeScriptCompilationOptions = BaseTypeScriptCompilationOptions & {
+//   lib: CompilerOptions["lib"];
+// };
 
 export async function getUnbuildBuildOptions(
   config: StormConfig,
@@ -321,162 +321,114 @@ async function createTsCompilerOptions(
   return compilerOptions;
 }
 
-async function getNormalizedTsConfig(
-  config: StormConfig,
-  options: TypeScriptCompilationOptions,
-  dependencies: DependentBuildableProjectNode[]
-) {
-  const { correctPaths, writeTrace } = await import(
-    "@storm-software/config-tools"
-  );
+// async function getNormalizedTsConfig(
+//   config: StormConfig,
+//   options: TypeScriptCompilationOptions,
+//   dependencies: DependentBuildableProjectNode[]
+// ) {
+//   const { correctPaths, writeTrace } = await import(
+//     "@storm-software/config-tools"
+//   );
 
-  const tsModule = ensureTypescript();
-  const rawTsconfig = tsModule.readConfigFile(
-    options.tsConfig,
-    tsModule.sys.readFile
-  );
-  if (!rawTsconfig?.config || rawTsconfig?.error) {
-    throw new Error(
-      `Unable to find ${options.tsConfig || "tsconfig.json"} in ${dirname(
-        options.tsConfig
-      )}${rawTsconfig?.error ? ` \nError: ${rawTsconfig.error.messageText}` : ""}`
-    );
-  }
+//   const tsModule = ensureTypescript();
+//   const rawTsconfig = tsModule.readConfigFile(
+//     options.tsConfig,
+//     tsModule.sys.readFile
+//   );
+//   if (!rawTsconfig?.config || rawTsconfig?.error) {
+//     throw new Error(
+//       `Unable to find ${options.tsConfig || "tsconfig.json"} in ${dirname(
+//         options.tsConfig
+//       )}${rawTsconfig?.error ? ` \nError: ${rawTsconfig.error.messageText}` : ""}`
+//     );
+//   }
 
-  const result = await parse(options.tsConfig, { root: config.workspaceRoot });
-  result.tsconfig.compilerOptions ??= {};
+//   const result = await parse(options.tsConfig, { root: config.workspaceRoot });
+//   result.tsconfig.compilerOptions ??= {};
 
-  const tsConfigFile = ts.readConfigFile(options.tsConfig, ts.sys.readFile);
-  const tsConfig = ts.parseJsonConfigFileContent(
-    tsConfigFile.config,
-    ts.sys,
-    dirname(options.tsConfig)
-  );
+//   const tsConfigFile = ts.readConfigFile(options.tsConfig, ts.sys.readFile);
+//   const tsConfig = ts.parseJsonConfigFileContent(
+//     tsConfigFile.config,
+//     ts.sys,
+//     dirname(options.tsConfig)
+//   );
 
-  result.tsconfig.compilerOptions.paths = computeCompilerOptionsPaths(
-    tsConfig,
-    dependencies ?? []
-  );
+//   result.tsconfig.compilerOptions.paths = computeCompilerOptionsPaths(
+//     tsConfig,
+//     dependencies ?? []
+//   );
 
-  // const tsConfig = parseJsonConfigFileContent(config, sys, dirname(options.tsConfig), {
-  //   outDir: outputPath,
-  //   noEmit: false,
-  //   esModuleInterop: true,
-  //   noUnusedLocals: false,
-  //   emitDeclarationOnly: true,
-  //   declaration: true,
-  //   declarationMap: true,
-  //   declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
-  // });
+//   result.tsconfig.compilerOptions.lib = (
+//     options.lib && options.lib.length > 0
+//       ? options.lib
+//       : result.tsconfig.compilerOptions.lib &&
+//           result.tsconfig.compilerOptions.lib.length > 0
+//         ? result.tsconfig.compilerOptions.lib
+//         : []
+//   ) as string[];
 
-  result.tsconfig.compilerOptions.lib = (
-    options.lib && options.lib.length > 0
-      ? options.lib
-      : result.tsconfig.compilerOptions.lib &&
-          result.tsconfig.compilerOptions.lib.length > 0
-        ? result.tsconfig.compilerOptions.lib
-        : []
-  ) as string[];
+//   const basePath = correctPaths(config.workspaceRoot);
 
-  const basePath = correctPaths(config.workspaceRoot);
+//   result.tsconfig.include ??= [];
+//   if (result.tsconfig.compilerOptions.lib.length > 0) {
+//     result.tsconfig.include = result.tsconfig.compilerOptions.lib
+//       ?.map(file =>
+//         correctPaths(
+//           join(
+//             config.workspaceRoot,
+//             `node_modules/typescript/lib/lib.${file.toLowerCase()}.d.ts`
+//           )
+//         )
+//       )
+//       ?.reduce((ret: string[], file: string) => {
+//         writeTrace(
+//           `Checking if TypeScript Declarations library exists: ${file}`
+//         );
+//         if (fileExists(file) && !ret.includes(file)) {
+//           ret.push(file);
+//         }
 
-  result.tsconfig.include ??= [];
-  if (result.tsconfig.compilerOptions.lib.length > 0) {
-    result.tsconfig.include = result.tsconfig.compilerOptions.lib
-      ?.map(file =>
-        correctPaths(
-          join(
-            config.workspaceRoot,
-            `node_modules/typescript/lib/lib.${file.toLowerCase()}.d.ts`
-          )
-        )
-      )
-      ?.reduce((ret: string[], file: string) => {
-        writeTrace(
-          `Checking if TypeScript Declarations library exists: ${file}`
-        );
-        if (fileExists(file) && !ret.includes(file)) {
-          ret.push(file);
-        }
+//         const fullLibPath = `${file.slice(0, -5)}.full.d.ts`;
+//         writeTrace(
+//           `Checking if full TypeScript Declarations library exists: ${fullLibPath}`
+//         );
 
-        const fullLibPath = `${file.slice(0, -5)}.full.d.ts`;
-        writeTrace(
-          `Checking if full TypeScript Declarations library exists: ${fullLibPath}`
-        );
+//         if (fileExists(fullLibPath) && !ret.includes(fullLibPath)) {
+//           ret.push(fullLibPath);
+//         }
 
-        if (fileExists(fullLibPath) && !ret.includes(fullLibPath)) {
-          ret.push(fullLibPath);
-        }
+//         return ret;
+//       }, result.tsconfig.include);
+//   } else {
+//     result.tsconfig.include.push(
+//       correctPaths(
+//         join(config.workspaceRoot, "node_modules/typescript/lib/*.d.ts")
+//       )
+//     );
+//   }
 
-        return ret;
-      }, result.tsconfig.include);
-  } else {
-    result.tsconfig.include.push(
-      correctPaths(
-        join(config.workspaceRoot, "node_modules/typescript/lib/*.d.ts")
-      )
-    );
-  }
+//   result.tsconfig.compilerOptions.pathsBasePath = basePath;
+//   result.tsconfig.compilerOptions.rootDir = basePath;
+//   result.tsconfig.compilerOptions.baseUrl = ".";
 
-  result.tsconfig.compilerOptions.pathsBasePath = basePath;
-  result.tsconfig.compilerOptions.rootDir = basePath;
-  result.tsconfig.compilerOptions.baseUrl = ".";
+//   return result.tsconfig;
+// }
 
-  // const parsedTsconfig = tsModule.parseJsonConfigFileContent(
-  //   {
-  //     ...rawTsconfig.config,
-  //     compilerOptions: {
-  //       module: "ESNext",
-  //       target: "ESNext",
-  //       moduleResolution: "Bundler",
-  //       ...rawTsconfig.config?.compilerOptions,
-  //       lib,
-  //       skipLibCheck: true,
-  //       skipDefaultLibCheck: true,
-  //       noEmit: false,
-  //       declaration: true,
-  //       declarationMap: true,
-  //       paths: compilerOptionPaths
-  //     },
-  //     include: [tsLibsPath, ...rawTsconfig.config?.include]
-  //   },
-  //   tsModule.sys,
-  //   dirname(options.tsConfig)
-  // );
-
-  // parsedTsconfig.fileNames = [
-  //   ...parsedTsconfig.fileNames,
-  //   ...(await glob(correctPaths(tsLibsPath)))
-  // ];
-
-  // parsedTsconfig.options.pathsBasePath = basePath;
-  // parsedTsconfig.options.rootDir = basePath;
-  // parsedTsconfig.options.baseUrl = ".";
-
-  // if (parsedTsconfig.options.incremental) {
-  //   parsedTsconfig.options.tsBuildInfoFile = correctPaths(
-  //     joinPathFragments(outputPath, "tsconfig.tsbuildinfo")
-  //   );
-  // }
-
-  return result.tsconfig;
-}
-
-const createTypeScriptCompilationOptions = (
-  normalizedOptions: NormalizedExecutorOptions,
-  buildOptions: UnbuildBuildOptions
-): TypeScriptCompilationOptions => {
-  return {
-    outputPath: normalizedOptions.outputPath,
-    projectName: buildOptions.projectName,
-    projectRoot: normalizedOptions.projectRoot,
-    rootDir: normalizedOptions.rootDir,
-    lib: buildOptions.tsLibs,
-    tsConfig: normalizedOptions.tsConfig,
-    watch: normalizedOptions.watch,
-    deleteOutputPath: normalizedOptions.clean,
-    getCustomTransformers: getCustomTrasformersFactory(
-      normalizedOptions.transformers
-    )
-  };
-};
+// const createTypeScriptCompilationOptions = (
+//   normalizedOptions: NormalizedExecutorOptions,
+//   buildOptions: UnbuildBuildOptions
+// ): TypeScriptCompilationOptions => {
+//   return {
+//     outputPath: normalizedOptions.outputPath,
+//     projectName: buildOptions.projectName,
+//     projectRoot: normalizedOptions.projectRoot,
+//     rootDir: normalizedOptions.rootDir,
+//     lib: buildOptions.tsLibs,
+//     tsConfig: normalizedOptions.tsConfig,
+//     watch: normalizedOptions.watch,
+//     deleteOutputPath: normalizedOptions.clean,
+//     getCustomTransformers: getCustomTrasformersFactory(
+//       normalizedOptions.transformers
+//     )
+//   };
+// };
