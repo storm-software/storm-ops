@@ -1,3 +1,12 @@
+## 0.1.1 (2024-08-02)
+
+
+### Bug Fixes
+
+- **terraform-tools:** Resolve issue with invalid release executor ([20e5b88c](https://github.com/storm-software/storm-ops/commit/20e5b88c))
+
+- **terraform-tools:** Include missing changes to `project.json` file ([5d7e0f0f](https://github.com/storm-software/storm-ops/commit/5d7e0f0f))
+
 ## 0.1.0 (2024-08-02)
 
 

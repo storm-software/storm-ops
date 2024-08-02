@@ -1,3 +1,12 @@
+## 1.35.0 (2024-08-02)
+
+
+### Features
+
+- **config:** Removed the `ci` option from config and enabled better caching ([2456c216](https://github.com/storm-software/storm-ops/commit/2456c216))
+
+- **build-tools:** Populate the distribution's package.json with `exports` based on project structure ([cf0eed52](https://github.com/storm-software/storm-ops/commit/cf0eed52))
+
 ## 1.34.1 (2024-07-31)
 
 
