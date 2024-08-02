@@ -55,9 +55,10 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
     - [Example](#example-2)
   - [Terraform `destroy` Command Executor](#terraform-destroy-command-executor)
     - [Example](#example-3)
+    - [Options](#options-2)
   - [Generators](#generators)
   - [Init Storm Terraform Tools Plugin](#init-storm-terraform-tools-plugin)
-    - [Options](#options-2)
+    - [Options](#options-3)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
   - [Storm Workspaces](#storm-workspaces)
@@ -200,6 +201,15 @@ nx run my-project:destroy
 ```
 
 **Please note:** _The destroy executor should be included in the desired projects's `project.json` file._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| autoApproval      | `boolean`    | A boolean flag to automatically approve the destroy     |     | 
+
 
 
 
