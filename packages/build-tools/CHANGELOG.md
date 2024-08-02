@@ -1,3 +1,10 @@
+## 0.53.2 (2024-08-02)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolve path issues in unbuild entry configuration ([46d128b5](https://github.com/storm-software/storm-ops/commit/46d128b5))
+
 ## 0.53.1 (2024-08-02)
 
 
