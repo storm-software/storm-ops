@@ -1,3 +1,10 @@
+## 0.50.1 (2024-08-02)
+
+
+### Bug Fixes
+
+- **build-tools:** Update the base path of the unbuild input files ([4551640c](https://github.com/storm-software/storm-ops/commit/4551640c))
+
 ## 0.50.0 (2024-08-02)
 
 
