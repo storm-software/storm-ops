@@ -1,12 +1,11 @@
 import { joinPathFragments, ProjectGraph } from "@nx/devkit";
 import { getHelperDependency, HelperDependency } from "@nx/js";
 import { getCustomTrasformersFactory } from "@nx/js/src/executors/tsc/lib/get-custom-transformers-factory";
-import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options";
 import {
   calculateProjectBuildableDependencies,
   computeCompilerOptionsPaths,
   DependentBuildableProjectNode
-} from "@nx/js/src/utils/buildable-libs-utils.js";
+} from "@nx/js/src/utils/buildable-libs-utils";
 import { NormalizedExecutorOptions } from "@nx/js/src/utils/schema";
 import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript";
 import { TypeScriptCompilationOptions as BaseTypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
@@ -15,7 +14,6 @@ import { LogLevelLabel, writeDebug } from "@storm-software/config-tools";
 import merge from "deepmerge";
 import { LogLevel } from "esbuild";
 import { Glob } from "glob";
-import { MkdistOptions } from "mkdist";
 import { dirname, extname, join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { fileExists } from "nx/src/utils/fileutils";
@@ -27,7 +25,6 @@ import ts, { CompilerOptions } from "typescript";
 import {
   BuildContext,
   defineBuildConfig,
-  MkdistBuildEntry,
   RollupBuildOptions,
   type BuildConfig
 } from "unbuild";
@@ -116,48 +113,47 @@ export async function getUnbuildBuildOptions(
     externals: [...externals, ...(options.external ?? [])],
     declaration: "compatible",
     hooks: {
-      "mkdist:entry:options": async (
-        ctx: BuildContext,
-        entry: MkdistBuildEntry,
-        opts: MkdistOptions
-      ) => {
-        opts.rootDir;
+      // "mkdist:entry:options": async (
+      //   ctx: BuildContext,
+      //   entry: MkdistBuildEntry,
+      //   opts: MkdistOptions
+      // ) => {
+      //   const tsconfig = await getNormalizedTsConfig(
+      //     config,
+      //     createTypeScriptCompilationOptions(
+      //       normalizeOptions(
+      //         {
+      //           ..._options,
+      //           external: undefined,
+      //           watch: false,
+      //           main: options.entry ?? `${options.sourceRoot}/index.ts`,
+      //           transformers: []
+      //         },
+      //         config.workspaceRoot,
+      //         options.sourceRoot,
+      //         config.workspaceRoot
+      //       ),
+      //       options
+      //     ),
+      //     dependencies
+      //   );
 
-        const tsConfig = await getNormalizedTsConfig(
-          config,
-          createTypeScriptCompilationOptions(
-            normalizeOptions(
-              {
-                ..._options,
-                external: undefined,
-                watch: false,
-                main: options.entry ?? `${options.sourceRoot}/index.ts`,
-                transformers: []
-              },
-              config.workspaceRoot,
-              options.sourceRoot,
-              config.workspaceRoot
-            ),
-            options
-          ),
-          dependencies
-        );
+      //   const dtsCompilerOptions = {
+      //     ...tsconfig.compilerOptions,
+      //     skipLibCheck: true,
+      //     skipDefaultLibCheck: true,
+      //     noEmit: false,
+      //     declaration: true,
+      //     declarationMap: true
+      //   };
 
-        const dtsCompilerOptions = {
-          ...tsConfig.compilerOptions,
-          skipLibCheck: true,
-          skipDefaultLibCheck: true,
-          noEmit: false,
-          declaration: true,
-          declarationMap: true
-        };
+      //   writeDebug(dtsCompilerOptions, config);
 
-        writeDebug(dtsCompilerOptions, config);
-
-        opts.typescript = {
-          compilerOptions: dtsCompilerOptions
-        };
-      },
+      //   opts.rootDir = options.projectRoot;
+      //   opts.typescript = {
+      //     compilerOptions: dtsCompilerOptions
+      //   };
+      // },
       "rollup:options": async (ctx: BuildContext, opts: RollupOptions) => {
         opts.plugins = [
           tsPlugin({
@@ -255,10 +251,10 @@ export async function getUnbuildBuildOptions(
           banner: options.banner,
           footer: options.footer
         },
-        commonjs: {
-          include: /node_modules/,
-          sourceMap: options.sourcemap
-        },
+        // commonjs: {
+        //   include: /node_modules/,
+        //   sourceMap: options.sourcemap
+        // },
         resolve: {
           preferBuiltins: true,
           extensions: [".cjs", ".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"]
