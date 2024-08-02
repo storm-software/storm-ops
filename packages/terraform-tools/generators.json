@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "name": "terraform",
+  "version": "0.0.1",
+  "generators": {
+    "init": {
+      "factory": "./src/generators/init/init#initGenerator",
+      "schema": "./src/generators/init/schema.json",
+      "description": "Initialize the `@storm-software/terraform-tools` plugin.",
+      "aliases": ["ng-add"],
+      "internal": true
+    }
+  }
+}

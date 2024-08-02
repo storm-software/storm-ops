@@ -1,4 +1,7 @@
 {
+  "$schema": "https://json-schema.org/schema",
+  "name": "storm-workspace",
+  "version": "0.0.1",
   "generators": {
     "init": {
       "factory": "./src/generators/init/generator",

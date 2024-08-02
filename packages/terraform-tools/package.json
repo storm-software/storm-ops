@@ -1,0 +1,66 @@
+{
+  "name": "@storm-software/terraform-tools",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "description": "⚡ A Nx plugin package that contains various executors, generators, and utilities that assist in managing Terraform IoC.",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/terraform-tools"
+  },
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.com"
+  },
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "license": "Apache 2.0",
+  "private": false,
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json",
+    "./generators.json": "./generators.json",
+    "./generators/*/schema.json": "./src/generators/*/schema.json",
+    "./executors.json": "./executors.json",
+    "./executors/*/schema.json": "./src/executors/*/schema.json"
+  },
+  "typings": "./declarations.d.ts",
+  "keywords": [
+    "storm",
+    "storm-ops",
+    "terraform",
+    "open-tofu",
+    "terragrunt",
+    "storm-stack",
+    "sullivanpj",
+    "monorepo"
+  ],
+  "peerDependencies": {
+    "@nx/devkit": "^19.5.3",
+    "nx": "^19.5.3"
+  },
+  "peerDependenciesMeta": {
+    "@nx/devkit": {
+      "optional": false
+    },
+    "nx": {
+      "optional": false
+    }
+  },
+  "dependencies": {
+    "@nx/devkit": "^19.5.3",
+    "@nx/workspace": "^19.5.3",
+    "shelljs": "^0.8.5",
+    "tslib": "^2.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "executors": "./executors.json",
+  "generators": "./generators.json"
+}

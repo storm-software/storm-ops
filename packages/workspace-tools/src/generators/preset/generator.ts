@@ -9,11 +9,7 @@ import {
 } from "@nx/devkit";
 import * as path from "node:path";
 import { withRunGenerator } from "../../base/base-generator";
-import {
-  nodeVersion,
-  pnpmVersion,
-  typescriptVersion
-} from "../../utils/versions";
+import { nodeVersion, pnpmVersion } from "../../utils/versions";
 import type { PresetGeneratorSchema } from "./schema";
 
 export async function presetGeneratorFn(
@@ -67,7 +63,7 @@ export async function presetGeneratorFn(
 
     json.homepage ??= "https://stormsoftware.com";
     json.bugs ??= {
-      url: "https://stormsoftware.com/support",
+      url: `https://github.com/${options.organization}/${options.name}/issues`,
       email: "support@stormsoftware.com"
     };
 
@@ -77,7 +73,18 @@ export async function presetGeneratorFn(
       email: "contact@stormsoftware.com",
       url: "https://stormsoftware.com"
     };
-
+    json.maintainers ??= [
+      {
+        "name": "Storm Software",
+        "email": "contact@stormsoftware.com",
+        "url": "https://stormsoftware.com"
+      },
+      {
+        "name": "Pat Sullivan",
+        "email": "pat@stormsoftware.com",
+        "url": "https://patsullivan.org"
+      }
+    ];
     json.funding ??= {
       type: "github",
       url: "https://github.com/sponsors/storm-software"
@@ -85,11 +92,31 @@ export async function presetGeneratorFn(
 
     json.namespace ??= `@${options.namespace}`;
     json.description ??= options.description;
-
-    options.repositoryUrl ??= `https://github.com/${options.organization}/${options.name}}`;
+    options.repositoryUrl ??= `https://github.com/${options.organization}/${options.name}`;
     json.repository ??= {
       type: "github",
       url: `${options.repositoryUrl}.git`
+    };
+
+    json.packageManager ??= "pnpm@9.6.0";
+    json.engines ??= {
+      "node": ">=20.11.0",
+      "pnpm": ">=9.6.0"
+    };
+    json.devEngines ??= {
+      "node": "20.x || 21.x"
+    };
+    json.nx ??= {
+      "includedScripts": [
+        "lint-ls",
+        "lint",
+        "format",
+        "format-readme",
+        "format-prettier",
+        "format-toml",
+        "commit",
+        "release"
+      ]
     };
 
     // generate a start script into the package.json
@@ -172,27 +199,23 @@ export async function presetGeneratorFn(
       pnpm: `>=${pnpmVersion}`
     };
 
-    if (options.includeApps) {
-      json.bundlewatch = {
-        files: [
-          {
-            path: "dist/*/*.js",
-            maxSize: "200kB"
-          }
-        ],
-        ci: {
-          trackBranches: ["main", "alpha", "beta"]
-        }
-      };
+    // if (options.includeApps) {
+    //   json.bundlewatch = {
+    //     files: [
+    //       {
+    //         path: "dist/*/*.js",
+    //         maxSize: "200kB"
+    //       }
+    //     ],
+    //     ci: {
+    //       trackBranches: ["main", "alpha", "beta"]
+    //     }
+    //   };
 
-      json.nextBundleAnalysis = {
-        buildOutputDirectory: "dist/apps/web/app/.next"
-      };
-    }
-
-    json.nx = {
-      includedScripts: ["lint", "format"]
-    };
+    //   json.nextBundleAnalysis = {
+    //     buildOutputDirectory: "dist/apps/web/app/.next"
+    //   };
+    // }
 
     return json;
   });
@@ -205,15 +228,15 @@ export async function presetGeneratorFn(
   await formatFiles(tree);
 
   let dependencies: Record<string, string> = {
-    "@commitlint/cli": "19.2.1",
     "@ls-lint/ls-lint": "2.2.3",
     "@ltd/j-toml": "1.38.0",
-    "@nx/devkit": "19.1.0",
-    "@nx/esbuild": "19.1.0",
-    "@nx/eslint": "19.1.0",
-    "@nx/js": "19.1.0",
-    "@nx/plugin": "19.1.0",
-    "@nx/workspace": "19.1.0",
+    "@microsoft/tsdoc": "0.15.0",
+    "@nx/devkit": "^19.5.3",
+    "@nx/esbuild": "19.5.3",
+    "@nx/eslint-plugin": ">=19.5.3",
+    "@nx/js": "^19.5.3",
+    "@nx/plugin": "19.5.3",
+    "@nx/workspace": "^19.5.3",
     "@storm-software/config": "latest",
     "@storm-software/config-tools": "latest",
     "@storm-software/git-tools": "latest",
@@ -223,45 +246,36 @@ export async function presetGeneratorFn(
     "@storm-software/eslint": "latest",
     "@storm-software/eslint-plugin": "latest",
     "@storm-software/prettier": "latest",
-    "@swc-node/register": "1.9.0",
-    "@swc/cli": "0.3.12",
-    "@swc/core": "1.4.12",
-    "@swc/helpers": "0.5.8",
-    "@swc/wasm": "1.4.12",
     "@taplo/cli": "0.7.0",
     "@types/jest": "29.5.12",
-    "@types/node": "20.12.5",
-    "conventional-changelog-conventionalcommits": "7.0.2",
-    "esbuild": "0.20.2",
+    "@types/node": "^20.14.10",
+    "conventional-changelog-conventionalcommits": "8.0.0",
+    "copyfiles": "2.4.1",
+    "esbuild": "0.21.5",
     "esbuild-register": "3.5.0",
-    "eslint": "^9.0.0",
-    "eslint-config-storm-software": "latest",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint": "9.5.0",
     "jest": "29.7.0",
     "jest-environment-jsdom": "29.7.0",
     "jest-environment-node": "29.7.0",
-    "lefthook": "1.6.8",
-    "nx": "19.1.0",
-    "prettier": "3.2.5",
-    "rimraf": "5.0.5",
-    "ts-jest": "29.1.2",
+    "knip": "5.25.2",
+    "lefthook": "1.6.18",
+    "nx": "^19.5.3",
+    "prettier": "3.3.2",
+    "prettier-plugin-prisma": "5.0.0",
+    "rimraf": "5.0.7",
+    "sherif": "0.10.0",
+    "ts-jest": "29.1.5",
     "ts-loader": "9.5.1",
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
-    "tslib": "2.6.2",
-    "typescript": typescriptVersion,
-    "verdaccio": "5.30.3",
-    "knip": "5.25.2",
-    "sherif": "0.10.0"
+    "tslib": "2.6.3",
+    "typescript": "5.5.3",
+    "verdaccio": "5.31.1"
   };
 
   if (options.includeApps) {
     dependencies = {
       ...dependencies,
-      bundlewatch: "latest",
       react: "latest",
       "react-dom": "latest",
       storybook: "latest",

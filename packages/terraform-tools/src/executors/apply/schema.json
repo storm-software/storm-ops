@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "outputCapture": "direct-nodejs",
+  "title": "Terraform `apply` Command Executor",
+  "description": "Run the `apply` command using the workspaces Terraform IoC configuration files",
+  "type": "object",
+  "properties": {},
+  "required": []
+}

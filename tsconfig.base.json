@@ -26,6 +26,8 @@
       "@storm-software/markdownlint/*": ["packages/markdownlint/src/*"],
       "@storm-software/prettier": ["packages/prettier/src/index.ts"],
       "@storm-software/prettier/*": ["packages/prettier/src/*"],
+      "@storm-software/terraform-tools": ["packages/terraform-tools/index.ts"],
+      "@storm-software/terraform-tools/*": ["packages/terraform-tools/src/*"],
       "@storm-software/testing-tools": ["packages/testing-tools/src/index.ts"],
       "@storm-software/testing-tools/*": ["packages/testing-tools/src/*"],
       "@storm-software/tsconfig": ["packages/tsconfig/src/index.ts"],

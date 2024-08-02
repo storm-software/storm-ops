@@ -5,11 +5,17 @@ import {
   type BaseTokenizerOptions
 } from "@storm-software/config-tools";
 import type {
-  BaseExecutorOptions,
-  BaseExecutorResult,
-  BaseExecutorSchema
+  BaseExecutorOptions as _BaseExecutorOptions,
+  BaseExecutorResult as _BaseExecutorResult,
+  BaseExecutorSchema as _BaseExecutorSchema
 } from "../../declarations";
 import { applyWorkspaceExecutorTokens } from "../utils/apply-workspace-tokens";
+
+export type BaseExecutorOptions<
+  TExecutorSchema extends BaseExecutorSchema = BaseExecutorSchema
+> = _BaseExecutorOptions<TExecutorSchema>;
+export type BaseExecutorResult = _BaseExecutorResult;
+export type BaseExecutorSchema = _BaseExecutorSchema;
 
 export const withRunExecutor =
   <TExecutorSchema extends BaseExecutorSchema = BaseExecutorSchema>(
@@ -24,7 +30,7 @@ export const withRunExecutor =
       | BaseExecutorResult
       | null
       | undefined,
-    executorOptions: BaseExecutorOptions<TExecutorSchema>
+    executorOptions: BaseExecutorOptions<TExecutorSchema> = {}
   ): PromiseExecutor<TExecutorSchema> =>
   async (
     _options: TExecutorSchema,

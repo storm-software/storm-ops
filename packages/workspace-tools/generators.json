@@ -1,12 +1,13 @@
 {
+  "$schema": "https://json-schema.org/schema",
+  "name": "storm-workspace",
+  "version": "0.0.1",
   "generators": {
     "init": {
-      "factory": "./src/generators/init/init#stormInitGenerator",
+      "factory": "./src/generators/init/init#initGenerator",
       "schema": "./src/generators/init/schema.json",
       "description": "Initialize the `@storm-software/workspace-tools` plugin.",
-      "aliases": [
-        "ng-add"
-      ],
+      "aliases": ["ng-add"],
       "internal": true
     },
     "preset": {
@@ -18,9 +19,7 @@
     "node-library": {
       "factory": "./src/generators/node-library/generator",
       "schema": "./src/generators/node-library/schema.json",
-      "aliases": [
-        "node-lib"
-      ],
+      "aliases": ["node-lib"],
       "x-type": "library",
       "description": "Create a new NodeJs TypeScript library package in the Storm workspace"
     },
@@ -32,11 +31,15 @@
     "neutral-library": {
       "factory": "./src/generators/neutral-library/generator",
       "schema": "./src/generators/neutral-library/schema.json",
+      "aliases": ["neutral-lib"],
+      "x-type": "library",
       "description": "Create a new Neutral TypeScript library package in the Storm workspace"
     },
     "browser-library": {
       "factory": "./src/generators/browser-library/generator",
       "schema": "./src/generators/browser-library/schema.json",
+      "aliases": ["browser-lib"],
+      "x-type": "library",
       "description": "Create a new browser TypeScript library package in the Storm workspace"
     },
     "design-tokens": {

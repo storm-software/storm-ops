@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "StormTerraformInit",
+  "cli": "nx",
+  "title": "Init Storm Terraform Tools Plugin",
+  "description": "Init Storm Terraform Tools Plugin.",
+  "type": "object",
+  "properties": {
+    "skipFormat": {
+      "description": "Skip formatting files.",
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": []
+}

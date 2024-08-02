@@ -96,9 +96,7 @@
     "@monodon/rust": "1.4.0",
     "@nx/devkit": "^19.5.3",
     "@nx/esbuild": "19.5.3",
-    "@nx/eslint": ">=19.5.3",
     "@nx/eslint-plugin": ">=19.5.3",
-    "@nx/jest": "^19.5.3",
     "@nx/js": "^19.5.3",
     "@nx/plugin": "19.5.3",
     "@nx/workspace": "^19.5.3",
@@ -139,6 +137,10 @@
     "typescript": "5.5.3",
     "verdaccio": "5.31.1"
   },
+  "devDependencies": {
+    "@nx/eslint": "19.5.3",
+    "@nx/jest": "19.5.3"
+  },
   "devEngines": {
     "node": "20.x || 21.x"
   },
@@ -167,6 +169,7 @@
       "@storm-software/linting-tools": "workspace:*",
       "@storm-software/markdownlint": "workspace:*",
       "@storm-software/prettier": "workspace:*",
+      "@storm-software/terraform-tools": "workspace:*",
       "@storm-software/testing-tools": "workspace:*",
       "@storm-software/tsconfig": "workspace:*",
       "@storm-software/workspace-tools": "workspace:*",
