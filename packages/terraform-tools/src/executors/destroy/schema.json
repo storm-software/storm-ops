@@ -5,6 +5,12 @@
   "title": "Terraform `destroy` Command Executor",
   "description": "Run the `destroy` command using the workspaces Terraform IoC configuration files",
   "type": "object",
-  "properties": {},
+  "properties": {
+    "autoApproval": {
+      "type": "boolean",
+      "description": "A boolean flag to automatically approve the destroy",
+      "default": false
+    }
+  },
   "required": []
 }

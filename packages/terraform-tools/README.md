@@ -21,7 +21,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-0.25.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
+[![Version](https://img.shields.io/badge/version-0.0.1-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -40,13 +40,24 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 ## Table of Contents
 
 - [Storm Terraform Tools](#storm-terraform-tools)
   - [Installing](#installing)
   - [Executors](#executors)
+  - [Terraform `plan` Command Executor](#terraform-plan-command-executor)
+    - [Example](#example)
+    - [Options](#options)
+  - [Terraform `apply` Command Executor](#terraform-apply-command-executor)
+    - [Example](#example-1)
+    - [Options](#options-1)
+  - [Terraform `output` Command Executor](#terraform-output-command-executor)
+    - [Example](#example-2)
+  - [Terraform `destroy` Command Executor](#terraform-destroy-command-executor)
+    - [Example](#example-3)
   - [Generators](#generators)
+  - [Init Storm Terraform Tools Plugin](#init-storm-terraform-tools-plugin)
+    - [Options](#options-2)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
   - [Storm Workspaces](#storm-workspaces)
@@ -108,6 +119,90 @@ the workspace's projects:
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 
+
+## Terraform `plan` Command Executor
+
+Run the \`plan\` command using the workspaces Terraform IoC configuration files
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:plan
+```
+
+**Please note:** _The plan executor should be included in the desired projects's `project.json` file._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| planFile      | `string`    | The path to the plan file to create     | "defaultplan"     | 
+
+
+
+
+## Terraform `apply` Command Executor
+
+Run the \`apply\` command using the workspaces Terraform IoC configuration files
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:apply
+```
+
+**Please note:** _The apply executor should be included in the desired projects's `project.json` file._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| planFile      | `string`    | The path to the plan file to create     | "defaultplan"     | 
+ | autoApproval      | `boolean`    | A boolean flag to automatically approve the apply     |     | 
+
+
+
+
+## Terraform `output` Command Executor
+
+Run the \`output\` command using the workspaces Terraform IoC configuration files
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:output
+```
+
+**Please note:** _The output executor should be included in the desired projects's `project.json` file._ 
+
+
+
+## Terraform `destroy` Command Executor
+
+Run the \`destroy\` command using the workspaces Terraform IoC configuration files
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:destroy
+```
+
+**Please note:** _The destroy executor should be included in the desired projects's `project.json` file._ 
+
+
+
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
@@ -121,6 +216,21 @@ management:
 <!-- START generators -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+
+
+## Init Storm Terraform Tools Plugin
+
+Init Storm Terraform Tools Plugin.
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| skipFormat      | `boolean`    | Skip formatting files.     |     | 
+
+
 
 
 <!-- markdownlint-restore -->

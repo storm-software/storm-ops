@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/terraform-tools/src",
   "projectType": "library",
-  "implicitDependencies": ["workspace-tools"],
+  "implicitDependencies": ["workspace-tools", "config-tools", "config"],
   "targets": {
     "build": {
       "executor": "@nx/esbuild:esbuild",
@@ -35,7 +35,14 @@
             ".js": ".js"
           }
         },
-        "external": ["nx", "@nx/devkit", "esbuild", "@swc/*"],
+        "external": [
+          "nx",
+          "@nx/*",
+          "esbuild",
+          "vue-tsc",
+          "@swc/*",
+          "@storm-software/*"
+        ],
         "assets": [
           {
             "input": "packages/terraform-tools",
@@ -73,16 +80,6 @@
             "input": "",
             "glob": "LICENSE",
             "output": "."
-          },
-          {
-            "input": "packages/terraform-tools/config",
-            "glob": "**/*.*",
-            "output": "./config"
-          },
-          {
-            "input": "packages/terraform-tools/assets",
-            "glob": "**/*.*",
-            "output": "./assets"
           }
         ]
       }

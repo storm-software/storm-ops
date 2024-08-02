@@ -58,12 +58,12 @@
     "shelljs": "^0.8.5",
     "tslib": "^2.6.3"
   },
+  "devDependencies": {
+    "nx": "^19.5.3"
+  },
   "publishConfig": {
     "access": "public"
   },
   "executors": "./executors.json",
-  "generators": "./generators.json",
-  "devDependencies": {
-    "nx": "^19.5.3"
-  }
+  "generators": "./generators.json"
 }
