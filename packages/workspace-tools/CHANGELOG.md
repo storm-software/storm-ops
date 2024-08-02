@@ -1,3 +1,10 @@
+## 1.143.0 (2024-08-02)
+
+
+### Features
+
+- **eslint:** Added typing file for ESLint rules used by preset ([821637e2](https://github.com/storm-software/storm-ops/commit/821637e2))
+
 ## 1.142.0 (2024-08-02)
 
 
