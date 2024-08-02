@@ -13,7 +13,7 @@ import type { StormConfig } from "@storm-software/config";
 import { LogLevelLabel, writeDebug } from "@storm-software/config-tools";
 import merge from "deepmerge";
 import { LogLevel } from "esbuild";
-import { dirname, extname, join } from "node:path";
+import { dirname, extname } from "node:path";
 import { pathToFileURL } from "node:url";
 // import { fileExists } from "nx/src/utils/fileutils";
 import type { PackageJson } from "nx/src/utils/package-json.js";
@@ -108,12 +108,12 @@ export async function getUnbuildBuildOptions(
     name: options.projectName,
     rootDir: config.workspaceRoot,
     entries: [
-      {
-        builder: "mkdist",
-        input: options.sourceRoot,
-        outDir: join(options.outputPath, "dist"),
-        declaration: "compatible"
-      }
+      // {
+      //   builder: "mkdist",
+      //   input: options.sourceRoot,
+      //   outDir: join(options.outputPath, "dist"),
+      //   declaration: "compatible"
+      // }
     ],
     outDir: options.outputPath,
     externals: [...externals, ...(options.external ?? [])],
