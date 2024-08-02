@@ -4,27 +4,47 @@
   "sourceRoot": "packages/eslint/src",
   "projectType": "library",
   "targets": {
+    "clean": {
+      "cache": true,
+      "inputs": ["typescript", "^production"],
+      "outputs": ["{workspaceRoot}/dist/packages/eslint/**"],
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "commands": [
+          "pnpm exec rimraf dist/packages/eslint",
+          "pnpm exec rimraf packages/eslint/dist"
+        ],
+        "parallel": true,
+        "color": true
+      }
+    },
     "build-base": {
       "cache": true,
+      "inputs": ["typescript", "^production"],
+      "outputs": ["{workspaceRoot}/packages/eslint/dist/**"],
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "options": {
         "command": "pnpm exec unbuild",
-        "parallel": false,
+        "color": true,
         "cwd": "packages/eslint"
       }
     },
     "build": {
       "cache": true,
+      "inputs": ["{workspaceRoot}/packages/eslint/dist/**"],
+      "outputs": ["{workspaceRoot}/dist/packages/eslint/**"],
       "executor": "nx:run-commands",
-      "dependsOn": ["build-base", "^build"],
+      "dependsOn": ["build-base"],
       "options": {
         "commands": [
           "pnpm copyfiles --up=3 packages/eslint/dist/* dist/packages/eslint/dist",
           "pnpm copyfiles --up=2 packages/eslint/README.md packages/eslint/CHANGELOG.md packages/eslint/package.json packages/eslint/declarations.d.ts dist/packages/eslint",
           "pnpm copyfiles LICENSE dist/packages/eslint"
         ],
-        "parallel": true
+        "parallel": true,
+        "color": true
       }
     },
     "nx-release-publish": {

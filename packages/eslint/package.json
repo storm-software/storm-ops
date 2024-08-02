@@ -29,11 +29,11 @@
   "private": false,
   "exports": {
     ".": {
-      "types": "./declarations.d.ts",
+      "types": "./dist/preset.d.ts",
       "import": "./dist/preset.mjs"
     },
     "./preset": {
-      "types": "./declarations.d.ts",
+      "types": "./dist/preset.d.ts",
       "import": "./dist/preset.mjs"
     }
   },

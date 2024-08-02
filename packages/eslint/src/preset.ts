@@ -188,6 +188,7 @@ export function getStormConfig(
         emitDecoratorMetadata: true,
         experimentalDecorators: true,
         projectService: true,
+        sourceType: "module",
         projectFolderIgnoreList: [
           "**/node_modules/**",
           "**/dist/**",
