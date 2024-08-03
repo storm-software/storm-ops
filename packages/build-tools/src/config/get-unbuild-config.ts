@@ -110,12 +110,13 @@ export async function getUnbuildBuildOptions(
     entries: [
       {
         builder: "mkdist",
+        name: "./",
         input: options.sourceRoot.replace(options.projectRoot, ""),
         outDir: join(
           relative(
             join(config.workspaceRoot, options.projectRoot),
             config.workspaceRoot
-          ),
+          ).replaceAll("\\", "/"),
           options.outputPath,
           "dist"
         ),
