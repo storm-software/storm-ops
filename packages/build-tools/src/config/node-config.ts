@@ -1,7 +1,7 @@
 import { joinPathFragments } from "@nx/devkit";
 import type { Options } from "tsup";
-import { outExtension } from "../utils";
 import type { BuildOptions, GetConfigParams } from "../../declarations";
+import { outExtension } from "../utils";
 
 export function nodeConfig({
   entry,
@@ -26,7 +26,7 @@ export function nodeConfig({
   env,
   plugins,
   generatePackageJson,
-  dtsTsConfig,
+  // dtsTsConfig,
   minify = false,
   getTransform
 }: GetConfigParams): BuildOptions {
@@ -54,18 +54,18 @@ export function nodeConfig({
     banner,
     define,
     env,
-    dts: false,
+    dts: true,
     minify,
-    experimentalDts: {
-      entry,
-      compilerOptions: {
-        ...dtsTsConfig,
-        options: {
-          ...dtsTsConfig.options,
-          outDir: joinPathFragments(outDir, "dist")
-        }
-      }
-    },
+    // experimentalDts: {
+    //   entry,
+    //   compilerOptions: {
+    //     ...dtsTsConfig,
+    //     options: {
+    //       ...dtsTsConfig.options,
+    //       outDir: joinPathFragments(outDir, "dist")
+    //     }
+    //   }
+    // },
     apiReport,
     docModel,
     tsdocMetadata,
@@ -113,7 +113,7 @@ export function workerConfig({
   env,
   plugins,
   generatePackageJson,
-  dtsTsConfig,
+  // dtsTsConfig,
   getTransform
 }: GetConfigParams): BuildOptions {
   const options = {
@@ -141,18 +141,18 @@ export function workerConfig({
     banner,
     define,
     env,
-    dts: false,
+    dts: true,
     minify: false,
-    experimentalDts: {
-      entry,
-      compilerOptions: {
-        ...dtsTsConfig,
-        options: {
-          ...dtsTsConfig.options,
-          outDir: joinPathFragments(outDir, "dist")
-        }
-      }
-    },
+    // experimentalDts: {
+    //   entry,
+    //   compilerOptions: {
+    //     ...dtsTsConfig,
+    //     options: {
+    //       ...dtsTsConfig.options,
+    //       outDir: joinPathFragments(outDir, "dist")
+    //     }
+    //   }
+    // },
     apiReport,
     docModel,
     tsdocMetadata,

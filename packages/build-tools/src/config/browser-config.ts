@@ -23,9 +23,9 @@ export const browserConfig = ({
   env,
   plugins,
   generatePackageJson,
-  dtsTsConfig,
+  // dtsTsConfig,
   minify = false,
-  getTransform,
+  getTransform
 }: GetConfigParams): BuildOptions => {
   const outputPath = joinPathFragments(outDir, "dist");
 
@@ -40,14 +40,14 @@ export const browserConfig = ({
       "safari15",
       "ios15",
       "opera77",
-      "esnext",
+      "esnext"
     ],
     tsconfig,
     splitting,
     generatePackageJson,
     treeshake: treeshake
       ? {
-          preset: "recommended",
+          preset: "recommended"
         }
       : false,
     projectRoot,
@@ -61,18 +61,18 @@ export const browserConfig = ({
     banner,
     define,
     env,
-    dts: false,
+    dts: true,
     minify,
-    experimentalDts: {
-      entry,
-      compilerOptions: {
-        ...dtsTsConfig,
-        options: {
-          ...dtsTsConfig.options,
-          outDir: outputPath,
-        },
-      },
-    },
+    // experimentalDts: {
+    //   entry,
+    //   compilerOptions: {
+    //     ...dtsTsConfig,
+    //     options: {
+    //       ...dtsTsConfig.options,
+    //       outDir: outputPath,
+    //     },
+    //   },
+    // },
     apiReport: false,
     docModel: false,
     tsdocMetadata: false,
@@ -82,7 +82,7 @@ export const browserConfig = ({
     tsconfigDecoratorMetadata: true,
     plugins,
     outExtension,
-    getTransform,
+    getTransform
   } as Options;
 
   if (!debug || minify) {
@@ -91,7 +91,7 @@ export const browserConfig = ({
       compress: true,
       ecma: 2020,
       keep_classnames: true,
-      keep_fnames: true,
+      keep_fnames: true
     };
   }
 

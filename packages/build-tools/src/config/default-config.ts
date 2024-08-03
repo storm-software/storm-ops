@@ -27,7 +27,7 @@ export function defaultConfig({
   env,
   plugins,
   generatePackageJson,
-  dtsTsConfig,
+  // dtsTsConfig,
   minify = false,
   getTransform
 }: GetConfigParams): BuildOptions {
@@ -37,7 +37,15 @@ export function defaultConfig({
     format,
     target:
       platform !== "node"
-        ? ["chrome91", "firefox90", "edge91", "safari15", "ios15", "opera77", "esnext"]
+        ? [
+            "chrome91",
+            "firefox90",
+            "edge91",
+            "safari15",
+            "ios15",
+            "opera77",
+            "esnext"
+          ]
         : ["esnext", "node20"],
     tsconfig,
     splitting,
@@ -58,17 +66,17 @@ export function defaultConfig({
     banner,
     define,
     env,
-    dts: false,
-    experimentalDts: {
-      entry,
-      compilerOptions: {
-        ...dtsTsConfig,
-        options: {
-          ...dtsTsConfig.options,
-          outDir: joinPathFragments(outDir, "dist")
-        }
-      }
-    },
+    dts: true,
+    // experimentalDts: {
+    //   entry,
+    //   compilerOptions: {
+    //     ...dtsTsConfig,
+    //     options: {
+    //       ...dtsTsConfig.options,
+    //       outDir: joinPathFragments(outDir, "dist")
+    //     }
+    //   }
+    // },
     minify,
     apiReport,
     docModel,
