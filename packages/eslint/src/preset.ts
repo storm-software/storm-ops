@@ -3,7 +3,7 @@ import tsEslint from "typescript-eslint";
 // @ts-ignore
 import unicorn from "eslint-plugin-unicorn";
 // @ts-ignore
-import cspell from "@cspell/eslint-plugin/configs";
+import { cspellPlugins, cspellRules } from "@cspell/eslint-plugin/recommended";
 import nxPlugin from "@nx/eslint-plugin";
 import type { Linter } from "eslint";
 import jsxA11y from "eslint-plugin-jsx-a11y";
@@ -153,12 +153,19 @@ export function getStormConfig(
     ...yml.configs["flat/prettier"],
 
     // CSpell
-    cspell.recommended,
     {
+      plugins: {
+        ...cspellPlugins
+      },
       rules: {
+        ...cspellRules,
         "@cspell/spellchecker": [
           "warn",
           {
+            ...(cspellRules["@cspell/spellchecker"] &&
+            cspellRules["@cspell/spellchecker"].length > 0
+              ? cspellRules["@cspell/spellchecker"][1]
+              : {}),
             configFile: new URL(
               "./.vscode/cspell.json",
               import.meta.url
