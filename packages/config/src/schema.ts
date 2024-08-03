@@ -1,4 +1,9 @@
 import z from "zod";
+import {
+  STORM_DEFAULT_DOCS,
+  STORM_DEFAULT_HOMEPAGE,
+  STORM_DEFAULT_LICENSING
+} from "./constants";
 
 const DarkColorSchema = z
   .string()
@@ -224,14 +229,26 @@ export const StormConfigSchema = z
     license: z
       .string()
       .trim()
-      .default("Apache 2.0")
-      .describe("The root directory of the package"),
+      .default("Apache-2.0")
+      .describe("The license type of the package"),
     homepage: z
       .string()
       .trim()
       .url()
-      .default("https://stormsoftware.com")
+      .default(STORM_DEFAULT_HOMEPAGE)
       .describe("The homepage of the workspace"),
+    docs: z
+      .string()
+      .trim()
+      .url()
+      .default(STORM_DEFAULT_DOCS)
+      .describe("The base documentation site for the workspace"),
+    licensing: z
+      .string()
+      .trim()
+      .url()
+      .default(STORM_DEFAULT_LICENSING)
+      .describe("The base licensing site for the workspace"),
     branch: z
       .string()
       .trim()

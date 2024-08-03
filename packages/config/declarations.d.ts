@@ -70,3 +70,6 @@ export const COLOR_KEYS = [
   "error",
   "fatal"
 ];
+
+export const STORM_DEFAULT_DOCS = "https://docs.stormsoftware.com";
+export const STORM_DEFAULT_HOMEPAGE = "https://stormsoftware.com";

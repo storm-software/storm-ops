@@ -258,7 +258,7 @@ const config: Linter.RulesRecord = {
 
   // Enforce defaultProps declarations alphabetical sorting
   // https://github.com/jsx-eslint/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/jsx-sort-default-props.md
-  "react/jsx-sort-default-props": [
+  "react/sort-default-props": [
     "warn",
     {
       ignoreCase: true

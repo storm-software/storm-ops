@@ -5,7 +5,10 @@ import {
   type MultiThemeColorConfigInput,
   type SingleThemeColorConfigInput,
   type StormConfig,
-  COLOR_KEYS
+  COLOR_KEYS,
+  STORM_DEFAULT_DOCS,
+  STORM_DEFAULT_HOMEPAGE,
+  STORM_DEFAULT_LICENSING
 } from "@storm-software/config";
 import type { DeepPartial } from "../../declarations.d";
 import type { LogLevelLabel } from "../types";
@@ -64,6 +67,8 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
     ] as StormConfig["packageManager"],
     license: process.env[`${prefix}LICENSE`],
     homepage: process.env[`${prefix}HOMEPAGE`],
+    docs: process.env[`${prefix}DOCS`],
+    licensing: process.env[`${prefix}LICENSING`],
     timezone: process.env[`${prefix}TIMEZONE`] ?? process.env.TZ,
     locale: process.env[`${prefix}LOCALE`] ?? process.env.LOCALE,
     configFile: correctPaths(process.env[`${prefix}CONFIG_FILE`]),
@@ -141,6 +146,22 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
           {}
         )
       : getThemeColorConfigEnv(prefix);
+
+  if (config.docs === STORM_DEFAULT_DOCS) {
+    if (config.homepage === STORM_DEFAULT_HOMEPAGE) {
+      config.docs = `${STORM_DEFAULT_HOMEPAGE}/projects/${config.name}/docs`;
+    } else {
+      config.docs = `${config.homepage}/docs`;
+    }
+  }
+
+  if (config.licensing === STORM_DEFAULT_LICENSING) {
+    if (config.homepage === STORM_DEFAULT_HOMEPAGE) {
+      config.licensing = `${STORM_DEFAULT_HOMEPAGE}/projects/${config.name}/licensing`;
+    } else {
+      config.licensing = `${config.homepage}/docs`;
+    }
+  }
 
   const serializedConfig = process.env[`${prefix}CONFIG`];
   if (serializedConfig) {

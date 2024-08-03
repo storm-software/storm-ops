@@ -86,6 +86,12 @@ export const setConfigEnv = (config: StormConfig) => {
   if (config.homepage) {
     process.env[`${prefix}HOMEPAGE`] = config.homepage;
   }
+  if (config.docs) {
+    process.env[`${prefix}DOCS`] = config.docs;
+  }
+  if (config.licensing) {
+    process.env[`${prefix}LICENSING`] = config.licensing;
+  }
   if (config.timezone) {
     process.env[`${prefix}TIMEZONE`] = config.timezone;
     process.env.TZ = config.timezone;

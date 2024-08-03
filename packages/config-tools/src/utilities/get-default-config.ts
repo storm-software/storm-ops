@@ -122,6 +122,8 @@ export const getDefaultConfig = (
     repository,
     license: license ?? DEFAULT_STORM_CONFIG.license,
     homepage: homepage ?? DEFAULT_STORM_CONFIG.homepage,
+    docs: `${homepage ?? DEFAULT_STORM_CONFIG.homepage}/docs`,
+    licensing: `${homepage ?? DEFAULT_STORM_CONFIG.homepage}/licensing`,
     extensions: {
       ...config.extensions
     }

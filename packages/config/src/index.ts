@@ -7,6 +7,7 @@
  * @packageDocumentation
  */
 
+export * from "./constants";
+export * from "./define-config";
 export * from "./schema";
 export * from "./types";
-export * from "./define-config";
