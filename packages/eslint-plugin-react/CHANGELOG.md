@@ -1,3 +1,15 @@
+## 0.6.0 (2024-08-03)
+
+
+### Features
+
+- **eslint:** Ignore `prefer-nullish-coalescing` for strings ([dbae2a58](https://github.com/storm-software/storm-ops/commit/dbae2a58))
+
+
+### 🧱 Updated Dependencies
+
+- Updated eslint to 0.56.0
+
 ## 0.5.0 (2024-07-31)
 
 
