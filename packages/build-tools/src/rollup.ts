@@ -124,7 +124,6 @@ const getRollupConfig = async (
   }
 
   let tsResolveOptions: TsResolveOptions | undefined;
-
   if (dtsOptions.resolve) {
     tsResolveOptions = {};
     // Only resolve specific types when `dts.resolve` is an array
@@ -170,6 +169,8 @@ const getRollupConfig = async (
       if (!/\.(js|cjs|mjs|jsx|ts|tsx|mts|json)$/.test(id)) {
         return "";
       }
+
+      return null;
     }
   };
 
