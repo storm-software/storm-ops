@@ -27,7 +27,7 @@ const BrandColorSchema = z
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
-  .default("#1fb2a6")
+  .default("#3fc1b0")
   .describe("The primary brand specific color of the workspace");
 const Brand2ColorSchema = z
   .string()

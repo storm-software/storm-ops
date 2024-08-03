@@ -20,7 +20,7 @@
     "light": {
       "background": "#f4f4f5",
       "foreground": "#1d232a",
-      "brand": "#1fb2a6",
+      "brand": "#3fc1b0",
       "brand2": "#7434DB",
       "brand3": "#00C2CE",
       "help": "#8250df",
@@ -32,7 +32,7 @@
     "dark": {
       "background": "#0D1017",
       "foreground": "#fcfcf5",
-      "brand": "#1fb2a6",
+      "brand": "#3fc1b0",
       "brand2": "#7434DB",
       "brand3": "#00C2CE",
       "help": "#8256D0",

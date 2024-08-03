@@ -33,14 +33,26 @@
         },
         "license": {
           "type": "string",
-          "default": "Apache 2.0",
-          "description": "The root directory of the package"
+          "default": "Apache-2.0",
+          "description": "The license type of the package"
         },
         "homepage": {
           "type": "string",
           "format": "uri",
           "default": "https://stormsoftware.com",
           "description": "The homepage of the workspace"
+        },
+        "docs": {
+          "type": "string",
+          "format": "uri",
+          "default": "https://docs.stormsoftware.com",
+          "description": "The base documentation site for the workspace"
+        },
+        "licensing": {
+          "type": "string",
+          "format": "uri",
+          "default": "https://license.stormsoftware.com",
+          "description": "The base licensing site for the workspace"
         },
         "branch": {
           "type": "string",

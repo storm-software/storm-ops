@@ -4,7 +4,7 @@
  * @param name - The name to use in the display
  * @returns The banner header
  */
-export const getFileBanner = (name: string = "") => {
+export const getFileBanner = (name = "") => {
   if (!name) {
     name = process.env.STORM_NAMESPACE || "";
   }
@@ -49,7 +49,11 @@ ${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
    process.env.STORM_REPOSITORY ??
    `https://github.com/storm-software${name ? `/${name}` : ""}`
  }
- Documentation:   https://docs.stormsoftware.com${name ? `/projects/${name}` : ""}
+ Documentation:   ${
+   process.env.STORM_DOCS
+       ? process.env.STORM_DOCS
+     : `https://stormsoftware.com/${name ? `projects/${name}/` : ""}docs`}
+
  Contact:         ${
    process.env.STORM_HOMEPAGE
      ? process.env.STORM_HOMEPAGE.endsWith("/")
@@ -58,12 +62,10 @@ ${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
      : "https://stormsoftware.com"
  }/contact
  Licensing:       ${
-   process.env.STORM_HOMEPAGE
-     ? process.env.STORM_HOMEPAGE.endsWith("/")
-       ? process.env.STORM_HOMEPAGE.slice(-1)
-       : process.env.STORM_HOMEPAGE
-     : "https://stormsoftware.com"
- }/licensing
+   process.env.STORM_LICENSING
+     ? process.env.STORM_LICENSING
+     : `https://stormsoftware.com/${name ? `projects/${name}/` : ""}licensing`
+ }
 
  -------------------------------------------------------------------`;
 };
