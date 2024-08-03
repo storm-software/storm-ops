@@ -1,15 +1,19 @@
+import { PackageJson } from "pkg-types";
+
 export const outExtension = ({
-  format
+  format,
+  pkgType
 }: {
   format?: string;
+  pkgType?: PackageJson["type"];
 }): { js: string; dts: string } => {
   let jsExtension = ".js";
   let dtsExtension = ".d.ts";
-  if (format === "cjs") {
+  if (format === "cjs" || pkgType === "commonjs") {
     jsExtension = ".cjs";
     dtsExtension = ".d.cts";
   }
-  if (format === "esm") {
+  if (format === "esm" || pkgType === "module") {
     jsExtension = ".js";
     dtsExtension = ".d.ts";
   }

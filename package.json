@@ -21,6 +21,11 @@
       "name": "Storm Software",
       "email": "contact@stormsoftware.com",
       "url": "https://stormsoftware.com"
+    },
+    {
+      "name": "Pat Sullivan",
+      "email": "admin@stormsoftware.com",
+      "url": "https://patsullivan.org"
     }
   ],
   "funding": {

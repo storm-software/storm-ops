@@ -81,7 +81,7 @@ export async function presetGeneratorFn(
       },
       {
         "name": "Pat Sullivan",
-        "email": "pat@stormsoftware.com",
+        "email": "admin@stormsoftware.com",
         "url": "https://patsullivan.org"
       }
     ];
