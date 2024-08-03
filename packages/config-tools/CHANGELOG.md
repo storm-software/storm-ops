@@ -1,3 +1,10 @@
+## 1.74.0 (2024-08-03)
+
+
+### Features
+
+- **build-tools:** Add back experimental DTS option to TSUP ([4fe9652b](https://github.com/storm-software/storm-ops/commit/4fe9652b))
+
 ## 1.73.0 (2024-08-03)
 
 
