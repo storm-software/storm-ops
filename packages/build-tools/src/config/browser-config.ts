@@ -32,7 +32,7 @@ export const browserConfig = ({
   const options = {
     name: "modern",
     entry,
-    format: ["cjs", "esm", "iife"],
+    format: ["cjs", "esm"],
     target: [
       "chrome91",
       "firefox90",
@@ -69,9 +69,9 @@ export const browserConfig = ({
         ...dtsTsConfig,
         options: {
           ...dtsTsConfig.options,
-          outDir: outputPath,
-        },
-      },
+          outDir: outputPath
+        }
+      }
     },
     apiReport: false,
     docModel: false,

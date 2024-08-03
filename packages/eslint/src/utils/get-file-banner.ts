@@ -51,8 +51,9 @@ ${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
  }
  Documentation:   ${
    process.env.STORM_DOCS
-       ? process.env.STORM_DOCS
-     : `https://stormsoftware.com/${name ? `projects/${name}/` : ""}docs`}
+     ? process.env.STORM_DOCS
+     : `https://stormsoftware.com/${name ? `projects/${name}/` : ""}docs`
+ }
 
  Contact:         ${
    process.env.STORM_HOMEPAGE

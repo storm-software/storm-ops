@@ -35,7 +35,7 @@ export const neutralConfig = ({
   const options = {
     name: "neutral",
     entry,
-    format: ["cjs", "esm", "iife"],
+    format: ["cjs", "esm"],
     target: ["esnext"],
     tsconfig,
     splitting,

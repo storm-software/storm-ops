@@ -12,8 +12,7 @@ export const outExtension = ({
   if (format === "cjs" || pkgType === "commonjs") {
     jsExtension = ".cjs";
     dtsExtension = ".d.cts";
-  }
-  if (format === "esm" || pkgType === "module") {
+  } else if (format === "esm" || pkgType === "module") {
     jsExtension = ".js";
     dtsExtension = ".d.ts";
   }
