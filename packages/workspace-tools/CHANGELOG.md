@@ -1,3 +1,10 @@
+## 1.149.0 (2024-08-03)
+
+
+### Features
+
+- **storm-ops:** Upgrade workspace's Nx package dependencies ([5f31f734](https://github.com/storm-software/storm-ops/commit/5f31f734))
+
 ## 1.148.0 (2024-08-03)
 
 
