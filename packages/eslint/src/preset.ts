@@ -163,10 +163,10 @@ export function getStormConfig(
         "@cspell/spellchecker": [
           "warn",
           {
-            configFile: new URL(
-              "./.vscode/cspell.json",
-              import.meta.url
-            ).toString(),
+            // configFile: new URL(
+            //   "./.vscode/cspell.json",
+            //   import.meta.url
+            // ).toString(),
             autoFix: true
           }
         ]

@@ -170,7 +170,7 @@
     "markdown"
   ],
   "eslint.options": {
-    "overrideConfigFile": "eslintrc.json"
+    "overrideConfigFile": ".eslintrc.json"
   },
   "eslint.codeAction.disableRuleComment": {
     "enable": true,

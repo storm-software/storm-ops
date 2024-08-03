@@ -7,7 +7,7 @@ import {
 import chalk from "chalk";
 import { glob } from "glob";
 import { existsSync, unlinkSync } from "node:fs";
-import path from "node:path";
+import path, { join } from "node:path";
 import { parentPort } from "node:worker_threads";
 import { readPackageJSON } from "pkg-types";
 import resolveFrom from "resolve-from";
@@ -142,7 +142,9 @@ const getRollupConfig = async (
     }
   }
 
-  const pkg = await readPackageJSON(options.projectRoot);
+  const pkg = await readPackageJSON(
+    join(options.workspaceRoot!, options.projectRoot!)
+  );
   const deps = Array.from(
     new Set([
       ...Object.keys(pkg.dependencies || {}),
