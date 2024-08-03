@@ -256,6 +256,14 @@ const config: Linter.RulesRecord = {
   "unicorn/prefer-module": "off",
   "unicorn/consistent-function-scoping": "off",
   "class-methods-use-this": "off",
+  "@typescript-eslint/prefer-nullish-coalescing": [
+    "error",
+    {
+      ignorePrimitives: {
+        string: true
+      }
+    }
+  ],
   "@typescript-eslint/no-restricted-imports": [
     "error",
     {

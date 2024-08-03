@@ -99,6 +99,7 @@ export function getStormConfig(
     // },
 
     // Banner
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     banner.configs!["recommended"]![0],
 
     // TSDoc
