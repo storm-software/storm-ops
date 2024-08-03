@@ -27,7 +27,7 @@ export function defaultConfig({
   env,
   plugins,
   generatePackageJson,
-  // dtsTsConfig,
+  dtsTsConfig,
   minify = false,
   getTransform
 }: GetConfigParams): BuildOptions {
@@ -66,17 +66,17 @@ export function defaultConfig({
     banner,
     define,
     env,
-    dts: true,
-    // experimentalDts: {
-    //   entry,
-    //   compilerOptions: {
-    //     ...dtsTsConfig,
-    //     options: {
-    //       ...dtsTsConfig.options,
-    //       outDir: joinPathFragments(outDir, "dist")
-    //     }
-    //   }
-    // },
+    dts: false,
+    experimentalDts: {
+      entry,
+      compilerOptions: {
+        ...dtsTsConfig,
+        options: {
+          ...dtsTsConfig.options,
+          outDir: joinPathFragments(outDir, "dist")
+        }
+      }
+    },
     minify,
     apiReport,
     docModel,

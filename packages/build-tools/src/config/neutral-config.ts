@@ -1,7 +1,7 @@
 import { joinPathFragments } from "@nx/devkit";
 import type { Options } from "tsup";
-import { outExtension } from "../utils";
 import type { BuildOptions, GetConfigParams } from "../../declarations";
+import { outExtension } from "../utils";
 
 export const neutralConfig = ({
   entry,
@@ -26,7 +26,7 @@ export const neutralConfig = ({
   tsdocMetadata = true,
   plugins,
   generatePackageJson,
-  // dtsTsConfig,
+  dtsTsConfig,
   minify = false,
   getTransform
 }: GetConfigParams): BuildOptions => {
@@ -56,18 +56,18 @@ export const neutralConfig = ({
     banner,
     define,
     env,
-    dts: true,
+    dts: false,
     minify,
-    // experimentalDts: {
-    //   entry,
-    //   compilerOptions: {
-    //     ...dtsTsConfig,
-    //     options: {
-    //       ...dtsTsConfig.options,
-    //       outDir: outputPath
-    //     }
-    //   }
-    // },
+    experimentalDts: {
+      entry,
+      compilerOptions: {
+        ...dtsTsConfig,
+        options: {
+          ...dtsTsConfig.options,
+          outDir: outputPath
+        }
+      }
+    },
     apiReport,
     docModel,
     tsdocMetadata,

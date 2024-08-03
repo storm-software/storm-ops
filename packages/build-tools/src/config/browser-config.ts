@@ -23,7 +23,7 @@ export const browserConfig = ({
   env,
   plugins,
   generatePackageJson,
-  // dtsTsConfig,
+  dtsTsConfig,
   minify = false,
   getTransform
 }: GetConfigParams): BuildOptions => {
@@ -61,18 +61,18 @@ export const browserConfig = ({
     banner,
     define,
     env,
-    dts: true,
+    // dts: true,
     minify,
-    // experimentalDts: {
-    //   entry,
-    //   compilerOptions: {
-    //     ...dtsTsConfig,
-    //     options: {
-    //       ...dtsTsConfig.options,
-    //       outDir: outputPath,
-    //     },
-    //   },
-    // },
+    experimentalDts: {
+      entry,
+      compilerOptions: {
+        ...dtsTsConfig,
+        options: {
+          ...dtsTsConfig.options,
+          outDir: outputPath,
+        },
+      },
+    },
     apiReport: false,
     docModel: false,
     tsdocMetadata: false,
