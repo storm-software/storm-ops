@@ -3,6 +3,7 @@ import tsEslint from "typescript-eslint";
 // @ts-ignore
 import unicorn from "eslint-plugin-unicorn";
 // @ts-ignore
+import cspell from "@cspell/eslint-plugin/configs";
 import nxPlugin from "@nx/eslint-plugin";
 import type { Linter } from "eslint";
 import jsxA11y from "eslint-plugin-jsx-a11y";
@@ -150,6 +151,23 @@ export function getStormConfig(
     // https://www.npmjs.com/package/eslint-plugin-yml
     ...yml.configs["flat/recommended"],
     ...yml.configs["flat/prettier"],
+
+    // CSpell
+    cspell.recommended,
+    {
+      rules: {
+        "@cspell/spellchecker": [
+          "warn",
+          {
+            configFile: new URL(
+              "./.vscode/cspell.json",
+              import.meta.url
+            ).toString(),
+            autoFix: true
+          }
+        ]
+      }
+    },
 
     // User overrides
     ...(userConfigs as Linter.FlatConfig[])
