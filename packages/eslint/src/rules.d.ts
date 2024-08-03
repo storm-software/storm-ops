@@ -4,6 +4,10 @@ import type { Linter } from 'eslint'
 
 export interface RuleOptions {
   /**
+   * CSpell spellchecker
+   */
+  '@cspell/spellchecker'?: Linter.RuleEntry<CspellSpellchecker>
+  /**
    * Checks dependencies in project's package.json for version mismatches
    * @see https://github.com/nrwl/nx/blob/19.5.3/docs/generated/packages/eslint-plugin/documents/dependency-checks.md
    */
@@ -2330,6 +2334,81 @@ export interface RuleOptions {
 }
 
 /* ======= Declarations ======= */
+// ----- @cspell/spellchecker -----
+type CspellSpellchecker = []|[{
+  
+  autoFix: boolean
+  
+  checkComments?: boolean
+  
+  checkIdentifiers?: boolean
+  
+  checkJSXText?: boolean
+  
+  checkScope?: [string, boolean][]
+  
+  checkStringTemplates?: boolean
+  
+  checkStrings?: boolean
+  
+  configFile?: string
+  
+  cspell?: {
+    
+    allowCompoundWords?: boolean
+    
+    dictionaries?: (string | string)[]
+    dictionaryDefinitions?: {
+      
+      description?: string
+      
+      name: string
+      
+      noSuggest?: boolean
+      
+      path: string
+      
+      repMap?: [string, string][]
+      
+      type?: ("S" | "W" | "C" | "T")
+      
+      useCompounds?: boolean
+    }[]
+    
+    enabled?: boolean
+    
+    flagWords?: string[]
+    
+    ignoreRegExpList?: (string | string | ("Base64" | "Base64MultiLine" | "Base64SingleLine" | "CStyleComment" | "CStyleHexValue" | "CSSHexValue" | "CommitHash" | "CommitHashLink" | "Email" | "EscapeCharacters" | "HexValues" | "href" | "PhpHereDoc" | "PublicKey" | "RsaCert" | "SshRsa" | "SHA" | "HashStrings" | "SpellCheckerDisable" | "SpellCheckerDisableBlock" | "SpellCheckerDisableLine" | "SpellCheckerDisableNext" | "SpellCheckerIgnoreInDocSetting" | "string" | "UnicodeRef" | "Urls" | "UUID" | "Everything"))[]
+    
+    ignoreWords?: string[]
+    
+    import?: (string | string[])
+    
+    includeRegExpList?: (string | string | ("Base64" | "Base64MultiLine" | "Base64SingleLine" | "CStyleComment" | "CStyleHexValue" | "CSSHexValue" | "CommitHash" | "CommitHashLink" | "Email" | "EscapeCharacters" | "HexValues" | "href" | "PhpHereDoc" | "PublicKey" | "RsaCert" | "SshRsa" | "SHA" | "HashStrings" | "SpellCheckerDisable" | "SpellCheckerDisableBlock" | "SpellCheckerDisableLine" | "SpellCheckerDisableNext" | "SpellCheckerIgnoreInDocSetting" | "string" | "UnicodeRef" | "Urls" | "UUID" | "Everything"))[]
+    
+    language?: string
+    
+    words?: string[]
+  }
+  
+  cspellOptionsRoot?: (string | string)
+  
+  customWordListFile?: (string | {
+    
+    path: string
+  })
+  
+  debugMode?: boolean
+  
+  generateSuggestions: boolean
+  
+  ignoreImportProperties?: boolean
+  
+  ignoreImports?: boolean
+  
+  numSuggestions: number
+}]
 // ----- @nx/dependency-checks -----
 type NxDependencyChecks = []|[{
   buildTargets?: string[]

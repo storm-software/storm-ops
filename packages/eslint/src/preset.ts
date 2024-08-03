@@ -1,9 +1,8 @@
+import {
+  plugins as cspellPlugins,
+  rules as cspellRules
+} from "@cspell/eslint-plugin/recommended";
 import eslint from "@eslint/js";
-import tsEslint from "typescript-eslint";
-// @ts-ignore
-import unicorn from "eslint-plugin-unicorn";
-// @ts-ignore
-import { cspellPlugins, cspellRules } from "@cspell/eslint-plugin/recommended";
 import nxPlugin from "@nx/eslint-plugin";
 import type { Linter } from "eslint";
 import jsxA11y from "eslint-plugin-jsx-a11y";
@@ -12,9 +11,11 @@ import prettierConfig from "eslint-plugin-prettier/recommended";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import tsdoc from "eslint-plugin-tsdoc";
+import unicorn from "eslint-plugin-unicorn";
 import yml from "eslint-plugin-yml";
 import globals from "globals";
 import jsoncParser from "jsonc-eslint-parser";
+import tsEslint from "typescript-eslint";
 import type { RuleOptions } from "./rules.d";
 import jsxA11yRules from "./rules/jsx-a11y";
 import reactRules from "./rules/react";
@@ -162,10 +163,6 @@ export function getStormConfig(
         "@cspell/spellchecker": [
           "warn",
           {
-            ...(cspellRules["@cspell/spellchecker"] &&
-            cspellRules["@cspell/spellchecker"].length > 0
-              ? cspellRules["@cspell/spellchecker"][1]
-              : {}),
             configFile: new URL(
               "./.vscode/cspell.json",
               import.meta.url
