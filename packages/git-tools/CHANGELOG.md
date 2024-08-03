@@ -1,3 +1,10 @@
+## 2.51.1 (2024-08-03)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with the entry name parameter in unbuild config ([f5e5dbdd](https://github.com/storm-software/storm-ops/commit/f5e5dbdd))
+
 ## 2.51.0 (2024-08-02)
 
 

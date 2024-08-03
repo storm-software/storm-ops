@@ -1,3 +1,19 @@
+## 0.53.0 (2024-08-03)
+
+
+### Features
+
+- **eslint:** Added the `cspell` plugin to the preset ([ef88e99c](https://github.com/storm-software/storm-ops/commit/ef88e99c))
+
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with the entry name parameter in unbuild config ([f5e5dbdd](https://github.com/storm-software/storm-ops/commit/f5e5dbdd))
+
+- **eslint:** Resolved issue applying `recommended` CSpell configuration ([dea7eecb](https://github.com/storm-software/storm-ops/commit/dea7eecb))
+
+- **eslint:** Resolve issue with invalid rule configuration ([cdc5d81f](https://github.com/storm-software/storm-ops/commit/cdc5d81f))
+
 ## 0.52.0 (2024-08-02)
 
 

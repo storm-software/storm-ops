@@ -1,3 +1,15 @@
+## 0.58.0 (2024-08-03)
+
+
+### Features
+
+- **build-tools:** Enable `dts` instead of `experimentalDts` for TSUP build ([0655517a](https://github.com/storm-software/storm-ops/commit/0655517a))
+
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with the entry name parameter in unbuild config ([f5e5dbdd](https://github.com/storm-software/storm-ops/commit/f5e5dbdd))
+
 ## 0.57.0 (2024-08-02)
 
 
