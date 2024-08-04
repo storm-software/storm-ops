@@ -100,7 +100,7 @@ jobs:
         run: |
           notification_text="**Deployment for ${{
             github.repository }} has started - #${{ github.run_number }}-${{
-            github.ref_name || github.sha }}** \n\nPipeline details: \n- Pipeline Status: In Progress \n- Commit User: ${{ github.actor || 'No actor found' }} \n- Commit Message: ${{ github.event.head_commit.message || github.event.pull_request.message || 'N/A' }} \n\n**[Click here to see the full workflow details](${
+            github.ref_name || github.sha }}** \n\nPipeline details: \n- Pipeline Status: In Progress \n- Commit User: ${{ github.actor || 'No actor found' }} \n- Commit Message: ${{ github.event.head_commit.message || github.event.pull_request.message || 'N/A' }} \n\n**[Click here to see the full workflow details](${{
              github.event.pull_request.html_url || github.event.head_commit.url || github.repository || 'https://github.com/storm-software'
             }})**"
           curl -s -X POST 'https://api.telegram.org/bot${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}/sendMessage' \
@@ -285,7 +285,7 @@ jobs:
         run: |
           notification_text="**Deployment for ${{
             github.repository }} has completed successfully - #${{ github.run_number }}-${{
-            github.ref_name || github.sha }}** \n\nPipeline details: \n- Pipeline Status: Completed \n- Commit User: ${{ github.actor || 'No actor found' }} \n- Commit Message: ${{ github.event.head_commit.message || github.event.pull_request.message || 'N/A' }} \n\n**[Click here to see the full workflow details](${
+            github.ref_name || github.sha }}** \n\nPipeline details: \n- Pipeline Status: Completed \n- Commit User: ${{ github.actor || 'No actor found' }} \n- Commit Message: ${{ github.event.head_commit.message || github.event.pull_request.message || 'N/A' }} \n\n**[Click here to see the full workflow details](${{
              github.event.pull_request.html_url || github.event.head_commit.url || github.repository || 'https://github.com/storm-software'
             }})**"
           curl -s -X POST 'https://api.telegram.org/bot${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}/sendMessage' \
@@ -363,7 +363,7 @@ jobs:
         run: |
           notification_text="**Deployment for ${{
             github.repository }} experienced failures during execution - #${{ github.run_number }}-${{
-            github.ref_name || github.sha }}** \n\nPipeline details: \n- Pipeline Status: Failed \n- Commit User: ${{ github.actor || 'No actor found' }} \n- Commit Message: ${{ github.event.head_commit.message || github.event.pull_request.message || 'N/A' }} \n\n**[Click here to see the full workflow details](${
+            github.ref_name || github.sha }}** \n\nPipeline details: \n- Pipeline Status: Failed \n- Commit User: ${{ github.actor || 'No actor found' }} \n- Commit Message: ${{ github.event.head_commit.message || github.event.pull_request.message || 'N/A' }} \n\n**[Click here to see the full workflow details](${{
              github.event.pull_request.html_url || github.event.head_commit.url || github.repository || 'https://github.com/storm-software'
             }})**"
           curl -s -X POST 'https://api.telegram.org/bot${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}/sendMessage' \
@@ -442,7 +442,7 @@ jobs:
         run: |
           notification_text="**Deployment for ${{
             github.repository }} was cancelled before processing completed - #${{ github.run_number }}-${{
-            github.ref_name || github.sha }}** \n\nPipeline details: \n- Pipeline Status: Cancelled \n- Commit User: ${{ github.actor || 'No actor found' }} \n- Commit Message: ${{ github.event.head_commit.message || github.event.pull_request.message || 'N/A' }} \n\n**[Click here to see the full workflow details](${
+            github.ref_name || github.sha }}** \n\nPipeline details: \n- Pipeline Status: Cancelled \n- Commit User: ${{ github.actor || 'No actor found' }} \n- Commit Message: ${{ github.event.head_commit.message || github.event.pull_request.message || 'N/A' }} \n\n**[Click here to see the full workflow details](${{
              github.event.pull_request.html_url || github.event.head_commit.url || github.repository || 'https://github.com/storm-software'
             }})**"
           curl -s -X POST 'https://api.telegram.org/bot${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}/sendMessage' \
