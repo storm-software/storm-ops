@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { joinPathFragments, ProjectGraph } from "@nx/devkit";
 import { getHelperDependency, HelperDependency } from "@nx/js";
 // import { getCustomTrasformersFactory } from "@nx/js/src/executors/tsc/lib/get-custom-transformers-factory";
@@ -10,6 +11,7 @@ import {
 // import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript";
 // import { TypeScriptCompilationOptions as BaseTypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation";
 import type { StormConfig } from "@storm-software/config";
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { LogLevelLabel, writeDebug } from "@storm-software/config-tools";
 import merge from "deepmerge";
 import { LogLevel } from "esbuild";

@@ -4,14 +4,20 @@ import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options
 import type { NormalizedExecutorOptions } from "@nx/js/src/utils/schema.js";
 import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation.js";
 import type { StormConfig } from "@storm-software/config";
-import { findFileName, removeExtension } from "@storm-software/config-tools";
+import {
+  findFileName,
+  removeExtension,
+  writeTrace
+} from "@storm-software/config-tools";
 import { environmentPlugin } from "esbuild-plugin-environment";
-import { dirname, join, sep } from "node:path";
+import { dirname, join, relative, sep } from "node:path";
 import { defaultConfig, getConfig } from "../config";
 import type { TsupContext, TypeScriptBuildOptions } from "../types";
 // import { type TSConfig, readTSConfig } from "pkg-types";
 import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript.js";
 import { glob } from "glob";
+import { fileExists } from "nx/src/utils/fileutils";
+import { parse } from "tsconfck";
 import { defineConfig, type Options, build as tsup } from "tsup";
 
 export const runTsupBuild = async (
@@ -204,24 +210,61 @@ async function getNormalizedTsConfig(
     );
   }
 
-  // const tsConfig = parseJsonConfigFileContent(config, sys, dirname(options.tsConfig), {
-  //   outDir: outputPath,
-  //   noEmit: false,
-  //   esModuleInterop: true,
-  //   noUnusedLocals: false,
-  //   emitDeclarationOnly: true,
-  //   declaration: true,
-  //   declarationMap: true,
-  //   declarationDir: join(workspaceRoot, "tmp", ".tsup", "declaration")
-  // });
+  const result = await parse(options.tsConfig, {
+    root: workspaceRoot
+  });
+
+  let extraIncludes = [] as string[];
+  if (
+    result.tsconfig.compilerOptions.lib &&
+    result.tsconfig.compilerOptions.lib.length > 0
+  ) {
+    extraIncludes = result.tsconfig.compilerOptions.lib
+      ?.map(file =>
+        correctPaths(
+          join(
+            workspaceRoot,
+            `node_modules/typescript/lib/lib.${file.toLowerCase()}.d.ts`
+          )
+        )
+      )
+      ?.reduce((ret: string[], file: string) => {
+        writeTrace(
+          `Checking if TypeScript Declarations library exists: ${file}`
+        );
+        if (fileExists(file) && !ret.includes(file)) {
+          ret.push(file);
+        }
+
+        const fullLibPath = `${file.slice(0, -5)}.full.d.ts`;
+        writeTrace(
+          `Checking if full TypeScript Declarations library exists: ${fullLibPath}`
+        );
+
+        if (fileExists(fullLibPath) && !ret.includes(fullLibPath)) {
+          ret.push(fullLibPath);
+        }
+
+        return ret;
+      }, result.tsconfig.include);
+  } else {
+    extraIncludes.push(
+      correctPaths(join(workspaceRoot, "node_modules/typescript/lib/*.d.ts"))
+    );
+  }
 
   const basePath = correctPaths(workspaceRoot);
-
   const parsedTsconfig = tsModule.parseJsonConfigFileContent(
     {
       ...rawTsconfig.config,
       compilerOptions: {
         ...rawTsconfig.config?.compilerOptions,
+        typeRoots: [
+          ...rawTsconfig.config,
+          correctPaths(
+            join(relative(options.projectRoot, basePath), "node_modules/@types")
+          )
+        ],
         preserveSymlinks: true,
         outDir: outputPath,
         noEmit: false,
@@ -231,11 +274,12 @@ async function getNormalizedTsConfig(
         declarationDir: join("tmp", ".tsup", "declaration")
       },
       include: [
-        join(basePath, "node_modules/typescript/**/*.d.ts").replaceAll(
-          "\\",
-          "/"
-        ),
-        ...rawTsconfig.config?.include
+        ...extraIncludes,
+        // join(basePath, "node_modules/typescript/**/*.d.ts").replaceAll(
+        //   "\\",
+        //   "/"
+        // ),
+        ...(rawTsconfig.config?.include ? rawTsconfig.config.include : [])
       ]
     },
     tsModule.sys,
