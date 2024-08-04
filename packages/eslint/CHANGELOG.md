@@ -1,3 +1,17 @@
+## 0.57.0 (2024-08-04)
+
+
+### Features
+
+- **config:** Added the `docs` and `licensing` options to the Storm configuration ([c867efe1](https://github.com/storm-software/storm-ops/commit/c867efe1))
+
+- **config:** Updated default `brand` color and added proper URLs to file banners ([008e6ef4](https://github.com/storm-software/storm-ops/commit/008e6ef4))
+
+
+### Bug Fixes
+
+- **build-tools:** Resolve issues with logic in `outExtension` utility function ([8cdc691b](https://github.com/storm-software/storm-ops/commit/8cdc691b))
+
 ## 0.56.0 (2024-08-03)
 
 

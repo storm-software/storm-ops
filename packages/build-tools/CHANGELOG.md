@@ -1,3 +1,15 @@
+## 0.63.0 (2024-08-04)
+
+
+### Features
+
+- **config:** Added the `docs` and `licensing` options to the Storm configuration ([c867efe1](https://github.com/storm-software/storm-ops/commit/c867efe1))
+
+
+### Bug Fixes
+
+- **build-tools:** Resolve issues with logic in `outExtension` utility function ([8cdc691b](https://github.com/storm-software/storm-ops/commit/8cdc691b))
+
 ## 0.62.0 (2024-08-03)
 
 

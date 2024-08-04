@@ -1,3 +1,10 @@
+## 0.8.0 (2024-08-04)
+
+
+### Features
+
+- **config:** Added the `docs` and `licensing` options to the Storm configuration ([c867efe1](https://github.com/storm-software/storm-ops/commit/c867efe1))
+
 ## 0.7.0 (2024-08-03)
 
 
