@@ -245,7 +245,7 @@ export function getStormConfig(
       ...unicorn.configs["flat/recommended"].rules,
 
       // Banner
-      ...banner.configs!["recommended"]![1].rules,
+      ...banner.configs!["recommended"]![1]?.rules,
 
       ...stormRules,
 
@@ -272,6 +272,12 @@ export function getStormConfig(
       react,
       "react-hooks": reactHooks,
       "jsx-a11y": jsxA11y
+    };
+
+    typescriptConfig.settings = {
+      react: {
+        version: "detect"
+      }
     };
 
     typescriptConfig.rules = {
