@@ -157,17 +157,17 @@
     "apiReport": {
       "type": "boolean",
       "description": "Should API Extractor generate an API Report file.",
-      "default": true
+      "default": false
     },
     "docModel": {
       "type": "boolean",
       "description": "Should API Extractor generate an Doc Model markdown file.",
-      "default": true
+      "default": false
     },
     "tsdocMetadata": {
       "type": "boolean",
       "description": "Should API Extractor generate an TSDoc Metadata file.",
-      "default": true
+      "default": false
     },
     "options": {
       "type": "object",

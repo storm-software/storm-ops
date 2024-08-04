@@ -11,7 +11,7 @@ import type { TsupExecutorSchema } from "./schema.d";
 export async function tsupExecutorFn(
   options: TsupExecutorSchema,
   context: ExecutorContext,
-  config?: StormConfig
+  config: StormConfig
 ) {
   const { writeInfo, writeSuccess } = await import(
     "@storm-software/config-tools"
@@ -35,8 +35,7 @@ export async function tsupExecutorFn(
 
   // #region Run the build process
 
-  // biome-ignore lint/style/noNonNullAssertion: <explanation>
-  await build(config!, {
+  await build(config, {
     ...options,
     projectRoot:
       context.projectsConfigurations.projects?.[context.projectName]?.root,
