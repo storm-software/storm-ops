@@ -1,3 +1,4 @@
+/* eslint-disable @nx/enforce-module-boundaries */
 import {
   plugins as cspellPlugins,
   rules as cspellRules
@@ -312,7 +313,7 @@ export function getStormConfig(
     configs.push({
       files: [CODE_BLOCK],
       processor: "markdown/markdown",
-      rules: (<RuleOptions>{
+      rules: <Linter.RulesRecord>{
         "unicorn/filename-case": "off",
         "no-undef": "off",
         "no-unused-expressions": "off",
@@ -321,11 +322,11 @@ export function getStormConfig(
         "no-redeclare": "off",
         "no-import-assign": "off",
         ...options.markdown
-      }) as any
+      }
     });
     configs.push({
       files: ["**/*.md/*.js", "**/*.md/*.ts"],
-      rules: (<RuleOptions>{
+      rules: <Linter.RulesRecord>{
         "unicorn/filename-case": "off",
         "no-undef": "off",
         "no-unused-expressions": "off",
@@ -334,7 +335,7 @@ export function getStormConfig(
         "no-redeclare": "off",
         "no-import-assign": "off",
         ...options.markdown
-      }) as any
+      }
     });
   }
 
