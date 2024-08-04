@@ -1,3 +1,10 @@
+## 0.59.0 (2024-08-04)
+
+
+### Features
+
+- **eslint:** Added new base rules to the preset ([5a5c9253](https://github.com/storm-software/storm-ops/commit/5a5c9253))
+
 ## 0.58.0 (2024-08-04)
 
 

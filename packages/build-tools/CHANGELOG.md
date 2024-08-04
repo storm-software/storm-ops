@@ -1,3 +1,10 @@
+## 0.64.0 (2024-08-04)
+
+
+### Features
+
+- **build-tools:** Add `typeRoots` and find TypeScript library definition files prior to TSUP build ([635833ed](https://github.com/storm-software/storm-ops/commit/635833ed))
+
 ## 0.63.0 (2024-08-04)
 
 
