@@ -15,7 +15,6 @@ import { defaultConfig, getConfig } from "../config";
 import type { TsupContext, TypeScriptBuildOptions } from "../types";
 // import { type TSConfig, readTSConfig } from "pkg-types";
 import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript.js";
-import { glob } from "glob";
 import { fileExists } from "nx/src/utils/fileutils";
 import { parse } from "tsconfck";
 import { defineConfig, type Options, build as tsup } from "tsup";
@@ -97,6 +96,7 @@ ${Object.keys(options)
   writeTrace(
     `⚙️  TSC (Type Declarations) Build options:
 ${Object.keys(dtsTsConfig.options)
+  .filter(key => key !== "define")
   .map(
     key =>
       `${key}: ${
@@ -214,12 +214,12 @@ async function getNormalizedTsConfig(
     root: workspaceRoot
   });
 
-  let extraIncludes = [] as string[];
+  let extraFileNames = [] as string[];
   if (
     result.tsconfig.compilerOptions.lib &&
     result.tsconfig.compilerOptions.lib.length > 0
   ) {
-    extraIncludes = result.tsconfig.compilerOptions.lib
+    extraFileNames = result.tsconfig.compilerOptions.lib
       ?.map(file =>
         correctPaths(
           join(
@@ -248,7 +248,7 @@ async function getNormalizedTsConfig(
         return ret;
       }, result.tsconfig.include);
   } else {
-    extraIncludes.push(
+    extraFileNames.push(
       correctPaths(join(workspaceRoot, "node_modules/typescript/lib/*.d.ts"))
     );
   }
@@ -272,26 +272,20 @@ async function getNormalizedTsConfig(
         declaration: true,
         declarationMap: true,
         declarationDir: join("tmp", ".tsup", "declaration")
-      },
-      include: [
-        ...extraIncludes,
-        // join(basePath, "node_modules/typescript/**/*.d.ts").replaceAll(
-        //   "\\",
-        //   "/"
-        // ),
-        ...(rawTsconfig.config?.include ? rawTsconfig.config.include : [])
-      ]
+      }
+      // include: [
+      // join(basePath, "node_modules/typescript/**/*.d.ts").replaceAll(
+      //   "\\",
+      //   "/"
+      // ),
+      //   ...(rawTsconfig.config?.include ? rawTsconfig.config.include : [])
+      // ]
     },
     tsModule.sys,
     dirname(options.tsConfig)
   );
 
-  parsedTsconfig.fileNames = [
-    ...parsedTsconfig.fileNames,
-    ...(await glob(
-      correctPaths(join(workspaceRoot, "node_modules/typescript/**/*.d.ts"))
-    ))
-  ];
+  parsedTsconfig.fileNames = [...parsedTsconfig.fileNames, ...extraFileNames];
 
   parsedTsconfig.options.declarationDir = correctPaths(
     join(basePath, "tmp", ".tsup", "declaration")
