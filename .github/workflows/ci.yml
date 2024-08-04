@@ -104,7 +104,7 @@ jobs:
              github.event.pull_request.html_url || github.event.head_commit.url || github.repository || 'https://github.com/storm-software'
             }})**"
           curl -s -X POST 'https://api.telegram.org/bot${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}/sendMessage' \
-          -d "chat_id=${{ 2176435963 }}&text=${notification_text}&parse_mode=markdown"
+          -d "chat_id=-1002176435963&text=${notification_text}&parse_mode=markdown"
 
       - name: Setup workspace
         uses: storm-software/action-setup@main
@@ -289,7 +289,7 @@ jobs:
              github.event.pull_request.html_url || github.event.head_commit.url || github.repository || 'https://github.com/storm-software'
             }})**"
           curl -s -X POST 'https://api.telegram.org/bot${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}/sendMessage' \
-          -d "chat_id=${{ 2176435963 }}&text=${notification_text}&parse_mode=markdown"
+          -d "chat_id=-1002176435963&text=${notification_text}&parse_mode=markdown"
 
   failure:
     needs:
@@ -367,7 +367,7 @@ jobs:
              github.event.pull_request.html_url || github.event.head_commit.url || github.repository || 'https://github.com/storm-software'
             }})**"
           curl -s -X POST 'https://api.telegram.org/bot${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}/sendMessage' \
-          -d "chat_id=${{ 2176435963 }}&text=${notification_text}&parse_mode=markdown"
+          -d "chat_id=-1002176435963&text=${notification_text}&parse_mode=markdown"
 
   cancelled:
     needs:
@@ -446,4 +446,4 @@ jobs:
              github.event.pull_request.html_url || github.event.head_commit.url || github.repository || 'https://github.com/storm-software'
             }})**"
           curl -s -X POST 'https://api.telegram.org/bot${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}/sendMessage' \
-          -d "chat_id=${{ 2176435963 }}&text=${notification_text}&parse_mode=markdown"
+          -d "chat_id=-1002176435963&text=${notification_text}&parse_mode=markdown"
