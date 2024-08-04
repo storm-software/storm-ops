@@ -1,3 +1,10 @@
+## 0.58.0 (2024-08-04)
+
+
+### Features
+
+- **eslint:** Added the React `version` settings to preset ([42df9e8d](https://github.com/storm-software/storm-ops/commit/42df9e8d))
+
 ## 0.57.0 (2024-08-04)
 
 
