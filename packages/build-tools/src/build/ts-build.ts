@@ -1,38 +1,38 @@
+import {
+  createProjectGraphAsync,
+  joinPathFragments,
+  type ExecutorContext,
+  type ProjectConfiguration
+} from "@nx/devkit";
+import { copyAssets } from "@nx/js";
+import type { StormConfig } from "@storm-software/config";
+import {
+  applyWorkspaceProjectTokens,
+  applyWorkspaceTokens,
+  findWorkspaceRoot,
+  writeDebug,
+  writeInfo,
+  writeTrace,
+  type ProjectTokenizerOptions
+} from "@storm-software/config-tools";
+import { removeSync } from "fs-extra";
+import { globSync } from "glob";
+import { readFileSync } from "node:fs";
+import { writeFile } from "node:fs/promises";
+import { readNxJson } from "nx/src/config/nx-json.js";
+import { readProjectsConfigurationFromProjectGraph } from "nx/src/project-graph/project-graph.js";
+import {
+  createProjectRootMappings,
+  findProjectForPath
+} from "nx/src/project-graph/utils/find-project-for-path.js";
+import { writeJsonFile } from "nx/src/utils/fileutils.js";
 import type { AssetGlob, TypeScriptBuildOptions } from "../../declarations";
 import {
   applyDefaultOptions,
   generatePackageJson,
   runTsupBuild
 } from "../utils";
-import {
-  applyWorkspaceProjectTokens,
-  applyWorkspaceTokens,
-  writeInfo,
-  type ProjectTokenizerOptions,
-  findWorkspaceRoot,
-  writeDebug,
-  writeTrace
-} from "@storm-software/config-tools";
-import type { StormConfig } from "@storm-software/config";
-import { removeSync } from "fs-extra";
-import { copyAssets } from "@nx/js";
-import {
-  joinPathFragments,
-  createProjectGraphAsync,
-  type ExecutorContext,
-  type ProjectConfiguration
-} from "@nx/devkit";
-import { writeJsonFile } from "nx/src/utils/fileutils.js";
-import { globSync } from "glob";
-import { writeFile } from "node:fs/promises";
-import { readFileSync } from "node:fs";
 import { getEntryPoints } from "../utils/get-entry-points";
-import { readProjectsConfigurationFromProjectGraph } from "nx/src/project-graph/project-graph.js";
-import { readNxJson } from "nx/src/config/nx-json.js";
-import {
-  createProjectRootMappings,
-  findProjectForPath
-} from "nx/src/project-graph/utils/find-project-for-path.js";
 
 /**
  * Build and bundle a TypeScript project using the tsup build tools.
