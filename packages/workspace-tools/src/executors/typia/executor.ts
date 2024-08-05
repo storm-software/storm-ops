@@ -1,14 +1,14 @@
 import type { ExecutorContext } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import { removeSync } from "fs-extra";
+import { TypiaProgrammer } from "typia/lib/programmers/TypiaProgrammer.js";
 import { withRunExecutor } from "../../base/base-executor";
 import type { TypiaExecutorSchema } from "./schema";
-import { TypiaProgrammer } from "typia/lib/programmers/TypiaProgrammer.js";
 
 export async function typiaExecutorFn(
   options: TypiaExecutorSchema,
   _: ExecutorContext,
-  config?: StormConfig
+  config: StormConfig
 ) {
   const { writeInfo } = await import("@storm-software/config-tools");
 

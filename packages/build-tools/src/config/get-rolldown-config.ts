@@ -1,6 +1,12 @@
+import { type DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils.js";
 import { createEntryPoints } from "@nx/js/src/utils/package-json/create-entry-points.js";
+import type { StormConfig } from "@storm-software/config";
+import { writeDebug } from "@storm-software/config-tools";
+import deepClone from "deep-clone";
 import merge from "deepmerge";
+import { extname } from "node:path";
 import { pathToFileURL } from "node:url";
+import type { PackageJson } from "nx/src/utils/package-json.js";
 import type Rolldown from "rolldown";
 import { defineConfig } from "rolldown";
 import esbuild from "rollup-plugin-esbuild";
@@ -9,19 +15,6 @@ import type {
   RolldownOptions,
   RolldownUserDefinedConfig
 } from "../types";
-// import { joinPathFragments } from "@nx/devkit";
-// import ts from "typescript";
-import { type DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils.js";
-import type { StormConfig } from "@storm-software/config";
-import type { PackageJson } from "nx/src/utils/package-json.js";
-// import { analyze } from "../plugins/analyze-plugin";
-// import { typeDefinitions } from "@nx/js/src/plugins/rollup/type-definitions";
-// import peerDepsExternal from "rollup-plugin-peer-deps-external";
-// import nodeResolve from "@rollup/plugin-node-resolve";
-import deepClone from "deep-clone";
-// import autoprefixer from "autoprefixer";
-import { extname } from "node:path";
-import { writeDebug } from "@storm-software/config-tools";
 
 // These use require because the ES import isn't correct.
 // const commonjs = require("@rollup/plugin-commonjs");

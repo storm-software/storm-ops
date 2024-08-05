@@ -1,13 +1,18 @@
 import type { ExecutorContext } from "@nx/devkit";
+import {
+  applyDefaultOptions,
+  browserConfig,
+  getFileBanner
+} from "@storm-software/build-tools";
+import { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
 import { tsupExecutorFn } from "../tsup/executor";
-import { getFileBanner, browserConfig, applyDefaultOptions } from "@storm-software/build-tools";
 import type { TsupBrowserExecutorSchema } from "./schema.d";
 
 export const tsupBrowserBuildExecutorFn = (
   options: TsupBrowserExecutorSchema,
   context: ExecutorContext,
-  config?: any
+  config: StormConfig
 ) => {
   return tsupExecutorFn(
     {
@@ -17,9 +22,11 @@ export const tsupBrowserBuildExecutorFn = (
         context.projectName
           ? context.projectName
               .split(/(?=[A-Z])|[\.\-\s_]/)
-              .map((s) => s.trim())
-              .filter((s) => !!s)
-              .map((s) => (s ? s.toUpperCase()[0] + s.toLowerCase().slice(1) : ""))
+              .map(s => s.trim())
+              .filter(s => !!s)
+              .map(s =>
+                s ? s.toUpperCase()[0] + s.toLowerCase().slice(1) : ""
+              )
               .join(" ")
           : "TypeScript (Browser Platforms)"
       ),
@@ -42,7 +49,9 @@ export default withRunExecutor<TsupBrowserExecutorSchema>(
   {
     skipReadingConfig: false,
     hooks: {
-      applyDefaultOptions: (options: TsupBrowserExecutorSchema): TsupBrowserExecutorSchema => {
+      applyDefaultOptions: (
+        options: TsupBrowserExecutorSchema
+      ): TsupBrowserExecutorSchema => {
         return {
           ...applyDefaultOptions({
             plugins: [],

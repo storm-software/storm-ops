@@ -1,18 +1,18 @@
 import type { ExecutorContext } from "@nx/devkit";
+import {
+  applyDefaultOptions,
+  getFileBanner,
+  neutralConfig
+} from "@storm-software/build-tools";
 import type { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
-import {
-  getFileBanner,
-  neutralConfig,
-  applyDefaultOptions
-} from "@storm-software/build-tools";
 import { tsupExecutorFn } from "../tsup/executor";
 import type { TsupNeutralExecutorSchema } from "./schema";
 
 export const tsupNeutralBuildExecutorFn = (
   options: TsupNeutralExecutorSchema,
   context: ExecutorContext,
-  config?: StormConfig
+  config: StormConfig
 ) => {
   return tsupExecutorFn(
     {

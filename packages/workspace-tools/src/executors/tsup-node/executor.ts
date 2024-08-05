@@ -1,13 +1,18 @@
 import type { ExecutorContext } from "@nx/devkit";
+import {
+  applyDefaultOptions,
+  getFileBanner,
+  nodeConfig
+} from "@storm-software/build-tools";
+import { StormConfig } from "@storm-software/config";
 import { withRunExecutor } from "../../base/base-executor";
 import { tsupExecutorFn } from "../tsup/executor";
-import { getFileBanner, nodeConfig, applyDefaultOptions } from "@storm-software/build-tools";
 import type { TsupNodeExecutorSchema } from "./schema";
 
 export const tsupNodeBuildExecutorFn = (
   options: TsupNodeExecutorSchema,
   context: ExecutorContext,
-  config?: any
+  config: StormConfig
 ) => {
   /*if (options.transports && Array.isArray(options.transports) && options.transports.length > 0) {
     // options.plugins.push(esbuildPluginPino({ transports: options.transports }));
@@ -21,9 +26,11 @@ export const tsupNodeBuildExecutorFn = (
         context.projectName
           ? context.projectName
               .split(/(?=[A-Z])|[\.\-\s_]/)
-              .map((s) => s.trim())
-              .filter((s) => !!s)
-              .map((s) => (s ? s.toUpperCase()[0] + s.toLowerCase().slice(1) : ""))
+              .map(s => s.trim())
+              .filter(s => !!s)
+              .map(s =>
+                s ? s.toUpperCase()[0] + s.toLowerCase().slice(1) : ""
+              )
               .join(" ")
           : "TypeScript (NodeJs Platform)"
       ),
@@ -46,7 +53,9 @@ export default withRunExecutor<TsupNodeExecutorSchema>(
   {
     skipReadingConfig: false,
     hooks: {
-      applyDefaultOptions: (options: TsupNodeExecutorSchema): TsupNodeExecutorSchema => {
+      applyDefaultOptions: (
+        options: TsupNodeExecutorSchema
+      ): TsupNodeExecutorSchema => {
         return {
           ...applyDefaultOptions({
             plugins: [],
