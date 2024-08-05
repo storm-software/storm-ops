@@ -428,6 +428,9 @@ MigrationBackup/
 # Local Environment Variables
 **/.env.local
 
+# Environment Variables Key files
+**/.env*.keys
+
 # Local stoplight config
 **/.stoplight.json
 
