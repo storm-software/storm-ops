@@ -128,12 +128,12 @@ jobs:
             } }]'
 
       - name: Send Telegram notification - Deployment started
-        run: |
-          notification_text="*Deployment for ${{
-            github.repository }} has started \- #${{ github.run_number }} (${{
-            github.ref_name || github.sha }})* \n\nPipeline details: \n - Pipeline Status: In Progress \n - Commit User: ${{ github.actor || 'No actor found' }} \n - Commit Message: ${{ github.event.head_commit.message || github.event.pull_request.message || 'N/A' }} \n\n*[Click here to see the full workflow details](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})*"
-          curl -s -X POST 'https://api.telegram.org/bot${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}/sendMessage' \
-          -d "chat_id=-1002176435963&text=${notification_text}&parse_mode=MarkdownV2"
+        uses: storm-software/action-telegram-notify@main
+        with:
+          status: "started"
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT: ${{ secrets.STORM_BOT_TELEGRAM_NOTIFICATION_CHAT }}
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -263,13 +263,13 @@ jobs:
             "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png"
             }}]'
 
-      - name: Send Telegram notification - Deployment successful
-        run: |
-          notification_text="*Deployment for [${{
-            inputs.escapedRepository }}@${{
-            github.ref_name || github.sha }}](https://github.com/${{ inputs.escapedRepository }}) has completed successfully \\- #${{ github.run_number }}* \n\nPipeline details: \n - Pipeline Status: Completed \n - Commit User: ${{ github.actor || 'No actor found' }} \n - Commit Message: ${{ github.event.head_commit.message || github.event.pull_request.message || 'N/A' }} \n\n*[Click here to see the full workflow details](https://github.com/${{ inputs.escapedRepository }}/actions/runs/${{ github.run_id }})*"
-          curl -s -X POST 'https://api.telegram.org/bot${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}/sendMessage' \
-          -d "chat_id=-1002176435963&text=${notification_text}&parse_mode=MarkdownV2"
+      - name: Send Telegram notification - Deployment success
+        uses: storm-software/action-telegram-notify@main
+        with:
+          status: "success"
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT: ${{ secrets.STORM_BOT_TELEGRAM_NOTIFICATION_CHAT }}
 
   failure:
     needs:
@@ -340,13 +340,13 @@ jobs:
             "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-fill.png"
             } }]'
 
-      - name: Send Telegram notification - Deployment failed
-        run: |
-          notification_text="*Deployment for [${{
-            github.repository }}@${{
-            github.ref_name || github.sha }}](https://github.com/${{ github.repository }}) experienced failures during execution \\- #${{ github.run_number }}* \n\nPipeline details: \n - Pipeline Status: Failed \n - Commit User: ${{ github.actor || 'No actor found' }} \n - Commit Message: ${{ github.event.head_commit.message || github.event.pull_request.message || 'N/A' }} \n\n*[Click here to see the full workflow details](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})*"
-          curl -s -X POST 'https://api.telegram.org/bot${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}/sendMessage' \
-          -d "chat_id=-1002176435963&text=${notification_text}&parse_mode=MarkdownV2"
+      - name: Send Telegram notification - Deployment failure
+        uses: storm-software/action-telegram-notify@main
+        with:
+          status: "failed"
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT: ${{ secrets.STORM_BOT_TELEGRAM_NOTIFICATION_CHAT }}
 
   cancelled:
     needs:
@@ -418,9 +418,9 @@ jobs:
             } }]'
 
       - name: Send Telegram notification - Deployment cancelled
-        run: |
-          notification_text="*Deployment for [${{
-            storm\\-software/storm\\-ops }}@${{
-            github.ref_name || github.sha }}](https://github.com/storm\\-software/storm\\-ops) was cancelled before processing completed \\- #${{ github.run_number }}* \n\nPipeline details: \n - Pipeline Status: Cancelled \n - Commit User: ${{ github.actor || 'No actor found' }} \n - Commit Message: ${{ github.event.head_commit.message || github.event.pull_request.message || 'N/A' }} \n\n*[Click here to see the full workflow details](https://github.com/storm\\-software/storm\\-ops/actions/runs/${{ github.run_id }})*"
-          curl -s -X POST 'https://api.telegram.org/bot${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}/sendMessage' \
-          -d "chat_id=-1002176435963&text=${notification_text}&parse_mode=MarkdownV2"
+        uses: storm-software/action-telegram-notify@main
+        with:
+          status: "cancelled"
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT: ${{ secrets.STORM_BOT_TELEGRAM_NOTIFICATION_CHAT }}
