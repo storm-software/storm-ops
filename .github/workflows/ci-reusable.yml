@@ -130,7 +130,7 @@ jobs:
       - name: Send Telegram notification - Deployment started
         uses: storm-software/action-telegram-notify@main
         with:
-          status: "started"
+          status: "in-progress"
         env:
           TELEGRAM_TOKEN: ${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}
           TELEGRAM_CHAT: ${{ secrets.STORM_BOT_TELEGRAM_NOTIFICATION_CHAT }}
