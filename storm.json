@@ -6,10 +6,6 @@
   "repository": "https://github.com/storm-software/storm-ops",
   "organization": "storm-software",
   "owner": "@storm-software/development",
-  "timezone": "America/New_York",
-  "locale": "en-US",
-  "logLevel": "info",
-  "packageManager": "pnpm",
   "externalPackagePatterns": ["@storm-software/"],
   "colors": {
     "light": {
