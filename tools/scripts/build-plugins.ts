@@ -41,7 +41,7 @@ Promise.all([
     format: "cjs",
     platform: "node"
   }).then(() => {
-    console.log("Storm Workspace plugins built successfully");
+    console.info("Storm Workspace plugins built successfully");
   }),
   build({
     entryPoints: ["packages/cloudflare-tools/src/plugin/index.ts"],
@@ -57,8 +57,8 @@ Promise.all([
     format: "cjs",
     platform: "node"
   }).then(() => {
-    console.log("Storm Cloudflare plugin built successfully");
+    console.info("Storm Cloudflare plugin built successfully");
   })
 ]).then(() => {
-  console.log("All Storm plugin built successfully");
+  console.info("All Storm plugin built successfully");
 });
