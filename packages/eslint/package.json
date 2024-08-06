@@ -23,6 +23,11 @@
       "name": "Storm Software",
       "email": "contact@stormsoftware.com",
       "url": "https://stormsoftware.com"
+    },
+    {
+      "name": "Pat Sullivan",
+      "email": "admin@stormsoftware.com",
+      "url": "https://stormsoftware.com"
     }
   ],
   "license": "Apache-2.0",
