@@ -208,18 +208,6 @@ importers:
       '@anatine/esbuild-decorators':
         specifier: 0.2.19
         version: 0.2.19(esbuild@0.19.12)
-      '@microsoft/api-extractor':
-        specifier: 7.46.2
-        version: 7.46.2(@types/node@20.14.11)
-      '@nx/devkit':
-        specifier: 19.5.6
-        version: 19.5.6(nx@19.5.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))
-      '@nx/js':
-        specifier: ^19.5.6
-        version: 19.5.6(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@20.14.11)(nx@19.5.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))(typescript@5.5.3)(verdaccio@5.31.1(typanion@3.14.0))
-      '@nx/workspace':
-        specifier: 19.5.6
-        version: 19.5.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))
       '@rollup/plugin-commonjs':
         specifier: 25.0.8
         version: 25.0.8(rollup@4.18.0)
@@ -259,9 +247,6 @@ importers:
       mkdist:
         specifier: 1.5.4
         version: 1.5.4(sass@1.77.6)(typescript@5.5.3)
-      nx:
-        specifier: ^19.5.6
-        version: 19.5.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))
       pkg-types:
         specifier: 1.1.1
         version: 1.1.1
@@ -307,6 +292,22 @@ importers:
       unbuild:
         specifier: ^2.0.0
         version: 2.0.0(sass@1.77.6)(typescript@5.5.3)
+    devDependencies:
+      '@microsoft/api-extractor':
+        specifier: 7.46.2
+        version: 7.46.2(@types/node@20.14.11)
+      '@nx/devkit':
+        specifier: ^19.5.6
+        version: 19.5.6(nx@19.5.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))
+      '@nx/js':
+        specifier: ^19.5.6
+        version: 19.5.6(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@20.14.11)(nx@19.5.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))(typescript@5.5.3)(verdaccio@5.31.1(typanion@3.14.0))
+      '@nx/workspace':
+        specifier: ^19.5.6
+        version: 19.5.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))
+      nx:
+        specifier: ^19.5.6
+        version: 19.5.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))
 
   packages/cloudflare-tools:
     dependencies:
@@ -1082,9 +1083,6 @@ importers:
       '@ltd/j-toml':
         specifier: 1.38.0
         version: 1.38.0
-      '@microsoft/api-extractor':
-        specifier: 7.46.2
-        version: 7.46.2(@types/node@20.14.11)
       '@nx/devkit':
         specifier: ^19.5.6
         version: 19.5.6(nx@19.5.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))
@@ -1167,6 +1165,9 @@ importers:
         specifier: 3.23.1
         version: 3.23.1(zod@3.23.8)
     devDependencies:
+      '@microsoft/api-extractor':
+        specifier: 7.46.2
+        version: 7.46.2(@types/node@20.14.11)
       '@nx/esbuild':
         specifier: 19.5.6
         version: 19.5.6(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@20.14.11)(esbuild@0.21.5)(nx@19.5.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))(typescript@5.5.3)(verdaccio@5.31.1(typanion@3.14.0))
