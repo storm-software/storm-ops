@@ -1,3 +1,10 @@
+## 0.59.1 (2024-08-09)
+
+
+### Bug Fixes
+
+- **storm-ops:** Force a CI re-run ([f287c018](https://github.com/storm-software/storm-ops/commit/f287c018))
+
 ## 0.59.0 (2024-08-04)
 
 

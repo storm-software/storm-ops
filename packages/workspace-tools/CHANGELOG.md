@@ -1,3 +1,17 @@
+## 1.153.0 (2024-08-09)
+
+
+### Features
+
+- **storm-ops:** Update the workflows to send requests to Telegram ([65332dd0](https://github.com/storm-software/storm-ops/commit/65332dd0))
+
+- **workspace-tools:** Added the `.env.keys` file to the ignored list to support the `dotenvx` package ([1394d51c](https://github.com/storm-software/storm-ops/commit/1394d51c))
+
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with call signature to executors ([36ad985a](https://github.com/storm-software/storm-ops/commit/36ad985a))
+
 ## 1.152.0 (2024-08-04)
 
 

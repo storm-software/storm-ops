@@ -1,3 +1,19 @@
+## 0.65.0 (2024-08-09)
+
+
+### Features
+
+- **storm-ops:** Update the workflows to send requests to Telegram ([65332dd0](https://github.com/storm-software/storm-ops/commit/65332dd0))
+
+- **build-tools:** Reformat the TSUP build files ([f9cdbdcc](https://github.com/storm-software/storm-ops/commit/f9cdbdcc))
+
+
+### Bug Fixes
+
+- **build-tools:** Resolved issues with TypeScript libraries paths provided to TSUP build ([44628c89](https://github.com/storm-software/storm-ops/commit/44628c89))
+
+- **workspace-tools:** Resolve issue with call signature to executors ([36ad985a](https://github.com/storm-software/storm-ops/commit/36ad985a))
+
 ## 0.64.0 (2024-08-04)
 
 
