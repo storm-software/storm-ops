@@ -3,6 +3,11 @@
 # REQUIRED VARIABLES
 # ----------------------------------------------------------------------------------------------------
 
+variable "name" {
+  description = "The name of the function used in the lambda."
+  type = string
+}
+
 variable "aws_region" {
   description = "The AWS region to deploy the resources into."
   default = "us-east-1"
@@ -18,7 +23,4 @@ variable "dist_path" {
   type = string
 }
 
-variable "lambda_function_name" {
-  description = "The name of the function used in the lambda."
-  type = string
-}
+

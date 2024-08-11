@@ -33,7 +33,7 @@ resource "aws_iam_role_policy_attachment" "lambda_execution_policy" {
 
 # Here is the definition of our lambda function
 resource "aws_lambda_function" "lambda_dist" {
-  function_name = var.lambda_function_name
+  function_name = var.name
   source_code_hash = data.archive_file.lambda_dist_archive.output_base64sha256
   filename = data.archive_file.lambda_dist_archive.output_path
   handler = "func"
