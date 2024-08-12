@@ -1,10 +1,10 @@
 # Here we grab the compiled executable and use the archive_file package
 # to convert it into the .zip file we need.
-data "archive_file" "lambda_dist_archive" {
-  type = "zip"
-  source_file = var.dist_path
-  output_path = "bootstrap.zip"
-}
+# data "archive_file" "lambda_dist_archive" {
+#   type = "zip"
+#   source_file = var.dist_path
+#   output_path = "bootstrap.zip"
+# }
 
 # Here we set up an IAM role for our Lambda function
 resource "aws_iam_role" "lambda_execution_role" {
@@ -34,8 +34,8 @@ resource "aws_iam_role_policy_attachment" "lambda_execution_policy" {
 # Here is the definition of our lambda function
 resource "aws_lambda_function" "lambda_dist" {
   function_name = var.name
-  source_code_hash = data.archive_file.lambda_dist_archive.output_base64sha256
-  filename = data.archive_file.lambda_dist_archive.output_path
+#   source_code_hash = data.archive_file.lambda_dist_archive.output_base64sha256
+  filename = var.dist_path
   handler = "func"
   runtime = "provided"
 
