@@ -25,43 +25,51 @@
 # EOF
 # }
 
-resource "aws_iam_user" "lambda-service-user" {
-  name = "${var.name}-service-user"
+resource "aws_iam_role" "lambda_role" {
+name   = "${var.name}_Lambda_Function_Role"
+assume_role_policy = <<EOF
+{
+ "Version": "2012-10-17",
+ "Statement": [
+   {
+     "Action": "sts:AssumeRole",
+     "Principal": {
+       "Service": "lambda.amazonaws.com"
+     },
+     "Effect": "Allow",
+     "Sid": ""
+   }
+ ]
+}
+EOF
 }
 
-resource "aws_iam_access_key" "lambda-service-user" {
-  user = aws_iam_user.lambda-service-user.name
+resource "aws_iam_policy" "iam_policy_for_lambda" {
+ name         = "${var.name}_aws_iam_policy"
+ path         = "/"
+ description  = "AWS IAM Policy for managing aws lambda role"
+ policy = <<EOF
+{
+ "Version": "2012-10-17",
+ "Statement": [
+   {
+     "Action": [
+       "logs:CreateLogGroup",
+       "logs:CreateLogStream",
+       "logs:PutLogEvents"
+     ],
+     "Resource": "arn:aws:logs:*:*:*",
+     "Effect": "Allow"
+   }
+ ]
+}
+EOF
 }
 
-resource "aws_iam_policy" "lambda-service-policy" {
-  name   = "lambda-service-policy"
-  policy = jsonencode({
-    Version   = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = [
-          "lambda:GetFunction",
-          "lambda:GetLayerVersion",
-          "lambda:CreateFunction",
-          "lambda:UpdateFunctionCode",
-          "lambda:UpdateFunctionConfiguration",
-          "lambda:PublishVersion",
-          "lambda:TagResource"
-        ]
-        Resource = [
-          "arn:aws:lambda:<region>:<account-id>:function:<function-name>",
-        ]
-      }
-    ]
-  })
+resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
+ role        = aws_iam_role.lambda_role.name
+ policy_arn  = aws_iam_policy.iam_policy_for_lambda.arn
 }
-
-resource "aws_iam_user_policy_attachment" "lambda-service-user-policy-attachment" {
-  user       = aws_iam_user.lambda-service-user.name
-  policy_arn = aws_iam_policy.lambda-service-policy.arn
-}
-
 
 # Here we attach a permission to execute a lambda function to our role
 # resource "aws_iam_role_policy_attachment" "lambda_execution_policy" {
@@ -86,7 +94,8 @@ resource "aws_lambda_function" "lambda_dist" {
  }
 
  #This attaches the role defined above to this lambda function
- role = aws_iam_role.lambda_execution_role.arn
+ role = aws_iam_role.lambda_role.arn
+ depends_on  = [aws_iam_role_policy_attachment.attach_iam_policy_to_iam_role]
 }
 
 // Add lambda -> DynamoDB policies to the lambda execution role
