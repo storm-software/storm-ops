@@ -7,29 +7,67 @@
 # }
 
 # Here we set up an IAM role for our Lambda function
-resource "aws_iam_role" "lambda_execution_role" {
-  assume_role_policy = <<EOF
-  {
-    "Version": "2012–10–17",
-    "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "lambda.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
-    }
-  ]
-}
-EOF
+# resource "aws_iam_role" "lambda_execution_role" {
+#   assume_role_policy = <<EOF
+#   {
+#     "Version": "2012–10–17",
+#     "Statement": [
+#     {
+#       "Action": "sts:AssumeRole",
+#       "Principal": {
+#         "Service": "lambda.amazonaws.com"
+#       },
+#       "Effect": "Allow",
+#       "Sid": ""
+#     }
+#   ]
+# }
+# EOF
+# }
+
+resource "aws_iam_user" "lambda-service-user" {
+  name = "${var.name}-service-user"
 }
 
-# Here we attach a permission to execute a lambda function to our role
-resource "aws_iam_role_policy_attachment" "lambda_execution_policy" {
-  role = aws_iam_role.lambda_execution_role.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+resource "aws_iam_access_key" "lambda-service-user" {
+  user = aws_iam_user.lambda-service-user.name
 }
+
+resource "aws_iam_policy" "lambda-service-policy" {
+  name   = "lambda-service-policy"
+  policy = jsonencode({
+    Version   = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "lambda:GetFunction",
+          "lambda:GetLayerVersion",
+          "lambda:CreateFunction",
+          "lambda:UpdateFunctionCode",
+          "lambda:UpdateFunctionConfiguration",
+          "lambda:PublishVersion",
+          "lambda:TagResource"
+        ]
+        Resource = [
+          "arn:aws:lambda:<region>:<account-id>:function:<function-name>",
+        ]
+      }
+    ]
+  })
+}
+
+resource "aws_iam_user_policy_attachment" "lambda-service-user-policy-attachment" {
+  user       = aws_iam_user.lambda-service-user.name
+  policy_arn = aws_iam_policy.lambda-service-policy.arn
+}
+
+
+# Here we attach a permission to execute a lambda function to our role
+# resource "aws_iam_role_policy_attachment" "lambda_execution_policy" {
+#   role = aws_iam_role.lambda_execution_role.name
+#   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+# }
 
 # Here is the definition of our lambda function
 resource "aws_lambda_function" "lambda_dist" {
