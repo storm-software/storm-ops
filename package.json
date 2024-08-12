@@ -169,6 +169,7 @@
       "@storm-software/testing-tools": "workspace:*",
       "@storm-software/tsconfig": "workspace:*",
       "@storm-software/workspace-tools": "workspace:*",
+      "@storm-software/terraform-modules": "workspace:*",
       "@storm-software/eslint-config": "workspace:*",
       "eslint-plugin-storm-software": "workspace:*",
       "eslint-plugin-storm-graphql": "workspace:*",

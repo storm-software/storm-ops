@@ -19,7 +19,7 @@ variable "log_level" {
 }
 
 variable "dist_path" {
-  description = "The binary path for the lambda."
+  description = "The output zip's path for the lambda."
   type = string
 }
 

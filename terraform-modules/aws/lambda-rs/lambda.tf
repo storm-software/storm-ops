@@ -84,8 +84,8 @@ resource "aws_lambda_function" "lambda_dist" {
   filename = var.dist_path
   handler = "func"
   runtime = "provided"
-  skip_destroy = true
-  publish = true
+#   skip_destroy = true
+#   publish = true
 
   # here we enable debug logging for our Rust run-time environment. We would change
   # this to something less verbose for production.
