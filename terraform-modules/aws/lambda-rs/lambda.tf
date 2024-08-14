@@ -82,8 +82,9 @@ resource "aws_lambda_function" "lambda_dist" {
   function_name = var.name
 #   source_code_hash = data.archive_file.lambda_dist_archive.output_base64sha256
   filename = var.dist_path
-  handler = "func"
+  handler = "bootstrap"
   package_type = "Zip"
+  runtime = "provided.al2023"
 
 #   runtime = "provided"
 #   skip_destroy = true
