@@ -88,6 +88,7 @@ resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
 resource "aws_lambda_function" "lambda_dist" {
   function_name = var.name
 #   source_code_hash = data.archive_file.lambda_dist_archive.output_base64sha256
+  source_code_hash = filebase64sha256("${var.dist_path}")
   filename = var.dist_path
   handler = "bootstrap"
   package_type = "Zip"
