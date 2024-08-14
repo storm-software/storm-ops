@@ -56,10 +56,16 @@ resource "aws_iam_policy" "iam_policy_for_lambda" {
      "Action": [
        "logs:CreateLogGroup",
        "logs:CreateLogStream",
-       "logs:PutLogEvents",
-       "secretsmanager:GetSecretValue"
+       "logs:PutLogEvents"
      ],
      "Resource": "arn:aws:logs:*:*:*",
+     "Effect": "Allow"
+   },
+   {
+     "Action": [
+       "secretsmanager:GetSecretValue"
+     ],
+     "Resource": "arn:aws:secretsmanager:*:*:*",
      "Effect": "Allow"
    }
  ]
