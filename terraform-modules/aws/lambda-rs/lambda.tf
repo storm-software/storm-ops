@@ -84,11 +84,22 @@ resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
 #   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 # }
 
+
+resource "random_uuid" "lambda_src_hash" {
+  keepers = {
+    for filename in setunion(
+      fileset(var.project_path, "**/*.rs"),
+      fileset(var.project_path, "Cargo.toml"),
+    ):
+    filename => filemd5("${var.project_path}/${filename}")
+  }
+}
+
 # Here is the definition of our lambda function
 resource "aws_lambda_function" "lambda_dist" {
   function_name = var.name
 #   source_code_hash = data.archive_file.lambda_dist_archive.output_base64sha256
-  source_code_hash = filebase64sha256("${var.dist_path}")
+  source_code_hash = "${random_uuid.lambda_src_hash.result}"
   filename = var.dist_path
   handler = "bootstrap"
   package_type = "Zip"

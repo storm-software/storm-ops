@@ -23,4 +23,7 @@ variable "dist_path" {
   type = string
 }
 
-
+variable "project_path" {
+  description = "The source project path for the lambda."
+  type = string
+}
