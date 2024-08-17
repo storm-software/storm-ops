@@ -1,32 +1,5 @@
-# Here we grab the compiled executable and use the archive_file package
-# to convert it into the .zip file we need.
-# data "archive_file" "lambda_dist_archive" {
-#   type = "zip"
-#   source_file = var.dist_path
-#   output_path = "bootstrap.zip"
-# }
-
-# Here we set up an IAM role for our Lambda function
-# resource "aws_iam_role" "lambda_execution_role" {
-#   assume_role_policy = <<EOF
-#   {
-#     "Version": "2012–10–17",
-#     "Statement": [
-#     {
-#       "Action": "sts:AssumeRole",
-#       "Principal": {
-#         "Service": "lambda.amazonaws.com"
-#       },
-#       "Effect": "Allow",
-#       "Sid": ""
-#     }
-#   ]
-# }
-# EOF
-# }
-
 resource "aws_iam_role" "lambda_role" {
-name   = "${var.name}_Lambda_Function_Role"
+name   = "${var.name}-aws-iam-role"
 assume_role_policy = <<EOF
 {
  "Version": "2012-10-17",
@@ -44,8 +17,8 @@ assume_role_policy = <<EOF
 EOF
 }
 
-resource "aws_iam_policy" "iam_policy_for_lambda" {
- name         = "${var.name}_aws_iam_policy"
+resource "aws_iam_policy" "lambda_policy" {
+ name         = "${var.name}-aws-iam-policy"
  path         = "/"
  description  = "AWS IAM Policy for managing aws lambda role"
  policy = <<EOF
@@ -67,15 +40,22 @@ resource "aws_iam_policy" "iam_policy_for_lambda" {
      ],
      "Resource": "arn:aws:secretsmanager:*:*:*",
      "Effect": "Allow"
+   },
+   {
+     "Action": [
+       "sns:Publish"
+     ],
+     "Resource": "arn:aws:sns:*:*:*",
+     "Effect": "Allow"
    }
  ]
 }
 EOF
 }
 
-resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
+resource "aws_iam_role_policy_attachment" "lambda_attach_policy_to_role" {
  role        = aws_iam_role.lambda_role.name
- policy_arn  = aws_iam_policy.iam_policy_for_lambda.arn
+ policy_arn  = aws_iam_policy.lambda_policy.arn
 }
 
 # Here we attach a permission to execute a lambda function to our role
@@ -85,7 +65,7 @@ resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
 # }
 
 
-resource "random_uuid" "lambda_src_hash" {
+resource "random_uuid" "lambda_source_hash" {
   keepers = {
     for filename in setunion(
       fileset(var.project_path, "**/*.rs"),
@@ -99,7 +79,7 @@ resource "random_uuid" "lambda_src_hash" {
 resource "aws_lambda_function" "lambda_dist" {
   function_name = var.name
 #   source_code_hash = data.archive_file.lambda_dist_archive.output_base64sha256
-  source_code_hash = "${random_uuid.lambda_src_hash.result}"
+  source_code_hash = "${random_uuid.lambda_source_hash.result}"
   filename = var.dist_path
   handler = "bootstrap"
   package_type = "Zip"
@@ -119,29 +99,8 @@ resource "aws_lambda_function" "lambda_dist" {
 
  #This attaches the role defined above to this lambda function
  role = aws_iam_role.lambda_role.arn
- depends_on  = [aws_iam_role_policy_attachment.attach_iam_policy_to_iam_role]
+ depends_on  = [aws_iam_role_policy_attachment.lambda_attach_policy_to_role]
 }
-
-// Add lambda -> DynamoDB policies to the lambda execution role
-# resource "aws_iam_role_policy" "write_db_policy" {
-#   name = "lambda_write_db_policy"
-#   role = aws_iam_role.lambda_execution_role.name
-#   policy = <<EOF
-# {
-#   "Version": "2012–10–17",
-#   "Statement": [
-#    {
-#      "Sid": "",
-#      "Action": [
-#        "dynamodb:PutItem"
-#      ],
-#      "Effect": "Allow",
-#      "Resource": "arn:aws:dynamodb: :${var.aws_region}::${data.aws_caller_identity.current.account_id}:table/Shop_Thermostat"
-#    }
-#  ]
-# }
-# EOF
-# }
 
 // The Lambda Function URL that allows direct access to our function
 resource "aws_lambda_function_url" "lambda_dist_function" {
