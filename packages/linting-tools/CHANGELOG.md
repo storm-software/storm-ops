@@ -1,3 +1,10 @@
+## 1.74.0 (2024-08-17)
+
+
+### Features
+
+- **linting-tools:** Added base folders to the `ls-lint.yml` configuration ([45a62685](https://github.com/storm-software/storm-ops/commit/45a62685))
+
 ## 1.73.0 (2024-08-17)
 
 
