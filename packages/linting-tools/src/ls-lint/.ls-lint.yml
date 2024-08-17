@@ -11,3 +11,6 @@ ignore:
   - "**/coverage"
   - "**/__generated__"
   - "**/__test__"
+  - "**/.terragrunt-cache"
+  - "**/.cache"
+  - "**/.nx"
