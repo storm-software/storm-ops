@@ -58,6 +58,11 @@ resource "aws_iam_role_policy_attachment" "lambda_role_policy_attachment" {
  policy_arn  = aws_iam_policy.lambda_policy.arn
 }
 
+resource "aws_cloudwatch_log_group" "lambda_log_group" {
+  name              = "/aws/lambda/${var.name}"
+  retention_in_days = 30
+}
+
 # Here we attach a permission to execute a lambda function to our role
 # resource "aws_iam_role_policy_attachment" "lambda_execution_policy" {
 #   role = aws_iam_role.lambda_execution_role.name
