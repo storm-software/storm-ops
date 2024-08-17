@@ -1,5 +1,5 @@
 resource "aws_iam_role" "lambda_role" {
-name   = "${var.name}-aws-iam-role"
+name   = "${var.name}-iam-role"
 assume_role_policy = <<EOF
 {
  "Version": "2012-10-17",
@@ -18,7 +18,7 @@ EOF
 }
 
 resource "aws_iam_policy" "lambda_policy" {
- name         = "${var.name}-aws-iam-policy"
+ name         = "${var.name}-iam-policy"
  path         = "/"
  description  = "AWS IAM Policy for managing aws lambda role"
  policy = <<EOF
@@ -53,7 +53,7 @@ resource "aws_iam_policy" "lambda_policy" {
 EOF
 }
 
-resource "aws_iam_role_policy_attachment" "lambda_attach_policy_to_role" {
+resource "aws_iam_role_policy_attachment" "lambda_role_policy_attachment" {
  role        = aws_iam_role.lambda_role.name
  policy_arn  = aws_iam_policy.lambda_policy.arn
 }
@@ -63,7 +63,6 @@ resource "aws_iam_role_policy_attachment" "lambda_attach_policy_to_role" {
 #   role = aws_iam_role.lambda_execution_role.name
 #   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 # }
-
 
 resource "random_uuid" "lambda_source_hash" {
   keepers = {
@@ -78,16 +77,11 @@ resource "random_uuid" "lambda_source_hash" {
 # Here is the definition of our lambda function
 resource "aws_lambda_function" "lambda_dist" {
   function_name = var.name
-#   source_code_hash = data.archive_file.lambda_dist_archive.output_base64sha256
   source_code_hash = "${random_uuid.lambda_source_hash.result}"
   filename = var.dist_path
   handler = "bootstrap"
   package_type = "Zip"
   runtime = "provided.al2023"
-
-#   runtime = "provided"
-#   skip_destroy = true
-#   publish = true
 
   # here we enable debug logging for our Rust run-time environment. We would change
   # this to something less verbose for production.
@@ -99,7 +93,7 @@ resource "aws_lambda_function" "lambda_dist" {
 
  #This attaches the role defined above to this lambda function
  role = aws_iam_role.lambda_role.arn
- depends_on  = [aws_iam_role_policy_attachment.lambda_attach_policy_to_role]
+ depends_on  = [aws_iam_role_policy_attachment.lambda_role_policy_attachment]
 }
 
 // The Lambda Function URL that allows direct access to our function

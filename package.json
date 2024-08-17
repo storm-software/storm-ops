@@ -74,6 +74,7 @@
     "local-registry": "nx local-registry @storm-software/storm-ops",
     "nuke": "nx clear-cache && rimraf tmp && rimraf .nx/cache && rimraf .nx/workspace-data && rimraf **/node_modules && pnpm clear",
     "nx": "nx",
+    "push": "git push origin main:main",
     "prebuild": "pnpm build-plugins",
     "prebuild-all": "pnpm build-plugins",
     "rebuild": "pnpm clean && pnpm build",
