@@ -1,8 +1,23 @@
 ls:
-  .rs: snake_case
-  .ts: kebab-case
-  .js: kebab-case
-  .d.ts: kebab-case
+  packages/**:
+    .ts: kebab-case
+    .js: kebab-case
+    .d.ts: kebab-case
+  libs/**:
+    .ts: kebab-case
+    .js: kebab-case
+    .d.ts: kebab-case
+  crates/**:
+    .rs: snake_case
+  apps/**:
+    .ts: kebab-case
+    .js: kebab-case
+    .d.ts: kebab-case
+    .rs: snake_case
+  tools/**:
+    .ts: kebab-case
+    .js: kebab-case
+    .d.ts: kebab-case
 
 ignore:
   - "**/node_modules"
