@@ -1,3 +1,10 @@
+## 1.73.0 (2024-08-17)
+
+
+### Features
+
+- **linting-tools:** Added ignore paths to the `ls-lint` base configuration ([a860a216](https://github.com/storm-software/storm-ops/commit/a860a216))
+
 ## 1.72.0 (2024-08-03)
 
 
