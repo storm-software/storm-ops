@@ -10,12 +10,14 @@ variable "name" {
 
 variable "aws_region" {
   description = "The AWS region to deploy the resources into."
+  type = string
   default = "us-east-1"
 }
 
 variable "log_level" {
   description = "Log level for the Lambda runtime."
-  default = "debug"
+  type = string
+  default = "info"
 }
 
 variable "dist_path" {

@@ -93,7 +93,6 @@ resource "aws_lambda_function" "lambda_dist" {
   environment {
    variables = {
      "RUST_LOG" = var.log_level
-     "RUST_BACKTRACE" = "full"
    }
  }
 }
