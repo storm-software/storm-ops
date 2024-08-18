@@ -1,3 +1,10 @@
+## 0.3.1 (2024-08-18)
+
+
+### Bug Fixes
+
+- **terraform-modules:** Resolved issue providing the environment variables ([aa5d5d9b](https://github.com/storm-software/storm-ops/commit/aa5d5d9b))
+
 ## 0.3.0 (2024-08-18)
 
 
