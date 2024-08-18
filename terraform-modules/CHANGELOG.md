@@ -1,3 +1,10 @@
+## 0.3.0 (2024-08-18)
+
+
+### Features
+
+- **terraform-modules:** Added debugging environment variuables to lambda module ([3f78b374](https://github.com/storm-software/storm-ops/commit/3f78b374))
+
 ## 0.2.0 (2024-08-17)
 
 
