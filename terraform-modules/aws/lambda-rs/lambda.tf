@@ -87,18 +87,17 @@ resource "aws_lambda_function" "lambda_dist" {
   handler = "bootstrap"
   package_type = "Zip"
   runtime = "provided.al2023"
+  role = aws_iam_role.lambda_role.arn
+  depends_on  = [aws_iam_role_policy_attachment.lambda_role_policy_attachment]
 
-  # here we enable debug logging for our Rust run-time environment. We would change
-  # this to something less verbose for production.
- environment {
+  environment {
    variables = {
      "RUST_LOG" = var.log_level
+     "RUST_BACKTRACE" = 1
+     "CLICOLOR" = 1
+     "FORCE_COLOR" = 1
    }
  }
-
- #This attaches the role defined above to this lambda function
- role = aws_iam_role.lambda_role.arn
- depends_on  = [aws_iam_role_policy_attachment.lambda_role_policy_attachment]
 }
 
 // The Lambda Function URL that allows direct access to our function
