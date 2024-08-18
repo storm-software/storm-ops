@@ -1,3 +1,10 @@
+## 0.4.0 (2024-08-18)
+
+
+### Features
+
+- **terraform-modules:** Add types to variables ([c6e5d6b3](https://github.com/storm-software/storm-ops/commit/c6e5d6b3))
+
 ## 0.3.1 (2024-08-18)
 
 
