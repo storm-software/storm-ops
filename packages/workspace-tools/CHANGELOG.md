@@ -1,3 +1,10 @@
+## 1.155.0 (2024-08-19)
+
+
+### Features
+
+- **terraform-modules:** Add `region` to resource name ([03291fe8](https://github.com/storm-software/storm-ops/commit/03291fe8))
+
 ## 1.154.0 (2024-08-19)
 
 
