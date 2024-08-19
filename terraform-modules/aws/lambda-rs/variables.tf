@@ -8,6 +8,21 @@ variable "name" {
   type = string
 }
 
+variable "dist_path" {
+  description = "The output zip's path for the lambda."
+  type = string
+}
+
+variable "project_path" {
+  description = "The source project path for the lambda."
+  type = string
+}
+
+# ----------------------------------------------------------------------------------------------------
+# Optional VARIABLES
+# ----------------------------------------------------------------------------------------------------
+
+
 variable "aws_region" {
   description = "The AWS region to deploy the resources into."
   type = string
@@ -20,12 +35,8 @@ variable "log_level" {
   default = "info"
 }
 
-variable "dist_path" {
-  description = "The output zip's path for the lambda."
+variable "environment" {
+  description = "The name of the environment being deployed."
   type = string
-}
-
-variable "project_path" {
-  description = "The source project path for the lambda."
-  type = string
+  default = "prod"
 }

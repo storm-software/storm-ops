@@ -95,6 +95,10 @@ resource "aws_lambda_function" "lambda_dist" {
      "RUST_LOG" = var.log_level
    }
  }
+
+  tags = {
+      Environment = "prod"
+  }
 }
 
 // The Lambda Function URL that allows direct access to our function

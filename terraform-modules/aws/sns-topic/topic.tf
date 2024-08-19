@@ -1,9 +1,17 @@
 resource "aws_sns_topic" "sns_topic" {
   name = "${ var.name }-topic"
+
+  tags = {
+    Environment = var.environment
+  }
 }
 
 resource "aws_sqs_queue" "dead_letter_queue" {
-    name = "${ var.name }-dl-queue"
+  name = "${ var.name }-dead-letter-queue"
+
+  tags = {
+    Environment = var.environment
+  }
 }
 
 resource "aws_sqs_queue" "sqs_queue" {
@@ -12,7 +20,7 @@ resource "aws_sqs_queue" "sqs_queue" {
     visibility_timeout_seconds = 300
 
     tags = {
-        Environment = "prod"
+        Environment = var.environment
     }
 }
 
