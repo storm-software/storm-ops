@@ -16,7 +16,7 @@ resource "aws_sqs_queue" "sqs_queue" {
     }
 }
 
-resource "aws_sns_topic_subscription" "eth_orders_engine_requests_sqs_target" {
+resource "aws_sns_topic_subscription" "sns_topic_subscription" {
     topic_arn = "${aws_sns_topic.sns_topic.arn}"
     protocol  = "sqs"
     endpoint  = "${aws_sqs_queue.sqs_queue.arn}"
