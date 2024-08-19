@@ -1,30 +1,33 @@
 locals {
-  full_name = "${var.name}-${var.environment}"
+  full_name = "${var.environment}.${var.region}.${var.name}"
 }
 
 resource "aws_sns_topic" "sns_topic" {
-  name = "${ local.full_name }-topic"
+  name = "${ local.full_name }.topic"
 
   tags = {
     Environment = var.environment
+    Region = var.region
   }
 }
 
 resource "aws_sqs_queue" "dead_letter_queue" {
-  name = "${ local.full_name }-dead-letter-queue"
+  name = "${ local.full_name }.dead-letter-queue"
 
   tags = {
     Environment = var.environment
+    Region = var.region
   }
 }
 
 resource "aws_sqs_queue" "sqs_queue" {
-    name = "${ local.full_name }-queue"
+    name = "${ local.full_name }.queue"
     redrive_policy  = "{\"deadLetterTargetArn\":\"${aws_sqs_queue.dead_letter_queue.arn}\",\"maxReceiveCount\":5}"
     visibility_timeout_seconds = 300
 
     tags = {
         Environment = var.environment
+        Region = var.region
     }
 }
 

@@ -25,16 +25,10 @@ variable "project_path" {
 # Optional VARIABLES
 # ----------------------------------------------------------------------------------------------------
 
-variable "aws_region" {
+variable "region" {
   description = "The AWS region to deploy the resources into."
   type = string
   default = "us-east-1"
-}
-
-variable "log_level" {
-  description = "Log level for the Lambda runtime. Written to the `STORM_LOG_LEVEL` envrionment variable"
-  type = string
-  default = "info"
 }
 
 variable "environment" {
@@ -47,4 +41,16 @@ variable "topic_arn" {
   description = "The ARN of a SNS Topic. Written to the `STORM_TOPIC_ID` envrionment variable."
   type = string
   nullable = true
+}
+
+variable "log_level" {
+  description = "Log level for the Lambda runtime. Written to the `STORM_LOG_LEVEL` envrionment variable"
+  type = string
+  default = "info"
+}
+
+variable "log_retention_in_days" {
+  description = "The number of days to retain the logs for the lambda function."
+  type = number
+  default = 30
 }

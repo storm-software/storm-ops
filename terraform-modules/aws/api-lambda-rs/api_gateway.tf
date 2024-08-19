@@ -1,13 +1,14 @@
 locals {
-  full_name = "${var.name}-${var.environment}"
+  full_name = "${var.environment}.${var.region}.${var.name}"
 }
 
 resource "aws_api_gateway_rest_api" "api_gateway_rest_api" {
-  name        = "${ local.full_name }-api"
+  name        = "${local.full_name}.rest-api"
   description = var.description
 
   tags = {
       Environment = var.environment
+      Region = var.region
   }
 }
 
@@ -16,6 +17,7 @@ resource "aws_api_gateway_client_certificate" "api_gateway_certificate" {
 
   tags = {
       Environment = var.environment
+      Region = var.region
   }
 }
 
@@ -61,7 +63,7 @@ resource "aws_api_gateway_integration" "api_gateway_integration_root" {
 
 resource "aws_api_gateway_deployment" "api_gateway_deployment" {
   rest_api_id = aws_api_gateway_rest_api.api_gateway_rest_api.id
-  stage_name  = local.full_name
+  stage_name  = var.name
 
   depends_on = [
     aws_api_gateway_integration.api_gateway_integration,

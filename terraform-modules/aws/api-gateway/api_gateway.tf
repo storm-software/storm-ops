@@ -1,21 +1,23 @@
 locals {
-  full_name = "${var.name}-${var.environment}"
+  full_name = "${var.environment}.${var.region}.${var.name}"
 }
 
 resource "aws_api_gateway_rest_api" "api_gateway_rest_api" {
-  name        = "${ var.name }-api"
+  name        = "${local.full_name}.rest-api"
   description = var.description
 
   tags = {
       Environment = var.environment
+      Region = var.region
   }
 }
 
 resource "aws_api_gateway_client_certificate" "api_gateway_certificate" {
-  description = "The ${ var.name } API Gateway's client certificate"
+  description = "The ${var.name} API Gateway's client certificate"
 
   tags = {
       Environment = var.environment
+      Region = var.region
   }
 }
 

@@ -1,9 +1,9 @@
 locals {
-  full_name = "${var.name}-${var.environment}"
+  full_name = "${var.environment}.${var.region}.${var.name}"
 }
 
 resource "aws_iam_role" "lambda_role" {
-name   = "${local.full_name}-iam-role"
+name   = "${local.full_name}.iam-role"
 assume_role_policy = <<EOF
 {
  "Version": "2012-10-17",
@@ -22,7 +22,7 @@ EOF
 }
 
 resource "aws_iam_policy" "lambda_policy" {
- name         = "${local.full_name}-iam-policy"
+ name         = "${local.full_name}.iam-policy"
  path         = "/"
  description  = "AWS IAM Policy for managing aws lambda role"
  policy = <<EOF
@@ -64,7 +64,7 @@ resource "aws_iam_role_policy_attachment" "lambda_role_policy_attachment" {
 
 resource "aws_cloudwatch_log_group" "lambda_log_group" {
   name              = "/aws/lambda/${local.full_name}"
-  retention_in_days = 30
+  retention_in_days = var.log_retention_in_days
 }
 
 # Here we attach a permission to execute a lambda function to our role
@@ -100,11 +100,13 @@ resource "aws_lambda_function" "lambda_function" {
      "STORM_LOG_LEVEL" = var.log_level
      "STORM_TOPIC_ID" = var.topic_arn
      "STORM_ENV" = var.environment
+     "STORM_REGION" = var.region
    }
  }
 
   tags = {
       Environment = var.environment
+      Region = var.region
   }
 }
 
