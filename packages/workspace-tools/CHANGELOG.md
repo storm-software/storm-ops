@@ -1,3 +1,10 @@
+## 1.154.0 (2024-08-19)
+
+
+### Features
+
+- **workspace-tools:** Added the `build-local` target to the base `nx.json` file ([a3afe7e8](https://github.com/storm-software/storm-ops/commit/a3afe7e8))
+
 ## 1.153.0 (2024-08-09)
 
 
