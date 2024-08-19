@@ -399,6 +399,11 @@
       "cache": true,
       "dependsOn": ["clean", "format", "^build"]
     },
+    "build-local": {
+      "cache": true,
+      "inputs": ["default", "^production"],
+      "dependsOn": ["build-base", "format", "^build"]
+    },
     "build": {
       "cache": true,
       "inputs": ["default", "^production"],
