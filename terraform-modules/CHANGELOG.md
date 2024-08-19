@@ -1,3 +1,10 @@
+## 0.7.0 (2024-08-19)
+
+
+### Features
+
+- **terraform-modules:** Added the `api-lambda-rs` module ([f20c6652](https://github.com/storm-software/storm-ops/commit/f20c6652))
+
 ## 0.6.0 (2024-08-19)
 
 
