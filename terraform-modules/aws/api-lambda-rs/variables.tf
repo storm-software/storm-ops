@@ -1,22 +1,21 @@
-
 # ----------------------------------------------------------------------------------------------------
 # REQUIRED VARIABLES
 # ----------------------------------------------------------------------------------------------------
 
 variable "name" {
-  description = "The name of the API gateway."
+  description = "The name of the function used in the lambda."
   type = string
   nullable = false
 }
 
-variable "lambda_name" {
-  description = "The name of the lambda function."
+variable "dist_path" {
+  description = "The output zip's path for the lambda."
   type = string
   nullable = false
 }
 
-variable "lambda_invoke_arn" {
-  description = "The invoke ARN of the lambda function."
+variable "project_path" {
+  description = "The source project path for the lambda."
   type = string
   nullable = false
 }
@@ -25,20 +24,32 @@ variable "lambda_invoke_arn" {
 # Optional VARIABLES
 # ----------------------------------------------------------------------------------------------------
 
+variable "description" {
+  description = "The description of the API lambda."
+  type = string
+  default = "A REST API lambda function used to process data sent from external sources."
+}
+
 variable "aws_region" {
   description = "The AWS region to deploy the resources into."
   type = string
   default = "us-east-1"
 }
 
-variable "description" {
-  description = "The description of the API gateway."
+variable "log_level" {
+  description = "Log level for the Lambda runtime. Written to the `STORM_LOG_LEVEL` envrionment variable"
   type = string
-  default = "The API Gateway used as input to invoke a lambda function."
+  default = "info"
 }
 
 variable "environment" {
   description = "The name of the environment being deployed."
   type = string
-  default = "production"
+  default = "prod"
+}
+
+variable "topic_arn" {
+  description = "The ARN of a SNS Topic. Written to the `STORM_TOPIC_ID` envrionment variable."
+  type = string
+  nullable = true
 }

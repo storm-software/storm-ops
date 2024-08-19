@@ -82,6 +82,7 @@ resource "random_uuid" "lambda_source_hash" {
 # Here is the definition of our lambda function
 resource "aws_lambda_function" "lambda_function" {
   function_name = local.full_name
+  description = var.description
   source_code_hash = "${random_uuid.lambda_source_hash.result}"
   filename = var.dist_path
   handler = "bootstrap"

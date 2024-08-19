@@ -4,19 +4,13 @@
 # ----------------------------------------------------------------------------------------------------
 
 variable "name" {
-  description = "The name of the function used in the lambda."
+  description = "The name of the API gateway."
   type = string
   nullable = false
 }
 
-variable "dist_path" {
-  description = "The output zip's path for the lambda."
-  type = string
-  nullable = false
-}
-
-variable "project_path" {
-  description = "The source project path for the lambda."
+variable "uri" {
+  description = "The uri of the REST API."
   type = string
   nullable = false
 }
@@ -31,20 +25,14 @@ variable "aws_region" {
   default = "us-east-1"
 }
 
-variable "log_level" {
-  description = "Log level for the Lambda runtime. Written to the `STORM_LOG_LEVEL` envrionment variable"
+variable "description" {
+  description = "The description of the API gateway."
   type = string
-  default = "info"
+  default = "The API Gateway used as input to invoke a lambda function."
 }
 
 variable "environment" {
   description = "The name of the environment being deployed."
   type = string
   default = "prod"
-}
-
-variable "topic_arn" {
-  description = "The ARN of a SNS Topic. Written to the `STORM_TOPIC_ID` envrionment variable."
-  type = string
-  nullable = true
 }

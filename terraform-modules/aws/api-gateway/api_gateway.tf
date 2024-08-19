@@ -36,7 +36,7 @@ resource "aws_api_gateway_integration" "api_gateway_integration" {
 
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-  uri                     = var.lambda_invoke_arn
+  uri                     = var.uri
 }
 
 resource "aws_api_gateway_method" "api_gateway_proxy_root" {
@@ -53,7 +53,7 @@ resource "aws_api_gateway_integration" "api_gateway_integration_root" {
 
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
-  uri                     = var.lambda_invoke_arn
+  uri                     = var.uri
 }
 
 resource "aws_api_gateway_deployment" "api_gateway_deployment" {
@@ -64,15 +64,4 @@ resource "aws_api_gateway_deployment" "api_gateway_deployment" {
     aws_api_gateway_integration.api_gateway_integration,
     aws_api_gateway_integration.api_gateway_integration_root,
   ]
-}
-
-resource "aws_lambda_permission" "lambda_permission" {
-  statement_id  = "AllowExecutionFromAPIGateway"
-  action        = "lambda:InvokeFunction"
-  function_name = var.lambda_name
-  principal     = "apigateway.amazonaws.com"
-
-  # The /*/* portion grants access from any method on any resource
-  # within the API Gateway "REST API".
-  source_arn = "${aws_api_gateway_rest_api.api_gateway_rest_api.execution_arn}/*/*"
 }
