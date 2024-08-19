@@ -13,7 +13,6 @@ variable "name" {
 # Optional VARIABLES
 # ----------------------------------------------------------------------------------------------------
 
-
 variable "aws_region" {
   description = "The AWS region to deploy the resources into."
   type = string
