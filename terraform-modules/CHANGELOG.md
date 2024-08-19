@@ -1,3 +1,17 @@
+## 0.6.0 (2024-08-19)
+
+
+### Features
+
+- **terraform-modules:** Added the `lambda-api-gateway` terraform module ([3438fc37](https://github.com/storm-software/storm-ops/commit/3438fc37))
+
+- **terraform-modules:** Added the `environment` variable to the terraform modules ([7bef47d5](https://github.com/storm-software/storm-ops/commit/7bef47d5))
+
+
+### Bug Fixes
+
+- **terraform-modules:** Rename the `sns_topic_subscription` resource ([a46a1fb0](https://github.com/storm-software/storm-ops/commit/a46a1fb0))
+
 ## 0.5.0 (2024-08-19)
 
 

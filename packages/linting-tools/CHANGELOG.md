@@ -1,3 +1,10 @@
+## 1.75.0 (2024-08-19)
+
+
+### Features
+
+- **terraform-modules:** Added the `environment` variable to the terraform modules ([7bef47d5](https://github.com/storm-software/storm-ops/commit/7bef47d5))
+
 ## 1.74.0 (2024-08-17)
 
 
