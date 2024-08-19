@@ -1,3 +1,10 @@
+## 0.5.0 (2024-08-19)
+
+
+### Features
+
+- **terraform-modules:** Added the `sns_topic` terraform module ([015945f3](https://github.com/storm-software/storm-ops/commit/015945f3))
+
 ## 0.4.0 (2024-08-18)
 
 
