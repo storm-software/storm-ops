@@ -6,16 +6,19 @@
 variable "name" {
   description = "The name of the API gateway."
   type = string
+  nullable = false
 }
 
 variable "lambda_name" {
   description = "The name of the lambda function."
   type = string
+  nullable = false
 }
 
 variable "lambda_invoke_arn" {
   description = "The invoke ARN of the lambda function."
   type = string
+  nullable = false
 }
 
 # ----------------------------------------------------------------------------------------------------
@@ -37,5 +40,5 @@ variable "description" {
 variable "environment" {
   description = "The name of the environment being deployed."
   type = string
-  default = "prod"
+  default = "production"
 }

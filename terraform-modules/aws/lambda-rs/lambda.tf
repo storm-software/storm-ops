@@ -80,7 +80,7 @@ resource "random_uuid" "lambda_source_hash" {
 }
 
 # Here is the definition of our lambda function
-resource "aws_lambda_function" "lambda_dist" {
+resource "aws_lambda_function" "lambda_function" {
   function_name = var.name
   source_code_hash = "${random_uuid.lambda_source_hash.result}"
   filename = var.dist_path
@@ -93,16 +93,19 @@ resource "aws_lambda_function" "lambda_dist" {
   environment {
    variables = {
      "RUST_LOG" = var.log_level
+     "STORM_LOG_LEVEL" = var.log_level
+     "STORM_TOPIC_ID" = var.topic_arn
+     "STORM_ENV" = var.environment
    }
  }
 
   tags = {
-      Environment = "prod"
+      Environment = var.environment
   }
 }
 
 // The Lambda Function URL that allows direct access to our function
-resource "aws_lambda_function_url" "lambda_dist_function" {
-   function_name = aws_lambda_function.lambda_dist.function_name
+resource "aws_lambda_function_url" "lambda_function_url" {
+   function_name = aws_lambda_function.lambda_function.function_name
    authorization_type = "NONE"
 }
