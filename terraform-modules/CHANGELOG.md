@@ -1,3 +1,10 @@
+## 0.9.0 (2024-08-20)
+
+
+### Features
+
+- **terraform-modules:** Added the `workspace_root` variable to lambda modules ([6e42a015](https://github.com/storm-software/storm-ops/commit/6e42a015))
+
 ## 0.8.0 (2024-08-19)
 
 
