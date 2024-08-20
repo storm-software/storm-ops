@@ -20,6 +20,7 @@ variable "project_path" {
   nullable = false
 }
 
+
 # ----------------------------------------------------------------------------------------------------
 # Optional VARIABLES
 # ----------------------------------------------------------------------------------------------------
@@ -58,4 +59,10 @@ variable "log_retention_in_days" {
   description = "The number of days to retain the logs for the lambda function."
   type = number
   default = 30
+}
+
+variable "workspace_root" {
+  description = "The workspace root path."
+  type = string
+  default = "/"
 }

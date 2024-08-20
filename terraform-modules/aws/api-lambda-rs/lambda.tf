@@ -78,8 +78,10 @@ resource "random_uuid" "lambda_source_hash" {
     for filename in setunion(
       fileset(var.project_path, "**/*.rs"),
       fileset(var.project_path, "Cargo.toml"),
+      fileset(var.workspace_root, "**/*.rs"),
+      fileset(var.workspace_root, "**/Cargo.toml"),
     ):
-    filename => filemd5("${var.project_path}/${filename}")
+    filename => filemd5("${var.workspace_root}/${filename}")
   }
 }
 

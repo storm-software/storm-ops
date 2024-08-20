@@ -54,3 +54,9 @@ variable "log_retention_in_days" {
   type = number
   default = 30
 }
+
+variable "workspace_root" {
+  description = "The workspace root path."
+  type = string
+  default = "/"
+}
