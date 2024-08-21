@@ -1,3 +1,10 @@
+## 0.12.0 (2024-08-21)
+
+
+### Features
+
+- **terraform-modules:** Added the `full_name` optional variable ([3d612c7a](https://github.com/storm-software/storm-ops/commit/3d612c7a))
+
 ## 0.11.0 (2024-08-21)
 
 
