@@ -1,3 +1,10 @@
+## 0.10.0 (2024-08-21)
+
+
+### Features
+
+- **terraform-modules:** Added providers back to terraform modules ([d924d7e2](https://github.com/storm-software/storm-ops/commit/d924d7e2))
+
 ## 0.9.0 (2024-08-20)
 
 
