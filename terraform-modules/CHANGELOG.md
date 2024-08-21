@@ -1,3 +1,10 @@
+## 0.11.0 (2024-08-21)
+
+
+### Features
+
+- **terraform-modules:** Added the `Name` tag to resources ([80b3d1dc](https://github.com/storm-software/storm-ops/commit/80b3d1dc))
+
 ## 0.10.1 (2024-08-21)
 
 
