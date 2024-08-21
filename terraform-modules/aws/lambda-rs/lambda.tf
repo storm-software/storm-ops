@@ -109,6 +109,7 @@ resource "aws_lambda_function" "lambda_function" {
   tags = {
       Environment = var.environment
       Region = var.region
+      Name = var.name
   }
 }
 

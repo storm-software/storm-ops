@@ -8,6 +8,7 @@ resource "aws_sns_topic" "sns_topic" {
   tags = {
     Environment = var.environment
     Region = var.region
+    Name = var.name
   }
 }
 
@@ -17,6 +18,7 @@ resource "aws_sqs_queue" "dead_letter_queue" {
   tags = {
     Environment = var.environment
     Region = var.region
+    Name = var.name
   }
 }
 
@@ -28,6 +30,7 @@ resource "aws_sqs_queue" "sqs_queue" {
     tags = {
         Environment = var.environment
         Region = var.region
+        Name = var.name
     }
 }
 

@@ -9,6 +9,7 @@ resource "aws_api_gateway_rest_api" "api_gateway_rest_api" {
   tags = {
       Environment = var.environment
       Region = var.region
+      Name = var.name
   }
 }
 
@@ -18,6 +19,7 @@ resource "aws_api_gateway_client_certificate" "api_gateway_certificate" {
   tags = {
       Environment = var.environment
       Region = var.region
+      Name = var.name
   }
 }
 
