@@ -36,3 +36,9 @@ variable "environment" {
   type = string
   default = "prod"
 }
+
+variable "full_name" {
+  description = "The name to use when adding resources (generally includes enviroment and region)."
+  type = string
+  nullable = true
+}

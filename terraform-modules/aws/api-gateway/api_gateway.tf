@@ -1,7 +1,3 @@
-locals {
-  full_name = "${var.environment}_${var.region}_${var.name}"
-}
-
 resource "aws_api_gateway_rest_api" "api_gateway_rest_api" {
   name        = "${local.full_name}_rest-api"
   description = var.description

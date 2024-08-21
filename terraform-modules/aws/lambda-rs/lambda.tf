@@ -1,7 +1,3 @@
-locals {
-  full_name = "${var.environment}_${var.region}_${var.name}"
-}
-
 resource "aws_iam_role" "lambda_role" {
 name   = "${local.full_name}_iam-role"
 assume_role_policy = <<EOF

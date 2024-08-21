@@ -1,7 +1,3 @@
-locals {
-  full_name = "${var.environment}_${var.region}_${var.name}"
-}
-
 resource "aws_sns_topic" "sns_topic" {
   name = "${ local.full_name }_topic"
 
