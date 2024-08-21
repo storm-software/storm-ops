@@ -1,9 +1,9 @@
 locals {
-  full_name = "${var.environment}.${var.region}.${var.name}"
+  full_name = "${var.environment}_${var.region}_${var.name}"
 }
 
 resource "aws_iam_role" "lambda_role" {
-name   = "${local.full_name}.iam-role"
+name   = "${local.full_name}_iam-role"
 assume_role_policy = <<EOF
 {
  "Version": "2012-10-17",
@@ -22,7 +22,7 @@ EOF
 }
 
 resource "aws_iam_policy" "lambda_policy" {
- name         = "${local.full_name}.iam-policy"
+ name         = "${local.full_name}_iam-policy"
  path         = "/"
  description  = "AWS IAM Policy for managing aws lambda role"
  policy = <<EOF
@@ -87,7 +87,7 @@ resource "random_uuid" "lambda_source_hash" {
 
 # Here is the definition of our lambda function
 resource "aws_lambda_function" "lambda_function" {
-  function_name = local.full_name
+  function_name = "${local.full_name}_lambda"
   source_code_hash = "${random_uuid.lambda_source_hash.result}"
   filename = var.dist_path
   handler = "bootstrap"
