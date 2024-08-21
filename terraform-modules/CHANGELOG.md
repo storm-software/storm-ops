@@ -1,3 +1,10 @@
+## 0.10.1 (2024-08-21)
+
+
+### Bug Fixes
+
+- **terraform-modules:** Resolved issue with AWS resource naming convention ([97687c4f](https://github.com/storm-software/storm-ops/commit/97687c4f))
+
 ## 0.10.0 (2024-08-21)
 
 
