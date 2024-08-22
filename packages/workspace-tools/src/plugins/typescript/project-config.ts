@@ -1,3 +1,4 @@
+import { CreateNodes } from "@nx/devkit";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
@@ -15,9 +16,13 @@ import {
 
 export const name = "storm-software/typescript/project-config";
 
-export const createNodes = [
+export interface TypeScriptPluginOptions {
+  includeApps?: boolean;
+}
+
+export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
   "{project.json,**/project.json}",
-  (file, _, ctx) => {
+  (file, opts: TypeScriptPluginOptions = { includeApps: true }, ctx) => {
     const packageJson = createPackageJson(file, ctx.workspaceRoot);
     if (!packageJson) {
       return {};
@@ -27,9 +32,14 @@ export const createNodes = [
       file,
       packageJson
     );
+
+    // If the project is an application and we don't want to include apps, skip it
+    if (opts?.includeApps === false && project.projectType === "application") {
+      return {};
+    }
+
     const targets: ProjectConfiguration["targets"] =
       readTargetsFromPackageJson(packageJson);
-
     if (!targets["lint-ls"]) {
       targets["lint-ls"] = {
         cache: true,
@@ -210,8 +220,8 @@ export const createNodes = [
           }
         };
 
-        targets["nx-release-publish"].dependsOn!.push("clean-package");
-        targets["size-limit"].dependsOn!.push("clean-package");
+        targets["nx-release-publish"].dependsOn?.push("clean-package");
+        targets["size-limit"].dependsOn?.push("clean-package");
       }
     }
 

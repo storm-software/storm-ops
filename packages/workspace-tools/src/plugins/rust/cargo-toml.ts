@@ -1,4 +1,5 @@
 import {
+  CreateNodesContext,
   joinPathFragments,
   readJsonFile,
   workspaceRoot,
@@ -23,9 +24,17 @@ import type { Package } from "../../utils/toml";
 
 export const name = "storm-software/rust/cargo-toml";
 
-export const createNodes: CreateNodes = [
+export interface CargoPluginOptions {
+  includeApps?: boolean;
+}
+
+export const createNodes: CreateNodes<CargoPluginOptions> = [
   "*/**/Cargo.toml",
-  (cargoFile, _opts, ctx) => {
+  (
+    cargoFile: string,
+    opts: CargoPluginOptions = { includeApps: true },
+    ctx: CreateNodesContext
+  ) => {
     const metadata = cargoMetadata();
     if (!metadata) {
       return {};
@@ -62,6 +71,14 @@ export const createNodes: CreateNodes = [
               }
             });
           }
+        }
+
+        // If the project is an application and we don't want to include apps, skip it
+        if (
+          opts.includeApps === false &&
+          project.projectType === "application"
+        ) {
+          continue;
         }
 
         project.targets = {
