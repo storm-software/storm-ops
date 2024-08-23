@@ -26,13 +26,14 @@ export const name = "storm-software/rust/cargo-toml";
 
 export interface CargoPluginOptions {
   includeApps?: boolean;
+  skipDocs?: boolean;
 }
 
 export const createNodes: CreateNodes<CargoPluginOptions> = [
   "*/**/Cargo.toml",
   (
     cargoFile: string,
-    opts: CargoPluginOptions = { includeApps: true },
+    opts: CargoPluginOptions = { includeApps: true, skipDocs: false },
     ctx: CreateNodesContext
   ) => {
     const metadata = cargoMetadata();
@@ -112,8 +113,7 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             dependsOn: ["format-readme", "format-toml", "^format"],
             executor: "nx:run-commands",
             options: {
-              command:
-                "echo 'Formatting the project files in \"{projectRoot}\"' ",
+              command: `cargo fmt -p ${project.name}`,
               color: true
             }
           },
@@ -164,6 +164,20 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             }
           }
         };
+
+        if (opts.skipDocs != true) {
+          project.targets.docs = {
+            cache: true,
+            inputs: ["linting", "documentation", "default", "^production"],
+            dependsOn: ["build", "lint-docs", "^docs"],
+            outputs: [`{workspaceRoot}/dist/docs/${cargoPackage.name}`],
+            executor: "nx:run-commands",
+            options: {
+              command: `cargo doc -p ${project.name} --target-dir dist/docs/${cargoPackage.name}`,
+              color: true
+            }
+          };
+        }
 
         const isPrivate = cargoPackage.publish?.length === 0;
         if (!isPrivate) {

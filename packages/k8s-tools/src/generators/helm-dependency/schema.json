@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "helm-dependency",
+  "title": "Helm dependency generator",
+  "description": "Generate a new dependency for an existing Helm chart",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Project name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Provide the Project name"
+    },
+    "chartName": {
+      "type": "string",
+      "description": "Chart Name of the Dependency",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": "Provide the Chart Name of the Dependency"
+    },
+    "chartVersion": {
+      "type": "string",
+      "description": "Chart Version of the Dependency",
+      "$default": {
+        "$source": "argv",
+        "index": 2
+      },
+      "x-prompt": "Provide the Chart Version of the Dependency"
+    },
+    "repository": {
+      "type": "string",
+      "description": "Repository of the Dependency",
+      "$default": {
+        "$source": "argv",
+        "index": 3
+      },
+      "x-prompt": "Provide the Repository of the Dependency"
+    },
+    "repositoryName": {
+      "type": "string",
+      "description": "Repository Name of the Dependency",
+      "$default": {
+        "$source": "argv",
+        "index": 4
+      },
+      "x-prompt": "Provide the Repository Name of the Dependency"
+    },
+    "format": {
+      "type": "boolean",
+      "description": "Format the generated files",
+      "$default": {
+        "$source": "argv",
+        "index": 5
+      },
+      "default": false,
+      "x-prompt": "Format the generated files? Warning: prettier will display errors due to the template syntax: https://github.com/prettier/prettier/issues/6517"
+    }
+  },
+  "required": [
+    "project",
+    "chartName",
+    "chartVersion",
+    "repository",
+    "repositoryName"
+  ]
+}

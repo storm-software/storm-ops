@@ -1,0 +1,9 @@
+{
+  "executors": {
+    "helm-package": {
+      "implementation": "./src/executors/helm-package/executor",
+      "schema": "./src/executors/helm-package/schema.json",
+      "description": "Package Helm charts associated with a project"
+    }
+  }
+}

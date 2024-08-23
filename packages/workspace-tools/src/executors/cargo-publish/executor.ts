@@ -1,9 +1,9 @@
 import { type ExecutorContext, joinPathFragments } from "@nx/devkit";
 import { execSync } from "node:child_process";
 import { readFileSync } from "node:fs";
+import https from "node:https";
 import { parseCargoToml } from "../../utils/toml";
 import type { CargoPublishExecutorSchema } from "./schema.d";
-import https from "node:https";
 
 const LARGE_BUFFER = 1024 * 1000000;
 
@@ -66,7 +66,9 @@ export default async function runExecutor(
         success: true
       };
     }
-  } catch (_: any) {}
+  } catch (_: any) {
+    // Do nothing
+  }
 
   const cargoPublishCommandSegments = [
     `cargo publish --allow-dirty -p ${cargoToml.package.name}`

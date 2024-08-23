@@ -20,6 +20,8 @@
       "@storm-software/eslint/*": ["packages/eslint/src/*"],
       "@storm-software/git-tools": ["packages/git-tools/src/index.ts"],
       "@storm-software/git-tools/*": ["packages/git-tools/*"],
+      "@storm-software/k8s-tools": ["packages/k8s-tools/src/index.ts"],
+      "@storm-software/k8s-tools/*": ["packages/k8s-tools/src/*"],
       "@storm-software/linting-tools": ["packages/linting-tools/src/index.ts"],
       "@storm-software/linting-tools/*": ["packages/linting-tools/*"],
       "@storm-software/markdownlint": ["packages/markdownlint/src/index.ts"],

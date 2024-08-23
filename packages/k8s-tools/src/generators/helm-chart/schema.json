@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "helm-chart",
+  "title": "Helm chart generator",
+  "description": "Create a Helm chart for a Kubernetes application",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the chart",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Provide a name for your chart"
+    },
+    "project": {
+      "type": "string",
+      "description": "Name of the project to add the chart to",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": "Provide the project name"
+    },
+    "chartFolder": {
+      "type": "string",
+      "description": "Folder to store the chart",
+      "$default": {
+        "$source": "argv",
+        "index": 2
+      },
+      "default": "chart",
+      "x-prompt": "Provide the chart folder"
+    },
+    "format": {
+      "type": "boolean",
+      "description": "Format the generated chart",
+      "$default": {
+        "$source": "argv",
+        "index": 3
+      },
+      "default": false,
+      "x-prompt": "Format the generated chart? Warning: prettier will display errors due to the template syntax: https://github.com/prettier/prettier/issues/6517"
+    }
+  },
+  "required": ["name", "project"]
+}

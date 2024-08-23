@@ -1,0 +1,71 @@
+{
+  "name": "@storm-software/k8s-tools",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "description": "⚡ A Nx plugin package that contains various executors, generators, and utilities that assist in managing k8s IoC.",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/k8s-tools"
+  },
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.com"
+  },
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "license": "Apache-2.0",
+  "private": false,
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json",
+    "./generators.json": "./generators.json",
+    "./generators/*/schema.json": "./src/generators/*/schema.json",
+    "./executors.json": "./executors.json",
+    "./executors/*/schema.json": "./src/executors/*/schema.json"
+  },
+  "typings": "./declarations.d.ts",
+  "keywords": [
+    "storm",
+    "storm-ops",
+    "kubernetes",
+    "k8s",
+    "helm",
+    "storm-stack",
+    "sullivanpj",
+    "monorepo"
+  ],
+  "peerDependencies": {
+    "@nx/devkit": "^19.5.6",
+    "nx": "^19.5.6"
+  },
+  "peerDependenciesMeta": {
+    "@nx/devkit": {
+      "optional": false
+    },
+    "nx": {
+      "optional": false
+    }
+  },
+  "dependencies": {
+    "@actions/exec": "^1.1.1",
+    "@nx/devkit": "^19.5.6",
+    "@nx/workspace": "^19.5.6",
+    "js-yaml": "^4.1.0",
+    "tslib": "^2.6.3"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "4.0.9",
+    "nx": "^19.5.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "executors": "./executors.json",
+  "generators": "./generators.json"
+}

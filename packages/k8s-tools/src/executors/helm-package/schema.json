@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "outputCapture": "direct-nodejs",
+  "title": "Helm chart package executor",
+  "description": "Package Helm charts associated with a project",
+  "type": "object",
+  "properties": {
+    "chartFolder": {
+      "type": "string",
+      "description": "Folder where the chart is stored",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "default": "chart",
+      "x-prompt": "Provide the chart folder"
+    },
+    "outputFolder": {
+      "type": "string",
+      "description": "Folder to store the packaged chart",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "default": "package",
+      "x-prompt": "Provide the output folder"
+    },
+    "push": {
+      "type": "boolean",
+      "description": "Push the chart to a remote registry",
+      "$default": {
+        "$source": "argv",
+        "index": 2
+      },
+      "x-prompt": "Provide the remote registry"
+    },
+    "remote": {
+      "type": "string",
+      "description": "Remote registry to publish the chart",
+      "$default": {
+        "$source": "argv",
+        "index": 3
+      },
+      "x-prompt": "Provide the remote registry"
+    },
+    "dependencies": {
+      "type": "object",
+      "description": "Options related to dependencies",
+      "properties": {
+        "update": {
+          "type": "boolean",
+          "description": "Runs `helm dependency update` before packaging",
+          "$default": {
+            "$source": "argv",
+            "index": 4
+          },
+          "default": false,
+          "x-prompt": "Update dependencies before packaging?"
+        },
+        "build": {
+          "type": "boolean",
+          "description": "Runs `helm dependency build` before packaging",
+          "$default": {
+            "$source": "argv",
+            "index": 5
+          },
+          "default": false,
+          "x-prompt": "Build dependencies before packaging?"
+        },
+        "repositories": {
+          "type": "array",
+          "description": "List of repositories to add with `helm repo add` before packaging",
+          "$default": {
+            "$source": "argv",
+            "index": 6
+          },
+          "items": {
+            "type": "object",
+            "description": "Repository to add",
+            "$default": {
+              "$source": "argv",
+              "index": 7
+            },
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the repository",
+                "$default": {
+                  "$source": "argv",
+                  "index": 8
+                },
+                "x-prompt": "Provide the repository name"
+              },
+              "url": {
+                "type": "string",
+                "description": "URL of the repository",
+                "$default": {
+                  "$source": "argv",
+                  "index": 9
+                },
+                "x-prompt": "Provide the repository URL"
+              }
+            }
+          },
+          "x-prompt": "Add repositories before packaging?"
+        }
+      }
+    }
+  },
+  "required": ["chartFolder", "outputFolder"]
+}

@@ -1,0 +1,89 @@
+{
+  "name": "k8s-tools",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/k8s-tools/src",
+  "projectType": "library",
+  "implicitDependencies": ["workspace-tools", "config-tools", "config"],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "inputs": ["typescript", "^production"],
+      "dependsOn": ["clean", "format", "^build"],
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/k8s-tools",
+        "tsConfig": "packages/k8s-tools/tsconfig.lib.json",
+        "project": "packages/k8s-tools/package.json",
+        "main": "packages/k8s-tools/index.ts",
+        "additionalEntryPoints": [
+          "packages/k8s-tools/src/executors/helm-package/executor.ts",
+          "packages/k8s-tools/src/generators/helm-chart/generator.ts",
+          "packages/k8s-tools/src/generators/helm-dependency/generator.ts"
+        ],
+        "platform": "node",
+        "deleteOutputPath": true,
+        "bundle": true,
+        "thirdParty": true,
+        "skipTypeCheck": false,
+        "metafile": true,
+        "minify": false,
+        "format": ["cjs"],
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".js"
+          }
+        },
+        "external": [
+          "nx",
+          "@nx/*",
+          "esbuild",
+          "vue-tsc",
+          "@swc/*",
+          "@storm-software/*"
+        ],
+        "assets": [
+          {
+            "input": "packages/k8s-tools",
+            "glob": "**/files/**",
+            "output": "/"
+          },
+          {
+            "input": "packages/k8s-tools",
+            "glob": "**/files/**/.gitkeep",
+            "output": "/"
+          },
+          {
+            "input": "packages/k8s-tools",
+            "glob": "**/*.json",
+            "ignore": ["**/tsconfig*.json", "project.json", ".eslintrc.json"],
+            "output": "."
+          },
+          {
+            "input": "packages/k8s-tools",
+            "glob": "**/*.js",
+            "ignore": ["**/jest.config.js"],
+            "output": "."
+          },
+          {
+            "input": "packages/k8s-tools",
+            "glob": "**/*.d.ts",
+            "output": "."
+          },
+          {
+            "input": "packages/k8s-tools",
+            "glob": "*.md",
+            "output": "."
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  }
+}
