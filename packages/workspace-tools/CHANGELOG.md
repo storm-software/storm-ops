@@ -1,3 +1,10 @@
+## 1.156.0 (2024-08-22)
+
+
+### Features
+
+- **workspace-tools:** Added the `includeApps` option to the Rust and TypeScript plugins ([7bd309f6](https://github.com/storm-software/storm-ops/commit/7bd309f6))
+
 ## 1.155.0 (2024-08-19)
 
 
