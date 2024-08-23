@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/k8s-tools",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "commonjs",
   "description": "⚡ A Nx plugin package that contains various executors, generators, and utilities that assist in managing k8s IoC.",
   "repository": {
