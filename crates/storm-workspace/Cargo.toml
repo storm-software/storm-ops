@@ -12,7 +12,7 @@ name = 'storm-workspace'
 publish = true
 readme = './README.md'
 repository = { workspace = true }
-version = '0.6.0'
+version = '0.6.1'
 
 [dependencies]
 thiserror = '=1.0.61'

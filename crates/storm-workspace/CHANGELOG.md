@@ -1,3 +1,15 @@
+## 0.6.1 (2024-08-26)
+
+
+### Bug Fixes
+
+- **storm-ops:** Add `linting-tools` implicit dependency to crates ([80d67e6f](https://github.com/storm-software/storm-ops/commit/80d67e6f))
+
+
+### Dependency Upgrades
+
+- **storm-ops:** Upgrade the workspace's Nx version ([4ce6ac9e](https://github.com/storm-software/storm-ops/commit/4ce6ac9e))
+
 ## 0.6.0 (2024-07-17)
 
 ### Features

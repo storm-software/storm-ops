@@ -1,359 +1,391 @@
-## 0.65.0 (2024-08-09)
-
-
-### Features
-
-- **storm-ops:** Update the workflows to send requests to Telegram ([65332dd0](https://github.com/storm-software/storm-ops/commit/65332dd0))
-
-- **build-tools:** Reformat the TSUP build files ([f9cdbdcc](https://github.com/storm-software/storm-ops/commit/f9cdbdcc))
+## 0.65.1 (2024-08-26)
 
 
 ### Bug Fixes
 
-- **build-tools:** Resolved issues with TypeScript libraries paths provided to TSUP build ([44628c89](https://github.com/storm-software/storm-ops/commit/44628c89))
+- **build-tools:** Resolved issue with `async` modifier in declarations ([2b66c821](https://github.com/storm-software/storm-ops/commit/2b66c821))
 
-- **workspace-tools:** Resolve issue with call signature to executors ([36ad985a](https://github.com/storm-software/storm-ops/commit/36ad985a))
+
+### Dependency Upgrades
+
+- **storm-ops:** Upgrade the workspace's Nx version ([4ce6ac9e](https://github.com/storm-software/storm-ops/commit/4ce6ac9e))
+
+## 0.65.0 (2024-08-09)
+
+### Features
+
+- **storm-ops:** Update the workflows to send requests to Telegram
+  ([65332dd0](https://github.com/storm-software/storm-ops/commit/65332dd0))
+
+- **build-tools:** Reformat the TSUP build files
+  ([f9cdbdcc](https://github.com/storm-software/storm-ops/commit/f9cdbdcc))
+
+### Bug Fixes
+
+- **build-tools:** Resolved issues with TypeScript libraries paths provided to
+  TSUP build
+  ([44628c89](https://github.com/storm-software/storm-ops/commit/44628c89))
+
+- **workspace-tools:** Resolve issue with call signature to executors
+  ([36ad985a](https://github.com/storm-software/storm-ops/commit/36ad985a))
 
 ## 0.64.0 (2024-08-04)
 
-
 ### Features
 
-- **build-tools:** Add `typeRoots` and find TypeScript library definition files prior to TSUP build ([635833ed](https://github.com/storm-software/storm-ops/commit/635833ed))
+- **build-tools:** Add `typeRoots` and find TypeScript library definition files
+  prior to TSUP build
+  ([635833ed](https://github.com/storm-software/storm-ops/commit/635833ed))
 
 ## 0.63.0 (2024-08-04)
 
-
 ### Features
 
-- **config:** Added the `docs` and `licensing` options to the Storm configuration ([c867efe1](https://github.com/storm-software/storm-ops/commit/c867efe1))
-
+- **config:** Added the `docs` and `licensing` options to the Storm
+  configuration
+  ([c867efe1](https://github.com/storm-software/storm-ops/commit/c867efe1))
 
 ### Bug Fixes
 
-- **build-tools:** Resolve issues with logic in `outExtension` utility function ([8cdc691b](https://github.com/storm-software/storm-ops/commit/8cdc691b))
+- **build-tools:** Resolve issues with logic in `outExtension` utility function
+  ([8cdc691b](https://github.com/storm-software/storm-ops/commit/8cdc691b))
 
 ## 0.62.0 (2024-08-03)
 
-
 ### Features
 
-- **eslint:** Ignore `prefer-nullish-coalescing` for strings ([dbae2a58](https://github.com/storm-software/storm-ops/commit/dbae2a58))
+- **eslint:** Ignore `prefer-nullish-coalescing` for strings
+  ([dbae2a58](https://github.com/storm-software/storm-ops/commit/dbae2a58))
 
 ## 0.61.0 (2024-08-03)
 
-
 ### Features
 
-- **build-tools:** Add back experimental DTS option to TSUP ([4fe9652b](https://github.com/storm-software/storm-ops/commit/4fe9652b))
+- **build-tools:** Add back experimental DTS option to TSUP
+  ([4fe9652b](https://github.com/storm-software/storm-ops/commit/4fe9652b))
 
 ## 0.60.0 (2024-08-03)
 
-
 ### Features
 
-- **storm-ops:** Upgrade workspace's Nx package dependencies ([5f31f734](https://github.com/storm-software/storm-ops/commit/5f31f734))
+- **storm-ops:** Upgrade workspace's Nx package dependencies
+  ([5f31f734](https://github.com/storm-software/storm-ops/commit/5f31f734))
 
 ## 0.59.0 (2024-08-03)
 
-
 ### Features
 
-- **build-tools:** Add tsup build's rollup helpers ([27ecd4e6](https://github.com/storm-software/storm-ops/commit/27ecd4e6))
-
+- **build-tools:** Add tsup build's rollup helpers
+  ([27ecd4e6](https://github.com/storm-software/storm-ops/commit/27ecd4e6))
 
 ### Bug Fixes
 
-- **build-tools:** Resolve issue with invalid return paths ([0f9f5b1f](https://github.com/storm-software/storm-ops/commit/0f9f5b1f))
+- **build-tools:** Resolve issue with invalid return paths
+  ([0f9f5b1f](https://github.com/storm-software/storm-ops/commit/0f9f5b1f))
 
 ## 0.58.0 (2024-08-03)
 
-
 ### Features
 
-- **build-tools:** Enable `dts` instead of `experimentalDts` for TSUP build ([0655517a](https://github.com/storm-software/storm-ops/commit/0655517a))
-
+- **build-tools:** Enable `dts` instead of `experimentalDts` for TSUP build
+  ([0655517a](https://github.com/storm-software/storm-ops/commit/0655517a))
 
 ### Bug Fixes
 
-- **build-tools:** Resolved issue with the entry name parameter in unbuild config ([f5e5dbdd](https://github.com/storm-software/storm-ops/commit/f5e5dbdd))
+- **build-tools:** Resolved issue with the entry name parameter in unbuild
+  config
+  ([f5e5dbdd](https://github.com/storm-software/storm-ops/commit/f5e5dbdd))
 
 ## 0.57.0 (2024-08-02)
 
-
 ### Features
 
-- **build-tools:** Added back the export statements to unbuild configuration ([5fb63682](https://github.com/storm-software/storm-ops/commit/5fb63682))
+- **build-tools:** Added back the export statements to unbuild configuration
+  ([5fb63682](https://github.com/storm-software/storm-ops/commit/5fb63682))
 
 ## 0.56.0 (2024-08-02)
 
-
 ### Features
 
-- **build-tools:** Update the unbuild configuration to get exports from `package.json` files ([bb2fc78f](https://github.com/storm-software/storm-ops/commit/bb2fc78f))
+- **build-tools:** Update the unbuild configuration to get exports from
+  `package.json` files
+  ([bb2fc78f](https://github.com/storm-software/storm-ops/commit/bb2fc78f))
 
 ## 0.55.0 (2024-08-02)
 
-
 ### Features
 
-- **build-tools:** Populate the distribution's package.json with `exports` based on project structure ([cf0eed52](https://github.com/storm-software/storm-ops/commit/cf0eed52))
+- **build-tools:** Populate the distribution's package.json with `exports` based
+  on project structure
+  ([cf0eed52](https://github.com/storm-software/storm-ops/commit/cf0eed52))
 
 ## 0.54.0 (2024-08-02)
 
-
 ### Features
 
-- **terraform-tools:** Initial check-in of project code ([c4ef4810](https://github.com/storm-software/storm-ops/commit/c4ef4810))
+- **terraform-tools:** Initial check-in of project code
+  ([c4ef4810](https://github.com/storm-software/storm-ops/commit/c4ef4810))
 
-- **build-tools:** Added `failOnWarn` parameter to unbuild configuration ([ba28050d](https://github.com/storm-software/storm-ops/commit/ba28050d))
+- **build-tools:** Added `failOnWarn` parameter to unbuild configuration
+  ([ba28050d](https://github.com/storm-software/storm-ops/commit/ba28050d))
 
-- **terraform-tools:** Update build to exclude other storm package from the distribution ([96294aac](https://github.com/storm-software/storm-ops/commit/96294aac))
+- **terraform-tools:** Update build to exclude other storm package from the
+  distribution
+  ([96294aac](https://github.com/storm-software/storm-ops/commit/96294aac))
 
 ## 0.53.4 (2024-08-02)
 
-
 ### Bug Fixes
 
-- **create-storm-workspace:** Upgrade the package.json to include `peerDependencies` ([f15d7eb4](https://github.com/storm-software/storm-ops/commit/f15d7eb4))
+- **create-storm-workspace:** Upgrade the package.json to include
+  `peerDependencies`
+  ([f15d7eb4](https://github.com/storm-software/storm-ops/commit/f15d7eb4))
 
 ## 0.53.3 (2024-08-02)
 
-
 ### Bug Fixes
 
-- **build-tools:** Update `rootDir` provided to unbuild ([3efbdebc](https://github.com/storm-software/storm-ops/commit/3efbdebc))
+- **build-tools:** Update `rootDir` provided to unbuild
+  ([3efbdebc](https://github.com/storm-software/storm-ops/commit/3efbdebc))
 
 ## 0.53.2 (2024-08-02)
 
-
 ### Bug Fixes
 
-- **build-tools:** Resolve path issues in unbuild entry configuration ([46d128b5](https://github.com/storm-software/storm-ops/commit/46d128b5))
+- **build-tools:** Resolve path issues in unbuild entry configuration
+  ([46d128b5](https://github.com/storm-software/storm-ops/commit/46d128b5))
 
 ## 0.53.1 (2024-08-02)
 
-
 ### Bug Fixes
 
-- **build-tools:** Update the base path of the unbuild input files ([4551640c](https://github.com/storm-software/storm-ops/commit/4551640c))
+- **build-tools:** Update the base path of the unbuild input files
+  ([4551640c](https://github.com/storm-software/storm-ops/commit/4551640c))
 
 ## 0.53.0 (2024-08-02)
 
-
 ### Features
 
-- **eslint:** Reformatted the banner string whitespace ([2df75cbb](https://github.com/storm-software/storm-ops/commit/2df75cbb))
-
+- **eslint:** Reformatted the banner string whitespace
+  ([2df75cbb](https://github.com/storm-software/storm-ops/commit/2df75cbb))
 
 ### Bug Fixes
 
-- **build-tools:** Update unbuild to supply proper configuration ([29bfb7b4](https://github.com/storm-software/storm-ops/commit/29bfb7b4))
+- **build-tools:** Update unbuild to supply proper configuration
+  ([29bfb7b4](https://github.com/storm-software/storm-ops/commit/29bfb7b4))
 
-- **build-tools:** Remove the unused variables in the updated code ([b01c4999](https://github.com/storm-software/storm-ops/commit/b01c4999))
+- **build-tools:** Remove the unused variables in the updated code
+  ([b01c4999](https://github.com/storm-software/storm-ops/commit/b01c4999))
 
 ## 0.52.0 (2024-08-02)
 
-
 ### Features
 
-- **eslint:** Added the `name` and `banner` options to format banner from preset ([ee542ed6](https://github.com/storm-software/storm-ops/commit/ee542ed6))
+- **eslint:** Added the `name` and `banner` options to format banner from preset
+  ([ee542ed6](https://github.com/storm-software/storm-ops/commit/ee542ed6))
 
 ## 0.51.1 (2024-08-02)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolve issue with duplicate plugins ([23c09494](https://github.com/storm-software/storm-ops/commit/23c09494))
+- **eslint:** Resolve issue with duplicate plugins
+  ([23c09494](https://github.com/storm-software/storm-ops/commit/23c09494))
 
 ## 0.51.0 (2024-08-02)
 
-
 ### Features
 
-- **eslint:** Added typing file for ESLint rules used by preset ([821637e2](https://github.com/storm-software/storm-ops/commit/821637e2))
+- **eslint:** Added typing file for ESLint rules used by preset
+  ([821637e2](https://github.com/storm-software/storm-ops/commit/821637e2))
 
 ## 0.50.0 (2024-08-02)
 
-
 ### Features
 
-- **eslint:** Added a banner with `__filename` and `__dirname` to the distribution ([594c0e9a](https://github.com/storm-software/storm-ops/commit/594c0e9a))
+- **eslint:** Added a banner with `__filename` and `__dirname` to the
+  distribution
+  ([594c0e9a](https://github.com/storm-software/storm-ops/commit/594c0e9a))
 
 ## 0.49.0 (2024-08-02)
 
-
 ### Features
 
-- **eslint:** Update the build process to include the preset declaration file ([1b5fe953](https://github.com/storm-software/storm-ops/commit/1b5fe953))
+- **eslint:** Update the build process to include the preset declaration file
+  ([1b5fe953](https://github.com/storm-software/storm-ops/commit/1b5fe953))
 
 ## 0.48.0 (2024-08-02)
 
-
 ### Features
 
-- **eslint:** Improved the logic around determining the banner ([4bbb321d](https://github.com/storm-software/storm-ops/commit/4bbb321d))
+- **eslint:** Improved the logic around determining the banner
+  ([4bbb321d](https://github.com/storm-software/storm-ops/commit/4bbb321d))
 
 ## 0.47.1 (2024-08-01)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolve issue with invalid path definition ([be930a74](https://github.com/storm-software/storm-ops/commit/be930a74))
+- **eslint:** Resolve issue with invalid path definition
+  ([be930a74](https://github.com/storm-software/storm-ops/commit/be930a74))
 
 ## 0.47.0 (2024-08-01)
 
-
 ### Features
 
-- **eslint:** Added the `parserOptions` parameter to the preset's options ([344db07c](https://github.com/storm-software/storm-ops/commit/344db07c))
+- **eslint:** Added the `parserOptions` parameter to the preset's options
+  ([344db07c](https://github.com/storm-software/storm-ops/commit/344db07c))
 
 ## 0.46.0 (2024-08-01)
 
-
 ### Features
 
-- **eslint:** Added JSX parser options when `react` is enabled ([2700e009](https://github.com/storm-software/storm-ops/commit/2700e009))
+- **eslint:** Added JSX parser options when `react` is enabled
+  ([2700e009](https://github.com/storm-software/storm-ops/commit/2700e009))
 
 ## 0.45.1 (2024-08-01)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolved issues with invalid TypeScript flat configuration ([88166ab1](https://github.com/storm-software/storm-ops/commit/88166ab1))
+- **eslint:** Resolved issues with invalid TypeScript flat configuration
+  ([88166ab1](https://github.com/storm-software/storm-ops/commit/88166ab1))
 
 ## 0.45.0 (2024-08-01)
 
-
 ### Features
 
-- **eslint:** Added initial typinges for the distribution package ([5a6a9dd1](https://github.com/storm-software/storm-ops/commit/5a6a9dd1))
+- **eslint:** Added initial typinges for the distribution package
+  ([5a6a9dd1](https://github.com/storm-software/storm-ops/commit/5a6a9dd1))
 
 ## 0.44.0 (2024-08-01)
 
-
 ### Features
 
-- **git-tools:** Ensure `.git/COMMIT_EDITMSG` exists before reading from disk ([7abae7ae](https://github.com/storm-software/storm-ops/commit/7abae7ae))
+- **git-tools:** Ensure `.git/COMMIT_EDITMSG` exists before reading from disk
+  ([7abae7ae](https://github.com/storm-software/storm-ops/commit/7abae7ae))
 
 ## 0.43.0 (2024-08-01)
 
-
 ### Features
 
-- **git-tools:** Update `commitlint` to warn users when no commit message is provided instead of throwing errors ([04942ee2](https://github.com/storm-software/storm-ops/commit/04942ee2))
+- **git-tools:** Update `commitlint` to warn users when no commit message is
+  provided instead of throwing errors
+  ([04942ee2](https://github.com/storm-software/storm-ops/commit/04942ee2))
 
 ## 0.42.3 (2024-07-31)
 
-
 ### Bug Fixes
 
-- **git-tools:** Resolved issue when `commitlint` is called without a `message` parameter ([624b24bc](https://github.com/storm-software/storm-ops/commit/624b24bc))
+- **git-tools:** Resolved issue when `commitlint` is called without a `message`
+  parameter
+  ([624b24bc](https://github.com/storm-software/storm-ops/commit/624b24bc))
 
 ## 0.42.2 (2024-07-31)
 
-
 ### Bug Fixes
 
-- **build-tools:** Resolved issue iterating unbuild entry files ([17703513](https://github.com/storm-software/storm-ops/commit/17703513))
+- **build-tools:** Resolved issue iterating unbuild entry files
+  ([17703513](https://github.com/storm-software/storm-ops/commit/17703513))
 
 ## 0.42.1 (2024-07-31)
 
-
 ### Bug Fixes
 
-- **build-tools:** Resolve issues with the output path provided to unbuild ([ee9c2353](https://github.com/storm-software/storm-ops/commit/ee9c2353))
+- **build-tools:** Resolve issues with the output path provided to unbuild
+  ([ee9c2353](https://github.com/storm-software/storm-ops/commit/ee9c2353))
 
 ## 0.42.0 (2024-07-31)
 
-
 ### Features
 
-- **git-tools:** Added the `commitlint` git tools ([250875e7](https://github.com/storm-software/storm-ops/commit/250875e7))
+- **git-tools:** Added the `commitlint` git tools
+  ([250875e7](https://github.com/storm-software/storm-ops/commit/250875e7))
 
 ## 0.41.0 (2024-07-31)
 
-
 ### Features
 
-- **build-tools:** Added the CODEOWNERS linting tool ([63099b1b](https://github.com/storm-software/storm-ops/commit/63099b1b))
+- **build-tools:** Added the CODEOWNERS linting tool
+  ([63099b1b](https://github.com/storm-software/storm-ops/commit/63099b1b))
 
 ## 0.40.0 (2024-07-31)
 
-
 ### Features
 
-- **build-tools:** Added a hook prior to `mkdist` to set custom options ([5c15681b](https://github.com/storm-software/storm-ops/commit/5c15681b))
-
+- **build-tools:** Added a hook prior to `mkdist` to set custom options
+  ([5c15681b](https://github.com/storm-software/storm-ops/commit/5c15681b))
 
 ### Bug Fixes
 
-- **build-tools:** Resolved issue with `tsconfck` import ([4e5b4667](https://github.com/storm-software/storm-ops/commit/4e5b4667))
+- **build-tools:** Resolved issue with `tsconfck` import
+  ([4e5b4667](https://github.com/storm-software/storm-ops/commit/4e5b4667))
 
 ## 0.39.0 (2024-07-31)
 
-
 ### Features
 
-- **build-tools:** Added the `typeDefinitions` rollup plugin ([8a0e0f8a](https://github.com/storm-software/storm-ops/commit/8a0e0f8a))
-
+- **build-tools:** Added the `typeDefinitions` rollup plugin
+  ([8a0e0f8a](https://github.com/storm-software/storm-ops/commit/8a0e0f8a))
 
 ### Bug Fixes
 
-- **build-tools:** Removed unused variables ([d48e358b](https://github.com/storm-software/storm-ops/commit/d48e358b))
+- **build-tools:** Removed unused variables
+  ([d48e358b](https://github.com/storm-software/storm-ops/commit/d48e358b))
 
 ## 0.38.0 (2024-07-31)
 
-
 ### Features
 
-- **build-tools:** Include the `rollup-plugin-typescript2` plugin in configuration hook ([d7e5f74e](https://github.com/storm-software/storm-ops/commit/d7e5f74e))
+- **build-tools:** Include the `rollup-plugin-typescript2` plugin in
+  configuration hook
+  ([d7e5f74e](https://github.com/storm-software/storm-ops/commit/d7e5f74e))
 
 ## 0.37.2 (2024-07-31)
 
-
 ### Bug Fixes
 
-- **build-tools:** Update unbuild configuration to include proper `rootDir` option ([11e7f38b](https://github.com/storm-software/storm-ops/commit/11e7f38b))
+- **build-tools:** Update unbuild configuration to include proper `rootDir`
+  option
+  ([11e7f38b](https://github.com/storm-software/storm-ops/commit/11e7f38b))
 
 ## 0.37.1 (2024-07-31)
 
-
 ### Bug Fixes
 
-- **build-tools:** Remove unused plugin from unbuild ([ad8a5991](https://github.com/storm-software/storm-ops/commit/ad8a5991))
+- **build-tools:** Remove unused plugin from unbuild
+  ([ad8a5991](https://github.com/storm-software/storm-ops/commit/ad8a5991))
 
 ## 0.37.0 (2024-07-31)
 
-
 ### Features
 
-- **create-storm-workspace:** Configure workspace to include GitHub ([eea71de7](https://github.com/storm-software/storm-ops/commit/eea71de7))
+- **create-storm-workspace:** Configure workspace to include GitHub
+  ([eea71de7](https://github.com/storm-software/storm-ops/commit/eea71de7))
 
 ## 0.36.0 (2024-07-30)
 
-
 ### Features
 
-- **storm-ops:** Prevent duplicate workflow action runs ([2d854022](https://github.com/storm-software/storm-ops/commit/2d854022))
+- **storm-ops:** Prevent duplicate workflow action runs
+  ([2d854022](https://github.com/storm-software/storm-ops/commit/2d854022))
 
-- **eslint:** Added the header plugin ([cc0cbbea](https://github.com/storm-software/storm-ops/commit/cc0cbbea))
+- **eslint:** Added the header plugin
+  ([cc0cbbea](https://github.com/storm-software/storm-ops/commit/cc0cbbea))
 
-- **eslint:** Removed invalid JSON configuration from package ([2622ee7e](https://github.com/storm-software/storm-ops/commit/2622ee7e))
+- **eslint:** Removed invalid JSON configuration from package
+  ([2622ee7e](https://github.com/storm-software/storm-ops/commit/2622ee7e))
 
 ## 0.35.0 (2024-07-29)
 
-
 ### Features
 
-- **tsconfig:** Update base TypeScript config to use `NodeNext` modules ([21f3d3f5](https://github.com/storm-software/storm-ops/commit/21f3d3f5))
+- **tsconfig:** Update base TypeScript config to use `NodeNext` modules
+  ([21f3d3f5](https://github.com/storm-software/storm-ops/commit/21f3d3f5))
 
 ## 0.34.0 (2024-07-29)
 
-
 ### Features
 
-- **tsconfig:** Updates around `base` and `core` tsconfig files ([18b553df](https://github.com/storm-software/storm-ops/commit/18b553df))
+- **tsconfig:** Updates around `base` and `core` tsconfig files
+  ([18b553df](https://github.com/storm-software/storm-ops/commit/18b553df))
 
 ## 0.33.1 (2024-07-29)
 

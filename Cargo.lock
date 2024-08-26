@@ -386,7 +386,7 @@ dependencies = [
 
 [[package]]
 name = "storm-config"
-version = "0.6.0"
+version = "0.6.1"
 dependencies = [
  "async-trait",
  "convert_case",
@@ -408,7 +408,7 @@ dependencies = [
 
 [[package]]
 name = "storm-workspace"
-version = "0.6.0"
+version = "0.6.1"
 dependencies = [
  "thiserror",
 ]

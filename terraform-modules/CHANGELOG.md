@@ -1,3 +1,10 @@
+## 0.15.0 (2024-08-26)
+
+
+### Features
+
+- **workspace-tools:** Remove the `format` task as a dependency of `build` ([75966255](https://github.com/storm-software/storm-ops/commit/75966255))
+
 ## 0.14.0 (2024-08-23)
 
 
