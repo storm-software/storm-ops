@@ -81,7 +81,7 @@
     "rebuild-all": "pnpm clean-all && pnpm build-all",
     "release": "node ./dist/packages/git-tools/bin/git.js release",
     "start": "nx serve",
-    "test": "echo Skipping all workspace testing..."
+    "test": "echo Skipping workspace testing..."
   },
   "dependencies": {
     "@angular-devkit/architect": "0.1800.5",

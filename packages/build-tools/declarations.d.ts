@@ -1,28 +1,18 @@
 import type { StormConfig } from "@storm-software/config";
-import type { ExecutorContext } from "@nx/devkit";
-import type { Tree } from "@nx/devkit";
-import type { Options } from "tsup";
 import type {
-  Program,
-  Diagnostic,
-  TransformerFactory,
-  SourceFile,
-  ParsedCommandLine
-} from "typescript";
-import type {
-  TypeScriptBuildOptions,
-  TsupContext,
+  BuildOptions,
   GetConfigParams,
-  BuildOptions
+  TsupContext,
+  TypeScriptBuildOptions
 } from "./src/types";
 
 export * from "./src/types";
+export { outExtension };
 
 declare function outExtension({ format }: { format?: string }): {
   js: string;
   dts: string;
 };
-export { outExtension };
 
 declare function applyDefaultOptions(
   options: TypeScriptBuildOptions
@@ -78,7 +68,7 @@ export { buildWithOptions };
  * @param config - The storm configuration.
  * @param options - The TypeScript compiler options.
  */
-declare async function rolldown(
+declare function rolldown(
   config: StormConfig,
   options: Partial<RolldownOptions> = {}
 ): Promise<void>;
@@ -90,7 +80,7 @@ export { rolldown };
  * @param config - The storm configuration.
  * @param options - The TypeScript compiler options.
  */
-declare async function rolldownWithOptions(
+declare function rolldownWithOptions(
   config: StormConfig,
   options: RolldownOptions
 ): Promise<void>;
