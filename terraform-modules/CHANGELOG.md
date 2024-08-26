@@ -1,3 +1,10 @@
+## 0.16.1 (2024-08-26)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issues with the lint configuration files ([9f7d724c](https://github.com/storm-software/storm-ops/commit/9f7d724c))
+
 ## 0.16.0 (2024-08-26)
 
 

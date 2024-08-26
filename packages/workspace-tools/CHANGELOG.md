@@ -1,9 +1,16 @@
-## 1.159.0 (2024-08-26)
+## 1.159.1 (2024-08-26)
 
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issues with the lint configuration files ([9f7d724c](https://github.com/storm-software/storm-ops/commit/9f7d724c))
+
+## 1.159.0 (2024-08-26)
 
 ### Features
 
-- **workspace-tools:** Resolve issue with invalid `.ls-lint.yml` config file path ([2315850a](https://github.com/storm-software/storm-ops/commit/2315850a))
+- **workspace-tools:** Resolve issue with invalid `.ls-lint.yml` config file
+  path ([2315850a](https://github.com/storm-software/storm-ops/commit/2315850a))
 
 ## 1.158.1 (2024-08-26)
 
