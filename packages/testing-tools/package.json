@@ -32,11 +32,11 @@
     "monorepo"
   ],
   "peerDependencies": {
-    "@nx/jest": "^19.5.6",
+    "@nx/jest": "^19.6.2",
     "jest": "29.7.0"
   },
   "devDependencies": {
-    "@nx/jest": "^19.5.6",
+    "@nx/jest": "^19.6.2",
     "jest": "29.7.0",
     "jest-resolve": "29.7.0"
   },
