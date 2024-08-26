@@ -1,3 +1,10 @@
+## 0.60.1 (2024-08-26)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure the `publish` Cargo property is handled correctly ([67dd03a0](https://github.com/storm-software/storm-ops/commit/67dd03a0))
+
 ## 0.60.0 (2024-08-22)
 
 
