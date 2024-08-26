@@ -1,10 +1,10 @@
 /* eslint-disable */
 export default {
-  displayName: 'terraform-tools',
+  displayName: "terraform-tools",
   preset: "../../jest.preset.js",
   transform: {
     "^.+\\.[tj]s$": ["ts-jest", { tsconfig: "<rootDir>/tsconfig.spec.json" }]
   },
   moduleFileExtensions: ["ts", "js", "html"],
-  coverageDirectory: "../../coverage/packages/terraform-tools'
+  coverageDirectory: "../../coverage/packages/terraform-tools"
 };
