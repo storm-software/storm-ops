@@ -58,7 +58,13 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       targets.lint = {
         cache: true,
         inputs: ["linting", "typescript", "^production"],
-        dependsOn: ["lint-ls", "^lint"],
+        dependsOn: [
+          "lint-ls",
+          "lint-sherif",
+          "lint-knip",
+          "lint-docs",
+          "^lint"
+        ],
         executor: "@nx/eslint:lint",
         options: {
           format: "stylish",

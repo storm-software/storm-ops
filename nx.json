@@ -340,6 +340,7 @@
       "cache": true,
       "inputs": ["linting", "typescript", "^production"],
       "dependsOn": ["^format-prettier"],
+      "executor": "nx:run-commands",
       "options": {
         "command": "pnpm exec prettier \"{projectRoot}/**/*\" --write --ignore-unknown --no-error-on-unmatched-pattern --config=\"packages/prettier/src/config.json\" --ignore-path=\"packages/prettier/src/.prettierignore\" --cache --cache-location=\"tmp/prettier/{projectRoot}\" ",
         "color": true
