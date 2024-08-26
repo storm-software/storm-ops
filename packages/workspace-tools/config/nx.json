@@ -312,7 +312,7 @@
       "dependsOn": ["^lint-ls"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec ls-lint --config=\"@storm-software/linting-tools/ls-lint/.ls-lint.yml\" ",
+        "command": "pnpm exec ls-lint --config=\"./node_modules/@storm-software/linting-tools/ls-lint/.ls-lint.yml\" ",
         "color": true
       }
     },

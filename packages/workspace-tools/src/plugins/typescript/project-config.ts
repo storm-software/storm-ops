@@ -48,7 +48,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
         executor: "nx:run-commands",
         options: {
           command:
-            'pnpm exec ls-lint --config="@storm-software/linting-tools/ls-lint/ls-lint.yml" ',
+            'pnpm exec ls-lint --config="@storm-software/linting-tools/ls-lint/.ls-lint.yml" ',
           color: true
         }
       };

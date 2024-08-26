@@ -86,7 +86,12 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
           "lint-ls": {
             cache: true,
             inputs: ["linting", "rust", "^production"],
-            dependsOn: ["^lint-ls"]
+            dependsOn: ["^lint-ls"],
+            options: {
+              command:
+                'pnpm exec ls-lint --config="./node_modules/@storm-software/linting-tools/ls-lint/.ls-lint.yml" ',
+              color: true
+            }
           },
           lint: {
             cache: true,
