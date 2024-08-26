@@ -1,3 +1,10 @@
+## 0.16.0 (2024-08-26)
+
+
+### Features
+
+- **workspace-tools:** Resolve issue with invalid `.ls-lint.yml` config file path ([2315850a](https://github.com/storm-software/storm-ops/commit/2315850a))
+
 ## 0.15.0 (2024-08-26)
 
 
