@@ -1,9 +1,5 @@
 import type { GeneratorCallback, Tree } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
-import {
-  applyWorkspaceBaseTokens,
-  applyWorkspaceTokens
-} from "@storm-software/config-tools";
 import type {
   BaseGeneratorOptions,
   BaseGeneratorResult,
@@ -39,7 +35,9 @@ export const withRunGenerator =
       writeSuccess,
       writeTrace,
       findWorkspaceRoot,
-      loadStormConfig
+      loadStormConfig,
+      applyWorkspaceBaseTokens,
+      applyWorkspaceTokens
     } = await import("@storm-software/config-tools");
 
     const stopwatch = getStopwatch(name);
@@ -117,7 +115,7 @@ export const withRunGenerator =
       }
 
       return () => {
-        writeSuccess(`Completed running the ${name} task executor!\n`, config);
+        writeSuccess(`Completed running the ${name} generator!\n`, config);
       };
     } catch (error) {
       return () => {
