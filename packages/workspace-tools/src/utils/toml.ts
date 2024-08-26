@@ -9,7 +9,10 @@ export interface CargoToml {
     string,
     string | { version: string; features?: string[]; optional?: boolean }
   >;
-  "dev-dependencies"?: Record<string, string | { version: string; features: string[] }>;
+  "dev-dependencies"?: Record<
+    string,
+    string | { version: string; features: string[] }
+  >;
   [key: string]: any;
 }
 
@@ -45,7 +48,7 @@ export interface Package {
    * false can be used by the end user but it will be converted to an empty
    * array in the cargo metadata output.
    */
-  publish: string[] | null;
+  publish?: string[] | boolean | null;
   authors: string[];
   categories: string[];
   default_run: any;
@@ -138,43 +141,11 @@ export interface Rs2 {
   "all-features": boolean;
 }
 
-export interface Package {
-  name: string;
-  version: string;
-  id: string;
-  license: string;
-  license_file: string;
-  description: string;
-  source: any;
-  dependencies: Dependency[];
-  targets: Target[];
-  features: Features;
-  manifest_path: string;
-  metadata: Metadata;
-  /**
-   * From the docs:
-   * "List of registries to which this package may be published.
-   * Publishing is unrestricted if null, and forbidden if an empty array."
-   *
-   * Additional observation:
-   * false can be used by the end user but it will be converted to an empty
-   * array in the cargo metadata output.
-   */
-  publish: string[] | null;
-  authors: string[];
-  categories: string[];
-  default_run: any;
-  rust_version: string;
-  keywords: string[];
-  readme: string;
-  repository: string;
-  homepage: string;
-  documentation: string;
-  edition: string;
-  links: any;
-}
-
-export function parseCargoTomlWithTree(tree: Tree, projectRoot: string, projectName: string) {
+export function parseCargoTomlWithTree(
+  tree: Tree,
+  projectRoot: string,
+  projectName: string
+) {
   const cargoTomlString = tree.read(`${projectRoot}/Cargo.toml`)?.toString();
   if (!cargoTomlString) {
     logger.error(`Cannot find a Cargo.toml file in the ${projectName}`);

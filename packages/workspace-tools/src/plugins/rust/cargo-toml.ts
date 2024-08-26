@@ -179,8 +179,13 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
           };
         }
 
-        const isPrivate = cargoPackage.publish?.length === 0;
-        if (!isPrivate) {
+        if (
+          cargoPackage.publish === null ||
+          cargoPackage.publish === undefined ||
+          cargoPackage.publish === true ||
+          (Array.isArray(cargoPackage.publish) &&
+            cargoPackage.publish.length > 0)
+        ) {
           project.targets["nx-release-publish"] = {
             cache: true,
             inputs: [
