@@ -757,6 +757,8 @@ Projects with packageRoot configured: ${Array.from(projectNameToPackageRootMap.k
   }
 }
 
+export default releaseVersionGeneratorFn;
+
 async function getNpmRegistry() {
   if (process.env.STORM_REGISTRY_NPM) {
     return process.env.STORM_REGISTRY_NPM;
