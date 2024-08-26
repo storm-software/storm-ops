@@ -1,7 +1,12 @@
-import { relative } from "node:path";
-import { type ChildProcess, execSync, spawn, type StdioOptions } from "node:child_process";
-import type { CargoMetadata, Dependency, Package } from "./toml";
 import { joinPathFragments, workspaceRoot } from "@nx/devkit";
+import {
+  type ChildProcess,
+  execSync,
+  spawn,
+  type StdioOptions
+} from "node:child_process";
+import { relative } from "node:path";
+import type { CargoMetadata, Dependency, Package } from "./toml";
 
 interface CargoRun {
   success: boolean;
@@ -15,14 +20,18 @@ interface RunCargoOptions {
 
 export let childProcess: ChildProcess | null;
 
-export async function cargoCommand(...args: string[]): Promise<{ success: boolean }> {
+export async function cargoCommand(
+  ...args: string[]
+): Promise<{ success: boolean }> {
   console.log(`> cargo ${args.join(" ")}`);
   args.push("--color", "always");
 
   return await Promise.resolve(runProcess("cargo", ...args));
 }
 
-export function cargoRunCommand(...args: string[]): Promise<{ success: boolean }> {
+export function cargoRunCommand(
+  ...args: string[]
+): Promise<{ success: boolean }> {
   console.log(`> cargo ${args.join(" ")}`);
   return new Promise((resolve, reject) => {
     childProcess = spawn("cargo", [...args, "--color", "always"], {
@@ -38,11 +47,11 @@ export function cargoRunCommand(...args: string[]): Promise<{ success: boolean }
     process.on("SIGTERM", () => childProcess?.kill());
     process.on("SIGINT", () => childProcess?.kill());
 
-    childProcess.on("error", (_err) => {
+    childProcess.on("error", _err => {
       reject({ success: false });
     });
 
-    childProcess.on("exit", (code) => {
+    childProcess.on("exit", code => {
       childProcess = null;
       if (code === 0) {
         resolve({ success: true });
@@ -53,7 +62,10 @@ export function cargoRunCommand(...args: string[]): Promise<{ success: boolean }
   });
 }
 
-export function cargoCommandSync(args = "", options?: Partial<RunCargoOptions>): CargoRun {
+export function cargoCommandSync(
+  args = "",
+  options?: Partial<RunCargoOptions>
+): CargoRun {
   const normalizedOptions: RunCargoOptions = {
     stdio: options?.stdio ?? "inherit",
     env: {
@@ -93,11 +105,15 @@ export function cargoMetadata(): CargoMetadata | null {
   return JSON.parse(output.output) as CargoMetadata;
 }
 
-export function isExternal(packageOrDep: Package | Dependency, workspaceRoot: string) {
+export function isExternal(
+  packageOrDep: Package | Dependency,
+  workspaceRoot: string
+) {
   const isRegistry = packageOrDep.source?.startsWith("registry+") ?? false;
   const isGit = packageOrDep.source?.startsWith("git+") ?? false;
   const isOutsideWorkspace =
-    "path" in packageOrDep && relative(workspaceRoot, packageOrDep.path).startsWith("..");
+    "path" in packageOrDep &&
+    relative(workspaceRoot, packageOrDep.path).startsWith("..");
 
   return isRegistry || isGit || isOutsideWorkspace;
 }
@@ -107,9 +123,11 @@ export function runProcess(
   ...args: string[]
 ): { success: boolean } | PromiseLike<{ success: boolean }> {
   const metadata = cargoMetadata();
-  const targetDir = metadata?.target_directory ?? joinPathFragments(workspaceRoot, "dist", "cargo");
+  const targetDir =
+    metadata?.target_directory ??
+    joinPathFragments(workspaceRoot, "dist", "cargo");
 
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     if (process.env.VERCEL) {
       // Vercel doesnt have support for cargo atm, so auto success builds
       return resolve({ success: true });

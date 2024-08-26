@@ -1,5 +1,5 @@
-import { join } from "node:path";
 import type { Config } from "jest";
+import { join } from "node:path";
 
 /**
  * Config for Jest unit tests
@@ -17,8 +17,14 @@ import type { Config } from "jest";
  * @param displayName The name to display in the Jest output
  * @returns The Jest configuration
  */
-export const getJestConfig = (projectDir: string, isNode = true, displayName?: string): Config => ({
-  displayName: displayName ? displayName : projectDir.replaceAll("\\", "-").replaceAll("/", "-"),
+export const getJestConfig = (
+  projectDir: string,
+  isNode = true,
+  displayName?: string
+): Config => ({
+  displayName: displayName
+    ? displayName
+    : projectDir.replaceAll("\\", "-").replaceAll("/", "-"),
   preset: "@storm-software/testing-tools/jest/preset.js",
   testEnvironment: isNode ? "node" : "jsdom",
   transform: {

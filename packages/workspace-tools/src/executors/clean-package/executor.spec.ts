@@ -1,7 +1,7 @@
 import { ExecutorContext } from "@nx/devkit";
 
-import { CleanPublishExecutorSchema } from "./schema";
 import executor from "./executor";
+import { CleanPublishExecutorSchema } from "./schema";
 
 const options: CleanPublishExecutorSchema = {};
 const context: ExecutorContext = {

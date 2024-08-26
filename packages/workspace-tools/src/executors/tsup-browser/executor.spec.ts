@@ -1,5 +1,5 @@
-import { TsupBrowserExecutorSchema } from "./schema";
 import executor from "./executor";
+import { TsupBrowserExecutorSchema } from "./schema";
 
 const options: TsupBrowserExecutorSchema = {};
 

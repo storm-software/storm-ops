@@ -25,12 +25,12 @@ import type { AddLintOptions } from "@nx/js/src/generators/library/library";
 import setupVerdaccio from "@nx/js/src/generators/setup-verdaccio/generator";
 import type { Bundler } from "@nx/js/src/utils/schema";
 import type { PackageJson } from "nx/src/utils/package-json";
-import type { TsupExecutorSchema } from "../executors/tsup/schema";
-import { nxVersion } from "../utils/versions";
 import type {
   TypeScriptLibraryGeneratorNormalizedSchema,
   TypeScriptLibraryGeneratorSchema
 } from "../../declarations.d";
+import type { TsupExecutorSchema } from "../executors/tsup/schema";
+import { nxVersion } from "../utils/versions";
 
 export async function typeScriptLibraryGeneratorFn(
   tree: Tree,

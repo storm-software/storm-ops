@@ -1,14 +1,15 @@
+import type { StormConfig, StormConfigInput } from "@storm-software/config";
 import type { CosmiconfigResult } from "cosmiconfig";
 import type * as z from "zod";
-import type { StormConfig, StormConfigInput } from "@storm-software/config";
 import type {
+  BaseTokenizerOptions,
   LogLevel,
   LogLevelLabel,
-  BaseTokenizerOptions,
   ProjectTokenizerOptions
 } from "./src/types";
 
 export * from "./src/types";
+export { findWorkspaceRoot };
 
 export type DeepPartial<T> = T extends object
   ? {
@@ -22,7 +23,6 @@ export type DeepPartial<T> = T extends object
  * @param pathInsideMonorepo - The path inside the monorepo
  */
 declare function findWorkspaceRoot(pathInsideMonorepo?: string): string;
-export { findWorkspaceRoot };
 
 /**
  * Find the root of the current monorepo safely (do not throw an error if it cannot be found)

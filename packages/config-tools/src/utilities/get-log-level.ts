@@ -35,7 +35,9 @@ export const getLogLevel = (label?: string): LogLevel => {
  * @param logLevel - The log level to convert
  * @returns The log level label
  */
-export const getLogLevelLabel = (logLevel: number = LogLevel.INFO): LogLevelLabel => {
+export const getLogLevelLabel = (
+  logLevel: number = LogLevel.INFO
+): LogLevelLabel => {
   if (logLevel >= LogLevel.ALL) {
     return LogLevelLabel.ALL;
   }

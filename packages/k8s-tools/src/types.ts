@@ -1,4 +1,4 @@
-import { Options } from 'prettier';
+import { Options } from "prettier";
 /** Types for the core library */
 
 /** Interface for objects that can be initialized */
@@ -26,7 +26,7 @@ export abstract class AbstractHelmClient implements Initializable {
   abstract package(options: PackageOptions): Promise<string | undefined>;
 
   async initialize(): Promise<void> {
-    throw new Error('Method not implemented.');
+    throw new Error("Method not implemented.");
   }
 }
 

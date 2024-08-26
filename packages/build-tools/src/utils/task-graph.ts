@@ -1,4 +1,4 @@
-import type { NxJsonConfiguration, TaskGraph, ProjectGraph } from "@nx/devkit";
+import type { NxJsonConfiguration, ProjectGraph, TaskGraph } from "@nx/devkit";
 import {
   createTaskGraph,
   mapTargetDefaultsToDependencies

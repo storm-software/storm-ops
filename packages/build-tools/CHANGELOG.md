@@ -1,14 +1,14 @@
 ## 0.65.1 (2024-08-26)
 
-
 ### Bug Fixes
 
-- **build-tools:** Resolved issue with `async` modifier in declarations ([2b66c821](https://github.com/storm-software/storm-ops/commit/2b66c821))
-
+- **build-tools:** Resolved issue with `async` modifier in declarations
+  ([2b66c821](https://github.com/storm-software/storm-ops/commit/2b66c821))
 
 ### Dependency Upgrades
 
-- **storm-ops:** Upgrade the workspace's Nx version ([4ce6ac9e](https://github.com/storm-software/storm-ops/commit/4ce6ac9e))
+- **storm-ops:** Upgrade the workspace's Nx version
+  ([4ce6ac9e](https://github.com/storm-software/storm-ops/commit/4ce6ac9e))
 
 ## 0.65.0 (2024-08-09)
 

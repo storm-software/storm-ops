@@ -1,5 +1,5 @@
-import { TsupNodeExecutorSchema } from "./schema";
 import executor from "./executor";
+import { TsupNodeExecutorSchema } from "./schema";
 
 const options: TsupNodeExecutorSchema = {};
 

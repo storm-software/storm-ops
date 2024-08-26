@@ -1,27 +1,27 @@
 import { existsSync } from "node:fs";
+import { join } from "node:path";
 import {
+  output,
   readJsonFile,
   workspaceRoot,
-  type RawProjectGraphDependency,
   type CreateDependenciesContext,
   type CreateNodesContext,
   type PackageManager,
   type ProjectGraphExternalNode,
-  output
+  type RawProjectGraphDependency
 } from "nx/src/devkit-exports";
-import { join } from "node:path";
 import {
-  getYarnLockfileDependencies,
-  getYarnLockfileNodes
-} from "nx/src/plugins/js/lock-file/yarn-parser";
+  getNpmLockfileDependencies,
+  getNpmLockfileNodes
+} from "nx/src/plugins/js/lock-file/npm-parser";
 import {
   getPnpmLockfileDependencies,
   getPnpmLockfileNodes
 } from "nx/src/plugins/js/lock-file/pnpm-parser";
 import {
-  getNpmLockfileDependencies,
-  getNpmLockfileNodes
-} from "nx/src/plugins/js/lock-file/npm-parser";
+  getYarnLockfileDependencies,
+  getYarnLockfileNodes
+} from "nx/src/plugins/js/lock-file/yarn-parser";
 
 export const YARN_LOCK_FILE = "yarn.lock";
 export const NPM_LOCK_FILE = "package-lock.json";
@@ -43,7 +43,9 @@ export function getLockFileNodes(
 ): Record<string, ProjectGraphExternalNode> {
   try {
     if (packageManager === "yarn") {
-      const packageJson = readJsonFile(join(context.workspaceRoot, "package.json"));
+      const packageJson = readJsonFile(
+        join(context.workspaceRoot, "package.json")
+      );
       return getYarnLockfileNodes(contents, lockFileHash, packageJson);
     }
     if (packageManager === "pnpm") {
@@ -105,7 +107,9 @@ export function lockFileExists(packageManager: PackageManager): boolean {
   if (packageManager === "npm") {
     return existsSync(NPM_LOCK_PATH);
   }
-  throw new Error(`Unknown package manager ${packageManager} or lock file missing`);
+  throw new Error(
+    `Unknown package manager ${packageManager} or lock file missing`
+  );
 }
 
 /**
@@ -127,7 +131,10 @@ export function getLockFileName(packageManager: PackageManager): string {
 }
 
 // generate body lines for error message
-function errorBodyLines(originalError: Error, additionalInfo: string[] = []): string[] {
+function errorBodyLines(
+  originalError: Error,
+  additionalInfo: string[] = []
+): string[] {
   const result = [
     "Please open an issue at `https://github.com/storm-software/storm-ops/issues/new?template=1-bug.yml` and provide a reproduction.",
     ...(additionalInfo as string[])
@@ -145,5 +152,8 @@ function errorBodyLines(originalError: Error, additionalInfo: string[] = []): st
 }
 
 function isPostInstallProcess(): boolean {
-  return process.env.npm_command === "install" && process.env.npm_lifecycle_event === "postinstall";
+  return (
+    process.env.npm_command === "install" &&
+    process.env.npm_lifecycle_event === "postinstall"
+  );
 }

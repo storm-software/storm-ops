@@ -1,83 +1,89 @@
 ## 1.39.0 (2024-08-04)
 
-
 ### Features
 
-- **config:** Added the `docs` and `licensing` options to the Storm configuration ([c867efe1](https://github.com/storm-software/storm-ops/commit/c867efe1))
+- **config:** Added the `docs` and `licensing` options to the Storm
+  configuration
+  ([c867efe1](https://github.com/storm-software/storm-ops/commit/c867efe1))
 
-- **config:** Updated default `brand` color and added proper URLs to file banners ([008e6ef4](https://github.com/storm-software/storm-ops/commit/008e6ef4))
-
+- **config:** Updated default `brand` color and added proper URLs to file
+  banners
+  ([008e6ef4](https://github.com/storm-software/storm-ops/commit/008e6ef4))
 
 ### Bug Fixes
 
-- **build-tools:** Resolve issues with logic in `outExtension` utility function ([8cdc691b](https://github.com/storm-software/storm-ops/commit/8cdc691b))
+- **build-tools:** Resolve issues with logic in `outExtension` utility function
+  ([8cdc691b](https://github.com/storm-software/storm-ops/commit/8cdc691b))
 
 ## 1.38.0 (2024-08-03)
 
-
 ### Features
 
-- **build-tools:** Add back experimental DTS option to TSUP ([4fe9652b](https://github.com/storm-software/storm-ops/commit/4fe9652b))
+- **build-tools:** Add back experimental DTS option to TSUP
+  ([4fe9652b](https://github.com/storm-software/storm-ops/commit/4fe9652b))
 
 ## 1.37.0 (2024-08-03)
 
-
 ### Features
 
-- **build-tools:** Add tsup build's rollup helpers ([27ecd4e6](https://github.com/storm-software/storm-ops/commit/27ecd4e6))
+- **build-tools:** Add tsup build's rollup helpers
+  ([27ecd4e6](https://github.com/storm-software/storm-ops/commit/27ecd4e6))
 
 ## 1.36.0 (2024-08-02)
 
-
 ### Features
 
-- **build-tools:** Added back the export statements to unbuild configuration ([5fb63682](https://github.com/storm-software/storm-ops/commit/5fb63682))
+- **build-tools:** Added back the export statements to unbuild configuration
+  ([5fb63682](https://github.com/storm-software/storm-ops/commit/5fb63682))
 
 ## 1.35.0 (2024-08-02)
 
-
 ### Features
 
-- **config:** Removed the `ci` option from config and enabled better caching ([2456c216](https://github.com/storm-software/storm-ops/commit/2456c216))
+- **config:** Removed the `ci` option from config and enabled better caching
+  ([2456c216](https://github.com/storm-software/storm-ops/commit/2456c216))
 
-- **build-tools:** Populate the distribution's package.json with `exports` based on project structure ([cf0eed52](https://github.com/storm-software/storm-ops/commit/cf0eed52))
+- **build-tools:** Populate the distribution's package.json with `exports` based
+  on project structure
+  ([cf0eed52](https://github.com/storm-software/storm-ops/commit/cf0eed52))
 
 ## 1.34.1 (2024-07-31)
 
-
 ### Bug Fixes
 
-- **build-tools:** Remove unused plugin from unbuild ([ad8a5991](https://github.com/storm-software/storm-ops/commit/ad8a5991))
+- **build-tools:** Remove unused plugin from unbuild
+  ([ad8a5991](https://github.com/storm-software/storm-ops/commit/ad8a5991))
 
 ## 1.34.0 (2024-07-31)
 
-
 ### Features
 
-- **create-storm-workspace:** Configure workspace to include GitHub ([eea71de7](https://github.com/storm-software/storm-ops/commit/eea71de7))
+- **create-storm-workspace:** Configure workspace to include GitHub
+  ([eea71de7](https://github.com/storm-software/storm-ops/commit/eea71de7))
 
 ## 1.33.0 (2024-07-30)
 
-
 ### Features
 
-- **eslint:** Added the header plugin ([cc0cbbea](https://github.com/storm-software/storm-ops/commit/cc0cbbea))
+- **eslint:** Added the header plugin
+  ([cc0cbbea](https://github.com/storm-software/storm-ops/commit/cc0cbbea))
 
-- **eslint:** Removed invalid JSON configuration from package ([2622ee7e](https://github.com/storm-software/storm-ops/commit/2622ee7e))
+- **eslint:** Removed invalid JSON configuration from package
+  ([2622ee7e](https://github.com/storm-software/storm-ops/commit/2622ee7e))
 
 ## 1.32.0 (2024-07-29)
 
-
 ### Features
 
-- **build-tools:** Update unbuild process to use the `tsconfck` package ([d0e4dbf6](https://github.com/storm-software/storm-ops/commit/d0e4dbf6))
+- **build-tools:** Update unbuild process to use the `tsconfck` package
+  ([d0e4dbf6](https://github.com/storm-software/storm-ops/commit/d0e4dbf6))
 
 ## 1.31.0 (2024-07-29)
 
-
 ### Features
 
-- **config:** Added the `brand2` and `brand3` color tokens ([58705631](https://github.com/storm-software/storm-ops/commit/58705631))
+- **config:** Added the `brand2` and `brand3` color tokens
+  ([58705631](https://github.com/storm-software/storm-ops/commit/58705631))
 
 ## 1.30.0 (2024-07-19)
 

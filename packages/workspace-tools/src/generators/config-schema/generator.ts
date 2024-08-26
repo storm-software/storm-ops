@@ -1,10 +1,10 @@
 import { formatFiles, type Tree, writeJson } from "@nx/devkit";
 import { type StormConfig, StormConfigSchema } from "@storm-software/config";
+import { writeTrace } from "@storm-software/config-tools";
 import * as z from "zod";
 import { JsonSchema7Type, zodToJsonSchema } from "zod-to-json-schema";
 import { withRunGenerator } from "../../base/base-generator";
 import type { ConfigSchemaGeneratorSchema } from "./schema";
-import { writeTrace } from "@storm-software/config-tools";
 
 export type ModuleSchema = {
   name: string;

@@ -39,10 +39,13 @@ export const applyWorkspaceExecutorTokens = async (
 
   if (tokenizerOptions.config) {
     const configKeys = Object.keys(tokenizerOptions.config);
-    if (configKeys.some((configKey) => result.includes(`{${configKey}}`))) {
+    if (configKeys.some(configKey => result.includes(`{${configKey}}`))) {
       for (const configKey of configKeys) {
         if (result.includes(`{${configKey}}`)) {
-          result = result.replaceAll(`{${configKey}}`, tokenizerOptions.config[configKey]);
+          result = result.replaceAll(
+            `{${configKey}}`,
+            tokenizerOptions.config[configKey]
+          );
         }
       }
     }

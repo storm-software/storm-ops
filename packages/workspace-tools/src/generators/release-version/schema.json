@@ -29,10 +29,7 @@
       "type": "string",
       "default": "conventional-commits",
       "description": "Which approach to use to determine the semver specifier used to bump the version of the project.",
-      "enum": [
-        "prompt",
-        "conventional-commits"
-      ]
+      "enum": ["prompt", "conventional-commits"]
     },
     "preid": {
       "type": "string",
@@ -46,11 +43,7 @@
       "type": "string",
       "default": "disk",
       "description": "Which approach to use to determine the current version of the project.",
-      "enum": [
-        "registry",
-        "disk",
-        "git-tag"
-      ]
+      "enum": ["registry", "disk", "git-tag"]
     },
     "currentVersionResolverMetadata": {
       "type": "object",
@@ -58,9 +51,5 @@
       "default": {}
     }
   },
-  "required": [
-    "projects",
-    "projectGraph",
-    "releaseGroup"
-  ]
+  "required": ["projects", "projectGraph", "releaseGroup"]
 }

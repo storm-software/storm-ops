@@ -1,23 +1,25 @@
 ## 1.158.0 (2024-08-26)
 
-
 ### Features
 
-- **workspace-tools:** Remove the `format` task as a dependency of `build` ([75966255](https://github.com/storm-software/storm-ops/commit/75966255))
+- **workspace-tools:** Remove the `format` task as a dependency of `build`
+  ([75966255](https://github.com/storm-software/storm-ops/commit/75966255))
 
-- **workspace-tools:** Remove `lint` task as a dependency of the `build` task ([7ffc3dfe](https://github.com/storm-software/storm-ops/commit/7ffc3dfe))
-
+- **workspace-tools:** Remove `lint` task as a dependency of the `build` task
+  ([7ffc3dfe](https://github.com/storm-software/storm-ops/commit/7ffc3dfe))
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolved issue with Release Version generator return type ([602dcd63](https://github.com/storm-software/storm-ops/commit/602dcd63))
+- **workspace-tools:** Resolved issue with Release Version generator return type
+  ([602dcd63](https://github.com/storm-software/storm-ops/commit/602dcd63))
 
-- **workspace-tools:** Ensure the Release Version generator is default export ([6345fefc](https://github.com/storm-software/storm-ops/commit/6345fefc))
-
+- **workspace-tools:** Ensure the Release Version generator is default export
+  ([6345fefc](https://github.com/storm-software/storm-ops/commit/6345fefc))
 
 ### Dependency Upgrades
 
-- **storm-ops:** Upgrade the workspace's Nx version ([4ce6ac9e](https://github.com/storm-software/storm-ops/commit/4ce6ac9e))
+- **storm-ops:** Upgrade the workspace's Nx version
+  ([4ce6ac9e](https://github.com/storm-software/storm-ops/commit/4ce6ac9e))
 
 ## 1.157.0 (2024-08-23)
 

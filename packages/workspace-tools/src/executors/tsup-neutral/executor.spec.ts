@@ -1,5 +1,5 @@
-import { TsBuildExecutorSchema } from "./schema";
 import executor from "./executor";
+import { TsBuildExecutorSchema } from "./schema";
 
 const options: TsBuildExecutorSchema = {};
 

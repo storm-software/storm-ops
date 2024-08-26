@@ -1,5 +1,5 @@
-import { UnbuildExecutorSchema } from "./schema";
 import executor from "./executor";
+import { UnbuildExecutorSchema } from "./schema";
 
 const options: UnbuildExecutorSchema = {};
 

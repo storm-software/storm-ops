@@ -1,14 +1,14 @@
 ## 0.8.1 (2024-08-26)
 
-
 ### Bug Fixes
 
-- **terraform-tools:** Resolved issue with the Jest configuration file ([16c88699](https://github.com/storm-software/storm-ops/commit/16c88699))
-
+- **terraform-tools:** Resolved issue with the Jest configuration file
+  ([16c88699](https://github.com/storm-software/storm-ops/commit/16c88699))
 
 ### Dependency Upgrades
 
-- **storm-ops:** Upgrade the workspace's Nx version ([4ce6ac9e](https://github.com/storm-software/storm-ops/commit/4ce6ac9e))
+- **storm-ops:** Upgrade the workspace's Nx version
+  ([4ce6ac9e](https://github.com/storm-software/storm-ops/commit/4ce6ac9e))
 
 ## 0.8.0 (2024-08-04)
 

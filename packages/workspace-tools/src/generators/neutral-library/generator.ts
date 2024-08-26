@@ -6,13 +6,13 @@ import {
   names,
   offsetFromRoot
 } from "@nx/devkit";
+import type { TypeScriptLibraryGeneratorSchema } from "../../../declarations.d";
 import { withRunGenerator } from "../../base/base-generator";
 import {
   normalizeOptions,
   typeScriptLibraryGeneratorFn
 } from "../../base/typescript-library-generator";
 import { NeutralLibraryGeneratorSchema } from "./schema";
-import type { TypeScriptLibraryGeneratorSchema } from "../../../declarations.d";
 
 export async function neutralLibraryGeneratorFn(
   tree: Tree,

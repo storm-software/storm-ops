@@ -6,6 +6,7 @@ import {
   names,
   offsetFromRoot
 } from "@nx/devkit";
+import type { TypeScriptLibraryGeneratorSchema } from "../../../declarations.d";
 import { withRunGenerator } from "../../base/base-generator";
 import {
   normalizeOptions,
@@ -13,7 +14,6 @@ import {
 } from "../../base/typescript-library-generator";
 import { typesNodeVersion } from "../../utils/versions";
 import type { NodeLibraryGeneratorSchema } from "./schema";
-import type { TypeScriptLibraryGeneratorSchema } from "../../../declarations.d";
 
 export async function nodeLibraryGeneratorFn(
   tree: Tree,

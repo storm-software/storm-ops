@@ -1,5 +1,5 @@
-import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 import { Tree, readProjectConfiguration } from "@nx/devkit";
+import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 
 import { configSchemaGenerator } from "./generator";
 import { ConfigSchemaGeneratorSchema } from "./schema";

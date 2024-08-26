@@ -1,5 +1,4 @@
 import { joinPathFragments } from "@nx/devkit";
-import type { TypeScriptBuildOptions } from "../../declarations";
 import type { StormConfig } from "@storm-software/config";
 import {
   findWorkspaceRoot,
@@ -7,6 +6,7 @@ import {
   writeDebug
 } from "@storm-software/config-tools";
 import { type Path, globSync } from "glob";
+import type { TypeScriptBuildOptions } from "../../declarations";
 
 export const getEntryPoints = (
   config: StormConfig,

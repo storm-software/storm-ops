@@ -16,5 +16,9 @@ import type { Config } from "jest";
  * @param displayName The name to display in the Jest output
  * @returns The Jest configuration
  */
-declare function getJestConfig(projectDir: string, isNode?: boolean, displayName?: string): Config;
+declare function getJestConfig(
+  projectDir: string,
+  isNode?: boolean,
+  displayName?: string
+): Config;
 export { getJestConfig };

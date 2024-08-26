@@ -1,18 +1,9 @@
-import type { StormConfig } from "@storm-software/config";
-import type { TsupExecutorSchema } from "./src/executors/tsup/schema";
-import type { GeneratorCallback, Tree, ExecutorContext } from "@nx/devkit";
-import type { Options } from "tsup";
-import type { TsupGetConfigOptions } from "./src/types";
-import type {
-  Program,
-  Diagnostic,
-  TransformerFactory,
-  SourceFile,
-  ParsedCommandLine
-} from "typescript";
+import type { ExecutorContext, GeneratorCallback, Tree } from "@nx/devkit";
 import type { NormalizedSchema } from "@nx/js/src/generators/library/library";
 import type { LibraryGeneratorSchema } from "@nx/js/src/utils/schema";
-import type { GetConfigParams } from "@storm-software/build-tools";
+import type { StormConfig } from "@storm-software/config";
+import type { Options } from "tsup";
+import type { TsupExecutorSchema } from "./src/executors/tsup/schema";
 
 export interface TsupContext {
   projectRoot: string;

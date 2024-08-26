@@ -1,107 +1,111 @@
 ## 1.53.0 (2024-08-03)
 
-
 ### Features
 
-- **eslint:** Ignore `prefer-nullish-coalescing` for strings ([dbae2a58](https://github.com/storm-software/storm-ops/commit/dbae2a58))
+- **eslint:** Ignore `prefer-nullish-coalescing` for strings
+  ([dbae2a58](https://github.com/storm-software/storm-ops/commit/dbae2a58))
 
 ## 1.52.0 (2024-08-03)
 
-
 ### Features
 
-- **storm-ops:** Upgrade workspace's Nx package dependencies ([5f31f734](https://github.com/storm-software/storm-ops/commit/5f31f734))
+- **storm-ops:** Upgrade workspace's Nx package dependencies
+  ([5f31f734](https://github.com/storm-software/storm-ops/commit/5f31f734))
 
 ## 1.51.1 (2024-08-03)
 
-
 ### Bug Fixes
 
-- **build-tools:** Resolved issue with the entry name parameter in unbuild config ([f5e5dbdd](https://github.com/storm-software/storm-ops/commit/f5e5dbdd))
+- **build-tools:** Resolved issue with the entry name parameter in unbuild
+  config
+  ([f5e5dbdd](https://github.com/storm-software/storm-ops/commit/f5e5dbdd))
 
 ## 1.51.0 (2024-08-02)
 
-
 ### Features
 
-- **build-tools:** Update the unbuild configuration to get exports from `package.json` files ([bb2fc78f](https://github.com/storm-software/storm-ops/commit/bb2fc78f))
+- **build-tools:** Update the unbuild configuration to get exports from
+  `package.json` files
+  ([bb2fc78f](https://github.com/storm-software/storm-ops/commit/bb2fc78f))
 
 ## 1.50.0 (2024-08-02)
 
-
 ### Features
 
-- **terraform-tools:** Initial check-in of project code ([c4ef4810](https://github.com/storm-software/storm-ops/commit/c4ef4810))
+- **terraform-tools:** Initial check-in of project code
+  ([c4ef4810](https://github.com/storm-software/storm-ops/commit/c4ef4810))
 
 ## 1.49.0 (2024-08-02)
 
-
 ### Features
 
-- **eslint:** Reformatted the banner string whitespace ([2df75cbb](https://github.com/storm-software/storm-ops/commit/2df75cbb))
+- **eslint:** Reformatted the banner string whitespace
+  ([2df75cbb](https://github.com/storm-software/storm-ops/commit/2df75cbb))
 
 ## 1.48.1 (2024-08-02)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolve issue with duplicate plugins ([23c09494](https://github.com/storm-software/storm-ops/commit/23c09494))
+- **eslint:** Resolve issue with duplicate plugins
+  ([23c09494](https://github.com/storm-software/storm-ops/commit/23c09494))
 
 ## 1.48.0 (2024-08-02)
 
-
 ### Features
 
-- **eslint:** Added a banner with `__filename` and `__dirname` to the distribution ([594c0e9a](https://github.com/storm-software/storm-ops/commit/594c0e9a))
+- **eslint:** Added a banner with `__filename` and `__dirname` to the
+  distribution
+  ([594c0e9a](https://github.com/storm-software/storm-ops/commit/594c0e9a))
 
 ## 1.47.0 (2024-08-02)
 
-
 ### Features
 
-- **eslint:** Improved the logic around determining the banner ([4bbb321d](https://github.com/storm-software/storm-ops/commit/4bbb321d))
+- **eslint:** Improved the logic around determining the banner
+  ([4bbb321d](https://github.com/storm-software/storm-ops/commit/4bbb321d))
 
 ## 1.46.0 (2024-08-01)
 
-
 ### Features
 
-- **eslint:** Added the `parserOptions` parameter to the preset's options ([344db07c](https://github.com/storm-software/storm-ops/commit/344db07c))
+- **eslint:** Added the `parserOptions` parameter to the preset's options
+  ([344db07c](https://github.com/storm-software/storm-ops/commit/344db07c))
 
 ## 1.45.1 (2024-08-01)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolved issues with invalid TypeScript flat configuration ([88166ab1](https://github.com/storm-software/storm-ops/commit/88166ab1))
+- **eslint:** Resolved issues with invalid TypeScript flat configuration
+  ([88166ab1](https://github.com/storm-software/storm-ops/commit/88166ab1))
 
 ## 1.45.0 (2024-08-01)
 
-
 ### Features
 
-- **git-tools:** Ensure `.git/COMMIT_EDITMSG` exists before reading from disk ([7abae7ae](https://github.com/storm-software/storm-ops/commit/7abae7ae))
+- **git-tools:** Ensure `.git/COMMIT_EDITMSG` exists before reading from disk
+  ([7abae7ae](https://github.com/storm-software/storm-ops/commit/7abae7ae))
 
 ## 1.44.2 (2024-07-31)
 
-
 ### Bug Fixes
 
-- **git-tools:** Resolved issue when `commitlint` is called without a `message` parameter ([624b24bc](https://github.com/storm-software/storm-ops/commit/624b24bc))
+- **git-tools:** Resolved issue when `commitlint` is called without a `message`
+  parameter
+  ([624b24bc](https://github.com/storm-software/storm-ops/commit/624b24bc))
 
 ## 1.44.1 (2024-07-31)
 
-
 ### Bug Fixes
 
-- **build-tools:** Resolve issues with the output path provided to unbuild ([ee9c2353](https://github.com/storm-software/storm-ops/commit/ee9c2353))
+- **build-tools:** Resolve issues with the output path provided to unbuild
+  ([ee9c2353](https://github.com/storm-software/storm-ops/commit/ee9c2353))
 
 ## 1.44.0 (2024-07-31)
 
-
 ### Features
 
-- **build-tools:** Added the CODEOWNERS linting tool ([63099b1b](https://github.com/storm-software/storm-ops/commit/63099b1b))
+- **build-tools:** Added the CODEOWNERS linting tool
+  ([63099b1b](https://github.com/storm-software/storm-ops/commit/63099b1b))
 
 ## 1.43.0 (2024-07-17)
 

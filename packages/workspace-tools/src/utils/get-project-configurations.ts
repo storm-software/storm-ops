@@ -11,9 +11,9 @@ export const getProjectConfigurations = async <
 >(): Promise<Record<string, TConfig>> => {
   const { findWorkspaceRoot } = await import("@storm-software/config-tools");
 
-  return retrieveProjectConfigurationsWithoutPluginInference(findWorkspaceRoot()) as Promise<
-    Record<string, TConfig>
-  >;
+  return retrieveProjectConfigurationsWithoutPluginInference(
+    findWorkspaceRoot()
+  ) as Promise<Record<string, TConfig>>;
 };
 
 /**

@@ -34,9 +34,9 @@
   ],
   "peerDependencies": {
     "@microsoft/api-extractor": "7.46.2",
-    "@nx/devkit": "19.6.2",
+    "@nx/devkit": "^19.6.2",
     "@nx/js": "^19.6.2",
-    "@nx/workspace": "19.6.2",
+    "@nx/workspace": "^19.6.2",
     "nx": "^19.6.2"
   },
   "peerDependenciesMeta": {

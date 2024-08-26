@@ -1,22 +1,22 @@
 import type { ExecutorContext } from "@nx/devkit";
-import type { StormConfig } from "@storm-software/config";
-import { withRunExecutor } from "../../base/base-executor";
-import { CleanPackageExecutorSchema } from "./schema";
 import { joinPathFragments } from "@nx/devkit";
-import { createFilesFilter, filterObjectByKey, isObject } from "./utils";
-import { PackageJson } from "./types";
+import type { StormConfig } from "@storm-software/config";
 import {
+  copy,
   mkdir,
   pathExists,
+  readFile,
+  readJson,
   remove,
   writeFile,
-  readFile,
-  copy,
-  writeJson,
-  readJson
+  writeJson
 } from "fs-extra";
 import { Glob } from "glob";
+import { withRunExecutor } from "../../base/base-executor";
 import { IGNORE_FIELDS, NPM_SCRIPTS, PUBLISH_CONFIG_FIELDS } from "./constants";
+import { CleanPackageExecutorSchema } from "./schema";
+import { PackageJson } from "./types";
+import { createFilesFilter, filterObjectByKey, isObject } from "./utils";
 
 export async function cleanPackageExecutorFn(
   options: CleanPackageExecutorSchema,
