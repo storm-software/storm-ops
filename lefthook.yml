@@ -83,11 +83,15 @@ pre-push:
       glob: "**/{README.md,README.*.md,readme/**/*,package.json,executors.json,generators.json}"
       run: "pnpm format-readme"
       stage_fixed: true
-    format:
+    prettier:
       files: "git diff --name-only HEAD @{push}"
       glob: "!packages/workspace-tools/src/generators/*/files/**/*"
       run: "pnpm exec prettier {files} --write --ignore-unknown
         --no-error-on-unmatched-pattern --cache"
+      stage_fixed: true
+    format:
+      glob: "**/*"
+      run: "pnpm format"
       stage_fixed: true
     build:
       glob: "**/*"

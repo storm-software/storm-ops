@@ -131,7 +131,7 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
           build: {
             cache: true,
             inputs: ["rust", "^production"],
-            dependsOn: ["format", "^build"],
+            dependsOn: ["lint", "^build"],
             executor: "@monodon/rust:check",
             outputs: ["{options.target-dir}"],
             options: {
