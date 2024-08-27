@@ -1,3 +1,21 @@
+## 1.160.0 (2024-08-27)
+
+
+### Features
+
+- **workspace-tools:** Added Cargo executors for build, check, doc, clippy, and format ([52ffcec8](https://github.com/storm-software/storm-ops/commit/52ffcec8))
+
+- **workspace-tools:** Added the `profiles` option to Cargo plugin ([518620ad](https://github.com/storm-software/storm-ops/commit/518620ad))
+
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure `dev` is used as default profile ([f9a49bc5](https://github.com/storm-software/storm-ops/commit/f9a49bc5))
+
+- **workspace-tools:** Added the required json properties to executor schema ([c99d89f8](https://github.com/storm-software/storm-ops/commit/c99d89f8))
+
+- **workspace-tools:** Update the Cargo executors body function signature ([e40fd886](https://github.com/storm-software/storm-ops/commit/e40fd886))
+
 ## 1.159.1 (2024-08-26)
 
 ### Bug Fixes

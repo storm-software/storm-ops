@@ -1,3 +1,10 @@
+## 0.6.2 (2024-08-27)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Update the Cargo executors body function signature ([e40fd886](https://github.com/storm-software/storm-ops/commit/e40fd886))
+
 ## 0.6.1 (2024-08-26)
 
 

@@ -11,11 +11,11 @@ license = { workspace = true }
 name = 'storm-workspace'
 readme = './README.md'
 repository = { workspace = true }
-version = '0.6.1'
+version = '0.6.2'
 
 [dependencies]
 thiserror = '=1.0.61'
 
 [lib]
-name = "storm_workspace"
-path = "src/lib.rs"
+name = 'storm_workspace'
+path = 'src/lib.rs'

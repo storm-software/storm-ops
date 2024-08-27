@@ -1,3 +1,10 @@
+## 0.61.0 (2024-08-27)
+
+
+### Features
+
+- **workspace-tools:** Added Cargo executors for build, check, doc, clippy, and format ([52ffcec8](https://github.com/storm-software/storm-ops/commit/52ffcec8))
+
 ## 0.60.2 (2024-08-26)
 
 
