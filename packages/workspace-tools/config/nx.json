@@ -424,7 +424,7 @@
       "cache": true,
       "outputs": ["{options.outputPath}"],
       "inputs": ["linting", "documentation", "default", "^production"],
-      "dependsOn": ["build", "lint-docs", "^docs"]
+      "dependsOn": ["build", "format-readme", "lint-docs", "^docs"]
     },
     "test": {
       "cache": true,

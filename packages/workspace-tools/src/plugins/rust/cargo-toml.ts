@@ -174,11 +174,11 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
           project.targets.docs = {
             cache: true,
             inputs: ["linting", "documentation", "default", "^production"],
-            dependsOn: ["build", "lint-docs", "^docs"],
+            dependsOn: ["build", "format-readme", "lint-docs", "^docs"],
             outputs: [`{workspaceRoot}/dist/docs/${cargoPackage.name}`],
             executor: "nx:run-commands",
             options: {
-              command: `cargo doc -p ${project.name} --target-dir dist/docs/${cargoPackage.name}`,
+              command: `cargo doc -p ${project.name} --target-dir dist/docs/${cargoPackage.name} --no-deps --all-features`,
               color: true
             }
           };
@@ -200,6 +200,7 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
               "rust",
               "^production"
             ],
+            dependsOn: ["build", "^nx-release-publish"],
             executor: "@storm-software/workspace-tools:cargo-publish",
             options: {
               packageRoot: root
