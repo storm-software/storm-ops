@@ -21,30 +21,20 @@ shared-version = true
 tag-prefix = ''
 publish = false
 
-[profile.release]
-# configuration adapted from oxc
-# https://github.com/Boshen/oxc/blob/ea85ee9f2d64dd284c5b7410f491d81fb879abae/Cargo.toml#L89-L97
-opt-level = 3
-lto = "fat"
-codegen-units = 1
-strip = "symbols"
-debug = false
-panic = "abort"   # Let it crash and force ourselves to write safe Rust.
+# [profile.release]
+# # configuration adapted from oxc
+# # https://github.com/Boshen/oxc/blob/ea85ee9f2d64dd284c5b7410f491d81fb879abae/Cargo.toml#L89-L97
+# opt-level = 3
+# lto = "fat"
+# codegen-units = 1
+# strip = "symbols"
+# debug = false
+# panic = "abort"   # Let it crash and force ourselves to write safe Rust.
 
-[profile.dev.build-override]
-strip = 'debuginfo'
-incremental = false
+# [profile.dev.build-override]
+# strip = 'debuginfo'
+# incremental = false
 
-[profile.release-dhat]
-inherits = 'release'
-debug = 1
-
-# Make insta run faster by compiling with release mode optimizations
-# https://docs.rs/insta/latest/insta/#optional-faster-runs
-[profile.dev.package.insta]
-opt-level = 3
-
-# Make insta diffing libary faster by compiling with release mode optimizations
-# https://docs.rs/insta/latest/insta/#optional-faster-runs
-[profile.dev.package.similar]
-opt-level = 3
+# [profile.release-dhat]
+# inherits = 'release'
+# debug = 1

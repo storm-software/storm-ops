@@ -24,7 +24,6 @@ export default withRunExecutor<CargoFormatExecutorSchema>(
       applyDefaultOptions: (options: CargoFormatExecutorSchema) => {
         options.outputPath ??= "dist/target/{projectRoot}";
         options.toolchain ??= "stable";
-        options.profile ??= "dev";
         options.release ??= false;
 
         return options as CargoFormatExecutorSchema;

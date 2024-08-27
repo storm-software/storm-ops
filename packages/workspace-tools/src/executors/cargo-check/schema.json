@@ -13,7 +13,6 @@
     },
     "profile": {
       "type": "string",
-      "default": "dev"
     },
     "toolchain": {
       "type": "string",

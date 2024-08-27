@@ -23,12 +23,22 @@ import {
 import type { Package } from "../../utils/toml";
 
 export const name = "storm-software/rust/cargo-toml";
+export const description = "Plugin for parsing Cargo.toml files";
+
+export type CargoPluginProfileMap = Record<string, string> & {
+  development?: string;
+  production?: string;
+};
+export const DefaultCargoPluginProfileMap = {
+  development: "dev",
+  production: "prod"
+};
 
 export interface CargoPluginOptions {
   includeApps?: boolean;
   skipDocs?: boolean;
   toolchain?: "stable" | "beta" | "nightly";
-  defaultProfile?: string;
+  profiles?: CargoPluginProfileMap;
 }
 
 export const createNodes: CreateNodes<CargoPluginOptions> = [
@@ -37,7 +47,8 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
     cargoFile: string,
     opts: CargoPluginOptions = {
       includeApps: true,
-      skipDocs: false
+      skipDocs: false,
+      profiles: {}
     },
     ctx: CreateNodesContext
   ) => {
@@ -50,6 +61,18 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
 
     const externalNodes: Record<string, ProjectGraphExternalNode> = {};
     const projects: Record<string, ProjectConfiguration> = {};
+
+    const profiles = {
+      ...DefaultCargoPluginProfileMap,
+      ...opts.profiles
+    };
+    const configurations = Object.keys(profiles).reduce((ret, key) => {
+      ret[key] = {
+        profile: profiles[key]
+      };
+
+      return ret;
+    }, {});
 
     const cargoPackageMap = cargoPackages.reduce((acc, p) => {
       if (!acc.has(p.name)) {
@@ -104,10 +127,11 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             dependsOn: ["^lint"],
             executor: "@storm-software/workspace-tools:cargo-clippy",
             options: {
-              profile: opts.defaultProfile,
               toolchain: opts.toolchain,
               fix: false
-            }
+            },
+            defaultConfiguration: "development",
+            configurations
           },
           check: {
             cache: true,
@@ -115,9 +139,10 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             dependsOn: ["lint", "^check"],
             executor: "@storm-software/workspace-tools:cargo-check",
             options: {
-              profile: opts.defaultProfile,
               toolchain: opts.toolchain
-            }
+            },
+            defaultConfiguration: "development",
+            configurations
           },
           "format-readme": {
             cache: true,
@@ -135,10 +160,11 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             dependsOn: ["^format-clippy"],
             executor: "@storm-software/workspace-tools:cargo-clippy",
             options: {
-              profile: opts.defaultProfile,
               toolchain: opts.toolchain,
               fix: true
-            }
+            },
+            defaultConfiguration: "development",
+            configurations
           },
           format: {
             cache: true,
@@ -149,11 +175,13 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
               "format-toml",
               "^format"
             ],
-            executor: "nx:run-commands",
+            executor: "@storm-software/workspace-tools:cargo-format",
             options: {
-              command: `cargo fmt -p ${project.name}`,
-              color: true
-            }
+              toolchain: opts.toolchain,
+              fix: true
+            },
+            defaultConfiguration: "development",
+            configurations
           },
           clean: {
             cache: true,
@@ -173,9 +201,10 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             executor: "@storm-software/workspace-tools:cargo-build",
             outputs: [`{workspaceRoot}/dist/target/{projectRoot}`],
             options: {
-              profile: opts.defaultProfile,
               toolchain: opts.toolchain
-            }
+            },
+            defaultConfiguration: "development",
+            configurations
           },
           rebuild: {
             cache: false,
@@ -184,9 +213,10 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             executor: "@storm-software/workspace-tools:cargo-build",
             outputs: [`{workspaceRoot}/dist/target/{projectRoot}`],
             options: {
-              profile: opts.defaultProfile,
               toolchain: opts.toolchain
-            }
+            },
+            defaultConfiguration: "development",
+            configurations
           },
           test: {
             cache: true,
@@ -197,11 +227,8 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             options: {
               "target-dir": `{workspaceRoot}/dist/target/{projectRoot}`
             },
-            configurations: {
-              production: {
-                release: true
-              }
-            }
+            defaultConfiguration: "development",
+            configurations
           }
         };
 
@@ -213,9 +240,10 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             outputs: [`{workspaceRoot}/dist/docs/{projectRoot}`],
             executor: "@storm-software/workspace-tools:cargo-doc",
             options: {
-              profile: opts.defaultProfile,
               toolchain: opts.toolchain
-            }
+            },
+            defaultConfiguration: "development",
+            configurations
           };
         }
 
@@ -239,7 +267,9 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             executor: "@storm-software/workspace-tools:cargo-publish",
             options: {
               packageRoot: root
-            }
+            },
+            defaultConfiguration: "development",
+            configurations
           };
         }
 

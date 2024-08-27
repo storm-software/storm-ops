@@ -12,8 +12,7 @@
       "default": false
     },
     "profile": {
-      "type": "string",
-      "default": "dev"
+      "type": "string"
     },
     "toolchain": {
       "type": "string",

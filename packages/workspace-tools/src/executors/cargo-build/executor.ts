@@ -24,7 +24,6 @@ export default withRunExecutor<CargoBuildExecutorSchema>(
       applyDefaultOptions: (options: CargoBuildExecutorSchema) => {
         options.outputPath ??= "dist/target/{projectRoot}";
         options.toolchain ??= "stable";
-        options.profile ??= "dev";
         options.release ??= false;
 
         return options as CargoBuildExecutorSchema;

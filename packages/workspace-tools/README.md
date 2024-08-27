@@ -528,11 +528,12 @@ The following executor options are available:
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
 | release      | `boolean`    |     |     | 
- | profile      | `string`    |     | "debug"     | 
+ | profile      | `string`    |     | "dev"     | 
  | outputPath      | `string`    | The output path of the generated files.     | "dist/target/{projectRoot}"     | 
  | toolchain      | "stable" \| "beta" \| "nightly"     |     | "stable"     | 
  | features      | `string`   | Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported     |     | 
  | allFeatures      | `boolean`    | Build all binary targets     |     | 
+ | target      | `string`    |     |     | 
  | lib      | `boolean`    | Build the package's library     |     | 
  | bin      | `string`   | Build the specified binary. Array of names or common Unix glob patterns is supported     |     | 
  | bins      | `boolean`    | Build all binary targets     |     | 
@@ -568,10 +569,11 @@ The following executor options are available:
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
 | release      | `boolean`    |     |     | 
- | profile      | `string`    |     | "debug"     | 
+ | profile      | `string`    |     | "dev"     | 
  | toolchain      | "stable" \| "beta" \| "nightly"     |     | "stable"     | 
  | features      | `string`   | Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported     |     | 
  | allFeatures      | `boolean`    | Build all binary targets     |     | 
+ | target      | `string`    |     |     | 
  | lib      | `boolean`    | Build the package's library     |     | 
  | bin      | `string`   | Build the specified binary. Array of names or common Unix glob patterns is supported     |     | 
  | bins      | `boolean`    | Build all binary targets     |     | 
@@ -646,7 +648,7 @@ The following executor options are available:
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
 | release      | `boolean`    |     |     | 
- | profile      | `string`    |     | "debug"     | 
+ | profile      | `string`    |     | "dev"     | 
  | toolchain      | "stable" \| "beta" \| "nightly"     |     | "stable"     | 
  | target      | `string`    |     |     | 
  | fix      | `boolean`    |     |     | 

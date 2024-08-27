@@ -23,7 +23,6 @@ export default withRunExecutor<CargoCheckExecutorSchema>(
     hooks: {
       applyDefaultOptions: (options: CargoCheckExecutorSchema) => {
         options.toolchain ??= "stable";
-        options.profile ??= "dev";
         options.release ??= false;
 
         return options as CargoCheckExecutorSchema;
