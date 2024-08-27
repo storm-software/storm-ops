@@ -53,7 +53,6 @@
     }
   },
   "dependencies": {
-    "@actions/exec": "^1.1.1",
     "@nx/devkit": "^19.6.2",
     "@nx/workspace": "^19.6.2",
     "js-yaml": "^4.1.0",

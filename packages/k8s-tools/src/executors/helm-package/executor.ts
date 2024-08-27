@@ -22,7 +22,7 @@ export async function serveExecutor(
   if (options.dependencies?.repositories) {
     for (const repository of options.dependencies.repositories) {
       if (repository.name && repository.url) {
-        await helm.addRepository(repository.name, repository.url);
+        helm.addRepository(repository.name, repository.url);
       } else {
         throw new Error("Repository name and url are required");
       }
@@ -30,11 +30,11 @@ export async function serveExecutor(
   }
 
   if (options.dependencies?.update) {
-    await helm.dependencyUpdate(options.chartFolder);
+    helm.dependencyUpdate(options.chartFolder);
   }
 
   if (options.dependencies?.build) {
-    await helm.dependencyBuild(options.chartFolder);
+    helm.dependencyBuild(options.chartFolder);
   }
 
   const chartPath = await helm.package({
@@ -43,8 +43,8 @@ export async function serveExecutor(
   });
 
   if (options.push && chartPath && options.remote) {
-    await helm.push({
-      chartPath: chartPath,
+    helm.push({
+      chartPath,
       remote: options.remote
     });
   } else {
