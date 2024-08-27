@@ -126,6 +126,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: 7.16.0
         version: 7.16.0(eslint@9.5.0)(typescript@5.5.3)
+      c12:
+        specifier: 1.10.0
+        version: 1.10.0
       conventional-changelog-conventionalcommits:
         specifier: 8.0.0
         version: 8.0.0
@@ -3115,6 +3118,7 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
+    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 

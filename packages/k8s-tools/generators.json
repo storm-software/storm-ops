@@ -3,11 +3,13 @@
     "helm-chart": {
       "factory": "./src/generators/helm-chart/generator",
       "schema": "./src/generators/helm-chart/schema.json",
+      "aliases": ["add-chart", "chart"],
       "description": "Generate a new Helm chart"
     },
     "helm-dependency": {
       "factory": "./src/generators/helm-dependency/generator",
       "schema": "./src/generators/helm-dependency/schema.json",
+      "aliases": ["add-dependency", "dependency"],
       "description": "Generate a new dependency for an existing Helm chart"
     }
   }
