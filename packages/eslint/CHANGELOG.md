@@ -1,3 +1,10 @@
+## 0.61.2 (2024-08-27)
+
+
+### Bug Fixes
+
+- **k8s-tools:** Resolved issue with invalid import ([82a782d4](https://github.com/storm-software/storm-ops/commit/82a782d4))
+
 ## 0.61.1 (2024-08-27)
 
 

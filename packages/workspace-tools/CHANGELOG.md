@@ -1,9 +1,16 @@
-## 1.162.0 (2024-08-27)
+## 1.162.1 (2024-08-27)
 
+
+### Bug Fixes
+
+- **k8s-tools:** Resolved issue with invalid import ([82a782d4](https://github.com/storm-software/storm-ops/commit/82a782d4))
+
+## 1.162.0 (2024-08-27)
 
 ### Features
 
-- **k8s-tools:** Added aliases for `helm-chart` and `helm-dependency` generators ([16a4b7c7](https://github.com/storm-software/storm-ops/commit/16a4b7c7))
+- **k8s-tools:** Added aliases for `helm-chart` and `helm-dependency` generators
+  ([16a4b7c7](https://github.com/storm-software/storm-ops/commit/16a4b7c7))
 
 ## 1.161.1 (2024-08-27)
 
