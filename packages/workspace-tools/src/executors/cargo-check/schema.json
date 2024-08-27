@@ -9,13 +9,16 @@
   "properties": {
     "release": {
       "type": "boolean",
-      "default": false
+      "default": false,
+      "description": "Run the Cargo command for the project in release mode"
     },
     "profile": {
       "type": "string",
+      "description": "Build artifacts with the specified profile"
     },
     "toolchain": {
       "type": "string",
+      "description": "The Rust toolchain to use",
       "enum": ["stable", "beta", "nightly"],
       "default": "stable"
     },
@@ -40,7 +43,8 @@
       "alias": "all-features"
     },
     "target": {
-      "type": "string"
+      "type": "string",
+      "description": "Build the specified target"
     },
     "lib": {
       "type": "boolean",
