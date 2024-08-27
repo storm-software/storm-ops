@@ -1,108 +1,58 @@
 import {
-  convertNxGenerator,
   formatFiles,
-  GeneratorCallback,
   ProjectConfiguration,
   readProjectConfiguration,
-  runTasksInSerial,
   Tree,
   updateProjectConfiguration
 } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
+import { withRunGenerator } from "@storm-software/workspace-tools";
 import yaml from "js-yaml";
 import type { HelmDependencyGeneratorSchema } from "./schema";
 
-export async function helmDependencyGenerator(
+export async function helmDependencyGeneratorFn(
   tree: Tree,
-  options: HelmDependencyGeneratorSchema
+  options: HelmDependencyGeneratorSchema,
+  config?: StormConfig
 ) {
-  const {
-    getStopwatch,
-    writeDebug,
-    writeError,
-    writeFatal,
-    writeInfo,
-    writeTrace,
-    findWorkspaceRoot,
-    loadStormConfig
-  } = await import("@storm-software/config-tools");
+  const { writeTrace } = await import("@storm-software/config-tools");
 
-  const stopwatch = getStopwatch("Storm Worker generator");
+  writeTrace("📝  Preparing to add Helm Dependency", config);
 
-  let config: StormConfig | undefined;
-  try {
-    writeInfo(`⚡ Running the Storm Worker generator...\n\n`, config);
+  const project = readProjectConfiguration(tree, options.project);
 
-    const workspaceRoot = findWorkspaceRoot();
-
-    writeDebug(
-      `Loading the Storm Config from environment variables and storm.json file...
-- workspaceRoot: ${workspaceRoot}`,
-      config
+  if (!project.targets?.["helm-package"]) {
+    throw new Error(
+      `Project ${options.project} does not have a helm target. Please run the chart generator first.`
     );
-
-    config = await loadStormConfig(workspaceRoot);
-    writeTrace(
-      `Loaded Storm config into env: \n${Object.keys(process.env)
-        .map(key => ` - ${key}=${JSON.stringify(process.env[key])}`)
-        .join("\n")}`,
-      config
-    );
-
-    const tasks: GeneratorCallback[] = [];
-
-    tasks.push(async () => {
-      const project = readProjectConfiguration(tree, options.project);
-
-      if (!project.targets?.["helm-package"]) {
-        throw new Error(
-          `Project ${options.project} does not have a helm target. Please run the chart generator first.`
-        );
-      }
-
-      updateProjectConfiguration(
-        tree,
-        options.project,
-        addDependencyToConfig(
-          project,
-          options.repositoryName,
-          options.repository
-        )
-      );
-
-      updateChartYaml(
-        tree,
-        project,
-        options.chartName!,
-        options.chartVersion!,
-        options.repository
-      );
-
-      if (options.format) {
-        await formatFiles(tree);
-      }
-    });
-
-    return runTasksInSerial(...tasks);
-  } catch (error) {
-    return () => {
-      writeFatal(
-        "A fatal error occurred while running the generator - the process was forced to terminate",
-        config
-      );
-      writeError(
-        `An exception was thrown in the generator's process \n - Details: ${error.message}\n - Stacktrace: ${error.stack}`,
-        config
-      );
-    };
-  } finally {
-    stopwatch();
   }
+
+  updateProjectConfiguration(
+    tree,
+    options.project,
+    addDependencyToConfig(project, options.repositoryName, options.repository)
+  );
+
+  updateChartYaml(
+    tree,
+    project,
+    options.chartName!,
+    options.chartVersion!,
+    options.repository
+  );
+
+  if (options.format) {
+    await formatFiles(tree);
+  }
+
+  return {
+    success: true
+  };
 }
 
-export default helmDependencyGenerator;
-export const helmDependencySchematic = convertNxGenerator(
-  helmDependencyGenerator
+export default withRunGenerator<HelmDependencyGeneratorSchema>(
+  "Helm Dependency",
+  helmDependencyGeneratorFn
 );
 
 function addDependencyToConfig(
