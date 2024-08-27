@@ -1,9 +1,17 @@
-## 1.161.0 (2024-08-27)
+## 1.161.1 (2024-08-27)
 
+
+### Bug Fixes
+
+- **k8s-tools:** Resolved issue invoking generator functions ([405367cb](https://github.com/storm-software/storm-ops/commit/405367cb))
+
+## 1.161.0 (2024-08-27)
 
 ### Features
 
-- **workspace-tools:** Update the `defaultConfiguration` to `production` for release ([62258f36](https://github.com/storm-software/storm-ops/commit/62258f36))
+- **workspace-tools:** Update the `defaultConfiguration` to `production` for
+  release
+  ([62258f36](https://github.com/storm-software/storm-ops/commit/62258f36))
 
 ## 1.160.0 (2024-08-27)
 

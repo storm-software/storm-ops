@@ -1,3 +1,10 @@
+## 0.61.1 (2024-08-27)
+
+
+### Bug Fixes
+
+- **k8s-tools:** Resolved issue invoking generator functions ([405367cb](https://github.com/storm-software/storm-ops/commit/405367cb))
+
 ## 0.61.0 (2024-08-27)
 
 
