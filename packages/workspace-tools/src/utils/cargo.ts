@@ -1,4 +1,4 @@
-import { joinPathFragments, workspaceRoot } from "@nx/devkit";
+import { ExecutorContext, joinPathFragments, workspaceRoot } from "@nx/devkit";
 import {
   type ChildProcess,
   execSync,
@@ -6,6 +6,7 @@ import {
   type StdioOptions
 } from "node:child_process";
 import { relative } from "node:path";
+import { CargoBaseExecutorSchema } from "../../declarations.d";
 import type { CargoMetadata, Dependency, Package } from "./toml";
 
 interface CargoRun {
@@ -18,7 +19,74 @@ interface RunCargoOptions {
   env: NodeJS.ProcessEnv | undefined;
 }
 
+export const INVALID_CARGO_ARGS = [
+  "allFeatures",
+  "allTargets",
+  "main",
+  "outputPath",
+  "tsConfig"
+];
+
 export let childProcess: ChildProcess | null;
+
+export const buildCargoCommand = (
+  baseCommand: string,
+  options: CargoBaseExecutorSchema,
+  context: ExecutorContext
+): string[] => {
+  const args = [] as string[];
+
+  if (options.toolchain && options.toolchain !== "stable") {
+    args.push(`+${options.toolchain}`);
+  }
+
+  args.push(baseCommand);
+
+  for (const [key, value] of Object.entries(options)) {
+    if (
+      key === "toolchain" ||
+      key === "release" ||
+      INVALID_CARGO_ARGS.includes(key)
+    ) {
+      continue;
+    }
+
+    if (typeof value === "boolean") {
+      // false flags should not be added to the cargo args
+      if (value) {
+        args.push(`--${key}`);
+      }
+    } else if (Array.isArray(value)) {
+      for (const item of value) {
+        args.push(`--${key}`, item);
+      }
+    } else {
+      args.push(`--${key}`, value);
+    }
+  }
+
+  if (options.allFeatures && !args.includes("--all-features")) {
+    args.push("--all-features");
+  }
+
+  if (options.allTargets && !args.includes("--all-targets")) {
+    args.push("--all-targets");
+  }
+
+  if (options.release && !args.includes("--profile")) {
+    args.push("--release");
+  }
+
+  if (context.projectName && !args.includes("--package")) {
+    args.push("-p", context.projectName);
+  }
+
+  if (options.outputPath && !args.includes("--target-dir")) {
+    args.push("--target-dir", options.outputPath);
+  }
+
+  return args;
+};
 
 export async function cargoCommand(
   ...args: string[]

@@ -26,16 +26,6 @@
       "schema": "./src/executors/typia/schema.json",
       "description": "Run the Typia generator to create runtime type validators"
     },
-    "npm-publish": {
-      "implementation": "./src/executors/npm-publish/executor",
-      "schema": "./src/executors/npm-publish/schema.json",
-      "description": "Publish a package to the NPM registry"
-    },
-    "cargo-publish": {
-      "implementation": "./src/executors/cargo-publish/executor",
-      "schema": "./src/executors/cargo-publish/schema.json",
-      "description": "Publish a Rust crate to the crates.io registry"
-    },
     "rolldown": {
       "implementation": "./src/executors/rolldown/executor",
       "schema": "./src/executors/rolldown/schema.json",
@@ -55,6 +45,41 @@
       "implementation": "./src/executors/size-limit/executor",
       "schema": "./src/executors/size-limit/schema.json",
       "description": "Run a size-limit performance test on the project"
+    },
+    "npm-publish": {
+      "implementation": "./src/executors/npm-publish/executor",
+      "schema": "./src/executors/npm-publish/schema.json",
+      "description": "Publish a package to the NPM registry"
+    },
+    "cargo-publish": {
+      "implementation": "./src/executors/cargo-publish/executor",
+      "schema": "./src/executors/cargo-publish/schema.json",
+      "description": "Publish a Rust crate to the crates.io registry"
+    },
+    "cargo-build": {
+      "implementation": "./src/executors/cargo-build/executor",
+      "schema": "./src/executors/cargo-build/schema.json",
+      "description": "Build a Rust project with Cargo Build"
+    },
+    "cargo-check": {
+      "implementation": "./src/executors/cargo-check/executor",
+      "schema": "./src/executors/cargo-check/schema.json",
+      "description": "Check a Rust project with Cargo Check"
+    },
+    "cargo-format": {
+      "implementation": "./src/executors/cargo-format/executor",
+      "schema": "./src/executors/cargo-format/schema.json",
+      "description": "Format a Rust project with Cargo Fmt"
+    },
+    "cargo-clippy": {
+      "implementation": "./src/executors/cargo-clippy/executor",
+      "schema": "./src/executors/cargo-clippy/schema.json",
+      "description": "Lint a Rust project with Cargo Clippy"
+    },
+    "cargo-doc": {
+      "implementation": "./src/executors/cargo-doc/executor",
+      "schema": "./src/executors/cargo-doc/schema.json",
+      "description": "Create docs for a Rust project with Cargo Doc"
     }
   }
 }

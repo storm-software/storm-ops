@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "cargo-clippy",
+  "outputCapture": "direct-nodejs",
+  "version": 2,
+  "title": "Cargo Clippy",
+  "description": "Lint a Rust project with Cargo Clippy",
+  "type": "object",
+  "properties": {
+    "release": {
+      "type": "boolean",
+      "default": false
+    },
+    "profile": {
+      "type": "string",
+      "default": "debug"
+    },
+    "toolchain": {
+      "type": "string",
+      "enum": ["stable", "beta", "nightly"],
+      "default": "stable"
+    },
+    "target": {
+      "type": "string"
+    },
+    "fix": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": []
+}

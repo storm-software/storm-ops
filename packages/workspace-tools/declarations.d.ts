@@ -67,6 +67,17 @@ export interface BaseExecutorSchema extends Record<string, any> {
   tsConfig?: string;
 }
 
+export interface CargoBaseExecutorSchema extends BaseExecutorSchema {
+  package?: string;
+  toolchain?: "stable" | "beta" | "nightly";
+  target?: string;
+  allTargets?: boolean;
+  profile?: string;
+  release?: boolean;
+  features?: string | string[];
+  allFeatures?: boolean;
+}
+
 export interface WorkspaceToolHooks<TSchema = any> {
   applyDefaultOptions?: (
     options: Partial<TSchema>,
@@ -81,9 +92,9 @@ export interface BaseWorkspaceToolOptions<TSchema = any> {
   hooks?: WorkspaceToolHooks<TSchema>;
 }
 
-export interface BaseExecutorOptions<
+export type BaseExecutorOptions<
   TExecutorSchema extends BaseExecutorSchema = BaseExecutorSchema
-> extends BaseWorkspaceToolOptions<TExecutorSchema> {}
+> = BaseWorkspaceToolOptions<TExecutorSchema>;
 
 export interface BaseExecutorResult {
   error?: Error;
@@ -117,9 +128,9 @@ export interface BaseGeneratorSchema extends Record<string, any> {
   tsConfig?: string;
 }
 
-export interface BaseGeneratorOptions<
+export type BaseGeneratorOptions<
   TGeneratorSchema extends BaseGeneratorSchema = BaseGeneratorSchema
-> extends BaseWorkspaceToolOptions<TGeneratorSchema> {}
+> = BaseWorkspaceToolOptions<TGeneratorSchema>;
 
 export interface BaseGeneratorResult extends Record<string, any> {
   error?: Error;

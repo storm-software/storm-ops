@@ -27,13 +27,18 @@ export const name = "storm-software/rust/cargo-toml";
 export interface CargoPluginOptions {
   includeApps?: boolean;
   skipDocs?: boolean;
+  toolchain?: "stable" | "beta" | "nightly";
+  defaultProfile?: string;
 }
 
 export const createNodes: CreateNodes<CargoPluginOptions> = [
   "*/**/Cargo.toml",
   (
     cargoFile: string,
-    opts: CargoPluginOptions = { includeApps: true, skipDocs: false },
+    opts: CargoPluginOptions = {
+      includeApps: true,
+      skipDocs: false
+    },
     ctx: CreateNodesContext
   ) => {
     const metadata = cargoMetadata();
@@ -96,10 +101,22 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
           lint: {
             cache: true,
             inputs: ["linting", "rust", "^production"],
-            dependsOn: ["lint-ls", "^lint"],
-            executor: "@monodon/rust:lint",
+            dependsOn: ["^lint"],
+            executor: "@storm-software/workspace-tools:cargo-clippy",
             options: {
-              "target-dir": `{workspaceRoot}/dist/target/${cargoPackage.name}`
+              profile: opts.defaultProfile,
+              toolchain: opts.toolchain,
+              fix: false
+            }
+          },
+          check: {
+            cache: true,
+            inputs: ["linting", "rust", "^production"],
+            dependsOn: ["lint", "^check"],
+            executor: "@storm-software/workspace-tools:cargo-check",
+            options: {
+              profile: opts.defaultProfile,
+              toolchain: opts.toolchain
             }
           },
           "format-readme": {
@@ -112,10 +129,26 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             inputs: ["linting", "rust", "^production"],
             dependsOn: ["^format-toml"]
           },
+          "format-clippy": {
+            cache: true,
+            inputs: ["linting", "rust", "^production"],
+            dependsOn: ["^format-clippy"],
+            executor: "@storm-software/workspace-tools:cargo-clippy",
+            options: {
+              profile: opts.defaultProfile,
+              toolchain: opts.toolchain,
+              fix: true
+            }
+          },
           format: {
             cache: true,
             inputs: ["linting", "documentation", "rust", "^production"],
-            dependsOn: ["format-readme", "format-toml", "^format"],
+            dependsOn: [
+              "format-readme",
+              "format-clippy",
+              "format-toml",
+              "^format"
+            ],
             executor: "nx:run-commands",
             options: {
               command: `cargo fmt -p ${project.name}`,
@@ -125,10 +158,10 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
           clean: {
             cache: true,
             inputs: ["rust", "^production"],
-            outputs: [`{workspaceRoot}/dist/target/${cargoPackage.name}`],
+            outputs: [`{workspaceRoot}/dist/target/{projectRoot}`],
             executor: "nx:run-commands",
             options: {
-              command: `pnpm exec rimraf dist/target/${cargoPackage.name}`,
+              command: `pnpm exec rimraf dist/target/crates/${cargoPackage.name}`,
               color: true,
               cwd: "{workspaceRoot}"
             }
@@ -137,20 +170,22 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             cache: true,
             inputs: ["rust", "^production"],
             dependsOn: ["build-base", "^build"],
-            executor: "@monodon/rust:check",
-            outputs: ["{options.target-dir}"],
+            executor: "@storm-software/workspace-tools:cargo-build",
+            outputs: [`{workspaceRoot}/dist/target/{projectRoot}`],
             options: {
-              "target-dir": `{workspaceRoot}/dist/target/${cargoPackage.name}`
+              profile: opts.defaultProfile,
+              toolchain: opts.toolchain
             }
           },
           rebuild: {
             cache: false,
             inputs: ["rust", "^production"],
             dependsOn: ["clean", "^build"],
-            executor: "@monodon/rust:check",
-            outputs: ["{options.target-dir}"],
+            executor: "@storm-software/workspace-tools:cargo-build",
+            outputs: [`{workspaceRoot}/dist/target/{projectRoot}`],
             options: {
-              "target-dir": `{workspaceRoot}/dist/target/${cargoPackage.name}`
+              profile: opts.defaultProfile,
+              toolchain: opts.toolchain
             }
           },
           test: {
@@ -160,7 +195,7 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             executor: "@monodon/rust:test",
             outputs: ["{options.target-dir}"],
             options: {
-              "target-dir": `{workspaceRoot}/dist/target/${cargoPackage.name}`
+              "target-dir": `{workspaceRoot}/dist/target/{projectRoot}`
             },
             configurations: {
               production: {
@@ -175,11 +210,11 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             cache: true,
             inputs: ["linting", "documentation", "default", "^production"],
             dependsOn: ["build", "format-readme", "lint-docs", "^docs"],
-            outputs: [`{workspaceRoot}/dist/docs/${cargoPackage.name}`],
-            executor: "nx:run-commands",
+            outputs: [`{workspaceRoot}/dist/docs/{projectRoot}`],
+            executor: "@storm-software/workspace-tools:cargo-doc",
             options: {
-              command: `cargo doc -p ${project.name} --target-dir dist/docs/${cargoPackage.name} --no-deps --all-features`,
-              color: true
+              profile: opts.defaultProfile,
+              toolchain: opts.toolchain
             }
           };
         }
