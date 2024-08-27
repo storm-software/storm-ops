@@ -9,10 +9,13 @@ homepage = { workspace = true }
 keywords = { workspace = true }
 license = { workspace = true }
 name = 'storm-workspace'
-publish = true
 readme = './README.md'
 repository = { workspace = true }
 version = '0.6.1'
 
 [dependencies]
 thiserror = '=1.0.61'
+
+[lib]
+name = "storm_workspace"
+path = "src/lib.rs"

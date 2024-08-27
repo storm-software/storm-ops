@@ -3,27 +3,22 @@ import { withRunExecutor } from "../../base/base-executor";
 import { buildCargoCommand, cargoCommand } from "../../utils/cargo";
 import { CargoClippyExecutorSchema } from "./schema";
 
-export async function* cargoClippyExecutor(
+export async function cargoClippyExecutor(
   options: CargoClippyExecutorSchema,
   context: ExecutorContext
-): AsyncGenerator<{ success: boolean }> {
+) {
   const command = buildCargoCommand("clippy", options, context);
-
-  const { success } = await cargoCommand(...command);
-  yield {
-    success
-  };
+  return await cargoCommand(...command);
 }
 
 export default withRunExecutor<CargoClippyExecutorSchema>(
-  "Cargo Clippy executor",
+  "Cargo Clippy",
   cargoClippyExecutor,
   {
     skipReadingConfig: false,
     hooks: {
       applyDefaultOptions: (options: CargoClippyExecutorSchema) => {
         options.toolchain ??= "stable";
-        options.release ??= false;
         options.fix ??= false;
 
         return options as CargoClippyExecutorSchema;

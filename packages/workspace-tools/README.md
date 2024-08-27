@@ -519,7 +519,7 @@ This executor can be used by executing the following in a command line utility:
 nx run my-project:cargo-build
 ```
 
-**Please note:** _The cargo-build executor should be included in the desired projects's `project.json` file._ 
+**Please note:** _The cargo-build executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
 
 ### Options
 
@@ -527,10 +527,10 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| release      | `boolean`    |     |     | 
- | profile      | `string`    |     | "dev"     | 
+| release      | `boolean`    | Run the Cargo command for the project in release mode     |     | 
+ | profile      | `string`    | Build artifacts with the specified profile     |     | 
  | outputPath      | `string`    | The output path of the generated files.     | "dist/target/{projectRoot}"     | 
- | toolchain      | "stable" \| "beta" \| "nightly"     |     | "stable"     | 
+ | **toolchain \***    | "stable" \| "beta" \| "nightly"     | The Rust toolchain to use     | "stable"     | 
  | features      | `string`   | Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported     |     | 
  | allFeatures      | `boolean`    | Build all binary targets     |     | 
  | target      | `string`    |     |     | 
@@ -545,6 +545,8 @@ The following executor options are available:
  | benches      | `boolean`    | Build all targets in benchmark mode that have the bench = true manifest flag set. By default this includes the library and binaries built as benchmarks, and bench targets. Be aware that this will also build any required dependencies, so the lib target may be built twice (once as a benchmark, and once as a dependency for binaries, benchmarks, etc.). Targets may be enabled or disabled by setting the bench flag in the manifest settings for the target.     |     | 
  | allTargets      | `boolean`    | Build all test targets     |     | 
 
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
 
 
 
@@ -568,12 +570,12 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| release      | `boolean`    |     |     | 
- | profile      | `string`    |     | "dev"     | 
- | toolchain      | "stable" \| "beta" \| "nightly"     |     | "stable"     | 
+| release      | `boolean`    | Run the Cargo command for the project in release mode     |     | 
+ | profile      | `string`    | Build artifacts with the specified profile     |     | 
+ | toolchain      | "stable" \| "beta" \| "nightly"     | The Rust toolchain to use     | "stable"     | 
  | features      | `string`   | Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported     |     | 
  | allFeatures      | `boolean`    | Build all binary targets     |     | 
- | target      | `string`    |     |     | 
+ | target      | `string`    | Build the specified target     |     | 
  | lib      | `boolean`    | Build the package's library     |     | 
  | bin      | `string`   | Build the specified binary. Array of names or common Unix glob patterns is supported     |     | 
  | bins      | `boolean`    | Build all binary targets     |     | 
@@ -608,9 +610,9 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| release      | `boolean`    |     |     | 
- | profile      | `string`    |     | "debug"     | 
- | toolchain      | "stable" \| "beta" \| "nightly"     |     | "stable"     | 
+| release      | `boolean`    | Run the Cargo command for the project in release mode     |     | 
+ | profile      | `string`    | Build artifacts with the specified profile     |     | 
+ | toolchain      | "stable" \| "beta" \| "nightly"     | The Rust toolchain to use     | "stable"     | 
  | features      | `string`   | Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported     |     | 
  | allFeatures      | `boolean`    | Build all binary targets     |     | 
  | lib      | `boolean`    | Build the package's library     |     | 
@@ -647,11 +649,11 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| release      | `boolean`    |     |     | 
- | profile      | `string`    |     | "dev"     | 
- | toolchain      | "stable" \| "beta" \| "nightly"     |     | "stable"     | 
- | target      | `string`    |     |     | 
- | fix      | `boolean`    |     |     | 
+| release      | `boolean`    | Run the Cargo command for the project in release mode     |     | 
+ | profile      | `string`    | Build artifacts with the specified profile     |     | 
+ | toolchain      | "stable" \| "beta" \| "nightly"     | The Rust toolchain to use     | "stable"     | 
+ | target      | `string`    | Build the specified target     |     | 
+ | fix      | `boolean`    | Automatically apply suggestions     |     | 
 
 
 
@@ -668,7 +670,7 @@ This executor can be used by executing the following in a command line utility:
 nx run my-project:cargo-doc
 ```
 
-**Please note:** _The cargo-doc executor should be included in the desired projects's `project.json` file._ 
+**Please note:** _The cargo-doc executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
 
 ### Options
 
@@ -676,12 +678,13 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| release      | `boolean`    |     | `true`     | 
- | profile      | `string`    |     |     | 
- | outputPath      | `string`    | The output path of the generated files.     | "dist/docs/{projectRoot}"     | 
- | toolchain      | "stable" \| "beta" \| "nightly"     |     | "stable"     | 
+| release      | `boolean`    | Run the Cargo command for the project in release mode     | `true`     | 
+ | profile      | `string`    | Build artifacts with the specified profile     |     | 
+ | **outputPath \***    | `string`    | The output path of the generated files.     | "dist/docs/{projectRoot}"     | 
+ | toolchain      | "stable" \| "beta" \| "nightly"     | The Rust toolchain to use     | "stable"     | 
  | features      | `string`   | Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported     |     | 
  | allFeatures      | `boolean`    | Build all binary targets     | `true`     | 
+ | target      | `string`    | Build the specified target     |     | 
  | lib      | `boolean`    | Build the package's library     | `true`     | 
  | bin      | `string`   | Build the specified binary. Array of names or common Unix glob patterns is supported     |     | 
  | bins      | `boolean`    | Build all binary targets     | `true`     | 
@@ -693,6 +696,8 @@ The following executor options are available:
  | benches      | `boolean`    | Build all targets in benchmark mode that have the bench = true manifest flag set. By default this includes the library and binaries built as benchmarks, and bench targets. Be aware that this will also build any required dependencies, so the lib target may be built twice (once as a benchmark, and once as a dependency for binaries, benchmarks, etc.). Targets may be enabled or disabled by setting the bench flag in the manifest settings for the target.     |     | 
  | allTargets      | `boolean`    | Build all test targets     |     | 
 
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
 
 
 

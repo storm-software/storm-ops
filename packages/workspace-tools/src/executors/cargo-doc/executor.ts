@@ -3,20 +3,16 @@ import { withRunExecutor } from "../../base/base-executor";
 import { buildCargoCommand, cargoCommand } from "../../utils/cargo";
 import { CargoDocExecutorSchema } from "./schema";
 
-export async function* cargoDocExecutor(
+export async function cargoDocExecutor(
   options: CargoDocExecutorSchema,
   context: ExecutorContext
-): AsyncGenerator<{ success: boolean }> {
+) {
   const command = buildCargoCommand("doc", options, context);
-
-  const { success } = await cargoCommand(...command);
-  yield {
-    success
-  };
+  return await cargoCommand(...command);
 }
 
 export default withRunExecutor<CargoDocExecutorSchema>(
-  "Cargo Doc executor",
+  "Cargo Doc",
   cargoDocExecutor,
   {
     skipReadingConfig: false,

@@ -3,20 +3,16 @@ import { withRunExecutor } from "../../base/base-executor";
 import { buildCargoCommand, cargoCommand } from "../../utils/cargo";
 import { CargoBuildExecutorSchema } from "./schema";
 
-export async function* cargoBuildExecutor(
+export async function cargoBuildExecutor(
   options: CargoBuildExecutorSchema,
   context: ExecutorContext
-): AsyncGenerator<{ success: boolean }> {
+) {
   const command = buildCargoCommand("build", options, context);
-
-  const { success } = await cargoCommand(...command);
-  yield {
-    success
-  };
+  return await cargoCommand(...command);
 }
 
 export default withRunExecutor<CargoBuildExecutorSchema>(
-  "Cargo Build executor",
+  "Cargo Build",
   cargoBuildExecutor,
   {
     skipReadingConfig: false,
@@ -24,7 +20,6 @@ export default withRunExecutor<CargoBuildExecutorSchema>(
       applyDefaultOptions: (options: CargoBuildExecutorSchema) => {
         options.outputPath ??= "dist/target/{projectRoot}";
         options.toolchain ??= "stable";
-        options.release ??= false;
 
         return options as CargoBuildExecutorSchema;
       }

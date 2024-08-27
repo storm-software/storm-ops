@@ -9,7 +9,6 @@ homepage = { workspace = true }
 keywords = { workspace = true }
 license = { workspace = true }
 name = 'storm-config'
-publish = true
 readme = './README.md'
 repository = { workspace = true }
 version = '0.6.1'
@@ -20,7 +19,12 @@ convert-case = ['convert_case']
 default = ['toml', 'yaml', 'ini', 'ron', 'json5', 'convert-case', 'async']
 ini = ['rust-ini']
 json5 = ['json5_rs', 'serde/derive']
-preserve_order = ['indexmap', 'toml?/preserve_order', 'serde_json/preserve_order', 'ron?/indexmap']
+preserve_order = [
+    'indexmap',
+    'toml?/preserve_order',
+    'serde_json/preserve_order',
+    'ron?/indexmap',
+]
 yaml = ['yaml-rust']
 
 [dependencies]
@@ -40,3 +44,7 @@ storm-workspace = { path = '../storm-workspace', version = '0.6.1' }
 thiserror = { version = '=1.0.61' }
 toml = { version = '=0.8.14', optional = true }
 yaml-rust = { version = '=0.4.5', optional = true }
+
+[lib]
+name = "storm_config"
+path = "src/lib.rs"

@@ -9,8 +9,7 @@
   "properties": {
     "release": {
       "type": "boolean",
-      "description": "Run the Cargo command for the project in release mode",
-      "default": false
+      "description": "Run the Cargo command for the project in release mode"
     },
     "profile": {
       "type": "string",
@@ -46,17 +45,16 @@
     },
     "allFeatures": {
       "type": "boolean",
-      "default": false,
       "description": "Build all binary targets",
       "alias": "all-features"
     },
     "target": {
-      "type": "string"
+      "type": "string",
+      "description": "Build the specified target"
     },
     "lib": {
       "type": "boolean",
-      "description": "Build the package's library",
-      "default": false
+      "description": "Build the package's library"
     },
     "bin": {
       "oneOf": [
@@ -74,7 +72,6 @@
     },
     "bins": {
       "type": "boolean",
-      "default": false,
       "description": "Build all binary targets"
     },
     "example": {
@@ -93,7 +90,6 @@
     },
     "examples": {
       "type": "boolean",
-      "default": false,
       "description": "Build all example targets"
     },
     "test": {
@@ -112,7 +108,6 @@
     },
     "tests": {
       "type": "boolean",
-      "default": false,
       "description": "Build all test targets"
     },
     "bench": {
@@ -131,12 +126,10 @@
     },
     "benches": {
       "type": "boolean",
-      "default": false,
       "description": "Build all targets in benchmark mode that have the bench = true manifest flag set. By default this includes the library and binaries built as benchmarks, and bench targets. Be aware that this will also build any required dependencies, so the lib target may be built twice (once as a benchmark, and once as a dependency for binaries, benchmarks, etc.). Targets may be enabled or disabled by setting the bench flag in the manifest settings for the target."
     },
     "allTargets": {
       "type": "boolean",
-      "default": false,
       "description": "Build all test targets",
       "alias": "all-targets"
     }
