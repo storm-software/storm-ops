@@ -242,7 +242,7 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             options: {
               toolchain: opts.toolchain
             },
-            defaultConfiguration: "development",
+            defaultConfiguration: "production",
             configurations
           };
         }
@@ -268,7 +268,7 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             options: {
               packageRoot: root
             },
-            defaultConfiguration: "development",
+            defaultConfiguration: "production",
             configurations
           };
         }

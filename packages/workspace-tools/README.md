@@ -533,7 +533,7 @@ The following executor options are available:
  | **toolchain \***    | "stable" \| "beta" \| "nightly"     | The Rust toolchain to use     | "stable"     | 
  | features      | `string`   | Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported     |     | 
  | allFeatures      | `boolean`    | Build all binary targets     |     | 
- | target      | `string`    |     |     | 
+ | target      | `string`    | Build the specified target     |     | 
  | lib      | `boolean`    | Build the package's library     |     | 
  | bin      | `string`   | Build the specified binary. Array of names or common Unix glob patterns is supported     |     | 
  | bins      | `boolean`    | Build all binary targets     |     | 
