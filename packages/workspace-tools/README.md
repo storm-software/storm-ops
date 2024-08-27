@@ -58,41 +58,56 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
   - [Typia Generate Executor](#typia-generate-executor)
     - [Example](#example-4)
     - [Options](#options-2)
-  - [Npm Publish executor](#npm-publish-executor)
+  - [Rolldown Builder](#rolldown-builder)
     - [Example](#example-5)
     - [Options](#options-3)
-  - [Cargo Publish executor](#cargo-publish-executor)
+  - [Unbuild Builder](#unbuild-builder)
     - [Example](#example-6)
     - [Options](#options-4)
-  - [Rolldown Builder](#rolldown-builder)
+  - [Clean Publish Executor](#clean-publish-executor)
     - [Example](#example-7)
     - [Options](#options-5)
-  - [Unbuild Builder](#unbuild-builder)
+  - [Size-Limit Test Executor](#size-limit-test-executor)
     - [Example](#example-8)
     - [Options](#options-6)
-  - [Clean Publish Executor](#clean-publish-executor)
+  - [Npm Publish executor](#npm-publish-executor)
     - [Example](#example-9)
     - [Options](#options-7)
-  - [Size-Limit Test Executor](#size-limit-test-executor)
+  - [Cargo Publish executor](#cargo-publish-executor)
     - [Example](#example-10)
     - [Options](#options-8)
+  - [Cargo Build](#cargo-build)
+    - [Example](#example-11)
+    - [Options](#options-9)
+  - [Cargo Check](#cargo-check)
+    - [Example](#example-12)
+    - [Options](#options-10)
+  - [Cargo Format](#cargo-format)
+    - [Example](#example-13)
+    - [Options](#options-11)
+  - [Cargo Clippy](#cargo-clippy)
+    - [Example](#example-14)
+    - [Options](#options-12)
+  - [Cargo Doc](#cargo-doc)
+    - [Example](#example-15)
+    - [Options](#options-13)
   - [Generators](#generators)
   - [Init Storm Workspace Plugin](#init-storm-workspace-plugin)
-    - [Options](#options-9)
+    - [Options](#options-14)
   - [Workspace Preset](#workspace-preset)
     - [Examples](#examples)
-    - [Options](#options-10)
+    - [Options](#options-15)
   - [Add Node Library](#add-node-library)
-    - [Options](#options-11)
+    - [Options](#options-16)
   - [Configuration Schema Creator](#configuration-schema-creator)
-    - [Options](#options-12)
+    - [Options](#options-17)
   - [Add Neutral Library](#add-neutral-library)
-    - [Options](#options-13)
+    - [Options](#options-18)
   - [Add browser Library](#add-browser-library)
-    - [Options](#options-14)
+    - [Options](#options-19)
   - [design-tokens](#design-tokens)
   - [Storm Release Version Generator](#storm-release-version-generator)
-    - [Options](#options-15)
+    - [Options](#options-20)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
   - [Storm Workspaces](#storm-workspaces)
@@ -299,61 +314,6 @@ The following executor options are available:
 
 
 
-## Npm Publish executor
-
-Publish a package to the NPM registry - DO NOT INVOKE DIRECTLY WITH \`nx run\`. Use \`nx release publish\` instead.
-
-### Example 
-
-This executor can be used by executing the following in a command line utility: 
-
-```cmd 
-nx run my-project:npm-publish
-```
-
-**Please note:** _The npm-publish executor should be included in the desired projects's `project.json` file._ 
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| packageRoot      | `string`    | The root directory of the directory (containing a manifest file at its root) to publish. Defaults to the project root.     |     | 
- | registry      | `string`    | The NPM registry URL to publish the package to.     |     | 
- | tag      | `string`    | The distribution tag to apply to the published package.     |     | 
- | dryRun      | `boolean`    | Whether to run the command without actually publishing the package to the registry.     |     | 
-
-
-
-
-## Cargo Publish executor
-
-Publish a package to the crates.io registry - DO NOT INVOKE DIRECTLY WITH \`nx run\`. Use \`nx release publish\` instead.
-
-### Example 
-
-This executor can be used by executing the following in a command line utility: 
-
-```cmd 
-nx run my-project:cargo-publish
-```
-
-**Please note:** _The cargo-publish executor should be included in the desired projects's `project.json` file._ 
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| registry      | `string`    | The Cargo registry URL to publish the package to.     |     | 
- | packageRoot      | `string`    | The root directory of the directory (containing a manifest file at its root) to publish. Defaults to the project root.     |     | 
- | dryRun      | `boolean`    | Whether to run the command without actually publishing the package to the registry.     |     | 
-
-
-
-
 ## Rolldown Builder
 
 An executor used by Storm Software to run the Rolldown build process
@@ -488,6 +448,248 @@ The following executor options are available:
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
 | entry      | `string`    | The path to the entry file, relative to project.     |     | 
+
+
+
+
+## Npm Publish executor
+
+Publish a package to the NPM registry - DO NOT INVOKE DIRECTLY WITH \`nx run\`. Use \`nx release publish\` instead.
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:npm-publish
+```
+
+**Please note:** _The npm-publish executor should be included in the desired projects's `project.json` file._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| packageRoot      | `string`    | The root directory of the directory (containing a manifest file at its root) to publish. Defaults to the project root.     |     | 
+ | registry      | `string`    | The NPM registry URL to publish the package to.     |     | 
+ | tag      | `string`    | The distribution tag to apply to the published package.     |     | 
+ | dryRun      | `boolean`    | Whether to run the command without actually publishing the package to the registry.     |     | 
+
+
+
+
+## Cargo Publish executor
+
+Publish a package to the crates.io registry - DO NOT INVOKE DIRECTLY WITH \`nx run\`. Use \`nx release publish\` instead.
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:cargo-publish
+```
+
+**Please note:** _The cargo-publish executor should be included in the desired projects's `project.json` file._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| registry      | `string`    | The Cargo registry URL to publish the package to.     |     | 
+ | packageRoot      | `string`    | The root directory of the directory (containing a manifest file at its root) to publish. Defaults to the project root.     |     | 
+ | dryRun      | `boolean`    | Whether to run the command without actually publishing the package to the registry.     |     | 
+
+
+
+
+## Cargo Build
+
+Run a Rust build on the project using Cargo
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:cargo-build
+```
+
+**Please note:** _The cargo-build executor should be included in the desired projects's `project.json` file._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| release      | `boolean`    |     |     | 
+ | profile      | `string`    |     | "debug"     | 
+ | outputPath      | `string`    | The output path of the generated files.     | "dist/target/{projectRoot}"     | 
+ | toolchain      | "stable" \| "beta" \| "nightly"     |     | "stable"     | 
+ | features      | `string`   | Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported     |     | 
+ | allFeatures      | `boolean`    | Build all binary targets     |     | 
+ | lib      | `boolean`    | Build the package's library     |     | 
+ | bin      | `string`   | Build the specified binary. Array of names or common Unix glob patterns is supported     |     | 
+ | bins      | `boolean`    | Build all binary targets     |     | 
+ | example      | `string`   | Build the specified example. Array of names or common Unix glob patterns is supported     |     | 
+ | examples      | `boolean`    | Build all example targets     |     | 
+ | test      | `string`   | Build the specified test. Array of names or common Unix glob patterns is supported     |     | 
+ | tests      | `boolean`    | Build all test targets     |     | 
+ | bench      | `string`   | Build the specified bench. Array of names or common Unix glob patterns is supported     |     | 
+ | benches      | `boolean`    | Build all targets in benchmark mode that have the bench = true manifest flag set. By default this includes the library and binaries built as benchmarks, and bench targets. Be aware that this will also build any required dependencies, so the lib target may be built twice (once as a benchmark, and once as a dependency for binaries, benchmarks, etc.). Targets may be enabled or disabled by setting the bench flag in the manifest settings for the target.     |     | 
+ | allTargets      | `boolean`    | Build all test targets     |     | 
+
+
+
+
+## Cargo Check
+
+Check a Rust project with Cargo
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:cargo-check
+```
+
+**Please note:** _The cargo-check executor should be included in the desired projects's `project.json` file._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| release      | `boolean`    |     |     | 
+ | profile      | `string`    |     | "debug"     | 
+ | toolchain      | "stable" \| "beta" \| "nightly"     |     | "stable"     | 
+ | features      | `string`   | Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported     |     | 
+ | allFeatures      | `boolean`    | Build all binary targets     |     | 
+ | lib      | `boolean`    | Build the package's library     |     | 
+ | bin      | `string`   | Build the specified binary. Array of names or common Unix glob patterns is supported     |     | 
+ | bins      | `boolean`    | Build all binary targets     |     | 
+ | example      | `string`   | Build the specified example. Array of names or common Unix glob patterns is supported     |     | 
+ | examples      | `boolean`    | Build all example targets     |     | 
+ | test      | `string`   | Build the specified test. Array of names or common Unix glob patterns is supported     |     | 
+ | tests      | `boolean`    | Build all test targets     |     | 
+ | bench      | `string`   | Build the specified bench. Array of names or common Unix glob patterns is supported     |     | 
+ | benches      | `boolean`    | Build all targets in benchmark mode that have the bench = true manifest flag set. By default this includes the library and binaries built as benchmarks, and bench targets. Be aware that this will also build any required dependencies, so the lib target may be built twice (once as a benchmark, and once as a dependency for binaries, benchmarks, etc.). Targets may be enabled or disabled by setting the bench flag in the manifest settings for the target.     |     | 
+ | allTargets      | `boolean`    | Build all test targets     |     | 
+
+
+
+
+## Cargo Format
+
+Format a Rust project with Cargo
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:cargo-format
+```
+
+**Please note:** _The cargo-format executor should be included in the desired projects's `project.json` file._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| release      | `boolean`    |     |     | 
+ | profile      | `string`    |     | "debug"     | 
+ | toolchain      | "stable" \| "beta" \| "nightly"     |     | "stable"     | 
+ | features      | `string`   | Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported     |     | 
+ | allFeatures      | `boolean`    | Build all binary targets     |     | 
+ | lib      | `boolean`    | Build the package's library     |     | 
+ | bin      | `string`   | Build the specified binary. Array of names or common Unix glob patterns is supported     |     | 
+ | bins      | `boolean`    | Build all binary targets     |     | 
+ | example      | `string`   | Build the specified example. Array of names or common Unix glob patterns is supported     |     | 
+ | examples      | `boolean`    | Build all example targets     |     | 
+ | test      | `string`   | Build the specified test. Array of names or common Unix glob patterns is supported     |     | 
+ | tests      | `boolean`    | Build all test targets     |     | 
+ | bench      | `string`   | Build the specified bench. Array of names or common Unix glob patterns is supported     |     | 
+ | benches      | `boolean`    | Build all targets in benchmark mode that have the bench = true manifest flag set. By default this includes the library and binaries built as benchmarks, and bench targets. Be aware that this will also build any required dependencies, so the lib target may be built twice (once as a benchmark, and once as a dependency for binaries, benchmarks, etc.). Targets may be enabled or disabled by setting the bench flag in the manifest settings for the target.     |     | 
+ | allTargets      | `boolean`    | Build all test targets     |     | 
+
+
+
+
+## Cargo Clippy
+
+Lint a Rust project with Cargo Clippy
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:cargo-clippy
+```
+
+**Please note:** _The cargo-clippy executor should be included in the desired projects's `project.json` file._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| release      | `boolean`    |     |     | 
+ | profile      | `string`    |     | "debug"     | 
+ | toolchain      | "stable" \| "beta" \| "nightly"     |     | "stable"     | 
+ | target      | `string`    |     |     | 
+ | fix      | `boolean`    |     |     | 
+
+
+
+
+## Cargo Doc
+
+Create docs for a Rust project with Cargo Doc
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:cargo-doc
+```
+
+**Please note:** _The cargo-doc executor should be included in the desired projects's `project.json` file._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| release      | `boolean`    |     | `true`     | 
+ | profile      | `string`    |     |     | 
+ | outputPath      | `string`    | The output path of the generated files.     | "dist/docs/{projectRoot}"     | 
+ | toolchain      | "stable" \| "beta" \| "nightly"     |     | "stable"     | 
+ | features      | `string`   | Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported     |     | 
+ | allFeatures      | `boolean`    | Build all binary targets     | `true`     | 
+ | lib      | `boolean`    | Build the package's library     | `true`     | 
+ | bin      | `string`   | Build the specified binary. Array of names or common Unix glob patterns is supported     |     | 
+ | bins      | `boolean`    | Build all binary targets     | `true`     | 
+ | example      | `string`   | Build the specified example. Array of names or common Unix glob patterns is supported     |     | 
+ | examples      | `boolean`    | Build all example targets     | `true`     | 
+ | test      | `string`   | Build the specified test. Array of names or common Unix glob patterns is supported     |     | 
+ | tests      | `boolean`    | Build all test targets     |     | 
+ | bench      | `string`   | Build the specified bench. Array of names or common Unix glob patterns is supported     |     | 
+ | benches      | `boolean`    | Build all targets in benchmark mode that have the bench = true manifest flag set. By default this includes the library and binaries built as benchmarks, and bench targets. Be aware that this will also build any required dependencies, so the lib target may be built twice (once as a benchmark, and once as a dependency for binaries, benchmarks, etc.). Targets may be enabled or disabled by setting the bench flag in the manifest settings for the target.     |     | 
+ | allTargets      | `boolean`    | Build all test targets     |     | 
 
 
 

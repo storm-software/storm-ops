@@ -24,7 +24,7 @@ export default withRunExecutor<CargoDocExecutorSchema>(
       applyDefaultOptions: (options: CargoDocExecutorSchema) => {
         options.outputPath ??= "dist/docs/{projectRoot}";
         options.toolchain ??= "stable";
-        options.release ??= true;
+        options.release ??= options.profile ? false : true;
         options.allFeatures ??= true;
         options.lib ??= true;
         options.bins ??= true;

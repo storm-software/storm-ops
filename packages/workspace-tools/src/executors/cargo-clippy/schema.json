@@ -13,7 +13,7 @@
     },
     "profile": {
       "type": "string",
-      "default": "debug"
+      "default": "dev"
     },
     "toolchain": {
       "type": "string",

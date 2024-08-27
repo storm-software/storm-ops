@@ -13,7 +13,7 @@
     },
     "profile": {
       "type": "string",
-      "default": "debug"
+      "default": "dev"
     },
     "toolchain": {
       "type": "string",
@@ -39,6 +39,9 @@
       "default": false,
       "description": "Build all binary targets",
       "alias": "all-features"
+    },
+    "target": {
+      "type": "string"
     },
     "lib": {
       "type": "boolean",

@@ -23,7 +23,7 @@ export default withRunExecutor<CargoClippyExecutorSchema>(
     hooks: {
       applyDefaultOptions: (options: CargoClippyExecutorSchema) => {
         options.toolchain ??= "stable";
-        options.profile ??= "debug";
+        options.profile ??= "dev";
         options.release ??= false;
         options.fix ??= false;
 
