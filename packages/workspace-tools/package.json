@@ -25,6 +25,8 @@
     ".": "./index.js",
     "./package.json": "./package.json",
     "./config/nx.json": "./config/nx.json",
+    "./config/nx-default.json": "./config/nx-default.json",
+    "./config/nx-cloud.json": "./config/nx-cloud.json",
     "./assets/cjs_shims": "./assets/cjs_shims.js",
     "./assets/esm_shims": "./assets/esm_shims.js",
     "./migrations.json": "./migrations.json",
