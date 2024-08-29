@@ -1,9 +1,16 @@
-## 0.2.1 (2024-08-27)
+## 0.3.0 (2024-08-29)
 
+
+### Features
+
+- **workspace-tools:** Added base entry to package ([b0d3b788](https://github.com/storm-software/storm-ops/commit/b0d3b788))
+
+## 0.2.1 (2024-08-27)
 
 ### Bug Fixes
 
-- **k8s-tools:** Resolved issue with invalid import ([82a782d4](https://github.com/storm-software/storm-ops/commit/82a782d4))
+- **k8s-tools:** Resolved issue with invalid import
+  ([82a782d4](https://github.com/storm-software/storm-ops/commit/82a782d4))
 
 ## 0.2.0 (2024-08-27)
 
