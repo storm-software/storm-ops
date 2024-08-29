@@ -29,7 +29,6 @@
     "./executors.json": "./executors.json",
     "./executors/*/schema.json": "./src/executors/*/schema.json"
   },
-  "typings": "./declarations.d.ts",
   "keywords": [
     "storm",
     "storm-ops",
@@ -55,8 +54,7 @@
   "dependencies": {
     "@nx/devkit": "^19.6.2",
     "@nx/workspace": "^19.6.2",
-    "js-yaml": "^4.1.0",
-    "tslib": "^2.6.3"
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "@types/js-yaml": "4.0.9",

@@ -35,6 +35,8 @@
     "./plugins/rust": "./src/plugins/rust/index.js",
     "./plugins/typescript": "./src/plugins/typescript/index.js",
     "./preset": "./src/generators/preset/preset.js",
+    "./base": "./src/base/index.js",
+    "./base/*": "./src/base/*.js",
     "./utils": "./src/utils/index.js",
     "./utils/*": "./src/utils/*.js"
   },

@@ -46,7 +46,10 @@
           "packages/workspace-tools/src/utils/toml.ts",
           "packages/workspace-tools/src/utils/lock-file.ts",
           "packages/workspace-tools/src/utils/create-cli-options.ts",
-          "packages/workspace-tools/src/base/index.ts"
+          "packages/workspace-tools/src/base/index.ts",
+          "packages/workspace-tools/src/base/base-executor.ts",
+          "packages/workspace-tools/src/base/base-generator.ts",
+          "packages/workspace-tools/src/base/typescript-library-generator.ts"
         ],
         "platform": "node",
         "deleteOutputPath": true,

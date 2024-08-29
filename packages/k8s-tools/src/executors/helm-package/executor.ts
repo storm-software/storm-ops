@@ -1,6 +1,6 @@
 import type { ExecutorContext, PromiseExecutor } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
-import { withRunExecutor } from "@storm-software/workspace-tools";
+import { withRunExecutor } from "@storm-software/workspace-tools/base/base-executor";
 import { createHelmClient } from "../../utils/client";
 import { HelmPackageExecutorSchema } from "./schema";
 

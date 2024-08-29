@@ -6,7 +6,7 @@ import {
   updateProjectConfiguration
 } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
-import { withRunGenerator } from "@storm-software/workspace-tools";
+import { withRunGenerator } from "@storm-software/workspace-tools/base/base-generator";
 import { join } from "path";
 import type { HelmChartGeneratorSchema } from "./schema";
 
