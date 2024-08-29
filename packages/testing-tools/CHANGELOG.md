@@ -1,9 +1,16 @@
-## 1.55.0 (2024-08-29)
+## 1.55.1 (2024-08-29)
 
+
+### Bug Fixes
+
+- **workspace-tools:** Add new Nx configuration files to package.json ([23edcd79](https://github.com/storm-software/storm-ops/commit/23edcd79))
+
+## 1.55.0 (2024-08-29)
 
 ### Features
 
-- **workspace-tools:** Added `nx-default.json` and `nx-cloud.json` files ([4bb13faa](https://github.com/storm-software/storm-ops/commit/4bb13faa))
+- **workspace-tools:** Added `nx-default.json` and `nx-cloud.json` files
+  ([4bb13faa](https://github.com/storm-software/storm-ops/commit/4bb13faa))
 
 ## 1.54.0 (2024-08-29)
 
