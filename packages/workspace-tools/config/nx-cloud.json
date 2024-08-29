@@ -1,0 +1,30 @@
+{
+  "$schema": "https://cdn.jsdelivr.net/npm/nx/schemas/nx-schema.json",
+  "extends": "./nx.json"
+  // "tasksRunnerOptions": {
+  //   "default": {
+  //     "runner": "nx/tasks-runners/default",
+  //     "options": {
+  //       "cacheableOperations": [
+  //         "lint-sherif",
+  //         "lint-knip",
+  //         "lint-docs",
+  //         "lint-ls",
+  //         "lint",
+  //         "format-readme",
+  //         "format-toml",
+  //         "format-prettier",
+  //         "format",
+  //         "clean",
+  //         "build-base",
+  //         "build",
+  //         "test",
+  //         "e2e",
+  //         "docs",
+  //         "nx-release-publish"
+  //       ],
+  //       "parallel": 3
+  //     }
+  //   }
+  // }
+}
