@@ -1,9 +1,16 @@
-## 1.41.1 (2024-08-29)
+## 1.41.2 (2024-08-29)
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Add new Nx configuration files to package.json ([23edcd79](https://github.com/storm-software/storm-ops/commit/23edcd79))
+- **workspace-tools:** Resolved issue with multi-layer extends in Nx configurations ([9cb9d2ff](https://github.com/storm-software/storm-ops/commit/9cb9d2ff))
+
+## 1.41.1 (2024-08-29)
+
+### Bug Fixes
+
+- **workspace-tools:** Add new Nx configuration files to package.json
+  ([23edcd79](https://github.com/storm-software/storm-ops/commit/23edcd79))
 
 ## 1.41.0 (2024-08-29)
 
