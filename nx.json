@@ -453,7 +453,7 @@
       }
     },
     "version": {
-      "preVersionCommand": "pnpm build-all",
+      "preVersionCommand": "nx affected -t build --parallel=3",
       "generator": "@storm-software/workspace-tools:release-version",
       "generatorOptions": {
         "currentVersionResolver": "git-tag",

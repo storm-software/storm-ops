@@ -1,9 +1,10 @@
 ## 1.55.2 (2024-08-29)
 
-
 ### Bug Fixes
 
-- **workspace-tools:** Resolved issue with multi-layer extends in Nx configurations ([9cb9d2ff](https://github.com/storm-software/storm-ops/commit/9cb9d2ff))
+- **workspace-tools:** Resolved issue with multi-layer extends in Nx
+  configurations
+  ([9cb9d2ff](https://github.com/storm-software/storm-ops/commit/9cb9d2ff))
 
 ## 1.55.1 (2024-08-29)
 

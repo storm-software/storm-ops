@@ -55,7 +55,7 @@
     "adr": "pnpm log4brains adr new",
     "adr-preview": "pnpm log4brains preview",
     "build": "nx affected -t build --parallel=3",
-    "build-all": "nx run-many -t build --all --parallel=3 --configuration=production",
+    "build-all": "nx run-many -t build --all --parallel=3",
     "build-plugins": "node -r esbuild-register tools/scripts/build-plugins.ts && pnpm nx run eslint:build",
     "clean": "rimraf dist",
     "clean-packages": "rimraf dist/packages",
