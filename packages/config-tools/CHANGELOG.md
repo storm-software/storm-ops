@@ -1,9 +1,16 @@
-## 1.77.0 (2024-08-29)
+## 1.78.0 (2024-08-29)
 
 
 ### Features
 
-- **workspace-tools:** Added base entry to package ([b0d3b788](https://github.com/storm-software/storm-ops/commit/b0d3b788))
+- **workspace-tools:** Added `nx-default.json` and `nx-cloud.json` files ([4bb13faa](https://github.com/storm-software/storm-ops/commit/4bb13faa))
+
+## 1.77.0 (2024-08-29)
+
+### Features
+
+- **workspace-tools:** Added base entry to package
+  ([b0d3b788](https://github.com/storm-software/storm-ops/commit/b0d3b788))
 
 ## 1.76.0 (2024-08-04)
 
