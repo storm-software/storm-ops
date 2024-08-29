@@ -1,3 +1,10 @@
+## 0.18.0 (2024-08-29)
+
+
+### Features
+
+- **workspace-tools:** Added `nx-default.json` and `nx-cloud.json` files ([4bb13faa](https://github.com/storm-software/storm-ops/commit/4bb13faa))
+
 ## 0.17.2 (2024-08-27)
 
 
