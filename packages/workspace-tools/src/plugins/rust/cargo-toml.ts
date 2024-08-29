@@ -236,7 +236,7 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
           project.targets.docs = {
             cache: true,
             inputs: ["linting", "documentation", "default", "^production"],
-            dependsOn: ["build", "format-readme", "lint-docs", "^docs"],
+            dependsOn: ["format-readme", "lint-docs", "^docs"],
             outputs: [`{workspaceRoot}/dist/docs/{projectRoot}`],
             executor: "@storm-software/workspace-tools:cargo-doc",
             options: {
