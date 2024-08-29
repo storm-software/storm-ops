@@ -1,3 +1,10 @@
+## 0.62.2 (2024-08-29)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure the `preVersionCommand` property is correct ([9d089852](https://github.com/storm-software/storm-ops/commit/9d089852))
+
 ## 0.62.1 (2024-08-29)
 
 

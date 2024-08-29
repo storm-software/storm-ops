@@ -1,3 +1,15 @@
+## 1.42.0 (2024-08-29)
+
+
+### Features
+
+- **workspace-tools:** The `docs` task no longer depends on `build` to run ([9b299fad](https://github.com/storm-software/storm-ops/commit/9b299fad))
+
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure the `preVersionCommand` property is correct ([9d089852](https://github.com/storm-software/storm-ops/commit/9d089852))
+
 ## 1.41.2 (2024-08-29)
 
 ### Bug Fixes
