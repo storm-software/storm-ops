@@ -47,6 +47,7 @@ variable "topic_arn" {
   description = "The ARN of a SNS Topic. Written to the `STORM_TOPIC_ID` envrionment variable."
   type = string
   nullable = true
+  default = null
 }
 
 variable "log_level" {
@@ -71,4 +72,5 @@ variable "full_name" {
   description = "The name to use when adding resources (generally includes enviroment and region)."
   type = string
   nullable = true
+  default = null
 }
