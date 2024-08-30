@@ -1,14 +1,21 @@
-## 1.79.0 (2024-08-29)
-
-
-### Features
-
-- **workspace-tools:** The `docs` task no longer depends on `build` to run ([9b299fad](https://github.com/storm-software/storm-ops/commit/9b299fad))
+## 1.79.1 (2024-08-30)
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Ensure the `preVersionCommand` property is correct ([9d089852](https://github.com/storm-software/storm-ops/commit/9d089852))
+- **terraform-modules:** Added default values for `full_name` variables ([8779001e](https://github.com/storm-software/storm-ops/commit/8779001e))
+
+## 1.79.0 (2024-08-29)
+
+### Features
+
+- **workspace-tools:** The `docs` task no longer depends on `build` to run
+  ([9b299fad](https://github.com/storm-software/storm-ops/commit/9b299fad))
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure the `preVersionCommand` property is correct
+  ([9d089852](https://github.com/storm-software/storm-ops/commit/9d089852))
 
 ## 1.78.2 (2024-08-29)
 

@@ -1,3 +1,10 @@
+## 0.18.2 (2024-08-30)
+
+
+### Bug Fixes
+
+- **terraform-modules:** Added default values for `full_name` variables ([8779001e](https://github.com/storm-software/storm-ops/commit/8779001e))
+
 ## 0.18.1 (2024-08-29)
 
 
