@@ -1,3 +1,10 @@
+## 0.63.0 (2024-08-31)
+
+
+### Features
+
+- **eslint:** Update linting rules to ignore the length of commands and use double quotes ([f9c603d7](https://github.com/storm-software/storm-ops/commit/f9c603d7))
+
 ## 0.62.5 (2024-08-31)
 
 

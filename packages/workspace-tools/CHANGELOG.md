@@ -1,9 +1,16 @@
-## 1.165.3 (2024-08-31)
+## 1.166.0 (2024-08-31)
 
+
+### Features
+
+- **eslint:** Update linting rules to ignore the length of commands and use double quotes ([f9c603d7](https://github.com/storm-software/storm-ops/commit/f9c603d7))
+
+## 1.165.3 (2024-08-31)
 
 ### Bug Fixes
 
-- **terraform-modules:** Resolve issue with output variable name ([dd5b63fb](https://github.com/storm-software/storm-ops/commit/dd5b63fb))
+- **terraform-modules:** Resolve issue with output variable name
+  ([dd5b63fb](https://github.com/storm-software/storm-ops/commit/dd5b63fb))
 
 ## 1.165.2 (2024-08-31)
 
