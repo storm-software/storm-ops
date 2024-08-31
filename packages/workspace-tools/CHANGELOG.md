@@ -1,9 +1,16 @@
-## 1.165.2 (2024-08-31)
+## 1.165.3 (2024-08-31)
 
 
 ### Bug Fixes
 
-- **terraform-modules:** Resolved issue with conditional statement syntax ([c96e9a9e](https://github.com/storm-software/storm-ops/commit/c96e9a9e))
+- **terraform-modules:** Resolve issue with output variable name ([dd5b63fb](https://github.com/storm-software/storm-ops/commit/dd5b63fb))
+
+## 1.165.2 (2024-08-31)
+
+### Bug Fixes
+
+- **terraform-modules:** Resolved issue with conditional statement syntax
+  ([c96e9a9e](https://github.com/storm-software/storm-ops/commit/c96e9a9e))
 
 ## 1.165.1 (2024-08-30)
 

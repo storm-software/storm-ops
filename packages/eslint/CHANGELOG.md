@@ -1,3 +1,10 @@
+## 0.62.5 (2024-08-31)
+
+
+### Bug Fixes
+
+- **terraform-modules:** Resolve issue with output variable name ([dd5b63fb](https://github.com/storm-software/storm-ops/commit/dd5b63fb))
+
 ## 0.62.4 (2024-08-31)
 
 
