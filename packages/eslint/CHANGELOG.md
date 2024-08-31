@@ -1,3 +1,10 @@
+## 0.62.4 (2024-08-31)
+
+
+### Bug Fixes
+
+- **terraform-modules:** Resolved issue with conditional statement syntax ([c96e9a9e](https://github.com/storm-software/storm-ops/commit/c96e9a9e))
+
 ## 0.62.3 (2024-08-30)
 
 
