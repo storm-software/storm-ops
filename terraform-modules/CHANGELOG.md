@@ -1,3 +1,10 @@
+## 0.19.1 (2024-08-31)
+
+
+### Bug Fixes
+
+- **build-tools:** Added try/catch to utility function ([3ce4a7cd](https://github.com/storm-software/storm-ops/commit/3ce4a7cd))
+
 ## 0.19.0 (2024-08-31)
 
 

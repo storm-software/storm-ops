@@ -1,9 +1,17 @@
-## 0.69.0 (2024-08-31)
+## 0.69.1 (2024-08-31)
 
+
+### Bug Fixes
+
+- **build-tools:** Added try/catch to utility function ([3ce4a7cd](https://github.com/storm-software/storm-ops/commit/3ce4a7cd))
+
+## 0.69.0 (2024-08-31)
 
 ### Features
 
-- **eslint:** Update linting rules to ignore the length of commands and use double quotes ([f9c603d7](https://github.com/storm-software/storm-ops/commit/f9c603d7))
+- **eslint:** Update linting rules to ignore the length of commands and use
+  double quotes
+  ([f9c603d7](https://github.com/storm-software/storm-ops/commit/f9c603d7))
 
 ## 0.68.3 (2024-08-31)
 
