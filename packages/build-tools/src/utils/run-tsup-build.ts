@@ -28,16 +28,18 @@ export const runTsupBuild = async (
     writeInfo,
     writeTrace,
     writeWarning,
+    writeError,
     correctPaths,
     findWorkspaceRoot
   } = await import("@storm-software/config-tools");
 
-  const workspaceRoot = correctPaths(
-    config?.workspaceRoot ?? findWorkspaceRoot()
-  );
+  try {
+    const workspaceRoot = correctPaths(
+      config?.workspaceRoot ?? findWorkspaceRoot()
+    );
 
-  writeTrace(
-    `⚙️  Tsup (ESBuild) Build options:
+    writeTrace(
+      `⚙️  Tsup (ESBuild) Build options:
 ${Object.keys(options)
   .map(
     key =>
@@ -49,52 +51,52 @@ ${Object.keys(options)
   )
   .join("\n")}
 `,
-    config
-  );
+      config
+    );
 
-  // process.chdir(workspaceRoot);
+    // process.chdir(workspaceRoot);
 
-  // #region Add default plugins
+    // #region Add default plugins
 
-  const stormEnv = Object.keys(options.env ?? {})
-    .filter(key => key.startsWith("STORM_"))
-    .reduce((ret, key) => {
-      ret[key] = options.env?.[key];
-      return ret;
-    }, {});
-  options.plugins?.push(
-    esbuildDecorators({
-      tsconfig: options.tsConfig,
-      cwd: workspaceRoot
-    })
-  );
-  options.plugins?.push(environmentPlugin(stormEnv));
+    const stormEnv = Object.keys(options.env ?? {})
+      .filter(key => key.startsWith("STORM_"))
+      .reduce((ret, key) => {
+        ret[key] = options.env?.[key];
+        return ret;
+      }, {});
+    options.plugins?.push(
+      esbuildDecorators({
+        tsconfig: options.tsConfig,
+        cwd: workspaceRoot
+      })
+    );
+    options.plugins?.push(environmentPlugin(stormEnv));
 
-  // #endregion Add default plugins
+    // #endregion Add default plugins
 
-  // #region Run the build process
+    // #region Run the build process
 
-  const dtsTsConfig = await getNormalizedTsConfig(
-    workspaceRoot,
-    options.outputPath,
-    createTypeScriptCompilationOptions(
-      normalizeOptions(
-        {
-          ...options,
-          watch: false,
-          main: context.main,
-          transformers: []
-        },
-        workspaceRoot,
-        context.sourceRoot,
-        workspaceRoot
-      ),
-      context.projectName
-    )
-  );
+    const dtsTsConfig = await getNormalizedTsConfig(
+      workspaceRoot,
+      options.outputPath,
+      createTypeScriptCompilationOptions(
+        normalizeOptions(
+          {
+            ...options,
+            watch: false,
+            main: context.main,
+            transformers: []
+          },
+          workspaceRoot,
+          context.sourceRoot,
+          workspaceRoot
+        ),
+        context.projectName
+      )
+    );
 
-  writeTrace(
-    `⚙️  TSC (Type Declarations) Build options:
+    writeTrace(
+      `⚙️  TSC (Type Declarations) Build options:
 ${Object.keys(dtsTsConfig.options)
   .filter(key => key !== "define")
   .map(
@@ -107,85 +109,89 @@ ${Object.keys(dtsTsConfig.options)
   )
   .join("\n")}
 `,
-    config
-  );
+      config
+    );
 
-  // #endregion Add default plugins
+    // #endregion Add default plugins
 
-  // #region Run the build process
+    // #region Run the build process
 
-  const getConfigOptions = {
-    ...options,
-    entry: {
-      [removeExtension(
-        context.main
-          ?.split(
-            context.main?.includes(sep)
-              ? sep
-              : context.main?.includes("/")
-                ? "/"
-                : "\\"
-          )
-          ?.pop()
-      )]: context.main
-    },
-    define: {
-      __STORM_CONFIG: JSON.stringify(stormEnv)
-    },
-    env: {
-      __STORM_CONFIG: JSON.stringify(stormEnv),
-      ...Object.keys(options.env ?? {})
-        .filter(key => !key.includes("(") && !key.includes(")"))
-        .reduce((ret, key) => {
-          ret[key] = options.env?.[key];
-          return ret;
-        }, {})
-    },
-    dtsTsConfig,
-    banner: options.banner
-      ? {
-          js: `
+    const getConfigOptions = {
+      ...options,
+      entry: {
+        [removeExtension(
+          context.main
+            ?.split(
+              context.main?.includes(sep)
+                ? sep
+                : context.main?.includes("/")
+                  ? "/"
+                  : "\\"
+            )
+            ?.pop()
+        )]: context.main
+      },
+      define: {
+        __STORM_CONFIG: JSON.stringify(stormEnv)
+      },
+      env: {
+        __STORM_CONFIG: JSON.stringify(stormEnv),
+        ...Object.keys(options.env ?? {})
+          .filter(key => !key.includes("(") && !key.includes(")"))
+          .reduce((ret, key) => {
+            ret[key] = options.env?.[key];
+            return ret;
+          }, {})
+      },
+      dtsTsConfig,
+      banner: options.banner
+        ? {
+            js: `
 
 ${options.banner}
 
 `,
-          css: `/*
+            css: `/*
 
 ${options.banner}
 
 */`
-        }
-      : undefined,
-    outputPath: options.outputPath
-  };
+          }
+        : undefined,
+      outputPath: options.outputPath
+    };
 
-  if (!options.getConfig) {
-    options.getConfig = defaultConfig;
-    writeWarning(
-      "Applying the default configuration for Build process because no `getConfig` parameter was provided",
-      config
-    );
-  }
+    if (!options.getConfig) {
+      options.getConfig = defaultConfig;
+      writeWarning(
+        "Applying the default configuration for Build process because no `getConfig` parameter was provided",
+        config
+      );
+    }
 
-  writeInfo("⚡ Running the Build process", config);
+    writeInfo("⚡ Running the Build process", config);
 
-  const getConfigFns = [options.getConfig];
-  const tsupConfig = defineConfig(
-    getConfigFns.map(getConfigFn =>
-      getConfig(
-        workspaceRoot,
-        context.projectRoot,
-        getConfigFn,
-        getConfigOptions
+    const getConfigFns = [options.getConfig];
+    const tsupConfig = defineConfig(
+      getConfigFns.map(getConfigFn =>
+        getConfig(
+          workspaceRoot,
+          context.projectRoot,
+          getConfigFn,
+          getConfigOptions
+        )
       )
-    )
-  );
+    );
 
-  if (_isFunction(tsupConfig)) {
-    const tsupOptions = await Promise.resolve(tsupConfig({}));
-    await build(tsupOptions, config as StormConfig);
-  } else {
-    await build(tsupConfig, config as StormConfig);
+    if (_isFunction(tsupConfig)) {
+      const tsupOptions = await Promise.resolve(tsupConfig({}));
+      await build(tsupOptions, config as StormConfig);
+    } else {
+      await build(tsupConfig, config as StormConfig);
+    }
+  } catch (e) {
+    writeError("An error occured running the Build process", config);
+    console.error(e);
   }
 };
 
