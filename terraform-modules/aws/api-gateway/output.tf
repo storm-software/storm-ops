@@ -1,5 +1,5 @@
 output "invoke_url" {
-  value       = aws_api_gateway_integration.api_gateway_integration.url
+  value       = aws_api_gateway_integration.api_gateway_integration.uri
   description = "The ARN of the SNS topic."
 }
 
