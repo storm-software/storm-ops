@@ -571,7 +571,7 @@ const config: Linter.RulesRecord = {
 
   // Enforce the location of arrow function bodies with implicit returns
   // https://eslint.org/docs/rules/implicit-arrow-linebreak
-  "implicit-arrow-linebreak": ["error", "beside"],
+  "implicit-arrow-linebreak": "off",
 
   // this option sets a specific tab width for your code
   // https://eslint.org/docs/rules/indent
@@ -963,7 +963,7 @@ const config: Linter.RulesRecord = {
 
   // Requires operator at the beginning of the line in multiline statements
   // https://eslint.org/docs/rules/operator-linebreak
-  "operator-linebreak": ["error", "before", { overrides: { "=": "none" } }],
+  "operator-linebreak": ["error", "after", { overrides: { "=": "none" } }],
 
   // disallow padding within blocks
   "padded-blocks": [
