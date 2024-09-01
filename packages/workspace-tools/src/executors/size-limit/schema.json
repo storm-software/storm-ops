@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/schema",
   "$id": "size-limit",
   "version": 2,
-  "title": "Size-Limit Test Executor",
+  "title": "Size-Limit Test",
   "description": "Run a size-limit performance test on the project",
   "type": "object",
   "properties": {

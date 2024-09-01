@@ -1,7 +1,8 @@
 {
   "$schema": "http://json-schema.org/schema",
   "version": 2,
-  "title": "Npm Publish executor",
+  "$id": "npm-publish",
+  "title": "Npm Publish",
   "description": "Publish a package to the NPM registry - DO NOT INVOKE DIRECTLY WITH `nx run`. Use `nx release publish` instead.",
   "type": "object",
   "properties": {

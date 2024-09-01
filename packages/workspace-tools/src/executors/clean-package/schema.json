@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/schema",
   "$id": "clean-publish",
   "version": 2,
-  "title": "Clean Publish Executor",
+  "title": "Clean Publish",
   "description": "Remove configuration files, fields, and scripts for development before publishing package. This tool is inspired by the [clean-publish](https://github.com/shashkovdanil/clean-publish/tree/master) package",
   "type": "object",
   "properties": {

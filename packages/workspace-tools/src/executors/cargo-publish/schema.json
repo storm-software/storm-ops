@@ -1,7 +1,8 @@
 {
   "$schema": "https://json-schema.org/schema",
   "version": 2,
-  "title": "Cargo Publish executor",
+  "$id": "cargo-publish",
+  "title": "Cargo Publish",
   "description": "Publish a package to the crates.io registry - DO NOT INVOKE DIRECTLY WITH `nx run`. Use `nx release publish` instead.",
   "type": "object",
   "properties": {

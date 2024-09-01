@@ -80,6 +80,11 @@
       "implementation": "./src/executors/cargo-doc/executor",
       "schema": "./src/executors/cargo-doc/schema.json",
       "description": "Create docs for a Rust project with Cargo Doc"
+    },
+    "rollup": {
+      "implementation": "./src/executors/rollup/executor",
+      "schema": "./src/executors/rollup/schema.json",
+      "description": "An executor for running the Rollup build process"
     }
   }
 }
