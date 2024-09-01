@@ -1,3 +1,10 @@
+## 0.20.1 (2024-09-01)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with excessive logging in Cargo plugin ([5562f21f](https://github.com/storm-software/storm-ops/commit/5562f21f))
+
 ## 0.20.0 (2024-09-01)
 
 

@@ -1,9 +1,16 @@
-## 1.167.0 (2024-09-01)
+## 1.167.1 (2024-09-01)
 
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with excessive logging in Cargo plugin ([5562f21f](https://github.com/storm-software/storm-ops/commit/5562f21f))
+
+## 1.167.0 (2024-09-01)
 
 ### Features
 
-- **workspace-tools:** Added the `noDeps` flag to the cargo-doc executor options ([82eeb944](https://github.com/storm-software/storm-ops/commit/82eeb944))
+- **workspace-tools:** Added the `noDeps` flag to the cargo-doc executor options
+  ([82eeb944](https://github.com/storm-software/storm-ops/commit/82eeb944))
 
 ## 1.166.1 (2024-08-31)
 
