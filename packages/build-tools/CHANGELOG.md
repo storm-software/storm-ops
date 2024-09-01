@@ -1,9 +1,16 @@
-## 0.69.1 (2024-08-31)
+## 0.70.0 (2024-09-01)
 
+
+### Features
+
+- **workspace-tools:** Added the `noDeps` flag to the cargo-doc executor options ([82eeb944](https://github.com/storm-software/storm-ops/commit/82eeb944))
+
+## 0.69.1 (2024-08-31)
 
 ### Bug Fixes
 
-- **build-tools:** Added try/catch to utility function ([3ce4a7cd](https://github.com/storm-software/storm-ops/commit/3ce4a7cd))
+- **build-tools:** Added try/catch to utility function
+  ([3ce4a7cd](https://github.com/storm-software/storm-ops/commit/3ce4a7cd))
 
 ## 0.69.0 (2024-08-31)
 

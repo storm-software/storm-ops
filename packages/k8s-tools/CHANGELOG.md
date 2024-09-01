@@ -1,9 +1,16 @@
-## 0.3.0 (2024-08-29)
+## 0.4.0 (2024-09-01)
 
 
 ### Features
 
-- **workspace-tools:** Added base entry to package ([b0d3b788](https://github.com/storm-software/storm-ops/commit/b0d3b788))
+- **workspace-tools:** Added the `noDeps` flag to the cargo-doc executor options ([82eeb944](https://github.com/storm-software/storm-ops/commit/82eeb944))
+
+## 0.3.0 (2024-08-29)
+
+### Features
+
+- **workspace-tools:** Added base entry to package
+  ([b0d3b788](https://github.com/storm-software/storm-ops/commit/b0d3b788))
 
 ## 0.2.1 (2024-08-27)
 
