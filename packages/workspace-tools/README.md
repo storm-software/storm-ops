@@ -21,7 +21,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.167.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
+[![Version](https://img.shields.io/badge/version-1.167.1-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -55,7 +55,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
     - [Options](#options-1)
   - [Browser TypeScript Builder](#browser-typescript-builder)
     - [Example](#example-3)
-  - [Typia Generate Executor](#typia-generate-executor)
+  - [Typia Generate](#typia-generate)
     - [Example](#example-4)
     - [Options](#options-2)
   - [Rolldown Builder](#rolldown-builder)
@@ -64,16 +64,16 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
   - [Unbuild Builder](#unbuild-builder)
     - [Example](#example-6)
     - [Options](#options-4)
-  - [Clean Publish Executor](#clean-publish-executor)
+  - [Clean Publish](#clean-publish)
     - [Example](#example-7)
     - [Options](#options-5)
-  - [Size-Limit Test Executor](#size-limit-test-executor)
+  - [Size-Limit Test](#size-limit-test)
     - [Example](#example-8)
     - [Options](#options-6)
-  - [Npm Publish executor](#npm-publish-executor)
+  - [Npm Publish](#npm-publish)
     - [Example](#example-9)
     - [Options](#options-7)
-  - [Cargo Publish executor](#cargo-publish-executor)
+  - [Cargo Publish](#cargo-publish)
     - [Example](#example-10)
     - [Options](#options-8)
   - [Cargo Build](#cargo-build)
@@ -91,23 +91,26 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
   - [Cargo Doc](#cargo-doc)
     - [Example](#example-15)
     - [Options](#options-13)
+  - [Rollup Builder](#rollup-builder)
+    - [Example](#example-16)
+    - [Options](#options-14)
   - [Generators](#generators)
   - [Init Storm Workspace Plugin](#init-storm-workspace-plugin)
-    - [Options](#options-14)
+    - [Options](#options-15)
   - [Workspace Preset](#workspace-preset)
     - [Examples](#examples)
-    - [Options](#options-15)
-  - [Add Node Library](#add-node-library)
     - [Options](#options-16)
-  - [Configuration Schema Creator](#configuration-schema-creator)
+  - [Add Node Library](#add-node-library)
     - [Options](#options-17)
-  - [Add Neutral Library](#add-neutral-library)
+  - [Configuration Schema Creator](#configuration-schema-creator)
     - [Options](#options-18)
-  - [Add browser Library](#add-browser-library)
+  - [Add Neutral Library](#add-neutral-library)
     - [Options](#options-19)
+  - [Add browser Library](#add-browser-library)
+    - [Options](#options-20)
   - [design-tokens](#design-tokens)
   - [Storm Release Version Generator](#storm-release-version-generator)
-    - [Options](#options-20)
+    - [Options](#options-21)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
   - [Storm Workspaces](#storm-workspaces)
@@ -284,7 +287,7 @@ nx run my-project:tsup-browser
 
 
 
-## Typia Generate Executor
+## Typia Generate
 
 Run the Typia generator to create runtime type validators
 
@@ -395,7 +398,7 @@ The following executor options are available:
 
 
 
-## Clean Publish Executor
+## Clean Publish
 
 Remove configuration files, fields, and scripts for development before publishing package. This tool is inspired by the [clean-publish](https://github.com/shashkovdanil/clean-publish/tree/master) package
 
@@ -427,7 +430,7 @@ The following executor options are available:
 
 
 
-## Size-Limit Test Executor
+## Size-Limit Test
 
 Run a size-limit performance test on the project
 
@@ -452,7 +455,7 @@ The following executor options are available:
 
 
 
-## Npm Publish executor
+## Npm Publish
 
 Publish a package to the NPM registry - DO NOT INVOKE DIRECTLY WITH \`nx run\`. Use \`nx release publish\` instead.
 
@@ -480,7 +483,7 @@ The following executor options are available:
 
 
 
-## Cargo Publish executor
+## Cargo Publish
 
 Publish a package to the crates.io registry - DO NOT INVOKE DIRECTLY WITH \`nx run\`. Use \`nx release publish\` instead.
 
@@ -696,6 +699,54 @@ The following executor options are available:
  | bench      | `string`   | Build the specified bench. Array of names or common Unix glob patterns is supported     |     | 
  | benches      | `boolean`    | Build all targets in benchmark mode that have the bench = true manifest flag set. By default this includes the library and binaries built as benchmarks, and bench targets. Be aware that this will also build any required dependencies, so the lib target may be built twice (once as a benchmark, and once as a dependency for binaries, benchmarks, etc.). Targets may be enabled or disabled by setting the bench flag in the manifest settings for the target.     |     | 
  | allTargets      | `boolean`    | Build all test targets     |     | 
+
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+
+
+
+## Rollup Builder
+
+An executor for running the Rollup build process
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:rollup
+```
+
+**Please note:** _The rollup executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| **entry \***    | `string`    | The path to the entry file, relative to project.     | "{sourceRoot}/index.ts"     | 
+ | **outputPath \***    | `string`    | The output path of the generated files.     | "dist/{projectRoot}"     | 
+ | **tsConfig \***    | `string`    | The path to the \`tsconfig.json\` file.     | "{projectRoot}/tsconfig.json"     | 
+ | project      | `string`    | The path to package.json file.     |     | 
+ | outputFileName      | `string`    | Name of the main output file. Defaults same basename as 'main' file.     |     | 
+ | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
+ | fileLevelInput      | `boolean`    | Should an entry point be added for each source file in the project (each file in \`sourceRoot\`).     | `true`     | 
+ | allowJs      | `boolean`    | Allow JavaScript files to be compiled.     |     | 
+ | format      | `string[]`   | List of module formats to output. Defaults to matching format from tsconfig (e.g. CJS for CommonJS, and ESM otherwise).     |     | 
+ | external      | `array`    | A list of external modules that will not be bundled (\`react\`, \`react-dom\`, etc.). Can also be set to \`all\` (bundle nothing) or \`none\` (bundle everything).     |     | 
+ | watch      | `boolean`    | Enable re-building when files change.     |     | 
+ | rollupConfig      | `string`   | Path to a function which takes a rollup config and returns an updated rollup config.     |     | 
+ | extractCss      | `boolean,string`    | CSS files will be extracted to the output folder. Alternatively custom filename can be provided (e.g. styles.css)     | `true`     | 
+ | assets      | `array`    | List of static assets.     | `[]`     | 
+ | compiler      | "babel" \| "swc" \| "tsc"     | Which compiler to use.     | "babel"     | 
+ | babelUpwardRootMode      | `boolean`    | Whether to set rootmode to upward. See https://babeljs.io/docs/en/options#rootmode     | `true`     | 
+ | javascriptEnabled      | `boolean`    | Sets \`javascriptEnabled\` option for less loader     |     | 
+ | generateExportsField      | `boolean`    | Update the output package.json file's 'exports' field. This field is used by Node and bundles.     | `true`     | 
+ | additionalEntryPoints      | `string[]`   | Additional entry-points to add to exports field in the package.json file.     |     | 
+ | skipTypeCheck      | `boolean`    | Whether to skip TypeScript type checking.     |     | 
+ | skipTypeField      | `boolean`    | Prevents 'type' field from being added to compiled package.json file. Use this if you are having an issue with this field.     |     | 
+ | sourceMap      | `boolean`    | Output sourcemaps.     |     | 
 
 
 **Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 

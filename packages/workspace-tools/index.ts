@@ -7,6 +7,8 @@ export * from "./src/executors/npm-publish/executor";
 export * from "./src/executors/npm-publish/schema";
 export * from "./src/executors/rolldown/executor";
 export * from "./src/executors/rolldown/schema";
+export * from "./src/executors/rollup/executor";
+export * from "./src/executors/rollup/schema";
 export * from "./src/executors/size-limit/executor";
 export * from "./src/executors/size-limit/schema";
 export * from "./src/executors/tsup-browser/executor";

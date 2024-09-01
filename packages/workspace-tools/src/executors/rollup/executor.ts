@@ -79,9 +79,9 @@ export async function* rollupExecutorFn(
 
         return ret;
       },
-      options.additionalEntryPoints.map(entry =>
+      options.additionalEntryPoints?.map(entry =>
         correctPaths(join(workspaceRoot, entry))
-      )
+      ) ?? []
     );
   }
 
@@ -90,7 +90,7 @@ export async function* rollupExecutorFn(
     config
   );
 
-  yield* rollupExecutor({ ...options, main: options.entry }, context, config);
+  yield* rollupExecutor({ ...options, main: options.entry }, context);
 
   return {
     success: true
@@ -112,15 +112,7 @@ export default withRunExecutor<RollupExecutorSchema>(
         options.generatePackageJson ??= true;
         options.platform ??= "neutral";
         options.verbose ??= false;
-        options.external ??= (source: string) =>
-          !!(
-            process.env.STORM_EXTERNAL_PACKAGE_PATTERNS &&
-            process.env.STORM_EXTERNAL_PACKAGE_PATTERNS.split(",")?.length >
-              0 &&
-            process.env.STORM_EXTERNAL_PACKAGE_PATTERNS.split(",").some(
-              pkg => pkg.replaceAll("*", "") && source?.includes(pkg)
-            )
-          );
+        options.external ??= process.env.STORM_EXTERNAL_PACKAGE_PATTERNS ?? [];
         options.additionalEntryPoints ??= [];
         options.assets ??= [];
         options.clean ??= true;
