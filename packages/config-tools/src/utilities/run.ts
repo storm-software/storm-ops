@@ -35,6 +35,7 @@ export const run = (
       CLICOLOR: "true",
       FORCE_COLOR: "true"
     },
+    windowsHide: true,
     stdio,
     maxBuffer: LARGE_BUFFER,
     killSignal: "SIGTERM"

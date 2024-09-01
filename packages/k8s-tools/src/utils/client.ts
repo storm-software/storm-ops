@@ -121,7 +121,12 @@ export class HelmClient extends AbstractHelmClient {
   }
 
   private runCommand(commands: string[]): string {
-    return execSync(commands.filter(Boolean).join(" "), { encoding: "utf8" });
+    return execSync(commands.filter(Boolean).join(" "), {
+      encoding: "utf8",
+      windowsHide: true,
+      maxBuffer: 1024 * 1000000,
+      stdio: "pipe"
+    });
   }
 }
 

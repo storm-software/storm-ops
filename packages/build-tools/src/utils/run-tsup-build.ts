@@ -4,11 +4,7 @@ import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options
 import type { NormalizedExecutorOptions } from "@nx/js/src/utils/schema.js";
 import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation.js";
 import type { StormConfig } from "@storm-software/config";
-import {
-  findFileName,
-  removeExtension,
-  writeTrace
-} from "@storm-software/config-tools";
+import { findFileName, removeExtension } from "@storm-software/config-tools";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import { dirname, join, relative, sep } from "node:path";
 import { defaultConfig, getConfig } from "../config";
@@ -200,7 +196,9 @@ async function getNormalizedTsConfig(
   outputPath: string,
   options: TypeScriptCompilationOptions
 ) {
-  const { correctPaths } = await import("@storm-software/config-tools");
+  const { correctPaths, writeTrace } = await import(
+    "@storm-software/config-tools"
+  );
 
   const tsModule = ensureTypescript();
 

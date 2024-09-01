@@ -20,7 +20,12 @@ export const runCommit = async (
 
     const shellescape = await import("any-shell-escape");
 
-    const command = shellescape.default(["git", "commit", "--file", commitMsgFile]);
+    const command = shellescape.default([
+      "git",
+      "commit",
+      "--file",
+      commitMsgFile
+    ]);
 
     if (dryRun) {
       // The full path is replaced with a relative path to make the test pass on every machine

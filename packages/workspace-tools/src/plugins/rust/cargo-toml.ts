@@ -317,10 +317,7 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
   }
 ];
 
-export const createDependencies: CreateDependencies = (
-  _,
-  { projects, externalNodes }
-) => {
+export const createDependencies: CreateDependencies = (_, context) => {
   const metadata = cargoMetadata();
   if (!metadata) {
     return [];
@@ -329,27 +326,33 @@ export const createDependencies: CreateDependencies = (
   const { packages: cargoPackages } = metadata;
   const dependencies: RawProjectGraphDependency[] = [];
 
+  console.log(`Cargo packages found: ${JSON.stringify(cargoPackages)}`);
   for (const pkg of cargoPackages) {
-    if (projects[pkg.name]) {
+    if (context.projects[pkg.name]) {
       for (const deps of pkg.dependencies) {
         if (!cargoPackages.find(p => p.name === deps.name)) {
+          console.log(
+            `Dependency ${deps.name} not found in the cargo metadata.`
+          );
           continue;
         }
 
         // if the dependency is listed in nx projects, it's not an external dependency
-        if (projects[deps.name]) {
+        if (context.projects[deps.name]) {
           dependencies.push(
             createDependency(pkg, deps.name, DependencyType.static)
           );
         } else {
           const externalDepName = `cargo:${deps.name}`;
-          if (externalDepName in (externalNodes ?? {})) {
+          if (externalDepName in (context.externalNodes ?? {})) {
             dependencies.push(
               createDependency(pkg, externalDepName, DependencyType.static)
             );
           }
         }
       }
+    } else {
+      console.log(`Project ${pkg.name} not found in the context.`);
     }
   }
 
@@ -362,11 +365,11 @@ function createDependency(
   type: DependencyType
 ): RawProjectGraphDependency {
   const target = pkg.manifest_path.replace(/\\/g, "/");
-  const workspaceRootClean = workspaceRoot.replace(/\\/g, "/");
+
   return {
     type,
     source: pkg.name,
     target: depName,
-    sourceFile: target.replace(`${workspaceRootClean}/`, "")
+    sourceFile: target.replace(`${workspaceRoot.replace(/\\/g, "/")}/`, "")
   };
 }

@@ -167,6 +167,7 @@ export function cargoMetadata(): CargoMetadata | null {
   });
 
   if (!output.success) {
+    console.error("Failed to get cargo metadata");
     return null;
   }
 

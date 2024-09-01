@@ -78,6 +78,7 @@ export const runCommitLint = async (commitMessageArg?: string) => {
     commitlintConfig.prompt.questions.type.enum
   ).join("|");
   const allowedScopes = (await getNxScopes()).join("|");
+  // eslint-disable-next-line no-useless-escape
   const commitMsgRegex = `(${allowedTypes})\\((${allowedScopes})\\)!?:\\s(([a-z0-9:\-\s])+)`;
 
   const matchCommit = new RegExp(commitMsgRegex, "g").test(commitMessage);

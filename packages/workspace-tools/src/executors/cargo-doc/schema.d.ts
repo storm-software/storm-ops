@@ -1,3 +1,5 @@
 import { CargoBaseExecutorSchema } from "../../../declarations";
 
-export type CargoDocExecutorSchema = CargoBaseExecutorSchema;
+export type CargoDocExecutorSchema = CargoBaseExecutorSchema & {
+  noDeps?: boolean;
+};

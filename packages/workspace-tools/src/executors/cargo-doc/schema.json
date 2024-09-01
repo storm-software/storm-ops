@@ -30,6 +30,11 @@
       "enum": ["stable", "beta", "nightly"],
       "default": "stable"
     },
+    "noDeps": {
+      "type": "boolean",
+      "default": true,
+      "description": "Don't build documentation for dependencies"
+    },
     "features": {
       "oneOf": [
         {

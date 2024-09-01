@@ -74,6 +74,7 @@ export interface Dependency {
   target: string;
   path: string;
   registry: any;
+  workspace: boolean;
 }
 
 export interface Target {

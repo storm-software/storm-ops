@@ -1,20 +1,29 @@
-import { execSync } from "node:child_process";
 import { writeInfo } from "@storm-software/config-tools";
+import { execSync } from "node:child_process";
 import defaultConfig from "../commit/config";
 import { getScopeEnum } from "../commitlint/get-scope-enum";
-import type { CommitQuestions, CommitState, CommitStateConfig, CommitType } from "../types";
+import type {
+  CommitQuestions,
+  CommitState,
+  CommitStateConfig,
+  CommitType
+} from "../types";
 import defaultCommitizenConfig from "./config";
 
 export const getGitDir = () => {
   const devNull = process.platform === "win32" ? " nul" : "/dev/null";
-  const dir = execSync(`git rev-parse --absolute-git-dir 2>${devNull}`).toString().trim();
+  const dir = execSync(`git rev-parse --absolute-git-dir 2>${devNull}`)
+    .toString()
+    .trim();
 
   return dir;
 };
 
 export const getGitRootDir = () => {
   const devNull = process.platform === "win32" ? " nul" : "/dev/null";
-  const dir = execSync(`git rev-parse --show-toplevel 2>${devNull}`).toString().trim();
+  const dir = execSync(`git rev-parse --show-toplevel 2>${devNull}`)
+    .toString()
+    .trim();
 
   return dir;
 };
@@ -40,7 +49,7 @@ export const createState = async (
       answers: {}
     };
   } else {
-    writeInfo({}, `Using custom commit config file: ${commitConfig}`);
+    writeInfo(`Using custom commit config file: ${commitConfig}`);
 
     let config = (await import(commitConfig))?.default;
     if (config?.default) {
@@ -56,10 +65,14 @@ export const createState = async (
           ...config.prompt.questions,
           type: {
             ...defaultConfig.questions.type,
-            ...(config.prompt ? config.prompt.questions?.type : config?.questions?.type ?? {}),
+            ...(config.prompt
+              ? config.prompt.questions?.type
+              : config?.questions?.type ?? {}),
             enum: {
               ...defaultConfig.types,
-              ...(config?.prompt ? config.prompt.questions?.type?.enum : config?.types ?? {})
+              ...(config?.prompt
+                ? config.prompt.questions?.type?.enum
+                : config?.types ?? {})
             }
           }
         }
@@ -69,28 +82,32 @@ export const createState = async (
     };
   }
 
-  state.config.questions.type.enum = Object.keys(defaultCommitizenConfig.types).map(
-    (key: string) => {
-      let name = key;
-      let description: string | undefined = undefined;
+  state.config.questions.type.enum = Object.keys(
+    defaultCommitizenConfig.types
+  ).map((key: string) => {
+    let name = key;
+    let description: string | undefined = undefined;
 
-      const type: CommitType | undefined =
-        key in defaultConfig.types
-          ? ((defaultConfig.types as Record<string, CommitType>)?.[key] as CommitType)
-          : undefined;
-      if (type) {
-        name = `${key} - ${type.title} ${type.emoji} ${type.description ? type.description : ""}`;
-        description = type.description;
-      }
-
-      return { name, value: key, description };
+    const type: CommitType | undefined =
+      key in defaultConfig.types
+        ? ((defaultConfig.types as Record<string, CommitType>)?.[
+            key
+          ] as CommitType)
+        : undefined;
+    if (type) {
+      name = `${key} - ${type.title} ${type.emoji} ${type.description ? type.description : ""}`;
+      description = type.description;
     }
-  );
 
-  state.config.questions.scope.enum = (await getScopeEnum({})).map((scope: string) => ({
-    name: scope,
-    value: scope
-  }));
+    return { name, value: key, description };
+  });
+
+  state.config.questions.scope.enum = (await getScopeEnum({})).map(
+    (scope: string) => ({
+      name: scope,
+      value: scope
+    })
+  );
 
   state.answers = Object.keys(state.config.questions).reduce(
     (ret: Record<keyof CommitQuestions, string>, key: string) => {
