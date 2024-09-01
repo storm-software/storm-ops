@@ -1,9 +1,21 @@
-## 1.81.1 (2024-09-01)
+## 1.82.0 (2024-09-01)
+
+
+### Features
+
+- **eslint:** Update ESLint line-breaking rules ([1d08c4e1](https://github.com/storm-software/storm-ops/commit/1d08c4e1))
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue with excessive logging in Cargo plugin ([5562f21f](https://github.com/storm-software/storm-ops/commit/5562f21f))
+- **workspace-tools:** Resolved various issues with `rollup` executor ([5b350c35](https://github.com/storm-software/storm-ops/commit/5b350c35))
+
+## 1.81.1 (2024-09-01)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with excessive logging in Cargo plugin
+  ([5562f21f](https://github.com/storm-software/storm-ops/commit/5562f21f))
 
 ## 1.81.0 (2024-09-01)
 
