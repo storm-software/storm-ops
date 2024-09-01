@@ -326,12 +326,13 @@ export const createDependencies: CreateDependencies = (_, context) => {
   const { packages: cargoPackages } = metadata;
   const dependencies: RawProjectGraphDependency[] = [];
 
-  console.log(`Cargo packages found: ${JSON.stringify(cargoPackages)}`);
   for (const pkg of cargoPackages) {
     if (context.projects[pkg.name]) {
+      console.debug(`Local Cargo package found: ${pkg.name}`);
+
       for (const deps of pkg.dependencies) {
         if (!cargoPackages.find(p => p.name === deps.name)) {
-          console.log(
+          console.debug(
             `Dependency ${deps.name} not found in the cargo metadata.`
           );
           continue;
@@ -351,8 +352,6 @@ export const createDependencies: CreateDependencies = (_, context) => {
           }
         }
       }
-    } else {
-      console.log(`Project ${pkg.name} not found in the context.`);
     }
   }
 
