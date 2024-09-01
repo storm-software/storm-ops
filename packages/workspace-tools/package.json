@@ -18,7 +18,7 @@
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "private": false,
   "main": "./index.js",
   "exports": {
@@ -55,8 +55,8 @@
   "peerDependencies": {
     "@microsoft/api-extractor": "7.46.2",
     "@nx/devkit": "^19.6.2",
-    "@nx/esbuild": "19.6.2",
-    "@nx/rollup": "19.6.2",
+    "@nx/esbuild": "^19.6.2",
+    "@nx/rollup": "^19.6.2",
     "nx": "^19.6.2"
   },
   "peerDependenciesMeta": {
@@ -110,8 +110,8 @@
   },
   "devDependencies": {
     "@microsoft/api-extractor": "7.46.2",
-    "@nx/esbuild": "19.6.2",
-    "@nx/rollup": "19.6.2",
+    "@nx/esbuild": "^19.6.2",
+    "@nx/rollup": "^19.6.2",
     "@types/micromatch": "4.0.9",
     "@types/semver": "7.5.8",
     "nx": "^19.6.2"
