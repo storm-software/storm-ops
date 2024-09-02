@@ -1,9 +1,9 @@
 ## 0.4.0 (2024-09-01)
 
-
 ### Features
 
-- **workspace-tools:** Added the `noDeps` flag to the cargo-doc executor options ([82eeb944](https://github.com/storm-software/storm-ops/commit/82eeb944))
+- **workspace-tools:** Added the `noDeps` flag to the cargo-doc executor options
+  ([82eeb944](https://github.com/storm-software/storm-ops/commit/82eeb944))
 
 ## 0.3.0 (2024-08-29)
 

@@ -94,7 +94,7 @@
     "@microsoft/tsdoc": "0.15.0",
     "@monodon/rust": "1.4.0",
     "@nx/devkit": "^19.6.2",
-    "@nx/esbuild": "19.6.2",
+    "@nx/esbuild": "^19.6.2",
     "@nx/eslint": ">=19.6.2",
     "@nx/eslint-plugin": ">=19.6.2",
     "@nx/jest": "^19.6.2",
