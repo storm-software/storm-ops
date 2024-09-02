@@ -184,6 +184,9 @@
             },
             "cyclone": {
               "$ref": "#/definitions/StormConfiguration/properties/registry/properties/github"
+            },
+            "container": {
+              "$ref": "#/definitions/StormConfiguration/properties/registry/properties/github"
             }
           },
           "additionalProperties": false,

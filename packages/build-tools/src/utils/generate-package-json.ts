@@ -17,10 +17,7 @@ import {
 } from "@storm-software/config-tools";
 import { Glob } from "glob";
 import { writeFileSync } from "node:fs";
-import {
-  createProjectGraphAsync,
-  readCachedProjectGraph
-} from "nx/src/project-graph/project-graph.js";
+import { createProjectGraphAsync } from "nx/src/project-graph/project-graph.js";
 import { retrieveProjectConfigurationsWithoutPluginInference } from "nx/src/project-graph/utils/retrieve-workspace-files.js";
 import { fileExists } from "nx/src/utils/fileutils.js";
 import type { TypeScriptBuildOptions } from "../../declarations";
@@ -66,15 +63,9 @@ export const generatePackageJson = async (
   if (options.generatePackageJson !== false) {
     options.external = options.external || [];
 
-    let projectGraph;
-    try {
-      projectGraph = readCachedProjectGraph();
-    } catch (e) {
-      projectGraph = await createProjectGraphAsync({
-        exitOnError: true
-      });
-    }
-
+    const projectGraph = await createProjectGraphAsync({
+      exitOnError: true
+    });
     if (!projectGraph) {
       throw new Error("No project graph found in cache");
     }
@@ -432,7 +423,7 @@ export const addWorkspacePackageJsonFields = (
   projectRoot: string,
   sourceRoot: string,
   projectName: string,
-  includeSrc: boolean = false,
+  includeSrc = false,
   packageJson: Record<string, any>
 ): Record<string, any> => {
   // #region Generate the package.json file

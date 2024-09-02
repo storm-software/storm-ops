@@ -43,8 +43,8 @@
   "peerDependencies": {
     "@nx-tools/container-metadata": "^6.0.2",
     "@nx-tools/nx-container": "^6.0.2",
-    "@nx/devkit": "^19.6.2",
-    "nx": "^19.6.2"
+    "@nx/devkit": "^19.6.4",
+    "nx": "^19.6.4"
   },
   "peerDependenciesMeta": {
     "@nx-tools/container-metadata": {
@@ -61,15 +61,15 @@
     }
   },
   "dependencies": {
-    "@nx/devkit": "^19.6.2",
-    "@nx/workspace": "^19.6.2",
+    "@nx/devkit": "^19.6.4",
+    "@nx/workspace": "^19.6.4",
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "@nx-tools/container-metadata": "^6.0.2",
     "@nx-tools/nx-container": "^6.0.2",
     "@types/js-yaml": "4.0.9",
-    "nx": "^19.6.2"
+    "nx": "^19.6.4"
   },
   "publishConfig": {
     "access": "public"

@@ -14,7 +14,8 @@
     "github": "https://npm.pkg.github.com",
     "npm": "https://registry.npmjs.org",
     "cargo": "https://crates.io",
-    "cyclone": "https://registry.cyclone-ui.com/components"
+    "cyclone": "https://registry.cyclone-ui.com/components",
+    "container": "https://hub.docker.com"
   },
   "colors": {
     "light": {
@@ -30,7 +31,7 @@
       "error": "#a40e26"
     },
     "dark": {
-      "background": "#0D1017",
+      "background": "#212830",
       "foreground": "#fcfcf5",
       "brand": "#3fc1b0",
       "brand2": "#7434DB",
