@@ -1,3 +1,15 @@
+## 1.83.0 (2024-09-02)
+
+
+### Features
+
+- **terraform-modules:** Added the `aws/karpenter` and `cloudflare/r2-bucket` modules ([09deea18](https://github.com/storm-software/storm-ops/commit/09deea18))
+
+
+### Bug Fixes
+
+- **terraform-modules:** Resolved issue with applying tags to resources ([a0fd5e19](https://github.com/storm-software/storm-ops/commit/a0fd5e19))
+
 ## 1.82.0 (2024-09-01)
 
 ### Features
