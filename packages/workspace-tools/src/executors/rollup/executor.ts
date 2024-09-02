@@ -2,10 +2,10 @@ import { type ExecutorContext, type PromiseExecutor } from "@nx/devkit";
 import { rollupExecutor } from "@nx/rollup/src/executors/rollup/rollup.impl";
 import { AssetGlob } from "@storm-software/build-tools";
 import type { StormConfig } from "@storm-software/config";
-import { withRunExecutor } from "@storm-software/workspace-tools";
 import { removeSync } from "fs-extra";
 import { Glob } from "glob";
 import { join } from "path";
+import { withRunExecutor } from "../../base/base-executor";
 import { RollupExecutorSchema } from "./schema";
 
 export async function* rollupExecutorFn(
