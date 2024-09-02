@@ -220,6 +220,14 @@ export const ProjectTagDistStyleValue = {
   CLEAN: "clean" as ProjectTagDistStyleValue
 };
 
+export type ProjectTagRegistryValue = "cargo" | "npm" | "container" | "cyclone";
+export const ProjectTagRegistryValue = {
+  CARGO: "cargo" as ProjectTagRegistryValue,
+  NPM: "npm" as ProjectTagRegistryValue,
+  CONTAINER: "container" as ProjectTagRegistryValue,
+  CYCLONE: "cyclone" as ProjectTagRegistryValue
+};
+
 declare function formatProjectTag(
   variant: ProjectTagVariant,
   value: string

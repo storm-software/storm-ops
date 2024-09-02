@@ -2,6 +2,7 @@ import { ProjectConfiguration } from "@nx/devkit";
 import {
   ProjectTagDistStyleValue,
   ProjectTagLanguageValue,
+  ProjectTagRegistryValue,
   ProjectTagTypeValue,
   ProjectTagVariant
 } from "../../declarations.d";
@@ -27,6 +28,14 @@ export const ProjectTagConstants = {
   },
   Provider: {
     TAG_ID: "provider" as ProjectTagVariant
+  },
+  Registry: {
+    TAG_ID: "registry" as ProjectTagVariant,
+
+    CARGO: "cargo" as ProjectTagRegistryValue,
+    NPM: "npm" as ProjectTagRegistryValue,
+    CONTAINER: "container" as ProjectTagRegistryValue,
+    CYCLONE: "cyclone" as ProjectTagRegistryValue
   }
 } as const;
 

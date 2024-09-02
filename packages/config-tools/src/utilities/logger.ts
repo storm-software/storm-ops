@@ -15,7 +15,7 @@ export const getLogFn = (
   logLevel: number | LogLevel = LogLevel.INFO,
   config: Partial<StormConfig> = {}
 ): ((message?: any) => void) => {
-  let _chalk = getChalk();
+  const _chalk = getChalk();
 
   const colors =
     !(config.colors as ColorConfig)?.dark &&
@@ -243,10 +243,7 @@ export const getStopwatch = (name: string) => {
   };
 };
 
-export const formatLogMessage = (
-  message?: any,
-  prefix: string = "-"
-): string => {
+export const formatLogMessage = (message?: any, prefix = "-"): string => {
   return typeof message === "undefined" ||
     message === null ||
     (!message && typeof message !== "boolean")

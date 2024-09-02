@@ -13,9 +13,13 @@ export async function* rollupExecutorFn(
   context: ExecutorContext,
   config?: StormConfig
 ) {
-  const { writeDebug, findWorkspaceRoot, correctPaths } = await import(
-    "@storm-software/config-tools"
-  );
+  const {
+    writeDebug,
+    writeTrace,
+    formatLogMessage,
+    findWorkspaceRoot,
+    correctPaths
+  } = await import("@storm-software/config-tools");
 
   if (
     !context?.projectName ||
@@ -64,7 +68,7 @@ export async function* rollupExecutorFn(
     });
   }
 
-  if (options.fileLevelInput) {
+  if (options.fileLevelInput !== false) {
     const files = await new Glob("**/*.{ts,mts,cts,tsx}", {
       absolute: true,
       cwd: sourceRoot,
@@ -90,7 +94,13 @@ export async function* rollupExecutorFn(
     config
   );
 
-  yield* rollupExecutor({ ...options, main: options.entry }, context);
+  const rollupOptions = { ...options, main: options.entry };
+  writeTrace(
+    `Rollup schema options ⚙️ \n${formatLogMessage(rollupOptions)}`,
+    config
+  );
+
+  yield* rollupExecutor(rollupOptions, context);
 
   return {
     success: true

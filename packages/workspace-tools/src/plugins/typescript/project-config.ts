@@ -181,6 +181,13 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
     // Apply nx-release-publish target for non-private projects
     const isPrivate = packageJson.private ?? false;
     if (!isPrivate) {
+      addProjectTag(
+        project,
+        ProjectTagConstants.Registry.TAG_ID,
+        ProjectTagConstants.Registry.NPM,
+        { overwrite: true }
+      );
+
       targets["nx-release-publish"] = {
         cache: true,
         inputs: [

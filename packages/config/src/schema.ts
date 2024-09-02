@@ -165,7 +165,8 @@ export const RegistryConfigSchema = z
     github: RegistryUrlConfigSchema,
     npm: RegistryUrlConfigSchema,
     cargo: RegistryUrlConfigSchema,
-    cyclone: RegistryUrlConfigSchema
+    cyclone: RegistryUrlConfigSchema,
+    container: RegistryUrlConfigSchema
   })
   .default({})
   .describe("A list of remote registry URLs used by Storm Software");

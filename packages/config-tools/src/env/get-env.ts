@@ -109,7 +109,8 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
       github: process.env[`${prefix}REGISTRY_GITHUB`],
       npm: process.env[`${prefix}REGISTRY_NPM`],
       cargo: process.env[`${prefix}REGISTRY_CARGO`],
-      cyclone: process.env[`${prefix}REGISTRY_CYCLONE`]
+      cyclone: process.env[`${prefix}REGISTRY_CYCLONE`],
+      container: process.env[`${prefix}REGISTRY_CONTAINER`]
     },
     logLevel:
       process.env[`${prefix}LOG_LEVEL`] !== null &&

@@ -9,6 +9,7 @@ import {
   findWorkspaceRoot,
   formatLogMessage,
   writeInfo,
+  writeTrace,
   writeWarning
 } from "./utilities";
 import { getDefaultConfig } from "./utilities/get-default-config";
@@ -145,7 +146,7 @@ export const loadStormConfig = async (
     _workspaceRoot = findWorkspaceRoot();
   }
 
-  let configFile = (await getConfigFile(
+  const configFile = (await getConfigFile(
     _workspaceRoot
   )) as Partial<StormConfig>;
   if (!configFile) {
@@ -176,9 +177,10 @@ export const loadStormConfig = async (
   );
   setConfigEnv(config);
 
-  writeInfo(`⚙️  Using Storm configuration: \n${formatLogMessage(config)}`, {
-    logLevel: "all"
-  });
+  writeTrace(
+    `⚙️  Using Storm configuration: \n${formatLogMessage(config)}`,
+    config
+  );
 
   return config;
 };

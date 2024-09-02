@@ -219,6 +219,11 @@ export const setConfigEnv = (config: StormConfig) => {
         config.registry.cyclone
       );
     }
+    if (config.registry.container) {
+      process.env[`${prefix}REGISTRY_CONTAINER`] = String(
+        config.registry.cyclone
+      );
+    }
   }
   if (config.logLevel) {
     process.env[`${prefix}LOG_LEVEL`] = String(config.logLevel);

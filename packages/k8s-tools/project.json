@@ -17,8 +17,10 @@
         "main": "packages/k8s-tools/index.ts",
         "additionalEntryPoints": [
           "packages/k8s-tools/src/executors/helm-package/executor.ts",
+          "packages/k8s-tools/src/executors/container-publish/executor.ts",
           "packages/k8s-tools/src/generators/helm-chart/generator.ts",
-          "packages/k8s-tools/src/generators/helm-dependency/generator.ts"
+          "packages/k8s-tools/src/generators/helm-dependency/generator.ts",
+          "packages/k8s-tools/src/plugins/docker/index.ts"
         ],
         "platform": "node",
         "deleteOutputPath": true,

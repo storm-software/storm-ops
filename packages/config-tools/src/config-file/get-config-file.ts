@@ -63,10 +63,10 @@ export const getConfigFile = async (
 ): Promise<Partial<StormConfigInput> | undefined> => {
   const workspacePath = filePath ? filePath : findWorkspaceRoot(filePath);
 
-  let { config, configFile } = await getConfigFileByName(
-    "storm",
-    workspacePath
-  );
+  const result = await getConfigFileByName("storm", workspacePath);
+
+  let config = result.config;
+  const configFile = result.configFile;
   if (config && Object.keys(config).length > 0) {
     writeTrace(
       `Found Storm configuration file "${configFile}" at "${workspacePath}"`,

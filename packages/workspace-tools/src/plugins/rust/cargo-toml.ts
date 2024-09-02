@@ -254,6 +254,13 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
           (Array.isArray(cargoPackage.publish) &&
             cargoPackage.publish.length > 0)
         ) {
+          addProjectTag(
+            project,
+            ProjectTagConstants.Registry.TAG_ID,
+            ProjectTagConstants.Registry.CARGO,
+            { overwrite: true }
+          );
+
           project.targets["nx-release-publish"] = {
             cache: true,
             inputs: [

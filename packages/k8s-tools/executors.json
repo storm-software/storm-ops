@@ -4,6 +4,11 @@
       "implementation": "./src/executors/helm-package/executor",
       "schema": "./src/executors/helm-package/schema.json",
       "description": "Package Helm charts associated with a project"
+    },
+    "container-publish": {
+      "implementation": "./src/executors/container-publish/executor",
+      "schema": "./src/executors/container-publish/schema.json",
+      "description": "Deploy an OCI Image Format Specification to a container registry"
     }
   }
 }

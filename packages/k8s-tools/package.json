@@ -27,7 +27,8 @@
     "./generators.json": "./generators.json",
     "./generators/*/schema.json": "./src/generators/*/schema.json",
     "./executors.json": "./executors.json",
-    "./executors/*/schema.json": "./src/executors/*/schema.json"
+    "./executors/*/schema.json": "./src/executors/*/schema.json",
+    "./plugins/docker": "./src/plugins/docker/index.js"
   },
   "keywords": [
     "storm",
@@ -40,10 +41,18 @@
     "monorepo"
   ],
   "peerDependencies": {
+    "@nx-tools/container-metadata": "^6.0.2",
+    "@nx-tools/nx-container": "^6.0.2",
     "@nx/devkit": "^19.6.2",
     "nx": "^19.6.2"
   },
   "peerDependenciesMeta": {
+    "@nx-tools/container-metadata": {
+      "optional": false
+    },
+    "@nx-tools/nx-container": {
+      "optional": false
+    },
     "@nx/devkit": {
       "optional": false
     },
@@ -57,6 +66,8 @@
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
+    "@nx-tools/container-metadata": "^6.0.2",
+    "@nx-tools/nx-container": "^6.0.2",
     "@types/js-yaml": "4.0.9",
     "nx": "^19.6.2"
   },
