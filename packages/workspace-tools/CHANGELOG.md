@@ -1,3 +1,25 @@
+## 1.168.0 (2024-09-01)
+
+### Features
+
+- **eslint:** Update ESLint line-breaking rules
+  ([1d08c4e1](https://github.com/storm-software/storm-ops/commit/1d08c4e1))
+
+- **workspace-tools:** Added the `rollup` executor
+  ([efcbbc60](https://github.com/storm-software/storm-ops/commit/efcbbc60))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved various issues with `rollup` executor
+  ([5b350c35](https://github.com/storm-software/storm-ops/commit/5b350c35))
+
+- **workspace-tools:** Ensure the correct version of the rollup plugin is
+  installed
+  ([7b344f6a](https://github.com/storm-software/storm-ops/commit/7b344f6a))
+
+- **workspace-tools:** Resolve typing issue in option defaulting
+  ([ec7152bf](https://github.com/storm-software/storm-ops/commit/ec7152bf))
+
 ## 1.167.1 (2024-09-01)
 
 ### Bug Fixes

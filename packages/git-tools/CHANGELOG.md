@@ -1,3 +1,10 @@
+## 2.55.0 (2024-09-01)
+
+
+### Features
+
+- **eslint:** Update ESLint line-breaking rules ([1d08c4e1](https://github.com/storm-software/storm-ops/commit/1d08c4e1))
+
 ## 2.54.0 (2024-09-01)
 
 

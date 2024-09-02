@@ -1,3 +1,15 @@
+## 0.65.0 (2024-09-01)
+
+
+### Features
+
+- **eslint:** Update ESLint line-breaking rules ([1d08c4e1](https://github.com/storm-software/storm-ops/commit/1d08c4e1))
+
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved various issues with `rollup` executor ([5b350c35](https://github.com/storm-software/storm-ops/commit/5b350c35))
+
 ## 0.64.1 (2024-09-01)
 
 
