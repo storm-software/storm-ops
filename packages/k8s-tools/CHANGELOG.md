@@ -1,9 +1,19 @@
-## 0.5.0 (2024-09-02)
+## 0.6.0 (2024-09-03)
 
 
 ### Features
 
-- **terraform-modules:** Added the `aws/karpenter` and `cloudflare/r2-bucket` modules ([09deea18](https://github.com/storm-software/storm-ops/commit/09deea18))
+- **k8s-tools:** Added `container-publish` executor and `docker` plugin ([36d4d1d0](https://github.com/storm-software/storm-ops/commit/36d4d1d0))
+
+- **storm-ops:** Upgrade the Nx workspace versions ([15cb7ee2](https://github.com/storm-software/storm-ops/commit/15cb7ee2))
+
+## 0.5.0 (2024-09-02)
+
+### Features
+
+- **terraform-modules:** Added the `aws/karpenter` and `cloudflare/r2-bucket`
+  modules
+  ([09deea18](https://github.com/storm-software/storm-ops/commit/09deea18))
 
 ## 0.4.0 (2024-09-01)
 
