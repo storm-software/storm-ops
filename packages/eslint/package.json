@@ -51,8 +51,8 @@
     "monorepo"
   ],
   "peerDependencies": {
-    "@nx/eslint": ">=19.6.2",
-    "@nx/eslint-plugin": ">=19.6.2",
+    "@nx/eslint": ">=19.6.4",
+    "@nx/eslint-plugin": ">=19.6.4",
     "eslint": "9.5.0",
     "graphql": ">=16.9.0"
   },
@@ -101,8 +101,8 @@
   },
   "devDependencies": {
     "@eslint/config-inspector": "^0.5.1",
-    "@nx/eslint": ">=19.6.2",
-    "@nx/eslint-plugin": ">=19.6.2",
+    "@nx/eslint": ">=19.6.4",
+    "@nx/eslint-plugin": ">=19.6.4",
     "@types/eslint": "^8.56.10",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^20.14.10",
