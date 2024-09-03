@@ -1,8 +1,0 @@
-include = [".taplo.toml", "Cargo.toml", "crates/*/*.toml"]
-
-[formatting]
-align_entries = true
-column_width = 120
-reorder_keys = true
-array_trailing_comma = false
-object_trailing_comma = false
