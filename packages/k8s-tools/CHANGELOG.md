@@ -1,3 +1,10 @@
+## 0.5.0 (2024-09-02)
+
+
+### Features
+
+- **terraform-modules:** Added the `aws/karpenter` and `cloudflare/r2-bucket` modules ([09deea18](https://github.com/storm-software/storm-ops/commit/09deea18))
+
 ## 0.4.0 (2024-09-01)
 
 ### Features
