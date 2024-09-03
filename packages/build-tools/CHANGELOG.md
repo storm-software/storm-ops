@@ -1,9 +1,16 @@
-## 0.73.0 (2024-09-03)
+## 0.74.0 (2024-09-03)
 
 
 ### Features
 
-- **storm-ops:** Upgrade the Nx workspace versions ([15cb7ee2](https://github.com/storm-software/storm-ops/commit/15cb7ee2))
+- **linting-tools:** Taplo toml formatting improvements ([1e84182b](https://github.com/storm-software/storm-ops/commit/1e84182b))
+
+## 0.73.0 (2024-09-03)
+
+### Features
+
+- **storm-ops:** Upgrade the Nx workspace versions
+  ([15cb7ee2](https://github.com/storm-software/storm-ops/commit/15cb7ee2))
 
 ## 0.72.0 (2024-09-02)
 
