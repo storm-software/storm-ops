@@ -1,3 +1,10 @@
+## 1.80.1 (2024-09-05)
+
+
+### Bug Fixes
+
+- **cloudflare-tools:** Regenerated the README.md file ([6ad71f5a](https://github.com/storm-software/storm-ops/commit/6ad71f5a))
+
 ## 1.80.0 (2024-09-03)
 
 

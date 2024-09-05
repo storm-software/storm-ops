@@ -1,9 +1,16 @@
-## 1.49.0 (2024-09-05)
+## 1.49.1 (2024-09-05)
 
+
+### Bug Fixes
+
+- **cloudflare-tools:** Regenerated the README.md file ([6ad71f5a](https://github.com/storm-software/storm-ops/commit/6ad71f5a))
+
+## 1.49.0 (2024-09-05)
 
 ### Features
 
-- **cloudflare-tools:** Added the `R2UploadPublish` executor ([e5495bdb](https://github.com/storm-software/storm-ops/commit/e5495bdb))
+- **cloudflare-tools:** Added the `R2UploadPublish` executor
+  ([e5495bdb](https://github.com/storm-software/storm-ops/commit/e5495bdb))
 
 ## 1.48.0 (2024-09-03)
 
