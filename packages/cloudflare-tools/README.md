@@ -51,11 +51,14 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
   - [Cloudflare Worker - Serve executor](#cloudflare-worker---serve-executor)
     - [Example](#example-1)
     - [Options](#options-1)
+  - [Cloudflare R2 Bucket Upload Publish](#cloudflare-r2-bucket-upload-publish)
+    - [Example](#example-2)
+    - [Options](#options-2)
   - [Generators](#generators)
   - [Init Cloudflare tools Nx Plugin for Storm Workspace](#init-cloudflare-tools-nx-plugin-for-storm-workspace)
-    - [Options](#options-2)
-  - [Create a Cloudflare Worker Application](#create-a-cloudflare-worker-application)
     - [Options](#options-3)
+  - [Create a Cloudflare Worker Application](#create-a-cloudflare-worker-application)
+    - [Options](#options-4)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
   - [Storm Workspaces](#storm-workspaces)
@@ -209,6 +212,38 @@ The following executor options are available:
  | testScheduled      | `boolean`    | Exposes a /__scheduled fetch route which will trigger a scheduled event (cron trigger) for testing during development.     |     | 
  | logLevel      | "debug" \| "info" \| "log" \| "warn" \| "error" \| "none"     | Specify Wrangler’s logging level.     | "log"     | 
 
+
+
+
+## Cloudflare R2 Bucket Upload Publish
+
+Publish files in a package by uploading the contents to a Cloudflare R2 bucket
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:r2-upload-publish
+```
+
+**Please note:** _The r2-upload-publish executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| **registry \***    | `string`    | The URL of the R2 bucket to publish the package to.     |     | 
+ | bucketId      | `string`    | The ID of the R2 Bucket in Cloudflare.     |     | 
+ | packageRoot      | `string`    | The root directory of the directory (containing a manifest file at its root) to publish. Defaults to the project root.     |     | 
+ | **tsConfig \***    | `string`    | The path to the \`tsconfig.json\` file.     | "{projectRoot}/tsconfig.json"     | 
+ | dryRun      | `boolean`    | Whether to run the command without actually publishing the package to the registry.     |     | 
+ | verbose      | `boolean`    | Should write extra log outputs with details from the executor.     |     | 
+
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
 
 
 
