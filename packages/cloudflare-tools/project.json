@@ -14,8 +14,10 @@
         "project": "packages/cloudflare-tools/package.json",
         "main": "packages/cloudflare-tools/index.ts",
         "additionalEntryPoints": [
-          "packages/cloudflare-tools/src/plugin/index.ts",
+          "packages/cloudflare-tools/src/plugins/index.ts",
+          "packages/cloudflare-tools/src/utils/index.ts",
           "packages/cloudflare-tools/src/executors/cloudflare-publish/executor.ts",
+          "packages/cloudflare-tools/src/executors/r2-upload-publish/executor.ts",
           "packages/cloudflare-tools/src/executors/serve/executor.ts",
           "packages/cloudflare-tools/src/generators/init/generator.ts",
           "packages/cloudflare-tools/src/generators/worker/generator.ts"
@@ -38,7 +40,7 @@
           "@nx/devkit",
           "esbuild",
           "@swc/*",
-          "@storm-software/build-tools",
+          "@storm-software/*",
           "jest-resolve/build/default_resolver"
         ],
         "assets": [

@@ -28,7 +28,8 @@
     "./generators/*/schema.json": "./src/generators/*/schema.json",
     "./executors.json": "./executors.json",
     "./executors/*/schema.json": "./src/executors/*/schema.json",
-    "./plugin": "./src/plugin/index.js"
+    "./plugins": "./src/plugins/index.js",
+    "./utils": "./src/utils/index.js"
   },
   "typings": "./declarations.d.ts",
   "keywords": [
@@ -69,7 +70,9 @@
     }
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "3.47.0",
     "c12": "1.10.0",
+    "glob": "10.4.2",
     "jest-resolve": "29.7.0"
   },
   "devDependencies": {

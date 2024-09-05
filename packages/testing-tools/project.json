@@ -19,7 +19,7 @@
         "minify": false,
         "skipTypeCheck": true,
         "thirdParty": true,
-        "format": ["cjs", "esm"],
+        "format": ["cjs"],
         "external": ["nx", "@nx/jest", "jest"],
         "assets": [
           {

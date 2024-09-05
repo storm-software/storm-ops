@@ -1,9 +1,9 @@
 ## 0.74.0 (2024-09-03)
 
-
 ### Features
 
-- **linting-tools:** Taplo toml formatting improvements ([1e84182b](https://github.com/storm-software/storm-ops/commit/1e84182b))
+- **linting-tools:** Taplo toml formatting improvements
+  ([1e84182b](https://github.com/storm-software/storm-ops/commit/1e84182b))
 
 ## 0.73.0 (2024-09-03)
 

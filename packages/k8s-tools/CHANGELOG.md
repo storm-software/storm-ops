@@ -1,11 +1,12 @@
 ## 0.6.0 (2024-09-03)
 
-
 ### Features
 
-- **k8s-tools:** Added `container-publish` executor and `docker` plugin ([36d4d1d0](https://github.com/storm-software/storm-ops/commit/36d4d1d0))
+- **k8s-tools:** Added `container-publish` executor and `docker` plugin
+  ([36d4d1d0](https://github.com/storm-software/storm-ops/commit/36d4d1d0))
 
-- **storm-ops:** Upgrade the Nx workspace versions ([15cb7ee2](https://github.com/storm-software/storm-ops/commit/15cb7ee2))
+- **storm-ops:** Upgrade the Nx workspace versions
+  ([15cb7ee2](https://github.com/storm-software/storm-ops/commit/15cb7ee2))
 
 ## 0.5.0 (2024-09-02)
 

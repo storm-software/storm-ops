@@ -44,7 +44,7 @@ Promise.all([
     console.info("Storm Workspace plugins built successfully");
   }),
   build({
-    entryPoints: ["packages/cloudflare-tools/src/plugin/index.ts"],
+    entryPoints: ["packages/cloudflare-tools/src/plugins/index.ts"],
     outdir: "dist/plugins/cloudflare",
     tsconfig: "packages/cloudflare-tools/tsconfig.lib.json",
     packages: "external",

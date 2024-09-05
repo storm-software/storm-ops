@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/schema",
   "version": 2,
   "outputCapture": "direct-nodejs",
-  "title": "Helm chart package executor",
+  "title": "Helm chart package",
   "description": "Package Helm charts associated with a project",
   "type": "object",
   "properties": {

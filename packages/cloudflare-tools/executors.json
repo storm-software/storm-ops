@@ -9,6 +9,11 @@
       "implementation": "./src/executors/serve/executor",
       "schema": "./src/executors/serve/schema.json",
       "description": "Serve a worker locally for development using the Wrangler CLI"
+    },
+    "r2-upload-publish": {
+      "implementation": "./src/executors/r2-upload-publish/executor",
+      "schema": "./src/executors/r2-upload-publish/schema.json",
+      "description": "Publish changes by uploading files to a Cloudflare R2 bucket"
     }
   }
 }
