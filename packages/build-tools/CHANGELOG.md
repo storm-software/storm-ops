@@ -1,3 +1,10 @@
+## 0.75.0 (2024-09-05)
+
+
+### Features
+
+- **cloudflare-tools:** Added the `R2UploadPublish` executor ([e5495bdb](https://github.com/storm-software/storm-ops/commit/e5495bdb))
+
 ## 0.74.0 (2024-09-03)
 
 ### Features
