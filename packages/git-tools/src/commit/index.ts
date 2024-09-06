@@ -26,7 +26,7 @@ export const runCommit = async (
     }
     commandItems.push(...["--file", commitMsgFile]);
 
-    const command = shellescape.default();
+    const command = shellescape.default(commandItems);
     if (dryRun) {
       // The full path is replaced with a relative path to make the test pass on every machine
       console.log("Will execute command:");
