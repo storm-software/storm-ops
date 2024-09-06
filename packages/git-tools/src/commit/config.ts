@@ -1,12 +1,12 @@
 import commitizenConfig from "../commitizen/config";
 import commitlintConfig from "../commitlint/config";
-import type { CommitStateConfig } from "../types";
+import type { CommitQuestions, CommitStateConfig } from "../types";
 
 const config: CommitStateConfig = {
   ...commitizenConfig,
   ...commitlintConfig,
   questions: {
-    ...commitlintConfig.prompt.questions
+    ...(commitlintConfig.prompt.questions as unknown as CommitQuestions)
   }
 };
 

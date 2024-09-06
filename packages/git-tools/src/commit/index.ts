@@ -19,14 +19,14 @@ export const runCommit = async (
     const commitMsgFile = join(getGitDir(), "COMMIT_EDITMSG");
 
     const shellescape = await import("any-shell-escape");
-    const command = shellescape.default([
-      "git",
-      "commit",
-      "-S",
-      "--file",
-      commitMsgFile
-    ]);
 
+    const commandItems = ["git", "commit"];
+    if (Boolean(process.env.CI) !== true) {
+      commandItems.push("-S");
+    }
+    commandItems.push(...["--file", commitMsgFile]);
+
+    const command = shellescape.default();
     if (dryRun) {
       // The full path is replaced with a relative path to make the test pass on every machine
       console.log("Will execute command:");
