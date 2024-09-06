@@ -19,10 +19,10 @@ export const runCommit = async (
     const commitMsgFile = join(getGitDir(), "COMMIT_EDITMSG");
 
     const shellescape = await import("any-shell-escape");
-
     const command = shellescape.default([
       "git",
       "commit",
+      "-S",
       "--file",
       commitMsgFile
     ]);
