@@ -1,9 +1,16 @@
-## 1.86.1 (2024-09-05)
+## 1.87.0 (2024-09-06)
 
+
+### Features
+
+- **git-tools:** Added signed commits to storm-git scripts ([3d7c88c9](https://github.com/storm-software/storm-ops/commit/3d7c88c9))
+
+## 1.86.1 (2024-09-05)
 
 ### Bug Fixes
 
-- **cloudflare-tools:** Regenerated the README.md file ([6ad71f5a](https://github.com/storm-software/storm-ops/commit/6ad71f5a))
+- **cloudflare-tools:** Regenerated the README.md file
+  ([6ad71f5a](https://github.com/storm-software/storm-ops/commit/6ad71f5a))
 
 ## 1.86.0 (2024-09-05)
 

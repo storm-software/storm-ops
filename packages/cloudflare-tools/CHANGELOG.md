@@ -1,3 +1,10 @@
+## 0.31.0 (2024-09-06)
+
+
+### Features
+
+- **git-tools:** Added signed commits to storm-git scripts ([3d7c88c9](https://github.com/storm-software/storm-ops/commit/3d7c88c9))
+
 ## 0.30.1 (2024-09-05)
 
 
