@@ -88,12 +88,10 @@ export async function* rollupExecutorFn(
           correctPaths(join(workspaceRoot, entry))
         ) ?? []) as string[]
       )
-      .map(entry =>
-        entry.replace(
-          workspaceRoot.endsWith("/") ? `${workspaceRoot}/` : workspaceRoot,
-          ""
-        )
-      );
+      .map(entry => {
+        const formatted = entry.replace(workspaceRoot, "");
+        return formatted.endsWith("/") ? formatted.slice(-1) : formatted;
+      });
   }
 
   writeDebug(
