@@ -7,7 +7,7 @@ import {
   type CreateNodes,
   type ProjectConfiguration
 } from "@nx/devkit";
-import { getPackageManager } from "@storm-software/workspace-tools/utils/package-helpers";
+import { getPackageInfo } from "@storm-software/workspace-tools/utils/package-helpers";
 import {
   hasProjectTag,
   isEqualProjectTag,
@@ -79,7 +79,7 @@ export const createNodes: CreateNodes<DockerFilePluginOptions> = [
     ];
     let tag = "latest";
 
-    const packageManager = getPackageManager(project);
+    const packageManager = getPackageInfo(project);
     if (packageManager) {
       if (packageManager.type === "Cargo.toml") {
         tag = (packageManager.content as CargoToml).package.version;

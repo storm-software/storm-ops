@@ -6,7 +6,7 @@ import {
 import { StormConfig } from "@storm-software/config";
 import type { BaseTokenizerOptions } from "@storm-software/config-tools";
 import { applyWorkspaceExecutorTokens } from "@storm-software/workspace-tools/utils/apply-workspace-tokens";
-import { getPackageManager } from "@storm-software/workspace-tools/utils/package-helpers";
+import { getPackageInfo } from "@storm-software/workspace-tools/utils/package-helpers";
 import { CargoToml } from "@storm-software/workspace-tools/utils/toml";
 import https from "node:https";
 import type { ContainerPublishExecutorSchema } from "./schema.d";
@@ -72,7 +72,7 @@ export default async function* publishExecutor(
     } else {
       console.log(`Published to ${tokenized.registry}`);
 
-      const packageManager = getPackageManager(projectConfig);
+      const packageManager = getPackageInfo(projectConfig);
       if (packageManager) {
         tokenized["build-args"] ??= [
           "ENVIRONMENT=production",

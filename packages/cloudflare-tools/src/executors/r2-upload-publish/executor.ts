@@ -6,7 +6,7 @@ import {
   type ExecutorContext
 } from "@nx/devkit";
 import { createCliOptions } from "@storm-software/workspace-tools/utils/create-cli-options";
-import { getPackageManager } from "@storm-software/workspace-tools/utils/package-helpers";
+import { getPackageInfo } from "@storm-software/workspace-tools/utils/package-helpers";
 import { glob } from "glob";
 import { execSync } from "node:child_process";
 import { readFile } from "node:fs/promises";
@@ -70,7 +70,7 @@ export default async function runExecutor(
       context.projectsConfigurations.projects[context.projectName]?.name ??
       context.projectName;
 
-    const projectDetails = getPackageManager(
+    const projectDetails = getPackageInfo(
       context.projectsConfigurations.projects[context.projectName]!
     );
     if (!projectDetails?.content) {

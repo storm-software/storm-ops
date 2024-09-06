@@ -14,14 +14,14 @@ export const PackageManagerTypes = {
   CargoToml: "Cargo.toml" as PackageManagerType
 };
 
-export type PackageManager = {
+export type PackageInfo = {
   content: PackageJson | CargoToml;
-  type: "package.json" | "Cargo.toml";
+  type: PackageManagerType;
 };
 
-export const getPackageManager = (
+export const getPackageInfo = (
   project: ProjectConfiguration
-): null | PackageManager => {
+): null | PackageInfo => {
   if (
     isEqualProjectTag(
       project,
