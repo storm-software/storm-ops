@@ -1,9 +1,21 @@
-## 1.88.1 (2024-09-06)
+## 1.89.0 (2024-09-06)
+
+
+### Features
+
+- **k8s-tools:** Added extra fields onto the released container's `meta.json` file ([14356536](https://github.com/storm-software/storm-ops/commit/14356536))
 
 
 ### Bug Fixes
 
-- **git-tools:** Resolved issue with missing command line arguments ([59e26e31](https://github.com/storm-software/storm-ops/commit/59e26e31))
+- **workspace-tools:** Resolved the duplicate export name issue ([f2586335](https://github.com/storm-software/storm-ops/commit/f2586335))
+
+## 1.88.1 (2024-09-06)
+
+### Bug Fixes
+
+- **git-tools:** Resolved issue with missing command line arguments
+  ([59e26e31](https://github.com/storm-software/storm-ops/commit/59e26e31))
 
 ## 1.88.0 (2024-09-06)
 

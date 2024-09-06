@@ -1,3 +1,10 @@
+## 0.25.0 (2024-09-06)
+
+
+### Features
+
+- **k8s-tools:** Added extra fields onto the released container's `meta.json` file ([14356536](https://github.com/storm-software/storm-ops/commit/14356536))
+
 ## 0.24.0 (2024-09-06)
 
 
