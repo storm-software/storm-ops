@@ -56,13 +56,6 @@ export default async function runExecutor(
     const workspaceRoot = findWorkspaceRoot();
     const config = await loadStormConfig(workspaceRoot);
 
-    const packageRoot =
-      joinPathFragments(
-        context.root,
-        context.projectsConfigurations.projects[context.projectName]
-          ?.root as string
-      ) ?? workspaceRoot;
-
     const sourceRoot =
       context.projectsConfigurations.projects[context.projectName]
         ?.sourceRoot ?? workspaceRoot;
