@@ -1,3 +1,10 @@
+## 2.57.0 (2024-09-06)
+
+
+### Features
+
+- **git-tools:** Added logic to skip signing during CI workflows ([4a7062ce](https://github.com/storm-software/storm-ops/commit/4a7062ce))
+
 ## 2.56.0 (2024-09-06)
 
 

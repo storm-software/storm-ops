@@ -1,9 +1,16 @@
-## 1.64.0 (2024-09-06)
+## 1.65.0 (2024-09-06)
 
 
 ### Features
 
-- **git-tools:** Added signed commits to storm-git scripts ([3d7c88c9](https://github.com/storm-software/storm-ops/commit/3d7c88c9))
+- **git-tools:** Added logic to skip signing during CI workflows ([4a7062ce](https://github.com/storm-software/storm-ops/commit/4a7062ce))
+
+## 1.64.0 (2024-09-06)
+
+### Features
+
+- **git-tools:** Added signed commits to storm-git scripts
+  ([3d7c88c9](https://github.com/storm-software/storm-ops/commit/3d7c88c9))
 
 ## 1.63.1 (2024-09-05)
 
