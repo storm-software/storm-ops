@@ -1,9 +1,16 @@
-## 1.88.0 (2024-09-06)
+## 1.88.1 (2024-09-06)
 
+
+### Bug Fixes
+
+- **git-tools:** Resolved issue with missing command line arguments ([59e26e31](https://github.com/storm-software/storm-ops/commit/59e26e31))
+
+## 1.88.0 (2024-09-06)
 
 ### Features
 
-- **git-tools:** Added logic to skip signing during CI workflows ([4a7062ce](https://github.com/storm-software/storm-ops/commit/4a7062ce))
+- **git-tools:** Added logic to skip signing during CI workflows
+  ([4a7062ce](https://github.com/storm-software/storm-ops/commit/4a7062ce))
 
 ## 1.87.0 (2024-09-06)
 

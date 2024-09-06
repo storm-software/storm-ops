@@ -1,3 +1,10 @@
+## 0.32.1 (2024-09-06)
+
+
+### Bug Fixes
+
+- **git-tools:** Resolved issue with missing command line arguments ([59e26e31](https://github.com/storm-software/storm-ops/commit/59e26e31))
+
 ## 0.32.0 (2024-09-06)
 
 
