@@ -1,14 +1,21 @@
-## 1.175.0 (2024-09-06)
-
-
-### Features
-
-- **k8s-tools:** Added extra fields onto the released container's `meta.json` file ([14356536](https://github.com/storm-software/storm-ops/commit/14356536))
+## 1.175.1 (2024-09-06)
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolved the duplicate export name issue ([f2586335](https://github.com/storm-software/storm-ops/commit/f2586335))
+- **workspace-tools:** Resolve issue with invalid additional entry paths ([546753ab](https://github.com/storm-software/storm-ops/commit/546753ab))
+
+## 1.175.0 (2024-09-06)
+
+### Features
+
+- **k8s-tools:** Added extra fields onto the released container's `meta.json`
+  file ([14356536](https://github.com/storm-software/storm-ops/commit/14356536))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved the duplicate export name issue
+  ([f2586335](https://github.com/storm-software/storm-ops/commit/f2586335))
 
 ## 1.174.1 (2024-09-06)
 
