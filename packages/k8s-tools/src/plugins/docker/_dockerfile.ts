@@ -7,6 +7,7 @@ import {
   type CreateNodes,
   type ProjectConfiguration
 } from "@nx/devkit";
+import { getPackageManager } from "@storm-software/workspace-tools/utils/package-helpers";
 import {
   hasProjectTag,
   isEqualProjectTag,
@@ -16,7 +17,6 @@ import {
 import { CargoToml } from "@storm-software/workspace-tools/utils/toml";
 import { existsSync } from "node:fs";
 import type { ExternalContainerExecutorSchema } from "../../executors/container-publish/schema";
-import { getPackageManager } from "../../utils/package-helpers";
 
 export const name = "storm-software/docker/dockerfile";
 export const description = "Plugin for parsing Dockerfile files";

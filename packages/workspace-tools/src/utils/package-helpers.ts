@@ -3,16 +3,10 @@ import {
   ProjectConfiguration,
   readJsonFile
 } from "@nx/devkit";
-import { PackageJson } from "@storm-software/workspace-tools/executors/clean-package/types";
-import {
-  isEqualProjectTag,
-  ProjectTagConstants
-} from "@storm-software/workspace-tools/utils/project-tags";
-import {
-  CargoToml,
-  parseCargoToml
-} from "@storm-software/workspace-tools/utils/toml";
 import { existsSync } from "node:fs";
+import type { PackageJson } from "nx/src/utils/package-json.js";
+import { isEqualProjectTag, ProjectTagConstants } from "./project-tags";
+import { CargoToml, parseCargoToml } from "./toml";
 
 export type PackageManagerType = "package.json" | "Cargo.toml";
 export const PackageManagerTypes = {

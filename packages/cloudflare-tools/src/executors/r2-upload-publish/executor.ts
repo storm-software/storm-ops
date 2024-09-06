@@ -3,10 +3,10 @@ import {
   joinPathFragments,
   ProjectGraph,
   readCachedProjectGraph,
-  readJsonFile,
   type ExecutorContext
 } from "@nx/devkit";
 import { createCliOptions } from "@storm-software/workspace-tools/utils/create-cli-options";
+import { getPackageManager } from "@storm-software/workspace-tools/utils/package-helpers";
 import { glob } from "glob";
 import { execSync } from "node:child_process";
 import { readFile } from "node:fs/promises";
@@ -70,45 +70,19 @@ export default async function runExecutor(
       context.projectsConfigurations.projects[context.projectName]?.name ??
       context.projectName;
 
-    const packageJsonPath = joinPathFragments(packageRoot, "package.json");
-    const projectPackageJson = readJsonFile(packageJsonPath);
+    const projectDetails = getPackageManager(
+      context.projectsConfigurations.projects[context.projectName]!
+    );
+    if (!projectDetails?.content) {
+      throw new Error(
+        `Could not find the project details for ${context.projectName}`
+      );
+    }
 
     const args = createCliOptions({ ...options });
     if (isDryRun) {
       args.push("--dry-run");
     }
-
-    // console.log("");
-    // console.log(`Running "wrangler deploy ${args.join(" ")}"...`);
-    // console.log("");
-
-    // let proc;
-    // try {
-    //   const { findWorkspaceRoot, loadStormConfig } = await import(
-    //     "@storm-software/config-tools"
-    //   );
-    //   const workspaceRoot = findWorkspaceRoot();
-    //   const config = await loadStormConfig(workspaceRoot);
-
-    //   fork(require.resolve("wrangler/bin/wrangler"), ["deploy", ...args], {
-    //     env: {
-    //       CLOUDFLARE_API_TOKEN: process.env.STORM_BOT_CLOUDFLARE_TOKEN,
-    //       CLOUDFLARE_ACCOUNT_ID: config.cloudflareAccountId
-    //         ? config.cloudflareAccountId
-    //         : undefined,
-    //       WRANGLER_LOG: "debug",
-    //       ...process.env,
-    //       FORCE_COLOR: "true"
-    //     },
-    //     cwd: packageRoot,
-    //     stdio: ["pipe", "pipe", "pipe", "ipc"]
-    //   });
-    // } catch (e) {
-    //   console.error(e);
-    //   throw new Error(
-    //     "Unable to run Wrangler. Please ensure Wrangler is installed."
-    //   );
-    // }
 
     if (!options?.registry && !config.cloudflareAccountId) {
       throw new Error(
@@ -138,7 +112,7 @@ export default async function runExecutor(
       }
     });
 
-    const version = projectPackageJson?.version;
+    const version = projectDetails.content?.version;
     writeInfo(`Generated component version: ${version}`);
 
     const files = await glob(joinPathFragments(sourceRoot, "**/*"), {
@@ -163,7 +137,7 @@ export default async function runExecutor(
         }
 
         return ret;
-      }, projectPackageJson?.dependencies ?? {});
+      }, projectDetails.content.dependencies ?? {});
 
     const release =
       options.tag ?? execSync("npm config get tag").toString().trim();
@@ -205,14 +179,14 @@ export default async function runExecutor(
       writeWarning("[Dry run]: skipping upload to the Cyclone Registry.");
     }
 
-    const metaJson = JSON.stringify({
+    const meta = {
       name: context.projectName,
       version,
       release,
-      description: projectPackageJson.description,
-      tags: projectPackageJson.keywords,
+      description: projectDetails.content.description,
+      tags: projectDetails.content.keywords,
       dependencies,
-      devDependencies: projectPackageJson.devDependencies,
+      devDependencies: null,
       internalDependencies: internalDependencies
         .filter(
           projectNode =>
@@ -220,7 +194,12 @@ export default async function runExecutor(
             projectNode.data.tags.some(tag => tag.toLowerCase() === "component")
         )
         .map(dep => dep.name)
-    });
+    };
+    if (projectDetails.type === "package.json") {
+      meta.devDependencies = projectDetails.content.devDependencies;
+    }
+
+    const metaJson = JSON.stringify(meta);
 
     writeInfo(`Generating meta.json file: \n${metaJson}`);
 

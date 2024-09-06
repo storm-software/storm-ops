@@ -1,6 +1,6 @@
 import { type ExecutorContext, type PromiseExecutor } from "@nx/devkit";
 import { rollupExecutor } from "@nx/rollup/src/executors/rollup/rollup.impl";
-import { AssetGlob } from "@storm-software/build-tools";
+import type { AssetGlob } from "@storm-software/build-tools";
 import type { StormConfig } from "@storm-software/config";
 import { removeSync } from "fs-extra";
 import { Glob } from "glob";
@@ -74,19 +74,26 @@ export async function* rollupExecutorFn(
       cwd: sourceRoot,
       root: workspaceRoot
     }).walk();
-    options.additionalEntryPoints = files.reduce(
-      (ret, file) => {
-        const corrected = correctPaths(file);
-        if (!corrected.includes("node_modules") && !ret.includes(corrected)) {
-          ret.push(corrected);
-        }
+    options.additionalEntryPoints = files
+      .reduce(
+        (ret, file) => {
+          const corrected = correctPaths(file);
+          if (!corrected.includes("node_modules") && !ret.includes(corrected)) {
+            ret.push(corrected);
+          }
 
-        return ret;
-      },
-      (options.additionalEntryPoints?.map(entry =>
-        correctPaths(join(workspaceRoot, entry))
-      ) ?? []) as string[]
-    );
+          return ret;
+        },
+        (options.additionalEntryPoints?.map(entry =>
+          correctPaths(join(workspaceRoot, entry))
+        ) ?? []) as string[]
+      )
+      .map(entry =>
+        entry.replace(
+          workspaceRoot.endsWith("/") ? `${workspaceRoot}/` : workspaceRoot,
+          ""
+        )
+      );
   }
 
   writeDebug(

@@ -3,6 +3,7 @@ export * from "./cargo";
 export * from "./create-cli-options";
 export * from "./get-project-configurations";
 export * from "./lock-file";
+export * from "./package-helpers";
 export * from "./project-tags";
 export * from "./toml";
 export * from "./typia-transform";

@@ -6,9 +6,9 @@ import {
 import { StormConfig } from "@storm-software/config";
 import type { BaseTokenizerOptions } from "@storm-software/config-tools";
 import { applyWorkspaceExecutorTokens } from "@storm-software/workspace-tools/utils/apply-workspace-tokens";
+import { getPackageManager } from "@storm-software/workspace-tools/utils/package-helpers";
 import { CargoToml } from "@storm-software/workspace-tools/utils/toml";
 import https from "node:https";
-import { getPackageManager } from "../../utils/package-helpers";
 import type { ContainerPublishExecutorSchema } from "./schema.d";
 
 export default async function* publishExecutor(
@@ -81,10 +81,14 @@ export default async function* publishExecutor(
         tokenized["labels"] ??= [];
 
         let version = "";
-        if (packageManager.type === "Cargo.toml") {
-          version = (packageManager.content as CargoToml).package.version;
-        } else if (packageManager.type === "package.json") {
-          version = packageManager.content.version;
+        if (process.env.TAG) {
+          version = process.env.TAG;
+        } else {
+          if (packageManager.type === "Cargo.toml") {
+            version = (packageManager.content as CargoToml).package.version;
+          } else if (packageManager.type === "package.json") {
+            version = packageManager.content.version;
+          }
         }
 
         tokenized["build-args"].push(`RELEASE=${version}`);

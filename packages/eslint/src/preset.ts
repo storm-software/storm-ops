@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @nx/enforce-module-boundaries */
 import {
   plugins as cspellPlugins,
@@ -24,7 +26,7 @@ import reactHooksRules from "./rules/react-hooks";
 import stormRules from "./rules/storm";
 import tsdocRules from "./rules/ts-docs";
 import banner from "./utils/banner-plugin";
-import { CODE_BLOCK, TS_FILE } from "./utils/constants";
+import { CODE_BLOCK, JS_FILE, TS_FILE } from "./utils/constants";
 import { formatConfig } from "./utils/format-config";
 
 /**
@@ -179,23 +181,8 @@ export function getStormConfig(
     ...(userConfigs as Linter.FlatConfig[])
   ].filter(Boolean) as Linter.FlatConfig[];
 
-  // TypeScript and JavaScript
+  // TypeScript
   const typescriptConfig: Linter.FlatConfig<Linter.RulesRecord> = {
-    // https://typescript-eslint.io/
-    // ...tsEslint.configs.stylisticTypeChecked,
-
-    // https://www.npmjs.com/package/eslint-plugin-unicorn
-    // ...unicorn.configs["flat/recommended"],
-
-    // plugins: {
-    //   "@typescript-eslint": tsPlugin,
-    //   "@nx": nxPlugin,
-    //   unicorn,
-    //   prettier,
-    //   banner,
-    //   tsdoc
-    // },
-
     files: [TS_FILE],
     languageOptions: {
       globals: {
@@ -304,7 +291,51 @@ export function getStormConfig(
     };
   }
 
-  configs.push(typescriptConfig);
+  // JavaScript
+  const javascriptConfig: Linter.FlatConfig<Linter.RulesRecord> = {
+    files: [JS_FILE],
+    languageOptions: {
+      globals: {
+        ...Object.fromEntries(
+          Object.keys(globals).flatMap(group =>
+            Object.keys(globals[group as keyof typeof globals]).map(key => [
+              key,
+              "readonly"
+            ])
+          )
+        ),
+        ...globals.browser,
+        ...globals.node,
+        "window": "readonly",
+        "Storm": "readonly"
+      },
+      ecmaVersion: "latest"
+    },
+    rules: {
+      // Prettier
+      ...prettierConfig.rules,
+
+      // Banner
+      ...banner.configs!["recommended"]![1]?.rules,
+
+      ...stormRules,
+
+      "banner/banner": [
+        "error",
+        {
+          repositoryName: options.name,
+          banner: options.banner,
+          commentType: "block",
+          numNewlines: 2
+        }
+      ],
+
+      ...(options.rules ?? {})
+    },
+    ignores: ["dist", "coverage", "tmp", ".nx", ...(options.ignores || [])]
+  };
+
+  configs.push(javascriptConfig);
 
   // Markdown
   // https://www.npmjs.com/package/eslint-plugin-markdown
