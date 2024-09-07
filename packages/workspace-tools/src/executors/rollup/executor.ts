@@ -90,7 +90,7 @@ export async function* rollupExecutorFn(
       )
       .map(entry => {
         const formatted = entry.replace(workspaceRoot, "");
-        return formatted.endsWith("/") ? formatted.slice(-1) : formatted;
+        return formatted.startsWith("/") ? formatted.slice(1) : formatted;
       });
   }
 
