@@ -1,9 +1,16 @@
-## 1.175.1 (2024-09-06)
+## 1.175.2 (2024-09-07)
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue with invalid additional entry paths ([546753ab](https://github.com/storm-software/storm-ops/commit/546753ab))
+- **workspace-tools:** Resolved issues with path generation in build ([6600299c](https://github.com/storm-software/storm-ops/commit/6600299c))
+
+## 1.175.1 (2024-09-06)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with invalid additional entry paths
+  ([546753ab](https://github.com/storm-software/storm-ops/commit/546753ab))
 
 ## 1.175.0 (2024-09-06)
 
