@@ -1,9 +1,18 @@
-## 1.175.2 (2024-09-07)
+## 1.175.3 (2024-09-08)
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolved issues with path generation in build ([6600299c](https://github.com/storm-software/storm-ops/commit/6600299c))
+- **workspace-tools:** Resolve issue with bundling Nx packages ([8fc7681e](https://github.com/storm-software/storm-ops/commit/8fc7681e))
+
+- **workspace-tools:** Resolved usused dependency issue ([e6b72551](https://github.com/storm-software/storm-ops/commit/e6b72551))
+
+## 1.175.2 (2024-09-07)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issues with path generation in build
+  ([6600299c](https://github.com/storm-software/storm-ops/commit/6600299c))
 
 ## 1.175.1 (2024-09-06)
 
