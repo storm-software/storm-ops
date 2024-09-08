@@ -17,9 +17,9 @@ import { loadConfigFile } from "@nx/devkit/src/utils/config-utils";
 import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
 import { NormalizedRollupExecutorOptions } from "@nx/rollup/src/executors/rollup/lib/normalize";
 import { pluginName as generatePackageJsonPluginName } from "@nx/rollup/src/plugins/package-json/generate-package-json";
-import { withNx } from "@nx/rollup/src/plugins/with-nx/with-nx";
 import { withRunExecutor } from "../../base/base-executor";
 import { RollupExecutorSchema } from "./schema";
+import { withRollupConfig } from "./utils/get-options";
 
 export async function* rollupExecutorFn(
   options: RollupExecutorSchema,
@@ -224,7 +224,7 @@ async function createRollupOptions(
     true
   );
 
-  const rollupConfig = withNx(options, {}, dependencies);
+  const rollupConfig = withRollupConfig(options, {}, dependencies);
 
   // `generatePackageJson` is a plugin rather than being embedded into @nx/rollup:rollup.
   // Make sure the plugin is always present to keep the previous before of Nx < 19.4, where it was not a plugin.
