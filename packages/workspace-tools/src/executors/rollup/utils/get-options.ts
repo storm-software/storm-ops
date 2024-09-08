@@ -250,7 +250,8 @@ export function withRollupConfig(
             dependencies
           )
         },
-        verbosity: 3
+        verbosity: 3,
+        useTsconfigDeclarationDir: true
       }),
       typeDefinitions({
         projectRoot
