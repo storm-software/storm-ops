@@ -349,8 +349,9 @@ async function createTsCompilerOptions(
   );
   const compilerOptions = {
     rootDir: correctPaths(config?.workspaceRoot),
-    allowJs: options.allowJs,
     declaration: true,
+    skipLibCheck: true,
+    skipDefaultLibCheck: true,
     paths: compilerOptionPaths
   };
   if (parsedCommandLine.options.module === ts.ModuleKind.CommonJS) {

@@ -232,7 +232,12 @@ async function createRollupOptions(
     true
   );
 
-  const rollupConfig = await withRollupConfig(options, {}, dependencies, config);
+  const rollupConfig = await withRollupConfig(
+    options,
+    {},
+    dependencies,
+    config
+  );
 
   // `generatePackageJson` is a plugin rather than being embedded into @nx/rollup:rollup.
   // Make sure the plugin is always present to keep the previous before of Nx < 19.4, where it was not a plugin.

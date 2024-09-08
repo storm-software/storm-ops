@@ -1,9 +1,9 @@
 ## 0.80.0 (2024-09-08)
 
-
 ### Features
 
-- **workspace-tools:** Ensure the workspaceRoot is used as the base directory ([2b8ab737](https://github.com/storm-software/storm-ops/commit/2b8ab737))
+- **workspace-tools:** Ensure the workspaceRoot is used as the base directory
+  ([2b8ab737](https://github.com/storm-software/storm-ops/commit/2b8ab737))
 
 ## 0.79.1 (2024-09-08)
 
