@@ -127,61 +127,60 @@ export async function* rollupExecutorFn(
   //           projectRoot,
   //           tsConfig,
   //           options,
-  +(
-    //           dependencies
-    //         ),
-    //       },
-    //     }),
-    //     typeDefinitions({
-    //       projectRoot,
-    //     }),
-    //     postcss({
-    //       inject: true,
-    //       extract: options.extractCss,
-    //       autoModules: true,
-    //       plugins: [autoprefixer],
-    //       use: {
-    //         less: {
-    //           javascriptEnabled: options.javascriptEnabled,
-    //         },
-    //       },
-    //     }),
-    //     nodeResolve({
-    //       preferBuiltins: true,
-    //       extensions: fileExtensions,
-    //     }),
-    //     useSwc && swc(),
-    //     useBabel &&
-    //       getBabelInputPlugin({
-    //         // Lets `@nx/js/babel` preset know that we are packaging.
-    //         caller: {
-    //           // @ts-ignore
-    //           // Ignoring type checks for caller since we have custom attributes
-    //           isNxPackage: true,
-    //           // Always target esnext and let rollup handle cjs
-    //           supportsStaticESM: true,
-    //           isModern: true,
-    //         },
-    //         cwd: join(
-    //           workspaceRoot,
-    //           projectNode.data.sourceRoot ?? projectNode.data.root
-    //         ),
-    //         rootMode: options.babelUpwardRootMode ? 'upward' : undefined,
-    //         babelrc: true,
-    //         extensions: fileExtensions,
-    //         babelHelpers: 'bundled',
-    //         skipPreflightCheck: true, // pre-flight check may yield false positives and also slows down the build
-    //         exclude: /node_modules/,
-    //       }),
-    //     commonjs(),
-    //     analyze(),
-    //     generatePackageJson(options, packageJson),
-    //   ];
+  // (
+  //           dependencies
+  //         ),
+  //       },
+  //     }),
+  //     typeDefinitions({
+  //       projectRoot,
+  //     }),
+  //     postcss({
+  //       inject: true,
+  //       extract: options.extractCss,
+  //       autoModules: true,
+  //       plugins: [autoprefixer],
+  //       use: {
+  //         less: {
+  //           javascriptEnabled: options.javascriptEnabled,
+  //         },
+  //       },
+  //     }),
+  //     nodeResolve({
+  //       preferBuiltins: true,
+  //       extensions: fileExtensions,
+  //     }),
+  //     useSwc && swc(),
+  //     useBabel &&
+  //       getBabelInputPlugin({
+  //         // Lets `@nx/js/babel` preset know that we are packaging.
+  //         caller: {
+  //           // @ts-ignore
+  //           // Ignoring type checks for caller since we have custom attributes
+  //           isNxPackage: true,
+  //           // Always target esnext and let rollup handle cjs
+  //           supportsStaticESM: true,
+  //           isModern: true,
+  //         },
+  //         cwd: join(
+  //           workspaceRoot,
+  //           projectNode.data.sourceRoot ?? projectNode.data.root
+  //         ),
+  //         rootMode: options.babelUpwardRootMode ? 'upward' : undefined,
+  //         babelrc: true,
+  //         extensions: fileExtensions,
+  //         babelHelpers: 'bundled',
+  //         skipPreflightCheck: true, // pre-flight check may yield false positives and also slows down the build
+  //         exclude: /node_modules/,
+  //       }),
+  //     commonjs(),
+  //     analyze(),
+  //     generatePackageJson(options, packageJson),
+  //   ];
 
-    writeDebug(
-      `📦  Running Storm Rollup build process on the ${context?.projectName} project`,
-      config
-    )
+  writeDebug(
+    `📦  Running Storm Rollup build process on the ${context?.projectName} project`,
+    config
   );
 
   writeTrace(
