@@ -1,3 +1,10 @@
+## 2.58.3 (2024-09-08)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issue with returned value in Rust plugin ([f37a1f44](https://github.com/storm-software/storm-ops/commit/f37a1f44))
+
 ## 2.58.2 (2024-09-08)
 
 

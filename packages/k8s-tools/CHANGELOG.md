@@ -1,3 +1,10 @@
+## 0.9.1 (2024-09-08)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Update the compiler options used in TypeScript plugin ([b788e426](https://github.com/storm-software/storm-ops/commit/b788e426))
+
 ## 0.9.0 (2024-09-08)
 
 ### Features

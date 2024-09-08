@@ -1,3 +1,12 @@
+## 1.68.2 (2024-09-08)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Update the compiler options used in TypeScript plugin ([b788e426](https://github.com/storm-software/storm-ops/commit/b788e426))
+
+- **workspace-tools:** Resolved issue with returned value in Rust plugin ([f37a1f44](https://github.com/storm-software/storm-ops/commit/f37a1f44))
+
 ## 1.68.1 (2024-09-08)
 
 ### Features
