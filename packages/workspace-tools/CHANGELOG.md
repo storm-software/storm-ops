@@ -1,11 +1,19 @@
-## 1.175.3 (2024-09-08)
+## 1.175.4 (2024-09-08)
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue with bundling Nx packages ([8fc7681e](https://github.com/storm-software/storm-ops/commit/8fc7681e))
+- **workspace-tools:** Resolved issue with syntax error ([04d1df8a](https://github.com/storm-software/storm-ops/commit/04d1df8a))
 
-- **workspace-tools:** Resolved usused dependency issue ([e6b72551](https://github.com/storm-software/storm-ops/commit/e6b72551))
+## 1.175.3 (2024-09-08)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with bundling Nx packages
+  ([8fc7681e](https://github.com/storm-software/storm-ops/commit/8fc7681e))
+
+- **workspace-tools:** Resolved usused dependency issue
+  ([e6b72551](https://github.com/storm-software/storm-ops/commit/e6b72551))
 
 ## 1.175.2 (2024-09-07)
 
