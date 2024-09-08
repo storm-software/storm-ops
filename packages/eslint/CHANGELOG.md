@@ -1,3 +1,10 @@
+## 0.68.2 (2024-09-08)
+
+
+### Bug Fixes
+
+- **eslint-config:** Resolved issue with applying banners ([5a337806](https://github.com/storm-software/storm-ops/commit/5a337806))
+
 ## 0.68.1 (2024-09-08)
 
 
