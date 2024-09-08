@@ -31,6 +31,7 @@ export async function* rollupExecutorFn(
     writeTrace,
     writeInfo,
     writeError,
+    writeWarning,
     formatLogMessage,
     findWorkspaceRoot,
     correctPaths
@@ -123,7 +124,22 @@ export async function* rollupExecutorFn(
     rollupConfig: [],
     projectRoot: context.projectGraph?.nodes[context.projectName!]?.data.root,
     skipTypeCheck: options.skipTypeCheck || false,
-    logLevel: convertRollupLogLevel(config?.logLevel ?? "info")
+    logLevel: convertRollupLogLevel(config?.logLevel ?? "info"),
+    onLog: ((
+      level: rollup.LogLevel,
+      log: rollup.RollupLog,
+      defaultHandler: rollup.LogOrStringHandler
+    ) => {
+      writeTrace(log, config);
+    }) as rollup.LogHandlerWithDefault,
+    onwarn: ((
+      warning: rollup.RollupLog,
+      defaultHandler: rollup.LoggingFunction
+    ) => {
+      writeWarning(warning, config);
+    }) as rollup.WarningHandlerWithDefault,
+    perf: true,
+    treeshake: true
   } as NormalizedRollupExecutorOptions;
 
   const rollupOptions = await createRollupOptions(normalizedOptions, context);
@@ -164,9 +180,7 @@ export async function* rollupExecutorFn(
         : [rollupOptions];
 
       for (const opts of allRollupOptions) {
-        const bundle = await rollup.rollup({
-          ...opts
-        });
+        const bundle = await rollup.rollup(opts);
         const output = Array.isArray(opts.output) ? opts.output : [opts.output];
 
         for (const o of output) {
