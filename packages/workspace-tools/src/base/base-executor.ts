@@ -161,6 +161,7 @@ export const withRunExecutor =
           `Failure determined by the ${name} executor \n${formatLogMessage(result)}`,
           config
         );
+        console.error(result);
 
         throw new Error(`The ${name} executor failed to run`, {
           cause: result?.error
