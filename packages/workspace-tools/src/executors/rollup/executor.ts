@@ -3,15 +3,24 @@ import { type ExecutorContext, type PromiseExecutor } from "@nx/devkit";
 //   computeCompilerOptionsPaths,
 //   DependentBuildableProjectNode
 // } from "@nx/js/src/utils/buildable-libs-utils";
-import { rollupExecutor } from "@nx/rollup/src/executors/rollup/rollup.impl";
 import { RollupExecutorOptions } from "@nx/rollup/src/executors/rollup/schema";
 // import { RollupWithNxPluginOptions } from "@nx/rollup/src/plugins/with-nx/with-nx-options";
 import type { AssetGlob } from "@storm-software/build-tools";
 import type { StormConfig } from "@storm-software/config";
 import { removeSync } from "fs-extra";
 import { Glob } from "glob";
-import { join } from "path";
+import { join, parse, resolve } from "path";
+import * as rollup from "rollup";
 // import ts from "typescript";
+import { createAsyncIterable } from "@nx/devkit/src/utils/async-iterable";
+import { loadConfigFile } from "@nx/devkit/src/utils/config-utils";
+import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
+import {
+  NormalizedRollupExecutorOptions,
+  normalizeRollupExecutorOptions
+} from "@nx/rollup/src/executors/rollup/lib/normalize";
+import { pluginName as generatePackageJsonPluginName } from "@nx/rollup/src/plugins/package-json/generate-package-json";
+import { withNx } from "@nx/rollup/src/plugins/with-nx/with-nx";
 import { withRunExecutor } from "../../base/base-executor";
 import { RollupExecutorSchema } from "./schema";
 
@@ -23,6 +32,8 @@ export async function* rollupExecutorFn(
   const {
     writeDebug,
     writeTrace,
+    writeInfo,
+    writeError,
     formatLogMessage,
     findWorkspaceRoot,
     correctPaths
@@ -108,76 +119,6 @@ export async function* rollupExecutorFn(
   executorOptions.rollupConfig = (options.rollupConfig ??
     {}) as RollupExecutorOptions["rollupConfig"];
 
-  // if (!global.NX_GRAPH_CREATION) {
-  //   executorOptions.rollupConfig!.plugins = [
-  //     copy({
-  //       targets: convertCopyAssetsToRollupOptions(
-  //         options.outputPath,
-  //         options.assets
-  //       ),
-  //     }),
-  //     image(),
-  //     json(),
-  //     // Needed to generate type definitions, even if we're using babel or swc.
-  //     require('rollup-plugin-typescript2')({
-  //       check: !options.skipTypeCheck,
-  //       tsconfig: options.tsConfig,
-  //       tsconfigOverride: {
-  //         compilerOptions: createTsCompilerOptions(
-  //           projectRoot,
-  //           tsConfig,
-  //           options,
-  // (
-  //           dependencies
-  //         ),
-  //       },
-  //     }),
-  //     typeDefinitions({
-  //       projectRoot,
-  //     }),
-  //     postcss({
-  //       inject: true,
-  //       extract: options.extractCss,
-  //       autoModules: true,
-  //       plugins: [autoprefixer],
-  //       use: {
-  //         less: {
-  //           javascriptEnabled: options.javascriptEnabled,
-  //         },
-  //       },
-  //     }),
-  //     nodeResolve({
-  //       preferBuiltins: true,
-  //       extensions: fileExtensions,
-  //     }),
-  //     useSwc && swc(),
-  //     useBabel &&
-  //       getBabelInputPlugin({
-  //         // Lets `@nx/js/babel` preset know that we are packaging.
-  //         caller: {
-  //           // @ts-ignore
-  //           // Ignoring type checks for caller since we have custom attributes
-  //           isNxPackage: true,
-  //           // Always target esnext and let rollup handle cjs
-  //           supportsStaticESM: true,
-  //           isModern: true,
-  //         },
-  //         cwd: join(
-  //           workspaceRoot,
-  //           projectNode.data.sourceRoot ?? projectNode.data.root
-  //         ),
-  //         rootMode: options.babelUpwardRootMode ? 'upward' : undefined,
-  //         babelrc: true,
-  //         extensions: fileExtensions,
-  //         babelHelpers: 'bundled',
-  //         skipPreflightCheck: true, // pre-flight check may yield false positives and also slows down the build
-  //         exclude: /node_modules/,
-  //       }),
-  //     commonjs(),
-  //     analyze(),
-  //     generatePackageJson(options, packageJson),
-  //   ];
-
   writeDebug(
     `📦  Running Storm Rollup build process on the ${context?.projectName} project`,
     config
@@ -188,11 +129,146 @@ export async function* rollupExecutorFn(
     config
   );
 
-  yield* rollupExecutor(executorOptions, context);
+  process.env.NODE_ENV ??= "production";
+  const normalizedOptions = normalizeRollupExecutorOptions(
+    executorOptions,
+    context
+  );
+  const rollupOptions = await createRollupOptions(normalizedOptions, context);
+  const outfile = resolveOutfile(context, normalizedOptions);
 
-  return {
-    success: true
-  };
+  if (normalizedOptions.watch) {
+    // region Watch build
+    return yield* createAsyncIterable(({ next }) => {
+      const watcher = rollup.watch(rollupOptions);
+      watcher.on("event", data => {
+        if (data.code === "START") {
+          writeInfo(`Bundling ${context.projectName}...`, config);
+        } else if (data.code === "END") {
+          writeInfo("Bundle complete. Watching for file changes...", config);
+          next({ success: true, outfile });
+        } else if (data.code === "ERROR") {
+          writeInfo(`Error during bundle: ${data.error.message}`, config);
+
+          next({ success: false });
+        }
+      });
+      const processExitListener = (signal?: number | NodeJS.Signals) => () => {
+        watcher.close();
+      };
+      process.once("SIGTERM", processExitListener);
+      process.once("SIGINT", processExitListener);
+      process.once("SIGQUIT", processExitListener);
+    });
+    // endregion
+  } else {
+    // region Single build
+    try {
+      writeInfo(`Bundling ${context.projectName}...`, config);
+
+      const start = process.hrtime.bigint();
+      const allRollupOptions = Array.isArray(rollupOptions)
+        ? rollupOptions
+        : [rollupOptions];
+
+      for (const opts of allRollupOptions) {
+        const bundle = await rollup.rollup(opts);
+        const output = Array.isArray(opts.output) ? opts.output : [opts.output];
+
+        for (const o of output) {
+          if (o) {
+            await bundle.write(o);
+          }
+        }
+      }
+
+      const end = process.hrtime.bigint();
+      const duration = `${(Number(end - start) / 1_000_000_000).toFixed(2)}s`;
+      writeInfo(`⚡ Done in ${duration}`, config);
+
+      return { success: true, outfile };
+    } catch (e) {
+      if (e.formatted) {
+        writeInfo(e.formatted, config);
+      } else if (e.message) {
+        writeInfo(e.message, config);
+      }
+      writeError(e, config);
+      writeError(`Bundle failed: ${context.projectName}`, config);
+
+      return { success: false };
+    }
+    // endregion
+  }
+}
+
+export async function createRollupOptions(
+  options: NormalizedRollupExecutorOptions,
+  context: ExecutorContext
+): Promise<rollup.RollupOptions | rollup.RollupOptions[]> {
+  const { dependencies } = calculateProjectBuildableDependencies(
+    context.taskGraph,
+    context.projectGraph!,
+    context.root,
+    context.projectName!,
+    context.targetName!,
+    context.configurationName!,
+    true
+  );
+
+  const rollupConfig = withNx(options, {}, dependencies);
+
+  // `generatePackageJson` is a plugin rather than being embedded into @nx/rollup:rollup.
+  // Make sure the plugin is always present to keep the previous before of Nx < 19.4, where it was not a plugin.
+  const generatePackageJsonPlugin = Array.isArray(rollupConfig.plugins)
+    ? rollupConfig.plugins.find(
+        p => p?.["name"] === generatePackageJsonPluginName
+      )
+    : null;
+
+  const userDefinedRollupConfigs = options.rollupConfig.map(plugin =>
+    loadConfigFile(plugin)
+  );
+  let finalConfig: rollup.RollupOptions = rollupConfig;
+  for (const _config of userDefinedRollupConfigs) {
+    const config = await _config;
+    if (typeof config === "function") {
+      finalConfig = config(finalConfig, options);
+    } else {
+      finalConfig = {
+        ...finalConfig,
+        ...config,
+        plugins: [
+          ...(Array.isArray(finalConfig.plugins) &&
+          finalConfig.plugins?.length > 0
+            ? finalConfig.plugins
+            : []),
+          ...(config.plugins?.length > 0 ? config.plugins : [])
+        ]
+      };
+    }
+  }
+
+  if (
+    generatePackageJsonPlugin &&
+    Array.isArray(finalConfig.plugins) &&
+    !finalConfig.plugins.some(
+      p => p?.["name"] === generatePackageJsonPluginName
+    )
+  ) {
+    finalConfig.plugins.push(generatePackageJsonPlugin);
+  }
+
+  return finalConfig;
+}
+
+function resolveOutfile(
+  context: ExecutorContext,
+  options: NormalizedRollupExecutorOptions
+) {
+  if (!options.format?.includes("cjs")) return undefined;
+  const { name } = parse(options.outputFileName ?? options.main);
+  return resolve(context.root, options.outputPath, `${name}.cjs.js`);
 }
 
 // function createTsCompilerOptions(
