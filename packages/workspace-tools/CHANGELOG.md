@@ -1,9 +1,16 @@
-## 1.177.0 (2024-09-08)
+## 1.177.1 (2024-09-08)
 
+
+### Bug Fixes
+
+- **workspace-tools:** Added additional logging to Rollup options ([2f542ce8](https://github.com/storm-software/storm-ops/commit/2f542ce8))
+
+## 1.177.0 (2024-09-08)
 
 ### Features
 
-- **workspace-tools:** Added enhanced post executor logging ([6d7d2165](https://github.com/storm-software/storm-ops/commit/6d7d2165))
+- **workspace-tools:** Added enhanced post executor logging
+  ([6d7d2165](https://github.com/storm-software/storm-ops/commit/6d7d2165))
 
 ## 1.176.0 (2024-09-08)
 
