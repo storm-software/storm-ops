@@ -122,7 +122,8 @@ export async function* rollupExecutorFn(
     main: options.entry,
     rollupConfig: [],
     projectRoot: context.projectGraph?.nodes[context.projectName!]?.data.root,
-    skipTypeCheck: options.skipTypeCheck || false
+    skipTypeCheck: options.skipTypeCheck || false,
+    logLevel: convertRollupLogLevel(config?.logLevel ?? "info")
   } as NormalizedRollupExecutorOptions;
 
   const rollupOptions = await createRollupOptions(normalizedOptions, context);
@@ -163,7 +164,9 @@ export async function* rollupExecutorFn(
         : [rollupOptions];
 
       for (const opts of allRollupOptions) {
-        const bundle = await rollup.rollup(opts);
+        const bundle = await rollup.rollup({
+          ...opts
+        });
         const output = Array.isArray(opts.output) ? opts.output : [opts.output];
 
         for (const o of output) {
@@ -251,6 +254,19 @@ async function createRollupOptions(
   }
 
   return finalConfig;
+}
+
+function convertRollupLogLevel(logLevel: string): rollup.LogLevelOption {
+  switch (logLevel) {
+    case "info":
+      return "info";
+    case "trace":
+    case "all":
+    case "debug":
+      return "debug";
+    default:
+      return "warn";
+  }
 }
 
 function resolveOutfile(
