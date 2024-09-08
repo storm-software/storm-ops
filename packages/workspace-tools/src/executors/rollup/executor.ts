@@ -142,7 +142,11 @@ export async function* rollupExecutorFn(
     treeshake: true
   } as NormalizedRollupExecutorOptions;
 
-  const rollupOptions = await createRollupOptions(normalizedOptions, context);
+  const rollupOptions = await createRollupOptions(
+    normalizedOptions,
+    context,
+    config
+  );
   const outfile = resolveOutfile(context, normalizedOptions);
 
   if (normalizedOptions.watch) {
@@ -212,7 +216,8 @@ export async function* rollupExecutorFn(
 
 async function createRollupOptions(
   options: NormalizedRollupExecutorOptions,
-  context: ExecutorContext
+  context: ExecutorContext,
+  config?: StormConfig
 ): Promise<rollup.RollupOptions | rollup.RollupOptions[]> {
   const { dependencies } = calculateProjectBuildableDependencies(
     context.taskGraph,
@@ -224,7 +229,7 @@ async function createRollupOptions(
     true
   );
 
-  const rollupConfig = withRollupConfig(options, {}, dependencies);
+  const rollupConfig = withRollupConfig(options, {}, dependencies, config);
 
   // `generatePackageJson` is a plugin rather than being embedded into @nx/rollup:rollup.
   // Make sure the plugin is always present to keep the previous before of Nx < 19.4, where it was not a plugin.

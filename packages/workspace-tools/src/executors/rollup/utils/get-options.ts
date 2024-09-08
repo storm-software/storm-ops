@@ -17,6 +17,7 @@ import {
 import { generatePackageJson } from "@nx/rollup/src/plugins/package-json/generate-package-json";
 import { getBabelInputPlugin } from "@rollup/plugin-babel";
 import nodeResolve from "@rollup/plugin-node-resolve";
+import { StormConfig } from "@storm-software/config";
 import { existsSync } from "node:fs";
 import { dirname, join, parse } from "node:path";
 import { PackageJson } from "nx/src/utils/package-json";
@@ -76,7 +77,8 @@ export function withRollupConfig(
   rawOptions: RollupWithNxPluginOptions,
   rollupConfig: rollup.RollupOptions = {},
   // Passed by @nx/rollup:rollup executor to previous behavior of remapping tsconfig paths based on buildable dependencies remains intact.
-  dependencies?: DependentBuildableProjectNode[]
+  dependencies?: DependentBuildableProjectNode[],
+  config?: StormConfig
 ): rollup.RollupOptions {
   const finalConfig: rollup.RollupOptions = { ...rollupConfig };
 
@@ -244,10 +246,10 @@ export function withRollupConfig(
         tsconfig: options.tsConfig,
         tsconfigOverride: {
           compilerOptions: createTsCompilerOptions(
-            projectRoot,
             tsConfig,
             options,
-            dependencies
+            dependencies,
+            config
           )
         },
         verbosity: 3,
@@ -329,22 +331,22 @@ function createInput(
 }
 
 function createTsCompilerOptions(
-  projectRoot: string,
-  config: ts.ParsedCommandLine,
+  parsedCommandLine: ts.ParsedCommandLine,
   options: RollupWithNxPluginOptions,
-  dependencies?: DependentBuildableProjectNode[]
+  dependencies?: DependentBuildableProjectNode[],
+  config?: StormConfig
 ) {
   const compilerOptionPaths = computeCompilerOptionsPaths(
-    config,
+    parsedCommandLine,
     dependencies ?? []
   );
   const compilerOptions = {
-    rootDir: projectRoot,
+    rootDir: config?.workspaceRoot,
     allowJs: options.allowJs,
     declaration: true,
     paths: compilerOptionPaths
   };
-  if (config.options.module === ts.ModuleKind.CommonJS) {
+  if (parsedCommandLine.options.module === ts.ModuleKind.CommonJS) {
     compilerOptions["module"] = "ESNext";
   }
   if (options.compiler === "swc") {

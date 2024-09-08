@@ -1,9 +1,9 @@
 ## 1.90.0 (2024-09-08)
 
-
 ### Features
 
-- **workspace-tools:** Added custom code for generating the Nx configuration ([651a589e](https://github.com/storm-software/storm-ops/commit/651a589e))
+- **workspace-tools:** Added custom code for generating the Nx configuration
+  ([651a589e](https://github.com/storm-software/storm-ops/commit/651a589e))
 
 ## 1.89.0 (2024-09-06)
 
