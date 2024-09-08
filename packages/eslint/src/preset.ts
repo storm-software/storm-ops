@@ -26,7 +26,7 @@ import reactHooksRules from "./rules/react-hooks";
 import stormRules from "./rules/storm";
 import tsdocRules from "./rules/ts-docs";
 import banner from "./utils/banner-plugin";
-import { CODE_BLOCK, JS_FILE, TS_FILE } from "./utils/constants";
+import { CODE_BLOCK, CODE_FILE, TS_FILE } from "./utils/constants";
 import { formatConfig } from "./utils/format-config";
 
 /**
@@ -291,34 +291,15 @@ export function getStormConfig(
     };
   }
 
-  // JavaScript
-  const javascriptConfig: Linter.FlatConfig<Linter.RulesRecord> = {
-    files: [JS_FILE],
-    languageOptions: {
-      globals: {
-        ...Object.fromEntries(
-          Object.keys(globals).flatMap(group =>
-            Object.keys(globals[group as keyof typeof globals]).map(key => [
-              key,
-              "readonly"
-            ])
-          )
-        ),
-        ...globals.browser,
-        ...globals.node,
-        "window": "readonly",
-        "Storm": "readonly"
-      },
-      ecmaVersion: "latest"
-    },
+  // JavaScript and TypeScript code
+  const codeConfig: Linter.FlatConfig<Linter.RulesRecord> = {
+    files: [CODE_FILE],
     rules: {
       // Prettier
       ...prettierConfig.rules,
 
       // Banner
       ...banner.configs!["recommended"]![1]?.rules,
-
-      ...stormRules,
 
       "banner/banner": [
         "error",
@@ -328,14 +309,12 @@ export function getStormConfig(
           commentType: "block",
           numNewlines: 2
         }
-      ],
-
-      ...(options.rules ?? {})
+      ]
     },
     ignores: ["dist", "coverage", "tmp", ".nx", ...(options.ignores || [])]
   };
 
-  configs.push(javascriptConfig);
+  configs.push(codeConfig);
 
   // Markdown
   // https://www.npmjs.com/package/eslint-plugin-markdown

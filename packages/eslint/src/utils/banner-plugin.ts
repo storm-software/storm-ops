@@ -22,7 +22,7 @@ function excludeShebangs(comments) {
 // check if they are at the start of the file since that is already checked by
 // hasBanner().
 function getLeadingComments(context, node) {
-  let all = excludeShebangs(
+  const all = excludeShebangs(
     context
       .getSourceCode()
       .getAllComments(node.body.length ? node.body[0] : node)
@@ -32,7 +32,7 @@ function getLeadingComments(context, node) {
   }
   let i = 1;
   for (i = 1; i < all.length; ++i) {
-    let txt = context
+    const txt = context
       .getSourceCode()
       .getText()
       .slice(all[i - 1].range[1], all[i].range[0]);
@@ -45,7 +45,7 @@ function getLeadingComments(context, node) {
 }
 
 function genCommentBody(commentType, textArray, eol, numNewlines) {
-  let eols = eol.repeat(numNewlines);
+  const eols = eol.repeat(numNewlines);
   if (commentType === "block") {
     return "/*" + textArray.join(eol) + "*/" + eols;
   } else {
@@ -54,7 +54,7 @@ function genCommentBody(commentType, textArray, eol, numNewlines) {
 }
 
 function genCommentsRange(context, comments, eol) {
-  let start = comments[0].range[0];
+  const start = comments[0].range[0];
   let end = comments.slice(-1)[0].range[1];
   if (context.getSourceCode().text[end] === eol) {
     end += eol.length;
@@ -234,16 +234,16 @@ const bannerRule = ESLintUtils.RuleCreator(
       banner = getFileBanner(repositoryName);
     }
 
-    let options = context.options;
-    let eol = getEOL(options);
+    const options = context.options;
+    const eol = getEOL(options);
 
     // If just one option then read comment from file
 
     // If any of the lines are regular expressions, then we can't
     // automatically fix them. We set this to true below once we
     // ensure none of the lines are of type RegExp
-    let canFix = true;
-    let bannerLines = banner.split(/\r?\n/);
+    const canFix = true;
+    const bannerLines = banner.split(/\r?\n/);
     let fixLines = bannerLines;
 
     return {
@@ -255,7 +255,7 @@ const bannerRule = ESLintUtils.RuleCreator(
             fix: genPrependFixer(commentType, node, fixLines, eol, numNewlines)
           });
         } else {
-          let leadingComments = getLeadingComments(context, node);
+          const leadingComments = getLeadingComments(context, node);
 
           if (!leadingComments.length) {
             context.report({
@@ -322,7 +322,7 @@ const bannerRule = ESLintUtils.RuleCreator(
                 }
               }
 
-              let postLineBanner = context
+              const postLineBanner = context
                 .getSourceCode()
                 .text.substr(
                   leadingComments[bannerLines.length - 1].range[1],
@@ -380,7 +380,7 @@ const bannerRule = ESLintUtils.RuleCreator(
                     : null
                 });
               } else {
-                let postBlockBanner = context
+                const postBlockBanner = context
                   .getSourceCode()
                   .text.substr(
                     leadingComments[0].range[1],
