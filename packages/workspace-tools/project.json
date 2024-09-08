@@ -67,7 +67,7 @@
         },
         "external": [
           "nx",
-          "@nx/devkit",
+          "@nx/*",
           "esbuild",
           "@swc/*",
           "@storm-software/build-tools"

@@ -1,10 +1,17 @@
 import { type ExecutorContext, type PromiseExecutor } from "@nx/devkit";
+import {
+  computeCompilerOptionsPaths,
+  DependentBuildableProjectNode
+} from "@nx/js/src/utils/buildable-libs-utils";
 import { rollupExecutor } from "@nx/rollup/src/executors/rollup/rollup.impl";
+import { RollupExecutorOptions } from "@nx/rollup/src/executors/rollup/schema";
+import { RollupWithNxPluginOptions } from "@nx/rollup/src/plugins/with-nx/with-nx-options";
 import type { AssetGlob } from "@storm-software/build-tools";
 import type { StormConfig } from "@storm-software/config";
 import { removeSync } from "fs-extra";
 import { Glob } from "glob";
 import { join } from "path";
+import ts from "typescript";
 import { withRunExecutor } from "../../base/base-executor";
 import { RollupExecutorSchema } from "./schema";
 
@@ -30,7 +37,7 @@ export async function* rollupExecutorFn(
 
   const workspaceRoot = findWorkspaceRoot();
   const projectRoot =
-    context!.projectsConfigurations!.projects[context.projectName!]!.root;
+    context?.projectsConfigurations?.projects[context.projectName!]?.root;
   const sourceRoot =
     context.projectsConfigurations.projects[context.projectName]?.sourceRoot ??
     projectRoot;
@@ -94,22 +101,124 @@ export async function* rollupExecutorFn(
       });
   }
 
-  writeDebug(
-    `📦  Running Storm Rollup build process on the ${context?.projectName} project`,
-    config
+  const executorOptions: RollupExecutorOptions = {
+    ...options,
+    main: options.entry
+  };
+  executorOptions.rollupConfig = (options.rollupConfig ??
+    {}) as RollupExecutorOptions["rollupConfig"];
+
+  // if (!global.NX_GRAPH_CREATION) {
+  //   executorOptions.rollupConfig!.plugins = [
+  //     copy({
+  //       targets: convertCopyAssetsToRollupOptions(
+  //         options.outputPath,
+  //         options.assets
+  //       ),
+  //     }),
+  //     image(),
+  //     json(),
+  //     // Needed to generate type definitions, even if we're using babel or swc.
+  //     require('rollup-plugin-typescript2')({
+  //       check: !options.skipTypeCheck,
+  //       tsconfig: options.tsConfig,
+  //       tsconfigOverride: {
+  //         compilerOptions: createTsCompilerOptions(
+  //           projectRoot,
+  //           tsConfig,
+  //           options,
+  +(
+    //           dependencies
+    //         ),
+    //       },
+    //     }),
+    //     typeDefinitions({
+    //       projectRoot,
+    //     }),
+    //     postcss({
+    //       inject: true,
+    //       extract: options.extractCss,
+    //       autoModules: true,
+    //       plugins: [autoprefixer],
+    //       use: {
+    //         less: {
+    //           javascriptEnabled: options.javascriptEnabled,
+    //         },
+    //       },
+    //     }),
+    //     nodeResolve({
+    //       preferBuiltins: true,
+    //       extensions: fileExtensions,
+    //     }),
+    //     useSwc && swc(),
+    //     useBabel &&
+    //       getBabelInputPlugin({
+    //         // Lets `@nx/js/babel` preset know that we are packaging.
+    //         caller: {
+    //           // @ts-ignore
+    //           // Ignoring type checks for caller since we have custom attributes
+    //           isNxPackage: true,
+    //           // Always target esnext and let rollup handle cjs
+    //           supportsStaticESM: true,
+    //           isModern: true,
+    //         },
+    //         cwd: join(
+    //           workspaceRoot,
+    //           projectNode.data.sourceRoot ?? projectNode.data.root
+    //         ),
+    //         rootMode: options.babelUpwardRootMode ? 'upward' : undefined,
+    //         babelrc: true,
+    //         extensions: fileExtensions,
+    //         babelHelpers: 'bundled',
+    //         skipPreflightCheck: true, // pre-flight check may yield false positives and also slows down the build
+    //         exclude: /node_modules/,
+    //       }),
+    //     commonjs(),
+    //     analyze(),
+    //     generatePackageJson(options, packageJson),
+    //   ];
+
+    writeDebug(
+      `📦  Running Storm Rollup build process on the ${context?.projectName} project`,
+      config
+    )
   );
 
-  const rollupOptions = { ...options, main: options.entry };
   writeTrace(
-    `Rollup schema options ⚙️ \n${formatLogMessage(rollupOptions)}`,
+    `Rollup schema options ⚙️ \n${formatLogMessage(executorOptions)}`,
     config
   );
 
-  yield* rollupExecutor(rollupOptions, context);
+  yield* rollupExecutor(executorOptions, context);
 
   return {
     success: true
   };
+}
+
+function createTsCompilerOptions(
+  projectRoot: string,
+  config: ts.ParsedCommandLine,
+  options: RollupWithNxPluginOptions,
+  dependencies?: DependentBuildableProjectNode[]
+) {
+  const compilerOptionPaths = computeCompilerOptionsPaths(
+    config,
+    dependencies ?? []
+  );
+  const compilerOptions = {
+    rootDir: projectRoot,
+    allowJs: options.allowJs,
+    declaration: true,
+    paths: compilerOptionPaths
+  };
+  if (config.options.module === ts.ModuleKind.CommonJS) {
+    compilerOptions["module"] = "ESNext";
+  }
+  if (options.compiler === "swc") {
+    compilerOptions["emitDeclarationOnly"] = true;
+  }
+  return compilerOptions;
 }
 
 export default withRunExecutor<RollupExecutorSchema>(
@@ -137,7 +246,9 @@ export default withRunExecutor<RollupExecutorSchema>(
         options.assets ??= [];
         options.clean ??= true;
         options.watch ??= false;
+        options.babelUpwardRootMode ??= true;
         options.sourcemap ??= true;
+        options.compiler ??= "babel";
 
         return options as RollupExecutorSchema;
       }
