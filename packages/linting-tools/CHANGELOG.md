@@ -1,3 +1,10 @@
+## 1.82.1 (2024-09-08)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issues with typescript2 plugin ([a3a2a4af](https://github.com/storm-software/storm-ops/commit/a3a2a4af))
+
 ## 1.82.0 (2024-09-06)
 
 
