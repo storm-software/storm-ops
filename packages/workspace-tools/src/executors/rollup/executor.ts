@@ -1,22 +1,16 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { type ExecutorContext, type PromiseExecutor } from "@nx/devkit";
-// import {
-//   computeCompilerOptionsPaths,
-//   DependentBuildableProjectNode
-// } from "@nx/js/src/utils/buildable-libs-utils";
-// import { RollupWithNxPluginOptions } from "@nx/rollup/src/plugins/with-nx/with-nx-options";
+import { createAsyncIterable } from "@nx/devkit/src/utils/async-iterable";
+import { loadConfigFile } from "@nx/devkit/src/utils/config-utils";
+import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
+import { NormalizedRollupExecutorOptions } from "@nx/rollup/src/executors/rollup/lib/normalize";
+import { pluginName as generatePackageJsonPluginName } from "@nx/rollup/src/plugins/package-json/generate-package-json";
 import type { AssetGlob } from "@storm-software/build-tools";
 import type { StormConfig } from "@storm-software/config";
 import { removeSync } from "fs-extra";
 import { Glob } from "glob";
 import { join, parse, resolve } from "path";
 import * as rollup from "rollup";
-// import ts from "typescript";
-import { createAsyncIterable } from "@nx/devkit/src/utils/async-iterable";
-import { loadConfigFile } from "@nx/devkit/src/utils/config-utils";
-import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
-import { NormalizedRollupExecutorOptions } from "@nx/rollup/src/executors/rollup/lib/normalize";
-import { pluginName as generatePackageJsonPluginName } from "@nx/rollup/src/plugins/package-json/generate-package-json";
 import { withRunExecutor } from "../../base/base-executor";
 import { RollupExecutorSchema } from "./schema";
 import { withRollupConfig } from "./utils/get-options";
@@ -125,17 +119,10 @@ export async function* rollupExecutorFn(
     projectRoot: context.projectGraph?.nodes[context.projectName!]?.data.root,
     skipTypeCheck: options.skipTypeCheck || false,
     logLevel: convertRollupLogLevel(config?.logLevel ?? "info"),
-    onLog: ((
-      level: rollup.LogLevel,
-      log: rollup.RollupLog,
-      defaultHandler: rollup.LogOrStringHandler
-    ) => {
+    onLog: ((level: rollup.LogLevel, log: rollup.RollupLog) => {
       writeTrace(log, config);
     }) as rollup.LogHandlerWithDefault,
-    onwarn: ((
-      warning: rollup.RollupLog,
-      defaultHandler: rollup.LoggingFunction
-    ) => {
+    onwarn: ((warning: rollup.RollupLog) => {
       writeWarning(warning, config);
     }) as rollup.WarningHandlerWithDefault,
     perf: true,
@@ -165,7 +152,7 @@ export async function* rollupExecutorFn(
           next({ success: false });
         }
       });
-      const processExitListener = (signal?: number | NodeJS.Signals) => () => {
+      const processExitListener = () => () => {
         watcher.close();
       };
       process.once("SIGTERM", processExitListener);
@@ -219,17 +206,33 @@ async function createRollupOptions(
   context: ExecutorContext,
   config?: StormConfig
 ): Promise<rollup.RollupOptions | rollup.RollupOptions[]> {
+  if (!context.projectGraph) {
+    throw new Error("Nx project graph was not found");
+  }
+  if (!context.root) {
+    throw new Error("Nx root was not found");
+  }
+  if (!context.projectName) {
+    throw new Error("Nx project name was not found");
+  }
+  if (!context.targetName) {
+    throw new Error("Nx target name was not found");
+  }
+  if (!context.configurationName) {
+    throw new Error("Nx configuration name was not found");
+  }
+
   const { dependencies } = calculateProjectBuildableDependencies(
     context.taskGraph,
-    context.projectGraph!,
+    context.projectGraph,
     context.root,
-    context.projectName!,
-    context.targetName!,
-    context.configurationName!,
+    context.projectName,
+    context.targetName,
+    context.configurationName,
     true
   );
 
-  const rollupConfig = withRollupConfig(options, {}, dependencies, config);
+  const rollupConfig = await withRollupConfig(options, {}, dependencies, config);
 
   // `generatePackageJson` is a plugin rather than being embedded into @nx/rollup:rollup.
   // Make sure the plugin is always present to keep the previous before of Nx < 19.4, where it was not a plugin.
@@ -296,31 +299,6 @@ function resolveOutfile(
   const { name } = parse(options.outputFileName ?? options.main);
   return resolve(context.root, options.outputPath, `${name}.cjs.js`);
 }
-
-// function createTsCompilerOptions(
-//   projectRoot: string,
-//   config: ts.ParsedCommandLine,
-//   options: RollupWithNxPluginOptions,
-//   dependencies?: DependentBuildableProjectNode[]
-// ) {
-//   const compilerOptionPaths = computeCompilerOptionsPaths(
-//     config,
-//     dependencies ?? []
-//   );
-//   const compilerOptions = {
-//     rootDir: projectRoot,
-//     allowJs: options.allowJs,
-//     declaration: true,
-//     paths: compilerOptionPaths
-//   };
-//   if (config.options.module === ts.ModuleKind.CommonJS) {
-//     compilerOptions["module"] = "ESNext";
-//   }
-//   if (options.compiler === "swc") {
-//     compilerOptions["emitDeclarationOnly"] = true;
-//   }
-//   return compilerOptions;
-// }
 
 export default withRunExecutor<RollupExecutorSchema>(
   "Rollup build",

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import {
   joinPathFragments,
-  logger,
   type ProjectGraph,
   ProjectGraphProjectNode,
   readCachedProjectGraph,
@@ -73,13 +72,15 @@ function analyze() {
   };
 }
 
-export function withRollupConfig(
+export async function withRollupConfig(
   rawOptions: RollupWithNxPluginOptions,
   rollupConfig: rollup.RollupOptions = {},
   // Passed by @nx/rollup:rollup executor to previous behavior of remapping tsconfig paths based on buildable dependencies remains intact.
   dependencies?: DependentBuildableProjectNode[],
   config?: StormConfig
-): rollup.RollupOptions {
+): Promise<rollup.RollupOptions> {
+  const { writeWarning } = await import("@storm-software/config-tools");
+
   const finalConfig: rollup.RollupOptions = { ...rollupConfig };
 
   // Since this is invoked by the executor, the graph has already been created and cached.
@@ -144,8 +145,9 @@ export function withRollupConfig(
     rollupConfig.input &&
     (options.main || (options.additionalEntryPoints ?? []).length > 0)
   ) {
-    logger.warn(
-      `Setting "input" in rollup config overrides "main" and "additionalEntryPoints" options.`
+    writeWarning(
+      `Setting "input" in rollup config overrides "main" and "additionalEntryPoints" options.`,
+      config
     );
   }
 
@@ -159,8 +161,9 @@ export function withRollupConfig(
       );
     }
     if (rollupConfig.output?.format || rollupConfig.output?.dir) {
-      logger.warn(
-        `"output.dir" and "output.format" are overridden by "withNx".`
+      writeWarning(
+        `"output.dir" and "output.format" are overridden by "withNx".`,
+        config
       );
     }
 
@@ -193,15 +196,17 @@ export function withRollupConfig(
 
     if (packageJson.type === "module") {
       if (options.format.includes("cjs")) {
-        logger.warn(
-          `Package type is set to "module" but "cjs" format is included. Going to use "esm" format instead. You can change the package type to "commonjs" or remove type in the package.json file.`
+        writeWarning(
+          `Package type is set to "module" but "cjs" format is included. Going to use "esm" format instead. You can change the package type to "commonjs" or remove type in the package.json file.`,
+          config
         );
       }
       options.format = ["esm"];
     } else if (packageJson.type === "commonjs") {
       if (options.format.includes("esm")) {
-        logger.warn(
-          `Package type is set to "commonjs" but "esm" format is included. Going to use "cjs" format instead. You can change the package type to "module" or remove type in the package.json file.`
+        writeWarning(
+          `Package type is set to "commonjs" but "esm" format is included. Going to use "cjs" format instead. You can change the package type to "module" or remove type in the package.json file.`,
+          config
         );
       }
       options.format = ["cjs"];
@@ -245,7 +250,7 @@ export function withRollupConfig(
         check: !options.skipTypeCheck,
         tsconfig: options.tsConfig,
         tsconfigOverride: {
-          compilerOptions: createTsCompilerOptions(
+          compilerOptions: await createTsCompilerOptions(
             tsConfig,
             options,
             dependencies,
@@ -330,18 +335,20 @@ function createInput(
   return input;
 }
 
-function createTsCompilerOptions(
+async function createTsCompilerOptions(
   parsedCommandLine: ts.ParsedCommandLine,
   options: RollupWithNxPluginOptions,
   dependencies?: DependentBuildableProjectNode[],
   config?: StormConfig
 ) {
+  const { correctPaths } = await import("@storm-software/config-tools");
+
   const compilerOptionPaths = computeCompilerOptionsPaths(
     parsedCommandLine,
     dependencies ?? []
   );
   const compilerOptions = {
-    rootDir: config?.workspaceRoot,
+    rootDir: correctPaths(config?.workspaceRoot),
     allowJs: options.allowJs,
     declaration: true,
     paths: compilerOptionPaths
