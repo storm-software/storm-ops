@@ -34,6 +34,9 @@ export const DefaultCargoPluginProfileMap = {
   production: "prod"
 };
 
+export const DEFAULT_ERROR_MESSAGE =
+  "An error occurred in the Storm Rust Nx plugin.";
+
 export interface CargoPluginOptions {
   includeApps?: boolean;
   skipDocs?: boolean;
@@ -323,8 +326,10 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
         externalNodes
       };
     } catch (e) {
-      console.error("An error occurred while parsing the Cargo.toml file.");
+      console.error(DEFAULT_ERROR_MESSAGE);
       console.error(e);
+
+      throw new Error(DEFAULT_ERROR_MESSAGE, { cause: e });
     }
   }
 ];
