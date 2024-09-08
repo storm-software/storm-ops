@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { type ExecutorContext, type PromiseExecutor } from "@nx/devkit";
 // import {
 //   computeCompilerOptionsPaths,
 //   DependentBuildableProjectNode
 // } from "@nx/js/src/utils/buildable-libs-utils";
-import { RollupExecutorOptions } from "@nx/rollup/src/executors/rollup/schema";
 // import { RollupWithNxPluginOptions } from "@nx/rollup/src/plugins/with-nx/with-nx-options";
 import type { AssetGlob } from "@storm-software/build-tools";
 import type { StormConfig } from "@storm-software/config";
@@ -15,10 +15,7 @@ import * as rollup from "rollup";
 import { createAsyncIterable } from "@nx/devkit/src/utils/async-iterable";
 import { loadConfigFile } from "@nx/devkit/src/utils/config-utils";
 import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
-import {
-  NormalizedRollupExecutorOptions,
-  normalizeRollupExecutorOptions
-} from "@nx/rollup/src/executors/rollup/lib/normalize";
+import { NormalizedRollupExecutorOptions } from "@nx/rollup/src/executors/rollup/lib/normalize";
 import { pluginName as generatePackageJsonPluginName } from "@nx/rollup/src/plugins/package-json/generate-package-json";
 import { withNx } from "@nx/rollup/src/plugins/with-nx/with-nx";
 import { withRunExecutor } from "../../base/base-executor";
@@ -112,28 +109,22 @@ export async function* rollupExecutorFn(
       });
   }
 
-  const executorOptions: RollupExecutorOptions = {
-    ...options,
-    main: options.entry
-  };
-  executorOptions.rollupConfig = (options.rollupConfig ??
-    {}) as RollupExecutorOptions["rollupConfig"];
-
   writeDebug(
     `📦  Running Storm Rollup build process on the ${context?.projectName} project`,
     config
   );
 
-  writeTrace(
-    `Rollup schema options ⚙️ \n${formatLogMessage(executorOptions)}`,
-    config
-  );
+  writeTrace(`Rollup schema options ⚙️ \n${formatLogMessage(options)}`, config);
 
   process.env.NODE_ENV ??= "production";
-  const normalizedOptions = normalizeRollupExecutorOptions(
-    executorOptions,
-    context
-  );
+  const normalizedOptions = {
+    ...options,
+    main: options.entry,
+    rollupConfig: [],
+    projectRoot: context.projectGraph?.nodes[context.projectName!]?.data.root,
+    skipTypeCheck: options.skipTypeCheck || false
+  } as NormalizedRollupExecutorOptions;
+
   const rollupOptions = await createRollupOptions(normalizedOptions, context);
   const outfile = resolveOutfile(context, normalizedOptions);
 
@@ -202,7 +193,7 @@ export async function* rollupExecutorFn(
   }
 }
 
-export async function createRollupOptions(
+async function createRollupOptions(
   options: NormalizedRollupExecutorOptions,
   context: ExecutorContext
 ): Promise<rollup.RollupOptions | rollup.RollupOptions[]> {
