@@ -1,9 +1,16 @@
-## 1.175.5 (2024-09-08)
+## 1.175.6 (2024-09-08)
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Add custom rollup code ([c21fef43](https://github.com/storm-software/storm-ops/commit/c21fef43))
+- **workspace-tools:** Resolved issue resolving plugins ([00448e95](https://github.com/storm-software/storm-ops/commit/00448e95))
+
+## 1.175.5 (2024-09-08)
+
+### Bug Fixes
+
+- **workspace-tools:** Add custom rollup code
+  ([c21fef43](https://github.com/storm-software/storm-ops/commit/c21fef43))
 
 ## 1.175.4 (2024-09-08)
 
