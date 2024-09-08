@@ -260,9 +260,9 @@ function convertRollupLogLevel(logLevel: string): rollup.LogLevelOption {
   switch (logLevel) {
     case "info":
       return "info";
+    case "debug":
     case "trace":
     case "all":
-    case "debug":
       return "debug";
     default:
       return "warn";
@@ -304,7 +304,7 @@ function resolveOutfile(
 // }
 
 export default withRunExecutor<RollupExecutorSchema>(
-  "Rollup build executor",
+  "Rollup build",
   rollupExecutorFn,
   {
     skipReadingConfig: false,

@@ -45,7 +45,8 @@ export const withRunExecutor =
       writeSuccess,
       writeTrace,
       findWorkspaceRoot,
-      loadStormConfig
+      loadStormConfig,
+      formatLogMessage
     } = await import("@storm-software/config-tools");
 
     const stopwatch = getStopwatch(name);
@@ -156,6 +157,11 @@ export const withRunExecutor =
             (result?.error as Error)?.name &&
             typeof (result?.error as Error)?.name === "string"))
       ) {
+        writeTrace(
+          `Failure determined by the ${name} executor \n${formatLogMessage(result)}`,
+          config
+        );
+
         throw new Error(`The ${name} executor failed to run`, {
           cause: result?.error
         });
