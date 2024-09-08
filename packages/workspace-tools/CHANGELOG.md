@@ -1,9 +1,16 @@
-## 1.175.6 (2024-09-08)
+## 1.176.0 (2024-09-08)
 
+
+### Features
+
+- **workspace-tools:** Added functionality to parse the `logLevel` during Rollup build ([5e617be7](https://github.com/storm-software/storm-ops/commit/5e617be7))
+
+## 1.175.6 (2024-09-08)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolved issue resolving plugins ([00448e95](https://github.com/storm-software/storm-ops/commit/00448e95))
+- **workspace-tools:** Resolved issue resolving plugins
+  ([00448e95](https://github.com/storm-software/storm-ops/commit/00448e95))
 
 ## 1.175.5 (2024-09-08)
 
