@@ -1,17 +1,17 @@
 import { type ExecutorContext, type PromiseExecutor } from "@nx/devkit";
-import {
-  computeCompilerOptionsPaths,
-  DependentBuildableProjectNode
-} from "@nx/js/src/utils/buildable-libs-utils";
+// import {
+//   computeCompilerOptionsPaths,
+//   DependentBuildableProjectNode
+// } from "@nx/js/src/utils/buildable-libs-utils";
 import { rollupExecutor } from "@nx/rollup/src/executors/rollup/rollup.impl";
 import { RollupExecutorOptions } from "@nx/rollup/src/executors/rollup/schema";
-import { RollupWithNxPluginOptions } from "@nx/rollup/src/plugins/with-nx/with-nx-options";
+// import { RollupWithNxPluginOptions } from "@nx/rollup/src/plugins/with-nx/with-nx-options";
 import type { AssetGlob } from "@storm-software/build-tools";
 import type { StormConfig } from "@storm-software/config";
 import { removeSync } from "fs-extra";
 import { Glob } from "glob";
 import { join } from "path";
-import ts from "typescript";
+// import ts from "typescript";
 import { withRunExecutor } from "../../base/base-executor";
 import { RollupExecutorSchema } from "./schema";
 
@@ -196,30 +196,30 @@ export async function* rollupExecutorFn(
   };
 }
 
-function createTsCompilerOptions(
-  projectRoot: string,
-  config: ts.ParsedCommandLine,
-  options: RollupWithNxPluginOptions,
-  dependencies?: DependentBuildableProjectNode[]
-) {
-  const compilerOptionPaths = computeCompilerOptionsPaths(
-    config,
-    dependencies ?? []
-  );
-  const compilerOptions = {
-    rootDir: projectRoot,
-    allowJs: options.allowJs,
-    declaration: true,
-    paths: compilerOptionPaths
-  };
-  if (config.options.module === ts.ModuleKind.CommonJS) {
-    compilerOptions["module"] = "ESNext";
-  }
-  if (options.compiler === "swc") {
-    compilerOptions["emitDeclarationOnly"] = true;
-  }
-  return compilerOptions;
-}
+// function createTsCompilerOptions(
+//   projectRoot: string,
+//   config: ts.ParsedCommandLine,
+//   options: RollupWithNxPluginOptions,
+//   dependencies?: DependentBuildableProjectNode[]
+// ) {
+//   const compilerOptionPaths = computeCompilerOptionsPaths(
+//     config,
+//     dependencies ?? []
+//   );
+//   const compilerOptions = {
+//     rootDir: projectRoot,
+//     allowJs: options.allowJs,
+//     declaration: true,
+//     paths: compilerOptionPaths
+//   };
+//   if (config.options.module === ts.ModuleKind.CommonJS) {
+//     compilerOptions["module"] = "ESNext";
+//   }
+//   if (options.compiler === "swc") {
+//     compilerOptions["emitDeclarationOnly"] = true;
+//   }
+//   return compilerOptions;
+// }
 
 export default withRunExecutor<RollupExecutorSchema>(
   "Rollup build executor",
