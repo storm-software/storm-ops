@@ -1,9 +1,16 @@
-## 1.179.8 (2024-09-10)
+## 1.179.9 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Change order of plugin invokation ([43e80289](https://github.com/storm-software/storm-ops/commit/43e80289))
+- **storm-ops:** Resolved issue with invalid configuration object ([a4f22049](https://github.com/storm-software/storm-ops/commit/a4f22049))
+
+## 1.179.8 (2024-09-10)
+
+### Bug Fixes
+
+- **workspace-tools:** Change order of plugin invokation
+  ([43e80289](https://github.com/storm-software/storm-ops/commit/43e80289))
 
 ## 1.179.7 (2024-09-10)
 
