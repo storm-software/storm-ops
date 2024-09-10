@@ -26,7 +26,8 @@ export const runTsupBuild = async (
     writeError,
     correctPaths,
     findWorkspaceRoot,
-    removeExtension
+    removeExtension,
+    formatLogMessage
   } = await import("@storm-software/config-tools");
 
   try {
@@ -93,19 +94,7 @@ ${Object.keys(options)
     );
 
     writeTrace(
-      `⚙️  TSC (Type Declarations) Build options:
-${Object.keys(dtsTsConfig.options)
-  .filter(key => key !== "define")
-  .map(
-    key =>
-      `${key}: ${
-        !dtsTsConfig.options[key] || _isPrimitive(dtsTsConfig.options[key])
-          ? dtsTsConfig.options[key]
-          : JSON.stringify(dtsTsConfig.options[key])
-      }`
-  )
-  .join("\n")}
-`,
+      `⚙️  TSC (Type Declarations) Build options: \r\n${formatLogMessage({ ...dtsTsConfig.options, define: null })}`,
       config
     );
 
@@ -262,17 +251,22 @@ async function getNormalizedTsConfig(
   // const rawConfig = rawTsconfig.config ?? {};
 
   const basePath = correctPaths(workspaceRoot);
+
+  const rootDir = basePath;
+  const baseUrl = ".";
+
   const parsedTsconfig = tsModule.parseJsonConfigFileContent(
     {
       ...(result.tsconfig ?? {}),
       compilerOptions: {
         ...(result.tsconfig?.compilerOptions ?? {}),
+        rootDir,
+        baseUrl,
         typeRoots: [
           ...(result.tsconfig?.compilerOptions?.typeRoots ?? []),
           join(projectRoot, "node_modules/@types"),
           correctPaths(join(basePath, "node_modules/@types"))
         ],
-        preserveSymlinks: true,
         outDir: outputPath,
         noEmit: false,
         emitDeclarationOnly: true,
@@ -305,9 +299,9 @@ async function getNormalizedTsConfig(
   parsedTsconfig.options.declarationDir = correctPaths(
     join(basePath, "tmp", ".tsup", "declaration")
   );
-  parsedTsconfig.options.pathsBasePath = basePath;
-  parsedTsconfig.options.rootDir = basePath;
-  parsedTsconfig.options.baseUrl = ".";
+  parsedTsconfig.options.pathsBasePath = rootDir;
+  parsedTsconfig.options.rootDir = rootDir;
+  parsedTsconfig.options.baseUrl = baseUrl;
 
   // parsedTsconfig.options.pathsBasePath = basePath;
 
