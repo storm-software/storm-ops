@@ -1,3 +1,10 @@
+## 0.25.13 (2024-09-10)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with invalid include paths ([3bac71bd](https://github.com/storm-software/storm-ops/commit/3bac71bd))
+
 ## 0.25.12 (2024-09-10)
 
 
