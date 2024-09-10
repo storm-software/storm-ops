@@ -1,3 +1,10 @@
+## 0.68.9 (2024-09-10)
+
+
+### Bug Fixes
+
+- **build-tools:** Remove invalid configuration parameters ([cede3716](https://github.com/storm-software/storm-ops/commit/cede3716))
+
 ## 0.68.8 (2024-09-10)
 
 

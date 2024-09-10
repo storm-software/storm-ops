@@ -1,9 +1,16 @@
-## 0.80.4 (2024-09-10)
+## 0.80.5 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **build-tools:** Resolve issue with the raw configuration parameters ([bbd59f22](https://github.com/storm-software/storm-ops/commit/bbd59f22))
+- **build-tools:** Remove invalid configuration parameters ([cede3716](https://github.com/storm-software/storm-ops/commit/cede3716))
+
+## 0.80.4 (2024-09-10)
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with the raw configuration parameters
+  ([bbd59f22](https://github.com/storm-software/storm-ops/commit/bbd59f22))
 
 ## 0.80.3 (2024-09-10)
 
