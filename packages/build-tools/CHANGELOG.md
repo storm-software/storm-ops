@@ -1,9 +1,16 @@
-## 0.81.3 (2024-09-10)
+## 0.81.4 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **build-tools:** Update the declaration directory used during build ([a9c0f876](https://github.com/storm-software/storm-ops/commit/a9c0f876))
+- **build-tools:** Resolve issue with missing declaration files ([862e51a1](https://github.com/storm-software/storm-ops/commit/862e51a1))
+
+## 0.81.3 (2024-09-10)
+
+### Bug Fixes
+
+- **build-tools:** Update the declaration directory used during build
+  ([a9c0f876](https://github.com/storm-software/storm-ops/commit/a9c0f876))
 
 ## 0.81.2 (2024-09-10)
 

@@ -1,3 +1,10 @@
+## 0.69.4 (2024-09-10)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with missing declaration files ([862e51a1](https://github.com/storm-software/storm-ops/commit/862e51a1))
+
 ## 0.69.3 (2024-09-10)
 
 

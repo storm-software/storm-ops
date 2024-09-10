@@ -1,9 +1,16 @@
-## 1.92.1 (2024-09-10)
+## 1.92.2 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **build-tools:** Resolved issue with invalid path configurations ([533a80bf](https://github.com/storm-software/storm-ops/commit/533a80bf))
+- **build-tools:** Resolve issue with missing declaration files ([862e51a1](https://github.com/storm-software/storm-ops/commit/862e51a1))
+
+## 1.92.1 (2024-09-10)
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with invalid path configurations
+  ([533a80bf](https://github.com/storm-software/storm-ops/commit/533a80bf))
 
 ## 1.92.0 (2024-09-10)
 
