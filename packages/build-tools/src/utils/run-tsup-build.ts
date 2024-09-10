@@ -269,7 +269,7 @@ async function getNormalizedTsConfig(
         ...(result.tsconfig?.compilerOptions ?? {}),
         typeRoots: [
           ...(result.tsconfig?.compilerOptions?.typeRoots ?? []),
-          correctPaths(join(projectRoot, "node_modules/@types")),
+          join(projectRoot, "node_modules/@types"),
           correctPaths(join(basePath, "node_modules/@types"))
         ],
         preserveSymlinks: true,
@@ -292,7 +292,15 @@ async function getNormalizedTsConfig(
     dirname(options.tsConfig)
   );
 
-  parsedTsconfig.fileNames = [...parsedTsconfig.fileNames, ...extraFileNames];
+  parsedTsconfig.fileNames = [...parsedTsconfig.fileNames, ...extraFileNames]
+    .filter(fileName => !fileName.includes("*"))
+    .reduce((ret: string[], fileName: string) => {
+      if (fileExists(fileName) && !ret.includes(fileName)) {
+        ret.push(fileName);
+      }
+
+      return ret;
+    }, []);
 
   parsedTsconfig.options.declarationDir = correctPaths(
     join(basePath, "tmp", ".tsup", "declaration")
