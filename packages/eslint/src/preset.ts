@@ -85,7 +85,7 @@ export function getStormConfig(
     eslint.configs.recommended,
 
     // https://typescript-eslint.io/
-    ...tsEslint.configs.stylisticTypeChecked.map(config => ({
+    ...tsEslint.configs.recommended.map(config => ({
       ...config,
       files: ["**/*.ts"] // We use TS config only for TS files
     })),
@@ -223,11 +223,11 @@ export function getStormConfig(
       // // https://eslint.org/docs/latest/rules/
       // ...eslint.configs.recommended.rules,
 
-      // // https://typescript-eslint.io/
-      // ...tsEslint.configs.stylisticTypeChecked.reduce(
-      //   (ret, record) => ({ ...ret, ...record.rules }),
-      //   {}
-      // ),
+      // https://typescript-eslint.io/
+      ...tsEslint.configs.recommended.reduce(
+        (ret, record) => ({ ...ret, ...record.rules }),
+        {}
+      ),
 
       // Prettier
       ...prettierConfig.rules,
@@ -252,7 +252,14 @@ export function getStormConfig(
 
       ...(options.rules ?? {})
     },
-    ignores: ["dist", "coverage", "tmp", ".nx", ...(options.ignores || [])]
+    ignores: [
+      "dist",
+      "coverage",
+      "tmp",
+      ".nx",
+      "node_modules",
+      ...(options.ignores || [])
+    ]
   };
 
   // React
@@ -296,7 +303,7 @@ export function getStormConfig(
     if (options.useReactCompiler) {
       typescriptConfig.plugins = {
         ...typescriptConfig.plugins,
-        reactCompiler
+        "react-compiler": reactCompiler
       };
 
       typescriptConfig.rules = {

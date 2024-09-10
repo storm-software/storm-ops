@@ -74,7 +74,6 @@ ${Object.keys(options)
     // #region Run the build process
 
     const dtsTsConfig = await getNormalizedTsConfig(
-      options.projectRoot,
       workspaceRoot,
       options.outputPath,
       createTypeScriptCompilationOptions(
@@ -182,7 +181,6 @@ ${options.banner}
 };
 
 async function getNormalizedTsConfig(
-  projectRoot: string,
   workspaceRoot: string,
   outputPath: string,
   options: TypeScriptCompilationOptions
@@ -252,8 +250,8 @@ async function getNormalizedTsConfig(
 
   const basePath = correctPaths(workspaceRoot);
 
-  const rootDir = basePath;
-  const baseUrl = ".";
+  const rootDir = ".";
+  const baseUrl = basePath;
 
   const parsedTsconfig = tsModule.parseJsonConfigFileContent(
     {
@@ -264,7 +262,7 @@ async function getNormalizedTsConfig(
         baseUrl,
         typeRoots: [
           ...(result.tsconfig?.compilerOptions?.typeRoots ?? []),
-          join(projectRoot, "node_modules/@types"),
+          join(dirname(options.tsConfig), "node_modules/@types"),
           correctPaths(join(basePath, "node_modules/@types"))
         ],
         outDir: outputPath,
@@ -299,7 +297,7 @@ async function getNormalizedTsConfig(
   parsedTsconfig.options.declarationDir = correctPaths(
     join(basePath, "tmp", ".tsup", "declaration")
   );
-  parsedTsconfig.options.pathsBasePath = rootDir;
+  parsedTsconfig.options.pathsBasePath = baseUrl;
   parsedTsconfig.options.rootDir = rootDir;
   parsedTsconfig.options.baseUrl = baseUrl;
 
