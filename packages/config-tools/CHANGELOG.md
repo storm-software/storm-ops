@@ -1,9 +1,16 @@
-## 1.91.4 (2024-09-10)
+## 1.91.5 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Change order of plugin invokation ([43e80289](https://github.com/storm-software/storm-ops/commit/43e80289))
+- **build-tools:** Resolve issue with the raw configuration parameters ([bbd59f22](https://github.com/storm-software/storm-ops/commit/bbd59f22))
+
+## 1.91.4 (2024-09-10)
+
+### Bug Fixes
+
+- **workspace-tools:** Change order of plugin invokation
+  ([43e80289](https://github.com/storm-software/storm-ops/commit/43e80289))
 
 ## 1.91.3 (2024-09-10)
 

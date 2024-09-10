@@ -1,9 +1,16 @@
-## 1.179.9 (2024-09-10)
+## 1.179.10 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **storm-ops:** Resolved issue with invalid configuration object ([a4f22049](https://github.com/storm-software/storm-ops/commit/a4f22049))
+- **build-tools:** Resolve issue with the raw configuration parameters ([bbd59f22](https://github.com/storm-software/storm-ops/commit/bbd59f22))
+
+## 1.179.9 (2024-09-10)
+
+### Bug Fixes
+
+- **storm-ops:** Resolved issue with invalid configuration object
+  ([a4f22049](https://github.com/storm-software/storm-ops/commit/a4f22049))
 
 ## 1.179.8 (2024-09-10)
 

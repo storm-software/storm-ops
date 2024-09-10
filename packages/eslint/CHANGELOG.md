@@ -1,3 +1,10 @@
+## 0.68.8 (2024-09-10)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with the raw configuration parameters ([bbd59f22](https://github.com/storm-software/storm-ops/commit/bbd59f22))
+
 ## 0.68.7 (2024-09-10)
 
 
