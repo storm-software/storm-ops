@@ -249,17 +249,15 @@ async function getNormalizedTsConfig(
   // const rawConfig = rawTsconfig.config ?? {};
 
   const basePath = correctPaths(workspaceRoot);
-
-  const rootDir = ".";
-  const baseUrl = basePath;
+  const declarationDir = correctPaths(
+    join(workspaceRoot, "tmp", ".tsup", "declaration")
+  );
 
   const parsedTsconfig = tsModule.parseJsonConfigFileContent(
     {
       ...(result.tsconfig ?? {}),
       compilerOptions: {
         ...(result.tsconfig?.compilerOptions ?? {}),
-        rootDir,
-        baseUrl,
         typeRoots: [
           ...(result.tsconfig?.compilerOptions?.typeRoots ?? []),
           join(dirname(options.tsConfig), "node_modules/@types"),
@@ -270,7 +268,7 @@ async function getNormalizedTsConfig(
         emitDeclarationOnly: true,
         declaration: true,
         declarationMap: true,
-        declarationDir: join("tmp", ".tsup", "declaration")
+        declarationDir
       }
       // include: [
       //   join(basePath, "node_modules/typescript/**/*.d.ts").replaceAll(
@@ -286,6 +284,7 @@ async function getNormalizedTsConfig(
 
   parsedTsconfig.fileNames = [...parsedTsconfig.fileNames, ...extraFileNames]
     .filter(fileName => !fileName.includes("*"))
+    .map(fileName => correctPaths(fileName))
     .reduce((ret: string[], fileName: string) => {
       if (fileExists(fileName) && !ret.includes(fileName)) {
         ret.push(fileName);
@@ -294,12 +293,11 @@ async function getNormalizedTsConfig(
       return ret;
     }, []);
 
-  parsedTsconfig.options.declarationDir = correctPaths(
-    join(basePath, "tmp", ".tsup", "declaration")
-  );
-  parsedTsconfig.options.pathsBasePath = baseUrl;
-  parsedTsconfig.options.rootDir = rootDir;
-  parsedTsconfig.options.baseUrl = baseUrl;
+  parsedTsconfig.options.declarationDir = declarationDir;
+
+  parsedTsconfig.options.pathsBasePath = basePath;
+  parsedTsconfig.options.rootDir = basePath;
+  parsedTsconfig.options.baseUrl = basePath;
 
   // parsedTsconfig.options.pathsBasePath = basePath;
 
