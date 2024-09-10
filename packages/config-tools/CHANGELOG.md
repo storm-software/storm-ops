@@ -1,9 +1,16 @@
-## 1.91.7 (2024-09-10)
+## 1.92.0 (2024-09-10)
 
+
+### Features
+
+- **eslint-config:** Added the `useReactCompiler` option to preset ([691fdfe8](https://github.com/storm-software/storm-ops/commit/691fdfe8))
+
+## 1.91.7 (2024-09-10)
 
 ### Bug Fixes
 
-- **build-tools:** Resolve issues with generated tsconfig compilation options ([f7a96d93](https://github.com/storm-software/storm-ops/commit/f7a96d93))
+- **build-tools:** Resolve issues with generated tsconfig compilation options
+  ([f7a96d93](https://github.com/storm-software/storm-ops/commit/f7a96d93))
 
 ## 1.91.6 (2024-09-10)
 

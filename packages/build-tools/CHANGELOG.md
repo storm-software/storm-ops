@@ -1,9 +1,16 @@
-## 0.80.9 (2024-09-10)
+## 0.81.0 (2024-09-10)
 
+
+### Features
+
+- **eslint-config:** Added the `useReactCompiler` option to preset ([691fdfe8](https://github.com/storm-software/storm-ops/commit/691fdfe8))
+
+## 0.80.9 (2024-09-10)
 
 ### Bug Fixes
 
-- **build-tools:** Resolved issue with invalid include paths ([3bac71bd](https://github.com/storm-software/storm-ops/commit/3bac71bd))
+- **build-tools:** Resolved issue with invalid include paths
+  ([3bac71bd](https://github.com/storm-software/storm-ops/commit/3bac71bd))
 
 ## 0.80.8 (2024-09-10)
 

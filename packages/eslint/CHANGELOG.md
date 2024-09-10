@@ -1,3 +1,10 @@
+## 0.69.0 (2024-09-10)
+
+
+### Features
+
+- **eslint-config:** Added the `useReactCompiler` option to preset ([691fdfe8](https://github.com/storm-software/storm-ops/commit/691fdfe8))
+
 ## 0.68.13 (2024-09-10)
 
 
