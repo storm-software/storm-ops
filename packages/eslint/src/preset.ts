@@ -26,7 +26,7 @@ import reactHooksRules from "./rules/react-hooks";
 import stormRules from "./rules/storm";
 import tsdocRules from "./rules/ts-docs";
 import banner from "./utils/banner-plugin";
-import { CODE_BLOCK, CODE_FILE, TS_FILE } from "./utils/constants";
+import { CODE_BLOCK, TS_FILE } from "./utils/constants";
 import { formatConfig } from "./utils/format-config";
 
 /**
@@ -291,30 +291,32 @@ export function getStormConfig(
     };
   }
 
-  // JavaScript and TypeScript code
-  const codeConfig: Linter.FlatConfig<Linter.RulesRecord> = {
-    files: [CODE_FILE],
-    rules: {
-      // Prettier
-      ...prettierConfig.rules,
+  configs.push(typescriptConfig);
 
-      // Banner
-      ...banner.configs!["recommended"]![1]?.rules,
+  // // JavaScript and TypeScript code
+  // const codeConfig: Linter.FlatConfig<Linter.RulesRecord> = {
+  //   files: [CODE_FILE],
+  //   rules: {
+  //     // Prettier
+  //     ...prettierConfig.rules,
 
-      "banner/banner": [
-        "error",
-        {
-          repositoryName: options.name,
-          banner: options.banner,
-          commentType: "block",
-          numNewlines: 2
-        }
-      ]
-    },
-    ignores: ["dist", "coverage", "tmp", ".nx", ...(options.ignores || [])]
-  };
+  //     // Banner
+  //     ...banner.configs!["recommended"]![1]?.rules,
 
-  configs.push(codeConfig);
+  //     "banner/banner": [
+  //       "error",
+  //       {
+  //         repositoryName: options.name,
+  //         banner: options.banner,
+  //         commentType: "block",
+  //         numNewlines: 2
+  //       }
+  //     ]
+  //   },
+  //   ignores: ["dist", "coverage", "tmp", ".nx", ...(options.ignores || [])]
+  // };
+
+  // configs.push(codeConfig);
 
   // Markdown
   // https://www.npmjs.com/package/eslint-plugin-markdown
