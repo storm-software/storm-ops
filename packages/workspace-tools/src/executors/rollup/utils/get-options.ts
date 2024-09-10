@@ -349,6 +349,7 @@ async function createTsCompilerOptions(
   );
   const compilerOptions = {
     rootDir: correctPaths(config?.workspaceRoot).replaceAll("/", "\\"),
+    baseUrl: correctPaths(config?.workspaceRoot).replaceAll("/", "\\"),
     declaration: true,
     skipLibCheck: true,
     skipDefaultLibCheck: true,

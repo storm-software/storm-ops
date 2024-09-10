@@ -1,9 +1,9 @@
 ## 1.179.3 (2024-09-09)
 
-
 ### Bug Fixes
 
-- **workspace-tools:** Update `rootDir` path slashes ([a50cead4](https://github.com/storm-software/storm-ops/commit/a50cead4))
+- **workspace-tools:** Update `rootDir` path slashes
+  ([a50cead4](https://github.com/storm-software/storm-ops/commit/a50cead4))
 
 ## 1.179.2 (2024-09-08)
 
