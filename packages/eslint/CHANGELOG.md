@@ -1,3 +1,10 @@
+## 0.69.1 (2024-09-10)
+
+
+### Bug Fixes
+
+- **build-tools:** Ensure the `rootDir` and `baseUrl` parameters are consistent ([7438183f](https://github.com/storm-software/storm-ops/commit/7438183f))
+
 ## 0.69.0 (2024-09-10)
 
 

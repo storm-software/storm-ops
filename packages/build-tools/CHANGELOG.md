@@ -1,9 +1,16 @@
-## 0.81.0 (2024-09-10)
+## 0.81.1 (2024-09-10)
 
+
+### Bug Fixes
+
+- **build-tools:** Ensure the `rootDir` and `baseUrl` parameters are consistent ([7438183f](https://github.com/storm-software/storm-ops/commit/7438183f))
+
+## 0.81.0 (2024-09-10)
 
 ### Features
 
-- **eslint-config:** Added the `useReactCompiler` option to preset ([691fdfe8](https://github.com/storm-software/storm-ops/commit/691fdfe8))
+- **eslint-config:** Added the `useReactCompiler` option to preset
+  ([691fdfe8](https://github.com/storm-software/storm-ops/commit/691fdfe8))
 
 ## 0.80.9 (2024-09-10)
 
