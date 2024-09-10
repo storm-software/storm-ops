@@ -12,6 +12,7 @@ import jsxA11y from "eslint-plugin-jsx-a11y";
 import markdown from "eslint-plugin-markdown";
 import prettierConfig from "eslint-plugin-prettier/recommended";
 import react from "eslint-plugin-react";
+import reactCompiler from "eslint-plugin-react-compiler";
 import reactHooks from "eslint-plugin-react-hooks";
 import tsdoc from "eslint-plugin-tsdoc";
 import unicorn from "eslint-plugin-unicorn";
@@ -58,6 +59,7 @@ export interface PresetOptions {
   parserOptions?: Linter.ParserOptions;
   markdown?: false | Linter.RulesRecord;
   react?: false | Linter.RulesRecord;
+  useReactCompiler?: boolean;
 }
 
 /**
@@ -73,7 +75,8 @@ export function getStormConfig(
     tsconfig: "./tsconfig.base.json",
     parserOptions: {},
     markdown: {},
-    react: {}
+    react: {},
+    useReactCompiler: false
   },
   ...userConfigs: Linter.FlatConfig[]
 ): Linter.FlatConfig[] {
@@ -217,14 +220,14 @@ export function getStormConfig(
       }
     },
     rules: {
-      // https://eslint.org/docs/latest/rules/
-      ...eslint.configs.recommended.rules,
+      // // https://eslint.org/docs/latest/rules/
+      // ...eslint.configs.recommended.rules,
 
-      // https://typescript-eslint.io/
-      ...tsEslint.configs.stylisticTypeChecked.reduce(
-        (ret, record) => ({ ...ret, ...record.rules }),
-        {}
-      ),
+      // // https://typescript-eslint.io/
+      // ...tsEslint.configs.stylisticTypeChecked.reduce(
+      //   (ret, record) => ({ ...ret, ...record.rules }),
+      //   {}
+      // ),
 
       // Prettier
       ...prettierConfig.rules,
@@ -289,6 +292,18 @@ export function getStormConfig(
         }
       }
     };
+
+    if (options.useReactCompiler) {
+      typescriptConfig.plugins = {
+        ...typescriptConfig.plugins,
+        reactCompiler
+      };
+
+      typescriptConfig.rules = {
+        ...typescriptConfig.rules,
+        "react-compiler/react-compiler": "error"
+      };
+    }
   }
 
   configs.push(typescriptConfig);
