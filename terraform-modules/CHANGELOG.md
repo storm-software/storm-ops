@@ -1,3 +1,10 @@
+## 0.26.3 (2024-09-10)
+
+
+### Bug Fixes
+
+- **build-tools:** Update the declaration directory used during build ([a9c0f876](https://github.com/storm-software/storm-ops/commit/a9c0f876))
+
 ## 0.26.2 (2024-09-10)
 
 
