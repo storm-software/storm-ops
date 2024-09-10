@@ -1,3 +1,10 @@
+## 0.69.5 (2024-09-10)
+
+
+### Bug Fixes
+
+- **build-tools:** Ensure the `skipDefaultLibCheck` options is added during DTS build ([f9a7e827](https://github.com/storm-software/storm-ops/commit/f9a7e827))
+
 ## 0.69.4 (2024-09-10)
 
 

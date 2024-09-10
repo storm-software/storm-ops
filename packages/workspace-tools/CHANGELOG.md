@@ -1,9 +1,16 @@
-## 1.180.4 (2024-09-10)
+## 1.180.5 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **build-tools:** Resolve issue with missing declaration files ([862e51a1](https://github.com/storm-software/storm-ops/commit/862e51a1))
+- **build-tools:** Ensure the `skipDefaultLibCheck` options is added during DTS build ([f9a7e827](https://github.com/storm-software/storm-ops/commit/f9a7e827))
+
+## 1.180.4 (2024-09-10)
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with missing declaration files
+  ([862e51a1](https://github.com/storm-software/storm-ops/commit/862e51a1))
 
 ## 1.180.3 (2024-09-10)
 
