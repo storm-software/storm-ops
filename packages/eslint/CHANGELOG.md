@@ -1,3 +1,10 @@
+## 0.68.5 (2024-09-10)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve paths issue in configuration ([ad5950ef](https://github.com/storm-software/storm-ops/commit/ad5950ef))
+
 ## 0.68.4 (2024-09-10)
 
 
