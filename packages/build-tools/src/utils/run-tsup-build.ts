@@ -257,16 +257,13 @@ async function getNormalizedTsConfig(
     );
   }
 
-  const rawConfig = rawTsconfig.config ?? {};
+  // const rawConfig = rawTsconfig.config ?? {};
 
   const basePath = correctPaths(workspaceRoot);
   const parsedTsconfig = tsModule.parseJsonConfigFileContent(
     {
-      ...rawConfig,
       compilerOptions: {
-        ...rawConfig.compilerOptions,
         typeRoots: [
-          ...rawConfig,
           correctPaths(
             join(relative(options.projectRoot, basePath), "node_modules/@types")
           )
