@@ -1,9 +1,16 @@
-## 0.80.7 (2024-09-10)
+## 0.80.8 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **build-tools:** Resolve issue specifying the `typeRoot` options ([973f8ee4](https://github.com/storm-software/storm-ops/commit/973f8ee4))
+- **build-tools:** Resolve issues with generated tsconfig compilation options ([f7a96d93](https://github.com/storm-software/storm-ops/commit/f7a96d93))
+
+## 0.80.7 (2024-09-10)
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue specifying the `typeRoot` options
+  ([973f8ee4](https://github.com/storm-software/storm-ops/commit/973f8ee4))
 
 ## 0.80.6 (2024-09-10)
 

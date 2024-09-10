@@ -1,9 +1,16 @@
-## 1.179.13 (2024-09-10)
+## 1.179.14 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **build-tools:** Resolve issue specifying the `typeRoot` options ([973f8ee4](https://github.com/storm-software/storm-ops/commit/973f8ee4))
+- **build-tools:** Resolve issues with generated tsconfig compilation options ([f7a96d93](https://github.com/storm-software/storm-ops/commit/f7a96d93))
+
+## 1.179.13 (2024-09-10)
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue specifying the `typeRoot` options
+  ([973f8ee4](https://github.com/storm-software/storm-ops/commit/973f8ee4))
 
 ## 1.179.12 (2024-09-10)
 

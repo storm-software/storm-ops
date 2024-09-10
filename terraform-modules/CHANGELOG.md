@@ -1,3 +1,10 @@
+## 0.25.12 (2024-09-10)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolve issues with generated tsconfig compilation options ([f7a96d93](https://github.com/storm-software/storm-ops/commit/f7a96d93))
+
 ## 0.25.11 (2024-09-10)
 
 
