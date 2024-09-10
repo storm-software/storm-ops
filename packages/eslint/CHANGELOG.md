@@ -1,3 +1,10 @@
+## 0.68.4 (2024-09-10)
+
+
+### Bug Fixes
+
+- **eslint-config:** Resolve issue with missing TypeScript configuration ([3692faa9](https://github.com/storm-software/storm-ops/commit/3692faa9))
+
 ## 0.68.3 (2024-09-08)
 
 

@@ -1,9 +1,18 @@
-## 1.179.5 (2024-09-10)
+## 1.179.6 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Added `baseUrl` to compiler options ([dd058e2e](https://github.com/storm-software/storm-ops/commit/dd058e2e))
+- **eslint-config:** Resolve issue with missing TypeScript configuration ([3692faa9](https://github.com/storm-software/storm-ops/commit/3692faa9))
+
+- **workspace-tools:** Resolve issue with workspace paths ([1b3305e6](https://github.com/storm-software/storm-ops/commit/1b3305e6))
+
+## 1.179.5 (2024-09-10)
+
+### Bug Fixes
+
+- **workspace-tools:** Added `baseUrl` to compiler options
+  ([dd058e2e](https://github.com/storm-software/storm-ops/commit/dd058e2e))
 
 ## 1.179.4 (2024-09-09)
 
