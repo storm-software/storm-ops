@@ -1,3 +1,10 @@
+## 0.25.11 (2024-09-10)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue specifying the `typeRoot` options ([973f8ee4](https://github.com/storm-software/storm-ops/commit/973f8ee4))
+
 ## 0.25.10 (2024-09-10)
 
 

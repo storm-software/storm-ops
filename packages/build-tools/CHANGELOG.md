@@ -1,9 +1,16 @@
-## 0.80.6 (2024-09-10)
+## 0.80.7 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **config-tools:** Resolve issues with slashes in paths ([e1e5f571](https://github.com/storm-software/storm-ops/commit/e1e5f571))
+- **build-tools:** Resolve issue specifying the `typeRoot` options ([973f8ee4](https://github.com/storm-software/storm-ops/commit/973f8ee4))
+
+## 0.80.6 (2024-09-10)
+
+### Bug Fixes
+
+- **config-tools:** Resolve issues with slashes in paths
+  ([e1e5f571](https://github.com/storm-software/storm-ops/commit/e1e5f571))
 
 ## 0.80.5 (2024-09-10)
 
