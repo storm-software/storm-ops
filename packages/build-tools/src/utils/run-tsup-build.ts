@@ -239,7 +239,7 @@ async function getNormalizedTsConfig(
         }
 
         return ret;
-      }, result.tsconfig.include);
+      }, []);
   } else {
     extraFileNames.push(
       correctPaths(join(workspaceRoot, "node_modules/typescript/lib/*.d.ts"))
@@ -265,12 +265,14 @@ async function getNormalizedTsConfig(
         ],
         outDir: outputPath,
         noEmit: false,
+        skipLibCheck: true,
+        skipDefaultLibCheck: true,
         emitDeclarationOnly: true,
         declaration: true,
         declarationMap: true,
         declarationDir
-      },
-      include: [...extraFileNames, ...(result.tsconfig?.include ?? [])]
+      }
+      // include: [...extraFileNames, ...(result.tsconfig?.include ?? [])]
     },
     tsModule.sys,
     dirname(options.tsConfig)
@@ -321,7 +323,7 @@ async function getNormalizedTsConfig(
     parsedTsconfig.options.tsBuildInfoFile = join(
       outputPath,
       "tsconfig.tsbuildinfo"
-    );
+    ).replaceAll("\\", "/");
   }
 
   return parsedTsconfig;
