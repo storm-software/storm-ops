@@ -1,3 +1,10 @@
+## 0.68.6 (2024-09-10)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Change order of plugin invokation ([43e80289](https://github.com/storm-software/storm-ops/commit/43e80289))
+
 ## 0.68.5 (2024-09-10)
 
 

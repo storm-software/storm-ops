@@ -1,9 +1,16 @@
-## 1.91.3 (2024-09-10)
+## 1.91.4 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue with workspace paths ([1b3305e6](https://github.com/storm-software/storm-ops/commit/1b3305e6))
+- **workspace-tools:** Change order of plugin invokation ([43e80289](https://github.com/storm-software/storm-ops/commit/43e80289))
+
+## 1.91.3 (2024-09-10)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with workspace paths
+  ([1b3305e6](https://github.com/storm-software/storm-ops/commit/1b3305e6))
 
 ## 1.91.2 (2024-09-08)
 

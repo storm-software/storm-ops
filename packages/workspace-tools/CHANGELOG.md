@@ -1,9 +1,16 @@
-## 1.179.7 (2024-09-10)
+## 1.179.8 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve paths issue in configuration ([ad5950ef](https://github.com/storm-software/storm-ops/commit/ad5950ef))
+- **workspace-tools:** Change order of plugin invokation ([43e80289](https://github.com/storm-software/storm-ops/commit/43e80289))
+
+## 1.179.7 (2024-09-10)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve paths issue in configuration
+  ([ad5950ef](https://github.com/storm-software/storm-ops/commit/ad5950ef))
 
 ## 1.179.6 (2024-09-10)
 
