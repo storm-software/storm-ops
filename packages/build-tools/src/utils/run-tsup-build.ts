@@ -5,7 +5,7 @@ import type { NormalizedExecutorOptions } from "@nx/js/src/utils/schema.js";
 import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation.js";
 import type { StormConfig } from "@storm-software/config";
 import { environmentPlugin } from "esbuild-plugin-environment";
-import { dirname, join, relative, sep } from "node:path";
+import { dirname, join, sep } from "node:path";
 import { defaultConfig, getConfig } from "../config";
 import type { TsupContext, TypeScriptBuildOptions } from "../types";
 // import { type TSConfig, readTSConfig } from "pkg-types";
@@ -264,9 +264,8 @@ async function getNormalizedTsConfig(
     {
       compilerOptions: {
         typeRoots: [
-          correctPaths(
-            join(relative(options.projectRoot, basePath), "node_modules/@types")
-          )
+          correctPaths(join(options.projectRoot, "node_modules/@types")),
+          correctPaths(join(basePath, "node_modules/@types"))
         ],
         preserveSymlinks: true,
         outDir: outputPath,
