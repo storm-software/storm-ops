@@ -343,13 +343,24 @@ async function createTsCompilerOptions(
 ) {
   const { correctPaths } = await import("@storm-software/config-tools");
 
+  if (!config?.workspaceRoot) {
+    throw new Error(`Cannot find workspace root in the config.`);
+  }
+
+  parsedCommandLine.options.rootDir = correctPaths(config?.workspaceRoot);
+  parsedCommandLine.options.baseUrl = correctPaths(config?.workspaceRoot);
+
+  // parsedCommandLine.wildcardDirectories ??= {};
+  // parsedCommandLine.wildcardDirectories[
+  //   correctPaths(join(config?.workspaceRoot, "node_modules/typescript/lib"))
+  // ] = 1;
+
   const compilerOptionPaths = computeCompilerOptionsPaths(
     parsedCommandLine,
     dependencies ?? []
   );
   const compilerOptions = {
     rootDir: correctPaths(config?.workspaceRoot).replaceAll("/", "\\"),
-    baseUrl: correctPaths(config?.workspaceRoot).replaceAll("/", "\\"),
     declaration: true,
     skipLibCheck: true,
     skipDefaultLibCheck: true,

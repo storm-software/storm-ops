@@ -6,6 +6,8 @@ export const correctPaths = (path?: string): string => {
   // Handle Windows absolute paths
   if (!path.toUpperCase().startsWith("C:") && path.includes("\\")) {
     path = `C:${path}`;
+
+    return path.replaceAll("/", "\\");
   }
 
   return path.replaceAll("\\", "/");
