@@ -269,14 +269,8 @@ async function getNormalizedTsConfig(
         declaration: true,
         declarationMap: true,
         declarationDir
-      }
-      // include: [
-      //   join(basePath, "node_modules/typescript/**/*.d.ts").replaceAll(
-      //     "\\",
-      //     "/"
-      //   ),
-      //   ...(result.tsconfig?.include ? result.tsconfig?.include : [])
-      // ]
+      },
+      include: [...extraFileNames, ...(result.tsconfig?.include ?? [])]
     },
     tsModule.sys,
     dirname(options.tsConfig)
@@ -324,8 +318,9 @@ async function getNormalizedTsConfig(
   // }
 
   if (parsedTsconfig.options.incremental) {
-    parsedTsconfig.options.tsBuildInfoFile = correctPaths(
-      join(outputPath, "tsconfig.tsbuildinfo")
+    parsedTsconfig.options.tsBuildInfoFile = join(
+      outputPath,
+      "tsconfig.tsbuildinfo"
     );
   }
 
