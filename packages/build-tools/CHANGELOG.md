@@ -1,9 +1,16 @@
-## 0.81.1 (2024-09-10)
+## 0.81.2 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **build-tools:** Ensure the `rootDir` and `baseUrl` parameters are consistent ([7438183f](https://github.com/storm-software/storm-ops/commit/7438183f))
+- **build-tools:** Resolved issue with invalid path configurations ([533a80bf](https://github.com/storm-software/storm-ops/commit/533a80bf))
+
+## 0.81.1 (2024-09-10)
+
+### Bug Fixes
+
+- **build-tools:** Ensure the `rootDir` and `baseUrl` parameters are consistent
+  ([7438183f](https://github.com/storm-software/storm-ops/commit/7438183f))
 
 ## 0.81.0 (2024-09-10)
 

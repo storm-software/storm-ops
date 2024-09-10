@@ -1,3 +1,10 @@
+## 0.26.2 (2024-09-10)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with invalid path configurations ([533a80bf](https://github.com/storm-software/storm-ops/commit/533a80bf))
+
 ## 0.26.1 (2024-09-10)
 
 

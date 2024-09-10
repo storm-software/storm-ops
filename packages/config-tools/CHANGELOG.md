@@ -1,9 +1,16 @@
-## 1.92.0 (2024-09-10)
+## 1.92.1 (2024-09-10)
 
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with invalid path configurations ([533a80bf](https://github.com/storm-software/storm-ops/commit/533a80bf))
+
+## 1.92.0 (2024-09-10)
 
 ### Features
 
-- **eslint-config:** Added the `useReactCompiler` option to preset ([691fdfe8](https://github.com/storm-software/storm-ops/commit/691fdfe8))
+- **eslint-config:** Added the `useReactCompiler` option to preset
+  ([691fdfe8](https://github.com/storm-software/storm-ops/commit/691fdfe8))
 
 ## 1.91.7 (2024-09-10)
 
