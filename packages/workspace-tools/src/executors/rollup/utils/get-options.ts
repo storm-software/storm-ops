@@ -249,7 +249,10 @@ export async function withRollupConfig(
       }),
       image(),
       json(),
-      // Needed to generate type definitions, even if we're using babel or swc.
+      nodeResolve({
+        preferBuiltins: true,
+        extensions: fileExtensions
+      }),
       require("rollup-plugin-typescript2")({
         check: !options.skipTypeCheck,
         tsconfig: options.tsConfig,
@@ -277,10 +280,6 @@ export async function withRollupConfig(
       //     }
       //   }
       // }),
-      nodeResolve({
-        preferBuiltins: true,
-        extensions: fileExtensions
-      }),
       getBabelInputPlugin({
         // Lets `@nx/js/babel` preset know that we are packaging.
         caller: {
