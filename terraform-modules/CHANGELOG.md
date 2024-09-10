@@ -1,3 +1,10 @@
+## 0.25.10 (2024-09-10)
+
+
+### Bug Fixes
+
+- **config-tools:** Resolve issues with slashes in paths ([e1e5f571](https://github.com/storm-software/storm-ops/commit/e1e5f571))
+
 ## 0.25.9 (2024-09-10)
 
 

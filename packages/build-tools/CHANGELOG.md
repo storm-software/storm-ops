@@ -1,9 +1,16 @@
-## 0.80.5 (2024-09-10)
+## 0.80.6 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **build-tools:** Remove invalid configuration parameters ([cede3716](https://github.com/storm-software/storm-ops/commit/cede3716))
+- **config-tools:** Resolve issues with slashes in paths ([e1e5f571](https://github.com/storm-software/storm-ops/commit/e1e5f571))
+
+## 0.80.5 (2024-09-10)
+
+### Bug Fixes
+
+- **build-tools:** Remove invalid configuration parameters
+  ([cede3716](https://github.com/storm-software/storm-ops/commit/cede3716))
 
 ## 0.80.4 (2024-09-10)
 

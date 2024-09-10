@@ -1,9 +1,16 @@
-## 1.179.11 (2024-09-10)
+## 1.179.12 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **build-tools:** Remove invalid configuration parameters ([cede3716](https://github.com/storm-software/storm-ops/commit/cede3716))
+- **config-tools:** Resolve issues with slashes in paths ([e1e5f571](https://github.com/storm-software/storm-ops/commit/e1e5f571))
+
+## 1.179.11 (2024-09-10)
+
+### Bug Fixes
+
+- **build-tools:** Remove invalid configuration parameters
+  ([cede3716](https://github.com/storm-software/storm-ops/commit/cede3716))
 
 ## 1.179.10 (2024-09-10)
 

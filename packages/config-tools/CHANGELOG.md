@@ -1,9 +1,16 @@
-## 1.91.5 (2024-09-10)
+## 1.91.6 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **build-tools:** Resolve issue with the raw configuration parameters ([bbd59f22](https://github.com/storm-software/storm-ops/commit/bbd59f22))
+- **config-tools:** Resolve issues with slashes in paths ([e1e5f571](https://github.com/storm-software/storm-ops/commit/e1e5f571))
+
+## 1.91.5 (2024-09-10)
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with the raw configuration parameters
+  ([bbd59f22](https://github.com/storm-software/storm-ops/commit/bbd59f22))
 
 ## 1.91.4 (2024-09-10)
 
