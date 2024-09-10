@@ -4,7 +4,6 @@ import { normalizeOptions } from "@nx/js/src/executors/tsc/lib/normalize-options
 import type { NormalizedExecutorOptions } from "@nx/js/src/utils/schema.js";
 import type { TypeScriptCompilationOptions } from "@nx/workspace/src/utilities/typescript/compilation.js";
 import type { StormConfig } from "@storm-software/config";
-import { findFileName, removeExtension } from "@storm-software/config-tools";
 import { environmentPlugin } from "esbuild-plugin-environment";
 import { dirname, join, relative, sep } from "node:path";
 import { defaultConfig, getConfig } from "../config";
@@ -26,7 +25,8 @@ export const runTsupBuild = async (
     writeWarning,
     writeError,
     correctPaths,
-    findWorkspaceRoot
+    findWorkspaceRoot,
+    removeExtension
   } = await import("@storm-software/config-tools");
 
   try {
@@ -196,7 +196,7 @@ async function getNormalizedTsConfig(
   outputPath: string,
   options: TypeScriptCompilationOptions
 ) {
-  const { correctPaths, writeTrace } = await import(
+  const { correctPaths, writeTrace, findFileName } = await import(
     "@storm-software/config-tools"
   );
 
@@ -257,14 +257,16 @@ async function getNormalizedTsConfig(
     );
   }
 
+  const tsconfig = rawTsconfig.config ?? {};
+
   const basePath = correctPaths(workspaceRoot);
   const parsedTsconfig = tsModule.parseJsonConfigFileContent(
     {
-      ...rawTsconfig.config,
+      ...tsconfig,
       compilerOptions: {
-        ...rawTsconfig.config?.compilerOptions,
+        ...tsconfig.compilerOptions,
         typeRoots: [
-          ...rawTsconfig.config,
+          ...tsconfig,
           correctPaths(
             join(relative(options.projectRoot, basePath), "node_modules/@types")
           )
