@@ -1,9 +1,16 @@
-## 1.179.14 (2024-09-10)
+## 1.179.15 (2024-09-10)
 
 
 ### Bug Fixes
 
-- **build-tools:** Resolve issues with generated tsconfig compilation options ([f7a96d93](https://github.com/storm-software/storm-ops/commit/f7a96d93))
+- **build-tools:** Resolved issue with invalid include paths ([3bac71bd](https://github.com/storm-software/storm-ops/commit/3bac71bd))
+
+## 1.179.14 (2024-09-10)
+
+### Bug Fixes
+
+- **build-tools:** Resolve issues with generated tsconfig compilation options
+  ([f7a96d93](https://github.com/storm-software/storm-ops/commit/f7a96d93))
 
 ## 1.179.13 (2024-09-10)
 
