@@ -79,13 +79,15 @@ export async function withRollupConfig(
   dependencies?: DependentBuildableProjectNode[],
   config?: StormConfig
 ): Promise<rollup.RollupOptions> {
-  const { writeWarning } = await import("@storm-software/config-tools");
+  const { writeWarning, correctPaths } = await import(
+    "@storm-software/config-tools"
+  );
 
   const finalConfig: rollup.RollupOptions = { ...rollupConfig };
 
   // Since this is invoked by the executor, the graph has already been created and cached.
   const projectNode = getProjectNode();
-  const projectRoot = join(workspaceRoot, projectNode.data.root);
+  const projectRoot = correctPaths(join(workspaceRoot, projectNode.data.root));
 
   // Cannot read in graph during construction, but we only need it during build time.
   const projectGraph: ProjectGraph | null = global.NX_GRAPH_CREATION
@@ -129,7 +131,9 @@ export async function withRollupConfig(
     rawOptions
   );
 
-  const tsConfigPath = joinPathFragments(workspaceRoot, options.tsConfig);
+  const tsConfigPath = correctPaths(
+    joinPathFragments(workspaceRoot, options.tsConfig)
+  );
   const tsConfigFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile);
   const tsConfig = ts.parseJsonConfigFileContent(
     tsConfigFile.config,
@@ -178,7 +182,7 @@ export async function withRollupConfig(
         ? // Options are not normalized with project root during graph creation due to the lack of project and project root.
           // Cannot be joined with workspace root now, but will be handled by @nx/rollup/plugin.
           options.outputPath
-        : join(workspaceRoot, options.outputPath),
+        : correctPaths(join(workspaceRoot, options.outputPath)),
       sourcemap: options.sourceMap
     }));
   }
@@ -257,8 +261,7 @@ export async function withRollupConfig(
             config
           )
         },
-        verbosity: 3,
-        useTsconfigDeclarationDir: true
+        verbosity: 3
       }),
       typeDefinitions({
         projectRoot
@@ -287,9 +290,11 @@ export async function withRollupConfig(
           supportsStaticESM: true,
           isModern: true
         },
-        cwd: join(
-          workspaceRoot,
-          projectNode.data.sourceRoot ?? projectNode.data.root
+        cwd: correctPaths(
+          join(
+            workspaceRoot,
+            projectNode.data.sourceRoot ?? projectNode.data.root
+          )
         ),
         rootMode: options.babelUpwardRootMode ? "upward" : undefined,
         babelrc: true,
