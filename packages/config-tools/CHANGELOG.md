@@ -1,9 +1,16 @@
-## 1.92.4 (2024-09-11)
+## 1.92.5 (2024-09-11)
 
 
 ### Bug Fixes
 
-- **build-tools:** Resolved issue with missing TypeScript declarations ([4cf894fe](https://github.com/storm-software/storm-ops/commit/4cf894fe))
+- **workspace-tools:** Update parameters provided to TypeScript plugin ([8cd141c1](https://github.com/storm-software/storm-ops/commit/8cd141c1))
+
+## 1.92.4 (2024-09-11)
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with missing TypeScript declarations
+  ([4cf894fe](https://github.com/storm-software/storm-ops/commit/4cf894fe))
 
 ## 1.92.3 (2024-09-11)
 

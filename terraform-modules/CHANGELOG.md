@@ -1,3 +1,10 @@
+## 0.26.10 (2024-09-11)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Update parameters provided to TypeScript plugin ([8cd141c1](https://github.com/storm-software/storm-ops/commit/8cd141c1))
+
 ## 0.26.9 (2024-09-11)
 
 
