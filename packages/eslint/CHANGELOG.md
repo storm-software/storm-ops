@@ -1,3 +1,10 @@
+## 0.71.0 (2024-09-11)
+
+
+### Features
+
+- **workspace-tools:** Improved the input value formatting ([13d3fb1c](https://github.com/storm-software/storm-ops/commit/13d3fb1c))
+
 ## 0.70.1 (2024-09-11)
 
 
