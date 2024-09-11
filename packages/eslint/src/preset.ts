@@ -262,58 +262,90 @@ export function getStormConfig(
     ]
   };
 
+  configs.push(typescriptConfig);
+
   // React
   // https://www.npmjs.com/package/eslint-plugin-react
   if (options.react) {
-    typescriptConfig.plugins = {
-      ...typescriptConfig.plugins,
-      react,
-      "react-hooks": reactHooks,
-      "jsx-a11y": jsxA11y
-    };
-
-    typescriptConfig.settings = {
-      react: {
-        version: "detect"
-      }
-    };
-
-    typescriptConfig.rules = {
-      ...typescriptConfig.rules,
-
-      // React
-      ...reactRules,
-      ...reactHooksRules,
-      ...jsxA11yRules,
-
-      ...options.react
-    };
-
-    typescriptConfig.languageOptions = {
-      ...typescriptConfig.languageOptions,
-      parserOptions: {
-        ...typescriptConfig.languageOptions?.parserOptions,
-        ecmaFeatures: {
-          ...typescriptConfig.languageOptions?.parserOptions?.ecmaFeatures,
-          jsx: true
+    // TSX - React
+    const reactConfig: Linter.FlatConfig<Linter.RulesRecord> = {
+      files: ["**/*.tsx"],
+      languageOptions: {
+        globals: {
+          ...Object.fromEntries(
+            Object.keys(globals).flatMap(group =>
+              Object.keys(globals[group as keyof typeof globals]).map(key => [
+                key,
+                "readonly"
+              ])
+            )
+          ),
+          ...globals.browser,
+          ...globals.node,
+          "window": "readonly",
+          "Storm": "readonly"
+        },
+        ecmaVersion: "latest",
+        parserOptions: {
+          emitDecoratorMetadata: true,
+          experimentalDecorators: true,
+          project: options.tsconfig ? options.tsconfig : "./tsconfig.base.json",
+          projectService: true,
+          sourceType: "module",
+          projectFolderIgnoreList: [
+            "**/node_modules/**",
+            "**/dist/**",
+            "**/coverage/**",
+            "**/tmp/**",
+            "**/.nx/**"
+          ],
+          ecmaFeatures: {
+            jsx: true
+          },
+          ...options.parserOptions
         }
-      }
+      },
+      settings: {
+        react: {
+          version: "detect"
+        }
+      },
+      plugins: {
+        react,
+        "react-hooks": reactHooks,
+        "jsx-a11y": jsxA11y
+      },
+      rules: {
+        ...reactRules,
+        ...reactHooksRules,
+        ...jsxA11yRules,
+
+        ...(options.react ?? {})
+      },
+      ignores: [
+        "dist",
+        "coverage",
+        "tmp",
+        ".nx",
+        "node_modules",
+        ...(options.ignores || [])
+      ]
     };
 
     if (options.useReactCompiler) {
-      typescriptConfig.plugins = {
-        ...typescriptConfig.plugins,
+      reactConfig.plugins = {
+        ...reactConfig.plugins,
         "react-compiler": reactCompiler
       };
 
-      typescriptConfig.rules = {
-        ...typescriptConfig.rules,
+      reactConfig.rules = {
+        ...reactConfig.rules,
         "react-compiler/react-compiler": "error"
       };
     }
-  }
 
-  configs.push(typescriptConfig);
+    configs.push(reactConfig);
+  }
 
   // // JavaScript and TypeScript code
   // const codeConfig: Linter.FlatConfig<Linter.RulesRecord> = {
