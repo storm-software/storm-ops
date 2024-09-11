@@ -1,3 +1,10 @@
+## 1.182.3 (2024-09-11)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with the base path directory ([b7cad5eb](https://github.com/storm-software/storm-ops/commit/b7cad5eb))
+
 ## 1.182.2 (2024-09-11)
 
 ### Bug Fixes
