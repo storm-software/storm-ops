@@ -1,3 +1,5 @@
+import { ACRONYMS_LIST } from "./constants";
+
 /**
  * Get a banner header to display at the top of a file
  *
@@ -23,7 +25,13 @@ export const getFileBanner = (name = "") => {
     titleName = (titleName.charAt(0).toUpperCase() + titleName.slice(1))
       .split("-")
       .filter(word => word && word.length > 0)
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .map(word => {
+        if (ACRONYMS_LIST.includes(word.toUpperCase())) {
+          return word.toUpperCase();
+        }
+
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      })
       .join(" ");
   }
 

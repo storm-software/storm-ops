@@ -136,7 +136,16 @@ export async function withRollupConfig(
   );
   const tsConfigFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile);
   const tsConfig = ts.parseJsonConfigFileContent(
-    tsConfigFile.config,
+    {
+      ...tsConfigFile.config,
+      include: [
+        ...(tsConfigFile.config?.include &&
+        Array.isArray(tsConfigFile.config.include)
+          ? tsConfigFile.config.include
+          : []),
+        join(workspaceRoot, "node_modules/typescript/lib/*.d.ts")
+      ]
+    },
     ts.sys,
     dirname(tsConfigPath)
   );
@@ -262,10 +271,9 @@ export async function withRollupConfig(
             options,
             dependencies,
             config
-          ),
-          include: [join(workspaceRoot, "node_modules/typescript/lib/*.d.ts")]
+          )
         },
-        verbosity: 3
+        verbosity: convertRpts2LogLevel(config?.logLevel ?? "warn")
       }),
       typeDefinitions({
         projectRoot
@@ -284,9 +292,7 @@ export async function withRollupConfig(
       getBabelInputPlugin({
         // Lets `@nx/js/babel` preset know that we are packaging.
         caller: {
-          // Ignoring type checks for caller since we have custom attributes
           isNxPackage: true,
-          // Always target esnext and let rollup handle cjs
           supportsStaticESM: true,
           isModern: true
         },
@@ -323,6 +329,21 @@ export async function withRollupConfig(
   }
 
   return finalConfig;
+}
+
+function convertRpts2LogLevel(logLevel: string): number {
+  switch (logLevel) {
+    case "warn":
+      return 1;
+    case "info":
+      return 2;
+    case "debug":
+    case "trace":
+    case "all":
+      return 3;
+    default:
+      return 0;
+  }
 }
 
 function createInput(

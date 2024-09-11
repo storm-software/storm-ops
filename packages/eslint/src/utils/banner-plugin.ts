@@ -1,6 +1,7 @@
 import { ESLintUtils } from "@typescript-eslint/utils";
 import { ESLint, Rule } from "eslint";
 import os from "node:os";
+import { CODE_FILE } from "./constants";
 import { getFileBanner } from "./get-file-banner";
 
 function match(actual, expected) {
@@ -425,21 +426,26 @@ const plugin: ESLint.Plugin = {
   processors: {}
 };
 
-plugin.configs!.recommended = [
-  { name: "banner/recommended/plugin", plugins: { banner: plugin } },
-  {
-    name: "banner/recommended/code-files",
-    files: [
-      "**/*.{,c,m}{j,t}s{,x}",
-      "!tools/**/*",
-      "!docs/**/*",
-      "!crates/**/*",
-      "!.*/**/*"
-    ],
-    rules: {
-      "banner/banner": ["error", { commentType: "block", numNewlines: 2 }]
+plugin.configs &&
+  (plugin.configs.recommended = [
+    { name: "banner/recommended/plugin", plugins: { banner: plugin } },
+    {
+      name: "banner/recommended/code-files",
+      files: [
+        CODE_FILE,
+        "!docs/**/*",
+        "!crates/**/*",
+        "!tmp/**/*",
+        "!dist/**/*",
+        "!coverage/**/*",
+        "!node_modules/**/*",
+        "!.cache/**/*",
+        "!.nx/**/*"
+      ],
+      rules: {
+        "banner/banner": ["error", { commentType: "block", numNewlines: 2 }]
+      }
     }
-  }
-];
+  ]);
 
 export default plugin;
