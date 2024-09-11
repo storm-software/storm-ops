@@ -3,8 +3,7 @@ import {
   type ProjectGraph,
   ProjectGraphProjectNode,
   readCachedProjectGraph,
-  readJsonFile,
-  workspaceRoot
+  readJsonFile
 } from "@nx/devkit";
 import { typeDefinitions } from "@nx/js/src/plugins/rollup/type-definitions";
 import {
@@ -24,6 +23,7 @@ import * as rollup from "rollup";
 import { ModuleKind, ParsedCommandLine } from "typescript";
 import {
   AssetGlobPattern,
+  NormalizedRollupWithNxPluginOptions,
   normalizeOptions,
   RollupWithNxPluginOptions
 } from "./normalize-options";
@@ -75,9 +75,9 @@ function analyze() {
 export async function withRollupConfig(
   rawOptions: RollupWithNxPluginOptions,
   rollupConfig: rollup.RollupOptions = {},
+  config: StormConfig,
   // Passed by @nx/rollup:rollup executor to previous behavior of remapping tsconfig paths based on buildable dependencies remains intact.
-  dependencies?: DependentBuildableProjectNode[],
-  config?: StormConfig
+  dependencies: DependentBuildableProjectNode[]
 ): Promise<rollup.RollupOptions> {
   const { writeWarning, correctPaths } = await import(
     "@storm-software/config-tools"
@@ -89,7 +89,9 @@ export async function withRollupConfig(
 
   // Since this is invoked by the executor, the graph has already been created and cached.
   const projectNode = getProjectNode();
-  const projectRoot = correctPaths(join(workspaceRoot, projectNode.data.root));
+  const projectRoot = correctPaths(
+    join(config.workspaceRoot, projectNode.data.root)
+  );
 
   // Cannot read in graph during construction, but we only need it during build time.
   const projectGraph: ProjectGraph | null = global.NX_GRAPH_CREATION
@@ -114,7 +116,7 @@ export async function withRollupConfig(
     const result = calculateProjectBuildableDependencies(
       undefined,
       projectGraph,
-      workspaceRoot,
+      config.workspaceRoot,
       projectNode.name,
       process.env.NX_TASK_TARGET_TARGET,
       process.env.NX_TASK_TARGET_CONFIGURATION,
@@ -130,10 +132,13 @@ export async function withRollupConfig(
   const options = normalizeOptions(
     projectNode.data.root,
     projectNode.data.sourceRoot,
-    rawOptions
+    rawOptions,
+    config!
   );
 
-  const tsConfigPath = correctPaths(join(workspaceRoot, options.tsConfig));
+  const tsConfigPath = correctPaths(
+    join(config.workspaceRoot, options.tsConfig)
+  );
   const tsConfigFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile);
 
   const tsConfigInclude = [
@@ -141,7 +146,7 @@ export async function withRollupConfig(
     Array.isArray(tsConfigFile.config.include)
       ? tsConfigFile.config.include
       : []),
-    join(workspaceRoot, "node_modules/typescript/lib/*.d.ts")
+    join(config.workspaceRoot, "node_modules/typescript/lib/*.d.ts")
   ];
 
   const tsConfig = ts.parseJsonConfigFileContent(
@@ -194,7 +199,7 @@ export async function withRollupConfig(
         ? // Options are not normalized with project root during graph creation due to the lack of project and project root.
           // Cannot be joined with workspace root now, but will be handled by @nx/rollup/plugin.
           options.outputPath
-        : correctPaths(join(workspaceRoot, options.outputPath)),
+        : correctPaths(join(config.workspaceRoot, options.outputPath)),
       sourcemap: options.sourceMap
     }));
   }
@@ -202,7 +207,7 @@ export async function withRollupConfig(
   let packageJson = {} as PackageJson;
   if (!global.NX_GRAPH_CREATION) {
     const packageJsonPath = options.project
-      ? join(workspaceRoot, options.project)
+      ? join(config.workspaceRoot, options.project)
       : join(projectRoot, "package.json");
     if (!existsSync(packageJsonPath)) {
       throw new Error(`Cannot find ${packageJsonPath}.`);
@@ -256,7 +261,8 @@ export async function withRollupConfig(
       copy({
         targets: convertCopyAssetsToRollupOptions(
           options.outputPath,
-          options.assets
+          options.assets,
+          config.workspaceRoot
         )
       }),
       image(),
@@ -266,7 +272,7 @@ export async function withRollupConfig(
         extensions: fileExtensions
       }),
       require("rollup-plugin-typescript2")({
-        cwd: correctPaths(workspaceRoot),
+        cwd: correctPaths(config.workspaceRoot),
         check: !options.skipTypeCheck,
         typescript: ts,
         tsconfig: options.tsConfig,
@@ -304,7 +310,7 @@ export async function withRollupConfig(
         },
         cwd: correctPaths(
           join(
-            workspaceRoot,
+            config.workspaceRoot,
             projectNode.data.sourceRoot ?? projectNode.data.root
           )
         ),
@@ -353,17 +359,30 @@ function convertRpts2LogLevel(logLevel: string): number {
 }
 
 function createInput(
-  options: RollupWithNxPluginOptions
+  options: NormalizedRollupWithNxPluginOptions
 ): Record<string, string> {
   // During graph creation, these input entries don't affect target configuration, so we can skip them.
   // If convert-to-inferred generator is used, and project uses configurations, some options like main might be missing from default options.
   if (global.NX_GRAPH_CREATION) return {};
   const mainEntryFileName = options.outputFileName || options.main;
   const input: Record<string, string> = {};
-  input[parse(mainEntryFileName).name] = join(workspaceRoot, options.main);
+  input[parse(mainEntryFileName).name] = join(
+    options.config.workspaceRoot,
+    options.main
+  );
   options.additionalEntryPoints?.forEach(entry => {
-    input[parse(entry).name] = join(workspaceRoot, entry);
+    const entryPoint = join(options.config.workspaceRoot, entry);
+    const entryName = entryPoint.includes(options.sourceRoot)
+      ? entryPoint.replace(options.sourceRoot, "")
+      : entryPoint.replace(options.config.workspaceRoot, "");
+
+    input[
+      entryName.replaceAll("\\", "/").startsWith("/")
+        ? entryName.slice(1)
+        : entryName
+    ] = entryPoint;
   });
+
   return input;
 }
 
@@ -410,7 +429,8 @@ interface RollupCopyAssetOption {
 
 function convertCopyAssetsToRollupOptions(
   outputPath: string,
-  assets: AssetGlobPattern[]
+  assets: AssetGlobPattern[],
+  workspaceRoot: string
 ): RollupCopyAssetOption[] {
   return assets
     ? assets.map(a => ({

@@ -1,5 +1,6 @@
 import { normalizePath, workspaceRoot } from "@nx/devkit";
 import { createEntryPoints } from "@nx/js";
+import { StormConfig } from "@storm-software/config";
 import { statSync } from "node:fs";
 import { basename, dirname, join, relative, resolve } from "node:path";
 
@@ -95,12 +96,16 @@ export interface NormalizedRollupWithNxPluginOptions
   assets: AssetGlobPattern[];
   compiler: "babel" | "tsc" | "swc";
   format: ("cjs" | "esm")[];
+  projectRoot: string;
+  sourceRoot: string;
+  config: StormConfig;
 }
 
 export function normalizeOptions(
   projectRoot: string,
   sourceRoot: string,
-  options: RollupWithNxPluginOptions
+  options: RollupWithNxPluginOptions,
+  config: StormConfig
 ): NormalizedRollupWithNxPluginOptions {
   if (global.NX_GRAPH_CREATION)
     return options as NormalizedRollupWithNxPluginOptions;
@@ -123,7 +128,10 @@ export function normalizeOptions(
     generateExportsField: options.generateExportsField ?? false,
     javascriptEnabled: options.javascriptEnabled ?? false,
     skipTypeCheck: options.skipTypeCheck ?? false,
-    skipTypeField: options.skipTypeField ?? false
+    skipTypeField: options.skipTypeField ?? false,
+    projectRoot,
+    sourceRoot,
+    config
   };
 }
 
