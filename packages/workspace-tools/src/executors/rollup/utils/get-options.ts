@@ -17,7 +17,7 @@ import { getBabelInputPlugin } from "@rollup/plugin-babel";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import { StormConfig } from "@storm-software/config";
 import { existsSync } from "node:fs";
-import { dirname, join, parse } from "node:path";
+import { dirname, join } from "node:path";
 import { PackageJson } from "nx/src/utils/package-json";
 import * as rollup from "rollup";
 import { ModuleKind, ParsedCommandLine } from "typescript";
@@ -366,12 +366,13 @@ async function createInput(
   // During graph creation, these input entries don't affect target configuration, so we can skip them.
   // If convert-to-inferred generator is used, and project uses configurations, some options like main might be missing from default options.
   if (global.NX_GRAPH_CREATION) return {};
-  const mainEntryFileName = options.outputFileName || options.main;
+  // const mainEntryFileName = options.outputFileName || options.main;
   const input: Record<string, string> = {};
-  input[parse(mainEntryFileName).name] = join(
-    options.config.workspaceRoot,
-    options.main
-  );
+  // input[parse(mainEntryFileName).name] = join(
+  //   options.config.workspaceRoot,
+  //   options.main
+  // );
+
   options.additionalEntryPoints?.forEach(entry => {
     const entryPoint = correctPaths(join(options.config.workspaceRoot, entry));
 
@@ -419,7 +420,8 @@ async function createTsCompilerOptions(
     declaration: true,
     skipLibCheck: true,
     skipDefaultLibCheck: true,
-    paths: compilerOptionPaths
+    paths: compilerOptionPaths,
+    pathsBasePath: baseDir
   };
   if (parsedCommandLine.options.module === ModuleKind.CommonJS) {
     compilerOptions["module"] = "ESNext";

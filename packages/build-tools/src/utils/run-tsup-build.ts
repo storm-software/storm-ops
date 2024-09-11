@@ -10,6 +10,7 @@ import { defaultConfig, getConfig } from "../config";
 import type { TsupContext, TypeScriptBuildOptions } from "../types";
 // import { type TSConfig, readTSConfig } from "pkg-types";
 import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript.js";
+import { Glob } from "glob";
 import { fileExists } from "nx/src/utils/fileutils";
 import { parse } from "tsconfck";
 import { defineConfig, type Options, build as tsup } from "tsup";
@@ -185,7 +186,7 @@ async function getNormalizedTsConfig(
   outputPath: string,
   options: TypeScriptCompilationOptions
 ) {
-  const { correctPaths, writeTrace, findFileName } = await import(
+  const { correctPaths, findFileName } = await import(
     "@storm-software/config-tools"
   );
 
@@ -207,44 +208,16 @@ async function getNormalizedTsConfig(
     root: workspaceRoot
   });
 
-  let extraFileNames = [] as string[];
-  if (
-    result.tsconfig.compilerOptions.lib &&
-    result.tsconfig.compilerOptions.lib.length > 0
-  ) {
-    extraFileNames = result.tsconfig.compilerOptions.lib
-      ?.map(file =>
-        correctPaths(
-          join(
-            workspaceRoot,
-            `node_modules/typescript/lib/lib.${file.toLowerCase()}.d.ts`
-          )
-        )
-      )
-      ?.reduce((ret: string[], file: string) => {
-        writeTrace(
-          `Checking if TypeScript Declarations library exists: ${file}`
-        );
-        if (fileExists(file) && !ret.includes(file)) {
-          ret.push(file);
-        }
-
-        const fullLibPath = `${file.slice(0, -5)}.full.d.ts`;
-        writeTrace(
-          `Checking if full TypeScript Declarations library exists: ${fullLibPath}`
-        );
-
-        if (fileExists(fullLibPath) && !ret.includes(fullLibPath)) {
-          ret.push(fullLibPath);
-        }
-
-        return ret;
-      }, []);
-  } else {
-    extraFileNames.push(
-      correctPaths(join(workspaceRoot, "node_modules/typescript/lib/*.d.ts"))
-    );
-  }
+  const tslibDir = correctPaths(
+    join(workspaceRoot, "node_modules/typescript/lib")
+  );
+  const extraFileNames = (
+    await new Glob("*.d.ts", {
+      absolute: true,
+      cwd: tslibDir,
+      root: tslibDir
+    }).walk()
+  ).map(file => correctPaths(file));
 
   // const rawConfig = rawTsconfig.config ?? {};
 
