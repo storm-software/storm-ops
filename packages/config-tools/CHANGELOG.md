@@ -1,9 +1,16 @@
-## 1.92.5 (2024-09-11)
+## 1.92.6 (2024-09-11)
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Update parameters provided to TypeScript plugin ([8cd141c1](https://github.com/storm-software/storm-ops/commit/8cd141c1))
+- **workspace-tools:** Resolve issue with names in input files ([2f181c56](https://github.com/storm-software/storm-ops/commit/2f181c56))
+
+## 1.92.5 (2024-09-11)
+
+### Bug Fixes
+
+- **workspace-tools:** Update parameters provided to TypeScript plugin
+  ([8cd141c1](https://github.com/storm-software/storm-ops/commit/8cd141c1))
 
 ## 1.92.4 (2024-09-11)
 

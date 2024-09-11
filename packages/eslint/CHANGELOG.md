@@ -1,3 +1,10 @@
+## 0.70.1 (2024-09-11)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with names in input files ([2f181c56](https://github.com/storm-software/storm-ops/commit/2f181c56))
+
 ## 0.70.0 (2024-09-11)
 
 

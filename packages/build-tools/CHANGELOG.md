@@ -1,9 +1,16 @@
-## 0.82.0 (2024-09-11)
+## 0.82.1 (2024-09-11)
 
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with names in input files ([2f181c56](https://github.com/storm-software/storm-ops/commit/2f181c56))
+
+## 0.82.0 (2024-09-11)
 
 ### Features
 
-- **workspace-tools:** Added TypeScript as a peerDependency ([74da29f1](https://github.com/storm-software/storm-ops/commit/74da29f1))
+- **workspace-tools:** Added TypeScript as a peerDependency
+  ([74da29f1](https://github.com/storm-software/storm-ops/commit/74da29f1))
 
 ## 0.81.10 (2024-09-11)
 
