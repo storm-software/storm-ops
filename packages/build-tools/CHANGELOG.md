@@ -1,9 +1,16 @@
-## 0.83.1 (2024-09-11)
+## 0.83.2 (2024-09-11)
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue with input entry point names ([12ca61d3](https://github.com/storm-software/storm-ops/commit/12ca61d3))
+- **eslint:** Update preset to include a new item for React TSX files ([fb90f1b1](https://github.com/storm-software/storm-ops/commit/fb90f1b1))
+
+## 0.83.1 (2024-09-11)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with input entry point names
+  ([12ca61d3](https://github.com/storm-software/storm-ops/commit/12ca61d3))
 
 ## 0.83.0 (2024-09-11)
 

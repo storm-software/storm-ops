@@ -1,3 +1,10 @@
+## 0.28.2 (2024-09-11)
+
+
+### Bug Fixes
+
+- **eslint:** Update preset to include a new item for React TSX files ([fb90f1b1](https://github.com/storm-software/storm-ops/commit/fb90f1b1))
+
 ## 0.28.1 (2024-09-11)
 
 
