@@ -248,10 +248,10 @@ async function getNormalizedTsConfig(
 
   // const rawConfig = rawTsconfig.config ?? {};
 
-  const basePath = correctPaths(workspaceRoot);
+  const basePath = correctPaths(workspaceRoot).replaceAll("/", "\\");
   const declarationDir = correctPaths(
     join(workspaceRoot, "tmp", ".tsup", "declaration")
-  );
+  ).replaceAll("/", "\\");
 
   const parsedTsconfig = tsModule.parseJsonConfigFileContent(
     {
@@ -280,7 +280,7 @@ async function getNormalizedTsConfig(
 
   parsedTsconfig.fileNames = [...parsedTsconfig.fileNames, ...extraFileNames]
     .filter(fileName => !fileName.includes("*"))
-    .map(fileName => correctPaths(fileName))
+    .map(fileName => correctPaths(fileName).replaceAll("/", "\\"))
     .reduce((ret: string[], fileName: string) => {
       if (fileExists(fileName) && !ret.includes(fileName)) {
         ret.push(fileName);
