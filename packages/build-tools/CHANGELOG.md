@@ -1,9 +1,16 @@
-## 0.81.9 (2024-09-11)
+## 0.81.10 (2024-09-11)
 
 
 ### Bug Fixes
 
-- **build-tools:** Resolved issue providing include paths ([25f7dc30](https://github.com/storm-software/storm-ops/commit/25f7dc30))
+- **workspace-tools:** Update parameters provided to TypeScript plugin ([8cd141c1](https://github.com/storm-software/storm-ops/commit/8cd141c1))
+
+## 0.81.9 (2024-09-11)
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue providing include paths
+  ([25f7dc30](https://github.com/storm-software/storm-ops/commit/25f7dc30))
 
 ## 0.81.8 (2024-09-11)
 
