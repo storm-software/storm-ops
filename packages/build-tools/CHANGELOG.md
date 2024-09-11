@@ -1,9 +1,16 @@
-## 0.81.7 (2024-09-11)
+## 0.81.8 (2024-09-11)
 
 
 ### Bug Fixes
 
-- **build-tools:** Invoke chdir in the build function ([43f69ff5](https://github.com/storm-software/storm-ops/commit/43f69ff5))
+- **build-tools:** Resolved issue with missing TypeScript declarations ([4cf894fe](https://github.com/storm-software/storm-ops/commit/4cf894fe))
+
+## 0.81.7 (2024-09-11)
+
+### Bug Fixes
+
+- **build-tools:** Invoke chdir in the build function
+  ([43f69ff5](https://github.com/storm-software/storm-ops/commit/43f69ff5))
 
 ## 0.81.6 (2024-09-11)
 

@@ -1,3 +1,10 @@
+## 0.69.8 (2024-09-11)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with missing TypeScript declarations ([4cf894fe](https://github.com/storm-software/storm-ops/commit/4cf894fe))
+
 ## 0.69.7 (2024-09-11)
 
 

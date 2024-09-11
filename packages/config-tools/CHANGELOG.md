@@ -1,9 +1,16 @@
-## 1.92.3 (2024-09-11)
+## 1.92.4 (2024-09-11)
 
 
 ### Bug Fixes
 
-- **build-tools:** Updated the slash direction in compiler options paths ([cd34a280](https://github.com/storm-software/storm-ops/commit/cd34a280))
+- **build-tools:** Resolved issue with missing TypeScript declarations ([4cf894fe](https://github.com/storm-software/storm-ops/commit/4cf894fe))
+
+## 1.92.3 (2024-09-11)
+
+### Bug Fixes
+
+- **build-tools:** Updated the slash direction in compiler options paths
+  ([cd34a280](https://github.com/storm-software/storm-ops/commit/cd34a280))
 
 ## 1.92.2 (2024-09-10)
 
