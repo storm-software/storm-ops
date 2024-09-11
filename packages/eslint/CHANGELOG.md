@@ -1,3 +1,10 @@
+## 0.69.9 (2024-09-11)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue providing include paths ([25f7dc30](https://github.com/storm-software/storm-ops/commit/25f7dc30))
+
 ## 0.69.8 (2024-09-11)
 
 

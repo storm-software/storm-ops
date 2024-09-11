@@ -1,9 +1,16 @@
-## 1.180.8 (2024-09-11)
+## 1.180.9 (2024-09-11)
 
 
 ### Bug Fixes
 
-- **build-tools:** Resolved issue with missing TypeScript declarations ([4cf894fe](https://github.com/storm-software/storm-ops/commit/4cf894fe))
+- **build-tools:** Resolved issue providing include paths ([25f7dc30](https://github.com/storm-software/storm-ops/commit/25f7dc30))
+
+## 1.180.8 (2024-09-11)
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with missing TypeScript declarations
+  ([4cf894fe](https://github.com/storm-software/storm-ops/commit/4cf894fe))
 
 ## 1.180.7 (2024-09-11)
 
