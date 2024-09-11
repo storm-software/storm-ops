@@ -1,3 +1,10 @@
+## 0.69.7 (2024-09-11)
+
+
+### Bug Fixes
+
+- **build-tools:** Invoke chdir in the build function ([43f69ff5](https://github.com/storm-software/storm-ops/commit/43f69ff5))
+
 ## 0.69.6 (2024-09-11)
 
 

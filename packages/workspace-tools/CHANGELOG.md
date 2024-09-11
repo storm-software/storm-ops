@@ -1,9 +1,16 @@
-## 1.180.6 (2024-09-11)
+## 1.180.7 (2024-09-11)
 
 
 ### Bug Fixes
 
-- **build-tools:** Updated the slash direction in compiler options paths ([cd34a280](https://github.com/storm-software/storm-ops/commit/cd34a280))
+- **build-tools:** Invoke chdir in the build function ([43f69ff5](https://github.com/storm-software/storm-ops/commit/43f69ff5))
+
+## 1.180.6 (2024-09-11)
+
+### Bug Fixes
+
+- **build-tools:** Updated the slash direction in compiler options paths
+  ([cd34a280](https://github.com/storm-software/storm-ops/commit/cd34a280))
 
 ## 1.180.5 (2024-09-10)
 
