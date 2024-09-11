@@ -51,7 +51,7 @@ ${Object.keys(options)
       config
     );
 
-    // process.chdir(workspaceRoot);
+    process.chdir(workspaceRoot);
 
     // #region Add default plugins
 
@@ -248,10 +248,10 @@ async function getNormalizedTsConfig(
 
   // const rawConfig = rawTsconfig.config ?? {};
 
-  const basePath = correctPaths(workspaceRoot).replaceAll("/", "\\");
+  const basePath = correctPaths(workspaceRoot);
   const declarationDir = correctPaths(
     join(workspaceRoot, "tmp", ".tsup", "declaration")
-  ).replaceAll("/", "\\");
+  );
 
   const parsedTsconfig = tsModule.parseJsonConfigFileContent(
     {
@@ -280,7 +280,7 @@ async function getNormalizedTsConfig(
 
   parsedTsconfig.fileNames = [...parsedTsconfig.fileNames, ...extraFileNames]
     .filter(fileName => !fileName.includes("*"))
-    .map(fileName => correctPaths(fileName).replaceAll("/", "\\"))
+    .map(fileName => correctPaths(fileName))
     .reduce((ret: string[], fileName: string) => {
       if (fileExists(fileName) && !ret.includes(fileName)) {
         ret.push(fileName);
