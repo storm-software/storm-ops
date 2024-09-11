@@ -57,7 +57,8 @@
     "@nx/devkit": "^19.6.4",
     "@nx/esbuild": "^19.6.4",
     "@nx/rollup": "^19.6.2",
-    "nx": "^19.6.4"
+    "nx": "^19.6.4",
+    "typescript": ">=5.5.3"
   },
   "peerDependenciesMeta": {
     "@microsoft/api-extractor": {
@@ -73,6 +74,9 @@
       "optional": false
     },
     "nx": {
+      "optional": false
+    },
+    "typescript": {
       "optional": false
     }
   },
@@ -120,7 +124,8 @@
     "@nx/rollup": "^19.6.2",
     "@types/micromatch": "4.0.9",
     "@types/semver": "7.5.8",
-    "nx": "^19.6.4"
+    "nx": "^19.6.4",
+    "typescript": ">=5.5.3"
   },
   "publishConfig": {
     "access": "public"

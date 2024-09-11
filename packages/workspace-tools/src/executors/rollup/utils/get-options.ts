@@ -12,6 +12,7 @@ import {
   computeCompilerOptionsPaths,
   DependentBuildableProjectNode
 } from "@nx/js/src/utils/buildable-libs-utils";
+import { ensureTypescript } from "@nx/js/src/utils/typescript/ensure-typescript.js";
 import { generatePackageJson } from "@nx/rollup/src/plugins/package-json/generate-package-json";
 import { getBabelInputPlugin } from "@rollup/plugin-babel";
 import nodeResolve from "@rollup/plugin-node-resolve";
@@ -20,7 +21,7 @@ import { existsSync } from "node:fs";
 import { dirname, join, parse } from "node:path";
 import { PackageJson } from "nx/src/utils/package-json";
 import * as rollup from "rollup";
-import * as ts from "typescript";
+import { ModuleKind, ParsedCommandLine } from "typescript";
 import {
   AssetGlobPattern,
   normalizeOptions,
@@ -81,6 +82,8 @@ export async function withRollupConfig(
   const { writeWarning, correctPaths } = await import(
     "@storm-software/config-tools"
   );
+
+  const ts = ensureTypescript();
 
   const finalConfig: rollup.RollupOptions = { ...rollupConfig };
 
@@ -365,7 +368,7 @@ function createInput(
 }
 
 async function createTsCompilerOptions(
-  parsedCommandLine: ts.ParsedCommandLine,
+  parsedCommandLine: ParsedCommandLine,
   options: RollupWithNxPluginOptions,
   dependencies?: DependentBuildableProjectNode[],
   config?: StormConfig
@@ -390,7 +393,7 @@ async function createTsCompilerOptions(
     skipDefaultLibCheck: true,
     paths: compilerOptionPaths
   };
-  if (parsedCommandLine.options.module === ts.ModuleKind.CommonJS) {
+  if (parsedCommandLine.options.module === ModuleKind.CommonJS) {
     compilerOptions["module"] = "ESNext";
   }
   if (options.compiler === "swc") {
@@ -417,13 +420,11 @@ function convertCopyAssetsToRollupOptions(
     : [];
 }
 
-function readCompatibleFormats(
-  config: ts.ParsedCommandLine
-): ("cjs" | "esm")[] {
+function readCompatibleFormats(config: ParsedCommandLine): ("cjs" | "esm")[] {
   switch (config.options.module) {
-    case ts.ModuleKind.CommonJS:
-    case ts.ModuleKind.UMD:
-    case ts.ModuleKind.AMD:
+    case ModuleKind.CommonJS:
+    case ModuleKind.UMD:
+    case ModuleKind.AMD:
       return ["cjs"];
     default:
       return ["esm"];
