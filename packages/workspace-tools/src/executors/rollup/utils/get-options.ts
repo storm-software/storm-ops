@@ -173,7 +173,7 @@ export async function withRollupConfig(
   }
 
   // If user provides their own input, override our defaults.
-  finalConfig.input = rollupConfig.input || createInput(options);
+  finalConfig.input = rollupConfig.input || (await createInput(options));
 
   if (options.format) {
     if (Array.isArray(rollupConfig.output)) {
@@ -358,9 +358,11 @@ function convertRpts2LogLevel(logLevel: string): number {
   }
 }
 
-function createInput(
+async function createInput(
   options: NormalizedRollupWithNxPluginOptions
-): Record<string, string> {
+): Promise<Record<string, string>> {
+  const { correctPaths } = await import("@storm-software/config-tools");
+
   // During graph creation, these input entries don't affect target configuration, so we can skip them.
   // If convert-to-inferred generator is used, and project uses configurations, some options like main might be missing from default options.
   if (global.NX_GRAPH_CREATION) return {};
@@ -371,19 +373,30 @@ function createInput(
     options.main
   );
   options.additionalEntryPoints?.forEach(entry => {
-    const entryPoint = join(options.config.workspaceRoot, entry);
-    const entryName = entryPoint.includes(options.sourceRoot)
-      ? entryPoint.replace(options.sourceRoot, "")
-      : entryPoint.replace(options.config.workspaceRoot, "");
+    const entryPoint = correctPaths(join(options.config.workspaceRoot, entry));
 
-    input[
-      entryName.replaceAll("\\", "/").startsWith("/")
-        ? entryName.slice(1)
-        : entryName
-    ] = entryPoint;
+    let entryName = entryPoint.includes(
+      options.sourceRoot.replaceAll("\\", "/")
+    )
+      ? entryPoint.replace(options.sourceRoot.replaceAll("\\", "/"), "")
+      : entryPoint.replace(
+          options.config.workspaceRoot.replaceAll("\\", "/"),
+          ""
+        );
+    if (entryName.startsWith("/")) {
+      entryName = entryName.slice(1);
+    }
+
+    input[entryName] = entryPoint;
   });
 
-  return input;
+  return Object.keys(input).reduce((ret, key) => {
+    if (key.endsWith("/index.ts") && input[key]) {
+      ret[key.replace("/index.ts", "")] = input[key];
+    }
+
+    return ret;
+  }, input);
 }
 
 async function createTsCompilerOptions(
