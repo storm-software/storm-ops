@@ -1,9 +1,16 @@
-## 1.92.2 (2024-09-10)
+## 1.92.3 (2024-09-11)
 
 
 ### Bug Fixes
 
-- **build-tools:** Resolve issue with missing declaration files ([862e51a1](https://github.com/storm-software/storm-ops/commit/862e51a1))
+- **build-tools:** Updated the slash direction in compiler options paths ([cd34a280](https://github.com/storm-software/storm-ops/commit/cd34a280))
+
+## 1.92.2 (2024-09-10)
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with missing declaration files
+  ([862e51a1](https://github.com/storm-software/storm-ops/commit/862e51a1))
 
 ## 1.92.1 (2024-09-10)
 

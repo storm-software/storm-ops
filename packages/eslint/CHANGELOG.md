@@ -1,3 +1,10 @@
+## 0.69.6 (2024-09-11)
+
+
+### Bug Fixes
+
+- **build-tools:** Updated the slash direction in compiler options paths ([cd34a280](https://github.com/storm-software/storm-ops/commit/cd34a280))
+
 ## 0.69.5 (2024-09-10)
 
 
