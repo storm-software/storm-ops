@@ -1,3 +1,10 @@
+## 0.27.0 (2024-09-11)
+
+
+### Features
+
+- **workspace-tools:** Added TypeScript as a peerDependency ([74da29f1](https://github.com/storm-software/storm-ops/commit/74da29f1))
+
 ## 0.26.10 (2024-09-11)
 
 

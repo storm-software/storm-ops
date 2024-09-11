@@ -1,9 +1,16 @@
-## 0.81.10 (2024-09-11)
+## 0.82.0 (2024-09-11)
 
+
+### Features
+
+- **workspace-tools:** Added TypeScript as a peerDependency ([74da29f1](https://github.com/storm-software/storm-ops/commit/74da29f1))
+
+## 0.81.10 (2024-09-11)
 
 ### Bug Fixes
 
-- **workspace-tools:** Update parameters provided to TypeScript plugin ([8cd141c1](https://github.com/storm-software/storm-ops/commit/8cd141c1))
+- **workspace-tools:** Update parameters provided to TypeScript plugin
+  ([8cd141c1](https://github.com/storm-software/storm-ops/commit/8cd141c1))
 
 ## 0.81.9 (2024-09-11)
 
