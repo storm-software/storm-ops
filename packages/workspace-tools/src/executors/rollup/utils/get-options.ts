@@ -375,17 +375,13 @@ async function createInput(
   options.additionalEntryPoints?.forEach(entry => {
     const entryPoint = correctPaths(join(options.config.workspaceRoot, entry));
 
-    let entryName = entryPoint.includes(
-      options.sourceRoot.replaceAll("\\", "/")
-    )
-      ? entryPoint.replace(options.sourceRoot.replaceAll("\\", "/"), "")
-      : entryPoint.replace(
-          options.config.workspaceRoot.replaceAll("\\", "/"),
-          ""
-        );
-    if (entryName.startsWith("/")) {
-      entryName = entryName.slice(1);
-    }
+    const entryName = `.${entryPoint.replace(
+      join(options.config.workspaceRoot, options.sourceRoot).replaceAll(
+        "\\",
+        "/"
+      ),
+      ""
+    )}`;
 
     input[entryName] = entryPoint;
   });
