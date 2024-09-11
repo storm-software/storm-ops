@@ -1,3 +1,10 @@
+## 0.28.1 (2024-09-11)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with input entry point names ([12ca61d3](https://github.com/storm-software/storm-ops/commit/12ca61d3))
+
 ## 0.28.0 (2024-09-11)
 
 

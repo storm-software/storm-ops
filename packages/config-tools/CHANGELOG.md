@@ -1,9 +1,16 @@
-## 1.92.6 (2024-09-11)
+## 1.92.7 (2024-09-11)
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue with names in input files ([2f181c56](https://github.com/storm-software/storm-ops/commit/2f181c56))
+- **workspace-tools:** Resolve issue with input entry point names ([12ca61d3](https://github.com/storm-software/storm-ops/commit/12ca61d3))
+
+## 1.92.6 (2024-09-11)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with names in input files
+  ([2f181c56](https://github.com/storm-software/storm-ops/commit/2f181c56))
 
 ## 1.92.5 (2024-09-11)
 
