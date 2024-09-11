@@ -70,7 +70,8 @@
           "@nx/*",
           "esbuild",
           "@swc/*",
-          "@storm-software/build-tools"
+          "@storm-software/build-tools",
+          "typescript"
         ],
         "assets": [
           {

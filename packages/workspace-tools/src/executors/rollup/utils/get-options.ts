@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import {
-  joinPathFragments,
   type ProjectGraph,
   ProjectGraphProjectNode,
   readCachedProjectGraph,
@@ -131,20 +130,21 @@ export async function withRollupConfig(
     rawOptions
   );
 
-  const tsConfigPath = correctPaths(
-    joinPathFragments(workspaceRoot, options.tsConfig)
-  );
+  const tsConfigPath = correctPaths(join(workspaceRoot, options.tsConfig));
   const tsConfigFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile);
+
+  const tsConfigInclude = [
+    ...(tsConfigFile.config?.include &&
+    Array.isArray(tsConfigFile.config.include)
+      ? tsConfigFile.config.include
+      : []),
+    join(workspaceRoot, "node_modules/typescript/lib/*.d.ts")
+  ];
+
   const tsConfig = ts.parseJsonConfigFileContent(
     {
       ...tsConfigFile.config,
-      include: [
-        ...(tsConfigFile.config?.include &&
-        Array.isArray(tsConfigFile.config.include)
-          ? tsConfigFile.config.include
-          : []),
-        join(workspaceRoot, "node_modules/typescript/lib/*.d.ts")
-      ]
+      include: tsConfigInclude
     },
     ts.sys,
     dirname(tsConfigPath)
@@ -263,7 +263,9 @@ export async function withRollupConfig(
         extensions: fileExtensions
       }),
       require("rollup-plugin-typescript2")({
+        cwd: correctPaths(workspaceRoot),
         check: !options.skipTypeCheck,
+        typescript: ts,
         tsconfig: options.tsConfig,
         tsconfigOverride: {
           compilerOptions: await createTsCompilerOptions(
@@ -271,7 +273,8 @@ export async function withRollupConfig(
             options,
             dependencies,
             config
-          )
+          ),
+          include: tsConfigInclude
         },
         verbosity: convertRpts2LogLevel(config?.logLevel ?? "warn")
       }),
@@ -373,20 +376,15 @@ async function createTsCompilerOptions(
     throw new Error(`Cannot find workspace root in the config.`);
   }
 
-  parsedCommandLine.options.rootDir = correctPaths(config?.workspaceRoot);
-  parsedCommandLine.options.baseUrl = correctPaths(config?.workspaceRoot);
-
-  // parsedCommandLine.wildcardDirectories ??= {};
-  // parsedCommandLine.wildcardDirectories[
-  //   correctPaths(join(config?.workspaceRoot, "node_modules/typescript/lib"))
-  // ] = 1;
-
+  const baseDir = correctPaths(config?.workspaceRoot);
   const compilerOptionPaths = computeCompilerOptionsPaths(
     parsedCommandLine,
     dependencies ?? []
   );
+
   const compilerOptions = {
-    rootDir: correctPaths(config?.workspaceRoot).replaceAll("/", "\\"),
+    rootDir: baseDir,
+    baseUrl: baseDir,
     declaration: true,
     skipLibCheck: true,
     skipDefaultLibCheck: true,
@@ -398,6 +396,7 @@ async function createTsCompilerOptions(
   if (options.compiler === "swc") {
     compilerOptions["emitDeclarationOnly"] = true;
   }
+
   return compilerOptions;
 }
 
