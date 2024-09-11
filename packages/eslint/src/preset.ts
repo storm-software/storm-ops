@@ -223,11 +223,11 @@ export function getStormConfig(
       // // https://eslint.org/docs/latest/rules/
       // ...eslint.configs.recommended.rules,
 
-      // https://typescript-eslint.io/
-      ...tsEslint.configs.recommended.reduce(
-        (ret, record) => ({ ...ret, ...record.rules }),
-        {}
-      ),
+      // // https://typescript-eslint.io/
+      // ...tsEslint.configs.recommended.reduce(
+      //   (ret, record) => ({ ...ret, ...record.rules }),
+      //   {}
+      // ),
 
       // Prettier
       ...prettierConfig.rules,

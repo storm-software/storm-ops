@@ -271,8 +271,8 @@ async function getNormalizedTsConfig(
         declaration: true,
         declarationMap: true,
         declarationDir
-      }
-      // include: [...extraFileNames, ...(result.tsconfig?.include ?? [])]
+      },
+      include: [...extraFileNames, ...(result.tsconfig?.include ?? [])]
     },
     tsModule.sys,
     dirname(options.tsConfig)

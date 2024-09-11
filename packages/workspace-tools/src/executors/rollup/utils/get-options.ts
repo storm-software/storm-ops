@@ -262,7 +262,8 @@ export async function withRollupConfig(
             options,
             dependencies,
             config
-          )
+          ),
+          include: [join(workspaceRoot, "node_modules/typescript/lib/*.d.ts")]
         },
         verbosity: 3
       }),
