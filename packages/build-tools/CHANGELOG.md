@@ -1,9 +1,16 @@
-## 0.83.3 (2024-09-11)
+## 0.83.4 (2024-09-12)
 
 
 ### Bug Fixes
 
-- **build-tools:** Resolved issue with the base path directory ([b7cad5eb](https://github.com/storm-software/storm-ops/commit/b7cad5eb))
+- **workspace-tools:** Resolve issue with setting compiler options ([b444511b](https://github.com/storm-software/storm-ops/commit/b444511b))
+
+## 0.83.3 (2024-09-11)
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with the base path directory
+  ([b7cad5eb](https://github.com/storm-software/storm-ops/commit/b7cad5eb))
 
 ## 0.83.2 (2024-09-11)
 

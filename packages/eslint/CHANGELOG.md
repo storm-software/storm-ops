@@ -1,3 +1,10 @@
+## 0.71.4 (2024-09-12)
+
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with setting compiler options ([b444511b](https://github.com/storm-software/storm-ops/commit/b444511b))
+
 ## 0.71.3 (2024-09-11)
 
 
