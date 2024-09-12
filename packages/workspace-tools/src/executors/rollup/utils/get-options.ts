@@ -420,8 +420,7 @@ async function createTsCompilerOptions(
     declaration: true,
     skipLibCheck: true,
     skipDefaultLibCheck: true,
-    paths: compilerOptionPaths,
-    pathsBasePath: baseDir
+    paths: compilerOptionPaths
   };
   if (parsedCommandLine.options.module === ModuleKind.CommonJS) {
     compilerOptions["module"] = "ESNext";
