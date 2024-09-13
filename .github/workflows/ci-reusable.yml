@@ -170,7 +170,7 @@ jobs:
         shell: bash
 
       - name: Super-linter
-        uses: super-linter/super-linter@v6.6.0
+        uses: super-linter/super-linter@v6.7.0
         env:
           GITHUB_TOKEN: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
