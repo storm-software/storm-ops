@@ -1180,8 +1180,8 @@ importers:
         specifier: 10.4.2
         version: 10.4.2
       micromatch:
-        specifier: 4.0.7
-        version: 4.0.7
+        specifier: 4.0.8
+        version: 4.0.8
       npm-run-path:
         specifier: 5.3.0
         version: 5.3.0
@@ -3516,6 +3516,7 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
+    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -9987,6 +9988,10 @@ packages:
 
   micromatch@4.0.7:
     resolution: {integrity: sha512-LPP/3KorzCwBxfeUuZmaR6bG2kdeHSbe0P2tY3FLRU4vYrjYz5hI4QZwV0njUx3jeuKe67YukQ1LSPZBKDqO/Q==}
+    engines: {node: '>=8.6'}
+
+  micromatch@4.0.8:
+    resolution: {integrity: sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==}
     engines: {node: '>=8.6'}
 
   mime-db@1.52.0:
@@ -16493,7 +16498,7 @@ snapshots:
       jest-util: 29.7.0
       jest-validate: 29.7.0
       jest-watcher: 29.7.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       pretty-format: 29.7.0
       slash: 3.0.0
       strip-ansi: 6.0.1
@@ -16528,7 +16533,7 @@ snapshots:
       jest-util: 29.7.0
       jest-validate: 29.7.0
       jest-watcher: 29.7.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       pretty-format: 29.7.0
       slash: 3.0.0
       strip-ansi: 6.0.1
@@ -16639,7 +16644,7 @@ snapshots:
       jest-haste-map: 29.7.0
       jest-regex-util: 29.6.3
       jest-util: 29.7.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       pirates: 4.0.6
       slash: 3.0.0
       write-file-atomic: 4.0.2
@@ -17403,6 +17408,14 @@ snapshots:
   '@nrwl/workspace@19.6.2(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13))':
     dependencies:
       '@nx/workspace': 19.6.2(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13))
+    transitivePeerDependencies:
+      - '@swc-node/register'
+      - '@swc/core'
+      - debug
+
+  '@nrwl/workspace@19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))':
+    dependencies:
+      '@nx/workspace': 19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))
     transitivePeerDependencies:
       - '@swc-node/register'
       - '@swc/core'
@@ -18512,7 +18525,7 @@ snapshots:
 
   '@nx/workspace@19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))':
     dependencies:
-      '@nrwl/workspace': 19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13))
+      '@nrwl/workspace': 19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))
       '@nx/devkit': 19.6.4(nx@19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))
       chalk: 4.1.2
       enquirer: 2.3.6
@@ -21451,11 +21464,11 @@ snapshots:
   cspell-glob@8.13.1:
     dependencies:
       '@cspell/url': 8.13.1
-      micromatch: 4.0.7
+      micromatch: 4.0.8
 
   cspell-glob@8.8.4:
     dependencies:
-      micromatch: 4.0.7
+      micromatch: 4.0.8
 
   cspell-grammar@8.13.1:
     dependencies:
@@ -23023,7 +23036,7 @@ snapshots:
       '@nodelib/fs.walk': 1.2.8
       glob-parent: 5.1.2
       merge2: 1.4.1
-      micromatch: 4.0.7
+      micromatch: 4.0.8
 
   fast-glob@3.3.2:
     dependencies:
@@ -23880,7 +23893,7 @@ snapshots:
       http-proxy: 1.18.1(debug@4.3.5)
       is-glob: 4.0.3
       is-plain-obj: 3.0.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
     optionalDependencies:
       '@types/express': 4.17.21
     transitivePeerDependencies:
@@ -23893,7 +23906,7 @@ snapshots:
       http-proxy: 1.18.1(debug@4.3.5)
       is-glob: 4.0.3
       is-plain-obj: 3.0.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
     transitivePeerDependencies:
       - supports-color
 
@@ -24476,7 +24489,7 @@ snapshots:
       jest-runner: 29.7.0
       jest-util: 29.7.0
       jest-validate: 29.7.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       parse-json: 5.2.0
       pretty-format: 29.7.0
       slash: 3.0.0
@@ -24507,7 +24520,7 @@ snapshots:
       jest-runner: 29.7.0
       jest-util: 29.7.0
       jest-validate: 29.7.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       parse-json: 5.2.0
       pretty-format: 29.7.0
       slash: 3.0.0
@@ -24575,7 +24588,7 @@ snapshots:
       jest-regex-util: 29.6.3
       jest-util: 29.7.0
       jest-worker: 29.7.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       walker: 1.0.8
     optionalDependencies:
       fsevents: 2.3.3
@@ -24599,7 +24612,7 @@ snapshots:
       '@types/stack-utils': 2.0.3
       chalk: 4.1.2
       graceful-fs: 4.2.11
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       pretty-format: 29.7.0
       slash: 3.0.0
       stack-utils: 2.0.6
@@ -26332,6 +26345,11 @@ snapshots:
       - supports-color
 
   micromatch@4.0.7:
+    dependencies:
+      braces: 3.0.3
+      picomatch: 2.3.1
+
+  micromatch@4.0.8:
     dependencies:
       braces: 3.0.3
       picomatch: 2.3.1
@@ -29758,7 +29776,7 @@ snapshots:
     dependencies:
       chalk: 4.1.2
       enhanced-resolve: 5.17.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       semver: 7.6.2
       source-map: 0.7.4
       typescript: 5.5.3
@@ -29768,7 +29786,7 @@ snapshots:
     dependencies:
       chalk: 4.1.2
       enhanced-resolve: 5.17.0
-      micromatch: 4.0.7
+      micromatch: 4.0.8
       semver: 7.6.2
       source-map: 0.7.4
       typescript: 5.5.3
