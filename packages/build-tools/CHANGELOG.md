@@ -1,3 +1,10 @@
+## 0.83.6 (2024-09-13)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with unbuild `input` parameter ([a30abbaa](https://github.com/storm-software/storm-ops/commit/a30abbaa))
+
 ## 0.83.5 (2024-09-13)
 
 ### Bug Fixes
