@@ -1,7 +1,7 @@
 # Note: this is a shared pipeline used by other repositories.
 # Docs: https://docs.github.com/en/actions/using-workflows/reusing-workflows
 
-name: "Continuous Integration"
+name: "CI"
 
 on:
   workflow_call:
@@ -10,35 +10,26 @@ on:
         description: Override release tag
         type: string
         required: false
-      workingDirectory:
+      working-directory:
         description: "The working directory of your node package"
         type: string
         required: false
         default: ./
-      packageManager:
+      package-manager:
         description: Package manager
         type: string
         required: false
         default: pnpm
-      packageManagerVersion:
+      package-manager-version:
         description: Package manager version
         type: string
         required: false
-        default: 9.8.0
-      stormBot:
+        default: 9.10.0
+      storm-bot:
         description: The github username of the Storm bot
         required: false
         type: string
         default: Stormie-Bot
-      githubToken:
-        description: GitHub token
-        type: string
-        required: true
-      escapedRepository:
-        description: The escaped repository name
-        type: string
-        required: false
-        default: ${{ github.repository }}
     secrets:
       STORM_BOT_GITHUB_TOKEN:
         description: GitHub token of the Storm bot
@@ -61,7 +52,7 @@ on:
 
 jobs:
   ci:
-    name: "Continuous Integration"
+    name: "CI"
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -102,7 +93,7 @@ jobs:
             has started - #${{ github.run_number }}"
         env:
           DISCORD_WEBHOOK: ${{ secrets.STORM_BOT_DISCORD_WEBHOOK }}
-          DISCORD_USERNAME: ${{ inputs.stormBot }}
+          DISCORD_USERNAME: ${{ inputs.storm-bot }}
           DISCORD_AVATAR: "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-stormie.png"
           DISCORD_EMBEDS:
             '[{"title": "Deployment #${{ github.run_number }} - ${{
@@ -144,10 +135,10 @@ jobs:
       - name: Setup workspace
         uses: storm-software/action-setup@main
         with:
-          workingDirectory: ${{ inputs.workingDirectory }}
-          packageManager: ${{ inputs.packageManager }}
-          packageManagerVersion: ${{ inputs.packageManagerVersion }}
-          stormBot: ${{ inputs.stormBot }}
+          workingDirectory: ${{ inputs.working-directory }}
+          packageManager: ${{ inputs.package-manager }}
+          packageManagerVersion: ${{ inputs.package-manager-version }}
+          stormBot: ${{ inputs.storm-bot }}
           stormBotGitHubToken: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
       - name: Get appropriate base and head commits for `nx affected` commands
@@ -191,9 +182,9 @@ jobs:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ github.token }}
           GH_TOKEN: ${{ github.token }}
-          NPM_TOKEN: ${{ inputs.npmToken }}
+          NPM_TOKEN: ${{ secrets.STORM_BOT_NPM_TOKEN }}
           CARGO_REGISTRY_TOKEN: ${{ secrets.STORM_BOT_CARGO_TOKEN }}
-          STORM_BOT: ${{ inputs.stormBot }}
+          STORM_BOT: ${{ inputs.storm-bot }}
           STORM_WORKSPACE_ROOT: ${{ github.workspace }}
           STORM_REPOSITORY: ${{ github.repositoryUrl }}
           TAG: ${{ inputs.tag }}
@@ -238,7 +229,7 @@ jobs:
             finished successfully - #${{ github.run_number }}"
         env:
           DISCORD_WEBHOOK: ${{ secrets.STORM_BOT_DISCORD_WEBHOOK }}
-          DISCORD_USERNAME: ${{ inputs.stormBot }}
+          DISCORD_USERNAME: ${{ inputs.storm-bot }}
           DISCORD_AVATAR: "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-stormie.png"
           DISCORD_EMBEDS:
             '[{"title": "Deployment #${{ github.run_number }} - ${{
@@ -311,7 +302,7 @@ jobs:
             finished with failures - #${{ github.run_number }}"
         env:
           DISCORD_WEBHOOK: ${{ secrets.STORM_BOT_DISCORD_WEBHOOK }}
-          DISCORD_USERNAME: ${{ inputs.stormBot }}
+          DISCORD_USERNAME: ${{ inputs.storm-bot }}
           DISCORD_AVATAR: "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-stormie.png"
           DISCORD_EMBEDS:
             '[{"title": "Deployment #${{ github.run_number }} - ${{
@@ -388,7 +379,7 @@ jobs:
             has been cancelled - #${{ github.run_number }}"
         env:
           DISCORD_WEBHOOK: ${{ secrets.STORM_BOT_DISCORD_WEBHOOK }}
-          DISCORD_USERNAME: ${{ inputs.stormBot }}
+          DISCORD_USERNAME: ${{ inputs.storm-bot }}
           DISCORD_AVATAR: "https://pub-761b436209f44a4d886487c917806c08.r2.dev/icon-stormie.png"
           DISCORD_EMBEDS:
             '[{"title": "Deployment #${{ github.run_number }} - ${{

@@ -34,10 +34,10 @@
   },
   "license": "Apache-2.0",
   "private": true,
-  "packageManager": "pnpm@9.8.0",
+  "packageManager": "pnpm@9.10.0",
   "engines": {
     "node": ">=22.4.0",
-    "pnpm": ">=9.8.0"
+    "pnpm": ">=9.10.0"
   },
   "keywords": [
     "storm",
@@ -84,8 +84,6 @@
     "test": "echo Skipping workspace testing..."
   },
   "dependencies": {
-    "@angular-devkit/architect": "0.1800.5",
-    "@biomejs/biome": "1.7.3",
     "@chialab/esbuild-plugin-require-resolve": "0.18.0",
     "@eslint/eslintrc": "2.1.4",
     "@eslint/js": "9.4.0",
@@ -111,7 +109,7 @@
     "@types/node": "^22.4.0",
     "@typescript-eslint/eslint-plugin": "7.16.0",
     "@typescript-eslint/parser": "7.16.0",
-    "c12": "1.10.0",
+    "c12": "2.0.0-beta.2",
     "conventional-changelog-conventionalcommits": "8.0.0",
     "copyfiles": "2.4.1",
     "esbuild": "0.21.5",

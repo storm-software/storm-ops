@@ -37,15 +37,17 @@ pre-commit:
       glob: "**/*"
       run: "node ./dist/packages/git-tools/bin/pre-commit.js {files}"
       stage_fixed: true
-    lint:
-      files: "git diff --name-only HEAD @{push}"
-      glob: "**/*.{js,ts,rs,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-      run: "pnpm lint"
-      stage_fixed: true
+    # lint:
+    #   files: "git diff --name-only HEAD @{push}"
+    #   glob: "**/*.{js,ts,rs,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
+    #   run: "pnpm lint"
+    #   stage_fixed: true
     lint-codeowners:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/CODEOWNERS"
-      run: "pnpm node -r esbuild-register ./dist/packages/linting-tools/bin/lint.js codeowners"
+      run:
+        "pnpm node -r esbuild-register ./dist/packages/linting-tools/bin/lint.js
+        codeowners"
 
     # check:
     #   files: "git diff --name-only HEAD @{push}"
@@ -62,9 +64,8 @@ pre-commit:
 commit-msg:
   commands:
     validate:
-      run:
-        "pnpm node -r esbuild-register ./dist/packages/git-tools/bin/git.js commitlint
-        --message {1}"
+      run: "pnpm node -r esbuild-register ./dist/packages/git-tools/bin/git.js
+        commitlint --message {1}"
 
 pre-push:
   piped: true

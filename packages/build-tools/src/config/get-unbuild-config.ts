@@ -265,7 +265,7 @@ export async function getUnbuildBuildOptions(
         }
       }
 
-      buildOpt.externals = [...externals, ...(options.external ?? [])];
+      // buildOpt.externals = [...externals, ...(options.external ?? [])];
       buildOpt.sourcemap ??= options.sourcemap ?? true;
       buildOpt.rollup = {
         ...rollupConfig,
