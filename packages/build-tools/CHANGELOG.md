@@ -1,3 +1,10 @@
+## 0.84.1 (2024-09-13)
+
+
+### Bug Fixes
+
+- **eslint:** Cleaned up unused eslint rules ([81149178](https://github.com/storm-software/storm-ops/commit/81149178))
+
 ## 0.84.0 (2024-09-13)
 
 ### Bug Fixes
