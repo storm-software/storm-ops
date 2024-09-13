@@ -482,10 +482,7 @@ const config: Linter.RulesRecord = {
   ],
 
   // require trailing commas in multiline object literals
-  "comma-dangle": [
-    "error",
-    "never"
-  ],
+  "comma-dangle": ["error", "never"],
 
   // enforce spacing before and after comma
   "comma-spacing": ["error", { before: false, after: true }],
@@ -778,7 +775,7 @@ const config: Linter.RulesRecord = {
 
   // disallow use of bitwise operators
   // https://eslint.org/docs/rules/no-bitwise
-  "no-bitwise": "error",
+  "no-bitwise": "off",
 
   // disallow use of the continue statement
   // https://eslint.org/docs/rules/no-continue
@@ -886,7 +883,7 @@ const config: Linter.RulesRecord = {
   // disallow dangling underscores in identifiers
   // https://eslint.org/docs/rules/no-underscore-dangle
   "no-underscore-dangle": [
-    "error",
+    "off",
     {
       allow: [],
       allowAfterThis: false,
@@ -917,18 +914,18 @@ const config: Linter.RulesRecord = {
     "error",
     {
       ObjectExpression: {
-        minProperties: 4,
+        minProperties: 5,
         multiline: true,
         consistent: true
       },
-      ObjectPattern: { minProperties: 4, multiline: true, consistent: true },
+      ObjectPattern: { minProperties: 5, multiline: true, consistent: true },
       ImportDeclaration: {
-        minProperties: 4,
+        minProperties: 5,
         multiline: true,
         consistent: true
       },
       ExportDeclaration: {
-        minProperties: 4,
+        minProperties: 5,
         multiline: true,
         consistent: true
       }
@@ -1153,6 +1150,7 @@ const config: Linter.RulesRecord = {
   "unicorn/import-style": "off",
   "unicorn/prefer-module": "off",
   "unicorn/consistent-function-scoping": "off",
+  "unicorn/no-nested-ternary": "off",
 
   /*************************************************************
    *
