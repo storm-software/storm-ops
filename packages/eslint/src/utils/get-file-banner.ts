@@ -69,7 +69,7 @@ ${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
        : process.env.STORM_HOMEPAGE
      : "https://stormsoftware.com"
  }/contact
- License:       ${
+ License:         ${
    process.env.STORM_LICENSING
      ? process.env.STORM_LICENSING
      : `https://stormsoftware.com/${name ? `projects/${name}/` : ""}license`

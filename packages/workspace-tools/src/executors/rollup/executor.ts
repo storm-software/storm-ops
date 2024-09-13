@@ -218,9 +218,6 @@ async function createRollupOptions(
   if (!context.targetName) {
     throw new Error("Nx target name was not found");
   }
-  if (!context.configurationName) {
-    throw new Error("Nx configuration name was not found");
-  }
 
   const { dependencies } = calculateProjectBuildableDependencies(
     context.taskGraph,
@@ -228,7 +225,7 @@ async function createRollupOptions(
     context.root,
     context.projectName,
     context.targetName,
-    context.configurationName,
+    context.configurationName ?? "development",
     true
   );
 

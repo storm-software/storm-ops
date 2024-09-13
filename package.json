@@ -140,7 +140,7 @@
     "verdaccio": "5.31.1"
   },
   "devEngines": {
-    "node": "20.x || 21.x"
+    "node": "22.x"
   },
   "namespace": "@storm-software",
   "nx": {

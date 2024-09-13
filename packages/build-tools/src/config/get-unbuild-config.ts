@@ -113,7 +113,7 @@ export async function getUnbuildBuildOptions(
       {
         builder: "mkdist",
         name: "./",
-        input: options.sourceRoot.replace(options.projectRoot, ""),
+        input: `.${options.sourceRoot.replace(options.projectRoot, "")}`,
         outDir: join(
           relative(
             join(config.workspaceRoot, options.projectRoot),
@@ -125,7 +125,7 @@ export async function getUnbuildBuildOptions(
         declaration: "compatible"
       }
     ],
-    externals: [...externals, ...(options.external ?? [])],
+    // externals: [...externals, ...(options.external ?? [])],
     declaration: "compatible",
     failOnWarn: false,
     hooks: {
