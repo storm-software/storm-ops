@@ -62,7 +62,6 @@ ${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
      ? process.env.STORM_DOCS
      : `https://stormsoftware.com/${name ? `projects/${name}/` : ""}docs`
  }
-
  Contact:         ${
    process.env.STORM_HOMEPAGE
      ? process.env.STORM_HOMEPAGE.endsWith("/")
@@ -70,10 +69,10 @@ ${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
        : process.env.STORM_HOMEPAGE
      : "https://stormsoftware.com"
  }/contact
- Licensing:       ${
+ License:       ${
    process.env.STORM_LICENSING
      ? process.env.STORM_LICENSING
-     : `https://stormsoftware.com/${name ? `projects/${name}/` : ""}licensing`
+     : `https://stormsoftware.com/${name ? `projects/${name}/` : ""}license`
  }
 
  -------------------------------------------------------------------`;

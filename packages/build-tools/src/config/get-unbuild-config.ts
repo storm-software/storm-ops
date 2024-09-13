@@ -121,7 +121,7 @@ export async function getUnbuildBuildOptions(
           ).replaceAll("\\", "/"),
           options.outputPath,
           "dist"
-        ),
+        ).replaceAll("\\", "/"),
         declaration: "compatible"
       }
     ],

@@ -433,14 +433,14 @@ plugin.configs &&
       name: "banner/recommended/code-files",
       files: [
         CODE_FILE,
-        "!docs/**/*",
-        "!crates/**/*",
-        "!tmp/**/*",
-        "!dist/**/*",
-        "!coverage/**/*",
-        "!node_modules/**/*",
-        "!.cache/**/*",
-        "!.nx/**/*"
+        "!**/docs/**/*",
+        "!**/crates/**/*",
+        "!**/tmp/**/*",
+        "!**/dist/**/*",
+        "!**/coverage/**/*",
+        "!**/node_modules/**/*",
+        "!**/.cache/**/*",
+        "!**/.nx/**/*"
       ],
       rules: {
         "banner/banner": ["error", { commentType: "block", numNewlines: 2 }]

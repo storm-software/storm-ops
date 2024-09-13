@@ -100,16 +100,6 @@ export async function withRollupConfig(
   if (!projectGraph) {
     throw new Error(`Cannot find project graph.`);
   }
-  if (!process.env.NX_TASK_TARGET_TARGET) {
-    throw new Error(
-      `NX_TASK_TARGET_TARGET is not set. Please set it in your environment.`
-    );
-  }
-  if (!process.env.NX_TASK_TARGET_CONFIGURATION) {
-    throw new Error(
-      `NX_TASK_TARGET_CONFIGURATION is not set. Please set it in your environment.`
-    );
-  }
 
   // If dependencies are not passed from executor, calculate them from project graph.
   if (!dependencies && !global.NX_GRAPH_CREATION) {
@@ -118,8 +108,8 @@ export async function withRollupConfig(
       projectGraph,
       config.workspaceRoot,
       projectNode.name,
-      process.env.NX_TASK_TARGET_TARGET,
-      process.env.NX_TASK_TARGET_CONFIGURATION,
+      process.env.NX_TASK_TARGET_TARGET || "build",
+      process.env.NX_TASK_TARGET_CONFIGURATION || "production",
       true
     );
     dependencies = result.dependencies;

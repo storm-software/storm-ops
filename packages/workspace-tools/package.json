@@ -89,6 +89,7 @@
     "@rollup/plugin-image": "3.0.3",
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "15.2.3",
+    "@rslib/core": "0.0.5",
     "@size-limit/esbuild": "11.1.4",
     "@size-limit/esbuild-why": "11.1.4",
     "@size-limit/file": "11.1.4",
