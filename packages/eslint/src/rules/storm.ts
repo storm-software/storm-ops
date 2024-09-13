@@ -568,48 +568,48 @@ const config: Linter.RulesRecord = {
   // https://eslint.org/docs/rules/indent
   indent: [
     "error",
-    2,
-    {
-      SwitchCase: 1,
-      VariableDeclarator: 1,
-      outerIIFEBody: 1,
-      // MemberExpression: null,
-      FunctionDeclaration: {
-        parameters: 1,
-        body: 1
-      },
-      FunctionExpression: {
-        parameters: 1,
-        body: 1
-      },
-      CallExpression: {
-        arguments: 1
-      },
-      ArrayExpression: 1,
-      ObjectExpression: 1,
-      ImportDeclaration: 1,
-      flatTernaryExpressions: false,
-      // list derived from https://github.com/benjamn/ast-types/blob/HEAD/def/jsx.js
-      ignoredNodes: [
-        "JSXElement",
-        "JSXElement > *",
-        "JSXAttribute",
-        "JSXIdentifier",
-        "JSXNamespacedName",
-        "JSXMemberExpression",
-        "JSXSpreadAttribute",
-        "JSXExpressionContainer",
-        "JSXOpeningElement",
-        "JSXClosingElement",
-        "JSXFragment",
-        "JSXOpeningFragment",
-        "JSXClosingFragment",
-        "JSXText",
-        "JSXEmptyExpression",
-        "JSXSpreadChild"
-      ],
-      ignoreComments: false
-    }
+    2
+    // {
+    //   SwitchCase: 1,
+    //   VariableDeclarator: 1,
+    //   outerIIFEBody: 1,
+    //   // MemberExpression: null,
+    //   FunctionDeclaration: {
+    //     parameters: 1,
+    //     body: 1
+    //   },
+    //   FunctionExpression: {
+    //     parameters: 1,
+    //     body: 1
+    //   },
+    //   CallExpression: {
+    //     arguments: 1
+    //   },
+    //   ArrayExpression: 1,
+    //   ObjectExpression: 1,
+    //   ImportDeclaration: 1,
+    //   flatTernaryExpressions: false,
+    //   // list derived from https://github.com/benjamn/ast-types/blob/HEAD/def/jsx.js
+    //   ignoredNodes: [
+    //     "JSXElement",
+    //     "JSXElement > *",
+    //     "JSXAttribute",
+    //     "JSXIdentifier",
+    //     "JSXNamespacedName",
+    //     "JSXMemberExpression",
+    //     "JSXSpreadAttribute",
+    //     "JSXExpressionContainer",
+    //     "JSXOpeningElement",
+    //     "JSXClosingElement",
+    //     "JSXFragment",
+    //     "JSXOpeningFragment",
+    //     "JSXClosingFragment",
+    //     "JSXText",
+    //     "JSXEmptyExpression",
+    //     "JSXSpreadChild"
+    //   ],
+    //   ignoreComments: false
+    // }
   ],
 
   // specify whether double or single quotes should be used in JSX attributes
