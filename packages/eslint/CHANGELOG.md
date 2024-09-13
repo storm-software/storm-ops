@@ -1,3 +1,10 @@
+## 0.72.2 (2024-09-13)
+
+
+### Bug Fixes
+
+- **eslint:** Ensure prettier and eslint `indent` configurations align ([753a29ad](https://github.com/storm-software/storm-ops/commit/753a29ad))
+
 ## 0.72.1 (2024-09-13)
 
 
