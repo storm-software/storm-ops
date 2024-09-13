@@ -1,9 +1,16 @@
-## 1.93.1 (2024-09-13)
+## 1.93.2 (2024-09-13)
 
 
 ### Bug Fixes
 
-- **eslint:** Cleaned up unused eslint rules ([81149178](https://github.com/storm-software/storm-ops/commit/81149178))
+- **eslint:** Ensure prettier and eslint `indent` configurations align ([753a29ad](https://github.com/storm-software/storm-ops/commit/753a29ad))
+
+## 1.93.1 (2024-09-13)
+
+### Bug Fixes
+
+- **eslint:** Cleaned up unused eslint rules
+  ([81149178](https://github.com/storm-software/storm-ops/commit/81149178))
 
 ## 1.93.0 (2024-09-13)
 
