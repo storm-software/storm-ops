@@ -1,9 +1,16 @@
-## 0.83.4 (2024-09-12)
+## 0.83.5 (2024-09-13)
 
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue with setting compiler options ([b444511b](https://github.com/storm-software/storm-ops/commit/b444511b))
+- **build-tools:** Resolved issue with Unbuild output directory ([9014d2aa](https://github.com/storm-software/storm-ops/commit/9014d2aa))
+
+## 0.83.4 (2024-09-12)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with setting compiler options
+  ([b444511b](https://github.com/storm-software/storm-ops/commit/b444511b))
 
 ## 0.83.3 (2024-09-11)
 

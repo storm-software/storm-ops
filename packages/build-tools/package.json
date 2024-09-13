@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/build-tools",
-  "version": "0.83.4",
+  "version": "0.83.5",
   "description": "⚡The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.",
   "repository": {
     "type": "github",

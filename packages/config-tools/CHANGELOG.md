@@ -1,9 +1,16 @@
-## 1.92.8 (2024-09-11)
+## 1.92.9 (2024-09-13)
 
 
 ### Bug Fixes
 
-- **build-tools:** Resolved issue with the base path directory ([b7cad5eb](https://github.com/storm-software/storm-ops/commit/b7cad5eb))
+- **build-tools:** Resolved issue with Unbuild output directory ([9014d2aa](https://github.com/storm-software/storm-ops/commit/9014d2aa))
+
+## 1.92.8 (2024-09-11)
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with the base path directory
+  ([b7cad5eb](https://github.com/storm-software/storm-ops/commit/b7cad5eb))
 
 ## 1.92.7 (2024-09-11)
 
