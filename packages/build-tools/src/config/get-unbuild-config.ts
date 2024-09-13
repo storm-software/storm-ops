@@ -112,7 +112,6 @@ export async function getUnbuildBuildOptions(
     entries: [
       {
         builder: "mkdist",
-        name: "./",
         input: `.${options.sourceRoot.replace(options.projectRoot, "")}`,
         outDir: join(
           relative(
@@ -122,11 +121,27 @@ export async function getUnbuildBuildOptions(
           options.outputPath,
           "dist"
         ).replaceAll("\\", "/"),
-        declaration: "compatible"
+        declaration: true,
+        format: "esm"
+      },
+      {
+        builder: "mkdist",
+        input: `.${options.sourceRoot.replace(options.projectRoot, "")}`,
+        outDir: join(
+          relative(
+            join(config.workspaceRoot, options.projectRoot),
+            config.workspaceRoot
+          ).replaceAll("\\", "/"),
+          options.outputPath,
+          "dist"
+        ).replaceAll("\\", "/"),
+        declaration: true,
+        format: "cjs",
+        ext: "cjs"
       }
     ],
     // externals: [...externals, ...(options.external ?? [])],
-    declaration: "compatible",
+    declaration: true,
     failOnWarn: false,
     hooks: {
       // "mkdist:entry:options": async (
@@ -187,6 +202,9 @@ export async function getUnbuildBuildOptions(
           ...(opts.plugins as InputPluginOption[])
         ];
       }
+    },
+    rollup: {
+      emitCJS: true
     }
   };
 
@@ -267,10 +285,10 @@ export async function getUnbuildBuildOptions(
         //   include: /node_modules/,
         //   sourceMap: options.sourcemap
         // },
-        // resolve: {
-        //   preferBuiltins: true,
-        //   extensions: [".cjs", ".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"]
-        // },
+        resolve: {
+          preferBuiltins: true,
+          extensions: [".cjs", ".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"]
+        },
         esbuild: {
           ...rollupConfig?.esbuild,
           minify: !!options.minify,
