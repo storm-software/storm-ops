@@ -1,14 +1,21 @@
-## 1.184.0 (2024-09-15)
-
-
-### Features
-
-- **build-tools:** Update unbuild optional parameters ([af395c22](https://github.com/storm-software/storm-ops/commit/af395c22))
+## 1.184.1 (2024-09-15)
 
 
 ### Bug Fixes
 
-- **eslint:** Make the ESLint rules more lenient ([e11897e7](https://github.com/storm-software/storm-ops/commit/e11897e7))
+- **storm-ops:** Resolve issue with pnpm version mismatches ([11ef01b3](https://github.com/storm-software/storm-ops/commit/11ef01b3))
+
+## 1.184.0 (2024-09-15)
+
+### Features
+
+- **build-tools:** Update unbuild optional parameters
+  ([af395c22](https://github.com/storm-software/storm-ops/commit/af395c22))
+
+### Bug Fixes
+
+- **eslint:** Make the ESLint rules more lenient
+  ([e11897e7](https://github.com/storm-software/storm-ops/commit/e11897e7))
 
 ## 1.183.2 (2024-09-13)
 
