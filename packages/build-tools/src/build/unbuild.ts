@@ -414,7 +414,7 @@ ${unbuildBuildOptions
       outputPackageJson.types = "./dist/index.d.ts";
 
       outputPackageJson.exports ??= {};
-      outputPackageJson.exports["."] = {
+      outputPackageJson.exports["."] = outputPackageJson.exports["."] ?? {
         "import": "./dist/index.mjs",
         "require": "./dist/index.cjs",
         "types": "./dist/index.d.ts"
