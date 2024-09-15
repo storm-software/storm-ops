@@ -100,18 +100,34 @@ function getEOL(options) {
 }
 
 function hasBanner(commentType: "block" | "line" | string, src: string) {
-  if (src.substr(0, 2) === "#!") {
-    const m = src.match(/(\r\n|\r|\n)/);
-    if (m?.index) {
-      src = src.slice(m.index + m[0].length);
+  if (src.startsWith("#!")) {
+    const bannerLines = src.split(/\r?\n/);
+    if (bannerLines && bannerLines.length > 1) {
+      bannerLines.shift();
+
+      while (
+        bannerLines.length &&
+        bannerLines[0] &&
+        !bannerLines[0].replace(/\s+/, "")
+      ) {
+        bannerLines.shift();
+      }
+
+      if (bannerLines.length) {
+        src = bannerLines.join("\n");
+      } else {
+        return false;
+      }
     }
   }
+
   return (
-    (commentType === "block" && src.substr(0, 2) === "/*") ||
-    (commentType === "lint" && src.substr(0, 2) === "//") ||
+    (commentType === "block" && src.startsWith("/*")) ||
+    (commentType === "lint" && src.startsWith("//")) ||
     (commentType !== "block" &&
       commentType !== "lint" &&
-      src.substr(0, commentType?.length) === commentType)
+      commentType &&
+      src.startsWith(commentType))
   );
 }
 
