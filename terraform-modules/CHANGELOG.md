@@ -1,3 +1,10 @@
+## 0.31.0 (2024-09-15)
+
+
+### Features
+
+- **terraform-tools:** Added new inputs and outputs to Cloudflare R2 Bucket module ([c1fcd977](https://github.com/storm-software/storm-ops/commit/c1fcd977))
+
 ## 0.30.0 (2024-09-15)
 
 
