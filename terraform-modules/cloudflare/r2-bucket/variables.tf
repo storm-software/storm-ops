@@ -15,6 +15,12 @@ variable "api_token" {
   nullable = false
 }
 
+variable "email" {
+  description = "The Cloudflare account's email address."
+  type = string
+  nullable = false
+}
+
 variable "zone_id" {
   description = "The Cloudflare Zone ID value."
   type = string
