@@ -1,3 +1,21 @@
+## 0.85.0 (2024-09-15)
+
+
+### Features
+
+- **build-tools:** Update unbuild optional parameters ([af395c22](https://github.com/storm-software/storm-ops/commit/af395c22))
+
+- **build-tools:** Added `main`, `module`, and `types` fields to package.json file ([d55521dc](https://github.com/storm-software/storm-ops/commit/d55521dc))
+
+
+### Bug Fixes
+
+- **eslint:** Make the ESLint rules more lenient ([e11897e7](https://github.com/storm-software/storm-ops/commit/e11897e7))
+
+- **build-tools:** Resolve issue with redundant build configurations ([0f0fa421](https://github.com/storm-software/storm-ops/commit/0f0fa421))
+
+- **build-tools:** Resolved issue with missing dependency ([1c9e6908](https://github.com/storm-software/storm-ops/commit/1c9e6908))
+
 ## 0.84.2 (2024-09-13)
 
 ### Bug Fixes

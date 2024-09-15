@@ -1,3 +1,10 @@
+## 0.33.1 (2024-09-15)
+
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with redundant build configurations ([0f0fa421](https://github.com/storm-software/storm-ops/commit/0f0fa421))
+
 ## 0.33.0 (2024-08-03)
 
 

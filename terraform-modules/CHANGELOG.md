@@ -1,3 +1,15 @@
+## 0.30.0 (2024-09-15)
+
+
+### Features
+
+- **build-tools:** Update unbuild optional parameters ([af395c22](https://github.com/storm-software/storm-ops/commit/af395c22))
+
+
+### Bug Fixes
+
+- **eslint:** Make the ESLint rules more lenient ([e11897e7](https://github.com/storm-software/storm-ops/commit/e11897e7))
+
 ## 0.29.2 (2024-09-13)
 
 

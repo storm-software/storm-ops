@@ -1,3 +1,10 @@
+## 0.34.0 (2024-09-15)
+
+
+### Features
+
+- **build-tools:** Update unbuild optional parameters ([af395c22](https://github.com/storm-software/storm-ops/commit/af395c22))
+
 ## 0.33.3 (2024-09-08)
 
 
