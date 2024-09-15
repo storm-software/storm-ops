@@ -1,3 +1,10 @@
+## 0.75.0 (2024-09-15)
+
+
+### Features
+
+- **git-tools:** Renamed all shared configuration files to `config.*` for consistency ([21c54e37](https://github.com/storm-software/storm-ops/commit/21c54e37))
+
 ## 0.74.0 (2024-09-15)
 
 ### Features
