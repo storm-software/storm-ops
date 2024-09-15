@@ -409,6 +409,10 @@ ${unbuildBuildOptions
         outputPackageJson
       );
 
+      outputPackageJson.main = "./dist/index.cjs";
+      outputPackageJson.module = "./dist/index.mjs";
+      outputPackageJson.types = "./dist/index.d.ts";
+
       await writeJsonFile(
         joinPathFragments(enhancedOptions.outputPath, "package.json"),
         outputPackageJson
