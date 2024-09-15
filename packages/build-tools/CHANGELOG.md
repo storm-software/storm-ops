@@ -1,9 +1,17 @@
-## 0.86.0 (2024-09-15)
+## 0.87.0 (2024-09-15)
 
 
 ### Features
 
-- **build-tools:** Add a default export to the package.json generated during build ([342e0699](https://github.com/storm-software/storm-ops/commit/342e0699))
+- **build-tools:** Add logic to ensure we do not overwrite exports ([94582fac](https://github.com/storm-software/storm-ops/commit/94582fac))
+
+## 0.86.0 (2024-09-15)
+
+### Features
+
+- **build-tools:** Add a default export to the package.json generated during
+  build
+  ([342e0699](https://github.com/storm-software/storm-ops/commit/342e0699))
 
 ## 0.85.0 (2024-09-15)
 
