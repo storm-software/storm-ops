@@ -1,3 +1,10 @@
+## 1.83.0 (2024-09-15)
+
+
+### Features
+
+- **eslint:** Added NextJs linter plugin ([24207ae2](https://github.com/storm-software/storm-ops/commit/24207ae2))
+
 ## 1.82.3 (2024-09-08)
 
 
