@@ -27,6 +27,6 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "esModuleInterop": true,
-    "preserveSymlinks": true
+    "preserveSymlinks": false
   }
 }

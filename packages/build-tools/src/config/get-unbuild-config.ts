@@ -47,17 +47,17 @@ export async function getUnbuildBuildOptions(
     options = configFile ? merge(options, configFile) : options;
   }
 
-  const externals = config.externalPackagePatterns.map(dep => {
-    let regex = dep;
-    if (!dep.endsWith("*")) {
-      if (!dep.endsWith("/")) {
-        regex = dep + "/";
-      }
-      regex += "*";
-    }
+  // const externals = config.externalPackagePatterns.map(dep => {
+  //   let regex = dep;
+  //   if (!dep.endsWith("*")) {
+  //     if (!dep.endsWith("/")) {
+  //       regex = dep + "/";
+  //     }
+  //     regex += "*";
+  //   }
 
-    return new RegExp(regex);
-  });
+  //   return new RegExp(regex);
+  // });
 
   writeDebug(
     "✍️  Generating TypeScript Compiler Options (tsconfig.json) to use for build process",
@@ -121,27 +121,11 @@ export async function getUnbuildBuildOptions(
           options.outputPath,
           "dist"
         ).replaceAll("\\", "/"),
-        declaration: true,
-        format: "esm"
-      },
-      {
-        builder: "mkdist",
-        input: `.${options.sourceRoot.replace(options.projectRoot, "")}`,
-        outDir: join(
-          relative(
-            join(config.workspaceRoot, options.projectRoot),
-            config.workspaceRoot
-          ).replaceAll("\\", "/"),
-          options.outputPath,
-          "dist"
-        ).replaceAll("\\", "/"),
-        declaration: true,
-        format: "cjs",
-        ext: "cjs"
+        declaration: "compatible"
       }
     ],
     // externals: [...externals, ...(options.external ?? [])],
-    declaration: true,
+    declaration: "compatible",
     failOnWarn: false,
     hooks: {
       // "mkdist:entry:options": async (
