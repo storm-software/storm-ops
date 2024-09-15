@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
+    "@angular-devkit/architect": "0.1802.4",
     "@rollup/plugin-commonjs": "25.0.8",
     "@rollup/plugin-image": "3.0.3",
     "@rollup/plugin-json": "6.1.0",
