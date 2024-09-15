@@ -17107,9 +17107,39 @@ snapshots:
       - typescript
       - verdaccio
 
+  '@nrwl/js@19.6.4(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@22.5.4)(nx@19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))(typescript@5.4.5)(verdaccio@5.31.1(typanion@3.14.0))':
+    dependencies:
+      '@nx/js': 19.6.4(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@22.5.4)(nx@19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))(typescript@5.4.5)(verdaccio@5.31.1(typanion@3.14.0))
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - debug
+      - nx
+      - supports-color
+      - typescript
+      - verdaccio
+
   '@nrwl/js@19.6.4(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@22.5.4)(nx@19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))(typescript@5.5.3)(verdaccio@5.31.1(typanion@3.14.0))':
     dependencies:
       '@nx/js': 19.6.4(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@22.5.4)(nx@19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))(typescript@5.5.3)(verdaccio@5.31.1(typanion@3.14.0))
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - debug
+      - nx
+      - supports-color
+      - typescript
+      - verdaccio
+
+  '@nrwl/js@19.6.4(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(nx@19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(typescript@5.4.5)(verdaccio@5.31.1(typanion@3.14.0))':
+    dependencies:
+      '@nx/js': 19.6.4(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(nx@19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(typescript@5.4.5)(verdaccio@5.31.1(typanion@3.14.0))
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -17872,7 +17902,7 @@ snapshots:
       '@babel/preset-env': 7.24.7(@babel/core@7.24.7)
       '@babel/preset-typescript': 7.24.7(@babel/core@7.24.7)
       '@babel/runtime': 7.24.7
-      '@nrwl/js': 19.6.4(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@22.5.4)(nx@19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))(typescript@5.5.3)(verdaccio@5.31.1(typanion@3.14.0))
+      '@nrwl/js': 19.6.4(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@22.5.4)(nx@19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))(typescript@5.4.5)(verdaccio@5.31.1(typanion@3.14.0))
       '@nx/devkit': 19.6.4(nx@19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))
       '@nx/workspace': 19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))
       babel-plugin-const-enum: 1.2.0(@babel/core@7.24.7)
@@ -17962,7 +17992,7 @@ snapshots:
       '@babel/preset-env': 7.24.7(@babel/core@7.24.7)
       '@babel/preset-typescript': 7.24.7(@babel/core@7.24.7)
       '@babel/runtime': 7.24.7
-      '@nrwl/js': 19.6.4(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@22.5.4)(nx@19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.11)))(typescript@5.5.3)(verdaccio@5.31.1(typanion@3.14.0))
+      '@nrwl/js': 19.6.4(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(nx@19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(typescript@5.4.5)(verdaccio@5.31.1(typanion@3.14.0))
       '@nx/devkit': 19.6.4(nx@19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13)))
       '@nx/workspace': 19.6.4(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13))
       babel-plugin-const-enum: 1.2.0(@babel/core@7.24.7)

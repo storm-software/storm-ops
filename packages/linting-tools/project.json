@@ -59,7 +59,7 @@
           },
           {
             "input": "packages/linting-tools/src",
-            "glob": "biome/biome.json",
+            "glob": "biome/*",
             "output": "."
           },
           {
@@ -74,22 +74,7 @@
           },
           {
             "input": "packages/linting-tools/src",
-            "glob": "cspell/**/dictionary.txt",
-            "output": "."
-          },
-          {
-            "input": "packages/linting-tools/src",
-            "glob": "cspell/**/*.json",
-            "output": "."
-          },
-          {
-            "input": "packages/linting-tools/node_modules",
-            "glob": "@cspell/**/cspell-ext.json",
-            "output": "cspell"
-          },
-          {
-            "input": "packages/linting-tools/src",
-            "glob": "tsconfig/**/*.*",
+            "glob": "cspell/*",
             "output": "."
           }
         ]

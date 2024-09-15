@@ -6,6 +6,7 @@ import {
   rules as cspellRules
 } from "@cspell/eslint-plugin/recommended";
 import eslint from "@eslint/js";
+import next from "@next/eslint-plugin-next";
 import nxPlugin from "@nx/eslint-plugin";
 import type { Linter } from "eslint";
 import jsxA11y from "eslint-plugin-jsx-a11y";
@@ -60,6 +61,7 @@ export interface PresetOptions {
   markdown?: false | Linter.RulesRecord;
   react?: false | Linter.RulesRecord;
   useReactCompiler?: boolean;
+  nextFiles?: string[];
 }
 
 /**
@@ -345,6 +347,13 @@ export function getStormConfig(
     }
 
     configs.push(reactConfig);
+  }
+
+  if (options.nextFiles && options.nextFiles.length > 0) {
+    configs.push({
+      ...next.configs["core-web-vitals"],
+      files: options.nextFiles
+    });
   }
 
   // // JavaScript and TypeScript code
