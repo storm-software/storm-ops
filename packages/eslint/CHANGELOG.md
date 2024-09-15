@@ -1,3 +1,10 @@
+## 0.76.0 (2024-09-15)
+
+
+### Features
+
+- **eslint:** Update banner rule to allow shebang file headers ([02b38baa](https://github.com/storm-software/storm-ops/commit/02b38baa))
+
 ## 0.75.0 (2024-09-15)
 
 
