@@ -1,6 +1,6 @@
+import requireResolvePlugin from "@chialab/esbuild-plugin-require-resolve";
 import copyFiles from "copyfiles";
 import { build } from "esbuild";
-import requireResolvePlugin from "@chialab/esbuild-plugin-require-resolve";
 
 copyFiles(["LICENSE", "dist/packages/git-tools"], {}, () => {
   copyFiles(
@@ -22,7 +22,7 @@ copyFiles(["LICENSE", "dist/packages/git-tools"], {}, () => {
         () => {
           copyFiles(
             [
-              "packages/git-tools/src/lefthook/lefthook.yml",
+              "packages/git-tools/src/lefthook/config.yml",
               "dist/packages/git-tools/lefthook"
             ],
             { up: 4 },
@@ -36,7 +36,7 @@ copyFiles(["LICENSE", "dist/packages/git-tools"], {}, () => {
                 () => {
                   copyFiles(
                     [
-                      "packages/git-tools/src/commitlint/commitlint.config.cjs",
+                      "packages/git-tools/src/commitlint/config.cjs",
                       "dist/packages/git-tools/commitlint"
                     ],
                     { up: 4 },
