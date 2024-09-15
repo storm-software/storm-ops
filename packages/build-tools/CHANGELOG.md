@@ -1,9 +1,9 @@
 ## 0.87.0 (2024-09-15)
 
-
 ### Features
 
-- **build-tools:** Add logic to ensure we do not overwrite exports ([94582fac](https://github.com/storm-software/storm-ops/commit/94582fac))
+- **build-tools:** Add logic to ensure we do not overwrite exports
+  ([94582fac](https://github.com/storm-software/storm-ops/commit/94582fac))
 
 ## 0.86.0 (2024-09-15)
 

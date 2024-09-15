@@ -1,9 +1,9 @@
 ## 1.184.1 (2024-09-15)
 
-
 ### Bug Fixes
 
-- **storm-ops:** Resolve issue with pnpm version mismatches ([11ef01b3](https://github.com/storm-software/storm-ops/commit/11ef01b3))
+- **storm-ops:** Resolve issue with pnpm version mismatches
+  ([11ef01b3](https://github.com/storm-software/storm-ops/commit/11ef01b3))
 
 ## 1.184.0 (2024-09-15)
 
