@@ -1,3 +1,12 @@
+## 0.76.1 (2024-09-16)
+
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid react file configurations ([524b22be](https://github.com/storm-software/storm-ops/commit/524b22be))
+
+- **eslint:** Resolve issue with invalid recommended eslint configuration ([92918124](https://github.com/storm-software/storm-ops/commit/92918124))
+
 ## 0.76.0 (2024-09-15)
 
 

@@ -1,3 +1,10 @@
+## 0.31.1 (2024-09-16)
+
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid react file configurations ([524b22be](https://github.com/storm-software/storm-ops/commit/524b22be))
+
 ## 0.31.0 (2024-09-15)
 
 

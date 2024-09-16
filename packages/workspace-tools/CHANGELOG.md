@@ -1,9 +1,16 @@
-## 1.184.2 (2024-09-16)
+## 1.184.3 (2024-09-16)
 
 
 ### Bug Fixes
 
-- **storm-ops:** Resolve issues with workflow actions ([2ba8f980](https://github.com/storm-software/storm-ops/commit/2ba8f980))
+- **eslint:** Resolve issue with invalid react file configurations ([524b22be](https://github.com/storm-software/storm-ops/commit/524b22be))
+
+## 1.184.2 (2024-09-16)
+
+### Bug Fixes
+
+- **storm-ops:** Resolve issues with workflow actions
+  ([2ba8f980](https://github.com/storm-software/storm-ops/commit/2ba8f980))
 
 ## 1.184.1 (2024-09-15)
 
