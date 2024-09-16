@@ -1,3 +1,10 @@
+## 1.55.0 (2024-09-16)
+
+
+### Features
+
+- **config:** Added the `alternate` brand color token ([feec045b](https://github.com/storm-software/storm-ops/commit/feec045b))
+
 ## 1.54.2 (2024-09-08)
 
 ### Bug Fixes
