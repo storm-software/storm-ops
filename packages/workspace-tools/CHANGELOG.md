@@ -1,3 +1,10 @@
+## 1.184.2 (2024-09-16)
+
+
+### Bug Fixes
+
+- **storm-ops:** Resolve issues with workflow actions ([2ba8f980](https://github.com/storm-software/storm-ops/commit/2ba8f980))
+
 ## 1.184.1 (2024-09-15)
 
 ### Bug Fixes

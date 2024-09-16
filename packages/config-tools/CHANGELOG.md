@@ -1,9 +1,16 @@
-## 1.95.0 (2024-09-16)
+## 1.95.1 (2024-09-16)
 
+
+### Bug Fixes
+
+- **storm-ops:** Resolve issues with workflow actions ([2ba8f980](https://github.com/storm-software/storm-ops/commit/2ba8f980))
+
+## 1.95.0 (2024-09-16)
 
 ### Features
 
-- **config:** Added the `alternate` brand color token ([feec045b](https://github.com/storm-software/storm-ops/commit/feec045b))
+- **config:** Added the `alternate` brand color token
+  ([feec045b](https://github.com/storm-software/storm-ops/commit/feec045b))
 
 ## 1.94.0 (2024-09-15)
 
