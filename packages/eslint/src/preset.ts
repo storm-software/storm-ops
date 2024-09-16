@@ -285,15 +285,15 @@ export function getStormConfig(
       },
       {
         files: ["**/*.tsx"],
-        ...reactHooks.configs.recommended
+        ...reactHooks.configs?.recommended
       },
       {
-        files: ["**/*.tsx"],
-        ...jsxA11y.flatConfigs.recommended
+        files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
+        ...jsxA11y.flatConfigs?.recommended
       }
     ];
 
-    if (options.useReactCompiler) {
+    if (options.useReactCompiler === true) {
       reactConfigs.push({
         files: ["**/*.tsx"],
         plugins: {
