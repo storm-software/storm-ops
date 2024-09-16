@@ -12,9 +12,9 @@ import type { Linter } from "eslint";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import markdown from "eslint-plugin-markdown";
 import prettierConfig from "eslint-plugin-prettier/recommended";
-import react from "eslint-plugin-react";
 import reactCompiler from "eslint-plugin-react-compiler";
 import reactHooks from "eslint-plugin-react-hooks";
+import react from "eslint-plugin-react/configs/recommended";
 import tsdoc from "eslint-plugin-tsdoc";
 import unicorn from "eslint-plugin-unicorn";
 import yml from "eslint-plugin-yml";
@@ -22,9 +22,9 @@ import globals from "globals";
 import jsoncParser from "jsonc-eslint-parser";
 import tsEslint from "typescript-eslint";
 import type { RuleOptions } from "./rules.d";
-import jsxA11yRules from "./rules/jsx-a11y";
-import reactRules from "./rules/react";
-import reactHooksRules from "./rules/react-hooks";
+// import jsxA11yRules from "./rules/jsx-a11y";
+// import reactRules from "./rules/react";
+// import reactHooksRules from "./rules/react-hooks";
 import stormRules from "./rules/storm";
 import tsdocRules from "./rules/ts-docs";
 import banner from "./utils/banner-plugin";
@@ -270,83 +270,42 @@ export function getStormConfig(
   // https://www.npmjs.com/package/eslint-plugin-react
   if (options.react) {
     // TSX - React
-    const reactConfig: Linter.FlatConfig<Linter.RulesRecord> = {
-      files: ["**/*.tsx"],
-      languageOptions: {
-        globals: {
-          ...Object.fromEntries(
-            Object.keys(globals).flatMap(group =>
-              Object.keys(globals[group as keyof typeof globals]).map(key => [
-                key,
-                "readonly"
-              ])
-            )
-          ),
-          ...globals.browser,
-          ...globals.node,
-          "window": "readonly",
-          "Storm": "readonly"
-        },
-        ecmaVersion: "latest",
-        parserOptions: {
-          emitDecoratorMetadata: true,
-          experimentalDecorators: true,
-          project: options.tsconfig ? options.tsconfig : "./tsconfig.base.json",
-          projectService: true,
-          sourceType: "module",
-          projectFolderIgnoreList: [
-            "**/node_modules/**",
-            "**/dist/**",
-            "**/coverage/**",
-            "**/tmp/**",
-            "**/.nx/**"
-          ],
-          ecmaFeatures: {
-            jsx: true
-          },
-          ...options.parserOptions
-        }
+    const reactConfigs: Linter.FlatConfig<Linter.RulesRecord>[] = [
+      {
+        files: ["**/*.tsx"],
+        ignores: [
+          "dist",
+          "coverage",
+          "tmp",
+          ".nx",
+          "node_modules",
+          ...(options.ignores || [])
+        ],
+        ...react
       },
-      settings: {
-        react: {
-          version: "detect"
-        }
+      {
+        files: ["**/*.tsx"],
+        ...reactHooks.configs.recommended
       },
-      plugins: {
-        react,
-        "react-hooks": reactHooks,
-        "jsx-a11y": jsxA11y
-      },
-      rules: {
-        ...reactRules,
-        ...reactHooksRules,
-        ...jsxA11yRules,
-
-        ...(options.react ?? {})
-      },
-      ignores: [
-        "dist",
-        "coverage",
-        "tmp",
-        ".nx",
-        "node_modules",
-        ...(options.ignores || [])
-      ]
-    };
+      {
+        files: ["**/*.tsx"],
+        ...jsxA11y.flatConfigs.recommended
+      }
+    ];
 
     if (options.useReactCompiler) {
-      reactConfig.plugins = {
-        ...reactConfig.plugins,
-        "react-compiler": reactCompiler
-      };
-
-      reactConfig.rules = {
-        ...reactConfig.rules,
-        "react-compiler/react-compiler": "error"
-      };
+      reactConfigs.push({
+        files: ["**/*.tsx"],
+        plugins: {
+          "react-compiler": reactCompiler
+        },
+        rules: {
+          "react-compiler/react-compiler": "error"
+        }
+      });
     }
 
-    configs.push(reactConfig);
+    configs.push(...reactConfigs);
   }
 
   if (options.nextFiles && options.nextFiles.length > 0) {
