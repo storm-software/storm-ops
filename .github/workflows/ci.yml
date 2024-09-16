@@ -107,10 +107,10 @@ jobs:
       - name: Setup workspace
         uses: storm-software/action-setup@main
         with:
-          packageManager: pnpm
-          packageManagerVersion: 9.10.0
-          stormBot: ${{ env.STORM_BOT }}
-          stormBotGitHubToken: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
+          package-manager: pnpm
+          package-manager-version: 9.10.0
+          storm-bot: ${{ env.STORM_BOT }}
+          storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
       - name: Build Storm Nx-Plugin packages
         run: pnpm build-plugins
