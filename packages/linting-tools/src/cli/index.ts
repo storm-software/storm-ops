@@ -188,7 +188,7 @@ async function allAction({
   manypkgArgs: string[];
 }) {
   try {
-    writeInfo("⚡ Linting the Storm Workspace", _config);
+    writeDebug("⚡ Linting the Storm Workspace", _config);
 
     const promises = [] as Promise<any>[];
     if (!skipCspell) {
@@ -282,7 +282,7 @@ async function alexAction({
   alexIgnore: string;
 }) {
   try {
-    writeInfo("⚡ Linting the workspace language with alexjs.com", _config);
+    writeDebug("⚡ Linting the workspace language with alexjs.com", _config);
 
     const result = await runAlex(alexConfig, alexIgnore);
     if (result) {
@@ -302,7 +302,7 @@ async function alexAction({
 
 async function depsVersionAction() {
   try {
-    writeInfo(
+    writeDebug(
       "⚡ Linting the workspace dependency version consistency",
       _config
     );
@@ -336,17 +336,18 @@ async function depsVersionAction() {
 
 async function circularDepsAction() {
   try {
-    writeInfo("⚡ Linting the workspace circular dependency", _config);
+    writeDebug("⚡ Linting the workspace circular dependency", _config);
 
     const circulars = parseCircular(
-      await parseDependencyTree(
-        ["**/*.*", "!**/node_modules", "!**/dist", "!**/tmp", "!**/coverage"],
-        {
-          tsconfig: "./tsconfig.base.json",
-          transform: true,
-          skipDynamicImports: false
-        }
-      ),
+      await parseDependencyTree(["**/*"], {
+        exclude: new RegExp(
+          "^(.*/(node_modules|dist|tmp|coverage|.nx|.cache|.next|__test__|__fixtures__)/).*"
+        ),
+        extensions: [".ts", ".tsx"],
+        tsconfig: "./tsconfig.base.json",
+        transform: true,
+        skipDynamicImports: false
+      }),
       true
     );
     if (circulars.length > 0) {
@@ -380,7 +381,7 @@ async function manypkgAction({
   manypkgArgs: string[];
 }) {
   try {
-    writeInfo("⚡ Linting the workspace's packages with Manypkg", _config);
+    writeDebug("⚡ Linting the workspace's packages with Manypkg", _config);
 
     await runManypkg(manypkgType, manypkgArgs);
 
