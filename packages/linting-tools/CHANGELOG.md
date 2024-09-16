@@ -1,3 +1,10 @@
+## 1.83.1 (2024-09-16)
+
+
+### Bug Fixes
+
+- **linting-tools:** Updated the paths provided to the circular dependency linter ([5c10a255](https://github.com/storm-software/storm-ops/commit/5c10a255))
+
 ## 1.83.0 (2024-09-15)
 
 ### Features
