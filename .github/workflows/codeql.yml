@@ -55,19 +55,17 @@ jobs:
           access_token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           workflow_id: ${{ github.event.workflow.id }}
 
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
-
       - name: Setup workspace
         uses: storm-software/action-setup@main
         with:
-          packageManager: pnpm
-          packageManagerVersion: 9.10.0
-          stormBot: Stormie-Bot
-          stormBotGitHubToken: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
+          package-manager: pnpm
+          package-manager-version: 9.10.0
+          storm-bot: Stormie-Bot
+          storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
+
+      - name: Build Storm Nx-Plugin packages
+        run: pnpm build-plugins
+        shell: bash
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL

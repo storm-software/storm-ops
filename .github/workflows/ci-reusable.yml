@@ -126,20 +126,13 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.STORM_BOT_TELEGRAM_TOKEN }}
           TELEGRAM_CHAT: ${{ secrets.STORM_BOT_TELEGRAM_NOTIFICATION_CHAT }}
 
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
-
       - name: Setup workspace
         uses: storm-software/action-setup@main
         with:
-          workingDirectory: ${{ inputs.working-directory }}
-          packageManager: ${{ inputs.package-manager }}
-          packageManagerVersion: ${{ inputs.package-manager-version }}
-          stormBot: ${{ inputs.storm-bot }}
-          stormBotGitHubToken: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
+          package-manager: ${{ inputs.package-manager }}
+          package-manager-version: ${{ inputs.package-manager-version }}
+          storm-bot: ${{ inputs.storm-bot }}
+          storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
       - name: Get appropriate base and head commits for `nx affected` commands
         uses: nrwl/nx-set-shas@v4
