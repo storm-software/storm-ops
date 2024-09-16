@@ -268,11 +268,8 @@ const setSingleThemeColorConfigEnv = (
   if (config.brand) {
     process.env[`${prefix}BRAND`] = config.brand;
   }
-  if (config.brand2) {
-    process.env[`${prefix}BRAND2`] = config.brand2;
-  }
-  if (config.brand3) {
-    process.env[`${prefix}BRAND3`] = config.brand3;
+  if (config.alternate) {
+    process.env[`${prefix}ALTERNATE`] = config.alternate;
   }
   if (config.accent) {
     process.env[`${prefix}ACCENT`] = config.accent;
@@ -320,11 +317,8 @@ const setBaseThemeColorConfigEnv = (
   if (config.brand) {
     process.env[`${prefix}BRAND`] = config.brand;
   }
-  if (config.brand2) {
-    process.env[`${prefix}BRAND2`] = config.brand2;
-  }
-  if (config.brand3) {
-    process.env[`${prefix}BRAND3`] = config.brand3;
+  if (config.alternate) {
+    process.env[`${prefix}ALTERNATE`] = config.alternate;
   }
   if (config.accent) {
     process.env[`${prefix}ACCENT`] = config.accent;
