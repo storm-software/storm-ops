@@ -1,3 +1,12 @@
+## 0.77.0 (2024-09-17)
+
+
+### Features
+
+- **eslint:** Include the updated typings for the preset's rules ([c41fe207](https://github.com/storm-software/storm-ops/commit/c41fe207))
+
+- **eslint:** Added additional paths to ignore list ([87c01e10](https://github.com/storm-software/storm-ops/commit/87c01e10))
+
 ## 0.76.1 (2024-09-16)
 
 

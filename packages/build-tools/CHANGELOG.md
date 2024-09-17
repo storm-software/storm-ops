@@ -1,9 +1,16 @@
-## 0.87.2 (2024-09-16)
+## 0.88.0 (2024-09-17)
 
+
+### Features
+
+- **eslint:** Include the updated typings for the preset's rules ([c41fe207](https://github.com/storm-software/storm-ops/commit/c41fe207))
+
+## 0.87.2 (2024-09-16)
 
 ### Bug Fixes
 
-- **eslint:** Resolve issue with invalid react file configurations ([524b22be](https://github.com/storm-software/storm-ops/commit/524b22be))
+- **eslint:** Resolve issue with invalid react file configurations
+  ([524b22be](https://github.com/storm-software/storm-ops/commit/524b22be))
 
 ## 0.87.1 (2024-09-16)
 
