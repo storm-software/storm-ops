@@ -1,9 +1,16 @@
-## 0.88.0 (2024-09-17)
+## 0.88.1 (2024-09-17)
 
+
+### Bug Fixes
+
+- **eslint:** Resolve invalid import path issue ([f9c60c86](https://github.com/storm-software/storm-ops/commit/f9c60c86))
+
+## 0.88.0 (2024-09-17)
 
 ### Features
 
-- **eslint:** Include the updated typings for the preset's rules ([c41fe207](https://github.com/storm-software/storm-ops/commit/c41fe207))
+- **eslint:** Include the updated typings for the preset's rules
+  ([c41fe207](https://github.com/storm-software/storm-ops/commit/c41fe207))
 
 ## 0.87.2 (2024-09-16)
 

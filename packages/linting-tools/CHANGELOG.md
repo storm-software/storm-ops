@@ -1,3 +1,10 @@
+## 1.83.3 (2024-09-17)
+
+
+### Bug Fixes
+
+- **eslint:** Resolve invalid import path issue ([f9c60c86](https://github.com/storm-software/storm-ops/commit/f9c60c86))
+
 ## 1.83.2 (2024-09-16)
 
 
