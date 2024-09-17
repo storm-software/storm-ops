@@ -1,9 +1,16 @@
-## 0.88.1 (2024-09-17)
+## 0.89.0 (2024-09-17)
 
+
+### Features
+
+- **eslint:** Include updated linting types ([9c415747](https://github.com/storm-software/storm-ops/commit/9c415747))
+
+## 0.88.1 (2024-09-17)
 
 ### Bug Fixes
 
-- **eslint:** Resolve invalid import path issue ([f9c60c86](https://github.com/storm-software/storm-ops/commit/f9c60c86))
+- **eslint:** Resolve invalid import path issue
+  ([f9c60c86](https://github.com/storm-software/storm-ops/commit/f9c60c86))
 
 ## 0.88.0 (2024-09-17)
 

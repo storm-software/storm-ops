@@ -1,3 +1,10 @@
+## 0.78.0 (2024-09-17)
+
+
+### Features
+
+- **eslint:** Include updated linting types ([9c415747](https://github.com/storm-software/storm-ops/commit/9c415747))
+
 ## 0.77.1 (2024-09-17)
 
 
