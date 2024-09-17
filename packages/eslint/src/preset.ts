@@ -12,9 +12,9 @@ import type { Linter } from "eslint";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import markdown from "eslint-plugin-markdown";
 import prettierConfig from "eslint-plugin-prettier/recommended";
+import react from "eslint-plugin-react";
 import reactCompiler from "eslint-plugin-react-compiler";
 import reactHooks from "eslint-plugin-react-hooks";
-import react from "eslint-plugin-react/configs/recommended";
 import tsdoc from "eslint-plugin-tsdoc";
 import unicorn from "eslint-plugin-unicorn";
 import yml from "eslint-plugin-yml";
@@ -285,7 +285,7 @@ export function getStormConfig(
           "node_modules",
           ...(options.ignores || [])
         ],
-        ...react
+        ...react.configs?.recommended
       },
       {
         files: ["**/*.tsx"],
