@@ -204,7 +204,6 @@ export function getStormConfig(
         "window": "readonly",
         "Storm": "readonly"
       },
-      ecmaVersion: "latest",
       parserOptions: {
         emitDecoratorMetadata: true,
         experimentalDecorators: true,
@@ -216,7 +215,10 @@ export function getStormConfig(
           "**/dist/**",
           "**/coverage/**",
           "**/tmp/**",
-          "**/.nx/**"
+          "**/.nx/**",
+          "**/.tamagui/**",
+          "**/.next/**",
+          ...(options.ignores || [])
         ],
         ...options.parserOptions
       }
@@ -255,11 +257,13 @@ export function getStormConfig(
       ...(options.rules ?? {})
     },
     ignores: [
-      "dist",
-      "coverage",
-      "tmp",
-      ".nx",
-      "node_modules",
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/coverage/**",
+      "**/tmp/**",
+      "**/.nx/**",
+      "**/.tamagui/**",
+      "**/.next/**",
       ...(options.ignores || [])
     ]
   };
