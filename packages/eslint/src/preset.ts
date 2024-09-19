@@ -277,11 +277,13 @@ export function getStormConfig(
       {
         files: ["**/*.tsx"],
         ignores: [
-          "dist",
-          "coverage",
-          "tmp",
-          ".nx",
-          "node_modules",
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/coverage/**",
+          "**/tmp/**",
+          "**/.nx/**",
+          "**/.tamagui/**",
+          "**/.next/**",
           ...(options.ignores || [])
         ],
         ...react.configs?.recommended
