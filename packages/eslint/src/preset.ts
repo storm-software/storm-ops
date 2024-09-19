@@ -83,19 +83,16 @@ export function getStormConfig(
 ): Linter.FlatConfig[] {
   const configs: Linter.FlatConfig[] = [
     // https://eslint.org/docs/latest/rules/
-    // eslint.configs.recommended,
+    eslint.configs.recommended,
 
     // https://typescript-eslint.io/
-    // ...tsEslint.configs.recommended.map(config => ({
-    //   ...config,
-    //   files: [TS_FILE] // We use TS config only for TS files
-    // })),
+    ...tsEslint.configs.recommended.map(config => ({
+      ...config,
+      files: [TS_FILE] // We use TS config only for TS files
+    })),
 
     // https://github.com/sindresorhus/eslint-plugin-unicorn
-    // {
-    //   ...unicorn.configs["flat/recommended"],
-    //   files: ["**/*.ts"]
-    // } as Linter.FlatConfig,
+    unicorn.configs["flat/recommended"] as Linter.FlatConfig,
 
     // Prettier
     prettierConfig,
@@ -110,7 +107,7 @@ export function getStormConfig(
 
     // Banner
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    banner.configs!["recommended"]![0],
+    ...(banner.configs!["recommended"] as Linter.FlatConfig[]),
 
     // TSDoc
     // https://www.npmjs.com/package/eslint-plugin-tsdoc
@@ -129,7 +126,7 @@ export function getStormConfig(
     // https://www.npmjs.com/package/eslint-plugin-json
     // json.configs["recommended-with-comments"],
     {
-      files: ["*.json", "*.jsonc"],
+      files: ["*.jsonc"],
       languageOptions: {
         parser: jsoncParser
       }
@@ -190,7 +187,7 @@ export function getStormConfig(
 
   // TypeScript
   const typescriptConfig: Linter.FlatConfig<Linter.RulesRecord> = {
-    files: ["**/*.ts"],
+    files: [TS_FILE],
     languageOptions: {
       globals: {
         ...Object.fromEntries(
@@ -227,34 +224,34 @@ export function getStormConfig(
     },
     rules: {
       // // https://eslint.org/docs/latest/rules/
-      ...eslint.configs.recommended.rules,
+      // ...eslint.configs.recommended.rules,
 
       // // https://typescript-eslint.io/
-      ...tsEslint.configs.recommended.reduce(
-        (ret, record) => ({ ...ret, ...record.rules }),
-        {}
-      ),
+      // ...tsEslint.configs.recommended.reduce(
+      //   (ret, record) => ({ ...ret, ...record.rules }),
+      //   {}
+      // ),
 
-      // Prettier
-      ...prettierConfig.rules,
+      // // Prettier
+      // ...prettierConfig.rules,
 
-      // https://www.npmjs.com/package/eslint-plugin-unicorn
-      ...unicorn.configs["flat/recommended"].rules,
+      // // https://www.npmjs.com/package/eslint-plugin-unicorn
+      // ...unicorn.configs["flat/recommended"].rules,
 
       // Banner
-      ...banner.configs!["recommended"]![1]?.rules,
+      // ...banner.configs!["recommended"]![1]?.rules,
 
       ...stormRules,
 
-      "banner/banner": [
-        "error",
-        {
-          repositoryName: options.name,
-          banner: options.banner,
-          commentType: "block",
-          numNewlines: 2
-        }
-      ],
+      // "banner/banner": [
+      //   "error",
+      //   {
+      //     repositoryName: options.name,
+      //     banner: options.banner,
+      //     commentType: "block",
+      //     numNewlines: 2
+      //   }
+      // ],
 
       ...(options.rules ?? {})
     },

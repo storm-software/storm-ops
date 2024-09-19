@@ -444,7 +444,10 @@ const plugin: ESLint.Plugin = {
 
 plugin.configs &&
   (plugin.configs.recommended = [
-    { name: "banner/recommended/plugin", plugins: { banner: plugin } },
+    {
+      name: "banner/recommended/plugin",
+      plugins: { banner: plugin }
+    },
     {
       name: "banner/recommended/code-files",
       files: [
