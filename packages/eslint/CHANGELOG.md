@@ -1,3 +1,19 @@
+## 0.79.0 (2024-09-19)
+
+
+### Features
+
+- **eslint:** Added proper json linting rules ([41809865](https://github.com/storm-software/storm-ops/commit/41809865))
+
+- **eslint:** Suspend the rules generation ([b2cd5d00](https://github.com/storm-software/storm-ops/commit/b2cd5d00))
+
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with rules declaration generation ([75e134d6](https://github.com/storm-software/storm-ops/commit/75e134d6))
+
+- **eslint:** Resolve issue with json rules configuration ([596131cd](https://github.com/storm-software/storm-ops/commit/596131cd))
+
 ## 0.78.7 (2024-09-19)
 
 

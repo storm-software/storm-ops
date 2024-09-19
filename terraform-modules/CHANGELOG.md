@@ -1,3 +1,10 @@
+## 0.33.0 (2024-09-19)
+
+
+### Features
+
+- **eslint:** Added proper json linting rules ([41809865](https://github.com/storm-software/storm-ops/commit/41809865))
+
 ## 0.32.7 (2024-09-19)
 
 
