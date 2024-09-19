@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/terraform-tools",
-  "version": "0.18.4",
+  "version": "0.18.5",
   "type": "commonjs",
   "description": "⚡ A Nx plugin package that contains various executors, generators, and utilities that assist in managing Terraform IoC.",
   "repository": {

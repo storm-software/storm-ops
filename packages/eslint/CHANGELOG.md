@@ -1,3 +1,10 @@
+## 0.78.5 (2024-09-19)
+
+
+### Bug Fixes
+
+- **eslint:** Remove eslint configuration duplicates ([124cead3](https://github.com/storm-software/storm-ops/commit/124cead3))
+
 ## 0.78.4 (2024-09-19)
 
 
