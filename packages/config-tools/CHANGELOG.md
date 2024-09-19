@@ -1,9 +1,16 @@
-## 1.97.2 (2024-09-19)
+## 1.97.3 (2024-09-19)
 
 
 ### Bug Fixes
 
-- **eslint:** Resolve issue with invalid ignores configuration ([82c68cad](https://github.com/storm-software/storm-ops/commit/82c68cad))
+- **eslint:** Resolve issue with files in typescript rules ([02f728a3](https://github.com/storm-software/storm-ops/commit/02f728a3))
+
+## 1.97.2 (2024-09-19)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid ignores configuration
+  ([82c68cad](https://github.com/storm-software/storm-ops/commit/82c68cad))
 
 ## 1.97.1 (2024-09-19)
 
