@@ -1,3 +1,10 @@
+## 0.32.7 (2024-09-19)
+
+
+### Bug Fixes
+
+- **eslint:** Remove typescript-eslint configuration ([03acaaf9](https://github.com/storm-software/storm-ops/commit/03acaaf9))
+
 ## 0.32.6 (2024-09-19)
 
 

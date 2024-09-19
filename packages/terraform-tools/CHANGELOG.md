@@ -1,9 +1,16 @@
-## 0.18.6 (2024-09-19)
+## 0.18.7 (2024-09-19)
 
 
 ### Bug Fixes
 
-- **eslint:** Resolved issue with invalid TypeScript configuration ([15f45cf8](https://github.com/storm-software/storm-ops/commit/15f45cf8))
+- **eslint:** Remove typescript-eslint configuration ([03acaaf9](https://github.com/storm-software/storm-ops/commit/03acaaf9))
+
+## 0.18.6 (2024-09-19)
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with invalid TypeScript configuration
+  ([15f45cf8](https://github.com/storm-software/storm-ops/commit/15f45cf8))
 
 ## 0.18.5 (2024-09-19)
 
