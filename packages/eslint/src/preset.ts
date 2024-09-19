@@ -88,7 +88,7 @@ export function getStormConfig(
     // https://typescript-eslint.io/
     ...tsEslint.configs.recommended.map(config => ({
       ...config,
-      files: ["**/*.ts"] // We use TS config only for TS files
+      files: [TS_FILE] // We use TS config only for TS files
     })),
 
     // https://github.com/sindresorhus/eslint-plugin-unicorn
