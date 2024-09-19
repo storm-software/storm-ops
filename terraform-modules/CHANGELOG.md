@@ -1,3 +1,10 @@
+## 0.32.2 (2024-09-19)
+
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid ignores configuration ([82c68cad](https://github.com/storm-software/storm-ops/commit/82c68cad))
+
 ## 0.32.1 (2024-09-19)
 
 
