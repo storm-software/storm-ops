@@ -1,9 +1,16 @@
-## 1.186.0 (2024-09-17)
+## 1.186.1 (2024-09-19)
 
+
+### Bug Fixes
+
+- **eslint:** Remove the jsa11y extension ([60a44018](https://github.com/storm-software/storm-ops/commit/60a44018))
+
+## 1.186.0 (2024-09-17)
 
 ### Features
 
-- **eslint:** Include updated linting types ([9c415747](https://github.com/storm-software/storm-ops/commit/9c415747))
+- **eslint:** Include updated linting types
+  ([9c415747](https://github.com/storm-software/storm-ops/commit/9c415747))
 
 ## 1.185.1 (2024-09-17)
 

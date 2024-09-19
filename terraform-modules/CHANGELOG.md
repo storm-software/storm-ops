@@ -1,3 +1,10 @@
+## 0.32.1 (2024-09-19)
+
+
+### Bug Fixes
+
+- **eslint:** Remove the jsa11y extension ([60a44018](https://github.com/storm-software/storm-ops/commit/60a44018))
+
 ## 0.32.0 (2024-09-17)
 
 
