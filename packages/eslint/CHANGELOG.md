@@ -1,3 +1,10 @@
+## 0.83.2 (2024-09-19)
+
+
+### Bug Fixes
+
+- **eslint:** Ensure the banner is properly applied during formatting ([0c4a3e68](https://github.com/storm-software/storm-ops/commit/0c4a3e68))
+
 ## 0.83.1 (2024-09-19)
 
 
