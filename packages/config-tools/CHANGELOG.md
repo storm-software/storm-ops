@@ -1,9 +1,16 @@
-## 1.97.5 (2024-09-19)
+## 1.97.6 (2024-09-19)
 
 
 ### Bug Fixes
 
-- **eslint:** Remove eslint configuration duplicates ([124cead3](https://github.com/storm-software/storm-ops/commit/124cead3))
+- **eslint:** Resolved issue with invalid TypeScript configuration ([15f45cf8](https://github.com/storm-software/storm-ops/commit/15f45cf8))
+
+## 1.97.5 (2024-09-19)
+
+### Bug Fixes
+
+- **eslint:** Remove eslint configuration duplicates
+  ([124cead3](https://github.com/storm-software/storm-ops/commit/124cead3))
 
 ## 1.97.4 (2024-09-19)
 
