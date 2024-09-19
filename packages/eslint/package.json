@@ -96,7 +96,7 @@
     "globals": "^15.8.0",
     "jsonc-eslint-parser": "2.4.0",
     "synckit": "0.9.0",
-    "typescript-eslint": "7.16.0",
+    "typescript-eslint": "8.6.0",
     "ws": "8.17.1",
     "yaml-eslint-parser": "1.2.3"
   },

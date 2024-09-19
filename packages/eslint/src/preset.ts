@@ -81,7 +81,7 @@ export function getStormConfig(
   },
   ...userConfigs: Linter.FlatConfig[]
 ): Linter.FlatConfig[] {
-  const useTypeScriptEslint = options.useTypeScriptEslint ?? true;
+  const tsConfigType = options.tsConfigType || "eslint-recommended";
   const useUnicorn = options.useUnicorn ?? true;
   const react = options.react ?? {};
   const useReactCompiler = options.useReactCompiler ?? false;
@@ -181,13 +181,13 @@ export function getStormConfig(
     ...(userConfigs as Linter.FlatConfig[])
   ].filter(Boolean) as Linter.FlatConfig[];
 
-  if (useTypeScriptEslint) {
+  if (tsConfigType !== "none") {
     // https://typescript-eslint.io/
     configs.push(
-      ...(tsEslint.configs.recommended.map(config => ({
+      ...((tsEslint.configs[tsConfigType]?.map(config => ({
         ...config,
         files: [TS_FILE] // We use TS config only for TS files
-      })) as Linter.FlatConfig<Linter.RulesRecord>[])
+      })) ?? []) as Linter.FlatConfig<Linter.RulesRecord>[])
     );
   }
 
@@ -239,7 +239,7 @@ export function getStormConfig(
       }
     },
     rules: {
-      ...getStormRulesConfig({ ...options, useTypeScriptEslint, useUnicorn }),
+      ...getStormRulesConfig({ ...options, tsConfigType, useUnicorn }),
       ...(options.rules ?? {})
     },
     ignores: [

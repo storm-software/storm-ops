@@ -1,7 +1,22 @@
 import type { Linter } from "eslint";
 
+export type TypeScriptEslintConfigType =
+  | "none"
+  | "all"
+  | "base"
+  | "disable-type-checked"
+  | "eslint-recommended"
+  | "recommended-type-checked-only"
+  | "recommended-type-checked"
+  | "recommended"
+  | "strict-type-checked"
+  | "strict"
+  | "stylistic-type-checked-only"
+  | "stylistic-type-checked"
+  | "stylistic";
+
 export interface GetStormRulesConfigOptions {
-  useTypeScriptEslint?: boolean;
+  tsConfigType?: TypeScriptEslintConfigType;
   useUnicorn?: boolean;
 }
 
@@ -1108,7 +1123,7 @@ export const getStormRulesConfig = (
     ]
   };
 
-  if (options.useTypeScriptEslint) {
+  if (options.tsConfigType !== "none") {
     rules = {
       ...rules,
 
@@ -1167,7 +1182,7 @@ export const getStormRulesConfig = (
     };
   }
 
-  if (options.useUnicorn) {
+  if (options.useUnicorn !== false) {
     rules = {
       ...rules,
 
