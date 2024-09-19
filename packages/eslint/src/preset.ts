@@ -84,8 +84,13 @@ export function getStormConfig(
   const configs: Linter.FlatConfig[] = [
     // https://eslint.org/docs/latest/rules/
     eslint.configs.recommended,
+
     // https://typescript-eslint.io/
-    ...(tsEslint.configs.recommended as Linter.FlatConfig[]),
+    ...tsEslint.configs.recommended.map(config => ({
+      ...config,
+      files: [TS_FILE] // We use TS config only for TS files
+    })),
+
     // https://github.com/sindresorhus/eslint-plugin-unicorn
     unicorn.configs["flat/recommended"] as Linter.FlatConfig,
 
