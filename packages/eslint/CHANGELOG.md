@@ -1,3 +1,10 @@
+## 0.83.0 (2024-09-19)
+
+
+### Features
+
+- **eslint:** Added the `tsConfigType` configuration parameter ([814734c7](https://github.com/storm-software/storm-ops/commit/814734c7))
+
 ## 0.82.0 (2024-09-19)
 
 
