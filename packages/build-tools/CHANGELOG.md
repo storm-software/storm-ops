@@ -1,14 +1,22 @@
-## 0.93.0 (2024-09-19)
-
-
-### Features
-
-- **eslint:** Added the `useTypeScriptESLint` and `useUnicorn` optional parameters ([60eb6e2e](https://github.com/storm-software/storm-ops/commit/60eb6e2e))
+## 0.93.1 (2024-09-19)
 
 
 ### Bug Fixes
 
-- **eslint:** Resolve build issue in package ([78140ff2](https://github.com/storm-software/storm-ops/commit/78140ff2))
+- **eslint:** Resolved issue with scenario where invalid TypeScript configuration is provided ([4db77c97](https://github.com/storm-software/storm-ops/commit/4db77c97))
+
+## 0.93.0 (2024-09-19)
+
+### Features
+
+- **eslint:** Added the `useTypeScriptESLint` and `useUnicorn` optional
+  parameters
+  ([60eb6e2e](https://github.com/storm-software/storm-ops/commit/60eb6e2e))
+
+### Bug Fixes
+
+- **eslint:** Resolve build issue in package
+  ([78140ff2](https://github.com/storm-software/storm-ops/commit/78140ff2))
 
 ## 0.92.0 (2024-09-19)
 

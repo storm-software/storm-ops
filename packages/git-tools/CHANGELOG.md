@@ -1,3 +1,10 @@
+## 2.61.1 (2024-09-19)
+
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with scenario where invalid TypeScript configuration is provided ([4db77c97](https://github.com/storm-software/storm-ops/commit/4db77c97))
+
 ## 2.61.0 (2024-09-19)
 
 
