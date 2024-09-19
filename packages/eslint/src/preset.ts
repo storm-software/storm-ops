@@ -92,7 +92,10 @@ export function getStormConfig(
     })),
 
     // https://github.com/sindresorhus/eslint-plugin-unicorn
-    unicorn.configs["flat/recommended"] as Linter.FlatConfig,
+    {
+      ...(unicorn.configs["flat/recommended"] as Linter.FlatConfig),
+      files: ["**/*.ts"]
+    },
 
     // Prettier
     prettierConfig,
@@ -187,7 +190,7 @@ export function getStormConfig(
 
   // TypeScript
   const typescriptConfig: Linter.FlatConfig<Linter.RulesRecord> = {
-    files: [TS_FILE],
+    files: ["**/*.ts"],
     languageOptions: {
       globals: {
         ...Object.fromEntries(
@@ -274,6 +277,55 @@ export function getStormConfig(
   if (options.react) {
     // TSX - React
     const reactConfigs: Linter.FlatConfig<Linter.RulesRecord>[] = [
+      {
+        files: ["**/*.tsx"],
+        languageOptions: {
+          globals: {
+            ...Object.fromEntries(
+              Object.keys(globals).flatMap(group =>
+                Object.keys(globals[group as keyof typeof globals]).map(key => [
+                  key,
+                  "readonly"
+                ])
+              )
+            ),
+            ...globals.browser,
+            ...globals.node,
+            "window": "readonly",
+            "Storm": "readonly"
+          },
+          parserOptions: {
+            emitDecoratorMetadata: true,
+            experimentalDecorators: true,
+            project: options.tsconfig
+              ? options.tsconfig
+              : "./tsconfig.base.json",
+            projectService: true,
+            sourceType: "module",
+            projectFolderIgnoreList: [
+              "**/node_modules/**",
+              "**/dist/**",
+              "**/coverage/**",
+              "**/tmp/**",
+              "**/.nx/**",
+              "**/.tamagui/**",
+              "**/.next/**",
+              ...(options.ignores || [])
+            ],
+            ...options.parserOptions
+          }
+        },
+        ignores: [
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/coverage/**",
+          "**/tmp/**",
+          "**/.nx/**",
+          "**/.tamagui/**",
+          "**/.next/**",
+          ...(options.ignores || [])
+        ]
+      },
       {
         files: ["**/*.tsx"],
         ignores: [
