@@ -19,7 +19,6 @@ import unicorn from "eslint-plugin-unicorn";
 import yml from "eslint-plugin-yml";
 import globals from "globals";
 import jsoncParser from "jsonc-eslint-parser";
-import tsEslint from "typescript-eslint";
 import type { RuleOptions } from "./rules.d";
 // import jsxA11yRules from "./rules/jsx-a11y";
 // import reactRules from "./rules/react";
@@ -86,10 +85,10 @@ export function getStormConfig(
     eslint.configs.recommended,
 
     // https://typescript-eslint.io/
-    ...tsEslint.configs.recommended.map(config => ({
-      ...config,
-      files: [TS_FILE] // We use TS config only for TS files
-    })),
+    // ...tsEslint.configs.recommended.map(config => ({
+    //   ...config,
+    //   files: [TS_FILE] // We use TS config only for TS files
+    // })),
 
     // https://github.com/sindresorhus/eslint-plugin-unicorn
     unicorn.configs["flat/recommended"] as Linter.FlatConfig,
@@ -224,7 +223,7 @@ export function getStormConfig(
     },
     rules: {
       // // https://eslint.org/docs/latest/rules/
-      // ...eslint.configs.recommended.rules,
+      ...eslint.configs.recommended.rules,
 
       // // https://typescript-eslint.io/
       // ...tsEslint.configs.recommended.reduce(

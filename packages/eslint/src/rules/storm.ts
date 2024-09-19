@@ -1084,52 +1084,52 @@ const config: Linter.RulesRecord = {
    *
    **************************************************************/
 
-  "@typescript-eslint/no-explicit-any": "off",
-  "@typescript-eslint/no-empty-function": "off",
-  "@typescript-eslint/no-var-requires": "off",
-  "@typescript-eslint/ban-ts-comment": "off",
-  "@typescript-eslint/no-empty-interface": "off",
-  "@typescript-eslint/explicit-module-boundary-types": "off",
-  "@typescript-eslint/explicit-function-return-type": "off",
-  "@typescript-eslint/no-unused-vars": [
-    "warn",
-    { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }
-  ],
-  "@typescript-eslint/prefer-nullish-coalescing": [
-    "error",
-    {
-      ignorePrimitives: {
-        string: true
-      }
-    }
-  ],
-  "@typescript-eslint/no-restricted-imports": [
-    "error",
-    {
-      "patterns": [
-        {
-          "group": ["nx/src/plugins/js*"],
-          "message":
-            "Imports from 'nx/src/plugins/js' are not allowed. Use '@nx/js' instead"
-        },
-        {
-          "group": ["**/native-bindings", "**/native-bindings.js"],
-          "message":
-            "Direct imports from native-bindings.js are not allowed. Import from index.js instead."
-        },
-        {
-          "group": ["create-storm-workspace"],
-          "message":
-            "Direct imports from `create-storm-workspace` are not allowed. Instead install this package globally (example: 'npm i create-storm-workspace -g')."
-        },
-        {
-          "group": ["create-nx-workspace"],
-          "message":
-            "Direct imports from `create-nx-workspace` are not allowed. Instead install this package globally (example: 'npm i create-nx-workspace -g')."
-        }
-      ]
-    }
-  ],
+  // "@typescript-eslint/no-explicit-any": "off",
+  // "@typescript-eslint/no-empty-function": "off",
+  // "@typescript-eslint/no-var-requires": "off",
+  // "@typescript-eslint/ban-ts-comment": "off",
+  // "@typescript-eslint/no-empty-interface": "off",
+  // "@typescript-eslint/explicit-module-boundary-types": "off",
+  // "@typescript-eslint/explicit-function-return-type": "off",
+  // "@typescript-eslint/no-unused-vars": [
+  //   "warn",
+  //   { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }
+  // ],
+  // "@typescript-eslint/prefer-nullish-coalescing": [
+  //   "error",
+  //   {
+  //     ignorePrimitives: {
+  //       string: true
+  //     }
+  //   }
+  // ],
+  // "@typescript-eslint/no-restricted-imports": [
+  //   "error",
+  //   {
+  //     "patterns": [
+  //       {
+  //         "group": ["nx/src/plugins/js*"],
+  //         "message":
+  //           "Imports from 'nx/src/plugins/js' are not allowed. Use '@nx/js' instead"
+  //       },
+  //       {
+  //         "group": ["**/native-bindings", "**/native-bindings.js"],
+  //         "message":
+  //           "Direct imports from native-bindings.js are not allowed. Import from index.js instead."
+  //       },
+  //       {
+  //         "group": ["create-storm-workspace"],
+  //         "message":
+  //           "Direct imports from `create-storm-workspace` are not allowed. Instead install this package globally (example: 'npm i create-storm-workspace -g')."
+  //       },
+  //       {
+  //         "group": ["create-nx-workspace"],
+  //         "message":
+  //           "Direct imports from `create-nx-workspace` are not allowed. Instead install this package globally (example: 'npm i create-nx-workspace -g')."
+  //       }
+  //     ]
+  //   }
+  // ],
 
   /*************************************************************
    *
