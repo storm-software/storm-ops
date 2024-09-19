@@ -75,6 +75,8 @@ export function getStormConfig(
     ignores: [],
     tsconfig: "./tsconfig.base.json",
     parserOptions: {},
+    tsConfigType: "eslint-recommended",
+    useUnicorn: true,
     markdown: {},
     react: {},
     useReactCompiler: false
@@ -87,9 +89,6 @@ export function getStormConfig(
   const useReactCompiler = options.useReactCompiler ?? false;
 
   const configs: Linter.FlatConfig[] = [
-    // https://eslint.org/docs/latest/rules/
-    eslint.configs.recommended,
-
     // Prettier
     prettierConfig,
 
@@ -104,14 +103,6 @@ export function getStormConfig(
     // Banner
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     ...(banner.configs!["recommended"] as Linter.FlatConfig[]),
-
-    // TSDoc
-    // https://www.npmjs.com/package/eslint-plugin-tsdoc
-    {
-      files: [TS_FILE],
-      plugins: { tsdoc },
-      rules: tsdocRules
-    },
 
     // NX
     {
@@ -181,19 +172,30 @@ export function getStormConfig(
     ...(userConfigs as Linter.FlatConfig[])
   ].filter(Boolean) as Linter.FlatConfig[];
 
+  const typescriptConfigs: Linter.FlatConfig<Linter.RulesRecord>[] = [
+    eslint.configs.recommended
+  ];
+
   if (tsConfigType !== "none") {
     // https://typescript-eslint.io/
-    configs.push(
-      ...((tsEslint.configs[tsConfigType]?.map(config => ({
-        ...config,
-        files: [TS_FILE] // We use TS config only for TS files
-      })) ?? []) as Linter.FlatConfig<Linter.RulesRecord>[])
-    );
+    if (!(tsConfigType in tsEslint.configs)) {
+      console.warn(
+        "Invalid TypeScript ESLint configuration type:",
+        tsConfigType
+      );
+    } else {
+      typescriptConfigs.push(
+        ...((tsEslint.configs[tsConfigType]?.map(config => ({
+          ...config,
+          files: [TS_FILE]
+        })) ?? []) as Linter.FlatConfig<Linter.RulesRecord>[])
+      );
+    }
   }
 
   if (useUnicorn) {
     // https://www.npmjs.com/package/eslint-plugin-unicorn
-    configs.push({
+    typescriptConfigs.push({
       plugins: { unicorn },
       rules: {
         ...unicorn.configs["flat/recommended"].rules
@@ -201,60 +203,75 @@ export function getStormConfig(
     });
   }
 
-  // TypeScript
-  const typescriptConfig: Linter.FlatConfig<Linter.RulesRecord> = {
+  // TSDoc
+  // https://www.npmjs.com/package/eslint-plugin-tsdoc
+  typescriptConfigs.push({
     files: [TS_FILE],
-    languageOptions: {
-      globals: {
-        ...Object.fromEntries(
-          Object.keys(globals).flatMap(group =>
-            Object.keys(globals[group as keyof typeof globals]).map(key => [
-              key,
-              "readonly"
-            ])
-          )
-        ),
-        ...globals.browser,
-        ...globals.node,
-        "window": "readonly",
-        "Storm": "readonly"
-      },
-      parserOptions: {
-        emitDecoratorMetadata: true,
-        experimentalDecorators: true,
-        project: options.tsconfig ? options.tsconfig : "./tsconfig.base.json",
-        projectService: true,
-        sourceType: "module",
-        projectFolderIgnoreList: [
-          "**/node_modules/**",
-          "**/dist/**",
-          "**/coverage/**",
-          "**/tmp/**",
-          "**/.nx/**",
-          "**/.tamagui/**",
-          "**/.next/**",
-          ...(options.ignores || [])
-        ],
-        ...options.parserOptions
-      }
-    },
-    rules: {
-      ...getStormRulesConfig({ ...options, tsConfigType, useUnicorn }),
-      ...(options.rules ?? {})
-    },
-    ignores: [
-      "**/node_modules/**",
-      "**/dist/**",
-      "**/coverage/**",
-      "**/tmp/**",
-      "**/.nx/**",
-      "**/.tamagui/**",
-      "**/.next/**",
-      ...(options.ignores || [])
-    ]
-  };
+    plugins: { tsdoc },
+    rules: tsdocRules
+  });
 
-  configs.push(typescriptConfig);
+  typescriptConfigs.push(
+    ...(banner.configs![
+      "recommended"
+    ] as Linter.FlatConfig<Linter.RulesRecord>[])
+  );
+
+  // TypeScript
+  configs.push(
+    ...(tsEslint.config({
+      files: [TS_FILE],
+      extends: typescriptConfigs,
+      languageOptions: {
+        globals: {
+          ...Object.fromEntries(
+            Object.keys(globals).flatMap(group =>
+              Object.keys(globals[group as keyof typeof globals]).map(key => [
+                key,
+                "readonly"
+              ])
+            )
+          ),
+          ...globals.browser,
+          ...globals.node,
+          "window": "readonly",
+          "Storm": "readonly"
+        },
+        parserOptions: {
+          emitDecoratorMetadata: true,
+          experimentalDecorators: true,
+          project: options.tsconfig ? options.tsconfig : "./tsconfig.base.json",
+          projectService: true,
+          sourceType: "module",
+          projectFolderIgnoreList: [
+            "**/node_modules/**",
+            "**/dist/**",
+            "**/coverage/**",
+            "**/tmp/**",
+            "**/.nx/**",
+            "**/.tamagui/**",
+            "**/.next/**",
+            ...(options.ignores || [])
+          ],
+          ...options.parserOptions
+        }
+      },
+      rules: {
+        ...getStormRulesConfig({ ...options, tsConfigType, useUnicorn }),
+        ...(options.rules ?? {})
+      },
+      ignores: [
+        "**/node_modules/**",
+        "**/dist/**",
+        "**/coverage/**",
+        "**/tmp/**",
+        "**/.nx/**",
+        "**/.tamagui/**",
+        "**/.next/**",
+        ...(options.ignores || [])
+      ]
+    }) as Linter.FlatConfig<Linter.RulesRecord>[])
+  );
 
   // React
   // https://www.npmjs.com/package/eslint-plugin-react
