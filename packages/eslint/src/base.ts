@@ -1,3 +1,7 @@
+import { FlatCompat } from "@eslint/eslintrc";
+import { findWorkspaceRoot } from "@storm-software/config-tools";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+import typescriptEslintParser from "@typescript-eslint/parser";
 import type { Linter } from "eslint";
 import esXPlugin from "eslint-plugin-es-x";
 import importPlugin from "eslint-plugin-import";
@@ -5,12 +9,8 @@ import nPlugin from "eslint-plugin-n";
 import prettierPlugin from "eslint-plugin-prettier";
 import promisePlugin from "eslint-plugin-promise";
 import sonarjsPlugin from "eslint-plugin-sonarjs";
-import { FlatCompat } from "@eslint/eslintrc";
-import { findWorkspaceRoot } from "@storm-software/config-tools";
-import tsPlugin from "@typescript-eslint/eslint-plugin";
-import typescriptEslintParser from "@typescript-eslint/parser";
 import importRules from "./rules/import";
-import stormRules from "./rules/storm";
+import { getStormRulesConfig } from "./rules/storm";
 import { formatConfig, ignores } from "./utils";
 import {
   CODE_BLOCK,
@@ -211,7 +211,7 @@ const config: Linter.FlatConfig[] = [
       "no-negated-condition": "off",
       "no-self-compare": "error",
       eqeqeq: ["error", "always", { null: "ignore" }],
-      // 'prefer-destructuring': [ // TODO: Rediscuss later
+      // 'prefer-destructuring': [
       //   'error',
       //   {
       //     VariableDeclarator: { array: false, object: true },
@@ -228,7 +228,7 @@ const config: Linter.FlatConfig[] = [
       // https://typescript-eslint.io/rules/return-await/
       "@typescript-eslint/return-await": "error",
       ...importRules,
-      ...stormRules
+      ...getStormRulesConfig({})
     }
   },
   {
