@@ -1,9 +1,16 @@
-## 1.98.0 (2024-09-19)
+## 1.99.0 (2024-09-19)
 
 
 ### Features
 
-- **eslint:** Added proper json linting rules ([41809865](https://github.com/storm-software/storm-ops/commit/41809865))
+- **terraform-modules:** Added EKS terraform module ([01cc04ff](https://github.com/storm-software/storm-ops/commit/01cc04ff))
+
+## 1.98.0 (2024-09-19)
+
+### Features
+
+- **eslint:** Added proper json linting rules
+  ([41809865](https://github.com/storm-software/storm-ops/commit/41809865))
 
 ## 1.97.7 (2024-09-19)
 

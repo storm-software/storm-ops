@@ -1,3 +1,10 @@
+## 0.34.0 (2024-09-19)
+
+
+### Features
+
+- **terraform-modules:** Added EKS terraform module ([01cc04ff](https://github.com/storm-software/storm-ops/commit/01cc04ff))
+
 ## 0.33.0 (2024-09-19)
 
 
