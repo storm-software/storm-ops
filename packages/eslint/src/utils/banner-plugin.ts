@@ -443,28 +443,23 @@ const plugin: ESLint.Plugin = {
 };
 
 plugin.configs &&
-  (plugin.configs.recommended = [
-    {
-      name: "banner/recommended/plugin",
-      plugins: { banner: plugin }
-    },
-    {
-      name: "banner/recommended/code-files",
-      files: [
-        CODE_FILE,
-        "!**/docs/**/*",
-        "!**/crates/**/*",
-        "!**/tmp/**/*",
-        "!**/dist/**/*",
-        "!**/coverage/**/*",
-        "!**/node_modules/**/*",
-        "!**/.cache/**/*",
-        "!**/.nx/**/*"
-      ],
-      rules: {
-        "banner/banner": ["error", { commentType: "block", numNewlines: 2 }]
-      }
+  (plugin.configs.recommended = {
+    name: "banner/recommended",
+    plugins: { banner: plugin },
+    files: [
+      CODE_FILE,
+      "!**/docs/**/*",
+      "!**/crates/**/*",
+      "!**/tmp/**/*",
+      "!**/dist/**/*",
+      "!**/coverage/**/*",
+      "!**/node_modules/**/*",
+      "!**/.cache/**/*",
+      "!**/.nx/**/*"
+    ],
+    rules: {
+      "banner/banner": ["error", { commentType: "block", numNewlines: 2 }]
     }
-  ]);
+  });
 
 export default plugin;

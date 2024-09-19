@@ -83,6 +83,7 @@ export function getStormConfig(
   },
   ...userConfigs: Linter.FlatConfig[]
 ): Linter.FlatConfig[] {
+  const tsconfig = options.tsconfig ?? "./tsconfig.base.json";
   const tsConfigType = options.tsConfigType || "eslint-recommended";
   const useUnicorn = options.useUnicorn ?? true;
   const react = options.react ?? {};
@@ -102,7 +103,15 @@ export function getStormConfig(
 
     // Banner
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    ...(banner.configs!["recommended"] as Linter.FlatConfig[]),
+    {
+      ...banner.configs!["recommended"],
+      rules: {
+        "banner/banner": [
+          "error",
+          { commentType: "block", numNewlines: 2, repositoryName: options.name }
+        ]
+      }
+    },
 
     // NX
     {
@@ -240,7 +249,7 @@ export function getStormConfig(
         parserOptions: {
           emitDecoratorMetadata: true,
           experimentalDecorators: true,
-          project: options.tsconfig ? options.tsconfig : "./tsconfig.base.json",
+          project: tsconfig,
           projectService: true,
           sourceType: "module",
           projectFolderIgnoreList: [
