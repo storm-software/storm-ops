@@ -126,7 +126,10 @@ export function getStormConfig(
     // https://www.npmjs.com/package/eslint-plugin-json
     {
       files: ["**/*.json"],
-      ...json.configs["recommended"]
+      ...json.configs["recommended"],
+      rules: {
+        "json/json": ["error", { "allowComments": true }]
+      }
     },
     {
       files: ["**/executors/**/schema.json", "**/generators/**/schema.json"],
