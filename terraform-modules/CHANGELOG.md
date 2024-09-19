@@ -1,3 +1,10 @@
+## 0.35.0 (2024-09-19)
+
+
+### Features
+
+- **eslint:** Remove extra rules from TSX files ([a609ed20](https://github.com/storm-software/storm-ops/commit/a609ed20))
+
 ## 0.34.0 (2024-09-19)
 
 

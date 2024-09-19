@@ -1,9 +1,16 @@
-## 0.20.0 (2024-09-19)
+## 0.21.0 (2024-09-19)
 
 
 ### Features
 
-- **terraform-modules:** Added EKS terraform module ([01cc04ff](https://github.com/storm-software/storm-ops/commit/01cc04ff))
+- **eslint:** Remove extra rules from TSX files ([a609ed20](https://github.com/storm-software/storm-ops/commit/a609ed20))
+
+## 0.20.0 (2024-09-19)
+
+### Features
+
+- **terraform-modules:** Added EKS terraform module
+  ([01cc04ff](https://github.com/storm-software/storm-ops/commit/01cc04ff))
 
 ## 0.19.0 (2024-09-19)
 
