@@ -1,9 +1,17 @@
-## 1.190.1 (2024-09-19)
+## 1.190.2 (2024-09-19)
 
 
 ### Bug Fixes
 
-- **eslint:** Resolved issue with scenario where invalid TypeScript configuration is provided ([4db77c97](https://github.com/storm-software/storm-ops/commit/4db77c97))
+- **eslint:** Resolve issue applying plugin to configuration aggregate ([b86cd266](https://github.com/storm-software/storm-ops/commit/b86cd266))
+
+## 1.190.1 (2024-09-19)
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with scenario where invalid TypeScript
+  configuration is provided
+  ([4db77c97](https://github.com/storm-software/storm-ops/commit/4db77c97))
 
 ## 1.190.0 (2024-09-19)
 
