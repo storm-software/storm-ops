@@ -1,3 +1,10 @@
+## 0.78.4 (2024-09-19)
+
+
+### Bug Fixes
+
+- **eslint:** Remove duplicate eslint rules ([bc272af0](https://github.com/storm-software/storm-ops/commit/bc272af0))
+
 ## 0.78.3 (2024-09-19)
 
 

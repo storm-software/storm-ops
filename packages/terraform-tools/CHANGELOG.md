@@ -1,9 +1,16 @@
-## 0.18.3 (2024-09-19)
+## 0.18.4 (2024-09-19)
 
 
 ### Bug Fixes
 
-- **eslint:** Resolve issue with files in typescript rules ([02f728a3](https://github.com/storm-software/storm-ops/commit/02f728a3))
+- **eslint:** Remove duplicate eslint rules ([bc272af0](https://github.com/storm-software/storm-ops/commit/bc272af0))
+
+## 0.18.3 (2024-09-19)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with files in typescript rules
+  ([02f728a3](https://github.com/storm-software/storm-ops/commit/02f728a3))
 
 ## 0.18.2 (2024-09-19)
 
