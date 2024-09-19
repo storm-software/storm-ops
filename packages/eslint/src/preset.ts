@@ -9,6 +9,7 @@ import eslint from "@eslint/js";
 import next from "@next/eslint-plugin-next";
 import nxPlugin from "@nx/eslint-plugin";
 import type { Linter } from "eslint";
+import json from "eslint-plugin-json";
 import markdown from "eslint-plugin-markdown";
 import prettierConfig from "eslint-plugin-prettier/recommended";
 import react from "eslint-plugin-react";
@@ -18,11 +19,11 @@ import tsdoc from "eslint-plugin-tsdoc";
 import unicorn from "eslint-plugin-unicorn";
 import yml from "eslint-plugin-yml";
 import globals from "globals";
-import jsoncParser from "jsonc-eslint-parser";
 import type { RuleOptions } from "./rules.d";
 // import jsxA11yRules from "./rules/jsx-a11y";
 // import reactRules from "./rules/react";
 // import reactHooksRules from "./rules/react-hooks";
+import tsEslint from "typescript-eslint";
 import stormRules from "./rules/storm";
 import tsdocRules from "./rules/ts-docs";
 import banner from "./utils/banner-plugin";
@@ -83,13 +84,8 @@ export function getStormConfig(
   const configs: Linter.FlatConfig[] = [
     // https://eslint.org/docs/latest/rules/
     eslint.configs.recommended,
-
     // https://typescript-eslint.io/
-    // ...tsEslint.configs.recommended.map(config => ({
-    //   ...config,
-    //   files: [TS_FILE] // We use TS config only for TS files
-    // })),
-
+    ...(tsEslint.configs.recommended as Linter.FlatConfig[]),
     // https://github.com/sindresorhus/eslint-plugin-unicorn
     unicorn.configs["flat/recommended"] as Linter.FlatConfig,
 
@@ -110,9 +106,9 @@ export function getStormConfig(
 
     // TSDoc
     // https://www.npmjs.com/package/eslint-plugin-tsdoc
-    { plugins: { tsdoc } },
     {
       files: [TS_FILE],
+      plugins: { tsdoc },
       rules: tsdocRules
     },
 
@@ -123,12 +119,9 @@ export function getStormConfig(
 
     // Json
     // https://www.npmjs.com/package/eslint-plugin-json
-    // json.configs["recommended-with-comments"],
     {
-      files: ["*.jsonc"],
-      languageOptions: {
-        parser: jsoncParser
-      }
+      files: ["**/*.json"],
+      ...json.configs["recommended"]
     },
     {
       files: ["**/executors/**/schema.json", "**/generators/**/schema.json"],
@@ -223,7 +216,7 @@ export function getStormConfig(
     },
     rules: {
       // // https://eslint.org/docs/latest/rules/
-      ...eslint.configs.recommended.rules,
+      // ...eslint.configs.recommended.rules,
 
       // // https://typescript-eslint.io/
       // ...tsEslint.configs.recommended.reduce(
@@ -289,6 +282,16 @@ export function getStormConfig(
       },
       {
         files: ["**/*.tsx"],
+        ignores: [
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/coverage/**",
+          "**/tmp/**",
+          "**/.nx/**",
+          "**/.tamagui/**",
+          "**/.next/**",
+          ...(options.ignores || [])
+        ],
         ...reactHooks.configs?.recommended
       }
       // {
@@ -300,6 +303,16 @@ export function getStormConfig(
     if (options.useReactCompiler === true) {
       reactConfigs.push({
         files: ["**/*.tsx"],
+        ignores: [
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/coverage/**",
+          "**/tmp/**",
+          "**/.nx/**",
+          "**/.tamagui/**",
+          "**/.next/**",
+          ...(options.ignores || [])
+        ],
         plugins: {
           "react-compiler": reactCompiler
         },
@@ -315,6 +328,16 @@ export function getStormConfig(
   if (options.nextFiles && options.nextFiles.length > 0) {
     configs.push({
       ...next.configs["core-web-vitals"],
+      ignores: [
+        "**/node_modules/**",
+        "**/dist/**",
+        "**/coverage/**",
+        "**/tmp/**",
+        "**/.nx/**",
+        "**/.tamagui/**",
+        "**/.next/**",
+        ...(options.ignores || [])
+      ],
       files: options.nextFiles
     });
   }
