@@ -12,7 +12,7 @@ import type { Linter } from "eslint";
 import json from "eslint-plugin-json";
 import markdown from "eslint-plugin-markdown";
 import prettierConfig from "eslint-plugin-prettier/recommended";
-import react from "eslint-plugin-react";
+import reactPlugin from "eslint-plugin-react";
 import reactCompiler from "eslint-plugin-react-compiler";
 import reactHooks from "eslint-plugin-react-hooks";
 import tsdoc from "eslint-plugin-tsdoc";
@@ -24,7 +24,7 @@ import type { RuleOptions } from "./rules.d";
 // import reactRules from "./rules/react";
 // import reactHooksRules from "./rules/react-hooks";
 import tsEslint from "typescript-eslint";
-import stormRules from "./rules/storm";
+import { getStormRulesConfig, GetStormRulesConfigOptions } from "./rules/storm";
 import tsdocRules from "./rules/ts-docs";
 import banner from "./utils/banner-plugin";
 import { CODE_BLOCK, TS_FILE } from "./utils/constants";
@@ -50,7 +50,7 @@ export type PresetModuleBoundary = {
 /**
  * The ESLint preset options.
  */
-export interface PresetOptions {
+export type PresetOptions = GetStormRulesConfigOptions & {
   name?: string;
   banner?: string;
   rules?: RuleOptions;
@@ -61,7 +61,7 @@ export interface PresetOptions {
   react?: false | Linter.RulesRecord;
   useReactCompiler?: boolean;
   nextFiles?: string[];
-}
+};
 
 /**
  * Get the ESLint configuration for a Storm workspace.
@@ -81,21 +81,14 @@ export function getStormConfig(
   },
   ...userConfigs: Linter.FlatConfig[]
 ): Linter.FlatConfig[] {
+  const useTypeScriptEslint = options.useTypeScriptEslint ?? true;
+  const useUnicorn = options.useUnicorn ?? true;
+  const react = options.react ?? {};
+  const useReactCompiler = options.useReactCompiler ?? false;
+
   const configs: Linter.FlatConfig[] = [
     // https://eslint.org/docs/latest/rules/
     eslint.configs.recommended,
-
-    // https://typescript-eslint.io/
-    ...tsEslint.configs.recommended.map(config => ({
-      ...config,
-      files: [TS_FILE] // We use TS config only for TS files
-    })),
-
-    // https://github.com/sindresorhus/eslint-plugin-unicorn
-    {
-      ...(unicorn.configs["flat/recommended"] as Linter.FlatConfig),
-      files: ["**/*.ts"]
-    },
 
     // Prettier
     prettierConfig,
@@ -188,9 +181,29 @@ export function getStormConfig(
     ...(userConfigs as Linter.FlatConfig[])
   ].filter(Boolean) as Linter.FlatConfig[];
 
+  if (useTypeScriptEslint) {
+    // https://typescript-eslint.io/
+    configs.push(
+      ...(tsEslint.configs.recommended.map(config => ({
+        ...config,
+        files: [TS_FILE] // We use TS config only for TS files
+      })) as Linter.FlatConfig<Linter.RulesRecord>[])
+    );
+  }
+
+  if (useUnicorn) {
+    // https://www.npmjs.com/package/eslint-plugin-unicorn
+    configs.push({
+      plugins: { unicorn },
+      rules: {
+        ...unicorn.configs["flat/recommended"].rules
+      }
+    });
+  }
+
   // TypeScript
   const typescriptConfig: Linter.FlatConfig<Linter.RulesRecord> = {
-    files: ["**/*.ts"],
+    files: [TS_FILE],
     languageOptions: {
       globals: {
         ...Object.fromEntries(
@@ -226,36 +239,7 @@ export function getStormConfig(
       }
     },
     rules: {
-      // // https://eslint.org/docs/latest/rules/
-      // ...eslint.configs.recommended.rules,
-
-      // // https://typescript-eslint.io/
-      // ...tsEslint.configs.recommended.reduce(
-      //   (ret, record) => ({ ...ret, ...record.rules }),
-      //   {}
-      // ),
-
-      // // Prettier
-      // ...prettierConfig.rules,
-
-      // // https://www.npmjs.com/package/eslint-plugin-unicorn
-      // ...unicorn.configs["flat/recommended"].rules,
-
-      // Banner
-      // ...banner.configs!["recommended"]![1]?.rules,
-
-      ...stormRules,
-
-      // "banner/banner": [
-      //   "error",
-      //   {
-      //     repositoryName: options.name,
-      //     banner: options.banner,
-      //     commentType: "block",
-      //     numNewlines: 2
-      //   }
-      // ],
-
+      ...getStormRulesConfig({ ...options, useTypeScriptEslint, useUnicorn }),
       ...(options.rules ?? {})
     },
     ignores: [
@@ -274,47 +258,27 @@ export function getStormConfig(
 
   // React
   // https://www.npmjs.com/package/eslint-plugin-react
-  if (options.react) {
+  if (react) {
     // TSX - React
     const reactConfigs: Linter.FlatConfig<Linter.RulesRecord>[] = [
       {
+        ...reactPlugin.configs?.recommended,
         files: ["**/*.tsx"],
-        languageOptions: {
-          globals: {
-            ...Object.fromEntries(
-              Object.keys(globals).flatMap(group =>
-                Object.keys(globals[group as keyof typeof globals]).map(key => [
-                  key,
-                  "readonly"
-                ])
-              )
-            ),
-            ...globals.browser,
-            ...globals.node,
-            "window": "readonly",
-            "Storm": "readonly"
-          },
-          parserOptions: {
-            emitDecoratorMetadata: true,
-            experimentalDecorators: true,
-            project: options.tsconfig
-              ? options.tsconfig
-              : "./tsconfig.base.json",
-            projectService: true,
-            sourceType: "module",
-            projectFolderIgnoreList: [
-              "**/node_modules/**",
-              "**/dist/**",
-              "**/coverage/**",
-              "**/tmp/**",
-              "**/.nx/**",
-              "**/.tamagui/**",
-              "**/.next/**",
-              ...(options.ignores || [])
-            ],
-            ...options.parserOptions
-          }
-        },
+        ignores: [
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/coverage/**",
+          "**/tmp/**",
+          "**/.nx/**",
+          "**/.tamagui/**",
+          "**/.next/**",
+          ...(options.ignores || [])
+        ],
+        ...react
+      },
+      {
+        ...reactHooks.configs?.recommended,
+        files: ["**/*.tsx"],
         ignores: [
           "**/node_modules/**",
           "**/dist/**",
@@ -325,34 +289,6 @@ export function getStormConfig(
           "**/.next/**",
           ...(options.ignores || [])
         ]
-      },
-      {
-        files: ["**/*.tsx"],
-        ignores: [
-          "**/node_modules/**",
-          "**/dist/**",
-          "**/coverage/**",
-          "**/tmp/**",
-          "**/.nx/**",
-          "**/.tamagui/**",
-          "**/.next/**",
-          ...(options.ignores || [])
-        ],
-        ...react.configs?.recommended
-      },
-      {
-        files: ["**/*.tsx"],
-        ignores: [
-          "**/node_modules/**",
-          "**/dist/**",
-          "**/coverage/**",
-          "**/tmp/**",
-          "**/.nx/**",
-          "**/.tamagui/**",
-          "**/.next/**",
-          ...(options.ignores || [])
-        ],
-        ...reactHooks.configs?.recommended
       }
       // {
       //   files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
@@ -360,7 +296,7 @@ export function getStormConfig(
       // }
     ];
 
-    if (options.useReactCompiler === true) {
+    if (useReactCompiler) {
       reactConfigs.push({
         files: ["**/*.tsx"],
         ignores: [

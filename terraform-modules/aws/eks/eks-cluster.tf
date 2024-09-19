@@ -1,12 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
-#
-# EKS Cluster Resources
-#  * IAM Role to allow EKS service to manage other AWS services
-#  * EC2 Security Group to allow networking traffic with EKS cluster
-#  * EKS Cluster
-#
 
 resource "aws_iam_role" "cluster-role" {
   name = "${local.full_name}-cluster_iam-role"
