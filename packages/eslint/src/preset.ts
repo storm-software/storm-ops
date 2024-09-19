@@ -92,7 +92,7 @@ export function getStormConfig(
     })),
 
     // https://github.com/sindresorhus/eslint-plugin-unicorn
-    unicorn.configs["flat/recommended"] as Linter.FlatConfig,
+    // unicorn.configs["flat/recommended"] as Linter.FlatConfig,
 
     // Prettier
     prettierConfig,
