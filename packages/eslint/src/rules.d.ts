@@ -1,6 +1,6 @@
 /* eslint-disable */
 /* prettier-ignore */
-import type { Linter } from 'eslint'
+import type { Linter } from 'eslint';
 
 export interface RuleOptions {
   /**
