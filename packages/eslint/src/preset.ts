@@ -89,6 +89,17 @@ export function getStormConfig(
   const react = options.react ?? {};
   const useReactCompiler = options.useReactCompiler ?? false;
 
+  // Banner
+  const bannerConfig = {
+    ...banner.configs!["recommended"],
+    rules: {
+      "banner/banner": [
+        "error",
+        { commentType: "block", numNewlines: 2, repositoryName: options.name }
+      ]
+    }
+  } as Linter.FlatConfig<Linter.RulesRecord>;
+
   const configs: Linter.FlatConfig[] = [
     // Prettier
     prettierConfig,
@@ -101,17 +112,7 @@ export function getStormConfig(
     //   rules: importRules
     // },
 
-    // Banner
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    {
-      ...banner.configs!["recommended"],
-      rules: {
-        "banner/banner": [
-          "error",
-          { commentType: "block", numNewlines: 2, repositoryName: options.name }
-        ]
-      }
-    },
+    bannerConfig,
 
     // NX
     {
@@ -220,11 +221,7 @@ export function getStormConfig(
     rules: tsdocRules
   });
 
-  typescriptConfigs.push(
-    ...(banner.configs![
-      "recommended"
-    ] as Linter.FlatConfig<Linter.RulesRecord>[])
-  );
+  typescriptConfigs.push(bannerConfig);
 
   // TypeScript
   configs.push(
