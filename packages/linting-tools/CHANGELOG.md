@@ -1,3 +1,10 @@
+## 1.85.0 (2024-09-19)
+
+
+### Features
+
+- **eslint:** Added the `useTypeScriptESLint` and `useUnicorn` optional parameters ([60eb6e2e](https://github.com/storm-software/storm-ops/commit/60eb6e2e))
+
 ## 1.84.0 (2024-09-19)
 
 
