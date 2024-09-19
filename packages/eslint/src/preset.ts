@@ -83,16 +83,19 @@ export function getStormConfig(
 ): Linter.FlatConfig[] {
   const configs: Linter.FlatConfig[] = [
     // https://eslint.org/docs/latest/rules/
-    eslint.configs.recommended,
+    // eslint.configs.recommended,
 
     // https://typescript-eslint.io/
-    ...tsEslint.configs.recommended.map(config => ({
-      ...config,
-      files: [TS_FILE] // We use TS config only for TS files
-    })),
+    // ...tsEslint.configs.recommended.map(config => ({
+    //   ...config,
+    //   files: [TS_FILE] // We use TS config only for TS files
+    // })),
 
     // https://github.com/sindresorhus/eslint-plugin-unicorn
-    // unicorn.configs["flat/recommended"] as Linter.FlatConfig,
+    // {
+    //   ...unicorn.configs["flat/recommended"],
+    //   files: ["**/*.ts"]
+    // } as Linter.FlatConfig,
 
     // Prettier
     prettierConfig,
@@ -187,7 +190,7 @@ export function getStormConfig(
 
   // TypeScript
   const typescriptConfig: Linter.FlatConfig<Linter.RulesRecord> = {
-    files: [TS_FILE],
+    files: ["**/*.ts"],
     languageOptions: {
       globals: {
         ...Object.fromEntries(
@@ -224,13 +227,13 @@ export function getStormConfig(
     },
     rules: {
       // // https://eslint.org/docs/latest/rules/
-      // ...eslint.configs.recommended.rules,
+      ...eslint.configs.recommended.rules,
 
       // // https://typescript-eslint.io/
-      // ...tsEslint.configs.recommended.reduce(
-      //   (ret, record) => ({ ...ret, ...record.rules }),
-      //   {}
-      // ),
+      ...tsEslint.configs.recommended.reduce(
+        (ret, record) => ({ ...ret, ...record.rules }),
+        {}
+      ),
 
       // Prettier
       ...prettierConfig.rules,
