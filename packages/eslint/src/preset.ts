@@ -9,7 +9,6 @@ import eslint from "@eslint/js";
 import next from "@next/eslint-plugin-next";
 import nxPlugin from "@nx/eslint-plugin";
 import type { Linter } from "eslint";
-import jsxA11y from "eslint-plugin-jsx-a11y";
 import markdown from "eslint-plugin-markdown";
 import prettierConfig from "eslint-plugin-prettier/recommended";
 import react from "eslint-plugin-react";
@@ -290,11 +289,11 @@ export function getStormConfig(
       {
         files: ["**/*.tsx"],
         ...reactHooks.configs?.recommended
-      },
-      {
-        files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
-        ...jsxA11y.flatConfigs?.recommended
       }
+      // {
+      //   files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
+      //   ...jsxA11y.flatConfigs?.recommended
+      // }
     ];
 
     if (options.useReactCompiler === true) {
