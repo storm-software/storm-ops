@@ -128,7 +128,7 @@ export function getStormConfig(
       files: ["**/*.json"],
       ...json.configs["recommended"],
       rules: {
-        "json/json": ["error", { "allowComments": true }]
+        "json/json": ["warn", { "allowComments": true }]
       }
     },
     {
