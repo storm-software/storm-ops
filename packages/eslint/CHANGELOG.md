@@ -1,3 +1,10 @@
+## 0.84.0 (2024-09-20)
+
+
+### Features
+
+- **eslint:** Remove the `ForInStatement` and `ForOfStatement` rules ([b902e4be](https://github.com/storm-software/storm-ops/commit/b902e4be))
+
 ## 0.83.3 (2024-09-19)
 
 
