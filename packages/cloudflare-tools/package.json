@@ -42,12 +42,12 @@
     "monorepo"
   ],
   "peerDependencies": {
-    "@nx/devkit": "^19.6.4",
-    "@nx/node": ">=19.5.0",
-    "@nx/web": ">=19.5.0",
-    "@nx/webpack": ">=19.5.0",
-    "nx": "^19.6.4",
-    "wrangler": ">=3.58.0"
+    "@nx/devkit": "^19.8.4",
+    "@nx/node": ">=19.8.4",
+    "@nx/web": ">=19.8.4",
+    "@nx/webpack": ">=19.8.4",
+    "nx": "^19.8.4",
+    "wrangler": ">=3.80.2"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
@@ -70,18 +70,18 @@
     }
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.47.0",
-    "c12": "2.0.0-beta.2",
-    "glob": "10.4.2",
+    "@aws-sdk/client-s3": "3.668.0",
+    "c12": "2.0.1",
+    "glob": "10.4.5",
     "jest-resolve": "29.7.0"
   },
   "devDependencies": {
-    "@nx/devkit": "^19.6.4",
-    "@nx/node": ">=19.5.0",
-    "@nx/web": ">=19.5.0",
-    "@nx/webpack": ">=19.5.0",
-    "nx": "^19.6.4",
-    "wrangler": ">=3.58.0"
+    "@nx/devkit": "^19.8.4",
+    "@nx/node": ">=19.8.4",
+    "@nx/web": ">=19.8.4",
+    "@nx/webpack": ">=19.8.4",
+    "nx": "^19.8.4",
+    "wrangler": ">=3.80.2"
   },
   "publishConfig": {
     "access": "public"
