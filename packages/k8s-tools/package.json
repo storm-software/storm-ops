@@ -42,9 +42,9 @@
   ],
   "peerDependencies": {
     "@nx-tools/container-metadata": "^6.0.2",
-    "@nx-tools/nx-container": "^6.0.2",
-    "@nx/devkit": "^19.6.4",
-    "nx": "^19.6.4"
+    "@nx-tools/nx-container": "^6.0.4",
+    "@nx/devkit": "^19.8.4",
+    "nx": "^19.8.4"
   },
   "peerDependenciesMeta": {
     "@nx-tools/container-metadata": {
@@ -61,15 +61,15 @@
     }
   },
   "dependencies": {
-    "@nx/devkit": "^19.6.4",
-    "@nx/workspace": "^19.6.4",
+    "@nx/devkit": "^19.8.4",
+    "@nx/workspace": "^19.8.4",
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "@nx-tools/container-metadata": "^6.0.2",
-    "@nx-tools/nx-container": "^6.0.2",
+    "@nx-tools/nx-container": "^6.0.4",
     "@types/js-yaml": "4.0.9",
-    "nx": "^19.6.4"
+    "nx": "^19.8.4"
   },
   "publishConfig": {
     "access": "public"
