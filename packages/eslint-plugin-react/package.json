@@ -82,10 +82,10 @@
     "monorepo"
   ],
   "peerDependencies": {
-    "@nx/eslint": ">=19.6.4",
-    "@nx/eslint-plugin": ">=19.6.4",
+    "@nx/eslint": ">=19.8.4",
+    "@nx/eslint-plugin": ">=19.8.4",
     "@storm-software/eslint": "latest",
-    "eslint": "9.5.0"
+    "eslint": "9.12.0"
   },
   "peerDependenciesMeta": {
     "@nx/eslint": {
@@ -102,18 +102,18 @@
     }
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "7.16.0",
-    "@typescript-eslint/type-utils": "7.12.0",
-    "@typescript-eslint/utils": "7.12.0",
+    "@typescript-eslint/eslint-plugin": "7.18.0",
+    "@typescript-eslint/type-utils": "7.18.0",
+    "@typescript-eslint/utils": "7.18.0",
     "fs-extra": "11.2.0",
-    "tslib": "^2.6.3"
+    "tslib": "^2.7.0"
   },
   "devDependencies": {
-    "@nx/eslint": ">=19.6.4",
-    "@nx/eslint-plugin": ">=19.6.4",
+    "@nx/eslint": ">=19.8.4",
+    "@nx/eslint-plugin": ">=19.8.4",
     "@storm-software/eslint": "0.84.0",
-    "@types/eslint": "^8.56.10",
-    "eslint": "9.5.0",
+    "@types/eslint": "^8.56.12",
+    "eslint": "9.12.0",
     "eslint-doc-generator": "1.7.1"
   },
   "publishConfig": {
