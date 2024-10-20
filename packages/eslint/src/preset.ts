@@ -24,7 +24,7 @@ import type { RuleOptions } from "./rules.d";
 // import reactRules from "./rules/react";
 // import reactHooksRules from "./rules/react-hooks";
 import { writeDebug, writeInfo } from "@storm-software/config-tools";
-import { merge } from "radash";
+import { defu } from "defu";
 import tsEslint from "typescript-eslint";
 import {
   getStormRulesConfig,
@@ -433,10 +433,18 @@ export function getStormConfig(
 
   const result = formatConfig(
     "Preset",
-    configs.reduce(
-      (ret, config) => merge(ret, [config], c => c.files),
-      []
-    ) as Linter.FlatConfig<Linter.RulesRecord>[]
+    configs.reduce((ret, config) => {
+      const existingIndex = ret.findIndex(existing =>
+        areFilesEqual(existing.files, config.files)
+      );
+      if (existingIndex) {
+        ret[existingIndex] = defu(ret[existingIndex], config);
+      } else {
+        ret.push(config);
+      }
+
+      return ret;
+    }, [] as Linter.FlatConfig<Linter.RulesRecord>[])
   );
 
   writeInfo("⚙️  Completed generated Storm ESLint configuration objects", {
@@ -446,3 +454,24 @@ export function getStormConfig(
 
   return result;
 }
+
+const areFilesEqual = (
+  files1: Linter.FlatConfig<Linter.RulesRecord>["files"],
+  files2: Linter.FlatConfig<Linter.RulesRecord>["files"]
+): boolean => {
+  if (files1 === files2) {
+    return true;
+  }
+  if (files1 == null || files2 == null) {
+    return false;
+  }
+  if (files1.length !== files2.length) {
+    return false;
+  }
+
+  return files1.every((file, index) =>
+    Array.isArray(file) && Array.isArray(files2?.[index])
+      ? areFilesEqual(file, files2?.[index])
+      : file === files2?.[index]
+  );
+};
