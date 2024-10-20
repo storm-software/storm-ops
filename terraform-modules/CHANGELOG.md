@@ -1,3 +1,10 @@
+## 0.37.0 (2024-10-20)
+
+
+### Features
+
+- **eslint:** Added ESLint Plugin configuration object logging ([2d943cd8](https://github.com/storm-software/storm-ops/commit/2d943cd8))
+
 ## 0.36.3 (2024-10-20)
 
 

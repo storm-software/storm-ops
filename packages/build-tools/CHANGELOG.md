@@ -1,9 +1,17 @@
-## 0.93.4 (2024-10-20)
+## 0.94.0 (2024-10-20)
 
+
+### Features
+
+- **eslint:** Added ESLint Plugin configuration object logging ([2d943cd8](https://github.com/storm-software/storm-ops/commit/2d943cd8))
+
+## 0.93.4 (2024-10-20)
 
 ### Bug Fixes
 
-- **eslint:** Ensure the TypeScript ESLint configurations are correctly merged by file type ([152fce82](https://github.com/storm-software/storm-ops/commit/152fce82))
+- **eslint:** Ensure the TypeScript ESLint configurations are correctly merged
+  by file type
+  ([152fce82](https://github.com/storm-software/storm-ops/commit/152fce82))
 
 ## 0.93.3 (2024-10-20)
 
