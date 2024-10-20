@@ -23,10 +23,7 @@ import type { RuleOptions } from "./rules.d";
 // import jsxA11yRules from "./rules/jsx-a11y";
 // import reactRules from "./rules/react";
 // import reactHooksRules from "./rules/react-hooks";
-import {
-  writeDebug,
-  writeInfo
-} from "@storm-software/config-tools/utilities/logger";
+import { writeDebug, writeInfo } from "@storm-software/config-tools";
 import { merge } from "radash";
 import tsEslint from "typescript-eslint";
 import {
