@@ -23,7 +23,7 @@ import type { RuleOptions } from "./rules.d";
 // import jsxA11yRules from "./rules/jsx-a11y";
 // import reactRules from "./rules/react";
 // import reactHooksRules from "./rules/react-hooks";
-import mergeByKey from "array-merge-by-key";
+import { merge } from "radash";
 import tsEslint from "typescript-eslint";
 import {
   getStormRulesConfig,
@@ -190,9 +190,11 @@ export function getStormConfig(
     ...(userConfigs as Linter.FlatConfig[])
   ].filter(Boolean) as Linter.FlatConfig[];
 
-  const typescriptConfigs: Linter.FlatConfig<Linter.RulesRecord>[] = [
-    eslint.configs.recommended
-  ];
+  // const typescriptConfigs: Linter.FlatConfig<Linter.RulesRecord>[] = [
+  //   eslint.configs.recommended
+  // ];
+
+  configs.push(eslint.configs.recommended);
 
   if (typescriptEslintConfigType !== "none") {
     // https://typescript-eslint.io/
@@ -202,7 +204,7 @@ export function getStormConfig(
         typescriptEslintConfigType
       );
     } else {
-      typescriptConfigs.push(
+      configs.push(
         ...(Array.isArray(tsEslint.configs[typescriptEslintConfigType])
           ? tsEslint.configs[typescriptEslintConfigType]
           : [tsEslint.configs[typescriptEslintConfigType]])
@@ -212,7 +214,7 @@ export function getStormConfig(
 
   if (useUnicorn) {
     // https://www.npmjs.com/package/eslint-plugin-unicorn
-    typescriptConfigs.push({
+    configs.push({
       files: [TS_FILE],
       plugins: { unicorn },
       rules: {
@@ -223,13 +225,13 @@ export function getStormConfig(
 
   // TSDoc
   // https://www.npmjs.com/package/eslint-plugin-tsdoc
-  typescriptConfigs.push({
+  configs.push({
     files: [TS_FILE],
     plugins: { tsdoc },
     rules: tsdocRules
   });
 
-  typescriptConfigs.push(bannerConfig);
+  configs.push(bannerConfig);
 
   // React
   // https://www.npmjs.com/package/eslint-plugin-react
@@ -293,11 +295,11 @@ export function getStormConfig(
       });
     }
 
-    typescriptConfigs.push(...reactConfigs);
+    configs.push(...reactConfigs);
   }
 
   if (options.nextFiles && options.nextFiles.length > 0) {
-    typescriptConfigs.push({
+    configs.push({
       ...next.configs["core-web-vitals"],
       ignores: [
         "**/node_modules/**",
@@ -314,7 +316,7 @@ export function getStormConfig(
   }
 
   // TypeScript
-  typescriptConfigs.push({
+  configs.push({
     files: [TS_FILE],
     languageOptions: {
       globals: {
@@ -369,8 +371,6 @@ export function getStormConfig(
       ...(options.ignores || [])
     ]
   });
-
-  configs.push(...mergeByKey("files", ...typescriptConfigs));
 
   // // JavaScript and TypeScript code
   // const codeConfig: Linter.FlatConfig<Linter.RulesRecord> = {
@@ -430,5 +430,11 @@ export function getStormConfig(
     });
   }
 
-  return formatConfig("Preset", configs);
+  return formatConfig(
+    "Preset",
+    configs.reduce(
+      (ret, config) => merge(ret, [config], c => c.files),
+      []
+    ) as Linter.FlatConfig<Linter.RulesRecord>[]
+  );
 }
