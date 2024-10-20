@@ -1,5 +1,5 @@
 import { ESLintUtils } from "@typescript-eslint/utils";
-import { ESLint, Rule } from "eslint";
+import { ESLint, Linter, Rule } from "eslint";
 import os from "node:os";
 import { CODE_FILE } from "./constants";
 import { getFileBanner } from "./get-file-banner";
@@ -433,7 +433,7 @@ const plugin: ESLint.Plugin = {
     name: "eslint-plugin-banner",
     version: "0.0.1"
   },
-  configs: {},
+  configs: {} as Record<string, Linter.FlatConfig<Linter.RulesRecord>>,
   rules: {
     banner: bannerRule as unknown as
       | Rule.RuleModule
@@ -446,8 +446,8 @@ plugin.configs &&
   (plugin.configs.recommended = {
     name: "banner/recommended",
     plugins: { banner: plugin },
-    files: [
-      CODE_FILE,
+    files: [CODE_FILE],
+    ignores: [
       "!**/docs/**/*",
       "!**/crates/**/*",
       "!**/tmp/**/*",

@@ -23,6 +23,10 @@ import type { RuleOptions } from "./rules.d";
 // import jsxA11yRules from "./rules/jsx-a11y";
 // import reactRules from "./rules/react";
 // import reactHooksRules from "./rules/react-hooks";
+import {
+  writeDebug,
+  writeInfo
+} from "@storm-software/config-tools/utilities/logger";
 import { merge } from "radash";
 import tsEslint from "typescript-eslint";
 import {
@@ -96,18 +100,6 @@ export function getStormConfig(
   const react = options.react ?? {};
   const useReactCompiler = options.useReactCompiler ?? false;
 
-  // Banner
-  const bannerConfig = {
-    ...banner.configs!["recommended"],
-    files: [TS_FILE],
-    rules: {
-      "banner/banner": [
-        "error",
-        { commentType: "block", numNewlines: 2, repositoryName: options.name }
-      ]
-    }
-  } as Linter.FlatConfig<Linter.RulesRecord>;
-
   const configs: Linter.FlatConfig[] = [
     // Prettier
     prettierConfig,
@@ -120,7 +112,7 @@ export function getStormConfig(
     //   rules: importRules
     // },
 
-    bannerConfig,
+    // bannerConfig,
 
     // NX
     {
@@ -231,7 +223,19 @@ export function getStormConfig(
     rules: tsdocRules
   });
 
-  configs.push(bannerConfig);
+  // Banner
+  configs.push({
+    // ...banner.configs!["recommended"],
+    name: "banner",
+    plugins: { banner },
+    files: [TS_FILE],
+    rules: {
+      "banner/banner": [
+        "error",
+        { commentType: "block", numNewlines: 2, repositoryName: options.name }
+      ]
+    }
+  });
 
   // React
   // https://www.npmjs.com/package/eslint-plugin-react
@@ -430,11 +434,18 @@ export function getStormConfig(
     });
   }
 
-  return formatConfig(
+  const result = formatConfig(
     "Preset",
     configs.reduce(
       (ret, config) => merge(ret, [config], c => c.files),
       []
     ) as Linter.FlatConfig<Linter.RulesRecord>[]
   );
+
+  writeInfo("⚙️  Completed generated Storm ESLint configuration objects", {
+    logLevel: "all"
+  });
+  writeDebug(result, { logLevel: "all" });
+
+  return result;
 }
