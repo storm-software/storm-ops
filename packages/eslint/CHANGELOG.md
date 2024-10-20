@@ -1,3 +1,10 @@
+## 0.84.1 (2024-10-20)
+
+
+### Bug Fixes
+
+- **eslint:** Resolved issue applying TypeScript ESLint preset configurations ([fc0f139e](https://github.com/storm-software/storm-ops/commit/fc0f139e))
+
 ## 0.84.0 (2024-09-20)
 
 

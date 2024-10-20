@@ -1,9 +1,16 @@
-## 0.22.2 (2024-09-19)
+## 0.22.3 (2024-10-20)
 
 
 ### Bug Fixes
 
-- **eslint:** Resolve issue applying plugin to configuration aggregate ([b86cd266](https://github.com/storm-software/storm-ops/commit/b86cd266))
+- **eslint:** Resolved issue applying TypeScript ESLint preset configurations ([fc0f139e](https://github.com/storm-software/storm-ops/commit/fc0f139e))
+
+## 0.22.2 (2024-09-19)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue applying plugin to configuration aggregate
+  ([b86cd266](https://github.com/storm-software/storm-ops/commit/b86cd266))
 
 ## 0.22.1 (2024-09-19)
 
