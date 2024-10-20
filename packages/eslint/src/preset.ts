@@ -431,13 +431,18 @@ export function getStormConfig(
     });
   }
 
+  writeInfo("⚙️  Merging generated Storm ESLint configuration objects", {
+    logLevel: "all"
+  });
+  writeDebug(configs, { logLevel: "all" });
+
   const result = formatConfig(
     "Preset",
     configs.reduce((ret, config) => {
       const existingIndex = ret.findIndex(existing =>
         areFilesEqual(existing.files, config.files)
       );
-      if (existingIndex) {
+      if (existingIndex >= 0) {
         ret[existingIndex] = defu(ret[existingIndex], config);
       } else {
         ret.push(config);
@@ -461,17 +466,24 @@ const areFilesEqual = (
 ): boolean => {
   if (files1 === files2) {
     return true;
-  }
-  if (files1 == null || files2 == null) {
+  } else if (!files1 || !files2) {
     return false;
-  }
-  if (files1.length !== files2.length) {
+  } else if (
+    (typeof files1 === "string" && typeof files2 !== "string") ||
+    (typeof files1 !== "string" && typeof files2 === "string") ||
+    (Array.isArray(files1) && !Array.isArray(files2)) ||
+    (!Array.isArray(files1) && Array.isArray(files2))
+  ) {
+    return false;
+  } else if (files1.length !== files2.length) {
     return false;
   }
 
   return files1.every((file, index) =>
     Array.isArray(file) && Array.isArray(files2?.[index])
       ? areFilesEqual(file, files2?.[index])
-      : file === files2?.[index]
+      : !Array.isArray(file) && !Array.isArray(files2?.[index])
+        ? file?.toLowerCase() === files2?.[index]?.toLowerCase()
+        : file === files2
   );
 };
