@@ -1,3 +1,10 @@
+## 0.85.3 (2024-10-20)
+
+
+### Bug Fixes
+
+- **eslint:** Enhanced the `files` configuration array comparison ([091afe1e](https://github.com/storm-software/storm-ops/commit/091afe1e))
+
 ## 0.85.2 (2024-10-20)
 
 
