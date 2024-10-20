@@ -1,9 +1,16 @@
-## 0.93.3 (2024-10-20)
+## 0.93.4 (2024-10-20)
 
 
 ### Bug Fixes
 
-- **eslint:** Resolved issue applying TypeScript ESLint preset configurations ([fc0f139e](https://github.com/storm-software/storm-ops/commit/fc0f139e))
+- **eslint:** Ensure the TypeScript ESLint configurations are correctly merged by file type ([152fce82](https://github.com/storm-software/storm-ops/commit/152fce82))
+
+## 0.93.3 (2024-10-20)
+
+### Bug Fixes
+
+- **eslint:** Resolved issue applying TypeScript ESLint preset configurations
+  ([fc0f139e](https://github.com/storm-software/storm-ops/commit/fc0f139e))
 
 ## 0.93.2 (2024-09-19)
 

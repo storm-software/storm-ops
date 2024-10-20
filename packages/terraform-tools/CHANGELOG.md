@@ -1,3 +1,10 @@
+## 0.22.4 (2024-10-20)
+
+
+### Bug Fixes
+
+- **eslint:** Ensure the TypeScript ESLint configurations are correctly merged by file type ([152fce82](https://github.com/storm-software/storm-ops/commit/152fce82))
+
 ## 0.22.3 (2024-10-20)
 
 ### Bug Fixes

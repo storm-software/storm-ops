@@ -1,3 +1,12 @@
+## 0.84.2 (2024-10-20)
+
+
+### Bug Fixes
+
+- **eslint:** Ensure the TypeScript ESLint configurations are correctly merged by file type ([152fce82](https://github.com/storm-software/storm-ops/commit/152fce82))
+
+- **eslint:** Merge config objects using `radash` package ([0810274f](https://github.com/storm-software/storm-ops/commit/0810274f))
+
 ## 0.84.1 (2024-10-20)
 
 
