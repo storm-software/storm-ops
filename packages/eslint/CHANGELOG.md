@@ -1,3 +1,10 @@
+## 0.85.1 (2024-10-20)
+
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid import path ([afe72888](https://github.com/storm-software/storm-ops/commit/afe72888))
+
 ## 0.85.0 (2024-10-20)
 
 
