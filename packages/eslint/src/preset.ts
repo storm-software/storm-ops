@@ -23,6 +23,7 @@ import type { RuleOptions } from "./rules.d";
 // import jsxA11yRules from "./rules/jsx-a11y";
 // import reactRules from "./rules/react";
 // import reactHooksRules from "./rules/react-hooks";
+import mergeByKey from "array-merge-by-key";
 import tsEslint from "typescript-eslint";
 import {
   getStormRulesConfig,
@@ -313,65 +314,63 @@ export function getStormConfig(
   }
 
   // TypeScript
-  configs.push(
-    ...(tsEslint.config({
-      files: [TS_FILE],
-      extends: typescriptConfigs,
-      languageOptions: {
-        globals: {
-          ...Object.fromEntries(
-            Object.keys(globals).flatMap(group =>
-              Object.keys(globals[group as keyof typeof globals]).map(key => [
-                key,
-                "readonly"
-              ])
-            )
-          ),
-          ...globals.browser,
-          ...globals.node,
-          "window": "readonly",
-          "Storm": "readonly"
-        },
-        parser: tsEslint.parser,
-        parserOptions: {
-          emitDecoratorMetadata: true,
-          experimentalDecorators: true,
-          project: tsconfig,
-          projectService: true,
-          sourceType: "module",
-          projectFolderIgnoreList: [
-            "**/node_modules/**",
-            "**/dist/**",
-            "**/coverage/**",
-            "**/tmp/**",
-            "**/.nx/**",
-            "**/.tamagui/**",
-            "**/.next/**",
-            ...(options.ignores || [])
-          ],
-          ...options.parserOptions
-        }
+  typescriptConfigs.push({
+    files: [TS_FILE],
+    languageOptions: {
+      globals: {
+        ...Object.fromEntries(
+          Object.keys(globals).flatMap(group =>
+            Object.keys(globals[group as keyof typeof globals]).map(key => [
+              key,
+              "readonly"
+            ])
+          )
+        ),
+        ...globals.browser,
+        ...globals.node,
+        "window": "readonly",
+        "Storm": "readonly"
       },
-      rules: {
-        ...getStormRulesConfig({
-          ...options,
-          typescriptEslintConfigType,
-          useUnicorn
-        }),
-        ...(options.rules ?? {})
-      },
-      ignores: [
-        "**/node_modules/**",
-        "**/dist/**",
-        "**/coverage/**",
-        "**/tmp/**",
-        "**/.nx/**",
-        "**/.tamagui/**",
-        "**/.next/**",
-        ...(options.ignores || [])
-      ]
-    }) as Linter.FlatConfig<Linter.RulesRecord>[])
-  );
+      parserOptions: {
+        emitDecoratorMetadata: true,
+        experimentalDecorators: true,
+        project: tsconfig,
+        projectService: true,
+        sourceType: "module",
+        projectFolderIgnoreList: [
+          "**/node_modules/**",
+          "**/dist/**",
+          "**/coverage/**",
+          "**/tmp/**",
+          "**/.nx/**",
+          "**/.tamagui/**",
+          "**/.next/**",
+          ...(options.ignores || [])
+        ],
+        ...options.parserOptions
+      }
+    },
+    rules: {
+      ...getStormRulesConfig({
+        ...options,
+        typescriptEslintConfigType,
+        useUnicorn
+      }),
+      ...(options.rules ?? {})
+    },
+    ignores: [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/coverage/**",
+      "**/tmp/**",
+      "**/.nx/**",
+      "**/.tamagui/**",
+      "**/.next/**",
+      ...(options.ignores || [])
+    ]
+  });
+
+  configs.push(...mergeByKey("files", ...typescriptConfigs));
 
   // // JavaScript and TypeScript code
   // const codeConfig: Linter.FlatConfig<Linter.RulesRecord> = {
