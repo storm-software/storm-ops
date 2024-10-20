@@ -16,7 +16,7 @@ export type TypeScriptEslintConfigType =
   | "stylistic";
 
 export interface GetStormRulesConfigOptions {
-  tsConfigType?: TypeScriptEslintConfigType;
+  typescriptEslintConfigType?: TypeScriptEslintConfigType;
   useUnicorn?: boolean;
 }
 
@@ -1123,7 +1123,7 @@ export const getStormRulesConfig = (
     ]
   };
 
-  if (options.tsConfigType !== "none") {
+  if (options.typescriptEslintConfigType !== "none") {
     rules = {
       ...rules,
 

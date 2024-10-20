@@ -96,7 +96,7 @@
     "globals": "^15.8.0",
     "jsonc-eslint-parser": "2.4.0",
     "synckit": "0.9.0",
-    "typescript-eslint": "8.6.0",
+    "typescript-eslint": "8.10.0",
     "ws": "8.17.1",
     "yaml-eslint-parser": "1.2.3"
   },
@@ -110,6 +110,7 @@
     "eslint": "9.5.0",
     "eslint-typegen": "^0.2.4",
     "graphql": ">=16.9.0",
+    "typescript": ">=5.5.3",
     "unbuild": "^2.0.0"
   },
   "publishConfig": {
