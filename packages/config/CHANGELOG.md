@@ -1,9 +1,16 @@
-## 1.62.0 (2024-10-20)
+## 1.62.1 (2024-10-20)
 
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with merging ESLint configuration objects ([bb37374a](https://github.com/storm-software/storm-ops/commit/bb37374a))
+
+## 1.62.0 (2024-10-20)
 
 ### Features
 
-- **eslint:** Added ESLint Plugin configuration object logging ([2d943cd8](https://github.com/storm-software/storm-ops/commit/2d943cd8))
+- **eslint:** Added ESLint Plugin configuration object logging
+  ([2d943cd8](https://github.com/storm-software/storm-ops/commit/2d943cd8))
 
 ## 1.61.4 (2024-10-20)
 

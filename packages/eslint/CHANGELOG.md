@@ -1,3 +1,10 @@
+## 0.85.2 (2024-10-20)
+
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with merging ESLint configuration objects ([bb37374a](https://github.com/storm-software/storm-ops/commit/bb37374a))
+
 ## 0.85.1 (2024-10-20)
 
 
