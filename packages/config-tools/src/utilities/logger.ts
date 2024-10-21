@@ -243,7 +243,7 @@ export const getStopwatch = (name: string) => {
   };
 };
 
-const MAX_DEPTH = 6;
+const MAX_DEPTH = 4;
 
 export const formatLogMessage = (
   message?: any,
