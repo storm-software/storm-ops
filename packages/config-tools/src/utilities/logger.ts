@@ -243,7 +243,17 @@ export const getStopwatch = (name: string) => {
   };
 };
 
-export const formatLogMessage = (message?: any, prefix = "-"): string => {
+const MAX_DEPTH = 6;
+
+export const formatLogMessage = (
+  message?: any,
+  prefix = "-",
+  depth = 0
+): string => {
+  if (depth > MAX_DEPTH) {
+    return "<max depth>";
+  }
+
   return typeof message === "undefined" ||
     message === null ||
     (!message && typeof message !== "boolean")
@@ -251,7 +261,7 @@ export const formatLogMessage = (message?: any, prefix = "-"): string => {
     : typeof message === "string"
       ? message
       : Array.isArray(message)
-        ? `\n${message.map((item, index) => ` ${prefix}> #${index} = ${formatLogMessage(item)}`).join("\n")}`
+        ? `\n${message.map((item, index) => ` ${prefix}> #${index} = ${formatLogMessage(item, `${prefix}-`, depth + 1)}`).join("\n")}`
         : typeof message === "object"
           ? `\n${Object.keys(message)
               .map(
@@ -260,7 +270,11 @@ export const formatLogMessage = (message?: any, prefix = "-"): string => {
                     _isFunction(message[key])
                       ? "<function>"
                       : typeof message[key] === "object"
-                        ? formatLogMessage(message[key], `${prefix}-`)
+                        ? formatLogMessage(
+                            message[key],
+                            `${prefix}-`,
+                            depth + 1
+                          )
                         : message[key]
                   }`
               )
