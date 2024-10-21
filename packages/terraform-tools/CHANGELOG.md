@@ -1,9 +1,16 @@
-## 0.23.2 (2024-10-21)
+## 0.24.0 (2024-10-21)
 
+
+### Features
+
+- **config-tools:** Update max depth to 4 calls ([71c2aab1](https://github.com/storm-software/storm-ops/commit/71c2aab1))
+
+## 0.23.2 (2024-10-21)
 
 ### Bug Fixes
 
-- **config-tools:** Resolved issue printing object arrays to the logs ([1590597a](https://github.com/storm-software/storm-ops/commit/1590597a))
+- **config-tools:** Resolved issue printing object arrays to the logs
+  ([1590597a](https://github.com/storm-software/storm-ops/commit/1590597a))
 
 ## 0.23.1 (2024-10-20)
 

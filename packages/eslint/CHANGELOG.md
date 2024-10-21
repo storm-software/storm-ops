@@ -1,3 +1,10 @@
+## 0.87.0 (2024-10-21)
+
+
+### Features
+
+- **config-tools:** Update max depth to 4 calls ([71c2aab1](https://github.com/storm-software/storm-ops/commit/71c2aab1))
+
 ## 0.86.0 (2024-10-21)
 
 
