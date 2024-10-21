@@ -1,3 +1,10 @@
+## 0.85.4 (2024-10-21)
+
+
+### Bug Fixes
+
+- **config-tools:** Resolved issue printing object arrays to the logs ([1590597a](https://github.com/storm-software/storm-ops/commit/1590597a))
+
 ## 0.85.3 (2024-10-20)
 
 
