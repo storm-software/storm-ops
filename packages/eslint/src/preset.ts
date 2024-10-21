@@ -35,6 +35,7 @@ import tsdocRules from "./rules/ts-docs";
 import banner from "./utils/banner-plugin";
 import { CODE_BLOCK, TS_FILE } from "./utils/constants";
 import { formatConfig } from "./utils/format-config";
+import { ignores } from "./utils/ignores";
 
 /**
  * The module boundary dependency constraints.
@@ -89,7 +90,7 @@ export function getStormConfig(
     useReactCompiler: false
   },
   ...userConfigs: Linter.FlatConfig[]
-): Linter.FlatConfig[] {
+): Linter.FlatConfig<Linter.RulesRecord>[] {
   const tsconfig = options.tsconfig ?? "./tsconfig.base.json";
   const typescriptEslintConfigType =
     options.typescriptEslintConfigType || "eslint-recommended";
@@ -97,7 +98,7 @@ export function getStormConfig(
   const react = options.react ?? {};
   const useReactCompiler = options.useReactCompiler ?? false;
 
-  const configs: Linter.FlatConfig[] = [
+  const configs: Linter.FlatConfig<Linter.RulesRecord>[] = [
     // Prettier
     prettierConfig,
 
@@ -242,31 +243,13 @@ export function getStormConfig(
       {
         ...reactPlugin.configs?.recommended,
         files: ["**/*.tsx"],
-        ignores: [
-          "**/node_modules/**",
-          "**/dist/**",
-          "**/coverage/**",
-          "**/tmp/**",
-          "**/.nx/**",
-          "**/.tamagui/**",
-          "**/.next/**",
-          ...(options.ignores || [])
-        ],
+        ignores: [...ignores, ...(options.ignores || [])],
         ...react
       },
       {
         ...reactHooks.configs?.recommended,
         files: [TS_FILE],
-        ignores: [
-          "**/node_modules/**",
-          "**/dist/**",
-          "**/coverage/**",
-          "**/tmp/**",
-          "**/.nx/**",
-          "**/.tamagui/**",
-          "**/.next/**",
-          ...(options.ignores || [])
-        ]
+        ignores: [...ignores, ...(options.ignores || [])]
       }
       // {
       //   files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
@@ -277,16 +260,7 @@ export function getStormConfig(
     if (useReactCompiler) {
       reactConfigs.push({
         files: ["**/*.tsx"],
-        ignores: [
-          "**/node_modules/**",
-          "**/dist/**",
-          "**/coverage/**",
-          "**/tmp/**",
-          "**/.nx/**",
-          "**/.tamagui/**",
-          "**/.next/**",
-          ...(options.ignores || [])
-        ],
+        ignores: [...ignores, ...(options.ignores || [])],
         plugins: {
           "react-compiler": reactCompiler
         },
@@ -302,16 +276,7 @@ export function getStormConfig(
   if (options.nextFiles && options.nextFiles.length > 0) {
     configs.push({
       ...next.configs["core-web-vitals"],
-      ignores: [
-        "**/node_modules/**",
-        "**/dist/**",
-        "**/coverage/**",
-        "**/tmp/**",
-        "**/.nx/**",
-        "**/.tamagui/**",
-        "**/.next/**",
-        ...(options.ignores || [])
-      ],
+      ignores: [...(options.ignores || [])],
       files: options.nextFiles
     });
   }
@@ -340,16 +305,7 @@ export function getStormConfig(
         project: tsconfig,
         projectService: true,
         sourceType: "module",
-        projectFolderIgnoreList: [
-          "**/node_modules/**",
-          "**/dist/**",
-          "**/coverage/**",
-          "**/tmp/**",
-          "**/.nx/**",
-          "**/.tamagui/**",
-          "**/.next/**",
-          ...(options.ignores || [])
-        ],
+        projectFolderIgnoreList: [...ignores, ...(options.ignores || [])],
         ...options.parserOptions
       }
     },
@@ -361,16 +317,7 @@ export function getStormConfig(
       }),
       ...(options.rules ?? {})
     },
-    ignores: [
-      "**/node_modules/**",
-      "**/dist/**",
-      "**/coverage/**",
-      "**/tmp/**",
-      "**/.nx/**",
-      "**/.tamagui/**",
-      "**/.next/**",
-      ...(options.ignores || [])
-    ]
+    ignores: [...ignores, ...(options.ignores || [])]
   });
 
   // // JavaScript and TypeScript code

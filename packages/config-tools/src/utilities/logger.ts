@@ -250,20 +250,22 @@ export const formatLogMessage = (message?: any, prefix = "-"): string => {
     ? "<none>"
     : typeof message === "string"
       ? message
-      : typeof message === "object"
-        ? `\n${Object.keys(message)
-            .map(
-              key =>
-                ` ${prefix}> ${key} = ${
-                  _isFunction(message[key])
-                    ? "<function>"
-                    : typeof message[key] === "object"
-                      ? formatLogMessage(message[key], `${prefix}-`)
-                      : message[key]
-                }`
-            )
-            .join("\n")}`
-        : message;
+      : Array.isArray(message)
+        ? `\n${message.map((item, index) => ` ${prefix}> #${index} = ${formatLogMessage(item)}`).join("\n")}`
+        : typeof message === "object"
+          ? `\n${Object.keys(message)
+              .map(
+                key =>
+                  ` ${prefix}> ${key} = ${
+                    _isFunction(message[key])
+                      ? "<function>"
+                      : typeof message[key] === "object"
+                        ? formatLogMessage(message[key], `${prefix}-`)
+                        : message[key]
+                  }`
+              )
+              .join("\n")}`
+          : message;
 };
 
 const _isFunction = (
