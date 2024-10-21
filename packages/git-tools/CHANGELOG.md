@@ -1,3 +1,10 @@
+## 2.63.0 (2024-10-21)
+
+
+### Features
+
+- **config-tools:** Add a max depth to the object logger ([900ad959](https://github.com/storm-software/storm-ops/commit/900ad959))
+
 ## 2.62.1 (2024-10-20)
 
 
