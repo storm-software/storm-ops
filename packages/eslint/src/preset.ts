@@ -23,7 +23,11 @@ import type { RuleOptions } from "./rules.d";
 // import jsxA11yRules from "./rules/jsx-a11y";
 // import reactRules from "./rules/react";
 // import reactHooksRules from "./rules/react-hooks";
-import { writeDebug, writeInfo } from "@storm-software/config-tools";
+import {
+  formatLogMessage,
+  writeDebug,
+  writeInfo
+} from "@storm-software/config-tools";
 import { defu } from "defu";
 import tsEslint from "typescript-eslint";
 import {
@@ -328,7 +332,7 @@ export function getStormConfig(
             !useUnicorn ||
             !ruleId.startsWith("unicorn/") ||
             !react ||
-            !ruleId.startsWith("react/")
+            (!ruleId.startsWith("react/") && !ruleId.startsWith("react-hooks/"))
         )
         .reduce((ret, ruleId) => {
           ret[ruleId] = options.rules![ruleId];
@@ -427,7 +431,9 @@ export function getStormConfig(
   writeInfo("⚙️  Completed generated Storm ESLint configuration objects", {
     logLevel: "all"
   });
-  writeDebug(result, { logLevel: "all" });
+  writeDebug(formatLogMessage(result, { skip: ["globals"] }), {
+    logLevel: "all"
+  });
 
   return result;
 }

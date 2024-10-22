@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ColorConfig, StormConfig } from "@storm-software/config";
 import { LogLevel, LogLevelLabel } from "../types";
 import { getChalk } from "./chalk";
@@ -245,14 +246,22 @@ export const getStopwatch = (name: string) => {
 
 const MAX_DEPTH = 4;
 
+export type FormatLogMessageOptions = {
+  prefix?: string;
+  skip?: string[];
+};
+
 export const formatLogMessage = (
   message?: any,
-  prefix = "-",
+  options: FormatLogMessageOptions = {},
   depth = 0
 ): string => {
   if (depth > MAX_DEPTH) {
     return "<max depth>";
   }
+
+  const prefix = options.prefix ?? "-";
+  const skip = options.skip ?? [];
 
   return typeof message === "undefined" ||
     message === null ||
@@ -261,9 +270,10 @@ export const formatLogMessage = (
     : typeof message === "string"
       ? message
       : Array.isArray(message)
-        ? `\n${message.map((item, index) => ` ${prefix}> #${index} = ${formatLogMessage(item, `${prefix}-`, depth + 1)}`).join("\n")}`
+        ? `\n${message.map((item, index) => ` ${prefix}> #${index} = ${formatLogMessage(item, { prefix: `${prefix}-`, skip }, depth + 1)}`).join("\n")}`
         : typeof message === "object"
           ? `\n${Object.keys(message)
+              .filter(key => !skip.includes(key))
               .map(
                 key =>
                   ` ${prefix}> ${key} = ${
@@ -272,7 +282,7 @@ export const formatLogMessage = (
                       : typeof message[key] === "object"
                         ? formatLogMessage(
                             message[key],
-                            `${prefix}-`,
+                            { prefix: `${prefix}-`, skip },
                             depth + 1
                           )
                         : message[key]
