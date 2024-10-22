@@ -1,9 +1,16 @@
-## 1.105.2 (2024-10-22)
+## 1.105.3 (2024-10-22)
 
 
 ### Bug Fixes
 
-- **eslint:** Ensure `parserOptions` are removed from all configuration objects ([971d16f8](https://github.com/storm-software/storm-ops/commit/971d16f8))
+- **eslint:** Apply TypeScript ESLint parser option configuration ([0e4728a2](https://github.com/storm-software/storm-ops/commit/0e4728a2))
+
+## 1.105.2 (2024-10-22)
+
+### Bug Fixes
+
+- **eslint:** Ensure `parserOptions` are removed from all configuration objects
+  ([971d16f8](https://github.com/storm-software/storm-ops/commit/971d16f8))
 
 ## 1.105.1 (2024-10-22)
 

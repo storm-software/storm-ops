@@ -1,3 +1,10 @@
+## 2.63.4 (2024-10-22)
+
+
+### Bug Fixes
+
+- **eslint:** Apply TypeScript ESLint parser option configuration ([0e4728a2](https://github.com/storm-software/storm-ops/commit/0e4728a2))
+
 ## 2.63.3 (2024-10-22)
 
 
