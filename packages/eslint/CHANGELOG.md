@@ -1,3 +1,10 @@
+## 0.87.3 (2024-10-22)
+
+
+### Bug Fixes
+
+- **eslint:** Resolved issues with `parserOptions` configurations ([f35b4739](https://github.com/storm-software/storm-ops/commit/f35b4739))
+
 ## 0.87.2 (2024-10-22)
 
 
