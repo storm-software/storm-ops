@@ -414,11 +414,22 @@ ${unbuildBuildOptions
       outputPackageJson.types = "./dist/index.d.ts";
 
       outputPackageJson.exports ??= {};
-      outputPackageJson.exports["."] = outputPackageJson.exports["."] ?? {
-        "import": "./dist/index.mjs",
-        "require": "./dist/index.cjs",
-        "types": "./dist/index.d.ts"
-      };
+      // outputPackageJson.exports["."] = outputPackageJson.exports["."] ?? {
+      //   "import": "./dist/index.mjs",
+      //   "require": "./dist/index.cjs",
+      //   "types": "./dist/index.d.ts"
+      // };
+
+      outputPackageJson.exports = Object.keys(outputPackageJson.exports).reduce(
+        (ret, key) => {
+          if (key.endsWith("/index") && !ret[key.replace("/index", "")]) {
+            ret[key.replace("/index", "")] = outputPackageJson.exports[key];
+          }
+
+          return ret;
+        },
+        outputPackageJson.exports
+      );
 
       await writeJsonFile(
         joinPathFragments(enhancedOptions.outputPath, "package.json"),
