@@ -16,7 +16,7 @@ export type TypeScriptEslintConfigType =
   | "stylistic";
 
 export interface GetStormRulesConfigOptions {
-  typescriptEslintConfigType?: TypeScriptEslintConfigType;
+  typescriptEslintConfigType?: string;
   useUnicorn?: boolean;
   useNx?: boolean;
 }

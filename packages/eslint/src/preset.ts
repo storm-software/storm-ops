@@ -32,11 +32,7 @@ import {
 } from "@storm-software/config-tools";
 import { defu } from "defu";
 import tsEslint from "typescript-eslint";
-import {
-  getStormRulesConfig,
-  GetStormRulesConfigOptions,
-  TypeScriptEslintConfigType
-} from "./rules/storm";
+import { getStormRulesConfig, GetStormRulesConfigOptions } from "./rules/storm";
 import tsdocRules from "./rules/ts-docs";
 import banner from "./utils/banner-plugin";
 import { CODE_BLOCK, TS_FILE } from "./utils/constants";
@@ -69,7 +65,7 @@ export type PresetOptions = GetStormRulesConfigOptions & {
   rules?: RuleOptions;
   ignores?: string[];
   tsconfig?: string;
-  typescriptEslintConfigType?: TypeScriptEslintConfigType;
+  typescriptEslintConfigType?: string;
   parserOptions?: Linter.ParserOptions;
   markdown?: false | Linter.RulesRecord;
   react?: false | Linter.RulesRecord;
@@ -97,7 +93,6 @@ export function getStormConfig(
   options: PresetOptions = {
     rules: {},
     ignores: [],
-    typescriptEslintConfigType: "eslint-recommended",
     useUnicorn: true,
     markdown: {},
     react: {},
@@ -110,7 +105,7 @@ export function getStormConfig(
   const tsconfig = options.tsconfig;
   const parserOptions = options.parserOptions;
   const typescriptEslintConfigType =
-    options.typescriptEslintConfigType || "eslint-recommended";
+    options.typescriptEslintConfigType || "recommendedTypeChecked";
   const useUnicorn = options.useUnicorn ?? true;
   const react = options.react ?? {};
   const nx = options.nx ?? {};
@@ -324,6 +319,12 @@ export function getStormConfig(
           ...globals.node,
           "window": "readonly",
           "Storm": "readonly"
+        },
+        parserOptions: {
+          projectService: true,
+          ecmaFeatures: {
+            jsx: react !== false
+          }
         }
       },
       rules: {
