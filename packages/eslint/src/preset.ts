@@ -26,6 +26,8 @@ import type { RuleOptions } from "./rules.d";
 import {
   formatLogMessage,
   writeDebug,
+  writeError,
+  writeFatal,
   writeInfo
 } from "@storm-software/config-tools";
 import { defu } from "defu";
@@ -74,6 +76,15 @@ export type PresetOptions = GetStormRulesConfigOptions & {
   nx?: false | Linter.RulesRecord;
   useReactCompiler?: boolean;
   nextFiles?: string[];
+  logLevel?:
+    | "all"
+    | "trace"
+    | "debug"
+    | "info"
+    | "warn"
+    | "error"
+    | "fatal"
+    | "silent";
 };
 
 /**
@@ -91,7 +102,8 @@ export function getStormConfig(
     markdown: {},
     react: {},
     nx: {},
-    useReactCompiler: false
+    useReactCompiler: false,
+    logLevel: "info"
   },
   ...userConfigs: Linter.FlatConfig[]
 ): Linter.FlatConfig<Linter.RulesRecord>[] {
@@ -103,339 +115,350 @@ export function getStormConfig(
   const react = options.react ?? {};
   const nx = options.nx ?? {};
   const useReactCompiler = options.useReactCompiler ?? false;
+  const logLevel = options.logLevel ?? "info";
 
-  const configs: Linter.FlatConfig<Linter.RulesRecord>[] = [
-    // Prettier
-    prettierConfig,
+  try {
+    const configs: Linter.FlatConfig<Linter.RulesRecord>[] = [
+      // Prettier
+      prettierConfig,
 
-    // Import
-    // https://www.npmjs.com/package/eslint-plugin-import
-    // { plugins: { import: importEslint } },
-    // {
-    //   files: [CODE_FILE],
-    //   rules: importRules
-    // },
-
-    // bannerConfig,
-
-    // Json
-    // https://www.npmjs.com/package/eslint-plugin-json
-    {
-      files: ["**/*.json"],
-      ...json.configs["recommended"],
-      rules: {
-        "json/json": ["warn", { "allowComments": true }]
-      }
-    },
-    {
-      files: ["**/executors/**/schema.json", "**/generators/**/schema.json"],
-      rules:
-        nx !== false
-          ? {
-              "@nx/workspace/valid-schema-description": "error"
-            }
-          : {}
-    },
-    {
-      files: ["**/package.json"],
-      rules:
-        nx !== false
-          ? {
-              "@nx/dependency-checks": [
-                "error",
-                {
-                  buildTargets: ["build"],
-                  ignoredDependencies: ["typescript"],
-                  ignoredFiles: options.ignores,
-                  checkMissingDependencies: true,
-                  checkObsoleteDependencies: true,
-                  checkVersionMismatches: false,
-                  includeTransitiveDependencies: true,
-                  useLocalPathsForWorkspaceDependencies: true
-                }
-              ]
-            }
-          : {}
-    },
-
-    // YML
-    // https://www.npmjs.com/package/eslint-plugin-yml
-    ...yml.configs["flat/recommended"],
-    ...yml.configs["flat/prettier"],
-
-    // CSpell
-    {
-      plugins: {
-        ...cspellPlugins
-      },
-      rules: {
-        ...cspellRules,
-        "@cspell/spellchecker": [
-          "warn",
-          {
-            // configFile: new URL(
-            //   "./.vscode/cspell.json",
-            //   import.meta.url
-            // ).toString(),
-            autoFix: true
-          }
-        ]
-      }
-    },
-
-    // User overrides
-    ...(userConfigs as Linter.FlatConfig[])
-  ].filter(Boolean) as Linter.FlatConfig[];
-
-  // Nx
-  if (nx) {
-    configs.push({
-      plugins: { "@nx": nxPlugin }
-    });
-  }
-
-  configs.push(eslint.configs.recommended);
-
-  if (typescriptEslintConfigType !== "none") {
-    // https://typescript-eslint.io/
-    if (!(typescriptEslintConfigType in tsEslint.configs)) {
-      console.warn(
-        "Invalid TypeScript ESLint configuration type:",
-        typescriptEslintConfigType
-      );
-    } else {
-      configs.push(
-        ...(Array.isArray(tsEslint.configs[typescriptEslintConfigType])
-          ? tsEslint.configs[typescriptEslintConfigType]
-          : [tsEslint.configs[typescriptEslintConfigType]])
-      );
-    }
-  }
-
-  if (useUnicorn) {
-    // https://www.npmjs.com/package/eslint-plugin-unicorn
-    configs.push({
-      files: [TS_FILE],
-      plugins: { unicorn },
-      rules: {
-        ...unicorn.configs["flat/recommended"].rules
-      }
-    });
-  }
-
-  // TSDoc
-  // https://www.npmjs.com/package/eslint-plugin-tsdoc
-  configs.push({
-    files: [TS_FILE],
-    plugins: { tsdoc },
-    rules: tsdocRules
-  });
-
-  // Banner
-  configs.push({
-    // ...banner.configs!["recommended"],
-    name: "banner",
-    plugins: { banner },
-    files: [TS_FILE],
-    rules: {
-      "banner/banner": [
-        "error",
-        { commentType: "block", numNewlines: 2, repositoryName: options.name }
-      ]
-    }
-  });
-
-  // React
-  // https://www.npmjs.com/package/eslint-plugin-react
-  if (react) {
-    // TSX - React
-    const reactConfigs: Linter.FlatConfig<Linter.RulesRecord>[] = [
-      {
-        ...reactPlugin.configs?.recommended,
-        plugins: { "react": reactPlugin },
-        files: ["**/*.tsx"],
-        languageOptions: {
-          parserOptions: {
-            ecmaFeatures: {
-              jsx: true
-            }
-          }
-        },
-        ignores: [...ignores, ...(options.ignores || [])],
-        ...react
-      },
-      {
-        ...reactHooks.configs?.recommended,
-        plugins: { "react-hooks": reactHooks },
-        files: [TS_FILE],
-        ignores: [...ignores, ...(options.ignores || [])]
-      }
+      // Import
+      // https://www.npmjs.com/package/eslint-plugin-import
+      // { plugins: { import: importEslint } },
       // {
-      //   files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
-      //   ...jsxA11y.flatConfigs?.recommended
-      // }
-    ];
+      //   files: [CODE_FILE],
+      //   rules: importRules
+      // },
 
-    if (useReactCompiler) {
-      reactConfigs.push({
-        files: ["**/*.tsx"],
-        ignores: [...ignores, ...(options.ignores || [])],
+      // bannerConfig,
+
+      // Json
+      // https://www.npmjs.com/package/eslint-plugin-json
+      {
+        files: ["**/*.json"],
+        ...json.configs["recommended"],
+        rules: {
+          "json/json": ["warn", { "allowComments": true }]
+        }
+      },
+      {
+        files: ["**/executors/**/schema.json", "**/generators/**/schema.json"],
+        rules:
+          nx !== false
+            ? {
+                "@nx/workspace/valid-schema-description": "error"
+              }
+            : {}
+      },
+      {
+        files: ["**/package.json"],
+        rules:
+          nx !== false
+            ? {
+                "@nx/dependency-checks": [
+                  "error",
+                  {
+                    buildTargets: ["build"],
+                    ignoredDependencies: ["typescript"],
+                    ignoredFiles: options.ignores,
+                    checkMissingDependencies: true,
+                    checkObsoleteDependencies: true,
+                    checkVersionMismatches: false,
+                    includeTransitiveDependencies: true,
+                    useLocalPathsForWorkspaceDependencies: true
+                  }
+                ]
+              }
+            : {}
+      },
+
+      // YML
+      // https://www.npmjs.com/package/eslint-plugin-yml
+      ...yml.configs["flat/recommended"],
+      ...yml.configs["flat/prettier"],
+
+      // CSpell
+      {
         plugins: {
-          "react-compiler": reactCompiler
+          ...cspellPlugins
         },
         rules: {
-          "react-compiler/react-compiler": "error"
+          ...cspellRules,
+          "@cspell/spellchecker": [
+            "warn",
+            {
+              // configFile: new URL(
+              //   "./.vscode/cspell.json",
+              //   import.meta.url
+              // ).toString(),
+              autoFix: true
+            }
+          ]
+        }
+      },
+
+      // User overrides
+      ...(userConfigs as Linter.FlatConfig[])
+    ].filter(Boolean) as Linter.FlatConfig[];
+
+    // Nx
+    if (nx) {
+      configs.push({
+        plugins: { "@nx": nxPlugin }
+      });
+    }
+
+    configs.push(eslint.configs.recommended);
+
+    if (typescriptEslintConfigType !== "none") {
+      // https://typescript-eslint.io/
+      if (!(typescriptEslintConfigType in tsEslint.configs)) {
+        console.warn(
+          "Invalid TypeScript ESLint configuration type:",
+          typescriptEslintConfigType
+        );
+      } else {
+        configs.push(
+          ...(Array.isArray(tsEslint.configs[typescriptEslintConfigType])
+            ? tsEslint.configs[typescriptEslintConfigType]
+            : [tsEslint.configs[typescriptEslintConfigType]])
+        );
+      }
+    }
+
+    if (useUnicorn) {
+      // https://www.npmjs.com/package/eslint-plugin-unicorn
+      configs.push({
+        files: [TS_FILE],
+        plugins: { unicorn },
+        rules: {
+          ...unicorn.configs["flat/recommended"].rules
         }
       });
     }
 
-    configs.push(...reactConfigs);
-  }
-
-  if (options.nextFiles && options.nextFiles.length > 0) {
+    // TSDoc
+    // https://www.npmjs.com/package/eslint-plugin-tsdoc
     configs.push({
-      ...next.configs["core-web-vitals"],
-      ignores: [...(options.ignores || [])],
-      files: options.nextFiles
+      files: [TS_FILE],
+      plugins: { tsdoc },
+      rules: tsdocRules
     });
-  }
 
-  // TypeScript
-  const typescriptConfig: Linter.FlatConfig<Linter.RulesRecord> = {
-    files: [TS_FILE],
-    languageOptions: {
-      globals: {
-        ...Object.fromEntries(
-          Object.keys(globals).flatMap(group =>
-            Object.keys(globals[group as keyof typeof globals]).map(key => [
-              key,
-              "readonly"
-            ])
+    // Banner
+    configs.push({
+      // ...banner.configs!["recommended"],
+      name: "banner",
+      plugins: { banner },
+      files: [TS_FILE],
+      rules: {
+        "banner/banner": [
+          "error",
+          { commentType: "block", numNewlines: 2, repositoryName: options.name }
+        ]
+      }
+    });
+
+    // React
+    // https://www.npmjs.com/package/eslint-plugin-react
+    if (react) {
+      // TSX - React
+      const reactConfigs: Linter.FlatConfig<Linter.RulesRecord>[] = [
+        {
+          ...reactPlugin.configs?.recommended,
+          plugins: { "react": reactPlugin },
+          files: ["**/*.tsx"],
+          languageOptions: {
+            parserOptions: {
+              ecmaFeatures: {
+                jsx: true
+              }
+            }
+          },
+          ignores: [...ignores, ...(options.ignores || [])],
+          ...react
+        },
+        {
+          ...reactHooks.configs?.recommended,
+          plugins: { "react-hooks": reactHooks },
+          files: [TS_FILE],
+          ignores: [...ignores, ...(options.ignores || [])]
+        }
+        // {
+        //   files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
+        //   ...jsxA11y.flatConfigs?.recommended
+        // }
+      ];
+
+      if (useReactCompiler) {
+        reactConfigs.push({
+          files: ["**/*.tsx"],
+          ignores: [...ignores, ...(options.ignores || [])],
+          plugins: {
+            "react-compiler": reactCompiler
+          },
+          rules: {
+            "react-compiler/react-compiler": "error"
+          }
+        });
+      }
+
+      configs.push(...reactConfigs);
+    }
+
+    if (options.nextFiles && options.nextFiles.length > 0) {
+      configs.push({
+        ...next.configs["core-web-vitals"],
+        ignores: [...(options.ignores || [])],
+        files: options.nextFiles
+      });
+    }
+
+    // TypeScript
+    const typescriptConfig: Linter.FlatConfig<Linter.RulesRecord> = {
+      files: [TS_FILE],
+      languageOptions: {
+        globals: {
+          ...Object.fromEntries(
+            Object.keys(globals).flatMap(group =>
+              Object.keys(globals[group as keyof typeof globals]).map(key => [
+                key,
+                "readonly"
+              ])
+            )
+          ),
+          ...globals.browser,
+          ...globals.node,
+          "window": "readonly",
+          "Storm": "readonly"
+        }
+      },
+      rules: {
+        ...getStormRulesConfig({
+          ...options,
+          typescriptEslintConfigType,
+          useUnicorn,
+          useNx: nx !== false
+        }),
+        ...Object.keys(options.rules ?? {})
+          .filter(
+            ruleId =>
+              !useUnicorn ||
+              !ruleId.startsWith("unicorn/") ||
+              !react ||
+              (!ruleId.startsWith("react/") &&
+                !ruleId.startsWith("react-hooks/"))
           )
-        ),
-        ...globals.browser,
-        ...globals.node,
-        "window": "readonly",
-        "Storm": "readonly"
-      }
-    },
-    rules: {
-      ...getStormRulesConfig({
-        ...options,
-        typescriptEslintConfigType,
-        useUnicorn,
-        useNx: nx !== false
-      }),
-      ...Object.keys(options.rules ?? {})
-        .filter(
-          ruleId =>
-            !useUnicorn ||
-            !ruleId.startsWith("unicorn/") ||
-            !react ||
-            (!ruleId.startsWith("react/") && !ruleId.startsWith("react-hooks/"))
-        )
-        .reduce((ret, ruleId) => {
-          ret[ruleId] = options.rules![ruleId];
-          return ret;
-        }, {} as Linter.RulesRecord)
-    },
-    ignores: [...ignores, ...(options.ignores || [])]
-  };
+          .reduce((ret, ruleId) => {
+            ret[ruleId] = options.rules![ruleId];
+            return ret;
+          }, {} as Linter.RulesRecord)
+      },
+      ignores: [...ignores, ...(options.ignores || [])]
+    };
 
-  if (parserOptions) {
-    typescriptConfig.languageOptions ??= {};
-    typescriptConfig.languageOptions.parserOptions = parserOptions;
-  }
-  if (tsconfig) {
-    typescriptConfig.languageOptions ??= {};
-    typescriptConfig.languageOptions.parserOptions ??= {};
-    typescriptConfig.languageOptions.parserOptions.project = tsconfig;
-  }
+    if (parserOptions) {
+      typescriptConfig.languageOptions ??= {};
+      typescriptConfig.languageOptions.parserOptions = parserOptions;
+    }
+    if (tsconfig) {
+      typescriptConfig.languageOptions ??= {};
+      typescriptConfig.languageOptions.parserOptions ??= {};
+      typescriptConfig.languageOptions.parserOptions.project = tsconfig;
+    }
 
-  configs.push(typescriptConfig);
+    configs.push(typescriptConfig);
 
-  // // JavaScript and TypeScript code
-  // const codeConfig: Linter.FlatConfig<Linter.RulesRecord> = {
-  //   files: [CODE_FILE],
-  //   rules: {
-  //     // Prettier
-  //     ...prettierConfig.rules,
+    // // JavaScript and TypeScript code
+    // const codeConfig: Linter.FlatConfig<Linter.RulesRecord> = {
+    //   files: [CODE_FILE],
+    //   rules: {
+    //     // Prettier
+    //     ...prettierConfig.rules,
 
-  //     // Banner
-  //     ...banner.configs!["recommended"]![1]?.rules,
+    //     // Banner
+    //     ...banner.configs!["recommended"]![1]?.rules,
 
-  //     "banner/banner": [
-  //       "error",
-  //       {
-  //         repositoryName: options.name,
-  //         banner: options.banner,
-  //         commentType: "block",
-  //         numNewlines: 2
-  //       }
-  //     ]
-  //   },
-  //   ignores: ["dist", "coverage", "tmp", ".nx", ...(options.ignores || [])]
-  // };
+    //     "banner/banner": [
+    //       "error",
+    //       {
+    //         repositoryName: options.name,
+    //         banner: options.banner,
+    //         commentType: "block",
+    //         numNewlines: 2
+    //       }
+    //     ]
+    //   },
+    //   ignores: ["dist", "coverage", "tmp", ".nx", ...(options.ignores || [])]
+    // };
 
-  // configs.push(codeConfig);
+    // configs.push(codeConfig);
 
-  // Markdown
-  // https://www.npmjs.com/package/eslint-plugin-markdown
-  if (options.markdown) {
-    configs.push(...markdown.configs.recommended);
-    configs.push({
-      files: [CODE_BLOCK],
-      processor: "markdown/markdown",
-      rules: <Linter.RulesRecord>{
-        "unicorn/filename-case": "off",
-        "no-undef": "off",
-        "no-unused-expressions": "off",
-        "padded-blocks": "off",
-        "no-empty-pattern": "off",
-        "no-redeclare": "off",
-        "no-import-assign": "off",
-        ...options.markdown
-      }
+    // Markdown
+    // https://www.npmjs.com/package/eslint-plugin-markdown
+    if (options.markdown) {
+      configs.push(...markdown.configs.recommended);
+      configs.push({
+        files: [CODE_BLOCK],
+        processor: "markdown/markdown",
+        rules: <Linter.RulesRecord>{
+          "unicorn/filename-case": "off",
+          "no-undef": "off",
+          "no-unused-expressions": "off",
+          "padded-blocks": "off",
+          "no-empty-pattern": "off",
+          "no-redeclare": "off",
+          "no-import-assign": "off",
+          ...options.markdown
+        }
+      });
+      configs.push({
+        files: ["**/*.md/*.js", "**/*.md/*.ts"],
+        rules: <Linter.RulesRecord>{
+          "unicorn/filename-case": "off",
+          "no-undef": "off",
+          "no-unused-expressions": "off",
+          "padded-blocks": "off",
+          "no-empty-pattern": "off",
+          "no-redeclare": "off",
+          "no-import-assign": "off",
+          ...options.markdown
+        }
+      });
+    }
+
+    const result = formatConfig(
+      "Preset",
+      configs.reduce((ret, config) => {
+        const existingIndex = ret.findIndex(existing =>
+          areFilesEqual(existing.files, config.files)
+        );
+        if (existingIndex >= 0) {
+          ret[existingIndex] = defu(ret[existingIndex], config);
+        } else {
+          ret.push(config);
+        }
+
+        return ret;
+      }, [] as Linter.FlatConfig<Linter.RulesRecord>[])
+    );
+
+    writeInfo("⚙️  Completed generated Storm ESLint configuration objects", {
+      logLevel
     });
-    configs.push({
-      files: ["**/*.md/*.js", "**/*.md/*.ts"],
-      rules: <Linter.RulesRecord>{
-        "unicorn/filename-case": "off",
-        "no-undef": "off",
-        "no-unused-expressions": "off",
-        "padded-blocks": "off",
-        "no-empty-pattern": "off",
-        "no-redeclare": "off",
-        "no-import-assign": "off",
-        ...options.markdown
-      }
+    writeDebug(formatLogMessage(result, { skip: ["globals"] }), {
+      logLevel
     });
+
+    return result;
+  } catch (error) {
+    writeFatal("Error generating Storm ESLint configuration objects", {
+      logLevel
+    });
+    writeError(error, { logLevel });
+
+    throw error;
   }
-
-  const result = formatConfig(
-    "Preset",
-    configs.reduce((ret, config) => {
-      const existingIndex = ret.findIndex(existing =>
-        areFilesEqual(existing.files, config.files)
-      );
-      if (existingIndex >= 0) {
-        ret[existingIndex] = defu(ret[existingIndex], config);
-      } else {
-        ret.push(config);
-      }
-
-      return ret;
-    }, [] as Linter.FlatConfig<Linter.RulesRecord>[])
-  );
-
-  writeInfo("⚙️  Completed generated Storm ESLint configuration objects", {
-    logLevel: "all"
-  });
-  writeDebug(formatLogMessage(result, { skip: ["globals"] }), {
-    logLevel: "all"
-  });
-
-  return result;
 }
 
 const areFilesEqual = (
