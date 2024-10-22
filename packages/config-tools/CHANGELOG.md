@@ -1,9 +1,18 @@
-## 1.104.3 (2024-10-22)
+## 1.105.0 (2024-10-22)
 
+
+### Features
+
+- **eslint:** Added the `nx` linting rules configuration option ([cebc611a](https://github.com/storm-software/storm-ops/commit/cebc611a))
+
+- **config-tools:** Update the parameters to `formatLogMessage` to accept options object ([e159f35b](https://github.com/storm-software/storm-ops/commit/e159f35b))
+
+## 1.104.3 (2024-10-22)
 
 ### Bug Fixes
 
-- **eslint:** Resolved issues with `parserOptions` configurations ([f35b4739](https://github.com/storm-software/storm-ops/commit/f35b4739))
+- **eslint:** Resolved issues with `parserOptions` configurations
+  ([f35b4739](https://github.com/storm-software/storm-ops/commit/f35b4739))
 
 ## 1.104.2 (2024-10-22)
 

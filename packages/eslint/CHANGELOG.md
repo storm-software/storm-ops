@@ -1,3 +1,14 @@
+## 0.88.0 (2024-10-22)
+
+
+### Features
+
+- **eslint:** Added the `nx` linting rules configuration option ([cebc611a](https://github.com/storm-software/storm-ops/commit/cebc611a))
+
+- **config-tools:** Update the parameters to `formatLogMessage` to accept options object ([e159f35b](https://github.com/storm-software/storm-ops/commit/e159f35b))
+
+- **eslint:** Added the `logLevel` option to preset ([2dc39268](https://github.com/storm-software/storm-ops/commit/2dc39268))
+
 ## 0.87.3 (2024-10-22)
 
 

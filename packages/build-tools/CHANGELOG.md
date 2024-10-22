@@ -1,9 +1,16 @@
-## 0.95.1 (2024-10-22)
+## 0.96.0 (2024-10-22)
 
+
+### Features
+
+- **eslint:** Added the `nx` linting rules configuration option ([cebc611a](https://github.com/storm-software/storm-ops/commit/cebc611a))
+
+## 0.95.1 (2024-10-22)
 
 ### Bug Fixes
 
-- **eslint:** Resolve issue with `parserOptions` configuration ([4da465aa](https://github.com/storm-software/storm-ops/commit/4da465aa))
+- **eslint:** Resolve issue with `parserOptions` configuration
+  ([4da465aa](https://github.com/storm-software/storm-ops/commit/4da465aa))
 
 ## 0.95.0 (2024-10-21)
 
