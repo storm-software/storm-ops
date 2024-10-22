@@ -243,6 +243,7 @@ export function getStormConfig(
       {
         ...reactPlugin.configs?.recommended,
         plugins: { "react": reactPlugin },
+        parserOptions: {},
         files: ["**/*.tsx"],
         ignores: [...ignores, ...(options.ignores || [])],
         ...react
@@ -250,6 +251,7 @@ export function getStormConfig(
       {
         ...reactHooks.configs?.recommended,
         plugins: { "react-hooks": reactHooks },
+        parserOptions: {},
         files: [TS_FILE],
         ignores: [...ignores, ...(options.ignores || [])]
       }
