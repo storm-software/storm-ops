@@ -1,9 +1,16 @@
-## 1.105.3 (2024-10-22)
+## 1.106.0 (2024-10-22)
 
+
+### Features
+
+- **build-tools:** Ensure all nested folders have `exports` generated during unbuild ([cd57af07](https://github.com/storm-software/storm-ops/commit/cd57af07))
+
+## 1.105.3 (2024-10-22)
 
 ### Bug Fixes
 
-- **eslint:** Apply TypeScript ESLint parser option configuration ([0e4728a2](https://github.com/storm-software/storm-ops/commit/0e4728a2))
+- **eslint:** Apply TypeScript ESLint parser option configuration
+  ([0e4728a2](https://github.com/storm-software/storm-ops/commit/0e4728a2))
 
 ## 1.105.2 (2024-10-22)
 

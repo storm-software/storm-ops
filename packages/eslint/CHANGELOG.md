@@ -1,3 +1,10 @@
+## 0.89.0 (2024-10-22)
+
+
+### Features
+
+- **build-tools:** Ensure all nested folders have `exports` generated during unbuild ([cd57af07](https://github.com/storm-software/storm-ops/commit/cd57af07))
+
 ## 0.88.3 (2024-10-22)
 
 

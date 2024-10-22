@@ -1,9 +1,16 @@
-## 1.193.1 (2024-10-22)
+## 1.194.0 (2024-10-22)
 
+
+### Features
+
+- **build-tools:** Ensure all nested folders have `exports` generated during unbuild ([cd57af07](https://github.com/storm-software/storm-ops/commit/cd57af07))
+
+## 1.193.1 (2024-10-22)
 
 ### Bug Fixes
 
-- **eslint:** Ensure `parserOptions` are removed from all configuration objects ([971d16f8](https://github.com/storm-software/storm-ops/commit/971d16f8))
+- **eslint:** Ensure `parserOptions` are removed from all configuration objects
+  ([971d16f8](https://github.com/storm-software/storm-ops/commit/971d16f8))
 
 ## 1.193.0 (2024-10-22)
 
