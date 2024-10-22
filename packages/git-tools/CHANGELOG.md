@@ -1,3 +1,10 @@
+## 2.63.3 (2024-10-22)
+
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `parserOptions` for React configuration ([5f93eab9](https://github.com/storm-software/storm-ops/commit/5f93eab9))
+
 ## 2.63.2 (2024-10-22)
 
 

@@ -1,11 +1,20 @@
-## 1.105.0 (2024-10-22)
+## 1.105.1 (2024-10-22)
 
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid `parserOptions` for React configuration ([5f93eab9](https://github.com/storm-software/storm-ops/commit/5f93eab9))
+
+## 1.105.0 (2024-10-22)
 
 ### Features
 
-- **eslint:** Added the `nx` linting rules configuration option ([cebc611a](https://github.com/storm-software/storm-ops/commit/cebc611a))
+- **eslint:** Added the `nx` linting rules configuration option
+  ([cebc611a](https://github.com/storm-software/storm-ops/commit/cebc611a))
 
-- **config-tools:** Update the parameters to `formatLogMessage` to accept options object ([e159f35b](https://github.com/storm-software/storm-ops/commit/e159f35b))
+- **config-tools:** Update the parameters to `formatLogMessage` to accept
+  options object
+  ([e159f35b](https://github.com/storm-software/storm-ops/commit/e159f35b))
 
 ## 1.104.3 (2024-10-22)
 
