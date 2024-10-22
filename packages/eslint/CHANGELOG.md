@@ -1,3 +1,10 @@
+## 0.88.2 (2024-10-22)
+
+
+### Bug Fixes
+
+- **eslint:** Ensure `parserOptions` are removed from all configuration objects ([971d16f8](https://github.com/storm-software/storm-ops/commit/971d16f8))
+
 ## 0.88.1 (2024-10-22)
 
 
