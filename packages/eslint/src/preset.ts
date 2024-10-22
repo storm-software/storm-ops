@@ -242,12 +242,14 @@ export function getStormConfig(
     const reactConfigs: Linter.FlatConfig<Linter.RulesRecord>[] = [
       {
         ...reactPlugin.configs?.recommended,
+        plugins: { "react": reactPlugin },
         files: ["**/*.tsx"],
         ignores: [...ignores, ...(options.ignores || [])],
         ...react
       },
       {
         ...reactHooks.configs?.recommended,
+        plugins: { "react-hooks": reactHooks },
         files: [TS_FILE],
         ignores: [...ignores, ...(options.ignores || [])]
       }
