@@ -1,9 +1,16 @@
-## 1.104.0 (2024-10-21)
+## 1.104.1 (2024-10-22)
 
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with react-hooks plugin ([2dbc2670](https://github.com/storm-software/storm-ops/commit/2dbc2670))
+
+## 1.104.0 (2024-10-21)
 
 ### Features
 
-- **config-tools:** Update max depth to 4 calls ([71c2aab1](https://github.com/storm-software/storm-ops/commit/71c2aab1))
+- **config-tools:** Update max depth to 4 calls
+  ([71c2aab1](https://github.com/storm-software/storm-ops/commit/71c2aab1))
 
 ## 1.103.0 (2024-10-21)
 

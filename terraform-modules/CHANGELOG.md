@@ -1,3 +1,10 @@
+## 0.38.1 (2024-10-22)
+
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with react-hooks plugin ([2dbc2670](https://github.com/storm-software/storm-ops/commit/2dbc2670))
+
 ## 0.38.0 (2024-10-21)
 
 
