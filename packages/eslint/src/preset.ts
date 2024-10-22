@@ -422,18 +422,26 @@ export function getStormConfig(
 
     const result = formatConfig(
       "Preset",
-      configs.reduce((ret, config) => {
-        const existingIndex = ret.findIndex(existing =>
-          areFilesEqual(existing.files, config.files)
-        );
-        if (existingIndex >= 0) {
-          ret[existingIndex] = defu(ret[existingIndex], config);
-        } else {
-          ret.push(config);
-        }
+      configs.reduce(
+        (
+          ret: Linter.FlatConfig<Linter.RulesRecord>[],
+          config: Record<string, any>
+        ) => {
+          delete config.parserOptions;
 
-        return ret;
-      }, [] as Linter.FlatConfig<Linter.RulesRecord>[])
+          const existingIndex = ret.findIndex(existing =>
+            areFilesEqual(existing.files, config.files)
+          );
+          if (existingIndex >= 0) {
+            ret[existingIndex] = defu(ret[existingIndex], config);
+          } else {
+            ret.push(config);
+          }
+
+          return ret;
+        },
+        [] as Linter.FlatConfig<Linter.RulesRecord>[]
+      )
     );
 
     writeInfo("⚙️  Completed generated Storm ESLint configuration objects", {
