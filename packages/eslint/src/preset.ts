@@ -268,13 +268,6 @@ export function getStormConfig(
           ...reactPlugin.configs?.recommended,
           plugins: { "react": reactPlugin },
           files: ["**/*.tsx"],
-          languageOptions: {
-            parserOptions: {
-              ecmaFeatures: {
-                jsx: true
-              }
-            }
-          },
           ignores: [...ignores, ...(options.ignores || [])],
           ...react
         },
