@@ -1,9 +1,17 @@
-## 1.106.0 (2024-10-22)
+## 1.106.1 (2024-10-22)
 
+
+### Bug Fixes
+
+- **build-tools:** Ensure full changes to build tools are applied ([5d414904](https://github.com/storm-software/storm-ops/commit/5d414904))
+
+## 1.106.0 (2024-10-22)
 
 ### Features
 
-- **build-tools:** Ensure all nested folders have `exports` generated during unbuild ([cd57af07](https://github.com/storm-software/storm-ops/commit/cd57af07))
+- **build-tools:** Ensure all nested folders have `exports` generated during
+  unbuild
+  ([cd57af07](https://github.com/storm-software/storm-ops/commit/cd57af07))
 
 ## 1.105.3 (2024-10-22)
 

@@ -1,3 +1,10 @@
+## 0.38.5 (2024-10-22)
+
+
+### Bug Fixes
+
+- **build-tools:** Ensure full changes to build tools are applied ([5d414904](https://github.com/storm-software/storm-ops/commit/5d414904))
+
 ## 0.38.4 (2024-10-22)
 
 
