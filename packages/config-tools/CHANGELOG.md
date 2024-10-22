@@ -1,9 +1,16 @@
-## 1.104.1 (2024-10-22)
+## 1.104.2 (2024-10-22)
 
 
 ### Bug Fixes
 
-- **eslint:** Resolved issue with react-hooks plugin ([2dbc2670](https://github.com/storm-software/storm-ops/commit/2dbc2670))
+- **eslint:** Resolve issue with `parserOptions` configuration ([4da465aa](https://github.com/storm-software/storm-ops/commit/4da465aa))
+
+## 1.104.1 (2024-10-22)
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with react-hooks plugin
+  ([2dbc2670](https://github.com/storm-software/storm-ops/commit/2dbc2670))
 
 ## 1.104.0 (2024-10-21)
 

@@ -1,9 +1,16 @@
-## 1.192.0 (2024-10-21)
+## 1.192.1 (2024-10-22)
 
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with `parserOptions` configuration ([4da465aa](https://github.com/storm-software/storm-ops/commit/4da465aa))
+
+## 1.192.0 (2024-10-21)
 
 ### Features
 
-- **config-tools:** Update max depth to 4 calls ([71c2aab1](https://github.com/storm-software/storm-ops/commit/71c2aab1))
+- **config-tools:** Update max depth to 4 calls
+  ([71c2aab1](https://github.com/storm-software/storm-ops/commit/71c2aab1))
 
 ## 1.191.2 (2024-10-21)
 
