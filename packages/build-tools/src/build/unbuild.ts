@@ -277,28 +277,6 @@ export async function unbuildWithOptions(
       )
     ]);
 
-    // await Promise.allSettled(
-    //   files.map(async (file) =>
-    //     writeFile(
-    //       file,
-    //       await prettier.format(
-    //         `${
-    //           options.banner
-    //             ? options.banner.startsWith("//")
-    //               ? options.banner
-    //               : `// ${options.banner}`
-    //             : ""
-    //         }\n\n${readFileSync(file, "utf-8")}`,
-    //         {
-    //           ...prettierOptions,
-    //           parser: "typescript"
-    //         }
-    //       ),
-    //       "utf-8"
-    //     )
-    //   )
-    // );
-
     await Promise.allSettled(
       files.map(file =>
         writeFile(
@@ -414,12 +392,6 @@ ${unbuildBuildOptions
       outputPackageJson.types = "./dist/index.d.ts";
 
       outputPackageJson.exports ??= {};
-      // outputPackageJson.exports["."] = outputPackageJson.exports["."] ?? {
-      //   "import": "./dist/index.mjs",
-      //   "require": "./dist/index.cjs",
-      //   "types": "./dist/index.d.ts"
-      // };
-
       outputPackageJson.exports = Object.keys(outputPackageJson.exports).reduce(
         (ret, key) => {
           if (key.endsWith("/index") && !ret[key.replace("/index", "")]) {
@@ -430,6 +402,12 @@ ${unbuildBuildOptions
         },
         outputPackageJson.exports
       );
+
+      outputPackageJson.exports["."] = outputPackageJson.exports["."] ?? {
+        "import": "./dist/index.mjs",
+        "require": "./dist/index.cjs",
+        "types": "./dist/index.d.ts"
+      };
 
       await writeJsonFile(
         joinPathFragments(enhancedOptions.outputPath, "package.json"),
