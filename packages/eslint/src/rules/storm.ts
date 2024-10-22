@@ -18,6 +18,7 @@ export type TypeScriptEslintConfigType =
 export interface GetStormRulesConfigOptions {
   typescriptEslintConfigType?: TypeScriptEslintConfigType;
   useUnicorn?: boolean;
+  useNx?: boolean;
 }
 
 export const getStormRulesConfig = (
@@ -1099,28 +1100,7 @@ export const getStormRulesConfig = (
     // require regex literals to be wrapped in parentheses
     "wrap-regex": "off",
 
-    "class-methods-use-this": "off",
-
-    /*************************************************************
-     *
-     *  Nx Rules - The following rules are specific to the Nx plugin
-     *
-     **************************************************************/
-
-    "@nx/enforce-module-boundaries": [
-      "error",
-      {
-        enforceBuildableLibDependency: true,
-        checkDynamicDependenciesExceptions: [".*"],
-        allow: [],
-        depConstraints: [
-          {
-            sourceTag: "*",
-            onlyDependOnLibsWithTags: ["*"]
-          }
-        ]
-      }
-    ]
+    "class-methods-use-this": "off"
   };
 
   if (options.typescriptEslintConfigType !== "none") {
@@ -1175,6 +1155,33 @@ export const getStormRulesConfig = (
               "group": ["create-nx-workspace"],
               "message":
                 "Direct imports from `create-nx-workspace` are not allowed. Instead install this package globally (example: 'npm i create-nx-workspace -g')."
+            }
+          ]
+        }
+      ]
+    };
+  }
+
+  if (options.useNx !== false) {
+    rules = {
+      ...rules,
+
+      /*************************************************************
+       *
+       *  Nx Rules - The following rules are specific to the Nx plugin
+       *
+       **************************************************************/
+
+      "@nx/enforce-module-boundaries": [
+        "error",
+        {
+          enforceBuildableLibDependency: true,
+          checkDynamicDependenciesExceptions: [".*"],
+          allow: [],
+          depConstraints: [
+            {
+              sourceTag: "*",
+              onlyDependOnLibsWithTags: ["*"]
             }
           ]
         }

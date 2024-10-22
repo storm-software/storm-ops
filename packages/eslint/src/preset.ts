@@ -67,6 +67,7 @@ export type PresetOptions = GetStormRulesConfigOptions & {
   parserOptions?: Linter.ParserOptions;
   markdown?: false | Linter.RulesRecord;
   react?: false | Linter.RulesRecord;
+  nx?: false | Linter.RulesRecord;
   useReactCompiler?: boolean;
   nextFiles?: string[];
 };
@@ -81,21 +82,22 @@ export function getStormConfig(
   options: PresetOptions = {
     rules: {},
     ignores: [],
-    tsconfig: "./tsconfig.base.json",
-    parserOptions: {},
     typescriptEslintConfigType: "eslint-recommended",
     useUnicorn: true,
     markdown: {},
     react: {},
+    nx: {},
     useReactCompiler: false
   },
   ...userConfigs: Linter.FlatConfig[]
 ): Linter.FlatConfig<Linter.RulesRecord>[] {
-  const tsconfig = options.tsconfig ?? "./tsconfig.base.json";
+  const tsconfig = options.tsconfig;
+  const parserOptions = options.parserOptions;
   const typescriptEslintConfigType =
     options.typescriptEslintConfigType || "eslint-recommended";
   const useUnicorn = options.useUnicorn ?? true;
   const react = options.react ?? {};
+  const nx = options.nx ?? {};
   const useReactCompiler = options.useReactCompiler ?? false;
 
   const configs: Linter.FlatConfig<Linter.RulesRecord>[] = [
@@ -112,11 +114,6 @@ export function getStormConfig(
 
     // bannerConfig,
 
-    // NX
-    {
-      plugins: { "@nx": nxPlugin }
-    },
-
     // Json
     // https://www.npmjs.com/package/eslint-plugin-json
     {
@@ -128,27 +125,33 @@ export function getStormConfig(
     },
     {
       files: ["**/executors/**/schema.json", "**/generators/**/schema.json"],
-      rules: {
-        "@nx/workspace/valid-schema-description": "error"
-      }
+      rules:
+        nx !== false
+          ? {
+              "@nx/workspace/valid-schema-description": "error"
+            }
+          : {}
     },
     {
       files: ["**/package.json"],
-      rules: {
-        "@nx/dependency-checks": [
-          "error",
-          {
-            buildTargets: ["build"],
-            ignoredDependencies: ["typescript"],
-            ignoredFiles: [],
-            checkMissingDependencies: true,
-            checkObsoleteDependencies: true,
-            checkVersionMismatches: false,
-            includeTransitiveDependencies: true,
-            useLocalPathsForWorkspaceDependencies: true
-          }
-        ]
-      }
+      rules:
+        nx !== false
+          ? {
+              "@nx/dependency-checks": [
+                "error",
+                {
+                  buildTargets: ["build"],
+                  ignoredDependencies: ["typescript"],
+                  ignoredFiles: options.ignores,
+                  checkMissingDependencies: true,
+                  checkObsoleteDependencies: true,
+                  checkVersionMismatches: false,
+                  includeTransitiveDependencies: true,
+                  useLocalPathsForWorkspaceDependencies: true
+                }
+              ]
+            }
+          : {}
     },
 
     // YML
@@ -180,9 +183,12 @@ export function getStormConfig(
     ...(userConfigs as Linter.FlatConfig[])
   ].filter(Boolean) as Linter.FlatConfig[];
 
-  // const typescriptConfigs: Linter.FlatConfig<Linter.RulesRecord>[] = [
-  //   eslint.configs.recommended
-  // ];
+  // Nx
+  if (nx) {
+    configs.push({
+      plugins: { "@nx": nxPlugin }
+    });
+  }
 
   configs.push(eslint.configs.recommended);
 
@@ -291,11 +297,9 @@ export function getStormConfig(
   }
 
   // TypeScript
-  configs.push({
+  const typescriptConfig: Linter.FlatConfig<Linter.RulesRecord> = {
     files: [TS_FILE],
     languageOptions: {
-      sourceType: "module",
-      ecmaVersion: "latest",
       globals: {
         ...Object.fromEntries(
           Object.keys(globals).flatMap(group =>
@@ -309,22 +313,42 @@ export function getStormConfig(
         ...globals.node,
         "window": "readonly",
         "Storm": "readonly"
-      },
-      parserOptions: {
-        project: tsconfig,
-        ...options.parserOptions
       }
     },
     rules: {
       ...getStormRulesConfig({
         ...options,
         typescriptEslintConfigType,
-        useUnicorn
+        useUnicorn,
+        useNx: nx !== false
       }),
-      ...(options.rules ?? {})
+      ...Object.keys(options.rules ?? {})
+        .filter(
+          ruleId =>
+            !useUnicorn ||
+            !ruleId.startsWith("unicorn/") ||
+            !react ||
+            !ruleId.startsWith("react/")
+        )
+        .reduce((ret, ruleId) => {
+          ret[ruleId] = options.rules![ruleId];
+          return ret;
+        }, {} as Linter.RulesRecord)
     },
     ignores: [...ignores, ...(options.ignores || [])]
-  });
+  };
+
+  if (parserOptions) {
+    typescriptConfig.languageOptions ??= {};
+    typescriptConfig.languageOptions.parserOptions = parserOptions;
+  }
+  if (tsconfig) {
+    typescriptConfig.languageOptions ??= {};
+    typescriptConfig.languageOptions.parserOptions ??= {};
+    typescriptConfig.languageOptions.parserOptions.project = tsconfig;
+  }
+
+  configs.push(typescriptConfig);
 
   // // JavaScript and TypeScript code
   // const codeConfig: Linter.FlatConfig<Linter.RulesRecord> = {
@@ -383,11 +407,6 @@ export function getStormConfig(
       }
     });
   }
-
-  writeInfo("⚙️  Merging generated Storm ESLint configuration objects", {
-    logLevel: "all"
-  });
-  writeDebug(configs, { logLevel: "all" });
 
   const result = formatConfig(
     "Preset",
