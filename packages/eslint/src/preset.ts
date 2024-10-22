@@ -243,15 +243,20 @@ export function getStormConfig(
       {
         ...reactPlugin.configs?.recommended,
         plugins: { "react": reactPlugin },
-        parserOptions: {},
         files: ["**/*.tsx"],
+        languageOptions: {
+          parserOptions: {
+            ecmaFeatures: {
+              jsx: true
+            }
+          }
+        },
         ignores: [...ignores, ...(options.ignores || [])],
         ...react
       },
       {
         ...reactHooks.configs?.recommended,
         plugins: { "react-hooks": reactHooks },
-        parserOptions: {},
         files: [TS_FILE],
         ignores: [...ignores, ...(options.ignores || [])]
       }
@@ -289,6 +294,8 @@ export function getStormConfig(
   configs.push({
     files: [TS_FILE],
     languageOptions: {
+      sourceType: "module",
+      ecmaVersion: "latest",
       globals: {
         ...Object.fromEntries(
           Object.keys(globals).flatMap(group =>
@@ -304,12 +311,7 @@ export function getStormConfig(
         "Storm": "readonly"
       },
       parserOptions: {
-        emitDecoratorMetadata: true,
-        experimentalDecorators: true,
         project: tsconfig,
-        projectService: true,
-        sourceType: "module",
-        projectFolderIgnoreList: [...ignores, ...(options.ignores || [])],
         ...options.parserOptions
       }
     },
