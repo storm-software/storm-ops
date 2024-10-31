@@ -12,16 +12,16 @@ import {
   updateJson,
   updateProjectConfiguration
 } from "@nx/devkit";
-import { applicationGenerator as nodeApplicationGenerator } from "@nx/node";
-import type { NormalizedSchema, WorkerGeneratorSchema } from "./schema";
-import { join } from "path";
-import initGenerator from "../init/generator";
-import { vitestImports } from "./libs/vitest-imports";
-import { getAccountId } from "./libs/get-account-id";
-import { vitestScript } from "./libs/vitest-script";
 import { determineProjectNameAndRootOptions } from "@nx/devkit/src/generators/project-name-and-root-utils";
+import { applicationGenerator as nodeApplicationGenerator } from "@nx/node";
 import { nxVersion } from "@nx/node/src/utils/versions";
 import { StormConfig } from "@storm-software/config";
+import { join } from "path";
+import initGenerator from "../init/generator";
+import { getAccountId } from "./libs/get-account-id";
+import { vitestImports } from "./libs/vitest-imports";
+import { vitestScript } from "./libs/vitest-script";
+import type { NormalizedSchema, WorkerGeneratorSchema } from "./schema";
 
 export async function applicationGenerator(
   tree: Tree,
@@ -261,20 +261,14 @@ async function normalizeOptions(
   options: WorkerGeneratorSchema,
   config?: StormConfig
 ): Promise<NormalizedSchema> {
-  const {
-    projectName: appProjectName,
-    projectRoot: appProjectRoot,
-    projectNameAndRootFormat
-  } = await determineProjectNameAndRootOptions(host, {
-    name: options.name,
-    projectType: "application",
-    directory: options.directory,
-    projectNameAndRootFormat: options.projectNameAndRootFormat,
-    rootProject: options.rootProject,
-    callingGenerator: "@nx/node:application"
-  });
+  const { projectName: appProjectName, projectRoot: appProjectRoot } =
+    await determineProjectNameAndRootOptions(host, {
+      name: options.name,
+      projectType: "application",
+      directory: options.directory,
+      rootProject: options.rootProject
+    });
   options.rootProject = appProjectRoot === ".";
-  options.projectNameAndRootFormat = projectNameAndRootFormat;
 
   return {
     addPlugin: process.env.NX_ADD_PLUGINS !== "false",

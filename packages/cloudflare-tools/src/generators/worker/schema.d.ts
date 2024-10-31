@@ -1,7 +1,6 @@
-import type { ProjectNameAndRootFormat } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import type {
-  TypeScriptLibraryGeneratorSchema,
-  TypeScriptLibraryGeneratorNormalizedSchema
+  TypeScriptLibraryGeneratorNormalizedSchema,
+  TypeScriptLibraryGeneratorSchema
 } from "@storm-software/workspace-tools";
 
 export type WorkerGeneratorSchema = TypeScriptLibraryGeneratorSchema & {
@@ -9,7 +8,6 @@ export type WorkerGeneratorSchema = TypeScriptLibraryGeneratorSchema & {
   js?: boolean;
   unitTestRunner?: "vitest" | "none";
   directory?: string;
-  projectNameAndRootFormat?: ProjectNameAndRootFormat;
   rootProject?: boolean;
   tags?: string;
   frontendProject?: string;
