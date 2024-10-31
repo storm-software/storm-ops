@@ -250,6 +250,14 @@
                       "maxLength": 7,
                       "description": "The secondary brand specific color of the workspace"
                     },
+                    "link": {
+                      "type": "string",
+                      "pattern": "^#([0-9a-f]{3}){1,2}$",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "default": "#01B4F5",
+                      "description": "The alternate brand specific color of the workspace"
+                    },
                     "help": {
                       "type": "string",
                       "pattern": "^#([0-9a-f]{3}){1,2}$",
@@ -321,6 +329,9 @@
                         "accent": {
                           "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/accent"
                         },
+                        "link": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/link"
+                        },
                         "help": {
                           "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/help"
                         },
@@ -359,6 +370,9 @@
                         },
                         "accent": {
                           "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/accent"
+                        },
+                        "link": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/link"
                         },
                         "help": {
                           "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/help"

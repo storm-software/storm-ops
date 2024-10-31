@@ -15,6 +15,7 @@ import prettierConfig from "eslint-plugin-prettier/recommended";
 import reactPlugin from "eslint-plugin-react";
 import reactCompiler from "eslint-plugin-react-compiler";
 import reactHooks from "eslint-plugin-react-hooks";
+import storybookPlugin from "eslint-plugin-storybook";
 import tsdoc from "eslint-plugin-tsdoc";
 import unicorn from "eslint-plugin-unicorn";
 import yml from "eslint-plugin-yml";
@@ -362,6 +363,8 @@ export function getStormConfig(
     }
 
     configs.push(typescriptConfig);
+
+    configs.push(...storybookPlugin.configs["flat/recommended"]);
 
     // // JavaScript and TypeScript code
     // const codeConfig: Linter.FlatConfig<Linter.RulesRecord> = {

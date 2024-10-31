@@ -91,6 +91,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-relay": "1.8.3",
     "eslint-plugin-sonarjs": "1.0.3",
+    "eslint-plugin-storybook": "0.10.1",
     "eslint-plugin-tsdoc": "0.3.0",
     "eslint-plugin-unicorn": "54.0.0",
     "eslint-plugin-yml": "1.14.0",
