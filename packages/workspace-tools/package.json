@@ -54,10 +54,10 @@
   ],
   "peerDependencies": {
     "@microsoft/api-extractor": "7.46.2",
-    "@nx/devkit": "^19.6.4",
-    "@nx/esbuild": "^19.6.4",
+    "@nx/devkit": "^20.0.6",
+    "@nx/esbuild": "^20.0.6",
     "@nx/rollup": "^19.6.2",
-    "nx": "^19.6.4",
+    "nx": "^20.0.6",
     "typescript": ">=5.5.3"
   },
   "peerDependenciesMeta": {
@@ -83,7 +83,7 @@
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
     "@ltd/j-toml": "1.38.0",
-    "@nx/devkit": "^19.6.4",
+    "@nx/devkit": "^20.0.6",
     "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-commonjs": "25.0.8",
     "@rollup/plugin-image": "3.0.3",
@@ -122,11 +122,11 @@
   },
   "devDependencies": {
     "@microsoft/api-extractor": "7.46.2",
-    "@nx/esbuild": "^19.6.4",
+    "@nx/esbuild": "^20.0.6",
     "@nx/rollup": "^19.6.2",
     "@types/micromatch": "4.0.9",
     "@types/semver": "7.5.8",
-    "nx": "^19.6.4",
+    "nx": "^20.0.6",
     "typescript": ">=5.5.3"
   },
   "publishConfig": {

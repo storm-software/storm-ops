@@ -82,8 +82,8 @@
     "monorepo"
   ],
   "peerDependencies": {
-    "@nx/eslint": ">=19.6.4",
-    "@nx/eslint-plugin": ">=19.6.4",
+    "@nx/eslint": ">=20.0.6",
+    "@nx/eslint-plugin": ">=20.0.6",
     "@storm-software/eslint": "latest",
     "eslint": "9.5.0"
   },
@@ -109,8 +109,8 @@
     "tslib": "^2.6.3"
   },
   "devDependencies": {
-    "@nx/eslint": ">=19.6.4",
-    "@nx/eslint-plugin": ">=19.6.4",
+    "@nx/eslint": ">=20.0.6",
+    "@nx/eslint-plugin": ">=20.0.6",
     "@storm-software/eslint": "0.89.1",
     "@types/eslint": "^8.56.10",
     "eslint": "9.5.0",

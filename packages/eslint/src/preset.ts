@@ -202,6 +202,13 @@ export function getStormConfig(
       configs.push({
         plugins: { "@nx": nxPlugin }
       });
+
+      const nxPluginConfigs = (nxPlugin as any).configs as any;
+      if (react) {
+        configs.push(...nxPluginConfigs["flat/react-typescript"]);
+      }
+
+      configs.push(...nxPluginConfigs["flat/typescript"]);
     }
 
     configs.push(eslint.configs.recommended);
