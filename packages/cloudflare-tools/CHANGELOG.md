@@ -1,3 +1,14 @@
+## 0.35.0 (2024-10-31)
+
+### Features
+
+- **storm-ops:** Upgrade the Nx package versions used in the repository ([369fad24](https://github.com/storm-software/storm-ops/commit/369fad24))
+
+### Bug Fixes
+
+- **cloudflare-tools:** Update calls to `readTargetsFromPackageJson` to match new definitions ([00d9c820](https://github.com/storm-software/storm-ops/commit/00d9c820))
+- **cloudflare-tools:** Remove references to removed `projectNameAndRootFormat` Nx options ([7db6e9d6](https://github.com/storm-software/storm-ops/commit/7db6e9d6))
+
 ## 0.34.0 (2024-09-15)
 
 

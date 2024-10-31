@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-storm-graphql",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "type": "module",
   "description": "⚡ The eslint-plugin package is an ESLint plugin that contains a collection of recommended ESLint rule configurations which you can extend from in your own ESLint configs, as well as an Nx-specific lint rule called enforce-module-boundaries.",
   "repository": {
@@ -115,7 +115,7 @@
   "devDependencies": {
     "@nx/eslint": ">=20.0.6",
     "@nx/eslint-plugin": ">=20.0.6",
-    "@storm-software/eslint": "0.89.1",
+    "@storm-software/eslint": "0.90.0",
     "@types/eslint": "^8.56.10",
     "eslint": "9.5.0",
     "eslint-doc-generator": "1.7.1",

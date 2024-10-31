@@ -1,3 +1,15 @@
+## 0.90.0 (2024-10-31)
+
+### Features
+
+- **storm-ops:** Upgrade the Nx package versions used in the repository ([369fad24](https://github.com/storm-software/storm-ops/commit/369fad24))
+- **eslint:** Added the storybook eslint plugin to preset ([aa95de6e](https://github.com/storm-software/storm-ops/commit/aa95de6e))
+- **config:** Added the `link` color token to Storm configuration ([c66f39ed](https://github.com/storm-software/storm-ops/commit/c66f39ed))
+
+### Bug Fixes
+
+- **storm-ops:** Resolve issue with invalid Nx ouput configuration ([9ca60bc0](https://github.com/storm-software/storm-ops/commit/9ca60bc0))
+
 ## 0.89.1 (2024-10-22)
 
 

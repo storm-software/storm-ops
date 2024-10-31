@@ -1,3 +1,15 @@
+## 1.79.0 (2024-10-31)
+
+### Features
+
+- **workspace-tools:** Update the Nx package code to conform to latest type definitions ([b1dbdff8](https://github.com/storm-software/storm-ops/commit/b1dbdff8))
+- **storm-ops:** Upgrade the Nx package versions used in the repository ([369fad24](https://github.com/storm-software/storm-ops/commit/369fad24))
+- **config:** Added the `link` color token to Storm configuration ([c66f39ed](https://github.com/storm-software/storm-ops/commit/c66f39ed))
+
+### Bug Fixes
+
+- **cloudflare-tools:** Remove references to removed `projectNameAndRootFormat` Nx options ([7db6e9d6](https://github.com/storm-software/storm-ops/commit/7db6e9d6))
+
 ## 1.78.0 (2024-10-22)
 
 ### Features

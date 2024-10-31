@@ -1,3 +1,9 @@
+## 1.73.0 (2024-10-31)
+
+### Features
+
+- **storm-ops:** Upgrade the Nx package versions used in the repository ([369fad24](https://github.com/storm-software/storm-ops/commit/369fad24))
+
 ## 1.72.0 (2024-08-03)
 
 

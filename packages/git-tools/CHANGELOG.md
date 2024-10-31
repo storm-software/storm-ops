@@ -1,3 +1,14 @@
+## 2.64.0 (2024-10-31)
+
+### Features
+
+- **workspace-tools:** Update the Nx package code to conform to latest type definitions ([b1dbdff8](https://github.com/storm-software/storm-ops/commit/b1dbdff8))
+- **storm-ops:** Upgrade the Nx package versions used in the repository ([369fad24](https://github.com/storm-software/storm-ops/commit/369fad24))
+
+### Bug Fixes
+
+- **storm-ops:** Resolve issue with invalid Nx ouput configuration ([9ca60bc0](https://github.com/storm-software/storm-ops/commit/9ca60bc0))
+
 ## 2.63.5 (2024-10-22)
 
 

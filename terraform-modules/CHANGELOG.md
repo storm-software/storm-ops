@@ -1,3 +1,9 @@
+## 0.38.6 (2024-10-31)
+
+### Bug Fixes
+
+- **storm-ops:** Resolve issue with invalid Nx ouput configuration ([9ca60bc0](https://github.com/storm-software/storm-ops/commit/9ca60bc0))
+
 ## 0.38.5 (2024-10-22)
 
 

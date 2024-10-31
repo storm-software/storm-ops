@@ -1,9 +1,17 @@
-## 0.26.0 (2024-10-22)
-
+## 0.27.0 (2024-10-31)
 
 ### Features
 
-- **build-tools:** Ensure all nested folders have `exports` generated during unbuild ([cd57af07](https://github.com/storm-software/storm-ops/commit/cd57af07))
+- **storm-ops:** Upgrade the Nx package versions used in the repository ([369fad24](https://github.com/storm-software/storm-ops/commit/369fad24))
+- **config:** Added the `link` color token to Storm configuration ([c66f39ed](https://github.com/storm-software/storm-ops/commit/c66f39ed))
+
+## 0.26.0 (2024-10-22)
+
+### Features
+
+- **build-tools:** Ensure all nested folders have `exports` generated during
+  unbuild
+  ([cd57af07](https://github.com/storm-software/storm-ops/commit/cd57af07))
 
 ## 0.25.1 (2024-10-22)
 
