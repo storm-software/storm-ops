@@ -255,8 +255,7 @@
                       "pattern": "^#([0-9a-f]{3}){1,2}$",
                       "minLength": 7,
                       "maxLength": 7,
-                      "default": "#01B4F5",
-                      "description": "The alternate brand specific color of the workspace"
+                      "description": "The color used to display "
                     },
                     "help": {
                       "type": "string",
@@ -304,6 +303,22 @@
                       "minLength": 7,
                       "maxLength": 7,
                       "description": "The fatal color of the workspace"
+                    },
+                    "positive": {
+                      "type": "string",
+                      "pattern": "^#([0-9a-f]{3}){1,2}$",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "default": "#4ade80",
+                      "description": "The positive number color of the workspace"
+                    },
+                    "negative": {
+                      "type": "string",
+                      "pattern": "^#([0-9a-f]{3}){1,2}$",
+                      "minLength": 7,
+                      "maxLength": 7,
+                      "default": "#ef4444",
+                      "description": "The negative number color of the workspace"
                     }
                   },
                   "additionalProperties": false
@@ -349,6 +364,12 @@
                         },
                         "fatal": {
                           "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/fatal"
+                        },
+                        "positive": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/positive"
+                        },
+                        "negative": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/negative"
                         }
                       },
                       "additionalProperties": false
@@ -391,6 +412,12 @@
                         },
                         "fatal": {
                           "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/fatal"
+                        },
+                        "positive": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/positive"
+                        },
+                        "negative": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/negative"
                         }
                       },
                       "additionalProperties": false
