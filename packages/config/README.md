@@ -40,6 +40,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Table of Contents
 
 - [Storm Configuration Package](#storm-configuration-package)
@@ -83,6 +84,9 @@ environment variables:
 | STORM_COLOR_PRIMARY     | The workspace's primary theme color                                                    | `#1fb2a6`                   |
 | STORM_COLOR_SUCCESS     | The workspace's success theme color                                                    | `#087f5b`                   |
 | STORM_COLOR_WARNING     | The workspace's warning theme color                                                    | `#fcc419`                   |
+| STORM_COLOR_HELP        | The workspace's warning theme color                                                    | `#818cf8`                   |
+| STORM_COLOR_POSITIVE    | The workspace's warning theme color                                                    | `#22c55e`                   |
+| STORM_COLOR_NEGATIVE    | The workspace's warning theme color                                                    | `#dc2626`                   |
 | STORM_ENV               | The current runtime environment of the package                                         | "production"                |
 | STORM_HOMEPAGE          | The homepage URL for the workspace                                                     | <https://stormsoftware.com> |
 | STORM_LICENSE           | The license used by the workspace                                                      | "Apache License 2.0"        |
