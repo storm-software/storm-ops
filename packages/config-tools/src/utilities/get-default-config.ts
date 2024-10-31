@@ -13,8 +13,10 @@ import { findWorkspaceRoot } from "./find-workspace-root";
 export const DEFAULT_COLOR_CONFIG: ColorConfig = {
   "light": {
     "background": "#fafafa",
-    "foreground": "#121212",
+    "foreground": "#1d1e22",
     "brand": "#1fb2a6",
+    "alternate": "#db2777",
+    "link": "#01B4F5",
     "help": "#5C4EE5",
     "success": "#087f5b",
     "info": "#0550ae",
@@ -22,10 +24,12 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
     "error": "#a40e26"
   },
   "dark": {
-    "background": "#22272e",
-    "foreground": "#f0f0f0",
-    "brand": "#3fc1b0",
-    "help": "#5C4EE5",
+    "background": "#1d1e22",
+    "foreground": "#cbd5e1",
+    "brand": "#2dd4bf",
+    "alternate": "#db2777",
+    "link": "#01B4F5",
+    "help": "#818cf8",
     "success": "#10b981",
     "info": "#58a6ff",
     "warning": "#f3d371",

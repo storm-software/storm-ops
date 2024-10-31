@@ -45,6 +45,14 @@ const AccentColorSchema = z
   .length(7)
   .optional()
   .describe("The secondary brand specific color of the workspace");
+const LinkColorSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^#([0-9a-f]{3}){1,2}$/i)
+  .length(7)
+  .default("#01B4F5")
+  .describe("The alternate brand specific color of the workspace");
 const HelpColorSchema = z
   .string()
   .trim()
@@ -100,6 +108,7 @@ export const DarkThemeColorConfigSchema = z.object({
   brand: BrandColorSchema,
   alternate: AlternateColorSchema,
   accent: AccentColorSchema,
+  link: LinkColorSchema,
   help: HelpColorSchema,
   success: SuccessColorSchema,
   info: InfoColorSchema,
@@ -114,6 +123,7 @@ export const LightThemeColorConfigSchema = z.object({
   brand: BrandColorSchema,
   alternate: AlternateColorSchema,
   accent: AccentColorSchema,
+  link: LinkColorSchema,
   help: HelpColorSchema,
   success: SuccessColorSchema,
   info: InfoColorSchema,
@@ -133,6 +143,7 @@ export const SingleThemeColorConfigSchema = z.object({
   brand: BrandColorSchema,
   alternate: AlternateColorSchema,
   accent: AccentColorSchema,
+  link: LinkColorSchema,
   help: HelpColorSchema,
   success: SuccessColorSchema,
   info: InfoColorSchema,
