@@ -7,7 +7,7 @@ import {
 } from "@cspell/eslint-plugin/recommended";
 import eslint from "@eslint/js";
 import next from "@next/eslint-plugin-next";
-import nxPlugin from "@nx/eslint-plugin";
+import nxPlugin from "@nx/eslint-plugin/nx";
 import type { Linter } from "eslint";
 import json from "eslint-plugin-json";
 import markdown from "eslint-plugin-markdown";
@@ -106,7 +106,7 @@ export function getStormConfig(
   const tsconfig = options.tsconfig;
   const parserOptions = options.parserOptions;
   const typescriptEslintConfigType =
-    options.typescriptEslintConfigType || "recommendedTypeChecked";
+    options.typescriptEslintConfigType || "eslintRecommended";
   const useUnicorn = options.useUnicorn ?? true;
   const react = options.react ?? {};
   const nx = options.nx ?? {};
@@ -202,13 +202,6 @@ export function getStormConfig(
       configs.push({
         plugins: { "@nx": nxPlugin }
       });
-
-      const nxPluginConfigs = (nxPlugin as any).configs as any;
-      if (react) {
-        configs.push(...nxPluginConfigs["flat/react-typescript"]);
-      }
-
-      configs.push(...nxPluginConfigs["flat/typescript"]);
     }
 
     configs.push(eslint.configs.recommended);

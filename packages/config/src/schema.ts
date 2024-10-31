@@ -51,8 +51,8 @@ const LinkColorSchema = z
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
-  .default("#01B4F5")
-  .describe("The alternate brand specific color of the workspace");
+  .optional()
+  .describe("The color used to display ");
 const HelpColorSchema = z
   .string()
   .trim()
@@ -101,6 +101,22 @@ const FatalColorSchema = z
   .length(7)
   .optional()
   .describe("The fatal color of the workspace");
+const PositiveColorSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^#([0-9a-f]{3}){1,2}$/i)
+  .length(7)
+  .default("#4ade80")
+  .describe("The positive number color of the workspace");
+const NegativeColorSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^#([0-9a-f]{3}){1,2}$/i)
+  .length(7)
+  .default("#ef4444")
+  .describe("The negative number color of the workspace");
 
 export const DarkThemeColorConfigSchema = z.object({
   foreground: LightColorSchema,
@@ -114,7 +130,9 @@ export const DarkThemeColorConfigSchema = z.object({
   info: InfoColorSchema,
   warning: WarningColorSchema,
   error: ErrorColorSchema,
-  fatal: FatalColorSchema
+  fatal: FatalColorSchema,
+  positive: PositiveColorSchema,
+  negative: NegativeColorSchema
 });
 
 export const LightThemeColorConfigSchema = z.object({
@@ -129,7 +147,9 @@ export const LightThemeColorConfigSchema = z.object({
   info: InfoColorSchema,
   warning: WarningColorSchema,
   error: ErrorColorSchema,
-  fatal: FatalColorSchema
+  fatal: FatalColorSchema,
+  positive: PositiveColorSchema,
+  negative: NegativeColorSchema
 });
 
 export const MultiThemeColorConfigSchema = z.object({
@@ -149,7 +169,9 @@ export const SingleThemeColorConfigSchema = z.object({
   info: InfoColorSchema,
   warning: WarningColorSchema,
   error: ErrorColorSchema,
-  fatal: FatalColorSchema
+  fatal: FatalColorSchema,
+  positive: PositiveColorSchema,
+  negative: NegativeColorSchema
 });
 
 export const RegistryUrlConfigSchema = z

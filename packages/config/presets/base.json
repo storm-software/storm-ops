@@ -28,7 +28,9 @@
       "success": "#087f5b",
       "info": "#0550ae",
       "warning": "#e3b341",
-      "error": "#a40e26"
+      "error": "#a40e26",
+      "positive": "#22c55e",
+      "negative": "#dc2626"
     },
     "dark": {
       "background": "#1d1e22",
@@ -40,7 +42,9 @@
       "success": "#10b981",
       "info": "#58a6ff",
       "warning": "#f3d371",
-      "error": "#d1242f"
+      "error": "#d1242f",
+      "positive": "#22c55e",
+      "negative": "#dc2626"
     }
   },
   "extensions": {

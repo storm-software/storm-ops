@@ -1,8 +1,4 @@
-import {
-  type ColorConfig,
-  type StormConfig,
-  StormConfigSchema
-} from "@storm-software/config";
+import { type StormConfig, StormConfigSchema } from "@storm-software/config";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { findWorkspaceRoot } from "./find-workspace-root";
@@ -21,7 +17,9 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
     "success": "#087f5b",
     "info": "#0550ae",
     "warning": "#e3b341",
-    "error": "#a40e26"
+    "error": "#a40e26",
+    "positive": "#22c55e",
+    "negative": "#dc2626"
   },
   "dark": {
     "background": "#1d1e22",
@@ -33,7 +31,9 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
     "success": "#10b981",
     "info": "#58a6ff",
     "warning": "#f3d371",
-    "error": "#d1242f"
+    "error": "#d1242f",
+    "positive": "#22c55e",
+    "negative": "#dc2626"
   }
 };
 
@@ -115,7 +115,7 @@ export const getDefaultConfig = (
 
       return ret;
     }, {}),
-    colors: { ...DEFAULT_COLOR_CONFIG, ...config.colors },
+    colors: config.colors ? { ...config.colors } : { ...DEFAULT_COLOR_CONFIG },
     workspaceRoot,
     name,
     namespace,
@@ -123,7 +123,7 @@ export const getDefaultConfig = (
     license: license ?? DEFAULT_STORM_CONFIG.license,
     homepage: homepage ?? DEFAULT_STORM_CONFIG.homepage,
     docs: `${homepage ?? DEFAULT_STORM_CONFIG.homepage}/docs`,
-    licensing: `${homepage ?? DEFAULT_STORM_CONFIG.homepage}/licensing`,
+    licensing: `${homepage ?? DEFAULT_STORM_CONFIG.homepage}/license`,
     extensions: {
       ...config.extensions
     }

@@ -295,6 +295,12 @@ const setSingleThemeColorConfigEnv = (
   if (config.fatal) {
     process.env[`${prefix}FATAL`] = config.fatal;
   }
+  if (config.positive) {
+    process.env[`${prefix}POSITIVE`] = config.positive;
+  }
+  if (config.negative) {
+    process.env[`${prefix}NEGATIVE`] = config.negative;
+  }
 };
 
 const setMultiThemeColorConfigEnv = (
@@ -346,5 +352,11 @@ const setBaseThemeColorConfigEnv = (
   }
   if (config.fatal) {
     process.env[`${prefix}FATAL`] = config.fatal;
+  }
+  if (config.positive) {
+    process.env[`${prefix}POSITIVE`] = config.positive;
+  }
+  if (config.negative) {
+    process.env[`${prefix}NEGATIVE`] = config.negative;
   }
 };

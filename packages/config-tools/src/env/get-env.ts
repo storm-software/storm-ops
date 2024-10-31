@@ -222,7 +222,9 @@ const getSingleThemeColorConfigEnv = (
     info: process.env[`${prefix}INFO`],
     warning: process.env[`${prefix}WARNING`],
     error: process.env[`${prefix}ERROR`],
-    fatal: process.env[`${prefix}FATAL`]
+    fatal: process.env[`${prefix}FATAL`],
+    positive: process.env[`${prefix}POSITIVE`],
+    negative: process.env[`${prefix}NEGATIVE`]
   };
 };
 
@@ -260,6 +262,8 @@ const getBaseThemeColorConfigEnv = <
     info: process.env[`${prefix}INFO`],
     warning: process.env[`${prefix}WARNING`],
     error: process.env[`${prefix}ERROR`],
-    fatal: process.env[`${prefix}FATAL`]
+    fatal: process.env[`${prefix}FATAL`],
+    positive: process.env[`${prefix}POSITIVE`],
+    negative: process.env[`${prefix}NEGATIVE`]
   } as TResult;
 };
