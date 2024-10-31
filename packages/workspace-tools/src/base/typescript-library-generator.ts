@@ -23,7 +23,6 @@ import {
 import jsInitGenerator from "@nx/js/src/generators/init/init";
 import type { AddLintOptions } from "@nx/js/src/generators/library/library";
 import setupVerdaccio from "@nx/js/src/generators/setup-verdaccio/generator";
-import type { Bundler } from "@nx/js/src/utils/schema";
 import type { PackageJson } from "nx/src/utils/package-json";
 import type {
   TypeScriptLibraryGeneratorNormalizedSchema,
@@ -264,7 +263,7 @@ export async function addLint(
 ): Promise<GeneratorCallback> {
   const { lintProjectGenerator } = ensurePackage("@nx/eslint", nxVersion);
   const { mapLintPattern } =
-    // nx-ignore-next-line
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     require("@nx/eslint/src/generators/lint-project/lint-project");
   const projectConfiguration = readProjectConfiguration(tree, options.name);
   const task = lintProjectGenerator(tree, {
@@ -288,7 +287,7 @@ export async function addLint(
     lintConfigHasOverride,
     isEslintConfigSupported,
     updateOverrideInLintConfig
-    // nx-ignore-next-line
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
   } = require("@nx/eslint/src/generators/utils/eslint-file");
 
   // if config is not supported, we don't need to do anything
@@ -429,7 +428,7 @@ export async function normalizeOptions(
     }
   }
 
-  let bundler: Bundler = "tsc";
+  let bundler = "tsc";
   if (options.publishable === false && options.buildable === false) {
     bundler = "none";
   }
@@ -445,9 +444,7 @@ export async function normalizeOptions(
     projectType: "library",
     directory: options.directory,
     importPath: options.importPath,
-    projectNameAndRootFormat: options.projectNameAndRootFormat,
-    rootProject: options.rootProject,
-    callingGenerator: "@nx/js:library"
+    rootProject: options.rootProject
   });
   options.rootProject = projectRoot === ".";
 

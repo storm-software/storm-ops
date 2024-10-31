@@ -348,7 +348,7 @@
       "dependsOn": ["^format-toml"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec taplo format --colors=\"always\" --config=\"./node_modules/@storm-software/linting-tools/taplo/.taplo.toml\" --cache-path=\"./tmp/taplo/{projectRoot}\"",
+        "command": "pnpm exec taplo format --colors=\"always\" --config=\"./node_modules/@storm-software/linting-tools/taplo/.config.toml\" --cache-path=\"./tmp/taplo/{projectRoot}\"",
         "color": true
       }
     },

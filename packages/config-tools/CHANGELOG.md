@@ -1,9 +1,9 @@
 ## 1.106.1 (2024-10-22)
 
-
 ### Bug Fixes
 
-- **build-tools:** Ensure full changes to build tools are applied ([5d414904](https://github.com/storm-software/storm-ops/commit/5d414904))
+- **build-tools:** Ensure full changes to build tools are applied
+  ([5d414904](https://github.com/storm-software/storm-ops/commit/5d414904))
 
 ## 1.106.0 (2024-10-22)
 

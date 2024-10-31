@@ -47,7 +47,7 @@ pre-commit:
     lint-toml:
       glob: "**/*.toml"
       run: 'pnpm exec taplo format --check
-        --config="./node_modules/@storm-software/linting-tools/taplo/.taplo.toml"'
+        --config="./node_modules/@storm-software/linting-tools/taplo/.config.toml"'
     lint-filename:
       glob: "**/*.*"
       run: 'pnpm exec ls-lint
@@ -63,7 +63,7 @@ pre-commit:
     format-toml:
       glob: "**/*.toml"
       run: 'pnpm exec taplo format
-        --config="@storm-software/linting-tools/taplo/.taplo.toml" && git
+        --config="@storm-software/linting-tools/taplo/.config.toml" && git
         update-index'
     postbuild:
       glob: "**/*.*"

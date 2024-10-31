@@ -19,12 +19,12 @@ export async function neutralLibraryGeneratorFn(
   schema: NeutralLibraryGeneratorSchema
 ) {
   const filesDir = joinPathFragments(__dirname, "./files");
-  const tsLibraryGeneratorOptions: TypeScriptLibraryGeneratorSchema = {
+  const tsLibraryGeneratorOptions = {
     ...schema,
     platform: "neutral",
     devDependencies: {},
     buildExecutor: "@storm-software/workspace-tools:tsup-neutral"
-  };
+  } as TypeScriptLibraryGeneratorSchema;
 
   const options = await normalizeOptions(tree, tsLibraryGeneratorOptions);
   const { className, name, propertyName } = names(

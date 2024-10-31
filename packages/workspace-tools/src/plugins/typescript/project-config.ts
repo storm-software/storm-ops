@@ -1,6 +1,7 @@
 import { CreateNodes } from "@nx/devkit";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { readNxJson } from "nx/src/config/nx-json.js";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
 import { readJsonFile } from "nx/src/utils/fileutils";
 import {
@@ -38,8 +39,11 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       return {};
     }
 
-    const targets: ProjectConfiguration["targets"] =
-      readTargetsFromPackageJson(packageJson);
+    const nxJson = readNxJson(ctx.workspaceRoot);
+    const targets: ProjectConfiguration["targets"] = readTargetsFromPackageJson(
+      packageJson,
+      nxJson
+    );
     if (!targets["lint-ls"]) {
       targets["lint-ls"] = {
         cache: true,
