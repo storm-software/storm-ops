@@ -1,15 +1,16 @@
-import { dirname, join } from "node:path";
+import {
+  ProjectTagConstants,
+  addProjectTag
+} from "@storm-software/workspace-tools/utils/project-tags";
 import { existsSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { readNxJson } from "nx/src/config/nx-json.js";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
 import { readJsonFile } from "nx/src/utils/fileutils";
 import {
   type PackageJson,
   readTargetsFromPackageJson
 } from "nx/src/utils/package-json";
-import {
-  ProjectTagConstants,
-  addProjectTag
-} from "@storm-software/workspace-tools/utils/project-tags";
 
 export const name = "storm-software/cloudflare";
 
@@ -25,8 +26,12 @@ export const createNodes = [
       file,
       packageJson
     );
-    const targets: ProjectConfiguration["targets"] =
-      readTargetsFromPackageJson(packageJson);
+    const nxJson = readNxJson(ctx.workspaceRoot);
+
+    const targets: ProjectConfiguration["targets"] = readTargetsFromPackageJson(
+      packageJson,
+      nxJson
+    );
 
     // Apply nx-release-publish target for non-private projects
 
