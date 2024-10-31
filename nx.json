@@ -4,7 +4,7 @@
     "lint-ls": {
       "cache": true,
       "inputs": ["linting", "typescript", "^production"],
-      "outputs": ["{workspaceRoot}/{projectRoot}"],
+      "outputs": ["{projectRoot}/**/*"],
       "dependsOn": ["^lint-ls"],
       "executor": "nx:run-commands",
       "options": {
@@ -15,7 +15,7 @@
     "format-toml": {
       "cache": true,
       "inputs": ["linting", "{projectRoot}/**/*.toml"],
-      "outputs": ["{workspaceRoot}/{projectRoot}/**/*.toml"],
+      "outputs": ["{projectRoot}/**/*.toml"],
       "dependsOn": ["^format-toml"],
       "executor": "nx:run-commands",
       "options": {
@@ -31,7 +31,7 @@
         "typescript",
         "{projectRoot}/{README.md,package.json,Cargo.toml,executors.json,generators.json}"
       ],
-      "outputs": ["{workspaceRoot}/{projectRoot}/README.md"],
+      "outputs": ["{projectRoot}/README.md"],
       "dependsOn": ["^format-readme"],
       "executor": "nx:run-commands",
       "options": {
