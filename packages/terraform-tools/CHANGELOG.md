@@ -1,9 +1,17 @@
+## 0.28.0 (2024-11-01)
+
+### Features
+
+- **eslint:** Resolve type issues with Nx plugin in preset ([d27162e2](https://github.com/storm-software/storm-ops/commit/d27162e2))
+
 ## 0.27.0 (2024-10-31)
 
 ### Features
 
-- **storm-ops:** Upgrade the Nx package versions used in the repository ([369fad24](https://github.com/storm-software/storm-ops/commit/369fad24))
-- **config:** Added the `link` color token to Storm configuration ([c66f39ed](https://github.com/storm-software/storm-ops/commit/c66f39ed))
+- **storm-ops:** Upgrade the Nx package versions used in the repository
+  ([369fad24](https://github.com/storm-software/storm-ops/commit/369fad24))
+- **config:** Added the `link` color token to Storm configuration
+  ([c66f39ed](https://github.com/storm-software/storm-ops/commit/c66f39ed))
 
 ## 0.26.0 (2024-10-22)
 

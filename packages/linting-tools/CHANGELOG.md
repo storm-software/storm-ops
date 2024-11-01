@@ -1,3 +1,9 @@
+## 1.88.0 (2024-11-01)
+
+### Features
+
+- **eslint:** Resolve type issues with Nx plugin in preset ([d27162e2](https://github.com/storm-software/storm-ops/commit/d27162e2))
+
 ## 1.87.6 (2024-10-31)
 
 ### Bug Fixes

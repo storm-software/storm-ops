@@ -1,15 +1,28 @@
+## 0.99.0 (2024-11-01)
+
+### Features
+
+- **eslint:** Resolve type issues with Nx plugin in preset ([d27162e2](https://github.com/storm-software/storm-ops/commit/d27162e2))
+
 ## 0.98.0 (2024-10-31)
 
 ### Features
 
-- **workspace-tools:** Update the Nx package code to conform to latest type definitions ([b1dbdff8](https://github.com/storm-software/storm-ops/commit/b1dbdff8))
-- **storm-ops:** Upgrade the Nx package versions used in the repository ([369fad24](https://github.com/storm-software/storm-ops/commit/369fad24))
-- **config:** Added the `link` color token to Storm configuration ([c66f39ed](https://github.com/storm-software/storm-ops/commit/c66f39ed))
+- **workspace-tools:** Update the Nx package code to conform to latest type
+  definitions
+  ([b1dbdff8](https://github.com/storm-software/storm-ops/commit/b1dbdff8))
+- **storm-ops:** Upgrade the Nx package versions used in the repository
+  ([369fad24](https://github.com/storm-software/storm-ops/commit/369fad24))
+- **config:** Added the `link` color token to Storm configuration
+  ([c66f39ed](https://github.com/storm-software/storm-ops/commit/c66f39ed))
 
 ### Bug Fixes
 
-- **cloudflare-tools:** Remove references to removed `projectNameAndRootFormat` Nx options ([7db6e9d6](https://github.com/storm-software/storm-ops/commit/7db6e9d6))
-- **storm-ops:** Resolve issue with invalid Nx ouput configuration ([9ca60bc0](https://github.com/storm-software/storm-ops/commit/9ca60bc0))
+- **cloudflare-tools:** Remove references to removed `projectNameAndRootFormat`
+  Nx options
+  ([7db6e9d6](https://github.com/storm-software/storm-ops/commit/7db6e9d6))
+- **storm-ops:** Resolve issue with invalid Nx ouput configuration
+  ([9ca60bc0](https://github.com/storm-software/storm-ops/commit/9ca60bc0))
 
 ## 0.97.1 (2024-10-22)
 

@@ -1,14 +1,32 @@
+## 1.67.0 (2024-11-01)
+
+### Features
+
+- **eslint:** Resolve type issues with Nx plugin in preset ([d27162e2](https://github.com/storm-software/storm-ops/commit/d27162e2))
+- **config:** Regenerate the config JSON Schema file ([7258f12d](https://github.com/storm-software/storm-ops/commit/7258f12d))
+- **config:** Added the `positive` and `negative` color tokens ([24c5e15f](https://github.com/storm-software/storm-ops/commit/24c5e15f))
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with plugin typings ([0603b24f](https://github.com/storm-software/storm-ops/commit/0603b24f))
+
 ## 1.66.0 (2024-10-31)
 
 ### Features
 
-- **workspace-tools:** Update the Nx package code to conform to latest type definitions ([b1dbdff8](https://github.com/storm-software/storm-ops/commit/b1dbdff8))
-- **eslint:** Added the storybook eslint plugin to preset ([aa95de6e](https://github.com/storm-software/storm-ops/commit/aa95de6e))
-- **config:** Added the `link` color token to Storm configuration ([c66f39ed](https://github.com/storm-software/storm-ops/commit/c66f39ed))
+- **workspace-tools:** Update the Nx package code to conform to latest type
+  definitions
+  ([b1dbdff8](https://github.com/storm-software/storm-ops/commit/b1dbdff8))
+- **eslint:** Added the storybook eslint plugin to preset
+  ([aa95de6e](https://github.com/storm-software/storm-ops/commit/aa95de6e))
+- **config:** Added the `link` color token to Storm configuration
+  ([c66f39ed](https://github.com/storm-software/storm-ops/commit/c66f39ed))
 
 ### Bug Fixes
 
-- **cloudflare-tools:** Remove references to removed `projectNameAndRootFormat` Nx options ([7db6e9d6](https://github.com/storm-software/storm-ops/commit/7db6e9d6))
+- **cloudflare-tools:** Remove references to removed `projectNameAndRootFormat`
+  Nx options
+  ([7db6e9d6](https://github.com/storm-software/storm-ops/commit/7db6e9d6))
 
 ## 1.65.0 (2024-10-22)
 

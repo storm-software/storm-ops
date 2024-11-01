@@ -1,3 +1,14 @@
+## 0.91.0 (2024-11-01)
+
+### Features
+
+- **eslint:** Resolve type issues with Nx plugin in preset ([d27162e2](https://github.com/storm-software/storm-ops/commit/d27162e2))
+- **config:** Added the `positive` and `negative` color tokens ([24c5e15f](https://github.com/storm-software/storm-ops/commit/24c5e15f))
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with plugin typings ([0603b24f](https://github.com/storm-software/storm-ops/commit/0603b24f))
+
 ## 0.90.0 (2024-10-31)
 
 ### Features
