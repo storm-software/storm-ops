@@ -21,7 +21,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.65.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
+[![Version](https://img.shields.io/badge/version-1.66.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -81,12 +81,12 @@ environment variables:
 | STORM_COLOR_ERROR       | The workspace's error theme color                                                      | `#990000`                   |
 | STORM_COLOR_FATAL       | The workspace's fatal theme color                                                      | `#7d1a1a`                   |
 | STORM_COLOR_INFO        | The workspace's info theme color                                                       | `#0ea5e9`                   |
-| STORM_COLOR_PRIMARY     | The workspace's primary theme color                                                    | `#1fb2a6`                   |
+| STORM_COLOR_BRAND       | The workspace's primary theme color                                                    | `#1fb2a6`                   |
 | STORM_COLOR_SUCCESS     | The workspace's success theme color                                                    | `#087f5b`                   |
 | STORM_COLOR_WARNING     | The workspace's warning theme color                                                    | `#fcc419`                   |
-| STORM_COLOR_HELP        | The workspace's warning theme color                                                    | `#818cf8`                   |
-| STORM_COLOR_POSITIVE    | The workspace's warning theme color                                                    | `#22c55e`                   |
-| STORM_COLOR_NEGATIVE    | The workspace's warning theme color                                                    | `#dc2626`                   |
+| STORM_COLOR_HELP        | The workspace's help theme color                                                       | `#818cf8`                   |
+| STORM_COLOR_POSITIVE    | The workspace's positive theme color                                                   | `#22c55e`                   |
+| STORM_COLOR_NEGATIVE    | The workspace's negative theme color                                                   | `#dc2626`                   |
 | STORM_ENV               | The current runtime environment of the package                                         | "production"                |
 | STORM_HOMEPAGE          | The homepage URL for the workspace                                                     | <https://stormsoftware.com> |
 | STORM_LICENSE           | The license used by the workspace                                                      | "Apache License 2.0"        |

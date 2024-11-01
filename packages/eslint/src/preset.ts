@@ -8,7 +8,7 @@ import {
 import eslint from "@eslint/js";
 import next from "@next/eslint-plugin-next";
 import nxPlugin from "@nx/eslint-plugin/nx";
-import type { ESLint, Linter } from "eslint";
+import type { Linter } from "eslint";
 import json from "eslint-plugin-json";
 import markdown from "eslint-plugin-markdown";
 import prettierConfig from "eslint-plugin-prettier/recommended";
@@ -200,7 +200,7 @@ export function getStormConfig(
     // Nx
     if (nx) {
       configs.push({
-        plugins: { "@nx": nxPlugin as ESLint.Plugin }
+        plugins: { "@nx": nxPlugin as any }
       });
     }
 
