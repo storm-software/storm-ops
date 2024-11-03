@@ -63,12 +63,17 @@ export const COLOR_KEYS = [
   "light",
   "base",
   "brand",
+  "alternate",
   "accent",
+  "link",
   "success",
+  "help",
   "info",
   "warning",
   "error",
-  "fatal"
+  "fatal",
+  "positive",
+  "negative"
 ];
 
 export const STORM_DEFAULT_DOCS = "https://docs.stormsoftware.com";

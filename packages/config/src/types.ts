@@ -56,12 +56,17 @@ export type StormConfig<
 export const COLOR_KEYS = [
   "dark",
   "light",
+  "base",
   "brand",
+  "alternate",
   "accent",
-  "help",
+  "link",
   "success",
+  "help",
   "info",
   "warning",
   "error",
-  "fatal"
+  "fatal",
+  "positive",
+  "negative"
 ];

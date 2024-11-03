@@ -7,7 +7,7 @@ import {
 } from "@cspell/eslint-plugin/recommended";
 import eslint from "@eslint/js";
 import next from "@next/eslint-plugin-next";
-import nxPlugin from "@nx/eslint-plugin/nx";
+import nxPlugin from "@nx/eslint-plugin/nx.js";
 import type { Linter } from "eslint";
 import json from "eslint-plugin-json";
 import markdown from "eslint-plugin-markdown";
