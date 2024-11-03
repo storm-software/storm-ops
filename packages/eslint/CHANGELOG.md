@@ -1,3 +1,9 @@
+## 0.91.1 (2024-11-03)
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with Nx plugin import in preset ([cda2d154](https://github.com/storm-software/storm-ops/commit/cda2d154))
+
 ## 0.91.0 (2024-11-01)
 
 ### Features

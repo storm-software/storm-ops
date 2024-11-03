@@ -1,14 +1,24 @@
+## 1.67.1 (2024-11-03)
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with Nx plugin import in preset ([cda2d154](https://github.com/storm-software/storm-ops/commit/cda2d154))
+
 ## 1.67.0 (2024-11-01)
 
 ### Features
 
-- **eslint:** Resolve type issues with Nx plugin in preset ([d27162e2](https://github.com/storm-software/storm-ops/commit/d27162e2))
-- **config:** Regenerate the config JSON Schema file ([7258f12d](https://github.com/storm-software/storm-ops/commit/7258f12d))
-- **config:** Added the `positive` and `negative` color tokens ([24c5e15f](https://github.com/storm-software/storm-ops/commit/24c5e15f))
+- **eslint:** Resolve type issues with Nx plugin in preset
+  ([d27162e2](https://github.com/storm-software/storm-ops/commit/d27162e2))
+- **config:** Regenerate the config JSON Schema file
+  ([7258f12d](https://github.com/storm-software/storm-ops/commit/7258f12d))
+- **config:** Added the `positive` and `negative` color tokens
+  ([24c5e15f](https://github.com/storm-software/storm-ops/commit/24c5e15f))
 
 ### Bug Fixes
 
-- **eslint:** Resolved issue with plugin typings ([0603b24f](https://github.com/storm-software/storm-ops/commit/0603b24f))
+- **eslint:** Resolved issue with plugin typings
+  ([0603b24f](https://github.com/storm-software/storm-ops/commit/0603b24f))
 
 ## 1.66.0 (2024-10-31)
 
