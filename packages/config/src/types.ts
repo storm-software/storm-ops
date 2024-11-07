@@ -65,7 +65,7 @@ export const COLOR_KEYS = [
   "help",
   "info",
   "warning",
-  "error",
+  "danger",
   "fatal",
   "positive",
   "negative"

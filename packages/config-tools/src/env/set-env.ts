@@ -289,8 +289,8 @@ const setSingleThemeColorConfigEnv = (
   if (config.warning) {
     process.env[`${prefix}WARNING`] = config.warning;
   }
-  if (config.error) {
-    process.env[`${prefix}ERROR`] = config.error;
+  if (config.danger) {
+    process.env[`${prefix}DANGER`] = config.danger;
   }
   if (config.fatal) {
     process.env[`${prefix}FATAL`] = config.fatal;
@@ -347,8 +347,8 @@ const setBaseThemeColorConfigEnv = (
   if (config.warning) {
     process.env[`${prefix}WARNING`] = config.warning;
   }
-  if (config.error) {
-    process.env[`${prefix}ERROR`] = config.error;
+  if (config.danger) {
+    process.env[`${prefix}DANGER`] = config.danger;
   }
   if (config.fatal) {
     process.env[`${prefix}FATAL`] = config.fatal;

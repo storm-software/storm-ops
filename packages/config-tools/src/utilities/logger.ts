@@ -59,11 +59,11 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.error(
-        `\n${_chalk.bold.hex(colors.error ?? "#f85149")(">")} ${_chalk.bold
+        `\n${_chalk.bold.hex(colors.danger ?? "#f85149")(">")} ${_chalk.bold
           .bgHex(colors.fatal ?? "#7d1a1a")
           .whiteBright(
             " 💀 Fatal "
-          )}  ${_chalk.hex(colors.error ?? "#f85149")(formatLogMessage(message))}\n`
+          )}  ${_chalk.hex(colors.danger ?? "#f85149")(formatLogMessage(message))}\n`
       );
     };
   }
@@ -74,11 +74,11 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.error(
-        `\n${_chalk.bold.hex(colors.error ?? "#f85149")(">")} ${_chalk.bold
-          .bgHex(colors.error ?? "#f85149")
+        `\n${_chalk.bold.hex(colors.danger ?? "#f85149")(">")} ${_chalk.bold
+          .bgHex(colors.danger ?? "#f85149")
           .whiteBright(
             " ✘  Error "
-          )}  ${_chalk.hex(colors.error ?? "#f85149")(formatLogMessage(message))}\n`
+          )}  ${_chalk.hex(colors.danger ?? "#f85149")(formatLogMessage(message))}\n`
       );
     };
   }

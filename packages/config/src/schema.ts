@@ -11,7 +11,7 @@ const DarkColorSchema = z
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
-  .default("#0D1017")
+  .default("#1d1e22")
   .describe("The dark background color of the workspace");
 const LightColorSchema = z
   .string()
@@ -27,7 +27,7 @@ const BrandColorSchema = z
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
-  .default("#3fc1b0")
+  .default("#1fb2a6")
   .describe("The primary brand specific color of the workspace");
 const AlternateColorSchema = z
   .string()
@@ -52,7 +52,7 @@ const LinkColorSchema = z
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
   .optional()
-  .describe("The color used to display ");
+  .describe("The color used to display hyperlink text");
 const HelpColorSchema = z
   .string()
   .trim()
@@ -67,7 +67,7 @@ const SuccessColorSchema = z
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
-  .default("#087f5b")
+  .default("#12B66A")
   .describe("The success color of the workspace");
 const InfoColorSchema = z
   .string()
@@ -75,7 +75,7 @@ const InfoColorSchema = z
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
-  .default("#316DCA")
+  .default("#0070E0")
   .describe("The informational color of the workspace");
 const WarningColorSchema = z
   .string()
@@ -85,14 +85,14 @@ const WarningColorSchema = z
   .length(7)
   .default("#fcc419")
   .describe("The warning color of the workspace");
-const ErrorColorSchema = z
+const DangerColorSchema = z
   .string()
   .trim()
   .toLowerCase()
   .regex(/^#([0-9a-f]{3}){1,2}$/i)
   .length(7)
-  .default("#a40e26")
-  .describe("The error color of the workspace");
+  .default("#D8314A")
+  .describe("The danger color of the workspace");
 const FatalColorSchema = z
   .string()
   .trim()
@@ -129,7 +129,7 @@ export const DarkThemeColorConfigSchema = z.object({
   success: SuccessColorSchema,
   info: InfoColorSchema,
   warning: WarningColorSchema,
-  error: ErrorColorSchema,
+  danger: DangerColorSchema,
   fatal: FatalColorSchema,
   positive: PositiveColorSchema,
   negative: NegativeColorSchema
@@ -146,7 +146,7 @@ export const LightThemeColorConfigSchema = z.object({
   success: SuccessColorSchema,
   info: InfoColorSchema,
   warning: WarningColorSchema,
-  error: ErrorColorSchema,
+  danger: DangerColorSchema,
   fatal: FatalColorSchema,
   positive: PositiveColorSchema,
   negative: NegativeColorSchema
@@ -168,7 +168,7 @@ export const SingleThemeColorConfigSchema = z.object({
   success: SuccessColorSchema,
   info: InfoColorSchema,
   warning: WarningColorSchema,
-  error: ErrorColorSchema,
+  danger: DangerColorSchema,
   fatal: FatalColorSchema,
   positive: PositiveColorSchema,
   negative: NegativeColorSchema

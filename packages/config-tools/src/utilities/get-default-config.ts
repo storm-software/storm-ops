@@ -1,8 +1,4 @@
-import {
-  StormConfigSchema,
-  type ColorConfig,
-  type StormConfig
-} from "@storm-software/config";
+import { ColorConfig, StormConfigSchema, type StormConfig } from "@storm-software/config";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { findWorkspaceRoot } from "./find-workspace-root";
@@ -20,7 +16,7 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
     "success": "#087f5b",
     "info": "#0550ae",
     "warning": "#e3b341",
-    "error": "#a40e26",
+    "danger": "#D8314A",
     "positive": "#22c55e",
     "negative": "#dc2626"
   },
@@ -33,7 +29,7 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
     "success": "#10b981",
     "info": "#58a6ff",
     "warning": "#f3d371",
-    "error": "#d1242f",
+    "danger": "#D8314A",
     "positive": "#22c55e",
     "negative": "#dc2626"
   }
@@ -60,7 +56,7 @@ export const DEFAULT_STORM_CONFIG: any = {
   organization: "storm-software",
   configFile: null,
   runtimeVersion: "1.0.0",
-  colors: { ...DEFAULT_COLOR_CONFIG },
+
   extensions: {}
 };
 
@@ -117,7 +113,7 @@ export const getDefaultConfig = (
 
       return ret;
     }, {}),
-    colors: config.colors ? { ...config.colors } : { ...DEFAULT_COLOR_CONFIG },
+    colors: config.colors,
     workspaceRoot,
     name,
     namespace,

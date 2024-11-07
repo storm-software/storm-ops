@@ -221,7 +221,7 @@ const getSingleThemeColorConfigEnv = (
     success: process.env[`${prefix}SUCCESS`],
     info: process.env[`${prefix}INFO`],
     warning: process.env[`${prefix}WARNING`],
-    error: process.env[`${prefix}ERROR`],
+    danger: process.env[`${prefix}DANGER`],
     fatal: process.env[`${prefix}FATAL`],
     positive: process.env[`${prefix}POSITIVE`],
     negative: process.env[`${prefix}NEGATIVE`]
@@ -261,7 +261,7 @@ const getBaseThemeColorConfigEnv = <
     success: process.env[`${prefix}SUCCESS`],
     info: process.env[`${prefix}INFO`],
     warning: process.env[`${prefix}WARNING`],
-    error: process.env[`${prefix}ERROR`],
+    danger: process.env[`${prefix}DANGER`],
     fatal: process.env[`${prefix}FATAL`],
     positive: process.env[`${prefix}POSITIVE`],
     negative: process.env[`${prefix}NEGATIVE`]
