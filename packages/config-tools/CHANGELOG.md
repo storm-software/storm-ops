@@ -1,10 +1,19 @@
+## 1.109.0 (2024-11-07)
+
+### Features
+
+- **config:** Add the `danger` color token ([06dba937](https://github.com/storm-software/storm-ops/commit/06dba937))
+
 ## 1.108.0 (2024-11-01)
 
 ### Features
 
-- **eslint:** Resolve type issues with Nx plugin in preset ([d27162e2](https://github.com/storm-software/storm-ops/commit/d27162e2))
-- **config:** Regenerate the config JSON Schema file ([7258f12d](https://github.com/storm-software/storm-ops/commit/7258f12d))
-- **config:** Added the `positive` and `negative` color tokens ([24c5e15f](https://github.com/storm-software/storm-ops/commit/24c5e15f))
+- **eslint:** Resolve type issues with Nx plugin in preset
+  ([d27162e2](https://github.com/storm-software/storm-ops/commit/d27162e2))
+- **config:** Regenerate the config JSON Schema file
+  ([7258f12d](https://github.com/storm-software/storm-ops/commit/7258f12d))
+- **config:** Added the `positive` and `negative` color tokens
+  ([24c5e15f](https://github.com/storm-software/storm-ops/commit/24c5e15f))
 
 ## 1.107.0 (2024-10-31)
 

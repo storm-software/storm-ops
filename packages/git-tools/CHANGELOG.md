@@ -1,3 +1,9 @@
+## 2.66.0 (2024-11-07)
+
+### Features
+
+- **config:** Add the `danger` color token ([06dba937](https://github.com/storm-software/storm-ops/commit/06dba937))
+
 ## 2.65.0 (2024-11-01)
 
 ### Features

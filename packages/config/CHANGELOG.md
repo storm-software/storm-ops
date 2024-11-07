@@ -1,8 +1,15 @@
+## 1.68.0 (2024-11-07)
+
+### Features
+
+- **config:** Add the `danger` color token ([06dba937](https://github.com/storm-software/storm-ops/commit/06dba937))
+
 ## 1.67.1 (2024-11-03)
 
 ### Bug Fixes
 
-- **eslint:** Resolved issue with Nx plugin import in preset ([cda2d154](https://github.com/storm-software/storm-ops/commit/cda2d154))
+- **eslint:** Resolved issue with Nx plugin import in preset
+  ([cda2d154](https://github.com/storm-software/storm-ops/commit/cda2d154))
 
 ## 1.67.0 (2024-11-01)
 
