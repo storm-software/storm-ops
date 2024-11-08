@@ -420,43 +420,50 @@ ${unbuildBuildOptions
           return ret;
         }, [] as PackageJson[]);
 
-      writeTrace(
-        `📦  Adding local packages to package.json: ${localPackages.map(p => p.name).join(", ")}`,
-        config
-      );
+      if (localPackages.length > 0) {
+        writeTrace(
+          `📦  Adding local packages to package.json: ${localPackages.map(p => p.name).join(", ")}`,
+          config
+        );
 
-      outputPackageJson.peerDependencies = localPackages.reduce(
-        (ret, localPackage) => {
-          if (!ret[localPackage.name]) {
-            ret[localPackage.name] = `>=${localPackage.version || "0.0.1"}`;
-          }
+        outputPackageJson.peerDependencies = localPackages.reduce(
+          (ret, localPackage) => {
+            if (!ret[localPackage.name]) {
+              ret[localPackage.name] = `>=${localPackage.version || "0.0.1"}`;
+            }
 
-          return ret;
-        },
-        outputPackageJson.peerDependencies ?? {}
-      );
-      outputPackageJson.peerDependenciesMeta = localPackages.reduce(
-        (ret, localPackage) => {
-          if (!ret[localPackage.name]) {
-            ret[localPackage.name] = {
-              optional: false
-            };
-          }
+            return ret;
+          },
+          outputPackageJson.peerDependencies ?? {}
+        );
+        outputPackageJson.peerDependenciesMeta = localPackages.reduce(
+          (ret, localPackage) => {
+            if (!ret[localPackage.name]) {
+              ret[localPackage.name] = {
+                optional: false
+              };
+            }
 
-          return ret;
-        },
-        outputPackageJson.peerDependenciesMeta ?? {}
-      );
-      outputPackageJson.devDependencies = localPackages.reduce(
-        (ret, localPackage) => {
-          if (!ret[localPackage.name]) {
-            ret[localPackage.name] = localPackage.version || "0.0.1";
-          }
+            return ret;
+          },
+          outputPackageJson.peerDependenciesMeta ?? {}
+        );
+        outputPackageJson.devDependencies = localPackages.reduce(
+          (ret, localPackage) => {
+            if (!ret[localPackage.name]) {
+              ret[localPackage.name] = localPackage.version || "0.0.1";
+            }
 
-          return ret;
-        },
-        outputPackageJson.peerDependencies ?? {}
-      );
+            return ret;
+          },
+          outputPackageJson.peerDependencies ?? {}
+        );
+      } else {
+        writeTrace(
+          "📦  No local packages dependencies to add to package.json",
+          config
+        );
+      }
 
       outputPackageJson = addWorkspacePackageJsonFields(
         config,

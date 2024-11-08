@@ -59,11 +59,11 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.error(
-        `\n${_chalk.bold.hex(colors.danger ?? "#f85149")(">")} ${_chalk.bold
+        `${_chalk.bold.hex(colors.danger ?? "#f85149")(">")} ${_chalk.bold
           .bgHex(colors.fatal ?? "#7d1a1a")
           .whiteBright(
             " 💀 Fatal "
-          )}  ${_chalk.hex(colors.danger ?? "#f85149")(formatLogMessage(message))}\n`
+          )}  ${_chalk.hex(colors.danger ?? "#f85149")(formatLogMessage(message))}\r\n`
       );
     };
   }
@@ -74,11 +74,11 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.error(
-        `\n${_chalk.bold.hex(colors.danger ?? "#f85149")(">")} ${_chalk.bold
+        `${_chalk.bold.hex(colors.danger ?? "#f85149")(">")} ${_chalk.bold
           .bgHex(colors.danger ?? "#f85149")
           .whiteBright(
             " ✘  Error "
-          )}  ${_chalk.hex(colors.danger ?? "#f85149")(formatLogMessage(message))}\n`
+          )}  ${_chalk.hex(colors.danger ?? "#f85149")(formatLogMessage(message))}\r\n`
       );
     };
   }
@@ -89,11 +89,11 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.warn(
-        `\n${_chalk.bold.hex(colors.warning ?? "#e3b341")(">")} ${_chalk.bold
+        `${_chalk.bold.hex(colors.warning ?? "#e3b341")(">")} ${_chalk.bold
           .bgHex(colors.warning ?? "#e3b341")
           .whiteBright(
             "  ⚠ Warn  "
-          )}  ${_chalk.hex(colors.warning ?? "#e3b341")(formatLogMessage(message))}\n`
+          )}  ${_chalk.hex(colors.warning ?? "#e3b341")(formatLogMessage(message))}\r\n`
       );
     };
   }
@@ -104,11 +104,11 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.info(
-        `\n${_chalk.bold.hex(colors.success ?? "#56d364")(">")} ${_chalk.bold
+        `${_chalk.bold.hex(colors.success ?? "#56d364")(">")} ${_chalk.bold
           .bgHex(colors.success ?? "#56d364")
           .whiteBright(
             " ✓ Success "
-          )}  ${_chalk.hex(colors.success ?? "#56d364")(formatLogMessage(message))}\n`
+          )}  ${_chalk.hex(colors.success ?? "#56d364")(formatLogMessage(message))}\r\n`
       );
     };
   }
@@ -119,11 +119,11 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.info(
-        `\n${_chalk.bold.hex(colors.info ?? "#58a6ff")(">")} ${_chalk.bold
+        `${_chalk.bold.hex(colors.info ?? "#58a6ff")(">")} ${_chalk.bold
           .bgHex(colors.info ?? "#58a6ff")
           .whiteBright(
             "  ℹ Info  "
-          )}  ${_chalk.hex(colors.info ?? "#58a6ff")(formatLogMessage(message))}\n`
+          )}  ${_chalk.hex(colors.info ?? "#58a6ff")(formatLogMessage(message))}\r\n`
       );
     };
   }
@@ -134,22 +134,22 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.debug(
-        `\n${_chalk.bold.hex(colors.brand ?? "#1fb2a6")(">")} ${_chalk.bold
+        `${_chalk.bold.hex(colors.brand ?? "#1fb2a6")(">")} ${_chalk.bold
           .bgHex(colors.brand ?? "#1fb2a6")
           .whiteBright(
             " 🛠  Debug "
-          )}  ${_chalk.hex(colors.brand ?? "#1fb2a6")(formatLogMessage(message))}\n`
+          )}  ${_chalk.hex(colors.brand ?? "#1fb2a6")(formatLogMessage(message))}\r\n`
       );
     };
   }
 
   return (message?: any) => {
     console.log(
-      `\n${_chalk.bold.hex(colors.brand ?? "#1fb2a6")(">")} ${_chalk.bold
+      `${_chalk.bold.hex(colors.brand ?? "#1fb2a6")(">")} ${_chalk.bold
         .bgHex(colors.brand ?? "#1fb2a6")
         .whiteBright(
           " ✉ System "
-        )}  ${_chalk.hex(colors.brand ?? "#1fb2a6")(formatLogMessage(message))}\n`
+        )}  ${_chalk.hex(colors.brand ?? "#1fb2a6")(formatLogMessage(message))}\r\n`
     );
   };
 };
