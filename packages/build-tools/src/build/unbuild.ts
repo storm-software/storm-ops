@@ -3,12 +3,14 @@ import {
   type ExecutorContext,
   joinPathFragments,
   type ProjectConfiguration,
+  ProjectGraphProjectNode,
   readJsonFile,
   readProjectsConfigurationFromProjectGraph,
   writeJsonFile
 } from "@nx/devkit";
 import { copyAssets } from "@nx/js";
 import type { AssetGlob } from "@nx/js/src/utils/assets/assets.js";
+import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
 import type { StormConfig } from "@storm-software/config";
 import {
   applyWorkspaceProjectTokens,
@@ -29,6 +31,7 @@ import {
   createProjectRootMappings,
   findProjectForPath
 } from "nx/src/project-graph/utils/find-project-for-path.js";
+import { PackageJson } from "nx/src/utils/package-json";
 import { build } from "unbuild";
 import { getUnbuildBuildOptions } from "../config/get-unbuild-config";
 import type { UnbuildBuildOptions } from "../types";
@@ -370,8 +373,89 @@ ${unbuildBuildOptions
       existsSync(joinPathFragments(projectRoot, "package.json"))
     ) {
       writeDebug("✍️   Writing package.json file", config);
+
       let outputPackageJson = readJsonFile(
-        joinPathFragments(projectRoot, "package.json")
+        joinPathFragments(
+          workspaceRoot,
+          enhancedOptions.projectRoot,
+          "package.json"
+        )
+      );
+
+      const projectDependencies = calculateProjectBuildableDependencies(
+        undefined,
+        projectGraph,
+        config.workspaceRoot,
+        options.projectName,
+        process.env.NX_TASK_TARGET_TARGET || "build",
+        process.env.NX_TASK_TARGET_CONFIGURATION || "production",
+        true
+      );
+
+      const localPackages = projectDependencies.dependencies
+        .filter(
+          dep =>
+            dep.node.type === "lib" &&
+            dep.node.data.root !== projectRoot &&
+            dep.node.data.root !== workspaceRoot
+        )
+        .reduce((ret, project) => {
+          const projectNode = project.node as ProjectGraphProjectNode;
+
+          if (projectNode.data.root) {
+            const projectPackageJsonPath = joinPathFragments(
+              workspaceRoot,
+              projectNode.data.root,
+              "package.json"
+            );
+            if (existsSync(projectPackageJsonPath)) {
+              const projectPackageJson = readJsonFile(projectPackageJsonPath);
+
+              if (projectPackageJson.private !== false) {
+                ret.push(projectPackageJson as PackageJson);
+              }
+            }
+          }
+
+          return ret;
+        }, [] as PackageJson[]);
+
+      writeTrace(
+        `📦  Adding local packages to package.json: ${localPackages.map(p => p.name).join(", ")}`,
+        config
+      );
+
+      outputPackageJson.peerDependencies = localPackages.reduce(
+        (ret, localPackage) => {
+          if (!ret[localPackage.name]) {
+            ret[localPackage.name] = `>=${localPackage.version || "0.0.1"}`;
+          }
+
+          return ret;
+        },
+        outputPackageJson.peerDependencies ?? {}
+      );
+      outputPackageJson.peerDependenciesMeta = localPackages.reduce(
+        (ret, localPackage) => {
+          if (!ret[localPackage.name]) {
+            ret[localPackage.name] = {
+              optional: false
+            };
+          }
+
+          return ret;
+        },
+        outputPackageJson.peerDependenciesMeta ?? {}
+      );
+      outputPackageJson.devDependencies = localPackages.reduce(
+        (ret, localPackage) => {
+          if (!ret[localPackage.name]) {
+            ret[localPackage.name] = localPackage.version || "0.0.1";
+          }
+
+          return ret;
+        },
+        outputPackageJson.peerDependencies ?? {}
       );
 
       outputPackageJson = addWorkspacePackageJsonFields(

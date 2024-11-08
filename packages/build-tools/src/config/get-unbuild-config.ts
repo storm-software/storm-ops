@@ -121,7 +121,23 @@ export async function getUnbuildBuildOptions(
           options.outputPath,
           "dist"
         ).replaceAll("\\", "/"),
-        declaration: "compatible"
+        declaration: true,
+        format: "esm"
+      },
+      {
+        builder: "mkdist",
+        input: `.${options.sourceRoot.replace(options.projectRoot, "")}`,
+        outDir: join(
+          relative(
+            join(config.workspaceRoot, options.projectRoot),
+            config.workspaceRoot
+          ).replaceAll("\\", "/"),
+          options.outputPath,
+          "dist"
+        ).replaceAll("\\", "/"),
+        declaration: true,
+        format: "cjs",
+        ext: "cjs"
       }
     ],
     // externals: [...externals, ...(options.external ?? [])],
@@ -210,15 +226,14 @@ export async function getUnbuildBuildOptions(
   //   });
   // });
 
-  if (packageJson.dependencies) {
-    buildConfig.dependencies = dependencies
-      .filter(
-        dep =>
-          dep.node.type === "npm" ||
-          dep.node.type === "lib" ||
-          dep.node.type === "app"
-      )
-      .map(dep => dep.name);
+  dependencies = dependencies.filter(
+    dep =>
+      dep.node.type === "npm" ||
+      dep.node.type === "lib" ||
+      dep.node.type === "app"
+  );
+  if (dependencies.length > 0) {
+    buildConfig.dependencies = dependencies.map(dep => dep.name);
 
     // buildConfig.dependencies = Object.keys(packageJson.dependencies);
   }
