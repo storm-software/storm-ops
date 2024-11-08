@@ -1,3 +1,9 @@
+## 0.94.1 (2024-11-08)
+
+### Bug Fixes
+
+- **config-tools:** Cleaned up the logger's formatting ([6ed06104](https://github.com/storm-software/storm-ops/commit/6ed06104))
+
 ## 0.94.0 (2024-11-08)
 
 ### Features

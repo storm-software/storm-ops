@@ -1,8 +1,15 @@
+## 1.111.1 (2024-11-08)
+
+### Bug Fixes
+
+- **config-tools:** Cleaned up the logger's formatting ([6ed06104](https://github.com/storm-software/storm-ops/commit/6ed06104))
+
 ## 1.111.0 (2024-11-08)
 
 ### Features
 
-- **build-tools:** Added back cjs build and local package.json dependencies ([d86d3c2a](https://github.com/storm-software/storm-ops/commit/d86d3c2a))
+- **build-tools:** Added back cjs build and local package.json dependencies
+  ([d86d3c2a](https://github.com/storm-software/storm-ops/commit/d86d3c2a))
 
 ## 1.110.0 (2024-11-08)
 
