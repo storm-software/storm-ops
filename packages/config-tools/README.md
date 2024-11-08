@@ -40,6 +40,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Table of Contents
 
 - [Storm Configuration Tools](#storm-configuration-tools)
@@ -78,7 +79,7 @@ environment variables:
 | ----------------------- | -------------------------------------------------------------------------------------- | --------------------------- |
 | STORM_COLOR_LIGHT       | The workspace's light background theme color                                           | `#f4f4f5`                   |
 | STORM_COLOR_DARK        | The workspace's dark background theme color                                            | `#1d232a`                   |
-| STORM_COLOR_ERROR       | The workspace's error theme color                                                      | `#990000`                   |
+| STORM_COLOR_DANGER      | The workspace's danger theme color                                                     | `#990000`                   |
 | STORM_COLOR_FATAL       | The workspace's fatal theme color                                                      | `#7d1a1a`                   |
 | STORM_COLOR_INFO        | The workspace's info theme color                                                       | `#0ea5e9`                   |
 | STORM_COLOR_PRIMARY     | The workspace's primary theme color                                                    | `#1fb2a6`                   |

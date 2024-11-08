@@ -217,7 +217,7 @@
                       "pattern": "^#([0-9a-f]{3}){1,2}$",
                       "minLength": 7,
                       "maxLength": 7,
-                      "default": "#0D1017",
+                      "default": "#1d1e22",
                       "description": "The dark background color of the workspace"
                     },
                     "light": {
@@ -233,7 +233,7 @@
                       "pattern": "^#([0-9a-f]{3}){1,2}$",
                       "minLength": 7,
                       "maxLength": 7,
-                      "default": "#3fc1b0",
+                      "default": "#1fb2a6",
                       "description": "The primary brand specific color of the workspace"
                     },
                     "alternate": {
@@ -255,7 +255,7 @@
                       "pattern": "^#([0-9a-f]{3}){1,2}$",
                       "minLength": 7,
                       "maxLength": 7,
-                      "description": "The color used to display "
+                      "description": "The color used to display hyperlink text"
                     },
                     "help": {
                       "type": "string",
@@ -270,7 +270,7 @@
                       "pattern": "^#([0-9a-f]{3}){1,2}$",
                       "minLength": 7,
                       "maxLength": 7,
-                      "default": "#087f5b",
+                      "default": "#12B66A",
                       "description": "The success color of the workspace"
                     },
                     "info": {
@@ -278,7 +278,7 @@
                       "pattern": "^#([0-9a-f]{3}){1,2}$",
                       "minLength": 7,
                       "maxLength": 7,
-                      "default": "#316DCA",
+                      "default": "#0070E0",
                       "description": "The informational color of the workspace"
                     },
                     "warning": {
@@ -289,13 +289,13 @@
                       "default": "#fcc419",
                       "description": "The warning color of the workspace"
                     },
-                    "error": {
+                    "danger": {
                       "type": "string",
                       "pattern": "^#([0-9a-f]{3}){1,2}$",
                       "minLength": 7,
                       "maxLength": 7,
-                      "default": "#a40e26",
-                      "description": "The error color of the workspace"
+                      "default": "#D8314A",
+                      "description": "The danger color of the workspace"
                     },
                     "fatal": {
                       "type": "string",
@@ -359,8 +359,8 @@
                         "warning": {
                           "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/warning"
                         },
-                        "error": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/error"
+                        "danger": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/danger"
                         },
                         "fatal": {
                           "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/fatal"
@@ -407,8 +407,8 @@
                         "warning": {
                           "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/warning"
                         },
-                        "error": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/error"
+                        "danger": {
+                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/danger"
                         },
                         "fatal": {
                           "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/fatal"
