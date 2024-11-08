@@ -1,8 +1,15 @@
+## 1.69.0 (2024-11-08)
+
+### Features
+
+- **config:** Regenerate the Storm configuration schema ([baeb1c6f](https://github.com/storm-software/storm-ops/commit/baeb1c6f))
+
 ## 1.68.0 (2024-11-07)
 
 ### Features
 
-- **config:** Add the `danger` color token ([06dba937](https://github.com/storm-software/storm-ops/commit/06dba937))
+- **config:** Add the `danger` color token
+  ([06dba937](https://github.com/storm-software/storm-ops/commit/06dba937))
 
 ## 1.67.1 (2024-11-03)
 
