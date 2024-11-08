@@ -1,8 +1,15 @@
+## 0.30.0 (2024-11-08)
+
+### Features
+
+- **build-tools:** Added back cjs build and local package.json dependencies ([d86d3c2a](https://github.com/storm-software/storm-ops/commit/d86d3c2a))
+
 ## 0.29.0 (2024-11-07)
 
 ### Features
 
-- **config:** Add the `danger` color token ([06dba937](https://github.com/storm-software/storm-ops/commit/06dba937))
+- **config:** Add the `danger` color token
+  ([06dba937](https://github.com/storm-software/storm-ops/commit/06dba937))
 
 ## 0.28.0 (2024-11-01)
 

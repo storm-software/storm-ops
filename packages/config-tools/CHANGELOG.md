@@ -1,8 +1,15 @@
+## 1.111.0 (2024-11-08)
+
+### Features
+
+- **build-tools:** Added back cjs build and local package.json dependencies ([d86d3c2a](https://github.com/storm-software/storm-ops/commit/d86d3c2a))
+
 ## 1.110.0 (2024-11-08)
 
 ### Features
 
-- **config:** Regenerate the Storm configuration schema ([baeb1c6f](https://github.com/storm-software/storm-ops/commit/baeb1c6f))
+- **config:** Regenerate the Storm configuration schema
+  ([baeb1c6f](https://github.com/storm-software/storm-ops/commit/baeb1c6f))
 
 ## 1.109.0 (2024-11-07)
 

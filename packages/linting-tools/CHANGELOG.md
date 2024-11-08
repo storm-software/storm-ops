@@ -1,3 +1,9 @@
+## 1.90.0 (2024-11-08)
+
+### Features
+
+- **build-tools:** Added back cjs build and local package.json dependencies ([d86d3c2a](https://github.com/storm-software/storm-ops/commit/d86d3c2a))
+
 ## 1.89.0 (2024-11-07)
 
 ### Features
