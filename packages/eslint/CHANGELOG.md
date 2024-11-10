@@ -1,3 +1,9 @@
+## 0.94.3 (2024-11-10)
+
+### Bug Fixes
+
+- **config-tools:** Improve config file path formatting in log message ([5971676e](https://github.com/storm-software/storm-ops/commit/5971676e))
+
 ## 0.94.2 (2024-11-10)
 
 ### Bug Fixes

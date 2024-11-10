@@ -1,8 +1,15 @@
+## 1.70.3 (2024-11-10)
+
+### Bug Fixes
+
+- **config-tools:** Improve config file path formatting in log message ([5971676e](https://github.com/storm-software/storm-ops/commit/5971676e))
+
 ## 1.70.2 (2024-11-10)
 
 ### Bug Fixes
 
-- **config-tools:** Ensure trace logging is not marked as system logging ([e8dca171](https://github.com/storm-software/storm-ops/commit/e8dca171))
+- **config-tools:** Ensure trace logging is not marked as system logging
+  ([e8dca171](https://github.com/storm-software/storm-ops/commit/e8dca171))
 
 ## 1.70.1 (2024-11-08)
 
