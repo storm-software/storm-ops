@@ -1,3 +1,9 @@
+## 2.67.1 (2024-11-10)
+
+### Bug Fixes
+
+- **config-tools:** Ensure trace logging is not marked as system logging ([e8dca171](https://github.com/storm-software/storm-ops/commit/e8dca171))
+
 ## 2.67.0 (2024-11-08)
 
 ### Features

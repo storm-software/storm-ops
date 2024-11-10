@@ -1,8 +1,15 @@
+## 1.82.1 (2024-11-10)
+
+### Bug Fixes
+
+- **config-tools:** Ensure trace logging is not marked as system logging ([e8dca171](https://github.com/storm-software/storm-ops/commit/e8dca171))
+
 ## 1.82.0 (2024-11-08)
 
 ### Features
 
-- **build-tools:** Added back cjs build and local package.json dependencies ([d86d3c2a](https://github.com/storm-software/storm-ops/commit/d86d3c2a))
+- **build-tools:** Added back cjs build and local package.json dependencies
+  ([d86d3c2a](https://github.com/storm-software/storm-ops/commit/d86d3c2a))
 
 ## 1.81.0 (2024-11-07)
 

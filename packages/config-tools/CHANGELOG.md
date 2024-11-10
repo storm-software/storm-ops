@@ -1,8 +1,15 @@
+## 1.111.2 (2024-11-10)
+
+### Bug Fixes
+
+- **config-tools:** Ensure trace logging is not marked as system logging ([e8dca171](https://github.com/storm-software/storm-ops/commit/e8dca171))
+
 ## 1.111.1 (2024-11-08)
 
 ### Bug Fixes
 
-- **config-tools:** Cleaned up the logger's formatting ([6ed06104](https://github.com/storm-software/storm-ops/commit/6ed06104))
+- **config-tools:** Cleaned up the logger's formatting
+  ([6ed06104](https://github.com/storm-software/storm-ops/commit/6ed06104))
 
 ## 1.111.0 (2024-11-08)
 
