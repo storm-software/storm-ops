@@ -1,7 +1,7 @@
 import type { StormConfigInput } from "@storm-software/config";
 import { loadConfig, ResolvedConfig, type LoadConfigOptions } from "c12";
 import merge from "deepmerge";
-import { writeTrace } from "../utilities";
+import { writeSystem } from "../utilities";
 import { findWorkspaceRoot } from "../utilities/find-workspace-root";
 
 // let _cosmiconfig: any = undefined;
@@ -71,9 +71,13 @@ export const getConfigFile = async (
 
   let config = result.config;
   const configFile = result.configFile;
-  if (config && Object.keys(config).length > 0) {
-    writeTrace(
-      `Found Storm configuration file "${configFile}" at "${workspacePath}"`,
+  if (config && configFile && Object.keys(config).length > 0) {
+    writeSystem(
+      `Found Storm configuration file "${
+        configFile.includes(`${workspacePath}/`)
+          ? configFile.replace(`${workspacePath}/`, "")
+          : configFile
+      }" at "${workspacePath}"`,
       {
         logLevel: "all"
       }
@@ -87,9 +91,17 @@ export const getConfigFile = async (
       )
     );
     for (const result of results) {
-      if (result?.config && Object.keys(result.config).length > 0) {
-        writeTrace(
-          `Found additional configuration file "${result.configFile}" at "${workspacePath}"`,
+      if (
+        result?.config &&
+        result?.configFile &&
+        Object.keys(result.config).length > 0
+      ) {
+        writeSystem(
+          `Found alternative configuration file "${
+            result.configFile.includes(`${workspacePath}/`)
+              ? result.configFile.replace(`${workspacePath}/`, "")
+              : result.configFile
+          }" at "${workspacePath}"`,
           {
             logLevel: "all"
           }
