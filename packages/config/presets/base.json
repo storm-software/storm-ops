@@ -3,7 +3,7 @@
   "owner": "@storm-software/development",
   "timezone": "America/New_York",
   "locale": "en-US",
-  "logLevel": "all",
+  "logLevel": "info",
   "skipCache": false,
   "cacheDirectory": "node_modules/.cache/storm",
   "buildDirectory": "dist",

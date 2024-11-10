@@ -37,8 +37,8 @@ export const getLogFn = (
   //   ? config.colors
   //   : typeof config?.colors?.dark === "object" ?) ?? DEFAULT_COLOR_CONFIG;
 
-  const configLogLevel = (config.logLevel ??
-    process.env?.STORM_LOG_LEVEL ??
+  const configLogLevel = (config.logLevel ||
+    process.env.STORM_LOG_LEVEL ||
     LogLevelLabel.INFO) as LogLevelLabel;
 
   if (
@@ -59,11 +59,12 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.error(
-        `${_chalk.bold.hex(colors.danger ?? "#f85149")(">")} ${_chalk.bold
+        `${_chalk.bold.hex(colors.fatal ?? "#7d1a1a")(">")} ${_chalk.bold
           .bgHex(colors.fatal ?? "#7d1a1a")
           .whiteBright(
             " 💀 Fatal "
-          )}  ${_chalk.hex(colors.danger ?? "#f85149")(formatLogMessage(message))}\r\n`
+          )}  ${_chalk.hex(colors.fatal ?? "#7d1a1a")(formatLogMessage(message))}
+`
       );
     };
   }
@@ -78,7 +79,8 @@ export const getLogFn = (
           .bgHex(colors.danger ?? "#f85149")
           .whiteBright(
             " ✘  Error "
-          )}  ${_chalk.hex(colors.danger ?? "#f85149")(formatLogMessage(message))}\r\n`
+          )}  ${_chalk.hex(colors.danger ?? "#f85149")(formatLogMessage(message))}
+`
       );
     };
   }
@@ -93,7 +95,8 @@ export const getLogFn = (
           .bgHex(colors.warning ?? "#e3b341")
           .whiteBright(
             "  ⚠ Warn  "
-          )}  ${_chalk.hex(colors.warning ?? "#e3b341")(formatLogMessage(message))}\r\n`
+          )}  ${_chalk.hex(colors.warning ?? "#e3b341")(formatLogMessage(message))}
+`
       );
     };
   }
@@ -108,7 +111,8 @@ export const getLogFn = (
           .bgHex(colors.success ?? "#56d364")
           .whiteBright(
             " ✓ Success "
-          )}  ${_chalk.hex(colors.success ?? "#56d364")(formatLogMessage(message))}\r\n`
+          )}  ${_chalk.hex(colors.success ?? "#56d364")(formatLogMessage(message))}
+`
       );
     };
   }
@@ -123,14 +127,15 @@ export const getLogFn = (
           .bgHex(colors.info ?? "#58a6ff")
           .whiteBright(
             "  ℹ Info  "
-          )}  ${_chalk.hex(colors.info ?? "#58a6ff")(formatLogMessage(message))}\r\n`
+          )}  ${_chalk.hex(colors.info ?? "#58a6ff")(formatLogMessage(message))}
+`
       );
     };
   }
 
   if (
-    (typeof logLevel === "number" && LogLevel.DEBUG >= logLevel) ||
-    (typeof logLevel === "string" && LogLevel.DEBUG >= getLogLevel(logLevel))
+    (typeof logLevel === "number" && LogLevel.TRACE >= logLevel) ||
+    (typeof logLevel === "string" && LogLevel.TRACE >= getLogLevel(logLevel))
   ) {
     return (message?: any) => {
       console.debug(
@@ -138,7 +143,8 @@ export const getLogFn = (
           .bgHex(colors.brand ?? "#1fb2a6")
           .whiteBright(
             " 🛠  Debug "
-          )}  ${_chalk.hex(colors.brand ?? "#1fb2a6")(formatLogMessage(message))}\r\n`
+          )}  ${_chalk.hex(colors.brand ?? "#1fb2a6")(formatLogMessage(message))}
+`
       );
     };
   }
@@ -149,7 +155,8 @@ export const getLogFn = (
         .bgHex(colors.brand ?? "#1fb2a6")
         .whiteBright(
           " ✉ System "
-        )}  ${_chalk.hex(colors.brand ?? "#1fb2a6")(formatLogMessage(message))}\r\n`
+        )}  ${_chalk.hex(colors.brand ?? "#1fb2a6")(formatLogMessage(message))}
+`
     );
   };
 };

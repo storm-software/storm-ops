@@ -27,8 +27,11 @@ export const getConfigFileByName = async (
     name: fileName,
     envName: fileName?.toUpperCase(),
     jitiOptions: {
-      debug: true,
-      cache: process.env.STORM_CACHE ? process.env.STORM_CACHE_DIRECTORY : false
+      debug: false,
+      cache:
+        process.env.STORM_SKIP_CACHE === "true"
+          ? false
+          : process.env.STORM_CACHE_DIRECTORY || "node_modules/.cache/storm"
     },
     ...options
   });
@@ -39,10 +42,11 @@ export const getConfigFileByName = async (
       name: fileName,
       envName: fileName?.toUpperCase(),
       jitiOptions: {
-        debug: true,
-        cache: process.env.STORM_CACHE
-          ? process.env.STORM_CACHE_DIRECTORY
-          : false
+        debug: false,
+        cache:
+          process.env.STORM_SKIP_CACHE === "true"
+            ? false
+            : process.env.STORM_CACHE_DIRECTORY || "node_modules/.cache/storm"
       },
       configFile: fileName,
       ...options
