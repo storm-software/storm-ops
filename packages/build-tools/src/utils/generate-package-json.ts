@@ -426,8 +426,6 @@ export const addWorkspacePackageJsonFields = (
   includeSrc = false,
   packageJson: Record<string, any>
 ): Record<string, any> => {
-  // #region Generate the package.json file
-
   const workspaceRoot = config.workspaceRoot
     ? config.workspaceRoot
     : findWorkspaceRoot();
@@ -482,9 +480,9 @@ export const addPackageJsonExports = async (
   sourceRoot: string,
   packageJson: Record<string, any>
 ): Promise<Record<string, any>> => {
-  // #region Generate the package.json file
+  packageJson.exports ??= {};
+  packageJson.exports["./package.json"] = "./package.json";
 
-  const exports = {};
   const files = await new Glob("**/*.{ts,tsx}", {
     absolute: false,
     cwd: sourceRoot,
@@ -495,13 +493,12 @@ export const addPackageJsonExports = async (
     split.pop();
     const entry = split.join(".").replaceAll("\\", "/");
 
-    exports[`./${entry}`] = {
+    packageJson.exports[`./${entry}`] = {
       import: `./dist/${entry}.mjs`,
       require: `./dist/${entry}.cjs`,
       types: `./dist/${entry}.d.ts`
     };
   });
 
-  packageJson.exports = exports;
   return packageJson;
 };
