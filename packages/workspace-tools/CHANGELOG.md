@@ -1,8 +1,15 @@
+## 1.199.0 (2024-11-18)
+
+### Features
+
+- **build-tools:** Allow default package.json exports by no longer overriding them ([f19fc362](https://github.com/storm-software/storm-ops/commit/f19fc362))
+
 ## 1.198.1 (2024-11-10)
 
 ### Bug Fixes
 
-- **config-tools:** Ensure trace logging is not marked as system logging ([e8dca171](https://github.com/storm-software/storm-ops/commit/e8dca171))
+- **config-tools:** Ensure trace logging is not marked as system logging
+  ([e8dca171](https://github.com/storm-software/storm-ops/commit/e8dca171))
 
 ## 1.198.0 (2024-11-08)
 

@@ -1,3 +1,9 @@
+## 1.91.0 (2024-11-18)
+
+### Features
+
+- **build-tools:** Allow default package.json exports by no longer overriding them ([f19fc362](https://github.com/storm-software/storm-ops/commit/f19fc362))
+
 ## 1.90.1 (2024-11-10)
 
 ### Bug Fixes

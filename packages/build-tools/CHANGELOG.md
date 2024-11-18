@@ -1,8 +1,15 @@
+## 0.102.0 (2024-11-18)
+
+### Features
+
+- **build-tools:** Allow default package.json exports by no longer overriding them ([f19fc362](https://github.com/storm-software/storm-ops/commit/f19fc362))
+
 ## 0.101.3 (2024-11-10)
 
 ### Bug Fixes
 
-- **config-tools:** Improve config file path formatting in log message ([5971676e](https://github.com/storm-software/storm-ops/commit/5971676e))
+- **config-tools:** Improve config file path formatting in log message
+  ([5971676e](https://github.com/storm-software/storm-ops/commit/5971676e))
 
 ## 0.101.2 (2024-11-10)
 
