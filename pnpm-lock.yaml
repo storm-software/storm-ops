@@ -555,11 +555,8 @@ importers:
         specifier: ^6.8.0
         version: 6.8.0(eslint@9.5.0)
       eslint-plugin-n:
-        specifier: 17.8.1
-        version: 17.8.1(eslint@9.5.0)
-      eslint-plugin-node:
-        specifier: ^11.1.0
-        version: 11.1.0(eslint@9.5.0)
+        specifier: ^14.0.0
+        version: 14.0.0(eslint@9.5.0)
       eslint-plugin-perfectionist:
         specifier: ^2.0.0
         version: 2.11.0(eslint@9.5.0)(typescript@5.5.4)
@@ -3472,6 +3469,7 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
+    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -7438,8 +7436,8 @@ packages:
     peerDependencies:
       eslint: '>=8'
 
-  eslint-plugin-es@3.0.1:
-    resolution: {integrity: sha512-GUmAsJaN4Fc7Gbtl8uOBlayo2DqhwWvEzykMHSCZHU3XdJ+NSzzZcVhXh3VxX5icqQ+oQdIEawXX8xkR3mIFmQ==}
+  eslint-plugin-es@4.1.0:
+    resolution: {integrity: sha512-GILhQTnjYE2WorX5Jyi5i4dz5ALWxBIdQECVQavL6s7cI76IZTDWleTHkxz/QT3kvcs2QlGHvKLYsSlPOlPXnQ==}
     engines: {node: '>=8.10.0'}
     peerDependencies:
       eslint: '>=4.19.1'
@@ -7500,17 +7498,17 @@ packages:
     peerDependencies:
       eslint: '>=8.0.0'
 
+  eslint-plugin-n@14.0.0:
+    resolution: {integrity: sha512-mNwplPLsbaKhHyA0fa/cy8j+oF6bF6l81hzBTWa6JOvPcMNAuIogk2ih6d9tYvWYzyUG+7ZFeChqbzdFpg2QrQ==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      eslint: '>=7.0.0'
+
   eslint-plugin-n@17.8.1:
     resolution: {integrity: sha512-KdG0h0voZms8UhndNu8DeWx1eM4sY+A4iXtsNo6kOfJLYHNeTGPacGalJ9GcvrbmOL3r/7QOMwVZDSw+1SqsrA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.23.0'
-
-  eslint-plugin-node@11.1.0:
-    resolution: {integrity: sha512-oUwtPJ1W0SKD0Tr+wqu92c5xuCeQqB3hSCHasn/ZgjFdA9iDGNkNf2Zi9ztY7X+hNuMib23LNGRm6+uN+KLE3g==}
-    engines: {node: '>=8.10.0'}
-    peerDependencies:
-      eslint: '>=5.16.0'
 
   eslint-plugin-perfectionist@2.11.0:
     resolution: {integrity: sha512-XrtBtiu5rbQv88gl+1e2RQud9te9luYNvKIgM9emttQ2zutHPzY/AQUucwxscDKV4qlTkvLTxjOFvxqeDpPorw==}
@@ -22760,7 +22758,7 @@ snapshots:
       eslint: 9.5.0
       eslint-compat-utils: 0.5.1(eslint@9.5.0)
 
-  eslint-plugin-es@3.0.1(eslint@9.5.0):
+  eslint-plugin-es@4.1.0(eslint@9.5.0):
     dependencies:
       eslint: 9.5.0
       eslint-utils: 2.1.0
@@ -22895,6 +22893,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  eslint-plugin-n@14.0.0(eslint@9.5.0):
+    dependencies:
+      eslint: 9.5.0
+      eslint-plugin-es: 4.1.0(eslint@9.5.0)
+      eslint-utils: 3.0.0(eslint@9.5.0)
+      ignore: 5.3.1
+      is-core-module: 2.14.0
+      minimatch: 3.1.2
+      resolve: 1.22.8
+      semver: 6.3.1
+
   eslint-plugin-n@17.8.1(eslint@9.5.0):
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@9.5.0)
@@ -22906,16 +22915,6 @@ snapshots:
       ignore: 5.3.1
       minimatch: 9.0.5
       semver: 7.6.2
-
-  eslint-plugin-node@11.1.0(eslint@9.5.0):
-    dependencies:
-      eslint: 9.5.0
-      eslint-plugin-es: 3.0.1(eslint@9.5.0)
-      eslint-utils: 2.1.0
-      ignore: 5.3.1
-      minimatch: 3.1.2
-      resolve: 1.22.8
-      semver: 6.3.1
 
   eslint-plugin-perfectionist@2.11.0(eslint@9.5.0)(typescript@5.5.4):
     dependencies:
