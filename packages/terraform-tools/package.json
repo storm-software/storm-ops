@@ -41,8 +41,8 @@
     "monorepo"
   ],
   "peerDependencies": {
-    "@nx/devkit": "^20.0.6",
-    "nx": "^20.0.6"
+    "@nx/devkit": "^20.1.4",
+    "nx": "^20.1.4"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
@@ -53,13 +53,13 @@
     }
   },
   "dependencies": {
-    "@nx/devkit": "^20.0.6",
-    "@nx/workspace": "^20.0.6",
+    "@nx/devkit": "^20.1.4",
+    "@nx/workspace": "^20.1.4",
     "shelljs": "^0.8.5",
-    "tslib": "^2.6.3"
+    "tslib": "^2.8.1"
   },
   "devDependencies": {
-    "nx": "^20.0.6"
+    "nx": "^20.1.4"
   },
   "publishConfig": {
     "access": "public"

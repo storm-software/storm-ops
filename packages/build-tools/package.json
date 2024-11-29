@@ -33,11 +33,11 @@
     "monorepo"
   ],
   "peerDependencies": {
-    "@microsoft/api-extractor": "7.46.2",
-    "@nx/devkit": "^20.0.6",
-    "@nx/js": "^20.0.6",
-    "@nx/workspace": "^20.0.6",
-    "nx": "^20.0.6"
+    "@microsoft/api-extractor": "7.48.0",
+    "@nx/devkit": "^20.1.4",
+    "@nx/js": "^20.1.4",
+    "@nx/workspace": "^20.1.4",
+    "nx": "^20.1.4"
   },
   "peerDependenciesMeta": {
     "@microsoft/api-extractor": {
@@ -58,43 +58,43 @@
   },
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
-    "@angular-devkit/architect": "0.1802.4",
+    "@angular-devkit/architect": "0.1900.2",
     "@rollup/plugin-commonjs": "25.0.8",
     "@rollup/plugin-image": "3.0.3",
     "@rollup/plugin-json": "6.1.0",
-    "@rollup/plugin-node-resolve": "15.2.3",
-    "@ryoppippi/unplugin-typia": "1.0.6",
-    "autoprefixer": "10.4.19",
+    "@rollup/plugin-node-resolve": "15.3.0",
+    "@ryoppippi/unplugin-typia": "1.0.7",
+    "autoprefixer": "10.4.20",
     "chalk": "5.3.0",
     "commander": "12.1.0",
     "deep-clone": "4.0.0",
     "deepmerge": "4.3.1",
     "esbuild-plugin-environment": "0.4.0",
     "fs-extra": "11.2.0",
-    "glob": "10.4.2",
-    "mkdist": "1.5.4",
-    "pkg-types": "1.1.1",
+    "glob": "10.4.5",
+    "mkdist": "1.6.0",
+    "pkg-types": "1.2.1",
     "resolve": "1.22.8",
     "resolve-from": "5.0.0",
-    "rolldown": "0.10.4",
+    "rolldown": "0.14.0",
     "rollup": "4.18.0",
     "rollup-plugin-dts": "6.1.1",
     "rollup-plugin-esbuild": "6.1.1",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "rollup-plugin-postcss": "4.0.2",
     "rollup-plugin-typescript2": "0.36.0",
-    "sass": "1.77.6",
-    "tsconfck": "3.1.1",
+    "sass": "1.81.0",
+    "tsconfck": "3.1.4",
     "tsup": "8.0.0",
     "typescript": ">=5.5.3",
     "unbuild": "^2.0.0"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "7.46.2",
-    "@nx/devkit": "^20.0.6",
-    "@nx/js": "^20.0.6",
-    "@nx/workspace": "^20.0.6",
-    "nx": "^20.0.6"
+    "@microsoft/api-extractor": "7.48.0",
+    "@nx/devkit": "^20.1.4",
+    "@nx/js": "^20.1.4",
+    "@nx/workspace": "^20.1.4",
+    "nx": "^20.1.4"
   },
   "publishConfig": {
     "access": "public"
