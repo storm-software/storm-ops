@@ -14,7 +14,7 @@ repository = { workspace = true }
 version = '0.6.2'
 
 [dependencies]
-thiserror = '=1.0.61'
+thiserror = '=1.0.69'
 
 [lib]
 name = 'storm_workspace'
