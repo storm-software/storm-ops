@@ -1,0 +1,82 @@
+# Note: this is a shared pipeline used by other repositories.
+# Docs: https://docs.github.com/en/actions/using-workflows/reusing-workflows
+
+name: Reusable Sync package.json files
+
+on:
+  workflow_call:
+    inputs:
+      package-manager:
+        description: Package manager
+        type: string
+        required: false
+        default: pnpm
+      package-manager-version:
+        description: Package manager version
+        type: string
+        required: false
+        default: 9.10.0
+      storm-bot:
+        description: The github username of the Storm bot
+        required: false
+        type: string
+        default: Stormie-Bot
+    secrets:
+      STORM_BOT_GITHUB_TOKEN:
+        description: GitHub token of the Storm bot
+        required: true
+      STORM_BOT_NPM_TOKEN:
+        description: NPM token
+        required: true
+      STORM_BOT_CARGO_TOKEN:
+        description: Cargo token
+        required: true
+
+jobs:
+  syncpack:
+    name: "Package.json Sync"
+    if: always() && !cancelled() && !contains(needs.*.result, 'failure') && github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Checkout [Pull Request]
+        uses: actions/checkout@v4
+        if: ${{ github.event_name == 'pull_request' }}
+        with:
+          # By default, PRs will be checked-out based on the Merge Commit, but we want the actual branch HEAD.
+          ref: ${{ github.event.pull_request.head.sha }}
+          # We need to fetch all branches and commits so that Nx affected has a base to compare against.
+          fetch-depth: 0
+          token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
+
+      - name: Checkout `main` branch
+        uses: actions/checkout@v4
+        if: ${{ github.event_name != 'pull_request' }}
+        with:
+          # We need to fetch all branches and commits so that Nx affected has a base to compare against.
+          fetch-depth: 0
+          token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
+
+      - name: Setup workspace
+        uses: storm-software/action-setup@main
+        with:
+          package-manager: ${{ inputs.package-manager }}
+          package-manager-version: ${{ inputs.package-manager-version }}
+          storm-bot: ${{ inputs.storm-bot }}
+          storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
+
+      - uses: JamieMason/syncpack-github-action@0.2.3
+        with:
+          bot-username: ${{ inputs.storm-bot }}
+          bot-email: "bot@stormsoftware.com"
+          commit-message: "deps(monorepo): Format and sync package.json files"
+          format-mismatches: "fix"
+          lockfile-mismatches: "fix"
+          package-manager: ${{ inputs.package-manager }}
+          package-manager-version: ${{ inputs.package-manager-version }}
+          semver-range-mismatches: "fix"
+          version-mismatches: "fix"
+        env:
+          GITHUB_TOKEN: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}

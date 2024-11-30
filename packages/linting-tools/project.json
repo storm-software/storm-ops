@@ -76,6 +76,11 @@
             "input": "packages/linting-tools/src",
             "glob": "cspell/*",
             "output": "."
+          },
+          {
+            "input": "packages/linting-tools/src",
+            "glob": "syncpack/*",
+            "output": "."
           }
         ]
       }
