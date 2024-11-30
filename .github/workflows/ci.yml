@@ -158,6 +158,29 @@ jobs:
       - name: Add permissions to git tools
         run: chmod a=rwx dist/packages/git-tools/bin/git.js
 
+      - name: Syncpack
+        uses: ./.github/workflows/syncpack-reusable.yml
+
+      - name: Add permissions to git tools
+        run: chmod a=rwx dist/packages/git-tools/bin/git.js
+
+      - name: Run TOML linter
+        run: pnpm format-toml
+
+      - name: Run Prettier linter
+        run: pnpm format-prettier
+
+      - name: Run Sherif linter
+        run: pnpm format-sherif
+
+      - name: Run Knip linter
+        run: pnpm lint-knip
+
+      - name: Apply fixes
+        uses: autofix-ci/action@dd55f44df8f7cdb7a6bf74c78677eb8acd40cd0a
+        with:
+          commit-message: "ci(monorepo): Apply automated CI fixes"
+
       - name: Release Library Version Updates
         run: pnpm release --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
         env:
