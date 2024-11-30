@@ -1,8 +1,15 @@
+## 0.32.0 (2024-11-30)
+
+### Features
+
+- **storm-ops:** Added `sherif` and `knip` linting to CI pipeline ([181d782a](https://github.com/storm-software/storm-ops/commit/181d782a))
+
 ## 0.31.0 (2024-11-18)
 
 ### Features
 
-- **build-tools:** Allow default package.json exports by no longer overriding them ([f19fc362](https://github.com/storm-software/storm-ops/commit/f19fc362))
+- **build-tools:** Allow default package.json exports by no longer overriding
+  them ([f19fc362](https://github.com/storm-software/storm-ops/commit/f19fc362))
 
 ## 0.30.1 (2024-11-10)
 

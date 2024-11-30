@@ -1,3 +1,9 @@
+## 0.52.0 (2024-11-30)
+
+### Features
+
+- **storm-ops:** Added `sherif` and `knip` linting to CI pipeline ([181d782a](https://github.com/storm-software/storm-ops/commit/181d782a))
+
 ## 0.51.0 (2024-11-18)
 
 ### Features

@@ -1,3 +1,10 @@
+## 1.92.0 (2024-11-30)
+
+### Features
+
+- **storm-ops:** Added `sherif` and `knip` linting to CI pipeline ([181d782a](https://github.com/storm-software/storm-ops/commit/181d782a))
+- **linting-tools:** Added `syncpack` config and CI reusable actions ([a95fd8e5](https://github.com/storm-software/storm-ops/commit/a95fd8e5))
+
 ## 1.91.0 (2024-11-18)
 
 ### Features
