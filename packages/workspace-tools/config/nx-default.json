@@ -321,8 +321,7 @@
       "inputs": ["{workspaceRoot}/package.json", "{projectRoot}/package.json"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec sherif -i react -i react-dom",
-        "color": true
+        "command": "pnpx sherif -i react -i react-dom -i typescript"
       }
     },
     "lint-knip": {
@@ -330,8 +329,7 @@
       "inputs": ["linting", "default", "^production"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec knip",
-        "color": true
+        "command": "pnpx knip"
       }
     },
     "lint": {
