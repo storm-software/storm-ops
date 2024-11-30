@@ -158,8 +158,14 @@ jobs:
       - name: Add permissions to git tools
         run: chmod a=rwx dist/packages/git-tools/bin/git.js
 
+      - name: Run Sherif linter
+        run: pnpm lint-sherif
+
+      - name: Run Knip linter
+        run: pnpm lint-knip
+
       - name: Sync package.json files
-      - uses: JamieMason/syncpack-github-action@0.2.3
+        uses: JamieMason/syncpack-github-action@0.2.3
         with:
           bot-username: ${{ env.STORM_BOT }}
           bot-email: "bot@stormsoftware.com"

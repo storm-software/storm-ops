@@ -102,6 +102,14 @@ jobs:
         run: pnpm lint
         shell: bash
 
+      - name: Run Sherif linter
+        run: pnpm lint-sherif
+        shell: bash
+
+      - name: Run Knip linter
+        run: pnpm lint-knip
+        shell: bash
+
       # - name: Super-linter
       #   uses: super-linter/super-linter@v6.6.0
       #   env:
@@ -114,7 +122,8 @@ jobs:
         run: pnpm nx format
         shell: bash
 
-      - uses: JamieMason/syncpack-github-action@0.2.3
+      - name: Sync package.json files
+        uses: JamieMason/syncpack-github-action@0.2.3
         with:
           bot-username: ${{ inputs.storm-bot }}
           bot-email: "bot@stormsoftware.com"

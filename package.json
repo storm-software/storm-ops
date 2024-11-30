@@ -68,8 +68,10 @@
     "format-toml": "pnpm exec taplo format --config=\"./dist/packages/linting-tools/taplo/.config.toml\" --cache-path=\"./tmp/taplo\"",
     "help": "nx help",
     "lint": "node -r esbuild-register ./dist/packages/linting-tools/bin/lint.js all --skip-cspell --skip-alex --skip-circular-deps",
+    "lint-knip": "pnpm exec knip",
     "lint-ls": "pnpm exec ls-lint --config=\"./dist/packages/linting-tools/ls-lint/ls-lint.yml\"",
     "lint-prettier": "pnpm exec prettier --check --config=\"prettier.config.js\" --ignore-path=\"./packages/prettier/src/.prettierignore\" --cache ",
+    "lint-sherif": "pnpm exec sherif -i typescript -f",
     "lint-toml": "pnpm exec taplo format --check --config=\"./dist/packages/linting-tools/taplo/.config.toml\"",
     "local-registry": "nx local-registry @storm-software/storm-ops",
     "nuke": "nx clear-cache && rimraf tmp && rimraf .nx/cache && rimraf .nx/workspace-data && rimraf --glob **/node_modules && pnpm clear",
@@ -144,6 +146,8 @@
   "namespace": "@storm-software",
   "nx": {
     "includedScripts": [
+      "lint-sherif",
+      "lint-knip",
       "lint-ls",
       "lint",
       "format",
