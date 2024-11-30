@@ -9,9 +9,13 @@ on:
         required: false
   push:
     branches:
-      - "main"
-      - "canary"
-      - "experimental"
+      - main
+      - canary
+      - experimental
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+  cancel-in-progress: true
 
 env:
   CI: true
@@ -19,7 +23,6 @@ env:
   # NX_CLOUD_DISTRIBUTED_EXECUTION_AGENT_COUNT: 3 # expected number of agents
   # NX_BRANCH: ${{ github.event.number || github.ref_name }}
   # NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-  STORM_BOT: Stormie-Bot
   STORM_REPOSITORY: ${{ github.repositoryUrl }}
   STORM_WORKSPACE_ROOT: ${{ github.workspace }}
   GITHUB_ACTOR: ${{ github.actor }}
@@ -27,13 +30,14 @@ env:
   NPM_TOKEN: ${{ secrets.STORM_BOT_NPM_TOKEN }}
   CARGO_REGISTRY_TOKEN: ${{ secrets.STORM_BOT_CARGO_TOKEN }}
 
+permissions:
+  contents: write
+  id-token: write
+
 jobs:
   start:
     name: "Send in process notification"
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      id-token: write
     if: github.repository == 'storm-software/storm-ops' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/canary' || github.ref == 'refs/heads/experimental')
     steps:
       - name: Send notification - Deployment started
@@ -64,7 +68,6 @@ jobs:
         with:
           package-manager: pnpm
           package-manager-version: 9.10.0
-          storm-bot: ${{ env.STORM_BOT }}
           storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
       - name: Build Storm Nx-Plugin packages
@@ -152,32 +155,8 @@ jobs:
           file
         run: chmod a=rwx dist/packages/create-storm-workspace/package.json
 
-      # - name: Build repository packages
-      #   run: pnpm nx affected -t build --parallel=5
-
       - name: Add permissions to git tools
         run: chmod a=rwx dist/packages/git-tools/bin/git.js
-
-      - name: Run Sherif linter
-        run: pnpm lint-sherif
-
-      - name: Run Knip linter
-        run: pnpm lint-knip
-
-      - name: Sync package.json files
-        uses: JamieMason/syncpack-github-action@0.2.3
-        with:
-          bot-username: ${{ env.STORM_BOT }}
-          bot-email: "bot@stormsoftware.com"
-          commit-message: "deps(monorepo): Format and sync package.json files"
-          format-mismatches: "fix"
-          lockfile-mismatches: "fix"
-          package-manager: "pnpm"
-          package-manager-version: "9.10.0"
-          semver-range-mismatches: "fix"
-          version-mismatches: "fix"
-        env:
-          GITHUB_TOKEN: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
       - name: Release Library Version Updates
         run: pnpm release --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
@@ -187,7 +166,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           NPM_TOKEN: ${{ secrets.STORM_BOT_NPM_TOKEN }}
           CARGO_REGISTRY_TOKEN: ${{ secrets.STORM_BOT_CARGO_TOKEN }}
-          STORM_BOT: ${{ env.STORM_BOT }}
+          STORM_BOT: Stormie-Bot
           STORM_WORKSPACE_ROOT: ${{ github.workspace }}
           STORM_REPOSITORY: ${{ github.repositoryUrl }}
           TAG: ${{ inputs.tag }}

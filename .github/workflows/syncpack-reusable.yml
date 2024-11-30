@@ -1,7 +1,7 @@
 # Note: this is a shared pipeline used by other repositories.
 # Docs: https://docs.github.com/en/actions/using-workflows/reusing-workflows
 
-name: Reusable Sync package.json files
+name: Reusable syncpack
 
 on:
   workflow_call:
@@ -16,11 +16,6 @@ on:
         type: string
         required: false
         default: 9.10.0
-      storm-bot:
-        description: The github username of the Storm bot
-        required: false
-        type: string
-        default: Stormie-Bot
     secrets:
       STORM_BOT_GITHUB_TOKEN:
         description: GitHub token of the Storm bot
@@ -34,7 +29,7 @@ on:
 
 jobs:
   syncpack:
-    name: "Package.json Sync"
+    name: "Syncpack"
     if: always() && !cancelled() && !contains(needs.*.result, 'failure') && github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     permissions:
@@ -64,12 +59,11 @@ jobs:
         with:
           package-manager: ${{ inputs.package-manager }}
           package-manager-version: ${{ inputs.package-manager-version }}
-          storm-bot: ${{ inputs.storm-bot }}
           storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
       - uses: JamieMason/syncpack-github-action@0.2.3
         with:
-          bot-username: ${{ inputs.storm-bot }}
+          bot-username: Stormie-Bot
           bot-email: "bot@stormsoftware.com"
           commit-message: "deps(monorepo): Format and sync package.json files"
           format-mismatches: "fix"

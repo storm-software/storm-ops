@@ -12,15 +12,21 @@
 name: "CodeQL"
 
 on:
-  push:
   pull_request:
+  push:
     branches:
       - main
-      - next
-      - beta
+      - canary
       - experimental
+    paths-ignore:
+      - "**/*.md"
+      - ".all-contributorsrc"
   schedule:
     - cron: "37 16 * * 6"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   analyze:

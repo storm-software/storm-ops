@@ -10,6 +10,10 @@ on:
       - canary
       - experimental
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+  cancel-in-progress: true
+
 # Don't grant any access by default
 permissions: {}
 
