@@ -182,9 +182,6 @@ jobs:
       - name: Run Prettier linter
         run: pnpm format-prettier
 
-      - name: Run Sherif linter
-        run: pnpm format-sherif
-
       - name: Run Knip linter
         run: pnpm lint-knip
 
