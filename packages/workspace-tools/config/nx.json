@@ -14,6 +14,7 @@
           "format-readme",
           "format-toml",
           "format-prettier",
+          "lint-sherif",
           "format",
           "clean",
           "build-base",
@@ -318,7 +319,7 @@
     },
     "lint-sherif": {
       "cache": true,
-      "outputs": ["{projectRoot}/package.jso"],
+      "outputs": ["{projectRoot}/package.json"],
       "inputs": ["{workspaceRoot}/package.json", "{projectRoot}/package.json"],
       "executor": "nx:run-commands",
       "options": {

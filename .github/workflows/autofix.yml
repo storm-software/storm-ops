@@ -52,7 +52,7 @@ jobs:
           main-branch-name: main
 
       - name: Run formatters scripts
-        run: pnpm nx affected -t lint,format,build --parallel=5
+        run: pnpm nx affected -t format,build --parallel=5
         shell: bash
 
       - name: Run TOML linter

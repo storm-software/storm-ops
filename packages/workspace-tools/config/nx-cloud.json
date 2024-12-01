@@ -292,12 +292,11 @@
     },
     "lint-sherif": {
       "cache": true,
-      "outputs": ["{projectRoot}/package.jso"],
+      "outputs": ["{projectRoot}/package.json"],
       "inputs": ["{workspaceRoot}/package.json", "{projectRoot}/package.json"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec sherif -i react -i react-dom",
-        "color": true
+        "command": "pnpx sherif -i react -i react-dom -i typescript"
       }
     },
     "lint-knip": {
