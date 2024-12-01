@@ -1,8 +1,15 @@
+## 1.201.2 (2024-12-01)
+
+### Bug Fixes
+
+- **storm-ops:** Resolved issue with autofix build order ([bd7f2e6c](https://github.com/storm-software/storm-ops/commit/bd7f2e6c))
+
 ## 1.201.1 (2024-12-01)
 
 ### Bug Fixes
 
-- **storm-ops:** Removed lint tasks from the autofix workflow action ([ad21542d](https://github.com/storm-software/storm-ops/commit/ad21542d))
+- **storm-ops:** Removed lint tasks from the autofix workflow action
+  ([ad21542d](https://github.com/storm-software/storm-ops/commit/ad21542d))
 
 ## 1.201.0 (2024-12-01)
 
