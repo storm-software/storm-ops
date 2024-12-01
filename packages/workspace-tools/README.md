@@ -40,6 +40,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Table of Contents
 
 - [Storm Workspace Tools](#storm-workspace-tools)
@@ -134,8 +135,6 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 A package containing tools for managing a Storm workspace. It includes various
 [Nx](https://nx.dev) generators and executors for common development tasks.
-
-This library was generated with [Nx](https://nx.dev).
 
 ## Installing
 
