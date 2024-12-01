@@ -158,20 +158,20 @@ jobs:
       - name: Add permissions to git tools
         run: chmod a=rwx dist/packages/git-tools/bin/git.js
 
-      - name: Syncpack
-        uses: JamieMason/syncpack-github-action@0.2.3
-        with:
-          bot-username: Stormie-Bot
-          bot-email: "bot@stormsoftware.com"
-          commit-message: "deps(monorepo): Format and sync package.json files"
-          format-mismatches: "fix"
-          lockfile-mismatches: "fix"
-          package-manager: ${{ inputs.package-manager }}
-          package-manager-version: ${{ inputs.package-manager-version }}
-          semver-range-mismatches: "fix"
-          version-mismatches: "fix"
-        env:
-          GITHUB_TOKEN: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
+      # - name: Syncpack
+      #   uses: JamieMason/syncpack-github-action@0.2.3
+      #   with:
+      #     bot-username: Stormie-Bot
+      #     bot-email: "bot@stormsoftware.com"
+      #     commit-message: "deps(monorepo): Format and sync package.json files"
+      #     format-mismatches: "fix"
+      #     lockfile-mismatches: "fix"
+      #     package-manager: ${{ inputs.package-manager }}
+      #     package-manager-version: ${{ inputs.package-manager-version }}
+      #     semver-range-mismatches: "fix"
+      #     version-mismatches: "fix"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
       - name: Add permissions to git tools
         run: chmod a=rwx dist/packages/git-tools/bin/git.js
