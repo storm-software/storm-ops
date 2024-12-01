@@ -43,6 +43,18 @@ jobs:
           package-manager-version: 9.10.0
           storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
+      - name: Build Storm Nx-Plugin packages
+        run: pnpm build-plugins
+        shell: bash
+
+      - uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: main
+
+      - name: Run formatters scripts
+        run: pnpm nx affected -t lint,format,build --parallel=5
+        shell: bash
+
       - name: Run TOML linter
         run: pnpm format-toml
 
@@ -51,6 +63,12 @@ jobs:
 
       # - name: Run Knip linter
       #   run: pnpm lint-knip
+
+      - name: Run README formatter
+        run: pnpm format-readme
+
+      - name: Run Nx formatter
+        run: pnpm nx format:write
 
       - name: Run Sherif linter
         run: pnpm lint-sherif
