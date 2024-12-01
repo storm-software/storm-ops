@@ -182,8 +182,11 @@ jobs:
       - name: Run Prettier linter
         run: pnpm format-prettier
 
-      - name: Run Knip linter
-        run: pnpm lint-knip
+      # - name: Run Knip linter
+      #   run: pnpm lint-knip
+
+      - name: Run Sherif linter
+        run: pnpm lint-sherif
 
       - name: Apply fixes
         uses: autofix-ci/action@dd55f44df8f7cdb7a6bf74c78677eb8acd40cd0a
