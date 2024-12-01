@@ -158,40 +158,8 @@ jobs:
       - name: Add permissions to git tools
         run: chmod a=rwx dist/packages/git-tools/bin/git.js
 
-      # - name: Syncpack
-      #   uses: JamieMason/syncpack-github-action@0.2.3
-      #   with:
-      #     bot-username: Stormie-Bot
-      #     bot-email: "bot@stormsoftware.com"
-      #     commit-message: "deps(monorepo): Format and sync package.json files"
-      #     format-mismatches: "fix"
-      #     lockfile-mismatches: "fix"
-      #     package-manager: ${{ inputs.package-manager }}
-      #     package-manager-version: ${{ inputs.package-manager-version }}
-      #     semver-range-mismatches: "fix"
-      #     version-mismatches: "fix"
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
-
       - name: Add permissions to git tools
         run: chmod a=rwx dist/packages/git-tools/bin/git.js
-
-      - name: Run TOML linter
-        run: pnpm format-toml
-
-      - name: Run Prettier linter
-        run: pnpm format-prettier
-
-      # - name: Run Knip linter
-      #   run: pnpm lint-knip
-
-      - name: Run Sherif linter
-        run: pnpm lint-sherif
-
-      - name: Apply fixes
-        uses: autofix-ci/action@dd55f44df8f7cdb7a6bf74c78677eb8acd40cd0a
-        with:
-          commit-message: "ci(monorepo): Apply automated CI fixes"
 
       - name: Release Library Version Updates
         run: pnpm release --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
