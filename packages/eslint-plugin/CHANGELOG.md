@@ -1,3 +1,9 @@
+## 0.44.0 (2024-12-01)
+
+### Features
+
+- **storm-ops:** Added `lint-sherif` script to the CI workflow ([906e0c2b](https://github.com/storm-software/storm-ops/commit/906e0c2b))
+
 ## 0.43.0 (2024-11-30)
 
 ### Features

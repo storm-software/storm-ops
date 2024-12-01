@@ -1,9 +1,17 @@
+## 1.201.0 (2024-12-01)
+
+### Features
+
+- **storm-ops:** Added `lint-sherif` script to the CI workflow ([906e0c2b](https://github.com/storm-software/storm-ops/commit/906e0c2b))
+
 ## 1.200.0 (2024-11-30)
 
 ### Features
 
-- **workspace-tools:** Upgrade the Nx configuration target tasks ([8a5b0504](https://github.com/storm-software/storm-ops/commit/8a5b0504))
-- **storm-ops:** Added `sherif` and `knip` linting to CI pipeline ([181d782a](https://github.com/storm-software/storm-ops/commit/181d782a))
+- **workspace-tools:** Upgrade the Nx configuration target tasks
+  ([8a5b0504](https://github.com/storm-software/storm-ops/commit/8a5b0504))
+- **storm-ops:** Added `sherif` and `knip` linting to CI pipeline
+  ([181d782a](https://github.com/storm-software/storm-ops/commit/181d782a))
 
 ## 1.199.0 (2024-11-18)
 
