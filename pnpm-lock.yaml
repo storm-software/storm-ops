@@ -205,6 +205,12 @@ importers:
         specifier: 5.31.1
         version: 5.31.1(typanion@3.14.0)
 
+  crates/storm-config: {}
+
+  crates/storm-workspace: {}
+
+  docs/api-reports: {}
+
   packages/build-tools:
     dependencies:
       '@anatine/esbuild-decorators':
@@ -305,16 +311,16 @@ importers:
         specifier: 7.46.2
         version: 7.46.2(@types/node@22.5.4)
       '@nx/devkit':
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13)))
       '@nx/js':
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(typescript@5.5.3)(verdaccio@5.31.1(typanion@3.14.0))
       '@nx/workspace':
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13))
       nx:
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13))
 
   packages/cloudflare-tools:
@@ -333,7 +339,7 @@ importers:
         version: 29.7.0
     devDependencies:
       '@nx/devkit':
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13)))
       '@nx/node':
         specifier: '>=19.5.0'
@@ -345,7 +351,7 @@ importers:
         specifier: '>=19.5.0'
         version: 19.5.3(@babel/traverse@7.24.7)(@rspack/core@1.0.4(@swc/helpers@0.5.13))(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(esbuild@0.17.19)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(typescript@5.5.4)(verdaccio@5.31.1(typanion@3.14.0))
       nx:
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))
       wrangler:
         specifier: '>=3.58.0'
@@ -378,7 +384,7 @@ importers:
   packages/create-storm-workspace:
     dependencies:
       '@nx/workspace':
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))
       create-nx-workspace:
         specifier: ^19.5.3
@@ -388,10 +394,10 @@ importers:
         version: 2.4.1
     devDependencies:
       '@nx/devkit':
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13)))
       nx:
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))
 
   packages/eslint:
@@ -491,10 +497,10 @@ importers:
         specifier: ^0.5.1
         version: 0.5.2(eslint@9.5.0)
       '@nx/eslint':
-        specifier: '>=20.0.6'
+        specifier: 20.0.6
         version: 20.0.6(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(@zkochan/js-yaml@0.0.7)(eslint@9.5.0)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(verdaccio@5.31.1(typanion@3.14.0))
       '@nx/eslint-plugin':
-        specifier: '>=20.0.6'
+        specifier: 20.0.6
         version: 20.0.6(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(@typescript-eslint/parser@8.10.0(eslint@9.5.0)(typescript@5.5.4))(eslint-config-prettier@9.1.0(eslint@9.5.0))(eslint@9.5.0)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(typescript@5.5.4)(verdaccio@5.31.1(typanion@3.14.0))
       '@types/eslint':
         specifier: ^8.56.10
@@ -531,10 +537,10 @@ importers:
         version: 9.1.0(eslint@9.5.0)
     devDependencies:
       '@nx/eslint':
-        specifier: '>=20.0.6'
+        specifier: 20.0.6
         version: 20.0.6(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(@zkochan/js-yaml@0.0.7)(eslint@9.5.0)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(verdaccio@5.31.1(typanion@3.14.0))
       '@nx/eslint-plugin':
-        specifier: '>=20.0.6'
+        specifier: 20.0.6
         version: 20.0.6(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(@typescript-eslint/parser@7.16.0(eslint@9.5.0)(typescript@5.5.4))(eslint-config-prettier@9.1.0(eslint@9.5.0))(eslint@9.5.0)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(typescript@5.5.4)(verdaccio@5.31.1(typanion@3.14.0))
       '@types/eslint':
         specifier: ^8.56.10
@@ -646,10 +652,10 @@ importers:
         version: 2.6.3
     devDependencies:
       '@nx/eslint':
-        specifier: '>=20.0.6'
+        specifier: 20.0.6
         version: 20.0.6(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(@zkochan/js-yaml@0.0.7)(eslint@9.5.0)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(verdaccio@5.31.1(typanion@3.14.0))
       '@nx/eslint-plugin':
-        specifier: '>=20.0.6'
+        specifier: 20.0.6
         version: 20.0.6(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(@typescript-eslint/parser@8.10.0(eslint@9.5.0)(typescript@5.5.4))(eslint-config-prettier@9.1.0(eslint@9.5.0))(eslint@9.5.0)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(typescript@5.5.4)(verdaccio@5.31.1(typanion@3.14.0))
       '@types/eslint':
         specifier: ^8.56.10
@@ -680,10 +686,10 @@ importers:
         version: 2.6.3
     devDependencies:
       '@nx/eslint':
-        specifier: '>=20.0.6'
+        specifier: 20.0.6
         version: 20.0.6(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(@zkochan/js-yaml@0.0.7)(eslint@9.5.0)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(verdaccio@5.31.1(typanion@3.14.0))
       '@nx/eslint-plugin':
-        specifier: '>=20.0.6'
+        specifier: 20.0.6
         version: 20.0.6(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(@typescript-eslint/parser@8.10.0(eslint@9.5.0)(typescript@5.5.4))(eslint-config-prettier@9.1.0(eslint@9.5.0))(eslint@9.5.0)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(typescript@5.5.4)(verdaccio@5.31.1(typanion@3.14.0))
       '@storm-software/eslint':
         specifier: workspace:*
@@ -720,10 +726,10 @@ importers:
         version: 2.6.3
     devDependencies:
       '@nx/eslint':
-        specifier: '>=20.0.6'
+        specifier: 20.0.6
         version: 20.0.6(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(@zkochan/js-yaml@0.0.7)(eslint@9.5.0)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(verdaccio@5.31.1(typanion@3.14.0))
       '@nx/eslint-plugin':
-        specifier: '>=20.0.6'
+        specifier: 20.0.6
         version: 20.0.6(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(@typescript-eslint/parser@8.10.0(eslint@9.5.0)(typescript@5.5.4))(eslint-config-prettier@9.1.0(eslint@9.5.0))(eslint@9.5.0)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(typescript@5.5.4)(verdaccio@5.31.1(typanion@3.14.0))
       '@storm-software/eslint':
         specifier: workspace:*
@@ -774,7 +780,7 @@ importers:
         specifier: 3.2.1
         version: 3.2.1
       nx:
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))
       prettier:
         specifier: 3.3.2
@@ -808,10 +814,10 @@ importers:
   packages/k8s-tools:
     dependencies:
       '@nx/devkit':
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13)))
       '@nx/workspace':
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))
       js-yaml:
         specifier: ^4.1.0
@@ -827,7 +833,7 @@ importers:
         specifier: 4.0.9
         version: 4.0.9
       nx:
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))
 
   packages/linting-tools:
@@ -1092,10 +1098,10 @@ importers:
   packages/terraform-tools:
     dependencies:
       '@nx/devkit':
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13)))
       '@nx/workspace':
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))
       shelljs:
         specifier: ^0.8.5
@@ -1105,13 +1111,13 @@ importers:
         version: 2.6.3
     devDependencies:
       nx:
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))
 
   packages/testing-tools:
     devDependencies:
       '@nx/jest':
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.4))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(ts-node@10.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(typescript@5.5.4))(typescript@5.5.4)(verdaccio@5.31.1(typanion@3.14.0))
       jest:
         specifier: 29.7.0
@@ -1135,7 +1141,7 @@ importers:
         specifier: 1.38.0
         version: 1.38.0
       '@nx/devkit':
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13)))
       '@rollup/plugin-babel':
         specifier: 6.0.4
@@ -1247,7 +1253,7 @@ importers:
         specifier: 7.46.2
         version: 7.46.2(@types/node@22.5.4)
       '@nx/esbuild':
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(@babel/traverse@7.24.7)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.5.4)(esbuild@0.21.5)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13)))(typescript@5.5.3)(verdaccio@5.31.1(typanion@3.14.0))
       '@nx/rollup':
         specifier: ^19.6.2
@@ -1259,7 +1265,7 @@ importers:
         specifier: 7.5.8
         version: 7.5.8
       nx:
-        specifier: ^20.0.6
+        specifier: 20.0.6
         version: 20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.13))(@swc/types@0.1.9)(typescript@5.5.3))(@swc/core@1.5.29(@swc/helpers@0.5.13))
       typescript:
         specifier: '>=5.5.3'
@@ -3480,7 +3486,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
