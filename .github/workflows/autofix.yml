@@ -43,9 +43,6 @@ jobs:
           package-manager-version: 9.10.0
           storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
-      - name: Add permissions to git tools
-        run: chmod a=rwx dist/packages/git-tools/bin/git.js
-
       - name: Run TOML linter
         run: pnpm format-toml
 

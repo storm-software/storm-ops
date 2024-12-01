@@ -13,10 +13,6 @@ on:
       - canary
       - experimental
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
-  cancel-in-progress: true
-
 env:
   CI: true
   # NX_CLOUD_DISTRIBUTED_EXECUTION: true # this enables DTE
