@@ -70,15 +70,15 @@ commit-msg:
 pre-push:
   piped: true
   commands:
-    validate:
-      files: "git diff --name-only HEAD @{push}"
-      glob: "**/*"
-      run: "node ./dist/packages/git-tools/bin/pre-push.js {files}"
-      stage_fixed: true
     sherif:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*"
       run: "pnpm format-sherif"
+      stage_fixed: true
+    validate:
+      files: "git diff --name-only HEAD @{push}"
+      glob: "**/*"
+      run: "node ./dist/packages/git-tools/bin/pre-push.js {files}"
       stage_fixed: true
     toml:
       files: "git diff --name-only HEAD @{push}"
