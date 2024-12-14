@@ -42,11 +42,11 @@
     "monorepo"
   ],
   "peerDependencies": {
-    "@nx/devkit": "^20.0.6",
-    "@nx/node": ">=19.5.0",
-    "@nx/web": ">=19.5.0",
-    "@nx/webpack": ">=19.5.0",
-    "nx": "^20.0.6",
+    "@nx/devkit": ">=20.0.0",
+    "@nx/node": ">=20.0.0",
+    "@nx/web": ">=20.0.0",
+    "@nx/webpack": ">=20.0.0",
+    "nx": ">=20.0.0",
     "wrangler": ">=3.58.0"
   },
   "peerDependenciesMeta": {
@@ -76,11 +76,11 @@
     "jest-resolve": "29.7.0"
   },
   "devDependencies": {
-    "@nx/devkit": "20.0.6",
-    "@nx/node": ">=19.5.0",
-    "@nx/web": ">=19.5.0",
-    "@nx/webpack": ">=19.5.0",
-    "nx": "20.0.6",
+    "@nx/devkit": ">=20.0.0",
+    "@nx/node": ">=20.0.0",
+    "@nx/web": ">=20.0.0",
+    "@nx/webpack": ">=20.0.0",
+    "nx": ">=20.0.0",
     "wrangler": ">=3.58.0"
   },
   "publishConfig": {

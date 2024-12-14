@@ -7,13 +7,13 @@ import {
 } from "@nx/devkit";
 import { initGenerator as nodeInitGenerator } from "@nx/js";
 import { tslibVersion } from "@nx/node/src/utils/versions";
-import type { InitGeneratorSchema } from "./schema";
 import {
+  cloudflareToolsVersion,
   cloudflareWorkersTypeVersions,
   honoVersion,
-  cloudflareToolsVersion,
   wranglerVersion
 } from "./libs/versions";
+import type { InitGeneratorSchema } from "./schema";
 
 export async function initGenerator(tree: Tree, schema: InitGeneratorSchema) {
   const initTask = await nodeInitGenerator(tree, {
