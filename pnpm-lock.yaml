@@ -66,28 +66,28 @@ importers:
         specifier: 1.4.0
         version: 1.4.0(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.11))
       '@nx/devkit':
-        specifier: 20.0.6
+        specifier: ^20.0.6
         version: 20.0.6(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.11)))
       '@nx/esbuild':
-        specifier: 20.0.6
+        specifier: ^20.0.6
         version: 20.0.6(@babel/traverse@7.26.4)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@22.10.2)(esbuild@0.21.5)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.11)))(typescript@5.7.2)(verdaccio@5.31.1(typanion@3.14.0))
       '@nx/eslint':
-        specifier: 20.0.6
+        specifier: ^20.0.6
         version: 20.0.6(@babel/traverse@7.26.4)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@22.10.2)(@zkochan/js-yaml@0.0.7)(eslint@9.5.0)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.11)))(verdaccio@5.31.1(typanion@3.14.0))
       '@nx/eslint-plugin':
-        specifier: 20.0.6
+        specifier: ^20.0.6
         version: 20.0.6(@babel/traverse@7.26.4)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@22.10.2)(@typescript-eslint/parser@7.16.0(eslint@9.5.0)(typescript@5.7.2))(eslint-config-prettier@9.1.0(eslint@9.5.0))(eslint@9.5.0)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.11)))(typescript@5.7.2)(verdaccio@5.31.1(typanion@3.14.0))
       '@nx/jest':
-        specifier: 20.0.6
+        specifier: ^20.0.6
         version: 20.0.6(@babel/traverse@7.26.4)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@22.10.2)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.11)))(ts-node@10.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2))(typescript@5.7.2)(verdaccio@5.31.1(typanion@3.14.0))
       '@nx/js':
-        specifier: 20.0.6
+        specifier: ^20.0.6
         version: 20.0.6(@babel/traverse@7.26.4)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@22.10.2)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.11)))(typescript@5.7.2)(verdaccio@5.31.1(typanion@3.14.0))
       '@nx/plugin':
-        specifier: 20.0.6
+        specifier: ^20.0.6
         version: 20.0.6(@babel/traverse@7.26.4)(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@22.10.2)(@zkochan/js-yaml@0.0.7)(eslint@9.5.0)(nx@20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.11)))(ts-node@10.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2))(typescript@5.7.2)(verdaccio@5.31.1(typanion@3.14.0))
       '@nx/workspace':
-        specifier: 20.0.6
+        specifier: ^20.0.6
         version: 20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.11))
       '@swc-node/register':
         specifier: 1.9.2
@@ -162,7 +162,7 @@ importers:
         specifier: 4.17.21
         version: 4.17.21
       nx:
-        specifier: 20.0.6
+        specifier: ^20.0.6
         version: 20.0.6(@swc-node/register@1.9.2(@swc/core@1.5.29(@swc/helpers@0.5.11))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.5.29(@swc/helpers@0.5.11))
       nx-cloud:
         specifier: 19.1.0
