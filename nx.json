@@ -8,7 +8,7 @@
       "dependsOn": ["^lint-ls"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec ls-lint --config=\"./packages/linting-tools/src/ls-lint/ls-lint.yml\" ",
+        "command": "pnpx ls-lint --config=\"./packages/linting-tools/src/ls-lint/ls-lint.yml\" ",
         "color": true
       }
     },
@@ -19,7 +19,7 @@
       "dependsOn": ["^format-toml"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec taplo format --colors=\"always\" --config=\"./packages/linting-tools/src/taplo/.config.toml\" --cache-path=\"tmp/taplo/{projectRoot}\"",
+        "command": "pnpx taplo format --colors=\"always\" --config=\"./packages/linting-tools/src/taplo/.config.toml\" --cache-path=\"tmp/taplo/{projectRoot}\"",
         "color": true
       }
     },
@@ -45,7 +45,7 @@
       "dependsOn": ["^format-prettier"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec prettier \"{projectRoot}/**/*\" --write --ignore-unknown --no-error-on-unmatched-pattern --config=\"packages/prettier/src/config.json\" --ignore-path=\"packages/prettier/src/.prettierignore\" --cache --cache-location=\"tmp/prettier/{projectRoot}\" ",
+        "command": "pnpx prettier \"{projectRoot}/**/*\" --write --ignore-unknown --no-error-on-unmatched-pattern --config=\"packages/prettier/src/config.json\" --ignore-path=\"packages/prettier/src/.prettierignore\" --cache --cache-location=\"tmp/prettier/{projectRoot}\" ",
         "color": true
       }
     },

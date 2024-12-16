@@ -8,9 +8,12 @@ import {
   type Tree
 } from "@nx/devkit";
 import * as path from "node:path";
+import { fileURLToPath } from "node:url";
 import { withRunGenerator } from "../../base/base-generator";
 import { nodeVersion, pnpmVersion } from "../../utils/versions";
 import type { PresetGeneratorSchema } from "./schema";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export async function presetGeneratorFn(
   tree: Tree,
@@ -230,12 +233,12 @@ export async function presetGeneratorFn(
     "@ls-lint/ls-lint": "2.2.3",
     "@ltd/j-toml": "1.38.0",
     "@microsoft/tsdoc": "0.15.0",
-    "@nx/devkit": "^19.5.3",
-    "@nx/esbuild": "19.5.3",
-    "@nx/eslint-plugin": ">=19.5.3",
-    "@nx/js": "^19.5.3",
-    "@nx/plugin": "19.5.3",
-    "@nx/workspace": "^19.5.3",
+    "@nx/devkit": "^20.0.6",
+    "@nx/esbuild": "^20.0.6",
+    "@nx/eslint-plugin": "^20.0.6",
+    "@nx/js": "^20.0.6",
+    "@nx/plugin": "^20.0.6",
+    "@nx/workspace": "^20.0.6",
     "@storm-software/config": "latest",
     "@storm-software/config-tools": "latest",
     "@storm-software/git-tools": "latest",
@@ -258,7 +261,7 @@ export async function presetGeneratorFn(
     "jest-environment-node": "29.7.0",
     "knip": "5.25.2",
     "lefthook": "1.6.18",
-    "nx": "^19.5.3",
+    "nx": "^20.0.6",
     "prettier": "3.3.2",
     "prettier-plugin-prisma": "5.0.0",
     "rimraf": "5.0.7",

@@ -2,9 +2,10 @@
   "extends": "./tsconfig.base.json",
   "compileOnSave": false,
   "compilerOptions": {
+    "target": "ES2021",
+    "importHelpers": true,
     "module": "commonjs",
-    "moduleResolution": "node",
-    "preserveSymlinks": true
+    "moduleResolution": "node"
   },
   "include": ["**/*.ts", "**/*.js", "**/*.json"],
   "exclude": ["node_modules", "tmp"]

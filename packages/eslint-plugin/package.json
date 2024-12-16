@@ -81,8 +81,8 @@
     "monorepo"
   ],
   "peerDependencies": {
-    "@nx/eslint": ">=20.0.6",
-    "@nx/eslint-plugin": ">=20.0.6",
+    "@nx/eslint": "^20.0.6",
+    "@nx/eslint-plugin": "^20.0.6",
     "eslint": "9.5.0"
   },
   "peerDependenciesMeta": {
@@ -123,8 +123,8 @@
     "tslib": "^2.6.3"
   },
   "devDependencies": {
-    "@nx/eslint": "20.0.6",
-    "@nx/eslint-plugin": "20.0.6",
+    "@nx/eslint": "^20.0.6",
+    "@nx/eslint-plugin": "^20.0.6",
     "@types/eslint": "^8.56.10",
     "eslint": "9.5.0",
     "eslint-doc-generator": "1.7.1"
