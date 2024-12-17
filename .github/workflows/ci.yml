@@ -65,6 +65,7 @@ jobs:
           package-manager: pnpm
           package-manager-version: 9.10.0
           storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
+          ignore-scripts: Y
 
       - name: Build Storm Nx-Plugin packages
         run: pnpm build-plugins
