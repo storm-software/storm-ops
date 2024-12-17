@@ -70,7 +70,7 @@
     "htmlparser2": "9.1.0",
     "inquirer": "9.2.23",
     "jsonc-parser": "3.2.1",
-    "nx": "^20.0.6",
+    "nx": "^20.2.2",
     "prettier": "3.3.2",
     "semver": "7.6.2",
     "tsconfig-paths": "4.2.0",

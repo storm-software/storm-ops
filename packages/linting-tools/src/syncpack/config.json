@@ -93,7 +93,7 @@
     },
     {
       "dependencies": ["@nx/**", "nx"],
-      "pinVersion": "^20.0.6",
+      "pinVersion": "^20.2.2",
       "label": "Nx Dependencies should all use the same version"
     },
     {

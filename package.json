@@ -95,14 +95,14 @@
     "@ltd/j-toml": "1.38.0",
     "@microsoft/tsdoc": "0.15.0",
     "@monodon/rust": "1.4.0",
-    "@nx/devkit": "^20.0.6",
-    "@nx/esbuild": "^20.0.6",
-    "@nx/eslint": "^20.0.6",
-    "@nx/eslint-plugin": "^20.0.6",
-    "@nx/jest": "^20.0.6",
-    "@nx/js": "^20.0.6",
-    "@nx/plugin": "^20.0.6",
-    "@nx/workspace": "^20.0.6",
+    "@nx/devkit": "20.2.2",
+    "@nx/esbuild": "20.2.2",
+    "@nx/eslint": "20.2.2",
+    "@nx/eslint-plugin": "20.2.2",
+    "@nx/jest": "20.2.2",
+    "@nx/js": "20.2.2",
+    "@nx/plugin": "20.2.2",
+    "@nx/workspace": "20.2.2",
     "@swc-node/register": "1.9.2",
     "@swc/cli": "0.3.14",
     "@swc/core": "1.5.29",
@@ -127,7 +127,7 @@
     "knip": "5.25.2",
     "lefthook": "1.6.18",
     "lodash": "4.17.21",
-    "nx": "^20.0.6",
+    "nx": "20.2.2",
     "nx-cloud": "19.1.0",
     "prettier": "3.3.2",
     "prettier-plugin-prisma": "5.0.0",
@@ -191,5 +191,8 @@
       "tsup@8.0.0": "patches/tsup@8.0.0.patch"
     }
   },
-  "triggerEmptyDevReleaseByIncrementingThisNumber": 0
+  "triggerEmptyDevReleaseByIncrementingThisNumber": 0,
+  "devDependencies": {
+    "typescript-eslint": "^8.13.0"
+  }
 }

@@ -72,8 +72,8 @@
     "eslint-config-prettier": "9.1.0"
   },
   "devDependencies": {
-    "@nx/eslint": "^20.0.6",
-    "@nx/eslint-plugin": "^20.0.6",
+    "@nx/eslint": "^20.2.2",
+    "@nx/eslint-plugin": "^20.2.2",
     "@types/eslint": "^8.56.10",
     "@typescript-eslint/eslint-plugin": "7.16.0",
     "@typescript-eslint/parser": "7.16.0",
