@@ -1,3 +1,17 @@
+## 0.7.1 (2024-12-18)
+
+### Bug Fixes
+
+- **storm-ops:** Resolved issue with ESM resolve error during postinstall script execution ([82389510](https://github.com/storm-software/storm-ops/commit/82389510))
+
+### Dependency Upgrades
+
+- **storm-ops:** Upgrade Nx package to v20.2.2 ([d793912d](https://github.com/storm-software/storm-ops/commit/d793912d))
+
+### 🧱 Updated Dependencies
+
+- Updated eslint to 0.97.1
+
 ## 0.7.0 (2024-10-31)
 
 ### Features

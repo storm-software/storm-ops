@@ -1,3 +1,15 @@
+## 0.104.1 (2024-12-18)
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with `RollupOptions` type mismatch ([3833cb5d](https://github.com/storm-software/storm-ops/commit/3833cb5d))
+- **storm-ops:** Resolved issue with ESM resolve error during postinstall script execution ([82389510](https://github.com/storm-software/storm-ops/commit/82389510))
+
+### Dependency Upgrades
+
+- **storm-ops:** Update `chalk` version to 4.1.0 to use commonjs ([d12a4e55](https://github.com/storm-software/storm-ops/commit/d12a4e55))
+- **storm-ops:** Upgrade Nx package to v20.2.2 ([d793912d](https://github.com/storm-software/storm-ops/commit/d793912d))
+
 ## 0.104.0 (2024-12-01)
 
 ### Features

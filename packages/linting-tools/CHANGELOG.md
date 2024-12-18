@@ -1,3 +1,13 @@
+## 1.94.0 (2024-12-18)
+
+### Features
+
+- **linting-tools:** Added `zizmor` configuration file and pre-commit script ([03b9afbe](https://github.com/storm-software/storm-ops/commit/03b9afbe))
+
+### Dependency Upgrades
+
+- **storm-ops:** Upgrade Nx package to v20.2.2 ([d793912d](https://github.com/storm-software/storm-ops/commit/d793912d))
+
 ## 1.93.0 (2024-12-01)
 
 ### Features

@@ -1,8 +1,19 @@
+## 0.33.1 (2024-12-18)
+
+### Bug Fixes
+
+- **storm-ops:** Resolved issue with ESM resolve error during postinstall script execution ([82389510](https://github.com/storm-software/storm-ops/commit/82389510))
+
+### Dependency Upgrades
+
+- **storm-ops:** Upgrade Nx package to v20.2.2 ([d793912d](https://github.com/storm-software/storm-ops/commit/d793912d))
+
 ## 0.33.0 (2024-12-01)
 
 ### Features
 
-- **storm-ops:** Added `lint-sherif` script to the CI workflow ([906e0c2b](https://github.com/storm-software/storm-ops/commit/906e0c2b))
+- **storm-ops:** Added `lint-sherif` script to the CI workflow
+  ([906e0c2b](https://github.com/storm-software/storm-ops/commit/906e0c2b))
 
 ## 0.32.0 (2024-11-30)
 

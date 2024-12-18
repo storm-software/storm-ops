@@ -1,3 +1,15 @@
+## 0.41.1 (2024-12-18)
+
+### Bug Fixes
+
+- **cloudflare-tools:** Added validation to ensure AWS key environment variables exist for R2 upload ([88c11eae](https://github.com/storm-software/storm-ops/commit/88c11eae))
+- **storm-ops:** Resolved issue with ESM resolve error during postinstall script execution ([82389510](https://github.com/storm-software/storm-ops/commit/82389510))
+
+### Dependency Upgrades
+
+- **storm-ops:** Upgrade Nx package to v20.2.2 ([d793912d](https://github.com/storm-software/storm-ops/commit/d793912d))
+- **cloudflare-tools:** Update the Nx version used for package dependencies ([3f62334f](https://github.com/storm-software/storm-ops/commit/3f62334f))
+
 ## 0.41.0 (2024-12-01)
 
 ### Features

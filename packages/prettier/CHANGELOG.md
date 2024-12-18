@@ -1,3 +1,9 @@
+## 0.26.1 (2024-12-18)
+
+### Bug Fixes
+
+- **storm-ops:** Resolved issue with ESM resolve error during postinstall script execution ([82389510](https://github.com/storm-software/storm-ops/commit/82389510))
+
 ## 0.26.0 (2024-08-03)
 
 

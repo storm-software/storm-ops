@@ -1,3 +1,13 @@
+## 1.114.1 (2024-12-18)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issues with old `babel` plugin type definitions ([bc244027](https://github.com/storm-software/storm-ops/commit/bc244027))
+
+### Dependency Upgrades
+
+- **storm-ops:** Update `chalk` version to 4.1.0 to use commonjs ([d12a4e55](https://github.com/storm-software/storm-ops/commit/d12a4e55))
+
 ## 1.114.0 (2024-12-01)
 
 ### Features
