@@ -83,6 +83,12 @@ export default async function runExecutor(
       );
     }
 
+    if (!process.env.AWS_ACCESS_KEY_ID || !process.env.AWS_SECRET_ACCESS_KEY) {
+      throw new Error(
+        "The AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variables are not set. Please set these environment variables to upload to the Cyclone Registry."
+      );
+    }
+
     const endpoint = options?.registry
       ? options.registry
       : `https://${config.cloudflareAccountId}.r2.cloudflarestorage.com`;
