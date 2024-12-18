@@ -188,7 +188,7 @@ export interface InputOptions {
 export interface OutputOptions extends Rolldown.OutputOptions {
   dir?: string;
   format?: "es";
-  exports?: "default" | "named" | "none" | "auto";
+  exports?: "named";
   sourcemap?: boolean | "inline" | "hidden";
   banner?: string | ((chunk: RenderedChunk) => string | Promise<string>);
   footer?: string | ((chunk: RenderedChunk) => string | Promise<string>);
