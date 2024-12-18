@@ -75,29 +75,49 @@ workspace configuration used by the Storm Software organization.
 Below is a list of the available configuration values that can be set through
 environment variables:
 
-| Name                    | Description                                                                            | Default                     |
-| ----------------------- | -------------------------------------------------------------------------------------- | --------------------------- |
-| STORM_COLOR_BACKGROUND  | The workspace's background theme color                                                 | `#1d232a`                   |
-| STORM_COLOR_DANGER      | The workspace's danger theme color                                                     | `#990000`                   |
-| STORM_COLOR_FATAL       | The workspace's fatal theme color                                                      | `#7d1a1a`                   |
-| STORM_COLOR_INFO        | The workspace's info theme color                                                       | `#0ea5e9`                   |
-| STORM_COLOR_BRAND       | The workspace's primary theme color                                                    | `#1fb2a6`                   |
-| STORM_COLOR_SUCCESS     | The workspace's success theme color                                                    | `#087f5b`                   |
-| STORM_COLOR_WARNING     | The workspace's warning theme color                                                    | `#fcc419`                   |
-| STORM_COLOR_HELP        | The workspace's help theme color                                                       | `#818cf8`                   |
-| STORM_COLOR_POSITIVE    | The workspace's positive theme color                                                   | `#22c55e`                   |
-| STORM_COLOR_NEGATIVE    | The workspace's negative theme color                                                   | `#dc2626`                   |
-| STORM_ENV               | The current runtime environment of the package                                         | "production"                |
-| STORM_HOMEPAGE          | The homepage URL for the workspace                                                     | <https://stormsoftware.com> |
-| STORM_LICENSE           | The license used by the workspace                                                      | "Apache License 2.0"        |
-| STORM_LOCALE            | The default locale of the workspace                                                    | "en-US"                     |
-| STORM_LOG_LEVEL         | The current maximum level of messages to write to the logs                             | "info"                      |
-| STORM_ORGANIZATION      | The organization of the workspace                                                      | "storm-software"            |
-| STORM_REPOSITORY        | The repo URL of the workspace (i.e. GitHub URL)                                        |
-| STORM_RUNTIME_DIRECTORY | The default directory of the storm runtime for storage/generation                      | "node_modules/.storm"       |
-| STORM_RUNTIME_VERSION   | The global version of the Storm runtime                                                | "1.0.0"                     |
-| STORM_TIMEZONE          | The default timezone of the workspace                                                  | "America/New_York"          |
-| STORM_BOT               | The worker of the package (this is the bot that will be used to perform various tasks) | "stormie-bot"               |
+| Name                            | Description                                    | Default                     |
+| ------------------------------- | ---------------------------------------------- | --------------------------- |
+| STORM_COLOR_BACKGROUND          | The workspace's background theme color         | `#1d1e22`                   |
+| STORM_COLOR_FOREGROUND          | The workspace's foreground theme color         | `#f4f4f5`                   |
+| STORM_COLOR_BRAND               | The workspace's primary brand specific color   | `#1fb2a6`                   |
+| STORM_COLOR_ALTERNATE           | The workspace's alternate brand specific color | `null`                      |
+| STORM_COLOR_ACCENT              | The workspace's secondary brand specific color | `null`                      |
+| STORM_COLOR_LINK                | The color used to display hyperlink text       | `null`                      |
+| STORM_COLOR_HELP                | The workspace's help theme color               | `#8256D0`                   |
+| STORM_COLOR_SUCCESS             | The workspace's success theme color            | `#12B66A`                   |
+| STORM_COLOR_INFO                | The workspace's informational theme color      | `#0070E0`                   |
+| STORM_COLOR_WARNING             | The workspace's warning theme color            | `#fcc419`                   |
+| STORM_COLOR_DANGER              | The workspace's danger theme color             | `#D8314A`                   |
+| STORM_COLOR_FATAL               | The workspace's fatal theme color              | `null`                      |
+| STORM_COLOR_POSITIVE            | The workspace's positive number color          | `#4ade80`                   |
+| STORM_COLOR_NEGATIVE            | The workspace's negative number color          | `#ef4444`                   |
+| STORM_LOG_LEVEL                 | The logging level for the workspace            | "info"                      |
+| STORM_NAME                      | The name of the package                        | `null`                      |
+| STORM_NAMESPACE                 | The namespace of the package                   | `null`                      |
+| STORM_OWNER                     | The owner of the workspace                     | `null`                      |
+| STORM_WORKER                    | The worker of the workspace                    | "stormie-bot"               |
+| STORM_ORGANIZATION              | The organization of the workspace              | "storm-software"            |
+| STORM_PACKAGE_MANAGER           | The package manager used in the workspace      | "pnpm"                      |
+| STORM_LICENSE                   | The license of the workspace                   | "Apache-2.0"                |
+| STORM_HOMEPAGE                  | The homepage of the workspace                  | <https://stormsoftware.com> |
+| STORM_DOCS                      | The documentation URL of the workspace         | `null`                      |
+| STORM_LICENSING                 | The licensing information of the workspace     | `null`                      |
+| STORM_TIMEZONE                  | The timezone of the workspace                  | "America/New_York"          |
+| STORM_LOCALE                    | The locale of the workspace                    | "en-US"                     |
+| STORM_CONFIG_FILE               | The path to the configuration file             | `null`                      |
+| STORM_WORKSPACE_ROOT            | The root directory of the workspace            | `null`                      |
+| STORM_PACKAGE_DIRECTORY         | The directory where packages are stored        | `null`                      |
+| STORM_BUILD_DIRECTORY           | The directory where build artifacts are stored | "dist"                      |
+| STORM_SKIP_CACHE                | Whether to skip caching                        | `false`                     |
+| STORM_CACHE_DIRECTORY           | The directory where cache is stored            | "node_modules/.cache/storm" |
+| STORM_RUNTIME_VERSION           | The runtime version used in the workspace      | `null`                      |
+| STORM_OUTPUT_DIRECTORY          | The directory where output files are stored    | `null`                      |
+| STORM_ENV                       | The environment of the workspace               | "production"                |
+| STORM_REPOSITORY                | The repository URL of the workspace            | `null`                      |
+| STORM_BRANCH                    | The branch of the repository                   | "main"                      |
+| STORM_PRE_ID                    | The pre-release identifier                     | `null`                      |
+| STORM_EXTERNAL_PACKAGE_PATTERNS | The patterns for external packages             | `[]`                        |
+| STORM_CLOUDFLARE_ACCOUNT_ID     | The Cloudflare account ID                      | `null`                      |
 
 ## Installing
 

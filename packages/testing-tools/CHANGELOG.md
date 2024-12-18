@@ -2,11 +2,14 @@
 
 ### Bug Fixes
 
-- **storm-ops:** Resolved issue with ESM resolve error during postinstall script execution ([82389510](https://github.com/storm-software/storm-ops/commit/82389510))
+- **storm-ops:** Resolved issue with ESM resolve error during postinstall script
+  execution
+  ([82389510](https://github.com/storm-software/storm-ops/commit/82389510))
 
 ### Dependency Upgrades
 
-- **storm-ops:** Upgrade Nx package to v20.2.2 ([d793912d](https://github.com/storm-software/storm-ops/commit/d793912d))
+- **storm-ops:** Upgrade Nx package to v20.2.2
+  ([d793912d](https://github.com/storm-software/storm-ops/commit/d793912d))
 
 ## 1.85.0 (2024-12-01)
 

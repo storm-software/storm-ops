@@ -2,7 +2,7 @@
   "name": "@storm-software/workspace-tools",
   "version": "1.201.3",
   "type": "commonjs",
-  "description": "⚡ A Nx plugin package that contains various executors and generators used in a Storm workspaces.",
+  "description": "Tools for managing a Storm workspace, including various Nx generators and executors for common development tasks.",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",

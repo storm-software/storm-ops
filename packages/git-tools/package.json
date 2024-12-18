@@ -2,7 +2,7 @@
   "name": "@storm-software/git-tools",
   "version": "2.71.0",
   "type": "module",
-  "description": "⚡ A package containing various git tools used in Storm workspaces.",
+  "description": "Tools for managing Git repositories within a Nx workspace.",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",

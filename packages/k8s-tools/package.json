@@ -2,7 +2,7 @@
   "name": "@storm-software/k8s-tools",
   "version": "0.10.1",
   "type": "commonjs",
-  "description": "⚡ A Nx plugin package that contains various executors, generators, and utilities that assist in managing k8s IoC.",
+  "description": "Tools for managing Kubernetes (k8s) infrastructure within a Nx workspace.",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
@@ -30,6 +30,7 @@
     "./executors/*/schema.json": "./src/executors/*/schema.json",
     "./plugins/docker": "./src/plugins/docker/index.js"
   },
+  "typings": "./declarations.d.ts",
   "keywords": [
     "storm",
     "storm-ops",
@@ -44,6 +45,7 @@
     "@nx-tools/container-metadata": "^6.0.2",
     "@nx-tools/nx-container": "^6.0.2",
     "@nx/devkit": "^20.2.2",
+    "@nx/workspace": "^20.2.2",
     "nx": "^20.2.2"
   },
   "peerDependenciesMeta": {
@@ -56,18 +58,21 @@
     "@nx/devkit": {
       "optional": false
     },
+    "@nx/workspace": {
+      "optional": false
+    },
     "nx": {
       "optional": false
     }
   },
   "dependencies": {
-    "@nx/devkit": "^20.2.2",
-    "@nx/workspace": "^20.2.2",
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "@nx-tools/container-metadata": "^6.0.2",
     "@nx-tools/nx-container": "^6.0.2",
+    "@nx/devkit": "^20.2.2",
+    "@nx/workspace": "^20.2.2",
     "@types/js-yaml": "4.0.9",
     "nx": "^20.2.2"
   },

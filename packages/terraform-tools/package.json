@@ -2,7 +2,7 @@
   "name": "@storm-software/terraform-tools",
   "version": "0.33.1",
   "type": "commonjs",
-  "description": "⚡ A Nx plugin package that contains various executors, generators, and utilities that assist in managing Terraform IoC.",
+  "description": "Tools for managing Terraform infrastructure within a Nx workspace.",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
@@ -18,7 +18,7 @@
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "private": false,
   "main": "./index.js",
   "exports": {
@@ -27,25 +27,31 @@
     "./generators.json": "./generators.json",
     "./generators/*/schema.json": "./src/generators/*/schema.json",
     "./executors.json": "./executors.json",
-    "./executors/*/schema.json": "./src/executors/*/schema.json"
+    "./executors/*/schema.json": "./src/executors/*/schema.json",
+    "./plugins": "./src/plugins/index.js",
+    "./utils": "./src/utils/index.js"
   },
   "typings": "./declarations.d.ts",
   "keywords": [
     "storm",
     "storm-ops",
     "terraform",
-    "open-tofu",
-    "terragrunt",
+    "iac",
+    "infrastructure",
     "storm-stack",
     "sullivanpj",
     "monorepo"
   ],
   "peerDependencies": {
     "@nx/devkit": "^20.2.2",
+    "@nx/workspace": "^20.2.2",
     "nx": "^20.2.2"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
+      "optional": false
+    },
+    "@nx/workspace": {
       "optional": false
     },
     "nx": {
@@ -53,12 +59,12 @@
     }
   },
   "dependencies": {
-    "@nx/devkit": "^20.2.2",
-    "@nx/workspace": "^20.2.2",
     "shelljs": "^0.8.5",
     "tslib": "^2.6.3"
   },
   "devDependencies": {
+    "@nx/devkit": "^20.2.2",
+    "@nx/workspace": "^20.2.2",
     "nx": "^20.2.2"
   },
   "publishConfig": {

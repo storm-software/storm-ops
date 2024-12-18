@@ -2,16 +2,21 @@
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issues with old `babel` plugin type definitions ([bc244027](https://github.com/storm-software/storm-ops/commit/bc244027))
-- **storm-ops:** Resolved issue with ESM resolve error during postinstall script execution ([82389510](https://github.com/storm-software/storm-ops/commit/82389510))
+- **workspace-tools:** Resolve issues with old `babel` plugin type definitions
+  ([bc244027](https://github.com/storm-software/storm-ops/commit/bc244027))
+- **storm-ops:** Resolved issue with ESM resolve error during postinstall script
+  execution
+  ([82389510](https://github.com/storm-software/storm-ops/commit/82389510))
 
 ### Continuous Integration
 
-- **storm-ops:** Update scripts to use `pnpm exec` instead of `pnpx` command ([3cb7b29e](https://github.com/storm-software/storm-ops/commit/3cb7b29e))
+- **storm-ops:** Update scripts to use `pnpm exec` instead of `pnpx` command
+  ([3cb7b29e](https://github.com/storm-software/storm-ops/commit/3cb7b29e))
 
 ### Dependency Upgrades
 
-- **storm-ops:** Upgrade Nx package to v20.2.2 ([d793912d](https://github.com/storm-software/storm-ops/commit/d793912d))
+- **storm-ops:** Upgrade Nx package to v20.2.2
+  ([d793912d](https://github.com/storm-software/storm-ops/commit/d793912d))
 
 ## 1.201.2 (2024-12-01)
 
