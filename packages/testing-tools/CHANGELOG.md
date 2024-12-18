@@ -1,3 +1,9 @@
+## 1.86.0 (2024-12-18)
+
+### Features
+
+- **storm-ops:** Improved descriptions and markdown across monorepo ([aec89c79](https://github.com/storm-software/storm-ops/commit/aec89c79))
+
 ## 1.85.1 (2024-12-18)
 
 ### Bug Fixes
