@@ -13,9 +13,13 @@
           "type": "string",
           "description": "The path to a base JSON file to use as a configuration preset file"
         },
+        "isRoot": {
+          "type": "boolean",
+          "description": "A flag indicating if the current configuration is the set in the root of the workspace"
+        },
         "name": {
           "type": "string",
-          "description": "The name of the package"
+          "description": "The name of the service/package/scope using this configuration"
         },
         "namespace": {
           "type": "string",
@@ -65,7 +69,7 @@
         },
         "owner": {
           "type": "string",
-          "default": "@storm-software/development",
+          "default": "@storm-software/admin",
           "description": "The owner of the package"
         },
         "worker": {
@@ -103,8 +107,23 @@
         },
         "cacheDirectory": {
           "type": "string",
-          "default": "node_modules/.cache/storm",
-          "description": "The directory used to store the workspace's cached file data"
+          "description": "The directory used to store the environment's cached file data"
+        },
+        "dataDirectory": {
+          "type": "string",
+          "description": "The directory used to store the environment's data files"
+        },
+        "configDirectory": {
+          "type": "string",
+          "description": "The directory used to store the environment's configuration files"
+        },
+        "tempDirectory": {
+          "type": "string",
+          "description": "The directory used to store the environment's temp files"
+        },
+        "logDirectory": {
+          "type": "string",
+          "description": "The directory used to store the environment's temp files"
         },
         "buildDirectory": {
           "type": "string",

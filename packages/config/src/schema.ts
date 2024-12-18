@@ -226,12 +226,20 @@ export const StormConfigSchema = z
       .describe(
         "The path to a base JSON file to use as a configuration preset file"
       ),
+    isRoot: z
+      .boolean()
+      .optional()
+      .describe(
+        "A flag indicating if the current configuration is the set in the root of the workspace"
+      ),
     name: z
       .string()
       .trim()
       .toLowerCase()
       .optional()
-      .describe("The name of the package"),
+      .describe(
+        "The name of the service/package/scope using this configuration"
+      ),
     namespace: z
       .string()
       .trim()
@@ -284,7 +292,7 @@ export const StormConfigSchema = z
     owner: z
       .string()
       .trim()
-      .default("@storm-software/development")
+      .default("@storm-software/admin")
       .describe("The owner of the package"),
     worker: z
       .string()
@@ -320,8 +328,32 @@ export const StormConfigSchema = z
     cacheDirectory: z
       .string()
       .trim()
-      .default("node_modules/.cache/storm")
-      .describe("The directory used to store the workspace's cached file data"),
+      .optional()
+      .describe(
+        "The directory used to store the environment's cached file data"
+      ),
+    dataDirectory: z
+      .string()
+      .trim()
+      .optional()
+      .describe("The directory used to store the environment's data files"),
+    configDirectory: z
+      .string()
+      .trim()
+      .optional()
+      .describe(
+        "The directory used to store the environment's configuration files"
+      ),
+    tempDirectory: z
+      .string()
+      .trim()
+      .optional()
+      .describe("The directory used to store the environment's temp files"),
+    logDirectory: z
+      .string()
+      .trim()
+      .optional()
+      .describe("The directory used to store the environment's temp files"),
     buildDirectory: z
       .string()
       .trim()
@@ -365,7 +397,7 @@ export const StormConfigSchema = z
         "trace",
         "all"
       ])
-      .default("debug")
+      .default("info")
       .describe(
         "The log level used to filter out lower priority log messages. If not provided, this is defaulted using the `environment` config value (if `environment` is set to `production` then `level` is `error`, else `level` is `debug`)."
       ),

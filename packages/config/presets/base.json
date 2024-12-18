@@ -1,11 +1,10 @@
 {
   "organization": "storm-software",
-  "owner": "@storm-software/development",
+  "owner": "@storm-software/admin",
   "timezone": "America/New_York",
   "locale": "en-US",
   "logLevel": "info",
   "skipCache": false,
-  "cacheDirectory": "node_modules/.cache/storm",
   "buildDirectory": "dist",
   "outputDirectory": "node_modules/.storm",
   "packageManager": "pnpm",
