@@ -312,7 +312,7 @@
       "dependsOn": ["^lint-ls"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpx ls-lint --config=\"./node_modules/@storm-software/linting-tools/ls-lint/.ls-lint.yml\" ",
+        "command": "pnpm exec ls-lint --config=\"./node_modules/@storm-software/linting-tools/ls-lint/.ls-lint.yml\" ",
         "color": true
       }
     },
@@ -322,7 +322,7 @@
       "inputs": ["{workspaceRoot}/package.json", "{projectRoot}/package.json"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpx sherif -i react -i react-dom -i typescript"
+        "command": "pnpm exec sherif -i react -i react-dom -i typescript"
       }
     },
     "lint-knip": {
@@ -330,7 +330,7 @@
       "inputs": ["linting", "default", "^production"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpx knip"
+        "command": "pnpm exec knip"
       }
     },
     "lint": {
@@ -346,7 +346,7 @@
       "dependsOn": ["^format-toml"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpx taplo format --colors=\"always\" --config=\"./node_modules/@storm-software/linting-tools/taplo/.config.toml\" --cache-path=\"./tmp/taplo/{projectRoot}\"",
+        "command": "pnpm exec taplo format --colors=\"always\" --config=\"./node_modules/@storm-software/linting-tools/taplo/.config.toml\" --cache-path=\"./tmp/taplo/{projectRoot}\"",
         "color": true
       }
     },
@@ -363,7 +363,7 @@
       "dependsOn": ["^format-readme"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpx storm-git readme-gen --templates=\"./tools/readme-templates\" --project=\"{projectName}\"",
+        "command": "pnpm exec storm-git readme-gen --templates=\"./tools/readme-templates\" --project=\"{projectName}\"",
         "color": true
       }
     },
@@ -373,7 +373,7 @@
       "dependsOn": ["^format-prettier"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpx prettier \"{projectRoot}/**/*\" --write --ignore-unknown --no-error-on-unmatched-pattern --config=\"./node_modules/@storm-software/prettier/config.json\" --ignore-path=\"./node_modules/@storm-software/prettier/.prettierignore\" --cache --cache-location=\"./tmp/prettier/{projectRoot}\" ",
+        "command": "pnpm exec prettier \"{projectRoot}/**/*\" --write --ignore-unknown --no-error-on-unmatched-pattern --config=\"./node_modules/@storm-software/prettier/config.json\" --ignore-path=\"./node_modules/@storm-software/prettier/.prettierignore\" --cache --cache-location=\"./tmp/prettier/{projectRoot}\" ",
         "color": true
       }
     },
@@ -413,7 +413,7 @@
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "options": {
-        "command": "pnpx nx run {projectName}:build",
+        "command": "pnpm exec nx run {projectName}:build",
         "color": true,
         "cwd": "{workspaceRoot}"
       }
