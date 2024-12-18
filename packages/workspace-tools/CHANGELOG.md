@@ -2,7 +2,8 @@
 
 ### Bug Fixes
 
-- **storm-ops:** Resolved issue with autofix build order ([bd7f2e6c](https://github.com/storm-software/storm-ops/commit/bd7f2e6c))
+- **storm-ops:** Resolved issue with autofix build order
+  ([bd7f2e6c](https://github.com/storm-software/storm-ops/commit/bd7f2e6c))
 
 ## 1.201.1 (2024-12-01)
 
