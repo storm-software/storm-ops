@@ -1,3 +1,9 @@
+## 0.98.0 (2024-12-18)
+
+### Features
+
+- **config:** Added environment directory parameters to `StormConfig` schema ([3a1ef41a](https://github.com/storm-software/storm-ops/commit/3a1ef41a))
+
 ## 0.97.1 (2024-12-18)
 
 ### Bug Fixes

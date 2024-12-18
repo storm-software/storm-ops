@@ -1,8 +1,15 @@
+## 1.75.0 (2024-12-18)
+
+### Features
+
+- **config:** Added environment directory parameters to `StormConfig` schema ([3a1ef41a](https://github.com/storm-software/storm-ops/commit/3a1ef41a))
+
 ## 1.74.0 (2024-12-18)
 
 ### Features
 
-- **storm-ops:** Improved descriptions and markdown across monorepo ([aec89c79](https://github.com/storm-software/storm-ops/commit/aec89c79))
+- **storm-ops:** Improved descriptions and markdown across monorepo
+  ([aec89c79](https://github.com/storm-software/storm-ops/commit/aec89c79))
 
 ## 1.73.0 (2024-12-01)
 
