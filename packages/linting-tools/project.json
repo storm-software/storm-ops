@@ -81,6 +81,11 @@
             "input": "packages/linting-tools/src",
             "glob": "syncpack/*",
             "output": "."
+          },
+          {
+            "input": "packages/linting-tools/src",
+            "glob": "zizmor/*",
+            "output": "."
           }
         ]
       }

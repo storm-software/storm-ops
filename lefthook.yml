@@ -75,6 +75,10 @@ pre-push:
       glob: "**/*"
       run: "node ./dist/packages/git-tools/bin/pre-push.js {files}"
       stage_fixed: true
+    lint-github-actions:
+      glob: ".github/workflows/*.*"
+      run: 'zizmor --offline --config="./dist/packages/linting-tools/zizmor/config.yml" .github/workflows/'
+
     # toml:
     #   files: "git diff --name-only HEAD @{push}"
     #   glob: "**/*.{toml}"
