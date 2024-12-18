@@ -65,7 +65,7 @@
     "@rollup/plugin-node-resolve": "15.2.3",
     "@ryoppippi/unplugin-typia": "1.0.6",
     "autoprefixer": "10.4.19",
-    "chalk": "5.3.0",
+    "chalk": "^4.1.0",
     "commander": "12.1.0",
     "deep-clone": "4.0.0",
     "deepmerge": "4.3.1",
