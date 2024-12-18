@@ -294,9 +294,8 @@ export async function withRollupConfig(
       getBabelInputPlugin({
         // Lets `@nx/js/babel` preset know that we are packaging.
         caller: {
-          isNxPackage: true,
-          supportsStaticESM: true,
-          isModern: true
+          name: "storm-rollup-build",
+          supportsStaticESM: true
         },
         cwd: correctPaths(
           join(

@@ -1,4 +1,8 @@
-import { ColorConfig, StormConfigSchema, type StormConfig } from "@storm-software/config";
+import {
+  ColorConfig,
+  StormConfigSchema,
+  type StormConfig
+} from "@storm-software/config";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { findWorkspaceRoot } from "./find-workspace-root";

@@ -8,12 +8,9 @@ import {
   type Tree
 } from "@nx/devkit";
 import * as path from "node:path";
-import { fileURLToPath } from "node:url";
 import { withRunGenerator } from "../../base/base-generator";
 import { nodeVersion, pnpmVersion } from "../../utils/versions";
 import type { PresetGeneratorSchema } from "./schema";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export async function presetGeneratorFn(
   tree: Tree,
