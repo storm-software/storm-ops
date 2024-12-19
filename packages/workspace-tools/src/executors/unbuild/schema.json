@@ -27,6 +27,12 @@
       "x-priority": "important",
       "default": "{projectRoot}/tsconfig.json"
     },
+    "platform": {
+      "type": "string",
+      "description": "Platform target for outputs.",
+      "enum": ["neutral", "browser", "node", "worker"],
+      "default": "neutral"
+    },
     "additionalEntryPoints": {
       "type": "array",
       "description": "List of additional entry points.",
@@ -96,7 +102,7 @@
       }
     }
   },
-  "required": ["tsConfig"],
+  "required": ["tsConfig", "platform"],
   "definitions": {
     "assetPattern": {
       "oneOf": [

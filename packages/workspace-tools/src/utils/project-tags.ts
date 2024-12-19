@@ -2,6 +2,7 @@ import { ProjectConfiguration } from "@nx/devkit";
 import {
   ProjectTagDistStyleValue,
   ProjectTagLanguageValue,
+  ProjectTagPlatformValue,
   ProjectTagRegistryValue,
   ProjectTagTypeValue,
   ProjectTagVariant
@@ -28,6 +29,14 @@ export const ProjectTagConstants = {
   },
   Provider: {
     TAG_ID: "provider" as ProjectTagVariant
+  },
+  Platform: {
+    TAG_ID: "platform" as ProjectTagVariant,
+
+    NODE: "node" as ProjectTagPlatformValue,
+    BROWSER: "browser" as ProjectTagPlatformValue,
+    NEUTRAL: "neutral" as ProjectTagPlatformValue,
+    WORKER: "worker" as ProjectTagPlatformValue
   },
   Registry: {
     TAG_ID: "registry" as ProjectTagVariant,

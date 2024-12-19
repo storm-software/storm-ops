@@ -250,6 +250,7 @@ export type UnbuildBuildOptions = AdditionalCLIOptions &
     includeSrc: boolean;
     generatePackageJson: boolean;
     tsConfig: string;
+    platform: TypeScriptBuildOptions["platform"];
     outputPath: string;
     entry?: string;
     additionalEntryPoints?: string[];

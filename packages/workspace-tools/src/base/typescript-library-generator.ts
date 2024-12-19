@@ -26,8 +26,15 @@ import type {
   TypeScriptLibraryGeneratorNormalizedSchema,
   TypeScriptLibraryGeneratorSchema
 } from "../../declarations.d";
-import type { TsupExecutorSchema } from "../executors/tsup/schema";
+import { UnbuildExecutorSchema } from "../executors/unbuild/schema";
+import { addProjectTag, ProjectTagConstants } from "../utils/project-tags";
 import { nxVersion } from "../utils/versions";
+
+type TypeScriptLibraryProjectConfig = ProjectConfiguration & {
+  targets: {
+    build: { options: Partial<UnbuildExecutorSchema> };
+  } & Record<string, any>;
+};
 
 export async function typeScriptLibraryGeneratorFn(
   tree: Tree,
@@ -73,6 +80,7 @@ export async function typeScriptLibraryGeneratorFn(
           tsConfig: joinPathFragments(options.projectRoot, "tsconfig.json"),
           project: joinPathFragments(options.projectRoot, "package.json"),
           defaultConfiguration: "production",
+          platform: "neutral",
           assets: [
             {
               input: options.projectRoot,
@@ -96,16 +104,26 @@ export async function typeScriptLibraryGeneratorFn(
             verbose: true
           }
         }
-      },
-      lint: {},
-      test: {}
+      }
     }
-  } as ProjectConfiguration;
+  } as TypeScriptLibraryProjectConfig;
 
-  if (schema.platform && projectConfig?.targets?.build) {
-    (projectConfig.targets.build.options as TsupExecutorSchema).platform =
-      schema.platform;
+  if (schema.platform) {
+    projectConfig.targets.build.options.platform = schema.platform;
   }
+
+  addProjectTag(
+    projectConfig,
+    ProjectTagConstants.Platform.TAG_ID,
+    projectConfig.targets.build.options.platform === "node"
+      ? ProjectTagConstants.Platform.NODE
+      : projectConfig.targets.build.options.platform === "worker"
+        ? ProjectTagConstants.Platform.WORKER
+        : projectConfig.targets.build.options.platform === "browser"
+          ? ProjectTagConstants.Platform.BROWSER
+          : ProjectTagConstants.Platform.NEUTRAL,
+    { overwrite: true }
+  );
 
   createProjectTsConfigJson(tree, options);
   addProjectConfiguration(tree, options.name, projectConfig);
