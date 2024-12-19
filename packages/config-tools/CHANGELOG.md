@@ -1,8 +1,15 @@
+## 1.116.0 (2024-12-19)
+
+### Features
+
+- **config:** Renamed the `env` config parameter to `envName` ([5903bc5e](https://github.com/storm-software/storm-ops/commit/5903bc5e))
+
 ## 1.115.0 (2024-12-18)
 
 ### Features
 
-- **storm-ops:** Improved descriptions and markdown across monorepo ([aec89c79](https://github.com/storm-software/storm-ops/commit/aec89c79))
+- **storm-ops:** Improved descriptions and markdown across monorepo
+  ([aec89c79](https://github.com/storm-software/storm-ops/commit/aec89c79))
 
 ## 1.114.1 (2024-12-18)
 

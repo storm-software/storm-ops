@@ -1,3 +1,9 @@
+## 0.44.1 (2024-12-19)
+
+### Bug Fixes
+
+- **terraform-modules:** Resolved issue with old `env` configuration parameter name ([7b738364](https://github.com/storm-software/storm-ops/commit/7b738364))
+
 ## 0.44.0 (2024-12-01)
 
 ### Features

@@ -1,8 +1,15 @@
+## 1.205.0 (2024-12-19)
+
+### Features
+
+- **workspace-tools:** Added `platform` tag to the TypeScript Nx plugin ([f6911898](https://github.com/storm-software/storm-ops/commit/f6911898))
+
 ## 1.204.0 (2024-12-19)
 
 ### Features
 
-- **workspace-tools:** Added `platform` to unbuild schema and project tags ([bfbe9dee](https://github.com/storm-software/storm-ops/commit/bfbe9dee))
+- **workspace-tools:** Added `platform` to unbuild schema and project tags
+  ([bfbe9dee](https://github.com/storm-software/storm-ops/commit/bfbe9dee))
 
 ## 1.203.0 (2024-12-19)
 
