@@ -127,4 +127,16 @@ export const setDefaultProjectTags = (project: ProjectConfiguration) => {
       : ProjectTagConstants.DistStyle.NORMAL,
     { overwrite: true }
   );
+  addProjectTag(
+    project,
+    ProjectTagConstants.Platform.TAG_ID,
+    project.targets?.build?.options.platform === "node"
+      ? ProjectTagConstants.Platform.NODE
+      : project.targets?.build?.options.platform === "worker"
+        ? ProjectTagConstants.Platform.WORKER
+        : project.targets?.build?.options.platform === "browser"
+          ? ProjectTagConstants.Platform.BROWSER
+          : ProjectTagConstants.Platform.NEUTRAL,
+    { overwrite: false }
+  );
 };

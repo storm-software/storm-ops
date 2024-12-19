@@ -21,6 +21,7 @@ import {
 } from "@nx/js";
 import jsInitGenerator from "@nx/js/src/generators/init/init";
 import setupVerdaccio from "@nx/js/src/generators/setup-verdaccio/generator";
+import { StormConfig } from "@storm-software/config";
 import type { PackageJson } from "nx/src/utils/package-json";
 import type {
   TypeScriptLibraryGeneratorNormalizedSchema,
@@ -38,7 +39,8 @@ type TypeScriptLibraryProjectConfig = ProjectConfiguration & {
 
 export async function typeScriptLibraryGeneratorFn(
   tree: Tree,
-  schema: TypeScriptLibraryGeneratorSchema
+  schema: TypeScriptLibraryGeneratorSchema,
+  config?: StormConfig
 ) {
   const options = await normalizeOptions(tree, { ...schema });
 
@@ -122,7 +124,7 @@ export async function typeScriptLibraryGeneratorFn(
         : projectConfig.targets.build.options.platform === "browser"
           ? ProjectTagConstants.Platform.BROWSER
           : ProjectTagConstants.Platform.NEUTRAL,
-    { overwrite: true }
+    { overwrite: false }
   );
 
   createProjectTsConfigJson(tree, options);
@@ -130,11 +132,13 @@ export async function typeScriptLibraryGeneratorFn(
 
   let repository = {
     type: "github",
-    url: "https://github.com/storm-software/storm-stack.git"
+    url:
+      config?.repository ||
+      `https://github.com/${config?.organization || "storm-software"}/${config?.namespace || config?.name || "repository"}.git`
   };
 
   let description =
-    schema.description ??
+    schema.description ||
     "A package developed by Storm Software used to create modern, scalable web applications.";
 
   if (tree.exists("package.json")) {

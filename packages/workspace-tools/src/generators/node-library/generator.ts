@@ -6,6 +6,7 @@ import {
   names,
   offsetFromRoot
 } from "@nx/devkit";
+import { StormConfig } from "@storm-software/config";
 import type { TypeScriptLibraryGeneratorSchema } from "../../../declarations.d";
 import { withRunGenerator } from "../../base/base-generator";
 import {
@@ -17,7 +18,8 @@ import type { NodeLibraryGeneratorSchema } from "./schema";
 
 export async function nodeLibraryGeneratorFn(
   tree: Tree,
-  schema: NodeLibraryGeneratorSchema
+  schema: NodeLibraryGeneratorSchema,
+  config?: StormConfig
 ) {
   const filesDir = joinPathFragments(__dirname, "./files");
   const tsLibraryGeneratorOptions: TypeScriptLibraryGeneratorSchema = {
@@ -51,7 +53,7 @@ export async function nodeLibraryGeneratorFn(
     hasUnitTestRunner: options.unitTestRunner !== "none"
   });
 
-  await typeScriptLibraryGeneratorFn(tree, tsLibraryGeneratorOptions);
+  await typeScriptLibraryGeneratorFn(tree, tsLibraryGeneratorOptions, config);
   await formatFiles(tree);
 
   return null;
