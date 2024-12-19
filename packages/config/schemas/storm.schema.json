@@ -144,8 +144,8 @@
         "packageManager": {
           "type": "string",
           "enum": ["npm", "yarn", "pnpm", "bun"],
-          "default": "pnpm",
-          "description": "The package manager used by the repository"
+          "default": "npm",
+          "description": "The JavaScript/TypeScript package manager used by the repository"
         },
         "timezone": {
           "type": "string",
