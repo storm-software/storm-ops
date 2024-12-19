@@ -1,8 +1,15 @@
+## 1.203.0 (2024-12-19)
+
+### Features
+
+- **workspace-tools:** Update TypeScript library generators to use `unbuild` executor ([29468243](https://github.com/storm-software/storm-ops/commit/29468243))
+
 ## 1.202.1 (2024-12-19)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolved issue with TypeScript library generator ([f1968e8d](https://github.com/storm-software/storm-ops/commit/f1968e8d))
+- **workspace-tools:** Resolved issue with TypeScript library generator
+  ([f1968e8d](https://github.com/storm-software/storm-ops/commit/f1968e8d))
 
 ## 1.202.0 (2024-12-18)
 
