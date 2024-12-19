@@ -97,7 +97,7 @@ resource "aws_lambda_function" "lambda_function" {
      "RUST_LOG" = var.log_level
      "STORM_LOG_LEVEL" = var.log_level
      "STORM_TOPIC_ID" = var.topic_arn
-     "STORM_ENV" = var.environment
+     "STORM_ENV_NAME" = var.environment
      "STORM_REGION" = var.region
    }
  }

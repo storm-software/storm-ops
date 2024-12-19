@@ -77,11 +77,11 @@
           "default": "Stormie-Bot",
           "description": "The worker of the package (this is the bot that will be used to perform various tasks)"
         },
-        "env": {
+        "envName": {
           "type": "string",
           "enum": ["development", "staging", "production"],
           "default": "production",
-          "description": "The current runtime environment of the package"
+          "description": "The current runtime environment name for the package"
         },
         "workspaceRoot": {
           "type": "string",
