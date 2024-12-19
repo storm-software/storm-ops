@@ -169,7 +169,7 @@
             "trace",
             "all"
           ],
-          "default": "debug",
+          "default": "info",
           "description": "The log level used to filter out lower priority log messages. If not provided, this is defaulted using the `environment` config value (if `environment` is set to `production` then `level` is `error`, else `level` is `debug`)."
         },
         "cloudflareAccountId": {
