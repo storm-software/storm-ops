@@ -1,8 +1,15 @@
+## 0.106.0 (2024-12-19)
+
+### Features
+
+- **workspace-tools:** Added `platform` to unbuild schema and project tags ([bfbe9dee](https://github.com/storm-software/storm-ops/commit/bfbe9dee))
+
 ## 0.105.0 (2024-12-18)
 
 ### Features
 
-- **storm-ops:** Improved descriptions and markdown across monorepo ([aec89c79](https://github.com/storm-software/storm-ops/commit/aec89c79))
+- **storm-ops:** Improved descriptions and markdown across monorepo
+  ([aec89c79](https://github.com/storm-software/storm-ops/commit/aec89c79))
 
 ## 0.104.1 (2024-12-18)
 

@@ -1,8 +1,16 @@
+## 1.204.0 (2024-12-19)
+
+### Features
+
+- **workspace-tools:** Added `platform` to unbuild schema and project tags ([bfbe9dee](https://github.com/storm-software/storm-ops/commit/bfbe9dee))
+
 ## 1.203.0 (2024-12-19)
 
 ### Features
 
-- **workspace-tools:** Update TypeScript library generators to use `unbuild` executor ([29468243](https://github.com/storm-software/storm-ops/commit/29468243))
+- **workspace-tools:** Update TypeScript library generators to use `unbuild`
+  executor
+  ([29468243](https://github.com/storm-software/storm-ops/commit/29468243))
 
 ## 1.202.1 (2024-12-19)
 
