@@ -1,12 +1,24 @@
+## 1.77.0 (2024-12-19)
+
+### Features
+
+- **config:** Added the `pnpm` and `bun` configuration presets ([b048014e](https://github.com/storm-software/storm-ops/commit/b048014e))
+
+### Refactoring
+
+- **config:** Regenerate the `storm.schema.json` file ([58e24acd](https://github.com/storm-software/storm-ops/commit/58e24acd))
+
 ## 1.76.0 (2024-12-19)
 
 ### Features
 
-- **config:** Renamed the `env` config parameter to `envName` ([5903bc5e](https://github.com/storm-software/storm-ops/commit/5903bc5e))
+- **config:** Renamed the `env` config parameter to `envName`
+  ([5903bc5e](https://github.com/storm-software/storm-ops/commit/5903bc5e))
 
 ### Bug Fixes
 
-- **terraform-modules:** Resolved issue with old `env` configuration parameter name ([7b738364](https://github.com/storm-software/storm-ops/commit/7b738364))
+- **terraform-modules:** Resolved issue with old `env` configuration parameter
+  name ([7b738364](https://github.com/storm-software/storm-ops/commit/7b738364))
 
 ## 1.75.1 (2024-12-19)
 
