@@ -7,6 +7,7 @@
   "skipCache": false,
   "buildDirectory": "dist",
   "outputDirectory": "node_modules/.storm",
+  "packageManager": "bun",
   "externalPackagePatterns": ["@storm-software/"],
   "registry": {
     "github": "https://npm.pkg.github.com",

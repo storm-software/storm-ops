@@ -1,34 +1,10 @@
 {
   "$schema": "./packages/config/schemas/storm.schema.json",
-  "extends": "./packages/config/presets/base.json",
+  "extends": "./packages/config/presets/pnpm.json",
   "name": "storm-ops",
   "namespace": "storm-software",
   "repository": "https://github.com/storm-software/storm-ops",
-  "organization": "storm-software",
-  "owner": "@storm-software/development",
   "externalPackagePatterns": ["@storm-software/"],
-  "colors": {
-    "light": {
-      "background": "#f4f4f5",
-      "foreground": "#1d232a",
-      "brand": "#1fb2a6",
-      "help": "#8250df",
-      "success": "#087f5b",
-      "info": "#0550ae",
-      "warning": "#e3b341",
-      "danger": "#a40e26"
-    },
-    "dark": {
-      "background": "#0D1017",
-      "foreground": "#fcfcf5",
-      "brand": "#1fb2a6",
-      "help": "#8256D0",
-      "success": "#087f5b",
-      "info": "#316DCA",
-      "warning": "#F3D371",
-      "danger": "#D8314A"
-    }
-  },
   "extensions": {
     "telemetry": {
       "fileName": "storm",
