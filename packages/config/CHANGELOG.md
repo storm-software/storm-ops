@@ -1,8 +1,15 @@
+## 1.75.1 (2024-12-19)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issue with TypeScript library generator ([f1968e8d](https://github.com/storm-software/storm-ops/commit/f1968e8d))
+
 ## 1.75.0 (2024-12-18)
 
 ### Features
 
-- **config:** Added environment directory parameters to `StormConfig` schema ([3a1ef41a](https://github.com/storm-software/storm-ops/commit/3a1ef41a))
+- **config:** Added environment directory parameters to `StormConfig` schema
+  ([3a1ef41a](https://github.com/storm-software/storm-ops/commit/3a1ef41a))
 
 ## 1.74.0 (2024-12-18)
 
