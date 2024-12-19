@@ -23,7 +23,7 @@ export async function neutralLibraryGeneratorFn(
     ...schema,
     platform: "neutral",
     devDependencies: {},
-    buildExecutor: "@storm-software/workspace-tools:tsup-neutral"
+    buildExecutor: "@storm-software/workspace-tools:unbuild"
   } as TypeScriptLibraryGeneratorSchema;
 
   const options = await normalizeOptions(tree, tsLibraryGeneratorOptions);

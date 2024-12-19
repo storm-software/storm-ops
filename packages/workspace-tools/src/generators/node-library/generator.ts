@@ -26,7 +26,7 @@ export async function nodeLibraryGeneratorFn(
     devDependencies: {
       "@types/node": typesNodeVersion
     },
-    buildExecutor: "@storm-software/workspace-tools:tsup-node"
+    buildExecutor: "@storm-software/workspace-tools:unbuild"
   };
 
   const options = await normalizeOptions(tree, tsLibraryGeneratorOptions);

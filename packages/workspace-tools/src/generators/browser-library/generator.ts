@@ -23,12 +23,12 @@ export async function browserLibraryGeneratorFn(
     ...schema,
     platform: "browser",
     devDependencies: {
-      "@types/react": "^18.2.43",
-      "@types/react-dom": "^18.2.17"
+      "@types/react": "^18.3.6",
+      "@types/react-dom": "^18.3.0"
     },
     peerDependencies: {
-      react: "^18.2.0",
-      "react-dom": "^18.2.0",
+      react: "^18.3.0",
+      "react-dom": "^18.3.0",
       "react-native": "*"
     },
     peerDependenciesMeta: {
@@ -39,7 +39,7 @@ export async function browserLibraryGeneratorFn(
         optional: true
       }
     },
-    buildExecutor: "@storm-software/workspace-tools:tsup-browser"
+    buildExecutor: "@storm-software/workspace-tools:unbuild"
   };
 
   const options = await normalizeOptions(tree, tsLibraryGeneratorOptions);

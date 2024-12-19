@@ -117,7 +117,7 @@ export async function typeScriptLibraryGeneratorFn(
 
   let description =
     schema.description ??
-    "⚡ A Storm package used to create modern, scalable web applications.";
+    "A package developed by Storm Software used to create modern, scalable web applications.";
 
   if (tree.exists("package.json")) {
     const packageJson = readJson<{
