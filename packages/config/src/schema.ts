@@ -301,10 +301,10 @@ export const StormConfigSchema = z
       .describe(
         "The worker of the package (this is the bot that will be used to perform various tasks)"
       ),
-    env: z
+    envName: z
       .enum(["development", "staging", "production"])
       .default("production")
-      .describe("The current runtime environment of the package"),
+      .describe("The current runtime environment name for the package"),
     workspaceRoot: z
       .string()
       .trim()

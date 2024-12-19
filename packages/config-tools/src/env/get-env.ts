@@ -82,9 +82,9 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
     cacheDirectory: correctPaths(process.env[`${prefix}CACHE_DIRECTORY`]),
     runtimeVersion: process.env[`${prefix}RUNTIME_VERSION`],
     outputDirectory: correctPaths(process.env[`${prefix}OUTPUT_DIRECTORY`]),
-    env: (process.env[`${prefix}ENV`] ??
+    envName: (process.env[`${prefix}ENV_NAME`] ??
       process.env.NODE_ENV ??
-      process.env.ENVIRONMENT) as StormConfig["env"],
+      process.env.ENVIRONMENT) as StormConfig["envName"],
     // ci:
     //   process.env[`${prefix}CI`] !== undefined
     //     ? Boolean(

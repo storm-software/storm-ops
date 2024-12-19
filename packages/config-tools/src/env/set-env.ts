@@ -153,10 +153,10 @@ export const setConfigEnv = (config: StormConfig) => {
       config.outputDirectory
     );
   }
-  if (config.env) {
-    process.env[`${prefix}ENV`] = config.env;
-    process.env.NODE_ENV = config.env;
-    process.env.ENVIRONMENT = config.env;
+  if (config.envName) {
+    process.env[`${prefix}ENV_NAME`] = config.envName;
+    process.env.NODE_ENV = config.envName;
+    process.env.ENVIRONMENT = config.envName;
   }
   // if (config.ci) {
   //   process.env[`${prefix}CI`] = String(config.ci);

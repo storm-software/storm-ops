@@ -43,19 +43,17 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
  * Storm Workspace config values used during various dev-ops processes
  */
 export const DEFAULT_STORM_CONFIG: any = {
-  name: "storm",
   namespace: "storm-software",
-  license: "Apache 2.0",
+  license: "Apache-2.0",
   homepage: "https://stormsoftware.com",
-  owner: "@storm-software/development",
+  owner: "@storm-software/admin",
   worker: "stormie-bot",
   runtimeDirectory: "node_modules/.storm",
-  cacheDirectory: "node_modules/.cache/storm",
   skipCache: false,
-  packageManager: "npm",
+  packageManager: "pnpm",
   timezone: "America/New_York",
   locale: "en-US",
-  env: "production",
+  envName: "production",
   branch: "main",
   organization: "storm-software",
   configFile: null,
