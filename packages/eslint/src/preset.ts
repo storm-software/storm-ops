@@ -19,7 +19,7 @@ import storybookPlugin from "eslint-plugin-storybook";
 import tsdoc from "eslint-plugin-tsdoc";
 import unicorn from "eslint-plugin-unicorn";
 import yml from "eslint-plugin-yml";
-import globals from "globals";
+import globalsObj from "globals";
 import type { RuleOptions } from "./rules.d";
 // import jsxA11yRules from "./rules/jsx-a11y";
 // import reactRules from "./rules/react";
@@ -58,6 +58,16 @@ export type PresetModuleBoundary = {
 };
 
 /**
+ * The ESLint globals property value.
+ */
+export type ESLintGlobalsPropValue =
+  | boolean
+  | "readonly"
+  | "readable"
+  | "writable"
+  | "writeable";
+
+/**
  * The ESLint preset options.
  */
 export type PresetOptions = GetStormRulesConfigOptions & {
@@ -65,6 +75,7 @@ export type PresetOptions = GetStormRulesConfigOptions & {
   banner?: string;
   rules?: RuleOptions;
   ignores?: string[];
+  globals?: Record<string, ESLintGlobalsPropValue>;
   tsconfig?: string;
   typescriptEslintConfigType?: string;
   parserOptions?: Linter.ParserOptions;
@@ -94,6 +105,7 @@ export function getStormConfig(
   options: PresetOptions = {
     rules: {},
     ignores: [],
+    globals: {},
     useUnicorn: true,
     markdown: {},
     react: {},
@@ -112,6 +124,7 @@ export function getStormConfig(
   const nx = options.nx ?? {};
   const useReactCompiler = options.useReactCompiler ?? false;
   const logLevel = options.logLevel ?? "info";
+  const globals = options.globals ?? {};
 
   try {
     const configs: Linter.FlatConfig<Linter.RulesRecord>[] = [
@@ -309,19 +322,16 @@ export function getStormConfig(
       languageOptions: {
         globals: {
           ...Object.fromEntries(
-            Object.keys(globals).flatMap(group =>
-              Object.keys(globals[group as keyof typeof globals]).map(key => [
-                key,
-                "readonly"
-              ])
+            Object.keys(globalsObj).flatMap(group =>
+              Object.keys(globalsObj[group as keyof typeof globalsObj]).map(
+                key => [key, "readonly"]
+              )
             )
           ),
-          ...globals.browser,
-          ...globals.node,
-          "window": "readonly",
-          "StormEnv": "readonly",
-          "StormEnvPublic": "readonly",
-          "__STORM_INJECTION__": "readonly"
+          ...globalsObj.browser,
+          ...globalsObj.node,
+          ...globals,
+          "window": "readonly"
         },
         parserOptions: {
           projectService: true,
