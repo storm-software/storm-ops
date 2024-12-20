@@ -1,3 +1,13 @@
+## 1.77.0 (2024-12-19)
+
+### Features
+
+- **config:** Added the `pnpm` and `bun` configuration presets ([b048014e](https://github.com/storm-software/storm-ops/commit/b048014e))
+
+### Refactoring
+
+- **config:** Regenerate the `storm.schema.json` file ([58e24acd](https://github.com/storm-software/storm-ops/commit/58e24acd))
+
 ## 1.76.0 (2024-12-19)
 
 ### Features
