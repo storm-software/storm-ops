@@ -1,3 +1,9 @@
+## 0.101.0 (2024-12-20)
+
+### Features
+
+- **eslint:** Added the `globals` preset option ([415171af](https://github.com/storm-software/storm-ops/commit/415171af))
+
 ## 0.100.0 (2024-12-20)
 
 ### Features
