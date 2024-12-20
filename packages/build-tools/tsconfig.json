@@ -5,8 +5,7 @@
     "strict": false,
     "module": "commonjs",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "types": ["node"]
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*.ts", "bin/**/*.ts", "assets/*", "declarations.d.ts"],
   "exclude": [

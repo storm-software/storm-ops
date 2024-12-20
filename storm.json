@@ -4,13 +4,5 @@
   "name": "storm-ops",
   "namespace": "storm-software",
   "repository": "https://github.com/storm-software/storm-ops",
-  "externalPackagePatterns": ["@storm-software/"],
-  "extensions": {
-    "telemetry": {
-      "fileName": "storm",
-      "fileExtension": "log",
-      "path": "tmp/storm/logs",
-      "stacktrace": true
-    }
-  }
+  "externalPackagePatterns": ["@storm-software/"]
 }

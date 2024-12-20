@@ -3,9 +3,16 @@
   "compileOnSave": false,
   "compilerOptions": {
     "target": "ES2021",
-    "importHelpers": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "module": "commonjs",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "preserveSymlinks": true,
+    "isolatedModules": true,
+    "importHelpers": true,
+    "types": ["node"]
   },
   "include": ["**/*.ts", "**/*.js", "**/*.json"],
   "exclude": ["node_modules", "tmp"]

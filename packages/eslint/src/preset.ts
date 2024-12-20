@@ -319,8 +319,8 @@ export function getStormConfig(
           ...globals.browser,
           ...globals.node,
           "window": "readonly",
-          "STORM_ENV": "readonly",
-          "STORM_ENV_PUBLIC": "readonly",
+          "StormEnv": "readonly",
+          "StormEnvPublic": "readonly",
           "__STORM_INJECTION__": "readonly"
         },
         parserOptions: {
