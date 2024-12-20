@@ -2,11 +2,13 @@
 
 ### Features
 
-- **config:** Renamed the `env` config parameter to `envName` ([5903bc5e](https://github.com/storm-software/storm-ops/commit/5903bc5e))
+- **config:** Renamed the `env` config parameter to `envName`
+  ([5903bc5e](https://github.com/storm-software/storm-ops/commit/5903bc5e))
 
 ### Bug Fixes
 
-- **terraform-modules:** Resolved issue with old `env` configuration parameter name ([7b738364](https://github.com/storm-software/storm-ops/commit/7b738364))
+- **terraform-modules:** Resolved issue with old `env` configuration parameter
+  name ([7b738364](https://github.com/storm-software/storm-ops/commit/7b738364))
 
 ## 1.75.1 (2024-12-19)
 

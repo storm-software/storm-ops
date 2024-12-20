@@ -2,7 +2,8 @@
 
 ### Features
 
-- **workspace-tools:** Added `platform` tag to the TypeScript Nx plugin ([f6911898](https://github.com/storm-software/storm-ops/commit/f6911898))
+- **workspace-tools:** Added `platform` tag to the TypeScript Nx plugin
+  ([f6911898](https://github.com/storm-software/storm-ops/commit/f6911898))
 
 ## 1.204.0 (2024-12-19)
 

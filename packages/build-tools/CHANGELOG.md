@@ -2,7 +2,8 @@
 
 ### Features
 
-- **workspace-tools:** Added `platform` to unbuild schema and project tags ([bfbe9dee](https://github.com/storm-software/storm-ops/commit/bfbe9dee))
+- **workspace-tools:** Added `platform` to unbuild schema and project tags
+  ([bfbe9dee](https://github.com/storm-software/storm-ops/commit/bfbe9dee))
 
 ## 0.105.0 (2024-12-18)
 

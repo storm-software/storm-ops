@@ -2,7 +2,8 @@
 
 ### Features
 
-- **config:** Renamed the `env` config parameter to `envName` ([5903bc5e](https://github.com/storm-software/storm-ops/commit/5903bc5e))
+- **config:** Renamed the `env` config parameter to `envName`
+  ([5903bc5e](https://github.com/storm-software/storm-ops/commit/5903bc5e))
 
 ## 1.115.0 (2024-12-18)
 
