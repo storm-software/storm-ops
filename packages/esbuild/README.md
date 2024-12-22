@@ -40,9 +40,10 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Table of Contents
 
-- [Storm Prettier Package](#storm-prettier-package)
+- [Storm ESBuild Package](#storm-esbuild-package)
   - [Installing](#installing)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
@@ -63,23 +64,23 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- END header -->
 
-# Storm Prettier Package
+# Storm ESBuild Package
 
-This package contains the Prettier configuration for Storm Software projects.
+This package contains the ESBuild configuration for Storm Software projects.
 
 ## Installing
 
 Using [pnpm](http://pnpm.io):
 
 ```bash
-pnpm add -D @storm-software/prettier
+pnpm add -D @storm-software/esbuild
 ```
 
 <details>
   <summary>Using npm</summary>
 
 ```bash
-npm install -D @storm-software/prettier
+npm install -D @storm-software/esbuild
 ```
 
 </details>
@@ -88,18 +89,18 @@ npm install -D @storm-software/prettier
   <summary>Using yarn</summary>
 
 ```bash
-yarn add -D @storm-software/prettier
+yarn add -D @storm-software/esbuild
 ```
 
 </details>
 
 ## Building
 
-Run `nx build prettier` to build the library.
+Run `nx build esbuild` to build the library.
 
 ## Running unit tests
 
-Run `nx test prettier` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test esbuild` to execute the unit tests via [Jest](https://jestjs.io).
 
 <!-- START footer -->
 <!-- prettier-ignore-start -->
