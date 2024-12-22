@@ -17,10 +17,9 @@
 
 import { hfs } from "@humanfs/node";
 import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
+import { loadStormConfig, run, writeError } from "@storm-software/config-tools";
 import type * as esbuild from "esbuild";
 import path from "node:path";
-import { writeLog } from "../utilities/log";
-import { run } from "../utilities/run";
 
 /**
  * Bundle all type definitions by using the API Extractor from RushStack
@@ -94,8 +93,7 @@ function bundleTypeDefinitions(
 
   // we exit the process immediately if there were errors
   if (extractorResult.succeeded === false) {
-    writeLog(
-      "error",
+    writeError(
       `API Extractor completed with ${extractorResult.errorCount} ${extractorResult.errorCount === 1 ? "error" : "errors"}`
     );
 
@@ -116,13 +114,19 @@ export const tscPlugin: (emitTypes?: boolean) => esbuild.Plugin = (
     if (emitTypes === false) return; // build has opted out of emitting types
 
     build.onStart(async () => {
+      const config = await loadStormConfig();
+
       // we only call tsc if not in watch mode or in dev mode (they skip types)
       if (process.env.WATCH !== "true" && process.env.DEV !== "true") {
         // --paths null basically prevents typescript from using paths from the
         // tsconfig.json that is passed from the esbuild config. We need to do
         // this because TS would include types from the paths into this build.
         // but our paths, in our specific case only represent separate packages.
-        await run(`tsc --project ${options.tsconfig} --paths null`);
+        await run(
+          config,
+          `pnpm exec tsc --project ${options.tsconfig} --paths null`,
+          config.workspaceRoot
+        );
       }
 
       // we bundle types if we also bundle the entry point and it is a ts file

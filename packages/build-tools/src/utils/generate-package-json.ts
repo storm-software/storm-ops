@@ -563,7 +563,6 @@ export const addWorkspacePackageJsonFields = (
 
   packageJson.type ??= "module";
   packageJson.sideEffects ??= false;
-  packageJson.funding ??= workspacePackageJson.funding;
 
   if (includeSrc === true) {
     let distSrc = sourceRoot.replace(projectRoot, "");

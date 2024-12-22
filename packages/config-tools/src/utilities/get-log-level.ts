@@ -64,3 +64,16 @@ export const getLogLevelLabel = (
   }
   return LogLevelLabel.INFO;
 };
+
+/**
+ * Check if the log level is verbose
+ *
+ * @param label - The log level label to check
+ * @returns True if the log level is verbose
+ */
+export const isVerbose = (
+  label: string | LogLevel = LogLevelLabel.SILENT
+): boolean => {
+  const logLevel = typeof label === "string" ? getLogLevel(label) : label;
+  return logLevel <= LogLevel.DEBUG;
+};

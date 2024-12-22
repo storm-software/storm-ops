@@ -25,9 +25,18 @@ import {
 import {
   addPackageDependencies,
   addPackageJsonExport,
-  addWorkspacePackageJsonFields
+  addWorkspacePackageJsonFields,
+  copyAssets
 } from "@storm-software/build-tools";
-import { loadStormConfig } from "@storm-software/config-tools";
+import {
+  getStopwatch,
+  loadStormConfig,
+  writeError,
+  writeFatal,
+  writeSuccess,
+  writeTrace,
+  writeWarning
+} from "@storm-software/config-tools";
 import { watch as createWatcher } from "chokidar";
 import { debounce, flatten, omit } from "es-toolkit";
 import { map } from "es-toolkit/compat";
@@ -43,7 +52,6 @@ import { resolvePathsPlugin } from "./plugins/resolve-paths";
 import { tscPlugin } from "./plugins/tsc";
 import { ESBuildResolvedOptions, type ESBuildOptions } from "./types";
 import { handle, pipe, transduce } from "./utilities/helpers";
-import { writeLog } from "./utilities/log";
 
 /**
  * Apply defaults to the original build options
@@ -90,17 +98,11 @@ const resolveOptions = async (
     );
   }
 
-  // const packageJsonPath = joinPathFragments(projectRoot, "project.json");
-  // if (!(await hfs.isFile(packageJsonPath))) {
-  //   throw new Error("Cannot find package.json configuration");
-  // }
-
-  // const packageJson = await hfs.json(
-  //   joinPathFragments(workspaceRoot.dir, projectRoot, "package.json")
-  // );
+  const config = await loadStormConfig();
 
   return {
     ...DEFAULT_BUILD_OPTIONS,
+    config,
     format: "cjs",
     outExtension: { ".js": ".js" },
     resolveExtensions: [".ts", ".js", ".node"],
@@ -266,6 +268,8 @@ async function computeOptions(
  * Execute esbuild with all the configurations we pass
  */
 async function executeEsBuild(options: ESBuildResolvedOptions) {
+  const stopwatch = getStopwatch(`${options.name} build`);
+
   if (process.env.WATCH === "true") {
     const context = await esbuild.context(
       omit(options, ["name", "emitTypes", "emitMetafile"]) as any
@@ -274,16 +278,65 @@ async function executeEsBuild(options: ESBuildResolvedOptions) {
     watch(context, options);
   }
 
-  const build = await esbuild.build(
+  const result = await esbuild.build(
     omit(options, ["name", "emitTypes", "emitMetafile"]) as any
   );
 
-  if (build.metafile && options.emitMetafile) {
+  if (result.metafile && options.emitMetafile) {
     const metafilePath = `${options.outdir}/${options.name}.meta.json`;
-    await hfs.write(metafilePath, JSON.stringify(build.metafile));
+    await hfs.write(metafilePath, JSON.stringify(result.metafile));
   }
 
-  return [options, build] as const;
+  stopwatch();
+
+  return [options, result] as const;
+}
+
+/**
+ * Copy the assets to the build directory
+ */
+async function copyBuildAssets([options, result]: [
+  ESBuildResolvedOptions,
+  esbuild.BuildResult
+]) {
+  if (result.errors.length === 0) {
+    await copyAssets(
+      options.config,
+      options.assets ?? [],
+      options.outdir,
+      options.projectRoot,
+      options.projectName,
+      options.sourceRoot,
+      true,
+      false
+    );
+
+    return [options, result] as const;
+  }
+}
+
+/**
+ * Report the results of the build
+ */
+async function reportResults([options, result]: [
+  ESBuildResolvedOptions,
+  esbuild.BuildResult
+]) {
+  if (result.errors.length === 0) {
+    if (result.warnings.length > 0) {
+      writeWarning(
+        `The following warnings occurred during the build: ${result.warnings
+          .map(warning => warning.text)
+          .join("\n")}`,
+        options.config
+      );
+    }
+
+    writeSuccess(
+      `The ${options.name} build completed successfully`,
+      options.config
+    );
+  }
 }
 
 /**
@@ -325,12 +378,28 @@ async function dependencyCheck(options: ESBuildResolvedOptions) {
  * @returns the build result
  */
 export async function build(options: ESBuildOptions[]) {
-  void transduce.async(options, dependencyCheck);
+  const stopwatch = getStopwatch("full build");
 
-  return transduce.async(
-    await createOptions(options),
-    pipe.async(computeOptions, generatePackageJson, executeEsBuild)
-  );
+  try {
+    void transduce.async(options, dependencyCheck);
+
+    await transduce.async(
+      await createOptions(options),
+      pipe.async(
+        computeOptions,
+        generatePackageJson,
+        executeEsBuild,
+        copyBuildAssets,
+        reportResults
+      )
+    );
+  } catch (error) {
+    writeFatal(
+      "Fatal errors occurred during the build that could not be recovered from. The build process has been terminated."
+    );
+  }
+
+  stopwatch();
 }
 
 /**
@@ -363,10 +432,10 @@ const watch = (context: BuildContext, options: ESBuildResolvedOptions) => {
     });
 
     if (rebuildResult instanceof Error) {
-      writeLog("error", rebuildResult.message);
+      writeError(rebuildResult.message);
     }
 
-    writeLog("log", `${Date.now() - timeBefore}ms [${options.name ?? ""}]`);
+    writeTrace(`${Date.now() - timeBefore}ms [${options.name ?? ""}]`);
   }, 10);
 
   changeWatcher.on("change", fastRebuild);

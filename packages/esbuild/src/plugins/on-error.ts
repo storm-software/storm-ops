@@ -15,8 +15,8 @@
 
  -------------------------------------------------------------------*/
 
+import { writeFatal } from "@storm-software/config-tools";
 import type * as esbuild from "esbuild";
-import { writeLog } from "../utilities";
 
 /**
  * Causes esbuild to exit immediately with an error code.
@@ -27,10 +27,10 @@ export const onErrorPlugin: esbuild.Plugin = {
     build.onEnd(result => {
       // if there were errors found on the build
       if (result.errors.length > 0 && process.env.WATCH !== "true") {
-        writeLog(
-          "error",
+        writeFatal(
           `The following errors occurred during the build:
 ${result.errors.map(error => error.text).join("\n")}
+
 `
         );
 

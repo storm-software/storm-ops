@@ -16,6 +16,8 @@
  -------------------------------------------------------------------*/
 
 import { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
+import { AssetGlob } from "@storm-software/build-tools";
+import { StormConfig } from "@storm-software/config";
 import * as esbuild from "esbuild";
 import { WorkspaceTypeAndRoot } from "nx/src/utils/find-workspace-root";
 
@@ -27,12 +29,14 @@ export type ESBuildOptions = Omit<
   name?: string;
   emitTypes?: boolean;
   emitMetafile?: boolean;
+  assets?: AssetGlob[];
 };
 
 export type ESBuildResult = esbuild.BuildResult;
 
 export type ESBuildResolvedOptions = ESBuildOptions &
   Required<Pick<ESBuildOptions, "name" | "outdir" | "entryPoints">> & {
+    config: StormConfig;
     workspaceRoot: WorkspaceTypeAndRoot;
     sourceRoot: string;
     projectName: string;

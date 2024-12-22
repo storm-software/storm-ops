@@ -15,10 +15,10 @@
 
  -------------------------------------------------------------------*/
 
+import { writeWarning } from "@storm-software/config-tools";
 import type * as esbuild from "esbuild";
 import { builtinModules } from "node:module";
 import path from "node:path";
-import { writeLog } from "../utilities/log";
 
 // packages that aren't detected but used
 // TODO: these could be scoped at the root
@@ -116,12 +116,8 @@ export const depsCheckPlugin = (bundle?: boolean): esbuild.Plugin => ({
         );
       });
 
-      writeLog(
-        "warn",
-        `unusedDependencies: ${JSON.stringify(filteredUnusedDeps)}`
-      );
-      writeLog(
-        "warn",
+      writeWarning(`unusedDependencies: ${JSON.stringify(filteredUnusedDeps)}`);
+      writeWarning(
         `missingDependencies: ${JSON.stringify(filteredMissingDeps)}`
       );
 

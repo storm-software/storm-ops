@@ -1,6 +1,5 @@
 import {
   createProjectGraphAsync,
-  type ExecutorContext,
   joinPathFragments,
   type ProjectConfiguration,
   ProjectGraphProjectNode,
@@ -8,8 +7,6 @@ import {
   readProjectsConfigurationFromProjectGraph,
   writeJsonFile
 } from "@nx/devkit";
-import { copyAssets } from "@nx/js";
-import type { AssetGlob } from "@nx/js/src/utils/assets/assets.js";
 import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
 import type { StormConfig } from "@storm-software/config";
 import {
@@ -23,10 +20,7 @@ import {
   writeWarning
 } from "@storm-software/config-tools";
 import { removeSync } from "fs-extra";
-import { globSync } from "glob";
-import { existsSync, readFileSync } from "node:fs";
-import { writeFile } from "node:fs/promises";
-import { readNxJson } from "nx/src/config/nx-json.js";
+import { existsSync } from "node:fs";
 import {
   createProjectRootMappings,
   findProjectForPath
@@ -36,6 +30,7 @@ import { build } from "unbuild";
 import { getUnbuildBuildOptions } from "../config/get-unbuild-config";
 import type { UnbuildBuildOptions } from "../types";
 import { applyDefaultUnbuildOptions } from "../utils/apply-default-options";
+import { copyAssets } from "../utils/copy-assets";
 import {
   addPackageJsonExports,
   addWorkspacePackageJsonFields
@@ -153,53 +148,19 @@ export async function unbuildWithOptions(
 
   // #region Copy asset files to output directory
 
-  writeDebug(
-    `📦  Copying asset files to output directory: ${enhancedOptions.outputPath}`,
-    config
+  await copyAssets(
+    config,
+    options.assets ?? [],
+    enhancedOptions.outputPath,
+    projectRoot,
+    projectName,
+    sourceRoot,
+    enhancedOptions.generatePackageJson,
+    enhancedOptions.includeSrc
   );
-
-  const assets = Array.from(options.assets ?? []);
-  if (
-    !enhancedOptions.assets?.some((asset: AssetGlob) => asset?.glob === "*.md")
-  ) {
-    assets.push({
-      input: projectRoot,
-      glob: "*.md",
-      output: "/"
-    });
-  }
-
-  if (enhancedOptions.generatePackageJson === false) {
-    assets.push({
-      input: sourceRoot,
-      glob: "package.json",
-      output: "."
-    });
-  }
-
-  if (
-    !enhancedOptions.assets?.some(
-      (asset: AssetGlob) => asset?.glob === "LICENSE"
-    )
-  ) {
-    assets.push({
-      input: "",
-      glob: "LICENSE",
-      output: "."
-    });
-  }
-
-  if (enhancedOptions.includeSrc === true) {
-    assets.push({
-      input: sourceRoot,
-      glob: "**/{*.ts,*.tsx,*.js,*.jsx}",
-      output: "src/"
-    });
-  }
 
   // await retrieveProjectConfigurationsWithoutPluginInference(workspaceRoot);
 
-  const nxJson = readNxJson(workspaceRoot);
   const projectGraph = await createProjectGraphAsync({
     exitOnError: true
   });
@@ -220,85 +181,6 @@ export async function unbuildWithOptions(
         projectRoot,
         "project.json"
       )}`
-    );
-  }
-
-  const result = await copyAssets(
-    {
-      assets,
-      watch: enhancedOptions.watch,
-      outputPath: enhancedOptions.outputPath
-    },
-    {
-      root: workspaceRoot,
-      targetName: "build",
-      target: buildTarget,
-      ...enhancedOptions,
-      projectName,
-      projectGraph,
-      projectsConfigurations,
-      nxJsonConfiguration: nxJson,
-      cwd: workspaceRoot,
-      isVerbose: true
-    } as ExecutorContext
-  );
-  if (!result.success) {
-    throw new Error("The Build process failed trying to copy assets");
-  }
-
-  // #endregion Copy asset files to output directory
-
-  if (options.includeSrc === true) {
-    writeDebug(
-      `📝  Adding banner and writing source files: ${joinPathFragments(
-        enhancedOptions.outputPath,
-        "src"
-      )}`,
-      config
-    );
-
-    const files = globSync([
-      joinPathFragments(
-        workspaceRoot,
-        enhancedOptions.outputPath,
-        "src/**/*.ts"
-      ),
-      joinPathFragments(
-        workspaceRoot,
-        enhancedOptions.outputPath,
-        "src/**/*.tsx"
-      ),
-      joinPathFragments(
-        workspaceRoot,
-        enhancedOptions.outputPath,
-        "src/**/*.js"
-      ),
-      joinPathFragments(
-        workspaceRoot,
-        enhancedOptions.outputPath,
-        "src/**/*.jsx"
-      )
-    ]);
-
-    await Promise.allSettled(
-      files.map(file =>
-        writeFile(
-          file,
-          `${
-            enhancedOptions.banner && typeof enhancedOptions.banner === "string"
-              ? enhancedOptions.banner.startsWith("//")
-                ? enhancedOptions.banner
-                : `// ${enhancedOptions.banner}`
-              : ""
-          }\n\n${readFileSync(file, "utf8")}\n\n${
-            enhancedOptions.footer && typeof enhancedOptions.footer === "string"
-              ? enhancedOptions.footer.startsWith("//")
-                ? enhancedOptions.footer
-                : `// ${enhancedOptions.footer}`
-              : ""
-          }`
-        )
-      )
     );
   }
 
