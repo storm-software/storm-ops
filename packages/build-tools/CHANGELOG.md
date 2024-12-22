@@ -1,3 +1,9 @@
+## 0.108.0 (2024-12-22)
+
+### Features
+
+- **esbuild:** Move shared code to `build-tools` package ([bef9364e](https://github.com/storm-software/storm-ops/commit/bef9364e))
+
 ## 0.107.0 (2024-12-20)
 
 ### Features

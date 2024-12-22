@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/esbuild",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "description": "A package containing `esbuild` utilities for building Storm Software libraries and applications",
   "repository": {
@@ -210,7 +210,7 @@
     "@nx/devkit": "^20.2.2",
     "@nx/js": "^20.2.2",
     "@nx/workspace": "^20.2.2",
-    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/build-tools": "0.108.0",
     "@storm-software/config-tools": "workspace:*",
     "esbuild": "^0.24.0",
     "nx": "^20.2.2",
