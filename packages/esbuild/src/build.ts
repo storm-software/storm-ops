@@ -320,9 +320,9 @@ async function copyBuildAssets([options, result]: [
       true,
       false
     );
-
-    return [options, result] as const;
   }
+
+  return [options, result] as const;
 }
 
 /**
