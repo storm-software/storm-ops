@@ -1,3 +1,9 @@
+## 0.2.0 (2024-12-22)
+
+### Features
+
+- **esbuild:** Use `tsup` to build to package ([8d7a14f9](https://github.com/storm-software/storm-ops/commit/8d7a14f9))
+
 ## 0.1.0 (2024-12-22)
 
 ### Features

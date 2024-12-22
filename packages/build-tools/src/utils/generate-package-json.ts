@@ -593,6 +593,11 @@ export const addWorkspacePackageJsonFields = (
 
   packageJson.maintainers ??= workspacePackageJson.maintainers;
   if (!packageJson.maintainers && packageJson.author) {
+    packageJson.maintainers = [packageJson.author];
+  }
+
+  packageJson.contributors ??= workspacePackageJson.contributors;
+  if (!packageJson.contributors && packageJson.author) {
     packageJson.contributors = [packageJson.author];
   }
 
