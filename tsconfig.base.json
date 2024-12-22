@@ -28,6 +28,8 @@
       "@storm-software/markdownlint/*": ["packages/markdownlint/src/*"],
       "@storm-software/prettier": ["packages/prettier/src/index.ts"],
       "@storm-software/prettier/*": ["packages/prettier/src/*"],
+      "@storm-software/esbuild": ["packages/esbuild/src/index.ts"],
+      "@storm-software/esbuild/*": ["packages/esbuild/src/*"],
       "@storm-software/terraform-modules": ["terraform-modules/src/index.ts"],
       "@storm-software/terraform-tools": ["packages/terraform-tools/index.ts"],
       "@storm-software/terraform-tools/*": ["packages/terraform-tools/src/*"],

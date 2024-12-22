@@ -1,0 +1,69 @@
+{
+  "name": "@storm-software/esbuild",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "A package containing `esbuild` utilities for building Storm Software libraries and applications",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git",
+    "directory": "packages/esbuild"
+  },
+  "private": false,
+  "peerDependencies": {
+    "@microsoft/api-extractor": "^7.48.1",
+    "@nx/devkit": "^20.2.2",
+    "@nx/js": "^20.2.2",
+    "@nx/workspace": "^20.2.2",
+    "esbuild": "^0.24.0",
+    "nx": "^20.2.2",
+    "spdx-exceptions": "^2.5.0",
+    "spdx-license-ids": "^3.0.20"
+  },
+  "peerDependenciesMeta": {
+    "@microsoft/api-extractor": {
+      "optional": true
+    },
+    "@nx/devkit": {
+      "optional": false
+    },
+    "@nx/js": {
+      "optional": false
+    },
+    "@nx/workspace": {
+      "optional": false
+    },
+    "esbuild": {
+      "optional": false
+    },
+    "nx": {
+      "optional": false
+    },
+    "spdx-exceptions": {
+      "optional": true
+    },
+    "spdx-license-ids": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@humanfs/node": "^0.16.6",
+    "chokidar": "^4.0.3",
+    "consola": "^3.3.0",
+    "es-toolkit": "^1.30.1",
+    "execa": "^9.4.0",
+    "globby": "^14.0.2"
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "^7.48.1",
+    "@nx/devkit": "^20.2.2",
+    "@nx/js": "^20.2.2",
+    "@nx/workspace": "^20.2.2",
+    "esbuild": "^0.24.0",
+    "nx": "^20.2.2",
+    "spdx-exceptions": "^2.5.0",
+    "spdx-license-ids": "^3.0.20"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

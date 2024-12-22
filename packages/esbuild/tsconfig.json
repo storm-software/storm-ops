@@ -1,0 +1,22 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ESNext"],
+    "noLib": false,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "moduleResolution": "Bundler",
+    "moduleDetection": "force"
+  },
+  "include": ["src/**/*.ts", "src/**/*.json", "src/**/.prettierignore"],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*_spec.ts",
+    "**/*_test.ts",
+    "jest.config.ts"
+  ]
+}
