@@ -15,7 +15,7 @@
 
  -------------------------------------------------------------------*/
 
-import { writeWarning } from "@storm-software/config-tools";
+import { writeError, writeWarning } from "@storm-software/config-tools";
 import type * as esbuild from "esbuild";
 import { builtinModules } from "node:module";
 import path from "node:path";
@@ -116,9 +116,11 @@ export const depsCheckPlugin = (bundle?: boolean): esbuild.Plugin => ({
         );
       });
 
-      writeWarning(`unusedDependencies: ${JSON.stringify(filteredUnusedDeps)}`);
       writeWarning(
-        `missingDependencies: ${JSON.stringify(filteredMissingDeps)}`
+        `Unused Dependencies: ${JSON.stringify(filteredUnusedDeps)}`
+      );
+      writeError(
+        `Missing Dependencies: ${JSON.stringify(filteredMissingDeps)}`
       );
 
       if (filteredMissingDeps.length > 0) {

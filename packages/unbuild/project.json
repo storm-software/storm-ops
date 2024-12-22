@@ -1,7 +1,7 @@
 {
-  "name": "esbuild",
+  "name": "unbuild",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/esbuild/src",
+  "sourceRoot": "packages/unbuild/src",
   "projectType": "library",
   "targets": {
     "build-base": {
@@ -17,9 +17,9 @@
       "dependsOn": ["build-base"],
       "options": {
         "commands": [
-          "pnpm copyfiles LICENSE dist/packages/esbuild",
-          "pnpm copyfiles --up=2 ./packages/esbuild/README.md ./packages/esbuild/package.json dist/packages/esbuild",
-          "pnpm copyfiles --up=3 ./packages/esbuild/dist/* dist/packages/esbuild/dist"
+          "pnpm copyfiles LICENSE dist/packages/unbuild",
+          "pnpm copyfiles --up=2 ./packages/unbuild/README.md ./packages/unbuild/package.json dist/packages/unbuild",
+          "pnpm copyfiles --up=3 ./packages/unbuild/dist/* dist/packages/unbuild/dist"
         ]
       }
     },

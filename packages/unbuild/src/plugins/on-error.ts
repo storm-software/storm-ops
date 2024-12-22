@@ -16,26 +16,35 @@
  -------------------------------------------------------------------*/
 
 import { writeError } from "@storm-software/config-tools";
-import type * as esbuild from "esbuild";
+import type { Plugin } from "rollup";
 
 /**
- * Causes esbuild to exit immediately with an error code.
+ * Causes rollup to exit immediately with an error code.
  */
-export const onErrorPlugin: esbuild.Plugin = {
-  name: "storm:on-error",
-  setup(build) {
-    build.onEnd(result => {
-      // if there were errors found on the build
-      if (result.errors.length > 0 && process.env.WATCH !== "true") {
+export function onErrorPlugin(): Plugin {
+  return {
+    name: "storm:on-error",
+    buildEnd(error?: Error | undefined) {
+      if (error) {
         writeError(
           `The following errors occurred during the build:
-${result.errors.map(error => error.text).join("\n")}
+    ${error ? error.message : "Unknown error"}
 
-`
+    `
         );
 
         throw new Error("ESBuild process failed with errors.");
       }
-    });
+    },
+    renderError(error?: Error | undefined) {
+      writeError(
+        `The following errors occurred during the build:
+  ${error ? error.message : "Unknown error"}
+
+  `
+      );
+
+      throw new Error("ESBuild process failed with errors.");
+    }
   }
 };

@@ -31,6 +31,7 @@ import {
 import {
   getStopwatch,
   loadStormConfig,
+  writeDebug,
   writeError,
   writeFatal,
   writeSuccess,
@@ -46,6 +47,7 @@ import { globbySync } from "globby";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
 import { DEFAULT_BUILD_OPTIONS } from "./config";
 import { depsCheckPlugin } from "./plugins/deps-check";
+import { esmSplitCodeToCjsPlugin } from "./plugins/esm-split-code-to-cjs";
 import { fixImportsPlugin } from "./plugins/fix-imports";
 import { onErrorPlugin } from "./plugins/on-error";
 import { resolvePathsPlugin } from "./plugins/resolve-paths";
@@ -98,7 +100,7 @@ const resolveOptions = async (
     );
   }
 
-  const config = await loadStormConfig();
+  const config = await loadStormConfig(workspaceRoot.dir);
 
   return {
     ...DEFAULT_BUILD_OPTIONS,
@@ -116,6 +118,7 @@ const resolveOptions = async (
       ...(options.plugins ?? []),
       resolvePathsPlugin,
       fixImportsPlugin,
+      esmSplitCodeToCjsPlugin,
       tscPlugin(options.emitTypes),
       onErrorPlugin
     ],
@@ -132,80 +135,87 @@ const resolveOptions = async (
 };
 
 const generatePackageJson = async (options: ESBuildResolvedOptions) => {
-  const config = await loadStormConfig();
+  if (
+    options.generatePackageJson !== false &&
+    (await hfs.isFile(joinPathFragments(options.projectRoot, "package.json")))
+  ) {
+    writeDebug("✍️   Writing package.json file", options.config);
 
-  const packageJsonPath = joinPathFragments(
-    options.projectRoot,
-    "project.json"
-  );
-  if (!(await hfs.isFile(packageJsonPath))) {
-    throw new Error("Cannot find package.json configuration");
-  }
+    const packageJsonPath = joinPathFragments(
+      options.projectRoot,
+      "project.json"
+    );
+    if (!(await hfs.isFile(packageJsonPath))) {
+      throw new Error("Cannot find package.json configuration");
+    }
 
-  let packageJson = await hfs.json(
-    joinPathFragments(
+    let packageJson = await hfs.json(
+      joinPathFragments(
+        options.workspaceRoot.dir,
+        options.projectRoot,
+        "package.json"
+      )
+    );
+    if (!packageJson) {
+      throw new Error("Cannot find package.json configuration file");
+    }
+
+    packageJson = await addPackageDependencies(
       options.workspaceRoot.dir,
       options.projectRoot,
-      "package.json"
-    )
-  );
-  if (!packageJson) {
-    throw new Error("Cannot find package.json configuration file");
-  }
+      options.projectName,
+      packageJson
+    );
 
-  packageJson = await addPackageDependencies(
-    options.workspaceRoot.dir,
-    options.projectRoot,
-    options.projectName,
-    packageJson
-  );
+    packageJson = await addWorkspacePackageJsonFields(
+      options.config,
+      options.projectRoot,
+      options.sourceRoot,
+      options.projectName,
+      false,
+      packageJson
+    );
 
-  packageJson = await addWorkspacePackageJsonFields(
-    config,
-    options.projectRoot,
-    options.sourceRoot,
-    options.projectName,
-    false,
-    packageJson
-  );
-
-  let entryPoints = [{ in: "./src/index.ts", out: "./src/index.ts" }];
-  if (options.entryPoints) {
-    if (Array.isArray(options.entryPoints)) {
-      entryPoints = (
-        options.entryPoints as (string | { in: string; out: string })[]
-      ).map(entryPoint =>
-        typeof entryPoint === "string"
-          ? { in: entryPoint, out: entryPoint }
-          : entryPoint
-      );
-    } else {
-      entryPoints = Object.entries(options.entryPoints).map(([key, value]) => ({
-        in: key,
-        out: value
-      }));
+    let entryPoints = [{ in: "./src/index.ts", out: "./src/index.ts" }];
+    if (options.entryPoints) {
+      if (Array.isArray(options.entryPoints)) {
+        entryPoints = (
+          options.entryPoints as (string | { in: string; out: string })[]
+        ).map(entryPoint =>
+          typeof entryPoint === "string"
+            ? { in: entryPoint, out: entryPoint }
+            : entryPoint
+        );
+      } else {
+        entryPoints = Object.entries(options.entryPoints).map(
+          ([key, value]) => ({
+            in: key,
+            out: value
+          })
+        );
+      }
     }
+
+    for (const entryPoint of entryPoints) {
+      const split = entryPoint.out.split(".");
+      split.pop();
+      const entry = split.join(".").replaceAll("\\", "/");
+
+      packageJson.exports[`./${entry}`] ??= addPackageJsonExport(entry);
+    }
+
+    packageJson.exports["./package.json"] ??= "./package.json";
+    packageJson.exports["."] ??= addPackageJsonExport("./src/index.ts");
+
+    packageJson.main = "./dist/index.cjs";
+    packageJson.module = "./dist/index.js";
+    packageJson.types = "./dist/index.d.ts";
+
+    await writeJsonFile(
+      joinPathFragments(options.outdir, "package.json"),
+      packageJson
+    );
   }
-
-  for (const entryPoint of entryPoints) {
-    const split = entryPoint.out.split(".");
-    split.pop();
-    const entry = split.join(".").replaceAll("\\", "/");
-
-    packageJson.entry[`./${entry}`] ??= addPackageJsonExport(entry);
-  }
-
-  packageJson.entry["./package.json"] = "./package.json";
-  packageJson.entry["."] ??= addPackageJsonExport("./src/index.ts");
-
-  packageJson.main = "./dist/index.cjs";
-  packageJson.module = "./dist/index.js";
-  packageJson.types = "./dist/index.d.ts";
-
-  await writeJsonFile(
-    joinPathFragments(options.outdir, "package.json"),
-    packageJson
-  );
 
   return options;
 };

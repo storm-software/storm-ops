@@ -12,7 +12,7 @@
     "moduleResolution": "Bundler",
     "moduleDetection": "force"
   },
-  "include": ["src/**/*.ts", "src/**/*.json", "src/**/.prettierignore", "../unbuild/src/plugins/type-definitions.ts"],
+  "include": ["src/**/*.ts", "src/**/*.json", "src/**/.prettierignore"],
   "exclude": [
     "**/*.spec.ts",
     "**/*.test.ts",

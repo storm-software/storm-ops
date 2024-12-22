@@ -27,9 +27,10 @@ export type ESBuildOptions = Omit<
 > & {
   projectRoot: string;
   name?: string;
+  generatePackageJson?: boolean;
   emitTypes?: boolean;
   emitMetafile?: boolean;
-  assets?: AssetGlob[];
+  assets?: (AssetGlob | string)[];
 };
 
 export type ESBuildResult = esbuild.BuildResult;

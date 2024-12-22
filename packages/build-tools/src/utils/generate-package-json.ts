@@ -638,7 +638,6 @@ export const addPackageJsonExports = async (
   packageJson: Record<string, any>
 ): Promise<Record<string, any>> => {
   packageJson.exports ??= {};
-  packageJson.exports["./package.json"] ??= "./package.json";
 
   const files = await new Glob("**/*.{ts,tsx}", {
     absolute: false,
@@ -657,6 +656,23 @@ export const addPackageJsonExports = async (
       sourceRoot
     );
   });
+
+  packageJson.main = "./dist/index.cjs";
+  packageJson.module = "./dist/index.js";
+  packageJson.types = "./dist/index.d.ts";
+
+  packageJson.exports ??= {};
+  packageJson.exports = Object.keys(packageJson.exports).reduce((ret, key) => {
+    if (key.endsWith("/index") && !ret[key.replace("/index", "")]) {
+      ret[key.replace("/index", "")] = packageJson.exports[key];
+    }
+
+    return ret;
+  }, packageJson.exports);
+
+  packageJson.exports["./package.json"] ??= "./package.json";
+  packageJson.exports["."] =
+    packageJson.exports["."] ?? addPackageJsonExport("index");
 
   return packageJson;
 };

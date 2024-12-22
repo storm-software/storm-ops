@@ -15,27 +15,14 @@
 
  -------------------------------------------------------------------*/
 
-import { writeError } from "@storm-software/config-tools";
-import type * as esbuild from "esbuild";
-
 /**
- * Causes esbuild to exit immediately with an error code.
+ * The build library used by Storm Software for building TypeScript applications.
+ *
+ * @remarks
+ * A package containing `storm-build` for building Storm Stack libraries and services
+ *
+ * @packageDocumentation
  */
-export const onErrorPlugin: esbuild.Plugin = {
-  name: "storm:on-error",
-  setup(build) {
-    build.onEnd(result => {
-      // if there were errors found on the build
-      if (result.errors.length > 0 && process.env.WATCH !== "true") {
-        writeError(
-          `The following errors occurred during the build:
-${result.errors.map(error => error.text).join("\n")}
 
-`
-        );
-
-        throw new Error("ESBuild process failed with errors.");
-      }
-    });
-  }
-};
+export * from "./build";
+export * from "./types";
