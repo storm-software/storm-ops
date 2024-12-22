@@ -1,3 +1,19 @@
+## 0.4.0 (2024-12-22)
+
+### Features
+
+- **unbuild:** Initial check-in of the `unbuild` package ([fc246154](https://github.com/storm-software/storm-ops/commit/fc246154))
+- **esbuild:** Added copy-assets and reporting build steps ([d8372730](https://github.com/storm-software/storm-ops/commit/d8372730))
+
+### Bug Fixes
+
+- **esbuild:** Resolve DTS build issue ([bc4464b8](https://github.com/storm-software/storm-ops/commit/bc4464b8))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.117.0
+- Updated build-tools to 0.109.0
+
 ## 0.3.0 (2024-12-22)
 
 ### Features

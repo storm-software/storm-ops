@@ -1,3 +1,9 @@
+## 1.117.0 (2024-12-22)
+
+### Features
+
+- **esbuild:** Added copy-assets and reporting build steps ([d8372730](https://github.com/storm-software/storm-ops/commit/d8372730))
+
 ## 1.116.0 (2024-12-19)
 
 ### Features
