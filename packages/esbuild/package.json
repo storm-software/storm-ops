@@ -158,6 +158,8 @@
     "@nx/devkit": "^20.2.2",
     "@nx/js": "^20.2.2",
     "@nx/workspace": "^20.2.2",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "esbuild": "^0.24.0",
     "nx": "^20.2.2",
     "spdx-exceptions": "^2.5.0",
@@ -174,6 +176,12 @@
       "optional": false
     },
     "@nx/workspace": {
+      "optional": false
+    },
+    "@storm-software/build-tools": {
+      "optional": false
+    },
+    "@storm-software/config-tools": {
       "optional": false
     },
     "esbuild": {
@@ -202,6 +210,8 @@
     "@nx/devkit": "^20.2.2",
     "@nx/js": "^20.2.2",
     "@nx/workspace": "^20.2.2",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "esbuild": "^0.24.0",
     "nx": "^20.2.2",
     "spdx-exceptions": "^2.5.0",

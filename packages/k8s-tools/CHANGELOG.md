@@ -2,7 +2,8 @@
 
 ### Features
 
-- **storm-ops:** Improved descriptions and markdown across monorepo ([aec89c79](https://github.com/storm-software/storm-ops/commit/aec89c79))
+- **storm-ops:** Improved descriptions and markdown across monorepo
+  ([aec89c79](https://github.com/storm-software/storm-ops/commit/aec89c79))
 
 ## 0.10.1 (2024-12-18)
 

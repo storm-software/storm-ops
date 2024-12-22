@@ -19,19 +19,21 @@ import { hfs } from "@humanfs/node";
 import {
   createProjectGraphAsync,
   joinPathFragments,
-  ProjectGraphProjectNode,
-  readJsonFile,
   readProjectsConfigurationFromProjectGraph,
   writeJsonFile
 } from "@nx/devkit";
-import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
+import {
+  addPackageDependencies,
+  addPackageJsonExport,
+  addWorkspacePackageJsonFields
+} from "@storm-software/build-tools";
+import { loadStormConfig } from "@storm-software/config-tools";
 import { watch as createWatcher } from "chokidar";
 import { debounce, flatten, omit } from "es-toolkit";
 import { map } from "es-toolkit/compat";
 import * as esbuild from "esbuild";
 import { BuildContext } from "esbuild";
 import { globbySync } from "globby";
-import { existsSync } from "node:fs";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
 import { DEFAULT_BUILD_OPTIONS } from "./config";
 import { depsCheckPlugin } from "./plugins/deps-check";
@@ -102,11 +104,9 @@ const resolveOptions = async (
     format: "cjs",
     outExtension: { ".js": ".js" },
     resolveExtensions: [".ts", ".js", ".node"],
-    entryPoints: globbySync("./src/**/*.{j,t}s", {
-      ignore: ["./src/__tests__/**/*"]
-    }),
     mainFields: ["module", "main"],
     ...options,
+    entryPoints: options.entryPoints || ["./src/index.ts"],
     outdir:
       options.outdir ||
       joinPathFragments(workspaceRoot.dir, "dist", projectRoot),
@@ -122,30 +122,15 @@ const resolveOptions = async (
     projectConfigurations,
     projectName,
     projectGraph,
-    workspaceRoot
+    workspaceRoot,
+    sourceRoot:
+      options.sourceRoot ||
+      joinPathFragments(workspaceRoot.dir, projectRoot, "src")
   };
 };
 
 const generatePackageJson = async (options: ESBuildResolvedOptions) => {
-  const nxJsonPath = joinPathFragments(options.workspaceRoot.dir, "nx.json");
-  if (!(await hfs.isFile(nxJsonPath))) {
-    throw new Error("Cannot find Nx workspace configuration");
-  }
-
-  const projectJsonPath = joinPathFragments(
-    options.workspaceRoot.dir,
-    options.projectRoot,
-    "project.json"
-  );
-  if (!(await hfs.isFile(projectJsonPath))) {
-    throw new Error("Cannot find project.json configuration");
-  }
-
-  if (!options.projectConfigurations?.projects?.[options.projectName]) {
-    throw new Error(
-      "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
-    );
-  }
+  const config = await loadStormConfig();
 
   const packageJsonPath = joinPathFragments(
     options.projectRoot,
@@ -155,96 +140,64 @@ const generatePackageJson = async (options: ESBuildResolvedOptions) => {
     throw new Error("Cannot find package.json configuration");
   }
 
-  const packageJson = await hfs.json(
+  let packageJson = await hfs.json(
     joinPathFragments(
       options.workspaceRoot.dir,
       options.projectRoot,
       "package.json"
     )
   );
-
-  const projectDependencies = calculateProjectBuildableDependencies(
-    undefined,
-    options.projectGraph,
-    options.workspaceRoot.dir,
-    options.projectName,
-    process.env.NX_TASK_TARGET_TARGET || "build",
-    process.env.NX_TASK_TARGET_CONFIGURATION || "production",
-    true
-  );
-
-  const localPackages = projectDependencies.dependencies
-    .filter(
-      dep =>
-        dep.node.type === "lib" &&
-        dep.node.data.root !== options.projectRoot &&
-        dep.node.data.root !== options.workspaceRoot.dir
-    )
-    .reduce(
-      (ret, project) => {
-        const projectNode = project.node as ProjectGraphProjectNode;
-
-        if (projectNode.data.root) {
-          const projectPackageJsonPath = joinPathFragments(
-            options.workspaceRoot.dir,
-            projectNode.data.root,
-            "package.json"
-          );
-          if (existsSync(projectPackageJsonPath)) {
-            const projectPackageJson = readJsonFile(projectPackageJsonPath);
-
-            if (projectPackageJson.private !== false) {
-              ret.push(projectPackageJson);
-            }
-          }
-        }
-
-        return ret;
-      },
-      [] as Record<string, any>[]
-    );
-
-  if (localPackages.length > 0) {
-    writeLog(
-      "trace",
-      `📦  Adding local packages to package.json: ${localPackages.map(p => p.name).join(", ")}`
-    );
-
-    packageJson.peerDependencies = localPackages.reduce((ret, localPackage) => {
-      if (!ret[localPackage.name]) {
-        ret[localPackage.name] = `>=${localPackage.version || "0.0.1"}`;
-      }
-
-      return ret;
-    }, packageJson.peerDependencies ?? {});
-    packageJson.peerDependenciesMeta = localPackages.reduce(
-      (ret, localPackage) => {
-        if (!ret[localPackage.name]) {
-          ret[localPackage.name] = {
-            optional: false
-          };
-        }
-
-        return ret;
-      },
-      packageJson.peerDependenciesMeta ?? {}
-    );
-    packageJson.devDependencies = localPackages.reduce((ret, localPackage) => {
-      if (!ret[localPackage.name]) {
-        ret[localPackage.name] = localPackage.version || "0.0.1";
-      }
-
-      return ret;
-    }, packageJson.peerDependencies ?? {});
-  } else {
-    writeLog(
-      "trace",
-      "📦  No local packages dependencies to add to package.json"
-    );
+  if (!packageJson) {
+    throw new Error("Cannot find package.json configuration file");
   }
 
+  packageJson = await addPackageDependencies(
+    options.workspaceRoot.dir,
+    options.projectRoot,
+    options.projectName,
+    packageJson
+  );
+
+  packageJson = await addWorkspacePackageJsonFields(
+    config,
+    options.projectRoot,
+    options.sourceRoot,
+    options.projectName,
+    false,
+    packageJson
+  );
+
+  let entryPoints = [{ in: "./src/index.ts", out: "./src/index.ts" }];
+  if (options.entryPoints) {
+    if (Array.isArray(options.entryPoints)) {
+      entryPoints = (
+        options.entryPoints as (string | { in: string; out: string })[]
+      ).map(entryPoint =>
+        typeof entryPoint === "string"
+          ? { in: entryPoint, out: entryPoint }
+          : entryPoint
+      );
+    } else {
+      entryPoints = Object.entries(options.entryPoints).map(([key, value]) => ({
+        in: key,
+        out: value
+      }));
+    }
+  }
+
+  for (const entryPoint of entryPoints) {
+    const split = entryPoint.out.split(".");
+    split.pop();
+    const entry = split.join(".").replaceAll("\\", "/");
+
+    packageJson.entry[`./${entry}`] ??= addPackageJsonExport(entry);
+  }
+
+  packageJson.entry["./package.json"] = "./package.json";
+  packageJson.entry["."] ??= addPackageJsonExport("./src/index.ts");
+
   packageJson.main = "./dist/index.cjs";
-  packageJson.module = "./dist/index.mjs";
+  packageJson.module = "./dist/index.js";
   packageJson.types = "./dist/index.d.ts";
 
   await writeJsonFile(

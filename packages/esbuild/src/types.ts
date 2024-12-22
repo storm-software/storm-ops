@@ -32,8 +32,9 @@ export type ESBuildOptions = Omit<
 export type ESBuildResult = esbuild.BuildResult;
 
 export type ESBuildResolvedOptions = ESBuildOptions &
-  Required<Pick<ESBuildOptions, "name" | "outdir">> & {
+  Required<Pick<ESBuildOptions, "name" | "outdir" | "entryPoints">> & {
     workspaceRoot: WorkspaceTypeAndRoot;
+    sourceRoot: string;
     projectName: string;
     projectGraph: ProjectGraph;
     projectConfigurations: ProjectsConfigurations;

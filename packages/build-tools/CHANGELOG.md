@@ -2,7 +2,8 @@
 
 ### Features
 
-- **eslint:** Renamed the `StormEnv` and `StormEnvPublic` globals ([f9ee1dab](https://github.com/storm-software/storm-ops/commit/f9ee1dab))
+- **eslint:** Renamed the `StormEnv` and `StormEnvPublic` globals
+  ([f9ee1dab](https://github.com/storm-software/storm-ops/commit/f9ee1dab))
 
 ## 0.106.0 (2024-12-19)
 

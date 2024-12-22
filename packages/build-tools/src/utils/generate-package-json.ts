@@ -1,6 +1,13 @@
-import type { ProjectConfiguration, ProjectGraph } from "@nx/devkit";
+import type {
+  ProjectConfiguration,
+  ProjectGraph,
+  ProjectGraphProjectNode
+} from "@nx/devkit";
 import { joinPathFragments, readJsonFile } from "@nx/devkit";
-import type { DependentBuildableProjectNode } from "@nx/js/src/utils/buildable-libs-utils.js";
+import {
+  calculateProjectBuildableDependencies,
+  type DependentBuildableProjectNode
+} from "@nx/js/src/utils/buildable-libs-utils.js";
 import {
   getHelperDependency,
   HelperDependency
@@ -15,9 +22,13 @@ import {
   writeTrace,
   writeWarning
 } from "@storm-software/config-tools";
+import { exists } from "fs-extra";
 import { Glob } from "glob";
-import { writeFileSync } from "node:fs";
-import { createProjectGraphAsync } from "nx/src/project-graph/project-graph.js";
+import { existsSync, writeFileSync } from "node:fs";
+import {
+  createProjectGraphAsync,
+  readProjectsConfigurationFromProjectGraph
+} from "nx/src/project-graph/project-graph.js";
 import { retrieveProjectConfigurationsWithoutPluginInference } from "nx/src/project-graph/utils/retrieve-workspace-files.js";
 import { fileExists } from "nx/src/utils/fileutils.js";
 import type { TypeScriptBuildOptions } from "../../declarations";
@@ -418,6 +429,123 @@ export const formatPackageJson = async (
   );
 };
 
+export const addPackageDependencies = async (
+  workspaceRoot: string,
+  projectRoot: string,
+  projectName: string,
+  packageJson: Record<string, any>
+): Promise<Record<string, any>> => {
+  const projectGraph = await createProjectGraphAsync({
+    exitOnError: true
+  });
+
+  const projectConfigurations =
+    readProjectsConfigurationFromProjectGraph(projectGraph);
+  if (!projectConfigurations?.projects?.[projectName]) {
+    throw new Error(
+      "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
+    );
+  }
+
+  const nxJsonPath = joinPathFragments(workspaceRoot, "nx.json");
+  if (!(await exists(nxJsonPath))) {
+    throw new Error("Cannot find Nx workspace configuration");
+  }
+
+  const projectJsonPath = joinPathFragments(
+    workspaceRoot,
+    projectRoot,
+    "project.json"
+  );
+  if (!(await exists(projectJsonPath))) {
+    throw new Error("Cannot find project.json configuration");
+  }
+
+  if (!projectConfigurations?.projects?.[projectName]) {
+    throw new Error(
+      "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
+    );
+  }
+
+  const projectDependencies = calculateProjectBuildableDependencies(
+    undefined,
+    projectGraph,
+    workspaceRoot,
+    projectName,
+    process.env.NX_TASK_TARGET_TARGET || "build",
+    process.env.NX_TASK_TARGET_CONFIGURATION || "production",
+    true
+  );
+
+  const localPackages = projectDependencies.dependencies
+    .filter(
+      dep =>
+        dep.node.type === "lib" &&
+        dep.node.data.root !== projectRoot &&
+        dep.node.data.root !== workspaceRoot
+    )
+    .reduce(
+      (ret, project) => {
+        const projectNode = project.node as ProjectGraphProjectNode;
+
+        if (projectNode.data.root) {
+          const projectPackageJsonPath = joinPathFragments(
+            workspaceRoot,
+            projectNode.data.root,
+            "package.json"
+          );
+          if (existsSync(projectPackageJsonPath)) {
+            const projectPackageJson = readJsonFile(projectPackageJsonPath);
+
+            if (projectPackageJson.private !== false) {
+              ret.push(projectPackageJson);
+            }
+          }
+        }
+
+        return ret;
+      },
+      [] as Record<string, any>[]
+    );
+
+  if (localPackages.length > 0) {
+    writeTrace(
+      `📦  Adding local packages to package.json: ${localPackages.map(p => p.name).join(", ")}`
+    );
+
+    packageJson.peerDependencies = localPackages.reduce((ret, localPackage) => {
+      if (!ret[localPackage.name]) {
+        ret[localPackage.name] = `>=${localPackage.version || "0.0.1"}`;
+      }
+
+      return ret;
+    }, packageJson.peerDependencies ?? {});
+    packageJson.peerDependenciesMeta = localPackages.reduce(
+      (ret, localPackage) => {
+        if (!ret[localPackage.name]) {
+          ret[localPackage.name] = {
+            optional: false
+          };
+        }
+
+        return ret;
+      },
+      packageJson.peerDependenciesMeta ?? {}
+    );
+    packageJson.devDependencies = localPackages.reduce((ret, localPackage) => {
+      if (!ret[localPackage.name]) {
+        ret[localPackage.name] = localPackage.version || "0.0.1";
+      }
+
+      return ret;
+    }, packageJson.peerDependencies ?? {});
+  } else {
+    writeTrace("📦  No local packages dependencies to add to package.json");
+  }
+
+  return packageJson;
+};
+
 export const addWorkspacePackageJsonFields = (
   config: StormConfig,
   projectRoot: string,
@@ -476,12 +604,37 @@ export const addWorkspacePackageJsonFields = (
   return packageJson;
 };
 
+export const addPackageJsonExport = (
+  file: string,
+  sourceRoot?: string
+): Record<string, any> => {
+  let entry = file.replaceAll("\\", "/");
+  if (sourceRoot) {
+    entry = entry.replace(sourceRoot, "");
+  }
+
+  return {
+    "import": {
+      "types": `./dist/${entry}.d.ts`,
+      "default": `./dist/${entry}.js`
+    },
+    "require": {
+      "types": `./dist/${entry}.d.cts`,
+      "default": `./dist/${entry}.cjs`
+    },
+    "default": {
+      "types": `./dist/${entry}.d.ts`,
+      "default": `./dist/${entry}.js`
+    }
+  };
+};
+
 export const addPackageJsonExports = async (
   sourceRoot: string,
   packageJson: Record<string, any>
 ): Promise<Record<string, any>> => {
   packageJson.exports ??= {};
-  packageJson.exports["./package.json"] = "./package.json";
+  packageJson.exports["./package.json"] ??= "./package.json";
 
   const files = await new Glob("**/*.{ts,tsx}", {
     absolute: false,
@@ -489,15 +642,16 @@ export const addPackageJsonExports = async (
     root: sourceRoot
   }).walk();
   files.forEach(file => {
+    addPackageJsonExport(file, sourceRoot);
+
     const split = file.split(".");
     split.pop();
     const entry = split.join(".").replaceAll("\\", "/");
 
-    packageJson.exports[`./${entry}`] = {
-      import: `./dist/${entry}.mjs`,
-      require: `./dist/${entry}.cjs`,
-      types: `./dist/${entry}.d.ts`
-    };
+    packageJson.exports[`./${entry}`] ??= addPackageJsonExport(
+      entry,
+      sourceRoot
+    );
   });
 
   return packageJson;
