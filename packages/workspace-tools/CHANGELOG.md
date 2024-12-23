@@ -1,8 +1,15 @@
+## 1.207.4 (2024-12-23)
+
+### Bug Fixes
+
+- **workspace-tools:** Add wildcards to `tsup` plugin ([dbcb6385](https://github.com/storm-software/storm-ops/commit/dbcb6385))
+
 ## 1.207.3 (2024-12-23)
 
 ### Bug Fixes
 
-- **workspace-tools:** Use relative routes in `tsup` plugin ([3de402c5](https://github.com/storm-software/storm-ops/commit/3de402c5))
+- **workspace-tools:** Use relative routes in `tsup` plugin
+  ([3de402c5](https://github.com/storm-software/storm-ops/commit/3de402c5))
 
 ## 1.207.2 (2024-12-23)
 
