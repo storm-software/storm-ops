@@ -1,8 +1,15 @@
+## 1.209.2 (2024-12-23)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with `inputs` path provided to plugin ([2fbc92e0](https://github.com/storm-software/storm-ops/commit/2fbc92e0))
+
 ## 1.209.1 (2024-12-23)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolved logging issue in `tsup` plugin ([0b6bfc9e](https://github.com/storm-software/storm-ops/commit/0b6bfc9e))
+- **workspace-tools:** Resolved logging issue in `tsup` plugin
+  ([0b6bfc9e](https://github.com/storm-software/storm-ops/commit/0b6bfc9e))
 
 ## 1.209.0 (2024-12-23)
 
