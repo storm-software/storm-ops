@@ -1,8 +1,15 @@
+## 1.209.0 (2024-12-23)
+
+### Features
+
+- **pulumi-tools:** Initial check-in of the `pulumi-tools` package ([6b03c2ae](https://github.com/storm-software/storm-ops/commit/6b03c2ae))
+
 ## 1.208.0 (2024-12-23)
 
 ### Features
 
-- **workspace-tools:** Upgrade `tsup` plugin to `CreateNodesV2` format ([43d9b177](https://github.com/storm-software/storm-ops/commit/43d9b177))
+- **workspace-tools:** Upgrade `tsup` plugin to `CreateNodesV2` format
+  ([43d9b177](https://github.com/storm-software/storm-ops/commit/43d9b177))
 
 ## 1.207.4 (2024-12-23)
 

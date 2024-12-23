@@ -186,9 +186,9 @@
   "devDependencies": {
     "@nx/devkit": "^20.2.2",
     "@nx/js": "^20.2.2",
-    "@storm-software/build-tools": "0.110.0",
-    "@storm-software/config": "1.79.0",
-    "@storm-software/config-tools": "1.118.0",
+    "@storm-software/build-tools": "0.111.0",
+    "@storm-software/config": "1.80.0",
+    "@storm-software/config-tools": "1.119.0",
     "@swc/core": "^1.5.29",
     "@types/rollup": "^0.54.0",
     "nx": "^20.2.2",
