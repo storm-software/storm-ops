@@ -1,3 +1,9 @@
+## 1.79.0 (2024-12-23)
+
+### Features
+
+- **workspace-tools:** Added the `storm-software/typescript/tsup` plugin ([8e74c512](https://github.com/storm-software/storm-ops/commit/8e74c512))
+
 ## 1.78.0 (2024-12-22)
 
 ### Features
