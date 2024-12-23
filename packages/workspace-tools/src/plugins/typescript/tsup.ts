@@ -74,7 +74,11 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
 
           targets["build-base"] ??= {
             cache: true,
-            inputs: [configFile, "typescript", "^production"],
+            inputs: [
+              `{workspaceRoot}/${configFile}`,
+              "typescript",
+              "^production"
+            ],
             executor: "nx:run-commands",
             dependsOn: ["clean", "^build"],
             options: {
@@ -85,7 +89,7 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
 
           targets.build ??= {
             cache: true,
-            inputs: [configFile, "typescript", "^production"],
+            inputs: ["typescript", "^production"],
             executor: "nx:run-commands",
             dependsOn: ["build-base"],
             options: {
@@ -99,7 +103,11 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
 
           targets.clean = {
             executor: "nx:run-commands",
-            inputs: [configFile, "typescript", "^production"],
+            inputs: [
+              `{workspaceRoot}/${configFile}`,
+              "typescript",
+              "^production"
+            ],
             options: {
               commands: [
                 `pnpm exec rimraf dist/${relativeRoot}`,
