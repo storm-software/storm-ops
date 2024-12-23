@@ -12,7 +12,7 @@ import { setDefaultProjectTags } from "../../utils/project-tags";
 export const name = "storm-software/typescript/tsup";
 
 export const createNodes: CreateNodes = [
-  "**/tsup.config.{,c,m}{j,t}s",
+  "*/**/tsup.config.*",
   (file, opts, ctx) => {
     const projectRoot = createProjectRoot(file, ctx.workspaceRoot);
     if (!projectRoot) {
@@ -45,7 +45,7 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
       nxJson
     );
 
-    if (!targets.build) {
+    if (!targets["build-base"]) {
       targets["build-base"] = {
         cache: true,
         inputs: [file, "typescript", "^production"],
@@ -57,10 +57,12 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
           cwd: "{projectRoot}"
         }
       };
+    }
 
+    if (!targets.build) {
       targets.build = {
         cache: true,
-        inputs: ["typescript", "^production"],
+        inputs: [file, "typescript", "^production"],
         outputs: ["{workspaceRoot}/dist/{projectRoot}"],
         executor: "nx:run-commands",
         dependsOn: ["build-base"],
