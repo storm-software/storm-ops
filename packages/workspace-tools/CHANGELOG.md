@@ -1,8 +1,15 @@
+## 1.209.1 (2024-12-23)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved logging issue in `tsup` plugin ([0b6bfc9e](https://github.com/storm-software/storm-ops/commit/0b6bfc9e))
+
 ## 1.209.0 (2024-12-23)
 
 ### Features
 
-- **pulumi-tools:** Initial check-in of the `pulumi-tools` package ([6b03c2ae](https://github.com/storm-software/storm-ops/commit/6b03c2ae))
+- **pulumi-tools:** Initial check-in of the `pulumi-tools` package
+  ([6b03c2ae](https://github.com/storm-software/storm-ops/commit/6b03c2ae))
 
 ## 1.208.0 (2024-12-23)
 
