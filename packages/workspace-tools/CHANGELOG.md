@@ -1,8 +1,15 @@
+## 1.207.2 (2024-12-23)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with `output` property of `build` target ([735e496d](https://github.com/storm-software/storm-ops/commit/735e496d))
+
 ## 1.207.1 (2024-12-23)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue with `tsup` plugin's regex ([3f0e2c52](https://github.com/storm-software/storm-ops/commit/3f0e2c52))
+- **workspace-tools:** Resolve issue with `tsup` plugin's regex
+  ([3f0e2c52](https://github.com/storm-software/storm-ops/commit/3f0e2c52))
 
 ## 1.207.0 (2024-12-23)
 
