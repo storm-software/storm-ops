@@ -1,8 +1,15 @@
+## 1.208.0 (2024-12-23)
+
+### Features
+
+- **workspace-tools:** Upgrade `tsup` plugin to `CreateNodesV2` format ([43d9b177](https://github.com/storm-software/storm-ops/commit/43d9b177))
+
 ## 1.207.4 (2024-12-23)
 
 ### Bug Fixes
 
-- **workspace-tools:** Add wildcards to `tsup` plugin ([dbcb6385](https://github.com/storm-software/storm-ops/commit/dbcb6385))
+- **workspace-tools:** Add wildcards to `tsup` plugin
+  ([dbcb6385](https://github.com/storm-software/storm-ops/commit/dbcb6385))
 
 ## 1.207.3 (2024-12-23)
 
