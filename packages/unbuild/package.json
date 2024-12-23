@@ -145,7 +145,7 @@
     "@swc/core": "^1.5.29",
     "nx": "^20.2.2",
     "rollup": "^4.29.1",
-    "typescript": ">=5.5.3",
+    "typescript": "^5.7.2",
     "unbuild": "^2.0.0"
   },
   "peerDependenciesMeta": {
@@ -186,14 +186,14 @@
   "devDependencies": {
     "@nx/devkit": "^20.2.2",
     "@nx/js": "^20.2.2",
-    "@storm-software/build-tools": "0.109.0",
+    "@storm-software/build-tools": "workspace:*",
     "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "1.117.0",
+    "@storm-software/config-tools": "workspace:*",
     "@swc/core": "^1.5.29",
     "@types/rollup": "^0.54.0",
     "nx": "^20.2.2",
     "tsup": "^8.3.5",
-    "typescript": ">=5.5.3",
+    "typescript": "^5.7.2",
     "unbuild": "^2.0.0"
   },
   "publishConfig": {
