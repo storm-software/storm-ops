@@ -1,8 +1,15 @@
+## 1.207.1 (2024-12-23)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with `tsup` plugin's regex ([3f0e2c52](https://github.com/storm-software/storm-ops/commit/3f0e2c52))
+
 ## 1.207.0 (2024-12-23)
 
 ### Features
 
-- **workspace-tools:** Added the `storm-software/typescript/tsup` plugin ([8e74c512](https://github.com/storm-software/storm-ops/commit/8e74c512))
+- **workspace-tools:** Added the `storm-software/typescript/tsup` plugin
+  ([8e74c512](https://github.com/storm-software/storm-ops/commit/8e74c512))
 
 ## 1.206.0 (2024-12-22)
 
