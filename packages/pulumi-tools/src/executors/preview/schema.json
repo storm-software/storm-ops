@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "outputCapture": "direct-nodejs",
+  "title": "Pulumi `preview` Command Executor",
+  "description": "Run the `preview` command using the workspaces Pulumi IoC CLI",
+  "type": "object",
+  "properties": {
+    "stack": {
+      "type": "string",
+      "description": "The target stack to use, if specified."
+    },
+    "root": {
+      "type": "string",
+      "description": "The working directory to run Pulumi commands from, if specified."
+    },
+    "expectNoChanges": {
+      "type": "boolean"
+    }
+  },
+  "required": []
+}

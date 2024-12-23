@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "outputCapture": "direct-nodejs",
+  "title": "Pulumi `config` Command Executor",
+  "description": "Run the `config` command using the workspaces Pulumi IoC CLI",
+  "type": "object",
+  "properties": {
+    "stack": {
+      "type": "string",
+      "description": "The target stack to use, if specified."
+    },
+    "root": {
+      "type": "string",
+      "description": "The working directory to run Pulumi commands from, if specified."
+    },
+    "action": {
+      "type": "string",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "path": {
+      "type": "boolean"
+    },
+    "secret": {
+      "type": "boolean"
+    },
+    "name": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  },
+  "required": ["action"]
+}

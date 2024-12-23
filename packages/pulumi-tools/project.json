@@ -1,0 +1,85 @@
+{
+  "name": "pulumi-tools",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/pulumi-tools/src",
+  "projectType": "library",
+  "implicitDependencies": ["workspace-tools", "config-tools", "config"],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "inputs": ["typescript", "^production"],
+      "dependsOn": ["clean", "format", "^build"],
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/pulumi-tools",
+        "tsConfig": "packages/pulumi-tools/tsconfig.lib.json",
+        "project": "packages/pulumi-tools/package.json",
+        "main": "packages/pulumi-tools/src/index.ts",
+        "additionalEntryPoints": [
+          "packages/pulumi-tools/src/executors/config/executor.ts",
+          "packages/pulumi-tools/src/executors/import/executor.ts",
+          "packages/pulumi-tools/src/executors/preview/executor.ts",
+          "packages/pulumi-tools/src/executors/refresh/executor.ts",
+          "packages/pulumi-tools/src/executors/up/executor.ts",
+          "packages/pulumi-tools/src/generators/init/generator.ts"
+        ],
+        "platform": "node",
+        "deleteOutputPath": true,
+        "bundle": true,
+        "thirdParty": true,
+        "skipTypeCheck": false,
+        "metafile": true,
+        "minify": false,
+        "format": ["cjs"],
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".js"
+          }
+        },
+        "external": ["nx", "@nx/*", "@storm-software/*", "@pulumi/*"],
+        "assets": [
+          {
+            "input": "packages/pulumi-tools",
+            "glob": "**/files/**",
+            "output": "/"
+          },
+          {
+            "input": "packages/pulumi-tools",
+            "glob": "**/files/**/.gitkeep",
+            "output": "/"
+          },
+          {
+            "input": "packages/pulumi-tools",
+            "glob": "**/*.json",
+            "ignore": ["**/tsconfig*.json", "project.json", ".eslintrc.json"],
+            "output": "."
+          },
+          {
+            "input": "packages/pulumi-tools",
+            "glob": "**/*.js",
+            "ignore": ["**/jest.config.js"],
+            "output": "."
+          },
+          {
+            "input": "packages/pulumi-tools",
+            "glob": "**/*.d.ts",
+            "output": "."
+          },
+          {
+            "input": "packages/pulumi-tools",
+            "glob": "*.md",
+            "output": "."
+          },
+          {
+            "input": "",
+            "glob": "LICENSE",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  }
+}

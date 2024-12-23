@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "outputCapture": "direct-nodejs",
+  "title": "Pulumi `refresh` Command Executor",
+  "description": "Run the `refresh` command using the workspaces Pulumi IoC CLI",
+  "type": "object",
+  "properties": {
+    "stack": {
+      "type": "string",
+      "description": "The target stack to use, if specified."
+    },
+    "root": {
+      "type": "string",
+      "description": "The working directory to run Pulumi commands from, if specified."
+    },
+    "skipPreview": {
+      "type": "boolean",
+      "description": "A boolean flag to skip the preview step.",
+      "default": false
+    },
+    "yes": {
+      "type": "boolean",
+      "description": "A boolean flag to automatically approve the refresh.",
+      "default": false
+    }
+  },
+  "required": ["skipPreview", "yes"]
+}

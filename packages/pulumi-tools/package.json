@@ -1,0 +1,81 @@
+{
+  "name": "@storm-software/pulumi-tools",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "description": "Tools for managing Pulumi infrastructure within a Nx workspace.",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/pulumi-tools"
+  },
+  "homepage": "https://stormsoftware.com",
+  "bugs": {
+    "url": "https://github.com/storm-software/storm-ops/issues",
+    "email": "support@stormsoftware.com"
+  },
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "license": "Apache-2.0",
+  "private": false,
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json",
+    "./generators.json": "./generators.json",
+    "./generators/*/schema.json": "./src/generators/*/schema.json",
+    "./executors.json": "./executors.json",
+    "./executors/*/schema.json": "./src/executors/*/schema.json",
+    "./plugins": "./src/plugins/index.js",
+    "./utils": "./src/utils/index.js"
+  },
+  "typings": "./declarations.d.ts",
+  "keywords": [
+    "storm",
+    "storm-ops",
+    "pulumi",
+    "iac",
+    "infrastructure",
+    "storm-stack",
+    "sullivanpj",
+    "monorepo"
+  ],
+  "peerDependencies": {
+    "@nx/devkit": "^20.2.2",
+    "@nx/workspace": "^20.2.2",
+    "@pulumi/pulumi": "^3.144.1",
+    "nx": "^20.2.2"
+  },
+  "peerDependenciesMeta": {
+    "@nx/devkit": {
+      "optional": false
+    },
+    "@nx/workspace": {
+      "optional": false
+    },
+    "@pulumi/pulumi": {
+      "optional": false
+    },
+    "nx": {
+      "optional": false
+    }
+  },
+  "dependencies": {
+    "@nx/devkit": "20.2.2",
+    "@pulumi/pulumi": "^3.144.1",
+    "shelljs": "^0.8.5",
+    "tslib": "^2.6.3"
+  },
+  "devDependencies": {
+    "@nx/devkit": "^20.2.2",
+    "@nx/workspace": "^20.2.2",
+    "nx": "^20.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "executors": "./executors.json",
+  "generators": "./generators.json"
+}

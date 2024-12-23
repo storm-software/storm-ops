@@ -2,7 +2,8 @@
 
 ### Bug Fixes
 
-- **workspace-tools:** Add wildcards to `tsup` plugin ([dbcb6385](https://github.com/storm-software/storm-ops/commit/dbcb6385))
+- **workspace-tools:** Add wildcards to `tsup` plugin
+  ([dbcb6385](https://github.com/storm-software/storm-ops/commit/dbcb6385))
 
 ## 1.207.3 (2024-12-23)
 

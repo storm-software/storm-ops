@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "outputCapture": "direct-nodejs",
+  "title": "Pulumi `up` Command Executor",
+  "description": "Run the `up` command using the workspaces Pulumi IoC CLI",
+  "type": "object",
+  "properties": {
+    "stack": {
+      "type": "string",
+      "description": "The target stack to use, if specified."
+    },
+    "root": {
+      "type": "string",
+      "description": "The working directory to run Pulumi commands from, if specified."
+    },
+    "skipPreview": {
+      "type": "boolean",
+      "description": "A boolean flag to skip the preview step.",
+      "default": false
+    },
+    "yes": {
+      "type": "boolean",
+      "description": "A boolean flag to automatically approve the `up` command.",
+      "default": false
+    },
+    "suppressOutputs": {
+      "type": "boolean",
+      "description": "A boolean flag to suppress outputs in the `up` command.",
+      "default": false
+    },
+    "json": {
+      "type": "boolean",
+      "description": "A boolean flag to output the `up` command as JSON.",
+      "default": false
+    }
+  },
+  "required": ["skipPreview", "yes", "suppressOutputs", "json"]
+}

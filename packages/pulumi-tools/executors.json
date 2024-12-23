@@ -1,0 +1,29 @@
+{
+  "executors": {
+    "config": {
+      "implementation": "./src/executors/config/executor",
+      "schema": "./src/executors/config/schema.json",
+      "description": "An executor to run the `config` pulumi CLI command"
+    },
+    "import": {
+      "implementation": "./src/executors/import/executor",
+      "schema": "./src/executors/import/schema.json",
+      "description": "An executor to run the `import` pulumi CLI command"
+    },
+    "preview": {
+      "implementation": "./src/executors/preview/executor",
+      "schema": "./src/executors/preview/schema.json",
+      "description": "An executor to run the `preview` pulumi CLI command"
+    },
+    "refresh": {
+      "implementation": "./src/executors/refresh/executor",
+      "schema": "./src/executors/refresh/schema.json",
+      "description": "An executor to run the `refresh` pulumi CLI command"
+    },
+    "up": {
+      "implementation": "./src/executors/up/executor",
+      "schema": "./src/executors/up/schema.json",
+      "description": "An executor to run the `up` pulumi CLI command"
+    }
+  }
+}
