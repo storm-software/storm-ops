@@ -55,7 +55,7 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
     targets["build-base"] = {
       cache: true,
       inputs: [file, "typescript", "^production"],
-      outputs: [`${relativeRoot}/dist`],
+      outputs: [`${relativeRoot}/dist/**/*`],
       executor: "nx:run-commands",
       dependsOn: ["clean", "^build"],
       options: {
@@ -67,7 +67,7 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
     targets.build = {
       cache: true,
       inputs: [file, "typescript", "^production"],
-      outputs: [`dist/${relativeRoot}`],
+      outputs: [`dist/${relativeRoot}/**/*`],
       executor: "nx:run-commands",
       dependsOn: ["build-base"],
       options: {
