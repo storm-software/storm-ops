@@ -200,14 +200,16 @@ export type ProjectTagVariant =
   | "dist-style"
   | "provider"
   | "platform"
-  | "registry";
+  | "registry"
+  | "plugin";
 export const ProjectTagVariant = {
   LANGUAGE: "language" as ProjectTagVariant,
   TYPE: "type" as ProjectTagVariant,
   DIST_STYLE: "dist-style" as ProjectTagVariant,
   PROVIDER: "provider" as ProjectTagVariant,
   PLATFORM: "platform" as ProjectTagVariant,
-  REGISTRY: "registry" as ProjectTagVariant
+  REGISTRY: "registry" as ProjectTagVariant,
+  PLUGIN: "plugin" as ProjectTagVariant
 };
 
 export type ProjectTagLanguageValue = "typescript" | "rust";

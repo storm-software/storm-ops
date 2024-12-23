@@ -45,6 +45,9 @@ export const ProjectTagConstants = {
     NPM: "npm" as ProjectTagRegistryValue,
     CONTAINER: "container" as ProjectTagRegistryValue,
     CYCLONE: "cyclone" as ProjectTagRegistryValue
+  },
+  Plugin: {
+    TAG_ID: "plugin" as ProjectTagVariant
   }
 } as const;
 
@@ -108,7 +111,20 @@ export const addProjectTag = (
   }
 };
 
-export const setDefaultProjectTags = (project: ProjectConfiguration) => {
+export const addPluginProjectTag = (
+  project: ProjectConfiguration,
+  plugin: string
+) => {
+  project.tags = project.tags ?? [];
+  project.tags.push(
+    formatProjectTag(ProjectTagConstants.Plugin.TAG_ID, plugin)
+  );
+};
+
+export const setDefaultProjectTags = (
+  project: ProjectConfiguration,
+  plugin?: string
+) => {
   project.tags = project.tags ?? [];
 
   addProjectTag(
@@ -139,4 +155,8 @@ export const setDefaultProjectTags = (project: ProjectConfiguration) => {
           : ProjectTagConstants.Platform.NEUTRAL,
     { overwrite: false }
   );
+
+  if (plugin) {
+    addPluginProjectTag(project, plugin);
+  }
 };

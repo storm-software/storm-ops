@@ -42,6 +42,7 @@
           "packages/workspace-tools/src/generators/config-schema/generator.ts",
           "packages/workspace-tools/src/plugins/rust/index.ts",
           "packages/workspace-tools/src/plugins/typescript/index.ts",
+          "packages/workspace-tools/src/plugins/typescript/tsup.ts",
           "packages/workspace-tools/src/utils/index.ts",
           "packages/workspace-tools/src/utils/project-tags.ts",
           "packages/workspace-tools/src/utils/toml.ts",

@@ -2,8 +2,10 @@
 
 ### Features
 
-- **unbuild:** Initial check-in of the `unbuild` package ([fc246154](https://github.com/storm-software/storm-ops/commit/fc246154))
-- **esbuild:** Added copy-assets and reporting build steps ([d8372730](https://github.com/storm-software/storm-ops/commit/d8372730))
+- **unbuild:** Initial check-in of the `unbuild` package
+  ([fc246154](https://github.com/storm-software/storm-ops/commit/fc246154))
+- **esbuild:** Added copy-assets and reporting build steps
+  ([d8372730](https://github.com/storm-software/storm-ops/commit/d8372730))
 
 ## 0.108.0 (2024-12-22)
 

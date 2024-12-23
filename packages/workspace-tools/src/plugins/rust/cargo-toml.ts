@@ -22,7 +22,7 @@ import {
 } from "../../utils/project-tags";
 import type { Package } from "../../utils/toml";
 
-export const name = "storm-software/rust/cargo-toml";
+export const name = "storm-software/rust";
 export const description = "Plugin for parsing Cargo.toml files";
 
 export type CargoPluginProfileMap = Record<string, string> & {
@@ -290,7 +290,7 @@ export const createNodes: CreateNodes<CargoPluginOptions> = [
             ProjectTagConstants.Language.RUST,
             { overwrite: true }
           );
-          setDefaultProjectTags(project);
+          setDefaultProjectTags(project, name);
 
           projects[root] = {
             ...project,

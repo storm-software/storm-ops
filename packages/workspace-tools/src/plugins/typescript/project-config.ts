@@ -15,7 +15,7 @@ import {
   setDefaultProjectTags
 } from "../../utils/project-tags";
 
-export const name = "storm-software/typescript/project-config";
+export const name = "storm-software/typescript";
 
 export interface TypeScriptPluginOptions {
   includeApps?: boolean;
@@ -248,7 +248,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       ProjectTagConstants.Language.TYPESCRIPT,
       { overwrite: true }
     );
-    setDefaultProjectTags(project);
+    setDefaultProjectTags(project, name);
 
     return project?.name
       ? {
