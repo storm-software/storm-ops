@@ -11,8 +11,8 @@ import { setDefaultProjectTags } from "../../utils/project-tags";
 
 export const name = "storm-software/typescript/tsup";
 
-export const createNodes: CreateNodes = [
-  "*/**/tsup.config.*",
+export const createNodes: CreateNodes<any> = [
+  "**/tsup.config.ts",
   (file, opts, ctx) => {
     const projectRoot = createProjectRoot(file, ctx.workspaceRoot);
     if (!projectRoot) {
@@ -45,50 +45,43 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
       nxJson
     );
 
-    if (!targets["build-base"]) {
-      targets["build-base"] = {
-        cache: true,
-        inputs: [file, "typescript", "^production"],
-        outputs: ["{workspaceRoot}/{projectRoot}/dist"],
-        executor: "nx:run-commands",
-        dependsOn: ["clean", "^build"],
-        options: {
-          command: `tsup --config="${file}"`,
-          cwd: "{projectRoot}"
-        }
-      };
-    }
+    targets["build-base"] = {
+      cache: true,
+      inputs: [file, "typescript", "^production"],
+      outputs: ["{projectRoot}/dist"],
+      executor: "nx:run-commands",
+      dependsOn: ["clean", "^build"],
+      options: {
+        command: `tsup --config="${file}"`,
+        cwd: "{projectRoot}"
+      }
+    };
 
-    if (!targets.build) {
-      targets.build = {
-        cache: true,
-        inputs: [file, "typescript", "^production"],
-        outputs: ["{workspaceRoot}/dist/{projectRoot}"],
-        executor: "nx:run-commands",
-        dependsOn: ["build-base"],
-        options: {
-          commands: [
-            `pnpm copyfiles LICENSE dist/${projectRoot}`,
-            `pnpm copyfiles --up=2 ./${projectRoot}/README.md ./${projectRoot}/package.json dist/${projectRoot}`,
-            `pnpm copyfiles --up=3 ./${projectRoot}/dist/* dist/${projectRoot}/dist`
-          ]
-        }
-      };
-    }
+    targets.build = {
+      cache: true,
+      inputs: [file, "typescript", "^production"],
+      outputs: ["dist/{projectRoot}"],
+      executor: "nx:run-commands",
+      dependsOn: ["build-base"],
+      options: {
+        commands: [
+          `pnpm copyfiles LICENSE dist/${projectRoot}`,
+          `pnpm copyfiles --up=2 ./${projectRoot}/README.md ./${projectRoot}/package.json dist/${projectRoot}`,
+          `pnpm copyfiles --up=3 ./${projectRoot}/dist/* dist/${projectRoot}/dist`
+        ]
+      }
+    };
 
-    if (!targets.clean) {
-      targets.clean = {
-        cache: true,
-        executor: "nx:run-commands",
-        inputs: ["typescript", "^production"],
-        outputs: ["{workspaceRoot}/dist/{projectRoot}"],
-        options: {
-          command: "pnpm exec rimraf dist/{projectRoot}",
-          color: true,
-          cwd: "{workspaceRoot}"
-        }
-      };
-    }
+    targets.clean = {
+      executor: "nx:run-commands",
+      inputs: [file, "typescript", "^production"],
+      options: {
+        commands: [
+          "pnpm exec rimraf dist/{projectRoot}",
+          "pnpm exec rimraf {projectRoot}/dist"
+        ]
+      }
+    };
 
     setDefaultProjectTags(project, name);
 
