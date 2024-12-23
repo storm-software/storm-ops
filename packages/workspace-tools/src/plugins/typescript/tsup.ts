@@ -45,29 +45,36 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
       nxJson
     );
 
+    let relativeRoot = projectRoot
+      .replace(ctx.workspaceRoot, "")
+      .replaceAll("\\", "/");
+    if (relativeRoot.startsWith("/")) {
+      relativeRoot = relativeRoot.slice(1);
+    }
+
     targets["build-base"] = {
       cache: true,
       inputs: [file, "typescript", "^production"],
-      outputs: ["{projectRoot}/dist"],
+      outputs: [`${relativeRoot}/dist`],
       executor: "nx:run-commands",
       dependsOn: ["clean", "^build"],
       options: {
         command: `tsup --config="${file}"`,
-        cwd: "{projectRoot}"
+        cwd: relativeRoot
       }
     };
 
     targets.build = {
       cache: true,
       inputs: [file, "typescript", "^production"],
-      outputs: ["dist/{projectRoot}"],
+      outputs: [`dist/${relativeRoot}`],
       executor: "nx:run-commands",
       dependsOn: ["build-base"],
       options: {
         commands: [
-          `pnpm copyfiles LICENSE dist/${projectRoot}`,
-          `pnpm copyfiles --up=2 ./${projectRoot}/README.md ./${projectRoot}/package.json dist/${projectRoot}`,
-          `pnpm copyfiles --up=3 ./${projectRoot}/dist/* dist/${projectRoot}/dist`
+          `pnpm copyfiles LICENSE dist/${relativeRoot}`,
+          `pnpm copyfiles --up=2 ./${relativeRoot}/README.md ./${relativeRoot}/package.json dist/${relativeRoot}`,
+          `pnpm copyfiles --up=3 ./${relativeRoot}/dist/* dist/${relativeRoot}/dist`
         ]
       }
     };
@@ -77,8 +84,8 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
       inputs: [file, "typescript", "^production"],
       options: {
         commands: [
-          "pnpm exec rimraf dist/{projectRoot}",
-          "pnpm exec rimraf {projectRoot}/dist"
+          `pnpm exec rimraf dist/${relativeRoot}`,
+          `pnpm exec rimraf ${relativeRoot}/dist`
         ]
       }
     };
