@@ -24,100 +24,106 @@ export const createNodesV2: CreateNodesV2<TsupPluginOptions> = [
   async (configFiles, options, context): Promise<CreateNodesResultV2> => {
     return await createNodesFromFiles(
       (configFile, options, context) => {
-        console.log(`Processing tsup.config.ts file: ${configFile}`);
+        try {
+          console.log(`Processing tsup.config.ts file: ${configFile}`);
 
-        const projectRoot = createProjectRoot(
-          configFile,
-          context.workspaceRoot
-        );
-        if (!projectRoot) {
-          console.error(
-            `tsup.config.ts file must be location in the project root directory: ${configFile}`
+          const projectRoot = createProjectRoot(
+            configFile,
+            context.workspaceRoot
           );
-          return {};
-        }
+          if (!projectRoot) {
+            console.error(
+              `tsup.config.ts file must be location in the project root directory: ${configFile}`
+            );
+            return {};
+          }
 
-        const packageJson = readJsonFile(join(projectRoot, "package.json"));
-        if (!packageJson) {
-          console.error(
-            `No package.json found in project root: ${projectRoot}`
-          );
-          return {};
-        }
-        if (
-          !packageJson.devDependencies?.tsup &&
-          !packageJson.dependencies?.tsup
-        ) {
-          console.warn(
-            `No "tsup" dependency or devDependency found in package.json: ${configFile}
+          const packageJson = readJsonFile(join(projectRoot, "package.json"));
+          if (!packageJson) {
+            console.error(
+              `No package.json found in project root: ${projectRoot}`
+            );
+            return {};
+          }
+
+          if (
+            !packageJson.devDependencies?.tsup &&
+            !packageJson.dependencies?.tsup
+          ) {
+            console.warn(
+              `No "tsup" dependency or devDependency found in package.json: ${configFile}
 Please add it to your dependencies by running "pnpm add tsup -D --filter="${packageJson.name}"`
+            );
+          }
+
+          const project = createProjectFromPackageJsonNextToProjectJson(
+            join(projectRoot, "project.json"),
+            packageJson
           );
-        }
 
-        const project = createProjectFromPackageJsonNextToProjectJson(
-          join(projectRoot, "project.json"),
-          packageJson
-        );
+          const nxJson = readNxJson(context.workspaceRoot);
+          const targets: ProjectConfiguration["targets"] =
+            readTargetsFromPackageJson(packageJson, nxJson);
 
-        const nxJson = readNxJson(context.workspaceRoot);
-        const targets: ProjectConfiguration["targets"] =
-          readTargetsFromPackageJson(packageJson, nxJson);
-
-        let relativeRoot = projectRoot
-          .replace(context.workspaceRoot, "")
-          .replaceAll("\\", "/");
-        if (relativeRoot.startsWith("/")) {
-          relativeRoot = relativeRoot.slice(1);
-        }
-
-        targets["build-base"] = {
-          cache: true,
-          inputs: [configFile, "typescript", "^production"],
-          executor: "nx:run-commands",
-          dependsOn: ["clean", "^build"],
-          options: {
-            command: `tsup --config="${configFile}"`,
-            cwd: relativeRoot
+          let relativeRoot = projectRoot
+            .replace(context.workspaceRoot, "")
+            .replaceAll("\\", "/");
+          if (relativeRoot.startsWith("/")) {
+            relativeRoot = relativeRoot.slice(1);
           }
-        };
 
-        targets.build = {
-          cache: true,
-          inputs: [configFile, "typescript", "^production"],
-          executor: "nx:run-commands",
-          dependsOn: ["build-base"],
-          options: {
-            commands: [
-              `pnpm copyfiles LICENSE dist/${relativeRoot}`,
-              `pnpm copyfiles --up=2 ./${relativeRoot}/README.md ./${relativeRoot}/package.json dist/${relativeRoot}`,
-              `pnpm copyfiles --up=3 ./${relativeRoot}/dist/* dist/${relativeRoot}/dist`
-            ]
-          }
-        };
+          targets["build-base"] ??= {
+            cache: true,
+            inputs: [configFile, "typescript", "^production"],
+            executor: "nx:run-commands",
+            dependsOn: ["clean", "^build"],
+            options: {
+              command: `tsup --config="${configFile}"`,
+              cwd: relativeRoot
+            }
+          };
 
-        targets.clean = {
-          executor: "nx:run-commands",
-          inputs: [configFile, "typescript", "^production"],
-          options: {
-            commands: [
-              `pnpm exec rimraf dist/${relativeRoot}`,
-              `pnpm exec rimraf ${relativeRoot}/dist`
-            ]
-          }
-        };
+          targets.build ??= {
+            cache: true,
+            inputs: [configFile, "typescript", "^production"],
+            executor: "nx:run-commands",
+            dependsOn: ["build-base"],
+            options: {
+              commands: [
+                `pnpm copyfiles LICENSE dist/${relativeRoot}`,
+                `pnpm copyfiles --up=2 ./${relativeRoot}/README.md ./${relativeRoot}/package.json dist/${relativeRoot}`,
+                `pnpm copyfiles --up=3 ./${relativeRoot}/dist/* dist/${relativeRoot}/dist`
+              ]
+            }
+          };
 
-        setDefaultProjectTags(project, name);
+          targets.clean = {
+            executor: "nx:run-commands",
+            inputs: [configFile, "typescript", "^production"],
+            options: {
+              commands: [
+                `pnpm exec rimraf dist/${relativeRoot}`,
+                `pnpm exec rimraf ${relativeRoot}/dist`
+              ]
+            }
+          };
 
-        return project?.name
-          ? {
-              projects: {
-                [project.name]: {
-                  ...project,
-                  targets
+          setDefaultProjectTags(project, name);
+
+          return project?.name
+            ? {
+                projects: {
+                  [project.name]: {
+                    ...project,
+                    targets
+                  }
                 }
               }
-            }
-          : {};
+            : {};
+        } catch (e) {
+          console.error(e);
+          return {};
+        }
       },
       configFiles,
       options,
@@ -132,12 +138,15 @@ function createProjectFromPackageJsonNextToProjectJson(
 ): ProjectConfiguration {
   const { nx, name } = packageJson;
   const root = dirname(projectJsonPath);
+  const projectJson = readJsonFile(projectJsonPath);
 
   return {
+    targets: {},
+    tags: [],
     ...nx,
+    ...projectJson,
     name,
-    root,
-    targets: {}
+    root
   } as ProjectConfiguration;
 }
 
