@@ -1,8 +1,15 @@
+## 1.207.3 (2024-12-23)
+
+### Bug Fixes
+
+- **workspace-tools:** Use relative routes in `tsup` plugin ([3de402c5](https://github.com/storm-software/storm-ops/commit/3de402c5))
+
 ## 1.207.2 (2024-12-23)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue with `output` property of `build` target ([735e496d](https://github.com/storm-software/storm-ops/commit/735e496d))
+- **workspace-tools:** Resolve issue with `output` property of `build` target
+  ([735e496d](https://github.com/storm-software/storm-ops/commit/735e496d))
 
 ## 1.207.1 (2024-12-23)
 
