@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/workspace-tools",
-  "version": "1.209.2",
+  "version": "1.210.0",
   "type": "commonjs",
   "description": "Tools for managing a Storm workspace, including various Nx generators and executors for common development tasks.",
   "repository": {

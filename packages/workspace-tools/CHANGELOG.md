@@ -1,8 +1,15 @@
+## 1.210.0 (2024-12-25)
+
+### Features
+
+- **workspace-tools:** Added results logging to `tsup` plugin ([adca1139](https://github.com/storm-software/storm-ops/commit/adca1139))
+
 ## 1.209.2 (2024-12-23)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue with `inputs` path provided to plugin ([2fbc92e0](https://github.com/storm-software/storm-ops/commit/2fbc92e0))
+- **workspace-tools:** Resolve issue with `inputs` path provided to plugin
+  ([2fbc92e0](https://github.com/storm-software/storm-ops/commit/2fbc92e0))
 
 ## 1.209.1 (2024-12-23)
 
