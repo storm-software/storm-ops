@@ -118,7 +118,7 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
 
           setDefaultProjectTags(project, name);
 
-          return project?.name
+          const result = project?.name
             ? {
                 projects: {
                   [project.name]: {
@@ -128,6 +128,10 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
                 }
               }
             : {};
+          console.log(`Writing Results for ${project?.name ?? "missing name"}`);
+          console.log(result);
+
+          return result;
         } catch (e) {
           console.error(e);
           return {};
