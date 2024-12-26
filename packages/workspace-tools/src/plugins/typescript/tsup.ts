@@ -155,9 +155,9 @@ function createProjectFromPackageJsonNextToProjectJson(
   return {
     targets: {},
     tags: [],
+    name,
     ...nx,
     ...projectJson,
-    name,
     root
   } as ProjectConfiguration;
 }
