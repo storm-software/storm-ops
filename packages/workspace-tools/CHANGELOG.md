@@ -1,8 +1,15 @@
+## 1.210.3 (2024-12-26)
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure `workspaceRoot` is normalized before `replaceAll` call ([08a43caf](https://github.com/storm-software/storm-ops/commit/08a43caf))
+
 ## 1.210.2 (2024-12-26)
 
 ### Bug Fixes
 
-- **workspace-tools:** Update the `tsup` plugin to generate correct `root` paths ([520a4d8b](https://github.com/storm-software/storm-ops/commit/520a4d8b))
+- **workspace-tools:** Update the `tsup` plugin to generate correct `root` paths
+  ([520a4d8b](https://github.com/storm-software/storm-ops/commit/520a4d8b))
 
 ## 1.210.1 (2024-12-26)
 
