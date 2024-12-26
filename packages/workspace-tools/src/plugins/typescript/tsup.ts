@@ -66,8 +66,8 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
             readTargetsFromPackageJson(packageJson, nxJson);
 
           let relativeRoot = projectRoot
-            .replace(context.workspaceRoot, "")
-            .replaceAll("\\", "/");
+            .replaceAll("\\", "/")
+            .replace(context.workspaceRoot, "");
           if (relativeRoot.startsWith("/")) {
             relativeRoot = relativeRoot.slice(1);
           }
@@ -123,6 +123,7 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
                 projects: {
                   [project.name]: {
                     ...project,
+                    root: relativeRoot,
                     targets
                   }
                 }
