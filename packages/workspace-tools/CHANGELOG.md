@@ -1,8 +1,15 @@
+## 1.210.1 (2024-12-26)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve project naming issue with `tsup` plugin ([3cda4391](https://github.com/storm-software/storm-ops/commit/3cda4391))
+
 ## 1.210.0 (2024-12-25)
 
 ### Features
 
-- **workspace-tools:** Added results logging to `tsup` plugin ([adca1139](https://github.com/storm-software/storm-ops/commit/adca1139))
+- **workspace-tools:** Added results logging to `tsup` plugin
+  ([adca1139](https://github.com/storm-software/storm-ops/commit/adca1139))
 
 ## 1.209.2 (2024-12-23)
 
