@@ -67,7 +67,7 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
 
           let relativeRoot = projectRoot
             .replaceAll("\\", "/")
-            .replace(context.workspaceRoot, "");
+            .replace(context.workspaceRoot.replaceAll("\\", "/"), "");
           if (relativeRoot.startsWith("/")) {
             relativeRoot = relativeRoot.slice(1);
           }
