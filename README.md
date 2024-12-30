@@ -46,7 +46,6 @@ keeping the codebase maintainable.
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 ## Table of Contents
 
 - [Quick Features](#quick-features)
@@ -65,7 +64,7 @@ keeping the codebase maintainable.
   - [Running End-to-End Tests](#running-end-to-end-tests)
   - [Understand your workspace](#understand-your-workspace)
 - [☁ Nx Cloud](#-nx-cloud)
-  - [Distributed Computation Caching \& Distributed Task Execution](#distributed-computation-caching--distributed-task-execution)
+  - [Distributed Computation Caching & Distributed Task Execution](#distributed-computation-caching--distributed-task-execution)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [Support](#support)
@@ -81,27 +80,27 @@ keeping the codebase maintainable.
 The following are some of the features/publishable code that are included in
 this monorepo:
 
-  - Comprehensive build tools for monorepos using Nx
-  - Automated code formatting with Prettier
-  - Linting configurations for ESLint and markdownlint
-  - Continuous integration and deployment workflows
-  - TypeScript support with custom configurations
-  - Testing tools integration with Jest, Vitest, and Cypress
-  - Documentation generation with Docusaurus
-  - Semantic versioning and release management with semantic-release
-  - Commit message linting with Commitizen
-  - Dependency management and auditing with pnpm
-  - Custom Nx executors and generators for common development tasks
-  - Support for Rust projects with Cargo integration
-  - Design tokens generation and management
-  - Multi-platform build configurations (Node, Browser, Neutral)
-  - API documentation generation with API Extractor
-  - Size-limit performance testing
-  - Clean publish process for npm packages
-  - GitHub Actions for automated workflows
-  - Nx Cloud for distributed computation caching and task execution
-  - Roadmap and issue tracking with GitHub Issues
-  - Community support and contributions via GitHub Discussions and Discord
+- Comprehensive build tools for monorepos using Nx
+- Automated code formatting with Prettier
+- Linting configurations for ESLint and markdownlint
+- Continuous integration and deployment workflows
+- TypeScript support with custom configurations
+- Testing tools integration with Jest, Vitest, and Cypress
+- Documentation generation with Docusaurus
+- Semantic versioning and release management with semantic-release
+- Commit message linting with Commitizen
+- Dependency management and auditing with pnpm
+- Custom Nx executors and generators for common development tasks
+- Support for Rust projects with Cargo integration
+- Design tokens generation and management
+- Multi-platform build configurations (Node, Browser, Neutral)
+- API documentation generation with API Extractor
+- Size-limit performance testing
+- Clean publish process for npm packages
+- GitHub Actions for automated workflows
+- Nx Cloud for distributed computation caching and task execution
+- Roadmap and issue tracking with GitHub Issues
+- Community support and contributions via GitHub Discussions and Discord
 
 <div align="center">
 <b>Be sure to ⭐ this repository on GitHub so you can keep up to date on any daily progress!</b>
@@ -114,31 +113,31 @@ this monorepo:
 
 The following packages are included in this monorepo:
 
-  - **@storm-software/build-tools**: Tools and utilities for building and managing
+- **@storm-software/build-tools**: Tools and utilities for building and managing
   projects within the monorepo.
-  - **@storm-software/cloudflare-tools**: Tools for managing and deploying to
+- **@storm-software/cloudflare-tools**: Tools for managing and deploying to
   Cloudflare services.
-  - **@storm-software/config**: Configuration management tools for various
+- **@storm-software/config**: Configuration management tools for various
   environments and services.
-  - **@storm-software/config-tools**: Utilities for handling configuration files
+- **@storm-software/config-tools**: Utilities for handling configuration files
   and settings.
-  - **@storm-software/eslint**: ESLint configurations and rules for linting
+- **@storm-software/eslint**: ESLint configurations and rules for linting
   JavaScript and TypeScript code.
-  - **@storm-software/git-tools**: Tools for managing Git repositories and
+- **@storm-software/git-tools**: Tools for managing Git repositories and
   workflows.
-  - **@storm-software/k8s-tools**: Kubernetes tools for managing and deploying
+- **@storm-software/k8s-tools**: Kubernetes tools for managing and deploying
   applications.
-  - **@storm-software/linting-tools**: Linting tools and configurations for
+- **@storm-software/linting-tools**: Linting tools and configurations for
   various languages and file types.
-  - **@storm-software/markdownlint**: Markdown linting configurations and rules.
-  - **@storm-software/prettier**: Prettier configurations for code formatting.
-  - **@storm-software/terraform-tools**: Tools for managing and deploying
+- **@storm-software/markdownlint**: Markdown linting configurations and rules.
+- **@storm-software/prettier**: Prettier configurations for code formatting.
+- **@storm-software/terraform-tools**: Tools for managing and deploying
   infrastructure with Terraform.
-  - **@storm-software/testing-tools**: Testing utilities and configurations for
+- **@storm-software/testing-tools**: Testing utilities and configurations for
   unit and end-to-end tests.
-  - **@storm-software/workspace-tools**: Tools and utilities for managing the
+- **@storm-software/workspace-tools**: Tools and utilities for managing the
   monorepo workspace.
-  - **@storm-software/tsconfig**: Tools and utilities for managing Rust projects.
+- **@storm-software/tsconfig**: Tools and utilities for managing Rust projects.
 
 <div align="center">
 <b>Be sure to ⭐ this repository on GitHub so you can keep up to date on any daily progress!</b>
@@ -200,16 +199,16 @@ information.
 
 Some of the plug-ins used by this repository are:
 
-  - [@nx/next](https://nx.dev/packages/next)
-  - [@nx/react](https://nx.dev/packages/react)
-  - [@nx/lint](https://nx.dev/linter/overview)
-  - [@nx/js](https://nx.dev/js/overview)
-  - [@nx/node](https://nodejs.org)
-  - [@nx/web](https://nx.dev/web/overview)
-  - [@nx/storybook](https://nx.dev/storybook/overview-react)
-  - [@nx/cypress](https://nx.dev/packages/cypress)
-  - [@nx/jest](https://nx.dev/packages/jest)
-  - And more...
+- [@nx/next](https://nx.dev/packages/next)
+- [@nx/react](https://nx.dev/packages/react)
+- [@nx/lint](https://nx.dev/linter/overview)
+- [@nx/js](https://nx.dev/js/overview)
+- [@nx/node](https://nodejs.org)
+- [@nx/web](https://nx.dev/web/overview)
+- [@nx/storybook](https://nx.dev/storybook/overview-react)
+- [@nx/cypress](https://nx.dev/packages/cypress)
+- [@nx/jest](https://nx.dev/packages/jest)
+- And more...
 
 <div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
 <br />
@@ -315,11 +314,11 @@ Visit [Nx Cloud](https://nx.app/) to learn more.
 See the [open issues](https://github.com/storm-software/storm-ops/issues) for a
 list of proposed features (and known issues).
 
-  - [Top Feature Requests](https://github.com/storm-software/storm-ops/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc)
+- [Top Feature Requests](https://github.com/storm-software/storm-ops/issues?q=label%3Aenhancement+is%3Aopen+sort%3Areactions-%2B1-desc)
   (Add your votes using the 👍 reaction)
-  - [Top Bugs](https://github.com/storm-software/storm-ops/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc)
+- [Top Bugs](https://github.com/storm-software/storm-ops/issues?q=is%3Aissue+is%3Aopen+label%3Abug+sort%3Areactions-%2B1-desc)
   (Add your votes using the 👍 reaction)
-  - [Newest Bugs](https://github.com/storm-software/storm-ops/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
+- [Newest Bugs](https://github.com/storm-software/storm-ops/issues?q=is%3Aopen+is%3Aissue+label%3Abug)
 
 <div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
 <br />
@@ -333,11 +332,11 @@ appreciated**.
 
 Please try to create bug reports that are:
 
-  - _Reproducible._ Include steps to reproduce the problem.
-  - _Specific._ Include as much detail as possible: which version, what
+- _Reproducible._ Include steps to reproduce the problem.
+- _Specific._ Include as much detail as possible: which version, what
   environment, etc.
-  - _Unique._ Do not duplicate existing opened issues.
-  - _Scoped to a Single Bug._ One bug per report.
+- _Unique._ Do not duplicate existing opened issues.
+- _Scoped to a Single Bug._ One bug per report.
 
 Please adhere to this project's [code of conduct](.github/CODE_OF_CONDUCT.md).
 
@@ -352,9 +351,9 @@ to check for common markdown style inconsistency.
 
 Reach out to the maintainer at one of the following places:
 
-  - [Contact](https://stormsoftware.com/contact)
-  - [GitHub discussions](https://github.com/storm-software/storm-ops/discussions)
-  - <contact@stormsoftware.com>
+- [Contact](https://stormsoftware.com/contact)
+- [GitHub discussions](https://github.com/storm-software/storm-ops/discussions)
+- <contact@stormsoftware.com>
 
 <div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
 <br />
