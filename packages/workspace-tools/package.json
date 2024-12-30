@@ -106,7 +106,7 @@
     "glob": "10.4.2",
     "micromatch": "4.0.7",
     "npm-run-path": "5.3.0",
-    "pkg-types": "1.1.1",
+    "pkg-types": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-packagejson": "2.5.0",
     "rollup": "^4.29.1",

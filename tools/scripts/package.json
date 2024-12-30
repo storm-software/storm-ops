@@ -13,6 +13,7 @@
   "dependencies": {
     "consola": "3.3.3",
     "esbuild": "catalog:",
+    "pkg-types": "catalog:",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

@@ -119,6 +119,7 @@
     "lefthook": "1.6.18",
     "nx": "catalog:",
     "nx-cloud": "19.1.0",
+    "pkg-types": "catalog:",
     "prettier": "catalog:",
     "rimraf": "catalog:",
     "sherif": "0.10.0",
