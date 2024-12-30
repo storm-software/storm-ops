@@ -32,7 +32,7 @@ export default async function npmPublishExecutorFn(
 
   const packageRoot = joinPathFragments(
     context.root,
-    options.packageRoot ?? joinPathFragments("dist", projectConfig.root)
+    options.packageRoot || joinPathFragments("dist", projectConfig.root)
   );
 
   const packageJsonPath = joinPathFragments(packageRoot, "package.json");
@@ -56,14 +56,16 @@ export default async function npmPublishExecutorFn(
     return { success: true };
   }
 
-  const npmPublishCommandSegments = ["pnpm publish --json"];
+  const npmPublishCommandSegments = [
+    `pnpm publish --json --filter="${packageName}"`
+  ];
   const npmViewCommandSegments = [
-    `pnpm view ${packageName} versions dist-tags --json`
+    `npm view ${packageName} versions dist-tags --json`
   ];
 
   const registry = options.registry
     ? options.registry
-    : execSync("pnpm config get registry", {
+    : execSync("npm config get registry", {
         cwd: packageRoot,
         env: {
           ...process.env,
@@ -80,10 +82,6 @@ export default async function npmPublishExecutorFn(
     npmViewCommandSegments.push(`--registry=${registry}`);
   }
 
-  if (options.tag) {
-    npmPublishCommandSegments.push(`--tag=${options.tag}`);
-  }
-
   if (options.otp) {
     npmPublishCommandSegments.push(`--otp=${options.otp}`);
   }
@@ -92,12 +90,12 @@ export default async function npmPublishExecutorFn(
     npmPublishCommandSegments.push("--dry-run");
   }
 
-  npmPublishCommandSegments.push("--provenance --access public");
+  npmPublishCommandSegments.push("--provenance --access=public");
 
   // Resolve values using the `npm config` command so that things like environment variables and `publishConfig`s are accounted for
   const tag =
-    options.tag ??
-    execSync("pnpm config get tag", {
+    options.tag ||
+    execSync("npm config get tag", {
       cwd: packageRoot,
       env: {
         ...process.env,
@@ -108,6 +106,10 @@ export default async function npmPublishExecutorFn(
     })
       .toString()
       .trim();
+
+  if (tag) {
+    npmPublishCommandSegments.push(`--tag=${tag}`);
+  }
 
   /**
    * In a dry-run scenario, it is most likely that all commands are being run with dry-run, therefore
@@ -151,7 +153,7 @@ export default async function npmPublishExecutorFn(
       try {
         if (!isDryRun) {
           execSync(
-            `pnpm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${registry}`,
+            `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${registry}`,
             {
               cwd: packageRoot,
               env: {
@@ -258,7 +260,7 @@ export default async function npmPublishExecutorFn(
     );
 
     const output = execSync(npmPublishCommandSegments.join(" "), {
-      cwd: packageRoot,
+      cwd: context.root,
       env: {
         ...process.env,
         FORCE_COLOR: "true"
