@@ -183,9 +183,9 @@
   "devDependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/build-tools": "0.112.0",
-    "@storm-software/config": "1.81.0",
-    "@storm-software/config-tools": "1.120.0",
+    "@storm-software/build-tools": "0.113.0",
+    "@storm-software/config": "1.82.0",
+    "@storm-software/config-tools": "1.121.0",
     "@swc/core": "catalog:",
     "@types/node": "catalog:",
     "@types/rollup": "^0.54.0",

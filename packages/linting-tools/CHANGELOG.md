@@ -1,3 +1,13 @@
+## 1.96.0 (2024-12-30)
+
+### Features
+
+- **linting-tools:** Added `zizmor` exception to configuration file ([8a37aafd](https://github.com/storm-software/storm-ops/commit/8a37aafd))
+
+### Continuous Integration
+
+- **storm-ops:** Security fixes for Github actions ([53014802](https://github.com/storm-software/storm-ops/commit/53014802))
+
 ## 1.95.0 (2024-12-30)
 
 ### Features

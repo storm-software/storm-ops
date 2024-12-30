@@ -1,3 +1,9 @@
+## 1.82.0 (2024-12-30)
+
+### Features
+
+- **workspace-tools:** Use `pnpm publish` in the `npm-publish` executor ([48a2ad49](https://github.com/storm-software/storm-ops/commit/48a2ad49))
+
 ## 1.81.0 (2024-12-30)
 
 ### Features
