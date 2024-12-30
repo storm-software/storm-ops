@@ -57,7 +57,7 @@ export default async function npmPublishExecutorFn(
   }
 
   const npmPublishCommandSegments = [
-    `pnpm publish --json --filter="${packageName}"`
+    `pnpm publish folder --filter="${packageRoot}" --json`
   ];
   const npmViewCommandSegments = [
     `npm view ${packageName} versions dist-tags --json`
@@ -78,19 +78,19 @@ export default async function npmPublishExecutorFn(
         .trim();
 
   if (registry) {
-    npmPublishCommandSegments.push(`--registry=${registry}`);
-    npmViewCommandSegments.push(`--registry=${registry}`);
+    npmPublishCommandSegments.push(`--registry ${registry}`);
+    npmViewCommandSegments.push(`--registry ${registry}`);
   }
 
   if (options.otp) {
-    npmPublishCommandSegments.push(`--otp=${options.otp}`);
+    npmPublishCommandSegments.push(`--otp ${options.otp}`);
   }
 
   if (isDryRun) {
     npmPublishCommandSegments.push("--dry-run");
   }
 
-  npmPublishCommandSegments.push("--provenance --access=public");
+  npmPublishCommandSegments.push("--provenance --access public");
 
   // Resolve values using the `npm config` command so that things like environment variables and `publishConfig`s are accounted for
   const tag =
@@ -108,7 +108,7 @@ export default async function npmPublishExecutorFn(
       .trim();
 
   if (tag) {
-    npmPublishCommandSegments.push(`--tag=${tag}`);
+    npmPublishCommandSegments.push(`--tag ${tag}`);
   }
 
   /**
@@ -255,12 +255,14 @@ export default async function npmPublishExecutorFn(
   }
 
   try {
+    const cwd = context.root;
+
     console.info(
-      `Running publish command ${npmPublishCommandSegments.join(" ")}`
+      `Running publish command ${npmPublishCommandSegments.join(" ")} in current working directory: ${cwd}`
     );
 
     const output = execSync(npmPublishCommandSegments.join(" "), {
-      cwd: context.root,
+      cwd,
       env: {
         ...process.env,
         FORCE_COLOR: "true"

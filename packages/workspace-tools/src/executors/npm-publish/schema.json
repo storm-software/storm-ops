@@ -8,7 +8,7 @@
   "properties": {
     "packageRoot": {
       "type": "string",
-      "description": "The root directory of the directory (containing a manifest file at its root) to publish. Defaults to the project root."
+      "description": "The root directory of the package (containing a manifest file at its root) to publish. Defaults to the project root."
     },
     "registry": {
       "type": "string",
