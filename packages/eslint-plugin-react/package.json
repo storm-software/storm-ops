@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-storm-react",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "type": "module",
   "description": "⚡ The eslint-plugin package is an ESLint plugin that contains a collection of recommended ESLint rule configurations which you can extend from in your own ESLint configs, as well as an Nx-specific lint rule called enforce-module-boundaries.",
   "repository": {
@@ -108,7 +108,7 @@
   "devDependencies": {
     "@nx/eslint": "catalog:",
     "@nx/eslint-plugin": "catalog:",
-    "@storm-software/eslint": "workspace:*",
+    "@storm-software/eslint": "0.102.0",
     "@types/eslint": "^8.56.10",
     "@types/node": "catalog:",
     "eslint": "catalog:",

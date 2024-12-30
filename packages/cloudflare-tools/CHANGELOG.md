@@ -1,3 +1,10 @@
+## 0.43.0 (2024-12-30)
+
+### Features
+
+- **workspace-tools:** Populate the `platform` project tags in `storm-software/typescript` plugin ([2942842c](https://github.com/storm-software/storm-ops/commit/2942842c))
+- **storm-ops:** Completed enhancement around `catalog` and `workspace` dependency upgrades ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
+
 ## 0.42.0 (2024-12-18)
 
 ### Features

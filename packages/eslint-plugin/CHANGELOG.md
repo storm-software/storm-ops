@@ -1,3 +1,14 @@
+## 0.45.0 (2024-12-30)
+
+### Features
+
+- **storm-ops:** Completed enhancement around `catalog` and `workspace` dependency upgrades ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
+
+### Dependency Upgrades
+
+- **storm-ops:** Moved `c12` and `eslint` dependencies into workspace catalog ([049a350f](https://github.com/storm-software/storm-ops/commit/049a350f))
+- **storm-ops:** Added consistent `@types/node` versions across repository ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
+
 ## 0.44.1 (2024-12-18)
 
 ### Bug Fixes

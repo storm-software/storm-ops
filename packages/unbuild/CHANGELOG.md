@@ -1,3 +1,19 @@
+## 0.5.0 (2024-12-30)
+
+### Features
+
+- **storm-ops:** Completed enhancement around `catalog` and `workspace` dependency upgrades ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
+
+### Dependency Upgrades
+
+- **storm-ops:** Added consistent `@types/node` versions across repository ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.120.0
+- Updated build-tools to 0.112.0
+- Updated config to 1.81.0
+
 ## 0.4.1 (2024-12-23)
 
 ### Bug Fixes

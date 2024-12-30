@@ -1,3 +1,21 @@
+## 0.5.0 (2024-12-30)
+
+### Features
+
+- **esbuild:** Updated the `tsc` plugin to handle monorepos correctly ([ed6b42cd](https://github.com/storm-software/storm-ops/commit/ed6b42cd))
+- **storm-ops:** Completed enhancement around `catalog` and `workspace` dependency upgrades ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
+- **esbuild:** Added new plugins and build options ([481ac411](https://github.com/storm-software/storm-ops/commit/481ac411))
+
+### Dependency Upgrades
+
+- **storm-ops:** Added consistent `@types/node` versions across repository ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.120.0
+- Updated build-tools to 0.112.0
+- Updated config to 1.81.0
+
 ## 0.4.1 (2024-12-23)
 
 ### Bug Fixes

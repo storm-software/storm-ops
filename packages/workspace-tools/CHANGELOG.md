@@ -1,8 +1,26 @@
+## 1.211.0 (2024-12-30)
+
+### Features
+
+- **workspace-tools:** Populate the `platform` project tags in `storm-software/typescript` plugin ([2942842c](https://github.com/storm-software/storm-ops/commit/2942842c))
+- **storm-ops:** Completed enhancement around `catalog` and `workspace` dependency upgrades ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
+- **storm-ops:** Added pnpm `catalog` dependency specification to the monorepo ([b8e6a6e0](https://github.com/storm-software/storm-ops/commit/b8e6a6e0))
+
+### Bug Fixes
+
+- **workspace-tools:** Update plugin to use `pkg-types` package ([e6558bf7](https://github.com/storm-software/storm-ops/commit/e6558bf7))
+
+### Dependency Upgrades
+
+- **tools-scripts:** Add `pkg-types` dependency to monorepo catalog ([3a087908](https://github.com/storm-software/storm-ops/commit/3a087908))
+- **storm-ops:** Added consistent `@types/node` versions across repository ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
+
 ## 1.210.3 (2024-12-26)
 
 ### Bug Fixes
 
-- **workspace-tools:** Ensure `workspaceRoot` is normalized before `replaceAll` call ([08a43caf](https://github.com/storm-software/storm-ops/commit/08a43caf))
+- **workspace-tools:** Ensure `workspaceRoot` is normalized before `replaceAll`
+  call ([08a43caf](https://github.com/storm-software/storm-ops/commit/08a43caf))
 
 ## 1.210.2 (2024-12-26)
 
