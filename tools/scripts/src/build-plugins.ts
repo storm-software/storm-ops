@@ -1,3 +1,4 @@
+import { consola } from "consola";
 import { build } from "esbuild";
 
 Promise.all([
@@ -24,10 +25,12 @@ Promise.all([
   // }).then(() => {
   //   console.log("Storm ESLint plugin built successfully");
   // }),
+
   build({
     entryPoints: [
       "packages/workspace-tools/src/plugins/rust/index.ts",
-      "packages/workspace-tools/src/plugins/typescript/index.ts"
+      "packages/workspace-tools/src/plugins/typescript/index.ts",
+      "packages/workspace-tools/src/plugins/typescript/tsup.ts"
     ],
     outdir: "dist/plugins",
     tsconfig: "packages/workspace-tools/tsconfig.lib.json",
@@ -41,7 +44,7 @@ Promise.all([
     format: "cjs",
     platform: "node"
   }).then(() => {
-    console.info("Storm Workspace plugins built successfully");
+    consola.info("Storm Workspace plugins built successfully");
   }),
   build({
     entryPoints: ["packages/cloudflare-tools/src/plugins/index.ts"],
@@ -57,8 +60,8 @@ Promise.all([
     format: "cjs",
     platform: "node"
   }).then(() => {
-    console.info("Storm Cloudflare plugin built successfully");
+    consola.info("Storm Cloudflare plugin built successfully");
   })
 ]).then(() => {
-  console.info("All Storm plugin built successfully");
+  consola.info("All Storm plugin built successfully");
 });

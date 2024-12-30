@@ -1,0 +1,24 @@
+{
+  "name": "@storm-software/tools-scripts",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "private": true,
+  "exports": {
+    "*": "./dist/*.js"
+  },
+  "scripts": {
+    "build": "tsup-node --config=\"./build.config.ts\"",
+    "clean": "pnpm rimraf dist"
+  },
+  "dependencies": {
+    "consola": "3.3.3",
+    "esbuild": "catalog:",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "copyfiles": "catalog:",
+    "rimraf": "catalog:",
+    "tsup": "catalog:"
+  }
+}

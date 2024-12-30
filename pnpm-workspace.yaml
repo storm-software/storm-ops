@@ -1,4 +1,5 @@
 packages:
+  - "tools/*"
   - "crates/*"
   - "packages/*"
   - "terraform-modules/*"
@@ -30,3 +31,5 @@ catalog:
   "typia": "^7.5.0"
   "typescript": "^5.7.2"
   "esbuild": "^0.24.0"
+  "copyfiles": "2.4.1"
+  "rimraf": "5.0.7"
