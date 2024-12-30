@@ -8,7 +8,7 @@ import {
   readTargetsFromPackageJson,
   type PackageJson
 } from "nx/src/utils/package-json";
-import { parse } from "tsconfck";
+import { readTSConfig } from "pkg-types";
 import {
   ProjectTagConstants,
   addProjectTag,
@@ -256,8 +256,8 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
     );
 
     const types = (
-      Array.isArray(tsconfig.tsconfig?.compilerOptions?.types)
-        ? tsconfig.tsconfig.compilerOptions.types
+      Array.isArray(tsconfig.compilerOptions?.types)
+        ? tsconfig.compilerOptions.types
         : []
     )?.map(t => t.toLowerCase()) as string[];
     if (
@@ -360,9 +360,12 @@ async function createTsconfig(projectJsonPath: string, workspaceRoot: string) {
       return null;
     }
 
-    return parse(tsconfigJsonPath, {
-      root: workspaceRoot
-    });
+    // return readTSConfig(tsconfigJsonPath, {
+    //   rootPattern: workspaceRoot,
+    //   startingFrom: dirname(tsconfigJsonPath)
+    // });
+
+    return readTSConfig(tsconfigJsonPath);
   } catch (e) {
     console.log(e);
     return null;
