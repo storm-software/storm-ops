@@ -4,13 +4,10 @@ rules:
       - ci-reusable.yml:80:9
       - ci-reusable.yml:86:9
       - ci.yml:158:9
-      # ignore all lines and columns in tests.yml
-      # - tests.yml
+      - ci.yml:154:9
   dangerous-triggers:
     ignore:
       - greetings.yml:3:1
-      - ci-reusable.yml:86:9
-      - ci.yml:158:9
   use-trusted-publishing:
     ignore:
       # ignore line 12, column 10 on pypi.yml
