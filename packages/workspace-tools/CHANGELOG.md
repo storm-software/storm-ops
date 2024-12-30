@@ -1,8 +1,15 @@
+## 1.212.2 (2024-12-30)
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure we always invoke publish from the correct directory ([7254d9d8](https://github.com/storm-software/storm-ops/commit/7254d9d8))
+
 ## 1.212.1 (2024-12-30)
 
 ### Bug Fixes
 
-- **workspace-tools:** Ensure the correct directory and tag are used in publish ([92f61284](https://github.com/storm-software/storm-ops/commit/92f61284))
+- **workspace-tools:** Ensure the correct directory and tag are used in publish
+  ([92f61284](https://github.com/storm-software/storm-ops/commit/92f61284))
 
 ## 1.212.0 (2024-12-30)
 
