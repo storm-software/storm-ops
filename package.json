@@ -60,7 +60,7 @@
     "format": "nx format:write",
     "format-prettier": "pnpm exec prettier --write --ignore-unknown --no-error-on-unmatched-pattern --config=\"prettier.config.js\" --ignore-path=\"./packages/prettier/src/.prettierignore\" ",
     "format-readme": "node ./dist/packages/git-tools/bin/git.js readme-gen --templates=\"./dist/packages/git-tools/readme/templates\"",
-    "format-sherif": "pnpm exec sherif -f -i typescript",
+    "format-sherif": "pnpm exec sherif --fix -i typescript",
     "format-toml": "pnpm exec taplo format --config=\"./dist/packages/linting-tools/taplo/.config.toml\" --cache-path=\"./tmp/taplo\"",
     "help": "nx help",
     "lint": "node -r esbuild-register ./dist/packages/linting-tools/bin/lint.js all --skip-cspell --skip-alex --skip-circular-deps",
