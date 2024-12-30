@@ -11,7 +11,6 @@
           "lint-docs",
           "lint-ls",
           "lint",
-          "format-syncpack",
           "format-readme",
           "format-toml",
           "format-prettier",
@@ -341,11 +340,6 @@
       "outputs": ["{projectRoot}"],
       "inputs": ["linting", "default", "^production"],
       "dependsOn": ["lint-ls", "lint-sherif", "lint-knip", "lint-docs", "^lint"]
-    },
-    "format-syncpack": {
-      "cache": true,
-      "inputs": ["**/package.json", "**/syncpack.config.js"],
-      "outputs": ["**/package.json", "**/syncpack.config.js"]
     },
     "format-sherif": {
       "cache": true,

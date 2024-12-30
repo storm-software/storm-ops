@@ -68,7 +68,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.47.0",
-    "c12": "2.0.0-beta.2",
+    "c12": "catalog:",
     "glob": "10.4.2",
     "jest-resolve": "29.7.0"
   },

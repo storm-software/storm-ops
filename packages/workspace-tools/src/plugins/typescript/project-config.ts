@@ -8,6 +8,7 @@ import {
   readTargetsFromPackageJson,
   type PackageJson
 } from "nx/src/utils/package-json";
+import { parse } from "tsconfck";
 import {
   ProjectTagConstants,
   addProjectTag,
@@ -23,9 +24,14 @@ export interface TypeScriptPluginOptions {
 
 export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
   "{project.json,**/project.json}",
-  (file, opts: TypeScriptPluginOptions = { includeApps: true }, ctx) => {
+  async (file, opts: TypeScriptPluginOptions = { includeApps: true }, ctx) => {
     const packageJson = createPackageJson(file, ctx.workspaceRoot);
     if (!packageJson) {
+      return {};
+    }
+
+    const tsconfig = await createTsconfig(file, ctx.workspaceRoot);
+    if (!tsconfig) {
       return {};
     }
 
@@ -248,6 +254,49 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       ProjectTagConstants.Language.TYPESCRIPT,
       { overwrite: true }
     );
+
+    const types = (
+      Array.isArray(tsconfig.tsconfig?.compilerOptions?.types)
+        ? tsconfig.tsconfig.compilerOptions.types
+        : []
+    )?.map(t => t.toLowerCase()) as string[];
+    if (
+      types.some(t => t === "@cloudflare/workers-types") ||
+      packageJson.devDependencies?.["@cloudflare/workers-types"] ||
+      packageJson.devDependencies?.["wrangler"]
+    ) {
+      addProjectTag(
+        project,
+        ProjectTagConstants.Platform.TAG_ID,
+        ProjectTagConstants.Platform.WORKER,
+        { overwrite: true }
+      );
+    } else if (
+      types.some(t => t === "node") ||
+      packageJson.devDependencies?.["@types/node"]
+    ) {
+      addProjectTag(
+        project,
+        ProjectTagConstants.Platform.TAG_ID,
+        ProjectTagConstants.Platform.NODE,
+        { overwrite: false }
+      );
+    } else if (types.some(t => t === "dom")) {
+      addProjectTag(
+        project,
+        ProjectTagConstants.Platform.TAG_ID,
+        ProjectTagConstants.Platform.BROWSER,
+        { overwrite: true }
+      );
+    } else {
+      addProjectTag(
+        project,
+        ProjectTagConstants.Platform.TAG_ID,
+        ProjectTagConstants.Platform.NEUTRAL,
+        { overwrite: false }
+      );
+    }
+
     setDefaultProjectTags(project, name);
 
     return project?.name
@@ -297,6 +346,23 @@ function createPackageJson(
     }
 
     return readJsonFile(packageJsonPath) as PackageJson;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+}
+
+async function createTsconfig(projectJsonPath: string, workspaceRoot: string) {
+  try {
+    const root = dirname(projectJsonPath);
+    const tsconfigJsonPath = join(workspaceRoot, root, "tsconfig.json");
+    if (!existsSync(tsconfigJsonPath)) {
+      return null;
+    }
+
+    return parse(tsconfigJsonPath, {
+      root: workspaceRoot
+    });
   } catch (e) {
     console.log(e);
     return null;

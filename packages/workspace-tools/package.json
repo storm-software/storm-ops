@@ -55,6 +55,7 @@
     "@nx/devkit": "catalog:",
     "@nx/esbuild": "catalog:",
     "@nx/rollup": "catalog:",
+    "@samchon/openapi": "^2.3.0",
     "nx": "catalog:",
     "typescript": "catalog:"
   },
@@ -70,6 +71,9 @@
     },
     "@nx/rollup": {
       "optional": false
+    },
+    "@samchon/openapi": {
+      "optional": true
     },
     "nx": {
       "optional": false
@@ -92,7 +96,7 @@
     "@size-limit/esbuild-why": "11.1.4",
     "@size-limit/file": "11.1.4",
     "bundle-require": "5.0.0",
-    "c12": "2.0.0-beta.2",
+    "c12": "catalog:",
     "decky": "1.1.1",
     "deep-clone": "4.0.0",
     "esbuild-plugin-environment": "0.4.0",
@@ -112,6 +116,7 @@
     "semver": "7.6.2",
     "size-limit": "11.1.4",
     "terser": "5.31.1",
+    "tsconfck": "3.1.1",
     "tsup": "catalog:",
     "typia": "catalog:",
     "zod": "3.23.8",

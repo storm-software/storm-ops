@@ -72,7 +72,8 @@
           "esbuild",
           "@swc/*",
           "@storm-software/build-tools",
-          "typescript"
+          "typescript",
+          "@samchon/openapi"
         ],
         "assets": [
           {
