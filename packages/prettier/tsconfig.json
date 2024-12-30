@@ -1,18 +1,8 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
-    "noEmit": true,
-    "module": "node16",
-    "moduleResolution": "node16",
-    "types": ["node"]
+    "outDir": "../../dist/out-tsc"
   },
   "include": ["src/**/*.ts", "src/**/*.json", "src/**/.prettierignore"],
-  "exclude": [
-    "**/*.spec.ts",
-    "**/*.test.ts",
-    "**/*_spec.ts",
-    "**/*_test.ts",
-    "jest.config.ts"
-  ]
+  "exclude": ["src/**/*.spec.ts", "src/**/*.test.ts"]
 }

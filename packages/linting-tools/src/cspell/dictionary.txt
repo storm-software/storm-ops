@@ -21,6 +21,12 @@ unminified
 deepkit
 typeschema
 valibot
+pulumi
+unplugin
+unimport
+tsup
+syncpack
+zizmor
 lefthook
 biomejs
 taplo

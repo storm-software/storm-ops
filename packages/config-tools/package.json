@@ -12,7 +12,7 @@
   "module": "./index.js",
   "types": "declarations.d.ts",
   "dependencies": {
-    "c12": "2.0.0-beta.2",
+    "c12": "catalog:",
     "chalk": "^4.1.0",
     "cosmiconfig": "9.0.0",
     "deepmerge": "4.3.1",

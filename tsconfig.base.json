@@ -31,6 +31,7 @@
       "@storm-software/prettier": ["packages/prettier/src/index.ts"],
       "@storm-software/prettier/*": ["packages/prettier/src/*"],
       "@storm-software/pulumi-tools": ["packages/pulumi-tools/src/index.ts"],
+      "@storm-software/pulumi-tools/*": ["packages/pulumi-tools/src/*"],
       "@storm-software/terraform-modules": ["terraform-modules/src/index.ts"],
       "@storm-software/terraform-tools": ["packages/terraform-tools/index.ts"],
       "@storm-software/terraform-tools/*": ["packages/terraform-tools/src/*"],
