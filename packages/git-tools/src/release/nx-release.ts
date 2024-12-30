@@ -30,30 +30,24 @@ export interface NxReleaseChangelogResult {
   };
 }
 
+export type StormReleaseOptions = {
+  project?: string;
+  firstRelease?: boolean;
+  head?: string;
+  base?: string;
+  dryRun?: boolean;
+};
+
 export const runRelease = async (
   config: StormConfig,
-  options: {
-    project?: string;
-    firstRelease?: boolean;
-    head?: string;
-    base?: string;
-    dryRun?: boolean;
-  }
+  options: StormReleaseOptions
 ) => {
   try {
-    const authorName = process.env.GITHUB_ACTOR
-      ? process.env.GITHUB_ACTOR
-      : process.env.STORM_BOT
-        ? process.env.STORM_BOT
-        : process.env.STORM_OWNER;
-    const committerName = process.env.STORM_BOT
-      ? process.env.STORM_BOT
-      : process.env.STORM_OWNER;
+    process.env.GIT_AUTHOR_NAME = process.env.GITHUB_ACTOR;
+    process.env.GIT_AUTHOR_EMAIL = `${process.env.GITHUB_ACTOR}@users.noreply.github.com`;
 
-    process.env.GIT_AUTHOR_NAME = authorName;
-    process.env.GIT_AUTHOR_EMAIL = `${authorName}@users.noreply.github.com`;
-    process.env.GIT_COMMITTER_NAME = committerName;
-    process.env.GIT_COMMITTER_EMAIL = `${committerName}@users.noreply.github.com`;
+    process.env.GIT_COMMITTER_NAME ??= process.env.STORM_BOT || "Stormie-Bot";
+    process.env.GIT_COMMITTER_EMAIL = `bot@stormsoftware.com`;
 
     process.env.NPM_AUTH_TOKEN = process.env.NPM_TOKEN;
     process.env.NODE_AUTH_TOKEN = process.env.NPM_TOKEN;
@@ -112,24 +106,42 @@ export const runRelease = async (
 
     writeInfo("Tagging commit with git", config);
 
-    if (
-      Object.values(projectsVersionData).some(
-        version => version.newVersion !== null
-      )
-    ) {
-      writeInfo("Publishing the release...", config);
-      await releasePublish({
+    const changedProjects = Object.keys(projectsVersionData).filter(
+      key => projectsVersionData[key]?.newVersion
+    );
+    if (changedProjects.length > 0) {
+      writeInfo(
+        `Publishing release for ${changedProjects.length} ${changedProjects.length === 1 ? "project" : "projects"}:
+${changedProjects.map(changedProject => `  - ${changedProject}`).join("\n")}
+`,
+        config
+      );
+
+      const result = await releasePublish({
         dryRun: !!options.dryRun,
         verbose: true
       });
+
+      const failedProjects = Object.keys(result).filter(
+        key => result[key]?.code && result[key]?.code > 0
+      );
+      if (failedProjects.length > 0) {
+        throw new Error(
+          `The Storm release process was not completed successfully! One or more errors occured while running the \`nx-release-publish\` executor tasks.
+
+Please review the workflow details for the following project(s):
+${failedProjects.map(failedProject => `  - ${failedProject} (Error Code: ${result[failedProject]})`).join("\n")}
+`
+        );
+      }
     } else {
       writeWarning("Skipped publishing packages.", config);
     }
 
-    writeSuccess("Completed the release process!", config);
+    writeSuccess("Completed the Storm workspace release process!", config);
   } catch (error) {
     writeFatal(
-      "An exception was thrown while running the release version command.",
+      "An exception was thrown while running the Storm release workflow.",
       config
     );
     error.message &&
