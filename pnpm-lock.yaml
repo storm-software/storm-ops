@@ -61,11 +61,14 @@ catalogs:
       specifier: 2.0.0-beta.2
       version: 2.0.0-beta.2
     copyfiles:
-      specifier: 2.4.1
+      specifier: ^2.4.1
       version: 2.4.1
     create-nx-workspace:
       specifier: ^20.2.2
       version: 20.2.2
+    deepmerge:
+      specifier: ^4.3.1
+      version: 4.3.1
     esbuild:
       specifier: ^0.24.0
       version: 0.24.0
@@ -76,13 +79,13 @@ catalogs:
       specifier: ^20.2.2
       version: 20.2.2
     pkg-types:
-      specifier: 1.1.1
-      version: 1.1.1
+      specifier: ^1.1.1
+      version: 1.2.1
     prettier:
       specifier: ^3.3.3
       version: 3.4.2
     rimraf:
-      specifier: 5.0.7
+      specifier: ^5.0.7
       version: 5.0.7
     tsup:
       specifier: ^8.3.5
@@ -250,7 +253,7 @@ importers:
         version: 19.1.0
       pkg-types:
         specifier: 'catalog:'
-        version: 1.1.1
+        version: 1.2.1
       prettier:
         specifier: 'catalog:'
         version: 3.4.2
@@ -334,7 +337,7 @@ importers:
         version: 1.5.4(sass@1.77.6)(typescript@5.7.2)(vue-tsc@2.1.10(typescript@5.7.2))
       pkg-types:
         specifier: 'catalog:'
-        version: 1.1.1
+        version: 1.2.1
       resolve:
         specifier: 1.22.8
         version: 1.22.8
@@ -453,7 +456,7 @@ importers:
         specifier: 9.0.0
         version: 9.0.0(patch_hash=mwegsqbtryurogmwxf4b5xp5sq)(typescript@5.7.2)
       deepmerge:
-        specifier: 4.3.1
+        specifier: 'catalog:'
         version: 4.3.1
       zod:
         specifier: 3.23.8
@@ -1432,6 +1435,9 @@ importers:
       deep-clone:
         specifier: 4.0.0
         version: 4.0.0
+      deepmerge:
+        specifier: 'catalog:'
+        version: 4.3.1
       esbuild-plugin-environment:
         specifier: 0.4.0
         version: 0.4.0(esbuild@0.24.0)
@@ -1455,7 +1461,7 @@ importers:
         version: 5.3.0
       pkg-types:
         specifier: 'catalog:'
-        version: 1.1.1
+        version: 1.2.1
       prettier:
         specifier: 'catalog:'
         version: 3.4.2
@@ -1535,7 +1541,7 @@ importers:
         version: 0.24.0
       pkg-types:
         specifier: 'catalog:'
-        version: 1.1.1
+        version: 1.2.1
       tslib:
         specifier: ^2.6.3
         version: 2.8.1
@@ -11298,9 +11304,6 @@ packages:
   pkg-dir@7.0.0:
     resolution: {integrity: sha512-Ie9z/WINcxxLp27BKOCHGde4ITq9UklYKDzVo1nhk5sqGEXU3FpkwP5GM2voTGJkGd9B3Otl+Q4uwSOeSUtOBA==}
     engines: {node: '>=14.16'}
-
-  pkg-types@1.1.1:
-    resolution: {integrity: sha512-ko14TjmDuQJ14zsotODv7dBlwxKhUKQEhuhmbqo1uCi9BB0Z2alo/wAXg6q1dTR5TyuqYyWhjtfe/Tsh+X28jQ==}
 
   pkg-types@1.2.1:
     resolution: {integrity: sha512-sQoqa8alT3nHjGuTjuKgOnvjo4cljkufdtLMnO2LBP/wRwuDlo1tkaEdMxCRhyGRPacv/ztlZgDPm2b7FAmEvw==}
@@ -27796,12 +27799,6 @@ snapshots:
   pkg-dir@7.0.0:
     dependencies:
       find-up: 6.3.0
-
-  pkg-types@1.1.1:
-    dependencies:
-      confbox: 0.1.8
-      mlly: 1.7.3
-      pathe: 1.1.2
 
   pkg-types@1.2.1:
     dependencies:

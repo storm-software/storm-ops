@@ -99,6 +99,7 @@
     "c12": "catalog:",
     "decky": "1.1.1",
     "deep-clone": "4.0.0",
+    "deepmerge": "catalog:",
     "esbuild-plugin-environment": "0.4.0",
     "esbuild-plugin-handlebars": "1.0.3",
     "esbuild-plugin-pino": "2.1.1",

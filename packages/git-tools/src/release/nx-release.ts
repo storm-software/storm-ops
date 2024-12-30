@@ -130,7 +130,7 @@ ${changedProjects.map(changedProject => `  - ${changedProject}`).join("\n")}
           `The Storm release process was not completed successfully! One or more errors occured while running the \`nx-release-publish\` executor tasks.
 
 Please review the workflow details for the following project(s):
-${failedProjects.map(failedProject => `  - ${failedProject} (Error Code: ${result[failedProject]})`).join("\n")}
+${failedProjects.map(failedProject => `  - ${failedProject} (Error Code: ${result[failedProject]?.code})`).join("\n")}
 `
         );
       }

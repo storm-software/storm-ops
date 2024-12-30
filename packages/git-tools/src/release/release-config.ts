@@ -207,7 +207,9 @@ export interface CreateNxReleaseConfigError {
  * specify `true` in their config when they want to use the default config for a
  * particular property, rather than having to specify an empty object.
  */
-function normalizeTrueToEmptyObject<T>(value: T | boolean): T | {} {
+function normalizeTrueToEmptyObject<T>(
+  value: T | boolean
+): T | NonNullable<unknown> {
   return value === true ? {} : value;
 }
 

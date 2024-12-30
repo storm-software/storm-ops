@@ -15,7 +15,7 @@
     "c12": "catalog:",
     "chalk": "^4.1.0",
     "cosmiconfig": "9.0.0",
-    "deepmerge": "4.3.1",
+    "deepmerge": "catalog:",
     "zod": "3.23.8"
   },
   "devDependencies": {
