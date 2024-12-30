@@ -11,10 +11,10 @@
           "lint-docs",
           "lint-ls",
           "lint",
+          "format-syncpack",
           "format-readme",
           "format-toml",
           "format-prettier",
-          "lint-sherif",
           "format",
           "clean",
           "build-base",
@@ -341,6 +341,16 @@
       "outputs": ["{projectRoot}"],
       "inputs": ["linting", "default", "^production"],
       "dependsOn": ["lint-ls", "lint-sherif", "lint-knip", "lint-docs", "^lint"]
+    },
+    "format-syncpack": {
+      "cache": true,
+      "inputs": ["**/package.json", "**/syncpack.config.js"],
+      "outputs": ["**/package.json", "**/syncpack.config.js"]
+    },
+    "format-sherif": {
+      "cache": true,
+      "inputs": ["linting", "default", "^production"],
+      "executor": "nx:run-commands"
     },
     "format-toml": {
       "cache": true,

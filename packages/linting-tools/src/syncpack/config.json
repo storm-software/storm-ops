@@ -71,35 +71,13 @@
   ],
   "sortFirst": ["name", "description", "version", "author"],
   "sortPackages": true,
-  "source": [
-    "package.json",
-    "packages/*/package.json",
-    "apps/*/package.json",
-    "libs/*/package.json",
-    "tools/*/package.json"
-  ],
   "specifierTypes": ["**"],
   "versionGroups": [
     {
-      "dependencies": ["@storm-software/**", "@storm-stack/**"],
-      "pinVersion": "latest",
-      "label": "Storm Software Dependencies should all use the latest version"
-    },
-    {
+      "label": "@types packages should only be under devDependencies",
       "dependencies": ["@types/**"],
       "dependencyTypes": ["!dev"],
-      "isBanned": true,
-      "label": "@types packages should only be under devDependencies"
-    },
-    {
-      "dependencies": ["@nx/**", "nx"],
-      "pinVersion": "^20.2.2",
-      "label": "Nx Dependencies should all use the same version"
-    },
-    {
-      "dependencies": ["@tamagui/**", "tamagui"],
-      "pinVersion": "^1.116.15",
-      "label": "Tamagui Dependencies should all use the same version"
+      "isBanned": true
     }
   ]
 }

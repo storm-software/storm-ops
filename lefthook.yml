@@ -78,6 +78,14 @@ pre-push:
     lint-github-actions:
       glob: ".github/workflows/*.*"
       run: 'zizmor --offline --config="./dist/packages/linting-tools/zizmor/config.yml" .github/workflows/'
+    syncpack:
+      glob: "**/{package.json,syncpack.config.js}"
+      run: "pnpm format-syncpack"
+      stage_fixed: true
+    install:
+      glob: "**/{package.json}"
+      run: "pnpm install --no-frozen-lockfile"
+      stage_fixed: true
 
     # toml:
     #   files: "git diff --name-only HEAD @{push}"

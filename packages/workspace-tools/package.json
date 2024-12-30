@@ -54,12 +54,12 @@
     "monorepo"
   ],
   "peerDependencies": {
-    "@microsoft/api-extractor": "7.46.2",
-    "@nx/devkit": "^20.2.2",
-    "@nx/esbuild": "^20.2.2",
-    "@nx/rollup": "^20.2.2",
-    "nx": "^20.2.2",
-    "typescript": ">=5.5.3"
+    "@microsoft/api-extractor": "catalog:",
+    "@nx/devkit": "catalog:",
+    "@nx/esbuild": "catalog:",
+    "@nx/rollup": "catalog:",
+    "nx": "catalog:",
+    "typescript": "catalog:"
   },
   "peerDependenciesMeta": {
     "@microsoft/api-extractor": {
@@ -84,14 +84,13 @@
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
     "@ltd/j-toml": "1.38.0",
-    "@nx/devkit": "^20.2.2",
+    "@nx/devkit": "catalog:",
     "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-commonjs": "25.0.8",
     "@rollup/plugin-image": "3.0.3",
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "15.2.3",
     "@rslib/core": "0.0.5",
-    "@ryoppippi/unplugin-typia": "1.0.6",
     "@size-limit/esbuild": "11.1.4",
     "@size-limit/esbuild-why": "11.1.4",
     "@size-limit/file": "11.1.4",
@@ -107,7 +106,7 @@
     "micromatch": "4.0.7",
     "npm-run-path": "5.3.0",
     "pkg-types": "1.1.1",
-    "prettier": "3.3.2",
+    "prettier": "catalog:",
     "prettier-plugin-packagejson": "2.5.0",
     "rollup": "^4.29.1",
     "rollup-plugin-copy": "3.5.0",
@@ -116,19 +115,19 @@
     "semver": "7.6.2",
     "size-limit": "11.1.4",
     "terser": "5.31.1",
-    "tsup": "8.0.0",
-    "typia": "6.0.6",
+    "tsup": "catalog:",
+    "typia": "catalog:",
     "zod": "3.23.8",
     "zod-to-json-schema": "3.23.1"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "7.46.2",
-    "@nx/esbuild": "^20.2.2",
-    "@nx/rollup": "^20.2.2",
+    "@microsoft/api-extractor": "catalog:",
+    "@nx/esbuild": "catalog:",
+    "@nx/rollup": "catalog:",
     "@types/micromatch": "4.0.9",
     "@types/semver": "7.5.8",
-    "nx": "^20.2.2",
-    "typescript": ">=5.5.3"
+    "nx": "catalog:",
+    "typescript": "catalog:"
   },
   "publishConfig": {
     "access": "public"

@@ -21,9 +21,6 @@ import unicorn from "eslint-plugin-unicorn";
 import yml from "eslint-plugin-yml";
 import globalsObj from "globals";
 import type { RuleOptions } from "./rules.d";
-// import jsxA11yRules from "./rules/jsx-a11y";
-// import reactRules from "./rules/react";
-// import reactHooksRules from "./rules/react-hooks";
 import {
   formatLogMessage,
   writeDebug,
@@ -113,8 +110,8 @@ export function getStormConfig(
     useReactCompiler: false,
     logLevel: "info"
   },
-  ...userConfigs: Linter.FlatConfig[]
-): Linter.FlatConfig<Linter.RulesRecord>[] {
+  ...userConfigs: Linter.Config[]
+): Linter.Config[] {
   const tsconfig = options.tsconfig;
   const parserOptions = options.parserOptions;
   const typescriptEslintConfigType =
@@ -127,7 +124,7 @@ export function getStormConfig(
   const globals = options.globals ?? {};
 
   try {
-    const configs: Linter.FlatConfig<Linter.RulesRecord>[] = [
+    const configs: Linter.Config[] = [
       // Prettier
       prettierConfig,
 
@@ -207,8 +204,8 @@ export function getStormConfig(
       },
 
       // User overrides
-      ...(userConfigs as Linter.FlatConfig[])
-    ].filter(Boolean) as Linter.FlatConfig[];
+      ...(userConfigs as Linter.Config[])
+    ].filter(Boolean) as Linter.Config[];
 
     // Nx
     if (nx) {
@@ -272,7 +269,7 @@ export function getStormConfig(
     // https://www.npmjs.com/package/eslint-plugin-react
     if (react) {
       // TSX - React
-      const reactConfigs: Linter.FlatConfig<Linter.RulesRecord>[] = [
+      const reactConfigs: Linter.Config[] = [
         {
           ...reactPlugin.configs?.recommended,
           plugins: { "react": reactPlugin },
@@ -317,7 +314,7 @@ export function getStormConfig(
     }
 
     // TypeScript
-    const typescriptConfig: Linter.FlatConfig<Linter.RulesRecord> = {
+    const typescriptConfig: Linter.Config = {
       files: [TS_FILE],
       languageOptions: {
         globals: {
@@ -379,7 +376,7 @@ export function getStormConfig(
     configs.push(...storybookPlugin.configs["flat/recommended"]);
 
     // // JavaScript and TypeScript code
-    // const codeConfig: Linter.FlatConfig<Linter.RulesRecord> = {
+    // const codeConfig: Linter.Config = {
     //   files: [CODE_FILE],
     //   rules: {
     //     // Prettier
@@ -440,7 +437,7 @@ export function getStormConfig(
       "Preset",
       configs.reduce(
         (
-          ret: Linter.FlatConfig<Linter.RulesRecord>[],
+          ret: Linter.Config[],
           config: Record<string, any>
         ) => {
           delete config.parserOptions;
@@ -456,7 +453,7 @@ export function getStormConfig(
 
           return ret;
         },
-        [] as Linter.FlatConfig<Linter.RulesRecord>[]
+        [] as Linter.Config[]
       )
     );
 
@@ -479,8 +476,8 @@ export function getStormConfig(
 }
 
 const areFilesEqual = (
-  files1: Linter.FlatConfig<Linter.RulesRecord>["files"],
-  files2: Linter.FlatConfig<Linter.RulesRecord>["files"]
+  files1: Linter.Config["files"],
+  files2: Linter.Config["files"]
 ): boolean => {
   if (files1 === files2) {
     return true;

@@ -26,7 +26,6 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "esModuleInterop": true,
-    "preserveSymlinks": false
+    "esModuleInterop": true
   }
 }
