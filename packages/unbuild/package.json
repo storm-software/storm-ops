@@ -187,6 +187,7 @@
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "@swc/core": "catalog:",
+    "@types/node": "catalog:",
     "@types/rollup": "^0.54.0",
     "nx": "catalog:",
     "tsup": "catalog:",

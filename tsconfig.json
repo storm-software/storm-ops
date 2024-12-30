@@ -11,8 +11,7 @@
     "allowSyntheticDefaultImports": true,
     "preserveSymlinks": true,
     "isolatedModules": true,
-    "importHelpers": true,
-    "types": ["node"]
+    "importHelpers": true
   },
   "include": ["**/*.ts", "**/*.js", "**/*.json"],
   "exclude": ["node_modules", "tmp"]

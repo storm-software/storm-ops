@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "packageManager": "pnpm@>=9.10.0",
+  "packageManager": "pnpm@9.10.0",
   "engines": {
     "node": ">=22.4.0",
     "pnpm": ">=9.10.0"
@@ -155,7 +155,7 @@
     "@nx/workspace": "catalog:",
     "@storm-software/build-tools": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
-    "esbuild": "^0.24.0",
+    "esbuild": "catalog:",
     "nx": "catalog:",
     "spdx-exceptions": "^2.5.0",
     "spdx-license-ids": "^3.0.20"
@@ -206,6 +206,7 @@
     "@storm-software/build-tools": "workspace:*",
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
+    "@types/node": "catalog:",
     "esbuild": "catalog:",
     "nx": "catalog:",
     "spdx-exceptions": "^2.5.0",

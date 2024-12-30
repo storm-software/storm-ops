@@ -90,6 +90,7 @@
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
     "@nx/workspace": "catalog:",
+    "@types/node": "catalog:",
     "nx": "catalog:"
   },
   "publishConfig": {

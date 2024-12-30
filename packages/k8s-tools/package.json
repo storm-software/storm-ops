@@ -71,6 +71,7 @@
     "@nx/devkit": "catalog:",
     "@nx/workspace": "catalog:",
     "@types/js-yaml": "4.0.9",
+    "@types/node": "catalog:",
     "nx": "catalog:"
   },
   "publishConfig": {

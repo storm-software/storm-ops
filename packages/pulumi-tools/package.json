@@ -60,7 +60,7 @@
     }
   },
   "dependencies": {
-    "@nx/devkit": "20.2.2",
+    "@nx/devkit": "catalog:",
     "@pulumi/pulumi": "^3.144.1",
     "shelljs": "^0.8.5",
     "tslib": "^2.6.3"
@@ -68,6 +68,7 @@
   "devDependencies": {
     "@nx/devkit": "catalog:",
     "@nx/workspace": "catalog:",
+    "@types/node": "catalog:",
     "nx": "catalog:"
   },
   "publishConfig": {

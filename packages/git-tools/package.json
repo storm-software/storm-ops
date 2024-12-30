@@ -68,7 +68,7 @@
     "inquirer": "9.2.23",
     "jsonc-parser": "3.2.1",
     "nx": "catalog:",
-    "prettier": "3.3.2",
+    "prettier": "catalog:",
     "semver": "7.6.2",
     "tsconfig-paths": "4.2.0",
     "underscore": "1.13.6",
@@ -78,7 +78,7 @@
   "devDependencies": {
     "@types/htmlparser2": "3.10.7",
     "@types/inquirer": "9.0.7",
-    "@types/prettier": "3.0.0"
+    "@types/node": "catalog:"
   },
   "publishConfig": {
     "access": "public"
