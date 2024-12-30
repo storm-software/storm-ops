@@ -15,10 +15,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
   cancel-in-progress: true
 
-permissions: write-all
-
 jobs:
   file-system-scan:
+    permissions: write-all
     name: Vulnerability scanning - File system
     uses: ./.github/workflows/security-reusable.yml
     with:
@@ -28,6 +27,7 @@ jobs:
       publish: true
 
   config-scan:
+    permissions: write-all
     name: Vulnerability scanning - Config
     uses: ./.github/workflows/security-reusable.yml
     with:

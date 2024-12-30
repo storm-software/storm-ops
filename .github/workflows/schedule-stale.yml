@@ -4,9 +4,6 @@ on:
 
 name: Stale Bot workflow
 
-permissions:
-  issues: write
-
 jobs:
   build:
     if: ${{ github.repository_owner == 'storm-software' }}

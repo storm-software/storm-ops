@@ -4,13 +4,12 @@ on:
   schedule:
     - cron: "3 2 1 * *"
 
-permissions:
-  issues: write
-
 jobs:
   contributor_report:
     name: contributor report
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
       - name: Get dates for last month
         shell: bash

@@ -41,6 +41,8 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Aqua Security Trivy
         uses: aquasecurity/trivy-action@0.23.0
