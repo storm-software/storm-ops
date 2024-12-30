@@ -270,7 +270,7 @@ importers:
         specifier: ^2.6.3
         version: 2.8.1
       typescript:
-        specifier: 'catalog:'
+        specifier: ^5.7.2
         version: 5.7.2
       typescript-eslint:
         specifier: ^8.13.0
@@ -1222,6 +1222,16 @@ importers:
       lodash:
         specifier: 4.17.21
         version: 4.17.21
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.10.2
+
+  packages/pnpm:
+    dependencies:
+      read-yaml-file:
+        specifier: 2.1.0
+        version: 2.1.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -12265,6 +12275,10 @@ packages:
   read-pkg@9.0.1:
     resolution: {integrity: sha512-9viLL4/n1BJUCT1NXVTdS1jtm80yDEgR5T4yCelII49Mbj0v1rZdKqj7zCiYdbB0CuCgdrvHcNogAKTFPBocFA==}
     engines: {node: '>=18'}
+
+  read-yaml-file@2.1.0:
+    resolution: {integrity: sha512-UkRNRIwnhG+y7hpqnycCL/xbTk7+ia9VuVTC0S+zVbwd65DI9eUpRMfsWIGrCWxTU/mi+JW8cHQCrv+zfCbEPQ==}
+    engines: {node: '>=10.13'}
 
   readable-stream@1.0.34:
     resolution: {integrity: sha512-ok1qVCJuRkNmvebYikljxJA/UEsKwLl2nI1OmaqAu4/UE+h0wKCHok4XkL/gvi39OacXvw59RJUOFUkDib2rHg==}
@@ -28670,6 +28684,11 @@ snapshots:
       parse-json: 8.1.0
       type-fest: 4.30.1
       unicorn-magic: 0.1.0
+
+  read-yaml-file@2.1.0:
+    dependencies:
+      js-yaml: 4.1.0
+      strip-bom: 4.0.0
 
   readable-stream@1.0.34:
     dependencies:

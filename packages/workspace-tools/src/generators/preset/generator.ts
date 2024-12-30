@@ -97,10 +97,10 @@ export async function presetGeneratorFn(
       url: `${options.repositoryUrl}.git`
     };
 
-    json.packageManager ??= "pnpm@9.10.0";
+    json.packageManager ??= "pnpm@9.15.2";
     json.engines ??= {
       "node": ">=20.11.0",
-      "pnpm": ">=9.10.0"
+      "pnpm": ">=9.15.2"
     };
     json.devEngines ??= {
       "node": "20.x || 21.x"
