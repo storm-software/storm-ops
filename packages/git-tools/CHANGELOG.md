@@ -1,3 +1,9 @@
+## 2.75.0 (2024-12-30)
+
+### Features
+
+- **git-tools:** Added detailed `release` process reporting ([b2a99e2d](https://github.com/storm-software/storm-ops/commit/b2a99e2d))
+
 ## 2.74.0 (2024-12-30)
 
 ### Features
