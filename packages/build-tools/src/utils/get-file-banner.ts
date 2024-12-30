@@ -38,7 +38,7 @@ ${commentStart} is maintained by Storm Software under the ${
     (process.env.STORM_LICENSE ?? "Apache-2.0")
       ?.toLowerCase()
       ?.includes("license")
-      ? process.env.STORM_LICENSE ?? "Apache-2.0"
+      ? (process.env.STORM_LICENSE ?? "Apache-2.0")
       : `${process.env.STORM_LICENSE ?? "Apache-2.0"} License`
   }, and is
 ${commentStart} free for commercial and private use. For more information, please visit

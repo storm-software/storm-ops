@@ -56,14 +56,14 @@ export default async function npmPublishExecutorFn(
     return { success: true };
   }
 
-  const npmPublishCommandSegments = ["npm publish --json"];
+  const npmPublishCommandSegments = ["pnpm publish --json"];
   const npmViewCommandSegments = [
-    `npm view ${packageName} versions dist-tags --json`
+    `pnpm view ${packageName} versions dist-tags --json`
   ];
 
   const registry = options.registry
     ? options.registry
-    : execSync("npm config get registry", {
+    : execSync("pnpm config get registry", {
         cwd: packageRoot,
         env: {
           ...process.env,
@@ -97,7 +97,7 @@ export default async function npmPublishExecutorFn(
   // Resolve values using the `npm config` command so that things like environment variables and `publishConfig`s are accounted for
   const tag =
     options.tag ??
-    execSync("npm config get tag", {
+    execSync("pnpm config get tag", {
       cwd: packageRoot,
       env: {
         ...process.env,
@@ -151,7 +151,7 @@ export default async function npmPublishExecutorFn(
       try {
         if (!isDryRun) {
           execSync(
-            `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${registry}`,
+            `pnpm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${registry}`,
             {
               cwd: packageRoot,
               env: {

@@ -21,7 +21,10 @@ export const runCommit = async (
     const shellescape = await import("any-shell-escape");
 
     const commandItems = ["git", "commit"];
-    if (Boolean(process.env.CI) !== true) {
+    if (
+      Boolean(process.env.CI) !== true &&
+      Boolean(process.env.STORM_CI) !== true
+    ) {
       commandItems.push("-S");
     }
     commandItems.push(...["--file", commitMsgFile]);

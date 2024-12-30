@@ -2,12 +2,16 @@
 
 ### Features
 
-- **storm-ops:** Completed enhancement around `catalog` and `workspace` dependency upgrades ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
+- **storm-ops:** Completed enhancement around `catalog` and `workspace`
+  dependency upgrades
+  ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
 
 ### Dependency Upgrades
 
-- **tools-scripts:** Add `pkg-types` dependency to monorepo catalog ([3a087908](https://github.com/storm-software/storm-ops/commit/3a087908))
-- **storm-ops:** Added consistent `@types/node` versions across repository ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
+- **tools-scripts:** Add `pkg-types` dependency to monorepo catalog
+  ([3a087908](https://github.com/storm-software/storm-ops/commit/3a087908))
+- **storm-ops:** Added consistent `@types/node` versions across repository
+  ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
 
 ## 0.111.0 (2024-12-23)
 

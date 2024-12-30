@@ -118,13 +118,10 @@ export const runRelease = async (
       )
     ) {
       writeInfo("Publishing the release...", config);
-      await releasePublish(
-        {
-          dryRun: !!options.dryRun,
-          verbose: true
-        },
-        false
-      );
+      await releasePublish({
+        dryRun: !!options.dryRun,
+        verbose: true
+      });
     } else {
       writeWarning("Skipped publishing packages.", config);
     }

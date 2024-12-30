@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 import { readFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { ProjectFileMap, ProjectGraph } from "nx/src/config/project-graph.js";
@@ -59,7 +60,7 @@ function computeJsonLineNumbers(
   startOffset: number,
   characterCount: number
 ) {
-  let lines = inputText.split("\n");
+  const lines = inputText.split("\n");
   let totalChars = 0;
   let startLine = 0;
   let endLine = 0;
