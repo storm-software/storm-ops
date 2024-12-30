@@ -145,29 +145,41 @@ export default async function npmPublishExecutorFn(
       } catch (err) {
         console.warn("\n ********************** \n");
         console.warn(
-          `An error occurred while checking for existing dist-tags\n${JSON.stringify(err)}\n\nNote: If this is the first time this package has been published to NPM, this can be ignored.`
+          `An error occurred while checking for existing dist-tags
+${JSON.stringify(err)}
+
+Note: If this is the first time this package has been published to NPM, this can be ignored.
+
+`
         );
         console.info("");
       }
 
       try {
         if (!isDryRun) {
-          execSync(
-            `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${registry}`,
-            {
-              cwd: packageRoot,
-              env: {
-                ...process.env,
-                FORCE_COLOR: "true"
-              },
-              stdio: "inherit",
-              maxBuffer: LARGE_BUFFER,
-              killSignal: "SIGTERM"
-            }
-          );
+          const command = `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${registry}`;
 
           console.info(
-            `Added the dist-tag ${tag} to v${currentVersion} for registry "${registry}".\n`
+            `Adding the dist-tag ${tag} - preparing to run the following:
+${command}
+`
+          );
+
+          const result = execSync(command, {
+            cwd: packageRoot,
+            env: {
+              ...process.env,
+              FORCE_COLOR: "true"
+            },
+            maxBuffer: LARGE_BUFFER,
+            killSignal: "SIGTERM"
+          });
+
+          console.info(
+            `Added the dist-tag ${tag} to v${currentVersion} for registry "${registry}"
+
+Execution response: ${result.toString()}
+`
           );
         } else {
           console.info(
@@ -180,7 +192,12 @@ export default async function npmPublishExecutorFn(
         try {
           console.warn("\n ********************** \n");
           console.warn(
-            `An error occurred while adding dist-tags\n${JSON.stringify(err)}\n\nNote: If this is the first time this package has been published to NPM, this can be ignored.`
+            `An error occurred while adding dist-tags:
+${JSON.stringify(err)}
+
+Note: If this is the first time this package has been published to NPM, this can be ignored.
+
+`
           );
           console.info("");
 
@@ -246,7 +263,10 @@ export default async function npmPublishExecutorFn(
         )
       ) {
         console.error(
-          `Something unexpected went wrong when checking for existing dist-tags.\n${JSON.stringify(err)}`
+          `Something unexpected went wrong when checking for existing dist-tags.
+
+Error: ${JSON.stringify(err)}
+`
         );
 
         return { success: false };
@@ -256,12 +276,13 @@ export default async function npmPublishExecutorFn(
 
   try {
     const cwd = context.root;
+    const command = npmPublishCommandSegments.join(" ");
 
     console.info(
-      `Running publish command ${npmPublishCommandSegments.join(" ")} in current working directory: ${cwd}`
+      `Running publish command ${command} in current working directory: ${cwd}`
     );
 
-    const output = execSync(npmPublishCommandSegments.join(" "), {
+    const result = execSync(command, {
       cwd,
       env: {
         ...process.env,
@@ -271,14 +292,18 @@ export default async function npmPublishExecutorFn(
       killSignal: "SIGTERM"
     });
 
-    console.info(output.toString());
-
     if (isDryRun) {
       console.info(
-        `Would publish to ${registry} with tag "${tag}", but [dry-run] was set`
+        `Would publish to ${registry} with tag "${tag}", but [dry-run] was set
+
+Execution response: ${result.toString()}
+`
       );
     } else {
-      console.info(`Published to ${registry} with tag "${tag}"`);
+      console.info(`Published to ${registry} with tag "${tag}"
+
+Execution response: ${result.toString()}
+`);
     }
 
     return { success: true };
@@ -286,7 +311,7 @@ export default async function npmPublishExecutorFn(
     try {
       console.error("\n ********************** \n");
       console.info("");
-      console.error("An error occured running npm publish.");
+      console.error("An error occured running pnpm publish.");
       console.error("Please see below for more information:");
       console.info("");
 
@@ -303,7 +328,7 @@ export default async function npmPublishExecutorFn(
 
       if (context.isVerbose) {
         console.error(
-          `npm publish stdout:\n${JSON.stringify(stdoutData, null, 2)}`
+          `pnpm publish stdout:\n${JSON.stringify(stdoutData, null, 2)}`
         );
       }
 
@@ -311,7 +336,10 @@ export default async function npmPublishExecutorFn(
       return { success: false };
     } catch (err) {
       console.error(
-        `Something unexpected went wrong when processing the npm publish output\n${JSON.stringify(err)}`
+        `Something unexpected went wrong when processing the npm publish output
+
+Error: ${JSON.stringify(err)}
+`
       );
 
       console.error("\n ********************** \n");

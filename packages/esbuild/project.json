@@ -8,7 +8,7 @@
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "options": {
-        "command": "tsup src/*.ts src/plugins/*.ts --format cjs,esm --dts --splitting --clean",
+        "command": "tsup --config=tsup.config.ts",
         "cwd": "{projectRoot}"
       }
     },

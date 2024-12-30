@@ -4,56 +4,24 @@
   "projectType": "library",
   "sourceRoot": "packages/config-tools/src",
   "targets": {
-    "build": {
-      "cache": true,
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
       "options": {
-        "main": "packages/config-tools/src/index.ts",
-        "additionalEntryPoints": [
-          "packages/config-tools/src/utilities/find-workspace-root.ts",
-          "packages/config-tools/src/utilities/chalk.ts",
-          "packages/config-tools/src/utilities/logger.ts"
-        ],
-        "outputPath": "dist/packages/config-tools",
-        "tsConfig": "packages/config-tools/tsconfig.json",
-        "project": "packages/config-tools/package.json",
-        "defaultConfiguration": "production",
-        "platform": "node",
-        "deleteOutputPath": true,
-        "bundle": true,
-        "thirdParty": true,
-        "skipTypeCheck": false,
-        "metafile": true,
-        "minify": false,
-        "format": ["cjs", "esm"],
-        "assets": [
-          {
-            "input": "./packages/config-tools",
-            "glob": "*.md",
-            "output": "."
-          },
-          {
-            "input": "",
-            "glob": "LICENSE",
-            "output": "."
-          },
-          {
-            "input": "./packages/config-tools",
-            "glob": "declarations.d.ts",
-            "output": "."
-          }
-        ],
-        "configurations": {
-          "production": {
-            "debug": false,
-            "verbose": false
-          },
-          "development": {
-            "debug": true,
-            "verbose": true
-          }
-        }
+        "command": "tsup-node --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/config-tools",
+          "pnpm copyfiles --up=2 ./packages/config-tools/README.md ./packages/config-tools/package.json dist/packages/config-tools",
+          "pnpm copyfiles --up=3 ./packages/config-tools/dist/* dist/packages/config-tools/dist",
+          "pnpm copyfiles --up=3 ./packages/config-tools/dist/config-file/* ./packages/config-tools/dist/env/* ./packages/config-tools/dist/utilities/* dist/packages/config-tools/dist"
+        ]
       }
     },
     "nx-release-publish": {

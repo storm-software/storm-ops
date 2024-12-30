@@ -176,16 +176,16 @@
   },
   "dependencies": {
     "@humanfs/node": "^0.16.6",
-    "deepmerge": "4.3.1",
+    "deepmerge": "catalog:",
     "rollup": "^4.29.1",
     "rollup-plugin-typescript2": "0.36.0"
   },
   "devDependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/build-tools": "0.113.0",
-    "@storm-software/config": "1.82.0",
-    "@storm-software/config-tools": "1.121.1",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "@swc/core": "catalog:",
     "@types/node": "catalog:",
     "@types/rollup": "^0.54.0",

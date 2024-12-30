@@ -64,7 +64,7 @@
     "chalk": "^4.1.0",
     "commander": "12.1.0",
     "deep-clone": "4.0.0",
-    "deepmerge": "4.3.1",
+    "deepmerge": "catalog:",
     "esbuild-plugin-environment": "0.4.0",
     "fs-extra": "11.2.0",
     "glob": "10.4.2",

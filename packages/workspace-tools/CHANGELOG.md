@@ -2,7 +2,8 @@
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue with missing external dependencies ([582924d8](https://github.com/storm-software/storm-ops/commit/582924d8))
+- **workspace-tools:** Resolve issue with missing external dependencies
+  ([582924d8](https://github.com/storm-software/storm-ops/commit/582924d8))
 
 ## 1.212.2 (2024-12-30)
 
