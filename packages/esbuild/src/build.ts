@@ -44,11 +44,14 @@ import { map } from "es-toolkit/compat";
 import * as esbuild from "esbuild";
 import { BuildContext } from "esbuild";
 import { globbySync } from "globby";
+import path from "node:path";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
-import { DEFAULT_BUILD_OPTIONS } from "./config";
+import { DEFAULT_BUILD_OPTIONS, getOutputExtensionMap } from "./config";
 import { depsCheckPlugin } from "./plugins/deps-check";
 import { esmSplitCodeToCjsPlugin } from "./plugins/esm-split-code-to-cjs";
 import { fixImportsPlugin } from "./plugins/fix-imports";
+import { nativeNodeModulesPlugin } from "./plugins/native-node-module";
+import { nodeProtocolPlugin } from "./plugins/node-protocol";
 import { onErrorPlugin } from "./plugins/on-error";
 import { resolvePathsPlugin } from "./plugins/resolve-paths";
 import { tscPlugin } from "./plugins/tsc";
@@ -100,30 +103,106 @@ const resolveOptions = async (
     );
   }
 
+  const packageJsonPath = joinPathFragments(
+    workspaceRoot.dir,
+    projectRoot,
+    "package.json"
+  );
+  if (!(await hfs.isFile(packageJsonPath))) {
+    throw new Error("Cannot find package.json configuration");
+  }
+
+  const packageJson = await hfs.json(packageJsonPath);
+
   const config = await loadStormConfig(workspaceRoot.dir);
+  const format = options.format || "cjs";
+  const platform = options.platform || "node";
+
+  const outExtension = getOutputExtensionMap(options, format, packageJson.type);
+  const env: { [k: string]: string } = {
+    ...options.env
+  };
 
   return {
     ...DEFAULT_BUILD_OPTIONS,
     config,
-    format: "cjs",
-    outExtension: { ".js": ".js" },
+    mainFields:
+      platform === "node" ? ["module", "main"] : ["browser", "module", "main"],
     resolveExtensions: [".ts", ".js", ".node"],
-    mainFields: ["module", "main"],
     ...options,
+    outExtension,
+    splitting:
+      format === "iife"
+        ? false
+        : typeof options.splitting === "boolean"
+          ? options.splitting
+          : format === "esm",
+    platform,
+    format,
     entryPoints: options.entryPoints || ["./src/index.ts"],
     outdir:
       options.outdir ||
       joinPathFragments(workspaceRoot.dir, "dist", projectRoot),
+    loader: {
+      ".aac": "file",
+      ".css": "file",
+      ".eot": "file",
+      ".flac": "file",
+      ".gif": "file",
+      ".jpeg": "file",
+      ".jpg": "file",
+      ".mp3": "file",
+      ".mp4": "file",
+      ".ogg": "file",
+      ".otf": "file",
+      ".png": "file",
+      ".svg": "file",
+      ".ttf": "file",
+      ".wav": "file",
+      ".webm": "file",
+      ".webp": "file",
+      ".woff": "file",
+      ".woff2": "file",
+      ...options.loader
+    },
+    define: {
+      STORM_FORMAT: JSON.stringify(format || "cjs"),
+      ...(format === "cjs" && options.injectShims
+        ? {
+            "import.meta.url": "importMetaUrl"
+          }
+        : {}),
+      ...options.define,
+      ...Object.keys(env).reduce((res, key) => {
+        const value = JSON.stringify(env[key]);
+        return {
+          ...res,
+          [`process.env.${key}`]: value,
+          [`import.meta.env.${key}`]: value
+        };
+      }, {})
+    },
+    inject: [
+      format === "cjs" && options.injectShims
+        ? path.join(__dirname, "../assets/cjs_shims.js")
+        : "",
+      format === "esm" && options.injectShims && platform === "node"
+        ? path.join(__dirname, "../assets/esm_shims.js")
+        : "",
+      ...(options.inject || [])
+    ].filter(Boolean),
     plugins: [
       ...(options.plugins ?? []),
+      nodeProtocolPlugin(),
       resolvePathsPlugin,
       fixImportsPlugin,
+      nativeNodeModulesPlugin(),
       esmSplitCodeToCjsPlugin,
       tscPlugin(options.emitTypes),
       onErrorPlugin
     ],
     external: [...(options.external ?? [])],
-    name: `${options.name || projectName}-${options.format || "cjs"}`,
+    name: `${options.name || projectName}-${format}`,
     projectConfigurations,
     projectName,
     projectGraph,
@@ -352,7 +431,7 @@ async function reportResults([options, result]: [
 /**
  * A blank esbuild run to do an analysis of our deps
  */
-async function dependencyCheck(options: ESBuildResolvedOptions) {
+async function dependencyCheck(options: ESBuildOptions) {
   // we only check our dependencies for a full build
   if (process.env.DEV === "true") return undefined;
   // Only run on test and publish pipelines on Buildkite
@@ -387,14 +466,19 @@ async function dependencyCheck(options: ESBuildResolvedOptions) {
  * @param options - the build options
  * @returns the build result
  */
-export async function build(options: ESBuildOptions[]) {
+export async function build(options: ESBuildOptions | ESBuildOptions[]) {
   const stopwatch = getStopwatch("full build");
 
   try {
-    void transduce.async(options, dependencyCheck);
+    const opts = Array.isArray(options) ? options : [options];
+    if (opts.length === 0) {
+      throw new Error("No build options were provided");
+    }
+
+    void transduce.async(opts, dependencyCheck);
 
     await transduce.async(
-      await createOptions(options),
+      await createOptions(opts),
       pipe.async(
         computeOptions,
         generatePackageJson,

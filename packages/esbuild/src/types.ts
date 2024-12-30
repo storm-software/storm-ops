@@ -21,9 +21,21 @@ import { StormConfig } from "@storm-software/config";
 import * as esbuild from "esbuild";
 import { WorkspaceTypeAndRoot } from "nx/src/utils/find-workspace-root";
 
+export type ContextForOutPathGeneration = {
+  format: esbuild.Format;
+  /** "type" field in project's package.json */
+  pkgType?: string;
+};
+
+export type OutExtensionObject = { js?: string; dts?: string };
+
+export type OutExtensionFactory = (
+  ctx: ContextForOutPathGeneration
+) => OutExtensionObject;
+
 export type ESBuildOptions = Omit<
   esbuild.BuildOptions,
-  "outbase" | "outfile"
+  "outbase" | "outfile" | "outExtension"
 > & {
   projectRoot: string;
   name?: string;
@@ -31,11 +43,15 @@ export type ESBuildOptions = Omit<
   emitTypes?: boolean;
   emitMetafile?: boolean;
   assets?: (AssetGlob | string)[];
+  env?: Record<string, string>;
+  define?: Record<string, string>;
+  outExtension?: OutExtensionFactory;
+  injectShims?: boolean;
 };
 
 export type ESBuildResult = esbuild.BuildResult;
 
-export type ESBuildResolvedOptions = ESBuildOptions &
+export type ESBuildResolvedOptions = Omit<ESBuildOptions, "outExtension"> &
   Required<Pick<ESBuildOptions, "name" | "outdir" | "entryPoints">> & {
     config: StormConfig;
     workspaceRoot: WorkspaceTypeAndRoot;
@@ -43,4 +59,5 @@ export type ESBuildResolvedOptions = ESBuildOptions &
     projectName: string;
     projectGraph: ProjectGraph;
     projectConfigurations: ProjectsConfigurations;
+    outExtension: OutExtensionObject;
   };
