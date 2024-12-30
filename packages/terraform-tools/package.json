@@ -62,6 +62,7 @@
   "devDependencies": {
     "@nx/devkit": "catalog:",
     "@nx/workspace": "catalog:",
+    "@types/node": "catalog:",
     "nx": "catalog:"
   },
   "publishConfig": {

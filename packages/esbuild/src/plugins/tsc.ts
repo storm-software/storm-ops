@@ -17,9 +17,11 @@
 
 import { hfs } from "@humanfs/node";
 import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
+import { joinPathFragments } from "@nx/devkit";
 import { loadStormConfig, run, writeError } from "@storm-software/config-tools";
 import type * as esbuild from "esbuild";
 import path from "node:path";
+import { ESBuildResolvedOptions } from "../types";
 
 /**
  * Bundle all type definitions by using the API Extractor from RushStack
@@ -31,11 +33,12 @@ import path from "node:path";
 function bundleTypeDefinitions(
   filename: string,
   outfile: string,
-  externals: string[]
+  externals: string[],
+  options: ESBuildResolvedOptions
 ) {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const { dependencies, peerDependencies, devDependencies } = require(
-    `${process.cwd()}/package.json`
+    `${options.projectRoot}/package.json`
   );
 
   // get the list of bundled and non bundled as well as their eventual type dependencies
@@ -62,11 +65,11 @@ function bundleTypeDefinitions(
   // we give the config in its raw form instead of a file
   const extractorConfig = ExtractorConfig.prepare({
     configObject: {
-      projectFolder: process.cwd(),
+      projectFolder: options.projectRoot,
       mainEntryPointFilePath: filename,
       bundledPackages,
       compiler: {
-        tsconfigFilePath: path.join(process.cwd(), "tsconfig.build.json"),
+        tsconfigFilePath: options.tsconfig,
         overrideTsconfig: {
           compilerOptions: {
             paths: {} // bug with api extract + paths
@@ -75,13 +78,13 @@ function bundleTypeDefinitions(
       },
       dtsRollup: {
         enabled: true,
-        untrimmedFilePath: path.join(process.cwd(), `${outfile}.d.ts`)
+        untrimmedFilePath: path.join(options.outdir, `${outfile}.d.ts`)
       },
       tsdocMetadata: {
         enabled: false
       }
     },
-    packageJsonFullPath: path.join(process.cwd(), "package.json"),
+    packageJsonFullPath: path.join(options.projectRoot, "package.json"),
     configObjectFullPath: undefined
   });
 
@@ -107,57 +110,76 @@ function bundleTypeDefinitions(
 export const tscPlugin: (emitTypes?: boolean) => esbuild.Plugin = (
   emitTypes?: boolean
 ) => ({
-  name: "tscPlugin",
+  name: "storm:tsc",
   setup(build) {
-    const options = build.initialOptions;
+    const options = build.initialOptions as ESBuildResolvedOptions;
 
-    if (emitTypes === false) return; // build has opted out of emitting types
+    if (emitTypes === false) {
+      return; // build has opted out of emitting types
+    }
 
     build.onStart(async () => {
       const config = await loadStormConfig();
 
       // we only call tsc if not in watch mode or in dev mode (they skip types)
       if (process.env.WATCH !== "true" && process.env.DEV !== "true") {
-        // --paths null basically prevents typescript from using paths from the
-        // tsconfig.json that is passed from the esbuild config. We need to do
-        // this because TS would include types from the paths into this build.
-        // but our paths, in our specific case only represent separate packages.
+        // // --paths null basically prevents typescript from using paths from the
+        // // tsconfig.json that is passed from the esbuild config. We need to do
+        // // this because TS would include types from the paths into this build.
+        // // but our paths, in our specific case only represent separate packages.
+        // await run(
+        //   config,
+        //   `pnpm exec tsc --project ${options.tsconfig} --paths null`,
+        //   config.workspaceRoot
+        // );
+
         await run(
           config,
-          `pnpm exec tsc --project ${options.tsconfig} --paths null`,
-          config.workspaceRoot
+          `pnpm exec tsc --project ${options.tsconfig}`,
+          options.workspaceRoot.dir
         );
       }
 
       // we bundle types if we also bundle the entry point and it is a ts file
-      if (
-        options.bundle &&
-        options.outfile &&
-        options.entryPoints?.[0].endsWith(".ts")
-      ) {
+      if (options.bundle && options.entryPoints?.[0].endsWith(".ts")) {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const tsconfig = require(`${process.cwd()}/${options.tsconfig}`); // tsconfig
-        const typeOutDir = tsconfig?.compilerOptions?.outDir ?? "."; // type out dir
-        const entryPoint = options.entryPoints?.[0].replace(/\.ts$/, "");
-        const bundlePath = options.outfile.replace(/\.m?js$/, "");
+        const sourceRoot = options.sourceRoot.replaceAll(
+          options.projectRoot,
+          ""
+        );
+        const typeOutDir = options.outdir; // type out dir
+        const entryPoint = options.entryPoints?.[0]
+          .replace(sourceRoot, "")
+          .replace(/\.ts$/, "");
+        const bundlePath = joinPathFragments(options.outdir, entryPoint);
 
         let dtsPath;
         if (
-          await hfs.isFile(`${process.cwd()}/${typeOutDir}/${entryPoint}.d.ts`)
-        ) {
-          dtsPath = `${process.cwd()}/${typeOutDir}/${entryPoint}.d.ts`;
-        } else if (
           await hfs.isFile(
-            `${process.cwd()}/${typeOutDir}/${entryPoint.replace(/^src\//, "")}.d.ts`
+            `${options.workspaceRoot.dir}/${typeOutDir}/${entryPoint}.d.ts`
           )
         ) {
-          dtsPath = `${process.cwd()}/${typeOutDir}/${entryPoint.replace(/^src\//, "")}.d.ts`;
+          dtsPath = `${options.workspaceRoot.dir}/${typeOutDir}/${entryPoint}.d.ts`;
+        } else if (
+          await hfs.isFile(
+            `${options.workspaceRoot.dir}/${typeOutDir}/${entryPoint.replace(/^src\//, "")}.d.ts`
+          )
+        ) {
+          dtsPath = `${options.workspaceRoot.dir}/${typeOutDir}/${entryPoint.replace(/^src\//, "")}.d.ts`;
         }
 
-        const ext = options.format === "esm" ? "d.mts" : "d.ts";
+        const ext =
+          options.outExtension.dts || options.format === "esm"
+            ? "d.mts"
+            : "d.ts";
         if (process.env.WATCH !== "true" && process.env.DEV !== "true") {
           // we get the types generated by tsc and bundle them near the output
-          bundleTypeDefinitions(dtsPath, bundlePath, options.external ?? []);
+          bundleTypeDefinitions(
+            dtsPath,
+            bundlePath,
+            options.external ?? [],
+            options
+          );
 
           const dtsContents = await hfs.text(`${bundlePath}.d.ts`);
           await hfs.write(`${bundlePath}.${ext}`, dtsContents!);
@@ -167,7 +189,7 @@ export const tscPlugin: (emitTypes?: boolean) => esbuild.Plugin = (
           // we link the types locally by re-exporting them from the entry point
           await hfs.write(
             `${bundlePath}.${ext}`,
-            `export * from '${process.cwd()}/${entryPoint}'`
+            `export * from './${entryPoint}'`
           );
         }
       }

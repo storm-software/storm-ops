@@ -130,6 +130,8 @@ const resolveOptions = async (
       platform === "node" ? ["module", "main"] : ["browser", "module", "main"],
     resolveExtensions: [".ts", ".js", ".node"],
     ...options,
+    tsconfig:
+      options.tsconfig || joinPathFragments(projectRoot, "tsconfig.json"),
     outExtension,
     splitting:
       format === "iife"

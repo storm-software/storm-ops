@@ -60,4 +60,5 @@ export type ESBuildResolvedOptions = Omit<ESBuildOptions, "outExtension"> &
     projectGraph: ProjectGraph;
     projectConfigurations: ProjectsConfigurations;
     outExtension: OutExtensionObject;
+    tsconfig: string;
   };
