@@ -1,8 +1,15 @@
+## 1.121.1 (2024-12-30)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing external dependencies ([582924d8](https://github.com/storm-software/storm-ops/commit/582924d8))
+
 ## 1.121.0 (2024-12-30)
 
 ### Features
 
-- **workspace-tools:** Use `pnpm publish` in the `npm-publish` executor ([48a2ad49](https://github.com/storm-software/storm-ops/commit/48a2ad49))
+- **workspace-tools:** Use `pnpm publish` in the `npm-publish` executor
+  ([48a2ad49](https://github.com/storm-software/storm-ops/commit/48a2ad49))
 
 ## 1.120.0 (2024-12-30)
 

@@ -205,7 +205,7 @@
     "@nx/workspace": "catalog:",
     "@storm-software/build-tools": "0.113.0",
     "@storm-software/config": "1.82.0",
-    "@storm-software/config-tools": "1.121.0",
+    "@storm-software/config-tools": "1.121.1",
     "@types/node": "catalog:",
     "esbuild": "catalog:",
     "nx": "catalog:",

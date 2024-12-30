@@ -1,8 +1,16 @@
+## 1.212.3 (2024-12-30)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing external dependencies ([582924d8](https://github.com/storm-software/storm-ops/commit/582924d8))
+
 ## 1.212.2 (2024-12-30)
 
 ### Bug Fixes
 
-- **workspace-tools:** Ensure we always invoke publish from the correct directory ([7254d9d8](https://github.com/storm-software/storm-ops/commit/7254d9d8))
+- **workspace-tools:** Ensure we always invoke publish from the correct
+  directory
+  ([7254d9d8](https://github.com/storm-software/storm-ops/commit/7254d9d8))
 
 ## 1.212.1 (2024-12-30)
 
