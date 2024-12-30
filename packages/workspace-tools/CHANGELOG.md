@@ -1,12 +1,20 @@
+## 1.212.1 (2024-12-30)
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure the correct directory and tag are used in publish ([92f61284](https://github.com/storm-software/storm-ops/commit/92f61284))
+
 ## 1.212.0 (2024-12-30)
 
 ### Features
 
-- **workspace-tools:** Use `pnpm publish` in the `npm-publish` executor ([48a2ad49](https://github.com/storm-software/storm-ops/commit/48a2ad49))
+- **workspace-tools:** Use `pnpm publish` in the `npm-publish` executor
+  ([48a2ad49](https://github.com/storm-software/storm-ops/commit/48a2ad49))
 
 ### Dependency Upgrades
 
-- **storm-ops:** Upgrade `pnpm` package manager to `v9.15.2` ([58a0ab12](https://github.com/storm-software/storm-ops/commit/58a0ab12))
+- **storm-ops:** Upgrade `pnpm` package manager to `v9.15.2`
+  ([58a0ab12](https://github.com/storm-software/storm-ops/commit/58a0ab12))
 
 ## 1.211.0 (2024-12-30)
 
