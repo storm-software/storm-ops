@@ -9,10 +9,7 @@
     "directory": "packages/linting-tools"
   },
   "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -24,13 +21,13 @@
     "storm-lint": "./bin/lint.js"
   },
   "keywords": [
+    "monorepo",
+    "open-system",
     "storm",
     "storm-ops",
-    "stormstack",
     "storm-stack",
-    "sullivanpj",
-    "open-system",
-    "monorepo"
+    "stormstack",
+    "sullivanpj"
   ],
   "dependencies": {
     "@cspell/dict-ada": "4.0.2",

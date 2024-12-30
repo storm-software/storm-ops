@@ -8,10 +8,7 @@
     "directory": "packages/build-tools"
   },
   "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -24,20 +21,20 @@
   },
   "types": "declarations.d.ts",
   "keywords": [
+    "monorepo",
+    "open-system",
     "storm",
     "storm-ops",
-    "stormstack",
     "storm-stack",
-    "sullivanpj",
-    "open-system",
-    "monorepo"
+    "stormstack",
+    "sullivanpj"
   ],
   "peerDependencies": {
     "@microsoft/api-extractor": "7.46.2",
-    "@nx/devkit": "^20.2.2",
-    "@nx/js": "^20.2.2",
-    "@nx/workspace": "^20.2.2",
-    "nx": "^20.2.2"
+    "@nx/devkit": "catalog:",
+    "@nx/js": "catalog:",
+    "@nx/workspace": "catalog:",
+    "nx": "catalog:"
   },
   "peerDependenciesMeta": {
     "@microsoft/api-extractor": {
@@ -90,10 +87,10 @@
   },
   "devDependencies": {
     "@microsoft/api-extractor": "7.46.2",
-    "@nx/devkit": "^20.2.2",
-    "@nx/js": "^20.2.2",
-    "@nx/workspace": "^20.2.2",
-    "nx": "^20.2.2"
+    "@nx/devkit": "catalog:",
+    "@nx/js": "catalog:",
+    "@nx/workspace": "catalog:",
+    "nx": "catalog:"
   },
   "publishConfig": {
     "access": "public"

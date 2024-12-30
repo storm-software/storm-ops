@@ -1,86 +1,13 @@
 {
   "name": "@storm-software/workspace-tools",
-  "version": "1.210.3",
-  "type": "commonjs",
   "description": "Tools for managing a Storm workspace, including various Nx generators and executors for common development tasks.",
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
-    "directory": "packages/workspace-tools"
-  },
-  "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
+  "version": "1.210.3",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "license": "Apache-2.0",
-  "private": false,
-  "main": "./index.js",
-  "exports": {
-    ".": "./index.js",
-    "./package.json": "./package.json",
-    "./config/nx.json": "./config/nx.json",
-    "./config/nx-default.json": "./config/nx-default.json",
-    "./config/nx-cloud.json": "./config/nx-cloud.json",
-    "./assets/cjs_shims": "./assets/cjs_shims.js",
-    "./assets/esm_shims": "./assets/esm_shims.js",
-    "./migrations.json": "./migrations.json",
-    "./generators.json": "./generators.json",
-    "./generators/*/schema.json": "./src/generators/*/schema.json",
-    "./executors.json": "./executors.json",
-    "./executors/*/schema.json": "./src/executors/*/schema.json",
-    "./plugins/rust": "./src/plugins/rust/index.js",
-    "./plugins/typescript": "./src/plugins/typescript/index.js",
-    "./plugins/typescript/tsup": "./src/plugins/typescript/tsup.js",
-    "./preset": "./src/generators/preset/preset.js",
-    "./base": "./src/base/index.js",
-    "./base/*": "./src/base/*.js",
-    "./utils": "./src/utils/index.js",
-    "./utils/*": "./src/utils/*.js"
-  },
-  "typings": "./declarations.d.ts",
-  "keywords": [
-    "storm",
-    "storm-ops",
-    "stormstack",
-    "storm-stack",
-    "sullivanpj",
-    "open-system",
-    "monorepo"
-  ],
-  "peerDependencies": {
-    "@microsoft/api-extractor": "catalog:",
-    "@nx/devkit": "catalog:",
-    "@nx/esbuild": "catalog:",
-    "@nx/rollup": "catalog:",
-    "nx": "catalog:",
-    "typescript": "catalog:"
-  },
-  "peerDependenciesMeta": {
-    "@microsoft/api-extractor": {
-      "optional": true
-    },
-    "@nx/devkit": {
-      "optional": false
-    },
-    "@nx/esbuild": {
-      "optional": false
-    },
-    "@nx/rollup": {
-      "optional": false
-    },
-    "nx": {
-      "optional": false
-    },
-    "typescript": {
-      "optional": false
-    }
-  },
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "dependencies": {
     "@anatine/esbuild-decorators": "0.2.19",
     "@ltd/j-toml": "1.38.0",
@@ -129,9 +56,79 @@
     "nx": "catalog:",
     "typescript": "catalog:"
   },
+  "executors": "./executors.json",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json",
+    "./config/nx.json": "./config/nx.json",
+    "./config/nx-default.json": "./config/nx-default.json",
+    "./config/nx-cloud.json": "./config/nx-cloud.json",
+    "./assets/cjs_shims": "./assets/cjs_shims.js",
+    "./assets/esm_shims": "./assets/esm_shims.js",
+    "./migrations.json": "./migrations.json",
+    "./generators.json": "./generators.json",
+    "./generators/*/schema.json": "./src/generators/*/schema.json",
+    "./executors.json": "./executors.json",
+    "./executors/*/schema.json": "./src/executors/*/schema.json",
+    "./plugins/rust": "./src/plugins/rust/index.js",
+    "./plugins/typescript": "./src/plugins/typescript/index.js",
+    "./plugins/typescript/tsup": "./src/plugins/typescript/tsup.js",
+    "./preset": "./src/generators/preset/preset.js",
+    "./base": "./src/base/index.js",
+    "./base/*": "./src/base/*.js",
+    "./utils": "./src/utils/index.js",
+    "./utils/*": "./src/utils/*.js"
+  },
+  "generators": "./generators.json",
+  "homepage": "https://stormsoftware.com",
+  "keywords": [
+    "monorepo",
+    "open-system",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "stormstack",
+    "sullivanpj"
+  ],
+  "license": "Apache-2.0",
+  "main": "./index.js",
+  "peerDependencies": {
+    "@microsoft/api-extractor": "catalog:",
+    "@nx/devkit": "catalog:",
+    "@nx/esbuild": "catalog:",
+    "@nx/rollup": "catalog:",
+    "nx": "catalog:",
+    "typescript": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "@microsoft/api-extractor": {
+      "optional": true
+    },
+    "@nx/devkit": {
+      "optional": false
+    },
+    "@nx/esbuild": {
+      "optional": false
+    },
+    "@nx/rollup": {
+      "optional": false
+    },
+    "nx": {
+      "optional": false
+    },
+    "typescript": {
+      "optional": false
+    }
+  },
+  "private": false,
   "publishConfig": {
     "access": "public"
   },
-  "executors": "./executors.json",
-  "generators": "./generators.json"
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/workspace-tools"
+  },
+  "type": "commonjs",
+  "typings": "./declarations.d.ts"
 }

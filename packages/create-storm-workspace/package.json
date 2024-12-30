@@ -9,10 +9,7 @@
     "directory": "packages/create-storm-workspace"
   },
   "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -25,17 +22,17 @@
   },
   "typings": "./src/index.d.ts",
   "keywords": [
+    "monorepo",
+    "open-system",
     "storm",
     "storm-ops",
-    "stormstack",
     "storm-stack",
-    "sullivanpj",
-    "open-system",
-    "monorepo"
+    "stormstack",
+    "sullivanpj"
   ],
   "peerDependencies": {
-    "@nx/devkit": "^20.2.2",
-    "nx": "^20.2.2"
+    "@nx/devkit": "catalog:",
+    "nx": "catalog:"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
@@ -46,13 +43,13 @@
     }
   },
   "dependencies": {
-    "@nx/workspace": "^20.2.2",
-    "create-nx-workspace": "^20.2.2",
+    "@nx/workspace": "catalog:",
+    "create-nx-workspace": "catalog:",
     "enquirer": "2.4.1"
   },
   "devDependencies": {
-    "@nx/devkit": "^20.2.2",
-    "nx": "^20.2.2"
+    "@nx/devkit": "catalog:",
+    "nx": "catalog:"
   },
   "publishConfig": {
     "access": "public"

@@ -9,10 +9,7 @@
     "directory": "packages/eslint-plugin-graphql"
   },
   "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -69,22 +66,22 @@
   },
   "types": "./index.d.ts",
   "keywords": [
-    "front-end",
     "back-end",
     "cli",
+    "eslint",
+    "eslint-plugin",
+    "eslintplugin",
     "frameworks",
+    "front-end",
+    "monorepo",
     "storm",
     "storm-ops",
-    "sullivanpj",
-    "eslint",
-    "eslintplugin",
-    "eslint-plugin",
-    "monorepo"
+    "sullivanpj"
   ],
   "peerDependencies": {
-    "@nx/eslint": "^20.2.2",
-    "@nx/eslint-plugin": "^20.2.2",
-    "@storm-software/eslint": "0.101.0",
+    "@nx/eslint": "catalog:",
+    "@nx/eslint-plugin": "catalog:",
+    "@storm-software/eslint": "workspace:*",
     "eslint": "^9.12.0",
     "graphql": ">=16.9.0"
   },
@@ -113,9 +110,9 @@
     "tslib": "^2.6.3"
   },
   "devDependencies": {
-    "@nx/eslint": "^20.2.2",
-    "@nx/eslint-plugin": "^20.2.2",
-    "@storm-software/eslint": "0.101.0",
+    "@nx/eslint": "catalog:",
+    "@nx/eslint-plugin": "catalog:",
+    "@storm-software/eslint": "workspace:*",
     "@types/eslint": "^8.56.10",
     "eslint": "^9.12.0",
     "eslint-doc-generator": "1.7.1",

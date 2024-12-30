@@ -9,10 +9,7 @@
     "directory": "packages/pulumi-tools"
   },
   "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -33,20 +30,20 @@
   },
   "typings": "./declarations.d.ts",
   "keywords": [
-    "storm",
-    "storm-ops",
-    "pulumi",
     "iac",
     "infrastructure",
+    "monorepo",
+    "pulumi",
+    "storm",
+    "storm-ops",
     "storm-stack",
-    "sullivanpj",
-    "monorepo"
+    "sullivanpj"
   ],
   "peerDependencies": {
-    "@nx/devkit": "^20.2.2",
-    "@nx/workspace": "^20.2.2",
+    "@nx/devkit": "catalog:",
+    "@nx/workspace": "catalog:",
     "@pulumi/pulumi": "^3.144.1",
-    "nx": "^20.2.2"
+    "nx": "catalog:"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
@@ -69,9 +66,9 @@
     "tslib": "^2.6.3"
   },
   "devDependencies": {
-    "@nx/devkit": "^20.2.2",
-    "@nx/workspace": "^20.2.2",
-    "nx": "^20.2.2"
+    "@nx/devkit": "catalog:",
+    "@nx/workspace": "catalog:",
+    "nx": "catalog:"
   },
   "publishConfig": {
     "access": "public"

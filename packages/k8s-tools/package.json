@@ -9,10 +9,7 @@
     "directory": "packages/k8s-tools"
   },
   "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -32,21 +29,21 @@
   },
   "typings": "./declarations.d.ts",
   "keywords": [
+    "helm",
+    "k8s",
+    "kubernetes",
+    "monorepo",
     "storm",
     "storm-ops",
-    "kubernetes",
-    "k8s",
-    "helm",
     "storm-stack",
-    "sullivanpj",
-    "monorepo"
+    "sullivanpj"
   ],
   "peerDependencies": {
     "@nx-tools/container-metadata": "^6.0.2",
     "@nx-tools/nx-container": "^6.0.2",
-    "@nx/devkit": "^20.2.2",
-    "@nx/workspace": "^20.2.2",
-    "nx": "^20.2.2"
+    "@nx/devkit": "catalog:",
+    "@nx/workspace": "catalog:",
+    "nx": "catalog:"
   },
   "peerDependenciesMeta": {
     "@nx-tools/container-metadata": {
@@ -71,10 +68,10 @@
   "devDependencies": {
     "@nx-tools/container-metadata": "^6.0.2",
     "@nx-tools/nx-container": "^6.0.2",
-    "@nx/devkit": "^20.2.2",
-    "@nx/workspace": "^20.2.2",
+    "@nx/devkit": "catalog:",
+    "@nx/workspace": "catalog:",
     "@types/js-yaml": "4.0.9",
-    "nx": "^20.2.2"
+    "nx": "catalog:"
   },
   "publishConfig": {
     "access": "public"

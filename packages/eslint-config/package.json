@@ -8,10 +8,7 @@
     "directory": "packages/eslint-config"
   },
   "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -47,13 +44,13 @@
     "./package.json": "./package.json"
   },
   "keywords": [
+    "eslint",
+    "eslint-config",
+    "eslintconfig",
+    "monorepo",
     "storm",
     "storm-ops",
-    "sullivanpj",
-    "eslint",
-    "eslintconfig",
-    "eslint-config",
-    "monorepo"
+    "sullivanpj"
   ],
   "peerDependencies": {
     "@typescript-eslint/eslint-plugin": "7.16.0",
@@ -72,8 +69,8 @@
     "eslint-config-prettier": "9.1.0"
   },
   "devDependencies": {
-    "@nx/eslint": "^20.2.2",
-    "@nx/eslint-plugin": "^20.2.2",
+    "@nx/eslint": "catalog:",
+    "@nx/eslint-plugin": "catalog:",
     "@types/eslint": "^8.56.10",
     "@typescript-eslint/eslint-plugin": "7.16.0",
     "@typescript-eslint/parser": "7.16.0",

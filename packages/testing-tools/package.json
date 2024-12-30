@@ -9,10 +9,7 @@
     "directory": "packages/testing-tools"
   },
   "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -23,20 +20,20 @@
   "module": "./index.js",
   "types": "./declarations.d.ts",
   "keywords": [
+    "monorepo",
+    "open-system",
     "storm",
     "storm-ops",
-    "stormstack",
     "storm-stack",
-    "sullivanpj",
-    "open-system",
-    "monorepo"
+    "stormstack",
+    "sullivanpj"
   ],
   "peerDependencies": {
-    "@nx/jest": "^20.2.2",
+    "@nx/jest": "catalog:",
     "jest": "29.7.0"
   },
   "devDependencies": {
-    "@nx/jest": "^20.2.2",
+    "@nx/jest": "catalog:",
     "jest": "29.7.0",
     "jest-resolve": "29.7.0"
   },

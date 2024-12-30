@@ -1,15 +1,10 @@
 {
   "name": "@storm-software/config",
-  "version": "1.80.0",
   "description": "Configuration management tools and schemas for Storm Software projects, providing a standardized approach to handle project settings and presets.",
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
-    "directory": "packages/config"
+  "version": "1.80.0",
+  "dependencies": {
+    "zod": "3.23.8"
   },
-  "private": false,
-  "main": "./index.cjs",
-  "module": "./index.js",
   "exports": {
     "./package.json": "./package.json",
     "./schemas/storm.schema.json": "./schemas/storm.schema.json",
@@ -20,11 +15,16 @@
       "require": "./index.cjs"
     }
   },
-  "types": "./declarations.d.ts",
-  "dependencies": {
-    "zod": "3.23.8"
-  },
+  "main": "./index.cjs",
+  "module": "./index.js",
+  "private": false,
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/config"
+  },
+  "types": "./declarations.d.ts"
 }

@@ -9,10 +9,7 @@
     "directory": "packages/prettier"
   },
   "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -29,12 +26,12 @@
     "./package.json": "./package.json"
   },
   "keywords": [
-    "storm",
-    "storm-ops",
-    "sullivanpj",
+    "monorepo",
     "prettier",
     "prettier-config",
-    "monorepo"
+    "storm",
+    "storm-ops",
+    "sullivanpj"
   ],
   "peerDependencies": {
     "prettier": "catalog:",

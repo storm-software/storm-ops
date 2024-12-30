@@ -9,10 +9,7 @@
     "directory": "packages/esbuild"
   },
   "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
@@ -142,24 +139,24 @@
     "dist/**/*"
   ],
   "keywords": [
-    "storm",
-    "storm-ops",
-    "storm-stack",
     "acidic",
     "cyclone-ui",
     "esbuild",
-    "sullivanpj",
-    "monorepo"
+    "monorepo",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "sullivanpj"
   ],
   "peerDependencies": {
-    "@microsoft/api-extractor": "^7.48.1",
-    "@nx/devkit": "^20.2.2",
-    "@nx/js": "^20.2.2",
-    "@nx/workspace": "^20.2.2",
-    "@storm-software/build-tools": "0.111.0",
-    "@storm-software/config-tools": "1.119.0",
+    "@microsoft/api-extractor": "catalog:",
+    "@nx/devkit": "catalog:",
+    "@nx/js": "catalog:",
+    "@nx/workspace": "catalog:",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "esbuild": "^0.24.0",
-    "nx": "^20.2.2",
+    "nx": "catalog:",
     "spdx-exceptions": "^2.5.0",
     "spdx-license-ids": "^3.0.20"
   },
@@ -202,18 +199,18 @@
     "globby": "^14.0.2"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "^7.48.1",
-    "@nx/devkit": "^20.2.2",
-    "@nx/js": "^20.2.2",
-    "@nx/workspace": "^20.2.2",
-    "@storm-software/build-tools": "0.111.0",
-    "@storm-software/config": "1.80.0",
-    "@storm-software/config-tools": "1.119.0",
-    "esbuild": "^0.24.0",
-    "nx": "^20.2.2",
+    "@microsoft/api-extractor": "catalog:",
+    "@nx/devkit": "catalog:",
+    "@nx/js": "catalog:",
+    "@nx/workspace": "catalog:",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "esbuild": "catalog:",
+    "nx": "catalog:",
     "spdx-exceptions": "^2.5.0",
     "spdx-license-ids": "^3.0.20",
-    "tsup": "^8.3.5"
+    "tsup": "catalog:"
   },
   "publishConfig": {
     "access": "public"

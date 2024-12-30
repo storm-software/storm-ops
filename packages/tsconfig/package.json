@@ -1,37 +1,34 @@
 {
   "name": "@storm-software/tsconfig",
-  "version": "0.34.0",
   "description": "A comprehensive package containing shared TypeScript configuration files for various Storm Software projects.",
-  "repository": {
-    "type": "github",
-    "url": "https://github.com/storm-software/storm-ops",
-    "directory": "packages/tsconfig"
-  },
-  "homepage": "https://stormsoftware.com",
-  "bugs": {
-    "url": "https://github.com/storm-software/storm-ops/issues",
-    "email": "support@stormsoftware.com"
-  },
+  "version": "0.34.0",
   "author": {
     "name": "Storm Software",
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
-  "license": "Apache-2.0",
-  "private": false,
-  "keywords": [
-    "storm",
-    "storm-ops",
-    "stormstack",
-    "storm-stack",
-    "sullivanpj",
-    "open-system",
-    "monorepo"
-  ],
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
   "dependencies": {
     "@total-typescript/ts-reset": "0.5.1"
   },
+  "homepage": "https://stormsoftware.com",
+  "keywords": [
+    "monorepo",
+    "open-system",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "stormstack",
+    "sullivanpj"
+  ],
+  "license": "Apache-2.0",
+  "private": false,
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/tsconfig"
   }
 }
