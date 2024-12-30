@@ -71,8 +71,9 @@ export const setConfigEnv = (config: StormConfig) => {
   if (config.owner) {
     process.env[`${prefix}OWNER`] = config.owner;
   }
-  if (config.worker) {
-    process.env[`${prefix}WORKER`] = config.worker;
+  if (config.bot) {
+    process.env[`${prefix}BOT_NAME`] = config.bot.name;
+    process.env[`${prefix}BOT_EMAIL`] = config.bot.email;
   }
   if (config.organization) {
     process.env[`${prefix}ORGANIZATION`] = config.organization;
@@ -153,10 +154,10 @@ export const setConfigEnv = (config: StormConfig) => {
       config.outputDirectory
     );
   }
-  if (config.envName) {
-    process.env[`${prefix}ENV_NAME`] = config.envName;
-    process.env.NODE_ENV = config.envName;
-    process.env.ENVIRONMENT = config.envName;
+  if (config.env) {
+    process.env[`${prefix}ENV`] = config.env;
+    process.env.NODE_ENV = config.env;
+    process.env.ENVIRONMENT = config.env;
   }
   // if (config.ci) {
   //   process.env[`${prefix}CI`] = String(config.ci);

@@ -205,6 +205,26 @@ export const ColorConfigMapSchema = z.union([
   z.record(z.string(), ColorConfigSchema)
 ]);
 
+export const WorkspaceBotConfigSchema = z
+  .object({
+    name: z
+      .string()
+      .trim()
+      .default("Stormie-Bot")
+      .describe(
+        "The workspace bot user's name (this is the bot that will be used to perform various tasks)"
+      ),
+    email: z
+      .string()
+      .trim()
+      .email()
+      .default("bot@stormsoftware.com")
+      .describe("The email of the workspace bot")
+  })
+  .describe(
+    "The workspace's bot user's config used to automated various operations tasks"
+  );
+
 /**
  * Storm Workspace config values used during various dev-ops processes. It represents the config of the entire monorepo.
  */
@@ -294,14 +314,8 @@ export const StormConfigSchema = z
       .trim()
       .default("@storm-software/admin")
       .describe("The owner of the package"),
-    worker: z
-      .string()
-      .trim()
-      .default("Stormie-Bot")
-      .describe(
-        "The worker of the package (this is the bot that will be used to perform various tasks)"
-      ),
-    envName: z
+    bot: WorkspaceBotConfigSchema,
+    env: z
       .enum(["development", "staging", "production"])
       .default("production")
       .describe("The current runtime environment name for the package"),

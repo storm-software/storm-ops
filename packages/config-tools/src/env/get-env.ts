@@ -10,8 +10,7 @@ import {
   STORM_DEFAULT_HOMEPAGE,
   STORM_DEFAULT_LICENSING
 } from "@storm-software/config";
-import type { DeepPartial } from "../../declarations.d";
-import type { LogLevelLabel } from "../types";
+import type { DeepPartial, LogLevelLabel } from "../types";
 import { getLogLevelLabel } from "../utilities";
 import { correctPaths } from "../utilities/correct-paths";
 
@@ -60,7 +59,10 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
     name: process.env[`${prefix}NAME`],
     namespace: process.env[`${prefix}NAMESPACE`],
     owner: process.env[`${prefix}OWNER`],
-    worker: process.env[`${prefix}WORKER`],
+    bot: {
+      name: process.env[`${prefix}BOT_NAME`],
+      email: process.env[`${prefix}BOT_EMAIL`]
+    },
     organization: process.env[`${prefix}ORGANIZATION`],
     packageManager: process.env[
       `${prefix}PACKAGE_MANAGER`
@@ -82,9 +84,9 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
     cacheDirectory: correctPaths(process.env[`${prefix}CACHE_DIRECTORY`]),
     runtimeVersion: process.env[`${prefix}RUNTIME_VERSION`],
     outputDirectory: correctPaths(process.env[`${prefix}OUTPUT_DIRECTORY`]),
-    envName: (process.env[`${prefix}ENV_NAME`] ??
+    env: (process.env[`${prefix}ENV`] ??
       process.env.NODE_ENV ??
-      process.env.ENVIRONMENT) as StormConfig["envName"],
+      process.env.ENVIRONMENT) as StormConfig["env"],
     // ci:
     //   process.env[`${prefix}CI`] !== undefined
     //     ? Boolean(

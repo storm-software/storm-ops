@@ -1,6 +1,8 @@
 {
   "organization": "storm-software",
   "owner": "@storm-software/admin",
+  "bot": { "name": "Stormie-Bot", "email": "bot@stormsoftware.com" },
+  "env": "production",
   "timezone": "America/New_York",
   "locale": "en-US",
   "logLevel": "info",

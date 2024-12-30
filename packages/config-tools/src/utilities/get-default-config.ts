@@ -46,20 +46,8 @@ export const DEFAULT_STORM_CONFIG: any = {
   namespace: "storm-software",
   license: "Apache-2.0",
   homepage: "https://stormsoftware.com",
-  owner: "@storm-software/admin",
-  worker: "stormie-bot",
-  runtimeDirectory: "node_modules/.storm",
-  skipCache: false,
-  packageManager: "pnpm",
-  timezone: "America/New_York",
-  locale: "en-US",
-  envName: "production",
-  branch: "main",
-  organization: "storm-software",
   configFile: null,
-  runtimeVersion: "1.0.0",
-
-  extensions: {}
+  runtimeVersion: "1.0.0"
 };
 
 /**
@@ -123,9 +111,6 @@ export const getDefaultConfig = (
     license: license ?? DEFAULT_STORM_CONFIG.license,
     homepage: homepage ?? DEFAULT_STORM_CONFIG.homepage,
     docs: `${homepage ?? DEFAULT_STORM_CONFIG.homepage}/docs`,
-    licensing: `${homepage ?? DEFAULT_STORM_CONFIG.homepage}/license`,
-    extensions: {
-      ...config.extensions
-    }
+    licensing: `${homepage ?? DEFAULT_STORM_CONFIG.homepage}/license`
   }) as StormConfig;
 };

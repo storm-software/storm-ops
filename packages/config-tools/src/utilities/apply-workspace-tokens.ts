@@ -1,7 +1,4 @@
-import type {
-  BaseTokenizerOptions,
-  ProjectTokenizerOptions
-} from "../../declarations";
+import { BaseTokenizerOptions, ProjectTokenizerOptions } from "../types";
 import { findWorkspaceRoot } from "./find-workspace-root";
 
 export const applyWorkspaceBaseTokens = async (

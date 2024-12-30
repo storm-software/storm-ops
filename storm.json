@@ -1,8 +1,9 @@
 {
   "$schema": "./packages/config/schemas/storm.schema.json",
-  "extends": "./packages/config/presets/pnpm.json",
+  "extends": "./packages/config/presets/base.json",
   "name": "storm-ops",
   "namespace": "storm-software",
   "repository": "https://github.com/storm-software/storm-ops",
-  "externalPackagePatterns": ["@storm-software/"]
+  "externalPackagePatterns": ["@storm-software/"],
+  "packageManager": "pnpm"
 }
