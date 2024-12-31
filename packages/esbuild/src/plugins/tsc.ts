@@ -136,36 +136,37 @@ export const tscPlugin: (emitTypes?: boolean) => esbuild.Plugin = (
         await run(
           config,
           `pnpm exec tsc --project ${options.tsconfig}`,
-          options.workspaceRoot.dir
+          options.config.workspaceRoot
         );
       }
 
       // we bundle types if we also bundle the entry point and it is a ts file
-      if (options.bundle && options.entryPoints?.[0].endsWith(".ts")) {
+      if (options.bundle && options.entryPoints[0]!.endsWith(".ts")) {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const sourceRoot = options.sourceRoot.replaceAll(
           options.projectRoot,
           ""
         );
         const typeOutDir = options.outdir; // type out dir
-        const entryPoint = options.entryPoints?.[0]
-          .replace(sourceRoot, "")
-          .replace(/\.ts$/, "");
+        const entryPoint = options.entryPoints[0]!.replace(
+          sourceRoot,
+          ""
+        ).replace(/\.ts$/, "");
         const bundlePath = joinPathFragments(options.outdir, entryPoint);
 
         let dtsPath;
         if (
           await hfs.isFile(
-            `${options.workspaceRoot.dir}/${typeOutDir}/${entryPoint}.d.ts`
+            `${options.config.workspaceRoot}/${typeOutDir}/${entryPoint}.d.ts`
           )
         ) {
-          dtsPath = `${options.workspaceRoot.dir}/${typeOutDir}/${entryPoint}.d.ts`;
+          dtsPath = `${options.config.workspaceRoot}/${typeOutDir}/${entryPoint}.d.ts`;
         } else if (
           await hfs.isFile(
-            `${options.workspaceRoot.dir}/${typeOutDir}/${entryPoint.replace(/^src\//, "")}.d.ts`
+            `${options.config.workspaceRoot}/${typeOutDir}/${entryPoint.replace(/^src\//, "")}.d.ts`
           )
         ) {
-          dtsPath = `${options.workspaceRoot.dir}/${typeOutDir}/${entryPoint.replace(/^src\//, "")}.d.ts`;
+          dtsPath = `${options.config.workspaceRoot}/${typeOutDir}/${entryPoint.replace(/^src\//, "")}.d.ts`;
         }
 
         const ext =

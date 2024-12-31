@@ -4,7 +4,7 @@ import {
   DependentBuildableProjectNode
 } from "@nx/js/src/utils/buildable-libs-utils";
 import { StormConfig } from "@storm-software/config";
-import { writeTrace } from "@storm-software/config-tools/utilities/logger";
+import { writeTrace } from "@storm-software/config-tools/logger/console";
 import { dirname, extname } from "node:path";
 import { pathToFileURL } from "node:url";
 import ts from "typescript";

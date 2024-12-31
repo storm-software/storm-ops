@@ -3,7 +3,7 @@ import { defineConfig } from "tsup";
 export default defineConfig({
   name: "esbuild",
   target: "node22",
-  entryPoints: ["./src/*.ts", "./src/plugins/*.ts", "./bin/index.ts"],
+  entryPoints: ["./src/*.ts", "./src/plugins/*.ts", "./bin/storm-esbuild.ts"],
   format: ["cjs", "esm"],
   platform: "node",
   splitting: true,
