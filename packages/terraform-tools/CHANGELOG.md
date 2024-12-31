@@ -2,8 +2,11 @@
 
 ### Features
 
-- **esbuild:** Updated the `tsc` plugin to handle monorepos correctly ([ed6b42cd](https://github.com/storm-software/storm-ops/commit/ed6b42cd))
-- **storm-ops:** Completed enhancement around `catalog` and `workspace` dependency upgrades ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
+- **esbuild:** Updated the `tsc` plugin to handle monorepos correctly
+  ([ed6b42cd](https://github.com/storm-software/storm-ops/commit/ed6b42cd))
+- **storm-ops:** Completed enhancement around `catalog` and `workspace`
+  dependency upgrades
+  ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
 
 ## 0.35.0 (2024-12-22)
 

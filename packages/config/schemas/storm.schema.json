@@ -72,12 +72,25 @@
           "default": "@storm-software/admin",
           "description": "The owner of the package"
         },
-        "worker": {
-          "type": "string",
-          "default": "Stormie-Bot",
-          "description": "The worker of the package (this is the bot that will be used to perform various tasks)"
+        "bot": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "default": "Stormie-Bot",
+              "description": "The workspace bot user's name (this is the bot that will be used to perform various tasks)"
+            },
+            "email": {
+              "type": "string",
+              "format": "email",
+              "default": "bot@stormsoftware.com",
+              "description": "The email of the workspace bot"
+            }
+          },
+          "additionalProperties": false,
+          "description": "The workspace's bot user's config used to automated various operations tasks"
         },
-        "envName": {
+        "env": {
           "type": "string",
           "enum": ["development", "staging", "production"],
           "default": "production",
@@ -478,7 +491,7 @@
           "description": "Configuration of each used extension"
         }
       },
-      "required": ["colors"],
+      "required": ["bot", "colors"],
       "additionalProperties": false,
       "description": "Storm Workspace config values used during various dev-ops processes. This type is a combination of the StormPackageConfig and StormProject types. It represents the config of the entire monorepo."
     }
