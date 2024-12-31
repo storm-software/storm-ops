@@ -222,6 +222,7 @@ const resolveOptions = async (
     minify: options.minify || !options.debug,
     verbose: options.verbose || isVerbose() || options.debug === true,
     debug: !!options.debug,
+    color: true,
     includeSrc: options.includeSrc === true,
     metafile: options.metafile !== false,
     generatePackageJson: options.generatePackageJson !== false,
@@ -235,7 +236,7 @@ const resolveOptions = async (
     banner:
       options.banner ||
       `
-// ⚡ Built by Storm Software
+//      ⚡ Built by Storm Software
 `,
     footer: options.footer
   } satisfies ESBuildResolvedOptions;

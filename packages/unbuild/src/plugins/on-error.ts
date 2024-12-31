@@ -28,7 +28,7 @@ export function onErrorPlugin(): Plugin {
       if (error) {
         writeError(
           `The following errors occurred during the build:
-    ${error ? error.message : "Unknown error"}
+${error ? error.message : "Unknown build error"}
 
     `
         );
@@ -39,12 +39,12 @@ export function onErrorPlugin(): Plugin {
     renderError(error?: Error | undefined) {
       writeError(
         `The following errors occurred during the build:
-  ${error ? error.message : "Unknown error"}
+${error ? error.message : "Unknown build error"}
 
   `
       );
 
       throw new Error("ESBuild process failed with errors.");
     }
-  }
-};
+  };
+}

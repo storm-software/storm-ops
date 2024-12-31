@@ -19,10 +19,11 @@
  * The build library used by Storm Software for building TypeScript applications.
  *
  * @remarks
- * A package containing `storm-build` for building Storm Stack libraries and services
+ * A package containing `storm-unbuild` for building Storm Stack libraries and services
  *
  * @packageDocumentation
  */
 
 export * from "./build";
+export * from "./clean";
 export * from "./types";

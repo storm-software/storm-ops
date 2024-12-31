@@ -110,6 +110,20 @@
         "default": "./dist/config.js"
       }
     },
+    "./clean": {
+      "import": {
+        "types": "./dist/clean.d.ts",
+        "default": "./dist/clean.js"
+      },
+      "require": {
+        "types": "./dist/clean.d.cts",
+        "default": "./dist/clean.cjs"
+      },
+      "default": {
+        "types": "./dist/clean.d.ts",
+        "default": "./dist/clean.js"
+      }
+    },
     "./build": {
       "import": {
         "types": "./dist/build/index.d.ts",

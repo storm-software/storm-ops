@@ -48,7 +48,10 @@ export type ESBuildOptions = Omit<
 export type ESBuildResult = esbuild.BuildResult;
 
 export type ESBuildResolvedOptions = TypeScriptBuildResolvedOptions &
-  Pick<esbuild.BuildOptions, "loader" | "inject" | "metafile" | "keepNames"> & {
+  Pick<
+    esbuild.BuildOptions,
+    "loader" | "inject" | "metafile" | "keepNames" | "color"
+  > & {
     injectShims: boolean;
     outdir: string;
     projectGraph: ProjectGraph;

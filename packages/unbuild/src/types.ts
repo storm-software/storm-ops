@@ -15,9 +15,11 @@
 
  -------------------------------------------------------------------*/
 
-import { AssetGlob } from "@storm-software/build-tools";
-import { StormConfig } from "@storm-software/config";
-import { WorkspaceTypeAndRoot } from "nx/src/utils/find-workspace-root";
+import {
+  AdditionalCLIOptions,
+  TypeScriptBuildOptions,
+  TypeScriptBuildResolvedOptions
+} from "@storm-software/build-tools";
 import type { BuildConfig, BuildOptions, RollupBuildOptions } from "unbuild";
 
 export type DeepPartial<T> = T extends object
@@ -26,78 +28,65 @@ export type DeepPartial<T> = T extends object
     }
   : T;
 
-export type UnbuildOptions = Omit<
-  BuildOptions,
-  "entries" | "rootDir" | "externals" | "rollupConfig"
-> & {
-  name?: string;
-
-  /**
-   * Path to the project root relative to the workspace root
-   */
-  projectRoot: string;
-
-  /**
-   * Path to the source root relative to the workspace root
-   */
-  sourceRoot?: string;
-
-  /**
-   * Path to the `tsconfig.json` file relative to the project root
-   */
-  tsConfigPath?: string;
-
-  /**
-   * Path to a rollup configuration file relative to the project root
-   */
-  rollup?: string | DeepPartial<RollupBuildOptions>;
-
-  /**
-   * Path to a unbuild configuration file relative to the project root
-   */
-  configPath?: string;
-
-  includeSrc?: boolean;
-  generatePackageJson?: boolean;
-  assets?: (AssetGlob | string)[];
-  externals?: string[];
-  banner?: string;
-  footer?: string;
-  minify?: boolean;
-};
-
-export type UnbuildResolvedOptions = UnbuildOptions &
-  BuildConfig &
-  Required<Pick<UnbuildOptions, "name" | "outDir">> & {
-    config: StormConfig;
+export type UnbuildOptions = Omit<TypeScriptBuildOptions, "entry" | "format"> &
+  Omit<
+    BuildOptions,
+    | "entries"
+    | "rootDir"
+    | "externals"
+    | "rollupConfig"
+    | "outDir"
+    | "declaration"
+    | "format"
+    | "parallel"
+  > & {
+    /**
+     * Path to a rollup configuration file relative to the project root
+     */
+    rollup?: string | DeepPartial<RollupBuildOptions>;
 
     /**
-     * Path to the workspace
+     * Path to a unbuild configuration file relative to the project root
      */
-    workspaceRoot: WorkspaceTypeAndRoot;
+    configPath?: string;
 
-    /**
-     * Path to the project root relative to the workspace root
-     */
-    projectRoot: string;
+    emitTypes?: boolean;
+  };
 
-    /**
-     * Path to the source root relative to the workspace root
-     */
-    sourceRoot: string;
-
-    /**
-     * Path to the `tsconfig.json` file relative to the project root
-     */
-    tsConfigPath: string;
-
+export type UnbuildResolvedOptions = Omit<
+  TypeScriptBuildResolvedOptions,
+  "entryPoints" | "external" | "emitTypes"
+> &
+  BuildConfig & {
     /**
      * Path to a rollup configuration file relative to the project root
      */
     rollup: DeepPartial<RollupBuildOptions>;
-
-    projectName: string;
+    outDir: string;
     externals: string[];
     entries: BuildOptions["entries"];
     declaration: BuildOptions["declaration"];
   };
+
+export type UnbuildCLIOptions = AdditionalCLIOptions &
+  Pick<
+    UnbuildOptions,
+    | "name"
+    | "outputPath"
+    | "platform"
+    | "bundle"
+    | "target"
+    | "watch"
+    | "clean"
+    | "debug"
+    | "banner"
+    | "footer"
+    | "splitting"
+    | "treeShaking"
+    | "generatePackageJson"
+    | "metafile"
+    | "minify"
+    | "includeSrc"
+    | "verbose"
+    | "emitTypes"
+  >;

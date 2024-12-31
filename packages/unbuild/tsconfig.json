@@ -12,7 +12,12 @@
     "moduleResolution": "Bundler",
     "moduleDetection": "force"
   },
-  "include": ["src/**/*.ts", "src/**/*.json", "src/**/.prettierignore"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.json",
+    "bin/storm-unbuild.ts",
+    "tsup.config.ts"
+  ],
   "exclude": [
     "**/*.spec.ts",
     "**/*.test.ts",

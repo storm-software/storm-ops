@@ -16,7 +16,7 @@ export function analyzePlugin() {
       const sourceBytes = formatBytes(source.length);
       const fileName = chunk.fileName;
 
-      writeInfo(`  ${fileName} ${sourceBytes}`);
+      writeInfo(` - ${fileName} ${sourceBytes}`);
     }
   };
 }

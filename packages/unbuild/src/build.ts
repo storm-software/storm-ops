@@ -30,6 +30,7 @@ import {
   addWorkspacePackageJsonFields,
   copyAssets
 } from "@storm-software/build-tools";
+import { joinPaths } from "@storm-software/config-tools";
 import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
 import {
   getStopwatch,
@@ -37,14 +38,16 @@ import {
   writeFatal,
   writeSuccess
 } from "@storm-software/config-tools/logger/console";
+import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
 import { LogLevelLabel } from "@storm-software/config-tools/types";
 import { default as merge } from "deepmerge";
 import { LogLevel } from "esbuild";
-import { join, relative } from "node:path";
+import { relative } from "node:path";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
 import type { InputPluginOption } from "rollup";
 import tsPlugin from "rollup-plugin-typescript2";
 import { BuildConfig, BuildContext, build as unbuild } from "unbuild";
+import { clean } from "./clean";
 import { analyzePlugin } from "./plugins/analyze-plugin";
 import { onErrorPlugin } from "./plugins/on-error";
 import { swcPlugin } from "./plugins/swc-plugin";
@@ -87,7 +90,7 @@ async function resolveOptions(
   });
 
   const projectJsonPath = joinPathFragments(
-    workspaceRoot.dir,
+    config.workspaceRoot,
     projectRoot,
     "project.json"
   );
@@ -109,16 +112,16 @@ async function resolveOptions(
 
   const packageJson = await hfs.json(packageJsonPath);
 
-  let tsConfigPath = options.tsConfigPath;
-  if (!tsConfigPath) {
-    tsConfigPath = joinPathFragments(
+  let tsconfig = options.tsconfig;
+  if (!tsconfig) {
+    tsconfig = joinPathFragments(
       workspaceRoot.dir,
       projectRoot,
       "tsconfig.json"
     );
   }
 
-  if (!(await hfs.isFile(tsConfigPath))) {
+  if (!(await hfs.isFile(tsconfig))) {
     throw new Error("Cannot find tsconfig.json configuration");
   }
 
@@ -163,7 +166,7 @@ async function resolveOptions(
 
   const tsLibDependency = getHelperDependency(
     HelperDependency.tsc,
-    tsConfigPath,
+    tsconfig,
     dependencies,
     projectGraph,
     true
@@ -178,44 +181,43 @@ async function resolveOptions(
   const resolvedOptions = {
     name: projectName,
     config,
-    workspaceRoot,
     projectRoot,
     sourceRoot,
     projectName,
-    tsConfigPath,
+    tsconfig,
     clean: false,
     entries: [
       {
         builder: "mkdist",
         input: `.${sourceRoot.replace(projectRoot, "")}`,
-        outDir: join(
+        outDir: joinPaths(
           relative(
-            join(workspaceRoot.dir, projectRoot),
-            workspaceRoot.dir
+            joinPaths(config.workspaceRoot, projectRoot),
+            config.workspaceRoot
           ).replaceAll("\\", "/"),
-          options.outDir,
+          options.outputPath,
           "dist"
         ).replaceAll("\\", "/"),
-        declaration: true,
+        declaration: options.emitTypes !== false,
         format: "esm"
       },
       {
         builder: "mkdist",
         input: `.${sourceRoot.replace(projectRoot, "")}`,
-        outDir: join(
+        outDir: joinPaths(
           relative(
-            join(workspaceRoot.dir, projectRoot),
-            workspaceRoot.dir
+            joinPaths(config.workspaceRoot, projectRoot),
+            config.workspaceRoot
           ).replaceAll("\\", "/"),
-          options.outDir,
+          options.outputPath,
           "dist"
         ).replaceAll("\\", "/"),
-        declaration: true,
+        declaration: options.emitTypes !== false,
         format: "cjs",
         ext: "cjs"
       }
     ],
-    declaration: "compatible",
+    declaration: options.emitTypes !== false ? "compatible" : false,
     failOnWarn: false,
     hooks: {
       "rollup:options": async (ctx: BuildContext, opts: any) => {
@@ -224,12 +226,12 @@ async function resolveOptions(
           swcPlugin(),
           ...((opts.plugins ?? []) as InputPluginOption[]),
           tsPlugin({
-            check: true,
-            tsconfig: tsConfigPath,
+            check: options.emitTypes !== false,
+            tsconfig,
             tsconfigOverride: {
               compilerOptions: await createTsCompilerOptions(
                 config,
-                tsConfigPath,
+                tsconfig,
                 projectRoot,
                 dependencies
               )
@@ -240,13 +242,14 @@ async function resolveOptions(
         ];
       }
     },
-    sourcemap: options.sourcemap ?? true,
-    outDir: options.outDir,
+    sourcemap: options.sourcemap ?? !!options.debug,
+    outDir: options.outputPath,
+    parallel: true,
     stub: false,
     stubOptions: {
       jiti: {}
     },
-    externals: [],
+    externals: options.external ?? [],
     dependencies: [] as string[],
     peerDependencies: [] as string[],
     devDependencies: [] as string[],
@@ -263,10 +266,14 @@ async function resolveOptions(
       cjsBridge: true,
       dts: {
         respectExternal: true,
-        tsconfig: tsConfigPath
+        tsconfig
       },
       output: {
-        banner: options.banner,
+        banner:
+          options.banner ||
+          `
+//      ⚡ Built by Storm Software
+  `,
         footer: options.footer
       },
       resolve: {
@@ -275,12 +282,12 @@ async function resolveOptions(
       },
       esbuild: {
         minify: !!options.minify,
-        treeShaking: true,
+        splitting: options.splitting !== false,
+        treeShaking: options.treeShaking !== false,
         color: true,
         logLevel: (config.logLevel === LogLevelLabel.FATAL
           ? LogLevelLabel.ERROR
-          : config.logLevel === LogLevelLabel.ALL ||
-              config.logLevel === LogLevelLabel.TRACE
+          : isVerbose()
             ? "verbose"
             : config.logLevel) as LogLevel
       }
@@ -342,7 +349,7 @@ async function generatePackageJson(options: UnbuildResolvedOptions) {
 
     let packageJson = await hfs.json(
       joinPathFragments(
-        options.workspaceRoot.dir,
+        options.config.workspaceRoot,
         options.projectRoot,
         "package.json"
       )
@@ -352,7 +359,7 @@ async function generatePackageJson(options: UnbuildResolvedOptions) {
     }
 
     packageJson = await addPackageDependencies(
-      options.workspaceRoot.dir,
+      options.config.workspaceRoot,
       options.projectRoot,
       options.projectName,
       packageJson
@@ -437,16 +444,10 @@ async function copyBuildAssets(options: UnbuildResolvedOptions) {
  */
 async function cleanOutputPath(options: UnbuildResolvedOptions) {
   if (options.clean !== false && options.outDir) {
-    writeDebug(
-      ` 🧹  Cleaning ${options.name} output path: ${options.outDir}`,
-      options.config
-    );
-    const stopwatch = getStopwatch(`${options.name} output clean`);
-
-    await hfs.deleteAll(options.outDir);
-
-    stopwatch();
+    await clean(options.name, options.outDir, options.config);
   }
+
+  return options;
 }
 
 /**
