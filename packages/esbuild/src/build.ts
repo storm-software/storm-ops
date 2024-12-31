@@ -28,16 +28,16 @@ import {
   addWorkspacePackageJsonFields,
   copyAssets
 } from "@storm-software/build-tools";
+import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
 import {
   getStopwatch,
-  loadStormConfig,
   writeDebug,
   writeError,
   writeFatal,
   writeSuccess,
   writeTrace,
   writeWarning
-} from "@storm-software/config-tools";
+} from "@storm-software/config-tools/logger/console";
 import { watch as createWatcher } from "chokidar";
 import { debounce, flatten, omit } from "es-toolkit";
 import { map } from "es-toolkit/compat";

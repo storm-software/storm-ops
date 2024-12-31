@@ -1,5 +1,10 @@
 import type { StormConfig } from "@storm-software/config";
-import { writeError, writeFatal, writeSuccess, writeTrace } from "./logger";
+import {
+  writeError,
+  writeFatal,
+  writeSuccess,
+  writeTrace
+} from "../logger/console";
 
 export const exitWithError = (config?: Partial<StormConfig>) => {
   writeFatal("Exiting script with an error status...", config);

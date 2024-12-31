@@ -6,9 +6,9 @@ import type {
   SingleThemeColorConfig,
   StormConfig
 } from "@storm-software/config";
+import { getLogLevel } from "../logger/get-log-level";
 import { LogLevel } from "../types";
 import { correctPaths } from "../utilities/correct-paths";
-import { getLogLevel } from "../utilities/get-log-level";
 
 /**
  * Get the config for an extension module of Storm workspace from environment variables

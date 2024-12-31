@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import type { StormConfig } from "@storm-software/config";
 import { StormConfigSchema } from "@storm-software/config/schema";
 import merge, { ArrayMergeOptions } from "deepmerge";
@@ -6,12 +8,12 @@ import { getConfigFile } from "./config-file/get-config-file";
 import { getConfigEnv, getExtensionEnv } from "./env/get-env";
 import { setConfigEnv } from "./env/set-env";
 import {
-  findWorkspaceRoot,
   formatLogMessage,
   writeInfo,
   writeTrace,
   writeWarning
-} from "./utilities";
+} from "./logger/console";
+import { findWorkspaceRoot } from "./utilities/find-workspace-root";
 import { getDefaultConfig } from "./utilities/get-default-config";
 
 const _extension_cache = new WeakMap<{ extensionName: string }, any>();

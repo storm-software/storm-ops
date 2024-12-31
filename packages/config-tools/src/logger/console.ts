@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ColorConfig, StormConfig } from "@storm-software/config";
 import { LogLevel, LogLevelLabel } from "../types";
+import { DEFAULT_COLOR_CONFIG } from "../utilities/get-default-config";
 import { getChalk } from "./chalk";
-import { DEFAULT_COLOR_CONFIG } from "./get-default-config";
 import { getLogLevel } from "./get-log-level";
 
 /**

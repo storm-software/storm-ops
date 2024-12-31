@@ -146,6 +146,34 @@
         "default": "./dist/env/*.js"
       }
     },
+    "./logger": {
+      "import": {
+        "types": "./dist/logger/index.d.mts",
+        "default": "./dist/logger/index.mjs"
+      },
+      "require": {
+        "types": "./dist/logger/index.d.ts",
+        "default": "./dist/logger/index.js"
+      },
+      "default": {
+        "types": "./dist/logger/index.d.ts",
+        "default": "./dist/logger/index.js"
+      }
+    },
+    "./logger/*": {
+      "import": {
+        "types": "./dist/logger/*.d.mts",
+        "default": "./dist/logger/*.mjs"
+      },
+      "require": {
+        "types": "./dist/logger/*.d.ts",
+        "default": "./dist/logger/*.js"
+      },
+      "default": {
+        "types": "./dist/logger/*.d.ts",
+        "default": "./dist/logger/*.js"
+      }
+    },
     "./utilities": {
       "import": {
         "types": "./dist/utilities/index.d.mts",

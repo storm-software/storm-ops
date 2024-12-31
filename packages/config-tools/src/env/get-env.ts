@@ -10,8 +10,8 @@ import {
   STORM_DEFAULT_HOMEPAGE,
   STORM_DEFAULT_LICENSING
 } from "@storm-software/config";
+import { getLogLevelLabel } from "../logger/get-log-level";
 import type { DeepPartial, LogLevelLabel } from "../types";
-import { getLogLevelLabel } from "../utilities";
 import { correctPaths } from "../utilities/correct-paths";
 
 /**
