@@ -1,6 +1,6 @@
 import type Rolldown from "rolldown";
 import type { Plugin } from "rolldown";
-import type { Options } from "tsup";
+import type { NormalizedOptions, Options } from "tsup";
 import type {
   Diagnostic,
   ParsedCommandLine,
@@ -68,6 +68,11 @@ export interface AdditionalCLIOptions {
   sourceRoot: string;
   projectName: string;
 }
+
+export type NormalizedTsupOptions = NormalizedOptions &
+  AdditionalCLIOptions & {
+    workspaceRoot: string;
+  };
 
 export interface TypeScriptBuildOptions extends AdditionalCLIOptions {
   additionalEntryPoints?: string[];

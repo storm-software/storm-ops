@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import jsonPlugin from "@rollup/plugin-json";
 import {
   writeError,
@@ -12,9 +13,9 @@ import { parentPort } from "node:worker_threads";
 import { readPackageJSON } from "pkg-types";
 import resolveFrom from "resolve-from";
 import type { InputOptions, OutputOptions, Plugin } from "rollup";
-import type { NormalizedOptions } from "tsup";
 import ts from "typescript";
 import { type TsResolveOptions, tsResolvePlugin } from "./plugins/ts-resolve";
+import type { NormalizedTsupOptions } from "./types";
 import { outExtension } from "./utils/out-extension";
 
 const prettyBytes = (bytes?: number) => {
@@ -67,7 +68,7 @@ type RollupConfig = {
 };
 
 const getRollupConfig = async (
-  options: NormalizedOptions
+  options: NormalizedTsupOptions
 ): Promise<RollupConfig> => {
   const compilerOptions = parseCompilerOptions(options.dts?.compilerOptions);
 
@@ -312,7 +313,7 @@ async function watchRollup(options: {
   });
 }
 
-const startRollup = async (options: NormalizedOptions) => {
+const startRollup = async (options: NormalizedTsupOptions) => {
   const config = await getRollupConfig(options);
   if (options.watch) {
     watchRollup(config);
