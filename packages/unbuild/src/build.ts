@@ -23,46 +23,34 @@ import {
   writeJsonFile
 } from "@nx/devkit";
 import { getHelperDependency, HelperDependency } from "@nx/js";
-import {
-  calculateProjectBuildableDependencies,
-  computeCompilerOptionsPaths,
-  DependentBuildableProjectNode
-} from "@nx/js/src/utils/buildable-libs-utils";
+import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
 import {
   addPackageDependencies,
   addPackageJsonExports,
   addWorkspacePackageJsonFields,
   copyAssets
 } from "@storm-software/build-tools";
-import { StormConfig } from "@storm-software/config";
+import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
 import {
   getStopwatch,
-  loadStormConfig,
-  LogLevelLabel,
+  writeDebug,
   writeFatal,
-  writeInfo,
-  writeSuccess,
-  writeTrace
-} from "@storm-software/config-tools";
+  writeSuccess
+} from "@storm-software/config-tools/logger/console";
+import { LogLevelLabel } from "@storm-software/config-tools/types";
 import { default as merge } from "deepmerge";
 import { LogLevel } from "esbuild";
-import { dirname, extname, join, relative } from "node:path";
-import { pathToFileURL } from "node:url";
+import { join, relative } from "node:path";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
 import type { InputPluginOption } from "rollup";
 import tsPlugin from "rollup-plugin-typescript2";
-import ts from "typescript";
-import {
-  BuildConfig,
-  BuildContext,
-  RollupBuildOptions,
-  build as unbuild
-} from "unbuild";
+import { BuildConfig, BuildContext, build as unbuild } from "unbuild";
 import { analyzePlugin } from "./plugins/analyze-plugin";
 import { onErrorPlugin } from "./plugins/on-error";
 import { swcPlugin } from "./plugins/swc-plugin";
 import { typeDefinitions } from "./plugins/type-definitions";
 import type { UnbuildOptions, UnbuildResolvedOptions } from "./types";
+import { createTsCompilerOptions, loadConfig } from "./utilities/helpers";
 
 /**
  * Get the build options for the unbuild process
@@ -82,14 +70,17 @@ async function resolveOptions(
     throw new Error("Cannot find Nx workspace root");
   }
 
+  const config = await loadStormConfig(workspaceRoot.dir);
+
+  writeDebug("  ⚙️   Resolving build options", config);
+  const stopwatch = getStopwatch("Build options resolution");
+
   if (options.configPath) {
     const configFile = await loadConfig(options.configPath as string);
     if (configFile) {
       options = merge(options, configFile) as UnbuildOptions;
     }
   }
-
-  const config = await loadStormConfig(workspaceRoot.dir);
 
   const projectGraph = await createProjectGraphAsync({
     exitOnError: true
@@ -328,51 +319,19 @@ async function resolveOptions(
     resolvedOptions.rollup = merge(resolvedOptions.rollup ?? {}, rollup);
   }
 
+  stopwatch();
+
   return resolvedOptions as any;
 }
 
-/**
- * Load a rolldown configuration file
- */
-async function loadConfig(
-  configPath: string
-): Promise<RollupBuildOptions | undefined> {
-  if (!/\.(js|mjs)$/.test(extname(configPath))) {
-    throw new Error("Unsupported config file format");
-  }
-  return import(pathToFileURL(configPath).toString()).then(
-    config => config.default
-  );
-}
+async function generatePackageJson(options: UnbuildResolvedOptions) {
+  if (
+    options.generatePackageJson !== false &&
+    (await hfs.isFile(joinPathFragments(options.projectRoot, "package.json")))
+  ) {
+    writeDebug("  ✍️   Writing package.json file", options.config);
+    const stopwatch = getStopwatch("Write package.json file");
 
-async function createTsCompilerOptions(
-  config: StormConfig,
-  tsConfigPath: string,
-  projectRoot: string,
-  dependencies?: DependentBuildableProjectNode[]
-) {
-  const tsConfigFile = ts.readConfigFile(
-    joinPathFragments(config.workspaceRoot, projectRoot, tsConfigPath),
-    ts.sys.readFile
-  );
-  const tsConfig = ts.parseJsonConfigFileContent(
-    tsConfigFile.config,
-    ts.sys,
-    dirname(joinPathFragments(config.workspaceRoot, projectRoot, tsConfigPath))
-  );
-
-  const compilerOptions = {
-    rootDir: projectRoot,
-    declaration: true,
-    paths: computeCompilerOptionsPaths(tsConfig, dependencies ?? [])
-  };
-  writeTrace(compilerOptions, config);
-
-  return compilerOptions;
-}
-
-const generatePackageJson = async (options: UnbuildResolvedOptions) => {
-  if (options.generatePackageJson !== false) {
     const packageJsonPath = joinPathFragments(
       options.projectRoot,
       "project.json"
@@ -414,27 +373,33 @@ const generatePackageJson = async (options: UnbuildResolvedOptions) => {
       joinPathFragments(options.outDir, "package.json"),
       packageJson
     );
+
+    stopwatch();
   }
 
   return options;
-};
+}
 
 /**
  * Execute esbuild with all the configurations we pass
  */
 async function executeUnbuild(options: UnbuildResolvedOptions) {
-  const stopwatch = getStopwatch(`${options.projectRoot} build`);
-  writeInfo(
-    `📦  Building ${options.name} (${options.projectRoot})...`,
+  writeDebug(
+    `  🚀  Running ${options.name} (${options.projectRoot}) build`,
     options.config
   );
+  const stopwatch = getStopwatch(
+    `${options.name} (${options.projectRoot}) build`
+  );
 
-  await unbuild(options.projectRoot, false, {
-    ...options,
-    rootDir: options.projectRoot
-  } as BuildConfig).finally(() => {
+  try {
+    await unbuild(options.projectRoot, false, {
+      ...options,
+      rootDir: options.projectRoot
+    } as BuildConfig);
+  } finally {
     stopwatch();
-  });
+  }
 
   return options;
 }
@@ -443,6 +408,12 @@ async function executeUnbuild(options: UnbuildResolvedOptions) {
  * Copy the assets to the build directory
  */
 async function copyBuildAssets(options: UnbuildResolvedOptions) {
+  writeDebug(
+    `  📋  Copying asset files to output directory: ${options.outDir}`,
+    options.config
+  );
+  const stopwatch = getStopwatch(`${options.name} asset copy`);
+
   await copyAssets(
     options.config,
     options.assets ?? [],
@@ -454,17 +425,28 @@ async function copyBuildAssets(options: UnbuildResolvedOptions) {
     options.includeSrc
   );
 
+  stopwatch();
+
   return options;
 }
 
 /**
- * Report the results of the build
+ * Clean the output path
+ *
+ * @param options - the build options
  */
-function reportResults(options: UnbuildResolvedOptions) {
-  writeSuccess(
-    `The ${options.name} build completed successfully`,
-    options.config
-  );
+async function cleanOutputPath(options: UnbuildResolvedOptions) {
+  if (options.clean !== false && options.outDir) {
+    writeDebug(
+      ` 🧹  Cleaning ${options.name} output path: ${options.outDir}`,
+      options.config
+    );
+    const stopwatch = getStopwatch(`${options.name} output clean`);
+
+    await hfs.deleteAll(options.outDir);
+
+    stopwatch();
+  }
 }
 
 /**
@@ -474,20 +456,28 @@ function reportResults(options: UnbuildResolvedOptions) {
  * @returns the build result
  */
 export async function build(options: UnbuildOptions) {
-  const stopwatch = getStopwatch("full build");
+  writeDebug(` ⚡  Executing Storm Unbuild pipeline`);
+  const stopwatch = getStopwatch("Unbuild pipeline");
 
   try {
     const resolvedOptions = await resolveOptions(options);
+
+    await cleanOutputPath(resolvedOptions);
     await generatePackageJson(resolvedOptions);
     await executeUnbuild(resolvedOptions);
     await copyBuildAssets(resolvedOptions);
 
-    reportResults(resolvedOptions);
+    writeSuccess(
+      `  🏁  The ${resolvedOptions.name} build completed successfully`,
+      resolvedOptions.config
+    );
   } catch (error) {
     writeFatal(
-      "Fatal errors occurred during the build that could not be recovered from. The build process has been terminated."
+      "  ❌  Fatal errors occurred during the build that could not be recovered from. The build process has been terminated."
     );
-  }
 
-  stopwatch();
+    throw error;
+  } finally {
+    stopwatch();
+  }
 }
