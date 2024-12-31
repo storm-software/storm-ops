@@ -74,6 +74,11 @@ const resolveOptions = async (
     throw new Error("Cannot find Nx workspace root");
   }
 
+  const config = await loadStormConfig(workspaceRoot.dir);
+
+  writeDebug("  ⚙️   Resolving build options", config);
+  const stopwatch = getStopwatch("Build options resolution");
+
   const nxJsonPath = joinPathFragments(workspaceRoot.dir, "nx.json");
   if (!(await hfs.isFile(nxJsonPath))) {
     throw new Error("Cannot find Nx workspace configuration");
@@ -114,7 +119,6 @@ const resolveOptions = async (
 
   const packageJson = await hfs.json(packageJsonPath);
 
-  const config = await loadStormConfig(workspaceRoot.dir);
   const format = options.format || "cjs";
   const platform = options.platform || "node";
 
@@ -123,7 +127,7 @@ const resolveOptions = async (
     ...options.env
   };
 
-  return {
+  const result = {
     ...DEFAULT_BUILD_OPTIONS,
     config,
     mainFields:
@@ -212,15 +216,20 @@ const resolveOptions = async (
     sourceRoot:
       options.sourceRoot ||
       joinPathFragments(workspaceRoot.dir, projectRoot, "src")
-  };
+  } satisfies ESBuildResolvedOptions;
+
+  stopwatch();
+
+  return result;
 };
 
-const generatePackageJson = async (options: ESBuildResolvedOptions) => {
+async function generatePackageJson(options: ESBuildResolvedOptions) {
   if (
     options.generatePackageJson !== false &&
     (await hfs.isFile(joinPathFragments(options.projectRoot, "package.json")))
   ) {
-    writeDebug("✍️   Writing package.json file", options.config);
+    writeDebug("  ✍️   Writing package.json file", options.config);
+    const stopwatch = getStopwatch("Write package.json file");
 
     const packageJsonPath = joinPathFragments(
       options.projectRoot,
@@ -296,10 +305,12 @@ const generatePackageJson = async (options: ESBuildResolvedOptions) => {
       joinPathFragments(options.outdir, "package.json"),
       packageJson
     );
+
+    stopwatch();
   }
 
   return options;
-};
+}
 
 /**
  * Create two deferred builds for esm and cjs. The one follows the other:
@@ -359,6 +370,7 @@ async function computeOptions(
  * Execute esbuild with all the configurations we pass
  */
 async function executeEsBuild(options: ESBuildResolvedOptions) {
+  writeDebug(`  🚀  Running ${options.name} build`, options.config);
   const stopwatch = getStopwatch(`${options.name} build`);
 
   if (process.env.WATCH === "true") {
@@ -391,6 +403,12 @@ async function copyBuildAssets([options, result]: [
   esbuild.BuildResult
 ]) {
   if (result.errors.length === 0) {
+    writeDebug(
+      `  📋  Copying asset files to output directory: ${options.outdir}`,
+      options.config
+    );
+    const stopwatch = getStopwatch(`${options.name} asset copy`);
+
     await copyAssets(
       options.config,
       options.assets ?? [],
@@ -401,6 +419,8 @@ async function copyBuildAssets([options, result]: [
       true,
       false
     );
+
+    stopwatch();
   }
 
   return [options, result] as const;
@@ -416,7 +436,7 @@ async function reportResults([options, result]: [
   if (result.errors.length === 0) {
     if (result.warnings.length > 0) {
       writeWarning(
-        `The following warnings occurred during the build: ${result.warnings
+        `  🚧  The following warnings occurred during the build: ${result.warnings
           .map(warning => warning.text)
           .join("\n")}`,
         options.config
@@ -424,7 +444,7 @@ async function reportResults([options, result]: [
     }
 
     writeSuccess(
-      `The ${options.name} build completed successfully`,
+      `  📦  The ${options.name} build completed successfully`,
       options.config
     );
   }
@@ -435,11 +455,15 @@ async function reportResults([options, result]: [
  */
 async function dependencyCheck(options: ESBuildOptions) {
   // we only check our dependencies for a full build
-  if (process.env.DEV === "true") return undefined;
+  if (process.env.DEV === "true") {
+    return undefined;
+  }
   // Only run on test and publish pipelines on Buildkite
   // Meaning we skip on GitHub Actions
   // Because it's slow and runs for each job, during setup, making each job slower
-  if (process.env.CI && !process.env.BUILDKITE) return undefined;
+  if (process.env.CI && !process.env.BUILDKITE) {
+    return undefined;
+  }
 
   // we need to bundle everything to do the analysis
   const buildPromise = esbuild.build({
@@ -463,13 +487,35 @@ async function dependencyCheck(options: ESBuildOptions) {
 }
 
 /**
+ * Clean the output path
+ *
+ * @param options - the build options
+ */
+async function cleanOutputPath(options: ESBuildResolvedOptions) {
+  if (options.clean !== false && options.outdir) {
+    writeDebug(
+      ` 🧹  Cleaning ${options.name} output path: ${options.outdir}`,
+      options.config
+    );
+    const stopwatch = getStopwatch(`${options.name} output clean`);
+
+    await hfs.deleteAll(options.outdir);
+
+    stopwatch();
+  }
+
+  return options;
+}
+
+/**
  * Execution pipeline that applies a set of actions
  *
  * @param options - the build options
  * @returns the build result
  */
 export async function build(options: ESBuildOptions | ESBuildOptions[]) {
-  const stopwatch = getStopwatch("full build");
+  writeDebug(`  ⚡   Executing Storm ESBuild pipeline`);
+  const stopwatch = getStopwatch("ESBuild pipeline");
 
   try {
     const opts = Array.isArray(options) ? options : [options];
@@ -483,19 +529,24 @@ export async function build(options: ESBuildOptions | ESBuildOptions[]) {
       await createOptions(opts),
       pipe.async(
         computeOptions,
+        cleanOutputPath,
         generatePackageJson,
         executeEsBuild,
         copyBuildAssets,
         reportResults
       )
     );
+
+    writeSuccess("  🏁  ESBuild pipeline build completed successfully");
   } catch (error) {
     writeFatal(
-      "Fatal errors occurred during the build that could not be recovered from. The build process has been terminated."
+      "  ❌  Fatal errors occurred during the build that could not be recovered from. The build process has been terminated."
     );
-  }
 
-  stopwatch();
+    throw error;
+  } finally {
+    stopwatch();
+  }
 }
 
 /**

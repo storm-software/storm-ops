@@ -7,11 +7,8 @@ export default defineConfig({
   format: ["cjs", "esm"],
   splitting: true,
   clean: true,
-  sourcemap: true,
+  dts: true,
+  sourcemap: false,
   tsconfig: "./tsconfig.json",
-  dts: {
-    resolve: true,
-    // build types for `src/index.ts` only
-    entry: "./src/index.ts"
-  }
+  external: ["esbuild", "nx", "@nx/*"]
 });

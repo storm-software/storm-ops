@@ -47,6 +47,7 @@ export type ESBuildOptions = Omit<
   define?: Record<string, string>;
   outExtension?: OutExtensionFactory;
   injectShims?: boolean;
+  clean?: boolean;
 };
 
 export type ESBuildResult = esbuild.BuildResult;

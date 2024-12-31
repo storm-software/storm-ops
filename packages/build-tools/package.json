@@ -83,7 +83,7 @@
     "tsconfck": "3.1.1",
     "tsup": "catalog:",
     "typescript": "catalog:",
-    "unbuild": "^2.0.0"
+    "unbuild": "catalog:"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "catalog:",
@@ -91,7 +91,8 @@
     "@nx/js": "catalog:",
     "@nx/workspace": "catalog:",
     "@types/node": "catalog:",
-    "nx": "catalog:"
+    "nx": "catalog:",
+    "tsup": "catalog:"
   },
   "publishConfig": {
     "access": "public"

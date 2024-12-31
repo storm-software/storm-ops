@@ -31,7 +31,7 @@ import {
 } from "nx/src/project-graph/project-graph.js";
 import { retrieveProjectConfigurationsWithoutPluginInference } from "nx/src/project-graph/utils/retrieve-workspace-files.js";
 import { fileExists } from "nx/src/utils/fileutils.js";
-import type { TypeScriptBuildOptions } from "../../declarations";
+import { TypeScriptBuildOptions } from "../types";
 import { getEntryPoints } from "./get-entry-points";
 import {
   getExtraDependencies,

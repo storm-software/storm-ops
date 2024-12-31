@@ -25,11 +25,6 @@ export const copyAssets = async (
   banner?: string,
   footer?: string
 ) => {
-  writeDebug(
-    `📦  Copying asset files to output directory: ${outputPath}`,
-    config
-  );
-
   const pendingAssets = Array.from(assets ?? []);
   if (!pendingAssets?.some((asset: AssetGlob) => asset?.glob === "*.md")) {
     pendingAssets.push({

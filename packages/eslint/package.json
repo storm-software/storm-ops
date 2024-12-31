@@ -105,12 +105,12 @@
     "@nx/eslint-plugin": "catalog:",
     "@types/eslint": "^8.56.10",
     "@types/eslint__js": "^8.42.3",
-    "@types/node": "^22.4.0",
+    "@types/node": "catalog:",
     "eslint": "catalog:",
     "eslint-typegen": "^0.2.4",
     "graphql": ">=16.9.0",
-    "typescript": ">=5.5.3",
-    "unbuild": "^2.0.0"
+    "typescript": "catalog:",
+    "unbuild": "catalog:"
   },
   "publishConfig": {
     "access": "public"
