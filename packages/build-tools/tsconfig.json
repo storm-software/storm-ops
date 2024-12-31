@@ -2,12 +2,17 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "strict": false,
-    "module": "commonjs",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "rootDir": "../..",
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ESNext"],
+    "noLib": false,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "moduleResolution": "Bundler",
+    "moduleDetection": "force"
   },
-  "include": ["src/**/*.ts", "bin/**/*.ts", "assets/*", "declarations.d.ts"],
+  "include": ["src/**/*.ts", "tsup.config.ts"],
   "exclude": [
     "node_modules",
     "jest.config.ts",

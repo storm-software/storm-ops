@@ -1,9 +1,6 @@
-// nx-ignore-next-line
 import { stripIndents } from "@nx/devkit";
 import { relative } from "path";
 import type { OutputBundle } from "rollup"; // only used  for types
-
-//NOTE: This is here so we can share between `@nx/rollup` and `@nx/vite`.
 
 /*
  * This plugin takes all entry-points from the generated bundle and creates a
@@ -18,7 +15,7 @@ import type { OutputBundle } from "rollup"; // only used  for types
  */
 export function typeDefinitions(options: { projectRoot: string }) {
   return {
-    name: "dts-bundle",
+    name: "storm:dts-bundle",
     async generateBundle(_opts: unknown, bundle: OutputBundle): Promise<void> {
       for (const [_, file] of Object.entries(bundle)) {
         if (

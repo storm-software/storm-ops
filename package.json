@@ -179,7 +179,6 @@
       "tough-cookie": "4.1.4"
     },
     "patchedDependencies": {
-      "cosmiconfig@9.0.0": "patches/cosmiconfig@9.0.0.patch",
       "tsup@8.0.0": "patches/tsup@8.0.0.patch"
     }
   },

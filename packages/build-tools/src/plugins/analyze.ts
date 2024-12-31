@@ -1,7 +1,13 @@
-import { logger } from "@nx/devkit";
+import { writeInfo } from "@storm-software/config-tools/logger/console";
 
 const formatBytes = bytes => {
-  if (bytes === 0) return "0 Byte";
+  if (bytes === 0) {
+    return "0 Bytes";
+  }
+  if (bytes === 1) {
+    return "1 Byte";
+  }
+
   const k = 1000;
   const dm = 3;
   const sizes = ["Bytes", "KB", "MB", "GB"];
@@ -11,11 +17,11 @@ const formatBytes = bytes => {
 
 export function analyze() {
   return {
-    name: "rollup-plugin-storm-analyzer",
+    name: "storm:plugin-analyzer",
     renderChunk(source, chunk) {
       const sourceBytes = formatBytes(source.length);
       const fileName = chunk.fileName;
-      logger.info(`  ${fileName} ${sourceBytes}`);
+      writeInfo(` - ${fileName} ${sourceBytes}`);
     }
   };
 }

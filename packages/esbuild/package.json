@@ -45,6 +45,9 @@
     "node": ">=22.4.0",
     "pnpm": ">=9.15.2"
   },
+  "bin": {
+    "storm-esbuild": "./bin/storm-esbuild.js"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "exports": {
@@ -152,7 +155,6 @@
     "@microsoft/api-extractor": "catalog:",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@nx/workspace": "catalog:",
     "@storm-software/build-tools": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "esbuild": "catalog:",
@@ -168,9 +170,6 @@
       "optional": false
     },
     "@nx/js": {
-      "optional": false
-    },
-    "@nx/workspace": {
       "optional": false
     },
     "@storm-software/build-tools": {
@@ -195,6 +194,7 @@
   "dependencies": {
     "@humanfs/node": "^0.16.6",
     "chokidar": "^4.0.3",
+    "commander": "catalog:",
     "es-toolkit": "^1.30.1",
     "globby": "^14.0.2"
   },
@@ -202,7 +202,6 @@
     "@microsoft/api-extractor": "catalog:",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@nx/workspace": "catalog:",
     "@storm-software/build-tools": "workspace:*",
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",

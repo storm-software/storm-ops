@@ -1,7 +1,7 @@
 import type { StormConfigInput } from "@storm-software/config";
 import { loadConfig, ResolvedConfig, type LoadConfigOptions } from "c12";
 import merge from "deepmerge";
-import { writeSystem } from "../utilities";
+import { writeSystem } from "../logger/console";
 import { findWorkspaceRoot } from "../utilities/find-workspace-root";
 
 // let _cosmiconfig: any = undefined;

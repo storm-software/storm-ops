@@ -1,9 +1,9 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  name: "esbuild",
+  name: "build-tools",
   target: "node22",
-  entryPoints: ["./src/*.ts", "./src/plugins/*.ts", "./bin/index.ts"],
+  entryPoints: ["./src/*.ts", "./src/utilities/*.ts", "./src/plugins/*.ts"],
   format: ["cjs", "esm"],
   platform: "node",
   splitting: true,
@@ -11,5 +11,5 @@ export default defineConfig({
   dts: true,
   sourcemap: false,
   tsconfig: "./tsconfig.json",
-  external: ["esbuild", "nx", "@nx/*"]
+  external: ["rollup", "nx", "@nx/*", "@swc/*"]
 });

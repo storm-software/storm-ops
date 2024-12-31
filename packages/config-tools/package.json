@@ -225,8 +225,7 @@
   ],
   "dependencies": {
     "c12": "catalog:",
-    "chalk": "^4.1.0",
-    "cosmiconfig": "9.0.0",
+    "chalk": "catalog:",
     "deepmerge": "catalog:",
     "zod": "catalog:"
   },

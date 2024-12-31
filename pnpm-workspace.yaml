@@ -41,3 +41,5 @@ catalog:
   "rollup": "^4.29.1"
   "tslib": "^2.6.3"
   "unbuild": "^3.2.0"
+  "commander": "^12.1.0"
+  "chalk": "^4.1.0"

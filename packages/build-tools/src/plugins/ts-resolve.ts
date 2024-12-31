@@ -1,4 +1,4 @@
-import { writeDebug } from "@storm-software/config-tools";
+import { writeDebug } from "@storm-software/config-tools/logger/console";
 import fs from "node:fs";
 import { builtinModules } from "node:module";
 import path from "node:path";
@@ -29,7 +29,7 @@ export const tsResolvePlugin: PluginImpl<TsResolveOptions> = ({
   const resolveExtensions = [".d.ts", ".ts"];
 
   return {
-    name: `ts-resolve`,
+    name: `storm:ts-resolve`,
 
     async resolveId(source, importer) {
       writeDebug(`ts-resolve - resolveId source: ${source}`);

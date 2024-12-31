@@ -1,17 +1,16 @@
+import { hfs } from "@humanfs/node";
 import {
   createProjectGraphAsync,
   ExecutorContext,
-  joinPathFragments,
   readProjectsConfigurationFromProjectGraph
 } from "@nx/devkit";
 import { copyAssets as copyAssetsBase } from "@nx/js";
 import { StormConfig } from "@storm-software/config";
-import { isVerbose, writeDebug } from "@storm-software/config-tools";
-import { globSync } from "glob";
-import { readFileSync } from "node:fs";
-import { writeFile } from "node:fs/promises";
+import { isVerbose, writeDebug } from "@storm-software/config-tools/logger";
+import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
+import { glob } from "glob";
 import { AssetGlob } from "../types";
-import { readNxJson } from "./read-nx-json";
+import { readNxConfig } from "./read-nx-config";
 
 export const copyAssets = async (
   config: StormConfig,
@@ -58,9 +57,7 @@ export const copyAssets = async (
     });
   }
 
-  // await retrieveProjectConfigurationsWithoutPluginInference(workspaceRoot);
-
-  const nxJson = await readNxJson(config.workspaceRoot);
+  const nxJson = readNxConfig(config.workspaceRoot);
   const projectGraph = await createProjectGraphAsync({
     exitOnError: true
   });
@@ -77,7 +74,7 @@ export const copyAssets = async (
     projectsConfigurations.projects[projectName]?.targets?.build;
   if (!buildTarget) {
     throw new Error(
-      `The Build process failed because the project does not have a valid build target in the project.json file. Check if the file exists in the root of the project at ${joinPathFragments(
+      `The Build process failed because the project does not have a valid build target in the project.json file. Check if the file exists in the root of the project at ${joinPaths(
         projectRoot,
         "project.json"
       )}`
@@ -108,23 +105,23 @@ export const copyAssets = async (
 
   if (includeSrc === true) {
     writeDebug(
-      `📝  Adding banner and writing source files: ${joinPathFragments(
+      `📝  Adding banner and writing source files: ${joinPaths(
         outputPath,
         "src"
       )}`,
       config
     );
 
-    const files = globSync([
-      joinPathFragments(config.workspaceRoot, outputPath, "src/**/*.ts"),
-      joinPathFragments(config.workspaceRoot, outputPath, "src/**/*.tsx"),
-      joinPathFragments(config.workspaceRoot, outputPath, "src/**/*.js"),
-      joinPathFragments(config.workspaceRoot, outputPath, "src/**/*.jsx")
+    const files = await glob([
+      joinPaths(config.workspaceRoot, outputPath, "src/**/*.ts"),
+      joinPaths(config.workspaceRoot, outputPath, "src/**/*.tsx"),
+      joinPaths(config.workspaceRoot, outputPath, "src/**/*.js"),
+      joinPaths(config.workspaceRoot, outputPath, "src/**/*.jsx")
     ]);
 
     await Promise.allSettled(
-      files.map(file =>
-        writeFile(
+      files.map(async file =>
+        hfs.write(
           file,
           `${
             banner && typeof banner === "string"
@@ -132,7 +129,7 @@ export const copyAssets = async (
                 ? banner
                 : `// ${banner}`
               : ""
-          }\n\n${readFileSync(file, "utf8")}\n\n${
+          }\n\n${await hfs.text(file)}\n\n${
             footer && typeof footer === "string"
               ? footer.startsWith("//")
                 ? footer

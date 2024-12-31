@@ -5,86 +5,22 @@
   "projectType": "library",
   "targets": {
     "build-base": {
-      "cache": true,
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
       "options": {
-        "outputPath": "dist/packages/build-tools",
-        "tsConfig": "packages/build-tools/tsconfig.json",
-        "project": "packages/build-tools/package.json",
-        "main": "packages/build-tools/src/index.ts",
-        "additionalEntryPoints": [
-          "packages/build-tools/src/build/rolldown.ts",
-          "packages/build-tools/src/build/ts-build.ts",
-          "packages/build-tools/src/build/unbuild.ts",
-          "packages/build-tools/src/rollup.ts"
-        ],
-        "deleteOutputPath": false,
-        "bundle": true,
-        "sourcemap": true,
-        "minify": false,
-        "skipTypeCheck": false,
-        "thirdParty": true,
-        "platform": "node",
-        "external": ["nx", "@swc/core", "esbuild", "vue-tsc"],
-        "format": ["cjs"],
-        "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
-          },
-          "inject": ["packages/build-tools/assets/cjs_shims.js"],
-          "define": {
-            "import.meta.url": "importMetaUrl"
-          }
-        },
-        "assets": [
-          {
-            "input": "packages/build-tools",
-            "glob": "*.md",
-            "output": "."
-          },
-          {
-            "input": "",
-            "glob": "LICENSE",
-            "output": "."
-          },
-          {
-            "input": "packages/build-tools",
-            "glob": "declarations.d.ts",
-            "output": "."
-          },
-          {
-            "input": "packages/build-tools",
-            "glob": "assets/*.*",
-            "output": "."
-          }
-        ]
+        "command": "tsup --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
       }
     },
     "build": {
-      "cache": true,
-      "executor": "@nx/esbuild:esbuild",
-      "dependsOn": ["build-base", "^build"],
-      "outputs": ["{options.outputPath}"],
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
       "options": {
-        "outputPath": "dist/packages/build-tools/bin",
-        "tsConfig": "packages/build-tools/tsconfig.json",
-        "project": "packages/build-tools/package.json",
-        "main": "packages/build-tools/bin/build.ts",
-        "deleteOutputPath": false,
-        "bundle": true,
-        "sourcemap": true,
-        "minify": false,
-        "skipTypeCheck": false,
-        "thirdParty": true,
-        "platform": "node",
-        "external": ["nx", "@swc/core", "esbuild", "vue-tsc"],
-        "format": ["esm"],
-        "esbuildOptions": {
-          "outExtension": {
-            ".js": ".mjs"
-          }
-        }
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/build-tools",
+          "pnpm copyfiles --up=2 ./packages/build-tools/README.md ./packages/build-tools/package.json dist/packages/build-tools",
+          "pnpm copyfiles --up=3 ./packages/build-tools/dist/* dist/packages/build-tools/dist"
+        ]
       }
     },
     "nx-release-publish": {

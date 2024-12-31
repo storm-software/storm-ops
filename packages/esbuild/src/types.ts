@@ -16,10 +16,12 @@
  -------------------------------------------------------------------*/
 
 import { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
-import { AssetGlob } from "@storm-software/build-tools";
-import { StormConfig } from "@storm-software/config";
+import {
+  AdditionalCLIOptions,
+  TypeScriptBuildOptions,
+  TypeScriptBuildResolvedOptions
+} from "@storm-software/build-tools";
 import * as esbuild from "esbuild";
-import { WorkspaceTypeAndRoot } from "nx/src/utils/find-workspace-root";
 
 export type ContextForOutPathGeneration = {
   format: esbuild.Format;
@@ -36,30 +38,48 @@ export type OutExtensionFactory = (
 export type ESBuildOptions = Omit<
   esbuild.BuildOptions,
   "outbase" | "outfile" | "outExtension"
-> & {
-  projectRoot: string;
-  name?: string;
-  generatePackageJson?: boolean;
-  emitTypes?: boolean;
-  emitMetafile?: boolean;
-  assets?: (AssetGlob | string)[];
-  env?: Record<string, string>;
-  define?: Record<string, string>;
-  outExtension?: OutExtensionFactory;
-  injectShims?: boolean;
-  clean?: boolean;
-};
+> &
+  TypeScriptBuildOptions & {
+    emitTypes?: boolean;
+    injectShims?: boolean;
+    outExtension?: OutExtensionFactory;
+  };
 
 export type ESBuildResult = esbuild.BuildResult;
 
-export type ESBuildResolvedOptions = Omit<ESBuildOptions, "outExtension"> &
-  Required<Pick<ESBuildOptions, "name" | "outdir" | "entryPoints">> & {
-    config: StormConfig;
-    workspaceRoot: WorkspaceTypeAndRoot;
-    sourceRoot: string;
-    projectName: string;
+export type ESBuildResolvedOptions = TypeScriptBuildResolvedOptions &
+  Pick<esbuild.BuildOptions, "loader" | "inject" | "metafile" | "keepNames"> & {
+    injectShims: boolean;
+    outdir: string;
     projectGraph: ProjectGraph;
     projectConfigurations: ProjectsConfigurations;
     outExtension: OutExtensionObject;
-    tsconfig: string;
+    entryPoints: string[];
   };
+
+export type ESBuildCLIOptions = AdditionalCLIOptions &
+  Pick<
+    ESBuildOptions,
+    | "name"
+    | "entry"
+    | "outputPath"
+    | "platform"
+    | "format"
+    | "bundle"
+    | "target"
+    | "watch"
+    | "clean"
+    | "debug"
+    | "banner"
+    | "footer"
+    | "splitting"
+    | "treeShaking"
+    | "generatePackageJson"
+    | "emitOnAll"
+    | "metafile"
+    | "minify"
+    | "includeSrc"
+    | "verbose"
+    | "emitTypes"
+    | "injectShims"
+  >;

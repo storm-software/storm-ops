@@ -18,7 +18,6 @@
 import { hfs } from "@humanfs/node";
 import {
   createProjectGraphAsync,
-  joinPathFragments,
   readProjectsConfigurationFromProjectGraph,
   writeJsonFile
 } from "@nx/devkit";
@@ -26,7 +25,8 @@ import {
   addPackageDependencies,
   addPackageJsonExport,
   addWorkspacePackageJsonFields,
-  copyAssets
+  copyAssets,
+  getEntryPoints
 } from "@storm-software/build-tools";
 import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
 import {
@@ -38,6 +38,8 @@ import {
   writeTrace,
   writeWarning
 } from "@storm-software/config-tools/logger/console";
+import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
+import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { watch as createWatcher } from "chokidar";
 import { debounce, flatten, omit } from "es-toolkit";
 import { map } from "es-toolkit/compat";
@@ -46,6 +48,7 @@ import { BuildContext } from "esbuild";
 import { globbySync } from "globby";
 import path from "node:path";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
+import { clean } from "./clean";
 import { DEFAULT_BUILD_OPTIONS, getOutputExtensionMap } from "./config";
 import { depsCheckPlugin } from "./plugins/deps-check";
 import { esmSplitCodeToCjsPlugin } from "./plugins/esm-split-code-to-cjs";
@@ -79,16 +82,11 @@ const resolveOptions = async (
   writeDebug("  ⚙️   Resolving build options", config);
   const stopwatch = getStopwatch("Build options resolution");
 
-  const nxJsonPath = joinPathFragments(workspaceRoot.dir, "nx.json");
-  if (!(await hfs.isFile(nxJsonPath))) {
-    throw new Error("Cannot find Nx workspace configuration");
-  }
-
   const projectGraph = await createProjectGraphAsync({
     exitOnError: true
   });
 
-  const projectJsonPath = joinPathFragments(
+  const projectJsonPath = joinPaths(
     workspaceRoot.dir,
     projectRoot,
     "project.json"
@@ -108,7 +106,7 @@ const resolveOptions = async (
     );
   }
 
-  const packageJsonPath = joinPathFragments(
+  const packageJsonPath = joinPaths(
     workspaceRoot.dir,
     projectRoot,
     "package.json"
@@ -123,8 +121,8 @@ const resolveOptions = async (
   const platform = options.platform || "node";
 
   const outExtension = getOutputExtensionMap(options, format, packageJson.type);
-  const env: { [k: string]: string } = {
-    ...options.env
+  const env = {
+    ...(options.env || {})
   };
 
   const result = {
@@ -134,8 +132,7 @@ const resolveOptions = async (
       platform === "node" ? ["module", "main"] : ["browser", "module", "main"],
     resolveExtensions: [".ts", ".js", ".node"],
     ...options,
-    tsconfig:
-      options.tsconfig || joinPathFragments(projectRoot, "tsconfig.json"),
+    tsconfig: options.tsconfig || joinPaths(projectRoot, "tsconfig.json"),
     outExtension,
     splitting:
       format === "iife"
@@ -143,12 +140,18 @@ const resolveOptions = async (
         : typeof options.splitting === "boolean"
           ? options.splitting
           : format === "esm",
+    treeShaking: options.treeShaking || format === "esm",
     platform,
     format,
-    entryPoints: options.entryPoints || ["./src/index.ts"],
+    entryPoints: await getEntryPoints(
+      config,
+      projectRoot,
+      projectJson.sourceRoot,
+      options.entry || ["./src/index.ts"],
+      options.emitOnAll
+    ),
     outdir:
-      options.outdir ||
-      joinPathFragments(workspaceRoot.dir, "dist", projectRoot),
+      options.outputPath || joinPaths(workspaceRoot.dir, "dist", projectRoot),
     loader: {
       ".aac": "file",
       ".css": "file",
@@ -212,10 +215,29 @@ const resolveOptions = async (
     projectConfigurations,
     projectName,
     projectGraph,
-    workspaceRoot,
     sourceRoot:
       options.sourceRoot ||
-      joinPathFragments(workspaceRoot.dir, projectRoot, "src")
+      projectJson.sourceRoot ||
+      joinPaths(workspaceRoot.dir, projectRoot, "src"),
+    minify: options.minify || !options.debug,
+    verbose: options.verbose || isVerbose() || options.debug === true,
+    debug: !!options.debug,
+    includeSrc: options.includeSrc === true,
+    metafile: options.metafile !== false,
+    generatePackageJson: options.generatePackageJson !== false,
+    clean: options.clean !== false,
+    emitOnAll: options.emitOnAll === true,
+    assets: options.assets ?? [],
+    injectShims: options.injectShims !== true,
+    bundle: options.bundle !== false,
+    keepNames: true,
+    watch: options.watch === true,
+    banner:
+      options.banner ||
+      `
+// ⚡ Built by Storm Software
+`,
+    footer: options.footer
   } satisfies ESBuildResolvedOptions;
 
   stopwatch();
@@ -226,22 +248,19 @@ const resolveOptions = async (
 async function generatePackageJson(options: ESBuildResolvedOptions) {
   if (
     options.generatePackageJson !== false &&
-    (await hfs.isFile(joinPathFragments(options.projectRoot, "package.json")))
+    (await hfs.isFile(joinPaths(options.projectRoot, "package.json")))
   ) {
     writeDebug("  ✍️   Writing package.json file", options.config);
     const stopwatch = getStopwatch("Write package.json file");
 
-    const packageJsonPath = joinPathFragments(
-      options.projectRoot,
-      "project.json"
-    );
+    const packageJsonPath = joinPaths(options.projectRoot, "project.json");
     if (!(await hfs.isFile(packageJsonPath))) {
       throw new Error("Cannot find package.json configuration");
     }
 
     let packageJson = await hfs.json(
-      joinPathFragments(
-        options.workspaceRoot.dir,
+      joinPaths(
+        options.config.workspaceRoot,
         options.projectRoot,
         "package.json"
       )
@@ -251,7 +270,7 @@ async function generatePackageJson(options: ESBuildResolvedOptions) {
     }
 
     packageJson = await addPackageDependencies(
-      options.workspaceRoot.dir,
+      options.config.workspaceRoot,
       options.projectRoot,
       options.projectName,
       packageJson
@@ -276,14 +295,16 @@ async function generatePackageJson(options: ESBuildResolvedOptions) {
             ? { in: entryPoint, out: entryPoint }
             : entryPoint
         );
-      } else {
-        entryPoints = Object.entries(options.entryPoints).map(
-          ([key, value]) => ({
-            in: key,
-            out: value
-          })
-        );
       }
+
+      // else {
+      //   entryPoints = Object.entries(options.entryPoints).map(
+      //     ([key, value]) => ({
+      //       in: key,
+      //       out: value
+      //     })
+      //   );
+      // }
     }
 
     for (const entryPoint of entryPoints) {
@@ -301,10 +322,7 @@ async function generatePackageJson(options: ESBuildResolvedOptions) {
     packageJson.module = "./dist/index.js";
     packageJson.types = "./dist/index.d.ts";
 
-    await writeJsonFile(
-      joinPathFragments(options.outdir, "package.json"),
-      packageJson
-    );
+    await writeJsonFile(joinPaths(options.outdir, "package.json"), packageJson);
 
     stopwatch();
   }
@@ -375,17 +393,23 @@ async function executeEsBuild(options: ESBuildResolvedOptions) {
 
   if (process.env.WATCH === "true") {
     const context = await esbuild.context(
-      omit(options, ["name", "emitTypes", "emitMetafile"]) as any
+      omit(options, ["name"]) as esbuild.SameShape<
+        esbuild.BuildOptions,
+        esbuild.BuildOptions
+      >
     );
 
     watch(context, options);
   }
 
   const result = await esbuild.build(
-    omit(options, ["name", "emitTypes", "emitMetafile"]) as any
+    omit(options, ["name", "metafile"]) as esbuild.SameShape<
+      esbuild.BuildOptions,
+      esbuild.BuildOptions
+    >
   );
 
-  if (result.metafile && options.emitMetafile) {
+  if (result.metafile) {
     const metafilePath = `${options.outdir}/${options.name}.meta.json`;
     await hfs.write(metafilePath, JSON.stringify(result.metafile));
   }
@@ -493,15 +517,7 @@ async function dependencyCheck(options: ESBuildOptions) {
  */
 async function cleanOutputPath(options: ESBuildResolvedOptions) {
   if (options.clean !== false && options.outdir) {
-    writeDebug(
-      ` 🧹  Cleaning ${options.name} output path: ${options.outdir}`,
-      options.config
-    );
-    const stopwatch = getStopwatch(`${options.name} output clean`);
-
-    await hfs.deleteAll(options.outdir);
-
-    stopwatch();
+    await clean(options.name, options.outdir, options.config);
   }
 
   return options;

@@ -1,9 +1,9 @@
+import { transform } from "@swc/core";
 import type { Plugin } from "rollup";
 
 export function swc(): Plugin {
-  const { transform } = require("@swc/core");
   return {
-    name: "storm-swc",
+    name: "storm:swc",
     transform(code, filename) {
       return transform(code, {
         filename,

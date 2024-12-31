@@ -82,7 +82,7 @@
     "@manypkg/get-packages": "2.2.1",
     "alex": "11.0.1",
     "check-dependency-version-consistency": "4.1.0",
-    "commander": "12.1.0",
+    "commander": "catalog:",
     "cspell": "8.8.4",
     "dpdm": "3.14.0",
     "fast-glob": "3.3.2",
