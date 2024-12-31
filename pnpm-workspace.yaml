@@ -39,3 +39,4 @@ catalog:
   "pkg-types": "^1.1.1"
   "zod": "^3.24.0"
   "rollup": "^4.29.1"
+  "tslib": "^2.6.3"

@@ -63,7 +63,7 @@
     "@nx/devkit": "catalog:",
     "@pulumi/pulumi": "^3.144.1",
     "shelljs": "^0.8.5",
-    "tslib": "^2.6.3"
+    "tslib": "catalog:"
   },
   "devDependencies": {
     "@nx/devkit": "catalog:",

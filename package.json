@@ -125,7 +125,7 @@
     "sherif": "0.10.0",
     "ts-jest": "29.1.5",
     "ts-node": "10.9.2",
-    "tslib": "^2.6.3",
+    "tslib": "catalog:",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.13.0",
     "verdaccio": "5.31.1"

@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "shelljs": "^0.8.5",
-    "tslib": "^2.6.3"
+    "tslib": "catalog:"
   },
   "devDependencies": {
     "@nx/devkit": "catalog:",
