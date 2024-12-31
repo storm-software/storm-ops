@@ -46,16 +46,18 @@
     "pnpm": ">=9.15.2"
   },
   "bin": {
-    "storm-esbuild": "./bin/storm-esbuild.js"
+    "storm-esbuild": "./bin/storm-esbuild.js",
+    "storm-esbuild-cjs": "./bin/storm-esbuild.cjs",
+    "storm-esbuild-esm": "./bin/storm-esbuild.js"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "exports": {
     "./package.json": "./package.json",
     "./types": {
       "import": {
-        "types": "./dist/types.d.mts",
-        "default": "./dist/types.mjs"
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
       },
       "require": {
         "types": "./dist/types.d.cts",
@@ -68,8 +70,8 @@
     },
     "./index": {
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       },
       "require": {
         "types": "./dist/index.d.cts",
@@ -82,8 +84,8 @@
     },
     ".": {
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       },
       "require": {
         "types": "./dist/index.d.cts",
@@ -96,12 +98,12 @@
     },
     "./config": {
       "import": {
-        "types": "./dist/config.d.mts",
-        "default": "./dist/config.mjs"
-      },
-      "require": {
         "types": "./dist/config.d.ts",
         "default": "./dist/config.js"
+      },
+      "require": {
+        "types": "./dist/config.d.cts",
+        "default": "./dist/config.cjs"
       },
       "default": {
         "types": "./dist/config.d.ts",
@@ -110,12 +112,12 @@
     },
     "./build": {
       "import": {
-        "types": "./dist/build/index.d.mts",
-        "default": "./dist/build/index.mjs"
-      },
-      "require": {
         "types": "./dist/build/index.d.ts",
         "default": "./dist/build/index.js"
+      },
+      "require": {
+        "types": "./dist/build/index.d.cts",
+        "default": "./dist/build/index.cjs"
       },
       "default": {
         "types": "./dist/build/index.d.ts",
@@ -124,12 +126,12 @@
     },
     "./plugins/*": {
       "import": {
-        "types": "./dist/plugins/*.d.mts",
-        "default": "./dist/plugins/*.mjs"
-      },
-      "require": {
         "types": "./dist/plugins/*.d.ts",
         "default": "./dist/plugins/*.js"
+      },
+      "require": {
+        "types": "./dist/plugins/*.d.cts",
+        "default": "./dist/plugins/*.cjs"
       },
       "default": {
         "types": "./dist/plugins/*.d.ts",
