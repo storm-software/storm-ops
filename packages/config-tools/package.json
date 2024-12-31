@@ -200,7 +200,7 @@
     "chalk": "^4.1.0",
     "cosmiconfig": "9.0.0",
     "deepmerge": "catalog:",
-    "zod": "3.23.8"
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",

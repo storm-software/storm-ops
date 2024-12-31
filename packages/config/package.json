@@ -22,7 +22,7 @@
   },
   "types": "./declarations.d.ts",
   "dependencies": {
-    "zod": "3.23.8"
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:"

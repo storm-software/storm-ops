@@ -141,7 +141,7 @@
     "@storm-software/config-tools": "workspace:*",
     "@swc/core": "catalog:",
     "nx": "catalog:",
-    "rollup": "^4.29.1",
+    "rollup": "catalog:",
     "typescript": "catalog:",
     "unbuild": "^2.0.0"
   },
@@ -177,7 +177,7 @@
   "dependencies": {
     "@humanfs/node": "^0.16.6",
     "deepmerge": "catalog:",
-    "rollup": "^4.29.1",
+    "rollup": "catalog:",
     "rollup-plugin-typescript2": "0.36.0"
   },
   "devDependencies": {
@@ -188,7 +188,6 @@
     "@storm-software/config-tools": "workspace:*",
     "@swc/core": "catalog:",
     "@types/node": "catalog:",
-    "@types/rollup": "^0.54.0",
     "nx": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:",

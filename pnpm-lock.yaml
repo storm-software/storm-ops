@@ -58,7 +58,7 @@ catalogs:
       specifier: ^22.10.2
       version: 22.10.2
     c12:
-      specifier: 2.0.0-beta.2
+      specifier: ^2.0.0-beta.2
       version: 2.0.0-beta.2
     copyfiles:
       specifier: ^2.4.1
@@ -87,6 +87,9 @@ catalogs:
     rimraf:
       specifier: ^5.0.7
       version: 5.0.7
+    rollup:
+      specifier: ^4.29.1
+      version: 4.29.1
     tsup:
       specifier: ^8.3.5
       version: 8.3.5
@@ -96,6 +99,9 @@ catalogs:
     typia:
       specifier: ^7.5.0
       version: 7.5.1
+    zod:
+      specifier: ^3.24.0
+      version: 3.24.1
 
 overrides:
   '@cypress/request': '>=3.0.0'
@@ -292,7 +298,7 @@ importers:
     dependencies:
       '@anatine/esbuild-decorators':
         specifier: 0.2.19
-        version: 0.2.19(esbuild@0.19.12)
+        version: 0.2.19(esbuild@0.24.0)
       '@angular-devkit/architect':
         specifier: 0.1802.4
         version: 0.1802.4(chokidar@3.6.0)
@@ -325,7 +331,7 @@ importers:
         version: 4.3.1
       esbuild-plugin-environment:
         specifier: 0.4.0
-        version: 0.4.0(esbuild@0.19.12)
+        version: 0.4.0(esbuild@0.24.0)
       fs-extra:
         specifier: 11.2.0
         version: 11.2.0
@@ -348,14 +354,14 @@ importers:
         specifier: 0.10.4
         version: 0.10.4
       rollup:
-        specifier: ^4.29.1
+        specifier: 'catalog:'
         version: 4.29.1
       rollup-plugin-dts:
         specifier: 6.1.1
         version: 6.1.1(rollup@4.29.1)(typescript@5.7.2)
       rollup-plugin-esbuild:
         specifier: 6.1.1
-        version: 6.1.1(esbuild@0.19.12)(rollup@4.29.1)
+        version: 6.1.1(esbuild@0.24.0)(rollup@4.29.1)
       rollup-plugin-peer-deps-external:
         specifier: 2.2.4
         version: 2.2.4(rollup@4.29.1)
@@ -372,18 +378,18 @@ importers:
         specifier: 3.1.1
         version: 3.1.1(typescript@5.7.2)
       tsup:
-        specifier: 8.0.0
-        version: 8.0.0(patch_hash=drf3yjuy45jg6lcmd5ihmmvct4)(@microsoft/api-extractor@7.46.2(@types/node@22.10.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2))(typescript@5.7.2)
+        specifier: 'catalog:'
+        version: 8.3.5(@microsoft/api-extractor@7.48.1(@types/node@22.10.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))(jiti@2.4.1)(postcss@8.4.49)(typescript@5.7.2)(yaml@2.6.1)
       typescript:
-        specifier: '>=5.5.3'
+        specifier: 'catalog:'
         version: 5.7.2
       unbuild:
         specifier: ^2.0.0
         version: 2.0.0(sass@1.77.6)(typescript@5.7.2)(vue-tsc@2.1.10(typescript@5.7.2))
     devDependencies:
       '@microsoft/api-extractor':
-        specifier: 7.46.2
-        version: 7.46.2(@types/node@22.10.2)
+        specifier: 'catalog:'
+        version: 7.48.1(@types/node@22.10.2)
       '@nx/devkit':
         specifier: 'catalog:'
         version: 20.2.2(nx@20.2.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15)))
@@ -437,8 +443,8 @@ importers:
   packages/config:
     dependencies:
       zod:
-        specifier: 3.23.8
-        version: 3.23.8
+        specifier: 'catalog:'
+        version: 3.24.1
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -459,8 +465,8 @@ importers:
         specifier: 'catalog:'
         version: 4.3.1
       zod:
-        specifier: 3.23.8
-        version: 3.23.8
+        specifier: 'catalog:'
+        version: 3.24.1
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -779,8 +785,8 @@ importers:
         specifier: 8.0.0
         version: 8.0.0
       read-pkg-up:
-        specifier: 11.0.0
-        version: 11.0.0
+        specifier: 10.1.0
+        version: 10.1.0
       regexp-tree:
         specifier: 0.1.27
         version: 0.1.27
@@ -1342,7 +1348,7 @@ importers:
         specifier: 'catalog:'
         version: 4.3.1
       rollup:
-        specifier: ^4.29.1
+        specifier: 'catalog:'
         version: 4.29.1
       rollup-plugin-typescript2:
         specifier: 0.36.0
@@ -1369,9 +1375,6 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.10.2
-      '@types/rollup':
-        specifier: ^0.54.0
-        version: 0.54.0
       nx:
         specifier: 'catalog:'
         version: 20.2.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))
@@ -1389,7 +1392,7 @@ importers:
     dependencies:
       '@anatine/esbuild-decorators':
         specifier: 0.2.19
-        version: 0.2.19(esbuild@0.24.0)
+        version: 0.2.19(esbuild@0.19.12)
       '@ltd/j-toml':
         specifier: 1.38.0
         version: 1.38.0
@@ -1428,7 +1431,7 @@ importers:
         version: 11.1.4(size-limit@11.1.4)
       bundle-require:
         specifier: 5.0.0
-        version: 5.0.0(esbuild@0.24.0)
+        version: 5.0.0(esbuild@0.19.12)
       c12:
         specifier: 'catalog:'
         version: 2.0.0-beta.2
@@ -1443,13 +1446,13 @@ importers:
         version: 4.3.1
       esbuild-plugin-environment:
         specifier: 0.4.0
-        version: 0.4.0(esbuild@0.24.0)
+        version: 0.4.0(esbuild@0.19.12)
       esbuild-plugin-handlebars:
         specifier: 1.0.3
         version: 1.0.3
       esbuild-plugin-pino:
         specifier: 2.1.1
-        version: 2.1.1(esbuild@0.24.0)
+        version: 2.1.1(esbuild@0.19.12)
       fs-extra:
         specifier: 11.2.0
         version: 11.2.0
@@ -1472,7 +1475,7 @@ importers:
         specifier: 2.5.0
         version: 2.5.0(prettier@3.4.2)
       rollup:
-        specifier: ^4.29.1
+        specifier: 'catalog:'
         version: 4.29.1
       rollup-plugin-copy:
         specifier: 3.5.0
@@ -1493,27 +1496,27 @@ importers:
         specifier: 5.31.1
         version: 5.31.1
       tsup:
-        specifier: 'catalog:'
-        version: 8.3.5(@microsoft/api-extractor@7.48.1(@types/node@22.10.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))(jiti@2.4.1)(postcss@8.4.49)(typescript@5.7.2)(yaml@2.6.1)
+        specifier: 8.0.0
+        version: 8.0.0(patch_hash=drf3yjuy45jg6lcmd5ihmmvct4)(@microsoft/api-extractor@7.48.1(@types/node@22.10.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2))(typescript@5.7.2)
       typia:
         specifier: 'catalog:'
         version: 7.5.1(@samchon/openapi@2.3.1)(typescript@5.7.2)
       zod:
-        specifier: 3.23.8
-        version: 3.23.8
+        specifier: 'catalog:'
+        version: 3.24.1
       zod-to-json-schema:
         specifier: 3.23.1
-        version: 3.23.1(zod@3.23.8)
+        version: 3.23.1(zod@3.24.1)
     devDependencies:
       '@microsoft/api-extractor':
         specifier: 'catalog:'
         version: 7.48.1(@types/node@22.10.2)
       '@nx/esbuild':
         specifier: 'catalog:'
-        version: 20.2.2(@babel/traverse@7.26.4)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/node@22.10.2)(esbuild@0.24.0)(nx@20.2.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15)))(typescript@5.7.2)(verdaccio@5.31.1(encoding@0.1.13)(typanion@3.14.0))
+        version: 20.2.2(@babel/traverse@7.26.4)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/node@22.10.2)(esbuild@0.19.12)(nx@20.2.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15)))(typescript@5.7.2)(verdaccio@5.31.1(encoding@0.1.13)(typanion@3.14.0))
       '@nx/rollup':
         specifier: 'catalog:'
-        version: 20.2.2(@babel/core@7.26.0)(@babel/traverse@7.26.4)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/babel__core@7.20.5)(@types/node@22.10.2)(nx@20.2.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15)))(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2))(typescript@5.7.2)(verdaccio@5.31.1(encoding@0.1.13)(typanion@3.14.0))
+        version: 20.2.2(@babel/core@7.26.0)(@babel/traverse@7.26.4)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/babel__core@7.20.5)(@types/node@22.10.2)(nx@20.2.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15)))(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2))(typescript@5.7.2)(verdaccio@5.31.1(encoding@0.1.13)(typanion@3.14.0))
       '@types/micromatch':
         specifier: 4.0.9
         version: 4.0.9
@@ -1530,9 +1533,11 @@ importers:
         specifier: 'catalog:'
         version: 5.7.2
 
-  terraform-modules/aws: {}
-
-  terraform-modules/cloudflare: {}
+  terraform-modules:
+    dependencies:
+      tslib:
+        specifier: ^2.3.0
+        version: 2.8.1
 
   tools/scripts:
     dependencies:
@@ -3968,15 +3973,8 @@ packages:
     resolution: {integrity: sha512-3lBouSuF7CqlseLB+FKES0K4FQ02JrbEoRtJhxnsyB1s5v4AP03gsoohN8jp7DcOImhaR9scYdztq3/sLfk/qQ==}
     engines: {node: '>=14.18.0'}
 
-  '@microsoft/api-extractor-model@7.29.2':
-    resolution: {integrity: sha512-hAYajOjQan3uslhKJRwvvHIdLJ+ZByKqdSsJ/dgHFxPtEbdKpzMDO8zuW4K5gkSMYl5D0LbNwxkhxr51P2zsmw==}
-
   '@microsoft/api-extractor-model@7.30.1':
     resolution: {integrity: sha512-CTS2PlASJHxVY8hqHORVb1HdECWOEMcMnM6/kDkPr0RZapAFSIHhg9D4jxuE8g+OWYHtPc10LCpmde5pylTRlA==}
-
-  '@microsoft/api-extractor@7.46.2':
-    resolution: {integrity: sha512-s3HjYoXKMVNmYO5rQl+z7MpRngGg9OugWgmGMIBlAeOaE0Lk7/CKX+UYt7Mk9pihV8DZWg/qCf+4Yega9IZMmQ==}
-    hasBin: true
 
   '@microsoft/api-extractor@7.48.1':
     resolution: {integrity: sha512-HN9Osa1WxqLM66RaqB5nPAadx+nTIQmY/XtkFdaJvusjG8Tus++QqZtD7KPZDSkhEMGHsYeSyeU8qUzCDUXPjg==}
@@ -5022,27 +5020,8 @@ packages:
       '@types/node':
         optional: true
 
-  '@rushstack/node-core-library@5.4.1':
-    resolution: {integrity: sha512-WNnwdS8r9NZ/2K3u29tNoSRldscFa7SxU0RT+82B6Dy2I4Hl2MeCSKm4EXLXPKeNzLGvJ1cqbUhTLviSF8E6iA==}
-    peerDependencies:
-      '@types/node': '*'
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-
-  '@rushstack/rig-package@0.5.2':
-    resolution: {integrity: sha512-mUDecIJeH3yYGZs2a48k+pbhM6JYwWlgjs2Ca5f2n1G2/kgdgP9D/07oglEGf6mRyXEnazhEENeYTSNDRCwdqA==}
-
   '@rushstack/rig-package@0.5.3':
     resolution: {integrity: sha512-olzSSjYrvCNxUFZowevC3uz8gvKr3WTpHQ7BkpjtRpA3wK+T0ybep/SRUMfr195gBzJm5gaXw0ZMgjIyHqJUow==}
-
-  '@rushstack/terminal@0.13.0':
-    resolution: {integrity: sha512-Ou44Q2s81BqJu3dpYedAX54am9vn245F0HzqVrfJCMQk5pGgoKKOBOjkbfZC9QKcGNaECh6pwH2s5noJt7X6ew==}
-    peerDependencies:
-      '@types/node': '*'
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
 
   '@rushstack/terminal@0.14.4':
     resolution: {integrity: sha512-NxACqERW0PHq8Rpq1V6v5iTHEwkRGxenjEW+VWqRYQ8T9puUzgmGHmEZUaUEDHAe9Qyvp0/Ew04sAiQw9XjhJg==}
@@ -5051,9 +5030,6 @@ packages:
     peerDependenciesMeta:
       '@types/node':
         optional: true
-
-  '@rushstack/ts-command-line@4.22.0':
-    resolution: {integrity: sha512-Qj28t6MO3HRgAZ72FDeFsrpdE6wBWxF3VENgvrXh7JF2qIT+CrXiOJIesW80VFZB9QwObSpkB1ilx794fGQg6g==}
 
   '@rushstack/ts-command-line@4.23.2':
     resolution: {integrity: sha512-JJ7XZX5K3ThBBva38aomgsPv1L7FV6XmSOcR6HtM7HDFZJkepqT65imw26h9ggGqMjsY0R9jcl30tzKcVj9aOQ==}
@@ -5582,10 +5558,6 @@ packages:
 
   '@types/retry@0.12.2':
     resolution: {integrity: sha512-XISRgDJ2Tc5q4TRqvgJtzsRkFYNJzZrhTdtMoGVBttwzzQJkPnS3WWTFc7kuDRoPtPakl+T+OfdEUjYJj7Jbow==}
-
-  '@types/rollup@0.54.0':
-    resolution: {integrity: sha512-oeYztLHhQ98jnr+u2cs1c3tHOGtpzrm9DJlIdEjznwoXWidUbrI+X6ib7zCkPIbB7eJ7VbbKNQ5n/bPnSg6Naw==}
-    deprecated: This is a stub types definition for rollup (https://github.com/rollup/rollup). rollup provides its own type definitions, so you don't need @types/rollup installed!
 
   '@types/semver@6.2.7':
     resolution: {integrity: sha512-blctEWbzUFzQx799RZjzzIdBJOXmE37YYEyDtKkx5Dg+V7o/zyyAxLPiI98A2jdTtDgxZleMdfV+7p8WbRJ1OQ==}
@@ -8985,10 +8957,6 @@ packages:
     resolution: {integrity: sha512-m6FAo/spmsW2Ab2fU35JTYwtOKa2yAwXSwgjSv1TJzh4Mh7mC3lzAOVLBprb72XsTrgkEIsl7YrFNAiDiRhIGg==}
     engines: {node: '>=12'}
 
-  index-to-position@0.1.2:
-    resolution: {integrity: sha512-MWDKS3AS1bGCHLBA2VLImJz42f7bJh8wQsTGCzI3j519/CASStoDONUBVz2I/VID0MpiX3SGSnbOD2xUalbE5g==}
-    engines: {node: '>=18'}
-
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
     deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
@@ -11149,10 +11117,6 @@ packages:
     resolution: {integrity: sha512-SgOTCX/EZXtZxBE5eJ97P4yGM5n37BwRU+YMsH4vNzFqJV/oWFXXCmwFlgWUM4PrakybVOueJJ6pwHqSVhTFDw==}
     engines: {node: '>=16'}
 
-  parse-json@8.1.0:
-    resolution: {integrity: sha512-rum1bPifK5SSar35Z6EKZuYPJx85pkNaFrxBK3mwdfSJ1/WKbYrjoW/zTPSjRRamfmVX1ACBIdFAO0VRErW/EA==}
-    engines: {node: '>=18'}
-
   parse-latin@5.0.1:
     resolution: {integrity: sha512-b/K8ExXaWC9t34kKeDV8kGXBkXZ1HCSAZRYE7HR14eA1GlXX5L8iWhs8USJNhQU9q5ci413jCKF0gOyovvyRBg==}
 
@@ -12251,10 +12215,9 @@ packages:
     resolution: {integrity: sha512-0J+Msgym3vrLOUB3hzQCuZHII0xkNGCtz/HJH9xZshwv9DbDwkw1KaE3gx/e2J5rpEY5rtOy6cyhKOPrkP7FZw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
-  read-pkg-up@11.0.0:
-    resolution: {integrity: sha512-LOVbvF1Q0SZdjClSefZ0Nz5z8u+tIE7mV5NibzmE9VYmDe9CaBbAVtz1veOSZbofrdsilxuDAYnFenukZVp8/Q==}
-    engines: {node: '>=18'}
-    deprecated: Renamed to read-package-up
+  read-pkg-up@10.1.0:
+    resolution: {integrity: sha512-aNtBq4jR8NawpKJQldrQcSW9y/d+KWH4v24HWkHljOZ7H0av+YTGANBzRh9A5pw7v/bLVsLVPpOhJ7gHNVy8lA==}
+    engines: {node: '>=16'}
 
   read-pkg-up@7.0.1:
     resolution: {integrity: sha512-zK0TB7Xd6JpCLmlLmufqykGE+/TlOePD6qKClNW7hHDKFh/J7/7gCWGR7joEQEW1bKq3a3yUZSObOoWLFQ4ohg==}
@@ -12272,9 +12235,9 @@ packages:
     resolution: {integrity: sha512-5iOehe+WF75IccPc30bWTbpdDQLOCc3Uu8bi3Dte3Eueij81yx1Mrufk8qBx/YAbR4uL1FdUr+7BKXDwEtisXg==}
     engines: {node: '>=12.20'}
 
-  read-pkg@9.0.1:
-    resolution: {integrity: sha512-9viLL4/n1BJUCT1NXVTdS1jtm80yDEgR5T4yCelII49Mbj0v1rZdKqj7zCiYdbB0CuCgdrvHcNogAKTFPBocFA==}
-    engines: {node: '>=18'}
+  read-pkg@8.1.0:
+    resolution: {integrity: sha512-PORM8AgzXeskHO/WEv312k9U03B8K9JSiWF/8N9sUuFjBa+9SF2u6K7VClzXwDXab51jCd8Nd36CNM+zR97ScQ==}
+    engines: {node: '>=16'}
 
   readable-stream@1.0.34:
     resolution: {integrity: sha512-ok1qVCJuRkNmvebYikljxJA/UEsKwLl2nI1OmaqAu4/UE+h0wKCHok4XkL/gvi39OacXvw59RJUOFUkDib2rHg==}
@@ -14457,6 +14420,9 @@ packages:
 
   zod@3.23.8:
     resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
+
+  zod@3.24.1:
+    resolution: {integrity: sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==}
 
   zwitch@1.0.5:
     resolution: {integrity: sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==}
@@ -17355,37 +17321,11 @@ snapshots:
       jju: 1.4.0
       js-yaml: 4.1.0
 
-  '@microsoft/api-extractor-model@7.29.2(@types/node@22.10.2)':
-    dependencies:
-      '@microsoft/tsdoc': 0.15.0
-      '@microsoft/tsdoc-config': 0.17.1
-      '@rushstack/node-core-library': 5.4.1(@types/node@22.10.2)
-    transitivePeerDependencies:
-      - '@types/node'
-
   '@microsoft/api-extractor-model@7.30.1(@types/node@22.10.2)':
     dependencies:
       '@microsoft/tsdoc': 0.15.1
       '@microsoft/tsdoc-config': 0.17.1
       '@rushstack/node-core-library': 5.10.1(@types/node@22.10.2)
-    transitivePeerDependencies:
-      - '@types/node'
-
-  '@microsoft/api-extractor@7.46.2(@types/node@22.10.2)':
-    dependencies:
-      '@microsoft/api-extractor-model': 7.29.2(@types/node@22.10.2)
-      '@microsoft/tsdoc': 0.15.0
-      '@microsoft/tsdoc-config': 0.17.1
-      '@rushstack/node-core-library': 5.4.1(@types/node@22.10.2)
-      '@rushstack/rig-package': 0.5.2
-      '@rushstack/terminal': 0.13.0(@types/node@22.10.2)
-      '@rushstack/ts-command-line': 4.22.0(@types/node@22.10.2)
-      lodash: 4.17.21
-      minimatch: 3.0.8
-      resolve: 1.22.8
-      semver: 7.5.4
-      source-map: 0.6.1
-      typescript: 5.4.2
     transitivePeerDependencies:
       - '@types/node'
 
@@ -17767,7 +17707,7 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nx/esbuild@20.2.2(@babel/traverse@7.26.4)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/node@22.10.2)(esbuild@0.24.0)(nx@20.2.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15)))(typescript@5.7.2)(verdaccio@5.31.1(encoding@0.1.13)(typanion@3.14.0))':
+  '@nx/esbuild@20.2.2(@babel/traverse@7.26.4)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/node@22.10.2)(esbuild@0.19.12)(nx@20.2.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15)))(typescript@5.7.2)(verdaccio@5.31.1(encoding@0.1.13)(typanion@3.14.0))':
     dependencies:
       '@nx/devkit': 20.2.2(nx@20.2.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15)))
       '@nx/js': 20.2.2(@babel/traverse@7.26.4)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/node@22.10.2)(nx@20.2.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15)))(typescript@5.7.2)(verdaccio@5.31.1(encoding@0.1.13)(typanion@3.14.0))
@@ -17776,7 +17716,7 @@ snapshots:
       tsconfig-paths: 4.2.0
       tslib: 2.8.1
     optionalDependencies:
-      esbuild: 0.24.0
+      esbuild: 0.19.12
     transitivePeerDependencies:
       - '@babel/traverse'
       - '@swc-node/register'
@@ -18299,7 +18239,7 @@ snapshots:
       - typescript
       - verdaccio
 
-  '@nx/rollup@20.2.2(@babel/core@7.26.0)(@babel/traverse@7.26.4)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/babel__core@7.20.5)(@types/node@22.10.2)(nx@20.2.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15)))(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2))(typescript@5.7.2)(verdaccio@5.31.1(encoding@0.1.13)(typanion@3.14.0))':
+  '@nx/rollup@20.2.2(@babel/core@7.26.0)(@babel/traverse@7.26.4)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/babel__core@7.20.5)(@types/node@22.10.2)(nx@20.2.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15)))(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2))(typescript@5.7.2)(verdaccio@5.31.1(encoding@0.1.13)(typanion@3.14.0))':
     dependencies:
       '@nx/devkit': 20.2.2(nx@20.2.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15)))
       '@nx/js': 20.2.2(@babel/traverse@7.26.4)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/node@22.10.2)(nx@20.2.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/types@0.1.17)(typescript@5.7.2))(@swc/core@1.7.26(@swc/helpers@0.5.15)))(typescript@5.7.2)(verdaccio@5.31.1(encoding@0.1.13)(typanion@3.14.0))
@@ -18314,7 +18254,7 @@ snapshots:
       postcss: 8.4.49
       rollup: 4.29.1
       rollup-plugin-copy: 3.5.0
-      rollup-plugin-postcss: 4.0.2(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2))
+      rollup-plugin-postcss: 4.0.2(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2))
       rollup-plugin-typescript2: 0.36.0(rollup@4.29.1)(typescript@5.7.2)
       tslib: 2.8.1
     transitivePeerDependencies:
@@ -19157,35 +19097,10 @@ snapshots:
     optionalDependencies:
       '@types/node': 22.10.2
 
-  '@rushstack/node-core-library@5.4.1(@types/node@22.10.2)':
-    dependencies:
-      ajv: 8.13.0
-      ajv-draft-04: 1.0.0(ajv@8.13.0)
-      ajv-formats: 3.0.1(ajv@8.13.0)
-      fs-extra: 7.0.1
-      import-lazy: 4.0.0
-      jju: 1.4.0
-      resolve: 1.22.8
-      semver: 7.5.4
-    optionalDependencies:
-      '@types/node': 22.10.2
-
-  '@rushstack/rig-package@0.5.2':
-    dependencies:
-      resolve: 1.22.8
-      strip-json-comments: 3.1.1
-
   '@rushstack/rig-package@0.5.3':
     dependencies:
       resolve: 1.22.8
       strip-json-comments: 3.1.1
-
-  '@rushstack/terminal@0.13.0(@types/node@22.10.2)':
-    dependencies:
-      '@rushstack/node-core-library': 5.4.1(@types/node@22.10.2)
-      supports-color: 8.1.1
-    optionalDependencies:
-      '@types/node': 22.10.2
 
   '@rushstack/terminal@0.14.4(@types/node@22.10.2)':
     dependencies:
@@ -19193,15 +19108,6 @@ snapshots:
       supports-color: 8.1.1
     optionalDependencies:
       '@types/node': 22.10.2
-
-  '@rushstack/ts-command-line@4.22.0(@types/node@22.10.2)':
-    dependencies:
-      '@rushstack/terminal': 0.13.0(@types/node@22.10.2)
-      '@types/argparse': 1.0.38
-      argparse: 1.0.10
-      string-argv: 0.3.2
-    transitivePeerDependencies:
-      - '@types/node'
 
   '@rushstack/ts-command-line@4.23.2(@types/node@22.10.2)':
     dependencies:
@@ -19871,10 +19777,6 @@ snapshots:
   '@types/resolve@1.20.2': {}
 
   '@types/retry@0.12.2': {}
-
-  '@types/rollup@0.54.0':
-    dependencies:
-      rollup: 4.29.1
 
   '@types/semver@6.2.7': {}
 
@@ -21152,6 +21054,11 @@ snapshots:
       run-applescript: 7.0.0
 
   bundle-require@4.2.1(esbuild@0.19.12):
+    dependencies:
+      esbuild: 0.19.12
+      load-tsconfig: 0.2.5
+
+  bundle-require@5.0.0(esbuild@0.19.12):
     dependencies:
       esbuild: 0.19.12
       load-tsconfig: 0.2.5
@@ -22567,9 +22474,9 @@ snapshots:
     dependencies:
       handlebars: 4.7.8
 
-  esbuild-plugin-pino@2.1.1(esbuild@0.24.0):
+  esbuild-plugin-pino@2.1.1(esbuild@0.19.12):
     dependencies:
-      esbuild: 0.24.0
+      esbuild: 0.19.12
 
   esbuild-register@3.5.0(esbuild@0.24.0):
     dependencies:
@@ -24368,8 +24275,6 @@ snapshots:
   indent-string@4.0.0: {}
 
   indent-string@5.0.0: {}
-
-  index-to-position@0.1.2: {}
 
   inflight@1.0.6:
     dependencies:
@@ -27651,12 +27556,6 @@ snapshots:
       lines-and-columns: 2.0.4
       type-fest: 3.13.1
 
-  parse-json@8.1.0:
-    dependencies:
-      '@babel/code-frame': 7.26.2
-      index-to-position: 0.1.2
-      type-fest: 4.30.1
-
   parse-latin@5.0.1:
     dependencies:
       nlcst-to-string: 3.1.1
@@ -27938,14 +27837,6 @@ snapshots:
       postcss-value-parser: 4.2.0
       read-cache: 1.0.0
       resolve: 1.22.8
-
-  postcss-load-config@3.1.4(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2)):
-    dependencies:
-      lilconfig: 2.1.0
-      yaml: 1.10.2
-    optionalDependencies:
-      postcss: 8.4.49
-      ts-node: 10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2)
 
   postcss-load-config@3.1.4(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2)):
     dependencies:
@@ -28635,10 +28526,10 @@ snapshots:
       json-parse-even-better-errors: 3.0.2
       npm-normalize-package-bin: 3.0.1
 
-  read-pkg-up@11.0.0:
+  read-pkg-up@10.1.0:
     dependencies:
-      find-up-simple: 1.0.0
-      read-pkg: 9.0.1
+      find-up: 6.3.0
+      read-pkg: 8.1.0
       type-fest: 4.30.1
 
   read-pkg-up@7.0.1:
@@ -28667,13 +28558,12 @@ snapshots:
       parse-json: 5.2.0
       type-fest: 2.19.0
 
-  read-pkg@9.0.1:
+  read-pkg@8.1.0:
     dependencies:
       '@types/normalize-package-data': 2.4.4
       normalize-package-data: 6.0.2
-      parse-json: 8.1.0
+      parse-json: 7.1.1
       type-fest: 4.30.1
-      unicorn-magic: 0.1.0
 
   readable-stream@1.0.34:
     dependencies:
@@ -29138,12 +29028,12 @@ snapshots:
     optionalDependencies:
       '@babel/code-frame': 7.26.2
 
-  rollup-plugin-esbuild@6.1.1(esbuild@0.19.12)(rollup@4.29.1):
+  rollup-plugin-esbuild@6.1.1(esbuild@0.24.0)(rollup@4.29.1):
     dependencies:
       '@rollup/pluginutils': 5.1.4(rollup@4.29.1)
       debug: 4.4.0
       es-module-lexer: 1.5.4
-      esbuild: 0.19.12
+      esbuild: 0.24.0
       get-tsconfig: 4.8.1
       rollup: 4.29.1
     transitivePeerDependencies:
@@ -29162,25 +29052,6 @@ snapshots:
   rollup-plugin-peer-deps-external@2.2.4(rollup@4.29.1):
     dependencies:
       rollup: 4.29.1
-
-  rollup-plugin-postcss@4.0.2(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2)):
-    dependencies:
-      chalk: 4.1.2
-      concat-with-sourcemaps: 1.1.0
-      cssnano: 5.1.15(postcss@8.4.49)
-      import-cwd: 3.0.0
-      p-queue: 6.6.2
-      pify: 5.0.0
-      postcss: 8.4.49
-      postcss-load-config: 3.1.4(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2))
-      postcss-modules: 4.3.1(postcss@8.4.49)
-      promise.series: 0.2.0
-      resolve: 1.22.8
-      rollup-pluginutils: 2.8.2
-      safe-identifier: 0.4.2
-      style-inject: 0.3.0
-    transitivePeerDependencies:
-      - ts-node
 
   rollup-plugin-postcss@4.0.2(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2)):
     dependencies:
@@ -30386,7 +30257,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsup@8.0.0(patch_hash=drf3yjuy45jg6lcmd5ihmmvct4)(@microsoft/api-extractor@7.46.2(@types/node@22.10.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2))(typescript@5.7.2):
+  tsup@8.0.0(patch_hash=drf3yjuy45jg6lcmd5ihmmvct4)(@microsoft/api-extractor@7.48.1(@types/node@22.10.2))(@swc/core@1.7.26(@swc/helpers@0.5.15))(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.15))(@swc/wasm@1.6.5)(@types/node@22.10.2)(typescript@5.7.2))(typescript@5.7.2):
     dependencies:
       bundle-require: 4.2.1(esbuild@0.19.12)
       cac: 6.7.14
@@ -30403,7 +30274,7 @@ snapshots:
       sucrase: 3.35.0
       tree-kill: 1.2.2
     optionalDependencies:
-      '@microsoft/api-extractor': 7.46.2(@types/node@22.10.2)
+      '@microsoft/api-extractor': 7.48.1(@types/node@22.10.2)
       '@swc/core': 1.7.26(@swc/helpers@0.5.15)
       postcss: 8.4.49
       typescript: 5.7.2
@@ -31574,15 +31445,17 @@ snapshots:
       property-expr: 2.0.6
       toposort: 2.0.2
 
-  zod-to-json-schema@3.23.1(zod@3.23.8):
+  zod-to-json-schema@3.23.1(zod@3.24.1):
     dependencies:
-      zod: 3.23.8
+      zod: 3.24.1
 
   zod-validation-error@3.4.0(zod@3.23.8):
     dependencies:
       zod: 3.23.8
 
   zod@3.23.8: {}
+
+  zod@3.24.1: {}
 
   zwitch@1.0.5: {}
 

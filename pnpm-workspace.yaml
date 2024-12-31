@@ -2,7 +2,7 @@ packages:
   - "tools/*"
   - "crates/*"
   - "packages/*"
-  - "terraform-modules/*"
+  - "terraform-modules"
   - "docs/*"
 
 catalog:
@@ -35,5 +35,7 @@ catalog:
   "copyfiles": "^2.4.1"
   "deepmerge": "^4.3.1"
   "rimraf": "^5.0.7"
-  "c12": "2.0.0-beta.2"
+  "c12": "^2.0.0-beta.2"
   "pkg-types": "^1.1.1"
+  "zod": "^3.24.0"
+  "rollup": "^4.29.1"
