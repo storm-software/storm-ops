@@ -4,6 +4,7 @@ import esBuildPlugin from "@size-limit/esbuild";
 import esBuildWhyPlugin from "@size-limit/esbuild-why";
 import filePlugin from "@size-limit/file";
 import type { StormConfig } from "@storm-software/config";
+import { writeInfo } from "@storm-software/config-tools";
 import sizeLimit from "size-limit";
 import { withRunExecutor } from "../../base/base-executor";
 import type { SizeLimitExecutorSchema } from "./schema";
@@ -45,7 +46,6 @@ export async function sizeLimitExecutorFn(
     );
   }
 
-  const { writeInfo } = await import("@storm-software/config-tools");
   writeInfo(`📏 Running Size-Limit on ${context.projectName}`, config);
 
   sizeLimit([filePlugin, esBuildPlugin, esBuildWhyPlugin], {

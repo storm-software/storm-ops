@@ -1,14 +1,18 @@
 #!/usr/bin/env node
 
 import { getNpmPackageVersion } from "@nx/workspace/src/generators/utils/get-npm-package-version";
+import { loadStormConfig } from "@storm-software/config-tools";
+import {
+  getStopwatch,
+  writeFatal,
+  writeInfo,
+  writeSuccess
+} from "@storm-software/config-tools/logger/console";
 import type { NxClientMode } from "@storm-software/workspace-tools";
 import { createWorkspace } from "create-nx-workspace";
 import { prompt } from "enquirer";
 
 async function main() {
-  const { getStopwatch, writeFatal, writeInfo, writeSuccess, loadStormConfig } =
-    await import("@storm-software/config-tools");
-
   const stopwatch = getStopwatch("create-storm-workspace");
   const config = await loadStormConfig();
   try {

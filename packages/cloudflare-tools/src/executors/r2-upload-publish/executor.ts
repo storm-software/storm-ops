@@ -5,6 +5,14 @@ import {
   readCachedProjectGraph,
   type ExecutorContext
 } from "@nx/devkit";
+import {
+  loadStormConfig,
+  writeDebug,
+  writeInfo,
+  writeSuccess,
+  writeWarning
+} from "@storm-software/config-tools";
+import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { createCliOptions } from "@storm-software/workspace-tools/utils/create-cli-options";
 import { getPackageInfo } from "@storm-software/workspace-tools/utils/package-helpers";
 import { glob } from "glob";
@@ -20,15 +28,6 @@ export default async function runExecutor(
   options: R2UploadPublishExecutorSchema,
   context: ExecutorContext
 ) {
-  const {
-    findWorkspaceRoot,
-    loadStormConfig,
-    writeInfo,
-    writeDebug,
-    writeSuccess,
-    writeWarning
-  } = await import("@storm-software/config-tools");
-
   /**
    * We need to check both the env var and the option because the executor may have been triggered
    * indirectly via dependsOn, in which case the env var will be set, but the option will not.

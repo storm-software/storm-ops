@@ -4,6 +4,7 @@ import {
   ProjectGraphDependency,
   ProjectGraphProjectNode
 } from "@nx/devkit";
+import { writeDebug, writeWarning } from "@storm-software/config-tools";
 import { createHash } from "node:crypto";
 
 export const r2UploadFile = async (
@@ -16,10 +17,6 @@ export const r2UploadFile = async (
   contentType = "text/plain",
   isDryRun = false
 ) => {
-  const { writeDebug, writeWarning } = await import(
-    "@storm-software/config-tools"
-  );
-
   const checksum = createHash("sha256").update(fileContent).digest("base64");
   const fileKey = `${projectPath}/${fileName.startsWith("/") ? fileName.substring(1) : fileName}`;
   writeDebug(`Uploading file: ${fileKey}`);

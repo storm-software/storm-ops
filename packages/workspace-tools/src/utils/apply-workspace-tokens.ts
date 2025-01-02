@@ -1,5 +1,8 @@
 import type { ProjectConfiguration } from "@nx/devkit";
-import type { BaseTokenizerOptions } from "@storm-software/config-tools";
+import {
+  findWorkspaceRoot,
+  type BaseTokenizerOptions
+} from "@storm-software/config-tools";
 
 export type ExecutorTokenizerOptions = BaseTokenizerOptions &
   ProjectConfiguration & {
@@ -60,8 +63,6 @@ export const applyWorkspaceExecutorTokens = async (
     result = result.replaceAll("{sourceRoot}", sourceRoot);
   }
   if (result.includes("{workspaceRoot}")) {
-    const { findWorkspaceRoot } = await import("@storm-software/config-tools");
-
     result = result.replaceAll(
       "{workspaceRoot}",
       tokenizerOptions.workspaceRoot ?? findWorkspaceRoot()

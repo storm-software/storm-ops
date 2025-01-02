@@ -2,6 +2,16 @@ import type { ExecutorContext, PromiseExecutor } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import {
   applyWorkspaceTokens,
+  findWorkspaceRoot,
+  formatLogMessage,
+  getStopwatch,
+  loadStormConfig,
+  writeDebug,
+  writeError,
+  writeFatal,
+  writeInfo,
+  writeSuccess,
+  writeTrace,
   type BaseTokenizerOptions
 } from "@storm-software/config-tools";
 import type {
@@ -36,19 +46,6 @@ export const withRunExecutor =
     _options: TExecutorSchema,
     context: ExecutorContext
   ): Promise<{ success: boolean }> => {
-    const {
-      getStopwatch,
-      writeDebug,
-      writeError,
-      writeFatal,
-      writeInfo,
-      writeSuccess,
-      writeTrace,
-      findWorkspaceRoot,
-      loadStormConfig,
-      formatLogMessage
-    } = await import("@storm-software/config-tools");
-
     const stopwatch = getStopwatch(name);
     let options = _options;
 
@@ -81,7 +78,7 @@ export const withRunExecutor =
       // process.chdir(workspaceRoot);
 
       if (!executorOptions.skipReadingConfig) {
-        writeDebug(
+        writeTrace(
           `Loading the Storm Config from environment variables and storm.config.js file...
  - workspaceRoot: ${workspaceRoot}
  - projectRoot: ${projectRoot}

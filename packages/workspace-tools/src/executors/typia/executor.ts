@@ -1,5 +1,6 @@
 import type { ExecutorContext } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
+import { writeInfo } from "@storm-software/config-tools/logger/console";
 import { removeSync } from "fs-extra";
 import { TypiaProgrammer } from "typia/lib/programmers/TypiaProgrammer.js";
 import { withRunExecutor } from "../../base/base-executor";
@@ -10,8 +11,6 @@ export async function typiaExecutorFn(
   _: ExecutorContext,
   config: StormConfig
 ) {
-  const { writeInfo } = await import("@storm-software/config-tools");
-
   if (options.clean !== false) {
     writeInfo(`🧹 Cleaning output path: ${options.outputPath}`, config);
     removeSync(options.outputPath);

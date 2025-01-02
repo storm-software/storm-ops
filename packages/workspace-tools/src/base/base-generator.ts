@@ -1,5 +1,18 @@
 import type { GeneratorCallback, Tree } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
+import {
+  applyWorkspaceBaseTokens,
+  applyWorkspaceTokens,
+  findWorkspaceRoot,
+  getStopwatch,
+  loadStormConfig,
+  writeDebug,
+  writeError,
+  writeFatal,
+  writeInfo,
+  writeSuccess,
+  writeTrace
+} from "@storm-software/config-tools";
 import type {
   BaseGeneratorOptions,
   BaseGeneratorResult,
@@ -26,20 +39,6 @@ export const withRunGenerator =
     tree: Tree,
     _options: TGeneratorSchema
   ): Promise<GeneratorCallback | BaseGeneratorResult> => {
-    const {
-      getStopwatch,
-      writeDebug,
-      writeError,
-      writeFatal,
-      writeInfo,
-      writeSuccess,
-      writeTrace,
-      findWorkspaceRoot,
-      loadStormConfig,
-      applyWorkspaceBaseTokens,
-      applyWorkspaceTokens
-    } = await import("@storm-software/config-tools");
-
     const stopwatch = getStopwatch(name);
     let options = _options;
 

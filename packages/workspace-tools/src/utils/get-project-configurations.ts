@@ -1,4 +1,5 @@
 import type { ProjectConfiguration } from "@nx/devkit";
+import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { retrieveProjectConfigurationsWithoutPluginInference } from "nx/src/project-graph/utils/retrieve-workspace-files";
 
 /**
@@ -9,8 +10,6 @@ import { retrieveProjectConfigurationsWithoutPluginInference } from "nx/src/proj
 export const getProjectConfigurations = async <
   TConfig extends ProjectConfiguration = ProjectConfiguration
 >(): Promise<Record<string, TConfig>> => {
-  const { findWorkspaceRoot } = await import("@storm-software/config-tools");
-
   return retrieveProjectConfigurationsWithoutPluginInference(
     findWorkspaceRoot()
   ) as Promise<Record<string, TConfig>>;

@@ -1,6 +1,8 @@
-import { fork } from "node:child_process";
 import { joinPathFragments, type ExecutorContext } from "@nx/devkit";
+import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
+import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { createCliOptions } from "@storm-software/workspace-tools";
+import { fork } from "node:child_process";
 import type { CloudflarePublishExecutorSchema } from "./schema";
 
 export default async function runExecutor(
@@ -47,9 +49,6 @@ export default async function runExecutor(
 
     let proc;
     try {
-      const { findWorkspaceRoot, loadStormConfig } = await import(
-        "@storm-software/config-tools"
-      );
       const workspaceRoot = findWorkspaceRoot();
       const config = await loadStormConfig(workspaceRoot);
 

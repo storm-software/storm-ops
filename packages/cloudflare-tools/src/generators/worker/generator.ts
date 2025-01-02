@@ -16,6 +16,16 @@ import { determineProjectNameAndRootOptions } from "@nx/devkit/src/generators/pr
 import { applicationGenerator as nodeApplicationGenerator } from "@nx/node";
 import { nxVersion } from "@nx/node/src/utils/versions";
 import { StormConfig } from "@storm-software/config";
+import {
+  getStopwatch,
+  loadStormConfig,
+  writeDebug,
+  writeError,
+  writeFatal,
+  writeInfo,
+  writeTrace
+} from "@storm-software/config-tools";
+import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { join } from "path";
 import initGenerator from "../init/generator";
 import { getAccountId } from "./libs/get-account-id";
@@ -27,17 +37,6 @@ export async function applicationGenerator(
   tree: Tree,
   schema: WorkerGeneratorSchema
 ) {
-  const {
-    getStopwatch,
-    writeDebug,
-    writeError,
-    writeFatal,
-    writeInfo,
-    writeTrace,
-    findWorkspaceRoot,
-    loadStormConfig
-  } = await import("@storm-software/config-tools");
-
   const stopwatch = getStopwatch("Storm Worker generator");
 
   let config: StormConfig | undefined;

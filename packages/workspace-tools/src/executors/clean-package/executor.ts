@@ -1,6 +1,7 @@
 import type { ExecutorContext } from "@nx/devkit";
 import { joinPathFragments } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
+import { writeInfo } from "@storm-software/config-tools";
 import {
   copy,
   mkdir,
@@ -23,8 +24,6 @@ export async function cleanPackageExecutorFn(
   context: ExecutorContext,
   config: StormConfig
 ) {
-  const { writeInfo } = await import("@storm-software/config-tools");
-
   const tempDirectoryName = joinPathFragments(
     config.workspaceRoot,
     "tmp",

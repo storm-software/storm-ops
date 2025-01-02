@@ -21,6 +21,17 @@ import { resolveLocalPackageDependencies as resolveLocalPackageJsonDependencies 
 import { updateLockFile } from "@nx/js/src/generators/release-version/utils/update-lock-file";
 import type { StormConfig } from "@storm-software/config";
 import {
+  findWorkspaceRoot,
+  getStopwatch,
+  loadStormConfig,
+  writeDebug,
+  writeError,
+  writeFatal,
+  writeInfo,
+  writeSuccess,
+  writeTrace
+} from "@storm-software/config-tools";
+import {
   getFirstGitCommit,
   getLatestGitTagForPattern
 } from "nx/src/command-line/release/utils/git";
@@ -50,18 +61,6 @@ export async function releaseVersionGeneratorFn(
   options: ReleaseVersionGeneratorSchema,
   config?: StormConfig
 ): Promise<ReleaseVersionGeneratorResult> {
-  const {
-    writeInfo,
-    findWorkspaceRoot,
-    writeDebug,
-    loadStormConfig,
-    writeTrace,
-    writeSuccess,
-    writeFatal,
-    writeError,
-    getStopwatch
-  } = await import("@storm-software/config-tools");
-
   writeInfo(`⚡ Running the Storm Release Version generator...\n\n`, config);
 
   const stopwatch = getStopwatch("Storm Release Version generator");
