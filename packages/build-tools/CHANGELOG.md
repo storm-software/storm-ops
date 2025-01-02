@@ -1,8 +1,15 @@
+## 0.117.0 (2025-01-02)
+
+### Features
+
+- **config:** Clean up Storm workspace configuration properties ([22508dd8](https://github.com/storm-software/storm-ops/commit/22508dd8))
+
 ## 0.116.0 (2025-01-02)
 
 ### Features
 
-- **k8s-tools:** Removed old dynamic modules import ([81805110](https://github.com/storm-software/storm-ops/commit/81805110))
+- **k8s-tools:** Removed old dynamic modules import
+  ([81805110](https://github.com/storm-software/storm-ops/commit/81805110))
 
 ## 0.115.0 (2025-01-02)
 

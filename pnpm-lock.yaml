@@ -401,9 +401,6 @@ importers:
       chalk:
         specifier: 'catalog:'
         version: 4.1.2
-      deepmerge:
-        specifier: 'catalog:'
-        version: 4.3.1
       defu:
         specifier: 6.1.4
         version: 6.1.4
