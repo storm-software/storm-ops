@@ -1,8 +1,15 @@
+## 1.217.1 (2025-01-02)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issue displaying buffer errors in publish executor ([21791bd1](https://github.com/storm-software/storm-ops/commit/21791bd1))
+
 ## 1.217.0 (2025-01-02)
 
 ### Features
 
-- **storm-ops:** Updated catalog and JSON schema for `StormConfig` object ([bf99f680](https://github.com/storm-software/storm-ops/commit/bf99f680))
+- **storm-ops:** Updated catalog and JSON schema for `StormConfig` object
+  ([bf99f680](https://github.com/storm-software/storm-ops/commit/bf99f680))
 
 ## 1.216.0 (2025-01-02)
 

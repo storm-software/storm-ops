@@ -1,3 +1,9 @@
+## 0.45.1 (2025-01-02)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issue displaying buffer errors in publish executor ([21791bd1](https://github.com/storm-software/storm-ops/commit/21791bd1))
+
 ## 0.45.0 (2025-01-02)
 
 ### Features
