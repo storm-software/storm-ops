@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/terraform-tools",
-  "version": "0.39.0",
+  "version": "0.39.1",
   "type": "commonjs",
   "description": "Tools for managing Terraform infrastructure within a Nx workspace.",
   "repository": {

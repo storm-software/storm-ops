@@ -1,3 +1,9 @@
+## 2.77.1 (2025-01-02)
+
+### Bug Fixes
+
+- **git-tools:** Ensure the correct email is provided for Stormie-Bot ([5fb2c9b6](https://github.com/storm-software/storm-ops/commit/5fb2c9b6))
+
 ## 2.77.0 (2025-01-02)
 
 ### Features

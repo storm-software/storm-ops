@@ -1,8 +1,15 @@
+## 0.39.1 (2025-01-02)
+
+### Bug Fixes
+
+- **git-tools:** Ensure the correct email is provided for Stormie-Bot ([5fb2c9b6](https://github.com/storm-software/storm-ops/commit/5fb2c9b6))
+
 ## 0.39.0 (2025-01-02)
 
 ### Features
 
-- **storm-ops:** Updated catalog and JSON schema for `StormConfig` object ([bf99f680](https://github.com/storm-software/storm-ops/commit/bf99f680))
+- **storm-ops:** Updated catalog and JSON schema for `StormConfig` object
+  ([bf99f680](https://github.com/storm-software/storm-ops/commit/bf99f680))
 
 ## 0.38.0 (2025-01-02)
 

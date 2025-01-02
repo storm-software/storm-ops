@@ -1,8 +1,22 @@
+## 0.10.2 (2025-01-02)
+
+### Bug Fixes
+
+- **git-tools:** Ensure the correct email is provided for Stormie-Bot ([5fb2c9b6](https://github.com/storm-software/storm-ops/commit/5fb2c9b6))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.126.2
+- Updated build-tools to 0.118.2
+- Updated config to 1.87.2
+
 ## 0.10.1 (2025-01-02)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolved issue displaying buffer errors in publish executor ([21791bd1](https://github.com/storm-software/storm-ops/commit/21791bd1))
+- **workspace-tools:** Resolved issue displaying buffer errors in publish
+  executor
+  ([21791bd1](https://github.com/storm-software/storm-ops/commit/21791bd1))
 
 ### 🧱 Updated Dependencies
 
