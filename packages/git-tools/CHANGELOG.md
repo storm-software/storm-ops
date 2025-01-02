@@ -1,3 +1,9 @@
+## 2.78.0 (2025-01-02)
+
+### Features
+
+- **git-tools:** Added the `read-yaml-file` dependency to the package ([576b27cf](https://github.com/storm-software/storm-ops/commit/576b27cf))
+
 ## 2.77.2 (2025-01-02)
 
 ### Bug Fixes
