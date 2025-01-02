@@ -1,3 +1,9 @@
+## 2.76.1 (2025-01-02)
+
+### Bug Fixes
+
+- **storm-ops:** Resolve issue preventing release publishing ([92c10eae](https://github.com/storm-software/storm-ops/commit/92c10eae))
+
 ## 2.76.0 (2025-01-02)
 
 ### Features

@@ -1,8 +1,15 @@
+## 1.122.2 (2025-01-02)
+
+### Bug Fixes
+
+- **storm-ops:** Resolve issue preventing release publishing ([92c10eae](https://github.com/storm-software/storm-ops/commit/92c10eae))
+
 ## 1.122.1 (2025-01-02)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolved issue with missing `deepmerge` dependency ([f27195c6](https://github.com/storm-software/storm-ops/commit/f27195c6))
+- **workspace-tools:** Resolved issue with missing `deepmerge` dependency
+  ([f27195c6](https://github.com/storm-software/storm-ops/commit/f27195c6))
 
 ## 1.122.0 (2025-01-02)
 
