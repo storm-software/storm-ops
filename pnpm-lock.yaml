@@ -87,6 +87,9 @@ catalogs:
     prettier:
       specifier: ^3.3.3
       version: 3.4.2
+    read-yaml-file:
+      specifier: 2.1.0
+      version: 2.1.0
     rimraf:
       specifier: ^5.0.7
       version: 5.0.7
@@ -889,6 +892,9 @@ importers:
       prettier:
         specifier: 'catalog:'
         version: 3.4.2
+      read-yaml-file:
+        specifier: 'catalog:'
+        version: 2.1.0
       semver:
         specifier: 7.6.2
         version: 7.6.2
@@ -1379,7 +1385,7 @@ importers:
         specifier: 2.5.0
         version: 2.5.0(prettier@3.4.2)
       read-yaml-file:
-        specifier: 2.1.0
+        specifier: 'catalog:'
         version: 2.1.0
       semver:
         specifier: 7.6.2

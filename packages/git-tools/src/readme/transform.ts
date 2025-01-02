@@ -1,8 +1,8 @@
-import _ from "underscore";
-import anchor from "anchor-markdown-header";
-import updateSection from "update-section";
 import md from "@textlint/markdown-to-ast";
+import anchor from "anchor-markdown-header";
 import { Parser } from "htmlparser2";
+import _ from "underscore";
+import updateSection from "update-section";
 
 export const start =
   "<!-- START doctoc -->\n" +
@@ -59,11 +59,11 @@ function getMarkdownHeaders(lines, maxHeaderLevel) {
 }
 
 function countHeaders(headers) {
-  var instances = {};
+  const instances = {};
 
-  for (var i = 0; i < headers.length; i++) {
-    var header = headers[i];
-    var name = header.name;
+  for (let i = 0; i < headers.length; i++) {
+    const header = headers[i];
+    const name = header.name;
 
     if (Object.prototype.hasOwnProperty.call(instances, name)) {
       // `instances.hasOwnProperty(name)` fails when there’s an instance named "hasOwnProperty".
@@ -81,7 +81,7 @@ function countHeaders(headers) {
 function getLinesToToc(lines, currentToc, info, processAll) {
   if (processAll || !currentToc) return lines;
 
-  var tocableStart = 0;
+  let tocableStart = 0;
 
   // when updating an existing toc, we only take the headers into account
   // that are below the existing toc
@@ -92,7 +92,7 @@ function getLinesToToc(lines, currentToc, info, processAll) {
 
 // Use document context as well as command line args to infer the title
 function determineTitle(title, notitle, lines, info) {
-  var defaultTitle = "**Table of Contents** ";
+  const defaultTitle = "**Table of Contents** ";
 
   if (notitle) return "";
   if (title) return title;
@@ -115,24 +115,24 @@ export function transform(
   entryPrefix = entryPrefix || "-";
 
   // only limit *HTML* headings by default
-  var maxHeaderLevelHtml = maxHeaderLevel || 4;
+  const maxHeaderLevelHtml = maxHeaderLevel || 4;
 
-  var lines = content.split("\n"),
+  const lines = content.split("\n"),
     info = updateSection.parse(lines, matchesStart, matchesEnd);
 
   if (!info.hasStart && updateOnly) {
     return { transformed: false };
   }
 
-  var inferredTitle = determineTitle(title, notitle, lines, info);
+  const inferredTitle = determineTitle(title, notitle, lines, info);
 
-  var titleSeparator = inferredTitle ? "\n\n" : "\n";
+  const titleSeparator = inferredTitle ? "\n\n" : "\n";
 
-  var currentToc =
+  const currentToc =
       info.hasStart && lines.slice(info.startIdx, info.endIdx + 1).join("\n"),
     linesToToc = getLinesToToc(lines, currentToc, info, processAll);
 
-  var headers = getMarkdownHeaders(linesToToc, maxHeaderLevel).concat(
+  const headers = getMarkdownHeaders(linesToToc, maxHeaderLevel).concat(
     getHtmlHeaders(linesToToc, maxHeaderLevelHtml)
   );
 
@@ -140,22 +140,25 @@ export function transform(
     return a.line - b.line;
   });
 
-  var allHeaders = countHeaders(headers),
+  const allHeaders = countHeaders(headers),
     lowestRank = _(allHeaders).chain().pluck("rank").min().value(),
     linkedHeaders = _(allHeaders).map(addAnchor.bind(null, mode));
 
   if (linkedHeaders.length === 0) return { transformed: false };
 
   // 4 spaces required for proper indention on Bitbucket and GitLab
-  var indentation =
+  const indentation =
     mode === "bitbucket.org" || mode === "gitlab.com" ? "    " : "  ";
 
-  var toc =
+  const toc =
     inferredTitle +
     titleSeparator +
     linkedHeaders
       .map(function (x) {
-        var indent = _(_.range(x.rank - lowestRank)).reduce(function (acc, x) {
+        const indent = _(_.range(x.rank - lowestRank)).reduce(function (
+          acc,
+          x
+        ) {
           return acc + indentation;
         }, "");
 
@@ -164,11 +167,11 @@ export function transform(
       .join("\n") +
     "\n";
 
-  var wrappedToc = start + "\n" + toc + "\n" + end;
+  const wrappedToc = start + "\n" + toc + "\n" + end;
 
   if (currentToc === toc) return { transformed: false };
 
-  var data = updateSection(
+  const data = updateSection(
     lines.join("\n"),
     wrappedToc,
     matchesStart,
@@ -179,11 +182,11 @@ export function transform(
 }
 
 function addLinenos(lines, headers) {
-  var current = 0,
+  let current = 0,
     line;
 
   return headers.map(function (x) {
-    for (var lineno = current; lineno < lines.length; lineno++) {
+    for (let lineno = current; lineno < lines.length; lineno++) {
       line = lines[lineno];
       if (new RegExp(x.text[0]).test(line)) {
         current = lineno;
@@ -213,7 +216,7 @@ function rankify(headers, max) {
 }
 
 export function getHtmlHeaders(lines, maxHeaderLevel) {
-  var source = md
+  const source = md
     .parse(lines.join("\n"))
     .children.filter(function (node) {
       return node.type === md.Syntax.HtmlBlock || node.type === md.Syntax.Html;
@@ -227,7 +230,7 @@ export function getHtmlHeaders(lines, maxHeaderLevel) {
   const grabbing = [] as any[];
   let text = [] as any[];
 
-  var parser = new Parser(
+  const parser = new Parser(
     {
       onopentag: function (name, attr) {
         // Short circuit if we're already inside a pre
@@ -247,7 +250,7 @@ export function getHtmlHeaders(lines, maxHeaderLevel) {
       onclosetag: function (name) {
         if (grabbing.length === 0) return;
         if (grabbing[grabbing.length - 1] === name) {
-          var tag = grabbing.pop();
+          const tag = grabbing.pop();
           headers.push({ text: text, tag: tag });
           text = [];
         }

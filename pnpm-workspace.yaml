@@ -43,3 +43,4 @@ catalog:
   "commander": "^12.1.0"
   "chalk": "^4.1.0"
   "defu": "^6.1.4"
+  "read-yaml-file": "2.1.0"

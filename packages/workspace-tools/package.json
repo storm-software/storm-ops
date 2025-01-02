@@ -87,7 +87,7 @@
     "pkg-types": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-packagejson": "2.5.0",
-    "read-yaml-file": "2.1.0",
+    "read-yaml-file": "catalog:",
     "semver": "7.6.2",
     "size-limit": "11.1.4",
     "tsup": "8.0.0",

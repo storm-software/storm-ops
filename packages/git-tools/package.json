@@ -70,6 +70,7 @@
     "jsonc-parser": "3.2.1",
     "nx": "catalog:",
     "prettier": "catalog:",
+    "read-yaml-file": "catalog:",
     "semver": "7.6.2",
     "tsconfig-paths": "4.2.0",
     "underscore": "1.13.6",

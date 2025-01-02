@@ -7,7 +7,6 @@ import {
   NxReleaseVersionConfiguration
 } from "nx/src/config/nx-json";
 import type {
-  ExecutorContext,
   ProjectGraph,
   ProjectsConfigurations
 } from "nx/src/devkit-exports";
@@ -98,15 +97,6 @@ export type CommitState<TQuestions extends CommitQuestions = CommitQuestions> =
     config: CommitStateConfig<TQuestions>;
     root: string;
   };
-
-export type GetProjectContext = Pick<
-  ExecutorContext,
-  | "projectName"
-  | "cwd"
-  | "projectsConfigurations"
-  | "projectGraph"
-  | "workspace"
->;
 
 export type ReleaseConfig = any & {
   npm: boolean;

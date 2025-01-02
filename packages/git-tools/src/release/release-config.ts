@@ -622,12 +622,12 @@ export async function createNxReleaseConfig(
   ) as any;
 
   const userGroups = Object.values(userConfig.groups ?? {});
-  const disableWorkspaceChangelog =
-    userGroups.length > 1 ||
-    (userGroups.length === 1 &&
-      userGroups[0]?.projectsRelationship === "independent") ||
-    (userConfig.projectsRelationship === "independent" &&
-      !userGroups.some(g => g.projectsRelationship === "fixed"));
+  // const disableWorkspaceChangelog =
+  //   userGroups.length > 1 ||
+  //   (userGroups.length === 1 &&
+  //     userGroups[0]?.projectsRelationship === "independent") ||
+  //   (userConfig.projectsRelationship === "independent" &&
+  //     !userGroups.some(g => g.projectsRelationship === "fixed"));
 
   const defaultRendererPath = "./changelog-renderer";
 
