@@ -196,7 +196,7 @@
   "dependencies": {
     "@humanfs/node": "^0.16.6",
     "commander": "catalog:",
-    "deepmerge": "catalog:",
+    "defu": "catalog:",
     "rollup": "catalog:",
     "rollup-plugin-typescript2": "0.36.0"
   },

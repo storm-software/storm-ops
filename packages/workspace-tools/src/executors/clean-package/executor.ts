@@ -1,7 +1,7 @@
 import type { ExecutorContext } from "@nx/devkit";
 import { joinPathFragments } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
-import { writeInfo } from "@storm-software/config-tools";
+import { writeInfo } from "@storm-software/config-tools/logger/console";
 import {
   copy,
   mkdir,

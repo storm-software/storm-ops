@@ -39,7 +39,7 @@ import {
 import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
 import { LogLevelLabel } from "@storm-software/config-tools/types";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
-import { default as merge } from "deepmerge";
+import defu from "defu";
 import { LogLevel } from "esbuild";
 import { relative } from "node:path";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
@@ -85,7 +85,7 @@ async function resolveOptions(
   if (options.configPath) {
     const configFile = await loadConfig(options.configPath as string);
     if (configFile) {
-      options = merge(options, configFile) as UnbuildOptions;
+      options = defu(options, configFile) as UnbuildOptions;
     }
   }
 

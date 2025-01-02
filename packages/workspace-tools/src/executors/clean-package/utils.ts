@@ -12,7 +12,7 @@ export function filterObjectByKey(
   filterByKey = (key?: string) => true,
   deep = false
 ) {
-  let result = {};
+  const result = {};
   let changed = false;
 
   for (const key in object) {
@@ -48,7 +48,7 @@ export function createIgnoreMatcher(ignorePattern: string | RegExp = "**/*") {
   return filename => filename !== ignorePattern;
 }
 
-export async function createFilesFilter(ignoreFiles: string = "", cwd: string) {
+export async function createFilesFilter(ignoreFiles = "", cwd: string) {
   let ignoreFilesList = [] as string[];
 
   if (ignoreFiles) {

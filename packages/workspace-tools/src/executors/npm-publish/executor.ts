@@ -1,6 +1,8 @@
-import { readJsonFile, type ExecutorContext } from "@nx/devkit";
+import { type ExecutorContext } from "@nx/devkit";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
+import { readJson } from "fs-extra";
 import { execSync } from "node:child_process";
+import { pnpmCatalogUpdate } from "../../utils/pnpm-deps-update";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
 export const LARGE_BUFFER = 1024 * 1000000;
@@ -33,7 +35,7 @@ export default async function npmPublishExecutorFn(
   );
 
   const packageJsonPath = joinPaths(packageRoot, "package.json");
-  const projectPackageJson = readJsonFile(packageJsonPath);
+  const projectPackageJson = await readJson(packageJsonPath);
   const packageName = projectPackageJson.name;
 
   console.info(
@@ -53,9 +55,9 @@ export default async function npmPublishExecutorFn(
     return { success: true };
   }
 
-  const npmPublishCommandSegments = [
-    `pnpm publish folder --filter="${packageRoot}" --json`
-  ];
+  await pnpmCatalogUpdate(packageRoot, context.root);
+
+  const npmPublishCommandSegments = [`npm publish --json`];
   const npmViewCommandSegments = [
     `npm view ${packageName} versions dist-tags --json`
   ];
@@ -285,7 +287,7 @@ Error: ${JSON.stringify(err)}
   }
 
   try {
-    const cwd = context.root;
+    const cwd = packageRoot;
     const command = npmPublishCommandSegments.join(" ");
 
     console.info(
@@ -346,7 +348,7 @@ Execution response: ${result.toString()}`
 
       if (context.isVerbose) {
         console.error(
-          `pnpm publish stdout:\n${JSON.stringify(stdoutData, null, 2)}`
+          `npm publish stdout:\n${JSON.stringify(stdoutData, null, 2)}`
         );
       }
 
