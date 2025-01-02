@@ -1,6 +1,4 @@
 import { joinPathFragments, type ExecutorContext } from "@nx/devkit";
-import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
-import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { createCliOptions } from "@storm-software/workspace-tools";
 import { fork } from "node:child_process";
 import type { CloudflarePublishExecutorSchema } from "./schema";
@@ -49,15 +47,10 @@ export default async function runExecutor(
 
     let proc;
     try {
-      const workspaceRoot = findWorkspaceRoot();
-      const config = await loadStormConfig(workspaceRoot);
-
       fork(require.resolve("wrangler/bin/wrangler"), ["deploy", ...args], {
         env: {
+          CLOUDFLARE_ACCOUNT_ID: process.env.STORM_BOT_CLOUDFLARE_ACCOUNT,
           CLOUDFLARE_API_TOKEN: process.env.STORM_BOT_CLOUDFLARE_TOKEN,
-          CLOUDFLARE_ACCOUNT_ID: config.cloudflareAccountId
-            ? config.cloudflareAccountId
-            : undefined,
           WRANGLER_LOG: "debug",
           ...process.env,
           FORCE_COLOR: "true"

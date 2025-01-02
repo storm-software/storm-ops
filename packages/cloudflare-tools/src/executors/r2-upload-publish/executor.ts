@@ -76,7 +76,8 @@ export default async function runExecutor(
       args.push("--dry-run");
     }
 
-    if (!options?.registry && !config.cloudflareAccountId) {
+    const cloudflareAccountId = process.env.STORM_BOT_CLOUDFLARE_ACCOUNT;
+    if (!options?.registry && !cloudflareAccountId) {
       throw new Error(
         "The Storm Registry URL is not set in the Storm config. Please set either the `extensions.cyclone.registry` or `config.extensions.cyclone.accountId` property in the Storm config."
       );
@@ -90,7 +91,7 @@ export default async function runExecutor(
 
     const endpoint = options?.registry
       ? options.registry
-      : `https://${config.cloudflareAccountId}.r2.cloudflarestorage.com`;
+      : `https://${cloudflareAccountId}.r2.cloudflarestorage.com`;
 
     const projectGraph = readCachedProjectGraph();
     if (!projectGraph) {

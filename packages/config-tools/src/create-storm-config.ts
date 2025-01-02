@@ -2,17 +2,12 @@
 
 import type { StormConfig } from "@storm-software/config";
 import { StormConfigSchema } from "@storm-software/config/schema";
-import merge, { ArrayMergeOptions } from "deepmerge";
+import defu from "defu";
 import type { ZodTypeAny } from "zod";
 import { getConfigFile } from "./config-file/get-config-file";
 import { getConfigEnv, getExtensionEnv } from "./env/get-env";
 import { setConfigEnv } from "./env/set-env";
-import {
-  formatLogMessage,
-  writeInfo,
-  writeTrace,
-  writeWarning
-} from "./logger/console";
+import { formatLogMessage, writeTrace, writeWarning } from "./logger/console";
 import { findWorkspaceRoot } from "./utilities/find-workspace-root";
 import { getDefaultConfig } from "./utilities/get-default-config";
 
@@ -54,20 +49,13 @@ export const createStormConfig = <
     const config = getConfigEnv() as StormConfig & {
       [extensionName in TExtensionName]: TExtensionConfig;
     };
-    const defaultConfig = getDefaultConfig(config, workspaceRoot);
+    const defaultConfig = getDefaultConfig(workspaceRoot);
 
-    result = StormConfigSchema.parse({
-      ...defaultConfig,
-      ...config,
-      colors: {
-        ...defaultConfig?.colors,
-        ...config.colors
-      }
-    }) as StormConfig<TExtensionName, TExtensionConfig>;
-
-    result.workspaceRoot ??= defaultConfig.workspaceRoot
-      ? defaultConfig.workspaceRoot
-      : findWorkspaceRoot(workspaceRoot);
+    result = StormConfigSchema.parse(
+      defu(config, defaultConfig)
+    ) as StormConfig<TExtensionName, TExtensionConfig>;
+    result.workspaceRoot ??=
+      defaultConfig.workspaceRoot || findWorkspaceRoot(workspaceRoot);
   } else {
     result = _static_cache.data as StormConfig<
       TExtensionName,
@@ -135,7 +123,7 @@ export const loadStormConfig = async (
     _static_cache?.timestamp &&
     _static_cache.timestamp >= Date.now() + 30000
   ) {
-    writeInfo(
+    writeTrace(
       `Configuration cache hit - ${_static_cache.timestamp}`,
       _static_cache.data
     );
@@ -148,9 +136,7 @@ export const loadStormConfig = async (
     _workspaceRoot = findWorkspaceRoot();
   }
 
-  const configFile = (await getConfigFile(
-    _workspaceRoot
-  )) as Partial<StormConfig>;
+  const configFile = await getConfigFile(_workspaceRoot);
   if (!configFile) {
     writeWarning(
       "No Storm config file found in the current workspace. Please ensure this is the expected behavior - you can add a `storm.json` file to the root of your workspace if it is not.\n",
@@ -158,25 +144,11 @@ export const loadStormConfig = async (
     );
   }
 
-  config = getDefaultConfig(
-    merge(getConfigEnv() as Partial<StormConfig>, configFile, {
-      arrayMerge: (
-        target: any[],
-        source: any[],
-        options?: ArrayMergeOptions
-      ): any[] => {
-        const result = [...target];
-        for (const item of source) {
-          if (!result.includes(item)) {
-            result.push(item);
-          }
-        }
-
-        return result;
-      }
-    }),
-    _workspaceRoot
-  );
+  config = defu(
+    getConfigEnv(),
+    configFile,
+    getDefaultConfig(_workspaceRoot)
+  ) as StormConfig;
   setConfigEnv(config);
 
   writeTrace(

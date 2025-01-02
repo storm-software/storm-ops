@@ -225,6 +225,49 @@ export const WorkspaceBotConfigSchema = z
     "The workspace's bot user's config used to automated various operations tasks"
   );
 
+export const WorkspaceDirectoryConfigSchema = z
+  .object({
+    cache: z
+      .string()
+      .trim()
+      .optional()
+      .describe(
+        "The directory used to store the environment's cached file data"
+      ),
+    data: z
+      .string()
+      .trim()
+      .optional()
+      .describe("The directory used to store the environment's data files"),
+    config: z
+      .string()
+      .trim()
+      .optional()
+      .describe(
+        "The directory used to store the environment's configuration files"
+      ),
+    temp: z
+      .string()
+      .trim()
+      .optional()
+      .describe("The directory used to store the environment's temp files"),
+    log: z
+      .string()
+      .trim()
+      .optional()
+      .describe("The directory used to store the environment's temp files"),
+    build: z
+      .string()
+      .trim()
+      .default("dist")
+      .describe(
+        "The directory used to store the workspace's distributable files after a build (relative to the workspace root)"
+      )
+  })
+  .describe(
+    "Various directories used by the workspace to store data, cache, and configuration files"
+  );
+
 /**
  * Storm Workspace config values used during various dev-ops processes. It represents the config of the entire monorepo.
  */
@@ -236,6 +279,8 @@ export const StormConfigSchema = z
       .default(
         "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm.schema.json"
       )
+      .optional()
+      .nullish()
       .describe(
         "The URL to the JSON schema file that describes the Storm configuration file"
       ),
@@ -245,12 +290,6 @@ export const StormConfigSchema = z
       .optional()
       .describe(
         "The path to a base JSON file to use as a configuration preset file"
-      ),
-    isRoot: z
-      .boolean()
-      .optional()
-      .describe(
-        "A flag indicating if the current configuration is the set in the root of the workspace"
       ),
     name: z
       .string()
@@ -324,11 +363,6 @@ export const StormConfigSchema = z
       .trim()
       .default("")
       .describe("The root directory of the workspace"),
-    packageDirectory: z
-      .string()
-      .trim()
-      .optional()
-      .describe("The root directory of the package"),
     externalPackagePatterns: z
       .array(z.string())
       .default([])
@@ -339,53 +373,7 @@ export const StormConfigSchema = z
       .boolean()
       .default(false)
       .describe("Should all known types of workspace caching be skipped?"),
-    cacheDirectory: z
-      .string()
-      .trim()
-      .optional()
-      .describe(
-        "The directory used to store the environment's cached file data"
-      ),
-    dataDirectory: z
-      .string()
-      .trim()
-      .optional()
-      .describe("The directory used to store the environment's data files"),
-    configDirectory: z
-      .string()
-      .trim()
-      .optional()
-      .describe(
-        "The directory used to store the environment's configuration files"
-      ),
-    tempDirectory: z
-      .string()
-      .trim()
-      .optional()
-      .describe("The directory used to store the environment's temp files"),
-    logDirectory: z
-      .string()
-      .trim()
-      .optional()
-      .describe("The directory used to store the environment's temp files"),
-    buildDirectory: z
-      .string()
-      .trim()
-      .default("dist")
-      .describe("The build directory for the workspace"),
-    outputDirectory: z
-      .string()
-      .trim()
-      .default("node_modules/.storm")
-      .describe("The runtime directory of Storm"),
-    runtimeVersion: z
-      .string()
-      .trim()
-      .regex(
-        /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/
-      )
-      .default("1.0.0")
-      .describe("The global version of the Storm runtime"),
+    directories: WorkspaceDirectoryConfigSchema,
     packageManager: z
       .enum(["npm", "yarn", "pnpm", "bun"])
       .default("npm")
@@ -417,15 +405,6 @@ export const StormConfigSchema = z
       .describe(
         "The log level used to filter out lower priority log messages. If not provided, this is defaulted using the `environment` config value (if `environment` is set to `production` then `level` is `error`, else `level` is `debug`)."
       ),
-    cloudflareAccountId: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .length(32)
-      .regex(/^([0-9a-fA-F]{32})$/i)
-      .nullable()
-      .default(null)
-      .describe("The default Cloudflare account ID of the workspace"),
     registry: RegistryConfigSchema,
     configFile: z
       .string()

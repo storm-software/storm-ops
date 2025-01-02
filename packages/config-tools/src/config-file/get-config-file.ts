@@ -1,7 +1,8 @@
 import type { StormConfigInput } from "@storm-software/config";
 import { loadConfig, ResolvedConfig, type LoadConfigOptions } from "c12";
-import merge from "deepmerge";
+import defu from "defu";
 import { writeSystem } from "../logger/console";
+import { joinPaths } from "../utilities";
 import { findWorkspaceRoot } from "../utilities/find-workspace-root";
 
 // let _cosmiconfig: any = undefined;
@@ -19,7 +20,7 @@ export const getConfigFileByName = async (
   filePath?: string,
   options: LoadConfigOptions<Partial<StormConfigInput>> = {}
 ): Promise<ResolvedConfig<Partial<StormConfigInput>>> => {
-  const workspacePath = filePath ? filePath : findWorkspaceRoot(filePath);
+  const workspacePath = filePath || findWorkspaceRoot(filePath);
 
   let config = loadConfig<Partial<StormConfigInput>>({
     cwd: workspacePath,
@@ -31,7 +32,10 @@ export const getConfigFileByName = async (
       cache:
         process.env.STORM_SKIP_CACHE === "true"
           ? false
-          : process.env.STORM_CACHE_DIRECTORY || "node_modules/.cache/storm"
+          : joinPaths(
+              process.env.STORM_CACHE_DIR || "node_modules/.cache",
+              "storm"
+            )
     },
     ...options
   });
@@ -46,7 +50,10 @@ export const getConfigFileByName = async (
         cache:
           process.env.STORM_SKIP_CACHE === "true"
             ? false
-            : process.env.STORM_CACHE_DIRECTORY || "node_modules/.cache/storm"
+            : joinPaths(
+                process.env.STORM_CACHE_DIR || "node_modules/.cache",
+                "storm"
+              )
       },
       configFile: fileName,
       ...options
@@ -107,7 +114,7 @@ export const getConfigFile = async (
           }
         );
 
-        config = merge(result.config ?? {}, config ?? {});
+        config = defu(result.config ?? {}, config ?? {});
       }
     }
   }
@@ -117,7 +124,6 @@ export const getConfigFile = async (
   }
 
   config.configFile = configFile;
-  config.runtimeVersion = "0.0.1";
 
   return config;
 };

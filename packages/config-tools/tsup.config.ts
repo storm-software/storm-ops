@@ -9,6 +9,7 @@ export default defineConfig({
   clean: true,
   dts: true,
   sourcemap: false,
+  bundle: true,
   tsconfig: "./tsconfig.json"
   // dts: {
   //   resolve: true,

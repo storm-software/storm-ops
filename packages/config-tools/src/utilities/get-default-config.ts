@@ -2,7 +2,8 @@
 
 import {
   ColorConfig,
-  StormConfigSchema,
+  STORM_DEFAULT_HOMEPAGE,
+  STORM_DEFAULT_LICENSE,
   type StormConfig
 } from "@storm-software/config";
 import { existsSync, readFileSync } from "node:fs";
@@ -42,36 +43,34 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
 };
 
 /**
- * Storm Workspace config values used during various dev-ops processes
- */
-export const DEFAULT_STORM_CONFIG: any = {
-  namespace: "storm-software",
-  license: "Apache-2.0",
-  homepage: "https://stormsoftware.com",
-  configFile: null,
-  runtimeVersion: "1.0.0"
-};
-
-/**
  * Get the default Storm config values used during various dev-ops processes
  *
  * @returns The default Storm config values
  */
 export const getDefaultConfig = (
-  config: Partial<StormConfig> = {},
   root?: string
-): StormConfig => {
-  let name = "storm-workspace";
-  let namespace = "storm-software";
-  let repository = "https://github.com/storm-software/storm-ops";
+): Pick<
+  StormConfig,
+  | "workspaceRoot"
+  | "name"
+  | "namespace"
+  | "repository"
+  | "license"
+  | "homepage"
+  | "docs"
+  | "licensing"
+> => {
+  let license = STORM_DEFAULT_LICENSE;
+  let homepage = STORM_DEFAULT_HOMEPAGE;
 
-  let license = DEFAULT_STORM_CONFIG.license;
-  let homepage = DEFAULT_STORM_CONFIG.homepage;
+  let name!: string;
+  let namespace!: string;
+  let repository!: string;
 
   const workspaceRoot = findWorkspaceRoot(root);
   if (existsSync(join(workspaceRoot, "package.json"))) {
     const file = readFileSync(join(workspaceRoot, "package.json"), {
-      encoding: "utf-8"
+      encoding: "utf8"
     });
     if (file) {
       const packageJson = JSON.parse(file);
@@ -94,25 +93,14 @@ export const getDefaultConfig = (
     }
   }
 
-  return StormConfigSchema.parse({
-    ...(DEFAULT_STORM_CONFIG as Required<StormConfig>),
-    ...Object.keys(config).reduce((ret, key) => {
-      if (typeof config[key] === "string" && !config[key]) {
-        ret[key] = undefined;
-      } else {
-        ret[key] = config[key];
-      }
-
-      return ret;
-    }, {}),
-    colors: config.colors,
+  return {
     workspaceRoot,
     name,
     namespace,
     repository,
-    license: license ?? DEFAULT_STORM_CONFIG.license,
-    homepage: homepage ?? DEFAULT_STORM_CONFIG.homepage,
-    docs: `${homepage ?? DEFAULT_STORM_CONFIG.homepage}/docs`,
-    licensing: `${homepage ?? DEFAULT_STORM_CONFIG.homepage}/license`
-  }) as StormConfig;
+    license,
+    homepage,
+    docs: `${homepage || STORM_DEFAULT_HOMEPAGE}/docs`,
+    licensing: `${homepage || STORM_DEFAULT_HOMEPAGE}/license`
+  };
 };

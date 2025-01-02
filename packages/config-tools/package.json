@@ -226,7 +226,7 @@
   "dependencies": {
     "c12": "catalog:",
     "chalk": "catalog:",
-    "deepmerge": "catalog:",
+    "defu": "6.1.4",
     "zod": "catalog:"
   },
   "devDependencies": {

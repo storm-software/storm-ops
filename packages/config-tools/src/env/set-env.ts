@@ -114,45 +114,40 @@ export const setConfigEnv = (config: StormConfig) => {
     process.env.NX_WORKSPACE_ROOT = correctPaths(config.workspaceRoot);
     process.env.NX_WORKSPACE_ROOT_PATH = correctPaths(config.workspaceRoot);
   }
-  if (config.packageDirectory) {
-    process.env[`${prefix}PACKAGE_DIRECTORY`] = correctPaths(
-      config.packageDirectory
-    );
+
+  if (config.directories) {
+    if (!config.skipCache && config.directories.cache) {
+      process.env[`${prefix}CACHE_DIR`] = correctPaths(
+        config.directories.cache
+      );
+    }
+    if (config.directories.data) {
+      process.env[`${prefix}DATA_DIR`] = correctPaths(config.directories.data);
+    }
+    if (config.directories.config) {
+      process.env[`${prefix}CONFIG_DIR`] = correctPaths(
+        config.directories.config
+      );
+    }
+    if (config.directories.temp) {
+      process.env[`${prefix}TEMP_DIR`] = correctPaths(config.directories.temp);
+    }
+    if (config.directories.log) {
+      process.env[`${prefix}LOG_DIR`] = correctPaths(config.directories.log);
+    }
+    if (config.directories.build) {
+      process.env[`${prefix}BUILD_DIR`] = correctPaths(
+        config.directories.build
+      );
+    }
   }
-  if (config.buildDirectory) {
-    process.env[`${prefix}BUILD_DIRECTORY`] = correctPaths(
-      config.buildDirectory
-    );
-  }
+
   if (config.skipCache !== undefined) {
     process.env[`${prefix}SKIP_CACHE`] = String(config.skipCache);
     if (config.skipCache) {
       process.env.NX_SKIP_NX_CACHE ??= String(config.skipCache);
       process.env.NX_CACHE_PROJECT_GRAPH ??= String(config.skipCache);
     }
-  }
-  if (!config.skipCache && config.cacheDirectory) {
-    process.env[`${prefix}CACHE_DIRECTORY`] = correctPaths(
-      config.cacheDirectory
-    );
-    // if (config.cacheDirectory.includes("/storm") || config.cacheDirectory.includes("\\storm")) {
-    //   const nxCacheDirectory = join(
-    //     config.cacheDirectory.includes("/storm")
-    //       ? config.cacheDirectory.split("/storm")[0]
-    //       : config.cacheDirectory.split("\\storm")[0],
-    //     "nx"
-    //   );
-    //   process.env.NX_CACHE_DIRECTORY ??= nxCacheDirectory;
-    //   process.env.NX_PROJECT_GRAPH_CACHE_DIRECTORY ??= nxCacheDirectory;
-    // }
-  }
-  if (config.runtimeVersion) {
-    process.env[`${prefix}RUNTIME_VERSION`] = config.runtimeVersion;
-  }
-  if (config.outputDirectory) {
-    process.env[`${prefix}OUTPUT_DIRECTORY`] = correctPaths(
-      config.outputDirectory
-    );
   }
   if (config.env) {
     process.env[`${prefix}ENV`] = config.env;
@@ -193,16 +188,6 @@ export const setConfigEnv = (config: StormConfig) => {
   if (config.externalPackagePatterns) {
     process.env[`${prefix}EXTERNAL_PACKAGE_PATTERNS`] = JSON.stringify(
       config.externalPackagePatterns
-    );
-  }
-  if (config.cloudflareAccountId) {
-    process.env.STORM_BOT_CLOUDFLARE_ACCOUNT ??= String(
-      config.cloudflareAccountId
-    );
-    process.env.CLOUDFLARE_ACCOUNT_ID ??= String(config.cloudflareAccountId);
-
-    process.env[`${prefix}CLOUDFLARE_ACCOUNT_ID`] = String(
-      config.cloudflareAccountId
     );
   }
   if (config.registry) {

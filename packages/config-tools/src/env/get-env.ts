@@ -55,38 +55,59 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
   const prefix = "STORM_";
 
   let config: DeepPartial<StormConfig> = {
-    extends: process.env[`${prefix}EXTENDS`],
-    name: process.env[`${prefix}NAME`],
-    namespace: process.env[`${prefix}NAMESPACE`],
-    owner: process.env[`${prefix}OWNER`],
+    extends: process.env[`${prefix}EXTENDS`] || undefined,
+    name: process.env[`${prefix}NAME`] || undefined,
+    namespace: process.env[`${prefix}NAMESPACE`] || undefined,
+    owner: process.env[`${prefix}OWNER`] || undefined,
     bot: {
-      name: process.env[`${prefix}BOT_NAME`],
-      email: process.env[`${prefix}BOT_EMAIL`]
+      name: process.env[`${prefix}BOT_NAME`] || undefined,
+      email: process.env[`${prefix}BOT_EMAIL`] || undefined
     },
-    organization: process.env[`${prefix}ORGANIZATION`],
-    packageManager: process.env[
-      `${prefix}PACKAGE_MANAGER`
-    ] as StormConfig["packageManager"],
-    license: process.env[`${prefix}LICENSE`],
-    homepage: process.env[`${prefix}HOMEPAGE`],
-    docs: process.env[`${prefix}DOCS`],
-    licensing: process.env[`${prefix}LICENSING`],
-    timezone: process.env[`${prefix}TIMEZONE`] ?? process.env.TZ,
-    locale: process.env[`${prefix}LOCALE`] ?? process.env.LOCALE,
-    configFile: correctPaths(process.env[`${prefix}CONFIG_FILE`]),
-    workspaceRoot: correctPaths(process.env[`${prefix}WORKSPACE_ROOT`]),
-    packageDirectory: correctPaths(process.env[`${prefix}PACKAGE_DIRECTORY`]),
-    buildDirectory: correctPaths(process.env[`${prefix}BUILD_DIRECTORY`]),
+    organization: process.env[`${prefix}ORGANIZATION`] || undefined,
+    packageManager:
+      (process.env[
+        `${prefix}PACKAGE_MANAGER`
+      ] as StormConfig["packageManager"]) || undefined,
+    license: process.env[`${prefix}LICENSE`] || undefined,
+    homepage: process.env[`${prefix}HOMEPAGE`] || undefined,
+    docs: process.env[`${prefix}DOCS`] || undefined,
+    licensing: process.env[`${prefix}LICENSING`] || undefined,
+    timezone: process.env[`${prefix}TIMEZONE`] || process.env.TZ || undefined,
+    locale: process.env[`${prefix}LOCALE`] || process.env.LOCALE || undefined,
+    configFile: process.env[`${prefix}CONFIG_FILE`]
+      ? correctPaths(process.env[`${prefix}CONFIG_FILE`])
+      : undefined,
+    workspaceRoot: process.env[`${prefix}WORKSPACE_ROOT`]
+      ? correctPaths(process.env[`${prefix}WORKSPACE_ROOT`])
+      : undefined,
+    directories: {
+      cache: process.env[`${prefix}CACHE_DIR`]
+        ? correctPaths(process.env[`${prefix}CACHE_DIR`])
+        : undefined,
+      data: process.env[`${prefix}DATA_DIR`]
+        ? correctPaths(process.env[`${prefix}DATA_DIR`])
+        : undefined,
+      config: process.env[`${prefix}CONFIG_DIR`]
+        ? correctPaths(process.env[`${prefix}CONFIG_DIR`])
+        : undefined,
+      temp: process.env[`${prefix}TEMP_DIR`]
+        ? correctPaths(process.env[`${prefix}TEMP_DIR`])
+        : undefined,
+      log: process.env[`${prefix}LOG_DIR`]
+        ? correctPaths(process.env[`${prefix}LOG_DIR`])
+        : undefined,
+      build: process.env[`${prefix}BUILD_DIR`]
+        ? correctPaths(process.env[`${prefix}BUILD_DIR`])
+        : undefined
+    },
     skipCache:
       process.env[`${prefix}SKIP_CACHE`] !== undefined
         ? Boolean(process.env[`${prefix}SKIP_CACHE`])
         : undefined,
-    cacheDirectory: correctPaths(process.env[`${prefix}CACHE_DIRECTORY`]),
-    runtimeVersion: process.env[`${prefix}RUNTIME_VERSION`],
-    outputDirectory: correctPaths(process.env[`${prefix}OUTPUT_DIRECTORY`]),
-    env: (process.env[`${prefix}ENV`] ??
-      process.env.NODE_ENV ??
-      process.env.ENVIRONMENT) as StormConfig["env"],
+    env:
+      ((process.env[`${prefix}ENV`] ??
+        process.env.NODE_ENV ??
+        process.env.ENVIRONMENT) as StormConfig["env"]) || undefined,
     // ci:
     //   process.env[`${prefix}CI`] !== undefined
     //     ? Boolean(
@@ -96,23 +117,18 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
     //       )
     //     : undefined,
 
-    repository: process.env[`${prefix}REPOSITORY`],
-    branch: process.env[`${prefix}BRANCH`],
-    preid: process.env[`${prefix}PRE_ID`],
+    repository: process.env[`${prefix}REPOSITORY`] || undefined,
+    branch: process.env[`${prefix}BRANCH`] || undefined,
+    preid: process.env[`${prefix}PRE_ID`] || undefined,
     externalPackagePatterns: process.env[`${prefix}EXTERNAL_PACKAGE_PATTERNS`]
       ? JSON.parse(process.env[`${prefix}EXTERNAL_PACKAGE_PATTERNS`] as string)
       : [],
-    cloudflareAccountId: process.env[`${prefix}CLOUDFLARE_ACCOUNT_ID`]
-      ? process.env[`${prefix}CLOUDFLARE_ACCOUNT_ID`]
-      : process.env.CLOUDFLARE_ACCOUNT_ID
-        ? process.env.CLOUDFLARE_ACCOUNT_ID
-        : process.env.STORM_BOT_CLOUDFLARE_ACCOUNT,
     registry: {
-      github: process.env[`${prefix}REGISTRY_GITHUB`],
-      npm: process.env[`${prefix}REGISTRY_NPM`],
-      cargo: process.env[`${prefix}REGISTRY_CARGO`],
-      cyclone: process.env[`${prefix}REGISTRY_CYCLONE`],
-      container: process.env[`${prefix}REGISTRY_CONTAINER`]
+      github: process.env[`${prefix}REGISTRY_GITHUB`] || undefined,
+      npm: process.env[`${prefix}REGISTRY_NPM`] || undefined,
+      cargo: process.env[`${prefix}REGISTRY_CARGO`] || undefined,
+      cyclone: process.env[`${prefix}REGISTRY_CYCLONE`] || undefined,
+      container: process.env[`${prefix}REGISTRY_CONTAINER`] || undefined
     },
     logLevel:
       process.env[`${prefix}LOG_LEVEL`] !== null &&

@@ -1,4 +1,5 @@
 {
+  "$schema": "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm.schema.json",
   "organization": "storm-software",
   "owner": "@storm-software/admin",
   "bot": { "name": "Stormie-Bot", "email": "bot@stormsoftware.com" },
@@ -7,8 +8,9 @@
   "locale": "en-US",
   "logLevel": "info",
   "skipCache": false,
-  "buildDirectory": "dist",
-  "outputDirectory": "node_modules/.storm",
+  "directories": {
+    "build": "dist"
+  },
   "externalPackagePatterns": ["@storm-software/"],
   "registry": {
     "github": "https://npm.pkg.github.com",
@@ -43,14 +45,6 @@
       "danger": "#D8314A",
       "positive": "#22c55e",
       "negative": "#dc2626"
-    }
-  },
-  "extensions": {
-    "telemetry": {
-      "fileName": "storm",
-      "fileExtension": "log",
-      "path": "tmp/storm/logs",
-      "stacktrace": true
     }
   }
 }

@@ -271,9 +271,7 @@ async function normalizeOptions(
 
   return {
     addPlugin: process.env.NX_ADD_PLUGINS !== "false",
-    accountId: config?.cloudflareAccountId
-      ? config.cloudflareAccountId
-      : undefined,
+    accountId: process.env.STORM_BOT_CLOUDFLARE_ACCOUNT,
     ...options,
     name: names(appProjectName).fileName,
     frontendProject: options.frontendProject
