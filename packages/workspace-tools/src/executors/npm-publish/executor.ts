@@ -75,19 +75,19 @@ export default async function npmPublishExecutorFn(
         .trim();
 
   if (registry) {
-    npmPublishCommandSegments.push(`--registry ${registry}`);
-    npmViewCommandSegments.push(`--registry ${registry}`);
+    npmPublishCommandSegments.push(`--registry="${registry}" `);
+    npmViewCommandSegments.push(`--registry="${registry}" `);
   }
 
   if (options.otp) {
-    npmPublishCommandSegments.push(`--otp ${options.otp}`);
+    npmPublishCommandSegments.push(`--otp="${options.otp}" `);
   }
 
   if (isDryRun) {
     npmPublishCommandSegments.push("--dry-run");
   }
 
-  npmPublishCommandSegments.push("--provenance --access public");
+  npmPublishCommandSegments.push("--provenance --access=public ");
 
   // Resolve values using the `npm config` command so that things like environment variables and `publishConfig`s are accounted for
   const tag =
@@ -105,7 +105,7 @@ export default async function npmPublishExecutorFn(
       .trim();
 
   if (tag) {
-    npmPublishCommandSegments.push(`--tag ${tag}`);
+    npmPublishCommandSegments.push(`--tag="${tag}" `);
   }
 
   /**
@@ -154,7 +154,7 @@ Note: If this is the first time this package has been published to NPM, this can
 
       try {
         if (!isDryRun) {
-          const command = `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry=${registry}`;
+          const command = `npm dist-tag add ${packageName}@${currentVersion} ${tag} --registry="${registry}" `;
 
           console.info(
             `Adding the dist-tag ${tag} - preparing to run the following:
@@ -289,7 +289,7 @@ Error: ${JSON.stringify(err)}
     const command = npmPublishCommandSegments.join(" ");
 
     console.info(
-      `Running publish command ${command} in current working directory: ${cwd}`
+      `Running publish command "${command}" in current working directory: "${cwd}" `
     );
 
     const result = execSync(command, {

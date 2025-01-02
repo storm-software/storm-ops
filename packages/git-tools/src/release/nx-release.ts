@@ -46,11 +46,11 @@ export const runRelease = async (
     process.env.GIT_AUTHOR_NAME = process.env.GITHUB_ACTOR;
     process.env.GIT_AUTHOR_EMAIL = `${process.env.GITHUB_ACTOR}@users.noreply.github.com`;
 
-    process.env.GIT_COMMITTER_NAME ??= process.env.STORM_BOT || "Stormie-Bot";
-    process.env.GIT_COMMITTER_EMAIL = `bot@stormsoftware.com`;
+    process.env.GIT_COMMITTER_NAME = config.bot.name;
+    process.env.GIT_COMMITTER_EMAIL = `${config.bot.name}@users.noreply.github.com`;
 
-    process.env.NPM_AUTH_TOKEN = process.env.NPM_TOKEN;
     process.env.NODE_AUTH_TOKEN = process.env.NPM_TOKEN;
+    process.env.NPM_AUTH_TOKEN = process.env.NPM_TOKEN;
     process.env.NPM_CONFIG_PROVENANCE = "true";
 
     writeInfo("Creating workspace Project Graph data...", config);
