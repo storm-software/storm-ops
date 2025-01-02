@@ -1,8 +1,15 @@
+## 1.215.0 (2025-01-02)
+
+### Features
+
+- **k8s-tools:** Removed old dynamic modules import ([81805110](https://github.com/storm-software/storm-ops/commit/81805110))
+
 ## 1.214.0 (2025-01-02)
 
 ### Features
 
-- **workspace-tools:** Removed old dynamically imported modules ([56f84500](https://github.com/storm-software/storm-ops/commit/56f84500))
+- **workspace-tools:** Removed old dynamically imported modules
+  ([56f84500](https://github.com/storm-software/storm-ops/commit/56f84500))
 
 ## 1.213.3 (2025-01-02)
 

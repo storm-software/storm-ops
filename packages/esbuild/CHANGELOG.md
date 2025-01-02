@@ -1,8 +1,21 @@
+## 0.8.0 (2025-01-02)
+
+### Features
+
+- **k8s-tools:** Removed old dynamic modules import ([81805110](https://github.com/storm-software/storm-ops/commit/81805110))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.124.0
+- Updated build-tools to 0.116.0
+- Updated config to 1.85.0
+
 ## 0.7.0 (2025-01-02)
 
 ### Features
 
-- **workspace-tools:** Removed old dynamically imported modules ([56f84500](https://github.com/storm-software/storm-ops/commit/56f84500))
+- **workspace-tools:** Removed old dynamically imported modules
+  ([56f84500](https://github.com/storm-software/storm-ops/commit/56f84500))
 
 ### 🧱 Updated Dependencies
 
