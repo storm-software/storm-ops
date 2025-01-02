@@ -107,6 +107,7 @@
     "c12": "catalog:",
     "conventional-changelog-conventionalcommits": "8.0.0",
     "copyfiles": "catalog:",
+    "deepmerge": "catalog:",
     "esbuild": "catalog:",
     "esbuild-register": "3.5.0",
     "eslint": "catalog:",
