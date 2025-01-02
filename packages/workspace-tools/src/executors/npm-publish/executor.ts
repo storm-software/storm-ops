@@ -1,8 +1,5 @@
-import {
-  joinPathFragments,
-  readJsonFile,
-  type ExecutorContext
-} from "@nx/devkit";
+import { readJsonFile, type ExecutorContext } from "@nx/devkit";
+import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { execSync } from "node:child_process";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
@@ -30,12 +27,12 @@ export default async function npmPublishExecutorFn(
     );
   }
 
-  const packageRoot = joinPathFragments(
+  const packageRoot = joinPaths(
     context.root,
-    options.packageRoot || joinPathFragments("dist", projectConfig.root)
+    options.packageRoot || joinPaths("dist", projectConfig.root)
   );
 
-  const packageJsonPath = joinPathFragments(packageRoot, "package.json");
+  const packageJsonPath = joinPaths(packageRoot, "package.json");
   const projectPackageJson = readJsonFile(packageJsonPath);
   const packageName = projectPackageJson.name;
 
@@ -191,9 +188,16 @@ Execution response: ${result.toString()}
       } catch (err) {
         try {
           console.warn("\n ********************** \n");
+
+          // Convert buffer to string only if it is not already a string
+          let error = err;
+          if (Buffer.isBuffer(error)) {
+            error = error.toString();
+          }
+
           console.warn(
             `An error occurred while adding dist-tags:
-${JSON.stringify(err)}
+${error}
 
 Note: If this is the first time this package has been published to NPM, this can be ignored.
 
@@ -242,12 +246,18 @@ Note: If this is the first time this package has been published to NPM, this can
         }
       }
     } catch (err) {
+      // Convert buffer to string only if it is not already a string
+      let error = err;
+      if (Buffer.isBuffer(error)) {
+        error = error.toString();
+      }
+
       console.error("\n ********************** \n");
       console.info("");
       console.error(
         "An error occured trying to run the npm dist-tag add command."
       );
-      console.error(err);
+      console.error(error);
       console.info("");
 
       const stdoutData = JSON.parse(err.stdout?.toString() || "{}");
@@ -294,15 +304,23 @@ Error: ${JSON.stringify(err)}
 
     if (isDryRun) {
       console.info(
-        `Would publish to ${registry} with tag "${tag}", but [dry-run] was set
+        `Would publish to ${registry} with tag "${tag}", but [dry-run] was set ${
+          result
+            ? `
 
-Execution response: ${result.toString()}
+Execution response: ${result.toString()}`
+            : ""
+        }
 `
       );
     } else {
-      console.info(`Published to ${registry} with tag "${tag}"
+      console.info(`Published to ${registry} with tag "${tag}" ${
+        result
+          ? `
 
-Execution response: ${result.toString()}
+Execution response: ${result.toString()}`
+          : ""
+      }
 `);
     }
 
@@ -335,10 +353,16 @@ Execution response: ${result.toString()}
       console.error("\n ********************** \n");
       return { success: false };
     } catch (err) {
+      // Convert buffer to string only if it is not already a string
+      let error = err;
+      if (Buffer.isBuffer(error)) {
+        error = error.toString();
+      }
+
       console.error(
         `Something unexpected went wrong when processing the npm publish output
 
-Error: ${JSON.stringify(err)}
+Error: ${JSON.stringify(error)}
 `
       );
 
