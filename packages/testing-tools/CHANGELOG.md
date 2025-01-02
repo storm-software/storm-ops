@@ -1,8 +1,15 @@
+## 1.90.0 (2025-01-02)
+
+### Features
+
+- **workspace-tools:** Removed old dynamically imported modules ([56f84500](https://github.com/storm-software/storm-ops/commit/56f84500))
+
 ## 1.89.3 (2025-01-02)
 
 ### Bug Fixes
 
-- **storm-ops:** Resolved issue with missing `zod` dependency ([a886ddde](https://github.com/storm-software/storm-ops/commit/a886ddde))
+- **storm-ops:** Resolved issue with missing `zod` dependency
+  ([a886ddde](https://github.com/storm-software/storm-ops/commit/a886ddde))
 
 ## 1.89.2 (2025-01-02)
 
