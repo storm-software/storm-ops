@@ -6,6 +6,7 @@ import {
   updateProjectConfiguration
 } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
+import { writeDebug } from "@storm-software/config-tools";
 import { withRunGenerator } from "@storm-software/workspace-tools/base/base-generator";
 import yaml from "js-yaml";
 import type { HelmDependencyGeneratorSchema } from "./schema";
@@ -15,9 +16,7 @@ export async function helmDependencyGeneratorFn(
   options: HelmDependencyGeneratorSchema,
   config?: StormConfig
 ) {
-  const { writeTrace } = await import("@storm-software/config-tools");
-
-  writeTrace("📝  Preparing to add Helm Dependency", config);
+  writeDebug("📝  Preparing to add Helm Dependency", config);
 
   const project = readProjectConfiguration(tree, options.project);
 

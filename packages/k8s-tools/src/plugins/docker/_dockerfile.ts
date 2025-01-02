@@ -7,6 +7,8 @@ import {
   type CreateNodes,
   type ProjectConfiguration
 } from "@nx/devkit";
+import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
+import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { getPackageInfo } from "@storm-software/workspace-tools/utils/package-helpers";
 import {
   hasProjectTag,
@@ -37,10 +39,6 @@ export const createNodes: CreateNodes<DockerFilePluginOptions> = [
     if (!dockerFilePath) {
       return {};
     }
-
-    const { loadStormConfig, findWorkspaceRoot } = await import(
-      "@storm-software/config-tools"
-    );
 
     const root = dockerFilePath.substring(dockerFilePath.lastIndexOf("/") + 1);
     const projectJsonPath = joinPathFragments(root, "project.json");

@@ -6,6 +6,7 @@ import {
   updateProjectConfiguration
 } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
+import { writeDebug } from "@storm-software/config-tools/logger/console";
 import { withRunGenerator } from "@storm-software/workspace-tools/base/base-generator";
 import { join } from "path";
 import type { HelmChartGeneratorSchema } from "./schema";
@@ -15,9 +16,7 @@ export async function helmChartGeneratorFn(
   options: HelmChartGeneratorSchema,
   config?: StormConfig
 ) {
-  const { writeTrace } = await import("@storm-software/config-tools");
-
-  writeTrace("📝  Preparing to write Helm Chart", config);
+  writeDebug("📝  Preparing to write Helm Chart", config);
 
   const project = readProjectConfiguration(tree, options.project);
   if (project.targets?.["helm-package"]) {

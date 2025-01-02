@@ -1,5 +1,6 @@
 import type { ExecutorContext, PromiseExecutor } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
+import { writeWarning } from "@storm-software/config-tools/logger/console";
 import { withRunExecutor } from "@storm-software/workspace-tools/base/base-executor";
 import { createHelmClient } from "../../utils/client";
 import { HelmPackageExecutorSchema } from "./schema";
@@ -9,8 +10,6 @@ export async function serveExecutor(
   context: ExecutorContext,
   config?: StormConfig
 ) {
-  const { writeWarning } = await import("@storm-software/config-tools");
-
   if (
     !context?.projectName ||
     !context?.projectsConfigurations?.projects?.[context.projectName]?.root

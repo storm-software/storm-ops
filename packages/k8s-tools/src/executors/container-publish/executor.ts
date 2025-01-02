@@ -1,10 +1,15 @@
 import {
-  type ExecutorContext,
   parseTargetString,
-  runExecutor
+  runExecutor,
+  type ExecutorContext
 } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
-import type { BaseTokenizerOptions } from "@storm-software/config-tools";
+import {
+  applyWorkspaceTokens,
+  findWorkspaceRoot,
+  loadStormConfig,
+  type BaseTokenizerOptions
+} from "@storm-software/config-tools";
 import { applyWorkspaceExecutorTokens } from "@storm-software/workspace-tools/utils/apply-workspace-tokens";
 import { getPackageInfo } from "@storm-software/workspace-tools/utils/package-helpers";
 import { CargoToml } from "@storm-software/workspace-tools/utils/toml";
@@ -15,9 +20,6 @@ export default async function* publishExecutor(
   options: ContainerPublishExecutorSchema,
   context: ExecutorContext
 ) {
-  const { loadStormConfig, applyWorkspaceTokens, findWorkspaceRoot } =
-    await import("@storm-software/config-tools");
-
   /**
    * We need to check both the env var and the option because the executor may have been triggered
    * indirectly via dependsOn, in which case the env var will be set, but the option will not.
