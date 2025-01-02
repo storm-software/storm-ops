@@ -1,8 +1,21 @@
+## 0.10.0 (2025-01-02)
+
+### Features
+
+- **storm-ops:** Updated catalog and JSON schema for `StormConfig` object ([bf99f680](https://github.com/storm-software/storm-ops/commit/bf99f680))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.126.0
+- Updated build-tools to 0.118.0
+- Updated config to 1.87.0
+
 ## 0.9.0 (2025-01-02)
 
 ### Features
 
-- **config:** Clean up Storm workspace configuration properties ([22508dd8](https://github.com/storm-software/storm-ops/commit/22508dd8))
+- **config:** Clean up Storm workspace configuration properties
+  ([22508dd8](https://github.com/storm-software/storm-ops/commit/22508dd8))
 
 ### 🧱 Updated Dependencies
 
