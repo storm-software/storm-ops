@@ -25,6 +25,7 @@
             ".js": ".js"
           }
         },
+        "external": ["nx", "@nx/*", "typescript"],
         "assets": [
           {
             "input": "packages/create-storm-workspace",

@@ -46,72 +46,59 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 - [Storm Workspace Tools](#storm-workspace-tools)
   - [Installing](#installing)
   - [Executors](#executors)
-  - [Tsup Builder](#tsup-builder)
+  - [Typia Generate](#typia-generate)
     - [Example](#example)
     - [Options](#options)
-  - [Neutral TypeScript Builder](#neutral-typescript-builder)
+  - [ESBuild Builder](#esbuild-builder)
     - [Example](#example-1)
-  - [Node TypeScript Builder](#node-typescript-builder)
-    - [Example](#example-2)
     - [Options](#options-1)
-  - [Browser TypeScript Builder](#browser-typescript-builder)
-    - [Example](#example-3)
-  - [Typia Generate](#typia-generate)
-    - [Example](#example-4)
-    - [Options](#options-2)
-  - [Rolldown Builder](#rolldown-builder)
-    - [Example](#example-5)
-    - [Options](#options-3)
   - [Unbuild Builder](#unbuild-builder)
-    - [Example](#example-6)
-    - [Options](#options-4)
+    - [Example](#example-2)
+    - [Options](#options-2)
   - [Clean Publish](#clean-publish)
-    - [Example](#example-7)
-    - [Options](#options-5)
+    - [Example](#example-3)
+    - [Options](#options-3)
   - [Size-Limit Test](#size-limit-test)
-    - [Example](#example-8)
-    - [Options](#options-6)
+    - [Example](#example-4)
+    - [Options](#options-4)
   - [Npm Publish](#npm-publish)
-    - [Example](#example-9)
-    - [Options](#options-7)
+    - [Example](#example-5)
+    - [Options](#options-5)
   - [Cargo Publish](#cargo-publish)
-    - [Example](#example-10)
-    - [Options](#options-8)
+    - [Example](#example-6)
+    - [Options](#options-6)
   - [Cargo Build](#cargo-build)
-    - [Example](#example-11)
-    - [Options](#options-9)
+    - [Example](#example-7)
+    - [Options](#options-7)
   - [Cargo Check](#cargo-check)
-    - [Example](#example-12)
-    - [Options](#options-10)
+    - [Example](#example-8)
+    - [Options](#options-8)
   - [Cargo Format](#cargo-format)
-    - [Example](#example-13)
-    - [Options](#options-11)
+    - [Example](#example-9)
+    - [Options](#options-9)
   - [Cargo Clippy](#cargo-clippy)
-    - [Example](#example-14)
-    - [Options](#options-12)
+    - [Example](#example-10)
+    - [Options](#options-10)
   - [Cargo Doc](#cargo-doc)
-    - [Example](#example-15)
-    - [Options](#options-13)
-  - [Rollup Builder](#rollup-builder)
-    - [Example](#example-16)
-    - [Options](#options-14)
+    - [Example](#example-11)
+    - [Options](#options-11)
   - [Generators](#generators)
   - [Init Storm Workspace Plugin](#init-storm-workspace-plugin)
-    - [Options](#options-15)
+    - [Options](#options-12)
   - [Workspace Preset](#workspace-preset)
     - [Examples](#examples)
-    - [Options](#options-16)
+    - [Options](#options-13)
   - [Add Node Library](#add-node-library)
-    - [Options](#options-17)
+    - [Options](#options-14)
   - [Configuration Schema Creator](#configuration-schema-creator)
-    - [Options](#options-18)
+    - [Options](#options-15)
   - [Add Neutral Library](#add-neutral-library)
-    - [Options](#options-19)
+    - [Options](#options-16)
   - [Add browser Library](#add-browser-library)
-    - [Options](#options-20)
+    - [Options](#options-17)
   - [design-tokens](#design-tokens)
   - [Storm Release Version Generator](#storm-release-version-generator)
-    - [Options](#options-21)
+    - [Options](#options-18)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
   - [Storm Workspaces](#storm-workspaces)
@@ -172,120 +159,6 @@ the workspace's projects:
 <!-- markdownlint-disable -->
 
 
-## Tsup Builder
-
-Run a build on the project using ESBuild with a patched tsup configuration
-
-### Example 
-
-This executor can be used by executing the following in a command line utility: 
-
-```cmd 
-nx run my-project:tsup
-```
-
-**Please note:** _The tsup executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| entry      | `string`    | The path to the entry file, relative to project.     | "{sourceRoot}/index.ts"     | 
- | outputPath      | `string`    | The output path of the generated files.     | "dist/{projectRoot}"     | 
- | **tsConfig \***    | `string`    | The path to the \`tsconfig.json\` file.     | "{projectRoot}/tsconfig.json"     | 
- | additionalEntryPoints      | `string[]`   | List of additional entry points.     | `[]`     | 
- | external      | `string[]`   | Mark one or more module as external. Can use \* wildcards, such as \*.png.     |     | 
- | bundle      | `boolean`    | Whether to bundle the main entry point and additional entry points. Set to false to keep individual output files.     | `true`     | 
- | watch      | `boolean`    | Enable re-building when files change.     |     | 
- | assets      | `array`    | List of static assets.     | `[]`     | 
- | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
- | includeSrc      | `boolean`    | Should the source files be added to the distribution folder in an \`src\` directory.     |     | 
- | metafile      | `boolean`    | Should a meta file be created for the build package     | `true`     | 
- | emitOnAll      | `boolean`    | Should each file contained in the package be emitted individually.     |     | 
- | generatePackageJson      | `boolean`    | Should a package.json file be generated in the output folder or should the existing one be copied in.     | `true`     | 
- | splitting      | `boolean`    | Should the build process preform \*code-splitting\*?     | `true`     | 
- | treeshake      | `boolean`    | Should the build process \*tree-shake\* to remove unused code?     | `true`     | 
- | format      | `string[]`   | The output format for the generated JavaScript files. There are currently three possible values that can be configured: iife, cjs, and esm.     | `[]`     | 
- | debug      | `boolean`    | Should output be unminified with source mappings.     |     | 
- | **platform \***    | "browser" \| "neutral" \| "node" \| "worker"     | Platform target for outputs.     | "neutral"     | 
- | **banner \***    | `string`    | A short heading added to the top of each typescript file added in the output folder's \`src\` directory.     | "This code was developed by Storm Software (<https://stormsoftware.com>) and is licensed under the Apache License 2.0."     | 
- | minify      | `boolean`    | Should the build process minify the output files?     |     | 
- | verbose      | `boolean`    | Should write extra log outputs with details from the executor.     |     | 
- | skipNativeModulesPlugin      | `boolean`    | Should we skip adding the Native Node Modules ESBuild plugin.     |     | 
- | useJsxModule      | `boolean`    | Should the build process use the \`jsx\` module for JSX support?     |     | 
- | shims      | `boolean`    | Should the build process add shims for node.js modules that are not available in the browser?     |     | 
- | define      | `object`    | Define global constants that can be used in the source code. The value will be converted into a stringified JSON.     |     | 
- | env      | `object`    | Define environment variables that can be used in the source code. The value will be converted into a stringified JSON.     |     | 
- | apiReport      | `boolean`    | Should API Extractor generate an API Report file.     |     | 
- | docModel      | `boolean`    | Should API Extractor generate an Doc Model markdown file.     |     | 
- | tsdocMetadata      | `boolean`    | Should API Extractor generate an TSDoc Metadata file.     |     | 
- | options      | `object`    | Additional options to pass to tsup. See <https://paka.dev/npm/tsup@7.2.0/api#d35d54aca71eb26e>.     |     | 
- | plugins      | `object[]`   | List of ESBuild plugins to use during processing     | `[]`     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
-
-
-
-## Neutral TypeScript Builder
-
-Runs a neutral platform TypeScript build
-
-### Example 
-
-This executor can be used by executing the following in a command line utility: 
-
-```cmd 
-nx run my-project:tsup-neutral
-```
-
-**Please note:** _The tsup-neutral executor should be included in the desired projects's `project.json` file._ 
-
-
-
-## Node TypeScript Builder
-
-Runs a node platform TypeScript build
-
-### Example 
-
-This executor can be used by executing the following in a command line utility: 
-
-```cmd 
-nx run my-project:tsup-node
-```
-
-**Please note:** _The tsup-node executor should be included in the desired projects's `project.json` file._ 
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| transports      | `string[]`   |     | `[]`     | 
-
-
-
-
-## Browser TypeScript Builder
-
-Runs a browser platform TypeScript build
-
-### Example 
-
-This executor can be used by executing the following in a command line utility: 
-
-```cmd 
-nx run my-project:tsup-browser
-```
-
-**Please note:** _The tsup-browser executor should be included in the desired projects's `project.json` file._ 
-
-
-
 ## Typia Generate
 
 Run the Typia generator to create runtime type validators
@@ -316,19 +189,19 @@ The following executor options are available:
 
 
 
-## Rolldown Builder
+## ESBuild Builder
 
-An executor used by Storm Software to run the Rolldown build process
+Run the esbuild build process on a selected project
 
 ### Example 
 
 This executor can be used by executing the following in a command line utility: 
 
 ```cmd 
-nx run my-project:rolldown
+nx run my-project:esbuild
 ```
 
-**Please note:** _The rolldown executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
+**Please note:** _The esbuild executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
 
 ### Options
 
@@ -336,21 +209,19 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| entry      | `string`    | The path to the entry file, relative to project.     | "{sourceRoot}/index.ts"     | 
- | outputPath      | `string`    | The output path of the generated files.     | "dist/{projectRoot}"     | 
- | **tsConfig \***    | `string`    | The path to the \`tsconfig.json\` file.     | "{projectRoot}/tsconfig.json"     | 
- | additionalEntryPoints      | `string[]`   | List of additional entry points.     | `[]`     | 
+| **entry \***    | `string[]`   | The path to the entry file (or multiple paths/files), relative to \`projectRoot\` path.     | `[]`     | 
+ | **outputPath \***    | `string`    | The output path of the generated files.     | "dist/{projectRoot}"     | 
+ | **tsconfig \***    | `string`    | The path to the \`tsconfig.json\` file.     | "{projectRoot}/tsconfig.json"     | 
  | watch      | `boolean`    | Enable re-building when files change.     |     | 
  | assets      | `array`    | List of static assets.     | `[]`     | 
  | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
  | includeSrc      | `boolean`    | Should the source files be added to the distribution folder in an \`src\` directory.     |     | 
  | generatePackageJson      | `boolean`    | Should a package.json file be generated in the output folder or should the existing one be copied in.     | `true`     | 
  | debug      | `boolean`    | Should output be unminified with source mappings.     |     | 
- | **platform \***    | "browser" \| "neutral" \| "node" \| "worker"     | Platform target for outputs.     | "neutral"     | 
- | **banner \***    | `string`    | A short heading added to the top of each typescript file added in the output folder's \`src\` directory.     | "This code was developed by Storm Software (<https://stormsoftware.com>) and is licensed under the Apache License 2.0."     | 
+ | platform      | "browser" \| "neutral" \| "node"     | Platform target for outputs.     | "neutral"     | 
+ | banner      | `string`    | A short heading added to the top of each distribution file added in the output folder.     | "//      ⚡ Built by Storm Software"     | 
  | minify      | `boolean`    | Should the build process minify the output files?     |     | 
  | verbose      | `boolean`    | Should write extra log outputs with details from the executor.     |     | 
- | plugins      | `object[]`   | List of Rollup plugins to use during processing     | `[]`     | 
 
 
 **Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
@@ -359,7 +230,7 @@ The following executor options are available:
 
 ## Unbuild Builder
 
-An executor used by Storm Software to run the Unbuild build process
+Run the unbuild build process on a selected project
 
 ### Example 
 
@@ -377,21 +248,19 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| entry      | `string`    | The path to the entry file, relative to project.     | "{sourceRoot}/index.ts"     | 
+| entry      | `string[]`   | The path to the entry file (or multiple paths/files), relative to \`projectRoot\` path.     | `[]`     | 
  | outputPath      | `string`    | The output path of the generated files.     | "dist/{projectRoot}"     | 
- | **tsConfig \***    | `string`    | The path to the \`tsconfig.json\` file.     | "{projectRoot}/tsconfig.json"     | 
- | **platform \***    | "neutral" \| "browser" \| "node" \| "worker"     | Platform target for outputs.     | "neutral"     | 
- | additionalEntryPoints      | `string[]`   | List of additional entry points.     | `[]`     | 
- | tsLibs      | `string[]`   | The \`lib\` TypeScript Compiler Options parameter.     | `[]`     | 
+ | tsconfig      | `string`    | The path to the \`tsconfig.json\` file.     | "{projectRoot}/tsconfig.json"     | 
  | watch      | `boolean`    | Enable re-building when files change.     |     | 
  | assets      | `array`    | List of static assets.     | `[]`     | 
  | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
- | generatePackageJson      | `boolean`    | Should the package.json file be generated or copied directly into the output folder (if false the file will be copied directly).     | `true`     | 
  | includeSrc      | `boolean`    | Should the source files be added to the distribution folder in an \`src\` directory.     |     | 
+ | generatePackageJson      | `boolean`    | Should a package.json file be generated in the output folder or should the existing one be copied in.     | `true`     | 
  | debug      | `boolean`    | Should output be unminified with source mappings.     |     | 
+ | **platform \***    | "browser" \| "neutral" \| "node"     | Platform target for outputs.     | "neutral"     | 
+ | banner      | `string`    | A short heading added to the top of each distribution file added in the output folder.     | "//      ⚡ Built by Storm Software"     | 
  | minify      | `boolean`    | Should the build process minify the output files?     |     | 
  | verbose      | `boolean`    | Should write extra log outputs with details from the executor.     |     | 
- | plugins      | `object[]`   | List of Rollup plugins to use during processing     | `[]`     | 
 
 
 **Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
@@ -699,54 +568,6 @@ The following executor options are available:
  | bench      | `string`   | Build the specified bench. Array of names or common Unix glob patterns is supported     |     | 
  | benches      | `boolean`    | Build all targets in benchmark mode that have the bench = true manifest flag set. By default this includes the library and binaries built as benchmarks, and bench targets. Be aware that this will also build any required dependencies, so the lib target may be built twice (once as a benchmark, and once as a dependency for binaries, benchmarks, etc.). Targets may be enabled or disabled by setting the bench flag in the manifest settings for the target.     |     | 
  | allTargets      | `boolean`    | Build all test targets     |     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
-
-
-
-## Rollup Builder
-
-An executor for running the Rollup build process
-
-### Example 
-
-This executor can be used by executing the following in a command line utility: 
-
-```cmd 
-nx run my-project:rollup
-```
-
-**Please note:** _The rollup executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **entry \***    | `string`    | The path to the entry file, relative to project.     | "{sourceRoot}/index.ts"     | 
- | **outputPath \***    | `string`    | The output path of the generated files.     | "dist/{projectRoot}"     | 
- | **tsConfig \***    | `string`    | The path to the \`tsconfig.json\` file.     | "{projectRoot}/tsconfig.json"     | 
- | project      | `string`    | The path to package.json file.     |     | 
- | outputFileName      | `string`    | Name of the main output file. Defaults same basename as 'main' file.     |     | 
- | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
- | fileLevelInput      | `boolean`    | Should an entry point be added for each source file in the project (each file in \`sourceRoot\`).     | `true`     | 
- | allowJs      | `boolean`    | Allow JavaScript files to be compiled.     |     | 
- | format      | `string[]`   | List of module formats to output. Defaults to matching format from tsconfig (e.g. CJS for CommonJS, and ESM otherwise).     |     | 
- | external      | `array`    | A list of external modules that will not be bundled (\`react\`, \`react-dom\`, etc.). Can also be set to \`all\` (bundle nothing) or \`none\` (bundle everything).     |     | 
- | watch      | `boolean`    | Enable re-building when files change.     |     | 
- | rollupConfig      | `string`   | Path to a function which takes a rollup config and returns an updated rollup config.     |     | 
- | extractCss      | `boolean,string`    | CSS files will be extracted to the output folder. Alternatively custom filename can be provided (e.g. styles.css)     | `true`     | 
- | assets      | `array`    | List of static assets.     | `[]`     | 
- | compiler      | "babel" \| "swc" \| "tsc"     | Which compiler to use.     | "babel"     | 
- | babelUpwardRootMode      | `boolean`    | Whether to set rootmode to upward. See https://babeljs.io/docs/en/options#rootmode     | `true`     | 
- | javascriptEnabled      | `boolean`    | Sets \`javascriptEnabled\` option for less loader     |     | 
- | generateExportsField      | `boolean`    | Update the output package.json file's 'exports' field. This field is used by Node and bundles.     | `true`     | 
- | additionalEntryPoints      | `string[]`   | Additional entry-points to add to exports field in the package.json file.     |     | 
- | skipTypeCheck      | `boolean`    | Whether to skip TypeScript type checking.     |     | 
- | skipTypeField      | `boolean`    | Prevents 'type' field from being added to compiled package.json file. Use this if you are having an issue with this field.     |     | 
- | sourceMap      | `boolean`    | Output sourcemaps.     |     | 
 
 
 **Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
