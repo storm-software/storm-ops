@@ -112,7 +112,7 @@
   "devDependencies": {
     "@nx/eslint": "catalog:",
     "@nx/eslint-plugin": "catalog:",
-    "@storm-software/eslint": "0.103.0",
+    "@storm-software/eslint": "0.103.1",
     "@types/eslint": "^8.56.10",
     "@types/node": "catalog:",
     "eslint": "catalog:",

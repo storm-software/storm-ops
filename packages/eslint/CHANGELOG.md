@@ -1,3 +1,9 @@
+## 0.103.1 (2025-01-02)
+
+### Bug Fixes
+
+- **storm-ops:** Resolve issue preventing release publishing ([92c10eae](https://github.com/storm-software/storm-ops/commit/92c10eae))
+
 ## 0.103.0 (2025-01-02)
 
 ### Features
