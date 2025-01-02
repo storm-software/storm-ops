@@ -1,20 +1,33 @@
+## 1.213.1 (2025-01-02)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issue with missing `deepmerge` dependency ([f27195c6](https://github.com/storm-software/storm-ops/commit/f27195c6))
+
 ## 1.213.0 (2025-01-02)
 
 ### Features
 
-- **workspace-tools:** Added `esbuild` executor and removed deprecations ([aaef5e70](https://github.com/storm-software/storm-ops/commit/aaef5e70))
-- **config:** Regenerate the `storm.schema.json` file ([258c3213](https://github.com/storm-software/storm-ops/commit/258c3213))
-- **config:** Added `bot` property to `StormConfig` ([2c874819](https://github.com/storm-software/storm-ops/commit/2c874819))
-- **config-tools:** Use `tsup` to expand package format and export config ([d9e53d7d](https://github.com/storm-software/storm-ops/commit/d9e53d7d))
+- **workspace-tools:** Added `esbuild` executor and removed deprecations
+  ([aaef5e70](https://github.com/storm-software/storm-ops/commit/aaef5e70))
+- **config:** Regenerate the `storm.schema.json` file
+  ([258c3213](https://github.com/storm-software/storm-ops/commit/258c3213))
+- **config:** Added `bot` property to `StormConfig`
+  ([2c874819](https://github.com/storm-software/storm-ops/commit/2c874819))
+- **config-tools:** Use `tsup` to expand package format and export config
+  ([d9e53d7d](https://github.com/storm-software/storm-ops/commit/d9e53d7d))
 
 ### Bug Fixes
 
-- **create-storm-workspace:** Resolve issue with missing external libraries ([8e8cab97](https://github.com/storm-software/storm-ops/commit/8e8cab97))
-- **workspace-tools:** Resolve issue with invalid taplo configuration file name ([1ffec7e6](https://github.com/storm-software/storm-ops/commit/1ffec7e6))
+- **create-storm-workspace:** Resolve issue with missing external libraries
+  ([8e8cab97](https://github.com/storm-software/storm-ops/commit/8e8cab97))
+- **workspace-tools:** Resolve issue with invalid taplo configuration file name
+  ([1ffec7e6](https://github.com/storm-software/storm-ops/commit/1ffec7e6))
 
 ### Dependency Upgrades
 
-- **storm-ops:** Moved `rollup` and `zod` into the pnpm catalog ([c80b2a62](https://github.com/storm-software/storm-ops/commit/c80b2a62))
+- **storm-ops:** Moved `rollup` and `zod` into the pnpm catalog
+  ([c80b2a62](https://github.com/storm-software/storm-ops/commit/c80b2a62))
 
 ## 1.212.3 (2024-12-30)
 
