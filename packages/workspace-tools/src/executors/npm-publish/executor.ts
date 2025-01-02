@@ -1,7 +1,7 @@
 import { type ExecutorContext } from "@nx/devkit";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
-import { readJson } from "fs-extra";
 import { execSync } from "node:child_process";
+import fs from "node:fs/promises";
 import { pnpmCatalogUpdate } from "../../utils/pnpm-deps-update";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
@@ -18,14 +18,14 @@ export default async function npmPublishExecutorFn(
   const isDryRun = process.env.NX_DRY_RUN === "true" || options.dryRun || false;
 
   if (!context.projectName) {
-    throw new Error("The executor requires a projectName.");
+    throw new Error("The `npm-publish` executor requires a `projectName`.");
   }
 
   const projectConfig =
     context.projectsConfigurations?.projects?.[context.projectName];
   if (!projectConfig) {
     throw new Error(
-      `Could not find project configuration for ${context.projectName}`
+      `Could not find project configuration for \`${context.projectName}\``
     );
   }
 
@@ -35,8 +35,13 @@ export default async function npmPublishExecutorFn(
   );
 
   const packageJsonPath = joinPaths(packageRoot, "package.json");
-  const projectPackageJson = await readJson(packageJsonPath);
-  const packageName = projectPackageJson.name;
+  const packageJsonFile = await fs.readFile(packageJsonPath, "utf8");
+  if (!packageJsonFile) {
+    throw new Error(`Could not find \`package.json\` at ${packageJsonPath}`);
+  }
+
+  const packageJson = JSON.parse(packageJsonFile);
+  const packageName = packageJson.name;
 
   console.info(
     `🚀  Running Storm NPM Publish executor on the ${packageName} package`
@@ -48,7 +53,7 @@ export default async function npmPublishExecutorFn(
       ? `package "${packageName}"`
       : `package "${packageName}" from project "${context.projectName}"`;
 
-  if (projectPackageJson.private === true) {
+  if (packageJson.private === true) {
     console.warn(
       `Skipped ${packageTxt}, because it has \`"private": true\` in ${packageJsonPath}`
     );
@@ -119,7 +124,7 @@ export default async function npmPublishExecutorFn(
    * perform the npm view step, and just show npm publish's dry-run output.
    */
   if (!isDryRun) {
-    const currentVersion = projectPackageJson.version;
+    const currentVersion = packageJson.version;
     try {
       try {
         const result = execSync(npmViewCommandSegments.join(" "), {
