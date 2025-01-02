@@ -2,13 +2,18 @@
 
 ### Features
 
-- **esbuild:** Updated the `tsc` plugin to handle monorepos correctly ([ed6b42cd](https://github.com/storm-software/storm-ops/commit/ed6b42cd))
-- **storm-ops:** Completed enhancement around `catalog` and `workspace` dependency upgrades ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
-- **esbuild:** Added new plugins and build options ([481ac411](https://github.com/storm-software/storm-ops/commit/481ac411))
+- **esbuild:** Updated the `tsc` plugin to handle monorepos correctly
+  ([ed6b42cd](https://github.com/storm-software/storm-ops/commit/ed6b42cd))
+- **storm-ops:** Completed enhancement around `catalog` and `workspace`
+  dependency upgrades
+  ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
+- **esbuild:** Added new plugins and build options
+  ([481ac411](https://github.com/storm-software/storm-ops/commit/481ac411))
 
 ### Dependency Upgrades
 
-- **storm-ops:** Added consistent `@types/node` versions across repository ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
+- **storm-ops:** Added consistent `@types/node` versions across repository
+  ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
 
 ### 🧱 Updated Dependencies
 
@@ -20,7 +25,8 @@
 
 ### Bug Fixes
 
-- **unbuild:** Resolve typing issues with mismatch `typescript` versions ([5a9bd555](https://github.com/storm-software/storm-ops/commit/5a9bd555))
+- **unbuild:** Resolve typing issues with mismatch `typescript` versions
+  ([5a9bd555](https://github.com/storm-software/storm-ops/commit/5a9bd555))
 
 ### 🧱 Updated Dependencies
 
@@ -32,12 +38,15 @@
 
 ### Features
 
-- **unbuild:** Initial check-in of the `unbuild` package ([fc246154](https://github.com/storm-software/storm-ops/commit/fc246154))
-- **esbuild:** Added copy-assets and reporting build steps ([d8372730](https://github.com/storm-software/storm-ops/commit/d8372730))
+- **unbuild:** Initial check-in of the `unbuild` package
+  ([fc246154](https://github.com/storm-software/storm-ops/commit/fc246154))
+- **esbuild:** Added copy-assets and reporting build steps
+  ([d8372730](https://github.com/storm-software/storm-ops/commit/d8372730))
 
 ### Bug Fixes
 
-- **esbuild:** Resolve DTS build issue ([bc4464b8](https://github.com/storm-software/storm-ops/commit/bc4464b8))
+- **esbuild:** Resolve DTS build issue
+  ([bc4464b8](https://github.com/storm-software/storm-ops/commit/bc4464b8))
 
 ### 🧱 Updated Dependencies
 
@@ -48,7 +57,8 @@
 
 ### Features
 
-- **esbuild:** Move shared code to `build-tools` package ([bef9364e](https://github.com/storm-software/storm-ops/commit/bef9364e))
+- **esbuild:** Move shared code to `build-tools` package
+  ([bef9364e](https://github.com/storm-software/storm-ops/commit/bef9364e))
 
 ### 🧱 Updated Dependencies
 
@@ -58,10 +68,12 @@
 
 ### Features
 
-- **esbuild:** Use `tsup` to build to package ([8d7a14f9](https://github.com/storm-software/storm-ops/commit/8d7a14f9))
+- **esbuild:** Use `tsup` to build to package
+  ([8d7a14f9](https://github.com/storm-software/storm-ops/commit/8d7a14f9))
 
 ## 0.1.0 (2024-12-22)
 
 ### Features
 
-- **esbuild:** Initial check-in of the `esbuild` utility package ([ee029b2e](https://github.com/storm-software/storm-ops/commit/ee029b2e))
+- **esbuild:** Initial check-in of the `esbuild` utility package
+  ([ee029b2e](https://github.com/storm-software/storm-ops/commit/ee029b2e))

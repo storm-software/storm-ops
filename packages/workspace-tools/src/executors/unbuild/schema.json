@@ -3,14 +3,19 @@
   "$id": "unbuild",
   "version": 2,
   "title": "Unbuild Builder",
-  "description": "An executor used by Storm Software to run the Unbuild build process",
+  "description": "Run the unbuild build process on a selected project",
   "type": "object",
   "properties": {
     "entry": {
-      "type": "string",
-      "description": "The path to the entry file, relative to project.",
+      "type": "array",
+      "description": "The path to the entry file (or multiple paths/files), relative to `projectRoot` path.",
+      "x-completion-type": "file",
+      "x-priority": "important",
+      "items": {
+        "type": "string"
+      },
       "alias": "main",
-      "default": "{sourceRoot}/index.ts"
+      "default": ["{sourceRoot}"]
     },
     "outputPath": {
       "type": "string",
@@ -19,35 +24,13 @@
       "x-priority": "important",
       "default": "dist/{projectRoot}"
     },
-    "tsConfig": {
+    "tsconfig": {
       "type": "string",
       "description": "The path to the `tsconfig.json` file.",
       "x-completion-type": "file",
       "x-completion-glob": "tsconfig*.json",
       "x-priority": "important",
       "default": "{projectRoot}/tsconfig.json"
-    },
-    "platform": {
-      "type": "string",
-      "description": "Platform target for outputs.",
-      "enum": ["neutral", "browser", "node", "worker"],
-      "default": "neutral"
-    },
-    "additionalEntryPoints": {
-      "type": "array",
-      "description": "List of additional entry points.",
-      "items": {
-        "type": "string"
-      },
-      "default": []
-    },
-    "tsLibs": {
-      "type": "array",
-      "description": "The `lib` TypeScript Compiler Options parameter.",
-      "items": {
-        "type": "string"
-      },
-      "default": []
     },
     "watch": {
       "type": "boolean",
@@ -68,20 +51,31 @@
       "alias": "deleteOutputPath",
       "default": true
     },
-    "generatePackageJson": {
-      "type": "boolean",
-      "description": "Should the package.json file be generated or copied directly into the output folder (if false the file will be copied directly).",
-      "default": true
-    },
     "includeSrc": {
       "type": "boolean",
       "description": "Should the source files be added to the distribution folder in an `src` directory.",
       "default": false
     },
+    "generatePackageJson": {
+      "type": "boolean",
+      "description": "Should a package.json file be generated in the output folder or should the existing one be copied in.",
+      "default": true
+    },
     "debug": {
       "type": "boolean",
       "description": "Should output be unminified with source mappings.",
       "default": false
+    },
+    "platform": {
+      "type": "string",
+      "description": "Platform target for outputs.",
+      "enum": ["browser", "neutral", "node"],
+      "default": "neutral"
+    },
+    "banner": {
+      "type": "string",
+      "description": "A short heading added to the top of each distribution file added in the output folder.",
+      "default": "//      ⚡ Built by Storm Software"
     },
     "minify": {
       "type": "boolean",
@@ -92,14 +86,6 @@
       "type": "boolean",
       "description": "Should write extra log outputs with details from the executor.",
       "default": false
-    },
-    "plugins": {
-      "type": "array",
-      "description": "List of Rollup plugins to use during processing",
-      "default": [],
-      "items": {
-        "type": "object"
-      }
     }
   },
   "required": ["tsConfig", "platform"],

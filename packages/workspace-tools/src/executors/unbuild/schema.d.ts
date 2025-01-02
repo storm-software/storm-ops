@@ -1,3 +1,3 @@
-import type { UnbuildBuildOptions } from "@storm-software/build-tools";
+import type { UnbuildOptions } from "@storm-software/build-tools";
 
-export type UnbuildExecutorSchema = UnbuildBuildOptions;
+export type UnbuildExecutorSchema = UnbuildOptions;

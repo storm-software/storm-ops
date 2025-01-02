@@ -9,7 +9,6 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "preserveSymlinks": true,
     "isolatedModules": true,
     "importHelpers": true
   },

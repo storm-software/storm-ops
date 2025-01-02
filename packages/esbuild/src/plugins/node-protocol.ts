@@ -1,24 +1,24 @@
-import type { Plugin } from 'esbuild'
+import type { Plugin } from "esbuild";
 
 /**
  * The node: protocol was added to require in Node v14.18.0
  * https://nodejs.org/api/esm.html#node-imports
  */
 export const nodeProtocolPlugin = (): Plugin => {
-  const nodeProtocol = 'node:'
+  const nodeProtocol = "node:";
 
   return {
-    name: 'node-protocol-plugin',
+    name: "node-protocol-plugin",
     setup({ onResolve }) {
       onResolve(
         {
-          filter: /^node:/,
+          filter: /^node:/
         },
         ({ path }) => ({
           path: path.slice(nodeProtocol.length),
-          external: true,
-        }),
-      )
-    },
-  }
-}
+          external: true
+        })
+      );
+    }
+  };
+};

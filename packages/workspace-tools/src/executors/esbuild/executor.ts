@@ -1,16 +1,16 @@
 import type { ExecutorContext } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import { writeInfo } from "@storm-software/config-tools/logger/console";
-import { build } from "@storm-software/unbuild";
+import { build } from "@storm-software/esbuild";
 import { withRunExecutor } from "../../base/base-executor";
-import type { UnbuildExecutorSchema } from "./schema.d";
+import type { ESBuildExecutorSchema } from "./schema.d";
 
-export async function unbuildExecutorFn(
-  options: UnbuildExecutorSchema,
+export async function esbuildExecutorFn(
+  options: ESBuildExecutorSchema,
   context: ExecutorContext,
-  config: StormConfig
+  config?: StormConfig
 ) {
-  writeInfo("📦  Running Storm Unbuild executor on the workspace", config);
+  writeInfo("📦  Running Storm ESBuild executor on the workspace", config);
 
   // #region Prepare build context variables
 
@@ -43,17 +43,17 @@ export async function unbuildExecutorFn(
   };
 }
 
-export default withRunExecutor<UnbuildExecutorSchema>(
-  "TypeScript Unbuild processing",
-  unbuildExecutorFn,
+export default withRunExecutor<ESBuildExecutorSchema>(
+  "Storm ESBuild executor",
+  esbuildExecutorFn,
   {
     skipReadingConfig: false,
     hooks: {
       applyDefaultOptions: async (
-        options: UnbuildExecutorSchema,
+        options: ESBuildExecutorSchema,
         config?: StormConfig | undefined
       ) => {
-        options.entry ??= ["{sourceRoot}"];
+        options.entry ??= ["src/index.ts"];
         options.outputPath ??= "dist/{projectRoot}";
         options.tsconfig ??= "{projectRoot}/tsconfig.json";
 

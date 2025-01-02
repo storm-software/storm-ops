@@ -2,11 +2,14 @@
 
 ### Features
 
-- **storm-ops:** Completed enhancement around `catalog` and `workspace` dependency upgrades ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
+- **storm-ops:** Completed enhancement around `catalog` and `workspace`
+  dependency upgrades
+  ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
 
 ### Dependency Upgrades
 
-- **storm-ops:** Added consistent `@types/node` versions across repository ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
+- **storm-ops:** Added consistent `@types/node` versions across repository
+  ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
 
 ### 🧱 Updated Dependencies
 
@@ -18,7 +21,8 @@
 
 ### Bug Fixes
 
-- **unbuild:** Resolve typing issues with mismatch `typescript` versions ([5a9bd555](https://github.com/storm-software/storm-ops/commit/5a9bd555))
+- **unbuild:** Resolve typing issues with mismatch `typescript` versions
+  ([5a9bd555](https://github.com/storm-software/storm-ops/commit/5a9bd555))
 
 ### 🧱 Updated Dependencies
 
@@ -30,7 +34,8 @@
 
 ### Features
 
-- **unbuild:** Initial check-in of the `unbuild` package ([fc246154](https://github.com/storm-software/storm-ops/commit/fc246154))
+- **unbuild:** Initial check-in of the `unbuild` package
+  ([fc246154](https://github.com/storm-software/storm-ops/commit/fc246154))
 
 ### 🧱 Updated Dependencies
 

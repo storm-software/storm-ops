@@ -1,40 +1,19 @@
 {
   "executors": {
-    "tsup": {
-      "implementation": "./src/executors/tsup/executor",
-      "schema": "./src/executors/tsup/schema.json",
-      "description": "Run a build on the project using tsup configuration",
-      "internal": true
-    },
-    "tsup-neutral": {
-      "implementation": "./src/executors/tsup-neutral/executor",
-      "schema": "./src/executors/tsup-neutral/schema.json",
-      "description": "Runs a neutral platform TypeScript build"
-    },
-    "tsup-node": {
-      "implementation": "./src/executors/tsup-node/executor",
-      "schema": "./src/executors/tsup-node/schema.json",
-      "description": "Runs a node platform TypeScript build"
-    },
-    "tsup-browser": {
-      "implementation": "./src/executors/tsup-browser/executor",
-      "schema": "./src/executors/tsup-browser/schema.json",
-      "description": "Runs a browser platform TypeScript build"
-    },
     "typia": {
       "implementation": "./src/executors/typia/executor",
       "schema": "./src/executors/typia/schema.json",
       "description": "Run the Typia generator to create runtime type validators"
     },
-    "rolldown": {
-      "implementation": "./src/executors/rolldown/executor",
-      "schema": "./src/executors/rolldown/schema.json",
-      "description": "An executor used by Storm Software to run the Rolldown build process"
+    "esbuild": {
+      "implementation": "./src/executors/esbuild/executor",
+      "schema": "./src/executors/esbuild/schema.json",
+      "description": "Run the esbuild build process on a selected project"
     },
     "unbuild": {
       "implementation": "./src/executors/unbuild/executor",
       "schema": "./src/executors/unbuild/schema.json",
-      "description": "Run an unbuild build process on a selected project"
+      "description": "Run the unbuild build process on a selected project"
     },
     "clean-package": {
       "implementation": "./src/executors/clean-package/executor",
@@ -80,11 +59,6 @@
       "implementation": "./src/executors/cargo-doc/executor",
       "schema": "./src/executors/cargo-doc/schema.json",
       "description": "Create docs for a Rust project with Cargo Doc"
-    },
-    "rollup": {
-      "implementation": "./src/executors/rollup/executor",
-      "schema": "./src/executors/rollup/schema.json",
-      "description": "An executor for running the Rollup build process"
     }
   }
 }

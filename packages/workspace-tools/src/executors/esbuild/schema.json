@@ -1,16 +1,21 @@
 {
   "$schema": "https://json-schema.org/schema",
-  "$id": "rolldown",
+  "$id": "esbuild",
   "version": 2,
-  "title": "Rolldown Builder",
-  "description": "An executor used by Storm Software to run the Rolldown build process",
+  "title": "ESBuild Builder",
+  "description": "Run the esbuild build process on a selected project",
   "type": "object",
   "properties": {
     "entry": {
-      "type": "string",
-      "description": "The path to the entry file, relative to project.",
+      "type": "array",
+      "description": "The path to the entry file (or multiple paths/files), relative to `projectRoot` path.",
+      "x-completion-type": "file",
+      "x-priority": "important",
+      "items": {
+        "type": "string"
+      },
       "alias": "main",
-      "default": "{sourceRoot}/index.ts"
+      "default": ["src/index.ts"]
     },
     "outputPath": {
       "type": "string",
@@ -19,21 +24,13 @@
       "x-priority": "important",
       "default": "dist/{projectRoot}"
     },
-    "tsConfig": {
+    "tsconfig": {
       "type": "string",
       "description": "The path to the `tsconfig.json` file.",
       "x-completion-type": "file",
       "x-completion-glob": "tsconfig*.json",
       "x-priority": "important",
       "default": "{projectRoot}/tsconfig.json"
-    },
-    "additionalEntryPoints": {
-      "type": "array",
-      "description": "List of additional entry points.",
-      "items": {
-        "type": "string"
-      },
-      "default": []
     },
     "watch": {
       "type": "boolean",
@@ -72,13 +69,13 @@
     "platform": {
       "type": "string",
       "description": "Platform target for outputs.",
-      "enum": ["browser", "neutral", "node", "worker"],
+      "enum": ["browser", "neutral", "node"],
       "default": "neutral"
     },
     "banner": {
       "type": "string",
-      "description": "A short heading added to the top of each typescript file added in the output folder's `src` directory.",
-      "default": "This code was developed by Storm Software (<https://stormsoftware.com>) and is licensed under the Apache License 2.0."
+      "description": "A short heading added to the top of each distribution file added in the output folder.",
+      "default": "//      ⚡ Built by Storm Software"
     },
     "minify": {
       "type": "boolean",
@@ -89,17 +86,9 @@
       "type": "boolean",
       "description": "Should write extra log outputs with details from the executor.",
       "default": false
-    },
-    "plugins": {
-      "type": "array",
-      "description": "List of Rollup plugins to use during processing",
-      "default": [],
-      "items": {
-        "type": "object"
-      }
     }
   },
-  "required": ["tsConfig", "platform", "banner"],
+  "required": ["tsconfig", "outputPath", "entry"],
   "definitions": {
     "assetPattern": {
       "oneOf": [
