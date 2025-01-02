@@ -1,3 +1,9 @@
+## 1.125.0 (2025-01-02)
+
+### Features
+
+- **config:** Clean up Storm workspace configuration properties ([22508dd8](https://github.com/storm-software/storm-ops/commit/22508dd8))
+
 ## 1.124.0 (2025-01-02)
 
 ### Features

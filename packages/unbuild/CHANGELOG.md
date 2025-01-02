@@ -1,3 +1,15 @@
+## 0.9.0 (2025-01-02)
+
+### Features
+
+- **config:** Clean up Storm workspace configuration properties ([22508dd8](https://github.com/storm-software/storm-ops/commit/22508dd8))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.125.0
+- Updated build-tools to 0.117.0
+- Updated config to 1.86.0
+
 ## 0.8.0 (2025-01-02)
 
 ### Features
