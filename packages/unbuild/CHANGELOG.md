@@ -1,8 +1,21 @@
+## 0.6.3 (2025-01-02)
+
+### Bug Fixes
+
+- **storm-ops:** Resolved issue with missing `zod` dependency ([a886ddde](https://github.com/storm-software/storm-ops/commit/a886ddde))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.122.3
+- Updated build-tools to 0.114.3
+- Updated config to 1.83.3
+
 ## 0.6.2 (2025-01-02)
 
 ### Bug Fixes
 
-- **storm-ops:** Resolve issue preventing release publishing ([92c10eae](https://github.com/storm-software/storm-ops/commit/92c10eae))
+- **storm-ops:** Resolve issue preventing release publishing
+  ([92c10eae](https://github.com/storm-software/storm-ops/commit/92c10eae))
 
 ### 🧱 Updated Dependencies
 

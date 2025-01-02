@@ -1,8 +1,15 @@
+## 1.122.3 (2025-01-02)
+
+### Bug Fixes
+
+- **storm-ops:** Resolved issue with missing `zod` dependency ([a886ddde](https://github.com/storm-software/storm-ops/commit/a886ddde))
+
 ## 1.122.2 (2025-01-02)
 
 ### Bug Fixes
 
-- **storm-ops:** Resolve issue preventing release publishing ([92c10eae](https://github.com/storm-software/storm-ops/commit/92c10eae))
+- **storm-ops:** Resolve issue preventing release publishing
+  ([92c10eae](https://github.com/storm-software/storm-ops/commit/92c10eae))
 
 ## 1.122.1 (2025-01-02)
 
