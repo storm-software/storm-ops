@@ -226,7 +226,7 @@
   "dependencies": {
     "c12": "catalog:",
     "chalk": "catalog:",
-    "defu": "6.1.4",
+    "defu": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {

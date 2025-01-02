@@ -5,17 +5,27 @@
       "type": "object",
       "properties": {
         "$schema": {
-          "type": "string",
-          "default": "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm.schema.json",
+          "anyOf": [
+            {
+              "anyOf": [
+                {
+                  "not": {}
+                },
+                {
+                  "type": "string",
+                  "default": "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm.schema.json"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ],
           "description": "The URL to the JSON schema file that describes the Storm configuration file"
         },
         "extends": {
           "type": "string",
           "description": "The path to a base JSON file to use as a configuration preset file"
-        },
-        "isRoot": {
-          "type": "boolean",
-          "description": "A flag indicating if the current configuration is the set in the root of the workspace"
         },
         "name": {
           "type": "string",
@@ -101,10 +111,6 @@
           "default": "",
           "description": "The root directory of the workspace"
         },
-        "packageDirectory": {
-          "type": "string",
-          "description": "The root directory of the package"
-        },
         "externalPackagePatterns": {
           "type": "array",
           "items": {
@@ -118,41 +124,37 @@
           "default": false,
           "description": "Should all known types of workspace caching be skipped?"
         },
-        "cacheDirectory": {
-          "type": "string",
-          "description": "The directory used to store the environment's cached file data"
-        },
-        "dataDirectory": {
-          "type": "string",
-          "description": "The directory used to store the environment's data files"
-        },
-        "configDirectory": {
-          "type": "string",
-          "description": "The directory used to store the environment's configuration files"
-        },
-        "tempDirectory": {
-          "type": "string",
-          "description": "The directory used to store the environment's temp files"
-        },
-        "logDirectory": {
-          "type": "string",
-          "description": "The directory used to store the environment's temp files"
-        },
-        "buildDirectory": {
-          "type": "string",
-          "default": "dist",
-          "description": "The build directory for the workspace"
-        },
-        "outputDirectory": {
-          "type": "string",
-          "default": "node_modules/.storm",
-          "description": "The runtime directory of Storm"
-        },
-        "runtimeVersion": {
-          "type": "string",
-          "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
-          "default": "1.0.0",
-          "description": "The global version of the Storm runtime"
+        "directories": {
+          "type": "object",
+          "properties": {
+            "cache": {
+              "type": "string",
+              "description": "The directory used to store the environment's cached file data"
+            },
+            "data": {
+              "type": "string",
+              "description": "The directory used to store the environment's data files"
+            },
+            "config": {
+              "type": "string",
+              "description": "The directory used to store the environment's configuration files"
+            },
+            "temp": {
+              "type": "string",
+              "description": "The directory used to store the environment's temp files"
+            },
+            "log": {
+              "type": "string",
+              "description": "The directory used to store the environment's temp files"
+            },
+            "build": {
+              "type": "string",
+              "default": "dist",
+              "description": "The directory used to store the workspace's distributable files after a build (relative to the workspace root)"
+            }
+          },
+          "additionalProperties": false,
+          "description": "Various directories used by the workspace to store data, cache, and configuration files"
         },
         "packageManager": {
           "type": "string",
@@ -184,21 +186,6 @@
           ],
           "default": "info",
           "description": "The log level used to filter out lower priority log messages. If not provided, this is defaulted using the `environment` config value (if `environment` is set to `production` then `level` is `error`, else `level` is `debug`)."
-        },
-        "cloudflareAccountId": {
-          "anyOf": [
-            {
-              "type": "string",
-              "minLength": 32,
-              "maxLength": 32,
-              "pattern": "^([0-9a-fA-F]{32})$"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "description": "The default Cloudflare account ID of the workspace"
         },
         "registry": {
           "type": "object",
@@ -491,7 +478,7 @@
           "description": "Configuration of each used extension"
         }
       },
-      "required": ["bot", "colors"],
+      "required": ["bot", "directories", "colors"],
       "additionalProperties": false,
       "description": "Storm Workspace config values used during various dev-ops processes. This type is a combination of the StormPackageConfig and StormProject types. It represents the config of the entire monorepo."
     }

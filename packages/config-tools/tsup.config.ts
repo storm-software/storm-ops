@@ -5,6 +5,7 @@ export default defineConfig({
   target: "node22",
   entryPoints: ["./src/**/*.ts"],
   format: ["cjs", "esm"],
+  platform: "node",
   splitting: true,
   clean: true,
   dts: true,

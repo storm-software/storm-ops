@@ -2,7 +2,8 @@
 
 ### Features
 
-- **workspace-tools:** Removed old dynamically imported modules ([56f84500](https://github.com/storm-software/storm-ops/commit/56f84500))
+- **workspace-tools:** Removed old dynamically imported modules
+  ([56f84500](https://github.com/storm-software/storm-ops/commit/56f84500))
 
 ## 0.37.1 (2025-01-02)
 

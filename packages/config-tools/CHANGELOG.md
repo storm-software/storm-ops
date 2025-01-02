@@ -2,7 +2,8 @@
 
 ### Features
 
-- **k8s-tools:** Removed old dynamic modules import ([81805110](https://github.com/storm-software/storm-ops/commit/81805110))
+- **k8s-tools:** Removed old dynamic modules import
+  ([81805110](https://github.com/storm-software/storm-ops/commit/81805110))
 
 ## 1.123.0 (2025-01-02)
 

@@ -43,3 +43,4 @@ catalog:
   "unbuild": "^3.2.0"
   "commander": "^12.1.0"
   "chalk": "^4.1.0"
+  "defu": "^6.1.4"

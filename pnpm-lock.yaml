@@ -72,6 +72,9 @@ catalogs:
     deepmerge:
       specifier: ^4.3.1
       version: 4.3.1
+    defu:
+      specifier: ^6.1.4
+      version: 6.1.4
     esbuild:
       specifier: ^0.24.0
       version: 0.24.0
@@ -230,9 +233,9 @@ importers:
       copyfiles:
         specifier: 'catalog:'
         version: 2.4.1
-      deepmerge:
+      defu:
         specifier: 'catalog:'
-        version: 4.3.1
+        version: 6.1.4
       esbuild:
         specifier: 'catalog:'
         version: 0.24.0
@@ -401,11 +404,8 @@ importers:
       chalk:
         specifier: 'catalog:'
         version: 4.1.2
-      deepmerge:
-        specifier: 'catalog:'
-        version: 4.3.1
       defu:
-        specifier: 6.1.4
+        specifier: 'catalog:'
         version: 6.1.4
       zod:
         specifier: 'catalog:'
@@ -507,7 +507,7 @@ importers:
         specifier: 14.2.4
         version: 14.2.4
       defu:
-        specifier: 6.1.4
+        specifier: 'catalog:'
         version: 6.1.4
       eslint-plugin-es-x:
         specifier: 7.6.0

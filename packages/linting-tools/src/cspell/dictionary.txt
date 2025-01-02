@@ -11,6 +11,7 @@ treeshake
 cdvc
 mkdn
 mkdown
+defu
 Pluggable
 Rolldown
 retext

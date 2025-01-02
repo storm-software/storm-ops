@@ -109,7 +109,7 @@
     "chalk": "catalog:",
     "conventional-changelog-conventionalcommits": "8.0.0",
     "copyfiles": "catalog:",
-    "deepmerge": "catalog:",
+    "defu": "catalog:",
     "esbuild": "catalog:",
     "esbuild-register": "3.5.0",
     "eslint": "catalog:",
