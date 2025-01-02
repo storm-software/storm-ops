@@ -227,6 +227,9 @@ importers:
       copyfiles:
         specifier: 'catalog:'
         version: 2.4.1
+      deepmerge:
+        specifier: 'catalog:'
+        version: 4.3.1
       esbuild:
         specifier: 'catalog:'
         version: 0.24.0
@@ -293,6 +296,9 @@ importers:
       verdaccio:
         specifier: 5.31.1
         version: 5.31.1(encoding@0.1.13)(typanion@3.14.0)
+      zod:
+        specifier: 'catalog:'
+        version: 3.24.1
 
   crates/storm-config: {}
 
@@ -3831,7 +3837,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -24335,8 +24340,8 @@ snapshots:
       summary: 2.1.0
       tsconfig-paths: 4.2.0
       typescript: 5.7.2
-      zod: 3.23.8
-      zod-validation-error: 3.4.0(zod@3.23.8)
+      zod: 3.24.1
+      zod-validation-error: 3.4.0(zod@3.24.1)
 
   knitwork@1.2.0: {}
 
@@ -25719,7 +25724,7 @@ snapshots:
       workerd: 1.20241205.0
       ws: 8.18.0
       youch: 3.3.4
-      zod: 3.23.8
+      zod: 3.24.1
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -30226,6 +30231,10 @@ snapshots:
   zod-validation-error@3.4.0(zod@3.23.8):
     dependencies:
       zod: 3.23.8
+
+  zod-validation-error@3.4.0(zod@3.24.1):
+    dependencies:
+      zod: 3.24.1
 
   zod@3.23.8: {}
 
