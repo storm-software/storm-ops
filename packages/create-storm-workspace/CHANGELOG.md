@@ -1,3 +1,9 @@
+## 1.81.0 (2025-01-02)
+
+### Features
+
+- **workspace-tools:** Removed old dynamically imported modules ([56f84500](https://github.com/storm-software/storm-ops/commit/56f84500))
+
 ## 1.80.2 (2025-01-02)
 
 ### Bug Fixes
