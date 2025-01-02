@@ -1,3 +1,9 @@
+## 0.103.0 (2025-01-02)
+
+### Features
+
+- **esbuild:** Added pipeline logging to trace build steps ([5897e233](https://github.com/storm-software/storm-ops/commit/5897e233))
+
 ## 0.102.0 (2024-12-30)
 
 ### Features

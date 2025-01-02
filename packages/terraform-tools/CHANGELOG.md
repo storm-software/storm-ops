@@ -1,3 +1,19 @@
+## 0.37.0 (2025-01-02)
+
+### Features
+
+- **workspace-tools:** Added `esbuild` executor and removed deprecations ([aaef5e70](https://github.com/storm-software/storm-ops/commit/aaef5e70))
+- **config:** Regenerate the `storm.schema.json` file ([258c3213](https://github.com/storm-software/storm-ops/commit/258c3213))
+
+### Bug Fixes
+
+- **create-storm-workspace:** Resolve issue with missing external libraries ([8e8cab97](https://github.com/storm-software/storm-ops/commit/8e8cab97))
+
+### Dependency Upgrades
+
+- **storm-ops:** Added `tslib` to the pnpm catalog ([7cd24949](https://github.com/storm-software/storm-ops/commit/7cd24949))
+- **storm-ops:** Moved `rollup` and `zod` into the pnpm catalog ([c80b2a62](https://github.com/storm-software/storm-ops/commit/c80b2a62))
+
 ## 0.36.0 (2024-12-30)
 
 ### Features

@@ -1,3 +1,23 @@
+## 0.114.0 (2025-01-02)
+
+### Features
+
+- **workspace-tools:** Added `esbuild` executor and removed deprecations ([aaef5e70](https://github.com/storm-software/storm-ops/commit/aaef5e70))
+- **build-tools:** Stripped out unused/older code from package ([f67738d5](https://github.com/storm-software/storm-ops/commit/f67738d5))
+- **esbuild:** Added pipeline logging to trace build steps ([5897e233](https://github.com/storm-software/storm-ops/commit/5897e233))
+- **config:** Regenerate the `storm.schema.json` file ([258c3213](https://github.com/storm-software/storm-ops/commit/258c3213))
+- **config:** Added `bot` property to `StormConfig` ([2c874819](https://github.com/storm-software/storm-ops/commit/2c874819))
+- **config-tools:** Use `tsup` to expand package format and export config ([d9e53d7d](https://github.com/storm-software/storm-ops/commit/d9e53d7d))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with invalid taplo configuration file name ([1ffec7e6](https://github.com/storm-software/storm-ops/commit/1ffec7e6))
+- **build-tools:** Resolved issues with `tsup` normalized option types mismatch ([6fa88c82](https://github.com/storm-software/storm-ops/commit/6fa88c82))
+
+### Dependency Upgrades
+
+- **storm-ops:** Moved `rollup` and `zod` into the pnpm catalog ([c80b2a62](https://github.com/storm-software/storm-ops/commit/c80b2a62))
+
 ## 0.113.0 (2024-12-30)
 
 ### Features

@@ -1,3 +1,13 @@
+## 0.3.0 (2025-01-02)
+
+### Features
+
+- **config:** Regenerate the `storm.schema.json` file ([258c3213](https://github.com/storm-software/storm-ops/commit/258c3213))
+
+### Dependency Upgrades
+
+- **storm-ops:** Added `tslib` to the pnpm catalog ([7cd24949](https://github.com/storm-software/storm-ops/commit/7cd24949))
+
 ## 0.2.0 (2024-12-30)
 
 ### Features

@@ -1,3 +1,9 @@
+## 1.80.1 (2025-01-02)
+
+### Bug Fixes
+
+- **create-storm-workspace:** Resolve issue with missing external libraries ([8e8cab97](https://github.com/storm-software/storm-ops/commit/8e8cab97))
+
 ## 1.80.0 (2024-12-30)
 
 ### Features

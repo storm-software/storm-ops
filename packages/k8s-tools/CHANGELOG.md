@@ -1,3 +1,9 @@
+## 0.14.0 (2025-01-02)
+
+### Features
+
+- **config:** Regenerate the `storm.schema.json` file ([258c3213](https://github.com/storm-software/storm-ops/commit/258c3213))
+
 ## 0.13.0 (2024-12-30)
 
 ### Features

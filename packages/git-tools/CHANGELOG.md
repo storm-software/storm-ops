@@ -1,3 +1,15 @@
+## 2.76.0 (2025-01-02)
+
+### Features
+
+- **build-tools:** Stripped out unused/older code from package ([f67738d5](https://github.com/storm-software/storm-ops/commit/f67738d5))
+- **config:** Added `bot` property to `StormConfig` ([2c874819](https://github.com/storm-software/storm-ops/commit/2c874819))
+- **config-tools:** Use `tsup` to expand package format and export config ([d9e53d7d](https://github.com/storm-software/storm-ops/commit/d9e53d7d))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with invalid taplo configuration file name ([1ffec7e6](https://github.com/storm-software/storm-ops/commit/1ffec7e6))
+
 ## 2.75.1 (2024-12-30)
 
 ### Bug Fixes
