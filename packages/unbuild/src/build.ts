@@ -312,7 +312,7 @@ async function resolveOptions(
       rollup = options.rollup;
     }
 
-    resolvedOptions.rollup = merge(resolvedOptions.rollup ?? {}, rollup);
+    resolvedOptions.rollup = defu(resolvedOptions.rollup ?? {}, rollup);
   }
 
   stopwatch();
