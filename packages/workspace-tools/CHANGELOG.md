@@ -1,12 +1,21 @@
+## 1.218.1 (2025-01-02)
+
+### Bug Fixes
+
+- **workspace-tools:** Remove unrequired depenendencies from `npm-publish` executor ([b940506e](https://github.com/storm-software/storm-ops/commit/b940506e))
+
 ## 1.218.0 (2025-01-02)
 
 ### Features
 
-- **workspace-tools:** Added code to strip `catalog:` references in published `package.json` files ([d50c3ea6](https://github.com/storm-software/storm-ops/commit/d50c3ea6))
+- **workspace-tools:** Added code to strip `catalog:` references in published
+  `package.json` files
+  ([d50c3ea6](https://github.com/storm-software/storm-ops/commit/d50c3ea6))
 
 ### Bug Fixes
 
-- **storm-ops:** Remove unused `deepmerge` references and fix build ([0f4ee3f7](https://github.com/storm-software/storm-ops/commit/0f4ee3f7))
+- **storm-ops:** Remove unused `deepmerge` references and fix build
+  ([0f4ee3f7](https://github.com/storm-software/storm-ops/commit/0f4ee3f7))
 
 ## 1.217.2 (2025-01-02)
 
