@@ -1,3 +1,9 @@
+## 0.46.0 (2025-01-02)
+
+### Features
+
+- **workspace-tools:** Added code to strip `catalog:` references in published `package.json` files ([d50c3ea6](https://github.com/storm-software/storm-ops/commit/d50c3ea6))
+
 ## 0.45.1 (2025-01-02)
 
 ### Bug Fixes

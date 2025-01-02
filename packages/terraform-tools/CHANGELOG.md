@@ -1,8 +1,15 @@
+## 0.39.2 (2025-01-02)
+
+### Bug Fixes
+
+- **storm-ops:** Remove unused `deepmerge` references and fix build ([0f4ee3f7](https://github.com/storm-software/storm-ops/commit/0f4ee3f7))
+
 ## 0.39.1 (2025-01-02)
 
 ### Bug Fixes
 
-- **git-tools:** Ensure the correct email is provided for Stormie-Bot ([5fb2c9b6](https://github.com/storm-software/storm-ops/commit/5fb2c9b6))
+- **git-tools:** Ensure the correct email is provided for Stormie-Bot
+  ([5fb2c9b6](https://github.com/storm-software/storm-ops/commit/5fb2c9b6))
 
 ## 0.39.0 (2025-01-02)
 

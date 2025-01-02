@@ -1,3 +1,9 @@
+## 0.105.2 (2025-01-02)
+
+### Bug Fixes
+
+- **storm-ops:** Remove unused `deepmerge` references and fix build ([0f4ee3f7](https://github.com/storm-software/storm-ops/commit/0f4ee3f7))
+
 ## 0.105.1 (2025-01-02)
 
 ### Bug Fixes
