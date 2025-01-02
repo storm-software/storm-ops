@@ -30,6 +30,7 @@
     "sullivanpj"
   ],
   "dependencies": {
+    "@angular-devkit/architect": "0.1900.6",
     "@cspell/dict-ada": "4.0.2",
     "@cspell/dict-aws": "4.0.2",
     "@cspell/dict-bash": "4.1.3",

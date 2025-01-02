@@ -24,13 +24,13 @@ export interface AdditionalCLIOptions {
 
 export interface TypeScriptBuildOptions extends AdditionalCLIOptions {
   name?: string;
-  entry: Entry;
+  entry?: Entry;
   assets?: (AssetGlob | string)[];
   tsconfig?: string;
-  format: string | string[];
+  format?: string | string[];
   bundle?: boolean;
   external?: string[];
-  outputPath: string;
+  outputPath?: string;
   platform?: "node" | "browser" | "neutral";
   sourcemap?: boolean | "linked" | "inline" | "external" | "both";
   target?: string;

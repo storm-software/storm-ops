@@ -316,7 +316,7 @@
       "dependsOn": ["^format-toml"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec taplo format --colors=\"always\" --config=\"./packages/linting-tools/src/taplo/.config.toml\" --cache-path=\"tmp/taplo/{projectRoot}\"",
+        "command": "pnpm exec taplo format --colors=\"always\" --config=\"./packages/linting-tools/src/taplo/config.toml\" --cache-path=\"tmp/taplo/{projectRoot}\"",
         "color": true
       }
     },

@@ -18,7 +18,6 @@
 import { hfs } from "@humanfs/node";
 import {
   createProjectGraphAsync,
-  joinPathFragments,
   readProjectsConfigurationFromProjectGraph,
   writeJsonFile
 } from "@nx/devkit";
@@ -30,7 +29,6 @@ import {
   addWorkspacePackageJsonFields,
   copyAssets
 } from "@storm-software/build-tools";
-import { joinPaths } from "@storm-software/config-tools";
 import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
 import {
   getStopwatch,
@@ -40,6 +38,7 @@ import {
 } from "@storm-software/config-tools/logger/console";
 import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
 import { LogLevelLabel } from "@storm-software/config-tools/types";
+import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { default as merge } from "deepmerge";
 import { LogLevel } from "esbuild";
 import { relative } from "node:path";
@@ -67,10 +66,15 @@ async function resolveOptions(
   options: UnbuildOptions
 ): Promise<UnbuildResolvedOptions> {
   const projectRoot = options.projectRoot;
+  if (!projectRoot) {
+    throw new Error("Cannot find project root");
+  }
+
+  const outputPath = options.outputPath || joinPaths("dist", projectRoot);
 
   const workspaceRoot = findWorkspaceRoot(projectRoot);
   if (!workspaceRoot) {
-    throw new Error("Cannot find Nx workspace root");
+    throw new Error("Cannot find workspace root");
   }
 
   const config = await loadStormConfig(workspaceRoot.dir);
@@ -89,7 +93,7 @@ async function resolveOptions(
     exitOnError: true
   });
 
-  const projectJsonPath = joinPathFragments(
+  const projectJsonPath = joinPaths(
     config.workspaceRoot,
     projectRoot,
     "project.json"
@@ -101,7 +105,7 @@ async function resolveOptions(
   const projectJson = await hfs.json(projectJsonPath);
   const projectName = projectJson.name;
 
-  const packageJsonPath = joinPathFragments(
+  const packageJsonPath = joinPaths(
     workspaceRoot.dir,
     projectRoot,
     "package.json"
@@ -114,11 +118,7 @@ async function resolveOptions(
 
   let tsconfig = options.tsconfig;
   if (!tsconfig) {
-    tsconfig = joinPathFragments(
-      workspaceRoot.dir,
-      projectRoot,
-      "tsconfig.json"
-    );
+    tsconfig = joinPaths(workspaceRoot.dir, projectRoot, "tsconfig.json");
   }
 
   if (!(await hfs.isFile(tsconfig))) {
@@ -127,7 +127,7 @@ async function resolveOptions(
 
   let sourceRoot = projectJson.sourceRoot;
   if (!sourceRoot) {
-    sourceRoot = joinPathFragments(projectRoot, "src");
+    sourceRoot = joinPaths(projectRoot, "src");
   }
 
   if (!(await hfs.isDirectory(sourceRoot))) {
@@ -136,17 +136,6 @@ async function resolveOptions(
 
   const projectConfigurations =
     readProjectsConfigurationFromProjectGraph(projectGraph);
-  if (!projectConfigurations?.projects?.[projectName]) {
-    throw new Error(
-      "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
-    );
-  }
-
-  const nxJsonPath = joinPathFragments(config.workspaceRoot, "nx.json");
-  if (!(await hfs.isFile(nxJsonPath))) {
-    throw new Error("Cannot find Nx workspace configuration");
-  }
-
   if (!projectConfigurations?.projects?.[projectName]) {
     throw new Error(
       "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
@@ -195,7 +184,7 @@ async function resolveOptions(
             joinPaths(config.workspaceRoot, projectRoot),
             config.workspaceRoot
           ).replaceAll("\\", "/"),
-          options.outputPath,
+          outputPath,
           "dist"
         ).replaceAll("\\", "/"),
         declaration: options.emitTypes !== false,
@@ -209,7 +198,7 @@ async function resolveOptions(
             joinPaths(config.workspaceRoot, projectRoot),
             config.workspaceRoot
           ).replaceAll("\\", "/"),
-          options.outputPath,
+          outputPath,
           "dist"
         ).replaceAll("\\", "/"),
         declaration: options.emitTypes !== false,
@@ -243,7 +232,7 @@ async function resolveOptions(
       }
     },
     sourcemap: options.sourcemap ?? !!options.debug,
-    outDir: options.outputPath,
+    outDir: outputPath,
     parallel: true,
     stub: false,
     stubOptions: {
@@ -334,21 +323,18 @@ async function resolveOptions(
 async function generatePackageJson(options: UnbuildResolvedOptions) {
   if (
     options.generatePackageJson !== false &&
-    (await hfs.isFile(joinPathFragments(options.projectRoot, "package.json")))
+    (await hfs.isFile(joinPaths(options.projectRoot, "package.json")))
   ) {
     writeDebug("  ✍️   Writing package.json file", options.config);
     const stopwatch = getStopwatch("Write package.json file");
 
-    const packageJsonPath = joinPathFragments(
-      options.projectRoot,
-      "project.json"
-    );
+    const packageJsonPath = joinPaths(options.projectRoot, "project.json");
     if (!(await hfs.isFile(packageJsonPath))) {
       throw new Error("Cannot find package.json configuration");
     }
 
     let packageJson = await hfs.json(
-      joinPathFragments(
+      joinPaths(
         options.config.workspaceRoot,
         options.projectRoot,
         "package.json"
@@ -376,10 +362,7 @@ async function generatePackageJson(options: UnbuildResolvedOptions) {
 
     packageJson = await addPackageJsonExports(options.sourceRoot, packageJson);
 
-    await writeJsonFile(
-      joinPathFragments(options.outDir, "package.json"),
-      packageJson
-    );
+    await writeJsonFile(joinPaths(options.outDir, "package.json"), packageJson);
 
     stopwatch();
   }

@@ -6,11 +6,11 @@
     "target": "ESNext",
     "module": "ESNext",
     "lib": ["ESNext"],
-    "noLib": false,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "moduleResolution": "Bundler",
-    "moduleDetection": "force"
+    "moduleDetection": "force",
+    "types": ["node"]
   },
   "include": [
     "src/**/*.ts",
