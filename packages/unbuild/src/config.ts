@@ -1,8 +1,8 @@
 import { InputPluginOption } from "rollup";
-import { analyzePlugin } from "./plugins/analyze-plugin";
+import { analyzePlugin } from "./plugins/analyze";
 import { onErrorPlugin } from "./plugins/on-error";
-import { swcPlugin } from "./plugins/swc-plugin";
-import { tscPlugin } from "./plugins/tsc-plugin";
+import { swcPlugin } from "./plugins/swc";
+import { tscPlugin } from "./plugins/tsc";
 import { typeDefinitions } from "./plugins/type-definitions";
 import type { UnbuildOptions, UnbuildResolvedOptions } from "./types";
 
