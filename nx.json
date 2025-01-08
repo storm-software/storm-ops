@@ -376,7 +376,6 @@
         "releaseTagPattern": "{projectName}@{version}",
         "changelog": {
           "entryWhenNoChanges": false,
-          "renderer": "nx/release/changelog-renderer",
           "renderOptions": {
             "authors": false,
             "commitReferences": true,

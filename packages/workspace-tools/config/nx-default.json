@@ -456,7 +456,6 @@
         "releaseTagPattern": "{projectName}@{version}",
         "changelog": {
           "entryWhenNoChanges": false,
-          "renderer": "@storm-software/git-tools/changelog-renderer",
           "renderOptions": {
             "authors": false,
             "commitReferences": true,

@@ -6,6 +6,7 @@ import {
   writeFatal,
   writeInfo,
   writeSuccess,
+  writeTrace,
   writeWarning
 } from "@storm-software/config-tools";
 import defu from "defu";
@@ -94,6 +95,9 @@ export const runRelease = async (
     }
 
     nxJson.release = defu(nxJson.release, DEFAULT_RELEASE_CONFIG);
+
+    writeDebug("Completed reading nx.json release configuration", config);
+    writeTrace(nxJson.release, config);
 
     // Apply default configuration to any optional user configuration
     const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
