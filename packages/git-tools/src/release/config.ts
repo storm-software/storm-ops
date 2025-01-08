@@ -25,7 +25,7 @@ export const DEFAULT_RELEASE_CONFIG: NxReleaseConfiguration = {
     git: {
       tag: false,
       commit: true,
-      commitMessage: "chore(release): Publish monorepo release updates"
+      commitMessage: "release(monorepo): Publish workspace release updates"
     }
   },
   version: {
@@ -36,7 +36,6 @@ export const DEFAULT_RELEASE_CONFIG: NxReleaseConfiguration = {
       currentVersionResolver: "git-tag",
       specifierSource: "conventional-commits"
     },
-    conventionalCommits: true,
     git: {
       stageChanges: true,
       commit: false,

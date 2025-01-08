@@ -8,6 +8,7 @@ export default defineConfig([
       "src/index.ts",
       "src/types.ts",
       "src/commit/config.ts",
+      "src/release/config.ts",
       "src/release/changelog-renderer.ts"
     ],
     format: ["cjs", "esm"],

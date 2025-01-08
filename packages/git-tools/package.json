@@ -148,6 +148,34 @@
         "default": "./dist/commit/*.js"
       }
     },
+    "./release/config": {
+      "import": {
+        "types": "./dist/release/config.d.ts",
+        "default": "./dist/release/config.js"
+      },
+      "require": {
+        "types": "./dist/release/config.d.cts",
+        "default": "./dist/release/config.cjs"
+      },
+      "default": {
+        "types": "./dist/release/config.d.ts",
+        "default": "./dist/release/config.js"
+      }
+    },
+    "./release/*": {
+      "import": {
+        "types": "./dist/release/*.d.ts",
+        "default": "./dist/release/*.js"
+      },
+      "require": {
+        "types": "./dist/release/*.d.cts",
+        "default": "./dist/release/*.cjs"
+      },
+      "default": {
+        "types": "./dist/release/*.d.ts",
+        "default": "./dist/release/*.js"
+      }
+    },
     "./changelog-renderer": {
       "import": {
         "types": "./dist/release/changelog-renderer.d.ts",
