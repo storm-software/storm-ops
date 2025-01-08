@@ -72,7 +72,7 @@ export function createProgram(config: StormConfig) {
     ).default(true);
 
     program
-      .command("readme-gen")
+      .command("readme")
       .description("Run the README.md generator using the templates provided.")
       .addOption(readmeTemplatePath)
       .addOption(readmePackageName)
@@ -106,12 +106,19 @@ export function createProgram(config: StormConfig) {
     const commitMessage = new Option(
       "--message <commit-message>",
       "The commit message to lint"
-    );
+    ).makeOptionMandatory(false);
+
+    const commitFile = new Option(
+      "--file <commit-file>",
+      "The commit message to lint"
+    ).makeOptionMandatory(false);
 
     program
       .command("commitlint")
       .description("Run commitlint for the workspace's commit message.")
+      .addOption(commitConfig)
       .addOption(commitMessage)
+      .addOption(commitFile)
       .action(commitLintAction);
 
     return program;
@@ -216,7 +223,15 @@ export async function releaseAction({
   }
 }
 
-export async function commitLintAction({ message }: { message?: string }) {
+export async function commitLintAction({
+  config,
+  message,
+  file
+}: {
+  config?: string;
+  message?: string;
+  file?: string;
+}) {
   try {
     writeInfo(
       `⚡ Linting the ${
@@ -233,7 +248,7 @@ export async function commitLintAction({ message }: { message?: string }) {
       _config
     );
 
-    await runCommitLint(message);
+    await runCommitLint(_config as StormConfig, { config, message, file });
 
     writeSuccess(
       "Linting the commit messages completed successfully!\n",

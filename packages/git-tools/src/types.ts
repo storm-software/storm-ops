@@ -189,7 +189,6 @@ export type CommitQuestionProps = {
   type?: CommitQuestionTypeProp;
   title: string;
   description: string;
-  body?: string;
   enum?: Record<string, CommitEnumItemProps>;
   defaultValue?: string | boolean;
   maxLength?: number;

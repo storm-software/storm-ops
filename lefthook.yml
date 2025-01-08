@@ -45,8 +45,7 @@ pre-commit:
     lint-codeowners:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/CODEOWNERS"
-      run:
-        "pnpm node -r esbuild-register ./dist/packages/linting-tools/bin/lint.js
+      run: "pnpm node ./dist/packages/linting-tools/bin/lint.js
         codeowners"
 
     # check:
@@ -64,8 +63,7 @@ pre-commit:
 commit-msg:
   commands:
     validate:
-      run:
-        "pnpm node -r esbuild-register ./dist/packages/git-tools/bin/git/index.cjs
+      run: "pnpm node ./dist/packages/git-tools/bin/git/index.cjs
         commitlint --message {1}"
 
 pre-push:

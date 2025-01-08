@@ -1,32 +1,43 @@
 import {
-  loadStormConfig,
+  joinPaths,
   writeDebug,
   writeInfo,
   writeSuccess,
   writeWarning
 } from "@storm-software/config-tools";
+import { StormConfig } from "@storm-software/config/types";
 import { existsSync } from "fs";
 import { readFile } from "fs/promises";
 import childProcess from "node:child_process";
-import { join } from "node:path";
 import { DEFAULT_COMMIT_TYPES } from "../types";
 import { getNxScopes } from "./scope";
 
 const COMMIT_EDITMSG_PATH = ".git/COMMIT_EDITMSG";
 
-export const runCommitLint = async (commitMessageArg?: string) => {
-  const config = await loadStormConfig();
-
+export const runCommitLint = async (
+  config: StormConfig,
+  params: {
+    config?: string;
+    message?: string;
+    file?: string;
+  }
+) => {
   writeInfo(
     "📝 Validating git commit message aligns with the Storm Software specification",
     config
   );
 
   let commitMessage;
-  if (commitMessageArg && commitMessageArg !== COMMIT_EDITMSG_PATH) {
-    commitMessage = commitMessageArg;
-  } else if (existsSync(join(config.workspaceRoot, COMMIT_EDITMSG_PATH))) {
-    commitMessage = await readCommitMessageFile(config.workspaceRoot);
+  if (params.message && params.message !== COMMIT_EDITMSG_PATH) {
+    commitMessage = params.message;
+  } else {
+    const commitFile = joinPaths(
+      config.workspaceRoot,
+      params.file || COMMIT_EDITMSG_PATH
+    );
+    if (existsSync(commitFile)) {
+      commitMessage = (await readFile(commitFile, "utf8"))?.trim();
+    }
   }
 
   if (!commitMessage) {
@@ -105,12 +116,4 @@ export const runCommitLint = async (commitMessageArg?: string) => {
 
     throw new Error(errorMessage);
   }
-};
-
-const readCommitMessageFile = async (
-  workspaceRoot: string
-): Promise<string> => {
-  return (
-    await readFile(join(workspaceRoot, COMMIT_EDITMSG_PATH), "utf8")
-  )?.trim();
 };

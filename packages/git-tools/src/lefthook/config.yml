@@ -57,7 +57,7 @@ pre-commit:
       run: 'zizmor --offline --config="./node_modules/@storm-software/linting-tools/zizmor/config.yml" .github/workflows/'
     readme-gen:
       glob: "**/{README.md,package.json,executors.json,generators.json}"
-      run: 'pnpm exec storm-git readme-gen --templates="./tools/readme-templates"'
+      run: 'pnpm exec storm-git readme --templates="./tools/readme-templates"'
       stage_fixed: true
     format:
       glob: "**/*.*"
@@ -77,7 +77,7 @@ commit-msg:
   commands:
     validate:
       run: 'pnpm exec commitlint
-        --config="./node_modules/@storm-software/git-tools/commitlint.config.cjs"
+        --config="./node_modules/@storm-software/git-tools/dist/commit/config.js"
         --edit {1}'
 
 pre-push:

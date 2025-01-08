@@ -71,55 +71,9 @@ jobs:
         with:
           main-branch-name: main
 
-      # - run: pnpm exec nx-cloud record -- nx format:write
-      # - run: pnpm nx affected -t build --parallel=5
-
-      # - name: Run commands in parallel
-      #   run: |
-      #     # initialize an array to store process IDs (PIDs)
-      #     pids=()
-
-      #     # function to run commands and store the PID
-      #     function run_command() {
-      #       local command=$1
-      #       $command &  # run the command in the background
-      #       pids+=($!)  # store the PID of the background process
-      #     }
-
-      #     # list of commands to be run on main has env flag NX_CLOUD_DISTRIBUTED_EXECUTION set to false
-      #     run_command "NX_CLOUD_DISTRIBUTED_EXECUTION=false pnpm exec nx-cloud record -- nx format:check"
-
-      #     # list of commands to be run on agents
-      #     run_command "pnpm nx affected -t lint,format,build --parallel=5"
-
-      #     # wait for all background processes to finish
-      #     for pid in ${pids[*]}; do
-      #       if ! wait $pid; then
-      #         exit 1  # exit with an error status if any process fails
-      #       fi
-      #     done
-
-      #     exit 0 # exits with success status if a all processes complete successfully
-
-      # - name: Get appropriate base and head commits for `nx affected` commands
-      #   uses: nrwl/nx-set-shas@v4
-      #   if: ${{ github.event_name == 'pull_request' }}
-      #   with:
-      #     main-branch-name: "main"
-
-      # - name: Set appropriate base and head commits for `nx affected` commands
-      #   run: |
-      #     echo "BASE: ${{ env.NX_BASE }}"
-      #     echo "HEAD: ${{ env.NX_HEAD }}"
-      #   shell: bash
-
       - name: Run build script
         run: pnpm build-prod
         shell: bash
-
-      # - name: Run formatters scripts
-      #   run: pnpm nx affected -t lint,format,build --parallel=5
-      #   shell: bash
 
       - name: Add permissions to linting tools
         run: chmod a=rwx dist/packages/linting-tools/bin/lint.js
@@ -147,9 +101,6 @@ jobs:
           Add permissions to create-storm-workspace distribution package.json
           file
         run: chmod a=rwx dist/packages/create-storm-workspace/package.json
-
-      - name: Add permissions to git tools
-        run: chmod a=rwx dist/packages/git-tools/bin/git.js
 
       - name: Release Library Version Updates
         run: pnpm release --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}

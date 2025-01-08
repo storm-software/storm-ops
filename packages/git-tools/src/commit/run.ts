@@ -32,7 +32,7 @@ export const runCommit = async (
 {bold.#999999 ----------------------------------------}
 
 {bold.#FFFFFF ⚡ Storm Software Git-Tools - Commit}
-{#DDDDDD Please provide the requested details below...}
+{#CCCCCC Please provide the requested details below...}
 `);
 
   state.answers = await askQuestions(state);
@@ -43,8 +43,8 @@ export const runCommit = async (
   console.log(chalkTemplate`
 {bold.#999999 ----------------------------------------}
 
-{bold.#DDDDDD Commit message:} {#DDDDDD ${message}}
-{#DDDDDD Git-Commit File:} {#DDDDDD ${commitMsgFile}}
+{bold.#FFFFFF Commit message} - {#DDDDDD ${message}}
+{bold.#FFFFFF Git-Commit File} - {#DDDDDD ${commitMsgFile}}
 
     `);
 
@@ -122,10 +122,33 @@ export const askQuestion = (
       default: Boolean(question.defaultValue)
     });
   } else {
+    let validate:
+      | ((value: string) => string | boolean | Promise<string | boolean>)
+      | undefined = undefined;
+    if (question.minLength !== undefined || question.maxLength !== undefined) {
+      validate = (value: string) => {
+        if (
+          question.minLength !== undefined &&
+          value.length < question.minLength
+        ) {
+          return `Minimum length is ${question.minLength} characters.`;
+        }
+        if (
+          question.maxLength !== undefined &&
+          value.length > question.maxLength
+        ) {
+          return `Maximum length is ${question.maxLength} characters.`;
+        }
+
+        return true;
+      };
+    }
+
     return input({
       message,
-      required: !!(question.minLength && question.minLength > 0),
-      default: String(question.defaultValue || "")
+      required: !!(question.minLength !== undefined && question.minLength > 0),
+      default: String(question.defaultValue || ""),
+      validate
     });
   }
 };
