@@ -1,7 +1,0 @@
-**/.next/**
-**/_next/**
-**/dist/**
-pnpm-lock.yaml
-**/convex/_generated/**
-**/catalog-package/**
-**/*.hbs

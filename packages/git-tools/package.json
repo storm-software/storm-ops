@@ -15,72 +15,218 @@
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
+  "maintainers": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    },
+    {
+      "name": "Pat Sullivan",
+      "email": "admin@stormsoftware.com",
+      "url": "https://patsullivan.org"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    }
+  ],
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
   "license": "Apache-2.0",
   "private": false,
+  "packageManager": "pnpm@9.15.2",
+  "engines": {
+    "node": ">=22.4.0",
+    "pnpm": ">=9.15.2"
+  },
   "bin": {
-    "storm-git": "./bin/git.js",
-    "storm-post-checkout": "./bin/post-checkout.js",
-    "storm-post-commit": "./bin/post-commit.js",
-    "storm-post-merge": "./bin/post-merge.js",
-    "storm-pre-commit": "./bin/pre-commit.js",
-    "storm-pre-install": "./bin/pre-install.js",
-    "storm-pre-push": "./bin/pre-push.js",
-    "storm-prepare": "./bin/prepare.js",
-    "storm-version-warning": "./bin/version-warning.js"
+    "storm-git": "./bin/git/index.cjs",
+    "storm-git-esm": "./bin/git/index.js",
+    "storm-git-cjs": "./bin/git/index.cjs",
+    "storm-post-checkout": "./bin/post-checkout/index.cjs",
+    "storm-post-checkout-esm": "./bin/post-checkout/index.js",
+    "storm-post-checkout-cjs": "./bin/post-checkout/index.cjs",
+    "storm-post-commit": "./bin/post-commit/index.cjs",
+    "storm-post-commit-esm": "./bin/post-commit/index.js",
+    "storm-post-commit-cjs": "./bin/post-commit/index.cjs",
+    "storm-post-merge": "./bin/post-merge/index.cjs",
+    "storm-post-merge-esm": "./bin/post-merge/index.js",
+    "storm-post-merge-cjs": "./bin/post-merge/index.cjs",
+    "storm-pre-commit": "./bin/pre-commit/index.cjs",
+    "storm-pre-commit-esm": "./bin/pre-commit/index.js",
+    "storm-pre-commit-cjs": "./bin/pre-commit/index.cjs",
+    "storm-pre-install": "./bin/pre-install/index.cjs",
+    "storm-pre-install-esm": "./bin/pre-install/index.js",
+    "storm-pre-install-cjs": "./bin/pre-install/index.cjs",
+    "storm-pre-push": "./bin/pre-push/index.cjs",
+    "storm-pre-push-esm": "./bin/pre-push/index.js",
+    "storm-pre-push-cjs": "./bin/pre-push/index.cjs",
+    "storm-prepare": "./bin/prepare/index.cjs",
+    "storm-prepare-esm": "./bin/prepare/index.js",
+    "storm-prepare-cjs": "./bin/prepare/index.cjs",
+    "storm-version-warning": "./bin/version-warning/index.cjs",
+    "storm-version-warning-esm": "./bin/version-warning/index.js",
+    "storm-version-warning-cjs": "./bin/version-warning/index.cjs"
   },
-  "module": "./index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "exports": {
-    ".": "./index.js",
-    "./*": "./src/*.js",
-    "./bin/*": "./bin/*.js",
-    "./readme/*": "./readme/*",
-    "./lint-staged/*": "./lint-staged/*",
-    "./lefthook/*": "./lefthook/*",
-    "./commitlint/*": "./commitlint/*",
-    "./lint-staged": "./lint-staged/config.cjs",
-    "./lefthook": "./lefthook/config.yml",
-    "./commitlint": "./commitlint/config.cjs",
-    "./changelog-renderer": "./src/release/changelog-renderer.js",
-    "./release": "./src/release/index.js",
-    "./cli": "./src/cli/index.js",
-    "./commit": "./src/commit/index.js",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./index": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./types": {
+      "import": {
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
+      },
+      "require": {
+        "types": "./dist/types.d.cts",
+        "default": "./dist/types.cjs"
+      },
+      "default": {
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
+      }
+    },
+    "./commit/config": {
+      "import": {
+        "types": "./dist/commit/config.d.ts",
+        "default": "./dist/commit/config.js"
+      },
+      "require": {
+        "types": "./dist/commit/config.d.cts",
+        "default": "./dist/commit/config.cjs"
+      },
+      "default": {
+        "types": "./dist/commit/config.d.ts",
+        "default": "./dist/commit/config.js"
+      }
+    },
+    "./commit/*": {
+      "import": {
+        "types": "./dist/commit/*.d.ts",
+        "default": "./dist/commit/*.js"
+      },
+      "require": {
+        "types": "./dist/commit/*.d.cts",
+        "default": "./dist/commit/*.cjs"
+      },
+      "default": {
+        "types": "./dist/commit/*.d.ts",
+        "default": "./dist/commit/*.js"
+      }
+    },
+    "./changelog-renderer": {
+      "import": {
+        "types": "./dist/release/changelog-renderer.d.ts",
+        "default": "./dist/release/changelog-renderer.js"
+      },
+      "require": {
+        "types": "./dist/release/changelog-renderer.d.cts",
+        "default": "./dist/release/changelog-renderer.cjs"
+      },
+      "default": {
+        "types": "./dist/release/changelog-renderer.d.ts",
+        "default": "./dist/release/changelog-renderer.js"
+      }
+    },
+    "./lefthook/*": "./dist/lefthook/*",
+    "./lint-staged/*": "./dist/lint-staged/*",
+    "./readme/templates/*": "./dist/readme/templates/*"
   },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "bin/**/*",
+    "dist/**/*"
+  ],
   "keywords": [
+    "storm-software",
     "monorepo",
-    "open-system",
-    "storm",
     "storm-ops",
-    "storm-stack",
-    "stormstack",
-    "sullivanpj"
+    "sullivanpj",
+    "commitlint",
+    "commitizen",
+    "semantic-release",
+    "lefthook",
+    "lint-staged"
   ],
   "dependencies": {
     "@angular-devkit/architect": "0.1900.6",
+    "nx": "catalog:",
+    "prettier": "catalog:",
+    "tsconfig-paths": "4.2.0"
+  },
+  "devDependencies": {
     "@commitlint/types": "19.0.3",
-    "@textlint/markdown-to-ast": "14.0.4",
+    "@humanfs/core": "^0.19.1",
+    "@humanfs/node": "^0.16.6",
+    "@humanwhocodes/retry": "0.4.1",
+    "@inquirer/checkbox": "4.0.4",
+    "@inquirer/confirm": "5.1.1",
+    "@inquirer/core": "10.1.2",
+    "@inquirer/editor": "4.2.1",
+    "@inquirer/expand": "4.0.4",
+    "@inquirer/figures": "1.0.9",
+    "@inquirer/input": "4.1.1",
+    "@inquirer/number": "3.0.4",
+    "@inquirer/password": "4.0.4",
+    "@inquirer/prompts": "7.2.1",
+    "@inquirer/rawlist": "4.0.4",
+    "@inquirer/search": "3.0.4",
+    "@inquirer/select": "4.0.4",
+    "@nx/devkit": "catalog:",
+    "@nx/js": "catalog:",
+    "@textlint/ast-node-types": "14.4.2",
+    "@textlint/markdown-to-ast": "14.4.2",
+    "@types/node": "catalog:",
     "anchor-markdown-header": "0.7.0",
     "any-shell-escape": "0.1.1",
     "axios": "1.7.2",
+    "chalk": "catalog:",
+    "chalk-template": "1.1.0",
     "commander": "catalog:",
-    "fs-extra": "11.2.0",
-    "fuzzy": "0.1.3",
-    "htmlparser2": "9.1.0",
-    "inquirer": "9.2.23",
+    "conventional-changelog-conventionalcommits": "8.0.0",
+    "defu": "catalog:",
+    "htmlparser2": "10.0.0",
     "jsonc-parser": "3.2.1",
-    "nx": "catalog:",
-    "prettier": "catalog:",
     "read-yaml-file": "catalog:",
     "semver": "7.6.2",
-    "tsconfig-paths": "4.2.0",
-    "underscore": "1.13.6",
+    "tsup": "catalog:",
+    "underscore": "1.13.7",
     "update-section": "0.3.3",
     "word-wrap": "1.2.5"
-  },
-  "devDependencies": {
-    "@types/htmlparser2": "3.10.7",
-    "@types/inquirer": "9.0.7",
-    "@types/node": "catalog:"
   },
   "publishConfig": {
     "access": "public"

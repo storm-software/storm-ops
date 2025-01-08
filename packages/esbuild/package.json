@@ -174,7 +174,6 @@
     "@storm-software/build-tools": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "esbuild": "catalog:",
-    "nx": "catalog:",
     "spdx-exceptions": "^2.5.0",
     "spdx-license-ids": "^3.0.20"
   },
@@ -197,9 +196,6 @@
     "esbuild": {
       "optional": false
     },
-    "nx": {
-      "optional": false
-    },
     "spdx-exceptions": {
       "optional": true
     },
@@ -212,7 +208,10 @@
     "chokidar": "^4.0.3",
     "commander": "catalog:",
     "es-toolkit": "^1.30.1",
-    "globby": "^14.0.2"
+    "globby": "^14.0.2",
+    "nx": "catalog:",
+    "source-map": "0.7.4",
+    "tsup": "catalog:"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "catalog:",
@@ -223,10 +222,9 @@
     "@storm-software/config-tools": "1.127.0",
     "@types/node": "catalog:",
     "esbuild": "catalog:",
-    "nx": "catalog:",
+    "rollup": "4.29.1",
     "spdx-exceptions": "^2.5.0",
-    "spdx-license-ids": "^3.0.20",
-    "tsup": "catalog:"
+    "spdx-license-ids": "^3.0.20"
   },
   "publishConfig": {
     "access": "public"

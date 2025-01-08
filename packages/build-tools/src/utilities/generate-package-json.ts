@@ -177,6 +177,7 @@ export const addWorkspacePackageJsonFields = async (
 
 export const addPackageJsonExport = (
   file: string,
+  type: "commonjs" | "module" = "module",
   sourceRoot?: string
 ): Record<string, any> => {
   let entry = file.replaceAll("\\", "/");
@@ -186,12 +187,12 @@ export const addPackageJsonExport = (
 
   return {
     "import": {
-      "types": `./dist/${entry}.d.ts`,
-      "default": `./dist/${entry}.js`
+      "types": `./dist/${entry}.d.${type === "module" ? "ts" : "mts"}`,
+      "default": `./dist/${entry}.${type === "module" ? "js" : "mjs"}`
     },
     "require": {
-      "types": `./dist/${entry}.d.cts`,
-      "default": `./dist/${entry}.cjs`
+      "types": `./dist/${entry}.d.${type === "commonjs" ? "ts" : "cts"}`,
+      "default": `./dist/${entry}.${type === "commonjs" ? "js" : "cjs"}`
     },
     "default": {
       "types": `./dist/${entry}.d.ts`,
@@ -212,7 +213,7 @@ export const addPackageJsonExports = async (
     root: sourceRoot
   }).walk();
   files.forEach(file => {
-    addPackageJsonExport(file, sourceRoot);
+    addPackageJsonExport(file, packageJson.type, sourceRoot);
 
     const split = file.split(".");
     split.pop();
@@ -220,12 +221,15 @@ export const addPackageJsonExports = async (
 
     packageJson.exports[`./${entry}`] ??= addPackageJsonExport(
       entry,
+      packageJson.type,
       sourceRoot
     );
   });
 
-  packageJson.main = "./dist/index.cjs";
-  packageJson.module = "./dist/index.js";
+  packageJson.main =
+    packageJson.type === "commonjs" ? "./dist/index.js" : "./dist/index.cjs";
+  packageJson.module =
+    packageJson.type === "module" ? "./dist/index.js" : "./dist/index.mjs";
   packageJson.types = "./dist/index.d.ts";
 
   packageJson.exports ??= {};
@@ -239,7 +243,8 @@ export const addPackageJsonExports = async (
 
   packageJson.exports["./package.json"] ??= "./package.json";
   packageJson.exports["."] =
-    packageJson.exports["."] ?? addPackageJsonExport("index");
+    packageJson.exports["."] ??
+    addPackageJsonExport("index", packageJson.type, sourceRoot);
 
   return packageJson;
 };

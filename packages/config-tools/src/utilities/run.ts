@@ -1,5 +1,5 @@
 import type { StormConfig } from "@storm-software/config";
-import { execSync } from "node:child_process";
+import { exec, execSync } from "node:child_process";
 
 export const LARGE_BUFFER = 1024 * 1000000;
 export type IOType = "overlapped" | "pipe" | "ignore" | "inherit";
@@ -11,7 +11,7 @@ export type StdioOptions =
  *  Run a command line process
  *
  * @remarks
- * A wrapper around execSync to run our command line processes
+ * A wrapper around `execSync` to run our command line processes
  *
  * @param config - The Storm configuration object
  * @param command - The command to run
@@ -37,6 +37,38 @@ export const run = (
     },
     windowsHide: true,
     stdio,
+    maxBuffer: LARGE_BUFFER,
+    killSignal: "SIGTERM"
+  });
+};
+
+/**
+ *  Run an asynchronous command line process
+ *
+ * @remarks
+ * A wrapper around `exec` to run our command line processes
+ *
+ * @param config - The Storm configuration object
+ * @param command - The command to run
+ * @param cwd - The current working directory
+ * @param env - The environment variables
+ * @returns A promise with the result of the command
+ */
+export const runAsync = (
+  config: StormConfig,
+  command: string,
+  cwd: string = config.workspaceRoot ?? process.cwd(),
+  env: NodeJS.ProcessEnv = process.env
+) => {
+  return exec(command, {
+    cwd,
+    env: {
+      ...process.env,
+      ...env,
+      CLICOLOR: "true",
+      FORCE_COLOR: "true"
+    },
+    windowsHide: true,
     maxBuffer: LARGE_BUFFER,
     killSignal: "SIGTERM"
   });

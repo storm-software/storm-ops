@@ -48,6 +48,7 @@ import { BuildContext } from "esbuild";
 import { globbySync } from "globby";
 import path from "node:path";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
+import { RendererEngine } from "./base/renderer-engine";
 import { clean } from "./clean";
 import { DEFAULT_BUILD_OPTIONS, getOutputExtensionMap } from "./config";
 import { depsCheckPlugin } from "./plugins/deps-check";
@@ -58,8 +59,15 @@ import { nodeProtocolPlugin } from "./plugins/node-protocol";
 import { onErrorPlugin } from "./plugins/on-error";
 import { resolvePathsPlugin } from "./plugins/resolve-paths";
 import { tscPlugin } from "./plugins/tsc";
+import { shebangRenderer } from "./renderers/shebang";
 import { ESBuildResolvedOptions, type ESBuildOptions } from "./types";
 import { handle, pipe, transduce } from "./utilities/helpers";
+
+type ESBuildContext = {
+  options: ESBuildResolvedOptions;
+  rendererEngine: RendererEngine;
+  result?: esbuild.BuildResult;
+};
 
 /**
  * Apply defaults to the original build options
@@ -246,23 +254,26 @@ const resolveOptions = async (
   return result;
 };
 
-async function generatePackageJson(options: ESBuildResolvedOptions) {
+async function generatePackageJson(context: ESBuildContext) {
   if (
-    options.generatePackageJson !== false &&
-    (await hfs.isFile(joinPaths(options.projectRoot, "package.json")))
+    context.options.generatePackageJson !== false &&
+    (await hfs.isFile(joinPaths(context.options.projectRoot, "package.json")))
   ) {
-    writeDebug("  ✍️   Writing package.json file", options.config);
+    writeDebug("  ✍️   Writing package.json file", context.options.config);
     const stopwatch = getStopwatch("Write package.json file");
 
-    const packageJsonPath = joinPaths(options.projectRoot, "project.json");
+    const packageJsonPath = joinPaths(
+      context.options.projectRoot,
+      "project.json"
+    );
     if (!(await hfs.isFile(packageJsonPath))) {
       throw new Error("Cannot find package.json configuration");
     }
 
     let packageJson = await hfs.json(
       joinPaths(
-        options.config.workspaceRoot,
-        options.projectRoot,
+        context.options.config.workspaceRoot,
+        context.options.projectRoot,
         "package.json"
       )
     );
@@ -271,26 +282,37 @@ async function generatePackageJson(options: ESBuildResolvedOptions) {
     }
 
     packageJson = await addPackageDependencies(
-      options.config.workspaceRoot,
-      options.projectRoot,
-      options.projectName,
+      context.options.config.workspaceRoot,
+      context.options.projectRoot,
+      context.options.projectName,
       packageJson
     );
 
     packageJson = await addWorkspacePackageJsonFields(
-      options.config,
-      options.projectRoot,
-      options.sourceRoot,
-      options.projectName,
+      context.options.config,
+      context.options.projectRoot,
+      context.options.sourceRoot,
+      context.options.projectName,
       false,
       packageJson
     );
 
+    packageJson.exports ??= {};
+    packageJson.exports["./package.json"] ??= "./package.json";
+    packageJson.exports["."] ??= addPackageJsonExport(
+      "index",
+      packageJson.type,
+      context.options.sourceRoot
+    );
+
     let entryPoints = [{ in: "./src/index.ts", out: "./src/index.ts" }];
-    if (options.entryPoints) {
-      if (Array.isArray(options.entryPoints)) {
+    if (context.options.entryPoints) {
+      if (Array.isArray(context.options.entryPoints)) {
         entryPoints = (
-          options.entryPoints as (string | { in: string; out: string })[]
+          context.options.entryPoints as (
+            | string
+            | { in: string; out: string }
+          )[]
         ).map(entryPoint =>
           typeof entryPoint === "string"
             ? { in: entryPoint, out: entryPoint }
@@ -298,37 +320,45 @@ async function generatePackageJson(options: ESBuildResolvedOptions) {
         );
       }
 
-      // else {
-      //   entryPoints = Object.entries(options.entryPoints).map(
-      //     ([key, value]) => ({
-      //       in: key,
-      //       out: value
-      //     })
-      //   );
-      // }
+      for (const entryPoint of entryPoints) {
+        const split = entryPoint.out.split(".");
+        split.pop();
+        const entry = split.join(".").replaceAll("\\", "/");
+
+        packageJson.exports[`./${entry}`] ??= addPackageJsonExport(
+          entry,
+          packageJson.type,
+          context.options.sourceRoot
+        );
+      }
     }
 
-    for (const entryPoint of entryPoints) {
-      const split = entryPoint.out.split(".");
-      split.pop();
-      const entry = split.join(".").replaceAll("\\", "/");
-
-      packageJson.exports[`./${entry}`] ??= addPackageJsonExport(entry);
-    }
-
-    packageJson.exports["./package.json"] ??= "./package.json";
-    packageJson.exports["."] ??= addPackageJsonExport("./src/index.ts");
-
-    packageJson.main = "./dist/index.cjs";
-    packageJson.module = "./dist/index.js";
+    packageJson.main =
+      packageJson.type === "commonjs" ? "./dist/index.js" : "./dist/index.cjs";
+    packageJson.module =
+      packageJson.type === "module" ? "./dist/index.js" : "./dist/index.mjs";
     packageJson.types = "./dist/index.d.ts";
 
-    await writeJsonFile(joinPaths(options.outdir, "package.json"), packageJson);
+    packageJson.exports = Object.keys(packageJson.exports).reduce(
+      (ret, key) => {
+        if (key.endsWith("/index") && !ret[key.replace("/index", "")]) {
+          ret[key.replace("/index", "")] = packageJson.exports[key];
+        }
+
+        return ret;
+      },
+      packageJson.exports
+    );
+
+    await writeJsonFile(
+      joinPaths(context.options.outdir, "package.json"),
+      packageJson
+    );
 
     stopwatch();
   }
 
-  return options;
+  return context;
 }
 
 /**
@@ -354,10 +384,31 @@ async function createOptions(options: ESBuildOptions[]) {
  * We only want to trigger the glob search once we are ready, and that is when
  * the previous build has finished. We get the build options from the deferred.
  */
-async function computeOptions(
-  options: () => Promise<ESBuildResolvedOptions>
-): Promise<ESBuildResolvedOptions> {
-  return options();
+async function generateContext(
+  getOptions: () => Promise<ESBuildResolvedOptions>
+): Promise<ESBuildContext> {
+  const options = await getOptions();
+
+  const rendererEngine = new RendererEngine([
+    shebangRenderer,
+    ...(options.renderers || [])
+    // treeShakingPlugin({
+    //   treeshake: options.treeshake,
+    //   name: options.globalName,
+    //   silent: options.silent
+    // }),
+    // cjsSplitting(),
+    // cjsInterop(),
+    // sizeReporter(),
+    // terserPlugin({
+    //   minifyOptions: options.minify,
+    //   format,
+    //   terserOptions: options.terserOptions,
+    //   globalName: options.globalName
+    // })
+  ]);
+
+  return { options, rendererEngine };
 }
 
 // /**
@@ -388,59 +439,59 @@ async function computeOptions(
 /**
  * Execute esbuild with all the configurations we pass
  */
-async function executeEsBuild(options: ESBuildResolvedOptions) {
-  writeDebug(`  🚀  Running ${options.name} build`, options.config);
-  const stopwatch = getStopwatch(`${options.name} build`);
+async function executeEsBuild(context: ESBuildContext) {
+  writeDebug(
+    `  🚀  Running ${context.options.name} build`,
+    context.options.config
+  );
+  const stopwatch = getStopwatch(`${context.options.name} build`);
 
   if (process.env.WATCH === "true") {
-    const context = await esbuild.context(
-      omit(options, ["name"]) as esbuild.SameShape<
+    const ctx = await esbuild.context(
+      omit(context.options, ["name"]) as esbuild.SameShape<
         esbuild.BuildOptions,
         esbuild.BuildOptions
       >
     );
 
-    watch(context, options);
+    watch(ctx, context.options);
   }
 
   const result = await esbuild.build(
-    omit(options, ["name", "metafile"]) as esbuild.SameShape<
+    omit(context.options, ["name", "metafile"]) as esbuild.SameShape<
       esbuild.BuildOptions,
       esbuild.BuildOptions
     >
   );
 
   if (result.metafile) {
-    const metafilePath = `${options.outdir}/${options.name}.meta.json`;
+    const metafilePath = `${context.options.outdir}/${context.options.name}.meta.json`;
     await hfs.write(metafilePath, JSON.stringify(result.metafile));
   }
 
   stopwatch();
 
-  return [options, result] as const;
+  return context;
 }
 
 /**
  * Copy the assets to the build directory
  */
-async function copyBuildAssets([options, result]: [
-  ESBuildResolvedOptions,
-  esbuild.BuildResult
-]) {
-  if (result.errors.length === 0) {
+async function copyBuildAssets(context: ESBuildContext) {
+  if (context.result?.errors.length === 0) {
     writeDebug(
-      `  📋  Copying asset files to output directory: ${options.outdir}`,
-      options.config
+      `  📋  Copying asset files to output directory: ${context.options.outdir}`,
+      context.options.config
     );
-    const stopwatch = getStopwatch(`${options.name} asset copy`);
+    const stopwatch = getStopwatch(`${context.options.name} asset copy`);
 
     await copyAssets(
-      options.config,
-      options.assets ?? [],
-      options.outdir,
-      options.projectRoot,
-      options.projectName,
-      options.sourceRoot,
+      context.options.config,
+      context.options.assets ?? [],
+      context.options.outdir,
+      context.options.projectRoot,
+      context.options.projectName,
+      context.options.sourceRoot,
       true,
       false
     );
@@ -448,29 +499,26 @@ async function copyBuildAssets([options, result]: [
     stopwatch();
   }
 
-  return [options, result] as const;
+  return context;
 }
 
 /**
  * Report the results of the build
  */
-async function reportResults([options, result]: [
-  ESBuildResolvedOptions,
-  esbuild.BuildResult
-]) {
-  if (result.errors.length === 0) {
-    if (result.warnings.length > 0) {
+async function reportResults(context: ESBuildContext) {
+  if (context.result?.errors.length === 0) {
+    if (context.result.warnings.length > 0) {
       writeWarning(
-        `  🚧  The following warnings occurred during the build: ${result.warnings
+        `  🚧  The following warnings occurred during the build: ${context.result.warnings
           .map(warning => warning.text)
           .join("\n")}`,
-        options.config
+        context.options.config
       );
     }
 
     writeSuccess(
-      `  📦  The ${options.name} build completed successfully`,
-      options.config
+      `  📦  The ${context.options.name} build completed successfully`,
+      context.options.config
     );
   }
 }
@@ -516,12 +564,16 @@ async function dependencyCheck(options: ESBuildOptions) {
  *
  * @param options - the build options
  */
-async function cleanOutputPath(options: ESBuildResolvedOptions) {
-  if (options.clean !== false && options.outdir) {
-    await clean(options.name, options.outdir, options.config);
+async function cleanOutputPath(context: ESBuildContext) {
+  if (context.options.clean !== false && context.options.outdir) {
+    await clean(
+      context.options.name,
+      context.options.outdir,
+      context.options.config
+    );
   }
 
-  return options;
+  return context;
 }
 
 /**
@@ -545,7 +597,7 @@ export async function build(options: ESBuildOptions | ESBuildOptions[]) {
     await transduce.async(
       await createOptions(opts),
       pipe.async(
-        computeOptions,
+        generateContext,
         cleanOutputPath,
         generatePackageJson,
         executeEsBuild,

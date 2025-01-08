@@ -15,7 +15,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.json",
-    "bin/storm-esbuild.ts",
+    "bin/esbuild.ts",
     "tsup.config.ts"
   ],
   "exclude": [

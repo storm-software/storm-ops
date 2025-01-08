@@ -1,4 +1,4 @@
-import md from "@textlint/markdown-to-ast";
+import { parse, Syntax } from "@textlint/markdown-to-ast";
 import anchor from "anchor-markdown-header";
 import { Parser } from "htmlparser2";
 import _ from "underscore";
@@ -31,9 +31,9 @@ function getMarkdownHeaders(lines, maxHeaderLevel) {
   function extractText(header) {
     return header.children
       .map(function (x) {
-        if (x.type === md.Syntax.Link) {
+        if (x.type === Syntax.Link) {
           return extractText(x);
-        } else if (x.type === md.Syntax.Image) {
+        } else if (x.type === Syntax.Image) {
           // Images (at least on GitHub, untested elsewhere) are given a hyphen
           // in the slug. We can achieve this behavior by adding an '*' to the
           // TOC entry. Think of it as a "magic char" that represents the iamge.
@@ -45,10 +45,9 @@ function getMarkdownHeaders(lines, maxHeaderLevel) {
       .join("");
   }
 
-  return md
-    .parse(lines.join("\n"))
+  return parse(lines.join("\n"))
     .children.filter(function (x) {
-      return x.type === md.Syntax.Header;
+      return x.type === Syntax.Header;
     })
     .map(function (x) {
       return !maxHeaderLevel || x.depth <= maxHeaderLevel
@@ -136,8 +135,18 @@ export function transform(
     getHtmlHeaders(linesToToc, maxHeaderLevelHtml)
   );
 
-  headers.sort(function (a, b) {
-    return a.line - b.line;
+  headers.sort((a, b) => {
+    if (!a && b) {
+      return -1;
+    }
+    if (a && !b) {
+      return 1;
+    }
+    if (!a && !b) {
+      return 0;
+    }
+
+    return a!.line - b!.line;
   });
 
   const allHeaders = countHeaders(headers),
@@ -216,10 +225,9 @@ function rankify(headers, max) {
 }
 
 export function getHtmlHeaders(lines, maxHeaderLevel) {
-  const source = md
-    .parse(lines.join("\n"))
+  const source = parse(lines.join("\n"))
     .children.filter(function (node) {
-      return node.type === md.Syntax.HtmlBlock || node.type === md.Syntax.Html;
+      return node.type === Syntax.Html;
     })
     .map(function (node) {
       return node.raw;

@@ -6,10 +6,10 @@ import {
   writeSuccess
 } from "@storm-software/config-tools";
 import { Command, Option } from "commander";
-import { runCommit } from "../commit";
-import { runCommitLint } from "../commitlint/run-lint";
-import { runReadme } from "../readme";
-import { runRelease } from "../release";
+import { runCommit } from "../commit/run";
+import { runCommitLint } from "../commitlint/run";
+import { runReadme } from "../readme/run";
+import { runRelease } from "../release/run";
 import type { ReadMeOptions } from "../types";
 
 let _config: Partial<StormConfig> = {};
@@ -32,7 +32,7 @@ export function createProgram(config: StormConfig) {
     const commitConfig = new Option(
       "--config <file>",
       "The Commitizen config file path"
-    ).default("@storm-software/git-tools/src/commit/config.js");
+    ).default("@storm-software/git-tools/commit/config");
 
     const commitDryRun = new Option(
       "--dry-run",
@@ -125,7 +125,7 @@ export function createProgram(config: StormConfig) {
 }
 
 export async function commitAction({
-  config = "@storm-software/git-tools/src/commit/config.js",
+  config = "@storm-software/git-tools/commit/config.js",
   dryRun = false
 }: {
   config: string;

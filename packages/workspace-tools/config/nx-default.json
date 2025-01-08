@@ -290,6 +290,9 @@
       "{projectRoot}/src/**/*.toml",
       "{projectRoot}/src/**/*.md",
       "{projectRoot}/src/**/*.mdx",
+      "{projectRoot}/build.config.ts",
+      "{projectRoot}/tsup.config.ts",
+      "{projectRoot}/bin/**/*",
       "{projectRoot}/tools/**/*",
       "{projectRoot}/scripts/**/*",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -449,107 +452,13 @@
     "projects": ["packages/*", "crates/*"],
     "projectsRelationship": "independent",
     "releaseTagPattern": "{projectName}@{version}",
-    "conventionalCommits": {
-      "types": {
-        "feat": {
-          "semverBump": "minor",
-          "changelog": {
-            "title": "Features",
-            "hidden": false
-          }
-        },
-        "fix": {
-          "semverBump": "patch",
-          "changelog": {
-            "title": "Bug Fixes",
-            "hidden": false
-          }
-        },
-        "perf": {
-          "semverBump": "none",
-          "changelog": {
-            "title": "Performance Improvements",
-            "hidden": false
-          }
-        },
-        "refactor": {
-          "semverBump": "patch",
-          "changelog": {
-            "title": "Refactoring",
-            "hidden": false
-          }
-        },
-        "docs": {
-          "semverBump": "none",
-          "changelog": {
-            "title": "Documentation",
-            "hidden": false
-          }
-        },
-        "deps": {
-          "semverBump": "patch",
-          "changelog": {
-            "title": "Dependency Upgrades",
-            "hidden": false
-          }
-        },
-        "types": {
-          "semverBump": "minor",
-          "changelog": {
-            "title": "Type Definitions",
-            "hidden": false
-          }
-        },
-        "chore": {
-          "semverBump": "none",
-          "changelog": {
-            "title": "Chores",
-            "hidden": true
-          }
-        },
-        "examples": {
-          "semverBump": "none",
-          "changelog": {
-            "title": "Examples",
-            "hidden": false
-          }
-        },
-        "test": {
-          "semverBump": "none",
-          "changelog": {
-            "title": "Testing",
-            "hidden": true
-          }
-        },
-        "style": {
-          "semverBump": "minor",
-          "changelog": {
-            "title": "Styling",
-            "hidden": false
-          }
-        },
-        "ci": {
-          "semverBump": "patch",
-          "changelog": {
-            "title": "Continuous Integration",
-            "hidden": false
-          }
-        },
-        "revert": {
-          "semverBump": "patch",
-          "changelog": {
-            "title": "Revert",
-            "hidden": false
-          }
-        }
-      }
-    },
     "changelog": {
       "automaticFromRef": true,
       "workspaceChangelog": false,
       "projectChangelogs": {
         "createRelease": "github",
         "entryWhenNoChanges": false,
+        "renderer": "@storm-software/git-tools/changelog-renderer",
         "renderOptions": {
           "authors": false,
           "commitReferences": true,
@@ -565,6 +474,9 @@
         "specifierSource": "conventional-commits"
       }
     }
+  },
+  "cli": {
+    "packageManager": "pnpm"
   },
   "parallel": 3,
   "defaultBase": "main",

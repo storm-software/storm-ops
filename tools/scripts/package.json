@@ -7,8 +7,8 @@
     "*": "./dist/*.js"
   },
   "scripts": {
-    "build": "tsup-node --config=\"./build.config.ts\"",
-    "clean": "pnpm rimraf dist"
+    "build": "tsup --config=\"./build.config.ts\"",
+    "clean": "rimraf dist"
   },
   "dependencies": {
     "consola": "3.3.3",

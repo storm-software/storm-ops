@@ -21,10 +21,12 @@ import {
   TypeScriptBuildOptions,
   TypeScriptBuildResolvedOptions
 } from "@storm-software/build-tools";
-import * as esbuild from "esbuild";
+import type { BuildOptions, BuildResult, Format, Metafile } from "esbuild";
+import { SourceMap } from "rollup";
+import { RawSourceMap } from "source-map";
 
 export type ContextForOutPathGeneration = {
-  format: esbuild.Format;
+  format: Format;
   /** "type" field in project's package.json */
   pkgType?: string;
 };
@@ -36,20 +38,21 @@ export type OutExtensionFactory = (
 ) => OutExtensionObject;
 
 export type ESBuildOptions = Omit<
-  esbuild.BuildOptions,
+  BuildOptions,
   "outbase" | "outfile" | "outExtension"
 > &
   TypeScriptBuildOptions & {
     emitTypes?: boolean;
     injectShims?: boolean;
     outExtension?: OutExtensionFactory;
+    renderers?: Renderer[];
   };
 
-export type ESBuildResult = esbuild.BuildResult;
+export type ESBuildResult = BuildResult;
 
 export type ESBuildResolvedOptions = TypeScriptBuildResolvedOptions &
   Pick<
-    esbuild.BuildOptions,
+    BuildOptions,
     "loader" | "inject" | "metafile" | "keepNames" | "color"
   > & {
     injectShims: boolean;
@@ -58,6 +61,7 @@ export type ESBuildResolvedOptions = TypeScriptBuildResolvedOptions &
     projectConfigurations: ProjectsConfigurations;
     outExtension: OutExtensionObject;
     entryPoints: string[];
+    renderers?: Renderer[];
   };
 
 export type ESBuildCLIOptions = AdditionalCLIOptions &
@@ -86,3 +90,69 @@ export type ESBuildCLIOptions = AdditionalCLIOptions &
     | "emitTypes"
     | "injectShims"
   >;
+
+export type MaybePromise<T> = T | Promise<T>;
+
+export type ChunkInfo = {
+  type: "chunk";
+  code: string;
+  map?: string | RawSourceMap | null;
+  path: string;
+  /**
+   * Sets the file mode
+   */
+  mode?: number;
+  entryPoint?: string;
+  exports?: string[];
+  imports?: Metafile["outputs"][string]["imports"];
+};
+
+export type AssetInfo = {
+  type: "asset";
+  path: string;
+  contents: Uint8Array;
+};
+
+export type RenderChunk = (
+  options: ESBuildResolvedOptions,
+  code: string,
+  chunkInfo: ChunkInfo
+) => MaybePromise<
+  | {
+      code: string;
+      map?: object | string | SourceMap | null;
+    }
+  | undefined
+  | null
+  | void
+>;
+
+export type BuildStart = (
+  options: ESBuildResolvedOptions
+) => MaybePromise<void>;
+export type BuildEnd = (
+  options: ESBuildResolvedOptions,
+  ctx: { writtenFiles: WrittenFile[] }
+) => MaybePromise<void>;
+
+export type ModifyEsbuildOptions = (options: ESBuildResolvedOptions) => void;
+
+/**
+ * A renderer that can be used to determine how chunks are written to the output directory and to modify the esbuild process
+ *
+ * @remarks
+ * It is essentially an extended form of the esbuild's built in plugins
+ */
+export type Renderer = {
+  name: string;
+
+  esbuildOptions?: ModifyEsbuildOptions;
+
+  buildStart?: BuildStart;
+
+  renderChunk?: RenderChunk;
+
+  buildEnd?: BuildEnd;
+};
+
+export type WrittenFile = { readonly name: string; readonly size: number };

@@ -46,9 +46,9 @@
     "pnpm": ">=9.15.2"
   },
   "bin": {
-    "storm-unbuild": "./bin/storm-unbuild.js",
-    "storm-unbuild-cjs": "./bin/storm-unbuild.cjs",
-    "storm-unbuild-esm": "./bin/storm-unbuild.js"
+    "storm-unbuild": "./bin/unbuild.js",
+    "storm-unbuild-cjs": "./bin/unbuild.cjs",
+    "storm-unbuild-esm": "./bin/unbuild.js"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -203,9 +203,9 @@
   "devDependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/build-tools": "0.119.0",
-    "@storm-software/config": "1.88.0",
-    "@storm-software/config-tools": "1.127.0",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "@swc/core": "catalog:",
     "@types/node": "catalog:",
     "nx": "catalog:",

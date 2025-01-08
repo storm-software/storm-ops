@@ -290,6 +290,8 @@
       "{projectRoot}/src/**/*.toml",
       "{projectRoot}/src/**/*.md",
       "{projectRoot}/src/**/*.mdx",
+      "{projectRoot}/build.config.ts",
+      "{projectRoot}/tsup.config.ts",
       "{projectRoot}/tools/**/*",
       "{projectRoot}/scripts/**/*",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -491,6 +493,7 @@
   "defaultBase": "main",
   "useDaemonProcess": true,
   "useInferencePlugins": true,
+  "neverConnectToCloud": true,
   "plugins": [
     "./dist/plugins/rust/index.js",
     "./dist/plugins/typescript/index.js",

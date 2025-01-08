@@ -1,4 +1,5 @@
 /* eslint-disable no-prototype-builtins */
+import jsonParser from "jsonc-parser";
 import { readFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { ProjectFileMap, ProjectGraph } from "nx/src/config/project-graph.js";
@@ -42,7 +43,6 @@ async function getJsonConfigLinesForErrorMessage(
   jsonPath: string[]
 ): Promise<{ startLine: number; endLine: number } | null> {
   try {
-    const jsonParser = await import("jsonc-parser");
     const rootNode = jsonParser.parseTree(rawConfig);
     const node = jsonParser.findNodeAtLocation(rootNode!, jsonPath);
     if (!node) {
@@ -621,7 +621,7 @@ export async function createNxReleaseConfig(
       : {}
   ) as any;
 
-  const userGroups = Object.values(userConfig.groups ?? {});
+  // const userGroups = Object.values(userConfig.groups ?? {});
   // const disableWorkspaceChangelog =
   //   userGroups.length > 1 ||
   //   (userGroups.length === 1 &&
@@ -633,7 +633,7 @@ export async function createNxReleaseConfig(
 
   const gitDefaults = {
     commit: false as boolean,
-    commitMessage: "chore(release): publish {version}",
+    commitMessage: "chore(release): Publish monorepo release updates",
     tag: false as boolean,
     stageChanges: false as boolean
   } satisfies NxReleaseGitConfig;
