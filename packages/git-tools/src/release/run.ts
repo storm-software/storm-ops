@@ -129,7 +129,6 @@ export const runRelease = async (
 
     await releaseChangelog({
       ...options,
-      ...nxReleaseConfig?.changelog,
       version:
         nxReleaseConfig?.projectsRelationship !== "fixed"
           ? undefined
