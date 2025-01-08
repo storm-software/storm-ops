@@ -41,11 +41,6 @@ export const DEFAULT_RELEASE_CONFIG: NxReleaseConfiguration = {
         commitReferences: true,
         versionTitleDate: true
       }
-    },
-    git: {
-      tag: false,
-      commit: true,
-      commitMessage: "release(monorepo): Publish workspace release updates"
     }
   },
   version: {
@@ -55,11 +50,6 @@ export const DEFAULT_RELEASE_CONFIG: NxReleaseConfiguration = {
     generatorOptions: {
       currentVersionResolver: "git-tag",
       specifierSource: "conventional-commits"
-    },
-    git: {
-      stageChanges: true,
-      commit: false,
-      tag: false
     }
   }
 };

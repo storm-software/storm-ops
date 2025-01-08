@@ -629,11 +629,11 @@ export async function createNxReleaseConfig(
   //   (userConfig.projectsRelationship === "independent" &&
   //     !userGroups.some(g => g.projectsRelationship === "fixed"));
 
-  const defaultRendererPath = "./changelog-renderer";
+  const defaultRendererPath = "@storm-software/git-tools/changelog-renderer";
 
   const gitDefaults = {
     commit: false as boolean,
-    commitMessage: "chore(release): Publish monorepo release updates",
+    commitMessage: "release(monorepo): Publish workspace release updates",
     tag: false as boolean,
     stageChanges: false as boolean
   } satisfies NxReleaseGitConfig;

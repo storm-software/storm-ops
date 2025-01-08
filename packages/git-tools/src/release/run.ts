@@ -6,7 +6,6 @@ import {
   writeFatal,
   writeInfo,
   writeSuccess,
-  writeTrace,
   writeWarning
 } from "@storm-software/config-tools";
 import defu from "defu";
@@ -96,8 +95,11 @@ export const runRelease = async (
 
     nxJson.release = defu(nxJson.release, DEFAULT_RELEASE_CONFIG);
 
-    writeDebug("Completed reading nx.json release configuration", config);
-    writeTrace(nxJson.release, config);
+    writeInfo(
+      "Using the following `nx.json` release configuration values",
+      config
+    );
+    writeInfo(nxJson.release, config);
 
     // Apply default configuration to any optional user configuration
     const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
@@ -123,7 +125,10 @@ export const runRelease = async (
         dryRun: false,
         verbose: isVerbose(config.logLevel),
         preid: config.preid,
-        deleteVersionPlans: false
+        deleteVersionPlans: false,
+        stageChanges: true,
+        gitCommit: false,
+        gitTag: false
       }
     );
 
@@ -137,7 +142,9 @@ export const runRelease = async (
       dryRun: false,
       verbose: isVerbose(config.logLevel),
       to: options.head ?? process.env.NX_HEAD,
-      from: options.base ?? process.env.NX_BASE
+      from: options.base ?? process.env.NX_BASE,
+      gitCommit: true,
+      gitCommitMessage: "release(monorepo): Publish workspace release updates"
     });
 
     writeDebug("Tagging commit with git", config);
