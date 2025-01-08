@@ -2,7 +2,6 @@ import type { NxReleaseConfiguration } from "nx/src/config/nx-json";
 import { DEFAULT_COMMIT_TYPES } from "../types";
 
 export const DEFAULT_RELEASE_CONFIG: NxReleaseConfiguration = {
-  projects: ["packages/*", "crates/*", "apps/*"],
   projectsRelationship: "independent",
   releaseTagPattern: "{projectName}@{version}",
   conventionalCommits: {

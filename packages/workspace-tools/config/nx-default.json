@@ -454,7 +454,23 @@
     "releaseTagPattern": "{projectName}@{version}",
     "changelog": {
       "automaticFromRef": true,
-      "workspaceChangelog": false
+      "workspaceChangelog": false,
+      "projectChangelogs": {
+        "renderer": "@storm-software/git-tools/changelog-renderer",
+        "renderOptions": {
+          "authors": false,
+          "commitReferences": true,
+          "versionTitleDate": true
+        }
+      }
+    },
+    "version": {
+      "preVersionCommand": "pnpm build-prod",
+      "generator": "@storm-software/workspace-tools:release-version",
+      "generatorOptions": {
+        "currentVersionResolver": "git-tag",
+        "specifierSource": "conventional-commits"
+      }
     }
   },
   "cli": {

@@ -385,7 +385,12 @@
       }
     },
     "version": {
-      "preVersionCommand": "pnpm build-prod"
+      "preVersionCommand": "pnpm build-prod",
+      "generator": "@storm-software/workspace-tools:release-version",
+      "generatorOptions": {
+        "currentVersionResolver": "git-tag",
+        "specifierSource": "conventional-commits"
+      }
     }
   },
   "parallel": 1,
