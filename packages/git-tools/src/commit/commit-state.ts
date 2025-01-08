@@ -157,8 +157,13 @@ export const createState = async (
     !state.config.prompt.questions.scope.enum ||
     Object.keys(state.config.prompt.questions.scope.enum).length === 0
   ) {
-    process.env.NX_WORKSPACE_ROOT_PATH ??=
-      config.workspaceRoot ?? process.env.STORM_WORKSPACE_ROOT ?? process.cwd();
+    const workspaceRoot =
+      config.workspaceRoot ||
+      process.env.NX_WORKSPACE_ROOT_PATH ||
+      process.env.STORM_WORKSPACE_ROOT ||
+      process.cwd();
+    process.env.NX_WORKSPACE_ROOT_PATH ??= workspaceRoot;
+
     const projectGraph = await createProjectGraphAsync({
       exitOnError: true
     });
@@ -168,22 +173,31 @@ export const createState = async (
 
     const scopes = await getScopeEnum({});
     for (const scope of scopes) {
-      const project = projectConfigs.projects[scope];
-      if (project) {
-        let description = `${project.name} - ${project.root}`;
-
-        const packageJsonPath = joinPaths(project.root, "package.json");
-        if (await hfs.isFile(packageJsonPath)) {
-          const packageJson = await hfs.json(packageJsonPath);
-          description = packageJson.description || description;
-        }
-
+      if (scope === "monorepo") {
         state.config.prompt.questions.scope.enum[scope] = {
-          title: chalkTemplate`{bold ${project.name}} - ${project.root}`,
-          description,
+          title: chalkTemplate`{bold monorepo} - workspace root`,
+          description: "The base workspace package (workspace root)",
           hidden: false,
-          projectRoot: project.root
+          projectRoot: "/"
         } as CommitScopeProps;
+      } else {
+        const project = projectConfigs.projects[scope];
+        if (project) {
+          let description = `${project.name} - ${project.root}`;
+
+          const packageJsonPath = joinPaths(project.root, "package.json");
+          if (await hfs.isFile(packageJsonPath)) {
+            const packageJson = await hfs.json(packageJsonPath);
+            description = packageJson.description || description;
+          }
+
+          state.config.prompt.questions.scope.enum[scope] = {
+            title: chalkTemplate`{bold ${project.name}} - ${project.root}`,
+            description,
+            hidden: false,
+            projectRoot: project.root
+          } as CommitScopeProps;
+        }
       }
     }
   }

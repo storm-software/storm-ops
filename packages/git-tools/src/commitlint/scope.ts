@@ -12,8 +12,12 @@ export async function getNxScopes(
 ): Promise<string[]> {
   const ctx = context || {};
 
-  process.env.NX_WORKSPACE_ROOT_PATH ??=
-    process.env.STORM_WORKSPACE_ROOT ?? ctx.cwd ?? process.cwd();
+  const workspaceRoot =
+    process.env.NX_WORKSPACE_ROOT_PATH ||
+    process.env.STORM_WORKSPACE_ROOT ||
+    ctx.cwd ||
+    process.cwd();
+  process.env.NX_WORKSPACE_ROOT_PATH ??= workspaceRoot;
 
   const projectGraph = await createProjectGraphAsync({
     exitOnError: true
@@ -21,7 +25,7 @@ export async function getNxScopes(
   const projectConfigs =
     readProjectsConfigurationFromProjectGraph(projectGraph);
 
-  return Object.entries(projectConfigs.projects || {})
+  const result = Object.entries(projectConfigs.projects || {})
     .map(([name, project]) => ({
       name,
       ...project
@@ -31,6 +35,9 @@ export async function getNxScopes(
     .map(project => project.name)
     .map(name => (name.charAt(0) === "@" ? name.split("/")[1] : name))
     .filter(Boolean) as string[];
+  result.unshift("monorepo");
+
+  return result;
 }
 
 export const getScopeEnum = async (context?: any): Promise<string[]> => {

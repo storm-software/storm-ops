@@ -69,6 +69,10 @@ commit-msg:
 pre-push:
   piped: true
   commands:
+    build:
+      glob: "**/*"
+      run: "pnpm build"
+      stage_fixed: true
     validate:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*"
@@ -100,10 +104,6 @@ pre-push:
     format:
       glob: "**/*"
       run: "pnpm format"
-      stage_fixed: true
-    build:
-      glob: "**/*"
-      run: "pnpm build"
       stage_fixed: true
 
 post-merge:
