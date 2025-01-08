@@ -1,5 +1,9 @@
-import type { NxReleaseConfiguration } from "nx/src/config/nx-json";
-import { DEFAULT_COMMIT_TYPES } from "../types";
+import { DEFAULT_COMMIT_QUESTIONS, DEFAULT_COMMIT_TYPES } from "../types";
+
+export const DEFAULT_CONVENTIONAL_COMMITS_CONFIG = {
+  questions: DEFAULT_COMMIT_QUESTIONS,
+  types: DEFAULT_COMMIT_TYPES
+};
 
 export const DEFAULT_RELEASE_GROUP_CONFIG = {
   projectsRelationship: "independent",
@@ -24,10 +28,8 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
   }
 };
 
-export const DEFAULT_RELEASE_CONFIG: NxReleaseConfiguration = {
-  conventionalCommits: {
-    types: DEFAULT_COMMIT_TYPES
-  },
+export const DEFAULT_RELEASE_CONFIG = {
+  conventionalCommits: DEFAULT_CONVENTIONAL_COMMITS_CONFIG,
   changelog: {
     automaticFromRef: true,
     workspaceChangelog: false,

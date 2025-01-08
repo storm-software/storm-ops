@@ -586,6 +586,8 @@ export type NxReleaseChangelogConfig = NonNullable<
   NxReleaseConfig["changelog"]
 >;
 
+export type NxReleaseGroupConfig = NxReleaseGroupsConfig[string];
+
 export type NxReleaseRequiredGitConfig = Required<{
   commit?: boolean | undefined;
   commitMessage?: string | undefined;
