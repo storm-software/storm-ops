@@ -455,18 +455,16 @@
         "projectsRelationship": "independent",
         "releaseTagPattern": "{projectName}@{version}",
         "changelog": {
-          "automaticFromRef": true,
-          "workspaceChangelog": false,
-          "projectChangelogs": {
-            "renderer": "@storm-software/git-tools/changelog-renderer",
-            "renderOptions": {
-              "authors": false,
-              "commitReferences": true,
-              "versionTitleDate": true
-            }
+          "entryWhenNoChanges": false,
+          "renderer": "@storm-software/git-tools/changelog-renderer",
+          "renderOptions": {
+            "authors": false,
+            "commitReferences": true,
+            "versionTitleDate": true
           }
         },
         "version": {
+          "groupPreVersionCommand": "pnpm build-prod",
           "generator": "@storm-software/workspace-tools:release-version",
           "generatorOptions": {
             "currentVersionResolver": "git-tag",

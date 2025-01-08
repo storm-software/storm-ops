@@ -20,7 +20,7 @@ import type { ReleaseVersion } from "nx/src/command-line/release/utils/shared.js
 import { readNxJson } from "nx/src/config/nx-json.js";
 import { createProjectFileMapUsingProjectGraph } from "nx/src/project-graph/file-map-utils.js";
 import { createProjectGraphAsync } from "nx/src/project-graph/project-graph.js";
-import { DEFAULT_RELEASE_CONFIG } from "./config";
+import { DEFAULT_RELEASE_CONFIG, DEFAULT_RELEASE_GROUP_CONFIG } from "./config";
 import { releaseVersion } from "./nx-version";
 
 export interface NxReleaseChangelogResult {
@@ -81,11 +81,25 @@ export const runRelease = async (
     //       );
     //     }
 
+    if (nxJson.release?.groups) {
+      nxJson.release.groups = Object.keys(nxJson.release.groups).reduce(
+        (ret, groupName) => {
+          const groupConfig = nxJson.release!.groups![groupName];
+
+          ret[groupName] = defu(groupConfig, DEFAULT_RELEASE_GROUP_CONFIG);
+          return ret;
+        },
+        {}
+      );
+    }
+
+    nxJson.release = defu(nxJson.release, DEFAULT_RELEASE_CONFIG);
+
     // Apply default configuration to any optional user configuration
     const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
       projectGraph,
       await createProjectFileMapUsingProjectGraph(projectGraph),
-      defu(nxJson.release, DEFAULT_RELEASE_CONFIG)
+      nxJson.release
     );
     if (configError) {
       return await handleNxReleaseConfigError(configError);
