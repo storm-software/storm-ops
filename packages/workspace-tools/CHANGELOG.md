@@ -1,8 +1,16 @@
+## 1.219.0 (2025-01-02)
+
+### Features
+
+- **git-tools:** Added the `read-yaml-file` dependency to the package ([576b27cf](https://github.com/storm-software/storm-ops/commit/576b27cf))
+
 ## 1.218.1 (2025-01-02)
 
 ### Bug Fixes
 
-- **workspace-tools:** Remove unrequired depenendencies from `npm-publish` executor ([b940506e](https://github.com/storm-software/storm-ops/commit/b940506e))
+- **workspace-tools:** Remove unrequired depenendencies from `npm-publish`
+  executor
+  ([b940506e](https://github.com/storm-software/storm-ops/commit/b940506e))
 
 ## 1.218.0 (2025-01-02)
 
