@@ -25,7 +25,14 @@
           "pnpm copyfiles --up=5 ./packages/git-tools/src/readme/templates/* dist/packages/git-tools/dist/readme/templates",
           "pnpm copyfiles --up=4 ./packages/git-tools/src/lefthook/* dist/packages/git-tools/dist/lefthook",
           "pnpm copyfiles --up=4 ./packages/git-tools/src/lint-staged/* dist/packages/git-tools/dist/lint-staged",
-          "pnpm copyfiles --up=3 ./packages/git-tools/dist/bin/** dist/packages/git-tools"
+          "pnpm copyfiles --up=4 ./packages/git-tools/dist/bin/git/* dist/packages/git-tools/git",
+          "pnpm copyfiles --up=4 ./packages/git-tools/dist/bin/post-checkout/* dist/packages/git-tools/post-checkout",
+          "pnpm copyfiles --up=4 ./packages/git-tools/dist/bin/post-merge/* dist/packages/git-tools/post-merge",
+          "pnpm copyfiles --up=4 ./packages/git-tools/dist/bin/pre-commit/* dist/packages/git-tools/pre-commit",
+          "pnpm copyfiles --up=4 ./packages/git-tools/dist/bin/pre-install/* dist/packages/git-tools/pre-install",
+          "pnpm copyfiles --up=4 ./packages/git-tools/dist/bin/pre-push/* dist/packages/git-tools/pre-push",
+          "pnpm copyfiles --up=4 ./packages/git-tools/dist/bin/prepare/* dist/packages/git-tools/prepare",
+          "pnpm copyfiles --up=4 ./packages/git-tools/dist/bin/version-warning/* dist/packages/git-tools/version-warning"
         ]
       }
     },
