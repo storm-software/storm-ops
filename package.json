@@ -78,7 +78,7 @@
     "nx": "nx",
     "prebuild": "pnpm build-plugins",
     "prebuild-all": "pnpm build-plugins",
-    "prerelease": "pnpm nx run git-tools:build:production",
+    "prerelease": "nx run git-tools:build:production",
     "push": "git push origin main:main",
     "rebuild": "pnpm clean && pnpm build",
     "rebuild-all": "pnpm clean-all && pnpm build-all",

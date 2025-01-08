@@ -102,6 +102,10 @@ jobs:
           file
         run: chmod a=rwx dist/packages/create-storm-workspace/package.json
 
+      - name: Run pre-release script
+        run: pnpm prerelease
+        shell: bash
+
       - name: Release Library Version Updates
         run: pnpm release --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
         env:
