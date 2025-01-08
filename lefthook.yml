@@ -71,7 +71,7 @@ pre-push:
   commands:
     build:
       glob: "**/*"
-      run: "pnpm build"
+      run: "pnpm build-all"
       stage_fixed: true
     validate:
       files: "git diff --name-only HEAD @{push}"
