@@ -5,7 +5,7 @@ rules:
       - ci-reusable.yml:86:9
       - ci.yml:158:9
       - ci.yml:154:9
-      - ci.yml:105:9
+      - ci.yml:109:9
   dangerous-triggers:
     ignore:
       - greetings.yml:3:1
