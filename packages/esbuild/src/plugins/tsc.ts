@@ -17,11 +17,9 @@
 
 import { hfs } from "@humanfs/node";
 import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
-import { joinPathFragments } from "@nx/devkit";
-import { loadStormConfig, run, writeError } from "@storm-software/config-tools";
+import { joinPaths, run, writeError } from "@storm-software/config-tools";
 import type * as esbuild from "esbuild";
-import path from "node:path";
-import { ESBuildResolvedOptions } from "../types";
+import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
 
 /**
  * Bundle all type definitions by using the API Extractor from RushStack
@@ -38,7 +36,7 @@ function bundleTypeDefinitions(
 ) {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const { dependencies, peerDependencies, devDependencies } = require(
-    `${options.projectRoot}/package.json`
+    joinPaths(options.projectRoot, "package.json")
   );
 
   // get the list of bundled and non bundled as well as their eventual type dependencies
@@ -78,13 +76,13 @@ function bundleTypeDefinitions(
       },
       dtsRollup: {
         enabled: true,
-        untrimmedFilePath: path.join(options.outdir, `${outfile}.d.ts`)
+        untrimmedFilePath: joinPaths(options.outdir, `${outfile}.d.ts`)
       },
       tsdocMetadata: {
         enabled: false
       }
     },
-    packageJsonFullPath: path.join(options.projectRoot, "package.json"),
+    packageJsonFullPath: joinPaths(options.projectRoot, "package.json"),
     configObjectFullPath: undefined
   });
 
@@ -107,20 +105,17 @@ function bundleTypeDefinitions(
 /**
  * Triggers the TypeScript compiler and the type bundler.
  */
-export const tscPlugin: (emitTypes?: boolean) => esbuild.Plugin = (
-  emitTypes?: boolean
-) => ({
+export const tscPlugin = (
+  options: ESBuildOptions,
+  resolvedOptions: ESBuildResolvedOptions
+): esbuild.Plugin => ({
   name: "storm:tsc",
   setup(build) {
-    const options = build.initialOptions as ESBuildResolvedOptions;
-
-    if (emitTypes === false) {
+    if (options.emitTypes === false) {
       return; // build has opted out of emitting types
     }
 
     build.onStart(async () => {
-      const config = await loadStormConfig();
-
       // we only call tsc if not in watch mode or in dev mode (they skip types)
       if (process.env.WATCH !== "true" && process.env.DEV !== "true") {
         // // --paths null basically prevents typescript from using paths from the
@@ -134,43 +129,64 @@ export const tscPlugin: (emitTypes?: boolean) => esbuild.Plugin = (
         // );
 
         await run(
-          config,
-          `pnpm exec tsc --project ${options.tsconfig}`,
-          options.config.workspaceRoot
+          resolvedOptions.config,
+          `pnpm exec tsc --project ${resolvedOptions.tsconfig}`,
+          resolvedOptions.config.workspaceRoot
         );
       }
 
       // we bundle types if we also bundle the entry point and it is a ts file
-      if (options.bundle && options.entryPoints[0]!.endsWith(".ts")) {
+      if (
+        resolvedOptions.bundle &&
+        resolvedOptions.entryPoints &&
+        resolvedOptions.entryPoints.length > 0 &&
+        resolvedOptions.entryPoints[0] &&
+        resolvedOptions.entryPoints[0].endsWith(".ts")
+      ) {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const sourceRoot = options.sourceRoot.replaceAll(
-          options.projectRoot,
+        const sourceRoot = resolvedOptions.sourceRoot.replaceAll(
+          resolvedOptions.projectRoot,
           ""
         );
-        const typeOutDir = options.outdir; // type out dir
-        const entryPoint = options.entryPoints[0]!.replace(
-          sourceRoot,
-          ""
-        ).replace(/\.ts$/, "");
-        const bundlePath = joinPathFragments(options.outdir, entryPoint);
+        const typeOutDir = resolvedOptions.outdir; // type out dir
+        const entryPoint = resolvedOptions.entryPoints[0]
+          .replace(sourceRoot, "")
+          .replace(/\.ts$/, "");
+        const bundlePath = joinPaths(resolvedOptions.outdir, entryPoint);
 
         let dtsPath;
         if (
           await hfs.isFile(
-            `${options.config.workspaceRoot}/${typeOutDir}/${entryPoint}.d.ts`
+            joinPaths(
+              resolvedOptions.config.workspaceRoot,
+              typeOutDir,
+              `${entryPoint}.d.ts`
+            )
           )
         ) {
-          dtsPath = `${options.config.workspaceRoot}/${typeOutDir}/${entryPoint}.d.ts`;
+          dtsPath = joinPaths(
+            resolvedOptions.config.workspaceRoot,
+            typeOutDir,
+            `${entryPoint}.d.ts`
+          );
         } else if (
           await hfs.isFile(
-            `${options.config.workspaceRoot}/${typeOutDir}/${entryPoint.replace(/^src\//, "")}.d.ts`
+            joinPaths(
+              resolvedOptions.config.workspaceRoot,
+              typeOutDir,
+              `${entryPoint.replace(/^src\//, "")}.d.ts`
+            )
           )
         ) {
-          dtsPath = `${options.config.workspaceRoot}/${typeOutDir}/${entryPoint.replace(/^src\//, "")}.d.ts`;
+          dtsPath = joinPaths(
+            resolvedOptions.config.workspaceRoot,
+            typeOutDir,
+            `${entryPoint.replace(/^src\//, "")}.d.ts`
+          );
         }
 
         const ext =
-          options.outExtension.dts || options.format === "esm"
+          resolvedOptions.outExtension.dts || resolvedOptions.format === "esm"
             ? "d.mts"
             : "d.ts";
         if (process.env.WATCH !== "true" && process.env.DEV !== "true") {
@@ -178,8 +194,8 @@ export const tscPlugin: (emitTypes?: boolean) => esbuild.Plugin = (
           bundleTypeDefinitions(
             dtsPath,
             bundlePath,
-            options.external ?? [],
-            options
+            resolvedOptions.external ?? [],
+            resolvedOptions
           );
 
           const dtsContents = await hfs.text(`${bundlePath}.d.ts`);

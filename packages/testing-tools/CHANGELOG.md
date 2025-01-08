@@ -2,11 +2,14 @@
 
 ### Features
 
-- **workspace-tools:** Added code to strip `catalog:` references in published `package.json` files ([d50c3ea6](https://github.com/storm-software/storm-ops/commit/d50c3ea6))
+- **workspace-tools:** Added code to strip `catalog:` references in published
+  `package.json` files
+  ([d50c3ea6](https://github.com/storm-software/storm-ops/commit/d50c3ea6))
 
 ### Bug Fixes
 
-- **storm-ops:** Remove unused `deepmerge` references and fix build ([0f4ee3f7](https://github.com/storm-software/storm-ops/commit/0f4ee3f7))
+- **storm-ops:** Remove unused `deepmerge` references and fix build
+  ([0f4ee3f7](https://github.com/storm-software/storm-ops/commit/0f4ee3f7))
 
 ## 1.93.2 (2025-01-02)
 

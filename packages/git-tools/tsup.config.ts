@@ -17,7 +17,8 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    external: ["nx", "@nx/*"]
+    external: ["nx", "@nx/*"],
+    skipNodeModulesBundle: true
   },
   {
     name: "git-tools-bin",

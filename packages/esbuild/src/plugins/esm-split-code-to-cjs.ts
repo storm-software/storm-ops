@@ -16,12 +16,16 @@
  -------------------------------------------------------------------*/
 
 import * as esbuild from "esbuild";
+import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
 
 /**
  * Code splitting only works in ESM at the moment, this plugin will convert the
  * ESM code to CJS automatically after the build. Only works with `outdir` set.
  */
-export const esmSplitCodeToCjsPlugin: esbuild.Plugin = {
+export const esmSplitCodeToCjsPlugin = (
+  options: ESBuildOptions,
+  resolvedOptions: ESBuildResolvedOptions
+): esbuild.Plugin => ({
   name: "storm:esm-split-code-to-cjs",
   setup(build) {
     build.onEnd(async result => {
@@ -29,7 +33,7 @@ export const esmSplitCodeToCjsPlugin: esbuild.Plugin = {
       const jsFiles = outFiles.filter(f => f.endsWith("js"));
 
       await esbuild.build({
-        outdir: build.initialOptions.outdir,
+        outdir: resolvedOptions.outdir,
         entryPoints: jsFiles,
         allowOverwrite: true,
         format: "cjs",
@@ -38,4 +42,4 @@ export const esmSplitCodeToCjsPlugin: esbuild.Plugin = {
       });
     });
   }
-};
+});

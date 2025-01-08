@@ -17,34 +17,38 @@
 
 import { writeError } from "@storm-software/config-tools";
 import type { Plugin } from "rollup";
+import { UnbuildOptions, UnbuildResolvedOptions } from "../types";
 
 /**
  * Causes rollup to exit immediately with an error code.
  */
-export function onErrorPlugin(): Plugin {
-  return {
-    name: "storm:on-error",
-    buildEnd(error?: Error | undefined) {
-      if (error) {
-        writeError(
-          `The following errors occurred during the build:
-${error ? error.message : "Unknown build error"}
-
-    `
-        );
-
-        throw new Error("ESBuild process failed with errors.");
-      }
-    },
-    renderError(error?: Error | undefined) {
+export const onErrorPlugin = (
+  options: UnbuildOptions,
+  resolvedOptions: UnbuildResolvedOptions
+): Plugin => ({
+  name: "storm:on-error",
+  buildEnd(error?: Error | undefined) {
+    if (error) {
       writeError(
         `The following errors occurred during the build:
 ${error ? error.message : "Unknown build error"}
 
-  `
+    `,
+        resolvedOptions.config
       );
 
-      throw new Error("ESBuild process failed with errors.");
+      throw new Error("Storm unbuild process failed with errors.");
     }
-  };
-}
+  },
+  renderError(error?: Error | undefined) {
+    writeError(
+      `The following errors occurred during the build:
+${error ? error.message : "Unknown build error"}
+
+  `,
+      resolvedOptions.config
+    );
+
+    throw new Error("Storm unbuild process failed with errors.");
+  }
+});

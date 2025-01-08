@@ -15,8 +15,10 @@
 
  -------------------------------------------------------------------*/
 
+import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import type * as esbuild from "esbuild";
 import path from "node:path";
+import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
 
 type TsConfig = {
   compilerOptions?: {
@@ -61,14 +63,25 @@ function resolvePathsConfig(options: TsConfig, cwd: string) {
  * tree-shaking. Note: `esbuild` has some support for this, though it is limited
  * in the amount of dependency nesting it supports.
  */
-export const resolvePathsPlugin: esbuild.Plugin = {
+export const resolvePathsPlugin = (
+  options: ESBuildOptions,
+  resolvedOptions: ESBuildResolvedOptions
+): esbuild.Plugin => ({
   name: "storm:resolve-paths",
   setup(build) {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const parentTsConfig = require(
-      `${process.cwd()}/${build.initialOptions.tsconfig}`
+      build.initialOptions.tsconfig
+        ? joinPaths(
+            resolvedOptions.config.workspaceRoot,
+            build.initialOptions.tsconfig
+          )
+        : joinPaths(resolvedOptions.config.workspaceRoot, "tsconfig.json")
     );
-    const resolvedTsPaths = resolvePathsConfig(parentTsConfig, process.cwd());
+    const resolvedTsPaths = resolvePathsConfig(
+      parentTsConfig,
+      options.projectRoot
+    );
     const packagesRegex = new RegExp(
       `^(${Object.keys(resolvedTsPaths).join("|")})$`
     );
@@ -81,4 +94,4 @@ export const resolvePathsPlugin: esbuild.Plugin = {
       return { path: `${resolvedTsPaths[args.path][0]}/index.ts` };
     });
   }
-};
+});

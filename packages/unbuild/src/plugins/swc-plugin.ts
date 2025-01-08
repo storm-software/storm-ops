@@ -1,6 +1,10 @@
 import type { Plugin } from "rollup";
+import { UnbuildOptions, UnbuildResolvedOptions } from "../types";
 
-export function swcPlugin(): Plugin {
+export const swcPlugin = (
+  options: UnbuildOptions,
+  resolvedOptions: UnbuildResolvedOptions
+): Plugin => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const { transform } = require("@swc/core");
   return {
@@ -16,4 +20,4 @@ export function swcPlugin(): Plugin {
       });
     }
   };
-}
+};

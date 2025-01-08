@@ -43,16 +43,12 @@ import defu from "defu";
 import { LogLevel } from "esbuild";
 import { relative } from "node:path";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
-import type { InputPluginOption } from "rollup";
-import tsPlugin from "rollup-plugin-typescript2";
+
 import { BuildConfig, BuildContext, build as unbuild } from "unbuild";
 import { clean } from "./clean";
-import { analyzePlugin } from "./plugins/analyze-plugin";
-import { onErrorPlugin } from "./plugins/on-error";
-import { swcPlugin } from "./plugins/swc-plugin";
-import { typeDefinitions } from "./plugins/type-definitions";
+import { getDefaultBuildPlugins } from "./config";
 import type { UnbuildOptions, UnbuildResolvedOptions } from "./types";
-import { createTsCompilerOptions, loadConfig } from "./utilities/helpers";
+import { loadConfig } from "./utilities/helpers";
 
 /**
  * Get the build options for the unbuild process
@@ -208,29 +204,6 @@ async function resolveOptions(
     ],
     declaration: options.emitTypes !== false ? "compatible" : false,
     failOnWarn: false,
-    hooks: {
-      "rollup:options": async (ctx: BuildContext, opts: any) => {
-        opts.plugins = [
-          analyzePlugin(),
-          swcPlugin(),
-          ...((opts.plugins ?? []) as InputPluginOption[]),
-          tsPlugin({
-            check: options.emitTypes !== false,
-            tsconfig,
-            tsconfigOverride: {
-              compilerOptions: await createTsCompilerOptions(
-                config,
-                tsconfig,
-                projectRoot,
-                dependencies
-              )
-            }
-          }),
-          typeDefinitions({ projectRoot }),
-          onErrorPlugin()
-        ];
-      }
-    },
     sourcemap: options.sourcemap ?? !!options.debug,
     outDir: outputPath,
     parallel: true,
@@ -242,6 +215,7 @@ async function resolveOptions(
     dependencies: [] as string[],
     peerDependencies: [] as string[],
     devDependencies: [] as string[],
+    hooks: {},
     alias: {},
     replace: {},
     rollup: {
@@ -314,6 +288,14 @@ async function resolveOptions(
 
     resolvedOptions.rollup = defu(resolvedOptions.rollup ?? {}, rollup);
   }
+
+  resolvedOptions.hooks = {
+    "rollup:options": async (ctx: BuildContext, opts: any) => {
+      opts.plugins =
+        options.plugins ??
+        (await getDefaultBuildPlugins(options, resolvedOptions as any));
+    }
+  };
 
   stopwatch();
 

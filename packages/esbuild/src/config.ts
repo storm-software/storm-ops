@@ -1,23 +1,13 @@
-/*-------------------------------------------------------------------
-
-                  ⚡ Storm Software - Storm Stack
-
- This code was released as part of the Storm Stack project. Storm Stack
- is maintained by Storm Software under the Apache-2.0 License, and is
- free for commercial and private use. For more information, please visit
- our licensing page.
-
- Website:         https://stormsoftware.com
- Repository:      https://github.com/storm-software/storm-ops
- Documentation:   https://stormsoftware.com/projects/storm-ops/docs
- Contact:         https://stormsoftware.com/contact
- License:         https://stormsoftware.com/projects/storm-ops/license
-
- -------------------------------------------------------------------*/
-
 import { getOutExtension } from "@storm-software/build-tools/utilities/get-out-extension";
 import { Format } from "esbuild";
-import { ESBuildOptions } from "./types";
+import { esmSplitCodeToCjsPlugin } from "./plugins/esm-split-code-to-cjs";
+import { fixImportsPlugin } from "./plugins/fix-imports";
+import { nativeNodeModulesPlugin } from "./plugins/native-node-module";
+import { nodeProtocolPlugin } from "./plugins/node-protocol";
+import { onErrorPlugin } from "./plugins/on-error";
+import { resolvePathsPlugin } from "./plugins/resolve-paths";
+import { tscPlugin } from "./plugins/tsc";
+import { ESBuildOptions, ESBuildResolvedOptions } from "./types";
 
 export const getOutputExtensionMap = (
   options: ESBuildOptions,
@@ -28,6 +18,19 @@ export const getOutputExtensionMap = (
     ? options.outExtension({ format, pkgType })
     : getOutExtension(format, pkgType);
 };
+
+export const getDefaultBuildPlugins = (
+  options: ESBuildOptions,
+  resolvedOptions: ESBuildResolvedOptions
+) => [
+  nodeProtocolPlugin(options, resolvedOptions),
+  resolvePathsPlugin(options, resolvedOptions),
+  fixImportsPlugin(options, resolvedOptions),
+  nativeNodeModulesPlugin(options, resolvedOptions),
+  esmSplitCodeToCjsPlugin(options, resolvedOptions),
+  tscPlugin(options, resolvedOptions),
+  onErrorPlugin(options, resolvedOptions)
+];
 
 export const DEFAULT_BUILD_OPTIONS = {
   platform: "node",

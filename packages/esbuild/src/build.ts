@@ -46,19 +46,15 @@ import { map } from "es-toolkit/compat";
 import * as esbuild from "esbuild";
 import { BuildContext } from "esbuild";
 import { globbySync } from "globby";
-import path from "node:path";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
 import { RendererEngine } from "./base/renderer-engine";
 import { clean } from "./clean";
-import { DEFAULT_BUILD_OPTIONS, getOutputExtensionMap } from "./config";
+import {
+  DEFAULT_BUILD_OPTIONS,
+  getDefaultBuildPlugins,
+  getOutputExtensionMap
+} from "./config";
 import { depsCheckPlugin } from "./plugins/deps-check";
-import { esmSplitCodeToCjsPlugin } from "./plugins/esm-split-code-to-cjs";
-import { fixImportsPlugin } from "./plugins/fix-imports";
-import { nativeNodeModulesPlugin } from "./plugins/native-node-module";
-import { nodeProtocolPlugin } from "./plugins/node-protocol";
-import { onErrorPlugin } from "./plugins/on-error";
-import { resolvePathsPlugin } from "./plugins/resolve-paths";
-import { tscPlugin } from "./plugins/tsc";
 import { shebangRenderer } from "./renderers/shebang";
 import { ESBuildResolvedOptions, type ESBuildOptions } from "./types";
 import { handle, pipe, transduce } from "./utilities/helpers";
@@ -140,7 +136,12 @@ const resolveOptions = async (
       platform === "node" ? ["module", "main"] : ["browser", "module", "main"],
     resolveExtensions: [".ts", ".js", ".node"],
     ...options,
-    tsconfig: options.tsconfig || joinPaths(projectRoot, "tsconfig.json"),
+    tsconfig: joinPaths(
+      projectRoot,
+      options.tsconfig
+        ? options.tsconfig.replace(projectRoot, "")
+        : "tsconfig.json"
+    ),
     outExtension,
     splitting:
       format === "iife"
@@ -158,8 +159,7 @@ const resolveOptions = async (
       options.entry || ["./src/index.ts"],
       options.emitOnAll
     ),
-    outdir:
-      options.outputPath || joinPaths(workspaceRoot.dir, "dist", projectRoot),
+    outdir: options.outputPath || joinPaths("dist", projectRoot),
     loader: {
       ".aac": "file",
       ".css": "file",
@@ -201,23 +201,14 @@ const resolveOptions = async (
     },
     inject: [
       format === "cjs" && options.injectShims
-        ? path.join(__dirname, "../assets/cjs_shims.js")
+        ? joinPaths(__dirname, "../assets/cjs_shims.js")
         : "",
       format === "esm" && options.injectShims && platform === "node"
-        ? path.join(__dirname, "../assets/esm_shims.js")
+        ? joinPaths(__dirname, "../assets/esm_shims.js")
         : "",
-      ...(options.inject || [])
+      ...(options.inject ?? [])
     ].filter(Boolean),
-    plugins: [
-      ...(options.plugins ?? []),
-      nodeProtocolPlugin(),
-      resolvePathsPlugin,
-      fixImportsPlugin,
-      nativeNodeModulesPlugin(),
-      esmSplitCodeToCjsPlugin,
-      tscPlugin(options.emitTypes),
-      onErrorPlugin
-    ],
+    plugins: [] as ESBuildResolvedOptions["plugins"],
     external: [...(options.external ?? [])],
     name: `${options.name || projectName}-${format}`,
     projectConfigurations,
@@ -226,7 +217,7 @@ const resolveOptions = async (
     sourceRoot:
       options.sourceRoot ||
       projectJson.sourceRoot ||
-      joinPaths(workspaceRoot.dir, projectRoot, "src"),
+      joinPaths(projectRoot, "src"),
     minify: options.minify || !options.debug,
     verbose: options.verbose || isVerbose() || options.debug === true,
     debug: !!options.debug,
@@ -248,6 +239,7 @@ const resolveOptions = async (
 `,
     footer: options.footer
   } satisfies ESBuildResolvedOptions;
+  result.plugins = options.plugins ?? getDefaultBuildPlugins(options, result);
 
   stopwatch();
 

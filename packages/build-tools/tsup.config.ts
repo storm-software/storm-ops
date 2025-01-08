@@ -11,5 +11,6 @@ export default defineConfig({
   dts: true,
   sourcemap: false,
   tsconfig: "./tsconfig.json",
-  external: ["rollup", "nx", "@nx/*", "@swc/*"]
+  external: ["rollup", "nx", "@nx/*", "@swc/*"],
+  skipNodeModulesBundle: true
 });

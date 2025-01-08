@@ -1,8 +1,12 @@
-import type { Plugin } from "esbuild";
-import path from "node:path";
+import type * as esbuild from "esbuild";
+import { dirname } from "node:path";
+import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
 
 // Copied from https://github.com/evanw/esbuild/issues/1051#issuecomment-806325487
-export const nativeNodeModulesPlugin = (): Plugin => {
+export const nativeNodeModulesPlugin = (
+  options: ESBuildOptions,
+  resolvedOptions: ESBuildResolvedOptions
+): esbuild.Plugin => {
   return {
     name: "native-node-modules",
     setup(build) {
@@ -32,7 +36,7 @@ export const nativeNodeModulesPlugin = (): Plugin => {
             try { module.exports = require(path) }
             catch {}
           `,
-          resolveDir: path.dirname(args.path)
+          resolveDir: dirname(args.path)
         };
       });
 

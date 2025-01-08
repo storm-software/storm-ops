@@ -2,7 +2,8 @@
 
 ### Features
 
-- **git-tools:** Added the `read-yaml-file` dependency to the package ([576b27cf](https://github.com/storm-software/storm-ops/commit/576b27cf))
+- **git-tools:** Added the `read-yaml-file` dependency to the package
+  ([576b27cf](https://github.com/storm-software/storm-ops/commit/576b27cf))
 
 ## 1.218.1 (2025-01-02)
 

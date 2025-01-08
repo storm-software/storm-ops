@@ -1,4 +1,6 @@
 import { writeInfo } from "@storm-software/config-tools";
+import { Plugin } from "rollup";
+import { UnbuildOptions, UnbuildResolvedOptions } from "../types";
 
 const formatBytes = bytes => {
   if (bytes === 0) return "0 Byte";
@@ -9,14 +11,17 @@ const formatBytes = bytes => {
   return `${parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
 };
 
-export function analyzePlugin() {
+export const analyzePlugin = (
+  options: UnbuildOptions,
+  resolvedOptions: UnbuildResolvedOptions
+): Plugin => {
   return {
     name: "storm:analyzer",
     renderChunk(source, chunk) {
       const sourceBytes = formatBytes(source.length);
       const fileName = chunk.fileName;
 
-      writeInfo(` - ${fileName} ${sourceBytes}`);
+      writeInfo(` - ${fileName} ${sourceBytes}`, resolvedOptions.config);
     }
   };
-}
+};

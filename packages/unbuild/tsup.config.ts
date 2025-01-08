@@ -2,33 +2,31 @@ import { defineConfig } from "tsup";
 
 export default defineConfig([
   {
-    name: "unbuild-dist",
+    name: "unbuild-base",
     target: "node22",
     entryPoints: ["./src/*.ts", "./src/plugins/*.ts"],
     format: ["cjs", "esm"],
-    outDir: "dist/src",
     platform: "node",
     splitting: true,
-    treeshake: true,
     clean: true,
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    external: ["unbuild", "nx", "@nx/*"]
+    external: ["unbuild", "nx", "@nx/*"],
+    skipNodeModulesBundle: true
   },
   {
     name: "unbuild-bin",
     target: "node22",
-    entryPoints: ["bin/*.ts"],
-    format: ["cjs", "esm"],
-    outDir: "dist/bin",
+    entryPoints: ["./bin/unbuild.ts"],
+    format: ["cjs"],
     platform: "node",
     bundle: true,
-    splitting: true,
+    splitting: false,
     clean: true,
     dts: false,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    external: ["nx", "@nx/*"]
+    skipNodeModulesBundle: false
   }
 ]);

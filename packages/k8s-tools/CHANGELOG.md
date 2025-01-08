@@ -2,7 +2,8 @@
 
 ### Features
 
-- **storm-ops:** Updated catalog and JSON schema for `StormConfig` object ([bf99f680](https://github.com/storm-software/storm-ops/commit/bf99f680))
+- **storm-ops:** Updated catalog and JSON schema for `StormConfig` object
+  ([bf99f680](https://github.com/storm-software/storm-ops/commit/bf99f680))
 
 ## 0.15.0 (2025-01-02)
 

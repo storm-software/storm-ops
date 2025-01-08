@@ -1,6 +1,7 @@
 // nx-ignore-next-line
 import { relative } from "node:path";
-import type { OutputBundle } from "rollup"; // only used  for types
+import type { OutputBundle, Plugin } from "rollup"; // only used  for types
+import { UnbuildOptions, UnbuildResolvedOptions } from "../types";
 
 /*
  * This plugin takes all entry-points from the generated bundle and creates a
@@ -13,43 +14,45 @@ import type { OutputBundle } from "rollup"; // only used  for types
  * We want a third file: `dist/index.d.ts` that re-exports from `src/index.d.ts`.
  * That way, when TSC or IDEs look for types, it will find them in the right place.
  */
-export function typeDefinitions(options: { projectRoot: string }) {
-  return {
-    name: "storm:dts-bundle",
-    async generateBundle(_opts: unknown, bundle: OutputBundle): Promise<void> {
-      for (const file of Object.values(bundle)) {
-        if (
-          file.type === "asset" ||
-          !file.isEntry ||
-          file.facadeModuleId == null
-        ) {
-          continue;
-        }
 
-        const hasDefaultExport = file.exports.includes("default");
-        const entrySourceFileName = relative(
-          options.projectRoot,
-          file.facadeModuleId
-        );
-        const entrySourceDtsName = entrySourceFileName.replace(
-          /\.[cm]?[jt]sx?$/,
-          ""
-        );
-        const dtsFileName = file.fileName.replace(/\.[cm]?js$/, ".d.ts");
-        const relativeSourceDtsName = JSON.stringify("./" + entrySourceDtsName);
-        const dtsFileSource = hasDefaultExport
-          ? `
+export const typeDefinitions = (
+  options: UnbuildOptions,
+  resolvedOptions: UnbuildResolvedOptions
+): Plugin => ({
+  name: "storm:dts-bundle",
+  async generateBundle(_opts: unknown, bundle: OutputBundle): Promise<void> {
+    for (const file of Object.values(bundle)) {
+      if (
+        file.type === "asset" ||
+        !file.isEntry ||
+        file.facadeModuleId == null
+      ) {
+        continue;
+      }
+
+      const hasDefaultExport = file.exports.includes("default");
+      const entrySourceFileName = relative(
+        options.projectRoot,
+        file.facadeModuleId
+      );
+      const entrySourceDtsName = entrySourceFileName.replace(
+        /\.[cm]?[jt]sx?$/,
+        ""
+      );
+      const dtsFileName = file.fileName.replace(/\.[cm]?js$/, ".d.ts");
+      const relativeSourceDtsName = JSON.stringify("./" + entrySourceDtsName);
+      const dtsFileSource = hasDefaultExport
+        ? `
 export * from ${relativeSourceDtsName};
 export { default } from ${relativeSourceDtsName};
             `
-          : `export * from ${relativeSourceDtsName};\n`;
+        : `export * from ${relativeSourceDtsName};\n`;
 
-        this.emitFile({
-          type: "asset",
-          fileName: dtsFileName,
-          source: dtsFileSource
-        });
-      }
+      this.emitFile({
+        type: "asset",
+        fileName: dtsFileName,
+        source: dtsFileSource
+      });
     }
-  };
-}
+  }
+});
