@@ -76,9 +76,8 @@ pre-commit:
 commit-msg:
   commands:
     validate:
-      run: 'pnpm exec commitlint
-        --config="./node_modules/@storm-software/git-tools/dist/commit/config.js"
-        --edit {1}'
+      glob: "**/*.*"
+      run: "pnpm exec storm-git commitlint --message {1}"
 
 pre-push:
   piped: true
