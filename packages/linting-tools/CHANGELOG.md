@@ -1,3 +1,21 @@
+## 1.100.0 (2025-01-08)
+
+### Features
+
+- **git-tools:** Complete redesign of the package and tools contained within ([96de0911](https://github.com/storm-software/storm-ops/commit/96de0911))
+
+### Bug Fixes
+
+- **git-tools:** Update dist output to be found in workflow action ([3f4dc983](https://github.com/storm-software/storm-ops/commit/3f4dc983))
+- **linting-tools:** Update `zizmor` configuration line number ([4dd6fbc1](https://github.com/storm-software/storm-ops/commit/4dd6fbc1))
+- **linting-tools:** Update the ignored line number in the `zizmor` configuration file ([79612865](https://github.com/storm-software/storm-ops/commit/79612865))
+- **linting-tools:** Update line number in zizmor ignore configuration ([2d888b6b](https://github.com/storm-software/storm-ops/commit/2d888b6b))
+
+### Continuous Integration
+
+- **monorepo:** Upedate to include changed workflow actions ([2efd3385](https://github.com/storm-software/storm-ops/commit/2efd3385))
+- **monorepo:** Ensure `build-all` script is invoked prior to `zizmor` in git hooks ([7de79c85](https://github.com/storm-software/storm-ops/commit/7de79c85))
+
 ## 1.99.2 (2025-01-02)
 
 ### Bug Fixes

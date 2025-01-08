@@ -1,3 +1,9 @@
+## 0.106.0 (2025-01-08)
+
+### Features
+
+- **git-tools:** Complete redesign of the package and tools contained within ([96de0911](https://github.com/storm-software/storm-ops/commit/96de0911))
+
 ## 0.105.2 (2025-01-02)
 
 ### Bug Fixes
