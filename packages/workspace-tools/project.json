@@ -68,6 +68,7 @@
           "unbuild",
           "@swc/*",
           "vue/compiler-sfc",
+          "read-yaml-file",
           "spdx-exceptions",
           "spdx-license-ids",
           "typescript",
