@@ -15,7 +15,7 @@
   "include": [
     "src/**/*.ts",
     "bin/**/*.ts",
-    "declarations.d.ts",
+    "src/declarations.d.ts",
     "tsup.config.ts"
   ],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]

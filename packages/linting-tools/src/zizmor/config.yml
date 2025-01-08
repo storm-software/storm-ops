@@ -3,7 +3,7 @@ rules:
     ignore:
       - ci-reusable.yml:80
       - ci-reusable.yml:86
-      - ci.yml:109
+      - ci.yml
   dangerous-triggers:
     ignore:
       - greetings.yml:3:1

@@ -84,8 +84,6 @@ jobs:
 
       - name: Add permissions to linting-tools package.json file
         run: chmod a=rwx packages/linting-tools/package.json
-      - name: Add permissions to git-tools package.json file
-        run: chmod a=rwx packages/git-tools/package.json
       - name: Add permissions to workspace-tools package.json file
         run: chmod a=rwx packages/workspace-tools/package.json
       - name: Add permissions to create-storm-workspace package.json file
@@ -93,8 +91,6 @@ jobs:
 
       - name: Add permissions to linting-tools distribution package.json file
         run: chmod a=rwx dist/packages/linting-tools/package.json
-      - name: Add permissions to git-tools distribution package.json file
-        run: chmod a=rwx dist/packages/git-tools/package.json
       - name: Add permissions to workspace-tools distribution package.json file
         run: chmod a=rwx dist/packages/workspace-tools/package.json
       - name:
@@ -105,6 +101,11 @@ jobs:
       - name: Run pre-release script
         run: pnpm prerelease
         shell: bash
+
+      - name: Add permissions to git-tools package.json file
+        run: chmod a=rwx dist/packages/git-tools/package.json
+      - name: Add permissions to git tools
+        run: chmod a=rwx dist/packages/git-tools/bin/git/index.cjs
 
       - name: Release Library Version Updates
         run: pnpm release --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}

@@ -82,7 +82,7 @@
     "push": "git push origin main:main",
     "rebuild": "pnpm clean && pnpm build",
     "rebuild-all": "pnpm clean-all && pnpm build-all",
-    "release": "node ./dist/packages/git-tools/bin/git/index.cjs release",
+    "release": "node -r esbuild-register dist/packages/git-tools/bin/git/index.cjs release",
     "start": "nx serve",
     "test": "echo Skipping workspace testing..."
   },
