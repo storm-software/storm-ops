@@ -1,3 +1,31 @@
+## 2.79.0 (2025-01-08)
+
+### Features
+
+- **git-tools:** Added default release group configurations ([4b30144d](https://github.com/storm-software/storm-ops/commit/4b30144d))
+- **git-tools:** Added the `release/config` export for default Nx release configurations ([e0107e36](https://github.com/storm-software/storm-ops/commit/e0107e36))
+- **build-tools:** Enhanced build options resolving to allow plugin list overrides ([94aa9ac4](https://github.com/storm-software/storm-ops/commit/94aa9ac4))
+- **git-tools:** Added the `monorepo` default scope to commitizen configuration ([7224a0d4](https://github.com/storm-software/storm-ops/commit/7224a0d4))
+- **git-tools:** Added `minLength` and `maxLength` validations to questions when the type provided is `input` ([14829e11](https://github.com/storm-software/storm-ops/commit/14829e11))
+- **git-tools:** Complete redesign of the package and tools contained within ([96de0911](https://github.com/storm-software/storm-ops/commit/96de0911))
+
+### Bug Fixes
+
+- **git-tools:** Remove Nx release configuration defaulting module ([6bf1dacf](https://github.com/storm-software/storm-ops/commit/6bf1dacf))
+- **git-tools:** Resolve issue defaulting release configuration ([e976479a](https://github.com/storm-software/storm-ops/commit/e976479a))
+- **git-tools:** Updates to default `nx.json` configuration applied on release ([e15c2954](https://github.com/storm-software/storm-ops/commit/e15c2954))
+- **git-tools:** Resolve issue with `git` parameters provided to `release` APIs ([dd098e08](https://github.com/storm-software/storm-ops/commit/dd098e08))
+- **git-tools:** Remove unused changelog renderer configuration from default ([be976d6f](https://github.com/storm-software/storm-ops/commit/be976d6f))
+- **git-tools:** Update defaulted Nx release configuration to correctly apply versioning options ([0db2f1c6](https://github.com/storm-software/storm-ops/commit/0db2f1c6))
+- **git-tools:** Resolved issue with invalid path provided to `copyfile` in `build` target ([440ac16b](https://github.com/storm-software/storm-ops/commit/440ac16b))
+- **git-tools:** Resolved issue with generated output directory ([8d6ef27c](https://github.com/storm-software/storm-ops/commit/8d6ef27c))
+- **git-tools:** Update dist output to be found in workflow action ([3f4dc983](https://github.com/storm-software/storm-ops/commit/3f4dc983))
+
+### Chores
+
+- **git-tools:** Added logic to properly copy dist files to output folder ([1810fb35](https://github.com/storm-software/storm-ops/commit/1810fb35))
+- **git-tools:** Added internal `commitlint` command to `lefthook` configuration ([628da2ee](https://github.com/storm-software/storm-ops/commit/628da2ee))
+
 ## 2.78.0 (2025-01-02)
 
 ### Features

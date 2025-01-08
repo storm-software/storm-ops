@@ -1,3 +1,9 @@
+## 0.5.0 (2025-01-08)
+
+### Features
+
+- **build-tools:** Enhanced build options resolving to allow plugin list overrides ([94aa9ac4](https://github.com/storm-software/storm-ops/commit/94aa9ac4))
+
 ## 0.4.0 (2025-01-02)
 
 ### Features
