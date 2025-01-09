@@ -1200,6 +1200,9 @@ importers:
       deep-clone:
         specifier: 4.0.0
         version: 4.0.0
+      defu:
+        specifier: 'catalog:'
+        version: 6.1.4
       fs-extra:
         specifier: 11.2.0
         version: 11.2.0

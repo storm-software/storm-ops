@@ -80,6 +80,7 @@
     "@size-limit/esbuild-why": "11.1.4",
     "@size-limit/file": "11.1.4",
     "deep-clone": "4.0.0",
+    "defu": "catalog:",
     "fs-extra": "11.2.0",
     "glob": "10.4.2",
     "micromatch": "4.0.7",

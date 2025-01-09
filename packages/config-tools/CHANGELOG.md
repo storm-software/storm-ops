@@ -2,7 +2,8 @@
 
 ### Bug Fixes
 
-- **workspace-tools:** Added `read-yaml-file` as external dependency ([c402da27](https://github.com/storm-software/storm-ops/commit/c402da27))
+- **workspace-tools:** Added `read-yaml-file` as external dependency
+  ([c402da27](https://github.com/storm-software/storm-ops/commit/c402da27))
 
 ## 1.128.0 (2025-01-08)
 
