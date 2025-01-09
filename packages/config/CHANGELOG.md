@@ -1,3 +1,9 @@
+## 1.89.1 (2025-01-09)
+
+### Bug Fixes
+
+- **workspace-tools:** Added `read-yaml-file` as external dependency ([c402da27](https://github.com/storm-software/storm-ops/commit/c402da27))
+
 ## 1.89.0 (2025-01-08)
 
 ### Features
