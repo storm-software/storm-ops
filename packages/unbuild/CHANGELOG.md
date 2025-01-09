@@ -1,8 +1,21 @@
+## 0.12.2 (2025-01-09)
+
+### Bug Fixes
+
+- **workspace-tools:** Added additional troubleshooting logging to the package ([c2cbdcc5](https://github.com/storm-software/storm-ops/commit/c2cbdcc5))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.128.2
+- Updated build-tools to 0.120.2
+- Updated config to 1.89.2
+
 ## 0.12.1 (2025-01-09)
 
 ### Bug Fixes
 
-- **workspace-tools:** Added `read-yaml-file` as external dependency ([c402da27](https://github.com/storm-software/storm-ops/commit/c402da27))
+- **workspace-tools:** Added `read-yaml-file` as external dependency
+  ([c402da27](https://github.com/storm-software/storm-ops/commit/c402da27))
 
 ### 🧱 Updated Dependencies
 

@@ -1,3 +1,9 @@
+## 0.17.1 (2025-01-09)
+
+### Bug Fixes
+
+- **workspace-tools:** Added additional troubleshooting logging to the package ([c2cbdcc5](https://github.com/storm-software/storm-ops/commit/c2cbdcc5))
+
 ## 0.17.0 (2025-01-08)
 
 ### Features
