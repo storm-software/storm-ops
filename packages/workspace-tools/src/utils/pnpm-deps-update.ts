@@ -1,5 +1,5 @@
+import { joinPaths } from "@storm-software/config-tools";
 import { readFile, writeFile } from "node:fs/promises";
-import path, { join } from "node:path";
 import readYamlFile from "read-yaml-file";
 
 let pnpmCatalog = {} as Record<string, string>;
@@ -14,24 +14,23 @@ export async function pnpmCatalogUpdate(
   packageRoot: string,
   workspaceRoot: string = process.cwd()
 ) {
-  const pnpmWorkspacePath = join(workspaceRoot, "pnpm-workspace.yaml");
+  const pnpmWorkspacePath = joinPaths(workspaceRoot, "pnpm-workspace.yaml");
   if (!pnpmCatalog) {
     const pnpmWorkspaceYaml = await readYamlFile<{
       catalog: Record<string, string>;
-    }>(path.resolve(pnpmWorkspacePath));
+    }>(pnpmWorkspacePath);
     if (pnpmWorkspaceYaml?.catalog) {
       pnpmCatalog = pnpmWorkspaceYaml.catalog;
     }
   }
 
-  if (!pnpmCatalog) {
+  if (!pnpmCatalog || !Object.keys(pnpmCatalog).length) {
     console.warn(
-      `No \`pnpm-workspace.yaml\` file found in workspace root (searching for: ${pnpmWorkspacePath}). Skipping pnpm catalog update.`
+      `No \`pnpm-workspace.yaml\` file found in workspace root (searching in: ${pnpmWorkspacePath}). Skipping pnpm catalog read for now.`
     );
-    return;
   }
 
-  const packageJsonPath = join(packageRoot, "package.json");
+  const packageJsonPath = joinPaths(packageRoot, "package.json");
   const packageJsonFile = await readFile(packageJsonPath, "utf8");
   if (!packageJsonFile) {
     throw new Error(
@@ -52,6 +51,12 @@ export async function pnpmCatalogUpdate(
 
     for (const dependencyName of Object.keys(dependencies)) {
       if (dependencies[dependencyName] === "catalog:") {
+        if (!pnpmCatalog) {
+          throw new Error(
+            `Dependency ${dependencyName} is marked as \`catalog:\`, but no catalog exists in the workspace root's \`pnpm-workspace.yaml\` file.`
+          );
+        }
+
         const catalogVersion = pnpmCatalog[dependencyName];
         if (!catalogVersion) {
           throw new Error("Missing pnpm catalog version for " + dependencyName);

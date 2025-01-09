@@ -2,35 +2,52 @@
 
 ### Features
 
-- **git-tools:** Added default release group configurations ([4b30144d](https://github.com/storm-software/storm-ops/commit/4b30144d))
-- **build-tools:** Enhanced build options resolving to allow plugin list overrides ([94aa9ac4](https://github.com/storm-software/storm-ops/commit/94aa9ac4))
-- **git-tools:** Complete redesign of the package and tools contained within ([96de0911](https://github.com/storm-software/storm-ops/commit/96de0911))
+- **git-tools:** Added default release group configurations
+  ([4b30144d](https://github.com/storm-software/storm-ops/commit/4b30144d))
+- **build-tools:** Enhanced build options resolving to allow plugin list
+  overrides
+  ([94aa9ac4](https://github.com/storm-software/storm-ops/commit/94aa9ac4))
+- **git-tools:** Complete redesign of the package and tools contained within
+  ([96de0911](https://github.com/storm-software/storm-ops/commit/96de0911))
 
 ### Bug Fixes
 
-- **git-tools:** Remove Nx release configuration defaulting module ([6bf1dacf](https://github.com/storm-software/storm-ops/commit/6bf1dacf))
-- **git-tools:** Updates to default `nx.json` configuration applied on release ([e15c2954](https://github.com/storm-software/storm-ops/commit/e15c2954))
-- **git-tools:** Resolve issue with `git` parameters provided to `release` APIs ([dd098e08](https://github.com/storm-software/storm-ops/commit/dd098e08))
-- **git-tools:** Resolved issue with invalid path provided to `copyfile` in `build` target ([440ac16b](https://github.com/storm-software/storm-ops/commit/440ac16b))
-- **git-tools:** Update dist output to be found in workflow action ([3f4dc983](https://github.com/storm-software/storm-ops/commit/3f4dc983))
-- **linting-tools:** Update `zizmor` configuration line number ([4dd6fbc1](https://github.com/storm-software/storm-ops/commit/4dd6fbc1))
+- **git-tools:** Remove Nx release configuration defaulting module
+  ([6bf1dacf](https://github.com/storm-software/storm-ops/commit/6bf1dacf))
+- **git-tools:** Updates to default `nx.json` configuration applied on release
+  ([e15c2954](https://github.com/storm-software/storm-ops/commit/e15c2954))
+- **git-tools:** Resolve issue with `git` parameters provided to `release` APIs
+  ([dd098e08](https://github.com/storm-software/storm-ops/commit/dd098e08))
+- **git-tools:** Resolved issue with invalid path provided to `copyfile` in
+  `build` target
+  ([440ac16b](https://github.com/storm-software/storm-ops/commit/440ac16b))
+- **git-tools:** Update dist output to be found in workflow action
+  ([3f4dc983](https://github.com/storm-software/storm-ops/commit/3f4dc983))
+- **linting-tools:** Update `zizmor` configuration line number
+  ([4dd6fbc1](https://github.com/storm-software/storm-ops/commit/4dd6fbc1))
 
 ### Code Improvements
 
-- **workspace-tools:** Added release group configuration to nx configuration prefixes ([1ac21fcf](https://github.com/storm-software/storm-ops/commit/1ac21fcf))
+- **workspace-tools:** Added release group configuration to nx configuration
+  prefixes
+  ([1ac21fcf](https://github.com/storm-software/storm-ops/commit/1ac21fcf))
 
 ### Chores
 
-- **git-tools:** Added logic to properly copy dist files to output folder ([1810fb35](https://github.com/storm-software/storm-ops/commit/1810fb35))
-- **monorepo:** Update the release script to work in any environment ([c423f46e](https://github.com/storm-software/storm-ops/commit/c423f46e))
+- **git-tools:** Added logic to properly copy dist files to output folder
+  ([1810fb35](https://github.com/storm-software/storm-ops/commit/1810fb35))
+- **monorepo:** Update the release script to work in any environment
+  ([c423f46e](https://github.com/storm-software/storm-ops/commit/c423f46e))
 
 ### Continuous Integration
 
-- **monorepo:** Resolve issue with `changelog-renderer` selected for repository ([3686b00f](https://github.com/storm-software/storm-ops/commit/3686b00f))
+- **monorepo:** Resolve issue with `changelog-renderer` selected for repository
+  ([3686b00f](https://github.com/storm-software/storm-ops/commit/3686b00f))
 
 ### Dependency Upgrades
 
-- **monorepo:** Update `chalk` depenency to v4.1.2 to work with cjs packages ([a92755e8](https://github.com/storm-software/storm-ops/commit/a92755e8))
+- **monorepo:** Update `chalk` depenency to v4.1.2 to work with cjs packages
+  ([a92755e8](https://github.com/storm-software/storm-ops/commit/a92755e8))
 
 ## 1.88.0 (2025-01-02)
 
