@@ -100,9 +100,8 @@ jobs:
         id: setSHAs
         uses: nrwl/nx-set-shas@v4
         with:
-          main-branch-name: "main"
-          workflow-id: "ci.yml"
-          last-successful-event: "release"
+          main-branch-name: main
+          workflow-id: ci.yml
           set-environment-variables-for-job: true
           error-on-no-successful-workflow: true
 
