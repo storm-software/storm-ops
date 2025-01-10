@@ -1,3 +1,19 @@
+## 0.14.0 (2025-01-10)
+
+### Features
+
+- **git-tools:** Ensure we select the correct workflow run to determine release changes ([f48f346e](https://github.com/storm-software/storm-ops/commit/f48f346e))
+
+### Continuous Integration
+
+- **monorepo:** Update the `ci.yml` configuration to check for previous successful runs ([6964e972](https://github.com/storm-software/storm-ops/commit/6964e972))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.130.0
+- Updated build-tools to 0.122.0
+- Updated config to 1.91.0
+
 ## 0.13.0 (2025-01-10)
 
 ### Features

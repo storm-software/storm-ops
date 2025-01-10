@@ -1,3 +1,9 @@
+## 0.42.0 (2025-01-10)
+
+### Features
+
+- **git-tools:** Ensure we select the correct workflow run to determine release changes ([f48f346e](https://github.com/storm-software/storm-ops/commit/f48f346e))
+
 ## 0.41.0 (2025-01-10)
 
 ### Features

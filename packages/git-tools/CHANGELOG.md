@@ -1,3 +1,16 @@
+## 2.80.0 (2025-01-10)
+
+### Features
+
+- **git-tools:** Added custom commit linting logic ([25364022](https://github.com/storm-software/storm-ops/commit/25364022))
+- **git-tools:** Added `commitlint` validations to `commit` command by default ([03c9f9f7](https://github.com/storm-software/storm-ops/commit/03c9f9f7))
+- **git-tools:** Added call to `@commitlint/lint` in the `commitlint` CLI command ([7c100762](https://github.com/storm-software/storm-ops/commit/7c100762))
+- **git-tools:** Ensure we select the correct workflow run to determine release changes ([f48f346e](https://github.com/storm-software/storm-ops/commit/f48f346e))
+
+### Continuous Integration
+
+- **monorepo:** Update the `ci.yml` configuration to check for previous successful runs ([6964e972](https://github.com/storm-software/storm-ops/commit/6964e972))
+
 ## 2.79.1 (2025-01-09)
 
 ### Bug Fixes
