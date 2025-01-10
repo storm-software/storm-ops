@@ -1,5 +1,7 @@
-import { getOutExtension } from "@storm-software/build-tools/utilities/get-out-extension";
-import { Format } from "esbuild";
+import {
+  DEFAULT_COMPILED_BANNER,
+  getOutExtension
+} from "@storm-software/build-tools/utilities/get-out-extension";
 import { esmSplitCodeToCjsPlugin } from "./plugins/esm-split-code-to-cjs";
 import { fixImportsPlugin } from "./plugins/fix-imports";
 import { nativeNodeModulesPlugin } from "./plugins/native-node-module";
@@ -11,12 +13,11 @@ import { ESBuildOptions, ESBuildResolvedOptions } from "./types";
 
 export const getOutputExtensionMap = (
   options: ESBuildOptions,
-  format: Format,
   pkgType: string | undefined
 ) => {
   return options.outExtension
-    ? options.outExtension({ format, pkgType })
-    : getOutExtension(format, pkgType);
+    ? options.outExtension(options.format, pkgType)
+    : getOutExtension(options.format, pkgType);
 };
 
 export const getDefaultBuildPlugins = (
@@ -32,12 +33,63 @@ export const getDefaultBuildPlugins = (
   onErrorPlugin(options, resolvedOptions)
 ];
 
-export const DEFAULT_BUILD_OPTIONS = {
+export const DEFAULT_BUILD_OPTIONS: Required<
+  Pick<
+    ESBuildOptions,
+    | "format"
+    | "platform"
+    | "target"
+    | "external"
+    | "tsconfig"
+    | "environment"
+    | "keepNames"
+    | "metafile"
+    | "injectShims"
+    | "color"
+    | "watch"
+    | "bundle"
+    | "clean"
+    | "debug"
+    | "loader"
+    | "banner"
+    | "logLevel"
+  >
+> = {
   platform: "node",
-  target: "ES2021",
+  target: "node22",
+  format: "cjs",
+  external: [],
   logLevel: "error",
   tsconfig: "tsconfig.json",
+  environment: "production",
   keepNames: true,
   metafile: true,
-  format: "cjs"
-} as const;
+  injectShims: true,
+  color: true,
+  watch: false,
+  bundle: true,
+  clean: true,
+  debug: false,
+  loader: {
+    ".aac": "file",
+    ".css": "file",
+    ".eot": "file",
+    ".flac": "file",
+    ".gif": "file",
+    ".jpeg": "file",
+    ".jpg": "file",
+    ".mp3": "file",
+    ".mp4": "file",
+    ".ogg": "file",
+    ".otf": "file",
+    ".png": "file",
+    ".svg": "file",
+    ".ttf": "file",
+    ".wav": "file",
+    ".webm": "file",
+    ".webp": "file",
+    ".woff": "file",
+    ".woff2": "file"
+  },
+  banner: DEFAULT_COMPILED_BANNER
+};

@@ -4,6 +4,7 @@ import { StormConfig } from "@storm-software/config";
 
 export type Entry = string | Record<string, string> | string[];
 export type Platform = "browser" | "node" | "neutral";
+export type Format = "cjs" | "esm" | "iife";
 
 export type FileInputOutput = {
   input: string;
@@ -27,20 +28,22 @@ export interface TypeScriptBuildOptions extends AdditionalCLIOptions {
   entry?: Entry;
   assets?: (AssetGlob | string)[];
   tsconfig?: string;
-  format?: string | string[];
+  format?: Format | Format[];
   bundle?: boolean;
   external?: string[];
   outputPath?: string;
   platform?: "node" | "browser" | "neutral";
   sourcemap?: boolean | "linked" | "inline" | "external" | "both";
-  target?: string;
+  environment?: "development" | "staging" | "production";
+  organization?: string;
+  target?: string | string[];
   watch?: boolean;
   clean?: boolean;
   debug?: boolean;
   banner?: string;
   footer?: string;
-  define?: Record<string, string | undefined | null>;
-  env?: Record<string, string | undefined | null>;
+  define?: { [key: string]: string };
+  env?: { [key: string]: string };
   plugins?: any[];
   splitting?: boolean;
   treeShaking?: boolean;
@@ -52,9 +55,23 @@ export interface TypeScriptBuildOptions extends AdditionalCLIOptions {
   verbose?: boolean;
 }
 
+export type TypeScriptBuildBaseEnv = {
+  STORM_BUILD: string;
+  STORM_ENV: TypeScriptBuildOptions["environment"];
+  STORM_ORGANIZATION: TypeScriptBuildOptions["organization"];
+  STORM_NAME: string;
+  STORM_PLATFORM: Platform;
+  STORM_FORMAT: string;
+  STORM_TARGET: string;
+};
+
+export type TypeScriptBuildEnv = TypeScriptBuildBaseEnv & {
+  [key: string]: string;
+};
+
 export type TypeScriptBuildResolvedOptions = Omit<
   TypeScriptBuildOptions,
-  "entry" | "outputPath"
+  "entry" | "outputPath" | "env"
 > &
   Required<
     Pick<
@@ -67,11 +84,8 @@ export type TypeScriptBuildResolvedOptions = Omit<
       | "tsconfig"
       | "clean"
       | "define"
-      | "splitting"
-      | "treeShaking"
       | "generatePackageJson"
       | "emitOnAll"
-      | "format"
       | "metafile"
       | "minify"
       | "includeSrc"
@@ -80,6 +94,7 @@ export type TypeScriptBuildResolvedOptions = Omit<
   > & {
     config: StormConfig;
     entryPoints: string[];
+    env: TypeScriptBuildEnv;
   };
 
 export type DeepPartial<T> = T extends object

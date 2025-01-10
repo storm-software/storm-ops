@@ -485,6 +485,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.10.5
+      defu:
+        specifier: 'catalog:'
+        version: 6.1.4
       esbuild:
         specifier: 'catalog:'
         version: 0.24.2

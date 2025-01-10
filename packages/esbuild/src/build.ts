@@ -26,7 +26,10 @@ import {
   addPackageJsonExport,
   addWorkspacePackageJsonFields,
   copyAssets,
-  getEntryPoints
+  DEFAULT_COMPILED_BANNER,
+  DEFAULT_TARGET,
+  getEntryPoints,
+  getEnv
 } from "@storm-software/build-tools";
 import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
 import {
@@ -41,7 +44,8 @@ import {
 import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { watch as createWatcher } from "chokidar";
-import { debounce, flatten, omit } from "es-toolkit";
+import defu from "defu";
+import { debounce, flatten } from "es-toolkit";
 import { map } from "es-toolkit/compat";
 import * as esbuild from "esbuild";
 import { BuildContext } from "esbuild";
@@ -56,25 +60,23 @@ import {
 } from "./config";
 import { depsCheckPlugin } from "./plugins/deps-check";
 import { shebangRenderer } from "./renderers/shebang";
-import { ESBuildResolvedOptions, type ESBuildOptions } from "./types";
+import {
+  ESBuildContext,
+  ESBuildResolvedOptions,
+  type ESBuildOptions
+} from "./types";
 import { handle, pipe, transduce } from "./utilities/helpers";
-
-type ESBuildContext = {
-  options: ESBuildResolvedOptions;
-  rendererEngine: RendererEngine;
-  result?: esbuild.BuildResult;
-};
 
 /**
  * Apply defaults to the original build options
  *
- * @param options - the original build options
+ * @param userOptions - the original build options provided by the user
  * @returns the build options with defaults applied
  */
 const resolveOptions = async (
-  options: ESBuildOptions
+  userOptions: ESBuildOptions
 ): Promise<ESBuildResolvedOptions> => {
-  const projectRoot = options.projectRoot;
+  const projectRoot = userOptions.projectRoot;
 
   const workspaceRoot = findWorkspaceRoot(projectRoot);
   if (!workspaceRoot) {
@@ -110,9 +112,13 @@ const resolveOptions = async (
     );
   }
 
+  const options = defu(userOptions, DEFAULT_BUILD_OPTIONS);
+  options.name ??= `${projectName}-${options.format}`;
+  options.target ??= DEFAULT_TARGET;
+
   const packageJsonPath = joinPaths(
     workspaceRoot.dir,
-    projectRoot,
+    options.projectRoot,
     "package.json"
   );
   if (!(await hfs.isFile(packageJsonPath))) {
@@ -120,77 +126,78 @@ const resolveOptions = async (
   }
 
   const packageJson = await hfs.json(packageJsonPath);
+  const outExtension = getOutputExtensionMap(options, packageJson.type);
 
-  const format = options.format || "cjs";
-  const platform = options.platform || "node";
-
-  const outExtension = getOutputExtensionMap(options, format, packageJson.type);
-  const env = {
-    ...(options.env || {})
-  };
+  const env = getEnv("esbuild", options as Parameters<typeof getEnv>[1]);
 
   const result = {
-    ...DEFAULT_BUILD_OPTIONS,
+    ...options,
     config,
     mainFields:
-      platform === "node" ? ["module", "main"] : ["browser", "module", "main"],
+      options.platform === "node"
+        ? ["module", "main"]
+        : ["browser", "module", "main"],
     resolveExtensions: [".ts", ".js", ".node"],
-    ...options,
+    ...userOptions,
     tsconfig: joinPaths(
       projectRoot,
-      options.tsconfig
-        ? options.tsconfig.replace(projectRoot, "")
+      userOptions.tsconfig
+        ? userOptions.tsconfig.replace(projectRoot, "")
         : "tsconfig.json"
     ),
-    outExtension,
-    splitting:
-      format === "iife"
-        ? false
-        : typeof options.splitting === "boolean"
-          ? options.splitting
-          : format === "esm",
-    treeShaking: options.treeShaking || format === "esm",
-    platform,
-    format,
+    format: options.format || "cjs",
     entryPoints: await getEntryPoints(
       config,
       projectRoot,
       projectJson.sourceRoot,
-      options.entry || ["./src/index.ts"],
-      options.emitOnAll
+      userOptions.entry || ["./src/index.ts"],
+      userOptions.emitOnAll
     ),
-    outdir: options.outputPath || joinPaths("dist", projectRoot),
-    loader: {
-      ".aac": "file",
-      ".css": "file",
-      ".eot": "file",
-      ".flac": "file",
-      ".gif": "file",
-      ".jpeg": "file",
-      ".jpg": "file",
-      ".mp3": "file",
-      ".mp4": "file",
-      ".ogg": "file",
-      ".otf": "file",
-      ".png": "file",
-      ".svg": "file",
-      ".ttf": "file",
-      ".wav": "file",
-      ".webm": "file",
-      ".webp": "file",
-      ".woff": "file",
-      ".woff2": "file",
-      ...options.loader
+    outdir: userOptions.outputPath || joinPaths("dist", projectRoot),
+    plugins: [] as ESBuildResolvedOptions["plugins"],
+    name: userOptions.name || projectName,
+    projectConfigurations,
+    projectName,
+    projectGraph,
+    sourceRoot:
+      userOptions.sourceRoot ||
+      projectJson.sourceRoot ||
+      joinPaths(projectRoot, "src"),
+    minify: userOptions.minify || !userOptions.debug,
+    verbose: userOptions.verbose || isVerbose() || userOptions.debug === true,
+    includeSrc: userOptions.includeSrc === true,
+    metafile: userOptions.metafile !== false,
+    generatePackageJson: userOptions.generatePackageJson !== false,
+    clean: userOptions.clean !== false,
+    emitOnAll: userOptions.emitOnAll === true,
+    assets: userOptions.assets ?? [],
+    injectShims: userOptions.injectShims !== true,
+    bundle: userOptions.bundle !== false,
+    keepNames: true,
+    watch: userOptions.watch === true,
+    outExtension,
+    footer: userOptions.footer,
+    banner: {
+      js: options.banner || DEFAULT_COMPILED_BANNER,
+      css: options.banner || DEFAULT_COMPILED_BANNER
     },
+    splitting:
+      options.format === "iife"
+        ? false
+        : typeof options.splitting === "boolean"
+          ? options.splitting
+          : options.format === "esm",
+    treeShaking: options.format === "esm",
+    env,
     define: {
-      STORM_FORMAT: JSON.stringify(format || "cjs"),
-      ...(format === "cjs" && options.injectShims
+      STORM_FORMAT: JSON.stringify(options.format || "cjs"),
+      ...(options.format === "cjs" && options.injectShims
         ? {
             "import.meta.url": "importMetaUrl"
           }
         : {}),
       ...options.define,
-      ...Object.keys(env).reduce((res, key) => {
+      ...Object.keys(env || {}).reduce((res, key) => {
         const value = JSON.stringify(env[key]);
         return {
           ...res,
@@ -200,46 +207,19 @@ const resolveOptions = async (
       }, {})
     },
     inject: [
-      format === "cjs" && options.injectShims
+      options.format === "cjs" && options.injectShims
         ? joinPaths(__dirname, "../assets/cjs_shims.js")
         : "",
-      format === "esm" && options.injectShims && platform === "node"
+      options.format === "esm" &&
+      options.injectShims &&
+      options.platform === "node"
         ? joinPaths(__dirname, "../assets/esm_shims.js")
         : "",
       ...(options.inject ?? [])
-    ].filter(Boolean),
-    plugins: [] as ESBuildResolvedOptions["plugins"],
-    external: [...(options.external ?? [])],
-    name: `${options.name || projectName}-${format}`,
-    projectConfigurations,
-    projectName,
-    projectGraph,
-    sourceRoot:
-      options.sourceRoot ||
-      projectJson.sourceRoot ||
-      joinPaths(projectRoot, "src"),
-    minify: options.minify || !options.debug,
-    verbose: options.verbose || isVerbose() || options.debug === true,
-    debug: !!options.debug,
-    color: true,
-    includeSrc: options.includeSrc === true,
-    metafile: options.metafile !== false,
-    generatePackageJson: options.generatePackageJson !== false,
-    clean: options.clean !== false,
-    emitOnAll: options.emitOnAll === true,
-    assets: options.assets ?? [],
-    injectShims: options.injectShims !== true,
-    bundle: options.bundle !== false,
-    keepNames: true,
-    watch: options.watch === true,
-    banner:
-      options.banner ||
-      `
-//      ⚡ Built by Storm Software
-`,
-    footer: options.footer
+    ].filter(Boolean)
   } satisfies ESBuildResolvedOptions;
-  result.plugins = options.plugins ?? getDefaultBuildPlugins(options, result);
+  result.plugins =
+    userOptions.plugins ?? getDefaultBuildPlugins(userOptions, result);
 
   stopwatch();
 
@@ -364,9 +344,9 @@ async function generatePackageJson(context: ESBuildContext) {
 async function createOptions(options: ESBuildOptions[]) {
   return flatten(
     await Promise.all(
-      map(options, options => [
+      map(options, opt => [
         // we defer it so that we don't trigger glob immediately
-        () => resolveOptions(options)
+        () => resolveOptions(opt)
       ])
     )
   );
@@ -439,22 +419,12 @@ async function executeEsBuild(context: ESBuildContext) {
   const stopwatch = getStopwatch(`${context.options.name} build`);
 
   if (process.env.WATCH === "true") {
-    const ctx = await esbuild.context(
-      omit(context.options, ["name"]) as esbuild.SameShape<
-        esbuild.BuildOptions,
-        esbuild.BuildOptions
-      >
-    );
+    const ctx = await esbuild.context(context.options as esbuild.BuildOptions);
 
     watch(ctx, context.options);
   }
 
-  const result = await esbuild.build(
-    omit(context.options, ["name", "metafile"]) as esbuild.SameShape<
-      esbuild.BuildOptions,
-      esbuild.BuildOptions
-    >
-  );
+  const result = await esbuild.build(context.options as esbuild.BuildOptions);
 
   if (result.metafile) {
     const metafilePath = `${context.options.outdir}/${context.options.name}.meta.json`;
@@ -618,7 +588,9 @@ export async function build(options: ESBuildOptions | ESBuildOptions[]) {
  * @returns the build result
  */
 const watch = (context: BuildContext, options: ESBuildResolvedOptions) => {
-  if (process.env.WATCH !== "true") return context;
+  if (!options.watch) {
+    return context;
+  }
 
   // common chokidar options for the watchers
   const config = {

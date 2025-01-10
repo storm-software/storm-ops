@@ -24,24 +24,20 @@ import {
 import type { BuildOptions, BuildResult, Format, Metafile } from "esbuild";
 import { SourceMap } from "rollup";
 import { RawSourceMap } from "source-map";
-
-export type ContextForOutPathGeneration = {
-  format: Format;
-  /** "type" field in project's package.json */
-  pkgType?: string;
-};
+import { RendererEngine } from "./base/renderer-engine";
 
 export type OutExtensionObject = { js?: string; dts?: string };
 
 export type OutExtensionFactory = (
-  ctx: ContextForOutPathGeneration
+  format?: Format,
+  pkgType?: string
 ) => OutExtensionObject;
 
 export type ESBuildOptions = Omit<
   BuildOptions,
-  "outbase" | "outfile" | "outExtension"
+  "outbase" | "outfile" | "outExtension" | "banner"
 > &
-  TypeScriptBuildOptions & {
+  Omit<TypeScriptBuildOptions, "format"> & {
     emitTypes?: boolean;
     injectShims?: boolean;
     outExtension?: OutExtensionFactory;
@@ -50,10 +46,21 @@ export type ESBuildOptions = Omit<
 
 export type ESBuildResult = BuildResult;
 
-export type ESBuildResolvedOptions = TypeScriptBuildResolvedOptions &
+export type ESBuildResolvedOptions = Omit<
+  TypeScriptBuildResolvedOptions,
+  "banner" | "footer" | "target" | "format" | "sourcemap"
+> &
   Pick<
     BuildOptions,
-    "loader" | "inject" | "metafile" | "keepNames" | "color"
+    | "loader"
+    | "inject"
+    | "metafile"
+    | "keepNames"
+    | "target"
+    | "color"
+    | "banner"
+    | "footer"
+    | "sourcemap"
   > & {
     injectShims: boolean;
     outdir: string;
@@ -62,6 +69,7 @@ export type ESBuildResolvedOptions = TypeScriptBuildResolvedOptions &
     outExtension: OutExtensionObject;
     entryPoints: string[];
     renderers?: Renderer[];
+    format: Format;
   };
 
 export type ESBuildCLIOptions = AdditionalCLIOptions &
@@ -90,6 +98,12 @@ export type ESBuildCLIOptions = AdditionalCLIOptions &
     | "emitTypes"
     | "injectShims"
   >;
+
+export type ESBuildContext = {
+  options: ESBuildResolvedOptions;
+  rendererEngine: RendererEngine;
+  result?: BuildResult;
+};
 
 export type MaybePromise<T> = T | Promise<T>;
 

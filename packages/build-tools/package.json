@@ -76,6 +76,20 @@
         "default": "./dist/index.js"
       }
     },
+    "./config": {
+      "import": {
+        "types": "./dist/config.d.mts",
+        "default": "./dist/config.mjs"
+      },
+      "require": {
+        "types": "./dist/config.d.ts",
+        "default": "./dist/config.js"
+      },
+      "default": {
+        "types": "./dist/config.d.ts",
+        "default": "./dist/config.js"
+      }
+    },
     "./plugins": {
       "import": {
         "types": "./dist/plugins/index.d.mts",

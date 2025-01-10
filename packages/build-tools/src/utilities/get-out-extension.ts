@@ -6,7 +6,7 @@
  * @returns The output extensions (for the js and dts output files).
  */
 export function getOutExtension(
-  format: string,
+  format?: string,
   pkgType?: string
 ): { js: string; dts: string } {
   let jsExtension = ".js";
