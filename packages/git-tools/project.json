@@ -28,7 +28,7 @@
           "pnpm copyfiles LICENSE dist/packages/git-tools",
           "pnpm copyfiles --up=2 ./packages/git-tools/*.md ./packages/git-tools/package.json dist/packages/git-tools",
           "pnpm copyfiles --up=4 ./packages/git-tools/dist/src/* dist/packages/git-tools/dist",
-          "pnpm copyfiles --up=5 ./packages/git-tools/dist/src/commit/config.* dist/packages/git-tools/dist/commit",
+          "pnpm copyfiles --up=5 ./packages/git-tools/dist/src/commit/* dist/packages/git-tools/dist/commit",
           "pnpm copyfiles --up=5 ./packages/git-tools/dist/src/release/* dist/packages/git-tools/dist/release",
           "pnpm copyfiles --up=5 ./packages/git-tools/src/readme/templates/* dist/packages/git-tools/dist/readme/templates",
           "pnpm copyfiles --up=4 ./packages/git-tools/src/lefthook/* dist/packages/git-tools/dist/lefthook",

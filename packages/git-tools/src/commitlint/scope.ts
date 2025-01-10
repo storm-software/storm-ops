@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { RuleConfigCondition, RuleConfigSeverity } from "@commitlint/types";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json.js";
 import {
   createProjectGraphAsync,
   readProjectsConfigurationFromProjectGraph
 } from "nx/src/project-graph/project-graph.js";
+import { RuleConfigCondition, RuleConfigSeverity } from "../types";
 
 export async function getNxScopes(
   context?: any,
@@ -48,10 +48,9 @@ export const getScopeEnum = async (context?: any): Promise<string[]> => {
   );
 };
 
-export const getScopeEnumRule = async (
-  context?: any
-): Promise<[RuleConfigSeverity, RuleConfigCondition, string[]]> => {
-  const scopeEnum = await getScopeEnum(context);
+export const getRuleFromScopeEnum = (
+  scopeEnum: string[]
+): [RuleConfigSeverity, RuleConfigCondition, string[]] => {
   if (!scopeEnum?.filter(Boolean).length) {
     throw new Error("No scopes found in the Storm workspace.");
   }
@@ -61,4 +60,10 @@ export const getScopeEnumRule = async (
     "always",
     scopeEnum.filter(Boolean) as string[]
   ];
+};
+
+export const getScopeEnumRule = async (
+  context?: any
+): Promise<[RuleConfigSeverity, RuleConfigCondition, string[]]> => {
+  return getRuleFromScopeEnum(await getScopeEnum(context));
 };

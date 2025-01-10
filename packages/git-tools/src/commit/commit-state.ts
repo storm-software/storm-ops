@@ -8,7 +8,7 @@ import { joinPaths, writeInfo } from "@storm-software/config-tools";
 import chalkTemplate from "chalk-template";
 import defu from "defu";
 import { execSync } from "node:child_process";
-import { getScopeEnum, getScopeEnumRule } from "../commitlint/scope";
+import { getScopeEnum } from "../commitlint/scope";
 import type {
   CommitConfig,
   CommitQuestionAnswers,
@@ -19,8 +19,7 @@ import type {
   CommitState,
   CommitTypeProps,
   CommitTypesEnum,
-  DefaultCommitQuestionKeys,
-  DefaultResolvedCommitRulesEnum
+  DefaultCommitQuestionKeys
 } from "../types";
 import { DEFAULT_COMMIT_CONFIG } from "./config";
 
@@ -44,14 +43,10 @@ export const getGitRootDir = () => {
 
 const resolveCommitOptions = async (
   config: CommitConfig
-): Promise<CommitResolvedConfig<DefaultResolvedCommitRulesEnum>> => {
+): Promise<CommitResolvedConfig> => {
   return {
     utils: { getScopeEnum },
     parserPreset: "conventional-changelog-conventionalcommits",
-    rules: {
-      ...config.rules,
-      "scope-enum": getScopeEnumRule
-    },
     prompt: {
       settings: config.settings,
       messages: config.messages,
@@ -63,9 +58,8 @@ const resolveCommitOptions = async (
   };
 };
 
-const resolveDefaultCommitOptions = async (): Promise<
-  CommitResolvedConfig<DefaultResolvedCommitRulesEnum>
-> => resolveCommitOptions(DEFAULT_COMMIT_CONFIG);
+const resolveDefaultCommitOptions = async (): Promise<CommitResolvedConfig> =>
+  resolveCommitOptions(DEFAULT_COMMIT_CONFIG);
 
 export const createState = async (
   config: StormConfig,

@@ -10,7 +10,8 @@ import { existsSync } from "fs";
 import { readFile } from "fs/promises";
 import childProcess from "node:child_process";
 import { DEFAULT_COMMIT_TYPES } from "../types";
-import { getNxScopes } from "./scope";
+import { DEFAULT_COMMIT_RULES } from "./config";
+import { getNxScopes, getRuleFromScopeEnum } from "./scope";
 
 const COMMIT_EDITMSG_PATH = ".git/COMMIT_EDITMSG";
 
@@ -33,7 +34,7 @@ export const runCommitLint = async (
   } else {
     const commitFile = joinPaths(
       config.workspaceRoot,
-      params.file || COMMIT_EDITMSG_PATH
+      params.file || params.message || COMMIT_EDITMSG_PATH
     );
     if (existsSync(commitFile)) {
       commitMessage = (await readFile(commitFile, "utf8"))?.trim();
@@ -88,7 +89,7 @@ export const runCommitLint = async (
   }
 
   const allowedTypes = Object.keys(DEFAULT_COMMIT_TYPES).join("|");
-  const allowedScopes = (await getNxScopes()).join("|");
+  const allowedScopes = await getNxScopes();
   // eslint-disable-next-line no-useless-escape
   const commitMsgRegex = `(${allowedTypes})\\((${allowedScopes})\\)!?:\\s(([a-z0-9:\-\s])+)`;
 
@@ -96,7 +97,18 @@ export const runCommitLint = async (
   const matchRevert = /Revert/gi.test(commitMessage);
   const matchRelease = /Release/gi.test(commitMessage);
 
-  if (+!(matchRelease || matchRevert || matchCommit) === 0) {
+  const lint = (await import("@commitlint/lint")).default;
+
+  const report = await lint(commitMessage, {
+    ...DEFAULT_COMMIT_RULES,
+    "scope-enum": getRuleFromScopeEnum(allowedScopes)
+  } as any);
+
+  if (
+    +!(matchRelease || matchRevert || matchCommit) === 0 ||
+    report.errors.length ||
+    report.warnings.length
+  ) {
     writeSuccess(`Commit was processing completed successfully!`, config);
   } else {
     let errorMessage =
@@ -113,6 +125,9 @@ export const runCommitLint = async (
       "\nEXAMPLE: \n" +
       "feat(nx): add an option to generate lazy-loadable modules\n" +
       "fix(core)!: breaking change should have exclamation mark\n";
+    errorMessage += `\n\nCommitLint Errors: ${report.errors.length ? report.errors.map(error => ` - ${error.message}`).join("\n") : "None"}`;
+    errorMessage += `\nCommitLint Warnings: ${report.warnings.length ? report.warnings.map(warning => ` - ${warning.message}`).join("\n") : "None"}`;
+    errorMessage += "\n\nPlease fix the commit message and try again.";
 
     throw new Error(errorMessage);
   }

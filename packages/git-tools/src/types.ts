@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { RuleConfigCondition, RuleConfigSeverity } from "@commitlint/types";
 import {
   NxReleaseChangelogConfiguration,
   NxReleaseConventionalCommitsConfiguration,
@@ -40,7 +39,7 @@ export const DEFAULT_COMMIT_TYPES = {
     emoji: "⚙️  ",
     semverBump: "patch",
     changelog: {
-      title: "Chores",
+      title: "Miscellaneous",
       hidden: false
     }
   },
@@ -321,7 +320,7 @@ export type CommitRulesEnum = Record<
 
 export type DefaultCommitRulesEnum = {
   "body-leading-blank": [RuleConfigSeverity, RuleConfigCondition];
-  "body-max-line-length": [RuleConfigSeverity, RuleConfigCondition, number];
+  "body-max-length": [RuleConfigSeverity, RuleConfigCondition, number];
   "footer-leading-blank": [RuleConfigSeverity, RuleConfigCondition];
   "footer-max-line-length": [RuleConfigSeverity, RuleConfigCondition, number];
   "header-max-length": [RuleConfigSeverity, RuleConfigCondition, number];
@@ -329,14 +328,18 @@ export type DefaultCommitRulesEnum = {
   "subject-case": [RuleConfigSeverity, RuleConfigCondition, string[]];
   "subject-empty": [RuleConfigSeverity, RuleConfigCondition];
   "subject-full-stop": [RuleConfigSeverity, RuleConfigCondition, string];
+  "subject-max-length": [RuleConfigSeverity, RuleConfigCondition, number];
+  "subject-min-length": [RuleConfigSeverity, RuleConfigCondition, number];
   "type-case": [RuleConfigSeverity, RuleConfigCondition, string];
   "type-empty": [RuleConfigSeverity, RuleConfigCondition];
   "type-enum": [RuleConfigSeverity, RuleConfigCondition, string[]];
   "scope-empty": [RuleConfigSeverity, RuleConfigCondition];
+  "type-max-length": [RuleConfigSeverity, RuleConfigCondition, number];
+  "type-min-length": [RuleConfigSeverity, RuleConfigCondition, number];
+  "scope-case": [RuleConfigSeverity, RuleConfigCondition, string[]];
 } & CommitRulesEnum;
 
 export type CommitConfig<
-  TCommitRulesEnum extends DefaultCommitRulesEnum = DefaultCommitRulesEnum,
   TCommitQuestionEnum extends CommitQuestionEnum = CommitQuestionEnum,
   TCommitTypesEnum extends CommitTypesEnum = CommitTypesEnum,
   TCommitPromptMessagesEnum extends
@@ -344,32 +347,18 @@ export type CommitConfig<
   TCommitSettingsEnum extends CommitSettingsEnum = CommitSettingsEnum
 > = {
   extends?: string[];
-  rules: TCommitRulesEnum;
   messages: TCommitPromptMessagesEnum;
   settings: TCommitSettingsEnum;
   types: TCommitTypesEnum;
   questions: TCommitQuestionEnum;
 };
 
-export const DEFAULT_COMMIT_RULES: DefaultCommitRulesEnum = {
-  "body-leading-blank": [RuleConfigSeverity.Warning, "always"],
-  "body-max-line-length": [RuleConfigSeverity.Error, "always", 150],
-  "footer-leading-blank": [RuleConfigSeverity.Warning, "always"],
-  "footer-max-line-length": [RuleConfigSeverity.Error, "always", 150],
-  "header-max-length": [RuleConfigSeverity.Error, "always", 150],
-  "header-trim": [RuleConfigSeverity.Error, "always"],
-  "subject-case": [RuleConfigSeverity.Error, "always", ["sentence-case"]],
-  "subject-empty": [RuleConfigSeverity.Error, "never"],
-  "subject-full-stop": [RuleConfigSeverity.Error, "never", "."],
-  "type-case": [RuleConfigSeverity.Error, "always", "lower-case"],
-  "type-empty": [RuleConfigSeverity.Error, "never"],
-  "type-enum": [
-    RuleConfigSeverity.Error,
-    "always",
-    Object.keys(DEFAULT_COMMIT_TYPES)
-  ] as [RuleConfigSeverity, RuleConfigCondition, string[]],
-  "scope-empty": [RuleConfigSeverity.Error, "never"]
-} as const;
+export type RuleConfigCondition = "always" | "never";
+export enum RuleConfigSeverity {
+  Disabled = 0,
+  Warning = 1,
+  Error = 2
+}
 
 export type DefaultResolvedCommitRulesEnum = DefaultCommitRulesEnum & {
   "scope-enum": (
@@ -378,8 +367,6 @@ export type DefaultResolvedCommitRulesEnum = DefaultCommitRulesEnum & {
 };
 
 export type CommitResolvedConfig<
-  TCommitRulesEnum extends
-    DefaultResolvedCommitRulesEnum = DefaultResolvedCommitRulesEnum,
   TCommitQuestionEnum extends CommitQuestionEnum<
     DefaultCommitQuestionKeys,
     CommitQuestionProps
@@ -390,7 +377,6 @@ export type CommitResolvedConfig<
 > = {
   utils: Record<string, any>;
   parserPreset: string;
-  rules: TCommitRulesEnum;
   prompt: {
     settings: TCommitSettingsEnum;
     messages: TCommitPromptMessagesEnum;
@@ -403,8 +389,6 @@ export type CommitQuestionAnswers<
 > = Record<keyof TCommitQuestionEnum | string, string | boolean>;
 
 export type CommitState<
-  TCommitRulesEnum extends
-    DefaultResolvedCommitRulesEnum = DefaultResolvedCommitRulesEnum,
   TCommitQuestionEnum extends CommitQuestionEnum = CommitQuestionEnum,
   TCommitPromptMessagesEnum extends
     CommitPromptMessagesEnum = CommitPromptMessagesEnum,
@@ -412,7 +396,6 @@ export type CommitState<
 > = {
   answers: CommitQuestionAnswers<TCommitQuestionEnum>;
   config: CommitResolvedConfig<
-    TCommitRulesEnum,
     TCommitQuestionEnum,
     TCommitPromptMessagesEnum,
     TCommitSettingsEnum

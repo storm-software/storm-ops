@@ -109,7 +109,6 @@
     "@typescript-eslint/parser": "7.16.0",
     "c12": "catalog:",
     "chalk": "catalog:",
-    "conventional-changelog-conventionalcommits": "8.0.0",
     "copyfiles": "catalog:",
     "esbuild": "catalog:",
     "esbuild-register": "3.5.0",
