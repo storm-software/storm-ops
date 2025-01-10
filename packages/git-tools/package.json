@@ -45,46 +45,46 @@
     "pnpm": ">=9.15.2"
   },
   "bin": {
-    "storm-git": "./bin/git/index.js",
-    "storm-git-esm": "./bin/git/index.mjs",
-    "storm-git-cjs": "./bin/git/index.js",
-    "storm-post-checkout": "./bin/post-checkout/index.js",
-    "storm-post-checkout-esm": "./bin/post-checkout/index.mjs",
-    "storm-post-checkout-cjs": "./bin/post-checkout/index.js",
-    "storm-post-commit": "./bin/post-commit/index.js",
-    "storm-post-commit-esm": "./bin/post-commit/index.mjs",
-    "storm-post-commit-cjs": "./bin/post-commit/index.js",
-    "storm-post-merge": "./bin/post-merge/index.js",
-    "storm-post-merge-esm": "./bin/post-merge/index.mjs",
-    "storm-post-merge-cjs": "./bin/post-merge/index.js",
-    "storm-pre-commit": "./bin/pre-commit/index.js",
-    "storm-pre-commit-esm": "./bin/pre-commit/index.mjs",
-    "storm-pre-commit-cjs": "./bin/pre-commit/index.js",
-    "storm-pre-install": "./bin/pre-install/index.js",
-    "storm-pre-install-esm": "./bin/pre-install/index.mjs",
-    "storm-pre-install-cjs": "./bin/pre-install/index.js",
-    "storm-pre-push": "./bin/pre-push/index.js",
-    "storm-pre-push-esm": "./bin/pre-push/index.mjs",
-    "storm-pre-push-cjs": "./bin/pre-push/index.js",
-    "storm-prepare": "./bin/prepare/index.js",
-    "storm-prepare-esm": "./bin/prepare/index.mjs",
-    "storm-prepare-cjs": "./bin/prepare/index.js",
-    "storm-version-warning": "./bin/version-warning/index.js",
-    "storm-version-warning-esm": "./bin/version-warning/index.mjs",
-    "storm-version-warning-cjs": "./bin/version-warning/index.js"
+    "storm-git": "./bin/git/index.cjs",
+    "storm-git-esm": "./bin/git/index.js",
+    "storm-git-cjs": "./bin/git/index.cjs",
+    "storm-post-checkout": "./bin/post-checkout/index.cjs",
+    "storm-post-checkout-esm": "./bin/post-checkout/index.js",
+    "storm-post-checkout-cjs": "./bin/post-checkout/index.cjs",
+    "storm-post-commit": "./bin/post-commit/index.cjs",
+    "storm-post-commit-esm": "./bin/post-commit/index.js",
+    "storm-post-commit-cjs": "./bin/post-commit/index.cjs",
+    "storm-post-merge": "./bin/post-merge/index.cjs",
+    "storm-post-merge-esm": "./bin/post-merge/index.js",
+    "storm-post-merge-cjs": "./bin/post-merge/index.cjs",
+    "storm-pre-commit": "./bin/pre-commit/index.cjs",
+    "storm-pre-commit-esm": "./bin/pre-commit/index.js",
+    "storm-pre-commit-cjs": "./bin/pre-commit/index.cjs",
+    "storm-pre-install": "./bin/pre-install/index.cjs",
+    "storm-pre-install-esm": "./bin/pre-install/index.js",
+    "storm-pre-install-cjs": "./bin/pre-install/index.cjs",
+    "storm-pre-push": "./bin/pre-push/index.cjs",
+    "storm-pre-push-esm": "./bin/pre-push/index.js",
+    "storm-pre-push-cjs": "./bin/pre-push/index.cjs",
+    "storm-prepare": "./bin/prepare/index.cjs",
+    "storm-prepare-esm": "./bin/prepare/index.js",
+    "storm-prepare-cjs": "./bin/prepare/index.cjs",
+    "storm-version-warning": "./bin/version-warning/index.cjs",
+    "storm-version-warning-esm": "./bin/version-warning/index.js",
+    "storm-version-warning-cjs": "./bin/version-warning/index.cjs"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
       },
       "default": {
         "types": "./dist/index.d.ts",
@@ -93,12 +93,12 @@
     },
     "./index": {
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
       },
       "default": {
         "types": "./dist/index.d.ts",
@@ -107,12 +107,12 @@
     },
     "./types": {
       "import": {
-        "types": "./dist/types.d.mts",
-        "default": "./dist/types.mjs"
-      },
-      "require": {
         "types": "./dist/types.d.ts",
         "default": "./dist/types.js"
+      },
+      "require": {
+        "types": "./dist/types.d.cts",
+        "default": "./dist/types.cjs"
       },
       "default": {
         "types": "./dist/types.d.ts",
@@ -121,12 +121,12 @@
     },
     "./commit/config": {
       "import": {
-        "types": "./dist/commit/config.d.mts",
-        "default": "./dist/commit/config.mjs"
-      },
-      "require": {
         "types": "./dist/commit/config.d.ts",
         "default": "./dist/commit/config.js"
+      },
+      "require": {
+        "types": "./dist/commit/config.d.cts",
+        "default": "./dist/commit/config.cjs"
       },
       "default": {
         "types": "./dist/commit/config.d.ts",
@@ -135,26 +135,54 @@
     },
     "./commit/*": {
       "import": {
-        "types": "./dist/commit/*.d.mts",
-        "default": "./dist/commit/*.mjs"
-      },
-      "require": {
         "types": "./dist/commit/*.d.ts",
         "default": "./dist/commit/*.js"
+      },
+      "require": {
+        "types": "./dist/commit/*.d.cts",
+        "default": "./dist/commit/*.cjs"
       },
       "default": {
         "types": "./dist/commit/*.d.ts",
         "default": "./dist/commit/*.js"
       }
     },
-    "./release/config": {
+    "./commitlint/config": {
       "import": {
-        "types": "./dist/release/config.d.mts",
-        "default": "./dist/release/config.mjs"
+        "types": "./dist/commitlint/config.d.ts",
+        "default": "./dist/commitlint/config.js"
       },
       "require": {
+        "types": "./dist/commitlint/config.d.cts",
+        "default": "./dist/commitlint/config.cjs"
+      },
+      "default": {
+        "types": "./dist/commitlint/config.d.ts",
+        "default": "./dist/commitlint/config.js"
+      }
+    },
+    "./commitlint/*": {
+      "import": {
+        "types": "./dist/commitlint/*.d.ts",
+        "default": "./dist/commitlint/*.js"
+      },
+      "require": {
+        "types": "./dist/commitlint/*.d.cts",
+        "default": "./dist/commitlint/*.cjs"
+      },
+      "default": {
+        "types": "./dist/commitlint/*.d.ts",
+        "default": "./dist/commitlint/*.js"
+      }
+    },
+    "./release/config": {
+      "import": {
         "types": "./dist/release/config.d.ts",
         "default": "./dist/release/config.js"
+      },
+      "require": {
+        "types": "./dist/release/config.d.cts",
+        "default": "./dist/release/config.cjs"
       },
       "default": {
         "types": "./dist/release/config.d.ts",
@@ -163,12 +191,12 @@
     },
     "./release/*": {
       "import": {
-        "types": "./dist/release/*.d.mts",
-        "default": "./dist/release/*.mjs"
-      },
-      "require": {
         "types": "./dist/release/*.d.ts",
         "default": "./dist/release/*.js"
+      },
+      "require": {
+        "types": "./dist/release/*.d.cts",
+        "default": "./dist/release/*.cjs"
       },
       "default": {
         "types": "./dist/release/*.d.ts",
@@ -177,12 +205,12 @@
     },
     "./changelog-renderer": {
       "import": {
-        "types": "./dist/release/changelog-renderer.d.mts",
-        "default": "./dist/release/changelog-renderer.mjs"
-      },
-      "require": {
         "types": "./dist/release/changelog-renderer.d.ts",
         "default": "./dist/release/changelog-renderer.js"
+      },
+      "require": {
+        "types": "./dist/release/changelog-renderer.d.cts",
+        "default": "./dist/release/changelog-renderer.cjs"
       },
       "default": {
         "types": "./dist/release/changelog-renderer.d.ts",

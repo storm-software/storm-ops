@@ -9,6 +9,7 @@ import { run } from "@storm-software/config-tools/utilities/run";
 import shellescape from "any-shell-escape";
 import chalkTemplate from "chalk-template";
 import fs from "node:fs/promises";
+import { runCommitLint } from "../commitlint/run";
 import {
   CommitQuestionAnswers,
   CommitQuestionProps,
@@ -48,6 +49,8 @@ export const runCommit = async (
 
     `);
 
+  await runCommitLint(config, { message });
+
   const commandItems = ["git", "commit"];
   if (!process.env.CI && !process.env.STORM_CI) {
     commandItems.push("-S");
@@ -65,6 +68,7 @@ export const runCommit = async (
     writeDebug(`Message [dry-run]: ${message}`, config);
   } else {
     await fs.writeFile(commitMsgFile, message);
+
     run(config, command);
   }
 };
