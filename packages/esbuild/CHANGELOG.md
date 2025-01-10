@@ -1,3 +1,15 @@
+## 0.13.0 (2025-01-10)
+
+### Features
+
+- **build-tools:** Added the `getEnv` helper to populate storm defaults during a build ([5a9175b9](https://github.com/storm-software/storm-ops/commit/5a9175b9))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.129.0
+- Updated build-tools to 0.121.0
+- Updated config to 1.90.0
+
 ## 0.12.3 (2025-01-10)
 
 ### Bug Fixes
