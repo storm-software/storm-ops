@@ -8,13 +8,21 @@
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "options": {
-        "command": "tsup --config=tsup.config.ts",
+        "command": "tsup --config=tsup.base.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build-bin": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "tsup --config=tsup.bin.ts",
         "cwd": "{projectRoot}"
       }
     },
     "build": {
       "executor": "nx:run-commands",
-      "dependsOn": ["build-base"],
+      "dependsOn": ["build-base", "build-bin"],
       "options": {
         "commands": [
           "pnpm copyfiles LICENSE dist/packages/git-tools",
