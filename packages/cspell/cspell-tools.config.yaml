@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/streetsidesoftware/cspell/main/packages/cspell-tools/cspell-tools.config.schema.json
+
+$schema: https://raw.githubusercontent.com/streetsidesoftware/cspell/main/packages/cspell-tools/cspell-tools.config.schema.json
+targets:
+  - name: "storm"
+    sources:
+      - filename: "src/storm.txt"
+    format: "plaintext"
+    targetDirectory: "./dict"
+    compress: false
+    sort: true
+checksumFile: true
+keepRawCase: true

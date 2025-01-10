@@ -1,4 +1,4 @@
-# Base CSpell dictionary for the Open System repository
+# Storm Software's base keyword dictionary
 
 stormstack
 stormcloud
@@ -46,6 +46,7 @@ probot
 smee
 remeda
 jiti
+codeowners
 deepmerge
 copyfiles
 blockquote

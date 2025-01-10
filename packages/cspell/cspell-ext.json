@@ -1,0 +1,52 @@
+// cSpell Settings
+{
+  "id": "storm",
+  "name": "Storm Software",
+  "description": "The Storm Software keywords Dictionary.",
+  "readonly": true,
+  // List of dictionary files to add to the global list of dictionaries
+  "dictionaryDefinitions": [
+    {
+      "name": "storm",
+      "path": "./dict/storm.txt",
+      "description": "Storm Software keywords."
+    }
+  ],
+  // Dictionaries to always be used.
+  // Generally left empty
+  "dictionaries": [],
+  // Language Rules to apply to matching files.
+  // Files are matched on `languageId` and `locale`
+  "languageSettings": [
+    {
+      "languageId": [
+        "typescript",
+        "javascript",
+        "typescriptreact",
+        "javascriptreact",
+        "mdx",
+        "rust",
+        "c",
+        "cpp",
+        "csharp",
+        "json",
+        "jsonc",
+        "yaml",
+        "css",
+        "html",
+        "handlebars",
+        "markdown",
+        "dockerfile",
+        "terraform",
+        "tfvars",
+        "commit-msg"
+      ],
+      "locale": "*",
+      "includeRegExpList": [],
+      "ignoreRegExpList": [],
+      "patterns": [],
+      "dictionaries": ["storm"],
+      "dictionaryDefinitions": []
+    }
+  ]
+}

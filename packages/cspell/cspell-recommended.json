@@ -1,0 +1,81 @@
+{
+  "version": "0.2",
+  "enabledLanguageIds": [
+    "handlebars",
+    "dockerfile",
+    "terraform",
+    "tfvars",
+    "commit-msg"
+  ],
+  "dictionaries": [
+    "storm",
+    "public-licenses",
+    "filetypes",
+    "cryptocurrencies",
+    "docker",
+    "git",
+    "k8s",
+    "aws",
+    "terraform"
+  ],
+  "languageSettings": [
+    {
+      "languageId": "typescript,typescriptreact,mdx",
+      "dictionaries": [
+        "storm",
+        "typescript",
+        "node",
+        "npm",
+        "aws",
+        "softwareTerms"
+      ]
+    },
+    {
+      "languageId": "json,jsonc,yaml",
+      "dictionaries": [
+        "storm",
+        "aws",
+        "k8s",
+        "softwareTerms",
+        "public-licenses"
+      ]
+    },
+    {
+      "languageId": "json,jsonc",
+      "dictionaries": ["storm", "node", "npm", "aws"]
+    },
+    {
+      "languageId": "dockerfile",
+      "dictionaries": ["storm", "aws", "k8s", "docker"]
+    },
+    {
+      "languageId": "json,jsonc",
+      "dictionaries": ["storm", "node", "npm", "aws"]
+    }
+  ],
+  "import": [
+    "./cspell-base.json",
+    "@cspell/dict-aws/cspell-ext.json",
+    "@cspell/dict-cryptocurrencies/cspell-ext.json",
+    "@cspell/dict-docker/cspell-ext.json",
+    "@cspell/dict-en_us/cspell-ext.json",
+    "@cspell/dict-en-common-misspellings/cspell-ext.json",
+    "@cspell/dict-filetypes/cspell-ext.json",
+    "@cspell/dict-fonts/cspell-ext.json",
+    "@cspell/dict-fullstack/cspell-ext.json",
+    "@cspell/dict-git/cspell-ext.json",
+    "@cspell/dict-html-symbol-entities/cspell-ext.json",
+    "@cspell/dict-html/cspell-ext.json",
+    "@cspell/dict-k8s/cspell-ext.json",
+    "@cspell/dict-lorem-ipsum/cspell-ext.json",
+    "@cspell/dict-markdown/cspell-ext.json",
+    "@cspell/dict-makefile/cspell-ext.json",
+    "@cspell/dict-node/cspell-ext.json",
+    "@cspell/dict-npm/cspell-ext.json",
+    "@cspell/dict-public-licenses/cspell-ext.json",
+    "@cspell/dict-rust/cspell-ext.json",
+    "@cspell/dict-sql/cspell-ext.json",
+    "@cspell/dict-software-terms/cspell-ext.json",
+    "@cspell/dict-typescript/cspell-ext.json"
+  ]
+}

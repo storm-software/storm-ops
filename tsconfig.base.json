@@ -45,19 +45,7 @@
       "@storm-software/unbuild/*": ["packages/unbuild/src/*"],
       "@storm-software/workspace-tools": ["packages/workspace-tools/index.ts"],
       "@storm-software/workspace-tools/*": ["packages/workspace-tools/src/*"],
-      "create-storm-workspace": [
-        "packages/create-storm-workspace/bin/index.ts"
-      ],
-      "eslint-plugin-storm-graphql": [
-        "packages/eslint-plugin-graphql/src/index.ts"
-      ],
-      "eslint-plugin-storm-graphql/*": ["packages/eslint-plugin-graphql/src/*"],
-      "eslint-plugin-storm-react": [
-        "packages/eslint-plugin-react/src/index.ts"
-      ],
-      "eslint-plugin-storm-react/*": ["packages/eslint-plugin-react/src/*"],
-      "eslint-plugin-storm-software": ["packages/eslint-plugin/src/index.ts"],
-      "eslint-plugin-storm-software/*": ["packages/eslint-plugin/src/*"]
+      "create-storm-workspace": ["packages/create-storm-workspace/bin/index.ts"]
     }
   },
   "include": ["**/*.ts", "**/*.js", "**/*.json"],
