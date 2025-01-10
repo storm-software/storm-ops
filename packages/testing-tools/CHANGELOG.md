@@ -1,3 +1,9 @@
+## 1.95.3 (2025-01-10)
+
+### Bug Fixes
+
+- **workspace-tools:** Added missing `defu` dependency ([60401ac7](https://github.com/storm-software/storm-ops/commit/60401ac7))
+
 ## 1.95.2 (2025-01-09)
 
 ### Bug Fixes
