@@ -5,6 +5,7 @@ export default defineConfig([
     name: "git-tools-base",
     target: "node22",
     entryPoints: [
+      "src/index.ts",
       "src/types.ts",
       "src/commit/config.ts",
       "src/release/config.ts",

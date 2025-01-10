@@ -67,10 +67,6 @@ jobs:
         run: pnpm build-plugins
         shell: bash
 
-      - uses: nrwl/nx-set-shas@v4
-        with:
-          main-branch-name: main
-
       - name: Run build script
         run: pnpm build-all
         shell: bash
@@ -100,8 +96,18 @@ jobs:
           file
         run: chmod a=rwx dist/packages/create-storm-workspace/package.json
 
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        id: setSHAs
+        uses: nrwl/nx-set-shas@v4
+        with:
+          main-branch-name: "main"
+          workflow-id: "ci.yml"
+          last-successful-event: "release"
+          set-environment-variables-for-job: true
+          error-on-no-successful-workflow: true
+
       - name: Release Library Version Updates
-        run: pnpm release --base=${{ env.NX_BASE }} --head=${{ env.NX_HEAD }}
+        run: pnpm release --base=${{ steps.setSHAs.outputs.base }} --head=${{ steps.setSHAs.outputs.head }}
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ github.token }}

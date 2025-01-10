@@ -291,7 +291,7 @@
       "{projectRoot}/src/**/*.md",
       "{projectRoot}/src/**/*.mdx",
       "{projectRoot}/build.config.ts",
-      "{projectRoot}/tsup.config.ts",
+      "{projectRoot}/tsup.*.ts",
       "{projectRoot}/tools/**/*",
       "{projectRoot}/scripts/**/*",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",

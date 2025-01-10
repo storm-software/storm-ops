@@ -16,6 +16,6 @@ export default defineConfig([
     tsconfig: "./tsconfig.json",
     shims: true,
     skipNodeModulesBundle: false,
-    noExternal: ["conventional-changelog-conventionalcommits"]
+    noExternal: ["conventional-changelog-conventionalcommits", "defu"]
   }
 ]);

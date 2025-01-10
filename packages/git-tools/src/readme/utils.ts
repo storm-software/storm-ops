@@ -1,7 +1,10 @@
 import { readFileSync } from "node:fs";
 import { findFileName } from "../utilities/file-utils";
 
-export const formatReadMe = (templatePath: string, readMeContent: string): string => {
+export const formatReadMe = (
+  templatePath: string,
+  readMeContent: string
+): string => {
   const templateContent = readFileSync(templatePath, "utf8");
 
   const section = findFileName(templatePath)

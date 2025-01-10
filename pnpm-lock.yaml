@@ -10,37 +10,37 @@ catalogs:
       specifier: ^7.48.1
       version: 7.49.0
     '@nx/devkit':
-      specifier: ^20.2.2
+      specifier: ^20.3.1
       version: 20.3.1
     '@nx/esbuild':
-      specifier: ^20.2.2
+      specifier: ^20.3.1
       version: 20.3.1
     '@nx/eslint':
-      specifier: ^20.2.2
+      specifier: ^20.3.1
       version: 20.3.1
     '@nx/eslint-plugin':
-      specifier: ^20.2.2
+      specifier: ^20.3.1
       version: 20.3.1
     '@nx/jest':
-      specifier: ^20.2.2
+      specifier: ^20.3.1
       version: 20.3.1
     '@nx/js':
-      specifier: ^20.2.2
+      specifier: ^20.3.1
       version: 20.3.1
     '@nx/node':
-      specifier: ^20.2.2
+      specifier: ^20.3.1
       version: 20.3.1
     '@nx/plugin':
-      specifier: ^20.2.2
+      specifier: ^20.3.1
       version: 20.3.1
     '@nx/web':
-      specifier: ^20.2.2
+      specifier: ^20.3.1
       version: 20.3.1
     '@nx/webpack':
-      specifier: ^20.2.2
+      specifier: ^20.3.1
       version: 20.3.1
     '@nx/workspace':
-      specifier: ^20.2.2
+      specifier: ^20.3.1
       version: 20.3.1
     '@swc-node/register':
       specifier: 1.10.9
@@ -67,7 +67,7 @@ catalogs:
       specifier: 2.4.1
       version: 2.4.1
     create-nx-workspace:
-      specifier: ^20.2.2
+      specifier: ^20.3.1
       version: 20.3.1
     defu:
       specifier: 6.1.4
@@ -79,7 +79,7 @@ catalogs:
       specifier: ^9.12.0
       version: 9.17.0
     nx:
-      specifier: ^20.2.2
+      specifier: ^20.3.1
       version: 20.3.1
     pkg-types:
       specifier: ^1.1.1
@@ -395,12 +395,6 @@ importers:
 
   packages/config-tools:
     dependencies:
-      c12:
-        specifier: 'catalog:'
-        version: 2.0.1
-      defu:
-        specifier: 'catalog:'
-        version: 6.1.4
       zod:
         specifier: 'catalog:'
         version: 3.24.1
@@ -408,9 +402,15 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.10.5
+      c12:
+        specifier: 'catalog:'
+        version: 2.0.1
       chalk:
         specifier: 'catalog:'
         version: 4.1.2
+      defu:
+        specifier: 'catalog:'
+        version: 6.1.4
       tsup:
         specifier: 'catalog:'
         version: 8.3.5(@microsoft/api-extractor@7.49.0(@types/node@22.10.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.4.2)(postcss@8.4.49)(typescript@5.7.2)(yaml@2.7.0)
@@ -745,6 +745,9 @@ importers:
       semver:
         specifier: 7.6.2
         version: 7.6.2
+      simple-git:
+        specifier: ^3.27.0
+        version: 3.27.0
       tsup:
         specifier: 'catalog:'
         version: 8.3.5(@microsoft/api-extractor@7.49.0(@types/node@22.10.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.4.2)(postcss@8.4.49)(typescript@5.7.2)(yaml@2.7.0)
@@ -3599,6 +3602,12 @@ packages:
     engines: {node: '>=10.0'}
     peerDependencies:
       tslib: '2'
+
+  '@kwsites/file-exists@1.1.1':
+    resolution: {integrity: sha512-m9/5YGR18lIwxSFDwfE3oA7bWuq9kdau6ugN4H2rJeyhFQZcG9AgSHkQtSD15a8WvTgfz9aikZMrKPHvbpqFiw==}
+
+  '@kwsites/promise-deferred@1.1.1':
+    resolution: {integrity: sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==}
 
   '@leichtgewicht/ip-codec@2.0.5':
     resolution: {integrity: sha512-Vo+PSpZG2/fmgmiNzYK9qWRh8h/CHrwD0mo1h1DzL4yzHNSfWYujGTYsWGreD000gcgmZ7K4Ys6Tx9TxtsKdDw==}
@@ -11810,6 +11819,9 @@ packages:
     resolution: {integrity: sha512-8G+/XDU8wNsJOQS5ysDVO0Etg9/2uA5gR9l4ZwijjlwxBcrU6RPfwi2+jJmbP+Ap1Hlp/nVAaEO4Fj22/SL2gQ==}
     engines: {node: ^16.14.0 || >=18.0.0}
 
+  simple-git@3.27.0:
+    resolution: {integrity: sha512-ivHoFS9Yi9GY49ogc6/YAi3Fl9ROnF4VyubNylgCkA+RVqLaKWnDSzXOVzya8csELIaWaYNutsEuAhZrtOjozA==}
+
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
@@ -16169,6 +16181,14 @@ snapshots:
   '@jsonjoy.com/util@1.5.0(tslib@2.8.1)':
     dependencies:
       tslib: 2.8.1
+
+  '@kwsites/file-exists@1.1.1':
+    dependencies:
+      debug: 4.4.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@kwsites/promise-deferred@1.1.1': {}
 
   '@leichtgewicht/ip-codec@2.0.5': {}
 
@@ -25158,7 +25178,7 @@ snapshots:
       bl: 4.1.0
       chalk: 4.1.2
       cli-cursor: 3.1.0
-      cli-spinners: 2.6.1
+      cli-spinners: 2.9.2
       is-interactive: 1.0.0
       log-symbols: 4.1.0
       strip-ansi: 6.0.1
@@ -26948,6 +26968,14 @@ snapshots:
       '@sigstore/sign': 2.3.2
       '@sigstore/tuf': 2.3.4
       '@sigstore/verify': 1.2.1
+    transitivePeerDependencies:
+      - supports-color
+
+  simple-git@3.27.0:
+    dependencies:
+      '@kwsites/file-exists': 1.1.1
+      '@kwsites/promise-deferred': 1.1.1
+      debug: 4.4.0
     transitivePeerDependencies:
       - supports-color
 

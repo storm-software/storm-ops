@@ -14,7 +14,6 @@ import type { ReleaseOptions } from "nx/src/command-line/release/command-object.
 import { createAPI as createReleasePublishAPI } from "nx/src/command-line/release/publish.js";
 import type { ReleaseVersion } from "nx/src/command-line/release/utils/shared.js";
 import { NxReleaseConfiguration, readNxJson } from "nx/src/config/nx-json.js";
-import { createProjectGraphAsync } from "nx/src/project-graph/project-graph.js";
 import { DEFAULT_RELEASE_CONFIG, DEFAULT_RELEASE_GROUP_CONFIG } from "./config";
 import { releaseVersion } from "./nx-version";
 
@@ -55,10 +54,21 @@ export const runRelease = async (
 
     writeDebug("Creating workspace Project Graph data...", config);
 
-    const projectGraph = await createProjectGraphAsync({ exitOnError: true });
     const nxJson = readNxJson();
 
     writeDebug("Reading in the workspaces release configuration", config);
+
+    const to = options.head || process.env.NX_HEAD;
+    const from = options.base || process.env.NX_BASE;
+
+    writeDebug(
+      `Using the following Git SHAs to determine the release content:
+ - From: ${from}
+ - To: ${to}
+`,
+      config
+    );
+
     //     const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
     //       projectGraph,
     //       await createProjectFileMapUsingProjectGraph(projectGraph),
@@ -139,8 +149,8 @@ export const runRelease = async (
       versionData: projectsVersionData,
       dryRun: false,
       verbose: isVerbose(config.logLevel),
-      to: options.head ?? process.env.NX_HEAD,
-      from: options.base ?? process.env.NX_BASE,
+      to,
+      from,
       gitCommit: true,
       gitCommitMessage: "release(monorepo): Publish workspace release updates"
     });

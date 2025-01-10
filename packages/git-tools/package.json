@@ -251,6 +251,7 @@
     "jsonc-parser": "3.2.1",
     "read-yaml-file": "catalog:",
     "semver": "7.6.2",
+    "simple-git": "^3.27.0",
     "tsup": "catalog:",
     "underscore": "1.13.7",
     "update-section": "0.3.3",

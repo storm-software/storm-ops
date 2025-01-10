@@ -23,9 +23,14 @@ export const getExecutorMarkdown = (
       let required: string[] = [];
 
       if (executor.schema) {
-        const schemaJsonPath = join(findFilePath(executorsJsonFile), executor.schema);
+        const schemaJsonPath = join(
+          findFilePath(executorsJsonFile),
+          executor.schema
+        );
         if (existsSync(schemaJsonPath)) {
-          const schemaJson = JSON.parse(readFileSync(schemaJsonPath, "utf8") ?? "{}");
+          const schemaJson = JSON.parse(
+            readFileSync(schemaJsonPath, "utf8") ?? "{}"
+          );
 
           if (schemaJson.title) {
             title = `## ${schemaJson.title}\n\n`;
@@ -38,9 +43,15 @@ export const getExecutorMarkdown = (
           }
 
           required =
-            schemaJson.required && Array.isArray(schemaJson.required) ? schemaJson.required : [];
-          if (schemaJson.properties && Object.keys(schemaJson.properties).length > 0) {
-            result += "### Options\n\nThe following executor options are available:\n\n";
+            schemaJson.required && Array.isArray(schemaJson.required)
+              ? schemaJson.required
+              : [];
+          if (
+            schemaJson.properties &&
+            Object.keys(schemaJson.properties).length > 0
+          ) {
+            result +=
+              "### Options\n\nThe following executor options are available:\n\n";
             result += "| Option    | Type   | Description   | Default   | \n";
             result += "| --------- | ------ | ------------- | --------- | \n";
 
@@ -52,10 +63,16 @@ export const getExecutorMarkdown = (
                     required.includes(name) ? " \\*" : "  "
                   }${required.includes(name) ? "**" : ""}   `;
                   if (schema.type) {
-                    if (schema.enum && Array.isArray(schema.enum) && schema.enum.length > 0) {
+                    if (
+                      schema.enum &&
+                      Array.isArray(schema.enum) &&
+                      schema.enum.length > 0
+                    ) {
                       result += ` | ${schema.enum
                         .map((x: any) =>
-                          !schema.type || schema.type === "string" ? `"${x}"` : `\`${x}\``
+                          !schema.type || schema.type === "string"
+                            ? `"${x}"`
+                            : `\`${x}\``
                         )
                         .join(" \\| ")}    `;
                     } else if (schema.type === "array" && schema.items?.type) {
@@ -143,9 +160,14 @@ export const getGeneratorMarkdown = (
       const required = [];
 
       if (generator.schema) {
-        const schemaJsonPath = join(findFilePath(generatorsJsonFile), generator.schema);
+        const schemaJsonPath = join(
+          findFilePath(generatorsJsonFile),
+          generator.schema
+        );
         if (existsSync(schemaJsonPath)) {
-          const schemaJson = JSON.parse(readFileSync(schemaJsonPath, "utf8") ?? "{}");
+          const schemaJson = JSON.parse(
+            readFileSync(schemaJsonPath, "utf8") ?? "{}"
+          );
 
           if (schemaJson.title) {
             title = `## ${schemaJson.title}\n\n`;
@@ -155,11 +177,17 @@ export const getGeneratorMarkdown = (
             description = `${schemaJson.description.replaceAll("*", "\\*")}\n\n`;
           }
 
-          if (schemaJson.properties && Object.keys(schemaJson.properties).length > 0) {
+          if (
+            schemaJson.properties &&
+            Object.keys(schemaJson.properties).length > 0
+          ) {
             const required =
-              schemaJson.required && Array.isArray(schemaJson.required) ? schemaJson.required : [];
+              schemaJson.required && Array.isArray(schemaJson.required)
+                ? schemaJson.required
+                : [];
 
-            result += "### Options\n\nThe following executor options are available:\n\n";
+            result +=
+              "### Options\n\nThe following executor options are available:\n\n";
             result += "| Option    | Type   | Description   | Default   | \n";
             result += "| --------- | ------ | ------------- | --------- | \n";
 
@@ -171,10 +199,16 @@ export const getGeneratorMarkdown = (
                     required.includes(name) ? " \\*" : "  "
                   }${required.includes(name) ? "**" : ""}   `;
                   if (schema.type) {
-                    if (schema.enum && Array.isArray(schema.enum) && schema.enum.length > 0) {
+                    if (
+                      schema.enum &&
+                      Array.isArray(schema.enum) &&
+                      schema.enum.length > 0
+                    ) {
                       resultSchema += ` | ${schema.enum
                         .map((x: any) =>
-                          !schema.type || schema.type === "string" ? `"${x}"` : `\`${x}\``
+                          !schema.type || schema.type === "string"
+                            ? `"${x}"`
+                            : `\`${x}\``
                         )
                         .join(" \\| ")}    `;
                     } else if (schema.type === "array" && schema.items?.type) {
@@ -218,17 +252,26 @@ export const getGeneratorMarkdown = (
           }
 
           if (schemaJson.example) {
-            if (Array.isArray(schemaJson.example) && schemaJson.example.length > 0) {
+            if (
+              Array.isArray(schemaJson.example) &&
+              schemaJson.example.length > 0
+            ) {
               example +=
                 "### Examples \n\nThis generator can be used by executing the following examples in a command line utility: \n\n";
               example += schemaJson.example
                 .map((exampleCmd: any) => {
                   let resultCmd = "";
-                  if (exampleCmd.description && typeof exampleCmd.description === "string") {
+                  if (
+                    exampleCmd.description &&
+                    typeof exampleCmd.description === "string"
+                  ) {
                     resultCmd += `${exampleCmd.description.replaceAll("*", "\\*")}\n\n`;
                   }
 
-                  if (exampleCmd.command && typeof exampleCmd.command === "string") {
+                  if (
+                    exampleCmd.command &&
+                    typeof exampleCmd.command === "string"
+                  ) {
                     resultCmd += `\`\`\`bash \n${exampleCmd.command}\n\`\`\`\n\n`;
                   } else if (typeof exampleCmd === "string") {
                     resultCmd += `\`\`\`bash \n${exampleCmd}\n\`\`\`\n\n`;

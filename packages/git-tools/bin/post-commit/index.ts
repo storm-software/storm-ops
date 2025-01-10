@@ -12,7 +12,6 @@ import {
 } from "@storm-software/config-tools";
 import { checkPackageVersion } from "../../src/utilities/check-package-version";
 
-
 void (async () => {
   const config = await loadStormConfig();
   try {
