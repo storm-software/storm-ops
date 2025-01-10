@@ -6,11 +6,13 @@ import {
   writeWarning
 } from "@storm-software/config-tools";
 import { StormConfig } from "@storm-software/config/types";
+import defu from "defu";
 import { existsSync } from "fs";
 import { readFile } from "fs/promises";
 import childProcess from "node:child_process";
 import { DEFAULT_COMMIT_TYPES } from "../types";
-import { DEFAULT_COMMIT_RULES } from "./config";
+import { DEFAULT_COMMITLINT_CONFIG } from "./config";
+import lint from "./lint";
 import { getNxScopes, getRuleFromScopeEnum } from "./scope";
 
 const COMMIT_EDITMSG_PATH = ".git/COMMIT_EDITMSG";
@@ -90,45 +92,46 @@ export const runCommitLint = async (
 
   const allowedTypes = Object.keys(DEFAULT_COMMIT_TYPES).join("|");
   const allowedScopes = await getNxScopes();
+
   // eslint-disable-next-line no-useless-escape
   const commitMsgRegex = `(${allowedTypes})\\((${allowedScopes})\\)!?:\\s(([a-z0-9:\-\s])+)`;
-
   const matchCommit = new RegExp(commitMsgRegex, "g").test(commitMessage);
-  const matchRevert = /Revert/gi.test(commitMessage);
-  const matchRelease = /Release/gi.test(commitMessage);
 
-  const lint = (await import("@commitlint/lint")).default;
+  const commitlintConfig = defu(
+    params.config ?? {},
+    { rules: { "scope-enum": getRuleFromScopeEnum(allowedScopes) } },
+    DEFAULT_COMMITLINT_CONFIG
+  );
 
-  const report = await lint(commitMessage, {
-    ...DEFAULT_COMMIT_RULES,
-    "scope-enum": getRuleFromScopeEnum(allowedScopes)
-  } as any);
+  const report = await lint(commitMessage, commitlintConfig.rules, {
+    parserOpts: commitlintConfig.parserOpts,
+    helpUrl: commitlintConfig.helpUrl
+  });
 
-  if (
-    +!(matchRelease || matchRevert || matchCommit) === 0 ||
-    report.errors.length ||
-    report.warnings.length
-  ) {
+  if (!matchCommit || report.errors.length || report.warnings.length) {
     writeSuccess(`Commit was processing completed successfully!`, config);
   } else {
     let errorMessage =
-      " Oh no! 😦 Your commit message: \n" +
+      " Oh no! Your commit message: \n" +
       "-------------------------------------------------------------------\n" +
       commitMessage +
       "\n-------------------------------------------------------------------" +
-      "\n\n 👉️ Does not follow the commit message convention specified in the CONTRIBUTING.MD file.";
+      "\n\n Does not follow the commit message convention specified by Storm Software.";
     errorMessage += "\ntype(scope): subject \n BLANK LINE \n body";
     errorMessage += "\n";
-    errorMessage += `\npossible types: ${allowedTypes}`;
-    errorMessage += `\npossible scopes: ${allowedScopes} (if unsure use "core")`;
+    errorMessage += `\nPossible types: ${allowedTypes}`;
+    errorMessage += `\nPossible scopes: ${allowedScopes} (if unsure use "monorepo")`;
     errorMessage +=
-      "\nEXAMPLE: \n" +
-      "feat(nx): add an option to generate lazy-loadable modules\n" +
-      "fix(core)!: breaking change should have exclamation mark\n";
+      "\n\nEXAMPLE: \n" +
+      "feat(my-lib): add an option to generate lazy-loadable modules\n" +
+      "fix(monorepo)!: breaking change should have exclamation mark\n";
     errorMessage += `\n\nCommitLint Errors: ${report.errors.length ? report.errors.map(error => ` - ${error.message}`).join("\n") : "None"}`;
     errorMessage += `\nCommitLint Warnings: ${report.warnings.length ? report.warnings.map(warning => ` - ${warning.message}`).join("\n") : "None"}`;
-    errorMessage += "\n\nPlease fix the commit message and try again.";
+    errorMessage += "\n\nPlease fix the commit message and rerun storm-commit.";
+    errorMessage += `\n\nMore details about the Storm Software commit message specification can be found at: ${commitlintConfig.helpUrl}`;
 
     throw new Error(errorMessage);
   }
+
+  return report.input;
 };

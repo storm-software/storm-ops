@@ -16,6 +16,6 @@ export default defineConfig([
     tsconfig: "./tsconfig.json",
     shims: true,
     skipNodeModulesBundle: false,
-    noExternal: ["@commitlint/lint", "defu"]
+    noExternal: ["@commitlint/rules", "conventional-commits-parser", "defu"]
   }
 ]);

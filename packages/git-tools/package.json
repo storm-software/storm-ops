@@ -1,6 +1,7 @@
 {
   "name": "@storm-software/git-tools",
   "version": "2.79.1",
+  "type": "module",
   "description": "Tools for managing Git repositories within a Nx workspace.",
   "repository": {
     "type": "github",
@@ -244,7 +245,7 @@
     "tsconfig-paths": "4.2.0"
   },
   "devDependencies": {
-    "@commitlint/lint": "^19.6.0",
+    "@commitlint/rules": "^19.6.0",
     "@humanfs/core": "^0.19.1",
     "@humanfs/node": "^0.16.6",
     "@humanwhocodes/retry": "0.4.1",
@@ -272,6 +273,7 @@
     "chalk": "catalog:",
     "chalk-template": "1.1.0",
     "commander": "catalog:",
+    "conventional-commits-parser": "^6.0.0",
     "defu": "catalog:",
     "htmlparser2": "10.0.0",
     "jsonc-parser": "3.2.1",

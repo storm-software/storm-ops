@@ -29,3 +29,20 @@ export const DEFAULT_COMMIT_RULES: DefaultCommitRulesEnum = {
   "scope-case": [RuleConfigSeverity.Error, "always", ["kebab-case"]],
   "scope-empty": [RuleConfigSeverity.Error, "never"]
 };
+
+export const DEFAULT_COMMITLINT_CONFIG = {
+  rules: DEFAULT_COMMIT_RULES,
+  helpUrl: "https://stormsoftware.com/ops/commitlint",
+  parserOpts: {
+    headerPattern: /^(\w*)(?:\((.*)\))?!?: (.*)$/,
+    breakingHeaderPattern: /^(\w*)(?:\((.*)\))?!: (.*)$/,
+    headerCorrespondence: ["type", "scope", "subject"],
+    noteKeywords: ["BREAKING CHANGE", "BREAKING-CHANGE"],
+    revertPattern:
+      /^(?:Revert|revert:)\s"?([\s\S]+?)"?\s*This reverts commit (\w*)\./i,
+    revertCorrespondence: ["header", "hash"],
+    issuePrefixes: ["#"]
+  }
+};
+
+export type CommitLintOptions = typeof DEFAULT_COMMITLINT_CONFIG;

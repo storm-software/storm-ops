@@ -118,11 +118,11 @@ export const DEFAULT_COMMIT_TYPES = {
   },
   revert: {
     description: "Revert a previously committed change",
-    title: "Rollback",
+    title: "Revert",
     emoji: "🗑️ ",
     semverBump: "patch",
     changelog: {
-      title: "Rollbacks",
+      title: "Reverts",
       hidden: false
     }
   },
@@ -308,6 +308,13 @@ export type CommitSettingsEnum = Record<string, any> & {
   format: string;
 };
 
+export type RuleConfigCondition = "always" | "never";
+export enum RuleConfigSeverity {
+  Disabled = 0,
+  Warning = 1,
+  Error = 2
+}
+
 export type CommitRulesEnum = Record<
   string,
   | [RuleConfigSeverity, RuleConfigCondition]
@@ -353,13 +360,6 @@ export type CommitConfig<
   questions: TCommitQuestionEnum;
 };
 
-export type RuleConfigCondition = "always" | "never";
-export enum RuleConfigSeverity {
-  Disabled = 0,
-  Warning = 1,
-  Error = 2
-}
-
 export type DefaultResolvedCommitRulesEnum = DefaultCommitRulesEnum & {
   "scope-enum": (
     ctx: any
@@ -402,6 +402,28 @@ export type CommitState<
   >;
   root: string;
 };
+
+export interface CommitLintRuleOutcome {
+  /** If the commit is considered valid for the rule */
+  valid: boolean;
+  /** The "severity" of the rule (1 = warning, 2 = error) */
+  level: RuleConfigSeverity;
+  /** The name of the rule */
+  name: string;
+  /** The message returned from the rule, if invalid */
+  message: string;
+}
+
+export interface CommitLintOutcome {
+  /** The linted commit, as string */
+  input: string;
+  /** If the linted commit is considered valid */
+  valid: boolean;
+  /** All errors, per rule, for the commit */
+  errors: CommitLintRuleOutcome[];
+  /** All warnings, per rule, for the commit */
+  warnings: CommitLintRuleOutcome[];
+}
 
 export type ReleaseConfig = any & {
   npm: boolean;
