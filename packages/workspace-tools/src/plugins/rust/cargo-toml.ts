@@ -46,7 +46,7 @@ export interface CargoPluginOptions {
 }
 
 export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
-  "**/Cargo.toml",
+  "*/**/Cargo.toml",
   async (configFiles, options, context): Promise<CreateNodesResultV2> => {
     return await createNodesFromFiles(
       (configFile, options, context) => {
