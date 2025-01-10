@@ -227,6 +227,9 @@ importers:
       copyfiles:
         specifier: 'catalog:'
         version: 2.4.1
+      defu:
+        specifier: 'catalog:'
+        version: 6.1.4
       esbuild:
         specifier: 'catalog:'
         version: 0.24.2

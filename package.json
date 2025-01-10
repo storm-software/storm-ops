@@ -110,6 +110,7 @@
     "c12": "catalog:",
     "chalk": "catalog:",
     "copyfiles": "catalog:",
+    "defu": "catalog:",
     "esbuild": "catalog:",
     "esbuild-register": "3.5.0",
     "eslint": "catalog:",
