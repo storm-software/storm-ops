@@ -224,13 +224,13 @@
     "monorepo"
   ],
   "dependencies": {
-    "c12": "catalog:",
-    "defu": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "c12": "catalog:",
     "chalk": "catalog:",
+    "defu": "catalog:",
     "tsup": "catalog:"
   },
   "publishConfig": {

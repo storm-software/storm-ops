@@ -7,11 +7,12 @@ export default defineConfig({
   format: ["cjs", "esm"],
   platform: "node",
   splitting: true,
+  bundle: true,
   clean: true,
   dts: true,
   sourcemap: false,
   tsconfig: "./tsconfig.json",
   shims: true,
-  noExternal: ["chalk"],
+  noExternal: ["chalk", "defu", "c12"],
   skipNodeModulesBundle: true
 });
