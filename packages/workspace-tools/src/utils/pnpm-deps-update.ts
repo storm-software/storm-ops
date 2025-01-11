@@ -3,7 +3,7 @@ import { existsSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
 import readYamlFile from "read-yaml-file";
 
-let pnpmCatalog = {} as Record<string, string>;
+let pnpmCatalog!: Record<string, string>;
 
 /**
  * Update package.json dependencies to use pnpm catalog versions
@@ -43,7 +43,7 @@ File contents: ${pnpmWorkspaceYaml ? JSON.stringify(pnpmWorkspaceYaml) : "EMPTY 
     }
   }
 
-  if (!pnpmCatalog || !Object.keys(pnpmCatalog).length) {
+  if (!pnpmCatalog) {
     console.warn(
       `No pnpm catalog found. Attempting to read from workspace root's \`pnpm-workspace.yaml\` file.`
     );
