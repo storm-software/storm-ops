@@ -1,3 +1,10 @@
+## 1.98.0 (2025-01-11)
+
+### Features
+
+- **linting-tools:** Added a default configuration for the `dependency-cruiser` linting tool ([cdc1614b](https://github.com/storm-software/storm-ops/commit/cdc1614b))
+- **eslint:** Added `utils` module to the package distribution ([42501160](https://github.com/storm-software/storm-ops/commit/42501160))
+
 ## 1.97.4 (2025-01-11)
 
 ### Bug Fixes
