@@ -2,7 +2,8 @@
 
 ### Features
 
-- **eslint:** Update some default storm linting rules to match new standard ([b29cea21](https://github.com/storm-software/storm-ops/commit/b29cea21))
+- **eslint:** Update some default storm linting rules to match new standard
+  ([b29cea21](https://github.com/storm-software/storm-ops/commit/b29cea21))
 
 ## 2.80.2 (2025-01-11)
 
