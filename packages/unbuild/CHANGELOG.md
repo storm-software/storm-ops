@@ -1,3 +1,15 @@
+## 0.14.3 (2025-01-11)
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with the bundling process ([d06b6588](https://github.com/storm-software/storm-ops/commit/d06b6588))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.130.4
+- Updated build-tools to 0.122.4
+- Updated config to 1.91.4
+
 ## 0.14.2 (2025-01-11)
 
 ### Bug Fixes

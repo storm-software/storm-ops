@@ -1,8 +1,15 @@
+## 1.91.4 (2025-01-11)
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with the bundling process ([d06b6588](https://github.com/storm-software/storm-ops/commit/d06b6588))
+
 ## 1.91.3 (2025-01-11)
 
 ### Bug Fixes
 
-- **eslint:** Resolved issue with package `exports` invalid extension values ([3f6babce](https://github.com/storm-software/storm-ops/commit/3f6babce))
+- **eslint:** Resolved issue with package `exports` invalid extension values
+  ([3f6babce](https://github.com/storm-software/storm-ops/commit/3f6babce))
 
 ## 1.91.2 (2025-01-11)
 
