@@ -1,8 +1,16 @@
+## 1.223.0 (2025-01-11)
+
+### Features
+
+- **eslint:** Update some default storm linting rules to match new standard ([b29cea21](https://github.com/storm-software/storm-ops/commit/b29cea21))
+
 ## 1.222.1 (2025-01-11)
 
 ### Miscellaneous
 
-- **workspace-tools:** Added additional logging for pnpm dependency updates process ([400b3369](https://github.com/storm-software/storm-ops/commit/400b3369))
+- **workspace-tools:** Added additional logging for pnpm dependency updates
+  process
+  ([400b3369](https://github.com/storm-software/storm-ops/commit/400b3369))
 
 ## 1.222.0 (2025-01-10)
 
