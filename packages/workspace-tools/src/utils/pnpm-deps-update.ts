@@ -1,4 +1,5 @@
 import { joinPaths } from "@storm-software/config-tools";
+import { existsSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
 import readYamlFile from "read-yaml-file";
 
@@ -16,9 +17,21 @@ export async function pnpmCatalogUpdate(
 ) {
   const pnpmWorkspacePath = joinPaths(workspaceRoot, "pnpm-workspace.yaml");
   if (!pnpmCatalog) {
+    if (!existsSync(pnpmWorkspacePath)) {
+      console.warn(
+        `No \`pnpm-workspace.yaml\` file found in workspace root (searching in: ${pnpmWorkspacePath}). Skipping pnpm catalog read for now.`
+      );
+
+      return;
+    }
+
     const pnpmWorkspaceYaml = await readYamlFile<{
       catalog: Record<string, string>;
     }>(pnpmWorkspacePath);
+    console.debug(
+      `pnpmWorkspaceYaml: ${JSON.stringify(pnpmWorkspaceYaml ?? {})}`
+    );
+
     if (pnpmWorkspaceYaml?.catalog) {
       pnpmCatalog = pnpmWorkspaceYaml.catalog;
     }
@@ -26,7 +39,7 @@ export async function pnpmCatalogUpdate(
 
   if (!pnpmCatalog || !Object.keys(pnpmCatalog).length) {
     console.warn(
-      `No \`pnpm-workspace.yaml\` file found in workspace root (searching in: ${pnpmWorkspacePath}). Skipping pnpm catalog read for now.`
+      `No pnpm catalog found. Attempting to read from workspace root's \`pnpm-workspace.yaml\` file (searching in: ${pnpmWorkspacePath}).`
     );
   }
 

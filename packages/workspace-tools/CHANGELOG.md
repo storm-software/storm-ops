@@ -2,15 +2,20 @@
 
 ### Features
 
-- **git-tools:** Ensure we select the correct workflow run to determine release changes ([f48f346e](https://github.com/storm-software/storm-ops/commit/f48f346e))
+- **git-tools:** Ensure we select the correct workflow run to determine release
+  changes
+  ([f48f346e](https://github.com/storm-software/storm-ops/commit/f48f346e))
 
 ### Bug Fixes
 
-- **workspace-tools:** No longer include workspace root in `rust` plugin's regex ([d1388224](https://github.com/storm-software/storm-ops/commit/d1388224))
+- **workspace-tools:** No longer include workspace root in `rust` plugin's regex
+  ([d1388224](https://github.com/storm-software/storm-ops/commit/d1388224))
 
 ### Continuous Integration
 
-- **monorepo:** Update the `ci.yml` configuration to check for previous successful runs ([6964e972](https://github.com/storm-software/storm-ops/commit/6964e972))
+- **monorepo:** Update the `ci.yml` configuration to check for previous
+  successful runs
+  ([6964e972](https://github.com/storm-software/storm-ops/commit/6964e972))
 
 ## 1.221.0 (2025-01-10)
 
