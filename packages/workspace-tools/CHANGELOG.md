@@ -1,3 +1,9 @@
+## 1.223.1 (2025-01-11)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue loading pnpm workspace's catalog dependencies ([1199e24f](https://github.com/storm-software/storm-ops/commit/1199e24f))
+
 ## 1.223.0 (2025-01-11)
 
 ### Features

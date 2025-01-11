@@ -1,3 +1,15 @@
+## 0.14.2 (2025-01-11)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue loading pnpm workspace's catalog dependencies ([1199e24f](https://github.com/storm-software/storm-ops/commit/1199e24f))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.130.2
+- Updated build-tools to 0.122.2
+- Updated config to 1.91.2
+
 ## 0.14.1 (2025-01-11)
 
 ### Miscellaneous
