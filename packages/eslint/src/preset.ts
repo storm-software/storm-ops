@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @nx/enforce-module-boundaries */
+import cspell from "@cspell/eslint-plugin";
 import eslint from "@eslint/js";
 import next from "@next/eslint-plugin-next";
 import nxPlugin from "@nx/eslint-plugin/nx.js";
@@ -9,7 +10,8 @@ import {
   writeDebug,
   writeError,
   writeFatal,
-  writeInfo
+  writeInfo,
+  writeTrace
 } from "@storm-software/config-tools";
 import { defu } from "defu";
 import type { Linter } from "eslint";
@@ -28,7 +30,7 @@ import type { RuleOptions } from "./rules.d";
 import { getStormRulesConfig, GetStormRulesConfigOptions } from "./rules/storm";
 import tsdocRules from "./rules/ts-docs";
 import banner from "./utils/banner-plugin";
-import { CODE_BLOCK, TS_FILE } from "./utils/constants";
+import { CODE_BLOCK, CODE_FILE, TS_FILE } from "./utils/constants";
 import { formatConfig } from "./utils/format-config";
 import { ignores } from "./utils/ignores";
 
@@ -105,7 +107,7 @@ export function getStormConfig(
     nx: {},
     useReactCompiler: false,
     logLevel: "info",
-    cspellConfigFile: ".vscode/cspell.json"
+    cspellConfigFile: "./.vscode/cspell.json"
   },
   ...userConfigs: Linter.Config[]
 ): Linter.Config[] {
@@ -119,7 +121,7 @@ export function getStormConfig(
   const useReactCompiler = options.useReactCompiler ?? false;
   const logLevel = options.logLevel ?? "info";
   const globals = options.globals ?? {};
-  const cspellConfigFile = options.cspellConfigFile || ".vscode/cspell.json";
+  const cspellConfigFile = options.cspellConfigFile || "./.vscode/cspell.json";
 
   try {
     const configs: Linter.Config[] = [
@@ -160,7 +162,7 @@ export function getStormConfig(
                 "@nx/dependency-checks": [
                   "error",
                   {
-                    buildTargets: ["build"],
+                    buildTargets: ["build-base", "build"],
                     ignoredDependencies: ["typescript"],
                     ignoredFiles: options.ignores,
                     checkMissingDependencies: true,
@@ -181,9 +183,9 @@ export function getStormConfig(
 
       // CSpell
       {
-        ...json.configs["recommended"],
+        ...cspell.configs["recommended"],
         rules: {
-          ...json.configs["recommended"].rules,
+          ...cspell.configs["recommended"].rules,
           "@cspell/spellchecker": [
             "warn",
             {
@@ -244,10 +246,10 @@ export function getStormConfig(
 
     // Banner
     configs.push({
-      // ...banner.configs!["recommended"],
+      ...banner.configs!["recommended"],
       name: "banner",
       plugins: { banner },
-      files: [TS_FILE],
+      files: [CODE_FILE],
       rules: {
         "banner/banner": [
           "error",
@@ -423,6 +425,10 @@ export function getStormConfig(
         }
       });
     }
+
+    writeTrace(formatLogMessage(configs, { skip: ["globals"] }), {
+      logLevel
+    });
 
     const result = formatConfig(
       "Preset",

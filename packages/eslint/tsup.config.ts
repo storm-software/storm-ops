@@ -40,14 +40,13 @@ export default defineConfig([
     format: ["cjs", "esm"],
     outDir: "dist",
     platform: "node",
-    // bundle: true,
     splitting: true,
     clean: true,
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     shims: true,
-    // skipNodeModulesBundle: false,
-    external: ["eslint", "typescript", "nx", "@nx/*"]
+    external: ["eslint", "typescript", "nx", "@nx/*"],
+    plugins: [plugin]
   }
 ]);

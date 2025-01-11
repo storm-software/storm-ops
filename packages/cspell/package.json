@@ -48,9 +48,11 @@
     ".": "./cspell-ext.json",
     "./cspell": "./cspell-ext.json",
     "./cspell-ext.json": "./cspell-ext.json",
+    "./cspell-minimal.json": "./cspell-minimal.json",
     "./cspell-base.json": "./cspell-base.json",
     "./cspell-recommended.json": "./cspell-recommended.json",
     "./cspell-all.json": "./cspell-all.json",
+    "./minimal": "./cspell-minimal.json",
     "./base": "./cspell-base.json",
     "./recommended": "./cspell-recommended.json",
     "./all": "./cspell-all.json"
@@ -61,6 +63,7 @@
     "cspell-all.json",
     "cspell-base.json",
     "cspell-ext.json",
+    "cspell-minimal.json",
     "cspell-recommendedjson",
     "dict/storm.txt"
   ],

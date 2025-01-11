@@ -1,0 +1,105 @@
+{
+  "version": "0.2",
+  "description": "Base CSpell configuration used by Storm Software.",
+  "language": "en",
+  "caseSensitive": false,
+  "dictionaries": [
+    "storm",
+    "en_us",
+    "softwareTerms",
+    "filetypes",
+    "node",
+    "npm",
+    "fullstack",
+    "markdown"
+  ],
+  "flagWords": [],
+  // Ignore files that aren't check in to git as well as files that aren't written
+  // by hand. Note that we do want to check, say, JSON files (as package.json
+  // contains English text like package descriptions).
+  "useGitignore": true,
+  // GitHub Security Advisories
+  "ignoreRegExpList": [
+    "GHSA-[-\\w]+",
+    "Markdown links",
+    "Markdown code blocks",
+    "Inline code blocks",
+    "Link contents",
+    "Snippet references",
+    "Snippet references 2",
+    "Multi-line code blocks",
+    "HTML Tags"
+  ],
+  "ignorePaths": [],
+  "overrides": [
+    {
+      //Ignore anything in a changelog file that looks like a GitHub username.
+      "filename": "**/CHANGELOG*.md",
+      "ignoreRegExpList": ["@[-\\w]+"]
+    },
+    {
+      //Ignore the targets of links in Markdown/MDX files.
+      "filename": "'**/*.md*",
+      "ignoreRegExpList": ["\\]\\([^)]+\\)"]
+    }
+  ],
+  "patterns": [
+    {
+      "name": "Markdown links",
+      "pattern": "\\((.*)\\)",
+      "description": ""
+    },
+    {
+      "name": "Markdown code blocks",
+      "pattern": "/^(\\s*`{3,}).*[\\s\\S]*?^\\1/gmx",
+      "description": "Taken from the cSpell example at https://cspell.org/configuration/patterns/#verbose-regular-expressions"
+    },
+    {
+      "name": "Inline code blocks",
+      "pattern": "\\`([^\\`\\r\\n]+?)\\`",
+      "description": "https://stackoverflow.com/questions/41274241/how-to-capture-inline-markdown-code-but-not-a-markdown-code-fence-with-regex"
+    },
+    {
+      "name": "Link contents",
+      "pattern": "\\<a(.*)\\>",
+      "description": ""
+    },
+    {
+      "name": "Snippet references",
+      "pattern": "-- snippet:(.*)",
+      "description": ""
+    },
+    {
+      "name": "Snippet references 2",
+      "pattern": "\\<\\[sample:(.*)",
+      "description": "another kind of snippet reference"
+    },
+    {
+      "name": "Multi-line code blocks",
+      "pattern": "/^\\s*```[\\s\\S]*?^\\s*```/gm"
+    },
+    {
+      "name": "HTML Tags",
+      "pattern": "<[^>]*>",
+      "description": "Reference: https://stackoverflow.com/questions/11229831/regular-expression-to-remove-html-tags-from-a-string"
+    }
+  ],
+  "import": [
+    "./cspell-ext.json",
+    "@cspell/dict-css/cspell-ext.json",
+    "@cspell/dict-en_us/cspell-ext.json",
+    "@cspell/dict-filetypes/cspell-ext.json",
+    "@cspell/dict-fullstack/cspell-ext.json",
+    "@cspell/dict-html-symbol-entities/cspell-ext.json",
+    "@cspell/dict-html/cspell-ext.json",
+    "@cspell/dict-fonts/cspell-ext.json",
+    "@cspell/dict-lorem-ipsum/cspell-ext.json",
+    "@cspell/dict-markdown/cspell-ext.json",
+    "@cspell/dict-node/cspell-ext.json",
+    "@cspell/dict-npm/cspell-ext.json",
+    "@cspell/dict-rust/cspell-ext.json",
+    "@cspell/dict-sql/cspell-ext.json",
+    "@cspell/dict-software-terms/cspell-ext.json",
+    "@cspell/dict-typescript/cspell-ext.json"
+  ]
+}
