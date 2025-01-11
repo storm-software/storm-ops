@@ -19,19 +19,6 @@
         "color": true
       }
     },
-    // "build-base": {
-    //   "cache": true,
-    //   "inputs": ["typescript", "^production"],
-    //   "outputs": ["{workspaceRoot}/dist/packages/eslint/**"],
-    //   "executor": "nx:run-commands",
-    //   "dependsOn": ["clean", "^build"],
-    //   "options": {
-    //     "command": "pnpm exec unbuild",
-    //     "color": true,
-    //     "cwd": "packages/eslint"
-    //   }
-    // },
-
     "build-base": {
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],

@@ -110,8 +110,7 @@
     "eslint-typegen": "^1.0.0",
     "graphql": ">=16.9.0",
     "tsup": "catalog:",
-    "typescript": "catalog:",
-    "unbuild": "catalog:"
+    "typescript": "catalog:"
   },
   "publishConfig": {
     "access": "public"

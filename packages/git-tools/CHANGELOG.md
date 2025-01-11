@@ -2,7 +2,8 @@
 
 ### Continuous Integration
 
-- **linting-tools:** Update package to use `tsup` build process ([14eeb478](https://github.com/storm-software/storm-ops/commit/14eeb478))
+- **linting-tools:** Update package to use `tsup` build process
+  ([14eeb478](https://github.com/storm-software/storm-ops/commit/14eeb478))
 
 ## 2.80.0 (2025-01-10)
 

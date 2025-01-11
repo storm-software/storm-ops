@@ -96,7 +96,7 @@ export const getStormRulesConfig = (
      *
      * 🚫 Not fixable - https://eslint.org/docs/rules/no-eval
      */
-    "no-eval": "error",
+    "no-eval": "warn",
     /**
      * Disallow extending native objects.
      *
@@ -180,7 +180,7 @@ export const getStormRulesConfig = (
      *
      * 🚫 Not fixable - https://eslint.org/docs/rules/no-param-reassign
      */
-    "no-param-reassign": "error",
+    "no-param-reassign": "off",
     /**
      * Disallow usage of the deprecated `__proto__` property.
      *
@@ -779,20 +779,22 @@ export const getStormRulesConfig = (
       }
     ],
 
+    "no-unused-vars": ["error", { "args": "none" }],
+
     // disallow the omission of parentheses when invoking a constructor with no arguments
     // https://eslint.org/docs/rules/new-parens
     "new-parens": "error",
 
     // allow/disallow an empty newline after var statement
-    "newline-after-var": "off",
+    "newline-after-var": ["error", "always"],
 
     // https://eslint.org/docs/rules/newline-before-return
-    "newline-before-return": "off",
+    "newline-before-return": ["error", "always"],
 
     // enforces new line after each method call in the chain to make it
     // more readable and easy to maintain
     // https://eslint.org/docs/rules/newline-per-chained-call
-    "newline-per-chained-call": ["error", { ignoreChainWithDepth: 4 }],
+    "newline-per-chained-call": ["error", { ignoreChainWithDepth: 5 }],
 
     // disallow use of the Array constructor
     "no-array-constructor": "error",
@@ -803,7 +805,7 @@ export const getStormRulesConfig = (
 
     // disallow use of the continue statement
     // https://eslint.org/docs/rules/no-continue
-    "no-continue": "error",
+    "no-continue": "off",
 
     // disallow comments inline after code
     "no-inline-comments": "off",
@@ -1121,8 +1123,8 @@ export const getStormRulesConfig = (
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/no-unused-vars": [
-        "warn",
-        { varsIgnorePattern: "^_", argsIgnorePattern: "^_" }
+        "error",
+        { "args": "none", varsIgnorePattern: "^_" }
       ],
       "@typescript-eslint/prefer-nullish-coalescing": [
         "error",

@@ -15,8 +15,8 @@ export async function pnpmCatalogUpdate(
   packageRoot: string,
   workspaceRoot: string = process.cwd()
 ) {
-  const pnpmWorkspacePath = joinPaths(workspaceRoot, "pnpm-workspace.yaml");
   if (!pnpmCatalog) {
+    const pnpmWorkspacePath = joinPaths(workspaceRoot, "pnpm-workspace.yaml");
     if (!existsSync(pnpmWorkspacePath)) {
       console.warn(
         `No \`pnpm-workspace.yaml\` file found in workspace root (searching in: ${pnpmWorkspacePath}). Skipping pnpm catalog read for now.`
@@ -28,18 +28,24 @@ export async function pnpmCatalogUpdate(
     const pnpmWorkspaceYaml = await readYamlFile<{
       catalog: Record<string, string>;
     }>(pnpmWorkspacePath);
-    console.debug(
+    console.info(
       `pnpmWorkspaceYaml: ${JSON.stringify(pnpmWorkspaceYaml ?? {})}`
     );
 
     if (pnpmWorkspaceYaml?.catalog) {
       pnpmCatalog = pnpmWorkspaceYaml.catalog;
+    } else {
+      console.warn(
+        `Found a \`pnpm-workspace.yaml\` file in the workspace root directory, but no pnpm catalog existed:
+File name: ${pnpmWorkspacePath}
+File contents: ${pnpmWorkspaceYaml ? JSON.stringify(pnpmWorkspaceYaml) : "EMPTY FILE"}`
+      );
     }
   }
 
   if (!pnpmCatalog || !Object.keys(pnpmCatalog).length) {
     console.warn(
-      `No pnpm catalog found. Attempting to read from workspace root's \`pnpm-workspace.yaml\` file (searching in: ${pnpmWorkspacePath}).`
+      `No pnpm catalog found. Attempting to read from workspace root's \`pnpm-workspace.yaml\` file.`
     );
   }
 
