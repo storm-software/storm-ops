@@ -4,94 +4,123 @@
   "sourceRoot": "packages/linting-tools/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "cache": true,
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+    // "build": {
+    //   "cache": true,
+    //   "executor": "@nx/esbuild:esbuild",
+    //   "outputs": ["{options.outputPath}"],
+    //   "options": {
+    //     "outputPath": "dist/packages/linting-tools",
+    //     "tsConfig": "packages/linting-tools/tsconfig.json",
+    //     "project": "packages/linting-tools/package.json",
+    //     "main": "packages/linting-tools/src/cli/index.ts",
+    //     "additionalEntryPoints": [
+    //       "packages/linting-tools/bin/lint.ts",
+    //       "packages/linting-tools/src/manypkg/index.ts"
+    //     ],
+    //     "deleteOutputPath": true,
+    //     "bundle": true,
+    //     "sourcemap": false,
+    //     "minify": false,
+    //     "skipTypeCheck": true,
+    //     "thirdParty": true,
+    //     "format": ["esm"],
+    //     "external": ["nx"],
+    //     "esbuildOptions": {
+    //       "legalComments": "inline",
+    //       "banner": {
+    //         "js": "const require = (await import('node:module')).createRequire(import.meta.url);const __filename = (await import('node:url')).fileURLToPath(import.meta.url);const __dirname = (await import('node:path')).dirname(__filename);"
+    //       }
+    //     },
+    //     "assets": [
+    //       {
+    //         "input": "packages/linting-tools",
+    //         "glob": "*.md",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "",
+    //         "glob": "LICENSE",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "packages/linting-tools",
+    //         "glob": "declarations.d.ts",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "packages/linting-tools",
+    //         "glob": "bin/**/*",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "packages/linting-tools/src",
+    //         "glob": "alex/**/.{alexrc,alexignore}",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "packages/linting-tools/src",
+    //         "glob": "biome/*",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "packages/linting-tools/src",
+    //         "glob": "taplo/*",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "packages/linting-tools/src",
+    //         "glob": "ls-lint/*",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "packages/linting-tools/src",
+    //         "glob": "cspell/*",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "packages/linting-tools/src",
+    //         "glob": "syncpack/*",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "packages/linting-tools/src",
+    //         "glob": "zizmor/*",
+    //         "output": "."
+    //       }
+    //     ]
+    //   }
+    // },
+
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
       "options": {
-        "outputPath": "dist/packages/linting-tools",
-        "tsConfig": "packages/linting-tools/tsconfig.json",
-        "project": "packages/linting-tools/package.json",
-        "main": "packages/linting-tools/src/cli/index.ts",
-        "additionalEntryPoints": [
-          "packages/linting-tools/bin/lint.ts",
-          "packages/linting-tools/src/manypkg/index.ts"
-        ],
-        "deleteOutputPath": true,
-        "bundle": true,
-        "sourcemap": false,
-        "minify": false,
-        "skipTypeCheck": true,
-        "thirdParty": true,
-        "format": ["esm"],
-        "external": ["nx"],
-        "esbuildOptions": {
-          "legalComments": "inline",
-          "banner": {
-            "js": "const require = (await import('node:module')).createRequire(import.meta.url);const __filename = (await import('node:url')).fileURLToPath(import.meta.url);const __dirname = (await import('node:path')).dirname(__filename);"
-          }
-        },
-        "assets": [
-          {
-            "input": "packages/linting-tools",
-            "glob": "*.md",
-            "output": "."
-          },
-          {
-            "input": "",
-            "glob": "LICENSE",
-            "output": "."
-          },
-          {
-            "input": "packages/linting-tools",
-            "glob": "declarations.d.ts",
-            "output": "."
-          },
-          {
-            "input": "packages/linting-tools",
-            "glob": "bin/**/*",
-            "output": "."
-          },
-          {
-            "input": "packages/linting-tools/src",
-            "glob": "alex/**/.{alexrc,alexignore}",
-            "output": "."
-          },
-          {
-            "input": "packages/linting-tools/src",
-            "glob": "biome/*",
-            "output": "."
-          },
-          {
-            "input": "packages/linting-tools/src",
-            "glob": "taplo/*",
-            "output": "."
-          },
-          {
-            "input": "packages/linting-tools/src",
-            "glob": "ls-lint/*",
-            "output": "."
-          },
-          {
-            "input": "packages/linting-tools/src",
-            "glob": "cspell/*",
-            "output": "."
-          },
-          {
-            "input": "packages/linting-tools/src",
-            "glob": "syncpack/*",
-            "output": "."
-          },
-          {
-            "input": "packages/linting-tools/src",
-            "glob": "zizmor/*",
-            "output": "."
-          }
+        "command": "tsup-node --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/linting-tools",
+          "pnpm copyfiles --up=2 ./packages/linting-tools/*.md ./packages/linting-tools/package.json dist/packages/linting-tools",
+          "pnpm copyfiles --up=4 ./packages/linting-tools/dist/src/* dist/packages/linting-tools/dist",
+          "pnpm copyfiles --up=4 ./packages/linting-tools/src/biome/* dist/packages/linting-tools/biome",
+          "pnpm copyfiles --up=4 ./packages/linting-tools/src/cspell/* dist/packages/linting-tools/cspell",
+          "pnpm copyfiles --up=4 ./packages/linting-tools/src/syncpack/* dist/packages/linting-tools/syncpack",
+          "pnpm copyfiles --up=4 ./packages/linting-tools/src/alex/.alexignore ./packages/linting-tools/src/alex/.alexrc dist/packages/linting-tools/alex",
+          "pnpm copyfiles --up=4 ./packages/linting-tools/src/zizmor/* dist/packages/linting-tools/zizmor",
+          "pnpm copyfiles --up=4 ./packages/linting-tools/src/taplo/* dist/packages/linting-tools/taplo",
+          "pnpm copyfiles --up=4 ./packages/linting-tools/src/ls-lint/* dist/packages/linting-tools/ls-lint",
+          "pnpm copyfiles --up=4 ./packages/linting-tools/dist/bin/* dist/packages/linting-tools/bin"
         ]
       }
     },
     "nx-release-publish": {
       "executor": "@storm-software/workspace-tools:npm-publish"
     }
-  }
+  },
+  "implicitDependencies": ["cspell"]
 }

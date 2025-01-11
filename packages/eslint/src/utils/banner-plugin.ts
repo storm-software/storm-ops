@@ -1,5 +1,5 @@
 import { ESLintUtils } from "@typescript-eslint/utils";
-import { ESLint, Linter, Rule } from "eslint";
+import { ESLint, Linter } from "eslint";
 import os from "node:os";
 import { CODE_FILE } from "./constants";
 import { getFileBanner } from "./get-file-banner";
@@ -434,7 +434,7 @@ const plugin: ESLint.Plugin = {
   },
   configs: {} as Record<string, Linter.Config<Linter.RulesRecord>>,
   rules: {
-    banner: bannerRule as Rule.RuleModule
+    banner: bannerRule as any
   },
   processors: {}
 };

@@ -2,11 +2,16 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "strict": false,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "rootDir": "../..",
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ESNext"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "moduleResolution": "Bundler",
+    "moduleDetection": "force",
     "types": ["node"]
   },
-  "include": ["src/**/*.ts", "src/**/*.js", "bin/**/*", "declarations.d.ts"],
+  "include": ["src/**/*.ts", "bin/**/*.ts", "tsup.config.ts"],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }
