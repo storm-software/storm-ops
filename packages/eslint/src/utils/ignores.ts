@@ -2,7 +2,6 @@ export const ignores = [
   "**/.git/**",
   "**/node_modules/**",
   "**/src/generators/**/files/**/*",
-
   "**/dist/**",
   "**/tmp/**",
   "**/coverage/**",
@@ -22,14 +21,12 @@ export const ignores = [
   "**/.DS_Store/**",
   "**/Thumbs.db/**",
   "**/.cspellcache",
-
   "**/package-lock.*",
   "**/npm-lock.*",
   "**/pnpm-lock.*",
   "**/pnpm-lock.*",
   "**/bun.lockb",
   "**/cargo.lock",
-
   "**/next-env.d.ts",
   "**/CODEOWNERS"
 ];

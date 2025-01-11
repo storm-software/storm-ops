@@ -196,8 +196,7 @@ const bannerRule = ESLintUtils.RuleCreator(
   name: "banner",
   meta: {
     docs: {
-      description: "Ensures the file has a Storm Software banner",
-      recommended: "recommended"
+      description: "Ensures the file has a Storm Software banner"
     },
     schema: [
       {
@@ -433,11 +432,9 @@ const plugin: ESLint.Plugin = {
     name: "eslint-plugin-banner",
     version: "0.0.1"
   },
-  configs: {} as Record<string, Linter.FlatConfig<Linter.RulesRecord>>,
+  configs: {} as Record<string, Linter.Config<Linter.RulesRecord>>,
   rules: {
-    banner: bannerRule as unknown as
-      | Rule.RuleModule
-      | ((context: Rule.RuleContext) => Rule.RuleListener)
+    banner: bannerRule as Rule.RuleModule
   },
   processors: {}
 };

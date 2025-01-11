@@ -2,19 +2,21 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "module": "ESNext",
+    "rootDir": "../..",
     "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ESNext"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "moduleResolution": "Bundler",
-    "incremental": false,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "moduleDetection": "force",
+    "types": ["node"]
   },
-  "include": ["src/**/*.ts"],
-  "exclude": [
-    "**/*.spec.ts",
-    "**/*.test.ts",
-    "**/*_spec.ts",
-    "**/*_test.ts",
-    "jest.config.ts"
-  ]
+  "include": [
+    "src/**/*.ts",
+    "bin/**/*.ts",
+    "declarations.d.ts",
+    "tsup.config.ts"
+  ],
+  "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }

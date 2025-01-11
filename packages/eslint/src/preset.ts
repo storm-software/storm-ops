@@ -1,26 +1,9 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @nx/enforce-module-boundaries */
-import {
-  plugins as cspellPlugins,
-  rules as cspellRules
-} from "@cspell/eslint-plugin/recommended";
 import eslint from "@eslint/js";
 import next from "@next/eslint-plugin-next";
 import nxPlugin from "@nx/eslint-plugin/nx.js";
-import type { Linter } from "eslint";
-import json from "eslint-plugin-json";
-import markdown from "eslint-plugin-markdown";
-import prettierConfig from "eslint-plugin-prettier/recommended";
-import reactPlugin from "eslint-plugin-react";
-import reactCompiler from "eslint-plugin-react-compiler";
-import reactHooks from "eslint-plugin-react-hooks";
-import storybookPlugin from "eslint-plugin-storybook";
-import tsdoc from "eslint-plugin-tsdoc";
-import unicorn from "eslint-plugin-unicorn";
-import yml from "eslint-plugin-yml";
-import globalsObj from "globals";
-import type { RuleOptions } from "./rules.d";
 import {
   formatLogMessage,
   writeDebug,
@@ -29,7 +12,19 @@ import {
   writeInfo
 } from "@storm-software/config-tools";
 import { defu } from "defu";
+import type { Linter } from "eslint";
+import json from "eslint-plugin-json";
+import markdown from "eslint-plugin-markdown";
+import prettierConfig from "eslint-plugin-prettier/recommended";
+import reactPlugin from "eslint-plugin-react";
+import reactCompiler from "eslint-plugin-react-compiler";
+import reactHooks from "eslint-plugin-react-hooks";
+import tsdoc from "eslint-plugin-tsdoc";
+import unicorn from "eslint-plugin-unicorn";
+import yml from "eslint-plugin-yml";
+import globalsObj from "globals";
 import tsEslint from "typescript-eslint";
+import type { RuleOptions } from "./rules.d";
 import { getStormRulesConfig, GetStormRulesConfigOptions } from "./rules/storm";
 import tsdocRules from "./rules/ts-docs";
 import banner from "./utils/banner-plugin";
@@ -90,6 +85,7 @@ export type PresetOptions = GetStormRulesConfigOptions & {
     | "error"
     | "fatal"
     | "silent";
+  cspellConfigFile?: string;
 };
 
 /**
@@ -108,7 +104,8 @@ export function getStormConfig(
     react: {},
     nx: {},
     useReactCompiler: false,
-    logLevel: "info"
+    logLevel: "info",
+    cspellConfigFile: ".vscode/cspell.json"
   },
   ...userConfigs: Linter.Config[]
 ): Linter.Config[] {
@@ -122,6 +119,7 @@ export function getStormConfig(
   const useReactCompiler = options.useReactCompiler ?? false;
   const logLevel = options.logLevel ?? "info";
   const globals = options.globals ?? {};
+  const cspellConfigFile = options.cspellConfigFile || ".vscode/cspell.json";
 
   try {
     const configs: Linter.Config[] = [
@@ -135,8 +133,6 @@ export function getStormConfig(
       //   files: [CODE_FILE],
       //   rules: importRules
       // },
-
-      // bannerConfig,
 
       // Json
       // https://www.npmjs.com/package/eslint-plugin-json
@@ -185,18 +181,13 @@ export function getStormConfig(
 
       // CSpell
       {
-        plugins: {
-          ...cspellPlugins
-        },
+        ...json.configs["recommended"],
         rules: {
-          ...cspellRules,
+          ...json.configs["recommended"].rules,
           "@cspell/spellchecker": [
             "warn",
             {
-              // configFile: new URL(
-              //   "./.vscode/cspell.json",
-              //   import.meta.url
-              // ).toString(),
+              configFile: new URL(cspellConfigFile, import.meta.url).toString(),
               autoFix: true
             }
           ]
@@ -373,7 +364,7 @@ export function getStormConfig(
 
     configs.push(typescriptConfig);
 
-    configs.push(...storybookPlugin.configs["flat/recommended"]);
+    // configs.push(...storybookPlugin.configs["flat/recommended"]);
 
     // // JavaScript and TypeScript code
     // const codeConfig: Linter.Config = {
@@ -435,26 +426,20 @@ export function getStormConfig(
 
     const result = formatConfig(
       "Preset",
-      configs.reduce(
-        (
-          ret: Linter.Config[],
-          config: Record<string, any>
-        ) => {
-          delete config.parserOptions;
+      configs.reduce((ret: Linter.Config[], config: Record<string, any>) => {
+        delete config.parserOptions;
 
-          const existingIndex = ret.findIndex(existing =>
-            areFilesEqual(existing.files, config.files)
-          );
-          if (existingIndex >= 0) {
-            ret[existingIndex] = defu(ret[existingIndex], config);
-          } else {
-            ret.push(config);
-          }
+        const existingIndex = ret.findIndex(existing =>
+          areFilesEqual(existing.files, config.files)
+        );
+        if (existingIndex >= 0) {
+          ret[existingIndex] = defu(ret[existingIndex], config);
+        } else {
+          ret.push(config);
+        }
 
-          return ret;
-        },
-        [] as Linter.Config[]
-      )
+        return ret;
+      }, [] as Linter.Config[])
     );
 
     writeInfo("⚙️  Completed generated Storm ESLint configuration objects", {
