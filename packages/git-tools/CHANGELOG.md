@@ -1,3 +1,9 @@
+## 2.81.2 (2025-01-11)
+
+### Bug Fixes
+
+- **config-tools:** Resolve issue with missing `logger` module ([1b5df538](https://github.com/storm-software/storm-ops/commit/1b5df538))
+
 ## 2.81.1 (2025-01-11)
 
 ### Bug Fixes

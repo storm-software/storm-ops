@@ -1,3 +1,14 @@
+## 1.102.2 (2025-01-11)
+
+### Bug Fixes
+
+- **config-tools:** Resolve issue with missing `logger` module ([1b5df538](https://github.com/storm-software/storm-ops/commit/1b5df538))
+
+### 🧱 Updated Dependencies
+
+- Updated cspell to 0.2.2
+- Updated cspell to 0.2.2
+
 ## 1.102.1 (2025-01-11)
 
 ### Bug Fixes
