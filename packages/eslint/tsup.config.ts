@@ -46,6 +46,8 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    shims: true
+    shims: true,
+    skipNodeModulesBundle: true,
+    external: ["eslint", "typescript"]
   }
 ]);
