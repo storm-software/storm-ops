@@ -1,8 +1,15 @@
+## 2.80.2 (2025-01-11)
+
+### Miscellaneous
+
+- **workspace-tools:** Added additional logging for pnpm dependency updates process ([400b3369](https://github.com/storm-software/storm-ops/commit/400b3369))
+
 ## 2.80.1 (2025-01-11)
 
 ### Continuous Integration
 
-- **linting-tools:** Update package to use `tsup` build process ([14eeb478](https://github.com/storm-software/storm-ops/commit/14eeb478))
+- **linting-tools:** Update package to use `tsup` build process
+  ([14eeb478](https://github.com/storm-software/storm-ops/commit/14eeb478))
 
 ## 2.80.0 (2025-01-10)
 
