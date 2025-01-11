@@ -1,3 +1,14 @@
+## 1.102.0 (2025-01-11)
+
+### Features
+
+- **eslint:** Update some default storm linting rules to match new standard ([b29cea21](https://github.com/storm-software/storm-ops/commit/b29cea21))
+
+### 🧱 Updated Dependencies
+
+- Updated cspell to 0.2.0
+- Updated cspell to 0.2.0
+
 ## 1.101.1 (2025-01-11)
 
 ### Miscellaneous
