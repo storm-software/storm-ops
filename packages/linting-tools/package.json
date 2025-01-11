@@ -88,7 +88,8 @@
     "./cspell/*": "./cspell/*",
     "./alex/*": "./alex/*",
     "./taplo/*": "./taplo/*",
-    "./zizmor/*": "./zizmor/*"
+    "./zizmor/*": "./zizmor/*",
+    "./dependency-cruiser/*": "./dependency-cruiser/*"
   },
   "types": "./dist/index.d.ts",
   "files": [

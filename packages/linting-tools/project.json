@@ -113,6 +113,7 @@
           "pnpm copyfiles --up=4 ./packages/linting-tools/src/alex/.alexignore ./packages/linting-tools/src/alex/.alexrc dist/packages/linting-tools/alex",
           "pnpm copyfiles --up=4 ./packages/linting-tools/src/zizmor/* dist/packages/linting-tools/zizmor",
           "pnpm copyfiles --up=4 ./packages/linting-tools/src/taplo/* dist/packages/linting-tools/taplo",
+          "pnpm copyfiles --up=4 ./packages/linting-tools/src/dependency-cruiser/* dist/packages/linting-tools/dependency-cruiser",
           "pnpm copyfiles --up=4 ./packages/linting-tools/src/ls-lint/* dist/packages/linting-tools/ls-lint",
           "pnpm copyfiles --up=4 ./packages/linting-tools/dist/bin/* dist/packages/linting-tools/bin"
         ]

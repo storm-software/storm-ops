@@ -40,6 +40,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Table of Contents
 
 - [Storm Configuration Package](#storm-configuration-package)
@@ -95,7 +96,7 @@ environment variables:
 | STORM_NAMESPACE                 | The namespace of the package                   | `null`                      |
 | STORM_OWNER                     | The owner of the workspace                     | `null`                      |
 | STORM_WORKER                    | The worker of the workspace                    | "stormie-bot"               |
-| STORM_ORG              | The organization of the workspace              | "storm-software"            |
+| STORM_ORG                       | The organization of the workspace              | "storm-software"            |
 | STORM_PACKAGE_MANAGER           | The package manager used in the workspace      | "pnpm"                      |
 | STORM_LICENSE                   | The license of the workspace                   | "Apache-2.0"                |
 | STORM_HOMEPAGE                  | The homepage of the workspace                  | <https://stormsoftware.com> |
