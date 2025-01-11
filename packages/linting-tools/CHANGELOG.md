@@ -1,3 +1,18 @@
+## 1.101.0 (2025-01-11)
+
+### Features
+
+- **cspell:** Initial check-in of the CSpell configuration package ([f5768507](https://github.com/storm-software/storm-ops/commit/f5768507))
+
+### Continuous Integration
+
+- **linting-tools:** Update package to use `tsup` build process ([14eeb478](https://github.com/storm-software/storm-ops/commit/14eeb478))
+
+### 🧱 Updated Dependencies
+
+- Updated cspell to 0.1.0
+- Updated cspell to 0.1.0
+
 
 
 ## 1.100.1 (2025-01-09)

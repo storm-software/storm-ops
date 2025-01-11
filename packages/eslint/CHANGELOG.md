@@ -1,3 +1,10 @@
+## 0.106.3 (2025-01-11)
+
+### Continuous Integration
+
+- **linting-tools:** Update package to use `tsup` build process ([14eeb478](https://github.com/storm-software/storm-ops/commit/14eeb478))
+- **eslint:** Update package to use `tsup` for build process ([f5a2bbc8](https://github.com/storm-software/storm-ops/commit/f5a2bbc8))
+
 
 
 ## 0.106.1 (2025-01-09)
