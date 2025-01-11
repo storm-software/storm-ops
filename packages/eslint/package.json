@@ -27,16 +27,74 @@
       "url": "https://patsullivan.org"
     }
   ],
+  "contributors": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    }
+  ],
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
   "license": "Apache-2.0",
   "private": false,
+  "packageManager": "pnpm@9.15.2",
+  "engines": {
+    "node": ">=22.4.0",
+    "pnpm": ">=9.15.2"
+  },
+  "main": "./dist/preset.cjs",
+  "module": "./dist/preset.js",
   "exports": {
+    "./package.json": "./package.json",
     ".": {
-      "types": "./dist/preset.d.ts",
-      "import": "./dist/preset.mjs"
+      "import": {
+        "types": "./dist/preset.d.ts",
+        "default": "./dist/preset.js"
+      },
+      "require": {
+        "types": "./dist/preset.d.cts",
+        "default": "./dist/preset.cjs"
+      },
+      "default": {
+        "types": "./dist/preset.d.ts",
+        "default": "./dist/preset.js"
+      }
+    },
+    "./index": {
+      "import": {
+        "types": "./dist/preset.d.ts",
+        "default": "./dist/preset.js"
+      },
+      "require": {
+        "types": "./dist/preset.d.cts",
+        "default": "./dist/preset.cjs"
+      },
+      "default": {
+        "types": "./dist/preset.d.ts",
+        "default": "./dist/preset.js"
+      }
+    },
+    "./preset": {
+      "import": {
+        "types": "./dist/preset.d.ts",
+        "default": "./dist/preset.js"
+      },
+      "require": {
+        "types": "./dist/preset.d.cts",
+        "default": "./dist/preset.cjs"
+      },
+      "default": {
+        "types": "./dist/preset.d.ts",
+        "default": "./dist/preset.js"
+      }
     }
   },
+  "types": "./dist/preset.d.ts",
   "files": [
-    "dist"
+    "dist/**/*"
   ],
   "keywords": [
     "eslint",
