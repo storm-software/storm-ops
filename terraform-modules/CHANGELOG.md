@@ -1,3 +1,9 @@
+## 0.44.3 (2025-01-11)
+
+### Miscellaneous
+
+- **workspace-tools:** Added additional logging for pnpm dependency updates process ([400b3369](https://github.com/storm-software/storm-ops/commit/400b3369))
+
 
 
 ## 0.44.1 (2024-12-19)
