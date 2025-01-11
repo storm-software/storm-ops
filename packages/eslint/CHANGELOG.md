@@ -1,3 +1,14 @@
+## 0.107.2 (2025-01-11)
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with package `exports` invalid extension values ([3f6babce](https://github.com/storm-software/storm-ops/commit/3f6babce))
+- **config-tools:** Resolve issue with missing `logger` module ([1b5df538](https://github.com/storm-software/storm-ops/commit/1b5df538))
+
+### Continuous Integration
+
+- **eslint:** Update package to bundle underlying dependencies ([f6c849d6](https://github.com/storm-software/storm-ops/commit/f6c849d6))
+
 ## 0.107.1 (2025-01-11)
 
 ### Bug Fixes
