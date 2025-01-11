@@ -5,14 +5,14 @@ export const getEnv = (
   builder: string,
   options: Pick<
     TypeScriptBuildResolvedOptions,
-    "name" | "environment" | "organization" | "platform" | "target" | "format"
+    "name" | "envName" | "orgName" | "platform" | "target" | "format"
   >
 ): TypeScriptBuildEnv => {
   return {
     STORM_BUILD: builder,
-    STORM_ORGANIZATION: options.organization || DEFAULT_ORGANIZATION,
+    STORM_ORG: options.orgName || DEFAULT_ORGANIZATION,
     STORM_NAME: options.name,
-    STORM_ENV: options.environment || DEFAULT_ENVIRONMENT,
+    STORM_ENV: options.envName || DEFAULT_ENVIRONMENT,
     STORM_PLATFORM: options.platform,
     STORM_FORMAT: JSON.stringify(options.format),
     STORM_TARGET: JSON.stringify(options.target),

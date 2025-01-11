@@ -2,7 +2,8 @@
 
 ### Bug Fixes
 
-- **eslint:** Resolved issue with package `exports` invalid extension values ([3f6babce](https://github.com/storm-software/storm-ops/commit/3f6babce))
+- **eslint:** Resolved issue with package `exports` invalid extension values
+  ([3f6babce](https://github.com/storm-software/storm-ops/commit/3f6babce))
 
 ## 1.91.2 (2025-01-11)
 

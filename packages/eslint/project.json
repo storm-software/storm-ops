@@ -23,7 +23,7 @@
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "options": {
-        "command": "tsup --config=tsup.config.ts",
+        "command": "tsup-node --config=tsup.config.ts",
         "cwd": "{projectRoot}"
       }
     },
@@ -37,6 +37,7 @@
         "commands": [
           "pnpm copyfiles --up=3 packages/eslint/dist/* dist/packages/eslint/dist",
           "pnpm copyfiles --up=3 packages/eslint/dist/rules/* dist/packages/eslint/dist",
+          "pnpm copyfiles --up=3 packages/eslint/dist/utils/* dist/packages/eslint/dist",
           "pnpm copyfiles --up=3 packages/eslint/src/rules.d.ts dist/packages/eslint/dist",
           "pnpm copyfiles --up=2 packages/eslint/declarations.d.ts dist/packages/eslint",
           "pnpm copyfiles --up=2 packages/eslint/README.md packages/eslint/CHANGELOG.md packages/eslint/package.json dist/packages/eslint",

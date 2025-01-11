@@ -652,17 +652,17 @@ const config: Linter.RulesRecord = {
   // https://github.com/jsx-eslint/eslint-plugin-react/blob/66b58dd4864678eb869a7bf434c72ff7ac530eb1/docs/rules/no-object-type-as-default-prop.md
   // https://github.com/jsx-eslint/eslint-plugin-react/blob/66b58dd4864678eb869a7bf434c72ff7ac530eb1/docs/rules/no-object-type-as-default-prop.md
   // TODO: semver-major, enable
-  "react/no-object-type-as-default-prop": "off",
+  "react/no-object-type-as-default-prop": "off"
 
   // https://github.com/jsx-eslint/eslint-plugin-react/blob/66b58dd4864678eb869a7bf434c72ff7ac530eb1/docs/rules/sort-default-props.md
   // https://github.com/jsx-eslint/eslint-plugin-react/blob/66b58dd4864678eb869a7bf434c72ff7ac530eb1/docs/rules/sort-default-props.md
   // TODO: semver-major, enable?
-  "react/sort-default-props": [
-    "off",
-    {
-      ignoreCase: false
-    }
-  ]
+  // "react/sort-default-props": [
+  //   "off",
+  //   {
+  //     ignoreCase: false
+  //   }
+  // ]
 };
 
 export default config;

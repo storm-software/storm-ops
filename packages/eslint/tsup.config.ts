@@ -36,18 +36,18 @@ export default defineConfig([
   {
     name: "eslint",
     target: "node22",
-    entryPoints: ["src/preset.ts", "src/rules/storm.ts"],
+    entryPoints: ["src/preset.ts", "src/rules/*.ts", "src/utils/*.ts"],
     format: ["cjs", "esm"],
     outDir: "dist",
     platform: "node",
-    bundle: true,
+    // bundle: true,
     splitting: true,
     clean: true,
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     shims: true,
-    skipNodeModulesBundle: false,
+    // skipNodeModulesBundle: false,
     external: ["eslint", "typescript", "nx", "@nx/*"]
   }
 ]);
