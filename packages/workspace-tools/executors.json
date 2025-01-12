@@ -3,17 +3,22 @@
     "typia": {
       "implementation": "./src/executors/typia/executor",
       "schema": "./src/executors/typia/schema.json",
-      "description": "Run the Typia generator to create runtime type validators"
+      "description": "Run the `typia` generator to create runtime type validators"
+    },
+    "tsdown": {
+      "implementation": "./src/executors/tsdown/executor",
+      "schema": "./src/executors/tsdown/schema.json",
+      "description": "Run the `tsdown` build process on a selected project"
     },
     "esbuild": {
       "implementation": "./src/executors/esbuild/executor",
       "schema": "./src/executors/esbuild/schema.json",
-      "description": "Run the esbuild build process on a selected project"
+      "description": "Run the `esbuild` build process on a selected project"
     },
     "unbuild": {
       "implementation": "./src/executors/unbuild/executor",
       "schema": "./src/executors/unbuild/schema.json",
-      "description": "Run the unbuild build process on a selected project"
+      "description": "Run the `unbuild` build process on a selected project"
     },
     "clean-package": {
       "implementation": "./src/executors/clean-package/executor",

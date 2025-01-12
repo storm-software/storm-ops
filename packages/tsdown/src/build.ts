@@ -158,7 +158,6 @@ const resolveOptions = async (
             "import.meta.url": "importMetaUrl"
           }
         : {}),
-      ...options.define,
       ...Object.keys(env || {}).reduce((res, key) => {
         const value = JSON.stringify(env[key]);
         return {
@@ -166,7 +165,8 @@ const resolveOptions = async (
           [`process.env.${key}`]: value,
           [`import.meta.env.${key}`]: value
         };
-      }, {})
+      }, {}),
+      ...options.define
     }
   };
 

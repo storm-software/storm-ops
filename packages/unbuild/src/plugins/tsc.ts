@@ -6,7 +6,7 @@ import {
   HelperDependency
 } from "@nx/js/src/utils/compiler-helper-dependency";
 import type { Plugin } from "rollup"; // only used  for types
-import tsPlugin from "rollup-plugin-typescript2";
+import ts2Plugin from "rollup-plugin-typescript2";
 import { UnbuildOptions, UnbuildResolvedOptions } from "../types";
 import { createTsCompilerOptions } from "../utilities/helpers";
 
@@ -43,7 +43,7 @@ export const tscPlugin = async (
     dependencies.push(tsLibDependency);
   }
 
-  return tsPlugin({
+  return ts2Plugin({
     check: options.emitTypes !== false,
     tsconfig: resolvedOptions.tsconfig,
     tsconfigOverride: {

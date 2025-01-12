@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "tsdown",
+  "version": 2,
+  "title": "TSDown Builder",
+  "description": "Run the `tsdown` build process on a selected project",
+  "type": "object",
+  "properties": {
+    "entry": {
+      "type": "array",
+      "description": "The path to the entry file (or multiple paths/files), relative to `projectRoot` path.",
+      "x-completion-type": "file",
+      "x-priority": "important",
+      "items": {
+        "type": "string"
+      },
+      "alias": "main",
+      "default": ["src/index.ts"]
+    },
+    "outputPath": {
+      "type": "string",
+      "description": "The output path of the generated files.",
+      "x-completion-type": "directory",
+      "x-priority": "important",
+      "default": "dist/{projectRoot}"
+    },
+    "tsconfig": {
+      "type": "string",
+      "description": "The path to the `tsconfig.json` file.",
+      "x-completion-type": "file",
+      "x-completion-glob": "tsconfig*.json",
+      "x-priority": "important",
+      "default": "{projectRoot}/tsconfig.json"
+    },
+    "watch": {
+      "type": "boolean",
+      "description": "Enable re-building when files change.",
+      "default": false
+    },
+    "assets": {
+      "type": "array",
+      "description": "List of static assets.",
+      "default": [],
+      "items": {
+        "$ref": "#/definitions/assetPattern"
+      }
+    },
+    "clean": {
+      "type": "boolean",
+      "description": "Remove previous output before build.",
+      "alias": "deleteOutputPath",
+      "default": true
+    },
+    "includeSrc": {
+      "type": "boolean",
+      "description": "Should the source files be added to the distribution folder in an `src` directory.",
+      "default": false
+    },
+    "generatePackageJson": {
+      "type": "boolean",
+      "description": "Should a package.json file be generated in the output folder or should the existing one be copied in.",
+      "default": true
+    },
+    "debug": {
+      "type": "boolean",
+      "description": "Should output be unminified with source mappings.",
+      "default": false
+    },
+    "platform": {
+      "type": "string",
+      "description": "Platform target for outputs.",
+      "enum": ["browser", "neutral", "node"],
+      "default": "neutral"
+    },
+    "minify": {
+      "type": "boolean",
+      "description": "Should the build process minify the output files?",
+      "default": false
+    },
+    "verbose": {
+      "type": "boolean",
+      "description": "Should write extra log outputs with details from the executor.",
+      "default": false
+    }
+  },
+  "required": ["tsconfig", "outputPath", "entry"],
+  "definitions": {
+    "assetPattern": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "glob": {
+              "type": "string",
+              "description": "The pattern to match."
+            },
+            "input": {
+              "type": "string",
+              "description": "The input directory path in which to apply `glob`. Defaults to the project root."
+            },
+            "output": {
+              "type": "string",
+              "description": "Relative path within the output folder."
+            },
+            "ignore": {
+              "description": "An array of globs to ignore.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false,
+          "required": ["glob", "input", "output"]
+        },
+        {
+          "type": "string"
+        }
+      ]
+    }
+  }
+}

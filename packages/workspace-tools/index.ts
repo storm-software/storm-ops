@@ -9,6 +9,8 @@ export * from "./src/executors/npm-publish/executor";
 export * from "./src/executors/npm-publish/schema";
 export * from "./src/executors/size-limit/executor";
 export * from "./src/executors/size-limit/schema";
+export * from "./src/executors/tsdown/executor";
+export * from "./src/executors/tsdown/schema";
 export * from "./src/executors/typia/executor";
 export * from "./src/executors/typia/schema";
 export * from "./src/executors/unbuild/executor";
