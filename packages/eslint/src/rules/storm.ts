@@ -788,6 +788,7 @@ export const getStormRulesConfig = (
     // allow/disallow an empty newline after var statement
     "newline-after-var": ["error", "always"],
 
+    // Require or disallow padding lines between statements
     // https://eslint.org/docs/rules/padding-line-between-statements
     "padding-line-between-statements": [
       "error",
@@ -997,10 +998,6 @@ export const getStormRulesConfig = (
         allowSingleLineBlocks: true
       }
     ],
-
-    // Require or disallow padding lines between statements
-    // https://eslint.org/docs/rules/padding-line-between-statements
-    "padding-line-between-statements": "off",
 
     // Disallow the use of Math.pow in favor of the ** operator
     // https://eslint.org/docs/rules/prefer-exponentiation-operator
