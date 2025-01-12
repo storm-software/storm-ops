@@ -1,3 +1,17 @@
+## 2.83.0 (2025-01-12)
+
+### Features
+
+- **tsdown:** Initial check-in of the TSBuild package ([b1a72514](https://github.com/storm-software/storm-ops/commit/b1a72514))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([a104880f](https://github.com/storm-software/storm-ops/commit/a104880f))
+
+### Dependency Upgrades
+
+- **monorepo:** Resolve dependency mismatches between packages ([72960597](https://github.com/storm-software/storm-ops/commit/72960597))
+
 ## 2.82.2 (2025-01-12)
 
 ### Bug Fixes
