@@ -1,8 +1,16 @@
+## 0.43.1 (2025-01-12)
+
+### Bug Fixes
+
+- **eslint:** Resolve stack overflow error on eslint configuration load ([f66752ac](https://github.com/storm-software/storm-ops/commit/f66752ac))
+
 ## 0.43.0 (2025-01-11)
 
 ### Features
 
-- **linting-tools:** Added a default configuration for the `dependency-cruiser` linting tool ([cdc1614b](https://github.com/storm-software/storm-ops/commit/cdc1614b))
+- **linting-tools:** Added a default configuration for the `dependency-cruiser`
+  linting tool
+  ([cdc1614b](https://github.com/storm-software/storm-ops/commit/cdc1614b))
 
 ## 0.42.3 (2025-01-11)
 
