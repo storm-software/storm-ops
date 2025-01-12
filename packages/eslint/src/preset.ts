@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @nx/enforce-module-boundaries */
-import cspell from "@cspell/eslint-plugin";
+import cspell from "@cspell/eslint-plugin/recommended";
 import eslint from "@eslint/js";
 import next from "@next/eslint-plugin-next";
 import nxPlugin from "@nx/eslint-plugin/nx.js";
@@ -183,9 +183,9 @@ export function getStormConfig(
 
       // CSpell
       {
-        ...cspell.configs["recommended"],
+        ...cspell,
         rules: {
-          ...cspell.configs["recommended"].rules,
+          ...cspell.rules,
           "@cspell/spellchecker": [
             "warn",
             {

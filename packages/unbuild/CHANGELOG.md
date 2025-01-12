@@ -2,7 +2,9 @@
 
 ### Features
 
-- **linting-tools:** Added a default configuration for the `dependency-cruiser` linting tool ([cdc1614b](https://github.com/storm-software/storm-ops/commit/cdc1614b))
+- **linting-tools:** Added a default configuration for the `dependency-cruiser`
+  linting tool
+  ([cdc1614b](https://github.com/storm-software/storm-ops/commit/cdc1614b))
 
 ### 🧱 Updated Dependencies
 
