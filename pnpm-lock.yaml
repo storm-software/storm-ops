@@ -1293,6 +1293,9 @@ importers:
       size-limit:
         specifier: 11.1.4
         version: 11.1.4
+      tsdown:
+        specifier: 'catalog:'
+        version: 0.5.3(@babel/runtime@7.26.0)(@swc/core@1.7.26(@swc/helpers@0.5.13))(typescript@5.7.3)
       tsup:
         specifier: 8.0.0
         version: 8.0.0(patch_hash=drf3yjuy45jg6lcmd5ihmmvct4)(@microsoft/api-extractor@7.49.1(@types/node@22.10.5))(@swc/core@1.7.26(@swc/helpers@0.5.13))(postcss@8.4.49)(ts-node@10.9.2(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.10.5)(typescript@5.7.3))(typescript@5.7.3)
@@ -3943,7 +3946,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 

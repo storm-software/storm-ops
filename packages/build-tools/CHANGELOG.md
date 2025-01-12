@@ -1,3 +1,9 @@
+## 0.124.1 (2025-01-12)
+
+### Continuous Integration
+
+- **tsdown:** Update package to exclude `oxc` packages from distributable ([8e9ad1ad](https://github.com/storm-software/storm-ops/commit/8e9ad1ad))
+
 ## 0.124.0 (2025-01-12)
 
 ### Features
