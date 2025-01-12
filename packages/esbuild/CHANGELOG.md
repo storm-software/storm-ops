@@ -1,8 +1,21 @@
+## 0.15.2 (2025-01-12)
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with invalid `cspell` plugin ([1c13fb51](https://github.com/storm-software/storm-ops/commit/1c13fb51))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.131.2
+- Updated build-tools to 0.123.2
+- Updated config to 1.92.2
+
 ## 0.15.1 (2025-01-12)
 
 ### Bug Fixes
 
-- **eslint:** Resolve stack overflow error on eslint configuration load ([f66752ac](https://github.com/storm-software/storm-ops/commit/f66752ac))
+- **eslint:** Resolve stack overflow error on eslint configuration load
+  ([f66752ac](https://github.com/storm-software/storm-ops/commit/f66752ac))
 
 ### 🧱 Updated Dependencies
 

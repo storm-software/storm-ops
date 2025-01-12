@@ -1,3 +1,9 @@
+## 0.108.2 (2025-01-12)
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with invalid `cspell` plugin ([1c13fb51](https://github.com/storm-software/storm-ops/commit/1c13fb51))
+
 ## 0.108.1 (2025-01-12)
 
 ### Bug Fixes
