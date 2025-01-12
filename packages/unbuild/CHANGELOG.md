@@ -1,3 +1,15 @@
+## 0.15.1 (2025-01-12)
+
+### Bug Fixes
+
+- **eslint:** Resolve stack overflow error on eslint configuration load ([f66752ac](https://github.com/storm-software/storm-ops/commit/f66752ac))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.131.1
+- Updated build-tools to 0.123.1
+- Updated config to 1.92.1
+
 ## 0.15.0 (2025-01-11)
 
 ### Features
