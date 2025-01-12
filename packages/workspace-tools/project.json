@@ -66,6 +66,7 @@
           "@nx/*",
           "esbuild",
           "unbuild",
+          "tsdown",
           "@swc/*",
           "vue/compiler-sfc",
           "read-yaml-file",
