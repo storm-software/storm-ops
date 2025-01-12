@@ -1,3 +1,15 @@
+## 0.15.0 (2025-01-11)
+
+### Features
+
+- **linting-tools:** Added a default configuration for the `dependency-cruiser` linting tool ([cdc1614b](https://github.com/storm-software/storm-ops/commit/cdc1614b))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.131.0
+- Updated build-tools to 0.123.0
+- Updated config to 1.92.0
+
 ## 0.14.3 (2025-01-11)
 
 ### Bug Fixes

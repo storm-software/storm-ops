@@ -1,3 +1,9 @@
+## 0.108.0 (2025-01-11)
+
+### Features
+
+- **eslint:** Added `utils` module to the package distribution ([42501160](https://github.com/storm-software/storm-ops/commit/42501160))
+
 ## 0.107.3 (2025-01-11)
 
 ### Bug Fixes
