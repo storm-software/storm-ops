@@ -45,3 +45,4 @@ catalog:
   "defu": "6.1.4"
   "read-yaml-file": "2.1.0"
   "cspell": "8.8.4"
+  "tsdown": "0.5.3"

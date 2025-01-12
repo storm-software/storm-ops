@@ -1,0 +1,235 @@
+{
+  "name": "@storm-software/tsdown",
+  "version": "0.15.1",
+  "type": "module",
+  "description": "A package containing `tsdown` utilities for building Storm Software libraries and applications",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git",
+    "directory": "packages/tsdown"
+  },
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "maintainers": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    },
+    {
+      "name": "Pat Sullivan",
+      "email": "admin@stormsoftware.com",
+      "url": "https://patsullivan.org"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    }
+  ],
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
+  "private": false,
+  "packageManager": "pnpm@9.15.2",
+  "engines": {
+    "node": ">=22.4.0",
+    "pnpm": ">=9.15.2"
+  },
+  "bin": {
+    "storm-tsdown": "./bin/storm-tsdown.js",
+    "storm-tsdown-cjs": "./bin/storm-tsdown.cjs",
+    "storm-tsdown-esm": "./bin/storm-tsdown.js"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    "./package.json": "./package.json",
+    "./types": {
+      "import": {
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
+      },
+      "require": {
+        "types": "./dist/types.d.cts",
+        "default": "./dist/types.cjs"
+      },
+      "default": {
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
+      }
+    },
+    "./index": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./config": {
+      "import": {
+        "types": "./dist/config.d.ts",
+        "default": "./dist/config.js"
+      },
+      "require": {
+        "types": "./dist/config.d.cts",
+        "default": "./dist/config.cjs"
+      },
+      "default": {
+        "types": "./dist/config.d.ts",
+        "default": "./dist/config.js"
+      }
+    },
+    "./clean": {
+      "import": {
+        "types": "./dist/clean.d.ts",
+        "default": "./dist/clean.js"
+      },
+      "require": {
+        "types": "./dist/clean.d.cts",
+        "default": "./dist/clean.cjs"
+      },
+      "default": {
+        "types": "./dist/clean.d.ts",
+        "default": "./dist/clean.js"
+      }
+    },
+    "./build": {
+      "import": {
+        "types": "./dist/build/index.d.ts",
+        "default": "./dist/build/index.js"
+      },
+      "require": {
+        "types": "./dist/build/index.d.cts",
+        "default": "./dist/build/index.cjs"
+      },
+      "default": {
+        "types": "./dist/build/index.d.ts",
+        "default": "./dist/build/index.js"
+      }
+    },
+    "./plugins/*": {
+      "import": {
+        "types": "./dist/plugins/*.d.ts",
+        "default": "./dist/plugins/*.js"
+      },
+      "require": {
+        "types": "./dist/plugins/*.d.cts",
+        "default": "./dist/plugins/*.cjs"
+      },
+      "default": {
+        "types": "./dist/plugins/*.d.ts",
+        "default": "./dist/plugins/*.js"
+      }
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "keywords": [
+    "acidic",
+    "cyclone-ui",
+    "tsdown",
+    "monorepo",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "sullivanpj"
+  ],
+  "peerDependencies": {
+    "@microsoft/api-extractor": "catalog:",
+    "@nx/devkit": "catalog:",
+    "@nx/js": "catalog:",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "spdx-exceptions": "^2.5.0",
+    "spdx-license-ids": "^3.0.20",
+    "tsdown": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "@microsoft/api-extractor": {
+      "optional": true
+    },
+    "@nx/devkit": {
+      "optional": false
+    },
+    "@nx/js": {
+      "optional": false
+    },
+    "@storm-software/build-tools": {
+      "optional": false
+    },
+    "@storm-software/config-tools": {
+      "optional": false
+    },
+    "spdx-exceptions": {
+      "optional": true
+    },
+    "spdx-license-ids": {
+      "optional": true
+    },
+    "tsdown": {
+      "optional": false
+    }
+  },
+  "dependencies": {
+    "@humanfs/node": "^0.16.6",
+    "chokidar": "^4.0.3",
+    "commander": "catalog:",
+    "es-toolkit": "^1.30.1",
+    "globby": "^14.0.2",
+    "nx": "catalog:",
+    "rolldown": "1.0.0-beta.1",
+    "source-map": "0.7.4",
+    "tsup": "catalog:"
+  },
+  "devDependencies": {
+    "@microsoft/api-extractor": "catalog:",
+    "@nx/devkit": "catalog:",
+    "@nx/js": "catalog:",
+    "@storm-software/build-tools": "0.123.1",
+    "@storm-software/config": "1.92.1",
+    "@storm-software/config-tools": "1.131.1",
+    "@types/node": "catalog:",
+    "defu": "catalog:",
+    "rollup": "4.29.1",
+    "spdx-exceptions": "^2.5.0",
+    "spdx-license-ids": "^3.0.20",
+    "tsdown": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
+}

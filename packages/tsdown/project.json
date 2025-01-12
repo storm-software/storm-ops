@@ -1,0 +1,32 @@
+{
+  "name": "tsdown",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/tsdown/src",
+  "projectType": "library",
+  "targets": {
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "tsup --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/tsdown",
+          "pnpm copyfiles --up=2 ./packages/tsdown/README.md ./packages/tsdown/package.json dist/packages/tsdown",
+          "pnpm copyfiles --up=2 ./packages/tsdown/assets/* dist/packages/tsdown/assets",
+          "pnpm copyfiles --up=4 ./packages/tsdown/dist/bin/* dist/packages/tsdown/bin",
+          "pnpm copyfiles --up=3 ./packages/tsdown/dist/* dist/packages/tsdown/dist"
+        ]
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  }
+}
