@@ -27,6 +27,7 @@ export default defineConfig([
     dts: false,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
+    external: ["oxc-parser", "@oxc-parser/*"],
     skipNodeModulesBundle: false
   }
 ]);

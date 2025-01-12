@@ -2,11 +2,13 @@
 
 ### Features
 
-- **tsdown:** Initial check-in of the TSBuild package ([b1a72514](https://github.com/storm-software/storm-ops/commit/b1a72514))
+- **tsdown:** Initial check-in of the TSBuild package
+  ([b1a72514](https://github.com/storm-software/storm-ops/commit/b1a72514))
 
 ### Dependency Upgrades
 
-- **monorepo:** Resolve dependency mismatches between packages ([72960597](https://github.com/storm-software/storm-ops/commit/72960597))
+- **monorepo:** Resolve dependency mismatches between packages
+  ([72960597](https://github.com/storm-software/storm-ops/commit/72960597))
 
 ### 🧱 Updated Dependencies
 
