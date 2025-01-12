@@ -786,7 +786,7 @@ export const getStormRulesConfig = (
     "new-parens": "error",
 
     // allow/disallow an empty newline after var statement
-    "newline-after-var": ["error", "always"],
+    "newline-after-var": "off",
 
     // Require or disallow padding lines between statements
     // https://eslint.org/docs/rules/padding-line-between-statements
@@ -967,7 +967,7 @@ export const getStormRulesConfig = (
     "object-property-newline": [
       "error",
       {
-        allowAllPropertiesOnSameLine: true
+        allowAllPropertiesOnSameLine: false
       }
     ],
 
