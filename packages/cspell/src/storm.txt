@@ -118,6 +118,7 @@ flashbots
 postbuild
 sonarjs
 tsdoc
+tsdown
 ultrabold
 Datasource
 datasources

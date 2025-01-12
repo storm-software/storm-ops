@@ -1,2 +1,0 @@
-ce817a1a47cbc0aa92f228082fd45ffabb0c8894  dict/storm.txt
-edad01233c2d14c2d212ff4ebf09ab5ce08e0c8a  src/storm.txt
