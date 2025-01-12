@@ -12,7 +12,9 @@ import {
   writeFatal,
   writeInfo,
   writeTrace
-} from "@storm-software/config-tools";
+} from "@storm-software/config-tools/logger/console";
+import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
+import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { defu } from "defu";
 import type { Linter } from "eslint";
 import json from "eslint-plugin-json";
@@ -189,7 +191,7 @@ export function getStormConfig(
           "@cspell/spellchecker": [
             "warn",
             {
-              configFile: new URL(cspellConfigFile, import.meta.url).toString(),
+              configFile: joinPaths(findWorkspaceRoot(), cspellConfigFile),
               autoFix: true
             }
           ]
