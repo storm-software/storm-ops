@@ -788,8 +788,11 @@ export const getStormRulesConfig = (
     // allow/disallow an empty newline after var statement
     "newline-after-var": ["error", "always"],
 
-    // https://eslint.org/docs/rules/newline-before-return
-    "newline-before-return": ["error", "always"],
+    // https://eslint.org/docs/rules/padding-line-between-statements
+    "padding-line-between-statements": [
+      "error",
+      { blankLine: "always", prev: ["const", "let", "var"], next: "return" }
+    ],
 
     // enforces new line after each method call in the chain to make it
     // more readable and easy to maintain
