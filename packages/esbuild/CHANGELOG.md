@@ -1,8 +1,21 @@
+## 0.16.4 (2025-01-13)
+
+### Continuous Integration
+
+- **unbuild:** Update the build configuration to properly bundle for node ([72be421b](https://github.com/storm-software/storm-ops/commit/72be421b))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.132.4
+- Updated build-tools to 0.124.4
+- Updated config to 1.93.4
+
 ## 0.16.3 (2025-01-13)
 
 ### Bug Fixes
 
-- **unbuild:** Resolved issue with the `src` path in the distributable ([8810c687](https://github.com/storm-software/storm-ops/commit/8810c687))
+- **unbuild:** Resolved issue with the `src` path in the distributable
+  ([8810c687](https://github.com/storm-software/storm-ops/commit/8810c687))
 
 ### 🧱 Updated Dependencies
 

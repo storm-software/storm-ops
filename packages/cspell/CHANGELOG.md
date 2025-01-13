@@ -1,3 +1,9 @@
+## 0.4.3 (2025-01-13)
+
+### Continuous Integration
+
+- **unbuild:** Update the build configuration to properly bundle for node ([72be421b](https://github.com/storm-software/storm-ops/commit/72be421b))
+
 ## 0.4.2 (2025-01-13)
 
 ### Bug Fixes

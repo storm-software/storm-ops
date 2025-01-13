@@ -1,3 +1,14 @@
+## 1.103.5 (2025-01-13)
+
+### Continuous Integration
+
+- **unbuild:** Update the build configuration to properly bundle for node ([72be421b](https://github.com/storm-software/storm-ops/commit/72be421b))
+
+### 🧱 Updated Dependencies
+
+- Updated cspell to 0.4.3
+- Updated cspell to 0.4.3
+
 ## 1.103.4 (2025-01-13)
 
 ### Bug Fixes
