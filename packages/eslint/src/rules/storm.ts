@@ -193,60 +193,70 @@ export const getStormRulesConfig = (
      * 🚫 Not fixable - https://eslint.org/docs/rules/no-return-assign
      */
     "no-return-assign": "error",
+
     /**
      * Disallows unnecessary `return await`.
      *
      * 🚫 Not fixable - https://eslint.org/docs/rules/no-return-await
      */
     "no-return-await": "error",
+
     /**
      * Disallow use of `javascript:` urls.
      *
      * 🚫 Not fixable - https://eslint.org/docs/rules/no-script-url
      */
     "no-script-url": "error",
+
     /**
      * Disallow comparisons where both sides are exactly the same.
      *
      * 🚫 Not fixable - https://eslint.org/docs/rules/no-self-compare
      */
     "no-self-compare": "error",
+
     /**
      * Disallow use of comma operator.
      *
      * 🚫 Not fixable - https://eslint.org/docs/rules/no-sequences
      */
     "no-sequences": "error",
+
     /**
      * Disallow unnecessary `.call()` and `.apply()`.
      *
      * 🚫 Not fixable - https://eslint.org/docs/rules/no-useless-call
      */
     "no-useless-call": "error",
+
     /**
      * Disallow unnecessary concatenation of strings.
      *
      * 🚫 Not fixable - https://eslint.org/docs/rules/no-useless-concat
      */
     "no-useless-concat": "error",
+
     /**
      * Disallow redundant return statements.
      *
      * 🔧 Fixable - https://eslint.org/docs/rules/no-useless-return
      */
     "no-useless-return": "warn",
+
     /**
      * Require using named capture groups in regular expressions.
      *
      * 🚫 Not fixable - https://eslint.org/docs/rules/prefer-named-capture-group
      */
-    "prefer-named-capture-group": "error",
+    "prefer-named-capture-group": "off",
+
     /**
      * Require using Error objects as Promise rejection reasons.
      *
      * 🚫 Not fixable - https://eslint.org/docs/rules/prefer-promise-reject-errors
      */
     "prefer-promise-reject-errors": ["error", { allowEmptyReject: true }],
+
     /**
      * Disallow use of the RegExp constructor in favor of regular expression
      * literals.
@@ -254,6 +264,7 @@ export const getStormRulesConfig = (
      * 🚫 Not fixable - https://eslint.org/docs/rules/prefer-regex-literals
      */
     "prefer-regex-literals": "error",
+
     /**
      * Disallow "Yoda conditions", ensuring the comparison.
      *
