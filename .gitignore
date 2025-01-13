@@ -10,8 +10,8 @@ tmp
 out
 .nx/workspace-data
 .nx/cache
-cspell/dict
-cspell/checksum.txt
+**/cspell/dict
+**/cspell/checksum.txt
 
 # build
 

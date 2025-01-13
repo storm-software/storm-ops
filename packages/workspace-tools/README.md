@@ -21,7 +21,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.224.2-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
+[![Version](https://img.shields.io/badge/version-1.225.0-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -40,7 +40,6 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 ## Table of Contents
 
 - [Storm Workspace Tools](#storm-workspace-tools)
@@ -49,56 +48,59 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
   - [Typia Generate](#typia-generate)
     - [Example](#example)
     - [Options](#options)
-  - [ESBuild Builder](#esbuild-builder)
+  - [TSDown Builder](#tsdown-builder)
     - [Example](#example-1)
     - [Options](#options-1)
-  - [Unbuild Builder](#unbuild-builder)
+  - [ESBuild Builder](#esbuild-builder)
     - [Example](#example-2)
     - [Options](#options-2)
-  - [Clean Publish](#clean-publish)
+  - [Unbuild Builder](#unbuild-builder)
     - [Example](#example-3)
     - [Options](#options-3)
-  - [Size-Limit Test](#size-limit-test)
+  - [Clean Publish](#clean-publish)
     - [Example](#example-4)
     - [Options](#options-4)
-  - [Npm Publish](#npm-publish)
+  - [Size-Limit Test](#size-limit-test)
     - [Example](#example-5)
     - [Options](#options-5)
-  - [Cargo Publish](#cargo-publish)
+  - [Npm Publish](#npm-publish)
     - [Example](#example-6)
     - [Options](#options-6)
-  - [Cargo Build](#cargo-build)
+  - [Cargo Publish](#cargo-publish)
     - [Example](#example-7)
     - [Options](#options-7)
-  - [Cargo Check](#cargo-check)
+  - [Cargo Build](#cargo-build)
     - [Example](#example-8)
     - [Options](#options-8)
-  - [Cargo Format](#cargo-format)
+  - [Cargo Check](#cargo-check)
     - [Example](#example-9)
     - [Options](#options-9)
-  - [Cargo Clippy](#cargo-clippy)
+  - [Cargo Format](#cargo-format)
     - [Example](#example-10)
     - [Options](#options-10)
-  - [Cargo Doc](#cargo-doc)
+  - [Cargo Clippy](#cargo-clippy)
     - [Example](#example-11)
     - [Options](#options-11)
+  - [Cargo Doc](#cargo-doc)
+    - [Example](#example-12)
+    - [Options](#options-12)
   - [Generators](#generators)
   - [Init Storm Workspace Plugin](#init-storm-workspace-plugin)
-    - [Options](#options-12)
+    - [Options](#options-13)
   - [Workspace Preset](#workspace-preset)
     - [Examples](#examples)
-    - [Options](#options-13)
-  - [Add Node Library](#add-node-library)
     - [Options](#options-14)
-  - [Configuration Schema Creator](#configuration-schema-creator)
+  - [Add Node Library](#add-node-library)
     - [Options](#options-15)
-  - [Add Neutral Library](#add-neutral-library)
+  - [Configuration Schema Creator](#configuration-schema-creator)
     - [Options](#options-16)
-  - [Add browser Library](#add-browser-library)
+  - [Add Neutral Library](#add-neutral-library)
     - [Options](#options-17)
+  - [Add browser Library](#add-browser-library)
+    - [Options](#options-18)
   - [design-tokens](#design-tokens)
   - [Storm Release Version Generator](#storm-release-version-generator)
-    - [Options](#options-18)
+    - [Options](#options-19)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
   - [Storm Workspaces](#storm-workspaces)
@@ -183,6 +185,44 @@ The following executor options are available:
  | **outputPath \***    | `string`    | The output path of the generated files.     | "{sourceRoot}/__generated__/typia"     | 
  | **tsConfig \***    | `string`    | The path to the \`tsconfig.json\` file.     | "{projectRoot}/tsconfig.json"     | 
  | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
+
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+
+
+
+## TSDown Builder
+
+Run the \`tsdown\` build process on a selected project
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:tsdown
+```
+
+**Please note:** _The tsdown executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| **entry \***    | `string[]`   | The path to the entry file (or multiple paths/files), relative to \`projectRoot\` path.     | `[]`     | 
+ | **outputPath \***    | `string`    | The output path of the generated files.     | "dist/{projectRoot}"     | 
+ | **tsconfig \***    | `string`    | The path to the \`tsconfig.json\` file.     | "{projectRoot}/tsconfig.json"     | 
+ | watch      | `boolean`    | Enable re-building when files change.     |     | 
+ | assets      | `array`    | List of static assets.     | `[]`     | 
+ | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
+ | includeSrc      | `boolean`    | Should the source files be added to the distribution folder in an \`src\` directory.     |     | 
+ | generatePackageJson      | `boolean`    | Should a package.json file be generated in the output folder or should the existing one be copied in.     | `true`     | 
+ | debug      | `boolean`    | Should output be unminified with source mappings.     |     | 
+ | platform      | "browser" \| "neutral" \| "node"     | Platform target for outputs.     | "neutral"     | 
+ | minify      | `boolean`    | Should the build process minify the output files?     |     | 
+ | verbose      | `boolean`    | Should write extra log outputs with details from the executor.     |     | 
 
 
 **Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
