@@ -13,8 +13,7 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    external: ["unbuild", "nx", "@nx/*"],
-    skipNodeModulesBundle: true
+    external: ["unbuild", "nx", "@nx/*"]
   },
   {
     name: "unbuild-bin",
@@ -23,12 +22,11 @@ export default defineConfig([
     outDir: "dist/bin",
     format: ["cjs"],
     platform: "node",
-    bundle: true,
     splitting: false,
     clean: true,
     dts: false,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    skipNodeModulesBundle: false
+    external: ["unbuild", "nx", "@nx/*"]
   }
 ]);
