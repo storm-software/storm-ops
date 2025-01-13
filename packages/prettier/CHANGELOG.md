@@ -1,3 +1,9 @@
+## 0.27.7 (2025-01-13)
+
+### Bug Fixes
+
+- **unbuild:** Resolved issue with distribution package ([265f38a2](https://github.com/storm-software/storm-ops/commit/265f38a2))
+
 ## 0.27.6 (2025-01-12)
 
 ### Miscellaneous

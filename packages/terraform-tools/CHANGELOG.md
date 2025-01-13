@@ -1,8 +1,15 @@
+## 0.44.2 (2025-01-13)
+
+### Bug Fixes
+
+- **unbuild:** Resolved issue with distribution package ([265f38a2](https://github.com/storm-software/storm-ops/commit/265f38a2))
+
 ## 0.44.1 (2025-01-12)
 
 ### Continuous Integration
 
-- **tsdown:** Update package to exclude `oxc` packages from distributable ([8e9ad1ad](https://github.com/storm-software/storm-ops/commit/8e9ad1ad))
+- **tsdown:** Update package to exclude `oxc` packages from distributable
+  ([8e9ad1ad](https://github.com/storm-software/storm-ops/commit/8e9ad1ad))
 
 ## 0.44.0 (2025-01-12)
 
