@@ -1,3 +1,9 @@
+## 1.226.2 (2025-01-13)
+
+### Bug Fixes
+
+- **unbuild:** Resolved issue with the `src` path in the distributable ([8810c687](https://github.com/storm-software/storm-ops/commit/8810c687))
+
 ## 1.226.1 (2025-01-13)
 
 ### Bug Fixes

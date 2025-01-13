@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/config",
-  "version": "1.93.2",
+  "version": "1.93.3",
   "description": "Configuration management tools and schemas for Storm Software projects, providing a standardized approach to handle project settings and presets.",
   "repository": {
     "type": "github",
