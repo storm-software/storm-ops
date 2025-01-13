@@ -20,7 +20,7 @@
           "pnpm copyfiles LICENSE dist/packages/unbuild",
           "pnpm copyfiles --up=2 ./packages/unbuild/*.md ./packages/unbuild/package.json dist/packages/unbuild",
           "pnpm copyfiles --up=4 ./packages/unbuild/dist/bin/* dist/packages/unbuild/bin",
-          "pnpm copyfiles --up=3 ./packages/unbuild/dist/* dist/packages/unbuild/dist"
+          "pnpm copyfiles --up=4 ./packages/unbuild/dist/src/* dist/packages/unbuild/dist"
         ]
       }
     },

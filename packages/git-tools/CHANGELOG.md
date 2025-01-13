@@ -2,11 +2,13 @@
 
 ### Bug Fixes
 
-- **eslint:** Resolve issue with invalid cspell configuration file ([6a983ea9](https://github.com/storm-software/storm-ops/commit/6a983ea9))
+- **eslint:** Resolve issue with invalid cspell configuration file
+  ([6a983ea9](https://github.com/storm-software/storm-ops/commit/6a983ea9))
 
 ### Continuous Integration
 
-- **tsdown:** Update package to exclude `oxc` packages from distributable ([8e9ad1ad](https://github.com/storm-software/storm-ops/commit/8e9ad1ad))
+- **tsdown:** Update package to exclude `oxc` packages from distributable
+  ([8e9ad1ad](https://github.com/storm-software/storm-ops/commit/8e9ad1ad))
 
 ## 2.83.0 (2025-01-12)
 

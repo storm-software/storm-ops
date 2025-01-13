@@ -2,11 +2,13 @@
 
 ### Features
 
-- **tsdown:** Added the `tsdown` build executor ([72f4efad](https://github.com/storm-software/storm-ops/commit/72f4efad))
+- **tsdown:** Added the `tsdown` build executor
+  ([72f4efad](https://github.com/storm-software/storm-ops/commit/72f4efad))
 
 ### Continuous Integration
 
-- **tsdown:** Update package to exclude `oxc` packages from distributable ([8e9ad1ad](https://github.com/storm-software/storm-ops/commit/8e9ad1ad))
+- **tsdown:** Update package to exclude `oxc` packages from distributable
+  ([8e9ad1ad](https://github.com/storm-software/storm-ops/commit/8e9ad1ad))
 
 ### 🧱 Updated Dependencies
 
