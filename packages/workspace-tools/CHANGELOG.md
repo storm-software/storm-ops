@@ -1,3 +1,17 @@
+## 1.226.0 (2025-01-12)
+
+### Features
+
+- **tsdown:** Added the `tsdown` build executor ([72f4efad](https://github.com/storm-software/storm-ops/commit/72f4efad))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved build issue when bundling `tsdown` package ([16b519bb](https://github.com/storm-software/storm-ops/commit/16b519bb))
+
+### Continuous Integration
+
+- **tsdown:** Update package to exclude `oxc` packages from distributable ([8e9ad1ad](https://github.com/storm-software/storm-ops/commit/8e9ad1ad))
+
 ## 1.225.0 (2025-01-12)
 
 ### Features

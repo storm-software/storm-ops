@@ -1,3 +1,10 @@
+## 0.108.4 (2025-01-12)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid cspell configuration file ([6a983ea9](https://github.com/storm-software/storm-ops/commit/6a983ea9))
+- **eslint:** Resolve issue with improper `newline-after-var` rule configuration ([7f5502c9](https://github.com/storm-software/storm-ops/commit/7f5502c9))
+
 ## 0.108.3 (2025-01-12)
 
 ### Bug Fixes

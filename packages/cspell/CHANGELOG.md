@@ -1,3 +1,9 @@
+## 0.4.0 (2025-01-12)
+
+### Features
+
+- **cspell:** Added new tool names to cspell dictionary ([fd067a2f](https://github.com/storm-software/storm-ops/commit/fd067a2f))
+
 ## 0.3.3 (2025-01-12)
 
 ### Miscellaneous
