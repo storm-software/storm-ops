@@ -1,3 +1,9 @@
+## 0.45.0 (2025-01-13)
+
+### Features
+
+- **unbuild:** Bundle `unbuild` dependency into distributable ([78438a04](https://github.com/storm-software/storm-ops/commit/78438a04))
+
 ## 0.44.4 (2025-01-13)
 
 ### Continuous Integration

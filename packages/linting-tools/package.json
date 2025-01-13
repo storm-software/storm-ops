@@ -154,7 +154,7 @@
     "vfile-reporter": "8.1.1"
   },
   "devDependencies": {
-    "@storm-software/cspell": "0.4.3",
+    "@storm-software/cspell": "0.5.0",
     "@types/node": "catalog:",
     "cspell": "catalog:",
     "tsup": "catalog:"
