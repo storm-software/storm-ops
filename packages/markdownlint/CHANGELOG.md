@@ -1,50 +1,66 @@
+## 0.12.8 (2025-01-13)
+
+### Continuous Integration
+
+- **unbuild:** Update the build configuration to properly bundle for node
+  ([72be421b](https://github.com/storm-software/storm-ops/commit/72be421b))
+
 ## 0.12.7 (2025-01-13)
 
 ### Bug Fixes
 
-- **unbuild:** Resolved issue with distribution package ([265f38a2](https://github.com/storm-software/storm-ops/commit/265f38a2))
+- **unbuild:** Resolved issue with distribution package
+  ([265f38a2](https://github.com/storm-software/storm-ops/commit/265f38a2))
 
 ## 0.12.6 (2025-01-12)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([a104880f](https://github.com/storm-software/storm-ops/commit/a104880f))
+- **monorepo:** Regenerate README markdown files
+  ([a104880f](https://github.com/storm-software/storm-ops/commit/a104880f))
 
 ## 0.12.5 (2025-01-12)
 
 ### Bug Fixes
 
-- **eslint:** Resolve stack overflow error on eslint configuration load ([f66752ac](https://github.com/storm-software/storm-ops/commit/f66752ac))
+- **eslint:** Resolve stack overflow error on eslint configuration load
+  ([f66752ac](https://github.com/storm-software/storm-ops/commit/f66752ac))
 
 ## 0.12.4 (2025-01-11)
 
 ### Bug Fixes
 
-- **eslint:** Resolved issue with the bundling process ([d06b6588](https://github.com/storm-software/storm-ops/commit/d06b6588))
+- **eslint:** Resolved issue with the bundling process
+  ([d06b6588](https://github.com/storm-software/storm-ops/commit/d06b6588))
 
 ## 0.12.3 (2025-01-11)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue loading pnpm workspace's catalog dependencies ([1199e24f](https://github.com/storm-software/storm-ops/commit/1199e24f))
+- **workspace-tools:** Resolve issue loading pnpm workspace's catalog
+  dependencies
+  ([1199e24f](https://github.com/storm-software/storm-ops/commit/1199e24f))
 
 ## 0.12.2 (2025-01-11)
 
 ### Miscellaneous
 
-- **workspace-tools:** Added additional logging for pnpm dependency updates process ([400b3369](https://github.com/storm-software/storm-ops/commit/400b3369))
-
-
+- **workspace-tools:** Added additional logging for pnpm dependency updates
+  process
+  ([400b3369](https://github.com/storm-software/storm-ops/commit/400b3369))
 
 ## 0.12.0 (2024-12-30)
 
 ### Features
 
-- **storm-ops:** Completed enhancement around `catalog` and `workspace` dependency upgrades ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
+- **storm-ops:** Completed enhancement around `catalog` and `workspace`
+  dependency upgrades
+  ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
 
 ### Dependency Upgrades
 
-- **storm-ops:** Added consistent `@types/node` versions across repository ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
+- **storm-ops:** Added consistent `@types/node` versions across repository
+  ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
 
 ## 0.11.0 (2024-07-17)
 

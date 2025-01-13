@@ -1,182 +1,216 @@
+## 1.81.8 (2025-01-13)
+
+### Continuous Integration
+
+- **unbuild:** Update the build configuration to properly bundle for node
+  ([72be421b](https://github.com/storm-software/storm-ops/commit/72be421b))
+
 ## 1.81.7 (2025-01-13)
 
 ### Bug Fixes
 
-- **unbuild:** Resolved issue with distribution package ([265f38a2](https://github.com/storm-software/storm-ops/commit/265f38a2))
+- **unbuild:** Resolved issue with distribution package
+  ([265f38a2](https://github.com/storm-software/storm-ops/commit/265f38a2))
 
 ## 1.81.6 (2025-01-12)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([a104880f](https://github.com/storm-software/storm-ops/commit/a104880f))
+- **monorepo:** Regenerate README markdown files
+  ([a104880f](https://github.com/storm-software/storm-ops/commit/a104880f))
 
 ## 1.81.5 (2025-01-12)
 
 ### Bug Fixes
 
-- **eslint:** Resolve stack overflow error on eslint configuration load ([f66752ac](https://github.com/storm-software/storm-ops/commit/f66752ac))
+- **eslint:** Resolve stack overflow error on eslint configuration load
+  ([f66752ac](https://github.com/storm-software/storm-ops/commit/f66752ac))
 
 ## 1.81.4 (2025-01-11)
 
 ### Bug Fixes
 
-- **eslint:** Resolved issue with the bundling process ([d06b6588](https://github.com/storm-software/storm-ops/commit/d06b6588))
+- **eslint:** Resolved issue with the bundling process
+  ([d06b6588](https://github.com/storm-software/storm-ops/commit/d06b6588))
 
 ## 1.81.3 (2025-01-11)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue loading pnpm workspace's catalog dependencies ([1199e24f](https://github.com/storm-software/storm-ops/commit/1199e24f))
+- **workspace-tools:** Resolve issue loading pnpm workspace's catalog
+  dependencies
+  ([1199e24f](https://github.com/storm-software/storm-ops/commit/1199e24f))
 
 ## 1.81.2 (2025-01-11)
 
 ### Miscellaneous
 
-- **workspace-tools:** Added additional logging for pnpm dependency updates process ([400b3369](https://github.com/storm-software/storm-ops/commit/400b3369))
-
-
+- **workspace-tools:** Added additional logging for pnpm dependency updates
+  process
+  ([400b3369](https://github.com/storm-software/storm-ops/commit/400b3369))
 
 ## 1.81.0 (2025-01-02)
 
 ### Features
 
-- **workspace-tools:** Removed old dynamically imported modules ([56f84500](https://github.com/storm-software/storm-ops/commit/56f84500))
+- **workspace-tools:** Removed old dynamically imported modules
+  ([56f84500](https://github.com/storm-software/storm-ops/commit/56f84500))
 
 ## 1.80.2 (2025-01-02)
 
 ### Bug Fixes
 
-- **storm-ops:** Resolve issue preventing release publishing ([92c10eae](https://github.com/storm-software/storm-ops/commit/92c10eae))
+- **storm-ops:** Resolve issue preventing release publishing
+  ([92c10eae](https://github.com/storm-software/storm-ops/commit/92c10eae))
 
 ## 1.80.1 (2025-01-02)
 
 ### Bug Fixes
 
-- **create-storm-workspace:** Resolve issue with missing external libraries ([8e8cab97](https://github.com/storm-software/storm-ops/commit/8e8cab97))
+- **create-storm-workspace:** Resolve issue with missing external libraries
+  ([8e8cab97](https://github.com/storm-software/storm-ops/commit/8e8cab97))
 
 ## 1.80.0 (2024-12-30)
 
 ### Features
 
-- **storm-ops:** Completed enhancement around `catalog` and `workspace` dependency upgrades ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
+- **storm-ops:** Completed enhancement around `catalog` and `workspace`
+  dependency upgrades
+  ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
 
 ### Dependency Upgrades
 
-- **storm-ops:** Added consistent `@types/node` versions across repository ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
+- **storm-ops:** Added consistent `@types/node` versions across repository
+  ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
 
 ## 1.79.1 (2024-12-18)
 
 ### Bug Fixes
 
-- **storm-ops:** Resolved issue with ESM resolve error during postinstall script execution ([82389510](https://github.com/storm-software/storm-ops/commit/82389510))
+- **storm-ops:** Resolved issue with ESM resolve error during postinstall script
+  execution
+  ([82389510](https://github.com/storm-software/storm-ops/commit/82389510))
 
 ### Dependency Upgrades
 
-- **storm-ops:** Upgrade Nx package to v20.2.2 ([d793912d](https://github.com/storm-software/storm-ops/commit/d793912d))
+- **storm-ops:** Upgrade Nx package to v20.2.2
+  ([d793912d](https://github.com/storm-software/storm-ops/commit/d793912d))
 
 ## 1.79.0 (2024-12-01)
 
 ### Features
 
-- **storm-ops:** Added `lint-sherif` script to the CI workflow ([906e0c2b](https://github.com/storm-software/storm-ops/commit/906e0c2b))
+- **storm-ops:** Added `lint-sherif` script to the CI workflow
+  ([906e0c2b](https://github.com/storm-software/storm-ops/commit/906e0c2b))
 
 ## 1.78.0 (2024-11-30)
 
 ### Features
 
-- **storm-ops:** Added `sherif` and `knip` linting to CI pipeline ([181d782a](https://github.com/storm-software/storm-ops/commit/181d782a))
+- **storm-ops:** Added `sherif` and `knip` linting to CI pipeline
+  ([181d782a](https://github.com/storm-software/storm-ops/commit/181d782a))
 
 ## 1.77.0 (2024-11-18)
 
 ### Features
 
-- **build-tools:** Allow default package.json exports by no longer overriding them ([f19fc362](https://github.com/storm-software/storm-ops/commit/f19fc362))
+- **build-tools:** Allow default package.json exports by no longer overriding
+  them ([f19fc362](https://github.com/storm-software/storm-ops/commit/f19fc362))
 
 ## 1.76.1 (2024-11-10)
 
 ### Bug Fixes
 
-- **config-tools:** Ensure trace logging is not marked as system logging ([e8dca171](https://github.com/storm-software/storm-ops/commit/e8dca171))
+- **config-tools:** Ensure trace logging is not marked as system logging
+  ([e8dca171](https://github.com/storm-software/storm-ops/commit/e8dca171))
 
 ## 1.76.0 (2024-11-08)
 
 ### Features
 
-- **build-tools:** Added back cjs build and local package.json dependencies ([d86d3c2a](https://github.com/storm-software/storm-ops/commit/d86d3c2a))
+- **build-tools:** Added back cjs build and local package.json dependencies
+  ([d86d3c2a](https://github.com/storm-software/storm-ops/commit/d86d3c2a))
 
 ## 1.75.0 (2024-11-07)
 
 ### Features
 
-- **config:** Add the `danger` color token ([06dba937](https://github.com/storm-software/storm-ops/commit/06dba937))
+- **config:** Add the `danger` color token
+  ([06dba937](https://github.com/storm-software/storm-ops/commit/06dba937))
 
 ## 1.74.0 (2024-11-01)
 
 ### Features
 
-- **eslint:** Resolve type issues with Nx plugin in preset ([d27162e2](https://github.com/storm-software/storm-ops/commit/d27162e2))
+- **eslint:** Resolve type issues with Nx plugin in preset
+  ([d27162e2](https://github.com/storm-software/storm-ops/commit/d27162e2))
 
 ## 1.73.0 (2024-10-31)
 
 ### Features
 
-- **storm-ops:** Upgrade the Nx package versions used in the repository ([369fad24](https://github.com/storm-software/storm-ops/commit/369fad24))
+- **storm-ops:** Upgrade the Nx package versions used in the repository
+  ([369fad24](https://github.com/storm-software/storm-ops/commit/369fad24))
 
 ## 1.72.0 (2024-08-03)
 
-
 ### Features
 
-- **eslint:** Ignore `prefer-nullish-coalescing` for strings ([dbae2a58](https://github.com/storm-software/storm-ops/commit/dbae2a58))
+- **eslint:** Ignore `prefer-nullish-coalescing` for strings
+  ([dbae2a58](https://github.com/storm-software/storm-ops/commit/dbae2a58))
 
 ## 1.71.0 (2024-08-03)
 
-
 ### Features
 
-- **storm-ops:** Upgrade workspace's Nx package dependencies ([5f31f734](https://github.com/storm-software/storm-ops/commit/5f31f734))
+- **storm-ops:** Upgrade workspace's Nx package dependencies
+  ([5f31f734](https://github.com/storm-software/storm-ops/commit/5f31f734))
 
 ## 1.70.1 (2024-08-03)
 
-
 ### Bug Fixes
 
-- **build-tools:** Resolved issue with the entry name parameter in unbuild config ([f5e5dbdd](https://github.com/storm-software/storm-ops/commit/f5e5dbdd))
+- **build-tools:** Resolved issue with the entry name parameter in unbuild
+  config
+  ([f5e5dbdd](https://github.com/storm-software/storm-ops/commit/f5e5dbdd))
 
 ## 1.70.0 (2024-08-02)
 
-
 ### Features
 
-- **build-tools:** Update the unbuild configuration to get exports from `package.json` files ([bb2fc78f](https://github.com/storm-software/storm-ops/commit/bb2fc78f))
+- **build-tools:** Update the unbuild configuration to get exports from
+  `package.json` files
+  ([bb2fc78f](https://github.com/storm-software/storm-ops/commit/bb2fc78f))
 
 ## 1.69.0 (2024-08-02)
 
-
 ### Features
 
-- **terraform-tools:** Update build to exclude other storm package from the distribution ([96294aac](https://github.com/storm-software/storm-ops/commit/96294aac))
+- **terraform-tools:** Update build to exclude other storm package from the
+  distribution
+  ([96294aac](https://github.com/storm-software/storm-ops/commit/96294aac))
 
 ## 1.68.2 (2024-08-02)
 
-
 ### Bug Fixes
 
-- **create-storm-workspace:** Upgrade the package.json to include `peerDependencies` ([f15d7eb4](https://github.com/storm-software/storm-ops/commit/f15d7eb4))
+- **create-storm-workspace:** Upgrade the package.json to include
+  `peerDependencies`
+  ([f15d7eb4](https://github.com/storm-software/storm-ops/commit/f15d7eb4))
 
 ## 1.68.1 (2024-07-31)
 
-
 ### Bug Fixes
 
-- **build-tools:** Remove unused plugin from unbuild ([ad8a5991](https://github.com/storm-software/storm-ops/commit/ad8a5991))
+- **build-tools:** Remove unused plugin from unbuild
+  ([ad8a5991](https://github.com/storm-software/storm-ops/commit/ad8a5991))
 
 ## 1.68.0 (2024-07-31)
 
-
 ### Features
 
-- **create-storm-workspace:** Configure workspace to include GitHub ([eea71de7](https://github.com/storm-software/storm-ops/commit/eea71de7))
+- **create-storm-workspace:** Configure workspace to include GitHub
+  ([eea71de7](https://github.com/storm-software/storm-ops/commit/eea71de7))
 
 ## 1.67.0 (2024-07-17)
 

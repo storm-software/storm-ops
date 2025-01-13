@@ -1,54 +1,67 @@
+## 0.7.8 (2025-01-13)
+
+### Continuous Integration
+
+- **unbuild:** Update the build configuration to properly bundle for node
+  ([72be421b](https://github.com/storm-software/storm-ops/commit/72be421b))
+
 ## 0.7.7 (2025-01-13)
 
 ### Bug Fixes
 
-- **unbuild:** Resolved issue with distribution package ([265f38a2](https://github.com/storm-software/storm-ops/commit/265f38a2))
+- **unbuild:** Resolved issue with distribution package
+  ([265f38a2](https://github.com/storm-software/storm-ops/commit/265f38a2))
 
 ## 0.7.6 (2025-01-12)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([a104880f](https://github.com/storm-software/storm-ops/commit/a104880f))
+- **monorepo:** Regenerate README markdown files
+  ([a104880f](https://github.com/storm-software/storm-ops/commit/a104880f))
 
 ## 0.7.5 (2025-01-12)
 
 ### Bug Fixes
 
-- **eslint:** Resolve stack overflow error on eslint configuration load ([f66752ac](https://github.com/storm-software/storm-ops/commit/f66752ac))
+- **eslint:** Resolve stack overflow error on eslint configuration load
+  ([f66752ac](https://github.com/storm-software/storm-ops/commit/f66752ac))
 
 ## 0.7.4 (2025-01-11)
 
 ### Bug Fixes
 
-- **eslint:** Resolved issue with the bundling process ([d06b6588](https://github.com/storm-software/storm-ops/commit/d06b6588))
+- **eslint:** Resolved issue with the bundling process
+  ([d06b6588](https://github.com/storm-software/storm-ops/commit/d06b6588))
 
 ## 0.7.3 (2025-01-11)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue loading pnpm workspace's catalog dependencies ([1199e24f](https://github.com/storm-software/storm-ops/commit/1199e24f))
+- **workspace-tools:** Resolve issue loading pnpm workspace's catalog
+  dependencies
+  ([1199e24f](https://github.com/storm-software/storm-ops/commit/1199e24f))
 
 ## 0.7.2 (2025-01-11)
 
 ### Miscellaneous
 
-- **workspace-tools:** Added additional logging for pnpm dependency updates process ([400b3369](https://github.com/storm-software/storm-ops/commit/400b3369))
-
-
+- **workspace-tools:** Added additional logging for pnpm dependency updates
+  process
+  ([400b3369](https://github.com/storm-software/storm-ops/commit/400b3369))
 
 ## 0.7.0 (2024-12-01)
 
 ### Features
 
-- **storm-ops:** Added `lint-sherif` script to the CI workflow ([906e0c2b](https://github.com/storm-software/storm-ops/commit/906e0c2b))
+- **storm-ops:** Added `lint-sherif` script to the CI workflow
+  ([906e0c2b](https://github.com/storm-software/storm-ops/commit/906e0c2b))
 
 ## 0.6.2 (2024-08-27)
 
-
 ### Bug Fixes
 
-- **workspace-tools:** Update the Cargo executors body function signature ([e40fd886](https://github.com/storm-software/storm-ops/commit/e40fd886))
-
+- **workspace-tools:** Update the Cargo executors body function signature
+  ([e40fd886](https://github.com/storm-software/storm-ops/commit/e40fd886))
 
 ### 🧱 Updated Dependencies
 
@@ -56,16 +69,15 @@
 
 ## 0.6.1 (2024-08-26)
 
-
 ### Bug Fixes
 
-- **storm-ops:** Add `linting-tools` implicit dependency to crates ([80d67e6f](https://github.com/storm-software/storm-ops/commit/80d67e6f))
-
+- **storm-ops:** Add `linting-tools` implicit dependency to crates
+  ([80d67e6f](https://github.com/storm-software/storm-ops/commit/80d67e6f))
 
 ### Dependency Upgrades
 
-- **storm-ops:** Upgrade the workspace's Nx version ([4ce6ac9e](https://github.com/storm-software/storm-ops/commit/4ce6ac9e))
-
+- **storm-ops:** Upgrade the workspace's Nx version
+  ([4ce6ac9e](https://github.com/storm-software/storm-ops/commit/4ce6ac9e))
 
 ### 🧱 Updated Dependencies
 

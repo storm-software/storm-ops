@@ -1,8 +1,21 @@
+## 1.103.5 (2025-01-13)
+
+### Continuous Integration
+
+- **unbuild:** Update the build configuration to properly bundle for node
+  ([72be421b](https://github.com/storm-software/storm-ops/commit/72be421b))
+
+### 🧱 Updated Dependencies
+
+- Updated cspell to 0.4.3
+- Updated cspell to 0.4.3
+
 ## 1.103.4 (2025-01-13)
 
 ### Bug Fixes
 
-- **unbuild:** Resolved issue with distribution package ([265f38a2](https://github.com/storm-software/storm-ops/commit/265f38a2))
+- **unbuild:** Resolved issue with distribution package
+  ([265f38a2](https://github.com/storm-software/storm-ops/commit/265f38a2))
 
 ### 🧱 Updated Dependencies
 
@@ -13,11 +26,13 @@
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([a104880f](https://github.com/storm-software/storm-ops/commit/a104880f))
+- **monorepo:** Regenerate README markdown files
+  ([a104880f](https://github.com/storm-software/storm-ops/commit/a104880f))
 
 ### Dependency Upgrades
 
-- **monorepo:** Resolve dependency mismatches between packages ([72960597](https://github.com/storm-software/storm-ops/commit/72960597))
+- **monorepo:** Resolve dependency mismatches between packages
+  ([72960597](https://github.com/storm-software/storm-ops/commit/72960597))
 
 ### 🧱 Updated Dependencies
 
@@ -28,7 +43,8 @@
 
 ### Bug Fixes
 
-- **eslint:** Resolved issue with invalid `cspell` plugin ([1c13fb51](https://github.com/storm-software/storm-ops/commit/1c13fb51))
+- **eslint:** Resolved issue with invalid `cspell` plugin
+  ([1c13fb51](https://github.com/storm-software/storm-ops/commit/1c13fb51))
 
 ### 🧱 Updated Dependencies
 
@@ -39,7 +55,8 @@
 
 ### Bug Fixes
 
-- **eslint:** Resolve stack overflow error on eslint configuration load ([f66752ac](https://github.com/storm-software/storm-ops/commit/f66752ac))
+- **eslint:** Resolve stack overflow error on eslint configuration load
+  ([f66752ac](https://github.com/storm-software/storm-ops/commit/f66752ac))
 
 ### 🧱 Updated Dependencies
 
@@ -50,8 +67,11 @@
 
 ### Features
 
-- **linting-tools:** Added a default configuration for the `dependency-cruiser` linting tool ([cdc1614b](https://github.com/storm-software/storm-ops/commit/cdc1614b))
-- **eslint:** Added `utils` module to the package distribution ([42501160](https://github.com/storm-software/storm-ops/commit/42501160))
+- **linting-tools:** Added a default configuration for the `dependency-cruiser`
+  linting tool
+  ([cdc1614b](https://github.com/storm-software/storm-ops/commit/cdc1614b))
+- **eslint:** Added `utils` module to the package distribution
+  ([42501160](https://github.com/storm-software/storm-ops/commit/42501160))
 
 ### 🧱 Updated Dependencies
 
@@ -62,7 +82,8 @@
 
 ### Bug Fixes
 
-- **eslint:** Resolved issue with the bundling process ([d06b6588](https://github.com/storm-software/storm-ops/commit/d06b6588))
+- **eslint:** Resolved issue with the bundling process
+  ([d06b6588](https://github.com/storm-software/storm-ops/commit/d06b6588))
 
 ### 🧱 Updated Dependencies
 
@@ -73,7 +94,8 @@
 
 ### Bug Fixes
 
-- **config-tools:** Resolve issue with missing `logger` module ([1b5df538](https://github.com/storm-software/storm-ops/commit/1b5df538))
+- **config-tools:** Resolve issue with missing `logger` module
+  ([1b5df538](https://github.com/storm-software/storm-ops/commit/1b5df538))
 
 ### 🧱 Updated Dependencies
 
@@ -84,7 +106,9 @@
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue loading pnpm workspace's catalog dependencies ([1199e24f](https://github.com/storm-software/storm-ops/commit/1199e24f))
+- **workspace-tools:** Resolve issue loading pnpm workspace's catalog
+  dependencies
+  ([1199e24f](https://github.com/storm-software/storm-ops/commit/1199e24f))
 
 ### 🧱 Updated Dependencies
 
@@ -95,7 +119,8 @@
 
 ### Features
 
-- **eslint:** Update some default storm linting rules to match new standard ([b29cea21](https://github.com/storm-software/storm-ops/commit/b29cea21))
+- **eslint:** Update some default storm linting rules to match new standard
+  ([b29cea21](https://github.com/storm-software/storm-ops/commit/b29cea21))
 
 ### 🧱 Updated Dependencies
 
@@ -106,7 +131,9 @@
 
 ### Miscellaneous
 
-- **workspace-tools:** Added additional logging for pnpm dependency updates process ([400b3369](https://github.com/storm-software/storm-ops/commit/400b3369))
+- **workspace-tools:** Added additional logging for pnpm dependency updates
+  process
+  ([400b3369](https://github.com/storm-software/storm-ops/commit/400b3369))
 
 ### 🧱 Updated Dependencies
 
@@ -117,303 +144,341 @@
 
 ### Features
 
-- **cspell:** Initial check-in of the CSpell configuration package ([f5768507](https://github.com/storm-software/storm-ops/commit/f5768507))
+- **cspell:** Initial check-in of the CSpell configuration package
+  ([f5768507](https://github.com/storm-software/storm-ops/commit/f5768507))
 
 ### Continuous Integration
 
-- **linting-tools:** Update package to use `tsup` build process ([14eeb478](https://github.com/storm-software/storm-ops/commit/14eeb478))
+- **linting-tools:** Update package to use `tsup` build process
+  ([14eeb478](https://github.com/storm-software/storm-ops/commit/14eeb478))
 
 ### 🧱 Updated Dependencies
 
 - Updated cspell to 0.1.0
 - Updated cspell to 0.1.0
 
-
-
 ## 1.100.1 (2025-01-09)
 
 ### Bug Fixes
 
-- **workspace-tools:** Added additional troubleshooting logging to the package ([c2cbdcc5](https://github.com/storm-software/storm-ops/commit/c2cbdcc5))
+- **workspace-tools:** Added additional troubleshooting logging to the package
+  ([c2cbdcc5](https://github.com/storm-software/storm-ops/commit/c2cbdcc5))
 
 ## 1.100.0 (2025-01-08)
 
 ### Features
 
-- **git-tools:** Complete redesign of the package and tools contained within ([96de0911](https://github.com/storm-software/storm-ops/commit/96de0911))
+- **git-tools:** Complete redesign of the package and tools contained within
+  ([96de0911](https://github.com/storm-software/storm-ops/commit/96de0911))
 
 ### Bug Fixes
 
-- **git-tools:** Update dist output to be found in workflow action ([3f4dc983](https://github.com/storm-software/storm-ops/commit/3f4dc983))
-- **linting-tools:** Update `zizmor` configuration line number ([4dd6fbc1](https://github.com/storm-software/storm-ops/commit/4dd6fbc1))
-- **linting-tools:** Update the ignored line number in the `zizmor` configuration file ([79612865](https://github.com/storm-software/storm-ops/commit/79612865))
-- **linting-tools:** Update line number in zizmor ignore configuration ([2d888b6b](https://github.com/storm-software/storm-ops/commit/2d888b6b))
+- **git-tools:** Update dist output to be found in workflow action
+  ([3f4dc983](https://github.com/storm-software/storm-ops/commit/3f4dc983))
+- **linting-tools:** Update `zizmor` configuration line number
+  ([4dd6fbc1](https://github.com/storm-software/storm-ops/commit/4dd6fbc1))
+- **linting-tools:** Update the ignored line number in the `zizmor`
+  configuration file
+  ([79612865](https://github.com/storm-software/storm-ops/commit/79612865))
+- **linting-tools:** Update line number in zizmor ignore configuration
+  ([2d888b6b](https://github.com/storm-software/storm-ops/commit/2d888b6b))
 
 ### Continuous Integration
 
-- **monorepo:** Upedate to include changed workflow actions ([2efd3385](https://github.com/storm-software/storm-ops/commit/2efd3385))
-- **monorepo:** Ensure `build-all` script is invoked prior to `zizmor` in git hooks ([7de79c85](https://github.com/storm-software/storm-ops/commit/7de79c85))
+- **monorepo:** Upedate to include changed workflow actions
+  ([2efd3385](https://github.com/storm-software/storm-ops/commit/2efd3385))
+- **monorepo:** Ensure `build-all` script is invoked prior to `zizmor` in git
+  hooks
+  ([7de79c85](https://github.com/storm-software/storm-ops/commit/7de79c85))
 
 ## 1.99.2 (2025-01-02)
 
 ### Bug Fixes
 
-- **storm-ops:** Remove unused `deepmerge` references and fix build ([0f4ee3f7](https://github.com/storm-software/storm-ops/commit/0f4ee3f7))
+- **storm-ops:** Remove unused `deepmerge` references and fix build
+  ([0f4ee3f7](https://github.com/storm-software/storm-ops/commit/0f4ee3f7))
 
 ## 1.99.1 (2025-01-02)
 
 ### Bug Fixes
 
-- **git-tools:** Ensure the correct email is provided for Stormie-Bot ([5fb2c9b6](https://github.com/storm-software/storm-ops/commit/5fb2c9b6))
+- **git-tools:** Ensure the correct email is provided for Stormie-Bot
+  ([5fb2c9b6](https://github.com/storm-software/storm-ops/commit/5fb2c9b6))
 
 ## 1.99.0 (2025-01-02)
 
 ### Features
 
-- **storm-ops:** Updated catalog and JSON schema for `StormConfig` object ([bf99f680](https://github.com/storm-software/storm-ops/commit/bf99f680))
+- **storm-ops:** Updated catalog and JSON schema for `StormConfig` object
+  ([bf99f680](https://github.com/storm-software/storm-ops/commit/bf99f680))
 
 ## 1.98.0 (2025-01-02)
 
 ### Features
 
-- **workspace-tools:** Removed old dynamically imported modules ([56f84500](https://github.com/storm-software/storm-ops/commit/56f84500))
+- **workspace-tools:** Removed old dynamically imported modules
+  ([56f84500](https://github.com/storm-software/storm-ops/commit/56f84500))
 
 ## 1.97.1 (2025-01-02)
 
 ### Bug Fixes
 
-- **storm-ops:** Resolve issue preventing release publishing ([92c10eae](https://github.com/storm-software/storm-ops/commit/92c10eae))
+- **storm-ops:** Resolve issue preventing release publishing
+  ([92c10eae](https://github.com/storm-software/storm-ops/commit/92c10eae))
 
 ## 1.97.0 (2025-01-02)
 
 ### Features
 
-- **build-tools:** Stripped out unused/older code from package ([f67738d5](https://github.com/storm-software/storm-ops/commit/f67738d5))
-- **config-tools:** Use `tsup` to expand package format and export config ([d9e53d7d](https://github.com/storm-software/storm-ops/commit/d9e53d7d))
+- **build-tools:** Stripped out unused/older code from package
+  ([f67738d5](https://github.com/storm-software/storm-ops/commit/f67738d5))
+- **config-tools:** Use `tsup` to expand package format and export config
+  ([d9e53d7d](https://github.com/storm-software/storm-ops/commit/d9e53d7d))
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue with invalid taplo configuration file name ([1ffec7e6](https://github.com/storm-software/storm-ops/commit/1ffec7e6))
+- **workspace-tools:** Resolve issue with invalid taplo configuration file name
+  ([1ffec7e6](https://github.com/storm-software/storm-ops/commit/1ffec7e6))
 
 ## 1.96.0 (2024-12-30)
 
 ### Features
 
-- **linting-tools:** Added `zizmor` exception to configuration file ([8a37aafd](https://github.com/storm-software/storm-ops/commit/8a37aafd))
+- **linting-tools:** Added `zizmor` exception to configuration file
+  ([8a37aafd](https://github.com/storm-software/storm-ops/commit/8a37aafd))
 
 ### Continuous Integration
 
-- **storm-ops:** Security fixes for Github actions ([53014802](https://github.com/storm-software/storm-ops/commit/53014802))
+- **storm-ops:** Security fixes for Github actions
+  ([53014802](https://github.com/storm-software/storm-ops/commit/53014802))
 
 ## 1.95.0 (2024-12-30)
 
 ### Features
 
-- **storm-ops:** Completed enhancement around `catalog` and `workspace` dependency upgrades ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
+- **storm-ops:** Completed enhancement around `catalog` and `workspace`
+  dependency upgrades
+  ([5dd13247](https://github.com/storm-software/storm-ops/commit/5dd13247))
 
 ### Dependency Upgrades
 
-- **storm-ops:** Moved `c12` and `eslint` dependencies into workspace catalog ([049a350f](https://github.com/storm-software/storm-ops/commit/049a350f))
-- **storm-ops:** Added consistent `@types/node` versions across repository ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
+- **storm-ops:** Moved `c12` and `eslint` dependencies into workspace catalog
+  ([049a350f](https://github.com/storm-software/storm-ops/commit/049a350f))
+- **storm-ops:** Added consistent `@types/node` versions across repository
+  ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
 
 ## 1.94.0 (2024-12-18)
 
 ### Features
 
-- **linting-tools:** Added `zizmor` configuration file and pre-commit script ([03b9afbe](https://github.com/storm-software/storm-ops/commit/03b9afbe))
+- **linting-tools:** Added `zizmor` configuration file and pre-commit script
+  ([03b9afbe](https://github.com/storm-software/storm-ops/commit/03b9afbe))
 
 ### Dependency Upgrades
 
-- **storm-ops:** Upgrade Nx package to v20.2.2 ([d793912d](https://github.com/storm-software/storm-ops/commit/d793912d))
+- **storm-ops:** Upgrade Nx package to v20.2.2
+  ([d793912d](https://github.com/storm-software/storm-ops/commit/d793912d))
 
 ## 1.93.0 (2024-12-01)
 
 ### Features
 
-- **storm-ops:** Added `lint-sherif` script to the CI workflow ([906e0c2b](https://github.com/storm-software/storm-ops/commit/906e0c2b))
+- **storm-ops:** Added `lint-sherif` script to the CI workflow
+  ([906e0c2b](https://github.com/storm-software/storm-ops/commit/906e0c2b))
 
 ## 1.92.0 (2024-11-30)
 
 ### Features
 
-- **storm-ops:** Added `sherif` and `knip` linting to CI pipeline ([181d782a](https://github.com/storm-software/storm-ops/commit/181d782a))
-- **linting-tools:** Added `syncpack` config and CI reusable actions ([a95fd8e5](https://github.com/storm-software/storm-ops/commit/a95fd8e5))
+- **storm-ops:** Added `sherif` and `knip` linting to CI pipeline
+  ([181d782a](https://github.com/storm-software/storm-ops/commit/181d782a))
+- **linting-tools:** Added `syncpack` config and CI reusable actions
+  ([a95fd8e5](https://github.com/storm-software/storm-ops/commit/a95fd8e5))
 
 ## 1.91.0 (2024-11-18)
 
 ### Features
 
-- **build-tools:** Allow default package.json exports by no longer overriding them ([f19fc362](https://github.com/storm-software/storm-ops/commit/f19fc362))
+- **build-tools:** Allow default package.json exports by no longer overriding
+  them ([f19fc362](https://github.com/storm-software/storm-ops/commit/f19fc362))
 
 ## 1.90.1 (2024-11-10)
 
 ### Bug Fixes
 
-- **config-tools:** Ensure trace logging is not marked as system logging ([e8dca171](https://github.com/storm-software/storm-ops/commit/e8dca171))
+- **config-tools:** Ensure trace logging is not marked as system logging
+  ([e8dca171](https://github.com/storm-software/storm-ops/commit/e8dca171))
 
 ## 1.90.0 (2024-11-08)
 
 ### Features
 
-- **build-tools:** Added back cjs build and local package.json dependencies ([d86d3c2a](https://github.com/storm-software/storm-ops/commit/d86d3c2a))
+- **build-tools:** Added back cjs build and local package.json dependencies
+  ([d86d3c2a](https://github.com/storm-software/storm-ops/commit/d86d3c2a))
 
 ## 1.89.0 (2024-11-07)
 
 ### Features
 
-- **config:** Add the `danger` color token ([06dba937](https://github.com/storm-software/storm-ops/commit/06dba937))
+- **config:** Add the `danger` color token
+  ([06dba937](https://github.com/storm-software/storm-ops/commit/06dba937))
 
 ## 1.88.0 (2024-11-01)
 
 ### Features
 
-- **eslint:** Resolve type issues with Nx plugin in preset ([d27162e2](https://github.com/storm-software/storm-ops/commit/d27162e2))
+- **eslint:** Resolve type issues with Nx plugin in preset
+  ([d27162e2](https://github.com/storm-software/storm-ops/commit/d27162e2))
 
 ## 1.87.6 (2024-10-31)
 
 ### Bug Fixes
 
-- **storm-ops:** Resolve issue with invalid Nx ouput configuration ([9ca60bc0](https://github.com/storm-software/storm-ops/commit/9ca60bc0))
+- **storm-ops:** Resolve issue with invalid Nx ouput configuration
+  ([9ca60bc0](https://github.com/storm-software/storm-ops/commit/9ca60bc0))
 
 ## 1.87.5 (2024-10-22)
 
-
 ### Bug Fixes
 
-- **build-tools:** Ensure full changes to build tools are applied ([5d414904](https://github.com/storm-software/storm-ops/commit/5d414904))
+- **build-tools:** Ensure full changes to build tools are applied
+  ([5d414904](https://github.com/storm-software/storm-ops/commit/5d414904))
 
 ## 1.87.4 (2024-10-22)
 
-
 ### Bug Fixes
 
-- **eslint:** Apply TypeScript ESLint parser option configuration ([0e4728a2](https://github.com/storm-software/storm-ops/commit/0e4728a2))
+- **eslint:** Apply TypeScript ESLint parser option configuration
+  ([0e4728a2](https://github.com/storm-software/storm-ops/commit/0e4728a2))
 
 ## 1.87.3 (2024-10-22)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolve issue with invalid `parserOptions` for React configuration ([5f93eab9](https://github.com/storm-software/storm-ops/commit/5f93eab9))
+- **eslint:** Resolve issue with invalid `parserOptions` for React configuration
+  ([5f93eab9](https://github.com/storm-software/storm-ops/commit/5f93eab9))
 
 ## 1.87.2 (2024-10-22)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolved issues with `parserOptions` configurations ([f35b4739](https://github.com/storm-software/storm-ops/commit/f35b4739))
+- **eslint:** Resolved issues with `parserOptions` configurations
+  ([f35b4739](https://github.com/storm-software/storm-ops/commit/f35b4739))
 
 ## 1.87.1 (2024-10-22)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolved issue with react-hooks plugin ([2dbc2670](https://github.com/storm-software/storm-ops/commit/2dbc2670))
+- **eslint:** Resolved issue with react-hooks plugin
+  ([2dbc2670](https://github.com/storm-software/storm-ops/commit/2dbc2670))
 
 ## 1.87.0 (2024-10-21)
 
-
 ### Features
 
-- **config-tools:** Add a max depth to the object logger ([900ad959](https://github.com/storm-software/storm-ops/commit/900ad959))
+- **config-tools:** Add a max depth to the object logger
+  ([900ad959](https://github.com/storm-software/storm-ops/commit/900ad959))
 
 ## 1.86.1 (2024-10-20)
 
-
 ### Bug Fixes
 
-- **eslint:** Enhanced the `files` configuration array comparison ([091afe1e](https://github.com/storm-software/storm-ops/commit/091afe1e))
+- **eslint:** Enhanced the `files` configuration array comparison
+  ([091afe1e](https://github.com/storm-software/storm-ops/commit/091afe1e))
 
 ## 1.86.0 (2024-10-20)
 
-
 ### Features
 
-- **eslint:** Added ESLint Plugin configuration object logging ([2d943cd8](https://github.com/storm-software/storm-ops/commit/2d943cd8))
+- **eslint:** Added ESLint Plugin configuration object logging
+  ([2d943cd8](https://github.com/storm-software/storm-ops/commit/2d943cd8))
 
 ## 1.85.3 (2024-10-20)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolved issue applying TypeScript ESLint preset configurations ([fc0f139e](https://github.com/storm-software/storm-ops/commit/fc0f139e))
+- **eslint:** Resolved issue applying TypeScript ESLint preset configurations
+  ([fc0f139e](https://github.com/storm-software/storm-ops/commit/fc0f139e))
 
 ## 1.85.2 (2024-09-19)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolve issue applying plugin to configuration aggregate ([b86cd266](https://github.com/storm-software/storm-ops/commit/b86cd266))
+- **eslint:** Resolve issue applying plugin to configuration aggregate
+  ([b86cd266](https://github.com/storm-software/storm-ops/commit/b86cd266))
 
 ## 1.85.1 (2024-09-19)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolved issue with scenario where invalid TypeScript configuration is provided ([4db77c97](https://github.com/storm-software/storm-ops/commit/4db77c97))
+- **eslint:** Resolved issue with scenario where invalid TypeScript
+  configuration is provided
+  ([4db77c97](https://github.com/storm-software/storm-ops/commit/4db77c97))
 
 ## 1.85.0 (2024-09-19)
 
-
 ### Features
 
-- **eslint:** Added the `useTypeScriptESLint` and `useUnicorn` optional parameters ([60eb6e2e](https://github.com/storm-software/storm-ops/commit/60eb6e2e))
+- **eslint:** Added the `useTypeScriptESLint` and `useUnicorn` optional
+  parameters
+  ([60eb6e2e](https://github.com/storm-software/storm-ops/commit/60eb6e2e))
 
 ## 1.84.0 (2024-09-19)
 
-
 ### Features
 
-- **terraform-modules:** Added EKS terraform module ([01cc04ff](https://github.com/storm-software/storm-ops/commit/01cc04ff))
+- **terraform-modules:** Added EKS terraform module
+  ([01cc04ff](https://github.com/storm-software/storm-ops/commit/01cc04ff))
 
 ## 1.83.7 (2024-09-19)
 
-
 ### Bug Fixes
 
-- **eslint:** Remove typescript-eslint configuration ([03acaaf9](https://github.com/storm-software/storm-ops/commit/03acaaf9))
+- **eslint:** Remove typescript-eslint configuration
+  ([03acaaf9](https://github.com/storm-software/storm-ops/commit/03acaaf9))
 
 ## 1.83.6 (2024-09-19)
 
-
 ### Bug Fixes
 
-- **eslint:** Remove eslint configuration duplicates ([124cead3](https://github.com/storm-software/storm-ops/commit/124cead3))
+- **eslint:** Remove eslint configuration duplicates
+  ([124cead3](https://github.com/storm-software/storm-ops/commit/124cead3))
 
 ## 1.83.5 (2024-09-19)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolve issue with files in typescript rules ([02f728a3](https://github.com/storm-software/storm-ops/commit/02f728a3))
+- **eslint:** Resolve issue with files in typescript rules
+  ([02f728a3](https://github.com/storm-software/storm-ops/commit/02f728a3))
 
 ## 1.83.4 (2024-09-19)
 
-
 ### Bug Fixes
 
-- **eslint:** Remove the jsa11y extension ([60a44018](https://github.com/storm-software/storm-ops/commit/60a44018))
+- **eslint:** Remove the jsa11y extension
+  ([60a44018](https://github.com/storm-software/storm-ops/commit/60a44018))
 
 ## 1.83.3 (2024-09-17)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolve invalid import path issue ([f9c60c86](https://github.com/storm-software/storm-ops/commit/f9c60c86))
+- **eslint:** Resolve invalid import path issue
+  ([f9c60c86](https://github.com/storm-software/storm-ops/commit/f9c60c86))
 
 ## 1.83.2 (2024-09-16)
 
-
 ### Bug Fixes
 
-- **eslint:** Resolve issue with invalid react file configurations ([524b22be](https://github.com/storm-software/storm-ops/commit/524b22be))
+- **eslint:** Resolve issue with invalid react file configurations
+  ([524b22be](https://github.com/storm-software/storm-ops/commit/524b22be))
 
 ## 1.83.1 (2024-09-16)
 
-
 ### Bug Fixes
 
-- **linting-tools:** Updated the paths provided to the circular dependency linter ([5c10a255](https://github.com/storm-software/storm-ops/commit/5c10a255))
+- **linting-tools:** Updated the paths provided to the circular dependency
+  linter
+  ([5c10a255](https://github.com/storm-software/storm-ops/commit/5c10a255))
 
 ## 1.83.0 (2024-09-15)
 
