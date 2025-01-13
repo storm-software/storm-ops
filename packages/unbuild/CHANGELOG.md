@@ -1,3 +1,15 @@
+## 0.17.1 (2025-01-13)
+
+### Bug Fixes
+
+- **unbuild:** Resolved issue with distribution package ([265f38a2](https://github.com/storm-software/storm-ops/commit/265f38a2))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.132.2
+- Updated build-tools to 0.124.2
+- Updated config to 1.93.2
+
 ## 0.17.0 (2025-01-12)
 
 ### Features
