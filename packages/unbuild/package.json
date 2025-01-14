@@ -1,7 +1,6 @@
 {
   "name": "@storm-software/unbuild",
   "version": "0.17.3",
-  "type": "module",
   "description": "A package containing `unbuild` utilities for building Storm Software libraries and applications",
   "repository": {
     "type": "github",
@@ -47,21 +46,21 @@
   },
   "bin": {
     "storm-unbuild": "./bin/unbuild.js",
-    "storm-unbuild-cjs": "./bin/unbuild.cjs",
-    "storm-unbuild-esm": "./bin/unbuild.js"
+    "storm-unbuild-cjs": "./bin/unbuild.js",
+    "storm-unbuild-esm": "./bin/unbuild.mjs"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "exports": {
     "./package.json": "./package.json",
     "./types": {
       "import": {
-        "types": "./dist/types.d.ts",
-        "default": "./dist/types.js"
+        "types": "./dist/types.d.mts",
+        "default": "./dist/types.mjs"
       },
       "require": {
-        "types": "./dist/types.d.cts",
-        "default": "./dist/types.cjs"
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
       },
       "default": {
         "types": "./dist/types.d.ts",
@@ -70,12 +69,12 @@
     },
     "./index": {
       "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
       },
       "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       },
       "default": {
         "types": "./dist/index.d.ts",
@@ -84,12 +83,12 @@
     },
     ".": {
       "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
       },
       "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       },
       "default": {
         "types": "./dist/index.d.ts",
@@ -98,12 +97,12 @@
     },
     "./config": {
       "import": {
-        "types": "./dist/config.d.ts",
-        "default": "./dist/config.js"
+        "types": "./dist/config.d.mts",
+        "default": "./dist/config.mjs"
       },
       "require": {
-        "types": "./dist/config.d.cts",
-        "default": "./dist/config.cjs"
+        "types": "./dist/config.d.ts",
+        "default": "./dist/config.js"
       },
       "default": {
         "types": "./dist/config.d.ts",
@@ -112,12 +111,12 @@
     },
     "./clean": {
       "import": {
-        "types": "./dist/clean.d.ts",
-        "default": "./dist/clean.js"
+        "types": "./dist/clean.d.mts",
+        "default": "./dist/clean.mjs"
       },
       "require": {
-        "types": "./dist/clean.d.cts",
-        "default": "./dist/clean.cjs"
+        "types": "./dist/clean.d.ts",
+        "default": "./dist/clean.js"
       },
       "default": {
         "types": "./dist/clean.d.ts",
@@ -126,12 +125,12 @@
     },
     "./build": {
       "import": {
-        "types": "./dist/build/index.d.ts",
-        "default": "./dist/build/index.js"
+        "types": "./dist/build/index.d.mts",
+        "default": "./dist/build/index.mjs"
       },
       "require": {
-        "types": "./dist/build/index.d.cts",
-        "default": "./dist/build/index.cjs"
+        "types": "./dist/build/index.d.ts",
+        "default": "./dist/build/index.js"
       },
       "default": {
         "types": "./dist/build/index.d.ts",
@@ -140,12 +139,12 @@
     },
     "./plugins/*": {
       "import": {
-        "types": "./dist/plugins/*.d.ts",
-        "default": "./dist/plugins/*.js"
+        "types": "./dist/plugins/*.d.mts",
+        "default": "./dist/plugins/*.mjs"
       },
       "require": {
-        "types": "./dist/plugins/*.d.cts",
-        "default": "./dist/plugins/*.cjs"
+        "types": "./dist/plugins/*.d.ts",
+        "default": "./dist/plugins/*.js"
       },
       "default": {
         "types": "./dist/plugins/*.d.ts",
@@ -209,6 +208,12 @@
   },
   "dependencies": {
     "@humanfs/node": "^0.16.6",
+    "@rollup/plugin-alias": "^5.1.1",
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-replace": "^6.0.2",
+    "@rollup/pluginutils": "^5.1.4",
     "commander": "catalog:",
     "defu": "catalog:",
     "rollup": "catalog:",
