@@ -1,3 +1,9 @@
+## 0.19.0 (2025-01-14)
+
+### Features
+
+- **unbuild:** Updated the package type from `module` ([e082f836](https://github.com/storm-software/storm-ops/commit/e082f836))
+
 ## 0.18.0 (2025-01-13)
 
 ### Features
