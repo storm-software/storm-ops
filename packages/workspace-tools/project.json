@@ -67,6 +67,7 @@
           "esbuild",
           "tsdown",
           "@swc/*",
+          "vue-tsc",
           "vue/compiler-sfc",
           "read-yaml-file",
           "spdx-exceptions",

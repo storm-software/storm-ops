@@ -1,3 +1,16 @@
+## 0.17.1 (2025-01-16)
+
+### Bug Fixes
+
+- **unbuild:** Update build distributable formatting
+  ([2c6a3dce](https://github.com/storm-software/storm-ops/commit/2c6a3dce))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.133.1
+- Updated build-tools to 0.125.1
+- Updated config to 1.94.1
+
 ## 0.17.0 (2025-01-13)
 
 ### Features
