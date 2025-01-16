@@ -1,3 +1,19 @@
+## 0.19.2 (2025-01-16)
+
+### Bug Fixes
+
+- **workspace-tools:** Update externals for packaging ([3105db1f](https://github.com/storm-software/storm-ops/commit/3105db1f))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([e4668406](https://github.com/storm-software/storm-ops/commit/e4668406))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.133.2
+- Updated build-tools to 0.125.2
+- Updated config to 1.94.2
+
 ## 0.19.1 (2025-01-16)
 
 ### Bug Fixes

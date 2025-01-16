@@ -1,3 +1,13 @@
+## 1.227.2 (2025-01-16)
+
+### Bug Fixes
+
+- **workspace-tools:** Update externals for packaging ([3105db1f](https://github.com/storm-software/storm-ops/commit/3105db1f))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([e4668406](https://github.com/storm-software/storm-ops/commit/e4668406))
+
 ## 1.227.1 (2025-01-16)
 
 ### Bug Fixes
