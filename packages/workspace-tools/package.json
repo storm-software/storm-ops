@@ -33,6 +33,7 @@
     "./plugins/rust": "./src/plugins/rust/index.js",
     "./plugins/typescript": "./src/plugins/typescript/index.js",
     "./plugins/typescript/tsup": "./src/plugins/typescript/tsup.js",
+    "./plugins/typescript/tsdown": "./src/plugins/typescript/tsdown.js",
     "./preset": "./src/generators/preset/preset.js",
     "./base": "./src/base/index.js",
     "./base/*": "./src/base/*.js",
