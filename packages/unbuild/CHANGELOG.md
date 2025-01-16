@@ -1,12 +1,31 @@
+## 0.19.3 (2025-01-16)
+
+### Bug Fixes
+
+- **workspace-tools:** Added additional externals to the package list ([5d4a063f](https://github.com/storm-software/storm-ops/commit/5d4a063f))
+- **workspace-tools:** Update external packages list ([9103b704](https://github.com/storm-software/storm-ops/commit/9103b704))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate the README markdown files ([e911945a](https://github.com/storm-software/storm-ops/commit/e911945a))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.133.3
+- Updated build-tools to 0.125.3
+- Updated config to 1.94.3
+
 ## 0.19.2 (2025-01-16)
 
 ### Bug Fixes
 
-- **workspace-tools:** Update externals for packaging ([3105db1f](https://github.com/storm-software/storm-ops/commit/3105db1f))
+- **workspace-tools:** Update externals for packaging
+  ([3105db1f](https://github.com/storm-software/storm-ops/commit/3105db1f))
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([e4668406](https://github.com/storm-software/storm-ops/commit/e4668406))
+- **monorepo:** Regenerate README markdown files
+  ([e4668406](https://github.com/storm-software/storm-ops/commit/e4668406))
 
 ### 🧱 Updated Dependencies
 
