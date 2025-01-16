@@ -65,7 +65,6 @@
           "nx",
           "@nx/*",
           "esbuild",
-          "unbuild",
           "tsdown",
           "@swc/*",
           "vue/compiler-sfc",
