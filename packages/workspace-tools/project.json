@@ -66,6 +66,8 @@
           "nx",
           "@nx/*",
           "@swc/*",
+          "esbuild",
+          "@oxc-parser/*",
           "vue-tsc",
           "vue/compiler-sfc",
           "read-yaml-file",
