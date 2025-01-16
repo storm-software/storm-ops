@@ -1,3 +1,9 @@
+## 0.45.1 (2025-01-16)
+
+### Bug Fixes
+
+- **unbuild:** Update build distributable formatting ([2c6a3dce](https://github.com/storm-software/storm-ops/commit/2c6a3dce))
+
 ## 0.45.0 (2025-01-13)
 
 ### Features
