@@ -43,7 +43,6 @@ import defu from "defu";
 import { LogLevel } from "esbuild";
 import { relative } from "node:path";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
-
 import { BuildConfig, BuildContext, build as unbuild } from "unbuild";
 import { clean } from "./clean";
 import { getDefaultBuildPlugins } from "./config";
@@ -53,10 +52,8 @@ import { loadConfig } from "./utilities/helpers";
 /**
  * Get the build options for the unbuild process
  *
- * @param config - the storm configuration
  * @param options - the unbuild options
- * @param packageJson - the package.json
- * @param projectGraph - the project graph
+ * @returns the resolved options
  */
 async function resolveOptions(
   options: UnbuildOptions

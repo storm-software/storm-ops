@@ -29,6 +29,7 @@ export async function unbuildExecutorFn(
 
   await build({
     ...options,
+    config,
     projectRoot:
       context.projectsConfigurations.projects?.[context.projectName]!.root,
     projectName: context.projectName,

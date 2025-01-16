@@ -13,9 +13,9 @@ export default defineConfig([
     clean: true,
     dts: true,
     sourcemap: false,
-    tsconfig: "./tsconfig.json",
-    external: ["nx", "@nx/*", "vue/compiler-sfc", "vue-tsc"],
-    noExternal: ["unbuild"]
+    tsconfig: "./tsconfig.json"
+    // external: ["nx", "@nx/*", "vue/compiler-sfc", "vue-tsc"],
+    // noExternal: ["unbuild"]
   },
   {
     name: "unbuild-bin",
@@ -29,8 +29,8 @@ export default defineConfig([
     clean: true,
     dts: false,
     sourcemap: false,
-    tsconfig: "./tsconfig.json",
-    external: ["nx", "@nx/*", "vue/compiler-sfc", "vue-tsc"],
-    noExternal: ["unbuild"]
+    tsconfig: "./tsconfig.json"
+    // external: ["nx", "@nx/*", "vue/compiler-sfc", "vue-tsc"],
+    // noExternal: ["unbuild"]
   }
 ]);
