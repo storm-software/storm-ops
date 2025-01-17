@@ -8,14 +8,14 @@ export default defineConfig([
     outDir: "dist/src",
     format: ["cjs", "esm"],
     platform: "node",
-    bundle: true,
     splitting: true,
     clean: true,
     dts: true,
     sourcemap: false,
-    tsconfig: "./tsconfig.json",
-    external: ["nx", "@nx/*", "vue/compiler-sfc", "vue-tsc"],
-    noExternal: ["unbuild"]
+    shims: true,
+    tsconfig: "./tsconfig.json"
+    // external: ["nx", "@nx/*", "vue/compiler-sfc", "vue-tsc"],
+    // noExternal: ["unbuild"]
   },
   {
     name: "unbuild-bin",
@@ -24,13 +24,13 @@ export default defineConfig([
     outDir: "dist/bin",
     format: ["cjs", "esm"],
     platform: "node",
-    bundle: true,
     splitting: false,
     clean: true,
     dts: false,
     sourcemap: false,
-    tsconfig: "./tsconfig.json",
-    external: ["nx", "@nx/*", "vue/compiler-sfc", "vue-tsc"],
-    noExternal: ["unbuild"]
+    shims: true,
+    tsconfig: "./tsconfig.json"
+    // external: ["nx", "@nx/*", "vue/compiler-sfc", "vue-tsc"],
+    // noExternal: ["unbuild"]
   }
 ]);
