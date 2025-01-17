@@ -17,9 +17,11 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "main": "./index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "exports": {
-    ".": "./index.js",
+    ".": "./dist/index.js",
+    "./index": "./dist/index.js",
     "./package.json": "./package.json",
     "./config/nx-default.json": "./config/nx-default.json",
     "./config/nx-cloud.json": "./config/nx-cloud.json",
@@ -28,8 +30,10 @@
     "./migrations.json": "./migrations.json",
     "./generators.json": "./generators.json",
     "./generators/*/schema.json": "./dist/generators/*/schema.json",
+    "./generators/*/generator.js": "./dist/generators/*/generator.js",
     "./executors.json": "./executors.json",
     "./executors/*/schema.json": "./dist/executors/*/schema.json",
+    "./executors/*/executor.json": "./dist/executors/*/executor.js",
     "./plugins/rust": "./dist/plugins/rust/index.js",
     "./plugins/typescript": "./dist/plugins/typescript/index.js",
     "./plugins/typescript/tsup": "./dist/plugins/typescript/tsup.js",
@@ -40,7 +44,7 @@
     "./utils": "./dist/utils/index.js",
     "./utils/*": "./dist/utils/*.js"
   },
-  "typings": "./declarations.d.ts",
+  "typings": "./dist/index.d.ts",
   "keywords": [
     "monorepo",
     "open-system",
