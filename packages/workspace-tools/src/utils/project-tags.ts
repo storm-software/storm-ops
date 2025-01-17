@@ -6,7 +6,7 @@ import {
   ProjectTagRegistryValue,
   ProjectTagTypeValue,
   ProjectTagVariant
-} from "../../declarations.d";
+} from "../types";
 
 export const ProjectTagConstants = {
   Language: {

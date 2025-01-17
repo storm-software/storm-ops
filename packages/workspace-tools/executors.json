@@ -1,68 +1,68 @@
 {
   "executors": {
     "typia": {
-      "implementation": "./src/executors/typia/executor",
-      "schema": "./src/executors/typia/schema.json",
+      "implementation": "./dist/executors/typia/executor",
+      "schema": "./dist/executors/typia/schema.json",
       "description": "Run the `typia` generator to create runtime type validators"
     },
     "tsdown": {
-      "implementation": "./src/executors/tsdown/executor",
-      "schema": "./src/executors/tsdown/schema.json",
+      "implementation": "./dist/executors/tsdown/executor",
+      "schema": "./dist/executors/tsdown/schema.json",
       "description": "Run the `tsdown` build process on a selected project"
     },
     "esbuild": {
-      "implementation": "./src/executors/esbuild/executor",
-      "schema": "./src/executors/esbuild/schema.json",
+      "implementation": "./dist/executors/esbuild/executor",
+      "schema": "./dist/executors/esbuild/schema.json",
       "description": "Run the `esbuild` build process on a selected project"
     },
     "unbuild": {
-      "implementation": "./src/executors/unbuild/executor",
-      "schema": "./src/executors/unbuild/schema.json",
+      "implementation": "./dist/executors/unbuild/executor",
+      "schema": "./dist/executors/unbuild/schema.json",
       "description": "Run the `unbuild` build process on a selected project"
     },
     "clean-package": {
-      "implementation": "./src/executors/clean-package/executor",
-      "schema": "./src/executors/clean-package/schema.json",
+      "implementation": "./dist/executors/clean-package/executor",
+      "schema": "./dist/executors/clean-package/schema.json",
       "description": "Remove configuration files, fields, and scripts for development before publishing package"
     },
     "size-limit": {
-      "implementation": "./src/executors/size-limit/executor",
-      "schema": "./src/executors/size-limit/schema.json",
+      "implementation": "./dist/executors/size-limit/executor",
+      "schema": "./dist/executors/size-limit/schema.json",
       "description": "Run a size-limit performance test on the project"
     },
     "npm-publish": {
-      "implementation": "./src/executors/npm-publish/executor",
-      "schema": "./src/executors/npm-publish/schema.json",
+      "implementation": "./dist/executors/npm-publish/executor",
+      "schema": "./dist/executors/npm-publish/schema.json",
       "description": "Publish a package to the NPM registry"
     },
     "cargo-publish": {
-      "implementation": "./src/executors/cargo-publish/executor",
-      "schema": "./src/executors/cargo-publish/schema.json",
+      "implementation": "./dist/executors/cargo-publish/executor",
+      "schema": "./dist/executors/cargo-publish/schema.json",
       "description": "Publish a Rust crate to the crates.io registry"
     },
     "cargo-build": {
-      "implementation": "./src/executors/cargo-build/executor",
-      "schema": "./src/executors/cargo-build/schema.json",
+      "implementation": "./dist/executors/cargo-build/executor",
+      "schema": "./dist/executors/cargo-build/schema.json",
       "description": "Build a Rust project with Cargo Build"
     },
     "cargo-check": {
-      "implementation": "./src/executors/cargo-check/executor",
-      "schema": "./src/executors/cargo-check/schema.json",
+      "implementation": "./dist/executors/cargo-check/executor",
+      "schema": "./dist/executors/cargo-check/schema.json",
       "description": "Check a Rust project with Cargo Check"
     },
     "cargo-format": {
-      "implementation": "./src/executors/cargo-format/executor",
-      "schema": "./src/executors/cargo-format/schema.json",
+      "implementation": "./dist/executors/cargo-format/executor",
+      "schema": "./dist/executors/cargo-format/schema.json",
       "description": "Format a Rust project with Cargo Fmt"
     },
     "cargo-clippy": {
-      "implementation": "./src/executors/cargo-clippy/executor",
-      "schema": "./src/executors/cargo-clippy/schema.json",
+      "implementation": "./dist/executors/cargo-clippy/executor",
+      "schema": "./dist/executors/cargo-clippy/schema.json",
       "description": "Lint a Rust project with Cargo Clippy"
     },
     "cargo-doc": {
-      "implementation": "./src/executors/cargo-doc/executor",
-      "schema": "./src/executors/cargo-doc/schema.json",
+      "implementation": "./dist/executors/cargo-doc/executor",
+      "schema": "./dist/executors/cargo-doc/schema.json",
       "description": "Create docs for a Rust project with Cargo Doc"
     }
   }

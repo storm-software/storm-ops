@@ -10,7 +10,7 @@ import {
 import * as path from "node:path";
 import { withRunGenerator } from "../../base/base-generator";
 import { nodeVersion, pnpmVersion } from "../../utils/versions";
-import type { PresetGeneratorSchema } from "./schema";
+import type { PresetGeneratorSchema } from "./schema.d";
 
 export async function presetGeneratorFn(
   tree: Tree,

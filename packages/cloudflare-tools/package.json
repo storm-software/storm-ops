@@ -69,7 +69,7 @@
   "dependencies": {
     "@aws-sdk/client-s3": "3.47.0",
     "c12": "catalog:",
-    "glob": "10.4.2",
+    "glob": "catalog:",
     "jest-resolve": "29.7.0"
   },
   "devDependencies": {

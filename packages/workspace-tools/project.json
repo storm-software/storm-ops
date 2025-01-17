@@ -3,128 +3,166 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/workspace-tools/src",
   "projectType": "library",
-  "implicitDependencies": ["build-tools"],
+  "implicitDependencies": ["build-tools", "untyped"],
   "targets": {
-    "build": {
-      "executor": "@nx/esbuild:esbuild",
-      "inputs": ["typescript", "^production"],
-      "dependsOn": ["clean", "format", "^build"],
-      "outputs": ["{options.outputPath}"],
+    // "build": {
+    //   "executor": "@nx/esbuild:esbuild",
+    //   "inputs": ["typescript", "^production"],
+    //   "dependsOn": ["clean", "format", "^build"],
+    //   "outputs": ["{options.outputPath}"],
+    //   "options": {
+    //     "outputPath": "dist/packages/workspace-tools",
+    //     "tsConfig": "packages/workspace-tools/tsconfig.lib.json",
+    //     "project": "packages/workspace-tools/package.json",
+    //     "main": "packages/workspace-tools/index.ts",
+    //     "additionalEntryPoints": [
+    //       "packages/workspace-tools/src/executors/unbuild/executor.ts",
+    //       "packages/workspace-tools/src/executors/esbuild/executor.ts",
+    //       "packages/workspace-tools/src/executors/typia/executor.ts",
+    //       "packages/workspace-tools/src/executors/clean-package/executor.ts",
+    //       "packages/workspace-tools/src/executors/size-limit/executor",
+    //       "packages/workspace-tools/src/executors/npm-publish/executor.ts",
+    //       "packages/workspace-tools/src/executors/cargo-publish/executor.ts",
+    //       "packages/workspace-tools/src/executors/cargo-build/executor.ts",
+    //       "packages/workspace-tools/src/executors/cargo-check/executor.ts",
+    //       "packages/workspace-tools/src/executors/cargo-clippy/executor.ts",
+    //       "packages/workspace-tools/src/executors/cargo-doc/executor.ts",
+    //       "packages/workspace-tools/src/executors/cargo-format/executor.ts",
+    //       "packages/workspace-tools/src/generators/init/init.ts",
+    //       "packages/workspace-tools/src/generators/node-library/generator.ts",
+    //       "packages/workspace-tools/src/generators/neutral-library/generator.ts",
+    //       "packages/workspace-tools/src/generators/browser-library/generator.ts",
+    //       "packages/workspace-tools/src/generators/release-version/generator.ts",
+    //       "packages/workspace-tools/src/generators/preset/generator.ts",
+    //       "packages/workspace-tools/src/generators/config-schema/generator.ts",
+    //       "packages/workspace-tools/src/plugins/rust/index.ts",
+    //       "packages/workspace-tools/src/plugins/typescript/index.ts",
+    //       "packages/workspace-tools/src/plugins/typescript/tsup.ts",
+    //       "packages/workspace-tools/src/plugins/typescript/tsdown.ts",
+    //       "packages/workspace-tools/src/utils/index.ts",
+    //       "packages/workspace-tools/src/utils/project-tags.ts",
+    //       "packages/workspace-tools/src/utils/toml.ts",
+    //       "packages/workspace-tools/src/utils/lock-file.ts",
+    //       "packages/workspace-tools/src/utils/create-cli-options.ts",
+    //       "packages/workspace-tools/src/base/index.ts",
+    //       "packages/workspace-tools/src/base/base-executor.ts",
+    //       "packages/workspace-tools/src/base/base-generator.ts",
+    //       "packages/workspace-tools/src/base/typescript-library-generator.ts"
+    //     ],
+    //     "platform": "node",
+    //     "deleteOutputPath": true,
+    //     "bundle": true,
+    //     "thirdParty": true,
+    //     "skipTypeCheck": false,
+    //     "metafile": true,
+    //     "minify": false,
+    //     "format": ["cjs"],
+    //     "esbuildOptions": {
+    //       "outExtension": {
+    //         ".js": ".js"
+    //       }
+    //     },
+    //     "external": [
+    //       "nx",
+    //       "@nx/*",
+    //       "@swc/*",
+    //       "esbuild",
+    //       "@oxc-parser/*",
+    //       "vue-tsc",
+    //       "vue/compiler-sfc",
+    //       "read-yaml-file",
+    //       "spdx-exceptions",
+    //       "spdx-license-ids",
+    //       "typescript",
+    //       "defu",
+    //       "@samchon/openapi"
+    //     ],
+    //     "assets": [
+    //       {
+    //         "input": "packages/workspace-tools",
+    //         "glob": "**/files/**",
+    //         "output": "/"
+    //       },
+    //       {
+    //         "input": "packages/workspace-tools",
+    //         "glob": "**/files/**/.gitkeep",
+    //         "output": "/"
+    //       },
+    //       {
+    //         "input": "packages/workspace-tools",
+    //         "glob": "**/*.json",
+    //         "ignore": ["**/tsconfig*.json", "project.json", ".eslintrc.json"],
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "packages/workspace-tools",
+    //         "glob": "**/*.js",
+    //         "ignore": ["**/jest.config.js"],
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "packages/workspace-tools",
+    //         "glob": "**/*.d.ts",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "packages/workspace-tools",
+    //         "glob": "*.md",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "",
+    //         "glob": "LICENSE",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "packages/workspace-tools/config",
+    //         "glob": "**/*.*",
+    //         "output": "./config"
+    //       },
+    //       {
+    //         "input": "packages/workspace-tools/assets",
+    //         "glob": "**/*.*",
+    //         "output": "./assets"
+    //       }
+    //     ]
+    //   }
+    // },
+
+    "build-untyped": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
       "options": {
-        "outputPath": "dist/packages/workspace-tools",
-        "tsConfig": "packages/workspace-tools/tsconfig.lib.json",
-        "project": "packages/workspace-tools/package.json",
-        "main": "packages/workspace-tools/index.ts",
-        "additionalEntryPoints": [
-          "packages/workspace-tools/src/executors/unbuild/executor.ts",
-          "packages/workspace-tools/src/executors/esbuild/executor.ts",
-          "packages/workspace-tools/src/executors/typia/executor.ts",
-          "packages/workspace-tools/src/executors/clean-package/executor.ts",
-          "packages/workspace-tools/src/executors/size-limit/executor",
-          "packages/workspace-tools/src/executors/npm-publish/executor.ts",
-          "packages/workspace-tools/src/executors/cargo-publish/executor.ts",
-          "packages/workspace-tools/src/executors/cargo-build/executor.ts",
-          "packages/workspace-tools/src/executors/cargo-check/executor.ts",
-          "packages/workspace-tools/src/executors/cargo-clippy/executor.ts",
-          "packages/workspace-tools/src/executors/cargo-doc/executor.ts",
-          "packages/workspace-tools/src/executors/cargo-format/executor.ts",
-          "packages/workspace-tools/src/generators/init/init.ts",
-          "packages/workspace-tools/src/generators/node-library/generator.ts",
-          "packages/workspace-tools/src/generators/neutral-library/generator.ts",
-          "packages/workspace-tools/src/generators/browser-library/generator.ts",
-          "packages/workspace-tools/src/generators/release-version/generator.ts",
-          "packages/workspace-tools/src/generators/preset/generator.ts",
-          "packages/workspace-tools/src/generators/config-schema/generator.ts",
-          "packages/workspace-tools/src/plugins/rust/index.ts",
-          "packages/workspace-tools/src/plugins/typescript/index.ts",
-          "packages/workspace-tools/src/plugins/typescript/tsup.ts",
-          "packages/workspace-tools/src/plugins/typescript/tsdown.ts",
-          "packages/workspace-tools/src/utils/index.ts",
-          "packages/workspace-tools/src/utils/project-tags.ts",
-          "packages/workspace-tools/src/utils/toml.ts",
-          "packages/workspace-tools/src/utils/lock-file.ts",
-          "packages/workspace-tools/src/utils/create-cli-options.ts",
-          "packages/workspace-tools/src/base/index.ts",
-          "packages/workspace-tools/src/base/base-executor.ts",
-          "packages/workspace-tools/src/base/base-generator.ts",
-          "packages/workspace-tools/src/base/typescript-library-generator.ts"
-        ],
-        "platform": "node",
-        "deleteOutputPath": true,
-        "bundle": true,
-        "thirdParty": true,
-        "skipTypeCheck": false,
-        "metafile": true,
-        "minify": false,
-        "format": ["cjs"],
-        "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
-          }
-        },
-        "external": [
-          "nx",
-          "@nx/*",
-          "@swc/*",
-          "esbuild",
-          "@oxc-parser/*",
-          "vue-tsc",
-          "vue/compiler-sfc",
-          "read-yaml-file",
-          "spdx-exceptions",
-          "spdx-license-ids",
-          "typescript",
-          "defu",
-          "@samchon/openapi"
-        ],
-        "assets": [
-          {
-            "input": "packages/workspace-tools",
-            "glob": "**/files/**",
-            "output": "/"
-          },
-          {
-            "input": "packages/workspace-tools",
-            "glob": "**/files/**/.gitkeep",
-            "output": "/"
-          },
-          {
-            "input": "packages/workspace-tools",
-            "glob": "**/*.json",
-            "ignore": ["**/tsconfig*.json", "project.json", ".eslintrc.json"],
-            "output": "."
-          },
-          {
-            "input": "packages/workspace-tools",
-            "glob": "**/*.js",
-            "ignore": ["**/jest.config.js"],
-            "output": "."
-          },
-          {
-            "input": "packages/workspace-tools",
-            "glob": "**/*.d.ts",
-            "output": "."
-          },
-          {
-            "input": "packages/workspace-tools",
-            "glob": "*.md",
-            "output": "."
-          },
-          {
-            "input": "",
-            "glob": "LICENSE",
-            "output": "."
-          },
-          {
-            "input": "packages/workspace-tools/config",
-            "glob": "**/*.*",
-            "output": "./config"
-          },
-          {
-            "input": "packages/workspace-tools/assets",
-            "glob": "**/*.*",
-            "output": "./assets"
-          }
+        "commands": [
+          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/workspace-tools/**/schema.ts,packages/workspace-tools/**/*.schema.ts\" "
+        ]
+      }
+    },
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "build-untyped", "^build"],
+      "options": {
+        "command": "tsup-node --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base", "build-untyped"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/workspace-tools",
+          "pnpm copyfiles --up=2 ./packages/workspace-tools/*.md ./packages/workspace-tools/executors.json ./packages/workspace-tools/generators.json ./packages/workspace-tools/package.json dist/packages/workspace-tools",
+          "pnpm copyfiles --up=3 ./packages/workspace-tools/assets/* dist/packages/workspace-tools/assets",
+          "pnpm copyfiles --up=3 ./packages/workspace-tools/config/* dist/packages/workspace-tools/config",
+          "pnpm copyfiles --up=3 ./packages/workspace-tools/docs/* dist/packages/workspace-tools/docs",
+          "pnpm copyfiles --up=3 ./packages/workspace-tools/dist/**/*.js dist/packages/workspace-tools/dist",
+          "pnpm copyfiles --up=3 ./packages/workspace-tools/dist/**/*.mjs dist/packages/workspace-tools/dist",
+          "pnpm copyfiles --up=3 ./packages/workspace-tools/dist/*.d.ts dist/packages/workspace-tools/dist",
+          "pnpm copyfiles --up=3 ./packages/workspace-tools/dist/*.d.mts dist/packages/workspace-tools/dist",
+          "pnpm copyfiles --up=3 ./packages/workspace-tools/src/**/*.json dist/packages/workspace-tools/dist",
+          "pnpm copyfiles --up=3 ./packages/workspace-tools/src/**/*.d.ts dist/packages/workspace-tools/dist",
+          "pnpm copyfiles --up=3 ./packages/workspace-tools/src/**/*.md dist/packages/workspace-tools/docs"
         ]
       }
     },

@@ -6,7 +6,6 @@ import {
   addProjectConfiguration,
   ensurePackage,
   formatFiles,
-  joinPathFragments,
   names,
   offsetFromRoot,
   readJson,
@@ -20,14 +19,17 @@ import {
   tsConfigBaseOptions
 } from "@nx/js";
 import jsInitGenerator from "@nx/js/src/generators/init/init";
+import { Bundler } from "@nx/js/src/generators/library/schema";
 import setupVerdaccio from "@nx/js/src/generators/setup-verdaccio/generator";
+import { ProjectPackageManagerWorkspaceState } from "@nx/js/src/utils/package-manager-workspaces";
 import { StormConfig } from "@storm-software/config";
+import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import type { PackageJson } from "nx/src/utils/package-json";
+import { UnbuildExecutorSchema } from "../executors/unbuild/schema.d";
 import type {
   TypeScriptLibraryGeneratorNormalizedSchema,
   TypeScriptLibraryGeneratorSchema
-} from "../../declarations.d";
-import { UnbuildExecutorSchema } from "../executors/unbuild/schema";
+} from "../types";
 import { addProjectTag, ProjectTagConstants } from "../utils/project-tags";
 import { nxVersion } from "../utils/versions";
 
@@ -71,16 +73,16 @@ export async function typeScriptLibraryGeneratorFn(
   const projectConfig = {
     root: options.directory,
     projectType: "library",
-    sourceRoot: joinPathFragments(options.directory ?? "", "src"),
+    sourceRoot: joinPaths(options.directory ?? "", "src"),
     targets: {
       build: {
         executor: schema.buildExecutor,
         outputs: ["{options.outputPath}"],
         options: {
-          entry: joinPathFragments(options.projectRoot, "src", "index.ts"),
+          entry: [joinPaths(options.projectRoot, "src", "index.ts")],
           outputPath: getOutputPath(options),
-          tsConfig: joinPathFragments(options.projectRoot, "tsconfig.json"),
-          project: joinPathFragments(options.projectRoot, "package.json"),
+          tsConfig: joinPaths(options.projectRoot, "tsconfig.json"),
+          project: joinPaths(options.projectRoot, "package.json"),
           defaultConfiguration: "production",
           platform: "neutral",
           assets: [
@@ -111,17 +113,18 @@ export async function typeScriptLibraryGeneratorFn(
   } as TypeScriptLibraryProjectConfig;
 
   if (schema.platform) {
-    projectConfig.targets.build.options.platform = schema.platform;
+    projectConfig.targets.build.options.platform =
+      schema.platform === "worker" ? "node" : schema.platform;
   }
 
   addProjectTag(
     projectConfig,
     ProjectTagConstants.Platform.TAG_ID,
-    projectConfig.targets.build.options.platform === "node"
+    schema.platform === "node"
       ? ProjectTagConstants.Platform.NODE
-      : projectConfig.targets.build.options.platform === "worker"
+      : schema.platform === "worker"
         ? ProjectTagConstants.Platform.WORKER
-        : projectConfig.targets.build.options.platform === "browser"
+        : schema.platform === "browser"
           ? ProjectTagConstants.Platform.BROWSER
           : ProjectTagConstants.Platform.NEUTRAL,
     { overwrite: false }
@@ -159,10 +162,7 @@ export async function typeScriptLibraryGeneratorFn(
     options.importPath = options.name;
   }
 
-  const packageJsonPath = joinPathFragments(
-    options.projectRoot,
-    "package.json"
-  );
+  const packageJsonPath = joinPaths(options.projectRoot, "package.json");
   if (tree.exists(packageJsonPath)) {
     updateJson<PackageJson>(tree, packageJsonPath, (json: PackageJson) => {
       if (!options.importPath) {
@@ -225,14 +225,10 @@ export async function typeScriptLibraryGeneratorFn(
   }
 
   addTsConfigPath(tree, options.importPath, [
-    joinPathFragments(
-      options.projectRoot,
-      "./src",
-      `index.${options.js ? "js" : "ts"}`
-    )
+    joinPaths(options.projectRoot, "./src", `index.${options.js ? "js" : "ts"}`)
   ]);
-  addTsConfigPath(tree, joinPathFragments(options.importPath, "/*"), [
-    joinPathFragments(options.projectRoot, "./src", "/*")
+  addTsConfigPath(tree, joinPaths(options.importPath, "/*"), [
+    joinPaths(options.projectRoot, "./src", "/*")
   ]);
 
   if (tree.exists("package.json")) {
@@ -249,7 +245,7 @@ export async function typeScriptLibraryGeneratorFn(
     }
   }
 
-  const tsconfigPath = joinPathFragments(options.projectRoot, "tsconfig.json");
+  const tsconfigPath = joinPaths(options.projectRoot, "tsconfig.json");
   if (tree.exists(tsconfigPath)) {
     updateJson(tree, tsconfigPath, (json: any) => {
       json.composite ??= true;
@@ -277,113 +273,6 @@ export async function typeScriptLibraryGeneratorFn(
   return null;
 }
 
-// export async function addLint(
-//   tree: Tree,
-//   options: AddLintOptions
-// ): Promise<GeneratorCallback> {
-//   const { lintProjectGenerator } = ensurePackage("@nx/eslint", nxVersion);
-//   const { mapLintPattern } =
-//     // eslint-disable-next-line @typescript-eslint/no-var-requires
-//     require("@nx/eslint/src/generators/lint-project/lint-project");
-//   const projectConfiguration = readProjectConfiguration(tree, options.name);
-//   const task = lintProjectGenerator(tree, {
-//     project: options.name,
-//     linter: options.linter,
-//     skipFormat: true,
-//     tsConfigPaths: [joinPathFragments(options.projectRoot, "tsconfig.json")],
-//     unitTestRunner: options.unitTestRunner,
-//     eslintFilePatterns: [
-//       mapLintPattern(
-//         options.projectRoot,
-//         options.js ? "js" : "ts",
-//         options.rootProject
-//       )
-//     ],
-//     setParserOptionsProject: options.setParserOptionsProject,
-//     rootProject: options.rootProject
-//   });
-//   const {
-//     addOverrideToLintConfig,
-//     lintConfigHasOverride,
-//     isEslintConfigSupported,
-//     updateOverrideInLintConfig
-//     // eslint-disable-next-line @typescript-eslint/no-var-requires
-//   } = require("@nx/eslint/src/generators/utils/eslint-file");
-
-//   // if config is not supported, we don't need to do anything
-//   if (!isEslintConfigSupported(tree)) {
-//     return task;
-//   }
-
-//   addOverrideToLintConfig(tree, "", {
-//     files: ["*.json"],
-//     parser: "jsonc-eslint-parser",
-//     rules: {
-//       "@nx/dependency-checks": [
-//         "error",
-//         {
-//           "buildTargets": ["build"],
-//           "ignoredFiles": [
-//             "{projectRoot}/esbuild.config.{js,ts,mjs,mts}",
-//             "{projectRoot}/jest.config.ts"
-//           ],
-//           "checkMissingDependencies": true,
-//           "checkObsoleteDependencies": true,
-//           "checkVersionMismatches": false
-//         }
-//       ]
-//     }
-//   });
-
-//   // If project lints package.json with @nx/dependency-checks, then add ignore files for
-//   // build configuration files such as vite.config.ts. These config files need to be
-//   // ignored, otherwise we will errors on missing dependencies that are for dev only.
-//   if (
-//     lintConfigHasOverride(
-//       tree,
-//       projectConfiguration.root,
-//       (o: {
-//         files: {
-//           some: (arg0: (f: any) => any) => any;
-//           match: (arg0: RegExp) => any;
-//         };
-//       }) =>
-//         Array.isArray(o.files)
-//           ? o.files.some(f => f.match(/\.json$/))
-//           : !!o.files?.match(/\.json$/),
-//       true
-//     )
-//   ) {
-//     updateOverrideInLintConfig(
-//       tree,
-//       projectConfiguration.root,
-//       (o: { rules: { [x: string]: any } }) =>
-//         o.rules?.["@nx/dependency-checks"],
-//       (o: { rules: { [x: string]: any[] } }) => {
-//         const value = o.rules["@nx/dependency-checks"];
-//         let ruleSeverity: string;
-//         let ruleOptions: any;
-//         if (Array.isArray(value)) {
-//           ruleSeverity = value[0];
-//           ruleOptions = value[1];
-//         } else {
-//           ruleSeverity = value ?? "error";
-//           ruleOptions = {};
-//         }
-
-//         if (options.bundler === "esbuild") {
-//           ruleOptions.ignoredFiles = [
-//             "{projectRoot}/esbuild.config.{js,ts,mjs,mts}"
-//           ];
-//           o.rules["@nx/dependency-checks"] = [ruleSeverity, ruleOptions];
-//         }
-//         return o;
-//       }
-//     );
-//   }
-//   return task;
-// }
-
 export function getOutputPath(
   options: TypeScriptLibraryGeneratorNormalizedSchema
 ) {
@@ -393,7 +282,7 @@ export function getOutputPath(
   } else {
     parts.push(options.projectRoot);
   }
-  return joinPathFragments(...parts);
+  return joinPaths(...parts);
 }
 
 export function createProjectTsConfigJson(
@@ -407,10 +296,7 @@ export function createProjectTsConfigJson(
     ...(options?.tsConfigOptions ?? {}),
     compilerOptions: {
       ...(options.rootProject ? tsConfigBaseOptions : {}),
-      outDir: joinPathFragments(
-        offsetFromRoot(options.projectRoot),
-        "dist/out-tsc"
-      ),
+      outDir: joinPaths(offsetFromRoot(options.projectRoot), "dist/out-tsc"),
       noEmit: true,
       ...(options?.tsConfigOptions?.compilerOptions ?? {})
     },
@@ -429,11 +315,7 @@ export function createProjectTsConfigJson(
     ]
   };
 
-  writeJson(
-    tree,
-    joinPathFragments(options.projectRoot, "tsconfig.json"),
-    tsconfig
-  );
+  writeJson(tree, joinPaths(options.projectRoot, "tsconfig.json"), tsconfig);
 }
 
 export async function normalizeOptions(
@@ -448,7 +330,7 @@ export async function normalizeOptions(
     }
   }
 
-  let bundler = "tsc";
+  let bundler: Bundler = "tsc";
   if (options.publishable === false && options.buildable === false) {
     bundler = "none";
   }
@@ -485,6 +367,10 @@ export async function normalizeOptions(
     bundler,
     skipTypeCheck: false,
     minimal: false,
+    hasPlugin: false,
+    isUsingTsSolutionConfig: false,
+    projectPackageManagerWorkspaceState:
+      "included" as ProjectPackageManagerWorkspaceState,
     ...options,
     fileName,
     name: projectName,

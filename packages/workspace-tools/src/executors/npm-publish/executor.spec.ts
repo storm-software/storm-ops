@@ -1,4 +1,4 @@
-// import type { NpmPublishExecutorSchema } from "./schema";
+// import type { NpmPublishExecutorSchema } from "./schema.d";
 // import executor from "./executor";
 
 // const options: NpmPublishExecutorSchema = {};

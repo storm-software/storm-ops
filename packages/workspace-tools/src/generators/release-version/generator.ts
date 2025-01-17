@@ -51,7 +51,7 @@ import {
   parseCargoTomlWithTree,
   stringifyCargoToml
 } from "../../utils/toml";
-import type { ReleaseVersionGeneratorSchema } from "./schema";
+import type { ReleaseVersionGeneratorSchema } from "./schema.d";
 
 export async function releaseVersionGeneratorFn(
   tree: Tree,

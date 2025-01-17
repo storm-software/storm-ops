@@ -6,7 +6,7 @@ import {
   type StdioOptions
 } from "node:child_process";
 import { relative } from "node:path";
-import { CargoBaseExecutorSchema } from "../../declarations.d";
+import { CargoBaseExecutorSchema } from "../base/cargo-base-executor.d";
 import type { CargoMetadata, Dependency, Package } from "./toml";
 
 interface CargoRun {
@@ -61,7 +61,7 @@ export const buildCargoCommand = (
         args.push(`--${key}`, item);
       }
     } else {
-      args.push(`--${key}`, value);
+      args.push(`--${key}`, String(value));
     }
   }
 

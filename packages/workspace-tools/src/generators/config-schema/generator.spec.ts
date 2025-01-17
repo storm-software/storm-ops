@@ -2,7 +2,7 @@ import { Tree, readProjectConfiguration } from "@nx/devkit";
 import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 
 import { configSchemaGenerator } from "./generator";
-import { ConfigSchemaGeneratorSchema } from "./schema";
+import { ConfigSchemaGeneratorSchema } from "./schema.d";
 
 describe("config-schema generator", () => {
   let tree: Tree;

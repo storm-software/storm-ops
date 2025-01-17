@@ -4,7 +4,7 @@ import { writeInfo } from "@storm-software/config-tools/logger/console";
 import { removeSync } from "fs-extra";
 import { TypiaProgrammer } from "typia/lib/programmers/TypiaProgrammer.js";
 import { withRunExecutor } from "../../base/base-executor";
-import type { TypiaExecutorSchema } from "./schema";
+import type { TypiaExecutorSchema } from "./schema.d";
 
 export async function typiaExecutorFn(
   options: TypiaExecutorSchema,

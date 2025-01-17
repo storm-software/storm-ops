@@ -1,41 +1,49 @@
 {
-  "$schema": "http://json-schema.org/schema",
-  "$id": "clean-publish",
-  "version": 2,
-  "title": "Clean Publish",
-  "description": "Remove configuration files, fields, and scripts for development before publishing package. This tool is inspired by the [clean-publish](https://github.com/shashkovdanil/clean-publish/tree/master) package",
-  "type": "object",
+  "id": "#",
+  "title": "Clean Package Executor",
+  "description": "A type definition for a clean package executor schema",
   "properties": {
     "outputPath": {
+      "title": "Output Path",
       "type": "string",
-      "description": "The output path of the generated files.",
-      "x-completion-type": "directory",
-      "x-priority": "important",
-      "default": "dist/{projectRoot}"
+      "description": "The path to the output",
+      "id": "#outputPath"
     },
     "packageJsonPath": {
+      "title": "Package JSON Path",
       "type": "string",
-      "description": "The path to the package.json file, relative to the workspace root.",
-      "x-completion-type": "directory"
-    },
-    "cleanReadMe": {
-      "type": "boolean",
-      "description": "Should API Extractor generate an TSDoc Metadata file.",
-      "default": true
-    },
-    "cleanComments": {
-      "type": "boolean",
-      "description": "Should API Extractor generate an TSDoc Metadata file.",
-      "default": true
+      "format": "path",
+      "description": "The path to the package.json",
+      "id": "#packageJsonPath"
     },
     "ignoredFiles": {
+      "title": "Ignored Files",
       "type": "string",
-      "description": "List of ESBuild plugins to use during processing"
+      "description": "The files to ignore",
+      "id": "#ignoredFiles"
     },
     "fields": {
+      "title": "Fields",
       "type": "string",
-      "description": "List of ESBuild plugins to use during processing"
+      "description": "The fields to include",
+      "id": "#fields",
+      "default": []
+    },
+    "cleanReadMe": {
+      "title": "Clean Read Me",
+      "type": "boolean",
+      "description": "Clean the read me",
+      "id": "#cleanReadMe"
+    },
+    "cleanComments": {
+      "title": "Clean Comments",
+      "type": "boolean",
+      "description": "Clean the comments",
+      "id": "#cleanComments"
     }
   },
-  "required": ["outputPath", "cleanReadMe", "cleanComments"]
+  "type": "object",
+  "default": {
+    "fields": []
+  }
 }

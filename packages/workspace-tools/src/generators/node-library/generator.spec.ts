@@ -2,7 +2,7 @@ import { Tree, readProjectConfiguration } from "@nx/devkit";
 import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 
 import { nodeLibraryGenerator } from "./generator";
-import { NodeLibraryGeneratorSchema } from "./schema";
+import { NodeLibraryGeneratorSchema } from "./schema.d";
 
 describe("node-library generator", () => {
   let tree: Tree;

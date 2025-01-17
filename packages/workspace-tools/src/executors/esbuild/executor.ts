@@ -1,7 +1,7 @@
 import type { ExecutorContext } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import { writeInfo } from "@storm-software/config-tools/logger/console";
-import { build } from "@storm-software/esbuild";
+import { build, ESBuildOptions } from "@storm-software/esbuild";
 import { withRunExecutor } from "../../base/base-executor";
 import type { ESBuildExecutorSchema } from "./schema.d";
 
@@ -33,7 +33,10 @@ export async function esbuildExecutorFn(
       context.projectsConfigurations.projects?.[context.projectName]!.root,
     projectName: context.projectName,
     sourceRoot:
-      context.projectsConfigurations.projects?.[context.projectName]?.sourceRoot
+      context.projectsConfigurations.projects?.[context.projectName]
+        ?.sourceRoot,
+    format: options.format as ESBuildOptions["format"],
+    platform: options.format as ESBuildOptions["platform"]
   });
 
   // #endregion Run the build process
@@ -44,7 +47,7 @@ export async function esbuildExecutorFn(
 }
 
 export default withRunExecutor<ESBuildExecutorSchema>(
-  "Storm ESBuild executor",
+  "Storm ESBuild build",
   esbuildExecutorFn,
   {
     skipReadingConfig: false,

@@ -1,16 +1,15 @@
 {
-  "$schema": "https://json-schema.org/schema",
-  "$id": "size-limit",
-  "version": 2,
-  "title": "Size-Limit Test",
-  "description": "Run a size-limit performance test on the project",
-  "type": "object",
+  "id": "#",
+  "title": "Size Limit Executor",
+  "description": "A type definition for a Size Limit executor schema",
   "properties": {
     "entry": {
+      "title": "Entry",
       "type": "string",
-      "description": "The path to the entry file, relative to project.",
-      "alias": "main"
+      "description": "The path to the entry file",
+      "id": "#entry"
     }
   },
-  "required": []
+  "type": "object",
+  "default": {}
 }

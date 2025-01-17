@@ -1,20 +1,20 @@
 import {
-  type Tree,
   formatFiles,
   generateFiles,
   joinPathFragments,
   names,
-  offsetFromRoot
+  offsetFromRoot,
+  type Tree
 } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
-import type { TypeScriptLibraryGeneratorSchema } from "../../../declarations.d";
 import { withRunGenerator } from "../../base/base-generator";
 import {
   normalizeOptions,
   typeScriptLibraryGeneratorFn
 } from "../../base/typescript-library-generator";
+import { type TypeScriptLibraryGeneratorSchema } from "../../types";
 import { typesNodeVersion } from "../../utils/versions";
-import type { NodeLibraryGeneratorSchema } from "./schema";
+import type { NodeLibraryGeneratorSchema } from "./schema.d";
 
 export async function nodeLibraryGeneratorFn(
   tree: Tree,
@@ -28,13 +28,12 @@ export async function nodeLibraryGeneratorFn(
     devDependencies: {
       "@types/node": typesNodeVersion
     },
-    buildExecutor: "@storm-software/workspace-tools:unbuild"
+    buildExecutor: "@storm-software/workspace-tools:unbuild",
+    directory: schema.directory
   };
 
   const options = await normalizeOptions(tree, tsLibraryGeneratorOptions);
-  const { className, name, propertyName } = names(
-    options.projectNames.projectFileName
-  );
+  const { className, name, propertyName } = names(options.name);
 
   generateFiles(tree, filesDir, options.projectRoot, {
     ...schema,

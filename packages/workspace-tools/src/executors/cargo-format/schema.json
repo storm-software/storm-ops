@@ -1,134 +1,113 @@
 {
-  "$schema": "http://json-schema.org/schema",
-  "$id": "cargo-format",
-  "outputCapture": "direct-nodejs",
-  "version": 2,
-  "title": "Cargo Format",
-  "description": "Format a Rust project with Cargo",
-  "type": "object",
+  "id": "#",
+  "title": "Cargo Format Executor",
+  "description": "A type definition for a Cargo/rust format executor schema",
   "properties": {
-    "release": {
-      "type": "boolean",
-      "description": "Run the Cargo command for the project in release mode",
-      "default": false
+    "entry": {
+      "title": "Entry File",
+      "format": "path",
+      "description": "The entry file to build",
+      "id": "#entry",
+      "default": [
+        "{sourceRoot}/index.ts"
+      ],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     },
-    "profile": {
+    "outputPath": {
+      "title": "Output Path",
       "type": "string",
-      "description": "Build artifacts with the specified profile"
+      "format": "path",
+      "description": "The output path for the build",
+      "id": "#outputPath",
+      "default": "dist/{projectRoot}"
+    },
+    "tsconfig": {
+      "title": "TSConfig Path",
+      "type": "string",
+      "format": "path",
+      "description": "The path to the tsconfig file",
+      "id": "#tsconfig",
+      "default": "{projectRoot}/tsconfig.json"
+    },
+    "package": {
+      "title": "Cargo.toml Path",
+      "type": "string",
+      "format": "path",
+      "description": "The path to the Cargo.toml file",
+      "id": "#package",
+      "default": "{projectRoot}/Cargo.toml"
     },
     "toolchain": {
+      "title": "Toolchain",
+      "description": "The type of toolchain to use for the build",
+      "enum": [
+        "stable",
+        "beta",
+        "nightly"
+      ],
+      "default": "stable",
+      "id": "#toolchain",
+      "type": "string"
+    },
+    "target": {
+      "title": "Target",
       "type": "string",
-      "description": "The Rust toolchain to use",
-      "enum": ["stable", "beta", "nightly"],
-      "default": "stable"
-    },
-    "features": {
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      ],
-      "description": "Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported"
-    },
-    "allFeatures": {
-      "type": "boolean",
-      "default": false,
-      "description": "Build all binary targets",
-      "alias": "all-features"
-    },
-    "lib": {
-      "type": "boolean",
-      "description": "Build the package's library",
-      "default": false
-    },
-    "bin": {
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      ],
-      "description": "Build the specified binary. Array of names or common Unix glob patterns is supported"
-    },
-    "bins": {
-      "type": "boolean",
-      "default": false,
-      "description": "Build all binary targets"
-    },
-    "example": {
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      ],
-      "description": "Build the specified example. Array of names or common Unix glob patterns is supported"
-    },
-    "examples": {
-      "type": "boolean",
-      "default": false,
-      "description": "Build all example targets"
-    },
-    "test": {
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      ],
-      "description": "Build the specified test. Array of names or common Unix glob patterns is supported"
-    },
-    "tests": {
-      "type": "boolean",
-      "default": false,
-      "description": "Build all test targets"
-    },
-    "bench": {
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      ],
-      "description": "Build the specified bench. Array of names or common Unix glob patterns is supported"
-    },
-    "benches": {
-      "type": "boolean",
-      "default": false,
-      "description": "Build all targets in benchmark mode that have the bench = true manifest flag set. By default this includes the library and binaries built as benchmarks, and bench targets. Be aware that this will also build any required dependencies, so the lib target may be built twice (once as a benchmark, and once as a dependency for binaries, benchmarks, etc.). Targets may be enabled or disabled by setting the bench flag in the manifest settings for the target."
+      "description": "The target to build",
+      "id": "#target"
     },
     "allTargets": {
+      "title": "All Targets",
       "type": "boolean",
-      "default": false,
-      "description": "Build all test targets",
-      "alias": "all-targets"
+      "description": "Build all targets",
+      "id": "#allTargets"
+    },
+    "profile": {
+      "title": "Profile",
+      "type": "string",
+      "description": "The profile to build",
+      "id": "#profile"
+    },
+    "release": {
+      "title": "Release",
+      "type": "boolean",
+      "description": "Build in release mode",
+      "id": "#release"
+    },
+    "features": {
+      "title": "Features",
+      "type": "string",
+      "description": "The features to build",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ],
+      "id": "#features"
+    },
+    "allFeatures": {
+      "title": "All Features",
+      "type": "boolean",
+      "description": "Build all features",
+      "id": "#allFeatures"
     }
   },
-  "required": []
+  "type": "object",
+  "default": {
+    "entry": [
+      "{sourceRoot}/index.ts"
+    ],
+    "outputPath": "dist/{projectRoot}",
+    "tsconfig": "{projectRoot}/tsconfig.json",
+    "package": "{projectRoot}/Cargo.toml",
+    "toolchain": "stable"
+  }
 }

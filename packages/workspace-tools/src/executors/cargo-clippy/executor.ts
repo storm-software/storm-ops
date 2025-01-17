@@ -1,7 +1,7 @@
 import { ExecutorContext, PromiseExecutor } from "@nx/devkit";
 import { withRunExecutor } from "../../base/base-executor";
 import { buildCargoCommand, cargoCommand } from "../../utils/cargo";
-import { CargoClippyExecutorSchema } from "./schema";
+import { CargoClippyExecutorSchema } from "./schema.d";
 
 export async function cargoClippyExecutor(
   options: CargoClippyExecutorSchema,

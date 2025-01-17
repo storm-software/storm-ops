@@ -3,9 +3,9 @@ import {
   formatFiles,
   type Tree
 } from "@nx/devkit";
-import type { Schema } from "./schema";
+import type { InitGeneratorSchema } from "./schema.d";
 
-export async function initGenerator(tree: Tree, schema: Schema) {
+export async function initGenerator(tree: Tree, schema: InitGeneratorSchema) {
   const task = addDependenciesToPackageJson(
     tree,
     {

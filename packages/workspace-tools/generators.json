@@ -4,52 +4,52 @@
   "version": "0.0.1",
   "generators": {
     "init": {
-      "factory": "./src/generators/init/init#initGenerator",
-      "schema": "./src/generators/init/schema.json",
+      "factory": "./dist/generators/init/init#initGenerator",
+      "schema": "./dist/generators/init/schema.json",
       "description": "Initialize the `@storm-software/workspace-tools` plugin.",
       "aliases": ["ng-add"],
       "internal": true
     },
     "preset": {
-      "factory": "./src/generators/preset/generator",
-      "schema": "./src/generators/preset/schema.json",
+      "factory": "./dist/generators/preset/generator",
+      "schema": "./dist/generators/preset/schema.json",
       "description": "Storm workspace preset generator",
       "x-use-standalone-layout": true
     },
     "node-library": {
-      "factory": "./src/generators/node-library/generator",
-      "schema": "./src/generators/node-library/schema.json",
+      "factory": "./dist/generators/node-library/generator",
+      "schema": "./dist/generators/node-library/schema.json",
       "aliases": ["node-lib"],
       "x-type": "library",
       "description": "Create a new NodeJs TypeScript library package in the Storm workspace"
     },
     "config-schema": {
-      "factory": "./src/generators/config-schema/generator",
-      "schema": "./src/generators/config-schema/schema.json",
+      "factory": "./dist/generators/config-schema/generator",
+      "schema": "./dist/generators/config-schema/schema.json",
       "description": "Create a Storm JSON schema based on the workspaces project configurations"
     },
     "neutral-library": {
-      "factory": "./src/generators/neutral-library/generator",
-      "schema": "./src/generators/neutral-library/schema.json",
+      "factory": "./dist/generators/neutral-library/generator",
+      "schema": "./dist/generators/neutral-library/schema.json",
       "aliases": ["neutral-lib"],
       "x-type": "library",
       "description": "Create a new Neutral TypeScript library package in the Storm workspace"
     },
     "browser-library": {
-      "factory": "./src/generators/browser-library/generator",
-      "schema": "./src/generators/browser-library/schema.json",
+      "factory": "./dist/generators/browser-library/generator",
+      "schema": "./dist/generators/browser-library/schema.json",
       "aliases": ["browser-lib"],
       "x-type": "library",
       "description": "Create a new browser TypeScript library package in the Storm workspace"
     },
     "design-tokens": {
-      "factory": "./src/generators/design-tokens/generator",
-      "schema": "./src/generators/design-tokens/schema.json",
+      "factory": "./dist/generators/design-tokens/generator",
+      "schema": "./dist/generators/design-tokens/schema.json",
       "description": "Generate design tokens code using a Token Studio export"
     },
     "release-version": {
-      "factory": "./src/generators/release-version/generator",
-      "schema": "./src/generators/release-version/schema.json",
+      "factory": "./dist/generators/release-version/generator",
+      "schema": "./dist/generators/release-version/schema.json",
       "description": "The release version generator used in Storm Workspaces"
     }
   }

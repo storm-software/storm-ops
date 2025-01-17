@@ -2,11 +2,13 @@
 
 ### Bug Fixes
 
-- **workspace-tools:** Added additional externals to the package list ([5d4a063f](https://github.com/storm-software/storm-ops/commit/5d4a063f))
+- **workspace-tools:** Added additional externals to the package list
+  ([5d4a063f](https://github.com/storm-software/storm-ops/commit/5d4a063f))
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate the README markdown files ([e911945a](https://github.com/storm-software/storm-ops/commit/e911945a))
+- **monorepo:** Regenerate the README markdown files
+  ([e911945a](https://github.com/storm-software/storm-ops/commit/e911945a))
 
 ## 2.84.2 (2025-01-16)
 

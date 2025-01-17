@@ -46,3 +46,5 @@ catalog:
   "read-yaml-file": "2.1.0"
   "cspell": "8.8.4"
   "tsdown": "0.5.3"
+  "untyped": "^1.5.2"
+  "glob": "^10.4.2"

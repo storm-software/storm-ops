@@ -1,0 +1,236 @@
+{
+  "name": "@storm-software/untyped",
+  "version": "0.0.1",
+  "description": "A package containing `untyped` utilities for building Storm Software libraries and applications",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops.git",
+    "directory": "packages/untyped"
+  },
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "maintainers": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    },
+    {
+      "name": "Pat Sullivan",
+      "email": "admin@stormsoftware.com",
+      "url": "https://patsullivan.org"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    }
+  ],
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
+  "license": "Apache-2.0",
+  "private": false,
+  "packageManager": "pnpm@9.15.2",
+  "engines": {
+    "node": ">=22.4.0",
+    "pnpm": ">=9.15.2"
+  },
+  "bin": {
+    "storm-untyped": "./bin/storm-untyped.js",
+    "storm-untyped-cjs": "./bin/storm-untyped.js",
+    "storm-untyped-esm": "./bin/storm-untyped.mjs"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    "./package.json": "./package.json",
+    "./index": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./generate": {
+      "import": {
+        "types": "./dist/generate.d.mts",
+        "default": "./dist/generate.mjs"
+      },
+      "require": {
+        "types": "./dist/generate.d.ts",
+        "default": "./dist/generate.js"
+      },
+      "default": {
+        "types": "./dist/generate.d.ts",
+        "default": "./dist/generate.js"
+      }
+    },
+    "./utilities": {
+      "import": {
+        "types": "./dist/utilities.d.mts",
+        "default": "./dist/utilities.mjs"
+      },
+      "require": {
+        "types": "./dist/utilities.d.ts",
+        "default": "./dist/utilities.js"
+      },
+      "default": {
+        "types": "./dist/utilities.d.ts",
+        "default": "./dist/utilities.js"
+      }
+    },
+    "./generators/dts": {
+      "import": {
+        "types": "./dist/generators/dts.d.mts",
+        "default": "./dist/generators/dts.mjs"
+      },
+      "require": {
+        "types": "./dist/generators/dts.d.ts",
+        "default": "./dist/generators/dts.js"
+      },
+      "default": {
+        "types": "./dist/generators/dts.d.ts",
+        "default": "./dist/generators/dts.js"
+      }
+    },
+    "./generators/markdown": {
+      "import": {
+        "types": "./dist/generators/markdown.d.mts",
+        "default": "./dist/generators/markdown.mjs"
+      },
+      "require": {
+        "types": "./dist/generators/markdown.d.ts",
+        "default": "./dist/generators/markdown.js"
+      },
+      "default": {
+        "types": "./dist/generators/markdown.d.ts",
+        "default": "./dist/generators/markdown.js"
+      }
+    },
+    "./generators/json-schema": {
+      "import": {
+        "types": "./dist/generators/json-schema.d.mts",
+        "default": "./dist/generators/json-schema.mjs"
+      },
+      "require": {
+        "types": "./dist/generators/json-schema.d.ts",
+        "default": "./dist/generators/json-schema.js"
+      },
+      "default": {
+        "types": "./dist/generators/json-schema.d.ts",
+        "default": "./dist/generators/json-schema.js"
+      }
+    },
+    "./generators/index": {
+      "import": {
+        "types": "./dist/generators/index.d.mts",
+        "default": "./dist/generators/index.mjs"
+      },
+      "require": {
+        "types": "./dist/generators/index.d.ts",
+        "default": "./dist/generators/index.js"
+      },
+      "default": {
+        "types": "./dist/generators/index.d.ts",
+        "default": "./dist/generators/index.js"
+      }
+    },
+    "./generators": {
+      "import": {
+        "types": "./dist/generators/index.d.mts",
+        "default": "./dist/generators/index.mjs"
+      },
+      "require": {
+        "types": "./dist/generators/index.d.ts",
+        "default": "./dist/generators/index.js"
+      },
+      "default": {
+        "types": "./dist/generators/index.d.ts",
+        "default": "./dist/generators/index.js"
+      }
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "bin/**/*",
+    "dist/**/*"
+  ],
+  "keywords": [
+    "acidic",
+    "cyclone-ui",
+    "untyped",
+    "monorepo",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "sullivanpj"
+  ],
+  "peerDependencies": {
+    "@nx/devkit": "catalog:",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "untyped": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "@nx/devkit": {
+      "optional": false
+    },
+    "@storm-software/build-tools": {
+      "optional": false
+    },
+    "@storm-software/config-tools": {
+      "optional": false
+    },
+    "untyped": {
+      "optional": false
+    }
+  },
+  "dependencies": {
+    "commander": "catalog:",
+    "glob": "catalog:",
+    "nx": "catalog:"
+  },
+  "devDependencies": {
+    "@nx/devkit": "catalog:",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "@types/node": "catalog:",
+    "tsup": "catalog:",
+    "untyped": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false
+}

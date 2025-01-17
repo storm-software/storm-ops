@@ -165,6 +165,7 @@
       "@storm-software/linting-tools": "workspace:*",
       "@storm-software/markdownlint": "workspace:*",
       "@storm-software/prettier": "workspace:*",
+      "@storm-software/untyped": "workspace:*",
       "@storm-software/esbuild": "workspace:*",
       "@storm-software/tsdown": "workspace:*",
       "@storm-software/unbuild": "workspace:*",
@@ -181,9 +182,6 @@
       "load-plugin": "6.0.3",
       "request": ">=2.88.2",
       "tough-cookie": "4.1.4"
-    },
-    "patchedDependencies": {
-      "tsup@8.0.0": "patches/tsup@8.0.0.patch"
     }
   },
   "triggerEmptyDevReleaseByIncrementingThisNumber": 0

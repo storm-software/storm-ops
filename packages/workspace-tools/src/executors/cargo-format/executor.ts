@@ -1,7 +1,7 @@
 import { ExecutorContext, PromiseExecutor } from "@nx/devkit";
 import { withRunExecutor } from "../../base/base-executor";
 import { buildCargoCommand, cargoCommand } from "../../utils/cargo";
-import { CargoFormatExecutorSchema } from "./schema";
+import { CargoFormatExecutorSchema } from "./schema.d";
 
 export async function cargoFormatExecutor(
   options: CargoFormatExecutorSchema,

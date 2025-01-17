@@ -2,13 +2,13 @@ import { ExecutorContext, PromiseExecutor } from "@nx/devkit";
 import deepClone from "deep-clone";
 import { withRunExecutor } from "../../base/base-executor";
 import { buildCargoCommand, cargoCommand } from "../../utils/cargo";
-import { CargoDocExecutorSchema } from "./schema";
+import { CargoDocExecutorSchema } from "./schema.d";
 
 export async function cargoDocExecutor(
   options: CargoDocExecutorSchema,
   context: ExecutorContext
 ) {
-  const opts = deepClone(options);
+  const opts = deepClone(options as any);
 
   opts["no-deps"] = opts.noDeps;
   delete opts.noDeps;

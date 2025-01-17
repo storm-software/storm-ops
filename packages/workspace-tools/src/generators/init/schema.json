@@ -1,16 +1,15 @@
 {
-  "$schema": "http://json-schema.org/schema",
-  "$id": "StormWorkspaceInit",
-  "cli": "nx",
-  "title": "Init Storm Workspace Plugin",
-  "description": "Init Storm Workspace Plugin.",
-  "type": "object",
+  "id": "#",
+  "title": "Init Generator",
+  "description": "A type definition for an init generator schema",
   "properties": {
     "skipFormat": {
-      "description": "Skip formatting files.",
+      "title": "Skip Format",
       "type": "boolean",
-      "default": false
+      "description": "Skip formatting the generated files",
+      "id": "#skipFormat"
     }
   },
-  "required": []
+  "type": "object",
+  "default": {}
 }

@@ -1,82 +1,231 @@
 {
-  "$schema": "http://json-schema.org/schema",
-  "$id": "neutral-library",
-  "title": "Add Neutral Library",
-  "description": "Create a new Neutral TypeScript library package in the Storm workspaces",
-  "type": "object",
+  "id": "#",
+  "title": "Neutral Library Generator",
+  "description": "A type definition for a neutral library generator schema",
   "properties": {
-    "name": {
+    "directory": {
+      "title": "Directory",
       "type": "string",
-      "description": "A name for the library.",
-      "$default": {
-        "$source": "argv",
-        "index": 0
-      },
-      "x-prompt": "What name would you like to use for the library?",
-      "pattern": "(?:^@[a-zA-Z0-9-*~][a-zA-Z0-9-*._~]*\\/[a-zA-Z0-9-~][a-zA-Z0-9-._~]*|^[a-zA-Z][^:]*)$"
+      "description": "The directory to create the library in",
+      "id": "#directory"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string",
+      "description": "The name of the library",
+      "id": "#name"
     },
     "description": {
+      "title": "Description",
       "type": "string",
-      "description": "The library used by Storm Software for building TypeScript applications.",
-      "$default": {
-        "$source": "argv",
-        "index": 2
-      },
-      "x-prompt": "Provide description to use as a summary of the library?"
+      "description": "The description of the library",
+      "id": "#description"
     },
-    "directory": {
+    "buildExecutor": {
+      "title": "Build Executor",
       "type": "string",
-      "description": "A directory where the lib is placed.",
-      "x-priority": "important"
+      "description": "The executor to use for building the library",
+      "id": "#buildExecutor"
     },
-    "projectNameAndRootFormat": {
-      "description": "Whether to generate the project name and root directory as provided (`as-provided`) or generate them composing their values and taking the configured layout into account (`derived`).",
+    "platform": {
+      "title": "Platform",
       "type": "string",
-      "enum": ["as-provided", "derived"]
+      "description": "The platform to target with the library",
+      "enum": [
+        "neutral"
+      ],
+      "id": "#platform",
+      "default": "neutral"
+    },
+    "devDependencies": {
+      "title": "Dev Dependencies",
+      "type": "object",
+      "description": "The dev dependencies to install",
+      "id": "#devDependencies",
+      "default": {}
+    },
+    "dependencies": {
+      "title": "Dependencies",
+      "type": "object",
+      "description": "The dependencies to install",
+      "id": "#dependencies",
+      "default": {}
     },
     "tags": {
+      "title": "Tags",
       "type": "string",
-      "description": "Add tags to the library (used for linting)."
+      "description": "The tags for the library",
+      "id": "#tags"
     },
-    "strict": {
+    "skipFormat": {
+      "title": "Skip Format",
       "type": "boolean",
-      "description": "Whether to enable tsconfig strict mode or not.",
-      "default": true
+      "description": "Skip formatting",
+      "id": "#skipFormat"
     },
-    "publishable": {
+    "skipTsConfig": {
+      "title": "Skip TsConfig",
       "type": "boolean",
-      "default": false,
-      "description": "Generate a publishable library.",
-      "x-priority": "important"
+      "description": "Skip TypeScript configuration",
+      "id": "#skipTsConfig"
+    },
+    "skipPackageJson": {
+      "title": "Skip Package Json",
+      "type": "boolean",
+      "description": "Skip package.json",
+      "id": "#skipPackageJson"
+    },
+    "includeBabelRc": {
+      "title": "Include Babel Rc",
+      "type": "boolean",
+      "description": "Include Babel configuration",
+      "id": "#includeBabelRc"
+    },
+    "unitTestRunner": {
+      "title": "Unit Test Runner",
+      "type": "string",
+      "enum": [
+        "jest",
+        "vitest",
+        "none"
+      ],
+      "description": "The unit test runner to use",
+      "id": "#unitTestRunner"
+    },
+    "linter": {
+      "title": "Linter",
+      "type": "string",
+      "description": "The linter to use",
+      "id": "#linter"
+    },
+    "testEnvironment": {
+      "title": "Test Environment",
+      "type": "string",
+      "enum": [
+        "jsdom",
+        "node"
+      ],
+      "description": "The test environment to use",
+      "id": "#testEnvironment"
     },
     "importPath": {
+      "title": "Import Path",
       "type": "string",
-      "description": "The library name used to import it, like @storm-software/my-awesome-lib. Required for publishable library.",
-      "x-priority": "important"
+      "description": "The import path for the library",
+      "id": "#importPath"
+    },
+    "js": {
+      "title": "JavaScript",
+      "type": "boolean",
+      "description": "Use JavaScript instead of TypeScript",
+      "id": "#js"
+    },
+    "pascalCaseFiles": {
+      "title": "Pascal Case Files",
+      "type": "boolean",
+      "description": "Use PascalCase for file names",
+      "id": "#pascalCaseFiles"
+    },
+    "strict": {
+      "title": "Strict",
+      "type": "boolean",
+      "description": "Enable strict mode",
+      "id": "#strict"
+    },
+    "publishable": {
+      "title": "Publishable",
+      "type": "boolean",
+      "description": "Make the library publishable",
+      "id": "#publishable"
     },
     "buildable": {
+      "title": "Buildable",
       "type": "boolean",
-      "default": true,
-      "description": "Generate a buildable library.",
-      "x-deprecated": "Use the `bundler` option for greater control (swc, tsc, rollup, vite, esbuild, none)."
+      "description": "Make the library buildable",
+      "id": "#buildable"
     },
     "setParserOptionsProject": {
+      "title": "Set Parser Options Project",
       "type": "boolean",
-      "description": "Whether or not to configure the ESLint `parserOptions.project` option. We do not do this by default for lint performance reasons.",
-      "default": false
+      "description": "Set parser options project",
+      "id": "#setParserOptionsProject"
+    },
+    "config": {
+      "title": "Config",
+      "type": "string",
+      "enum": [
+        "workspace",
+        "project",
+        "npm-scripts"
+      ],
+      "description": "The configuration type",
+      "id": "#config"
+    },
+    "compiler": {
+      "title": "Compiler",
+      "type": "string",
+      "description": "The compiler to use",
+      "id": "#compiler"
+    },
+    "bundler": {
+      "title": "Bundler",
+      "type": "string",
+      "description": "The bundler to use",
+      "id": "#bundler"
+    },
+    "skipTypeCheck": {
+      "title": "Skip Type Check",
+      "type": "boolean",
+      "description": "Skip type checking",
+      "id": "#skipTypeCheck"
+    },
+    "minimal": {
+      "title": "Minimal",
+      "type": "boolean",
+      "description": "Create a minimal library",
+      "id": "#minimal"
     },
     "rootProject": {
+      "title": "Root Project",
       "type": "boolean",
-      "default": false,
-      "description": "Is the current project the root project in the workspace."
+      "description": "Create a root project",
+      "id": "#rootProject"
+    },
+    "simpleName": {
+      "title": "Simple Name",
+      "type": "boolean",
+      "description": "Use a simple name for the library",
+      "id": "#simpleName"
+    },
+    "addPlugin": {
+      "title": "Add Plugin",
+      "type": "boolean",
+      "description": "Add a plugin to the library",
+      "id": "#addPlugin"
+    },
+    "useProjectJson": {
+      "title": "Use Project Json",
+      "type": "boolean",
+      "description": "Use project.json",
+      "id": "#useProjectJson"
+    },
+    "skipWorkspacesWarning": {
+      "title": "Skip Workspaces Warning",
+      "type": "boolean",
+      "description": "Skip workspaces warning",
+      "id": "#skipWorkspacesWarning"
+    },
+    "useTscExecutor": {
+      "title": "Use Tsc Executor",
+      "type": "boolean",
+      "description": "Use TSC executor",
+      "id": "#useTscExecutor"
     }
   },
-  "required": [
-    "name",
-    "directory",
-    "projectNameAndRootFormat",
-    "publishable",
-    "importPath",
-    "buildable"
-  ]
+  "type": "object",
+  "default": {
+    "platform": "neutral",
+    "devDependencies": {},
+    "dependencies": {}
+  }
 }

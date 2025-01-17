@@ -17,7 +17,7 @@ import type {
   BaseGeneratorOptions,
   BaseGeneratorResult,
   BaseGeneratorSchema
-} from "../../declarations";
+} from "../types";
 
 export const withRunGenerator =
   <TGeneratorSchema extends BaseGeneratorSchema = any>(

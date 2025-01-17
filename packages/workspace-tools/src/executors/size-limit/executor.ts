@@ -7,7 +7,7 @@ import type { StormConfig } from "@storm-software/config";
 import { writeInfo } from "@storm-software/config-tools";
 import sizeLimit from "size-limit";
 import { withRunExecutor } from "../../base/base-executor";
-import type { SizeLimitExecutorSchema } from "./schema";
+import type { SizeLimitExecutorSchema } from "./schema.d";
 
 // export default [
 //   {

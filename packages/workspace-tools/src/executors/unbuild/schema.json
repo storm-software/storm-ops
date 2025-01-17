@@ -1,127 +1,305 @@
 {
-  "$schema": "https://json-schema.org/schema",
-  "$id": "unbuild",
-  "version": 2,
-  "title": "Unbuild Builder",
-  "description": "Run the unbuild build process on a selected project",
-  "type": "object",
+  "id": "#",
+  "title": "Unbuild Executor",
+  "description": "A type definition for a unbuild executor schema",
   "properties": {
     "entry": {
+      "title": "Entry File",
+      "format": "path",
+      "description": "The entry file to build",
+      "id": "#entry",
+      "default": [
+        "{sourceRoot}/index.ts"
+      ],
       "type": "array",
-      "description": "The path to the entry file (or multiple paths/files), relative to `projectRoot` path.",
-      "x-completion-type": "file",
-      "x-priority": "important",
       "items": {
         "type": "string"
-      },
-      "alias": "main",
-      "default": ["{sourceRoot}"]
+      }
     },
     "outputPath": {
+      "title": "Output Path",
       "type": "string",
-      "description": "The output path of the generated files.",
-      "x-completion-type": "directory",
-      "x-priority": "important",
+      "format": "path",
+      "description": "The output path for the build",
+      "id": "#outputPath",
       "default": "dist/{projectRoot}"
     },
     "tsconfig": {
+      "title": "TSConfig Path",
       "type": "string",
-      "description": "The path to the `tsconfig.json` file.",
-      "x-completion-type": "file",
-      "x-completion-glob": "tsconfig*.json",
-      "x-priority": "important",
+      "format": "path",
+      "description": "The path to the tsconfig file",
+      "id": "#tsconfig",
       "default": "{projectRoot}/tsconfig.json"
     },
-    "watch": {
+    "bundle": {
+      "title": "Bundle",
       "type": "boolean",
-      "description": "Enable re-building when files change.",
+      "description": "Bundle the output",
+      "id": "#bundle",
       "default": false
-    },
-    "assets": {
-      "type": "array",
-      "description": "List of static assets.",
-      "default": [],
-      "items": {
-        "$ref": "#/definitions/assetPattern"
-      }
-    },
-    "clean": {
-      "type": "boolean",
-      "description": "Remove previous output before build.",
-      "alias": "deleteOutputPath",
-      "default": true
-    },
-    "includeSrc": {
-      "type": "boolean",
-      "description": "Should the source files be added to the distribution folder in an `src` directory.",
-      "default": false
-    },
-    "generatePackageJson": {
-      "type": "boolean",
-      "description": "Should a package.json file be generated in the output folder or should the existing one be copied in.",
-      "default": true
-    },
-    "debug": {
-      "type": "boolean",
-      "description": "Should output be unminified with source mappings.",
-      "default": false
-    },
-    "platform": {
-      "type": "string",
-      "description": "Platform target for outputs.",
-      "enum": ["browser", "neutral", "node"],
-      "default": "neutral"
-    },
-    "banner": {
-      "type": "string",
-      "description": "A short heading added to the top of each distribution file added in the output folder.",
-      "default": "//      ⚡ Built by Storm Software"
     },
     "minify": {
+      "title": "Minify",
       "type": "boolean",
-      "description": "Should the build process minify the output files?",
+      "description": "Minify the output",
+      "id": "#minify",
       "default": false
     },
-    "verbose": {
+    "debug": {
+      "title": "Debug",
       "type": "boolean",
-      "description": "Should write extra log outputs with details from the executor.",
+      "description": "Debug the output",
+      "id": "#debug",
       "default": false
+    },
+    "sourcemap": {
+      "title": "Sourcemap",
+      "type": "boolean",
+      "description": "Generate a sourcemap",
+      "id": "#sourcemap",
+      "default": false
+    },
+    "silent": {
+      "title": "Silent",
+      "type": "boolean",
+      "description": "Should the build run silently - only report errors back to the user",
+      "id": "#silent",
+      "default": false
+    },
+    "target": {
+      "title": "Target",
+      "type": "string",
+      "description": "The target to build",
+      "enum": [
+        "es3",
+        "es5",
+        "es6",
+        "es2015",
+        "es2016",
+        "es2017",
+        "es2018",
+        "es2019",
+        "es2020",
+        "es2021",
+        "es2022",
+        "es2023",
+        "es2024",
+        "esnext",
+        "node12",
+        "node14",
+        "node16",
+        "node18",
+        "node20",
+        "node22",
+        "browser",
+        "chrome58",
+        "chrome59",
+        "chrome60"
+      ],
+      "id": "#target",
+      "default": "esnext"
+    },
+    "format": {
+      "title": "Format",
+      "type": "array",
+      "description": "The format to build",
+      "items": {
+        "type": "string",
+        "enum": [
+          "cjs",
+          "esm",
+          "iife"
+        ]
+      },
+      "id": "#format",
+      "default": [
+        "cjs",
+        "esm"
+      ]
+    },
+    "platform": {
+      "title": "Platform",
+      "type": "string",
+      "description": "The platform to build",
+      "enum": [
+        "neutral",
+        "node",
+        "browser"
+      ],
+      "id": "#platform",
+      "default": "neutral"
+    },
+    "external": {
+      "title": "External",
+      "type": "array",
+      "description": "The external dependencies",
+      "id": "#external",
+      "default": [],
+      "items": {
+        "type": "any"
+      }
+    },
+    "define": {
+      "title": "Define",
+      "type": "object",
+      "tsType": "Record<string, string>",
+      "description": "The define values",
+      "id": "#define",
+      "default": {}
+    },
+    "env": {
+      "title": "Environment Variables",
+      "type": "object",
+      "tsType": "Record<string, string>",
+      "description": "The environment variable values",
+      "id": "#env",
+      "default": {}
+    },
+    "name": {
+      "title": "Name",
+      "type": "string",
+      "description": "The name of the project/build",
+      "id": "#name",
+      "default": "{projectName}"
+    },
+    "treeShaking": {
+      "title": "Tree Shaking",
+      "type": "boolean",
+      "description": "Enable tree shaking",
+      "id": "#treeShaking",
+      "default": true
+    },
+    "watch": {
+      "title": "Watch",
+      "type": "boolean",
+      "description": "Watch for changes",
+      "id": "#watch",
+      "default": false
+    },
+    "clean": {
+      "title": "Clean",
+      "type": "boolean",
+      "description": "Clean the output directory before building",
+      "id": "#clean",
+      "default": false
+    },
+    "stub": {
+      "title": "Stub",
+      "type": "boolean",
+      "description": "Stub the output",
+      "id": "#stub",
+      "default": false
+    },
+    "watchOptions": {
+      "title": "Watch Options",
+      "type": "object",
+      "description": "Watch options",
+      "id": "#watchOptions",
+      "default": {}
+    },
+    "stubOptions": {
+      "title": "Stub Options",
+      "type": "object",
+      "description": "Stub options",
+      "id": "#stubOptions",
+      "default": {
+        "jiti": {
+          "cache": "node_modules/.cache/storm"
+        }
+      }
+    },
+    "dependencies": {
+      "title": "Dependencies",
+      "type": "array",
+      "description": "The dependencies to install",
+      "items": {
+        "type": "string"
+      },
+      "id": "#dependencies",
+      "default": []
+    },
+    "peerDependencies": {
+      "title": "Peer Dependencies",
+      "type": "array",
+      "description": "The peer dependencies to install",
+      "items": {
+        "type": "string"
+      },
+      "id": "#peerDependencies",
+      "default": []
+    },
+    "devDependencies": {
+      "title": "Dev Dependencies",
+      "type": "array",
+      "description": "The dev dependencies to install",
+      "items": {
+        "type": "string"
+      },
+      "id": "#devDependencies",
+      "default": []
+    },
+    "alias": {
+      "title": "Alias",
+      "type": "object",
+      "tsType": "Record<string, string>",
+      "description": "The alias to use",
+      "id": "#alias",
+      "default": {}
+    },
+    "replace": {
+      "title": "Replace",
+      "type": "object",
+      "tsType": "Record<string, string>",
+      "description": "The replace to use",
+      "id": "#replace",
+      "default": {}
+    },
+    "rollup": {
+      "title": "Rollup",
+      "type": "object",
+      "description": "The rollup options",
+      "id": "#rollup",
+      "default": {}
     }
   },
-  "required": ["tsConfig", "platform"],
-  "definitions": {
-    "assetPattern": {
-      "oneOf": [
-        {
-          "type": "object",
-          "properties": {
-            "glob": {
-              "type": "string",
-              "description": "The pattern to match."
-            },
-            "input": {
-              "type": "string",
-              "description": "The input directory path in which to apply `glob`. Defaults to the project root."
-            },
-            "output": {
-              "type": "string",
-              "description": "Relative path within the output folder."
-            },
-            "ignore": {
-              "description": "An array of globs to ignore.",
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          "additionalProperties": false,
-          "required": ["glob", "input", "output"]
-        },
-        {
-          "type": "string"
-        }
-      ]
-    }
+  "type": "object",
+  "default": {
+    "entry": [
+      "{sourceRoot}/index.ts"
+    ],
+    "outputPath": "dist/{projectRoot}",
+    "tsconfig": "{projectRoot}/tsconfig.json",
+    "bundle": false,
+    "minify": false,
+    "debug": false,
+    "sourcemap": false,
+    "silent": false,
+    "target": "esnext",
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "platform": "neutral",
+    "external": [],
+    "define": {},
+    "env": {},
+    "name": "{projectName}",
+    "treeShaking": true,
+    "watch": false,
+    "clean": false,
+    "stub": false,
+    "watchOptions": {},
+    "stubOptions": {
+      "jiti": {
+        "cache": "node_modules/.cache/storm"
+      }
+    },
+    "dependencies": [],
+    "peerDependencies": [],
+    "devDependencies": [],
+    "alias": {},
+    "replace": {},
+    "rollup": {}
   }
 }

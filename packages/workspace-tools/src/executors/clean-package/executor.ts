@@ -15,7 +15,7 @@ import {
 import { Glob } from "glob";
 import { withRunExecutor } from "../../base/base-executor";
 import { IGNORE_FIELDS, NPM_SCRIPTS, PUBLISH_CONFIG_FIELDS } from "./constants";
-import { CleanPackageExecutorSchema } from "./schema";
+import { CleanPackageExecutorSchema } from "./schema.d";
 import { PackageJson } from "./types";
 import { createFilesFilter, filterObjectByKey, isObject } from "./utils";
 

@@ -1,7 +1,7 @@
 import type { ExecutorContext } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import { writeInfo } from "@storm-software/config-tools/logger/console";
-import { build } from "@storm-software/tsdown";
+import { build, TSDownOptions } from "@storm-software/tsdown";
 import { withRunExecutor } from "../../base/base-executor";
 import type { TSDownExecutorSchema } from "./schema.d";
 
@@ -33,7 +33,10 @@ export async function tsdownExecutorFn(
       context.projectsConfigurations.projects?.[context.projectName]!.root,
     projectName: context.projectName,
     sourceRoot:
-      context.projectsConfigurations.projects?.[context.projectName]?.sourceRoot
+      context.projectsConfigurations.projects?.[context.projectName]
+        ?.sourceRoot,
+    format: options.format as TSDownOptions["format"],
+    platform: options.platform as TSDownOptions["platform"]
   });
 
   // #endregion Run the build process

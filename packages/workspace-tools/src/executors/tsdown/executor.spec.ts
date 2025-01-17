@@ -1,5 +1,5 @@
 import executor from "./executor";
-import { RolldownExecutorSchema } from "./schema";
+import { RolldownExecutorSchema } from "./schema.d";
 
 const options: RolldownExecutorSchema = {};
 

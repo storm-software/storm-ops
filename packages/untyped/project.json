@@ -1,0 +1,31 @@
+{
+  "name": "untyped",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/untyped/src",
+  "projectType": "library",
+  "targets": {
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "tsup-node --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/untyped",
+          "pnpm copyfiles --up=2 ./packages/untyped/*.md ./packages/untyped/package.json dist/packages/untyped",
+          "pnpm copyfiles --up=4 ./packages/untyped/dist/bin/* dist/packages/untyped/bin",
+          "pnpm copyfiles --up=4 ./packages/untyped/dist/src/* dist/packages/untyped/dist"
+        ]
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  }
+}

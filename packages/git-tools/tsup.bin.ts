@@ -5,7 +5,7 @@ export default defineConfig([
     name: "git-tools-bin",
     target: "node22",
     entryPoints: ["bin/*/index.ts"],
-    format: ["cjs", "esm"],
+    format: ["cjs"],
     outDir: "dist/bin",
     platform: "node",
     splitting: false,

@@ -2,7 +2,7 @@ import { Tree, readProjectConfiguration } from "@nx/devkit";
 import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 
 import { browserLibraryGenerator } from "./generator";
-import { BrowserLibraryGeneratorSchema } from "./schema";
+import { BrowserLibraryGeneratorSchema } from "./schema.d";
 
 describe("browser-library generator", () => {
   let tree: Tree;

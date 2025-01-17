@@ -1,7 +1,7 @@
 import { ExecutorContext } from "@nx/devkit";
 
 import executor from "./executor";
-import { SizeLimitExecutorSchema } from "./schema";
+import { SizeLimitExecutorSchema } from "./schema.d";
 
 const options: SizeLimitExecutorSchema = {};
 const context: ExecutorContext = {

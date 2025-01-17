@@ -1,113 +1,69 @@
 {
-  "$schema": "http://json-schema.org/schema",
-  "$id": "preset",
-  "title": "Workspace Preset",
-  "description": "Create a Storm workspace with all of the required files and recommended packages installed.",
-  "type": "object",
-  "example": [
-    {
-      "command": "nx g @storm-software/workspace-tools:preset --name 'example-repo'",
-      "description": "Generate a storm workspace with: \n- name: example-repo \n- namespace: storm-software \n- organization: storm-software \n- repositoryUrl: <https://github.com/storm-software/example-repo>"
-    },
-
-    {
-      "command": "nx g @storm-software/workspace-tools:preset --name 'example-repo' --namespace 'example'",
-      "description": "Generate a storm workspace with: \n- name: example-repo \n- namespace: example \n- repositoryUrl: <https://github.com/storm-software/example-repo>"
-    },
-    {
-      "command": "nx g @storm-software/workspace-tools:preset --name 'example-repo' --namespace 'example' --organization 'example-org' --description 'An example workspace'",
-      "description": "Generate a storm workspace with: \n- name: example-repo \n- namespace: example \n- organization: example-org \n- description: An example workspace \n- repositoryUrl: <https://github.com/example-org/example-repo>"
-    }
-  ],
+  "id": "#",
+  "title": "Preset Generator",
+  "description": "A type definition for a preset generator schema",
   "properties": {
     "name": {
+      "title": "Name",
       "type": "string",
-      "description": "The name of the workspace root.",
-      "$default": {
-        "$source": "argv",
-        "index": 0
-      },
-      "x-prompt": "What name would you like to use?"
+      "description": "The name of the workspace",
+      "id": "#name"
     },
     "organization": {
+      "title": "Organization",
       "type": "string",
-      "description": "The organization that owns the workspace.",
-      "default": "storm-software",
-      "$default": {
-        "$source": "argv",
-        "index": 1
-      },
-      "x-prompt": "What organization owns this repository?"
-    },
-    "namespace": {
-      "type": "string",
-      "description": "The npm scope used for the workspace. Defaults to the organization name.",
-      "$default": {
-        "$source": "argv",
-        "index": 2
-      },
-      "x-prompt": "What namespace (npm scope) would you like to use? Defaults to the organization name."
+      "description": "The organization of the workspace",
+      "id": "#organization"
     },
     "includeApps": {
+      "title": "Include Apps",
       "type": "boolean",
-      "description": "Should a separate `apps` folder be created for this workspace (if Yes: `apps` and `libs` folders will be added, if No: `packages` folders will be added)?",
-      "default": false,
-      "$default": {
-        "$source": "argv",
-        "index": 3
-      },
-      "x-prompt": "Is the workspace a purely package based repository (one large packages folder) or does it include apps (split between apps and libs folders)?"
-    },
-    "description": {
-      "type": "string",
-      "description": "The description of the workspace to use in the package.json and README.md files.",
-      "$default": {
-        "$source": "argv",
-        "index": 4
-      },
-      "x-prompt": "Provide a description of the workspace to use in the package.json and README.md files."
-    },
-    "repositoryUrl": {
-      "type": "string",
-      "description": "The URL of the workspace in GitHub. Defaults to <https://github.com/{organization}/{name}>",
-      "$default": {
-        "$source": "argv",
-        "index": 5
-      },
-      "x-prompt": "What is the workspace's GitHub repository URL?"
+      "description": "Include apps in the workspace",
+      "id": "#includeApps"
     },
     "includeRust": {
+      "title": "Include Rust",
       "type": "boolean",
-      "description": "Should the workspace include Rust support?",
-      "default": false,
-      "$default": {
-        "$source": "argv",
-        "index": 6
-      },
-      "x-prompt": "Should the workspace include Rust support?"
+      "description": "Include Rust support in the workspace",
+      "id": "#includeRust"
+    },
+    "namespace": {
+      "title": "Namespace",
+      "type": "string",
+      "description": "The namespace of the workspace",
+      "id": "#namespace"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string",
+      "description": "The description of the workspace",
+      "id": "#description"
+    },
+    "repositoryUrl": {
+      "title": "Repository URL",
+      "type": "string",
+      "description": "The URL of the repository",
+      "id": "#repositoryUrl"
     },
     "nxCloud": {
-      "type": "boolean",
-      "description": "Should distributed caching with Nx Cloud be enabled for the workspace?",
-      "default": false,
-      "x-prompt": "Should distributed caching with Nx Cloud be enabled for the workspace?",
-      "hidden": true
+      "title": "Nx Cloud",
+      "type": "string",
+      "description": "Nx Cloud configuration",
+      "id": "#nxCloud"
     },
     "mode": {
+      "title": "Mode",
       "type": "string",
-      "description": "Which client mode should be used for the Nx Task Runner?",
-      "default": "dark",
-      "enum": ["light", "dark"],
-      "x-prompt": "Which client mode should be used for the Nx Task Runner?"
+      "description": "The mode of the Nx client",
+      "id": "#mode"
     },
     "packageManager": {
+      "title": "Package Manager",
       "type": "string",
-      "description": "What package manager is used for the workspace?",
-      "enum": ["npm", "yarn", "pnpm"],
-      "default": "pnpm",
-      "x-prompt": "What package manager is used for the workspace?",
-      "hidden": true
+      "description": "The package manager to use",
+      "id": "#packageManager"
     }
   },
-  "required": ["name", "organization", "includeApps", "mode"]
+  "type": "object",
+  "default": {}
 }

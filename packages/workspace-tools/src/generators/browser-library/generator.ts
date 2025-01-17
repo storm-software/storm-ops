@@ -7,13 +7,13 @@ import {
   offsetFromRoot
 } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
-import type { TypeScriptLibraryGeneratorSchema } from "../../../declarations.d";
 import { withRunGenerator } from "../../base/base-generator";
 import {
   normalizeOptions,
   typeScriptLibraryGeneratorFn
 } from "../../base/typescript-library-generator";
-import type { BrowserLibraryGeneratorSchema } from "./schema";
+import type { TypeScriptLibraryGeneratorSchema } from "../../types";
+import type { BrowserLibraryGeneratorSchema } from "./schema.d";
 
 export async function browserLibraryGeneratorFn(
   tree: Tree,
@@ -41,7 +41,8 @@ export async function browserLibraryGeneratorFn(
         optional: true
       }
     },
-    buildExecutor: "@storm-software/workspace-tools:unbuild"
+    buildExecutor: "@storm-software/workspace-tools:unbuild",
+    directory: schema.directory
   };
 
   const options = await normalizeOptions(tree, tsLibraryGeneratorOptions);

@@ -1,7 +1,7 @@
 import { ExecutorContext } from "@nx/devkit";
 
 import executor from "./executor";
-import { CargoCheckExecutorSchema } from "./schema";
+import { CargoCheckExecutorSchema } from "./schema.d";
 
 const options: CargoCheckExecutorSchema = {};
 const context: ExecutorContext = {

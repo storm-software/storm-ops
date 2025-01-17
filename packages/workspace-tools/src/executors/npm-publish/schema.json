@@ -1,28 +1,55 @@
 {
-  "$schema": "http://json-schema.org/schema",
-  "version": 2,
-  "$id": "npm-publish",
-  "title": "Npm Publish",
-  "description": "Publish a package to the NPM registry - DO NOT INVOKE DIRECTLY WITH `nx run`. Use `nx release publish` instead.",
-  "type": "object",
+  "id": "#",
+  "title": "Npm Publish Executor",
+  "description": "A type definition for a Npm Publish executor schema",
   "properties": {
     "packageRoot": {
+      "title": "Package Root",
       "type": "string",
-      "description": "The root directory of the package (containing a manifest file at its root) to publish. Defaults to the project root."
+      "format": "path",
+      "description": "The path to the package root",
+      "id": "#packageRoot"
     },
     "registry": {
+      "title": "Registry",
       "type": "string",
-      "description": "The NPM registry URL to publish the package to.",
-      "format": "uri"
+      "description": "The registry to publish to",
+      "id": "#registry",
+      "default": "https://registry.npmjs.org/"
     },
     "tag": {
+      "title": "Tag",
       "type": "string",
-      "description": "The distribution tag to apply to the published package."
+      "description": "The tag to publish with",
+      "id": "#tag",
+      "default": "latest"
+    },
+    "otp": {
+      "title": "Otp",
+      "type": "number",
+      "description": "The one time password",
+      "id": "#otp"
     },
     "dryRun": {
+      "title": "Dry Run",
       "type": "boolean",
-      "description": "Whether to run the command without actually publishing the package to the registry."
+      "description": "Perform a dry run",
+      "id": "#dryRun",
+      "default": false
+    },
+    "firstRelease": {
+      "title": "First Release",
+      "type": "boolean",
+      "description": "Publish the first release",
+      "id": "#firstRelease",
+      "default": false
     }
   },
-  "required": []
+  "type": "object",
+  "default": {
+    "registry": "https://registry.npmjs.org/",
+    "tag": "latest",
+    "dryRun": false,
+    "firstRelease": false
+  }
 }

@@ -9,7 +9,7 @@ import {
 import * as z from "zod";
 import { JsonSchema7Type, zodToJsonSchema } from "zod-to-json-schema";
 import { withRunGenerator } from "../../base/base-generator";
-import type { ConfigSchemaGeneratorSchema } from "./schema";
+import type { ConfigSchemaGeneratorSchema } from "./schema.d";
 
 export type ModuleSchema = {
   name: string;

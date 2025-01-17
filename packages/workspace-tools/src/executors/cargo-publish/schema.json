@@ -1,24 +1,132 @@
 {
-  "$schema": "https://json-schema.org/schema",
-  "version": 2,
-  "$id": "cargo-publish",
-  "title": "Cargo Publish",
-  "description": "Publish a package to the crates.io registry - DO NOT INVOKE DIRECTLY WITH `nx run`. Use `nx release publish` instead.",
-  "type": "object",
+  "id": "#",
+  "title": "Cargo Publish Executor",
+  "description": "A type definition for a Cargo/rust Publish executor schema",
   "properties": {
-    "registry": {
+    "entry": {
+      "title": "Entry File",
+      "format": "path",
+      "description": "The entry file to build",
+      "id": "#entry",
+      "default": [
+        "{sourceRoot}/index.ts"
+      ],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outputPath": {
+      "title": "Output Path",
       "type": "string",
-      "description": "The Cargo registry URL to publish the package to.",
-      "format": "uri"
+      "format": "path",
+      "description": "The output path for the build",
+      "id": "#outputPath",
+      "default": "dist/{projectRoot}"
+    },
+    "tsconfig": {
+      "title": "TSConfig Path",
+      "type": "string",
+      "format": "path",
+      "description": "The path to the tsconfig file",
+      "id": "#tsconfig",
+      "default": "{projectRoot}/tsconfig.json"
+    },
+    "package": {
+      "title": "Cargo.toml Path",
+      "type": "string",
+      "format": "path",
+      "description": "The path to the Cargo.toml file",
+      "id": "#package",
+      "default": "{projectRoot}/Cargo.toml"
+    },
+    "toolchain": {
+      "title": "Toolchain",
+      "description": "The type of toolchain to use for the build",
+      "enum": [
+        "stable",
+        "beta",
+        "nightly"
+      ],
+      "default": "stable",
+      "id": "#toolchain",
+      "type": "string"
+    },
+    "target": {
+      "title": "Target",
+      "type": "string",
+      "description": "The target to build",
+      "id": "#target"
+    },
+    "allTargets": {
+      "title": "All Targets",
+      "type": "boolean",
+      "description": "Build all targets",
+      "id": "#allTargets"
+    },
+    "profile": {
+      "title": "Profile",
+      "type": "string",
+      "description": "The profile to build",
+      "id": "#profile"
+    },
+    "release": {
+      "title": "Release",
+      "type": "boolean",
+      "description": "Build in release mode",
+      "id": "#release"
+    },
+    "features": {
+      "title": "Features",
+      "type": "string",
+      "description": "The features to build",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ],
+      "id": "#features"
+    },
+    "allFeatures": {
+      "title": "All Features",
+      "type": "boolean",
+      "description": "Build all features",
+      "id": "#allFeatures"
+    },
+    "registry": {
+      "title": "Registry",
+      "type": "string",
+      "description": "The registry to publish to",
+      "id": "#registry"
     },
     "packageRoot": {
+      "title": "Package Root",
       "type": "string",
-      "description": "The root directory of the directory (containing a manifest file at its root) to publish. Defaults to the project root."
+      "format": "path",
+      "description": "The path to the package root",
+      "id": "#packageRoot"
     },
     "dryRun": {
+      "title": "Dry Run",
       "type": "boolean",
-      "description": "Whether to run the command without actually publishing the package to the registry."
+      "description": "Perform a dry run",
+      "id": "#dryRun"
     }
   },
-  "required": []
+  "type": "object",
+  "default": {
+    "entry": [
+      "{sourceRoot}/index.ts"
+    ],
+    "outputPath": "dist/{projectRoot}",
+    "tsconfig": "{projectRoot}/tsconfig.json",
+    "package": "{projectRoot}/Cargo.toml",
+    "toolchain": "stable"
+  }
 }

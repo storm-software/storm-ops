@@ -1,151 +1,189 @@
 {
-  "$schema": "http://json-schema.org/schema",
-  "$id": "cargo-doc",
-  "outputCapture": "direct-nodejs",
-  "version": 2,
-  "title": "Cargo Doc",
-  "description": "Create docs for a Rust project with Cargo Doc",
-  "type": "object",
+  "id": "#",
+  "title": "Cargo Doc Executor",
+  "description": "A type definition for a Cargo/rust documentation executor schema",
   "properties": {
-    "release": {
-      "type": "boolean",
-      "description": "Run the Cargo command for the project in release mode",
-      "default": true
-    },
-    "profile": {
-      "type": "string",
-      "description": "Build artifacts with the specified profile"
+    "entry": {
+      "title": "Entry File",
+      "format": "path",
+      "description": "The entry file to build",
+      "id": "#entry",
+      "default": [
+        "{sourceRoot}/index.ts"
+      ],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     },
     "outputPath": {
+      "title": "Output Path",
       "type": "string",
-      "description": "The output path of the generated files.",
-      "x-completion-type": "directory",
-      "x-priority": "important",
-      "alias": "target-dir",
-      "default": "dist/docs/{projectRoot}"
+      "format": "path",
+      "description": "The output path for the build",
+      "id": "#outputPath",
+      "default": "dist/{projectRoot}"
+    },
+    "tsconfig": {
+      "title": "TSConfig Path",
+      "type": "string",
+      "format": "path",
+      "description": "The path to the tsconfig file",
+      "id": "#tsconfig",
+      "default": "{projectRoot}/tsconfig.json"
+    },
+    "package": {
+      "title": "Cargo.toml Path",
+      "type": "string",
+      "format": "path",
+      "description": "The path to the Cargo.toml file",
+      "id": "#package",
+      "default": "{projectRoot}/Cargo.toml"
     },
     "toolchain": {
-      "type": "string",
-      "description": "The Rust toolchain to use",
-      "enum": ["stable", "beta", "nightly"],
-      "default": "stable"
-    },
-    "noDeps": {
-      "type": "boolean",
-      "default": true,
-      "description": "Don't build documentation for dependencies"
-    },
-    "features": {
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
+      "title": "Toolchain",
+      "description": "The type of toolchain to use for the build",
+      "enum": [
+        "stable",
+        "beta",
+        "nightly"
       ],
-      "description": "Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported"
-    },
-    "allFeatures": {
-      "type": "boolean",
-      "default": true,
-      "description": "Build all binary targets",
-      "alias": "all-features"
+      "default": "stable",
+      "id": "#toolchain",
+      "type": "string"
     },
     "target": {
+      "title": "Target",
       "type": "string",
-      "description": "Build the specified target"
-    },
-    "lib": {
-      "type": "boolean",
-      "description": "Build the package's library",
-      "default": true
-    },
-    "bin": {
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      ],
-      "description": "Build the specified binary. Array of names or common Unix glob patterns is supported"
-    },
-    "bins": {
-      "type": "boolean",
-      "default": true,
-      "description": "Build all binary targets"
-    },
-    "example": {
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      ],
-      "description": "Build the specified example. Array of names or common Unix glob patterns is supported"
-    },
-    "examples": {
-      "type": "boolean",
-      "default": true,
-      "description": "Build all example targets"
-    },
-    "test": {
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      ],
-      "description": "Build the specified test. Array of names or common Unix glob patterns is supported"
-    },
-    "tests": {
-      "type": "boolean",
-      "default": false,
-      "description": "Build all test targets"
-    },
-    "bench": {
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      ],
-      "description": "Build the specified bench. Array of names or common Unix glob patterns is supported"
-    },
-    "benches": {
-      "type": "boolean",
-      "default": false,
-      "description": "Build all targets in benchmark mode that have the bench = true manifest flag set. By default this includes the library and binaries built as benchmarks, and bench targets. Be aware that this will also build any required dependencies, so the lib target may be built twice (once as a benchmark, and once as a dependency for binaries, benchmarks, etc.). Targets may be enabled or disabled by setting the bench flag in the manifest settings for the target."
+      "description": "The target to build",
+      "id": "#target"
     },
     "allTargets": {
+      "title": "All Targets",
       "type": "boolean",
-      "default": false,
-      "description": "Build all test targets",
-      "alias": "all-targets"
+      "description": "Build all targets",
+      "id": "#allTargets"
+    },
+    "profile": {
+      "title": "Profile",
+      "type": "string",
+      "description": "The profile to build",
+      "id": "#profile"
+    },
+    "release": {
+      "title": "Release",
+      "type": "boolean",
+      "description": "Build in release mode",
+      "id": "#release"
+    },
+    "features": {
+      "title": "Features",
+      "type": "string",
+      "description": "The features to build",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ],
+      "id": "#features"
+    },
+    "allFeatures": {
+      "title": "All Features",
+      "type": "boolean",
+      "description": "Build all features",
+      "id": "#allFeatures"
+    },
+    "lib": {
+      "title": "Library",
+      "type": "boolean",
+      "description": "Generate documentation for the library",
+      "id": "#lib",
+      "properties": {
+        "default": {
+          "type": "boolean",
+          "id": "#lib/default",
+          "default": true
+        }
+      },
+      "default": {
+        "default": true
+      }
+    },
+    "bins": {
+      "title": "Bins",
+      "type": "boolean",
+      "description": "Generate documentation for the bins",
+      "id": "#bins",
+      "properties": {
+        "default": {
+          "type": "boolean",
+          "id": "#bins/default",
+          "default": true
+        }
+      },
+      "default": {
+        "default": true
+      }
+    },
+    "examples": {
+      "title": "Examples",
+      "type": "boolean",
+      "description": "Generate documentation for the examples",
+      "id": "#examples",
+      "properties": {
+        "default": {
+          "type": "boolean",
+          "id": "#examples/default",
+          "default": true
+        }
+      },
+      "default": {
+        "default": true
+      }
+    },
+    "noDeps": {
+      "title": "No Dependencies",
+      "type": "boolean",
+      "description": "Do not generate documentation for dependencies",
+      "id": "#noDeps",
+      "properties": {
+        "default": {
+          "type": "boolean",
+          "id": "#noDeps/default",
+          "default": false
+        }
+      },
+      "default": {
+        "default": false
+      }
     }
   },
-  "required": ["outputPath"]
+  "type": "object",
+  "default": {
+    "entry": [
+      "{sourceRoot}/index.ts"
+    ],
+    "outputPath": "dist/{projectRoot}",
+    "tsconfig": "{projectRoot}/tsconfig.json",
+    "package": "{projectRoot}/Cargo.toml",
+    "toolchain": "stable",
+    "lib": {
+      "default": true
+    },
+    "bins": {
+      "default": true
+    },
+    "examples": {
+      "default": true
+    },
+    "noDeps": {
+      "default": false
+    }
+  }
 }

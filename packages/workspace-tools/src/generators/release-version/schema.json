@@ -1,55 +1,141 @@
 {
-  "$schema": "https://json-schema.org/schema",
-  "$id": "release-version",
-  "version": 2,
-  "title": "Storm Release Version Generator",
-  "description": "The release version generator used in Storm Workspaces",
-  "type": "object",
+  "id": "#",
+  "title": "Release Version Generator",
+  "description": "A type definition for a release version generator schema",
   "properties": {
     "projects": {
+      "title": "Projects",
       "type": "array",
-      "description": "The ProjectGraphProjectNodes being versioned in the current execution.",
       "items": {
         "type": "object"
-      }
-    },
-    "projectGraph": {
-      "type": "object",
-      "description": "ProjectGraph instance"
-    },
-    "specifier": {
-      "type": "string",
-      "description": "Exact version or semver keyword to apply to the selected release group. Overrides specifierSource."
+      },
+      "description": "The projects to release",
+      "id": "#projects"
     },
     "releaseGroup": {
+      "title": "Release Group",
       "type": "object",
-      "description": "The resolved release group configuration, including name, relevant to all projects in the current execution."
+      "description": "The release group",
+      "id": "#releaseGroup",
+      "default": {}
+    },
+    "projectGraph": {
+      "title": "Project Graph",
+      "type": "object",
+      "description": "The project graph",
+      "id": "#projectGraph",
+      "default": {}
+    },
+    "specifier": {
+      "title": "Specifier",
+      "type": "string",
+      "description": "The specifier",
+      "id": "#specifier"
     },
     "specifierSource": {
+      "title": "Specifier Source",
       "type": "string",
-      "default": "conventional-commits",
-      "description": "Which approach to use to determine the semver specifier used to bump the version of the project.",
-      "enum": ["prompt", "conventional-commits"]
+      "description": "The specifier source",
+      "id": "#specifierSource"
     },
     "preid": {
+      "title": "Preid",
       "type": "string",
-      "description": "The optional prerelease identifier to apply to the version, in the case that specifier has been set to prerelease."
+      "description": "The preid",
+      "id": "#preid"
     },
     "packageRoot": {
+      "title": "Package Root",
       "type": "string",
-      "description": "The root directory of the directory (containing a manifest file at its root) to publish. Defaults to the project root"
+      "description": "The package root",
+      "id": "#packageRoot"
     },
     "currentVersionResolver": {
+      "title": "Current Version Resolver",
       "type": "string",
-      "default": "disk",
-      "description": "Which approach to use to determine the current version of the project.",
-      "enum": ["registry", "disk", "git-tag"]
+      "description": "The current version resolver",
+      "id": "#currentVersionResolver"
     },
     "currentVersionResolverMetadata": {
+      "title": "Current Version Resolver Metadata",
       "type": "object",
-      "description": "Additional metadata to pass to the current version resolver.",
+      "description": "The current version resolver metadata",
+      "id": "#currentVersionResolverMetadata",
       "default": {}
+    },
+    "fallbackCurrentVersionResolver": {
+      "title": "Fallback Current Version Resolver",
+      "type": "string",
+      "description": "The fallback current version resolver",
+      "id": "#fallbackCurrentVersionResolver"
+    },
+    "firstRelease": {
+      "title": "First Release",
+      "type": "boolean",
+      "description": "Release the first version",
+      "id": "#firstRelease"
+    },
+    "versionPrefix": {
+      "title": "Version Prefix",
+      "type": "string",
+      "description": "The version prefix",
+      "id": "#versionPrefix"
+    },
+    "skipLockFileUpdate": {
+      "title": "Skip Lock File Update",
+      "type": "boolean",
+      "description": "Skip lock file update",
+      "id": "#skipLockFileUpdate"
+    },
+    "installArgs": {
+      "title": "Install Args",
+      "type": "string",
+      "description": "The install arguments",
+      "id": "#installArgs"
+    },
+    "installIgnoreScripts": {
+      "title": "Install Ignore Scripts",
+      "type": "boolean",
+      "description": "Ignore scripts",
+      "id": "#installIgnoreScripts"
+    },
+    "conventionalCommitsConfig": {
+      "title": "Conventional Commits Config",
+      "type": "object",
+      "description": "The conventional commits config",
+      "id": "#conventionalCommitsConfig",
+      "default": {}
+    },
+    "deleteVersionPlans": {
+      "title": "Delete Version Plans",
+      "type": "boolean",
+      "description": "Delete version plans",
+      "id": "#deleteVersionPlans"
+    },
+    "updateDependents": {
+      "title": "Update Dependents",
+      "type": "string",
+      "description": "Update dependents",
+      "id": "#updateDependents"
+    },
+    "logUnchangedProjects": {
+      "title": "Log Unchanged Projects",
+      "type": "boolean",
+      "description": "Log unchanged projects",
+      "id": "#logUnchangedProjects"
+    },
+    "preserveLocalDependencyProtocols": {
+      "title": "Preserve Local Dependency Protocols",
+      "type": "boolean",
+      "description": "Preserve local dependency protocols",
+      "id": "#preserveLocalDependencyProtocols"
     }
   },
-  "required": ["projects", "projectGraph", "releaseGroup"]
+  "type": "object",
+  "default": {
+    "releaseGroup": {},
+    "projectGraph": {},
+    "currentVersionResolverMetadata": {},
+    "conventionalCommitsConfig": {}
+  }
 }

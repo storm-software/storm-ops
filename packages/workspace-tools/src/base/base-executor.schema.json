@@ -1,0 +1,44 @@
+{
+  "id": "#",
+  "title": "Base Executor",
+  "description": "A base type definition for an executor schema",
+  "properties": {
+    "entry": {
+      "title": "Entry File",
+      "format": "path",
+      "description": "The entry file to build",
+      "id": "#entry",
+      "default": [
+        "{sourceRoot}/index.ts"
+      ],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outputPath": {
+      "title": "Output Path",
+      "type": "string",
+      "format": "path",
+      "description": "The output path for the build",
+      "id": "#outputPath",
+      "default": "dist/{projectRoot}"
+    },
+    "tsconfig": {
+      "title": "TSConfig Path",
+      "type": "string",
+      "format": "path",
+      "description": "The path to the tsconfig file",
+      "id": "#tsconfig",
+      "default": "{projectRoot}/tsconfig.json"
+    }
+  },
+  "type": "object",
+  "default": {
+    "entry": [
+      "{sourceRoot}/index.ts"
+    ],
+    "outputPath": "dist/{projectRoot}",
+    "tsconfig": "{projectRoot}/tsconfig.json"
+  }
+}

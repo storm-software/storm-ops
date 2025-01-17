@@ -1,7 +1,7 @@
 import { ExecutorContext } from "@nx/devkit";
 
 import executor from "./executor";
-import { CargoBuildExecutorSchema } from "./schema";
+import { CargoBuildExecutorSchema } from "./schema.d";
 
 const options: CargoBuildExecutorSchema = {};
 const context: ExecutorContext = {

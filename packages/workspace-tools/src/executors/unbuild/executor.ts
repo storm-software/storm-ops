@@ -1,7 +1,8 @@
 import type { ExecutorContext } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import { writeInfo } from "@storm-software/config-tools/logger/console";
-import { build } from "@storm-software/unbuild";
+import { build, UnbuildOptions } from "@storm-software/unbuild";
+import { defu } from "defu";
 import { withRunExecutor } from "../../base/base-executor";
 import type { UnbuildExecutorSchema } from "./schema.d";
 
@@ -27,15 +28,48 @@ export async function unbuildExecutorFn(
 
   // #endregion Prepare build context variables
 
-  await build({
-    ...options,
-    config,
-    projectRoot:
-      context.projectsConfigurations.projects?.[context.projectName]!.root,
-    projectName: context.projectName,
-    sourceRoot:
-      context.projectsConfigurations.projects?.[context.projectName]?.sourceRoot
-  });
+  await build(
+    defu(
+      {
+        ...options,
+        projectRoot:
+          context.projectsConfigurations.projects?.[context.projectName]!.root,
+        projectName: context.projectName,
+        sourceRoot:
+          context.projectsConfigurations.projects?.[context.projectName]
+            ?.sourceRoot,
+        platform: options.platform as UnbuildOptions["platform"],
+        name: context.projectName
+      },
+      {
+        stubOptions: {
+          jiti: {
+            cache: "node_modules/.cache/storm"
+          }
+        },
+        rollup: {
+          emitCJS: true,
+          watch: false,
+          cjsBridge: false,
+          dts: {
+            respectExternal: true
+          },
+          replace: {},
+          alias: {},
+          resolve: {},
+          json: {},
+          commonjs: {},
+          esbuild: {
+            target: options.target,
+            format: "esm",
+            platform: options.platform,
+            minify: options.minify,
+            treeShaking: options.treeShaking
+          }
+        }
+      }
+    ) as UnbuildOptions
+  );
 
   // #endregion Run the build process
 
@@ -45,7 +79,7 @@ export async function unbuildExecutorFn(
 }
 
 export default withRunExecutor<UnbuildExecutorSchema>(
-  "TypeScript Unbuild processing",
+  "TypeScript Unbuild build",
   unbuildExecutorFn,
   {
     skipReadingConfig: false,

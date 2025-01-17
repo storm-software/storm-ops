@@ -1,4 +1,4 @@
-// import { CargoReleasePublishExecutorSchema } from "./schema";
+// import { CargoReleasePublishExecutorSchema } from "./schema.d";
 // import executor from "./executor";
 
 // const options: CargoReleasePublishExecutorSchema = {};

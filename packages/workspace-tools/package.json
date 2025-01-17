@@ -27,18 +27,18 @@
     "./assets/esm_shims": "./assets/esm_shims.js",
     "./migrations.json": "./migrations.json",
     "./generators.json": "./generators.json",
-    "./generators/*/schema.json": "./src/generators/*/schema.json",
+    "./generators/*/schema.json": "./dist/generators/*/schema.json",
     "./executors.json": "./executors.json",
-    "./executors/*/schema.json": "./src/executors/*/schema.json",
-    "./plugins/rust": "./src/plugins/rust/index.js",
-    "./plugins/typescript": "./src/plugins/typescript/index.js",
-    "./plugins/typescript/tsup": "./src/plugins/typescript/tsup.js",
-    "./plugins/typescript/tsdown": "./src/plugins/typescript/tsdown.js",
-    "./preset": "./src/generators/preset/preset.js",
-    "./base": "./src/base/index.js",
-    "./base/*": "./src/base/*.js",
-    "./utils": "./src/utils/index.js",
-    "./utils/*": "./src/utils/*.js"
+    "./executors/*/schema.json": "./dist/executors/*/schema.json",
+    "./plugins/rust": "./dist/plugins/rust/index.js",
+    "./plugins/typescript": "./dist/plugins/typescript/index.js",
+    "./plugins/typescript/tsup": "./dist/plugins/typescript/tsup.js",
+    "./plugins/typescript/tsdown": "./dist/plugins/typescript/tsdown.js",
+    "./preset": "./dist/generators/preset/generator.js",
+    "./base": "./dist/base/index.js",
+    "./base/*": "./dist/base/*.js",
+    "./utils": "./dist/utils/index.js",
+    "./utils/*": "./dist/utils/*.js"
   },
   "typings": "./declarations.d.ts",
   "keywords": [
@@ -55,8 +55,8 @@
     "@nx/devkit": "catalog:",
     "@samchon/openapi": "^2.3.0",
     "nx": "catalog:",
-    "tsdown": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "typia": "catalog:"
   },
   "peerDependenciesMeta": {
     "@microsoft/api-extractor": {
@@ -71,11 +71,11 @@
     "nx": {
       "optional": false
     },
-    "tsdown": {
-      "optional": true
-    },
     "typescript": {
       "optional": false
+    },
+    "typia": {
+      "optional": true
     }
   },
   "dependencies": {
@@ -87,7 +87,7 @@
     "deep-clone": "4.0.0",
     "defu": "catalog:",
     "fs-extra": "11.2.0",
-    "glob": "10.4.2",
+    "glob": "catalog:",
     "micromatch": "4.0.7",
     "pkg-types": "catalog:",
     "prettier": "catalog:",
@@ -95,9 +95,6 @@
     "read-yaml-file": "catalog:",
     "semver": "7.6.2",
     "size-limit": "11.1.4",
-    "tsdown": "catalog:",
-    "tsup": "8.0.0",
-    "typia": "catalog:",
     "zod": "catalog:",
     "zod-to-json-schema": "3.23.1"
   },
@@ -108,7 +105,10 @@
     "@types/node": "catalog:",
     "@types/semver": "7.5.8",
     "nx": "catalog:",
-    "typescript": "catalog:"
+    "tsup": "catalog:",
+    "typescript": "catalog:",
+    "typia": "catalog:",
+    "untyped": "^1.5.2"
   },
   "publishConfig": {
     "access": "public"

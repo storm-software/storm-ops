@@ -1,0 +1,137 @@
+import { defineUntypedSchema } from "untyped";
+import baseExecutorSchema from "./base-executor.schema";
+
+export default defineUntypedSchema({
+  ...baseExecutorSchema,
+  $schema: {
+    id: "TypeScriptBuildExecutorSchema",
+    title: "TypeScript Build Executor",
+    description:
+      "A type definition for the base TypeScript build executor schema"
+  },
+  bundle: {
+    $schema: {
+      title: "Bundle",
+      type: "boolean",
+      description: "Bundle the output"
+    },
+    $default: false
+  },
+  minify: {
+    $schema: {
+      title: "Minify",
+      type: "boolean",
+      description: "Minify the output"
+    },
+    $default: false
+  },
+  debug: {
+    $schema: {
+      title: "Debug",
+      type: "boolean",
+      description: "Debug the output"
+    },
+    $default: false
+  },
+  sourcemap: {
+    $schema: {
+      title: "Sourcemap",
+      type: "boolean",
+      description: "Generate a sourcemap"
+    },
+    $default: false
+  },
+  silent: {
+    $schema: {
+      title: "Silent",
+      type: "boolean",
+      description:
+        "Should the build run silently - only report errors back to the user"
+    },
+    $default: false
+  },
+  target: {
+    $schema: {
+      title: "Target",
+      type: "string",
+      description: "The target to build",
+      enum: [
+        "es3",
+        "es5",
+        "es6",
+        "es2015",
+        "es2016",
+        "es2017",
+        "es2018",
+        "es2019",
+        "es2020",
+        "es2021",
+        "es2022",
+        "es2023",
+        "es2024",
+        "esnext",
+        "node12",
+        "node14",
+        "node16",
+        "node18",
+        "node20",
+        "node22",
+        "browser",
+        "chrome58",
+        "chrome59",
+        "chrome60"
+      ]
+    },
+    $default: "esnext",
+    $resolve: (val: string = "esnext") => val.toLowerCase()
+  },
+  format: {
+    $schema: {
+      title: "Format",
+      type: "array",
+      description: "The format to build",
+      items: {
+        type: "string",
+        enum: ["cjs", "esm", "iife"]
+      }
+    },
+    $resolve: (val: string[] = ["cjs", "esm"]) => ([] as string[]).concat(val)
+  },
+  platform: {
+    $schema: {
+      title: "Platform",
+      type: "string",
+      description: "The platform to build",
+      enum: ["neutral", "node", "browser"]
+    },
+    $default: "neutral"
+  },
+  external: {
+    $schema: {
+      title: "External",
+      type: "array",
+      description: "The external dependencies"
+    },
+    $resolve: (val: string[] = []) => ([] as string[]).concat(val)
+  },
+  define: {
+    $schema: {
+      title: "Define",
+      type: "object",
+      tsType: "Record<string, string>",
+      description: "The define values"
+    },
+    $resolve: (val: Record<string, string> = {}) => val,
+    $default: {}
+  },
+  env: {
+    $schema: {
+      title: "Environment Variables",
+      type: "object",
+      tsType: "Record<string, string>",
+      description: "The environment variable values"
+    },
+    $resolve: (val: Record<string, string> = {}) => val,
+    $default: {}
+  }
+});

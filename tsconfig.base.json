@@ -18,6 +18,8 @@
       "@storm-software/config/*": ["packages/config/src/*"],
       "@storm-software/esbuild": ["packages/esbuild/src/index.ts"],
       "@storm-software/esbuild/*": ["packages/esbuild/src/*"],
+      "@storm-software/untyped": ["packages/untyped/src/index.ts"],
+      "@storm-software/untyped/*": ["packages/untyped/src/*"],
       "@storm-software/eslint": ["packages/eslint/src/index.ts"],
       "@storm-software/eslint/*": ["packages/eslint/src/*"],
       "@storm-software/git-tools": ["packages/git-tools/src/index.ts"],
