@@ -18,8 +18,6 @@
       "@storm-software/config/*": ["packages/config/src/*"],
       "@storm-software/esbuild": ["packages/esbuild/src/index.ts"],
       "@storm-software/esbuild/*": ["packages/esbuild/src/*"],
-      "@storm-software/untyped": ["packages/untyped/src/index.ts"],
-      "@storm-software/untyped/*": ["packages/untyped/src/*"],
       "@storm-software/eslint": ["packages/eslint/src/index.ts"],
       "@storm-software/eslint/*": ["packages/eslint/src/*"],
       "@storm-software/git-tools": ["packages/git-tools/src/index.ts"],
@@ -47,6 +45,8 @@
       "@storm-software/tsdown/*": ["packages/tsdown/src/*"],
       "@storm-software/unbuild": ["packages/unbuild/src/index.ts"],
       "@storm-software/unbuild/*": ["packages/unbuild/src/*"],
+      "@storm-software/untyped": ["packages/untyped/src/index.ts"],
+      "@storm-software/untyped/*": ["packages/untyped/src/*"],
       "@storm-software/workspace-tools": ["packages/workspace-tools/index.ts"],
       "@storm-software/workspace-tools/*": ["packages/workspace-tools/src/*"],
       "create-storm-workspace": ["packages/create-storm-workspace/bin/index.ts"]

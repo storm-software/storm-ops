@@ -21,7 +21,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-1.227.3-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
+[![Version](https://img.shields.io/badge/version-1.227.4-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -40,68 +40,45 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 ## Table of Contents
 
 - [Storm Workspace Tools](#storm-workspace-tools)
   - [Installing](#installing)
   - [Executors](#executors)
-  - [Typia Generate](#typia-generate)
+  - [typia](#typia)
     - [Example](#example)
-    - [Options](#options)
-  - [TSDown Builder](#tsdown-builder)
+  - [tsdown](#tsdown)
     - [Example](#example-1)
-    - [Options](#options-1)
-  - [ESBuild Builder](#esbuild-builder)
+  - [esbuild](#esbuild)
     - [Example](#example-2)
-    - [Options](#options-2)
-  - [Unbuild Builder](#unbuild-builder)
+  - [unbuild](#unbuild)
     - [Example](#example-3)
-    - [Options](#options-3)
-  - [Clean Publish](#clean-publish)
+  - [clean-package](#clean-package)
     - [Example](#example-4)
-    - [Options](#options-4)
-  - [Size-Limit Test](#size-limit-test)
+  - [size-limit](#size-limit)
     - [Example](#example-5)
-    - [Options](#options-5)
-  - [Npm Publish](#npm-publish)
+  - [npm-publish](#npm-publish)
     - [Example](#example-6)
-    - [Options](#options-6)
-  - [Cargo Publish](#cargo-publish)
+  - [cargo-publish](#cargo-publish)
     - [Example](#example-7)
-    - [Options](#options-7)
-  - [Cargo Build](#cargo-build)
+  - [cargo-build](#cargo-build)
     - [Example](#example-8)
-    - [Options](#options-8)
-  - [Cargo Check](#cargo-check)
+  - [cargo-check](#cargo-check)
     - [Example](#example-9)
-    - [Options](#options-9)
-  - [Cargo Format](#cargo-format)
+  - [cargo-format](#cargo-format)
     - [Example](#example-10)
-    - [Options](#options-10)
-  - [Cargo Clippy](#cargo-clippy)
+  - [cargo-clippy](#cargo-clippy)
     - [Example](#example-11)
-    - [Options](#options-11)
-  - [Cargo Doc](#cargo-doc)
+  - [cargo-doc](#cargo-doc)
     - [Example](#example-12)
-    - [Options](#options-12)
   - [Generators](#generators)
-  - [Init Storm Workspace Plugin](#init-storm-workspace-plugin)
-    - [Options](#options-13)
-  - [Workspace Preset](#workspace-preset)
-    - [Examples](#examples)
-    - [Options](#options-14)
-  - [Add Node Library](#add-node-library)
-    - [Options](#options-15)
-  - [Configuration Schema Creator](#configuration-schema-creator)
-    - [Options](#options-16)
-  - [Add Neutral Library](#add-neutral-library)
-    - [Options](#options-17)
-  - [Add browser Library](#add-browser-library)
-    - [Options](#options-18)
-  - [design-tokens](#design-tokens)
-  - [Storm Release Version Generator](#storm-release-version-generator)
-    - [Options](#options-19)
+  - [init](#init)
+  - [preset](#preset)
+  - [node-library](#node-library)
+  - [config-schema](#config-schema)
+  - [neutral-library](#neutral-library)
+  - [browser-library](#browser-library)
+  - [release-version](#release-version)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
   - [Storm Workspaces](#storm-workspaces)
@@ -162,9 +139,9 @@ the workspace's projects:
 <!-- markdownlint-disable -->
 
 
-## Typia Generate
+## typia
 
-Run the Typia generator to create runtime type validators
+Run the \`typia\` generator to create runtime type validators
 
 ### Example 
 
@@ -174,25 +151,11 @@ This executor can be used by executing the following in a command line utility:
 nx run my-project:typia
 ```
 
-**Please note:** _The typia executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **entryPath \***    | `string`    | The path of the typescript files using \`typia\`.     | "{sourceRoot}"     | 
- | **outputPath \***    | `string`    | The output path of the generated files.     | "{sourceRoot}/__generated__/typia"     | 
- | **tsConfig \***    | `string`    | The path to the \`tsconfig.json\` file.     | "{projectRoot}/tsconfig.json"     | 
- | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+**Please note:** _The typia executor should be included in the desired projects's `project.json` file._ 
 
 
 
-## TSDown Builder
+## tsdown
 
 Run the \`tsdown\` build process on a selected project
 
@@ -204,35 +167,13 @@ This executor can be used by executing the following in a command line utility:
 nx run my-project:tsdown
 ```
 
-**Please note:** _The tsdown executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **entry \***    | `string[]`   | The path to the entry file (or multiple paths/files), relative to \`projectRoot\` path.     | `[]`     | 
- | **outputPath \***    | `string`    | The output path of the generated files.     | "dist/{projectRoot}"     | 
- | **tsconfig \***    | `string`    | The path to the \`tsconfig.json\` file.     | "{projectRoot}/tsconfig.json"     | 
- | watch      | `boolean`    | Enable re-building when files change.     |     | 
- | assets      | `array`    | List of static assets.     | `[]`     | 
- | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
- | includeSrc      | `boolean`    | Should the source files be added to the distribution folder in an \`src\` directory.     |     | 
- | generatePackageJson      | `boolean`    | Should a package.json file be generated in the output folder or should the existing one be copied in.     | `true`     | 
- | debug      | `boolean`    | Should output be unminified with source mappings.     |     | 
- | platform      | "browser" \| "neutral" \| "node"     | Platform target for outputs.     | "neutral"     | 
- | minify      | `boolean`    | Should the build process minify the output files?     |     | 
- | verbose      | `boolean`    | Should write extra log outputs with details from the executor.     |     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+**Please note:** _The tsdown executor should be included in the desired projects's `project.json` file._ 
 
 
 
-## ESBuild Builder
+## esbuild
 
-Run the esbuild build process on a selected project
+Run the \`esbuild\` build process on a selected project
 
 ### Example 
 
@@ -242,36 +183,13 @@ This executor can be used by executing the following in a command line utility:
 nx run my-project:esbuild
 ```
 
-**Please note:** _The esbuild executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **entry \***    | `string[]`   | The path to the entry file (or multiple paths/files), relative to \`projectRoot\` path.     | `[]`     | 
- | **outputPath \***    | `string`    | The output path of the generated files.     | "dist/{projectRoot}"     | 
- | **tsconfig \***    | `string`    | The path to the \`tsconfig.json\` file.     | "{projectRoot}/tsconfig.json"     | 
- | watch      | `boolean`    | Enable re-building when files change.     |     | 
- | assets      | `array`    | List of static assets.     | `[]`     | 
- | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
- | includeSrc      | `boolean`    | Should the source files be added to the distribution folder in an \`src\` directory.     |     | 
- | generatePackageJson      | `boolean`    | Should a package.json file be generated in the output folder or should the existing one be copied in.     | `true`     | 
- | debug      | `boolean`    | Should output be unminified with source mappings.     |     | 
- | platform      | "browser" \| "neutral" \| "node"     | Platform target for outputs.     | "neutral"     | 
- | banner      | `string`    | A short heading added to the top of each distribution file added in the output folder.     | "//      ⚡ Built by Storm Software"     | 
- | minify      | `boolean`    | Should the build process minify the output files?     |     | 
- | verbose      | `boolean`    | Should write extra log outputs with details from the executor.     |     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+**Please note:** _The esbuild executor should be included in the desired projects's `project.json` file._ 
 
 
 
-## Unbuild Builder
+## unbuild
 
-Run the unbuild build process on a selected project
+Run the \`unbuild\` build process on a selected project
 
 ### Example 
 
@@ -281,36 +199,13 @@ This executor can be used by executing the following in a command line utility:
 nx run my-project:unbuild
 ```
 
-**Please note:** _The unbuild executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| entry      | `string[]`   | The path to the entry file (or multiple paths/files), relative to \`projectRoot\` path.     | `[]`     | 
- | outputPath      | `string`    | The output path of the generated files.     | "dist/{projectRoot}"     | 
- | tsconfig      | `string`    | The path to the \`tsconfig.json\` file.     | "{projectRoot}/tsconfig.json"     | 
- | watch      | `boolean`    | Enable re-building when files change.     |     | 
- | assets      | `array`    | List of static assets.     | `[]`     | 
- | clean      | `boolean`    | Remove previous output before build.     | `true`     | 
- | includeSrc      | `boolean`    | Should the source files be added to the distribution folder in an \`src\` directory.     |     | 
- | generatePackageJson      | `boolean`    | Should a package.json file be generated in the output folder or should the existing one be copied in.     | `true`     | 
- | debug      | `boolean`    | Should output be unminified with source mappings.     |     | 
- | **platform \***    | "browser" \| "neutral" \| "node"     | Platform target for outputs.     | "neutral"     | 
- | banner      | `string`    | A short heading added to the top of each distribution file added in the output folder.     | "//      ⚡ Built by Storm Software"     | 
- | minify      | `boolean`    | Should the build process minify the output files?     |     | 
- | verbose      | `boolean`    | Should write extra log outputs with details from the executor.     |     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+**Please note:** _The unbuild executor should be included in the desired projects's `project.json` file._ 
 
 
 
-## Clean Publish
+## clean-package
 
-Remove configuration files, fields, and scripts for development before publishing package. This tool is inspired by the [clean-publish](https://github.com/shashkovdanil/clean-publish/tree/master) package
+Remove configuration files, fields, and scripts for development before publishing package. The executor will remove these unnecessary files and fields to make the distributable package as light as possible (for scenarios like edge computing, limited memory environments, etc.)
 
 ### Example 
 
@@ -320,27 +215,11 @@ This executor can be used by executing the following in a command line utility:
 nx run my-project:clean-package
 ```
 
-**Please note:** _The clean-package executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **outputPath \***    | `string`    | The output path of the generated files.     | "dist/{projectRoot}"     | 
- | packageJsonPath      | `string`    | The path to the package.json file, relative to the workspace root.     |     | 
- | **cleanReadMe \***    | `boolean`    | Should API Extractor generate an TSDoc Metadata file.     | `true`     | 
- | **cleanComments \***    | `boolean`    | Should API Extractor generate an TSDoc Metadata file.     | `true`     | 
- | ignoredFiles      | `string`    | List of ESBuild plugins to use during processing     |     | 
- | fields      | `string`    | List of ESBuild plugins to use during processing     |     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+**Please note:** _The clean-package executor should be included in the desired projects's `project.json` file._ 
 
 
 
-## Size-Limit Test
+## size-limit
 
 Run a size-limit performance test on the project
 
@@ -354,20 +233,11 @@ nx run my-project:size-limit
 
 **Please note:** _The size-limit executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| entry      | `string`    | The path to the entry file, relative to project.     |     | 
 
 
+## npm-publish
 
-
-## Npm Publish
-
-Publish a package to the NPM registry - DO NOT INVOKE DIRECTLY WITH \`nx run\`. Use \`nx release publish\` instead.
+Publish a package to the NPM registry
 
 ### Example 
 
@@ -379,23 +249,11 @@ nx run my-project:npm-publish
 
 **Please note:** _The npm-publish executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| packageRoot      | `string`    | The root directory of the package (containing a manifest file at its root) to publish. Defaults to the project root.     |     | 
- | registry      | `string`    | The NPM registry URL to publish the package to.     |     | 
- | tag      | `string`    | The distribution tag to apply to the published package.     |     | 
- | dryRun      | `boolean`    | Whether to run the command without actually publishing the package to the registry.     |     | 
 
 
+## cargo-publish
 
-
-## Cargo Publish
-
-Publish a package to the crates.io registry - DO NOT INVOKE DIRECTLY WITH \`nx run\`. Use \`nx release publish\` instead.
+Publish a Rust crate to the crates.io registry
 
 ### Example 
 
@@ -407,22 +265,11 @@ nx run my-project:cargo-publish
 
 **Please note:** _The cargo-publish executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| registry      | `string`    | The Cargo registry URL to publish the package to.     |     | 
- | packageRoot      | `string`    | The root directory of the directory (containing a manifest file at its root) to publish. Defaults to the project root.     |     | 
- | dryRun      | `boolean`    | Whether to run the command without actually publishing the package to the registry.     |     | 
 
 
+## cargo-build
 
-
-## Cargo Build
-
-Run a Rust build on the project using Cargo
+Build a Rust project with Cargo Build
 
 ### Example 
 
@@ -432,40 +279,13 @@ This executor can be used by executing the following in a command line utility:
 nx run my-project:cargo-build
 ```
 
-**Please note:** _The cargo-build executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| release      | `boolean`    | Run the Cargo command for the project in release mode     |     | 
- | profile      | `string`    | Build artifacts with the specified profile     |     | 
- | outputPath      | `string`    | The output path of the generated files.     | "dist/target/{projectRoot}"     | 
- | **toolchain \***    | "stable" \| "beta" \| "nightly"     | The Rust toolchain to use     | "stable"     | 
- | features      | `string`   | Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported     |     | 
- | allFeatures      | `boolean`    | Build all binary targets     |     | 
- | target      | `string`    | Build the specified target     |     | 
- | lib      | `boolean`    | Build the package's library     |     | 
- | bin      | `string`   | Build the specified binary. Array of names or common Unix glob patterns is supported     |     | 
- | bins      | `boolean`    | Build all binary targets     |     | 
- | example      | `string`   | Build the specified example. Array of names or common Unix glob patterns is supported     |     | 
- | examples      | `boolean`    | Build all example targets     |     | 
- | test      | `string`   | Build the specified test. Array of names or common Unix glob patterns is supported     |     | 
- | tests      | `boolean`    | Build all test targets     |     | 
- | bench      | `string`   | Build the specified bench. Array of names or common Unix glob patterns is supported     |     | 
- | benches      | `boolean`    | Build all targets in benchmark mode that have the bench = true manifest flag set. By default this includes the library and binaries built as benchmarks, and bench targets. Be aware that this will also build any required dependencies, so the lib target may be built twice (once as a benchmark, and once as a dependency for binaries, benchmarks, etc.). Targets may be enabled or disabled by setting the bench flag in the manifest settings for the target.     |     | 
- | allTargets      | `boolean`    | Build all test targets     |     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+**Please note:** _The cargo-build executor should be included in the desired projects's `project.json` file._ 
 
 
 
-## Cargo Check
+## cargo-check
 
-Check a Rust project with Cargo
+Check a Rust project with Cargo Check
 
 ### Example 
 
@@ -477,35 +297,11 @@ nx run my-project:cargo-check
 
 **Please note:** _The cargo-check executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| release      | `boolean`    | Run the Cargo command for the project in release mode     |     | 
- | profile      | `string`    | Build artifacts with the specified profile     |     | 
- | toolchain      | "stable" \| "beta" \| "nightly"     | The Rust toolchain to use     | "stable"     | 
- | features      | `string`   | Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported     |     | 
- | allFeatures      | `boolean`    | Build all binary targets     |     | 
- | target      | `string`    | Build the specified target     |     | 
- | lib      | `boolean`    | Build the package's library     |     | 
- | bin      | `string`   | Build the specified binary. Array of names or common Unix glob patterns is supported     |     | 
- | bins      | `boolean`    | Build all binary targets     |     | 
- | example      | `string`   | Build the specified example. Array of names or common Unix glob patterns is supported     |     | 
- | examples      | `boolean`    | Build all example targets     |     | 
- | test      | `string`   | Build the specified test. Array of names or common Unix glob patterns is supported     |     | 
- | tests      | `boolean`    | Build all test targets     |     | 
- | bench      | `string`   | Build the specified bench. Array of names or common Unix glob patterns is supported     |     | 
- | benches      | `boolean`    | Build all targets in benchmark mode that have the bench = true manifest flag set. By default this includes the library and binaries built as benchmarks, and bench targets. Be aware that this will also build any required dependencies, so the lib target may be built twice (once as a benchmark, and once as a dependency for binaries, benchmarks, etc.). Targets may be enabled or disabled by setting the bench flag in the manifest settings for the target.     |     | 
- | allTargets      | `boolean`    | Build all test targets     |     | 
 
 
+## cargo-format
 
-
-## Cargo Format
-
-Format a Rust project with Cargo
+Format a Rust project with Cargo Fmt
 
 ### Example 
 
@@ -517,32 +313,9 @@ nx run my-project:cargo-format
 
 **Please note:** _The cargo-format executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| release      | `boolean`    | Run the Cargo command for the project in release mode     |     | 
- | profile      | `string`    | Build artifacts with the specified profile     |     | 
- | toolchain      | "stable" \| "beta" \| "nightly"     | The Rust toolchain to use     | "stable"     | 
- | features      | `string`   | Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported     |     | 
- | allFeatures      | `boolean`    | Build all binary targets     |     | 
- | lib      | `boolean`    | Build the package's library     |     | 
- | bin      | `string`   | Build the specified binary. Array of names or common Unix glob patterns is supported     |     | 
- | bins      | `boolean`    | Build all binary targets     |     | 
- | example      | `string`   | Build the specified example. Array of names or common Unix glob patterns is supported     |     | 
- | examples      | `boolean`    | Build all example targets     |     | 
- | test      | `string`   | Build the specified test. Array of names or common Unix glob patterns is supported     |     | 
- | tests      | `boolean`    | Build all test targets     |     | 
- | bench      | `string`   | Build the specified bench. Array of names or common Unix glob patterns is supported     |     | 
- | benches      | `boolean`    | Build all targets in benchmark mode that have the bench = true manifest flag set. By default this includes the library and binaries built as benchmarks, and bench targets. Be aware that this will also build any required dependencies, so the lib target may be built twice (once as a benchmark, and once as a dependency for binaries, benchmarks, etc.). Targets may be enabled or disabled by setting the bench flag in the manifest settings for the target.     |     | 
- | allTargets      | `boolean`    | Build all test targets     |     | 
 
 
-
-
-## Cargo Clippy
+## cargo-clippy
 
 Lint a Rust project with Cargo Clippy
 
@@ -556,22 +329,9 @@ nx run my-project:cargo-clippy
 
 **Please note:** _The cargo-clippy executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| release      | `boolean`    | Run the Cargo command for the project in release mode     |     | 
- | profile      | `string`    | Build artifacts with the specified profile     |     | 
- | toolchain      | "stable" \| "beta" \| "nightly"     | The Rust toolchain to use     | "stable"     | 
- | target      | `string`    | Build the specified target     |     | 
- | fix      | `boolean`    | Automatically apply suggestions     |     | 
 
 
-
-
-## Cargo Doc
+## cargo-doc
 
 Create docs for a Rust project with Cargo Doc
 
@@ -583,35 +343,7 @@ This executor can be used by executing the following in a command line utility:
 nx run my-project:cargo-doc
 ```
 
-**Please note:** _The cargo-doc executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| release      | `boolean`    | Run the Cargo command for the project in release mode     | `true`     | 
- | profile      | `string`    | Build artifacts with the specified profile     |     | 
- | **outputPath \***    | `string`    | The output path of the generated files.     | "dist/docs/{projectRoot}"     | 
- | toolchain      | "stable" \| "beta" \| "nightly"     | The Rust toolchain to use     | "stable"     | 
- | noDeps      | `boolean`    | Don't build documentation for dependencies     | `true`     | 
- | features      | `string`   | Features of workspace members may be enabled with package-name/feature-name syntax. Array of names is supported     |     | 
- | allFeatures      | `boolean`    | Build all binary targets     | `true`     | 
- | target      | `string`    | Build the specified target     |     | 
- | lib      | `boolean`    | Build the package's library     | `true`     | 
- | bin      | `string`   | Build the specified binary. Array of names or common Unix glob patterns is supported     |     | 
- | bins      | `boolean`    | Build all binary targets     | `true`     | 
- | example      | `string`   | Build the specified example. Array of names or common Unix glob patterns is supported     |     | 
- | examples      | `boolean`    | Build all example targets     | `true`     | 
- | test      | `string`   | Build the specified test. Array of names or common Unix glob patterns is supported     |     | 
- | tests      | `boolean`    | Build all test targets     |     | 
- | bench      | `string`   | Build the specified bench. Array of names or common Unix glob patterns is supported     |     | 
- | benches      | `boolean`    | Build all targets in benchmark mode that have the bench = true manifest flag set. By default this includes the library and binaries built as benchmarks, and bench targets. Be aware that this will also build any required dependencies, so the lib target may be built twice (once as a benchmark, and once as a dependency for binaries, benchmarks, etc.). Targets may be enabled or disabled by setting the bench flag in the manifest settings for the target.     |     | 
- | allTargets      | `boolean`    | Build all test targets     |     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+**Please note:** _The cargo-doc executor should be included in the desired projects's `project.json` file._ 
 
 
 
@@ -630,211 +362,45 @@ management:
 <!-- markdownlint-disable -->
 
 
-## Init Storm Workspace Plugin
+## init
 
-Init Storm Workspace Plugin.
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| skipFormat      | `boolean`    | Skip formatting files.     |     | 
+Initialize the `@storm-software/workspace-tools` plugin.
 
 
 
+## preset
 
-## Workspace Preset
-
-Create a Storm workspace with all of the required files and recommended packages installed.
-
-### Examples 
-
-This generator can be used by executing the following examples in a command line utility: 
-
-Generate a storm workspace with: 
-- name: example-repo 
-- namespace: storm-software 
-- organization: storm-software 
-- repositoryUrl: <https://github.com/storm-software/example-repo>
-
-```bash 
-nx g @storm-software/workspace-tools:preset --name 'example-repo'
-```
+Storm workspace preset generator
 
 
 
-Generate a storm workspace with: 
-- name: example-repo 
-- namespace: example 
-- repositoryUrl: <https://github.com/storm-software/example-repo>
-
-```bash 
-nx g @storm-software/workspace-tools:preset --name 'example-repo' --namespace 'example'
-```
-
-
-
-Generate a storm workspace with: 
-- name: example-repo 
-- namespace: example 
-- organization: example-org 
-- description: An example workspace 
-- repositoryUrl: <https://github.com/example-org/example-repo>
-
-```bash 
-nx g @storm-software/workspace-tools:preset --name 'example-repo' --namespace 'example' --organization 'example-org' --description 'An example workspace'
-```
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **name \***    | `string`    | The name of the workspace root.     |     | 
- | **organization \***    | `string`    | The organization that owns the workspace.     | "storm-software"     | 
- | namespace      | `string`    | The npm scope used for the workspace. Defaults to the organization name.     |     | 
- | **includeApps \***    | `boolean`    | Should a separate `apps` folder be created for this workspace (if Yes: `apps` and `libs` folders will be added, if No: `packages` folders will be added)?     |     | 
- | description      | `string`    | The description of the workspace to use in the package.json and README.md files.     |     | 
- | repositoryUrl      | `string`    | The URL of the workspace in GitHub. Defaults to <https://github.com/{organization}/{name}>     |     | 
- | includeRust      | `boolean`    | Should the workspace include Rust support?     |     | 
- | nxCloud      | `boolean`    | Should distributed caching with Nx Cloud be enabled for the workspace?     |     | 
- | **mode \***    | "light" \| "dark"     | Which client mode should be used for the Nx Task Runner?     | "dark"     | 
- | packageManager      | "npm" \| "yarn" \| "pnpm"     | What package manager is used for the workspace?     | "pnpm"     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
-
-
-
-## Add Node Library
+## node-library
 
 Create a new NodeJs TypeScript library package in the Storm workspace
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **name \***    | `string`    | A name for the library.     |     | 
- | description      | `string`    | The library used by Storm Software for building TypeScript applications.     |     | 
- | **directory \***    | `string`    | A directory where the lib is placed.     |     | 
- | **projectNameAndRootFormat \***    | "as-provided" \| "derived"     | Whether to generate the project name and root directory as provided (`as-provided`) or generate them composing their values and taking the configured layout into account (`derived`).     |     | 
- | tags      | `string`    | Add tags to the library (used for linting).     |     | 
- | strict      | `boolean`    | Whether to enable tsconfig strict mode or not.     | `true`     | 
- | **publishable \***    | `boolean`    | Generate a publishable library.     |     | 
- | **importPath \***    | `string`    | The library name used to import it, like @storm-software/my-awesome-lib. Required for publishable library.     |     | 
- | **buildable \***    | `boolean`    | Generate a buildable library.     | `true`     | 
- | setParserOptionsProject      | `boolean`    | Whether or not to configure the ESLint `parserOptions.project` option. We do not do this by default for lint performance reasons.     |     | 
- | rootProject      | `boolean`    | Is the current project the root project in the workspace.     |     | 
 
 
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+## config-schema
+
+Create a Storm JSON schema based on the workspaces project configurations
 
 
 
-## Configuration Schema Creator
+## neutral-library
 
-Create a StormConfig JSON schema based on the workspace's project configurations
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **outputFile \***    | `string`    | The file path where the schema json will be written (relative to the workspace root)     | "./storm.schema.json"     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+Create a new Neutral TypeScript library package in the Storm workspace
 
 
 
-## Add Neutral Library
-
-Create a new Neutral TypeScript library package in the Storm workspaces
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **name \***    | `string`    | A name for the library.     |     | 
- | description      | `string`    | The library used by Storm Software for building TypeScript applications.     |     | 
- | **directory \***    | `string`    | A directory where the lib is placed.     |     | 
- | **projectNameAndRootFormat \***    | "as-provided" \| "derived"     | Whether to generate the project name and root directory as provided (`as-provided`) or generate them composing their values and taking the configured layout into account (`derived`).     |     | 
- | tags      | `string`    | Add tags to the library (used for linting).     |     | 
- | strict      | `boolean`    | Whether to enable tsconfig strict mode or not.     | `true`     | 
- | **publishable \***    | `boolean`    | Generate a publishable library.     |     | 
- | **importPath \***    | `string`    | The library name used to import it, like @storm-software/my-awesome-lib. Required for publishable library.     |     | 
- | **buildable \***    | `boolean`    | Generate a buildable library.     | `true`     | 
- | setParserOptionsProject      | `boolean`    | Whether or not to configure the ESLint `parserOptions.project` option. We do not do this by default for lint performance reasons.     |     | 
- | rootProject      | `boolean`    | Is the current project the root project in the workspace.     |     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
-
-
-
-## Add browser Library
+## browser-library
 
 Create a new browser TypeScript library package in the Storm workspace
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **name \***    | `string`    | A name for the library.     |     | 
- | description      | `string`    | The library used by Storm Software for building TypeScript applications.     |     | 
- | **directory \***    | `string`    | A directory where the lib is placed.     |     | 
- | **projectNameAndRootFormat \***    | "as-provided" \| "derived"     | Whether to generate the project name and root directory as provided (`as-provided`) or generate them composing their values and taking the configured layout into account (`derived`).     |     | 
- | tags      | `string`    | Add tags to the library (used for linting).     |     | 
- | strict      | `boolean`    | Whether to enable tsconfig strict mode or not.     | `true`     | 
- | **publishable \***    | `boolean`    | Generate a publishable library.     |     | 
- | **importPath \***    | `string`    | The library name used to import it, like @storm-software/my-awesome-lib. Required for publishable library.     |     | 
- | **buildable \***    | `boolean`    | Generate a buildable library.     | `true`     | 
- | setParserOptionsProject      | `boolean`    | Whether or not to configure the ESLint `parserOptions.project` option. We do not do this by default for lint performance reasons.     |     | 
- | rootProject      | `boolean`    | Is the current project the root project in the workspace.     |     | 
 
 
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
-
-
-
-## design-tokens
-
-Generate design tokens code using a Token Studio export
-
-
-
-## Storm Release Version Generator
+## release-version
 
 The release version generator used in Storm Workspaces
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **projects \***    | `object[]`   | The ProjectGraphProjectNodes being versioned in the current execution.     |     | 
- | **projectGraph \***    | `object`    | ProjectGraph instance     |     | 
- | specifier      | `string`    | Exact version or semver keyword to apply to the selected release group. Overrides specifierSource.     |     | 
- | **releaseGroup \***    | `object`    | The resolved release group configuration, including name, relevant to all projects in the current execution.     |     | 
- | specifierSource      | "prompt" \| "conventional-commits"     | Which approach to use to determine the semver specifier used to bump the version of the project.     | "conventional-commits"     | 
- | preid      | `string`    | The optional prerelease identifier to apply to the version, in the case that specifier has been set to prerelease.     |     | 
- | packageRoot      | `string`    | The root directory of the directory (containing a manifest file at its root) to publish. Defaults to the project root     |     | 
- | currentVersionResolver      | "registry" \| "disk" \| "git-tag"     | Which approach to use to determine the current version of the project.     | "disk"     | 
- | currentVersionResolverMetadata      | `object`    | Additional metadata to pass to the current version resolver.     | `[object Object]`     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
 
 
 

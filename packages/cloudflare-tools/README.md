@@ -45,20 +45,15 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 - [Storm Cloudflare Tools](#storm-cloudflare-tools)
   - [Installing](#installing)
   - [Executors](#executors)
-  - [Cloudflare Worker Publish](#cloudflare-worker-publish)
+  - [cloudflare-publish](#cloudflare-publish)
     - [Example](#example)
-    - [Options](#options)
-  - [Cloudflare Worker - Serve executor](#cloudflare-worker---serve-executor)
+  - [serve](#serve)
     - [Example](#example-1)
-    - [Options](#options-1)
-  - [Cloudflare R2 Bucket Upload Publish](#cloudflare-r2-bucket-upload-publish)
+  - [r2-upload-publish](#r2-upload-publish)
     - [Example](#example-2)
-    - [Options](#options-2)
   - [Generators](#generators)
-  - [Init Cloudflare tools Nx Plugin for Storm Workspace](#init-cloudflare-tools-nx-plugin-for-storm-workspace)
-    - [Options](#options-3)
-  - [Create a Cloudflare Worker Application](#create-a-cloudflare-worker-application)
-    - [Options](#options-4)
+  - [init](#init)
+  - [worker](#worker)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
   - [Storm Workspaces](#storm-workspaces)
@@ -121,9 +116,9 @@ the workspace's projects:
 <!-- markdownlint-disable -->
 
 
-## Cloudflare Worker Publish
+## cloudflare-publish
 
-Publish a Cloudflare worker using the Wrangler CLI
+Publish a Cloudflare worker/pages using the Wrangler CLI
 
 ### Example 
 
@@ -135,36 +130,9 @@ nx run my-project:cloudflare-publish
 
 **Please note:** _The cloudflare-publish executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| name      | `string`    | Name of the Worker.     |     | 
- | noBundle      | `boolean`    | Skip Wrangler’s build steps and directly deploy script without modification. Particularly useful when using custom builds.     |     | 
- | env      | `string`    | Perform on a specific environment.     |     | 
- | outdir      | `string`    | Path to directory where Wrangler will write the bundled Worker files.     |     | 
- | compatibilityDate      | `string`    | A date in the form yyyy-mm-dd, which will be used to determine which version of the Workers runtime is used.     |     | 
- | compatibilityFlags      | `string[]`   | Flags to use for compatibility checks.     |     | 
- | latest      | `boolean`    | Use the latest version of the Workers runtime.     | `true`     | 
- | assets      | `string`    | Root folder of static assets to be served. Unlike --site, --assets does not require a Worker script to serve your assets.     |     | 
- | site      | `string`    | Root folder of static assets for Workers Sites.     |     | 
- | siteInclude      | `string[]`   | Array of .gitignore-style patterns that match file or directory names from the sites directory. Only matched items will be uploaded.     |     | 
- | siteExclude      | `string[]`   | Array of .gitignore-style patterns that match file or directory names from the sites directory. Matched items will not be uploaded.     |     | 
- | var      | `string[]`   | Array of key:value pairs to inject as variables into your code. The value will always be passed as a string to your Worker.     |     | 
- | define      | `string[]`   | Array of key:value pairs to replace global identifiers in your code.     |     | 
- | triggers      | `string[]`   | Cron schedules to attach to the deployed Worker. Refer to Cron Trigger Examples.     |     | 
- | routes      | `string[]`   | Routes where this Worker will be deployed.     |     | 
- | tsConfig      | `string`    | Path to a custom tsconfig.json file.     |     | 
- | minify      | `boolean`    | Minify the bundled script before deploying.     |     | 
- | nodeCompat      | `boolean`    | Enable node.js compatibility.     |     | 
- | keepVars      | `boolean`    | It is recommended best practice to treat your Wrangler developer environment as a source of truth for your Worker configuration, and avoid making changes via the Cloudflare dashboard. If you change your environment variables or bindings in the Cloudflare dashboard, Wrangler will override them the next time you deploy. If you want to disable this behavior set keepVars to true.     |     | 
 
 
-
-
-## Cloudflare Worker - Serve executor
+## serve
 
 Serve a worker locally for development using the Wrangler CLI
 
@@ -178,46 +146,11 @@ nx run my-project:serve
 
 **Please note:** _The serve executor should be included in the desired projects's `project.json` file._ 
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| name      | `string`    | Name of the Worker.     |     | 
- | noBundle      | `boolean`    | Skip Wrangler’s build steps and show a preview of the script without modification. Particularly useful when using custom builds.     |     | 
- | env      | `string`    | Perform on a specific environment.     |     | 
- | compatibilityDate      | `string`    | A date in the form yyyy-mm-dd, which will be used to determine which version of the Workers runtime is used.     |     | 
- | compatibilityFlags      | `string[]`   | Flags to use for compatibility checks.     |     | 
- | latest      | `boolean`    | Use the latest version of the Workers runtime.     | `true`     | 
- | ip      | `string`    | IP address to listen on, defaults to localhost.     |     | 
- | port      | `number`    | Port to listen on.     | `8787`     | 
- | inspectorPort      | `number`    | Port for devtools to connect to.     |     | 
- | routes      | `string[]`   | Routes to upload.     |     | 
- | host      | `string`    | Host to forward requests to, defaults to the zone of the project.     |     | 
- | localProtocol      | "http" \| "https"     | Protocol to listen to requests on.     | "http"     | 
- | localUpstream      | `string`    | Host to act as origin in local mode, defaults to dev.host or route.     |     | 
- | assets      | `string`    | Root folder of static assets to be served. Unlike --site, --assets does not require a Worker script to serve your assets.     |     | 
- | site      | `string`    | Root folder of static assets for Workers Sites.     |     | 
- | siteInclude      | `string[]`   | Array of .gitignore-style patterns that match file or directory names from the sites directory. Only matched items will be uploaded.     |     | 
- | siteExclude      | `string[]`   | Array of .gitignore-style patterns that match file or directory names from the sites directory. Matched items will not be uploaded.     |     | 
- | upstreamProtocol      | "http" \| "https"     | Protocol to forward requests to host on.     | "https"     | 
- | var      | `string[]`   | Array of key:value pairs to inject as variables into your code. The value will always be passed as a string to your Worker.     |     | 
- | define      | `string[]`   | Array of key:value pairs to replace global identifiers in your code.     |     | 
- | tsconfig      | `string`    | Path to a custom tsconfig.json file.     |     | 
- | minify      | `boolean`    | Minify the script.     |     | 
- | nodeCompat      | `boolean`    | Enable node.js compatibility.     |     | 
- | persistTo      | `string`    | Specify directory to use for local persistence.     |     | 
- | remote      | `boolean`    | Develop against remote resources and data stored on Cloudflare’s network.     |     | 
- | testScheduled      | `boolean`    | Exposes a /__scheduled fetch route which will trigger a scheduled event (cron trigger) for testing during development.     |     | 
- | logLevel      | "debug" \| "info" \| "log" \| "warn" \| "error" \| "none"     | Specify Wrangler’s logging level.     | "log"     | 
 
 
+## r2-upload-publish
 
-
-## Cloudflare R2 Bucket Upload Publish
-
-Publish files in a package by uploading the contents to a Cloudflare R2 bucket
+Publish changes by uploading files to a Cloudflare R2 bucket
 
 ### Example 
 
@@ -227,23 +160,7 @@ This executor can be used by executing the following in a command line utility:
 nx run my-project:r2-upload-publish
 ```
 
-**Please note:** _The r2-upload-publish executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **registry \***    | `string`    | The URL of the R2 bucket to publish the package to.     |     | 
- | bucketId      | `string`    | The ID of the R2 Bucket in Cloudflare.     |     | 
- | packageRoot      | `string`    | The root directory of the directory (containing a manifest file at its root) to publish. Defaults to the project root.     |     | 
- | **tsConfig \***    | `string`    | The path to the \`tsconfig.json\` file.     | "{projectRoot}/tsconfig.json"     | 
- | dryRun      | `boolean`    | Whether to run the command without actually publishing the package to the registry.     |     | 
- | verbose      | `boolean`    | Should write extra log outputs with details from the executor.     |     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+**Please note:** _The r2-upload-publish executor should be included in the desired projects's `project.json` file._ 
 
 
 
@@ -262,51 +179,15 @@ management:
 <!-- markdownlint-disable -->
 
 
-## Init Cloudflare tools Nx Plugin for Storm Workspace
+## init
 
 Init Cloudflare tools Nx Plugin in the Storm Workspace
 
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| unitTestRunner      | "vitest" \| "jest" \| "none"     | Test runner to use for unit tests.     | "vitest"     | 
- | skipFormat      | `boolean`    | Skip formatting files.     |     | 
- | js      | `boolean`    | Use JavaScript instead of TypeScript     |     | 
- | template      | "fetch-handler" \| "scheduled-handler" \| "hono" \| "none"     | Generate the initial worker using a template.     |     | 
 
 
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+## worker
 
-
-
-## Create a Cloudflare Worker Application
-
-Create a Cloudflare Worker Application
-
-### Options
-
-The following executor options are available:
-
-| Option    | Type   | Description   | Default   | 
-| --------- | ------ | ------------- | --------- | 
-| **name \***    | `string`    | The name of the worker     |     | 
- | js      | `boolean`    | Use JavaScript instead of TypeScript     |     | 
- | projectNameAndRootFormat      | "as-provided" \| "derived"     | Whether to generate the project name and root directory as provided (`as-provided`) or generate them composing their values and taking the configured layout into account (`derived`).     |     | 
- | tags      | `string`    | Add tags to the application (used for linting).     |     | 
- | frontendProject      | `string`    | Frontend project that needs to access this application. This sets up proxy configuration.     |     | 
- | unitTestRunner      | "vitest" \| "none"     | Test runner to use for unit tests.     | "vitest"     | 
- | template      | "fetch-handler" \| "scheduled-handler" \| "hono" \| "none"     | Generate the initial worker using a template.     | "fetch-handler"     | 
- | port      | `number`    | The port in which the worker will be run on development mode     | `8787`     | 
- | accountId      | `string`    | The Cloudflare account identifier where the worker will be deployed     |     | 
- | directory      | `string`    | The directory of the new application.     |     | 
- | rootProject      | `boolean`    | Create worker application at the root of the workspace     |     | 
- | skipFormat      | `boolean`    | Skip formatting files.     |     | 
-
-
-**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+Add a worker application project to the current Storm workspace
 
 
 

@@ -6,5 +6,5 @@
   "repository": "https://github.com/storm-software/storm-ops",
   "externalPackagePatterns": ["@storm-software/"],
   "packageManager": "pnpm",
-  "logLevel": "debug"
+  "logLevel": "all"
 }
