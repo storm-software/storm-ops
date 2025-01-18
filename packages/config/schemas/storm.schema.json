@@ -1,7 +1,7 @@
 {
-  "$ref": "#/definitions/StormConfiguration",
+  "$ref": "#/definitions/StormWorkspaceConfiguration",
   "definitions": {
-    "StormConfiguration": {
+    "StormWorkspaceConfiguration": {
       "type": "object",
       "properties": {
         "$schema": {
@@ -179,6 +179,7 @@
             "fatal",
             "error",
             "warn",
+            "success",
             "info",
             "debug",
             "trace",
@@ -196,16 +197,16 @@
               "description": "A remote registry URL used to publish distributable packages"
             },
             "npm": {
-              "$ref": "#/definitions/StormConfiguration/properties/registry/properties/github"
+              "$ref": "#/definitions/StormWorkspaceConfiguration/properties/registry/properties/github"
             },
             "cargo": {
-              "$ref": "#/definitions/StormConfiguration/properties/registry/properties/github"
+              "$ref": "#/definitions/StormWorkspaceConfiguration/properties/registry/properties/github"
             },
             "cyclone": {
-              "$ref": "#/definitions/StormConfiguration/properties/registry/properties/github"
+              "$ref": "#/definitions/StormWorkspaceConfiguration/properties/registry/properties/github"
             },
             "container": {
-              "$ref": "#/definitions/StormConfiguration/properties/registry/properties/github"
+              "$ref": "#/definitions/StormWorkspaceConfiguration/properties/registry/properties/github"
             }
           },
           "additionalProperties": false,
@@ -349,46 +350,46 @@
                       "type": "object",
                       "properties": {
                         "foreground": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/light"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/light"
                         },
                         "background": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/dark"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/dark"
                         },
                         "brand": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/brand"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/brand"
                         },
                         "alternate": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/alternate"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/alternate"
                         },
                         "accent": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/accent"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/accent"
                         },
                         "link": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/link"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/link"
                         },
                         "help": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/help"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/help"
                         },
                         "success": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/success"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/success"
                         },
                         "info": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/info"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/info"
                         },
                         "warning": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/warning"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/warning"
                         },
                         "danger": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/danger"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/danger"
                         },
                         "fatal": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/fatal"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/fatal"
                         },
                         "positive": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/positive"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/positive"
                         },
                         "negative": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/negative"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/negative"
                         }
                       },
                       "additionalProperties": false
@@ -397,46 +398,46 @@
                       "type": "object",
                       "properties": {
                         "foreground": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/dark"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/dark"
                         },
                         "background": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/light"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/light"
                         },
                         "brand": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/brand"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/brand"
                         },
                         "alternate": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/alternate"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/alternate"
                         },
                         "accent": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/accent"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/accent"
                         },
                         "link": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/link"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/link"
                         },
                         "help": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/help"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/help"
                         },
                         "success": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/success"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/success"
                         },
                         "info": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/info"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/info"
                         },
                         "warning": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/warning"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/warning"
                         },
                         "danger": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/danger"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/danger"
                         },
                         "fatal": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/fatal"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/fatal"
                         },
                         "positive": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/positive"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/positive"
                         },
                         "negative": {
-                          "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0/anyOf/0/properties/negative"
+                          "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0/anyOf/0/properties/negative"
                         }
                       },
                       "additionalProperties": false
@@ -454,7 +455,7 @@
                   "type": "object",
                   "properties": {
                     "base": {
-                      "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0"
+                      "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0"
                     }
                   },
                   "required": ["base"],
@@ -463,7 +464,7 @@
                 {
                   "type": "object",
                   "additionalProperties": {
-                    "$ref": "#/definitions/StormConfiguration/properties/colors/anyOf/0"
+                    "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0"
                   }
                 }
               ]

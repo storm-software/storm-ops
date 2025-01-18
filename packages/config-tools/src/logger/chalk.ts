@@ -13,6 +13,10 @@ export type GetChalkReturn = {
     };
     whiteBright: (message?: string) => string | undefined;
   };
+  dim: {
+    hex: (_: string) => (message?: string) => string | undefined;
+    gray: (message?: string) => string | undefined;
+  };
 };
 
 const chalkDefault: GetChalkReturn = {
@@ -27,6 +31,10 @@ const chalkDefault: GetChalkReturn = {
       whiteBright: (message?: string) => message
     }),
     whiteBright: (message?: string) => message
+  },
+  dim: {
+    hex: (_: string) => (message?: string) => message,
+    gray: (message?: string) => message
   }
 };
 

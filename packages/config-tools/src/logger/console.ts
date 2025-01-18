@@ -4,6 +4,7 @@ import { LogLevel, LogLevelLabel } from "../types";
 import { DEFAULT_COLOR_CONFIG } from "../utilities/get-default-config";
 import { getChalk } from "./chalk";
 import { CONSOLE_ICONS } from "./console-icons";
+import { formatTimestamp } from "./format-timestamp";
 import { getLogLevel } from "./get-log-level";
 
 /**
@@ -61,7 +62,7 @@ export const getLogFn = (
     return (message?: any) => {
       console.error(
         `
-${_chalk.bold.hex(colors.fatal ?? "#7d1a1a")(`[ ${CONSOLE_ICONS[LogLevelLabel.FATAL]} Fatal ]`)} ${_chalk.hex(colors.fatal ?? "#7d1a1a")(formatLogMessage(message))}
+${_chalk.dim.gray(formatTimestamp())} ${_chalk.bold.hex(colors.fatal ?? "#7d1a1a")(`[${CONSOLE_ICONS[LogLevelLabel.FATAL]} Fatal]`)} ${_chalk.hex(colors.fatal ?? "#7d1a1a")(formatLogMessage(message))}
 `
       );
     };
@@ -74,7 +75,7 @@ ${_chalk.bold.hex(colors.fatal ?? "#7d1a1a")(`[ ${CONSOLE_ICONS[LogLevelLabel.FA
     return (message?: any) => {
       console.error(
         `
-${_chalk.bold.hex(colors.danger ?? "#f85149")(`[ ${CONSOLE_ICONS[LogLevelLabel.ERROR]} Error ]`)} ${_chalk.hex(colors.danger ?? "#f85149")(formatLogMessage(message))}
+${_chalk.dim.gray(formatTimestamp())} ${_chalk.bold.hex(colors.danger ?? "#f85149")(`[${CONSOLE_ICONS[LogLevelLabel.ERROR]} Error]`)} ${_chalk.hex(colors.danger ?? "#f85149")(formatLogMessage(message))}
 `
       );
     };
@@ -87,7 +88,7 @@ ${_chalk.bold.hex(colors.danger ?? "#f85149")(`[ ${CONSOLE_ICONS[LogLevelLabel.E
     return (message?: any) => {
       console.warn(
         `
-${_chalk.bold.hex(colors.warning ?? "#e3b341")(`[ ${CONSOLE_ICONS[LogLevelLabel.WARN]} Warn ]`)} ${_chalk.hex(colors.warning ?? "#e3b341")(formatLogMessage(message))}
+${_chalk.dim.gray(formatTimestamp())} ${_chalk.bold.hex(colors.warning ?? "#e3b341")(`[${CONSOLE_ICONS[LogLevelLabel.WARN]} Warn]`)} ${_chalk.hex(colors.warning ?? "#e3b341")(formatLogMessage(message))}
 `
       );
     };
@@ -100,7 +101,7 @@ ${_chalk.bold.hex(colors.warning ?? "#e3b341")(`[ ${CONSOLE_ICONS[LogLevelLabel.
     return (message?: any) => {
       console.info(
         `
-${_chalk.bold.hex(colors.success ?? "#56d364")(`[ ${CONSOLE_ICONS[LogLevelLabel.SUCCESS]} Success ]`)} ${_chalk.hex(colors.success ?? "#56d364")(formatLogMessage(message))}
+${_chalk.dim.gray(formatTimestamp())} ${_chalk.bold.hex(colors.success ?? "#56d364")(`[${CONSOLE_ICONS[LogLevelLabel.SUCCESS]} Success]`)} ${_chalk.hex(colors.success ?? "#56d364")(formatLogMessage(message))}
 `
       );
     };
@@ -113,7 +114,7 @@ ${_chalk.bold.hex(colors.success ?? "#56d364")(`[ ${CONSOLE_ICONS[LogLevelLabel.
     return (message?: any) => {
       console.info(
         `
-${_chalk.bold.hex(colors.info ?? "#58a6ff")(`[ ${CONSOLE_ICONS[LogLevelLabel.INFO]} Info ]`)} ${_chalk.hex(colors.info ?? "#58a6ff")(formatLogMessage(message))}
+${_chalk.dim.gray(formatTimestamp())} ${_chalk.bold.hex(colors.info ?? "#58a6ff")(`[${CONSOLE_ICONS[LogLevelLabel.INFO]} Info]`)} ${_chalk.hex(colors.info ?? "#58a6ff")(formatLogMessage(message))}
 `
       );
     };
@@ -126,7 +127,7 @@ ${_chalk.bold.hex(colors.info ?? "#58a6ff")(`[ ${CONSOLE_ICONS[LogLevelLabel.INF
     return (message?: any) => {
       console.debug(
         `
-${_chalk.bold.hex(colors.brand ?? "#1fb2a6")(`[ ${CONSOLE_ICONS[LogLevelLabel.TRACE]} Debug ]`)} ${_chalk.hex(colors.brand ?? "#1fb2a6")(formatLogMessage(message))}
+${_chalk.dim.gray(formatTimestamp())} ${_chalk.bold.hex(colors.brand ?? "#1fb2a6")(`[${CONSOLE_ICONS[LogLevelLabel.TRACE]} Debug]`)} ${_chalk.hex(colors.brand ?? "#1fb2a6")(formatLogMessage(message))}
 `
       );
     };
@@ -135,7 +136,7 @@ ${_chalk.bold.hex(colors.brand ?? "#1fb2a6")(`[ ${CONSOLE_ICONS[LogLevelLabel.TR
   return (message?: any) => {
     console.log(
       `
-${_chalk.bold.hex(colors.brand ?? "#1fb2a6")(`[ ${CONSOLE_ICONS[LogLevelLabel.ALL]} System ]`)} ${_chalk.hex(colors.brand ?? "#1fb2a6")(formatLogMessage(message))}
+${_chalk.dim.gray(formatTimestamp())} ${_chalk.bold.hex(colors.brand ?? "#1fb2a6")(`[${CONSOLE_ICONS[LogLevelLabel.ALL]}  System]`)} ${_chalk.hex(colors.brand ?? "#1fb2a6")(formatLogMessage(message))}
 `
     );
   };
