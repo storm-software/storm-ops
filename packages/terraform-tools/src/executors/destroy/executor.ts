@@ -1,4 +1,4 @@
-import { withTerraformExecutor } from "../../base/base-executor";
-import { DestroyExecutorSchema } from "./schema";
+import { withTerraformExecutor } from "../../base/terraform-executor";
+import { DestroyExecutorSchema } from "./schema.d";
 
 export default withTerraformExecutor<DestroyExecutorSchema>("destroy");

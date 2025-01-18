@@ -4,15 +4,15 @@
 
 export interface TSDownExecutorSchema {
  /**
-  * Entry File
+  * Entry File(s)
   * 
-  * The entry file to build
+  * The entry file or files to build
   * 
-  * @default ["{sourceRoot}/index.ts"]
+  * @default {"default":["{sourceRoot}/index.ts"]}
   * 
   * @format path
  */
- entry: Array<string>,
+ entry?: Array<string>,
 
  /**
   * Output Path
@@ -23,7 +23,7 @@ export interface TSDownExecutorSchema {
   * 
   * @format path
  */
- outputPath: string,
+ outputPath?: string,
 
  /**
   * TSConfig Path
@@ -34,7 +34,7 @@ export interface TSDownExecutorSchema {
   * 
   * @format path
  */
- tsconfig: string,
+ tsconfig?: string,
 
  /**
   * Bundle
@@ -43,7 +43,7 @@ export interface TSDownExecutorSchema {
   * 
   * @default false
  */
- bundle: boolean,
+ bundle?: boolean,
 
  /**
   * Minify
@@ -52,7 +52,7 @@ export interface TSDownExecutorSchema {
   * 
   * @default false
  */
- minify: boolean,
+ minify?: boolean,
 
  /**
   * Debug
@@ -61,7 +61,7 @@ export interface TSDownExecutorSchema {
   * 
   * @default false
  */
- debug: boolean,
+ debug?: boolean,
 
  /**
   * Sourcemap
@@ -70,7 +70,7 @@ export interface TSDownExecutorSchema {
   * 
   * @default false
  */
- sourcemap: boolean,
+ sourcemap?: boolean,
 
  /**
   * Silent
@@ -79,7 +79,7 @@ export interface TSDownExecutorSchema {
   * 
   * @default false
  */
- silent: boolean,
+ silent?: boolean,
 
  /**
   * Target
@@ -90,7 +90,7 @@ export interface TSDownExecutorSchema {
   * 
   * @enum es3,es5,es6,es2015,es2016,es2017,es2018,es2019,es2020,es2021,es2022,es2023,es2024,esnext,node12,node14,node16,node18,node20,node22,browser,chrome58,chrome59,chrome60
  */
- target: string,
+ target?: string,
 
  /**
   * Format
@@ -99,7 +99,7 @@ export interface TSDownExecutorSchema {
   * 
   * @default ["cjs","esm"]
  */
- format: Array<string>,
+ format?: Array<string>,
 
  /**
   * Platform
@@ -110,7 +110,7 @@ export interface TSDownExecutorSchema {
   * 
   * @enum neutral,node,browser
  */
- platform: string,
+ platform?: string,
 
  /**
   * External
@@ -118,7 +118,7 @@ export interface TSDownExecutorSchema {
   * The external dependencies
   * 
  */
- external: Array<any>,
+ external?: Array<any>,
 
  /**
   * Define
@@ -126,7 +126,7 @@ export interface TSDownExecutorSchema {
   * The define values
   * 
  */
- define: Record<string, string>,
+ define?: Record<string, string>,
 
  /**
   * Environment Variables
@@ -134,6 +134,6 @@ export interface TSDownExecutorSchema {
   * The environment variable values
   * 
  */
- env: Record<string, string>,
+ env?: Record<string, string>,
 }
 

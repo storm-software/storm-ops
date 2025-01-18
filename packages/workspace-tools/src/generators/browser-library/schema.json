@@ -2,6 +2,10 @@
   "id": "#",
   "title": "Browser Library Generator",
   "description": "A type definition for a browser library generator schema",
+  "required": [
+    "directory",
+    "name"
+  ],
   "properties": {
     "directory": {
       "title": "Directory",
@@ -25,7 +29,8 @@
       "title": "Build Executor",
       "type": "string",
       "description": "The executor to use for building the library",
-      "id": "#buildExecutor"
+      "id": "#buildExecutor",
+      "default": "@storm-software/workspace-tools:unbuild"
     },
     "platform": {
       "title": "Platform",
@@ -52,11 +57,32 @@
       "id": "#dependencies",
       "default": {}
     },
+    "peerDependencies": {
+      "title": "Peer Dependencies",
+      "type": "object",
+      "description": "The peer dependencies to install",
+      "id": "#peerDependencies",
+      "default": {}
+    },
+    "peerDependenciesMeta": {
+      "title": "Peer Dependencies Meta",
+      "type": "object",
+      "description": "The peer dependencies meta",
+      "id": "#peerDependenciesMeta",
+      "default": {}
+    },
     "tags": {
       "title": "Tags",
       "type": "string",
       "description": "The tags for the library",
       "id": "#tags"
+    },
+    "tsconfigOptions": {
+      "title": "TypeScript Config (tsconfig.json) Options",
+      "type": "object",
+      "description": "The TypeScript configuration options",
+      "id": "#tsconfigOptions",
+      "default": {}
     },
     "skipFormat": {
       "title": "Skip Format",
@@ -225,8 +251,12 @@
   },
   "type": "object",
   "default": {
+    "buildExecutor": "@storm-software/workspace-tools:unbuild",
     "platform": "browser",
     "devDependencies": {},
-    "dependencies": {}
+    "dependencies": {},
+    "peerDependencies": {},
+    "peerDependenciesMeta": {},
+    "tsconfigOptions": {}
   }
 }

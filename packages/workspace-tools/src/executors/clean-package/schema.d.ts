@@ -4,22 +4,46 @@
 
 export interface CleanPackageExecutorSchema {
  /**
+  * Entry File(s)
+  * 
+  * The entry file or files to build
+  * 
+  * @default {"default":["{sourceRoot}/index.ts"]}
+  * 
+  * @format path
+ */
+ entry?: Array<string>,
+
+ /**
   * Output Path
   * 
   * The path to the output
   * 
+  * @default "dist/{projectRoot}"
  */
- outputPath: string,
+ outputPath?: string,
+
+ /**
+  * TSConfig Path
+  * 
+  * The path to the tsconfig file
+  * 
+  * @default "{projectRoot}/tsconfig.json"
+  * 
+  * @format path
+ */
+ tsconfig?: string,
 
  /**
   * Package JSON Path
   * 
-  * The path to the package.json
+  * The path to the package.json that will be modified
   * 
+  * @default "{outputPath}/package.json"
   * 
   * @format path
  */
- packageJsonPath: string,
+ packageJsonPath?: string,
 
  /**
   * Ignored Files
@@ -27,7 +51,7 @@ export interface CleanPackageExecutorSchema {
   * The files to ignore
   * 
  */
- ignoredFiles: string,
+ ignoredFiles?: string,
 
  /**
   * Fields
@@ -35,22 +59,24 @@ export interface CleanPackageExecutorSchema {
   * The fields to include
   * 
  */
- fields: string,
+ fields?: string,
 
  /**
   * Clean Read Me
   * 
   * Clean the read me
   * 
+  * @default true
  */
- cleanReadMe: boolean,
+ cleanReadMe?: boolean,
 
  /**
   * Clean Comments
   * 
   * Clean the comments
   * 
+  * @default true
  */
- cleanComments: boolean,
+ cleanComments?: boolean,
 }
 

@@ -3,34 +3,66 @@
   "title": "Typia Executor",
   "description": "A type definition for a Typia executor schema",
   "properties": {
-    "entryPath": {
-      "title": "Entry Path",
-      "type": "string",
+    "entry": {
+      "title": "Entry File(s)",
       "format": "path",
-      "description": "The path to the entry file",
-      "id": "#entryPath"
+      "type": "array",
+      "description": "The entry file or files to build",
+      "items": {
+        "type": "string"
+      },
+      "id": "#entry",
+      "properties": {
+        "default": {
+          "type": "array",
+          "id": "#entry/default",
+          "default": [
+            "{sourceRoot}/index.ts"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "default": {
+        "default": [
+          "{sourceRoot}/index.ts"
+        ]
+      }
     },
     "outputPath": {
       "title": "Output Path",
       "type": "string",
       "format": "path",
-      "description": "The path to the output",
-      "id": "#outputPath"
+      "description": "The output path for the build",
+      "id": "#outputPath",
+      "default": "{sourceRoot}/__generated__/typia"
     },
-    "tsConfig": {
-      "title": "TS Config",
+    "tsconfig": {
+      "title": "TSConfig Path",
       "type": "string",
       "format": "path",
-      "description": "The path to the tsconfig.json",
-      "id": "#tsConfig"
+      "description": "The path to the tsconfig file",
+      "id": "#tsconfig",
+      "default": "{projectRoot}/tsconfig.json"
     },
     "clean": {
       "title": "Clean",
       "type": "boolean",
       "description": "Clean the output directory before building",
-      "id": "#clean"
+      "id": "#clean",
+      "default": true
     }
   },
   "type": "object",
-  "default": {}
+  "default": {
+    "entry": {
+      "default": [
+        "{sourceRoot}/index.ts"
+      ]
+    },
+    "outputPath": "{sourceRoot}/__generated__/typia",
+    "tsconfig": "{projectRoot}/tsconfig.json",
+    "clean": true
+  }
 }

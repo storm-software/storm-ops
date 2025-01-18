@@ -4,88 +4,51 @@
   "sourceRoot": "packages/cloudflare-tools/src",
   "projectType": "library",
   "targets": {
-    "build": {
-      "cache": true,
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+    "build-untyped": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "inputs": [
+        "{projectRoot}/src/**/schema.ts",
+        "{projectRoot}/src/**/*.schema.ts"
+      ],
+      "outputs": [
+        "{projectRoot}/src/**/*.d.ts",
+        "{projectRoot}/src/**/*.md",
+        "{projectRoot}/src/**/schema.json",
+        "{projectRoot}/src/**/*.schema.json"
+      ],
       "options": {
-        "outputPath": "dist/packages/cloudflare-tools",
-        "tsConfig": "packages/cloudflare-tools/tsconfig.lib.json",
-        "project": "packages/cloudflare-tools/package.json",
-        "main": "packages/cloudflare-tools/index.ts",
-        "additionalEntryPoints": [
-          "packages/cloudflare-tools/src/plugins/index.ts",
-          "packages/cloudflare-tools/src/utils/index.ts",
-          "packages/cloudflare-tools/src/executors/cloudflare-publish/executor.ts",
-          "packages/cloudflare-tools/src/executors/r2-upload-publish/executor.ts",
-          "packages/cloudflare-tools/src/executors/serve/executor.ts",
-          "packages/cloudflare-tools/src/generators/init/generator.ts",
-          "packages/cloudflare-tools/src/generators/worker/generator.ts"
-        ],
-        "platform": "node",
-        "deleteOutputPath": true,
-        "bundle": true,
-        "thirdParty": true,
-        "skipTypeCheck": false,
-        "metafile": true,
-        "minify": false,
-        "format": ["cjs"],
-        "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
-          }
-        },
-        "external": [
-          "nx",
-          "@nx/devkit",
-          "esbuild",
-          "@swc/*",
-          "@storm-software/*",
-          "jest-resolve/build/default_resolver"
-        ],
-        "assets": [
-          {
-            "input": "packages/cloudflare-tools",
-            "glob": "**/files/**",
-            "output": "/"
-          },
-          {
-            "input": "packages/cloudflare-tools",
-            "glob": "**/files/**/.gitkeep",
-            "output": "/"
-          },
-          {
-            "input": "packages/cloudflare-tools",
-            "glob": "**/*.json",
-            "ignore": ["**/tsconfig*.json", "project.json", ".eslintrc.json"],
-            "output": "."
-          },
-          {
-            "input": "packages/cloudflare-tools",
-            "glob": "**/*.js",
-            "ignore": ["**/jest.config.js"],
-            "output": "."
-          },
-          {
-            "input": "packages/cloudflare-tools",
-            "glob": "**/*.d.ts",
-            "output": "."
-          },
-          {
-            "input": "packages/cloudflare-tools",
-            "glob": "*.md",
-            "output": "."
-          },
-          {
-            "input": "",
-            "glob": "LICENSE",
-            "output": "."
-          }
+        "commands": [
+          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/cloudflare-tools/**/schema.ts,packages/cloudflare-tools/**/*.schema.ts\" "
+        ]
+      }
+    },
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-untyped", "clean", "^build"],
+      "options": {
+        "command": "tsup-node --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base", "build-untyped"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/cloudflare-tools",
+          "pnpm copyfiles --up=2 ./packages/cloudflare-tools/*.md ./packages/cloudflare-tools/executors.json ./packages/cloudflare-tools/generators.json ./packages/cloudflare-tools/package.json dist/packages/cloudflare-tools",
+          "pnpm copyfiles --up=3 ./packages/cloudflare-tools/dist/**/* dist/packages/cloudflare-tools/dist",
+          "pnpm copyfiles --up=3 ./packages/cloudflare-tools/src/**/*.json dist/packages/cloudflare-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/cloudflare-tools/src/**/*.d.ts dist/packages/cloudflare-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/cloudflare-tools/src/**/*.md dist/packages/cloudflare-tools/docs/api",
+          "pnpm copyfiles --up=4 ./packages/cloudflare-tools/src/generators/*/files/**/* dist/packages/cloudflare-tools/dist/src/generators"
         ]
       }
     },
     "nx-release-publish": {
       "executor": "@storm-software/workspace-tools:npm-publish"
     }
-  }
+  },
+  "implicitDependencies": ["workspace-tools", "config-tools", "config"]
 }

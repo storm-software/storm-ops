@@ -218,6 +218,7 @@
   "dependencies": {
     "commander": "catalog:",
     "glob": "catalog:",
+    "knitwork": "^1.2.0",
     "nx": "catalog:"
   },
   "devDependencies": {

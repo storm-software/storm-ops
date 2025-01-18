@@ -33,7 +33,7 @@
           "pnpm copyfiles --up=5 ./packages/git-tools/src/readme/templates/* dist/packages/git-tools/dist/readme/templates",
           "pnpm copyfiles --up=4 ./packages/git-tools/src/lefthook/* dist/packages/git-tools/dist/lefthook",
           "pnpm copyfiles --up=4 ./packages/git-tools/src/lint-staged/* dist/packages/git-tools/dist/lint-staged",
-          "pnpm copyfiles --up=4 ./packages/git-tools/dist/bin/*/* dist/packages/git-tools/bin"
+          "pnpm copyfiles --up=4 ./packages/git-tools/dist/bin/**/* dist/packages/git-tools/bin"
         ]
       }
     },

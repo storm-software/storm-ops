@@ -1,3 +1,3 @@
-export interface Schema {
+export interface InitGeneratorSchema {
   skipFormat?: boolean;
 }

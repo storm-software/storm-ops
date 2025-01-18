@@ -9,6 +9,6 @@ export interface InitGeneratorSchema {
   * Skip formatting the generated files
   * 
  */
- skipFormat: boolean,
+ skipFormat?: boolean,
 }
 

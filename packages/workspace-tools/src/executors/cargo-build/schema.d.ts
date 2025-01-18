@@ -4,15 +4,15 @@
 
 export interface CargoBuildExecutorSchema {
  /**
-  * Entry File
+  * Entry File(s)
   * 
-  * The entry file to build
+  * The entry file or files to build
   * 
-  * @default ["{sourceRoot}/index.ts"]
+  * @default {"default":["{sourceRoot}/index.ts"]}
   * 
   * @format path
  */
- entry: Array<string>,
+ entry?: Array<string>,
 
  /**
   * Output Path
@@ -20,7 +20,7 @@ export interface CargoBuildExecutorSchema {
   * The path to the output directory
   * 
  */
- outputPath: string,
+ outputPath?: string,
 
  /**
   * TSConfig Path
@@ -31,7 +31,7 @@ export interface CargoBuildExecutorSchema {
   * 
   * @format path
  */
- tsconfig: string,
+ tsconfig?: string,
 
  /**
   * Cargo.toml Path
@@ -42,7 +42,7 @@ export interface CargoBuildExecutorSchema {
   * 
   * @format path
  */
- package: string,
+ package?: string,
 
  /**
   * Toolchain
@@ -53,7 +53,7 @@ export interface CargoBuildExecutorSchema {
   * 
   * @enum stable,beta,nightly
  */
- toolchain: string,
+ toolchain?: string,
 
  /**
   * Target
@@ -61,7 +61,7 @@ export interface CargoBuildExecutorSchema {
   * The target to build
   * 
  */
- target: string,
+ target?: string,
 
  /**
   * All Targets
@@ -69,7 +69,7 @@ export interface CargoBuildExecutorSchema {
   * Build all targets
   * 
  */
- allTargets: boolean,
+ allTargets?: boolean,
 
  /**
   * Profile
@@ -77,7 +77,7 @@ export interface CargoBuildExecutorSchema {
   * The profile to build
   * 
  */
- profile: string,
+ profile?: string,
 
  /**
   * Release
@@ -85,7 +85,7 @@ export interface CargoBuildExecutorSchema {
   * Build in release mode
   * 
  */
- release: boolean,
+ release?: boolean,
 
  /**
   * Features
@@ -95,7 +95,7 @@ export interface CargoBuildExecutorSchema {
   * 
   * @oneOf [object Object],[object Object]
  */
- features: string,
+ features?: string,
 
  /**
   * All Features
@@ -103,6 +103,6 @@ export interface CargoBuildExecutorSchema {
   * Build all features
   * 
  */
- allFeatures: boolean,
+ allFeatures?: boolean,
 }
 

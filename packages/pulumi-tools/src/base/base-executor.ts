@@ -19,13 +19,16 @@ export interface PulumiCommandOptions {
 export type PulumiExecutorSchema = BaseExecutorSchema &
   Partial<PulumiCommandOptions>;
 
-export type NormalizedPulumiExecutorOptions = ProjectTokenizerOptions &
-  PulumiExecutorSchema;
+export type NormalizedPulumiExecutorOptions<
+  TExecutorSchema extends PulumiExecutorSchema = PulumiExecutorSchema
+> = ProjectTokenizerOptions & TExecutorSchema;
 
 export const withPulumiExecutor =
   <TExecutorSchema extends PulumiExecutorSchema = PulumiExecutorSchema>(
     command: string,
-    argsMapper: (options: NormalizedPulumiExecutorOptions) => string[],
+    argsMapper: (
+      options: NormalizedPulumiExecutorOptions<TExecutorSchema>
+    ) => Array<string | false | undefined>,
     executorOptions: BaseExecutorOptions<TExecutorSchema> = {}
   ) =>
   async (
@@ -35,7 +38,7 @@ export const withPulumiExecutor =
     return withRunExecutor<TExecutorSchema>(
       `Pulumi \`${command}\` Command Executor`,
       async (
-        options: NormalizedPulumiExecutorOptions,
+        options: NormalizedPulumiExecutorOptions<TExecutorSchema>,
         context: ExecutorContext,
         config: StormConfig
       ) => {

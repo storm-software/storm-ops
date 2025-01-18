@@ -4,15 +4,15 @@
 
 export interface CargoClippyExecutorSchema {
  /**
-  * Entry File
+  * Entry File(s)
   * 
-  * The entry file to build
+  * The entry file or files to build
   * 
-  * @default ["{sourceRoot}/index.ts"]
+  * @default {"default":["{sourceRoot}/index.ts"]}
   * 
   * @format path
  */
- entry: Array<string>,
+ entry?: Array<string>,
 
  /**
   * Output Path
@@ -23,7 +23,7 @@ export interface CargoClippyExecutorSchema {
   * 
   * @format path
  */
- outputPath: string,
+ outputPath?: string,
 
  /**
   * TSConfig Path
@@ -34,7 +34,7 @@ export interface CargoClippyExecutorSchema {
   * 
   * @format path
  */
- tsconfig: string,
+ tsconfig?: string,
 
  /**
   * Cargo.toml Path
@@ -45,7 +45,7 @@ export interface CargoClippyExecutorSchema {
   * 
   * @format path
  */
- package: string,
+ package?: string,
 
  /**
   * Toolchain
@@ -56,7 +56,7 @@ export interface CargoClippyExecutorSchema {
   * 
   * @enum stable,beta,nightly
  */
- toolchain: string,
+ toolchain?: string,
 
  /**
   * Target
@@ -64,7 +64,7 @@ export interface CargoClippyExecutorSchema {
   * The target to build
   * 
  */
- target: string,
+ target?: string,
 
  /**
   * All Targets
@@ -72,7 +72,7 @@ export interface CargoClippyExecutorSchema {
   * Build all targets
   * 
  */
- allTargets: boolean,
+ allTargets?: boolean,
 
  /**
   * Profile
@@ -80,7 +80,7 @@ export interface CargoClippyExecutorSchema {
   * The profile to build
   * 
  */
- profile: string,
+ profile?: string,
 
  /**
   * Release
@@ -88,7 +88,7 @@ export interface CargoClippyExecutorSchema {
   * Build in release mode
   * 
  */
- release: boolean,
+ release?: boolean,
 
  /**
   * Features
@@ -98,7 +98,7 @@ export interface CargoClippyExecutorSchema {
   * 
   * @oneOf [object Object],[object Object]
  */
- features: string,
+ features?: string,
 
  /**
   * All Features
@@ -106,7 +106,7 @@ export interface CargoClippyExecutorSchema {
   * Build all features
   * 
  */
- allFeatures: boolean,
+ allFeatures?: boolean,
 
  /**
   * Fix
@@ -114,6 +114,6 @@ export interface CargoClippyExecutorSchema {
   * Automatically fix issues
   * 
  */
- fix: boolean,
+ fix?: boolean,
 }
 

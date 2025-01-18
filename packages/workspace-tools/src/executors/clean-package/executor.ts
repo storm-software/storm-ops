@@ -2,6 +2,7 @@ import type { ExecutorContext } from "@nx/devkit";
 import { joinPathFragments } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import { writeInfo } from "@storm-software/config-tools/logger/console";
+import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import {
   copy,
   mkdir,
@@ -45,7 +46,7 @@ export async function cleanPackageExecutorFn(
   const packageJson = await readJson<PackageJson>(options.packageJsonPath);
 
   await copy(options.outputPath, tempDirectoryName, {
-    filter: createFilesFilter(options.ignoredFiles, options.outputPath)
+    filter: createFilesFilter(options.ignoredFiles, options.outputPath!)
   });
 
   if (options.cleanReadMe) {
@@ -198,7 +199,7 @@ export default withRunExecutor<CleanPackageExecutorSchema>(
         options: CleanPackageExecutorSchema
       ): CleanPackageExecutorSchema => {
         options.outputPath ??= "dist/{projectRoot}";
-        options.packageJsonPath ??= joinPathFragments(
+        options.packageJsonPath ??= joinPaths(
           options.outputPath,
           "package.json"
         );

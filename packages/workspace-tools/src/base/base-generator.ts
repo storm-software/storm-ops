@@ -13,14 +13,10 @@ import {
   writeSuccess,
   writeTrace
 } from "@storm-software/config-tools";
-import type {
-  BaseGeneratorOptions,
-  BaseGeneratorResult,
-  BaseGeneratorSchema
-} from "../types";
+import type { BaseGeneratorOptions, BaseGeneratorResult } from "../types";
 
 export const withRunGenerator =
-  <TGeneratorSchema extends BaseGeneratorSchema = any>(
+  <TGeneratorSchema extends BaseGeneratorSchema = BaseGeneratorSchema>(
     name: string,
     generatorFn: (
       tree: Tree,

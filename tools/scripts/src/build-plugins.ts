@@ -33,7 +33,7 @@ Promise.all([
       "packages/workspace-tools/src/plugins/typescript/tsup.ts"
     ],
     outdir: "dist/plugins",
-    tsconfig: "packages/workspace-tools/tsconfig.lib.json",
+    tsconfig: "packages/workspace-tools/tsconfig.json",
     packages: "external",
     logLevel: "info",
     bundle: true,

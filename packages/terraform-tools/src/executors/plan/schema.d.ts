@@ -1,4 +1,4 @@
-import { TerraformExecutorSchema } from "../../base/base-executor";
+import { TerraformExecutorSchema } from "../../base/terraform-executor";
 
 export type PlanExecutorSchema = Required<
   Pick<TerraformExecutorSchema, "planFile">

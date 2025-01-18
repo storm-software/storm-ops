@@ -1,5 +1,6 @@
 import { execSync } from "node:child_process";
-import { AbstractHelmClient, PackageOptions, PushOptions } from "../types";
+import type { PackageOptions, PushOptions } from "../types";
+import { AbstractHelmClient } from "../types";
 import { ensureInitialized } from "./ensure-init";
 
 /** Helm wrapper class */

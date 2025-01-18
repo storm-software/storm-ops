@@ -1,45 +1,45 @@
 {
   "executors": {
     "plan": {
-      "implementation": "./src/executors/plan/executor",
-      "schema": "./src/executors/plan/schema.json",
+      "implementation": "./dist/src/executors/plan/executor",
+      "schema": "./dist/src/executors/plan/schema.json",
       "description": "Run the `plan` command using the workspaces Terraform IoC configuration files"
     },
     "apply": {
-      "implementation": "./src/executors/apply/executor",
-      "schema": "./src/executors/apply/schema.json",
+      "implementation": "./dist/src/executors/apply/executor",
+      "schema": "./dist/src/executors/apply/schema.json",
       "description": "Run the `apply` command using the workspaces Terraform IoC configuration files"
     },
     "output": {
-      "implementation": "./src/executors/output/executor",
-      "schema": "./src/executors/output/schema.json",
+      "implementation": "./dist/src/executors/output/executor",
+      "schema": "./dist/src/executors/output/schema.json",
       "description": "Run the `output` command using the workspaces Terraform IoC configuration files"
     },
     "destroy": {
-      "implementation": "./src/executors/destroy/executor",
-      "schema": "./src/executors/destroy/schema.json",
+      "implementation": "./dist/src/executors/destroy/executor",
+      "schema": "./dist/src/executors/destroy/schema.json",
       "description": "Run the `destroy` command using the workspaces Terraform IoC configuration files"
     }
   },
   "builders": {
     "plan": {
-      "implementation": "./src/executors/plan/executor",
-      "schema": "./src/executors/plan/schema.json",
+      "implementation": "./dist/src/executors/plan/executor",
+      "schema": "./dist/src/executors/plan/schema.json",
       "description": "Run the `plan` command using the workspaces Terraform IoC configuration files"
     },
     "apply": {
-      "implementation": "./src/executors/apply/executor",
-      "schema": "./src/executors/apply/schema.json",
+      "implementation": "./dist/src/executors/apply/executor",
+      "schema": "./dist/src/executors/apply/schema.json",
       "description": "Run the `apply` command using the workspaces Terraform IoC configuration files"
     },
     "output": {
-      "implementation": "./src/executors/output/executor",
-      "schema": "./src/executors/output/schema.json",
+      "implementation": "./dist/src/executors/output/executor",
+      "schema": "./dist/src/executors/output/schema.json",
       "description": "Run the `output` command using the workspaces Terraform IoC configuration files"
     },
     "destroy": {
-      "implementation": "./src/executors/destroy/executor",
-      "schema": "./src/executors/destroy/schema.json",
+      "implementation": "./dist/src/executors/destroy/executor",
+      "schema": "./dist/src/executors/destroy/schema.json",
       "description": "Run the `destroy` command using the workspaces Terraform IoC configuration files"
     }
   }

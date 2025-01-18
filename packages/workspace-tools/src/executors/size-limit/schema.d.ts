@@ -9,6 +9,28 @@ export interface SizeLimitExecutorSchema {
   * The path to the entry file
   * 
  */
- entry: string,
+ entry?: Array<string>,
+
+ /**
+  * Output Path
+  * 
+  * The output path for the build
+  * 
+  * @default "dist/{projectRoot}"
+  * 
+  * @format path
+ */
+ outputPath?: string,
+
+ /**
+  * TSConfig Path
+  * 
+  * The path to the tsconfig file
+  * 
+  * @default "{projectRoot}/tsconfig.json"
+  * 
+  * @format path
+ */
+ tsconfig?: string,
 }
 

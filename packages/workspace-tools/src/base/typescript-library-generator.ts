@@ -19,19 +19,22 @@ import {
   tsConfigBaseOptions
 } from "@nx/js";
 import jsInitGenerator from "@nx/js/src/generators/init/init";
-import { Bundler } from "@nx/js/src/generators/library/schema";
+import {
+  Bundler,
+  NormalizedLibraryGeneratorOptions
+} from "@nx/js/src/generators/library/schema";
 import setupVerdaccio from "@nx/js/src/generators/setup-verdaccio/generator";
 import { ProjectPackageManagerWorkspaceState } from "@nx/js/src/utils/package-manager-workspaces";
 import { StormConfig } from "@storm-software/config";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import type { PackageJson } from "nx/src/utils/package-json";
 import { UnbuildExecutorSchema } from "../executors/unbuild/schema.d";
-import type {
-  TypeScriptLibraryGeneratorNormalizedSchema,
-  TypeScriptLibraryGeneratorSchema
-} from "../types";
 import { addProjectTag, ProjectTagConstants } from "../utils/project-tags";
 import { nxVersion } from "../utils/versions";
+import { TypeScriptLibraryGeneratorSchema } from "./typescript-library-generator.d";
+
+export type TypeScriptLibraryGeneratorNormalizedSchema =
+  TypeScriptLibraryGeneratorSchema & NormalizedLibraryGeneratorOptions;
 
 type TypeScriptLibraryProjectConfig = ProjectConfiguration & {
   targets: {
@@ -81,7 +84,7 @@ export async function typeScriptLibraryGeneratorFn(
         options: {
           entry: [joinPaths(options.projectRoot, "src", "index.ts")],
           outputPath: getOutputPath(options),
-          tsConfig: joinPaths(options.projectRoot, "tsconfig.json"),
+          tsconfig: joinPaths(options.projectRoot, "tsconfig.json"),
           project: joinPaths(options.projectRoot, "package.json"),
           defaultConfiguration: "production",
           platform: "neutral",
@@ -293,22 +296,22 @@ export function createProjectTsConfigJson(
     extends: options.rootProject
       ? undefined
       : getRelativePathToRootTsConfig(tree, options.projectRoot),
-    ...(options?.tsConfigOptions ?? {}),
+    ...(options?.tsconfigOptions ?? {}),
     compilerOptions: {
       ...(options.rootProject ? tsConfigBaseOptions : {}),
       outDir: joinPaths(offsetFromRoot(options.projectRoot), "dist/out-tsc"),
       noEmit: true,
-      ...(options?.tsConfigOptions?.compilerOptions ?? {})
+      ...(options?.tsconfigOptions?.compilerOptions ?? {})
     },
-    files: [...(options?.tsConfigOptions?.files ?? [])],
+    files: [...(options?.tsconfigOptions?.files ?? [])],
     include: [
-      ...(options?.tsConfigOptions?.include ?? []),
+      ...(options?.tsconfigOptions?.include ?? []),
       "src/**/*.ts",
       "src/**/*.js",
       "bin/**/*"
     ],
     exclude: [
-      ...(options?.tsConfigOptions?.exclude ?? []),
+      ...(options?.tsconfigOptions?.exclude ?? []),
       "jest.config.ts",
       "src/**/*.spec.ts",
       "src/**/*.test.ts"
@@ -317,6 +320,9 @@ export function createProjectTsConfigJson(
 
   writeJson(tree, joinPaths(options.projectRoot, "tsconfig.json"), tsconfig);
 }
+
+export type UnitTestRunner = "jest" | "vitest" | "none" | undefined;
+export type TestEnvironment = "jsdom" | "node" | undefined;
 
 export async function normalizeOptions(
   tree: Tree,
@@ -359,9 +365,9 @@ export async function normalizeOptions(
     skipFormat: false,
     skipTsConfig: false,
     includeBabelRc: false,
-    unitTestRunner: "jest",
+    unitTestRunner: "jest" as UnitTestRunner,
     linter: Linter.EsLint,
-    testEnvironment: "node",
+    testEnvironment: "node" as TestEnvironment,
     config: "project",
     compiler: "tsc",
     bundler,
@@ -378,5 +384,5 @@ export async function normalizeOptions(
     projectRoot,
     parsedTags: options.tags ? options.tags.split(",").map(s => s.trim()) : [],
     importPath
-  };
+  } as TypeScriptLibraryGeneratorNormalizedSchema;
 }

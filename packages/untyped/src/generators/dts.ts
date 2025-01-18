@@ -12,6 +12,7 @@ export function generateDeclaration(schema: Schema) {
 
 ${generateTypes(schema, {
   addExport: true,
+  partial: true,
   interfaceName: `${schema.title?.replaceAll(" ", "") || "Type"}Schema`
 })}
 

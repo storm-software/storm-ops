@@ -6,12 +6,12 @@
 
 ## `entry`
 - **Type**: `array`
-- **Default**: `["{sourceRoot}/index.ts"]`
+- **Default**: `{"default":["{sourceRoot}/index.ts"]}`
 
-> Entry File
+> Entry File(s)
 
 
-The entry file to build
+The entry file or files to build
 
 
 ## `outputPath`

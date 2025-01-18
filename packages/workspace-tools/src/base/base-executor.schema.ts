@@ -8,12 +8,13 @@ export default defineUntypedSchema({
   },
   entry: {
     $schema: {
-      title: "Entry File",
+      title: "Entry File(s)",
       format: "path",
-      description: "The entry file to build"
+      type: "array",
+      description: "The entry file or files to build",
+      items: { type: "string" }
     },
-    $resolve: (val: string[] = ["{sourceRoot}/index.ts"]) =>
-      ([] as string[]).concat(val)
+    default: ["{sourceRoot}/index.ts"]
   },
   outputPath: {
     $schema: {

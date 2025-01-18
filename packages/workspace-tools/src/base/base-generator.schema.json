@@ -1,0 +1,18 @@
+{
+  "id": "#",
+  "title": "Base Generator",
+  "description": "A type definition for the base Generator schema",
+  "required": [
+    "directory"
+  ],
+  "properties": {
+    "directory": {
+      "title": "Directory",
+      "type": "string",
+      "description": "The directory to create the library in",
+      "id": "#directory"
+    }
+  },
+  "type": "object",
+  "default": {}
+}

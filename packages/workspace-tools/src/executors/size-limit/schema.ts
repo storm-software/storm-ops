@@ -1,6 +1,8 @@
 import { defineUntypedSchema } from "untyped";
+import baseExecutorSchema from "../../base/base-executor.schema";
 
 export default defineUntypedSchema({
+  ...baseExecutorSchema,
   $schema: {
     id: "SizeLimitExecutorSchema",
     title: "Size Limit Executor",
@@ -9,8 +11,12 @@ export default defineUntypedSchema({
   entry: {
     $schema: {
       title: "Entry",
-      type: "string",
-      description: "The path to the entry file"
+      type: "array",
+      description: "The path to the entry file",
+      items: {
+        type: "string",
+        format: "path"
+      }
     }
   }
 });

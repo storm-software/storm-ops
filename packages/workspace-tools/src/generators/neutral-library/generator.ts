@@ -12,7 +12,7 @@ import {
   normalizeOptions,
   typeScriptLibraryGeneratorFn
 } from "../../base/typescript-library-generator";
-import type { TypeScriptLibraryGeneratorSchema } from "../../types";
+import type { TypeScriptLibraryGeneratorSchema } from "../../base/typescript-library-generator.d";
 import { NeutralLibraryGeneratorSchema } from "./schema.d";
 
 export async function neutralLibraryGeneratorFn(
@@ -58,5 +58,18 @@ export async function neutralLibraryGeneratorFn(
 
 export default withRunGenerator<NeutralLibraryGeneratorSchema>(
   "TypeScript Library Creator (Neutral Platform)",
-  neutralLibraryGeneratorFn
+  neutralLibraryGeneratorFn,
+  {
+    hooks: {
+      applyDefaultOptions: (
+        options: NeutralLibraryGeneratorSchema
+      ): NeutralLibraryGeneratorSchema => {
+        options.description ??=
+          "A library used by Storm Software to support either browser or NodeJs applications";
+        options.platform = "neutral";
+
+        return options;
+      }
+    }
+  }
 );

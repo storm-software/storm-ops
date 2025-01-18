@@ -25,15 +25,16 @@ export interface NodeLibraryGeneratorSchema {
   * The description of the library
   * 
  */
- description: string,
+ description?: string,
 
  /**
   * Build Executor
   * 
   * The executor to use for building the library
   * 
+  * @default "@storm-software/workspace-tools:unbuild"
  */
- buildExecutor: string,
+ buildExecutor?: string,
 
  /**
   * Platform
@@ -44,7 +45,7 @@ export interface NodeLibraryGeneratorSchema {
   * 
   * @enum node,neutral
  */
- platform: string,
+ platform?: string,
 
  /**
   * Dev Dependencies
@@ -52,7 +53,7 @@ export interface NodeLibraryGeneratorSchema {
   * The dev dependencies to install
   * 
  */
- devDependencies: {
+ devDependencies?: {
   [key: string]: any
  },
 
@@ -62,7 +63,27 @@ export interface NodeLibraryGeneratorSchema {
   * The dependencies to install
   * 
  */
- dependencies: {
+ dependencies?: {
+  [key: string]: any
+ },
+
+ /**
+  * Peer Dependencies
+  * 
+  * The peer dependencies to install
+  * 
+ */
+ peerDependencies?: {
+  [key: string]: any
+ },
+
+ /**
+  * Peer Dependencies Meta
+  * 
+  * The peer dependencies meta
+  * 
+ */
+ peerDependenciesMeta?: {
   [key: string]: any
  },
 
@@ -72,7 +93,17 @@ export interface NodeLibraryGeneratorSchema {
   * The tags for the library
   * 
  */
- tags: string,
+ tags?: string,
+
+ /**
+  * TypeScript Config (tsconfig.json) Options
+  * 
+  * The TypeScript configuration options
+  * 
+ */
+ tsconfigOptions?: {
+  [key: string]: any
+ },
 
  /**
   * Skip Format
@@ -80,7 +111,7 @@ export interface NodeLibraryGeneratorSchema {
   * Skip formatting
   * 
  */
- skipFormat: boolean,
+ skipFormat?: boolean,
 
  /**
   * Skip TsConfig
@@ -88,7 +119,7 @@ export interface NodeLibraryGeneratorSchema {
   * Skip TypeScript configuration
   * 
  */
- skipTsConfig: boolean,
+ skipTsConfig?: boolean,
 
  /**
   * Skip Package Json
@@ -96,7 +127,7 @@ export interface NodeLibraryGeneratorSchema {
   * Skip package.json
   * 
  */
- skipPackageJson: boolean,
+ skipPackageJson?: boolean,
 
  /**
   * Include Babel Rc
@@ -104,7 +135,7 @@ export interface NodeLibraryGeneratorSchema {
   * Include Babel configuration
   * 
  */
- includeBabelRc: boolean,
+ includeBabelRc?: boolean,
 
  /**
   * Unit Test Runner
@@ -114,7 +145,7 @@ export interface NodeLibraryGeneratorSchema {
   * 
   * @enum jest,vitest,none
  */
- unitTestRunner: string,
+ unitTestRunner?: string,
 
  /**
   * Linter
@@ -122,7 +153,7 @@ export interface NodeLibraryGeneratorSchema {
   * The linter to use
   * 
  */
- linter: string,
+ linter?: string,
 
  /**
   * Test Environment
@@ -132,7 +163,7 @@ export interface NodeLibraryGeneratorSchema {
   * 
   * @enum jsdom,node
  */
- testEnvironment: string,
+ testEnvironment?: string,
 
  /**
   * Import Path
@@ -140,7 +171,7 @@ export interface NodeLibraryGeneratorSchema {
   * The import path for the library
   * 
  */
- importPath: string,
+ importPath?: string,
 
  /**
   * JavaScript
@@ -148,7 +179,7 @@ export interface NodeLibraryGeneratorSchema {
   * Use JavaScript instead of TypeScript
   * 
  */
- js: boolean,
+ js?: boolean,
 
  /**
   * Pascal Case Files
@@ -156,7 +187,7 @@ export interface NodeLibraryGeneratorSchema {
   * Use PascalCase for file names
   * 
  */
- pascalCaseFiles: boolean,
+ pascalCaseFiles?: boolean,
 
  /**
   * Strict
@@ -164,7 +195,7 @@ export interface NodeLibraryGeneratorSchema {
   * Enable strict mode
   * 
  */
- strict: boolean,
+ strict?: boolean,
 
  /**
   * Publishable
@@ -172,7 +203,7 @@ export interface NodeLibraryGeneratorSchema {
   * Make the library publishable
   * 
  */
- publishable: boolean,
+ publishable?: boolean,
 
  /**
   * Buildable
@@ -180,7 +211,7 @@ export interface NodeLibraryGeneratorSchema {
   * Make the library buildable
   * 
  */
- buildable: boolean,
+ buildable?: boolean,
 
  /**
   * Set Parser Options Project
@@ -188,7 +219,7 @@ export interface NodeLibraryGeneratorSchema {
   * Set parser options project
   * 
  */
- setParserOptionsProject: boolean,
+ setParserOptionsProject?: boolean,
 
  /**
   * Config
@@ -198,7 +229,7 @@ export interface NodeLibraryGeneratorSchema {
   * 
   * @enum workspace,project,npm-scripts
  */
- config: string,
+ config?: string,
 
  /**
   * Compiler
@@ -206,7 +237,7 @@ export interface NodeLibraryGeneratorSchema {
   * The compiler to use
   * 
  */
- compiler: string,
+ compiler?: string,
 
  /**
   * Bundler
@@ -214,7 +245,7 @@ export interface NodeLibraryGeneratorSchema {
   * The bundler to use
   * 
  */
- bundler: string,
+ bundler?: string,
 
  /**
   * Skip Type Check
@@ -222,7 +253,7 @@ export interface NodeLibraryGeneratorSchema {
   * Skip type checking
   * 
  */
- skipTypeCheck: boolean,
+ skipTypeCheck?: boolean,
 
  /**
   * Minimal
@@ -230,7 +261,7 @@ export interface NodeLibraryGeneratorSchema {
   * Create a minimal library
   * 
  */
- minimal: boolean,
+ minimal?: boolean,
 
  /**
   * Root Project
@@ -238,7 +269,7 @@ export interface NodeLibraryGeneratorSchema {
   * Create a root project
   * 
  */
- rootProject: boolean,
+ rootProject?: boolean,
 
  /**
   * Simple Name
@@ -246,7 +277,7 @@ export interface NodeLibraryGeneratorSchema {
   * Use a simple name for the library
   * 
  */
- simpleName: boolean,
+ simpleName?: boolean,
 
  /**
   * Add Plugin
@@ -254,7 +285,7 @@ export interface NodeLibraryGeneratorSchema {
   * Add a plugin to the library
   * 
  */
- addPlugin: boolean,
+ addPlugin?: boolean,
 
  /**
   * Use Project Json
@@ -262,7 +293,7 @@ export interface NodeLibraryGeneratorSchema {
   * Use project.json
   * 
  */
- useProjectJson: boolean,
+ useProjectJson?: boolean,
 
  /**
   * Skip Workspaces Warning
@@ -270,7 +301,7 @@ export interface NodeLibraryGeneratorSchema {
   * Skip workspaces warning
   * 
  */
- skipWorkspacesWarning: boolean,
+ skipWorkspacesWarning?: boolean,
 
  /**
   * Use Tsc Executor
@@ -278,6 +309,6 @@ export interface NodeLibraryGeneratorSchema {
   * Use TSC executor
   * 
  */
- useTscExecutor: boolean,
+ useTscExecutor?: boolean,
 }
 

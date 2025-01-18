@@ -53,6 +53,8 @@ import {
 } from "../../utils/toml";
 import type { ReleaseVersionGeneratorSchema } from "./schema.d";
 
+type ReleaseVersionPrefixes = "auto" | "" | "~" | "^" | "=";
+
 export async function releaseVersionGeneratorFn(
   tree: Tree,
   options: ReleaseVersionGeneratorSchema,
@@ -94,7 +96,9 @@ export async function releaseVersionGeneratorFn(
 
     if (
       options.versionPrefix &&
-      validReleaseVersionPrefixes.indexOf(options.versionPrefix) === -1
+      validReleaseVersionPrefixes.indexOf(
+        options.versionPrefix as ReleaseVersionPrefixes
+      ) === -1
     ) {
       throw new Error(
         `Invalid value for version.generatorOptions.versionPrefix: "${options.versionPrefix}"
@@ -137,7 +141,7 @@ Valid values are: ${validReleaseVersionPrefixes.map(s => `"${s}"`).join(", ")}`
     for (const project of projects) {
       projectNameToPackageRootMap.set(
         project.name,
-        resolvePackageRoot(project)
+        resolvePackageRoot(project as ProjectGraphProjectNode)
       );
     }
 
@@ -407,7 +411,7 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
             specifier =
               (await resolveSemverSpecifierFromConventionalCommits(
                 previousVersionRef,
-                options.projectGraph,
+                options.projectGraph as ProjectGraph,
                 affectedProjects,
                 DEFAULT_CONVENTIONAL_COMMITS_CONFIG
               )) ?? undefined;
@@ -472,11 +476,11 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
       // Resolve any local package dependencies for this project (before applying the new version or updating the versionData)
       const localPackageDependencies = resolveLocalPackageDependencies(
         tree,
-        options.projectGraph,
+        options.projectGraph as ProjectGraph,
         projects.filter(
           project =>
             project?.data?.root && project?.data?.root !== config?.workspaceRoot
-        ),
+        ) as ProjectGraphProjectNode[],
         projectNameToPackageRootMap,
         resolvePackageRoot,
         // includeAll when the release group is independent, as we may be filtering to a specific subset of projects, but we still want to update their dependents

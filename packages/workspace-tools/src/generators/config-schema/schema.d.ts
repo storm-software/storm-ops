@@ -9,6 +9,6 @@ export interface ConfigSchemaGeneratorSchema {
   * The file to write the schema to
   * 
  */
- outputFile: string,
+ outputFile?: string,
 }
 

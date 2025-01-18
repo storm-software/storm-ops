@@ -1,0 +1,263 @@
+{
+  "id": "#",
+  "title": "TypeScript Library Generator",
+  "description": "A type definition for the base TypeScript Library Generator schema",
+  "required": [
+    "directory",
+    "name"
+  ],
+  "properties": {
+    "directory": {
+      "title": "Directory",
+      "type": "string",
+      "description": "The directory to create the library in",
+      "id": "#directory"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string",
+      "description": "The name of the library",
+      "id": "#name"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string",
+      "description": "The description of the library",
+      "id": "#description"
+    },
+    "buildExecutor": {
+      "title": "Build Executor",
+      "type": "string",
+      "description": "The executor to use for building the library",
+      "id": "#buildExecutor",
+      "default": "@storm-software/workspace-tools:unbuild"
+    },
+    "platform": {
+      "title": "Platform",
+      "type": "string",
+      "description": "The platform to target with the library",
+      "enum": [
+        "neutral",
+        "node",
+        "browser"
+      ],
+      "id": "#platform",
+      "default": "neutral"
+    },
+    "devDependencies": {
+      "title": "Dev Dependencies",
+      "type": "object",
+      "description": "The dev dependencies to install",
+      "id": "#devDependencies",
+      "default": {}
+    },
+    "dependencies": {
+      "title": "Dependencies",
+      "type": "object",
+      "description": "The dependencies to install",
+      "id": "#dependencies",
+      "default": {}
+    },
+    "peerDependencies": {
+      "title": "Peer Dependencies",
+      "type": "object",
+      "description": "The peer dependencies to install",
+      "id": "#peerDependencies",
+      "default": {}
+    },
+    "peerDependenciesMeta": {
+      "title": "Peer Dependencies Meta",
+      "type": "object",
+      "description": "The peer dependencies meta",
+      "id": "#peerDependenciesMeta",
+      "default": {}
+    },
+    "tags": {
+      "title": "Tags",
+      "type": "string",
+      "description": "The tags for the library",
+      "id": "#tags"
+    },
+    "tsconfigOptions": {
+      "title": "TypeScript Config (tsconfig.json) Options",
+      "type": "object",
+      "description": "The TypeScript configuration options",
+      "id": "#tsconfigOptions",
+      "default": {}
+    },
+    "skipFormat": {
+      "title": "Skip Format",
+      "type": "boolean",
+      "description": "Skip formatting",
+      "id": "#skipFormat"
+    },
+    "skipTsConfig": {
+      "title": "Skip TsConfig",
+      "type": "boolean",
+      "description": "Skip TypeScript configuration",
+      "id": "#skipTsConfig"
+    },
+    "skipPackageJson": {
+      "title": "Skip Package Json",
+      "type": "boolean",
+      "description": "Skip package.json",
+      "id": "#skipPackageJson"
+    },
+    "includeBabelRc": {
+      "title": "Include Babel Rc",
+      "type": "boolean",
+      "description": "Include Babel configuration",
+      "id": "#includeBabelRc"
+    },
+    "unitTestRunner": {
+      "title": "Unit Test Runner",
+      "type": "string",
+      "enum": [
+        "jest",
+        "vitest",
+        "none"
+      ],
+      "description": "The unit test runner to use",
+      "id": "#unitTestRunner"
+    },
+    "linter": {
+      "title": "Linter",
+      "type": "string",
+      "description": "The linter to use",
+      "id": "#linter"
+    },
+    "testEnvironment": {
+      "title": "Test Environment",
+      "type": "string",
+      "enum": [
+        "jsdom",
+        "node"
+      ],
+      "description": "The test environment to use",
+      "id": "#testEnvironment"
+    },
+    "importPath": {
+      "title": "Import Path",
+      "type": "string",
+      "description": "The import path for the library",
+      "id": "#importPath"
+    },
+    "js": {
+      "title": "JavaScript",
+      "type": "boolean",
+      "description": "Use JavaScript instead of TypeScript",
+      "id": "#js"
+    },
+    "pascalCaseFiles": {
+      "title": "Pascal Case Files",
+      "type": "boolean",
+      "description": "Use PascalCase for file names",
+      "id": "#pascalCaseFiles"
+    },
+    "strict": {
+      "title": "Strict",
+      "type": "boolean",
+      "description": "Enable strict mode",
+      "id": "#strict"
+    },
+    "publishable": {
+      "title": "Publishable",
+      "type": "boolean",
+      "description": "Make the library publishable",
+      "id": "#publishable"
+    },
+    "buildable": {
+      "title": "Buildable",
+      "type": "boolean",
+      "description": "Make the library buildable",
+      "id": "#buildable"
+    },
+    "setParserOptionsProject": {
+      "title": "Set Parser Options Project",
+      "type": "boolean",
+      "description": "Set parser options project",
+      "id": "#setParserOptionsProject"
+    },
+    "config": {
+      "title": "Config",
+      "type": "string",
+      "enum": [
+        "workspace",
+        "project",
+        "npm-scripts"
+      ],
+      "description": "The configuration type",
+      "id": "#config"
+    },
+    "compiler": {
+      "title": "Compiler",
+      "type": "string",
+      "description": "The compiler to use",
+      "id": "#compiler"
+    },
+    "bundler": {
+      "title": "Bundler",
+      "type": "string",
+      "description": "The bundler to use",
+      "id": "#bundler"
+    },
+    "skipTypeCheck": {
+      "title": "Skip Type Check",
+      "type": "boolean",
+      "description": "Skip type checking",
+      "id": "#skipTypeCheck"
+    },
+    "minimal": {
+      "title": "Minimal",
+      "type": "boolean",
+      "description": "Create a minimal library",
+      "id": "#minimal"
+    },
+    "rootProject": {
+      "title": "Root Project",
+      "type": "boolean",
+      "description": "Create a root project",
+      "id": "#rootProject"
+    },
+    "simpleName": {
+      "title": "Simple Name",
+      "type": "boolean",
+      "description": "Use a simple name for the library",
+      "id": "#simpleName"
+    },
+    "addPlugin": {
+      "title": "Add Plugin",
+      "type": "boolean",
+      "description": "Add a plugin to the library",
+      "id": "#addPlugin"
+    },
+    "useProjectJson": {
+      "title": "Use Project Json",
+      "type": "boolean",
+      "description": "Use project.json",
+      "id": "#useProjectJson"
+    },
+    "skipWorkspacesWarning": {
+      "title": "Skip Workspaces Warning",
+      "type": "boolean",
+      "description": "Skip workspaces warning",
+      "id": "#skipWorkspacesWarning"
+    },
+    "useTscExecutor": {
+      "title": "Use Tsc Executor",
+      "type": "boolean",
+      "description": "Use TSC executor",
+      "id": "#useTscExecutor"
+    }
+  },
+  "type": "object",
+  "default": {
+    "buildExecutor": "@storm-software/workspace-tools:unbuild",
+    "platform": "neutral",
+    "devDependencies": {},
+    "dependencies": {},
+    "peerDependencies": {},
+    "peerDependenciesMeta": {},
+    "tsconfigOptions": {}
+  }
+}

@@ -1,28 +1,14 @@
 import type { ExecutorContext } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
 import { ProjectTokenizerOptions, run } from "@storm-software/config-tools";
-import type {
-  BaseExecutorOptions,
-  BaseExecutorSchema
-} from "@storm-software/workspace-tools";
-import { withRunExecutor } from "@storm-software/workspace-tools";
+import { withRunExecutor } from "@storm-software/workspace-tools/base/base-executor";
+import type { BaseExecutorSchema } from "@storm-software/workspace-tools/base/base-executor.d";
+import type { BaseExecutorOptions } from "@storm-software/workspace-tools/types";
 import { which } from "shelljs";
-
-interface TerraformCommandOptions {
-  backendConfig: { key: string; name: string }[];
-  autoApproval: boolean;
-  planFile: string;
-  formatWrite: boolean;
-  upgrade: boolean;
-  migrateState: boolean;
-  lock: boolean;
-  varFile: string;
-  varString: string;
-  reconfigure: boolean;
-}
+import type { BaseTerraformExecutorSchema } from "./base-terraform-executor.d";
 
 export type TerraformExecutorSchema = BaseExecutorSchema &
-  Partial<TerraformCommandOptions>;
+  Partial<BaseTerraformExecutorSchema>;
 
 export type NormalizedTerraformExecutorOptions = ProjectTokenizerOptions &
   TerraformExecutorSchema;

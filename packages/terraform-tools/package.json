@@ -1,7 +1,6 @@
 {
   "name": "@storm-software/terraform-tools",
   "version": "0.45.3",
-  "type": "commonjs",
   "description": "Tools for managing Terraform infrastructure within a Nx workspace.",
   "repository": {
     "type": "github",
@@ -17,18 +16,104 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "main": "./index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "exports": {
-    ".": "./index.js",
     "./package.json": "./package.json",
-    "./generators.json": "./generators.json",
-    "./generators/*/schema.json": "./src/generators/*/schema.json",
+    "./docs/*": "./docs/*",
+    "./migrations.json": "./migrations.json",
     "./executors.json": "./executors.json",
-    "./executors/*/schema.json": "./src/executors/*/schema.json",
-    "./plugins": "./src/plugins/index.js",
-    "./utils": "./src/utils/index.js"
+    "./executors/*/schema.json": "./dist/src/executors/*/schema.json",
+    "./generators.json": "./generators.json",
+    "./generators/*/schema.json": "./dist/src/generators/*/schema.json",
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./index": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./executors": {
+      "import": {
+        "types": "./dist/executors.d.mts",
+        "default": "./dist/executors.mjs"
+      },
+      "require": {
+        "types": "./dist/executors.d.ts",
+        "default": "./dist/executors.js"
+      },
+      "default": {
+        "types": "./dist/executors.d.ts",
+        "default": "./dist/executors.js"
+      }
+    },
+    "./generators": {
+      "import": {
+        "types": "./dist/generators.d.mts",
+        "default": "./dist/generators.mjs"
+      },
+      "require": {
+        "types": "./dist/generators.d.ts",
+        "default": "./dist/generators.js"
+      },
+      "default": {
+        "types": "./dist/generators.d.ts",
+        "default": "./dist/generators.js"
+      }
+    },
+    "./base": {
+      "import": {
+        "types": "./dist/src/base/index.d.mts",
+        "default": "./dist/src/base/index.mjs"
+      },
+      "require": {
+        "types": "./dist/src/base/index.d.ts",
+        "default": "./dist/src/base/index.js"
+      },
+      "default": {
+        "types": "./dist/src/base/index.d.ts",
+        "default": "./dist/src/base/index.js"
+      }
+    },
+    "./base/*": {
+      "import": {
+        "types": "./dist/src/base/*.d.mts",
+        "default": "./dist/src/base/*.mjs"
+      },
+      "require": {
+        "types": "./dist/src/base/*.d.ts",
+        "default": "./dist/src/base/*.js"
+      },
+      "default": {
+        "types": "./dist/src/base/*.d.ts",
+        "default": "./dist/src/base/*.js"
+      }
+    },
+    "./executors/*/executor.js": "./dist/src/executors/*/executor.js",
+    "./generators/*/init.js": "./dist/src/generators/*/init.js"
   },
-  "typings": "./declarations.d.ts",
+  "typings": "dist/index.d.ts",
   "keywords": [
     "iac",
     "infrastructure",
@@ -41,14 +126,14 @@
   ],
   "peerDependencies": {
     "@nx/devkit": "catalog:",
-    "@nx/workspace": "catalog:",
+    "@storm-software/workspace-tools": "workspace:*",
     "nx": "catalog:"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
       "optional": false
     },
-    "@nx/workspace": {
+    "@storm-software/workspace-tools": {
       "optional": false
     },
     "nx": {
@@ -56,14 +141,16 @@
     }
   },
   "dependencies": {
+    "@storm-software/workspace-tools": "workspace:*",
     "shelljs": "^0.8.5",
     "tslib": "catalog:"
   },
   "devDependencies": {
     "@nx/devkit": "catalog:",
-    "@nx/workspace": "catalog:",
     "@types/node": "catalog:",
-    "nx": "catalog:"
+    "nx": "catalog:",
+    "tsup": "catalog:",
+    "untyped": "catalog:"
   },
   "publishConfig": {
     "access": "public"

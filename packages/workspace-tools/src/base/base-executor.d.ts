@@ -4,15 +4,15 @@
 
 export interface BaseExecutorSchema {
  /**
-  * Entry File
+  * Entry File(s)
   * 
-  * The entry file to build
+  * The entry file or files to build
   * 
-  * @default ["{sourceRoot}/index.ts"]
+  * @default {"default":["{sourceRoot}/index.ts"]}
   * 
   * @format path
  */
- entry: Array<string>,
+ entry?: Array<string>,
 
  /**
   * Output Path
@@ -23,7 +23,7 @@ export interface BaseExecutorSchema {
   * 
   * @format path
  */
- outputPath: string,
+ outputPath?: string,
 
  /**
   * TSConfig Path
@@ -34,6 +34,6 @@ export interface BaseExecutorSchema {
   * 
   * @format path
  */
- tsconfig: string,
+ tsconfig?: string,
 }
 

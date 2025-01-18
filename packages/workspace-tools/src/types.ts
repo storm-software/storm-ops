@@ -1,9 +1,7 @@
-import {
-  LibraryGeneratorSchema,
-  NormalizedLibraryGeneratorOptions
-} from "@nx/js/src/generators/library/schema";
 import type { StormConfig } from "@storm-software/config";
 import type { Options } from "tsup";
+import { BaseExecutorSchema } from "./base/base-executor.d";
+import { BaseGeneratorSchema } from "./base/base-generator.d";
 
 export interface TsupContext {
   projectRoot: string;
@@ -14,11 +12,6 @@ export interface TsupContext {
 
 export type BuildOptions = Options;
 export type Entry = string | string[] | Record<string, string>;
-
-export interface BaseExecutorSchema extends Record<string, any> {
-  outputPath?: string;
-  tsConfig?: string;
-}
 
 export interface WorkspaceToolHooks<TSchema = any> {
   applyDefaultOptions?: (
@@ -43,12 +36,6 @@ export interface BaseExecutorResult {
   success?: boolean;
 }
 
-export interface BaseGeneratorSchema extends Record<string, any> {
-  main?: string;
-  outputPath?: string;
-  tsConfig?: string;
-}
-
 export type BaseGeneratorOptions<
   TGeneratorSchema extends BaseGeneratorSchema = BaseGeneratorSchema
 > = BaseWorkspaceToolOptions<TGeneratorSchema>;
@@ -59,36 +46,33 @@ export interface BaseGeneratorResult extends Record<string, any> {
   data?: any;
 }
 
-export type TypeScriptLibraryGeneratorSchema = Omit<
-  LibraryGeneratorSchema,
-  | "js"
-  | "pascalCaseFiles"
-  | "skipFormat"
-  | "skipTsConfig"
-  | "skipPackageJson"
-  | "includeBabelRc"
-  | "unitTestRunner"
-  | "platform"
-  | "linter"
-  | "testEnvironment"
-  | "config"
-  | "compiler"
-  | "bundler"
-  | "skipTypeCheck"
-  | "minimal"
-> & {
-  name: string;
-  description: string;
-  buildExecutor: string;
-  platform?: "neutral" | "node" | "browser" | "worker";
-  devDependencies?: Record<string, string>;
-  peerDependencies?: Record<string, string>;
-  peerDependenciesMeta?: Record<string, any>;
-  tsConfigOptions?: Record<string, any>;
-};
-
-export type TypeScriptLibraryGeneratorNormalizedSchema =
-  TypeScriptLibraryGeneratorSchema & NormalizedLibraryGeneratorOptions;
+// export type TypeScriptLibraryGeneratorSchema = Omit<
+//   LibraryGeneratorSchema,
+//   | "js"
+//   | "pascalCaseFiles"
+//   | "skipFormat"
+//   | "skipTsConfig"
+//   | "skipPackageJson"
+//   | "includeBabelRc"
+//   | "unitTestRunner"
+//   | "platform"
+//   | "linter"
+//   | "testEnvironment"
+//   | "config"
+//   | "compiler"
+//   | "bundler"
+//   | "skipTypeCheck"
+//   | "minimal"
+// > & {
+//   name: string;
+//   description: string;
+//   buildExecutor: string;
+//   platform?: "neutral" | "node" | "browser" | "worker";
+//   devDependencies?: Record<string, string>;
+//   peerDependencies?: Record<string, string>;
+//   peerDependenciesMeta?: Record<string, any>;
+//   tsConfigOptions?: Record<string, any>;
+// };
 
 export type ProjectTagVariant =
   | "language"

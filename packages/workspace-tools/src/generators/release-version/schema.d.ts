@@ -47,7 +47,7 @@ export interface ReleaseVersionGeneratorSchema {
   * The specifier source
   * 
  */
- specifierSource: string,
+ specifierSource?: string,
 
  /**
   * Preid
@@ -55,7 +55,7 @@ export interface ReleaseVersionGeneratorSchema {
   * The preid
   * 
  */
- preid: string,
+ preid?: string,
 
  /**
   * Package Root
@@ -63,7 +63,7 @@ export interface ReleaseVersionGeneratorSchema {
   * The package root
   * 
  */
- packageRoot: string,
+ packageRoot?: string,
 
  /**
   * Current Version Resolver
@@ -71,7 +71,7 @@ export interface ReleaseVersionGeneratorSchema {
   * The current version resolver
   * 
  */
- currentVersionResolver: string,
+ currentVersionResolver?: string,
 
  /**
   * Current Version Resolver Metadata
@@ -79,7 +79,7 @@ export interface ReleaseVersionGeneratorSchema {
   * The current version resolver metadata
   * 
  */
- currentVersionResolverMetadata: {
+ currentVersionResolverMetadata?: {
   [key: string]: any
  },
 
@@ -89,7 +89,7 @@ export interface ReleaseVersionGeneratorSchema {
   * The fallback current version resolver
   * 
  */
- fallbackCurrentVersionResolver: string,
+ fallbackCurrentVersionResolver?: string,
 
  /**
   * First Release
@@ -97,15 +97,17 @@ export interface ReleaseVersionGeneratorSchema {
   * Release the first version
   * 
  */
- firstRelease: boolean,
+ firstRelease?: boolean,
 
  /**
   * Version Prefix
   * 
   * The version prefix
   * 
+  * 
+  * @enum ,auto,~,^,=
  */
- versionPrefix: string,
+ versionPrefix?: string,
 
  /**
   * Skip Lock File Update
@@ -113,7 +115,7 @@ export interface ReleaseVersionGeneratorSchema {
   * Skip lock file update
   * 
  */
- skipLockFileUpdate: boolean,
+ skipLockFileUpdate?: boolean,
 
  /**
   * Install Args
@@ -121,7 +123,7 @@ export interface ReleaseVersionGeneratorSchema {
   * The install arguments
   * 
  */
- installArgs: string,
+ installArgs?: string,
 
  /**
   * Install Ignore Scripts
@@ -129,7 +131,7 @@ export interface ReleaseVersionGeneratorSchema {
   * Ignore scripts
   * 
  */
- installIgnoreScripts: boolean,
+ installIgnoreScripts?: boolean,
 
  /**
   * Conventional Commits Config
@@ -137,7 +139,7 @@ export interface ReleaseVersionGeneratorSchema {
   * The conventional commits config
   * 
  */
- conventionalCommitsConfig: {
+ conventionalCommitsConfig?: {
   [key: string]: any
  },
 
@@ -147,7 +149,7 @@ export interface ReleaseVersionGeneratorSchema {
   * Delete version plans
   * 
  */
- deleteVersionPlans: boolean,
+ deleteVersionPlans?: boolean,
 
  /**
   * Update Dependents
@@ -155,7 +157,7 @@ export interface ReleaseVersionGeneratorSchema {
   * Update dependents
   * 
  */
- updateDependents: string,
+ updateDependents?: string,
 
  /**
   * Log Unchanged Projects
@@ -163,7 +165,7 @@ export interface ReleaseVersionGeneratorSchema {
   * Log unchanged projects
   * 
  */
- logUnchangedProjects: boolean,
+ logUnchangedProjects?: boolean,
 
  /**
   * Preserve Local Dependency Protocols
@@ -171,6 +173,6 @@ export interface ReleaseVersionGeneratorSchema {
   * Preserve local dependency protocols
   * 
  */
- preserveLocalDependencyProtocols: boolean,
+ preserveLocalDependencyProtocols?: boolean,
 }
 

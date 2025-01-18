@@ -4,15 +4,15 @@
 
 export interface CargoPublishExecutorSchema {
  /**
-  * Entry File
+  * Entry File(s)
   * 
-  * The entry file to build
+  * The entry file or files to build
   * 
-  * @default ["{sourceRoot}/index.ts"]
+  * @default {"default":["{sourceRoot}/index.ts"]}
   * 
   * @format path
  */
- entry: Array<string>,
+ entry?: Array<string>,
 
  /**
   * Output Path
@@ -23,7 +23,7 @@ export interface CargoPublishExecutorSchema {
   * 
   * @format path
  */
- outputPath: string,
+ outputPath?: string,
 
  /**
   * TSConfig Path
@@ -34,7 +34,7 @@ export interface CargoPublishExecutorSchema {
   * 
   * @format path
  */
- tsconfig: string,
+ tsconfig?: string,
 
  /**
   * Cargo.toml Path
@@ -45,7 +45,7 @@ export interface CargoPublishExecutorSchema {
   * 
   * @format path
  */
- package: string,
+ package?: string,
 
  /**
   * Toolchain
@@ -56,7 +56,7 @@ export interface CargoPublishExecutorSchema {
   * 
   * @enum stable,beta,nightly
  */
- toolchain: string,
+ toolchain?: string,
 
  /**
   * Target
@@ -64,7 +64,7 @@ export interface CargoPublishExecutorSchema {
   * The target to build
   * 
  */
- target: string,
+ target?: string,
 
  /**
   * All Targets
@@ -72,7 +72,7 @@ export interface CargoPublishExecutorSchema {
   * Build all targets
   * 
  */
- allTargets: boolean,
+ allTargets?: boolean,
 
  /**
   * Profile
@@ -80,7 +80,7 @@ export interface CargoPublishExecutorSchema {
   * The profile to build
   * 
  */
- profile: string,
+ profile?: string,
 
  /**
   * Release
@@ -88,7 +88,7 @@ export interface CargoPublishExecutorSchema {
   * Build in release mode
   * 
  */
- release: boolean,
+ release?: boolean,
 
  /**
   * Features
@@ -98,7 +98,7 @@ export interface CargoPublishExecutorSchema {
   * 
   * @oneOf [object Object],[object Object]
  */
- features: string,
+ features?: string,
 
  /**
   * All Features
@@ -106,7 +106,7 @@ export interface CargoPublishExecutorSchema {
   * Build all features
   * 
  */
- allFeatures: boolean,
+ allFeatures?: boolean,
 
  /**
   * Registry
@@ -114,7 +114,7 @@ export interface CargoPublishExecutorSchema {
   * The registry to publish to
   * 
  */
- registry: string,
+ registry?: string,
 
  /**
   * Package Root
@@ -124,7 +124,7 @@ export interface CargoPublishExecutorSchema {
   * 
   * @format path
  */
- packageRoot: string,
+ packageRoot?: string,
 
  /**
   * Dry Run
@@ -132,6 +132,6 @@ export interface CargoPublishExecutorSchema {
   * Perform a dry run
   * 
  */
- dryRun: boolean,
+ dryRun?: boolean,
 }
 

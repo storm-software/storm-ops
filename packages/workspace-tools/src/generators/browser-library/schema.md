@@ -33,6 +33,7 @@ The description of the library
 
 ## `buildExecutor`
 - **Type**: `string`
+- **Default**: `"@storm-software/workspace-tools:unbuild"`
 
 > Build Executor
 
@@ -54,6 +55,10 @@ The platform to target with the library
 
 ## `dependencies`
 
+## `peerDependencies`
+
+## `peerDependenciesMeta`
+
 ## `tags`
 - **Type**: `string`
 
@@ -62,6 +67,8 @@ The platform to target with the library
 
 The tags for the library
 
+
+## `tsconfigOptions`
 
 ## `skipFormat`
 - **Type**: `boolean`

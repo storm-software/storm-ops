@@ -8,6 +8,7 @@
     "lib": ["ESNext"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "strict": false,
     "moduleResolution": "Bundler",
     "moduleDetection": "force",
     "types": ["node"]

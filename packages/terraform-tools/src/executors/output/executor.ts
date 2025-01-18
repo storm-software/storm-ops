@@ -1,4 +1,4 @@
-import { withTerraformExecutor } from "../../base/base-executor";
-import { OutputExecutorSchema } from "./schema";
+import { withTerraformExecutor } from "../../base/terraform-executor";
+import { OutputExecutorSchema } from "./schema.d";
 
 export default withTerraformExecutor<OutputExecutorSchema>("output");

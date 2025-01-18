@@ -4,15 +4,15 @@
 
 export interface UnbuildExecutorSchema {
  /**
-  * Entry File
+  * Entry File(s)
   * 
-  * The entry file to build
+  * The entry file or files to build
   * 
-  * @default ["{sourceRoot}/index.ts"]
+  * @default {"default":["{sourceRoot}/index.ts"]}
   * 
   * @format path
  */
- entry: Array<string>,
+ entry?: Array<string>,
 
  /**
   * Output Path
@@ -23,7 +23,7 @@ export interface UnbuildExecutorSchema {
   * 
   * @format path
  */
- outputPath: string,
+ outputPath?: string,
 
  /**
   * TSConfig Path
@@ -34,7 +34,7 @@ export interface UnbuildExecutorSchema {
   * 
   * @format path
  */
- tsconfig: string,
+ tsconfig?: string,
 
  /**
   * Bundle
@@ -43,7 +43,7 @@ export interface UnbuildExecutorSchema {
   * 
   * @default false
  */
- bundle: boolean,
+ bundle?: boolean,
 
  /**
   * Minify
@@ -52,7 +52,7 @@ export interface UnbuildExecutorSchema {
   * 
   * @default false
  */
- minify: boolean,
+ minify?: boolean,
 
  /**
   * Debug
@@ -61,7 +61,7 @@ export interface UnbuildExecutorSchema {
   * 
   * @default false
  */
- debug: boolean,
+ debug?: boolean,
 
  /**
   * Sourcemap
@@ -70,7 +70,7 @@ export interface UnbuildExecutorSchema {
   * 
   * @default false
  */
- sourcemap: boolean,
+ sourcemap?: boolean,
 
  /**
   * Silent
@@ -79,7 +79,7 @@ export interface UnbuildExecutorSchema {
   * 
   * @default false
  */
- silent: boolean,
+ silent?: boolean,
 
  /**
   * Target
@@ -90,7 +90,7 @@ export interface UnbuildExecutorSchema {
   * 
   * @enum es3,es5,es6,es2015,es2016,es2017,es2018,es2019,es2020,es2021,es2022,es2023,es2024,esnext,node12,node14,node16,node18,node20,node22,browser,chrome58,chrome59,chrome60
  */
- target: string,
+ target?: string,
 
  /**
   * Format
@@ -99,7 +99,7 @@ export interface UnbuildExecutorSchema {
   * 
   * @default ["cjs","esm"]
  */
- format: Array<string>,
+ format?: Array<string>,
 
  /**
   * Platform
@@ -110,7 +110,7 @@ export interface UnbuildExecutorSchema {
   * 
   * @enum neutral,node,browser
  */
- platform: string,
+ platform?: string,
 
  /**
   * External
@@ -118,7 +118,7 @@ export interface UnbuildExecutorSchema {
   * The external dependencies
   * 
  */
- external: Array<any>,
+ external?: Array<any>,
 
  /**
   * Define
@@ -126,7 +126,7 @@ export interface UnbuildExecutorSchema {
   * The define values
   * 
  */
- define: Record<string, string>,
+ define?: Record<string, string>,
 
  /**
   * Environment Variables
@@ -134,7 +134,7 @@ export interface UnbuildExecutorSchema {
   * The environment variable values
   * 
  */
- env: Record<string, string>,
+ env?: Record<string, string>,
 
  /**
   * Name
@@ -143,7 +143,7 @@ export interface UnbuildExecutorSchema {
   * 
   * @default "{projectName}"
  */
- name: string,
+ name?: string,
 
  /**
   * Tree Shaking
@@ -152,7 +152,7 @@ export interface UnbuildExecutorSchema {
   * 
   * @default true
  */
- treeShaking: boolean,
+ treeShaking?: boolean,
 
  /**
   * Watch
@@ -161,7 +161,7 @@ export interface UnbuildExecutorSchema {
   * 
   * @default false
  */
- watch: boolean,
+ watch?: boolean,
 
  /**
   * Clean
@@ -170,7 +170,7 @@ export interface UnbuildExecutorSchema {
   * 
   * @default false
  */
- clean: boolean,
+ clean?: boolean,
 
  /**
   * Stub
@@ -179,7 +179,7 @@ export interface UnbuildExecutorSchema {
   * 
   * @default false
  */
- stub: boolean,
+ stub?: boolean,
 
  /**
   * Watch Options
@@ -187,7 +187,7 @@ export interface UnbuildExecutorSchema {
   * Watch options
   * 
  */
- watchOptions: {
+ watchOptions?: {
   [key: string]: any
  },
 
@@ -197,7 +197,7 @@ export interface UnbuildExecutorSchema {
   * Stub options
   * 
  */
- stubOptions: {
+ stubOptions?: {
   [key: string]: any
  },
 
@@ -207,7 +207,7 @@ export interface UnbuildExecutorSchema {
   * The dependencies to install
   * 
  */
- dependencies: Array<string>,
+ dependencies?: Array<string>,
 
  /**
   * Peer Dependencies
@@ -215,7 +215,7 @@ export interface UnbuildExecutorSchema {
   * The peer dependencies to install
   * 
  */
- peerDependencies: Array<string>,
+ peerDependencies?: Array<string>,
 
  /**
   * Dev Dependencies
@@ -223,7 +223,7 @@ export interface UnbuildExecutorSchema {
   * The dev dependencies to install
   * 
  */
- devDependencies: Array<string>,
+ devDependencies?: Array<string>,
 
  /**
   * Alias
@@ -231,7 +231,7 @@ export interface UnbuildExecutorSchema {
   * The alias to use
   * 
  */
- alias: Record<string, string>,
+ alias?: Record<string, string>,
 
  /**
   * Replace
@@ -239,7 +239,7 @@ export interface UnbuildExecutorSchema {
   * The replace to use
   * 
  */
- replace: Record<string, string>,
+ replace?: Record<string, string>,
 
  /**
   * Rollup
@@ -247,7 +247,7 @@ export interface UnbuildExecutorSchema {
   * The rollup options
   * 
  */
- rollup: {
+ rollup?: {
   [key: string]: any
  },
 }

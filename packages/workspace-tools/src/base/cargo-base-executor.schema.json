@@ -4,16 +4,30 @@
   "description": "A base type definition for a Cargo/rust related executor schema",
   "properties": {
     "entry": {
-      "title": "Entry File",
+      "title": "Entry File(s)",
       "format": "path",
-      "description": "The entry file to build",
-      "id": "#entry",
-      "default": [
-        "{sourceRoot}/index.ts"
-      ],
       "type": "array",
+      "description": "The entry file or files to build",
       "items": {
         "type": "string"
+      },
+      "id": "#entry",
+      "properties": {
+        "default": {
+          "type": "array",
+          "id": "#entry/default",
+          "default": [
+            "{sourceRoot}/index.ts"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "default": {
+        "default": [
+          "{sourceRoot}/index.ts"
+        ]
       }
     },
     "outputPath": {
@@ -102,9 +116,11 @@
   },
   "type": "object",
   "default": {
-    "entry": [
-      "{sourceRoot}/index.ts"
-    ],
+    "entry": {
+      "default": [
+        "{sourceRoot}/index.ts"
+      ]
+    },
     "outputPath": "dist/{projectRoot}",
     "tsconfig": "{projectRoot}/tsconfig.json",
     "package": "{projectRoot}/Cargo.toml",

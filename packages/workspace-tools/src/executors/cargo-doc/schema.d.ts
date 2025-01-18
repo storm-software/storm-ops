@@ -4,15 +4,15 @@
 
 export interface CargoDocExecutorSchema {
  /**
-  * Entry File
+  * Entry File(s)
   * 
-  * The entry file to build
+  * The entry file or files to build
   * 
-  * @default ["{sourceRoot}/index.ts"]
+  * @default {"default":["{sourceRoot}/index.ts"]}
   * 
   * @format path
  */
- entry: Array<string>,
+ entry?: Array<string>,
 
  /**
   * Output Path
@@ -23,7 +23,7 @@ export interface CargoDocExecutorSchema {
   * 
   * @format path
  */
- outputPath: string,
+ outputPath?: string,
 
  /**
   * TSConfig Path
@@ -34,7 +34,7 @@ export interface CargoDocExecutorSchema {
   * 
   * @format path
  */
- tsconfig: string,
+ tsconfig?: string,
 
  /**
   * Cargo.toml Path
@@ -45,7 +45,7 @@ export interface CargoDocExecutorSchema {
   * 
   * @format path
  */
- package: string,
+ package?: string,
 
  /**
   * Toolchain
@@ -56,7 +56,7 @@ export interface CargoDocExecutorSchema {
   * 
   * @enum stable,beta,nightly
  */
- toolchain: string,
+ toolchain?: string,
 
  /**
   * Target
@@ -64,7 +64,7 @@ export interface CargoDocExecutorSchema {
   * The target to build
   * 
  */
- target: string,
+ target?: string,
 
  /**
   * All Targets
@@ -72,7 +72,7 @@ export interface CargoDocExecutorSchema {
   * Build all targets
   * 
  */
- allTargets: boolean,
+ allTargets?: boolean,
 
  /**
   * Profile
@@ -80,7 +80,7 @@ export interface CargoDocExecutorSchema {
   * The profile to build
   * 
  */
- profile: string,
+ profile?: string,
 
  /**
   * Release
@@ -88,7 +88,7 @@ export interface CargoDocExecutorSchema {
   * Build in release mode
   * 
  */
- release: boolean,
+ release?: boolean,
 
  /**
   * Features
@@ -98,7 +98,7 @@ export interface CargoDocExecutorSchema {
   * 
   * @oneOf [object Object],[object Object]
  */
- features: string,
+ features?: string,
 
  /**
   * All Features
@@ -106,7 +106,7 @@ export interface CargoDocExecutorSchema {
   * Build all features
   * 
  */
- allFeatures: boolean,
+ allFeatures?: boolean,
 
  /**
   * Library
@@ -115,7 +115,7 @@ export interface CargoDocExecutorSchema {
   * 
   * @default {"default":true}
  */
- lib: boolean,
+ lib?: boolean,
 
  /**
   * Bins
@@ -124,7 +124,7 @@ export interface CargoDocExecutorSchema {
   * 
   * @default {"default":true}
  */
- bins: boolean,
+ bins?: boolean,
 
  /**
   * Examples
@@ -133,7 +133,7 @@ export interface CargoDocExecutorSchema {
   * 
   * @default {"default":true}
  */
- examples: boolean,
+ examples?: boolean,
 
  /**
   * No Dependencies
@@ -142,6 +142,6 @@ export interface CargoDocExecutorSchema {
   * 
   * @default {"default":false}
  */
- noDeps: boolean,
+ noDeps?: boolean,
 }
 

@@ -16,11 +16,17 @@ export async function typiaExecutorFn(
     removeSync(options.outputPath);
   }
 
-  await TypiaProgrammer.build({
-    input: options.entryPath,
-    output: options.outputPath,
-    project: options.tsConfig
-  });
+  await Promise.all(
+    options.entry!.map(entry => {
+      writeInfo(`🚀 Running Typia on entry: ${entry}`, config);
+
+      return TypiaProgrammer.build({
+        input: entry,
+        output: options.outputPath!,
+        project: options.tsconfig!
+      });
+    })
+  );
 
   return {
     success: true
@@ -36,9 +42,9 @@ export default withRunExecutor<TypiaExecutorSchema>(
       applyDefaultOptions: (
         options: TypiaExecutorSchema
       ): TypiaExecutorSchema => {
-        options.entryPath ??= "{sourceRoot}";
+        options.entry ??= ["{sourceRoot}/index.ts"];
         options.outputPath ??= "{sourceRoot}/__generated__/typia";
-        options.tsConfig ??= "{projectRoot}/tsconfig.json";
+        options.tsconfig ??= "{projectRoot}/tsconfig.json";
         options.clean ??= true;
 
         return options;

@@ -5,4 +5,5 @@ export interface UpExecutorSchema extends PulumiCommandOptions {
   yes?: boolean;
   suppressOutputs?: boolean;
   json?: boolean;
+  debug?: boolean;
 }

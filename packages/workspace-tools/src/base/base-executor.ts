@@ -14,12 +14,9 @@ import {
   writeTrace,
   type BaseTokenizerOptions
 } from "@storm-software/config-tools";
-import {
-  BaseExecutorOptions,
-  BaseExecutorResult,
-  BaseExecutorSchema
-} from "../types";
+import { BaseExecutorOptions, BaseExecutorResult } from "../types";
 import { applyWorkspaceExecutorTokens } from "../utils/apply-workspace-tokens";
+import { BaseExecutorSchema } from "./base-executor.d";
 
 export const withRunExecutor =
   <TExecutorSchema extends BaseExecutorSchema = BaseExecutorSchema>(

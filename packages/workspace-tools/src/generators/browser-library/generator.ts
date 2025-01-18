@@ -12,7 +12,7 @@ import {
   normalizeOptions,
   typeScriptLibraryGeneratorFn
 } from "../../base/typescript-library-generator";
-import type { TypeScriptLibraryGeneratorSchema } from "../../types";
+import type { TypeScriptLibraryGeneratorSchema } from "../../base/typescript-library-generator.d";
 import type { BrowserLibraryGeneratorSchema } from "./schema.d";
 
 export async function browserLibraryGeneratorFn(
@@ -22,7 +22,7 @@ export async function browserLibraryGeneratorFn(
 ) {
   const filesDir = joinPathFragments(__dirname, "./files");
   const tsLibraryGeneratorOptions: TypeScriptLibraryGeneratorSchema = {
-    ...schema,
+    buildExecutor: "@storm-software/workspace-tools:unbuild",
     platform: "browser",
     devDependencies: {
       "@types/react": "^18.3.6",
@@ -41,7 +41,8 @@ export async function browserLibraryGeneratorFn(
         optional: true
       }
     },
-    buildExecutor: "@storm-software/workspace-tools:unbuild",
+    ...schema,
+    description: schema.description!,
     directory: schema.directory
   };
 
@@ -85,5 +86,18 @@ export async function browserLibraryGeneratorFn(
 
 export default withRunGenerator<BrowserLibraryGeneratorSchema>(
   "TypeScript Library Creator (Browser Platform)",
-  browserLibraryGeneratorFn
+  browserLibraryGeneratorFn,
+  {
+    hooks: {
+      applyDefaultOptions: (
+        options: BrowserLibraryGeneratorSchema
+      ): BrowserLibraryGeneratorSchema => {
+        options.description ??=
+          "A library used by Storm Software to support browser applications";
+        options.platform ??= "browser";
+
+        return options;
+      }
+    }
+  }
 );

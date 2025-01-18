@@ -12,7 +12,7 @@ import {
   normalizeOptions,
   typeScriptLibraryGeneratorFn
 } from "../../base/typescript-library-generator";
-import { type TypeScriptLibraryGeneratorSchema } from "../../types";
+import type { TypeScriptLibraryGeneratorSchema } from "../../base/typescript-library-generator.d";
 import { typesNodeVersion } from "../../utils/versions";
 import type { NodeLibraryGeneratorSchema } from "./schema.d";
 
@@ -23,13 +23,14 @@ export async function nodeLibraryGeneratorFn(
 ) {
   const filesDir = joinPathFragments(__dirname, "./files");
   const tsLibraryGeneratorOptions: TypeScriptLibraryGeneratorSchema = {
-    ...schema,
     platform: "node",
     devDependencies: {
       "@types/node": typesNodeVersion
     },
     buildExecutor: "@storm-software/workspace-tools:unbuild",
-    directory: schema.directory
+    ...schema,
+    directory: schema.directory,
+    description: schema.description!
   };
 
   const options = await normalizeOptions(tree, tsLibraryGeneratorOptions);
@@ -60,5 +61,18 @@ export async function nodeLibraryGeneratorFn(
 
 export default withRunGenerator<NodeLibraryGeneratorSchema>(
   "TypeScript Library Creator (NodeJs Platform)",
-  nodeLibraryGeneratorFn
+  nodeLibraryGeneratorFn,
+  {
+    hooks: {
+      applyDefaultOptions: (
+        options: NodeLibraryGeneratorSchema
+      ): NodeLibraryGeneratorSchema => {
+        options.description ??=
+          "A library used by Storm Software to support NodeJs applications";
+        options.platform ??= "node";
+
+        return options;
+      }
+    }
+  }
 );

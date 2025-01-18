@@ -5,79 +5,49 @@
   "projectType": "library",
   "implicitDependencies": ["workspace-tools", "config-tools", "config"],
   "targets": {
-    "build": {
-      "executor": "@nx/esbuild:esbuild",
-      "inputs": ["typescript", "^production"],
-      "dependsOn": ["clean", "format", "^build"],
-      "outputs": ["{options.outputPath}"],
+    "build-untyped": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "inputs": [
+        "{projectRoot}/src/**/schema.ts",
+        "{projectRoot}/src/**/*.schema.ts"
+      ],
+      "outputs": [
+        "{projectRoot}/src/**/*.d.ts",
+        "{projectRoot}/src/**/*.md",
+        "{projectRoot}/src/**/schema.json",
+        "{projectRoot}/src/**/*.schema.json"
+      ],
       "options": {
-        "outputPath": "dist/packages/pulumi-tools",
-        "tsConfig": "packages/pulumi-tools/tsconfig.lib.json",
-        "project": "packages/pulumi-tools/package.json",
-        "main": "packages/pulumi-tools/src/index.ts",
-        "additionalEntryPoints": [
-          "packages/pulumi-tools/src/executors/config/executor.ts",
-          "packages/pulumi-tools/src/executors/import/executor.ts",
-          "packages/pulumi-tools/src/executors/preview/executor.ts",
-          "packages/pulumi-tools/src/executors/refresh/executor.ts",
-          "packages/pulumi-tools/src/executors/up/executor.ts",
-          "packages/pulumi-tools/src/generators/init/generator.ts"
-        ],
-        "platform": "node",
-        "deleteOutputPath": true,
-        "bundle": true,
-        "thirdParty": true,
-        "skipTypeCheck": false,
-        "metafile": true,
-        "minify": false,
-        "format": ["cjs"],
-        "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
-          }
-        },
-        "external": ["nx", "@nx/*", "@storm-software/*", "@pulumi/*"],
-        "assets": [
-          {
-            "input": "packages/pulumi-tools",
-            "glob": "**/files/**",
-            "output": "/"
-          },
-          {
-            "input": "packages/pulumi-tools",
-            "glob": "**/files/**/.gitkeep",
-            "output": "/"
-          },
-          {
-            "input": "packages/pulumi-tools",
-            "glob": "**/*.json",
-            "ignore": ["**/tsconfig*.json", "project.json", ".eslintrc.json"],
-            "output": "."
-          },
-          {
-            "input": "packages/pulumi-tools",
-            "glob": "**/*.js",
-            "ignore": ["**/jest.config.js"],
-            "output": "."
-          },
-          {
-            "input": "packages/pulumi-tools",
-            "glob": "**/*.d.ts",
-            "output": "."
-          },
-          {
-            "input": "packages/pulumi-tools",
-            "glob": "*.md",
-            "output": "."
-          },
-          {
-            "input": "",
-            "glob": "LICENSE",
-            "output": "."
-          }
+        "commands": [
+          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/pulumi-tools/**/schema.ts,packages/pulumi-tools/**/*.schema.ts\" "
         ]
       }
     },
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-untyped", "clean", "^build"],
+      "options": {
+        "command": "tsup-node --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base", "build-untyped"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/pulumi-tools",
+          "pnpm copyfiles --up=2 ./packages/pulumi-tools/*.md ./packages/pulumi-tools/executors.json ./packages/pulumi-tools/generators.json ./packages/pulumi-tools/package.json dist/packages/pulumi-tools",
+          "pnpm copyfiles --up=3 ./packages/pulumi-tools/dist/**/* dist/packages/pulumi-tools/dist",
+          "pnpm copyfiles --up=3 ./packages/pulumi-tools/src/**/*.json dist/packages/pulumi-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/pulumi-tools/src/**/*.d.ts dist/packages/pulumi-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/pulumi-tools/src/**/*.md dist/packages/pulumi-tools/docs/api",
+          "pnpm copyfiles --up=4 ./packages/pulumi-tools/src/generators/*/files/**/* dist/packages/pulumi-tools/dist/src/generators"
+        ]
+      }
+    },
+
     "nx-release-publish": {
       "executor": "@storm-software/workspace-tools:npm-publish"
     }

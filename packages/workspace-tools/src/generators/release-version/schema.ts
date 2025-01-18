@@ -4,7 +4,8 @@ export default defineUntypedSchema({
   $schema: {
     id: "ReleaseVersionGeneratorSchema",
     title: "Release Version Generator",
-    description: "A type definition for a release version generator schema"
+    description: "A type definition for a release version generator schema",
+    required: ["projects", "releaseGroup", "projectGraph", "specifier"]
   },
   projects: {
     $schema: {
@@ -90,7 +91,8 @@ export default defineUntypedSchema({
     $schema: {
       title: "Version Prefix",
       type: "string",
-      description: "The version prefix"
+      description: "The version prefix",
+      enum: ["", "auto", "~", "^", "="]
     }
   },
   skipLockFileUpdate: {

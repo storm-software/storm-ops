@@ -4,35 +4,39 @@
 
 # Typia Executor
 
-## `entryPath`
-- **Type**: `string`
+## `entry`
+- **Type**: `array`
+- **Default**: `{"default":["{sourceRoot}/index.ts"]}`
 
-> Entry Path
+> Entry File(s)
 
 
-The path to the entry file
+The entry file or files to build
 
 
 ## `outputPath`
 - **Type**: `string`
+- **Default**: `"{sourceRoot}/__generated__/typia"`
 
 > Output Path
 
 
-The path to the output
+The output path for the build
 
 
-## `tsConfig`
+## `tsconfig`
 - **Type**: `string`
+- **Default**: `"{projectRoot}/tsconfig.json"`
 
-> TS Config
+> TSConfig Path
 
 
-The path to the tsconfig.json
+The path to the tsconfig file
 
 
 ## `clean`
 - **Type**: `boolean`
+- **Default**: `true`
 
 > Clean
 

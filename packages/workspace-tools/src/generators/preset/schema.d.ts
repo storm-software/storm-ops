@@ -9,7 +9,7 @@ export interface PresetGeneratorSchema {
   * The name of the workspace
   * 
  */
- name: string,
+ name?: string,
 
  /**
   * Organization
@@ -17,7 +17,7 @@ export interface PresetGeneratorSchema {
   * The organization of the workspace
   * 
  */
- organization: string,
+ organization?: string,
 
  /**
   * Include Apps
@@ -25,7 +25,7 @@ export interface PresetGeneratorSchema {
   * Include apps in the workspace
   * 
  */
- includeApps: boolean,
+ includeApps?: boolean,
 
  /**
   * Include Rust
@@ -33,7 +33,7 @@ export interface PresetGeneratorSchema {
   * Include Rust support in the workspace
   * 
  */
- includeRust: boolean,
+ includeRust?: boolean,
 
  /**
   * Namespace
@@ -41,7 +41,7 @@ export interface PresetGeneratorSchema {
   * The namespace of the workspace
   * 
  */
- namespace: string,
+ namespace?: string,
 
  /**
   * Description
@@ -49,7 +49,7 @@ export interface PresetGeneratorSchema {
   * The description of the workspace
   * 
  */
- description: string,
+ description?: string,
 
  /**
   * Repository URL
@@ -57,7 +57,7 @@ export interface PresetGeneratorSchema {
   * The URL of the repository
   * 
  */
- repositoryUrl: string,
+ repositoryUrl?: string,
 
  /**
   * Nx Cloud
@@ -65,7 +65,7 @@ export interface PresetGeneratorSchema {
   * Nx Cloud configuration
   * 
  */
- nxCloud: string,
+ nxCloud?: string,
 
  /**
   * Mode
@@ -73,7 +73,7 @@ export interface PresetGeneratorSchema {
   * The mode of the Nx client
   * 
  */
- mode: string,
+ mode?: string,
 
  /**
   * Package Manager
@@ -81,6 +81,6 @@ export interface PresetGeneratorSchema {
   * The package manager to use
   * 
  */
- packageManager: string,
+ packageManager?: string,
 }
 

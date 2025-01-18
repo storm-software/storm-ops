@@ -1,7 +1,6 @@
 {
   "name": "@storm-software/workspace-tools",
   "version": "1.227.3",
-  "type": "commonjs",
   "description": "Tools for managing a Storm workspace, including various Nx generators and executors for common development tasks.",
   "repository": {
     "type": "github",
@@ -17,41 +16,162 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "exports": {
-    ".": "./dist/index.js",
-    "./index": "./dist/index.js",
     "./package.json": "./package.json",
     "./config/nx-default.json": "./config/nx-default.json",
     "./config/nx-cloud.json": "./config/nx-cloud.json",
     "./assets/cjs_shims": "./assets/cjs_shims.js",
     "./assets/esm_shims": "./assets/esm_shims.js",
+    "./docs/*": "./docs/*",
     "./migrations.json": "./migrations.json",
-    "./generators.json": "./generators.json",
-    "./generators/*/schema.json": "./dist/generators/*/schema.json",
-    "./generators/*/generator.js": "./dist/generators/*/generator.js",
     "./executors.json": "./executors.json",
-    "./executors/*/schema.json": "./dist/executors/*/schema.json",
-    "./executors/*/executor.json": "./dist/executors/*/executor.js",
-    "./plugins/rust": "./dist/plugins/rust/index.js",
-    "./plugins/typescript": "./dist/plugins/typescript/index.js",
-    "./plugins/typescript/tsup": "./dist/plugins/typescript/tsup.js",
-    "./plugins/typescript/tsdown": "./dist/plugins/typescript/tsdown.js",
-    "./preset": "./dist/generators/preset/generator.js",
-    "./base": "./dist/base/index.js",
-    "./base/*": "./dist/base/*.js",
-    "./utils": "./dist/utils/index.js",
-    "./utils/*": "./dist/utils/*.js"
+    "./executors/*/schema.json": "./dist/src/executors/*/schema.json",
+    "./generators.json": "./generators.json",
+    "./generators/*/schema.json": "./dist/src/generators/*/schema.json",
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./index": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./executors": {
+      "import": {
+        "types": "./dist/executors.d.mts",
+        "default": "./dist/executors.mjs"
+      },
+      "require": {
+        "types": "./dist/executors.d.ts",
+        "default": "./dist/executors.js"
+      },
+      "default": {
+        "types": "./dist/executors.d.ts",
+        "default": "./dist/executors.js"
+      }
+    },
+    "./generators": {
+      "import": {
+        "types": "./dist/generators.d.mts",
+        "default": "./dist/generators.mjs"
+      },
+      "require": {
+        "types": "./dist/generators.d.ts",
+        "default": "./dist/generators.js"
+      },
+      "default": {
+        "types": "./dist/generators.d.ts",
+        "default": "./dist/generators.js"
+      }
+    },
+    "./types": {
+      "import": {
+        "types": "./dist/src/types.d.mts",
+        "default": "./dist/src/types.mjs"
+      },
+      "require": {
+        "types": "./dist/src/types.d.ts",
+        "default": "./dist/src/types.js"
+      },
+      "default": {
+        "types": "./dist/src/types.d.ts",
+        "default": "./dist/src/types.js"
+      }
+    },
+    "./utils": {
+      "import": {
+        "types": "./dist/src/utils/index.d.mts",
+        "default": "./dist/src/utils/index.mjs"
+      },
+      "require": {
+        "types": "./dist/src/utils/index.d.ts",
+        "default": "./dist/src/utils/index.js"
+      },
+      "default": {
+        "types": "./dist/src/utils/index.d.ts",
+        "default": "./dist/src/utils/index.js"
+      }
+    },
+    "./utils/*": {
+      "import": {
+        "types": "./dist/src/utils/*.d.mts",
+        "default": "./dist/src/utils/*.mjs"
+      },
+      "require": {
+        "types": "./dist/src/utils/*.d.ts",
+        "default": "./dist/src/utils/*.js"
+      },
+      "default": {
+        "types": "./dist/src/utils/*.d.ts",
+        "default": "./dist/src/utils/*.js"
+      }
+    },
+    "./base": {
+      "import": {
+        "types": "./dist/src/base/index.d.mts",
+        "default": "./dist/src/base/index.mjs"
+      },
+      "require": {
+        "types": "./dist/src/base/index.d.ts",
+        "default": "./dist/src/base/index.js"
+      },
+      "default": {
+        "types": "./dist/src/base/index.d.ts",
+        "default": "./dist/src/base/index.js"
+      }
+    },
+    "./base/*": {
+      "import": {
+        "types": "./dist/src/base/*.d.mts",
+        "default": "./dist/src/base/*.mjs"
+      },
+      "require": {
+        "types": "./dist/src/base/*.d.ts",
+        "default": "./dist/src/base/*.js"
+      },
+      "default": {
+        "types": "./dist/src/base/*.d.ts",
+        "default": "./dist/src/base/*.js"
+      }
+    },
+    "./executors/*/executor.js": "./dist/src/executors/*/executor.js",
+    "./generators/*/generator.js": "./dist/src/generators/*/generator.js",
+    "./generators/*/init.js": "./dist/src/generators/*/init.js",
+    "./preset": "./dist/src/generators/preset/generator.js",
+    "./plugins/rust": "./dist/src/plugins/rust/index.js",
+    "./plugins/typescript": "./dist/src/plugins/typescript/index.js",
+    "./plugins/typescript/tsup": "./dist/src/plugins/typescript/tsup.js",
+    "./plugins/typescript/tsdown": "./dist/src/plugins/typescript/tsdown.js"
   },
-  "typings": "./dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "keywords": [
     "monorepo",
-    "open-system",
-    "storm",
+    "nx",
+    "storm-software",
     "storm-ops",
-    "storm-stack",
-    "stormstack",
+    "storm",
     "sullivanpj"
   ],
   "peerDependencies": {
@@ -112,7 +232,7 @@
     "tsup": "catalog:",
     "typescript": "catalog:",
     "typia": "catalog:",
-    "untyped": "^1.5.2"
+    "untyped": "catalog:"
   },
   "publishConfig": {
     "access": "public"

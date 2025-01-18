@@ -4,8 +4,19 @@
 
 # Clean Package Executor
 
+## `entry`
+- **Type**: `array`
+- **Default**: `{"default":["{sourceRoot}/index.ts"]}`
+
+> Entry File(s)
+
+
+The entry file or files to build
+
+
 ## `outputPath`
 - **Type**: `string`
+- **Default**: `"dist/{projectRoot}"`
 
 > Output Path
 
@@ -13,13 +24,24 @@
 The path to the output
 
 
+## `tsconfig`
+- **Type**: `string`
+- **Default**: `"{projectRoot}/tsconfig.json"`
+
+> TSConfig Path
+
+
+The path to the tsconfig file
+
+
 ## `packageJsonPath`
 - **Type**: `string`
+- **Default**: `"{outputPath}/package.json"`
 
 > Package JSON Path
 
 
-The path to the package.json
+The path to the package.json that will be modified
 
 
 ## `ignoredFiles`
@@ -43,6 +65,7 @@ The fields to include
 
 ## `cleanReadMe`
 - **Type**: `boolean`
+- **Default**: `true`
 
 > Clean Read Me
 
@@ -52,6 +75,7 @@ Clean the read me
 
 ## `cleanComments`
 - **Type**: `boolean`
+- **Default**: `true`
 
 > Clean Comments
 

@@ -3,87 +3,51 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/terraform-tools/src",
   "projectType": "library",
-  "implicitDependencies": ["workspace-tools", "config-tools", "config"],
+  "implicitDependencies": ["workspace-tools", "untyped"],
   "targets": {
-    "build": {
-      "executor": "@nx/esbuild:esbuild",
-      "inputs": ["typescript", "^production"],
-      "dependsOn": ["clean", "format", "^build"],
-      "outputs": ["{options.outputPath}"],
+    "build-untyped": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "inputs": [
+        "{projectRoot}/src/**/schema.ts",
+        "{projectRoot}/src/**/*.schema.ts"
+      ],
+      "outputs": [
+        "{projectRoot}/src/**/*.d.ts",
+        "{projectRoot}/src/**/*.md",
+        "{projectRoot}/src/**/schema.json",
+        "{projectRoot}/src/**/*.schema.json"
+      ],
       "options": {
-        "outputPath": "dist/packages/terraform-tools",
-        "tsConfig": "packages/terraform-tools/tsconfig.lib.json",
-        "project": "packages/terraform-tools/package.json",
-        "main": "packages/terraform-tools/index.ts",
-        "additionalEntryPoints": [
-          "packages/terraform-tools/src/executors/apply/executor.ts",
-          "packages/terraform-tools/src/executors/destroy/executor.ts",
-          "packages/terraform-tools/src/executors/output/executor.ts",
-          "packages/terraform-tools/src/executors/plan/executor.ts",
-          "packages/terraform-tools/src/generators/init/init.ts"
-        ],
-        "platform": "node",
-        "deleteOutputPath": true,
-        "bundle": true,
-        "thirdParty": true,
-        "skipTypeCheck": false,
-        "metafile": true,
-        "minify": false,
-        "format": ["cjs"],
-        "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
-          }
-        },
-        "external": [
-          "nx",
-          "@nx/*",
-          "esbuild",
-          "vue-tsc",
-          "@swc/*",
-          "@storm-software/*"
-        ],
-        "assets": [
-          {
-            "input": "packages/terraform-tools",
-            "glob": "**/files/**",
-            "output": "/"
-          },
-          {
-            "input": "packages/terraform-tools",
-            "glob": "**/files/**/.gitkeep",
-            "output": "/"
-          },
-          {
-            "input": "packages/terraform-tools",
-            "glob": "**/*.json",
-            "ignore": ["**/tsconfig*.json", "project.json", ".eslintrc.json"],
-            "output": "."
-          },
-          {
-            "input": "packages/terraform-tools",
-            "glob": "**/*.js",
-            "ignore": ["**/jest.config.js"],
-            "output": "."
-          },
-          {
-            "input": "packages/terraform-tools",
-            "glob": "**/*.d.ts",
-            "output": "."
-          },
-          {
-            "input": "packages/terraform-tools",
-            "glob": "*.md",
-            "output": "."
-          },
-          {
-            "input": "",
-            "glob": "LICENSE",
-            "output": "."
-          }
+        "commands": [
+          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/terraform-tools/**/schema.ts,packages/terraform-tools/**/*.schema.ts\" "
         ]
       }
     },
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-untyped", "clean", "^build"],
+      "options": {
+        "command": "tsup-node --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base", "build-untyped"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/terraform-tools",
+          "pnpm copyfiles --up=2 ./packages/terraform-tools/*.md ./packages/terraform-tools/executors.json ./packages/terraform-tools/generators.json ./packages/terraform-tools/package.json dist/packages/terraform-tools",
+          "pnpm copyfiles --up=3 ./packages/terraform-tools/dist/**/* dist/packages/terraform-tools/dist",
+          "pnpm copyfiles --up=3 ./packages/terraform-tools/src/**/*.json dist/packages/terraform-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/terraform-tools/src/**/*.d.ts dist/packages/terraform-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/terraform-tools/src/**/*.md dist/packages/terraform-tools/docs/api",
+          "pnpm copyfiles --up=4 ./packages/terraform-tools/src/generators/*/files/**/* dist/packages/terraform-tools/dist/src/generators"
+        ]
+      }
+    },
+
     "nx-release-publish": {
       "executor": "@storm-software/workspace-tools:npm-publish"
     }

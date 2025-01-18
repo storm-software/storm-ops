@@ -20,7 +20,7 @@ import { CargoToml } from "@storm-software/workspace-tools/utils/toml";
 import { existsSync } from "node:fs";
 import type { ExternalContainerExecutorSchema } from "../../executors/container-publish/schema";
 
-export const name = "storm-software/docker/dockerfile";
+export const name = "storm-software/docker";
 export const description = "Plugin for parsing Dockerfile files";
 
 export interface DockerFilePluginOptions {

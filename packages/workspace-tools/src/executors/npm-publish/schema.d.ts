@@ -11,7 +11,7 @@ export interface NpmPublishExecutorSchema {
   * 
   * @format path
  */
- packageRoot: string,
+ packageRoot?: string,
 
  /**
   * Registry
@@ -20,7 +20,7 @@ export interface NpmPublishExecutorSchema {
   * 
   * @default "https://registry.npmjs.org/"
  */
- registry: string,
+ registry?: string,
 
  /**
   * Tag
@@ -29,7 +29,7 @@ export interface NpmPublishExecutorSchema {
   * 
   * @default "latest"
  */
- tag: string,
+ tag?: string,
 
  /**
   * Otp
@@ -37,7 +37,7 @@ export interface NpmPublishExecutorSchema {
   * The one time password
   * 
  */
- otp: number,
+ otp?: number,
 
  /**
   * Dry Run
@@ -46,7 +46,7 @@ export interface NpmPublishExecutorSchema {
   * 
   * @default false
  */
- dryRun: boolean,
+ dryRun?: boolean,
 
  /**
   * First Release
@@ -55,6 +55,6 @@ export interface NpmPublishExecutorSchema {
   * 
   * @default false
  */
- firstRelease: boolean,
+ firstRelease?: boolean,
 }
 

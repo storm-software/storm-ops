@@ -3,84 +3,52 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/k8s-tools/src",
   "projectType": "library",
-  "implicitDependencies": ["workspace-tools", "config-tools", "config"],
+  "implicitDependencies": [
+    "workspace-tools",
+    "untyped",
+    "config-tools",
+    "config"
+  ],
   "targets": {
-    "build": {
-      "executor": "@nx/esbuild:esbuild",
-      "inputs": ["typescript", "^production"],
-      "dependsOn": ["clean", "format", "^build"],
-      "outputs": ["{options.outputPath}"],
+    "build-untyped": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "inputs": [
+        "{projectRoot}/src/**/schema.ts",
+        "{projectRoot}/src/**/*.schema.ts"
+      ],
+      "outputs": [
+        "{projectRoot}/src/**/*.d.ts",
+        "{projectRoot}/src/**/*.md",
+        "{projectRoot}/src/**/schema.json",
+        "{projectRoot}/src/**/*.schema.json"
+      ],
       "options": {
-        "outputPath": "dist/packages/k8s-tools",
-        "tsConfig": "packages/k8s-tools/tsconfig.lib.json",
-        "project": "packages/k8s-tools/package.json",
-        "main": "packages/k8s-tools/index.ts",
-        "additionalEntryPoints": [
-          "packages/k8s-tools/src/executors/helm-package/executor.ts",
-          "packages/k8s-tools/src/executors/container-publish/executor.ts",
-          "packages/k8s-tools/src/generators/helm-chart/generator.ts",
-          "packages/k8s-tools/src/generators/helm-dependency/generator.ts",
-          "packages/k8s-tools/src/plugins/docker/index.ts"
-        ],
-        "platform": "node",
-        "deleteOutputPath": true,
-        "bundle": true,
-        "thirdParty": true,
-        "skipTypeCheck": false,
-        "metafile": true,
-        "minify": false,
-        "format": ["cjs"],
-        "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
-          }
-        },
-        "external": [
-          "nx",
-          "@nx/*",
-          "esbuild",
-          "vue-tsc",
-          "@swc/*",
-          "@storm-software/*"
-        ],
-        "assets": [
-          {
-            "input": "packages/k8s-tools",
-            "glob": "**/files/**",
-            "output": "/"
-          },
-          {
-            "input": "packages/k8s-tools",
-            "glob": "**/files/**/.gitkeep",
-            "output": "/"
-          },
-          {
-            "input": "packages/k8s-tools",
-            "glob": "**/*.json",
-            "ignore": ["**/tsconfig*.json", "project.json", ".eslintrc.json"],
-            "output": "."
-          },
-          {
-            "input": "packages/k8s-tools",
-            "glob": "**/*.js",
-            "ignore": ["**/jest.config.js"],
-            "output": "."
-          },
-          {
-            "input": "packages/k8s-tools",
-            "glob": "**/*.d.ts",
-            "output": "."
-          },
-          {
-            "input": "packages/k8s-tools",
-            "glob": "*.md",
-            "output": "."
-          },
-          {
-            "input": "",
-            "glob": "LICENSE",
-            "output": "."
-          }
+        "commands": [
+          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/k8s-tools/**/schema.ts,packages/k8s-tools/**/*.schema.ts\" "
+        ]
+      }
+    },
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-untyped", "clean", "^build"],
+      "options": {
+        "command": "tsup-node --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base", "build-untyped"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/k8s-tools",
+          "pnpm copyfiles --up=2 ./packages/k8s-tools/*.md ./packages/k8s-tools/executors.json ./packages/k8s-tools/generators.json ./packages/k8s-tools/package.json dist/packages/k8s-tools",
+          "pnpm copyfiles --up=3 ./packages/k8s-tools/dist/**/* dist/packages/k8s-tools/dist",
+          "pnpm copyfiles --up=3 ./packages/k8s-tools/src/**/*.json dist/packages/k8s-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/k8s-tools/src/**/*.d.ts dist/packages/k8s-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/k8s-tools/src/**/*.md dist/packages/k8s-tools/docs/api",
+          "pnpm copyfiles --up=4 ./packages/k8s-tools/src/generators/*/files/**/* dist/packages/k8s-tools/dist/src/generators"
         ]
       }
     },
