@@ -1,5 +1,5 @@
-import baseGeneratorSchema from "@storm-software/workspace-tools/base/base-generator.schema";
 import { defineUntypedSchema } from "untyped";
+import baseGeneratorSchema from "../../base/base-generator.schema";
 
 export default defineUntypedSchema({
   ...baseGeneratorSchema,
