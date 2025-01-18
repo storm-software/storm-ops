@@ -19,7 +19,15 @@ export const getGenerateAction =
     jsonSchema: string;
   }) => {
     const files = await glob(options.entry, {
-      ignore: "**/{*.stories.tsx,*.stories.ts,*.spec.tsx,*.spec.ts}",
+      ignore: [
+        "**/{*.stories.tsx,*.stories.ts,*.spec.tsx,*.spec.ts}",
+        "**/dist/**",
+        "**/tmp/**",
+        "**/node_modules/**",
+        "**/.git/**",
+        "**/.cache/**",
+        "**/.nx/**"
+      ],
       withFileTypes: true,
       cwd: config.workspaceRoot
     });
@@ -36,7 +44,7 @@ export const getGenerateAction =
           schema = await loadSchema(joinPaths(file.parentPath, file.name), {
             jiti: {
               debug: isVerbose(config.logLevel),
-              cache:
+              fsCache:
                 Boolean(process.env.CI) ||
                 Boolean(process.env.STORM_CI) ||
                 config.skipCache
@@ -45,7 +53,11 @@ export const getGenerateAction =
                       config.directories.cache || "node_modules/.cache",
                       "storm",
                       "untyped"
-                    )
+                    ),
+              moduleCache:
+                Boolean(process.env.CI) || Boolean(process.env.STORM_CI),
+              extensions: ["ts", ".tsx", ".mts", ".cts", ".mtsx", ".ctsx"],
+              interopDefault: true
             }
           });
         } catch (error) {
