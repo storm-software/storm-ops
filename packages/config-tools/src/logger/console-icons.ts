@@ -1,8 +1,8 @@
-import isUnicodeSupported from "is-unicode-supported";
 import { LogLevelLabel } from "../types";
+import { isUnicodeSupported } from "./is-unicode-supported";
 
-const unicode = isUnicodeSupported();
-const useIcon = (c: string, fallback: string) => (unicode ? c : fallback);
+const useIcon = (c: string, fallback: string) =>
+  isUnicodeSupported() ? c : fallback;
 
 export const CONSOLE_ICONS: { [k in LogLevelLabel]?: string } = {
   [LogLevelLabel.ERROR]: useIcon("✘", "×"),

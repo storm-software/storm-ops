@@ -5,5 +5,5 @@
  * @returns The formatted timestamp.
  */
 export const formatTimestamp = (date = new Date()): string => {
-  return date.toLocaleTimeString();
+  return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 };

@@ -6,6 +6,7 @@ export type GetChalkReturn = {
     whiteBright: (message?: string) => string | undefined;
   };
   whiteBright: (message?: string) => string | undefined;
+  gray: (message?: string) => string | undefined;
   bold: {
     hex: (_: string) => (message?: string) => string | undefined;
     bgHex: (_: string) => {
@@ -25,6 +26,7 @@ const chalkDefault: GetChalkReturn = {
     whiteBright: (message?: string) => message
   }),
   whiteBright: (message?: string) => message,
+  gray: (message?: string) => message,
   bold: {
     hex: (_: string) => (message?: string) => message,
     bgHex: (_: string) => ({

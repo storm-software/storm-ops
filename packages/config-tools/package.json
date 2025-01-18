@@ -224,7 +224,6 @@
     "monorepo"
   ],
   "dependencies": {
-    "is-unicode-supported": "^2.1.0",
     "zod": "catalog:"
   },
   "devDependencies": {
