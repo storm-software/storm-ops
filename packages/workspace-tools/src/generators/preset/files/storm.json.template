@@ -1,42 +1,12 @@
 {
+  "$schema": "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm.schema.json",
+  "extends": "./node_modules/@storm-software/config/presets/pnpm.json",
+  "organization": "<%= organization %>",
   "name": "<%= name %>",
   "namespace": "<%= namespace %>",
-  "repository": "https://github.com/<%= organization %>/<%= name %>",
   "organization": "<%= organization %>",
-  "ci": true,
-  "owner": "<%= name %>",
-  "timezone": "America/New_York",
-  "locale": "en-US",
-  "logLevel": "debug",
-  "externalPackagePatterns": ["@storm-software/"],
-  "colors": {
-    "light": {
-      "background": "#f4f4f5",
-      "foreground": "#1d232a",
-      "brand": "#1fb2a6",
-      "help": "#8250df",
-      "success": "#087f5b",
-      "info": "#0550ae",
-      "warning": "#e3b341",
-      "error": "#a40e26"
-    },
-    "dark": {
-      "background": "#22272E",
-      "foreground": "#fcfcf5",
-      "brand": "#1fb2a6",
-      "help": "#8256D0",
-      "success": "#087f5b",
-      "info": "#316DCA",
-      "warning": "#F3D371",
-      "error": "#d1242f"
-    }
-  },
-  "extensions": {
-    "telemetry": {
-      "fileName": "storm",
-      "fileExtension": "log",
-      "path": "tmp/storm/logs",
-      "stacktrace": true
-    }
-  }
+  "owner": "@<%= organization %>/admin",
+  "repository": "https://github.com/<%= organization %>/<%= name %>",
+  "packageManager": "<%= packageManager %>",
+  "logLevel": "info"
 }

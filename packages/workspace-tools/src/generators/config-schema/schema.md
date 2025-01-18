@@ -4,8 +4,18 @@
 
 # Config Schema Generator
 
+## `directory`
+- **Type**: `string`
+
+> Directory
+
+
+The directory to create the library in
+
+
 ## `outputFile`
 - **Type**: `string`
+- **Default**: `"{workspaceRoot}/storm-workspace.schema.json"`
 
 > Output File
 

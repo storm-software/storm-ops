@@ -1,0 +1,20 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignoreBinaries": ["prepack"],
+  "ignoreWorkspaces": [],
+  "ignoreDependencies": [],
+  "workspaces": {
+    "tools/*": {
+      "entry": ["src/*.ts"]
+    },
+    "libs/*": {
+      "entry": ["src/index.ts", "bin/**/*.ts"]
+    },
+    "packages/*": {
+      "entry": ["src/index.ts", "bin/**/*.ts"]
+    },
+    "apps/*": {
+      "entry": ["src/index.ts", "bin/**/*.ts"]
+    }
+  }
+}

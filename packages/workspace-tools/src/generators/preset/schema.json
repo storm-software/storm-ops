@@ -2,7 +2,17 @@
   "id": "#",
   "title": "Preset Generator",
   "description": "A type definition for a preset generator schema",
+  "required": [
+    "directory",
+    "name"
+  ],
   "properties": {
+    "directory": {
+      "title": "Directory",
+      "type": "string",
+      "description": "The directory to create the library in",
+      "id": "#directory"
+    },
     "name": {
       "title": "Name",
       "type": "string",
@@ -13,25 +23,29 @@
       "title": "Organization",
       "type": "string",
       "description": "The organization of the workspace",
-      "id": "#organization"
+      "id": "#organization",
+      "default": "storm-software"
     },
     "includeApps": {
       "title": "Include Apps",
       "type": "boolean",
       "description": "Include apps in the workspace",
-      "id": "#includeApps"
+      "id": "#includeApps",
+      "default": true
     },
     "includeRust": {
       "title": "Include Rust",
       "type": "boolean",
       "description": "Include Rust support in the workspace",
-      "id": "#includeRust"
+      "id": "#includeRust",
+      "default": false
     },
     "namespace": {
       "title": "Namespace",
       "type": "string",
       "description": "The namespace of the workspace",
-      "id": "#namespace"
+      "id": "#namespace",
+      "default": "storm-software"
     },
     "description": {
       "title": "Description",
@@ -61,9 +75,22 @@
       "title": "Package Manager",
       "type": "string",
       "description": "The package manager to use",
-      "id": "#packageManager"
+      "enum": [
+        "npm",
+        "pnpm",
+        "yarn",
+        "bun"
+      ],
+      "id": "#packageManager",
+      "default": "pnpm"
     }
   },
   "type": "object",
-  "default": {}
+  "default": {
+    "organization": "storm-software",
+    "includeApps": true,
+    "includeRust": false,
+    "namespace": "storm-software",
+    "packageManager": "pnpm"
+  }
 }

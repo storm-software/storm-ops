@@ -4,6 +4,15 @@
 
 # Preset Generator
 
+## `directory`
+- **Type**: `string`
+
+> Directory
+
+
+The directory to create the library in
+
+
 ## `name`
 - **Type**: `string`
 
@@ -15,6 +24,7 @@ The name of the workspace
 
 ## `organization`
 - **Type**: `string`
+- **Default**: `"storm-software"`
 
 > Organization
 
@@ -24,6 +34,7 @@ The organization of the workspace
 
 ## `includeApps`
 - **Type**: `boolean`
+- **Default**: `true`
 
 > Include Apps
 
@@ -33,6 +44,7 @@ Include apps in the workspace
 
 ## `includeRust`
 - **Type**: `boolean`
+- **Default**: `false`
 
 > Include Rust
 
@@ -42,6 +54,7 @@ Include Rust support in the workspace
 
 ## `namespace`
 - **Type**: `string`
+- **Default**: `"storm-software"`
 
 > Namespace
 
@@ -87,6 +100,7 @@ The mode of the Nx client
 
 ## `packageManager`
 - **Type**: `string`
+- **Default**: `"pnpm"`
 
 > Package Manager
 

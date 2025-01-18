@@ -1,5 +1,5 @@
 {
-  "extends": "@storm-software/workspace-tools/config/nx.json",
+  "extends": "@storm-software/workspace-tools/config/nx-default.json",
   "plugins": [
     "@nx/eslint/plugin",
     "@storm-software/workspace-tools/plugins/typescript"

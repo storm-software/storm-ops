@@ -1,3 +1,3 @@
 {
-  "import": ["@storm-software/linting-tools/cspell/config.json"]
+  "import": ["@storm-software/cspell/cspell-minimal.json"]
 }

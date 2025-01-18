@@ -9,6 +9,6 @@ export interface BaseGeneratorSchema {
   * The directory to create the library in
   * 
  */
- directory: string,
+ directory?: string,
 }
 

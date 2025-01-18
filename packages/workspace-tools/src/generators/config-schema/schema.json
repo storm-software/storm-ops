@@ -3,13 +3,22 @@
   "title": "Config Schema Generator",
   "description": "A type definition for a config schema generator schema",
   "properties": {
+    "directory": {
+      "title": "Directory",
+      "type": "string",
+      "description": "The directory to create the library in",
+      "id": "#directory"
+    },
     "outputFile": {
       "title": "Output File",
       "type": "string",
       "description": "The file to write the schema to",
-      "id": "#outputFile"
+      "id": "#outputFile",
+      "default": "{workspaceRoot}/storm-workspace.schema.json"
     }
   },
   "type": "object",
-  "default": {}
+  "default": {
+    "outputFile": "{workspaceRoot}/storm-workspace.schema.json"
+  }
 }

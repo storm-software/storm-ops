@@ -2,9 +2,6 @@
   "id": "#",
   "title": "Base Generator",
   "description": "A type definition for the base Generator schema",
-  "required": [
-    "directory"
-  ],
   "properties": {
     "directory": {
       "title": "Directory",

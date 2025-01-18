@@ -1,4 +1,6 @@
-export interface HelmDependencyGeneratorSchema {
+import { BaseGeneratorSchema } from "@storm-software/workspace-tools/base/base-generator.d";
+
+export interface HelmDependencyGeneratorSchema extends BaseGeneratorSchema {
   /** Project name */
   project: string;
   /** Chart Name of the Dependency */
@@ -11,5 +13,6 @@ export interface HelmDependencyGeneratorSchema {
   repositoryName: string;
   /** Format the generated files */
   format?: boolean;
+
   [k: string]: unknown;
 }

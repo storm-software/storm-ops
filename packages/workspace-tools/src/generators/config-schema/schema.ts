@@ -1,6 +1,8 @@
 import { defineUntypedSchema } from "untyped";
+import baseGeneratorSchema from "../../base/base-generator.schema";
 
 export default defineUntypedSchema({
+  ...baseGeneratorSchema,
   $schema: {
     id: "ConfigSchemaGeneratorSchema",
     title: "Config Schema Generator",
@@ -11,6 +13,7 @@ export default defineUntypedSchema({
       title: "Output File",
       type: "string",
       description: "The file to write the schema to"
-    }
+    },
+    $default: "{workspaceRoot}/storm-workspace.schema.json"
   }
 });

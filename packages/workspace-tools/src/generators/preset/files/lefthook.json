@@ -1,6 +1,106 @@
-{
-  "remote": {
-    "git_url": "git@github.com:storm-software/storm-ops",
-    "config": "packages/git-tools/src/lefthook/lefthook.yml"
-  }
-}
+#
+#   Refer for explanation to following link:
+#   https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+#
+
+assert_lefthook_installed: true
+colors: true
+no_tty: false
+min_version: 1.5.0
+
+pre-install:
+  commands:
+    validate:
+      glob: "**/*.*"
+      run: "pnpm exec storm-pre-install"
+
+prepare:
+  commands:
+    validate:
+      glob: "**/*.*"
+      run: "pnpm exec storm-prepare"
+
+pre-commit:
+  piped: true
+  commands:
+    install:
+      glob: "./{pnpm-lock.yaml,lefthook.yml}"
+      run: "pnpm install && pnpm lefthook install && git update-index"
+      stage_fixed: true
+    prepare:
+      glob: "**/{lefthook.yml,biome.json}"
+      run: "pnpm exec storm-prepare"
+    validate:
+       glob: "**/*.*"
+       run: "pnpm exec storm-pre-commit {staged_files}"
+       stage_fixed: true
+    lint-toml:
+      glob: "**/*.toml"
+      run: 'pnpm lint-toml'
+    lint-filename:
+      glob: "**/*.*"
+      run: 'pnpm lint-ls'
+    lint-codeowners:
+      files: "git diff --name-only HEAD @{push}"
+      glob: "**/CODEOWNERS"
+      run: "pnpm exec storm-lint codeowners"
+    lint-github-actions:
+      glob: ".github/workflows/*.*"
+      run: 'zizmor --offline --config="./node_modules/@storm-software/linting-tools/zizmor/config.yml" .github/workflows/'
+
+commit-msg:
+  commands:
+    validate:
+      run: "pnpm exec storm-lint commitlint --message {1}"
+
+pre-push:
+  piped: true
+  commands:
+     format:
+       glob: "**/*.*"
+       run: "pnpm format"
+       stage_fixed: true
+     format-prettier:
+       glob: "!**/src/generators/*/files/**/*"
+       run: "pnpm exec prettier {staged_files} --write --ignore-unknown
+         --no-error-on-unmatched-pattern --cache && git update-index"
+       stage_fixed: true
+    format-readme:
+       glob: "**/{README.md,package.json,executors.json,generators.json}"
+       run: 'pnpm exec storm-git readme-gen --templates="./tools/readme-templates"'
+       stage_fixed: true
+    install:
+      glob: "**/{package.json}"
+      run: "pnpm install --no-frozen-lockfile"
+      stage_fixed: true
+    build:
+      glob: "**/*.*"
+      run: 'pnpm build-all'
+      stage_fixed: true
+    validate:
+      glob: "**/*.*"
+      run: "pnpm exec storm-pre-push {staged_files}"
+      stage_fixed: true
+    lint:
+      glob: "**/*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,yaml,yml,md,mdx,markdown,css,scss,sass,less,styl,stylus,graphql,gql,xml,svg,txt,log,env,env.example,env.local,env.development,env.test,env.production,env.staging,env.local.example,env.development.example,env.test.example,env.production.example,env.staging.example}"
+      run: "pnpm lint"
+      stage_fixed: true
+
+post-merge:
+  commands:
+    validate:
+      glob: "**/*.*"
+      run: "pnpm exec storm-post-merge {staged_files}"
+      stage_fixed: true
+
+post-checkout:
+  commands:
+    validate:
+      glob: "**/*.*"
+      run: "pnpm exec storm-post-checkout {staged_files}"
+
+post-commit:
+  commands:
+    validate:
+      glob: "**/*.*"
+      run: "pnpm exec storm-post-commit {staged_files}"

@@ -4,8 +4,7 @@ export default defineUntypedSchema({
   $schema: {
     id: "BaseGeneratorSchema",
     title: "Base Generator",
-    description: "A type definition for the base Generator schema",
-    required: ["directory"]
+    description: "A type definition for the base Generator schema"
   },
   directory: {
     $schema: {

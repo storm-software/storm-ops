@@ -4,18 +4,27 @@
 
 export interface PresetGeneratorSchema {
  /**
+  * Directory
+  * 
+  * The directory to create the library in
+  * 
+ */
+ directory: string,
+
+ /**
   * Name
   * 
   * The name of the workspace
   * 
  */
- name?: string,
+ name: string,
 
  /**
   * Organization
   * 
   * The organization of the workspace
   * 
+  * @default "storm-software"
  */
  organization?: string,
 
@@ -24,6 +33,7 @@ export interface PresetGeneratorSchema {
   * 
   * Include apps in the workspace
   * 
+  * @default true
  */
  includeApps?: boolean,
 
@@ -32,6 +42,7 @@ export interface PresetGeneratorSchema {
   * 
   * Include Rust support in the workspace
   * 
+  * @default false
  */
  includeRust?: boolean,
 
@@ -40,6 +51,7 @@ export interface PresetGeneratorSchema {
   * 
   * The namespace of the workspace
   * 
+  * @default "storm-software"
  */
  namespace?: string,
 
@@ -80,6 +92,9 @@ export interface PresetGeneratorSchema {
   * 
   * The package manager to use
   * 
+  * @default "pnpm"
+  * 
+  * @enum npm,pnpm,yarn,bun
  */
  packageManager?: string,
 }
