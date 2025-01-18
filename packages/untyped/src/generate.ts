@@ -63,7 +63,6 @@ export const getGenerateAction =
                   "untyped"
                 ),
               moduleCache: cache,
-              extensions: ["ts", ".tsx", ".mts", ".cts", ".mtsx", ".ctsx"],
               interopDefault: true
             }
           });
