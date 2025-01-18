@@ -45,17 +45,18 @@ export const getGenerateAction =
             jiti: {
               debug: isVerbose(config.logLevel),
               fsCache:
-                Boolean(process.env.CI) ||
-                Boolean(process.env.STORM_CI) ||
-                config.skipCache
-                  ? false
-                  : joinPaths(
-                      config.directories.cache || "node_modules/.cache",
-                      "storm",
-                      "untyped"
-                    ),
+                !Boolean(process.env.CI) &&
+                !Boolean(process.env.STORM_CI) &&
+                !config.skipCache &&
+                joinPaths(
+                  config.directories.cache || "node_modules/.cache",
+                  "storm",
+                  "untyped"
+                ),
               moduleCache:
-                Boolean(process.env.CI) || Boolean(process.env.STORM_CI),
+                !Boolean(process.env.CI) &&
+                !Boolean(process.env.STORM_CI) &&
+                !config.skipCache,
               extensions: ["ts", ".tsx", ".mts", ".cts", ".mtsx", ".ctsx"],
               interopDefault: true
             }
