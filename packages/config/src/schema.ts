@@ -396,6 +396,7 @@ export const StormConfigSchema = z
         "fatal",
         "error",
         "warn",
+        "success",
         "info",
         "debug",
         "trace",

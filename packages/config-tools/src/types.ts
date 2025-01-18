@@ -18,6 +18,7 @@ export type LogLevelLabel =
   | "fatal"
   | "error"
   | "warn"
+  | "success"
   | "info"
   | "debug"
   | "trace"
@@ -27,11 +28,38 @@ export const LogLevelLabel = {
   FATAL: "fatal" as LogLevelLabel,
   ERROR: "error" as LogLevelLabel,
   WARN: "warn" as LogLevelLabel,
+  SUCCESS: "success" as LogLevelLabel,
   INFO: "info" as LogLevelLabel,
   DEBUG: "debug" as LogLevelLabel,
   TRACE: "trace" as LogLevelLabel,
   ALL: "all" as LogLevelLabel
 } as const;
+
+// export type LogType =
+//   | "error"
+//   | "fatal"
+//   | "ready"
+//   | "warn"
+//   | "info"
+//   | "success"
+//   | "debug"
+//   | "trace"
+//   | "fail"
+//   | "start"
+//   | "log";
+// export const LogType = {
+//   ERROR: "error" as LogType,
+//   FATAL: "fatal" as LogType,
+//   READY: "ready" as LogType,
+//   WARN: "warn" as LogType,
+//   INFO: "info" as LogType,
+//   SUCCESS: "success" as LogType,
+//   DEBUG: "debug" as LogType,
+//   TRACE: "trace" as LogType,
+//   FAIL: "fail" as LogType,
+//   START: "start" as LogType,
+//   LOG: "log" as LogType
+// } as const;
 
 export interface BaseTokenizerOptions {
   workspaceRoot?: string;
