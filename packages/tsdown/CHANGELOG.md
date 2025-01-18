@@ -1,3 +1,15 @@
+## 0.18.4 (2025-01-17)
+
+### Bug Fixes
+
+- **unbuild:** Update package to use `tsup-node` to exclude bundles ([cf712b2a](https://github.com/storm-software/storm-ops/commit/cf712b2a))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.133.4
+- Updated build-tools to 0.125.4
+- Updated config to 1.94.4
+
 ## 0.18.3 (2025-01-16)
 
 ### Bug Fixes

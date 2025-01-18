@@ -49,7 +49,7 @@ Promise.all([
   build({
     entryPoints: ["packages/cloudflare-tools/src/plugins/index.ts"],
     outdir: "dist/plugins/cloudflare",
-    tsconfig: "packages/cloudflare-tools/tsconfig.lib.json",
+    tsconfig: "packages/cloudflare-tools/tsconfig.json",
     packages: "external",
     logLevel: "info",
     bundle: true,
