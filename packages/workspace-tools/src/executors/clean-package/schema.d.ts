@@ -4,17 +4,6 @@
 
 export interface CleanPackageExecutorSchema {
  /**
-  * Entry File(s)
-  * 
-  * The entry file or files to build
-  * 
-  * @default {"default":["{sourceRoot}/index.ts"]}
-  * 
-  * @format path
- */
- entry?: Array<string>,
-
- /**
   * Output Path
   * 
   * The path to the output
@@ -22,17 +11,6 @@ export interface CleanPackageExecutorSchema {
   * @default "dist/{projectRoot}"
  */
  outputPath?: string,
-
- /**
-  * TSConfig Path
-  * 
-  * The path to the tsconfig file
-  * 
-  * @default "{projectRoot}/tsconfig.json"
-  * 
-  * @format path
- */
- tsconfig?: string,
 
  /**
   * Package JSON Path

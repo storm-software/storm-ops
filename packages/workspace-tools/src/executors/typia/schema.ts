@@ -6,7 +6,27 @@ export default defineUntypedSchema({
   $schema: {
     id: "TypiaExecutorSchema",
     title: "Typia Executor",
-    description: "A type definition for a Typia executor schema"
+    description: "A type definition for a Typia executor schema",
+    required: ["entry", "tsconfig", "outputPath"]
+  },
+  entry: {
+    $schema: {
+      title: "Entry File(s)",
+      format: "path",
+      type: "array",
+      description: "The entry file or files to build",
+      items: { type: "string" }
+    },
+    $default: ["{sourceRoot}/index.ts"]
+  },
+  tsconfig: {
+    $schema: {
+      title: "TSConfig Path",
+      type: "string",
+      format: "path",
+      description: "The path to the tsconfig file"
+    },
+    $default: "{projectRoot}/tsconfig.json"
   },
   outputPath: {
     $schema: {

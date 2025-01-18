@@ -4,17 +4,6 @@
 
 export interface TSDownExecutorSchema {
  /**
-  * Entry File(s)
-  * 
-  * The entry file or files to build
-  * 
-  * @default {"default":["{sourceRoot}/index.ts"]}
-  * 
-  * @format path
- */
- entry?: Array<string>,
-
- /**
   * Output Path
   * 
   * The output path for the build
@@ -24,6 +13,17 @@ export interface TSDownExecutorSchema {
   * @format path
  */
  outputPath?: string,
+
+ /**
+  * Entry File(s)
+  * 
+  * The entry file or files to build
+  * 
+  * @default ["{sourceRoot}/index.ts"]
+  * 
+  * @format path
+ */
+ entry?: Array<string>,
 
  /**
   * TSConfig Path

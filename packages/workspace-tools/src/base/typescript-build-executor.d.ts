@@ -4,17 +4,6 @@
 
 export interface TypeScriptBuildExecutorSchema {
  /**
-  * Entry File(s)
-  * 
-  * The entry file or files to build
-  * 
-  * @default {"default":["{sourceRoot}/index.ts"]}
-  * 
-  * @format path
- */
- entry?: Array<string>,
-
- /**
   * Output Path
   * 
   * The output path for the build
@@ -26,6 +15,17 @@ export interface TypeScriptBuildExecutorSchema {
  outputPath?: string,
 
  /**
+  * Entry File(s)
+  * 
+  * The entry file or files to build
+  * 
+  * @default ["{sourceRoot}/index.ts"]
+  * 
+  * @format path
+ */
+ entry: Array<string>,
+
+ /**
   * TSConfig Path
   * 
   * The path to the tsconfig file
@@ -34,7 +34,7 @@ export interface TypeScriptBuildExecutorSchema {
   * 
   * @format path
  */
- tsconfig?: string,
+ tsconfig: string,
 
  /**
   * Bundle

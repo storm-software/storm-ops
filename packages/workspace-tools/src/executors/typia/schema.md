@@ -4,16 +4,6 @@
 
 # Typia Executor
 
-## `entry`
-- **Type**: `array`
-- **Default**: `{"default":["{sourceRoot}/index.ts"]}`
-
-> Entry File(s)
-
-
-The entry file or files to build
-
-
 ## `outputPath`
 - **Type**: `string`
 - **Default**: `"{sourceRoot}/__generated__/typia"`
@@ -22,6 +12,16 @@ The entry file or files to build
 
 
 The output path for the build
+
+
+## `entry`
+- **Type**: `array`
+- **Default**: `["{sourceRoot}/index.ts"]`
+
+> Entry File(s)
+
+
+The entry file or files to build
 
 
 ## `tsconfig`

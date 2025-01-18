@@ -4,17 +4,6 @@
 
 export interface UnbuildExecutorSchema {
  /**
-  * Entry File(s)
-  * 
-  * The entry file or files to build
-  * 
-  * @default {"default":["{sourceRoot}/index.ts"]}
-  * 
-  * @format path
- */
- entry?: Array<string>,
-
- /**
   * Output Path
   * 
   * The output path for the build
@@ -24,6 +13,17 @@ export interface UnbuildExecutorSchema {
   * @format path
  */
  outputPath?: string,
+
+ /**
+  * Entry File(s)
+  * 
+  * The entry file or files to build
+  * 
+  * @default ["{sourceRoot}/index.ts"]
+  * 
+  * @format path
+ */
+ entry?: Array<string>,
 
  /**
   * TSConfig Path

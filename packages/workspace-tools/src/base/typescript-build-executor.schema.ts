@@ -7,7 +7,27 @@ export default defineUntypedSchema({
     id: "TypeScriptBuildExecutorSchema",
     title: "TypeScript Build Executor",
     description:
-      "A type definition for the base TypeScript build executor schema"
+      "A type definition for the base TypeScript build executor schema",
+    required: ["entry", "tsconfig"]
+  },
+  entry: {
+    $schema: {
+      title: "Entry File(s)",
+      format: "path",
+      type: "array",
+      description: "The entry file or files to build",
+      items: { type: "string" }
+    },
+    $default: ["{sourceRoot}/index.ts"]
+  },
+  tsconfig: {
+    $schema: {
+      title: "TSConfig Path",
+      type: "string",
+      format: "path",
+      description: "The path to the tsconfig file"
+    },
+    $default: "{projectRoot}/tsconfig.json"
   },
   bundle: {
     $schema: {

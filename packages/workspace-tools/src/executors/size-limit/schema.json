@@ -3,6 +3,14 @@
   "title": "Size Limit Executor",
   "description": "A type definition for a Size Limit executor schema",
   "properties": {
+    "outputPath": {
+      "title": "Output Path",
+      "type": "string",
+      "format": "path",
+      "description": "The output path for the build",
+      "id": "#outputPath",
+      "default": "dist/{projectRoot}"
+    },
     "entry": {
       "title": "Entry",
       "type": "array",
@@ -12,27 +20,10 @@
         "format": "path"
       },
       "id": "#entry"
-    },
-    "outputPath": {
-      "title": "Output Path",
-      "type": "string",
-      "format": "path",
-      "description": "The output path for the build",
-      "id": "#outputPath",
-      "default": "dist/{projectRoot}"
-    },
-    "tsconfig": {
-      "title": "TSConfig Path",
-      "type": "string",
-      "format": "path",
-      "description": "The path to the tsconfig file",
-      "id": "#tsconfig",
-      "default": "{projectRoot}/tsconfig.json"
     }
   },
   "type": "object",
   "default": {
-    "outputPath": "dist/{projectRoot}",
-    "tsconfig": "{projectRoot}/tsconfig.json"
+    "outputPath": "dist/{projectRoot}"
   }
 }

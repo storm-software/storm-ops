@@ -3,33 +3,6 @@
   "title": "Cargo Base Executor",
   "description": "A base type definition for a Cargo/rust related executor schema",
   "properties": {
-    "entry": {
-      "title": "Entry File(s)",
-      "format": "path",
-      "type": "array",
-      "description": "The entry file or files to build",
-      "items": {
-        "type": "string"
-      },
-      "id": "#entry",
-      "properties": {
-        "default": {
-          "type": "array",
-          "id": "#entry/default",
-          "default": [
-            "{sourceRoot}/index.ts"
-          ],
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "default": {
-        "default": [
-          "{sourceRoot}/index.ts"
-        ]
-      }
-    },
     "outputPath": {
       "title": "Output Path",
       "type": "string",
@@ -37,14 +10,6 @@
       "description": "The output path for the build",
       "id": "#outputPath",
       "default": "dist/{projectRoot}"
-    },
-    "tsconfig": {
-      "title": "TSConfig Path",
-      "type": "string",
-      "format": "path",
-      "description": "The path to the tsconfig file",
-      "id": "#tsconfig",
-      "default": "{projectRoot}/tsconfig.json"
     },
     "package": {
       "title": "Cargo.toml Path",
@@ -116,13 +81,7 @@
   },
   "type": "object",
   "default": {
-    "entry": {
-      "default": [
-        "{sourceRoot}/index.ts"
-      ]
-    },
     "outputPath": "dist/{projectRoot}",
-    "tsconfig": "{projectRoot}/tsconfig.json",
     "package": "{projectRoot}/Cargo.toml",
     "toolchain": "stable"
   }

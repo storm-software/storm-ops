@@ -4,15 +4,6 @@
 
 # Size Limit Executor
 
-## `entry`
-- **Type**: `array`
-
-> Entry
-
-
-The path to the entry file
-
-
 ## `outputPath`
 - **Type**: `string`
 - **Default**: `"dist/{projectRoot}"`
@@ -23,13 +14,12 @@ The path to the entry file
 The output path for the build
 
 
-## `tsconfig`
-- **Type**: `string`
-- **Default**: `"{projectRoot}/tsconfig.json"`
+## `entry`
+- **Type**: `array`
 
-> TSConfig Path
+> Entry
 
 
-The path to the tsconfig file
+The path to the entry file
 
 

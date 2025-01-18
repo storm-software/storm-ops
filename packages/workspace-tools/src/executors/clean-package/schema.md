@@ -4,16 +4,6 @@
 
 # Clean Package Executor
 
-## `entry`
-- **Type**: `array`
-- **Default**: `{"default":["{sourceRoot}/index.ts"]}`
-
-> Entry File(s)
-
-
-The entry file or files to build
-
-
 ## `outputPath`
 - **Type**: `string`
 - **Default**: `"dist/{projectRoot}"`
@@ -22,16 +12,6 @@ The entry file or files to build
 
 
 The path to the output
-
-
-## `tsconfig`
-- **Type**: `string`
-- **Default**: `"{projectRoot}/tsconfig.json"`
-
-> TSConfig Path
-
-
-The path to the tsconfig file
 
 
 ## `packageJsonPath`

@@ -4,17 +4,6 @@
 
 export interface TypiaExecutorSchema {
  /**
-  * Entry File(s)
-  * 
-  * The entry file or files to build
-  * 
-  * @default {"default":["{sourceRoot}/index.ts"]}
-  * 
-  * @format path
- */
- entry?: Array<string>,
-
- /**
   * Output Path
   * 
   * The output path for the build
@@ -23,7 +12,18 @@ export interface TypiaExecutorSchema {
   * 
   * @format path
  */
- outputPath?: string,
+ outputPath: string,
+
+ /**
+  * Entry File(s)
+  * 
+  * The entry file or files to build
+  * 
+  * @default ["{sourceRoot}/index.ts"]
+  * 
+  * @format path
+ */
+ entry: Array<string>,
 
  /**
   * TSConfig Path
@@ -34,7 +34,7 @@ export interface TypiaExecutorSchema {
   * 
   * @format path
  */
- tsconfig?: string,
+ tsconfig: string,
 
  /**
   * Clean

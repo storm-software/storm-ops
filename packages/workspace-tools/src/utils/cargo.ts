@@ -24,6 +24,7 @@ export const INVALID_CARGO_ARGS = [
   "allTargets",
   "main",
   "outputPath",
+  "package",
   "tsConfig"
 ];
 
@@ -65,6 +66,10 @@ export const buildCargoCommand = (
     }
   }
 
+  if (context.projectName) {
+    args.push("-p", context.projectName);
+  }
+
   if (options.allFeatures && !args.includes("--all-features")) {
     args.push("--all-features");
   }
@@ -75,10 +80,6 @@ export const buildCargoCommand = (
 
   if (options.release && !args.includes("--profile")) {
     args.push("--release");
-  }
-
-  if (context.projectName && !args.includes("--package")) {
-    args.push("-p", context.projectName);
   }
 
   if (options.outputPath && !args.includes("--target-dir")) {

@@ -3,6 +3,14 @@
   "title": "ESBuild Executor",
   "description": "A type definition for an ESBuild executor schema",
   "properties": {
+    "outputPath": {
+      "title": "Output Path",
+      "type": "string",
+      "format": "path",
+      "description": "The output path for the build",
+      "id": "#outputPath",
+      "default": "dist/{projectRoot}"
+    },
     "entry": {
       "title": "Entry File(s)",
       "format": "path",
@@ -12,31 +20,9 @@
         "type": "string"
       },
       "id": "#entry",
-      "properties": {
-        "default": {
-          "type": "array",
-          "id": "#entry/default",
-          "default": [
-            "{sourceRoot}/index.ts"
-          ],
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "default": {
-        "default": [
-          "{sourceRoot}/index.ts"
-        ]
-      }
-    },
-    "outputPath": {
-      "title": "Output Path",
-      "type": "string",
-      "format": "path",
-      "description": "The output path for the build",
-      "id": "#outputPath",
-      "default": "dist/{projectRoot}"
+      "default": [
+        "{sourceRoot}/index.ts"
+      ]
     },
     "tsconfig": {
       "title": "TSConfig Path",
@@ -167,12 +153,10 @@
   },
   "type": "object",
   "default": {
-    "entry": {
-      "default": [
-        "{sourceRoot}/index.ts"
-      ]
-    },
     "outputPath": "dist/{projectRoot}",
+    "entry": [
+      "{sourceRoot}/index.ts"
+    ],
     "tsconfig": "{projectRoot}/tsconfig.json",
     "bundle": false,
     "minify": false,
