@@ -51,7 +51,7 @@
     "build": "nx affected -t build --parallel=3",
     "build-all": "pnpm build-plugins && nx run-many -t build --all --parallel=3",
     "build-plugins": "pnpm build-scripts && node ./tools/scripts/dist/build-plugins.js",
-    "build-prod": "nx run-many -t build --all --parallel=3 --configuration=production",
+    "build-prod": "pnpm build-plugins && nx run-many -t build --all --parallel=3 --configuration=production",
     "build-scripts": "cd tools/scripts && pnpm run build && cd ../..",
     "clean": "rimraf dist",
     "clean-packages": "rimraf dist/packages",
