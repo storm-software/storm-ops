@@ -1,5 +1,8 @@
 import { StormConfig } from "@storm-software/config";
-import { writeTrace } from "@storm-software/config-tools/logger/console";
+import {
+  writeError,
+  writeTrace
+} from "@storm-software/config-tools/logger/console";
 import { Path } from "glob";
 import { writeFile } from "node:fs/promises";
 import { generateTypes, Schema } from "untyped";
@@ -24,8 +27,29 @@ export function generateDeclarationFile(
   file: Path,
   config?: StormConfig
 ) {
-  const declarations = getOutputFile(file, "d.ts");
-  writeTrace(`Writing type declaration file ${declarations}`, config);
+  try {
+    const declarations = getOutputFile(file, "d.ts");
+    writeTrace(`Writing type declaration file ${declarations}`, config);
 
-  return writeFile(declarations, generateDeclaration(schema));
+    return writeFile(declarations, generateDeclaration(schema));
+  } catch (error) {
+    writeError(
+      `Error writing declaration file for ${file.name}
+
+Error:
+${error?.message ? error.message : JSON.stringify(error)}${
+        error?.stack
+          ? `
+Stack Trace: ${error.stack}`
+          : ""
+      }
+
+Parsed schema:
+${JSON.stringify(schema)}
+`,
+      config
+    );
+
+    throw error;
+  }
 }

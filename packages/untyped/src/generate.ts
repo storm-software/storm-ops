@@ -1,4 +1,7 @@
-import { writeTrace } from "@storm-software/config-tools/logger/console";
+import {
+  writeError,
+  writeTrace
+} from "@storm-software/config-tools/logger/console";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { StormConfig } from "@storm-software/config/types";
 import { glob } from "glob";
@@ -20,24 +23,48 @@ export const getGenerateAction =
       cwd: config.workspaceRoot
     });
 
-    writeTrace(
-      `Generating files for schema files: ${files.join(", ")}`,
-      config
-    );
     await Promise.all(
       files.map(async file => {
-        const schema = await loadSchema(joinPaths(file.parentPath, file.name), {
-          jiti: {
-            debug: false,
-            cache: config.skipCache
-              ? false
-              : joinPaths(
-                  config.directories.cache || "node_modules/.cache",
-                  "storm",
-                  "untyped"
-                )
-          }
-        });
+        writeTrace(
+          `Generating files for schema file: ${joinPaths(file.parentPath, file.name)}`,
+          config
+        );
+
+        let schema;
+        try {
+          schema = await loadSchema(joinPaths(file.parentPath, file.name), {
+            jiti: {
+              debug: false,
+              cache: config.skipCache
+                ? false
+                : joinPaths(
+                    config.directories.cache || "node_modules/.cache",
+                    "storm",
+                    "untyped"
+                  )
+            }
+          });
+        } catch (error) {
+          writeError(
+            `Error while parsing schema file: ${joinPaths(file.parentPath, file.name)}
+
+Error:
+${error?.message ? error.message : JSON.stringify(error)}${
+              error?.stack
+                ? `
+Stack Trace: ${error.stack}`
+                : ""
+            }
+
+Parsed schema:
+${JSON.stringify(schema)}
+`,
+
+            config
+          );
+
+          throw error;
+        }
 
         const promises = [] as Promise<any>[];
 
