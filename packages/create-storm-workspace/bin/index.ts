@@ -8,7 +8,6 @@ import {
   writeInfo,
   writeSuccess
 } from "@storm-software/config-tools/logger/console";
-import type { NxClientMode } from "@storm-software/workspace-tools";
 import { createWorkspace } from "create-nx-workspace";
 import { prompt } from "enquirer";
 
@@ -133,24 +132,6 @@ async function main() {
     //   });
     //   nxCloud = response.nxCloud;
     // }
-
-    let mode: NxClientMode = (
-      process.argv.length > 9 ? process.argv[9] : null
-    ) as NxClientMode;
-    if (!mode) {
-      mode = (
-        await prompt<{ mode: "light" | "dark" }>({
-          name: "mode",
-          message: "Which mode should be used?",
-          initial: "dark" as any,
-          type: "autocomplete",
-          choices: [
-            { name: "light", message: "light" },
-            { name: "dark", message: "dark" }
-          ]
-        })
-      ).mode;
-    }
 
     writeInfo(`⚡ Creating the Storm Workspace: ${name}`, config);
 
