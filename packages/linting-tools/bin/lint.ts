@@ -26,7 +26,13 @@ void (async () => {
     exitWithSuccess(config);
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while linting the workspace: ${error.message}`,
+      `A fatal error occurred while running the Storm Lint tool:
+${error?.message ? error.message : JSON.stringify(error)}${
+        error?.stack
+          ? `
+Stack Trace: ${error.stack}`
+          : ""
+      }`,
       config
     );
 

@@ -2,6 +2,7 @@ import {
   writeError,
   writeTrace
 } from "@storm-software/config-tools/logger/console";
+import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { StormConfig } from "@storm-software/config/types";
 import { glob } from "glob";
@@ -34,14 +35,17 @@ export const getGenerateAction =
         try {
           schema = await loadSchema(joinPaths(file.parentPath, file.name), {
             jiti: {
-              debug: false,
-              cache: config.skipCache
-                ? false
-                : joinPaths(
-                    config.directories.cache || "node_modules/.cache",
-                    "storm",
-                    "untyped"
-                  )
+              debug: isVerbose(config.logLevel),
+              cache:
+                Boolean(process.env.CI) ||
+                Boolean(process.env.STORM_CI) ||
+                config.skipCache
+                  ? false
+                  : joinPaths(
+                      config.directories.cache || "node_modules/.cache",
+                      "storm",
+                      "untyped"
+                    )
             }
           });
         } catch (error) {

@@ -18,8 +18,6 @@ export function createProgram(config: StormConfig) {
   _config = config;
   writeInfo("⚡ Running Storm Git Tools", config);
 
-  // const commander = await import("commander");
-
   const root = findWorkspaceRootSafe(process.cwd());
   process.env.STORM_WORKSPACE_ROOT ??= root;
   process.env.NX_WORKSPACE_ROOT_PATH ??= root;
@@ -132,24 +130,25 @@ export async function commitAction({
 }) {
   try {
     writeInfo(
-      `⚡ Preparing to commit your changes to the ${
-        _config.repository
-          ? _config.repository
-          : _config.namespace
-            ? _config.namespace
-            : _config.name
-              ? _config.name
-              : _config.organization
-                ? _config.organization
-                : "Storm-Software"
-      } Git repository. Please provide the requested details below...`,
+      `⚡ Preparing to commit your changes. Please provide the requested details below...`,
       _config
     );
 
     await runCommit(config, dryRun);
 
     writeSuccess(
-      "Commit processing completed successfully! Changes can be uploaded to Git. \n",
+      `🎉 Storm Commit processing completed successfully!
+
+Note: Please run "pnpm push" to upload these changes to the remote ${
+        _config.name
+          ? _config.name
+          : _config.namespace
+            ? _config.namespace
+            : _config.organization
+              ? _config.organization
+              : "Storm-Software"
+      } Git repository at ${_config.repository}
+`,
       _config
     );
   } catch (error) {

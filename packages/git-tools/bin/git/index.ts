@@ -15,25 +15,26 @@ void (async () => {
   try {
     handleProcess(config);
 
-    // const compilerOptions = readJsonSync(
-    //   join(config.workspaceRoot ?? "./", "tsconfig.base.json")
-    // ).compilerOptions;
-    // registerTsConfigPaths(compilerOptions);
-
     const program = createProgram(config);
-    // program.exitOverride();
     await program.parseAsync(process.argv);
 
     writeSuccess(
-      `🎉  Git ${process.argv.join(" ") ?? "tool"} processing completed successfully!`,
+      `🎉  Git ${process.argv && process.argv.length >= 3 && process.argv[2] ? process.argv[2] : "tool"} processing completed successfully!`,
       config
     );
     exitWithSuccess(config);
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running the Git tool: \n\n${error.message}`,
+      `A fatal error occurred while running the Storm Git tool:
+${error?.message ? error.message : JSON.stringify(error)}${
+        error?.stack
+          ? `
+Stack Trace: ${error.stack}`
+          : ""
+      }`,
       config
     );
+
     exitWithError(config);
     process.exit(1);
   }

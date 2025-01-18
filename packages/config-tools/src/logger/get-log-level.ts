@@ -75,5 +75,5 @@ export const isVerbose = (
   label: string | LogLevel = LogLevelLabel.SILENT
 ): boolean => {
   const logLevel = typeof label === "string" ? getLogLevel(label) : label;
-  return logLevel <= LogLevel.DEBUG;
+  return logLevel >= LogLevel.DEBUG;
 };
