@@ -59,7 +59,8 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.error(
-        `${_chalk.bold.hex(colors.fatal ?? "#7d1a1a")(">")} ${_chalk.bold
+        `
+${_chalk.bold.hex(colors.fatal ?? "#7d1a1a")(">")} ${_chalk.bold
           .bgHex(colors.fatal ?? "#7d1a1a")
           .whiteBright(
             " 💀 Fatal "
@@ -75,10 +76,11 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.error(
-        `${_chalk.bold.hex(colors.danger ?? "#f85149")(">")} ${_chalk.bold
+        `
+${_chalk.bold.hex(colors.danger ?? "#f85149")(">")} ${_chalk.bold
           .bgHex(colors.danger ?? "#f85149")
           .whiteBright(
-            " ✘  Error "
+            " ✘ Error "
           )}  ${_chalk.hex(colors.danger ?? "#f85149")(formatLogMessage(message))}
 `
       );
@@ -91,7 +93,8 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.warn(
-        `${_chalk.bold.hex(colors.warning ?? "#e3b341")(">")} ${_chalk.bold
+        `
+${_chalk.bold.hex(colors.warning ?? "#e3b341")(">")} ${_chalk.bold
           .bgHex(colors.warning ?? "#e3b341")
           .whiteBright(
             "  ⚠ Warn  "
@@ -107,7 +110,8 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.info(
-        `${_chalk.bold.hex(colors.success ?? "#56d364")(">")} ${_chalk.bold
+        `
+${_chalk.bold.hex(colors.success ?? "#56d364")(">")} ${_chalk.bold
           .bgHex(colors.success ?? "#56d364")
           .whiteBright(
             " ✓ Success "
@@ -123,7 +127,8 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.info(
-        `${_chalk.bold.hex(colors.info ?? "#58a6ff")(">")} ${_chalk.bold
+        `
+${_chalk.bold.hex(colors.info ?? "#58a6ff")(">")} ${_chalk.bold
           .bgHex(colors.info ?? "#58a6ff")
           .whiteBright(
             "  ℹ Info  "
@@ -139,7 +144,8 @@ export const getLogFn = (
   ) {
     return (message?: any) => {
       console.debug(
-        `${_chalk.bold.hex(colors.brand ?? "#1fb2a6")(">")} ${_chalk.bold
+        `
+${_chalk.bold.hex(colors.brand ?? "#1fb2a6")(">")} ${_chalk.bold
           .bgHex(colors.brand ?? "#1fb2a6")
           .whiteBright(
             " 🛠  Debug "
@@ -151,7 +157,8 @@ export const getLogFn = (
 
   return (message?: any) => {
     console.log(
-      `${_chalk.bold.hex(colors.brand ?? "#1fb2a6")(">")} ${_chalk.bold
+      `
+${_chalk.bold.hex(colors.brand ?? "#1fb2a6")(">")} ${_chalk.bold
         .bgHex(colors.brand ?? "#1fb2a6")
         .whiteBright(
           " ✉ System "
