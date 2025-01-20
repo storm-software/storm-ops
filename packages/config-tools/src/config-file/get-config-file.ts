@@ -22,37 +22,37 @@ export const getConfigFileByName = async (
 ): Promise<ResolvedConfig<Partial<StormConfigInput>>> => {
   const workspacePath = filePath || findWorkspaceRoot(filePath);
 
-  let config = loadConfig<Partial<StormConfigInput>>({
+  let config = await loadConfig<Partial<StormConfigInput>>({
     cwd: workspacePath,
     packageJson: true,
     name: fileName,
     envName: fileName?.toUpperCase(),
     jitiOptions: {
       debug: false,
-      cache:
+      fsCache:
         process.env.STORM_SKIP_CACHE === "true"
           ? false
           : joinPaths(
-              process.env.STORM_CACHE_DIR || "node_modules/.cache",
-              "storm"
+              process.env.STORM_CACHE_DIR || "node_modules/.cache/storm",
+              "config"
             )
     },
     ...options
   });
   if (!config || Object.keys(config).length === 0) {
-    config = loadConfig<Partial<StormConfigInput>>({
+    config = await loadConfig<Partial<StormConfigInput>>({
       cwd: workspacePath,
       packageJson: true,
       name: fileName,
       envName: fileName?.toUpperCase(),
       jitiOptions: {
         debug: false,
-        cache:
+        fsCache:
           process.env.STORM_SKIP_CACHE === "true"
             ? false
             : joinPaths(
-                process.env.STORM_CACHE_DIR || "node_modules/.cache",
-                "storm"
+                process.env.STORM_CACHE_DIR || "node_modules/.cache/storm",
+                "config"
               )
       },
       configFile: fileName,

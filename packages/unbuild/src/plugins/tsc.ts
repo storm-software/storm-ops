@@ -1,5 +1,5 @@
 // nx-ignore-next-line
-import { createProjectGraphAsync } from "@nx/devkit";
+import { readCachedProjectGraph } from "@nx/devkit";
 import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
 import {
   getHelperDependency,
@@ -14,9 +14,7 @@ export const tscPlugin = async (
   options: UnbuildOptions,
   resolvedOptions: UnbuildResolvedOptions
 ): Promise<Plugin<any>> => {
-  const projectGraph = await createProjectGraphAsync({
-    exitOnError: true
-  });
+  const projectGraph = readCachedProjectGraph();
 
   const result = calculateProjectBuildableDependencies(
     undefined,
