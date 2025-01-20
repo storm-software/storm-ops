@@ -219,7 +219,7 @@
     "@nx/js": "catalog:",
     "@storm-software/build-tools": "0.126.0",
     "@storm-software/config": "1.95.0",
-    "@storm-software/config-tools": "1.134.0",
+    "@storm-software/config-tools": "1.135.0",
     "@types/node": "catalog:",
     "defu": "catalog:",
     "esbuild": "catalog:",

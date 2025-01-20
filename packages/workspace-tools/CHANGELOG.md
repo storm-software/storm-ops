@@ -1,3 +1,13 @@
+## 1.229.0 (2025-01-20)
+
+### Features
+
+- **untyped:** Standard file name changes to avoid collisions ([71acf100](https://github.com/storm-software/storm-ops/commit/71acf100))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve namespace conflicts issue ([a72b4687](https://github.com/storm-software/storm-ops/commit/a72b4687))
+
 ## 1.228.1 (2025-01-20)
 
 ### Bug Fixes

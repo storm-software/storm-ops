@@ -1,3 +1,14 @@
+## 0.19.0 (2025-01-20)
+
+### Features
+
+- **untyped:** Standard file name changes to avoid collisions ([71acf100](https://github.com/storm-software/storm-ops/commit/71acf100))
+
+### Bug Fixes
+
+- **pulumi-tools:** Resolved issue with invalid import paths ([af7e7c5e](https://github.com/storm-software/storm-ops/commit/af7e7c5e))
+- **workspace-tools:** Resolved issues with import paths ([9eeb1f73](https://github.com/storm-software/storm-ops/commit/9eeb1f73))
+
 ## 0.18.0 (2025-01-20)
 
 ### Features

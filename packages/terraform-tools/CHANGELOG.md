@@ -1,3 +1,18 @@
+## 0.47.0 (2025-01-20)
+
+### Features
+
+- **untyped:** Standard file name changes to avoid collisions ([71acf100](https://github.com/storm-software/storm-ops/commit/71acf100))
+
+### Bug Fixes
+
+- **terraform-tools:** Resolve issue with invalid import path ([7a8ee2cf](https://github.com/storm-software/storm-ops/commit/7a8ee2cf))
+
+### 🧱 Updated Dependencies
+
+- Updated workspace-tools to 1.229.0
+- Updated workspace-tools to 1.229.0
+
 ## 0.46.0 (2025-01-20)
 
 ### Features

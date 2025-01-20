@@ -1,3 +1,13 @@
+## 0.49.0 (2025-01-20)
+
+### Features
+
+- **untyped:** Standard file name changes to avoid collisions ([71acf100](https://github.com/storm-software/storm-ops/commit/71acf100))
+
+### Bug Fixes
+
+- **terraform-tools:** Resolve issue with invalid import path ([7a8ee2cf](https://github.com/storm-software/storm-ops/commit/7a8ee2cf))
+
 ## 0.48.0 (2025-01-20)
 
 ### Features

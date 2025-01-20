@@ -1,3 +1,13 @@
+## 0.2.0 (2025-01-20)
+
+### Features
+
+- **untyped:** Standard file name changes to avoid collisions ([71acf100](https://github.com/storm-software/storm-ops/commit/71acf100))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.135.0
+
 ## 0.1.0 (2025-01-20)
 
 ### Features

@@ -1,3 +1,13 @@
+## 1.135.0 (2025-01-20)
+
+### Features
+
+- **config-tools:** Improve visibility of console log messages ([1238c639](https://github.com/storm-software/storm-ops/commit/1238c639))
+
+### Bug Fixes
+
+- **config-tools:** Resolved issue with incorrect console icons ([d2cbf971](https://github.com/storm-software/storm-ops/commit/d2cbf971))
+
 ## 1.134.0 (2025-01-20)
 
 ### Features
