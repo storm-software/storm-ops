@@ -11,7 +11,8 @@ export const CONSOLE_ICONS: { [k in LogLevelLabel]?: string } = {
   [LogLevelLabel.INFO]: useIcon("ℹ", "i"),
   [LogLevelLabel.SUCCESS]: useIcon("✔", "√"),
   [LogLevelLabel.DEBUG]: useIcon("🛠", "D"),
-  [LogLevelLabel.TRACE]: useIcon("✉", "→")
+  [LogLevelLabel.TRACE]: useIcon("🛠", "T"),
+  [LogLevelLabel.ALL]: useIcon("✉", "→")
 };
 
 // start: s("◐", "o"),
