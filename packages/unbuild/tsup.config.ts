@@ -8,13 +8,14 @@ export default defineConfig([
     outDir: "dist/src",
     format: ["cjs", "esm"],
     platform: "node",
+    bundle: true,
     splitting: true,
     clean: true,
     dts: true,
     sourcemap: false,
     shims: true,
     tsconfig: "./tsconfig.json",
-    noExternal: ["rollup-plugin-typescript2"]
+    noExternal: ["unbuild", "rollup-plugin-typescript2"]
   },
   {
     name: "unbuild-bin",
@@ -23,12 +24,13 @@ export default defineConfig([
     outDir: "dist/bin",
     format: ["cjs", "esm"],
     platform: "node",
+    bundle: true,
     splitting: false,
     clean: true,
     dts: false,
     sourcemap: false,
     shims: true,
     tsconfig: "./tsconfig.json",
-    noExternal: ["rollup-plugin-typescript2"]
+    noExternal: ["unbuild", "rollup-plugin-typescript2"]
   }
 ]);

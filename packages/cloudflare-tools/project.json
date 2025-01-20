@@ -12,8 +12,10 @@
         "{projectRoot}/src/**/*.untyped.ts"
       ],
       "outputs": [
-        "{projectRoot}/src/**/*.d.ts",
-        "{projectRoot}/src/**/*.md",
+        "{projectRoot}/src/**/schema.d.ts",
+        "{projectRoot}/src/**/*.schema.d.ts",
+        "{projectRoot}/src/**/schema.md",
+        "{projectRoot}/src/**/*.schema.md",
         "{projectRoot}/src/**/schema.json",
         "{projectRoot}/src/**/*.schema.json"
       ],

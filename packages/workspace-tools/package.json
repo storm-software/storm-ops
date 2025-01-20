@@ -196,13 +196,13 @@
       "optional": true
     },
     "@storm-software/esbuild": {
-      "optional": false
+      "optional": true
     },
     "@storm-software/tsdown": {
-      "optional": false
+      "optional": true
     },
     "@storm-software/unbuild": {
-      "optional": false
+      "optional": true
     },
     "nx": {
       "optional": false
@@ -239,7 +239,7 @@
     "@nx/esbuild": "catalog:",
     "@storm-software/esbuild": "workspace:*",
     "@storm-software/tsdown": "workspace:*",
-    "@storm-software/unbuild": "0.22.0",
+    "@storm-software/unbuild": "workspace:*",
     "@types/micromatch": "4.0.9",
     "@types/node": "catalog:",
     "@types/semver": "7.5.8",

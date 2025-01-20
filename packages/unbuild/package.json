@@ -170,12 +170,12 @@
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
     "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "@swc/core": "catalog:",
     "nx": "catalog:",
     "rollup": "catalog:",
-    "typescript": "catalog:",
-    "unbuild": "catalog:"
+    "typescript": "catalog:"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
@@ -187,6 +187,9 @@
     "@storm-software/build-tools": {
       "optional": false
     },
+    "@storm-software/config": {
+      "optional": false
+    },
     "@storm-software/config-tools": {
       "optional": false
     },
@@ -194,15 +197,12 @@
       "optional": true
     },
     "nx": {
-      "optional": false
+      "optional": true
     },
     "rollup": {
       "optional": false
     },
     "typescript": {
-      "optional": false
-    },
-    "unbuild": {
       "optional": false
     }
   },
@@ -212,24 +212,24 @@
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-replace": "^6.0.2",
-    "@rollup/pluginutils": "^5.1.4",
-    "commander": "catalog:",
     "defu": "catalog:",
     "rollup": "catalog:",
-    "rollup-plugin-typescript2": "0.36.0"
+    "rollup-plugin-typescript2": "0.36.0",
+    "unbuild": "catalog:"
   },
   "devDependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/build-tools": "0.128.0",
+    "@rollup/pluginutils": "^5.1.4",
+    "@storm-software/build-tools": "workspace:*",
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "@swc/core": "catalog:",
     "@types/node": "catalog:",
+    "commander": "catalog:",
     "nx": "catalog:",
     "tsup": "catalog:",
-    "typescript": "catalog:",
-    "unbuild": "catalog:"
+    "typescript": "catalog:"
   },
   "publishConfig": {
     "access": "public"
