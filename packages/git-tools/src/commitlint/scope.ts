@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json.js";
+import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
 import {
-  createProjectGraphAsync,
+  readCachedProjectGraph,
   readProjectsConfigurationFromProjectGraph
-} from "nx/src/project-graph/project-graph.js";
+} from "nx/src/project-graph/project-graph";
 import { RuleConfigCondition, RuleConfigSeverity } from "../types";
 
 export async function getNxScopes(
@@ -19,9 +19,12 @@ export async function getNxScopes(
     process.cwd();
   process.env.NX_WORKSPACE_ROOT_PATH ??= workspaceRoot;
 
-  const projectGraph = await createProjectGraphAsync({
-    exitOnError: true
-  });
+  // const projectGraph = await createProjectGraphAsync({
+  //   exitOnError: false,
+  //   resetDaemonClient: true
+  // });
+  const projectGraph = readCachedProjectGraph();
+
   const projectConfigs =
     readProjectsConfigurationFromProjectGraph(projectGraph);
 

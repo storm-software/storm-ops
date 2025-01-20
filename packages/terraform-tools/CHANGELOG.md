@@ -1,3 +1,14 @@
+## 0.48.0 (2025-01-20)
+
+### Features
+
+- **workspace-tools:** Added additional entry points to the package ([0322ac48](https://github.com/storm-software/storm-ops/commit/0322ac48))
+
+### 🧱 Updated Dependencies
+
+- Updated workspace-tools to 1.230.0
+- Updated workspace-tools to 1.230.0
+
 ## 0.47.1 (2025-01-20)
 
 ### Bug Fixes

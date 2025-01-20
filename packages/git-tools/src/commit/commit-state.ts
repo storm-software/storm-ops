@@ -1,13 +1,11 @@
 import { hfs } from "@humanfs/node";
-import {
-  createProjectGraphAsync,
-  readProjectsConfigurationFromProjectGraph
-} from "@nx/devkit";
+import { ProjectConfiguration } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
 import { joinPaths, writeInfo } from "@storm-software/config-tools";
 import chalkTemplate from "chalk-template";
 import defu from "defu";
 import { execSync } from "node:child_process";
+import { readCachedProjectConfiguration } from "nx/src/project-graph/project-graph";
 import { getScopeEnum } from "../commitlint/scope";
 import type {
   CommitConfig,
@@ -158,13 +156,6 @@ export const createState = async (
       process.cwd();
     process.env.NX_WORKSPACE_ROOT_PATH ??= workspaceRoot;
 
-    const projectGraph = await createProjectGraphAsync({
-      exitOnError: true
-    });
-
-    const projectConfigs =
-      readProjectsConfigurationFromProjectGraph(projectGraph);
-
     const scopes = await getScopeEnum({});
     for (const scope of scopes) {
       if (scope === "monorepo") {
@@ -175,7 +166,13 @@ export const createState = async (
           projectRoot: "/"
         } as CommitScopeProps;
       } else {
-        const project = projectConfigs.projects[scope];
+        let project!: ProjectConfiguration;
+        try {
+          project = readCachedProjectConfiguration(scope);
+        } catch (_) {
+          // Do nothing
+        }
+
         if (project) {
           let description = `${project.name} - ${project.root}`;
 
