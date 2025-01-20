@@ -141,7 +141,7 @@
     }
   },
   "dependencies": {
-    "@storm-software/workspace-tools": "1.230.0",
+    "@storm-software/workspace-tools": "1.230.1",
     "shelljs": "^0.8.5",
     "tslib": "catalog:"
   },

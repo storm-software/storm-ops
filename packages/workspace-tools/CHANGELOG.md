@@ -1,3 +1,9 @@
+## 1.230.1 (2025-01-20)
+
+### Bug Fixes
+
+- **unbuild:** Removed the invalid dependency types from package ([e83d0fcf](https://github.com/storm-software/storm-ops/commit/e83d0fcf))
+
 ## 1.230.0 (2025-01-20)
 
 ### Features
