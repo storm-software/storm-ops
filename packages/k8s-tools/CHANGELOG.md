@@ -1,3 +1,10 @@
+## 0.18.0 (2025-01-20)
+
+### Features
+
+- **workspace-tools:** Added new scripts and configuration to Nx preset ([a912e765](https://github.com/storm-software/storm-ops/commit/a912e765))
+- **workspace-tools:** Update Nx plugin packages to use new build/dist infrastructure ([67cd3df2](https://github.com/storm-software/storm-ops/commit/67cd3df2))
+
 ## 0.17.1 (2025-01-09)
 
 ### Bug Fixes

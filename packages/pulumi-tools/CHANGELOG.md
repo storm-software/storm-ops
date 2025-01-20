@@ -1,3 +1,9 @@
+## 0.6.0 (2025-01-20)
+
+### Features
+
+- **workspace-tools:** Update Nx plugin packages to use new build/dist infrastructure ([67cd3df2](https://github.com/storm-software/storm-ops/commit/67cd3df2))
+
 ## 0.5.1 (2025-01-09)
 
 ### Bug Fixes

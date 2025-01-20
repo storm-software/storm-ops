@@ -1,3 +1,23 @@
+## 0.46.0 (2025-01-20)
+
+### Features
+
+- **workspace-tools:** Update Nx plugin packages to use new build/dist infrastructure ([67cd3df2](https://github.com/storm-software/storm-ops/commit/67cd3df2))
+- **untyped:** Initial check-in for the `untyped` package ([c02dad71](https://github.com/storm-software/storm-ops/commit/c02dad71))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issue with invalid `package.json` exports ([76c63c08](https://github.com/storm-software/storm-ops/commit/76c63c08))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([5c8e5c96](https://github.com/storm-software/storm-ops/commit/5c8e5c96))
+
+### 🧱 Updated Dependencies
+
+- Updated workspace-tools to 1.228.0
+- Updated workspace-tools to 1.228.0
+
 ## 0.45.4 (2025-01-17)
 
 ### Bug Fixes

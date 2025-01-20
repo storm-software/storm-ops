@@ -1,3 +1,9 @@
+## 1.81.9 (2025-01-20)
+
+### Bug Fixes
+
+- **create-storm-workspace:** Resolved issue with deprecated type depencency ([40a63618](https://github.com/storm-software/storm-ops/commit/40a63618))
+
 ## 1.81.8 (2025-01-13)
 
 ### Continuous Integration
