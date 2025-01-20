@@ -1,6 +1,7 @@
-import { hfs } from "@humanfs/node";
 import { NxJsonConfiguration } from "@nx/devkit";
 import { joinPaths, loadStormConfig } from "@storm-software/config-tools";
+import { existsSync } from "node:fs";
+import { readFile } from "node:fs/promises";
 
 /**
  * Read the `nx.json` configuration file in the workspace root.
@@ -18,9 +19,10 @@ export const readNxConfig = async (
   }
 
   const nxJsonPath = joinPaths(rootDir, "nx.json");
-  if (!(await hfs.isFile(nxJsonPath))) {
+  if (!existsSync(nxJsonPath)) {
     throw new Error("Cannot find project.json configuration");
   }
 
-  return hfs.json(nxJsonPath);
+  const configContent = await readFile(nxJsonPath, "utf8");
+  return JSON.parse(configContent);
 };

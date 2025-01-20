@@ -181,7 +181,6 @@
     }
   },
   "dependencies": {
-    "@humanfs/node": "^0.16.6",
     "glob": "catalog:",
     "resolve": "1.22.8",
     "resolve-from": "5.0.0",

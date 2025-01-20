@@ -178,6 +178,9 @@
     "@microsoft/api-extractor": "catalog:",
     "@nx/devkit": "catalog:",
     "@samchon/openapi": "^2.3.0",
+    "@storm-software/esbuild": "workspace:*",
+    "@storm-software/tsdown": "workspace:*",
+    "@storm-software/unbuild": "workspace:*",
     "nx": "catalog:",
     "typescript": "catalog:",
     "typia": "catalog:"
@@ -191,6 +194,15 @@
     },
     "@samchon/openapi": {
       "optional": true
+    },
+    "@storm-software/esbuild": {
+      "optional": false
+    },
+    "@storm-software/tsdown": {
+      "optional": false
+    },
+    "@storm-software/unbuild": {
+      "optional": false
     },
     "nx": {
       "optional": false
@@ -225,6 +237,9 @@
   "devDependencies": {
     "@microsoft/api-extractor": "catalog:",
     "@nx/esbuild": "catalog:",
+    "@storm-software/esbuild": "workspace:*",
+    "@storm-software/tsdown": "workspace:*",
+    "@storm-software/unbuild": "workspace:*",
     "@types/micromatch": "4.0.9",
     "@types/node": "catalog:",
     "@types/semver": "7.5.8",

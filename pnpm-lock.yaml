@@ -317,9 +317,6 @@ importers:
 
   packages/build-tools:
     dependencies:
-      '@humanfs/node':
-        specifier: ^0.16.6
-        version: 0.16.6
       glob:
         specifier: 'catalog:'
         version: 10.4.5
@@ -1384,6 +1381,15 @@ importers:
       '@nx/esbuild':
         specifier: 'catalog:'
         version: 20.3.2(@babel/traverse@7.26.5)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.17)(typescript@5.7.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.10.7)(esbuild@0.24.2)(nx@20.3.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.17)(typescript@5.7.3))(@swc/core@1.7.26(@swc/helpers@0.5.13)))(typescript@5.7.3)(verdaccio@5.31.1(encoding@0.1.13)(typanion@3.14.0))
+      '@storm-software/esbuild':
+        specifier: workspace:*
+        version: link:../esbuild
+      '@storm-software/tsdown':
+        specifier: workspace:*
+        version: link:../tsdown
+      '@storm-software/unbuild':
+        specifier: workspace:*
+        version: link:../unbuild
       '@types/micromatch':
         specifier: 4.0.9
         version: 4.0.9

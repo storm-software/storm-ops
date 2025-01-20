@@ -8,7 +8,7 @@
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "options": {
-        "command": "tsup --config=tsup.config.ts",
+        "command": "tsup-node --config=tsup.config.ts",
         "cwd": "{projectRoot}"
       }
     },
@@ -18,8 +18,8 @@
       "options": {
         "commands": [
           "pnpm copyfiles LICENSE dist/packages/build-tools",
-          "pnpm copyfiles --up=2 ./packages/build-tools/README.md ./packages/build-tools/package.json dist/packages/build-tools",
-          "pnpm copyfiles --up=3 ./packages/build-tools/dist/* dist/packages/build-tools/dist"
+          "pnpm copyfiles --up=2 ./packages/build-tools/*.md ./packages/build-tools/package.json dist/packages/build-tools",
+          "pnpm copyfiles --up=3 \"./packages/build-tools/dist/**/*\" dist/packages/build-tools/dist"
         ]
       }
     },

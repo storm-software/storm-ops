@@ -1,7 +1,6 @@
-import { hfs } from "@humanfs/node";
 import {
-  createProjectGraphAsync,
   ExecutorContext,
+  readCachedProjectGraph,
   readProjectsConfigurationFromProjectGraph
 } from "@nx/devkit";
 import { copyAssets as copyAssetsBase } from "@nx/js";
@@ -9,6 +8,7 @@ import { StormConfig } from "@storm-software/config";
 import { isVerbose, writeDebug } from "@storm-software/config-tools/logger";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { glob } from "glob";
+import { readFile, writeFile } from "node:fs/promises";
 import { AssetGlob } from "../types";
 import { readNxConfig } from "./read-nx-config";
 
@@ -58,9 +58,7 @@ export const copyAssets = async (
   }
 
   const nxJson = readNxConfig(config.workspaceRoot);
-  const projectGraph = await createProjectGraphAsync({
-    exitOnError: true
-  });
+  const projectGraph = readCachedProjectGraph();
 
   const projectsConfigurations =
     readProjectsConfigurationFromProjectGraph(projectGraph);
@@ -71,7 +69,7 @@ export const copyAssets = async (
   }
 
   const buildTarget =
-    projectsConfigurations.projects[projectName]?.targets?.build;
+    projectsConfigurations.projects[projectName].targets?.build;
   if (!buildTarget) {
     throw new Error(
       `The Build process failed because the project does not have a valid build target in the project.json file. Check if the file exists in the root of the project at ${joinPaths(
@@ -121,7 +119,7 @@ export const copyAssets = async (
 
     await Promise.allSettled(
       files.map(async file =>
-        hfs.write(
+        writeFile(
           file,
           `${
             banner && typeof banner === "string"
@@ -129,7 +127,7 @@ export const copyAssets = async (
                 ? banner
                 : `// ${banner}`
               : ""
-          }\n\n${await hfs.text(file)}\n\n${
+          }\n\n${await readFile(file, "utf8")}\n\n${
             footer && typeof footer === "string"
               ? footer.startsWith("//")
                 ? footer
