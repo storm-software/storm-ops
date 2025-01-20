@@ -1,4 +1,4 @@
-import { BaseExecutorSchema } from "@storm-software/workspace-tools/base/base-executor.d";
+import { BaseExecutorSchema } from "@storm-software/workspace-tools/base/base-executor.schema.d";
 
 export interface ServeExecutorSchema extends BaseExecutorSchema {
   name?: string;
