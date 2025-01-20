@@ -1,3 +1,13 @@
+## 1.137.1 (2025-01-20)
+
+### Bug Fixes
+
+- **config-tools:** Ensure all `nx` and `swc` dependencies are marked external ([257900fd](https://github.com/storm-software/storm-ops/commit/257900fd))
+
+### Miscellaneous
+
+- **config-tools:** Bundle dependencies in distributable ([df027cfe](https://github.com/storm-software/storm-ops/commit/df027cfe))
+
 ## 1.137.0 (2025-01-20)
 
 ### Features

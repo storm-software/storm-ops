@@ -1,3 +1,14 @@
+## 0.50.1 (2025-01-20)
+
+### Miscellaneous
+
+- **config-tools:** Bundle dependencies in distributable ([df027cfe](https://github.com/storm-software/storm-ops/commit/df027cfe))
+
+### 🧱 Updated Dependencies
+
+- Updated workspace-tools to 1.234.1
+- Updated workspace-tools to 1.234.1
+
 ## 0.50.0 (2025-01-20)
 
 ### Features

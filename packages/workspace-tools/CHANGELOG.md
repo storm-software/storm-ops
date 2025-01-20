@@ -1,3 +1,15 @@
+## 1.234.1 (2025-01-20)
+
+### Miscellaneous
+
+- **config-tools:** Bundle dependencies in distributable ([df027cfe](https://github.com/storm-software/storm-ops/commit/df027cfe))
+
+### 🧱 Updated Dependencies
+
+- Updated prettier to 0.27.11
+- Updated unbuild to 0.24.1
+- Updated unbuild to 0.24.1
+
 ## 1.234.0 (2025-01-20)
 
 ### Features
