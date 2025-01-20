@@ -1,3 +1,9 @@
+## 1.228.1 (2025-01-20)
+
+### Bug Fixes
+
+- **workspace-tools:** Update order of distribution copies ([dbb2c0c8](https://github.com/storm-software/storm-ops/commit/dbb2c0c8))
+
 ## 1.228.0 (2025-01-20)
 
 ### Features
