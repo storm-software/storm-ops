@@ -1,3 +1,16 @@
+## 1.233.1 (2025-01-20)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve formatting issue with missing `parser` config ([da80cf3d](https://github.com/storm-software/storm-ops/commit/da80cf3d))
+
+### 🧱 Updated Dependencies
+
+- Updated esbuild to 0.19.2
+- Updated unbuild to 0.23.1
+- Updated unbuild to 0.23.1
+- Updated tsdown to 0.20.2
+
 ## 1.233.0 (2025-01-20)
 
 ### Features
