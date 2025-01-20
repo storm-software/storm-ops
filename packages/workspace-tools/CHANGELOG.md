@@ -1,3 +1,15 @@
+## 1.233.2 (2025-01-20)
+
+### Bug Fixes
+
+- **workspace-tools:** Add `jiti` to support resolution of `@storm-software/unbuild` package ([0abfa98b](https://github.com/storm-software/storm-ops/commit/0abfa98b))
+
+### 🧱 Updated Dependencies
+
+- Updated prettier to 0.27.10
+- Updated unbuild to 0.23.2
+- Updated unbuild to 0.23.2
+
 ## 1.233.1 (2025-01-20)
 
 ### Bug Fixes

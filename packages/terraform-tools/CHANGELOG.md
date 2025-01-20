@@ -1,3 +1,14 @@
+## 0.49.4 (2025-01-20)
+
+### Bug Fixes
+
+- **workspace-tools:** Add `jiti` to support resolution of `@storm-software/unbuild` package ([0abfa98b](https://github.com/storm-software/storm-ops/commit/0abfa98b))
+
+### 🧱 Updated Dependencies
+
+- Updated workspace-tools to 1.233.2
+- Updated workspace-tools to 1.233.2
+
 ## 0.49.3 (2025-01-20)
 
 ### Bug Fixes
