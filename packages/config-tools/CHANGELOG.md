@@ -1,3 +1,9 @@
+## 1.136.1 (2025-01-20)
+
+### Bug Fixes
+
+- **unbuild:** Update package to bundle the `unbuild` package for distribution ([d304c28d](https://github.com/storm-software/storm-ops/commit/d304c28d))
+
 ## 1.136.0 (2025-01-20)
 
 ### Features
