@@ -1,11 +1,9 @@
 import type { ExecutorContext } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
 import { ProjectTokenizerOptions, run } from "@storm-software/config-tools";
-import type {
-  BaseExecutorOptions,
-  BaseExecutorSchema
-} from "@storm-software/workspace-tools";
+import type { BaseExecutorOptions } from "@storm-software/workspace-tools";
 import { withRunExecutor } from "@storm-software/workspace-tools";
+import { BaseExecutorSchema } from "@storm-software/workspace-tools/base/base-executor.schema.d";
 import { join } from "node:path";
 import { which } from "shelljs";
 
