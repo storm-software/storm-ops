@@ -1,3 +1,9 @@
+## 0.128.0 (2025-01-20)
+
+### Features
+
+- **build-tools:** Update helpers to use cached project graph ([ae202661](https://github.com/storm-software/storm-ops/commit/ae202661))
+
 ## 0.127.0 (2025-01-20)
 
 ### Features
