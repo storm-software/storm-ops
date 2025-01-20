@@ -15,7 +15,6 @@
 
  -------------------------------------------------------------------*/
 
-import { hfs } from "@humanfs/node";
 import {
   createProjectGraphAsync,
   readProjectsConfigurationFromProjectGraph,
@@ -41,6 +40,8 @@ import { LogLevelLabel } from "@storm-software/config-tools/types";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import defu from "defu";
 import { LogLevel } from "esbuild";
+import { existsSync } from "node:fs";
+import { readFile } from "node:fs/promises";
 import { relative } from "node:path";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
 import { BuildConfig, BuildContext, build as unbuild } from "unbuild";
@@ -91,11 +92,13 @@ async function resolveOptions(
     projectRoot,
     "project.json"
   );
-  if (!(await hfs.isFile(projectJsonPath))) {
+  if (!existsSync(projectJsonPath)) {
     throw new Error("Cannot find project.json configuration");
   }
 
-  const projectJson = await hfs.json(projectJsonPath);
+  const projectJsonContent = await readFile(projectJsonPath, "utf8");
+  const projectJson = JSON.parse(projectJsonContent);
+
   const projectName = projectJson.name;
 
   const packageJsonPath = joinPaths(
@@ -103,18 +106,19 @@ async function resolveOptions(
     projectRoot,
     "package.json"
   );
-  if (!(await hfs.isFile(packageJsonPath))) {
+  if (!existsSync(packageJsonPath)) {
     throw new Error("Cannot find package.json configuration");
   }
 
-  const packageJson = await hfs.json(packageJsonPath);
+  const packageJsonContent = await readFile(packageJsonPath, "utf8");
+  const packageJson = JSON.parse(packageJsonContent);
 
   let tsconfig = options.tsconfig;
   if (!tsconfig) {
     tsconfig = joinPaths(workspaceRoot.dir, projectRoot, "tsconfig.json");
   }
 
-  if (!(await hfs.isFile(tsconfig))) {
+  if (!existsSync(tsconfig)) {
     throw new Error("Cannot find tsconfig.json configuration");
   }
 
@@ -123,7 +127,7 @@ async function resolveOptions(
     sourceRoot = joinPaths(projectRoot, "src");
   }
 
-  if (!(await hfs.isDirectory(sourceRoot))) {
+  if (!existsSync(sourceRoot)) {
     throw new Error("Cannot find sourceRoot directory");
   }
 
@@ -302,27 +306,29 @@ async function resolveOptions(
 async function generatePackageJson(options: UnbuildResolvedOptions) {
   if (
     options.generatePackageJson !== false &&
-    (await hfs.isFile(joinPaths(options.projectRoot, "package.json")))
+    existsSync(joinPaths(options.projectRoot, "package.json"))
   ) {
     writeDebug("  ✍️   Writing package.json file", options.config);
     const stopwatch = getStopwatch("Write package.json file");
 
     const packageJsonPath = joinPaths(options.projectRoot, "project.json");
-    if (!(await hfs.isFile(packageJsonPath))) {
+    if (!existsSync(packageJsonPath)) {
       throw new Error("Cannot find package.json configuration");
     }
 
-    let packageJson = await hfs.json(
+    let packageJsonContent = await readFile(
       joinPaths(
         options.config.workspaceRoot,
         options.projectRoot,
         "package.json"
-      )
+      ),
+      "utf8"
     );
-    if (!packageJson) {
+    if (!packageJsonContent) {
       throw new Error("Cannot find package.json configuration file");
     }
 
+    let packageJson = JSON.parse(packageJsonContent);
     packageJson = await addPackageDependencies(
       options.config.workspaceRoot,
       options.projectRoot,

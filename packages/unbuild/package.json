@@ -207,7 +207,6 @@
     }
   },
   "dependencies": {
-    "@humanfs/node": "^0.16.6",
     "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-json": "^6.1.0",
@@ -222,9 +221,9 @@
   "devDependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/build-tools": "0.126.0",
-    "@storm-software/config": "1.95.0",
-    "@storm-software/config-tools": "1.135.0",
+    "@storm-software/build-tools": "latest",
+    "@storm-software/config": "latest",
+    "@storm-software/config-tools": "latest",
     "@swc/core": "catalog:",
     "@types/node": "catalog:",
     "nx": "catalog:",

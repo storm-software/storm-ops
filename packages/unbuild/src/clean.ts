@@ -1,9 +1,9 @@
-import { hfs } from "@humanfs/node";
 import { StormConfig } from "@storm-software/config";
 import {
   getStopwatch,
   writeDebug
 } from "@storm-software/config-tools/logger/console";
+import { rm } from "node:fs/promises";
 
 /**
  * Clean the Unbuild output path
@@ -20,7 +20,7 @@ export async function clean(
   writeDebug(` 🧹  Cleaning ${name} output path: ${directory}`, config);
   const stopwatch = getStopwatch(`${name} output clean`);
 
-  await hfs.deleteAll(directory);
+  await rm(directory, { recursive: true, force: true });
 
   stopwatch();
 }

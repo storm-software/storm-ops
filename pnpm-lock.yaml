@@ -1216,9 +1216,6 @@ importers:
 
   packages/unbuild:
     dependencies:
-      '@humanfs/node':
-        specifier: ^0.16.6
-        version: 0.16.6
       '@rollup/plugin-alias':
         specifier: ^5.1.1
         version: 5.1.1(rollup@4.29.1)
@@ -3767,7 +3764,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 

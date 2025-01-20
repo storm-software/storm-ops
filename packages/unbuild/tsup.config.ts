@@ -13,9 +13,8 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     shims: true,
-    tsconfig: "./tsconfig.json"
-    // external: ["nx", "@nx/*", "vue/compiler-sfc", "vue-tsc"],
-    // noExternal: ["unbuild"]
+    tsconfig: "./tsconfig.json",
+    noExternal: ["rollup-plugin-typescript2"]
   },
   {
     name: "unbuild-bin",
@@ -29,8 +28,7 @@ export default defineConfig([
     dts: false,
     sourcemap: false,
     shims: true,
-    tsconfig: "./tsconfig.json"
-    // external: ["nx", "@nx/*", "vue/compiler-sfc", "vue-tsc"],
-    // noExternal: ["unbuild"]
+    tsconfig: "./tsconfig.json",
+    noExternal: ["rollup-plugin-typescript2"]
   }
 ]);
