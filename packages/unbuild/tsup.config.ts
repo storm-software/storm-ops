@@ -15,7 +15,11 @@ export default defineConfig([
     sourcemap: false,
     shims: true,
     tsconfig: "./tsconfig.json",
-    noExternal: ["unbuild", "rollup-plugin-typescript2"]
+    noExternal: [
+      "unbuild",
+      "rollup-plugin-typescript2",
+      "@storm-software/config-tools"
+    ]
   },
   {
     name: "unbuild-bin",
@@ -31,6 +35,10 @@ export default defineConfig([
     sourcemap: false,
     shims: true,
     tsconfig: "./tsconfig.json",
-    noExternal: ["unbuild", "rollup-plugin-typescript2"]
+    noExternal: [
+      "unbuild",
+      "rollup-plugin-typescript2",
+      "@storm-software/config-tools"
+    ]
   }
 ]);

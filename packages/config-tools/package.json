@@ -224,6 +224,7 @@
     "monorepo"
   ],
   "dependencies": {
+    "jiti": "^2.4.2",
     "zod": "catalog:"
   },
   "devDependencies": {
