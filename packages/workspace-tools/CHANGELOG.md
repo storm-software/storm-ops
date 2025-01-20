@@ -1,3 +1,9 @@
+## 1.229.1 (2025-01-20)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve cross-platform build issue in `copyfiles` script ([331a723f](https://github.com/storm-software/storm-ops/commit/331a723f))
+
 ## 1.229.0 (2025-01-20)
 
 ### Features
