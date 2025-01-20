@@ -1,3 +1,19 @@
+## 1.233.0 (2025-01-20)
+
+### Features
+
+- **unbuild:** Added `jiti` to resolve the build module ([8f613f91](https://github.com/storm-software/storm-ops/commit/8f613f91))
+
+### Bug Fixes
+
+- **untyped:** Resovle bundling issue with externals ([ff044ddf](https://github.com/storm-software/storm-ops/commit/ff044ddf))
+
+### 🧱 Updated Dependencies
+
+- Updated prettier to 0.27.9
+- Updated unbuild to 0.23.0
+- Updated unbuild to 0.23.0
+
 ## 1.232.1 (2025-01-20)
 
 ### Bug Fixes

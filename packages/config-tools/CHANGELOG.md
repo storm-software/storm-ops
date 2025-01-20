@@ -1,3 +1,9 @@
+## 1.136.2 (2025-01-20)
+
+### Bug Fixes
+
+- **untyped:** Resovle bundling issue with externals ([ff044ddf](https://github.com/storm-software/storm-ops/commit/ff044ddf))
+
 ## 1.136.1 (2025-01-20)
 
 ### Bug Fixes

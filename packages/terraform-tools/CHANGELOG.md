@@ -1,3 +1,14 @@
+## 0.49.2 (2025-01-20)
+
+### Bug Fixes
+
+- **untyped:** Resovle bundling issue with externals ([ff044ddf](https://github.com/storm-software/storm-ops/commit/ff044ddf))
+
+### 🧱 Updated Dependencies
+
+- Updated workspace-tools to 1.233.0
+- Updated workspace-tools to 1.233.0
+
 ## 0.49.1 (2025-01-20)
 
 ### Bug Fixes

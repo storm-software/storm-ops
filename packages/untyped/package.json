@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/untyped",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "A package containing `untyped` utilities for building Storm Software libraries and applications",
   "repository": {
     "type": "github",
@@ -223,9 +223,9 @@
   },
   "devDependencies": {
     "@nx/devkit": "catalog:",
-    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/build-tools": "0.129.0",
     "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/config-tools": "1.136.2",
     "@types/node": "catalog:",
     "tsup": "catalog:",
     "untyped": "catalog:"

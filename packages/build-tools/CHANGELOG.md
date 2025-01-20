@@ -1,3 +1,9 @@
+## 0.129.0 (2025-01-20)
+
+### Features
+
+- **unbuild:** Added `jiti` to resolve the build module ([8f613f91](https://github.com/storm-software/storm-ops/commit/8f613f91))
+
 ## 0.128.1 (2025-01-20)
 
 ### Bug Fixes

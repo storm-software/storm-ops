@@ -1,3 +1,9 @@
+## 0.27.9 (2025-01-20)
+
+### Bug Fixes
+
+- **untyped:** Resovle bundling issue with externals ([ff044ddf](https://github.com/storm-software/storm-ops/commit/ff044ddf))
+
 ## 0.27.8 (2025-01-13)
 
 ### Continuous Integration

@@ -1,3 +1,18 @@
+## 0.4.0 (2025-01-20)
+
+### Features
+
+- **unbuild:** Added `jiti` to resolve the build module ([8f613f91](https://github.com/storm-software/storm-ops/commit/8f613f91))
+
+### Bug Fixes
+
+- **untyped:** Resovle bundling issue with externals ([ff044ddf](https://github.com/storm-software/storm-ops/commit/ff044ddf))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.136.2
+- Updated build-tools to 0.129.0
+
 ## 0.3.1 (2025-01-20)
 
 ### Bug Fixes
