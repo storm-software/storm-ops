@@ -37,9 +37,7 @@ async function createProgram(config: StormConfig) {
     const entryOption = new Option(
       "-e --entry <path>",
       "The path to the entry file to generate types for. This can be a file or a directory. Globs are supported."
-    )
-      .argParser(val => val.split(","))
-      .default(["**/untyped.ts", "**/*.untyped.ts"]);
+    );
 
     const outputPathOption = new Option(
       "-o --output-path <path>",
@@ -83,9 +81,19 @@ void (async () => {
     exitWithSuccess(config);
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running Storm Untyped executable: \n\n${error.message}`,
+      `A fatal error occurred while running Storm Untyped executable:
+
+Error:
+${error?.message ? error.message : JSON.stringify(error)}${
+        error?.stack
+          ? `
+Stack Trace: ${error.stack}`
+          : ""
+      }
+`,
       config
     );
+
     exitWithError(config);
     process.exit(1);
   } finally {

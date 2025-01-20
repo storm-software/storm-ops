@@ -1,6 +1,7 @@
 import { joinPaths } from "@storm-software/config-tools";
 import { existsSync } from "node:fs";
 import { readFile, writeFile } from "node:fs/promises";
+import { format } from "prettier";
 import readYamlFile from "read-yaml-file";
 
 let pnpmCatalog!: Record<string, string>;
@@ -88,5 +89,22 @@ File contents: ${pnpmWorkspaceYaml ? JSON.stringify(pnpmWorkspaceYaml) : "EMPTY 
     }
   }
 
-  return writeFile(packageJsonPath, JSON.stringify(packageJson));
+  return writeFile(
+    packageJsonPath,
+    await format(JSON.stringify(packageJson), {
+      "proseWrap": "always",
+      "trailingComma": "none",
+      "tabWidth": 2,
+      "semi": true,
+      "singleQuote": false,
+      "quoteProps": "preserve",
+      "insertPragma": false,
+      "bracketSameLine": true,
+      "printWidth": 80,
+      "bracketSpacing": true,
+      "arrowParens": "avoid",
+      "endOfLine": "lf",
+      "plugins": ["prettier-plugin-pkg"]
+    })
+  );
 }

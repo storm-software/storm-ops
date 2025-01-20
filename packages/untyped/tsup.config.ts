@@ -12,7 +12,8 @@ export default defineConfig([
     clean: true,
     dts: true,
     sourcemap: false,
-    tsconfig: "./tsconfig.json"
+    tsconfig: "./tsconfig.json",
+    noExternal: ["glob"]
   },
   {
     name: "untyped-bin",
@@ -25,6 +26,7 @@ export default defineConfig([
     clean: true,
     dts: true,
     sourcemap: false,
-    tsconfig: "./tsconfig.json"
+    tsconfig: "./tsconfig.json",
+    noExternal: ["glob"]
   }
 ]);

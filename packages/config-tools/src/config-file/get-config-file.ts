@@ -34,7 +34,7 @@ export const getConfigFileByName = async (
           ? false
           : joinPaths(
               process.env.STORM_CACHE_DIR || "node_modules/.cache/storm",
-              "config"
+              "jiti"
             )
     },
     ...options
@@ -52,7 +52,7 @@ export const getConfigFileByName = async (
             ? false
             : joinPaths(
                 process.env.STORM_CACHE_DIR || "node_modules/.cache/storm",
-                "config"
+                "jiti"
               )
       },
       configFile: fileName,

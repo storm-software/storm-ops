@@ -179,6 +179,7 @@
     "@nx/devkit": "catalog:",
     "@samchon/openapi": "^2.3.0",
     "@storm-software/esbuild": "workspace:*",
+    "@storm-software/prettier": "workspace:*",
     "@storm-software/tsdown": "workspace:*",
     "@storm-software/unbuild": "workspace:*",
     "nx": "catalog:",
@@ -197,6 +198,9 @@
     },
     "@storm-software/esbuild": {
       "optional": true
+    },
+    "@storm-software/prettier": {
+      "optional": false
     },
     "@storm-software/tsdown": {
       "optional": true
@@ -227,7 +231,6 @@
     "micromatch": "4.0.7",
     "pkg-types": "catalog:",
     "prettier": "catalog:",
-    "prettier-plugin-packagejson": "2.5.0",
     "read-yaml-file": "catalog:",
     "semver": "7.6.2",
     "size-limit": "11.1.4",
@@ -237,9 +240,10 @@
   "devDependencies": {
     "@microsoft/api-extractor": "catalog:",
     "@nx/esbuild": "catalog:",
-    "@storm-software/esbuild": "0.19.1",
-    "@storm-software/tsdown": "0.20.1",
-    "@storm-software/unbuild": "0.22.1",
+    "@storm-software/esbuild": "workspace:*",
+    "@storm-software/prettier": "workspace:*",
+    "@storm-software/tsdown": "workspace:*",
+    "@storm-software/unbuild": "workspace:*",
     "@types/micromatch": "4.0.9",
     "@types/node": "catalog:",
     "@types/semver": "7.5.8",

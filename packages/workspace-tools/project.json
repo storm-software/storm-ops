@@ -22,7 +22,7 @@
       ],
       "options": {
         "commands": [
-          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/workspace-tools/**/untyped.ts,packages/workspace-tools/**/*.untyped.ts\" "
+          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/workspace-tools/**/{untyped.ts,*.untyped.ts}\" "
         ]
       }
     },

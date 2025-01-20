@@ -27,7 +27,7 @@
       ],
       "options": {
         "commands": [
-          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/k8s-tools/**/untyped.ts,packages/k8s-tools/**/*.untyped.ts\" "
+          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/k8s-tools/**/{untyped.ts,*.untyped.ts}\" "
         ]
       }
     },

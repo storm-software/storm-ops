@@ -82,8 +82,8 @@ catalogs:
       specifier: ^9.12.0
       version: 9.18.0
     glob:
-      specifier: ^10.4.2
-      version: 10.4.5
+      specifier: ^11.0.1
+      version: 11.0.1
     nx:
       specifier: ^20.3.1
       version: 20.3.2
@@ -319,7 +319,7 @@ importers:
     dependencies:
       glob:
         specifier: 'catalog:'
-        version: 10.4.5
+        version: 11.0.1
       resolve:
         specifier: 1.22.8
         version: 1.22.8
@@ -362,7 +362,7 @@ importers:
         version: 2.0.1
       glob:
         specifier: 'catalog:'
-        version: 10.4.5
+        version: 11.0.1
       jest-resolve:
         specifier: 29.7.0
         version: 29.7.0
@@ -1288,7 +1288,7 @@ importers:
         version: 12.1.0
       glob:
         specifier: 'catalog:'
-        version: 10.4.5
+        version: 11.0.1
       knitwork:
         specifier: ^1.2.0
         version: 1.2.0
@@ -1349,7 +1349,7 @@ importers:
         version: 11.2.0
       glob:
         specifier: 'catalog:'
-        version: 10.4.5
+        version: 11.0.1
       micromatch:
         specifier: 4.0.7
         version: 4.0.7
@@ -1359,9 +1359,6 @@ importers:
       prettier:
         specifier: 'catalog:'
         version: 3.4.2
-      prettier-plugin-packagejson:
-        specifier: 2.5.0
-        version: 2.5.0(prettier@3.4.2)
       read-yaml-file:
         specifier: 'catalog:'
         version: 2.1.0
@@ -1387,6 +1384,9 @@ importers:
       '@storm-software/esbuild':
         specifier: workspace:*
         version: link:../esbuild
+      '@storm-software/prettier':
+        specifier: workspace:*
+        version: link:../prettier
       '@storm-software/tsdown':
         specifier: workspace:*
         version: link:../tsdown
@@ -3773,7 +3773,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -7116,10 +7115,6 @@ packages:
     resolution: {integrity: sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==}
     engines: {node: '>=8'}
 
-  detect-indent@7.0.1:
-    resolution: {integrity: sha512-Mc7QhQ8s+cLrnUfU/Ji94vG/r8M26m8f++vyres4ZoojaRDpZ1eSIh/EpzLNwlWuvzSZ3UbDFspjFvTDXe6e/g==}
-    engines: {node: '>=12.20'}
-
   detect-libc@1.0.3:
     resolution: {integrity: sha512-pGjwhsmsp4kL2RTz08wcOlGN83otlqHeD/Z5T8GXZB+/YcpQ/dgo+lbU8ZsGxV0HIvqqxo9l7mqYwyYMD9bKDg==}
     engines: {node: '>=0.10'}
@@ -7128,10 +7123,6 @@ packages:
   detect-newline@3.1.0:
     resolution: {integrity: sha512-TLz+x/vEXm/Y7P7wn1EJFNLxYpUD4TgMosxY6fAVJUnJMbupHBOncxyWUG9OpTaH9EBD7uFI5LfEgmMOc54DsA==}
     engines: {node: '>=8'}
-
-  detect-newline@4.0.1:
-    resolution: {integrity: sha512-qE3Veg1YXzGHQhlA6jzebZN2qVf6NX+A7m7qlhCGG30dJixrAQhYOsJjsnBjJkCSmuOPpCk30145fr8FV0bzog==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   detect-node@2.1.0:
     resolution: {integrity: sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==}
@@ -8088,9 +8079,6 @@ packages:
 
   git-diff-tree@1.1.0:
     resolution: {integrity: sha512-PdNkH2snpXsKIzho6OWMZKEl+KZG6Zm+1ghQIDi0tEq1sz/S1tDjvNuYrX2ZpomalHAB89OUQim8O6vN+jesNQ==}
-
-  git-hooks-list@3.1.0:
-    resolution: {integrity: sha512-LF8VeHeR7v+wAbXqfgRlTSX/1BJR9Q1vEMR8JAz1cEg6GX07+zyj3sAdDvYjj/xnlIfVuGgj4qBei1K3hKH+PA==}
 
   git-spawned-stream@1.0.1:
     resolution: {integrity: sha512-W2Zo3sCiq5Hqv1/FLsNmGomkXdyimmkHncGzqjBHh7nWx+CbH5dkWGb6CiFdknooL7wfeZJ3gz14KrXl/gotCw==}
@@ -11295,14 +11283,6 @@ packages:
       vue-tsc:
         optional: true
 
-  prettier-plugin-packagejson@2.5.0:
-    resolution: {integrity: sha512-6XkH3rpin5QEQodBSVNg+rBo4r91g/1mCaRwS1YGdQJZ6jwqrg2UchBsIG9tpS1yK1kNBvOt84OILsX8uHzBGg==}
-    peerDependencies:
-      prettier: '>= 1.16.0'
-    peerDependenciesMeta:
-      prettier:
-        optional: true
-
   prettier-plugin-pkg@0.18.1:
     resolution: {integrity: sha512-FuUxvsYZR/8rsLH8s/jbPQmgYvv0yxW8LoIHCy6+Q7p4FBjjdP3DNKx8fMTOsc0SlEB1skB4o1LcahRceIh87A==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -12260,13 +12240,6 @@ packages:
 
   sonic-boom@3.8.1:
     resolution: {integrity: sha512-y4Z8LCDBuum+PBP3lSV7RHrXscqksve/bi0as7mhwVnBW+/wUqKT/2Kb7um8yqcFy0duYbbPxzt89Zy2nOCaxg==}
-
-  sort-object-keys@1.1.3:
-    resolution: {integrity: sha512-855pvK+VkU7PaKYPc+Jjnmt4EzejQHyhhF33q31qG8x7maDzkeFhAAThdCYay11CISO+qAMwjOBP+fPZe0IPyg==}
-
-  sort-package-json@2.10.0:
-    resolution: {integrity: sha512-MYecfvObMwJjjJskhxYfuOADkXp1ZMMnCFC8yhp+9HDsk7HhR336hd7eiBs96lTXfiqmUNI+WQCeCMRBhl251g==}
-    hasBin: true
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -20839,14 +20812,10 @@ snapshots:
 
   detect-indent@6.1.0: {}
 
-  detect-indent@7.0.1: {}
-
   detect-libc@1.0.3:
     optional: true
 
   detect-newline@3.1.0: {}
-
-  detect-newline@4.0.1: {}
 
   detect-node@2.1.0: {}
 
@@ -22164,8 +22133,6 @@ snapshots:
       through2: 2.0.0
     transitivePeerDependencies:
       - supports-color
-
-  git-hooks-list@3.1.0: {}
 
   git-spawned-stream@1.0.1:
     dependencies:
@@ -26498,13 +26465,6 @@ snapshots:
       prettier: 3.4.2
       typescript: 5.7.3
 
-  prettier-plugin-packagejson@2.5.0(prettier@3.4.2):
-    dependencies:
-      sort-package-json: 2.10.0
-      synckit: 0.9.0
-    optionalDependencies:
-      prettier: 3.4.2
-
   prettier-plugin-pkg@0.18.1(prettier@3.4.2):
     dependencies:
       prettier: 3.4.2
@@ -27680,19 +27640,6 @@ snapshots:
   sonic-boom@3.8.1:
     dependencies:
       atomic-sleep: 1.0.0
-
-  sort-object-keys@1.1.3: {}
-
-  sort-package-json@2.10.0:
-    dependencies:
-      detect-indent: 7.0.1
-      detect-newline: 4.0.1
-      get-stdin: 9.0.0
-      git-hooks-list: 3.1.0
-      globby: 13.2.2
-      is-plain-obj: 4.1.0
-      semver: 7.6.2
-      sort-object-keys: 1.1.3
 
   source-map-js@1.2.1: {}
 

@@ -35,11 +35,27 @@
   ],
   "peerDependencies": {
     "prettier": "catalog:",
+    "prettier-plugin-organize-imports": "4.0.0",
+    "prettier-plugin-pkg": "0.18.1",
+    "prettier-plugin-sh": "0.14.0",
+    "prettier-plugin-solidity": "1.3.1",
     "prettier-plugin-tailwindcss": "0.6.5"
   },
   "peerDependenciesMeta": {
     "prettier": {
       "optional": false
+    },
+    "prettier-plugin-organize-imports": {
+      "optional": false
+    },
+    "prettier-plugin-pkg": {
+      "optional": false
+    },
+    "prettier-plugin-sh": {
+      "optional": false
+    },
+    "prettier-plugin-solidity": {
+      "optional": true
     },
     "prettier-plugin-tailwindcss": {
       "optional": true

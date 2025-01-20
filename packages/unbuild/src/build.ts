@@ -246,7 +246,7 @@ async function resolveOptions(
         extensions: [".cjs", ".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"]
       },
       esbuild: {
-        minify: !!options.minify,
+        minify: options.minify !== false,
         splitting: options.splitting !== false,
         treeShaking: options.treeShaking !== false,
         color: true,

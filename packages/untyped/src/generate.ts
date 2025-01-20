@@ -13,12 +13,14 @@ import { generateMarkdownFile } from "./generators/markdown";
 
 export const getGenerateAction =
   (config: StormConfig) =>
-  async (options: {
-    entry: string | string[];
-    outputPath: string;
-    jsonSchema: string;
-  }) => {
-    const files = await glob(options.entry, {
+  async (options: { entry?: string | string[]; outputPath?: string }) => {
+    writeTrace(
+      `Running Storm Untyped with options: ${JSON.stringify(options)}`,
+      config
+    );
+
+    console.log(glob);
+    const files = await glob(options.entry || "**/{untyped.ts,*.untyped.ts}", {
       ignore: [
         "**/{*.stories.tsx,*.stories.ts,*.spec.tsx,*.spec.ts}",
         "**/dist/**",
@@ -31,6 +33,7 @@ export const getGenerateAction =
       withFileTypes: true,
       cwd: config.workspaceRoot
     });
+    console.log(files);
 
     const cache =
       !Boolean(process.env.CI) &&
@@ -59,7 +62,7 @@ export const getGenerateAction =
                 cache &&
                 joinPaths(
                   config.directories.cache || "node_modules/.cache/storm",
-                  "untyped"
+                  "jiti"
                 ),
               moduleCache: cache,
               interopDefault: true
