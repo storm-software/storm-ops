@@ -1,3 +1,16 @@
+## 1.234.0 (2025-01-20)
+
+### Features
+
+- **unbuild:** Update package to bundle config-tools ([a2fc7768](https://github.com/storm-software/storm-ops/commit/a2fc7768))
+
+### 🧱 Updated Dependencies
+
+- Updated esbuild to 0.20.0
+- Updated unbuild to 0.24.0
+- Updated unbuild to 0.24.0
+- Updated tsdown to 0.21.0
+
 ## 1.233.2 (2025-01-20)
 
 ### Bug Fixes

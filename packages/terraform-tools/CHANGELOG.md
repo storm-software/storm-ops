@@ -1,3 +1,14 @@
+## 0.50.0 (2025-01-20)
+
+### Features
+
+- **unbuild:** Update package to bundle config-tools ([a2fc7768](https://github.com/storm-software/storm-ops/commit/a2fc7768))
+
+### 🧱 Updated Dependencies
+
+- Updated workspace-tools to 1.234.0
+- Updated workspace-tools to 1.234.0
+
 ## 0.49.4 (2025-01-20)
 
 ### Bug Fixes
