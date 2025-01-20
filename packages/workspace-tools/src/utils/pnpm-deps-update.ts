@@ -92,19 +92,20 @@ File contents: ${pnpmWorkspaceYaml ? JSON.stringify(pnpmWorkspaceYaml) : "EMPTY 
   return writeFile(
     packageJsonPath,
     await format(JSON.stringify(packageJson), {
-      "proseWrap": "always",
-      "trailingComma": "none",
-      "tabWidth": 2,
-      "semi": true,
-      "singleQuote": false,
-      "quoteProps": "preserve",
-      "insertPragma": false,
-      "bracketSameLine": true,
-      "printWidth": 80,
-      "bracketSpacing": true,
-      "arrowParens": "avoid",
-      "endOfLine": "lf",
-      "plugins": ["prettier-plugin-pkg"]
+      parser: "json",
+      proseWrap: "always",
+      trailingComma: "none",
+      tabWidth: 2,
+      semi: true,
+      singleQuote: false,
+      quoteProps: "as-needed",
+      insertPragma: false,
+      bracketSameLine: true,
+      printWidth: 80,
+      bracketSpacing: true,
+      arrowParens: "avoid",
+      endOfLine: "lf",
+      plugins: ["prettier-plugin-pkg"]
     })
   );
 }
