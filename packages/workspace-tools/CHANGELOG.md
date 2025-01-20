@@ -1,3 +1,16 @@
+## 1.232.1 (2025-01-20)
+
+### Bug Fixes
+
+- **unbuild:** Update package to bundle the `unbuild` package for distribution ([d304c28d](https://github.com/storm-software/storm-ops/commit/d304c28d))
+
+### 🧱 Updated Dependencies
+
+- Updated esbuild to 0.19.1
+- Updated unbuild to 0.22.1
+- Updated unbuild to 0.22.1
+- Updated tsdown to 0.20.1
+
 ## 1.232.0 (2025-01-20)
 
 ### Features

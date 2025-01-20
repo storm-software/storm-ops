@@ -1,3 +1,14 @@
+## 0.49.1 (2025-01-20)
+
+### Bug Fixes
+
+- **unbuild:** Update package to bundle the `unbuild` package for distribution ([d304c28d](https://github.com/storm-software/storm-ops/commit/d304c28d))
+
+### 🧱 Updated Dependencies
+
+- Updated workspace-tools to 1.232.1
+- Updated workspace-tools to 1.232.1
+
 ## 0.49.0 (2025-01-20)
 
 ### Features
