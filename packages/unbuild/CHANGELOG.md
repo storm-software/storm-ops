@@ -1,3 +1,13 @@
+## 0.21.0 (2025-01-20)
+
+### Features
+
+- **unbuild:** Update build process to use cached project graph ([610c94aa](https://github.com/storm-software/storm-ops/commit/610c94aa))
+
+### Bug Fixes
+
+- **unbuild:** Updated last remaining instance of using non-cached project graph ([d2af6b13](https://github.com/storm-software/storm-ops/commit/d2af6b13))
+
 ## 0.20.1 (2025-01-20)
 
 ### Bug Fixes
