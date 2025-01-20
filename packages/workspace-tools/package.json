@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/workspace-tools",
-  "version": "1.233.0",
+  "version": "1.233.1",
   "description": "Tools for managing a Storm workspace, including various Nx generators and executors for common development tasks.",
   "repository": {
     "type": "github",
@@ -240,10 +240,10 @@
   "devDependencies": {
     "@microsoft/api-extractor": "catalog:",
     "@nx/esbuild": "catalog:",
-    "@storm-software/esbuild": "workspace:*",
+    "@storm-software/esbuild": "0.19.2",
     "@storm-software/prettier": "0.27.9",
-    "@storm-software/tsdown": "workspace:*",
-    "@storm-software/unbuild": "0.23.0",
+    "@storm-software/tsdown": "0.20.2",
+    "@storm-software/unbuild": "0.23.1",
     "@types/micromatch": "4.0.9",
     "@types/node": "catalog:",
     "@types/semver": "7.5.8",

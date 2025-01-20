@@ -1,3 +1,14 @@
+## 0.49.3 (2025-01-20)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve formatting issue with missing `parser` config ([da80cf3d](https://github.com/storm-software/storm-ops/commit/da80cf3d))
+
+### 🧱 Updated Dependencies
+
+- Updated workspace-tools to 1.233.1
+- Updated workspace-tools to 1.233.1
+
 ## 0.49.2 (2025-01-20)
 
 ### Bug Fixes
