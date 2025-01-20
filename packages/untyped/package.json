@@ -223,9 +223,9 @@
   },
   "devDependencies": {
     "@nx/devkit": "catalog:",
-    "@storm-software/build-tools": "0.129.2",
-    "@storm-software/config": "1.96.2",
-    "@storm-software/config-tools": "1.136.4",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "@types/node": "catalog:",
     "tsup": "catalog:",
     "untyped": "catalog:"

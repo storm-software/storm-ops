@@ -31,7 +31,7 @@ async function createProgram(config: StormConfig) {
 
     program
       .description("⚡ Run the Storm untyped codegen utility")
-      .showHelpAfterError()
+      .showHelpAfterError(true)
       .showSuggestionAfterError();
 
     const entryOption = new Option(
