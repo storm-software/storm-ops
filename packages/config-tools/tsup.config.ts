@@ -12,7 +12,6 @@ export default defineConfig({
   dts: true,
   sourcemap: false,
   tsconfig: "./tsconfig.json",
-  shims: true,
-  noExternal: ["chalk", "defu", "c12"],
-  skipNodeModulesBundle: true
+  shims: true
+  // noExternal: ["chalk", "defu", "c12"]
 });
