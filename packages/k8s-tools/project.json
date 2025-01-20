@@ -44,11 +44,11 @@
         "commands": [
           "pnpm copyfiles LICENSE dist/packages/k8s-tools",
           "pnpm copyfiles --up=2 ./packages/k8s-tools/*.md ./packages/k8s-tools/executors.json ./packages/k8s-tools/generators.json ./packages/k8s-tools/package.json dist/packages/k8s-tools",
-          "pnpm copyfiles --up=3 ./packages/k8s-tools/dist/**/* dist/packages/k8s-tools/dist",
-          "pnpm copyfiles --up=3 ./packages/k8s-tools/src/**/*schema.d.ts dist/packages/k8s-tools/dist/src",
-          "pnpm copyfiles --up=3 ./packages/k8s-tools/src/**/*schema.json dist/packages/k8s-tools/dist/src",
-          "pnpm copyfiles --up=3 ./packages/k8s-tools/src/**/*.md dist/packages/k8s-tools/docs/api",
-          "pnpm copyfiles --up=4 ./packages/k8s-tools/src/generators/*/files/**/* dist/packages/k8s-tools/dist/src/generators"
+          "pnpm copyfiles --up=3 \"./packages/k8s-tools/dist/**/*\" dist/packages/k8s-tools/dist",
+          "pnpm copyfiles --up=3 \"./packages/k8s-tools/src/**/*schema.d.ts\" dist/packages/k8s-tools/dist/src",
+          "pnpm copyfiles --up=3 \"./packages/k8s-tools/src/**/*schema.json\" dist/packages/k8s-tools/dist/src",
+          "pnpm copyfiles --up=3 \"./packages/k8s-tools/src/**/*.md\" dist/packages/k8s-tools/docs/api",
+          "pnpm copyfiles --up=4 \"./packages/k8s-tools/src/generators/*/files/**/*\" dist/packages/k8s-tools/dist/src/generators"
         ]
       }
     },

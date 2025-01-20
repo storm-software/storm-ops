@@ -38,11 +38,11 @@
         "commands": [
           "pnpm copyfiles LICENSE dist/packages/cloudflare-tools",
           "pnpm copyfiles --up=2 ./packages/cloudflare-tools/*.md ./packages/cloudflare-tools/executors.json ./packages/cloudflare-tools/generators.json ./packages/cloudflare-tools/package.json dist/packages/cloudflare-tools",
-          "pnpm copyfiles --up=3 ./packages/cloudflare-tools/dist/**/* dist/packages/cloudflare-tools/dist",
-          "pnpm copyfiles --up=3 ./packages/cloudflare-tools/src/**/*schema.d.ts dist/packages/cloudflare-tools/dist/src",
-          "pnpm copyfiles --up=3 ./packages/cloudflare-tools/src/**/*schema.json dist/packages/cloudflare-tools/dist/src",
-          "pnpm copyfiles --up=3 ./packages/cloudflare-tools/src/**/*.md dist/packages/cloudflare-tools/docs/api",
-          "pnpm copyfiles --up=4 ./packages/cloudflare-tools/src/generators/*/files/**/* dist/packages/cloudflare-tools/dist/src/generators"
+          "pnpm copyfiles --up=3 \"./packages/cloudflare-tools/dist/**/*\" dist/packages/cloudflare-tools/dist",
+          "pnpm copyfiles --up=3 \"./packages/cloudflare-tools/src/**/*schema.d.ts\" dist/packages/cloudflare-tools/dist/src",
+          "pnpm copyfiles --up=3 \"./packages/cloudflare-tools/src/**/*schema.json\" dist/packages/cloudflare-tools/dist/src",
+          "pnpm copyfiles --up=3 \"./packages/cloudflare-tools/src/**/*.md\" dist/packages/cloudflare-tools/docs/api",
+          "pnpm copyfiles --up=4 \"./packages/cloudflare-tools/src/generators/*/files/**/*\" dist/packages/cloudflare-tools/dist/src/generators"
         ]
       }
     },

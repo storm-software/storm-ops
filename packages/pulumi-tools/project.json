@@ -39,11 +39,11 @@
         "commands": [
           "pnpm copyfiles LICENSE dist/packages/pulumi-tools",
           "pnpm copyfiles --up=2 ./packages/pulumi-tools/*.md ./packages/pulumi-tools/executors.json ./packages/pulumi-tools/generators.json ./packages/pulumi-tools/package.json dist/packages/pulumi-tools",
-          "pnpm copyfiles --up=3 ./packages/pulumi-tools/dist/**/* dist/packages/pulumi-tools/dist",
-          "pnpm copyfiles --up=3 ./packages/pulumi-tools/src/**/*schema.d.ts dist/packages/pulumi-tools/dist/src",
-          "pnpm copyfiles --up=3 ./packages/pulumi-tools/src/**/*schema.json dist/packages/pulumi-tools/dist/src",
-          "pnpm copyfiles --up=3 ./packages/pulumi-tools/src/**/*.md dist/packages/pulumi-tools/docs/api",
-          "pnpm copyfiles --up=4 ./packages/pulumi-tools/src/generators/*/files/**/* dist/packages/pulumi-tools/dist/src/generators"
+          "pnpm copyfiles --up=3 \"./packages/pulumi-tools/dist/**/*\" dist/packages/pulumi-tools/dist",
+          "pnpm copyfiles --up=3 \"./packages/pulumi-tools/src/**/*schema.d.ts\" dist/packages/pulumi-tools/dist/src",
+          "pnpm copyfiles --up=3 \"./packages/pulumi-tools/src/**/*schema.json\" dist/packages/pulumi-tools/dist/src",
+          "pnpm copyfiles --up=3 \"./packages/pulumi-tools/src/**/*.md\" dist/packages/pulumi-tools/docs/api",
+          "pnpm copyfiles --up=4 \"./packages/pulumi-tools/src/generators/*/files/**/*\" dist/packages/pulumi-tools/dist/src/generators"
         ]
       }
     },
