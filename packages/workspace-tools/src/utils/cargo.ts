@@ -6,7 +6,7 @@ import {
   type StdioOptions
 } from "node:child_process";
 import { relative } from "node:path";
-import { CargoBaseExecutorSchema } from "../base/cargo-base-executor.d";
+import { CargoBaseExecutorSchema } from "../base/cargo-base-executor.schema.d";
 import type { CargoMetadata, Dependency, Package } from "./toml";
 
 interface CargoRun {

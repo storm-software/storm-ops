@@ -8,8 +8,8 @@
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "inputs": [
-        "{projectRoot}/src/**/schema.ts",
-        "{projectRoot}/src/**/*.schema.ts"
+        "{projectRoot}/src/**/untyped.ts",
+        "{projectRoot}/src/**/*.untyped.ts"
       ],
       "outputs": [
         "{projectRoot}/src/**/*.d.ts",
@@ -19,7 +19,7 @@
       ],
       "options": {
         "commands": [
-          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/cloudflare-tools/**/schema.ts,packages/cloudflare-tools/**/*.schema.ts\" "
+          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/cloudflare-tools/**/untyped.ts,packages/cloudflare-tools/**/*.untyped.ts\" "
         ]
       }
     },
@@ -39,8 +39,8 @@
           "pnpm copyfiles LICENSE dist/packages/cloudflare-tools",
           "pnpm copyfiles --up=2 ./packages/cloudflare-tools/*.md ./packages/cloudflare-tools/executors.json ./packages/cloudflare-tools/generators.json ./packages/cloudflare-tools/package.json dist/packages/cloudflare-tools",
           "pnpm copyfiles --up=3 ./packages/cloudflare-tools/dist/**/* dist/packages/cloudflare-tools/dist",
-          "pnpm copyfiles --up=3 ./packages/cloudflare-tools/src/**/*.json dist/packages/cloudflare-tools/dist/src",
-          "pnpm copyfiles --up=3 ./packages/cloudflare-tools/src/**/*.d.ts dist/packages/cloudflare-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/cloudflare-tools/src/**/*schema.d.ts dist/packages/cloudflare-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/cloudflare-tools/src/**/*schema.json dist/packages/cloudflare-tools/dist/src",
           "pnpm copyfiles --up=3 ./packages/cloudflare-tools/src/**/*.md dist/packages/cloudflare-tools/docs/api",
           "pnpm copyfiles --up=4 ./packages/cloudflare-tools/src/generators/*/files/**/* dist/packages/cloudflare-tools/dist/src/generators"
         ]

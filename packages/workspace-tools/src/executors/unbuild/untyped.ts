@@ -1,5 +1,5 @@
 import { defineUntypedSchema } from "untyped";
-import typescriptBuildExecutorSchema from "../../base/typescript-build-executor.schema";
+import typescriptBuildExecutorSchema from "../../base/typescript-build-executor.untyped";
 
 export default defineUntypedSchema({
   ...typescriptBuildExecutorSchema,

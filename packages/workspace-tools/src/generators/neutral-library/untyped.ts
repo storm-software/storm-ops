@@ -1,5 +1,5 @@
 import { defineUntypedSchema } from "untyped";
-import typescriptLibraryGeneratorSchema from "../../base/typescript-library-generator.schema";
+import typescriptLibraryGeneratorSchema from "../../base/typescript-library-generator.untyped";
 
 export default defineUntypedSchema({
   ...typescriptLibraryGeneratorSchema,

@@ -31,7 +31,7 @@ import type { PackageJson } from "nx/src/utils/package-json";
 import { UnbuildExecutorSchema } from "../executors/unbuild/schema.d";
 import { addProjectTag, ProjectTagConstants } from "../utils/project-tags";
 import { nxVersion } from "../utils/versions";
-import { TypeScriptLibraryGeneratorSchema } from "./typescript-library-generator.d";
+import { TypeScriptLibraryGeneratorSchema } from "./typescript-library-generator.schema.d";
 
 export type TypeScriptLibraryGeneratorNormalizedSchema =
   TypeScriptLibraryGeneratorSchema & NormalizedLibraryGeneratorOptions;

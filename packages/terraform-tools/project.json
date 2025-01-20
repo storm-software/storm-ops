@@ -9,8 +9,8 @@
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "inputs": [
-        "{projectRoot}/src/**/schema.ts",
-        "{projectRoot}/src/**/*.schema.ts"
+        "{projectRoot}/src/**/untyped.ts",
+        "{projectRoot}/src/**/*.untyped.ts"
       ],
       "outputs": [
         "{projectRoot}/src/**/*.d.ts",
@@ -20,7 +20,7 @@
       ],
       "options": {
         "commands": [
-          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/terraform-tools/**/schema.ts,packages/terraform-tools/**/*.schema.ts\" "
+          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/terraform-tools/**/untyped.ts,packages/terraform-tools/**/*.untyped.ts\" "
         ]
       }
     },
@@ -40,8 +40,8 @@
           "pnpm copyfiles LICENSE dist/packages/terraform-tools",
           "pnpm copyfiles --up=2 ./packages/terraform-tools/*.md ./packages/terraform-tools/executors.json ./packages/terraform-tools/generators.json ./packages/terraform-tools/package.json dist/packages/terraform-tools",
           "pnpm copyfiles --up=3 ./packages/terraform-tools/dist/**/* dist/packages/terraform-tools/dist",
-          "pnpm copyfiles --up=3 ./packages/terraform-tools/src/**/*.json dist/packages/terraform-tools/dist/src",
-          "pnpm copyfiles --up=3 ./packages/terraform-tools/src/**/*.d.ts dist/packages/terraform-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/terraform-tools/src/**/*schema.d.ts dist/packages/terraform-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/terraform-tools/src/**/*schema.json dist/packages/terraform-tools/dist/src",
           "pnpm copyfiles --up=3 ./packages/terraform-tools/src/**/*.md dist/packages/terraform-tools/docs/api",
           "pnpm copyfiles --up=4 ./packages/terraform-tools/src/generators/*/files/**/* dist/packages/terraform-tools/dist/src/generators"
         ]

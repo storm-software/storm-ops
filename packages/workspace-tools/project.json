@@ -9,8 +9,8 @@
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "inputs": [
-        "{projectRoot}/src/**/schema.ts",
-        "{projectRoot}/src/**/*.schema.ts"
+        "{projectRoot}/src/**/untyped.ts",
+        "{projectRoot}/src/**/*.untyped.ts"
       ],
       "outputs": [
         "{projectRoot}/src/**/*.d.ts",
@@ -20,7 +20,7 @@
       ],
       "options": {
         "commands": [
-          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/workspace-tools/**/schema.ts,packages/workspace-tools/**/*.schema.ts\" "
+          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/workspace-tools/**/untyped.ts,packages/workspace-tools/**/*.untyped.ts\" "
         ]
       }
     },
@@ -42,8 +42,8 @@
           "pnpm copyfiles --up=3 ./packages/workspace-tools/assets/* dist/packages/workspace-tools/assets",
           "pnpm copyfiles --up=3 ./packages/workspace-tools/config/* dist/packages/workspace-tools/config",
           "pnpm copyfiles --up=3 ./packages/workspace-tools/docs/* dist/packages/workspace-tools/docs",
-          "pnpm copyfiles --up=3 ./packages/workspace-tools/src/**/*.json dist/packages/workspace-tools/dist/src",
-          "pnpm copyfiles --up=3 ./packages/workspace-tools/src/**/*.d.ts dist/packages/workspace-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/workspace-tools/src/**/*schema.d.ts dist/packages/workspace-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/workspace-tools/src/**/*schema.json dist/packages/workspace-tools/dist/src",
           "pnpm copyfiles --up=3 ./packages/workspace-tools/src/**/*.md dist/packages/workspace-tools/docs/api",
           "pnpm copyfiles --up=4 ./packages/workspace-tools/src/generators/*/files/**/* dist/packages/workspace-tools/dist/src/generators",
           "pnpm copyfiles --up=3 ./packages/workspace-tools/dist/**/* dist/packages/workspace-tools/dist"

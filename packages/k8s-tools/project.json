@@ -14,8 +14,8 @@
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "inputs": [
-        "{projectRoot}/src/**/schema.ts",
-        "{projectRoot}/src/**/*.schema.ts"
+        "{projectRoot}/src/**/untyped.ts",
+        "{projectRoot}/src/**/*.untyped.ts"
       ],
       "outputs": [
         "{projectRoot}/src/**/*.d.ts",
@@ -25,7 +25,7 @@
       ],
       "options": {
         "commands": [
-          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/k8s-tools/**/schema.ts,packages/k8s-tools/**/*.schema.ts\" "
+          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/k8s-tools/**/untyped.ts,packages/k8s-tools/**/*.untyped.ts\" "
         ]
       }
     },
@@ -45,8 +45,8 @@
           "pnpm copyfiles LICENSE dist/packages/k8s-tools",
           "pnpm copyfiles --up=2 ./packages/k8s-tools/*.md ./packages/k8s-tools/executors.json ./packages/k8s-tools/generators.json ./packages/k8s-tools/package.json dist/packages/k8s-tools",
           "pnpm copyfiles --up=3 ./packages/k8s-tools/dist/**/* dist/packages/k8s-tools/dist",
-          "pnpm copyfiles --up=3 ./packages/k8s-tools/src/**/*.json dist/packages/k8s-tools/dist/src",
-          "pnpm copyfiles --up=3 ./packages/k8s-tools/src/**/*.d.ts dist/packages/k8s-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/k8s-tools/src/**/*schema.d.ts dist/packages/k8s-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/k8s-tools/src/**/*schema.json dist/packages/k8s-tools/dist/src",
           "pnpm copyfiles --up=3 ./packages/k8s-tools/src/**/*.md dist/packages/k8s-tools/docs/api",
           "pnpm copyfiles --up=4 ./packages/k8s-tools/src/generators/*/files/**/* dist/packages/k8s-tools/dist/src/generators"
         ]

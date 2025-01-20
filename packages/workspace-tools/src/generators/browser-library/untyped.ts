@@ -1,12 +1,12 @@
 import { defineUntypedSchema } from "untyped";
-import typescriptLibraryGeneratorSchema from "../../base/typescript-library-generator.schema";
+import typescriptLibraryGeneratorSchema from "../../base/typescript-library-generator.untyped";
 
 export default defineUntypedSchema({
   ...typescriptLibraryGeneratorSchema,
   $schema: {
-    id: "NodeLibrarySchema",
-    title: "Node Library Generator",
-    description: "A type definition for a NodeJs library generator schema",
+    id: "BrowserLibraryGeneratorSchema",
+    title: "Browser Library Generator",
+    description: "A type definition for a browser library generator schema",
     required: ["directory", "name"]
   },
   buildExecutor: {
@@ -22,8 +22,8 @@ export default defineUntypedSchema({
       title: "Platform",
       type: "string",
       description: "The platform to target with the library",
-      enum: ["node", "neutral"]
+      enum: ["browser", "neutral"]
     },
-    $default: "node"
+    $default: "browser"
   }
 });

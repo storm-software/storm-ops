@@ -1,5 +1,5 @@
 import { defineUntypedSchema } from "untyped";
-import cargoBaseExecutorSchema from "../../base/cargo-base-executor.schema";
+import cargoBaseExecutorSchema from "../../base/cargo-base-executor.untyped";
 
 export default defineUntypedSchema({
   ...cargoBaseExecutorSchema,

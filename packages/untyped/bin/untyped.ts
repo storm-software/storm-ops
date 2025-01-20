@@ -39,7 +39,7 @@ async function createProgram(config: StormConfig) {
       "The path to the entry file to generate types for. This can be a file or a directory. Globs are supported."
     )
       .argParser(val => val.split(","))
-      .default(["**/schema.ts", "**/*.schema.ts"]);
+      .default(["**/untyped.ts", "**/*.untyped.ts"]);
 
     const outputPathOption = new Option(
       "-o --output-path <path>",

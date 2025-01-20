@@ -1,5 +1,5 @@
 import { defineUntypedSchema } from "untyped";
-import baseGeneratorSchema from "./base-generator.schema";
+import baseGeneratorSchema from "./base-generator.untyped";
 
 export default defineUntypedSchema({
   ...baseGeneratorSchema,

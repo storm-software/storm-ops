@@ -14,7 +14,7 @@ import {
   writeTrace
 } from "@storm-software/config-tools";
 import type { BaseGeneratorOptions, BaseGeneratorResult } from "../types";
-import type { BaseGeneratorSchema } from "./base-generator.d";
+import type { BaseGeneratorSchema } from "./base-generator.schema.d";
 
 export const withRunGenerator =
   <TGeneratorSchema extends BaseGeneratorSchema = BaseGeneratorSchema>(

@@ -12,7 +12,7 @@ import {
   normalizeOptions,
   typeScriptLibraryGeneratorFn
 } from "../../base/typescript-library-generator";
-import type { TypeScriptLibraryGeneratorSchema } from "../../base/typescript-library-generator.d";
+import type { TypeScriptLibraryGeneratorSchema } from "../../base/typescript-library-generator.schema.d";
 import { NeutralLibraryGeneratorSchema } from "./schema.d";
 
 export async function neutralLibraryGeneratorFn(

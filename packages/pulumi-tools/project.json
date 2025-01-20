@@ -9,8 +9,8 @@
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "inputs": [
-        "{projectRoot}/src/**/schema.ts",
-        "{projectRoot}/src/**/*.schema.ts"
+        "{projectRoot}/src/**/untyped.ts",
+        "{projectRoot}/src/**/*.untyped.ts"
       ],
       "outputs": [
         "{projectRoot}/src/**/*.d.ts",
@@ -20,7 +20,7 @@
       ],
       "options": {
         "commands": [
-          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/pulumi-tools/**/schema.ts,packages/pulumi-tools/**/*.schema.ts\" "
+          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/pulumi-tools/**/untyped.ts,packages/pulumi-tools/**/*.untyped.ts\" "
         ]
       }
     },
@@ -40,8 +40,8 @@
           "pnpm copyfiles LICENSE dist/packages/pulumi-tools",
           "pnpm copyfiles --up=2 ./packages/pulumi-tools/*.md ./packages/pulumi-tools/executors.json ./packages/pulumi-tools/generators.json ./packages/pulumi-tools/package.json dist/packages/pulumi-tools",
           "pnpm copyfiles --up=3 ./packages/pulumi-tools/dist/**/* dist/packages/pulumi-tools/dist",
-          "pnpm copyfiles --up=3 ./packages/pulumi-tools/src/**/*.json dist/packages/pulumi-tools/dist/src",
-          "pnpm copyfiles --up=3 ./packages/pulumi-tools/src/**/*.d.ts dist/packages/pulumi-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/pulumi-tools/src/**/*schema.d.ts dist/packages/pulumi-tools/dist/src",
+          "pnpm copyfiles --up=3 ./packages/pulumi-tools/src/**/*schema.json dist/packages/pulumi-tools/dist/src",
           "pnpm copyfiles --up=3 ./packages/pulumi-tools/src/**/*.md dist/packages/pulumi-tools/docs/api",
           "pnpm copyfiles --up=4 ./packages/pulumi-tools/src/generators/*/files/**/* dist/packages/pulumi-tools/dist/src/generators"
         ]

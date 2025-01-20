@@ -14,12 +14,14 @@ export const getOutputFile = (
 ) => {
   let fileName = file.name
     .slice(0, file.name.lastIndexOf("."))
+    .replace(".untyped", "")
+    .replace("untyped", "")
     .replace(".schema", "")
     .replace("schema", "");
   if (!fileName) {
     fileName = "schema";
   }
-  if (extension === "json" && fileName !== "schema") {
+  if (fileName !== "schema") {
     fileName = `${fileName}.schema`;
   }
 
