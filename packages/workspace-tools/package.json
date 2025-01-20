@@ -228,6 +228,7 @@
     "defu": "catalog:",
     "fs-extra": "11.2.0",
     "glob": "catalog:",
+    "jiti": "^2.4.2",
     "micromatch": "4.0.7",
     "pkg-types": "catalog:",
     "prettier": "catalog:",

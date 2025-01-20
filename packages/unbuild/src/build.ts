@@ -154,7 +154,6 @@ async function resolveOptions(
   }
 
   const jiti = createJiti(config.workspaceRoot, {
-    cache: true,
     fsCache: config.skipCache
       ? false
       : joinPaths(
