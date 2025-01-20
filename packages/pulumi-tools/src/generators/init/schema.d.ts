@@ -1,4 +1,4 @@
-import { BaseGeneratorSchema } from "@storm-software/workspace-tools/base/base-generator";
+import { BaseGeneratorSchema } from "@storm-software/workspace-tools/base/base-generator.schema.d";
 
 export interface InitGeneratorSchema extends BaseGeneratorSchema {
   name?: string;
