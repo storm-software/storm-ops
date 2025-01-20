@@ -2,18 +2,6 @@
 import { relative } from "node:path";
 import type { OutputBundle, Plugin } from "rollup"; // only used  for types
 
-/*
- * This plugin takes all entry-points from the generated bundle and creates a
- * bundled version of corresponding d.ts files.
- *
- * For example, `src/index.ts` generates two corresponding files:
- * - `dist/xyz/index.js`
- * - `dist/xyz/src/index.d.ts`
- *
- * We want a third file: `dist/index.d.ts` that re-exports from `src/index.d.ts`.
- * That way, when TSC or IDEs look for types, it will find them in the right place.
- */
-
 /**
  * This plugin takes all entry-points from the generated bundle and creates a
  * bundled version of corresponding d.ts files.
@@ -25,8 +13,7 @@ import type { OutputBundle, Plugin } from "rollup"; // only used  for types
  * We want a third file: `dist/index.d.ts` that re-exports from `src/index.d.ts`.
  * That way, when TSC or IDEs look for types, it will find them in the right place.
  *
- * @param options - The options object.
- * @param resolvedOptions - The resolved options object.
+ * @param projectRoot - The root of the project.
  * @returns The Rollup plugin.
  */
 export function typeDefinitions(projectRoot: string): Plugin {

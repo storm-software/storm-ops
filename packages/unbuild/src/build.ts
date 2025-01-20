@@ -15,11 +15,7 @@
 
  -------------------------------------------------------------------*/
 
-import {
-  createProjectGraphAsync,
-  readProjectsConfigurationFromProjectGraph,
-  writeJsonFile
-} from "@nx/devkit";
+import { readCachedProjectGraph, writeJsonFile } from "@nx/devkit";
 import { getHelperDependency, HelperDependency } from "@nx/js";
 import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
 import {
@@ -83,9 +79,7 @@ async function resolveOptions(
     }
   }
 
-  const projectGraph = await createProjectGraphAsync({
-    exitOnError: true
-  });
+  const projectGraph = readCachedProjectGraph();
 
   const projectJsonPath = joinPaths(
     config.workspaceRoot,
@@ -129,14 +123,6 @@ async function resolveOptions(
 
   if (!existsSync(sourceRoot)) {
     throw new Error("Cannot find sourceRoot directory");
-  }
-
-  const projectConfigurations =
-    readProjectsConfigurationFromProjectGraph(projectGraph);
-  if (!projectConfigurations?.projects?.[projectName]) {
-    throw new Error(
-      "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
-    );
   }
 
   const result = calculateProjectBuildableDependencies(
@@ -345,9 +331,10 @@ async function generatePackageJson(options: UnbuildResolvedOptions) {
       packageJson
     );
 
-    packageJson = await addPackageJsonExports(options.sourceRoot, packageJson);
-
-    await writeJsonFile(joinPaths(options.outDir, "package.json"), packageJson);
+    await writeJsonFile(
+      joinPaths(options.outDir, "package.json"),
+      await addPackageJsonExports(options.sourceRoot, packageJson)
+    );
 
     stopwatch();
   }
