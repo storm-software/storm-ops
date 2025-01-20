@@ -8,7 +8,7 @@ import {
   writeFatal,
   writeSuccess
 } from "@storm-software/config-tools";
-import { createProgram } from "../../src/cli";
+import { createProgram } from "../src/cli";
 
 void (async () => {
   const config = await loadStormConfig();

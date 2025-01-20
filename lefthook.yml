@@ -12,13 +12,13 @@ pre-install:
   commands:
     validate:
       glob: "**/*"
-      run: "node ./dist/packages/git-tools/bin/pre-install/index.cjs"
+      run: "node ./dist/packages/git-tools/bin/pre-install.cjs"
 
 prepare:
   commands:
     validate:
       glob: "**/*"
-      run: "node ./dist/packages/git-tools/bin/prepare/index.cjs"
+      run: "node ./dist/packages/git-tools/bin/prepare.cjs"
 
 pre-commit:
   # piped: true
@@ -35,7 +35,7 @@ pre-commit:
     validate:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*"
-      run: "node ./dist/packages/git-tools/bin/pre-commit/index.cjs {files}"
+      run: "node ./dist/packages/git-tools/bin/pre-commit.cjs {files}"
       stage_fixed: true
     # lint:
     #   files: "git diff --name-only HEAD @{push}"
@@ -63,7 +63,7 @@ pre-commit:
 commit-msg:
   commands:
     validate:
-      run: "pnpm node ./dist/packages/git-tools/bin/git/index.cjs
+      run: "pnpm node ./dist/packages/git-tools/bin/git.cjs
         commitlint --message {1}"
 
 pre-push:
@@ -76,7 +76,7 @@ pre-push:
     validate:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*"
-      run: "node ./dist/packages/git-tools/bin/pre-push/index.cjs {files}"
+      run: "node ./dist/packages/git-tools/bin/pre-push.cjs {files}"
       stage_fixed: true
     lint-github-actions:
       glob: ".github/workflows/*.*"
@@ -111,7 +111,7 @@ post-merge:
     validate:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*"
-      run: "node ./dist/packages/git-tools/bin/post-merge/index.cjs {files}"
+      run: "node ./dist/packages/git-tools/bin/post-merge.cjs {files}"
       stage_fixed: true
 
 post-checkout:
@@ -119,11 +119,11 @@ post-checkout:
     validate:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*"
-      run: "node ./dist/packages/git-tools/bin/post-checkout/index.cjs {files}"
+      run: "node ./dist/packages/git-tools/bin/post-checkout.cjs {files}"
 
 post-commit:
   commands:
     validate:
       files: "git diff --name-only HEAD @{push}"
       glob: "**/*"
-      run: "node ./dist/packages/git-tools/bin/post-commit/index.cjs {files}"
+      run: "node ./dist/packages/git-tools/bin/post-commit.cjs {files}"
