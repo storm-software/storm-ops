@@ -20,6 +20,7 @@ import {
   TypeScriptBuildOptions,
   TypeScriptBuildResolvedOptions
 } from "@storm-software/build-tools";
+import { Jiti } from "jiti";
 import type { BuildConfig, BuildOptions, RollupBuildOptions } from "unbuild";
 
 export type DeepPartial<T> = T extends object
@@ -66,6 +67,7 @@ export type UnbuildResolvedOptions = Omit<
     externals: string[];
     entries: BuildOptions["entries"];
     declaration: BuildOptions["declaration"];
+    jiti: Jiti;
   };
 
 export type UnbuildCLIOptions = AdditionalCLIOptions &

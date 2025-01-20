@@ -58,8 +58,7 @@ export const getGenerateAction =
               fsCache:
                 cache &&
                 joinPaths(
-                  config.directories.cache || "node_modules/.cache",
-                  "storm",
+                  config.directories.cache || "node_modules/.cache/storm",
                   "untyped"
                 ),
               moduleCache: cache,

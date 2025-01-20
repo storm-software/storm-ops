@@ -28,19 +28,22 @@ import { loadStormConfig } from "@storm-software/config-tools/create-storm-confi
 import {
   getStopwatch,
   writeDebug,
+  writeError,
   writeFatal,
-  writeSuccess
+  writeSuccess,
+  writeTrace
 } from "@storm-software/config-tools/logger/console";
 import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
 import { LogLevelLabel } from "@storm-software/config-tools/types";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import defu from "defu";
 import { LogLevel } from "esbuild";
+import { createJiti } from "jiti";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { relative } from "node:path";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
-import { BuildConfig, BuildContext, build as unbuild } from "unbuild";
+import type { BuildConfig, BuildContext } from "unbuild";
 import { clean } from "./clean";
 import { getDefaultBuildPlugins } from "./config";
 import type { UnbuildOptions, UnbuildResolvedOptions } from "./types";
@@ -150,6 +153,17 @@ async function resolveOptions(
     dependencies.push(tsLibDependency);
   }
 
+  const jiti = createJiti(config.workspaceRoot, {
+    cache: true,
+    fsCache: config.skipCache
+      ? false
+      : joinPaths(
+          config.directories.cache || "node_modules/.cache/storm",
+          "jiti"
+        ),
+    interopDefault: true
+  });
+
   const resolvedOptions = {
     name: projectName,
     config,
@@ -157,6 +171,7 @@ async function resolveOptions(
     sourceRoot,
     projectName,
     tsconfig,
+    jiti,
     clean: false,
     entries: [
       {
@@ -342,6 +357,36 @@ async function generatePackageJson(options: UnbuildResolvedOptions) {
   return options;
 }
 
+type UnbuildModule = {
+  build: (
+    rootDir: string,
+    stub: boolean,
+    inputConfig: BuildConfig
+  ) => Promise<void>;
+};
+
+/**
+ * Resolve the unbuild package using [Jiti](https://github.com/unjs/jiti)
+ */
+async function resolveUnbuild(
+  options: UnbuildResolvedOptions
+): Promise<UnbuildModule> {
+  writeTrace(`Resolving Unbuild package with Jiti`, options.config);
+
+  try {
+    return options.jiti.import<UnbuildModule>("unbuild");
+  } catch (error) {
+    writeError(
+      "  ❌  An error occurred while resolving the Unbuild package",
+      options.config
+    );
+
+    throw new Error("An error occurred while resolving the Unbuild package", {
+      cause: error
+    });
+  }
+}
+
 /**
  * Execute esbuild with all the configurations we pass
  */
@@ -355,7 +400,9 @@ async function executeUnbuild(options: UnbuildResolvedOptions) {
   );
 
   try {
-    await unbuild(options.projectRoot, false, {
+    const unbuild = await resolveUnbuild(options);
+
+    await unbuild.build(options.projectRoot, false, {
       ...options,
       rootDir: options.projectRoot
     } as BuildConfig);
