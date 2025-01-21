@@ -25,13 +25,18 @@ import {
   copyAssets
 } from "@storm-software/build-tools";
 import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
-import { createLogger } from "@storm-software/config-tools/logger/create-logger";
+import {
+  getStopwatch,
+  writeDebug,
+  writeFatal,
+  writeSuccess
+} from "@storm-software/config-tools/logger/console";
 import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
 import { LogLevelLabel } from "@storm-software/config-tools/types";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
+import { StormConfig } from "@storm-software/config/types";
 import defu from "defu";
 import { LogLevel } from "esbuild";
-import { createJiti } from "jiti";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { relative } from "node:path";
@@ -49,25 +54,11 @@ import { loadConfig } from "./utilities/helpers";
  * @returns the resolved options
  */
 async function resolveOptions(
-  options: UnbuildOptions
+  options: UnbuildOptions,
+  config: StormConfig
 ): Promise<UnbuildResolvedOptions> {
-  const projectRoot = options.projectRoot;
-  if (!projectRoot) {
-    throw new Error("Cannot find project root");
-  }
-
-  const outputPath = options.outputPath || joinPaths("dist", projectRoot);
-
-  const workspaceRoot = findWorkspaceRoot(projectRoot);
-  if (!workspaceRoot) {
-    throw new Error("Cannot find workspace root");
-  }
-
-  const config = await loadStormConfig(workspaceRoot.dir);
-  const logger = await createLogger(config);
-
-  logger.debug("  ⚙️   Resolving build options");
-  const stopwatch = logger.getStopwatch("Build options resolution");
+  writeDebug("  ⚙️   Resolving build options", config);
+  const stopwatch = getStopwatch("Build options resolution");
 
   if (options.configPath) {
     const configFile = await loadConfig(options.configPath as string);
@@ -76,11 +67,14 @@ async function resolveOptions(
     }
   }
 
+  const outputPath =
+    options.outputPath || joinPaths("dist", options.projectRoot);
+
   const projectGraph = readCachedProjectGraph();
 
   const projectJsonPath = joinPaths(
     config.workspaceRoot,
-    projectRoot,
+    options.projectRoot,
     "project.json"
   );
   if (!existsSync(projectJsonPath)) {
@@ -93,8 +87,8 @@ async function resolveOptions(
   const projectName = projectJson.name;
 
   const packageJsonPath = joinPaths(
-    workspaceRoot.dir,
-    projectRoot,
+    config.workspaceRoot,
+    options.projectRoot,
     "package.json"
   );
   if (!existsSync(packageJsonPath)) {
@@ -106,7 +100,11 @@ async function resolveOptions(
 
   let tsconfig = options.tsconfig;
   if (!tsconfig) {
-    tsconfig = joinPaths(workspaceRoot.dir, projectRoot, "tsconfig.json");
+    tsconfig = joinPaths(
+      config.workspaceRoot,
+      options.projectRoot,
+      "tsconfig.json"
+    );
   }
 
   if (!existsSync(tsconfig)) {
@@ -115,7 +113,7 @@ async function resolveOptions(
 
   let sourceRoot = projectJson.sourceRoot;
   if (!sourceRoot) {
-    sourceRoot = joinPaths(projectRoot, "src");
+    sourceRoot = joinPaths(options.projectRoot, "src");
   }
 
   if (!existsSync(sourceRoot)) {
@@ -125,7 +123,7 @@ async function resolveOptions(
   const result = calculateProjectBuildableDependencies(
     undefined,
     projectGraph,
-    workspaceRoot.dir,
+    config.workspaceRoot,
     projectName,
     process.env.NX_TASK_TARGET_TARGET || "build",
     process.env.NX_TASK_TARGET_CONFIGURATION || "production",
@@ -147,33 +145,21 @@ async function resolveOptions(
     dependencies.push(tsLibDependency);
   }
 
-  const jiti = createJiti(config.workspaceRoot, {
-    fsCache: config.skipCache
-      ? false
-      : joinPaths(
-          config.directories.cache || "node_modules/.cache/storm",
-          "jiti"
-        ),
-    interopDefault: true
-  });
-
   const resolvedOptions = {
     name: projectName,
     config,
-    projectRoot,
+    projectRoot: options.projectRoot,
     sourceRoot,
     projectName,
     tsconfig,
-    jiti,
-    logger,
     clean: false,
     entries: [
       {
         builder: "mkdist",
-        input: `.${sourceRoot.replace(projectRoot, "")}`,
+        input: `.${sourceRoot.replace(options.projectRoot, "")}`,
         outDir: joinPaths(
           relative(
-            joinPaths(config.workspaceRoot, projectRoot),
+            joinPaths(config.workspaceRoot, options.projectRoot),
             config.workspaceRoot
           ).replaceAll("\\", "/"),
           outputPath,
@@ -184,10 +170,10 @@ async function resolveOptions(
       },
       {
         builder: "mkdist",
-        input: `.${sourceRoot.replace(projectRoot, "")}`,
+        input: `.${sourceRoot.replace(options.projectRoot, "")}`,
         outDir: joinPaths(
           relative(
-            joinPaths(config.workspaceRoot, projectRoot),
+            joinPaths(config.workspaceRoot, options.projectRoot),
             config.workspaceRoot
           ).replaceAll("\\", "/"),
           outputPath,
@@ -303,8 +289,8 @@ async function generatePackageJson(options: UnbuildResolvedOptions) {
     options.generatePackageJson !== false &&
     existsSync(joinPaths(options.projectRoot, "package.json"))
   ) {
-    options.logger.debug("  ✍️   Writing package.json file");
-    const stopwatch = options.logger.getStopwatch("Write package.json file");
+    writeDebug("  ✍️   Writing package.json file", options.config);
+    const stopwatch = getStopwatch("Write package.json file");
 
     const packageJsonPath = joinPaths(options.projectRoot, "project.json");
     if (!existsSync(packageJsonPath)) {
@@ -365,12 +351,12 @@ async function generatePackageJson(options: UnbuildResolvedOptions) {
 // async function resolveUnbuild(
 //   options: UnbuildResolvedOptions
 // ): Promise<UnbuildModule> {
-//   options.logger.trace(`Resolving Unbuild package with Jiti`);
+//   trace(`Resolving Unbuild package with Jiti`);
 
 //   try {
 //     return options.jiti.import<UnbuildModule>("unbuild");
 //   } catch (error) {
-//     options.logger.error(
+//     error(
 //       "  ❌  An error occurred while resolving the Unbuild package"
 //     );
 
@@ -384,10 +370,11 @@ async function generatePackageJson(options: UnbuildResolvedOptions) {
  * Execute esbuild with all the configurations we pass
  */
 async function executeUnbuild(options: UnbuildResolvedOptions) {
-  options.logger.debug(
-    `  🚀  Running ${options.name} (${options.projectRoot}) build`
+  writeDebug(
+    `  🚀  Running ${options.name} (${options.projectRoot}) build`,
+    options.config
   );
-  const stopwatch = options.logger.getStopwatch(
+  const stopwatch = getStopwatch(
     `${options.name} (${options.projectRoot}) build`
   );
 
@@ -409,10 +396,11 @@ async function executeUnbuild(options: UnbuildResolvedOptions) {
  * Copy the assets to the build directory
  */
 async function copyBuildAssets(options: UnbuildResolvedOptions) {
-  options.logger.debug(
-    `  📋  Copying asset files to output directory: ${options.outDir}`
+  writeDebug(
+    `  📋  Copying asset files to output directory: ${options.outDir}`,
+    options.config
   );
-  const stopwatch = options.logger.getStopwatch(`${options.name} asset copy`);
+  const stopwatch = getStopwatch(`${options.name} asset copy`);
 
   await copyAssets(
     options.config,
@@ -437,12 +425,11 @@ async function copyBuildAssets(options: UnbuildResolvedOptions) {
  */
 async function cleanOutputPath(options: UnbuildResolvedOptions) {
   if (options.clean !== false && options.outDir) {
-    options.logger.debug(
-      ` 🧹  Cleaning ${options.name} output path: ${options.outDir}`
+    writeDebug(
+      ` 🧹  Cleaning ${options.name} output path: ${options.outDir}`,
+      options.config
     );
-    const stopwatch = options.logger.getStopwatch(
-      `${options.name} output clean`
-    );
+    const stopwatch = getStopwatch(`${options.name} output clean`);
 
     await cleanDirectories(options.name, options.outDir, options.config);
 
@@ -459,23 +446,38 @@ async function cleanOutputPath(options: UnbuildResolvedOptions) {
  * @returns the build result
  */
 export async function build(options: UnbuildOptions) {
-  const resolvedOptions = await resolveOptions(options);
+  const projectRoot = options.projectRoot;
+  if (!projectRoot) {
+    throw new Error("Cannot find project root");
+  }
 
-  resolvedOptions.logger.debug(` ⚡  Executing Storm Unbuild pipeline`);
-  const stopwatch = resolvedOptions.logger.getStopwatch("Unbuild pipeline");
+  const workspaceRoot = findWorkspaceRoot(projectRoot);
+  if (!workspaceRoot) {
+    throw new Error("Cannot find workspace root");
+  }
+
+  const config = await loadStormConfig(workspaceRoot.dir);
+
+  writeDebug(` ⚡  Executing Storm Unbuild pipeline`, config);
+  const stopwatch = getStopwatch("Unbuild pipeline");
 
   try {
+    options.projectRoot = projectRoot;
+    const resolvedOptions = await resolveOptions(options, config);
+
     await cleanOutputPath(resolvedOptions);
     await generatePackageJson(resolvedOptions);
     await executeUnbuild(resolvedOptions);
     await copyBuildAssets(resolvedOptions);
 
-    resolvedOptions.logger.success(
-      `  🏁  The ${resolvedOptions.name} build completed successfully`
+    writeSuccess(
+      `  🏁  The ${resolvedOptions.name} build completed successfully`,
+      config
     );
   } catch (error) {
-    resolvedOptions.logger.fatal(
-      "  ❌  Fatal errors occurred during the build that could not be recovered from. The build process has been terminated."
+    writeFatal(
+      "  ❌  Fatal errors occurred during the build that could not be recovered from. The build process has been terminated.",
+      config
     );
 
     throw error;
