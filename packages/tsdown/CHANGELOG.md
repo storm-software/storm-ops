@@ -1,3 +1,15 @@
+## 0.21.5 (2025-01-21)
+
+### Bug Fixes
+
+- **unbuild:** Ensure we always use directory as input instead of a file ([13d4a133](https://github.com/storm-software/storm-ops/commit/13d4a133))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.140.1
+- Updated build-tools to 0.133.1
+- Updated config to 1.97.5
+
 ## 0.21.4 (2025-01-21)
 
 ### Dependency Upgrades

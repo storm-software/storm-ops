@@ -1,3 +1,14 @@
+## 1.105.5 (2025-01-21)
+
+### Bug Fixes
+
+- **unbuild:** Ensure we always use directory as input instead of a file ([13d4a133](https://github.com/storm-software/storm-ops/commit/13d4a133))
+
+### 🧱 Updated Dependencies
+
+- Updated cspell to 0.7.5
+- Updated cspell to 0.7.5
+
 ## 1.105.4 (2025-01-21)
 
 ### Dependency Upgrades

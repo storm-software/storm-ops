@@ -1,3 +1,17 @@
+## 1.237.1 (2025-01-21)
+
+### Bug Fixes
+
+- **unbuild:** Ensure we always use directory as input instead of a file ([13d4a133](https://github.com/storm-software/storm-ops/commit/13d4a133))
+
+### 🧱 Updated Dependencies
+
+- Updated prettier to 0.29.1
+- Updated esbuild to 0.20.5
+- Updated unbuild to 0.28.1
+- Updated unbuild to 0.28.1
+- Updated tsdown to 0.21.5
+
 ## 1.237.0 (2025-01-21)
 
 ### Features
