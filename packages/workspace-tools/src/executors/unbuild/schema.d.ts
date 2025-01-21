@@ -15,15 +15,15 @@ export interface UnbuildExecutorSchema {
  outputPath?: string,
 
  /**
-  * Entry File(s)
+  * Input Directory
   * 
-  * The entry file or files to build
+  * The directory to use as input for the build
   * 
-  * @default ["{sourceRoot}/index.ts"]
+  * @default ["{sourceRoot}"]
   * 
   * @format path
  */
- entry?: Array<string>,
+ entry: Array<string>,
 
  /**
   * TSConfig Path
@@ -41,7 +41,6 @@ export interface UnbuildExecutorSchema {
   * 
   * Bundle the output
   * 
-  * @default false
  */
  bundle?: boolean,
 
@@ -50,7 +49,6 @@ export interface UnbuildExecutorSchema {
   * 
   * Minify the output
   * 
-  * @default false
  */
  minify?: boolean,
 
@@ -59,7 +57,6 @@ export interface UnbuildExecutorSchema {
   * 
   * Debug the output
   * 
-  * @default false
  */
  debug?: boolean,
 
@@ -68,7 +65,6 @@ export interface UnbuildExecutorSchema {
   * 
   * Generate a sourcemap
   * 
-  * @default false
  */
  sourcemap?: boolean,
 
@@ -143,7 +139,7 @@ export interface UnbuildExecutorSchema {
   * 
   * @default "{projectName}"
  */
- name?: string,
+ name: string,
 
  /**
   * Tree Shaking
@@ -168,7 +164,7 @@ export interface UnbuildExecutorSchema {
   * 
   * Clean the output directory before building
   * 
-  * @default false
+  * @default true
  */
  clean?: boolean,
 

@@ -2,6 +2,10 @@
   "id": "#",
   "title": "Unbuild Executor",
   "description": "A type definition for a unbuild executor schema",
+  "required": [
+    "name",
+    "entry"
+  ],
   "properties": {
     "outputPath": {
       "title": "Output Path",
@@ -12,16 +16,16 @@
       "default": "dist/{projectRoot}"
     },
     "entry": {
-      "title": "Entry File(s)",
+      "title": "Input Directory",
       "format": "path",
       "type": "array",
-      "description": "The entry file or files to build",
+      "description": "The directory to use as input for the build",
       "items": {
         "type": "string"
       },
       "id": "#entry",
       "default": [
-        "{sourceRoot}/index.ts"
+        "{sourceRoot}"
       ]
     },
     "tsconfig": {
@@ -36,29 +40,25 @@
       "title": "Bundle",
       "type": "boolean",
       "description": "Bundle the output",
-      "id": "#bundle",
-      "default": false
+      "id": "#bundle"
     },
     "minify": {
       "title": "Minify",
       "type": "boolean",
       "description": "Minify the output",
-      "id": "#minify",
-      "default": false
+      "id": "#minify"
     },
     "debug": {
       "title": "Debug",
       "type": "boolean",
       "description": "Debug the output",
-      "id": "#debug",
-      "default": false
+      "id": "#debug"
     },
     "sourcemap": {
       "title": "Sourcemap",
       "type": "boolean",
       "description": "Generate a sourcemap",
-      "id": "#sourcemap",
-      "default": false
+      "id": "#sourcemap"
     },
     "silent": {
       "title": "Silent",
@@ -182,7 +182,7 @@
       "type": "boolean",
       "description": "Clean the output directory before building",
       "id": "#clean",
-      "default": false
+      "default": true
     },
     "stub": {
       "title": "Stub",
@@ -216,8 +216,7 @@
       "items": {
         "type": "string"
       },
-      "id": "#dependencies",
-      "default": []
+      "id": "#dependencies"
     },
     "peerDependencies": {
       "title": "Peer Dependencies",
@@ -226,8 +225,7 @@
       "items": {
         "type": "string"
       },
-      "id": "#peerDependencies",
-      "default": []
+      "id": "#peerDependencies"
     },
     "devDependencies": {
       "title": "Dev Dependencies",
@@ -236,8 +234,7 @@
       "items": {
         "type": "string"
       },
-      "id": "#devDependencies",
-      "default": []
+      "id": "#devDependencies"
     },
     "alias": {
       "title": "Alias",
@@ -267,13 +264,9 @@
   "default": {
     "outputPath": "dist/{projectRoot}",
     "entry": [
-      "{sourceRoot}/index.ts"
+      "{sourceRoot}"
     ],
     "tsconfig": "{projectRoot}/tsconfig.json",
-    "bundle": false,
-    "minify": false,
-    "debug": false,
-    "sourcemap": false,
     "silent": false,
     "target": "esnext",
     "format": [
@@ -287,7 +280,7 @@
     "name": "{projectName}",
     "treeShaking": true,
     "watch": false,
-    "clean": false,
+    "clean": true,
     "stub": false,
     "watchOptions": {},
     "stubOptions": {
@@ -295,9 +288,6 @@
         "cache": "node_modules/.cache/storm"
       }
     },
-    "dependencies": [],
-    "peerDependencies": [],
-    "devDependencies": [],
     "alias": {},
     "replace": {},
     "rollup": {}

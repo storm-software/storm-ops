@@ -41,6 +41,13 @@ export type UnbuildOptions = Omit<TypeScriptBuildOptions, "entry" | "format"> &
     | "parallel"
   > & {
     /**
+     * The directories to run the build process out of
+     *
+     * @defaultValue ["{sourceRoot}"]
+     */
+    entry?: string[];
+
+    /**
      * Path to a rollup configuration file relative to the project root
      */
     rollup?: string | DeepPartial<RollupBuildOptions>;

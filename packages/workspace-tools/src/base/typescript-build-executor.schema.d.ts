@@ -41,7 +41,6 @@ export interface TypeScriptBuildExecutorSchema {
   * 
   * Bundle the output
   * 
-  * @default false
  */
  bundle?: boolean,
 
@@ -50,7 +49,6 @@ export interface TypeScriptBuildExecutorSchema {
   * 
   * Minify the output
   * 
-  * @default false
  */
  minify?: boolean,
 
@@ -59,7 +57,6 @@ export interface TypeScriptBuildExecutorSchema {
   * 
   * Debug the output
   * 
-  * @default false
  */
  debug?: boolean,
 
@@ -68,7 +65,6 @@ export interface TypeScriptBuildExecutorSchema {
   * 
   * Generate a sourcemap
   * 
-  * @default false
  */
  sourcemap?: boolean,
 

@@ -108,6 +108,9 @@ export default withRunExecutor<UnbuildExecutorSchema>(
         options: UnbuildExecutorSchema,
         config?: StormConfig | undefined
       ) => {
+        options.debug ??= false;
+        options.treeShaking ??= true;
+        options.platform ??= "neutral";
         options.entry ??= ["{sourceRoot}"];
         options.outputPath ??= "dist/{projectRoot}";
         options.tsconfig ??= "{projectRoot}/tsconfig.json";

@@ -20,7 +20,6 @@ import { getHelperDependency, HelperDependency } from "@nx/js";
 import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
 import {
   addPackageDependencies,
-  addPackageJsonExports,
   addWorkspacePackageJsonFields,
   copyAssets
 } from "@storm-software/build-tools";
@@ -42,11 +41,17 @@ import {
 import { StormConfig } from "@storm-software/config/types";
 import defu from "defu";
 import { LogLevel } from "esbuild";
+import { Glob } from "glob";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { relative } from "node:path";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
-import { type BuildConfig, type BuildContext, build as unbuild } from "unbuild";
+import {
+  type BuildConfig,
+  type BuildContext,
+  BuildEntry,
+  build as unbuild
+} from "unbuild";
 import { cleanDirectories } from "./clean";
 import { getDefaultBuildPlugins } from "./config";
 import type { UnbuildOptions, UnbuildResolvedOptions } from "./types";
@@ -58,7 +63,7 @@ import { loadConfig } from "./utilities/helpers";
  * @param options - the unbuild options
  * @returns the resolved options
  */
-async function resolveOptions(
+export async function resolveOptions(
   options: UnbuildOptions,
   config: StormConfig
 ): Promise<UnbuildResolvedOptions> {
@@ -116,7 +121,7 @@ async function resolveOptions(
     throw new Error("Cannot find tsconfig.json configuration");
   }
 
-  let sourceRoot = projectJson.sourceRoot;
+  let sourceRoot = projectJson.sourceRoot as string;
   if (!sourceRoot) {
     sourceRoot = joinPaths(options.projectRoot, "src");
   }
@@ -150,6 +155,8 @@ async function resolveOptions(
     dependencies.push(tsLibDependency);
   }
 
+  const entries = options.entry ?? [sourceRoot];
+
   const resolvedOptions = {
     name: projectName,
     config,
@@ -158,10 +165,10 @@ async function resolveOptions(
     projectName,
     tsconfig,
     clean: false,
-    entries: [
-      {
+    entries: entries.reduce((ret, entry) => {
+      ret.push({
         builder: "mkdist",
-        input: `.${sourceRoot.replace(options.projectRoot, "")}`,
+        input: `.${entry.replace(options.projectRoot, "")}`,
         outDir: joinPaths(
           relative(
             joinPaths(config.workspaceRoot, options.projectRoot),
@@ -172,10 +179,11 @@ async function resolveOptions(
         ),
         declaration: options.emitTypes !== false,
         format: "esm"
-      },
-      {
+      });
+
+      ret.push({
         builder: "mkdist",
-        input: `.${sourceRoot.replace(options.projectRoot, "")}`,
+        input: `.${entry.replace(options.projectRoot, "")}`,
         outDir: joinPaths(
           relative(
             joinPaths(config.workspaceRoot, options.projectRoot),
@@ -187,8 +195,10 @@ async function resolveOptions(
         declaration: options.emitTypes !== false,
         format: "cjs",
         ext: "cjs"
-      }
-    ],
+      });
+
+      return ret;
+    }, [] as BuildEntry[]),
     declaration: options.emitTypes !== false ? "compatible" : false,
     failOnWarn: false,
     sourcemap: options.sourcemap ?? !!options.debug,
@@ -231,7 +241,8 @@ async function resolveOptions(
         extensions: [".cjs", ".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"]
       },
       esbuild: {
-        minify: options.minify !== false,
+        minify: options.minify || !options.debug,
+        sourceMap: options.sourcemap || !!options.debug,
         splitting: options.splitting !== false,
         treeShaking: options.treeShaking !== false,
         color: true,
@@ -289,7 +300,34 @@ async function resolveOptions(
   return resolvedOptions as any;
 }
 
-async function generatePackageJson(options: UnbuildResolvedOptions) {
+const addPackageJsonExport = (
+  file: string,
+  type: "commonjs" | "module" = "module",
+  sourceRoot?: string
+): Record<string, any> => {
+  let entry = file.replaceAll("\\", "/");
+  if (sourceRoot) {
+    entry = entry.replace(sourceRoot, "");
+  }
+
+  return {
+    "import": {
+      "types": `./dist/${entry}.d.ts`,
+      "default": `./dist/${entry}.mjs`
+    },
+    "require": {
+      "types": `./dist/${entry}.d.ts`,
+      "default": `./dist/${entry}.cjs`
+    },
+    "default": {
+      "types": `./dist/${entry}.d.ts`,
+      "default":
+        type === "commonjs" ? `./dist/${entry}.cjs` : `./dist/${entry}.mjs`
+    }
+  };
+};
+
+export async function generatePackageJson(options: UnbuildResolvedOptions) {
   if (
     options.generatePackageJson !== false &&
     existsSync(joinPaths(options.projectRoot, "package.json"))
@@ -331,10 +369,51 @@ async function generatePackageJson(options: UnbuildResolvedOptions) {
       packageJson
     );
 
-    await writeJsonFile(
-      joinPaths(options.outDir, "package.json"),
-      await addPackageJsonExports(options.sourceRoot, packageJson)
+    packageJson.exports ??= {};
+
+    const files = await new Glob("**/*.{ts,tsx}", {
+      absolute: false,
+      cwd: options.sourceRoot,
+      root: options.sourceRoot
+    }).walk();
+    files.forEach(file => {
+      addPackageJsonExport(file, packageJson.type, options.sourceRoot);
+
+      const split = file.split(".");
+      split.pop();
+      const entry = split.join(".").replaceAll("\\", "/");
+
+      packageJson.exports[`./${entry}`] ??= addPackageJsonExport(
+        entry,
+        packageJson.type,
+        options.sourceRoot
+      );
+    });
+
+    packageJson.main ??= "./dist/index.cjs";
+    packageJson.module ??= "./dist/index.mjs";
+    packageJson.types ??= "./dist/index.d.ts";
+
+    packageJson.exports ??= {};
+    packageJson.exports = Object.keys(packageJson.exports).reduce(
+      (ret, key) => {
+        if (key.endsWith("/index") && !ret[key.replace("/index", "")]) {
+          ret[key.replace("/index", "")] = packageJson.exports[key];
+        }
+
+        return ret;
+      },
+      packageJson.exports
     );
+
+    packageJson.exports["./package.json"] ??= "./package.json";
+    packageJson.exports["."] ??= addPackageJsonExport(
+      "index",
+      packageJson.type,
+      options.sourceRoot
+    );
+
+    await writeJsonFile(joinPaths(options.outDir, "package.json"), packageJson);
 
     stopwatch();
   }
@@ -342,39 +421,10 @@ async function generatePackageJson(options: UnbuildResolvedOptions) {
   return options;
 }
 
-// type UnbuildModule = {
-//   build: (
-//     rootDir: string,
-//     stub: boolean,
-//     inputConfig: BuildConfig
-//   ) => Promise<void>;
-// };
-
 /**
- * Resolve the unbuild package using [Jiti](https://github.com/unjs/jiti)
+ * Execute Unbuild with all the configurations we pass
  */
-// async function resolveUnbuild(
-//   options: UnbuildResolvedOptions
-// ): Promise<UnbuildModule> {
-//   trace(`Resolving Unbuild package with Jiti`);
-
-//   try {
-//     return options.jiti.import<UnbuildModule>("unbuild");
-//   } catch (error) {
-//     error(
-//       "  ❌  An error occurred while resolving the Unbuild package"
-//     );
-
-//     throw new Error("An error occurred while resolving the Unbuild package", {
-//       cause: error
-//     });
-//   }
-// }
-
-/**
- * Execute esbuild with all the configurations we pass
- */
-async function executeUnbuild(options: UnbuildResolvedOptions) {
+export async function executeUnbuild(options: UnbuildResolvedOptions) {
   writeDebug(
     `  🚀  Running ${options.name} (${options.projectRoot}) build`,
     options.config
@@ -410,7 +460,7 @@ ${formatLogMessage(config)}
 /**
  * Copy the assets to the build directory
  */
-async function copyBuildAssets(options: UnbuildResolvedOptions) {
+export async function copyBuildAssets(options: UnbuildResolvedOptions) {
   writeDebug(
     `  📋  Copying asset files to output directory: ${options.outDir}`,
     options.config
@@ -438,7 +488,7 @@ async function copyBuildAssets(options: UnbuildResolvedOptions) {
  *
  * @param options - the build options
  */
-async function cleanOutputPath(options: UnbuildResolvedOptions) {
+export async function cleanOutputPath(options: UnbuildResolvedOptions) {
   if (options.clean !== false && options.outDir) {
     writeDebug(
       ` 🧹  Cleaning ${options.name} output path: ${options.outDir}`,

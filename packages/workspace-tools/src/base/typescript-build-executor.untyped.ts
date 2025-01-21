@@ -34,32 +34,28 @@ export default defineUntypedSchema({
       title: "Bundle",
       type: "boolean",
       description: "Bundle the output"
-    },
-    $default: false
+    }
   },
   minify: {
     $schema: {
       title: "Minify",
       type: "boolean",
       description: "Minify the output"
-    },
-    $default: false
+    }
   },
   debug: {
     $schema: {
       title: "Debug",
       type: "boolean",
       description: "Debug the output"
-    },
-    $default: false
+    }
   },
   sourcemap: {
     $schema: {
       title: "Sourcemap",
       type: "boolean",
       description: "Generate a sourcemap"
-    },
-    $default: false
+    }
   },
   silent: {
     $schema: {

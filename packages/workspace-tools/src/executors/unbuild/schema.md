@@ -16,12 +16,12 @@ The output path for the build
 
 ## `entry`
 - **Type**: `array`
-- **Default**: `["{sourceRoot}/index.ts"]`
+- **Default**: `["{sourceRoot}"]`
 
-> Entry File(s)
+> Input Directory
 
 
-The entry file or files to build
+The directory to use as input for the build
 
 
 ## `tsconfig`
@@ -36,7 +36,6 @@ The path to the tsconfig file
 
 ## `bundle`
 - **Type**: `boolean`
-- **Default**: `false`
 
 > Bundle
 
@@ -46,7 +45,6 @@ Bundle the output
 
 ## `minify`
 - **Type**: `boolean`
-- **Default**: `false`
 
 > Minify
 
@@ -56,7 +54,6 @@ Minify the output
 
 ## `debug`
 - **Type**: `boolean`
-- **Default**: `false`
 
 > Debug
 
@@ -66,7 +63,6 @@ Debug the output
 
 ## `sourcemap`
 - **Type**: `boolean`
-- **Default**: `false`
 
 > Sourcemap
 
@@ -160,7 +156,7 @@ Watch for changes
 
 ## `clean`
 - **Type**: `boolean`
-- **Default**: `false`
+- **Default**: `true`
 
 > Clean
 
@@ -184,7 +180,6 @@ Stub the output
 
 ## `dependencies`
 - **Type**: `array`
-- **Default**: `[]`
 
 > Dependencies
 
@@ -194,7 +189,6 @@ The dependencies to install
 
 ## `peerDependencies`
 - **Type**: `array`
-- **Default**: `[]`
 
 > Peer Dependencies
 
@@ -204,7 +198,6 @@ The peer dependencies to install
 
 ## `devDependencies`
 - **Type**: `array`
-- **Default**: `[]`
 
 > Dev Dependencies
 

@@ -25,26 +25,22 @@ export const copyAssets = async (
   footer?: string
 ) => {
   const pendingAssets = Array.from(assets ?? []);
-  if (!pendingAssets?.some((asset: AssetGlob) => asset?.glob === "*.md")) {
-    pendingAssets.push({
-      input: projectRoot,
-      glob: "*.md",
-      output: "/"
-    });
-  }
+
+  pendingAssets.push({
+    input: projectRoot,
+    glob: "*.md",
+    output: "."
+  });
+  pendingAssets.push({
+    input: config.workspaceRoot,
+    glob: "LICENSE",
+    output: "."
+  });
 
   if (generatePackageJson === false) {
     pendingAssets.push({
-      input: sourceRoot,
+      input: projectRoot,
       glob: "package.json",
-      output: "."
-    });
-  }
-
-  if (!pendingAssets?.some((asset: AssetGlob) => asset?.glob === "LICENSE")) {
-    pendingAssets.push({
-      input: "",
-      glob: "LICENSE",
       output: "."
     });
   }

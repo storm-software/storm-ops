@@ -40,29 +40,25 @@
       "title": "Bundle",
       "type": "boolean",
       "description": "Bundle the output",
-      "id": "#bundle",
-      "default": false
+      "id": "#bundle"
     },
     "minify": {
       "title": "Minify",
       "type": "boolean",
       "description": "Minify the output",
-      "id": "#minify",
-      "default": false
+      "id": "#minify"
     },
     "debug": {
       "title": "Debug",
       "type": "boolean",
       "description": "Debug the output",
-      "id": "#debug",
-      "default": false
+      "id": "#debug"
     },
     "sourcemap": {
       "title": "Sourcemap",
       "type": "boolean",
       "description": "Generate a sourcemap",
-      "id": "#sourcemap",
-      "default": false
+      "id": "#sourcemap"
     },
     "silent": {
       "title": "Silent",
@@ -168,10 +164,6 @@
       "{sourceRoot}/index.ts"
     ],
     "tsconfig": "{projectRoot}/tsconfig.json",
-    "bundle": false,
-    "minify": false,
-    "debug": false,
-    "sourcemap": false,
     "silent": false,
     "target": "esnext",
     "format": [

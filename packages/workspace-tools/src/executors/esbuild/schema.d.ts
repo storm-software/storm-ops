@@ -41,7 +41,6 @@ export interface ESBuildExecutorSchema {
   * 
   * Bundle the output
   * 
-  * @default false
  */
  bundle?: boolean,
 
@@ -50,7 +49,6 @@ export interface ESBuildExecutorSchema {
   * 
   * Minify the output
   * 
-  * @default false
  */
  minify?: boolean,
 
@@ -59,7 +57,6 @@ export interface ESBuildExecutorSchema {
   * 
   * Debug the output
   * 
-  * @default false
  */
  debug?: boolean,
 
@@ -68,7 +65,6 @@ export interface ESBuildExecutorSchema {
   * 
   * Generate a sourcemap
   * 
-  * @default false
  */
  sourcemap?: boolean,
 

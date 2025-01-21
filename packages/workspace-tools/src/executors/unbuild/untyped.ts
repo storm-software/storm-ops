@@ -6,7 +6,8 @@ export default defineUntypedSchema({
   $schema: {
     id: "UnbuildExecutorSchema",
     title: "Unbuild Executor",
-    description: "A type definition for a unbuild executor schema"
+    description: "A type definition for a unbuild executor schema",
+    required: ["name", "entry"]
   },
   name: {
     $schema: {
@@ -15,6 +16,16 @@ export default defineUntypedSchema({
       description: "The name of the project/build"
     },
     $default: "{projectName}"
+  },
+  entry: {
+    $schema: {
+      title: "Input Directory",
+      format: "path",
+      type: "array",
+      description: "The directory to use as input for the build",
+      items: { type: "string" }
+    },
+    $default: ["{sourceRoot}"]
   },
   treeShaking: {
     $schema: {
@@ -38,7 +49,7 @@ export default defineUntypedSchema({
       type: "boolean",
       description: "Clean the output directory before building"
     },
-    $default: false
+    $default: true
   },
   stub: {
     $schema: {
@@ -76,8 +87,7 @@ export default defineUntypedSchema({
       items: {
         type: "string"
       }
-    },
-    $default: []
+    }
   },
   peerDependencies: {
     $schema: {
@@ -87,8 +97,7 @@ export default defineUntypedSchema({
       items: {
         type: "string"
       }
-    },
-    $default: []
+    }
   },
   devDependencies: {
     $schema: {
@@ -98,8 +107,7 @@ export default defineUntypedSchema({
       items: {
         type: "string"
       }
-    },
-    $default: []
+    }
   },
   alias: {
     $schema: {
@@ -107,8 +115,7 @@ export default defineUntypedSchema({
       type: "object",
       tsType: "Record<string, string>",
       description: "The alias to use"
-    },
-    $default: {}
+    }
   },
   replace: {
     $schema: {
@@ -116,15 +123,13 @@ export default defineUntypedSchema({
       type: "object",
       tsType: "Record<string, string>",
       description: "The replace to use"
-    },
-    $default: {}
+    }
   },
   rollup: {
     $schema: {
       title: "Rollup",
       type: "object",
       description: "The rollup options"
-    },
-    $default: {}
+    }
   }
 });

@@ -36,7 +36,6 @@ The path to the tsconfig file
 
 ## `bundle`
 - **Type**: `boolean`
-- **Default**: `false`
 
 > Bundle
 
@@ -46,7 +45,6 @@ Bundle the output
 
 ## `minify`
 - **Type**: `boolean`
-- **Default**: `false`
 
 > Minify
 
@@ -56,7 +54,6 @@ Minify the output
 
 ## `debug`
 - **Type**: `boolean`
-- **Default**: `false`
 
 > Debug
 
@@ -66,7 +63,6 @@ Debug the output
 
 ## `sourcemap`
 - **Type**: `boolean`
-- **Default**: `false`
 
 > Sourcemap
 
