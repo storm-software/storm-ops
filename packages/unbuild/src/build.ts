@@ -389,7 +389,7 @@ async function executeUnbuild(options: UnbuildResolvedOptions) {
     const config = {
       ...options,
       config: null,
-      rootDir: options.projectRoot
+      rootDir: joinPaths(options.config.workspaceRoot, options.projectRoot)
     } as BuildConfig;
 
     writeTrace(
