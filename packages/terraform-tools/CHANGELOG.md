@@ -1,3 +1,14 @@
+## 0.51.2 (2025-01-21)
+
+### Bug Fixes
+
+- **unbuild:** Resolved issue with package `exports` path ([faf23b0e](https://github.com/storm-software/storm-ops/commit/faf23b0e))
+
+### 🧱 Updated Dependencies
+
+- Updated workspace-tools to 1.235.2
+- Updated workspace-tools to 1.235.2
+
 ## 0.51.1 (2025-01-21)
 
 ### Bug Fixes

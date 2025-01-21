@@ -1,3 +1,9 @@
+## 1.138.2 (2025-01-21)
+
+### Bug Fixes
+
+- **unbuild:** Resolved issue with package `exports` path ([faf23b0e](https://github.com/storm-software/storm-ops/commit/faf23b0e))
+
 ## 1.138.1 (2025-01-21)
 
 ### Bug Fixes

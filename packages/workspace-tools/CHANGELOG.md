@@ -1,3 +1,15 @@
+## 1.235.2 (2025-01-21)
+
+### Bug Fixes
+
+- **unbuild:** Resolved issue with package `exports` path ([faf23b0e](https://github.com/storm-software/storm-ops/commit/faf23b0e))
+
+### 🧱 Updated Dependencies
+
+- Updated prettier to 0.28.1
+- Updated unbuild to 0.25.2
+- Updated unbuild to 0.25.2
+
 ## 1.235.1 (2025-01-21)
 
 ### Bug Fixes
