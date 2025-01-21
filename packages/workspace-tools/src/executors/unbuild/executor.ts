@@ -43,7 +43,7 @@ export async function unbuildExecutorFn(
   });
 
   const stormUnbuild = await jiti.import<StormUnbuildModule>(
-    "@storm-software/unbuild/build"
+    jiti.esmResolve("@storm-software/unbuild/build")
   );
 
   // #endregion Prepare build context variables
