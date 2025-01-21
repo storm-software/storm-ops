@@ -166,11 +166,17 @@ export async function resolveOptions(
     tsconfig,
     clean: false,
     entries: entries.reduce((ret, entry) => {
-      const entryPath = dirname(entry);
+      let entryPath = dirname(entry.replace(options.projectRoot, ""));
+      if (entryPath.startsWith(".")) {
+        entryPath = entryPath.substring(1);
+      }
+      if (entryPath.startsWith("/")) {
+        entryPath = entryPath.substring(1);
+      }
 
       ret.push({
         builder: "mkdist",
-        input: `.${entryPath.replace(options.projectRoot, "")}`,
+        input: `./${entryPath}`,
         outDir: joinPaths(
           relative(
             joinPaths(config.workspaceRoot, options.projectRoot),
@@ -185,7 +191,7 @@ export async function resolveOptions(
 
       ret.push({
         builder: "mkdist",
-        input: `.${entryPath.replace(options.projectRoot, "")}`,
+        input: `./${entryPath}`,
         outDir: joinPaths(
           relative(
             joinPaths(config.workspaceRoot, options.projectRoot),
@@ -373,24 +379,37 @@ export async function generatePackageJson(options: UnbuildResolvedOptions) {
 
     packageJson.exports ??= {};
 
-    const files = await new Glob("**/*.{ts,tsx}", {
-      absolute: false,
-      cwd: options.sourceRoot,
-      root: options.sourceRoot
-    }).walk();
-    files.forEach(file => {
-      addPackageJsonExport(file, packageJson.type, options.sourceRoot);
+    await Promise.all(
+      options.entries
+        .reduce((ret, entry) => {
+          const entryPath = typeof entry === "string" ? entry : entry.input;
+          if (!ret.includes(entryPath)) {
+            ret.push(entryPath);
+          }
 
-      const split = file.split(".");
-      split.pop();
-      const entry = split.join(".").replaceAll("\\", "/");
+          return ret;
+        }, [] as string[])
+        .map(async entryPath => {
+          const files = await new Glob("**/*.{ts,tsx}", {
+            absolute: false,
+            cwd: entryPath,
+            root: entryPath
+          }).walk();
+          files.forEach(file => {
+            addPackageJsonExport(file, packageJson.type, options.sourceRoot);
 
-      packageJson.exports[`./${entry}`] ??= addPackageJsonExport(
-        entry,
-        packageJson.type,
-        options.sourceRoot
-      );
-    });
+            const split = file.split(".");
+            split.pop();
+            const entry = split.join(".").replaceAll("\\", "/");
+
+            packageJson.exports[`./${entry}`] ??= addPackageJsonExport(
+              entry,
+              packageJson.type,
+              options.sourceRoot
+            );
+          });
+        })
+    );
 
     packageJson.main ??= "./dist/index.cjs";
     packageJson.module ??= "./dist/index.mjs";
