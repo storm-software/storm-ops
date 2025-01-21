@@ -26,14 +26,19 @@ import {
 } from "@storm-software/build-tools";
 import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
 import {
+  formatLogMessage,
   getStopwatch,
   writeDebug,
   writeFatal,
-  writeSuccess
+  writeSuccess,
+  writeTrace
 } from "@storm-software/config-tools/logger/console";
 import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
 import { LogLevelLabel } from "@storm-software/config-tools/types";
-import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
+import {
+  correctPaths,
+  joinPaths
+} from "@storm-software/config-tools/utilities/correct-paths";
 import { StormConfig } from "@storm-software/config/types";
 import defu from "defu";
 import { LogLevel } from "esbuild";
@@ -161,10 +166,10 @@ async function resolveOptions(
           relative(
             joinPaths(config.workspaceRoot, options.projectRoot),
             config.workspaceRoot
-          ).replaceAll("\\", "/"),
+          ),
           outputPath,
           "dist"
-        ).replaceAll("\\", "/"),
+        ),
         declaration: options.emitTypes !== false,
         format: "esm"
       },
@@ -175,10 +180,10 @@ async function resolveOptions(
           relative(
             joinPaths(config.workspaceRoot, options.projectRoot),
             config.workspaceRoot
-          ).replaceAll("\\", "/"),
+          ),
           outputPath,
           "dist"
-        ).replaceAll("\\", "/"),
+        ),
         declaration: options.emitTypes !== false,
         format: "cjs",
         ext: "cjs"
@@ -381,11 +386,20 @@ async function executeUnbuild(options: UnbuildResolvedOptions) {
   try {
     // const unbuild = await resolveUnbuild(options);
 
-    await unbuild(options.projectRoot, false, {
+    const config = {
       ...options,
       config: null,
       rootDir: options.projectRoot
-    } as BuildConfig);
+    } as BuildConfig;
+
+    writeTrace(
+      `Running with unbuild configuration:
+${formatLogMessage(config)}
+`,
+      options.config
+    );
+
+    await unbuild(options.projectRoot, false, config);
   } finally {
     stopwatch();
   }
@@ -463,7 +477,7 @@ export async function build(options: UnbuildOptions) {
   const stopwatch = getStopwatch("Unbuild pipeline");
 
   try {
-    options.projectRoot = projectRoot;
+    options.projectRoot = correctPaths(projectRoot);
     const resolvedOptions = await resolveOptions(options, config);
 
     await cleanOutputPath(resolvedOptions);

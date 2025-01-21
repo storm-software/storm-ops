@@ -43,21 +43,16 @@ export const getLogFn = (
     LogLevelLabel.INFO) as LogLevelLabel;
 
   if (
-    (typeof logLevel === "number" &&
-      (logLevel >= getLogLevel(configLogLevel) ||
-        logLevel <= LogLevel.SILENT)) ||
-    (typeof logLevel === "string" &&
-      getLogLevel(logLevel) >= getLogLevel(configLogLevel))
+    logLevel > getLogLevel(configLogLevel) ||
+    logLevel <= LogLevel.SILENT ||
+    getLogLevel(configLogLevel) <= LogLevel.SILENT
   ) {
     return (_: string) => {
       /* noop */
     };
   }
 
-  if (
-    (typeof logLevel === "number" && LogLevel.FATAL >= logLevel) ||
-    (typeof logLevel === "string" && LogLevel.FATAL >= getLogLevel(logLevel))
-  ) {
+  if (typeof logLevel === "number" && LogLevel.FATAL >= logLevel) {
     return (message?: any) => {
       console.error(
         `
@@ -67,10 +62,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.fatal ?? "#7d1a1a")(`[${CO
     };
   }
 
-  if (
-    (typeof logLevel === "number" && LogLevel.ERROR >= logLevel) ||
-    (typeof logLevel === "string" && LogLevel.ERROR >= getLogLevel(logLevel))
-  ) {
+  if (typeof logLevel === "number" && LogLevel.ERROR >= logLevel) {
     return (message?: any) => {
       console.error(
         `
@@ -80,10 +72,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.danger ?? "#f85149")(`[${C
     };
   }
 
-  if (
-    (typeof logLevel === "number" && LogLevel.WARN >= logLevel) ||
-    (typeof logLevel === "string" && LogLevel.WARN >= getLogLevel(logLevel))
-  ) {
+  if (typeof logLevel === "number" && LogLevel.WARN >= logLevel) {
     return (message?: any) => {
       console.warn(
         `
@@ -93,10 +82,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.warning ?? "#e3b341")(`[${
     };
   }
 
-  if (
-    (typeof logLevel === "number" && LogLevel.SUCCESS >= logLevel) ||
-    (typeof logLevel === "string" && LogLevel.SUCCESS >= getLogLevel(logLevel))
-  ) {
+  if (typeof logLevel === "number" && LogLevel.SUCCESS >= logLevel) {
     return (message?: any) => {
       console.info(
         `
@@ -106,10 +92,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.success ?? "#56d364")(`[${
     };
   }
 
-  if (
-    (typeof logLevel === "number" && LogLevel.INFO >= logLevel) ||
-    (typeof logLevel === "string" && LogLevel.INFO >= getLogLevel(logLevel))
-  ) {
+  if (typeof logLevel === "number" && LogLevel.INFO >= logLevel) {
     return (message?: any) => {
       console.info(
         `
@@ -119,14 +102,21 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.info ?? "#58a6ff")(`[${CON
     };
   }
 
-  if (
-    (typeof logLevel === "number" && LogLevel.TRACE >= logLevel) ||
-    (typeof logLevel === "string" && LogLevel.TRACE >= getLogLevel(logLevel))
-  ) {
+  if (typeof logLevel === "number" && LogLevel.DEBUG >= logLevel) {
     return (message?: any) => {
       console.debug(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.brand ?? "#1fb2a6")(`[${CONSOLE_ICONS[LogLevelLabel.DEBUG]} Debug]`)} ${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.brand ?? "#1fb2a6")(`[${CONSOLE_ICONS[LogLevelLabel.DEBUG]}  Debug]`)} ${_chalk.bold.whiteBright(formatLogMessage(message))}
+`
+      );
+    };
+  }
+
+  if (typeof logLevel === "number" && LogLevel.TRACE >= logLevel) {
+    return (message?: any) => {
+      console.debug(
+        `
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.brand ?? "#1fb2a6")(`[${CONSOLE_ICONS[LogLevelLabel.TRACE]}  Trace]`)} ${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
