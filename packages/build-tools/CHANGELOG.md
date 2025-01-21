@@ -1,3 +1,9 @@
+## 0.134.0 (2025-01-21)
+
+### Features
+
+- **unbuild:** Update the `package.json` file via the `entry` option ([7eaf4a9b](https://github.com/storm-software/storm-ops/commit/7eaf4a9b))
+
 ## 0.133.1 (2025-01-21)
 
 ### Bug Fixes
