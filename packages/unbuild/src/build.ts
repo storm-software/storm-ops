@@ -44,7 +44,7 @@ import { LogLevel } from "esbuild";
 import { Glob } from "glob";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
-import { relative } from "node:path";
+import { dirname, relative } from "node:path";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
 import {
   type BuildConfig,
@@ -166,9 +166,11 @@ export async function resolveOptions(
     tsconfig,
     clean: false,
     entries: entries.reduce((ret, entry) => {
+      const entryPath = dirname(entry);
+
       ret.push({
         builder: "mkdist",
-        input: `.${entry.replace(options.projectRoot, "")}`,
+        input: `.${entryPath.replace(options.projectRoot, "")}`,
         outDir: joinPaths(
           relative(
             joinPaths(config.workspaceRoot, options.projectRoot),
@@ -183,7 +185,7 @@ export async function resolveOptions(
 
       ret.push({
         builder: "mkdist",
-        input: `.${entry.replace(options.projectRoot, "")}`,
+        input: `.${entryPath.replace(options.projectRoot, "")}`,
         outDir: joinPaths(
           relative(
             joinPaths(config.workspaceRoot, options.projectRoot),
