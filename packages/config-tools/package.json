@@ -1,6 +1,7 @@
 {
   "name": "@storm-software/config-tools",
   "version": "1.138.2",
+  "type": "module",
   "description": "⚡The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.",
   "repository": {
     "type": "github",
@@ -30,18 +31,18 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "exports": {
     "./package.json": "./package.json",
     "./types": {
       "import": {
-        "types": "./dist/types.d.mts",
-        "default": "./dist/types.mjs"
-      },
-      "require": {
         "types": "./dist/types.d.ts",
         "default": "./dist/types.js"
+      },
+      "require": {
+        "types": "./dist/types.d.cts",
+        "default": "./dist/types.cjs"
       },
       "default": {
         "types": "./dist/types.d.ts",
@@ -50,12 +51,12 @@
     },
     "./index": {
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
       },
       "default": {
         "types": "./dist/index.d.ts",
@@ -64,12 +65,12 @@
     },
     ".": {
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
       },
       "default": {
         "types": "./dist/index.d.ts",
@@ -78,12 +79,12 @@
     },
     "./create-storm-config": {
       "import": {
-        "types": "./dist/create-storm-config.d.mts",
-        "default": "./dist/create-storm-config.mjs"
-      },
-      "require": {
         "types": "./dist/create-storm-config.d.ts",
         "default": "./dist/create-storm-config.js"
+      },
+      "require": {
+        "types": "./dist/create-storm-config.d.cts",
+        "default": "./dist/create-storm-config.cjs"
       },
       "default": {
         "types": "./dist/create-storm-config.d.ts",
@@ -92,12 +93,12 @@
     },
     "./config-file": {
       "import": {
-        "types": "./dist/config-file/index.d.mts",
-        "default": "./dist/config-file/index.mjs"
-      },
-      "require": {
         "types": "./dist/config-file/index.d.ts",
         "default": "./dist/config-file/index.js"
+      },
+      "require": {
+        "types": "./dist/config-file/index.d.cts",
+        "default": "./dist/config-file/index.cjs"
       },
       "default": {
         "types": "./dist/config-file/index.d.ts",
@@ -106,12 +107,12 @@
     },
     "./config-file/*": {
       "import": {
-        "types": "./dist/config-file/*.d.mts",
-        "default": "./dist/config-file/*.mjs"
-      },
-      "require": {
         "types": "./dist/config-file/*.d.ts",
         "default": "./dist/config-file/*.js"
+      },
+      "require": {
+        "types": "./dist/config-file/*.d.cts",
+        "default": "./dist/config-file/*.cjs"
       },
       "default": {
         "types": "./dist/config-file/*.d.ts",
@@ -120,12 +121,12 @@
     },
     "./env": {
       "import": {
-        "types": "./dist/env/index.d.mts",
-        "default": "./dist/env/index.mjs"
-      },
-      "require": {
         "types": "./dist/env/index.d.ts",
         "default": "./dist/env/index.js"
+      },
+      "require": {
+        "types": "./dist/env/index.d.cts",
+        "default": "./dist/env/index.cjs"
       },
       "default": {
         "types": "./dist/env/index.d.ts",
@@ -134,12 +135,12 @@
     },
     "./env/*": {
       "import": {
-        "types": "./dist/env/*.d.mts",
-        "default": "./dist/env/*.mjs"
-      },
-      "require": {
         "types": "./dist/env/*.d.ts",
         "default": "./dist/env/*.js"
+      },
+      "require": {
+        "types": "./dist/env/*.d.cts",
+        "default": "./dist/env/*.cjs"
       },
       "default": {
         "types": "./dist/env/*.d.ts",
@@ -148,12 +149,12 @@
     },
     "./logger": {
       "import": {
-        "types": "./dist/logger/index.d.mts",
-        "default": "./dist/logger/index.mjs"
-      },
-      "require": {
         "types": "./dist/logger/index.d.ts",
         "default": "./dist/logger/index.js"
+      },
+      "require": {
+        "types": "./dist/logger/index.d.cts",
+        "default": "./dist/logger/index.cjs"
       },
       "default": {
         "types": "./dist/logger/index.d.ts",
@@ -162,12 +163,12 @@
     },
     "./logger/*": {
       "import": {
-        "types": "./dist/logger/*.d.mts",
-        "default": "./dist/logger/*.mjs"
-      },
-      "require": {
         "types": "./dist/logger/*.d.ts",
         "default": "./dist/logger/*.js"
+      },
+      "require": {
+        "types": "./dist/logger/*.d.cts",
+        "default": "./dist/logger/*.cjs"
       },
       "default": {
         "types": "./dist/logger/*.d.ts",
@@ -176,12 +177,12 @@
     },
     "./utilities": {
       "import": {
-        "types": "./dist/utilities/index.d.mts",
-        "default": "./dist/utilities/index.mjs"
-      },
-      "require": {
         "types": "./dist/utilities/index.d.ts",
         "default": "./dist/utilities/index.js"
+      },
+      "require": {
+        "types": "./dist/utilities/index.d.cts",
+        "default": "./dist/utilities/index.cjs"
       },
       "default": {
         "types": "./dist/utilities/index.d.ts",
@@ -190,12 +191,12 @@
     },
     "./utilities/*": {
       "import": {
-        "types": "./dist/utilities/*.d.mts",
-        "default": "./dist/utilities/*.mjs"
-      },
-      "require": {
         "types": "./dist/utilities/*.d.ts",
         "default": "./dist/utilities/*.js"
+      },
+      "require": {
+        "types": "./dist/utilities/*.d.cts",
+        "default": "./dist/utilities/*.cjs"
       },
       "default": {
         "types": "./dist/utilities/*.d.ts",
@@ -224,7 +225,7 @@
     "monorepo"
   ],
   "dependencies": {
-    "jiti": "^2.4.2",
+    "jiti": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {

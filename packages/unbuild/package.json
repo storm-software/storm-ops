@@ -1,6 +1,7 @@
 {
   "name": "@storm-software/unbuild",
   "version": "0.25.2",
+  "type": "module",
   "description": "A package containing `unbuild` utilities for building Storm Software libraries and applications",
   "repository": {
     "type": "github",
@@ -46,21 +47,21 @@
   },
   "bin": {
     "storm-unbuild": "./bin/unbuild.js",
-    "storm-unbuild-cjs": "./bin/unbuild.js",
-    "storm-unbuild-esm": "./bin/unbuild.mjs"
+    "storm-unbuild-cjs": "./bin/unbuild.cjs",
+    "storm-unbuild-esm": "./bin/unbuild.js"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "exports": {
     "./package.json": "./package.json",
     "./types": {
       "import": {
-        "types": "./dist/types.d.mts",
-        "default": "./dist/types.mjs"
-      },
-      "require": {
         "types": "./dist/types.d.ts",
         "default": "./dist/types.js"
+      },
+      "require": {
+        "types": "./dist/types.d.cts",
+        "default": "./dist/types.cjs"
       },
       "default": {
         "types": "./dist/types.d.ts",
@@ -69,12 +70,12 @@
     },
     "./index": {
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
       },
       "default": {
         "types": "./dist/index.d.ts",
@@ -83,26 +84,26 @@
     },
     ".": {
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
       },
       "default": {
         "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "default": "./dist/index.cjs"
       }
     },
     "./config": {
       "import": {
-        "types": "./dist/config.d.mts",
-        "default": "./dist/config.mjs"
-      },
-      "require": {
         "types": "./dist/config.d.ts",
         "default": "./dist/config.js"
+      },
+      "require": {
+        "types": "./dist/config.d.cts",
+        "default": "./dist/config.cjs"
       },
       "default": {
         "types": "./dist/config.d.ts",
@@ -111,12 +112,12 @@
     },
     "./clean": {
       "import": {
-        "types": "./dist/clean.d.mts",
-        "default": "./dist/clean.mjs"
-      },
-      "require": {
         "types": "./dist/clean.d.ts",
         "default": "./dist/clean.js"
+      },
+      "require": {
+        "types": "./dist/clean.d.cts",
+        "default": "./dist/clean.cjs"
       },
       "default": {
         "types": "./dist/clean.d.ts",
@@ -125,12 +126,12 @@
     },
     "./build": {
       "import": {
-        "types": "./dist/build.d.mts",
-        "default": "./dist/build.mjs"
-      },
-      "require": {
         "types": "./dist/build.d.ts",
         "default": "./dist/build.js"
+      },
+      "require": {
+        "types": "./dist/build.d.cts",
+        "default": "./dist/build.cjs"
       },
       "default": {
         "types": "./dist/build.d.ts",
@@ -139,12 +140,12 @@
     },
     "./plugins/*": {
       "import": {
-        "types": "./dist/plugins/*.d.mts",
-        "default": "./dist/plugins/*.mjs"
-      },
-      "require": {
         "types": "./dist/plugins/*.d.ts",
         "default": "./dist/plugins/*.js"
+      },
+      "require": {
+        "types": "./dist/plugins/*.d.cts",
+        "default": "./dist/plugins/*.cjs"
       },
       "default": {
         "types": "./dist/plugins/*.d.ts",

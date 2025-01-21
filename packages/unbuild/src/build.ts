@@ -36,7 +36,7 @@ import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { relative } from "node:path";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
-import type { BuildConfig, BuildContext } from "unbuild";
+import { type BuildConfig, type BuildContext, build as unbuild } from "unbuild";
 import { cleanDirectories } from "./clean";
 import { getDefaultBuildPlugins } from "./config";
 import type { UnbuildOptions, UnbuildResolvedOptions } from "./types";
@@ -362,23 +362,23 @@ type UnbuildModule = {
 /**
  * Resolve the unbuild package using [Jiti](https://github.com/unjs/jiti)
  */
-async function resolveUnbuild(
-  options: UnbuildResolvedOptions
-): Promise<UnbuildModule> {
-  options.logger.trace(`Resolving Unbuild package with Jiti`);
+// async function resolveUnbuild(
+//   options: UnbuildResolvedOptions
+// ): Promise<UnbuildModule> {
+//   options.logger.trace(`Resolving Unbuild package with Jiti`);
 
-  try {
-    return options.jiti.import<UnbuildModule>("unbuild");
-  } catch (error) {
-    options.logger.error(
-      "  ❌  An error occurred while resolving the Unbuild package"
-    );
+//   try {
+//     return options.jiti.import<UnbuildModule>("unbuild");
+//   } catch (error) {
+//     options.logger.error(
+//       "  ❌  An error occurred while resolving the Unbuild package"
+//     );
 
-    throw new Error("An error occurred while resolving the Unbuild package", {
-      cause: error
-    });
-  }
-}
+//     throw new Error("An error occurred while resolving the Unbuild package", {
+//       cause: error
+//     });
+//   }
+// }
 
 /**
  * Execute esbuild with all the configurations we pass
@@ -392,9 +392,9 @@ async function executeUnbuild(options: UnbuildResolvedOptions) {
   );
 
   try {
-    const unbuild = await resolveUnbuild(options);
+    // const unbuild = await resolveUnbuild(options);
 
-    await unbuild.build(options.projectRoot, false, {
+    await unbuild(options.projectRoot, false, {
       ...options,
       rootDir: options.projectRoot
     } as BuildConfig);

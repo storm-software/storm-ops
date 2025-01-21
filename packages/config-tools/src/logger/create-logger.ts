@@ -1,5 +1,5 @@
 import { StormConfig } from "@storm-software/config/types";
-import { createJiti } from "jiti";
+import chalk from "chalk";
 import { Logger, LogLevel } from "../types";
 import { findWorkspaceRoot } from "../utilities/find-workspace-root";
 import { getLogFn, getStopwatch } from "./console";
@@ -12,12 +12,12 @@ export async function createLogger(
     throw new Error("Cannot find workspace root");
   }
 
-  const jiti = createJiti(config?.workspaceRoot || workspaceRoot, {
+  /*const jiti = createJiti(config?.workspaceRoot || workspaceRoot, {
     fsCache: "node_modules/.cache/storm/jiti",
     interopDefault: true
   });
 
-  const chalk = await jiti.import<any>("chalk");
+  const chalk = await jiti.import<any>("chalk");*/
 
   const writeFatal = getLogFn(LogLevel.FATAL, config, chalk);
   const writeError = getLogFn(LogLevel.ERROR, config, chalk);

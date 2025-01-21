@@ -58,8 +58,8 @@ catalogs:
       specifier: ^2.0.0-beta.2
       version: 2.0.1
     chalk:
-      specifier: ^4.1.2
-      version: 4.1.2
+      specifier: ^5.4.1
+      version: 5.4.1
     commander:
       specifier: ^12.1.0
       version: 12.1.0
@@ -84,6 +84,9 @@ catalogs:
     glob:
       specifier: ^11.0.1
       version: 11.0.1
+    jiti:
+      specifier: ^2.4.2
+      version: 2.4.2
     nx:
       specifier: ^20.3.1
       version: 20.3.2
@@ -229,7 +232,7 @@ importers:
         version: 2.0.1
       chalk:
         specifier: 'catalog:'
-        version: 4.1.2
+        version: 5.4.1
       copyfiles:
         specifier: 'catalog:'
         version: 2.4.1
@@ -405,7 +408,7 @@ importers:
   packages/config-tools:
     dependencies:
       jiti:
-        specifier: ^2.4.2
+        specifier: 'catalog:'
         version: 2.4.2
       zod:
         specifier: 'catalog:'
@@ -419,7 +422,7 @@ importers:
         version: 2.0.1
       chalk:
         specifier: 'catalog:'
-        version: 4.1.2
+        version: 5.4.1
       defu:
         specifier: 'catalog:'
         version: 6.1.4
@@ -856,7 +859,7 @@ importers:
         version: 1.7.2
       chalk:
         specifier: 'catalog:'
-        version: 4.1.2
+        version: 5.4.1
       chalk-template:
         specifier: 1.1.0
         version: 1.1.0
@@ -3779,7 +3782,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
