@@ -1,3 +1,9 @@
+## 0.26.2 (2025-01-21)
+
+### Bug Fixes
+
+- **unbuild:** Resolve issue with invalid `config` parameter passed to `unbuild` executor ([d302aade](https://github.com/storm-software/storm-ops/commit/d302aade))
+
 ## 0.26.1 (2025-01-21)
 
 ### Bug Fixes
