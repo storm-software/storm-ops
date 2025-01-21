@@ -1,3 +1,10 @@
+## 0.26.1 (2025-01-21)
+
+### Bug Fixes
+
+- **unbuild:** Removed old references to deprecated `logger` option ([e6e81ede](https://github.com/storm-software/storm-ops/commit/e6e81ede))
+- **unbuild:** Resolve issue with missing `config` parameter in write log calls ([3b5cda45](https://github.com/storm-software/storm-ops/commit/3b5cda45))
+
 ## 0.26.0 (2025-01-21)
 
 ### Features
