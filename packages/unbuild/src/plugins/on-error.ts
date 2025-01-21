@@ -15,6 +15,7 @@
 
  -------------------------------------------------------------------*/
 
+import { writeError } from "@storm-software/config-tools/logger/console";
 import type { Plugin } from "rollup";
 import { UnbuildOptions, UnbuildResolvedOptions } from "../types";
 
@@ -28,22 +29,24 @@ export const onErrorPlugin = (
   name: "storm:on-error",
   buildEnd(error?: Error | undefined) {
     if (error) {
-      resolvedOptions.logger.error(
+      writeError(
         `The following errors occurred during the build:
 ${error ? error.message : "Unknown build error"}
 
-    `
+    `,
+        resolvedOptions.config
       );
 
       throw new Error("Storm unbuild process failed with errors.");
     }
   },
   renderError(error?: Error | undefined) {
-    resolvedOptions.logger.error(
+    writeError(
       `The following errors occurred during the build:
 ${error ? error.message : "Unknown build error"}
 
-  `
+  `,
+      resolvedOptions.config
     );
 
     throw new Error("Storm unbuild process failed with errors.");
