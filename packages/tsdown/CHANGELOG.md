@@ -1,3 +1,15 @@
+## 0.21.1 (2025-01-21)
+
+### Continuous Integration
+
+- **workspace-tools:** Mark all internal packages as external ([f8c65aeb](https://github.com/storm-software/storm-ops/commit/f8c65aeb))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.137.2
+- Updated build-tools to 0.130.2
+- Updated config to 1.97.1
+
 ## 0.21.0 (2025-01-20)
 
 ### Features

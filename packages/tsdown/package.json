@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/tsdown",
-  "version": "0.21.0",
+  "version": "0.21.1",
   "type": "module",
   "description": "A package containing `tsdown` utilities for building Storm Software libraries and applications",
   "repository": {
@@ -218,9 +218,9 @@
     "@microsoft/api-extractor": "catalog:",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/build-tools": "0.130.1",
-    "@storm-software/config": "1.97.0",
-    "@storm-software/config-tools": "1.137.1",
+    "@storm-software/build-tools": "0.130.2",
+    "@storm-software/config": "1.97.1",
+    "@storm-software/config-tools": "1.137.2",
     "@types/node": "catalog:",
     "defu": "catalog:",
     "rollup": "4.29.1",

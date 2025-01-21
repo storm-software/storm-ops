@@ -1,3 +1,16 @@
+## 1.234.2 (2025-01-21)
+
+### Continuous Integration
+
+- **workspace-tools:** Mark all internal packages as external ([f8c65aeb](https://github.com/storm-software/storm-ops/commit/f8c65aeb))
+
+### 🧱 Updated Dependencies
+
+- Updated esbuild to 0.20.1
+- Updated unbuild to 0.24.2
+- Updated unbuild to 0.24.2
+- Updated tsdown to 0.21.1
+
 ## 1.234.1 (2025-01-20)
 
 ### Miscellaneous
