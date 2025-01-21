@@ -383,6 +383,7 @@ async function executeUnbuild(options: UnbuildResolvedOptions) {
 
     await unbuild(options.projectRoot, false, {
       ...options,
+      config: null,
       rootDir: options.projectRoot
     } as BuildConfig);
   } finally {
