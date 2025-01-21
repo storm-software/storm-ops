@@ -1,3 +1,9 @@
+## 1.97.2 (2025-01-21)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with invalid import path ([42a07d0c](https://github.com/storm-software/storm-ops/commit/42a07d0c))
+
 ## 1.97.1 (2025-01-21)
 
 ### Continuous Integration

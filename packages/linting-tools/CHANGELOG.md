@@ -1,3 +1,14 @@
+## 1.105.2 (2025-01-21)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with invalid import path ([42a07d0c](https://github.com/storm-software/storm-ops/commit/42a07d0c))
+
+### 🧱 Updated Dependencies
+
+- Updated cspell to 0.7.2
+- Updated cspell to 0.7.2
+
 ## 1.105.1 (2025-01-21)
 
 ### Continuous Integration

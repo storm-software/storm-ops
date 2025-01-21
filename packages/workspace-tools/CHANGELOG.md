@@ -1,3 +1,16 @@
+## 1.235.1 (2025-01-21)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with invalid import path ([42a07d0c](https://github.com/storm-software/storm-ops/commit/42a07d0c))
+
+### 🧱 Updated Dependencies
+
+- Updated esbuild to 0.20.2
+- Updated unbuild to 0.25.1
+- Updated unbuild to 0.25.1
+- Updated tsdown to 0.21.2
+
 ## 1.235.0 (2025-01-21)
 
 ### Features
