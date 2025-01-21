@@ -1,3 +1,9 @@
+## 0.111.5 (2025-01-21)
+
+### Bug Fixes
+
+- **eslint:** Ensure the correct `ignore` parameters are applied in preset ([75e8bbae](https://github.com/storm-software/storm-ops/commit/75e8bbae))
+
 ## 0.111.4 (2025-01-21)
 
 ### Dependency Upgrades

@@ -1,3 +1,17 @@
+## 0.28.0 (2025-01-21)
+
+### Features
+
+- **unbuild:** Added the `entry` parameter to allow configurable/multiple directories ([ed51dde7](https://github.com/storm-software/storm-ops/commit/ed51dde7))
+
+### Bug Fixes
+
+- **eslint:** Ensure the correct `ignore` parameters are applied in preset ([75e8bbae](https://github.com/storm-software/storm-ops/commit/75e8bbae))
+
+### 🧱 Updated Dependencies
+
+- Updated build-tools to 0.133.0
+
 ## 0.27.1 (2025-01-21)
 
 ### Bug Fixes

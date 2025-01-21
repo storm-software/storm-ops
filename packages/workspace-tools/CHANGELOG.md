@@ -1,3 +1,14 @@
+## 1.237.0 (2025-01-21)
+
+### Features
+
+- **unbuild:** Added the `entry` parameter to allow configurable/multiple directories ([ed51dde7](https://github.com/storm-software/storm-ops/commit/ed51dde7))
+
+### 🧱 Updated Dependencies
+
+- Updated unbuild to 0.28.0
+- Updated unbuild to 0.28.0
+
 ## 1.236.0 (2025-01-21)
 
 ### Features
