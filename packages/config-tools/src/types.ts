@@ -35,6 +35,17 @@ export const LogLevelLabel = {
   ALL: "all" as LogLevelLabel
 } as const;
 
+export type Logger = {
+  fatal: (message?: any) => void;
+  error: (message?: any) => void;
+  warning: (message?: any) => void;
+  info: (message?: any) => void;
+  success: (message?: any) => void;
+  debug: (message?: any) => void;
+  trace: (message?: any) => void;
+  getStopwatch: (name: string) => () => void;
+};
+
 // export type LogType =
 //   | "error"
 //   | "fatal"

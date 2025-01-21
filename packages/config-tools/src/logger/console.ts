@@ -16,10 +16,9 @@ import { getLogLevel } from "./get-log-level";
  */
 export const getLogFn = (
   logLevel: number | LogLevel = LogLevel.INFO,
-  config: Partial<StormConfig> = {}
+  config: Partial<StormConfig> = {},
+  _chalk: ReturnType<typeof getChalk> = getChalk()
 ): ((message?: any) => void) => {
-  const _chalk = getChalk();
-
   const colors =
     !(config.colors as ColorConfig)?.dark &&
     !config.colors?.["base"] &&

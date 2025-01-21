@@ -20,7 +20,22 @@ export async function clean(
   writeDebug(` 🧹  Cleaning ${name} output path: ${directory}`, config);
   const stopwatch = getStopwatch(`${name} output clean`);
 
-  await rm(directory, { recursive: true, force: true });
+  await cleanDirectories(name, directory, config);
 
   stopwatch();
+}
+
+/**
+ * Clean the Unbuild output path
+ *
+ * @param name - The name of the executor
+ * @param directory - The directory to clean
+ * @param config - The StormConfig object
+ */
+export async function cleanDirectories(
+  name = "Unbuild",
+  directory: string,
+  config?: StormConfig
+) {
+  await rm(directory, { recursive: true, force: true });
 }

@@ -20,6 +20,7 @@ import {
   TypeScriptBuildOptions,
   TypeScriptBuildResolvedOptions
 } from "@storm-software/build-tools";
+import type { Logger } from "@storm-software/config-tools/types";
 import { Jiti } from "jiti";
 import type { BuildConfig, BuildOptions, RollupBuildOptions } from "unbuild";
 
@@ -68,6 +69,7 @@ export type UnbuildResolvedOptions = Omit<
     entries: BuildOptions["entries"];
     declaration: BuildOptions["declaration"];
     jiti: Jiti;
+    logger: Logger;
   };
 
 export type UnbuildCLIOptions = AdditionalCLIOptions &
