@@ -1,3 +1,14 @@
+## 0.51.1 (2025-01-21)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with invalid import path ([42a07d0c](https://github.com/storm-software/storm-ops/commit/42a07d0c))
+
+### 🧱 Updated Dependencies
+
+- Updated workspace-tools to 1.235.1
+- Updated workspace-tools to 1.235.1
+
 ## 0.51.0 (2025-01-21)
 
 ### Features
