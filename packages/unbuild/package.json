@@ -125,16 +125,16 @@
     },
     "./build": {
       "import": {
-        "types": "./dist/build/index.d.mts",
-        "default": "./dist/build/index.mjs"
+        "types": "./dist/build.d.mts",
+        "default": "./dist/build.mjs"
       },
       "require": {
-        "types": "./dist/build/index.d.ts",
-        "default": "./dist/build/index.js"
+        "types": "./dist/build.d.ts",
+        "default": "./dist/build.js"
       },
       "default": {
-        "types": "./dist/build/index.d.ts",
-        "default": "./dist/build/index.js"
+        "types": "./dist/build.d.ts",
+        "default": "./dist/build.js"
       }
     },
     "./plugins/*": {
