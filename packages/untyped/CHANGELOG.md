@@ -1,3 +1,14 @@
+## 0.6.0 (2025-01-21)
+
+### Features
+
+- **config-tools:** Added the `createLogger` function to drive CommonJs modules ([0cee1525](https://github.com/storm-software/storm-ops/commit/0cee1525))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.138.0
+- Updated build-tools to 0.131.0
+
 ## 0.5.2 (2025-01-21)
 
 ### Continuous Integration
