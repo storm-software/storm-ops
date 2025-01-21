@@ -15,11 +15,8 @@ export default defineConfig([
     sourcemap: false,
     shims: true,
     tsconfig: "./tsconfig.json",
-    noExternal: [
-      "unbuild",
-      "rollup-plugin-typescript2",
-      "@storm-software/config-tools"
-    ]
+    external: ["vue-tsc", "vue/compiler-sfc"],
+    noExternal: ["unbuild"]
   },
   {
     name: "unbuild-bin",
@@ -35,10 +32,7 @@ export default defineConfig([
     sourcemap: false,
     shims: true,
     tsconfig: "./tsconfig.json",
-    noExternal: [
-      "unbuild",
-      "rollup-plugin-typescript2",
-      "@storm-software/config-tools"
-    ]
+    external: ["vue-tsc", "vue/compiler-sfc"],
+    noExternal: ["unbuild"]
   }
 ]);

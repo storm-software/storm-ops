@@ -351,13 +351,13 @@ async function generatePackageJson(options: UnbuildResolvedOptions) {
   return options;
 }
 
-type UnbuildModule = {
-  build: (
-    rootDir: string,
-    stub: boolean,
-    inputConfig: BuildConfig
-  ) => Promise<void>;
-};
+// type UnbuildModule = {
+//   build: (
+//     rootDir: string,
+//     stub: boolean,
+//     inputConfig: BuildConfig
+//   ) => Promise<void>;
+// };
 
 /**
  * Resolve the unbuild package using [Jiti](https://github.com/unjs/jiti)
