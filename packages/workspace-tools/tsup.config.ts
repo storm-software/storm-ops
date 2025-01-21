@@ -24,12 +24,14 @@ export default defineConfig([
     ],
     outDir: "dist",
     format: ["cjs", "esm"],
+    bundle: true,
     platform: "node",
     splitting: true,
     clean: true,
     dts: true,
     sourcemap: false,
     shims: true,
-    tsconfig: "./tsconfig.json"
+    tsconfig: "./tsconfig.json",
+    external: ["@storm-software/*"]
   }
 ]);
