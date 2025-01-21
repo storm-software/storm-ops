@@ -1,3 +1,13 @@
+## 0.53.0 (2025-01-21)
+
+### Features
+
+- **config-tools:** Update utility packages to use ESM ([3bc6d4ba](https://github.com/storm-software/storm-ops/commit/3bc6d4ba))
+
+### Dependency Upgrades
+
+- **monorepo:** Use version 4.2.1 of `chalk` package to prevent CommonJs issues ([133dcdfd](https://github.com/storm-software/storm-ops/commit/133dcdfd))
+
 ## 0.52.3 (2025-01-21)
 
 ### Bug Fixes

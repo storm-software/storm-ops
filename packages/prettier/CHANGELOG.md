@@ -1,3 +1,9 @@
+## 0.29.0 (2025-01-21)
+
+### Features
+
+- **config-tools:** Update utility packages to use ESM ([3bc6d4ba](https://github.com/storm-software/storm-ops/commit/3bc6d4ba))
+
 ## 0.28.1 (2025-01-21)
 
 ### Bug Fixes

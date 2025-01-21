@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/unbuild",
-  "version": "0.25.3",
+  "version": "0.26.0",
   "type": "module",
   "description": "A package containing `unbuild` utilities for building Storm Software libraries and applications",
   "repository": {
@@ -223,9 +223,9 @@
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
     "@rollup/pluginutils": "^5.1.4",
-    "@storm-software/build-tools": "0.131.3",
-    "@storm-software/config": "1.97.3",
-    "@storm-software/config-tools": "1.138.3",
+    "@storm-software/build-tools": "0.132.0",
+    "@storm-software/config": "1.97.4",
+    "@storm-software/config-tools": "1.139.0",
     "@swc/core": "catalog:",
     "@types/node": "catalog:",
     "commander": "catalog:",

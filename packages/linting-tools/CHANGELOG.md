@@ -1,3 +1,14 @@
+## 1.105.4 (2025-01-21)
+
+### Dependency Upgrades
+
+- **monorepo:** Use version 4.2.1 of `chalk` package to prevent CommonJs issues ([133dcdfd](https://github.com/storm-software/storm-ops/commit/133dcdfd))
+
+### 🧱 Updated Dependencies
+
+- Updated cspell to 0.7.4
+- Updated cspell to 0.7.4
+
 ## 1.105.3 (2025-01-21)
 
 ### Bug Fixes
