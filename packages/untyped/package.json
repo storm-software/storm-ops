@@ -225,7 +225,7 @@
     "@nx/devkit": "catalog:",
     "@storm-software/build-tools": "0.132.0",
     "@storm-software/config": "1.97.4",
-    "@storm-software/config-tools": "1.139.0",
+    "@storm-software/config-tools": "1.140.0",
     "@types/node": "catalog:",
     "tsup": "catalog:",
     "untyped": "catalog:"

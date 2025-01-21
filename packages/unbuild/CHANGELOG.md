@@ -1,3 +1,13 @@
+## 0.27.0 (2025-01-21)
+
+### Features
+
+- **unbuild:** Added config logging for troubleshooting issues ([163f70c3](https://github.com/storm-software/storm-ops/commit/163f70c3))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.140.0
+
 ## 0.26.2 (2025-01-21)
 
 ### Bug Fixes
