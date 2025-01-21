@@ -1,3 +1,16 @@
+## 1.235.3 (2025-01-21)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve internal package as ESM via `jiti` resolver ([1dc4cfdd](https://github.com/storm-software/storm-ops/commit/1dc4cfdd))
+
+### 🧱 Updated Dependencies
+
+- Updated esbuild to 0.20.3
+- Updated unbuild to 0.25.3
+- Updated unbuild to 0.25.3
+- Updated tsdown to 0.21.3
+
 ## 1.235.2 (2025-01-21)
 
 ### Bug Fixes
