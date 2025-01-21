@@ -34,7 +34,7 @@ import tsdocRules from "./rules/ts-docs";
 import banner from "./utils/banner-plugin";
 import { CODE_BLOCK, CODE_FILE, TS_FILE } from "./utils/constants";
 import { formatConfig } from "./utils/format-config";
-import { ignores } from "./utils/ignores";
+import { DEFAULT_IGNORES } from "./utils/ignores";
 
 /**
  * The module boundary dependency constraints.
@@ -126,6 +126,11 @@ export function getStormConfig(
   const cspellConfigFile = options.cspellConfigFile || "./.vscode/cspell.json";
 
   try {
+    const ignoredFiles = [
+      ...DEFAULT_IGNORES,
+      ...(options.ignores || [])
+    ].filter(Boolean);
+
     const configs: Linter.Config[] = [
       // Prettier
       prettierConfig,
@@ -166,7 +171,7 @@ export function getStormConfig(
                   {
                     buildTargets: ["build-base", "build"],
                     ignoredDependencies: ["typescript"],
-                    ignoredFiles: options.ignores,
+                    ignores: ignoredFiles,
                     checkMissingDependencies: true,
                     checkObsoleteDependencies: true,
                     checkVersionMismatches: false,
@@ -186,6 +191,7 @@ export function getStormConfig(
       // CSpell
       {
         ...cspell,
+        ignores: ignoredFiles,
         rules: {
           ...cspell.rules,
           "@cspell/spellchecker": [
@@ -205,7 +211,8 @@ export function getStormConfig(
     // Nx
     if (nx) {
       configs.push({
-        plugins: { "@nx": nxPlugin as any }
+        plugins: { "@nx": nxPlugin as any },
+        ignores: ignoredFiles
       });
     }
 
@@ -232,6 +239,7 @@ export function getStormConfig(
       configs.push({
         files: [TS_FILE],
         plugins: { unicorn },
+        ignores: ignoredFiles,
         rules: {
           ...unicorn.configs["flat/recommended"].rules
         }
@@ -243,6 +251,7 @@ export function getStormConfig(
     configs.push({
       files: [TS_FILE],
       plugins: { tsdoc },
+      ignores: ignoredFiles,
       rules: tsdocRules
     });
 
@@ -251,6 +260,7 @@ export function getStormConfig(
       ...banner.configs!["recommended"],
       name: "banner",
       plugins: { banner },
+      ignores: ignoredFiles,
       files: [CODE_FILE],
       rules: {
         "banner/banner": [
@@ -269,14 +279,14 @@ export function getStormConfig(
           ...reactPlugin.configs?.recommended,
           plugins: { "react": reactPlugin },
           files: ["**/*.tsx"],
-          ignores: [...ignores, ...(options.ignores || [])],
+          ignores: ignoredFiles,
           ...react
         },
         {
           ...reactHooks.configs?.recommended,
           plugins: { "react-hooks": reactHooks },
           files: [TS_FILE],
-          ignores: [...ignores, ...(options.ignores || [])]
+          ignores: ignoredFiles
         }
         // {
         //   files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
@@ -287,7 +297,7 @@ export function getStormConfig(
       if (useReactCompiler) {
         reactConfigs.push({
           files: ["**/*.tsx"],
-          ignores: [...ignores, ...(options.ignores || [])],
+          ignores: ignoredFiles,
           plugins: {
             "react-compiler": reactCompiler
           },
@@ -303,7 +313,7 @@ export function getStormConfig(
     if (options.nextFiles && options.nextFiles.length > 0) {
       configs.push({
         ...next.configs["core-web-vitals"],
-        ignores: [...(options.ignores || [])],
+        ignores: ignoredFiles,
         files: options.nextFiles
       });
     }
@@ -353,7 +363,7 @@ export function getStormConfig(
             return ret;
           }, {} as Linter.RulesRecord)
       },
-      ignores: [...ignores, ...(options.ignores || [])]
+      ignores: ignoredFiles
     };
 
     if (parserOptions) {
@@ -401,6 +411,7 @@ export function getStormConfig(
       configs.push(...markdown.configs.recommended);
       configs.push({
         files: [CODE_BLOCK],
+        ignores: ignoredFiles,
         processor: "markdown/markdown",
         rules: <Linter.RulesRecord>{
           "unicorn/filename-case": "off",
@@ -415,6 +426,7 @@ export function getStormConfig(
       });
       configs.push({
         files: ["**/*.md/*.js", "**/*.md/*.ts"],
+        ignores: ignoredFiles,
         rules: <Linter.RulesRecord>{
           "unicorn/filename-case": "off",
           "no-undef": "off",
@@ -436,6 +448,7 @@ export function getStormConfig(
       "Preset",
       configs.reduce((ret: Linter.Config[], config: Record<string, any>) => {
         delete config.parserOptions;
+        config.ignores ??= ignoredFiles;
 
         const existingIndex = ret.findIndex(existing =>
           areFilesEqual(existing.files, config.files)

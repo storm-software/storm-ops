@@ -1,14 +1,14 @@
+import typescriptEslintParser from "@typescript-eslint/parser";
 import type { Linter } from "eslint";
 import tsdocPlugin from "eslint-plugin-tsdoc";
-import typescriptEslintParser from "@typescript-eslint/parser";
 import rules from "./rules/ts-docs";
 import { CODE_FILE } from "./utils/constants";
-import { ignores } from "./utils/ignores";
+import { DEFAULT_IGNORES } from "./utils/ignores";
 
 const config: Linter.FlatConfig[] = [
   {
     files: [CODE_FILE],
-    ignores,
+    ignores: DEFAULT_IGNORES,
     languageOptions: {
       parser: typescriptEslintParser,
       ecmaVersion: "latest",

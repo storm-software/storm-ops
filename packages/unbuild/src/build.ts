@@ -177,7 +177,7 @@ export async function resolveOptions(
           outputPath,
           "dist"
         ),
-        declaration: options.emitTypes !== false,
+        declaration: options.emitTypes !== false ? "compatible" : false,
         format: "esm"
       });
 
@@ -192,7 +192,7 @@ export async function resolveOptions(
           outputPath,
           "dist"
         ),
-        declaration: options.emitTypes !== false,
+        declaration: options.emitTypes !== false ? "compatible" : false,
         format: "cjs",
         ext: "cjs"
       });

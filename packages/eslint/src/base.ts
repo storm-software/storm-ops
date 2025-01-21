@@ -11,7 +11,7 @@ import promisePlugin from "eslint-plugin-promise";
 import sonarjsPlugin from "eslint-plugin-sonarjs";
 import importRules from "./rules/import";
 import { getStormRulesConfig } from "./rules/storm";
-import { formatConfig, ignores } from "./utils";
+import { DEFAULT_IGNORES, formatConfig } from "./utils";
 import {
   CODE_BLOCK,
   CODE_FILE,
@@ -56,14 +56,14 @@ const workspaceRoot = findWorkspaceRoot();
 const prettierCompat = new FlatCompat({
   baseDirectory: workspaceRoot,
   recommendedConfig: prettierPlugin.configs!.recommended,
-  ignores
+  ignores: DEFAULT_IGNORES
 });
 
 const tsCompat = new FlatCompat({
   baseDirectory: workspaceRoot,
   recommendedConfig: tsPlugin.configs.recommended,
   allConfigs: tsPlugin.configs.all,
-  ignores
+  ignores: DEFAULT_IGNORES
 });
 
 const config: Linter.FlatConfig[] = [
@@ -78,7 +78,7 @@ const config: Linter.FlatConfig[] = [
         "@typescript-eslint": tsPlugin
       },
       files: [TS_FILE],
-      ignores,
+      ignores: DEFAULT_IGNORES,
       languageOptions: {
         parser: typescriptEslintParser,
         ecmaVersion: "latest",
@@ -115,14 +115,14 @@ const config: Linter.FlatConfig[] = [
       prettier: prettierPlugin
     },
     files: [CODE_FILE],
-    ignores
+    ignores: DEFAULT_IGNORES
   })),
   sonarjsPlugin.configs.recommended,
   esXPlugin.configs["flat/restrict-to-es2022"],
   nPlugin.configs["flat/recommended"],
   {
     files: [CODE_FILE],
-    ignores,
+    ignores: DEFAULT_IGNORES,
     languageOptions: {
       parser: typescriptEslintParser,
       ecmaVersion: "latest",
@@ -234,7 +234,7 @@ const config: Linter.FlatConfig[] = [
   {
     files: [CODE_FILE],
     ignores: [
-      ...ignores,
+      ...DEFAULT_IGNORES,
       "!.*", // Don't ignore dot-files because by default ESLint ignore dot-files (except for .eslintrc.*) and dot-folders
       ".git"
     ]
@@ -242,26 +242,26 @@ const config: Linter.FlatConfig[] = [
   {
     // Rules which require type info and exclude virtual ts files extracted by `eslint-plugin-mdx`
     files: [TS_FILE],
-    ignores: [...ignores, CODE_BLOCK],
+    ignores: [...DEFAULT_IGNORES, CODE_BLOCK],
     rules: {
       "@typescript-eslint/prefer-optional-chain": "error"
     }
   },
   {
     files: [TS_FILE],
-    ignores,
+    ignores: DEFAULT_IGNORES,
     rules: {
       "@typescript-eslint/consistent-type-assertions": "error"
     }
   },
   {
     files: ["*.c{j,t}s"],
-    ignores,
+    ignores: DEFAULT_IGNORES,
     rules: { "@typescript-eslint/no-var-requires": "off" }
   },
   {
     files: ["*.{spec,test}.*"],
-    ignores,
+    ignores: DEFAULT_IGNORES,
     rules: { "import/extensions": ["error", "never"] }
   },
   {
@@ -275,7 +275,7 @@ const config: Linter.FlatConfig[] = [
       "**/tailwind.config.ts",
       "**/next-sitemap.config.js"
     ],
-    ignores,
+    ignores: DEFAULT_IGNORES,
     rules: { "import/no-default-export": "off" }
   },
   {

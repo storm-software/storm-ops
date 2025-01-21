@@ -1,21 +1,21 @@
+import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
+import { findWorkspaceRoot } from "@storm-software/config-tools";
 import type { Linter } from "eslint";
 import mdxParser from "eslint-mdx/lib/parser";
 import markdownPlugin from "eslint-plugin-markdown";
 import markdownLintParser from "eslint-plugin-markdownlint/parser";
 import mdxPlugin from "eslint-plugin-mdx";
-import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
-import { findWorkspaceRoot } from "@storm-software/config-tools";
 import base from "./base";
 import { CODE_BLOCK } from "./utils/constants";
 import { formatConfig } from "./utils/format-config";
-import { ignores } from "./utils/ignores";
+import { DEFAULT_IGNORES } from "./utils/ignores";
 
 const workspaceRoot = findWorkspaceRoot();
 const compat = new FlatCompat({
   baseDirectory: workspaceRoot,
   recommendedConfig: js.configs.recommended,
-  ignores
+  ignores: DEFAULT_IGNORES
 });
 
 const config: Linter.FlatConfig[] = [
@@ -23,7 +23,7 @@ const config: Linter.FlatConfig[] = [
   mdxPlugin.configs.recommended,
   {
     files: ["**/.md", "**/.mdx", "**/.markdown"],
-    ignores,
+    ignores: DEFAULT_IGNORES,
     plugins: {
       "mdx": mdxPlugin,
       "markdownlint": markdownPlugin
@@ -39,7 +39,7 @@ const config: Linter.FlatConfig[] = [
     .map((config: Linter.FlatConfig) => ({
       ...config,
       files: ["**/.md", "**/.mdx", "**/.markdown"],
-      ignores,
+      ignores: DEFAULT_IGNORES,
       processor: "mdx/remark",
       languageOptions: {
         parser: mdxParser.parser,
@@ -68,7 +68,7 @@ const config: Linter.FlatConfig[] = [
     .map(config => ({
       ...config,
       files: ["**/*.md", "**/*.markdown"],
-      ignores,
+      ignores: DEFAULT_IGNORES,
       languageOptions: {
         parser: markdownLintParser
       },
@@ -100,7 +100,7 @@ const config: Linter.FlatConfig[] = [
         "CODE_OF_CONDUCT.md",
         "README.md"
       ],
-      ignores,
+      ignores: DEFAULT_IGNORES,
       languageOptions: {
         parser: markdownLintParser
       },

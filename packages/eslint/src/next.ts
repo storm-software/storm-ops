@@ -1,9 +1,9 @@
-import type { Linter } from "eslint";
 import nextPlugin from "@next/eslint-plugin-next";
+import type { Linter } from "eslint";
 import react from "./react";
 import { CODE_FILE } from "./utils/constants";
 import { formatConfig } from "./utils/format-config";
-import { ignores } from "./utils/ignores";
+import { DEFAULT_IGNORES } from "./utils/ignores";
 
 const babelOptions = {
   presets: (() => {
@@ -21,7 +21,7 @@ const config: Linter.FlatConfig[] = [
   ...nextPlugin.configs.recommended,
   {
     files: [CODE_FILE],
-    ignores,
+    ignores: DEFAULT_IGNORES,
     plugins: {
       "@next/next": nextPlugin
     },
@@ -36,7 +36,7 @@ const config: Linter.FlatConfig[] = [
       "**/*.stories.tsx",
       "**/.storybook/main.ts"
     ],
-    ignores,
+    ignores: DEFAULT_IGNORES,
     languageOptions: {
       parserOptions: { babelOptions }
     },

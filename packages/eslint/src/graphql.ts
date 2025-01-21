@@ -1,10 +1,10 @@
+import * as graphqlPlugin from "@graphql-eslint/eslint-plugin";
 import type { Linter } from "eslint";
 import relayPlugin from "eslint-plugin-relay";
-import * as graphqlPlugin from "@graphql-eslint/eslint-plugin";
 import base from "./base";
 import { CODE_FILE } from "./utils/constants";
 import { formatConfig } from "./utils/format-config";
-import { ignores } from "./utils/ignores";
+import { DEFAULT_IGNORES } from "./utils/ignores";
 
 const config: Linter.FlatConfig[] = [
   ...base,
@@ -14,7 +14,7 @@ const config: Linter.FlatConfig[] = [
   relayPlugin.configs.recommended,
   {
     files: [CODE_FILE],
-    ignores,
+    ignores: DEFAULT_IGNORES,
     plugins: {
       "@graphql-eslint": graphqlPlugin,
       "relay": relayPlugin
@@ -77,7 +77,7 @@ const config: Linter.FlatConfig[] = [
   },
   {
     files: ["**/*.graphql", "**/*.gql"],
-    ignores,
+    ignores: DEFAULT_IGNORES,
     plugins: {
       "@graphql-eslint": graphqlPlugin,
       "relay": relayPlugin

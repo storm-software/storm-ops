@@ -1,17 +1,17 @@
-import type { Linter } from "eslint";
 import { FlatCompat } from "@eslint/eslintrc";
 import nxPlugin from "@nx/eslint-plugin";
 import typescriptConfigs from "@nx/eslint-plugin/src/configs/typescript.js";
 import { findWorkspaceRoot } from "@storm-software/config-tools";
+import type { Linter } from "eslint";
 import base from "./base";
 import { formatConfig } from "./utils/format-config";
-import { ignores } from "./utils/ignores";
+import { DEFAULT_IGNORES } from "./utils/ignores";
 
 const workspaceRoot = findWorkspaceRoot();
 const compat = new FlatCompat({
   baseDirectory: workspaceRoot,
   recommendedConfig: typescriptConfigs,
-  ignores
+  ignores: DEFAULT_IGNORES
 });
 
 const config: Linter.FlatConfig[] = [
@@ -28,7 +28,7 @@ const config: Linter.FlatConfig[] = [
       "**/*.js",
       "**/*.jsx"
     ],
-    ignores,
+    ignores: DEFAULT_IGNORES,
     rules: {
       ...config.rules,
       "@nx/enforce-module-boundaries": [

@@ -1,4 +1,4 @@
-export const ignores = [
+export const DEFAULT_IGNORES = [
   "**/.git/**",
   "**/node_modules/**",
   "**/src/generators/**/files/**/*",
