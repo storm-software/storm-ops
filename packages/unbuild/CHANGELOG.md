@@ -1,3 +1,9 @@
+## 0.27.1 (2025-01-21)
+
+### Bug Fixes
+
+- **unbuild:** Resolved issue with `rootDir` options path ([e3fa60fd](https://github.com/storm-software/storm-ops/commit/e3fa60fd))
+
 ## 0.27.0 (2025-01-21)
 
 ### Features
