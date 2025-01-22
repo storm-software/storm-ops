@@ -1,3 +1,14 @@
+## 0.53.1 (2025-01-22)
+
+### Bug Fixes
+
+- **config-tools:** Resolved issue applying entire token parameters object ([5ccf3881](https://github.com/storm-software/storm-ops/commit/5ccf3881))
+
+### 🧱 Updated Dependencies
+
+- Updated workspace-tools to 1.239.2
+- Updated workspace-tools to 1.239.2
+
 ## 0.53.0 (2025-01-22)
 
 ### Features

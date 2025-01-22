@@ -1,3 +1,14 @@
+## 1.106.1 (2025-01-22)
+
+### Bug Fixes
+
+- **config-tools:** Resolved issue applying entire token parameters object ([5ccf3881](https://github.com/storm-software/storm-ops/commit/5ccf3881))
+
+### 🧱 Updated Dependencies
+
+- Updated cspell to 0.8.1
+- Updated cspell to 0.8.1
+
 ## 1.106.0 (2025-01-22)
 
 ### Features

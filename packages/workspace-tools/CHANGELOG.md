@@ -1,3 +1,17 @@
+## 1.239.2 (2025-01-22)
+
+### Bug Fixes
+
+- **config-tools:** Resolved issue applying entire token parameters object ([5ccf3881](https://github.com/storm-software/storm-ops/commit/5ccf3881))
+
+### 🧱 Updated Dependencies
+
+- Updated prettier to 0.30.1
+- Updated esbuild to 0.21.1
+- Updated unbuild to 0.30.2
+- Updated unbuild to 0.30.2
+- Updated tsdown to 0.22.1
+
 ## 1.239.1 (2025-01-22)
 
 ### Bug Fixes

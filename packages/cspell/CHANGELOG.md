@@ -1,3 +1,9 @@
+## 0.8.1 (2025-01-22)
+
+### Bug Fixes
+
+- **config-tools:** Resolved issue applying entire token parameters object ([5ccf3881](https://github.com/storm-software/storm-ops/commit/5ccf3881))
+
 ## 0.8.0 (2025-01-22)
 
 ### Features
