@@ -1,3 +1,17 @@
+## 1.239.0 (2025-01-22)
+
+### Features
+
+- **workspace-tools:** Enhanced option tokenization logic for executors ([14ed93d7](https://github.com/storm-software/storm-ops/commit/14ed93d7))
+
+### 🧱 Updated Dependencies
+
+- Updated prettier to 0.30.0
+- Updated esbuild to 0.21.0
+- Updated unbuild to 0.30.0
+- Updated unbuild to 0.30.0
+- Updated tsdown to 0.22.0
+
 ## 1.238.0 (2025-01-21)
 
 ### Features

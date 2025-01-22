@@ -1,3 +1,14 @@
+## 0.53.0 (2025-01-22)
+
+### Features
+
+- **workspace-tools:** Enhanced option tokenization logic for executors ([14ed93d7](https://github.com/storm-software/storm-ops/commit/14ed93d7))
+
+### 🧱 Updated Dependencies
+
+- Updated workspace-tools to 1.239.0
+- Updated workspace-tools to 1.239.0
+
 ## 0.52.1 (2025-01-21)
 
 ### Bug Fixes
