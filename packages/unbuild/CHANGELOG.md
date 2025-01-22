@@ -1,3 +1,14 @@
+## 0.30.3 (2025-01-22)
+
+### Bug Fixes
+
+- **unbuild:** Resolve issue applying entry directory to build options ([2c795456](https://github.com/storm-software/storm-ops/commit/2c795456))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.141.3
+- Updated build-tools to 0.135.3
+
 ## 0.30.2 (2025-01-22)
 
 ### Bug Fixes
