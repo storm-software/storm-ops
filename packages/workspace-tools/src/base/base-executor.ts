@@ -1,21 +1,22 @@
 import type { ExecutorContext, PromiseExecutor } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import {
+  applyWorkspaceProjectTokens,
   applyWorkspaceTokens,
   findWorkspaceRoot,
   formatLogMessage,
   getStopwatch,
   loadStormConfig,
+  ProjectTokenizerOptions,
   writeDebug,
   writeError,
   writeFatal,
   writeInfo,
   writeSuccess,
-  writeTrace,
-  type BaseTokenizerOptions
+  writeTrace
 } from "@storm-software/config-tools";
+import { defu } from "defu";
 import { BaseExecutorOptions, BaseExecutorResult } from "../types";
-import { applyWorkspaceExecutorTokens } from "../utils/apply-workspace-tokens";
 import { BaseExecutorSchema } from "./base-executor.schema.d";
 
 export const withRunExecutor =
@@ -90,28 +91,29 @@ export const withRunExecutor =
       }
 
       writeTrace(
-        `Executor schema options ⚙️ \n${Object.keys(options)
-          .map(
-            key =>
-              ` - ${key}=${_isFunction(options[key]) ? "<function>" : JSON.stringify(options[key])}`
-          )
-          .join("\n")}`,
+        `Executor schema options ⚙️
+${formatLogMessage(options)}
+`,
         config
       );
 
       const tokenized = (await applyWorkspaceTokens(
         options,
-        {
-          config,
-          workspaceRoot,
-          projectRoot,
-          sourceRoot,
-          projectName,
-          ...context.projectsConfigurations.projects[context.projectName],
-          ...executorOptions
-        } as BaseTokenizerOptions,
-        applyWorkspaceExecutorTokens
+        defu(
+          { workspaceRoot, projectRoot, sourceRoot, projectName },
+          executorOptions,
+          context.projectsConfigurations.projects[context.projectName],
+          config
+        ) as ProjectTokenizerOptions,
+        applyWorkspaceProjectTokens
       )) as TExecutorSchema;
+
+      writeTrace(
+        `Executor schema tokenized options ⚙️
+${formatLogMessage(options)}
+`,
+        config
+      );
 
       if (executorOptions?.hooks?.preProcess) {
         writeDebug("Running the preProcess hook...", config);
