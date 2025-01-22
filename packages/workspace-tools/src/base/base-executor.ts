@@ -43,8 +43,6 @@ export const withRunExecutor =
 
     let config = {} as StormConfig;
     try {
-      writeInfo(`⚡ Running the ${name} executor...\n`, config);
-
       if (
         !context.projectsConfigurations?.projects ||
         !context.projectName ||
@@ -57,17 +55,22 @@ export const withRunExecutor =
 
       const workspaceRoot = findWorkspaceRoot();
       const projectRoot =
-        context.projectsConfigurations.projects[context.projectName]?.root ??
+        context.projectsConfigurations.projects[context.projectName]!.root ||
         workspaceRoot;
       const sourceRoot =
-        context.projectsConfigurations.projects[context.projectName]
-          ?.sourceRoot ?? workspaceRoot;
+        context.projectsConfigurations.projects[context.projectName]!
+          .sourceRoot || workspaceRoot;
       const projectName =
-        context.projectsConfigurations.projects[context.projectName]?.name ??
+        context.projectsConfigurations.projects[context.projectName]!.name ||
         context.projectName;
       config.workspaceRoot = workspaceRoot;
 
-      // process.chdir(workspaceRoot);
+      writeInfo(
+        `
+⚡ Running the ${name} executor for ${projectName}
+`,
+        config
+      );
 
       if (!executorOptions.skipReadingConfig) {
         writeTrace(
@@ -97,20 +100,20 @@ ${formatLogMessage(options)}
         config
       );
 
-      const tokenized = (await applyWorkspaceTokens(
+      const tokenized = (await applyWorkspaceTokens<ProjectTokenizerOptions>(
         options,
         defu(
-          { workspaceRoot, projectRoot, sourceRoot, projectName },
+          { workspaceRoot, projectRoot, sourceRoot, projectName, config },
           executorOptions,
           context.projectsConfigurations.projects[context.projectName],
           config
-        ) as ProjectTokenizerOptions,
+        ),
         applyWorkspaceProjectTokens
       )) as TExecutorSchema;
 
       writeTrace(
         `Executor schema tokenized options ⚙️
-${formatLogMessage(options)}
+${formatLogMessage(tokenized)}
 `,
         config
       );

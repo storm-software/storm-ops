@@ -23,6 +23,7 @@ export const applyWorkspaceBaseTokens = async (
       }
     }
   }
+
   if (tokenizerOptions.config) {
     const configKeys = Object.keys(tokenizerOptions.config);
     if (configKeys.some(configKey => result.includes(`{${configKey}}`))) {
