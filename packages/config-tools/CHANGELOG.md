@@ -1,3 +1,9 @@
+## 1.141.5 (2025-01-22)
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with `ignores` configuration parameter ([f8987770](https://github.com/storm-software/storm-ops/commit/f8987770))
+
 ## 1.141.4 (2025-01-22)
 
 ### Bug Fixes

@@ -1,3 +1,15 @@
+## 0.30.5 (2025-01-22)
+
+### Bug Fixes
+
+- **unbuild:** Resolve entry path issue when adding `exports` paths ([728290cb](https://github.com/storm-software/storm-ops/commit/728290cb))
+- **eslint:** Resolved issue with `ignores` configuration parameter ([f8987770](https://github.com/storm-software/storm-ops/commit/f8987770))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.141.5
+- Updated build-tools to 0.135.5
+
 ## 0.30.4 (2025-01-22)
 
 ### Bug Fixes
