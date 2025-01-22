@@ -5,7 +5,11 @@ import {
 } from "@nx/devkit";
 import { copyAssets as copyAssetsBase } from "@nx/js";
 import { StormConfig } from "@storm-software/config";
-import { isVerbose, writeDebug } from "@storm-software/config-tools/logger";
+import {
+  isVerbose,
+  writeDebug,
+  writeTrace
+} from "@storm-software/config-tools/logger";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { glob } from "glob";
 import { readFile, writeFile } from "node:fs/promises";
@@ -75,9 +79,15 @@ export const copyAssets = async (
     );
   }
 
+  writeTrace(
+    `📝  Copying the following assets to the output directory:
+${pendingAssets.map(pendingAsset => (typeof pendingAsset === "string" ? ` - ${pendingAsset} -> ${outputPath}` : `  - ${pendingAsset.input}/${pendingAsset.glob} -> ${joinPaths(outputPath, pendingAsset.output)}`)).join("\n")}`,
+    config
+  );
+
   const result = await copyAssetsBase(
     {
-      assets,
+      assets: pendingAssets,
       watch: false,
       outputPath
     },

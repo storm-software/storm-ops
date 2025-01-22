@@ -155,10 +155,11 @@ export async function resolveOptions(
     dependencies.push(tsLibDependency);
   }
 
+  const name = options.name || projectName;
   const entries = options.entry ?? [sourceRoot];
 
   const resolvedOptions = {
-    name: projectName,
+    name,
     config,
     projectRoot: options.projectRoot,
     sourceRoot,
@@ -184,6 +185,7 @@ export async function resolveOptions(
       );
 
       ret.push({
+        name: `${name}-esm`,
         builder: "mkdist",
         input: `./${entryPath}`,
         outDir,
@@ -192,6 +194,7 @@ export async function resolveOptions(
       });
 
       ret.push({
+        name: `${name}-cjs`,
         builder: "mkdist",
         input: `./${entryPath}`,
         outDir,
@@ -244,8 +247,8 @@ export async function resolveOptions(
         extensions: [".cjs", ".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"]
       },
       esbuild: {
-        minify: options.minify || !options.debug,
-        sourceMap: options.sourcemap || !!options.debug,
+        minify: options.minify ?? !options.debug,
+        sourceMap: options.sourcemap ?? !!options.debug,
         splitting: options.splitting !== false,
         treeShaking: options.treeShaking !== false,
         color: true,
