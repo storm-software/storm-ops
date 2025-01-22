@@ -1,3 +1,14 @@
+## 0.53.2 (2025-01-22)
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with copying asset files into output directory ([1b314e8e](https://github.com/storm-software/storm-ops/commit/1b314e8e))
+
+### 🧱 Updated Dependencies
+
+- Updated workspace-tools to 1.239.4
+- Updated workspace-tools to 1.239.4
+
 ## 0.53.1 (2025-01-22)
 
 ### Bug Fixes

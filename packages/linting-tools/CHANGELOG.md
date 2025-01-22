@@ -1,3 +1,14 @@
+## 1.106.2 (2025-01-22)
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with copying asset files into output directory ([1b314e8e](https://github.com/storm-software/storm-ops/commit/1b314e8e))
+
+### 🧱 Updated Dependencies
+
+- Updated cspell to 0.8.2
+- Updated cspell to 0.8.2
+
 ## 1.106.1 (2025-01-22)
 
 ### Bug Fixes

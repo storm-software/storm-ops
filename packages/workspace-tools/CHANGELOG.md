@@ -1,3 +1,17 @@
+## 1.239.4 (2025-01-22)
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with copying asset files into output directory ([1b314e8e](https://github.com/storm-software/storm-ops/commit/1b314e8e))
+
+### 🧱 Updated Dependencies
+
+- Updated prettier to 0.30.2
+- Updated esbuild to 0.21.2
+- Updated unbuild to 0.30.4
+- Updated unbuild to 0.30.4
+- Updated tsdown to 0.22.2
+
 ## 1.239.3 (2025-01-22)
 
 ### Bug Fixes
