@@ -168,10 +168,10 @@ export async function resolveOptions(
     clean: false,
     entries: entries.reduce((ret, entry) => {
       let entryPath = entry.replace(options.projectRoot, "");
-      if (entryPath.startsWith(".")) {
+      while (entryPath.startsWith(".")) {
         entryPath = entryPath.substring(1);
       }
-      if (entryPath.startsWith("/")) {
+      while (entryPath.startsWith("/")) {
         entryPath = entryPath.substring(1);
       }
 
@@ -309,11 +309,23 @@ export async function resolveOptions(
 const addPackageJsonExport = (
   file: string,
   type: "commonjs" | "module" = "module",
-  sourceRoot?: string
+  sourceRoot: string,
+  projectRoot: string
 ): Record<string, any> => {
-  let entry = file.replaceAll("\\", "/");
-  if (sourceRoot) {
-    entry = entry.replace(sourceRoot, "");
+  let root = sourceRoot.replace(projectRoot, "");
+  while (root.startsWith(".")) {
+    root = root.substring(1);
+  }
+  while (root.startsWith("/")) {
+    root = root.substring(1);
+  }
+
+  let entry = file.replaceAll("\\", "/").replace(sourceRoot, "");
+  while (entry.startsWith(".")) {
+    entry = entry.substring(1);
+  }
+  while (entry.startsWith("/")) {
+    entry = entry.substring(1);
   }
 
   return {
@@ -380,7 +392,17 @@ export async function generatePackageJson(options: UnbuildResolvedOptions) {
     await Promise.all(
       options.entries
         .reduce((ret, entry) => {
-          const entryPath = typeof entry === "string" ? entry : entry.input;
+          let entryPath = typeof entry === "string" ? entry : entry.input;
+
+          entryPath = entryPath.replaceAll("\\", "/");
+          while (entryPath.startsWith(".")) {
+            entryPath = entryPath.substring(1);
+          }
+          while (entryPath.startsWith("/")) {
+            entryPath = entryPath.substring(1);
+          }
+
+          entryPath = `./${joinPaths(options.projectRoot, entryPath)}`;
           if (!ret.includes(entryPath)) {
             ret.push(entryPath);
           }
@@ -394,7 +416,12 @@ export async function generatePackageJson(options: UnbuildResolvedOptions) {
             root: entryPath
           }).walk();
           files.forEach(file => {
-            addPackageJsonExport(file, packageJson.type, options.sourceRoot);
+            addPackageJsonExport(
+              file,
+              packageJson.type,
+              options.sourceRoot,
+              options.projectRoot
+            );
 
             const split = file.split(".");
             split.pop();
@@ -403,7 +430,8 @@ export async function generatePackageJson(options: UnbuildResolvedOptions) {
             packageJson.exports[`./${entry}`] ??= addPackageJsonExport(
               entry,
               packageJson.type,
-              options.sourceRoot
+              options.sourceRoot,
+              options.projectRoot
             );
           });
         })
@@ -429,7 +457,8 @@ export async function generatePackageJson(options: UnbuildResolvedOptions) {
     packageJson.exports["."] ??= addPackageJsonExport(
       "index",
       packageJson.type,
-      options.sourceRoot
+      options.sourceRoot,
+      options.projectRoot
     );
 
     await writeJsonFile(joinPaths(options.outDir, "package.json"), packageJson);

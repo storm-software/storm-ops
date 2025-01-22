@@ -448,7 +448,6 @@ export function getStormConfig(
         return ret;
       }, [] as Linter.Config[])
     );
-
     result.unshift({
       ignores: ignoredFiles
     });
