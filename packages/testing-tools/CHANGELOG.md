@@ -1,3 +1,9 @@
+## 1.104.3 (2025-01-22)
+
+### Miscellaneous
+
+- **monorepo:** Update the workspace's `storm.json` config to use the new preset repository ([95067c70](https://github.com/storm-software/storm-ops/commit/95067c70))
+
 ## 1.104.2 (2025-01-22)
 
 ### Bug Fixes
