@@ -59,10 +59,10 @@ export const withRunExecutor =
         workspaceRoot;
       const sourceRoot =
         context.projectsConfigurations.projects[context.projectName]!
-          .sourceRoot || workspaceRoot;
-      const projectName =
-        context.projectsConfigurations.projects[context.projectName]!.name ||
-        context.projectName;
+          .sourceRoot ||
+        projectRoot ||
+        workspaceRoot;
+      const projectName = context.projectName;
       config.workspaceRoot = workspaceRoot;
 
       writeInfo(
@@ -104,9 +104,8 @@ ${formatLogMessage(options)}
         options,
         defu(
           { workspaceRoot, projectRoot, sourceRoot, projectName, config },
-          executorOptions,
-          context.projectsConfigurations.projects[context.projectName],
-          config
+          config,
+          context.projectsConfigurations.projects[context.projectName]
         ),
         applyWorkspaceProjectTokens
       )) as TExecutorSchema;
