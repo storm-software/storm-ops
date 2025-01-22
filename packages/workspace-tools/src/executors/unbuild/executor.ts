@@ -24,11 +24,24 @@ export async function unbuildExecutorFn(
   if (
     !context.projectsConfigurations?.projects ||
     !context.projectName ||
-    !context.projectsConfigurations.projects[context.projectName] ||
-    !context.projectsConfigurations.projects[context.projectName]?.root
+    !context.projectsConfigurations.projects[context.projectName]
   ) {
     throw new Error(
-      "The Build process failed because the context is not valid. Please run this command from a workspace."
+      "The Build process failed because the context is not valid. Please run this command from a workspace root directory."
+    );
+  }
+
+  if (!context.projectsConfigurations.projects[context.projectName]!.root) {
+    throw new Error(
+      "The Build process failed because the project root is not valid. Please run this command from a workspace root directory."
+    );
+  }
+
+  if (
+    !context.projectsConfigurations.projects[context.projectName]!.sourceRoot
+  ) {
+    throw new Error(
+      "The Build process failed because the project's source root is not valid. Please run this command from a workspace root directory."
     );
   }
 
@@ -53,13 +66,12 @@ export async function unbuildExecutorFn(
       {
         ...options,
         projectRoot:
-          context.projectsConfigurations.projects?.[context.projectName]!.root,
+          context.projectsConfigurations.projects![context.projectName]!.root,
         projectName: context.projectName,
         sourceRoot:
-          context.projectsConfigurations.projects?.[context.projectName]
-            ?.sourceRoot,
-        platform: options.platform as UnbuildOptions["platform"],
-        name: context.projectName
+          context.projectsConfigurations.projects![context.projectName]!
+            .sourceRoot,
+        platform: options.platform as UnbuildOptions["platform"]
       },
       {
         stubOptions: {
@@ -70,20 +82,15 @@ export async function unbuildExecutorFn(
         rollup: {
           emitCJS: true,
           watch: false,
-          cjsBridge: false,
           dts: {
             respectExternal: true
           },
-          replace: {},
-          alias: {},
-          resolve: {},
-          json: {},
-          commonjs: {},
           esbuild: {
             target: options.target,
             format: "esm",
             platform: options.platform,
-            minify: options.minify,
+            minify: options.minify ?? !options.debug,
+            sourcemap: options.sourcemap ?? options.debug,
             treeShaking: options.treeShaking
           }
         }
