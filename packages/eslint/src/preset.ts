@@ -171,7 +171,6 @@ export function getStormConfig(
                   {
                     buildTargets: ["build-base", "build"],
                     ignoredDependencies: ["typescript"],
-                    ignores: ignoredFiles,
                     checkMissingDependencies: true,
                     checkObsoleteDependencies: true,
                     checkVersionMismatches: false,
@@ -191,7 +190,6 @@ export function getStormConfig(
       // CSpell
       {
         ...cspell,
-        ignores: ignoredFiles,
         rules: {
           ...cspell.rules,
           "@cspell/spellchecker": [
@@ -211,8 +209,7 @@ export function getStormConfig(
     // Nx
     if (nx) {
       configs.push({
-        plugins: { "@nx": nxPlugin as any },
-        ignores: ignoredFiles
+        plugins: { "@nx": nxPlugin as any }
       });
     }
 
@@ -239,7 +236,6 @@ export function getStormConfig(
       configs.push({
         files: [TS_FILE],
         plugins: { unicorn },
-        ignores: ignoredFiles,
         rules: {
           ...unicorn.configs["flat/recommended"].rules
         }
@@ -251,7 +247,6 @@ export function getStormConfig(
     configs.push({
       files: [TS_FILE],
       plugins: { tsdoc },
-      ignores: ignoredFiles,
       rules: tsdocRules
     });
 
@@ -260,7 +255,6 @@ export function getStormConfig(
       ...banner.configs!["recommended"],
       name: "banner",
       plugins: { banner },
-      ignores: ignoredFiles,
       files: [CODE_FILE],
       rules: {
         "banner/banner": [
@@ -279,14 +273,12 @@ export function getStormConfig(
           ...reactPlugin.configs?.recommended,
           plugins: { "react": reactPlugin },
           files: ["**/*.tsx"],
-          ignores: ignoredFiles,
           ...react
         },
         {
           ...reactHooks.configs?.recommended,
           plugins: { "react-hooks": reactHooks },
-          files: [TS_FILE],
-          ignores: ignoredFiles
+          files: [TS_FILE]
         }
         // {
         //   files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
@@ -297,7 +289,6 @@ export function getStormConfig(
       if (useReactCompiler) {
         reactConfigs.push({
           files: ["**/*.tsx"],
-          ignores: ignoredFiles,
           plugins: {
             "react-compiler": reactCompiler
           },
@@ -313,7 +304,6 @@ export function getStormConfig(
     if (options.nextFiles && options.nextFiles.length > 0) {
       configs.push({
         ...next.configs["core-web-vitals"],
-        ignores: ignoredFiles,
         files: options.nextFiles
       });
     }
@@ -362,8 +352,7 @@ export function getStormConfig(
             ret[ruleId] = options.rules![ruleId];
             return ret;
           }, {} as Linter.RulesRecord)
-      },
-      ignores: ignoredFiles
+      }
     };
 
     if (parserOptions) {
@@ -411,7 +400,6 @@ export function getStormConfig(
       configs.push(...markdown.configs.recommended);
       configs.push({
         files: [CODE_BLOCK],
-        ignores: ignoredFiles,
         processor: "markdown/markdown",
         rules: <Linter.RulesRecord>{
           "unicorn/filename-case": "off",
@@ -426,7 +414,6 @@ export function getStormConfig(
       });
       configs.push({
         files: ["**/*.md/*.js", "**/*.md/*.ts"],
-        ignores: ignoredFiles,
         rules: <Linter.RulesRecord>{
           "unicorn/filename-case": "off",
           "no-undef": "off",
@@ -448,7 +435,6 @@ export function getStormConfig(
       "Preset",
       configs.reduce((ret: Linter.Config[], config: Record<string, any>) => {
         delete config.parserOptions;
-        config.ignores ??= ignoredFiles;
 
         const existingIndex = ret.findIndex(existing =>
           areFilesEqual(existing.files, config.files)
@@ -462,6 +448,10 @@ export function getStormConfig(
         return ret;
       }, [] as Linter.Config[])
     );
+
+    result.unshift({
+      ignores: ignoredFiles
+    });
 
     writeInfo("⚙️  Completed generated Storm ESLint configuration objects", {
       logLevel

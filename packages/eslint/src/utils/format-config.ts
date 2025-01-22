@@ -2,8 +2,8 @@ import type { Linter } from "eslint";
 
 export const formatConfig = (
   name: string,
-  config: Linter.FlatConfig[] = []
-): Linter.FlatConfig[] => {
+  config: Linter.Config[] = []
+): Linter.Config[] => {
   return config.map((config, index) => {
     if (!config || config.name) {
       return config ?? {};
