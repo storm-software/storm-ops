@@ -1,3 +1,14 @@
+## 0.30.1 (2025-01-22)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue applying tokens to user provided options ([ef3bad5f](https://github.com/storm-software/storm-ops/commit/ef3bad5f))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.141.1
+- Updated build-tools to 0.135.1
+
 ## 0.30.0 (2025-01-22)
 
 ### Features
