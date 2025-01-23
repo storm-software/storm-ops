@@ -401,9 +401,9 @@ importers:
         specifier: 'catalog:'
         version: 3.24.1
     devDependencies:
-      '@types/node':
+      tsup:
         specifier: 'catalog:'
-        version: 22.10.7
+        version: 8.3.5(@microsoft/api-extractor@7.49.1(@types/node@22.10.7))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.4.2)(postcss@8.5.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
 
   packages/config-tools:
     dependencies:

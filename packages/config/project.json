@@ -4,61 +4,25 @@
   "projectType": "library",
   "sourceRoot": "packages/config/src",
   "targets": {
-    "build": {
-      "cache": true,
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
       "options": {
-        "main": "packages/config/src/index.ts",
-        "outputPath": "dist/packages/config",
-        "tsConfig": "packages/config/tsconfig.json",
-        "project": "packages/config/package.json",
-        "defaultConfiguration": "production",
-        "platform": "neutral",
-        "deleteOutputPath": true,
-        "bundle": true,
-        "thirdParty": true,
-        "skipTypeCheck": false,
-        "metafile": true,
-        "minify": false,
-        "format": ["cjs", "esm"],
-        "assets": [
-          {
-            "input": "./packages/config",
-            "glob": "*.md",
-            "output": "."
-          },
-          {
-            "input": "",
-            "glob": "LICENSE",
-            "output": "."
-          },
-          {
-            "input": "./packages/config",
-            "glob": "declarations.d.ts",
-            "output": "."
-          },
-          {
-            "input": "./packages/config",
-            "glob": "presets/*.json",
-            "output": "."
-          },
-          {
-            "input": "./packages/config",
-            "glob": "schemas/*.json",
-            "output": "."
-          }
-        ],
-        "configurations": {
-          "production": {
-            "debug": false,
-            "verbose": false
-          },
-          "development": {
-            "debug": true,
-            "verbose": true
-          }
-        }
+        "command": "tsup --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/config",
+          "pnpm copyfiles --up=2 ./packages/config/*.md ./packages/config/package.json dist/packages/config",
+          "pnpm copyfiles --up=3 \"./packages/config/dist/**/*\" dist/packages/config/dist",
+          "pnpm copyfiles --up=3 ./packages/config/presets/* dist/packages/config/presets",
+          "pnpm copyfiles --up=3 ./packages/config/schemas/* dist/packages/config/schemas"
+        ]
       }
     },
     "nx-release-publish": {

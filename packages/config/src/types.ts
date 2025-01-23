@@ -46,11 +46,11 @@ export type StormConfig<
   TExtensionConfig extends
     TStormConfig["extensions"][TExtensionName] = TStormConfig["extensions"][TExtensionName]
 > = TStormConfig & {
-  extensions?:
+  extensions:
     | (TStormConfig["extensions"] & {
         [extensionName in TExtensionName]: TExtensionConfig;
       })
-    | Record<string, any>;
+    | NonNullable<Record<string, any>>;
 };
 
 export const COLOR_KEYS = [
