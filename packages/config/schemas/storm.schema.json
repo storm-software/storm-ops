@@ -24,8 +24,19 @@
           "description": "The URL to the JSON schema file that describes the Storm configuration file"
         },
         "extends": {
-          "type": "string",
-          "description": "The path to a base JSON file to use as a configuration preset file"
+          "anyOf": [
+            {
+              "type": "string",
+              "description": "The path to a base config file to use as a configuration preset file. Documentation can be found at https://github.com/unjs/c12#extending-configuration."
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/StormWorkspaceConfiguration/properties/extends/anyOf/0"
+              }
+            }
+          ],
+          "description": "The path to a base config file to use as a configuration preset file. Documentation can be found at https://github.com/unjs/c12#extending-configuration."
         },
         "name": {
           "type": "string",
@@ -42,7 +53,6 @@
         },
         "repository": {
           "type": "string",
-          "format": "uri",
           "description": "The repo URL of the workspace (i.e. GitHub)"
         },
         "license": {
