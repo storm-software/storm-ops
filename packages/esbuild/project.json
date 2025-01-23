@@ -20,8 +20,8 @@
           "pnpm copyfiles LICENSE dist/packages/esbuild",
           "pnpm copyfiles --up=2 ./packages/esbuild/README.md ./packages/esbuild/package.json dist/packages/esbuild",
           "pnpm copyfiles --up=2 ./packages/esbuild/assets/* dist/packages/esbuild/assets",
-          "pnpm copyfiles --up=4 ./packages/esbuild/dist/bin/* dist/packages/esbuild/bin",
-          "pnpm copyfiles --up=3 ./packages/esbuild/dist/* dist/packages/esbuild/dist"
+          "pnpm copyfiles --up=4 \"./packages/esbuild/dist/src/**/*\" dist/packages/esbuild/dist",
+          "pnpm copyfiles --up=4 \"./packages/esbuild/dist/bin/**/*\" dist/packages/esbuild/bin"
         ]
       }
     },

@@ -19,8 +19,8 @@
         "commands": [
           "pnpm copyfiles LICENSE dist/packages/config-tools",
           "pnpm copyfiles --up=2 ./packages/config-tools/*.md ./packages/config-tools/package.json dist/packages/config-tools",
-          "pnpm copyfiles --up=4 ./packages/config-tools/dist/src/**/* dist/packages/config-tools/dist",
-          "pnpm copyfiles --up=4 ./packages/config-tools/dist/bin/**/* dist/packages/config-tools/bin"
+          "pnpm copyfiles --up=4 \"./packages/config-tools/dist/src/**/*\" dist/packages/config-tools/dist",
+          "pnpm copyfiles --up=4 \"./packages/config-tools/dist/bin/**/*\" dist/packages/config-tools/bin"
         ]
       }
     },

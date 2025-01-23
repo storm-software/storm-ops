@@ -20,8 +20,8 @@
           "pnpm copyfiles LICENSE dist/packages/tsdown",
           "pnpm copyfiles --up=2 ./packages/tsdown/README.md ./packages/tsdown/package.json dist/packages/tsdown",
           "pnpm copyfiles --up=2 ./packages/tsdown/assets/* dist/packages/tsdown/assets",
-          "pnpm copyfiles --up=4 ./packages/tsdown/dist/bin/* dist/packages/tsdown/bin",
-          "pnpm copyfiles --up=3 ./packages/tsdown/dist/* dist/packages/tsdown/dist"
+          "pnpm copyfiles --up=4 \"./packages/tsdown/dist/src/**/*\" dist/packages/tsdown/dist",
+          "pnpm copyfiles --up=4 \"./packages/tsdown/dist/bin/**/*\" dist/packages/tsdown/bin"
         ]
       }
     },
