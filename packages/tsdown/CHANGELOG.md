@@ -1,3 +1,9 @@
+## 0.22.8 (2025-01-23)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with invalid Nx Devkit imports ([356d591c](https://github.com/storm-software/storm-ops/commit/356d591c))
+
 ## 0.22.7 (2025-01-23)
 
 ### Bug Fixes

@@ -1,3 +1,13 @@
+## 1.142.4 (2025-01-23)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with invalid Nx Devkit imports ([356d591c](https://github.com/storm-software/storm-ops/commit/356d591c))
+
+### 🧱 Updated Dependencies
+
+- Updated config to 1.99.4
+
 ## 1.142.3 (2025-01-23)
 
 ### Bug Fixes
