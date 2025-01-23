@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { getNpmPackageVersion } from "@nx/workspace/src/generators/utils/get-npm-package-version";
-import { loadStormConfig } from "@storm-software/config-tools";
+import { getConfig } from "@storm-software/config-tools";
 import {
   getStopwatch,
   writeFatal,
@@ -13,7 +13,7 @@ import { prompt } from "enquirer";
 
 async function main() {
   const stopwatch = getStopwatch("create-storm-workspace");
-  const config = await loadStormConfig();
+  const config = await getConfig();
   try {
     writeInfo("⚡ Preparing to create the Storm Workspace", config);
 

@@ -3,15 +3,15 @@
 import {
   exitWithError,
   exitWithSuccess,
+  getConfig,
   handleProcess,
-  loadStormConfig,
   run,
   writeFatal,
   writeInfo
 } from "@storm-software/config-tools";
 
 void (async () => {
-  const config = await loadStormConfig();
+  const config = await getConfig();
   try {
     handleProcess(config);
 

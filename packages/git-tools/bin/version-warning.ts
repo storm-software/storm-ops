@@ -2,14 +2,14 @@
 
 import {
   exitWithError,
+  getConfig,
   handleProcess,
-  loadStormConfig,
   writeFatal
 } from "@storm-software/config-tools";
 import { checkPackageVersion } from "../src/utilities/check-package-version";
 
 void (async () => {
-  const config = await loadStormConfig();
+  const config = await getConfig();
   try {
     handleProcess(config);
 

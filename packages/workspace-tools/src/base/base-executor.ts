@@ -5,8 +5,8 @@ import {
   applyWorkspaceTokens,
   findWorkspaceRoot,
   formatLogMessage,
+  getConfig,
   getStopwatch,
-  loadStormConfig,
   ProjectTokenizerOptions,
   writeDebug,
   writeError,
@@ -82,7 +82,7 @@ export const withRunExecutor =
           config
         );
 
-        config = await loadStormConfig(workspaceRoot);
+        config = await getConfig(workspaceRoot);
       }
 
       if (executorOptions?.hooks?.applyDefaultOptions) {

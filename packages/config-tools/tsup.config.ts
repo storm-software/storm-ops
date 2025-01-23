@@ -15,7 +15,6 @@ export default defineConfig([
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     shims: true,
-    // noExternal: ["chalk", "defu", "c12"],
     external: ["nx", "@nx/*", "@swc/*"]
   },
   {

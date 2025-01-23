@@ -1,6 +1,7 @@
 {
   "name": "@storm-software/untyped",
   "version": "0.8.3",
+  "type": "module",
   "description": "A package containing `untyped` utilities for building Storm Software libraries and applications",
   "repository": {
     "type": "github",
@@ -45,22 +46,22 @@
     "pnpm": ">=9.15.2"
   },
   "bin": {
-    "storm-untyped": "./bin/storm-untyped.js",
-    "storm-untyped-cjs": "./bin/storm-untyped.js",
-    "storm-untyped-esm": "./bin/storm-untyped.mjs"
+    "storm-untyped": "./bin/storm-untyped.cjs",
+    "storm-untyped-cjs": "./bin/storm-untyped.cjs",
+    "storm-untyped-esm": "./bin/storm-untyped.js"
   },
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "exports": {
     "./package.json": "./package.json",
     "./index": {
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
       },
       "default": {
         "types": "./dist/index.d.ts",
@@ -69,12 +70,12 @@
     },
     ".": {
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
       },
       "default": {
         "types": "./dist/index.d.ts",
@@ -83,12 +84,12 @@
     },
     "./generate": {
       "import": {
-        "types": "./dist/generate.d.mts",
-        "default": "./dist/generate.mjs"
-      },
-      "require": {
         "types": "./dist/generate.d.ts",
         "default": "./dist/generate.js"
+      },
+      "require": {
+        "types": "./dist/generate.d.cts",
+        "default": "./dist/generate.cjs"
       },
       "default": {
         "types": "./dist/generate.d.ts",
@@ -97,12 +98,12 @@
     },
     "./utilities": {
       "import": {
-        "types": "./dist/utilities.d.mts",
-        "default": "./dist/utilities.mjs"
-      },
-      "require": {
         "types": "./dist/utilities.d.ts",
         "default": "./dist/utilities.js"
+      },
+      "require": {
+        "types": "./dist/utilities.d.cts",
+        "default": "./dist/utilities.cjs"
       },
       "default": {
         "types": "./dist/utilities.d.ts",
@@ -111,12 +112,12 @@
     },
     "./generators/dts": {
       "import": {
-        "types": "./dist/generators/dts.d.mts",
-        "default": "./dist/generators/dts.mjs"
-      },
-      "require": {
         "types": "./dist/generators/dts.d.ts",
         "default": "./dist/generators/dts.js"
+      },
+      "require": {
+        "types": "./dist/generators/dts.d.cts",
+        "default": "./dist/generators/dts.cjs"
       },
       "default": {
         "types": "./dist/generators/dts.d.ts",
@@ -125,12 +126,12 @@
     },
     "./generators/markdown": {
       "import": {
-        "types": "./dist/generators/markdown.d.mts",
-        "default": "./dist/generators/markdown.mjs"
-      },
-      "require": {
         "types": "./dist/generators/markdown.d.ts",
         "default": "./dist/generators/markdown.js"
+      },
+      "require": {
+        "types": "./dist/generators/markdown.d.cts",
+        "default": "./dist/generators/markdown.cjs"
       },
       "default": {
         "types": "./dist/generators/markdown.d.ts",
@@ -139,12 +140,12 @@
     },
     "./generators/json-schema": {
       "import": {
-        "types": "./dist/generators/json-schema.d.mts",
-        "default": "./dist/generators/json-schema.mjs"
-      },
-      "require": {
         "types": "./dist/generators/json-schema.d.ts",
         "default": "./dist/generators/json-schema.js"
+      },
+      "require": {
+        "types": "./dist/generators/json-schema.d.cts",
+        "default": "./dist/generators/json-schema.cjs"
       },
       "default": {
         "types": "./dist/generators/json-schema.d.ts",
@@ -153,12 +154,12 @@
     },
     "./generators/index": {
       "import": {
-        "types": "./dist/generators/index.d.mts",
-        "default": "./dist/generators/index.mjs"
-      },
-      "require": {
         "types": "./dist/generators/index.d.ts",
         "default": "./dist/generators/index.js"
+      },
+      "require": {
+        "types": "./dist/generators/index.d.cts",
+        "default": "./dist/generators/index.cjs"
       },
       "default": {
         "types": "./dist/generators/index.d.ts",
@@ -167,12 +168,12 @@
     },
     "./generators": {
       "import": {
-        "types": "./dist/generators/index.d.mts",
-        "default": "./dist/generators/index.mjs"
-      },
-      "require": {
         "types": "./dist/generators/index.d.ts",
         "default": "./dist/generators/index.js"
+      },
+      "require": {
+        "types": "./dist/generators/index.d.cts",
+        "default": "./dist/generators/index.cjs"
       },
       "default": {
         "types": "./dist/generators/index.d.ts",
@@ -180,7 +181,7 @@
       }
     }
   },
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.cts",
   "files": [
     "bin/**/*",
     "dist/**/*"
@@ -197,18 +198,10 @@
   ],
   "peerDependencies": {
     "@nx/devkit": "catalog:",
-    "@storm-software/build-tools": "workspace:*",
-    "@storm-software/config-tools": "workspace:*",
     "untyped": "catalog:"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
-      "optional": false
-    },
-    "@storm-software/build-tools": {
-      "optional": false
-    },
-    "@storm-software/config-tools": {
       "optional": false
     },
     "untyped": {
@@ -223,9 +216,6 @@
   },
   "devDependencies": {
     "@nx/devkit": "catalog:",
-    "@storm-software/build-tools": "0.135.6",
-    "@storm-software/config": "1.98.3",
-    "@storm-software/config-tools": "1.141.6",
     "@types/node": "catalog:",
     "tsup": "catalog:",
     "untyped": "catalog:"

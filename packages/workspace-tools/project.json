@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/workspace-tools/src",
   "projectType": "library",
-  "implicitDependencies": ["build-tools", "untyped", "unbuild"],
+  "implicitDependencies": ["untyped", "unbuild", "esbuild", "tsdown"],
   "targets": {
     "build-untyped": {
       "executor": "nx:run-commands",
@@ -22,7 +22,7 @@
       ],
       "options": {
         "commands": [
-          "node dist/packages/untyped/bin/untyped.js generate --entry=\"packages/workspace-tools/**/{untyped.ts,*.untyped.ts}\" "
+          "node dist/packages/untyped/bin/untyped.cjs generate --entry=\"packages/workspace-tools/**/{untyped.ts,*.untyped.ts}\" "
         ]
       }
     },

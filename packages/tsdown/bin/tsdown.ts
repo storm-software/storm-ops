@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import type { StormConfig } from "@storm-software/config";
-import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
+import { getConfig } from "@storm-software/config-tools/get-config";
 import {
   getStopwatch,
   writeFatal,
@@ -275,7 +275,7 @@ const cleanAction =
   };
 
 void (async () => {
-  const config = await loadStormConfig();
+  const config = await getConfig();
   const stopwatch = getStopwatch("Storm TSDown executable");
 
   try {

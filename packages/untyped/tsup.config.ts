@@ -13,6 +13,7 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
+    shims: true,
     noExternal: ["glob"]
   },
   {
@@ -27,6 +28,7 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
+    shims: true,
     noExternal: ["glob"]
   }
 ]);

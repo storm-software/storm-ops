@@ -31,7 +31,7 @@ import {
   getEntryPoints,
   getEnv
 } from "@storm-software/build-tools";
-import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
+import { getConfig } from "@storm-software/config-tools/get-config";
 import {
   getStopwatch,
   writeDebug,
@@ -83,7 +83,7 @@ const resolveOptions = async (
     throw new Error("Cannot find Nx workspace root");
   }
 
-  const config = await loadStormConfig(workspaceRoot.dir);
+  const config = await getConfig(workspaceRoot.dir);
 
   writeDebug("  ⚙️   Resolving build options", config);
   const stopwatch = getStopwatch("Build options resolution");

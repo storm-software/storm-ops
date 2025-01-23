@@ -3,8 +3,8 @@
 import {
   exitWithError,
   exitWithSuccess,
+  getConfig,
   handleProcess,
-  loadStormConfig,
   writeError,
   writeFatal,
   writeInfo
@@ -15,7 +15,7 @@ import {
 } from "../src/utilities/check-package-version";
 
 void (async () => {
-  const config = await loadStormConfig();
+  const config = await getConfig();
   try {
     handleProcess(config);
 

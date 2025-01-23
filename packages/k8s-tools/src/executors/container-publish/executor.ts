@@ -7,7 +7,7 @@ import { StormConfig } from "@storm-software/config";
 import {
   applyWorkspaceTokens,
   findWorkspaceRoot,
-  loadStormConfig,
+  getConfig,
   type BaseTokenizerOptions
 } from "@storm-software/config-tools";
 import { applyWorkspaceExecutorTokens } from "@storm-software/workspace-tools/utils/apply-workspace-tokens";
@@ -35,7 +35,7 @@ export default async function* publishExecutor(
   );
 
   const workspaceRoot = findWorkspaceRoot();
-  const config = await loadStormConfig(workspaceRoot);
+  const config = await getConfig(workspaceRoot);
 
   const projectConfig =
     context.projectsConfigurations?.projects[context.projectName];

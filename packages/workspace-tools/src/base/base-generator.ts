@@ -4,8 +4,8 @@ import {
   applyWorkspaceBaseTokens,
   applyWorkspaceTokens,
   findWorkspaceRoot,
+  getConfig,
   getStopwatch,
-  loadStormConfig,
   writeDebug,
   writeError,
   writeFatal,
@@ -51,7 +51,7 @@ export const withRunGenerator =
           config
         );
 
-        config = await loadStormConfig(workspaceRoot);
+        config = await getConfig(workspaceRoot);
       }
 
       if (generatorOptions?.hooks?.applyDefaultOptions) {

@@ -23,7 +23,7 @@ import {
   addWorkspacePackageJsonFields,
   copyAssets
 } from "@storm-software/build-tools";
-import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
+import { getConfig } from "@storm-software/config-tools/get-config";
 import {
   formatLogMessage,
   getStopwatch,
@@ -569,7 +569,7 @@ export async function build(options: UnbuildOptions) {
     throw new Error("Cannot find workspace root");
   }
 
-  const config = await loadStormConfig(workspaceRoot.dir);
+  const config = await getConfig(workspaceRoot.dir);
 
   writeDebug(` ⚡  Executing Storm Unbuild pipeline`, config);
   const stopwatch = getStopwatch("Unbuild pipeline");

@@ -6,7 +6,7 @@ import {
   type ExecutorContext
 } from "@nx/devkit";
 import {
-  loadStormConfig,
+  getConfig,
   writeDebug,
   writeInfo,
   writeSuccess,
@@ -53,7 +53,7 @@ export default async function runExecutor(
 
   try {
     const workspaceRoot = findWorkspaceRoot();
-    const config = await loadStormConfig(workspaceRoot);
+    const config = await getConfig(workspaceRoot);
 
     const sourceRoot =
       context.projectsConfigurations.projects[context.projectName]

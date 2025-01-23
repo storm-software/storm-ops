@@ -17,8 +17,8 @@ import { applicationGenerator as nodeApplicationGenerator } from "@nx/node";
 import { nxVersion } from "@nx/node/src/utils/versions";
 import { StormConfig } from "@storm-software/config";
 import {
+  getConfig,
   getStopwatch,
-  loadStormConfig,
   writeDebug,
   writeError,
   writeFatal,
@@ -51,7 +51,7 @@ export async function applicationGenerator(
       config
     );
 
-    config = await loadStormConfig(workspaceRoot);
+    config = await getConfig(workspaceRoot);
     writeTrace(
       `Loaded Storm config into env: \n${Object.keys(process.env)
         .map(key => ` - ${key}=${JSON.stringify(process.env[key])}`)

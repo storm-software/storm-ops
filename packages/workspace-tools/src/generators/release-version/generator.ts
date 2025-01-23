@@ -15,8 +15,8 @@ import { updateLockFile } from "@nx/js/src/generators/release-version/utils/upda
 import type { StormConfig } from "@storm-software/config";
 import {
   findWorkspaceRoot,
+  getConfig,
   getStopwatch,
-  loadStormConfig,
   writeDebug,
   writeError,
   writeFatal,
@@ -72,7 +72,7 @@ export async function releaseVersionGeneratorFn(
       config
     );
 
-    config = await loadStormConfig(workspaceRoot);
+    config = await getConfig(workspaceRoot);
 
     writeTrace(
       `Generator schema options ⚙️ \n${Object.keys(options ?? {})

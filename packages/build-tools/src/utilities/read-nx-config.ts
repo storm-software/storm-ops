@@ -1,5 +1,5 @@
 import { NxJsonConfiguration } from "@nx/devkit";
-import { joinPaths, loadStormConfig } from "@storm-software/config-tools";
+import { getConfig, joinPaths } from "@storm-software/config-tools";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 
@@ -14,7 +14,7 @@ export const readNxConfig = async (
 ): Promise<NxJsonConfiguration<string[] | "*">> => {
   let rootDir = workspaceRoot;
   if (!rootDir) {
-    const config = await loadStormConfig();
+    const config = await getConfig();
     rootDir = config.workspaceRoot;
   }
 

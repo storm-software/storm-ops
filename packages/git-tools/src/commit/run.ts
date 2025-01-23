@@ -1,6 +1,6 @@
 import { confirm, input, select } from "@inquirer/prompts";
 import { joinPaths } from "@storm-software/config-tools";
-import { loadStormConfig } from "@storm-software/config-tools/create-storm-config";
+import { getConfig } from "@storm-software/config-tools/get-config";
 import {
   writeDebug,
   writeInfo
@@ -22,7 +22,7 @@ export const runCommit = async (
   commitizenFile = "@storm-software/git-tools/commit/config",
   dryRun = false
 ) => {
-  const config = await loadStormConfig();
+  const config = await getConfig();
 
   const state = await createState(config, commitizenFile);
   if (dryRun) {

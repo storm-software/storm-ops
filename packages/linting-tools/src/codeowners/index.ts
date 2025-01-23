@@ -1,11 +1,11 @@
-import { loadStormConfig, writeWarning } from "@storm-software/config-tools";
+import { getConfig, writeWarning } from "@storm-software/config-tools";
 import { sync } from "fast-glob";
 import fs from "fs-extra";
 import { Octokit } from "octokit";
 import { join } from "path";
 
 export async function runCodeowners() {
-  const config = await loadStormConfig();
+  const config = await getConfig();
   if (!config) {
     throw new Error("Failed to load storm config.");
   }
