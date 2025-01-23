@@ -1,3 +1,10 @@
+## 1.242.0 (2025-01-23)
+
+### Features
+
+- **workspace-tools:** Improved caching in the `tsup` and `tsdown` plugins ([84e80cf2](https://github.com/storm-software/storm-ops/commit/84e80cf2))
+- **config:** Update package to use modern tooling ([8ac7afa3](https://github.com/storm-software/storm-ops/commit/8ac7afa3))
+
 ## 1.241.0 (2025-01-23)
 
 ### Features

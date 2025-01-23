@@ -1,3 +1,9 @@
+## 0.115.0 (2025-01-23)
+
+### Features
+
+- **config:** Update package to use modern tooling ([8ac7afa3](https://github.com/storm-software/storm-ops/commit/8ac7afa3))
+
 ## 0.114.5 (2025-01-23)
 
 ### Miscellaneous
