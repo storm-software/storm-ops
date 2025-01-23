@@ -87,6 +87,7 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
               "typescript",
               "^production"
             ],
+            outputs: ["{projectRoot}/dist"],
             executor: "nx:run-commands",
             dependsOn: ["clean", "^build"],
             options: {
@@ -97,13 +98,19 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
 
           targets.build ??= {
             cache: true,
-            inputs: ["typescript", "^production"],
+            inputs: [
+              "{workspaceRoot}/LICENSE",
+              "{projectRoot}/dist",
+              "{projectRoot}/*.md",
+              "{projectRoot}/package.json"
+            ],
+            outputs: ["{workspaceRoot}/dist/{projectRoot}"],
             executor: "nx:run-commands",
             dependsOn: ["build-base"],
             options: {
               commands: [
                 `pnpm copyfiles LICENSE dist/${relativeRoot}`,
-                `pnpm copyfiles --up=2 ./${relativeRoot}/README.md ./${relativeRoot}/package.json dist/${relativeRoot}`,
+                `pnpm copyfiles --up=2 ./${relativeRoot}/*.md ./${relativeRoot}/package.json dist/${relativeRoot}`,
                 `pnpm copyfiles --up=3 "./${relativeRoot}/dist/**/*" dist/${relativeRoot}/dist`
               ]
             }
