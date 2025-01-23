@@ -1,3 +1,17 @@
+## 1.239.6 (2025-01-22)
+
+### Miscellaneous
+
+- **monorepo:** Update the workspace's `storm.json` config to use the new preset repository ([95067c70](https://github.com/storm-software/storm-ops/commit/95067c70))
+
+### 🧱 Updated Dependencies
+
+- Updated prettier to 0.30.3
+- Updated esbuild to 0.21.3
+- Updated unbuild to 0.30.6
+- Updated unbuild to 0.30.6
+- Updated tsdown to 0.22.3
+
 ## 1.239.5 (2025-01-22)
 
 ### Bug Fixes
