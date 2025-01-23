@@ -1,3 +1,19 @@
+## 1.240.1 (2025-01-23)
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with unending copy asset files process ([e0050d6b](https://github.com/storm-software/storm-ops/commit/e0050d6b))
+
+### 🧱 Updated Dependencies
+
+- Updated prettier to 0.30.4
+- Updated esbuild to 0.21.5
+- Updated esbuild to 0.21.5
+- Updated unbuild to 0.31.1
+- Updated unbuild to 0.31.1
+- Updated tsdown to 0.22.5
+- Updated tsdown to 0.22.5
+
 ## 1.240.0 (2025-01-23)
 
 ### Features

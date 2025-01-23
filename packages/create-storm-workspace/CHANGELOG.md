@@ -1,3 +1,9 @@
+## 1.84.5 (2025-01-23)
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with unending copy asset files process ([e0050d6b](https://github.com/storm-software/storm-ops/commit/e0050d6b))
+
 ## 1.84.4 (2025-01-23)
 
 ### Bug Fixes
