@@ -1,3 +1,9 @@
+## 0.23.9 (2025-01-23)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([eb629846](https://github.com/storm-software/storm-ops/commit/eb629846))
+
 ## 0.23.8 (2025-01-23)
 
 ### Bug Fixes
