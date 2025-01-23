@@ -1,3 +1,14 @@
+## 1.142.2 (2025-01-23)
+
+### Miscellaneous
+
+- **config-tools:** Updated the build configuration to no longer bundle lib ([9ee2096c](https://github.com/storm-software/storm-ops/commit/9ee2096c))
+- **monorepo:** Regenerate README markdown files ([e468fe22](https://github.com/storm-software/storm-ops/commit/e468fe22))
+
+### 🧱 Updated Dependencies
+
+- Updated config to 1.99.2
+
 ## 1.142.1 (2025-01-23)
 
 ### Bug Fixes
