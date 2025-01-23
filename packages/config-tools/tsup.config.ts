@@ -1,18 +1,37 @@
 import { defineConfig } from "tsup";
 
-export default defineConfig({
-  name: "config-tools",
-  target: "node22",
-  entryPoints: ["./src/**/*.ts"],
-  format: ["cjs", "esm"],
-  platform: "node",
-  splitting: true,
-  bundle: true,
-  clean: true,
-  dts: true,
-  sourcemap: false,
-  tsconfig: "./tsconfig.json",
-  shims: true,
-  // noExternal: ["chalk", "defu", "c12"],
-  external: ["nx", "@nx/*", "@swc/*"]
-});
+export default defineConfig([
+  {
+    name: "config-tools-base",
+    target: "node22",
+    entryPoints: ["./src/**/*.ts"],
+    format: ["cjs", "esm"],
+    outDir: "dist/src",
+    platform: "node",
+    splitting: true,
+    bundle: true,
+    clean: true,
+    dts: true,
+    sourcemap: false,
+    tsconfig: "./tsconfig.json",
+    shims: true,
+    // noExternal: ["chalk", "defu", "c12"],
+    external: ["nx", "@nx/*", "@swc/*"]
+  },
+  {
+    name: "config-tools-bin",
+    target: "node22",
+    entryPoints: ["bin/*.ts"],
+    format: ["cjs", "esm"],
+    outDir: "dist/bin",
+    platform: "node",
+    splitting: false,
+    bundle: true,
+    clean: false,
+    dts: false,
+    sourcemap: false,
+    tsconfig: "./tsconfig.json",
+    shims: true,
+    external: ["nx", "@nx/*", "@swc/*"]
+  }
+]);

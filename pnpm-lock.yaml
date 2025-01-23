@@ -407,9 +407,6 @@ importers:
 
   packages/config-tools:
     dependencies:
-      jiti:
-        specifier: 'catalog:'
-        version: 2.4.2
       zod:
         specifier: 'catalog:'
         version: 3.24.1
@@ -423,9 +420,21 @@ importers:
       chalk:
         specifier: 'catalog:'
         version: 4.1.2
+      commander:
+        specifier: 'catalog:'
+        version: 12.1.0
       defu:
         specifier: 'catalog:'
         version: 6.1.4
+      giget:
+        specifier: ^1.2.3
+        version: 1.2.3
+      jiti:
+        specifier: 'catalog:'
+        version: 2.4.2
+      sqlite:
+        specifier: ^5.1.1
+        version: 5.1.1
       tsup:
         specifier: 'catalog:'
         version: 8.3.5(@microsoft/api-extractor@7.49.1(@types/node@22.10.7))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.4.2)(postcss@8.5.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
@@ -3785,6 +3794,7 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
+    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -6571,8 +6581,8 @@ packages:
     resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
     engines: {node: '>=18'}
 
-  commander@13.0.0:
-    resolution: {integrity: sha512-oPYleIY8wmTVzkvQq10AEok6YcTC4sRUBl8F9gVuwchGVUCTbl/vhLTaQqutuuySYOsu8YTgV+OxKc/8Yvx+mQ==}
+  commander@13.1.0:
+    resolution: {integrity: sha512-/rFeCpNJQbhSZjGVwO9RFV3xPqbnERS8MmIQzCtD/zl6gpJuV/bMLuN92oG3F7d8oDEHHRrujSXNUr8fpjntKw==}
     engines: {node: '>=18'}
 
   commander@2.20.3:
@@ -12336,6 +12346,9 @@ packages:
   sprintf-js@1.1.3:
     resolution: {integrity: sha512-Oo+0REFV59/rz3gfJNKQiBlwfHaSESl1pcGyABQsnnIfWOFt6JNj5gCog2U6MLZ//IGYD+nA8nI+mTShREReaA==}
 
+  sqlite@5.1.1:
+    resolution: {integrity: sha512-oBkezXa2hnkfuJwUo44Hl9hS3er+YFtueifoajrgidvqsJRQFpc5fKoAkAor1O5ZnLoa28GBScfHXs8j0K358Q==}
+
   sshpk@1.18.0:
     resolution: {integrity: sha512-2p2KJZTSqQ/I3+HX42EpYOa2l3f8Erv8MWKsy2I9uf4wA7yFIkXRffYdsx86y6z4vHtV8u7g+pPlr8/4ouAxsQ==}
     engines: {node: '>=0.10.0'}
@@ -15437,7 +15450,7 @@ snapshots:
   '@cspell/cspell-tools@8.17.2(typescript@5.7.3)':
     dependencies:
       '@cspell/cspell-pipe': 8.17.2
-      commander: 13.0.0
+      commander: 13.1.0
       cosmiconfig: 9.0.0(typescript@5.7.3)
       cspell-trie-lib: 8.17.2
       glob: 10.4.5
@@ -20157,7 +20170,7 @@ snapshots:
 
   commander@12.1.0: {}
 
-  commander@13.0.0: {}
+  commander@13.1.0: {}
 
   commander@2.20.3: {}
 
@@ -22701,7 +22714,7 @@ snapshots:
     dependencies:
       '@cspell/cspell-pipe': 8.17.2
       '@cspell/cspell-types': 8.17.2
-      commander: 13.0.0
+      commander: 13.1.0
       gensequence: 7.0.0
       html-entities: 2.5.2
       iconv-lite: 0.6.3
@@ -27752,6 +27765,8 @@ snapshots:
   sprintf-js@1.0.3: {}
 
   sprintf-js@1.1.3: {}
+
+  sqlite@5.1.1: {}
 
   sshpk@1.18.0:
     dependencies:

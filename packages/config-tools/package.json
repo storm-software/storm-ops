@@ -31,6 +31,11 @@
   },
   "license": "Apache-2.0",
   "private": false,
+  "bin": {
+    "storm-config": "./bin/config.cjs",
+    "storm-config-esm": "./bin/config.js",
+    "storm-config-cjs": "./bin/config.cjs"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "exports": {
@@ -89,6 +94,20 @@
       "default": {
         "types": "./dist/create-storm-config.d.ts",
         "default": "./dist/create-storm-config.js"
+      }
+    },
+    "./get-config": {
+      "import": {
+        "types": "./dist/get-config.d.ts",
+        "default": "./dist/get-config.js"
+      },
+      "require": {
+        "types": "./dist/get-config.d.cts",
+        "default": "./dist/get-config.cjs"
+      },
+      "default": {
+        "types": "./dist/get-config.d.ts",
+        "default": "./dist/get-config.js"
       }
     },
     "./config-file": {
@@ -225,14 +244,17 @@
     "monorepo"
   ],
   "dependencies": {
-    "jiti": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",
     "c12": "catalog:",
     "chalk": "catalog:",
+    "commander": "catalog:",
     "defu": "catalog:",
+    "giget": "^1.2.3",
+    "jiti": "catalog:",
+    "sqlite": "^5.1.1",
     "tsup": "catalog:"
   },
   "publishConfig": {

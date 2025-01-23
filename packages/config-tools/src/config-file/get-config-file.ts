@@ -1,7 +1,7 @@
 import type { StormConfigInput } from "@storm-software/config";
 import { loadConfig, ResolvedConfig, type LoadConfigOptions } from "c12";
 import defu from "defu";
-import { writeSystem } from "../logger/console";
+import { writeTrace } from "../logger/console";
 import { joinPaths } from "../utilities";
 import { findWorkspaceRoot } from "../utilities/find-workspace-root";
 
@@ -22,25 +22,25 @@ export const getConfigFileByName = async (
 ): Promise<ResolvedConfig<Partial<StormConfigInput>>> => {
   const workspacePath = filePath || findWorkspaceRoot(filePath);
 
-  let config = await loadConfig<Partial<StormConfigInput>>({
-    cwd: workspacePath,
-    packageJson: true,
-    name: fileName,
-    envName: fileName?.toUpperCase(),
-    jitiOptions: {
-      debug: false,
-      fsCache:
-        process.env.STORM_SKIP_CACHE === "true"
-          ? false
-          : joinPaths(
-              process.env.STORM_CACHE_DIR || "node_modules/.cache/storm",
-              "jiti"
-            )
-    },
-    ...options
-  });
-  if (!config || Object.keys(config).length === 0) {
-    config = await loadConfig<Partial<StormConfigInput>>({
+  const configs = await Promise.all([
+    loadConfig<Partial<StormConfigInput>>({
+      cwd: workspacePath,
+      packageJson: true,
+      name: fileName,
+      envName: fileName?.toUpperCase(),
+      jitiOptions: {
+        debug: false,
+        fsCache:
+          process.env.STORM_SKIP_CACHE === "true"
+            ? false
+            : joinPaths(
+                process.env.STORM_CACHE_DIR || "node_modules/.cache/storm",
+                "jiti"
+              )
+      },
+      ...options
+    }),
+    loadConfig<Partial<StormConfigInput>>({
       cwd: workspacePath,
       packageJson: true,
       name: fileName,
@@ -57,10 +57,10 @@ export const getConfigFileByName = async (
       },
       configFile: fileName,
       ...options
-    });
-  }
+    })
+  ]);
 
-  return config;
+  return defu(configs[0] ?? {}, configs[1] ?? {});
 };
 
 /**
@@ -79,7 +79,7 @@ export const getConfigFile = async (
   let config = result.config;
   const configFile = result.configFile;
   if (config && configFile && Object.keys(config).length > 0) {
-    writeSystem(
+    writeTrace(
       `Found Storm configuration file "${
         configFile.includes(`${workspacePath}/`)
           ? configFile.replace(`${workspacePath}/`, "")
@@ -103,7 +103,7 @@ export const getConfigFile = async (
         result?.configFile &&
         Object.keys(result.config).length > 0
       ) {
-        writeSystem(
+        writeTrace(
           `Found alternative configuration file "${
             result.configFile.includes(`${workspacePath}/`)
               ? result.configFile.replace(`${workspacePath}/`, "")

@@ -1,6 +1,6 @@
 {
   "$schema": "./packages/config/schemas/storm.schema.json",
-  "extends": "gh:storm-software/workspace-config/base",
+  "extends": "./packages/config/presets/base.json",
   "name": "storm-ops",
   "namespace": "storm-software",
   "repository": "https://github.com/storm-software/storm-ops",

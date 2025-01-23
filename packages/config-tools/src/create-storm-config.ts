@@ -21,16 +21,7 @@ let _static_cache = undefined as StaticCache | undefined;
  *
  * @returns The config for the current Storm workspace
  */
-export const createConfig = (workspaceRoot?: string): StormConfig => {
-  return createStormConfig(undefined, undefined, workspaceRoot);
-};
-
-/**
- * Get the config for the current Storm workspace
- *
- * @returns The config for the current Storm workspace
- */
-export const createStormConfig = <
+export const createStormConfig = async <
   TExtensionName extends
     keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
   TExtensionConfig = any,
@@ -38,24 +29,37 @@ export const createStormConfig = <
 >(
   extensionName?: TExtensionName,
   schema?: TExtensionSchema,
-  workspaceRoot?: string
-): StormConfig<TExtensionName, TExtensionConfig> => {
+  workspaceRoot?: string,
+  skipLogs = false
+): Promise<StormConfig<TExtensionName, TExtensionConfig>> => {
   let result!: StormConfig<TExtensionName, TExtensionConfig>;
   if (
     !_static_cache?.data ||
     !_static_cache?.timestamp ||
-    _static_cache.timestamp < Date.now() - 30000
+    _static_cache.timestamp < Date.now() - 8000
   ) {
-    const config = getConfigEnv() as StormConfig & {
+    let _workspaceRoot = workspaceRoot;
+    if (!_workspaceRoot) {
+      _workspaceRoot = findWorkspaceRoot();
+    }
+
+    const configEnv = getConfigEnv() as StormConfig & {
       [extensionName in TExtensionName]: TExtensionConfig;
     };
-    const defaultConfig = getDefaultConfig(workspaceRoot);
+    const defaultConfig = await getDefaultConfig(_workspaceRoot);
 
-    result = StormConfigSchema.parse(
-      defu(config, defaultConfig)
-    ) as StormConfig<TExtensionName, TExtensionConfig>;
-    result.workspaceRoot ??=
-      defaultConfig.workspaceRoot || findWorkspaceRoot(workspaceRoot);
+    const configFile = await getConfigFile(_workspaceRoot);
+    if (!configFile && !skipLogs) {
+      writeWarning(
+        "No Storm config file found in the current workspace. Please ensure this is the expected behavior - you can add a `storm.json` file to the root of your workspace if it is not.\n",
+        { logLevel: "all" }
+      );
+    }
+
+    result = (await StormConfigSchema.parseAsync(
+      defu(configEnv, configFile, defaultConfig)
+    )) as StormConfig<TExtensionName, TExtensionConfig>;
+    result.workspaceRoot ??= _workspaceRoot;
   } else {
     result = _static_cache.data as StormConfig<
       TExtensionName,
@@ -115,46 +119,23 @@ export const createConfigExtension = <
  * Load the config file values for the current Storm workspace into environment variables
  */
 export const loadStormConfig = async (
-  workspaceRoot?: string
+  workspaceRoot?: string,
+  skipLogs = false
 ): Promise<StormConfig> => {
-  let config = {} as StormConfig;
-  if (
-    _static_cache?.data &&
-    _static_cache?.timestamp &&
-    _static_cache.timestamp >= Date.now() + 30000
-  ) {
-    writeTrace(
-      `Configuration cache hit - ${_static_cache.timestamp}`,
-      _static_cache.data
-    );
-
-    return _static_cache.data;
-  }
-
-  let _workspaceRoot = workspaceRoot;
-  if (!_workspaceRoot) {
-    _workspaceRoot = findWorkspaceRoot();
-  }
-
-  const configFile = await getConfigFile(_workspaceRoot);
-  if (!configFile) {
-    writeWarning(
-      "No Storm config file found in the current workspace. Please ensure this is the expected behavior - you can add a `storm.json` file to the root of your workspace if it is not.\n",
-      { logLevel: "all" }
-    );
-  }
-
-  config = defu(
-    getConfigEnv(),
-    configFile,
-    getDefaultConfig(_workspaceRoot)
-  ) as StormConfig;
+  const config = await createStormConfig(
+    undefined,
+    undefined,
+    workspaceRoot,
+    skipLogs
+  );
   setConfigEnv(config);
 
-  writeTrace(
-    `⚙️  Using Storm configuration: \n${formatLogMessage(config)}`,
-    config
-  );
+  if (!skipLogs) {
+    writeTrace(
+      `⚙️  Using Storm configuration: \n${formatLogMessage(config)}`,
+      config
+    );
+  }
 
   return config;
 };

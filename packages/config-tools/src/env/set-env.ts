@@ -60,7 +60,9 @@ export const setConfigEnv = (config: StormConfig) => {
   const prefix = "STORM_";
 
   if (config.extends) {
-    process.env[`${prefix}EXTENDS`] = config.extends;
+    process.env[`${prefix}EXTENDS`] = Array.isArray(config.extends)
+      ? JSON.stringify(config.extends)
+      : config.extends;
   }
   if (config.name) {
     process.env[`${prefix}NAME`] = config.name;

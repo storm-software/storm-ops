@@ -6,8 +6,10 @@ import {
   STORM_DEFAULT_LICENSE,
   type StormConfig
 } from "@storm-software/config";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync } from "node:fs";
+import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { joinPaths } from "./correct-paths";
 import { findWorkspaceRoot } from "./find-workspace-root";
 
 /**
@@ -47,31 +49,34 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
  *
  * @returns The default Storm config values
  */
-export const getDefaultConfig = (
+export const getDefaultConfig = async (
   root?: string
-): Pick<
-  StormConfig,
-  | "workspaceRoot"
-  | "name"
-  | "namespace"
-  | "repository"
-  | "license"
-  | "homepage"
-  | "docs"
-  | "licensing"
+): Promise<
+  Pick<
+    StormConfig,
+    | "workspaceRoot"
+    | "name"
+    | "namespace"
+    | "repository"
+    | "license"
+    | "homepage"
+    | "docs"
+    | "licensing"
+  >
 > => {
   let license = STORM_DEFAULT_LICENSE;
   let homepage = STORM_DEFAULT_HOMEPAGE;
 
-  let name!: string;
-  let namespace!: string;
-  let repository!: string;
+  let name: string | undefined = undefined;
+  let namespace: string | undefined = undefined;
+  let repository: string | undefined = undefined;
 
   const workspaceRoot = findWorkspaceRoot(root);
   if (existsSync(join(workspaceRoot, "package.json"))) {
-    const file = readFileSync(join(workspaceRoot, "package.json"), {
-      encoding: "utf8"
-    });
+    const file = await readFile(
+      joinPaths(workspaceRoot, "package.json"),
+      "utf8"
+    );
     if (file) {
       const packageJson = JSON.parse(file);
 
@@ -81,8 +86,12 @@ export const getDefaultConfig = (
       if (packageJson.namespace) {
         namespace = packageJson.namespace;
       }
-      if (packageJson.repository?.url) {
-        repository = packageJson.repository?.url;
+      if (packageJson.repository) {
+        if (typeof packageJson.repository === "string") {
+          repository = packageJson.repository;
+        } else if (packageJson.repository.url) {
+          repository = packageJson.repository.url;
+        }
       }
       if (packageJson.license) {
         license = packageJson.license;

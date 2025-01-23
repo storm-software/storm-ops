@@ -10,6 +10,7 @@
 export * from "./config-file";
 export * from "./create-storm-config";
 export * from "./env";
+export * from "./get-config";
 export * from "./logger";
 export * from "./types";
 export * from "./utilities";

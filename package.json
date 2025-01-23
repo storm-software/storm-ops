@@ -83,6 +83,7 @@
     "rebuild-all": "pnpm clean-all && pnpm build-all",
     "release": "node ./dist/packages/git-tools/bin/git.cjs release",
     "start": "nx serve",
+    "view-config": "node ./dist/packages/config-tools/bin/config.cjs",
     "test": "echo Skipping workspace testing..."
   },
   "dependencies": {

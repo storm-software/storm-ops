@@ -31,7 +31,7 @@ export const copyAssets = async (
   const pendingAssets = Array.from(assets ?? []);
 
   pendingAssets.push({
-    input: projectRoot,
+    input: joinPaths(config.workspaceRoot, projectRoot),
     glob: "*.md",
     output: "."
   });

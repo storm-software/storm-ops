@@ -205,6 +205,19 @@ export const ColorConfigMapSchema = z.union([
   z.record(z.string(), ColorConfigSchema)
 ]);
 
+const ExtendsItemSchema = z
+  .string()
+  .trim()
+  .describe(
+    "The path to a base config file to use as a configuration preset file. Documentation can be found at https://github.com/unjs/c12#extending-configuration."
+  );
+
+export const ExtendsSchema = ExtendsItemSchema.or(
+  z.array(ExtendsItemSchema)
+).describe(
+  "The path to a base config file to use as a configuration preset file. Documentation can be found at https://github.com/unjs/c12#extending-configuration."
+);
+
 export const WorkspaceBotConfigSchema = z
   .object({
     name: z
@@ -284,13 +297,7 @@ export const StormConfigSchema = z
       .describe(
         "The URL to the JSON schema file that describes the Storm configuration file"
       ),
-    extends: z
-      .string()
-      .trim()
-      .optional()
-      .describe(
-        "The path to a base JSON file to use as a configuration preset file"
-      ),
+    extends: ExtendsSchema.optional(),
     name: z
       .string()
       .trim()
@@ -313,7 +320,6 @@ export const StormConfigSchema = z
     repository: z
       .string()
       .trim()
-      .url()
       .optional()
       .describe("The repo URL of the workspace (i.e. GitHub)"),
     license: z
