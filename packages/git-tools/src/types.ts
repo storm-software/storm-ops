@@ -1,15 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import type { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
 import {
   NxReleaseChangelogConfiguration,
   NxReleaseConventionalCommitsConfiguration,
   NxReleaseGitConfiguration,
   NxReleaseVersionConfiguration
 } from "nx/src/config/nx-json";
-import type {
-  ProjectGraph,
-  ProjectsConfigurations
-} from "nx/src/devkit-exports";
 
 export type DeepPartial<T> = T extends object
   ? {

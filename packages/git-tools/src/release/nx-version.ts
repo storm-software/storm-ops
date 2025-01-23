@@ -1,3 +1,4 @@
+import { joinPathFragments, workspaceRoot } from "@nx/devkit";
 import type { StormConfig } from "@storm-software/config";
 import {
   findWorkspaceRoot,
@@ -37,7 +38,6 @@ import type {
 } from "nx/src/command-line/release/version.js";
 import { readNxJson, type NxJsonConfiguration } from "nx/src/config/nx-json.js";
 import type { ProjectGraph } from "nx/src/config/project-graph.js";
-import { joinPathFragments, workspaceRoot } from "nx/src/devkit-exports.js";
 import { flushChanges, FsTree, type Tree } from "nx/src/generators/tree.js";
 import { createProjectFileMapUsingProjectGraph } from "nx/src/project-graph/file-map-utils.js";
 import {

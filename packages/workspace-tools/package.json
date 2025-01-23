@@ -220,7 +220,6 @@
   },
   "dependencies": {
     "@ltd/j-toml": "1.38.0",
-    "@nx/devkit": "catalog:",
     "@size-limit/esbuild": "11.1.4",
     "@size-limit/esbuild-why": "11.1.4",
     "@size-limit/file": "11.1.4",
@@ -240,11 +239,7 @@
   },
   "devDependencies": {
     "@microsoft/api-extractor": "catalog:",
-    "@nx/esbuild": "catalog:",
-    "@storm-software/esbuild": "0.21.7",
-    "@storm-software/prettier": "0.30.5",
-    "@storm-software/tsdown": "0.22.7",
-    "@storm-software/unbuild": "0.31.3",
+    "@nx/devkit": "catalog:",
     "@types/micromatch": "4.0.9",
     "@types/node": "catalog:",
     "@types/semver": "7.5.8",

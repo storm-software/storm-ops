@@ -1,4 +1,5 @@
 /* eslint-disable no-prototype-builtins */
+import { joinPathFragments } from "@nx/devkit";
 import jsonParser from "jsonc-parser";
 import { readFileSync } from "node:fs";
 import { join, relative } from "node:path";
@@ -7,7 +8,6 @@ import {
   NxReleaseVersionConfiguration
 } from "nx/src/config/nx-json";
 import { ProjectFileMap, ProjectGraph } from "nx/src/config/project-graph.js";
-import { joinPathFragments } from "nx/src/devkit-exports.js";
 import { readJsonFile } from "nx/src/utils/fileutils.js";
 import { findMatchingProjects } from "nx/src/utils/find-matching-projects.js";
 import { output } from "nx/src/utils/output.js";

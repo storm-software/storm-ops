@@ -1,5 +1,3 @@
-import { existsSync } from "node:fs";
-import { join } from "node:path";
 import {
   output,
   readJsonFile,
@@ -9,7 +7,9 @@ import {
   type PackageManager,
   type ProjectGraphExternalNode,
   type RawProjectGraphDependency
-} from "nx/src/devkit-exports";
+} from "@nx/devkit";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import {
   getNpmLockfileDependencies,
   getNpmLockfileNodes

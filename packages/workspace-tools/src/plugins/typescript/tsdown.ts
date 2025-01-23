@@ -72,6 +72,14 @@ Please add it to your dependencies by running "pnpm add tsdown -D --filter="${pa
             relativeRoot = relativeRoot.slice(1);
           }
 
+          let relativeConfig = configFile.replaceAll(relativeRoot, "");
+          if (relativeRoot.startsWith(".")) {
+            relativeRoot = relativeRoot.slice(1);
+          }
+          if (relativeRoot.startsWith("/")) {
+            relativeRoot = relativeRoot.slice(1);
+          }
+
           targets["build-base"] ??= {
             cache: true,
             inputs: [
@@ -82,7 +90,7 @@ Please add it to your dependencies by running "pnpm add tsdown -D --filter="${pa
             executor: "nx:run-commands",
             dependsOn: ["clean", "^build"],
             options: {
-              command: `tsdown --config="${configFile}"`,
+              command: `tsdown --config="${relativeConfig}"`,
               cwd: relativeRoot
             }
           };
@@ -96,7 +104,7 @@ Please add it to your dependencies by running "pnpm add tsdown -D --filter="${pa
               commands: [
                 `pnpm copyfiles LICENSE dist/${relativeRoot}`,
                 `pnpm copyfiles --up=2 ./${relativeRoot}/README.md ./${relativeRoot}/package.json dist/${relativeRoot}`,
-                `pnpm copyfiles --up=3 ./${relativeRoot}/dist/* dist/${relativeRoot}/dist`
+                `pnpm copyfiles --up=3 "./${relativeRoot}/dist/**/*" dist/${relativeRoot}/dist`
               ]
             }
           };
