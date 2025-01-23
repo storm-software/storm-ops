@@ -1,3 +1,9 @@
+## 0.7.4 (2025-01-23)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with internal package referencing ([cdc11477](https://github.com/storm-software/storm-ops/commit/cdc11477))
+
 ## 0.7.3 (2025-01-20)
 
 ### Bug Fixes

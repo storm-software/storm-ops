@@ -1,3 +1,9 @@
+## 0.114.0 (2025-01-23)
+
+### Features
+
+- **config-tools:** Added the `storm-config` CLI to view current workspace configuration ([4241a6ae](https://github.com/storm-software/storm-ops/commit/4241a6ae))
+
 ## 0.113.6 (2025-01-22)
 
 ### Miscellaneous

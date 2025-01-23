@@ -1,3 +1,14 @@
+## 0.53.4 (2025-01-23)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with internal package referencing ([cdc11477](https://github.com/storm-software/storm-ops/commit/cdc11477))
+
+### 🧱 Updated Dependencies
+
+- Updated workspace-tools to 1.240.0
+- Updated workspace-tools to 1.240.0
+
 ## 0.53.3 (2025-01-22)
 
 ### Miscellaneous
