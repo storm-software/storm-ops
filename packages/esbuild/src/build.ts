@@ -452,7 +452,6 @@ async function copyBuildAssets(context: ESBuildContext) {
       context.options.assets ?? [],
       context.options.outdir,
       context.options.projectRoot,
-      context.options.projectName,
       context.options.sourceRoot,
       true,
       false

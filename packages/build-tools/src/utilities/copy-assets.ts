@@ -1,27 +1,16 @@
-import {
-  ExecutorContext,
-  readCachedProjectGraph,
-  readProjectsConfigurationFromProjectGraph
-} from "@nx/devkit";
-import { copyAssets as copyAssetsBase } from "@nx/js";
+import { CopyAssetsHandler } from "@nx/js/src/utils/assets/copy-assets-handler";
 import { StormConfig } from "@storm-software/config";
-import {
-  isVerbose,
-  writeDebug,
-  writeTrace
-} from "@storm-software/config-tools/logger";
+import { writeDebug, writeTrace } from "@storm-software/config-tools/logger";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { glob } from "glob";
 import { readFile, writeFile } from "node:fs/promises";
 import { AssetGlob } from "../types";
-import { readNxConfig } from "./read-nx-config";
 
 export const copyAssets = async (
   config: StormConfig,
   assets: (AssetGlob | string)[],
   outputPath: string,
   projectRoot: string,
-  projectName: string,
   sourceRoot: string,
   generatePackageJson = true,
   includeSrc = false,
@@ -31,12 +20,12 @@ export const copyAssets = async (
   const pendingAssets = Array.from(assets ?? []);
 
   pendingAssets.push({
-    input: joinPaths(config.workspaceRoot, projectRoot),
+    input: projectRoot,
     glob: "*.md",
     output: "."
   });
   pendingAssets.push({
-    input: config.workspaceRoot,
+    input: ".",
     glob: "LICENSE",
     output: "."
   });
@@ -57,55 +46,19 @@ export const copyAssets = async (
     });
   }
 
-  const nxJson = readNxConfig(config.workspaceRoot);
-  const projectGraph = readCachedProjectGraph();
-
-  const projectsConfigurations =
-    readProjectsConfigurationFromProjectGraph(projectGraph);
-  if (!projectsConfigurations?.projects?.[projectName]) {
-    throw new Error(
-      "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
-    );
-  }
-
-  const buildTarget =
-    projectsConfigurations.projects[projectName].targets?.build;
-  if (!buildTarget) {
-    throw new Error(
-      `The Build process failed because the project does not have a valid build target in the project.json file. Check if the file exists in the root of the project at ${joinPaths(
-        projectRoot,
-        "project.json"
-      )}`
-    );
-  }
-
   writeTrace(
     `📝  Copying the following assets to the output directory:
 ${pendingAssets.map(pendingAsset => (typeof pendingAsset === "string" ? ` - ${pendingAsset} -> ${outputPath}` : `  - ${pendingAsset.input}/${pendingAsset.glob} -> ${joinPaths(outputPath, pendingAsset.output)}`)).join("\n")}`,
     config
   );
 
-  const result = await copyAssetsBase(
-    {
-      assets: pendingAssets,
-      watch: false,
-      outputPath
-    },
-    {
-      root: config.workspaceRoot,
-      targetName: "build",
-      target: buildTarget,
-      projectName,
-      projectGraph,
-      projectsConfigurations,
-      nxJsonConfiguration: nxJson,
-      cwd: config.workspaceRoot,
-      isVerbose: isVerbose(config.logLevel)
-    } as ExecutorContext
-  );
-  if (!result.success) {
-    throw new Error("The Build process failed trying to copy assets");
-  }
+  const assetHandler = new CopyAssetsHandler({
+    projectDir: projectRoot,
+    rootDir: config.workspaceRoot,
+    outputDir: outputPath,
+    assets: pendingAssets
+  });
+  await assetHandler.processAllAssetsOnce();
 
   if (includeSrc === true) {
     writeDebug(

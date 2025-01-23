@@ -307,7 +307,6 @@ async function copyBuildAssets(options: TSDownResolvedOptions) {
     options.assets ?? [],
     options.outdir,
     options.projectRoot,
-    options.projectName,
     options.sourceRoot,
     true,
     false

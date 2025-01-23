@@ -520,7 +520,6 @@ export async function copyBuildAssets(options: UnbuildResolvedOptions) {
     options.assets ?? [],
     options.outDir,
     options.projectRoot,
-    options.projectName,
     options.sourceRoot,
     options.generatePackageJson,
     options.includeSrc
