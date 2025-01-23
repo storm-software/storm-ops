@@ -1,3 +1,14 @@
+## 0.53.7 (2025-01-23)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([64e4e1f3](https://github.com/storm-software/storm-ops/commit/64e4e1f3))
+
+### 🧱 Updated Dependencies
+
+- Updated workspace-tools to 1.240.3
+- Updated workspace-tools to 1.240.3
+
 ## 0.53.6 (2025-01-23)
 
 ### Miscellaneous

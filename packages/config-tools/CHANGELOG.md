@@ -1,3 +1,17 @@
+## 1.142.3 (2025-01-23)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with `copyfiles` command after build ([fd7606b7](https://github.com/storm-software/storm-ops/commit/fd7606b7))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([64e4e1f3](https://github.com/storm-software/storm-ops/commit/64e4e1f3))
+
+### 🧱 Updated Dependencies
+
+- Updated config to 1.99.3
+
 ## 1.142.2 (2025-01-23)
 
 ### Miscellaneous

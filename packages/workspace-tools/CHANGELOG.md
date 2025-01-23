@@ -1,3 +1,19 @@
+## 1.240.3 (2025-01-23)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([64e4e1f3](https://github.com/storm-software/storm-ops/commit/64e4e1f3))
+
+### 🧱 Updated Dependencies
+
+- Updated prettier to 0.30.5
+- Updated esbuild to 0.21.7
+- Updated esbuild to 0.21.7
+- Updated unbuild to 0.31.3
+- Updated unbuild to 0.31.3
+- Updated tsdown to 0.22.7
+- Updated tsdown to 0.22.7
+
 ## 1.240.2 (2025-01-23)
 
 ### Miscellaneous
