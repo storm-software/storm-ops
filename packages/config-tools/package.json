@@ -255,7 +255,6 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@storm-software/config": "1.99.3",
     "@types/node": "catalog:",
     "c12": "catalog:",
     "chalk": "catalog:",
