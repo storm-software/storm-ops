@@ -4,6 +4,7 @@ export * from "./create-cli-options";
 export * from "./get-project-configurations";
 export * from "./lock-file";
 export * from "./package-helpers";
+export * from "./plugin-helpers";
 export * from "./pnpm-deps-update";
 export * from "./project-tags";
 export * from "./toml";

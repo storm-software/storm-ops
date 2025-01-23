@@ -9,6 +9,7 @@ import {
   type PackageJson
 } from "nx/src/utils/package-json";
 import { readTSConfig } from "pkg-types";
+import { getProjectPlatform } from "../../utils/plugin-helpers";
 import {
   ProjectTagConstants,
   addProjectTag,
@@ -255,46 +256,43 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       { overwrite: true }
     );
 
-    const types = (
-      Array.isArray(tsconfig.compilerOptions?.types)
-        ? tsconfig.compilerOptions.types
-        : []
-    )?.map(t => t.toLowerCase()) as string[];
-    if (
-      types.some(t => t === "@cloudflare/workers-types") ||
-      packageJson.devDependencies?.["@cloudflare/workers-types"] ||
-      packageJson.devDependencies?.["wrangler"]
-    ) {
-      addProjectTag(
-        project,
-        ProjectTagConstants.Platform.TAG_ID,
-        ProjectTagConstants.Platform.WORKER,
-        { overwrite: true }
-      );
-    } else if (
-      types.some(t => t === "node") ||
-      packageJson.devDependencies?.["@types/node"]
-    ) {
-      addProjectTag(
-        project,
-        ProjectTagConstants.Platform.TAG_ID,
-        ProjectTagConstants.Platform.NODE,
-        { overwrite: false }
-      );
-    } else if (types.some(t => t === "dom")) {
-      addProjectTag(
-        project,
-        ProjectTagConstants.Platform.TAG_ID,
-        ProjectTagConstants.Platform.BROWSER,
-        { overwrite: true }
-      );
-    } else {
-      addProjectTag(
-        project,
-        ProjectTagConstants.Platform.TAG_ID,
-        ProjectTagConstants.Platform.NEUTRAL,
-        { overwrite: false }
-      );
+    const platform = getProjectPlatform(project);
+    switch (platform) {
+      case "worker":
+        addProjectTag(
+          project,
+          ProjectTagConstants.Platform.TAG_ID,
+          ProjectTagConstants.Platform.WORKER,
+          { overwrite: true }
+        );
+        break;
+
+      case "node":
+        addProjectTag(
+          project,
+          ProjectTagConstants.Platform.TAG_ID,
+          ProjectTagConstants.Platform.NODE,
+          { overwrite: true }
+        );
+        break;
+
+      case "browser":
+        addProjectTag(
+          project,
+          ProjectTagConstants.Platform.TAG_ID,
+          ProjectTagConstants.Platform.BROWSER,
+          { overwrite: true }
+        );
+        break;
+
+      default:
+        addProjectTag(
+          project,
+          ProjectTagConstants.Platform.TAG_ID,
+          ProjectTagConstants.Platform.NEUTRAL,
+          { overwrite: true }
+        );
+        break;
     }
 
     setDefaultProjectTags(project, name);

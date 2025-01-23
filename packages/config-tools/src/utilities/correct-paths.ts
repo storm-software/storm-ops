@@ -1,4 +1,8 @@
-import { joinPathFragments } from "@nx/devkit";
+import { join } from "node:path";
+
+const removeWindowsDriveLetter = (osSpecificPath: string): string => {
+  return osSpecificPath.replace(/^[A-Z]:/, "");
+};
 
 /**
  * Corrects any inconsistencies in the path's separators
@@ -12,11 +16,15 @@ export const correctPaths = (path?: string): string => {
   }
 
   // Handle Windows absolute paths
-  if (!path.toUpperCase().startsWith("C:") && path.includes("\\")) {
-    path = `C:${path}`;
+  if (path.includes("\\")) {
+    if (!path.toUpperCase().startsWith("C:")) {
+      path = `C:${path}`;
+    }
+
+    return path.replaceAll("/", "\\");
   }
 
-  return path.replaceAll("\\", "/");
+  return removeWindowsDriveLetter(path).split("\\").join("/");
 };
 
 /**
@@ -33,7 +41,5 @@ export const joinPaths = (...paths: string[]): string => {
     return "";
   }
 
-  return correctPaths(
-    joinPathFragments(...paths.map(path => correctPaths(path)))
-  );
+  return correctPaths(join(...paths));
 };

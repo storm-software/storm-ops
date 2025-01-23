@@ -73,11 +73,11 @@ Please add it to your dependencies by running "pnpm add tsdown -D --filter="${pa
           }
 
           let relativeConfig = configFile.replaceAll(relativeRoot, "");
-          if (relativeRoot.startsWith(".")) {
-            relativeRoot = relativeRoot.slice(1);
+          while (relativeConfig.startsWith(".")) {
+            relativeConfig = relativeConfig.slice(1);
           }
-          if (relativeRoot.startsWith("/")) {
-            relativeRoot = relativeRoot.slice(1);
+          while (relativeConfig.startsWith("/")) {
+            relativeConfig = relativeConfig.slice(1);
           }
 
           targets["build-base"] ??= {
