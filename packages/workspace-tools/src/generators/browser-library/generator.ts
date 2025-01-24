@@ -10,9 +10,9 @@ import { StormConfig } from "@storm-software/config";
 import { withRunGenerator } from "../../base/base-generator";
 import {
   normalizeOptions,
-  typeScriptLibraryGeneratorFn
+  typeScriptLibraryGeneratorFn,
+  TypeScriptLibraryGeneratorOptions
 } from "../../base/typescript-library-generator";
-import type { TypeScriptLibraryGeneratorSchema } from "../../base/typescript-library-generator.schema.d";
 import type { BrowserLibraryGeneratorSchema } from "./schema.d";
 
 export async function browserLibraryGeneratorFn(
@@ -21,7 +21,7 @@ export async function browserLibraryGeneratorFn(
   config?: StormConfig
 ) {
   const filesDir = joinPathFragments(__dirname, "./files");
-  const tsLibraryGeneratorOptions: TypeScriptLibraryGeneratorSchema = {
+  const tsLibraryGeneratorOptions: TypeScriptLibraryGeneratorOptions = {
     buildExecutor: "@storm-software/workspace-tools:unbuild",
     platform: "browser",
     devDependencies: {

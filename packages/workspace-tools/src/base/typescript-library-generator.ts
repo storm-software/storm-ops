@@ -33,8 +33,19 @@ import { addProjectTag, ProjectTagConstants } from "../utils/project-tags";
 import { nxVersion } from "../utils/versions";
 import { TypeScriptLibraryGeneratorSchema } from "./typescript-library-generator.schema.d";
 
-export type TypeScriptLibraryGeneratorNormalizedSchema =
-  TypeScriptLibraryGeneratorSchema & NormalizedLibraryGeneratorOptions;
+export type TypeScriptLibraryGeneratorOptions =
+  TypeScriptLibraryGeneratorSchema & {
+    devDependencies?: Record<string, string>;
+    peerDependencies?: Record<string, string>;
+    peerDependenciesMeta?: Record<string, any>;
+    tsconfigOptions?: Record<string, any>;
+  };
+
+export type TypeScriptLibraryGeneratorNormalizedOptions =
+  TypeScriptLibraryGeneratorOptions &
+    NormalizedLibraryGeneratorOptions & {
+      rootProject: boolean;
+    };
 
 type TypeScriptLibraryProjectConfig = ProjectConfiguration & {
   targets: {
@@ -44,16 +55,18 @@ type TypeScriptLibraryProjectConfig = ProjectConfiguration & {
 
 export async function typeScriptLibraryGeneratorFn(
   tree: Tree,
-  schema: TypeScriptLibraryGeneratorSchema,
+  options: TypeScriptLibraryGeneratorOptions,
   config?: StormConfig
 ) {
-  const options = await normalizeOptions(tree, { ...schema });
+  const normalized = await normalizeOptions(tree, { ...options });
 
   const tasks: GeneratorCallback[] = [];
   tasks.push(
     await jsInitGenerator(tree, {
-      ...options,
-      tsConfigName: options.rootProject ? "tsconfig.json" : "tsconfig.base.json"
+      ...normalized,
+      tsConfigName: normalized.rootProject
+        ? "tsconfig.json"
+        : "tsconfig.base.json"
     })
   );
 
@@ -64,33 +77,33 @@ export async function typeScriptLibraryGeneratorFn(
       {
         "@storm-software/workspace-tools": "latest",
         "@storm-software/testing-tools": "latest",
-        ...(schema.devDependencies ?? {})
+        ...(options.devDependencies ?? {})
       }
     )
   );
 
-  if (options.publishable) {
-    tasks.push(await setupVerdaccio(tree, { ...options, skipFormat: true }));
+  if (normalized.publishable) {
+    tasks.push(await setupVerdaccio(tree, { ...normalized, skipFormat: true }));
   }
 
   const projectConfig = {
-    root: options.directory,
+    root: normalized.directory,
     projectType: "library",
-    sourceRoot: joinPaths(options.directory ?? "", "src"),
+    sourceRoot: joinPaths(normalized.directory ?? "", "src"),
     targets: {
       build: {
-        executor: schema.buildExecutor,
+        executor: options.buildExecutor,
         outputs: ["{options.outputPath}"],
         options: {
-          entry: [joinPaths(options.projectRoot, "src", "index.ts")],
-          outputPath: getOutputPath(options),
-          tsconfig: joinPaths(options.projectRoot, "tsconfig.json"),
-          project: joinPaths(options.projectRoot, "package.json"),
+          entry: [joinPaths(normalized.projectRoot, "src", "index.ts")],
+          outputPath: getOutputPath(normalized),
+          tsconfig: joinPaths(normalized.projectRoot, "tsconfig.json"),
+          project: joinPaths(normalized.projectRoot, "package.json"),
           defaultConfiguration: "production",
           platform: "neutral",
           assets: [
             {
-              input: options.projectRoot,
+              input: normalized.projectRoot,
               glob: "*.md",
               output: "/"
             },
@@ -115,26 +128,26 @@ export async function typeScriptLibraryGeneratorFn(
     }
   } as TypeScriptLibraryProjectConfig;
 
-  if (schema.platform) {
+  if (options.platform) {
     projectConfig.targets.build.options.platform =
-      schema.platform === "worker" ? "node" : schema.platform;
+      options.platform === "worker" ? "node" : options.platform;
   }
 
   addProjectTag(
     projectConfig,
     ProjectTagConstants.Platform.TAG_ID,
-    schema.platform === "node"
+    options.platform === "node"
       ? ProjectTagConstants.Platform.NODE
-      : schema.platform === "worker"
+      : options.platform === "worker"
         ? ProjectTagConstants.Platform.WORKER
-        : schema.platform === "browser"
+        : options.platform === "browser"
           ? ProjectTagConstants.Platform.BROWSER
           : ProjectTagConstants.Platform.NEUTRAL,
     { overwrite: false }
   );
 
-  createProjectTsConfigJson(tree, options);
-  addProjectConfiguration(tree, options.name, projectConfig);
+  createProjectTsConfigJson(tree, normalized);
+  addProjectConfiguration(tree, normalized.name, projectConfig);
 
   let repository = {
     type: "github",
@@ -144,7 +157,7 @@ export async function typeScriptLibraryGeneratorFn(
   };
 
   let description =
-    schema.description ||
+    options.description ||
     "A package developed by Storm Software used to create modern, scalable web applications.";
 
   if (tree.exists("package.json")) {
@@ -161,22 +174,22 @@ export async function typeScriptLibraryGeneratorFn(
     }
   }
 
-  if (!options.importPath) {
-    options.importPath = options.name;
+  if (!normalized.importPath) {
+    normalized.importPath = normalized.name;
   }
 
-  const packageJsonPath = joinPaths(options.projectRoot, "package.json");
+  const packageJsonPath = joinPaths(normalized.projectRoot, "package.json");
   if (tree.exists(packageJsonPath)) {
     updateJson<PackageJson>(tree, packageJsonPath, (json: PackageJson) => {
-      if (!options.importPath) {
-        options.importPath = options.name;
+      if (!normalized.importPath) {
+        normalized.importPath = normalized.name;
       }
 
-      json.name = options.importPath;
+      json.name = normalized.importPath;
       json.version = "0.0.1";
 
       // If the package is publishable or root/standalone, we should remove the private field.
-      if (json.private && (options.publishable || options.rootProject)) {
+      if (json.private && (normalized.publishable || normalized.rootProject)) {
         json.private = undefined;
       }
 
@@ -186,7 +199,7 @@ export async function typeScriptLibraryGeneratorFn(
         description,
         repository: {
           ...repository,
-          directory: options.projectRoot
+          directory: normalized.projectRoot
         },
         type: "module",
         dependencies: {
@@ -199,14 +212,14 @@ export async function typeScriptLibraryGeneratorFn(
     });
   } else {
     writeJson<PackageJson>(tree, packageJsonPath, {
-      name: options.importPath,
+      name: normalized.importPath,
       version: "0.0.1",
       description,
       repository: {
         ...repository,
-        directory: options.projectRoot
+        directory: normalized.projectRoot
       },
-      private: !options.publishable || options.rootProject,
+      private: !normalized.publishable || normalized.rootProject,
       type: "module",
       publishConfig: {
         access: "public"
@@ -214,24 +227,28 @@ export async function typeScriptLibraryGeneratorFn(
     } as unknown as PackageJson);
   }
 
-  if (tree.exists("package.json") && options.importPath) {
+  if (tree.exists("package.json") && normalized.importPath) {
     updateJson(tree, "package.json", json => ({
       ...json,
       pnpm: {
         ...json?.pnpm,
         overrides: {
           ...json?.pnpm?.overrides,
-          [options.importPath ?? ""]: "workspace:*"
+          [normalized.importPath ?? ""]: "workspace:*"
         }
       }
     }));
   }
 
-  addTsConfigPath(tree, options.importPath, [
-    joinPaths(options.projectRoot, "./src", `index.${options.js ? "js" : "ts"}`)
+  addTsConfigPath(tree, normalized.importPath, [
+    joinPaths(
+      normalized.projectRoot,
+      "./src",
+      `index.${normalized.js ? "js" : "ts"}`
+    )
   ]);
-  addTsConfigPath(tree, joinPaths(options.importPath, "/*"), [
-    joinPaths(options.projectRoot, "./src", "/*")
+  addTsConfigPath(tree, joinPaths(normalized.importPath, "/*"), [
+    joinPaths(normalized.projectRoot, "./src", "/*")
   ]);
 
   if (tree.exists("package.json")) {
@@ -248,7 +265,7 @@ export async function typeScriptLibraryGeneratorFn(
     }
   }
 
-  const tsconfigPath = joinPaths(options.projectRoot, "tsconfig.json");
+  const tsconfigPath = joinPaths(normalized.projectRoot, "tsconfig.json");
   if (tree.exists(tsconfigPath)) {
     updateJson(tree, tsconfigPath, (json: any) => {
       json.composite ??= true;
@@ -257,10 +274,10 @@ export async function typeScriptLibraryGeneratorFn(
     });
   } else {
     writeJson(tree, tsconfigPath, {
-      extends: `${offsetFromRoot(options.projectRoot)}tsconfig.base.json`,
+      extends: `${offsetFromRoot(normalized.projectRoot)}tsconfig.base.json`,
       composite: true,
       compilerOptions: {
-        outDir: `${offsetFromRoot(options.projectRoot)}dist/out-tsc`
+        outDir: `${offsetFromRoot(normalized.projectRoot)}dist/out-tsc`
       },
       files: [],
       include: ["src/**/*.ts", "src/**/*.js"],
@@ -277,7 +294,7 @@ export async function typeScriptLibraryGeneratorFn(
 }
 
 export function getOutputPath(
-  options: TypeScriptLibraryGeneratorNormalizedSchema
+  options: TypeScriptLibraryGeneratorNormalizedOptions
 ) {
   const parts = ["dist"];
   if (options.projectRoot === ".") {
@@ -290,7 +307,7 @@ export function getOutputPath(
 
 export function createProjectTsConfigJson(
   tree: Tree,
-  options: TypeScriptLibraryGeneratorNormalizedSchema
+  options: TypeScriptLibraryGeneratorNormalizedOptions
 ) {
   const tsconfig = {
     extends: options.rootProject
@@ -326,10 +343,16 @@ export type TestEnvironment = "jsdom" | "node" | undefined;
 
 export async function normalizeOptions(
   tree: Tree,
-  options: TypeScriptLibraryGeneratorSchema
-): Promise<TypeScriptLibraryGeneratorNormalizedSchema> {
+  options: TypeScriptLibraryGeneratorOptions,
+  config?: StormConfig
+): Promise<TypeScriptLibraryGeneratorNormalizedOptions> {
+  let importPath = options.importPath;
+  if (!importPath && config?.namespace) {
+    importPath = `@${config?.namespace}/${options.name}`;
+  }
+
   if (options.publishable) {
-    if (!options.importPath) {
+    if (!importPath) {
       throw new Error(
         `For publishable libs you have to provide a proper "--importPath" which needs to be a valid npm package name (e.g. my-awesome-lib or @myorg/my-lib)`
       );
@@ -342,19 +365,20 @@ export async function normalizeOptions(
   }
 
   const { Linter } = ensurePackage("@nx/eslint", nxVersion);
+
+  const rootProject = false;
   const {
     projectName,
     names: projectNames,
     projectRoot,
-    importPath
+    importPath: normalizedImportPath
   } = await determineProjectNameAndRootOptions(tree, {
     name: options.name,
     projectType: "library",
     directory: options.directory,
-    importPath: options.importPath,
-    rootProject: options.rootProject
+    importPath,
+    rootProject
   });
-  options.rootProject = projectRoot === ".";
 
   const normalized = names(projectNames.projectFileName);
   const fileName = normalized.fileName;
@@ -383,6 +407,7 @@ export async function normalizeOptions(
     projectNames,
     projectRoot,
     parsedTags: options.tags ? options.tags.split(",").map(s => s.trim()) : [],
-    importPath
-  } as TypeScriptLibraryGeneratorNormalizedSchema;
+    importPath: normalizedImportPath,
+    rootProject
+  } as TypeScriptLibraryGeneratorNormalizedOptions;
 }

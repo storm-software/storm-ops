@@ -51,13 +51,14 @@ The executor to use for building the library
 The platform to target with the library
 
 
-## `devDependencies`
+## `importPath`
+- **Type**: `string`
 
-## `dependencies`
+> Import Path
 
-## `peerDependencies`
 
-## `peerDependenciesMeta`
+The import path for the library
+
 
 ## `tags`
 - **Type**: `string`
@@ -66,44 +67,6 @@ The platform to target with the library
 
 
 The tags for the library
-
-
-## `tsconfigOptions`
-
-## `skipFormat`
-- **Type**: `boolean`
-
-> Skip Format
-
-
-Skip formatting
-
-
-## `skipTsConfig`
-- **Type**: `boolean`
-
-> Skip TsConfig
-
-
-Skip TypeScript configuration
-
-
-## `skipPackageJson`
-- **Type**: `boolean`
-
-> Skip Package Json
-
-
-Skip package.json
-
-
-## `includeBabelRc`
-- **Type**: `boolean`
-
-> Include Babel Rc
-
-
-Include Babel configuration
 
 
 ## `unitTestRunner`
@@ -115,15 +78,6 @@ Include Babel configuration
 The unit test runner to use
 
 
-## `linter`
-- **Type**: `string`
-
-> Linter
-
-
-The linter to use
-
-
 ## `testEnvironment`
 - **Type**: `string`
 
@@ -133,26 +87,9 @@ The linter to use
 The test environment to use
 
 
-## `importPath`
-- **Type**: `string`
-
-> Import Path
-
-
-The import path for the library
-
-
-## `js`
-- **Type**: `boolean`
-
-> JavaScript
-
-
-Use JavaScript instead of TypeScript
-
-
 ## `pascalCaseFiles`
 - **Type**: `boolean`
+- **Default**: `false`
 
 > Pascal Case Files
 
@@ -162,6 +99,7 @@ Use PascalCase for file names
 
 ## `strict`
 - **Type**: `boolean`
+- **Default**: `true`
 
 > Strict
 
@@ -171,6 +109,7 @@ Enable strict mode
 
 ## `publishable`
 - **Type**: `boolean`
+- **Default**: `false`
 
 > Publishable
 
@@ -180,118 +119,11 @@ Make the library publishable
 
 ## `buildable`
 - **Type**: `boolean`
+- **Default**: `true`
 
 > Buildable
 
 
 Make the library buildable
-
-
-## `setParserOptionsProject`
-- **Type**: `boolean`
-
-> Set Parser Options Project
-
-
-Set parser options project
-
-
-## `config`
-- **Type**: `string`
-
-> Config
-
-
-The configuration type
-
-
-## `compiler`
-- **Type**: `string`
-
-> Compiler
-
-
-The compiler to use
-
-
-## `bundler`
-- **Type**: `string`
-
-> Bundler
-
-
-The bundler to use
-
-
-## `skipTypeCheck`
-- **Type**: `boolean`
-
-> Skip Type Check
-
-
-Skip type checking
-
-
-## `minimal`
-- **Type**: `boolean`
-
-> Minimal
-
-
-Create a minimal library
-
-
-## `rootProject`
-- **Type**: `boolean`
-
-> Root Project
-
-
-Create a root project
-
-
-## `simpleName`
-- **Type**: `boolean`
-
-> Simple Name
-
-
-Use a simple name for the library
-
-
-## `addPlugin`
-- **Type**: `boolean`
-
-> Add Plugin
-
-
-Add a plugin to the library
-
-
-## `useProjectJson`
-- **Type**: `boolean`
-
-> Use Project Json
-
-
-Use project.json
-
-
-## `skipWorkspacesWarning`
-- **Type**: `boolean`
-
-> Skip Workspaces Warning
-
-
-Skip workspaces warning
-
-
-## `useTscExecutor`
-- **Type**: `boolean`
-
-> Use Tsc Executor
-
-
-Use TSC executor
 
 

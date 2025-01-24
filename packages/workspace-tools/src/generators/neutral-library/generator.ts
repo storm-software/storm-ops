@@ -1,18 +1,18 @@
 import {
-  Tree,
   formatFiles,
   generateFiles,
   joinPathFragments,
   names,
-  offsetFromRoot
+  offsetFromRoot,
+  Tree
 } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
 import { withRunGenerator } from "../../base/base-generator";
 import {
   normalizeOptions,
-  typeScriptLibraryGeneratorFn
+  typeScriptLibraryGeneratorFn,
+  TypeScriptLibraryGeneratorOptions
 } from "../../base/typescript-library-generator";
-import type { TypeScriptLibraryGeneratorSchema } from "../../base/typescript-library-generator.schema.d";
 import { NeutralLibraryGeneratorSchema } from "./schema.d";
 
 export async function neutralLibraryGeneratorFn(
@@ -26,7 +26,7 @@ export async function neutralLibraryGeneratorFn(
     platform: "neutral",
     devDependencies: {},
     buildExecutor: "@storm-software/workspace-tools:unbuild"
-  } as TypeScriptLibraryGeneratorSchema;
+  } as TypeScriptLibraryGeneratorOptions;
 
   const options = await normalizeOptions(tree, tsLibraryGeneratorOptions);
   const { className, name, propertyName } = names(
