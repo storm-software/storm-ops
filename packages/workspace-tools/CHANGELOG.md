@@ -1,3 +1,13 @@
+## 1.243.0 (2025-01-24)
+
+### Features
+
+- **workspace-tools:** Improve the schema fields for TypeScript library generators ([73f559ea](https://github.com/storm-software/storm-ops/commit/73f559ea))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate the README markdown files ([e7d99d45](https://github.com/storm-software/storm-ops/commit/e7d99d45))
+
 ## 1.242.0 (2025-01-23)
 
 ### Features
