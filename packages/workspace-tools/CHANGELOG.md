@@ -1,3 +1,13 @@
+## 1.243.1 (2025-01-24)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issue with generator `files` path ([782fb19c](https://github.com/storm-software/storm-ops/commit/782fb19c))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate the README markdown files ([e217af7e](https://github.com/storm-software/storm-ops/commit/e217af7e))
+
 ## 1.243.0 (2025-01-24)
 
 ### Features
