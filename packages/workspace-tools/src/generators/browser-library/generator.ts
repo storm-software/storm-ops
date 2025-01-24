@@ -2,11 +2,11 @@ import {
   type Tree,
   formatFiles,
   generateFiles,
-  joinPathFragments,
   names,
   offsetFromRoot
 } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
+import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { withRunGenerator } from "../../base/base-generator";
 import {
   normalizeOptions,
@@ -20,7 +20,13 @@ export async function browserLibraryGeneratorFn(
   schema: BrowserLibraryGeneratorSchema,
   config?: StormConfig
 ) {
-  const filesDir = joinPathFragments(__dirname, "./files");
+  const filesDir = joinPaths(
+    __dirname,
+    "src",
+    "generators",
+    "browser-library",
+    "files"
+  );
   const tsLibraryGeneratorOptions: TypeScriptLibraryGeneratorOptions = {
     buildExecutor: "@storm-software/workspace-tools:unbuild",
     platform: "browser",

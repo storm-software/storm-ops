@@ -1,12 +1,12 @@
 import {
   formatFiles,
   generateFiles,
-  joinPathFragments,
   names,
   offsetFromRoot,
   Tree
 } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
+import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { withRunGenerator } from "../../base/base-generator";
 import {
   normalizeOptions,
@@ -20,7 +20,13 @@ export async function neutralLibraryGeneratorFn(
   schema: NeutralLibraryGeneratorSchema,
   config?: StormConfig
 ) {
-  const filesDir = joinPathFragments(__dirname, "./files");
+  const filesDir = joinPaths(
+    __dirname,
+    "src",
+    "generators",
+    "neutral-library",
+    "files"
+  );
   const tsLibraryGeneratorOptions = {
     ...schema,
     platform: "neutral",

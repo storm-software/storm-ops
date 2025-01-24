@@ -1,5 +1,5 @@
 /**
- * The <%= name %> library used by Storm Software for building TypeScript applications.
+ * The <%= name %> library used by Storm Software for building NodeJS applications.
  *
  * @remarks
  * <%= description %>

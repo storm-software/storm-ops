@@ -1,12 +1,12 @@
 import {
   formatFiles,
   generateFiles,
-  joinPathFragments,
   names,
   offsetFromRoot,
   type Tree
 } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
+import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { withRunGenerator } from "../../base/base-generator";
 import {
   normalizeOptions,
@@ -21,7 +21,13 @@ export async function nodeLibraryGeneratorFn(
   schema: NodeLibraryGeneratorSchema,
   config?: StormConfig
 ) {
-  const filesDir = joinPathFragments(__dirname, "./files");
+  const filesDir = joinPaths(
+    __dirname,
+    "src",
+    "generators",
+    "node-library",
+    "files"
+  );
   const tsLibraryGeneratorOptions: TypeScriptLibraryGeneratorOptions = {
     platform: "node",
     devDependencies: {
