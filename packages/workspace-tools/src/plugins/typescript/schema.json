@@ -1,0 +1,23 @@
+{
+  "id": "#",
+  "properties": {
+    "createNodesV2": {
+      "type": "array",
+      "id": "#createNodesV2",
+      "default": ["**/*untyped.ts", null],
+      "items": {
+        "type": ["string", "function"]
+      }
+    },
+    "name": {
+      "type": "string",
+      "id": "#name",
+      "default": "storm-software/typescript/tsup"
+    }
+  },
+  "type": "object",
+  "default": {
+    "createNodesV2": ["**/*untyped.ts", null],
+    "name": "storm-software/typescript/tsup"
+  }
+}

@@ -24,6 +24,7 @@ export default defineConfig([
     outDir: "dist/bin",
     platform: "node",
     bundle: true,
+    splitting: false,
     clean: true,
     dts: true,
     sourcemap: false,
