@@ -1,3 +1,13 @@
+## 0.24.0 (2025-01-28)
+
+### Features
+
+- **esbuild:** Remove dependency on `@humanfs/node` package ([3fb5aa09](https://github.com/storm-software/storm-ops/commit/3fb5aa09))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([812b4fba](https://github.com/storm-software/storm-ops/commit/812b4fba))
+
 ## 0.23.4 (2025-01-28)
 
 ### Miscellaneous

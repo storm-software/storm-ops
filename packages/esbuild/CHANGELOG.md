@@ -1,3 +1,23 @@
+## 0.23.0 (2025-01-28)
+
+### Features
+
+- **esbuild:** Remove dependency on `@humanfs/node` package ([3fb5aa09](https://github.com/storm-software/storm-ops/commit/3fb5aa09))
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with invalid import in build plugin ([48a23646](https://github.com/storm-software/storm-ops/commit/48a23646))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([812b4fba](https://github.com/storm-software/storm-ops/commit/812b4fba))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.144.5
+- Updated build-tools to 0.137.5
+- Updated config to 1.100.5
+
 ## 0.22.4 (2025-01-28)
 
 ### Miscellaneous

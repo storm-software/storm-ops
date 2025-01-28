@@ -1,3 +1,13 @@
+## 1.244.0 (2025-01-28)
+
+### Features
+
+- **workspace-tools:** Added the `untyped` Nx plugin ([adfdab2f](https://github.com/storm-software/storm-ops/commit/adfdab2f))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([812b4fba](https://github.com/storm-software/storm-ops/commit/812b4fba))
+
 ## 1.243.3 (2025-01-28)
 
 ### Miscellaneous
