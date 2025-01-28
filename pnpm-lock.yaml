@@ -590,9 +590,6 @@ importers:
 
   packages/esbuild:
     dependencies:
-      '@humanfs/node':
-        specifier: ^0.16.6
-        version: 0.16.6
       chokidar:
         specifier: ^4.0.3
         version: 4.0.3
@@ -1164,9 +1161,6 @@ importers:
 
   packages/tsdown:
     dependencies:
-      '@humanfs/node':
-        specifier: ^0.16.6
-        version: 0.16.6
       '@storm-software/build-tools':
         specifier: workspace:*
         version: link:../build-tools

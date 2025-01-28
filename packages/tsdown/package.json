@@ -208,7 +208,6 @@
     }
   },
   "dependencies": {
-    "@humanfs/node": "^0.16.6",
     "chokidar": "^4.0.3",
     "commander": "catalog:",
     "es-toolkit": "^1.30.1",

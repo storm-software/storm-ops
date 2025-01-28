@@ -15,7 +15,6 @@
 
  -------------------------------------------------------------------*/
 
-import { hfs } from "@humanfs/node";
 import {
   createProjectGraphAsync,
   readProjectsConfigurationFromProjectGraph,
@@ -50,9 +49,11 @@ import { map } from "es-toolkit/compat";
 import * as esbuild from "esbuild";
 import { BuildContext } from "esbuild";
 import { globbySync } from "globby";
+import { existsSync } from "node:fs";
+import hf from "node:fs/promises";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
 import { RendererEngine } from "./base/renderer-engine";
-import { clean } from "./clean";
+import { cleanDirectories } from "./clean";
 import {
   DEFAULT_BUILD_OPTIONS,
   getDefaultBuildPlugins,
@@ -97,11 +98,12 @@ const resolveOptions = async (
     projectRoot,
     "project.json"
   );
-  if (!(await hfs.isFile(projectJsonPath))) {
+  if (!existsSync(projectJsonPath)) {
     throw new Error("Cannot find project.json configuration");
   }
 
-  const projectJson = await hfs.json(projectJsonPath);
+  const projectJsonFile = await hf.readFile(projectJsonPath, "utf8");
+  const projectJson = JSON.parse(projectJsonFile);
   const projectName = projectJson.name;
 
   const projectConfigurations =
@@ -121,11 +123,12 @@ const resolveOptions = async (
     options.projectRoot,
     "package.json"
   );
-  if (!(await hfs.isFile(packageJsonPath))) {
+  if (!existsSync(packageJsonPath)) {
     throw new Error("Cannot find package.json configuration");
   }
 
-  const packageJson = await hfs.json(packageJsonPath);
+  const packageJsonFile = await hf.readFile(packageJsonPath, "utf8");
+  const packageJson = JSON.parse(packageJsonFile);
   const outExtension = getOutputExtensionMap(options, packageJson.type);
 
   const env = getEnv("esbuild", options as Parameters<typeof getEnv>[1]);
@@ -229,7 +232,7 @@ const resolveOptions = async (
 async function generatePackageJson(context: ESBuildContext) {
   if (
     context.options.generatePackageJson !== false &&
-    (await hfs.isFile(joinPaths(context.options.projectRoot, "package.json")))
+    existsSync(joinPaths(context.options.projectRoot, "package.json"))
   ) {
     writeDebug("  ✍️   Writing package.json file", context.options.config);
     const stopwatch = getStopwatch("Write package.json file");
@@ -238,17 +241,19 @@ async function generatePackageJson(context: ESBuildContext) {
       context.options.projectRoot,
       "project.json"
     );
-    if (!(await hfs.isFile(packageJsonPath))) {
+    if (!existsSync(packageJsonPath)) {
       throw new Error("Cannot find package.json configuration");
     }
 
-    let packageJson = await hfs.json(
+    const packageJsonFile = await hf.readFile(
       joinPaths(
         context.options.config.workspaceRoot,
         context.options.projectRoot,
         "package.json"
-      )
+      ),
+      "utf8"
     );
+    let packageJson = JSON.parse(packageJsonFile);
     if (!packageJson) {
       throw new Error("Cannot find package.json configuration file");
     }
@@ -428,7 +433,7 @@ async function executeEsBuild(context: ESBuildContext) {
 
   if (result.metafile) {
     const metafilePath = `${context.options.outdir}/${context.options.name}.meta.json`;
-    await hfs.write(metafilePath, JSON.stringify(result.metafile));
+    await hf.writeFile(metafilePath, JSON.stringify(result.metafile));
   }
 
   stopwatch();
@@ -523,15 +528,23 @@ async function dependencyCheck(options: ESBuildOptions) {
 /**
  * Clean the output path
  *
- * @param options - the build options
+ * @param context - the build context
  */
-async function cleanOutputPath(context: ESBuildContext) {
+export async function cleanOutputPath(context: ESBuildContext) {
   if (context.options.clean !== false && context.options.outdir) {
-    await clean(
+    writeDebug(
+      ` 🧹  Cleaning ${context.options.name} output path: ${context.options.outdir}`,
+      context.options.config
+    );
+    const stopwatch = getStopwatch(`${context.options.name} output clean`);
+
+    await cleanDirectories(
       context.options.name,
       context.options.outdir,
       context.options.config
     );
+
+    stopwatch();
   }
 
   return context;

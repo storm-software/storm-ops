@@ -15,7 +15,6 @@
 
  -------------------------------------------------------------------*/
 
-import { hfs } from "@humanfs/node";
 import {
   createProjectGraphAsync,
   readProjectsConfigurationFromProjectGraph,
@@ -41,9 +40,11 @@ import {
 import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import defu from "defu";
+import { existsSync } from "node:fs";
+import hf from "node:fs/promises";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
 import { build as tsdown } from "tsdown";
-import { clean } from "./clean";
+import { cleanDirectories } from "./clean";
 import { DEFAULT_BUILD_OPTIONS } from "./config";
 import { TSDownResolvedOptions, type TSDownOptions } from "./types";
 
@@ -77,11 +78,12 @@ const resolveOptions = async (
     projectRoot,
     "project.json"
   );
-  if (!(await hfs.isFile(projectJsonPath))) {
+  if (!existsSync(projectJsonPath)) {
     throw new Error("Cannot find project.json configuration");
   }
 
-  const projectJson = await hfs.json(projectJsonPath);
+  const projectJsonFile = await hf.readFile(projectJsonPath, "utf8");
+  const projectJson = JSON.parse(projectJsonFile);
   const projectName = projectJson.name;
 
   const projectConfigurations =
@@ -101,7 +103,7 @@ const resolveOptions = async (
     options.projectRoot,
     "package.json"
   );
-  if (!(await hfs.isFile(packageJsonPath))) {
+  if (!existsSync(packageJsonPath)) {
     throw new Error("Cannot find package.json configuration");
   }
 
@@ -178,27 +180,29 @@ const resolveOptions = async (
 async function generatePackageJson(options: TSDownResolvedOptions) {
   if (
     options.generatePackageJson !== false &&
-    (await hfs.isFile(joinPaths(options.projectRoot, "package.json")))
+    existsSync(joinPaths(options.projectRoot, "package.json"))
   ) {
     writeDebug("  ✍️   Writing package.json file", options.config);
     const stopwatch = getStopwatch("Write package.json file");
 
     const packageJsonPath = joinPaths(options.projectRoot, "project.json");
-    if (!(await hfs.isFile(packageJsonPath))) {
+    if (!existsSync(packageJsonPath)) {
       throw new Error("Cannot find package.json configuration");
     }
 
-    let packageJson = await hfs.json(
+    const packageJsonFile = await hf.readFile(
       joinPaths(
         options.config.workspaceRoot,
         options.projectRoot,
         "package.json"
-      )
+      ),
+      "utf8"
     );
-    if (!packageJson) {
+    if (!packageJsonFile) {
       throw new Error("Cannot find package.json configuration file");
     }
 
+    let packageJson = JSON.parse(packageJsonFile);
     packageJson = await addPackageDependencies(
       options.config.workspaceRoot,
       options.projectRoot,
@@ -332,9 +336,17 @@ async function reportResults(options: TSDownResolvedOptions) {
  *
  * @param options - the build options
  */
-async function cleanOutputPath(options: TSDownResolvedOptions) {
+export async function cleanOutputPath(options: TSDownResolvedOptions) {
   if (options.clean !== false && options.outdir) {
-    await clean(options.name, options.outdir, options.config);
+    writeDebug(
+      ` 🧹  Cleaning ${options.name} output path: ${options.outdir}`,
+      options.config
+    );
+    const stopwatch = getStopwatch(`${options.name} output clean`);
+
+    await cleanDirectories(options.name, options.outdir, options.config);
+
+    stopwatch();
   }
 
   return options;
