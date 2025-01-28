@@ -1,3 +1,13 @@
+## 0.31.0 (2025-01-28)
+
+### Features
+
+- **prettier:** Added `solidity` configuration option ([24a85f8c](https://github.com/storm-software/storm-ops/commit/24a85f8c))
+
+### Miscellaneous
+
+- **monorepo:** Generate README markdown files ([a28c725e](https://github.com/storm-software/storm-ops/commit/a28c725e))
+
 ## 0.30.12 (2025-01-28)
 
 ### Miscellaneous

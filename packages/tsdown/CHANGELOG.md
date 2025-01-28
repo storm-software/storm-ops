@@ -1,3 +1,9 @@
+## 0.24.7 (2025-01-28)
+
+### Miscellaneous
+
+- **monorepo:** Generate README markdown files ([a28c725e](https://github.com/storm-software/storm-ops/commit/a28c725e))
+
 ## 0.24.6 (2025-01-28)
 
 ### Miscellaneous
