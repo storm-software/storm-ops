@@ -163,7 +163,8 @@
     "./plugins/rust": "./dist/src/plugins/rust/index.js",
     "./plugins/typescript": "./dist/src/plugins/typescript/index.js",
     "./plugins/typescript/tsup": "./dist/src/plugins/typescript/tsup.js",
-    "./plugins/typescript/tsdown": "./dist/src/plugins/typescript/tsdown.js"
+    "./plugins/typescript/tsdown": "./dist/src/plugins/typescript/tsdown.js",
+    "./plugins/typescript/untyped": "./dist/src/plugins/typescript/untyped.js"
   },
   "typings": "dist/index.d.ts",
   "keywords": [

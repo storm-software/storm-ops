@@ -402,19 +402,23 @@
       "executor": "nx:run-commands",
       "dependsOn": ["^clean"]
     },
+    "build-untyped": {
+      "cache": true,
+      "dependsOn": ["^build"]
+    },
     "build-base": {
       "cache": true,
-      "dependsOn": ["clean", "^build"]
+      "dependsOn": ["clean", "build-untyped", "^build"]
     },
     "build-local": {
       "cache": true,
       "inputs": ["default", "^production"],
-      "dependsOn": ["build-base", "^build"]
+      "dependsOn": ["build-base", "build-untyped", "^build"]
     },
     "build": {
       "cache": true,
       "inputs": ["default", "^production"],
-      "dependsOn": ["build-base", "^build"]
+      "dependsOn": ["build-base", "build-untyped", "^build"]
     },
     "rebuild": {
       "cache": false,
