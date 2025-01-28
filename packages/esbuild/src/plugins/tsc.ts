@@ -15,10 +15,11 @@
 
  -------------------------------------------------------------------*/
 
-import { hfs } from "@humanfs/node";
 import { Extractor, ExtractorConfig } from "@microsoft/api-extractor";
 import { joinPaths, run, writeError } from "@storm-software/config-tools";
 import type * as esbuild from "esbuild";
+import { existsSync } from "node:fs";
+import fs from "node:fs/promises";
 import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
 
 /**
@@ -156,7 +157,7 @@ export const tscPlugin = (
 
         let dtsPath;
         if (
-          await hfs.isFile(
+          existsSync(
             joinPaths(
               resolvedOptions.config.workspaceRoot,
               typeOutDir,
@@ -170,7 +171,7 @@ export const tscPlugin = (
             `${entryPoint}.d.ts`
           );
         } else if (
-          await hfs.isFile(
+          existsSync(
             joinPaths(
               resolvedOptions.config.workspaceRoot,
               typeOutDir,
@@ -198,13 +199,13 @@ export const tscPlugin = (
             resolvedOptions
           );
 
-          const dtsContents = await hfs.text(`${bundlePath}.d.ts`);
-          await hfs.write(`${bundlePath}.${ext}`, dtsContents!);
+          const dtsContents = await fs.readFile(`${bundlePath}.d.ts`, "utf8");
+          await fs.writeFile(`${bundlePath}.${ext}`, dtsContents!);
         } else {
           // in watch mode, it wouldn't be viable to bundle the types every time
           // we haven't built any types with tsc at this stage, but we want types
           // we link the types locally by re-exporting them from the entry point
-          await hfs.write(
+          await fs.writeFile(
             `${bundlePath}.${ext}`,
             `export * from './${entryPoint}'`
           );
