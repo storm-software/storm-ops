@@ -28,18 +28,18 @@ export type DeepPartial<T> = T extends object
     }
   : T;
 
-export type UnbuildOptions = Omit<TypeScriptBuildOptions, "entry" | "format"> &
-  Omit<
-    BuildOptions,
-    | "entries"
-    | "rootDir"
-    | "externals"
-    | "rollupConfig"
-    | "outDir"
-    | "declaration"
-    | "format"
-    | "parallel"
-  > & {
+export type UnbuildOptions = Omit<
+  Partial<BuildOptions>,
+  | "entries"
+  | "rootDir"
+  | "externals"
+  | "rollupConfig"
+  | "outDir"
+  | "declaration"
+  | "format"
+  | "parallel"
+> &
+  Omit<TypeScriptBuildOptions, "entry" | "format"> & {
     /**
      * The directories to run the build process out of
      *
