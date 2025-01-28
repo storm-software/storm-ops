@@ -43,25 +43,13 @@ module.exports = {
       "options": {
         "parser": "prisma-parse"
       }
-    },
-    {
-      "files": "**/*.sol",
-      "options": {
-        "parser": "solidity-parse",
-        "printWidth": 80,
-        "tabWidth": 4,
-        "useTabs": false,
-        "singleQuote": false,
-        "bracketSpacing": false
-      }
     }
   ],
   "plugins": [
     "prettier-plugin-sh",
     "prettier-plugin-pkg",
     "prettier-plugin-prisma",
-    "prettier-plugin-organize-imports",
-    "prettier-plugin-solidity"
+    "prettier-plugin-organize-imports"
   ],
   "organizeImportsSkipDestructiveCodeActions": false
 };
