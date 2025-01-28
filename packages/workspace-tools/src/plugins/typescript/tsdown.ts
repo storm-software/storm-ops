@@ -89,7 +89,7 @@ Please add it to your dependencies by running "pnpm add tsdown -D --filter="${pa
             ],
             outputs: ["{projectRoot}/dist"],
             executor: "nx:run-commands",
-            dependsOn: ["^build"],
+            dependsOn: ["build-untyped", "^build"],
             options: {
               command: `tsdown --config="${relativeConfig}"`,
               cwd: relativeRoot
@@ -106,7 +106,7 @@ Please add it to your dependencies by running "pnpm add tsdown -D --filter="${pa
             ],
             outputs: ["{workspaceRoot}/dist/{projectRoot}"],
             executor: "nx:run-commands",
-            dependsOn: ["build-base"],
+            dependsOn: ["build-base", "build-untyped", "^build"],
             options: {
               commands: [
                 `pnpm copyfiles LICENSE dist/${relativeRoot}`,

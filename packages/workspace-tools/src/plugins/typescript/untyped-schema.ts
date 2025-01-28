@@ -14,12 +14,12 @@ import {
 } from "nx/src/utils/package-json";
 import { addProjectTag, ProjectTagConstants } from "../../utils/project-tags";
 
-export const name = "storm-software/typescript/tsup";
+export const name = "storm-software/typescript/untyped";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface TsupPluginOptions {}
+export interface UntypedPluginOptions {}
 
-export const createNodesV2: CreateNodesV2<TsupPluginOptions> = [
+export const createNodesV2: CreateNodesV2<UntypedPluginOptions> = [
   "**/*untyped.ts",
   async (configFiles, options, context): Promise<CreateNodesResultV2> => {
     return await createNodesFromFiles(

@@ -89,7 +89,7 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
             ],
             outputs: ["{projectRoot}/dist"],
             executor: "nx:run-commands",
-            dependsOn: ["clean", "^build"],
+            dependsOn: ["build-untyped", "^build"],
             options: {
               command: `tsup --config="${relativeConfig}"`,
               cwd: relativeRoot
@@ -106,7 +106,7 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
             ],
             outputs: ["{workspaceRoot}/dist/{projectRoot}"],
             executor: "nx:run-commands",
-            dependsOn: ["build-base"],
+            dependsOn: ["build-base", "build-untyped", "^build"],
             options: {
               commands: [
                 `pnpm copyfiles LICENSE dist/${relativeRoot}`,
