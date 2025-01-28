@@ -46,9 +46,9 @@
     "pnpm": ">=9.15.2"
   },
   "bin": {
-    "storm-untyped": "./bin/storm-untyped.cjs",
-    "storm-untyped-cjs": "./bin/storm-untyped.cjs",
-    "storm-untyped-esm": "./bin/storm-untyped.js"
+    "storm-untyped": "./bin/untyped.js",
+    "storm-untyped-cjs": "./bin/untyped.cjs",
+    "storm-untyped-esm": "./bin/untyped.js"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -183,7 +183,6 @@
   },
   "types": "./dist/index.d.cts",
   "files": [
-    "bin/**/*",
     "dist/**/*"
   ],
   "keywords": [
