@@ -1,3 +1,13 @@
+## 0.33.0 (2025-01-28)
+
+### Type Definitions
+
+- **unbuild:** Mark all options from original package as optional ([989de682](https://github.com/storm-software/storm-ops/commit/989de682))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([d3619f12](https://github.com/storm-software/storm-ops/commit/d3619f12))
+
 ## 0.32.2 (2025-01-24)
 
 ### Miscellaneous
