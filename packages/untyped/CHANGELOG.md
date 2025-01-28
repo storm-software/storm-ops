@@ -1,3 +1,13 @@
+## 0.10.0 (2025-01-28)
+
+### Features
+
+- **untyped:** Ensure we do not use splitting when generating `bin` directory ([4ce0b41e](https://github.com/storm-software/storm-ops/commit/4ce0b41e))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([d9a6793e](https://github.com/storm-software/storm-ops/commit/d9a6793e))
+
 ## 0.9.5 (2025-01-28)
 
 ### Miscellaneous
