@@ -1,3 +1,13 @@
+## 0.116.0 (2025-01-28)
+
+### Features
+
+- **eslint:** Bundle eslint plugins as part of the package ([24cd03f7](https://github.com/storm-software/storm-ops/commit/24cd03f7))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([08ac6d0e](https://github.com/storm-software/storm-ops/commit/08ac6d0e))
+
 ## 0.115.9 (2025-01-28)
 
 ### Miscellaneous
