@@ -134,40 +134,15 @@
     "sullivanpj"
   ],
   "peerDependencies": {
-    "@cspell/eslint-plugin": "8.13.1",
     "@eslint/config-inspector": "^0.5.1",
     "@graphql-eslint/eslint-plugin": "4.3.0",
     "@next/eslint-plugin-next": "15.1.6",
     "@nx/eslint": "catalog:",
     "@nx/eslint-plugin": "catalog:",
-    "eslint": "catalog:",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-es-x": "7.6.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-json": "4.0.0",
-    "eslint-plugin-jsonc": "2.16.0",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-markdown": "^5.1.0",
-    "eslint-plugin-markdownlint": "0.6.0",
-    "eslint-plugin-mdx": "3.1.5",
-    "eslint-plugin-n": "17.8.1",
-    "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-promise": "6.2.0",
-    "eslint-plugin-react": "^7.34.3",
-    "eslint-plugin-react-compiler": "0.0.0-experimental-b6997ec-20240909",
-    "eslint-plugin-react-hooks": "^5.1.0",
-    "eslint-plugin-relay": "1.8.3",
-    "eslint-plugin-sonarjs": "3.0.1",
-    "eslint-plugin-storybook": "0.11.0",
-    "eslint-plugin-tsdoc": "0.4.0",
-    "eslint-plugin-unicorn": "56.0.0",
-    "eslint-plugin-yml": "1.14.0",
-    "graphql": ">=16.9.0"
+    "graphql": ">=16.9.0",
+    "typescript": "catalog:"
   },
   "peerDependenciesMeta": {
-    "@cspell/eslint-plugin": {
-      "optional": false
-    },
     "@eslint/config-inspector": {
       "optional": true
     },
@@ -186,89 +161,18 @@
     "eslint": {
       "optional": false
     },
-    "eslint-config-prettier": {
-      "optional": false
-    },
-    "eslint-plugin-es-x": {
-      "optional": true
-    },
-    "eslint-plugin-import": {
-      "optional": true
-    },
-    "eslint-plugin-json": {
-      "optional": false
-    },
-    "eslint-plugin-jsonc": {
-      "optional": false
-    },
-    "eslint-plugin-jsx-a11y": {
-      "optional": true
-    },
-    "eslint-plugin-markdown": {
-      "optional": false
-    },
-    "eslint-plugin-markdownlint": {
-      "optional": false
-    },
-    "eslint-plugin-mdx": {
-      "optional": false
-    },
-    "eslint-plugin-n": {
-      "optional": true
-    },
-    "eslint-plugin-prettier": {
-      "optional": false
-    },
-    "eslint-plugin-promise": {
-      "optional": true
-    },
-    "eslint-plugin-react": {
-      "optional": true
-    },
-    "eslint-plugin-react-compiler": {
-      "optional": true
-    },
-    "eslint-plugin-react-hooks": {
-      "optional": true
-    },
-    "eslint-plugin-relay": {
-      "optional": true
-    },
-    "eslint-plugin-sonarjs": {
-      "optional": true
-    },
-    "eslint-plugin-storybook": {
-      "optional": true
-    },
-    "eslint-plugin-tsdoc": {
-      "optional": false
-    },
-    "eslint-plugin-unicorn": {
-      "optional": false
-    },
-    "eslint-plugin-yml": {
-      "optional": false
-    },
     "graphql": {
       "optional": true
+    },
+    "typescript": {
+      "optional": false
     }
   },
   "dependencies": {
-    "defu": "catalog:",
-    "ws": "8.17.1"
-  },
-  "devDependencies": {
     "@cspell/eslint-plugin": "8.13.1",
-    "@eslint/config-inspector": "^0.5.1",
-    "@graphql-eslint/eslint-plugin": "4.3.0",
-    "@next/eslint-plugin-next": "15.1.6",
-    "@nx/eslint": "catalog:",
-    "@nx/eslint-plugin": "catalog:",
-    "@types/eslint": "^9.6.1",
-    "@types/eslint__js": "^8.42.3",
-    "@types/node": "catalog:",
+    "defu": "catalog:",
     "eslint": "catalog:",
-    "eslint-config-prettier": "9.1.0",
+    "eslint-config-prettier": "10.0.1",
     "eslint-plugin-es-x": "7.6.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-json": "4.0.0",
@@ -289,14 +193,26 @@
     "eslint-plugin-tsdoc": "0.4.0",
     "eslint-plugin-unicorn": "56.0.0",
     "eslint-plugin-yml": "1.14.0",
-    "eslint-typegen": "^1.0.0",
     "globals": "^15.8.0",
-    "graphql": ">=16.9.0",
     "jsonc-eslint-parser": "2.4.0",
-    "tsup": "catalog:",
-    "typescript": "catalog:",
     "typescript-eslint": "^8.13.0",
+    "ws": "8.17.1",
     "yaml-eslint-parser": "1.2.3"
+  },
+  "devDependencies": {
+    "@eslint/config-inspector": "^0.5.1",
+    "@graphql-eslint/eslint-plugin": "4.3.0",
+    "@next/eslint-plugin-next": "15.1.6",
+    "@nx/eslint": "catalog:",
+    "@nx/eslint-plugin": "catalog:",
+    "@types/eslint": "^9.6.1",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "eslint-typegen": "^1.0.0",
+    "graphql": ">=16.9.0",
+    "tsup": "catalog:",
+    "typescript": "catalog:"
   },
   "publishConfig": {
     "access": "public"
