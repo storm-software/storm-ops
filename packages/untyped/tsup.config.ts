@@ -20,16 +20,16 @@ export default defineConfig([
     name: "untyped-bin",
     target: "node22",
     entryPoints: ["./bin/untyped.ts"],
-    format: ["cjs", "esm"],
     outDir: "dist/bin",
+    format: ["cjs", "esm"],
     platform: "node",
     bundle: true,
     splitting: false,
     clean: true,
-    dts: true,
+    dts: false,
     sourcemap: false,
-    tsconfig: "./tsconfig.json",
     shims: true,
-    noExternal: ["glob"]
+    tsconfig: "./tsconfig.json",
+    noExternal: ["untyped"]
   }
 ]);
