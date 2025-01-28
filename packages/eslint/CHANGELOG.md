@@ -1,3 +1,13 @@
+## 0.116.1 (2025-01-28)
+
+### Bug Fixes
+
+- **eslint:** Use `tsup-node` to build package ([794eabf1](https://github.com/storm-software/storm-ops/commit/794eabf1))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([4540dfe1](https://github.com/storm-software/storm-ops/commit/4540dfe1))
+
 ## 0.116.0 (2025-01-28)
 
 ### Features
