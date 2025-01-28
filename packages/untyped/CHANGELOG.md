@@ -1,3 +1,13 @@
+## 0.10.1 (2025-01-28)
+
+### Bug Fixes
+
+- **untyped:** Resolve issue generating `bin` executables ([568e986e](https://github.com/storm-software/storm-ops/commit/568e986e))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([4a6cac15](https://github.com/storm-software/storm-ops/commit/4a6cac15))
+
 ## 0.10.0 (2025-01-28)
 
 ### Features
