@@ -1,3 +1,13 @@
+## 0.10.2 (2025-01-28)
+
+### Bug Fixes
+
+- **untyped:** Resolve issue with default executable type ([4d9db79b](https://github.com/storm-software/storm-ops/commit/4d9db79b))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([144ad8bf](https://github.com/storm-software/storm-ops/commit/144ad8bf))
+
 ## 0.10.1 (2025-01-28)
 
 ### Bug Fixes
