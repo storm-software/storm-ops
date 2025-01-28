@@ -1,3 +1,13 @@
+## 1.245.3 (2025-01-28)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issue with `untyped` plugin name ([5f3706bc](https://github.com/storm-software/storm-ops/commit/5f3706bc))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([d5aac4fd](https://github.com/storm-software/storm-ops/commit/d5aac4fd))
+
 ## 1.245.2 (2025-01-28)
 
 ### Miscellaneous
