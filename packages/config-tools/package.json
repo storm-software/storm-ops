@@ -258,6 +258,7 @@
     "defu": "catalog:",
     "giget": "^1.2.3",
     "jiti": "catalog:",
+    "pathe": "^2.0.2",
     "sqlite": "^5.1.1",
     "zod": "catalog:"
   },
