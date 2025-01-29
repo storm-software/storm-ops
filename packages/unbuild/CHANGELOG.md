@@ -1,3 +1,9 @@
+## 0.35.0 (2025-01-29)
+
+### Features
+
+- **unbuild:** Add plugin logging prior to build ([a930cc3d](https://github.com/storm-software/storm-ops/commit/a930cc3d))
+
 ## 0.34.2 (2025-01-29)
 
 ### Miscellaneous

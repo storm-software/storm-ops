@@ -1,3 +1,9 @@
+## 0.116.8 (2025-01-29)
+
+### Dependency Upgrades
+
+- **eslint:** Include extra dependencies in install ([c4410edd](https://github.com/storm-software/storm-ops/commit/c4410edd))
+
 ## 0.116.7 (2025-01-29)
 
 ### Bug Fixes
