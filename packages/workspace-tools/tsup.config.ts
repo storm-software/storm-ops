@@ -31,7 +31,6 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     shims: true,
-    tsconfig: "./tsconfig.json",
-    external: ["@storm-software/*"]
+    tsconfig: "./tsconfig.json"
   }
 ]);

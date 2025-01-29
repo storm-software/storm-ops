@@ -49,6 +49,7 @@ export async function unbuildExecutorFn(
     fsCache: config.skipCache
       ? false
       : joinPaths(
+          config.workspaceRoot,
           config.directories.cache || "node_modules/.cache/storm",
           "jiti"
         ),
@@ -76,7 +77,13 @@ export async function unbuildExecutorFn(
       {
         stubOptions: {
           jiti: {
-            cache: "node_modules/.cache/storm"
+            fsCache: config.skipCache
+              ? false
+              : joinPaths(
+                  config.workspaceRoot,
+                  config.directories.cache || "node_modules/.cache/storm",
+                  "jiti"
+                )
           }
         },
         rollup: {
@@ -119,7 +126,6 @@ export default withRunExecutor<UnbuildExecutorSchema>(
         options.treeShaking ??= true;
         options.platform ??= "neutral";
         options.entry ??= ["{sourceRoot}"];
-        options.outputPath ??= "dist/{projectRoot}";
         options.tsconfig ??= "{projectRoot}/tsconfig.json";
 
         return options;

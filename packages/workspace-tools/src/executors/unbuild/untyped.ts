@@ -27,6 +27,14 @@ export default defineUntypedSchema({
     },
     $default: ["{sourceRoot}"]
   },
+  outputPath: {
+    $schema: {
+      title: "Output Path",
+      type: "string",
+      format: "path",
+      description: "The output path for the build"
+    }
+  },
   treeShaking: {
     $schema: {
       title: "Tree Shaking",
