@@ -135,8 +135,6 @@
   ],
   "peerDependencies": {
     "@eslint/config-inspector": "^0.5.1",
-    "@graphql-eslint/eslint-plugin": "4.3.0",
-    "@next/eslint-plugin-next": "15.1.6",
     "@nx/eslint": "catalog:",
     "@nx/eslint-plugin": "catalog:",
     "@nx/workspace": "catalog:",
@@ -145,12 +143,6 @@
   },
   "peerDependenciesMeta": {
     "@eslint/config-inspector": {
-      "optional": true
-    },
-    "@graphql-eslint/eslint-plugin": {
-      "optional": true
-    },
-    "@next/eslint-plugin-next": {
       "optional": true
     },
     "@nx/eslint": {
