@@ -1,3 +1,13 @@
+## 0.34.0 (2025-01-29)
+
+### Features
+
+- **monorepo:** Improve workspace dependency packaging ([b8d03e26](https://github.com/storm-software/storm-ops/commit/b8d03e26))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([c2ecaaf8](https://github.com/storm-software/storm-ops/commit/c2ecaaf8))
+
 ## 0.33.11 (2025-01-29)
 
 ### Miscellaneous
