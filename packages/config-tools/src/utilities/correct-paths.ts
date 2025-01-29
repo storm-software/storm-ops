@@ -1,45 +1,39 @@
-import { join } from "node:path";
-
-const removeWindowsDriveLetter = (osSpecificPath: string): string => {
-  return osSpecificPath.replace(/^[A-Z]:/, "");
-};
-
 /**
- * Corrects any inconsistencies in the path's separators
- *
- * @param path - The path to correct
- * @returns The corrected path
- */
-export const correctPaths = (path?: string): string => {
-  if (!path) {
-    return "";
-  }
-
-  // Handle Windows absolute paths
-  if (path.includes("\\")) {
-    if (!path.toUpperCase().startsWith("C:")) {
-      path = `C:${path}`;
-    }
-
-    return path.replaceAll("/", "\\");
-  }
-
-  return removeWindowsDriveLetter(path).split("\\").join("/");
-};
-
-/**
- * Join multiple path segments together
+ * Normalizes the given path.
  *
  * @remarks
- * This function also corrects any inconsistencies in the path's separators
+ * Removes duplicate slashes, removes trailing slashes, adds a leading slash.
  *
- * @param paths - The path segments to join
- * @returns The joined path
+ * @param path - The path to normalize
+ * @returns The normalized path
  */
-export const joinPaths = (...paths: string[]): string => {
-  if (!paths || paths.length === 0) {
-    return "";
+export function correctPaths(
+  path: string,
+  platform = process.platform
+): string {
+  path = path[0] === "/" ? path : "/" + path;
+  path = path.length > 1 && path.at(-1) === "/" ? path.slice(0, -1) : path;
+  path = path.replace(/\/+/g, "/");
+
+  if (platform === "win32" && path.startsWith("/C:")) {
+    path = path.slice(1);
   }
 
-  return correctPaths(join(...paths));
+  return path;
+}
+
+/**
+ * Join the given paths
+ *
+ * @param paths - The paths to join
+ * @returns The joined paths
+ */
+export const joinPaths = (...paths: string[]): string => {
+  return (
+    "/" +
+    paths
+      .map(v => correctPaths(v).slice(1))
+      .filter(Boolean)
+      .join("/")
+  );
 };

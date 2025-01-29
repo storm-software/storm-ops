@@ -2,18 +2,14 @@
   "id": "#",
   "title": "Unbuild Executor",
   "description": "A type definition for a unbuild executor schema",
-  "required": [
-    "name",
-    "entry"
-  ],
+  "required": ["name", "entry"],
   "properties": {
     "outputPath": {
       "title": "Output Path",
       "type": "string",
       "format": "path",
       "description": "The output path for the build",
-      "id": "#outputPath",
-      "default": "dist/{projectRoot}"
+      "id": "#outputPath"
     },
     "entry": {
       "title": "Input Directory",
@@ -24,9 +20,7 @@
         "type": "string"
       },
       "id": "#entry",
-      "default": [
-        "{sourceRoot}"
-      ]
+      "default": ["{sourceRoot}"]
     },
     "tsconfig": {
       "title": "TSConfig Path",
@@ -106,27 +100,16 @@
       "description": "The format to build",
       "items": {
         "type": "string",
-        "enum": [
-          "cjs",
-          "esm",
-          "iife"
-        ]
+        "enum": ["cjs", "esm", "iife"]
       },
       "id": "#format",
-      "default": [
-        "cjs",
-        "esm"
-      ]
+      "default": ["cjs", "esm"]
     },
     "platform": {
       "title": "Platform",
       "type": "string",
       "description": "The platform to build",
-      "enum": [
-        "neutral",
-        "node",
-        "browser"
-      ],
+      "enum": ["neutral", "node", "browser"],
       "id": "#platform",
       "default": "neutral"
     },
@@ -262,17 +245,11 @@
   },
   "type": "object",
   "default": {
-    "outputPath": "dist/{projectRoot}",
-    "entry": [
-      "{sourceRoot}"
-    ],
+    "entry": ["{sourceRoot}"],
     "tsconfig": "{projectRoot}/tsconfig.json",
     "silent": false,
     "target": "esnext",
-    "format": [
-      "cjs",
-      "esm"
-    ],
+    "format": ["cjs", "esm"],
     "platform": "neutral",
     "external": [],
     "define": {},
