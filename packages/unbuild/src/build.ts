@@ -42,6 +42,7 @@ import { StormConfig } from "@storm-software/config/types";
 import defu from "defu";
 import { LogLevel } from "esbuild";
 import { Glob } from "glob";
+import { type MkdistOptions } from "mkdist";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { relative } from "node:path";
@@ -50,6 +51,7 @@ import {
   type BuildConfig,
   type BuildContext,
   BuildEntry,
+  MkdistBuildEntry,
   RollupOptions,
   build as unbuild
 } from "unbuild";
@@ -199,7 +201,7 @@ export async function resolveOptions(
         outDir,
         declaration: options.emitTypes !== false ? "compatible" : false,
         format: "esm"
-      });
+      } as MkdistBuildEntry);
 
       ret.push({
         name: `${name}-cjs`,
@@ -209,7 +211,7 @@ export async function resolveOptions(
         declaration: options.emitTypes !== false ? "compatible" : false,
         format: "cjs",
         ext: "cjs"
-      });
+      } as MkdistBuildEntry);
 
       return ret;
     }, [] as BuildEntry[]),
@@ -323,6 +325,26 @@ export async function resolveOptions(
           tscPlugin(resolvedOptions),
           onErrorPlugin(resolvedOptions)
         ]);
+      }
+    },
+    "mkdist:entry:options": async (
+      ctx: BuildContext,
+      entry: MkdistBuildEntry,
+      opts: MkdistOptions
+    ) => {
+      opts.esbuild ||= {};
+      opts.esbuild.platform ??= resolvedOptions.platform;
+      opts.esbuild.minify ??= resolvedOptions.minify ?? !resolvedOptions.debug;
+      opts.esbuild.sourcemap ??= resolvedOptions.sourcemap ?? !!options.debug;
+
+      if (options.loaders) {
+        if (typeof options.loaders === "function") {
+          opts.loaders = await Promise.resolve(
+            options.loaders(ctx, entry, opts)
+          );
+        } else {
+          opts.loaders = options.loaders;
+        }
       }
     }
   };

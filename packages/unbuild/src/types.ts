@@ -20,13 +20,85 @@ import {
   TypeScriptBuildOptions,
   TypeScriptBuildResolvedOptions
 } from "@storm-software/build-tools";
-import type { BuildConfig, BuildOptions, RollupBuildOptions } from "unbuild";
+import { CommonOptions } from "esbuild";
+import { MkdistOptions } from "mkdist";
+import type {
+  BuildConfig,
+  BuildContext,
+  BuildOptions,
+  MkdistBuildEntry,
+  RollupBuildOptions
+} from "unbuild";
 
 export type DeepPartial<T> = T extends object
   ? {
       [P in keyof T]?: DeepPartial<T[P]>;
     }
   : T;
+
+export interface LoaderInputFile {
+  path: string;
+  extension: string;
+  srcPath?: string;
+  getContents: () => Promise<string> | string;
+}
+
+export interface LoaderOutputFile {
+  /**
+   * relative to distDir
+   */
+  path: string;
+  srcPath?: string;
+  extension?: string;
+  contents?: string;
+  declaration?: boolean;
+  errors?: Error[];
+  raw?: boolean;
+  skip?: boolean;
+}
+
+export type LoaderResult = LoaderOutputFile[] | undefined;
+
+export type LoadFile = (
+  input: LoaderInputFile
+) => LoaderResult | Promise<LoaderResult>;
+
+export interface LoaderOptions {
+  ext?: "js" | "mjs" | "cjs" | "ts" | "mts" | "cts";
+  format?: "cjs" | "esm";
+  declaration?: boolean;
+  esbuild?: CommonOptions;
+  postcss?: false | Record<string, any>;
+}
+
+export interface LoaderContext {
+  loadFile: LoadFile;
+  options: LoaderOptions;
+}
+
+export type Loader = (
+  input: LoaderInputFile,
+  context: LoaderContext
+) => LoaderResult | Promise<LoaderResult>;
+
+// export type UnbuildLoaderOptions = {
+//   pre?: <T extends TransformOptions>(
+//     input: string | Uint8Array,
+//     options?: SameShape<TransformOptions, T>
+//   ) => Promise<TransformResult<T>>;
+
+//   post?: <T extends TransformOptions>(
+//     input: string | Uint8Array,
+//     options?: SameShape<TransformOptions, T>
+//   ) => Promise<TransformResult<T>>;
+
+//   /**
+//    * Override the loader options used in the build process
+//    */
+//   override?: (Loader | string)[];
+// };
+
+export type Loaders = ("js" | "vue" | "sass" | "postcss" | Loader)[];
 
 export type UnbuildOptions = Omit<
   Partial<BuildOptions>,
@@ -57,7 +129,23 @@ export type UnbuildOptions = Omit<
      */
     configPath?: string;
 
+    /**
+     * Should the build process emit declaration files
+     *
+     * @defaultValue `true`
+     */
     emitTypes?: boolean;
+
+    /**
+     * Override the loader options used in the build process
+     */
+    loaders?:
+      | Loaders
+      | ((
+          ctx: BuildContext,
+          entry: MkdistBuildEntry,
+          opts: MkdistOptions
+        ) => Loaders | Promise<Loaders>);
   };
 
 export type UnbuildResolvedOptions = Omit<

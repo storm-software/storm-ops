@@ -213,8 +213,10 @@
     "@swc/core": "catalog:",
     "commander": "catalog:",
     "defu": "catalog:",
+    "esbuild": "catalog:",
     "glob": "catalog:",
     "jiti": "^2.4.2",
+    "mkdist": "^2.2.0",
     "rollup": "catalog:",
     "rollup-plugin-typescript2": "0.36.0",
     "unbuild": "catalog:"
