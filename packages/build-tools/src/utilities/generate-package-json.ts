@@ -47,7 +47,7 @@ export const addPackageDependencies = async (
         );
 
         const projectPackageJson = JSON.parse(projectPackageJsonContent);
-        if (projectPackageJson.private !== false) {
+        if (projectPackageJson.private !== true) {
           localPackages.push(projectPackageJson);
         }
       }
