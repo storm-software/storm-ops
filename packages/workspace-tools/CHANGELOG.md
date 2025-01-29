@@ -1,3 +1,13 @@
+## 1.245.8 (2025-01-29)
+
+### Bug Fixes
+
+- **workspace-tools:** Remove unused `deep-clone` dependency ([327413d4](https://github.com/storm-software/storm-ops/commit/327413d4))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([c87535fb](https://github.com/storm-software/storm-ops/commit/c87535fb))
+
 ## 1.245.7 (2025-01-29)
 
 ### Miscellaneous
