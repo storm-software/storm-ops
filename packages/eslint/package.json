@@ -139,6 +139,7 @@
     "@next/eslint-plugin-next": "15.1.6",
     "@nx/eslint": "catalog:",
     "@nx/eslint-plugin": "catalog:",
+    "@nx/workspace": "catalog:",
     "graphql": ">=16.9.0",
     "typescript": "catalog:"
   },
@@ -156,6 +157,9 @@
       "optional": true
     },
     "@nx/eslint-plugin": {
+      "optional": true
+    },
+    "@nx/workspace": {
       "optional": true
     },
     "eslint": {
@@ -205,6 +209,7 @@
     "@next/eslint-plugin-next": "15.1.6",
     "@nx/eslint": "catalog:",
     "@nx/eslint-plugin": "catalog:",
+    "@nx/workspace": "catalog:",
     "@types/eslint": "^9.6.1",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "catalog:",
