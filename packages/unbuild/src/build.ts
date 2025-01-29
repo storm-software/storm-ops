@@ -295,9 +295,24 @@ export async function resolveOptions(
 
   resolvedOptions.hooks = {
     "rollup:options": async (ctx: BuildContext, opts: any) => {
-      opts.plugins =
-        options.plugins ??
-        (await getDefaultBuildPlugins(options, resolvedOptions as any));
+      if (options.plugins && options.plugins.length > 0) {
+        writeDebug(
+          `  🧩   Found ${options.plugins.length} plugins in provided build options`,
+          config
+        );
+
+        opts.plugins = options.plugins;
+      } else {
+        writeDebug(
+          `  🧩   No plugins found in provided build options, using default plugins`,
+          config
+        );
+
+        opts.plugins = await getDefaultBuildPlugins(
+          options,
+          resolvedOptions as any
+        );
+      }
     }
   };
 
