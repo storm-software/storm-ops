@@ -252,10 +252,6 @@
     }
   },
   "dependencies": {
-    "zod": "catalog:"
-  },
-  "devDependencies": {
-    "@types/node": "catalog:",
     "c12": "catalog:",
     "chalk": "catalog:",
     "commander": "catalog:",
@@ -263,6 +259,10 @@
     "giget": "^1.2.3",
     "jiti": "catalog:",
     "sqlite": "^5.1.1",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
     "tsup": "catalog:"
   },
   "publishConfig": {

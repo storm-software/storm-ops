@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/workspace-tools",
-  "version": "1.245.8",
+  "version": "1.245.7",
   "description": "Tools for managing a Storm workspace, including various Nx generators and executors for common development tasks.",
   "repository": {
     "type": "github",
@@ -156,6 +156,34 @@
         "default": "./dist/src/base/*.js"
       }
     },
+    "./executors/*/untyped": {
+      "import": {
+        "types": "./dist/src/executors/*/untyped.d.mts",
+        "default": "./dist/src/executors/*/untyped.mjs"
+      },
+      "require": {
+        "types": "./dist/src/executors/*/untyped.d.ts",
+        "default": "./dist/src/executors/*/untyped.js"
+      },
+      "default": {
+        "types": "./dist/src/executors/*/untyped.d.ts",
+        "default": "./dist/src/executors/*/untyped.js"
+      }
+    },
+    "./generators/*/untyped": {
+      "import": {
+        "types": "./dist/src/generators/*/untyped.d.mts",
+        "default": "./dist/src/generators/*/untyped.mjs"
+      },
+      "require": {
+        "types": "./dist/src/generators/*/untyped.d.ts",
+        "default": "./dist/src/generators/*/untyped.js"
+      },
+      "default": {
+        "types": "./dist/src/generators/*/untyped.d.ts",
+        "default": "./dist/src/generators/*/untyped.js"
+      }
+    },
     "./executors/*/executor.js": "./dist/src/executors/*/executor.js",
     "./generators/*/generator.js": "./dist/src/generators/*/generator.js",
     "./generators/*/init.js": "./dist/src/generators/*/init.js",
@@ -177,26 +205,17 @@
     "sullivanpj"
   ],
   "peerDependencies": {
-    "@microsoft/api-extractor": "catalog:",
     "@nx/devkit": "catalog:",
-    "@samchon/openapi": "^2.3.0",
     "@storm-software/esbuild": "workspace:*",
     "@storm-software/prettier": "workspace:*",
     "@storm-software/tsdown": "workspace:*",
     "@storm-software/unbuild": "workspace:*",
     "nx": "catalog:",
-    "typescript": "catalog:",
-    "typia": "catalog:"
+    "typescript": "catalog:"
   },
   "peerDependenciesMeta": {
-    "@microsoft/api-extractor": {
-      "optional": true
-    },
     "@nx/devkit": {
       "optional": false
-    },
-    "@samchon/openapi": {
-      "optional": true
     },
     "@storm-software/esbuild": {
       "optional": true
@@ -215,13 +234,12 @@
     },
     "typescript": {
       "optional": false
-    },
-    "typia": {
-      "optional": true
     }
   },
   "dependencies": {
     "@ltd/j-toml": "1.38.0",
+    "@microsoft/api-extractor": "catalog:",
+    "@samchon/openapi": "^2.3.0",
     "@size-limit/esbuild": "11.1.4",
     "@size-limit/esbuild-why": "11.1.4",
     "@size-limit/file": "11.1.4",
@@ -235,20 +253,19 @@
     "read-yaml-file": "catalog:",
     "semver": "7.6.2",
     "size-limit": "11.1.4",
+    "typia": "catalog:",
+    "untyped": "catalog:",
     "zod": "catalog:",
     "zod-to-json-schema": "3.23.1"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "catalog:",
     "@nx/devkit": "catalog:",
     "@types/micromatch": "4.0.9",
     "@types/node": "catalog:",
     "@types/semver": "7.5.8",
     "nx": "catalog:",
     "tsup": "catalog:",
-    "typescript": "catalog:",
-    "typia": "catalog:",
-    "untyped": "catalog:"
+    "typescript": "catalog:"
   },
   "publishConfig": {
     "access": "public"

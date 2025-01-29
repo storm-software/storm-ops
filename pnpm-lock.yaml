@@ -320,6 +320,9 @@ importers:
 
   packages/build-tools:
     dependencies:
+      '@swc/core':
+        specifier: 'catalog:'
+        version: 1.7.26(@swc/helpers@0.5.13)
       glob:
         specifier: 'catalog:'
         version: 11.0.1
@@ -332,9 +335,6 @@ importers:
       rollup:
         specifier: 'catalog:'
         version: 4.29.1
-      typescript:
-        specifier: 'catalog:'
-        version: 5.7.3
     devDependencies:
       '@nx/devkit':
         specifier: 'catalog:'
@@ -342,9 +342,6 @@ importers:
       '@nx/js':
         specifier: 'catalog:'
         version: 20.3.2(@babel/traverse@7.26.5)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.17)(typescript@5.7.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.10.7)(nx@20.3.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.17)(typescript@5.7.3))(@swc/core@1.7.26(@swc/helpers@0.5.13)))(typescript@5.7.3)(verdaccio@5.31.1(encoding@0.1.13)(typanion@3.14.0))
-      '@swc/core':
-        specifier: 'catalog:'
-        version: 1.7.26(@swc/helpers@0.5.13)
       '@types/node':
         specifier: 'catalog:'
         version: 22.10.7
@@ -354,6 +351,9 @@ importers:
       tsup:
         specifier: 'catalog:'
         version: 8.3.5(@microsoft/api-extractor@7.49.1(@types/node@22.10.7))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.4.2)(postcss@8.5.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      typescript:
+        specifier: 'catalog:'
+        version: 5.7.3
 
   packages/cloudflare-tools:
     dependencies:
@@ -410,13 +410,6 @@ importers:
       '@storm-software/config':
         specifier: workspace:*
         version: link:../config
-      zod:
-        specifier: 'catalog:'
-        version: 3.24.1
-    devDependencies:
-      '@types/node':
-        specifier: 'catalog:'
-        version: 22.10.7
       c12:
         specifier: 'catalog:'
         version: 2.0.1
@@ -438,6 +431,13 @@ importers:
       sqlite:
         specifier: ^5.1.1
         version: 5.1.1
+      zod:
+        specifier: 'catalog:'
+        version: 3.24.1
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.10.7
       tsup:
         specifier: 'catalog:'
         version: 8.3.5(@microsoft/api-extractor@7.49.1(@types/node@22.10.7))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.4.2)(postcss@8.5.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
@@ -1243,6 +1243,9 @@ importers:
       '@rollup/plugin-replace':
         specifier: ^6.0.2
         version: 6.0.2(rollup@4.29.1)
+      '@rollup/pluginutils':
+        specifier: ^5.1.4
+        version: 5.1.4(rollup@4.29.1)
       '@storm-software/build-tools':
         specifier: workspace:*
         version: link:../build-tools
@@ -1252,6 +1255,12 @@ importers:
       '@storm-software/config-tools':
         specifier: workspace:*
         version: link:../config-tools
+      '@swc/core':
+        specifier: 'catalog:'
+        version: 1.7.26(@swc/helpers@0.5.13)
+      commander:
+        specifier: 'catalog:'
+        version: 12.1.0
       defu:
         specifier: 'catalog:'
         version: 6.1.4
@@ -1277,18 +1286,9 @@ importers:
       '@nx/js':
         specifier: 'catalog:'
         version: 20.3.2(@babel/traverse@7.26.5)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.17)(typescript@5.7.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/wasm@1.6.5)(@types/node@22.10.7)(nx@20.3.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.17)(typescript@5.7.3))(@swc/core@1.7.26(@swc/helpers@0.5.13)))(typescript@5.7.3)(verdaccio@5.31.1(encoding@0.1.13)(typanion@3.14.0))
-      '@rollup/pluginutils':
-        specifier: ^5.1.4
-        version: 5.1.4(rollup@4.29.1)
-      '@swc/core':
-        specifier: 'catalog:'
-        version: 1.7.26(@swc/helpers@0.5.13)
       '@types/node':
         specifier: 'catalog:'
         version: 22.10.7
-      commander:
-        specifier: 'catalog:'
-        version: 12.1.0
       nx:
         specifier: 'catalog:'
         version: 20.3.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.17)(typescript@5.7.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
@@ -1332,6 +1332,9 @@ importers:
       '@ltd/j-toml':
         specifier: 1.38.0
         version: 1.38.0
+      '@microsoft/api-extractor':
+        specifier: 'catalog:'
+        version: 7.49.1(@types/node@22.10.7)
       '@samchon/openapi':
         specifier: ^2.3.0
         version: 2.4.0
@@ -1386,6 +1389,12 @@ importers:
       size-limit:
         specifier: 11.1.4
         version: 11.1.4
+      typia:
+        specifier: 'catalog:'
+        version: 7.6.0(@samchon/openapi@2.4.0)(typescript@5.7.3)
+      untyped:
+        specifier: 'catalog:'
+        version: 1.5.2
       zod:
         specifier: 'catalog:'
         version: 3.24.1
@@ -1393,9 +1402,6 @@ importers:
         specifier: 3.23.1
         version: 3.23.1(zod@3.24.1)
     devDependencies:
-      '@microsoft/api-extractor':
-        specifier: 'catalog:'
-        version: 7.49.1(@types/node@22.10.7)
       '@nx/devkit':
         specifier: 'catalog:'
         version: 20.3.2(nx@20.3.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.17)(typescript@5.7.3))(@swc/core@1.7.26(@swc/helpers@0.5.13)))
@@ -1417,12 +1423,6 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.7.3
-      typia:
-        specifier: 'catalog:'
-        version: 7.6.0(@samchon/openapi@2.4.0)(typescript@5.7.3)
-      untyped:
-        specifier: 'catalog:'
-        version: 1.5.2
 
   terraform-modules:
     dependencies:

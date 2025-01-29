@@ -163,8 +163,8 @@
   "peerDependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@swc/core": "catalog:",
-    "nx": "catalog:"
+    "nx": "catalog:",
+    "typescript": "catalog:"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
@@ -173,27 +173,27 @@
     "@nx/js": {
       "optional": false
     },
-    "@swc/core": {
-      "optional": true
-    },
     "nx": {
+      "optional": false
+    },
+    "typescript": {
       "optional": false
     }
   },
   "dependencies": {
+    "@swc/core": "catalog:",
     "glob": "catalog:",
     "resolve": "1.22.8",
     "resolve-from": "5.0.0",
-    "rollup": "catalog:",
-    "typescript": "catalog:"
+    "rollup": "catalog:"
   },
   "devDependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@swc/core": "catalog:",
     "@types/node": "catalog:",
     "nx": "catalog:",
-    "tsup": "catalog:"
+    "tsup": "catalog:",
+    "typescript": "catalog:"
   },
   "publishConfig": {
     "access": "public"

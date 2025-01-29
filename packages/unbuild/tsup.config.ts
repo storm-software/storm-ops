@@ -14,9 +14,7 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     shims: true,
-    tsconfig: "./tsconfig.json",
-    external: ["vue-tsc", "vue/compiler-sfc"],
-    noExternal: ["unbuild"]
+    tsconfig: "./tsconfig.json"
   },
   {
     name: "unbuild-bin",
@@ -31,8 +29,6 @@ export default defineConfig([
     dts: false,
     sourcemap: false,
     shims: true,
-    tsconfig: "./tsconfig.json",
-    external: ["vue-tsc", "vue/compiler-sfc"],
-    noExternal: ["unbuild"]
+    tsconfig: "./tsconfig.json"
   }
 ]);
