@@ -1,3 +1,13 @@
+## 1.147.0 (2025-01-29)
+
+### Features
+
+- **projen:** Initial check-in of the `projen` package ([a5b61ac7](https://github.com/storm-software/storm-ops/commit/a5b61ac7))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([5e0520b1](https://github.com/storm-software/storm-ops/commit/5e0520b1))
+
 ## 1.146.0 (2025-01-29)
 
 ### Features
