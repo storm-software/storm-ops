@@ -1,3 +1,20 @@
+## 0.23.12 (2025-01-29)
+
+### Bug Fixes
+
+- **config-tools:** Resolved issue with correct path helpers ([4102104a](https://github.com/storm-software/storm-ops/commit/4102104a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([2eb0a4f0](https://github.com/storm-software/storm-ops/commit/2eb0a4f0))
+- **monorepo:** Regenerate README markdown files ([da76edd7](https://github.com/storm-software/storm-ops/commit/da76edd7))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.146.0
+- Updated build-tools to 0.138.2
+- Updated config to 1.100.17
+
 ## 0.23.11 (2025-01-29)
 
 ### Miscellaneous
