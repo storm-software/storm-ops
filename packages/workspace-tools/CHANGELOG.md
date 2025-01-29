@@ -1,3 +1,9 @@
+## 1.246.1 (2025-01-29)
+
+### Bug Fixes
+
+- **unbuild:** Adjust the output path to handle nested directories correctly ([4fa95fe0](https://github.com/storm-software/storm-ops/commit/4fa95fe0))
+
 ## 1.246.0 (2025-01-29)
 
 ### Features
