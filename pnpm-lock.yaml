@@ -141,6 +141,7 @@ overrides:
   '@storm-software/k8s-tools': workspace:*
   '@storm-software/linting-tools': workspace:*
   '@storm-software/markdownlint': workspace:*
+  '@storm-software/projen': workspace:*
   '@storm-software/prettier': workspace:*
   '@storm-software/untyped': workspace:*
   '@storm-software/esbuild': workspace:*
@@ -1080,6 +1081,31 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: 0.6.5
         version: 0.6.5(prettier-plugin-organize-imports@4.0.0(prettier@3.4.2)(typescript@5.7.3))(prettier@3.4.2)
+
+  packages/projen:
+    dependencies:
+      '@nx/devkit':
+        specifier: 'catalog:'
+        version: 20.3.2(nx@20.3.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.17)(typescript@5.7.3))(@swc/core@1.7.26(@swc/helpers@0.5.13)))
+      projen:
+        specifier: ^0.91.6
+        version: 0.91.6(constructs@10.4.2)
+      tslib:
+        specifier: 'catalog:'
+        version: 2.8.1
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.10.7
+      nx:
+        specifier: 'catalog:'
+        version: 20.3.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.17)(typescript@5.7.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
+      tsup:
+        specifier: 'catalog:'
+        version: 8.3.5(@microsoft/api-extractor@7.49.1(@types/node@22.10.7))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.4.2)(postcss@8.5.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      untyped:
+        specifier: 'catalog:'
+        version: 1.5.2
 
   packages/pulumi-tools:
     dependencies:
@@ -6720,6 +6746,9 @@ packages:
     resolution: {integrity: sha512-Qil5KwghMzlqd51UXM0b6fyaGHtOC22scxrwrz4A2882LyUMwQjnvaedN1HAeXzphspQ6CpHkzMAWxBTUruDLg==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
+  constructs@10.4.2:
+    resolution: {integrity: sha512-wsNxBlAott2qg8Zv87q3eYZYgheb9lchtBfjHzzLHtXbttwSrHPs1NNQbBrmbb1YZvYg2+Vh0Dor76w4mFxJkA==}
+
   content-disposition@0.5.4:
     resolution: {integrity: sha512-FveZTNuGw04cxlAiWbzi6zTAL/lhehaWbTtgluJh4/E95DqMwTmha3KZN1aAWA8cFIhHzMZUvLevkw5Rqk+tSQ==}
     engines: {node: '>= 0.6'}
@@ -11499,6 +11528,27 @@ packages:
   proggy@2.0.0:
     resolution: {integrity: sha512-69agxLtnI8xBs9gUGqEnK26UfiexpHy+KUpBQWabiytQjnn5wFY8rklAi7GRfABIuPNnQ/ik48+LGLkYYJcy4A==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
+
+  projen@0.91.6:
+    resolution: {integrity: sha512-azGxE8BDX7jkS+PovP8s70+wuURVOwtXYUh2z+kXbP11WDq4Gpfo5F/IyRQTI1kPrHR8sQbXkEnLGi2xIroBxA==}
+    engines: {node: '>= 16.0.0'}
+    hasBin: true
+    peerDependencies:
+      constructs: ^10.0.0
+    bundledDependencies:
+      - '@iarna/toml'
+      - case
+      - chalk
+      - comment-json
+      - conventional-changelog-config-spec
+      - fast-json-patch
+      - glob
+      - ini
+      - semver
+      - shx
+      - xmlbuilder2
+      - yaml
+      - yargs
 
   promise-all-reject-late@1.0.1:
     resolution: {integrity: sha512-vuf0Lf0lOxyQREH7GDIOUMLS7kz+gs8i6B+Yi8dC68a2sychGrHTJYghMBD6k7eUcH0H5P73EckCA48xijWqXw==}
@@ -20376,6 +20426,8 @@ snapshots:
 
   consola@3.3.3: {}
 
+  constructs@10.4.2: {}
+
   content-disposition@0.5.4:
     dependencies:
       safe-buffer: 5.2.1
@@ -26684,6 +26736,10 @@ snapshots:
   process@0.11.10: {}
 
   proggy@2.0.0: {}
+
+  projen@0.91.6(constructs@10.4.2):
+    dependencies:
+      constructs: 10.4.2
 
   promise-all-reject-late@1.0.1: {}
 

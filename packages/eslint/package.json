@@ -136,7 +136,6 @@
   "peerDependencies": {
     "@eslint/config-inspector": "^0.5.1",
     "@nx/eslint": "catalog:",
-    "@nx/eslint-plugin": "catalog:",
     "@nx/workspace": "catalog:",
     "graphql": ">=16.9.0",
     "typescript": "catalog:"
@@ -146,13 +145,10 @@
       "optional": true
     },
     "@nx/eslint": {
-      "optional": true
-    },
-    "@nx/eslint-plugin": {
-      "optional": true
+      "optional": false
     },
     "@nx/workspace": {
-      "optional": true
+      "optional": false
     },
     "eslint": {
       "optional": false

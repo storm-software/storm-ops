@@ -1,0 +1,57 @@
+{
+  "name": "projen",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/projen/src",
+  "projectType": "library",
+  "implicitDependencies": ["workspace-tools", "config-tools", "config"],
+  "targets": {
+    "build-untyped": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "inputs": [
+        "{projectRoot}/src/**/untyped.ts",
+        "{projectRoot}/src/**/*.untyped.ts"
+      ],
+      "outputs": [
+        "{projectRoot}/src/**/schema.d.ts",
+        "{projectRoot}/src/**/*.schema.d.ts",
+        "{projectRoot}/src/**/schema.md",
+        "{projectRoot}/src/**/*.schema.md",
+        "{projectRoot}/src/**/schema.json",
+        "{projectRoot}/src/**/*.schema.json"
+      ],
+      "options": {
+        "commands": [
+          "node dist/packages/untyped/bin/untyped.cjs generate --entry=\"packages/projen/**/{untyped.ts,*.untyped.ts}\" "
+        ]
+      }
+    },
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-untyped", "clean", "^build"],
+      "options": {
+        "command": "tsup-node --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base", "build-untyped"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/packages/projen",
+          "pnpm copyfiles --up=2 ./packages/projen/*.md ./packages/projen/executors.json ./packages/projen/generators.json ./packages/projen/package.json dist/packages/projen",
+          "pnpm copyfiles --up=3 \"./packages/projen/dist/**/*\" dist/packages/projen/dist",
+          "pnpm copyfiles --up=3 \"./packages/projen/src/**/*schema.d.ts\" dist/packages/projen/dist/src",
+          "pnpm copyfiles --up=3 \"./packages/projen/src/**/*schema.json\" dist/packages/projen/dist/src",
+          "pnpm copyfiles --up=3 \"./packages/projen/src/**/*.md\" dist/packages/projen/docs/api",
+          "pnpm copyfiles --up=4 \"./packages/projen/src/generators/*/files/**/*\" dist/packages/projen/dist/src/generators"
+        ]
+      }
+    },
+
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  }
+}

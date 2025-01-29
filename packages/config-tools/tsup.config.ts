@@ -14,8 +14,7 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    shims: true,
-    noExternal: ["zeptomatch"]
+    shims: true
   },
   {
     name: "config-tools-bin",
@@ -30,7 +29,6 @@ export default defineConfig([
     dts: false,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    shims: true,
-    noExternal: ["zeptomatch"]
+    shims: true
   }
 ]);

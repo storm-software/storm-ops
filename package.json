@@ -83,8 +83,8 @@
     "rebuild-all": "pnpm clean-all && pnpm build-all",
     "release": "node ./dist/packages/git-tools/bin/git.cjs release",
     "start": "nx serve",
-    "view-config": "node ./dist/packages/config-tools/bin/config.cjs",
-    "test": "echo Skipping workspace testing..."
+    "test": "echo Skipping workspace testing...",
+    "view-config": "node ./dist/packages/config-tools/bin/config.cjs"
   },
   "dependencies": {
     "@eslint/eslintrc": "2.1.4",
@@ -165,6 +165,7 @@
       "@storm-software/k8s-tools": "workspace:*",
       "@storm-software/linting-tools": "workspace:*",
       "@storm-software/markdownlint": "workspace:*",
+      "@storm-software/projen": "workspace:*",
       "@storm-software/prettier": "workspace:*",
       "@storm-software/untyped": "workspace:*",
       "@storm-software/esbuild": "workspace:*",

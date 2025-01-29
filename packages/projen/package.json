@@ -1,0 +1,161 @@
+{
+  "name": "@storm-software/projen",
+  "version": "0.7.4",
+  "type": "commonjs",
+  "description": "Tools for managing Projen configuration automation within a Nx workspace.",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/storm-software/storm-ops",
+    "directory": "packages/projen"
+  },
+  "homepage": "https://stormsoftware.com",
+  "bugs": "https://github.com/storm-software/storm-ops/issues",
+  "author": {
+    "name": "Storm Software",
+    "email": "contact@stormsoftware.com",
+    "url": "https://stormsoftware.com"
+  },
+  "license": "Apache-2.0",
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "exports": {
+    "./package.json": "./package.json",
+    "./docs/*": "./docs/*",
+    "./migrations.json": "./migrations.json",
+    "./executors.json": "./executors.json",
+    "./executors/*/schema.json": "./dist/src/executors/*/schema.json",
+    "./generators.json": "./generators.json",
+    "./generators/*/schema.json": "./dist/src/generators/*/schema.json",
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./index": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./executors": {
+      "import": {
+        "types": "./dist/executors.d.mts",
+        "default": "./dist/executors.mjs"
+      },
+      "require": {
+        "types": "./dist/executors.d.ts",
+        "default": "./dist/executors.js"
+      },
+      "default": {
+        "types": "./dist/executors.d.ts",
+        "default": "./dist/executors.js"
+      }
+    },
+    "./generators": {
+      "import": {
+        "types": "./dist/generators.d.mts",
+        "default": "./dist/generators.mjs"
+      },
+      "require": {
+        "types": "./dist/generators.d.ts",
+        "default": "./dist/generators.js"
+      },
+      "default": {
+        "types": "./dist/generators.d.ts",
+        "default": "./dist/generators.js"
+      }
+    },
+    "./base": {
+      "import": {
+        "types": "./dist/src/base/index.d.mts",
+        "default": "./dist/src/base/index.mjs"
+      },
+      "require": {
+        "types": "./dist/src/base/index.d.ts",
+        "default": "./dist/src/base/index.js"
+      },
+      "default": {
+        "types": "./dist/src/base/index.d.ts",
+        "default": "./dist/src/base/index.js"
+      }
+    },
+    "./base/*": {
+      "import": {
+        "types": "./dist/src/base/*.d.mts",
+        "default": "./dist/src/base/*.mjs"
+      },
+      "require": {
+        "types": "./dist/src/base/*.d.ts",
+        "default": "./dist/src/base/*.js"
+      },
+      "default": {
+        "types": "./dist/src/base/*.d.ts",
+        "default": "./dist/src/base/*.js"
+      }
+    },
+    "./executors/*/executor.js": "./dist/src/executors/*/executor.js",
+    "./generators/*/generators.js": "./dist/src/generators/*/generator.js"
+  },
+  "typings": "dist/index.d.ts",
+  "keywords": [
+    "iac",
+    "infrastructure",
+    "monorepo",
+    "projen",
+    "storm",
+    "storm-ops",
+    "storm-stack",
+    "sullivanpj"
+  ],
+  "peerDependencies": {
+    "@nx/devkit": "catalog:",
+    "nx": "catalog:",
+    "projen": "^0.91.6"
+  },
+  "peerDependenciesMeta": {
+    "@nx/devkit": {
+      "optional": false
+    },
+    "nx": {
+      "optional": false
+    },
+    "projen": {
+      "optional": false
+    }
+  },
+  "dependencies": {
+    "@nx/devkit": "catalog:",
+    "projen": "^0.91.6",
+    "tslib": "catalog:"
+  },
+  "devDependencies": {
+    "@nx/devkit": "catalog:",
+    "@types/node": "catalog:",
+    "nx": "catalog:",
+    "tsup": "catalog:",
+    "untyped": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "executors": "./executors.json",
+  "generators": "./generators.json"
+}
