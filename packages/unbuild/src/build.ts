@@ -50,10 +50,14 @@ import {
   type BuildConfig,
   type BuildContext,
   BuildEntry,
+  RollupOptions,
   build as unbuild
 } from "unbuild";
 import { cleanDirectories } from "./clean";
-import { getDefaultBuildPlugins } from "./config";
+import { analyzePlugin } from "./plugins/analyze";
+import { onErrorPlugin } from "./plugins/on-error";
+import { tscPlugin } from "./plugins/tsc";
+import { typeDefinitionsPlugin } from "./plugins/type-definitions";
 import type { UnbuildOptions, UnbuildResolvedOptions } from "./types";
 import { loadConfig } from "./utilities/helpers";
 
@@ -159,13 +163,17 @@ export async function resolveOptions(
   const entries = options.entry ?? [sourceRoot];
 
   const resolvedOptions = {
+    ...options,
     name,
     config,
     projectRoot: options.projectRoot,
     sourceRoot,
     projectName,
     tsconfig,
+    platform: options.platform ?? "neutral",
+    generatePackageJson: true,
     clean: false,
+    env: {} as any,
     entries: entries.reduce((ret, entry) => {
       let entryPath = entry.replace(options.projectRoot, "");
       while (entryPath.startsWith(".")) {
@@ -251,6 +259,7 @@ export async function resolveOptions(
         sourceMap: options.sourcemap ?? !!options.debug,
         splitting: options.splitting !== false,
         treeShaking: options.treeShaking !== false,
+        platform: options.platform ?? "neutral",
         color: true,
         logLevel: (config.logLevel === LogLevelLabel.FATAL
           ? LogLevelLabel.ERROR
@@ -259,7 +268,7 @@ export async function resolveOptions(
             : config.logLevel) as LogLevel
       }
     }
-  };
+  } as any;
 
   dependencies = dependencies.filter(
     dep =>
@@ -294,7 +303,7 @@ export async function resolveOptions(
   }
 
   resolvedOptions.hooks = {
-    "rollup:options": async (ctx: BuildContext, opts: any) => {
+    "rollup:options": async (ctx: BuildContext, opts: RollupOptions) => {
       if (options.plugins && options.plugins.length > 0) {
         writeDebug(
           `  🧩   Found ${options.plugins.length} plugins in provided build options`,
@@ -308,17 +317,19 @@ export async function resolveOptions(
           config
         );
 
-        opts.plugins = await getDefaultBuildPlugins(
-          options,
-          resolvedOptions as any
-        );
+        opts.plugins = await Promise.all([
+          analyzePlugin(resolvedOptions),
+          typeDefinitionsPlugin(resolvedOptions),
+          tscPlugin(resolvedOptions),
+          onErrorPlugin(resolvedOptions)
+        ]);
       }
     }
   };
 
   stopwatch();
 
-  return resolvedOptions as any;
+  return resolvedOptions;
 }
 
 const addPackageJsonExport = (

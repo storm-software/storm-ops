@@ -21,7 +21,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <h3 align="center">💻 Visit <a href="https://stormsoftware.com" target="_blank">stormsoftware.com</a> to stay up to date with this developer</h3><br />
 
-[![Version](https://img.shields.io/badge/version-0.24.17-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
+[![Version](https://img.shields.io/badge/version-0.7.4-1fb2a6.svg?style=for-the-badge&color=1fb2a6)](https://prettier.io/)&nbsp;[![Nx](https://img.shields.io/badge/Nx-17.0.2-lightgrey?style=for-the-badge&logo=nx&logoWidth=20&&color=1fb2a6)](http://nx.dev/)&nbsp;[![NextJs](https://img.shields.io/badge/Next.js-14.0.2-lightgrey?style=for-the-badge&logo=nextdotjs&logoWidth=20&color=1fb2a6)](https://nextjs.org/)&nbsp;[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge&logo=commitlint&color=1fb2a6)](http://commitizen.github.io/cz-cli/)&nbsp;![Semantic-Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge&color=1fb2a6)&nbsp;[![documented with Fumadocs](https://img.shields.io/badge/documented_with-fumadocs-success.svg?style=for-the-badge&logo=readthedocs&color=1fb2a6)](https://fumadocs.vercel.app/)&nbsp;![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/storm-software/storm-ops/cr.yml?style=for-the-badge&logo=github-actions&color=1fb2a6)
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -40,19 +40,29 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 ## Table of Contents
 
-- [Storm Kubernetes Tools](#storm-kubernetes-tools)
+- [Storm Pulumi Tools](#storm-pulumi-tools)
   - [Installing](#installing)
   - [Executors](#executors)
-  - [helm-package](#helm-package)
+  - [Pulumi `config` Command Executor](#pulumi-config-command-executor)
     - [Example](#example)
-  - [container-publish](#container-publish)
+    - [Options](#options)
+  - [Pulumi `import` Command Executor](#pulumi-import-command-executor)
     - [Example](#example-1)
+    - [Options](#options-1)
+  - [Pulumi `preview` Command Executor](#pulumi-preview-command-executor)
+    - [Example](#example-2)
+    - [Options](#options-2)
+  - [Pulumi `refresh` Command Executor](#pulumi-refresh-command-executor)
+    - [Example](#example-3)
+    - [Options](#options-3)
+  - [Pulumi `up` Command Executor](#pulumi-up-command-executor)
+    - [Example](#example-4)
+    - [Options](#options-4)
   - [Generators](#generators)
-  - [helm-chart](#helm-chart)
-  - [helm-dependency](#helm-dependency)
+  - [Init Storm Pulumi Tools Plugin](#init-storm-pulumi-tools-plugin)
+    - [Options](#options-5)
   - [Building](#building)
   - [Running unit tests](#running-unit-tests)
   - [Storm Workspaces](#storm-workspaces)
@@ -117,35 +127,156 @@ the workspace's projects:
 <!-- markdownlint-disable -->
 
 
-## helm-package
+## Pulumi `config` Command Executor
 
-Package Helm charts associated with a project
-
-### Example 
-
-This executor can be used by executing the following in a command line utility: 
-
-```cmd 
-nx run my-project:helm-package
-```
-
-**Please note:** _The helm-package executor should be included in the desired projects's `project.json` file._ 
-
-
-
-## container-publish
-
-Deploy an OCI Image Format Specification to a container registry
+Run the \`config\` command using the workspaces Pulumi IoC CLI
 
 ### Example 
 
 This executor can be used by executing the following in a command line utility: 
 
 ```cmd 
-nx run my-project:container-publish
+nx run my-project:config
 ```
 
-**Please note:** _The container-publish executor should be included in the desired projects's `project.json` file._ 
+**Please note:** _The config executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| stack      | `string`    | The target stack to use, if specified.     |     | 
+ | root      | `string`    | The working directory to run Pulumi commands from, if specified.     |     | 
+ | **action \***    | `string`    |     |     | 
+ | path      | `boolean`    |     |     | 
+ | secret      | `boolean`    |     |     | 
+ | name      | `string`    |     |     | 
+ | value      | `string`    |     |     | 
+
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+
+
+
+## Pulumi `import` Command Executor
+
+Run the \`import\` command using the workspaces Pulumi IoC CLI
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:import
+```
+
+**Please note:** _The import executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| stack      | `string`    | The target stack to use, if specified.     |     | 
+ | root      | `string`    | The working directory to run Pulumi commands from, if specified.     |     | 
+ | **target \***    | `string`    |     |     | 
+ | name      | `string`    |     |     | 
+ | **id \***    | `string`    |     |     | 
+
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+
+
+
+## Pulumi `preview` Command Executor
+
+Run the \`preview\` command using the workspaces Pulumi IoC CLI
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:preview
+```
+
+**Please note:** _The preview executor should be included in the desired projects's `project.json` file._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| stack      | `string`    | The target stack to use, if specified.     |     | 
+ | root      | `string`    | The working directory to run Pulumi commands from, if specified.     |     | 
+ | expectNoChanges      | `boolean`    |     |     | 
+
+
+
+
+## Pulumi `refresh` Command Executor
+
+Run the \`refresh\` command using the workspaces Pulumi IoC CLI
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:refresh
+```
+
+**Please note:** _The refresh executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| stack      | `string`    | The target stack to use, if specified.     |     | 
+ | root      | `string`    | The working directory to run Pulumi commands from, if specified.     |     | 
+ | **skipPreview \***    | `boolean`    | A boolean flag to skip the preview step.     |     | 
+ | **yes \***    | `boolean`    | A boolean flag to automatically approve the refresh.     |     | 
+
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
+
+
+
+## Pulumi `up` Command Executor
+
+Run the \`up\` command using the workspaces Pulumi IoC CLI
+
+### Example 
+
+This executor can be used by executing the following in a command line utility: 
+
+```cmd 
+nx run my-project:up
+```
+
+**Please note:** _The up executor should be included in the desired projects's `project.json` file.All required options must be included in the `options` property of the json._ 
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| stack      | `string`    | The target stack to use, if specified.     |     | 
+ | root      | `string`    | The working directory to run Pulumi commands from, if specified.     |     | 
+ | **skipPreview \***    | `boolean`    | A boolean flag to skip the preview step.     |     | 
+ | **yes \***    | `boolean`    | A boolean flag to automatically approve the \`up\` command.     |     | 
+ | **suppressOutputs \***    | `boolean`    | A boolean flag to suppress outputs in the \`up\` command.     |     | 
+ | **json \***    | `boolean`    | A boolean flag to output the \`up\` command as JSON.     |     | 
+
+
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
 
 
 
@@ -164,15 +295,23 @@ management:
 <!-- markdownlint-disable -->
 
 
-## helm-chart
+## Init Storm Pulumi Tools Plugin
 
-Generate a new Helm chart
+Init Storm Pulumi Tools Plugin.
+
+### Options
+
+The following executor options are available:
+
+| Option    | Type   | Description   | Default   | 
+| --------- | ------ | ------------- | --------- | 
+| **name \***    | `string`    |     |     | 
+ | tags      | `string`    | Add tags to the project (used for linting)     |     | 
+ | directory      | `string`    | A directory where the project is placed     |     | 
+ | provider      | `string`    | Your cloud provider     |     | 
 
 
-
-## helm-dependency
-
-Generate a new dependency for an existing Helm chart
+**Please note:** _Option names followed by \* above are required, and must be provided to run the executor._ 
 
 
 

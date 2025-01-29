@@ -1,10 +1,7 @@
 import type { Plugin } from "rollup";
-import { UnbuildOptions, UnbuildResolvedOptions } from "../types";
+import { UnbuildResolvedOptions } from "../types";
 
-export const swcPlugin = (
-  options: UnbuildOptions,
-  resolvedOptions: UnbuildResolvedOptions
-): Plugin => {
+export const swcPlugin = (options: UnbuildResolvedOptions): Plugin => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const { transform } = require("@swc/core");
   return {

@@ -17,15 +17,12 @@
 
 import { writeError } from "@storm-software/config-tools/logger/console";
 import type { Plugin } from "rollup";
-import { UnbuildOptions, UnbuildResolvedOptions } from "../types";
+import { UnbuildResolvedOptions } from "../types";
 
 /**
  * Causes rollup to exit immediately with an error code.
  */
-export const onErrorPlugin = (
-  options: UnbuildOptions,
-  resolvedOptions: UnbuildResolvedOptions
-): Plugin => ({
+export const onErrorPlugin = (options: UnbuildResolvedOptions): Plugin => ({
   name: "storm:on-error",
   buildEnd(error?: Error | undefined) {
     if (error) {
@@ -34,7 +31,7 @@ export const onErrorPlugin = (
 ${error ? error.message : "Unknown build error"}
 
     `,
-        resolvedOptions.config
+        options.config
       );
 
       throw new Error("Storm unbuild process failed with errors.");
@@ -46,7 +43,7 @@ ${error ? error.message : "Unknown build error"}
 ${error ? error.message : "Unknown build error"}
 
   `,
-      resolvedOptions.config
+      options.config
     );
 
     throw new Error("Storm unbuild process failed with errors.");

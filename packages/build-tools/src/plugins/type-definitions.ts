@@ -1,6 +1,6 @@
 import { stripIndents } from "@nx/devkit";
 import { relative } from "path";
-import type { OutputBundle } from "rollup"; // only used  for types
+import type { OutputBundle, Plugin } from "rollup"; // only used  for types
 
 /*
  * This plugin takes all entry-points from the generated bundle and creates a
@@ -13,7 +13,7 @@ import type { OutputBundle } from "rollup"; // only used  for types
  * We want a third file: `dist/index.d.ts` that re-exports from `src/index.d.ts`.
  * That way, when TSC or IDEs look for types, it will find them in the right place.
  */
-export function typeDefinitions(options: { projectRoot: string }) {
+export function typeDefinitions(options: { projectRoot: string }): Plugin {
   return {
     name: "storm:dts-bundle",
     async generateBundle(_opts: unknown, bundle: OutputBundle): Promise<void> {

@@ -1,6 +1,7 @@
 // nx-ignore-next-line
 import { relative } from "node:path";
 import type { OutputBundle, Plugin } from "rollup"; // only used  for types
+import { UnbuildResolvedOptions } from "../types";
 
 /**
  * This plugin takes all entry-points from the generated bundle and creates a
@@ -16,7 +17,7 @@ import type { OutputBundle, Plugin } from "rollup"; // only used  for types
  * @param projectRoot - The root of the project.
  * @returns The Rollup plugin.
  */
-export function typeDefinitions(projectRoot: string): Plugin {
+export function typeDefinitionsPlugin(options: UnbuildResolvedOptions): Plugin {
   return {
     name: "storm:dts-bundle",
     async generateBundle(_opts: unknown, bundle: OutputBundle): Promise<void> {
@@ -30,7 +31,10 @@ export function typeDefinitions(projectRoot: string): Plugin {
         }
 
         const hasDefaultExport = file.exports.includes("default");
-        const entrySourceFileName = relative(projectRoot, file.facadeModuleId);
+        const entrySourceFileName = relative(
+          options.projectRoot,
+          file.facadeModuleId
+        );
         const entrySourceDtsName = entrySourceFileName.replace(
           /\.[cm]?[jt]sx?$/,
           ""
