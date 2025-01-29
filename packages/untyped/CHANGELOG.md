@@ -1,3 +1,9 @@
+## 0.10.14 (2025-01-29)
+
+### Bug Fixes
+
+- **unbuild:** Resolved issue applying plugins ([21459fd0](https://github.com/storm-software/storm-ops/commit/21459fd0))
+
 ## 0.10.13 (2025-01-29)
 
 ### Miscellaneous
