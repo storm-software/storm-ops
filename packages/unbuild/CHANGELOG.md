@@ -1,3 +1,13 @@
+## 0.36.0 (2025-01-29)
+
+### Features
+
+- **unbuild:** Added the `loaders` low-level options ([eaa164b7](https://github.com/storm-software/storm-ops/commit/eaa164b7))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([a1b6717d](https://github.com/storm-software/storm-ops/commit/a1b6717d))
+
 ## 0.35.2 (2025-01-29)
 
 ### Bug Fixes
