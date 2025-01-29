@@ -8,12 +8,14 @@ export default defineConfig([
     format: ["cjs", "esm"],
     outDir: "dist/src",
     platform: "node",
+    bundle: true,
     splitting: true,
     clean: false,
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    shims: true
+    shims: true,
+    noExternal: ["zeptomatch"]
   },
   {
     name: "config-tools-bin",
@@ -28,6 +30,7 @@ export default defineConfig([
     dts: false,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    shims: true
+    shims: true,
+    noExternal: ["zeptomatch"]
   }
 ]);

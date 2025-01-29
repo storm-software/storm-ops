@@ -46,9 +46,9 @@
     "pnpm": ">=9.15.2"
   },
   "bin": {
-    "storm-esbuild": "./bin/storm-esbuild.js",
-    "storm-esbuild-cjs": "./bin/storm-esbuild.cjs",
-    "storm-esbuild-esm": "./bin/storm-esbuild.js"
+    "storm-esbuild": "./bin/esbuild.js",
+    "storm-esbuild-cjs": "./bin/esbuild.cjs",
+    "storm-esbuild-esm": "./bin/esbuild.js"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

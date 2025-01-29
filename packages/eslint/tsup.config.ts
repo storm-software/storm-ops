@@ -41,6 +41,7 @@ export default defineConfig([
     outDir: "dist",
     platform: "node",
     splitting: true,
+    bundle: true,
     clean: true,
     dts: true,
     sourcemap: false,

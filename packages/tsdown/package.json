@@ -46,9 +46,9 @@
     "pnpm": ">=9.15.2"
   },
   "bin": {
-    "storm-tsdown": "./bin/storm-tsdown.js",
-    "storm-tsdown-cjs": "./bin/storm-tsdown.cjs",
-    "storm-tsdown-esm": "./bin/storm-tsdown.js"
+    "storm-tsdown": "./bin/tsdown.js",
+    "storm-tsdown-cjs": "./bin/tsdown.cjs",
+    "storm-tsdown-esm": "./bin/tsdown.js"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

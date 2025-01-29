@@ -19,7 +19,6 @@ export const getGenerateAction =
       config
     );
 
-    console.log(glob);
     const files = await glob(options.entry || "**/{untyped.ts,*.untyped.ts}", {
       ignore: [
         "**/{*.stories.tsx,*.stories.ts,*.spec.tsx,*.spec.ts}",
@@ -33,18 +32,6 @@ export const getGenerateAction =
       withFileTypes: true,
       cwd: config.workspaceRoot
     });
-    console.log(files);
-
-    const cache =
-      !Boolean(process.env.CI) &&
-      !Boolean(process.env.STORM_CI) &&
-      !config.skipCache;
-    writeTrace(
-      cache
-        ? `Skipping jiti cache because ${Boolean(process.env.CI) ? '`process.env.CI` is set to "true"' : Boolean(process.env.STORM_CI) ? '`process.env.STORM_CI` is set to "true"' : config.skipCache ? "`skipCache` in the Storm configuration file is set to `true`" : "<INVALID REASON>"}`
-        : "Will use jiti cache while parsing schema files",
-      config
-    );
 
     await Promise.all(
       files.map(async file => {
@@ -58,13 +45,13 @@ export const getGenerateAction =
           schema = await loadSchema(joinPaths(file.parentPath, file.name), {
             jiti: {
               debug: isVerbose(config.logLevel),
-              fsCache:
-                cache &&
-                joinPaths(
-                  config.directories.cache || "node_modules/.cache/storm",
-                  "jiti"
-                ),
-              moduleCache: cache,
+              fsCache: config.skipCache
+                ? false
+                : joinPaths(
+                    config.workspaceRoot,
+                    config.directories.cache || "node_modules/.cache/storm",
+                    "jiti"
+                  ),
               interopDefault: true
             }
           });

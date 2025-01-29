@@ -428,12 +428,12 @@ importers:
       jiti:
         specifier: 'catalog:'
         version: 2.4.2
-      pathe:
-        specifier: ^2.0.2
-        version: 2.0.2
       sqlite:
         specifier: ^5.1.1
         version: 5.1.1
+      zeptomatch:
+        specifier: ^2.0.0
+        version: 2.0.0
       zod:
         specifier: 'catalog:'
         version: 3.24.1
@@ -741,6 +741,9 @@ importers:
       yaml-eslint-parser:
         specifier: 1.2.3
         version: 1.2.3
+      zeptomatch:
+        specifier: ^2.0.0
+        version: 2.0.0
     devDependencies:
       '@eslint/config-inspector':
         specifier: ^0.5.1
@@ -3878,7 +3881,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -8291,6 +8293,9 @@ packages:
 
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
+
+  grammex@3.1.3:
+    resolution: {integrity: sha512-rUZoJJQguOCaAMTuoyxs40OxqSLgVhzCCwDn1mbp2vETWutv/TmgAz7KxMR8Tz4z4cty/zIh88HrOWKqWgeGjg==}
 
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
@@ -13788,6 +13793,9 @@ packages:
   yup@0.32.11:
     resolution: {integrity: sha512-Z2Fe1bn+eLstG8DRR6FTavGD+MeAwyfmouhHsIUgaADz8jvFKbO/fXc2trJKZg+5EBjh4gGm3iU/t3onKlXHIg==}
     engines: {node: '>=10'}
+
+  zeptomatch@2.0.0:
+    resolution: {integrity: sha512-xjsIq0tpg7dNtJcbl0tNf4d4It4UK1ujSYJZXvGygse3GNgX44v/b2FRbM8sCGZS2qh4o983u8+1CBNNF+106g==}
 
   zod-to-json-schema@3.23.1:
     resolution: {integrity: sha512-oT9INvydob1XV0v1d2IadrR74rLtDInLvDFfAa1CG0Pmg/vxATk7I2gSelfj271mbzeM4Da0uuDQE/Nkj3DWNw==}
@@ -22460,6 +22468,8 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
+  grammex@3.1.3: {}
+
   graphemer@1.4.0: {}
 
   graphql-config@5.1.3(@types/node@22.10.7)(graphql@16.10.0)(typescript@5.7.3):
@@ -29664,6 +29674,10 @@ snapshots:
       nanoclone: 0.2.1
       property-expr: 2.0.6
       toposort: 2.0.2
+
+  zeptomatch@2.0.0:
+    dependencies:
+      grammex: 3.1.3
 
   zod-to-json-schema@3.23.1(zod@3.24.1):
     dependencies:
