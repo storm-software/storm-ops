@@ -1,3 +1,9 @@
+## 0.10.13 (2025-01-29)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([5e0520b1](https://github.com/storm-software/storm-ops/commit/5e0520b1))
+
 ## 0.10.12 (2025-01-29)
 
 ### Continuous Integration
