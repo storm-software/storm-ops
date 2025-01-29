@@ -48,8 +48,11 @@ export const getGenerateAction =
               fsCache: config.skipCache
                 ? false
                 : joinPaths(
-                    config.workspaceRoot,
-                    config.directories.cache || "node_modules/.cache/storm",
+                    config.directories.cache ||
+                      joinPaths(
+                        config.workspaceRoot,
+                        "node_modules/.cache/storm"
+                      ),
                     "jiti"
                   ),
               interopDefault: true
