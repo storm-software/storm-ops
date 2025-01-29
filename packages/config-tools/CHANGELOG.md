@@ -1,3 +1,20 @@
+## 1.146.0 (2025-01-29)
+
+### Features
+
+- **config-tools:** Use `pathe` package to handle file directory manipulation ([3f015d72](https://github.com/storm-software/storm-ops/commit/3f015d72))
+
+### Bug Fixes
+
+- **config-tools:** Resolve issue with ESM only external dependency ([6e26a1fe](https://github.com/storm-software/storm-ops/commit/6e26a1fe))
+- **config-tools:** Resolved issue with correct path helpers ([4102104a](https://github.com/storm-software/storm-ops/commit/4102104a))
+- **config-tools:** Resolved issue with `joinPaths` for relative directories ([9a083175](https://github.com/storm-software/storm-ops/commit/9a083175))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([2eb0a4f0](https://github.com/storm-software/storm-ops/commit/2eb0a4f0))
+- **monorepo:** Regenerate README markdown files ([da76edd7](https://github.com/storm-software/storm-ops/commit/da76edd7))
+
 ## 1.145.1 (2025-01-29)
 
 ### Miscellaneous

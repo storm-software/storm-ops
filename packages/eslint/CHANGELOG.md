@@ -1,3 +1,15 @@
+## 0.116.7 (2025-01-29)
+
+### Bug Fixes
+
+- **config-tools:** Resolve issue with ESM only external dependency ([6e26a1fe](https://github.com/storm-software/storm-ops/commit/6e26a1fe))
+- **config-tools:** Resolved issue with correct path helpers ([4102104a](https://github.com/storm-software/storm-ops/commit/4102104a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([2eb0a4f0](https://github.com/storm-software/storm-ops/commit/2eb0a4f0))
+- **monorepo:** Regenerate README markdown files ([da76edd7](https://github.com/storm-software/storm-ops/commit/da76edd7))
+
 ## 0.116.6 (2025-01-29)
 
 ### Miscellaneous

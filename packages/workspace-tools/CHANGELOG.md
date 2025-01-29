@@ -1,3 +1,15 @@
+## 1.246.2 (2025-01-29)
+
+### Bug Fixes
+
+- **config-tools:** Resolved issue with correct path helpers ([4102104a](https://github.com/storm-software/storm-ops/commit/4102104a))
+- **config-tools:** Resolved issue with `joinPaths` for relative directories ([9a083175](https://github.com/storm-software/storm-ops/commit/9a083175))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([2eb0a4f0](https://github.com/storm-software/storm-ops/commit/2eb0a4f0))
+- **monorepo:** Regenerate README markdown files ([da76edd7](https://github.com/storm-software/storm-ops/commit/da76edd7))
+
 ## 1.246.1 (2025-01-29)
 
 ### Bug Fixes
