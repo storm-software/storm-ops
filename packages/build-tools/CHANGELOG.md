@@ -1,3 +1,9 @@
+## 0.138.3 (2025-01-29)
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with internal dependencies `private` check ([9ac39211](https://github.com/storm-software/storm-ops/commit/9ac39211))
+
 ## 0.138.2 (2025-01-29)
 
 ### Miscellaneous

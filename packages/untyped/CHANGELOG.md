@@ -1,3 +1,9 @@
+## 0.10.12 (2025-01-29)
+
+### Continuous Integration
+
+- **untyped:** Update package build externals ([4f13eba7](https://github.com/storm-software/storm-ops/commit/4f13eba7))
+
 ## 0.10.11 (2025-01-29)
 
 ### Bug Fixes
