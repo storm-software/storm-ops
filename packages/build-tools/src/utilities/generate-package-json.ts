@@ -5,9 +5,12 @@ import { writeTrace } from "@storm-software/config-tools/logger/console";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { Glob } from "glob";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
-import { readCachedProjectGraph } from "nx/src/project-graph/project-graph";
+import {
+  readCachedProjectGraph,
+  readProjectsConfigurationFromProjectGraph
+} from "nx/src/project-graph/project-graph";
 
 export const addPackageDependencies = async (
   workspaceRoot: string,
@@ -15,9 +18,10 @@ export const addPackageDependencies = async (
   projectName: string,
   packageJson: Record<string, any>
 ): Promise<Record<string, any>> => {
+  const projectGraph = readCachedProjectGraph();
   const projectDependencies = calculateProjectBuildableDependencies(
     undefined,
-    readCachedProjectGraph(),
+    projectGraph,
     workspaceRoot,
     projectName,
     process.env.NX_TASK_TARGET_TARGET || "build",
@@ -59,32 +63,70 @@ export const addPackageDependencies = async (
       `📦  Adding local packages to package.json: ${localPackages.map(p => p.name).join(", ")}`
     );
 
-    packageJson.peerDependencies = localPackages.reduce((ret, localPackage) => {
-      if (!ret[localPackage.name]) {
+    const projectJsonFile = await readFile(
+      joinPaths(projectRoot, "project.json"),
+      "utf8"
+    );
+    const projectJson = JSON.parse(projectJsonFile);
+    const projectName = projectJson.name;
+
+    const projectConfigurations =
+      readProjectsConfigurationFromProjectGraph(projectGraph);
+    if (!projectConfigurations?.projects?.[projectName]) {
+      throw new Error(
+        "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
+      );
+    }
+
+    const implicitDependencies = projectConfigurations.projects?.[
+      projectName
+    ].implicitDependencies?.reduce((ret, dep) => {
+      if (projectConfigurations.projects?.[dep]) {
+        const depPackageJsonPath = joinPaths(
+          workspaceRoot,
+          projectConfigurations.projects[dep].root,
+          "package.json"
+        );
+        if (existsSync(depPackageJsonPath)) {
+          const depPackageJsonContent = readFileSync(
+            depPackageJsonPath,
+            "utf8"
+          );
+
+          const depPackageJson = JSON.parse(depPackageJsonContent);
+          if (
+            depPackageJson.private !== true &&
+            !ret.includes(depPackageJson.name)
+          ) {
+            ret.push(depPackageJson.name);
+          }
+        }
+      }
+
+      return ret;
+    }, [] as string[]);
+
+    packageJson.dependencies = localPackages.reduce((ret, localPackage) => {
+      if (
+        !ret[localPackage.name] &&
+        !implicitDependencies?.includes(localPackage.name)
+      ) {
         ret[localPackage.name] = `>=${localPackage.version || "0.0.1"}`;
       }
 
       return ret;
-    }, packageJson.peerDependencies ?? {});
-    packageJson.peerDependenciesMeta = localPackages.reduce(
-      (ret, localPackage) => {
-        if (!ret[localPackage.name]) {
-          ret[localPackage.name] = {
-            optional: false
-          };
-        }
+    }, packageJson.dependencies ?? {});
 
-        return ret;
-      },
-      packageJson.peerDependenciesMeta ?? {}
-    );
     packageJson.devDependencies = localPackages.reduce((ret, localPackage) => {
-      if (!ret[localPackage.name]) {
+      if (
+        !ret[localPackage.name] &&
+        implicitDependencies?.includes(localPackage.name)
+      ) {
         ret[localPackage.name] = localPackage.version || "0.0.1";
       }
 
       return ret;
-    }, packageJson.peerDependencies ?? {});
+    }, packageJson.devDependencies ?? {});
   } else {
     writeTrace("📦  No local packages dependencies to add to package.json");
   }
