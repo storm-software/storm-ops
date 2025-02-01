@@ -1,3 +1,9 @@
+## 1.247.0 (2025-02-01)
+
+### Features
+
+- **config:** Renamed config file from `storm.json` to `storm-workspace.json` ([3ce65c15](https://github.com/storm-software/storm-ops/commit/3ce65c15))
+
 ## 1.246.4 (2025-01-29)
 
 ### Miscellaneous

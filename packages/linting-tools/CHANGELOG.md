@@ -1,3 +1,9 @@
+## 1.109.0 (2025-02-01)
+
+### Features
+
+- **linting-tools:** Added cloudformation, editorconfig, markdown, yaml, and mega linter configs ([7d7814ad](https://github.com/storm-software/storm-ops/commit/7d7814ad))
+
 ## 1.108.19 (2025-01-29)
 
 ### Miscellaneous

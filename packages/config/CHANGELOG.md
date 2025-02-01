@@ -1,3 +1,14 @@
+## 1.101.0 (2025-02-01)
+
+### Features
+
+- **config:** Added the `skipConfigLogging` option to config ([7bd9a7a5](https://github.com/storm-software/storm-ops/commit/7bd9a7a5))
+- **config:** Renamed config file from `storm.json` to `storm-workspace.json` ([3ce65c15](https://github.com/storm-software/storm-ops/commit/3ce65c15))
+
+### Miscellaneous
+
+- **config:** Regenerate the JSON schema file ([65bac541](https://github.com/storm-software/storm-ops/commit/65bac541))
+
 ## 1.100.19 (2025-01-29)
 
 ### Miscellaneous
