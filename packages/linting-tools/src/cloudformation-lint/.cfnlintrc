@@ -1,0 +1,23 @@
+templates:
+  - ./**/template.yaml
+  - ./**/template.yml
+  - ./resources/**/*.yaml
+  - ./resources/**/*.yml
+  - ./**/example-global-iam.yaml
+  - ./**/example-global-iam.yml
+  - ./**/global.yaml
+  - ./**/global.yml
+  - ./**/regional.yaml
+  - ./**/regional.yml
+ignore_templates:
+  - ./**/appspec.yml
+  - ./**/appspec.yaml
+  - ./**/buildspec.yml
+  - ./**/buildspec.yaml
+  - ./**/params/*.yml
+  - ./**/params/*.yaml
+include_checks:
+  - I
+ignore_checks:
+  - W3002
+  - W3045
