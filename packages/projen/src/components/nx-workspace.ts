@@ -12,8 +12,6 @@ import { readFileSync } from "node:fs";
 import { JsonFile, Project } from "projen";
 import { Obj } from "projen/lib/util";
 
-const ALWAYS_IGNORE: string[] = [".tmp", ".env", ".pytest_cache"];
-
 /**
  * Default NX outputs to cache
  */
