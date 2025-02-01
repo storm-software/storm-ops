@@ -307,15 +307,7 @@
     ]
   },
   "targetDefaults": {
-    "lint-docs": {
-      "cache": true,
-      "outputs": ["{projectRoot}/**/*"],
-      "inputs": ["linting", "documentation", "default", "^production"],
-      "executor": "nx:run-commands",
-      "dependsOn": ["build", "^lint-docs"]
-    },
     "lint-ls": {
-      "cache": true,
       "outputs": ["{projectRoot}/**/*"],
       "inputs": ["linting", "default", "^production"],
       "dependsOn": ["^lint-ls"],
@@ -326,7 +318,6 @@
       }
     },
     "lint-sherif": {
-      "cache": true,
       "outputs": ["{projectRoot}/package.json"],
       "inputs": ["{workspaceRoot}/package.json", "{projectRoot}/package.json"],
       "executor": "nx:run-commands",
@@ -335,7 +326,6 @@
       }
     },
     "lint-knip": {
-      "cache": true,
       "inputs": ["linting", "default", "^production"],
       "executor": "nx:run-commands",
       "options": {
@@ -343,18 +333,21 @@
       }
     },
     "lint": {
-      "cache": true,
       "outputs": ["{projectRoot}"],
       "inputs": ["linting", "default", "^production"],
-      "dependsOn": ["lint-ls", "lint-sherif", "lint-knip", "lint-docs", "^lint"]
-    },
-    "format-sherif": {
-      "cache": true,
-      "inputs": ["linting", "default", "^production"],
-      "executor": "nx:run-commands"
+      "dependsOn": [
+        "lint-ls",
+        "lint-sherif",
+        "lint-knip",
+        "lint-docs",
+        "^lint"
+      ],
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "echo Linted the project files in \"{projectRoot}\" "
+      }
     },
     "format-toml": {
-      "cache": true,
       "inputs": ["linting", "{projectRoot}/**/*.toml"],
       "outputs": ["{projectRoot}/**/*.toml"],
       "dependsOn": ["^format-toml"],
@@ -365,7 +358,6 @@
       }
     },
     "format-readme": {
-      "cache": true,
       "inputs": [
         "linting",
         "documentation",
@@ -382,7 +374,6 @@
       }
     },
     "format-prettier": {
-      "cache": true,
       "inputs": ["linting", "default", "^production"],
       "dependsOn": ["^format-prettier"],
       "executor": "nx:run-commands",
@@ -392,41 +383,47 @@
       }
     },
     "format": {
-      "cache": true,
       "inputs": ["linting", "default", "^production"],
       "outputs": ["{projectRoot}"],
+      "dependsOn": [
+        "format-toml",
+        "format-readme",
+        "format-prettier",
+        "^format"
+      ],
       "executor": "nx:run-commands",
       "options": {
-        "command": "echo Formatting the project files in \"{projectRoot}\" ",
-        "color": true
+        "command": "echo Formatted the project files in \"{projectRoot}\" "
       }
     },
     "clean": {
-      "cache": true,
       "inputs": ["default", "^production"],
+      "outputs": "NX_DEFAULT_BUILD_OUTPUTS",
+      "dependsOn": ["^clean"],
       "executor": "nx:run-commands",
-      "dependsOn": ["^clean"]
+      "options": {
+        "commands": [
+          "pnpm exec rimraf --glob {projectRoot}/dist",
+          "pnpm exec rimraf dist/{projectRoot}"
+        ]
+      }
     },
     "build-untyped": {
-      "cache": true,
       "dependsOn": ["^build"]
     },
     "build-base": {
-      "cache": true,
-      "dependsOn": ["clean", "build-untyped", "^build"]
+      "dependsOn": ["build-untyped", "^build"]
     },
     "build-local": {
-      "cache": true,
       "inputs": ["default", "^production"],
       "dependsOn": ["build-base", "build-untyped", "^build"]
     },
     "build": {
-      "cache": true,
       "inputs": ["default", "^production"],
+      "outputs": "NX_DEFAULT_BUILD_OUTPUTS",
       "dependsOn": ["build-base", "build-untyped", "^build"]
     },
     "rebuild": {
-      "cache": false,
       "inputs": ["default", "^production"],
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
@@ -437,23 +434,19 @@
       }
     },
     "docs": {
-      "cache": true,
       "outputs": ["{options.outputPath}"],
       "inputs": ["linting", "documentation", "default", "^production"],
       "dependsOn": ["build", "format-readme", "lint-docs", "^docs"]
     },
     "test": {
-      "cache": true,
       "inputs": ["testing", "default", "^production"],
       "dependsOn": ["build", "^test"]
     },
     "e2e": {
-      "cache": true,
       "inputs": ["testing", "default", "^production"],
       "dependsOn": ["test", "^e2e"]
     },
     "nx-release-publish": {
-      "cache": true,
       "inputs": ["default", "^production"],
       "dependsOn": ["build", "^nx-release-publish"]
     }

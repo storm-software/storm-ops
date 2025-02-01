@@ -19,6 +19,7 @@ import {
   tsConfigBaseOptions
 } from "@nx/js";
 import jsInitGenerator from "@nx/js/src/generators/init/init";
+import { InitSchema } from "@nx/js/src/generators/init/schema";
 import {
   Bundler,
   NormalizedLibraryGeneratorOptions
@@ -67,7 +68,7 @@ export async function typeScriptLibraryGeneratorFn(
       tsConfigName: normalized.rootProject
         ? "tsconfig.json"
         : "tsconfig.base.json"
-    })
+    } as InitSchema)
   );
 
   tasks.push(
@@ -408,6 +409,7 @@ export async function normalizeOptions(
     projectRoot,
     parsedTags: options.tags ? options.tags.split(",").map(s => s.trim()) : [],
     importPath: normalizedImportPath,
-    rootProject
+    rootProject,
+    shouldUseSwcJest: false
   } as TypeScriptLibraryGeneratorNormalizedOptions;
 }
