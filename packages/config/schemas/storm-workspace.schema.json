@@ -13,7 +13,7 @@
                 },
                 {
                   "type": "string",
-                  "default": "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm.schema.json"
+                  "default": "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm-workspace.schema.json"
                 }
               ]
             },
