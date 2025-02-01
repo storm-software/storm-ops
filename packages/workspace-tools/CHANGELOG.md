@@ -1,3 +1,13 @@
+## 1.247.1 (2025-02-01)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve type script build issues ([2ff75dcc](https://github.com/storm-software/storm-ops/commit/2ff75dcc))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([af5c80fa](https://github.com/storm-software/storm-ops/commit/af5c80fa))
+
 ## 1.247.0 (2025-02-01)
 
 ### Features

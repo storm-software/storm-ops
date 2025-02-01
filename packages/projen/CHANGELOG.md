@@ -1,3 +1,17 @@
+## 0.9.0 (2025-02-01)
+
+### Features
+
+- **projen:** Added the `StormNxWorkspace` component ([191fdb73](https://github.com/storm-software/storm-ops/commit/191fdb73))
+
+### Bug Fixes
+
+- **projen:** Resolve issue with unused dependency ([6326176f](https://github.com/storm-software/storm-ops/commit/6326176f))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([af5c80fa](https://github.com/storm-software/storm-ops/commit/af5c80fa))
+
 ## 0.8.3 (2025-02-01)
 
 ### Miscellaneous

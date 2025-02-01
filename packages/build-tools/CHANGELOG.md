@@ -1,3 +1,13 @@
+## 0.138.8 (2025-02-01)
+
+### Bug Fixes
+
+- **build-tools:** Resolved issue with invalid local depencencies in generated package ([e9a62b6f](https://github.com/storm-software/storm-ops/commit/e9a62b6f))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([af5c80fa](https://github.com/storm-software/storm-ops/commit/af5c80fa))
+
 ## 0.138.7 (2025-02-01)
 
 ### Miscellaneous
