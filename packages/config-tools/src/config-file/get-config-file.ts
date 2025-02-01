@@ -74,11 +74,16 @@ export const getConfigFile = async (
 ): Promise<Partial<StormConfigInput> | undefined> => {
   const workspacePath = filePath ? filePath : findWorkspaceRoot(filePath);
 
-  const result = await getConfigFileByName("storm", workspacePath);
+  const result = await getConfigFileByName("storm-workspace", workspacePath);
 
   let config = result.config;
   const configFile = result.configFile;
-  if (config && configFile && Object.keys(config).length > 0) {
+  if (
+    config &&
+    configFile &&
+    Object.keys(config).length > 0 &&
+    !config.skipConfigLogging
+  ) {
     writeTrace(
       `Found Storm configuration file "${
         configFile.includes(`${workspacePath}/`)
@@ -103,16 +108,18 @@ export const getConfigFile = async (
         result?.configFile &&
         Object.keys(result.config).length > 0
       ) {
-        writeTrace(
-          `Found alternative configuration file "${
-            result.configFile.includes(`${workspacePath}/`)
-              ? result.configFile.replace(`${workspacePath}/`, "")
-              : result.configFile
-          }" at "${workspacePath}"`,
-          {
-            logLevel: "all"
-          }
-        );
+        if (!config.skipConfigLogging && !result.config.skipConfigLogging) {
+          writeTrace(
+            `Found alternative configuration file "${
+              result.configFile.includes(`${workspacePath}/`)
+                ? result.configFile.replace(`${workspacePath}/`, "")
+                : result.configFile
+            }" at "${workspacePath}"`,
+            {
+              logLevel: "all"
+            }
+          );
+        }
 
         config = defu(result.config ?? {}, config ?? {});
       }

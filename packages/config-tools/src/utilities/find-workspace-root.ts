@@ -2,17 +2,17 @@ import { correctPaths } from "./correct-paths";
 import { findFolderUp } from "./find-up";
 
 const rootFiles = [
-  "storm.json",
-  "storm.json",
-  "storm.yaml",
-  "storm.yml",
-  "storm.js",
-  "storm.ts",
-  ".storm.json",
-  ".storm.yaml",
-  ".storm.yml",
-  ".storm.js",
-  ".storm.ts",
+  "storm-workspace.json",
+  "storm-workspace.json",
+  "storm-workspace.yaml",
+  "storm-workspace.yml",
+  "storm-workspace.js",
+  "storm-workspace.ts",
+  ".storm-workspace.json",
+  ".storm-workspace.yaml",
+  ".storm-workspace.yml",
+  ".storm-workspace.js",
+  ".storm-workspace.ts",
   "lerna.json",
   "nx.json",
   "turbo.json",
@@ -37,6 +37,14 @@ const rootFiles = [
   "bun.lockb"
 ];
 
+const rootDirectories = [
+  ".storm-workspace",
+  ".nx",
+  ".github",
+  ".vscode",
+  ".verdaccio"
+];
+
 /**
  * Find the monorepo root directory, searching upwards from `path`.
  *
@@ -53,7 +61,11 @@ export function findWorkspaceRootSafe(
   }
 
   return correctPaths(
-    findFolderUp(pathInsideMonorepo ?? process.cwd(), rootFiles)
+    findFolderUp(
+      pathInsideMonorepo ?? process.cwd(),
+      rootFiles,
+      rootDirectories
+    )
   );
 }
 

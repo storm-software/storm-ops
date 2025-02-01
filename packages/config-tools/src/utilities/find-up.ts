@@ -9,18 +9,28 @@ let depth = 0;
  */
 export function findFolderUp(
   startPath: string,
-  endFileNames: string[]
+  endFileNames: string[] = [],
+  endDirectoryNames: string[] = []
 ): string | undefined {
   const _startPath = startPath ?? process.cwd();
+
+  if (
+    endDirectoryNames.some(endDirName =>
+      existsSync(join(_startPath, endDirName))
+    )
+  ) {
+    return _startPath;
+  }
 
   if (
     endFileNames.some(endFileName => existsSync(join(_startPath, endFileName)))
   ) {
     return _startPath;
   }
+
   if (_startPath !== "/" && depth++ < MAX_PATH_SEARCH_DEPTH) {
     const parent = join(_startPath, "..");
-    return findFolderUp(parent, endFileNames);
+    return findFolderUp(parent, endFileNames, endDirectoryNames);
   }
   return undefined;
 }

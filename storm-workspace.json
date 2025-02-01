@@ -1,5 +1,5 @@
 {
-  "$schema": "./packages/config/schemas/storm.schema.json",
+  "$schema": "./packages/config/schemas/storm-workspace.schema.json",
   "extends": "./packages/config/presets/base.json",
   "name": "storm-ops",
   "namespace": "storm-software",

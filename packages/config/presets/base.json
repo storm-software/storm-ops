@@ -1,5 +1,5 @@
 {
-  "$schema": "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm.schema.json",
+  "$schema": "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm-workspace.schema.json",
   "organization": "storm-software",
   "owner": "@storm-software/admin",
   "bot": { "name": "Stormie-Bot", "email": "bot@stormsoftware.com" },
@@ -7,6 +7,7 @@
   "timezone": "America/New_York",
   "locale": "en-US",
   "logLevel": "info",
+  "skipConfigLogging": true,
   "skipCache": false,
   "directories": {
     "build": "dist"

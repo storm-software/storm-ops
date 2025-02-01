@@ -1,6 +1,32 @@
 {
   "$schema": "https://cdn.jsdelivr.net/npm/nx/schemas/nx-schema.json",
   "extends": "nx/presets/npm.json",
+  "tasksRunnerOptions": {
+    "default": {
+      "options": {
+        "cacheableOperations": [
+          "lint-sherif",
+          "lint-knip",
+          "lint-docs",
+          "lint-ls",
+          "lint",
+          "format-readme",
+          "format-toml",
+          "format-prettier",
+          "format-sherif",
+          "format",
+          "clean",
+          "build-base",
+          "build",
+          "test",
+          "e2e",
+          "docs",
+          "nx-release-publish"
+        ],
+        "parallel": 3
+      }
+    }
+  },
   "namedInputs": {
     "sharedGlobals": [
       "{workspaceRoot}/.github/**/*",
@@ -19,19 +45,24 @@
       "{workspaceRoot}/.gitignore",
       "{workspaceRoot}/nx.json",
       "{workspaceRoot}/.nxignore",
-      "{workspaceRoot}/storm.json",
-      "{workspaceRoot}/storm.*.json",
-      "{workspaceRoot}/.storm/config.json",
-      "{workspaceRoot}/.storm/config.*.json",
-      "{workspaceRoot}/storm.yaml",
-      "{workspaceRoot}/storm.*.yaml",
-      "{workspaceRoot}/.storm/config.yaml",
-      "{workspaceRoot}/.storm/config.*.yaml",
-      "{workspaceRoot}/storm.toml",
-      "{workspaceRoot}/storm.*.toml",
-      "{workspaceRoot}/.storm/config.toml",
-      "{workspaceRoot}/.storm/config.*.toml",
-      "{workspaceRoot}/storm.config.js",
+      "{workspaceRoot}/storm-workspace.json",
+      "{workspaceRoot}/storm-workspace.*.json",
+      "{workspaceRoot}/.storm-workspace/config.json",
+      "{workspaceRoot}/.storm-workspace/config.*.json",
+      "{workspaceRoot}/storm-workspace.yaml",
+      "{workspaceRoot}/storm-workspace.*.yaml",
+      "{workspaceRoot}/.storm-workspace/config.yaml",
+      "{workspaceRoot}/.storm-workspace/config.*.yaml",
+      "{workspaceRoot}/storm-workspace.toml",
+      "{workspaceRoot}/storm-workspace.*.toml",
+      "{workspaceRoot}/.storm-workspace/config.toml",
+      "{workspaceRoot}/.storm-workspace/config.*.toml",
+      "{workspaceRoot}/storm-workspace.config.js",
+      "{workspaceRoot}/.storm-workspace/config.js",
+      "{workspaceRoot}/.storm-workspace/config.*.js",
+      "{workspaceRoot}/storm-workspace.config.ts",
+      "{workspaceRoot}/.storm-workspace/config.ts",
+      "{workspaceRoot}/.storm-workspace/config.*.ts",
       "{workspaceRoot}/.env",
       "{workspaceRoot}/.env.local"
     ],
@@ -46,7 +77,6 @@
       "!{projectRoot}/typedoc.json",
       "!{projectRoot}/.eslint-doc-generatorrc.js",
       "!{projectRoot}/.eslint-doc-generatorrc.json",
-      "!{projectRoot}/contentlayer.config.ts",
       "!{projectRoot}/.storybook/**/*",
       "!{projectRoot}/tsconfig.storybook.json",
       "!{projectRoot}/jest.config.ts",
@@ -242,7 +272,7 @@
       "{projectRoot}/README.md",
       "{projectRoot}/CHANGELOG.md",
       "{projectRoot}/.env",
-      "{projectRoot}/.env.local",
+      "{projectRoot}/.env.*",
       "{projectRoot}/README.md",
       "{projectRoot}/docs/**/*",
       "{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
@@ -267,8 +297,9 @@
       "{projectRoot}/src/**/*.toml",
       "{projectRoot}/src/**/*.md",
       "{projectRoot}/src/**/*.mdx",
-      "{projectRoot}/build.*.ts",
-      "{projectRoot}/tsup.*.ts",
+      "{projectRoot}/build.*.[jt]s?(x)",
+      "{projectRoot}/tsup.*.[jt]s?(x)",
+      "{projectRoot}/contentlayer.*.[jt]s?(x)",
       "{projectRoot}/bin/**/*",
       "{projectRoot}/tools/**/*",
       "{projectRoot}/helpers/**/*",
@@ -308,8 +339,7 @@
       "inputs": ["linting", "default", "^production"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec knip",
-        "color": true
+        "command": "pnpm exec knip"
       }
     },
     "lint": {
@@ -377,19 +407,23 @@
       "executor": "nx:run-commands",
       "dependsOn": ["^clean"]
     },
+    "build-untyped": {
+      "cache": true,
+      "dependsOn": ["^build"]
+    },
     "build-base": {
       "cache": true,
-      "dependsOn": ["clean", "^build"]
+      "dependsOn": ["clean", "build-untyped", "^build"]
     },
     "build-local": {
       "cache": true,
       "inputs": ["default", "^production"],
-      "dependsOn": ["build-base", "^build"]
+      "dependsOn": ["build-base", "build-untyped", "^build"]
     },
     "build": {
       "cache": true,
       "inputs": ["default", "^production"],
-      "dependsOn": ["build-base", "^build"]
+      "dependsOn": ["build-base", "build-untyped", "^build"]
     },
     "rebuild": {
       "cache": false,

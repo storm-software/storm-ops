@@ -20,8 +20,7 @@
   "module": "dist/index.mjs",
   "exports": {
     "./package.json": "./package.json",
-    "./config/nx-default.json": "./config/nx-default.json",
-    "./config/nx-cloud.json": "./config/nx-cloud.json",
+    "./config/base.json": "./config/base.json",
     "./assets/cjs_shims": "./assets/cjs_shims.js",
     "./assets/esm_shims": "./assets/esm_shims.js",
     "./docs/*": "./docs/*",

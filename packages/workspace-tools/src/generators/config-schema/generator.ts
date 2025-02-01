@@ -21,9 +21,15 @@ export async function configSchemaGeneratorFn(
   options: ConfigSchemaGeneratorSchema,
   config?: StormConfig
 ) {
-  writeInfo("📦  Running Storm Configuration JSON Schema generator", config);
+  writeInfo(
+    "📦  Running Storm Workspace Configuration JSON Schema generator",
+    config
+  );
 
-  writeTrace(`Determining the Storm Configuration JSON Schema...`, config);
+  writeTrace(
+    `Determining the Storm Workspace Configuration JSON Schema...`,
+    config
+  );
 
   const jsonSchema = zodToJsonSchema(StormConfigSchema, {
     name: "StormWorkspaceConfiguration"
