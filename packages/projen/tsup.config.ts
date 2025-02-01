@@ -6,7 +6,7 @@ export default defineConfig([
     target: "node22",
     entryPoints: [
       "./*.ts",
-      "./src/base/*.ts",
+      "./src/components/*.ts",
       "./src/executors/*/executor.ts",
       "./src/generators/*/generator.ts"
     ],

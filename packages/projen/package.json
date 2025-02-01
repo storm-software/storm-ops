@@ -83,32 +83,32 @@
         "default": "./dist/generators.js"
       }
     },
-    "./base": {
+    "./components": {
       "import": {
-        "types": "./dist/src/base/index.d.mts",
-        "default": "./dist/src/base/index.mjs"
+        "types": "./dist/src/components/index.d.mts",
+        "default": "./dist/src/components/index.mjs"
       },
       "require": {
-        "types": "./dist/src/base/index.d.ts",
-        "default": "./dist/src/base/index.js"
+        "types": "./dist/src/components/index.d.ts",
+        "default": "./dist/src/components/index.js"
       },
       "default": {
-        "types": "./dist/src/base/index.d.ts",
-        "default": "./dist/src/base/index.js"
+        "types": "./dist/src/components/index.d.ts",
+        "default": "./dist/src/components/index.js"
       }
     },
-    "./base/*": {
+    "./components/*": {
       "import": {
-        "types": "./dist/src/base/*.d.mts",
-        "default": "./dist/src/base/*.mjs"
+        "types": "./dist/src/components/*.d.mts",
+        "default": "./dist/src/components/*.mjs"
       },
       "require": {
-        "types": "./dist/src/base/*.d.ts",
-        "default": "./dist/src/base/*.js"
+        "types": "./dist/src/components/*.d.ts",
+        "default": "./dist/src/components/*.js"
       },
       "default": {
-        "types": "./dist/src/base/*.d.ts",
-        "default": "./dist/src/base/*.js"
+        "types": "./dist/src/components/*.d.ts",
+        "default": "./dist/src/components/*.js"
       }
     },
     "./executors/*/executor.js": "./dist/src/executors/*/executor.js",
@@ -142,6 +142,7 @@
     }
   },
   "dependencies": {
+    "@aws/pdk": "^0.25.16",
     "@nx/devkit": "catalog:",
     "projen": "^0.91.6",
     "tslib": "catalog:"
