@@ -222,6 +222,12 @@ export const setConfigEnv = (config: StormConfig) => {
     process.env.RUST_BACKTRACE =
       getLogLevel(config.logLevel) >= LogLevel.DEBUG ? "full" : "none";
   }
+  if (config.skipConfigLogging !== undefined) {
+    process.env[`${prefix}SKIP_CONFIG_LOGGING`] = String(
+      config.skipConfigLogging
+    );
+  }
+
   process.env[`${prefix}CONFIG`] = JSON.stringify(config);
 
   for (const key of Object.keys(config.extensions ?? {})) {

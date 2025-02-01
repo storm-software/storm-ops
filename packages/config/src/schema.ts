@@ -290,7 +290,7 @@ export const StormConfigSchema = z
       .string()
       .trim()
       .default(
-        "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm.schema.json"
+        "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm-workspace.schema.json"
       )
       .optional()
       .nullish()
@@ -411,6 +411,12 @@ export const StormConfigSchema = z
       .default("info")
       .describe(
         "The log level used to filter out lower priority log messages. If not provided, this is defaulted using the `environment` config value (if `environment` is set to `production` then `level` is `error`, else `level` is `debug`)."
+      ),
+    skipConfigLogging: z
+      .boolean()
+      .optional()
+      .describe(
+        "Should the logging of the current Storm Workspace configuration be skipped?"
       ),
     registry: RegistryConfigSchema,
     configFile: z

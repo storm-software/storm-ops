@@ -141,6 +141,10 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
               Number.parseInt(process.env[`${prefix}LOG_LEVEL`] as string)
             )
           : (process.env[`${prefix}LOG_LEVEL`] as LogLevelLabel)
+        : undefined,
+    skipConfigLogging:
+      process.env[`${prefix}SKIP_CONFIG_LOGGING`] !== undefined
+        ? Boolean(process.env[`${prefix}SKIP_CONFIG_LOGGING`])
         : undefined
   };
 

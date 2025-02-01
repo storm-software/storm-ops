@@ -29,8 +29,7 @@ pre-commit:
       stage_fixed: true
     schema-gen:
       glob: "packages/config/src/schema.ts"
-      run: 'pnpm nx generate @storm-software/workspace-tools:config-schema
-        --outputFile="./packages/config/schemas/storm.schema.json"'
+      run: 'pnpm nx generate @storm-software/workspace-tools:config-schema --outputFile="./packages/config/schemas/storm-workspace.schema.json"'
       stage_fixed: true
     validate:
       files: "git diff --name-only HEAD @{push}"
