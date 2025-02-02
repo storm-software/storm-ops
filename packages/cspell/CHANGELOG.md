@@ -1,3 +1,13 @@
+## 0.11.0 (2025-02-02)
+
+### Features
+
+- **cspell:** Added `sarif` to the Storm dictionary ([661afd95](https://github.com/storm-software/storm-ops/commit/661afd95))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([e47c955b](https://github.com/storm-software/storm-ops/commit/e47c955b))
+
 ## 0.10.1 (2025-02-02)
 
 ### Miscellaneous
