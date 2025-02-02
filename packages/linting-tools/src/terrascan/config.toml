@@ -1,0 +1,18 @@
+# [notifications]
+#     [notifications.webhook]
+#     url = "https://httpbin.org/post"
+#     token = "my_auth_token"
+
+[severity]
+level = "medium"
+[rules]
+skip-rules = ["accurics.kubernetes.IAM.107"]
+
+[k8s-admission-control]
+denied-categories = ["Network Ports Security"]
+denied-severity = "high"
+dashboard = true
+
+# [policy]
+# environment = "<environment_url>"
+# access_token = "<access_token>"
