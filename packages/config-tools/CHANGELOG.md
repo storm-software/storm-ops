@@ -1,3 +1,13 @@
+## 1.150.0 (2025-02-02)
+
+### Features
+
+- **cspell:** Bundle all `cspell` packages ([072f90951](https://github.com/storm-software/storm-ops/commit/072f90951))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([81d0b65c2](https://github.com/storm-software/storm-ops/commit/81d0b65c2))
+
 ## 1.149.1 (2025-02-02)
 
 ### Miscellaneous
