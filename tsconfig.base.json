@@ -16,6 +16,8 @@
       "@storm-software/config-tools": ["packages/config-tools/src/index.ts"],
       "@storm-software/config-tools/*": ["packages/config-tools/src/*"],
       "@storm-software/config/*": ["packages/config/src/*"],
+      "@storm-software/cspell": ["packages/cspell/src/index.ts"],
+      "@storm-software/cspell/*": ["packages/cspell/src/*"],
       "@storm-software/esbuild": ["packages/esbuild/src/index.ts"],
       "@storm-software/esbuild/*": ["packages/esbuild/src/*"],
       "@storm-software/eslint": ["packages/eslint/src/index.ts"],

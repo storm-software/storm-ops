@@ -65,12 +65,7 @@ export const withRunExecutor =
       const projectName = context.projectName;
       config.workspaceRoot = workspaceRoot;
 
-      writeInfo(
-        `
-⚡ Running the ${name} executor for ${projectName}
-`,
-        config
-      );
+      writeInfo(`⚡ Running the ${name} executor for ${projectName} `, config);
 
       if (!executorOptions.skipReadingConfig) {
         writeTrace(

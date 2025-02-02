@@ -33,6 +33,8 @@ lefthook
 biomejs
 taplo
 sarif
+projen
+tsdown
 napi
 immer
 zustand

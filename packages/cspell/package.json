@@ -161,7 +161,8 @@
     "@cspell/dict-vue": "^3.0.0"
   },
   "devDependencies": {
-    "cspell": "catalog:"
+    "cspell": "catalog:",
+    "tsup": "catalog:"
   },
   "publishConfig": {
     "access": "public"
