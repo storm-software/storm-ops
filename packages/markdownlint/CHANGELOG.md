@@ -1,3 +1,9 @@
+## 0.13.0 (2025-02-02)
+
+### Features
+
+- **markdownlint:** Added base configurations to package ([7da66a699](https://github.com/storm-software/storm-ops/commit/7da66a699))
+
 ## 0.12.8 (2025-01-13)
 
 ### Continuous Integration
