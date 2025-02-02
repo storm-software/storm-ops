@@ -7,6 +7,8 @@ APPLY_FIXES: all
 # If you use ENABLE variable, all other languages/formats/tooling-formats will be disabled by default
 # ENABLE:
 
+DEFAULT_BRANCH: main
+
 # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
 ENABLE_LINTERS:
   - BASH_EXEC
@@ -25,9 +27,14 @@ ENABLE_LINTERS:
   - TERRAFORM_TFLINT
   - YAML_YAMLLINT
 
-SARIF_REPORTER: true
-SHOW_ELAPSED_TIME: true
-FILEIO_REPORTER: false
+FILTER_REGEX_EXCLUDE: '(\.automation/test|\.automation/generated|\.venv|\.github/workflows|docs/javascripts|docs/overrides|docs/json-schemas|flavors|clj-kondo|TEMPLATES|generators/*/files)'
+JSON_JSONLINT_FILTER_REGEX_EXCLUDE: '(\.vscode/)'
+YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml|generators/*/files)'
+YAML_PRETTIER_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml|mkdocs\.yml)'
+YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml|\.codecov\.yml)'
+BASH_FILTER_REGEX_EXCLUDE: "(lib)"
+MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md|docs/licenses)'
+MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
 
 # Install plugin for list handling.
 JSON_PRETTIER_PRE_COMMANDS:
@@ -47,6 +54,14 @@ SPELL_CSPELL_FILE_EXTENSIONS: ["*"]
 
 TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES:
   - GITHUB_TOKEN
+
+YAML_YAMLLINT_CONFIG_FILE: "https://raw.githubusercontent.com/storm-software/storm-ops/refs/heads/main/packages/linting-tools/src/yamllint/.yamllint.yml"
+
+SARIF_REPORTER: true
+SHOW_ELAPSED_TIME: true
+FILEIO_REPORTER: false
+EMAIL_REPORTER: false
+JSON_REPORTER: true
 
 GITHUB_STATUS_REPORTER: true
 GITHUB_COMMENT_REPORTER: true

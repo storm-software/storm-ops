@@ -22,7 +22,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           fetch-depth: 0
           persist-credentials: false
 
@@ -37,7 +37,8 @@ jobs:
           # All available variables are described in documentation
           # https://megalinter.io/configuration/
           VALIDATE_ALL_CODEBASE: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
+          MEGALINTER_CONFIG: "https://raw.githubusercontent.com/storm-software/storm-ops/refs/heads/main/packages/linting-tools/src/mega-linter/.mega-linter.yml"
 
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
