@@ -1,3 +1,13 @@
+## 0.13.1 (2025-02-02)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([7e673dd2f](https://github.com/storm-software/storm-ops/commit/7e673dd2f))
+
+### Dependency Upgrades
+
+- **cspell:** Ensure configuration packages are bundled correctly ([3fddb7ed1](https://github.com/storm-software/storm-ops/commit/3fddb7ed1))
+
 ## 0.13.0 (2025-02-02)
 
 ### Features
