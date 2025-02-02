@@ -117,18 +117,11 @@
     "syncpack",
     "zizmor"
   ],
-  "peerDependencies": {
-    "@storm-software/cspell": "workspace:*"
-  },
-  "peerDependenciesMeta": {
-    "@storm-software/cspell": {
-      "optional": false
-    }
-  },
   "dependencies": {
     "@angular-devkit/architect": "0.1900.6",
     "@manypkg/cli": "0.21.4",
     "@manypkg/get-packages": "2.2.1",
+    "@storm-software/cspell": "workspace:*",
     "alex": "11.0.1",
     "check-dependency-version-consistency": "4.1.0",
     "commander": "catalog:",
@@ -148,7 +141,6 @@
     "retext-equality": "7.1.0",
     "retext-profanities": "8.0.0",
     "spawndamnit": "2.0.0",
-    "tsconfig-paths": "4.2.0",
     "unified": "11.0.5",
     "unified-engine": "11.2.1",
     "vfile-reporter": "8.1.1"
