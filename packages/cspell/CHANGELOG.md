@@ -1,3 +1,13 @@
+## 0.13.2 (2025-02-02)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([665463d38](https://github.com/storm-software/storm-ops/commit/665463d38))
+
+### Dependency Upgrades
+
+- **cspell:** Added the `@cspell/cspell-pipe` package to bundle ([06a39afc9](https://github.com/storm-software/storm-ops/commit/06a39afc9))
+
 ## 0.13.1 (2025-02-02)
 
 ### Miscellaneous

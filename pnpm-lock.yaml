@@ -467,6 +467,9 @@ importers:
 
   packages/cspell:
     devDependencies:
+      '@cspell/cspell-pipe':
+        specifier: 8.17.3
+        version: 8.17.3
       '@cspell/cspell-tools':
         specifier: ^8.17.1
         version: 8.17.3(typescript@5.7.3)
