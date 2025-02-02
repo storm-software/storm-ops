@@ -1021,9 +1021,6 @@ importers:
       spawndamnit:
         specifier: 2.0.0
         version: 2.0.0
-      tsconfig-paths:
-        specifier: 4.2.0
-        version: 4.2.0
       unified:
         specifier: 11.0.5
         version: 11.0.5
@@ -3982,7 +3979,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 

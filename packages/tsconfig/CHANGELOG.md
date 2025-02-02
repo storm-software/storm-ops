@@ -1,3 +1,9 @@
+## 0.35.9 (2025-02-02)
+
+### Bug Fixes
+
+- **linting-tools:** Resolved issue with `cspell` configuration json ([e0ff0c9a](https://github.com/storm-software/storm-ops/commit/e0ff0c9a))
+
 ## 0.35.8 (2025-01-13)
 
 ### Continuous Integration
