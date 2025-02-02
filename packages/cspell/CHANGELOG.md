@@ -1,3 +1,18 @@
+## 0.12.0 (2025-02-02)
+
+### Features
+
+- **cspell:** Added Javascript module to package ([9fcc82861](https://github.com/storm-software/storm-ops/commit/9fcc82861))
+
+### Bug Fixes
+
+- **cspell:** Resolve build issue with JSON comments ([a1e618688](https://github.com/storm-software/storm-ops/commit/a1e618688))
+- **cspell:** Resolved issues with missing `tsup` devDependency ([bf393dada](https://github.com/storm-software/storm-ops/commit/bf393dada))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([a2b221881](https://github.com/storm-software/storm-ops/commit/a2b221881))
+
 ## 0.11.0 (2025-02-02)
 
 ### Features

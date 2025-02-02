@@ -1,3 +1,13 @@
+## 1.149.0 (2025-02-02)
+
+### Features
+
+- **cspell:** Added Javascript module to package ([9fcc82861](https://github.com/storm-software/storm-ops/commit/9fcc82861))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([a2b221881](https://github.com/storm-software/storm-ops/commit/a2b221881))
+
 ## 1.148.4 (2025-02-02)
 
 ### Miscellaneous

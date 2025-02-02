@@ -1,3 +1,13 @@
+## 1.247.5 (2025-02-02)
+
+### Bug Fixes
+
+- **cspell:** Resolved issues with missing `tsup` devDependency ([bf393dada](https://github.com/storm-software/storm-ops/commit/bf393dada))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([a2b221881](https://github.com/storm-software/storm-ops/commit/a2b221881))
+
 ## 1.247.4 (2025-02-02)
 
 ### Miscellaneous
