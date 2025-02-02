@@ -37,7 +37,7 @@ export function createProgram(config: StormConfig) {
   const cspellConfig = new Option(
     "--cspell-config <file>",
     "CSpell config file path"
-  ).default("@storm-software/linting-tools/cspell/config.js");
+  ).default("@storm-software/linting-tools/cspell/config.json");
 
   program
     .command("cspell")
