@@ -1,3 +1,18 @@
+## 1.112.0 (2025-02-02)
+
+### Features
+
+- **linting-tools:** Add `pre-command` scripts to get the configuration packages ([8323ff73e](https://github.com/storm-software/storm-ops/commit/8323ff73e))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([47f85fdcf](https://github.com/storm-software/storm-ops/commit/47f85fdcf))
+
+### 🧱 Updated Dependencies
+
+- Updated cspell to 0.13.4
+- Updated cspell to 0.13.4
+
 ## 1.111.0 (2025-02-02)
 
 ### Features
