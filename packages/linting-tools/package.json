@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/linting-tools",
-  "version": "1.110.1",
+  "version": "1.110.2",
   "type": "module",
   "description": "⚡ A package containing various linting tools used to validate syntax, enforce design standards, and format code in a Storm workspace.",
   "repository": {
@@ -121,7 +121,7 @@
     "@angular-devkit/architect": "0.1900.6",
     "@manypkg/cli": "0.21.4",
     "@manypkg/get-packages": "2.2.1",
-    "@storm-software/cspell": "0.12.0",
+    "@storm-software/cspell": "0.12.1",
     "alex": "11.0.1",
     "check-dependency-version-consistency": "4.1.0",
     "commander": "catalog:",
