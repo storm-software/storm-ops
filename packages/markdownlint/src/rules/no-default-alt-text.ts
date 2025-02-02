@@ -15,7 +15,7 @@ const markdownAltRegex = new RegExp(`!\\[${combinedRegex}\\]\\(.*\\)`, "gid");
 const htmlAltRegex = new RegExp(`alt=["']${combinedRegex}["']`, "gid");
 
 module.exports = {
-  names: ["SS001", "no-default-alt-text"],
+  names: ["SSW01", "no-default-alt-text"],
   description: "Images should have meaningful alternative text (alt text)",
   information: new URL(
     "https://github.com/github/markdownlint-github/blob/main/docs/rules/GH001-no-default-alt-text.md"

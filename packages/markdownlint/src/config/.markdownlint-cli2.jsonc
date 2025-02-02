@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/v0.17.2/schema/markdownlint-cli2-config-schema.json",
+  "config": {
+    "extends": "./.markdownlint.json"
+  },
+  "customRules": ["@storm-software/markdownlint/rules"],
+  "fix": true,
+  "gitignore": true,
+  "ignores": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/tmp/**",
+    "**/out/**",
+    "**/coverage/**",
+    "**/generated/**",
+    "**/__generated__/**",
+    "**/__tests__/**",
+    "**/__mocks__/**",
+    "**/.nx/**",
+    "**/.vscode/**",
+    "**/.github/**",
+    "**/.git/**",
+    "**/.husky/**",
+    "**/.yarn/**",
+    "**/.pnp/**",
+    "**/.cache/**",
+    "**/.next/**",
+    "**/.nuxt/**",
+    "**/.idea/**"
+  ],
+  "globs": ["**/*.md", "**/*.markdown", "**/*.mdx"]
+}

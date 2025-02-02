@@ -7,22 +7,26 @@
  * @packageDocumentation
  */
 
-import _ from "lodash";
-import { rules } from "./rules";
-import accessibilityRules from "./style/accessibility.json";
-import base from "./style/base.json";
+import defu from "defu";
+import { markdownlintConfig } from "./markdownlint";
+import { rules as customRules } from "./rules";
 
 const offByDefault = [] as string[];
 
-for (const rule of rules) {
+const baseConfig = { ...markdownlintConfig };
+
+for (const rule of customRules) {
   const ruleName = (rule as any)?.names[1];
   if (ruleName) {
-    base[ruleName] = offByDefault.includes(ruleName) ? false : true;
+    baseConfig[ruleName] = offByDefault.includes(ruleName) ? false : true;
   }
 }
 
 export const init = function init(defaultConfig) {
-  return _.defaultsDeep(defaultConfig, accessibilityRules, base);
+  return defu(defaultConfig, baseConfig);
 };
 
-export default [...rules];
+export const rules = [...customRules];
+
+export const config = baseConfig;
+export default config;

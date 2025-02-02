@@ -1,5 +1,5 @@
 module.exports = {
-  names: ["SS003", "no-empty-alt-text"],
+  names: ["SSW03", "no-empty-alt-text"],
   description: "Please provide an alternative text for the image.",
   information: new URL(
     "https://github.com/github/markdownlint-github/blob/main/docs/rules/GH003-no-empty-alt-text.md"

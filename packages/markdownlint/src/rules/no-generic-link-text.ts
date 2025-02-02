@@ -16,7 +16,7 @@ const bannedLinkText = [
 ];
 
 module.exports = {
-  names: ["SS002", "no-generic-link-text"],
+  names: ["SSW02", "no-generic-link-text"],
   description:
     "Avoid using generic link text like `Learn more` or `Click here`",
   information: new URL(

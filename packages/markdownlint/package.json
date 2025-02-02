@@ -1,8 +1,7 @@
 {
   "name": "@storm-software/markdownlint",
   "version": "0.12.8",
-  "type": "commonjs",
-  "description": "⚡An opinionated collection of markdownlint rules used by Storm Software.",
+  "description": "An opinionated collection of markdownlint rules used by Storm Software.",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops.git",
@@ -15,8 +14,88 @@
     "email": "contact@stormsoftware.com",
     "url": "https://stormsoftware.com"
   },
+  "maintainers": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    },
+    {
+      "name": "Pat Sullivan",
+      "email": "admin@stormsoftware.com",
+      "url": "https://patsullivan.org"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Storm Software",
+      "email": "contact@stormsoftware.com",
+      "url": "https://stormsoftware.com"
+    }
+  ],
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/storm-software"
+  },
   "license": "Apache-2.0",
   "private": false,
+  "packageManager": "pnpm@9.15.2",
+  "engines": {
+    "node": ">=22.4.0",
+    "pnpm": ">=9.15.2"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./index": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "default": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    },
+    "./rules/*": {
+      "import": {
+        "types": "./dist/rules/*.d.ts",
+        "default": "./dist/rules/*.js"
+      },
+      "require": {
+        "types": "./dist/rules/*.d.cts",
+        "default": "./dist/rules/*.cjs"
+      },
+      "default": {
+        "types": "./dist/rules/*.d.ts",
+        "default": "./dist/rules/*.js"
+      }
+    },
+    "./config/*": "./config/*"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [
     "markdownlint",
     "markdownlint-cli",
@@ -30,10 +109,11 @@
     "sullivanpj"
   ],
   "dependencies": {
-    "lodash": "4.17.21"
+    "defu": "catalog:"
   },
   "devDependencies": {
-    "@types/node": "catalog:"
+    "@types/node": "catalog:",
+    "tsup": "catalog:"
   },
   "publishConfig": {
     "access": "public"

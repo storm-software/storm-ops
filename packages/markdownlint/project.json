@@ -4,61 +4,102 @@
   "projectType": "library",
   "sourceRoot": "packages/markdownlint/src",
   "targets": {
-    "build": {
+    // "build": {
+    //   "cache": true,
+    //   "executor": "@nx/esbuild:esbuild",
+    //   "outputs": ["{options.outputPath}"],
+    //   "options": {
+    //     "outputPath": "dist/packages/markdownlint",
+    //     "tsConfig": "packages/markdownlint/tsconfig.json",
+    //     "project": "packages/markdownlint/package.json",
+    //     "main": "packages/markdownlint/src/index.ts",
+    //     "defaultConfiguration": "production",
+    //     "deleteOutputPath": true,
+    //     "sourcemap": false,
+    //     "minify": false,
+    //     "skipTypeCheck": true,
+    //     "platform": "node",
+    //     "format": ["cjs"],
+    //     "esbuildOptions": {
+    //       "outExtension": {
+    //         ".js": ".js"
+    //       }
+    //     },
+    //     "assets": [
+    //       {
+    //         "input": "packages/markdownlint",
+    //         "glob": "README.md",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "packages/markdownlint",
+    //         "glob": "CHANGELOG.md",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "",
+    //         "glob": "LICENSE",
+    //         "output": "."
+    //       },
+    //       {
+    //         "input": "packages/markdownlint/src",
+    //         "glob": ".markdownlint.json",
+    //         "output": "."
+    //       }
+    //     ]
+    //   },
+    //   "configurations": {
+    //     "production": {
+    //       "debug": false,
+    //       "verbose": false
+    //     },
+    //     "development": {
+    //       "debug": true,
+    //       "verbose": true
+    //     }
+    //   }
+    // },
+
+    "clean": {
       "cache": true,
-      "executor": "@nx/esbuild:esbuild",
-      "outputs": ["{options.outputPath}"],
+      "inputs": ["typescript", "^production"],
+      "outputs": ["{workspaceRoot}/dist/packages/markdownlint/**"],
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
       "options": {
-        "outputPath": "dist/packages/markdownlint",
-        "tsConfig": "packages/markdownlint/tsconfig.json",
-        "project": "packages/markdownlint/package.json",
-        "main": "packages/markdownlint/src/index.ts",
-        "defaultConfiguration": "production",
-        "deleteOutputPath": true,
-        "sourcemap": false,
-        "minify": false,
-        "skipTypeCheck": true,
-        "platform": "node",
-        "format": ["cjs"],
-        "esbuildOptions": {
-          "outExtension": {
-            ".js": ".js"
-          }
-        },
-        "assets": [
-          {
-            "input": "packages/markdownlint",
-            "glob": "README.md",
-            "output": "."
-          },
-          {
-            "input": "packages/markdownlint",
-            "glob": "CHANGELOG.md",
-            "output": "."
-          },
-          {
-            "input": "",
-            "glob": "LICENSE",
-            "output": "."
-          },
-          {
-            "input": "packages/markdownlint/src",
-            "glob": ".markdownlint.json",
-            "output": "."
-          }
-        ]
-      },
-      "configurations": {
-        "production": {
-          "debug": false,
-          "verbose": false
-        },
-        "development": {
-          "debug": true,
-          "verbose": true
-        }
+        "commands": [
+          "pnpm exec rimraf dist/packages/markdownlint",
+          "pnpm exec rimraf packages/markdownlint/dist"
+        ],
+        "parallel": true,
+        "color": true
       }
     },
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "tsup-node --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "cache": true,
+      "inputs": ["{workspaceRoot}/packages/markdownlint/dist/**"],
+      "outputs": ["{workspaceRoot}/dist/packages/markdownlint/**"],
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles --up=3 packages/markdownlint/dist/* dist/packages/markdownlint/dist",
+          "pnpm copyfiles --up=3 packages/markdownlint/dist/rules/* dist/packages/markdownlint/dist/rules",
+          "pnpm copyfiles --up=3 packages/markdownlint/src/config/* dist/packages/markdownlint/config",
+          "pnpm copyfiles --up=2 packages/markdownlint/*.md packages/markdownlint/package.json dist/packages/markdownlint",
+          "pnpm copyfiles LICENSE dist/packages/markdownlint"
+        ]
+      }
+    },
+
     "nx-release-publish": {
       "executor": "@storm-software/workspace-tools:npm-publish"
     }
