@@ -123,8 +123,6 @@
   ],
   "dependencies": {
     "@angular-devkit/architect": "0.1900.6",
-    "@manypkg/cli": "0.21.4",
-    "@manypkg/get-packages": "2.2.1",
     "alex": "11.0.1",
     "check-dependency-version-consistency": "4.1.0",
     "commander": "catalog:",
@@ -149,6 +147,8 @@
     "vfile-reporter": "8.1.1"
   },
   "devDependencies": {
+    "@manypkg/cli": "0.21.4",
+    "@manypkg/get-packages": "2.2.1",
     "@types/node": "catalog:",
     "cspell": "catalog:",
     "tsup": "catalog:"

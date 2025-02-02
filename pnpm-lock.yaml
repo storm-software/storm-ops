@@ -960,15 +960,6 @@ importers:
       '@angular-devkit/architect':
         specifier: 0.1900.6
         version: 0.1900.6(chokidar@4.0.3)
-      '@manypkg/cli':
-        specifier: 0.21.4
-        version: 0.21.4
-      '@manypkg/get-packages':
-        specifier: 2.2.1
-        version: 2.2.1
-      '@storm-software/cspell':
-        specifier: workspace:*
-        version: link:../cspell
       alex:
         specifier: 11.0.1
         version: 11.0.1
@@ -1036,6 +1027,12 @@ importers:
         specifier: 8.1.1
         version: 8.1.1
     devDependencies:
+      '@manypkg/cli':
+        specifier: 0.21.4
+        version: 0.21.4
+      '@manypkg/get-packages':
+        specifier: 2.2.1
+        version: 2.2.1
       '@types/node':
         specifier: 'catalog:'
         version: 22.13.0
