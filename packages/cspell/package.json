@@ -120,6 +120,7 @@
     }
   },
   "devDependencies": {
+    "@cspell/cspell-pipe": "8.17.3",
     "@cspell/cspell-tools": "^8.17.1",
     "@cspell/dict-aws": "^4.0.2",
     "@cspell/dict-bash": "^4.1.3",
