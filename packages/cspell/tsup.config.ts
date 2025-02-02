@@ -12,5 +12,5 @@ export default defineConfig({
   dts: true,
   sourcemap: false,
   tsconfig: "./tsconfig.json",
-  noExternal: ["cspell"]
+  noExternal: ["cspell", "@cspell/*"]
 });
