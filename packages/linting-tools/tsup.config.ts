@@ -28,6 +28,7 @@ export default defineConfig([
     dts: false,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    shims: true
+    shims: true,
+    noExternal: ["cspell"]
   }
 ]);

@@ -6,9 +6,11 @@ export default defineConfig({
   entryPoints: ["./index.ts"],
   format: ["cjs", "esm"],
   platform: "node",
+  bundle: true,
   splitting: true,
   clean: true,
   dts: true,
   sourcemap: false,
-  tsconfig: "./tsconfig.json"
+  tsconfig: "./tsconfig.json",
+  noExternal: ["cspell"]
 });
