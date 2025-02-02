@@ -216,12 +216,12 @@ async function allAction({
 }
 
 async function cspellAction({
-  cspellConfig = "@storm-software/linting-tools/cspell/config.js"
+  cspellConfig = "@storm-software/linting-tools/cspell/config.json"
 }: {
   cspellConfig: string;
 }) {
   try {
-    console.log("⚡Linting the workspace spelling");
+    writeInfo("⚡Linting the workspace spelling");
     const result = await lint(["**/*.{txt,js,jsx,ts,tsx,md,mdx}"], {
       cache: true,
       summary: true,
@@ -252,7 +252,7 @@ async function cspellAction({
 
 async function codeownersAction() {
   try {
-    console.log("⚡Linting the workspace CODEOWNERS file");
+    writeInfo("⚡Linting the workspace CODEOWNERS file");
 
     await runCodeowners();
 

@@ -5,14 +5,16 @@
   "compilerOptions": {
     /* Base Options: */
     "allowJs": true,
-    "incremental": true,
     "isolatedModules": true,
+    "incremental": false,
+    "composite": false,
+    "verbatimModuleSyntax": true,
+
     /* If transpiling with TypeScript: */
     "sourceMap": true,
     /* AND if you're building for a library: */
     "declaration": true,
     /* AND if you're building for a library in a monorepo: */
-    "composite": true,
     "declarationMap": true
   }
 }
