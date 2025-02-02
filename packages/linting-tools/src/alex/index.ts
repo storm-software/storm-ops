@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { filter } from "alex/filter";
+import { filter } from "alex/filter.js";
 import retextEnglish from "retext-english";
 import retextEquality from "retext-equality";
 import retextProfanities from "retext-profanities";

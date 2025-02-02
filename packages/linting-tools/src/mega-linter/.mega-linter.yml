@@ -33,40 +33,64 @@ YAML_YAMLLINT_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml|generators/*/
 YAML_PRETTIER_FILTER_REGEX_EXCLUDE: '(templates/\.mega-linter\.yml|mkdocs\.yml)'
 YAML_V8R_FILTER_REGEX_EXCLUDE: '(descriptors|templates/\.mega-linter\.yml|\.codecov\.yml)'
 BASH_FILTER_REGEX_EXCLUDE: "(lib)"
-MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md|docs/licenses)'
-MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
 
 # Install plugin for list handling.
 JSON_PRETTIER_FILTER_REGEX_EXCLUDE: '(\.vscode/)'
+JSON_PRETTIER_CONFIG_FILE: "./node_modules/@storm-software/prettier/config/config.json"
 JSON_PRETTIER_PRE_COMMANDS:
-  - command: "npm install @storm-software/prettier"
+  - command: "pnpm add @storm-software/prettier -w -D"
     cwd: "workspace"
 
-CLOUDFORMATION_CFN_LINT_CONFIG_FILE: "https://raw.githubusercontent.com/storm-software/storm-ops/refs/heads/main/packages/linting-tools/src/cloudformation-lint/.cfnlintrc"
+CLOUDFORMATION_CFN_LINT_CONFIG_FILE: "./node_modules/@storm-software/linting-tools/src/cloudformation-lint/.cfnlintrc"
 CLOUDFORMATION_CFN_LINT_FILE_EXTENSIONS: [".yml", ".yaml"]
 
-TERRAFORM_TERRASCAN_CONFIG_FILE: "https://raw.githubusercontent.com/storm-software/storm-ops/refs/heads/main/packages/linting-tools/src/terrascan/config.yml"
+TERRAFORM_TERRASCAN_CONFIG_FILE: "./node_modules/@storm-software/linting-tools/src/terrascan/config.yml"
 TERRAFORM_TERRASCAN_UNSECURED_ENV_VARIABLES:
   - GITHUB_TOKEN
   - STORM_BOT_GITHUB_TOKEN
+TERRAFORM_TERRASCAN_PRE_COMMANDS:
+  - command: "pnpm add @storm-software/linting-tools -w -D"
+    cwd: "workspace"
 
-TERRAFORM_TFLINT_CONFIG_FILE: "https://raw.githubusercontent.com/storm-software/storm-ops/refs/heads/main/packages/linting-tools/src/tflint/config.hcl"
+TERRAFORM_TFLINT_CONFIG_FILE: "./node_modules/@storm-software/linting-tools/src/tflint/config.hcl"
 TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES:
   - GITHUB_TOKEN
   - STORM_BOT_GITHUB_TOKEN
+TERRAFORM_TFLINT_PRE_COMMANDS:
+  - command: "pnpm add @storm-software/linting-tools -w -D"
+    cwd: "workspace"
 
-EDITORCONFIG_EDITORCONFIG_CHECKER_CONFIG_FILE: "https://raw.githubusercontent.com/storm-software/storm-ops/refs/heads/main/packages/linting-tools/src/editorconfig-checker/config.json"
+EDITORCONFIG_EDITORCONFIG_CHECKER_CONFIG_FILE: "./node_modules/@storm-software/linting-tools/editorconfig-checker/config.json"
+EDITORCONFIG_EDITORCONFIG_CHECKER_PRE_COMMANDS:
+  - command: "pnpm add @storm-software/linting-tools -w -D"
+    cwd: "workspace"
+
+MARKDOWN_FILTER_REGEX_EXCLUDE: '(license\.md|docs/licenses)'
 
 MARKDOWN_MARKDOWN_LINK_CHECK_ARGUMENTS: "-q"
-MARKDOWN_MARKDOWN_LINK_CHECK_CONFIG_FILE: "https://raw.githubusercontent.com/storm-software/storm-ops/refs/heads/main/packages/markdownlint/config/markdown-link-check.json"
+MARKDOWN_MARKDOWN_LINK_CHECK_CONFIG_FILE: "./node_modules/@storm-software/markdownlint/config/markdown-link-check.json"
+MARKDOWN_MARKDOWN_LINK_CHECK_DISABLE_ERRORS: true
+MARKDOWN_MARKDOWN_LINK_CHECK_PRE_COMMANDS:
+  - command: "pnpm add @storm-software/markdownlint -w -D"
+    cwd: "workspace"
 
 MARKDOWN_MARKDOWNLINT_DISABLE_ERRORS: false
-MARKDOWN_MARKDOWNLINT_CONFIG_FILE: "https://raw.githubusercontent.com/storm-software/storm-ops/refs/heads/main/packages/markdownlint/config/.markdownlint.json"
+MARKDOWN_MARKDOWNLINT_CONFIG_FILE: "./node_modules/@storm-software/markdownlint/config/.markdownlint-cli2.jsonc"
+MARKDOWN_MARKDOWNLINT_PRE_COMMANDS:
+  - command: "pnpm add @storm-software/markdownlint -w -D"
+    cwd: "workspace"
 
 SPELL_CSPELL_ARGUMENTS: "--gitignore --no-progress --show-suggestions"
 SPELL_CSPELL_FILE_EXTENSIONS: ["*"]
+SPELL_CSPELL_CONFIG_FILE: "./node_modules/@storm-software/cspell/cspell-minimal.json"
+SPELL_CSPELL_PRE_COMMANDS:
+  - command: "pnpm add @storm-software/cspell -w -D"
+    cwd: "workspace"
 
-YAML_YAMLLINT_CONFIG_FILE: "https://raw.githubusercontent.com/storm-software/storm-ops/refs/heads/main/packages/linting-tools/src/yamllint/config.yml"
+YAML_YAMLLINT_CONFIG_FILE: "./node_modules/@storm-software/linting-tools/yamllint/config.yml"
+YAML_YAMLLINT_PRE_COMMANDS:
+  - command: "pnpm add @storm-software/linting-tools -w -D"
+    cwd: "workspace"
 
 SARIF_REPORTER: true
 SHOW_ELAPSED_TIME: true
@@ -76,7 +100,3 @@ JSON_REPORTER: true
 
 GITHUB_STATUS_REPORTER: true
 GITHUB_COMMENT_REPORTER: true
-
-PRE_COMMANDS:
-  - command: pnpm add @storm-software/prettier@latest @storm-software/markdownlint@latest @storm-software/linting-tools@latest -D -w
-    cwd: "root"
