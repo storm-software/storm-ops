@@ -32,6 +32,7 @@ zizmor
 lefthook
 biomejs
 taplo
+sarif
 napi
 immer
 zustand
