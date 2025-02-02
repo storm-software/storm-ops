@@ -1,3 +1,9 @@
+## 0.10.0 (2025-02-02)
+
+### Features
+
+- **cspell:** Added "stryke" name to `cspell` dictionary ([e7f3ffb6](https://github.com/storm-software/storm-ops/commit/e7f3ffb6))
+
 ## 0.9.2 (2025-02-01)
 
 ### Miscellaneous
