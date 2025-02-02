@@ -1,5 +1,6 @@
 # Storm Software's base keyword dictionary
 
+stryke
 stormstack
 stormcloud
 stormsoftware
