@@ -46,7 +46,7 @@
     "pnpm": ">=9.15.2"
   },
   "bin": {
-    "storm-lint": "./bin/lint.cjs",
+    "storm-lint": "./bin/lint.js",
     "storm-lint-esm": "./bin/lint.js",
     "storm-lint-cjs": "./bin/lint.cjs"
   },
@@ -87,6 +87,10 @@
     "./syncpack/*": "./syncpack/*",
     "./cspell/*": "./cspell/*",
     "./alex/*": "./alex/*",
+    "./yamllint/*": "./yamllint/*",
+    "./markdown-link-check/*": "./markdown-link-check/*",
+    "./cloudformation-lint/*": "./cloudformation-lint/*",
+    "./editorconfig-checker/*": "./editorconfig-checker/*",
     "./taplo/*": "./taplo/*",
     "./zizmor/*": "./zizmor/*",
     "./dependency-cruiser/*": "./dependency-cruiser/*"
