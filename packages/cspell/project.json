@@ -4,7 +4,7 @@
   "sourceRoot": "packages/cspell/src",
   "projectType": "library",
   "targets": {
-    "build-base": {
+    "build-cspell-tools": {
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "options": {
@@ -12,14 +12,23 @@
         "cwd": "{projectRoot}"
       }
     },
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "tsup-node --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
     "build": {
       "executor": "nx:run-commands",
-      "dependsOn": ["build-base"],
+      "dependsOn": ["build-base", "build-cspell-tools"],
       "options": {
         "commands": [
           "pnpm copyfiles LICENSE dist/packages/cspell",
           "pnpm copyfiles --up=2 ./packages/cspell/*.md ./packages/cspell/cspell-*.json ./packages/cspell/checksum.txt ./packages/cspell/package.json dist/packages/cspell",
-          "pnpm copyfiles --up=3 ./packages/cspell/dict/* dist/packages/cspell/dict"
+          "pnpm copyfiles --up=3 ./packages/cspell/dict/* dist/packages/cspell/dict",
+          "pnpm copyfiles --up=3 ./packages/cspell/dist/* dist/packages/cspell/dist"
         ]
       }
     },

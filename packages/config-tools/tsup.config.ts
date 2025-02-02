@@ -8,7 +8,7 @@ export default defineConfig([
     format: ["cjs", "esm"],
     outDir: "dist/src",
     platform: "node",
-    bundle: true,
+    bundle: false,
     splitting: true,
     clean: false,
     dts: true,

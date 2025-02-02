@@ -467,10 +467,6 @@ importers:
 
   packages/cspell:
     dependencies:
-      cspell:
-        specifier: 'catalog:'
-        version: 8.8.4
-    devDependencies:
       '@cspell/cspell-tools':
         specifier: ^8.17.1
         version: 8.17.3(typescript@5.7.3)
@@ -588,6 +584,10 @@ importers:
       '@cspell/dict-vue':
         specifier: ^3.0.0
         version: 3.0.4
+    devDependencies:
+      cspell:
+        specifier: 'catalog:'
+        version: 8.8.4
 
   packages/esbuild:
     dependencies:
