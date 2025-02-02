@@ -14,11 +14,7 @@
     "markdown"
   ],
   "flagWords": [],
-  // Ignore files that aren't check in to git as well as files that aren't written
-  // by hand. Note that we do want to check, say, JSON files (as package.json
-  // contains English text like package descriptions).
   "useGitignore": true,
-  // GitHub Security Advisories
   "ignoreRegExpList": [
     "GHSA-[-\\w]+",
     "Markdown links",
@@ -33,12 +29,10 @@
   "ignorePaths": [],
   "overrides": [
     {
-      //Ignore anything in a changelog file that looks like a GitHub username.
       "filename": "**/CHANGELOG*.md",
       "ignoreRegExpList": ["@[-\\w]+"]
     },
     {
-      //Ignore the targets of links in Markdown/MDX files.
       "filename": "'**/*.md*",
       "ignoreRegExpList": ["\\]\\([^)]+\\)"]
     }

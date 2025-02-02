@@ -1,10 +1,8 @@
-// cSpell Settings
 {
   "id": "storm",
   "name": "Storm Software",
   "description": "The Storm Software keywords Dictionary.",
   "readonly": true,
-  // List of dictionary files to add to the global list of dictionaries
   "dictionaryDefinitions": [
     {
       "name": "storm",
@@ -12,11 +10,7 @@
       "description": "Storm Software keywords."
     }
   ],
-  // Dictionaries to always be used.
-  // Generally left empty
   "dictionaries": [],
-  // Language Rules to apply to matching files.
-  // Files are matched on `languageId` and `locale`
   "languageSettings": [
     {
       "languageId": [

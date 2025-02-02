@@ -4,6 +4,8 @@ stryke
 stormstack
 stormcloud
 stormsoftware
+stormie
+stormiebot
 Akka
 alexignore
 alexjs
