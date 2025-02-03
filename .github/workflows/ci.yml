@@ -74,7 +74,7 @@ jobs:
       - name: Add permissions to linting tools
         run: chmod a=rwx dist/packages/linting-tools/bin/lint.js
       - name: Add permissions to alex config file
-        run: chmod a=rwx dist/packages/linting-tools/alex/.alexrc
+        run: chmod a=rwx dist/packages/linting-tools/alex/config.json
       - name: Add permissions to alex ignore file
         run: chmod a=rwx dist/packages/linting-tools/alex/.alexignore
 
