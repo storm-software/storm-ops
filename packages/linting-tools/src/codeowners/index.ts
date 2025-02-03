@@ -1,6 +1,6 @@
 import { getConfig, writeWarning } from "@storm-software/config-tools";
-import { sync } from "fast-glob";
 import fs from "fs-extra";
+import { globSync } from "glob";
 import { Octokit } from "octokit";
 import { join } from "path";
 
@@ -40,12 +40,23 @@ export async function runCodeowners() {
       : [`./${specifiedPattern}`, `**/${specifiedPattern}`];
 
     for (const pattern of patternsToCheck) {
-      foundMatchingFiles ||=
-        sync(pattern, {
-          ignore: ["node_modules", "dist", "tmp", ".git"],
-          cwd: join(config.workspaceRoot),
-          onlyFiles: false
-        }).length > 0;
+      const files = globSync(pattern, {
+        ignore: [
+          "**/{*.stories.tsx,*.stories.ts,*.spec.tsx,*.spec.ts}",
+          "**/dist/**",
+          "**/tmp/**",
+          "**/node_modules/**",
+          "**/.git/**",
+          "**/.cache/**",
+          "**/.nx/**"
+        ],
+        withFileTypes: true,
+        cwd: config.workspaceRoot
+      });
+      if (files.length > 0) {
+        foundMatchingFiles = true;
+        break;
+      }
     }
     if (!foundMatchingFiles) {
       mismatchedPatterns.push(specifiedPattern);
