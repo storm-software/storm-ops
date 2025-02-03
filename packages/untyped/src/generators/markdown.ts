@@ -1,7 +1,7 @@
 import { StormConfig } from "@storm-software/config";
 import {
   writeError,
-  writeTrace
+  writeTrace,
 } from "@storm-software/config-tools/logger/console";
 import { Path } from "glob";
 import { writeFile } from "node:fs/promises";
@@ -33,7 +33,7 @@ function generateMarkdownLevel(schema: Schema, title: string, level: string) {
 
   // Type and default
   lines.push(
-    `- **Type**: \`${schema.markdownType || schema.tsType || schema.type}\``
+    `- **Type**: \`${schema.markdownType || schema.tsType || schema.type}\``,
   );
   if ("default" in schema) {
     lines.push(`- **Default**: \`${JSON.stringify(schema.default)}\``);
@@ -61,7 +61,7 @@ function generateMarkdownLevel(schema: Schema, title: string, level: string) {
 export function generateMarkdownFile(
   schema: Schema,
   file: Path,
-  config?: StormConfig
+  config?: StormConfig,
 ) {
   try {
     const declarations = getOutputFile(file, "md");
@@ -83,7 +83,7 @@ Stack Trace: ${error.stack}`
 Parsed schema:
 ${JSON.stringify(schema)}
 `,
-      config
+      config,
     );
 
     throw error;

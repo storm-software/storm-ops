@@ -1,7 +1,7 @@
 import { StormConfig } from "@storm-software/config";
 import {
   writeError,
-  writeTrace
+  writeTrace,
 } from "@storm-software/config-tools/logger/console";
 import { Path } from "glob";
 import { writeFile } from "node:fs/promises";
@@ -11,7 +11,7 @@ import { getOutputFile } from "../utilities";
 export function generateJsonSchemaFile(
   schema: Schema,
   file: Path,
-  config?: StormConfig
+  config?: StormConfig,
 ) {
   try {
     const jsonSchema = getOutputFile(file, "json");
@@ -33,7 +33,7 @@ Stack Trace: ${error.stack}`
 Parsed schema:
 ${JSON.stringify(schema)}
 `,
-      config
+      config,
     );
 
     throw error;

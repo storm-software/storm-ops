@@ -39,7 +39,7 @@ function resolvePathsConfig(options: TsConfig, cwd: string) {
     const paths = Object.entries(options.compilerOptions.paths);
 
     const resolvedPaths = paths.map(([key, paths]) => {
-      return [key, paths.map(v => path.resolve(cwd, v))] as const;
+      return [key, paths.map((v) => path.resolve(cwd, v))] as const;
     });
 
     return Object.fromEntries(resolvedPaths);
@@ -65,7 +65,7 @@ function resolvePathsConfig(options: TsConfig, cwd: string) {
  */
 export const resolvePathsPlugin = (
   options: ESBuildOptions,
-  resolvedOptions: ESBuildResolvedOptions
+  resolvedOptions: ESBuildResolvedOptions,
 ): esbuild.Plugin => ({
   name: "storm:resolve-paths",
   setup(build) {
@@ -74,24 +74,24 @@ export const resolvePathsPlugin = (
       build.initialOptions.tsconfig
         ? joinPaths(
             resolvedOptions.config.workspaceRoot,
-            build.initialOptions.tsconfig
+            build.initialOptions.tsconfig,
           )
-        : joinPaths(resolvedOptions.config.workspaceRoot, "tsconfig.json")
+        : joinPaths(resolvedOptions.config.workspaceRoot, "tsconfig.json"),
     );
     const resolvedTsPaths = resolvePathsConfig(
       parentTsConfig,
-      options.projectRoot
+      options.projectRoot,
     );
     const packagesRegex = new RegExp(
-      `^(${Object.keys(resolvedTsPaths).join("|")})$`
+      `^(${Object.keys(resolvedTsPaths).join("|")})$`,
     );
 
-    build.onResolve({ filter: packagesRegex }, args => {
+    build.onResolve({ filter: packagesRegex }, (args) => {
       if (build.initialOptions.external?.includes(args.path)) {
         return { path: args.path, external: true };
       }
 
       return { path: `${resolvedTsPaths[args.path][0]}/index.ts` };
     });
-  }
+  },
 });

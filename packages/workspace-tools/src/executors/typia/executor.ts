@@ -9,7 +9,7 @@ import type { TypiaExecutorSchema } from "./schema.d";
 export async function typiaExecutorFn(
   options: TypiaExecutorSchema,
   _: ExecutorContext,
-  config: StormConfig
+  config: StormConfig,
 ) {
   if (options.clean !== false) {
     writeInfo(`🧹 Cleaning output path: ${options.outputPath}`, config);
@@ -17,19 +17,19 @@ export async function typiaExecutorFn(
   }
 
   await Promise.all(
-    options.entry!.map(entry => {
+    options.entry!.map((entry) => {
       writeInfo(`🚀 Running Typia on entry: ${entry}`, config);
 
       return TypiaProgrammer.build({
         input: entry,
         output: options.outputPath!,
-        project: options.tsconfig!
+        project: options.tsconfig!,
       });
-    })
+    }),
   );
 
   return {
-    success: true
+    success: true,
   };
 }
 
@@ -40,7 +40,7 @@ export default withRunExecutor<TypiaExecutorSchema>(
     skipReadingConfig: false,
     hooks: {
       applyDefaultOptions: (
-        options: TypiaExecutorSchema
+        options: TypiaExecutorSchema,
       ): TypiaExecutorSchema => {
         options.entry ??= ["{sourceRoot}/index.ts"];
         options.outputPath ??= "{sourceRoot}/__generated__/typia";
@@ -48,7 +48,7 @@ export default withRunExecutor<TypiaExecutorSchema>(
         options.clean ??= true;
 
         return options;
-      }
-    }
-  }
+      },
+    },
+  },
 );

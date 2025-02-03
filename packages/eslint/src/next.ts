@@ -13,7 +13,7 @@ const babelOptions = {
     } catch (_e) {
       return [];
     }
-  })()
+  })(),
 };
 
 const config: Linter.FlatConfig[] = [
@@ -23,27 +23,27 @@ const config: Linter.FlatConfig[] = [
     files: [CODE_FILE],
     ignores: DEFAULT_IGNORES,
     plugins: {
-      "@next/next": nextPlugin
+      "@next/next": nextPlugin,
     },
     languageOptions: {
-      parserOptions: { babelOptions }
-    }
+      parserOptions: { babelOptions },
+    },
   },
   {
     files: [
       "**/pages/**", // Next.js pages directory use default export
       "**/next.config.{js,mjs}",
       "**/*.stories.tsx",
-      "**/.storybook/main.ts"
+      "**/.storybook/main.ts",
     ],
     ignores: DEFAULT_IGNORES,
     languageOptions: {
-      parserOptions: { babelOptions }
+      parserOptions: { babelOptions },
     },
     rules: {
-      "import/no-default-export": "off"
-    }
-  }
+      "import/no-default-export": "off",
+    },
+  },
 ];
 
 export default formatConfig("NextJS", config);

@@ -3,7 +3,7 @@ import {
   correctPaths,
   findWorkspaceRoot,
   joinPaths,
-  writeDebug
+  writeDebug,
 } from "@storm-software/config-tools";
 import { type Path, glob } from "glob";
 import { Entry } from "../types";
@@ -26,7 +26,7 @@ export const getEntryPoints = async (
   projectRoot: string,
   sourceRoot?: string,
   entry?: Entry,
-  emitOnAll = false
+  emitOnAll = false,
 ): Promise<string[]> => {
   const workspaceRoot = config.workspaceRoot
     ? config.workspaceRoot
@@ -45,7 +45,7 @@ export const getEntryPoints = async (
 
   if (emitOnAll) {
     entryPoints.push(
-      joinPaths(workspaceRoot, sourceRoot || projectRoot, "**/*.{ts,tsx}")
+      joinPaths(workspaceRoot, sourceRoot || projectRoot, "**/*.{ts,tsx}"),
     );
   }
 
@@ -53,7 +53,7 @@ export const getEntryPoints = async (
   for (const entryPoint in entryPoints) {
     if (entryPoint.includes("*")) {
       const files = await glob(entryPoint, {
-        withFileTypes: true
+        withFileTypes: true,
       });
 
       results.push(
@@ -61,15 +61,15 @@ export const getEntryPoints = async (
           const result = correctPaths(
             joinPaths(filePath.path, filePath.name)
               .replaceAll(correctPaths(workspaceRoot), "")
-              .replaceAll(correctPaths(projectRoot), "")
+              .replaceAll(correctPaths(projectRoot), ""),
           );
           if (result) {
             writeDebug(
               `Trying to add entry point ${result} at "${joinPaths(
                 filePath.path,
-                filePath.name
+                filePath.name,
               )}"`,
-              config
+              config,
             );
 
             if (!results.includes(result)) {
@@ -78,7 +78,7 @@ export const getEntryPoints = async (
           }
 
           return ret;
-        }, [] as string[])
+        }, [] as string[]),
       );
     } else {
       results.push(entryPoint);

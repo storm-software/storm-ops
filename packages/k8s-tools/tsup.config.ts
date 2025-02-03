@@ -10,7 +10,7 @@ export default defineConfig([
       "./src/utils/*.ts",
       "./src/executors/*/executor.ts",
       "./src/generators/*/generator.ts",
-      "./src/plugins/docker/index.ts"
+      "./src/plugins/docker/index.ts",
     ],
     outDir: "dist",
     format: ["cjs", "esm"],
@@ -21,6 +21,6 @@ export default defineConfig([
     sourcemap: false,
     shims: true,
     tsconfig: "./tsconfig.json",
-    external: ["@storm-software/workspace-tools"]
-  }
+    external: ["@storm-software/workspace-tools"],
+  },
 ]);

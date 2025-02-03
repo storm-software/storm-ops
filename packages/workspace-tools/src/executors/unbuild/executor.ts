@@ -15,7 +15,7 @@ type StormUnbuildModule = {
 export async function unbuildExecutorFn(
   options: UnbuildExecutorSchema,
   context: ExecutorContext,
-  config: StormConfig
+  config: StormConfig,
 ) {
   writeInfo("📦  Running Storm Unbuild executor on the workspace", config);
 
@@ -27,13 +27,13 @@ export async function unbuildExecutorFn(
     !context.projectsConfigurations.projects[context.projectName]
   ) {
     throw new Error(
-      "The Build process failed because the context is not valid. Please run this command from a workspace root directory."
+      "The Build process failed because the context is not valid. Please run this command from a workspace root directory.",
     );
   }
 
   if (!context.projectsConfigurations.projects[context.projectName]!.root) {
     throw new Error(
-      "The Build process failed because the project root is not valid. Please run this command from a workspace root directory."
+      "The Build process failed because the project root is not valid. Please run this command from a workspace root directory.",
     );
   }
 
@@ -41,7 +41,7 @@ export async function unbuildExecutorFn(
     !context.projectsConfigurations.projects[context.projectName]!.sourceRoot
   ) {
     throw new Error(
-      "The Build process failed because the project's source root is not valid. Please run this command from a workspace root directory."
+      "The Build process failed because the project's source root is not valid. Please run this command from a workspace root directory.",
     );
   }
 
@@ -51,13 +51,13 @@ export async function unbuildExecutorFn(
       : joinPaths(
           config.workspaceRoot,
           config.directories.cache || "node_modules/.cache/storm",
-          "jiti"
+          "jiti",
         ),
-    interopDefault: true
+    interopDefault: true,
   });
 
   const stormUnbuild = await jiti.import<StormUnbuildModule>(
-    jiti.esmResolve("@storm-software/unbuild/build")
+    jiti.esmResolve("@storm-software/unbuild/build"),
   );
 
   // #endregion Prepare build context variables
@@ -72,7 +72,7 @@ export async function unbuildExecutorFn(
         sourceRoot:
           context.projectsConfigurations.projects![context.projectName]!
             .sourceRoot,
-        platform: options.platform as UnbuildOptions["platform"]
+        platform: options.platform as UnbuildOptions["platform"],
       },
       {
         stubOptions: {
@@ -82,15 +82,15 @@ export async function unbuildExecutorFn(
               : joinPaths(
                   config.workspaceRoot,
                   config.directories.cache || "node_modules/.cache/storm",
-                  "jiti"
-                )
-          }
+                  "jiti",
+                ),
+          },
         },
         rollup: {
           emitCJS: true,
           watch: false,
           dts: {
-            respectExternal: true
+            respectExternal: true,
           },
           esbuild: {
             target: options.target,
@@ -98,17 +98,17 @@ export async function unbuildExecutorFn(
             platform: options.platform,
             minify: options.minify ?? !options.debug,
             sourcemap: options.sourcemap ?? options.debug,
-            treeShaking: options.treeShaking
-          }
-        }
-      }
-    ) as UnbuildOptions
+            treeShaking: options.treeShaking,
+          },
+        },
+      },
+    ) as UnbuildOptions,
   );
 
   // #endregion Run the build process
 
   return {
-    success: true
+    success: true,
   };
 }
 
@@ -120,7 +120,7 @@ export default withRunExecutor<UnbuildExecutorSchema>(
     hooks: {
       applyDefaultOptions: async (
         options: UnbuildExecutorSchema,
-        config?: StormConfig | undefined
+        config?: StormConfig | undefined,
       ) => {
         options.debug ??= false;
         options.treeShaking ??= true;
@@ -129,7 +129,7 @@ export default withRunExecutor<UnbuildExecutorSchema>(
         options.tsconfig ??= "{projectRoot}/tsconfig.json";
 
         return options;
-      }
-    }
-  }
+      },
+    },
+  },
 );

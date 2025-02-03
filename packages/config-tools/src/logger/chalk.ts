@@ -23,21 +23,21 @@ export type GetChalkReturn = {
 const chalkDefault: GetChalkReturn = {
   hex: (_: string) => (message?: string) => message,
   bgHex: (_: string) => ({
-    whiteBright: (message?: string) => message
+    whiteBright: (message?: string) => message,
   }),
   whiteBright: (message?: string) => message,
   gray: (message?: string) => message,
   bold: {
     hex: (_: string) => (message?: string) => message,
     bgHex: (_: string) => ({
-      whiteBright: (message?: string) => message
+      whiteBright: (message?: string) => message,
     }),
-    whiteBright: (message?: string) => message
+    whiteBright: (message?: string) => message,
   },
   dim: {
     hex: (_: string) => (message?: string) => message,
-    gray: (message?: string) => message
-  }
+    gray: (message?: string) => message,
+  },
 };
 
 /**

@@ -9,7 +9,7 @@ import { install, writePackage } from "@manypkg/cli/src/utils";
 import {
   getPackages,
   type Package,
-  type Packages
+  type Packages,
 } from "@manypkg/get-packages";
 import pLimit from "p-limit";
 import spawn from "spawndamnit";
@@ -24,14 +24,14 @@ type PackagesWithConfig = Packages & {
 };
 
 const defaultOptions = {
-  defaultBranch: "main"
+  defaultBranch: "main",
 };
 
 const runChecks = (
   allWorkspaces: Map<string, Package>,
   rootWorkspace: RootPackage | undefined,
   shouldFix: boolean,
-  options: Options
+  options: Options,
 ) => {
   let hasErrored = false;
   let requiresInstall = false;
@@ -47,12 +47,12 @@ const runChecks = (
           workspace,
           allWorkspaces,
           rootWorkspace,
-          options
+          options,
         );
         if (shouldFix && check.fix !== undefined) {
           for (const error of errors) {
             const output = check.fix(error as any, options) || {
-              requiresInstall: false
+              requiresInstall: false,
             };
             if (output.requiresInstall) {
               requiresInstall = true;
@@ -71,7 +71,7 @@ const runChecks = (
       if (shouldFix && check.fix !== undefined) {
         for (const error of errors) {
           const output = check.fix(error as any, options) || {
-            requiresInstall: false
+            requiresInstall: false,
           };
           if (output.requiresInstall) {
             requiresInstall = true;
@@ -94,15 +94,15 @@ async function execCmd(args: string[]) {
   const { packages } = await getPackages(process.cwd());
   let highestExitCode = 0;
   await Promise.all(
-    packages.map(pkg => {
+    packages.map((pkg) => {
       return execLimit(async () => {
         const { code } = await spawn(args[0], args.slice(1), {
           cwd: pkg.dir,
-          stdio: "inherit"
+          stdio: "inherit",
         });
         highestExitCode = Math.max(code, highestExitCode);
       });
-    })
+    }),
   );
   throw new ExitError(highestExitCode);
 }
@@ -113,7 +113,7 @@ export const MANY_PKG_TYPE_OPTIONS = [
   "exec",
   "run",
   "upgrade",
-  "npm-tag"
+  "npm-tag",
 ];
 
 export async function runManypkg(manypkgType = "fix", manypkgArgs: string[]) {
@@ -132,7 +132,7 @@ export async function runManypkg(manypkgType = "fix", manypkgArgs: string[]) {
 
   if (manypkgType !== "check" && manypkgType !== "fix") {
     console.error(
-      `command ${manypkgType} not found, only check, exec, run, upgrade, npm-tag and fix exist`
+      `command ${manypkgType} not found, only check, exec, run, upgrade, npm-tag and fix exist`,
     );
     process.exit(1);
   }
@@ -140,16 +140,16 @@ export async function runManypkg(manypkgType = "fix", manypkgArgs: string[]) {
   const { packages, rootPackage, rootDir } = (await getPackages(
     process.env.STORM_WORKSPACE_ROOT
       ? process.env.STORM_WORKSPACE_ROOT
-      : process.cwd()
+      : process.cwd(),
   )) as PackagesWithConfig;
 
   const options: Options = {
     ...defaultOptions,
-    ...rootPackage?.packageJson.manypkg
+    ...rootPackage?.packageJson.manypkg,
   };
 
   const packagesByName = new Map<string, Package>(
-    packages.map(x => [x.packageJson.name, x])
+    packages.map((x) => [x.packageJson.name, x]),
   );
 
   console.log(`🔍 Checking ${packages.length} packages...`);
@@ -160,14 +160,14 @@ export async function runManypkg(manypkgType = "fix", manypkgArgs: string[]) {
     packagesByName,
     rootPackage,
     manypkgType === "fix",
-    options
+    options,
   );
 
   if (manypkgType === "fix") {
     await Promise.all(
       [...packagesByName].map(([_, workspace]) => {
         writePackage(workspace);
-      })
+      }),
     );
     if (requiresInstall) {
       await install("pnpm", rootDir);
@@ -180,7 +180,7 @@ export async function runManypkg(manypkgType = "fix", manypkgArgs: string[]) {
     }
   } else if (hasErrored) {
     console.info(
-      "⚠️ The above errors may be fixable if the --manypkg-fix flag is used"
+      "⚠️ The above errors may be fixable if the --manypkg-fix flag is used",
     );
   } else {
     console.log("🎉 Workspace packages are valid!");

@@ -10,7 +10,7 @@ export const LogLevel = {
   INFO: 40 as LogLevel,
   DEBUG: 60 as LogLevel,
   TRACE: 70 as LogLevel,
-  ALL: 100 as LogLevel
+  ALL: 100 as LogLevel,
 } as const;
 
 export type LogLevelLabel =
@@ -32,7 +32,7 @@ export const LogLevelLabel = {
   INFO: "info" as LogLevelLabel,
   DEBUG: "debug" as LogLevelLabel,
   TRACE: "trace" as LogLevelLabel,
-  ALL: "all" as LogLevelLabel
+  ALL: "all" as LogLevelLabel,
 } as const;
 
 export type Logger = {

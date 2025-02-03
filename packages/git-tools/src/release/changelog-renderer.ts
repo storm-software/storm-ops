@@ -1,6 +1,6 @@
 import ChangelogRenderer, {
   DefaultChangelogRenderOptions,
-  DependencyBump
+  DependencyBump,
 } from "nx/release/changelog-renderer/index";
 import type { ChangelogChange } from "nx/src/command-line/release/changelog";
 import type { NxReleaseConfig } from "nx/src/command-line/release/config/config";

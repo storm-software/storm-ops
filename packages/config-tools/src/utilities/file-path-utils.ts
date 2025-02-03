@@ -22,7 +22,7 @@ export function findFileName(filePath: string): string {
   return (
     filePath
       ?.split(
-        filePath?.includes(sep) ? sep : filePath?.includes("/") ? "/" : "\\"
+        filePath?.includes(sep) ? sep : filePath?.includes("/") ? "/" : "\\",
       )
       ?.pop() ?? ""
   );

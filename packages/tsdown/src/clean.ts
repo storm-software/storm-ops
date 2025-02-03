@@ -1,7 +1,7 @@
 import { StormConfig } from "@storm-software/config";
 import {
   getStopwatch,
-  writeDebug
+  writeDebug,
 } from "@storm-software/config-tools/logger/console";
 import { rm } from "node:fs/promises";
 
@@ -15,7 +15,7 @@ import { rm } from "node:fs/promises";
 export async function clean(
   name = "TSDown",
   directory: string,
-  config?: StormConfig
+  config?: StormConfig,
 ) {
   writeDebug(` 🧹  Cleaning ${name} output path: ${directory}`, config);
   const stopwatch = getStopwatch(`${name} output clean`);
@@ -35,7 +35,7 @@ export async function clean(
 export async function cleanDirectories(
   name = "TSDown",
   directory: string,
-  config?: StormConfig
+  config?: StormConfig,
 ) {
   await rm(directory, { recursive: true, force: true });
 }

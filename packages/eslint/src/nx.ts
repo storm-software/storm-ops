@@ -11,13 +11,13 @@ const workspaceRoot = findWorkspaceRoot();
 const compat = new FlatCompat({
   baseDirectory: workspaceRoot,
   recommendedConfig: typescriptConfigs,
-  ignores: DEFAULT_IGNORES
+  ignores: DEFAULT_IGNORES,
 });
 
 const config: Linter.FlatConfig[] = [
   ...base,
   { plugins: { "@nx": nxPlugin } },
-  ...compat.plugins("@nx").map(config => ({
+  ...compat.plugins("@nx").map((config) => ({
     ...config,
     files: [
       "**/*.ts",
@@ -26,7 +26,7 @@ const config: Linter.FlatConfig[] = [
       "**/*.tsx",
       "**/*.cjs",
       "**/*.js",
-      "**/*.jsx"
+      "**/*.jsx",
     ],
     ignores: DEFAULT_IGNORES,
     rules: {
@@ -35,37 +35,37 @@ const config: Linter.FlatConfig[] = [
         "error",
         {
           enforceBuildableLibDependency: true,
-          "checkDynamicDependenciesExceptions": [".*"],
+          checkDynamicDependenciesExceptions: [".*"],
           allow: [],
           depConstraints: [
             {
               sourceTag: "*",
-              onlyDependOnLibsWithTags: ["*"]
-            }
-          ]
-        }
+              onlyDependOnLibsWithTags: ["*"],
+            },
+          ],
+        },
       ],
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "no-restricted-imports": ["error", "create-nx-workspace"],
       "@typescript-eslint/no-restricted-imports": [
         "error",
         {
-          "patterns": [
+          patterns: [
             {
-              "group": ["nx/src/plugins/js*"],
-              "message":
-                "Imports from 'nx/src/plugins/js' are not allowed. Use '@nx/js' instead"
+              group: ["nx/src/plugins/js*"],
+              message:
+                "Imports from 'nx/src/plugins/js' are not allowed. Use '@nx/js' instead",
             },
             {
-              "group": ["**/native-bindings", "**/native-bindings.js", ""],
-              "message":
-                "Direct imports from native-bindings.js are not allowed. Import from index.js instead."
-            }
-          ]
-        }
-      ]
-    }
-  }))
+              group: ["**/native-bindings", "**/native-bindings.js", ""],
+              message:
+                "Direct imports from native-bindings.js are not allowed. Import from index.js instead.",
+            },
+          ],
+        },
+      ],
+    },
+  })),
 ];
 
 export default formatConfig("Nx", config);

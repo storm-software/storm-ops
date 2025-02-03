@@ -14,7 +14,7 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     shims: true,
-    tsconfig: "./tsconfig.json"
+    tsconfig: "./tsconfig.json",
   },
   {
     name: "unbuild-bin",
@@ -29,6 +29,6 @@ export default defineConfig([
     dts: false,
     sourcemap: false,
     shims: true,
-    tsconfig: "./tsconfig.json"
-  }
+    tsconfig: "./tsconfig.json",
+  },
 ]);

@@ -6,7 +6,7 @@ import {
   writeFatal,
   writeInfo,
   writeSuccess,
-  writeWarning
+  writeWarning,
 } from "@storm-software/config-tools";
 import defu from "defu";
 import { createAPI as createReleaseChangelogAPI } from "nx/src/command-line/release/changelog.js";
@@ -39,7 +39,7 @@ export type StormReleaseOptions = ReleaseOptions & {
 
 export const runRelease = async (
   config: StormConfig,
-  options: StormReleaseOptions
+  options: StormReleaseOptions,
 ) => {
   try {
     process.env.GIT_AUTHOR_NAME = process.env.GITHUB_ACTOR;
@@ -66,7 +66,7 @@ export const runRelease = async (
  - From: ${from}
  - To: ${to}
 `,
-      config
+      config,
     );
 
     //     const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
@@ -94,18 +94,18 @@ export const runRelease = async (
           ret[groupName] = defu(groupConfig, DEFAULT_RELEASE_GROUP_CONFIG);
           return ret;
         },
-        {}
+        {},
       );
     }
 
     const nxReleaseConfig = defu(
       nxJson.release,
-      DEFAULT_RELEASE_CONFIG
+      DEFAULT_RELEASE_CONFIG,
     ) as NxReleaseConfiguration;
 
     writeInfo(
       "Using the following `nx.json` release configuration values",
-      config
+      config,
     );
     writeInfo(nxReleaseConfig, config);
 
@@ -136,8 +136,8 @@ export const runRelease = async (
         deleteVersionPlans: false,
         stageChanges: true,
         gitCommit: false,
-        gitTag: false
-      }
+        gitTag: false,
+      },
     );
 
     await releaseChangelog({
@@ -152,7 +152,7 @@ export const runRelease = async (
       to,
       from,
       gitCommit: true,
-      gitCommitMessage: "release(monorepo): Publish workspace release updates"
+      gitCommitMessage: "release(monorepo): Publish workspace release updates",
     });
 
     writeDebug("Tagging commit with git", config);
@@ -160,36 +160,36 @@ export const runRelease = async (
     if (options.skipPublish) {
       writeWarning(
         "Skipping publishing packages since `skipPublish` was provided as `true` in the release options.",
-        config
+        config,
       );
     } else {
       const changedProjects = Object.keys(projectsVersionData).filter(
-        key => projectsVersionData[key]?.newVersion
+        (key) => projectsVersionData[key]?.newVersion,
       );
       if (changedProjects.length > 0) {
         writeInfo(
           `Publishing release for ${changedProjects.length} ${changedProjects.length === 1 ? "project" : "projects"}:
-${changedProjects.map(changedProject => `  - ${changedProject}`).join("\n")}
+${changedProjects.map((changedProject) => `  - ${changedProject}`).join("\n")}
 `,
-          config
+          config,
         );
 
         const result = await releasePublish({
           ...options,
           dryRun: !!options.dryRun,
-          verbose: isVerbose(config.logLevel)
+          verbose: isVerbose(config.logLevel),
         });
 
         const failedProjects = Object.keys(result).filter(
-          key => result[key]?.code && result[key]?.code > 0
+          (key) => result[key]?.code && result[key]?.code > 0,
         );
         if (failedProjects.length > 0) {
           throw new Error(
             `The Storm release process was not completed successfully! One or more errors occured while running the \`nx-release-publish\` executor tasks.
 
 Please review the workflow details for the following project(s):
-${failedProjects.map(failedProject => `  - ${failedProject} (Error Code: ${result[failedProject]?.code})`).join("\n")}
-`
+${failedProjects.map((failedProject) => `  - ${failedProject} (Error Code: ${result[failedProject]?.code})`).join("\n")}
+`,
           );
         }
       } else {
@@ -201,14 +201,14 @@ ${failedProjects.map(failedProject => `  - ${failedProject} (Error Code: ${resul
   } catch (error) {
     writeFatal(
       "An exception was thrown while running the Storm release workflow.",
-      config
+      config,
     );
     error.message &&
       writeError(
         `${error.name ? `${error.name}: ` : ""}${error.message}${
           error.stack ? `\n${error.stack}` : ""
         }`,
-        config
+        config,
       );
 
     throw error;

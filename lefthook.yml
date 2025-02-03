@@ -103,8 +103,8 @@ pre-push:
     prettier:
       files: "git diff --name-only HEAD @{push}"
       glob: "!**/generators/*/files/**/*"
-      run: "pnpm exec prettier {files} --write --ignore-unknown
-        --no-error-on-unmatched-pattern --cache && git update-index"
+      run: 'pnpm exec prettier {files} --write --ignore-unknown
+        --no-error-on-unmatched-pattern --cache --config="./packages/prettier/src/config.json" && git update-index'
       stage_fixed: true
     sherif:
       files: "git diff --name-only HEAD @{push}"
@@ -113,7 +113,7 @@ pre-push:
       stage_fixed: true
     format:
       files: "git diff --name-only HEAD @{push}"
-      glob: "**/*"
+      glob: "!**/generators/*/files/**/*"
       run: "pnpm nx format:write --files {files} --sort-root-tsconfig-paths
         --all && git update-index"
       stage_fixed: true

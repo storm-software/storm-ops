@@ -17,7 +17,7 @@ const workspaceRoot = findWorkspaceRoot();
 const compat = new FlatCompat({
   baseDirectory: workspaceRoot,
   recommendedConfig: reactTypescriptConfigs,
-  ignores: DEFAULT_IGNORES
+  ignores: DEFAULT_IGNORES,
 });
 
 const config: Linter.FlatConfig[] = [
@@ -31,20 +31,20 @@ const config: Linter.FlatConfig[] = [
     ignores: DEFAULT_IGNORES,
     plugins: {
       "jsx-a11y": jsxA11yPlugin,
-      "react": reactPlugin,
-      "react-hooks": reactHooksPlugin
+      react: reactPlugin,
+      "react-hooks": reactHooksPlugin,
     },
     settings: {
       react: {
-        version: "detect"
-      }
+        version: "detect",
+      },
     },
     rules: {
       ...jsxA11yRules,
-      ...reactRules
-    }
+      ...reactRules,
+    },
   },
-  ...compat.plugins("@nx").map(config => ({
+  ...compat.plugins("@nx").map((config) => ({
     ...config,
     files: [
       "**/*.ts",
@@ -53,10 +53,10 @@ const config: Linter.FlatConfig[] = [
       "**/*.tsx",
       "**/*.cjs",
       "**/*.js",
-      "**/*.jsx"
+      "**/*.jsx",
     ],
-    ignores: DEFAULT_IGNORES
-  }))
+    ignores: DEFAULT_IGNORES,
+  })),
 ];
 
 export default formatConfig("React", config);

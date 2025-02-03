@@ -3,7 +3,7 @@ import {
   writeDebug,
   writeInfo,
   writeSuccess,
-  writeWarning
+  writeWarning,
 } from "@storm-software/config-tools";
 import { StormConfig } from "@storm-software/config/types";
 import defu from "defu";
@@ -23,11 +23,11 @@ export const runCommitLint = async (
     config?: string;
     message?: string;
     file?: string;
-  }
+  },
 ) => {
   writeInfo(
     "📝 Validating git commit message aligns with the Storm Software specification",
-    config
+    config,
   );
 
   let commitMessage;
@@ -36,7 +36,7 @@ export const runCommitLint = async (
   } else {
     const commitFile = joinPaths(
       config.workspaceRoot,
-      params.file || params.message || COMMIT_EDITMSG_PATH
+      params.file || params.message || COMMIT_EDITMSG_PATH,
     );
     if (existsSync(commitFile)) {
       commitMessage = (await readFile(commitFile, "utf8"))?.trim();
@@ -50,15 +50,15 @@ export const runCommitLint = async (
       .toString()
       .trim()
       .split("\n");
-    const upstreamRemote = gitRemotes.find(remote =>
-      remote.includes(`${config.name}.git`)
+    const upstreamRemote = gitRemotes.find((remote) =>
+      remote.includes(`${config.name}.git`),
     );
     if (upstreamRemote) {
       const upstreamRemoteIdentifier = upstreamRemote.split("\t")[0]?.trim();
       if (!upstreamRemoteIdentifier) {
         writeWarning(
           `No upstream remote found for ${config.name}.git. Skipping comparison.`,
-          config
+          config,
         );
         return;
       }
@@ -75,7 +75,7 @@ export const runCommitLint = async (
     } else {
       writeWarning(
         `No upstream remote found for ${config.name}.git. Skipping comparison against upstream main.`,
-        config
+        config,
       );
       return;
     }
@@ -84,7 +84,7 @@ export const runCommitLint = async (
     if (!commitMessage) {
       writeWarning(
         "No commits found. Skipping commit message validation.",
-        config
+        config,
       );
       return;
     }
@@ -100,12 +100,12 @@ export const runCommitLint = async (
   const commitlintConfig = defu(
     params.config ?? {},
     { rules: { "scope-enum": getRuleFromScopeEnum(allowedScopes) } },
-    DEFAULT_COMMITLINT_CONFIG
+    DEFAULT_COMMITLINT_CONFIG,
   );
 
   const report = await lint(commitMessage, commitlintConfig.rules, {
     parserOpts: commitlintConfig.parserOpts,
-    helpUrl: commitlintConfig.helpUrl
+    helpUrl: commitlintConfig.helpUrl,
   });
 
   if (!matchCommit || report.errors.length || report.warnings.length) {
@@ -125,8 +125,8 @@ export const runCommitLint = async (
       "\n\nEXAMPLE: \n" +
       "feat(my-lib): add an option to generate lazy-loadable modules\n" +
       "fix(monorepo)!: breaking change should have exclamation mark\n";
-    errorMessage += `\n\nCommitLint Errors: ${report.errors.length ? report.errors.map(error => ` - ${error.message}`).join("\n") : "None"}`;
-    errorMessage += `\nCommitLint Warnings: ${report.warnings.length ? report.warnings.map(warning => ` - ${warning.message}`).join("\n") : "None"}`;
+    errorMessage += `\n\nCommitLint Errors: ${report.errors.length ? report.errors.map((error) => ` - ${error.message}`).join("\n") : "None"}`;
+    errorMessage += `\nCommitLint Warnings: ${report.warnings.length ? report.warnings.map((warning) => ` - ${warning.message}`).join("\n") : "None"}`;
     errorMessage += "\n\nPlease fix the commit message and rerun storm-commit.";
     errorMessage += `\n\nMore details about the Storm Software commit message specification can be found at: ${commitlintConfig.helpUrl}`;
 

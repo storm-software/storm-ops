@@ -8,7 +8,7 @@ import type { ESBuildExecutorSchema } from "./schema.d";
 export async function esbuildExecutorFn(
   options: ESBuildExecutorSchema,
   context: ExecutorContext,
-  config?: StormConfig
+  config?: StormConfig,
 ) {
   writeInfo("📦  Running Storm ESBuild executor on the workspace", config);
 
@@ -21,7 +21,7 @@ export async function esbuildExecutorFn(
     !context.projectsConfigurations.projects[context.projectName]?.root
   ) {
     throw new Error(
-      "The Build process failed because the context is not valid. Please run this command from a workspace."
+      "The Build process failed because the context is not valid. Please run this command from a workspace.",
     );
   }
 
@@ -36,13 +36,13 @@ export async function esbuildExecutorFn(
       context.projectsConfigurations.projects?.[context.projectName]
         ?.sourceRoot,
     format: options.format as ESBuildOptions["format"],
-    platform: options.format as ESBuildOptions["platform"]
+    platform: options.format as ESBuildOptions["platform"],
   });
 
   // #endregion Run the build process
 
   return {
-    success: true
+    success: true,
   };
 }
 
@@ -54,14 +54,14 @@ export default withRunExecutor<ESBuildExecutorSchema>(
     hooks: {
       applyDefaultOptions: async (
         options: ESBuildExecutorSchema,
-        config?: StormConfig | undefined
+        config?: StormConfig | undefined,
       ) => {
         options.entry ??= ["src/index.ts"];
         options.outputPath ??= "dist/{projectRoot}";
         options.tsconfig ??= "{projectRoot}/tsconfig.json";
 
         return options;
-      }
-    }
-  }
+      },
+    },
+  },
 );

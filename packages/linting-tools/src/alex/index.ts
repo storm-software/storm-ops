@@ -19,16 +19,16 @@ const transform = (options: any) => {
         filter,
         {
           allow: options.allow,
-          deny: options.deny
-        }
-      ]
-    ] as PluggableList
+          deny: options.deny,
+        },
+      ],
+    ] as PluggableList,
   };
 };
 
 export const runAlex = async (
   rcName = "@storm-software/linting-tools/alex/config.json",
-  ignoreName = "@storm-software/linting-tools/alex/.alexignore"
+  ignoreName = "@storm-software/linting-tools/alex/.alexignore",
 ) => {
   return new Promise(
     (resolve: (value: unknown) => void, reject: (reason?: any) => void) =>
@@ -45,7 +45,7 @@ export const runAlex = async (
             "md",
             "mdx",
             "json",
-            "jsonc"
+            "jsonc",
           ],
           configTransform: transform,
           out: false,
@@ -56,19 +56,19 @@ export const runAlex = async (
           color: true,
           reporter: vfileReporter,
           reporterOptions: {
-            verbose: false
+            verbose: false,
           },
           quiet: true,
           ignoreName,
           ignorePatterns: [
             "**/CODE_OF_CONDUCT.md",
             "**/dist/**",
-            "**/node_modules/**"
+            "**/node_modules/**",
           ],
           silent: false,
           silentlyIgnore: true,
           frail: true,
-          defaultConfig: transform({})
+          defaultConfig: transform({}),
         },
         (error, code) => {
           if (error) {
@@ -76,7 +76,7 @@ export const runAlex = async (
             return reject(code);
           }
           return resolve(code);
-        }
-      )
+        },
+      ),
   );
 };

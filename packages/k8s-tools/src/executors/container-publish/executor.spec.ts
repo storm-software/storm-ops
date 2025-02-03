@@ -7,7 +7,7 @@ const options: ContainerPublishExecutorSchema = {};
 const context: ExecutorContext = {
   root: "",
   cwd: process.cwd(),
-  isVerbose: false
+  isVerbose: false,
 };
 
 describe("ContainerPublish Executor", () => {

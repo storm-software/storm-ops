@@ -18,7 +18,7 @@
 import {
   createProjectGraphAsync,
   readProjectsConfigurationFromProjectGraph,
-  writeJsonFile
+  writeJsonFile,
 } from "@nx/devkit";
 import {
   addPackageDependencies,
@@ -28,7 +28,7 @@ import {
   DEFAULT_COMPILED_BANNER,
   DEFAULT_TARGET,
   getEntryPoints,
-  getEnv
+  getEnv,
 } from "@storm-software/build-tools";
 import { getConfig } from "@storm-software/config-tools/get-config";
 import {
@@ -38,7 +38,7 @@ import {
   writeFatal,
   writeSuccess,
   writeTrace,
-  writeWarning
+  writeWarning,
 } from "@storm-software/config-tools/logger/console";
 import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
@@ -57,14 +57,14 @@ import { cleanDirectories } from "./clean";
 import {
   DEFAULT_BUILD_OPTIONS,
   getDefaultBuildPlugins,
-  getOutputExtensionMap
+  getOutputExtensionMap,
 } from "./config";
 import { depsCheckPlugin } from "./plugins/deps-check";
 import { shebangRenderer } from "./renderers/shebang";
 import {
   ESBuildContext,
   ESBuildResolvedOptions,
-  type ESBuildOptions
+  type ESBuildOptions,
 } from "./types";
 import { handle, pipe, transduce } from "./utilities/helpers";
 
@@ -75,7 +75,7 @@ import { handle, pipe, transduce } from "./utilities/helpers";
  * @returns the build options with defaults applied
  */
 const resolveOptions = async (
-  userOptions: ESBuildOptions
+  userOptions: ESBuildOptions,
 ): Promise<ESBuildResolvedOptions> => {
   const projectRoot = userOptions.projectRoot;
 
@@ -90,13 +90,13 @@ const resolveOptions = async (
   const stopwatch = getStopwatch("Build options resolution");
 
   const projectGraph = await createProjectGraphAsync({
-    exitOnError: true
+    exitOnError: true,
   });
 
   const projectJsonPath = joinPaths(
     workspaceRoot.dir,
     projectRoot,
-    "project.json"
+    "project.json",
   );
   if (!existsSync(projectJsonPath)) {
     throw new Error("Cannot find project.json configuration");
@@ -110,7 +110,7 @@ const resolveOptions = async (
     readProjectsConfigurationFromProjectGraph(projectGraph);
   if (!projectConfigurations?.projects?.[projectName]) {
     throw new Error(
-      "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
+      "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project.",
     );
   }
 
@@ -121,7 +121,7 @@ const resolveOptions = async (
   const packageJsonPath = joinPaths(
     workspaceRoot.dir,
     options.projectRoot,
-    "package.json"
+    "package.json",
   );
   if (!existsSync(packageJsonPath)) {
     throw new Error("Cannot find package.json configuration");
@@ -146,7 +146,7 @@ const resolveOptions = async (
       projectRoot,
       userOptions.tsconfig
         ? userOptions.tsconfig.replace(projectRoot, "")
-        : "tsconfig.json"
+        : "tsconfig.json",
     ),
     format: options.format || "cjs",
     entryPoints: await getEntryPoints(
@@ -154,7 +154,7 @@ const resolveOptions = async (
       projectRoot,
       projectJson.sourceRoot,
       userOptions.entry || ["./src/index.ts"],
-      userOptions.emitOnAll
+      userOptions.emitOnAll,
     ),
     outdir: userOptions.outputPath || joinPaths("dist", projectRoot),
     plugins: [] as ESBuildResolvedOptions["plugins"],
@@ -182,7 +182,7 @@ const resolveOptions = async (
     footer: userOptions.footer,
     banner: {
       js: options.banner || DEFAULT_COMPILED_BANNER,
-      css: options.banner || DEFAULT_COMPILED_BANNER
+      css: options.banner || DEFAULT_COMPILED_BANNER,
     },
     splitting:
       options.format === "iife"
@@ -196,7 +196,7 @@ const resolveOptions = async (
       STORM_FORMAT: JSON.stringify(options.format || "cjs"),
       ...(options.format === "cjs" && options.injectShims
         ? {
-            "import.meta.url": "importMetaUrl"
+            "import.meta.url": "importMetaUrl",
           }
         : {}),
       ...options.define,
@@ -205,9 +205,9 @@ const resolveOptions = async (
         return {
           ...res,
           [`process.env.${key}`]: value,
-          [`import.meta.env.${key}`]: value
+          [`import.meta.env.${key}`]: value,
         };
-      }, {})
+      }, {}),
     },
     inject: [
       options.format === "cjs" && options.injectShims
@@ -218,8 +218,8 @@ const resolveOptions = async (
       options.platform === "node"
         ? joinPaths(__dirname, "../assets/esm_shims.js")
         : "",
-      ...(options.inject ?? [])
-    ].filter(Boolean)
+      ...(options.inject ?? []),
+    ].filter(Boolean),
   } satisfies ESBuildResolvedOptions;
   result.plugins =
     userOptions.plugins ?? getDefaultBuildPlugins(userOptions, result);
@@ -239,7 +239,7 @@ async function generatePackageJson(context: ESBuildContext) {
 
     const packageJsonPath = joinPaths(
       context.options.projectRoot,
-      "project.json"
+      "project.json",
     );
     if (!existsSync(packageJsonPath)) {
       throw new Error("Cannot find package.json configuration");
@@ -249,9 +249,9 @@ async function generatePackageJson(context: ESBuildContext) {
       joinPaths(
         context.options.config.workspaceRoot,
         context.options.projectRoot,
-        "package.json"
+        "package.json",
       ),
-      "utf8"
+      "utf8",
     );
     let packageJson = JSON.parse(packageJsonFile);
     if (!packageJson) {
@@ -262,7 +262,7 @@ async function generatePackageJson(context: ESBuildContext) {
       context.options.config.workspaceRoot,
       context.options.projectRoot,
       context.options.projectName,
-      packageJson
+      packageJson,
     );
 
     packageJson = await addWorkspacePackageJsonFields(
@@ -271,7 +271,7 @@ async function generatePackageJson(context: ESBuildContext) {
       context.options.sourceRoot,
       context.options.projectName,
       false,
-      packageJson
+      packageJson,
     );
 
     packageJson.exports ??= {};
@@ -279,7 +279,7 @@ async function generatePackageJson(context: ESBuildContext) {
     packageJson.exports["."] ??= addPackageJsonExport(
       "index",
       packageJson.type,
-      context.options.sourceRoot
+      context.options.sourceRoot,
     );
 
     let entryPoints = [{ in: "./src/index.ts", out: "./src/index.ts" }];
@@ -290,10 +290,10 @@ async function generatePackageJson(context: ESBuildContext) {
             | string
             | { in: string; out: string }
           )[]
-        ).map(entryPoint =>
+        ).map((entryPoint) =>
           typeof entryPoint === "string"
             ? { in: entryPoint, out: entryPoint }
-            : entryPoint
+            : entryPoint,
         );
       }
 
@@ -305,7 +305,7 @@ async function generatePackageJson(context: ESBuildContext) {
         packageJson.exports[`./${entry}`] ??= addPackageJsonExport(
           entry,
           packageJson.type,
-          context.options.sourceRoot
+          context.options.sourceRoot,
         );
       }
     }
@@ -324,12 +324,12 @@ async function generatePackageJson(context: ESBuildContext) {
 
         return ret;
       },
-      packageJson.exports
+      packageJson.exports,
     );
 
     await writeJsonFile(
       joinPaths(context.options.outdir, "package.json"),
-      packageJson
+      packageJson,
     );
 
     stopwatch();
@@ -349,11 +349,11 @@ async function generatePackageJson(context: ESBuildContext) {
 async function createOptions(options: ESBuildOptions[]) {
   return flatten(
     await Promise.all(
-      map(options, opt => [
+      map(options, (opt) => [
         // we defer it so that we don't trigger glob immediately
-        () => resolveOptions(opt)
-      ])
-    )
+        () => resolveOptions(opt),
+      ]),
+    ),
   );
 }
 
@@ -362,13 +362,13 @@ async function createOptions(options: ESBuildOptions[]) {
  * the previous build has finished. We get the build options from the deferred.
  */
 async function generateContext(
-  getOptions: () => Promise<ESBuildResolvedOptions>
+  getOptions: () => Promise<ESBuildResolvedOptions>,
 ): Promise<ESBuildContext> {
   const options = await getOptions();
 
   const rendererEngine = new RendererEngine([
     shebangRenderer,
-    ...(options.renderers || [])
+    ...(options.renderers || []),
     // treeShakingPlugin({
     //   treeshake: options.treeshake,
     //   name: options.globalName,
@@ -419,7 +419,7 @@ async function generateContext(
 async function executeEsBuild(context: ESBuildContext) {
   writeDebug(
     `  🚀  Running ${context.options.name} build`,
-    context.options.config
+    context.options.config,
   );
   const stopwatch = getStopwatch(`${context.options.name} build`);
 
@@ -448,7 +448,7 @@ async function copyBuildAssets(context: ESBuildContext) {
   if (context.result?.errors.length === 0) {
     writeDebug(
       `  📋  Copying asset files to output directory: ${context.options.outdir}`,
-      context.options.config
+      context.options.config,
     );
     const stopwatch = getStopwatch(`${context.options.name} asset copy`);
 
@@ -459,7 +459,7 @@ async function copyBuildAssets(context: ESBuildContext) {
       context.options.projectRoot,
       context.options.sourceRoot,
       true,
-      false
+      false,
     );
 
     stopwatch();
@@ -476,15 +476,15 @@ async function reportResults(context: ESBuildContext) {
     if (context.result.warnings.length > 0) {
       writeWarning(
         `  🚧  The following warnings occurred during the build: ${context.result.warnings
-          .map(warning => warning.text)
+          .map((warning) => warning.text)
           .join("\n")}`,
-        context.options.config
+        context.options.config,
       );
     }
 
     writeSuccess(
       `  📦  The ${context.options.name} build completed successfully`,
-      context.options.config
+      context.options.config,
     );
   }
 }
@@ -509,13 +509,13 @@ async function dependencyCheck(options: ESBuildOptions) {
     entryPoints: globbySync("**/*.{j,t}s", {
       // We don't check dependencies in ecosystem tests because tests are isolated from the build.
       ignore: ["./src/__tests__/**/*", "./tests/e2e/**/*", "./dist/**/*"],
-      gitignore: true
+      gitignore: true,
     }),
     logLevel: "silent", // there will be errors
     bundle: true, // we bundle to get everything
     write: false, // no need to write for analysis
     outdir: "out",
-    plugins: [depsCheckPlugin(options.bundle)]
+    plugins: [depsCheckPlugin(options.bundle)],
   });
 
   // we absolutely don't care if it has any errors
@@ -534,14 +534,14 @@ export async function cleanOutputPath(context: ESBuildContext) {
   if (context.options.clean !== false && context.options.outdir) {
     writeDebug(
       ` 🧹  Cleaning ${context.options.name} output path: ${context.options.outdir}`,
-      context.options.config
+      context.options.config,
     );
     const stopwatch = getStopwatch(`${context.options.name} output clean`);
 
     await cleanDirectories(
       context.options.name,
       context.options.outdir,
-      context.options.config
+      context.options.config,
     );
 
     stopwatch();
@@ -576,14 +576,14 @@ export async function build(options: ESBuildOptions | ESBuildOptions[]) {
         generatePackageJson,
         executeEsBuild,
         copyBuildAssets,
-        reportResults
-      )
+        reportResults,
+      ),
     );
 
     writeSuccess("  🏁  ESBuild pipeline build completed successfully");
   } catch (error) {
     writeFatal(
-      "  ❌  Fatal errors occurred during the build that could not be recovered from. The build process has been terminated."
+      "  ❌  Fatal errors occurred during the build that could not be recovered from. The build process has been terminated.",
     );
 
     throw error;
@@ -608,7 +608,7 @@ const watch = (context: BuildContext, options: ESBuildResolvedOptions) => {
   const config = {
     ignoreInitial: true,
     useFsEvents: true,
-    ignored: ["./src/__tests__/**/*", "./package.json"]
+    ignored: ["./src/__tests__/**/*", "./package.json"],
   };
 
   // prepare the incremental builds watcher

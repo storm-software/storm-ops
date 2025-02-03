@@ -24,23 +24,23 @@ import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
  */
 export const onErrorPlugin = (
   options: ESBuildOptions,
-  resolvedOptions: ESBuildResolvedOptions
+  resolvedOptions: ESBuildResolvedOptions,
 ): esbuild.Plugin => ({
   name: "storm:on-error",
   setup(build) {
-    build.onEnd(result => {
+    build.onEnd((result) => {
       // if there were errors found on the build
       if (result.errors.length > 0 && process.env.WATCH !== "true") {
         writeError(
           `The following errors occurred during the build:
-${result.errors.map(error => error.text).join("\n")}
+${result.errors.map((error) => error.text).join("\n")}
 
 `,
-          resolvedOptions.config
+          resolvedOptions.config,
         );
 
         throw new Error("Storm esbuild process failed with errors.");
       }
     });
-  }
+  },
 });

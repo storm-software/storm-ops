@@ -13,7 +13,7 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    shims: true
+    shims: true,
   },
   {
     name: "untyped-bin",
@@ -28,6 +28,6 @@ export default defineConfig([
     dts: false,
     sourcemap: false,
     shims: true,
-    tsconfig: "./tsconfig.json"
-  }
+    tsconfig: "./tsconfig.json",
+  },
 ]);

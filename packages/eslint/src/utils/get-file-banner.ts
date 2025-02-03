@@ -24,8 +24,8 @@ export const getFileBanner = (name = "") => {
 
     titleName = (titleName.charAt(0).toUpperCase() + titleName.slice(1))
       .split("-")
-      .filter(word => word && word.length > 0)
-      .map(word => {
+      .filter((word) => word && word.length > 0)
+      .map((word) => {
         if (ACRONYMS_LIST.includes(word.toUpperCase())) {
           return word.toUpperCase();
         }
@@ -46,7 +46,7 @@ ${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
    (process.env.STORM_LICENSE ?? "Apache-2.0")
      ?.toLowerCase()
      ?.includes("license")
-     ? process.env.STORM_LICENSE ?? "Apache-2.0"
+     ? (process.env.STORM_LICENSE ?? "Apache-2.0")
      : `${process.env.STORM_LICENSE ?? "Apache-2.0"} License`
  }, and is
  free for commercial and private use. For more information, please visit

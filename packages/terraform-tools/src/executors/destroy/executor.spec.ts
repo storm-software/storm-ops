@@ -7,7 +7,7 @@ const options: DestroyExecutorSchema = {};
 const context: ExecutorContext = {
   root: "",
   cwd: process.cwd(),
-  isVerbose: false
+  isVerbose: false,
 };
 
 describe("Destroy Executor", () => {

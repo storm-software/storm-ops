@@ -5,7 +5,7 @@ import { findWorkspaceRoot } from "../utilities/find-workspace-root";
 import { getLogFn, getStopwatch } from "./console";
 
 export async function createLogger(
-  config?: Partial<StormConfig>
+  config?: Partial<StormConfig>,
 ): Promise<Logger> {
   const workspaceRoot = findWorkspaceRoot();
   if (!workspaceRoot) {
@@ -35,6 +35,6 @@ export async function createLogger(
     success: writeSuccess,
     debug: writeDebug,
     trace: writeTrace,
-    getStopwatch
+    getStopwatch,
   };
 }

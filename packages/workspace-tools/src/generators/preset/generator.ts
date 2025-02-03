@@ -5,7 +5,7 @@ import {
   generateFiles,
   joinPathFragments,
   updateJson,
-  type Tree
+  type Tree,
 } from "@nx/devkit";
 import * as path from "node:path";
 import { withRunGenerator } from "../../base/base-generator";
@@ -14,7 +14,7 @@ import type { PresetGeneratorSchema } from "./schema.d";
 
 export async function presetGeneratorFn(
   tree: Tree,
-  options: PresetGeneratorSchema
+  options: PresetGeneratorSchema,
 ) {
   const projectRoot = ".";
 
@@ -32,13 +32,13 @@ export async function presetGeneratorFn(
         options: {
           port: 4873,
           config: ".verdaccio/config.yml",
-          storage: "tmp/local-registry/storage"
-        }
-      }
-    }
+          storage: "tmp/local-registry/storage",
+        },
+      },
+    },
   });
 
-  updateJson(tree, "package.json", json => {
+  updateJson(tree, "package.json", (json) => {
     json.scripts = json.scripts || {};
 
     json.version = "0.0.0";
@@ -57,36 +57,36 @@ export async function presetGeneratorFn(
       "nx",
       "graphql",
       "sullivanpj",
-      "monorepo"
+      "monorepo",
     ];
 
     json.homepage ??= "https://stormsoftware.com";
     json.bugs ??= {
       url: `https://github.com/${options.organization}/${options.name}/issues`,
-      email: "support@stormsoftware.com"
+      email: "support@stormsoftware.com",
     };
 
     json.license = "Apache-2.0";
     json.author ??= {
       name: "Storm Software",
       email: "contact@stormsoftware.com",
-      url: "https://stormsoftware.com"
+      url: "https://stormsoftware.com",
     };
     json.maintainers ??= [
       {
-        "name": "Storm Software",
-        "email": "contact@stormsoftware.com",
-        "url": "https://stormsoftware.com"
+        name: "Storm Software",
+        email: "contact@stormsoftware.com",
+        url: "https://stormsoftware.com",
       },
       {
-        "name": "Pat Sullivan",
-        "email": "admin@stormsoftware.com",
-        "url": "https://patsullivan.org"
-      }
+        name: "Pat Sullivan",
+        email: "admin@stormsoftware.com",
+        url: "https://patsullivan.org",
+      },
     ];
     json.funding ??= {
       type: "github",
-      url: "https://github.com/sponsors/storm-software"
+      url: "https://github.com/sponsors/storm-software",
     };
 
     json.namespace ??= `@${options.namespace}`;
@@ -94,19 +94,19 @@ export async function presetGeneratorFn(
     options.repositoryUrl ??= `https://github.com/${options.organization}/${options.name}`;
     json.repository ??= {
       type: "github",
-      url: `${options.repositoryUrl}.git`
+      url: `${options.repositoryUrl}.git`,
     };
 
     json.packageManager ??= "pnpm@9.15.2";
     json.engines ??= {
-      "node": ">=20.11.0",
-      "pnpm": ">=9.15.2"
+      node: ">=20.11.0",
+      pnpm: ">=9.15.2",
     };
 
     json.prettier = "@storm-software/prettier/config.json";
 
     json.nx ??= {
-      "includedScripts": [
+      includedScripts: [
         "lint-sherif",
         "lint-knip",
         "lint-ls",
@@ -117,8 +117,8 @@ export async function presetGeneratorFn(
         "format-prettier",
         "format-toml",
         "commit",
-        "release"
-      ]
+        "release",
+      ],
     };
 
     // generate a start script into the package.json
@@ -205,7 +205,7 @@ export async function presetGeneratorFn(
     json.packageManager ??= `pnpm@${pnpmVersion}`;
     json.engines = {
       node: `>=${nodeVersion}`,
-      pnpm: `>=${pnpmVersion}`
+      pnpm: `>=${pnpmVersion}`,
     };
 
     // if (options.includeApps) {
@@ -232,7 +232,7 @@ export async function presetGeneratorFn(
   generateFiles(tree, path.join(__dirname, "files"), projectRoot, {
     ...options,
     pnpmVersion,
-    nodeVersion
+    nodeVersion,
   });
   await formatFiles(tree);
 
@@ -253,22 +253,22 @@ export async function presetGeneratorFn(
     "@storm-software/prettier": "latest",
     "@taplo/cli": "0.7.0",
     "@types/node": "^20.14.10",
-    "copyfiles": "2.4.1",
-    "eslint": "9.5.0",
-    "jest": "29.7.0",
+    copyfiles: "2.4.1",
+    eslint: "9.5.0",
+    jest: "29.7.0",
     "jest-environment-node": "29.7.0",
-    "knip": "5.25.2",
-    "lefthook": "1.6.18",
-    "nx": "^20.2.2",
-    "prettier": "3.3.2",
+    knip: "5.25.2",
+    lefthook: "1.6.18",
+    nx: "^20.2.2",
+    prettier: "3.3.2",
     "prettier-plugin-prisma": "5.0.0",
-    "rimraf": "5.0.7",
-    "sherif": "0.10.0",
+    rimraf: "5.0.7",
+    sherif: "0.10.0",
     "ts-jest": "29.1.5",
     "ts-node": "10.9.2",
-    "tslib": "2.6.3",
-    "typescript": "5.5.3",
-    "verdaccio": "5.31.1"
+    tslib: "2.6.3",
+    typescript: "5.5.3",
+    verdaccio: "5.31.1",
   };
 
   if (options.includeApps) {
@@ -282,21 +282,21 @@ export async function presetGeneratorFn(
       "@nx/next": "latest",
       "@nx/node": "latest",
       "@nx/storybook": "latest",
-      "jest-environment-jsdom": "29.7.0"
+      "jest-environment-jsdom": "29.7.0",
     };
   }
 
   if (options.includeRust) {
     dependencies = {
       ...dependencies,
-      "@monodon/rust": "1.4.0"
+      "@monodon/rust": "1.4.0",
     };
   }
 
   if (options.nxCloud) {
     dependencies = {
       ...dependencies,
-      "nx-cloud": "latest"
+      "nx-cloud": "latest",
     };
   }
 
@@ -305,8 +305,8 @@ export async function presetGeneratorFn(
       tree,
       dependencies,
       {},
-      joinPathFragments(projectRoot, "package.json")
-    )
+      joinPathFragments(projectRoot, "package.json"),
+    ),
   );
 
   return null;
@@ -314,5 +314,5 @@ export async function presetGeneratorFn(
 
 export default withRunGenerator<PresetGeneratorSchema>(
   "Storm Workspace Preset Generator",
-  presetGeneratorFn
+  presetGeneratorFn,
 );

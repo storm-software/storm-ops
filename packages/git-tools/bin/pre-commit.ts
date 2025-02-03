@@ -7,11 +7,11 @@ import {
   handleProcess,
   writeError,
   writeFatal,
-  writeInfo
+  writeInfo,
 } from "@storm-software/config-tools";
 import {
   checkPackageVersion,
-  isPackageVersionChanged
+  isPackageVersionChanged,
 } from "../src/utilities/check-package-version";
 
 void (async () => {
@@ -25,7 +25,7 @@ void (async () => {
     if (isPackageVersionChanged(process.argv?.slice(1))) {
       writeError(
         "Please regenerate the package lock file before committing...",
-        config
+        config,
       );
       exitWithError(config);
     }
@@ -34,7 +34,7 @@ void (async () => {
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running the program: ${error.message}`,
-      config
+      config,
     );
     exitWithError(config);
     process.exit(1);

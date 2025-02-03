@@ -1,6 +1,6 @@
 import {
   ProjectTagConstants,
-  addProjectTag
+  addProjectTag,
 } from "@storm-software/workspace-tools/utils/project-tags";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -9,7 +9,7 @@ import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-
 import { readJsonFile } from "nx/src/utils/fileutils";
 import {
   type PackageJson,
-  readTargetsFromPackageJson
+  readTargetsFromPackageJson,
 } from "nx/src/utils/package-json";
 
 export const name = "storm-software/cloudflare";
@@ -24,13 +24,13 @@ export const createNodes = [
 
     const project = createProjectFromPackageJsonNextToProjectJson(
       file,
-      packageJson
+      packageJson,
     );
     const nxJson = readNxJson(ctx.workspaceRoot);
 
     const targets: ProjectConfiguration["targets"] = readTargetsFromPackageJson(
       packageJson,
-      nxJson
+      nxJson,
     );
 
     // Apply nx-release-publish target for non-private projects
@@ -41,8 +41,8 @@ export const createNodes = [
       dependsOn: ["build"],
       executor: "@storm-software/cloudflare-tools:serve",
       options: {
-        port: 4500
-      }
+        port: 4500,
+      },
     };
 
     targets["clean-package"] = {
@@ -53,8 +53,8 @@ export const createNodes = [
       executor: "@storm-software/workspace-tools:clean-package",
       options: {
         cleanReadMe: true,
-        cleanComments: true
-      }
+        cleanComments: true,
+      },
     };
 
     targets["nx-release-publish"] = {
@@ -62,7 +62,7 @@ export const createNodes = [
       inputs: ["typescript", "^production"],
       dependsOn: ["clean-package", "^nx-release-publish"],
       executor: "@storm-software/cloudflare-tools:cloudflare-publish",
-      options: {}
+      options: {},
     };
 
     addProjectTag(
@@ -71,16 +71,16 @@ export const createNodes = [
       project.projectType === "application"
         ? ProjectTagConstants.ProjectType.APPLICATION
         : ProjectTagConstants.ProjectType.LIBRARY,
-      { overwrite: true }
+      { overwrite: true },
     );
     addProjectTag(
       project,
       ProjectTagConstants.DistStyle.TAG_ID,
       ProjectTagConstants.DistStyle.CLEAN,
-      { overwrite: true }
+      { overwrite: true },
     );
     addProjectTag(project, ProjectTagConstants.Provider.TAG_ID, "cloudflare", {
-      overwrite: true
+      overwrite: true,
     });
 
     return project?.name
@@ -93,19 +93,19 @@ export const createNodes = [
                 ...project?.release,
                 version: {
                   ...project?.release?.version,
-                  generator: "@storm-software/workspace-tools:release-version"
-                }
-              }
-            }
-          }
+                  generator: "@storm-software/workspace-tools:release-version",
+                },
+              },
+            },
+          },
         }
       : {};
-  }
+  },
 ];
 
 function createProjectFromPackageJsonNextToProjectJson(
   projectJsonPath: string,
-  packageJson: PackageJson
+  packageJson: PackageJson,
 ): ProjectConfiguration {
   const { nx, name } = packageJson;
   const root = dirname(projectJsonPath);
@@ -114,13 +114,13 @@ function createProjectFromPackageJsonNextToProjectJson(
     ...nx,
     name,
     root,
-    targets: {}
+    targets: {},
   } as ProjectConfiguration;
 }
 
 function createPackageJson(
   projectJsonPath: string,
-  workspaceRoot: string
+  workspaceRoot: string,
 ): PackageJson | null {
   try {
     const root = dirname(projectJsonPath);

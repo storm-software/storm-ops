@@ -1,6 +1,6 @@
 import {
   DEFAULT_COMPILED_BANNER,
-  getOutExtension
+  getOutExtension,
 } from "@storm-software/build-tools/utilities/get-out-extension";
 import { esmSplitCodeToCjsPlugin } from "./plugins/esm-split-code-to-cjs";
 import { fixImportsPlugin } from "./plugins/fix-imports";
@@ -13,7 +13,7 @@ import { ESBuildOptions, ESBuildResolvedOptions } from "./types";
 
 export const getOutputExtensionMap = (
   options: ESBuildOptions,
-  pkgType: string | undefined
+  pkgType: string | undefined,
 ) => {
   return options.outExtension
     ? options.outExtension(options.format, pkgType)
@@ -22,7 +22,7 @@ export const getOutputExtensionMap = (
 
 export const getDefaultBuildPlugins = (
   options: ESBuildOptions,
-  resolvedOptions: ESBuildResolvedOptions
+  resolvedOptions: ESBuildResolvedOptions,
 ) => [
   nodeProtocolPlugin(options, resolvedOptions),
   resolvePathsPlugin(options, resolvedOptions),
@@ -30,7 +30,7 @@ export const getDefaultBuildPlugins = (
   nativeNodeModulesPlugin(options, resolvedOptions),
   esmSplitCodeToCjsPlugin(options, resolvedOptions),
   tscPlugin(options, resolvedOptions),
-  onErrorPlugin(options, resolvedOptions)
+  onErrorPlugin(options, resolvedOptions),
 ];
 
 export const DEFAULT_BUILD_OPTIONS: Required<
@@ -89,7 +89,7 @@ export const DEFAULT_BUILD_OPTIONS: Required<
     ".webm": "file",
     ".webp": "file",
     ".woff": "file",
-    ".woff2": "file"
+    ".woff2": "file",
   },
-  banner: DEFAULT_COMPILED_BANNER
+  banner: DEFAULT_COMPILED_BANNER,
 };

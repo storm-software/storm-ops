@@ -3,6 +3,6 @@ import transform from "typia/lib/transform";
 
 export const getTypiaTransform = (
   program: ts.Program,
-  diagnostics: ts.Diagnostic[]
+  diagnostics: ts.Diagnostic[],
 ) =>
-  transform(program, {}, { addDiagnostic: input => diagnostics.push(input) });
+  transform(program, {}, { addDiagnostic: (input) => diagnostics.push(input) });

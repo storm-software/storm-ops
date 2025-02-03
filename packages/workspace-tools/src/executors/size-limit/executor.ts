@@ -34,7 +34,7 @@ import type { SizeLimitExecutorSchema } from "./schema.d";
 export async function sizeLimitExecutorFn(
   options: SizeLimitExecutorSchema,
   context: ExecutorContext,
-  config?: StormConfig
+  config?: StormConfig,
 ) {
   if (
     !context?.projectName ||
@@ -42,7 +42,7 @@ export async function sizeLimitExecutorFn(
     !context.projectsConfigurations.projects[context.projectName]
   ) {
     throw new Error(
-      "The Size-Limit process failed because the context is not valid. Please run this command from a workspace."
+      "The Size-Limit process failed because the context is not valid. Please run this command from a workspace.",
     );
   }
 
@@ -56,17 +56,17 @@ export async function sizeLimitExecutorFn(
       joinPathFragments(
         context.projectsConfigurations.projects[context.projectName]?.root ??
           "./",
-        "src"
-      )
-  }).then(result => {
+        "src",
+      ),
+  }).then((result) => {
     writeInfo(
       `📏 ${context.projectName} Size-Limit result: ${JSON.stringify(result)}`,
-      config
+      config,
     );
   });
 
   return {
-    success: true
+    success: true,
   };
 }
 
@@ -77,12 +77,12 @@ export default withRunExecutor<SizeLimitExecutorSchema>(
     skipReadingConfig: false,
     hooks: {
       applyDefaultOptions: (
-        options: SizeLimitExecutorSchema
+        options: SizeLimitExecutorSchema,
       ): SizeLimitExecutorSchema => {
         // options.entry ??= "{sourceRoot}/index.ts";
 
         return options;
-      }
-    }
-  }
+      },
+    },
+  },
 );

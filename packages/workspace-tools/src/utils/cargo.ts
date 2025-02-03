@@ -3,7 +3,7 @@ import {
   type ChildProcess,
   execSync,
   spawn,
-  type StdioOptions
+  type StdioOptions,
 } from "node:child_process";
 import { relative } from "node:path";
 import { CargoBaseExecutorSchema } from "../base/cargo-base-executor.schema.d";
@@ -25,7 +25,7 @@ export const INVALID_CARGO_ARGS = [
   "main",
   "outputPath",
   "package",
-  "tsConfig"
+  "tsConfig",
 ];
 
 export let childProcess: ChildProcess | null;
@@ -33,7 +33,7 @@ export let childProcess: ChildProcess | null;
 export const buildCargoCommand = (
   baseCommand: string,
   options: CargoBaseExecutorSchema,
-  context: ExecutorContext
+  context: ExecutorContext,
 ): string[] => {
   const args = [] as string[];
 
@@ -108,7 +108,7 @@ export function cargoRunCommand(
       windowsHide: true,
       detached: true,
       shell: false,
-      stdio: ["inherit", "inherit", "inherit"]
+      stdio: ["inherit", "inherit", "inherit"],
     });
 
     // Ensure the child process is killed when the parent exits
@@ -116,11 +116,11 @@ export function cargoRunCommand(
     process.on("SIGTERM", () => childProcess?.kill());
     process.on("SIGINT", () => childProcess?.kill());
 
-    childProcess.on("error", _err => {
+    childProcess.on("error", (_err) => {
       reject({ success: false });
     });
 
-    childProcess.on("exit", code => {
+    childProcess.on("exit", (code) => {
       childProcess = null;
       if (code === 0) {
         resolve({ success: true });
@@ -133,14 +133,14 @@ export function cargoRunCommand(
 
 export function cargoCommandSync(
   args = "",
-  options?: Partial<RunCargoOptions>
+  options?: Partial<RunCargoOptions>,
 ): CargoRun {
   const normalizedOptions: RunCargoOptions = {
     stdio: options?.stdio ?? "inherit",
     env: {
       ...process.env,
-      ...options?.env
-    }
+      ...options?.env,
+    },
   };
 
   try {
@@ -150,21 +150,21 @@ export function cargoCommandSync(
         windowsHide: true,
         stdio: normalizedOptions.stdio,
         env: normalizedOptions.env,
-        maxBuffer: 1024 * 1024 * 10
+        maxBuffer: 1024 * 1024 * 10,
       }),
-      success: true
+      success: true,
     };
   } catch (e) {
     return {
       output: e as string,
-      success: false
+      success: false,
     };
   }
 }
 
 export function cargoMetadata(): CargoMetadata | null {
   const output = cargoCommandSync("metadata --format-version=1", {
-    stdio: "pipe"
+    stdio: "pipe",
   });
 
   if (!output.success) {
@@ -177,7 +177,7 @@ export function cargoMetadata(): CargoMetadata | null {
 
 export function isExternal(
   packageOrDep: Package | Dependency,
-  workspaceRoot: string
+  workspaceRoot: string,
 ) {
   const isRegistry = packageOrDep.source?.startsWith("registry+") ?? false;
   const isGit = packageOrDep.source?.startsWith("git+") ?? false;
@@ -197,7 +197,7 @@ export function runProcess(
     metadata?.target_directory ??
     joinPathFragments(workspaceRoot, "dist", "cargo");
 
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     if (process.env.VERCEL) {
       // Vercel doesnt have support for cargo atm, so auto success builds
       return resolve({ success: true });
@@ -209,10 +209,10 @@ export function runProcess(
         ...process.env,
         RUSTC_WRAPPER: "",
         CARGO_TARGET_DIR: targetDir,
-        CARGO_BUILD_TARGET_DIR: targetDir
+        CARGO_BUILD_TARGET_DIR: targetDir,
       },
       windowsHide: true,
-      stdio: ["inherit", "inherit", "inherit"]
+      stdio: ["inherit", "inherit", "inherit"],
     });
     resolve({ success: true });
   });

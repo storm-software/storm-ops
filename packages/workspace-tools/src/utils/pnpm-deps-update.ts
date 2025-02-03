@@ -14,13 +14,13 @@ let pnpmCatalog!: Record<string, string>;
  */
 export async function pnpmCatalogUpdate(
   packageRoot: string,
-  workspaceRoot: string = process.cwd()
+  workspaceRoot: string = process.cwd(),
 ) {
   if (!pnpmCatalog) {
     const pnpmWorkspacePath = joinPaths(workspaceRoot, "pnpm-workspace.yaml");
     if (!existsSync(pnpmWorkspacePath)) {
       console.warn(
-        `No \`pnpm-workspace.yaml\` file found in workspace root (searching in: ${pnpmWorkspacePath}). Skipping pnpm catalog read for now.`
+        `No \`pnpm-workspace.yaml\` file found in workspace root (searching in: ${pnpmWorkspacePath}). Skipping pnpm catalog read for now.`,
       );
 
       return;
@@ -30,7 +30,7 @@ export async function pnpmCatalogUpdate(
       catalog: Record<string, string>;
     }>(pnpmWorkspacePath);
     console.info(
-      `pnpmWorkspaceYaml: ${JSON.stringify(pnpmWorkspaceYaml ?? {})}`
+      `pnpmWorkspaceYaml: ${JSON.stringify(pnpmWorkspaceYaml ?? {})}`,
     );
 
     if (pnpmWorkspaceYaml?.catalog) {
@@ -39,14 +39,14 @@ export async function pnpmCatalogUpdate(
       console.warn(
         `Found a \`pnpm-workspace.yaml\` file in the workspace root directory, but no pnpm catalog existed:
 File name: ${pnpmWorkspacePath}
-File contents: ${pnpmWorkspaceYaml ? JSON.stringify(pnpmWorkspaceYaml) : "EMPTY FILE"}`
+File contents: ${pnpmWorkspaceYaml ? JSON.stringify(pnpmWorkspaceYaml) : "EMPTY FILE"}`,
       );
     }
   }
 
   if (!pnpmCatalog) {
     console.warn(
-      `No pnpm catalog found. Attempting to read from workspace root's \`pnpm-workspace.yaml\` file.`
+      `No pnpm catalog found. Attempting to read from workspace root's \`pnpm-workspace.yaml\` file.`,
     );
   }
 
@@ -54,7 +54,7 @@ File contents: ${pnpmWorkspaceYaml ? JSON.stringify(pnpmWorkspaceYaml) : "EMPTY 
   const packageJsonFile = await readFile(packageJsonPath, "utf8");
   if (!packageJsonFile) {
     throw new Error(
-      "No package.json file found in package root: " + packageRoot
+      "No package.json file found in package root: " + packageRoot,
     );
   }
 
@@ -62,7 +62,7 @@ File contents: ${pnpmWorkspaceYaml ? JSON.stringify(pnpmWorkspaceYaml) : "EMPTY 
   for (const dependencyType of [
     "dependencies",
     "devDependencies",
-    "peerDependencies"
+    "peerDependencies",
   ]) {
     const dependencies = packageJson[dependencyType];
     if (!dependencies) {
@@ -73,7 +73,7 @@ File contents: ${pnpmWorkspaceYaml ? JSON.stringify(pnpmWorkspaceYaml) : "EMPTY 
       if (dependencies[dependencyName] === "catalog:") {
         if (!pnpmCatalog) {
           throw new Error(
-            `Dependency ${dependencyName} is marked as \`catalog:\`, but no catalog exists in the workspace root's \`pnpm-workspace.yaml\` file.`
+            `Dependency ${dependencyName} is marked as \`catalog:\`, but no catalog exists in the workspace root's \`pnpm-workspace.yaml\` file.`,
           );
         }
 
@@ -105,7 +105,7 @@ File contents: ${pnpmWorkspaceYaml ? JSON.stringify(pnpmWorkspaceYaml) : "EMPTY 
       bracketSpacing: true,
       arrowParens: "avoid",
       endOfLine: "lf",
-      plugins: ["prettier-plugin-pkg"]
-    })
+      plugins: ["prettier-plugin-pkg"],
+    }),
   );
 }

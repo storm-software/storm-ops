@@ -7,13 +7,13 @@ import {
   writeError,
   writeFatal,
   writeInfo,
-  writeSuccess
+  writeSuccess,
 } from "../src/logger/console";
 import {
   exitWithError,
   exitWithSuccess,
   findWorkspaceRootSafe,
-  handleProcess
+  handleProcess,
 } from "../src/utilities";
 
 export function createProgram() {
@@ -29,7 +29,7 @@ export function createProgram() {
 
   const directory = new Option(
     "-d --dir <path>",
-    "A directory that exists inside the workspace root"
+    "A directory that exists inside the workspace root",
   ).default(process.cwd());
 
   program
@@ -45,8 +45,8 @@ export async function viewAction({ dir }: { dir: string }) {
   writeInfo(
     `🔍   Searching for Storm configuration for the workspace at "${dir}"...`,
     {
-      logLevel: "all"
-    }
+      logLevel: "all",
+    },
   );
 
   const config = await getConfig(findWorkspaceRootSafe(dir), true);
@@ -56,12 +56,12 @@ export async function viewAction({ dir }: { dir: string }) {
 
 ${formatLogMessage(config)}
 `,
-      { ...config, logLevel: "all" }
+      { ...config, logLevel: "all" },
     );
   } else {
     writeError(
       "No Storm config file found in the current workspace. Please ensure this is the expected behavior - you can add a `storm.json` file to the root of your workspace if it is not.\n",
-      { logLevel: "all" }
+      { logLevel: "all" },
     );
   }
 }
@@ -83,7 +83,7 @@ ${error?.message ? error.message : JSON.stringify(error)}${
 Stack Trace: ${error.stack}`
           : ""
       }`,
-      { logLevel: "all" }
+      { logLevel: "all" },
     );
 
     exitWithError();

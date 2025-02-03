@@ -3,7 +3,7 @@ import {
   findWorkspaceRootSafe,
   writeFatal,
   writeInfo,
-  writeSuccess
+  writeSuccess,
 } from "@storm-software/config-tools";
 import { Command, Option } from "commander";
 import { runCommit } from "../commit/run";
@@ -28,12 +28,12 @@ export function createProgram(config: StormConfig) {
 
   const commitConfig = new Option(
     "--config <file>",
-    "The Commitizen config file path"
+    "The Commitizen config file path",
   ).default("@storm-software/git-tools/commit/config");
 
   const commitDryRun = new Option(
     "--dry-run",
-    "Should the commit be run in dry-run mode (no updates are made)"
+    "Should the commit be run in dry-run mode (no updates are made)",
   );
 
   program
@@ -45,27 +45,27 @@ export function createProgram(config: StormConfig) {
 
   const readmeTemplatePath = new Option(
     "--templates <path>",
-    "The templates directory to use when generating the README.md files."
+    "The templates directory to use when generating the README.md files.",
   ).default("./tools/readme-templates");
 
   const readmePackageName = new Option(
     "--project <project>",
-    "The specific project to generate a README.md file for"
+    "The specific project to generate a README.md file for",
   );
 
   const readmeOutput = new Option(
     "--output <path>",
-    "Where to output the generated README.md file"
+    "Where to output the generated README.md file",
   );
 
   const readmeClean = new Option(
     "--clean",
-    "Should the output README.md file be cleaned before generation"
+    "Should the output README.md file be cleaned before generation",
   ).default(true);
 
   const readmePrettier = new Option(
     "--prettier",
-    "Should the output README.md file have prettier applied to it"
+    "Should the output README.md file have prettier applied to it",
   ).default(true);
 
   program
@@ -80,7 +80,7 @@ export function createProgram(config: StormConfig) {
 
   const releasePackageName = new Option(
     "--project <project>",
-    "The specific project to run release for"
+    "The specific project to run release for",
   );
 
   const releaseBase = new Option("--base <base>", "Git base tag value");
@@ -88,7 +88,7 @@ export function createProgram(config: StormConfig) {
 
   const releaseDryRun = new Option(
     "--dry-run",
-    "Should the release be run in dry-run mode (no updates are made)"
+    "Should the release be run in dry-run mode (no updates are made)",
   );
 
   program
@@ -102,12 +102,12 @@ export function createProgram(config: StormConfig) {
 
   const commitMessage = new Option(
     "--message <commit-message>",
-    "The commit message to lint"
+    "The commit message to lint",
   ).makeOptionMandatory(false);
 
   const commitFile = new Option(
     "--file <commit-file>",
-    "The commit message to lint"
+    "The commit message to lint",
   ).makeOptionMandatory(false);
 
   program
@@ -123,7 +123,7 @@ export function createProgram(config: StormConfig) {
 
 export async function commitAction({
   config = "@storm-software/git-tools/commit/config.js",
-  dryRun = false
+  dryRun = false,
 }: {
   config: string;
   dryRun: boolean;
@@ -131,7 +131,7 @@ export async function commitAction({
   try {
     writeInfo(
       `⚡ Preparing to commit your changes. Please provide the requested details below...`,
-      _config
+      _config,
     );
 
     await runCommit(config, dryRun);
@@ -149,12 +149,12 @@ Note: Please run "pnpm push" to upload these changes to the remote ${
               : "Storm-Software"
       } Git repository at ${_config.repository}
 `,
-      _config
+      _config,
     );
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running commit action: \n\n${error.message}`,
-      _config
+      _config,
     );
     throw new Error(error.message, { cause: error });
   }
@@ -168,11 +168,11 @@ export async function readmeAction(options: ReadMeOptions) {
 
     writeSuccess(
       "Formatting of the workspace's README.md files is complete\n",
-      _config
+      _config,
     );
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running README format action: \n\n${error.message}`
+      `A fatal error occurred while running README format action: \n\n${error.message}`,
     );
     throw new Error(error.message, { cause: error });
   }
@@ -182,7 +182,7 @@ export async function releaseAction({
   project,
   base,
   head,
-  dryRun
+  dryRun,
 }: {
   project?: string;
   base?: string;
@@ -192,7 +192,7 @@ export async function releaseAction({
   try {
     writeInfo(
       "⚡ Running the Storm Release and Publish process on the workspace",
-      _config
+      _config,
     );
 
     await runRelease(_config as StormConfig, { dryRun, project, base, head });
@@ -201,7 +201,7 @@ export async function releaseAction({
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running release action: \n\n${error.message}`,
-      _config
+      _config,
     );
     writeFatal(error, _config);
 
@@ -217,7 +217,7 @@ export async function releaseAction({
 export async function commitLintAction({
   config,
   message,
-  file
+  file,
 }: {
   config?: string;
   message?: string;
@@ -236,19 +236,19 @@ export async function commitLintAction({
                 ? _config.organization
                 : "Storm-Software"
       } repository's commit messages.`,
-      _config
+      _config,
     );
 
     await runCommitLint(_config as StormConfig, { config, message, file });
 
     writeSuccess(
       "Linting the commit messages completed successfully!\n",
-      _config
+      _config,
     );
   } catch (error) {
     writeFatal(
       `A fatal error occurred while linting the commit messages: \n\n${error.message}`,
-      _config
+      _config,
     );
     throw new Error(error.message, { cause: error });
   }

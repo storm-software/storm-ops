@@ -9,10 +9,10 @@ export function swc(): Plugin {
         filename,
         jsc: {
           transform: {
-            react: { runtime: "automatic" }
-          }
-        }
+            react: { runtime: "automatic" },
+          },
+        },
       });
-    }
+    },
   };
 }

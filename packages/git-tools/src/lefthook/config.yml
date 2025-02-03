@@ -46,18 +46,15 @@ pre-commit:
       stage_fixed: true
     lint-toml:
       glob: "**/*.toml"
-      run:
-        'pnpm exec taplo format --check
+      run: 'pnpm exec taplo format --check
         --config="./node_modules/@storm-software/linting-tools/taplo/config.toml"'
     lint-filename:
       glob: "**/*.*"
-      run:
-        'pnpm exec ls-lint
+      run: 'pnpm exec ls-lint
         --config="@storm-software/linting-tools/ls-lint/config.yml"'
     lint-github-actions:
       glob: ".github/workflows/*.*"
-      run:
-        'zizmor --offline
+      run: 'zizmor --offline
         --config="./node_modules/@storm-software/linting-tools/zizmor/config.yml"
         .github/workflows/'
     readme-gen:
@@ -70,8 +67,7 @@ pre-commit:
       stage_fixed: true
     format-toml:
       glob: "**/*.toml"
-      run:
-        'pnpm exec taplo format
+      run: 'pnpm exec taplo format
         --config="@storm-software/linting-tools/taplo/config.toml" && git
         update-index'
     postbuild:

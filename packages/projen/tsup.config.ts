@@ -8,7 +8,7 @@ export default defineConfig([
       "./*.ts",
       "./src/components/*.ts",
       "./src/executors/*/executor.ts",
-      "./src/generators/*/generator.ts"
+      "./src/generators/*/generator.ts",
     ],
     outDir: "dist",
     format: ["cjs", "esm"],
@@ -18,6 +18,6 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     shims: true,
-    tsconfig: "./tsconfig.json"
-  }
+    tsconfig: "./tsconfig.json",
+  },
 ]);

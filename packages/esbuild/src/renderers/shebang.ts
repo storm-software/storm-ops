@@ -14,5 +14,5 @@ export const shebangRenderer: Renderer = {
     ) {
       info.mode = 0o755;
     }
-  }
+  },
 };

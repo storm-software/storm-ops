@@ -4,46 +4,46 @@ export const RESTRICTED_SYNTAX = [
     selector:
       "CallExpression[callee.name=/readFileSync|readFile|writeFileSync|writeFile/] > .arguments:last-child[type=ObjectExpression][properties.length=1] Property[key.name=encoding]",
     message:
-      "Specify encoding as last argument instead of object with encoding key"
+      "Specify encoding as last argument instead of object with encoding key",
   },
   {
     // ❌ readFile(…, {})
     selector:
       "CallExpression[callee.name=/readFileSync|readFile|writeFileSync|writeFile/] > .arguments:last-child[type=ObjectExpression][properties.length=0]",
-    message: "Specify encoding as last argument"
+    message: "Specify encoding as last argument",
   },
   {
     // ❌ readFileSync(…).toString(…)
     selector:
       "CallExpression[callee.name=readFileSync][parent.property.name=toString]",
-    message: "toString is redundant, specify encoding as last argument"
+    message: "toString is redundant, specify encoding as last argument",
   },
   {
     // ❌ ….readFile(…, { encoding: … })
     selector:
       "CallExpression[callee.type=MemberExpression][callee.property.name=/readFileSync|readFile|writeFileSync|writeFile/] > .arguments:last-child[type=ObjectExpression][properties.length=1] Property[key.name=encoding]",
     message:
-      "Specify encoding as last argument instead of object with encoding key"
+      "Specify encoding as last argument instead of object with encoding key",
   },
   {
     // ❌ ….readFile(…, {})
     selector:
       "CallExpression[callee.type=MemberExpression][callee.property.name=/readFileSync|readFile|writeFileSync|writeFile/] > .arguments:last-child[type=ObjectExpression][properties.length=0]",
-    message: "Specify encoding as last argument"
+    message: "Specify encoding as last argument",
   },
   {
     // ❌ Boolean(…)
     selector:
       "CallExpression[callee.name=Boolean][arguments.1.elements.length!=0]",
     message:
-      "Prefer `!!…` over `Boolean(…)` because TypeScript infers a narrow literal boolean `type: true` instead of `type: boolean`."
+      "Prefer `!!…` over `Boolean(…)` because TypeScript infers a narrow literal boolean `type: true` instead of `type: boolean`.",
   },
   {
     // ❌ process.browser
     selector:
       "ExpressionStatement[expression.object.name=process][expression.property.name=browser]",
-    message: "`process.browser` is deprecated, use `!!globalThis.window`"
-  }
+    message: "`process.browser` is deprecated, use `!!globalThis.window`",
+  },
   // {
   //   // ❌ let { foo: { bar } } = baz
   //   // ✅ let { bar } = baz.foo
@@ -61,13 +61,13 @@ export const REACT_RESTRICTED_SYNTAX = [
     selector:
       "CallExpression[callee.name=useMemo][arguments.1.type=ArrayExpression][arguments.1.elements.length=0]",
     message:
-      "`useMemo` with an empty dependency array can't provide a stable reference, use `useRef` instead."
-  }
+      "`useMemo` with an empty dependency array can't provide a stable reference, use `useRef` instead.",
+  },
 ];
 
 export const RESTRICTED_GLOBALS = [
   "stop",
-  { name: "isNaN", message: "Use Number.isNaN instead" }
+  { name: "isNaN", message: "Use Number.isNaN instead" },
 ];
 
 export const RESTRICTED_MODULES = [
@@ -76,15 +76,15 @@ export const RESTRICTED_MODULES = [
   { name: "classnames", message: "Use `clsx` instead because it is faster." },
   {
     name: "lodash/isString.js",
-    message: "Use `typeof yourVar === 'string'` instead."
+    message: "Use `typeof yourVar === 'string'` instead.",
   },
   { name: "lodash/isArray.js", message: "Use `Array.isArray` instead." },
   { name: "lodash/flatten.js", message: "Use `Array#flat()` instead." },
   {
     name: "lodash/compact.js",
-    message: "Use `Array#filter(Boolean)` instead."
+    message: "Use `Array#filter(Boolean)` instead.",
   },
-  { name: "lodash/identity.js", message: "Use `(value) => value` instead." }
+  { name: "lodash/identity.js", message: "Use `(value) => value` instead." },
 ];
 
 export const JS_FILES = ["*.js?(x)", "*.mjs"];
@@ -133,5 +133,5 @@ export const ACRONYMS_LIST = [
   "UTF",
   "VM",
   "XML",
-  "XSS"
+  "XSS",
 ];

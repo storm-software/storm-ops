@@ -18,8 +18,8 @@ const config: Linter.RulesRecord = {
       img: [],
       object: [],
       area: [],
-      'input[type="image"]': []
-    }
+      'input[type="image"]': [],
+    },
   ],
 
   // Enforce that anchors have content
@@ -33,8 +33,8 @@ const config: Linter.RulesRecord = {
     {
       components: ["Link"],
       specialLink: ["to"],
-      aspects: ["noHref", "invalidHref", "preferButton"]
-    }
+      aspects: ["noHref", "invalidHref", "preferButton"],
+    },
   ],
 
   // elements with aria-activedescendant must be tabbable
@@ -63,8 +63,8 @@ const config: Linter.RulesRecord = {
   "jsx-a11y/autocomplete-valid": [
     "off",
     {
-      inputComponents: []
-    }
+      inputComponents: [],
+    },
   ],
 
   // require onClick be accompanied by onKeyUp/onKeyDown/onKeyPress
@@ -85,7 +85,7 @@ const config: Linter.RulesRecord = {
         "input",
         "textarea",
         "tr",
-        "video"
+        "video",
       ],
       ignoreRoles: [
         "grid",
@@ -97,10 +97,10 @@ const config: Linter.RulesRecord = {
         "tablist",
         "toolbar",
         "tree",
-        "treegrid"
+        "treegrid",
       ],
-      depth: 5
-    }
+      depth: 5,
+    },
   ],
 
   // ensure <hX> tags have content and are not aria-hidden
@@ -132,8 +132,8 @@ const config: Linter.RulesRecord = {
       labelAttributes: [],
       controlComponents: [],
       assert: "both",
-      depth: 25
-    }
+      depth: 25,
+    },
   ],
 
   // require HTML element's lang prop to be valid
@@ -147,8 +147,8 @@ const config: Linter.RulesRecord = {
     {
       audio: [],
       video: [],
-      track: []
-    }
+      track: [],
+    },
   ],
 
   // require that mouseover/out come with focus/blur, for keyboard-only users
@@ -168,8 +168,8 @@ const config: Linter.RulesRecord = {
   "jsx-a11y/no-distracting-elements": [
     "error",
     {
-      elements: ["marquee", "blink"]
-    }
+      elements: ["marquee", "blink"],
+    },
   ],
 
   // WAI-ARIA roles should not be used to convert an interactive element to non-interactive
@@ -177,8 +177,8 @@ const config: Linter.RulesRecord = {
   "jsx-a11y/no-interactive-element-to-noninteractive-role": [
     "error",
     {
-      tr: ["none", "presentation"]
-    }
+      tr: ["none", "presentation"],
+    },
   ],
 
   // A non-interactive element does not support event handlers (mouse and key handlers)
@@ -192,9 +192,9 @@ const config: Linter.RulesRecord = {
         "onMouseUp",
         "onKeyPress",
         "onKeyDown",
-        "onKeyUp"
-      ]
-    }
+        "onKeyUp",
+      ],
+    },
   ],
 
   // WAI-ARIA roles should not be used to convert a non-interactive element to interactive
@@ -209,7 +209,7 @@ const config: Linter.RulesRecord = {
         "radiogroup",
         "tablist",
         "tree",
-        "treegrid"
+        "treegrid",
       ],
       ol: [
         "listbox",
@@ -218,12 +218,12 @@ const config: Linter.RulesRecord = {
         "radiogroup",
         "tablist",
         "tree",
-        "treegrid"
+        "treegrid",
       ],
       li: ["menuitem", "option", "row", "tab", "treeitem"],
       table: ["grid"],
-      td: ["gridcell"]
-    }
+      td: ["gridcell"],
+    },
   ],
 
   // Tab key navigation should be limited to elements on the page that can be interacted with.
@@ -233,8 +233,8 @@ const config: Linter.RulesRecord = {
     {
       tags: [],
       roles: ["tabpanel"],
-      allowExpressionValues: true
-    }
+      allowExpressionValues: true,
+    },
   ],
 
   // ensure HTML elements do not specify redundant ARIA roles
@@ -242,8 +242,8 @@ const config: Linter.RulesRecord = {
   "jsx-a11y/no-redundant-roles": [
     "error",
     {
-      nav: ["navigation"]
-    }
+      nav: ["navigation"],
+    },
   ],
 
   // Enforce that DOM elements without semantic behavior not have interaction handlers
@@ -257,9 +257,9 @@ const config: Linter.RulesRecord = {
         "onMouseUp",
         "onKeyPress",
         "onKeyDown",
-        "onKeyUp"
-      ]
-    }
+        "onKeyUp",
+      ],
+    },
   ],
 
   // Enforce that elements with ARIA roles must have all required attributes
@@ -292,10 +292,10 @@ const config: Linter.RulesRecord = {
     {
       components: [],
       required: {
-        every: ["nesting", "id"]
+        every: ["nesting", "id"],
       },
-      allowChildren: false
-    }
+      allowChildren: false,
+    },
   ],
 
   // Ensures anchor text is not ambiguous
@@ -311,7 +311,7 @@ const config: Linter.RulesRecord = {
   // Enforces using semantic DOM elements over the ARIA role property.
   // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/93f78856655696a55309440593e0948c6fb96134/docs/rules/prefer-tag-over-role.md
   // TODO: semver-major, enable
-  "jsx-a11y/prefer-tag-over-role": "off"
+  "jsx-a11y/prefer-tag-over-role": "off",
 };
 
 export default config;

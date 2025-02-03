@@ -18,31 +18,31 @@ export type PulumiExecutorSchema = BaseExecutorSchema &
   Partial<PulumiCommandOptions>;
 
 export type NormalizedPulumiExecutorOptions<
-  TExecutorSchema extends PulumiExecutorSchema = PulumiExecutorSchema
+  TExecutorSchema extends PulumiExecutorSchema = PulumiExecutorSchema,
 > = ProjectTokenizerOptions & TExecutorSchema;
 
 export const withPulumiExecutor =
   <TExecutorSchema extends PulumiExecutorSchema = PulumiExecutorSchema>(
     command: string,
     argsMapper: (
-      options: NormalizedPulumiExecutorOptions<TExecutorSchema>
+      options: NormalizedPulumiExecutorOptions<TExecutorSchema>,
     ) => Array<string | false | undefined>,
-    executorOptions: BaseExecutorOptions<TExecutorSchema> = {}
+    executorOptions: BaseExecutorOptions<TExecutorSchema> = {},
   ) =>
   async (
     _options: TExecutorSchema,
-    context: ExecutorContext
+    context: ExecutorContext,
   ): Promise<{ success: boolean }> => {
     return withRunExecutor<TExecutorSchema>(
       `Pulumi \`${command}\` Command Executor`,
       async (
         options: NormalizedPulumiExecutorOptions<TExecutorSchema>,
         context: ExecutorContext,
-        config: StormConfig
+        config: StormConfig,
       ) => {
         if (!which("pulumi")) {
           throw new Error(
-            "Pulumi is not installed. Please install it before running this executor."
+            "Pulumi is not installed. Please install it before running this executor.",
           );
         }
 
@@ -52,7 +52,7 @@ export const withPulumiExecutor =
           !context.projectsConfigurations.projects[context.projectName]
         ) {
           throw new Error(
-            "The Build process failed because the context is not valid. Please run this command from a workspace."
+            "The Build process failed because the context is not valid. Please run this command from a workspace.",
           );
         }
 
@@ -66,12 +66,12 @@ export const withPulumiExecutor =
           "inherit",
           {
             ...process.env,
-            PULUMI_EXPERIMENTAL: "true"
-          }
+            PULUMI_EXPERIMENTAL: "true",
+          },
         );
 
         return null;
       },
-      executorOptions
+      executorOptions,
     )(_options, context);
   };

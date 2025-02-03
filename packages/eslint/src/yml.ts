@@ -10,7 +10,7 @@ const config: Linter.FlatConfig[] = [
   ...base,
   ...ymlPlugin.configs["flat/base"],
   ...ymlPlugin.configs["flat/recommended"],
-  ...ymlPlugin.configs["flat/prettier"]
+  ...ymlPlugin.configs["flat/prettier"],
   // {
   //   files: ["**/*.y{,a}ml"],
   //   plugins: {

@@ -7,23 +7,23 @@ export default defineUntypedSchema({
     id: "BrowserLibraryGeneratorSchema",
     title: "Browser Library Generator",
     description: "A type definition for a browser library generator schema",
-    required: ["directory", "name"]
+    required: ["directory", "name"],
   },
   buildExecutor: {
     $schema: {
       title: "Build Executor",
       type: "string",
-      description: "The executor to use for building the library"
+      description: "The executor to use for building the library",
     },
-    $default: "@storm-software/workspace-tools:unbuild"
+    $default: "@storm-software/workspace-tools:unbuild",
   },
   platform: {
     $schema: {
       title: "Platform",
       type: "string",
       description: "The platform to target with the library",
-      enum: ["browser", "neutral"]
+      enum: ["browser", "neutral"],
     },
-    $default: "browser"
-  }
+    $default: "browser",
+  },
 });

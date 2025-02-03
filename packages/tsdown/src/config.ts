@@ -30,5 +30,5 @@ export const DEFAULT_BUILD_OPTIONS: Required<
   bundle: true,
   treeshake: true,
   clean: true,
-  debug: false
+  debug: false,
 };

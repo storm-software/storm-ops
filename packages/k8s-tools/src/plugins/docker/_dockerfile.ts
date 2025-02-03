@@ -5,7 +5,7 @@ import {
   readJsonFile,
   type CreateDependencies,
   type CreateNodes,
-  type ProjectConfiguration
+  type ProjectConfiguration,
 } from "@nx/devkit";
 import { getConfig } from "@storm-software/config-tools/get-config";
 import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
@@ -14,7 +14,7 @@ import {
   hasProjectTag,
   isEqualProjectTag,
   ProjectTagConstants,
-  setDefaultProjectTags
+  setDefaultProjectTags,
 } from "@storm-software/workspace-tools/utils/project-tags";
 import { CargoToml } from "@storm-software/workspace-tools/utils/toml";
 import { existsSync } from "node:fs";
@@ -32,9 +32,9 @@ export const createNodes: CreateNodes<DockerFilePluginOptions> = [
   async (
     dockerFilePath: string,
     opts: DockerFilePluginOptions = {
-      defaultEngine: "docker"
+      defaultEngine: "docker",
     },
-    _: CreateNodesContext
+    _: CreateNodesContext,
   ) => {
     if (!dockerFilePath) {
       return {};
@@ -54,7 +54,7 @@ export const createNodes: CreateNodes<DockerFilePluginOptions> = [
     const workspaceRoot = findWorkspaceRoot();
     const config = await getConfig(workspaceRoot);
 
-    Object.keys(projectJson).forEach(key => {
+    Object.keys(projectJson).forEach((key) => {
       if (!project[key]) {
         project[key] = projectJson[key];
       }
@@ -62,7 +62,7 @@ export const createNodes: CreateNodes<DockerFilePluginOptions> = [
 
     const project: ProjectConfiguration = {
       root,
-      name: projectJson?.name
+      name: projectJson?.name,
     };
 
     const engine = opts.defaultEngine ?? "docker";
@@ -73,7 +73,7 @@ export const createNodes: CreateNodes<DockerFilePluginOptions> = [
       `org.opencontainers.image.vendor=${config.organization ? titleCase(config.organization) : "Storm Software"}`,
       `org.opencontainers.image.documentation=${config.docs}`,
       `org.opencontainers.image.url=${config.homepage}`,
-      `org.opencontainers.image.source=${config.repository}`
+      `org.opencontainers.image.source=${config.repository}`,
     ];
     let tag = "latest";
 
@@ -82,12 +82,12 @@ export const createNodes: CreateNodes<DockerFilePluginOptions> = [
       if (packageManager.type === "Cargo.toml") {
         tag = (packageManager.content as CargoToml).package.version;
         labels.push(
-          `org.opencontainers.image.description=${(packageManager.content as CargoToml).package.description}`
+          `org.opencontainers.image.description=${(packageManager.content as CargoToml).package.description}`,
         );
       } else if (packageManager.type === "package.json") {
         tag = packageManager.content.version;
         labels.push(
-          `org.opencontainers.image.description=${packageManager.content.description}`
+          `org.opencontainers.image.description=${packageManager.content.description}`,
         );
       }
     }
@@ -105,7 +105,7 @@ export const createNodes: CreateNodes<DockerFilePluginOptions> = [
           metadata: {
             images: [
               `${config.namespace ? config.namespace : "storm-software"}/${project.name?.replace(`${config.namespace}-`, "")}`,
-              `ghcr.io/${config.organization ? config.organization : "storm-software"}/${project.name}`
+              `ghcr.io/${config.organization ? config.organization : "storm-software"}/${project.name}`,
             ],
             tags: [
               "type=schedule",
@@ -115,9 +115,9 @@ export const createNodes: CreateNodes<DockerFilePluginOptions> = [
               "type=semver,pattern={{version}}",
               "type=semver,pattern={{major}}.{{minor}}",
               "type=semver,pattern={{major}}",
-              "type=sha"
-            ]
-          }
+              "type=sha",
+            ],
+          },
         },
         defaultConfiguration: "production",
         configurations: {
@@ -126,26 +126,26 @@ export const createNodes: CreateNodes<DockerFilePluginOptions> = [
             "build-args": [
               "ENVIRONMENT=development",
               "DEBUG_IMAGE=true",
-              `RELEASE=${tag}`
-            ]
+              `RELEASE=${tag}`,
+            ],
           },
           production: {
             quiet: true,
             "build-args": [
               "ENVIRONMENT=production",
               "DEBUG_IMAGE=false",
-              `RELEASE=${tag}`
-            ]
-          }
-        }
-      }
+              `RELEASE=${tag}`,
+            ],
+          },
+        },
+      },
     };
 
     if (
       (isEqualProjectTag(
         project,
         ProjectTagConstants.ProjectType.TAG_ID,
-        ProjectTagConstants.ProjectType.APPLICATION
+        ProjectTagConstants.ProjectType.APPLICATION,
       ) ||
         project.projectType === "application") &&
       hasProjectTag(project, ProjectTagConstants.Registry.TAG_ID)
@@ -155,8 +155,8 @@ export const createNodes: CreateNodes<DockerFilePluginOptions> = [
           ...project.targets["nx-release-publish"],
           executor: "@storm-software/k8s-tools:container-publish",
           options: {
-            packageRoot: project.root
-          }
+            packageRoot: project.root,
+          },
         };
       } else {
         project.targets["nx-release-publish"] = {
@@ -166,13 +166,13 @@ export const createNodes: CreateNodes<DockerFilePluginOptions> = [
             "testing",
             "documentation",
             "rust",
-            "^production"
+            "^production",
           ],
           dependsOn: ["build", "^nx-release-publish"],
           executor: "@storm-software/k8s-tools:container-publish",
           options: {
-            packageRoot: project.root
-          }
+            packageRoot: project.root,
+          },
         };
       }
     }
@@ -188,16 +188,16 @@ export const createNodes: CreateNodes<DockerFilePluginOptions> = [
         ...project.release,
         version: {
           ...project.release?.version,
-          generator: "@storm-software/workspace-tools:release-version"
-        }
-      }
+          generator: "@storm-software/workspace-tools:release-version",
+        },
+      },
     };
 
     return {
       projects,
-      externalNodes
+      externalNodes,
     };
-  }
+  },
 ];
 
 export const createDependencies: CreateDependencies = (_, context) => {
@@ -213,12 +213,12 @@ const titleCase = (input?: string): string | undefined => {
     input
       // eslint-disable-next-line no-useless-escape
       .split(/(?=[A-Z])|[\.\-\s_]/)
-      .map(s => s.trim())
-      .filter(s => !!s)
-      .map(s =>
+      .map((s) => s.trim())
+      .filter((s) => !!s)
+      .map((s) =>
         s
           ? s.toLowerCase().charAt(0).toUpperCase() + s.toLowerCase().slice(1)
-          : s
+          : s,
       )
       .join(" ")
   );

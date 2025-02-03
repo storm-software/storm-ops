@@ -3,7 +3,7 @@ import {
   generateFiles,
   names,
   offsetFromRoot,
-  Tree
+  Tree,
 } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
@@ -11,32 +11,32 @@ import { withRunGenerator } from "../../base/base-generator";
 import {
   normalizeOptions,
   typeScriptLibraryGeneratorFn,
-  TypeScriptLibraryGeneratorOptions
+  TypeScriptLibraryGeneratorOptions,
 } from "../../base/typescript-library-generator";
 import { NeutralLibraryGeneratorSchema } from "./schema.d";
 
 export async function neutralLibraryGeneratorFn(
   tree: Tree,
   schema: NeutralLibraryGeneratorSchema,
-  config?: StormConfig
+  config?: StormConfig,
 ) {
   const filesDir = joinPaths(
     __dirname,
     "src",
     "generators",
     "neutral-library",
-    "files"
+    "files",
   );
   const tsLibraryGeneratorOptions = {
     ...schema,
     platform: "neutral",
     devDependencies: {},
-    buildExecutor: "@storm-software/workspace-tools:unbuild"
+    buildExecutor: "@storm-software/workspace-tools:unbuild",
   } as TypeScriptLibraryGeneratorOptions;
 
   const options = await normalizeOptions(tree, tsLibraryGeneratorOptions);
   const { className, name, propertyName } = names(
-    options.projectNames.projectFileName
+    options.projectNames.projectFileName,
   );
 
   generateFiles(tree, filesDir, options.projectRoot, {
@@ -53,7 +53,7 @@ export async function neutralLibraryGeneratorFn(
     tmpl: "",
     offsetFromRoot: offsetFromRoot(options.projectRoot),
     buildable: options.bundler && options.bundler !== "none",
-    hasUnitTestRunner: options.unitTestRunner !== "none"
+    hasUnitTestRunner: options.unitTestRunner !== "none",
   });
 
   await typeScriptLibraryGeneratorFn(tree, tsLibraryGeneratorOptions, config);
@@ -68,14 +68,14 @@ export default withRunGenerator<NeutralLibraryGeneratorSchema>(
   {
     hooks: {
       applyDefaultOptions: (
-        options: NeutralLibraryGeneratorSchema
+        options: NeutralLibraryGeneratorSchema,
       ): NeutralLibraryGeneratorSchema => {
         options.description ??=
           "A library used by Storm Software to support either browser or NodeJs applications";
         options.platform = "neutral";
 
         return options;
-      }
-    }
-  }
+      },
+    },
+  },
 );

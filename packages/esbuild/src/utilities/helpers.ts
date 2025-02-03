@@ -24,7 +24,7 @@ function handleSync<R, E = Error>(fn: () => R): R | E {
 }
 
 async function handleAsync<R, E = Error>(
-  fn: () => Promise<R> | R
+  fn: () => Promise<R> | R,
 ): Promise<R | E> {
   try {
     return await fn();
@@ -50,12 +50,12 @@ const skip = Symbol("skip");
 type SyncTransformer<I, R> = (item: I, key: number) => R | typeof skip;
 type ASyncTransformer<I, R> = (
   item: I,
-  key: number
+  key: number,
 ) => Promise<R | typeof skip>;
 
 function transduceSync<I, R>(
   list: Array<I>,
-  transformer: SyncTransformer<I, R>
+  transformer: SyncTransformer<I, R>,
 ) {
   const transduced = [] as R[];
 
@@ -72,7 +72,7 @@ function transduceSync<I, R>(
 
 async function transduceAsync<I, R>(
   list: Array<I>,
-  transformer: ASyncTransformer<I, R>
+  transformer: ASyncTransformer<I, R>,
 ) {
   const transduced = [] as R[];
 
@@ -83,7 +83,7 @@ async function transduceAsync<I, R>(
       if (transformed !== skip) {
         transduced[transduced.length] = transformed;
       }
-    })
+    }),
   );
 
   return transduced;
@@ -188,7 +188,7 @@ export declare type PipeMultiSync = {
     ...fns: [
       FunctionLike<P, R0>,
       FunctionLike<[R0], R1>,
-      FunctionLike<[R1], R2>
+      FunctionLike<[R1], R2>,
     ]
   ): FunctionLike<P, R2>;
   <R0, R1, R2, R3, P extends any[]>(
@@ -196,7 +196,7 @@ export declare type PipeMultiSync = {
       FunctionLike<P, R0>,
       FunctionLike<[R0], R1>,
       FunctionLike<[R1], R2>,
-      FunctionLike<[R2], R3>
+      FunctionLike<[R2], R3>,
     ]
   ): FunctionLike<P, R3>;
   <R0, R1, R2, R3, R4, P extends any[]>(
@@ -205,7 +205,7 @@ export declare type PipeMultiSync = {
       FunctionLike<[R0], R1>,
       FunctionLike<[R1], R2>,
       FunctionLike<[R2], R3>,
-      FunctionLike<[R3], R4>
+      FunctionLike<[R3], R4>,
     ]
   ): FunctionLike<P, R4>;
   <R0, R1, R2, R3, R4, R5, P extends any[]>(
@@ -215,7 +215,7 @@ export declare type PipeMultiSync = {
       FunctionLike<[R1], R2>,
       FunctionLike<[R2], R3>,
       FunctionLike<[R3], R4>,
-      FunctionLike<[R4], R5>
+      FunctionLike<[R4], R5>,
     ]
   ): FunctionLike<P, R5>;
   <R0, R1, R2, R3, R4, R5, R6, P extends any[]>(
@@ -226,7 +226,7 @@ export declare type PipeMultiSync = {
       FunctionLike<[R2], R3>,
       FunctionLike<[R3], R4>,
       FunctionLike<[R4], R5>,
-      FunctionLike<[R5], R6>
+      FunctionLike<[R5], R6>,
     ]
   ): FunctionLike<P, R6>;
   <R0, R1, R2, R3, R4, R5, R6, R7, P extends any[]>(
@@ -238,7 +238,7 @@ export declare type PipeMultiSync = {
       FunctionLike<[R3], R4>,
       FunctionLike<[R4], R5>,
       FunctionLike<[R5], R6>,
-      FunctionLike<[R6], R7>
+      FunctionLike<[R6], R7>,
     ]
   ): FunctionLike<P, R7>;
   <R0, R1, R2, R3, R4, R5, R6, R7, R8, P extends any[]>(
@@ -251,7 +251,7 @@ export declare type PipeMultiSync = {
       FunctionLike<[R4], R5>,
       FunctionLike<[R5], R6>,
       FunctionLike<[R6], R7>,
-      FunctionLike<[R7], R8>
+      FunctionLike<[R7], R8>,
     ]
   ): FunctionLike<P, R8>;
   <R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, P extends any[]>(
@@ -265,7 +265,7 @@ export declare type PipeMultiSync = {
       FunctionLike<[R5], R6>,
       FunctionLike<[R6], R7>,
       FunctionLike<[R7], R8>,
-      FunctionLike<[R8], R9>
+      FunctionLike<[R8], R9>,
     ]
   ): FunctionLike<P, R9>;
 };
@@ -281,7 +281,7 @@ export declare type PipeMultiAsync = {
     ...fns: [
       FunctionLike<P, R0>,
       FunctionLike<[Await<R0>], R1>,
-      FunctionLike<[Await<R1>], R2>
+      FunctionLike<[Await<R1>], R2>,
     ]
   ): FunctionLike<P, Promise<Await<R2>>>;
   <R0, R1, R2, R3, P extends any[]>(
@@ -289,7 +289,7 @@ export declare type PipeMultiAsync = {
       FunctionLike<P, R0>,
       FunctionLike<[Await<R0>], R1>,
       FunctionLike<[Await<R1>], R2>,
-      FunctionLike<[Await<R2>], R3>
+      FunctionLike<[Await<R2>], R3>,
     ]
   ): FunctionLike<P, Promise<Await<R3>>>;
   <R0, R1, R2, R3, R4, P extends any[]>(
@@ -298,7 +298,7 @@ export declare type PipeMultiAsync = {
       FunctionLike<[Await<R0>], R1>,
       FunctionLike<[Await<R1>], R2>,
       FunctionLike<[Await<R2>], R3>,
-      FunctionLike<[Await<R3>], R4>
+      FunctionLike<[Await<R3>], R4>,
     ]
   ): FunctionLike<P, Promise<Await<R4>>>;
   <R0, R1, R2, R3, R4, R5, P extends any[]>(
@@ -308,7 +308,7 @@ export declare type PipeMultiAsync = {
       FunctionLike<[Await<R1>], R2>,
       FunctionLike<[Await<R2>], R3>,
       FunctionLike<[Await<R3>], R4>,
-      FunctionLike<[Await<R4>], R5>
+      FunctionLike<[Await<R4>], R5>,
     ]
   ): FunctionLike<P, Promise<Await<R5>>>;
   <R0, R1, R2, R3, R4, R5, R6, P extends any[]>(
@@ -319,7 +319,7 @@ export declare type PipeMultiAsync = {
       FunctionLike<[Await<R2>], R3>,
       FunctionLike<[Await<R3>], R4>,
       FunctionLike<[Await<R4>], R5>,
-      FunctionLike<[Await<R5>], R6>
+      FunctionLike<[Await<R5>], R6>,
     ]
   ): FunctionLike<P, Promise<Await<R6>>>;
   <R0, R1, R2, R3, R4, R5, R6, R7, P extends any[]>(
@@ -331,7 +331,7 @@ export declare type PipeMultiAsync = {
       FunctionLike<[Await<R3>], R4>,
       FunctionLike<[Await<R4>], R5>,
       FunctionLike<[Await<R5>], R6>,
-      FunctionLike<[Await<R6>], R7>
+      FunctionLike<[Await<R6>], R7>,
     ]
   ): FunctionLike<P, Promise<Await<R7>>>;
   <R0, R1, R2, R3, R4, R5, R6, R7, R8, P extends any[]>(
@@ -344,7 +344,7 @@ export declare type PipeMultiAsync = {
       FunctionLike<[Await<R4>], R5>,
       FunctionLike<[Await<R5>], R6>,
       FunctionLike<[Await<R6>], R7>,
-      FunctionLike<[Await<R7>], R8>
+      FunctionLike<[Await<R7>], R8>,
     ]
   ): FunctionLike<P, Promise<Await<R8>>>;
   <R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, P extends any[]>(
@@ -358,7 +358,7 @@ export declare type PipeMultiAsync = {
       FunctionLike<[Await<R5>], R6>,
       FunctionLike<[Await<R6>], R7>,
       FunctionLike<[Await<R7>], R8>,
-      FunctionLike<[Await<R8>], R9>
+      FunctionLike<[Await<R8>], R9>,
     ]
   ): FunctionLike<P, Promise<Await<R9>>>;
 };

@@ -9,7 +9,7 @@ const LARGE_BUFFER = 1024 * 1000000;
 
 export default async function runExecutor(
   options: CargoPublishExecutorSchema,
-  context: ExecutorContext
+  context: ExecutorContext,
 ) {
   /**
    * We need to check both the env var and the option because the executor may have been triggered
@@ -22,7 +22,7 @@ export default async function runExecutor(
   }
 
   console.info(
-    `🚀  Running Storm Cargo Publish executor on the ${context.projectName} crate`
+    `🚀  Running Storm Cargo Publish executor on the ${context.projectName} crate`,
   );
 
   if (
@@ -44,26 +44,26 @@ export default async function runExecutor(
     context.projectsConfigurations.projects[context.projectName]?.root;
   const packageRoot = joinPathFragments(
     context.root,
-    (options.packageRoot ? options.packageRoot : root) as string
+    (options.packageRoot ? options.packageRoot : root) as string,
   );
 
   const cargoToml = parseCargoToml(
-    readFileSync(joinPathFragments(packageRoot, "Cargo.toml"), "utf-8")
+    readFileSync(joinPathFragments(packageRoot, "Cargo.toml"), "utf-8"),
   );
 
   try {
     const result = await getRegistryVersion(
       cargoToml.package.name,
       cargoToml.package.version,
-      registry
+      registry,
     );
     if (result) {
       console.warn(
-        `Skipped package "${cargoToml.package.name}" from project "${context.projectName}" because v${cargoToml.package.version} already exists in ${registry} with tag "latest"`
+        `Skipped package "${cargoToml.package.name}" from project "${context.projectName}" because v${cargoToml.package.version} already exists in ${registry} with tag "latest"`,
       );
 
       return {
-        success: true
+        success: true,
       };
     }
   } catch (_: any) {
@@ -71,7 +71,7 @@ export default async function runExecutor(
   }
 
   const cargoPublishCommandSegments = [
-    `cargo publish --allow-dirty -p ${cargoToml.package.name}`
+    `cargo publish --allow-dirty -p ${cargoToml.package.name}`,
   ];
   if (isDryRun) {
     cargoPublishCommandSegments.push("--dry-run");
@@ -87,10 +87,10 @@ export default async function runExecutor(
       maxBuffer: LARGE_BUFFER,
       env: {
         ...process.env,
-        FORCE_COLOR: "true"
+        FORCE_COLOR: "true",
       },
       cwd: packageRoot,
-      stdio: ["ignore", "pipe", "pipe"]
+      stdio: ["ignore", "pipe", "pipe"],
     });
 
     console.log("");
@@ -102,7 +102,7 @@ export default async function runExecutor(
     }
 
     return {
-      success: true
+      success: true,
     };
   } catch (error: any) {
     console.error(`Failed to publish to ${registry}`);
@@ -110,7 +110,7 @@ export default async function runExecutor(
     console.log("");
 
     return {
-      success: false
+      success: false,
     };
   }
 }
@@ -118,22 +118,22 @@ export default async function runExecutor(
 export const getRegistryVersion = (
   name: string,
   version: string,
-  registry: string
+  registry: string,
 ): Promise<string> => {
   return new Promise((resolve: (value: string) => void) =>
     https
       .get(
         `${registry}/api/v1/crates/${encodeURIComponent(name)}/${encodeURIComponent(
-          version
+          version,
         )}`,
-        res => {
-          res.on("data", d => {
+        (res) => {
+          res.on("data", (d) => {
             resolve(d);
           });
-        }
+        },
       )
-      .on("error", e => {
+      .on("error", (e) => {
         throw e;
-      })
+      }),
   );
 };

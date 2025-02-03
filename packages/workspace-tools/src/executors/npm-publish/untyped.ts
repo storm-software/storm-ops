@@ -4,53 +4,53 @@ export default defineUntypedSchema({
   $schema: {
     id: "NpmPublishExecutorSchema",
     title: "Npm Publish Executor",
-    description: "A type definition for a Npm Publish executor schema"
+    description: "A type definition for a Npm Publish executor schema",
   },
   packageRoot: {
     $schema: {
       title: "Package Root",
       type: "string",
       format: "path",
-      description: "The path to the package root"
-    }
+      description: "The path to the package root",
+    },
   },
   registry: {
     $schema: {
       title: "Registry",
       type: "string",
-      description: "The registry to publish to"
+      description: "The registry to publish to",
     },
-    $default: "https://registry.npmjs.org/"
+    $default: "https://registry.npmjs.org/",
   },
   tag: {
     $schema: {
       title: "Tag",
       type: "string",
-      description: "The tag to publish with"
+      description: "The tag to publish with",
     },
-    $default: "latest"
+    $default: "latest",
   },
   otp: {
     $schema: {
       title: "Otp",
       type: "number",
-      description: "The one time password"
-    }
+      description: "The one time password",
+    },
   },
   dryRun: {
     $schema: {
       title: "Dry Run",
       type: "boolean",
-      description: "Perform a dry run"
+      description: "Perform a dry run",
     },
-    $default: false
+    $default: false,
   },
   firstRelease: {
     $schema: {
       title: "First Release",
       type: "boolean",
-      description: "Publish the first release"
+      description: "Publish the first release",
     },
-    $default: false
-  }
+    $default: false,
+  },
 });

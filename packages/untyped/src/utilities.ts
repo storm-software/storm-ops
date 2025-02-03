@@ -10,7 +10,7 @@ import { Path } from "glob";
  */
 export const getOutputFile = (
   file: Path,
-  extension: "json" | "d.ts" | "md"
+  extension: "json" | "d.ts" | "md",
 ) => {
   let fileName = file.name
     .slice(0, file.name.lastIndexOf("."))

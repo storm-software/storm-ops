@@ -6,13 +6,13 @@ export default defineUntypedSchema({
   $schema: {
     id: "CargoClippyExecutorSchema",
     title: "Cargo Clippy Executor",
-    description: "A type definition for a Cargo/rust clippy executor schema"
+    description: "A type definition for a Cargo/rust clippy executor schema",
   },
   fix: {
     $schema: {
       title: "Fix",
       type: "boolean",
-      description: "Automatically fix issues"
-    }
-  }
+      description: "Automatically fix issues",
+    },
+  },
 });

@@ -2,7 +2,7 @@ import { S3 } from "@aws-sdk/client-s3";
 import {
   ProjectGraph,
   ProjectGraphDependency,
-  ProjectGraphProjectNode
+  ProjectGraphProjectNode,
 } from "@nx/devkit";
 import { writeDebug, writeWarning } from "@storm-software/config-tools";
 import { createHash } from "node:crypto";
@@ -15,7 +15,7 @@ export const r2UploadFile = async (
   version: string,
   fileContent: string,
   contentType = "text/plain",
-  isDryRun = false
+  isDryRun = false,
 ) => {
   const checksum = createHash("sha256").update(fileContent).digest("base64");
   const fileKey = `${projectPath}/${fileName.startsWith("/") ? fileName.substring(1) : fileName}`;
@@ -29,8 +29,8 @@ export const r2UploadFile = async (
       ContentType: contentType,
       Metadata: {
         version,
-        checksum
-      }
+        checksum,
+      },
     });
   } else {
     writeWarning("[Dry run]: skipping upload to the Cyclone Registry.");
@@ -39,7 +39,7 @@ export const r2UploadFile = async (
 
 export const getInternalDependencies = (
   projectName: string,
-  graph: ProjectGraph
+  graph: ProjectGraph,
 ): ProjectGraphProjectNode[] => {
   const allDeps = graph.dependencies[projectName] ?? [];
 
@@ -50,7 +50,7 @@ export const getInternalDependencies = (
         if (found) acc.push(found);
         return acc;
       },
-      []
-    )
+      [],
+    ),
   );
 };

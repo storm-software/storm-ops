@@ -8,7 +8,7 @@ import { HelmPackageExecutorSchema } from "./schema";
 export async function serveExecutor(
   options: HelmPackageExecutorSchema,
   context: ExecutorContext,
-  config?: StormConfig
+  config?: StormConfig,
 ) {
   if (
     !context?.projectName ||
@@ -38,20 +38,20 @@ export async function serveExecutor(
 
   const chartPath = await helm.package({
     chartFolder: options.chartFolder,
-    outputFolder: options.outputFolder
+    outputFolder: options.outputFolder,
   });
 
   if (options.push && chartPath && options.remote) {
     helm.push({
       chartPath,
-      remote: options.remote
+      remote: options.remote,
     });
   } else {
     writeWarning(`Chart packaged at: ${chartPath}`, config);
   }
 
   return {
-    success: true
+    success: true,
   };
 }
 
@@ -65,7 +65,7 @@ export default withRunExecutor<HelmPackageExecutorSchema>(
         options.port ??= 4500;
 
         return options as HelmPackageExecutorSchema;
-      }
-    }
-  }
+      },
+    },
+  },
 ) as PromiseExecutor<HelmPackageExecutorSchema>;

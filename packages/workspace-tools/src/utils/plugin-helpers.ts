@@ -7,7 +7,7 @@ import { getProjectTag, ProjectTagConstants } from "./project-tags";
 
 export const getProjectPlatform = (
   project: ProjectConfiguration,
-  ignoreTags = false
+  ignoreTags = false,
 ): "node" | "neutral" | "browser" | "worker" => {
   const tsconfigJson = readJsonFile(join(project.root, "tsconfig.json"));
   if (!tsconfigJson) {
@@ -31,7 +31,9 @@ export const getProjectPlatform = (
 
     if (
       platformTag === ProjectTagConstants.Platform.WORKER ||
-      types.some(type => type.toLowerCase() === "@cloudflare/workers-types") ||
+      types.some(
+        (type) => type.toLowerCase() === "@cloudflare/workers-types",
+      ) ||
       packageJson.devDependencies?.["@cloudflare/workers-types"] ||
       packageJson.devDependencies?.["wrangler"]
     ) {
@@ -40,7 +42,7 @@ export const getProjectPlatform = (
 
     if (
       platformTag === ProjectTagConstants.Platform.NODE ||
-      types?.some(type => type.toLowerCase() === "node") ||
+      types?.some((type) => type.toLowerCase() === "node") ||
       packageJson.devDependencies?.["@types/node"]
     ) {
       return "node";
@@ -48,14 +50,14 @@ export const getProjectPlatform = (
 
     if (
       platformTag === ProjectTagConstants.Platform.BROWSER ||
-      types?.some(type => type.toLowerCase() === "dom") ||
+      types?.some((type) => type.toLowerCase() === "dom") ||
       (packageJson.dependencies &&
-        Object.keys(packageJson.dependencies).some(dependency =>
-          dependency.includes("react")
+        Object.keys(packageJson.dependencies).some((dependency) =>
+          dependency.includes("react"),
         )) ||
       (packageJson.devDependencies &&
-        Object.keys(packageJson.devDependencies).some(devDependency =>
-          devDependency.includes("react")
+        Object.keys(packageJson.devDependencies).some((devDependency) =>
+          devDependency.includes("react"),
         ))
     ) {
       return "browser";
@@ -67,14 +69,14 @@ export const getProjectPlatform = (
 
 export const getProjectConfigFromProjectJsonPath = (
   projectJsonPath: string,
-  packageJson: PackageJson
+  packageJson: PackageJson,
 ): ProjectConfiguration => {
   return getProjectConfigFromProjectRoot(dirname(projectJsonPath), packageJson);
 };
 
 export const getProjectConfigFromProjectRoot = (
   projectRoot: string,
-  packageJson: PackageJson
+  packageJson: PackageJson,
 ): ProjectConfiguration => {
   const { nx, name } = packageJson;
   const projectJson = readJsonFile(join(projectRoot, "project.json"));
@@ -83,13 +85,13 @@ export const getProjectConfigFromProjectRoot = (
     targets: {},
     tags: [],
     name,
-    root: projectRoot
+    root: projectRoot,
   }) as ProjectConfiguration;
 };
 
 export const getProjectRoot = (
   configPath: string,
-  workspaceRoot: string
+  workspaceRoot: string,
 ): string | null => {
   try {
     const root = dirname(configPath);

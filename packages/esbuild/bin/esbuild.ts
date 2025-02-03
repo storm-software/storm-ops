@@ -6,13 +6,13 @@ import {
   getStopwatch,
   writeFatal,
   writeInfo,
-  writeSuccess
+  writeSuccess,
 } from "@storm-software/config-tools/logger/console";
 import { findWorkspaceRootSafe } from "@storm-software/config-tools/utilities/find-workspace-root";
 import {
   exitWithError,
   exitWithSuccess,
-  handleProcess
+  handleProcess,
 } from "@storm-software/config-tools/utilities/process-handler";
 import { Command, Option } from "commander";
 import { Format } from "esbuild";
@@ -39,34 +39,34 @@ async function createProgram(config: StormConfig) {
 
     const projectRootOption = new Option(
       "-p --project-root <path>",
-      "The path to the root of the project to build. This path is defined relative to the workspace root."
+      "The path to the root of the project to build. This path is defined relative to the workspace root.",
     ).makeOptionMandatory(true);
 
     const sourceRootOption = new Option(
       "-s --source-root <path>",
-      "The path of the project's source folder to build"
+      "The path of the project's source folder to build",
     );
 
     const nameOption = new Option(
       "-n --name <value>",
-      "The name of the project to build"
+      "The name of the project to build",
     );
 
     const outputPathOption = new Option(
       "-o --output-path <path>",
-      "The path of the project's source folder to build"
+      "The path of the project's source folder to build",
     ).default("dist/{projectRoot}");
 
     const platformOption = new Option(
       "-p --platform <value>",
-      "The platform to build the distribution for"
+      "The platform to build the distribution for",
     )
       .choices(["node", "neutral", "browser"])
       .default("node");
 
     const formatOption = new Option(
       "-f, --format <value...>",
-      "The format to build the distribution in"
+      "The format to build the distribution in",
     )
       .choices(["esm", "cjs", "iife"])
       .argParser<string[]>((value: string, previous: string[]) => {
@@ -82,27 +82,27 @@ async function createProgram(config: StormConfig) {
 
     const cleanOption = new Option(
       "-c --clean",
-      "Should the output directory be cleaned before building"
+      "Should the output directory be cleaned before building",
     ).default(true);
 
     const noCleanOption = new Option(
       "--no-clean",
-      "Should the output directory be cleaned before building"
+      "Should the output directory be cleaned before building",
     ).default(false);
 
     const bundleOption = new Option(
       "-b --bundle",
-      "Should the output be bundled"
+      "Should the output be bundled",
     ).default(true);
 
     const noBundleOption = new Option(
       "--no-bundle",
-      "Should the output be bundled"
+      "Should the output be bundled",
     ).default(false);
 
     const targetOption = new Option(
       "-t --target <value>",
-      "The target to build the distribution for"
+      "The target to build the distribution for",
     )
       .choices([
         "ESNext",
@@ -114,85 +114,85 @@ async function createProgram(config: StormConfig) {
         "ES2020",
         "ES2021",
         "ES2022",
-        "ES2023"
+        "ES2023",
       ])
       .default("ESNext");
 
     const watchOption = new Option(
       "-w --watch",
-      "Should the build process watch for changes"
+      "Should the build process watch for changes",
     ).default(false);
 
     const debugOption = new Option(
       "-d --debug",
-      "Should the build process run in debug mode"
+      "Should the build process run in debug mode",
     ).default(false);
 
     const bannerOption = new Option(
       "--banner <value>",
-      "The banner to prepend to the output"
+      "The banner to prepend to the output",
     );
 
     const footerOption = new Option(
       "--footer <value>",
-      "The footer to prepend to the output"
+      "The footer to prepend to the output",
     );
 
     const splittingOption = new Option(
       "--splitting",
-      "Should the output be split into multiple files"
+      "Should the output be split into multiple files",
     ).default(true);
 
     const treeShakingOption = new Option(
       "--tree-shaking",
-      "Should tree shaking be enabled"
+      "Should tree shaking be enabled",
     ).default(true);
 
     const generatePackageJsonOption = new Option(
       "--generate-package-json",
-      "Should a package.json be generated for the output"
+      "Should a package.json be generated for the output",
     ).default(true);
 
     const emitOnAllOption = new Option(
       "--emit-on-all",
-      "Should the output be emitted on all platforms"
+      "Should the output be emitted on all platforms",
     ).default(false);
 
     const metafileOption = new Option(
       "--metafile",
-      "Should a metafile be generated for the output"
+      "Should a metafile be generated for the output",
     ).default(true);
 
     const minifyOption = new Option(
       "--minify",
-      "Should the output be minified"
+      "Should the output be minified",
     ).default(true);
 
     const includeSrcOption = new Option(
       "--include-src",
-      "Should the source files be included in the output"
+      "Should the source files be included in the output",
     ).default(false);
 
     const verboseOption = new Option(
       "--verbose",
-      "Should the build process be verbose"
+      "Should the build process be verbose",
     ).default(false);
 
     const injectShimsOption = new Option(
       "--inject-shims",
-      "Should shims be injected into the output"
+      "Should shims be injected into the output",
     ).default(true);
 
     const emitTypesOption = new Option(
       "--emit-types",
-      "Should types be emitted for the output"
+      "Should types be emitted for the output",
     ).default(true);
 
     program
       .command("build", { isDefault: true })
       .alias("bundle")
       .description(
-        "Run a TypeScript build using ESBuild, API-Extractor, and TSC (for type generation)."
+        "Run a TypeScript build using ESBuild, API-Extractor, and TSC (for type generation).",
       )
       .addOption(nameOption)
       .addOption(projectRootOption)
@@ -225,7 +225,7 @@ async function createProgram(config: StormConfig) {
       .command("clean")
       .alias("clear")
       .description(
-        "Clean the output directory of the project. This command will remove the 'dist' folder."
+        "Clean the output directory of the project. This command will remove the 'dist' folder.",
       )
       .addOption(nameOption)
       .action(cleanAction(config));
@@ -234,7 +234,7 @@ async function createProgram(config: StormConfig) {
   } catch (e) {
     writeFatal(
       `A fatal error occurred while running the program: ${e.message}`,
-      config
+      config,
     );
     process.exit(1);
   }
@@ -245,12 +245,12 @@ const buildAction =
     try {
       await build({
         ...options,
-        format: options.format as Format
+        format: options.format as Format,
       });
     } catch (e) {
       writeFatal(
         `A fatal error occurred while cleaning the ESBuild output directory: ${e.message}`,
-        config
+        config,
       );
 
       exitWithError(config);
@@ -266,7 +266,7 @@ const cleanAction =
     } catch (e) {
       writeFatal(
         `A fatal error occurred while cleaning the ESBuild output directory: ${e.message}`,
-        config
+        config,
       );
 
       exitWithError(config);
@@ -286,13 +286,13 @@ void (async () => {
 
     writeSuccess(
       `🎉  Storm ESBuild executable has completed successfully!`,
-      config
+      config,
     );
     exitWithSuccess(config);
   } catch (error) {
     writeFatal(
       `A fatal error occurred while running Storm ESBuild executable: \n\n${error.message}`,
-      config
+      config,
     );
     exitWithError(config);
     process.exit(1);

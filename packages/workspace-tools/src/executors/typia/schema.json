@@ -2,11 +2,7 @@
   "id": "#",
   "title": "Typia Executor",
   "description": "A type definition for a Typia executor schema",
-  "required": [
-    "entry",
-    "tsconfig",
-    "outputPath"
-  ],
+  "required": ["entry", "tsconfig", "outputPath"],
   "properties": {
     "outputPath": {
       "title": "Output Path",
@@ -25,9 +21,7 @@
         "type": "string"
       },
       "id": "#entry",
-      "default": [
-        "{sourceRoot}/index.ts"
-      ]
+      "default": ["{sourceRoot}/index.ts"]
     },
     "tsconfig": {
       "title": "TSConfig Path",
@@ -48,9 +42,7 @@
   "type": "object",
   "default": {
     "outputPath": "{sourceRoot}/__generated__/typia",
-    "entry": [
-      "{sourceRoot}/index.ts"
-    ],
+    "entry": ["{sourceRoot}/index.ts"],
     "tsconfig": "{projectRoot}/tsconfig.json",
     "clean": true
   }

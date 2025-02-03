@@ -40,21 +40,22 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Table of Contents
 
 - [Storm Software CSpell Dictionary](#storm-software-cspell-dictionary)
-  - [Requirements](#requirements)
-  - [Installing](#installing)
-  - [Manual Installation](#manual-installation)
-  - [Building](#building)
-  - [Running unit tests](#running-unit-tests)
-  - [Storm Workspaces](#storm-workspaces)
-  - [Roadmap](#roadmap)
-  - [Support](#support)
-  - [License](#license)
-  - [Changelog](#changelog)
-  - [Contributing](#contributing)
-  - [Contributors](#contributors)
+    - [Requirements](#requirements)
+    - [Installing](#installing)
+    - [Manual Installation](#manual-installation)
+    - [Building](#building)
+    - [Running unit tests](#running-unit-tests)
+    - [Storm Workspaces](#storm-workspaces)
+    - [Roadmap](#roadmap)
+    - [Support](#support)
+    - [License](#license)
+    - [Changelog](#changelog)
+    - [Contributing](#contributing)
+    - [Contributors](#contributors)
 
 <!-- END doctoc -->
 

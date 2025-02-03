@@ -8,10 +8,10 @@ import { retrieveProjectConfigurationsWithoutPluginInference } from "nx/src/proj
  * @returns The project configurations.
  */
 export const getProjectConfigurations = async <
-  TConfig extends ProjectConfiguration = ProjectConfiguration
+  TConfig extends ProjectConfiguration = ProjectConfiguration,
 >(): Promise<Record<string, TConfig>> => {
   return retrieveProjectConfigurationsWithoutPluginInference(
-    findWorkspaceRoot()
+    findWorkspaceRoot(),
   ) as Promise<Record<string, TConfig>>;
 };
 
@@ -21,7 +21,7 @@ export const getProjectConfigurations = async <
  * @returns The project configurations.
  */
 export const getProjectConfiguration = <
-  TConfig extends ProjectConfiguration = ProjectConfiguration
+  TConfig extends ProjectConfiguration = ProjectConfiguration,
 >(
-  projectName: string
+  projectName: string,
 ): TConfig | undefined => getProjectConfigurations<TConfig>()?.[projectName];

@@ -4,7 +4,7 @@ import {
   findWorkspaceRoot,
   writeInfo,
   writeSuccess,
-  writeTrace
+  writeTrace,
 } from "@storm-software/config-tools";
 import * as z from "zod";
 import { JsonSchema7Type, zodToJsonSchema } from "zod-to-json-schema";
@@ -19,20 +19,20 @@ export type ModuleSchema = {
 export async function configSchemaGeneratorFn(
   tree: Tree,
   options: ConfigSchemaGeneratorSchema,
-  config?: StormConfig
+  config?: StormConfig,
 ) {
   writeInfo(
     "📦  Running Storm Workspace Configuration JSON Schema generator",
-    config
+    config,
   );
 
   writeTrace(
     `Determining the Storm Workspace Configuration JSON Schema...`,
-    config
+    config,
   );
 
   const jsonSchema = zodToJsonSchema(StormConfigSchema, {
-    name: "StormWorkspaceConfiguration"
+    name: "StormWorkspaceConfiguration",
   });
   writeTrace(jsonSchema, config);
 
@@ -40,12 +40,12 @@ export async function configSchemaGeneratorFn(
     .outputFile!.replaceAll("{workspaceRoot}", "")
     .replaceAll(
       config?.workspaceRoot ?? findWorkspaceRoot(),
-      options.outputFile?.startsWith("./") ? "" : "./"
+      options.outputFile?.startsWith("./") ? "" : "./",
     );
 
   writeTrace(
     `📝  Writing Storm Configuration JSON Schema to "${outputPath}"`,
-    config
+    config,
   );
 
   writeJson<
@@ -62,11 +62,11 @@ export async function configSchemaGeneratorFn(
 
   writeSuccess(
     "🚀  Storm Configuration JSON Schema creation has completed successfully!",
-    config
+    config,
   );
 
   return {
-    success: true
+    success: true,
   };
 }
 
@@ -76,12 +76,12 @@ export default withRunGenerator<ConfigSchemaGeneratorSchema>(
   {
     hooks: {
       applyDefaultOptions: (
-        options: ConfigSchemaGeneratorSchema
+        options: ConfigSchemaGeneratorSchema,
       ): ConfigSchemaGeneratorSchema => {
         options.outputFile ??= "{workspaceRoot}/storm-workspace.schema.json";
 
         return options;
-      }
-    }
-  }
+      },
+    },
+  },
 );

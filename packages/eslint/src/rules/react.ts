@@ -18,8 +18,8 @@ const config: Linter.RulesRecord = {
     {
       button: true,
       submit: true,
-      reset: true
-    }
+      reset: true,
+    },
   ],
 
   /**
@@ -74,8 +74,8 @@ const config: Linter.RulesRecord = {
     "error",
     {
       enforceDynamicLinks: "always",
-      allowReferrer: true
-    }
+      allowReferrer: true,
+    },
   ],
 
   /**
@@ -94,8 +94,8 @@ const config: Linter.RulesRecord = {
     "error",
     {
       allowAllCaps: true,
-      ignore: []
-    }
+      ignore: [],
+    },
   ],
 
   /**
@@ -142,9 +142,9 @@ const config: Linter.RulesRecord = {
         "componentDidUpdate",
         "componentWillUnmount",
         "componentDidCatch",
-        "getSnapshotBeforeUpdate"
-      ]
-    }
+        "getSnapshotBeforeUpdate",
+      ],
+    },
   ],
 
   // This rule enforces onChange or readonly attribute for checked property of input elements.
@@ -153,8 +153,8 @@ const config: Linter.RulesRecord = {
     "off",
     {
       ignoreMissingProperties: false,
-      ignoreExclusiveCheckedAttribute: false
-    }
+      ignoreExclusiveCheckedAttribute: false,
+    },
   ],
 
   // Prevent missing displayName in a React component definition
@@ -168,8 +168,8 @@ const config: Linter.RulesRecord = {
     {
       forbid: ["any", "array", "object"],
       checkContextTypes: true,
-      checkChildContextTypes: true
-    }
+      checkChildContextTypes: true,
+    },
   ],
 
   // Forbid certain props on DOM Nodes
@@ -194,8 +194,8 @@ const config: Linter.RulesRecord = {
     "error",
     {
       eventHandlerPrefix: "on",
-      eventHandlerPropPrefix: "on"
-    }
+      eventHandlerPropPrefix: "on",
+    },
   ],
 
   // Validate props indentation in JSX
@@ -220,8 +220,8 @@ const config: Linter.RulesRecord = {
       allowArrowFunctions: true,
       allowFunctions: false,
       allowBind: false,
-      ignoreDOMComponents: true
-    }
+      ignoreDOMComponents: true,
+    },
   ],
 
   // Prevent duplicate props in JSX
@@ -252,8 +252,8 @@ const config: Linter.RulesRecord = {
       shorthandFirst: false,
       shorthandLast: false,
       noSortAlphabetically: false,
-      reservedFirst: true
-    }
+      reservedFirst: true,
+    },
   ],
 
   // Enforce defaultProps declarations alphabetical sorting
@@ -261,8 +261,8 @@ const config: Linter.RulesRecord = {
   "react/sort-default-props": [
     "warn",
     {
-      ignoreCase: true
-    }
+      ignoreCase: true,
+    },
   ],
 
   // Prevent React to be incorrectly marked as unused
@@ -347,7 +347,7 @@ const config: Linter.RulesRecord = {
         "/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/",
         "instance-methods",
         "everything-else",
-        "rendering"
+        "rendering",
       ],
       groups: {
         lifecycle: [
@@ -375,11 +375,11 @@ const config: Linter.RulesRecord = {
           "getSnapshotBeforeUpdate",
           "componentDidUpdate",
           "componentDidCatch",
-          "componentWillUnmount"
+          "componentWillUnmount",
         ],
-        rendering: ["/^render.+$/", "render"]
-      }
-    }
+        rendering: ["/^render.+$/", "render"],
+      },
+    },
   ],
 
   // Prevent missing parentheses around multilines JSX
@@ -393,8 +393,8 @@ const config: Linter.RulesRecord = {
       arrow: "parens-new-line",
       condition: "parens-new-line",
       logical: "parens-new-line",
-      prop: "parens-new-line"
-    }
+      prop: "parens-new-line",
+    },
   ],
 
   // Require that the first prop in a JSX element be on a new line when the element is multiline
@@ -413,7 +413,7 @@ const config: Linter.RulesRecord = {
   // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
   "react/jsx-filename-extension": [
     "error",
-    { extensions: [".jsx", ".tsx", ".mdx"] }
+    { extensions: [".jsx", ".tsx", ".mdx"] },
   ],
 
   // prevent accidental JS comments from being injected into JSX as text
@@ -450,8 +450,8 @@ const config: Linter.RulesRecord = {
     "error",
     {
       customValidators: [],
-      skipShapeProps: true
-    }
+      skipShapeProps: true,
+    },
   ],
 
   // Require style prop value be an object or var
@@ -474,8 +474,8 @@ const config: Linter.RulesRecord = {
       closingSlash: "never",
       beforeSelfClosing: "always",
       afterOpening: "never",
-      beforeClosing: "never"
-    }
+      beforeClosing: "never",
+    },
   ],
 
   // Enforce spaces before the closing bracket of self-closing JSX elements
@@ -488,8 +488,8 @@ const config: Linter.RulesRecord = {
   "react/require-default-props": [
     "error",
     {
-      forbidDefaultForRequired: true
-    }
+      forbidDefaultForRequired: true,
+    },
   ],
 
   // Forbids using non-exported propTypes
@@ -506,7 +506,7 @@ const config: Linter.RulesRecord = {
   // https://github.com/jsx-eslint/eslint-plugin-react/blob/9e13ae2c51e44872b45cc15bf1ac3a72105bdd0e/docs/rules/default-props-match-prop-types.md
   "react/default-props-match-prop-types": [
     "error",
-    { allowRequiredDefaults: false }
+    { allowRequiredDefaults: false },
   ],
 
   // Prevent usage of shouldComponentUpdate when extending React.PureComponent
@@ -524,8 +524,8 @@ const config: Linter.RulesRecord = {
     {
       propTypeNames: ["bool", "mutuallyExclusiveTrueProps"],
       rule: "^(is|has)[A-Z]([A-Za-z0-9]?)+",
-      message: ""
-    }
+      message: "",
+    },
   ],
 
   // Prevents common casing typos
@@ -569,8 +569,8 @@ const config: Linter.RulesRecord = {
     "error",
     {
       multiline: "consistent",
-      singleline: "consistent"
-    }
+      singleline: "consistent",
+    },
   ],
 
   // Enforce state initialization style
@@ -591,8 +591,8 @@ const config: Linter.RulesRecord = {
       html: "enforce",
       custom: "enforce",
       explicitSpread: "ignore",
-      exceptions: []
-    }
+      exceptions: [],
+    },
   ],
 
   // Enforce that props are read-only
@@ -606,9 +606,9 @@ const config: Linter.RulesRecord = {
     [
       {
         name: "Link",
-        props: ["to"]
-      }
-    ]
+        props: ["to"],
+      },
+    ],
   ],
 
   // Prevent adjacent inline elements not separated by whitespace
@@ -652,7 +652,7 @@ const config: Linter.RulesRecord = {
   // https://github.com/jsx-eslint/eslint-plugin-react/blob/66b58dd4864678eb869a7bf434c72ff7ac530eb1/docs/rules/no-object-type-as-default-prop.md
   // https://github.com/jsx-eslint/eslint-plugin-react/blob/66b58dd4864678eb869a7bf434c72ff7ac530eb1/docs/rules/no-object-type-as-default-prop.md
   // TODO: semver-major, enable
-  "react/no-object-type-as-default-prop": "off"
+  "react/no-object-type-as-default-prop": "off",
 
   // https://github.com/jsx-eslint/eslint-plugin-react/blob/66b58dd4864678eb869a7bf434c72ff7ac530eb1/docs/rules/sort-default-props.md
   // https://github.com/jsx-eslint/eslint-plugin-react/blob/66b58dd4864678eb869a7bf434c72ff7ac530eb1/docs/rules/sort-default-props.md

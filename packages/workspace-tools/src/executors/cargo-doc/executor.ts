@@ -5,7 +5,7 @@ import { CargoDocExecutorSchema } from "./schema.d";
 
 export async function cargoDocExecutor(
   options: CargoDocExecutorSchema,
-  context: ExecutorContext
+  context: ExecutorContext,
 ) {
   const opts = { ...options };
 
@@ -33,7 +33,7 @@ export default withRunExecutor<CargoDocExecutorSchema>(
         options.noDeps ??= false;
 
         return options as CargoDocExecutorSchema;
-      }
-    }
-  }
+      },
+    },
+  },
 ) as PromiseExecutor<CargoDocExecutorSchema>;

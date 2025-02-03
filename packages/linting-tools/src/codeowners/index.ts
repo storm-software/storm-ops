@@ -14,17 +14,17 @@ export async function runCodeowners() {
     fs.existsSync(join(config.workspaceRoot, ".github", "CODEOWNERS"))
       ? join(config.workspaceRoot, ".github", "CODEOWNERS")
       : join(config.workspaceRoot, "CODEOWNERS"),
-    "utf8"
+    "utf8",
   );
   const codeownersLines = codeowners
     .split("\n")
-    .filter(line => line.trim().length > 0 && !line.startsWith("#"));
+    .filter((line) => line.trim().length > 0 && !line.startsWith("#"));
 
   const mismatchedPatterns: string[] = [];
   const mismatchedOwners: string[] = [];
 
   const gh = new Octokit({
-    auth: process.env.GITHUB_TOKEN
+    auth: process.env.GITHUB_TOKEN,
   }).rest;
   const cache: Map<string, boolean> = new Map();
 
@@ -48,10 +48,10 @@ export async function runCodeowners() {
           "**/node_modules/**",
           "**/.git/**",
           "**/.cache/**",
-          "**/.nx/**"
+          "**/.nx/**",
         ],
         withFileTypes: true,
-        cwd: config.workspaceRoot
+        cwd: config.workspaceRoot,
       });
       if (files.length > 0) {
         foundMatchingFiles = true;
@@ -89,20 +89,20 @@ export async function runCodeowners() {
       }
     } else {
       writeWarning(
-        `Skipping owner validation because GITHUB_TOKEN is not set.`
+        `Skipping owner validation because GITHUB_TOKEN is not set.`,
       );
     }
   }
 
   if (mismatchedPatterns.length > 0) {
     throw new Error(
-      `The following patterns in CODEOWNERS do not match any files: \n${mismatchedPatterns.map(e => `- ${e} `).join("\n")}`
+      `The following patterns in CODEOWNERS do not match any files: \n${mismatchedPatterns.map((e) => `- ${e} `).join("\n")}`,
     );
   }
 
   if (mismatchedOwners.length > 0) {
     throw new Error(
-      `The following owners in CODEOWNERS do not exist: \n${mismatchedOwners.map(e => `- ${e} `).join("\n")}`
+      `The following owners in CODEOWNERS do not exist: \n${mismatchedOwners.map((e) => `- ${e} `).join("\n")}`,
     );
   }
 }
@@ -110,12 +110,12 @@ export async function runCodeowners() {
 async function validateTeam(
   gh: Octokit["rest"],
   org: string,
-  team: string
+  team: string,
 ): Promise<boolean> {
   try {
     await gh.teams.getByName({
       org,
-      team_slug: team
+      team_slug: team,
     });
     return true;
   } catch {
@@ -125,11 +125,11 @@ async function validateTeam(
 
 async function validateUser(
   gh: Octokit["rest"],
-  username: string
+  username: string,
 ): Promise<boolean> {
   try {
     await gh.users.getByUsername({
-      username
+      username,
     });
     return true;
   } catch {

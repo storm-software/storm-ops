@@ -24,13 +24,13 @@ import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
  */
 export const esmSplitCodeToCjsPlugin = (
   options: ESBuildOptions,
-  resolvedOptions: ESBuildResolvedOptions
+  resolvedOptions: ESBuildResolvedOptions,
 ): esbuild.Plugin => ({
   name: "storm:esm-split-code-to-cjs",
   setup(build) {
-    build.onEnd(async result => {
+    build.onEnd(async (result) => {
       const outFiles = Object.keys(result.metafile?.outputs ?? {});
-      const jsFiles = outFiles.filter(f => f.endsWith("js"));
+      const jsFiles = outFiles.filter((f) => f.endsWith("js"));
 
       await esbuild.build({
         outdir: resolvedOptions.outdir,
@@ -38,8 +38,8 @@ export const esmSplitCodeToCjsPlugin = (
         allowOverwrite: true,
         format: "cjs",
         logLevel: "error",
-        packages: "external"
+        packages: "external",
       });
     });
-  }
+  },
 });

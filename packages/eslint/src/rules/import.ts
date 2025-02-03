@@ -36,7 +36,7 @@ const config: Linter.RulesRecord = {
    */
   "import/no-extraneous-dependencies": [
     "error",
-    { includeInternal: true, includeTypes: true }
+    { includeInternal: true, includeTypes: true },
   ],
 
   /**
@@ -81,10 +81,10 @@ const config: Linter.RulesRecord = {
         "internal", // Aliased modules
         "parent", // Relative parent
         "sibling", // Relative sibling
-        "index" // Relative index
+        "index", // Relative index
       ],
-      "newlines-between": "never"
-    }
+      "newlines-between": "never",
+    },
   ],
 
   "import/extensions": ["error", "ignorePackages"], // Bob when bundling requires to have `.js` extension
@@ -205,8 +205,8 @@ const config: Linter.RulesRecord = {
   "import/no-internal-modules": [
     "off",
     {
-      allow: []
-    }
+      allow: [],
+    },
   ],
 
   // Warn if a module could be mistakenly parsed as a script by a consumer
@@ -239,8 +239,8 @@ const config: Linter.RulesRecord = {
       allowAnonymousClass: false,
       allowAnonymousFunction: false,
       allowLiteral: false,
-      allowObject: false
-    }
+      allowObject: false,
+    },
   ],
 
   // This rule enforces that all exports are declared at the bottom of the file.
@@ -271,8 +271,8 @@ const config: Linter.RulesRecord = {
     "off",
     {
       importFunctions: [],
-      webpackChunknameFormat: "[0-9a-zA-Z-_/.]+"
-    }
+      webpackChunknameFormat: "[0-9a-zA-Z-_/.]+",
+    },
   ],
 
   // Use this rule to prevent imports to folders in relative parent paths.
@@ -287,8 +287,8 @@ const config: Linter.RulesRecord = {
     {
       ignoreExports: [],
       missingExports: true,
-      unusedExports: true
-    }
+      unusedExports: true,
+    },
   ],
 
   // Reports the use of import declarations with CommonJS exports in any module except for the main module.
@@ -296,8 +296,8 @@ const config: Linter.RulesRecord = {
   "import/no-import-module-exports": [
     "error",
     {
-      exceptions: []
-    }
+      exceptions: [],
+    },
   ],
 
   // enforce a consistent style for type specifiers (inline or top-level)
@@ -308,7 +308,7 @@ const config: Linter.RulesRecord = {
   // Reports the use of empty named import blocks.
   // https://github.com/import-js/eslint-plugin-import/blob/d5fc8b670dc8e6903dbb7b0894452f60c03089f5/docs/rules/no-empty-named-blocks.md
   // TODO, semver-minor: enable
-  "import/no-empty-named-blocks": "off"
+  "import/no-empty-named-blocks": "off",
 };
 
 export default config;

@@ -18,7 +18,7 @@ import { findWorkspaceRoot } from "../utilities/find-workspace-root";
 export const getConfigFileByName = async (
   fileName: string,
   filePath?: string,
-  options: LoadConfigOptions<Partial<StormConfigInput>> = {}
+  options: LoadConfigOptions<Partial<StormConfigInput>> = {},
 ): Promise<ResolvedConfig<Partial<StormConfigInput>>> => {
   const workspacePath = filePath || findWorkspaceRoot(filePath);
 
@@ -35,10 +35,10 @@ export const getConfigFileByName = async (
             ? false
             : joinPaths(
                 process.env.STORM_CACHE_DIR || "node_modules/.cache/storm",
-                "jiti"
-              )
+                "jiti",
+              ),
       },
-      ...options
+      ...options,
     }),
     loadConfig<Partial<StormConfigInput>>({
       cwd: workspacePath,
@@ -52,12 +52,12 @@ export const getConfigFileByName = async (
             ? false
             : joinPaths(
                 process.env.STORM_CACHE_DIR || "node_modules/.cache/storm",
-                "jiti"
-              )
+                "jiti",
+              ),
       },
       configFile: fileName,
-      ...options
-    })
+      ...options,
+    }),
   ]);
 
   return defu(configs[0] ?? {}, configs[1] ?? {});
@@ -70,7 +70,7 @@ export const getConfigFileByName = async (
  */
 export const getConfigFile = async (
   filePath?: string,
-  additionalFileNames: string[] = []
+  additionalFileNames: string[] = [],
 ): Promise<Partial<StormConfigInput> | undefined> => {
   const workspacePath = filePath ? filePath : findWorkspaceRoot(filePath);
 
@@ -91,16 +91,16 @@ export const getConfigFile = async (
           : configFile
       }" at "${workspacePath}"`,
       {
-        logLevel: "all"
-      }
+        logLevel: "all",
+      },
     );
   }
 
   if (additionalFileNames && additionalFileNames.length > 0) {
     const results = await Promise.all(
-      additionalFileNames.map(fileName =>
-        getConfigFileByName(fileName, workspacePath)
-      )
+      additionalFileNames.map((fileName) =>
+        getConfigFileByName(fileName, workspacePath),
+      ),
     );
     for (const result of results) {
       if (
@@ -116,8 +116,8 @@ export const getConfigFile = async (
                 : result.configFile
             }" at "${workspacePath}"`,
             {
-              logLevel: "all"
-            }
+              logLevel: "all",
+            },
           );
         }
 

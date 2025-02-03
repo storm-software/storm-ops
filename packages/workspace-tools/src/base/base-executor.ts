@@ -13,7 +13,7 @@ import {
   writeFatal,
   writeInfo,
   writeSuccess,
-  writeTrace
+  writeTrace,
 } from "@storm-software/config-tools";
 import { defu } from "defu";
 import { BaseExecutorOptions, BaseExecutorResult } from "../types";
@@ -25,18 +25,18 @@ export const withRunExecutor =
     executorFn: (
       options: TExecutorSchema,
       context: ExecutorContext,
-      config: StormConfig
+      config: StormConfig,
     ) =>
       | Promise<BaseExecutorResult | null | undefined>
       | AsyncGenerator<any, BaseExecutorResult | null | undefined>
       | BaseExecutorResult
       | null
       | undefined,
-    executorOptions: BaseExecutorOptions<TExecutorSchema> = {}
+    executorOptions: BaseExecutorOptions<TExecutorSchema> = {},
   ): PromiseExecutor<TExecutorSchema> =>
   async (
     _options: TExecutorSchema,
-    context: ExecutorContext
+    context: ExecutorContext,
   ): Promise<{ success: boolean }> => {
     const stopwatch = getStopwatch(name);
     let options = _options;
@@ -49,7 +49,7 @@ export const withRunExecutor =
         !context.projectsConfigurations.projects[context.projectName]
       ) {
         throw new Error(
-          "The Build process failed because the context is not valid. Please run this command from a workspace."
+          "The Build process failed because the context is not valid. Please run this command from a workspace.",
         );
       }
 
@@ -74,7 +74,7 @@ export const withRunExecutor =
  - projectRoot: ${projectRoot}
  - sourceRoot: ${sourceRoot}
  - projectName: ${projectName}\n`,
-          config
+          config,
         );
 
         config = await getConfig(workspaceRoot);
@@ -83,7 +83,7 @@ export const withRunExecutor =
       if (executorOptions?.hooks?.applyDefaultOptions) {
         writeDebug("Running the applyDefaultOptions hook...", config);
         options = await Promise.resolve(
-          executorOptions.hooks.applyDefaultOptions(options, config)
+          executorOptions.hooks.applyDefaultOptions(options, config),
         );
         writeDebug("Completed the applyDefaultOptions hook", config);
       }
@@ -92,7 +92,7 @@ export const withRunExecutor =
         `Executor schema options ⚙️
 ${formatLogMessage(options)}
 `,
-        config
+        config,
       );
 
       const tokenized = (await applyWorkspaceTokens<ProjectTokenizerOptions>(
@@ -100,22 +100,22 @@ ${formatLogMessage(options)}
         defu(
           { workspaceRoot, projectRoot, sourceRoot, projectName, config },
           config,
-          context.projectsConfigurations.projects[context.projectName]
+          context.projectsConfigurations.projects[context.projectName],
         ),
-        applyWorkspaceProjectTokens
+        applyWorkspaceProjectTokens,
       )) as TExecutorSchema;
 
       writeTrace(
         `Executor schema tokenized options ⚙️
 ${formatLogMessage(tokenized)}
 `,
-        config
+        config,
       );
 
       if (executorOptions?.hooks?.preProcess) {
         writeDebug("Running the preProcess hook...", config);
         await Promise.resolve(
-          executorOptions.hooks.preProcess(tokenized, config)
+          executorOptions.hooks.preProcess(tokenized, config),
         );
         writeDebug("Completed the preProcess hook", config);
       }
@@ -133,7 +133,7 @@ ${formatLogMessage(tokenized)}
           | Promise<BaseExecutorResult | null | undefined>
           | BaseExecutorResult
           | null
-          | undefined
+          | undefined,
       );
       if (
         result &&
@@ -146,12 +146,12 @@ ${formatLogMessage(tokenized)}
       ) {
         writeTrace(
           `Failure determined by the ${name} executor \n${formatLogMessage(result)}`,
-          config
+          config,
         );
         console.error(result);
 
         throw new Error(`The ${name} executor failed to run`, {
-          cause: result?.error
+          cause: result?.error,
         });
       }
 
@@ -164,20 +164,20 @@ ${formatLogMessage(tokenized)}
       writeSuccess(`Completed running the ${name} task executor!\n`, config);
 
       return {
-        success: true
+        success: true,
       };
     } catch (error) {
       writeFatal(
         "A fatal error occurred while running the executor - the process was forced to terminate",
-        config
+        config,
       );
       writeError(
         `An exception was thrown in the executor's process \n - Details: ${error.message}\n - Stacktrace: ${error.stack}`,
-        config
+        config,
       );
 
       return {
-        success: false
+        success: false,
       };
     } finally {
       stopwatch();
@@ -185,7 +185,7 @@ ${formatLogMessage(tokenized)}
   };
 
 const _isFunction = (
-  value: unknown
+  value: unknown,
 ): value is ((params?: unknown) => unknown) & ((param?: any) => any) => {
   try {
     return (

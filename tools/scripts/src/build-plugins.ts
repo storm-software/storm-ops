@@ -6,7 +6,7 @@ Promise.all([
     entryPoints: [
       "packages/workspace-tools/src/plugins/rust/index.ts",
       "packages/workspace-tools/src/plugins/typescript/index.ts",
-      "packages/workspace-tools/src/plugins/typescript/tsup.ts"
+      "packages/workspace-tools/src/plugins/typescript/tsup.ts",
     ],
     outdir: "dist/plugins",
     tsconfig: "packages/workspace-tools/tsconfig.json",
@@ -15,10 +15,10 @@ Promise.all([
     bundle: true,
     minify: false,
     outExtension: {
-      ".js": ".js"
+      ".js": ".js",
     },
     format: "cjs",
-    platform: "node"
+    platform: "node",
   }).then(() => {
     consola.info("Storm Workspace plugins built successfully");
   }),
@@ -31,13 +31,13 @@ Promise.all([
     bundle: true,
     minify: false,
     outExtension: {
-      ".js": ".js"
+      ".js": ".js",
     },
     format: "cjs",
-    platform: "node"
+    platform: "node",
   }).then(() => {
     consola.info("Storm Cloudflare plugin built successfully");
-  })
+  }),
 ]).then(() => {
   consola.info("All Storm plugin built successfully");
 });

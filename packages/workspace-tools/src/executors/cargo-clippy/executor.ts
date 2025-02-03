@@ -5,7 +5,7 @@ import { CargoClippyExecutorSchema } from "./schema.d";
 
 export async function cargoClippyExecutor(
   options: CargoClippyExecutorSchema,
-  context: ExecutorContext
+  context: ExecutorContext,
 ) {
   const command = buildCargoCommand("clippy", options, context);
   return await cargoCommand(...command);
@@ -22,7 +22,7 @@ export default withRunExecutor<CargoClippyExecutorSchema>(
         options.fix ??= false;
 
         return options as CargoClippyExecutorSchema;
-      }
-    }
-  }
+      },
+    },
+  },
 ) as PromiseExecutor<CargoClippyExecutorSchema>;

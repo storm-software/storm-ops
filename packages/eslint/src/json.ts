@@ -15,14 +15,14 @@ const JSONC_FILES = [
   "**/tsconfig.json",
   "**/tsconfig.base.json",
   "**/nx.json",
-  "**/.vscode/launch.json"
+  "**/.vscode/launch.json",
 ];
 
 const workspaceRoot = findWorkspaceRoot();
 const compat = new FlatCompat({
   baseDirectory: workspaceRoot,
   recommendedConfig: js.configs.recommended,
-  ignores: DEFAULT_IGNORES
+  ignores: DEFAULT_IGNORES,
 });
 
 const config: Linter.FlatConfig[] = [
@@ -31,38 +31,38 @@ const config: Linter.FlatConfig[] = [
     files: ["**/*.json", "**/*.jsonc", ...JSONC_FILES, "**/*.json5"],
     ignores: DEFAULT_IGNORES,
     plugins: {
-      "jsonc": jsoncPlugin,
-      "@nx": nxEslintPlugin
+      jsonc: jsoncPlugin,
+      "@nx": nxEslintPlugin,
       // "unicorn": unicornPlugin
     },
     languageOptions: {
-      parser: jsoncParser
-    }
+      parser: jsoncParser,
+    },
   },
-  ...compat.extends("plugin:jsonc/recommended-with-json").map(config => ({
+  ...compat.extends("plugin:jsonc/recommended-with-json").map((config) => ({
     ...config,
     files: ["**/*.json"],
-    ignores: [...DEFAULT_IGNORES, JSONC_FILES]
+    ignores: [...DEFAULT_IGNORES, JSONC_FILES],
   })),
-  ...compat.extends("plugin:jsonc/recommended-with-json").map(config => ({
+  ...compat.extends("plugin:jsonc/recommended-with-json").map((config) => ({
     ...config,
     files: ["**/executors/**/schema.json", "**/generators/**/schema.json"],
     ignores: [...DEFAULT_IGNORES, JSONC_FILES],
     rules: {
       ...config.rules,
-      "@nx/workspace/valid-schema-description": "error"
-    }
+      "@nx/workspace/valid-schema-description": "error",
+    },
   })),
-  ...compat.extends("plugin:jsonc/recommended-with-jsonc").map(config => ({
+  ...compat.extends("plugin:jsonc/recommended-with-jsonc").map((config) => ({
     ...config,
     files: ["**/*.jsonc", ...JSONC_FILES],
-    ignores: DEFAULT_IGNORES
+    ignores: DEFAULT_IGNORES,
   })),
-  ...compat.extends("plugin:jsonc/recommended-with-json5").map(config => ({
+  ...compat.extends("plugin:jsonc/recommended-with-json5").map((config) => ({
     ...config,
     files: ["**/*.json5"],
-    ignores: DEFAULT_IGNORES
-  }))
+    ignores: DEFAULT_IGNORES,
+  })),
   // ...compat.extends("plugin:jsonc/recommended-with-json5").map(config => ({
   //   ...config,
   //   files: ["**/*.json{,c,5}"],

@@ -5,7 +5,7 @@ import { findFilePath } from "../utilities/file-utils";
 export const getExecutorMarkdown = (
   _packageName: string,
   executorsJsonFile: string,
-  executorsJson: Record<string, any>
+  executorsJson: Record<string, any>,
 ): string => {
   if (!executorsJson?.executors) {
     return "";
@@ -25,11 +25,11 @@ export const getExecutorMarkdown = (
       if (executor.schema) {
         const schemaJsonPath = join(
           findFilePath(executorsJsonFile),
-          executor.schema
+          executor.schema,
         );
         if (existsSync(schemaJsonPath)) {
           const schemaJson = JSON.parse(
-            readFileSync(schemaJsonPath, "utf8") ?? "{}"
+            readFileSync(schemaJsonPath, "utf8") ?? "{}",
           );
 
           if (schemaJson.title) {
@@ -72,7 +72,7 @@ export const getExecutorMarkdown = (
                         .map((x: any) =>
                           !schema.type || schema.type === "string"
                             ? `"${x}"`
-                            : `\`${x}\``
+                            : `\`${x}\``,
                         )
                         .join(" \\| ")}    `;
                     } else if (schema.type === "array" && schema.items?.type) {
@@ -141,7 +141,7 @@ export const getExecutorMarkdown = (
 export const getGeneratorMarkdown = (
   packageName: string,
   generatorsJsonFile: string,
-  generatorsJson: Record<string, any>
+  generatorsJson: Record<string, any>,
 ): string => {
   if (!generatorsJson?.generators) {
     return "";
@@ -162,11 +162,11 @@ export const getGeneratorMarkdown = (
       if (generator.schema) {
         const schemaJsonPath = join(
           findFilePath(generatorsJsonFile),
-          generator.schema
+          generator.schema,
         );
         if (existsSync(schemaJsonPath)) {
           const schemaJson = JSON.parse(
-            readFileSync(schemaJsonPath, "utf8") ?? "{}"
+            readFileSync(schemaJsonPath, "utf8") ?? "{}",
           );
 
           if (schemaJson.title) {
@@ -208,7 +208,7 @@ export const getGeneratorMarkdown = (
                         .map((x: any) =>
                           !schema.type || schema.type === "string"
                             ? `"${x}"`
-                            : `\`${x}\``
+                            : `\`${x}\``,
                         )
                         .join(" \\| ")}    `;
                     } else if (schema.type === "array" && schema.items?.type) {
@@ -290,7 +290,7 @@ export const getGeneratorMarkdown = (
               ) {
                 example = `### Example \n\n${schemaJson.example.description.replaceAll(
                   "*",
-                  "\\*"
+                  "\\*",
                 )} \n\n`;
               } else {
                 example =

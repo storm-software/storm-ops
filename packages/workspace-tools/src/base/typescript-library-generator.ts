@@ -10,19 +10,19 @@ import {
   offsetFromRoot,
   readJson,
   updateJson,
-  writeJson
+  writeJson,
 } from "@nx/devkit";
 import { determineProjectNameAndRootOptions } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import {
   addTsConfigPath,
   getRelativePathToRootTsConfig,
-  tsConfigBaseOptions
+  tsConfigBaseOptions,
 } from "@nx/js";
 import jsInitGenerator from "@nx/js/src/generators/init/init";
 import { InitSchema } from "@nx/js/src/generators/init/schema";
 import {
   Bundler,
-  NormalizedLibraryGeneratorOptions
+  NormalizedLibraryGeneratorOptions,
 } from "@nx/js/src/generators/library/schema";
 import setupVerdaccio from "@nx/js/src/generators/setup-verdaccio/generator";
 import { ProjectPackageManagerWorkspaceState } from "@nx/js/src/utils/package-manager-workspaces";
@@ -57,7 +57,7 @@ type TypeScriptLibraryProjectConfig = ProjectConfiguration & {
 export async function typeScriptLibraryGeneratorFn(
   tree: Tree,
   options: TypeScriptLibraryGeneratorOptions,
-  config?: StormConfig
+  config?: StormConfig,
 ) {
   const normalized = await normalizeOptions(tree, { ...options });
 
@@ -67,8 +67,8 @@ export async function typeScriptLibraryGeneratorFn(
       ...normalized,
       tsConfigName: normalized.rootProject
         ? "tsconfig.json"
-        : "tsconfig.base.json"
-    } as InitSchema)
+        : "tsconfig.base.json",
+    } as InitSchema),
   );
 
   tasks.push(
@@ -78,9 +78,9 @@ export async function typeScriptLibraryGeneratorFn(
       {
         "@storm-software/workspace-tools": "latest",
         "@storm-software/testing-tools": "latest",
-        ...(options.devDependencies ?? {})
-      }
-    )
+        ...(options.devDependencies ?? {}),
+      },
+    ),
   );
 
   if (normalized.publishable) {
@@ -106,27 +106,27 @@ export async function typeScriptLibraryGeneratorFn(
             {
               input: normalized.projectRoot,
               glob: "*.md",
-              output: "/"
+              output: "/",
             },
             {
               input: "",
               glob: "LICENSE",
-              output: "/"
-            }
-          ]
+              output: "/",
+            },
+          ],
         },
         configurations: {
           production: {
             debug: false,
-            verbose: false
+            verbose: false,
           },
           development: {
             debug: true,
-            verbose: true
-          }
-        }
-      }
-    }
+            verbose: true,
+          },
+        },
+      },
+    },
   } as TypeScriptLibraryProjectConfig;
 
   if (options.platform) {
@@ -144,7 +144,7 @@ export async function typeScriptLibraryGeneratorFn(
         : options.platform === "browser"
           ? ProjectTagConstants.Platform.BROWSER
           : ProjectTagConstants.Platform.NEUTRAL,
-    { overwrite: false }
+    { overwrite: false },
   );
 
   createProjectTsConfigJson(tree, normalized);
@@ -154,7 +154,7 @@ export async function typeScriptLibraryGeneratorFn(
     type: "github",
     url:
       config?.repository ||
-      `https://github.com/${config?.organization || "storm-software"}/${config?.namespace || config?.name || "repository"}.git`
+      `https://github.com/${config?.organization || "storm-software"}/${config?.namespace || config?.name || "repository"}.git`,
   };
 
   let description =
@@ -200,15 +200,15 @@ export async function typeScriptLibraryGeneratorFn(
         description,
         repository: {
           ...repository,
-          directory: normalized.projectRoot
+          directory: normalized.projectRoot,
         },
         type: "module",
         dependencies: {
-          ...json.dependencies
+          ...json.dependencies,
         },
         publishConfig: {
-          access: "public"
-        }
+          access: "public",
+        },
       } as unknown as PackageJson;
     });
   } else {
@@ -218,26 +218,26 @@ export async function typeScriptLibraryGeneratorFn(
       description,
       repository: {
         ...repository,
-        directory: normalized.projectRoot
+        directory: normalized.projectRoot,
       },
       private: !normalized.publishable || normalized.rootProject,
       type: "module",
       publishConfig: {
-        access: "public"
-      }
+        access: "public",
+      },
     } as unknown as PackageJson);
   }
 
   if (tree.exists("package.json") && normalized.importPath) {
-    updateJson(tree, "package.json", json => ({
+    updateJson(tree, "package.json", (json) => ({
       ...json,
       pnpm: {
         ...json?.pnpm,
         overrides: {
           ...json?.pnpm?.overrides,
-          [normalized.importPath ?? ""]: "workspace:*"
-        }
-      }
+          [normalized.importPath ?? ""]: "workspace:*",
+        },
+      },
     }));
   }
 
@@ -245,11 +245,11 @@ export async function typeScriptLibraryGeneratorFn(
     joinPaths(
       normalized.projectRoot,
       "./src",
-      `index.${normalized.js ? "js" : "ts"}`
-    )
+      `index.${normalized.js ? "js" : "ts"}`,
+    ),
   ]);
   addTsConfigPath(tree, joinPaths(normalized.importPath, "/*"), [
-    joinPaths(normalized.projectRoot, "./src", "/*")
+    joinPaths(normalized.projectRoot, "./src", "/*"),
   ]);
 
   if (tree.exists("package.json")) {
@@ -278,11 +278,11 @@ export async function typeScriptLibraryGeneratorFn(
       extends: `${offsetFromRoot(normalized.projectRoot)}tsconfig.base.json`,
       composite: true,
       compilerOptions: {
-        outDir: `${offsetFromRoot(normalized.projectRoot)}dist/out-tsc`
+        outDir: `${offsetFromRoot(normalized.projectRoot)}dist/out-tsc`,
       },
       files: [],
       include: ["src/**/*.ts", "src/**/*.js"],
-      exclude: ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
+      exclude: ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
     });
   }
 
@@ -295,7 +295,7 @@ export async function typeScriptLibraryGeneratorFn(
 }
 
 export function getOutputPath(
-  options: TypeScriptLibraryGeneratorNormalizedOptions
+  options: TypeScriptLibraryGeneratorNormalizedOptions,
 ) {
   const parts = ["dist"];
   if (options.projectRoot === ".") {
@@ -308,7 +308,7 @@ export function getOutputPath(
 
 export function createProjectTsConfigJson(
   tree: Tree,
-  options: TypeScriptLibraryGeneratorNormalizedOptions
+  options: TypeScriptLibraryGeneratorNormalizedOptions,
 ) {
   const tsconfig = {
     extends: options.rootProject
@@ -319,21 +319,21 @@ export function createProjectTsConfigJson(
       ...(options.rootProject ? tsConfigBaseOptions : {}),
       outDir: joinPaths(offsetFromRoot(options.projectRoot), "dist/out-tsc"),
       noEmit: true,
-      ...(options?.tsconfigOptions?.compilerOptions ?? {})
+      ...(options?.tsconfigOptions?.compilerOptions ?? {}),
     },
     files: [...(options?.tsconfigOptions?.files ?? [])],
     include: [
       ...(options?.tsconfigOptions?.include ?? []),
       "src/**/*.ts",
       "src/**/*.js",
-      "bin/**/*"
+      "bin/**/*",
     ],
     exclude: [
       ...(options?.tsconfigOptions?.exclude ?? []),
       "jest.config.ts",
       "src/**/*.spec.ts",
-      "src/**/*.test.ts"
-    ]
+      "src/**/*.test.ts",
+    ],
   };
 
   writeJson(tree, joinPaths(options.projectRoot, "tsconfig.json"), tsconfig);
@@ -345,7 +345,7 @@ export type TestEnvironment = "jsdom" | "node" | undefined;
 export async function normalizeOptions(
   tree: Tree,
   options: TypeScriptLibraryGeneratorOptions,
-  config?: StormConfig
+  config?: StormConfig,
 ): Promise<TypeScriptLibraryGeneratorNormalizedOptions> {
   let importPath = options.importPath;
   if (!importPath && config?.namespace) {
@@ -355,7 +355,7 @@ export async function normalizeOptions(
   if (options.publishable) {
     if (!importPath) {
       throw new Error(
-        `For publishable libs you have to provide a proper "--importPath" which needs to be a valid npm package name (e.g. my-awesome-lib or @myorg/my-lib)`
+        `For publishable libs you have to provide a proper "--importPath" which needs to be a valid npm package name (e.g. my-awesome-lib or @myorg/my-lib)`,
       );
     }
   }
@@ -372,13 +372,13 @@ export async function normalizeOptions(
     projectName,
     names: projectNames,
     projectRoot,
-    importPath: normalizedImportPath
+    importPath: normalizedImportPath,
   } = await determineProjectNameAndRootOptions(tree, {
     name: options.name,
     projectType: "library",
     directory: options.directory,
     importPath,
-    rootProject
+    rootProject,
   });
 
   const normalized = names(projectNames.projectFileName);
@@ -407,9 +407,11 @@ export async function normalizeOptions(
     name: projectName,
     projectNames,
     projectRoot,
-    parsedTags: options.tags ? options.tags.split(",").map(s => s.trim()) : [],
+    parsedTags: options.tags
+      ? options.tags.split(",").map((s) => s.trim())
+      : [],
     importPath: normalizedImportPath,
     rootProject,
-    shouldUseSwcJest: false
+    shouldUseSwcJest: false,
   } as TypeScriptLibraryGeneratorNormalizedOptions;
 }

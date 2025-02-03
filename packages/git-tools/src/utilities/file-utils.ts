@@ -8,7 +8,7 @@ export function findFileName(filePath: string): string {
           ? Path.sep
           : filePath?.includes("/")
             ? "/"
-            : "\\"
+            : "\\",
       )
       ?.pop() ?? ""
   );
@@ -40,6 +40,6 @@ export function renameFile(filePath: string, newFileName: string): string {
   const file = Path.parse(filePath);
   return Path.join(
     file.dir,
-    newFileName.includes(".") ? newFileName : newFileName + file.ext
+    newFileName.includes(".") ? newFileName : newFileName + file.ext,
   );
 }

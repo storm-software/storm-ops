@@ -20,7 +20,7 @@ import { join } from "node:path";
 export const getJestConfig = (
   projectDir: string,
   isNode = true,
-  displayName?: string
+  displayName?: string,
 ): Config => ({
   displayName: displayName
     ? displayName
@@ -28,8 +28,8 @@ export const getJestConfig = (
   preset: "@storm-software/testing-tools/jest/preset.js",
   testEnvironment: isNode ? "node" : "jsdom",
   transform: {
-    "^.+\\.[tj]s$": ["ts-jest", { tsconfig: "<rootDir>/tsconfig.spec.json" }]
+    "^.+\\.[tj]s$": ["ts-jest", { tsconfig: "<rootDir>/tsconfig.spec.json" }],
   },
   moduleFileExtensions: ["ts", "js", "html"],
-  coverageDirectory: join("../../coverage", projectDir)
+  coverageDirectory: join("../../coverage", projectDir),
 });

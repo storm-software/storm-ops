@@ -19,6 +19,6 @@ import type { Config } from "jest";
 declare function getJestConfig(
   projectDir: string,
   isNode?: boolean,
-  displayName?: string
+  displayName?: string,
 ): Config;
 export { getJestConfig };

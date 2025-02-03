@@ -11,7 +11,7 @@ import {
   readJson,
   remove,
   writeFile,
-  writeJson
+  writeJson,
 } from "fs-extra";
 import { Glob } from "glob";
 import { withRunExecutor } from "../../base/base-executor";
@@ -23,19 +23,19 @@ import { createFilesFilter, filterObjectByKey, isObject } from "./utils";
 export async function cleanPackageExecutorFn(
   options: CleanPackageExecutorSchema,
   context: ExecutorContext,
-  config: StormConfig
+  config: StormConfig,
 ) {
   const tempDirectoryName = joinPathFragments(
     config.workspaceRoot,
     "tmp",
-    context.root
+    context.root,
   );
 
   const exists = await pathExists(tempDirectoryName);
   if (exists) {
     writeInfo(
       `🧹 Cleaning temporary directory path: ${tempDirectoryName}`,
-      config
+      config,
     );
     await remove(tempDirectoryName);
   }
@@ -46,14 +46,14 @@ export async function cleanPackageExecutorFn(
   const packageJson = await readJson<PackageJson>(options.packageJsonPath);
 
   await copy(options.outputPath, tempDirectoryName, {
-    filter: createFilesFilter(options.ignoredFiles, options.outputPath!)
+    filter: createFilesFilter(options.ignoredFiles, options.outputPath!),
   });
 
   if (options.cleanReadMe) {
     await cleanReadMe(
       tempDirectoryName,
       packageJson.repository,
-      packageJson.homepage
+      packageJson.homepage,
     );
   }
 
@@ -64,18 +64,18 @@ export async function cleanPackageExecutorFn(
   const tempPackageJson = clearPackageJSON(packageJson, options.fields);
   writeJson(
     joinPathFragments(tempDirectoryName, "package.json"),
-    tempPackageJson
+    tempPackageJson,
   );
 
   await copy(tempDirectoryName, options.outputPath, {
     override: true,
-    preserveTimestamps: true
+    preserveTimestamps: true,
   });
 
   await remove(tempDirectoryName);
 
   return {
-    success: true
+    success: true,
   };
 }
 
@@ -92,7 +92,7 @@ function getReadmeUrlFromRepository(repository: PackageJson["repository"]) {
 async function cleanReadMe(
   directoryName: string,
   repository: PackageJson["repository"],
-  homepage: PackageJson["homepage"]
+  homepage: PackageJson["homepage"],
 ) {
   const readmePath = joinPathFragments(directoryName, "README.md");
   const readme = await readFile(readmePath);
@@ -112,7 +112,7 @@ async function cleanComments(directoryName: string) {
 
   const files = await glob.walk();
   await Promise.all(
-    files.map(async i => {
+    files.map(async (i) => {
       const file = joinPathFragments(directoryName, i);
       const content = await readFile(file);
       const cleaned = content
@@ -123,7 +123,7 @@ async function cleanComments(directoryName: string) {
         .replace(/^\n+/gm, "");
 
       await writeFile(file, cleaned);
-    })
+    }),
   );
 }
 
@@ -137,10 +137,10 @@ function clearPackageJSON(packageJson, inputIgnoreFields) {
   }
 
   const publishConfig = {
-    ...packageJson.publishConfig
+    ...packageJson.publishConfig,
   };
 
-  PUBLISH_CONFIG_FIELDS.forEach(field => {
+  PUBLISH_CONFIG_FIELDS.forEach((field) => {
     if (publishConfig[field]) {
       packageJson[field] = publishConfig[field];
       delete publishConfig[field];
@@ -158,15 +158,15 @@ function clearPackageJSON(packageJson, inputIgnoreFields) {
   const cleanPackageJSON = filterObjectByKey(
     {
       ...packageJson,
-      publishConfig
+      publishConfig,
     },
-    key => !!(key && !ignoreFields.includes(key) && key !== "scripts")
+    (key) => !!(key && !ignoreFields.includes(key) && key !== "scripts"),
   ) as PackageJson;
 
   if (packageJson.scripts && !ignoreFields.includes("scripts")) {
     cleanPackageJSON.scripts = filterObjectByKey(
       packageJson.scripts,
-      script => !!(script && NPM_SCRIPTS.includes(script))
+      (script) => !!(script && NPM_SCRIPTS.includes(script)),
     );
 
     if (
@@ -196,19 +196,19 @@ export default withRunExecutor<CleanPackageExecutorSchema>(
     skipReadingConfig: false,
     hooks: {
       applyDefaultOptions: (
-        options: CleanPackageExecutorSchema
+        options: CleanPackageExecutorSchema,
       ): CleanPackageExecutorSchema => {
         options.outputPath ??= "dist/{projectRoot}";
         options.packageJsonPath ??= joinPaths(
           options.outputPath,
-          "package.json"
+          "package.json",
         );
 
         options.cleanReadMe ??= true;
         options.cleanComments ??= true;
 
         return options;
-      }
-    }
-  }
+      },
+    },
+  },
 );

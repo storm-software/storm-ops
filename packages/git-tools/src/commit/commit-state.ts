@@ -17,7 +17,7 @@ import type {
   CommitState,
   CommitTypeProps,
   CommitTypesEnum,
-  DefaultCommitQuestionKeys
+  DefaultCommitQuestionKeys,
 } from "../types";
 import { DEFAULT_COMMIT_CONFIG } from "./config";
 
@@ -40,7 +40,7 @@ export const getGitRootDir = () => {
 };
 
 const resolveCommitOptions = async (
-  config: CommitConfig
+  config: CommitConfig,
 ): Promise<CommitResolvedConfig> => {
   return {
     utils: { getScopeEnum },
@@ -51,8 +51,8 @@ const resolveCommitOptions = async (
       questions: config.questions as CommitQuestionEnum<
         DefaultCommitQuestionKeys,
         CommitQuestionProps
-      >
-    }
+      >,
+    },
   };
 };
 
@@ -61,7 +61,7 @@ const resolveDefaultCommitOptions = async (): Promise<CommitResolvedConfig> =>
 
 export const createState = async (
   config: StormConfig,
-  commitizenFile = "@storm-software/git-tools/commit/config"
+  commitizenFile = "@storm-software/git-tools/commit/config",
 ): Promise<CommitState> => {
   let root: string;
 
@@ -76,7 +76,7 @@ export const createState = async (
     state = {
       config: await resolveDefaultCommitOptions(),
       root,
-      answers: {}
+      answers: {},
     };
   } else {
     writeInfo(`Using custom commit config file: ${commitizenFile}`, config);
@@ -89,10 +89,10 @@ export const createState = async (
 
     state = {
       config: await resolveCommitOptions(
-        defu(commitizenConfig ?? {}, DEFAULT_COMMIT_CONFIG)
+        defu(commitizenConfig ?? {}, DEFAULT_COMMIT_CONFIG),
       ),
       root,
-      answers: {}
+      answers: {},
     };
   }
 
@@ -135,12 +135,12 @@ export const createState = async (
           ret[key] = {
             ...state.config.prompt.questions.type.enum![key],
             title: chalkTemplate`${state.config.prompt.questions.type.enum![key]?.emoji ? `${state.config.prompt.questions.type.enum![key]?.emoji} ` : ""}{bold ${key}} ${state.config.prompt.questions.type.enum![key]?.title && state.config.prompt.questions.type.enum![key]?.title !== key ? `- ${state.config.prompt.questions.type.enum![key]?.title}` : ""}${(state.config.prompt.questions.type.enum![key] as CommitTypeProps)?.semverBump ? ` (version bump: ${(state.config.prompt.questions.type.enum![key] as CommitTypeProps)?.semverBump})` : ""}`,
-            hidden: false
+            hidden: false,
           };
 
           return ret;
         },
-        {} as CommitTypesEnum
+        {} as CommitTypesEnum,
       );
   }
 
@@ -163,7 +163,7 @@ export const createState = async (
           title: chalkTemplate`{bold monorepo} - workspace root`,
           description: "The base workspace package (workspace root)",
           hidden: false,
-          projectRoot: "/"
+          projectRoot: "/",
         } as CommitScopeProps;
       } else {
         let project!: ProjectConfiguration;
@@ -186,7 +186,7 @@ export const createState = async (
             title: chalkTemplate`{bold ${project.name}} - ${project.root}`,
             description,
             hidden: false,
-            projectRoot: project.root
+            projectRoot: project.root,
           } as CommitScopeProps;
         }
       }
@@ -199,7 +199,7 @@ export const createState = async (
 
       return ret;
     },
-    {} as CommitQuestionAnswers
+    {} as CommitQuestionAnswers,
   );
 
   return state;

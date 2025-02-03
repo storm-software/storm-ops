@@ -28,5 +28,5 @@ export const DEFAULT_IGNORES = [
   "**/bun.lockb",
   "**/cargo.lock",
   "**/next-env.d.ts",
-  "**/CODEOWNERS"
+  "**/CODEOWNERS",
 ];

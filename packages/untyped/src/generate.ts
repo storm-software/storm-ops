@@ -1,6 +1,6 @@
 import {
   writeError,
-  writeTrace
+  writeTrace,
 } from "@storm-software/config-tools/logger/console";
 import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
@@ -16,7 +16,7 @@ export const getGenerateAction =
   async (options: { entry?: string | string[]; outputPath?: string }) => {
     writeTrace(
       `Running Storm Untyped with options: ${JSON.stringify(options)}`,
-      config
+      config,
     );
 
     const files = await glob(options.entry || "**/{untyped.ts,*.untyped.ts}", {
@@ -27,17 +27,17 @@ export const getGenerateAction =
         "**/node_modules/**",
         "**/.git/**",
         "**/.cache/**",
-        "**/.nx/**"
+        "**/.nx/**",
       ],
       withFileTypes: true,
-      cwd: config.workspaceRoot
+      cwd: config.workspaceRoot,
     });
 
     await Promise.all(
-      files.map(async file => {
+      files.map(async (file) => {
         writeTrace(
           `Generating files for schema file: ${joinPaths(file.parentPath, file.name)}`,
-          config
+          config,
         );
 
         let schema;
@@ -51,12 +51,12 @@ export const getGenerateAction =
                     config.directories.cache ||
                       joinPaths(
                         config.workspaceRoot,
-                        "node_modules/.cache/storm"
+                        "node_modules/.cache/storm",
                       ),
-                    "jiti"
+                    "jiti",
                   ),
-              interopDefault: true
-            }
+              interopDefault: true,
+            },
           });
         } catch (error) {
           writeError(
@@ -74,7 +74,7 @@ Parsed schema:
 ${JSON.stringify(schema)}
 `,
 
-            config
+            config,
           );
 
           throw error;
@@ -87,6 +87,6 @@ ${JSON.stringify(schema)}
         promises.push(generateJsonSchemaFile(schema, file, config));
 
         return Promise.all(promises);
-      })
+      }),
     );
   };

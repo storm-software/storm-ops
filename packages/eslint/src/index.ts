@@ -27,7 +27,7 @@ export const configs = {
   yml,
   tsdoc,
   markdown,
-  graphql
+  graphql,
 };
 
 export default configs;

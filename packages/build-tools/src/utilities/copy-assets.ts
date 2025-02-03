@@ -15,26 +15,26 @@ export const copyAssets = async (
   generatePackageJson = true,
   includeSrc = false,
   banner?: string,
-  footer?: string
+  footer?: string,
 ) => {
   const pendingAssets = Array.from(assets ?? []);
 
   pendingAssets.push({
     input: projectRoot,
     glob: "*.md",
-    output: "."
+    output: ".",
   });
   pendingAssets.push({
     input: ".",
     glob: "LICENSE",
-    output: "."
+    output: ".",
   });
 
   if (generatePackageJson === false) {
     pendingAssets.push({
       input: projectRoot,
       glob: "package.json",
-      output: "."
+      output: ".",
     });
   }
 
@@ -42,21 +42,21 @@ export const copyAssets = async (
     pendingAssets.push({
       input: sourceRoot,
       glob: "**/{*.ts,*.tsx,*.js,*.jsx}",
-      output: "src/"
+      output: "src/",
     });
   }
 
   writeTrace(
     `📝  Copying the following assets to the output directory:
-${pendingAssets.map(pendingAsset => (typeof pendingAsset === "string" ? ` - ${pendingAsset} -> ${outputPath}` : `  - ${pendingAsset.input}/${pendingAsset.glob} -> ${joinPaths(outputPath, pendingAsset.output)}`)).join("\n")}`,
-    config
+${pendingAssets.map((pendingAsset) => (typeof pendingAsset === "string" ? ` - ${pendingAsset} -> ${outputPath}` : `  - ${pendingAsset.input}/${pendingAsset.glob} -> ${joinPaths(outputPath, pendingAsset.output)}`)).join("\n")}`,
+    config,
   );
 
   const assetHandler = new CopyAssetsHandler({
     projectDir: projectRoot,
     rootDir: config.workspaceRoot,
     outputDir: outputPath,
-    assets: pendingAssets
+    assets: pendingAssets,
   });
   await assetHandler.processAllAssetsOnce();
 
@@ -64,20 +64,20 @@ ${pendingAssets.map(pendingAsset => (typeof pendingAsset === "string" ? ` - ${pe
     writeDebug(
       `📝  Adding banner and writing source files: ${joinPaths(
         outputPath,
-        "src"
+        "src",
       )}`,
-      config
+      config,
     );
 
     const files = await glob([
       joinPaths(config.workspaceRoot, outputPath, "src/**/*.ts"),
       joinPaths(config.workspaceRoot, outputPath, "src/**/*.tsx"),
       joinPaths(config.workspaceRoot, outputPath, "src/**/*.js"),
-      joinPaths(config.workspaceRoot, outputPath, "src/**/*.jsx")
+      joinPaths(config.workspaceRoot, outputPath, "src/**/*.jsx"),
     ]);
 
     await Promise.allSettled(
-      files.map(async file =>
+      files.map(async (file) =>
         writeFile(
           file,
           `${
@@ -92,9 +92,9 @@ ${pendingAssets.map(pendingAsset => (typeof pendingAsset === "string" ? ` - ${pe
                 ? footer
                 : `// ${footer}`
               : ""
-          }`
-        )
-      )
+          }`,
+        ),
+      ),
     );
   }
 };

@@ -31,7 +31,7 @@ export const onErrorPlugin = (options: UnbuildResolvedOptions): Plugin => ({
 ${error ? error.message : "Unknown build error"}
 
     `,
-        options.config
+        options.config,
       );
 
       throw new Error("Storm unbuild process failed with errors.");
@@ -43,9 +43,9 @@ ${error ? error.message : "Unknown build error"}
 ${error ? error.message : "Unknown build error"}
 
   `,
-      options.config
+      options.config,
     );
 
     throw new Error("Storm unbuild process failed with errors.");
-  }
+  },
 });

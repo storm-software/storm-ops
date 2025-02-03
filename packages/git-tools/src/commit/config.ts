@@ -6,7 +6,7 @@ import {
   DEFAULT_COMMIT_QUESTIONS,
   DEFAULT_COMMIT_SETTINGS,
   DEFAULT_COMMIT_TYPES,
-  DefaultCommitQuestionKeys
+  DefaultCommitQuestionKeys,
 } from "../types";
 
 export const DEFAULT_COMMIT_CONFIG: CommitConfig = {
@@ -16,5 +16,5 @@ export const DEFAULT_COMMIT_CONFIG: CommitConfig = {
     DefaultCommitQuestionKeys,
     CommitQuestionProps
   >,
-  types: DEFAULT_COMMIT_TYPES
+  types: DEFAULT_COMMIT_TYPES,
 };

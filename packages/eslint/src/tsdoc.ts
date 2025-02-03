@@ -13,18 +13,18 @@ const config: Linter.FlatConfig[] = [
       parser: typescriptEslintParser,
       ecmaVersion: "latest",
       globals: {
-        "BigInt": true
+        BigInt: true,
       },
       parserOptions: {
         ecmaVersion: "latest",
-        project: "./tsconfig.base.json"
-      }
+        project: "./tsconfig.base.json",
+      },
     },
     plugins: {
-      tsdoc: tsdocPlugin
+      tsdoc: tsdocPlugin,
     },
-    rules
-  }
+    rules,
+  },
 ];
 
 export default config;

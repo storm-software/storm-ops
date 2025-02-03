@@ -3,13 +3,13 @@ import pkg from "eslint-plugin-import";
 export default {
   meta: {
     name: "eslint-plugin-import",
-    version: "2.29.1"
+    version: "2.29.1",
   },
   configs: {
-    ...pkg.config
+    ...pkg.config,
   },
   rules: {
-    ...pkg.rules
+    ...pkg.rules,
   },
-  processors: {}
+  processors: {},
 };

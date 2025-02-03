@@ -23,7 +23,7 @@ import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
  */
 export const fixImportsPlugin = (
   options: ESBuildOptions,
-  resolvedOptions: ESBuildResolvedOptions
+  resolvedOptions: ESBuildResolvedOptions,
 ): esbuild.Plugin => ({
   name: "storm:fix-imports",
   setup(build) {
@@ -33,5 +33,5 @@ export const fixImportsPlugin = (
     build.onResolve({ filter: /^spdx-license-ids/ }, () => {
       return { path: require.resolve("spdx-license-ids") };
     });
-  }
+  },
 });

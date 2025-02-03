@@ -10,7 +10,7 @@ export default defineConfig([
       "src/commit/config.ts",
       "src/commitlint/config.ts",
       "src/release/config.ts",
-      "src/release/changelog-renderer.ts"
+      "src/release/changelog-renderer.ts",
     ],
     format: ["cjs", "esm"],
     outDir: "dist/src",
@@ -21,6 +21,6 @@ export default defineConfig([
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     external: ["nx", "@nx/*"],
-    skipNodeModulesBundle: true
-  }
+    skipNodeModulesBundle: true,
+  },
 ]);

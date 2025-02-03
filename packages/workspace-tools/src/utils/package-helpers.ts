@@ -1,7 +1,7 @@
 import {
   joinPathFragments,
   ProjectConfiguration,
-  readJsonFile
+  readJsonFile,
 } from "@nx/devkit";
 import { existsSync } from "node:fs";
 import type { PackageJson } from "nx/src/utils/package-json.js";
@@ -11,7 +11,7 @@ import { CargoToml, parseCargoToml } from "./toml";
 export type PackageManagerType = "package.json" | "Cargo.toml";
 export const PackageManagerTypes = {
   PackageJson: "package.json" as PackageManagerType,
-  CargoToml: "Cargo.toml" as PackageManagerType
+  CargoToml: "Cargo.toml" as PackageManagerType,
 };
 
 export type PackageInfo = {
@@ -20,33 +20,33 @@ export type PackageInfo = {
 };
 
 export const getPackageInfo = (
-  project: ProjectConfiguration
+  project: ProjectConfiguration,
 ): null | PackageInfo => {
   if (
     isEqualProjectTag(
       project,
       ProjectTagConstants.Language.TAG_ID,
-      ProjectTagConstants.Language.RUST
+      ProjectTagConstants.Language.RUST,
     ) &&
     existsSync(joinPathFragments(project.root, "Cargo.toml"))
   ) {
     return {
       type: "Cargo.toml",
-      content: parseCargoToml(joinPathFragments(project.root, "Cargo.toml"))
+      content: parseCargoToml(joinPathFragments(project.root, "Cargo.toml")),
     };
   } else if (
     isEqualProjectTag(
       project,
       ProjectTagConstants.Language.TAG_ID,
-      ProjectTagConstants.Language.TYPESCRIPT
+      ProjectTagConstants.Language.TYPESCRIPT,
     ) &&
     existsSync(joinPathFragments(project.root, "package.json"))
   ) {
     return {
       type: "package.json",
       content: readJsonFile(
-        joinPathFragments(project.root, "package.json")
-      ) as PackageJson
+        joinPathFragments(project.root, "package.json"),
+      ) as PackageJson,
     };
   }
 

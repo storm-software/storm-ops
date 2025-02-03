@@ -10,7 +10,7 @@ import { readFile } from "node:fs/promises";
  * @returns The `nx.json` configuration file.
  */
 export const readNxConfig = async (
-  workspaceRoot?: string
+  workspaceRoot?: string,
 ): Promise<NxJsonConfiguration<string[] | "*">> => {
   let rootDir = workspaceRoot;
   if (!rootDir) {

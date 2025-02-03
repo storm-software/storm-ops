@@ -5,7 +5,7 @@ import type { CloudflarePublishExecutorSchema } from "./schema";
 
 export default async function runExecutor(
   options: CloudflarePublishExecutorSchema,
-  context: ExecutorContext
+  context: ExecutorContext,
 ) {
   /**
    * We need to check both the env var and the option because the executor may have been triggered
@@ -18,7 +18,7 @@ export default async function runExecutor(
   }
 
   console.info(
-    `🚀  Running Storm Cloudflare Publish executor on the ${context.projectName} worker`
+    `🚀  Running Storm Cloudflare Publish executor on the ${context.projectName} worker`,
   );
 
   if (
@@ -32,7 +32,8 @@ export default async function runExecutor(
 
   const packageRoot = joinPathFragments(
     context.root,
-    context.projectsConfigurations.projects[context.projectName]?.root as string
+    context.projectsConfigurations.projects[context.projectName]
+      ?.root as string,
   );
 
   try {
@@ -53,32 +54,32 @@ export default async function runExecutor(
           CLOUDFLARE_API_TOKEN: process.env.STORM_BOT_CLOUDFLARE_TOKEN,
           WRANGLER_LOG: "debug",
           ...process.env,
-          FORCE_COLOR: "true"
+          FORCE_COLOR: "true",
         },
         cwd: packageRoot,
-        stdio: ["pipe", "pipe", "pipe", "ipc"]
+        stdio: ["pipe", "pipe", "pipe", "ipc"],
       });
     } catch (e) {
       console.error(e);
       throw new Error(
-        "Unable to run Wrangler. Please ensure Wrangler is installed."
+        "Unable to run Wrangler. Please ensure Wrangler is installed.",
       );
     }
 
-    proc?.stdout?.on("data", message => {
+    proc?.stdout?.on("data", (message) => {
       process.stdout.write(message);
     });
-    proc?.stderr?.on("data", message => {
+    proc?.stderr?.on("data", (message) => {
       process.stderr.write(message);
     });
 
-    return new Promise<{ success: boolean }>(resolve => {
-      proc?.on("close", code => {
+    return new Promise<{ success: boolean }>((resolve) => {
+      proc?.on("close", (code) => {
         console.log("");
 
         if (isDryRun) {
           console.log(
-            "Would publish to Cloudflare Workers Registry, but [dry-run] was set"
+            "Would publish to Cloudflare Workers Registry, but [dry-run] was set",
           );
         } else {
           console.log("Published to Cloudflare Workers Registry");
@@ -93,7 +94,7 @@ export default async function runExecutor(
     console.log("");
 
     return {
-      success: false
+      success: false,
     };
   }
 }

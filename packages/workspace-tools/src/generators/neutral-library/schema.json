@@ -2,10 +2,7 @@
   "id": "#",
   "title": "Neutral Library Generator",
   "description": "A type definition for a neutral library generator schema",
-  "required": [
-    "directory",
-    "name"
-  ],
+  "required": ["directory", "name"],
   "properties": {
     "directory": {
       "title": "Directory",
@@ -36,9 +33,7 @@
       "title": "Platform",
       "type": "string",
       "description": "The platform to target with the library",
-      "enum": [
-        "neutral"
-      ],
+      "enum": ["neutral"],
       "id": "#platform",
       "default": "neutral"
     },
@@ -57,21 +52,14 @@
     "unitTestRunner": {
       "title": "Unit Test Runner",
       "type": "string",
-      "enum": [
-        "jest",
-        "vitest",
-        "none"
-      ],
+      "enum": ["jest", "vitest", "none"],
       "description": "The unit test runner to use",
       "id": "#unitTestRunner"
     },
     "testEnvironment": {
       "title": "Test Environment",
       "type": "string",
-      "enum": [
-        "jsdom",
-        "node"
-      ],
+      "enum": ["jsdom", "node"],
       "description": "The test environment to use",
       "id": "#testEnvironment"
     },

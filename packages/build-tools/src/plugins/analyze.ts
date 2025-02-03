@@ -1,6 +1,6 @@
 import { writeInfo } from "@storm-software/config-tools/logger/console";
 
-const formatBytes = bytes => {
+const formatBytes = (bytes) => {
   if (bytes === 0) {
     return "0 Bytes";
   }
@@ -22,6 +22,6 @@ export function analyze() {
       const sourceBytes = formatBytes(source.length);
       const fileName = chunk.fileName;
       writeInfo(` - ${fileName} ${sourceBytes}`);
-    }
+    },
   };
 }

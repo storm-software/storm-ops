@@ -18,7 +18,7 @@
 import {
   AdditionalCLIOptions,
   TypeScriptBuildOptions,
-  TypeScriptBuildResolvedOptions
+  TypeScriptBuildResolvedOptions,
 } from "@storm-software/build-tools";
 import { CommonOptions } from "esbuild";
 import { MkdistOptions } from "mkdist";
@@ -27,7 +27,7 @@ import type {
   BuildContext,
   BuildOptions,
   MkdistBuildEntry,
-  RollupBuildOptions
+  RollupBuildOptions,
 } from "unbuild";
 
 export type DeepPartial<T> = T extends object
@@ -60,7 +60,7 @@ export interface LoaderOutputFile {
 export type LoaderResult = LoaderOutputFile[] | undefined;
 
 export type LoadFile = (
-  input: LoaderInputFile
+  input: LoaderInputFile,
 ) => LoaderResult | Promise<LoaderResult>;
 
 export interface LoaderOptions {
@@ -78,7 +78,7 @@ export interface LoaderContext {
 
 export type Loader = (
   input: LoaderInputFile,
-  context: LoaderContext
+  context: LoaderContext,
 ) => LoaderResult | Promise<LoaderResult>;
 
 // export type UnbuildLoaderOptions = {
@@ -144,7 +144,7 @@ export type UnbuildOptions = Omit<
       | ((
           ctx: BuildContext,
           entry: MkdistBuildEntry,
-          opts: MkdistOptions
+          opts: MkdistOptions,
         ) => Loaders | Promise<Loaders>);
   };
 

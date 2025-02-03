@@ -13,7 +13,7 @@ export default defineConfig([
       "./src/executors/*/untyped.ts",
       "./src/generators/*/generator.ts",
       "./src/generators/*/untyped.ts",
-      "./src/generators/init/init.ts"
+      "./src/generators/init/init.ts",
     ],
     outDir: "dist",
     format: ["cjs", "esm"],
@@ -24,6 +24,6 @@ export default defineConfig([
     sourcemap: false,
     shims: true,
     tsconfig: "./tsconfig.json",
-    external: ["@storm-software/workspace-tools"]
-  }
+    external: ["@storm-software/workspace-tools"],
+  },
 ]);

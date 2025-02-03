@@ -1,14 +1,14 @@
 import {
   parseTargetString,
   runExecutor,
-  type ExecutorContext
+  type ExecutorContext,
 } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
 import {
   applyWorkspaceTokens,
   findWorkspaceRoot,
   getConfig,
-  type BaseTokenizerOptions
+  type BaseTokenizerOptions,
 } from "@storm-software/config-tools";
 import { applyWorkspaceExecutorTokens } from "@storm-software/workspace-tools/utils/apply-workspace-tokens";
 import { getPackageInfo } from "@storm-software/workspace-tools/utils/package-helpers";
@@ -18,7 +18,7 @@ import type { ContainerPublishExecutorSchema } from "./schema.d";
 
 export default async function* publishExecutor(
   options: ContainerPublishExecutorSchema,
-  context: ExecutorContext
+  context: ExecutorContext,
 ) {
   /**
    * We need to check both the env var and the option because the executor may have been triggered
@@ -31,7 +31,7 @@ export default async function* publishExecutor(
   }
 
   console.info(
-    `🚀  Running Storm Container Registry Publish executor on the ${context.projectName} crate`
+    `🚀  Running Storm Container Registry Publish executor on the ${context.projectName} crate`,
   );
 
   const workspaceRoot = findWorkspaceRoot();
@@ -41,7 +41,7 @@ export default async function* publishExecutor(
     context.projectsConfigurations?.projects[context.projectName];
   if (!projectConfig) {
     throw new Error(
-      `The executor requires a valid projectsConfiguration - No configuration found for project ${context.projectName}`
+      `The executor requires a valid projectsConfiguration - No configuration found for project ${context.projectName}`,
     );
   }
 
@@ -58,9 +58,9 @@ export default async function* publishExecutor(
       projectRoot,
       sourceRoot,
       projectName,
-      ...projectConfig
+      ...projectConfig,
     } as BaseTokenizerOptions,
-    applyWorkspaceExecutorTokens
+    applyWorkspaceExecutorTokens,
   )) as ContainerPublishExecutorSchema;
 
   tokenized.engine ??= "docker";
@@ -69,7 +69,7 @@ export default async function* publishExecutor(
   try {
     if (isDryRun) {
       console.log(
-        `Would publish to ${tokenized.registry}, but [dry-run] was set`
+        `Would publish to ${tokenized.registry}, but [dry-run] was set`,
       );
     } else {
       console.log(`Published to ${tokenized.registry}`);
@@ -78,7 +78,7 @@ export default async function* publishExecutor(
       if (packageManager) {
         tokenized["build-args"] ??= [
           "ENVIRONMENT=production",
-          "DEBUG_IMAGE=false"
+          "DEBUG_IMAGE=false",
         ];
         tokenized["labels"] ??= [];
 
@@ -99,28 +99,28 @@ export default async function* publishExecutor(
         const tags = await getRegistryVersion(projectName, config);
         if (tags.length === 0) {
           tokenized["labels"].push(
-            `org.opencontainers.image.created=${new Date().toISOString()}`
+            `org.opencontainers.image.created=${new Date().toISOString()}`,
           );
         } else if (tags.includes(version)) {
           console.warn(
-            `Skipped package "${projectName}" because v${version} already exists in ${tokenized.registry}`
+            `Skipped package "${projectName}" because v${version} already exists in ${tokenized.registry}`,
           );
           return {
-            success: true
+            success: true,
           };
         }
       } else {
         console.warn(
-          `No package manager found for project "${projectName}" - Skipping container publishing`
+          `No package manager found for project "${projectName}" - Skipping container publishing`,
         );
         return {
-          success: true
+          success: true,
         };
       }
 
       const { project, target, configuration } = parseTargetString(
         "container",
-        context
+        context,
       );
       for await (const output of await runExecutor<{
         success: boolean;
@@ -134,7 +134,7 @@ export default async function* publishExecutor(
     }
 
     return {
-      success: true
+      success: true,
     };
   } catch (error: any) {
     console.error(`Failed to publish to ${tokenized.registry}`);
@@ -142,40 +142,40 @@ export default async function* publishExecutor(
     console.log("");
 
     return {
-      success: false
+      success: false,
     };
   }
 }
 
 export const getRegistryVersion = (
   name: string,
-  config: StormConfig
+  config: StormConfig,
 ): Promise<string[]> => {
   if (!name) {
     throw new Error(
-      "The `getRegistryVersion` function requires a container name."
+      "The `getRegistryVersion` function requires a container name.",
     );
   }
 
   try {
     const tagsApiUrl = `${config.registry.container}/v2/namespaces/${encodeURIComponent(config.namespace ? config.namespace : "storm-software")}/repositories/${encodeURIComponent(
-      name.replace(`${config.namespace}-`, "")
+      name.replace(`${config.namespace}-`, ""),
     )}/tags`;
     console.log(`Checking for existing version at ${tagsApiUrl}`);
 
     return new Promise(
       (resolve: (value: string[]) => void, reject: (error: any) => void) =>
         https
-          .get(tagsApiUrl, res => {
+          .get(tagsApiUrl, (res) => {
             if (res.statusCode === 404) {
               console.log(`No existing version found at ${tagsApiUrl}`);
               return resolve([] as string[]);
             }
 
-            res.on("data", data => {
+            res.on("data", (data) => {
               if (data) {
                 console.log(
-                  `Existing versions found at ${tagsApiUrl} - ${data}`
+                  `Existing versions found at ${tagsApiUrl} - ${data}`,
                 );
                 const json = JSON.parse(data.toString());
                 return resolve(
@@ -184,22 +184,22 @@ export const getRegistryVersion = (
                       (result: { status: string; name: string }) =>
                         result.status === "active" &&
                         result.name &&
-                        result.name !== "latest"
+                        result.name !== "latest",
                     )
-                    .map((result: { name: string }) => result.name)
+                    .map((result: { name: string }) => result.name),
                 );
               }
 
               return reject(
                 new Error(
-                  "No data returned from container registry, expected a 404 if no tags exist"
-                )
+                  "No data returned from container registry, expected a 404 if no tags exist",
+                ),
               );
             });
           })
-          .on("error", e => {
+          .on("error", (e) => {
             throw e;
-          })
+          }),
     );
   } catch (error) {
     console.error(`Failed to get version from ${config.registry.container}`);
@@ -209,8 +209,8 @@ export const getRegistryVersion = (
     throw new Error(
       `Could not get version from container registry - ${config.registry.container}`,
       {
-        cause: error
-      }
+        cause: error,
+      },
     );
   }
 };

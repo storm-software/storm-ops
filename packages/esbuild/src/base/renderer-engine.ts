@@ -1,20 +1,20 @@
 import type {
   BuildOptions as EsbuildOptions,
   Metafile,
-  OutputFile
+  OutputFile,
 } from "esbuild";
 import path from "node:path";
 import {
   SourceMapConsumer,
   SourceMapGenerator,
-  type RawSourceMap
+  type RawSourceMap,
 } from "source-map";
 import {
   AssetInfo,
   ChunkInfo,
   ESBuildResolvedOptions,
   Renderer,
-  WrittenFile
+  WrittenFile,
 } from "../types";
 import { outputFile } from "../utilities/output-file";
 
@@ -29,14 +29,14 @@ const getSourcemapComment = (
   inline: boolean,
   map: RawSourceMap | string | null | undefined,
   filepath: string,
-  isCssFile: boolean
+  isCssFile: boolean,
 ) => {
   if (!map) return "";
   const prefix = isCssFile ? "/*" : "//";
   const suffix = isCssFile ? " */" : "";
   const url = inline
     ? `data:application/json;base64,${Buffer.from(
-        typeof map === "string" ? map : JSON.stringify(map)
+        typeof map === "string" ? map : JSON.stringify(map),
       ).toString("base64")}`
     : `${path.basename(filepath)}.map`;
   return `${prefix}# sourceMappingURL=${url}${suffix}`;
@@ -80,18 +80,18 @@ export class RendererEngine {
 
   async buildFinished({
     outputFiles,
-    metafile
+    metafile,
   }: {
     outputFiles: OutputFile[];
     metafile?: Metafile;
   }) {
     const files: Array<ChunkInfo | AssetInfo> = outputFiles
-      .filter(file => !file.path.endsWith(".map"))
+      .filter((file) => !file.path.endsWith(".map"))
       .map((file): ChunkInfo | AssetInfo => {
         if (isJS(file.path) || isCSS(file.path)) {
           let relativePath = path.relative(
             this.getOptions().config.workspaceRoot,
-            file.path
+            file.path,
           );
           if (!relativePath.startsWith("\\\\?\\")) {
             relativePath = relativePath.replace(/\\/g, "/");
@@ -102,10 +102,10 @@ export class RendererEngine {
             type: "chunk",
             path: file.path,
             code: file.text,
-            map: outputFiles.find(f => f.path === `${file.path}.map`)?.text,
+            map: outputFiles.find((f) => f.path === `${file.path}.map`)?.text,
             entryPoint: meta?.entryPoint,
             exports: meta?.exports,
-            imports: meta?.imports
+            imports: meta?.imports,
           };
         } else {
           return { type: "asset", path: file.path, contents: file.contents };
@@ -115,22 +115,22 @@ export class RendererEngine {
     const writtenFiles: WrittenFile[] = [];
 
     await Promise.all(
-      files.map(async info => {
+      files.map(async (info) => {
         for (const renderer of this.#renderers) {
           if (info.type === "chunk" && renderer.renderChunk) {
             const result = await renderer.renderChunk.call(
               this.getOptions(),
               info.code,
-              info
+              info,
             );
             if (result) {
               info.code = result.code;
               if (result.map) {
                 const originalConsumer = await new SourceMapConsumer(
-                  parseSourceMap(info.map)
+                  parseSourceMap(info.map),
                 );
                 const newConsumer = await new SourceMapConsumer(
-                  parseSourceMap(result.map)
+                  parseSourceMap(result.map),
                 );
                 const generator = SourceMapGenerator.fromSourceMap(newConsumer);
                 generator.applySourceMap(originalConsumer, info.path);
@@ -150,11 +150,11 @@ export class RendererEngine {
                 inlineSourceMap,
                 info.map,
                 info.path,
-                isCSS(info.path)
+                isCSS(info.path),
               )
             : info.contents;
         await outputFile(info.path, contents, {
-          mode: info.type === "chunk" ? info.mode : undefined
+          mode: info.type === "chunk" ? info.mode : undefined,
         });
         writtenFiles.push({
           get name() {
@@ -162,7 +162,7 @@ export class RendererEngine {
           },
           get size() {
             return contents.length;
-          }
+          },
         });
         if (info.type === "chunk" && info.map && !inlineSourceMap) {
           const map =
@@ -176,10 +176,10 @@ export class RendererEngine {
             },
             get size() {
               return contents.length;
-            }
+            },
           });
         }
-      })
+      }),
     );
 
     for (const renderer of this.#renderers) {

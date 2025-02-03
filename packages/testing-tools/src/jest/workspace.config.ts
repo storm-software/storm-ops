@@ -40,7 +40,7 @@ export default {
     "<rootDir>/dist",
     "<rootDir>/test",
     "<rootDir>/__generated__",
-    "<rootDir>/node_modules"
+    "<rootDir>/node_modules",
   ],
 
   /**
@@ -61,6 +61,6 @@ export default {
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
       "@storm-software/testing-tools/jest/__mocks__/file.mock.js",
     "\\.(css|less)$":
-      "@storm-software/testing-tools/jest/__mocks__/style.mock.js"
-  }
+      "@storm-software/testing-tools/jest/__mocks__/style.mock.js",
+  },
 };

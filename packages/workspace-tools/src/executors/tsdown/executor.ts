@@ -8,7 +8,7 @@ import type { TSDownExecutorSchema } from "./schema.d";
 export async function tsdownExecutorFn(
   options: TSDownExecutorSchema,
   context: ExecutorContext,
-  config?: StormConfig
+  config?: StormConfig,
 ) {
   writeInfo("📦  Running Storm TSDown build executor on the workspace", config);
 
@@ -21,7 +21,7 @@ export async function tsdownExecutorFn(
     !context.projectsConfigurations.projects[context.projectName]?.root
   ) {
     throw new Error(
-      "The Build process failed because the context is not valid. Please run this command from a workspace."
+      "The Build process failed because the context is not valid. Please run this command from a workspace.",
     );
   }
 
@@ -36,13 +36,13 @@ export async function tsdownExecutorFn(
       context.projectsConfigurations.projects?.[context.projectName]
         ?.sourceRoot,
     format: options.format as TSDownOptions["format"],
-    platform: options.platform as TSDownOptions["platform"]
+    platform: options.platform as TSDownOptions["platform"],
   });
 
   // #endregion Run the build process
 
   return {
-    success: true
+    success: true,
   };
 }
 
@@ -54,14 +54,14 @@ export default withRunExecutor<TSDownExecutorSchema>(
     hooks: {
       applyDefaultOptions: async (
         options: TSDownExecutorSchema,
-        config?: StormConfig | undefined
+        config?: StormConfig | undefined,
       ) => {
         options.entry ??= ["src/index.ts"];
         options.outputPath ??= "dist/{projectRoot}";
         options.tsconfig ??= "{projectRoot}/tsconfig.json";
 
         return options;
-      }
-    }
-  }
+      },
+    },
+  },
 );

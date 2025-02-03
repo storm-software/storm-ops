@@ -27,7 +27,7 @@ export async function resolveUserExistingPrettierConfig(): Promise<
 
     const config = await prettier.resolveConfig(process.cwd(), {
       useCache: false,
-      config: filepath
+      config: filepath,
     });
     if (!config) {
       return undefined;
@@ -35,7 +35,7 @@ export async function resolveUserExistingPrettierConfig(): Promise<
 
     return {
       sourceFilepath: filepath,
-      config: config
+      config: config,
     };
   } catch {
     return undefined;

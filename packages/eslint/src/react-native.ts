@@ -5,7 +5,7 @@ import { formatConfig } from "./utils/format-config";
 
 const config: Linter.FlatConfig[] = [
   ...react,
-  importPlugin.configs["react-native"]
+  importPlugin.configs["react-native"],
 ];
 
 export default formatConfig("React Native", config);

@@ -2,7 +2,7 @@ import {
   DEFAULT_COMMIT_TYPES,
   DefaultCommitRulesEnum,
   RuleConfigCondition,
-  RuleConfigSeverity
+  RuleConfigSeverity,
 } from "../types";
 
 export const DEFAULT_COMMIT_RULES: DefaultCommitRulesEnum = {
@@ -22,12 +22,12 @@ export const DEFAULT_COMMIT_RULES: DefaultCommitRulesEnum = {
   "type-enum": [
     RuleConfigSeverity.Error,
     "always",
-    Object.keys(DEFAULT_COMMIT_TYPES)
+    Object.keys(DEFAULT_COMMIT_TYPES),
   ] as [RuleConfigSeverity, RuleConfigCondition, string[]],
   "type-max-length": [RuleConfigSeverity.Error, "always", 20],
   "type-min-length": [RuleConfigSeverity.Error, "always", 3],
   "scope-case": [RuleConfigSeverity.Error, "always", ["kebab-case"]],
-  "scope-empty": [RuleConfigSeverity.Error, "never"]
+  "scope-empty": [RuleConfigSeverity.Error, "never"],
 };
 
 export const DEFAULT_COMMITLINT_CONFIG = {
@@ -41,8 +41,8 @@ export const DEFAULT_COMMITLINT_CONFIG = {
     revertPattern:
       /^(?:Revert|revert:)\s"?([\s\S]+?)"?\s*This reverts commit (\w*)\./i,
     revertCorrespondence: ["header", "hash"],
-    issuePrefixes: ["#"]
-  }
+    issuePrefixes: ["#"],
+  },
 };
 
 export type CommitLintOptions = typeof DEFAULT_COMMITLINT_CONFIG;

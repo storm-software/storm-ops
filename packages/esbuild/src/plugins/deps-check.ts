@@ -47,7 +47,7 @@ const unusedIgnore = [
   "ts-toolbelt",
 
   // these are indirectly used by build
-  "buffer"
+  "buffer",
 ];
 
 // packages that aren't missing but are detected
@@ -68,13 +68,13 @@ export const depsCheckPlugin = (bundle?: boolean): esbuild.Plugin => ({
     const peerDependencies = Object.keys(pkgContents["peerDependencies"] ?? {});
     const dependencies = [
       ...regDependencies,
-      ...(bundle ? devDependencies : [])
+      ...(bundle ? devDependencies : []),
     ];
 
     // we prepare to collect dependencies that are only packages
     const collectedDependencies = new Set<string>();
     const onlyPackages = /^[^./](?!:)|^\.[^./]|^\.\.[^/]/;
-    build.onResolve({ filter: onlyPackages }, args => {
+    build.onResolve({ filter: onlyPackages }, (args) => {
       // we limit this search to the parent folder, don't go back
       if (args.importer.includes(process.cwd())) {
         // handle cases where there is extra path @org/pkg/folder
@@ -94,33 +94,33 @@ export const depsCheckPlugin = (bundle?: boolean): esbuild.Plugin => ({
 
     build.onEnd(() => {
       // we take all the dependencies that aren't collected and are native
-      const unusedDependencies = [...dependencies].filter(dep => {
+      const unusedDependencies = [...dependencies].filter((dep) => {
         return !collectedDependencies.has(dep) || builtinModules.includes(dep);
       });
 
       // we take all the collected deps that aren't deps and aren't native
-      const missingDependencies = [...collectedDependencies].filter(dep => {
+      const missingDependencies = [...collectedDependencies].filter((dep) => {
         return !dependencies.includes(dep) && !builtinModules.includes(dep);
       });
 
       // we exclude the deps that match our unusedIgnore patterns
-      const filteredUnusedDeps = unusedDependencies.filter(dep => {
-        return !unusedIgnore.some(pattern => dep.match(pattern));
+      const filteredUnusedDeps = unusedDependencies.filter((dep) => {
+        return !unusedIgnore.some((pattern) => dep.match(pattern));
       });
 
       // we exclude the deps that match our unusedIgnore patterns
-      const filteredMissingDeps = missingDependencies.filter(dep => {
+      const filteredMissingDeps = missingDependencies.filter((dep) => {
         return (
-          !missingIgnore.some(pattern => dep.match(pattern)) &&
+          !missingIgnore.some((pattern) => dep.match(pattern)) &&
           !peerDependencies.includes(dep)
         );
       });
 
       writeWarning(
-        `Unused Dependencies: ${JSON.stringify(filteredUnusedDeps)}`
+        `Unused Dependencies: ${JSON.stringify(filteredUnusedDeps)}`,
       );
       writeError(
-        `Missing Dependencies: ${JSON.stringify(filteredMissingDeps)}`
+        `Missing Dependencies: ${JSON.stringify(filteredMissingDeps)}`,
       );
 
       if (filteredMissingDeps.length > 0) {
@@ -129,5 +129,5 @@ ${JSON.stringify(filteredMissingDeps)}
 `);
       }
     });
-  }
+  },
 });

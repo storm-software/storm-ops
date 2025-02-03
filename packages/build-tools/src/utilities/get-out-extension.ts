@@ -7,7 +7,7 @@
  */
 export function getOutExtension(
   format?: string,
-  pkgType?: string
+  pkgType?: string,
 ): { js: string; dts: string } {
   let jsExtension = ".js";
   let dtsExtension = ".d.ts";
@@ -26,6 +26,6 @@ export function getOutExtension(
 
   return {
     js: jsExtension,
-    dts: dtsExtension
+    dts: dtsExtension,
   };
 }

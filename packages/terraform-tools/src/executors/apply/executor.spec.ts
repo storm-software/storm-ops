@@ -7,7 +7,7 @@ const options: ApplyExecutorSchema = {};
 const context: ExecutorContext = {
   root: "",
   cwd: process.cwd(),
-  isVerbose: false
+  isVerbose: false,
 };
 
 describe("Apply Executor", () => {

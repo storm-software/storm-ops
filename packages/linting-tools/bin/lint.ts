@@ -6,7 +6,7 @@ import {
   getConfig,
   handleProcess,
   writeFatal,
-  writeSuccess
+  writeSuccess,
 } from "@storm-software/config-tools";
 import { createProgram } from "../src/cli";
 
@@ -33,7 +33,7 @@ ${error?.message ? error.message : JSON.stringify(error)}${
 Stack Trace: ${error.stack}`
           : ""
       }`,
-      config
+      config,
     );
 
     exitWithError(config);

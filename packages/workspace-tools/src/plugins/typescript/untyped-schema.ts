@@ -2,7 +2,7 @@ import {
   createNodesFromFiles,
   CreateNodesResultV2,
   CreateNodesV2,
-  readJsonFile
+  readJsonFile,
 } from "@nx/devkit";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -10,7 +10,7 @@ import { readNxJson } from "nx/src/config/nx-json.js";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
 import {
   readTargetsFromPackageJson,
-  type PackageJson
+  type PackageJson,
 } from "nx/src/utils/package-json";
 import { addProjectTag, ProjectTagConstants } from "../../utils/project-tags";
 
@@ -29,12 +29,12 @@ export const createNodesV2: CreateNodesV2<UntypedPluginOptions> = [
 
           const projectRoot = createProjectRoot(
             configFile,
-            context.workspaceRoot
+            context.workspaceRoot,
           );
           if (!projectRoot) {
             console.error(
               "No project.json found in parent directories of Untyped schema file: ",
-              configFile
+              configFile,
             );
 
             return {};
@@ -43,7 +43,7 @@ export const createNodesV2: CreateNodesV2<UntypedPluginOptions> = [
           const packageJson = readJsonFile(join(projectRoot, "package.json"));
           if (!packageJson) {
             console.error(
-              `No package.json found in project root: ${projectRoot}`
+              `No package.json found in project root: ${projectRoot}`,
             );
             return {};
           }
@@ -54,13 +54,13 @@ export const createNodesV2: CreateNodesV2<UntypedPluginOptions> = [
           ) {
             console.warn(
               `No "untyped" dependency or devDependency found in package.json: ${configFile}
-Please add it to your dependencies by running "pnpm add untyped -D --filter="${packageJson.name}"`
+Please add it to your dependencies by running "pnpm add untyped -D --filter="${packageJson.name}"`,
             );
           }
 
           const project = createProjectFromPackageJsonNextToProjectJson(
             join(projectRoot, "project.json"),
-            packageJson
+            packageJson,
           );
 
           const nxJson = readNxJson(context.workspaceRoot);
@@ -88,7 +88,7 @@ Please add it to your dependencies by running "pnpm add untyped -D --filter="${p
             dependsOn: ["clean", "^build"],
             inputs: [
               "{projectRoot}/src/**/untyped.ts",
-              "{projectRoot}/src/**/*.untyped.ts"
+              "{projectRoot}/src/**/*.untyped.ts",
             ],
             outputs: [
               "{projectRoot}/src/**/schema.d.ts",
@@ -96,13 +96,13 @@ Please add it to your dependencies by running "pnpm add untyped -D --filter="${p
               "{projectRoot}/src/**/schema.md",
               "{projectRoot}/src/**/*.schema.md",
               "{projectRoot}/src/**/schema.json",
-              "{projectRoot}/src/**/*.schema.json"
+              "{projectRoot}/src/**/*.schema.json",
             ],
             options: {
               commands: [
-                `storm-untyped generate --entry=\"${projectRoot}/**/{untyped.ts,*.untyped.ts}\" `
-              ]
-            }
+                `storm-untyped generate --entry=\"${projectRoot}/**/{untyped.ts,*.untyped.ts}\" `,
+              ],
+            },
           };
 
           addProjectTag(project, ProjectTagConstants.Plugin.TAG_ID, name);
@@ -113,9 +113,9 @@ Please add it to your dependencies by running "pnpm add untyped -D --filter="${p
                   [project.name]: {
                     ...project,
                     root: relativeRoot,
-                    targets
-                  }
-                }
+                    targets,
+                  },
+                },
               }
             : {};
           console.log(`Writing Results for ${project?.name ?? "missing name"}`);
@@ -129,14 +129,14 @@ Please add it to your dependencies by running "pnpm add untyped -D --filter="${p
       },
       configFiles,
       options,
-      context
+      context,
     );
-  }
+  },
 ];
 
 function createProjectFromPackageJsonNextToProjectJson(
   projectJsonPath: string,
-  packageJson: PackageJson
+  packageJson: PackageJson,
 ): ProjectConfiguration {
   const { nx, name } = packageJson;
   const root = dirname(projectJsonPath);
@@ -148,13 +148,13 @@ function createProjectFromPackageJsonNextToProjectJson(
     name,
     ...nx,
     ...projectJson,
-    root
+    root,
   } as ProjectConfiguration;
 }
 
 function createProjectRoot(
   configPath: string,
-  workspaceRoot: string
+  workspaceRoot: string,
 ): string | null {
   try {
     let root = dirname(configPath);

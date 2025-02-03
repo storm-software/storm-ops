@@ -145,7 +145,7 @@ export interface Rs2 {
 export function parseCargoTomlWithTree(
   tree: Tree,
   projectRoot: string,
-  projectName: string
+  projectName: string,
 ) {
   const cargoTomlString = tree.read(`${projectRoot}/Cargo.toml`)?.toString();
   if (!cargoTomlString) {
@@ -162,13 +162,13 @@ export function parseCargoToml(cargoString?: string) {
   }
 
   return TOML.parse(cargoString, {
-    x: { comment: true }
+    x: { comment: true },
   }) as unknown as CargoToml;
 }
 
 export function stringifyCargoToml(cargoToml: CargoToml) {
   const tomlString = TOML.stringify(cargoToml, {
-    newlineAround: "section"
+    newlineAround: "section",
   });
 
   if (Array.isArray(tomlString)) {
@@ -182,7 +182,7 @@ export function modifyCargoTable(
   toml: CargoToml,
   section: string,
   key: string,
-  value: string | object | any[] | (() => any)
+  value: string | object | any[] | (() => any),
 ) {
   toml[section] ??= TOML.Section({});
   toml[section][key] =
@@ -197,7 +197,7 @@ export function modifyCargoNestedTable(
   toml: CargoToml,
   section: string,
   key: string,
-  value: object
+  value: object,
 ) {
   toml[section] ??= {};
   toml[section][key] = TOML.Section(value as any);

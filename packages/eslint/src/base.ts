@@ -18,7 +18,7 @@ import {
   RESTRICTED_GLOBALS,
   RESTRICTED_MODULES,
   RESTRICTED_SYNTAX,
-  TS_FILE
+  TS_FILE,
 } from "./utils/constants";
 
 const workspaceRoot = findWorkspaceRoot();
@@ -56,26 +56,26 @@ const workspaceRoot = findWorkspaceRoot();
 const prettierCompat = new FlatCompat({
   baseDirectory: workspaceRoot,
   recommendedConfig: prettierPlugin.configs!.recommended,
-  ignores: DEFAULT_IGNORES
+  ignores: DEFAULT_IGNORES,
 });
 
 const tsCompat = new FlatCompat({
   baseDirectory: workspaceRoot,
   recommendedConfig: tsPlugin.configs.recommended,
   allConfigs: tsPlugin.configs.all,
-  ignores: DEFAULT_IGNORES
+  ignores: DEFAULT_IGNORES,
 });
 
 const config: Linter.FlatConfig[] = [
   ...tsCompat
     .extends(
       "plugin:@typescript-eslint/recommended",
-      "plugin:@typescript-eslint/stylistic"
+      "plugin:@typescript-eslint/stylistic",
     )
-    .map(config => ({
+    .map((config) => ({
       ...config,
       plugins: {
-        "@typescript-eslint": tsPlugin
+        "@typescript-eslint": tsPlugin,
       },
       files: [TS_FILE],
       ignores: DEFAULT_IGNORES,
@@ -83,16 +83,16 @@ const config: Linter.FlatConfig[] = [
         parser: typescriptEslintParser,
         ecmaVersion: "latest",
         globals: {
-          "BigInt": true
+          BigInt: true,
         },
         parserOptions: {
           ecmaVersion: "latest",
-          project: "./tsconfig.base.json"
-        }
+          project: "./tsconfig.base.json",
+        },
       },
       settings: {
-        "import/resolver": "node"
-      }
+        "import/resolver": "node",
+      },
     })),
   // ...jsCompat
   //   .config({
@@ -109,13 +109,13 @@ const config: Linter.FlatConfig[] = [
   //     files: [JS_FILE],
   //     ignores
   //   })),
-  ...prettierCompat.extends("plugin:prettier/recommended").map(config => ({
+  ...prettierCompat.extends("plugin:prettier/recommended").map((config) => ({
     ...config,
     plugins: {
-      prettier: prettierPlugin
+      prettier: prettierPlugin,
     },
     files: [CODE_FILE],
-    ignores: DEFAULT_IGNORES
+    ignores: DEFAULT_IGNORES,
   })),
   sonarjsPlugin.configs.recommended,
   esXPlugin.configs["flat/restrict-to-es2022"],
@@ -127,16 +127,16 @@ const config: Linter.FlatConfig[] = [
       parser: typescriptEslintParser,
       ecmaVersion: "latest",
       globals: {
-        "BigInt": true
+        BigInt: true,
       },
       parserOptions: {
         ecmaVersion: "latest",
-        project: "./tsconfig.base.json"
-      }
+        project: "./tsconfig.base.json",
+      },
     },
     plugins: {
       import: importPlugin,
-      promise: promisePlugin
+      promise: promisePlugin,
     },
     rules: {
       // Disallows if statements as the only statement in else blocks
@@ -172,8 +172,8 @@ const config: Linter.FlatConfig[] = [
         "error",
         {
           argsIgnorePattern: "^_",
-          varsIgnorePattern: "^_" // allow underscores in destructuring
-        }
+          varsIgnorePattern: "^_", // allow underscores in destructuring
+        },
       ],
 
       // Disallow shorthand type conversions
@@ -183,8 +183,8 @@ const config: Linter.FlatConfig[] = [
         {
           disallowTemplateShorthand: true,
           // in TypeScript `!!` is preferable https://www.typescriptlang.org/docs/handbook/2/narrowing.html#truthiness-narrowing
-          boolean: false
-        }
+          boolean: false,
+        },
       ],
       // Disallow specified modules when loaded by `import` declarations
       // https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-restricted-import.md
@@ -202,7 +202,7 @@ const config: Linter.FlatConfig[] = [
       "logical-assignment-operators": [
         "error",
         "always",
-        { enforceForIfStatements: true }
+        { enforceForIfStatements: true },
       ],
       yoda: "error",
       "promise/no-multiple-resolved": "error",
@@ -228,41 +228,41 @@ const config: Linter.FlatConfig[] = [
       // https://typescript-eslint.io/rules/return-await/
       "@typescript-eslint/return-await": "error",
       ...importRules,
-      ...getStormRulesConfig({})
-    }
+      ...getStormRulesConfig({}),
+    },
   },
   {
     files: [CODE_FILE],
     ignores: [
       ...DEFAULT_IGNORES,
       "!.*", // Don't ignore dot-files because by default ESLint ignore dot-files (except for .eslintrc.*) and dot-folders
-      ".git"
-    ]
+      ".git",
+    ],
   },
   {
     // Rules which require type info and exclude virtual ts files extracted by `eslint-plugin-mdx`
     files: [TS_FILE],
     ignores: [...DEFAULT_IGNORES, CODE_BLOCK],
     rules: {
-      "@typescript-eslint/prefer-optional-chain": "error"
-    }
+      "@typescript-eslint/prefer-optional-chain": "error",
+    },
   },
   {
     files: [TS_FILE],
     ignores: DEFAULT_IGNORES,
     rules: {
-      "@typescript-eslint/consistent-type-assertions": "error"
-    }
+      "@typescript-eslint/consistent-type-assertions": "error",
+    },
   },
   {
     files: ["*.c{j,t}s"],
     ignores: DEFAULT_IGNORES,
-    rules: { "@typescript-eslint/no-var-requires": "off" }
+    rules: { "@typescript-eslint/no-var-requires": "off" },
   },
   {
     files: ["*.{spec,test}.*"],
     ignores: DEFAULT_IGNORES,
-    rules: { "import/extensions": ["error", "never"] }
+    rules: { "import/extensions": ["error", "never"] },
   },
   {
     files: [
@@ -273,17 +273,17 @@ const config: Linter.FlatConfig[] = [
       "**/tsup.config.ts",
       "**/postcss.config.ts",
       "**/tailwind.config.ts",
-      "**/next-sitemap.config.js"
+      "**/next-sitemap.config.js",
     ],
     ignores: DEFAULT_IGNORES,
-    rules: { "import/no-default-export": "off" }
+    rules: { "import/no-default-export": "off" },
   },
   {
     files: ["*.d.ts"],
     rules: {
-      "no-var": "off"
-    }
-  }
+      "no-var": "off",
+    },
+  },
 ];
 
 export default formatConfig("Base", config);

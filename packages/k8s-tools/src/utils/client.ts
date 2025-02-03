@@ -28,7 +28,7 @@ export class HelmClient extends AbstractHelmClient {
         "package",
         options.chartFolder,
         "-d",
-        options.outputFolder
+        options.outputFolder,
       ]);
     } catch (err) {
       if (err?.stderr.length > 0 && err?.exitCode !== 0) {
@@ -41,7 +41,7 @@ export class HelmClient extends AbstractHelmClient {
     }
 
     const match = output.stdout?.match(
-      /Successfully packaged chart and saved it to: (.+)/
+      /Successfully packaged chart and saved it to: (.+)/,
     );
     if (!match || match.length < 2) {
       throw new Error("Failed to parse chart path from helm output");
@@ -49,7 +49,7 @@ export class HelmClient extends AbstractHelmClient {
 
     chartPath = match[1]?.trim();
 
-    return new Promise(resolve => resolve(chartPath));
+    return new Promise((resolve) => resolve(chartPath));
   }
 
   @ensureInitialized
@@ -114,7 +114,7 @@ export class HelmClient extends AbstractHelmClient {
       }
     }
 
-    return new Promise<void>(resolve => {
+    return new Promise<void>((resolve) => {
       this.initialized = true;
 
       resolve();
@@ -126,7 +126,7 @@ export class HelmClient extends AbstractHelmClient {
       encoding: "utf8",
       windowsHide: true,
       maxBuffer: 1024 * 1000000,
-      stdio: "pipe"
+      stdio: "pipe",
     });
   }
 }

@@ -22,7 +22,7 @@ export interface GetStormRulesConfigOptions {
 }
 
 export const getStormRulesConfig = (
-  options: GetStormRulesConfigOptions
+  options: GetStormRulesConfigOptions,
 ): Linter.RulesRecord => {
   let rules: any = {
     /*************************************************************
@@ -348,8 +348,8 @@ export const getStormRulesConfig = (
         nestedBinaryExpressions: false,
         returnAssign: false,
         ignoreJSX: "all", // delegate to eslint-plugin-react
-        enforceForArrowConditionals: false
-      }
+        enforceForArrowConditionals: false,
+      },
     ],
 
     // disallow unnecessary semicolons
@@ -420,8 +420,8 @@ export const getStormRulesConfig = (
     "no-unreachable-loop": [
       "error",
       {
-        ignore: [] // WhileStatement, DoWhileStatement, ForStatement, ForInStatement, ForOfStatement
-      }
+        ignore: [], // WhileStatement, DoWhileStatement, ForStatement, ForInStatement, ForOfStatement
+      },
     ],
 
     // disallow return/throw/break/continue inside finally blocks
@@ -436,7 +436,7 @@ export const getStormRulesConfig = (
     // https://eslint.org/docs/rules/no-unsafe-optional-chaining
     "no-unsafe-optional-chaining": [
       "error",
-      { disallowArithmeticOperators: true }
+      { disallowArithmeticOperators: true },
     ],
 
     // Disallow Unused Private Class Members
@@ -506,14 +506,14 @@ export const getStormRulesConfig = (
         line: {
           ignorePattern: ".*",
           ignoreInlineComments: true,
-          ignoreConsecutiveComments: true
+          ignoreConsecutiveComments: true,
         },
         block: {
           ignorePattern: ".*",
           ignoreInlineComments: true,
-          ignoreConsecutiveComments: true
-        }
-      }
+          ignoreConsecutiveComments: true,
+        },
+      },
     ],
 
     // require trailing commas in multiline object literals
@@ -538,9 +538,9 @@ export const getStormRulesConfig = (
           ObjectExpression: false,
           ObjectPattern: false,
           VariableDeclaration: false,
-          NewExpression: false
-        }
-      }
+          NewExpression: false,
+        },
+      },
     ],
 
     // disallow padding inside computed properties
@@ -567,8 +567,8 @@ export const getStormRulesConfig = (
       "always",
       {
         includeCommonJSModuleExports: false,
-        considerPropertyDescriptor: true
-      }
+        considerPropertyDescriptor: true,
+      },
     ],
 
     // require function expressions to have a name
@@ -663,9 +663,9 @@ export const getStormRulesConfig = (
         overrides: {
           return: { after: true },
           throw: { after: true },
-          case: { after: true }
-        }
-      }
+          case: { after: true },
+        },
+      },
     ],
 
     // enforce position of line comments
@@ -676,8 +676,8 @@ export const getStormRulesConfig = (
       {
         position: "above",
         ignorePattern: "",
-        applyDefaultPatterns: true
-      }
+        applyDefaultPatterns: true,
+      },
     ],
 
     // disallow mixed 'LF' and 'CRLF' as linebreaks
@@ -689,7 +689,7 @@ export const getStormRulesConfig = (
     "lines-between-class-members": [
       "error",
       "always",
-      { exceptAfterSingleLine: false }
+      { exceptAfterSingleLine: false },
     ],
 
     // enforces empty lines around comments
@@ -701,8 +701,8 @@ export const getStormRulesConfig = (
       "error",
       {
         before: "always",
-        after: "always"
-      }
+        after: "always",
+      },
     ],
 
     // Require or disallow logical assignment logical operator shorthand
@@ -712,8 +712,8 @@ export const getStormRulesConfig = (
       "off",
       "always",
       {
-        enforceForIfStatements: true
-      }
+        enforceForIfStatements: true,
+      },
     ],
 
     // specify the maximum depth that blocks can be nested
@@ -730,8 +730,8 @@ export const getStormRulesConfig = (
         ignoreComments: true,
         ignoreRegExpLiterals: true,
         ignoreStrings: true,
-        ignoreTemplateLiterals: true
-      }
+        ignoreTemplateLiterals: true,
+      },
     ],
 
     // specify the max number of lines in a file
@@ -741,8 +741,8 @@ export const getStormRulesConfig = (
       {
         max: 300,
         skipBlankLines: true,
-        skipComments: true
-      }
+        skipComments: true,
+      },
     ],
 
     // enforce a maximum function length
@@ -753,8 +753,8 @@ export const getStormRulesConfig = (
         max: 50,
         skipBlankLines: true,
         skipComments: true,
-        IIFEs: true
-      }
+        IIFEs: true,
+      },
     ],
 
     // specify the maximum depth callbacks can be nested
@@ -786,11 +786,15 @@ export const getStormRulesConfig = (
         newIsCap: true,
         newIsCapExceptions: [],
         capIsNew: false,
-        capIsNewExceptions: ["Immutable.Map", "Immutable.Set", "Immutable.List"]
-      }
+        capIsNewExceptions: [
+          "Immutable.Map",
+          "Immutable.Set",
+          "Immutable.List",
+        ],
+      },
     ],
 
-    "no-unused-vars": ["error", { "args": "none" }],
+    "no-unused-vars": ["error", { args: "none" }],
 
     // disallow the omission of parentheses when invoking a constructor with no arguments
     // https://eslint.org/docs/rules/new-parens
@@ -803,7 +807,7 @@ export const getStormRulesConfig = (
     // https://eslint.org/docs/rules/padding-line-between-statements
     "padding-line-between-statements": [
       "error",
-      { blankLine: "always", prev: ["const", "let", "var"], next: "return" }
+      { blankLine: "always", prev: ["const", "let", "var"], next: "return" },
     ],
 
     // enforces new line after each method call in the chain to make it
@@ -845,10 +849,10 @@ export const getStormRulesConfig = (
           ["/", "*"],
           ["&", "|", "<<", ">>", ">>>"],
           ["==", "!=", "===", "!=="],
-          ["&&", "||"]
+          ["&&", "||"],
         ],
-        allowSamePrecedence: false
-      }
+        allowSamePrecedence: false,
+      },
     ],
 
     // disallow mixed spaces and tabs for indentation
@@ -893,13 +897,13 @@ export const getStormRulesConfig = (
       {
         selector: "LabeledStatement",
         message:
-          "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand."
+          "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.",
       },
       {
         selector: "WithStatement",
         message:
-          "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
-      }
+          "`with` is disallowed in strict mode because it makes code impossible to predict and optimize.",
+      },
     ],
 
     // disallow space between function identifier and application
@@ -917,8 +921,8 @@ export const getStormRulesConfig = (
       "error",
       {
         skipBlankLines: false,
-        ignoreComments: false
-      }
+        ignoreComments: false,
+      },
     ],
 
     // disallow dangling underscores in identifiers
@@ -929,8 +933,8 @@ export const getStormRulesConfig = (
         allow: [],
         allowAfterThis: false,
         allowAfterSuper: false,
-        enforceInMethodNames: true
-      }
+        enforceInMethodNames: true,
+      },
     ],
 
     // disallow the use of Boolean literals in conditional expressions
@@ -957,20 +961,20 @@ export const getStormRulesConfig = (
         ObjectExpression: {
           minProperties: 5,
           multiline: true,
-          consistent: true
+          consistent: true,
         },
         ObjectPattern: { minProperties: 5, multiline: true, consistent: true },
         ImportDeclaration: {
           minProperties: 5,
           multiline: true,
-          consistent: true
+          consistent: true,
         },
         ExportDeclaration: {
           minProperties: 5,
           multiline: true,
-          consistent: true
-        }
-      }
+          consistent: true,
+        },
+      },
     ],
 
     // enforce "same line" or "multiple line" on object properties.
@@ -978,8 +982,8 @@ export const getStormRulesConfig = (
     "object-property-newline": [
       "error",
       {
-        allowAllPropertiesOnSameLine: false
-      }
+        allowAllPropertiesOnSameLine: false,
+      },
     ],
 
     // allow just one var statement per function
@@ -1003,11 +1007,11 @@ export const getStormRulesConfig = (
       {
         blocks: "never",
         classes: "never",
-        switches: "never"
+        switches: "never",
       },
       {
-        allowSingleLineBlocks: true
-      }
+        allowSingleLineBlocks: true,
+      },
     ],
 
     // Disallow the use of Math.pow in favor of the ** operator
@@ -1023,7 +1027,7 @@ export const getStormRulesConfig = (
     "quote-props": [
       "error",
       "as-needed",
-      { keywords: false, unnecessary: true, numbers: false }
+      { keywords: false, unnecessary: true, numbers: false },
     ],
 
     // specify whether double or single quotes should be used
@@ -1076,8 +1080,8 @@ export const getStormRulesConfig = (
       {
         words: true,
         nonwords: false,
-        overrides: {}
-      }
+        overrides: {},
+      },
     ],
 
     // require or disallow a space immediately following the // or /* in a comment
@@ -1088,14 +1092,14 @@ export const getStormRulesConfig = (
       {
         line: {
           exceptions: ["-", "+"],
-          markers: ["=", "!", "/"] // space here to support sprockets directives, slash for TS /// comments
+          markers: ["=", "!", "/"], // space here to support sprockets directives, slash for TS /// comments
         },
         block: {
           exceptions: ["-", "+"],
           markers: ["=", "!", ":", "::"], // space here to support sprockets directives and flow comment types
-          balanced: true
-        }
-      }
+          balanced: true,
+        },
+      },
     ],
 
     // Enforce spacing around colons of switch statements
@@ -1113,7 +1117,7 @@ export const getStormRulesConfig = (
     // require regex literals to be wrapped in parentheses
     "wrap-regex": "off",
 
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
   };
 
   if (options.typescriptEslintConfigType !== "none") {
@@ -1135,43 +1139,43 @@ export const getStormRulesConfig = (
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/no-unused-vars": [
         "error",
-        { "args": "none", varsIgnorePattern: "^_" }
+        { args: "none", varsIgnorePattern: "^_" },
       ],
       "@typescript-eslint/prefer-nullish-coalescing": [
         "error",
         {
           ignorePrimitives: {
-            string: true
-          }
-        }
+            string: true,
+          },
+        },
       ],
       "@typescript-eslint/no-restricted-imports": [
         "error",
         {
-          "patterns": [
+          patterns: [
             {
-              "group": ["nx/src/plugins/js*"],
-              "message":
-                "Imports from 'nx/src/plugins/js' are not allowed. Use '@nx/js' instead"
+              group: ["nx/src/plugins/js*"],
+              message:
+                "Imports from 'nx/src/plugins/js' are not allowed. Use '@nx/js' instead",
             },
             {
-              "group": ["**/native-bindings", "**/native-bindings.js"],
-              "message":
-                "Direct imports from native-bindings.js are not allowed. Import from index.js instead."
+              group: ["**/native-bindings", "**/native-bindings.js"],
+              message:
+                "Direct imports from native-bindings.js are not allowed. Import from index.js instead.",
             },
             {
-              "group": ["create-storm-workspace"],
-              "message":
-                "Direct imports from `create-storm-workspace` are not allowed. Instead install this package globally (example: 'npm i create-storm-workspace -g')."
+              group: ["create-storm-workspace"],
+              message:
+                "Direct imports from `create-storm-workspace` are not allowed. Instead install this package globally (example: 'npm i create-storm-workspace -g').",
             },
             {
-              "group": ["create-nx-workspace"],
-              "message":
-                "Direct imports from `create-nx-workspace` are not allowed. Instead install this package globally (example: 'npm i create-nx-workspace -g')."
-            }
-          ]
-        }
-      ]
+              group: ["create-nx-workspace"],
+              message:
+                "Direct imports from `create-nx-workspace` are not allowed. Instead install this package globally (example: 'npm i create-nx-workspace -g').",
+            },
+          ],
+        },
+      ],
     };
   }
 
@@ -1194,11 +1198,11 @@ export const getStormRulesConfig = (
           depConstraints: [
             {
               sourceTag: "*",
-              onlyDependOnLibsWithTags: ["*"]
-            }
-          ]
-        }
-      ]
+              onlyDependOnLibsWithTags: ["*"],
+            },
+          ],
+        },
+      ],
     };
   }
 
@@ -1225,7 +1229,7 @@ export const getStormRulesConfig = (
       "unicorn/import-style": "off",
       "unicorn/prefer-module": "off",
       "unicorn/consistent-function-scoping": "off",
-      "unicorn/no-nested-ternary": "off"
+      "unicorn/no-nested-ternary": "off",
     };
   }
 

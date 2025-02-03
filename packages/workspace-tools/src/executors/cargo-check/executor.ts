@@ -5,7 +5,7 @@ import { CargoCheckExecutorSchema } from "./schema.d";
 
 export async function cargoCheckExecutor(
   options: CargoCheckExecutorSchema,
-  context: ExecutorContext
+  context: ExecutorContext,
 ) {
   const command = buildCargoCommand("check", options, context);
   return await cargoCommand(...command);
@@ -21,7 +21,7 @@ export default withRunExecutor<CargoCheckExecutorSchema>(
         options.toolchain ??= "stable";
 
         return options as CargoCheckExecutorSchema;
-      }
-    }
-  }
+      },
+    },
+  },
 ) as PromiseExecutor<CargoCheckExecutorSchema>;

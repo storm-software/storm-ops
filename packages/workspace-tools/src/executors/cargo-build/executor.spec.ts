@@ -7,7 +7,7 @@ const options: CargoBuildExecutorSchema = {};
 const context: ExecutorContext = {
   root: "",
   cwd: process.cwd(),
-  isVerbose: false
+  isVerbose: false,
 };
 
 describe("CargoBuild Executor", () => {

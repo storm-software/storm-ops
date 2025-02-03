@@ -7,20 +7,20 @@ module.exports = {
   clearMocks: true,
   testMatch: ["**/+(*.)+(spec|test).+(ts|js)?(x)"],
   transform: {
-    "^.+\\.(ts|js|html)$": "ts-jest"
+    "^.+\\.(ts|js|html)$": "ts-jest",
   },
   snapshotFormat: {
-    printBasicPrototype: false
+    printBasicPrototype: false,
   },
   globals: {
     "ts-jest": {
       isolatedModules: true,
       diagnostics: {
-        exclude: ["**"]
-      }
-    }
+        exclude: ["**"],
+      },
+    },
   },
   moduleFileExtensions: ["ts", "js", "html"],
   coverageReporters: ["json", "lcov", "text", "clover", "text-summary", "html"],
-  maxWorkers: 1
+  maxWorkers: 1,
 };

@@ -25,12 +25,12 @@ export const createStormConfig = async <
   TExtensionName extends
     keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
   TExtensionConfig = any,
-  TExtensionSchema extends ZodTypeAny = ZodTypeAny
+  TExtensionSchema extends ZodTypeAny = ZodTypeAny,
 >(
   extensionName?: TExtensionName,
   schema?: TExtensionSchema,
   workspaceRoot?: string,
-  skipLogs = false
+  skipLogs = false,
 ): Promise<StormConfig<TExtensionName, TExtensionConfig>> => {
   let result!: StormConfig<TExtensionName, TExtensionConfig>;
   if (
@@ -52,12 +52,12 @@ export const createStormConfig = async <
     if (!configFile && !skipLogs) {
       writeWarning(
         "No Storm Workspace configuration file found in the current repository. Please ensure this is the expected behavior - you can add a `storm-workspace.json` file to the root of your workspace if it is not.\n",
-        { logLevel: "all" }
+        { logLevel: "all" },
       );
     }
 
     result = (await StormConfigSchema.parseAsync(
-      defu(configEnv, configFile, defaultConfig)
+      defu(configEnv, configFile, defaultConfig),
     )) as StormConfig<TExtensionName, TExtensionConfig>;
     result.workspaceRoot ??= _workspaceRoot;
   } else {
@@ -74,13 +74,13 @@ export const createStormConfig = async <
         TExtensionName,
         TExtensionConfig,
         TExtensionSchema
-      >(extensionName, schema)
+      >(extensionName, schema),
     };
   }
 
   _static_cache = {
     timestamp: Date.now(),
-    data: result
+    data: result,
   };
   return result;
 };
@@ -96,10 +96,10 @@ export const createConfigExtension = <
   TExtensionName extends
     keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
   TExtensionConfig = any,
-  TExtensionSchema extends ZodTypeAny = ZodTypeAny
+  TExtensionSchema extends ZodTypeAny = ZodTypeAny,
 >(
   extensionName: TExtensionName,
-  schema: TExtensionSchema
+  schema: TExtensionSchema,
 ): TExtensionConfig => {
   const extension_cache_key = { extensionName };
   if (_extension_cache.has(extension_cache_key)) {
@@ -120,20 +120,20 @@ export const createConfigExtension = <
  */
 export const loadStormConfig = async (
   workspaceRoot?: string,
-  skipLogs = false
+  skipLogs = false,
 ): Promise<StormConfig> => {
   const config = await createStormConfig(
     undefined,
     undefined,
     workspaceRoot,
-    skipLogs
+    skipLogs,
   );
   setConfigEnv(config);
 
   if (!skipLogs && !config.skipConfigLogging) {
     writeTrace(
       `⚙️  Using Storm Workspace configuration: \n${formatLogMessage(config)}`,
-      config
+      config,
     );
   }
 

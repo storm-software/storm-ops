@@ -25,7 +25,7 @@ export const run = (
   command: string,
   cwd: string = config.workspaceRoot ?? process.cwd(),
   stdio: StdioOptions = "inherit",
-  env: NodeJS.ProcessEnv = process.env
+  env: NodeJS.ProcessEnv = process.env,
 ) => {
   return execSync(command, {
     cwd,
@@ -33,12 +33,12 @@ export const run = (
       ...process.env,
       ...env,
       CLICOLOR: "true",
-      FORCE_COLOR: "true"
+      FORCE_COLOR: "true",
     },
     windowsHide: true,
     stdio,
     maxBuffer: LARGE_BUFFER,
-    killSignal: "SIGTERM"
+    killSignal: "SIGTERM",
   });
 };
 
@@ -58,7 +58,7 @@ export const runAsync = (
   config: StormConfig,
   command: string,
   cwd: string = config.workspaceRoot ?? process.cwd(),
-  env: NodeJS.ProcessEnv = process.env
+  env: NodeJS.ProcessEnv = process.env,
 ) => {
   return exec(command, {
     cwd,
@@ -66,10 +66,10 @@ export const runAsync = (
       ...process.env,
       ...env,
       CLICOLOR: "true",
-      FORCE_COLOR: "true"
+      FORCE_COLOR: "true",
     },
     windowsHide: true,
     maxBuffer: LARGE_BUFFER,
-    killSignal: "SIGTERM"
+    killSignal: "SIGTERM",
   });
 };

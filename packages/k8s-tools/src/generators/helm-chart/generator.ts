@@ -3,7 +3,7 @@ import {
   generateFiles,
   readProjectConfiguration,
   Tree,
-  updateProjectConfiguration
+  updateProjectConfiguration,
 } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
 import { writeDebug } from "@storm-software/config-tools/logger/console";
@@ -14,14 +14,14 @@ import type { HelmChartGeneratorSchema } from "./schema";
 export async function helmChartGeneratorFn(
   tree: Tree,
   options: HelmChartGeneratorSchema,
-  config?: StormConfig
+  config?: StormConfig,
 ) {
   writeDebug("📝  Preparing to write Helm Chart", config);
 
   const project = readProjectConfiguration(tree, options.project);
   if (project.targets?.["helm-package"]) {
     throw new Error(
-      `Project ${options.project} already has a helm target. Please remove it before running this command.`
+      `Project ${options.project} already has a helm target. Please remove it before running this command.`,
     );
   }
 
@@ -40,18 +40,18 @@ export async function helmChartGeneratorFn(
           dependencies: {
             update: true,
             build: true,
-            repositories: []
-          }
-        }
-      }
-    }
+            repositories: [],
+          },
+        },
+      },
+    },
   });
 
   generateFiles(
     tree,
     join(__dirname, "files", "chart"),
     join(project.root, options.chartFolder ?? ""),
-    options
+    options,
   );
 
   if (options.format) {
@@ -59,11 +59,11 @@ export async function helmChartGeneratorFn(
   }
 
   return {
-    success: true
+    success: true,
   };
 }
 
 export default withRunGenerator<HelmChartGeneratorSchema>(
   "Helm Chart",
-  helmChartGeneratorFn
+  helmChartGeneratorFn,
 );

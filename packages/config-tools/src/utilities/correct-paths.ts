@@ -17,7 +17,7 @@ export function normalizeWindowsPath(input = "") {
   }
   return input
     .replace(/\\/g, "/")
-    .replace(_DRIVE_LETTER_START_RE, r => r.toUpperCase());
+    .replace(_DRIVE_LETTER_START_RE, (r) => r.toUpperCase());
 }
 
 const _UNC_REGEX = /^[/\\]{2}/;
@@ -105,7 +105,7 @@ function cwd() {
 
 export const resolve: typeof path.resolve = function (...arguments_) {
   // Normalize windows arguments
-  arguments_ = arguments_.map(argument => normalizeWindowsPath(argument));
+  arguments_ = arguments_.map((argument) => normalizeWindowsPath(argument));
 
   let resolvedPath = "";
   let resolvedAbsolute = false;
@@ -232,11 +232,11 @@ export const relative: typeof path.relative = function (from, to) {
   // we cast these because `split` will always be at least one string
   const _from = resolve(from).replace(_ROOT_FOLDER_RE, "$1").split("/") as [
     string,
-    ...string[]
+    ...string[],
   ];
   const _to = resolve(to).replace(_ROOT_FOLDER_RE, "$1").split("/") as [
     string,
-    ...string[]
+    ...string[],
   ];
 
   // Different windows drive letters
@@ -269,10 +269,10 @@ export const dirname: typeof path.dirname = function (p) {
 export const format: typeof path.format = function (p) {
   const ext = p.ext ? (p.ext.startsWith(".") ? p.ext : `.${p.ext}`) : "";
   const segments = [p.root, p.dir, p.base ?? (p.name ?? "") + ext].filter(
-    Boolean
+    Boolean,
   ) as string[];
   return normalizeWindowsPath(
-    p.root ? resolve(...segments) : segments.join("/")
+    p.root ? resolve(...segments) : segments.join("/"),
   );
 };
 
@@ -304,6 +304,6 @@ export const parse: typeof path.parse = function (p) {
     dir: dirname(p),
     base,
     ext: extension,
-    name: base.slice(0, base.length - extension.length)
+    name: base.slice(0, base.length - extension.length),
   };
 };

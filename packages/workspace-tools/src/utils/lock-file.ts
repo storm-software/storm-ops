@@ -6,21 +6,21 @@ import {
   type CreateNodesContext,
   type PackageManager,
   type ProjectGraphExternalNode,
-  type RawProjectGraphDependency
+  type RawProjectGraphDependency,
 } from "@nx/devkit";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import {
   getNpmLockfileDependencies,
-  getNpmLockfileNodes
+  getNpmLockfileNodes,
 } from "nx/src/plugins/js/lock-file/npm-parser";
 import {
   getPnpmLockfileDependencies,
-  getPnpmLockfileNodes
+  getPnpmLockfileNodes,
 } from "nx/src/plugins/js/lock-file/pnpm-parser";
 import {
   getYarnLockfileDependencies,
-  getYarnLockfileNodes
+  getYarnLockfileNodes,
 } from "nx/src/plugins/js/lock-file/yarn-parser";
 
 export const YARN_LOCK_FILE = "yarn.lock";
@@ -39,12 +39,12 @@ export function getLockFileNodes(
   packageManager: PackageManager,
   contents: string,
   lockFileHash: string,
-  context: CreateNodesContext
+  context: CreateNodesContext,
 ): Record<string, ProjectGraphExternalNode> {
   try {
     if (packageManager === "yarn") {
       const packageJson = readJsonFile(
-        join(context.workspaceRoot, "package.json")
+        join(context.workspaceRoot, "package.json"),
       );
       return getYarnLockfileNodes(contents, lockFileHash, packageJson);
     }
@@ -58,7 +58,7 @@ export function getLockFileNodes(
     if (!isPostInstallProcess()) {
       output.error({
         title: `Failed to parse ${packageManager} lockfile`,
-        bodyLines: errorBodyLines(e)
+        bodyLines: errorBodyLines(e),
       });
     }
     throw e;
@@ -73,7 +73,7 @@ export function getLockFileDependencies(
   packageManager: PackageManager,
   contents: string,
   lockFileHash: string,
-  context: CreateDependenciesContext
+  context: CreateDependenciesContext,
 ): RawProjectGraphDependency[] {
   try {
     if (packageManager === "yarn") {
@@ -89,7 +89,7 @@ export function getLockFileDependencies(
     if (!isPostInstallProcess()) {
       output.error({
         title: `Failed to parse ${packageManager} lockfile`,
-        bodyLines: errorBodyLines(e)
+        bodyLines: errorBodyLines(e),
       });
     }
     throw e;
@@ -108,7 +108,7 @@ export function lockFileExists(packageManager: PackageManager): boolean {
     return existsSync(NPM_LOCK_PATH);
   }
   throw new Error(
-    `Unknown package manager ${packageManager} or lock file missing`
+    `Unknown package manager ${packageManager} or lock file missing`,
   );
 }
 
@@ -133,11 +133,11 @@ export function getLockFileName(packageManager: PackageManager): string {
 // generate body lines for error message
 function errorBodyLines(
   originalError: Error,
-  additionalInfo: string[] = []
+  additionalInfo: string[] = [],
 ): string[] {
   const result = [
     "Please open an issue at `https://github.com/storm-software/storm-ops/issues/new?template=1-bug.yml` and provide a reproduction.",
-    ...(additionalInfo as string[])
+    ...(additionalInfo as string[]),
   ];
 
   if (originalError.message) {

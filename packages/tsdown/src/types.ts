@@ -19,7 +19,7 @@ import { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
 import {
   AdditionalCLIOptions,
   TypeScriptBuildOptions,
-  TypeScriptBuildResolvedOptions
+  TypeScriptBuildResolvedOptions,
 } from "@storm-software/build-tools";
 import type { Options } from "tsdown";
 

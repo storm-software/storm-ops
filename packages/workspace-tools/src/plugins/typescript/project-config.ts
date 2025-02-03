@@ -6,7 +6,7 @@ import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-
 import { readJsonFile } from "nx/src/utils/fileutils";
 import {
   readTargetsFromPackageJson,
-  type PackageJson
+  type PackageJson,
 } from "nx/src/utils/package-json";
 import { readTSConfig } from "pkg-types";
 import { getProjectPlatform } from "../../utils/plugin-helpers";
@@ -14,7 +14,7 @@ import {
   ProjectTagConstants,
   addProjectTag,
   isEqualProjectTag,
-  setDefaultProjectTags
+  setDefaultProjectTags,
 } from "../../utils/project-tags";
 
 export const name = "storm-software/typescript";
@@ -38,7 +38,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
 
     const project = createProjectFromPackageJsonNextToProjectJson(
       file,
-      packageJson
+      packageJson,
     );
 
     // If the project is an application and we don't want to include apps, skip it
@@ -49,7 +49,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
     const nxJson = readNxJson(ctx.workspaceRoot);
     const targets: ProjectConfiguration["targets"] = readTargetsFromPackageJson(
       packageJson,
-      nxJson
+      nxJson,
     );
     if (!targets["lint-ls"]) {
       targets["lint-ls"] = {
@@ -60,8 +60,8 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
         options: {
           command:
             'pnpm exec ls-lint --config="@storm-software/linting-tools/ls-lint/.ls-lint.yml" ',
-          color: true
-        }
+          color: true,
+        },
       };
     }
 
@@ -74,7 +74,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
           "lint-sherif",
           "lint-knip",
           "lint-docs",
-          "^lint"
+          "^lint",
         ],
         executor: "@nx/eslint:lint",
         options: {
@@ -82,8 +82,8 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
           fix: true,
           cache: true,
           errorOnUnmatchedPattern: false,
-          printConfig: true
-        }
+          printConfig: true,
+        },
       };
     }
 
@@ -91,7 +91,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       targets["format-readme"] = {
         cache: true,
         inputs: ["linting", "documentation", "typescript", "^production"],
-        dependsOn: ["^format-readme"]
+        dependsOn: ["^format-readme"],
       };
     }
 
@@ -99,7 +99,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       targets["format-toml"] = {
         cache: true,
         inputs: ["linting", "typescript", "^production"],
-        dependsOn: ["^format-toml"]
+        dependsOn: ["^format-toml"],
       };
     }
 
@@ -107,7 +107,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       targets["format-prettier"] = {
         cache: true,
         inputs: ["linting", "typescript", "^production"],
-        dependsOn: ["^format-prettier"]
+        dependsOn: ["^format-prettier"],
       };
     }
 
@@ -119,13 +119,13 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
           "format-readme",
           "format-toml",
           "format-prettier",
-          "^format"
+          "^format",
         ],
         executor: "nx:run-commands",
         options: {
           command: "echo 'Formatting the project files in \"{projectRoot}\"' ",
-          color: true
-        }
+          color: true,
+        },
       };
     }
 
@@ -138,8 +138,8 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
         options: {
           command: "pnpm exec rimraf dist/{projectRoot}",
           color: true,
-          cwd: "{workspaceRoot}"
-        }
+          cwd: "{workspaceRoot}",
+        },
       };
     }
 
@@ -153,8 +153,8 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
         options: {
           command: `pnpm exec nx run ${project.name}:build`,
           color: true,
-          cwd: "{workspaceRoot}"
-        }
+          cwd: "{workspaceRoot}",
+        },
       };
     }
 
@@ -167,18 +167,18 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
         defaultConfiguration: "local",
         options: {
           jestConfig: "{projectRoot}/jest.config.ts",
-          passWithNoTests: true
+          passWithNoTests: true,
         },
         configurations: {
           local: {
             ci: false,
-            codeCoverage: true
+            codeCoverage: true,
           },
           ci: {
             ci: true,
-            codeCoverage: true
-          }
-        }
+            codeCoverage: true,
+          },
+        },
       };
     }
 
@@ -186,7 +186,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       cache: true,
       inputs: ["typescript", "^production"],
       dependsOn: ["build", "^size-limit"],
-      options: {}
+      options: {},
     };
 
     // Apply nx-release-publish target for non-private projects
@@ -196,7 +196,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
         project,
         ProjectTagConstants.Registry.TAG_ID,
         ProjectTagConstants.Registry.NPM,
-        { overwrite: true }
+        { overwrite: true },
       );
 
       targets["nx-release-publish"] = {
@@ -206,11 +206,11 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
           "testing",
           "documentation",
           "default",
-          "^production"
+          "^production",
         ],
         dependsOn: ["build", "size-limit", "^nx-release-publish"],
         executor: "@storm-software/workspace-tools:npm-publish",
-        options: {}
+        options: {},
       };
 
       if (
@@ -218,12 +218,12 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
         isEqualProjectTag(
           project,
           ProjectTagConstants.ProjectType.TAG_ID,
-          ProjectTagConstants.ProjectType.APPLICATION
+          ProjectTagConstants.ProjectType.APPLICATION,
         ) ||
         isEqualProjectTag(
           project,
           ProjectTagConstants.DistStyle.TAG_ID,
-          ProjectTagConstants.DistStyle.CLEAN
+          ProjectTagConstants.DistStyle.CLEAN,
         )
       ) {
         targets["clean-package"] = {
@@ -234,14 +234,14 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
             "testing",
             "documentation",
             "default",
-            "^production"
+            "^production",
           ],
           outputs: ["{workspaceRoot}/dist/{projectRoot}"],
           executor: "@storm-software/workspace-tools:clean-package",
           options: {
             cleanReadMe: true,
-            cleanComments: true
-          }
+            cleanComments: true,
+          },
         };
 
         targets["nx-release-publish"].dependsOn?.push("clean-package");
@@ -253,7 +253,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       project,
       ProjectTagConstants.Language.TAG_ID,
       ProjectTagConstants.Language.TYPESCRIPT,
-      { overwrite: true }
+      { overwrite: true },
     );
 
     const platform = getProjectPlatform(project);
@@ -263,7 +263,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
           project,
           ProjectTagConstants.Platform.TAG_ID,
           ProjectTagConstants.Platform.WORKER,
-          { overwrite: true }
+          { overwrite: true },
         );
         break;
 
@@ -272,7 +272,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
           project,
           ProjectTagConstants.Platform.TAG_ID,
           ProjectTagConstants.Platform.NODE,
-          { overwrite: true }
+          { overwrite: true },
         );
         break;
 
@@ -281,7 +281,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
           project,
           ProjectTagConstants.Platform.TAG_ID,
           ProjectTagConstants.Platform.BROWSER,
-          { overwrite: true }
+          { overwrite: true },
         );
         break;
 
@@ -290,7 +290,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
           project,
           ProjectTagConstants.Platform.TAG_ID,
           ProjectTagConstants.Platform.NEUTRAL,
-          { overwrite: true }
+          { overwrite: true },
         );
         break;
     }
@@ -307,19 +307,19 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
                 ...project?.release,
                 version: {
                   ...project?.release?.version,
-                  generator: "@storm-software/workspace-tools:release-version"
-                }
-              }
-            }
-          }
+                  generator: "@storm-software/workspace-tools:release-version",
+                },
+              },
+            },
+          },
         }
       : {};
-  }
+  },
 ];
 
 function createProjectFromPackageJsonNextToProjectJson(
   projectJsonPath: string,
-  packageJson: PackageJson
+  packageJson: PackageJson,
 ): ProjectConfiguration {
   const { nx, name } = packageJson;
   const root = dirname(projectJsonPath);
@@ -328,13 +328,13 @@ function createProjectFromPackageJsonNextToProjectJson(
     ...nx,
     name,
     root,
-    targets: {}
+    targets: {},
   } as ProjectConfiguration;
 }
 
 function createPackageJson(
   projectJsonPath: string,
-  workspaceRoot: string
+  workspaceRoot: string,
 ): PackageJson | null {
   try {
     const root = dirname(projectJsonPath);

@@ -6,7 +6,7 @@ import {
   getStopwatch,
   writeFatal,
   writeInfo,
-  writeSuccess
+  writeSuccess,
 } from "@storm-software/config-tools/logger/console";
 import { createWorkspace } from "create-nx-workspace";
 import { prompt } from "enquirer";
@@ -17,7 +17,7 @@ async function main() {
   try {
     writeInfo("⚡ Preparing to create the Storm Workspace", config);
 
-    ["SIGTERM", "SIGINT", "SIGUSR2"].map(type => {
+    ["SIGTERM", "SIGINT", "SIGUSR2"].map((type) => {
       process.once(type, () => {
         try {
           console.info(`process.on ${type}`);
@@ -36,7 +36,7 @@ async function main() {
       const response = await prompt<{ name: string }>({
         type: "input",
         name: "name",
-        message: "What is the name of the workspace?"
+        message: "What is the name of the workspace?",
       });
       name = response.name;
     }
@@ -47,7 +47,7 @@ async function main() {
         type: "input",
         name: "organization",
         message: "What organization owns this repository?",
-        initial: "storm-software"
+        initial: "storm-software",
       });
       organization = response.organization;
     }
@@ -58,7 +58,7 @@ async function main() {
         type: "input",
         name: "namespace",
         message: "What is the namespace of this repository (npm scope)?",
-        initial: organization ? organization : "storm-software"
+        initial: organization ? organization : "storm-software",
       });
       namespace = response.namespace;
     }
@@ -73,7 +73,7 @@ async function main() {
         name: "includeApps",
         message:
           "Should a separate `apps` folder be created for this workspace (if Yes: `apps` and `libs` folders will be added, if No: `packages` folders will be added)?",
-        initial: false
+        initial: false,
       });
       includeApps = response.includeApps;
     }
@@ -88,7 +88,7 @@ async function main() {
         name: "includeRust",
         message:
           "Should Rust be included in the workspace (adds a `rust` folder with a `Cargo.toml` file)?",
-        initial: false
+        initial: false,
       });
       includeRust = response.includeRust;
     }
@@ -102,7 +102,7 @@ async function main() {
           "Provide a description of the workspace to use in the package.json and README.md files.",
         initial: `⚡ The ${
           namespace ? namespace : name
-        } monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.`
+        } monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.`,
       });
       description = response.description;
     }
@@ -113,7 +113,7 @@ async function main() {
         type: "input",
         name: "repositoryUrl",
         message: "What is the workspace's Git repository's URL?",
-        initial: `https://github.com/${organization ? organization : "storm-software"}/${name}`
+        initial: `https://github.com/${organization ? organization : "storm-software"}/${name}`,
       });
       repositoryUrl = response.repositoryUrl;
     }
@@ -153,18 +153,18 @@ async function main() {
         defaultBase: "main",
         useGitHub: true,
         skipGit: false,
-        cliName: "Storm Workspace Generator"
-      }
+        cliName: "Storm Workspace Generator",
+      },
     );
 
     writeSuccess(
       `⚡ Successfully created the workspace: ${directory}.`,
-      config
+      config,
     );
   } catch (error) {
     writeFatal(
       "❌ An error occurred while creating the workspace. Please correct the below issue:",
-      config
+      config,
     );
     console.error(error);
     process.exit(1);

@@ -8,7 +8,7 @@ export default defineUntypedSchema({
     title: "TypeScript Build Executor",
     description:
       "A type definition for the base TypeScript build executor schema",
-    required: ["entry", "tsconfig"]
+    required: ["entry", "tsconfig"],
   },
   entry: {
     $schema: {
@@ -16,55 +16,55 @@ export default defineUntypedSchema({
       format: "path",
       type: "array",
       description: "The entry file or files to build",
-      items: { type: "string" }
+      items: { type: "string" },
     },
-    $default: ["{sourceRoot}/index.ts"]
+    $default: ["{sourceRoot}/index.ts"],
   },
   tsconfig: {
     $schema: {
       title: "TSConfig Path",
       type: "string",
       format: "path",
-      description: "The path to the tsconfig file"
+      description: "The path to the tsconfig file",
     },
-    $default: "{projectRoot}/tsconfig.json"
+    $default: "{projectRoot}/tsconfig.json",
   },
   bundle: {
     $schema: {
       title: "Bundle",
       type: "boolean",
-      description: "Bundle the output"
-    }
+      description: "Bundle the output",
+    },
   },
   minify: {
     $schema: {
       title: "Minify",
       type: "boolean",
-      description: "Minify the output"
-    }
+      description: "Minify the output",
+    },
   },
   debug: {
     $schema: {
       title: "Debug",
       type: "boolean",
-      description: "Debug the output"
-    }
+      description: "Debug the output",
+    },
   },
   sourcemap: {
     $schema: {
       title: "Sourcemap",
       type: "boolean",
-      description: "Generate a sourcemap"
-    }
+      description: "Generate a sourcemap",
+    },
   },
   silent: {
     $schema: {
       title: "Silent",
       type: "boolean",
       description:
-        "Should the build run silently - only report errors back to the user"
+        "Should the build run silently - only report errors back to the user",
     },
-    $default: false
+    $default: false,
   },
   target: {
     $schema: {
@@ -95,11 +95,11 @@ export default defineUntypedSchema({
         "browser",
         "chrome58",
         "chrome59",
-        "chrome60"
-      ]
+        "chrome60",
+      ],
     },
     $default: "esnext",
-    $resolve: (val: string = "esnext") => val.toLowerCase()
+    $resolve: (val: string = "esnext") => val.toLowerCase(),
   },
   format: {
     $schema: {
@@ -108,46 +108,46 @@ export default defineUntypedSchema({
       description: "The format to build",
       items: {
         type: "string",
-        enum: ["cjs", "esm", "iife"]
-      }
+        enum: ["cjs", "esm", "iife"],
+      },
     },
-    $resolve: (val: string[] = ["cjs", "esm"]) => ([] as string[]).concat(val)
+    $resolve: (val: string[] = ["cjs", "esm"]) => ([] as string[]).concat(val),
   },
   platform: {
     $schema: {
       title: "Platform",
       type: "string",
       description: "The platform to build",
-      enum: ["neutral", "node", "browser"]
+      enum: ["neutral", "node", "browser"],
     },
-    $default: "neutral"
+    $default: "neutral",
   },
   external: {
     $schema: {
       title: "External",
       type: "array",
-      description: "The external dependencies"
+      description: "The external dependencies",
     },
-    $resolve: (val: string[] = []) => ([] as string[]).concat(val)
+    $resolve: (val: string[] = []) => ([] as string[]).concat(val),
   },
   define: {
     $schema: {
       title: "Define",
       type: "object",
       tsType: "Record<string, string>",
-      description: "The define values"
+      description: "The define values",
     },
     $resolve: (val: Record<string, string> = {}) => val,
-    $default: {}
+    $default: {},
   },
   env: {
     $schema: {
       title: "Environment Variables",
       type: "object",
       tsType: "Record<string, string>",
-      description: "The environment variable values"
+      description: "The environment variable values",
     },
     $resolve: (val: Record<string, string> = {}) => val,
-    $default: {}
-  }
+    $default: {},
+  },
 });

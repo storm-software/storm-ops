@@ -18,7 +18,7 @@
 import {
   createProjectGraphAsync,
   readProjectsConfigurationFromProjectGraph,
-  writeJsonFile
+  writeJsonFile,
 } from "@nx/devkit";
 import {
   addPackageDependencies,
@@ -27,7 +27,7 @@ import {
   copyAssets,
   DEFAULT_TARGET,
   getEntryPoints,
-  getEnv
+  getEnv,
 } from "@storm-software/build-tools";
 import { getConfig } from "@storm-software/config-tools/get-config";
 import {
@@ -35,7 +35,7 @@ import {
   writeDebug,
   writeFatal,
   writeSuccess,
-  writeWarning
+  writeWarning,
 } from "@storm-software/config-tools/logger/console";
 import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
@@ -55,7 +55,7 @@ import { TSDownResolvedOptions, type TSDownOptions } from "./types";
  * @returns the build options with defaults applied
  */
 const resolveOptions = async (
-  userOptions: TSDownOptions
+  userOptions: TSDownOptions,
 ): Promise<TSDownResolvedOptions> => {
   const projectRoot = userOptions.projectRoot;
 
@@ -70,13 +70,13 @@ const resolveOptions = async (
   const stopwatch = getStopwatch("Build options resolution");
 
   const projectGraph = await createProjectGraphAsync({
-    exitOnError: true
+    exitOnError: true,
   });
 
   const projectJsonPath = joinPaths(
     workspaceRoot.dir,
     projectRoot,
-    "project.json"
+    "project.json",
   );
   if (!existsSync(projectJsonPath)) {
     throw new Error("Cannot find project.json configuration");
@@ -90,7 +90,7 @@ const resolveOptions = async (
     readProjectsConfigurationFromProjectGraph(projectGraph);
   if (!projectConfigurations?.projects?.[projectName]) {
     throw new Error(
-      "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
+      "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project.",
     );
   }
 
@@ -101,7 +101,7 @@ const resolveOptions = async (
   const packageJsonPath = joinPaths(
     workspaceRoot.dir,
     options.projectRoot,
-    "package.json"
+    "package.json",
   );
   if (!existsSync(packageJsonPath)) {
     throw new Error("Cannot find package.json configuration");
@@ -117,7 +117,7 @@ const resolveOptions = async (
       projectRoot,
       userOptions.tsconfig
         ? userOptions.tsconfig.replace(projectRoot, "")
-        : "tsconfig.json"
+        : "tsconfig.json",
     ),
     format: options.format || "cjs",
     entryPoints: await getEntryPoints(
@@ -125,7 +125,7 @@ const resolveOptions = async (
       projectRoot,
       projectJson.sourceRoot,
       userOptions.entry || ["./src/index.ts"],
-      userOptions.emitOnAll
+      userOptions.emitOnAll,
     ),
     outdir: userOptions.outputPath || joinPaths("dist", projectRoot),
     plugins: [] as TSDownResolvedOptions["plugins"],
@@ -157,7 +157,7 @@ const resolveOptions = async (
       STORM_FORMAT: JSON.stringify(options.format || "cjs"),
       ...(options.format === "cjs" && options.injectShims
         ? {
-            "import.meta.url": "importMetaUrl"
+            "import.meta.url": "importMetaUrl",
           }
         : {}),
       ...Object.keys(env || {}).reduce((res, key) => {
@@ -165,11 +165,11 @@ const resolveOptions = async (
         return {
           ...res,
           [`process.env.${key}`]: value,
-          [`import.meta.env.${key}`]: value
+          [`import.meta.env.${key}`]: value,
         };
       }, {}),
-      ...options.define
-    }
+      ...options.define,
+    },
   };
 
   stopwatch();
@@ -194,9 +194,9 @@ async function generatePackageJson(options: TSDownResolvedOptions) {
       joinPaths(
         options.config.workspaceRoot,
         options.projectRoot,
-        "package.json"
+        "package.json",
       ),
-      "utf8"
+      "utf8",
     );
     if (!packageJsonFile) {
       throw new Error("Cannot find package.json configuration file");
@@ -207,7 +207,7 @@ async function generatePackageJson(options: TSDownResolvedOptions) {
       options.config.workspaceRoot,
       options.projectRoot,
       options.projectName,
-      packageJson
+      packageJson,
     );
 
     packageJson = await addWorkspacePackageJsonFields(
@@ -216,7 +216,7 @@ async function generatePackageJson(options: TSDownResolvedOptions) {
       options.sourceRoot,
       options.projectName,
       false,
-      packageJson
+      packageJson,
     );
 
     packageJson.exports ??= {};
@@ -224,7 +224,7 @@ async function generatePackageJson(options: TSDownResolvedOptions) {
     packageJson.exports["."] ??= addPackageJsonExport(
       "index",
       packageJson.type,
-      options.sourceRoot
+      options.sourceRoot,
     );
 
     let entryPoints = [{ in: "./src/index.ts", out: "./src/index.ts" }];
@@ -232,10 +232,10 @@ async function generatePackageJson(options: TSDownResolvedOptions) {
       if (Array.isArray(options.entryPoints)) {
         entryPoints = (
           options.entryPoints as (string | { in: string; out: string })[]
-        ).map(entryPoint =>
+        ).map((entryPoint) =>
           typeof entryPoint === "string"
             ? { in: entryPoint, out: entryPoint }
-            : entryPoint
+            : entryPoint,
         );
       }
 
@@ -247,7 +247,7 @@ async function generatePackageJson(options: TSDownResolvedOptions) {
         packageJson.exports[`./${entry}`] ??= addPackageJsonExport(
           entry,
           packageJson.type,
-          options.sourceRoot
+          options.sourceRoot,
         );
       }
     }
@@ -266,7 +266,7 @@ async function generatePackageJson(options: TSDownResolvedOptions) {
 
         return ret;
       },
-      packageJson.exports
+      packageJson.exports,
     );
 
     await writeJsonFile(joinPaths(options.outdir, "package.json"), packageJson);
@@ -288,7 +288,7 @@ async function executeTSDown(options: TSDownResolvedOptions) {
     ...options,
     entry: options.entryPoints,
     outDir: options.outdir,
-    config: false
+    config: false,
   });
 
   stopwatch();
@@ -302,7 +302,7 @@ async function executeTSDown(options: TSDownResolvedOptions) {
 async function copyBuildAssets(options: TSDownResolvedOptions) {
   writeDebug(
     `  📋  Copying asset files to output directory: ${options.outdir}`,
-    options.config
+    options.config,
   );
   const stopwatch = getStopwatch(`${options.name} asset copy`);
 
@@ -313,7 +313,7 @@ async function copyBuildAssets(options: TSDownResolvedOptions) {
     options.projectRoot,
     options.sourceRoot,
     true,
-    false
+    false,
   );
 
   stopwatch();
@@ -327,7 +327,7 @@ async function copyBuildAssets(options: TSDownResolvedOptions) {
 async function reportResults(options: TSDownResolvedOptions) {
   writeSuccess(
     `  📦  The ${options.name} build completed successfully`,
-    options.config
+    options.config,
   );
 }
 
@@ -340,7 +340,7 @@ export async function cleanOutputPath(options: TSDownResolvedOptions) {
   if (options.clean !== false && options.outdir) {
     writeDebug(
       ` 🧹  Cleaning ${options.name} output path: ${options.outdir}`,
-      options.config
+      options.config,
     );
     const stopwatch = getStopwatch(`${options.name} output clean`);
 
@@ -369,7 +369,7 @@ export async function build(options: TSDownOptions | TSDownOptions[]) {
     }
 
     const resolved = await Promise.all(
-      opts.map(async opt => await resolveOptions(opt))
+      opts.map(async (opt) => await resolveOptions(opt)),
     );
 
     if (resolved.length > 0) {
@@ -377,22 +377,22 @@ export async function build(options: TSDownOptions | TSDownOptions[]) {
       await generatePackageJson(resolved[0]!);
 
       await Promise.all(
-        resolved.map(async opt => {
+        resolved.map(async (opt) => {
           await executeTSDown(opt);
           await copyBuildAssets(opt);
           await reportResults(opt);
-        })
+        }),
       );
     } else {
       writeWarning(
-        "  🚧   No options were passed to TSBuild. Please check the parameters passed to the `build` function."
+        "  🚧   No options were passed to TSBuild. Please check the parameters passed to the `build` function.",
       );
     }
 
     writeSuccess("  🏁  TSDown pipeline build completed successfully");
   } catch (error) {
     writeFatal(
-      "  ❌  Fatal errors occurred during the build that could not be recovered from. The build process has been terminated."
+      "  ❌  Fatal errors occurred during the build that could not be recovered from. The build process has been terminated.",
     );
 
     throw error;

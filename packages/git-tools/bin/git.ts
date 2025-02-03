@@ -6,7 +6,7 @@ import {
   getConfig,
   handleProcess,
   writeFatal,
-  writeSuccess
+  writeSuccess,
 } from "@storm-software/config-tools";
 import { createProgram } from "../src/cli";
 
@@ -20,7 +20,7 @@ void (async () => {
 
     writeSuccess(
       `🎉  Git ${process.argv && process.argv.length >= 3 && process.argv[2] ? process.argv[2] : "tool"} processing completed successfully!`,
-      config
+      config,
     );
     exitWithSuccess(config);
   } catch (error) {
@@ -32,7 +32,7 @@ ${error?.message ? error.message : JSON.stringify(error)}${
 Stack Trace: ${error.stack}`
           : ""
       }`,
-      config
+      config,
     );
 
     exitWithError(config);

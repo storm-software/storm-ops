@@ -2,7 +2,7 @@ import z from "zod";
 import {
   STORM_DEFAULT_DOCS,
   STORM_DEFAULT_HOMEPAGE,
-  STORM_DEFAULT_LICENSING
+  STORM_DEFAULT_LICENSING,
 } from "./constants";
 
 const DarkColorSchema = z
@@ -132,7 +132,7 @@ export const DarkThemeColorConfigSchema = z.object({
   danger: DangerColorSchema,
   fatal: FatalColorSchema,
   positive: PositiveColorSchema,
-  negative: NegativeColorSchema
+  negative: NegativeColorSchema,
 });
 
 export const LightThemeColorConfigSchema = z.object({
@@ -149,12 +149,12 @@ export const LightThemeColorConfigSchema = z.object({
   danger: DangerColorSchema,
   fatal: FatalColorSchema,
   positive: PositiveColorSchema,
-  negative: NegativeColorSchema
+  negative: NegativeColorSchema,
 });
 
 export const MultiThemeColorConfigSchema = z.object({
   dark: DarkThemeColorConfigSchema,
-  light: LightThemeColorConfigSchema
+  light: LightThemeColorConfigSchema,
 });
 
 export const SingleThemeColorConfigSchema = z.object({
@@ -171,7 +171,7 @@ export const SingleThemeColorConfigSchema = z.object({
   danger: DangerColorSchema,
   fatal: FatalColorSchema,
   positive: PositiveColorSchema,
-  negative: NegativeColorSchema
+  negative: NegativeColorSchema,
 });
 
 export const RegistryUrlConfigSchema = z
@@ -188,7 +188,7 @@ export const RegistryConfigSchema = z
     npm: RegistryUrlConfigSchema,
     cargo: RegistryUrlConfigSchema,
     cyclone: RegistryUrlConfigSchema,
-    container: RegistryUrlConfigSchema
+    container: RegistryUrlConfigSchema,
   })
   .default({})
   .describe("A list of remote registry URLs used by Storm Software");
@@ -197,25 +197,25 @@ export const RegistryConfigSchema = z
  * Storm theme color config values used for styling various workspace elements
  */
 export const ColorConfigSchema = SingleThemeColorConfigSchema.or(
-  MultiThemeColorConfigSchema
+  MultiThemeColorConfigSchema,
 ).describe("Colors used for various workspace elements");
 
 export const ColorConfigMapSchema = z.union([
-  z.object({ "base": ColorConfigSchema }),
-  z.record(z.string(), ColorConfigSchema)
+  z.object({ base: ColorConfigSchema }),
+  z.record(z.string(), ColorConfigSchema),
 ]);
 
 const ExtendsItemSchema = z
   .string()
   .trim()
   .describe(
-    "The path to a base config file to use as a configuration preset file. Documentation can be found at https://github.com/unjs/c12#extending-configuration."
+    "The path to a base config file to use as a configuration preset file. Documentation can be found at https://github.com/unjs/c12#extending-configuration.",
   );
 
 export const ExtendsSchema = ExtendsItemSchema.or(
-  z.array(ExtendsItemSchema)
+  z.array(ExtendsItemSchema),
 ).describe(
-  "The path to a base config file to use as a configuration preset file. Documentation can be found at https://github.com/unjs/c12#extending-configuration."
+  "The path to a base config file to use as a configuration preset file. Documentation can be found at https://github.com/unjs/c12#extending-configuration.",
 );
 
 export const WorkspaceBotConfigSchema = z
@@ -225,17 +225,17 @@ export const WorkspaceBotConfigSchema = z
       .trim()
       .default("Stormie-Bot")
       .describe(
-        "The workspace bot user's name (this is the bot that will be used to perform various tasks)"
+        "The workspace bot user's name (this is the bot that will be used to perform various tasks)",
       ),
     email: z
       .string()
       .trim()
       .email()
       .default("bot@stormsoftware.com")
-      .describe("The email of the workspace bot")
+      .describe("The email of the workspace bot"),
   })
   .describe(
-    "The workspace's bot user's config used to automated various operations tasks"
+    "The workspace's bot user's config used to automated various operations tasks",
   );
 
 export const WorkspaceDirectoryConfigSchema = z
@@ -245,7 +245,7 @@ export const WorkspaceDirectoryConfigSchema = z
       .trim()
       .optional()
       .describe(
-        "The directory used to store the environment's cached file data"
+        "The directory used to store the environment's cached file data",
       ),
     data: z
       .string()
@@ -257,7 +257,7 @@ export const WorkspaceDirectoryConfigSchema = z
       .trim()
       .optional()
       .describe(
-        "The directory used to store the environment's configuration files"
+        "The directory used to store the environment's configuration files",
       ),
     temp: z
       .string()
@@ -274,11 +274,11 @@ export const WorkspaceDirectoryConfigSchema = z
       .trim()
       .default("dist")
       .describe(
-        "The directory used to store the workspace's distributable files after a build (relative to the workspace root)"
-      )
+        "The directory used to store the workspace's distributable files after a build (relative to the workspace root)",
+      ),
   })
   .describe(
-    "Various directories used by the workspace to store data, cache, and configuration files"
+    "Various directories used by the workspace to store data, cache, and configuration files",
   );
 
 /**
@@ -290,12 +290,12 @@ export const StormConfigSchema = z
       .string()
       .trim()
       .default(
-        "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm-workspace.schema.json"
+        "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm-workspace.schema.json",
       )
       .optional()
       .nullish()
       .describe(
-        "The URL to the JSON schema file that describes the Storm configuration file"
+        "The URL to the JSON schema file that describes the Storm configuration file",
       ),
     extends: ExtendsSchema.optional(),
     name: z
@@ -304,7 +304,7 @@ export const StormConfigSchema = z
       .toLowerCase()
       .optional()
       .describe(
-        "The name of the service/package/scope using this configuration"
+        "The name of the service/package/scope using this configuration",
       ),
     namespace: z
       .string()
@@ -373,7 +373,7 @@ export const StormConfigSchema = z
       .array(z.string())
       .default([])
       .describe(
-        "The build will use these package patterns to determine if they should be external to the bundle"
+        "The build will use these package patterns to determine if they should be external to the bundle",
       ),
     skipCache: z
       .boolean()
@@ -384,7 +384,7 @@ export const StormConfigSchema = z
       .enum(["npm", "yarn", "pnpm", "bun"])
       .default("npm")
       .describe(
-        "The JavaScript/TypeScript package manager used by the repository"
+        "The JavaScript/TypeScript package manager used by the repository",
       ),
     timezone: z
       .string()
@@ -406,17 +406,17 @@ export const StormConfigSchema = z
         "info",
         "debug",
         "trace",
-        "all"
+        "all",
       ])
       .default("info")
       .describe(
-        "The log level used to filter out lower priority log messages. If not provided, this is defaulted using the `environment` config value (if `environment` is set to `production` then `level` is `error`, else `level` is `debug`)."
+        "The log level used to filter out lower priority log messages. If not provided, this is defaulted using the `environment` config value (if `environment` is set to `production` then `level` is `error`, else `level` is `debug`).",
       ),
     skipConfigLogging: z
       .boolean()
       .optional()
       .describe(
-        "Should the logging of the current Storm Workspace configuration be skipped?"
+        "Should the logging of the current Storm Workspace configuration be skipped?",
       ),
     registry: RegistryConfigSchema,
     configFile: z
@@ -425,17 +425,17 @@ export const StormConfigSchema = z
       .nullable()
       .default(null)
       .describe(
-        "The filepath of the Storm config. When this field is null, no config file was found in the current workspace."
+        "The filepath of the Storm config. When this field is null, no config file was found in the current workspace.",
       ),
     colors: ColorConfigSchema.or(ColorConfigMapSchema).describe(
-      "Storm theme config values used for styling various package elements"
+      "Storm theme config values used for styling various package elements",
     ),
     extensions: z
       .record(z.any())
       .optional()
       .default({})
-      .describe("Configuration of each used extension")
+      .describe("Configuration of each used extension"),
   })
   .describe(
-    "Storm Workspace config values used during various dev-ops processes. This type is a combination of the StormPackageConfig and StormProject types. It represents the config of the entire monorepo."
+    "Storm Workspace config values used during various dev-ops processes. This type is a combination of the StormPackageConfig and StormProject types. It represents the config of the entire monorepo.",
   );

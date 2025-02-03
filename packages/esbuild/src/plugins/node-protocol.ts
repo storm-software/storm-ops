@@ -7,7 +7,7 @@ import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
  */
 export const nodeProtocolPlugin = (
   options: ESBuildOptions,
-  resolvedOptions: ESBuildResolvedOptions
+  resolvedOptions: ESBuildResolvedOptions,
 ): esbuild.Plugin => {
   const nodeProtocol = "node:";
 
@@ -16,13 +16,13 @@ export const nodeProtocolPlugin = (
     setup({ onResolve }) {
       onResolve(
         {
-          filter: /^node:/
+          filter: /^node:/,
         },
         ({ path }) => ({
           path: path.slice(nodeProtocol.length),
-          external: true
-        })
+          external: true,
+        }),
       );
-    }
+    },
   };
 };

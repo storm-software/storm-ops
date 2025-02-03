@@ -6,6 +6,6 @@ export default defineUntypedSchema({
   $schema: {
     id: "CargoCheckExecutorSchema",
     title: "Cargo Check Executor",
-    description: "A type definition for a Cargo/rust check executor schema"
-  }
+    description: "A type definition for a Cargo/rust check executor schema",
+  },
 });

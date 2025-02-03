@@ -4,9 +4,9 @@ the output `package.json`, the dependencies must be installed as a
 
 ```json {% fileName="package.json" %}
 {
-  "dependencies": {
-    "some-dependency": "^1.0.0"
-  }
+    "dependencies": {
+        "some-dependency": "^1.0.0"
+    }
 }
 ```
 
@@ -61,7 +61,7 @@ that package. For example:
 
 ```json
 {
-  "presets": ["@babel/preset-env", "@babel/preset-typescript"]
+    "presets": ["@babel/preset-env", "@babel/preset-typescript"]
 }
 ```
 

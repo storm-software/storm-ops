@@ -6,7 +6,7 @@ import type {
   LightThemeColorConfigSchema,
   MultiThemeColorConfigSchema,
   SingleThemeColorConfigSchema,
-  StormConfigSchema
+  StormConfigSchema,
 } from "./schema";
 
 export type DarkThemeColorConfig = z.infer<typeof DarkThemeColorConfigSchema>;
@@ -44,7 +44,7 @@ export type StormConfig<
   TExtensionName extends
     keyof TStormConfig["extensions"] = keyof TStormConfig["extensions"],
   TExtensionConfig extends
-    TStormConfig["extensions"][TExtensionName] = TStormConfig["extensions"][TExtensionName]
+    TStormConfig["extensions"][TExtensionName] = TStormConfig["extensions"][TExtensionName],
 > = TStormConfig & {
   extensions:
     | (TStormConfig["extensions"] & {
@@ -68,5 +68,5 @@ export const COLOR_KEYS = [
   "danger",
   "fatal",
   "positive",
-  "negative"
+  "negative",
 ];

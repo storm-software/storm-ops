@@ -36,7 +36,7 @@ export const getLogLevel = (label?: string): LogLevel => {
  * @returns The log level label
  */
 export const getLogLevelLabel = (
-  logLevel: number = LogLevel.INFO
+  logLevel: number = LogLevel.INFO,
 ): LogLevelLabel => {
   if (logLevel >= LogLevel.ALL) {
     return LogLevelLabel.ALL;
@@ -72,7 +72,7 @@ export const getLogLevelLabel = (
  * @returns True if the log level is verbose
  */
 export const isVerbose = (
-  label: string | LogLevel = LogLevelLabel.SILENT
+  label: string | LogLevel = LogLevelLabel.SILENT,
 ): boolean => {
   const logLevel = typeof label === "string" ? getLogLevel(label) : label;
   return logLevel >= LogLevel.DEBUG;

@@ -4,19 +4,19 @@ import {
   GeneratorCallback,
   readJsonFile,
   runTasksInSerial,
-  type Tree
+  type Tree,
 } from "@nx/devkit";
 import { StormConfig } from "@storm-software/config";
 import {
   initGenerator as baseInitGenerator,
-  withRunGenerator
+  withRunGenerator,
 } from "@storm-software/workspace-tools";
 import type { InitGeneratorSchema } from "./schema";
 
 export async function initGeneratorFn(
   tree: Tree,
   options: InitGeneratorSchema,
-  config: StormConfig
+  config: StormConfig,
 ) {
   const task = baseInitGenerator(tree, options);
 
@@ -31,12 +31,12 @@ export async function initGeneratorFn(
 
 export default withRunGenerator<InitGeneratorSchema>(
   "Initialize Storm Projen workspace",
-  initGeneratorFn
+  initGeneratorFn,
 );
 
 function addProjenDeps(
   tree: Tree,
-  options: InitGeneratorSchema
+  options: InitGeneratorSchema,
 ): GeneratorCallback {
   return () => {
     const packageJson = readJsonFile(`${options.directory}/package.json`);
@@ -46,7 +46,7 @@ function addProjenDeps(
       addDependenciesToPackageJson(
         tree,
         packageJson.dependencies || {},
-        packageJson.devDependencies || {}
+        packageJson.devDependencies || {},
       )();
     }
   };

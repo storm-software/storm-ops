@@ -1791,7 +1791,7 @@ type CspellSpellchecker =
         ignoreImports?: boolean;
 
         numSuggestions: number;
-      }
+      },
     ];
 // ----- @nx/dependency-checks -----
 type NxDependencyChecks =
@@ -1806,7 +1806,7 @@ type NxDependencyChecks =
         checkVersionMismatches?: boolean;
         includeTransitiveDependencies?: boolean;
         useLocalPathsForWorkspaceDependencies?: boolean;
-      }
+      },
     ];
 // ----- @nx/enforce-module-boundaries -----
 type NxEnforceModuleBoundaries =
@@ -1836,7 +1836,7 @@ type NxEnforceModuleBoundaries =
               notDependOnLibsWithTags?: string[];
             }
         )[];
-      }
+      },
     ];
 // ----- @nx/nx-plugin-checks -----
 type NxNxPluginChecks =
@@ -1852,7 +1852,7 @@ type NxNxPluginChecks =
         packageJson?: string;
 
         allowedVersionStrings?: string[];
-      }
+      },
     ];
 // ----- @typescript-eslint/array-type -----
 type TypescriptEslintArrayType =
@@ -1862,7 +1862,7 @@ type TypescriptEslintArrayType =
         default?: "array" | "generic" | "array-simple";
 
         readonly?: "array" | "generic" | "array-simple";
-      }
+      },
     ];
 // ----- @typescript-eslint/ban-ts-comment -----
 type TypescriptEslintBanTsComment =
@@ -1894,7 +1894,7 @@ type TypescriptEslintBanTsComment =
               descriptionFormat?: string;
             };
         minimumDescriptionLength?: number;
-      }
+      },
     ];
 // ----- @typescript-eslint/ban-types -----
 type TypescriptEslintBanTypes =
@@ -1919,7 +1919,7 @@ type TypescriptEslintBanTypes =
             | undefined;
         };
         extendDefaults?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/block-spacing -----
 type TypescriptEslintBlockSpacing = [] | ["always" | "never"];
@@ -1931,7 +1931,7 @@ type TypescriptEslintBraceStyle =
       "1tbs" | "stroustrup" | "allman",
       {
         allowSingleLine?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/class-literal-property-style -----
 type TypescriptEslintClassLiteralPropertyStyle = [] | ["fields" | "getters"];
@@ -1947,7 +1947,7 @@ type TypescriptEslintClassMethodsUseThis =
         ignoreOverrideMethods?: boolean;
 
         ignoreClassesThatImplementAnInterface?: boolean | "public-fields";
-      }
+      },
     ];
 // ----- @typescript-eslint/comma-dangle -----
 type TypescriptEslintCommaDangle =
@@ -1963,7 +1963,7 @@ type TypescriptEslintCommaDangle =
           enums?: _TypescriptEslintCommaDangleValueWithIgnore;
           generics?: _TypescriptEslintCommaDangleValueWithIgnore;
           tuples?: _TypescriptEslintCommaDangleValueWithIgnore;
-        }
+        },
     ];
 type _TypescriptEslintCommaDangleValue =
   | "always-multiline"
@@ -1983,7 +1983,7 @@ type TypescriptEslintCommaSpacing =
       {
         before?: boolean;
         after?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/consistent-generic-constructors -----
 type TypescriptEslintConsistentGenericConstructors =
@@ -1999,7 +1999,7 @@ type TypescriptEslintConsistentReturn =
   | [
       {
         treatUndefinedAsUnspecified?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/consistent-type-assertions -----
 type TypescriptEslintConsistentTypeAssertions =
@@ -2014,7 +2014,7 @@ type TypescriptEslintConsistentTypeAssertions =
             | "allow"
             | "allow-as-parameter"
             | "never";
-        }
+        },
     ];
 // ----- @typescript-eslint/consistent-type-definitions -----
 type TypescriptEslintConsistentTypeDefinitions = [] | ["interface" | "type"];
@@ -2024,7 +2024,7 @@ type TypescriptEslintConsistentTypeExports =
   | [
       {
         fixMixedExportsWithInlineTypeSpecifier?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/consistent-type-imports -----
 type TypescriptEslintConsistentTypeImports =
@@ -2034,7 +2034,7 @@ type TypescriptEslintConsistentTypeImports =
         disallowTypeAnnotations?: boolean;
         fixStyle?: "separate-type-imports" | "inline-type-imports";
         prefer?: "type-imports" | "no-type-imports";
-      }
+      },
     ];
 // ----- @typescript-eslint/dot-notation -----
 type TypescriptEslintDotNotation =
@@ -2046,7 +2046,7 @@ type TypescriptEslintDotNotation =
         allowPrivateClassPropertyAccess?: boolean;
         allowProtectedClassPropertyAccess?: boolean;
         allowIndexSignaturePropertyAccess?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/explicit-function-return-type -----
 type TypescriptEslintExplicitFunctionReturnType =
@@ -2068,7 +2068,7 @@ type TypescriptEslintExplicitFunctionReturnType =
         allowedNames?: string[];
 
         allowIIFEs?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/explicit-member-accessibility -----
 type TypescriptEslintExplicitMemberAccessibility =
@@ -2084,7 +2084,7 @@ type TypescriptEslintExplicitMemberAccessibility =
           parameterProperties?: "explicit" | "no-public" | "off";
         };
         ignoredMethodNames?: string[];
-      }
+      },
     ];
 // ----- @typescript-eslint/explicit-module-boundary-types -----
 type TypescriptEslintExplicitModuleBoundaryTypes =
@@ -2100,7 +2100,7 @@ type TypescriptEslintExplicitModuleBoundaryTypes =
         allowHigherOrderFunctions?: boolean;
 
         allowTypedFunctionExpressions?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/func-call-spacing -----
 type TypescriptEslintFuncCallSpacing =
@@ -2112,7 +2112,7 @@ type TypescriptEslintFuncCallSpacing =
       "always",
       {
         allowNewlines?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/indent -----
 type TypescriptEslintIndent =
@@ -2152,7 +2152,7 @@ type TypescriptEslintIndent =
         offsetTernaryExpressions?: boolean;
         ignoredNodes?: string[];
         ignoreComments?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/init-declarations -----
 type TypescriptEslintInitDeclarations =
@@ -2164,7 +2164,7 @@ type TypescriptEslintInitDeclarations =
       "never",
       {
         ignoreForLoopInit?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/key-spacing -----
 type TypescriptEslintKeySpacing =
@@ -2220,7 +2220,7 @@ type TypescriptEslintKeySpacing =
             beforeColon?: boolean;
             afterColon?: boolean;
           };
-        }
+        },
     ];
 // ----- @typescript-eslint/keyword-spacing -----
 type TypescriptEslintKeywordSpacing =
@@ -2507,7 +2507,7 @@ type TypescriptEslintKeywordSpacing =
             after?: boolean;
           };
         };
-      }
+      },
     ];
 // ----- @typescript-eslint/lines-around-comment -----
 type TypescriptEslintLinesAroundComment =
@@ -2536,7 +2536,7 @@ type TypescriptEslintLinesAroundComment =
         allowModuleEnd?: boolean;
         ignorePattern?: string;
         applyDefaultIgnorePatterns?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/lines-between-class-members -----
 type TypescriptEslintLinesBetweenClassMembers =
@@ -2553,10 +2553,10 @@ type TypescriptEslintLinesBetweenClassMembers =
               blankLine: "always" | "never";
               prev: "method" | "field" | "*";
               next: "method" | "field" | "*";
-            }[]
+            }[],
           ];
         }
-      | ("always" | "never")
+      | ("always" | "never"),
     ]
   | [
       (
@@ -2571,7 +2571,7 @@ type TypescriptEslintLinesBetweenClassMembers =
                 blankLine: "always" | "never";
                 prev: "method" | "field" | "*";
                 next: "method" | "field" | "*";
-              }[]
+              }[],
             ];
           }
         | ("always" | "never")
@@ -2579,7 +2579,7 @@ type TypescriptEslintLinesBetweenClassMembers =
       {
         exceptAfterSingleLine?: boolean;
         exceptAfterOverload?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/max-params -----
 type TypescriptEslintMaxParams =
@@ -2589,7 +2589,7 @@ type TypescriptEslintMaxParams =
         maximum?: number;
         max?: number;
         countVoidThis?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/member-delimiter-style -----
 type TypescriptEslintMemberDelimiterStyle =
@@ -2609,7 +2609,7 @@ type TypescriptEslintMemberDelimiterStyle =
           typeLiteral?: _TypescriptEslintMemberDelimiterStyle_DelimiterConfig;
         };
         multilineDetection?: "brackets" | "last-member";
-      }
+      },
     ];
 interface _TypescriptEslintMemberDelimiterStyle_DelimiterConfig {
   multiline?: {
@@ -4635,7 +4635,7 @@ type TypescriptEslintMemberOrdering =
                 | "natural-case-insensitive";
               optionalityOrder?: "optional-first" | "required-first";
             };
-      }
+      },
     ];
 // ----- @typescript-eslint/method-signature-style -----
 type TypescriptEslintMethodSignatureStyle = [] | ["property" | "method"];
@@ -5157,7 +5157,7 @@ type TypescriptEslintNoBaseToString =
   | [
       {
         ignoredTypeNames?: string[];
-      }
+      },
     ];
 // ----- @typescript-eslint/no-confusing-void-expression -----
 type TypescriptEslintNoConfusingVoidExpression =
@@ -5166,7 +5166,7 @@ type TypescriptEslintNoConfusingVoidExpression =
       {
         ignoreArrowShorthand?: boolean;
         ignoreVoidOperator?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-duplicate-type-constituents -----
 type TypescriptEslintNoDuplicateTypeConstituents =
@@ -5175,7 +5175,7 @@ type TypescriptEslintNoDuplicateTypeConstituents =
       {
         ignoreIntersections?: boolean;
         ignoreUnions?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-empty-function -----
 type TypescriptEslintNoEmptyFunction =
@@ -5198,7 +5198,7 @@ type TypescriptEslintNoEmptyFunction =
           | "decoratedFunctions"
           | "overrideMethods"
         )[];
-      }
+      },
     ];
 // ----- @typescript-eslint/no-empty-interface -----
 type TypescriptEslintNoEmptyInterface =
@@ -5206,7 +5206,7 @@ type TypescriptEslintNoEmptyInterface =
   | [
       {
         allowSingleExtends?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-empty-object-type -----
 type TypescriptEslintNoEmptyObjectType =
@@ -5216,7 +5216,7 @@ type TypescriptEslintNoEmptyObjectType =
         allowInterfaces?: "always" | "never" | "with-single-extends";
         allowObjectTypes?: "always" | "in-type-alias-with-name" | "never";
         allowWithName?: string;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-explicit-any -----
 type TypescriptEslintNoExplicitAny =
@@ -5226,7 +5226,7 @@ type TypescriptEslintNoExplicitAny =
         fixToUnknown?: boolean;
 
         ignoreRestArgs?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-extra-parens -----
 type TypescriptEslintNoExtraParens =
@@ -5247,7 +5247,7 @@ type TypescriptEslintNoExtraParens =
         enforceForNewInMemberExpressions?: boolean;
         enforceForFunctionPrototypeMethods?: boolean;
         allowParensAfterCommentPattern?: string;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-extraneous-class -----
 type TypescriptEslintNoExtraneousClass =
@@ -5261,7 +5261,7 @@ type TypescriptEslintNoExtraneousClass =
         allowStaticOnly?: boolean;
 
         allowWithDecorator?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-floating-promises -----
 type TypescriptEslintNoFloatingPromises =
@@ -5291,7 +5291,7 @@ type TypescriptEslintNoFloatingPromises =
         ignoreVoid?: boolean;
 
         ignoreIIFE?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-inferrable-types -----
 type TypescriptEslintNoInferrableTypes =
@@ -5300,7 +5300,7 @@ type TypescriptEslintNoInferrableTypes =
       {
         ignoreParameters?: boolean;
         ignoreProperties?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-invalid-this -----
 type TypescriptEslintNoInvalidThis =
@@ -5308,7 +5308,7 @@ type TypescriptEslintNoInvalidThis =
   | [
       {
         capIsConstructor?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-invalid-void-type -----
 type TypescriptEslintNoInvalidVoidType =
@@ -5317,7 +5317,7 @@ type TypescriptEslintNoInvalidVoidType =
       {
         allowInGenericTypeArguments?: boolean | [string, ...string[]];
         allowAsThisParameter?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-magic-numbers -----
 type TypescriptEslintNoMagicNumbers =
@@ -5334,7 +5334,7 @@ type TypescriptEslintNoMagicNumbers =
         ignoreEnums?: boolean;
         ignoreReadonlyClassProperties?: boolean;
         ignoreTypeIndexes?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-meaningless-void-operator -----
 type TypescriptEslintNoMeaninglessVoidOperator =
@@ -5342,7 +5342,7 @@ type TypescriptEslintNoMeaninglessVoidOperator =
   | [
       {
         checkNever?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-misused-promises -----
 type TypescriptEslintNoMisusedPromises =
@@ -5360,7 +5360,7 @@ type TypescriptEslintNoMisusedPromises =
               variables?: boolean;
             };
         checksSpreads?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-namespace -----
 type TypescriptEslintNoNamespace =
@@ -5370,7 +5370,7 @@ type TypescriptEslintNoNamespace =
         allowDeclarations?: boolean;
 
         allowDefinitionFiles?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-redeclare -----
 type TypescriptEslintNoRedeclare =
@@ -5379,7 +5379,7 @@ type TypescriptEslintNoRedeclare =
       {
         builtinGlobals?: boolean;
         ignoreDeclarationMerge?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-require-imports -----
 type TypescriptEslintNoRequireImports =
@@ -5387,7 +5387,7 @@ type TypescriptEslintNoRequireImports =
   | [
       {
         allow?: string[];
-      }
+      },
     ];
 // ----- @typescript-eslint/no-restricted-imports -----
 type TypescriptEslintNoRestrictedImports =
@@ -5431,7 +5431,7 @@ type TypescriptEslintNoRestrictedImports =
 
               allowTypeImports?: boolean;
             }[];
-      }
+      },
     ];
 // ----- @typescript-eslint/no-shadow -----
 type TypescriptEslintNoShadow =
@@ -5444,7 +5444,7 @@ type TypescriptEslintNoShadow =
         ignoreOnInitialization?: boolean;
         ignoreTypeValueShadow?: boolean;
         ignoreFunctionTypeParameterNameValueShadow?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-this-alias -----
 type TypescriptEslintNoThisAlias =
@@ -5454,7 +5454,7 @@ type TypescriptEslintNoThisAlias =
         allowDestructuring?: boolean;
 
         allowedNames?: string[];
-      }
+      },
     ];
 // ----- @typescript-eslint/no-throw-literal -----
 type TypescriptEslintNoThrowLiteral =
@@ -5463,7 +5463,7 @@ type TypescriptEslintNoThrowLiteral =
       {
         allowThrowingAny?: boolean;
         allowThrowingUnknown?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-type-alias -----
 type TypescriptEslintNoTypeAlias =
@@ -5505,7 +5505,7 @@ type TypescriptEslintNoTypeAlias =
           | "in-unions-and-intersections";
 
         allowGenerics?: "always" | "never";
-      }
+      },
     ];
 // ----- @typescript-eslint/no-unnecessary-boolean-literal-compare -----
 type TypescriptEslintNoUnnecessaryBooleanLiteralCompare =
@@ -5515,7 +5515,7 @@ type TypescriptEslintNoUnnecessaryBooleanLiteralCompare =
         allowComparingNullableBooleansToTrue?: boolean;
 
         allowComparingNullableBooleansToFalse?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-unnecessary-condition -----
 type TypescriptEslintNoUnnecessaryCondition =
@@ -5525,7 +5525,7 @@ type TypescriptEslintNoUnnecessaryCondition =
         allowConstantLoopConditions?: boolean;
 
         allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-unnecessary-type-assertion -----
 type TypescriptEslintNoUnnecessaryTypeAssertion =
@@ -5533,7 +5533,7 @@ type TypescriptEslintNoUnnecessaryTypeAssertion =
   | [
       {
         typesToIgnore?: string[];
-      }
+      },
     ];
 // ----- @typescript-eslint/no-unused-expressions -----
 type TypescriptEslintNoUnusedExpressions =
@@ -5544,7 +5544,7 @@ type TypescriptEslintNoUnusedExpressions =
         allowTernary?: boolean;
         allowTaggedTemplates?: boolean;
         enforceForJSX?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/no-unused-vars -----
 type TypescriptEslintNoUnusedVars =
@@ -5560,7 +5560,7 @@ type TypescriptEslintNoUnusedVars =
           caughtErrors?: "all" | "none";
           caughtErrorsIgnorePattern?: string;
           destructuredArrayIgnorePattern?: string;
-        }
+        },
     ];
 // ----- @typescript-eslint/no-use-before-define -----
 type TypescriptEslintNoUseBeforeDefine =
@@ -5575,7 +5575,7 @@ type TypescriptEslintNoUseBeforeDefine =
           typedefs?: boolean;
           ignoreTypeReferences?: boolean;
           allowNamedExports?: boolean;
-        }
+        },
     ];
 // ----- @typescript-eslint/no-var-requires -----
 type TypescriptEslintNoVarRequires =
@@ -5583,7 +5583,7 @@ type TypescriptEslintNoVarRequires =
   | [
       {
         allow?: string[];
-      }
+      },
     ];
 // ----- @typescript-eslint/object-curly-spacing -----
 type TypescriptEslintObjectCurlySpacing =
@@ -5594,7 +5594,7 @@ type TypescriptEslintObjectCurlySpacing =
       {
         arraysInObjects?: boolean;
         objectsInObjects?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/only-throw-error -----
 type TypescriptEslintOnlyThrowError =
@@ -5603,7 +5603,7 @@ type TypescriptEslintOnlyThrowError =
       {
         allowThrowingAny?: boolean;
         allowThrowingUnknown?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/padding-line-between-statements -----
 type _TypescriptEslintPaddingLineBetweenStatementsPaddingType =
@@ -5737,7 +5737,7 @@ type _TypescriptEslintPaddingLineBetweenStatementsStatementType =
         | "with"
         | "interface"
         | "type"
-      )[]
+      )[],
     ];
 type TypescriptEslintPaddingLineBetweenStatements = {
   blankLine: _TypescriptEslintPaddingLineBetweenStatementsPaddingType;
@@ -5759,7 +5759,7 @@ type TypescriptEslintParameterProperties =
           | "public readonly"
         )[];
         prefer?: "class-property" | "parameter-property";
-      }
+      },
     ];
 // ----- @typescript-eslint/prefer-destructuring -----
 type TypescriptEslintPreferDestructuring =
@@ -5778,7 +5778,7 @@ type TypescriptEslintPreferDestructuring =
       | {
           array?: boolean;
           object?: boolean;
-        }
+        },
     ]
   | [
       (
@@ -5801,7 +5801,7 @@ type TypescriptEslintPreferDestructuring =
         enforceForRenamedProperties?: boolean;
         enforceForDeclarationWithTypeAnnotation?: boolean;
         [k: string]: unknown | undefined;
-      }
+      },
     ];
 // ----- @typescript-eslint/prefer-literal-enum-member -----
 type TypescriptEslintPreferLiteralEnumMember =
@@ -5809,7 +5809,7 @@ type TypescriptEslintPreferLiteralEnumMember =
   | [
       {
         allowBitwiseExpressions?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/prefer-nullish-coalescing -----
 type TypescriptEslintPreferNullishCoalescing =
@@ -5829,7 +5829,7 @@ type TypescriptEslintPreferNullishCoalescing =
             }
           | true;
         ignoreTernaryTests?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/prefer-optional-chain -----
 type TypescriptEslintPreferOptionalChain =
@@ -5851,7 +5851,7 @@ type TypescriptEslintPreferOptionalChain =
         requireNullish?: boolean;
 
         allowPotentiallyUnsafeFixesThatModifyTheReturnTypeIKnowWhatImDoing?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/prefer-promise-reject-errors -----
 type TypescriptEslintPreferPromiseRejectErrors =
@@ -5859,7 +5859,7 @@ type TypescriptEslintPreferPromiseRejectErrors =
   | [
       {
         allowEmptyReject?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/prefer-readonly -----
 type TypescriptEslintPreferReadonly =
@@ -5867,7 +5867,7 @@ type TypescriptEslintPreferReadonly =
   | [
       {
         onlyInlineLambdas?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/prefer-readonly-parameter-types -----
 type TypescriptEslintPreferReadonlyParameterTypes =
@@ -5894,7 +5894,7 @@ type TypescriptEslintPreferReadonlyParameterTypes =
         checkParameterProperties?: boolean;
         ignoreInferredTypes?: boolean;
         treatMethodsAsReadonly?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/prefer-string-starts-ends-with -----
 type TypescriptEslintPreferStringStartsEndsWith =
@@ -5902,7 +5902,7 @@ type TypescriptEslintPreferStringStartsEndsWith =
   | [
       {
         allowSingleElementEquality?: "always" | "never";
-      }
+      },
     ];
 // ----- @typescript-eslint/promise-function-async -----
 type TypescriptEslintPromiseFunctionAsync =
@@ -5916,7 +5916,7 @@ type TypescriptEslintPromiseFunctionAsync =
         checkFunctionDeclarations?: boolean;
         checkFunctionExpressions?: boolean;
         checkMethodDeclarations?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/quotes -----
 type TypescriptEslintQuotes =
@@ -5930,7 +5930,7 @@ type TypescriptEslintQuotes =
             avoidEscape?: boolean;
             allowTemplateLiterals?: boolean;
           }
-      )
+      ),
     ];
 // ----- @typescript-eslint/require-array-sort-compare -----
 type TypescriptEslintRequireArraySortCompare =
@@ -5938,7 +5938,7 @@ type TypescriptEslintRequireArraySortCompare =
   | [
       {
         ignoreStringArrays?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/restrict-plus-operands -----
 type TypescriptEslintRestrictPlusOperands =
@@ -5956,7 +5956,7 @@ type TypescriptEslintRestrictPlusOperands =
         allowRegExp?: boolean;
 
         skipCompoundAssignments?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/restrict-template-expressions -----
 type TypescriptEslintRestrictTemplateExpressions =
@@ -5976,7 +5976,7 @@ type TypescriptEslintRestrictTemplateExpressions =
         allowRegExp?: boolean;
 
         allowNever?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/return-await -----
 type TypescriptEslintReturnAwait = [] | ["in-try-catch" | "always" | "never"];
@@ -5988,7 +5988,7 @@ type TypescriptEslintSemi =
       "never",
       {
         beforeStatementContinuationChars?: "always" | "any" | "never";
-      }
+      },
     ]
   | []
   | ["always"]
@@ -5997,7 +5997,7 @@ type TypescriptEslintSemi =
       {
         omitLastInOneLineBlock?: boolean;
         omitLastInOneLineClassBody?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/sort-type-constituents -----
 type TypescriptEslintSortTypeConstituents =
@@ -6024,7 +6024,7 @@ type TypescriptEslintSortTypeConstituents =
           | "tuple"
           | "union"
         )[];
-      }
+      },
     ];
 // ----- @typescript-eslint/space-before-blocks -----
 type TypescriptEslintSpaceBeforeBlocks =
@@ -6035,7 +6035,7 @@ type TypescriptEslintSpaceBeforeBlocks =
           keywords?: "always" | "never" | "off";
           functions?: "always" | "never" | "off";
           classes?: "always" | "never" | "off";
-        }
+        },
     ];
 // ----- @typescript-eslint/space-before-function-paren -----
 type TypescriptEslintSpaceBeforeFunctionParen =
@@ -6046,7 +6046,7 @@ type TypescriptEslintSpaceBeforeFunctionParen =
           anonymous?: "always" | "never" | "ignore";
           named?: "always" | "never" | "ignore";
           asyncArrow?: "always" | "never" | "ignore";
-        }
+        },
     ];
 // ----- @typescript-eslint/space-infix-ops -----
 type TypescriptEslintSpaceInfixOps =
@@ -6054,7 +6054,7 @@ type TypescriptEslintSpaceInfixOps =
   | [
       {
         int32Hint?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/strict-boolean-expressions -----
 type TypescriptEslintStrictBooleanExpressions =
@@ -6070,7 +6070,7 @@ type TypescriptEslintStrictBooleanExpressions =
         allowNullableEnum?: boolean;
         allowAny?: boolean;
         allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/switch-exhaustiveness-check -----
 type TypescriptEslintSwitchExhaustivenessCheck =
@@ -6080,7 +6080,7 @@ type TypescriptEslintSwitchExhaustivenessCheck =
         allowDefaultCaseForExhaustiveSwitch?: boolean;
 
         requireDefaultForNonUnion?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/triple-slash-reference -----
 type TypescriptEslintTripleSlashReference =
@@ -6090,7 +6090,7 @@ type TypescriptEslintTripleSlashReference =
         lib?: "always" | "never";
         path?: "always" | "never";
         types?: "always" | "never" | "prefer-import";
-      }
+      },
     ];
 // ----- @typescript-eslint/type-annotation-spacing -----
 type TypescriptEslintTypeAnnotationSpacing =
@@ -6107,7 +6107,7 @@ type TypescriptEslintTypeAnnotationSpacing =
           property?: _TypescriptEslintTypeAnnotationSpacing_SpacingConfig;
           returnType?: _TypescriptEslintTypeAnnotationSpacing_SpacingConfig;
         };
-      }
+      },
     ];
 interface _TypescriptEslintTypeAnnotationSpacing_SpacingConfig {
   before?: boolean;
@@ -6126,7 +6126,7 @@ type TypescriptEslintTypedef =
         propertyDeclaration?: boolean;
         variableDeclaration?: boolean;
         variableDeclarationIgnoreFunction?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/unbound-method -----
 type TypescriptEslintUnboundMethod =
@@ -6134,7 +6134,7 @@ type TypescriptEslintUnboundMethod =
   | [
       {
         ignoreStatic?: boolean;
-      }
+      },
     ];
 // ----- @typescript-eslint/unified-signatures -----
 type TypescriptEslintUnifiedSignatures =
@@ -6142,7 +6142,7 @@ type TypescriptEslintUnifiedSignatures =
   | [
       {
         ignoreDifferentlyNamedParameters?: boolean;
-      }
+      },
     ];
 // ----- banner/banner -----
 type BannerBanner =
@@ -6156,7 +6156,7 @@ type BannerBanner =
         commentType?: string;
 
         numNewlines?: number;
-      }
+      },
     ];
 // ----- json/* -----
 // ----- json/colon-expected -----
@@ -6166,7 +6166,7 @@ type JsonColonExpected =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/comma-expected -----
 type JsonCommaExpected =
@@ -6175,7 +6175,7 @@ type JsonCommaExpected =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/comma-or-close-backet-expected -----
 type JsonCommaOrCloseBacketExpected =
@@ -6184,7 +6184,7 @@ type JsonCommaOrCloseBacketExpected =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/comma-or-close-brace-expected -----
 type JsonCommaOrCloseBraceExpected =
@@ -6193,7 +6193,7 @@ type JsonCommaOrCloseBraceExpected =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/comment-not-permitted -----
 type JsonCommentNotPermitted =
@@ -6202,7 +6202,7 @@ type JsonCommentNotPermitted =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/duplicate-key -----
 type JsonDuplicateKey =
@@ -6211,7 +6211,7 @@ type JsonDuplicateKey =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/enum-value-mismatch -----
 type JsonEnumValueMismatch =
@@ -6220,7 +6220,7 @@ type JsonEnumValueMismatch =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/invalid-character -----
 type JsonInvalidCharacter =
@@ -6229,7 +6229,7 @@ type JsonInvalidCharacter =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/invalid-escape-character -----
 type JsonInvalidEscapeCharacter =
@@ -6238,7 +6238,7 @@ type JsonInvalidEscapeCharacter =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/invalid-unicode -----
 type JsonInvalidUnicode =
@@ -6247,7 +6247,7 @@ type JsonInvalidUnicode =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/json -----
 type JsonJson =
@@ -6256,7 +6256,7 @@ type JsonJson =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/property-expected -----
 type JsonPropertyExpected =
@@ -6265,7 +6265,7 @@ type JsonPropertyExpected =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/schema-resolve-error -----
 type JsonSchemaResolveError =
@@ -6274,7 +6274,7 @@ type JsonSchemaResolveError =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/trailing-comma -----
 type JsonTrailingComma =
@@ -6283,7 +6283,7 @@ type JsonTrailingComma =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/undefined -----
 type JsonUndefined =
@@ -6292,7 +6292,7 @@ type JsonUndefined =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/unexpected-end-of-comment -----
 type JsonUnexpectedEndOfComment =
@@ -6301,7 +6301,7 @@ type JsonUnexpectedEndOfComment =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/unexpected-end-of-number -----
 type JsonUnexpectedEndOfNumber =
@@ -6310,7 +6310,7 @@ type JsonUnexpectedEndOfNumber =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/unexpected-end-of-string -----
 type JsonUnexpectedEndOfString =
@@ -6319,7 +6319,7 @@ type JsonUnexpectedEndOfString =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/unknown -----
 type JsonUnknown =
@@ -6328,7 +6328,7 @@ type JsonUnknown =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- json/value-expected -----
 type JsonValueExpected =
@@ -6337,7 +6337,7 @@ type JsonValueExpected =
       | "allowComments"
       | {
           allowComments?: boolean;
-        }
+        },
     ];
 // ----- prettier/prettier -----
 type PrettierPrettier =
@@ -6345,7 +6345,7 @@ type PrettierPrettier =
   | [
       {
         [k: string]: unknown | undefined;
-      }
+      },
     ]
   | [
       {
@@ -6357,7 +6357,7 @@ type PrettierPrettier =
           [k: string]: unknown | undefined;
         };
         [k: string]: unknown | undefined;
-      }
+      },
     ];
 // ----- unicorn/better-regex -----
 type UnicornBetterRegex =
@@ -6365,7 +6365,7 @@ type UnicornBetterRegex =
   | [
       {
         sortCharacterClasses?: boolean;
-      }
+      },
     ];
 // ----- unicorn/catch-error-name -----
 type UnicornCatchErrorName =
@@ -6374,7 +6374,7 @@ type UnicornCatchErrorName =
       {
         name?: string;
         ignore?: unknown[];
-      }
+      },
     ];
 // ----- unicorn/consistent-function-scoping -----
 type UnicornConsistentFunctionScoping =
@@ -6382,7 +6382,7 @@ type UnicornConsistentFunctionScoping =
   | [
       {
         checkArrowFunctions?: boolean;
-      }
+      },
     ];
 // ----- unicorn/expiring-todo-comments -----
 type UnicornExpiringTodoComments =
@@ -6394,7 +6394,7 @@ type UnicornExpiringTodoComments =
         ignoreDatesOnPullRequests?: boolean;
         allowWarningComments?: boolean;
         date?: string;
-      }
+      },
     ];
 // ----- unicorn/explicit-length-check -----
 type UnicornExplicitLengthCheck =
@@ -6402,7 +6402,7 @@ type UnicornExplicitLengthCheck =
   | [
       {
         "non-zero"?: "greater-than" | "not-equal";
-      }
+      },
     ];
 // ----- unicorn/filename-case -----
 type UnicornFilenameCase =
@@ -6422,7 +6422,7 @@ type UnicornFilenameCase =
           };
           ignore?: unknown[];
           multipleFileExtensions?: boolean;
-        }
+        },
     ];
 // ----- unicorn/import-style -----
 type UnicornImportStyle =
@@ -6435,7 +6435,7 @@ type UnicornImportStyle =
         checkRequire?: boolean;
         extendDefaultStyles?: boolean;
         styles?: _UnicornImportStyle_ModuleStyles;
-      }
+      },
     ];
 type _UnicornImportStyleStyles =
   | (false | _UnicornImportStyle_BooleanObject)
@@ -6452,7 +6452,7 @@ type UnicornNoArrayPushPush =
   | [
       {
         ignore?: unknown[];
-      }
+      },
     ];
 // ----- unicorn/no-array-reduce -----
 type UnicornNoArrayReduce =
@@ -6460,7 +6460,7 @@ type UnicornNoArrayReduce =
   | [
       {
         allowSimpleOperations?: boolean;
-      }
+      },
     ];
 // ----- unicorn/no-keyword-prefix -----
 type UnicornNoKeywordPrefix =
@@ -6470,7 +6470,7 @@ type UnicornNoKeywordPrefix =
         disallowedPrefixes?: [] | [string];
         checkProperties?: boolean;
         onlyCamelCase?: boolean;
-      }
+      },
     ];
 // ----- unicorn/no-null -----
 type UnicornNoNull =
@@ -6478,7 +6478,7 @@ type UnicornNoNull =
   | [
       {
         checkStrictEquality?: boolean;
-      }
+      },
     ];
 // ----- unicorn/no-typeof-undefined -----
 type UnicornNoTypeofUndefined =
@@ -6486,7 +6486,7 @@ type UnicornNoTypeofUndefined =
   | [
       {
         checkGlobalVariables?: boolean;
-      }
+      },
     ];
 // ----- unicorn/no-unnecessary-polyfills -----
 type UnicornNoUnnecessaryPolyfills =
@@ -6499,7 +6499,7 @@ type UnicornNoUnnecessaryPolyfills =
           | {
               [k: string]: unknown | undefined;
             };
-      }
+      },
     ];
 // ----- unicorn/no-useless-undefined -----
 type UnicornNoUselessUndefined =
@@ -6508,7 +6508,7 @@ type UnicornNoUselessUndefined =
       {
         checkArguments?: boolean;
         checkArrowFunctionBody?: boolean;
-      }
+      },
     ];
 // ----- unicorn/numeric-separators-style -----
 type UnicornNumericSeparatorsStyle =
@@ -6536,7 +6536,7 @@ type UnicornNumericSeparatorsStyle =
           groupLength?: number;
         };
         onlyIfContainsSeparator?: boolean;
-      }
+      },
     ];
 // ----- unicorn/prefer-add-event-listener -----
 type UnicornPreferAddEventListener =
@@ -6544,7 +6544,7 @@ type UnicornPreferAddEventListener =
   | [
       {
         excludedPackages?: string[];
-      }
+      },
     ];
 // ----- unicorn/prefer-array-find -----
 type UnicornPreferArrayFind =
@@ -6552,7 +6552,7 @@ type UnicornPreferArrayFind =
   | [
       {
         checkFromLast?: boolean;
-      }
+      },
     ];
 // ----- unicorn/prefer-array-flat -----
 type UnicornPreferArrayFlat =
@@ -6560,7 +6560,7 @@ type UnicornPreferArrayFlat =
   | [
       {
         functions?: unknown[];
-      }
+      },
     ];
 // ----- unicorn/prefer-at -----
 type UnicornPreferAt =
@@ -6569,7 +6569,7 @@ type UnicornPreferAt =
       {
         getLastElementFunctions?: unknown[];
         checkAllIndexAccess?: boolean;
-      }
+      },
     ];
 // ----- unicorn/prefer-export-from -----
 type UnicornPreferExportFrom =
@@ -6577,7 +6577,7 @@ type UnicornPreferExportFrom =
   | [
       {
         ignoreUsedVariables?: boolean;
-      }
+      },
     ];
 // ----- unicorn/prefer-number-properties -----
 type UnicornPreferNumberProperties =
@@ -6586,7 +6586,7 @@ type UnicornPreferNumberProperties =
       {
         checkInfinity?: boolean;
         checkNaN?: boolean;
-      }
+      },
     ];
 // ----- unicorn/prefer-object-from-entries -----
 type UnicornPreferObjectFromEntries =
@@ -6594,7 +6594,7 @@ type UnicornPreferObjectFromEntries =
   | [
       {
         functions?: unknown[];
-      }
+      },
     ];
 // ----- unicorn/prefer-structured-clone -----
 type UnicornPreferStructuredClone =
@@ -6602,7 +6602,7 @@ type UnicornPreferStructuredClone =
   | [
       {
         functions?: unknown[];
-      }
+      },
     ];
 // ----- unicorn/prefer-switch -----
 type UnicornPreferSwitch =
@@ -6614,7 +6614,7 @@ type UnicornPreferSwitch =
           | "no-default-comment"
           | "do-nothing-comment"
           | "no-default-case";
-      }
+      },
     ];
 // ----- unicorn/prefer-ternary -----
 type UnicornPreferTernary = [] | ["always" | "only-single-line"];
@@ -6634,7 +6634,7 @@ type UnicornPreventAbbreviations =
         extendDefaultAllowList?: boolean;
         allowList?: _UnicornPreventAbbreviations_BooleanObject;
         ignore?: unknown[];
-      }
+      },
     ];
 type _UnicornPreventAbbreviationsReplacements =
   | (false | _UnicornPreventAbbreviations_BooleanObject)
@@ -6664,7 +6664,7 @@ type UnicornStringContent =
               )
             | undefined;
         };
-      }
+      },
     ];
 // ----- unicorn/switch-case-braces -----
 type UnicornSwitchCaseBraces = [] | ["always" | "avoid"];
@@ -6678,7 +6678,7 @@ type UnicornTemplateIndent =
         functions?: string[];
         selectors?: string[];
         comments?: string[];
-      }
+      },
     ];
 // ----- yml/block-mapping -----
 type YmlBlockMapping =
@@ -6688,7 +6688,7 @@ type YmlBlockMapping =
       | {
           singleline?: "always" | "never" | "ignore";
           multiline?: "always" | "never" | "ignore";
-        }
+        },
     ];
 // ----- yml/block-mapping-colon-indicator-newline -----
 type YmlBlockMappingColonIndicatorNewline = [] | ["always" | "never"];
@@ -6702,7 +6702,7 @@ type YmlBlockSequence =
       | {
           singleline?: "always" | "never" | "ignore";
           multiline?: "always" | "never" | "ignore";
-        }
+        },
     ];
 // ----- yml/block-sequence-hyphen-indicator-newline -----
 type YmlBlockSequenceHyphenIndicatorNewline =
@@ -6713,7 +6713,7 @@ type YmlBlockSequenceHyphenIndicatorNewline =
       {
         nestedHyphen?: "always" | "never";
         blockMapping?: "always" | "never";
-      }
+      },
     ];
 // ----- yml/file-extension -----
 type YmlFileExtension =
@@ -6722,7 +6722,7 @@ type YmlFileExtension =
       {
         extension?: "yaml" | "yml";
         caseSensitive?: boolean;
-      }
+      },
     ];
 // ----- yml/flow-mapping-curly-newline -----
 type YmlFlowMappingCurlyNewline =
@@ -6733,7 +6733,7 @@ type YmlFlowMappingCurlyNewline =
           multiline?: boolean;
           minProperties?: number;
           consistent?: boolean;
-        }
+        },
     ];
 // ----- yml/flow-mapping-curly-spacing -----
 type YmlFlowMappingCurlySpacing =
@@ -6744,7 +6744,7 @@ type YmlFlowMappingCurlySpacing =
       {
         arraysInObjects?: boolean;
         objectsInObjects?: boolean;
-      }
+      },
     ];
 // ----- yml/flow-sequence-bracket-newline -----
 type YmlFlowSequenceBracketNewline =
@@ -6754,7 +6754,7 @@ type YmlFlowSequenceBracketNewline =
       | {
           multiline?: boolean;
           minItems?: number | null;
-        }
+        },
     ];
 // ----- yml/flow-sequence-bracket-spacing -----
 type YmlFlowSequenceBracketSpacing =
@@ -6766,7 +6766,7 @@ type YmlFlowSequenceBracketSpacing =
         singleValue?: boolean;
         objectsInArrays?: boolean;
         arraysInArrays?: boolean;
-      }
+      },
     ];
 // ----- yml/indent -----
 type YmlIndent =
@@ -6777,7 +6777,7 @@ type YmlIndent =
       {
         indentBlockSequences?: boolean;
         indicatorValueIndent?: number;
-      }
+      },
     ];
 // ----- yml/key-name-casing -----
 type YmlKeyNameCasing =
@@ -6790,7 +6790,7 @@ type YmlKeyNameCasing =
         "kebab-case"?: boolean;
         snake_case?: boolean;
         ignores?: string[];
-      }
+      },
     ];
 // ----- yml/key-spacing -----
 type YmlKeySpacing =
@@ -6846,7 +6846,7 @@ type YmlKeySpacing =
             beforeColon?: boolean;
             afterColon?: boolean;
           };
-        }
+        },
     ];
 // ----- yml/no-irregular-whitespace -----
 type YmlNoIrregularWhitespace =
@@ -6855,7 +6855,7 @@ type YmlNoIrregularWhitespace =
       {
         skipComments?: boolean;
         skipQuotedScalars?: boolean;
-      }
+      },
     ];
 // ----- yml/no-multiple-empty-lines -----
 type YmlNoMultipleEmptyLines =
@@ -6865,7 +6865,7 @@ type YmlNoMultipleEmptyLines =
         max: number;
         maxEOF?: number;
         maxBOF?: number;
-      }
+      },
     ];
 // ----- yml/plain-scalar -----
 type YmlPlainScalar =
@@ -6875,7 +6875,7 @@ type YmlPlainScalar =
       "always" | "never",
       {
         ignorePatterns?: string[];
-      }
+      },
     ];
 // ----- yml/quotes -----
 type YmlQuotes =
@@ -6884,7 +6884,7 @@ type YmlQuotes =
       {
         prefer?: "double" | "single";
         avoidEscape?: boolean;
-      }
+      },
     ];
 // ----- yml/sort-keys -----
 type YmlSortKeys =
@@ -6934,7 +6934,7 @@ type YmlSortKeys =
             };
         minKeys?: number;
         allowLineSeparatedGroups?: boolean;
-      }[]
+      }[],
     ]
   | []
   | ["asc" | "desc"]
@@ -6945,7 +6945,7 @@ type YmlSortKeys =
         natural?: boolean;
         minKeys?: number;
         allowLineSeparatedGroups?: boolean;
-      }
+      },
     ];
 // ----- yml/sort-sequence-values -----
 type YmlSortSequenceValues = [
@@ -6990,7 +6990,7 @@ type YmlSortSequenceValues = [
           natural?: boolean;
         };
     minValues?: number;
-  }[]
+  }[],
 ];
 // ----- yml/spaced-comment -----
 type YmlSpacedComment =
@@ -7001,5 +7001,5 @@ type YmlSpacedComment =
       {
         exceptions?: string[];
         markers?: string[];
-      }
+      },
     ];

@@ -3,7 +3,7 @@ import { joinPaths } from "@storm-software/config-tools";
 import { getConfig } from "@storm-software/config-tools/get-config";
 import {
   writeDebug,
-  writeInfo
+  writeInfo,
 } from "@storm-software/config-tools/logger/console";
 import { run } from "@storm-software/config-tools/utilities/run";
 import shellescape from "any-shell-escape";
@@ -13,14 +13,14 @@ import { runCommitLint } from "../commitlint/run";
 import {
   CommitQuestionAnswers,
   CommitQuestionProps,
-  CommitState
+  CommitState,
 } from "../types";
 import { createState, getGitDir } from "./commit-state";
 import { formatCommitMessage } from "./format-commit-message";
 
 export const runCommit = async (
   commitizenFile = "@storm-software/git-tools/commit/config",
-  dryRun = false
+  dryRun = false,
 ) => {
   const config = await getConfig();
 
@@ -63,7 +63,7 @@ export const runCommit = async (
     // The full path is replaced with a relative path to make the test pass on every machine
     writeDebug(
       `Skipping execution [dry-run]: ${command.replace(commitMsgFile, ".git/COMMIT_EDITMSG")}`,
-      config
+      config,
     );
     writeDebug(`Message [dry-run]: ${message}`, config);
   } else {
@@ -74,7 +74,7 @@ export const runCommit = async (
 };
 
 const askQuestions = async (
-  state: CommitState
+  state: CommitState,
 ): Promise<CommitQuestionAnswers> => {
   let index = 0;
   for (const key of Object.keys(state.config.prompt.questions)) {
@@ -86,7 +86,7 @@ const askQuestions = async (
     ) {
       state.answers[key] = await askQuestion(
         index,
-        state.config.prompt.questions[key]
+        state.config.prompt.questions[key],
       );
       index++;
     }
@@ -97,7 +97,7 @@ const askQuestions = async (
 
 export const askQuestion = (
   index: number,
-  question: CommitQuestionProps
+  question: CommitQuestionProps,
 ): Promise<string | boolean> => {
   const message = chalkTemplate`{bold ${index + 1}. ${question.title}} - ${question.description}
 `;
@@ -112,18 +112,18 @@ export const askQuestion = (
     return select({
       message,
       choices: Object.keys(question.enum)
-        .filter(key => !question.enum![key]?.hidden)
-        .map(key => ({
+        .filter((key) => !question.enum![key]?.hidden)
+        .map((key) => ({
           name: question.enum![key]?.title || key,
           value: key,
-          description: question.enum![key]?.description || ""
+          description: question.enum![key]?.description || "",
         })),
-      default: String(question.defaultValue || "")
+      default: String(question.defaultValue || ""),
     });
   } else if (question.type === "confirm") {
     return confirm({
       message,
-      default: Boolean(question.defaultValue)
+      default: Boolean(question.defaultValue),
     });
   } else {
     let validate:
@@ -152,7 +152,7 @@ export const askQuestion = (
       message,
       required: !!(question.minLength !== undefined && question.minLength > 0),
       default: String(question.defaultValue || ""),
-      validate
+      validate,
     });
   }
 };

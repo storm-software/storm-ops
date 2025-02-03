@@ -177,5 +177,6 @@
       "tough-cookie": "4.1.4"
     }
   },
+  "prettier": "./packages/prettier/src/config.json",
   "triggerEmptyDevReleaseByIncrementingThisNumber": 0
 }

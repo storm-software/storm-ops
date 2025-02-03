@@ -9,7 +9,7 @@ export const LARGE_BUFFER = 1024 * 1000000;
 
 export default async function npmPublishExecutorFn(
   options: NpmPublishExecutorSchema,
-  context: ExecutorContext
+  context: ExecutorContext,
 ) {
   /**
    * We need to check both the env var and the option because the executor may have been triggered
@@ -25,13 +25,13 @@ export default async function npmPublishExecutorFn(
     context.projectsConfigurations?.projects?.[context.projectName];
   if (!projectConfig) {
     throw new Error(
-      `Could not find project configuration for \`${context.projectName}\``
+      `Could not find project configuration for \`${context.projectName}\``,
     );
   }
 
   const packageRoot = joinPaths(
     context.root,
-    options.packageRoot || joinPaths("dist", projectConfig.root)
+    options.packageRoot || joinPaths("dist", projectConfig.root),
   );
 
   const packageJsonPath = joinPaths(packageRoot, "package.json");
@@ -44,7 +44,7 @@ export default async function npmPublishExecutorFn(
   const packageName = packageJson.name;
 
   console.info(
-    `🚀  Running Storm NPM Publish executor on the ${packageName} package`
+    `🚀  Running Storm NPM Publish executor on the ${packageName} package`,
   );
 
   // If package and project name match, we can make log messages terser
@@ -55,7 +55,7 @@ export default async function npmPublishExecutorFn(
 
   if (packageJson.private === true) {
     console.warn(
-      `Skipped ${packageTxt}, because it has \`"private": true\` in ${packageJsonPath}`
+      `Skipped ${packageTxt}, because it has \`"private": true\` in ${packageJsonPath}`,
     );
     return { success: true };
   }
@@ -64,7 +64,7 @@ export default async function npmPublishExecutorFn(
 
   const npmPublishCommandSegments = [`npm publish --json`];
   const npmViewCommandSegments = [
-    `npm view ${packageName} versions dist-tags --json`
+    `npm view ${packageName} versions dist-tags --json`,
   ];
 
   const registry = options.registry
@@ -73,10 +73,10 @@ export default async function npmPublishExecutorFn(
         cwd: packageRoot,
         env: {
           ...process.env,
-          FORCE_COLOR: "true"
+          FORCE_COLOR: "true",
         },
         maxBuffer: LARGE_BUFFER,
-        killSignal: "SIGTERM"
+        killSignal: "SIGTERM",
       })
         .toString()
         .trim();
@@ -103,10 +103,10 @@ export default async function npmPublishExecutorFn(
       cwd: packageRoot,
       env: {
         ...process.env,
-        FORCE_COLOR: "true"
+        FORCE_COLOR: "true",
       },
       maxBuffer: LARGE_BUFFER,
-      killSignal: "SIGTERM"
+      killSignal: "SIGTERM",
     })
       .toString()
       .trim();
@@ -131,17 +131,17 @@ export default async function npmPublishExecutorFn(
           cwd: packageRoot,
           env: {
             ...process.env,
-            FORCE_COLOR: "true"
+            FORCE_COLOR: "true",
           },
           maxBuffer: LARGE_BUFFER,
-          killSignal: "SIGTERM"
+          killSignal: "SIGTERM",
         });
 
         const resultJson = JSON.parse(result.toString());
         const distTags = resultJson["dist-tags"] || {};
         if (distTags[tag] === currentVersion) {
           console.warn(
-            `Skipped ${packageTxt} because v${currentVersion} already exists in ${registry} with tag "${tag}"`
+            `Skipped ${packageTxt} because v${currentVersion} already exists in ${registry} with tag "${tag}"`,
           );
 
           return { success: true };
@@ -154,7 +154,7 @@ ${JSON.stringify(err)}
 
 Note: If this is the first time this package has been published to NPM, this can be ignored.
 
-`
+`,
         );
         console.info("");
       }
@@ -166,28 +166,28 @@ Note: If this is the first time this package has been published to NPM, this can
           console.info(
             `Adding the dist-tag ${tag} - preparing to run the following:
 ${command}
-`
+`,
           );
 
           const result = execSync(command, {
             cwd: packageRoot,
             env: {
               ...process.env,
-              FORCE_COLOR: "true"
+              FORCE_COLOR: "true",
             },
             maxBuffer: LARGE_BUFFER,
-            killSignal: "SIGTERM"
+            killSignal: "SIGTERM",
           });
 
           console.info(
             `Added the dist-tag ${tag} to v${currentVersion} for registry "${registry}"
 
 Execution response: ${result.toString()}
-`
+`,
           );
         } else {
           console.info(
-            `Would add the dist-tag ${tag} to v${currentVersion} for registry "${registry}", but [dry-run] was set.\n`
+            `Would add the dist-tag ${tag} to v${currentVersion} for registry "${registry}", but [dry-run] was set.\n`,
           );
         }
 
@@ -208,7 +208,7 @@ ${error}
 
 Note: If this is the first time this package has been published to NPM, this can be ignored.
 
-`
+`,
           );
           console.info("");
 
@@ -227,7 +227,7 @@ Note: If this is the first time this package has been published to NPM, this can
             )
           ) {
             console.error(
-              "npm dist-tag add error please see below for more information:"
+              "npm dist-tag add error please see below for more information:",
             );
             if (stdoutData.error.summary) {
               console.error(stdoutData.error?.summary);
@@ -238,7 +238,7 @@ Note: If this is the first time this package has been published to NPM, this can
 
             if (context.isVerbose) {
               console.error(
-                `npm dist-tag add stdout: ${JSON.stringify(stdoutData, null, 2)}`
+                `npm dist-tag add stdout: ${JSON.stringify(stdoutData, null, 2)}`,
               );
             }
 
@@ -246,7 +246,7 @@ Note: If this is the first time this package has been published to NPM, this can
           }
         } catch (err) {
           console.error(
-            `Something unexpected went wrong when processing the npm dist-tag add output\n${JSON.stringify(err)}`
+            `Something unexpected went wrong when processing the npm dist-tag add output\n${JSON.stringify(err)}`,
           );
 
           return { success: false };
@@ -262,7 +262,7 @@ Note: If this is the first time this package has been published to NPM, this can
       console.error("\n ********************** \n");
       console.info("");
       console.error(
-        "An error occured trying to run the npm dist-tag add command."
+        "An error occured trying to run the npm dist-tag add command.",
       );
       console.error(error);
       console.info("");
@@ -283,7 +283,7 @@ Note: If this is the first time this package has been published to NPM, this can
           `Something unexpected went wrong when checking for existing dist-tags.
 
 Error: ${JSON.stringify(err)}
-`
+`,
         );
 
         return { success: false };
@@ -296,17 +296,17 @@ Error: ${JSON.stringify(err)}
     const command = npmPublishCommandSegments.join(" ");
 
     console.info(
-      `Running publish command "${command}" in current working directory: "${cwd}" `
+      `Running publish command "${command}" in current working directory: "${cwd}" `,
     );
 
     const result = execSync(command, {
       cwd,
       env: {
         ...process.env,
-        FORCE_COLOR: "true"
+        FORCE_COLOR: "true",
       },
       maxBuffer: LARGE_BUFFER,
-      killSignal: "SIGTERM"
+      killSignal: "SIGTERM",
     });
 
     if (isDryRun) {
@@ -318,7 +318,7 @@ Error: ${JSON.stringify(err)}
 Execution response: ${result.toString()}`
             : ""
         }
-`
+`,
       );
     } else {
       console.info(`Published to ${registry} with tag "${tag}" ${
@@ -353,7 +353,7 @@ Execution response: ${result.toString()}`
 
       if (context.isVerbose) {
         console.error(
-          `npm publish stdout:\n${JSON.stringify(stdoutData, null, 2)}`
+          `npm publish stdout:\n${JSON.stringify(stdoutData, null, 2)}`,
         );
       }
 
@@ -370,7 +370,7 @@ Execution response: ${result.toString()}`
         `Something unexpected went wrong when processing the npm publish output
 
 Error: ${JSON.stringify(error)}
-`
+`,
       );
 
       console.error("\n ********************** \n");

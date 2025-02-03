@@ -21,7 +21,7 @@ import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildabl
 import {
   addPackageDependencies,
   addWorkspacePackageJsonFields,
-  copyAssets
+  copyAssets,
 } from "@storm-software/build-tools";
 import { getConfig } from "@storm-software/config-tools/get-config";
 import {
@@ -30,13 +30,13 @@ import {
   writeDebug,
   writeFatal,
   writeSuccess,
-  writeTrace
+  writeTrace,
 } from "@storm-software/config-tools/logger/console";
 import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
 import { LogLevelLabel } from "@storm-software/config-tools/types";
 import {
   correctPaths,
-  joinPaths
+  joinPaths,
 } from "@storm-software/config-tools/utilities/correct-paths";
 import { StormConfig } from "@storm-software/config/types";
 import defu from "defu";
@@ -53,7 +53,7 @@ import {
   BuildEntry,
   MkdistBuildEntry,
   RollupOptions,
-  build as unbuild
+  build as unbuild,
 } from "unbuild";
 import { cleanDirectories } from "./clean";
 import { analyzePlugin } from "./plugins/analyze";
@@ -71,7 +71,7 @@ import { loadConfig } from "./utilities/helpers";
  */
 export async function resolveOptions(
   options: UnbuildOptions,
-  config: StormConfig
+  config: StormConfig,
 ): Promise<UnbuildResolvedOptions> {
   writeDebug("  ⚙️   Resolving build options", config);
   const stopwatch = getStopwatch("Build options resolution");
@@ -91,7 +91,7 @@ export async function resolveOptions(
   const projectJsonPath = joinPaths(
     config.workspaceRoot,
     options.projectRoot,
-    "project.json"
+    "project.json",
   );
   if (!existsSync(projectJsonPath)) {
     throw new Error("Cannot find project.json configuration");
@@ -105,7 +105,7 @@ export async function resolveOptions(
   const packageJsonPath = joinPaths(
     config.workspaceRoot,
     options.projectRoot,
-    "package.json"
+    "package.json",
   );
   if (!existsSync(packageJsonPath)) {
     throw new Error("Cannot find package.json configuration");
@@ -119,7 +119,7 @@ export async function resolveOptions(
     tsconfig = joinPaths(
       config.workspaceRoot,
       options.projectRoot,
-      "tsconfig.json"
+      "tsconfig.json",
     );
   }
 
@@ -143,7 +143,7 @@ export async function resolveOptions(
     projectName,
     process.env.NX_TASK_TARGET_TARGET || "build",
     process.env.NX_TASK_TARGET_CONFIGURATION || "production",
-    true
+    true,
   );
   let dependencies = result.dependencies;
 
@@ -152,11 +152,11 @@ export async function resolveOptions(
     tsconfig,
     dependencies,
     projectGraph,
-    true
+    true,
   );
   if (tsLibDependency) {
     dependencies = dependencies.filter(
-      deps => deps.name !== tsLibDependency.name
+      (deps) => deps.name !== tsLibDependency.name,
     );
     dependencies.push(tsLibDependency);
   }
@@ -188,10 +188,10 @@ export async function resolveOptions(
       const outDir = joinPaths(
         relative(
           joinPaths(config.workspaceRoot, options.projectRoot),
-          config.workspaceRoot
+          config.workspaceRoot,
         ),
         outputPath,
-        "dist"
+        "dist",
       );
 
       ret.push({
@@ -200,7 +200,7 @@ export async function resolveOptions(
         input: `./${entryPath}`,
         outDir,
         declaration: options.emitTypes !== false ? "compatible" : false,
-        format: "esm"
+        format: "esm",
       } as MkdistBuildEntry);
 
       ret.push({
@@ -210,7 +210,7 @@ export async function resolveOptions(
         outDir,
         declaration: options.emitTypes !== false ? "compatible" : false,
         format: "cjs",
-        ext: "cjs"
+        ext: "cjs",
       } as MkdistBuildEntry);
 
       return ret;
@@ -222,7 +222,7 @@ export async function resolveOptions(
     parallel: true,
     stub: false,
     stubOptions: {
-      jiti: {}
+      jiti: {},
     },
     externals: options.external ?? [],
     dependencies: [] as string[],
@@ -236,13 +236,13 @@ export async function resolveOptions(
       alias: {},
       json: {},
       commonjs: {
-        sourceMap: options.sourcemap ?? true
+        sourceMap: options.sourcemap ?? true,
       },
       emitCJS: true,
       cjsBridge: true,
       dts: {
         respectExternal: true,
-        tsconfig
+        tsconfig,
       },
       output: {
         banner:
@@ -250,11 +250,11 @@ export async function resolveOptions(
           `
 //      ⚡ Built by Storm Software
   `,
-        footer: options.footer
+        footer: options.footer,
       },
       resolve: {
         preferBuiltins: true,
-        extensions: [".cjs", ".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"]
+        extensions: [".cjs", ".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"],
       },
       esbuild: {
         minify: options.minify ?? !options.debug,
@@ -267,26 +267,26 @@ export async function resolveOptions(
           ? LogLevelLabel.ERROR
           : isVerbose()
             ? "verbose"
-            : config.logLevel) as LogLevel
-      }
-    }
+            : config.logLevel) as LogLevel,
+      },
+    },
   } as any;
 
   dependencies = dependencies.filter(
-    dep =>
+    (dep) =>
       dep.node.type === "npm" ||
       dep.node.type === "lib" ||
-      dep.node.type === "app"
+      dep.node.type === "app",
   );
   if (dependencies.length > 0) {
-    resolvedOptions.dependencies = dependencies.map(dep => dep.name);
+    resolvedOptions.dependencies = dependencies.map((dep) => dep.name);
   }
   if (packageJson.devDependencies) {
     resolvedOptions.devDependencies = Object.keys(packageJson.devDependencies);
   }
   if (packageJson.peerDependencies) {
     resolvedOptions.peerDependencies = Object.keys(
-      packageJson.peerDependencies
+      packageJson.peerDependencies,
     );
   }
 
@@ -309,28 +309,28 @@ export async function resolveOptions(
       if (options.plugins && options.plugins.length > 0) {
         writeDebug(
           `  🧩   Found ${options.plugins.length} plugins in provided build options`,
-          config
+          config,
         );
 
         opts.plugins = options.plugins;
       } else {
         writeDebug(
           `  🧩   No plugins found in provided build options, using default plugins`,
-          config
+          config,
         );
 
         opts.plugins = await Promise.all([
           analyzePlugin(resolvedOptions),
           typeDefinitionsPlugin(resolvedOptions),
           tscPlugin(resolvedOptions),
-          onErrorPlugin(resolvedOptions)
+          onErrorPlugin(resolvedOptions),
         ]);
       }
     },
     "mkdist:entry:options": async (
       ctx: BuildContext,
       entry: MkdistBuildEntry,
-      opts: MkdistOptions
+      opts: MkdistOptions,
     ) => {
       opts.esbuild ||= {};
       opts.esbuild.platform ??= resolvedOptions.platform;
@@ -340,13 +340,13 @@ export async function resolveOptions(
       if (options.loaders) {
         if (typeof options.loaders === "function") {
           opts.loaders = await Promise.resolve(
-            options.loaders(ctx, entry, opts)
+            options.loaders(ctx, entry, opts),
           );
         } else {
           opts.loaders = options.loaders;
         }
       }
-    }
+    },
   };
 
   stopwatch();
@@ -358,7 +358,7 @@ const addPackageJsonExport = (
   file: string,
   type: "commonjs" | "module" = "module",
   sourceRoot: string,
-  projectRoot: string
+  projectRoot: string,
 ): Record<string, any> => {
   let root = sourceRoot.replace(projectRoot, "");
   while (root.startsWith(".")) {
@@ -377,19 +377,19 @@ const addPackageJsonExport = (
   }
 
   return {
-    "import": {
-      "types": `./dist/${entry}.d.ts`,
-      "default": `./dist/${entry}.mjs`
+    import: {
+      types: `./dist/${entry}.d.ts`,
+      default: `./dist/${entry}.mjs`,
     },
-    "require": {
-      "types": `./dist/${entry}.d.ts`,
-      "default": `./dist/${entry}.cjs`
+    require: {
+      types: `./dist/${entry}.d.ts`,
+      default: `./dist/${entry}.cjs`,
     },
-    "default": {
-      "types": `./dist/${entry}.d.ts`,
-      "default":
-        type === "commonjs" ? `./dist/${entry}.cjs` : `./dist/${entry}.mjs`
-    }
+    default: {
+      types: `./dist/${entry}.d.ts`,
+      default:
+        type === "commonjs" ? `./dist/${entry}.cjs` : `./dist/${entry}.mjs`,
+    },
   };
 };
 
@@ -410,9 +410,9 @@ export async function generatePackageJson(options: UnbuildResolvedOptions) {
       joinPaths(
         options.config.workspaceRoot,
         options.projectRoot,
-        "package.json"
+        "package.json",
       ),
-      "utf8"
+      "utf8",
     );
     if (!packageJsonContent) {
       throw new Error("Cannot find package.json configuration file");
@@ -423,7 +423,7 @@ export async function generatePackageJson(options: UnbuildResolvedOptions) {
       options.config.workspaceRoot,
       options.projectRoot,
       options.projectName,
-      packageJson
+      packageJson,
     );
 
     packageJson = await addWorkspacePackageJsonFields(
@@ -432,7 +432,7 @@ export async function generatePackageJson(options: UnbuildResolvedOptions) {
       options.sourceRoot,
       options.projectName,
       false,
-      packageJson
+      packageJson,
     );
 
     packageJson.exports ??= {};
@@ -457,18 +457,18 @@ export async function generatePackageJson(options: UnbuildResolvedOptions) {
 
           return ret;
         }, [] as string[])
-        .map(async entryPath => {
+        .map(async (entryPath) => {
           const files = await new Glob("**/*.{ts,tsx}", {
             absolute: false,
             cwd: entryPath,
-            root: entryPath
+            root: entryPath,
           }).walk();
-          files.forEach(file => {
+          files.forEach((file) => {
             addPackageJsonExport(
               file,
               packageJson.type,
               options.sourceRoot,
-              options.projectRoot
+              options.projectRoot,
             );
 
             const split = file.split(".");
@@ -479,10 +479,10 @@ export async function generatePackageJson(options: UnbuildResolvedOptions) {
               entry,
               packageJson.type,
               options.sourceRoot,
-              options.projectRoot
+              options.projectRoot,
             );
           });
-        })
+        }),
     );
 
     packageJson.main ??= "./dist/index.cjs";
@@ -498,7 +498,7 @@ export async function generatePackageJson(options: UnbuildResolvedOptions) {
 
         return ret;
       },
-      packageJson.exports
+      packageJson.exports,
     );
 
     packageJson.exports["./package.json"] ??= "./package.json";
@@ -506,7 +506,7 @@ export async function generatePackageJson(options: UnbuildResolvedOptions) {
       "index",
       packageJson.type,
       options.sourceRoot,
-      options.projectRoot
+      options.projectRoot,
     );
 
     await writeJsonFile(joinPaths(options.outDir, "package.json"), packageJson);
@@ -523,10 +523,10 @@ export async function generatePackageJson(options: UnbuildResolvedOptions) {
 export async function executeUnbuild(options: UnbuildResolvedOptions) {
   writeDebug(
     `  🚀  Running ${options.name} (${options.projectRoot}) build`,
-    options.config
+    options.config,
   );
   const stopwatch = getStopwatch(
-    `${options.name} (${options.projectRoot}) build`
+    `${options.name} (${options.projectRoot}) build`,
   );
 
   try {
@@ -535,14 +535,14 @@ export async function executeUnbuild(options: UnbuildResolvedOptions) {
     const config = {
       ...options,
       config: null,
-      rootDir: joinPaths(options.config.workspaceRoot, options.projectRoot)
+      rootDir: joinPaths(options.config.workspaceRoot, options.projectRoot),
     } as BuildConfig;
 
     writeTrace(
       `Running with unbuild configuration:
 ${formatLogMessage(config)}
 `,
-      options.config
+      options.config,
     );
 
     await unbuild(options.projectRoot, false, config);
@@ -559,7 +559,7 @@ ${formatLogMessage(config)}
 export async function copyBuildAssets(options: UnbuildResolvedOptions) {
   writeDebug(
     `  📋  Copying asset files to output directory: ${options.outDir}`,
-    options.config
+    options.config,
   );
   const stopwatch = getStopwatch(`${options.name} asset copy`);
 
@@ -570,7 +570,7 @@ export async function copyBuildAssets(options: UnbuildResolvedOptions) {
     options.projectRoot,
     options.sourceRoot,
     options.generatePackageJson,
-    options.includeSrc
+    options.includeSrc,
   );
 
   stopwatch();
@@ -587,7 +587,7 @@ export async function cleanOutputPath(options: UnbuildResolvedOptions) {
   if (options.clean !== false && options.outDir) {
     writeDebug(
       ` 🧹  Cleaning ${options.name} output path: ${options.outDir}`,
-      options.config
+      options.config,
     );
     const stopwatch = getStopwatch(`${options.name} output clean`);
 
@@ -632,12 +632,12 @@ export async function build(options: UnbuildOptions) {
 
     writeSuccess(
       `  🏁  The ${resolvedOptions.name} build completed successfully`,
-      config
+      config,
     );
   } catch (error) {
     writeFatal(
       "  ❌  Fatal errors occurred during the build that could not be recovered from. The build process has been terminated.",
-      config
+      config,
     );
 
     throw error;

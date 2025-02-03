@@ -4,7 +4,7 @@ import { waitForPortOpen } from "@nx/web/src/utils/wait-for-port-open";
 import type { StormConfig } from "@storm-software/config";
 import {
   createCliOptions,
-  withRunExecutor
+  withRunExecutor,
 } from "@storm-software/workspace-tools";
 import { fork } from "child_process";
 import { ServeExecutorSchema } from "./schema";
@@ -12,7 +12,7 @@ import { ServeExecutorSchema } from "./schema";
 export async function* serveExecutor(
   options: ServeExecutorSchema,
   context: ExecutorContext,
-  config?: StormConfig
+  config?: StormConfig,
 ) {
   if (
     !context?.projectName ||
@@ -32,10 +32,10 @@ export async function* serveExecutor(
       process.env.PWD = projectRoot;
       const server = fork(wranglerBin, ["dev", ...wranglerOptions], {
         cwd: projectRoot,
-        stdio: "inherit"
+        stdio: "inherit",
       });
 
-      server.once("exit", code => {
+      server.once("exit", (code) => {
         if (code === 0) {
           done();
         } else {
@@ -58,13 +58,13 @@ export async function* serveExecutor(
 
       next({
         success: true,
-        baseUrl: `http://localhost:${options.port}`
+        baseUrl: `http://localhost:${options.port}`,
       });
-    }
+    },
   );
 
   return {
-    success: true
+    success: true,
   };
 }
 
@@ -78,7 +78,7 @@ export default withRunExecutor<ServeExecutorSchema>(
         options.port ??= 4500;
 
         return options as ServeExecutorSchema;
-      }
-    }
-  }
+      },
+    },
+  },
 ) as PromiseExecutor<ServeExecutorSchema>;

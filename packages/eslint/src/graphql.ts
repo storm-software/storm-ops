@@ -17,10 +17,10 @@ const config: Linter.FlatConfig[] = [
     ignores: DEFAULT_IGNORES,
     plugins: {
       "@graphql-eslint": graphqlPlugin,
-      "relay": relayPlugin
+      relay: relayPlugin,
     },
     languageOptions: {
-      parser: graphqlPlugin.parseForESLint
+      parser: graphqlPlugin.parseForESLint,
     },
     rules: {
       "@graphql-eslint/relay-arguments": "error",
@@ -42,14 +42,14 @@ const config: Linter.FlatConfig[] = [
           OperationDefinition: {
             style: "PascalCase",
             forbiddenPrefixes: ["Query", "Mutation", "Subscription", "Get"],
-            forbiddenSuffixes: ["Query", "Mutation", "Subscription"]
+            forbiddenSuffixes: ["Query", "Mutation", "Subscription"],
           },
           FragmentDefinition: {
             style: "PascalCase",
             forbiddenPrefixes: ["Fragment"],
-            forbiddenSuffixes: ["Fragment"]
-          }
-        }
+            forbiddenSuffixes: ["Fragment"],
+          },
+        },
       ],
       "@graphql-eslint/no-anonymous-operations": "error",
       "@graphql-eslint/no-deprecated": "error",
@@ -72,15 +72,15 @@ const config: Linter.FlatConfig[] = [
       "@graphql-eslint/value-literals-of-correct-type": "error",
       "@graphql-eslint/variables-are-input-types": "error",
       "@graphql-eslint/variables-in-allowed-position": "error",
-      "relay/generated-flow-types": "off"
-    }
+      "relay/generated-flow-types": "off",
+    },
   },
   {
     files: ["**/*.graphql", "**/*.gql"],
     ignores: DEFAULT_IGNORES,
     plugins: {
       "@graphql-eslint": graphqlPlugin,
-      "relay": relayPlugin
+      relay: relayPlugin,
     },
     processor: graphqlPlugin.processors.graphql,
     rules: {
@@ -103,14 +103,14 @@ const config: Linter.FlatConfig[] = [
           OperationDefinition: {
             style: "PascalCase",
             forbiddenPrefixes: ["Query", "Mutation", "Subscription", "Get"],
-            forbiddenSuffixes: ["Query", "Mutation", "Subscription"]
+            forbiddenSuffixes: ["Query", "Mutation", "Subscription"],
           },
           FragmentDefinition: {
             style: "PascalCase",
             forbiddenPrefixes: ["Fragment"],
-            forbiddenSuffixes: ["Fragment"]
-          }
-        }
+            forbiddenSuffixes: ["Fragment"],
+          },
+        },
       ],
       "@graphql-eslint/no-anonymous-operations": "error",
       "@graphql-eslint/no-deprecated": "error",
@@ -133,9 +133,9 @@ const config: Linter.FlatConfig[] = [
       "@graphql-eslint/value-literals-of-correct-type": "error",
       "@graphql-eslint/variables-are-input-types": "error",
       "@graphql-eslint/variables-in-allowed-position": "error",
-      "relay/generated-flow-types": "off"
-    }
-  }
+      "relay/generated-flow-types": "off",
+    },
+  },
 ];
 
 export default formatConfig("GraphQL", config);
