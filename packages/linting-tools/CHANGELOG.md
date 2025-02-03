@@ -1,3 +1,13 @@
+## 1.112.1 (2025-02-02)
+
+### Bug Fixes
+
+- **linting-tools:** Resolved issue with including configurations in package dist ([2f255a2c0](https://github.com/storm-software/storm-ops/commit/2f255a2c0))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([c73bfdb6a](https://github.com/storm-software/storm-ops/commit/c73bfdb6a))
+
 ## 1.112.0 (2025-02-02)
 
 ### Features
