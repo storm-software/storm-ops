@@ -165,6 +165,7 @@
     "@graphql-eslint/eslint-plugin": "4.3.0",
     "@next/eslint-plugin-next": "15.1.6",
     "@nx/eslint-plugin": "catalog:",
+    "chalk": "^5.4.1",
     "defu": "catalog:",
     "eslint": "catalog:",
     "eslint-config-prettier": "10.0.1",

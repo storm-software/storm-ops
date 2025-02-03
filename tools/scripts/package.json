@@ -21,7 +21,7 @@
   },
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup --config=tsup.config.ts",
+    "build": "echo Skipping `tools-scripts` build",
     "clean": "rimraf dist"
   },
   "dependencies": {
