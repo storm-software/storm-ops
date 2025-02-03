@@ -52,6 +52,10 @@ probot
 smee
 remeda
 jiti
+venv
+javascripts
+mkdocs
+terrascan
 codeowners
 deepmerge
 copyfiles

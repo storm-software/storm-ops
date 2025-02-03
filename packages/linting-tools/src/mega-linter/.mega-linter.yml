@@ -11,15 +11,15 @@ DEFAULT_BRANCH: main
 
 # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
 ENABLE_LINTERS:
-  - BASH_EXEC
-  - BASH_SHFMT
-  - CLOUDFORMATION_CFN_LINT
-  - DOCKERFILE_HADOLINT
+  # - BASH_EXEC
+  # - BASH_SHFMT
+  # - CLOUDFORMATION_CFN_LINT
+  # - DOCKERFILE_HADOLINT
   - EDITORCONFIG_EDITORCONFIG_CHECKER
-  - JSON_JSONLINT
+  # - JSON_JSONLINT
   - JSON_PRETTIER
-  - JSON_V8R
-  - JAVASCRIPT_STANDARD
+  # - JSON_V8R
+  # - JAVASCRIPT_STANDARD
   - MARKDOWN_MARKDOWN_LINK_CHECK
   - MARKDOWN_MARKDOWNLINT
   - MARKDOWN_MARKDOWN_TABLE_FORMATTER
@@ -82,7 +82,7 @@ MARKDOWN_MARKDOWNLINT_PRE_COMMANDS:
 
 SPELL_CSPELL_ARGUMENTS: "--gitignore --no-progress --show-suggestions"
 SPELL_CSPELL_FILE_EXTENSIONS: ["*"]
-SPELL_CSPELL_CONFIG_FILE: "./node_modules/@storm-software/cspell/cspell-minimal.json"
+SPELL_CSPELL_CONFIG_FILE: "./node_modules/@storm-software/cspell/cspell-recommended.json"
 SPELL_CSPELL_PRE_COMMANDS:
   - command: "pnpm add @storm-software/cspell -w -D"
     cwd: "workspace"

@@ -385,7 +385,7 @@
           }
         },
         "version": {
-          "groupPreVersionCommand": "pnpm build-prod",
+          "groupPreVersionCommand": "pnpm build",
           "generator": "@storm-software/workspace-tools:release-version",
           "generatorOptions": {
             "currentVersionResolver": "git-tag",
@@ -395,7 +395,6 @@
       }
     }
   },
-  "parallel": 1,
   "defaultBase": "main",
   "useDaemonProcess": true,
   "useInferencePlugins": true,
@@ -407,7 +406,7 @@
     {
       "plugin": "@nx/eslint/plugin",
       "options": {
-        "targetName": "lint",
+        "targetName": "lint-eslint",
         "useFlatConfig": false
       }
     }

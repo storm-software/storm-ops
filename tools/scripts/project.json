@@ -1,8 +1,28 @@
 {
   "name": "tools-scripts",
-  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "tools/scripts/src",
   "projectType": "library",
-  "targets": {},
+  "targets": {
+    "build": {
+      "cache": true,
+      "inputs": [
+        "{workspaceRoot}/LICENSE",
+        "{projectRoot}/dist",
+        "{projectRoot}/*.md",
+        "{projectRoot}/package.json"
+      ],
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base", "^build"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles LICENSE dist/{projectRoot}",
+          "pnpm copyfiles --up=2 ./{projectRoot}/*.md ./{projectRoot}/package.json dist/{projectRoot}",
+          "pnpm copyfiles --up=3 \"./{projectRoot}/dist/**/*\" dist/{projectRoot}/dist"
+        ]
+      }
+    }
+  },
   "tags": []
 }

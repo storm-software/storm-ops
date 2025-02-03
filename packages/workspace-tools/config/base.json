@@ -313,23 +313,18 @@
       "dependsOn": ["^lint-ls"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec ls-lint --config=\"./node_modules/@storm-software/linting-tools/ls-lint/.ls-lint.yml\" ",
+        "command": "pnpm exec ls-lint --config=\"./node_modules/@storm-software/linting-tools/ls-lint/config.yml\" --workdir=\"{projectRoot}\"",
         "color": true
       }
     },
-    "lint-sherif": {
-      "outputs": ["{projectRoot}/package.json"],
-      "inputs": ["{workspaceRoot}/package.json", "{projectRoot}/package.json"],
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm exec sherif -i react -i react-dom -i typescript"
-      }
-    },
-    "lint-knip": {
+    "lint-markdown": {
+      "outputs": ["{projectRoot}/**/*"],
       "inputs": ["linting", "default", "^production"],
+      "dependsOn": ["^lint-ls"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec knip"
+        "command": "pnpm exec markdownlint-cli2 \"{projectRoot}/**/*.{md,mdx,markdown}\" --config=\"./node_modules/@storm-software/linting-tools/ls-lint/config.yml\" --workdir=\"{projectRoot}\"",
+        "color": true
       }
     },
     "lint": {
@@ -337,8 +332,8 @@
       "inputs": ["linting", "default", "^production"],
       "dependsOn": [
         "lint-ls",
-        "lint-sherif",
-        "lint-knip",
+        "lint-eslint",
+        "lint-markdown",
         "lint-docs",
         "^lint"
       ],
@@ -398,7 +393,7 @@
     },
     "clean": {
       "inputs": ["default", "^production"],
-      "outputs": "NX_DEFAULT_BUILD_OUTPUTS",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "dependsOn": ["^clean"],
       "executor": "nx:run-commands",
       "options": {
@@ -414,14 +409,17 @@
     "build-base": {
       "dependsOn": ["build-untyped", "^build"]
     },
-    "build-local": {
+    "build-compile": {
       "inputs": ["default", "^production"],
       "dependsOn": ["build-base", "build-untyped", "^build"]
     },
     "build": {
       "inputs": ["default", "^production"],
-      "outputs": "NX_DEFAULT_BUILD_OUTPUTS",
-      "dependsOn": ["build-base", "build-untyped", "^build"]
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "dependsOn": ["build-base", "build-compile", "build-untyped", "^build"],
+      "options": {
+        "command": "echo Built the project files in \"{projectRoot}\" "
+      }
     },
     "rebuild": {
       "inputs": ["default", "^production"],
@@ -466,7 +464,7 @@
           }
         },
         "version": {
-          "groupPreVersionCommand": "pnpm build-prod",
+          "groupPreVersionCommand": "pnpm build",
           "generator": "@storm-software/workspace-tools:release-version",
           "generatorOptions": {
             "currentVersionResolver": "git-tag",
@@ -476,6 +474,18 @@
       }
     }
   },
+  "plugins": [
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint-eslint",
+        "useFlatConfig": true
+      }
+    },
+    "@storm-software/workspace-tools/plugins/typescript",
+    "@storm-software/workspace-tools/plugins/typescript/tsup",
+    "@storm-software/workspace-tools/plugins/typescript/untyped"
+  ],
   "cli": {
     "packageManager": "pnpm"
   },

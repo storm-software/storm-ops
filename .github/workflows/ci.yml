@@ -63,12 +63,8 @@ jobs:
           storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
           ignore-scripts: Y
 
-      - name: Build Storm Nx-Plugin packages
-        run: pnpm build-plugins
-        shell: bash
-
       - name: Run build script
-        run: pnpm build-prod
+        run: pnpm build
         shell: bash
 
       - name: Add permissions to linting tools

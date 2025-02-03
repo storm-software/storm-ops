@@ -1,20 +1,20 @@
 ls:
-  packages/**:
+  packages/*/src/**:
     .ts: kebab-case
     .js: kebab-case
     .d.ts: kebab-case
-  libs/**:
+  libs/*/src/**:
     .ts: kebab-case
     .js: kebab-case
     .d.ts: kebab-case
   crates/**:
     .rs: snake_case
-  apps/**:
+  apps/*/src/**:
     .ts: kebab-case
     .js: kebab-case
     .d.ts: kebab-case
     .rs: snake_case
-  tools/**:
+  tools/*/src/**:
     .ts: kebab-case
     .js: kebab-case
     .d.ts: kebab-case
@@ -23,9 +23,30 @@ ignore:
   - "**/node_modules"
   - "**/tmp"
   - "**/dist"
+  - "**/assets"
   - "**/coverage"
   - "**/__generated__"
   - "**/__test__"
+  - "**/__mocks__"
   - "**/.terragrunt-cache"
   - "**/.cache"
   - "**/.nx"
+  - "**/*.spec.*"
+  - "**/*.test.*"
+  - "**/*.schema.*"
+  - "**/*.untyped.*"
+  - "**/*.config.*"
+  - "**/tsup.*.*"
+  - "**/jest.*.*"
+  - "**/babel.*.*"
+  - "**/webpack.*.*"
+  - "**/rollup.*.*"
+  - "**/tailwind.*.*"
+  - "**/postcss.*.*"
+  - "**/vite.*.*"
+  - "**/snowpack.*.*"
+  - "**/next.*.*"
+  - "**/.dependency-cruiser.*"
+  - "**/_dockerfile*"
+  - "**/Dockerfile*"
+  - "**/docker-compose*"
