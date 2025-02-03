@@ -1,3 +1,9 @@
+## 0.31.15 (2025-02-03)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue with bundling `fast-glob` package ([f823943a6](https://github.com/storm-software/storm-ops/commit/f823943a6))
+
 ## 0.31.14 (2025-02-03)
 
 ### Miscellaneous
