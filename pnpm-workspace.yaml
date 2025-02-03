@@ -44,7 +44,7 @@ catalog:
   "chalk": "^4.1.2"
   "defu": "6.1.4"
   "read-yaml-file": "2.1.0"
-  "cspell": "8.8.4"
+  "cspell": "^8.17.3"
   "tsdown": "0.5.3"
   "untyped": "^1.5.2"
   "glob": "^11.0.1"

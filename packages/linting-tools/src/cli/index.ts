@@ -231,9 +231,10 @@ async function cspellAction({
       dot: true,
       debug: true,
       gitignore: true,
-      root: process.env.STORM_WORKSPACE_ROOT
-        ? process.env.STORM_WORKSPACE_ROOT
-        : process.cwd(),
+      root:
+        _config.workspaceRoot ||
+        process.env.STORM_WORKSPACE_ROOT ||
+        process.cwd(),
       defaultConfiguration: false,
       config: cspellConfig
     });
@@ -268,7 +269,7 @@ async function codeownersAction() {
 }
 
 async function alexAction({
-  alexConfig = "@storm-software/linting-tools/alex/.alexrc",
+  alexConfig = "@storm-software/linting-tools/alex/config.json",
   alexIgnore = "@storm-software/linting-tools/alex/.alexignore"
 }: {
   alexConfig: string;

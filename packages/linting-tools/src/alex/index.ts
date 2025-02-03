@@ -9,8 +9,25 @@ import vfileReporter from "vfile-reporter";
 
 Error.stackTraceLimit = Infinity;
 
-export const runAlex = (
-  rcName = "@storm-software/linting-tools/alex/.alexrc",
+const transform = (options: any) => {
+  return {
+    plugins: [
+      retextEnglish,
+      [retextProfanities, { sureness: options.profanitySureness }],
+      [retextEquality, { noBinary: options.noBinary }],
+      [
+        filter,
+        {
+          allow: options.allow,
+          deny: options.deny
+        }
+      ]
+    ] as PluggableList
+  };
+};
+
+export const runAlex = async (
+  rcName = "@storm-software/linting-tools/alex/config.json",
   ignoreName = "@storm-software/linting-tools/alex/.alexignore"
 ) => {
   return new Promise(
@@ -18,17 +35,17 @@ export const runAlex = (
       engine(
         {
           processor: unified(),
-          files: ["**/*.{txt,js,jsx,ts,tsx,md,mdx,json}"],
+          files: ["**/*.{txt,js,jsx,ts,tsx,md,mdx,json,jsonc}"],
           extensions: [
             "txt",
-            "text",
+            "js",
+            "jsx",
+            "ts",
+            "tsx",
             "md",
             "mdx",
-            "markdown",
-            "mkd",
-            "mkdn",
-            "mkdown",
-            "ron"
+            "json",
+            "jsonc"
           ],
           configTransform: transform,
           out: false,
@@ -62,21 +79,4 @@ export const runAlex = (
         }
       )
   );
-};
-
-const transform = (options: any) => {
-  return {
-    plugins: [
-      retextEnglish,
-      [retextProfanities, { sureness: options.profanitySureness }],
-      [retextEquality, { noBinary: options.noBinary }],
-      [
-        filter,
-        {
-          allow: options.allow,
-          deny: options.deny
-        }
-      ]
-    ] as PluggableList
-  };
 };

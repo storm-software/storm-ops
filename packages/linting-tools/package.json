@@ -123,11 +123,15 @@
   ],
   "dependencies": {
     "@angular-devkit/architect": "0.1900.6",
+    "@manypkg/cli": "0.23.0",
+    "@manypkg/get-packages": "2.2.1",
     "alex": "11.0.1",
     "check-dependency-version-consistency": "4.1.0",
     "commander": "catalog:",
+    "cspell": "catalog:",
     "dpdm": "3.14.0",
     "fs-extra": "11.2.0",
+    "glob": "catalog:",
     "octokit": "4.0.2",
     "p-limit": "5.0.0",
     "rehype-parse": "9.0.0",
@@ -146,11 +150,7 @@
     "vfile-reporter": "8.1.1"
   },
   "devDependencies": {
-    "@manypkg/cli": "0.23.0",
-    "@manypkg/get-packages": "2.2.1",
     "@types/node": "catalog:",
-    "cspell": "catalog:",
-    "glob": "catalog:",
     "tsup": "catalog:"
   },
   "publishConfig": {
