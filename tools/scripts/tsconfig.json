@@ -2,20 +2,18 @@
   "extends": "../../tsconfig.json",
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "rootDir": "../..",
     "strict": false,
-    "module": "esnext",
-    "allowJs": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "preserveSymlinks": true,
-    "isolatedModules": true,
-    "types": ["node"],
-    "lib": ["es2021"]
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ESNext"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "moduleResolution": "Bundler",
+    "moduleDetection": "force",
+    "types": ["node"]
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["**/*.spec.ts", "**/*.test.ts", "**/*.d.ts"],
-  "ts-node": {
-    "files": true,
-    "require": ["tsconfig-paths/register"]
-  }
+  "exclude": ["**/*.spec.ts", "**/*.test.ts", "**/*.d.ts"]
 }

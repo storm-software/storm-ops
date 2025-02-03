@@ -258,9 +258,6 @@ importers:
       nx:
         specifier: 'catalog:'
         version: 20.4.0(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.17)(typescript@5.7.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
-      nx-cloud:
-        specifier: 19.1.0
-        version: 19.1.0
       prettier:
         specifier: 'catalog:'
         version: 3.4.2
@@ -279,6 +276,9 @@ importers:
       tslib:
         specifier: 'catalog:'
         version: 2.8.1
+      tsup:
+        specifier: 'catalog:'
+        version: 8.3.5(@microsoft/api-extractor@7.49.2(@types/node@22.13.0))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.4.2)(postcss@8.5.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       tsx:
         specifier: ^4.19.2
         version: 4.19.2
@@ -1463,9 +1463,6 @@ importers:
       esbuild:
         specifier: 'catalog:'
         version: 0.24.2
-      pkg-types:
-        specifier: 'catalog:'
-        version: 1.3.1
       read-yaml-file:
         specifier: 2.1.0
         version: 2.1.0
@@ -1479,6 +1476,9 @@ importers:
       copyfiles:
         specifier: 'catalog:'
         version: 2.4.1
+      pkg-types:
+        specifier: 'catalog:'
+        version: 1.3.1
       rimraf:
         specifier: 'catalog:'
         version: 6.0.1
@@ -3989,7 +3989,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -4129,9 +4128,6 @@ packages:
 
   '@nrwl/devkit@18.1.0-beta.2':
     resolution: {integrity: sha512-a/Ij/GerKooatwgUpZIghFV/0GRawgUeHhR8oJFq6GsiqXObCdOFYVHEiu4hgy2cLkoG9bNM0QgxioKnF/4QHA==}
-
-  '@nrwl/nx-cloud@19.1.0':
-    resolution: {integrity: sha512-krngXVPfX0Zf6+zJDtcI59/Pt3JfcMPMZ9C/+/x6rvz4WGgyv1s0MI4crEUM0Lx5ZpS4QI0WNDCFVQSfGEBXUg==}
 
   '@nrwl/tao@18.1.0-beta.2':
     resolution: {integrity: sha512-3XjDWIqk0hK1blVUdgF7vYciMVb6OnnY6ft/KBafbSauFdC0lMf2Y33VD5e2HbQjjeQBsuszcLPrZTODtthViQ==}
@@ -7416,10 +7412,6 @@ packages:
     resolution: {integrity: sha512-zIHwmZPRshsCdpMDyVsqGmgyP0yT8GAgXUnkdAoJisxvf33k7yO6OuoKmcTGuXPWSsm8Oh88nZicRLA9Y0rUeA==}
     engines: {node: '>=12'}
 
-  dotenv@10.0.0:
-    resolution: {integrity: sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==}
-    engines: {node: '>=10'}
-
   dotenv@16.3.2:
     resolution: {integrity: sha512-HTlk5nmhkm8F6JcdXvHIzaorzCoziNQT9mGxLPVXW8wJF1TiGSL60ZGB4gHWabHOaMmWmhvk2/lPHfnBiT78AQ==}
     engines: {node: '>=12'}
@@ -10672,10 +10664,6 @@ packages:
 
   nwsapi@2.2.16:
     resolution: {integrity: sha512-F1I/bimDpj3ncaNDhfyMWuFqmQDBwDB0Fogc2qpL3BWvkQteFD/8BzWuIRl83rq0DXfm8SGt/HFhLXZyljTXcQ==}
-
-  nx-cloud@19.1.0:
-    resolution: {integrity: sha512-f24vd5/57/MFSXNMfkerdDiK0EvScGOKO71iOWgJNgI1xVweDRmOA/EfjnPMRd5m+pnoPs/4A7DzuwSW0jZVyw==}
-    hasBin: true
 
   nx@18.1.0-beta.2:
     resolution: {integrity: sha512-LDGE3dmnbw/8o5OzKFqDN9hfbO2Kaq8I8bZnZ/idvjDH54Ie7nfTjNpM7EessLfYvn9sI4TDRy8FDcLrgBJniQ==}
@@ -17764,12 +17752,6 @@ snapshots:
     transitivePeerDependencies:
       - nx
 
-  '@nrwl/nx-cloud@19.1.0':
-    dependencies:
-      nx-cloud: 19.1.0
-    transitivePeerDependencies:
-      - debug
-
   '@nrwl/tao@18.1.0-beta.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.17)(typescript@5.7.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))':
     dependencies:
       nx: 18.1.0-beta.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.17)(typescript@5.7.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
@@ -21720,8 +21702,6 @@ snapshots:
   dotenv-expand@11.0.7:
     dependencies:
       dotenv: 16.4.7
-
-  dotenv@10.0.0: {}
 
   dotenv@16.3.2: {}
 
@@ -26365,21 +26345,6 @@ snapshots:
       - supports-color
 
   nwsapi@2.2.16: {}
-
-  nx-cloud@19.1.0:
-    dependencies:
-      '@nrwl/nx-cloud': 19.1.0
-      axios: 1.7.2
-      chalk: 4.1.2
-      dotenv: 10.0.0
-      fs-extra: 11.2.0
-      ini: 4.1.3
-      node-machine-id: 1.1.12
-      open: 8.4.2
-      tar: 6.2.1
-      yargs-parser: 21.1.1
-    transitivePeerDependencies:
-      - debug
 
   nx@18.1.0-beta.2(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.17)(typescript@5.7.3))(@swc/core@1.7.26(@swc/helpers@0.5.13)):
     dependencies:
