@@ -31,7 +31,7 @@
       "cache": true,
       "inputs": [
         "{workspaceRoot}/packages/markdownlint/dist/**",
-        "{workspaceRoot}/packages/markdownlint/config/**"
+        "{workspaceRoot}/packages/markdownlint/src/config/**"
       ],
       "outputs": ["{workspaceRoot}/dist/packages/markdownlint/**"],
       "executor": "nx:run-commands",
@@ -40,9 +40,7 @@
         "commands": [
           "pnpm copyfiles --up=3 packages/markdownlint/dist/* dist/packages/markdownlint/dist",
           "pnpm copyfiles --up=3 packages/markdownlint/dist/rules/* dist/packages/markdownlint/dist/rules",
-          "pnpm copyfiles --up=4 \"packages/markdownlint/src/config/markdown-link-check.json\" dist/packages/markdownlint/config",
-          "pnpm copyfiles --up=4 \"packages/markdownlint/src/config/.markdownlint.jsonc\" dist/packages/markdownlint/config",
-          "pnpm copyfiles --up=4 \"packages/markdownlint/src/config/.markdownlint-cli2.jsonc\" dist/packages/markdownlint/config",
+          "pnpm copyfiles --up=4 --all packages/markdownlint/src/config/*.{json,jsonc} dist/packages/markdownlint/config",
           "pnpm copyfiles --up=2 packages/markdownlint/*.md packages/markdownlint/package.json dist/packages/markdownlint",
           "pnpm copyfiles LICENSE dist/packages/markdownlint"
         ]
