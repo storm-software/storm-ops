@@ -1,3 +1,13 @@
+## 1.150.11 (2025-02-04)
+
+### Bug Fixes
+
+- **config-tools:** Resolved issues with unbundled packages ([b3071e1e4](https://github.com/storm-software/storm-ops/commit/b3071e1e4))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([5295557c6](https://github.com/storm-software/storm-ops/commit/5295557c6))
+
 ## 1.150.10 (2025-02-04)
 
 ### Bug Fixes
