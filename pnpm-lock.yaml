@@ -463,6 +463,10 @@ importers:
         version: 20.4.0(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.17)(typescript@5.7.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
 
   packages/cspell:
+    dependencies:
+      cspell:
+        specifier: 'catalog:'
+        version: 8.17.3
     devDependencies:
       '@cspell/cspell-pipe':
         specifier: 8.17.3
@@ -584,9 +588,6 @@ importers:
       '@cspell/dict-vue':
         specifier: ^3.0.0
         version: 3.0.4
-      cspell:
-        specifier: 'catalog:'
-        version: 8.17.3
       tsup:
         specifier: 'catalog:'
         version: 8.3.5(@microsoft/api-extractor@7.49.2(@types/node@22.13.0))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.4.2)(postcss@8.5.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
