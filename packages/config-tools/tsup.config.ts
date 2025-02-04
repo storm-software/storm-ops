@@ -13,9 +13,7 @@ export default defineConfig([
     clean: false,
     dts: true,
     sourcemap: false,
-    tsconfig: "./tsconfig.json",
-    shims: true,
-    noExternal: ["chalk", "supports-color"]
+    tsconfig: "./tsconfig.json"
   },
   {
     name: "config-tools-bin",
@@ -29,8 +27,6 @@ export default defineConfig([
     clean: false,
     dts: false,
     sourcemap: false,
-    tsconfig: "./tsconfig.json",
-    shims: true,
-    noExternal: ["chalk", "supports-color"]
+    tsconfig: "./tsconfig.json"
   }
 ]);
