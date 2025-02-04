@@ -1048,6 +1048,9 @@ importers:
       defu:
         specifier: 'catalog:'
         version: 6.1.4
+      markdownlint-cli2:
+        specifier: ^0.17.2
+        version: 0.17.2
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
