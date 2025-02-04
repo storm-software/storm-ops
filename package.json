@@ -120,6 +120,7 @@
     "nx": "catalog:",
     "pkg-types": "^1.3.1",
     "prettier": "catalog:",
+    "read-yaml-file": "^2.1.0",
     "rimraf": "catalog:",
     "sherif": "1.2.0",
     "ts-jest": "29.1.5",
