@@ -51,25 +51,25 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       packageJson,
       nxJson
     );
-    if (!targets["lint-ls"]) {
-      targets["lint-ls"] = {
-        cache: true,
-        inputs: ["linting", "typescript", "^production"],
-        dependsOn: ["^lint-ls"],
-        executor: "nx:run-commands",
-        options: {
-          command:
-            'pnpm exec ls-lint --config="@storm-software/linting-tools/ls-lint/config.yml" --workdir=\"{projectRoot}\"',
-          color: true
-        }
-      };
-    }
+    // if (!targets["lint-ls"]) {
+    //   targets["lint-ls"] = {
+    //     cache: true,
+    //     inputs: ["linting", "typescript", "^production"],
+    //     dependsOn: ["^lint-ls"],
+    //     executor: "nx:run-commands",
+    //     options: {
+    //       command:
+    //         'pnpm exec ls-lint --config="@storm-software/linting-tools/ls-lint/config.yml" --workdir=\"{projectRoot}\"',
+    //       color: true
+    //     }
+    //   };
+    // }
 
     if (!targets["lint-markdown"]) {
       targets["lint-markdown"] = {
         cache: true,
         outputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
-        inputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
+        inputs: ["linting", "{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
         dependsOn: ["^lint-markdown"],
         executor: "nx:run-commands",
         options: {
@@ -81,25 +81,27 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
     }
 
     if (!targets.lint) {
-      targets.lint = {
-        cache: true,
-        inputs: ["linting", "typescript", "^production"],
-        dependsOn: [
-          "lint-ls",
-          "lint-sherif",
-          "lint-knip",
-          "lint-docs",
-          "^lint"
-        ],
-        executor: "@nx/eslint:lint",
-        options: {
-          format: "stylish",
-          fix: true,
+      let eslintConfig = checkEslintConfigAtPath(project.root);
+      if (!eslintConfig) {
+        eslintConfig = checkEslintConfigAtPath(ctx.workspaceRoot);
+      }
+
+      if (eslintConfig) {
+        targets.lint = {
           cache: true,
-          errorOnUnmatchedPattern: false,
-          printConfig: true
-        }
-      };
+          inputs: ["linting", "typescript", "^production"],
+          dependsOn: ["lint-markdown", "^lint"],
+          executor: "@nx/eslint:lint",
+          options: {
+            format: "stylish",
+            fix: true,
+            errorOnUnmatchedPattern: false,
+            cache: true,
+            cacheLocation: "{workspaceRoot}/node_modules/.cache/eslint",
+            eslintConfig
+          }
+        };
+      }
     }
 
     if (!targets["format-readme"]) {
@@ -383,4 +385,34 @@ async function createTsconfig(projectJsonPath: string, workspaceRoot: string) {
     console.log(e);
     return null;
   }
+}
+
+function checkEslintConfigAtPath(directory: string): string | null {
+  const hasEslintConfigFile = (fileName: string): boolean => {
+    return existsSync(join(directory, fileName));
+  };
+
+  if (hasEslintConfigFile(".eslintrc.js")) {
+    return ".eslintrc.js";
+  } else if (hasEslintConfigFile(".eslintrc.cjs")) {
+    return ".eslintrc.cjs";
+  } else if (hasEslintConfigFile(".eslintrc.yaml")) {
+    return ".eslintrc.yaml";
+  } else if (hasEslintConfigFile(".eslintrc.yml")) {
+    return ".eslintrc.yml";
+  } else if (hasEslintConfigFile(".eslintrc.json")) {
+    return ".eslintrc.json";
+  } else if (hasEslintConfigFile(".eslintrc")) {
+    return ".eslintrc";
+  } else if (hasEslintConfigFile("eslint.config.js")) {
+    return "eslint.config.js";
+  } else if (hasEslintConfigFile("eslint.config.cjs")) {
+    return "eslint.config.cjs";
+  } else if (hasEslintConfigFile("eslint.config.mjs")) {
+    return "eslint.config.mjs";
+  } else if (hasEslintConfigFile("eslint.config.ts")) {
+    return "eslint.config.ts";
+  }
+
+  return null;
 }
