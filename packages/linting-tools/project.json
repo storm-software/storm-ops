@@ -29,7 +29,7 @@
           "pnpm copyfiles --up=4 ./packages/linting-tools/src/terrascan/* dist/packages/linting-tools/terrascan",
           "pnpm copyfiles --up=4 ./packages/linting-tools/src/tflint/* dist/packages/linting-tools/tflint",
           "pnpm copyfiles --up=4 ./packages/linting-tools/src/yamllint/* dist/packages/linting-tools/yamllint",
-          "pnpm copyfiles --up=4 ./packages/linting-tools/src/alex/.alexignore ./packages/linting-tools/src/alex/.alexrc dist/packages/linting-tools/alex",
+          "pnpm copyfiles --up=4 ./packages/linting-tools/src/alex/.alexignore ./packages/linting-tools/src/alex/*.json dist/packages/linting-tools/alex",
           "pnpm copyfiles --up=4 ./packages/linting-tools/src/zizmor/* dist/packages/linting-tools/zizmor",
           "pnpm copyfiles --up=4 ./packages/linting-tools/src/taplo/* dist/packages/linting-tools/taplo",
           "pnpm copyfiles --up=4 ./packages/linting-tools/src/dependency-cruiser/* dist/packages/linting-tools/dependency-cruiser",
