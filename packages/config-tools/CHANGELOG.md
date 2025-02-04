@@ -1,3 +1,9 @@
+## 1.151.0 (2025-02-04)
+
+### Features
+
+- **markdownlint:** Added aliases for the shared configuration files ([77346aa0f](https://github.com/storm-software/storm-ops/commit/77346aa0f))
+
 ## 1.150.21 (2025-02-04)
 
 ### Miscellaneous
