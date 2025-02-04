@@ -1,3 +1,9 @@
+## 0.13.12 (2025-02-04)
+
+### Bug Fixes
+
+- **markdownlint:** Split the `markdownlint` config copy statements ([2c7afe6be](https://github.com/storm-software/storm-ops/commit/2c7afe6be))
+
 ## 0.13.11 (2025-02-04)
 
 ### Bug Fixes
