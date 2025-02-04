@@ -204,18 +204,15 @@
     "sullivanpj"
   ],
   "peerDependencies": {
-    "@nx/devkit": "catalog:",
     "@storm-software/esbuild": "workspace:*",
     "@storm-software/prettier": "workspace:*",
     "@storm-software/tsdown": "workspace:*",
     "@storm-software/unbuild": "workspace:*",
+    "markdownlint-cli2": "^0.17.2",
     "nx": "catalog:",
-    "typescript": "catalog:"
+    "prettier": "catalog:"
   },
   "peerDependenciesMeta": {
-    "@nx/devkit": {
-      "optional": false
-    },
     "@storm-software/esbuild": {
       "optional": true
     },
@@ -228,16 +225,20 @@
     "@storm-software/unbuild": {
       "optional": true
     },
+    "markdownlint-cli2": {
+      "optional": false
+    },
     "nx": {
       "optional": false
     },
-    "typescript": {
+    "prettier": {
       "optional": false
     }
   },
   "dependencies": {
     "@ltd/j-toml": "1.38.0",
     "@microsoft/api-extractor": "catalog:",
+    "@nx/devkit": "catalog:",
     "@samchon/openapi": "^2.3.0",
     "@size-limit/esbuild": "11.1.4",
     "@size-limit/esbuild-why": "11.1.4",
@@ -259,7 +260,6 @@
     "zod-to-json-schema": "3.23.1"
   },
   "devDependencies": {
-    "@nx/devkit": "catalog:",
     "@types/micromatch": "^4.0.9",
     "@types/node": "catalog:",
     "@types/semver": "7.5.8",

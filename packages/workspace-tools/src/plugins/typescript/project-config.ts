@@ -74,8 +74,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
         executor: "nx:run-commands",
         options: {
           command:
-            'pnpm exec markdownlint-cli2 "{projectRoot}/**/*.{md,mdx,markdown}" --config="./node_modules/@storm-software/linting-tools/ls-lint/config.yml" --workdir="{projectRoot}"',
-          color: true
+            'pnpm exec markdownlint-cli2 "{projectRoot}/**/*.{md,mdx,markdown}" --config="./node_modules/@storm-software/markdownlint/config/.markdownlint-cli2.jsonc" --fix'
         }
       };
     }
