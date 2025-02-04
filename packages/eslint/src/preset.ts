@@ -11,7 +11,7 @@ import {
   writeError,
   writeFatal,
   writeInfo,
-  writeTrace,
+  writeTrace
 } from "@storm-software/config-tools/logger/console";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
@@ -23,6 +23,7 @@ import prettierConfig from "eslint-plugin-prettier/recommended";
 import reactPlugin from "eslint-plugin-react";
 import reactCompiler from "eslint-plugin-react-compiler";
 import reactHooks from "eslint-plugin-react-hooks";
+import storybook from "eslint-plugin-storybook";
 import tsdoc from "eslint-plugin-tsdoc";
 import unicorn from "eslint-plugin-unicorn";
 import yml from "eslint-plugin-yml";
@@ -109,7 +110,7 @@ export function getStormConfig(
     nx: {},
     useReactCompiler: false,
     logLevel: "info",
-    cspellConfigFile: "./.vscode/cspell.json",
+    cspellConfigFile: "./.vscode/cspell.json"
   },
   ...userConfigs: Linter.Config[]
 ): Linter.Config[] {
@@ -128,7 +129,7 @@ export function getStormConfig(
   try {
     const ignoredFiles = [
       ...DEFAULT_IGNORES,
-      ...(options.ignores || []),
+      ...(options.ignores || [])
     ].filter(Boolean);
 
     const configs: Linter.Config[] = [
@@ -149,17 +150,17 @@ export function getStormConfig(
         files: ["**/*.json"],
         ...json.configs["recommended"],
         rules: {
-          "json/json": ["warn", { allowComments: true }],
-        },
+          "json/json": ["warn", { allowComments: true }]
+        }
       },
       {
         files: ["**/executors/**/schema.json", "**/generators/**/schema.json"],
         rules:
           nx !== false
             ? {
-                "@nx/workspace/valid-schema-description": "error",
+                "@nx/workspace/valid-schema-description": "error"
               }
-            : {},
+            : {}
       },
       {
         files: ["**/package.json"],
@@ -175,11 +176,11 @@ export function getStormConfig(
                     checkObsoleteDependencies: true,
                     checkVersionMismatches: false,
                     includeTransitiveDependencies: true,
-                    useLocalPathsForWorkspaceDependencies: true,
-                  },
-                ],
+                    useLocalPathsForWorkspaceDependencies: true
+                  }
+                ]
               }
-            : {},
+            : {}
       },
 
       // YML
@@ -196,20 +197,20 @@ export function getStormConfig(
             "warn",
             {
               configFile: joinPaths(findWorkspaceRoot(), cspellConfigFile),
-              autoFix: true,
-            },
-          ],
-        },
+              autoFix: true
+            }
+          ]
+        }
       },
 
       // User overrides
-      ...(userConfigs as Linter.Config[]),
+      ...(userConfigs as Linter.Config[])
     ].filter(Boolean) as Linter.Config[];
 
     // Nx
     if (nx) {
       configs.push({
-        plugins: { "@nx": nxPlugin as any },
+        plugins: { "@nx": nxPlugin as any }
       });
     }
 
@@ -220,13 +221,13 @@ export function getStormConfig(
       if (!(typescriptEslintConfigType in tsEslint.configs)) {
         console.warn(
           "Invalid TypeScript ESLint configuration type:",
-          typescriptEslintConfigType,
+          typescriptEslintConfigType
         );
       } else {
         configs.push(
           ...(Array.isArray(tsEslint.configs[typescriptEslintConfigType])
             ? tsEslint.configs[typescriptEslintConfigType]
-            : [tsEslint.configs[typescriptEslintConfigType]]),
+            : [tsEslint.configs[typescriptEslintConfigType]])
         );
       }
     }
@@ -237,8 +238,8 @@ export function getStormConfig(
         files: [TS_FILE],
         plugins: { unicorn },
         rules: {
-          ...unicorn.configs["flat/recommended"].rules,
-        },
+          ...unicorn.configs["flat/recommended"].rules
+        }
       });
     }
 
@@ -247,7 +248,7 @@ export function getStormConfig(
     configs.push({
       files: [TS_FILE],
       plugins: { tsdoc },
-      rules: tsdocRules,
+      rules: tsdocRules
     });
 
     // Banner
@@ -262,10 +263,10 @@ export function getStormConfig(
           {
             commentType: "block",
             numNewlines: 2,
-            repositoryName: options.name,
-          },
-        ],
-      },
+            repositoryName: options.name
+          }
+        ]
+      }
     });
 
     // React
@@ -277,13 +278,13 @@ export function getStormConfig(
           ...reactPlugin.configs?.recommended,
           plugins: { react: reactPlugin },
           files: ["**/*.tsx"],
-          ...react,
+          ...react
         },
         {
           ...reactHooks.configs?.recommended,
           plugins: { "react-hooks": reactHooks },
-          files: [TS_FILE],
-        },
+          files: [TS_FILE]
+        }
         // {
         //   files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
         //   ...jsxA11y.flatConfigs?.recommended
@@ -294,13 +295,20 @@ export function getStormConfig(
         reactConfigs.push({
           files: ["**/*.tsx"],
           plugins: {
-            "react-compiler": reactCompiler,
+            "react-compiler": reactCompiler
           },
           rules: {
-            "react-compiler/react-compiler": "error",
-          },
+            "react-compiler/react-compiler": "error"
+          }
         });
       }
+
+      // Storybook
+      reactConfigs.push(
+        storybook.configs[
+          "flat/recommended"
+        ] as Linter.Config<Linter.RulesRecord>
+      );
 
       configs.push(...reactConfigs);
     }
@@ -308,7 +316,7 @@ export function getStormConfig(
     if (options.nextFiles && options.nextFiles.length > 0) {
       configs.push({
         ...next.configs["core-web-vitals"],
-        files: options.nextFiles,
+        files: options.nextFiles
       });
     }
 
@@ -318,45 +326,45 @@ export function getStormConfig(
       languageOptions: {
         globals: {
           ...Object.fromEntries(
-            Object.keys(globalsObj).flatMap((group) =>
+            Object.keys(globalsObj).flatMap(group =>
               Object.keys(globalsObj[group as keyof typeof globalsObj]).map(
-                (key) => [key, "readonly"],
-              ),
-            ),
+                key => [key, "readonly"]
+              )
+            )
           ),
           ...globalsObj.browser,
           ...globalsObj.node,
           ...globals,
-          window: "readonly",
+          window: "readonly"
         },
         parserOptions: {
           projectService: true,
           ecmaFeatures: {
-            jsx: react !== false,
-          },
-        },
+            jsx: react !== false
+          }
+        }
       },
       rules: {
         ...getStormRulesConfig({
           ...options,
           typescriptEslintConfigType,
           useUnicorn,
-          useNx: nx !== false,
+          useNx: nx !== false
         }),
         ...Object.keys(options.rules ?? {})
           .filter(
-            (ruleId) =>
+            ruleId =>
               !useUnicorn ||
               !ruleId.startsWith("unicorn/") ||
               !react ||
               (!ruleId.startsWith("react/") &&
-                !ruleId.startsWith("react-hooks/")),
+                !ruleId.startsWith("react-hooks/"))
           )
           .reduce((ret, ruleId) => {
             ret[ruleId] = options.rules![ruleId];
             return ret;
-          }, {} as Linter.RulesRecord),
-      },
+          }, {} as Linter.RulesRecord)
+      }
     };
 
     if (parserOptions) {
@@ -370,8 +378,6 @@ export function getStormConfig(
     }
 
     configs.push(typescriptConfig);
-
-    // configs.push(...storybookPlugin.configs["flat/recommended"]);
 
     // // JavaScript and TypeScript code
     // const codeConfig: Linter.Config = {
@@ -413,8 +419,8 @@ export function getStormConfig(
           "no-empty-pattern": "off",
           "no-redeclare": "off",
           "no-import-assign": "off",
-          ...options.markdown,
-        },
+          ...options.markdown
+        }
       });
       configs.push({
         files: ["**/*.md/*.js", "**/*.md/*.ts"],
@@ -426,13 +432,13 @@ export function getStormConfig(
           "no-empty-pattern": "off",
           "no-redeclare": "off",
           "no-import-assign": "off",
-          ...options.markdown,
-        },
+          ...options.markdown
+        }
       });
     }
 
     writeTrace(formatLogMessage(configs, { skip: ["globals"] }), {
-      logLevel,
+      logLevel
     });
 
     const result = formatConfig(
@@ -440,8 +446,8 @@ export function getStormConfig(
       configs.reduce((ret: Linter.Config[], config: Record<string, any>) => {
         delete config.parserOptions;
 
-        const existingIndex = ret.findIndex((existing) =>
-          areFilesEqual(existing.files, config.files),
+        const existingIndex = ret.findIndex(existing =>
+          areFilesEqual(existing.files, config.files)
         );
         if (existingIndex >= 0) {
           ret[existingIndex] = defu(ret[existingIndex], config);
@@ -450,23 +456,23 @@ export function getStormConfig(
         }
 
         return ret;
-      }, [] as Linter.Config[]),
+      }, [] as Linter.Config[])
     );
     result.unshift({
-      ignores: ignoredFiles,
+      ignores: ignoredFiles
     });
 
     writeInfo("⚙️  Completed generated Storm ESLint configuration objects", {
-      logLevel,
+      logLevel
     });
     writeDebug(formatLogMessage(result, { skip: ["globals"] }), {
-      logLevel,
+      logLevel
     });
 
     return result;
   } catch (error) {
     writeFatal("Error generating Storm ESLint configuration objects", {
-      logLevel,
+      logLevel
     });
     writeError(error, { logLevel });
 
@@ -476,7 +482,7 @@ export function getStormConfig(
 
 const areFilesEqual = (
   files1: Linter.Config["files"],
-  files2: Linter.Config["files"],
+  files2: Linter.Config["files"]
 ): boolean => {
   if (files1 === files2) {
     return true;
@@ -498,6 +504,6 @@ const areFilesEqual = (
       ? areFilesEqual(file, files2?.[index])
       : !Array.isArray(file) && !Array.isArray(files2?.[index])
         ? file?.toLowerCase() === files2?.[index]?.toLowerCase()
-        : file === files2,
+        : file === files2
   );
 };
