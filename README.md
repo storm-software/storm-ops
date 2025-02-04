@@ -46,26 +46,25 @@ keeping the codebase maintainable.
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 ## Table of Contents
 
 - [Quick Features](#quick-features)
-    - [Included Packages](#included-packages)
-    - [Tech Stack](#tech-stack)
+  - [Included Packages](#included-packages)
+  - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
-    - [Build](#build)
-    - [Development Server](#development-server)
+  - [Build](#build)
+  - [Development Server](#development-server)
 - [Environment Configuration Help](#environment-configuration-help)
-    - [Plug-Ins](#plug-ins)
-    - [Generate an Application](#generate-an-application)
-    - [Generate a Library](#generate-a-library)
-    - [Code Scaffolding](#code-scaffolding)
+  - [Plug-Ins](#plug-ins)
+  - [Generate an Application](#generate-an-application)
+  - [Generate a Library](#generate-a-library)
+  - [Code Scaffolding](#code-scaffolding)
 - [Testing](#testing)
-    - [Running Unit Tests](#running-unit-tests)
-    - [Running End-to-End Tests](#running-end-to-end-tests)
-    - [Understand your workspace](#understand-your-workspace)
+  - [Running Unit Tests](#running-unit-tests)
+  - [Running End-to-End Tests](#running-end-to-end-tests)
+  - [Understand your workspace](#understand-your-workspace)
 - [☁ Nx Cloud](#-nx-cloud)
-    - [Distributed Computation Caching & Distributed Task Execution](#distributed-computation-caching--distributed-task-execution)
+  - [Distributed Computation Caching & Distributed Task Execution](#distributed-computation-caching--distributed-task-execution)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [Support](#support)

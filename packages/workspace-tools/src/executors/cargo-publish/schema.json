@@ -22,7 +22,11 @@
     "toolchain": {
       "title": "Toolchain",
       "description": "The type of toolchain to use for the build",
-      "enum": ["stable", "beta", "nightly"],
+      "enum": [
+        "stable",
+        "beta",
+        "nightly"
+      ],
       "default": "stable",
       "id": "#toolchain",
       "type": "string"

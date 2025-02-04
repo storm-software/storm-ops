@@ -2,7 +2,10 @@
   "id": "#",
   "title": "Preset Generator",
   "description": "A type definition for a preset generator schema",
-  "required": ["directory", "name"],
+  "required": [
+    "directory",
+    "name"
+  ],
   "properties": {
     "directory": {
       "title": "Directory",
@@ -72,7 +75,12 @@
       "title": "Package Manager",
       "type": "string",
       "description": "The package manager to use",
-      "enum": ["npm", "pnpm", "yarn", "bun"],
+      "enum": [
+        "npm",
+        "pnpm",
+        "yarn",
+        "bun"
+      ],
       "id": "#packageManager",
       "default": "pnpm"
     }

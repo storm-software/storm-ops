@@ -20,7 +20,9 @@
         "type": "string"
       },
       "id": "#entry",
-      "default": ["{sourceRoot}/index.ts"]
+      "default": [
+        "{sourceRoot}/index.ts"
+      ]
     },
     "tsconfig": {
       "title": "TSConfig Path",
@@ -98,7 +100,11 @@
       "title": "Format",
       "type": "string",
       "description": "The format to build",
-      "enum": ["cjs", "esm", "iife"],
+      "enum": [
+        "cjs",
+        "esm",
+        "iife"
+      ],
       "id": "#format",
       "default": "esm"
     },
@@ -106,7 +112,11 @@
       "title": "Platform",
       "type": "string",
       "description": "The platform to build",
-      "enum": ["neutral", "node", "browser"],
+      "enum": [
+        "neutral",
+        "node",
+        "browser"
+      ],
       "id": "#platform",
       "default": "neutral"
     },
@@ -140,7 +150,9 @@
   "type": "object",
   "default": {
     "outputPath": "dist/{projectRoot}",
-    "entry": ["{sourceRoot}/index.ts"],
+    "entry": [
+      "{sourceRoot}/index.ts"
+    ],
     "tsconfig": "{projectRoot}/tsconfig.json",
     "silent": false,
     "target": "esnext",

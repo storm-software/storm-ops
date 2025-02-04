@@ -40,28 +40,27 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 ## Table of Contents
 
 - [Storm Projen Tools](#storm-projen-tools)
-    - [Installing](#installing)
-    - [Executors](#executors)
-    - [helm-package](#helm-package)
-        - [Example](#example)
-    - [container-publish](#container-publish)
-        - [Example](#example-1)
-    - [Generators](#generators)
-    - [Init Generator](#init-generator)
-        - [Options](#options)
-    - [Building](#building)
-    - [Running unit tests](#running-unit-tests)
-    - [Storm Workspaces](#storm-workspaces)
-    - [Roadmap](#roadmap)
-    - [Support](#support)
-    - [License](#license)
-    - [Changelog](#changelog)
-    - [Contributing](#contributing)
-    - [Contributors](#contributors)
+  - [Installing](#installing)
+  - [Executors](#executors)
+  - [helm-package](#helm-package)
+    - [Example](#example)
+  - [container-publish](#container-publish)
+    - [Example](#example-1)
+  - [Generators](#generators)
+  - [Init Generator](#init-generator)
+    - [Options](#options)
+  - [Building](#building)
+  - [Running unit tests](#running-unit-tests)
+  - [Storm Workspaces](#storm-workspaces)
+  - [Roadmap](#roadmap)
+  - [Support](#support)
+  - [License](#license)
+  - [Changelog](#changelog)
+  - [Contributing](#contributing)
+  - [Contributors](#contributors)
 
 <!-- END doctoc -->
 
