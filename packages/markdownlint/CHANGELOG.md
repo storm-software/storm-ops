@@ -1,3 +1,13 @@
+## 0.13.13 (2025-02-04)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue copying files with a `.` character ([cd2f78d5c](https://github.com/storm-software/storm-ops/commit/cd2f78d5c))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([572028003](https://github.com/storm-software/storm-ops/commit/572028003))
+
 ## 0.13.12 (2025-02-04)
 
 ### Bug Fixes
