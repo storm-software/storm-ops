@@ -90,6 +90,9 @@
         "default": "./dist/rules/*.js"
       }
     },
+    "./.markdownlint.jsonc": "./config/.markdownlint.jsonc",
+    "./.markdownlint-cli2.jsonc": "./config/.markdownlint.jsonc",
+    "./markdown-link-check.json": "./config/markdown-link-check.json",
     "./config/*": "./config/*"
   },
   "types": "./dist/index.d.ts",

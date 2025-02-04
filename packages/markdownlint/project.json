@@ -26,12 +26,12 @@
       "dependsOn": ["build-base"],
       "options": {
         "commands": [
+          "pnpm copyfiles LICENSE dist/packages/markdownlint",
+          "pnpm copyfiles --up=2 --all \"./packages/markdownlint/package.json\" dist/packages/markdownlint",
+          "pnpm copyfiles --up=2 --all \"./packages/markdownlint/*.md\" dist/packages/markdownlint",
           "pnpm copyfiles --up=3 --all \"./packages/markdownlint/dist/*\" dist/packages/markdownlint/dist",
           "pnpm copyfiles --up=3 --all \"./packages/markdownlint/dist/rules/*\" dist/packages/markdownlint/dist/rules",
-          "pnpm copyfiles --up=4 --all \"./packages/markdownlint/src/config/*\" dist/packages/markdownlint/config",
-          "pnpm copyfiles --up=2 --all \"./packages/markdownlint/*.md\" dist/packages/markdownlint",
-          "pnpm copyfiles --up=2 --all \"./packages/markdownlint/package.json\" dist/packages/markdownlint",
-          "pnpm copyfiles LICENSE dist/packages/markdownlint"
+          "pnpm copyfiles --up=3 --all \"./packages/markdownlint/config/*\" dist/packages/markdownlint/config"
         ]
       }
     },

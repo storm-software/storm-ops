@@ -11,8 +11,8 @@ export default defineConfig({
   clean: true,
   dts: true,
   sourcemap: false,
-  tsconfig: "./tsconfig.json",
-  external: ["tsup"],
-  noExternal: ["cspell", "@cspell/*"],
   skipNodeModulesBundle: false,
+  tsconfig: "./tsconfig.json",
+  external: ["cspell", "tsup"],
+  noExternal: ["@cspell/*"]
 });

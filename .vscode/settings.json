@@ -55,7 +55,7 @@
   "prettier.ignorePath": "./packages/prettier/src/.prettierignore",
   "prettier.enableDebugLogs": true,
   "markdownlint.config": {
-    "extends": "./packages/markdownlint/src/config/.markdownlint-cli2.json"
+    "extends": "./packages/markdownlint/config/.markdownlint-cli2.jsonc"
   },
   "editor.formatOnSave": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",

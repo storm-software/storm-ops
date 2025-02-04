@@ -119,6 +119,9 @@
       "optional": false
     }
   },
+  "dependencies": {
+    "cspell": "catalog:"
+  },
   "devDependencies": {
     "@cspell/cspell-pipe": "8.17.3",
     "@cspell/cspell-tools": "^8.17.1",
@@ -160,7 +163,6 @@
     "@cspell/dict-swift": "^2.0.1",
     "@cspell/dict-typescript": "^3.1.5",
     "@cspell/dict-vue": "^3.0.0",
-    "cspell": "catalog:",
     "tsup": "catalog:"
   },
   "publishConfig": {
