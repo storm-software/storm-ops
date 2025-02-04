@@ -30,19 +30,15 @@
   "namedInputs": {
     "sharedGlobals": [
       "{workspaceRoot}/.github/**/*",
+      "{workspaceRoot}/.gitattributes",
+      "{workspaceRoot}/.gitignore",
       "{workspaceRoot}/assets/**/*",
       "{workspaceRoot}/tsconfig.*.json",
       "{workspaceRoot}/.npmrc",
       "{workspaceRoot}/.npmignore",
       "{workspaceRoot}/package.json",
       "{workspaceRoot}/pnpm-workspace.yaml",
-      "{workspaceRoot}/pnpm-lock.yaml",
-      "{workspaceRoot}/package-lock.yaml",
-      "{workspaceRoot}/yarn-lock.yaml",
-      "{workspaceRoot}/bun.lockb",
       "{workspaceRoot}/LICENSE",
-      "{workspaceRoot}/.gitattributes",
-      "{workspaceRoot}/.gitignore",
       "{workspaceRoot}/nx.json",
       "{workspaceRoot}/.nxignore",
       "{workspaceRoot}/storm-workspace.json",
@@ -64,7 +60,7 @@
       "{workspaceRoot}/.storm-workspace/config.ts",
       "{workspaceRoot}/.storm-workspace/config.*.ts",
       "{workspaceRoot}/.env",
-      "{workspaceRoot}/.env.local"
+      "{workspaceRoot}/.env.*"
     ],
     "default": ["sharedGlobals", "{projectRoot}/**/*"],
     "production": [
