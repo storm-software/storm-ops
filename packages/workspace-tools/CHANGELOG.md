@@ -1,3 +1,13 @@
+## 1.249.2 (2025-02-04)
+
+### Bug Fixes
+
+- **markdownlint:** Resolve issue with invalid paths excluded from `ignores` config ([6e264418a](https://github.com/storm-software/storm-ops/commit/6e264418a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([481420a10](https://github.com/storm-software/storm-ops/commit/481420a10))
+
 ## 1.249.1 (2025-02-04)
 
 ### Bug Fixes
