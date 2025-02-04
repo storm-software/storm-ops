@@ -1,3 +1,9 @@
+## 1.150.12 (2025-02-04)
+
+### Miscellaneous
+
+- **config-tools:** Do not include shims in dist code ([193c9b45f](https://github.com/storm-software/storm-ops/commit/193c9b45f))
+
 ## 1.150.11 (2025-02-04)
 
 ### Bug Fixes

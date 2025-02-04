@@ -408,6 +408,12 @@ importers:
       '@storm-software/config':
         specifier: workspace:*
         version: link:../config
+      c12:
+        specifier: 'catalog:'
+        version: 2.0.1
+      chalk:
+        specifier: 'catalog:'
+        version: 4.1.2
       commander:
         specifier: 'catalog:'
         version: 12.1.0
@@ -430,12 +436,6 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.13.0
-      c12:
-        specifier: 'catalog:'
-        version: 2.0.1
-      chalk:
-        specifier: 'catalog:'
-        version: 4.1.2
       tsup:
         specifier: 'catalog:'
         version: 8.3.5(@microsoft/api-extractor@7.49.2(@types/node@22.13.0))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.4.2)(postcss@8.5.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
