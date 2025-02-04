@@ -1,3 +1,10 @@
+## 0.44.17 (2025-02-04)
+
+### Miscellaneous
+
+- **markdownlint:** Updated `exports` paths in package.json ([38b85e4f6](https://github.com/storm-software/storm-ops/commit/38b85e4f6))
+- **monorepo:** Regenerate README markdown files ([f151d13e9](https://github.com/storm-software/storm-ops/commit/f151d13e9))
+
 ## 0.44.16 (2025-02-04)
 
 ### Miscellaneous
