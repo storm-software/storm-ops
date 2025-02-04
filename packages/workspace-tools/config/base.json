@@ -309,8 +309,7 @@
       "dependsOn": ["^lint-markdown"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec markdownlint-cli2 \"{projectRoot}/**/*.{md,mdx,markdown}\" --config=\"./node_modules/@storm-software/markdownlint/config/.markdownlint-cli2.jsonc\"",
-        "color": true
+        "command": "pnpm exec markdownlint-cli2 \"{projectRoot}/**/*.{md,mdx,markdown}\" --config=\"./node_modules/@storm-software/markdownlint/config/.markdownlint-cli2.jsonc\""
       }
     },
     "lint": {
@@ -328,8 +327,7 @@
       "dependsOn": ["^format-toml"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec taplo format --colors=\"always\" --config=\"./node_modules/@storm-software/linting-tools/taplo/config.toml\" --cache-path=\"./tmp/taplo/{projectRoot}\"",
-        "color": true
+        "command": "pnpm exec taplo format --colors=\"always\" --config=\"./node_modules/@storm-software/linting-tools/taplo/config.toml\" --cache-path=\"./tmp/taplo/{projectRoot}\""
       }
     },
     "format-readme": {
@@ -344,8 +342,7 @@
       "dependsOn": ["^format-readme"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec storm-git readme-gen --templates=\"./tools/readme-templates\" --project=\"{projectName}\"",
-        "color": true
+        "command": "pnpm exec storm-git readme-gen --templates=\"./tools/readme-templates\" --project=\"{projectName}\""
       }
     },
     "format-prettier": {
@@ -353,8 +350,7 @@
       "dependsOn": ["^format-prettier"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec prettier \"{projectRoot}/**/*\" --write --ignore-unknown --no-error-on-unmatched-pattern --config=\"./node_modules/@storm-software/prettier/config.json\" --ignore-path=\"./node_modules/@storm-software/prettier/.prettierignore\" --cache --cache-location=\"./tmp/prettier/{projectRoot}\" ",
-        "color": true
+        "command": "pnpm exec prettier \"{projectRoot}/**/*\" --write --ignore-unknown --no-error-on-unmatched-pattern --config=\"./node_modules/@storm-software/prettier/config.json\" --ignore-path=\"./node_modules/@storm-software/prettier/.prettierignore\" --cache --cache-location=\"./tmp/prettier/{projectRoot}\" "
       }
     },
     "format": {
@@ -365,11 +361,7 @@
         "format-readme",
         "format-prettier",
         "^format"
-      ],
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "echo Formatted the project files in \"{projectRoot}\" "
-      }
+      ]
     },
     "clean": {
       "inputs": ["default", "^production"],
@@ -396,10 +388,7 @@
     "build": {
       "inputs": ["default", "^production"],
       "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
-      "dependsOn": ["build-base", "build-compile", "build-untyped", "^build"],
-      "options": {
-        "command": "echo Built the project files in \"{projectRoot}\" "
-      }
+      "dependsOn": ["build-base", "build-compile", "build-untyped", "^build"]
     },
     "rebuild": {
       "inputs": ["default", "^production"],
@@ -407,7 +396,6 @@
       "dependsOn": ["clean", "^build"],
       "options": {
         "command": "pnpm exec nx run {projectName}:build",
-        "color": true,
         "cwd": "{workspaceRoot}"
       }
     },
