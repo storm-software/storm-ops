@@ -1,227 +1,227 @@
 {
-    //Be explicit by listing every available rule. https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md
-    // Note that there will be numeric gaps, not every MD number is implemented in markdownlint.
-    "$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint/v0.37.4/schema/markdownlint-config-schema.json",
+  //Be explicit by listing every available rule. https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md
+  // Note that there will be numeric gaps, not every MD number is implemented in markdownlint.
+  "$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint/v0.37.4/schema/markdownlint-config-schema.json",
 
-    // MD001: Header levels should only increment by one level at a time.
-    "header-increment": true,
+  // MD001: Header levels should only increment by one level at a time.
+  "header-increment": true,
 
-    // MD002: First header should be a top level header.
-    "first-header-h1": false,
+  // MD002: First header should be a top level header.
+  "first-header-h1": false,
 
-    // MD003: Header style: start with hashes.
-    "heading-style": {
-        "style": "atx",
-    },
+  // MD003: Header style: start with hashes.
+  "heading-style": {
+    "style": "atx"
+  },
 
-    // MD004: Unordered list style
-    "ul-style": {
-        "style": "dash",
-    },
+  // MD004: Unordered list style
+  "ul-style": {
+    "style": "dash"
+  },
 
-    // MD005: Consistent indentation for list items at the same level.
-    "list-indent": true,
+  // MD005: Consistent indentation for list items at the same level.
+  "list-indent": true,
 
-    // MD006: Consider starting bulleted lists at the beginning of the line.
-    "ul-start-left": false,
+  // MD006: Consider starting bulleted lists at the beginning of the line.
+  "ul-start-left": false,
 
-    // MD007: Unordered list indentation: 2 spaces.
-    "ul-indent": {
-        "indent": 2,
-        "start_indented": true,
-    },
+  // MD007: Unordered list indentation: 2 spaces.
+  "ul-indent": {
+    "indent": 2,
+    "start_indented": true
+  },
 
-    // MD009: Disallow trailing spaces!
-    "no-trailing-spaces": {
-        "br_spaces": 0,
-        // Empty lines inside list items should not be indented.",
-        "list_item_empty_lines": false,
-    },
+  // MD009: Disallow trailing spaces!
+  "no-trailing-spaces": {
+    "br_spaces": 0,
+    // Empty lines inside list items should not be indented.",
+    "list_item_empty_lines": false
+  },
 
-    // MD010: No hard tabs, not even in code blocks.
-    "no-hard-tabs": {
-        "code_blocks": true,
-    },
+  // MD010: No hard tabs, not even in code blocks.
+  "no-hard-tabs": {
+    "code_blocks": true
+  },
 
-    // MD011: Prevent reversed link syntax
-    "no-reversed-links": true,
+  // MD011: Prevent reversed link syntax
+  "no-reversed-links": true,
 
-    // MD012: Disallow multiple consecutive blank lines.
-    "no-multiple-blanks": {
-        "maximum": 1,
-    },
+  // MD012: Disallow multiple consecutive blank lines.
+  "no-multiple-blanks": {
+    "maximum": 1
+  },
 
-    // MD013: Line length
-    "line-length": {
-        "tables": false,
-        "code_blocks": true,
-        "headings": true,
-        "line_length": 80,
-        "heading_line_length": 80,
-        "code_block_line_length": 80,
-    },
+  // MD013: Line length
+  "line-length": {
+    "tables": false,
+    "code_blocks": true,
+    "headings": true,
+    "line_length": 80,
+    "heading_line_length": 80,
+    "code_block_line_length": 80
+  },
 
-    // MD014: Disallow use of dollar signs($) before commands without showing output.
-    "commands-show-output": true,
+  // MD014: Disallow use of dollar signs($) before commands without showing output.
+  "commands-show-output": true,
 
-    // MD018: No space after hash on atx style heading
-    "no-missing-space-atx": true,
+  // MD018: No space after hash on atx style heading
+  "no-missing-space-atx": true,
 
-    // MD019: No multiple spaces after hash on atx style heading
-    "no-multiple-space-atx": true,
+  // MD019: No multiple spaces after hash on atx style heading
+  "no-multiple-space-atx": true,
 
-    // MD020: No space inside hashes on closed atx style heading
-    "no-missing-space-closed-atx": true,
+  // MD020: No space inside hashes on closed atx style heading
+  "no-missing-space-closed-atx": true,
 
-    // MD021: No multiple spaces inside hashes on closed atx style heading
-    "no-multiple-space-closed-atx": true,
+  // MD021: No multiple spaces inside hashes on closed atx style heading
+  "no-multiple-space-closed-atx": true,
 
-    // MD022: Headers should be surrounded by blank lines.
-    // Some headers have preceding HTML anchors. Unfortunate that we have to disable this, as it otherwise catches a real problem that trips up some Markdown renderers
-    "blanks-around-headers": false,
+  // MD022: Headers should be surrounded by blank lines.
+  // Some headers have preceding HTML anchors. Unfortunate that we have to disable this, as it otherwise catches a real problem that trips up some Markdown renderers
+  "blanks-around-headers": false,
 
-    // MD023: Headers must start at the beginning of the line.
-    "header-start-left": true,
+  // MD023: Headers must start at the beginning of the line.
+  "header-start-left": true,
 
-    // MD024: Multiple headers with the same content
-    "no-duplicate-heading": true,
+  // MD024: Multiple headers with the same content
+  "no-duplicate-heading": true,
 
-    // MD025: Disallow multiple top level headers in the same document.
-    // Gotta have a matching closing brace at the end.
-    "single-h1": false,
+  // MD025: Disallow multiple top level headers in the same document.
+  // Gotta have a matching closing brace at the end.
+  "single-h1": false,
 
-    // MD026: Disallow trailing punctuation in header.
-    // You must have a semicolon after the ending closing brace.
-    "no-trailing-punctuation": {
-        "punctuation": ".,:!?",
-    },
+  // MD026: Disallow trailing punctuation in header.
+  // You must have a semicolon after the ending closing brace.
+  "no-trailing-punctuation": {
+    "punctuation": ".,:!?"
+  },
 
-    // MD027: Multiple spaces after blockquote symbol
-    "no-multiple-space-blockquote": true,
+  // MD027: Multiple spaces after blockquote symbol
+  "no-multiple-space-blockquote": true,
 
-    // MD028: Blank line inside blockquote
-    // Some 'Why?' and 'Why not?' blocks are separated by a blank line
-    "no-blanks-blockquote": false,
+  // MD028: Blank line inside blockquote
+  // Some 'Why?' and 'Why not?' blocks are separated by a blank line
+  "no-blanks-blockquote": false,
 
-    // MD029: Ordered list item prefix
-    "ol-prefix": {
-        "style": "one",
-    },
+  // MD029: Ordered list item prefix
+  "ol-prefix": {
+    "style": "one"
+  },
 
-    // MD030: Spaces after list markers
-    "list-marker-space": {
-        "ul_single": 1,
-        "ol_single": 1,
-        "ul_multi": 1,
-        "ol_multi": 1,
-    },
+  // MD030: Spaces after list markers
+  "list-marker-space": {
+    "ul_single": 1,
+    "ol_single": 1,
+    "ul_multi": 1,
+    "ol_multi": 1
+  },
 
-    // MD031: Fenced code blocks should be surrounded by blank lines
-    "no-empty-code-blocks": true,
+  // MD031: Fenced code blocks should be surrounded by blank lines
+  "no-empty-code-blocks": true,
 
-    // MD032: Lists should be surrounded by blank lines
-    "no-empty-lists": true,
+  // MD032: Lists should be surrounded by blank lines
+  "no-empty-lists": true,
 
-    // MD033: Inline HTML
-    "no-inline-html": true,
+  // MD033: Inline HTML
+  "no-inline-html": false,
 
-    // MD034: Bare URL used
-    "no-bare-urls": true,
+  // MD034: Bare URL used
+  "no-bare-urls": true,
 
-    // MD035: Horizontal rule style
-    "hr-style": {
-        "style": "---",
-    },
+  // MD035: Horizontal rule style
+  "hr-style": {
+    "style": "---"
+  },
 
-    // MD036: Do not use emphasis instead of a header.
-    "no-emphasis-as-header": false,
+  // MD036: Do not use emphasis instead of a header.
+  "no-emphasis-as-header": false,
 
-    // MD037: Disallow spaces inside emphasis markers.
-    "no-space-in-emphasis": true,
+  // MD037: Disallow spaces inside emphasis markers.
+  "no-space-in-emphasis": true,
 
-    // MD038: Disallow spaces inside code span elements.
-    "no-space-in-code": true,
+  // MD038: Disallow spaces inside code span elements.
+  "no-space-in-code": true,
 
-    // MD039: Disallow spaces inside link text.
-    "no-space-in-links": false,
+  // MD039: Disallow spaces inside link text.
+  "no-space-in-links": false,
 
-    // MD040: Fenced code blocks should have a language specified.
-    "fenced-code-language": true,
+  // MD040: Fenced code blocks should have a language specified.
+  "fenced-code-language": true,
 
-    // MD041: First line in file should be a top level header.
-    "first-line-h1": false,
+  // MD041: First line in file should be a top level header.
+  "first-line-h1": false,
 
-    // MD042: No empty links
-    "no-empty-links": true,
+  // MD042: No empty links
+  "no-empty-links": true,
 
-    // MD043: Required header structure.
-    "required-headers": false,
+  // MD043: Required header structure.
+  "required-headers": false,
 
-    // MD044: Proper names should have the correct capitalization.
-    "proper-names": false,
+  // MD044: Proper names should have the correct capitalization.
+  "proper-names": false,
 
-    // MD045 - Images should have alternate text (alt text)
-    "no-alt-text": false,
+  // MD045 - Images should have alternate text (alt text)
+  "no-alt-text": false,
 
-    // MD046 - Code block style
-    "code-block-style": {
-        "style": "fenced",
-    },
+  // MD046 - Code block style
+  "code-block-style": {
+    "style": "fenced"
+  },
 
-    // MD047 - Files should end with a single newline character
-    "single-trailing-newline": true,
+  // MD047 - Files should end with a single newline character
+  "single-trailing-newline": true,
 
-    // MD048 - Code fence style
-    "code-fence-style": {
-        "style": "backtick",
-    },
+  // MD048 - Code fence style
+  "code-fence-style": {
+    "style": "backtick"
+  },
 
-    // MD049 - Emphasis style
-    "emphasis-style": {
-        "style": "consistent",
-    },
+  // MD049 - Emphasis style
+  "emphasis-style": {
+    "style": "consistent"
+  },
 
-    // MD050 - Strong style
-    "strong-style": {
-        "style": "asterisk",
-    },
+  // MD050 - Strong style
+  "strong-style": {
+    "style": "asterisk"
+  },
 
-    // MD051 - Link fragments should be valid
-    "link-fragments": true,
+  // MD051 - Link fragments should be valid
+  "link-fragments": true,
 
-    // MD052 - Reference links and images should use a label that is defined
-    "reference-links-images": {
-        "shortcut_syntax": false,
-    },
+  // MD052 - Reference links and images should use a label that is defined
+  "reference-links-images": {
+    "shortcut_syntax": false
+  },
 
-    // MD053 - Link and image reference definitions should be needed
-    "link-image-reference-definitions": {
-        "ignored_definitions": ["//"],
-    },
+  // MD053 - Link and image reference definitions should be needed
+  "link-image-reference-definitions": {
+    "ignored_definitions": ["//"]
+  },
 
-    // MD054 - Link and image style
-    "link-image-style": {
-        "autolink": true,
-        "collapsed": true,
-        "full": true,
-        "inline": true,
-        "shortcut": true,
-        "url_inline": true,
-    },
+  // MD054 - Link and image style
+  "link-image-style": {
+    "autolink": true,
+    "collapsed": true,
+    "full": true,
+    "inline": true,
+    "shortcut": true,
+    "url_inline": true
+  },
 
-    // MD055 - Table pipe style
-    "table-pipe-style": {
-        "style": "consistent",
-    },
+  // MD055 - Table pipe style
+  "table-pipe-style": {
+    "style": "consistent"
+  },
 
-    // MD056 - Table column count
-    "table-column-count": true,
+  // MD056 - Table column count
+  "table-column-count": true,
 
-    // MD058 - Tables should be surrounded by blank lines
-    "blanks-around-tables": true,
+  // MD058 - Tables should be surrounded by blank lines
+  "blanks-around-tables": true,
 
-    // MD059 - Spaces inside link text
-    "spaces-around-links": {
-        "both": true,
-    },
+  // MD059 - Spaces inside link text
+  "spaces-around-links": {
+    "both": true
+  }
 }
