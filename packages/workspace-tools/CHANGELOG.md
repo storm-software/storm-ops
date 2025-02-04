@@ -1,3 +1,9 @@
+## 1.249.7 (2025-02-04)
+
+### Bug Fixes
+
+- **markdownlint:** Adjust config to handle all paths in `build` target ([87cb6b901](https://github.com/storm-software/storm-ops/commit/87cb6b901))
+
 ## 1.249.6 (2025-02-04)
 
 ### Miscellaneous
