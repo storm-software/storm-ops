@@ -5,8 +5,11 @@
   "projectType": "library",
   "targets": {
     "build-base": {
+      "cache": true,
       "executor": "nx:run-commands",
-      "dependsOn": ["clean", "^build"],
+      "dependsOn": ["^build"],
+      "inputs": ["typescript", "production"],
+      "outputs": ["{workspaceRoot}/dist/packages/linting-tools/**"],
       "options": {
         "command": "tsup --config=tsup.config.ts",
         "cwd": "{projectRoot}"

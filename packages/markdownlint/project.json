@@ -4,24 +4,12 @@
   "projectType": "library",
   "sourceRoot": "packages/markdownlint/src",
   "targets": {
-    "clean": {
-      "cache": true,
-      "inputs": ["typescript", "^production"],
-      "outputs": ["{workspaceRoot}/dist/packages/markdownlint/**"],
-      "executor": "nx:run-commands",
-      "dependsOn": ["clean", "^build"],
-      "options": {
-        "commands": [
-          "pnpm exec rimraf dist/packages/markdownlint",
-          "pnpm exec rimraf packages/markdownlint/dist"
-        ],
-        "parallel": true,
-        "color": true
-      }
-    },
     "build-base": {
+      "cache": true,
+      "inputs": ["typescript", "production"],
+      "outputs": ["{workspaceRoot}/dist/packages/markdownlint/**"],
+      "dependsOn": ["^build"],
       "executor": "nx:run-commands",
-      "dependsOn": ["clean", "^build"],
       "options": {
         "command": "tsup-node --config=tsup.config.ts",
         "cwd": "{projectRoot}"
@@ -38,10 +26,11 @@
       "dependsOn": ["build-base"],
       "options": {
         "commands": [
-          "pnpm copyfiles --up=3 packages/markdownlint/dist/* dist/packages/markdownlint/dist",
-          "pnpm copyfiles --up=3 packages/markdownlint/dist/rules/* dist/packages/markdownlint/dist/rules",
-          "pnpm copyfiles --up=4 --all packages/markdownlint/src/config/*.{json,jsonc} dist/packages/markdownlint/config",
-          "pnpm copyfiles --up=2 packages/markdownlint/*.md packages/markdownlint/package.json dist/packages/markdownlint",
+          "pnpm copyfiles --up=3 --all \"./packages/markdownlint/dist/*\" dist/packages/markdownlint/dist",
+          "pnpm copyfiles --up=3 --all \"./packages/markdownlint/dist/rules/*\" dist/packages/markdownlint/dist/rules",
+          "pnpm copyfiles --up=4 --all \"./packages/markdownlint/src/config/*\" dist/packages/markdownlint/config",
+          "pnpm copyfiles --up=2 --all \"./packages/markdownlint/*.md\" dist/packages/markdownlint",
+          "pnpm copyfiles --up=2 --all \"./packages/markdownlint/package.json\" dist/packages/markdownlint",
           "pnpm copyfiles LICENSE dist/packages/markdownlint"
         ]
       }
