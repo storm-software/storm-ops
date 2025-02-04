@@ -90,13 +90,17 @@
         "default": "./dist/rules/*.js"
       }
     },
-    "./.markdownlint.jsonc": "./config/.markdownlint.jsonc",
-    "./.markdownlint-cli2.jsonc": "./config/.markdownlint.jsonc",
-    "./markdown-link-check.json": "./config/markdown-link-check.json",
+    "./.markdownlint.jsonc": "./config/lint-rules.jsonc",
+    "./lint-rules.jsonc": "./config/lint-rules.jsonc",
+    "./.markdownlint-cli2.json": "./config/config.json",
+    "./config.json": "./config/config.json",
+    "./markdown-link-check.json": "./config/link-check.json",
+    "./link-check.json": "./config/link-check.json",
     "./config/*": "./config/*"
   },
   "types": "./dist/index.d.ts",
   "files": [
+    "config/**/*",
     "dist/**/*"
   ],
   "keywords": [

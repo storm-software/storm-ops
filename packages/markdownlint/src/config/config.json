@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/v0.17.2/schema/markdownlint-cli2-config-schema.json",
   "config": {
-    "extends": "./.markdownlint.json"
+    "extends": "./lint-rules.json"
   },
   "customRules": ["@storm-software/markdownlint/rules"],
   "fix": true,

@@ -139,11 +139,16 @@
       "sharedGlobals",
       "{workspaceRoot}/.eslintignore",
       "{workspaceRoot}/eslintrc.json",
+      "{workspaceRoot}/.eslintrc",
       "{workspaceRoot}/.eslintrc.json",
+      "{workspaceRoot}/.eslintrc.js",
       "{workspaceRoot}/.eslintrc.cjs",
-      "{workspaceRoot}/eslint.config.js",
-      "{workspaceRoot}/eslint.config.cjs",
-      "{workspaceRoot}/eslint.config.mjs",
+      "{workspaceRoot}/.eslintrc.mjs",
+      "{workspaceRoot}/eslint.*.json",
+      "{workspaceRoot}/eslint.*.js",
+      "{workspaceRoot}/eslint.*.cjs",
+      "{workspaceRoot}/eslint.*.mjs",
+      "{workspaceRoot}/eslint.*.ts",
       "{workspaceRoot}/biome.toml",
       "{workspaceRoot}/biome.json",
       "{workspaceRoot}/lefthook.yaml",
@@ -158,12 +163,17 @@
       "{projectRoot}/.env",
       "{projectRoot}/.env.local",
       "{projectRoot}/.eslintignore",
+      "{projectRoot}/eslintrc.json",
       "{projectRoot}/.eslintrc",
       "{projectRoot}/.eslintrc.json",
+      "{projectRoot}/.eslintrc.js",
       "{projectRoot}/.eslintrc.cjs",
-      "{projectRoot}/eslint.config.js",
-      "{projectRoot}/eslint.config.cjs",
-      "{projectRoot}/eslint.config.mjs",
+      "{projectRoot}/.eslintrc.mjs",
+      "{projectRoot}/eslint.*.json",
+      "{projectRoot}/eslint.*.js",
+      "{projectRoot}/eslint.*.cjs",
+      "{projectRoot}/eslint.*.mjs",
+      "{projectRoot}/eslint.*.ts",
       "{projectRoot}/biome.toml",
       "{projectRoot}/biome.json",
       "{projectRoot}/lefthook.yaml",
@@ -304,17 +314,26 @@
   },
   "targetDefaults": {
     "lint-markdown": {
-      "outputs": ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
-      "inputs": ["linting", "{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
+      "inputs": [
+        "linting",
+        "{projectRoot}/**/*.md",
+        "{projectRoot}/**/*.mdx",
+        "{projectRoot}/**/*.markdown"
+      ],
+      "outputs": [
+        "{projectRoot}/**/*.md",
+        "{projectRoot}/**/*.mdx",
+        "{projectRoot}/**/*.markdown"
+      ],
       "dependsOn": ["^lint-markdown"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec markdownlint-cli2 \"{projectRoot}/**/*.{md,mdx,markdown}\" --config=\"./node_modules/@storm-software/markdownlint/config/.markdownlint-cli2.jsonc\""
+        "command": "pnpm exec markdownlint-cli2 \"{projectRoot}/**/*.{md,mdx,markdown}\" --config=\"./node_modules/@storm-software/markdownlint/config/config.json\" --fix"
       }
     },
     "lint": {
-      "outputs": ["{projectRoot}"],
       "inputs": ["linting", "default", "^production"],
+      "outputs": ["{projectRoot}"],
       "dependsOn": ["lint-markdown", "lint-docs", "^lint"],
       "executor": "nx:run-commands",
       "options": {
