@@ -1,3 +1,9 @@
+## 0.13.4 (2025-02-04)
+
+### Bug Fixes
+
+- **markdownlint:** Update `no-inlint-html` rule to `false` ([82189f5ab](https://github.com/storm-software/storm-ops/commit/82189f5ab))
+
 ## 0.13.3 (2025-02-04)
 
 ### Bug Fixes
