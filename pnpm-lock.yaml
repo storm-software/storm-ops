@@ -231,6 +231,9 @@ importers:
       copyfiles:
         specifier: 'catalog:'
         version: 2.4.1
+      defu:
+        specifier: ^6.1.4
+        version: 6.1.4
       eslint:
         specifier: 'catalog:'
         version: 9.19.0(jiti@2.4.2)

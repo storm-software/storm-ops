@@ -106,6 +106,7 @@
     "@typescript-eslint/eslint-plugin": "7.16.0",
     "@typescript-eslint/parser": "7.16.0",
     "copyfiles": "catalog:",
+    "defu": "^6.1.4",
     "eslint": "catalog:",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-eslint-plugin": "6.1.0",
