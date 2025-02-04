@@ -1,3 +1,13 @@
+## 0.7.9 (2025-02-04)
+
+### Bug Fixes
+
+- **monorepo:** Resolved issue with invalid `prettier` config used in hooks ([34974919d](https://github.com/storm-software/storm-ops/commit/34974919d))
+
+### Miscellaneous
+
+- **monorepo:** Reformat the repo's files ([f33b07626](https://github.com/storm-software/storm-ops/commit/f33b07626))
+
 ## 0.7.8 (2025-01-13)
 
 ### Continuous Integration
