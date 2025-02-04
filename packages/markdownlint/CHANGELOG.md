@@ -1,3 +1,9 @@
+## 0.13.10 (2025-02-04)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issues with invalid target configurations ([664e05fcb](https://github.com/storm-software/storm-ops/commit/664e05fcb))
+
 ## 0.13.9 (2025-02-04)
 
 ### Bug Fixes
