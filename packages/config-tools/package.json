@@ -253,7 +253,6 @@
   },
   "dependencies": {
     "c12": "catalog:",
-    "chalk": "catalog:",
     "commander": "catalog:",
     "defu": "catalog:",
     "giget": "^1.2.3",
@@ -263,6 +262,7 @@
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "chalk": "catalog:",
     "tsup": "catalog:"
   },
   "publishConfig": {

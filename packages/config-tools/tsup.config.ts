@@ -14,7 +14,7 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    shims: true,
+    shims: true
   },
   {
     name: "config-tools-bin",
@@ -29,6 +29,6 @@ export default defineConfig([
     dts: false,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    shims: true,
-  },
+    shims: true
+  }
 ]);
