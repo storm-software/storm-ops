@@ -8,13 +8,13 @@ export default defineConfig([
     format: ["cjs", "esm"],
     outDir: "dist/src",
     platform: "node",
-    bundle: false,
     splitting: true,
     clean: false,
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    shims: true
+    shims: true,
+    noExternal: ["chalk"]
   },
   {
     name: "config-tools-bin",
@@ -29,6 +29,7 @@ export default defineConfig([
     dts: false,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    shims: true
+    shims: true,
+    noExternal: ["chalk"]
   }
 ]);

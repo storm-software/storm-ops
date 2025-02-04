@@ -229,11 +229,11 @@ importers:
         specifier: 7.16.0
         version: 7.16.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.7.3)
       c12:
-        specifier: ^2.0.1
+        specifier: 'catalog:'
         version: 2.0.1
       chalk:
-        specifier: ^5.4.1
-        version: 5.4.1
+        specifier: 'catalog:'
+        version: 4.1.2
       copyfiles:
         specifier: 'catalog:'
         version: 2.4.1
@@ -405,9 +405,6 @@ importers:
       '@storm-software/config':
         specifier: workspace:*
         version: link:../config
-      c12:
-        specifier: 'catalog:'
-        version: 2.0.1
       commander:
         specifier: 'catalog:'
         version: 12.1.0
@@ -430,6 +427,9 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.13.0
+      c12:
+        specifier: 'catalog:'
+        version: 2.0.1
       chalk:
         specifier: 'catalog:'
         version: 4.1.2
