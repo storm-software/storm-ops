@@ -1,3 +1,15 @@
+## 0.23.23 (2025-02-04)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with inconsistent `chalk` versions ([e20742ea0](https://github.com/storm-software/storm-ops/commit/e20742ea0))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.150.9
+- Updated build-tools to 0.138.22
+- Updated config to 1.101.15
+
 ## 0.23.22 (2025-02-04)
 
 ### Bug Fixes

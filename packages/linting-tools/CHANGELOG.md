@@ -1,3 +1,9 @@
+## 1.113.1 (2025-02-04)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with inconsistent `chalk` versions ([e20742ea0](https://github.com/storm-software/storm-ops/commit/e20742ea0))
+
 ## 1.113.0 (2025-02-04)
 
 ### Features
