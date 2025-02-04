@@ -1,3 +1,9 @@
+## 0.13.8 (2025-02-04)
+
+### Bug Fixes
+
+- **markdownlint:** Resolved issue with missing configuration in dist ([e9b86a0a4](https://github.com/storm-software/storm-ops/commit/e9b86a0a4))
+
 ## 0.13.7 (2025-02-04)
 
 ### Miscellaneous

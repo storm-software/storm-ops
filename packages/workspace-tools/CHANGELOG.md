@@ -1,3 +1,10 @@
+## 1.249.1 (2025-02-04)
+
+### Bug Fixes
+
+- **workspace-tools:** Improved the `namedInputs` list in default `nx.json` file ([1efbd99c4](https://github.com/storm-software/storm-ops/commit/1efbd99c4))
+- **markdownlint:** Resolved issue with missing configuration in dist ([e9b86a0a4](https://github.com/storm-software/storm-ops/commit/e9b86a0a4))
+
 ## 1.249.0 (2025-02-04)
 
 ### Features
