@@ -328,7 +328,7 @@
       "dependsOn": ["^lint-markdown"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec markdownlint-cli2 \"{projectRoot}/**/*.{md,mdx,markdown}\" --config=\"./node_modules/@storm-software/markdownlint/config/config.json\" --fix"
+        "command": "pnpm exec markdownlint-cli2 \"{projectRoot}/**/*.{md,mdx,markdown}\" \"#**/node_modules/**/*\" --config \"node_modules/@storm-software/markdownlint/config/config.json\" --fix"
       }
     },
     "lint": {
