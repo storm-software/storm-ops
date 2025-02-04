@@ -1,3 +1,13 @@
+## 1.249.0 (2025-02-04)
+
+### Features
+
+- **workspace-tools:** Check projectRoot when applying ESLint config to `lint` executor ([6c00fe6f9](https://github.com/storm-software/storm-ops/commit/6c00fe6f9))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([12a2f638f](https://github.com/storm-software/storm-ops/commit/12a2f638f))
+
 ## 1.248.5 (2025-02-04)
 
 ### Miscellaneous
