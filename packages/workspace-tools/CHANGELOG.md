@@ -1,3 +1,9 @@
+## 1.248.3 (2025-02-04)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with missing `read-yaml-file` dependency ([0a61d2f39](https://github.com/storm-software/storm-ops/commit/0a61d2f39))
+
 ## 1.248.2 (2025-02-04)
 
 ### Bug Fixes
