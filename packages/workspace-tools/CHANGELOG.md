@@ -1,3 +1,9 @@
+## 1.249.4 (2025-02-04)
+
+### Miscellaneous
+
+- **monorepo:** Generate README markdown files ([12aa873f6](https://github.com/storm-software/storm-ops/commit/12aa873f6))
+
 ## 1.249.3 (2025-02-04)
 
 ### Bug Fixes
