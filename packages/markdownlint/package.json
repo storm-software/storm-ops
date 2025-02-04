@@ -90,10 +90,10 @@
         "default": "./dist/rules/*.js"
       }
     },
-    "./.markdownlint.jsonc": "./config/lint-rules.jsonc",
-    "./lint-rules.jsonc": "./config/lint-rules.jsonc",
-    "./.markdownlint-cli2.json": "./config/config.json",
-    "./config.json": "./config/config.json",
+    "./.markdownlint.jsonc": "./config/base.markdownlint.jsonc",
+    "./base.markdownlint.jsonc": "./config/base.markdownlint.jsonc",
+    "./.markdownlint-cli2.json": "./config/base.markdownlint-cli2.json",
+    "./base.markdownlint-cli2.json": "./config/base.markdownlint-cli2.json",
     "./markdown-link-check.json": "./config/link-check.json",
     "./link-check.json": "./config/link-check.json",
     "./config/*": "./config/*"
