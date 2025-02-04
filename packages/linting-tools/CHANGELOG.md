@@ -1,3 +1,22 @@
+## 1.113.0 (2025-02-04)
+
+### Features
+
+- **workspace-tools:** Added various new linting tasks and Nx plugin configuration ([9b6a4a1ca](https://github.com/storm-software/storm-ops/commit/9b6a4a1ca))
+- **linting-tools:** Update package to no longer include bundled dependencies ([1c581c99f](https://github.com/storm-software/storm-ops/commit/1c581c99f))
+
+### Bug Fixes
+
+- **linting-tools:** Ensure `alex` configuration files are included in dist ([5b8ef295d](https://github.com/storm-software/storm-ops/commit/5b8ef295d))
+- **monorepo:** Resolved issue with invalid `prettier` config used in hooks ([34974919d](https://github.com/storm-software/storm-ops/commit/34974919d))
+- **linting-tools:** Resolve `tsup` build error ([50d0917db](https://github.com/storm-software/storm-ops/commit/50d0917db))
+- **linting-tools:** Bundle `manypkg` packages in dist ([6f0efb11a](https://github.com/storm-software/storm-ops/commit/6f0efb11a))
+
+### Miscellaneous
+
+- **monorepo:** Reformat the repo's files ([f33b07626](https://github.com/storm-software/storm-ops/commit/f33b07626))
+- **monorepo:** Regenerate README markdown files ([d147539be](https://github.com/storm-software/storm-ops/commit/d147539be))
+
 ## 1.112.3 (2025-02-03)
 
 ### Bug Fixes

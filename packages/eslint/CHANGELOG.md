@@ -1,3 +1,19 @@
+## 0.118.0 (2025-02-04)
+
+### Features
+
+- **eslint:** Added `storybook` plugin to preset ([4b700bc8f](https://github.com/storm-software/storm-ops/commit/4b700bc8f))
+
+### Bug Fixes
+
+- **monorepo:** Resolved issue with invalid `prettier` config used in hooks ([34974919d](https://github.com/storm-software/storm-ops/commit/34974919d))
+- **eslint:** Resolved issue with missing chalk dependency error ([6bc231491](https://github.com/storm-software/storm-ops/commit/6bc231491))
+
+### Miscellaneous
+
+- **monorepo:** Reformat the repo's files ([f33b07626](https://github.com/storm-software/storm-ops/commit/f33b07626))
+- **monorepo:** Regenerate README markdown files ([d147539be](https://github.com/storm-software/storm-ops/commit/d147539be))
+
 ## 0.117.16 (2025-02-03)
 
 ### Miscellaneous

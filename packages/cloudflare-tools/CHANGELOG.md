@@ -1,3 +1,14 @@
+## 0.55.27 (2025-02-04)
+
+### Bug Fixes
+
+- **monorepo:** Resolved issue with invalid `prettier` config used in hooks ([34974919d](https://github.com/storm-software/storm-ops/commit/34974919d))
+
+### Miscellaneous
+
+- **monorepo:** Reformat the repo's files ([f33b07626](https://github.com/storm-software/storm-ops/commit/f33b07626))
+- **monorepo:** Regenerate README markdown files ([d147539be](https://github.com/storm-software/storm-ops/commit/d147539be))
+
 ## 0.55.26 (2025-02-03)
 
 ### Miscellaneous
