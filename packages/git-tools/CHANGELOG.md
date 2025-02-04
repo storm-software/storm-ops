@@ -1,3 +1,10 @@
+## 2.89.28 (2025-02-04)
+
+### Bug Fixes
+
+- **git-tools:** Removed an additional remaining duplicate error log ([5c1adaaee](https://github.com/storm-software/storm-ops/commit/5c1adaaee))
+- **git-tools:** Resolved issue with duplicate error display ([77ac2939d](https://github.com/storm-software/storm-ops/commit/77ac2939d))
+
 ## 2.89.27 (2025-02-04)
 
 ### Bug Fixes
