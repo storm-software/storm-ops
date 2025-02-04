@@ -4,62 +4,6 @@
   "projectType": "library",
   "sourceRoot": "packages/markdownlint/src",
   "targets": {
-    // "build": {
-    //   "cache": true,
-    //   "executor": "@nx/esbuild:esbuild",
-    //   "outputs": ["{options.outputPath}"],
-    //   "options": {
-    //     "outputPath": "dist/packages/markdownlint",
-    //     "tsConfig": "packages/markdownlint/tsconfig.json",
-    //     "project": "packages/markdownlint/package.json",
-    //     "main": "packages/markdownlint/src/index.ts",
-    //     "defaultConfiguration": "production",
-    //     "deleteOutputPath": true,
-    //     "sourcemap": false,
-    //     "minify": false,
-    //     "skipTypeCheck": true,
-    //     "platform": "node",
-    //     "format": ["cjs"],
-    //     "esbuildOptions": {
-    //       "outExtension": {
-    //         ".js": ".js"
-    //       }
-    //     },
-    //     "assets": [
-    //       {
-    //         "input": "packages/markdownlint",
-    //         "glob": "README.md",
-    //         "output": "."
-    //       },
-    //       {
-    //         "input": "packages/markdownlint",
-    //         "glob": "CHANGELOG.md",
-    //         "output": "."
-    //       },
-    //       {
-    //         "input": "",
-    //         "glob": "LICENSE",
-    //         "output": "."
-    //       },
-    //       {
-    //         "input": "packages/markdownlint/src",
-    //         "glob": ".markdownlint.json",
-    //         "output": "."
-    //       }
-    //     ]
-    //   },
-    //   "configurations": {
-    //     "production": {
-    //       "debug": false,
-    //       "verbose": false
-    //     },
-    //     "development": {
-    //       "debug": true,
-    //       "verbose": true
-    //     }
-    //   }
-    // },
-
     "clean": {
       "cache": true,
       "inputs": ["typescript", "^production"],
@@ -85,7 +29,10 @@
     },
     "build": {
       "cache": true,
-      "inputs": ["{workspaceRoot}/packages/markdownlint/dist/**"],
+      "inputs": [
+        "{workspaceRoot}/packages/markdownlint/dist/**",
+        "{workspaceRoot}/packages/markdownlint/config/**"
+      ],
       "outputs": ["{workspaceRoot}/dist/packages/markdownlint/**"],
       "executor": "nx:run-commands",
       "dependsOn": ["build-base"],
@@ -93,7 +40,9 @@
         "commands": [
           "pnpm copyfiles --up=3 packages/markdownlint/dist/* dist/packages/markdownlint/dist",
           "pnpm copyfiles --up=3 packages/markdownlint/dist/rules/* dist/packages/markdownlint/dist/rules",
-          "pnpm copyfiles --up=4 \"packages/markdownlint/src/config/markdown-link-check.json\" \"packages/markdownlint/src/config/.markdownlint.jsonc\" \"packages/markdownlint/src/config/.markdownlint-cli2.jsonc\" dist/packages/markdownlint/config",
+          "pnpm copyfiles --up=4 \"packages/markdownlint/src/config/markdown-link-check.json\" dist/packages/markdownlint/config",
+          "pnpm copyfiles --up=4 \"packages/markdownlint/src/config/.markdownlint.jsonc\" dist/packages/markdownlint/config",
+          "pnpm copyfiles --up=4 \"packages/markdownlint/src/config/.markdownlint-cli2.jsonc\" dist/packages/markdownlint/config",
           "pnpm copyfiles --up=2 packages/markdownlint/*.md packages/markdownlint/package.json dist/packages/markdownlint",
           "pnpm copyfiles LICENSE dist/packages/markdownlint"
         ]
