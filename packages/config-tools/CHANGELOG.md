@@ -1,3 +1,9 @@
+## 1.150.8 (2025-02-04)
+
+### Bug Fixes
+
+- **config-tools:** Resolve issue including dependencies in dist ([6e41c289f](https://github.com/storm-software/storm-ops/commit/6e41c289f))
+
 ## 1.150.7 (2025-02-04)
 
 ### Bug Fixes

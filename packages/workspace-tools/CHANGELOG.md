@@ -1,3 +1,9 @@
+## 1.248.1 (2025-02-04)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with target configuration ([d68a5225a](https://github.com/storm-software/storm-ops/commit/d68a5225a))
+
 ## 1.248.0 (2025-02-04)
 
 ### Features
