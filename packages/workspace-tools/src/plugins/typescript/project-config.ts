@@ -74,7 +74,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
         executor: "nx:run-commands",
         options: {
           command:
-            'pnpm exec knip --directory --fix --cache --cache-location="{workspaceRoot}/node_modules/.cache/knip/{projectRoot}"'
+            'pnpm exec knip --directory --fix --cache --cache-location="node_modules/.cache/knip/{projectRoot}"'
         }
       };
     }
