@@ -1,3 +1,14 @@
+## 0.14.1 (2025-02-05)
+
+### Bug Fixes
+
+- **markdownlint:** Resolved issue with invalid configuration file names ([40a3824d9](https://github.com/storm-software/storm-ops/commit/40a3824d9))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([50ba72ad6](https://github.com/storm-software/storm-ops/commit/50ba72ad6))
+- **monorepo:** Regenerated README markdown files ([2488fa0a7](https://github.com/storm-software/storm-ops/commit/2488fa0a7))
+
 ## 0.14.0 (2025-02-04)
 
 ### Features
