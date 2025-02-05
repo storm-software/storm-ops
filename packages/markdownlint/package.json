@@ -92,8 +92,8 @@
     },
     "./.markdownlint.jsonc": "./config/base.markdownlint.jsonc",
     "./base.markdownlint.jsonc": "./config/base.markdownlint.jsonc",
-    "./.markdownlint-cli2.json": "./config/base.markdownlint-cli2.json",
-    "./base.markdownlint-cli2.json": "./config/base.markdownlint-cli2.json",
+    "./.markdownlint-cli2.jsonc": "./config/base.markdownlint-cli2.jsonc",
+    "./base.markdownlint-cli2.jsonc": "./config/base.markdownlint-cli2.jsonc",
     "./markdown-link-check.json": "./config/link-check.json",
     "./link-check.json": "./config/link-check.json",
     "./config/*": "./config/*"
