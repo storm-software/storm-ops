@@ -29,4 +29,11 @@ export const DEFAULT_IGNORES = [
   "**/cargo.lock",
   "**/next-env.d.ts",
   "**/CODEOWNERS",
+  "**/yarn.lock",
+  "**/jest.config.js",
+  "**/jest.setup.js",
+  "**/jest.config.ts",
+  "**/jest.setup.ts",
+  "**/jest.config.json",
+  "**/jest.setup.json"
 ];
