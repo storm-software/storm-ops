@@ -1,3 +1,9 @@
+## 0.14.4 (2025-02-05)
+
+### Bug Fixes
+
+- **markdownlint:** Resolved issues with the file globs in configurations ([0384a5bbe](https://github.com/storm-software/storm-ops/commit/0384a5bbe))
+
 ## 0.14.3 (2025-02-05)
 
 ### Bug Fixes
