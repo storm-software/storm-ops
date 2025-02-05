@@ -1,3 +1,9 @@
+## 1.251.1 (2025-02-05)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with `lint-knip` options ([39244fe78](https://github.com/storm-software/storm-ops/commit/39244fe78))
+
 ## 1.251.0 (2025-02-05)
 
 ### Features
