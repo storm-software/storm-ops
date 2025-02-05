@@ -1,3 +1,13 @@
+## 0.14.3 (2025-02-05)
+
+### Bug Fixes
+
+- **markdownlint:** Resolve issue with invalid rules directory ([535783bee](https://github.com/storm-software/storm-ops/commit/535783bee))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([79e7315d9](https://github.com/storm-software/storm-ops/commit/79e7315d9))
+
 ## 0.14.2 (2025-02-05)
 
 ### Miscellaneous
