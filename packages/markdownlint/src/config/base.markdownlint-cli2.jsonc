@@ -3,7 +3,7 @@
   "config": {
     "extends": "base.markdownlint.jsonc"
   },
-  "customRules": ["@storm-software/markdownlint/rules"],
+  //   "customRules": ["@storm-software/markdownlint/rules"],
   "fix": true,
   "globs": ["**/*.md", "**/*.markdown", "**/*.mdx"],
   "ignores": [
