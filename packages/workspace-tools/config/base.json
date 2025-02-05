@@ -323,9 +323,7 @@
       }
     },
     "lint": {
-      "inputs": ["linting", "default", "^production"],
-      "outputs": ["{projectRoot}"],
-      "dependsOn": ["lint-markdown", "lint-docs", "^lint"],
+      "dependsOn": ["lint-markdown", "^lint"],
       "executor": "nx:run-commands",
       "options": {
         "command": "echo Linted the project files in \"{projectRoot}\" "
@@ -337,7 +335,7 @@
       "dependsOn": ["^format-toml"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec taplo format --colors=\"always\" --config=\"./node_modules/@storm-software/linting-tools/taplo/config.toml\" --cache-path=\"./tmp/taplo/{projectRoot}\""
+        "command": "pnpm exec taplo format --config=\"node_modules/@storm-software/linting-tools/taplo/config.toml\" --cache-path=\"{workspaceRoot}/node_modules/.cache/taplo/{projectRoot}\" --colors=\"always\" \"{projectRoot}/*.toml\" \"{projectRoot}/**/*.toml\" "
       }
     },
     "format-readme": {
@@ -352,7 +350,7 @@
       "dependsOn": ["^format-readme"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec storm-git readme-gen --templates=\"./tools/readme-templates\" --project=\"{projectName}\""
+        "command": "pnpm exec storm-git readme-gen --templates=\"{workspaceRoot}/tools/readme-templates\" --project=\"{projectName}\""
       }
     },
     "format-prettier": {
@@ -360,18 +358,19 @@
       "dependsOn": ["^format-prettier"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec prettier \"{projectRoot}/**/*\" --write --ignore-unknown --no-error-on-unmatched-pattern --config=\"./node_modules/@storm-software/prettier/config.json\" --ignore-path=\"./node_modules/@storm-software/prettier/.prettierignore\" --cache --cache-location=\"./tmp/prettier/{projectRoot}\" "
+        "command": "pnpm exec prettier \"{projectRoot}/**/*\" --write --ignore-unknown --no-error-on-unmatched-pattern --config=\"node_modules/@storm-software/prettier/config.json\" --ignore-path=\"node_modules/@storm-software/prettier/.prettierignore\" --cache --cache-location=\"{workspaceRoot}/node_modules/.cache/prettier/{projectRoot}\" "
       }
     },
     "format": {
-      "inputs": ["linting", "default", "^production"],
-      "outputs": ["{projectRoot}"],
       "dependsOn": [
         "format-toml",
         "format-readme",
         "format-prettier",
         "^format"
-      ]
+      ],
+      "options": {
+        "command": "echo Formatted the project files in \"{projectRoot}\" "
+      }
     },
     "clean": {
       "inputs": ["default", "^production"],

@@ -9,5 +9,5 @@ export const configs = {
   minimal: cspellMinimal,
   recommended: cspellRecommended,
   ext: cspellExt,
-  all: cspellAll,
+  all: cspellAll
 };

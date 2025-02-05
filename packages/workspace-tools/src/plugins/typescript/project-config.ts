@@ -65,6 +65,20 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
     //   };
     // }
 
+    if (!targets["lint-knip"]) {
+      targets["lint-knip"] = {
+        cache: true,
+        outputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
+        inputs: ["linting", "{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
+        dependsOn: ["^lint-knip"],
+        executor: "nx:run-commands",
+        options: {
+          command:
+            'pnpm exec knip --directory --fix --cache --cache-location="{workspaceRoot}/node_modules/.cache/knip/{projectRoot}"'
+        }
+      };
+    }
+
     if (!targets["lint-markdown"]) {
       targets["lint-markdown"] = {
         cache: true,
@@ -89,48 +103,26 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
         targets.lint = {
           cache: true,
           inputs: ["linting", "typescript", "^production"],
-          dependsOn: ["lint-markdown", "^lint"],
+          outputs: [
+            "{projectRoot}/**/*.{ts,tsx,js,jsx,json,md,mdx,yaml,yml,html,css,scss,sass,less,graphql,gql,\}"
+          ],
+          dependsOn: ["lint-markdown", "lint-knip", "^lint"],
           executor: "@nx/eslint:lint",
           options: {
             format: "stylish",
             fix: true,
             errorOnUnmatchedPattern: false,
             cache: true,
-            cacheLocation: "{workspaceRoot}/node_modules/.cache/eslint",
+            cacheLocation:
+              "{workspaceRoot}/node_modules/.cache/eslint/{projectRoot}",
             eslintConfig
           }
         };
       }
     }
 
-    if (!targets["format-readme"]) {
-      targets["format-readme"] = {
-        cache: true,
-        inputs: ["linting", "documentation", "typescript", "^production"],
-        dependsOn: ["^format-readme"]
-      };
-    }
-
-    if (!targets["format-toml"]) {
-      targets["format-toml"] = {
-        cache: true,
-        inputs: ["linting", "typescript", "^production"],
-        dependsOn: ["^format-toml"]
-      };
-    }
-
-    if (!targets["format-prettier"]) {
-      targets["format-prettier"] = {
-        cache: true,
-        inputs: ["linting", "typescript", "^production"],
-        dependsOn: ["^format-prettier"]
-      };
-    }
-
     if (!targets.format) {
       targets.format = {
-        cache: true,
-        inputs: ["linting", "typescript", "^production"],
         dependsOn: [
           "format-readme",
           "format-toml",
@@ -139,8 +131,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
         ],
         executor: "nx:run-commands",
         options: {
-          command: "echo 'Formatting the project files in \"{projectRoot}\"' ",
-          color: true
+          command: "echo 'Formatting the project files in \"{projectRoot}\"' "
         }
       };
     }
@@ -164,33 +155,31 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
         cache: false,
         executor: "nx:run-commands",
         dependsOn: ["clean", "^build"],
-        inputs: ["typescript", "^production"],
+        inputs: ["typescript", "default", "^production"],
         outputs: ["{workspaceRoot}/dist/{projectRoot}"],
         options: {
-          command: `pnpm exec nx run ${project.name}:build`,
-          color: true,
-          cwd: "{workspaceRoot}"
+          command: `pnpm exec nx run ${project.name}:build`
         }
       };
     }
 
-    if (!targets.test) {
+    if (!targets.test && checkJestConfigAtPath(project.root)) {
       targets.test = {
         cache: true,
         executor: "@nx/jest:jest",
         inputs: ["testing", "typescript", "^production"],
         outputs: ["{workspaceRoot}/coverage/{projectRoot}"],
-        defaultConfiguration: "local",
+        defaultConfiguration: "development",
         options: {
           jestConfig: "{projectRoot}/jest.config.ts",
           passWithNoTests: true
         },
         configurations: {
-          local: {
+          development: {
             ci: false,
             codeCoverage: true
           },
-          ci: {
+          production: {
             ci: true,
             codeCoverage: true
           }
@@ -199,8 +188,6 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
     }
 
     targets["size-limit"] = {
-      cache: true,
-      inputs: ["typescript", "^production"],
       dependsOn: ["build", "^size-limit"],
       options: {}
     };
@@ -216,14 +203,6 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       );
 
       targets["nx-release-publish"] = {
-        cache: true,
-        inputs: [
-          "linting",
-          "testing",
-          "documentation",
-          "default",
-          "^production"
-        ],
         dependsOn: ["build", "size-limit", "^nx-release-publish"],
         executor: "@storm-software/workspace-tools:npm-publish",
         options: {}
@@ -411,6 +390,32 @@ function checkEslintConfigAtPath(directory: string): string | null {
     return "eslint.config.mjs";
   } else if (hasEslintConfigFile("eslint.config.ts")) {
     return "eslint.config.ts";
+  } else if (hasEslintConfigFile("eslint.config.cts")) {
+    return "eslint.config.cts";
+  } else if (hasEslintConfigFile("eslint.config.mts")) {
+    return "eslint.config.mts";
+  }
+
+  return null;
+}
+
+function checkJestConfigAtPath(directory: string): string | null {
+  const hasJestConfigFile = (fileName: string): boolean => {
+    return existsSync(join(directory, fileName));
+  };
+
+  if (hasJestConfigFile("eslint.config.js")) {
+    return "jest.config.js";
+  } else if (hasJestConfigFile("eslint.config.cjs")) {
+    return "jest.config.cjs";
+  } else if (hasJestConfigFile("eslint.config.mjs")) {
+    return "jest.config.mjs";
+  } else if (hasJestConfigFile("eslint.config.ts")) {
+    return "jest.config.ts";
+  } else if (hasJestConfigFile("jest.config.cts")) {
+    return "jest.config.cts";
+  } else if (hasJestConfigFile("jest.config.mts")) {
+    return "jest.config.mts";
   }
 
   return null;

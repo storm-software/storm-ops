@@ -9,7 +9,7 @@ export default defineConfig({
   bundle: true,
   splitting: true,
   clean: true,
-  dts: true,
+  dts: false,
   sourcemap: false,
   skipNodeModulesBundle: false,
   tsconfig: "./tsconfig.json",
