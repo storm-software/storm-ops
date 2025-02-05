@@ -314,21 +314,12 @@
   },
   "targetDefaults": {
     "lint-markdown": {
-      "inputs": [
-        "linting",
-        "{projectRoot}/**/*.md",
-        "{projectRoot}/**/*.mdx",
-        "{projectRoot}/**/*.markdown"
-      ],
-      "outputs": [
-        "{projectRoot}/**/*.md",
-        "{projectRoot}/**/*.mdx",
-        "{projectRoot}/**/*.markdown"
-      ],
+      "inputs": ["linting", "{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
+      "outputs": ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
       "dependsOn": ["^lint-markdown"],
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec markdownlint-cli2 \"{projectRoot}/**/*.{md,mdx,markdown}\" \"#**/node_modules/**/*\" --config \"node_modules/@storm-software/markdownlint/config/base.markdownlint-cli2.jsonc\" --fix"
+        "command": "pnpm exec markdownlint-cli2 \"{projectRoot}/*.{md,mdx}\" \"{projectRoot}/**/*.{md,mdx}\" --config \"node_modules/@storm-software/markdownlint/config/base.markdownlint-cli2.jsonc\" --fix"
       }
     },
     "lint": {
