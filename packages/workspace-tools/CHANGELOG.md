@@ -1,3 +1,9 @@
+## 1.250.2 (2025-02-05)
+
+### Miscellaneous
+
+- **markdownlint:** Update config files to use `.jsonc` ([da504b034](https://github.com/storm-software/storm-ops/commit/da504b034))
+
 ## 1.250.1 (2025-02-05)
 
 ### Bug Fixes
