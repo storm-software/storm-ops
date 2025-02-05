@@ -1,3 +1,17 @@
+## 1.251.0 (2025-02-05)
+
+### Features
+
+- **workspace-tools:** Added the `lint-knip` task ([1ac036c13](https://github.com/storm-software/storm-ops/commit/1ac036c13))
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with invalid `workspaceRoot` token placement ([68aa29deb](https://github.com/storm-software/storm-ops/commit/68aa29deb))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([93412b8ef](https://github.com/storm-software/storm-ops/commit/93412b8ef))
+
 ## 1.250.5 (2025-02-05)
 
 ### Miscellaneous

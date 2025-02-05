@@ -1,3 +1,13 @@
+## 0.15.0 (2025-02-05)
+
+### Features
+
+- **workspace-tools:** Added the `lint-knip` task ([1ac036c13](https://github.com/storm-software/storm-ops/commit/1ac036c13))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([93412b8ef](https://github.com/storm-software/storm-ops/commit/93412b8ef))
+
 ## 0.14.10 (2025-02-05)
 
 ### Bug Fixes
