@@ -1,3 +1,13 @@
+## 0.14.10 (2025-02-05)
+
+### Bug Fixes
+
+- **cspell:** Resolved issue with missing `cspell` dictionary ([c23729ce8](https://github.com/storm-software/storm-ops/commit/c23729ce8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([de6ae2b84](https://github.com/storm-software/storm-ops/commit/de6ae2b84))
+
 ## 0.14.9 (2025-02-05)
 
 ### Miscellaneous
