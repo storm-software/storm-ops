@@ -1,3 +1,13 @@
+## 1.252.1 (2025-02-06)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issue with invalid `lint-knip` targets ([167fa0122](https://github.com/storm-software/storm-ops/commit/167fa0122))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([1b886df47](https://github.com/storm-software/storm-ops/commit/1b886df47))
+
 ## 1.252.0 (2025-02-06)
 
 ### Features
