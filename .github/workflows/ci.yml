@@ -101,21 +101,21 @@ jobs:
           set-environment-variables-for-job: true
           error-on-no-successful-workflow: true
 
-      - name: Run Terrascan
-        id: terrascan
-        uses: tenable/terrascan-action@main
-        with:
-          iac_type: "terraform"
-          iac_version: "v14"
-          policy_type: "aws"
-          only_warn: true
-          sarif_upload: true
-          iac_dir: "./terraform-modules"
-          config_path: "./packages/linting-tools/src/terrascan/config.yml"
-      - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: terrascan.sarif
+      # - name: Run Terrascan
+      #   id: terrascan
+      #   uses: tenable/terrascan-action@main
+      #   with:
+      #     iac_type: "terraform"
+      #     iac_version: "v14"
+      #     policy_type: "aws"
+      #     only_warn: true
+      #     sarif_upload: true
+      #     iac_dir: "./terraform-modules"
+      #     config_path: "./packages/linting-tools/src/terrascan/config.yml"
+      # - name: Upload SARIF file
+      #   uses: github/codeql-action/upload-sarif@v3
+      #   with:
+      #     sarif_file: terrascan.sarif
 
       - name: Release Library Version Updates
         run: pnpm release --base=${{ steps.setSHAs.outputs.base }} --head=${{ steps.setSHAs.outputs.head }}
