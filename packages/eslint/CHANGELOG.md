@@ -1,3 +1,9 @@
+## 0.119.0 (2025-02-06)
+
+### Features
+
+- **linting-tools:** Added `knip` linting to tool set ([2ce758152](https://github.com/storm-software/storm-ops/commit/2ce758152))
+
 ## 0.118.11 (2025-02-05)
 
 ### Miscellaneous
