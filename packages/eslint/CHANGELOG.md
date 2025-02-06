@@ -1,3 +1,9 @@
+## 0.119.2 (2025-02-06)
+
+### Bug Fixes
+
+- **linting-tools:** Ensure the config files are included in the package.json `files` list ([d4be09d8a](https://github.com/storm-software/storm-ops/commit/d4be09d8a))
+
 ## 0.119.1 (2025-02-06)
 
 ### Miscellaneous
