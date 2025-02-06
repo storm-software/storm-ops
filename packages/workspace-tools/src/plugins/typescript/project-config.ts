@@ -74,7 +74,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
         executor: "nx:run-commands",
         options: {
           command:
-            'pnpm exec knip --config \"--config=\"node_modules/@storm-software/linting-tools/knip/config.json\" --tsConfig "{projectRoot}/tsconfig.json" --directory "{projectRoot}" --fix --cache --cache-location "node_modules/.cache/knip/{projectRoot}"'
+            'pnpm exec knip --config \"node_modules/@storm-software/linting-tools/knip/config.json\" --tsConfig "{projectRoot}/tsconfig.json" --directory "{projectRoot}" --fix --cache --cache-location "node_modules/.cache/knip/{projectRoot}"'
         }
       };
     }
