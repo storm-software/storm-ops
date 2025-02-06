@@ -1,0 +1,72 @@
+{
+  "nx": {
+    "config": [
+      "nx.json",
+      "project.json",
+      "{apps,libs,packages,tools,docs}/**/project.json",
+      "package.json"
+    ]
+  },
+  "eslint": {
+    "config": [
+      ".eslintrc",
+      ".eslintrc.{js,json,cjs}",
+      ".eslintrc.{yml,yaml}",
+      "package.json"
+    ],
+    "entry": ["eslint.config.{js,cjs,mjs}"]
+  },
+  "prettier": {
+    "config": [
+      ".prettierrc",
+      ".prettierrc.{json,js,cjs,mjs,yml,yaml,toml,json5}",
+      "prettier.config.{js,cjs,mjs}",
+      "package.{json,yaml}"
+    ]
+  },
+  "markdownlint": {
+    "config": [
+      "*.markdownlint.{json,jsonc}",
+      "*.markdownlint.{yml,yaml}",
+      "*.markdownlint-cli2.{json,jsonc}"
+    ]
+  },
+  "cspell": {
+    "config": [
+      "cspell.config.{js,cjs,json,yaml,yml}",
+      "cspell.{json,yaml,yml}",
+      ".c{s,S}pell.json",
+      "c{s,S}pell.json"
+    ]
+  },
+  "tsup": {
+    "config": ["tsup.config.{js,ts,cjs,mjs,json}", "package.json"]
+  },
+  "postcss": {
+    "config": [
+      "package.json",
+      "postcss.config.json",
+      ".postcssrc",
+      ".postcssrc.{json,js,cjs,mjs,ts,mts,cts,yaml,yml}",
+      "postcss.config.{js,cjs,mjs,ts,mts,cts}"
+    ]
+  },
+  "tailwind": {
+    "entry": ["tailwind.config.{js,cjs,mjs,ts}"]
+  },
+  "cypress": {
+    "entry": ["cypress.config.ts", "cypress/e2e/*.spec.ts"]
+  },
+  "jest": {
+    "config": [
+      "jest.config.json",
+      "jest.config.ts",
+      "jest.config.cts",
+      "jest.config.mts",
+      "jest.setup.json",
+      "jest.setup.ts",
+      "jest.setup.cts",
+      "jest.setup.mts"
+    ]
+  }
+}

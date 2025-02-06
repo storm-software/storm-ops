@@ -87,6 +87,9 @@ catalogs:
     jiti:
       specifier: ^2.4.2
       version: 2.4.2
+    knip:
+      specifier: ^5.25.2
+      version: 5.25.2
     nx:
       specifier: ^20.3.1
       version: 20.4.0
@@ -979,6 +982,9 @@ importers:
       glob:
         specifier: 'catalog:'
         version: 11.0.1
+      knip:
+        specifier: 'catalog:'
+        version: 5.25.2(@types/node@22.13.0)(typescript@5.7.3)
       octokit:
         specifier: 4.0.2
         version: 4.0.2
