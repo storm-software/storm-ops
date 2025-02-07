@@ -46,7 +46,7 @@
     "pnpm": ">=9.15.2"
   },
   "bin": {
-    "storm-lint": "./bin/lint.js",
+    "storm-lint": "./bin/lint.cjs",
     "storm-lint-esm": "./bin/lint.js",
     "storm-lint-cjs": "./bin/lint.cjs"
   },

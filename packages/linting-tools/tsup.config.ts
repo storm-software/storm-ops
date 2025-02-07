@@ -29,5 +29,6 @@ export default defineConfig([
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     shims: true
+    // noExternal: ["cspell", "@manypkg/cli", "@manypkg/get-packages"]
   }
 ]);

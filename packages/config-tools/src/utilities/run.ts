@@ -21,11 +21,11 @@ export type StdioOptions =
  * @returns The result of the command
  */
 export const run = (
-  config: StormConfig,
+  config: Partial<StormConfig>,
   command: string,
   cwd: string = config.workspaceRoot ?? process.cwd(),
   stdio: StdioOptions = "inherit",
-  env: NodeJS.ProcessEnv = process.env,
+  env: NodeJS.ProcessEnv = process.env
 ) => {
   return execSync(command, {
     cwd,
@@ -33,12 +33,12 @@ export const run = (
       ...process.env,
       ...env,
       CLICOLOR: "true",
-      FORCE_COLOR: "true",
+      FORCE_COLOR: "true"
     },
     windowsHide: true,
     stdio,
     maxBuffer: LARGE_BUFFER,
-    killSignal: "SIGTERM",
+    killSignal: "SIGTERM"
   });
 };
 
@@ -55,10 +55,10 @@ export const run = (
  * @returns A promise with the result of the command
  */
 export const runAsync = (
-  config: StormConfig,
+  config: Partial<StormConfig>,
   command: string,
   cwd: string = config.workspaceRoot ?? process.cwd(),
-  env: NodeJS.ProcessEnv = process.env,
+  env: NodeJS.ProcessEnv = process.env
 ) => {
   return exec(command, {
     cwd,
@@ -66,10 +66,10 @@ export const runAsync = (
       ...process.env,
       ...env,
       CLICOLOR: "true",
-      FORCE_COLOR: "true",
+      FORCE_COLOR: "true"
     },
     windowsHide: true,
     maxBuffer: LARGE_BUFFER,
-    killSignal: "SIGTERM",
+    killSignal: "SIGTERM"
   });
 };
