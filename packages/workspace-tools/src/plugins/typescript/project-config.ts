@@ -1,6 +1,6 @@
 import { CreateNodes } from "@nx/devkit";
 import { existsSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { dirname, join, relative } from "node:path";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
 import { readJsonFile } from "nx/src/utils/fileutils";
@@ -65,6 +65,8 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
     //   };
     // }
 
+    const relativePath = relative(dirname(file), ctx.workspaceRoot);
+
     if (!targets["lint-knip"]) {
       targets["lint-knip"] = {
         cache: true,
@@ -73,8 +75,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
         dependsOn: ["^lint-knip"],
         executor: "nx:run-commands",
         options: {
-          command:
-            'pnpm exec knip --config \"node_modules/@storm-software/linting-tools/knip/config.json\" --tsConfig "{projectRoot}/tsconfig.json" --directory "{projectRoot}" --fix --cache --cache-location "node_modules/.cache/knip/{projectRoot}"'
+          command: `pnpm exec knip --config "${join(relativePath, "node_modules/@storm-software/linting-tools/knip/config.json")}" --tsConfig "{projectRoot}/tsconfig.json" --directory "{projectRoot}" --fix --cache --cache-location "${join(relativePath, "node_modules/.cache/knip/{projectRoot}")}"`
         }
       };
     }
