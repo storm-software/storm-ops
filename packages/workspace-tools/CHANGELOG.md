@@ -1,3 +1,9 @@
+## 1.253.0 (2025-02-07)
+
+### Features
+
+- **workspace-tools:** Added `enableKnip`, `enableMarkdownlint`, and `enableEslint` options to plugin ([35fc9dba1](https://github.com/storm-software/storm-ops/commit/35fc9dba1))
+
 ## 1.252.4 (2025-02-07)
 
 ### Bug Fixes
