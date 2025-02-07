@@ -60,7 +60,8 @@
       "title": "Current Version Resolver",
       "type": "string",
       "description": "The current version resolver",
-      "id": "#currentVersionResolver"
+      "id": "#currentVersionResolver",
+      "default": "git-tag"
     },
     "currentVersionResolverMetadata": {
       "title": "Current Version Resolver Metadata",
@@ -73,7 +74,8 @@
       "title": "Fallback Current Version Resolver",
       "type": "string",
       "description": "The fallback current version resolver",
-      "id": "#fallbackCurrentVersionResolver"
+      "id": "#fallbackCurrentVersionResolver",
+      "default": "disk"
     },
     "firstRelease": {
       "title": "First Release",
@@ -148,7 +150,9 @@
   "default": {
     "releaseGroup": {},
     "projectGraph": {},
+    "currentVersionResolver": "git-tag",
     "currentVersionResolverMetadata": {},
+    "fallbackCurrentVersionResolver": "disk",
     "conventionalCommitsConfig": {}
   }
 }

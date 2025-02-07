@@ -70,6 +70,7 @@ export interface ReleaseVersionGeneratorSchema {
   * 
   * The current version resolver
   * 
+  * @default "git-tag"
  */
  currentVersionResolver?: string,
 
@@ -88,6 +89,7 @@ export interface ReleaseVersionGeneratorSchema {
   * 
   * The fallback current version resolver
   * 
+  * @default "disk"
  */
  fallbackCurrentVersionResolver?: string,
 

@@ -4,6 +4,7 @@ import {
   findWorkspaceRoot,
   writeDebug,
   writeError,
+  writeFatal,
   writeInfo
 } from "@storm-software/config-tools";
 import { readFileSync } from "node:fs";
@@ -63,104 +64,245 @@ export async function releaseVersion(
   config: StormConfig,
   args: VersionOptions & { nxReleaseConfig: NxReleaseConfiguration }
 ): Promise<NxReleaseVersionResult> {
-  writeInfo("Running release version command", config);
+  try {
+    writeInfo("Running release version command", config);
 
-  const projectGraph = await createProjectGraphAsync({ exitOnError: true });
-  const { projects } = readProjectsConfigurationFromProjectGraph(projectGraph);
-  const nxJson = readNxJson();
+    const projectGraph = await createProjectGraphAsync({ exitOnError: true });
+    const { projects } =
+      readProjectsConfigurationFromProjectGraph(projectGraph);
+    const nxJson = readNxJson();
 
-  const workspaceRoot = config?.workspaceRoot ?? findWorkspaceRoot();
+    const workspaceRoot = config?.workspaceRoot ?? findWorkspaceRoot();
 
-  if (args.verbose) {
-    process.env.NX_VERBOSE_LOGGING = "true";
-  }
+    if (args.verbose) {
+      process.env.NX_VERBOSE_LOGGING = "true";
+    }
 
-  // Apply default configuration to any optional user configuration
-  const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
-    projectGraph,
-    await createProjectFileMapUsingProjectGraph(projectGraph),
-    args.nxReleaseConfig
-  );
-  if (configError) {
-    return await handleNxReleaseConfigError(configError);
-  }
-
-  // The nx release top level command will always override these three git args. This is how we can tell
-  // if the top level release command was used or if the user is using the changelog subcommand.
-  // If the user explicitly overrides these args, then it doesn't matter if the top level config is set,
-  // as all of the git options would be overridden anyway.
-  if (
-    (args.gitCommit === undefined ||
-      args.gitTag === undefined ||
-      args.stageChanges === undefined) &&
-    nxJson.release?.git
-  ) {
-    await resolveNxJsonConfigErrorMessage(["release", "git"]);
-
-    throw new Error(
-      `The "release.git" property in nx.json may not be used with the "nx release version" subcommand or programmatic API. Instead, configure git options for subcommands directly with "release.version.git" and "release.changelog.git".`
+    // Apply default configuration to any optional user configuration
+    const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
+      projectGraph,
+      await createProjectFileMapUsingProjectGraph(projectGraph),
+      args.nxReleaseConfig
     );
-  }
+    if (configError) {
+      return await handleNxReleaseConfigError(configError);
+    }
 
-  writeInfo("Filtering projects and release groups", config);
+    // The nx release top level command will always override these three git args. This is how we can tell
+    // if the top level release command was used or if the user is using the changelog subcommand.
+    // If the user explicitly overrides these args, then it doesn't matter if the top level config is set,
+    // as all of the git options would be overridden anyway.
+    if (
+      (args.gitCommit === undefined ||
+        args.gitTag === undefined ||
+        args.stageChanges === undefined) &&
+      nxJson.release?.git
+    ) {
+      await resolveNxJsonConfigErrorMessage(["release", "git"]);
 
-  const {
-    error: filterError,
-    releaseGroups,
-    releaseGroupToFilteredProjects
-  } = filterReleaseGroups(
-    projectGraph,
-    nxReleaseConfig as NxReleaseConfig,
-    args.projects,
-    args.groups
-  );
-  if (filterError) {
-    writeError(filterError.title, config);
-    throw new Error(filterError.title);
-  }
+      throw new Error(
+        `The "release.git" property in nx.json may not be used with the "nx release version" subcommand or programmatic API. Instead, configure git options for subcommands directly with "release.version.git" and "release.changelog.git".`
+      );
+    }
 
-  const tree = new FsTree(workspaceRoot, true);
+    writeInfo("Filtering projects and release groups", config);
 
-  const versionData: VersionData = {};
-  const commitMessage: string | undefined =
-    args.gitCommitMessage || nxReleaseConfig?.version.git.commitMessage;
-  const additionalChangedFiles = new Set<string>();
-  const generatorCallbacks: (() => Promise<void>)[] = [];
-
-  if (args.projects?.length) {
-    writeInfo(
-      "Run versioning for all remaining release groups and filtered projects within them",
-      config
+    const {
+      error: filterError,
+      releaseGroups,
+      releaseGroupToFilteredProjects
+    } = filterReleaseGroups(
+      projectGraph,
+      nxReleaseConfig as NxReleaseConfig,
+      args.projects,
+      args.groups
     );
+    if (filterError) {
+      writeError(filterError.title, config);
+      throw new Error(filterError.title);
+    }
 
-    for (const releaseGroup of releaseGroups) {
-      const releaseGroupName = releaseGroup.name;
+    const tree = new FsTree(workspaceRoot, true);
+
+    const versionData: VersionData = {};
+    const commitMessage: string | undefined =
+      args.gitCommitMessage || nxReleaseConfig?.version.git.commitMessage;
+    const additionalChangedFiles = new Set<string>();
+    const generatorCallbacks: (() => Promise<void>)[] = [];
+
+    if (args.projects?.length) {
       writeInfo(
-        `Running versioning for release group "${releaseGroupName}" and filtered projects within it`,
+        "Run versioning for all remaining release groups and filtered projects within them",
         config
       );
 
-      const releaseGroupProjectNames = Array.from(
-        releaseGroupToFilteredProjects.get(releaseGroup) ?? []
-      );
+      for (const releaseGroup of releaseGroups) {
+        const releaseGroupName = releaseGroup.name;
+        writeInfo(
+          `Running versioning for release group "${releaseGroupName}" and filtered projects within it`,
+          config
+        );
+
+        const releaseGroupProjectNames = Array.from(
+          releaseGroupToFilteredProjects.get(releaseGroup) ?? []
+        );
+        const projectBatches = batchProjectsByGeneratorConfig(
+          projectGraph,
+          releaseGroup,
+          // Only batch based on the filtered projects within the release group
+          releaseGroupProjectNames
+        );
+
+        for (const [
+          generatorConfigString,
+          projectNames
+        ] of projectBatches.entries()) {
+          writeInfo(
+            `Running versioning for batch "${JSON.stringify(
+              projectNames
+            )}" for release-group "${releaseGroupName}"`,
+            config
+          );
+
+          const [generatorName, generatorOptions] = JSON.parse(
+            generatorConfigString
+          );
+          // Resolve the generator for the batch and run versioning on the projects within the batch
+          const generatorData = resolveGeneratorData({
+            ...extractGeneratorCollectionAndName(
+              `batch "${JSON.stringify(projectNames)}" for release-group "${releaseGroupName}"`,
+              generatorName
+            ),
+            configGeneratorOptions: generatorOptions,
+            // all project data from the project graph (not to be confused with projectNamesToRunVersionOn)
+            projects
+          });
+          const generatorCallback = await runVersionOnProjects(
+            config,
+            projectGraph,
+            nxJson,
+            args,
+            tree,
+            generatorData,
+            projectNames,
+            releaseGroup,
+            versionData
+          );
+          // Capture the callback so that we can run it after flushing the changes to disk
+          generatorCallbacks.push(async () => {
+            const changedFiles = await generatorCallback(tree, {
+              dryRun: !!args.dryRun,
+              verbose: !!args.verbose,
+              generatorOptions
+            });
+            if (Array.isArray(changedFiles)) {
+              for (const f of changedFiles) {
+                additionalChangedFiles.add(f);
+              }
+            } else {
+              for (const f of changedFiles.changedFiles) {
+                additionalChangedFiles.add(f);
+              }
+            }
+          });
+        }
+      }
+
+      // Resolve any git tags as early as possible so that we can hard error in case of any duplicates before reaching the actual git command
+      const gitTagValues: string[] =
+        (args.gitTag ?? nxReleaseConfig?.version.git.tag)
+          ? createGitTagValues(
+              releaseGroups,
+              releaseGroupToFilteredProjects,
+              versionData
+            )
+          : [];
+
+      handleDuplicateGitTags(gitTagValues);
+      printAndFlushChanges(config, tree, !!args.dryRun);
+
+      for (const generatorCallback of generatorCallbacks) {
+        await generatorCallback();
+      }
+
+      const changedFiles = [
+        ...tree.listChanges().map(f => f.path),
+        ...additionalChangedFiles
+      ];
+
+      // No further actions are necessary in this scenario (e.g. if conventional commits detected no changes)
+      if (!changedFiles.length) {
+        return {
+          // An overall workspace version cannot be relevant when filtering to independent projects
+          workspaceVersion: undefined,
+          projectsVersionData: versionData
+        };
+      }
+
+      if (args.gitCommit ?? nxReleaseConfig?.version.git.commit) {
+        await commitChanges({
+          changedFiles,
+          isDryRun: !!args.dryRun,
+          isVerbose: !!args.verbose,
+          gitCommitMessages: createCommitMessageValues(
+            releaseGroups,
+            releaseGroupToFilteredProjects,
+            versionData,
+            commitMessage as string
+          ),
+          gitCommitArgs:
+            args.gitCommitArgs || nxReleaseConfig?.version.git.commitArgs
+        });
+      } else if (
+        args.stageChanges ??
+        nxReleaseConfig?.version.git.stageChanges
+      ) {
+        writeInfo("Staging changed files with git", config);
+        await gitAdd({
+          changedFiles,
+          dryRun: args.dryRun,
+          verbose: args.verbose
+        });
+      }
+
+      if (args.gitTag ?? nxReleaseConfig?.version.git.tag) {
+        writeInfo("Tagging commit with git", config);
+        for (const tag of gitTagValues) {
+          await gitTag({
+            tag,
+            message:
+              args.gitTagMessage || nxReleaseConfig?.version.git.tagMessage,
+            additionalArgs:
+              args.gitTagArgs || nxReleaseConfig?.version.git.tagArgs,
+            dryRun: args.dryRun,
+            verbose: args.verbose
+          });
+        }
+      }
+
+      return {
+        // An overall workspace version cannot be relevant when filtering to independent projects
+        workspaceVersion: undefined,
+        projectsVersionData: versionData
+      };
+    }
+
+    /**
+     * Run versioning for all remaining release groups
+     */
+    for (const releaseGroup of releaseGroups) {
+      const releaseGroupName = releaseGroup.name;
       const projectBatches = batchProjectsByGeneratorConfig(
         projectGraph,
         releaseGroup,
-        // Only batch based on the filtered projects within the release group
-        releaseGroupProjectNames
+        // Batch based on all projects within the release group
+        releaseGroup.projects
       );
 
       for (const [
         generatorConfigString,
         projectNames
       ] of projectBatches.entries()) {
-        writeInfo(
-          `Running versioning for batch "${JSON.stringify(
-            projectNames
-          )}" for release-group "${releaseGroupName}"`,
-          config
-        );
-
         const [generatorName, generatorOptions] = JSON.parse(
           generatorConfigString
         );
@@ -174,6 +316,7 @@ export async function releaseVersion(
           // all project data from the project graph (not to be confused with projectNamesToRunVersionOn)
           projects
         });
+
         const generatorCallback = await runVersionOnProjects(
           config,
           projectGraph,
@@ -185,6 +328,7 @@ export async function releaseVersion(
           releaseGroup,
           versionData
         );
+
         // Capture the callback so that we can run it after flushing the changes to disk
         generatorCallbacks.push(async () => {
           const changedFiles = await generatorCallback(tree, {
@@ -222,6 +366,24 @@ export async function releaseVersion(
       await generatorCallback();
     }
 
+    // Only applicable when there is a single release group with a fixed relationship
+    let workspaceVersion: string | null | undefined = undefined;
+    if (releaseGroups.length === 1) {
+      const releaseGroup = releaseGroups[0];
+      if (releaseGroup?.projectsRelationship === "fixed") {
+        const releaseGroupProjectNames = Array.from(
+          releaseGroupToFilteredProjects.get(releaseGroup) ?? []
+        );
+        if (
+          releaseGroupProjectNames.length > 0 &&
+          releaseGroupProjectNames[0]
+        ) {
+          workspaceVersion =
+            versionData[releaseGroupProjectNames[0]]?.newVersion; // all projects have the same version so we can just grab the first
+        }
+      }
+    }
+
     const changedFiles = [
       ...tree.listChanges().map(f => f.path),
       ...additionalChangedFiles
@@ -230,8 +392,7 @@ export async function releaseVersion(
     // No further actions are necessary in this scenario (e.g. if conventional commits detected no changes)
     if (!changedFiles.length) {
       return {
-        // An overall workspace version cannot be relevant when filtering to independent projects
-        workspaceVersion: undefined,
+        workspaceVersion,
         projectsVersionData: versionData
       };
     }
@@ -275,158 +436,24 @@ export async function releaseVersion(
     }
 
     return {
-      // An overall workspace version cannot be relevant when filtering to independent projects
-      workspaceVersion: undefined,
-      projectsVersionData: versionData
-    };
-  }
-
-  /**
-   * Run versioning for all remaining release groups
-   */
-  for (const releaseGroup of releaseGroups) {
-    const releaseGroupName = releaseGroup.name;
-    const projectBatches = batchProjectsByGeneratorConfig(
-      projectGraph,
-      releaseGroup,
-      // Batch based on all projects within the release group
-      releaseGroup.projects
-    );
-
-    for (const [
-      generatorConfigString,
-      projectNames
-    ] of projectBatches.entries()) {
-      const [generatorName, generatorOptions] = JSON.parse(
-        generatorConfigString
-      );
-      // Resolve the generator for the batch and run versioning on the projects within the batch
-      const generatorData = resolveGeneratorData({
-        ...extractGeneratorCollectionAndName(
-          `batch "${JSON.stringify(projectNames)}" for release-group "${releaseGroupName}"`,
-          generatorName
-        ),
-        configGeneratorOptions: generatorOptions,
-        // all project data from the project graph (not to be confused with projectNamesToRunVersionOn)
-        projects
-      });
-
-      const generatorCallback = await runVersionOnProjects(
-        config,
-        projectGraph,
-        nxJson,
-        args,
-        tree,
-        generatorData,
-        projectNames,
-        releaseGroup,
-        versionData
-      );
-
-      // Capture the callback so that we can run it after flushing the changes to disk
-      generatorCallbacks.push(async () => {
-        const changedFiles = await generatorCallback(tree, {
-          dryRun: !!args.dryRun,
-          verbose: !!args.verbose,
-          generatorOptions
-        });
-        if (Array.isArray(changedFiles)) {
-          for (const f of changedFiles) {
-            additionalChangedFiles.add(f);
-          }
-        } else {
-          for (const f of changedFiles.changedFiles) {
-            additionalChangedFiles.add(f);
-          }
-        }
-      });
-    }
-  }
-
-  // Resolve any git tags as early as possible so that we can hard error in case of any duplicates before reaching the actual git command
-  const gitTagValues: string[] =
-    (args.gitTag ?? nxReleaseConfig?.version.git.tag)
-      ? createGitTagValues(
-          releaseGroups,
-          releaseGroupToFilteredProjects,
-          versionData
-        )
-      : [];
-
-  handleDuplicateGitTags(gitTagValues);
-  printAndFlushChanges(config, tree, !!args.dryRun);
-
-  for (const generatorCallback of generatorCallbacks) {
-    await generatorCallback();
-  }
-
-  // Only applicable when there is a single release group with a fixed relationship
-  let workspaceVersion: string | null | undefined = undefined;
-  if (releaseGroups.length === 1) {
-    const releaseGroup = releaseGroups[0];
-    if (releaseGroup?.projectsRelationship === "fixed") {
-      const releaseGroupProjectNames = Array.from(
-        releaseGroupToFilteredProjects.get(releaseGroup) ?? []
-      );
-      if (releaseGroupProjectNames.length > 0 && releaseGroupProjectNames[0]) {
-        workspaceVersion = versionData[releaseGroupProjectNames[0]]?.newVersion; // all projects have the same version so we can just grab the first
-      }
-    }
-  }
-
-  const changedFiles = [
-    ...tree.listChanges().map(f => f.path),
-    ...additionalChangedFiles
-  ];
-
-  // No further actions are necessary in this scenario (e.g. if conventional commits detected no changes)
-  if (!changedFiles.length) {
-    return {
       workspaceVersion,
       projectsVersionData: versionData
     };
-  }
+  } catch (error) {
+    writeFatal(
+      "A fatal error occurred while determining the Storm Release Version - the process was forced to terminate",
+      config
+    );
+    writeError(
+      `An exception was thrown while determining the Storm Release Version \n - Details: ${error.message}\n - Stacktrace: ${error.stack}`,
+      config
+    );
 
-  if (args.gitCommit ?? nxReleaseConfig?.version.git.commit) {
-    await commitChanges({
-      changedFiles,
-      isDryRun: !!args.dryRun,
-      isVerbose: !!args.verbose,
-      gitCommitMessages: createCommitMessageValues(
-        releaseGroups,
-        releaseGroupToFilteredProjects,
-        versionData,
-        commitMessage as string
-      ),
-      gitCommitArgs:
-        args.gitCommitArgs || nxReleaseConfig?.version.git.commitArgs
-    });
-  } else if (args.stageChanges ?? nxReleaseConfig?.version.git.stageChanges) {
-    writeInfo("Staging changed files with git", config);
-    await gitAdd({
-      changedFiles,
-      dryRun: args.dryRun,
-      verbose: args.verbose
-    });
+    throw new Error(
+      `An exception was thrown in the Storm Release Version generator's process \n - Details: ${error.message}`,
+      { cause: error }
+    );
   }
-
-  if (args.gitTag ?? nxReleaseConfig?.version.git.tag) {
-    writeInfo("Tagging commit with git", config);
-    for (const tag of gitTagValues) {
-      await gitTag({
-        tag,
-        message: args.gitTagMessage || nxReleaseConfig?.version.git.tagMessage,
-        additionalArgs: args.gitTagArgs || nxReleaseConfig?.version.git.tagArgs,
-        dryRun: args.dryRun,
-        verbose: args.verbose
-      });
-    }
-  }
-
-  return {
-    workspaceVersion,
-    projectsVersionData: versionData
-  };
 }
 
 async function runVersionOnProjects(

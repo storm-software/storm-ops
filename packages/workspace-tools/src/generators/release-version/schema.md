@@ -55,6 +55,7 @@ The package root
 
 ## `currentVersionResolver`
 - **Type**: `string`
+- **Default**: `"git-tag"`
 
 > Current Version Resolver
 
@@ -66,6 +67,7 @@ The current version resolver
 
 ## `fallbackCurrentVersionResolver`
 - **Type**: `string`
+- **Default**: `"disk"`
 
 > Fallback Current Version Resolver
 
