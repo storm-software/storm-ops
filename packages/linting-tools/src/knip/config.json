@@ -1,4 +1,5 @@
 {
+  "entry": ["index.{js,ts}", "src/index.{js,ts}", "bin/*.{js,ts}"],
   "nx": {
     "config": [
       "nx.json",
