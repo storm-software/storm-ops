@@ -1,3 +1,9 @@
+## 0.16.0 (2025-02-07)
+
+### Features
+
+- **cspell:** Added JavaScript related names to dictionary ([6cb07064a](https://github.com/storm-software/storm-ops/commit/6cb07064a))
+
 ## 0.15.1 (2025-02-06)
 
 ### Miscellaneous
