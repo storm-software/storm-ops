@@ -21,6 +21,9 @@ export const name = "storm-software/typescript";
 
 export interface TypeScriptPluginOptions {
   includeApps?: boolean;
+  enableKnip?: boolean;
+  enableMarkdownlint?: boolean;
+  enableEslint?: boolean;
 }
 
 export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
@@ -46,29 +49,19 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       return {};
     }
 
+    const enableKnip = opts?.enableKnip !== false;
+    const enableMarkdownlint = opts?.enableMarkdownlint !== false;
+    const enableEslint = opts?.enableEslint !== false;
+
     const nxJson = readNxJson(ctx.workspaceRoot);
     const targets: ProjectConfiguration["targets"] = readTargetsFromPackageJson(
       packageJson,
       nxJson
     );
 
-    // if (!targets["lint-ls"]) {
-    //   targets["lint-ls"] = {
-    //     cache: true,
-    //     inputs: ["linting", "typescript", "^production"],
-    //     dependsOn: ["^lint-ls"],
-    //     executor: "nx:run-commands",
-    //     options: {
-    //       command:
-    //         'pnpm exec ls-lint --config="@storm-software/linting-tools/ls-lint/config.yml" --workdir=\"{projectRoot}\"',
-    //       color: true
-    //     }
-    //   };
-    // }
-
     const relativePath = relative(dirname(file), ctx.workspaceRoot);
 
-    if (!targets["lint-knip"]) {
+    if (!targets["lint-knip"] && enableKnip) {
       targets["lint-knip"] = {
         cache: true,
         outputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
@@ -81,7 +74,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       };
     }
 
-    if (!targets["lint-markdown"]) {
+    if (!targets["lint-markdown"] && enableMarkdownlint) {
       targets["lint-markdown"] = {
         cache: true,
         outputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
@@ -95,7 +88,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       };
     }
 
-    if (!targets.lint) {
+    if (!targets.lint && enableEslint) {
       let eslintConfig = checkEslintConfigAtPath(project.root);
       if (!eslintConfig) {
         eslintConfig = checkEslintConfigAtPath(ctx.workspaceRoot);
