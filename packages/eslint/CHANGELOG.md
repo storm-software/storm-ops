@@ -1,3 +1,9 @@
+## 0.119.4 (2025-02-07)
+
+### Bug Fixes
+
+- **linting-tools:** Update package to bundle dependencies for binary ([b56953db6](https://github.com/storm-software/storm-ops/commit/b56953db6))
+
 ## 0.119.3 (2025-02-07)
 
 ### Miscellaneous

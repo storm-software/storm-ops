@@ -1,3 +1,13 @@
+## 1.254.4 (2025-02-07)
+
+### Bug Fixes
+
+- **linting-tools:** Update package to bundle dependencies for binary ([b56953db6](https://github.com/storm-software/storm-ops/commit/b56953db6))
+
+### Miscellaneous
+
+- **monorepo:** Resolve issue with mismatched dependency versions ([54ad1a634](https://github.com/storm-software/storm-ops/commit/54ad1a634))
+
 ## 1.254.3 (2025-02-07)
 
 ### Bug Fixes
