@@ -1,3 +1,9 @@
+## 1.254.1 (2025-02-07)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolved issue with the path used to check for internal tools ([a75fe409c](https://github.com/storm-software/storm-ops/commit/a75fe409c))
+
 ## 1.254.0 (2025-02-07)
 
 ### Features
