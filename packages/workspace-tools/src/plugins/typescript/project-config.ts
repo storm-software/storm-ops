@@ -19,11 +19,40 @@ import {
 
 export const name = "storm-software/typescript";
 
+/**
+ * Options for configuring the TypeScript plugin.
+ */
 export interface TypeScriptPluginOptions {
+  /**
+   * Whether to include applications in the TypeScript project configuration.
+   * @defaultValue true
+   */
   includeApps?: boolean;
+
+  /**
+   * Whether to enable Knip, a tool for analyzing TypeScript projects.
+   * @defaultValue true
+   */
   enableKnip?: boolean;
+
+  /**
+   * Whether to enable Markdownlint for linting Markdown files.
+   * @defaultValue true
+   */
   enableMarkdownlint?: boolean;
+
+  /**
+   * Whether to enable ESLint for linting TypeScript and JavaScript files.
+   * @defaultValue true
+   */
   enableEslint?: boolean;
+
+  /**
+   * Whether to skip the linting of internal tools (projects in the `/tools` directory).
+   *
+   * @defaultValue false
+   */
+  lintInternalTools?: boolean;
 }
 
 export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
@@ -59,60 +88,84 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       nxJson
     );
 
-    const relativePath = relative(dirname(file), ctx.workspaceRoot);
-
-    if (!targets["lint-knip"] && enableKnip) {
-      targets["lint-knip"] = {
-        cache: true,
-        outputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
-        inputs: ["linting", "{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
-        dependsOn: ["^lint-knip"],
-        executor: "nx:run-commands",
-        options: {
-          command: `pnpm exec knip --config "${join(relativePath, "node_modules/@storm-software/linting-tools/knip/config.json").replaceAll("\\", "/")}" --tsConfig "{projectRoot}/tsconfig.json" --directory "{projectRoot}" --fix --cache --cache-location "${join(relativePath, "node_modules/.cache/knip/{projectRoot}").replaceAll("\\", "/")}" --workspace "${relativePath.replaceAll("\\", "/")}"`
-        }
-      };
-    }
-
-    if (!targets["lint-markdown"] && enableMarkdownlint) {
-      targets["lint-markdown"] = {
-        cache: true,
-        outputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
-        inputs: ["linting", "{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
-        dependsOn: ["^lint-markdown"],
+    if (
+      project.root
+        .replaceAll("\\", "/")
+        .startsWith(join(ctx.workspaceRoot, "tools").replaceAll("\\", "/")) &&
+      opts?.lintInternalTools !== true
+    ) {
+      targets.lint = {
+        dependsOn: ["^lint"],
         executor: "nx:run-commands",
         options: {
           command:
-            'pnpm exec markdownlint-cli2 "{projectRoot}/*.{md,mdx}" "{projectRoot}/**/*.{md,mdx}" --config "node_modules/@storm-software/markdownlint/config/base.markdownlint-cli2.jsonc" --fix'
+            "echo 'Skipping linting of internal tools package \"{projectName}\". This can be changed by setting `lintInternalTools` to `true` in the Storm TypeScript plugin options.' "
         }
       };
-    }
+    } else {
+      if (!targets["lint-knip"] && enableKnip) {
+        const relativePath = relative(dirname(file), ctx.workspaceRoot);
 
-    if (!targets.lint && enableEslint) {
-      let eslintConfig = checkEslintConfigAtPath(project.root);
-      if (!eslintConfig) {
-        eslintConfig = checkEslintConfigAtPath(ctx.workspaceRoot);
-      }
-
-      if (eslintConfig) {
-        targets.lint = {
+        targets["lint-knip"] = {
           cache: true,
-          inputs: ["linting", "typescript", "^production"],
-          outputs: [
-            "{projectRoot}/**/*.{ts,tsx,js,jsx,json,md,mdx,yaml,yml,html,css,scss,sass,less,graphql,gql,\}"
+          outputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
+          inputs: [
+            "linting",
+            "{projectRoot}/**/*.md",
+            "{projectRoot}/**/*.mdx"
           ],
-          dependsOn: ["lint-markdown", "lint-knip", "^lint"],
-          executor: "@nx/eslint:lint",
+          dependsOn: ["^lint-knip"],
+          executor: "nx:run-commands",
           options: {
-            format: "stylish",
-            fix: true,
-            errorOnUnmatchedPattern: false,
-            cache: true,
-            cacheLocation:
-              "{workspaceRoot}/node_modules/.cache/eslint/{projectRoot}",
-            eslintConfig
+            command: `pnpm exec knip --config "${join(relativePath, "node_modules/@storm-software/linting-tools/knip/config.json").replaceAll("\\", "/")}" --tsConfig "{projectRoot}/tsconfig.json" --directory "{projectRoot}" --fix --cache --cache-location "${join(relativePath, "node_modules/.cache/knip/{projectRoot}").replaceAll("\\", "/")}" --workspace "${relativePath.replaceAll("\\", "/")}"`
           }
         };
+      }
+
+      if (!targets["lint-markdown"] && enableMarkdownlint) {
+        targets["lint-markdown"] = {
+          cache: true,
+          outputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
+          inputs: [
+            "linting",
+            "{projectRoot}/**/*.md",
+            "{projectRoot}/**/*.mdx"
+          ],
+          dependsOn: ["^lint-markdown"],
+          executor: "nx:run-commands",
+          options: {
+            command:
+              'pnpm exec markdownlint-cli2 "{projectRoot}/*.{md,mdx}" "{projectRoot}/**/*.{md,mdx}" --config "node_modules/@storm-software/markdownlint/config/base.markdownlint-cli2.jsonc" --fix'
+          }
+        };
+      }
+
+      if (!targets.lint && enableEslint) {
+        let eslintConfig = checkEslintConfigAtPath(project.root);
+        if (!eslintConfig) {
+          eslintConfig = checkEslintConfigAtPath(ctx.workspaceRoot);
+        }
+
+        if (eslintConfig) {
+          targets.lint = {
+            cache: true,
+            inputs: ["linting", "typescript", "^production"],
+            outputs: [
+              "{projectRoot}/**/*.{ts,tsx,js,jsx,json,md,mdx,yaml,yml,html,css,scss,sass,less,graphql,gql,\}"
+            ],
+            dependsOn: ["lint-markdown", "lint-knip", "^lint"],
+            executor: "@nx/eslint:lint",
+            options: {
+              format: "stylish",
+              fix: true,
+              errorOnUnmatchedPattern: false,
+              cache: true,
+              cacheLocation:
+                "{workspaceRoot}/node_modules/.cache/eslint/{projectRoot}",
+              eslintConfig
+            }
+          };
+        }
       }
     }
 
