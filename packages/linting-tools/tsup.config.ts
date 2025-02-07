@@ -22,14 +22,12 @@ export default defineConfig([
     format: ["cjs", "esm"],
     outDir: "dist/bin",
     platform: "node",
-    splitting: false,
+    splitting: true,
     bundle: true,
     clean: false,
     dts: false,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     shims: true
-    // skipNodeModulesBundle: false,
-    // noExternal: ["cspell", "@manypkg/cli", "@manypkg/get-packages"]
   }
 ]);

@@ -133,7 +133,7 @@
     "zizmor"
   ],
   "dependencies": {
-    "@angular-devkit/architect": "^0.1900.6",
+    "@angular-devkit/architect": "0.1900.6",
     "@manypkg/cli": "^0.23.0",
     "@manypkg/get-packages": "^2.2.1",
     "alex": "^11.0.1",

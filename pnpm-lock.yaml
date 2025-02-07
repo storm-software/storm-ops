@@ -965,7 +965,7 @@ importers:
   packages/linting-tools:
     dependencies:
       '@angular-devkit/architect':
-        specifier: ^0.1900.6
+        specifier: 0.1900.6
         version: 0.1900.6(chokidar@4.0.3)
       '@manypkg/cli':
         specifier: ^0.23.0
