@@ -1,3 +1,9 @@
+## 0.119.5 (2025-02-07)
+
+### Bug Fixes
+
+- **linting-tools:** Resolved multiple issues with linting binary ([5e62a02e3](https://github.com/storm-software/storm-ops/commit/5e62a02e3))
+
 ## 0.119.4 (2025-02-07)
 
 ### Bug Fixes
