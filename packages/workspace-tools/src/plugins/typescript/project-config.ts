@@ -117,7 +117,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
           dependsOn: ["^lint-knip"],
           executor: "nx:run-commands",
           options: {
-            command: `pnpm exec knip --config "${join(relativePath, "node_modules/@storm-software/linting-tools/knip/config.json").replaceAll("\\", "/")}" --tsConfig "{projectRoot}/tsconfig.json" --directory "{projectRoot}" --fix --no-exit-code --cache --cache-location "${join(relativePath, "node_modules/.cache/knip/{projectRoot}").replaceAll("\\", "/")}" --workspace "${relativePath.replaceAll("\\", "/")}"`
+            command: `pnpm exec knip --config "${join(relativePath, "node_modules/@storm-software/linting-tools/knip/config.json").replaceAll("\\", "/")}" --tsConfig "{projectRoot}/tsconfig.json" --directory "{projectRoot}" --fix --no-exit-code --cache --cache-location "${join(relativePath, "node_modules/.cache/knip/{projectRoot}").replaceAll("\\", "/")}"`
           }
         };
       }
