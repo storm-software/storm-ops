@@ -1,3 +1,10 @@
+## 1.254.6 (2025-02-07)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with unused variable ([d9b4cdbd9](https://github.com/storm-software/storm-ops/commit/d9b4cdbd9))
+- **linting-tools:** Resolve issue with external packages in binary ([0baaafe55](https://github.com/storm-software/storm-ops/commit/0baaafe55))
+
 ## 1.254.5 (2025-02-07)
 
 ### Bug Fixes

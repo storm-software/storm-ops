@@ -1,3 +1,9 @@
+## 1.115.9 (2025-02-07)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue with external packages in binary ([0baaafe55](https://github.com/storm-software/storm-ops/commit/0baaafe55))
+
 ## 1.115.8 (2025-02-07)
 
 ### Bug Fixes
