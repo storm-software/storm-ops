@@ -1,3 +1,9 @@
+## 1.115.6 (2025-02-07)
+
+### Bug Fixes
+
+- **linting-tools:** Resolving bundling issue with linting tools ([fdd2ed0db](https://github.com/storm-software/storm-ops/commit/fdd2ed0db))
+
 ## 1.115.5 (2025-02-07)
 
 ### Miscellaneous
