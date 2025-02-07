@@ -89,9 +89,9 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
     );
 
     if (
-      project.root
-        .replaceAll("\\", "/")
-        .startsWith(join(ctx.workspaceRoot, "tools").replaceAll("\\", "/")) &&
+      join(ctx.workspaceRoot, project.root).startsWith(
+        join(ctx.workspaceRoot, "tools")
+      ) &&
       opts?.lintInternalTools !== true
     ) {
       targets.lint = {
