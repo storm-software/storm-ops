@@ -1,3 +1,9 @@
+## 1.115.8 (2025-02-07)
+
+### Bug Fixes
+
+- **linting-tools:** Resolve issue with `knip` configurations ([acc5af2bb](https://github.com/storm-software/storm-ops/commit/acc5af2bb))
+
 ## 1.115.7 (2025-02-07)
 
 ### Bug Fixes
