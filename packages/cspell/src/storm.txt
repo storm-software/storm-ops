@@ -292,6 +292,13 @@ Losslessly
 wimax
 FEFF
 
+# JavaScript
+domwindow
+nodescript
+httpparser
+fsevent
+tlswrap
+
 # tsconfig.json keywords
 jsxdev
 jsxprod
