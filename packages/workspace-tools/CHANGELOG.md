@@ -1,3 +1,9 @@
+## 1.254.0 (2025-02-07)
+
+### Features
+
+- **workspace-tools:** Added the `lintInternalTools` option to plugin ([99f56f186](https://github.com/storm-software/storm-ops/commit/99f56f186))
+
 ## 1.253.0 (2025-02-07)
 
 ### Features
