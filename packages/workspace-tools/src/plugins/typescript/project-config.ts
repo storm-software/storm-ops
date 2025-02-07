@@ -78,7 +78,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       return {};
     }
 
-    const enableKnip = opts?.enableKnip !== false;
+    // const enableKnip = opts?.enableKnip !== false;
     const enableMarkdownlint = opts?.enableMarkdownlint !== false;
     const enableEslint = opts?.enableEslint !== false;
 
