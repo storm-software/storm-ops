@@ -1,3 +1,9 @@
+## 1.152.0 (2025-02-07)
+
+### Features
+
+- **git-tools:** Added better error handling logic to release ([d77894323](https://github.com/storm-software/storm-ops/commit/d77894323))
+
 ## 1.151.6 (2025-02-07)
 
 ### Bug Fixes

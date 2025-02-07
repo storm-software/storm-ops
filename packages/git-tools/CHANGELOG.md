@@ -1,3 +1,9 @@
+## 2.90.0 (2025-02-07)
+
+### Features
+
+- **git-tools:** Added better error handling logic to release ([d77894323](https://github.com/storm-software/storm-ops/commit/d77894323))
+
 ## 2.89.41 (2025-02-07)
 
 ### Bug Fixes
