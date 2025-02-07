@@ -1,3 +1,9 @@
+## 1.252.3 (2025-02-07)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with invalid path in `knip` config file ([107963908](https://github.com/storm-software/storm-ops/commit/107963908))
+
 ## 1.252.2 (2025-02-06)
 
 ### Bug Fixes
