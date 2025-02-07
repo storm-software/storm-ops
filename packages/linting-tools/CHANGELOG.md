@@ -1,3 +1,9 @@
+## 1.115.11 (2025-02-07)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue applying user's options in release process ([f763fb4db](https://github.com/storm-software/storm-ops/commit/f763fb4db))
+
 ## 1.115.10 (2025-02-07)
 
 ### Bug Fixes
