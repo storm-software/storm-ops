@@ -1,3 +1,9 @@
+## 1.117.0 (2025-02-07)
+
+### Features
+
+- **git-tools:** Improved error logging to the release process ([d5dd74f28](https://github.com/storm-software/storm-ops/commit/d5dd74f28))
+
 ## 1.116.0 (2025-02-07)
 
 ### Features
