@@ -200,10 +200,10 @@ export async function releaseAction({
     writeSuccess("Release completed successfully!\n", _config);
   } catch (error) {
     writeFatal(
-      `A fatal error occurred while running release action: \n\n${error.message}`,
+      `A fatal error occurred while running release action: \n\n${error.message} ${error.stack ? `\n\nStacktrace: ${error.stack}` : ""}`,
       _config
     );
-    writeFatal(error, _config);
+    console.error(error);
 
     throw new Error(error.message, { cause: error });
   }
