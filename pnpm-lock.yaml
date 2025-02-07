@@ -967,28 +967,28 @@ importers:
       '@angular-devkit/architect':
         specifier: 0.1900.6
         version: 0.1900.6(chokidar@4.0.3)
+    devDependencies:
       '@manypkg/cli':
         specifier: ^0.23.0
         version: 0.23.0
       '@manypkg/get-packages':
         specifier: ^2.2.1
         version: 2.2.1
-      alex:
-        specifier: ^11.0.1
-        version: 11.0.1
-      cspell:
-        specifier: 'catalog:'
-        version: 8.17.3
-    devDependencies:
       '@types/node':
         specifier: 'catalog:'
         version: 22.13.0
+      alex:
+        specifier: ^11.0.1
+        version: 11.0.1
       check-dependency-version-consistency:
         specifier: 4.1.0
         version: 4.1.0
       commander:
         specifier: 'catalog:'
         version: 12.1.0
+      cspell:
+        specifier: 'catalog:'
+        version: 8.17.3
       dpdm:
         specifier: 3.14.0
         version: 3.14.0

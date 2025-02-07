@@ -1,6 +1,6 @@
 import { CreateNodes } from "@nx/devkit";
 import { existsSync } from "node:fs";
-import { dirname, join, relative } from "node:path";
+import { dirname, join } from "node:path";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
 import { readJsonFile } from "nx/src/utils/fileutils";
@@ -103,24 +103,24 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
         }
       };
     } else {
-      if (!targets["lint-knip"] && enableKnip) {
-        const relativePath = relative(dirname(file), ctx.workspaceRoot);
+      // if (!targets["lint-knip"] && enableKnip) {
+      //   const relativePath = relative(dirname(file), ctx.workspaceRoot);
 
-        targets["lint-knip"] = {
-          cache: true,
-          outputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
-          inputs: [
-            "linting",
-            "{projectRoot}/**/*.md",
-            "{projectRoot}/**/*.mdx"
-          ],
-          dependsOn: ["^lint-knip"],
-          executor: "nx:run-commands",
-          options: {
-            command: `pnpm exec knip --config "${join(relativePath, "node_modules/@storm-software/linting-tools/knip/config.json").replaceAll("\\", "/")}" --tsConfig "{projectRoot}/tsconfig.json" --directory "{projectRoot}" --fix --no-exit-code --cache --cache-location "${join(relativePath, "node_modules/.cache/knip/{projectRoot}").replaceAll("\\", "/")}"`
-          }
-        };
-      }
+      //   targets["lint-knip"] = {
+      //     cache: true,
+      //     outputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
+      //     inputs: [
+      //       "linting",
+      //       "{projectRoot}/**/*.md",
+      //       "{projectRoot}/**/*.mdx"
+      //     ],
+      //     dependsOn: ["^lint-knip"],
+      //     executor: "nx:run-commands",
+      //     options: {
+      //       command: `pnpm exec knip --config "${join(relativePath, "node_modules/@storm-software/linting-tools/knip/config.json").replaceAll("\\", "/")}" --tsConfig "{projectRoot}/tsconfig.json" --directory "{projectRoot}" --fix --no-exit-code --cache --cache-location "${join(relativePath, "node_modules/.cache/knip/{projectRoot}").replaceAll("\\", "/")}"`
+      //     }
+      //   };
+      // }
 
       if (!targets["lint-markdown"] && enableMarkdownlint) {
         targets["lint-markdown"] = {
