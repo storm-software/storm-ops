@@ -1,3 +1,9 @@
+## 1.115.3 (2025-02-07)
+
+### Miscellaneous
+
+- **linting-tools:** Added new `entry` paths to `knip` configuration ([1386d06d4](https://github.com/storm-software/storm-ops/commit/1386d06d4))
+
 ## 1.115.2 (2025-02-06)
 
 ### Bug Fixes
