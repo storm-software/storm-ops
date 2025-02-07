@@ -1,3 +1,9 @@
+## 1.115.4 (2025-02-07)
+
+### Miscellaneous
+
+- **linting-tools:** Added `$schema` to `knip` configuration ([6e7e8e45b](https://github.com/storm-software/storm-ops/commit/6e7e8e45b))
+
 ## 1.115.3 (2025-02-07)
 
 ### Miscellaneous
