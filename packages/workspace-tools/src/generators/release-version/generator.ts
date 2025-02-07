@@ -8,7 +8,7 @@ import {
   type ProjectGraph,
   type ProjectGraphDependency,
   type ProjectGraphProjectNode,
-  type Tree,
+  type Tree
 } from "@nx/devkit";
 import { resolveLocalPackageDependencies as resolveLocalPackageJsonDependencies } from "@nx/js/src/generators/release-version/utils/resolve-local-package-dependencies";
 import { updateLockFile } from "@nx/js/src/generators/release-version/utils/update-lock-file";
@@ -22,7 +22,7 @@ import {
   writeFatal,
   writeInfo,
   writeSuccess,
-  writeTrace,
+  writeTrace
 } from "@storm-software/config-tools";
 import { DEFAULT_CONVENTIONAL_COMMITS_CONFIG } from "@storm-software/git-tools";
 import { exec, execSync } from "node:child_process";
@@ -30,18 +30,18 @@ import { relative } from "node:path";
 import { IMPLICIT_DEFAULT_RELEASE_GROUP } from "nx/src/command-line/release/config/config";
 import {
   getFirstGitCommit,
-  getLatestGitTagForPattern,
+  getLatestGitTagForPattern
 } from "nx/src/command-line/release/utils/git";
 import {
   resolveSemverSpecifierFromConventionalCommits,
-  resolveSemverSpecifierFromPrompt,
+  resolveSemverSpecifierFromPrompt
 } from "nx/src/command-line/release/utils/resolve-semver-specifier";
 import { isValidSemverSpecifier } from "nx/src/command-line/release/utils/semver";
 import {
   deriveNewSemverVersion,
   ReleaseVersionGeneratorResult,
   validReleaseVersionPrefixes,
-  type VersionData,
+  type VersionData
 } from "nx/src/command-line/release/version";
 import { interpolate } from "nx/src/tasks-runner/utils";
 import { prerelease } from "semver";
@@ -49,7 +49,7 @@ import {
   modifyCargoTable,
   parseCargoToml,
   parseCargoTomlWithTree,
-  stringifyCargoToml,
+  stringifyCargoToml
 } from "../../utils/toml";
 import type { ReleaseVersionGeneratorSchema } from "./schema.d";
 
@@ -58,7 +58,7 @@ type ReleaseVersionPrefixes = "auto" | "" | "~" | "^" | "=";
 export async function releaseVersionGeneratorFn(
   tree: Tree,
   options: ReleaseVersionGeneratorSchema,
-  config?: StormConfig,
+  config?: StormConfig
 ): Promise<ReleaseVersionGeneratorResult> {
   writeInfo(`⚡ Running the Storm Release Version generator...\n\n`, config);
 
@@ -69,16 +69,16 @@ export async function releaseVersionGeneratorFn(
     writeDebug(
       `Loading the Storm Config from environment variables and storm.config.js file...
  - workspaceRoot: ${workspaceRoot}`,
-      config,
+      config
     );
 
     config = await getConfig(workspaceRoot);
 
     writeTrace(
       `Generator schema options ⚙️ \n${Object.keys(options ?? {})
-        .map((key) => ` - ${key}=${JSON.stringify(options[key])}`)
+        .map(key => ` - ${key}=${JSON.stringify(options[key])}`)
         .join("\n")}`,
-      config,
+      config
     );
 
     const versionData: VersionData = {};
@@ -87,7 +87,7 @@ export async function releaseVersionGeneratorFn(
     if (options.specifier) {
       if (!isValidSemverSpecifier(options.specifier)) {
         throw new Error(
-          `The given version specifier "${options.specifier}" is not valid. You provide an exact version or a valid semver keyword such as "major", "minor", "patch", etc.`,
+          `The given version specifier "${options.specifier}" is not valid. You provide an exact version or a valid semver keyword such as "major", "minor", "patch", etc.`
         );
       }
       // The node semver library classes a leading `v` as valid, but we want to ensure it is not present in the final version
@@ -97,18 +97,19 @@ export async function releaseVersionGeneratorFn(
     if (
       options.versionPrefix &&
       validReleaseVersionPrefixes.indexOf(
-        options.versionPrefix as ReleaseVersionPrefixes,
+        options.versionPrefix as ReleaseVersionPrefixes
       ) === -1
     ) {
       throw new Error(
         `Invalid value for version.generatorOptions.versionPrefix: "${options.versionPrefix}"
 
-Valid values are: ${validReleaseVersionPrefixes.map((s) => `"${s}"`).join(", ")}`,
+Valid values are: ${validReleaseVersionPrefixes.map(s => `"${s}"`).join(", ")}`
       );
     }
 
     // always use disk as a fallback in case this is the first release
     options.fallbackCurrentVersionResolver ??= "disk";
+    options.currentVersionResolver ??= "git-tag";
 
     const projects = options.projects;
 
@@ -130,7 +131,7 @@ Valid values are: ${validReleaseVersionPrefixes.map((s) => `"${s}"`).join(", ")}
         return interpolate(customPackageRoot, {
           workspaceRoot: "",
           projectRoot: projectNode.data.root,
-          projectName: projectNode.name,
+          projectName: projectNode.name
         });
       };
 
@@ -141,7 +142,7 @@ Valid values are: ${validReleaseVersionPrefixes.map((s) => `"${s}"`).join(", ")}
     for (const project of projects) {
       projectNameToPackageRootMap.set(
         project.name,
-        resolvePackageRoot(project as ProjectGraphProjectNode),
+        resolvePackageRoot(project as ProjectGraphProjectNode)
       );
     }
 
@@ -157,23 +158,23 @@ Valid values are: ${validReleaseVersionPrefixes.map((s) => `"${s}"`).join(", ")}
 
       const packageJsonPath = joinPathFragments(
         packageRoot ?? "./",
-        "package.json",
+        "package.json"
       );
       const cargoTomlPath = joinPathFragments(
         packageRoot ?? "./",
-        "Cargo.toml",
+        "Cargo.toml"
       );
       if (!tree.exists(packageJsonPath) && !tree.exists(cargoTomlPath)) {
         throw new Error(
           `The project "${projectName}" does not have a package.json available at ${packageJsonPath} or a Cargo.toml file available at ${cargoTomlPath}.
 
-To fix this you will either need to add a package.json or Cargo.toml file at that location, or configure "release" within your nx.json to exclude "${projectName}" from the current release group, or amend the packageRoot configuration to point to where the package.json should be.`,
+To fix this you will either need to add a package.json or Cargo.toml file at that location, or configure "release" within your nx.json to exclude "${projectName}" from the current release group, or amend the packageRoot configuration to point to where the package.json should be.`
         );
       }
 
       const workspaceRelativePackagePath = relative(
         config?.workspaceRoot ?? findWorkspaceRoot(),
-        tree.exists(packageJsonPath) ? packageJsonPath : cargoTomlPath,
+        tree.exists(packageJsonPath) ? packageJsonPath : cargoTomlPath
       );
 
       const log = (msg: string) => {
@@ -188,17 +189,17 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
       if (tree.exists(packageJsonPath)) {
         const projectPackageJson = readJson(tree, packageJsonPath);
         log(
-          `🔍 Reading data for package "${projectPackageJson.name}" from ${workspaceRelativePackagePath}`,
+          `🔍 Reading data for package "${projectPackageJson.name}" from ${workspaceRelativePackagePath}`
         );
 
         packageName = projectPackageJson.name;
         currentVersionFromDisk = projectPackageJson.version;
       } else if (tree.exists(cargoTomlPath)) {
         const cargoToml = parseCargoToml(
-          tree.read(cargoTomlPath)?.toString("utf-8"),
+          tree.read(cargoTomlPath)?.toString("utf-8")
         );
         log(
-          `🔍 Reading data for package "${cargoToml.package.name}" from ${workspaceRelativePackagePath}`,
+          `🔍 Reading data for package "${cargoToml.package.name}" from ${workspaceRelativePackagePath}`
         );
 
         packageName = cargoToml.package.name;
@@ -211,7 +212,7 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
         throw new Error(
           `The project "${projectName}" does not have a package.json available at ${workspaceRelativePackagePath} or a Cargo.toml file available at ${cargoTomlPath}.
 
-To fix this you will either need to add a package.json or Cargo.toml file at that location, or configure "release" within your nx.json to exclude "${projectName}" from the current release group, or amend the packageRoot configuration to point to where the package.json should be.`,
+To fix this you will either need to add a package.json or Cargo.toml file at that location, or configure "release" within your nx.json to exclude "${projectName}" from the current release group, or amend the packageRoot configuration to point to where the package.json should be.`
         );
       }
 
@@ -241,14 +242,14 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
                       return reject(stderr);
                     }
                     return resolve(stdout.trim());
-                  },
+                  }
                 );
               });
 
               // spinner.stop();
 
               log(
-                `📄 Resolved the current version as ${currentVersion} for tag "${tag}" from registry ${npmRegistry}`,
+                `📄 Resolved the current version as ${currentVersion} for tag "${tag}" from registry ${npmRegistry}`
               );
             } catch (_) {
               try {
@@ -265,26 +266,26 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
                           return reject(stderr);
                         }
                         return resolve(stdout.trim());
-                      },
+                      }
                     );
-                  },
+                  }
                 );
 
                 // spinner.stop();
 
                 log(
-                  `📄 Resolved the current version as ${currentVersion} for tag "${tag}" from registry ${githubRegistry}`,
+                  `📄 Resolved the current version as ${currentVersion} for tag "${tag}" from registry ${githubRegistry}`
                 );
               } catch (_) {
                 if (options.fallbackCurrentVersionResolver === "disk") {
                   log(
-                    `📄 Unable to resolve the current version from the registry ${npmRegistry}${githubRegistry ? ` or ${githubRegistry}` : ""}. Falling back to the version on disk of ${currentVersionFromDisk}`,
+                    `📄 Unable to resolve the current version from the registry ${npmRegistry}${githubRegistry ? ` or ${githubRegistry}` : ""}. Falling back to the version on disk of ${currentVersionFromDisk}`
                   );
                   currentVersion = currentVersionFromDisk;
                   currentVersionResolvedFromFallback = true;
                 } else {
                   throw new Error(
-                    `Unable to resolve the current version from the registry ${npmRegistry}${githubRegistry ? ` or ${githubRegistry}` : ""}. Please ensure that the package exists in the registry in order to use the "registry" currentVersionResolver. Alternatively, you can use the --first-release option or set "release.version.generatorOptions.fallbackCurrentVersionResolver" to "disk" in order to fallback to the version on disk when the registry lookup fails.`,
+                    `Unable to resolve the current version from the registry ${npmRegistry}${githubRegistry ? ` or ${githubRegistry}` : ""}. Please ensure that the package exists in the registry in order to use the "registry" currentVersionResolver. Alternatively, you can use the --first-release option or set "release.version.generatorOptions.fallbackCurrentVersionResolver" to "disk" in order to fallback to the version on disk when the registry lookup fails.`
                   );
                 }
               }
@@ -292,11 +293,11 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
           } else {
             if (currentVersionResolvedFromFallback) {
               log(
-                `📄 Using the current version ${currentVersion} already resolved from disk fallback.`,
+                `📄 Using the current version ${currentVersion} already resolved from disk fallback.`
               );
             } else {
               log(
-                `📄 Using the current version ${currentVersion} already resolved from the registry ${npmRegistry ?? githubRegistry}`,
+                `📄 Using the current version ${currentVersion} already resolved from the registry ${npmRegistry ?? githubRegistry}`
               );
             }
           }
@@ -306,7 +307,7 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
         case "disk":
           currentVersion = currentVersionFromDisk;
           log(
-            `📄 Resolved the current version as ${currentVersion} from ${packageJsonPath}`,
+            `📄 Resolved the current version as ${currentVersion} from ${packageJsonPath}`
           );
           break;
         case "git-tag": {
@@ -318,18 +319,18 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
             latestMatchingGitTag = await getLatestGitTagForPattern(
               releaseTagPattern,
               {
-                projectName: project.name,
-              },
+                projectName: project.name
+              }
             );
             if (!latestMatchingGitTag) {
               if (currentVersionFromDisk) {
                 log(
-                  `📄 Unable to resolve the current version from git tag using pattern "${releaseTagPattern}". Falling back to the version on disk of ${currentVersionFromDisk}`,
+                  `📄 Unable to resolve the current version from git tag using pattern "${releaseTagPattern}". Falling back to the version on disk of ${currentVersionFromDisk}`
                 );
                 currentVersion = currentVersionFromDisk;
               } else {
                 log(
-                  `No git tags matching pattern "${releaseTagPattern}" for project "${project.name}" were found. This process also could not determine the version by checking the package files on disk, so we will attempt to use the default version value: "0.0.1".`,
+                  `No git tags matching pattern "${releaseTagPattern}" for project "${project.name}" were found. This process also could not determine the version by checking the package files on disk, so we will attempt to use the default version value: "0.0.1".`
                 );
                 currentVersion = "0.0.1";
               }
@@ -338,17 +339,17 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
             } else {
               currentVersion = latestMatchingGitTag.extractedVersion;
               log(
-                `📄 Resolved the current version as ${currentVersion} from git tag "${latestMatchingGitTag.tag}".`,
+                `📄 Resolved the current version as ${currentVersion} from git tag "${latestMatchingGitTag.tag}".`
               );
             }
           } else {
             if (currentVersionResolvedFromFallback) {
               log(
-                `📄 Using the current version ${currentVersion} already resolved from disk fallback.`,
+                `📄 Using the current version ${currentVersion} already resolved from disk fallback.`
               );
             } else {
               log(
-                `📄 Using the current version ${currentVersion} already resolved from git tag "${latestMatchingGitTag.tag}".`,
+                `📄 Using the current version ${currentVersion} already resolved from git tag "${latestMatchingGitTag.tag}".`
               );
             }
           }
@@ -356,7 +357,7 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
         }
         default:
           throw new Error(
-            `Invalid value for options.currentVersionResolver: ${options.currentVersionResolver}`,
+            `Invalid value for options.currentVersionResolver: ${options.currentVersionResolver}`
           );
       }
 
@@ -384,14 +385,14 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
           case "conventional-commits": {
             if (options.currentVersionResolver !== "git-tag") {
               throw new Error(
-                `Invalid currentVersionResolver "${options.currentVersionResolver}" provided for release group "${options.releaseGroup.name}". Must be "git-tag" when "specifierSource" is "conventional-commits"`,
+                `Invalid currentVersionResolver "${options.currentVersionResolver}" provided for release group "${options.releaseGroup.name}". Must be "git-tag" when "specifierSource" is "conventional-commits"`
               );
             }
 
             const affectedProjects =
               options.releaseGroup.projectsRelationship === "independent"
                 ? [projectName]
-                : projects.map((p) => p.name);
+                : projects.map(p => p.name);
 
             // latestMatchingGitTag will be undefined if the current version was resolved from the disk fallback.
             // In this case, we want to use the first commit as the ref to be consistent with the changelog command.
@@ -401,8 +402,8 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
             if (!previousVersionRef) {
               log(
                 `Unable to determine previous version ref for the projects ${affectedProjects.join(
-                  ", ",
-                )}. This is likely a bug in Storm's Release Versioning. We will attempt to use the default version value "0.0.1" and continue with the process.`,
+                  ", "
+                )}. This is likely a bug in Storm's Release Versioning. We will attempt to use the default version value "0.0.1" and continue with the process.`
               );
 
               previousVersionRef = "0.0.1";
@@ -413,12 +414,12 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
                 previousVersionRef,
                 options.projectGraph as ProjectGraph,
                 affectedProjects,
-                DEFAULT_CONVENTIONAL_COMMITS_CONFIG,
+                DEFAULT_CONVENTIONAL_COMMITS_CONFIG
               )) ?? undefined;
 
             if (!specifier) {
               log(
-                "🚫 No changes were detected using git history and the conventional commits standard.",
+                "🚫 No changes were detected using git history and the conventional commits standard."
               );
               break;
             }
@@ -428,11 +429,11 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
             if (currentVersion && prerelease(currentVersion)) {
               specifier = "prerelease";
               log(
-                `📄 Resolved the specifier as "${specifier}" since the current version is a prerelease.`,
+                `📄 Resolved the specifier as "${specifier}" since the current version is a prerelease.`
               );
             } else {
               log(
-                `📄 Resolved the specifier as "${specifier}" using git history and the conventional commits standard.`,
+                `📄 Resolved the specifier as "${specifier}" using git history and the conventional commits standard.`
               );
             }
             break;
@@ -450,25 +451,25 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
             if (options.releaseGroup.projectsRelationship === "independent") {
               specifier = await resolveSemverSpecifierFromPrompt(
                 `${maybeLogReleaseGroup(
-                  `What kind of change is this for project "${projectName}"`,
+                  `What kind of change is this for project "${projectName}"`
                 )}?`,
-                `${maybeLogReleaseGroup(`What is the exact version for project "${projectName}"`)}?`,
+                `${maybeLogReleaseGroup(`What is the exact version for project "${projectName}"`)}?`
               );
             } else {
               specifier = await resolveSemverSpecifierFromPrompt(
                 `${maybeLogReleaseGroup(
-                  `What kind of change is this for the ${projects.length} matched projects(s)`,
+                  `What kind of change is this for the ${projects.length} matched projects(s)`
                 )}?`,
                 `${maybeLogReleaseGroup(
-                  `What is the exact version for the ${projects.length} matched project(s)`,
-                )}?`,
+                  `What is the exact version for the ${projects.length} matched project(s)`
+                )}?`
               );
             }
             break;
           }
           default:
             throw new Error(
-              `Invalid specifierSource "${specifierSource}" provided. Must be one of "prompt" or "conventional-commits"`,
+              `Invalid specifierSource "${specifierSource}" provided. Must be one of "prompt" or "conventional-commits"`
             );
         }
       }
@@ -478,38 +479,37 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
         tree,
         options.projectGraph as ProjectGraph,
         projects.filter(
-          (project) =>
-            project?.data?.root &&
-            project?.data?.root !== config?.workspaceRoot,
+          project =>
+            project?.data?.root && project?.data?.root !== config?.workspaceRoot
         ) as ProjectGraphProjectNode[],
         projectNameToPackageRootMap,
         resolvePackageRoot,
         // includeAll when the release group is independent, as we may be filtering to a specific subset of projects, but we still want to update their dependents
         options.releaseGroup.projectsRelationship === "independent",
-        tree.exists(packageJsonPath),
+        tree.exists(packageJsonPath)
       );
 
       const dependentProjects = Object.values(localPackageDependencies)
         .flat()
-        .filter((localPackageDependency) => {
+        .filter(localPackageDependency => {
           return localPackageDependency.target === project.name;
         });
 
       if (!currentVersion) {
         throw new Error(
-          `Unable to determine the current version for project "${projectName}"`,
+          `Unable to determine the current version for project "${projectName}"`
         );
       }
 
       versionData[projectName] = {
         currentVersion: currentVersion ? currentVersion : "0.0.1",
         dependentProjects,
-        newVersion: null, // will stay as null in the final result in the case that no changes are detected
+        newVersion: null // will stay as null in the final result in the case that no changes are detected
       } as any;
 
       if (!specifier) {
         log(
-          `🚫 Skipping versioning "${packageName}" as no changes were detected.`,
+          `🚫 Skipping versioning "${packageName}" as no changes were detected.`
         );
         continue;
       }
@@ -517,7 +517,7 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
       const newVersion = deriveNewSemverVersion(
         currentVersion,
         specifier,
-        options.preid,
+        options.preid
       );
       if (versionData[projectName]) {
         versionData[projectName]!.newVersion = newVersion;
@@ -528,11 +528,11 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
 
         writeJson(tree, packageJsonPath, {
           ...projectPackageJson,
-          version: newVersion,
+          version: newVersion
         });
       } else if (tree.exists(cargoTomlPath)) {
         const cargoToml = parseCargoToml(
-          tree.read(cargoTomlPath)?.toString("utf-8"),
+          tree.read(cargoTomlPath)?.toString("utf-8")
         );
 
         cargoToml.package ??= {};
@@ -541,7 +541,7 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
       }
 
       log(
-        `✍️  New version ${newVersion} written to ${workspaceRelativePackagePath}`,
+        `✍️  New version ${newVersion} written to ${workspaceRelativePackagePath}`
       );
 
       if (dependentProjects.length > 0) {
@@ -550,33 +550,33 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
             dependentProjects.length > 1
               ? "packages which depend"
               : "package which depends"
-          } on ${project.name}`,
+          } on ${project.name}`
         );
       }
 
       for (const dependentProject of dependentProjects) {
         const dependentPackageRoot = projectNameToPackageRootMap.get(
-          dependentProject.source,
+          dependentProject.source
         );
         if (!dependentPackageRoot) {
           throw new Error(
             `The dependent project "${dependentProject.source}" does not have a packageRoot available.
 
-Projects with packageRoot configured: ${Array.from(projectNameToPackageRootMap.keys()).join(", ")}`,
+Projects with packageRoot configured: ${Array.from(projectNameToPackageRootMap.keys()).join(", ")}`
           );
         }
 
         const dependentPackageJsonPath = joinPathFragments(
           dependentPackageRoot,
-          "package.json",
+          "package.json"
         );
         const dependentCargoTomlPath = joinPathFragments(
           dependentPackageRoot,
-          "Cargo.toml",
+          "Cargo.toml"
         );
 
         if (tree.exists(dependentPackageJsonPath)) {
-          updateJson(tree, dependentPackageJsonPath, (json) => {
+          updateJson(tree, dependentPackageJsonPath, json => {
             // Auto (i.e.infer existing) by default
             let versionPrefix = options.versionPrefix ?? "auto";
 
@@ -603,7 +603,7 @@ Projects with packageRoot configured: ${Array.from(projectNameToPackageRootMap.k
           const dependentPkg = parseCargoTomlWithTree(
             tree,
             dependentPackageRoot,
-            dependentProject.source,
+            dependentProject.source
           );
 
           // Auto (i.e.infer existing) by default
@@ -611,11 +611,11 @@ Projects with packageRoot configured: ${Array.from(projectNameToPackageRootMap.k
           let updatedDependencyData: string | Record<string, string> = "";
 
           for (const dependency of Object.entries(
-            dependentPkg[dependentProject.dependencyCollection] ?? {},
+            dependentPkg[dependentProject.dependencyCollection] ?? {}
           )) {
             const [dependencyName, dependencyData] = dependency as [
               string,
-              string | Record<string, string>,
+              string | Record<string, string>
             ];
 
             if (dependencyName !== dependentProject.target) {
@@ -660,21 +660,21 @@ Projects with packageRoot configured: ${Array.from(projectNameToPackageRootMap.k
                 ? newVersionWithPrefix
                 : {
                     ...dependencyData,
-                    version: newVersionWithPrefix,
+                    version: newVersionWithPrefix
                   };
             break;
           }
 
           const cargoTomlToUpdate = joinPathFragments(
             dependentPackageRoot,
-            "Cargo.toml",
+            "Cargo.toml"
           );
 
           modifyCargoTable(
             dependentPkg,
             dependentProject.dependencyCollection,
             dependentProject.target,
-            updatedDependencyData,
+            updatedDependencyData
           );
 
           tree.write(cargoTomlToUpdate, stringifyCargoToml(dependentPkg));
@@ -690,7 +690,7 @@ Projects with packageRoot configured: ${Array.from(projectNameToPackageRootMap.k
 
     writeSuccess(
       `Completed running the Storm Release Version generator!\n`,
-      config,
+      config
     );
 
     // Return the version data so that it can be leveraged by the overall version command
@@ -704,9 +704,9 @@ Projects with packageRoot configured: ${Array.from(projectNameToPackageRootMap.k
 
         const updatedCargoPackages = [] as string[];
         for (const [projectName, projectVersionData] of Object.entries(
-          versionData,
+          versionData
         )) {
-          const project = projects.find((proj) => proj.name === projectName);
+          const project = projects.find(proj => proj.name === projectName);
           if (
             projectVersionData.newVersion &&
             project?.name &&
@@ -726,9 +726,9 @@ Projects with packageRoot configured: ${Array.from(projectNameToPackageRootMap.k
           execSync(`cargo update ${updatedCargoPackages.join(" ")}`, {
             maxBuffer: 1024 * 1024 * 1024,
             env: {
-              ...process.env,
+              ...process.env
             },
-            cwd: tree.root,
+            cwd: tree.root
           });
 
           if (hasGitDiff("Cargo.lock")) {
@@ -737,21 +737,21 @@ Projects with packageRoot configured: ${Array.from(projectNameToPackageRootMap.k
         }
 
         return updatedFiles;
-      },
+      }
     };
   } catch (error) {
     writeFatal(
       "A fatal error occurred while running the Storm Release Version generator - the process was forced to terminate",
-      config,
+      config
     );
     writeError(
       `An exception was thrown in the Storm Release Version generator's process \n - Details: ${error.message}\n - Stacktrace: ${error.stack}`,
-      config,
+      config
     );
 
     throw new Error(
       `An exception was thrown in the Storm Release Version generator's process \n - Details: ${error.message}`,
-      { cause: error },
+      { cause: error }
     );
   } finally {
     stopwatch();
@@ -809,7 +809,7 @@ function resolveLocalPackageDependencies(
   projectNameToPackageRootMap: Map<string, string>,
   resolvePackageRoot: (projectNode: ProjectGraphProjectNode) => string,
   includeAll = false,
-  isNodeProject = true,
+  isNodeProject = true
 ): Record<string, LocalPackageDependency[]> {
   if (isNodeProject) {
     return resolveLocalPackageJsonDependencies(
@@ -818,7 +818,7 @@ function resolveLocalPackageDependencies(
       filteredProjects,
       projectNameToPackageRootMap,
       resolvePackageRoot,
-      includeAll,
+      includeAll
     ) as Record<string, LocalPackageDependency[]>;
   }
 
@@ -828,7 +828,7 @@ function resolveLocalPackageDependencies(
     filteredProjects,
     projectNameToPackageRootMap,
     resolvePackageRoot,
-    includeAll,
+    includeAll
   );
 }
 
@@ -838,7 +838,7 @@ function resolveLocalPackageCargoDependencies(
   filteredProjects: ProjectGraphProjectNode[],
   projectNameToPackageRootMap: Map<string, string>,
   resolvePackageRoot: (projectNode: ProjectGraphProjectNode) => string,
-  includeAll = false,
+  includeAll = false
 ): Record<string, LocalPackageDependency[]> {
   const localPackageDependencies: Record<string, LocalPackageDependency[]> = {};
 
@@ -877,13 +877,13 @@ function resolveLocalPackageCargoDependencies(
       const depProjectRoot = projectNameToPackageRootMap.get(dep.target);
       if (!depProjectRoot) {
         throw new Error(
-          `The project "${dep.target}" does not have a packageRoot available.`,
+          `The project "${dep.target}" does not have a packageRoot available.`
         );
       }
       const cargoToml = parseCargoTomlWithTree(
         tree,
         resolvePackageRoot(projectNode),
-        projectNode.name,
+        projectNode.name
       );
       const dependencies = cargoToml.dependencies ?? {};
       const devDependencies = cargoToml["dev-dependencies"] ?? {};
@@ -895,12 +895,12 @@ function resolveLocalPackageCargoDependencies(
             : null;
       if (!dependencyCollection) {
         throw new Error(
-          `The project "${projectNode.name}" does not have a local dependency on "${depProject.name}" in its Cargo.toml`,
+          `The project "${projectNode.name}" does not have a local dependency on "${depProject.name}" in its Cargo.toml`
         );
       }
       localPackageDepsForProject.push({
         ...dep,
-        dependencyCollection,
+        dependencyCollection
       });
     }
 

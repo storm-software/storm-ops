@@ -120,7 +120,8 @@ export const runRelease = async (
       deleteVersionPlans: false,
       stageChanges: true,
       gitCommit: false,
-      gitTag: false
+      gitTag: false,
+      nxReleaseConfig
     }
   );
 

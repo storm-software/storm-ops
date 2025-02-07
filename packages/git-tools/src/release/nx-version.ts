@@ -4,7 +4,7 @@ import {
   findWorkspaceRoot,
   writeDebug,
   writeError,
-  writeInfo,
+  writeInfo
 } from "@storm-software/config-tools";
 import { readFileSync } from "node:fs";
 import { relative } from "node:path";
@@ -14,11 +14,11 @@ import type { VersionOptions } from "nx/src/command-line/release/command-object.
 import {
   createNxReleaseConfig,
   handleNxReleaseConfigError,
-  type NxReleaseConfig,
+  type NxReleaseConfig
 } from "nx/src/command-line/release/config/config.js";
 import {
   filterReleaseGroups,
-  type ReleaseGroupWithName,
+  type ReleaseGroupWithName
 } from "nx/src/command-line/release/config/filter-release-groups.js";
 import { batchProjectsByGeneratorConfig } from "nx/src/command-line/release/utils/batch-projects-by-generator-config.js";
 import { gitAdd, gitTag } from "nx/src/command-line/release/utils/git.js";
@@ -29,20 +29,24 @@ import {
   createCommitMessageValues,
   createGitTagValues,
   handleDuplicateGitTags,
-  type VersionData,
+  type VersionData
 } from "nx/src/command-line/release/utils/shared.js";
 import type {
   NxReleaseVersionResult,
   ReleaseVersionGeneratorResult,
-  ReleaseVersionGeneratorSchema,
+  ReleaseVersionGeneratorSchema
 } from "nx/src/command-line/release/version.js";
-import { readNxJson, type NxJsonConfiguration } from "nx/src/config/nx-json.js";
+import {
+  NxReleaseConfiguration,
+  readNxJson,
+  type NxJsonConfiguration
+} from "nx/src/config/nx-json.js";
 import type { ProjectGraph } from "nx/src/config/project-graph.js";
 import { flushChanges, FsTree, type Tree } from "nx/src/generators/tree.js";
 import { createProjectFileMapUsingProjectGraph } from "nx/src/project-graph/file-map-utils.js";
 import {
   createProjectGraphAsync,
-  readProjectsConfigurationFromProjectGraph,
+  readProjectsConfigurationFromProjectGraph
 } from "nx/src/project-graph/project-graph.js";
 import { combineOptionsForGenerator } from "nx/src/utils/params.js";
 
@@ -57,7 +61,7 @@ interface GeneratorData {
 
 export async function releaseVersion(
   config: StormConfig,
-  args: VersionOptions,
+  args: VersionOptions & { nxReleaseConfig: NxReleaseConfiguration }
 ): Promise<NxReleaseVersionResult> {
   writeInfo("Running release version command", config);
 
@@ -75,7 +79,7 @@ export async function releaseVersion(
   const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
     projectGraph,
     await createProjectFileMapUsingProjectGraph(projectGraph),
-    nxJson.release,
+    args.nxReleaseConfig
   );
   if (configError) {
     return await handleNxReleaseConfigError(configError);
@@ -94,7 +98,7 @@ export async function releaseVersion(
     await resolveNxJsonConfigErrorMessage(["release", "git"]);
 
     throw new Error(
-      `The "release.git" property in nx.json may not be used with the "nx release version" subcommand or programmatic API. Instead, configure git options for subcommands directly with "release.version.git" and "release.changelog.git".`,
+      `The "release.git" property in nx.json may not be used with the "nx release version" subcommand or programmatic API. Instead, configure git options for subcommands directly with "release.version.git" and "release.changelog.git".`
     );
   }
 
@@ -103,12 +107,12 @@ export async function releaseVersion(
   const {
     error: filterError,
     releaseGroups,
-    releaseGroupToFilteredProjects,
+    releaseGroupToFilteredProjects
   } = filterReleaseGroups(
     projectGraph,
     nxReleaseConfig as NxReleaseConfig,
     args.projects,
-    args.groups,
+    args.groups
   );
   if (filterError) {
     writeError(filterError.title, config);
@@ -126,49 +130,49 @@ export async function releaseVersion(
   if (args.projects?.length) {
     writeInfo(
       "Run versioning for all remaining release groups and filtered projects within them",
-      config,
+      config
     );
 
     for (const releaseGroup of releaseGroups) {
       const releaseGroupName = releaseGroup.name;
       writeInfo(
         `Running versioning for release group "${releaseGroupName}" and filtered projects within it`,
-        config,
+        config
       );
 
       const releaseGroupProjectNames = Array.from(
-        releaseGroupToFilteredProjects.get(releaseGroup) ?? [],
+        releaseGroupToFilteredProjects.get(releaseGroup) ?? []
       );
       const projectBatches = batchProjectsByGeneratorConfig(
         projectGraph,
         releaseGroup,
         // Only batch based on the filtered projects within the release group
-        releaseGroupProjectNames,
+        releaseGroupProjectNames
       );
 
       for (const [
         generatorConfigString,
-        projectNames,
+        projectNames
       ] of projectBatches.entries()) {
         writeInfo(
           `Running versioning for batch "${JSON.stringify(
-            projectNames,
+            projectNames
           )}" for release-group "${releaseGroupName}"`,
-          config,
+          config
         );
 
         const [generatorName, generatorOptions] = JSON.parse(
-          generatorConfigString,
+          generatorConfigString
         );
         // Resolve the generator for the batch and run versioning on the projects within the batch
         const generatorData = resolveGeneratorData({
           ...extractGeneratorCollectionAndName(
             `batch "${JSON.stringify(projectNames)}" for release-group "${releaseGroupName}"`,
-            generatorName,
+            generatorName
           ),
           configGeneratorOptions: generatorOptions,
           // all project data from the project graph (not to be confused with projectNamesToRunVersionOn)
-          projects,
+          projects
         });
         const generatorCallback = await runVersionOnProjects(
           config,
@@ -179,14 +183,14 @@ export async function releaseVersion(
           generatorData,
           projectNames,
           releaseGroup,
-          versionData,
+          versionData
         );
         // Capture the callback so that we can run it after flushing the changes to disk
         generatorCallbacks.push(async () => {
           const changedFiles = await generatorCallback(tree, {
             dryRun: !!args.dryRun,
             verbose: !!args.verbose,
-            generatorOptions,
+            generatorOptions
           });
           if (Array.isArray(changedFiles)) {
             for (const f of changedFiles) {
@@ -207,7 +211,7 @@ export async function releaseVersion(
         ? createGitTagValues(
             releaseGroups,
             releaseGroupToFilteredProjects,
-            versionData,
+            versionData
           )
         : [];
 
@@ -219,8 +223,8 @@ export async function releaseVersion(
     }
 
     const changedFiles = [
-      ...tree.listChanges().map((f) => f.path),
-      ...additionalChangedFiles,
+      ...tree.listChanges().map(f => f.path),
+      ...additionalChangedFiles
     ];
 
     // No further actions are necessary in this scenario (e.g. if conventional commits detected no changes)
@@ -228,7 +232,7 @@ export async function releaseVersion(
       return {
         // An overall workspace version cannot be relevant when filtering to independent projects
         workspaceVersion: undefined,
-        projectsVersionData: versionData,
+        projectsVersionData: versionData
       };
     }
 
@@ -241,17 +245,17 @@ export async function releaseVersion(
           releaseGroups,
           releaseGroupToFilteredProjects,
           versionData,
-          commitMessage as string,
+          commitMessage as string
         ),
         gitCommitArgs:
-          args.gitCommitArgs || nxReleaseConfig?.version.git.commitArgs,
+          args.gitCommitArgs || nxReleaseConfig?.version.git.commitArgs
       });
     } else if (args.stageChanges ?? nxReleaseConfig?.version.git.stageChanges) {
       writeInfo("Staging changed files with git", config);
       await gitAdd({
         changedFiles,
         dryRun: args.dryRun,
-        verbose: args.verbose,
+        verbose: args.verbose
       });
     }
 
@@ -265,7 +269,7 @@ export async function releaseVersion(
           additionalArgs:
             args.gitTagArgs || nxReleaseConfig?.version.git.tagArgs,
           dryRun: args.dryRun,
-          verbose: args.verbose,
+          verbose: args.verbose
         });
       }
     }
@@ -273,7 +277,7 @@ export async function releaseVersion(
     return {
       // An overall workspace version cannot be relevant when filtering to independent projects
       workspaceVersion: undefined,
-      projectsVersionData: versionData,
+      projectsVersionData: versionData
     };
   }
 
@@ -286,25 +290,25 @@ export async function releaseVersion(
       projectGraph,
       releaseGroup,
       // Batch based on all projects within the release group
-      releaseGroup.projects,
+      releaseGroup.projects
     );
 
     for (const [
       generatorConfigString,
-      projectNames,
+      projectNames
     ] of projectBatches.entries()) {
       const [generatorName, generatorOptions] = JSON.parse(
-        generatorConfigString,
+        generatorConfigString
       );
       // Resolve the generator for the batch and run versioning on the projects within the batch
       const generatorData = resolveGeneratorData({
         ...extractGeneratorCollectionAndName(
           `batch "${JSON.stringify(projectNames)}" for release-group "${releaseGroupName}"`,
-          generatorName,
+          generatorName
         ),
         configGeneratorOptions: generatorOptions,
         // all project data from the project graph (not to be confused with projectNamesToRunVersionOn)
-        projects,
+        projects
       });
 
       const generatorCallback = await runVersionOnProjects(
@@ -316,7 +320,7 @@ export async function releaseVersion(
         generatorData,
         projectNames,
         releaseGroup,
-        versionData,
+        versionData
       );
 
       // Capture the callback so that we can run it after flushing the changes to disk
@@ -324,7 +328,7 @@ export async function releaseVersion(
         const changedFiles = await generatorCallback(tree, {
           dryRun: !!args.dryRun,
           verbose: !!args.verbose,
-          generatorOptions,
+          generatorOptions
         });
         if (Array.isArray(changedFiles)) {
           for (const f of changedFiles) {
@@ -345,7 +349,7 @@ export async function releaseVersion(
       ? createGitTagValues(
           releaseGroups,
           releaseGroupToFilteredProjects,
-          versionData,
+          versionData
         )
       : [];
 
@@ -362,7 +366,7 @@ export async function releaseVersion(
     const releaseGroup = releaseGroups[0];
     if (releaseGroup?.projectsRelationship === "fixed") {
       const releaseGroupProjectNames = Array.from(
-        releaseGroupToFilteredProjects.get(releaseGroup) ?? [],
+        releaseGroupToFilteredProjects.get(releaseGroup) ?? []
       );
       if (releaseGroupProjectNames.length > 0 && releaseGroupProjectNames[0]) {
         workspaceVersion = versionData[releaseGroupProjectNames[0]]?.newVersion; // all projects have the same version so we can just grab the first
@@ -371,15 +375,15 @@ export async function releaseVersion(
   }
 
   const changedFiles = [
-    ...tree.listChanges().map((f) => f.path),
-    ...additionalChangedFiles,
+    ...tree.listChanges().map(f => f.path),
+    ...additionalChangedFiles
   ];
 
   // No further actions are necessary in this scenario (e.g. if conventional commits detected no changes)
   if (!changedFiles.length) {
     return {
       workspaceVersion,
-      projectsVersionData: versionData,
+      projectsVersionData: versionData
     };
   }
 
@@ -392,17 +396,17 @@ export async function releaseVersion(
         releaseGroups,
         releaseGroupToFilteredProjects,
         versionData,
-        commitMessage as string,
+        commitMessage as string
       ),
       gitCommitArgs:
-        args.gitCommitArgs || nxReleaseConfig?.version.git.commitArgs,
+        args.gitCommitArgs || nxReleaseConfig?.version.git.commitArgs
     });
   } else if (args.stageChanges ?? nxReleaseConfig?.version.git.stageChanges) {
     writeInfo("Staging changed files with git", config);
     await gitAdd({
       changedFiles,
       dryRun: args.dryRun,
-      verbose: args.verbose,
+      verbose: args.verbose
     });
   }
 
@@ -414,14 +418,14 @@ export async function releaseVersion(
         message: args.gitTagMessage || nxReleaseConfig?.version.git.tagMessage,
         additionalArgs: args.gitTagArgs || nxReleaseConfig?.version.git.tagArgs,
         dryRun: args.dryRun,
-        verbose: args.verbose,
+        verbose: args.verbose
       });
     }
   }
 
   return {
     workspaceVersion,
-    projectsVersionData: versionData,
+    projectsVersionData: versionData
   };
 }
 
@@ -434,7 +438,7 @@ async function runVersionOnProjects(
   generatorData: GeneratorData,
   projectNames: string[],
   releaseGroup: ReleaseGroupWithName,
-  versionData: VersionData,
+  versionData: VersionData
 ): Promise<ReleaseVersionGeneratorResult["callback"]> {
   const workspaceRoot = config?.workspaceRoot ?? findWorkspaceRoot();
 
@@ -444,10 +448,10 @@ async function runVersionOnProjects(
     preid: args.preid ?? "",
     ...generatorData.configGeneratorOptions,
     // The following are not overridable by user config
-    projects: projectNames.map((p) => projectGraph.nodes[p]),
+    projects: projectNames.map(p => projectGraph.nodes[p]),
     projectGraph,
     releaseGroup,
-    firstRelease: args.firstRelease ?? false,
+    firstRelease: args.firstRelease ?? false
   };
 
   // Apply generator defaults from schema.json file etc
@@ -461,7 +465,7 @@ async function runVersionOnProjects(
     false,
     null,
     relative(process.cwd(), workspaceRoot),
-    args.verbose,
+    args.verbose
   );
 
   // writeDebug(
@@ -474,12 +478,12 @@ async function runVersionOnProjects(
   // We expect all version generator implementations to return a ReleaseVersionGeneratorResult object, rather than a GeneratorCallback
   const versionResult = (await releaseVersionGenerator(
     tree,
-    combinedOpts,
+    combinedOpts
   )) as unknown as ReleaseVersionGeneratorResult;
 
   if (typeof versionResult === "function") {
     throw new Error(
-      `The version generator ${generatorData.collectionName}:${generatorData.normalizedGeneratorName} returned a function instead of an expected ReleaseVersionGeneratorResult`,
+      `The version generator ${generatorData.collectionName}:${generatorData.normalizedGeneratorName} returned a function instead of an expected ReleaseVersionGeneratorResult`
     );
   }
 
@@ -488,7 +492,7 @@ async function runVersionOnProjects(
 
   writeDebug(
     `Updated version data: ${JSON.stringify(versionData, null, 2)}`,
-    config,
+    config
   );
 
   return versionResult.callback;
@@ -497,7 +501,7 @@ async function runVersionOnProjects(
 function printAndFlushChanges(
   config: StormConfig,
   tree: Tree,
-  isDryRun: boolean,
+  isDryRun: boolean
 ) {
   const changes = tree.listChanges();
 
@@ -509,12 +513,12 @@ function printAndFlushChanges(
     } else if (f.type === "UPDATE") {
       writeInfo(`UPDATE ${f.path}${isDryRun ? " [dry-run]" : ""}`, config);
       const currentContentsOnDisk = readFileSync(
-        joinPathFragments(tree.root, f.path),
+        joinPathFragments(tree.root, f.path)
       ).toString();
       printDiff(currentContentsOnDisk, f.content?.toString() || "");
     } else if (f.type === "DELETE") {
       throw new Error(
-        "Unexpected DELETE change, please report this as an issue",
+        "Unexpected DELETE change, please report this as an issue"
       );
     }
   }
@@ -526,7 +530,7 @@ function printAndFlushChanges(
 
 function extractGeneratorCollectionAndName(
   description: string,
-  generatorString: string,
+  generatorString: string
 ) {
   const parsedGeneratorString = parseGeneratorString(generatorString);
   const collectionName = parsedGeneratorString.collection;
@@ -534,7 +538,7 @@ function extractGeneratorCollectionAndName(
 
   if (!collectionName || !generatorName) {
     throw new Error(
-      `Invalid generator string: ${generatorString} used for ${description}. Must be in the format of [collectionName]:[generatorName]`,
+      `Invalid generator string: ${generatorString} used for ${description}. Must be in the format of [collectionName]:[generatorName]`
     );
   }
 
@@ -543,13 +547,13 @@ function extractGeneratorCollectionAndName(
 
 function appendVersionData(
   existingVersionData: VersionData,
-  newVersionData: VersionData = {},
+  newVersionData: VersionData = {}
 ): VersionData {
   // Mutate the existing version data
   for (const [key, value] of Object.entries(newVersionData)) {
     if (existingVersionData[key]) {
       throw new Error(
-        `Version data key "${key}" already exists in version data. This is likely a bug.`,
+        `Version data key "${key}" already exists in version data. This is likely a bug.`
       );
     }
     existingVersionData[key] = value;
@@ -561,7 +565,7 @@ function resolveGeneratorData({
   collectionName,
   generatorName,
   configGeneratorOptions,
-  projects,
+  projects
 }): GeneratorData {
   try {
     const { normalizedGeneratorName, schema, implementationFactory } =
@@ -569,7 +573,7 @@ function resolveGeneratorData({
         collectionName,
         generatorName,
         workspaceRoot,
-        projects,
+        projects
       );
 
     return {
@@ -578,7 +582,7 @@ function resolveGeneratorData({
       configGeneratorOptions,
       normalizedGeneratorName,
       schema,
-      implementationFactory: implementationFactory as any,
+      implementationFactory: implementationFactory as any
     };
   } catch (err) {
     if (err.message.startsWith("Unable to resolve")) {
@@ -587,7 +591,7 @@ function resolveGeneratorData({
         require.resolve(collectionName);
         // is installed
         throw new Error(
-          `Unable to resolve the generator called "${generatorName}" within the "${collectionName}" package`,
+          `Unable to resolve the generator called "${generatorName}" within the "${collectionName}" package`
         );
       } catch {
         /**
@@ -596,11 +600,11 @@ function resolveGeneratorData({
          */
         if (collectionName === "@nx/js") {
           throw new Error(
-            "The @nx/js plugin is required in order to version your JavaScript packages. Please install it and try again.",
+            "The @nx/js plugin is required in order to version your JavaScript packages. Please install it and try again."
           );
         }
         throw new Error(
-          `Unable to resolve the package ${collectionName} in order to load the generator called ${generatorName}. Is the package installed?`,
+          `Unable to resolve the package ${collectionName} in order to load the generator called ${generatorName}. Is the package installed?`
         );
       }
     }

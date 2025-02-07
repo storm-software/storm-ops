@@ -2,7 +2,7 @@ import { DEFAULT_COMMIT_QUESTIONS, DEFAULT_COMMIT_TYPES } from "../types";
 
 export const DEFAULT_CONVENTIONAL_COMMITS_CONFIG = {
   questions: DEFAULT_COMMIT_QUESTIONS,
-  types: DEFAULT_COMMIT_TYPES,
+  types: DEFAULT_COMMIT_TYPES
 };
 
 export const DEFAULT_RELEASE_GROUP_CONFIG = {
@@ -15,17 +15,17 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
     renderOptions: {
       authors: false,
       commitReferences: true,
-      versionTitleDate: true,
-    },
+      versionTitleDate: true
+    }
   },
   version: {
     groupPreVersionCommand: "pnpm build",
     generator: "@storm-software/workspace-tools:release-version",
     generatorOptions: {
       currentVersionResolver: "git-tag",
-      specifierSource: "conventional-commits",
-    },
-  },
+      specifierSource: "conventional-commits"
+    }
+  }
 };
 
 export const DEFAULT_RELEASE_CONFIG = {
@@ -41,17 +41,16 @@ export const DEFAULT_RELEASE_CONFIG = {
       renderOptions: {
         authors: false,
         commitReferences: true,
-        versionTitleDate: true,
-      },
-    },
+        versionTitleDate: true
+      }
+    }
   },
   version: {
-    preVersionCommand:
-      "pnpm nx affected -t build --parallel=3 --configuration=production",
+    preVersionCommand: "pnpm build",
     generator: "@storm-software/workspace-tools:release-version",
     generatorOptions: {
       currentVersionResolver: "git-tag",
-      specifierSource: "conventional-commits",
-    },
-  },
+      specifierSource: "conventional-commits"
+    }
+  }
 };
