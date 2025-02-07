@@ -1,3 +1,9 @@
+## 1.252.4 (2025-02-07)
+
+### Bug Fixes
+
+- **workspace-tools:** Added `workspace` argument to `lint-knip` execution ([7af85ff50](https://github.com/storm-software/storm-ops/commit/7af85ff50))
+
 ## 1.252.3 (2025-02-07)
 
 ### Bug Fixes
