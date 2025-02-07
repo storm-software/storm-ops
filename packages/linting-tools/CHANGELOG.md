@@ -1,3 +1,9 @@
+## 1.115.5 (2025-02-07)
+
+### Miscellaneous
+
+- **monorepo:** Merge branch 'main' of storm-ops ([bc753554d](https://github.com/storm-software/storm-ops/commit/bc753554d))
+
 ## 1.115.4 (2025-02-07)
 
 ### Miscellaneous

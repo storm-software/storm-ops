@@ -1,3 +1,9 @@
+## 0.16.1 (2025-02-07)
+
+### Miscellaneous
+
+- **monorepo:** Merge branch 'main' of storm-ops ([bc753554d](https://github.com/storm-software/storm-ops/commit/bc753554d))
+
 ## 0.16.0 (2025-02-07)
 
 ### Features

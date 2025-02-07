@@ -1,3 +1,13 @@
+## 1.254.2 (2025-02-07)
+
+### Bug Fixes
+
+- **workspace-tools:** Always return zero error code in knip formatting ([fcf9eab49](https://github.com/storm-software/storm-ops/commit/fcf9eab49))
+
+### Miscellaneous
+
+- **monorepo:** Merge branch 'main' of storm-ops ([bc753554d](https://github.com/storm-software/storm-ops/commit/bc753554d))
+
 ## 1.254.1 (2025-02-07)
 
 ### Bug Fixes
