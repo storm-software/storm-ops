@@ -133,7 +133,14 @@
     "zizmor"
   ],
   "dependencies": {
-    "@angular-devkit/architect": "0.1900.6",
+    "@angular-devkit/architect": "^0.1900.6",
+    "@manypkg/cli": "^0.23.0",
+    "@manypkg/get-packages": "^2.2.1",
+    "alex": "^11.0.1",
+    "cspell": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
     "check-dependency-version-consistency": "4.1.0",
     "commander": "catalog:",
     "dpdm": "3.14.0",
@@ -153,17 +160,10 @@
     "retext-equality": "7.1.0",
     "retext-profanities": "8.0.0",
     "spawndamnit": "2.0.0",
+    "tsup": "catalog:",
     "unified": "11.0.5",
     "unified-engine": "11.2.1",
     "vfile-reporter": "8.1.1"
-  },
-  "devDependencies": {
-    "@manypkg/cli": "0.23.0",
-    "@manypkg/get-packages": "2.2.1",
-    "@types/node": "catalog:",
-    "alex": "11.0.1",
-    "cspell": "catalog:",
-    "tsup": "catalog:"
   },
   "publishConfig": {
     "access": "public"
