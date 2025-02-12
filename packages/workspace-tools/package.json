@@ -251,6 +251,7 @@
     "micromatch": "^4.0.7",
     "pkg-types": "catalog:",
     "prettier": "catalog:",
+    "prettier-plugin-pkg": "^0.18.1",
     "read-yaml-file": "catalog:",
     "semver": "7.6.2",
     "size-limit": "11.1.4",

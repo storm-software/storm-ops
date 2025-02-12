@@ -1442,6 +1442,9 @@ importers:
       prettier:
         specifier: 'catalog:'
         version: 3.5.0
+      prettier-plugin-pkg:
+        specifier: ^0.18.1
+        version: 0.18.1(prettier@3.5.0)
       read-yaml-file:
         specifier: 'catalog:'
         version: 2.1.0
