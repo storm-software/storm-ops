@@ -9,12 +9,12 @@ const plugin: esbuild.Plugin = {
     build.onStart(async () => {
       console.info("Generating rules.d.ts type definitions");
       const getStormConfig = await import("./src/preset").then(
-        (m) => m.getStormConfig,
+        m => m.getStormConfig
       );
 
       const { flatConfigsToRulesDTS } = await import("eslint-typegen/core");
       const dts = await flatConfigsToRulesDTS(getStormConfig(), {
-        includeAugmentation: false,
+        includeAugmentation: false
       });
       if (!dts) {
         console.warn("No rules.d.ts generated");
@@ -29,7 +29,7 @@ const plugin: esbuild.Plugin = {
       console.info("Writing rules.d.ts");
       await fs.writeFile("src/rules.d.ts", dts);
     });
-  },
+  }
 };
 
 export default defineConfig([
@@ -48,6 +48,6 @@ export default defineConfig([
     tsconfig: "./tsconfig.json",
     shims: true,
     external: ["eslint", "typescript", "nx", "@nx/*"],
-    plugins: [plugin],
-  },
+    plugins: [plugin]
+  }
 ]);
