@@ -1,3 +1,9 @@
+## 0.18.0 (2025-02-12)
+
+### Features
+
+- **eslint:** Upgrade ESLint version used in package ([69fcbae20](https://github.com/storm-software/storm-ops/commit/69fcbae20))
+
 ## 0.17.0 (2025-02-07)
 
 ### Features
