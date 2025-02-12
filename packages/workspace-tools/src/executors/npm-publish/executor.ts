@@ -1,7 +1,7 @@
 import { type ExecutorContext } from "@nx/devkit";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { execSync } from "node:child_process";
-import fs from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import { pnpmCatalogUpdate } from "../../utils/pnpm-deps-update";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
@@ -35,7 +35,7 @@ export default async function npmPublishExecutorFn(
   );
 
   const packageJsonPath = joinPaths(packageRoot, "package.json");
-  const packageJsonFile = await fs.readFile(packageJsonPath, "utf8");
+  const packageJsonFile = await readFile(packageJsonPath, "utf8");
   if (!packageJsonFile) {
     throw new Error(`Could not find \`package.json\` at ${packageJsonPath}`);
   }
