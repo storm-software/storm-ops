@@ -6,6 +6,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "lib": ["ESNext"],
+    "strict": false,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "moduleResolution": "Bundler",

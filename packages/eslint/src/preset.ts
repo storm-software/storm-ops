@@ -247,7 +247,7 @@ export function getStormConfig(
     // https://www.npmjs.com/package/eslint-plugin-tsdoc
     configs.push({
       files: [TS_FILE],
-      plugins: { tsdoc },
+      plugins: { tsdoc: tsdoc as any },
       rules: tsdocRules
     });
 

@@ -50,9 +50,6 @@ export async function presetGeneratorFn(
       "storm",
       "storm-stack",
       "storm-ops",
-      "acidic",
-      "acidic-engine",
-      "cyclone-ui",
       "rust",
       "nx",
       "graphql",
@@ -97,10 +94,10 @@ export async function presetGeneratorFn(
       url: `${options.repositoryUrl}.git`,
     };
 
-    json.packageManager ??= "pnpm@9.15.2";
+    json.packageManager ??= "pnpm@10.3.0";
     json.engines ??= {
       node: ">=20.11.0",
-      pnpm: ">=9.15.2",
+      pnpm: ">=10.3.0",
     };
 
     json.prettier = "@storm-software/prettier/config.json";
