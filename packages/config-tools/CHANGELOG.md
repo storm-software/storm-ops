@@ -1,3 +1,9 @@
+## 1.153.2 (2025-02-12)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with invalid reference ([400560453](https://github.com/storm-software/storm-ops/commit/400560453))
+
 ## 1.153.1 (2025-02-12)
 
 ### Bug Fixes
