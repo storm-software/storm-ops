@@ -19,7 +19,7 @@ on:
         description: Package manager version
         type: string
         required: false
-        default: 9.15.2
+        default: 10.3.0
     secrets:
       STORM_BOT_GITHUB_TOKEN:
         description: GitHub token of the Storm bot

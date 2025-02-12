@@ -40,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "packageManager": "pnpm@9.15.2",
+  "packageManager": "pnpm@10.3.0",
   "engines": {
     "node": ">=22.4.0",
-    "pnpm": ">=9.15.2"
+    "pnpm": ">=10.3.0"
   },
   "bin": {
     "storm-git": "./bin/git.cjs",
