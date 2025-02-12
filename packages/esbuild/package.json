@@ -218,7 +218,7 @@
     "@nx/js": "catalog:",
     "@storm-software/build-tools": "0.138.33",
     "@storm-software/config": "1.101.26",
-    "@storm-software/config-tools": "1.153.3",
+    "@storm-software/config-tools": "1.153.4",
     "@types/node": "catalog:",
     "defu": "catalog:",
     "esbuild": "catalog:",
