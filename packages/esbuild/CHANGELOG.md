@@ -1,3 +1,13 @@
+## 0.24.1 (2025-02-12)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependency on release ([f97cc70e6](https://github.com/storm-software/storm-ops/commit/f97cc70e6))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.153.3
+
 ## 0.24.0 (2025-02-12)
 
 ### Features

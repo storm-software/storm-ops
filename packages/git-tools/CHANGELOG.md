@@ -1,3 +1,9 @@
+## 2.93.2 (2025-02-12)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependency on release ([f97cc70e6](https://github.com/storm-software/storm-ops/commit/f97cc70e6))
+
 ## 2.93.1 (2025-02-12)
 
 ### Bug Fixes
