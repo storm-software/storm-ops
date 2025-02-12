@@ -6,56 +6,153 @@
     "baseUrl": ".",
     "strict": false,
     "paths": {
-      "@storm-software/build-tools": ["packages/build-tools/src/index.ts"],
-      "@storm-software/build-tools/*": ["packages/build-tools/src/index.ts"],
+      "@storm-software/build-tools": [
+        "packages/build-tools/src/index.ts"
+      ],
+      "@storm-software/build-tools/*": [
+        "packages/build-tools/src/index.ts"
+      ],
       "@storm-software/cloudflare-tools": [
         "packages/cloudflare-tools/src/index.ts"
       ],
-      "@storm-software/cloudflare-tools/*": ["packages/cloudflare-tools/src/*"],
-      "@storm-software/config": ["packages/config/src/index.ts"],
-      "@storm-software/config-tools": ["packages/config-tools/src/index.ts"],
-      "@storm-software/config-tools/*": ["packages/config-tools/src/*"],
-      "@storm-software/config/*": ["packages/config/src/*"],
-      "@storm-software/cspell": ["packages/cspell/src/index.ts"],
-      "@storm-software/cspell/*": ["packages/cspell/src/*"],
-      "@storm-software/esbuild": ["packages/esbuild/src/index.ts"],
-      "@storm-software/esbuild/*": ["packages/esbuild/src/*"],
-      "@storm-software/eslint": ["packages/eslint/src/index.ts"],
-      "@storm-software/eslint/*": ["packages/eslint/src/*"],
-      "@storm-software/git-tools": ["packages/git-tools/src/index.ts"],
-      "@storm-software/git-tools/*": ["packages/git-tools/*"],
-      "@storm-software/k8s-tools": ["packages/k8s-tools/src/index.ts"],
-      "@storm-software/k8s-tools/*": ["packages/k8s-tools/src/*"],
-      "@storm-software/linting-tools": ["packages/linting-tools/src/index.ts"],
-      "@storm-software/linting-tools/*": ["packages/linting-tools/*"],
-      "@storm-software/markdownlint": ["packages/markdownlint/src/index.ts"],
-      "@storm-software/markdownlint/*": ["packages/markdownlint/src/*"],
-      "@storm-software/prettier": ["packages/prettier/src/index.ts"],
-      "@storm-software/prettier/*": ["packages/prettier/src/*"],
-      "@storm-software/projen": ["packages/projen/src/index.ts"],
-      "@storm-software/projen/*": ["packages/projen/src/*"],
-      "@storm-software/pulumi-tools": ["packages/pulumi-tools/src/index.ts"],
-      "@storm-software/pulumi-tools/*": ["packages/pulumi-tools/src/*"],
-      "@storm-software/terraform-modules": ["terraform-modules/src/index.ts"],
-      "@storm-software/terraform-tools": ["packages/terraform-tools/index.ts"],
-      "@storm-software/terraform-tools/*": ["packages/terraform-tools/src/*"],
-      "@storm-software/testing-tools": ["packages/testing-tools/src/index.ts"],
-      "@storm-software/testing-tools/*": ["packages/testing-tools/src/*"],
-      "@storm-software/tools-scripts": ["packages/tools-scripts/src/index.ts"],
-      "@storm-software/tools-scripts/*": ["packages/tools-scripts/src/*"],
-      "@storm-software/tsconfig": ["packages/tsconfig/src/index.ts"],
-      "@storm-software/tsconfig/*": ["packages/tsconfig/src/*"],
-      "@storm-software/tsdown": ["packages/tsdown/src/index.ts"],
-      "@storm-software/tsdown/*": ["packages/tsdown/src/*"],
-      "@storm-software/unbuild": ["packages/unbuild/src/index.ts"],
-      "@storm-software/unbuild/*": ["packages/unbuild/src/*"],
-      "@storm-software/untyped": ["packages/untyped/src/index.ts"],
-      "@storm-software/untyped/*": ["packages/untyped/src/*"],
-      "@storm-software/workspace-tools": ["packages/workspace-tools/index.ts"],
-      "@storm-software/workspace-tools/*": ["packages/workspace-tools/src/*"],
-      "create-storm-workspace": ["packages/create-storm-workspace/bin/index.ts"]
+      "@storm-software/cloudflare-tools/*": [
+        "packages/cloudflare-tools/src/*"
+      ],
+      "@storm-software/config": [
+        "packages/config/src/index.ts"
+      ],
+      "@storm-software/config-tools": [
+        "packages/config-tools/src/index.ts"
+      ],
+      "@storm-software/config-tools/*": [
+        "packages/config-tools/src/*"
+      ],
+      "@storm-software/config/*": [
+        "packages/config/src/*"
+      ],
+      "@storm-software/cspell": [
+        "packages/cspell/src/index.ts"
+      ],
+      "@storm-software/cspell/*": [
+        "packages/cspell/src/*"
+      ],
+      "@storm-software/esbuild": [
+        "packages/esbuild/src/index.ts"
+      ],
+      "@storm-software/esbuild/*": [
+        "packages/esbuild/src/*"
+      ],
+      "@storm-software/eslint": [
+        "packages/eslint/src/index.ts"
+      ],
+      "@storm-software/eslint/*": [
+        "packages/eslint/src/*"
+      ],
+      "@storm-software/git-tools": [
+        "packages/git-tools/src/index.ts"
+      ],
+      "@storm-software/git-tools/*": [
+        "packages/git-tools/*"
+      ],
+      "@storm-software/k8s-tools": [
+        "packages/k8s-tools/src/index.ts"
+      ],
+      "@storm-software/k8s-tools/*": [
+        "packages/k8s-tools/src/*"
+      ],
+      "@storm-software/linting-tools": [
+        "packages/linting-tools/src/index.ts"
+      ],
+      "@storm-software/linting-tools/*": [
+        "packages/linting-tools/*"
+      ],
+      "@storm-software/markdownlint": [
+        "packages/markdownlint/src/index.ts"
+      ],
+      "@storm-software/markdownlint/*": [
+        "packages/markdownlint/src/*"
+      ],
+      "@storm-software/prettier": [
+        "packages/prettier/src/index.ts"
+      ],
+      "@storm-software/prettier/*": [
+        "packages/prettier/src/*"
+      ],
+      "@storm-software/projen": [
+        "packages/projen/src/index.ts"
+      ],
+      "@storm-software/projen/*": [
+        "packages/projen/src/*"
+      ],
+      "@storm-software/pulumi-tools": [
+        "packages/pulumi-tools/src/index.ts"
+      ],
+      "@storm-software/pulumi-tools/*": [
+        "packages/pulumi-tools/src/*"
+      ],
+      "@storm-software/terraform-modules": [
+        "terraform-modules/src/index.ts"
+      ],
+      "@storm-software/terraform-tools": [
+        "packages/terraform-tools/index.ts"
+      ],
+      "@storm-software/terraform-tools/*": [
+        "packages/terraform-tools/src/*"
+      ],
+      "@storm-software/testing-tools": [
+        "packages/testing-tools/src/index.ts"
+      ],
+      "@storm-software/testing-tools/*": [
+        "packages/testing-tools/src/*"
+      ],
+      "@storm-software/tools-scripts": [
+        "packages/tools-scripts/src/index.ts"
+      ],
+      "@storm-software/tools-scripts/*": [
+        "packages/tools-scripts/src/*"
+      ],
+      "@storm-software/tsconfig": [
+        "packages/tsconfig/src/index.ts"
+      ],
+      "@storm-software/tsconfig/*": [
+        "packages/tsconfig/src/*"
+      ],
+      "@storm-software/tsdown": [
+        "packages/tsdown/src/index.ts"
+      ],
+      "@storm-software/tsdown/*": [
+        "packages/tsdown/src/*"
+      ],
+      "@storm-software/unbuild": [
+        "packages/unbuild/src/index.ts"
+      ],
+      "@storm-software/unbuild/*": [
+        "packages/unbuild/src/*"
+      ],
+      "@storm-software/untyped": [
+        "packages/untyped/src/index.ts"
+      ],
+      "@storm-software/untyped/*": [
+        "packages/untyped/src/*"
+      ],
+      "@storm-software/workspace-tools": [
+        "packages/workspace-tools/index.ts"
+      ],
+      "@storm-software/workspace-tools/*": [
+        "packages/workspace-tools/src/*"
+      ],
+      "create-storm-workspace": [
+        "packages/create-storm-workspace/bin/index.ts"
+      ]
     }
   },
-  "include": ["**/*.ts", "**/*.js", "**/*.json"],
-  "exclude": ["node_modules", "tmp"]
+  "include": [
+    "**/*.ts",
+    "**/*.js",
+    "**/*.json"
+  ],
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

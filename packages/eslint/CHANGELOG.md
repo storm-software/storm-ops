@@ -1,3 +1,13 @@
+## 0.122.0 (2025-02-12)
+
+### Features
+
+- **monorepo:** Update the package manager version ([7722640d6](https://github.com/storm-software/storm-ops/commit/7722640d6))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with type checker errors ([ff7adf002](https://github.com/storm-software/storm-ops/commit/ff7adf002))
+
 ## 0.121.0 (2025-02-12)
 
 ### Features

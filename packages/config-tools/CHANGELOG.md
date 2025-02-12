@@ -1,3 +1,9 @@
+## 1.153.1 (2025-02-12)
+
+### Bug Fixes
+
+- **config-tools:** Resolve issue with invalid access to env values ([7681f4031](https://github.com/storm-software/storm-ops/commit/7681f4031))
+
 ## 1.153.0 (2025-02-12)
 
 ### Features

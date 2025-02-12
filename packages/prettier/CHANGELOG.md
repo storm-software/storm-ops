@@ -1,3 +1,9 @@
+## 0.32.0 (2025-02-12)
+
+### Features
+
+- **monorepo:** Update the package manager version ([7722640d6](https://github.com/storm-software/storm-ops/commit/7722640d6))
+
 ## 0.31.28 (2025-02-06)
 
 ### Miscellaneous
