@@ -1,3 +1,17 @@
+## 0.24.2 (2025-02-13)
+
+### Bug Fixes
+
+- **eslint:** Include missing prettier dependencies ([48dcec118](https://github.com/storm-software/storm-ops/commit/48dcec118))
+
+### Miscellaneous
+
+- **eslint:** Reformat package.json file ([4611c5eeb](https://github.com/storm-software/storm-ops/commit/4611c5eeb))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.153.5
+
 ## 0.24.1 (2025-02-12)
 
 ### Bug Fixes
