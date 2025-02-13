@@ -210,7 +210,10 @@
     "globby": "^14.0.2",
     "nx": "catalog:",
     "source-map": "0.7.4",
-    "tsup": "catalog:"
+    "tsup": "catalog:",
+    "prettier-plugin-organize-imports": "^4.0.0",
+    "prettier-plugin-pkg": "^0.18.1",
+    "prettier-plugin-sh": "^0.14.0"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "catalog:",
