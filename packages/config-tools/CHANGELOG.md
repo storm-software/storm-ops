@@ -1,3 +1,9 @@
+## 1.153.4 (2025-02-12)
+
+### Bug Fixes
+
+- **monorepo:** Ensure `prettier-plugin-pkg` is installed in the workspace root ([c8a4d56ec](https://github.com/storm-software/storm-ops/commit/c8a4d56ec))
+
 ## 1.153.3 (2025-02-12)
 
 ### Bug Fixes
