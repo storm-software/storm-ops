@@ -1,3 +1,9 @@
+## 0.122.4 (2025-02-13)
+
+### Bug Fixes
+
+- **eslint:** Include missing prettier dependencies ([48dcec118](https://github.com/storm-software/storm-ops/commit/48dcec118))
+
 ## 0.122.3 (2025-02-12)
 
 ### Bug Fixes
