@@ -1,3 +1,13 @@
+## 0.122.8 (2025-02-15)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded `eslint` dependency and add devDependency ([cbddc0b02](https://github.com/storm-software/storm-ops/commit/cbddc0b02))
+
+### Miscellaneous
+
+- **monorepo:** Reformat monorepo files ([43087f2fa](https://github.com/storm-software/storm-ops/commit/43087f2fa))
+
 ## 0.122.7 (2025-02-15)
 
 ### Miscellaneous

@@ -1,3 +1,9 @@
+## 0.7.23 (2025-02-15)
+
+### Bug Fixes
+
+- **eslint:** Remove unneeded `eslint` dependency and add devDependency ([cbddc0b02](https://github.com/storm-software/storm-ops/commit/cbddc0b02))
+
 ## 0.7.22 (2025-02-15)
 
 ### Miscellaneous

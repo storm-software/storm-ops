@@ -1,3 +1,9 @@
+## 1.119.7 (2025-02-15)
+
+### Miscellaneous
+
+- **monorepo:** Reformat monorepo files ([43087f2fa](https://github.com/storm-software/storm-ops/commit/43087f2fa))
+
 ## 1.119.6 (2025-02-15)
 
 ### Miscellaneous

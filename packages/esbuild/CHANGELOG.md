@@ -1,3 +1,13 @@
+## 0.24.5 (2025-02-15)
+
+### Miscellaneous
+
+- **monorepo:** Reformat monorepo files ([43087f2fa](https://github.com/storm-software/storm-ops/commit/43087f2fa))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.153.8
+
 ## 0.24.4 (2025-02-15)
 
 ### Miscellaneous
