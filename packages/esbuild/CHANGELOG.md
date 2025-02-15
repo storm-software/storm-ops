@@ -1,3 +1,13 @@
+## 0.24.4 (2025-02-15)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([6ded6b9a8](https://github.com/storm-software/storm-ops/commit/6ded6b9a8))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.153.7
+
 ## 0.24.3 (2025-02-15)
 
 ### Miscellaneous

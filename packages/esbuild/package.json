@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/esbuild",
-  "version": "0.24.3",
+  "version": "0.24.4",
   "type": "module",
   "description": "A package containing `esbuild` utilities for building Storm Software libraries and applications",
   "repository": {
@@ -221,7 +221,7 @@
     "@nx/js": "catalog:",
     "@storm-software/build-tools": "0.138.33",
     "@storm-software/config": "1.101.26",
-    "@storm-software/config-tools": "1.153.6",
+    "@storm-software/config-tools": "1.153.7",
     "@types/node": "catalog:",
     "defu": "catalog:",
     "esbuild": "catalog:",
