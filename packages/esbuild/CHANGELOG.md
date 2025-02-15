@@ -1,3 +1,13 @@
+## 0.24.3 (2025-02-15)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files ([60b05814e](https://github.com/storm-software/storm-ops/commit/60b05814e))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.153.6
+
 ## 0.24.2 (2025-02-13)
 
 ### Bug Fixes

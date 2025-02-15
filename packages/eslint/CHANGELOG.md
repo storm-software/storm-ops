@@ -1,3 +1,11 @@
+## 0.122.5 (2025-02-15)
+
+### Miscellaneous
+
+- **eslint:** Format package.json file ([8bba9ca5a](https://github.com/storm-software/storm-ops/commit/8bba9ca5a))
+- **monorepo:** Reformat README markdown files ([60b05814e](https://github.com/storm-software/storm-ops/commit/60b05814e))
+- **eslint:** Include prettier dependencies in package ([7dbe1a334](https://github.com/storm-software/storm-ops/commit/7dbe1a334))
+
 ## 0.122.4 (2025-02-13)
 
 ### Bug Fixes
