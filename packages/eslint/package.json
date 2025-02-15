@@ -180,7 +180,7 @@
     "eslint-plugin-markdownlint": "0.6.0",
     "eslint-plugin-mdx": "3.1.5",
     "eslint-plugin-n": "17.8.1",
-    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-promise": "6.2.0",
     "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-compiler": "19.0.0-beta-30d8a17-20250209",
