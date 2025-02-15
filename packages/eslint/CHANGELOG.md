@@ -1,3 +1,9 @@
+## 0.122.6 (2025-02-15)
+
+### Bug Fixes
+
+- **eslint:** Include the correct dependencies in the package ([8e9a34153](https://github.com/storm-software/storm-ops/commit/8e9a34153))
+
 ## 0.122.5 (2025-02-15)
 
 ### Miscellaneous

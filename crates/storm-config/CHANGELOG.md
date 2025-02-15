@@ -1,3 +1,9 @@
+## 0.7.22 (2025-02-15)
+
+### Miscellaneous
+
+- **storm-workspace:** Manually change versions on packages ([273538396](https://github.com/storm-software/storm-ops/commit/273538396))
+
 ## 0.7.21 (2025-02-06)
 
 ### Miscellaneous
