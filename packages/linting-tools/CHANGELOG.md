@@ -1,3 +1,10 @@
+## 1.119.5 (2025-02-15)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files ([60b05814e](https://github.com/storm-software/storm-ops/commit/60b05814e))
+- **eslint:** Include prettier dependencies in package ([7dbe1a334](https://github.com/storm-software/storm-ops/commit/7dbe1a334))
+
 ## 1.119.4 (2025-02-13)
 
 ### Bug Fixes
