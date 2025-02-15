@@ -11,7 +11,7 @@ license = { workspace = true }
 name = 'storm-config'
 readme = './README.md'
 repository = { workspace = true }
-version = '0.6.2'
+version = '0.6.3'
 
 [features]
 async = ['async-trait']
@@ -44,7 +44,7 @@ thiserror = { version = '=1.0.61' }
 toml = { version = '=0.8.14', optional = true }
 yaml-rust = { version = '=0.4.5', optional = true }
 
-storm-workspace = { path = '../storm-workspace', version = '0.6.2' }
+storm-workspace = { path = '../storm-workspace', version = '0.6.3' }
 
 [lib]
 name = 'storm_config'

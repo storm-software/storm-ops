@@ -11,7 +11,7 @@ license = { workspace = true }
 name = 'storm-workspace'
 readme = './README.md'
 repository = { workspace = true }
-version = '0.6.2'
+version = '0.6.3'
 
 [dependencies]
 thiserror = '=1.0.61'
