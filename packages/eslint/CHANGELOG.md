@@ -1,3 +1,10 @@
+## 0.122.7 (2025-02-15)
+
+### Miscellaneous
+
+- **eslint:** Upgrade the `eslint-config-prettier` package dependency ([fb8637f0b](https://github.com/storm-software/storm-ops/commit/fb8637f0b))
+- **monorepo:** Regenerate README markdown files ([6ded6b9a8](https://github.com/storm-software/storm-ops/commit/6ded6b9a8))
+
 ## 0.122.6 (2025-02-15)
 
 ### Bug Fixes
