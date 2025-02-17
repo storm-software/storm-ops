@@ -12,7 +12,7 @@ export const getEnv = (
     STORM_BUILD: builder,
     STORM_ORG: options.orgName || DEFAULT_ORGANIZATION,
     STORM_NAME: options.name,
-    STORM_ENV: options.envName || DEFAULT_ENVIRONMENT,
+    STORM_MODE: options.mode || DEFAULT_ENVIRONMENT,
     STORM_PLATFORM: options.platform,
     STORM_FORMAT: JSON.stringify(options.format),
     STORM_TARGET: JSON.stringify(options.target),

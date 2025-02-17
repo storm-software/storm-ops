@@ -15,16 +15,16 @@
 
  -------------------------------------------------------------------*/
 
-import { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
-import {
+import type { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
+import type {
   AdditionalCLIOptions,
   TypeScriptBuildOptions,
   TypeScriptBuildResolvedOptions,
 } from "@storm-software/build-tools";
 import type { BuildOptions, BuildResult, Format, Metafile } from "esbuild";
-import { SourceMap } from "rollup";
-import { RawSourceMap } from "source-map";
-import { RendererEngine } from "./base/renderer-engine";
+import type { SourceMap } from "rollup";
+import type { RawSourceMap } from "source-map";
+import type { RendererEngine } from "./base/renderer-engine";
 
 export type OutExtensionObject = { js?: string; dts?: string };
 
@@ -35,7 +35,7 @@ export type OutExtensionFactory = (
 
 export type ESBuildOptions = Omit<
   BuildOptions,
-  "outbase" | "outfile" | "outExtension" | "banner"
+  "outbase" | "outfile" | "outExtension" | "banner" | "footer" | "entryPoints"
 > &
   Omit<TypeScriptBuildOptions, "format"> & {
     emitTypes?: boolean;

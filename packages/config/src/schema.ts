@@ -360,10 +360,10 @@ export const StormConfigSchema = z
       .default("@storm-software/admin")
       .describe("The owner of the package"),
     bot: WorkspaceBotConfigSchema,
-    env: z
+    mode: z
       .enum(["development", "staging", "production"])
       .default("production")
-      .describe("The current runtime environment name for the package"),
+      .describe("The current runtime environment mode for the package"),
     workspaceRoot: z
       .string()
       .trim()

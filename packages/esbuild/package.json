@@ -46,9 +46,7 @@
     "pnpm": ">=10.3.0"
   },
   "bin": {
-    "storm-esbuild": "./bin/esbuild.js",
-    "storm-esbuild-cjs": "./bin/esbuild.cjs",
-    "storm-esbuild-esm": "./bin/esbuild.js"
+    "storm-esbuild": "./bin/esbuild.cjs"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -158,8 +156,6 @@
     "dist/**/*"
   ],
   "keywords": [
-    "acidic",
-    "cyclone-ui",
     "esbuild",
     "monorepo",
     "storm",

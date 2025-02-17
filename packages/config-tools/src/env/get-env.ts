@@ -104,10 +104,10 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
       process.env[`${prefix}SKIP_CACHE`] !== undefined
         ? Boolean(process.env[`${prefix}SKIP_CACHE`])
         : undefined,
-    env:
-      ((process.env[`${prefix}ENV`] ??
+    mode:
+      ((process.env[`${prefix}MODE`] ??
         process.env.NODE_ENV ??
-        process.env.ENVIRONMENT) as StormConfig["env"]) || undefined,
+        process.env.ENVIRONMENT) as StormConfig["mode"]) || undefined,
     // ci:
     //   process.env[`${prefix}CI`] !== undefined
     //     ? Boolean(

@@ -34,7 +34,7 @@ export interface TypeScriptBuildOptions extends AdditionalCLIOptions {
   outputPath?: string;
   platform?: "node" | "browser" | "neutral";
   sourcemap?: boolean | "linked" | "inline" | "external" | "both";
-  envName?: "development" | "staging" | "production";
+  mode?: "development" | "staging" | "production";
   orgName?: string;
   target?: string | string[];
   watch?: boolean;
@@ -57,7 +57,7 @@ export interface TypeScriptBuildOptions extends AdditionalCLIOptions {
 
 export type TypeScriptBuildBaseEnv = {
   STORM_BUILD: string;
-  STORM_ENV: TypeScriptBuildOptions["envName"];
+  STORM_MODE: TypeScriptBuildOptions["mode"];
   STORM_ORG: TypeScriptBuildOptions["orgName"];
   STORM_NAME: string;
   STORM_PLATFORM: Platform;

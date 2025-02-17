@@ -151,10 +151,10 @@ export const setConfigEnv = (config: StormConfig) => {
       process.env.NX_CACHE_PROJECT_GRAPH ??= String(config.skipCache);
     }
   }
-  if (config.env) {
-    process.env[`${prefix}ENV`] = config.env;
-    process.env.NODE_ENV = config.env;
-    process.env.ENVIRONMENT = config.env;
+  if (config.mode) {
+    process.env[`${prefix}MODE`] = config.mode;
+    process.env.NODE_ENV = config.mode;
+    process.env.ENVIRONMENT = config.mode;
   }
   // if (config.ci) {
   //   process.env[`${prefix}CI`] = String(config.ci);
