@@ -110,11 +110,15 @@
           "additionalProperties": false,
           "description": "The workspace's bot user's config used to automated various operations tasks"
         },
-        "env": {
+        "mode": {
           "type": "string",
-          "enum": ["development", "staging", "production"],
+          "enum": [
+            "development",
+            "staging",
+            "production"
+          ],
           "default": "production",
-          "description": "The current runtime environment name for the package"
+          "description": "The current runtime environment mode for the package"
         },
         "workspaceRoot": {
           "type": "string",
@@ -168,7 +172,12 @@
         },
         "packageManager": {
           "type": "string",
-          "enum": ["npm", "yarn", "pnpm", "bun"],
+          "enum": [
+            "npm",
+            "yarn",
+            "pnpm",
+            "bun"
+          ],
           "default": "npm",
           "description": "The JavaScript/TypeScript package manager used by the repository"
         },
@@ -457,7 +466,10 @@
                       "additionalProperties": false
                     }
                   },
-                  "required": ["dark", "light"],
+                  "required": [
+                    "dark",
+                    "light"
+                  ],
                   "additionalProperties": false
                 }
               ],
@@ -472,7 +484,9 @@
                       "$ref": "#/definitions/StormWorkspaceConfiguration/properties/colors/anyOf/0"
                     }
                   },
-                  "required": ["base"],
+                  "required": [
+                    "base"
+                  ],
                   "additionalProperties": false
                 },
                 {
@@ -493,7 +507,11 @@
           "description": "Configuration of each used extension"
         }
       },
-      "required": ["bot", "directories", "colors"],
+      "required": [
+        "bot",
+        "directories",
+        "colors"
+      ],
       "additionalProperties": false,
       "description": "Storm Workspace config values used during various dev-ops processes. This type is a combination of the StormPackageConfig and StormProject types. It represents the config of the entire monorepo."
     }
