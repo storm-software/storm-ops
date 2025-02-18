@@ -35,7 +35,7 @@ export type OutExtensionFactory = (
 
 export type ESBuildOptions = Omit<
   BuildOptions,
-  "outbase" | "outfile" | "outExtension" | "banner" | "footer" | "entryPoints"
+  "outbase" | "outfile" | "outExtension" | "banner" | "entryPoints"
 > &
   Omit<TypeScriptBuildOptions, "format"> & {
     emitTypes?: boolean;

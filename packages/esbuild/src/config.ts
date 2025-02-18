@@ -41,7 +41,7 @@ export const DEFAULT_BUILD_OPTIONS: Required<
     | "target"
     | "external"
     | "tsconfig"
-    | "envName"
+    | "mode"
     | "keepNames"
     | "metafile"
     | "injectShims"
@@ -61,7 +61,7 @@ export const DEFAULT_BUILD_OPTIONS: Required<
   external: [],
   logLevel: "error",
   tsconfig: "tsconfig.json",
-  envName: "production",
+  mode: "production",
   keepNames: true,
   metafile: true,
   injectShims: true,

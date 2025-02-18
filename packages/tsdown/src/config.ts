@@ -7,7 +7,7 @@ export const DEFAULT_BUILD_OPTIONS: Required<
     | "target"
     | "format"
     | "tsconfig"
-    | "envName"
+    | "mode"
     | "unused"
     | "globalName"
     | "injectShims"
@@ -22,7 +22,7 @@ export const DEFAULT_BUILD_OPTIONS: Required<
   target: "node22",
   format: ["esm", "cjs"],
   tsconfig: "tsconfig.json",
-  envName: "production",
+  mode: "production",
   globalName: "globalThis",
   unused: { level: "error" },
   injectShims: true,

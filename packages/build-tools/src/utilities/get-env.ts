@@ -5,7 +5,7 @@ export const getEnv = (
   builder: string,
   options: Pick<
     TypeScriptBuildResolvedOptions,
-    "name" | "envName" | "orgName" | "platform" | "target" | "format"
+    "name" | "mode" | "orgName" | "platform" | "target" | "format"
   >,
 ): TypeScriptBuildEnv => {
   return {
