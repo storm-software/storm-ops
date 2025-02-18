@@ -1,3 +1,10 @@
+## 1.154.0 (2025-02-18)
+
+### Features
+
+- **config-tools:** Display colors for theme configuration in CLI ([c37ee6f40](https://github.com/storm-software/storm-ops/commit/c37ee6f40))
+- **config:** Change `env` parameter to `mode` ([2cb85c792](https://github.com/storm-software/storm-ops/commit/2cb85c792))
+
 ## 1.153.8 (2025-02-15)
 
 ### Miscellaneous

@@ -1,3 +1,19 @@
+## 0.25.0 (2025-02-18)
+
+### Features
+
+- **config:** Change `env` parameter to `mode` ([2cb85c792](https://github.com/storm-software/storm-ops/commit/2cb85c792))
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with invalid `envName` parameter ([afe77d339](https://github.com/storm-software/storm-ops/commit/afe77d339))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.154.0
+- Updated build-tools to 0.139.0
+- Updated config to 1.102.0
+
 ## 0.24.5 (2025-02-15)
 
 ### Miscellaneous

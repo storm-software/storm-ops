@@ -1,3 +1,13 @@
+## 1.102.0 (2025-02-18)
+
+### Features
+
+- **config:** Change `env` parameter to `mode` ([2cb85c792](https://github.com/storm-software/storm-ops/commit/2cb85c792))
+
+### Miscellaneous
+
+- **config:** Regenerate JSON schema ([0bbd4d5de](https://github.com/storm-software/storm-ops/commit/0bbd4d5de))
+
 ## 1.101.26 (2025-02-06)
 
 ### Miscellaneous
