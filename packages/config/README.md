@@ -40,6 +40,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Table of Contents
 
 - [Storm Configuration Package](#storm-configuration-package)
@@ -111,7 +112,7 @@ environment variables:
 | STORM_CACHE_DIRECTORY           | The directory where cache is stored            | "node_modules/.cache/storm" |
 | STORM_RUNTIME_VERSION           | The runtime version used in the workspace      | `null`                      |
 | STORM_OUTPUT_DIRECTORY          | The directory where output files are stored    | `null`                      |
-| STORM_ENV                       | The environment of the workspace               | "production"                |
+| STORM_MODE                      | The environment mode type of the workspace     | "production"                |
 | STORM_REPOSITORY                | The repository URL of the workspace            | `null`                      |
 | STORM_BRANCH                    | The branch of the repository                   | "main"                      |
 | STORM_PRE_ID                    | The pre-release identifier                     | `null`                      |
