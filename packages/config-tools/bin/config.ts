@@ -15,6 +15,8 @@ import {
   findWorkspaceRootSafe,
   handleProcess,
 } from "../src/utilities";
+import chalk from "chalk";
+import { MultiThemeColorConfig, SingleThemeColorConfig } from "@storm-software/config/types";
 
 export function createProgram() {
   writeInfo("⚡ Running Storm Configuration Tools", { logLevel: "all" });
@@ -54,7 +56,9 @@ export async function viewAction({ dir }: { dir: string }) {
     writeSuccess(
       `The following Storm configuration values have been found for this repository:
 
-${formatLogMessage(config)}
+${formatLogMessage({ ...config, colors: undefined })}
+
+${typeof (config.colors as SingleThemeColorConfig).light === "string" ? formatSingleThemeColors(config.colors as SingleThemeColorConfig) : formatMultiThemeColors(config.colors as MultiThemeColorConfig)}
 `,
       { ...config, logLevel: "all" },
     );
@@ -90,3 +94,24 @@ Stack Trace: ${error.stack}`
     process.exit(1);
   }
 })();
+
+const formatSingleThemeColors = (config: SingleThemeColorConfig) => {
+  return `---- Theme Colors ----
+  ${Object.entries(config).filter(([key, value]) => typeof value === "string" && value.length > 0)
+    .map(([key, value]) => chalk.hex(value)(`${key}: ${chalk.bold(value)}`))
+    .join(" \n")}
+`
+  }
+
+  const formatMultiThemeColors = (config: MultiThemeColorConfig) => {
+    return ` ---- Light Theme Colors ----
+${Object.entries(config.light).filter(([key, value]) => typeof value === "string" && value.length > 0)
+  .map(([key, value]) => chalk.hex(value)(`${key}: ${chalk.bold(value)}`))
+  .join(" \n")}
+
+---- Dark Theme Colors ----
+${Object.entries(config.dark).filter(([key, value]) => typeof value === "string" && value.length > 0)
+  .map(([key, value]) => chalk.hex(value)(`${key}: ${chalk.bold(value)}`))
+  .join(" \n")}
+  `
+    }
