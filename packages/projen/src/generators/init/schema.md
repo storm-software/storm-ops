@@ -4,17 +4,6 @@
 
 # Init Generator
 
-## `default`
-
-### `directory`
-- **Type**: `string`
-
-> Directory
-
-
-The directory to create the library in
-
-
 ## `directory`
 - **Type**: `string`
 

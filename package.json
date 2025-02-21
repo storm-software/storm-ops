@@ -84,7 +84,7 @@
     "view-config": "node ./dist/packages/config-tools/bin/config.cjs"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "2.1.4",
+    "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "9.4.0",
     "@ls-lint/ls-lint": "2.2.3",
     "@ltd/j-toml": "1.38.0",
@@ -103,8 +103,8 @@
     "@swc/wasm": "1.6.5",
     "@taplo/cli": "0.7.0",
     "@types/node": "catalog:",
-    "@typescript-eslint/eslint-plugin": "7.16.0",
-    "@typescript-eslint/parser": "7.16.0",
+    "@typescript-eslint/eslint-plugin": "^8.24.1",
+    "@typescript-eslint/parser": "^8.24.1",
     "c12": "catalog:",
     "chalk": "catalog:",
     "copyfiles": "catalog:",

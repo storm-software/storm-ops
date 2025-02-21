@@ -173,8 +173,7 @@ The following executor options are available:
 
 | Option    | Type   | Description   | Default   | 
 | --------- | ------ | ------------- | --------- | 
-| default      | `object`    | A type definition for the base Generator schema     | `[object Object]`     | 
- | directory      | `string`    | The directory to initialize the workspace in     |     | 
+| directory      | `string`    | The directory to initialize the workspace in     |     | 
  | skipFormat      | `boolean`    | Skip formatting the generated files     |     | 
 
 

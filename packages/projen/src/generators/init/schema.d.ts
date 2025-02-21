@@ -4,22 +4,6 @@
 
 export interface InitGeneratorSchema {
  /**
-  * Base Generator
-  * 
-  * A type definition for the base Generator schema
-  * 
- */
- default?: {
-  /**
-   * Directory
-   * 
-   * The directory to create the library in
-   * 
-  */
-  directory?: string,
- },
-
- /**
   * Directory
   * 
   * The directory to initialize the workspace in

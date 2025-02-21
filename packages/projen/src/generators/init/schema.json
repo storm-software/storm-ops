@@ -3,21 +3,6 @@
   "title": "Init Generator",
   "description": "A type definition for the Projen init generator schema",
   "properties": {
-    "default": {
-      "id": "#default",
-      "title": "Base Generator",
-      "description": "A type definition for the base Generator schema",
-      "properties": {
-        "directory": {
-          "title": "Directory",
-          "type": "string",
-          "description": "The directory to create the library in",
-          "id": "#default/directory"
-        }
-      },
-      "type": "object",
-      "default": {}
-    },
     "directory": {
       "title": "Directory",
       "type": "string",
@@ -32,7 +17,5 @@
     }
   },
   "type": "object",
-  "default": {
-    "default": {}
-  }
+  "default": {}
 }
