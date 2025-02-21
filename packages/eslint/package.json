@@ -151,56 +151,6 @@
     "graphql": "^14.0.0 || ^15.0.0 || ^16.0.0",
     "prettier-plugin-astro": "^0.14.0"
   },
-  "peerDependenciesMeta": {
-    "@eslint-react/eslint-plugin": {
-      "optional": true
-    },
-    "@graphql-eslint/eslint-plugin": {
-      "optional": true
-    },
-    "@next/eslint-plugin-next": {
-      "optional": true
-    },
-    "@nx/eslint": {
-      "optional": false
-    },
-    "@unocss/eslint-plugin": {
-      "optional": true
-    },
-    "astro-eslint-parser": {
-      "optional": true
-    },
-    "eslint": {
-      "optional": false
-    },
-    "eslint-plugin-astro": {
-      "optional": true
-    },
-    "eslint-plugin-format": {
-      "optional": true
-    },
-    "eslint-plugin-react-compiler": {
-      "optional": true
-    },
-    "eslint-plugin-react-hooks": {
-      "optional": true
-    },
-    "eslint-plugin-react-refresh": {
-      "optional": true
-    },
-    "eslint-plugin-relay": {
-      "optional": true
-    },
-    "eslint-plugin-storybook": {
-      "optional": true
-    },
-    "graphql": {
-      "optional": true
-    },
-    "prettier-plugin-astro": {
-      "optional": true
-    }
-  },
   "dependencies": {
     "@antfu/install-pkg": "^1.0.0",
     "@clack/prompts": "^0.10.0",
