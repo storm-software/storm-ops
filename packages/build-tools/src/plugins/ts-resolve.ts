@@ -7,12 +7,16 @@ import type { PluginImpl } from "rollup";
 
 const resolveModule = (
   id: string,
-  opts: _resolve.AsyncOpts,
+  opts: _resolve.AsyncOpts
 ): Promise<string | null> =>
   new Promise((resolve, reject) => {
     _resolve(id, opts, (err, res) => {
-      if (err?.code === "MODULE_NOT_FOUND") return resolve(null);
-      if (err) return reject(err);
+      if ((err as any)?.code === "MODULE_NOT_FOUND") {
+        return resolve(null);
+      }
+      if (err) {
+        return reject(err);
+      }
       resolve(res || null);
     });
   });
@@ -24,7 +28,7 @@ export type TsResolveOptions = {
 
 export const tsResolvePlugin: PluginImpl<TsResolveOptions> = ({
   resolveOnly,
-  ignore,
+  ignore
 } = {}) => {
   const resolveExtensions = [".d.ts", ".ts"];
 
@@ -54,7 +58,7 @@ export const tsResolvePlugin: PluginImpl<TsResolveOptions> = ({
       }
 
       if (resolveOnly) {
-        const shouldResolve = resolveOnly.some((v) => {
+        const shouldResolve = resolveOnly.some(v => {
           if (typeof v === "string") return v === source;
           return v.test(source);
         });
@@ -78,7 +82,7 @@ export const tsResolvePlugin: PluginImpl<TsResolveOptions> = ({
       if (source[0] === ".") {
         return resolveModule(source, {
           basedir,
-          extensions: resolveExtensions,
+          extensions: resolveExtensions
         });
       }
 
@@ -88,7 +92,7 @@ export const tsResolvePlugin: PluginImpl<TsResolveOptions> = ({
       if (!importer) {
         id = await resolveModule(`./${source}`, {
           basedir,
-          extensions: resolveExtensions,
+          extensions: resolveExtensions
         });
       }
 
@@ -98,10 +102,10 @@ export const tsResolvePlugin: PluginImpl<TsResolveOptions> = ({
           basedir,
           extensions: resolveExtensions,
           packageFilter(pkg) {
-            pkg.main = pkg.types || pkg.typings;
+            pkg.main = (pkg.types || pkg.typings)!;
             return pkg;
           },
-          paths: ["node_modules", "node_modules/@types"],
+          paths: ["node_modules", "node_modules/@types"]
         });
       }
 
@@ -113,6 +117,6 @@ export const tsResolvePlugin: PluginImpl<TsResolveOptions> = ({
       // Just make it external if can't be resolved, i.e. tsconfig path alias
       writeDebug(`ts-resolve - mark ${source} as external`);
       return false;
-    },
+    }
   };
 };
