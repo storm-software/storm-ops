@@ -1,3 +1,13 @@
+## 0.140.0 (2025-02-21)
+
+### Features
+
+- **workspace-tools:** Added `lint-ls`, `format-readme`, and `format-toml` to plugins ([f6dd27ad4](https://github.com/storm-software/storm-ops/commit/f6dd27ad4))
+
+### Bug Fixes
+
+- **build-tools:** Resolve build issue with `ts-resolve` plugin ([46324e756](https://github.com/storm-software/storm-ops/commit/46324e756))
+
 ## 0.139.0 (2025-02-18)
 
 ### Features

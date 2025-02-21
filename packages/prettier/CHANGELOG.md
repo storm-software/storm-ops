@@ -1,3 +1,13 @@
+## 0.33.0 (2025-02-21)
+
+### Features
+
+- **eslint:** Overhaul of shared ESLint configurations ([d0fea396c](https://github.com/storm-software/storm-ops/commit/d0fea396c))
+
+### Miscellaneous
+
+- **monorepo:** Format monorepo files and run linters ([8f25455d5](https://github.com/storm-software/storm-ops/commit/8f25455d5))
+
 ## 0.32.6 (2025-02-18)
 
 ### Miscellaneous

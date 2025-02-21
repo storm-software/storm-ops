@@ -1,3 +1,9 @@
+## 0.9.26 (2025-02-21)
+
+### Miscellaneous
+
+- **monorepo:** Format monorepo files and run linters ([8f25455d5](https://github.com/storm-software/storm-ops/commit/8f25455d5))
+
 ## 0.9.25 (2025-02-06)
 
 ### Miscellaneous

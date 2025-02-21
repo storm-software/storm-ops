@@ -1,3 +1,13 @@
+## 1.119.9 (2025-02-21)
+
+### Bug Fixes
+
+- **linting-tools:** Ensure the bin and library are build in separate processes ([ca70bb4f0](https://github.com/storm-software/storm-ops/commit/ca70bb4f0))
+
+### Miscellaneous
+
+- **monorepo:** Format monorepo files and run linters ([8f25455d5](https://github.com/storm-software/storm-ops/commit/8f25455d5))
+
 ## 1.119.8 (2025-02-18)
 
 ### Miscellaneous

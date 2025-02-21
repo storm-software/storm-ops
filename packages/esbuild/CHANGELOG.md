@@ -1,3 +1,20 @@
+## 0.26.0 (2025-02-21)
+
+### Features
+
+- **eslint:** Overhaul of shared ESLint configurations ([d0fea396c](https://github.com/storm-software/storm-ops/commit/d0fea396c))
+- **workspace-tools:** Added `lint-ls`, `format-readme`, and `format-toml` to plugins ([f6dd27ad4](https://github.com/storm-software/storm-ops/commit/f6dd27ad4))
+
+### Miscellaneous
+
+- **monorepo:** Format monorepo files and run linters ([8f25455d5](https://github.com/storm-software/storm-ops/commit/8f25455d5))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.155.0
+- Updated build-tools to 0.140.0
+- Updated config to 1.103.0
+
 ## 0.25.1 (2025-02-18)
 
 ### Miscellaneous
