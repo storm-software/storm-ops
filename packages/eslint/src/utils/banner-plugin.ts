@@ -1,7 +1,10 @@
+// eslint-disable-next-line ts/ban-ts-comment
+// @ts-nocheck
+
 import { ESLintUtils } from "@typescript-eslint/utils";
 import { ESLint, Linter } from "eslint";
 import os from "node:os";
-import { CODE_FILE } from "./constants";
+import { GLOB_SRC } from "./constants";
 import { getFileBanner } from "./get-file-banner";
 
 function match(actual, expected) {
@@ -13,7 +16,7 @@ function match(actual, expected) {
 }
 
 function excludeShebangs(comments) {
-  return comments.filter(function (comment) {
+  return comments.filter(comment => {
     return comment.type !== "Shebang";
   });
 }
@@ -26,7 +29,7 @@ function getLeadingComments(context, node) {
   const all = excludeShebangs(
     context
       .getSourceCode()
-      .getAllComments(node.body.length ? node.body[0] : node),
+      .getAllComments(node.body.length ? node.body[0] : node)
   );
   if (all[0].type.toLowerCase() === "block") {
     return [all[0]];
@@ -67,7 +70,7 @@ function genPrependFixer(commentType, node, bannerLines, eol, numNewlines) {
   return function (fixer) {
     return fixer.insertTextBefore(
       node,
-      genCommentBody(commentType, bannerLines, eol, numNewlines),
+      genCommentBody(commentType, bannerLines, eol, numNewlines)
     );
   };
 }
@@ -78,12 +81,12 @@ function genReplaceFixer(
   leadingComments,
   bannerLines,
   eol,
-  numNewlines,
+  numNewlines
 ) {
   return function (fixer) {
     return fixer.replaceTextRange(
       genCommentsRange(context, leadingComments, eol),
-      genCommentBody(commentType, bannerLines, eol, numNewlines),
+      genCommentBody(commentType, bannerLines, eol, numNewlines)
     );
   };
 }
@@ -181,7 +184,7 @@ type Options = [
     commentType?: "block" | "line" | string;
     numNewlines?: number;
     lineEndings?: "unix" | "windows";
-  },
+  }
 ];
 
 export type MessageIds =
@@ -191,12 +194,12 @@ export type MessageIds =
   | "noNewlineAfterBanner";
 
 const bannerRule = ESLintUtils.RuleCreator(
-  () => `https://docs.stormsoftware.com/eslint/rules/banner`,
+  () => `https://docs.stormsoftware.com/eslint/rules/banner`
 )<Options, MessageIds>({
   name: "banner",
   meta: {
     docs: {
-      description: "Ensures the file has a Storm Software banner",
+      description: "Ensures the file has a Storm Software banner"
     },
     schema: [
       {
@@ -205,46 +208,46 @@ const bannerRule = ESLintUtils.RuleCreator(
           banner: {
             type: "string",
             description:
-              "The banner to enforce at the top of the file. If not provided, the banner will be read from the file specified in the commentStart option",
+              "The banner to enforce at the top of the file. If not provided, the banner will be read from the file specified in the commentStart option"
           },
           repositoryName: {
             type: "string",
             description:
-              "The name of the repository to use when reading the banner from a file.",
+              "The name of the repository to use when reading the banner from a file."
           },
           commentType: {
             type: "string",
             description:
-              "The comment token to use for the banner. Defaults to block ('/* <banner> */')",
+              "The comment token to use for the banner. Defaults to block ('/* <banner> */')"
           },
           numNewlines: {
             type: "number",
             description:
-              "The number of newlines to use after the banner. Defaults to 2",
-          },
+              "The number of newlines to use after the banner. Defaults to 2"
+          }
         },
-        additionalProperties: false,
-      },
+        additionalProperties: false
+      }
     ],
     type: "layout",
     messages: {
       missingBanner: "Missing banner",
       incorrectComment: "Banner should use the {{commentType}} comment type",
       incorrectBanner: "Incorrect banner",
-      noNewlineAfterBanner: "No newline after banner",
+      noNewlineAfterBanner: "No newline after banner"
     },
-    fixable: "whitespace",
+    fixable: "whitespace"
   },
   defaultOptions: [
     {
       repositoryName: "",
       commentType: "block",
-      numNewlines: 2,
-    },
+      numNewlines: 2
+    }
   ],
   create(
     context,
-    [{ banner, repositoryName = "", commentType = "block", numNewlines = 2 }],
+    [{ banner, repositoryName = "", commentType = "block", numNewlines = 2 }]
   ) {
     if (!banner) {
       banner = getFileBanner(repositoryName);
@@ -268,7 +271,7 @@ const bannerRule = ESLintUtils.RuleCreator(
           context.report({
             loc: node.loc,
             messageId: "missingBanner",
-            fix: genPrependFixer(commentType, node, fixLines, eol, numNewlines),
+            fix: genPrependFixer(commentType, node, fixLines, eol, numNewlines)
           });
         } else {
           const leadingComments = getLeadingComments(context, node);
@@ -279,14 +282,14 @@ const bannerRule = ESLintUtils.RuleCreator(
               messageId: "missingBanner",
               fix: canFix
                 ? genPrependFixer(commentType, node, fixLines, eol, numNewlines)
-                : null,
+                : null
             });
           } else if (leadingComments[0].type.toLowerCase() !== commentType) {
             context.report({
               loc: node.loc,
               messageId: "incorrectComment",
               data: {
-                commentType,
+                commentType
               },
               fix: canFix
                 ? genReplaceFixer(
@@ -295,9 +298,9 @@ const bannerRule = ESLintUtils.RuleCreator(
                     leadingComments,
                     fixLines,
                     eol,
-                    numNewlines,
+                    numNewlines
                   )
-                : null,
+                : null
             });
           } else {
             if (commentType === "line") {
@@ -312,9 +315,9 @@ const bannerRule = ESLintUtils.RuleCreator(
                         leadingComments,
                         fixLines,
                         eol,
-                        numNewlines,
+                        numNewlines
                       )
-                    : null,
+                    : null
                 });
                 return;
               }
@@ -330,9 +333,9 @@ const bannerRule = ESLintUtils.RuleCreator(
                           leadingComments,
                           fixLines,
                           eol,
-                          numNewlines,
+                          numNewlines
                         )
-                      : null,
+                      : null
                   });
                   return;
                 }
@@ -342,7 +345,7 @@ const bannerRule = ESLintUtils.RuleCreator(
                 .getSourceCode()
                 .text.substr(
                   leadingComments[bannerLines.length - 1].range[1],
-                  (numNewlines ?? 1) * 2,
+                  (numNewlines ?? 1) * 2
                 );
               if (!matchesLineEndings(postLineBanner, numNewlines)) {
                 context.report({
@@ -355,9 +358,9 @@ const bannerRule = ESLintUtils.RuleCreator(
                         leadingComments,
                         fixLines,
                         eol,
-                        numNewlines,
+                        numNewlines
                       )
-                    : null,
+                    : null
                 });
               }
             } else {
@@ -391,16 +394,16 @@ const bannerRule = ESLintUtils.RuleCreator(
                         leadingComments,
                         fixLines,
                         eol,
-                        numNewlines,
+                        numNewlines
                       )
-                    : null,
+                    : null
                 });
               } else {
                 const postBlockBanner = context
                   .getSourceCode()
                   .text.substr(
                     leadingComments[0].range[1],
-                    (numNewlines ?? 1) * 2,
+                    (numNewlines ?? 1) * 2
                   );
                 if (!matchesLineEndings(postBlockBanner, numNewlines)) {
                   context.report({
@@ -413,37 +416,37 @@ const bannerRule = ESLintUtils.RuleCreator(
                           leadingComments,
                           fixLines,
                           eol,
-                          numNewlines,
+                          numNewlines
                         )
-                      : null,
+                      : null
                   });
                 }
               }
             }
           }
         }
-      },
+      }
     };
-  },
+  }
 });
 
 const plugin: ESLint.Plugin = {
   meta: {
     name: "eslint-plugin-banner",
-    version: "0.0.1",
+    version: "0.0.1"
   },
   configs: {} as Record<string, Linter.Config<Linter.RulesRecord>>,
   rules: {
-    banner: bannerRule as any,
+    banner: bannerRule as any
   },
-  processors: {},
+  processors: {}
 };
 
 plugin.configs &&
   (plugin.configs.recommended = {
     name: "banner/recommended",
     plugins: { banner: plugin },
-    files: [CODE_FILE],
+    files: [GLOB_SRC],
     ignores: [
       "!**/docs/**/*",
       "!**/crates/**/*",
@@ -453,10 +456,11 @@ plugin.configs &&
       "!**/node_modules/**/*",
       "!**/.cache/**/*",
       "!**/.nx/**/*",
+      "!**/.storm/**/*"
     ],
     rules: {
-      "banner/banner": ["error", { commentType: "block", numNewlines: 2 }],
-    },
+      "banner/banner": ["error", { commentType: "block", numNewlines: 2 }]
+    }
   });
 
 export default plugin;

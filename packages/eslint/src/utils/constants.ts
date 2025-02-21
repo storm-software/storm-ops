@@ -1,98 +1,5 @@
-export const RESTRICTED_SYNTAX = [
-  {
-    // ❌ readFile(…, { encoding: … })
-    selector:
-      "CallExpression[callee.name=/readFileSync|readFile|writeFileSync|writeFile/] > .arguments:last-child[type=ObjectExpression][properties.length=1] Property[key.name=encoding]",
-    message:
-      "Specify encoding as last argument instead of object with encoding key",
-  },
-  {
-    // ❌ readFile(…, {})
-    selector:
-      "CallExpression[callee.name=/readFileSync|readFile|writeFileSync|writeFile/] > .arguments:last-child[type=ObjectExpression][properties.length=0]",
-    message: "Specify encoding as last argument",
-  },
-  {
-    // ❌ readFileSync(…).toString(…)
-    selector:
-      "CallExpression[callee.name=readFileSync][parent.property.name=toString]",
-    message: "toString is redundant, specify encoding as last argument",
-  },
-  {
-    // ❌ ….readFile(…, { encoding: … })
-    selector:
-      "CallExpression[callee.type=MemberExpression][callee.property.name=/readFileSync|readFile|writeFileSync|writeFile/] > .arguments:last-child[type=ObjectExpression][properties.length=1] Property[key.name=encoding]",
-    message:
-      "Specify encoding as last argument instead of object with encoding key",
-  },
-  {
-    // ❌ ….readFile(…, {})
-    selector:
-      "CallExpression[callee.type=MemberExpression][callee.property.name=/readFileSync|readFile|writeFileSync|writeFile/] > .arguments:last-child[type=ObjectExpression][properties.length=0]",
-    message: "Specify encoding as last argument",
-  },
-  {
-    // ❌ Boolean(…)
-    selector:
-      "CallExpression[callee.name=Boolean][arguments.1.elements.length!=0]",
-    message:
-      "Prefer `!!…` over `Boolean(…)` because TypeScript infers a narrow literal boolean `type: true` instead of `type: boolean`.",
-  },
-  {
-    // ❌ process.browser
-    selector:
-      "ExpressionStatement[expression.object.name=process][expression.property.name=browser]",
-    message: "`process.browser` is deprecated, use `!!globalThis.window`",
-  },
-  // {
-  //   // ❌ let { foo: { bar } } = baz
-  //   // ✅ let { bar } = baz.foo
-  //   // ✅ let { foo: { bar } } = await baz
-  //   selector:
-  //     'VariableDeclarator[init.type!=AwaitExpression] > ObjectPattern[properties.length=1][properties.0.value.type=ObjectPattern]',
-  //   message: 'Do not use nested destructuring.',
-  // },
-];
-
-export const REACT_RESTRICTED_SYNTAX = [
-  ...RESTRICTED_SYNTAX,
-  {
-    // ❌ useMemo(…, [])
-    selector:
-      "CallExpression[callee.name=useMemo][arguments.1.type=ArrayExpression][arguments.1.elements.length=0]",
-    message:
-      "`useMemo` with an empty dependency array can't provide a stable reference, use `useRef` instead.",
-  },
-];
-
-export const RESTRICTED_GLOBALS = [
-  "stop",
-  { name: "isNaN", message: "Use Number.isNaN instead" },
-];
-
-export const RESTRICTED_MODULES = [
-  { name: "axios", message: "Use `fetch/node-fetch` instead." },
-  { name: "moment", message: "Use `dayjs/date-fns` instead." },
-  { name: "classnames", message: "Use `clsx` instead because it is faster." },
-  {
-    name: "lodash/isString.js",
-    message: "Use `typeof yourVar === 'string'` instead.",
-  },
-  { name: "lodash/isArray.js", message: "Use `Array.isArray` instead." },
-  { name: "lodash/flatten.js", message: "Use `Array#flat()` instead." },
-  {
-    name: "lodash/compact.js",
-    message: "Use `Array#filter(Boolean)` instead.",
-  },
-  { name: "lodash/identity.js", message: "Use `(value) => value` instead." },
-];
-
-export const JS_FILES = ["*.js?(x)", "*.mjs"];
-
-export const CODE_BLOCK = "**/*.md{,x}/*";
-export const CODE_FILE = "**/*.{,c,m}{j,t}s{,x}";
-export const TS_FILE = "**/*.{,c,m}ts{,x}";
-export const JS_FILE = "**/*.{,c}js{,x}";
+export const GLOB_CODE_BLOCK = "**/*.md{,x}/*";
+export const GLOB_CODE_FILE = "**/*.{,c,m}{j,t}s{,x}";
 
 export const ACRONYMS_LIST = [
   "API",
@@ -133,5 +40,98 @@ export const ACRONYMS_LIST = [
   "UTF",
   "VM",
   "XML",
-  "XSS",
+  "XSS"
+];
+
+export const GLOB_SRC_EXT = "?([cm])[jt]s?(x)";
+export const GLOB_SRC = "**/*.?([cm])[jt]s?(x)";
+
+export const GLOB_JS = "**/*.?([cm])js";
+export const GLOB_JSX = "**/*.?([cm])jsx";
+
+export const GLOB_TS = "**/*.?([cm])ts";
+export const GLOB_TSX = "**/*.?([cm])tsx";
+
+export const GLOB_STYLE = "**/*.{c,le,sc}ss";
+export const GLOB_CSS = "**/*.css";
+export const GLOB_POSTCSS = "**/*.{p,post}css";
+export const GLOB_LESS = "**/*.less";
+export const GLOB_SCSS = "**/*.scss";
+
+export const GLOB_JSON = "**/*.json";
+export const GLOB_JSON5 = "**/*.json5";
+export const GLOB_JSONC = "**/*.jsonc";
+
+export const GLOB_MARKDOWN = "**/*.md";
+export const GLOB_MARKDOWN_IN_MARKDOWN = "**/*.md/*.md";
+export const GLOB_SVELTE = "**/*.svelte";
+export const GLOB_VUE = "**/*.vue";
+export const GLOB_YAML = "**/*.y?(a)ml";
+export const GLOB_TOML = "**/*.toml";
+export const GLOB_XML = "**/*.xml";
+export const GLOB_SVG = "**/*.svg";
+export const GLOB_HTML = "**/*.htm?(l)";
+export const GLOB_ASTRO = "**/*.astro";
+export const GLOB_ASTRO_TS = "**/*.astro/*.ts";
+export const GLOB_GRAPHQL = "**/*.{g,graph}ql";
+
+export const GLOB_MARKDOWN_CODE = `${GLOB_MARKDOWN}/${GLOB_SRC}`;
+
+export const GLOB_TESTS = [
+  `**/__tests__/**/*.${GLOB_SRC_EXT}`,
+  `**/*.spec.${GLOB_SRC_EXT}`,
+  `**/*.test.${GLOB_SRC_EXT}`,
+  `**/*.bench.${GLOB_SRC_EXT}`,
+  `**/*.benchmark.${GLOB_SRC_EXT}`
+];
+
+export const GLOB_ALL_SRC = [
+  GLOB_SRC,
+  GLOB_STYLE,
+  GLOB_JSON,
+  GLOB_JSON5,
+  GLOB_MARKDOWN,
+  GLOB_SVELTE,
+  GLOB_VUE,
+  GLOB_YAML,
+  GLOB_XML,
+  GLOB_HTML
+];
+
+export const GLOB_EXCLUDE = [
+  "**/node_modules",
+  "**/dist",
+  "**/package-lock.json",
+  "**/yarn.lock",
+  "**/pnpm-lock.yaml",
+  "**/bun.lockb",
+
+  "**/.nx",
+  "**/.storm",
+  "**/output",
+  "**/coverage",
+  "**/temp",
+  "**/.temp",
+  "**/tmp",
+  "**/.tmp",
+  "**/.history",
+  "**/.vitepress/cache",
+  "**/.nuxt",
+  "**/.next",
+  "**/.svelte-kit",
+  "**/.vercel",
+  "**/.changeset",
+  "**/.idea",
+  "**/.cache",
+  "**/.output",
+  "**/.vite-inspect",
+  "**/.yarn",
+  "**/vite.config.*.timestamp-*",
+
+  "**/CHANGELOG*.md",
+  "**/*.min.*",
+  "**/LICENSE*",
+  "**/__snapshots__",
+  "**/auto-import?(s).d.ts",
+  "**/components.d.ts"
 ];

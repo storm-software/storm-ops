@@ -19,11 +19,27 @@
         "color": true
       }
     },
-    "build-base": {
+    // "build-inspector": {
+    //   "executor": "nx:run-commands",
+    //   "dependsOn": ["clean", "^build"],
+    //   "options": {
+    //     "command": "npx @eslint/config-inspector build",
+    //     "cwd": "{projectRoot}"
+    //   }
+    // },
+    "build-typegen": {
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "options": {
-        "command": "tsup-node --config=tsup.config.ts",
+        "command": "tsx scripts/typegen.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "build-typegen", "^build"],
+      "options": {
+        "command": "tsup --config=tsup.config.ts",
         "cwd": "{projectRoot}"
       }
     },

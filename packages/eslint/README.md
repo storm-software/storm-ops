@@ -40,6 +40,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Table of Contents
 
 - [Storm Base ESLint Package](#storm-base-eslint-package)
@@ -165,6 +166,12 @@ file
 
 <div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
 <br />
+
+## Acknowledgements
+
+- [@antfu/eslint-config](https://github.com/antfu/eslint-config) for the
+  inspiration and base configuration.
+- [ESLint](https://eslint.org) for the amazing linting tool.
 
 ## Contributing
 
