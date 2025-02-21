@@ -122,6 +122,19 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
       //   };
       // }
 
+      if (!targets["lint-ls"]) {
+        targets["lint-ls"] = {
+          cache: true,
+          inputs: ["linting", "typescript", "^production"],
+          dependsOn: ["^lint-ls"],
+          executor: "nx:run-commands",
+          options: {
+            command:
+              'pnpm exec ls-lint --config="node_modules/@storm-software/linting-tools/ls-lint/.ls-lint.yml" '
+          }
+        };
+      }
+
       if (!targets["lint-markdown"] && enableMarkdownlint) {
         targets["lint-markdown"] = {
           cache: true,
@@ -167,6 +180,49 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
           };
         }
       }
+    }
+
+    if (!targets["format-toml"]) {
+      targets["format-toml"] = {
+        inputs: ["linting", "{projectRoot}/**/*.toml"],
+        outputs: ["{projectRoot}/**/*.toml"],
+        dependsOn: ["^format-toml"],
+        executor: "nx:run-commands",
+        options: {
+          command:
+            'pnpm exec taplo format --config="node_modules/@storm-software/linting-tools/taplo/config.toml" --cache-path="node_modules/.cache/taplo/{projectRoot}" --colors="always" "{projectRoot}/*.toml" "{projectRoot}/**/*.toml" '
+        }
+      };
+    }
+
+    if (!targets["format-readme"]) {
+      targets["format-readme"] = {
+        inputs: [
+          "linting",
+          "documentation",
+          "{projectRoot}/{README.md,package.json,Cargo.toml,executors.json,generators.json}"
+        ],
+        outputs: ["{projectRoot}/README.md"],
+        dependsOn: ["^format-readme"],
+        executor: "nx:run-commands",
+        options: {
+          command:
+            'pnpm exec storm-git readme --templates="tools/readme-templates" --project="{projectName}"'
+        }
+      };
+    }
+
+    if (!targets["format-prettier"]) {
+      targets["format-prettier"] = {
+        inputs: ["linting", "typescript", "^production"],
+        outputs: ["{projectRoot}/**/*"],
+        dependsOn: ["^format-prettier"],
+        executor: "nx:run-commands",
+        options: {
+          command:
+            'pnpm exec prettier "{projectRoot}/**/*" --write --ignore-unknown --no-error-on-unmatched-pattern --config="node_modules/@storm-software/prettier/config.json" --ignore-path="node_modules/@storm-software/prettier/.prettierignore" --cache --cache-location="node_modules/.cache/prettier/{projectRoot}" '
+        }
+      };
     }
 
     if (!targets.format) {

@@ -7,19 +7,19 @@ import {
   workspaceRoot,
   type CreateDependencies,
   type ProjectConfiguration,
-  type RawProjectGraphDependency,
+  type RawProjectGraphDependency
 } from "@nx/devkit";
 import { existsSync } from "node:fs";
 import { dirname } from "node:path";
 import {
   DependencyType,
-  type ProjectGraphExternalNode,
+  type ProjectGraphExternalNode
 } from "nx/src/config/project-graph";
 import { cargoMetadata, isExternal } from "../../utils/cargo";
 import {
   addProjectTag,
   ProjectTagConstants,
-  setDefaultProjectTags,
+  setDefaultProjectTags
 } from "../../utils/project-tags";
 import type { Package } from "../../utils/toml";
 
@@ -32,7 +32,7 @@ export type CargoPluginProfileMap = Record<string, string> & {
 };
 export const DefaultCargoPluginProfileMap = {
   development: "dev",
-  production: "prod",
+  production: "prod"
 };
 
 export const DEFAULT_ERROR_MESSAGE =
@@ -70,11 +70,11 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
 
           const profs = {
             ...DefaultCargoPluginProfileMap,
-            ...profiles,
+            ...profiles
           };
           const configurations = Object.keys(profs).reduce((ret, key) => {
             ret[key] = {
-              profile: profs[key],
+              profile: profs[key]
             };
 
             return ret;
@@ -93,14 +93,14 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
 
               const project: ProjectConfiguration = {
                 root,
-                name: cargoPackage.name,
+                name: cargoPackage.name
               };
               if (existsSync(joinPathFragments(root, "project.json"))) {
                 const projectJson = readJsonFile<ProjectConfiguration>(
-                  joinPathFragments(root, "project.json"),
+                  joinPathFragments(root, "project.json")
                 );
                 if (projectJson) {
-                  Object.keys(projectJson).forEach((key) => {
+                  Object.keys(projectJson).forEach(key => {
                     if (!project[key]) {
                       project[key] = projectJson[key];
                     }
@@ -117,6 +117,21 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
               }
 
               project.targets = {
+                "lint-markdown": {
+                  cache: true,
+                  outputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
+                  inputs: [
+                    "linting",
+                    "{projectRoot}/**/*.md",
+                    "{projectRoot}/**/*.mdx"
+                  ],
+                  dependsOn: ["^lint-markdown"],
+                  executor: "nx:run-commands",
+                  options: {
+                    command:
+                      'pnpm exec markdownlint-cli2 "{projectRoot}/*.{md,mdx}" "{projectRoot}/**/*.{md,mdx}" --config "node_modules/@storm-software/markdownlint/config/base.markdownlint-cli2.jsonc" --fix'
+                  }
+                },
                 "lint-ls": {
                   cache: true,
                   inputs: ["linting", "rust", "^production"],
@@ -124,20 +139,20 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   options: {
                     command:
                       'pnpm exec ls-lint --config="./node_modules/@storm-software/linting-tools/ls-lint/.ls-lint.yml" ',
-                    color: true,
-                  },
+                    color: true
+                  }
                 },
                 lint: {
                   cache: true,
                   inputs: ["linting", "rust", "^production"],
-                  dependsOn: ["^lint"],
+                  dependsOn: ["lint-ls", "lint-markdown", "^lint"],
                   executor: "@storm-software/workspace-tools:cargo-clippy",
                   options: {
                     toolchain,
-                    fix: false,
+                    fix: false
                   },
                   defaultConfiguration: "development",
-                  configurations,
+                  configurations
                 },
                 check: {
                   cache: true,
@@ -145,20 +160,36 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   dependsOn: ["lint", "^check"],
                   executor: "@storm-software/workspace-tools:cargo-check",
                   options: {
-                    toolchain,
+                    toolchain
                   },
                   defaultConfiguration: "development",
-                  configurations,
+                  configurations
                 },
                 "format-readme": {
                   cache: true,
-                  inputs: ["linting", "documentation", "rust", "^production"],
+                  inputs: [
+                    "linting",
+                    "documentation",
+                    "{projectRoot}/{README.md,package.json,Cargo.toml,executors.json,generators.json}"
+                  ],
+                  outputs: ["{projectRoot}/README.md"],
                   dependsOn: ["^format-readme"],
+                  executor: "nx:run-commands",
+                  options: {
+                    command:
+                      'pnpm exec storm-git readme --templates="tools/readme-templates" --project="{projectName}"'
+                  }
                 },
                 "format-toml": {
                   cache: true,
-                  inputs: ["linting", "rust", "^production"],
+                  inputs: ["linting", "{projectRoot}/**/*.toml"],
+                  outputs: ["{projectRoot}/**/*.toml"],
                   dependsOn: ["^format-toml"],
+                  executor: "nx:run-commands",
+                  options: {
+                    command:
+                      'pnpm exec taplo format --config="node_modules/@storm-software/linting-tools/taplo/config.toml" --cache-path="node_modules/.cache/taplo/{projectRoot}" --colors="always" "{projectRoot}/*.toml" "{projectRoot}/**/*.toml" '
+                  }
                 },
                 "format-clippy": {
                   cache: true,
@@ -167,10 +198,10 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   executor: "@storm-software/workspace-tools:cargo-clippy",
                   options: {
                     toolchain,
-                    fix: true,
+                    fix: true
                   },
                   defaultConfiguration: "development",
-                  configurations,
+                  configurations
                 },
                 format: {
                   cache: true,
@@ -179,15 +210,15 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                     "format-readme",
                     "format-clippy",
                     "format-toml",
-                    "^format",
+                    "^format"
                   ],
                   executor: "@storm-software/workspace-tools:cargo-format",
                   options: {
                     toolchain,
-                    fix: true,
+                    fix: true
                   },
                   defaultConfiguration: "development",
-                  configurations,
+                  configurations
                 },
                 clean: {
                   cache: true,
@@ -197,8 +228,8 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   options: {
                     command: `pnpm exec rimraf dist/target/crates/${cargoPackage.name}`,
                     color: true,
-                    cwd: "{workspaceRoot}",
-                  },
+                    cwd: "{workspaceRoot}"
+                  }
                 },
                 build: {
                   cache: true,
@@ -207,10 +238,10 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   executor: "@storm-software/workspace-tools:cargo-build",
                   outputs: [`{workspaceRoot}/dist/target/{projectRoot}`],
                   options: {
-                    toolchain: toolchain,
+                    toolchain: toolchain
                   },
                   defaultConfiguration: "development",
-                  configurations,
+                  configurations
                 },
                 rebuild: {
                   cache: false,
@@ -219,10 +250,10 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   executor: "@storm-software/workspace-tools:cargo-build",
                   outputs: [`{workspaceRoot}/dist/target/{projectRoot}`],
                   options: {
-                    toolchain: toolchain,
+                    toolchain: toolchain
                   },
                   defaultConfiguration: "development",
-                  configurations,
+                  configurations
                 },
                 test: {
                   cache: true,
@@ -231,11 +262,11 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   executor: "@monodon/rust:test",
                   outputs: ["{options.target-dir}"],
                   options: {
-                    "target-dir": `{workspaceRoot}/dist/target/{projectRoot}`,
+                    "target-dir": `{workspaceRoot}/dist/target/{projectRoot}`
                   },
                   defaultConfiguration: "development",
-                  configurations,
-                },
+                  configurations
+                }
               };
 
               if (skipDocs != true) {
@@ -245,16 +276,16 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                     "linting",
                     "documentation",
                     "default",
-                    "^production",
+                    "^production"
                   ],
                   dependsOn: ["format-readme", "lint-docs", "^docs"],
                   outputs: [`{workspaceRoot}/dist/docs/{projectRoot}`],
                   executor: "@storm-software/workspace-tools:cargo-doc",
                   options: {
-                    toolchain: toolchain,
+                    toolchain: toolchain
                   },
                   defaultConfiguration: "production",
-                  configurations,
+                  configurations
                 };
               }
 
@@ -269,7 +300,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   project,
                   ProjectTagConstants.Registry.TAG_ID,
                   ProjectTagConstants.Registry.CARGO,
-                  { overwrite: true },
+                  { overwrite: true }
                 );
 
                 project.targets["nx-release-publish"] = {
@@ -279,15 +310,15 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                     "testing",
                     "documentation",
                     "rust",
-                    "^production",
+                    "^production"
                   ],
                   dependsOn: ["build", "^nx-release-publish"],
                   executor: "@storm-software/workspace-tools:cargo-publish",
                   options: {
-                    packageRoot: root,
+                    packageRoot: root
                   },
                   defaultConfiguration: "production",
-                  configurations,
+                  configurations
                 };
               }
 
@@ -295,7 +326,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                 project,
                 ProjectTagConstants.Language.TAG_ID,
                 ProjectTagConstants.Language.RUST,
-                { overwrite: true },
+                { overwrite: true }
               );
               setDefaultProjectTags(project, name);
 
@@ -305,10 +336,9 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   ...project.release,
                   version: {
                     ...project.release?.version,
-                    generator:
-                      "@storm-software/workspace-tools:release-version",
-                  },
-                },
+                    generator: "@storm-software/workspace-tools:release-version"
+                  }
+                }
               };
             }
 
@@ -321,9 +351,8 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                     name: externalDepName as any,
                     data: {
                       packageName: dep.name,
-                      version:
-                        cargoPackageMap.get(dep.name)?.version ?? "0.0.0",
-                    },
+                      version: cargoPackageMap.get(dep.name)?.version ?? "0.0.0"
+                    }
                   };
                 }
               }
@@ -332,7 +361,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
 
           return {
             projects,
-            externalNodes,
+            externalNodes
           };
         } catch (e) {
           console.error(DEFAULT_ERROR_MESSAGE);
@@ -343,9 +372,9 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
       },
       configFiles,
       options,
-      context,
+      context
     );
-  },
+  }
 ];
 
 export const createDependencies: CreateDependencies = (_, context) => {
@@ -362,9 +391,9 @@ export const createDependencies: CreateDependencies = (_, context) => {
       console.debug(`Local Cargo package found: ${pkg.name}`);
 
       for (const deps of pkg.dependencies) {
-        if (!cargoPackages.find((p) => p.name === deps.name)) {
+        if (!cargoPackages.find(p => p.name === deps.name)) {
           console.debug(
-            `Dependency ${deps.name} not found in the cargo metadata.`,
+            `Dependency ${deps.name} not found in the cargo metadata.`
           );
           continue;
         }
@@ -372,13 +401,13 @@ export const createDependencies: CreateDependencies = (_, context) => {
         // if the dependency is listed in nx projects, it's not an external dependency
         if (context.projects[deps.name]) {
           dependencies.push(
-            createDependency(pkg, deps.name, DependencyType.static),
+            createDependency(pkg, deps.name, DependencyType.static)
           );
         } else {
           const externalDepName = `cargo:${deps.name}`;
           if (externalDepName in (context.externalNodes ?? {})) {
             dependencies.push(
-              createDependency(pkg, externalDepName, DependencyType.static),
+              createDependency(pkg, externalDepName, DependencyType.static)
             );
           }
         }
@@ -392,7 +421,7 @@ export const createDependencies: CreateDependencies = (_, context) => {
 function createDependency(
   pkg: Package,
   depName: string,
-  type: DependencyType,
+  type: DependencyType
 ): RawProjectGraphDependency {
   const target = pkg.manifest_path.replace(/\\/g, "/");
 
@@ -400,6 +429,6 @@ function createDependency(
     type,
     source: pkg.name,
     target: depName,
-    sourceFile: target.replace(`${workspaceRoot.replace(/\\/g, "/")}/`, ""),
+    sourceFile: target.replace(`${workspaceRoot.replace(/\\/g, "/")}/`, "")
   };
 }
