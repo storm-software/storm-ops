@@ -15,7 +15,7 @@ const workspaceRoot = findWorkspaceRoot();
 const compat = new FlatCompat({
   baseDirectory: workspaceRoot,
   recommendedConfig: js.configs.recommended,
-  ignores: DEFAULT_IGNORES,
+  ignores: DEFAULT_IGNORES
 });
 
 const config: Linter.FlatConfig[] = [
@@ -26,15 +26,15 @@ const config: Linter.FlatConfig[] = [
     ignores: DEFAULT_IGNORES,
     plugins: {
       mdx: mdxPlugin,
-      markdownlint: markdownPlugin,
+      markdownlint: markdownPlugin
     },
     languageOptions: {
-      parser: mdxParser.parser,
-    },
+      parser: mdxParser.parser
+    }
   },
   ...compat
     .config({
-      extends: ["plugin:mdx/recommended", "plugin:markdownlint/recommended"],
+      extends: ["plugin:mdx/recommended", "plugin:markdownlint/recommended"]
     })
     .map((config: Linter.FlatConfig) => ({
       ...config,
@@ -44,11 +44,11 @@ const config: Linter.FlatConfig[] = [
       languageOptions: {
         parser: mdxParser.parser,
         parserOptions: {
-          ecmaVersion: 13,
-        },
+          ecmaVersion: 13
+        }
       },
       settings: {
-        "mdx/code-blocks": true,
+        "mdx/code-blocks": true
       },
       rules: {
         ...config.rules,
@@ -58,19 +58,19 @@ const config: Linter.FlatConfig[] = [
         "@typescript-eslint/prefer-optional-chain": "off", // throws "parserOptions.project" error
         "react/jsx-filename-extension": "off", // fixes JSX not allowed in files with extension '.mdx'
         "@typescript-eslint/require-await": "off",
-        "@typescript-eslint/return-await": "off",
-      },
+        "@typescript-eslint/return-await": "off"
+      }
     })),
   ...compat
     .config({
-      extends: ["plugin:markdownlint/recommended"],
+      extends: ["plugin:markdownlint/recommended"]
     })
-    .map((config) => ({
+    .map(config => ({
       ...config,
       files: ["**/*.md", "**/*.markdown"],
       ignores: DEFAULT_IGNORES,
       languageOptions: {
-        parser: markdownLintParser,
+        parser: markdownLintParser
       },
       rules: {
         ...config.rules,
@@ -79,16 +79,16 @@ const config: Linter.FlatConfig[] = [
         "markdownlint/md025": [
           "error",
           {
-            level: 2,
-          },
-        ],
-      },
+            level: 2
+          }
+        ]
+      }
     })),
   ...compat
     .config({
-      extends: ["plugin:markdownlint/recommended"],
+      extends: ["plugin:markdownlint/recommended"]
     })
-    .map((config) => ({
+    .map(config => ({
       ...config,
       files: [
         CODE_BLOCK,
@@ -98,11 +98,11 @@ const config: Linter.FlatConfig[] = [
         ".github/ISSUE_TEMPLATE/bug_report.md",
         "SECURITY.md",
         "CODE_OF_CONDUCT.md",
-        "README.md",
+        "README.md"
       ],
       ignores: DEFAULT_IGNORES,
       languageOptions: {
-        parser: markdownLintParser,
+        parser: markdownLintParser
       },
       rules: {
         ...config.rules,
@@ -110,9 +110,9 @@ const config: Linter.FlatConfig[] = [
         "no-console": "off",
         "@typescript-eslint/no-unused-vars": "off",
         "no-undef": "off",
-        "import/extensions": "off",
-      },
-    })),
+        "import/extensions": "off"
+      }
+    }))
 ];
 
 export default formatConfig("Markdown", config);

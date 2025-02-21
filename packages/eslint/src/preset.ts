@@ -17,6 +17,7 @@ import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths"
 import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { defu } from "defu";
 import type { Linter } from "eslint";
+import gitignore from "eslint-config-flat-gitignore";
 import json from "eslint-plugin-json";
 import markdown from "eslint-plugin-markdown";
 import prettierConfig from "eslint-plugin-prettier/recommended";
@@ -457,6 +458,13 @@ export function getStormConfig(
 
         return ret;
       }, [] as Linter.Config[])
+    );
+
+    result.unshift(
+      gitignore({
+        files: [".gitignore", ".eslintignore"],
+        strict: false
+      })
     );
     result.unshift({
       ignores: ignoredFiles
