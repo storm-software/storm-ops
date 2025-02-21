@@ -8,16 +8,27 @@
       "cache": true,
       "executor": "nx:run-commands",
       "dependsOn": ["^build"],
-      "inputs": ["typescript", "production"],
+      "inputs": ["typescript", "^production"],
       "outputs": ["{workspaceRoot}/dist/packages/linting-tools/**"],
       "options": {
         "command": "tsup --config=tsup.config.ts",
         "cwd": "{projectRoot}"
       }
     },
+    "build-bin": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "inputs": ["typescript", "^production"],
+      "outputs": ["{workspaceRoot}/dist/packages/linting-tools/**"],
+      "options": {
+        "command": "tsup --config=tsup.bin.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
     "build": {
       "executor": "nx:run-commands",
-      "dependsOn": ["build-base"],
+      "dependsOn": ["build-base", "build-bin"],
       "options": {
         "commands": [
           "pnpm copyfiles LICENSE dist/packages/linting-tools",
