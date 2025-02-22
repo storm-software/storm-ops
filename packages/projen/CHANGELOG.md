@@ -1,3 +1,9 @@
+## 0.9.27 (2025-02-22)
+
+### Miscellaneous
+
+- **monorepo:** Reformat and lint workspace files ([9b706de2f](https://github.com/storm-software/storm-ops/commit/9b706de2f))
+
 ## 0.9.26 (2025-02-21)
 
 ### Miscellaneous

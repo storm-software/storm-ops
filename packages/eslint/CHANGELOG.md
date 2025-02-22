@@ -1,3 +1,14 @@
+## 0.123.1 (2025-02-22)
+
+### Miscellaneous
+
+- **monorepo:** Reformat and lint workspace files ([9b706de2f](https://github.com/storm-software/storm-ops/commit/9b706de2f))
+- **eslint:** Update the version of workspace package ([d7f31c439](https://github.com/storm-software/storm-ops/commit/d7f31c439))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.155.1
+
 ## 0.123.0 (2025-02-21)
 
 ### Features

@@ -1,3 +1,15 @@
+## 0.26.1 (2025-02-22)
+
+### Miscellaneous
+
+- **monorepo:** Reformat and lint workspace files ([9b706de2f](https://github.com/storm-software/storm-ops/commit/9b706de2f))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.155.1
+- Updated build-tools to 0.140.1
+- Updated config to 1.103.1
+
 ## 0.26.0 (2025-02-21)
 
 ### Features
