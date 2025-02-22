@@ -158,7 +158,7 @@
     "@eslint/eslintrc": "^3.2.0",
     "@eslint/markdown": "^6.2.2",
     "@nx/eslint-plugin": "catalog:",
-    "@storm-software/config-tools": "1.154.1",
+    "@storm-software/config-tools": "1.155.0",
     "@stylistic/eslint-plugin": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^8.24.1",
     "@typescript-eslint/parser": "^8.24.1",
