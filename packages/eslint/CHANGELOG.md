@@ -1,3 +1,9 @@
+## 0.129.2 (2025-02-23)
+
+### Miscellaneous
+
+- **eslint:** Cleaned up the linter rules ([278471fcf](https://github.com/storm-software/storm-ops/commit/278471fcf))
+
 ## 0.129.1 (2025-02-23)
 
 ### Bug Fixes
