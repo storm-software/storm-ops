@@ -1,5 +1,5 @@
-import { existsSync } from "node:fs";
 import process from "node:process";
+import { getTsConfigPath } from "src/utils/tsconfig-path";
 import type {
   OptionsComponentExts,
   OptionsFiles,
@@ -45,21 +45,9 @@ export async function typescript(
     GLOB_ASTRO_TS
   ];
 
-  let tsconfigPath = options?.tsconfigPath ? options.tsconfigPath : undefined;
+  let tsconfigPath = options?.tsconfigPath;
   if (!tsconfigPath) {
-    if (existsSync("tsconfig.json")) {
-      tsconfigPath = "tsconfig.json";
-    } else if (existsSync("tsconfig.base.json")) {
-      tsconfigPath = "tsconfig.base.json";
-    } else if (existsSync("tsconfig.app.json")) {
-      tsconfigPath = "tsconfig.app.json";
-    } else if (existsSync("tsconfig.lib.json")) {
-      tsconfigPath = "tsconfig.lib.json";
-    } else {
-      console.warn(
-        "No tsconfig.json found. Consider adding a tsconfig.json file to your project's ESLint configuration."
-      );
-    }
+    tsconfigPath = getTsConfigPath();
   }
 
   const isTypeAware = !!tsconfigPath;

@@ -40,6 +40,7 @@ import type {
   TypedFlatConfigItem
 } from "./types";
 import { interopDefault, isInEditorEnv } from "./utils/helpers";
+import { getTsConfigPath } from "./utils/tsconfig-path";
 
 const flatConfigProps = [
   "name",
@@ -101,8 +102,9 @@ export function getStormConfig(
   >[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
-    name,
+    name = "",
     globals = {},
+    lineEndings = "unix",
     astro: enableAstro = false,
     autoRenamePlugins = true,
     componentExts = [],
@@ -125,7 +127,7 @@ export function getStormConfig(
     if (isInEditor)
       // eslint-disable-next-line no-console
       console.log(
-        "[@antfu/eslint-config] Detected running in editor, some rules are disabled."
+        "[@storm-software/eslint] Detected running in editor, some rules are disabled."
       );
   }
 
@@ -164,10 +166,13 @@ export function getStormConfig(
   }
 
   const typescriptOptions = resolveSubOptions(options, "typescript");
-  const tsconfigPath =
+  let tsconfigPath =
     "tsconfigPath" in typescriptOptions
       ? typescriptOptions.tsconfigPath
       : undefined;
+  if (!tsconfigPath) {
+    tsconfigPath = getTsConfigPath();
+  }
 
   // Base configs
   configs.push(
@@ -175,6 +180,7 @@ export function getStormConfig(
     javascript({
       name,
       globals,
+      lineEndings,
       isInEditor,
       overrides: getOverrides(options, "javascript")
     }),
@@ -216,6 +222,7 @@ export function getStormConfig(
     configs.push(
       stylistic({
         ...stylisticOptions,
+        lineEndings,
         lessOpinionated: options.lessOpinionated,
         overrides: getOverrides(options, "stylistic")
       })

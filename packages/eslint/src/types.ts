@@ -163,7 +163,9 @@ export interface OptionsStylistic {
 export type StylisticConfig = Pick<
   StylisticCustomizeOptions,
   "indent" | "quotes" | "jsx" | "semi"
->;
+> & {
+  lineEndings?: "unix" | "windows";
+};
 
 export interface OptionsOverrides {
   overrides?: TypedFlatConfigItem["rules"];
@@ -424,6 +426,13 @@ export interface OptionsJavascript {
    * An object containing a list of extra global variables to include in the configuration.
    */
   globals?: Record<string, ESLintGlobalsPropValue>;
+
+  /**
+   * The style of line endings to use.
+   *
+   * @default "unix"
+   */
+  lineEndings?: "unix" | "windows";
 }
 
 export interface OptionsConfig

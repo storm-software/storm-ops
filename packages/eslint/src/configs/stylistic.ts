@@ -24,7 +24,8 @@ export async function stylistic(
     jsx,
     overrides = {},
     quotes,
-    semi
+    semi,
+    lineEndings = "unix"
   } = {
     ...StylisticConfigDefaults,
     ...options
@@ -52,6 +53,8 @@ export async function stylistic(
         ...config.rules,
 
         "style/lines-around-comment": "off",
+        "style/linebreak-style": ["error", lineEndings],
+
         // "style/padding-line-between-statements": [
         //   "error",
         //   { blankLine: "always", prev: ["const", "let", "var"], next: "*" },

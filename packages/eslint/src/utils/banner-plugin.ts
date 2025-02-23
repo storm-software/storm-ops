@@ -31,9 +31,11 @@ function getLeadingComments(context, node) {
       .getSourceCode()
       .getAllComments(node.body.length ? node.body[0] : node)
   );
+
   if (all[0].type.toLowerCase() === "block") {
     return [all[0]];
   }
+
   let i = 1;
   for (i = 1; i < all.length; ++i) {
     const txt = context
@@ -51,9 +53,9 @@ function getLeadingComments(context, node) {
 function genCommentBody(commentType, textArray, eol, numNewlines) {
   const eols = eol.repeat(numNewlines);
   if (commentType === "block") {
-    return "/* " + textArray.join(eol) + " */" + eols;
+    return "/*" + textArray.join(eol) + "*/" + eols;
   } else {
-    return "// " + textArray.join(eol + " //") + eols;
+    return "//" + textArray.join(eol + "//") + eols;
   }
 }
 
@@ -102,22 +104,22 @@ function getEOL(options) {
   return os.EOL;
 }
 
-function hasBanner(commentType: "block" | "line" | string, src: string) {
+function hasBanner(
+  commentType: "block" | "line" | string = "block",
+  src: string,
+  eol: "\n" | "\r\n"
+) {
   if (src.startsWith("#!")) {
-    const bannerLines = src.split(/\r?\n/);
+    const bannerLines = src.split(eol);
     if (bannerLines && bannerLines.length > 1) {
       bannerLines.shift();
 
-      while (
-        bannerLines.length &&
-        bannerLines[0] &&
-        !bannerLines[0].replace(/\s+/, "")
-      ) {
+      while (bannerLines.length && bannerLines[0] && !bannerLines[0].trim()) {
         bannerLines.shift();
       }
 
       if (bannerLines.length) {
-        src = bannerLines.join("\n");
+        src = bannerLines.join(eol);
       } else {
         return false;
       }
@@ -126,9 +128,9 @@ function hasBanner(commentType: "block" | "line" | string, src: string) {
 
   return (
     (commentType === "block" && src.startsWith("/*")) ||
-    (commentType === "lint" && src.startsWith("//")) ||
+    (commentType === "line" && src.startsWith("//")) ||
     (commentType !== "block" &&
-      commentType !== "lint" &&
+      commentType !== "line" &&
       commentType &&
       src.startsWith(commentType))
   );
@@ -168,7 +170,8 @@ const bannerRule = ESLintUtils.RuleCreator(
   name: "banner",
   meta: {
     docs: {
-      description: "Ensures the file has a Storm Software banner"
+      description:
+        "Ensures the file has a organization specific banner at the top of source code files"
     },
     schema: [
       {
@@ -192,7 +195,13 @@ const bannerRule = ESLintUtils.RuleCreator(
           numNewlines: {
             type: "number",
             description:
-              "The number of newlines to use after the banner. Defaults to 2"
+              "The number of newlines to use after the banner. Defaults to 1"
+          },
+          lineEndings: {
+            type: "string",
+            enum: ["unix", "windows"],
+            description:
+              "The type of line endings to use. Defaults to the system default"
           }
         },
         additionalProperties: false
@@ -211,19 +220,28 @@ const bannerRule = ESLintUtils.RuleCreator(
     {
       repositoryName: "",
       commentType: "block",
-      numNewlines: 2
+      numNewlines: 1,
+      lineEndings: "unix"
     }
   ],
   create(
     context,
-    [{ banner, repositoryName = "", commentType = "block", numNewlines = 2 }]
+    [
+      {
+        banner,
+        repositoryName = "",
+        commentType = "block",
+        numNewlines = 1,
+        lineEndings = "unix"
+      }
+    ]
   ) {
     if (!banner) {
       banner = getFileBanner(repositoryName);
     }
 
     const options = context.options;
-    const eol = getEOL(options);
+    const eol = getEOL({ lineEndings, ...options });
 
     // If just one option then read comment from file
 
@@ -236,7 +254,7 @@ const bannerRule = ESLintUtils.RuleCreator(
 
     return {
       Program: function (node) {
-        if (!hasBanner(commentType, context.sourceCode.getText())) {
+        if (!hasBanner(commentType, context.sourceCode.getText(), eol)) {
           context.report({
             loc: node.loc,
             messageId: "missingBanner",

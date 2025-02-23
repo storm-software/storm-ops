@@ -6734,6 +6734,8 @@ type BannerBanner = []|[{
   commentType?: string
   
   numNewlines?: number
+  
+  lineEndings?: ("unix" | "windows")
 }]
 // ----- block-spacing -----
 type BlockSpacing = []|[("always" | "never")]
