@@ -12,7 +12,7 @@ export async function cspell(
 
   return [
     {
-      name: "storm/cspell",
+      name: "storm/cspell/rules",
       ...cspellConfig,
       rules: {
         ...cspellConfig.rules,

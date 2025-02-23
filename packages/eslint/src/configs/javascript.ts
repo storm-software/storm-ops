@@ -49,7 +49,7 @@ export async function javascript(
     },
     {
       // Banner
-      ...banner.configs!["recommended"],
+      ...banner.configs?.["recommended"],
       name: "storm/javascript/banner",
       plugins: { banner },
       rules: {
