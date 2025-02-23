@@ -35,7 +35,7 @@ export const getFileBanner = (name = "") => {
       .join(" ");
   }
 
-  return `-------------------------------------------------------------------
+  return ` -------------------------------------------------------------------
 
 ${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
 
@@ -75,5 +75,5 @@ ${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
      : `https://stormsoftware.com/${name ? `projects/${name}/` : ""}license`
  }
 
- -------------------------------------------------------------------`;
+ ------------------------------------------------------------------- `;
 };
