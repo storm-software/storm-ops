@@ -1,3 +1,9 @@
+## 0.123.2 (2025-02-23)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with duplicate plugins ([181c397bb](https://github.com/storm-software/storm-ops/commit/181c397bb))
+
 ## 0.123.1 (2025-02-22)
 
 ### Miscellaneous
