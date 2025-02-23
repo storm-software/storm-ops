@@ -1,3 +1,13 @@
+## 0.128.0 (2025-02-23)
+
+### Features
+
+- **eslint:** Updated typegen definition for linting rules ([53fcb9ef4](https://github.com/storm-software/storm-ops/commit/53fcb9ef4))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([312306e34](https://github.com/storm-software/storm-ops/commit/312306e34))
+
 ## 0.127.0 (2025-02-23)
 
 ### Features
