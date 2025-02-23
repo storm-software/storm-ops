@@ -1,3 +1,9 @@
+## 0.124.2 (2025-02-23)
+
+### Bug Fixes
+
+- **eslint:** Resolve missing spaces issue in banner ([9194ce0cf](https://github.com/storm-software/storm-ops/commit/9194ce0cf))
+
 ## 0.124.1 (2025-02-23)
 
 ### Bug Fixes
