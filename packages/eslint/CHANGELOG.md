@@ -1,3 +1,13 @@
+## 0.125.1 (2025-02-23)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with `banner/banner` spacing in comment ([fa6977dfb](https://github.com/storm-software/storm-ops/commit/fa6977dfb))
+
+### Miscellaneous
+
+- **eslint:** Regenerate ESLint rule types ([d571a493e](https://github.com/storm-software/storm-ops/commit/d571a493e))
+
 ## 0.125.0 (2025-02-23)
 
 ### Features
