@@ -1,3 +1,9 @@
+## 0.124.0 (2025-02-23)
+
+### Features
+
+- **eslint:** Improve stylistic lint rules ([24483cc38](https://github.com/storm-software/storm-ops/commit/24483cc38))
+
 ## 0.123.3 (2025-02-23)
 
 ### Bug Fixes
