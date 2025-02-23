@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import process from "node:process";
 import type {
   OptionsComponentExts,
@@ -43,7 +44,24 @@ export async function typescript(
     `${GLOB_MARKDOWN}/**`,
     GLOB_ASTRO_TS
   ];
-  const tsconfigPath = options?.tsconfigPath ? options.tsconfigPath : undefined;
+
+  let tsconfigPath = options?.tsconfigPath ? options.tsconfigPath : undefined;
+  if (!tsconfigPath) {
+    if (existsSync("tsconfig.json")) {
+      tsconfigPath = "tsconfig.json";
+    } else if (existsSync("tsconfig.base.json")) {
+      tsconfigPath = "tsconfig.base.json";
+    } else if (existsSync("tsconfig.app.json")) {
+      tsconfigPath = "tsconfig.app.json";
+    } else if (existsSync("tsconfig.lib.json")) {
+      tsconfigPath = "tsconfig.lib.json";
+    } else {
+      console.warn(
+        "No tsconfig.json found. Consider adding a tsconfig.json file to your project's ESLint configuration."
+      );
+    }
+  }
+
   const isTypeAware = !!tsconfigPath;
 
   const typeAwareRules: TypedFlatConfigItem["rules"] = {
