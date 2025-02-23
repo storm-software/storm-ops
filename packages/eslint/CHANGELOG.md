@@ -1,3 +1,9 @@
+## 0.125.0 (2025-02-23)
+
+### Features
+
+- **eslint:** Added the `mdx` configuration module ([7eb9ebbc1](https://github.com/storm-software/storm-ops/commit/7eb9ebbc1))
+
 ## 0.124.3 (2025-02-23)
 
 ### Miscellaneous
