@@ -420,7 +420,7 @@ export interface OptionsJavascript {
   /**
    * The name of the repository used in adding the banner comments
    */
-  repositoryName: string;
+  name: string;
 
   /**
    * An object containing a list of extra global variables to include in the configuration.

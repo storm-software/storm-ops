@@ -17,7 +17,7 @@ export async function javascript(
   const {
     lineEndings = "unix",
     overrides = {},
-    repositoryName = "",
+    name = "",
     globals = {}
   } = options;
 
@@ -58,7 +58,7 @@ export async function javascript(
           {
             commentType: "block",
             numNewlines: 1,
-            repositoryName,
+            repositoryName: name,
             lineEndings
           }
         ]

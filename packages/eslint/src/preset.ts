@@ -104,7 +104,7 @@ export function getStormConfig(
   >[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
-    repositoryName = "",
+    name = "",
     globals = {},
     lineEndings = "unix",
     astro: enableAstro = false,
@@ -181,7 +181,7 @@ export function getStormConfig(
   configs.push(
     ignores(options.ignores),
     javascript({
-      repositoryName,
+      name,
       globals,
       lineEndings,
       isInEditor,
