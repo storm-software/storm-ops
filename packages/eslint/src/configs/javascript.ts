@@ -1024,7 +1024,7 @@ export async function javascript(
           }
         ],
         "prefer-const": [
-          isInEditor ? "warn" : "error",
+          "error",
           {
             destructuring: "all",
             ignoreReadBeforeAssign: true
@@ -1036,7 +1036,7 @@ export async function javascript(
         "prefer-spread": "error",
         "prefer-template": "error",
         "symbol-description": "error",
-        "unused-imports/no-unused-imports": isInEditor ? "warn" : "error",
+        "unused-imports/no-unused-imports": "error",
         "unused-imports/no-unused-vars": [
           "error",
           {

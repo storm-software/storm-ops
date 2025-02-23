@@ -562,6 +562,7 @@ export interface OptionsConfig
    * Enable stylistic rules.
    *
    * @see https://eslint.style/
+   *
    * @default true
    */
   stylistic?: boolean | (StylisticConfig & OptionsOverrides);

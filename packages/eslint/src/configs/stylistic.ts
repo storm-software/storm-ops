@@ -54,16 +54,17 @@ export async function stylistic(
 
         "style/lines-around-comment": "off",
         "style/linebreak-style": ["error", lineEndings],
-
-        // "style/padding-line-between-statements": [
-        //   "error",
-        //   { blankLine: "always", prev: ["const", "let", "var"], next: "*" },
-        //   {
-        //     blankLine: "any",
-        //     prev: ["const", "let", "var"],
-        //     next: ["const", "let", "var"]
-        //   }
-        // ],
+        "style/comma-dangle": ["error", "never"],
+        "style/comma-style": ["error", "last"],
+        "style/quotes": ["error", quotes],
+        "style/semi": ["error", semi ? "always" : "never"],
+        "style/indent": ["error", indent, { SwitchCase: 1 }],
+        "style/operator-linebreak": ["error", "after"],
+        "style/jsx-indent": ["error", indent],
+        "style/jsx-quotes": [
+          "error",
+          quotes === "single" ? "prefer-single" : "prefer-double"
+        ],
 
         ...overrides
       }

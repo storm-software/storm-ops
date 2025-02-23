@@ -73,7 +73,12 @@ export async function typescript(
     "ts/return-await": ["error", "in-try-catch"],
     "ts/strict-boolean-expressions": [
       "error",
-      { allowNullableBoolean: true, allowNullableObject: true }
+      {
+        allowNullableBoolean: true,
+        allowNullableObject: true,
+        allowNullableString: true,
+        allowNullableEnum: true
+      }
     ],
     "ts/switch-exhaustiveness-check": "error",
     "ts/unbound-method": "error"
@@ -133,9 +138,11 @@ export async function typescript(
       name: "storm/typescript/rules",
       rules: {
         ...renameRules(
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-non-null-asserted-optional-chain
           pluginTs.configs["eslint-recommended"]?.overrides?.[0]?.rules!,
           { "@typescript-eslint": "ts" }
         ),
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-non-null-asserted-optional-chain
         ...renameRules(pluginTs.configs.strict?.rules!, {
           "@typescript-eslint": "ts"
         }),
@@ -214,6 +221,7 @@ export async function typescript(
         "ts/no-import-type-side-effects": "error",
         "ts/no-invalid-void-type": "off",
         "ts/no-non-null-assertion": "off",
+        "ts/no-non-null-asserted-optional-chain": "error",
         "ts/no-redeclare": ["error", { builtinGlobals: false }],
         "ts/no-require-imports": "error",
         "ts/no-unused-expressions": [
