@@ -1,3 +1,18 @@
+## 0.127.0 (2025-02-23)
+
+### Features
+
+- **eslint:** Added the `no-secrets` configuration ([408d87669](https://github.com/storm-software/storm-ops/commit/408d87669))
+- **eslint:** Added the `react-native` linting configuration ([2dcbaf81e](https://github.com/storm-software/storm-ops/commit/2dcbaf81e))
+
+### Bug Fixes
+
+- **eslint:** Resolve build issue ([3f1cf3f37](https://github.com/storm-software/storm-ops/commit/3f1cf3f37))
+
+### Miscellaneous
+
+- **eslint:** Update `regexp/no-unused-capturing-group` to be fixable ([513beb23f](https://github.com/storm-software/storm-ops/commit/513beb23f))
+
 ## 0.126.2 (2025-02-23)
 
 ### Miscellaneous
