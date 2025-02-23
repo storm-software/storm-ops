@@ -59,7 +59,11 @@ export async function stylistic(
         "style/quotes": ["error", quotes],
         "style/semi": ["error", semi ? "always" : "never"],
         "style/indent": ["error", indent, { SwitchCase: 1 }],
-        "style/operator-linebreak": ["error", "after"],
+        "style/operator-linebreak": [
+          "error",
+          "after",
+          { overrides: { "=": "none", "?": "before", ":": "before" } }
+        ],
         "style/jsx-indent": ["error", indent],
         "style/jsx-quotes": [
           "error",

@@ -798,7 +798,7 @@ export async function javascript(
         "operator-linebreak": [
           "error",
           "after",
-          { overrides: { "=": "none" } }
+          { overrides: { "=": "none", "?": "before", ":": "before" } }
         ],
 
         // disallow padding within blocks
