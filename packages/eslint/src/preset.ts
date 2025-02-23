@@ -31,6 +31,7 @@ import {
   yaml
 } from "./configs";
 import { cspell } from "./configs/cspell";
+import { mdx } from "./configs/mdx";
 import { RuleOptions } from "./typegen";
 import type {
   Awaitable,
@@ -308,6 +309,14 @@ export function getStormConfig(
       markdown({
         componentExts,
         overrides: getOverrides(options, "markdown")
+      })
+    );
+  }
+
+  if (options.mdx ?? true) {
+    configs.push(
+      mdx({
+        overrides: getOverrides(options, "mdx")
       })
     );
   }

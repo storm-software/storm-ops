@@ -543,6 +543,13 @@ export interface OptionsConfig
   markdown?: boolean | OptionsOverrides;
 
   /**
+   * Enable linting for mdx files.
+   *
+   * @default true
+   */
+  mdx?: boolean | OptionsOverrides;
+
+  /**
    * Enable stylistic rules.
    *
    * @see https://eslint.style/

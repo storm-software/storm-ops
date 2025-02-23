@@ -11,7 +11,7 @@ export async function jsx(): Promise<TypedFlatConfigItem[]> {
 
   return [
     {
-      name: "storm/jsx/setup",
+      name: "storm/jsx/rules",
       files: [GLOB_JSX, GLOB_TSX],
       languageOptions: {
         parserOptions: {
@@ -22,10 +22,7 @@ export async function jsx(): Promise<TypedFlatConfigItem[]> {
       },
       plugins: {
         "jsx-a11y": pluginJsxA11y
-      }
-    },
-    {
-      name: "storm/jsx/rules",
+      },
       rules: {
         "jsx-a11y/alt-text": "error",
         "jsx-a11y/anchor-ambiguous-text": "off", // TODO: error
