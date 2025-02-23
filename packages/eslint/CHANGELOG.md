@@ -1,3 +1,9 @@
+## 0.129.0 (2025-02-23)
+
+### Features
+
+- **eslint:** Renamed the `repositoryName` option to `name` ([3c72d90f5](https://github.com/storm-software/storm-ops/commit/3c72d90f5))
+
 ## 0.128.0 (2025-02-23)
 
 ### Features
