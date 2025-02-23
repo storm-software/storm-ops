@@ -1,3 +1,13 @@
+## 0.129.1 (2025-02-23)
+
+### Bug Fixes
+
+- **eslint:** Set `node/prefer-global/process` rule to `always` ([d3a18d954](https://github.com/storm-software/storm-ops/commit/d3a18d954))
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files ([68f6724f6](https://github.com/storm-software/storm-ops/commit/68f6724f6))
+
 ## 0.129.0 (2025-02-23)
 
 ### Features

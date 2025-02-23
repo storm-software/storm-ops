@@ -1,3 +1,9 @@
+## 2.93.12 (2025-02-23)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files ([68f6724f6](https://github.com/storm-software/storm-ops/commit/68f6724f6))
+
 ## 2.93.11 (2025-02-23)
 
 ### Miscellaneous
