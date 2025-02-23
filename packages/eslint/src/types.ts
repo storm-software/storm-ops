@@ -602,6 +602,16 @@ export interface OptionsConfig
   react?: boolean | OptionsOverrides;
 
   /**
+   * Enable react native rules.
+   *
+   * Requires installing:
+   * - `eslint-plugin-react-native`
+   *
+   * @default false
+   */
+  "react-native"?: boolean | OptionsOverrides;
+
+  /**
    * Enable next rules.
    *
    * Requires installing:

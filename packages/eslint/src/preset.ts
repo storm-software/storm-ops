@@ -32,6 +32,7 @@ import {
 } from "./configs";
 import { cspell } from "./configs/cspell";
 import { mdx } from "./configs/mdx";
+import { reactNative } from "./configs/react-native";
 import { RuleOptions } from "./typegen";
 import type {
   Awaitable,
@@ -112,6 +113,7 @@ export function getStormConfig(
     jsx: enableJsx = true,
     cspell: enableCSpell = true,
     react: enableReact = false,
+    "react-native": enableReactNative = false,
     regexp: enableRegexp = true,
     next: enableNext = false,
     graphql: enableGraphQL = false,
@@ -252,6 +254,15 @@ export function getStormConfig(
         ...typescriptOptions,
         overrides: getOverrides(options, "react"),
         tsconfigPath
+      })
+    );
+  }
+
+  if (enableReactNative) {
+    configs.push(
+      reactNative({
+        ...resolveSubOptions(options, "react-native"),
+        overrides: getOverrides(options, "react-native")
       })
     );
   }
