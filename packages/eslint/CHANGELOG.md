@@ -1,3 +1,9 @@
+## 0.124.3 (2025-02-23)
+
+### Miscellaneous
+
+- **eslint:** Adjusted the stylistic linting rules ([bd4afac1e](https://github.com/storm-software/storm-ops/commit/bd4afac1e))
+
 ## 0.124.2 (2025-02-23)
 
 ### Bug Fixes
