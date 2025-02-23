@@ -1,4 +1,4 @@
-// eslint-disable-next-line ts/ban-ts-comment
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
 import { ESLintUtils } from "@typescript-eslint/utils";
@@ -51,9 +51,9 @@ function getLeadingComments(context, node) {
 function genCommentBody(commentType, textArray, eol, numNewlines) {
   const eols = eol.repeat(numNewlines);
   if (commentType === "block") {
-    return "/*" + textArray.join(eol) + "*/" + eols;
+    return "/* " + textArray.join(eol) + " */" + eols;
   } else {
-    return "//" + textArray.join(eol + "//") + eols;
+    return "// " + textArray.join(eol + " //") + eols;
   }
 }
 
@@ -133,37 +133,6 @@ function hasBanner(commentType: "block" | "line" | string, src: string) {
       src.startsWith(commentType))
   );
 }
-
-// function hasBanner(
-//   banner: string,
-//   src: string,
-//   commentType?: "block" | "line" | string
-// ) {
-//   if (src.substr(0, 2) === "#!") {
-//     const m = src.match(/(\r\n|\r|\n)/);
-//     if (m?.index) {
-//       src = src.slice(m.index + m[0].length);
-//     }
-//   }
-//   return (
-//     ((commentType === "block" && src.substr(0, 2) === "/*") ||
-//       (commentType === "lint" && src.substr(0, 2) === "//") ||
-//       (commentType !== "block" &&
-//         commentType !== "lint" &&
-//         src.substr(0, commentType?.length) === commentType)) &&
-//     src
-//       .replaceAll(
-//         commentType === "block"
-//           ? "/*"
-//           : commentType === "lint"
-//             ? "//"
-//             : commentType,
-//         ""
-//       )
-//       .replaceAll("*/", "")
-//       .includes(banner)
-//   );
-// }
 
 function matchesLineEndings(src, num) {
   for (let j = 0; j < num; ++j) {
@@ -442,6 +411,7 @@ const plugin: ESLint.Plugin = {
   processors: {}
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 plugin.configs &&
   (plugin.configs.recommended = {
     name: "banner/recommended",

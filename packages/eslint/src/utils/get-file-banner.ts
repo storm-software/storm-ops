@@ -8,7 +8,7 @@ import { ACRONYMS_LIST } from "./constants";
  */
 export const getFileBanner = (name = "") => {
   if (!name) {
-    name = process.env.STORM_NAMESPACE || "";
+    name = process.env.STORM_NAME || "";
   }
 
   let padding = "                               ";
@@ -24,8 +24,8 @@ export const getFileBanner = (name = "") => {
 
     titleName = (titleName.charAt(0).toUpperCase() + titleName.slice(1))
       .split("-")
-      .filter((word) => word && word.length > 0)
-      .map((word) => {
+      .filter(word => word && word.length > 0)
+      .map(word => {
         if (ACRONYMS_LIST.includes(word.toUpperCase())) {
           return word.toUpperCase();
         }
