@@ -1,3 +1,9 @@
+## 1.259.2 (2025-02-23)
+
+### Bug Fixes
+
+- **eslint:** Ensure all formatting parameters align across rules ([dac7bf767](https://github.com/storm-software/storm-ops/commit/dac7bf767))
+
 ## 1.259.1 (2025-02-22)
 
 ### Miscellaneous
