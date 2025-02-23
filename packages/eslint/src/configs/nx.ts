@@ -50,7 +50,7 @@ export async function nx(
         "@nx/enforce-module-boundaries": [
           "error",
           moduleBoundaries ?? {
-            enforceBuildableLibDependency: true,
+            enforceBuildableLibDependency: false,
             checkDynamicDependenciesExceptions: [".*"],
             allow: [],
             depConstraints: [

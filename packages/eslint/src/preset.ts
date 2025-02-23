@@ -194,7 +194,8 @@ export function getStormConfig(
       stylistic: stylisticOptions
     }),
     nx(resolveSubOptions(options, "nx")),
-    perfectionist()
+    perfectionist(),
+    secrets({ json: options.jsonc ?? true })
   );
 
   if (enableCSpell) {
