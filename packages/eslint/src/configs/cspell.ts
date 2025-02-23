@@ -1,6 +1,5 @@
 import cspellConfig from "@cspell/eslint-plugin/recommended";
 import { findWorkspaceRoot, joinPaths } from "@storm-software/config-tools";
-import { pluginCspell } from "../plugins";
 import type { OptionsCSpell, TypedFlatConfigItem } from "../types";
 
 /**
@@ -13,13 +12,7 @@ export async function cspell(
 
   return [
     {
-      name: "storm/cspell/setup",
-      plugins: {
-        "@cspell": pluginCspell
-      }
-    },
-    {
-      name: "storm/cspell/rules",
+      name: "storm/cspell",
       ...cspellConfig,
       rules: {
         ...cspellConfig.rules,
