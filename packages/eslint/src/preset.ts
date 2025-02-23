@@ -33,6 +33,7 @@ import {
 import { cspell } from "./configs/cspell";
 import { mdx } from "./configs/mdx";
 import { reactNative } from "./configs/react-native";
+import { secrets } from "./configs/secrets";
 import { RuleOptions } from "./typegen";
 import type {
   Awaitable,
@@ -195,7 +196,7 @@ export function getStormConfig(
     }),
     nx(resolveSubOptions(options, "nx")),
     perfectionist(),
-    secrets({ json: options.jsonc ?? true })
+    secrets({ json: options.jsonc !== false })
   );
 
   if (enableCSpell) {
