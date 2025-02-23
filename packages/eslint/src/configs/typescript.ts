@@ -71,15 +71,7 @@ export async function typescript(
     "ts/restrict-plus-operands": "error",
     "ts/restrict-template-expressions": "error",
     "ts/return-await": ["error", "in-try-catch"],
-    "ts/strict-boolean-expressions": [
-      "error",
-      {
-        allowNullableBoolean: true,
-        allowNullableObject: true,
-        allowNullableString: true,
-        allowNullableEnum: true
-      }
-    ],
+    "ts/strict-boolean-expressions": "off",
     "ts/switch-exhaustiveness-check": "error",
     "ts/unbound-method": "error"
   };
@@ -199,7 +191,6 @@ export async function typescript(
             ]
           }
         ],
-
         "no-dupe-class-members": "off",
         "no-redeclare": "off",
         "no-use-before-define": "off",
