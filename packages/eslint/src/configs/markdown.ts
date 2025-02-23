@@ -38,7 +38,7 @@ export async function markdown(
       // but not the markdown file itself. We use `eslint-merge-processors` to
       // add a pass-through processor for the markdown file itself.
       processor: mergeProcessors([
-        markdown.processors!.markdown,
+        markdown.processors?.markdown,
         processorPassThrough
       ])
     },

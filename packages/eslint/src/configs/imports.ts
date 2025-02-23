@@ -14,7 +14,7 @@ export async function imports(
       },
       rules: {
         "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
-        "import/first": "error",
+        "import/first": "off",
         "import/no-duplicates": "error",
         "import/no-mutable-exports": "error",
         "import/no-named-default": "error",

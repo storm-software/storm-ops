@@ -8,7 +8,7 @@ import type { OptionsCSpell, TypedFlatConfigItem } from "../types";
 export async function cspell(
   options: OptionsCSpell = {}
 ): Promise<TypedFlatConfigItem[]> {
-  const { configFile = "./.vscode/cspell.json" } = options;
+  const { configFile = "./.vscode/cspell.json", overrides = {} } = options;
 
   return [
     {
@@ -16,13 +16,16 @@ export async function cspell(
       ...cspellConfig,
       rules: {
         ...cspellConfig.rules,
+
         "@cspell/spellchecker": [
           "warn",
           {
             configFile: joinPaths(findWorkspaceRoot(), configFile),
             autoFix: true
           }
-        ]
+        ],
+
+        ...overrides
       }
     }
   ];

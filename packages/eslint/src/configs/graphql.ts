@@ -10,7 +10,12 @@ const compat = new FlatCompat({
 export async function graphql(
   options: OptionsGraphQL = {}
 ): Promise<TypedFlatConfigItem[]> {
-  const { relay = true, operations = true, schema = true } = options;
+  const {
+    relay = true,
+    operations = true,
+    schema = true,
+    overrides = {}
+  } = options;
 
   await ensurePackages([
     "@graphql-eslint/eslint-plugin",
@@ -158,7 +163,9 @@ export async function graphql(
               "@graphql-eslint/variables-are-input-types": "error",
               "@graphql-eslint/variables-in-allowed-position": "error"
             }
-          : {})
+          : {}),
+
+        ...overrides
       }
     },
     ...(relay

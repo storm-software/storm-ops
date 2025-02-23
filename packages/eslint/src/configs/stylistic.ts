@@ -51,7 +51,16 @@ export async function stylistic(
       rules: {
         ...config.rules,
 
-        "lines-around-comment": "off",
+        "style/lines-around-comment": "off",
+        // "style/padding-line-between-statements": [
+        //   "error",
+        //   { blankLine: "always", prev: ["const", "let", "var"], next: "*" },
+        //   {
+        //     blankLine: "any",
+        //     prev: ["const", "let", "var"],
+        //     next: ["const", "let", "var"]
+        //   }
+        // ],
 
         ...overrides
       }

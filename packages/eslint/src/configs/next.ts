@@ -19,7 +19,7 @@ export async function next(
 
   return [
     ...compat.config({
-      name: "storm/next",
+      name: "storm/next/rules",
       extends: ["next"],
       settings: {
         next: {
