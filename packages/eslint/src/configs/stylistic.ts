@@ -51,6 +51,8 @@ export async function stylistic(
       rules: {
         ...config.rules,
 
+        "lines-around-comment": "off",
+
         ...overrides
       }
     }
