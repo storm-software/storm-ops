@@ -1,3 +1,9 @@
+## 0.126.2 (2025-02-23)
+
+### Miscellaneous
+
+- **eslint:** Improve the opinionated linting rules ([7109758f8](https://github.com/storm-software/storm-ops/commit/7109758f8))
+
 ## 0.126.1 (2025-02-23)
 
 ### Bug Fixes
