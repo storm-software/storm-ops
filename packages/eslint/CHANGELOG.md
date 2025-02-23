@@ -1,3 +1,9 @@
+## 0.126.0 (2025-02-23)
+
+### Features
+
+- **eslint:** Added the `lineEndings` option ([f478e9436](https://github.com/storm-software/storm-ops/commit/f478e9436))
+
 ## 0.125.1 (2025-02-23)
 
 ### Bug Fixes
