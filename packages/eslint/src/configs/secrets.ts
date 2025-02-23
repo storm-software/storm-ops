@@ -1,6 +1,6 @@
-import { pluginSecrets } from "src/plugins";
-import { ensurePackages, interopDefault } from "src/utils/helpers";
+import { pluginSecrets } from "../plugins";
 import type { TypedFlatConfigItem } from "../types";
+import { ensurePackages } from "../utils/helpers";
 
 /**
  * Config for No-Secrets ESLint plugin
@@ -10,14 +10,11 @@ export async function secrets(options: {
 }): Promise<TypedFlatConfigItem[]> {
   const { json = true } = options;
 
-  await ensurePackages(["eslint-plugin-jsonc"]);
-
-  const [pluginJsonc] = await Promise.all([
-    interopDefault(import("eslint-plugin-jsonc"))
-  ] as const);
+  if (json) {
+    await ensurePackages(["eslint-plugin-jsonc"]);
+  }
 
   return [
-    ...(json ? pluginJsonc.configs["flat/recommended-with-jsonc"] : []),
     {
       name: "storm/secrets/rules",
       files: [`**/*.{js,ts,jsx,tsx${json ? ",json,jsonc" : ""}`],
@@ -27,8 +24,8 @@ export async function secrets(options: {
       rules: {
         "no-secrets/no-secrets": [
           "error",
-          { "ignoreIdentifiers": ["nxCloudId"] }
-        ]
+          { ignoreIdentifiers: ["nxCloudId"] }
+        ] as any
       }
     }
   ];

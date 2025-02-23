@@ -4,6 +4,511 @@ import type { Linter } from 'eslint'
 
 export interface RuleOptions {
   /**
+   * CSpell spellchecker
+   */
+  '@cspell/spellchecker'?: Linter.RuleEntry<CspellSpellchecker>
+  /**
+   * Enforce arrange in alphabetical order for type fields, enum values, input object fields, operation selections and more.
+   * @see https://the-guild.dev/graphql/eslint/rules/alphabetize
+   */
+  '@graphql-eslint/alphabetize'?: Linter.RuleEntry<GraphqlEslintAlphabetize>
+  /**
+   * Require all comments to follow the same style (either block or inline).
+   * @see https://the-guild.dev/graphql/eslint/rules/description-style
+   */
+  '@graphql-eslint/description-style'?: Linter.RuleEntry<GraphqlEslintDescriptionStyle>
+  /**
+   * A GraphQL document is only valid for execution if all definitions are either operation or fragment definitions.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/executable-definitions
+   */
+  '@graphql-eslint/executable-definitions'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is only valid if all fields selected are defined by the parent type, or are an allowed meta field such as `__typename`.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/fields-on-correct-type
+   */
+  '@graphql-eslint/fields-on-correct-type'?: Linter.RuleEntry<[]>
+  /**
+   * Fragments use a type condition to determine if they apply, since fragments can only be spread into a composite type (object, interface, or union), the type condition must also be a composite type.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/fragments-on-composite-type
+   */
+  '@graphql-eslint/fragments-on-composite-type'?: Linter.RuleEntry<[]>
+  /**
+   * Require mutation argument to be always called "input" and input type to be called Mutation name + "Input".
+Using the same name for all input parameters will make your schemas easier to consume and more predictable. Using the same name as mutation for InputType will make it easier to find mutations that InputType belongs to.
+   * @see https://the-guild.dev/graphql/eslint/rules/input-name
+   */
+  '@graphql-eslint/input-name'?: Linter.RuleEntry<GraphqlEslintInputName>
+  /**
+   * A GraphQL field is only valid if all supplied arguments are defined by that field.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/known-argument-names
+   */
+  '@graphql-eslint/known-argument-names'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is only valid if all `@directive`s are known by the schema and legally positioned.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/known-directives
+   */
+  '@graphql-eslint/known-directives'?: Linter.RuleEntry<GraphqlEslintKnownDirectives>
+  /**
+   * A GraphQL document is only valid if all `...Fragment` fragment spreads refer to fragments defined in the same document.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/known-fragment-names
+   */
+  '@graphql-eslint/known-fragment-names'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is only valid if referenced types (specifically variable definitions and fragment conditions) are defined by the type schema.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/known-type-names
+   */
+  '@graphql-eslint/known-type-names'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document that contains an anonymous operation (the `query` short-hand) is only valid if it contains only that one operation definition.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/lone-anonymous-operation
+   */
+  '@graphql-eslint/lone-anonymous-operation'?: Linter.RuleEntry<[]>
+  /**
+   * Require queries, mutations, subscriptions or fragments to be located in separate files.
+   * @see https://the-guild.dev/graphql/eslint/rules/lone-executable-definition
+   */
+  '@graphql-eslint/lone-executable-definition'?: Linter.RuleEntry<GraphqlEslintLoneExecutableDefinition>
+  /**
+   * A GraphQL document is only valid if it contains only one schema definition.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/lone-schema-definition
+   */
+  '@graphql-eslint/lone-schema-definition'?: Linter.RuleEntry<[]>
+  /**
+   * This rule allows you to enforce that the file name should match the operation name.
+   * @see https://the-guild.dev/graphql/eslint/rules/match-document-filename
+   */
+  '@graphql-eslint/match-document-filename'?: Linter.RuleEntry<GraphqlEslintMatchDocumentFilename>
+  /**
+   * Require names to follow specified conventions.
+   * @see https://the-guild.dev/graphql/eslint/rules/naming-convention
+   */
+  '@graphql-eslint/naming-convention'?: Linter.RuleEntry<GraphqlEslintNamingConvention>
+  /**
+   * Require name for your GraphQL operations. This is useful since most GraphQL client libraries are using the operation name for caching purposes.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-anonymous-operations
+   */
+  '@graphql-eslint/no-anonymous-operations'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that deprecated fields or enum values are not in use by operations.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-deprecated
+   */
+  '@graphql-eslint/no-deprecated'?: Linter.RuleEntry<[]>
+  /**
+   * Checks for duplicate fields in selection set, variables in operation definition, or in arguments set of a field.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-duplicate-fields
+   */
+  '@graphql-eslint/no-duplicate-fields'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL fragment is only valid when it does not have cycles in fragments usage.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-fragment-cycles
+   */
+  '@graphql-eslint/no-fragment-cycles'?: Linter.RuleEntry<[]>
+  /**
+   * Requires to use `"""` or `"` for adding a GraphQL description instead of `#`.
+Allows to use hashtag for comments, as long as it's not attached to an AST definition.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-hashtag-description
+   */
+  '@graphql-eslint/no-hashtag-description'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow fragments that are used only in one place.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-one-place-fragments
+   */
+  '@graphql-eslint/no-one-place-fragments'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow using root types `mutation` and/or `subscription`.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-root-type
+   */
+  '@graphql-eslint/no-root-type'?: Linter.RuleEntry<GraphqlEslintNoRootType>
+  /**
+   * Avoid scalar result type on mutation type to make sure to return a valid state.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-scalar-result-type-on-mutation
+   */
+  '@graphql-eslint/no-scalar-result-type-on-mutation'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces users to avoid using the type name in a field name while defining your schema.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-typename-prefix
+   */
+  '@graphql-eslint/no-typename-prefix'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL operation is only valid if all variables encountered, both directly and via fragment spreads, are defined by that operation.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-undefined-variables
+   */
+  '@graphql-eslint/no-undefined-variables'?: Linter.RuleEntry<[]>
+  /**
+   * Requires all types to be reachable at some level by root level fields.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-unreachable-types
+   */
+  '@graphql-eslint/no-unreachable-types'?: Linter.RuleEntry<[]>
+  /**
+   * Requires all fields to be used at some level by siblings operations.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-unused-fields
+   */
+  '@graphql-eslint/no-unused-fields'?: Linter.RuleEntry<GraphqlEslintNoUnusedFields>
+  /**
+   * A GraphQL document is only valid if all fragment definitions are spread within operations, or spread within other fragments spread within operations.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-unused-fragments
+   */
+  '@graphql-eslint/no-unused-fragments'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL operation is only valid if all variables defined by an operation are used, either directly or within a spread fragment.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-unused-variables
+   */
+  '@graphql-eslint/no-unused-variables'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL subscription is valid only if it contains a single root field.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/one-field-subscriptions
+   */
+  '@graphql-eslint/one-field-subscriptions'?: Linter.RuleEntry<[]>
+  /**
+   * A selection set is only valid if all fields (including spreading any fragments) either correspond to distinct response names or can be merged without ambiguity.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/overlapping-fields-can-be-merged
+   */
+  '@graphql-eslint/overlapping-fields-can-be-merged'?: Linter.RuleEntry<[]>
+  /**
+   * A fragment spread is only valid if the type condition could ever possibly be true: if there is a non-empty intersection of the possible parent types, and possible types which pass the type condition.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/possible-fragment-spread
+   */
+  '@graphql-eslint/possible-fragment-spread'?: Linter.RuleEntry<[]>
+  /**
+   * A type extension is only valid if the type is defined and has the same kind.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/possible-type-extension
+   */
+  '@graphql-eslint/possible-type-extension'?: Linter.RuleEntry<[]>
+  /**
+   * A field or directive is only valid if all required (non-null without a default value) field arguments have been provided.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/provided-required-arguments
+   */
+  '@graphql-eslint/provided-required-arguments'?: Linter.RuleEntry<[]>
+  /**
+   * Set of rules to follow Relay specification for Arguments.
+
+- A field that returns a Connection type must include forward pagination arguments (`first` and `after`), backward pagination arguments (`last` and `before`), or both
+
+Forward pagination arguments
+
+- `first` takes a non-negative integer
+- `after` takes the Cursor type
+
+Backward pagination arguments
+
+- `last` takes a non-negative integer
+- `before` takes the Cursor type
+   * @see https://the-guild.dev/graphql/eslint/rules/relay-arguments
+   */
+  '@graphql-eslint/relay-arguments'?: Linter.RuleEntry<GraphqlEslintRelayArguments>
+  /**
+   * Set of rules to follow Relay specification for Connection types.
+
+- Any type whose name ends in "Connection" is considered by spec to be a `Connection type`
+- Connection type must be an Object type
+- Connection type must contain a field `edges` that return a list type that wraps an edge type
+- Connection type must contain a field `pageInfo` that return a non-null `PageInfo` Object type
+   * @see https://the-guild.dev/graphql/eslint/rules/relay-connection-types
+   */
+  '@graphql-eslint/relay-connection-types'?: Linter.RuleEntry<[]>
+  /**
+   * Set of rules to follow Relay specification for Edge types.
+
+- A type that is returned in list form by a connection type's `edges` field is considered by this spec to be an Edge type
+- Edge type must be an Object type
+- Edge type must contain a field `node` that return either Scalar, Enum, Object, Interface, Union, or a non-null wrapper around one of those types. Notably, this field cannot return a list
+- Edge type must contain a field `cursor` that return either String, Scalar, or a non-null wrapper around one of those types
+- Edge type name must end in "Edge" _(optional)_
+- Edge type's field `node` must implement `Node` interface _(optional)_
+- A list type should only wrap an edge type _(optional)_
+   * @see https://the-guild.dev/graphql/eslint/rules/relay-edge-types
+   */
+  '@graphql-eslint/relay-edge-types'?: Linter.RuleEntry<GraphqlEslintRelayEdgeTypes>
+  /**
+   * Set of rules to follow Relay specification for `PageInfo` object.
+
+- `PageInfo` must be an Object type
+- `PageInfo` must contain fields `hasPreviousPage` and `hasNextPage`, that return non-null Boolean
+- `PageInfo` must contain fields `startCursor` and `endCursor`, that return either String or Scalar, which can be null if there are no results
+   * @see https://the-guild.dev/graphql/eslint/rules/relay-page-info
+   */
+  '@graphql-eslint/relay-page-info'?: Linter.RuleEntry<[]>
+  /**
+   * Require deletion date on `@deprecated` directive. Suggest removing deprecated things after deprecated date.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-deprecation-date
+   */
+  '@graphql-eslint/require-deprecation-date'?: Linter.RuleEntry<GraphqlEslintRequireDeprecationDate>
+  /**
+   * Require all deprecation directives to specify a reason.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-deprecation-reason
+   */
+  '@graphql-eslint/require-deprecation-reason'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce descriptions in type definitions and operations.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-description
+   */
+  '@graphql-eslint/require-description'?: Linter.RuleEntry<GraphqlEslintRequireDescription>
+  /**
+   * Allow the client in one round-trip not only to call mutation but also to get a wagon of data to update their application.
+> Currently, no errors are reported for result type `union`, `interface` and `scalar`.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-field-of-type-query-in-mutation-result
+   */
+  '@graphql-eslint/require-field-of-type-query-in-mutation-result'?: Linter.RuleEntry<[]>
+  /**
+   * Require fragments to be imported via an import expression.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-import-fragment
+   */
+  '@graphql-eslint/require-import-fragment'?: Linter.RuleEntry<[]>
+  /**
+   * Require `input` or `type` fields to be non-nullable with `@oneOf` directive.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-nullable-fields-with-oneof
+   */
+  '@graphql-eslint/require-nullable-fields-with-oneof'?: Linter.RuleEntry<[]>
+  /**
+   * Require nullable fields in root types.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-nullable-result-in-root
+   */
+  '@graphql-eslint/require-nullable-result-in-root'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce selecting specific fields when they are available on the GraphQL type.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-selections
+   */
+  '@graphql-eslint/require-selections'?: Linter.RuleEntry<GraphqlEslintRequireSelections>
+  /**
+   * Enforce types with `@oneOf` directive have `error` and `ok` fields.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-type-pattern-with-oneof
+   */
+  '@graphql-eslint/require-type-pattern-with-oneof'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is valid only if all leaf fields (fields without sub selections) are of scalar or enum types.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/scalar-leafs
+   */
+  '@graphql-eslint/scalar-leafs'?: Linter.RuleEntry<[]>
+  /**
+   * Limit the complexity of the GraphQL operations solely by their depth. Based on [graphql-depth-limit](https://npmjs.com/package/graphql-depth-limit).
+   * @see https://the-guild.dev/graphql/eslint/rules/selection-set-depth
+   */
+  '@graphql-eslint/selection-set-depth'?: Linter.RuleEntry<GraphqlEslintSelectionSetDepth>
+  /**
+   * Requires output types to have one unique identifier unless they do not have a logical one. Exceptions can be used to ignore output types that do not have unique identifiers.
+   * @see https://the-guild.dev/graphql/eslint/rules/strict-id-in-types
+   */
+  '@graphql-eslint/strict-id-in-types'?: Linter.RuleEntry<GraphqlEslintStrictIdInTypes>
+  /**
+   * A GraphQL field or directive is only valid if all supplied arguments are uniquely named.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-argument-names
+   */
+  '@graphql-eslint/unique-argument-names'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is only valid if all defined directives have unique names.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-directive-names
+   */
+  '@graphql-eslint/unique-directive-names'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is only valid if all non-repeatable directives at a given location are uniquely named.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-directive-names-per-location
+   */
+  '@graphql-eslint/unique-directive-names-per-location'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL enum type is only valid if all its values are uniquely named.
+> This rule disallows case-insensitive enum values duplicates too.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-enum-value-names
+   */
+  '@graphql-eslint/unique-enum-value-names'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL complex type is only valid if all its fields are uniquely named.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-field-definition-names
+   */
+  '@graphql-eslint/unique-field-definition-names'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce unique fragment names across your project.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-fragment-name
+   */
+  '@graphql-eslint/unique-fragment-name'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL input object value is only valid if all supplied fields are uniquely named.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-input-field-names
+   */
+  '@graphql-eslint/unique-input-field-names'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce unique operation names across your project.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-operation-name
+   */
+  '@graphql-eslint/unique-operation-name'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is only valid if it has only one type per operation.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-operation-types
+   */
+  '@graphql-eslint/unique-operation-types'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is only valid if all defined types have unique names.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-type-names
+   */
+  '@graphql-eslint/unique-type-names'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL operation is only valid if all its variables are uniquely named.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-variable-names
+   */
+  '@graphql-eslint/unique-variable-names'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is only valid if all value literals are of the type expected at their position.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/value-literals-of-correct-type
+   */
+  '@graphql-eslint/value-literals-of-correct-type'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL operation is only valid if all the variables it defines are of input types (scalar, enum, or input object).
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/variables-are-input-types
+   */
+  '@graphql-eslint/variables-are-input-types'?: Linter.RuleEntry<[]>
+  /**
+   * Variables passed to field arguments conform to type.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/variables-in-allowed-position
+   */
+  '@graphql-eslint/variables-in-allowed-position'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce font-display behavior with Google Fonts.
+   * @see https://nextjs.org/docs/messages/google-font-display
+   */
+  '@next/next/google-font-display'?: Linter.RuleEntry<[]>
+  /**
+   * Ensure `preconnect` is used with Google Fonts.
+   * @see https://nextjs.org/docs/messages/google-font-preconnect
+   */
+  '@next/next/google-font-preconnect'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce `id` attribute on `next/script` components with inline content.
+   * @see https://nextjs.org/docs/messages/inline-script-id
+   */
+  '@next/next/inline-script-id'?: Linter.RuleEntry<[]>
+  /**
+   * Prefer `next/script` component when using the inline script for Google Analytics.
+   * @see https://nextjs.org/docs/messages/next-script-for-ga
+   */
+  '@next/next/next-script-for-ga'?: Linter.RuleEntry<[]>
+  /**
+   * Prevent assignment to the `module` variable.
+   * @see https://nextjs.org/docs/messages/no-assign-module-variable
+   */
+  '@next/next/no-assign-module-variable'?: Linter.RuleEntry<[]>
+  /**
+   * Prevent client components from being async functions.
+   * @see https://nextjs.org/docs/messages/no-async-client-component
+   */
+  '@next/next/no-async-client-component'?: Linter.RuleEntry<[]>
+  /**
+   * Prevent usage of `next/script`'s `beforeInteractive` strategy outside of `pages/_document.js`.
+   * @see https://nextjs.org/docs/messages/no-before-interactive-script-outside-document
+   */
+  '@next/next/no-before-interactive-script-outside-document'?: Linter.RuleEntry<[]>
+  /**
+   * Prevent manual stylesheet tags.
+   * @see https://nextjs.org/docs/messages/no-css-tags
+   */
+  '@next/next/no-css-tags'?: Linter.RuleEntry<[]>
+  /**
+   * Prevent importing `next/document` outside of `pages/_document.js`.
+   * @see https://nextjs.org/docs/messages/no-document-import-in-page
+   */
+  '@next/next/no-document-import-in-page'?: Linter.RuleEntry<[]>
+  /**
+   * Prevent duplicate usage of `<Head>` in `pages/_document.js`.
+   * @see https://nextjs.org/docs/messages/no-duplicate-head
+   */
+  '@next/next/no-duplicate-head'?: Linter.RuleEntry<[]>
+  /**
+   * Prevent usage of `<head>` element.
+   * @see https://nextjs.org/docs/messages/no-head-element
+   */
+  '@next/next/no-head-element'?: Linter.RuleEntry<[]>
+  /**
+   * Prevent usage of `next/head` in `pages/_document.js`.
+   * @see https://nextjs.org/docs/messages/no-head-import-in-document
+   */
+  '@next/next/no-head-import-in-document'?: Linter.RuleEntry<[]>
+  /**
+   * Prevent usage of `<a>` elements to navigate to internal Next.js pages.
+   * @see https://nextjs.org/docs/messages/no-html-link-for-pages
+   */
+  '@next/next/no-html-link-for-pages'?: Linter.RuleEntry<NextNextNoHtmlLinkForPages>
+  /**
+   * Prevent usage of `<img>` element due to slower LCP and higher bandwidth.
+   * @see https://nextjs.org/docs/messages/no-img-element
+   */
+  '@next/next/no-img-element'?: Linter.RuleEntry<[]>
+  /**
+   * Prevent page-only custom fonts.
+   * @see https://nextjs.org/docs/messages/no-page-custom-font
+   */
+  '@next/next/no-page-custom-font'?: Linter.RuleEntry<[]>
+  /**
+   * Prevent usage of `next/script` in `next/head` component.
+   * @see https://nextjs.org/docs/messages/no-script-component-in-head
+   */
+  '@next/next/no-script-component-in-head'?: Linter.RuleEntry<[]>
+  /**
+   * Prevent usage of `styled-jsx` in `pages/_document.js`.
+   * @see https://nextjs.org/docs/messages/no-styled-jsx-in-document
+   */
+  '@next/next/no-styled-jsx-in-document'?: Linter.RuleEntry<[]>
+  /**
+   * Prevent synchronous scripts.
+   * @see https://nextjs.org/docs/messages/no-sync-scripts
+   */
+  '@next/next/no-sync-scripts'?: Linter.RuleEntry<[]>
+  /**
+   * Prevent usage of `<title>` with `Head` component from `next/document`.
+   * @see https://nextjs.org/docs/messages/no-title-in-document-head
+   */
+  '@next/next/no-title-in-document-head'?: Linter.RuleEntry<[]>
+  /**
+   * Prevent common typos in Next.js data fetching functions.
+   */
+  '@next/next/no-typos'?: Linter.RuleEntry<[]>
+  /**
+   * Prevent duplicate polyfills from Polyfill.io.
+   * @see https://nextjs.org/docs/messages/no-unwanted-polyfillio
+   */
+  '@next/next/no-unwanted-polyfillio'?: Linter.RuleEntry<[]>
+  /**
+   * Checks dependencies in project's package.json for version mismatches
+   * @see https://github.com/nrwl/nx/blob/20.4.6/docs/generated/packages/eslint-plugin/documents/dependency-checks.md
+   */
+  '@nx/dependency-checks'?: Linter.RuleEntry<NxDependencyChecks>
+  /**
+   * Ensure that module boundaries are respected within the monorepo
+   * @see https://github.com/nrwl/nx/blob/20.4.6/docs/generated/packages/eslint-plugin/documents/enforce-module-boundaries.md
+   */
+  '@nx/enforce-module-boundaries'?: Linter.RuleEntry<NxEnforceModuleBoundaries>
+  /**
+   * Checks common nx-plugin configuration files for validity
+   */
+  '@nx/nx-plugin-checks'?: Linter.RuleEntry<NxNxPluginChecks>
+  /**
    * Enforce getter and setter pairs in objects and classes
    * @see https://eslint.org/docs/latest/rules/accessor-pairs
    */
@@ -505,6 +1010,389 @@ export interface RuleOptions {
    * @deprecated
    */
   'global-require'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce arrange in alphabetical order for type fields, enum values, input object fields, operation selections and more.
+   * @see https://the-guild.dev/graphql/eslint/rules/alphabetize
+   */
+  'graphql/alphabetize'?: Linter.RuleEntry<GraphqlAlphabetize>
+  /**
+   * Require all comments to follow the same style (either block or inline).
+   * @see https://the-guild.dev/graphql/eslint/rules/description-style
+   */
+  'graphql/description-style'?: Linter.RuleEntry<GraphqlDescriptionStyle>
+  /**
+   * A GraphQL document is only valid for execution if all definitions are either operation or fragment definitions.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/executable-definitions
+   */
+  'graphql/executable-definitions'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is only valid if all fields selected are defined by the parent type, or are an allowed meta field such as `__typename`.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/fields-on-correct-type
+   */
+  'graphql/fields-on-correct-type'?: Linter.RuleEntry<[]>
+  /**
+   * Fragments use a type condition to determine if they apply, since fragments can only be spread into a composite type (object, interface, or union), the type condition must also be a composite type.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/fragments-on-composite-type
+   */
+  'graphql/fragments-on-composite-type'?: Linter.RuleEntry<[]>
+  /**
+   * Require mutation argument to be always called "input" and input type to be called Mutation name + "Input".
+Using the same name for all input parameters will make your schemas easier to consume and more predictable. Using the same name as mutation for InputType will make it easier to find mutations that InputType belongs to.
+   * @see https://the-guild.dev/graphql/eslint/rules/input-name
+   */
+  'graphql/input-name'?: Linter.RuleEntry<GraphqlInputName>
+  /**
+   * A GraphQL field is only valid if all supplied arguments are defined by that field.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/known-argument-names
+   */
+  'graphql/known-argument-names'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is only valid if all `@directive`s are known by the schema and legally positioned.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/known-directives
+   */
+  'graphql/known-directives'?: Linter.RuleEntry<GraphqlKnownDirectives>
+  /**
+   * A GraphQL document is only valid if all `...Fragment` fragment spreads refer to fragments defined in the same document.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/known-fragment-names
+   */
+  'graphql/known-fragment-names'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is only valid if referenced types (specifically variable definitions and fragment conditions) are defined by the type schema.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/known-type-names
+   */
+  'graphql/known-type-names'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document that contains an anonymous operation (the `query` short-hand) is only valid if it contains only that one operation definition.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/lone-anonymous-operation
+   */
+  'graphql/lone-anonymous-operation'?: Linter.RuleEntry<[]>
+  /**
+   * Require queries, mutations, subscriptions or fragments to be located in separate files.
+   * @see https://the-guild.dev/graphql/eslint/rules/lone-executable-definition
+   */
+  'graphql/lone-executable-definition'?: Linter.RuleEntry<GraphqlLoneExecutableDefinition>
+  /**
+   * A GraphQL document is only valid if it contains only one schema definition.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/lone-schema-definition
+   */
+  'graphql/lone-schema-definition'?: Linter.RuleEntry<[]>
+  /**
+   * This rule allows you to enforce that the file name should match the operation name.
+   * @see https://the-guild.dev/graphql/eslint/rules/match-document-filename
+   */
+  'graphql/match-document-filename'?: Linter.RuleEntry<GraphqlMatchDocumentFilename>
+  /**
+   * Require names to follow specified conventions.
+   * @see https://the-guild.dev/graphql/eslint/rules/naming-convention
+   */
+  'graphql/naming-convention'?: Linter.RuleEntry<GraphqlNamingConvention>
+  /**
+   * Require name for your GraphQL operations. This is useful since most GraphQL client libraries are using the operation name for caching purposes.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-anonymous-operations
+   */
+  'graphql/no-anonymous-operations'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce that deprecated fields or enum values are not in use by operations.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-deprecated
+   */
+  'graphql/no-deprecated'?: Linter.RuleEntry<[]>
+  /**
+   * Checks for duplicate fields in selection set, variables in operation definition, or in arguments set of a field.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-duplicate-fields
+   */
+  'graphql/no-duplicate-fields'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL fragment is only valid when it does not have cycles in fragments usage.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-fragment-cycles
+   */
+  'graphql/no-fragment-cycles'?: Linter.RuleEntry<[]>
+  /**
+   * Requires to use `"""` or `"` for adding a GraphQL description instead of `#`.
+Allows to use hashtag for comments, as long as it's not attached to an AST definition.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-hashtag-description
+   */
+  'graphql/no-hashtag-description'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow fragments that are used only in one place.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-one-place-fragments
+   */
+  'graphql/no-one-place-fragments'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow using root types `mutation` and/or `subscription`.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-root-type
+   */
+  'graphql/no-root-type'?: Linter.RuleEntry<GraphqlNoRootType>
+  /**
+   * Avoid scalar result type on mutation type to make sure to return a valid state.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-scalar-result-type-on-mutation
+   */
+  'graphql/no-scalar-result-type-on-mutation'?: Linter.RuleEntry<[]>
+  /**
+   * Enforces users to avoid using the type name in a field name while defining your schema.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-typename-prefix
+   */
+  'graphql/no-typename-prefix'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL operation is only valid if all variables encountered, both directly and via fragment spreads, are defined by that operation.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-undefined-variables
+   */
+  'graphql/no-undefined-variables'?: Linter.RuleEntry<[]>
+  /**
+   * Requires all types to be reachable at some level by root level fields.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-unreachable-types
+   */
+  'graphql/no-unreachable-types'?: Linter.RuleEntry<[]>
+  /**
+   * Requires all fields to be used at some level by siblings operations.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-unused-fields
+   */
+  'graphql/no-unused-fields'?: Linter.RuleEntry<GraphqlNoUnusedFields>
+  /**
+   * A GraphQL document is only valid if all fragment definitions are spread within operations, or spread within other fragments spread within operations.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-unused-fragments
+   */
+  'graphql/no-unused-fragments'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL operation is only valid if all variables defined by an operation are used, either directly or within a spread fragment.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/no-unused-variables
+   */
+  'graphql/no-unused-variables'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL subscription is valid only if it contains a single root field.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/one-field-subscriptions
+   */
+  'graphql/one-field-subscriptions'?: Linter.RuleEntry<[]>
+  /**
+   * A selection set is only valid if all fields (including spreading any fragments) either correspond to distinct response names or can be merged without ambiguity.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/overlapping-fields-can-be-merged
+   */
+  'graphql/overlapping-fields-can-be-merged'?: Linter.RuleEntry<[]>
+  /**
+   * A fragment spread is only valid if the type condition could ever possibly be true: if there is a non-empty intersection of the possible parent types, and possible types which pass the type condition.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/possible-fragment-spread
+   */
+  'graphql/possible-fragment-spread'?: Linter.RuleEntry<[]>
+  /**
+   * A type extension is only valid if the type is defined and has the same kind.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/possible-type-extension
+   */
+  'graphql/possible-type-extension'?: Linter.RuleEntry<[]>
+  /**
+   * A field or directive is only valid if all required (non-null without a default value) field arguments have been provided.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/provided-required-arguments
+   */
+  'graphql/provided-required-arguments'?: Linter.RuleEntry<[]>
+  /**
+   * Set of rules to follow Relay specification for Arguments.
+
+- A field that returns a Connection type must include forward pagination arguments (`first` and `after`), backward pagination arguments (`last` and `before`), or both
+
+Forward pagination arguments
+
+- `first` takes a non-negative integer
+- `after` takes the Cursor type
+
+Backward pagination arguments
+
+- `last` takes a non-negative integer
+- `before` takes the Cursor type
+   * @see https://the-guild.dev/graphql/eslint/rules/relay-arguments
+   */
+  'graphql/relay-arguments'?: Linter.RuleEntry<GraphqlRelayArguments>
+  /**
+   * Set of rules to follow Relay specification for Connection types.
+
+- Any type whose name ends in "Connection" is considered by spec to be a `Connection type`
+- Connection type must be an Object type
+- Connection type must contain a field `edges` that return a list type that wraps an edge type
+- Connection type must contain a field `pageInfo` that return a non-null `PageInfo` Object type
+   * @see https://the-guild.dev/graphql/eslint/rules/relay-connection-types
+   */
+  'graphql/relay-connection-types'?: Linter.RuleEntry<[]>
+  /**
+   * Set of rules to follow Relay specification for Edge types.
+
+- A type that is returned in list form by a connection type's `edges` field is considered by this spec to be an Edge type
+- Edge type must be an Object type
+- Edge type must contain a field `node` that return either Scalar, Enum, Object, Interface, Union, or a non-null wrapper around one of those types. Notably, this field cannot return a list
+- Edge type must contain a field `cursor` that return either String, Scalar, or a non-null wrapper around one of those types
+- Edge type name must end in "Edge" _(optional)_
+- Edge type's field `node` must implement `Node` interface _(optional)_
+- A list type should only wrap an edge type _(optional)_
+   * @see https://the-guild.dev/graphql/eslint/rules/relay-edge-types
+   */
+  'graphql/relay-edge-types'?: Linter.RuleEntry<GraphqlRelayEdgeTypes>
+  /**
+   * Set of rules to follow Relay specification for `PageInfo` object.
+
+- `PageInfo` must be an Object type
+- `PageInfo` must contain fields `hasPreviousPage` and `hasNextPage`, that return non-null Boolean
+- `PageInfo` must contain fields `startCursor` and `endCursor`, that return either String or Scalar, which can be null if there are no results
+   * @see https://the-guild.dev/graphql/eslint/rules/relay-page-info
+   */
+  'graphql/relay-page-info'?: Linter.RuleEntry<[]>
+  /**
+   * Require deletion date on `@deprecated` directive. Suggest removing deprecated things after deprecated date.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-deprecation-date
+   */
+  'graphql/require-deprecation-date'?: Linter.RuleEntry<GraphqlRequireDeprecationDate>
+  /**
+   * Require all deprecation directives to specify a reason.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-deprecation-reason
+   */
+  'graphql/require-deprecation-reason'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce descriptions in type definitions and operations.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-description
+   */
+  'graphql/require-description'?: Linter.RuleEntry<GraphqlRequireDescription>
+  /**
+   * Allow the client in one round-trip not only to call mutation but also to get a wagon of data to update their application.
+> Currently, no errors are reported for result type `union`, `interface` and `scalar`.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-field-of-type-query-in-mutation-result
+   */
+  'graphql/require-field-of-type-query-in-mutation-result'?: Linter.RuleEntry<[]>
+  /**
+   * Require fragments to be imported via an import expression.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-import-fragment
+   */
+  'graphql/require-import-fragment'?: Linter.RuleEntry<[]>
+  /**
+   * Require `input` or `type` fields to be non-nullable with `@oneOf` directive.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-nullable-fields-with-oneof
+   */
+  'graphql/require-nullable-fields-with-oneof'?: Linter.RuleEntry<[]>
+  /**
+   * Require nullable fields in root types.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-nullable-result-in-root
+   */
+  'graphql/require-nullable-result-in-root'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce selecting specific fields when they are available on the GraphQL type.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-selections
+   */
+  'graphql/require-selections'?: Linter.RuleEntry<GraphqlRequireSelections>
+  /**
+   * Enforce types with `@oneOf` directive have `error` and `ok` fields.
+   * @see https://the-guild.dev/graphql/eslint/rules/require-type-pattern-with-oneof
+   */
+  'graphql/require-type-pattern-with-oneof'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is valid only if all leaf fields (fields without sub selections) are of scalar or enum types.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/scalar-leafs
+   */
+  'graphql/scalar-leafs'?: Linter.RuleEntry<[]>
+  /**
+   * Limit the complexity of the GraphQL operations solely by their depth. Based on [graphql-depth-limit](https://npmjs.com/package/graphql-depth-limit).
+   * @see https://the-guild.dev/graphql/eslint/rules/selection-set-depth
+   */
+  'graphql/selection-set-depth'?: Linter.RuleEntry<GraphqlSelectionSetDepth>
+  /**
+   * Requires output types to have one unique identifier unless they do not have a logical one. Exceptions can be used to ignore output types that do not have unique identifiers.
+   * @see https://the-guild.dev/graphql/eslint/rules/strict-id-in-types
+   */
+  'graphql/strict-id-in-types'?: Linter.RuleEntry<GraphqlStrictIdInTypes>
+  /**
+   * A GraphQL field or directive is only valid if all supplied arguments are uniquely named.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-argument-names
+   */
+  'graphql/unique-argument-names'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is only valid if all defined directives have unique names.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-directive-names
+   */
+  'graphql/unique-directive-names'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is only valid if all non-repeatable directives at a given location are uniquely named.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-directive-names-per-location
+   */
+  'graphql/unique-directive-names-per-location'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL enum type is only valid if all its values are uniquely named.
+> This rule disallows case-insensitive enum values duplicates too.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-enum-value-names
+   */
+  'graphql/unique-enum-value-names'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL complex type is only valid if all its fields are uniquely named.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-field-definition-names
+   */
+  'graphql/unique-field-definition-names'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce unique fragment names across your project.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-fragment-name
+   */
+  'graphql/unique-fragment-name'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL input object value is only valid if all supplied fields are uniquely named.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-input-field-names
+   */
+  'graphql/unique-input-field-names'?: Linter.RuleEntry<[]>
+  /**
+   * Enforce unique operation names across your project.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-operation-name
+   */
+  'graphql/unique-operation-name'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is only valid if it has only one type per operation.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-operation-types
+   */
+  'graphql/unique-operation-types'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is only valid if all defined types have unique names.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-type-names
+   */
+  'graphql/unique-type-names'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL operation is only valid if all its variables are uniquely named.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/unique-variable-names
+   */
+  'graphql/unique-variable-names'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL document is only valid if all value literals are of the type expected at their position.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/value-literals-of-correct-type
+   */
+  'graphql/value-literals-of-correct-type'?: Linter.RuleEntry<[]>
+  /**
+   * A GraphQL operation is only valid if all the variables it defines are of input types (scalar, enum, or input object).
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/variables-are-input-types
+   */
+  'graphql/variables-are-input-types'?: Linter.RuleEntry<[]>
+  /**
+   * Variables passed to field arguments conform to type.
+> This rule is a wrapper around a `graphql-js` validation function.
+   * @see https://the-guild.dev/graphql/eslint/rules/variables-in-allowed-position
+   */
+  'graphql/variables-in-allowed-position'?: Linter.RuleEntry<[]>
   /**
    * Require grouped accessor pairs in object literals and classes
    * @see https://eslint.org/docs/latest/rules/grouped-accessor-pairs
@@ -1628,6 +2516,10 @@ export interface RuleOptions {
    */
   'max-statements-per-line'?: Linter.RuleEntry<MaxStatementsPerLine>
   /**
+   * Linter integration with remark plugins
+   */
+  'mdx/remark'?: Linter.RuleEntry<[]>
+  /**
    * Enforce a particular style for multiline comments
    * @see https://eslint.org/docs/latest/rules/multiline-comment-style
    * @deprecated
@@ -2230,6 +3122,14 @@ export interface RuleOptions {
    */
   'no-script-url'?: Linter.RuleEntry<[]>
   /**
+   * An eslint rule that does pattern matching against an entire file
+   */
+  'no-secrets/no-pattern-match'?: Linter.RuleEntry<[]>
+  /**
+   * An eslint rule that looks for possible leftover secrets in code
+   */
+  'no-secrets/no-secrets'?: Linter.RuleEntry<[]>
+  /**
    * Disallow assignments where both sides are exactly the same
    * @see https://eslint.org/docs/latest/rules/no-self-assign
    */
@@ -2559,7 +3459,7 @@ export interface RuleOptions {
    * disallow the use of `process.env`
    * @see https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/no-process-env.md
    */
-  'node/no-process-env'?: Linter.RuleEntry<[]>
+  'node/no-process-env'?: Linter.RuleEntry<NodeNoProcessEnv>
   /**
    * disallow the use of `process.exit()`
    * @see https://github.com/eslint-community/eslint-plugin-n/blob/HEAD/docs/rules/no-process-exit.md
@@ -3071,6 +3971,16 @@ export interface RuleOptions {
    * @see https://eslint-react.xyz/docs/rules/naming-convention-use-state
    */
   'react-naming-convention/use-state'?: Linter.RuleEntry<[]>
+  'react-native/no-color-literals'?: Linter.RuleEntry<[]>
+  'react-native/no-inline-styles'?: Linter.RuleEntry<[]>
+  'react-native/no-raw-text'?: Linter.RuleEntry<ReactNativeNoRawText>
+  /**
+   * Disallow single element style arrays. These cause unnecessary re-renders as the identity of the array always changes
+   */
+  'react-native/no-single-element-style-arrays'?: Linter.RuleEntry<[]>
+  'react-native/no-unused-styles'?: Linter.RuleEntry<[]>
+  'react-native/sort-styles'?: Linter.RuleEntry<ReactNativeSortStyles>
+  'react-native/split-platform-components'?: Linter.RuleEntry<ReactNativeSplitPlatformComponents>
   'react-refresh/only-export-components'?: Linter.RuleEntry<ReactRefreshOnlyExportComponents>
   /**
    * enforce that every 'addEventListener' in a component or custom Hook has a corresponding 'removeEventListener'.
@@ -3778,6 +4688,30 @@ export interface RuleOptions {
    */
   'regexp/use-ignore-case'?: Linter.RuleEntry<[]>
   /**
+   * Relay Compat transforms fragment spreads from `...Container_foo` to `Container.getFragment('foo')`. This makes ESLint aware of this.
+   */
+  'relay/compat-uses-vars'?: Linter.RuleEntry<[]>
+  /**
+   * Validates that the second argument is passed to relay functions.
+   */
+  'relay/function-required-argument'?: Linter.RuleEntry<[]>
+  /**
+   * Validates usage of RelayModern generated flow types
+   */
+  'relay/generated-flow-types'?: Linter.RuleEntry<RelayGeneratedFlowTypes>
+  /**
+   * Validates naming conventions of graphql tags
+   */
+  'relay/graphql-naming'?: Linter.RuleEntry<[]>
+  /**
+   * Validates the syntax of graphql`...` templates.
+   */
+  'relay/graphql-syntax'?: Linter.RuleEntry<[]>
+  /**
+   * Validates that the second argument is passed to relay hooks.
+   */
+  'relay/hook-required-argument'?: Linter.RuleEntry<[]>
+  /**
    * Disallow assignments that can lead to race conditions due to usage of `await` or `yield`
    * @see https://eslint.org/docs/latest/rules/require-atomic-updates
    */
@@ -3872,6 +4806,76 @@ export interface RuleOptions {
    * @deprecated
    */
   'spaced-comment'?: Linter.RuleEntry<SpacedComment>
+  /**
+   * Interactions should be awaited
+   * @see https://github.com/storybookjs/eslint-plugin-storybook/blob/main/docs/rules/await-interactions.md
+   */
+  'storybook/await-interactions'?: Linter.RuleEntry<[]>
+  /**
+   * Pass a context when invoking play function of another story
+   * @see https://github.com/storybookjs/eslint-plugin-storybook/blob/main/docs/rules/context-in-play-function.md
+   */
+  'storybook/context-in-play-function'?: Linter.RuleEntry<[]>
+  /**
+   * The component property should be set
+   * @see https://github.com/storybookjs/eslint-plugin-storybook/blob/main/docs/rules/csf-component.md
+   */
+  'storybook/csf-component'?: Linter.RuleEntry<[]>
+  /**
+   * Story files should have a default export
+   * @see https://github.com/storybookjs/eslint-plugin-storybook/blob/main/docs/rules/default-exports.md
+   */
+  'storybook/default-exports'?: Linter.RuleEntry<[]>
+  /**
+   * Deprecated hierarchy separator in title property
+   * @see https://github.com/storybookjs/eslint-plugin-storybook/blob/main/docs/rules/hierarchy-separator.md
+   */
+  'storybook/hierarchy-separator'?: Linter.RuleEntry<[]>
+  /**
+   * Meta should only have inline properties
+   * @see https://github.com/storybookjs/eslint-plugin-storybook/blob/main/docs/rules/meta-inline-properties.md
+   */
+  'storybook/meta-inline-properties'?: Linter.RuleEntry<StorybookMetaInlineProperties>
+  /**
+   * A story should not have a redundant name property
+   * @see https://github.com/storybookjs/eslint-plugin-storybook/blob/main/docs/rules/no-redundant-story-name.md
+   */
+  'storybook/no-redundant-story-name'?: Linter.RuleEntry<[]>
+  /**
+   * storiesOf is deprecated and should not be used
+   * @see https://github.com/storybookjs/eslint-plugin-storybook/blob/main/docs/rules/no-stories-of.md
+   */
+  'storybook/no-stories-of'?: Linter.RuleEntry<[]>
+  /**
+   * Do not define a title in meta
+   * @see https://github.com/storybookjs/eslint-plugin-storybook/blob/main/docs/rules/no-title-property-in-meta.md
+   */
+  'storybook/no-title-property-in-meta'?: Linter.RuleEntry<[]>
+  /**
+   * This rule identifies storybook addons that are invalid because they are either not installed or contain a typo in their name.
+   * @see https://github.com/storybookjs/eslint-plugin-storybook/blob/main/docs/rules/no-uninstalled-addons.md
+   */
+  'storybook/no-uninstalled-addons'?: Linter.RuleEntry<StorybookNoUninstalledAddons>
+  /**
+   * Stories should use PascalCase
+   * @see https://github.com/storybookjs/eslint-plugin-storybook/blob/main/docs/rules/prefer-pascal-case.md
+   */
+  'storybook/prefer-pascal-case'?: Linter.RuleEntry<[]>
+  /**
+   * A story file must contain at least one story export
+   * @see https://github.com/storybookjs/eslint-plugin-storybook/blob/main/docs/rules/story-exports.md
+   */
+  'storybook/story-exports'?: Linter.RuleEntry<[]>
+  /**
+   * Use expect from `@storybook/test` or `@storybook/jest`
+   * @see https://github.com/storybookjs/eslint-plugin-storybook/blob/main/docs/rules/use-storybook-expect.md
+   */
+  'storybook/use-storybook-expect'?: Linter.RuleEntry<[]>
+  /**
+   * Do not use testing-library directly on stories
+   * @see https://github.com/storybookjs/eslint-plugin-storybook/blob/main/docs/rules/use-storybook-testing-library.md
+   */
+  'storybook/use-storybook-testing-library'?: Linter.RuleEntry<[]>
   /**
    * Require or disallow strict mode directives
    * @see https://eslint.org/docs/latest/rules/strict
@@ -6470,6 +7474,340 @@ export interface RuleOptions {
 }
 
 /* ======= Declarations ======= */
+// ----- @cspell/spellchecker -----
+type CspellSpellchecker = []|[{
+  
+  autoFix: boolean
+  
+  checkComments?: boolean
+  
+  checkIdentifiers?: boolean
+  
+  checkJSXText?: boolean
+  
+  checkScope?: [string, boolean][]
+  
+  checkStringTemplates?: boolean
+  
+  checkStrings?: boolean
+  
+  configFile?: string
+  
+  cspell?: {
+    
+    allowCompoundWords?: boolean
+    
+    dictionaries?: (string | string)[]
+    dictionaryDefinitions?: {
+      
+      description?: string
+      
+      name: string
+      
+      noSuggest?: boolean
+      
+      path: string
+      
+      repMap?: [string, string][]
+      
+      type?: ("S" | "W" | "C" | "T")
+      
+      useCompounds?: boolean
+    }[]
+    
+    enabled?: boolean
+    
+    flagWords?: string[]
+    
+    ignoreRegExpList?: (string | string | ("Base64" | "Base64MultiLine" | "Base64SingleLine" | "CStyleComment" | "CStyleHexValue" | "CSSHexValue" | "CommitHash" | "CommitHashLink" | "Email" | "EscapeCharacters" | "HexValues" | "href" | "PhpHereDoc" | "PublicKey" | "RsaCert" | "SshRsa" | "SHA" | "HashStrings" | "SpellCheckerDisable" | "SpellCheckerDisableBlock" | "SpellCheckerDisableLine" | "SpellCheckerDisableNext" | "SpellCheckerIgnoreInDocSetting" | "string" | "UnicodeRef" | "Urls" | "UUID" | "Everything"))[]
+    
+    ignoreWords?: string[]
+    
+    import?: (string | string[])
+    
+    includeRegExpList?: (string | string | ("Base64" | "Base64MultiLine" | "Base64SingleLine" | "CStyleComment" | "CStyleHexValue" | "CSSHexValue" | "CommitHash" | "CommitHashLink" | "Email" | "EscapeCharacters" | "HexValues" | "href" | "PhpHereDoc" | "PublicKey" | "RsaCert" | "SshRsa" | "SHA" | "HashStrings" | "SpellCheckerDisable" | "SpellCheckerDisableBlock" | "SpellCheckerDisableLine" | "SpellCheckerDisableNext" | "SpellCheckerIgnoreInDocSetting" | "string" | "UnicodeRef" | "Urls" | "UUID" | "Everything"))[]
+    
+    language?: string
+    
+    words?: string[]
+  }
+  
+  cspellOptionsRoot?: (string | string)
+  
+  customWordListFile?: (string | {
+    
+    path: string
+  })
+  
+  debugMode?: boolean
+  
+  generateSuggestions: boolean
+  
+  ignoreImportProperties?: boolean
+  
+  ignoreImports?: boolean
+  
+  numSuggestions: number
+}]
+// ----- @graphql-eslint/alphabetize -----
+type GraphqlEslintAlphabetize = [{
+  
+  fields?: [("ObjectTypeDefinition" | "InterfaceTypeDefinition" | "InputObjectTypeDefinition"), ...(("ObjectTypeDefinition" | "InterfaceTypeDefinition" | "InputObjectTypeDefinition"))[]]
+  
+  values?: boolean
+  
+  selections?: [("OperationDefinition" | "FragmentDefinition"), ...(("OperationDefinition" | "FragmentDefinition"))[]]
+  
+  variables?: boolean
+  
+  arguments?: [("FieldDefinition" | "Field" | "DirectiveDefinition" | "Directive"), ...(("FieldDefinition" | "Field" | "DirectiveDefinition" | "Directive"))[]]
+  
+  definitions?: boolean
+  
+  groups?: [string, string, ...(string)[]]
+}]
+// ----- @graphql-eslint/description-style -----
+type GraphqlEslintDescriptionStyle = []|[{
+  style?: ("block" | "inline")
+}]
+// ----- @graphql-eslint/input-name -----
+type GraphqlEslintInputName = []|[{
+  
+  checkInputType?: boolean
+  
+  caseSensitiveInputType?: boolean
+  
+  checkQueries?: boolean
+  
+  checkMutations?: boolean
+}]
+// ----- @graphql-eslint/known-directives -----
+type GraphqlEslintKnownDirectives = []|[{
+  
+  ignoreClientDirectives: [string, ...(string)[]]
+}]
+// ----- @graphql-eslint/lone-executable-definition -----
+type GraphqlEslintLoneExecutableDefinition = []|[{
+  
+  ignore?: [("fragment" | "query" | "mutation" | "subscription")]|[("fragment" | "query" | "mutation" | "subscription"), ("fragment" | "query" | "mutation" | "subscription")]|[("fragment" | "query" | "mutation" | "subscription"), ("fragment" | "query" | "mutation" | "subscription"), ("fragment" | "query" | "mutation" | "subscription")]
+}]
+// ----- @graphql-eslint/match-document-filename -----
+type GraphqlEslintMatchDocumentFilename = [{
+  fileExtension?: (".gql" | ".graphql")
+  query?: (_GraphqlEslintMatchDocumentFilenameAsString | _GraphqlEslintMatchDocumentFilename_AsObject)
+  mutation?: (_GraphqlEslintMatchDocumentFilenameAsString | _GraphqlEslintMatchDocumentFilename_AsObject)
+  subscription?: (_GraphqlEslintMatchDocumentFilenameAsString | _GraphqlEslintMatchDocumentFilename_AsObject)
+  fragment?: (_GraphqlEslintMatchDocumentFilenameAsString | _GraphqlEslintMatchDocumentFilename_AsObject)
+}]
+type _GraphqlEslintMatchDocumentFilenameAsString = ("camelCase" | "PascalCase" | "snake_case" | "UPPER_CASE" | "kebab-case" | "matchDocumentStyle")
+interface _GraphqlEslintMatchDocumentFilename_AsObject {
+  style?: ("camelCase" | "PascalCase" | "snake_case" | "UPPER_CASE" | "kebab-case" | "matchDocumentStyle")
+  suffix?: string
+  prefix?: string
+}
+// ----- @graphql-eslint/naming-convention -----
+type GraphqlEslintNamingConvention = []|[{
+  
+  types?: (_GraphqlEslintNamingConventionAsString | _GraphqlEslintNamingConvention_AsObject)
+  
+  Argument?: (_GraphqlEslintNamingConventionAsString | _GraphqlEslintNamingConvention_AsObject)
+  
+  DirectiveDefinition?: (_GraphqlEslintNamingConventionAsString | _GraphqlEslintNamingConvention_AsObject)
+  
+  EnumTypeDefinition?: (_GraphqlEslintNamingConventionAsString | _GraphqlEslintNamingConvention_AsObject)
+  
+  EnumValueDefinition?: (_GraphqlEslintNamingConventionAsString | _GraphqlEslintNamingConvention_AsObject)
+  
+  FieldDefinition?: (_GraphqlEslintNamingConventionAsString | _GraphqlEslintNamingConvention_AsObject)
+  
+  FragmentDefinition?: (_GraphqlEslintNamingConventionAsString | _GraphqlEslintNamingConvention_AsObject)
+  
+  InputObjectTypeDefinition?: (_GraphqlEslintNamingConventionAsString | _GraphqlEslintNamingConvention_AsObject)
+  
+  InputValueDefinition?: (_GraphqlEslintNamingConventionAsString | _GraphqlEslintNamingConvention_AsObject)
+  
+  InterfaceTypeDefinition?: (_GraphqlEslintNamingConventionAsString | _GraphqlEslintNamingConvention_AsObject)
+  
+  ObjectTypeDefinition?: (_GraphqlEslintNamingConventionAsString | _GraphqlEslintNamingConvention_AsObject)
+  
+  OperationDefinition?: (_GraphqlEslintNamingConventionAsString | _GraphqlEslintNamingConvention_AsObject)
+  
+  ScalarTypeDefinition?: (_GraphqlEslintNamingConventionAsString | _GraphqlEslintNamingConvention_AsObject)
+  
+  UnionTypeDefinition?: (_GraphqlEslintNamingConventionAsString | _GraphqlEslintNamingConvention_AsObject)
+  
+  VariableDefinition?: (_GraphqlEslintNamingConventionAsString | _GraphqlEslintNamingConvention_AsObject)
+  allowLeadingUnderscore?: boolean
+  allowTrailingUnderscore?: boolean
+  [k: string]: (_GraphqlEslintNamingConventionAsString | _GraphqlEslintNamingConvention_AsObject)
+}]
+type _GraphqlEslintNamingConventionAsString = ("camelCase" | "PascalCase" | "snake_case" | "UPPER_CASE")
+interface _GraphqlEslintNamingConvention_AsObject {
+  style?: ("camelCase" | "PascalCase" | "snake_case" | "UPPER_CASE")
+  prefix?: string
+  suffix?: string
+  
+  forbiddenPatterns?: [{
+    [k: string]: unknown | undefined
+  }, ...({
+    [k: string]: unknown | undefined
+  })[]]
+  
+  requiredPatterns?: [{
+    [k: string]: unknown | undefined
+  }, ...({
+    [k: string]: unknown | undefined
+  })[]]
+  
+  forbiddenPrefixes?: [string, ...(string)[]]
+  
+  forbiddenSuffixes?: [string, ...(string)[]]
+  
+  requiredPrefixes?: [string, ...(string)[]]
+  
+  requiredSuffixes?: [string, ...(string)[]]
+  
+  ignorePattern?: string
+}
+// ----- @graphql-eslint/no-root-type -----
+type GraphqlEslintNoRootType = [{
+  
+  disallow: [("mutation" | "subscription"), ...(("mutation" | "subscription"))[]]
+}]
+// ----- @graphql-eslint/no-unused-fields -----
+type GraphqlEslintNoUnusedFields = []|[{
+  
+  ignoredFieldSelectors?: [string, ...(string)[]]
+}]
+// ----- @graphql-eslint/relay-arguments -----
+type GraphqlEslintRelayArguments = []|[{
+  
+  includeBoth?: boolean
+}]
+// ----- @graphql-eslint/relay-edge-types -----
+type GraphqlEslintRelayEdgeTypes = []|[{
+  
+  withEdgeSuffix?: boolean
+  
+  shouldImplementNode?: boolean
+  
+  listTypeCanWrapOnlyEdgeType?: boolean
+}]
+// ----- @graphql-eslint/require-deprecation-date -----
+type GraphqlEslintRequireDeprecationDate = []|[{
+  argumentName?: string
+}]
+// ----- @graphql-eslint/require-description -----
+type GraphqlEslintRequireDescription = [{
+  
+  types?: true
+  
+  rootField?: true
+  
+  ignoredSelectors?: [string, ...(string)[]]
+  
+  DirectiveDefinition?: boolean
+  
+  EnumTypeDefinition?: boolean
+  
+  EnumValueDefinition?: boolean
+  
+  FieldDefinition?: boolean
+  
+  InputObjectTypeDefinition?: boolean
+  
+  InputValueDefinition?: boolean
+  
+  InterfaceTypeDefinition?: boolean
+  
+  ObjectTypeDefinition?: boolean
+  
+  OperationDefinition?: boolean
+  
+  ScalarTypeDefinition?: boolean
+  
+  UnionTypeDefinition?: boolean
+}]
+// ----- @graphql-eslint/require-selections -----
+type GraphqlEslintRequireSelections = []|[{
+  fieldName?: (_GraphqlEslintRequireSelectionsAsString | _GraphqlEslintRequireSelections_AsArray)
+  
+  requireAllFields?: boolean
+}]
+type _GraphqlEslintRequireSelectionsAsString = string
+type _GraphqlEslintRequireSelections_AsArray = [string, ...(string)[]]
+// ----- @graphql-eslint/selection-set-depth -----
+type GraphqlEslintSelectionSetDepth = [{
+  maxDepth: number
+  
+  ignore?: [string, ...(string)[]]
+}]
+// ----- @graphql-eslint/strict-id-in-types -----
+type GraphqlEslintStrictIdInTypes = []|[{
+  
+  acceptedIdNames?: [string, ...(string)[]]
+  
+  acceptedIdTypes?: [string, ...(string)[]]
+  exceptions?: {
+    
+    types?: [string, ...(string)[]]
+    
+    suffixes?: [string, ...(string)[]]
+  }
+}]
+// ----- @next/next/no-html-link-for-pages -----
+type NextNextNoHtmlLinkForPages = []|[(string | string[])]
+// ----- @nx/dependency-checks -----
+type NxDependencyChecks = []|[{
+  buildTargets?: string[]
+  ignoredDependencies?: string[]
+  ignoredFiles?: string[]
+  checkMissingDependencies?: boolean
+  checkObsoleteDependencies?: boolean
+  checkVersionMismatches?: boolean
+  includeTransitiveDependencies?: boolean
+  useLocalPathsForWorkspaceDependencies?: boolean
+}]
+// ----- @nx/enforce-module-boundaries -----
+type NxEnforceModuleBoundaries = []|[{
+  enforceBuildableLibDependency?: boolean
+  allowCircularSelfDependency?: boolean
+  checkDynamicDependenciesExceptions?: string[]
+  ignoredCircularDependencies?: [string, string][]
+  banTransitiveDependencies?: boolean
+  checkNestedExternalImports?: boolean
+  allow?: string[]
+  buildTargets?: string[]
+  depConstraints?: ({
+    sourceTag?: string
+    onlyDependOnLibsWithTags?: string[]
+    allowedExternalImports?: string[]
+    bannedExternalImports?: string[]
+    notDependOnLibsWithTags?: string[]
+  } | {
+    
+    allSourceTags?: [string, string, ...(string)[]]
+    onlyDependOnLibsWithTags?: string[]
+    allowedExternalImports?: string[]
+    bannedExternalImports?: string[]
+    notDependOnLibsWithTags?: string[]
+  })[]
+}]
+// ----- @nx/nx-plugin-checks -----
+type NxNxPluginChecks = []|[{
+  
+  generatorsJson?: string
+  
+  executorsJson?: string
+  
+  migrationsJson?: string
+  
+  packageJson?: string
+  
+  allowedVersionStrings?: string[]
+  
+  tsConfig?: string
+}]
 // ----- accessor-pairs -----
 type AccessorPairs = []|[{
   getWithoutSet?: boolean
@@ -6895,6 +8233,212 @@ type GeneratorStarSpacing = []|[(("before" | "after" | "both" | "neither") | {
 // ----- getter-return -----
 type GetterReturn = []|[{
   allowImplicit?: boolean
+}]
+// ----- graphql/alphabetize -----
+type GraphqlAlphabetize = [{
+  
+  fields?: [("ObjectTypeDefinition" | "InterfaceTypeDefinition" | "InputObjectTypeDefinition"), ...(("ObjectTypeDefinition" | "InterfaceTypeDefinition" | "InputObjectTypeDefinition"))[]]
+  
+  values?: boolean
+  
+  selections?: [("OperationDefinition" | "FragmentDefinition"), ...(("OperationDefinition" | "FragmentDefinition"))[]]
+  
+  variables?: boolean
+  
+  arguments?: [("FieldDefinition" | "Field" | "DirectiveDefinition" | "Directive"), ...(("FieldDefinition" | "Field" | "DirectiveDefinition" | "Directive"))[]]
+  
+  definitions?: boolean
+  
+  groups?: [string, string, ...(string)[]]
+}]
+// ----- graphql/description-style -----
+type GraphqlDescriptionStyle = []|[{
+  style?: ("block" | "inline")
+}]
+// ----- graphql/input-name -----
+type GraphqlInputName = []|[{
+  
+  checkInputType?: boolean
+  
+  caseSensitiveInputType?: boolean
+  
+  checkQueries?: boolean
+  
+  checkMutations?: boolean
+}]
+// ----- graphql/known-directives -----
+type GraphqlKnownDirectives = []|[{
+  
+  ignoreClientDirectives: [string, ...(string)[]]
+}]
+// ----- graphql/lone-executable-definition -----
+type GraphqlLoneExecutableDefinition = []|[{
+  
+  ignore?: [("fragment" | "query" | "mutation" | "subscription")]|[("fragment" | "query" | "mutation" | "subscription"), ("fragment" | "query" | "mutation" | "subscription")]|[("fragment" | "query" | "mutation" | "subscription"), ("fragment" | "query" | "mutation" | "subscription"), ("fragment" | "query" | "mutation" | "subscription")]
+}]
+// ----- graphql/match-document-filename -----
+type GraphqlMatchDocumentFilename = [{
+  fileExtension?: (".gql" | ".graphql")
+  query?: (_GraphqlMatchDocumentFilenameAsString | _GraphqlMatchDocumentFilename_AsObject)
+  mutation?: (_GraphqlMatchDocumentFilenameAsString | _GraphqlMatchDocumentFilename_AsObject)
+  subscription?: (_GraphqlMatchDocumentFilenameAsString | _GraphqlMatchDocumentFilename_AsObject)
+  fragment?: (_GraphqlMatchDocumentFilenameAsString | _GraphqlMatchDocumentFilename_AsObject)
+}]
+type _GraphqlMatchDocumentFilenameAsString = ("camelCase" | "PascalCase" | "snake_case" | "UPPER_CASE" | "kebab-case" | "matchDocumentStyle")
+interface _GraphqlMatchDocumentFilename_AsObject {
+  style?: ("camelCase" | "PascalCase" | "snake_case" | "UPPER_CASE" | "kebab-case" | "matchDocumentStyle")
+  suffix?: string
+  prefix?: string
+}
+// ----- graphql/naming-convention -----
+type GraphqlNamingConvention = []|[{
+  
+  types?: (_GraphqlNamingConventionAsString | _GraphqlNamingConvention_AsObject)
+  
+  Argument?: (_GraphqlNamingConventionAsString | _GraphqlNamingConvention_AsObject)
+  
+  DirectiveDefinition?: (_GraphqlNamingConventionAsString | _GraphqlNamingConvention_AsObject)
+  
+  EnumTypeDefinition?: (_GraphqlNamingConventionAsString | _GraphqlNamingConvention_AsObject)
+  
+  EnumValueDefinition?: (_GraphqlNamingConventionAsString | _GraphqlNamingConvention_AsObject)
+  
+  FieldDefinition?: (_GraphqlNamingConventionAsString | _GraphqlNamingConvention_AsObject)
+  
+  FragmentDefinition?: (_GraphqlNamingConventionAsString | _GraphqlNamingConvention_AsObject)
+  
+  InputObjectTypeDefinition?: (_GraphqlNamingConventionAsString | _GraphqlNamingConvention_AsObject)
+  
+  InputValueDefinition?: (_GraphqlNamingConventionAsString | _GraphqlNamingConvention_AsObject)
+  
+  InterfaceTypeDefinition?: (_GraphqlNamingConventionAsString | _GraphqlNamingConvention_AsObject)
+  
+  ObjectTypeDefinition?: (_GraphqlNamingConventionAsString | _GraphqlNamingConvention_AsObject)
+  
+  OperationDefinition?: (_GraphqlNamingConventionAsString | _GraphqlNamingConvention_AsObject)
+  
+  ScalarTypeDefinition?: (_GraphqlNamingConventionAsString | _GraphqlNamingConvention_AsObject)
+  
+  UnionTypeDefinition?: (_GraphqlNamingConventionAsString | _GraphqlNamingConvention_AsObject)
+  
+  VariableDefinition?: (_GraphqlNamingConventionAsString | _GraphqlNamingConvention_AsObject)
+  allowLeadingUnderscore?: boolean
+  allowTrailingUnderscore?: boolean
+  [k: string]: (_GraphqlNamingConventionAsString | _GraphqlNamingConvention_AsObject)
+}]
+type _GraphqlNamingConventionAsString = ("camelCase" | "PascalCase" | "snake_case" | "UPPER_CASE")
+interface _GraphqlNamingConvention_AsObject {
+  style?: ("camelCase" | "PascalCase" | "snake_case" | "UPPER_CASE")
+  prefix?: string
+  suffix?: string
+  
+  forbiddenPatterns?: [{
+    [k: string]: unknown | undefined
+  }, ...({
+    [k: string]: unknown | undefined
+  })[]]
+  
+  requiredPatterns?: [{
+    [k: string]: unknown | undefined
+  }, ...({
+    [k: string]: unknown | undefined
+  })[]]
+  
+  forbiddenPrefixes?: [string, ...(string)[]]
+  
+  forbiddenSuffixes?: [string, ...(string)[]]
+  
+  requiredPrefixes?: [string, ...(string)[]]
+  
+  requiredSuffixes?: [string, ...(string)[]]
+  
+  ignorePattern?: string
+}
+// ----- graphql/no-root-type -----
+type GraphqlNoRootType = [{
+  
+  disallow: [("mutation" | "subscription"), ...(("mutation" | "subscription"))[]]
+}]
+// ----- graphql/no-unused-fields -----
+type GraphqlNoUnusedFields = []|[{
+  
+  ignoredFieldSelectors?: [string, ...(string)[]]
+}]
+// ----- graphql/relay-arguments -----
+type GraphqlRelayArguments = []|[{
+  
+  includeBoth?: boolean
+}]
+// ----- graphql/relay-edge-types -----
+type GraphqlRelayEdgeTypes = []|[{
+  
+  withEdgeSuffix?: boolean
+  
+  shouldImplementNode?: boolean
+  
+  listTypeCanWrapOnlyEdgeType?: boolean
+}]
+// ----- graphql/require-deprecation-date -----
+type GraphqlRequireDeprecationDate = []|[{
+  argumentName?: string
+}]
+// ----- graphql/require-description -----
+type GraphqlRequireDescription = [{
+  
+  types?: true
+  
+  rootField?: true
+  
+  ignoredSelectors?: [string, ...(string)[]]
+  
+  DirectiveDefinition?: boolean
+  
+  EnumTypeDefinition?: boolean
+  
+  EnumValueDefinition?: boolean
+  
+  FieldDefinition?: boolean
+  
+  InputObjectTypeDefinition?: boolean
+  
+  InputValueDefinition?: boolean
+  
+  InterfaceTypeDefinition?: boolean
+  
+  ObjectTypeDefinition?: boolean
+  
+  OperationDefinition?: boolean
+  
+  ScalarTypeDefinition?: boolean
+  
+  UnionTypeDefinition?: boolean
+}]
+// ----- graphql/require-selections -----
+type GraphqlRequireSelections = []|[{
+  fieldName?: (_GraphqlRequireSelectionsAsString | _GraphqlRequireSelections_AsArray)
+  
+  requireAllFields?: boolean
+}]
+type _GraphqlRequireSelectionsAsString = string
+type _GraphqlRequireSelections_AsArray = [string, ...(string)[]]
+// ----- graphql/selection-set-depth -----
+type GraphqlSelectionSetDepth = [{
+  maxDepth: number
+  
+  ignore?: [string, ...(string)[]]
+}]
+// ----- graphql/strict-id-in-types -----
+type GraphqlStrictIdInTypes = []|[{
+  
+  acceptedIdNames?: [string, ...(string)[]]
+  
+  acceptedIdTypes?: [string, ...(string)[]]
+  exceptions?: {
+    
+    types?: [string, ...(string)[]]
+    
+    suffixes?: [string, ...(string)[]]
+  }
 }]
 // ----- grouped-accessor-pairs -----
 type GroupedAccessorPairs = []|[("anyOrder" | "getBeforeSet" | "setBeforeGet")]
@@ -9088,7 +10632,7 @@ type NodeHashbang = []|[{
 // ----- node/no-deprecated-api -----
 type NodeNoDeprecatedApi = []|[{
   version?: string
-  ignoreModuleItems?: ("_linklist" | "_stream_wrap" | "async_hooks.currentId" | "async_hooks.triggerId" | "buffer.Buffer()" | "new buffer.Buffer()" | "buffer.SlowBuffer" | "constants" | "crypto._toBuf" | "crypto.Credentials" | "crypto.DEFAULT_ENCODING" | "crypto.createCipher" | "crypto.createCredentials" | "crypto.createDecipher" | "crypto.fips" | "crypto.prng" | "crypto.pseudoRandomBytes" | "crypto.rng" | "domain" | "events.EventEmitter.listenerCount" | "events.listenerCount" | "freelist" | "fs.SyncWriteStream" | "fs.exists" | "fs.lchmod" | "fs.lchmodSync" | "http.createClient" | "module.Module.createRequireFromPath" | "module.Module.requireRepl" | "module.Module._debug" | "module.createRequireFromPath" | "module.requireRepl" | "module._debug" | "net._setSimultaneousAccepts" | "os.getNetworkInterfaces" | "os.tmpDir" | "path._makeLong" | "process.EventEmitter" | "process.assert" | "process.binding" | "process.env.NODE_REPL_HISTORY_FILE" | "process.report.triggerReport" | "punycode" | "readline.codePointAt" | "readline.getStringWidth" | "readline.isFullWidthCodePoint" | "readline.stripVTControlCharacters" | "safe-buffer.Buffer()" | "new safe-buffer.Buffer()" | "safe-buffer.SlowBuffer" | "sys" | "timers.enroll" | "timers.unenroll" | "tls.CleartextStream" | "tls.CryptoStream" | "tls.SecurePair" | "tls.convertNPNProtocols" | "tls.createSecurePair" | "tls.parseCertString" | "tty.setRawMode" | "url.parse" | "url.resolve" | "util.debug" | "util.error" | "util.isArray" | "util.isBoolean" | "util.isBuffer" | "util.isDate" | "util.isError" | "util.isFunction" | "util.isNull" | "util.isNullOrUndefined" | "util.isNumber" | "util.isObject" | "util.isPrimitive" | "util.isRegExp" | "util.isString" | "util.isSymbol" | "util.isUndefined" | "util.log" | "util.print" | "util.pump" | "util.puts" | "util._extend" | "vm.runInDebugContext")[]
+  ignoreModuleItems?: ("_linklist" | "_stream_wrap" | "async_hooks.currentId" | "async_hooks.triggerId" | "buffer.Buffer()" | "new buffer.Buffer()" | "buffer.SlowBuffer" | "constants" | "crypto._toBuf" | "crypto.Credentials" | "crypto.DEFAULT_ENCODING" | "crypto.createCipher" | "crypto.createCredentials" | "crypto.createDecipher" | "crypto.fips" | "crypto.prng" | "crypto.pseudoRandomBytes" | "crypto.rng" | "domain" | "events.EventEmitter.listenerCount" | "events.listenerCount" | "freelist" | "fs.SyncWriteStream" | "fs.exists" | "fs.lchmod" | "fs.lchmodSync" | "http.createClient" | "module.Module.createRequireFromPath" | "module.Module.requireRepl" | "module.Module._debug" | "module.createRequireFromPath" | "module.requireRepl" | "module._debug" | "net._setSimultaneousAccepts" | "os.getNetworkInterfaces" | "os.tmpDir" | "path._makeLong" | "process.EventEmitter" | "process.assert" | "process.binding" | "process.env.NODE_REPL_HISTORY_FILE" | "process.report.triggerReport" | "punycode" | "readline.codePointAt" | "readline.getStringWidth" | "readline.isFullWidthCodePoint" | "readline.stripVTControlCharacters" | "repl.REPLServer" | "repl.Recoverable" | "repl.REPL_MODE_MAGIC" | "safe-buffer.Buffer()" | "new safe-buffer.Buffer()" | "safe-buffer.SlowBuffer" | "sys" | "timers.enroll" | "timers.unenroll" | "tls.CleartextStream" | "tls.CryptoStream" | "tls.SecurePair" | "tls.convertNPNProtocols" | "tls.createSecurePair" | "tls.parseCertString" | "tty.setRawMode" | "url.parse" | "url.resolve" | "util.debug" | "util.error" | "util.isArray" | "util.isBoolean" | "util.isBuffer" | "util.isDate" | "util.isError" | "util.isFunction" | "util.isNull" | "util.isNullOrUndefined" | "util.isNumber" | "util.isObject" | "util.isPrimitive" | "util.isRegExp" | "util.isString" | "util.isSymbol" | "util.isUndefined" | "util.log" | "util.print" | "util.pump" | "util.puts" | "util._extend" | "vm.runInDebugContext" | "zlib.BrotliCompress()" | "zlib.BrotliDecompress()" | "zlib.Deflate()" | "zlib.DeflateRaw()" | "zlib.Gunzip()" | "zlib.Gzip()" | "zlib.Inflate()" | "zlib.InflateRaw()" | "zlib.Unzip()")[]
   ignoreGlobalItems?: ("Buffer()" | "new Buffer()" | "COUNTER_NET_SERVER_CONNECTION" | "COUNTER_NET_SERVER_CONNECTION_CLOSE" | "COUNTER_HTTP_SERVER_REQUEST" | "COUNTER_HTTP_SERVER_RESPONSE" | "COUNTER_HTTP_CLIENT_REQUEST" | "COUNTER_HTTP_CLIENT_RESPONSE" | "GLOBAL" | "Intl.v8BreakIterator" | "require.extensions" | "root" | "process.EventEmitter" | "process.assert" | "process.binding" | "process.env.NODE_REPL_HISTORY_FILE" | "process.report.triggerReport")[]
   ignoreIndirectDependencies?: boolean
 }]
@@ -9112,6 +10656,9 @@ type NodeNoExtraneousImport = []|[{
     replace: [string, string]
   })[]])
   resolvePaths?: string[]
+  resolverConfig?: {
+    [k: string]: unknown | undefined
+  }
 }]
 // ----- node/no-extraneous-require -----
 type NodeNoExtraneousRequire = []|[{
@@ -9133,6 +10680,9 @@ type NodeNoExtraneousRequire = []|[{
     replace: [string, string]
   })[]])
   resolvePaths?: string[]
+  resolverConfig?: {
+    [k: string]: unknown | undefined
+  }
   tryExtensions?: string[]
 }]
 // ----- node/no-hide-core-modules -----
@@ -9145,7 +10695,11 @@ type NodeNoHideCoreModules = []|[{
 type NodeNoMissingImport = []|[{
   allowModules?: string[]
   resolvePaths?: string[]
+  resolverConfig?: {
+    [k: string]: unknown | undefined
+  }
   tryExtensions?: string[]
+  ignoreTypeImport?: boolean
   tsconfigPath?: string
   typescriptExtensionMap?: (unknown[][] | ("react" | "react-jsx" | "react-jsxdev" | "react-native" | "preserve"))
 }]
@@ -9154,6 +10708,9 @@ type NodeNoMissingRequire = []|[{
   allowModules?: string[]
   tryExtensions?: string[]
   resolvePaths?: string[]
+  resolverConfig?: {
+    [k: string]: unknown | undefined
+  }
   typescriptExtensionMap?: (unknown[][] | ("react" | "react-jsx" | "react-jsxdev" | "react-native" | "preserve"))
   tsconfigPath?: string
 }]
@@ -9162,6 +10719,10 @@ type NodeNoMixedRequires = []|[(boolean | {
   grouping?: boolean
   allowCall?: boolean
 })]
+// ----- node/no-process-env -----
+type NodeNoProcessEnv = []|[{
+  allowedVariables?: string[]
+}]
 // ----- node/no-restricted-import -----
 type NodeNoRestrictedImport = []|[(string | {
   name: (string | string[])
@@ -9175,6 +10736,7 @@ type NodeNoRestrictedRequire = []|[(string | {
 // ----- node/no-sync -----
 type NodeNoSync = []|[{
   allowAtRootLevel?: boolean
+  ignores?: string[]
 }]
 // ----- node/no-unpublished-bin -----
 type NodeNoUnpublishedBin = []|[{
@@ -9216,7 +10778,11 @@ type NodeNoUnpublishedImport = []|[{
     replace: [string, string]
   })[]])
   resolvePaths?: string[]
+  resolverConfig?: {
+    [k: string]: unknown | undefined
+  }
   ignoreTypeImport?: boolean
+  ignorePrivate?: boolean
 }]
 // ----- node/no-unpublished-require -----
 type NodeNoUnpublishedRequire = []|[{
@@ -9238,7 +10804,11 @@ type NodeNoUnpublishedRequire = []|[{
     replace: [string, string]
   })[]])
   resolvePaths?: string[]
+  resolverConfig?: {
+    [k: string]: unknown | undefined
+  }
   tryExtensions?: string[]
+  ignorePrivate?: boolean
 }]
 // ----- node/no-unsupported-features/es-builtins -----
 type NodeNoUnsupportedFeaturesEsBuiltins = []|[{
@@ -9254,7 +10824,7 @@ type NodeNoUnsupportedFeaturesEsSyntax = []|[{
 type NodeNoUnsupportedFeaturesNodeBuiltins = []|[{
   version?: string
   allowExperimental?: boolean
-  ignores?: ("__filename" | "__dirname" | "require" | "require.cache" | "require.extensions" | "require.main" | "require.resolve" | "require.resolve.paths" | "module" | "module.children" | "module.exports" | "module.filename" | "module.id" | "module.isPreloading" | "module.loaded" | "module.parent" | "module.path" | "module.paths" | "module.require" | "exports" | "AbortController" | "AbortSignal" | "AbortSignal.abort" | "AbortSignal.timeout" | "AbortSignal.any" | "DOMException" | "FormData" | "Headers" | "MessageEvent" | "Navigator" | "Request" | "Response" | "WebAssembly" | "WebSocket" | "fetch" | "global" | "queueMicrotask" | "navigator" | "navigator.hardwareConcurrency" | "navigator.language" | "navigator.languages" | "navigator.platform" | "navigator.userAgent" | "structuredClone" | "Blob" | "new Buffer()" | "Buffer" | "Buffer.alloc" | "Buffer.allocUnsafe" | "Buffer.allocUnsafeSlow" | "Buffer.byteLength" | "Buffer.compare" | "Buffer.concat" | "Buffer.copyBytesFrom" | "Buffer.from" | "Buffer.isBuffer" | "Buffer.isEncoding" | "File" | "atob" | "btoa" | "console" | "console.profile" | "console.profileEnd" | "console.timeStamp" | "console.Console" | "console.assert" | "console.clear" | "console.count" | "console.countReset" | "console.debug" | "console.dir" | "console.dirxml" | "console.error" | "console.group" | "console.groupCollapsed" | "console.groupEnd" | "console.info" | "console.log" | "console.table" | "console.time" | "console.timeEnd" | "console.timeLog" | "console.trace" | "console.warn" | "crypto" | "crypto.subtle" | "crypto.subtle.decrypt" | "crypto.subtle.deriveBits" | "crypto.subtle.deriveKey" | "crypto.subtle.digest" | "crypto.subtle.encrypt" | "crypto.subtle.exportKey" | "crypto.subtle.generateKey" | "crypto.subtle.importKey" | "crypto.subtle.sign" | "crypto.subtle.unwrapKey" | "crypto.subtle.verify" | "crypto.subtle.wrapKey" | "crypto.getRandomValues" | "crypto.randomUUID" | "Crypto" | "CryptoKey" | "SubtleCrypto" | "CustomEvent" | "Event" | "EventTarget" | "PerformanceEntry" | "PerformanceMark" | "PerformanceMeasure" | "PerformanceObserver" | "PerformanceObserverEntryList" | "PerformanceResourceTiming" | "performance" | "process" | "process.allowedNodeEnvironmentFlags" | "process.availableMemory" | "process.arch" | "process.argv" | "process.argv0" | "process.channel" | "process.config" | "process.connected" | "process.debugPort" | "process.env" | "process.execArgv" | "process.execPath" | "process.exitCode" | "process.mainModule" | "process.noDeprecation" | "process.permission" | "process.pid" | "process.platform" | "process.ppid" | "process.release" | "process.report" | "process.sourceMapsEnabled" | "process.stdin" | "process.stdin.isRaw" | "process.stdin.isTTY" | "process.stdin.setRawMode" | "process.stdout" | "process.stdout.clearLine" | "process.stdout.clearScreenDown" | "process.stdout.columns" | "process.stdout.cursorTo" | "process.stdout.getColorDepth" | "process.stdout.getWindowSize" | "process.stdout.hasColors" | "process.stdout.isTTY" | "process.stdout.moveCursor" | "process.stdout.rows" | "process.stderr" | "process.stderr.clearLine" | "process.stderr.clearScreenDown" | "process.stderr.columns" | "process.stderr.cursorTo" | "process.stderr.getColorDepth" | "process.stderr.getWindowSize" | "process.stderr.hasColors" | "process.stderr.isTTY" | "process.stderr.moveCursor" | "process.stderr.rows" | "process.throwDeprecation" | "process.title" | "process.traceDeprecation" | "process.version" | "process.versions" | "process.abort" | "process.chdir" | "process.constrainedMemory" | "process.cpuUsage" | "process.cwd" | "process.disconnect" | "process.dlopen" | "process.emitWarning" | "process.exit" | "process.getActiveResourcesInfo" | "process.getegid" | "process.geteuid" | "process.getgid" | "process.getgroups" | "process.getuid" | "process.hasUncaughtExceptionCaptureCallback" | "process.hrtime" | "process.hrtime.bigint" | "process.initgroups" | "process.kill" | "process.loadEnvFile" | "process.memoryUsage" | "process.rss" | "process.nextTick" | "process.resourceUsage" | "process.send" | "process.setegid" | "process.seteuid" | "process.setgid" | "process.setgroups" | "process.setuid" | "process.setSourceMapsEnabled" | "process.setUncaughtExceptionCaptureCallback" | "process.umask" | "process.uptime" | "ReadableStream" | "ReadableStream.from" | "ReadableStreamDefaultReader" | "ReadableStreamBYOBReader" | "ReadableStreamDefaultController" | "ReadableByteStreamController" | "ReadableStreamBYOBRequest" | "WritableStream" | "WritableStreamDefaultWriter" | "WritableStreamDefaultController" | "TransformStream" | "TransformStreamDefaultController" | "ByteLengthQueuingStrategy" | "CountQueuingStrategy" | "TextEncoderStream" | "TextDecoderStream" | "CompressionStream" | "DecompressionStream" | "setInterval" | "clearInterval" | "setTimeout" | "clearTimeout" | "setImmediate" | "clearImmediate" | "URL" | "URL.canParse" | "URL.createObjectURL" | "URL.revokeObjectURL" | "URLSearchParams" | "TextDecoder" | "TextEncoder" | "BroadcastChannel" | "MessageChannel" | "MessagePort" | "assert" | "assert.assert" | "assert.deepEqual" | "assert.deepStrictEqual" | "assert.doesNotMatch" | "assert.doesNotReject" | "assert.doesNotThrow" | "assert.equal" | "assert.fail" | "assert.ifError" | "assert.match" | "assert.notDeepEqual" | "assert.notDeepStrictEqual" | "assert.notEqual" | "assert.notStrictEqual" | "assert.ok" | "assert.rejects" | "assert.strictEqual" | "assert.throws" | "assert.CallTracker" | "assert.strict" | "assert.strict.assert" | "assert.strict.deepEqual" | "assert.strict.deepStrictEqual" | "assert.strict.doesNotMatch" | "assert.strict.doesNotReject" | "assert.strict.doesNotThrow" | "assert.strict.equal" | "assert.strict.fail" | "assert.strict.ifError" | "assert.strict.match" | "assert.strict.notDeepEqual" | "assert.strict.notDeepStrictEqual" | "assert.strict.notEqual" | "assert.strict.notStrictEqual" | "assert.strict.ok" | "assert.strict.rejects" | "assert.strict.strictEqual" | "assert.strict.throws" | "assert.strict.CallTracker" | "assert/strict" | "assert/strict.assert" | "assert/strict.deepEqual" | "assert/strict.deepStrictEqual" | "assert/strict.doesNotMatch" | "assert/strict.doesNotReject" | "assert/strict.doesNotThrow" | "assert/strict.equal" | "assert/strict.fail" | "assert/strict.ifError" | "assert/strict.match" | "assert/strict.notDeepEqual" | "assert/strict.notDeepStrictEqual" | "assert/strict.notEqual" | "assert/strict.notStrictEqual" | "assert/strict.ok" | "assert/strict.rejects" | "assert/strict.strictEqual" | "assert/strict.throws" | "assert/strict.CallTracker" | "async_hooks" | "async_hooks.createHook" | "async_hooks.executionAsyncResource" | "async_hooks.executionAsyncId" | "async_hooks.triggerAsyncId" | "async_hooks.AsyncLocalStorage" | "async_hooks.AsyncLocalStorage.bind" | "async_hooks.AsyncLocalStorage.snapshot" | "async_hooks.AsyncResource" | "async_hooks.AsyncResource.bind" | "buffer" | "buffer.constants" | "buffer.INSPECT_MAX_BYTES" | "buffer.kMaxLength" | "buffer.kStringMaxLength" | "buffer.atob" | "buffer.btoa" | "buffer.isAscii" | "buffer.isUtf8" | "buffer.resolveObjectURL" | "buffer.transcode" | "buffer.SlowBuffer" | "buffer.Blob" | "new buffer.Buffer()" | "buffer.Buffer" | "buffer.Buffer.alloc" | "buffer.Buffer.allocUnsafe" | "buffer.Buffer.allocUnsafeSlow" | "buffer.Buffer.byteLength" | "buffer.Buffer.compare" | "buffer.Buffer.concat" | "buffer.Buffer.copyBytesFrom" | "buffer.Buffer.from" | "buffer.Buffer.isBuffer" | "buffer.Buffer.isEncoding" | "buffer.File" | "child_process" | "child_process.exec" | "child_process.execFile" | "child_process.fork" | "child_process.spawn" | "child_process.execFileSync" | "child_process.execSync" | "child_process.spawnSync" | "child_process.ChildProcess" | "cluster" | "cluster.isMaster" | "cluster.isPrimary" | "cluster.isWorker" | "cluster.schedulingPolicy" | "cluster.settings" | "cluster.worker" | "cluster.workers" | "cluster.disconnect" | "cluster.fork" | "cluster.setupMaster" | "cluster.setupPrimary" | "cluster.Worker" | "crypto.constants" | "crypto.fips" | "crypto.webcrypto" | "crypto.webcrypto.subtle" | "crypto.webcrypto.subtle.decrypt" | "crypto.webcrypto.subtle.deriveBits" | "crypto.webcrypto.subtle.deriveKey" | "crypto.webcrypto.subtle.digest" | "crypto.webcrypto.subtle.encrypt" | "crypto.webcrypto.subtle.exportKey" | "crypto.webcrypto.subtle.generateKey" | "crypto.webcrypto.subtle.importKey" | "crypto.webcrypto.subtle.sign" | "crypto.webcrypto.subtle.unwrapKey" | "crypto.webcrypto.subtle.verify" | "crypto.webcrypto.subtle.wrapKey" | "crypto.webcrypto.getRandomValues" | "crypto.webcrypto.randomUUID" | "crypto.checkPrime" | "crypto.checkPrimeSync" | "crypto.createCipher" | "crypto.createCipheriv" | "crypto.createDecipher" | "crypto.createDecipheriv" | "crypto.createDiffieHellman" | "crypto.createDiffieHellmanGroup" | "crypto.createECDH" | "crypto.createHash" | "crypto.createHmac" | "crypto.createPrivateKey" | "crypto.createPublicKey" | "crypto.createSecretKey" | "crypto.createSign" | "crypto.createVerify" | "crypto.diffieHellman" | "crypto.generateKey" | "crypto.generateKeyPair" | "crypto.generateKeyPairSync" | "crypto.generateKeySync" | "crypto.generatePrime" | "crypto.generatePrimeSync" | "crypto.getCipherInfo" | "crypto.getCiphers" | "crypto.getCurves" | "crypto.getDiffieHellman" | "crypto.getFips" | "crypto.getHashes" | "crypto.hash" | "crypto.hkdf" | "crypto.hkdfSync" | "crypto.pbkdf2" | "crypto.pbkdf2Sync" | "crypto.privateDecrypt" | "crypto.privateEncrypt" | "crypto.publicDecrypt" | "crypto.publicEncrypt" | "crypto.randomBytes" | "crypto.randomFillSync" | "crypto.randomFill" | "crypto.randomInt" | "crypto.scrypt" | "crypto.scryptSync" | "crypto.secureHeapUsed" | "crypto.setEngine" | "crypto.setFips" | "crypto.sign" | "crypto.timingSafeEqual" | "crypto.verify" | "crypto.Certificate" | "crypto.Certificate.exportChallenge" | "crypto.Certificate.exportPublicKey" | "crypto.Certificate.verifySpkac" | "crypto.Cipher" | "crypto.Decipher" | "crypto.DiffieHellman" | "crypto.DiffieHellmanGroup" | "crypto.ECDH" | "crypto.ECDH.convertKey" | "crypto.Hash()" | "new crypto.Hash()" | "crypto.Hash" | "crypto.Hmac()" | "new crypto.Hmac()" | "crypto.Hmac" | "crypto.KeyObject" | "crypto.KeyObject.from" | "crypto.Sign" | "crypto.Verify" | "crypto.X509Certificate" | "dgram" | "dgram.createSocket" | "dgram.Socket" | "diagnostics_channel" | "diagnostics_channel.hasSubscribers" | "diagnostics_channel.channel" | "diagnostics_channel.subscribe" | "diagnostics_channel.unsubscribe" | "diagnostics_channel.tracingChannel" | "diagnostics_channel.Channel" | "diagnostics_channel.TracingChannel" | "dns" | "dns.Resolver" | "dns.getServers" | "dns.lookup" | "dns.lookupService" | "dns.resolve" | "dns.resolve4" | "dns.resolve6" | "dns.resolveAny" | "dns.resolveCname" | "dns.resolveCaa" | "dns.resolveMx" | "dns.resolveNaptr" | "dns.resolveNs" | "dns.resolvePtr" | "dns.resolveSoa" | "dns.resolveSrv" | "dns.resolveTxt" | "dns.reverse" | "dns.setDefaultResultOrder" | "dns.getDefaultResultOrder" | "dns.setServers" | "dns.promises" | "dns.promises.Resolver" | "dns.promises.cancel" | "dns.promises.getServers" | "dns.promises.lookup" | "dns.promises.lookupService" | "dns.promises.resolve" | "dns.promises.resolve4" | "dns.promises.resolve6" | "dns.promises.resolveAny" | "dns.promises.resolveCaa" | "dns.promises.resolveCname" | "dns.promises.resolveMx" | "dns.promises.resolveNaptr" | "dns.promises.resolveNs" | "dns.promises.resolvePtr" | "dns.promises.resolveSoa" | "dns.promises.resolveSrv" | "dns.promises.resolveTxt" | "dns.promises.reverse" | "dns.promises.setDefaultResultOrder" | "dns.promises.getDefaultResultOrder" | "dns.promises.setServers" | "dns/promises" | "dns/promises.Resolver" | "dns/promises.cancel" | "dns/promises.getServers" | "dns/promises.lookup" | "dns/promises.lookupService" | "dns/promises.resolve" | "dns/promises.resolve4" | "dns/promises.resolve6" | "dns/promises.resolveAny" | "dns/promises.resolveCaa" | "dns/promises.resolveCname" | "dns/promises.resolveMx" | "dns/promises.resolveNaptr" | "dns/promises.resolveNs" | "dns/promises.resolvePtr" | "dns/promises.resolveSoa" | "dns/promises.resolveSrv" | "dns/promises.resolveTxt" | "dns/promises.reverse" | "dns/promises.setDefaultResultOrder" | "dns/promises.getDefaultResultOrder" | "dns/promises.setServers" | "domain" | "domain.create" | "domain.Domain" | "events" | "events.Event" | "events.EventTarget" | "events.CustomEvent" | "events.NodeEventTarget" | "events.EventEmitter" | "events.EventEmitter.defaultMaxListeners" | "events.EventEmitter.errorMonitor" | "events.EventEmitter.captureRejections" | "events.EventEmitter.captureRejectionSymbol" | "events.EventEmitter.getEventListeners" | "events.EventEmitter.getMaxListeners" | "events.EventEmitter.once" | "events.EventEmitter.listenerCount" | "events.EventEmitter.on" | "events.EventEmitter.setMaxListeners" | "events.EventEmitter.addAbortListener" | "events.EventEmitterAsyncResource" | "events.EventEmitterAsyncResource.defaultMaxListeners" | "events.EventEmitterAsyncResource.errorMonitor" | "events.EventEmitterAsyncResource.captureRejections" | "events.EventEmitterAsyncResource.captureRejectionSymbol" | "events.EventEmitterAsyncResource.getEventListeners" | "events.EventEmitterAsyncResource.getMaxListeners" | "events.EventEmitterAsyncResource.once" | "events.EventEmitterAsyncResource.listenerCount" | "events.EventEmitterAsyncResource.on" | "events.EventEmitterAsyncResource.setMaxListeners" | "events.EventEmitterAsyncResource.addAbortListener" | "events.defaultMaxListeners" | "events.errorMonitor" | "events.captureRejections" | "events.captureRejectionSymbol" | "events.getEventListeners" | "events.getMaxListeners" | "events.once" | "events.listenerCount" | "events.on" | "events.setMaxListeners" | "events.addAbortListener" | "fs" | "fs.promises" | "fs.promises.FileHandle" | "fs.promises.access" | "fs.promises.appendFile" | "fs.promises.chmod" | "fs.promises.chown" | "fs.promises.constants" | "fs.promises.copyFile" | "fs.promises.cp" | "fs.promises.glob" | "fs.promises.lchmod" | "fs.promises.lchown" | "fs.promises.link" | "fs.promises.lstat" | "fs.promises.lutimes" | "fs.promises.mkdir" | "fs.promises.mkdtemp" | "fs.promises.open" | "fs.promises.opendir" | "fs.promises.readFile" | "fs.promises.readdir" | "fs.promises.readlink" | "fs.promises.realpath" | "fs.promises.rename" | "fs.promises.rm" | "fs.promises.rmdir" | "fs.promises.stat" | "fs.promises.statfs" | "fs.promises.symlink" | "fs.promises.truncate" | "fs.promises.unlink" | "fs.promises.utimes" | "fs.promises.watch" | "fs.promises.writeFile" | "fs.access" | "fs.appendFile" | "fs.chmod" | "fs.chown" | "fs.close" | "fs.copyFile" | "fs.cp" | "fs.createReadStream" | "fs.createWriteStream" | "fs.exists" | "fs.fchmod" | "fs.fchown" | "fs.fdatasync" | "fs.fstat" | "fs.fsync" | "fs.ftruncate" | "fs.futimes" | "fs.glob" | "fs.lchmod" | "fs.lchown" | "fs.link" | "fs.lstat" | "fs.lutimes" | "fs.mkdir" | "fs.mkdtemp" | "fs.native" | "fs.open" | "fs.openAsBlob" | "fs.opendir" | "fs.read" | "fs.readdir" | "fs.readFile" | "fs.readlink" | "fs.readv" | "fs.realpath" | "fs.realpath.native" | "fs.rename" | "fs.rm" | "fs.rmdir" | "fs.stat" | "fs.statfs" | "fs.symlink" | "fs.truncate" | "fs.unlink" | "fs.unwatchFile" | "fs.utimes" | "fs.watch" | "fs.watchFile" | "fs.write" | "fs.writeFile" | "fs.writev" | "fs.accessSync" | "fs.appendFileSync" | "fs.chmodSync" | "fs.chownSync" | "fs.closeSync" | "fs.copyFileSync" | "fs.cpSync" | "fs.existsSync" | "fs.fchmodSync" | "fs.fchownSync" | "fs.fdatasyncSync" | "fs.fstatSync" | "fs.fsyncSync" | "fs.ftruncateSync" | "fs.futimesSync" | "fs.globSync" | "fs.lchmodSync" | "fs.lchownSync" | "fs.linkSync" | "fs.lstatSync" | "fs.lutimesSync" | "fs.mkdirSync" | "fs.mkdtempSync" | "fs.opendirSync" | "fs.openSync" | "fs.readdirSync" | "fs.readFileSync" | "fs.readlinkSync" | "fs.readSync" | "fs.readvSync" | "fs.realpathSync" | "fs.realpathSync.native" | "fs.renameSync" | "fs.rmdirSync" | "fs.rmSync" | "fs.statfsSync" | "fs.statSync" | "fs.symlinkSync" | "fs.truncateSync" | "fs.unlinkSync" | "fs.utimesSync" | "fs.writeFileSync" | "fs.writeSync" | "fs.writevSync" | "fs.constants" | "fs.Dir" | "fs.Dirent" | "fs.FSWatcher" | "fs.StatWatcher" | "fs.ReadStream" | "fs.Stats()" | "new fs.Stats()" | "fs.Stats" | "fs.StatFs" | "fs.WriteStream" | "fs.common_objects" | "fs/promises" | "fs/promises.FileHandle" | "fs/promises.access" | "fs/promises.appendFile" | "fs/promises.chmod" | "fs/promises.chown" | "fs/promises.constants" | "fs/promises.copyFile" | "fs/promises.cp" | "fs/promises.glob" | "fs/promises.lchmod" | "fs/promises.lchown" | "fs/promises.link" | "fs/promises.lstat" | "fs/promises.lutimes" | "fs/promises.mkdir" | "fs/promises.mkdtemp" | "fs/promises.open" | "fs/promises.opendir" | "fs/promises.readFile" | "fs/promises.readdir" | "fs/promises.readlink" | "fs/promises.realpath" | "fs/promises.rename" | "fs/promises.rm" | "fs/promises.rmdir" | "fs/promises.stat" | "fs/promises.statfs" | "fs/promises.symlink" | "fs/promises.truncate" | "fs/promises.unlink" | "fs/promises.utimes" | "fs/promises.watch" | "fs/promises.writeFile" | "http2" | "http2.constants" | "http2.sensitiveHeaders" | "http2.createServer" | "http2.createSecureServer" | "http2.connect" | "http2.getDefaultSettings" | "http2.getPackedSettings" | "http2.getUnpackedSettings" | "http2.performServerHandshake" | "http2.Http2Session" | "http2.ServerHttp2Session" | "http2.ClientHttp2Session" | "http2.Http2Stream" | "http2.ClientHttp2Stream" | "http2.ServerHttp2Stream" | "http2.Http2Server" | "http2.Http2SecureServer" | "http2.Http2ServerRequest" | "http2.Http2ServerResponse" | "http" | "http.globalAgent" | "http.createServer" | "http.get" | "http.request" | "http.Agent" | "http.Server" | "inspector" | "inspector.Session" | "inspector.console" | "inspector.close" | "inspector.open" | "inspector.url" | "inspector.waitForDebugger" | "inspector/promises" | "inspector/promises.Session" | "inspector/promises.console" | "inspector/promises.close" | "inspector/promises.open" | "inspector/promises.url" | "inspector/promises.waitForDebugger" | "module.builtinModules" | "module.createRequire" | "module.createRequireFromPath" | "module.isBuiltin" | "module.register" | "module.syncBuiltinESMExports" | "module.findSourceMap" | "module.SourceMap" | "module.Module.builtinModules" | "module.Module.createRequire" | "module.Module.createRequireFromPath" | "module.Module.isBuiltin" | "module.Module.register" | "module.Module.syncBuiltinESMExports" | "module.Module.findSourceMap" | "module.Module.SourceMap" | "net" | "net.connect" | "net.createConnection" | "net.createServer" | "net.getDefaultAutoSelectFamily" | "net.setDefaultAutoSelectFamily" | "net.getDefaultAutoSelectFamilyAttemptTimeout" | "net.setDefaultAutoSelectFamilyAttemptTimeout" | "net.isIP" | "net.isIPv4" | "net.isIPv6" | "net.BlockList" | "net.SocketAddress" | "net.Server" | "net.Socket" | "os" | "os.EOL" | "os.constants" | "os.constants.priority" | "os.devNull" | "os.availableParallelism" | "os.arch" | "os.cpus" | "os.endianness" | "os.freemem" | "os.getPriority" | "os.homedir" | "os.hostname" | "os.loadavg" | "os.machine" | "os.networkInterfaces" | "os.platform" | "os.release" | "os.setPriority" | "os.tmpdir" | "os.totalmem" | "os.type" | "os.uptime" | "os.userInfo" | "os.version" | "path" | "path.posix" | "path.posix.delimiter" | "path.posix.sep" | "path.posix.basename" | "path.posix.dirname" | "path.posix.extname" | "path.posix.format" | "path.posix.isAbsolute" | "path.posix.join" | "path.posix.normalize" | "path.posix.parse" | "path.posix.relative" | "path.posix.resolve" | "path.posix.toNamespacedPath" | "path.win32" | "path.win32.delimiter" | "path.win32.sep" | "path.win32.basename" | "path.win32.dirname" | "path.win32.extname" | "path.win32.format" | "path.win32.isAbsolute" | "path.win32.join" | "path.win32.normalize" | "path.win32.parse" | "path.win32.relative" | "path.win32.resolve" | "path.win32.toNamespacedPath" | "path.delimiter" | "path.sep" | "path.basename" | "path.dirname" | "path.extname" | "path.format" | "path.isAbsolute" | "path.join" | "path.normalize" | "path.parse" | "path.relative" | "path.resolve" | "path.toNamespacedPath" | "path/posix" | "path/posix.delimiter" | "path/posix.sep" | "path/posix.basename" | "path/posix.dirname" | "path/posix.extname" | "path/posix.format" | "path/posix.isAbsolute" | "path/posix.join" | "path/posix.normalize" | "path/posix.parse" | "path/posix.relative" | "path/posix.resolve" | "path/posix.toNamespacedPath" | "path/win32" | "path/win32.delimiter" | "path/win32.sep" | "path/win32.basename" | "path/win32.dirname" | "path/win32.extname" | "path/win32.format" | "path/win32.isAbsolute" | "path/win32.join" | "path/win32.normalize" | "path/win32.parse" | "path/win32.relative" | "path/win32.resolve" | "path/win32.toNamespacedPath" | "perf_hooks" | "perf_hooks.performance" | "perf_hooks.createHistogram" | "perf_hooks.monitorEventLoopDelay" | "perf_hooks.PerformanceEntry" | "perf_hooks.PerformanceMark" | "perf_hooks.PerformanceMeasure" | "perf_hooks.PerformanceNodeEntry" | "perf_hooks.PerformanceNodeTiming" | "perf_hooks.PerformanceResourceTiming" | "perf_hooks.PerformanceObserver" | "perf_hooks.PerformanceObserverEntryList" | "perf_hooks.Histogram" | "perf_hooks.IntervalHistogram" | "perf_hooks.RecordableHistogram" | "punycode" | "punycode.ucs2" | "punycode.version" | "punycode.decode" | "punycode.encode" | "punycode.toASCII" | "punycode.toUnicode" | "querystring" | "querystring.decode" | "querystring.encode" | "querystring.escape" | "querystring.parse" | "querystring.stringify" | "querystring.unescape" | "readline" | "readline.promises" | "readline.promises.createInterface" | "readline.promises.Interface" | "readline.promises.Readline" | "readline.clearLine" | "readline.clearScreenDown" | "readline.createInterface" | "readline.cursorTo" | "readline.moveCursor" | "readline.Interface" | "readline.emitKeypressEvents" | "readline.InterfaceConstructor" | "readline/promises" | "readline/promises.createInterface" | "readline/promises.Interface" | "readline/promises.Readline" | "sea" | "sea.isSea" | "sea.getAsset" | "sea.getAssetAsBlob" | "sea.getRawAsset" | "sea.test.isSea" | "sea.test.getAsset" | "sea.test.getAssetAsBlob" | "sea.test.getRawAsset" | "stream" | "stream.promises" | "stream.promises.pipeline" | "stream.promises.finished" | "stream.finished" | "stream.pipeline" | "stream.compose" | "stream.Readable" | "stream.Readable.from" | "stream.Readable.isDisturbed" | "stream.Readable.fromWeb" | "stream.Readable.toWeb" | "stream.Writable" | "stream.Writable.fromWeb" | "stream.Writable.toWeb" | "stream.Duplex" | "stream.Duplex.from" | "stream.Duplex.fromWeb" | "stream.Duplex.toWeb" | "stream.Transform" | "stream.isErrored" | "stream.isReadable" | "stream.addAbortSignal" | "stream.getDefaultHighWaterMark" | "stream.setDefaultHighWaterMark" | "stream/promises.pipeline" | "stream/promises.finished" | "stream/web" | "stream/web.ReadableStream" | "stream/web.ReadableStream.from" | "stream/web.ReadableStreamDefaultReader" | "stream/web.ReadableStreamBYOBReader" | "stream/web.ReadableStreamDefaultController" | "stream/web.ReadableByteStreamController" | "stream/web.ReadableStreamBYOBRequest" | "stream/web.WritableStream" | "stream/web.WritableStreamDefaultWriter" | "stream/web.WritableStreamDefaultController" | "stream/web.TransformStream" | "stream/web.TransformStreamDefaultController" | "stream/web.ByteLengthQueuingStrategy" | "stream/web.CountQueuingStrategy" | "stream/web.TextEncoderStream" | "stream/web.TextDecoderStream" | "stream/web.CompressionStream" | "stream/web.DecompressionStream" | "stream/consumers" | "stream/consumers.arrayBuffer" | "stream/consumers.blob" | "stream/consumers.buffer" | "stream/consumers.json" | "stream/consumers.text" | "string_decoder" | "string_decoder.StringDecoder" | "test" | "test.run" | "test.skip" | "test.todo" | "test.only" | "test.describe" | "test.describe.skip" | "test.describe.todo" | "test.describe.only" | "test.it" | "test.it.skip" | "test.it.todo" | "test.it.only" | "test.suite" | "test.suite.skip" | "test.suite.todo" | "test.suite.only" | "test.before" | "test.after" | "test.beforeEach" | "test.afterEach" | "test.MockFunctionContext" | "test.MockTracker" | "test.MockTimers" | "test.TestsStream" | "test.TestContext" | "test.SuiteContext" | "test.test.run" | "test.test.skip" | "test.test.todo" | "test.test.only" | "test.test.describe" | "test.test.it" | "test.test.suite" | "test.test.before" | "test.test.after" | "test.test.beforeEach" | "test.test.afterEach" | "test.test.MockFunctionContext" | "test.test.MockTracker" | "test.test.MockTimers" | "test.test.TestsStream" | "test.test.TestContext" | "test.test.SuiteContext" | "timers" | "timers.Immediate" | "timers.Timeout" | "timers.setImmediate" | "timers.clearImmediate" | "timers.setInterval" | "timers.clearInterval" | "timers.setTimeout" | "timers.clearTimeout" | "timers.promises" | "timers.promises.setTimeout" | "timers.promises.setImmediate" | "timers.promises.setInterval" | "timers.promises.scheduler.wait" | "timers.promises.scheduler.yield" | "timers/promises" | "timers/promises.setTimeout" | "timers/promises.setImmediate" | "timers/promises.setInterval" | "tls" | "tls.rootCertificates" | "tls.DEFAULT_ECDH_CURVE" | "tls.DEFAULT_MAX_VERSION" | "tls.DEFAULT_MIN_VERSION" | "tls.DEFAULT_CIPHERS" | "tls.checkServerIdentity" | "tls.connect" | "tls.createSecureContext" | "tls.createSecurePair" | "tls.createServer" | "tls.getCiphers" | "tls.SecureContext" | "tls.CryptoStream" | "tls.SecurePair" | "tls.Server" | "tls.TLSSocket" | "trace_events" | "trace_events.createTracing" | "trace_events.getEnabledCategories" | "tty" | "tty.isatty" | "tty.ReadStream" | "tty.WriteStream" | "url" | "url.domainToASCII" | "url.domainToUnicode" | "url.fileURLToPath" | "url.format" | "url.pathToFileURL" | "url.urlToHttpOptions" | "url.URL" | "url.URL.canParse" | "url.URL.createObjectURL" | "url.URL.revokeObjectURL" | "url.URLSearchParams" | "url.Url" | "util.promisify" | "util.promisify.custom" | "util.callbackify" | "util.debuglog" | "util.debug" | "util.deprecate" | "util.format" | "util.formatWithOptions" | "util.getSystemErrorName" | "util.getSystemErrorMap" | "util.inherits" | "util.inspect" | "util.inspect.custom" | "util.inspect.defaultOptions" | "util.inspect.replDefaults" | "util.isDeepStrictEqual" | "util.parseArgs" | "util.parseEnv" | "util.stripVTControlCharacters" | "util.styleText" | "util.toUSVString" | "util.transferableAbortController" | "util.transferableAbortSignal" | "util.aborted" | "util.MIMEType" | "util.MIMEParams" | "util.TextDecoder" | "util.TextEncoder" | "util.types" | "util.types.isExternal" | "util.types.isDate" | "util.types.isArgumentsObject" | "util.types.isBigIntObject" | "util.types.isBooleanObject" | "util.types.isNumberObject" | "util.types.isStringObject" | "util.types.isSymbolObject" | "util.types.isNativeError" | "util.types.isRegExp" | "util.types.isAsyncFunction" | "util.types.isGeneratorFunction" | "util.types.isGeneratorObject" | "util.types.isPromise" | "util.types.isMap" | "util.types.isSet" | "util.types.isMapIterator" | "util.types.isSetIterator" | "util.types.isWeakMap" | "util.types.isWeakSet" | "util.types.isArrayBuffer" | "util.types.isDataView" | "util.types.isSharedArrayBuffer" | "util.types.isProxy" | "util.types.isModuleNamespaceObject" | "util.types.isAnyArrayBuffer" | "util.types.isBoxedPrimitive" | "util.types.isArrayBufferView" | "util.types.isTypedArray" | "util.types.isUint8Array" | "util.types.isUint8ClampedArray" | "util.types.isUint16Array" | "util.types.isUint32Array" | "util.types.isInt8Array" | "util.types.isInt16Array" | "util.types.isInt32Array" | "util.types.isFloat32Array" | "util.types.isFloat64Array" | "util.types.isBigInt64Array" | "util.types.isBigUint64Array" | "util.types.isKeyObject" | "util.types.isCryptoKey" | "util.types.isWebAssemblyCompiledModule" | "util._extend" | "util.isArray" | "util.isBoolean" | "util.isBuffer" | "util.isDate" | "util.isError" | "util.isFunction" | "util.isNull" | "util.isNullOrUndefined" | "util.isNumber" | "util.isObject" | "util.isPrimitive" | "util.isRegExp" | "util.isString" | "util.isSymbol" | "util.isUndefined" | "util.log" | "util" | "util/types" | "util/types.isExternal" | "util/types.isDate" | "util/types.isArgumentsObject" | "util/types.isBigIntObject" | "util/types.isBooleanObject" | "util/types.isNumberObject" | "util/types.isStringObject" | "util/types.isSymbolObject" | "util/types.isNativeError" | "util/types.isRegExp" | "util/types.isAsyncFunction" | "util/types.isGeneratorFunction" | "util/types.isGeneratorObject" | "util/types.isPromise" | "util/types.isMap" | "util/types.isSet" | "util/types.isMapIterator" | "util/types.isSetIterator" | "util/types.isWeakMap" | "util/types.isWeakSet" | "util/types.isArrayBuffer" | "util/types.isDataView" | "util/types.isSharedArrayBuffer" | "util/types.isProxy" | "util/types.isModuleNamespaceObject" | "util/types.isAnyArrayBuffer" | "util/types.isBoxedPrimitive" | "util/types.isArrayBufferView" | "util/types.isTypedArray" | "util/types.isUint8Array" | "util/types.isUint8ClampedArray" | "util/types.isUint16Array" | "util/types.isUint32Array" | "util/types.isInt8Array" | "util/types.isInt16Array" | "util/types.isInt32Array" | "util/types.isFloat32Array" | "util/types.isFloat64Array" | "util/types.isBigInt64Array" | "util/types.isBigUint64Array" | "util/types.isKeyObject" | "util/types.isCryptoKey" | "util/types.isWebAssemblyCompiledModule" | "v8" | "v8.serialize" | "v8.deserialize" | "v8.Serializer" | "v8.Deserializer" | "v8.DefaultSerializer" | "v8.DefaultDeserializer" | "v8.promiseHooks" | "v8.promiseHooks.onInit" | "v8.promiseHooks.onSettled" | "v8.promiseHooks.onBefore" | "v8.promiseHooks.onAfter" | "v8.promiseHooks.createHook" | "v8.startupSnapshot" | "v8.startupSnapshot.addSerializeCallback" | "v8.startupSnapshot.addDeserializeCallback" | "v8.startupSnapshot.setDeserializeMainFunction" | "v8.startupSnapshot.isBuildingSnapshot" | "v8.cachedDataVersionTag" | "v8.getHeapCodeStatistics" | "v8.getHeapSnapshot" | "v8.getHeapSpaceStatistics" | "v8.getHeapStatistics" | "v8.queryObjects" | "v8.setFlagsFromString" | "v8.stopCoverage" | "v8.takeCoverage" | "v8.writeHeapSnapshot" | "v8.setHeapSnapshotNearHeapLimit" | "v8.GCProfiler" | "vm.constants" | "vm.compileFunction" | "vm.createContext" | "vm.isContext" | "vm.measureMemory" | "vm.runInContext" | "vm.runInNewContext" | "vm.runInThisContext" | "vm.Script" | "vm.Module" | "vm.SourceTextModule" | "vm.SyntheticModule" | "vm" | "wasi.WASI" | "wasi" | "worker_threads" | "worker_threads.isMainThread" | "worker_threads.parentPort" | "worker_threads.resourceLimits" | "worker_threads.SHARE_ENV" | "worker_threads.threadId" | "worker_threads.workerData" | "worker_threads.getEnvironmentData" | "worker_threads.markAsUntransferable" | "worker_threads.isMarkedAsUntransferable" | "worker_threads.moveMessagePortToContext" | "worker_threads.receiveMessageOnPort" | "worker_threads.setEnvironmentData" | "worker_threads.BroadcastChannel" | "worker_threads.MessageChannel" | "worker_threads.MessagePort" | "worker_threads.Worker" | "zlib.constants" | "zlib.crc32" | "zlib.createBrotliCompress" | "zlib.createBrotliDecompress" | "zlib.createDeflate" | "zlib.createDeflateRaw" | "zlib.createGunzip" | "zlib.createGzip" | "zlib.createInflate" | "zlib.createInflateRaw" | "zlib.createUnzip" | "zlib.brotliCompress" | "zlib.brotliCompressSync" | "zlib.brotliDecompress" | "zlib.brotliDecompressSync" | "zlib.deflate" | "zlib.deflateSync" | "zlib.deflateRaw" | "zlib.deflateRawSync" | "zlib.gunzip" | "zlib.gunzipSync" | "zlib.gzip" | "zlib.gzipSync" | "zlib.inflate" | "zlib.inflateSync" | "zlib.inflateRaw" | "zlib.inflateRawSync" | "zlib.unzip" | "zlib.unzipSync" | "zlib.BrotliCompress" | "zlib.BrotliDecompress" | "zlib.Deflate" | "zlib.DeflateRaw" | "zlib.Gunzip" | "zlib.Gzip" | "zlib.Inflate" | "zlib.InflateRaw" | "zlib.Unzip" | "zlib")[]
+  ignores?: ("__filename" | "__dirname" | "require" | "require.cache" | "require.extensions" | "require.main" | "require.resolve" | "require.resolve.paths" | "module" | "module.children" | "module.exports" | "module.filename" | "module.id" | "module.isPreloading" | "module.loaded" | "module.parent" | "module.path" | "module.paths" | "module.require" | "exports" | "AbortController" | "AbortSignal" | "AbortSignal.abort" | "AbortSignal.timeout" | "AbortSignal.any" | "DOMException" | "FormData" | "Headers" | "MessageEvent" | "Navigator" | "Request" | "Response" | "WebAssembly" | "WebSocket" | "fetch" | "global" | "queueMicrotask" | "navigator" | "navigator.hardwareConcurrency" | "navigator.language" | "navigator.languages" | "navigator.platform" | "navigator.userAgent" | "structuredClone" | "localStorage" | "sessionStorage" | "Storage" | "Blob" | "new Buffer()" | "Buffer" | "Buffer.alloc" | "Buffer.allocUnsafe" | "Buffer.allocUnsafeSlow" | "Buffer.byteLength" | "Buffer.compare" | "Buffer.concat" | "Buffer.copyBytesFrom" | "Buffer.from" | "Buffer.isBuffer" | "Buffer.isEncoding" | "File" | "atob" | "btoa" | "console" | "console.profile" | "console.profileEnd" | "console.timeStamp" | "console.Console" | "console.assert" | "console.clear" | "console.count" | "console.countReset" | "console.debug" | "console.dir" | "console.dirxml" | "console.error" | "console.group" | "console.groupCollapsed" | "console.groupEnd" | "console.info" | "console.log" | "console.table" | "console.time" | "console.timeEnd" | "console.timeLog" | "console.trace" | "console.warn" | "crypto" | "crypto.subtle" | "crypto.subtle.decrypt" | "crypto.subtle.deriveBits" | "crypto.subtle.deriveKey" | "crypto.subtle.digest" | "crypto.subtle.encrypt" | "crypto.subtle.exportKey" | "crypto.subtle.generateKey" | "crypto.subtle.importKey" | "crypto.subtle.sign" | "crypto.subtle.unwrapKey" | "crypto.subtle.verify" | "crypto.subtle.wrapKey" | "crypto.getRandomValues" | "crypto.randomUUID" | "Crypto" | "CryptoKey" | "SubtleCrypto" | "CloseEvent" | "CustomEvent" | "Event" | "EventSource" | "EventTarget" | "PerformanceEntry" | "PerformanceMark" | "PerformanceMeasure" | "PerformanceObserver" | "PerformanceObserverEntryList" | "PerformanceResourceTiming" | "performance" | "performance.clearMarks" | "performance.clearMeasures" | "performance.clearResourceTimings" | "performance.eventLoopUtilization" | "performance.getEntries" | "performance.getEntriesByName" | "performance.getEntriesByType" | "performance.mark" | "performance.markResourceTiming" | "performance.measure" | "performance.nodeTiming" | "performance.nodeTiming.bootstrapComplete" | "performance.nodeTiming.environment" | "performance.nodeTiming.idleTime" | "performance.nodeTiming.loopExit" | "performance.nodeTiming.loopStart" | "performance.nodeTiming.nodeStart" | "performance.nodeTiming.uvMetricsInfo" | "performance.nodeTiming.v8Start" | "performance.now" | "performance.onresourcetimingbufferfull" | "performance.setResourceTimingBufferSize" | "performance.timeOrigin" | "performance.timerify" | "performance.toJSON" | "process" | "process.allowedNodeEnvironmentFlags" | "process.availableMemory" | "process.arch" | "process.argv" | "process.argv0" | "process.channel" | "process.config" | "process.connected" | "process.debugPort" | "process.env" | "process.execArgv" | "process.execPath" | "process.exitCode" | "process.features.cached_builtins" | "process.features.debug" | "process.features.inspector" | "process.features.ipv6" | "process.features.require_module" | "process.features.tls" | "process.features.tls_alpn" | "process.features.tls_ocsp" | "process.features.tls_sni" | "process.features.typescript" | "process.features.uv" | "process.finalization.register" | "process.finalization.registerBeforeExit" | "process.finalization.unregister" | "process.getBuiltinModule" | "process.mainModule" | "process.noDeprecation" | "process.permission" | "process.pid" | "process.platform" | "process.ppid" | "process.release" | "process.report" | "process.report.excludeEnv" | "process.sourceMapsEnabled" | "process.stdin" | "process.stdin.isRaw" | "process.stdin.isTTY" | "process.stdin.setRawMode" | "process.stdout" | "process.stdout.clearLine" | "process.stdout.clearScreenDown" | "process.stdout.columns" | "process.stdout.cursorTo" | "process.stdout.getColorDepth" | "process.stdout.getWindowSize" | "process.stdout.hasColors" | "process.stdout.isTTY" | "process.stdout.moveCursor" | "process.stdout.rows" | "process.stderr" | "process.stderr.clearLine" | "process.stderr.clearScreenDown" | "process.stderr.columns" | "process.stderr.cursorTo" | "process.stderr.getColorDepth" | "process.stderr.getWindowSize" | "process.stderr.hasColors" | "process.stderr.isTTY" | "process.stderr.moveCursor" | "process.stderr.rows" | "process.throwDeprecation" | "process.title" | "process.traceDeprecation" | "process.version" | "process.versions" | "process.abort" | "process.chdir" | "process.constrainedMemory" | "process.cpuUsage" | "process.cwd" | "process.disconnect" | "process.dlopen" | "process.emitWarning" | "process.exit" | "process.getActiveResourcesInfo" | "process.getegid" | "process.geteuid" | "process.getgid" | "process.getgroups" | "process.getuid" | "process.hasUncaughtExceptionCaptureCallback" | "process.hrtime" | "process.hrtime.bigint" | "process.initgroups" | "process.kill" | "process.loadEnvFile" | "process.memoryUsage" | "process.rss" | "process.nextTick" | "process.resourceUsage" | "process.send" | "process.setegid" | "process.seteuid" | "process.setgid" | "process.setgroups" | "process.setuid" | "process.setSourceMapsEnabled" | "process.setUncaughtExceptionCaptureCallback" | "process.umask" | "process.uptime" | "ReadableStream" | "ReadableStream.from" | "ReadableStreamDefaultReader" | "ReadableStreamBYOBReader" | "ReadableStreamDefaultController" | "ReadableByteStreamController" | "ReadableStreamBYOBRequest" | "WritableStream" | "WritableStreamDefaultWriter" | "WritableStreamDefaultController" | "TransformStream" | "TransformStreamDefaultController" | "ByteLengthQueuingStrategy" | "CountQueuingStrategy" | "TextEncoderStream" | "TextDecoderStream" | "CompressionStream" | "DecompressionStream" | "setInterval" | "clearInterval" | "setTimeout" | "clearTimeout" | "setImmediate" | "clearImmediate" | "URL" | "URL.canParse" | "URL.createObjectURL" | "URL.revokeObjectURL" | "URLSearchParams" | "TextDecoder" | "TextEncoder" | "BroadcastChannel" | "MessageChannel" | "MessagePort" | "assert" | "assert.assert" | "assert.deepEqual" | "assert.deepStrictEqual" | "assert.doesNotMatch" | "assert.doesNotReject" | "assert.doesNotThrow" | "assert.equal" | "assert.fail" | "assert.ifError" | "assert.match" | "assert.notDeepEqual" | "assert.notDeepStrictEqual" | "assert.notEqual" | "assert.notStrictEqual" | "assert.ok" | "assert.rejects" | "assert.strictEqual" | "assert.throws" | "assert.CallTracker" | "assert.strict" | "assert.strict.assert" | "assert.strict.deepEqual" | "assert.strict.deepStrictEqual" | "assert.strict.doesNotMatch" | "assert.strict.doesNotReject" | "assert.strict.doesNotThrow" | "assert.strict.equal" | "assert.strict.fail" | "assert.strict.ifError" | "assert.strict.match" | "assert.strict.notDeepEqual" | "assert.strict.notDeepStrictEqual" | "assert.strict.notEqual" | "assert.strict.notStrictEqual" | "assert.strict.ok" | "assert.strict.rejects" | "assert.strict.strictEqual" | "assert.strict.throws" | "assert.strict.CallTracker" | "assert/strict" | "assert/strict.assert" | "assert/strict.deepEqual" | "assert/strict.deepStrictEqual" | "assert/strict.doesNotMatch" | "assert/strict.doesNotReject" | "assert/strict.doesNotThrow" | "assert/strict.equal" | "assert/strict.fail" | "assert/strict.ifError" | "assert/strict.match" | "assert/strict.notDeepEqual" | "assert/strict.notDeepStrictEqual" | "assert/strict.notEqual" | "assert/strict.notStrictEqual" | "assert/strict.ok" | "assert/strict.rejects" | "assert/strict.strictEqual" | "assert/strict.throws" | "assert/strict.CallTracker" | "async_hooks" | "async_hooks.createHook" | "async_hooks.executionAsyncResource" | "async_hooks.executionAsyncId" | "async_hooks.triggerAsyncId" | "async_hooks.AsyncLocalStorage" | "async_hooks.AsyncLocalStorage.bind" | "async_hooks.AsyncLocalStorage.snapshot" | "async_hooks.AsyncResource" | "async_hooks.AsyncResource.bind" | "buffer" | "buffer.constants" | "buffer.INSPECT_MAX_BYTES" | "buffer.kMaxLength" | "buffer.kStringMaxLength" | "buffer.atob" | "buffer.btoa" | "buffer.isAscii" | "buffer.isUtf8" | "buffer.resolveObjectURL" | "buffer.transcode" | "buffer.SlowBuffer" | "buffer.Blob" | "new buffer.Buffer()" | "buffer.Buffer" | "buffer.Buffer.alloc" | "buffer.Buffer.allocUnsafe" | "buffer.Buffer.allocUnsafeSlow" | "buffer.Buffer.byteLength" | "buffer.Buffer.compare" | "buffer.Buffer.concat" | "buffer.Buffer.copyBytesFrom" | "buffer.Buffer.from" | "buffer.Buffer.isBuffer" | "buffer.Buffer.isEncoding" | "buffer.File" | "child_process" | "child_process.exec" | "child_process.execFile" | "child_process.fork" | "child_process.spawn" | "child_process.execFileSync" | "child_process.execSync" | "child_process.spawnSync" | "child_process.ChildProcess" | "cluster" | "cluster.isMaster" | "cluster.isPrimary" | "cluster.isWorker" | "cluster.schedulingPolicy" | "cluster.settings" | "cluster.worker" | "cluster.workers" | "cluster.disconnect" | "cluster.fork" | "cluster.setupMaster" | "cluster.setupPrimary" | "cluster.Worker" | "crypto.constants" | "crypto.fips" | "crypto.webcrypto" | "crypto.webcrypto.subtle" | "crypto.webcrypto.subtle.decrypt" | "crypto.webcrypto.subtle.deriveBits" | "crypto.webcrypto.subtle.deriveKey" | "crypto.webcrypto.subtle.digest" | "crypto.webcrypto.subtle.encrypt" | "crypto.webcrypto.subtle.exportKey" | "crypto.webcrypto.subtle.generateKey" | "crypto.webcrypto.subtle.importKey" | "crypto.webcrypto.subtle.sign" | "crypto.webcrypto.subtle.unwrapKey" | "crypto.webcrypto.subtle.verify" | "crypto.webcrypto.subtle.wrapKey" | "crypto.webcrypto.getRandomValues" | "crypto.webcrypto.randomUUID" | "crypto.checkPrime" | "crypto.checkPrimeSync" | "crypto.createCipher" | "crypto.createCipheriv" | "crypto.createDecipher" | "crypto.createDecipheriv" | "crypto.createDiffieHellman" | "crypto.createDiffieHellmanGroup" | "crypto.createECDH" | "crypto.createHash" | "crypto.createHmac" | "crypto.createPrivateKey" | "crypto.createPublicKey" | "crypto.createSecretKey" | "crypto.createSign" | "crypto.createVerify" | "crypto.diffieHellman" | "crypto.generateKey" | "crypto.generateKeyPair" | "crypto.generateKeyPairSync" | "crypto.generateKeySync" | "crypto.generatePrime" | "crypto.generatePrimeSync" | "crypto.getCipherInfo" | "crypto.getCiphers" | "crypto.getCurves" | "crypto.getDiffieHellman" | "crypto.getFips" | "crypto.getHashes" | "crypto.hash" | "crypto.hkdf" | "crypto.hkdfSync" | "crypto.pbkdf2" | "crypto.pbkdf2Sync" | "crypto.privateDecrypt" | "crypto.privateEncrypt" | "crypto.publicDecrypt" | "crypto.publicEncrypt" | "crypto.randomBytes" | "crypto.randomFillSync" | "crypto.randomFill" | "crypto.randomInt" | "crypto.scrypt" | "crypto.scryptSync" | "crypto.secureHeapUsed" | "crypto.setEngine" | "crypto.setFips" | "crypto.sign" | "crypto.timingSafeEqual" | "crypto.verify" | "crypto.Certificate" | "crypto.Certificate.exportChallenge" | "crypto.Certificate.exportPublicKey" | "crypto.Certificate.verifySpkac" | "crypto.Cipher" | "crypto.Decipher" | "crypto.DiffieHellman" | "crypto.DiffieHellmanGroup" | "crypto.ECDH" | "crypto.ECDH.convertKey" | "crypto.Hash()" | "new crypto.Hash()" | "crypto.Hash" | "crypto.Hmac()" | "new crypto.Hmac()" | "crypto.Hmac" | "crypto.KeyObject" | "crypto.KeyObject.from" | "crypto.Sign" | "crypto.Verify" | "crypto.X509Certificate" | "dgram" | "dgram.createSocket" | "dgram.Socket" | "diagnostics_channel" | "diagnostics_channel.hasSubscribers" | "diagnostics_channel.channel" | "diagnostics_channel.subscribe" | "diagnostics_channel.unsubscribe" | "diagnostics_channel.tracingChannel" | "diagnostics_channel.Channel" | "diagnostics_channel.TracingChannel" | "dns" | "dns.Resolver" | "dns.getServers" | "dns.lookup" | "dns.lookupService" | "dns.resolve" | "dns.resolve4" | "dns.resolve6" | "dns.resolveAny" | "dns.resolveCname" | "dns.resolveCaa" | "dns.resolveMx" | "dns.resolveNaptr" | "dns.resolveNs" | "dns.resolvePtr" | "dns.resolveSoa" | "dns.resolveSrv" | "dns.resolveTxt" | "dns.reverse" | "dns.setDefaultResultOrder" | "dns.getDefaultResultOrder" | "dns.setServers" | "dns.promises" | "dns.promises.Resolver" | "dns.promises.cancel" | "dns.promises.getServers" | "dns.promises.lookup" | "dns.promises.lookupService" | "dns.promises.resolve" | "dns.promises.resolve4" | "dns.promises.resolve6" | "dns.promises.resolveAny" | "dns.promises.resolveCaa" | "dns.promises.resolveCname" | "dns.promises.resolveMx" | "dns.promises.resolveNaptr" | "dns.promises.resolveNs" | "dns.promises.resolvePtr" | "dns.promises.resolveSoa" | "dns.promises.resolveSrv" | "dns.promises.resolveTxt" | "dns.promises.reverse" | "dns.promises.setDefaultResultOrder" | "dns.promises.getDefaultResultOrder" | "dns.promises.setServers" | "dns/promises" | "dns/promises.Resolver" | "dns/promises.cancel" | "dns/promises.getServers" | "dns/promises.lookup" | "dns/promises.lookupService" | "dns/promises.resolve" | "dns/promises.resolve4" | "dns/promises.resolve6" | "dns/promises.resolveAny" | "dns/promises.resolveCaa" | "dns/promises.resolveCname" | "dns/promises.resolveMx" | "dns/promises.resolveNaptr" | "dns/promises.resolveNs" | "dns/promises.resolvePtr" | "dns/promises.resolveSoa" | "dns/promises.resolveSrv" | "dns/promises.resolveTxt" | "dns/promises.reverse" | "dns/promises.setDefaultResultOrder" | "dns/promises.getDefaultResultOrder" | "dns/promises.setServers" | "domain" | "domain.create" | "domain.Domain" | "events" | "events.Event" | "events.EventTarget" | "events.CustomEvent" | "events.NodeEventTarget" | "events.EventEmitter" | "events.EventEmitter.defaultMaxListeners" | "events.EventEmitter.errorMonitor" | "events.EventEmitter.captureRejections" | "events.EventEmitter.captureRejectionSymbol" | "events.EventEmitter.getEventListeners" | "events.EventEmitter.getMaxListeners" | "events.EventEmitter.once" | "events.EventEmitter.listenerCount" | "events.EventEmitter.on" | "events.EventEmitter.setMaxListeners" | "events.EventEmitter.addAbortListener" | "events.EventEmitterAsyncResource" | "events.EventEmitterAsyncResource.defaultMaxListeners" | "events.EventEmitterAsyncResource.errorMonitor" | "events.EventEmitterAsyncResource.captureRejections" | "events.EventEmitterAsyncResource.captureRejectionSymbol" | "events.EventEmitterAsyncResource.getEventListeners" | "events.EventEmitterAsyncResource.getMaxListeners" | "events.EventEmitterAsyncResource.once" | "events.EventEmitterAsyncResource.listenerCount" | "events.EventEmitterAsyncResource.on" | "events.EventEmitterAsyncResource.setMaxListeners" | "events.EventEmitterAsyncResource.addAbortListener" | "events.defaultMaxListeners" | "events.errorMonitor" | "events.captureRejections" | "events.captureRejectionSymbol" | "events.getEventListeners" | "events.getMaxListeners" | "events.once" | "events.listenerCount" | "events.on" | "events.setMaxListeners" | "events.addAbortListener" | "fs" | "fs.promises" | "fs.promises.FileHandle" | "fs.promises.access" | "fs.promises.appendFile" | "fs.promises.chmod" | "fs.promises.chown" | "fs.promises.constants" | "fs.promises.copyFile" | "fs.promises.cp" | "fs.promises.glob" | "fs.promises.lchmod" | "fs.promises.lchown" | "fs.promises.link" | "fs.promises.lstat" | "fs.promises.lutimes" | "fs.promises.mkdir" | "fs.promises.mkdtemp" | "fs.promises.open" | "fs.promises.opendir" | "fs.promises.readFile" | "fs.promises.readdir" | "fs.promises.readlink" | "fs.promises.realpath" | "fs.promises.rename" | "fs.promises.rm" | "fs.promises.rmdir" | "fs.promises.stat" | "fs.promises.statfs" | "fs.promises.symlink" | "fs.promises.truncate" | "fs.promises.unlink" | "fs.promises.utimes" | "fs.promises.watch" | "fs.promises.writeFile" | "fs.access" | "fs.appendFile" | "fs.chmod" | "fs.chown" | "fs.close" | "fs.copyFile" | "fs.cp" | "fs.createReadStream" | "fs.createWriteStream" | "fs.exists" | "fs.fchmod" | "fs.fchown" | "fs.fdatasync" | "fs.fstat" | "fs.fsync" | "fs.ftruncate" | "fs.futimes" | "fs.glob" | "fs.lchmod" | "fs.lchown" | "fs.link" | "fs.lstat" | "fs.lutimes" | "fs.mkdir" | "fs.mkdtemp" | "fs.native" | "fs.open" | "fs.openAsBlob" | "fs.opendir" | "fs.read" | "fs.readdir" | "fs.readFile" | "fs.readlink" | "fs.readv" | "fs.realpath" | "fs.realpath.native" | "fs.rename" | "fs.rm" | "fs.rmdir" | "fs.stat" | "fs.statfs" | "fs.symlink" | "fs.truncate" | "fs.unlink" | "fs.unwatchFile" | "fs.utimes" | "fs.watch" | "fs.watchFile" | "fs.write" | "fs.writeFile" | "fs.writev" | "fs.accessSync" | "fs.appendFileSync" | "fs.chmodSync" | "fs.chownSync" | "fs.closeSync" | "fs.copyFileSync" | "fs.cpSync" | "fs.existsSync" | "fs.fchmodSync" | "fs.fchownSync" | "fs.fdatasyncSync" | "fs.fstatSync" | "fs.fsyncSync" | "fs.ftruncateSync" | "fs.futimesSync" | "fs.globSync" | "fs.lchmodSync" | "fs.lchownSync" | "fs.linkSync" | "fs.lstatSync" | "fs.lutimesSync" | "fs.mkdirSync" | "fs.mkdtempSync" | "fs.opendirSync" | "fs.openSync" | "fs.readdirSync" | "fs.readFileSync" | "fs.readlinkSync" | "fs.readSync" | "fs.readvSync" | "fs.realpathSync" | "fs.realpathSync.native" | "fs.renameSync" | "fs.rmdirSync" | "fs.rmSync" | "fs.statfsSync" | "fs.statSync" | "fs.symlinkSync" | "fs.truncateSync" | "fs.unlinkSync" | "fs.utimesSync" | "fs.writeFileSync" | "fs.writeSync" | "fs.writevSync" | "fs.constants" | "fs.Dir" | "fs.Dirent" | "fs.FSWatcher" | "fs.StatWatcher" | "fs.ReadStream" | "fs.Stats()" | "new fs.Stats()" | "fs.Stats" | "fs.StatFs" | "fs.WriteStream" | "fs.common_objects" | "fs/promises" | "fs/promises.FileHandle" | "fs/promises.access" | "fs/promises.appendFile" | "fs/promises.chmod" | "fs/promises.chown" | "fs/promises.constants" | "fs/promises.copyFile" | "fs/promises.cp" | "fs/promises.glob" | "fs/promises.lchmod" | "fs/promises.lchown" | "fs/promises.link" | "fs/promises.lstat" | "fs/promises.lutimes" | "fs/promises.mkdir" | "fs/promises.mkdtemp" | "fs/promises.open" | "fs/promises.opendir" | "fs/promises.readFile" | "fs/promises.readdir" | "fs/promises.readlink" | "fs/promises.realpath" | "fs/promises.rename" | "fs/promises.rm" | "fs/promises.rmdir" | "fs/promises.stat" | "fs/promises.statfs" | "fs/promises.symlink" | "fs/promises.truncate" | "fs/promises.unlink" | "fs/promises.utimes" | "fs/promises.watch" | "fs/promises.writeFile" | "http2" | "http2.constants" | "http2.sensitiveHeaders" | "http2.createServer" | "http2.createSecureServer" | "http2.connect" | "http2.getDefaultSettings" | "http2.getPackedSettings" | "http2.getUnpackedSettings" | "http2.performServerHandshake" | "http2.Http2Session" | "http2.ServerHttp2Session" | "http2.ClientHttp2Session" | "http2.Http2Stream" | "http2.ClientHttp2Stream" | "http2.ServerHttp2Stream" | "http2.Http2Server" | "http2.Http2SecureServer" | "http2.Http2ServerRequest" | "http2.Http2ServerResponse" | "http" | "http.globalAgent" | "http.createServer" | "http.get" | "http.request" | "http.Agent" | "http.Server" | "inspector" | "inspector.Session" | "inspector.Network.loadingFailed" | "inspector.Network.loadingFinished" | "inspector.Network.requestWillBeSent" | "inspector.Network.responseReceived" | "inspector.console" | "inspector.close" | "inspector.open" | "inspector.url" | "inspector.waitForDebugger" | "inspector/promises" | "inspector/promises.Session" | "inspector/promises.Network.loadingFailed" | "inspector/promises.Network.loadingFinished" | "inspector/promises.Network.requestWillBeSent" | "inspector/promises.Network.responseReceived" | "inspector/promises.console" | "inspector/promises.close" | "inspector/promises.open" | "inspector/promises.url" | "inspector/promises.waitForDebugger" | "module.builtinModules" | "module.constants.compileCacheStatus" | "module.createRequire" | "module.createRequireFromPath" | "module.enableCompileCache" | "module.findPackageJSON" | "module.flushCompileCache" | "module.getCompileCacheDir" | "module.isBuiltin" | "module.register" | "module.stripTypeScriptTypes" | "module.syncBuiltinESMExports" | "module.findSourceMap" | "module.SourceMap" | "module.Module.builtinModules" | "module.Module.createRequire" | "module.Module.createRequireFromPath" | "module.Module.enableCompileCache" | "module.Module.findPackageJSON" | "module.Module.flushCompileCache" | "module.Module.getCompileCacheDir" | "module.Module.isBuiltin" | "module.Module.register" | "module.Module.stripTypeScriptTypes" | "module.Module.syncBuiltinESMExports" | "module.Module.findSourceMap" | "module.Module.SourceMap" | "net" | "net.connect" | "net.createConnection" | "net.createServer" | "net.getDefaultAutoSelectFamily" | "net.setDefaultAutoSelectFamily" | "net.getDefaultAutoSelectFamilyAttemptTimeout" | "net.setDefaultAutoSelectFamilyAttemptTimeout" | "net.isIP" | "net.isIPv4" | "net.isIPv6" | "net.BlockList" | "net.SocketAddress" | "net.Server" | "net.Socket" | "os" | "os.EOL" | "os.constants" | "os.constants.priority" | "os.devNull" | "os.availableParallelism" | "os.arch" | "os.cpus" | "os.endianness" | "os.freemem" | "os.getPriority" | "os.homedir" | "os.hostname" | "os.loadavg" | "os.machine" | "os.networkInterfaces" | "os.platform" | "os.release" | "os.setPriority" | "os.tmpdir" | "os.totalmem" | "os.type" | "os.uptime" | "os.userInfo" | "os.version" | "path" | "path.posix" | "path.posix.delimiter" | "path.posix.sep" | "path.posix.basename" | "path.posix.dirname" | "path.posix.extname" | "path.posix.format" | "path.posix.matchesGlob" | "path.posix.isAbsolute" | "path.posix.join" | "path.posix.normalize" | "path.posix.parse" | "path.posix.relative" | "path.posix.resolve" | "path.posix.toNamespacedPath" | "path.win32" | "path.win32.delimiter" | "path.win32.sep" | "path.win32.basename" | "path.win32.dirname" | "path.win32.extname" | "path.win32.format" | "path.win32.matchesGlob" | "path.win32.isAbsolute" | "path.win32.join" | "path.win32.normalize" | "path.win32.parse" | "path.win32.relative" | "path.win32.resolve" | "path.win32.toNamespacedPath" | "path.delimiter" | "path.sep" | "path.basename" | "path.dirname" | "path.extname" | "path.format" | "path.matchesGlob" | "path.isAbsolute" | "path.join" | "path.normalize" | "path.parse" | "path.relative" | "path.resolve" | "path.toNamespacedPath" | "path/posix" | "path/posix.delimiter" | "path/posix.sep" | "path/posix.basename" | "path/posix.dirname" | "path/posix.extname" | "path/posix.format" | "path/posix.matchesGlob" | "path/posix.isAbsolute" | "path/posix.join" | "path/posix.normalize" | "path/posix.parse" | "path/posix.relative" | "path/posix.resolve" | "path/posix.toNamespacedPath" | "path/win32" | "path/win32.delimiter" | "path/win32.sep" | "path/win32.basename" | "path/win32.dirname" | "path/win32.extname" | "path/win32.format" | "path/win32.matchesGlob" | "path/win32.isAbsolute" | "path/win32.join" | "path/win32.normalize" | "path/win32.parse" | "path/win32.relative" | "path/win32.resolve" | "path/win32.toNamespacedPath" | "perf_hooks" | "perf_hooks.performance" | "perf_hooks.performance.clearMarks" | "perf_hooks.performance.clearMeasures" | "perf_hooks.performance.clearResourceTimings" | "perf_hooks.performance.eventLoopUtilization" | "perf_hooks.performance.getEntries" | "perf_hooks.performance.getEntriesByName" | "perf_hooks.performance.getEntriesByType" | "perf_hooks.performance.mark" | "perf_hooks.performance.markResourceTiming" | "perf_hooks.performance.measure" | "perf_hooks.performance.nodeTiming" | "perf_hooks.performance.nodeTiming.bootstrapComplete" | "perf_hooks.performance.nodeTiming.environment" | "perf_hooks.performance.nodeTiming.idleTime" | "perf_hooks.performance.nodeTiming.loopExit" | "perf_hooks.performance.nodeTiming.loopStart" | "perf_hooks.performance.nodeTiming.nodeStart" | "perf_hooks.performance.nodeTiming.uvMetricsInfo" | "perf_hooks.performance.nodeTiming.v8Start" | "perf_hooks.performance.now" | "perf_hooks.performance.onresourcetimingbufferfull" | "perf_hooks.performance.setResourceTimingBufferSize" | "perf_hooks.performance.timeOrigin" | "perf_hooks.performance.timerify" | "perf_hooks.performance.toJSON" | "perf_hooks.createHistogram" | "perf_hooks.monitorEventLoopDelay" | "perf_hooks.PerformanceEntry" | "perf_hooks.PerformanceMark" | "perf_hooks.PerformanceMeasure" | "perf_hooks.PerformanceNodeEntry" | "perf_hooks.PerformanceNodeTiming" | "perf_hooks.PerformanceResourceTiming" | "perf_hooks.PerformanceObserver" | "perf_hooks.PerformanceObserverEntryList" | "perf_hooks.Histogram" | "perf_hooks.IntervalHistogram" | "perf_hooks.RecordableHistogram" | "punycode" | "punycode.ucs2" | "punycode.version" | "punycode.decode" | "punycode.encode" | "punycode.toASCII" | "punycode.toUnicode" | "querystring" | "querystring.decode" | "querystring.encode" | "querystring.escape" | "querystring.parse" | "querystring.stringify" | "querystring.unescape" | "readline" | "readline.promises" | "readline.promises.createInterface" | "readline.promises.Interface" | "readline.promises.Readline" | "readline.clearLine" | "readline.clearScreenDown" | "readline.createInterface" | "readline.cursorTo" | "readline.moveCursor" | "readline.Interface" | "readline.emitKeypressEvents" | "readline.InterfaceConstructor" | "readline/promises" | "readline/promises.createInterface" | "readline/promises.Interface" | "readline/promises.Readline" | "repl" | "repl.start" | "repl.writer" | "repl.REPLServer()" | "repl.REPLServer" | "repl.REPL_MODE_MAGIC" | "repl.REPL_MODE_SLOPPY" | "repl.REPL_MODE_STRICT" | "repl.Recoverable()" | "repl.Recoverable" | "repl.builtinModules" | "sea" | "sea.isSea" | "sea.getAsset" | "sea.getAssetAsBlob" | "sea.getRawAsset" | "sea.sea.isSea" | "sea.sea.getAsset" | "sea.sea.getAssetAsBlob" | "sea.sea.getRawAsset" | "stream" | "stream.promises" | "stream.promises.pipeline" | "stream.promises.finished" | "stream.finished" | "stream.pipeline" | "stream.compose" | "stream.duplexPair" | "stream.Readable" | "stream.Readable.from" | "stream.Readable.isDisturbed" | "stream.Readable.fromWeb" | "stream.Readable.toWeb" | "stream.Writable" | "stream.Writable.fromWeb" | "stream.Writable.toWeb" | "stream.Duplex" | "stream.Duplex.from" | "stream.Duplex.fromWeb" | "stream.Duplex.toWeb" | "stream.Transform" | "stream.isErrored" | "stream.isReadable" | "stream.addAbortSignal" | "stream.getDefaultHighWaterMark" | "stream.setDefaultHighWaterMark" | "stream/promises.pipeline" | "stream/promises.finished" | "stream/web" | "stream/web.ReadableStream" | "stream/web.ReadableStream.from" | "stream/web.ReadableStreamDefaultReader" | "stream/web.ReadableStreamBYOBReader" | "stream/web.ReadableStreamDefaultController" | "stream/web.ReadableByteStreamController" | "stream/web.ReadableStreamBYOBRequest" | "stream/web.WritableStream" | "stream/web.WritableStreamDefaultWriter" | "stream/web.WritableStreamDefaultController" | "stream/web.TransformStream" | "stream/web.TransformStreamDefaultController" | "stream/web.ByteLengthQueuingStrategy" | "stream/web.CountQueuingStrategy" | "stream/web.TextEncoderStream" | "stream/web.TextDecoderStream" | "stream/web.CompressionStream" | "stream/web.DecompressionStream" | "stream/consumers" | "stream/consumers.arrayBuffer" | "stream/consumers.blob" | "stream/consumers.buffer" | "stream/consumers.json" | "stream/consumers.text" | "string_decoder" | "string_decoder.StringDecoder" | "test" | "test.after" | "test.afterEach" | "test.before" | "test.beforeEach" | "test.describe" | "test.describe.only" | "test.describe.skip" | "test.describe.todo" | "test.it" | "test.it.only" | "test.it.skip" | "test.it.todo" | "test.mock" | "test.mock.fn" | "test.mock.getter" | "test.mock.method" | "test.mock.module" | "test.mock.reset" | "test.mock.restoreAll" | "test.mock.setter" | "test.mock.timers" | "test.mock.timers.enable" | "test.mock.timers.reset" | "test.mock.timers.tick" | "test.only" | "test.run" | "test.snapshot" | "test.snapshot.setDefaultSnapshotSerializers" | "test.snapshot.setResolveSnapshotPath" | "test.skip" | "test.suite" | "test.test" | "test.test.only" | "test.test.skip" | "test.test.todo" | "test.todo" | "timers" | "timers.Immediate" | "timers.Timeout" | "timers.setImmediate" | "timers.clearImmediate" | "timers.setInterval" | "timers.clearInterval" | "timers.setTimeout" | "timers.clearTimeout" | "timers.promises" | "timers.promises.setTimeout" | "timers.promises.setImmediate" | "timers.promises.setInterval" | "timers.promises.scheduler.wait" | "timers.promises.scheduler.yield" | "timers/promises" | "timers/promises.setTimeout" | "timers/promises.setImmediate" | "timers/promises.setInterval" | "timers/promises.scheduler.wait" | "timers/promises.scheduler.yield" | "tls" | "tls.rootCertificates" | "tls.DEFAULT_ECDH_CURVE" | "tls.DEFAULT_MAX_VERSION" | "tls.DEFAULT_MIN_VERSION" | "tls.DEFAULT_CIPHERS" | "tls.checkServerIdentity" | "tls.connect" | "tls.createSecureContext" | "tls.createSecurePair" | "tls.createServer" | "tls.getCiphers" | "tls.SecureContext" | "tls.CryptoStream" | "tls.SecurePair" | "tls.Server" | "tls.TLSSocket" | "trace_events" | "trace_events.createTracing" | "trace_events.getEnabledCategories" | "tty" | "tty.isatty" | "tty.ReadStream" | "tty.WriteStream" | "url" | "url.domainToASCII" | "url.domainToUnicode" | "url.fileURLToPath" | "url.format" | "url.pathToFileURL" | "url.urlToHttpOptions" | "url.URL" | "url.URL.canParse" | "url.URL.createObjectURL" | "url.URL.revokeObjectURL" | "url.URLSearchParams" | "url.Url" | "util.promisify" | "util.promisify.custom" | "util.callbackify" | "util.debuglog" | "util.debug" | "util.deprecate" | "util.format" | "util.formatWithOptions" | "util.getCallSite" | "util.getCallSites" | "util.getSystemErrorName" | "util.getSystemErrorMap" | "util.getSystemErrorMessage" | "util.inherits" | "util.inspect" | "util.inspect.custom" | "util.inspect.defaultOptions" | "util.inspect.replDefaults" | "util.isDeepStrictEqual" | "util.parseArgs" | "util.parseEnv" | "util.stripVTControlCharacters" | "util.styleText" | "util.toUSVString" | "util.transferableAbortController" | "util.transferableAbortSignal" | "util.aborted" | "util.MIMEType" | "util.MIMEParams" | "util.TextDecoder" | "util.TextEncoder" | "util.types" | "util.types.isExternal" | "util.types.isDate" | "util.types.isArgumentsObject" | "util.types.isBigIntObject" | "util.types.isBooleanObject" | "util.types.isNumberObject" | "util.types.isStringObject" | "util.types.isSymbolObject" | "util.types.isNativeError" | "util.types.isRegExp" | "util.types.isAsyncFunction" | "util.types.isGeneratorFunction" | "util.types.isGeneratorObject" | "util.types.isPromise" | "util.types.isMap" | "util.types.isSet" | "util.types.isMapIterator" | "util.types.isSetIterator" | "util.types.isWeakMap" | "util.types.isWeakSet" | "util.types.isArrayBuffer" | "util.types.isDataView" | "util.types.isSharedArrayBuffer" | "util.types.isProxy" | "util.types.isModuleNamespaceObject" | "util.types.isAnyArrayBuffer" | "util.types.isBoxedPrimitive" | "util.types.isArrayBufferView" | "util.types.isTypedArray" | "util.types.isUint8Array" | "util.types.isUint8ClampedArray" | "util.types.isUint16Array" | "util.types.isUint32Array" | "util.types.isInt8Array" | "util.types.isInt16Array" | "util.types.isInt32Array" | "util.types.isFloat32Array" | "util.types.isFloat64Array" | "util.types.isBigInt64Array" | "util.types.isBigUint64Array" | "util.types.isKeyObject" | "util.types.isCryptoKey" | "util.types.isWebAssemblyCompiledModule" | "util._extend" | "util.isArray" | "util.isBoolean" | "util.isBuffer" | "util.isDate" | "util.isError" | "util.isFunction" | "util.isNull" | "util.isNullOrUndefined" | "util.isNumber" | "util.isObject" | "util.isPrimitive" | "util.isRegExp" | "util.isString" | "util.isSymbol" | "util.isUndefined" | "util.log" | "util" | "util/types" | "util/types.isExternal" | "util/types.isDate" | "util/types.isArgumentsObject" | "util/types.isBigIntObject" | "util/types.isBooleanObject" | "util/types.isNumberObject" | "util/types.isStringObject" | "util/types.isSymbolObject" | "util/types.isNativeError" | "util/types.isRegExp" | "util/types.isAsyncFunction" | "util/types.isGeneratorFunction" | "util/types.isGeneratorObject" | "util/types.isPromise" | "util/types.isMap" | "util/types.isSet" | "util/types.isMapIterator" | "util/types.isSetIterator" | "util/types.isWeakMap" | "util/types.isWeakSet" | "util/types.isArrayBuffer" | "util/types.isDataView" | "util/types.isSharedArrayBuffer" | "util/types.isProxy" | "util/types.isModuleNamespaceObject" | "util/types.isAnyArrayBuffer" | "util/types.isBoxedPrimitive" | "util/types.isArrayBufferView" | "util/types.isTypedArray" | "util/types.isUint8Array" | "util/types.isUint8ClampedArray" | "util/types.isUint16Array" | "util/types.isUint32Array" | "util/types.isInt8Array" | "util/types.isInt16Array" | "util/types.isInt32Array" | "util/types.isFloat32Array" | "util/types.isFloat64Array" | "util/types.isBigInt64Array" | "util/types.isBigUint64Array" | "util/types.isKeyObject" | "util/types.isCryptoKey" | "util/types.isWebAssemblyCompiledModule" | "v8" | "v8.serialize" | "v8.deserialize" | "v8.Serializer" | "v8.Deserializer" | "v8.DefaultSerializer" | "v8.DefaultDeserializer" | "v8.promiseHooks" | "v8.promiseHooks.onInit" | "v8.promiseHooks.onSettled" | "v8.promiseHooks.onBefore" | "v8.promiseHooks.onAfter" | "v8.promiseHooks.createHook" | "v8.startupSnapshot" | "v8.startupSnapshot.addSerializeCallback" | "v8.startupSnapshot.addDeserializeCallback" | "v8.startupSnapshot.setDeserializeMainFunction" | "v8.startupSnapshot.isBuildingSnapshot" | "v8.cachedDataVersionTag" | "v8.getHeapCodeStatistics" | "v8.getHeapSnapshot" | "v8.getHeapSpaceStatistics" | "v8.getHeapStatistics" | "v8.queryObjects" | "v8.setFlagsFromString" | "v8.stopCoverage" | "v8.takeCoverage" | "v8.writeHeapSnapshot" | "v8.setHeapSnapshotNearHeapLimit" | "v8.GCProfiler" | "vm.constants" | "vm.compileFunction" | "vm.createContext" | "vm.isContext" | "vm.measureMemory" | "vm.runInContext" | "vm.runInNewContext" | "vm.runInThisContext" | "vm.Script" | "vm.Module" | "vm.SourceTextModule" | "vm.SyntheticModule" | "vm" | "wasi.WASI" | "wasi" | "worker_threads" | "worker_threads.isMainThread" | "worker_threads.parentPort" | "worker_threads.resourceLimits" | "worker_threads.SHARE_ENV" | "worker_threads.threadId" | "worker_threads.workerData" | "worker_threads.getEnvironmentData" | "worker_threads.markAsUncloneable" | "worker_threads.markAsUntransferable" | "worker_threads.isMarkedAsUntransferable" | "worker_threads.moveMessagePortToContext" | "worker_threads.postMessageToThread" | "worker_threads.receiveMessageOnPort" | "worker_threads.setEnvironmentData" | "worker_threads.BroadcastChannel" | "worker_threads.MessageChannel" | "worker_threads.MessagePort" | "worker_threads.Worker" | "zlib.constants" | "zlib.crc32" | "zlib.createBrotliCompress" | "zlib.createBrotliDecompress" | "zlib.createDeflate" | "zlib.createDeflateRaw" | "zlib.createGunzip" | "zlib.createGzip" | "zlib.createInflate" | "zlib.createInflateRaw" | "zlib.createUnzip" | "zlib.brotliCompress" | "zlib.brotliCompressSync" | "zlib.brotliDecompress" | "zlib.brotliDecompressSync" | "zlib.deflate" | "zlib.deflateSync" | "zlib.deflateRaw" | "zlib.deflateRawSync" | "zlib.gunzip" | "zlib.gunzipSync" | "zlib.gzip" | "zlib.gzipSync" | "zlib.inflate" | "zlib.inflateSync" | "zlib.inflateRaw" | "zlib.inflateRawSync" | "zlib.unzip" | "zlib.unzipSync" | "zlib.BrotliCompress()" | "zlib.BrotliCompress" | "zlib.BrotliDecompress()" | "zlib.BrotliDecompress" | "zlib.Deflate()" | "zlib.Deflate" | "zlib.DeflateRaw()" | "zlib.DeflateRaw" | "zlib.Gunzip()" | "zlib.Gunzip" | "zlib.Gzip()" | "zlib.Gzip" | "zlib.Inflate()" | "zlib.Inflate" | "zlib.InflateRaw()" | "zlib.InflateRaw" | "zlib.Unzip()" | "zlib.Unzip" | "zlib")[]
 }]
 // ----- node/prefer-global/buffer -----
 type NodePreferGlobalBuffer = []|[("always" | "never")]
@@ -11183,6 +12753,20 @@ type ReactNamingConventionFilenameExtension = []|[(("always" | "as-needed") | {
   extensions?: string[]
   ignoreFilesWithoutCode?: boolean
 })]
+// ----- react-native/no-raw-text -----
+type ReactNativeNoRawText = []|[{
+  skip?: string[]
+}]
+// ----- react-native/sort-styles -----
+type ReactNativeSortStyles = []|[("asc" | "desc")]|[("asc" | "desc"), {
+  ignoreClassNames?: boolean
+  ignoreStyleProperties?: boolean
+}]
+// ----- react-native/split-platform-components -----
+type ReactNativeSplitPlatformComponents = []|[{
+  androidPathRegex?: string
+  iosPathRegex?: string
+}]
 // ----- react-refresh/only-export-components -----
 type ReactRefreshOnlyExportComponents = []|[{
   allowExportNames?: string[]
@@ -11313,6 +12897,11 @@ type RegexpUnicodeProperty = []|[{
     script?: ("short" | "long" | "ignore")
   })
 }]
+// ----- relay/generated-flow-types -----
+type RelayGeneratedFlowTypes = []|[{
+  fix?: boolean
+  haste?: boolean
+}]
 // ----- require-atomic-updates -----
 type RequireAtomicUpdates = []|[{
   allowProperties?: boolean
@@ -11399,6 +12988,16 @@ type SpacedComment = []|[("always" | "never")]|[("always" | "never"), {
     markers?: string[]
     balanced?: boolean
   }
+}]
+// ----- storybook/meta-inline-properties -----
+type StorybookMetaInlineProperties = []|[{
+  csfVersion?: number
+}]
+// ----- storybook/no-uninstalled-addons -----
+type StorybookNoUninstalledAddons = []|[{
+  packageJsonLocation?: string
+  ignore?: string[]
+  [k: string]: unknown | undefined
 }]
 // ----- strict -----
 type Strict = []|[("never" | "global" | "function" | "safe")]
@@ -14334,6 +15933,9 @@ type YamlNoMultipleEmptyLines = []|[{
 // ----- yaml/plain-scalar -----
 type YamlPlainScalar = []|[("always" | "never")]|[("always" | "never"), {
   ignorePatterns?: string[]
+  overrides?: {
+    mappingKey?: ("always" | "never" | null)
+  }
 }]
 // ----- yaml/quotes -----
 type YamlQuotes = []|[{
@@ -14543,6 +16145,9 @@ type YmlNoMultipleEmptyLines = []|[{
 // ----- yml/plain-scalar -----
 type YmlPlainScalar = []|[("always" | "never")]|[("always" | "never"), {
   ignorePatterns?: string[]
+  overrides?: {
+    mappingKey?: ("always" | "never" | null)
+  }
 }]
 // ----- yml/quotes -----
 type YmlQuotes = []|[{
@@ -14633,4 +16238,4 @@ type Yoda = []|[("always" | "never")]|[("always" | "never"), {
   onlyEquality?: boolean
 }]
 // Names of all the configs
-export type ConfigNames = 'storm/astro/setup' | 'storm/astro/rules' | 'storm/formatter/setup' | 'storm/imports/rules' | 'storm/javascript/setup' | 'storm/javascript/banner' | 'storm/javascript/rules' | 'storm/jsx/rules' | 'storm/jsdoc/rules' | 'storm/jsonc/setup' | 'storm/jsonc/rules' | 'storm/markdown/setup' | 'storm/markdown/processor' | 'storm/markdown/parser' | 'storm/markdown/disables' | 'storm/node/rules' | 'storm/perfectionist/rules' | 'storm/react/setup' | 'storm/react/rules' | 'storm/sort/package-json' | 'storm/stylistic/rules' | 'storm/test/setup' | 'storm/test/rules' | 'storm/toml/setup' | 'storm/toml/rules' | 'storm/regexp/rules' | 'storm/typescript/setup' | 'storm/typescript/parser' | 'storm/typescript/type-aware-parser' | 'storm/typescript/rules' | 'storm/typescript/rules-type-aware' | 'storm/unicorn/rules' | 'storm/unocss' | 'storm/yaml/setup' | 'storm/yaml/rules'
+export type ConfigNames = 'storm/cspell/rules' | 'storm/astro/setup' | 'storm/astro/rules' | 'storm/formatter/setup' | 'storm/imports/rules' | 'storm/graphql/setup' | 'storm/graphql/rules' | 'storm/graphql/relay' | 'storm/javascript/setup' | 'storm/javascript/banner' | 'storm/javascript/rules' | 'storm/jsx/rules' | 'storm/jsdoc/rules' | 'storm/jsonc/setup' | 'storm/jsonc/rules' | 'storm/markdown/setup' | 'storm/markdown/processor' | 'storm/markdown/parser' | 'storm/markdown/disables' | 'storm/mdx/setup' | 'storm/node/rules' | 'storm/nx/setup' | 'storm/nx/schema' | 'storm/nx/dependency-check' | 'storm/nx/module-boundaries' | 'storm/next/rules' | 'storm/perfectionist/rules' | 'storm/react/setup' | 'storm/react/rules' | 'storm/react-native/rules' | 'storm/sort/package-json' | 'storm/stylistic/rules' | 'storm/secrets/rules' | 'storm/storybook/setup' | 'storm/storybook/rules' | 'storm/storybook/main' | 'storm/test/setup' | 'storm/test/rules' | 'storm/toml/setup' | 'storm/toml/rules' | 'storm/regexp/rules' | 'storm/typescript/setup' | 'storm/typescript/parser' | 'storm/typescript/type-aware-parser' | 'storm/typescript/rules' | 'storm/typescript/rules-type-aware' | 'storm/unicorn/rules' | 'storm/unocss' | 'storm/yaml/setup' | 'storm/yaml/rules'

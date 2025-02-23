@@ -15,10 +15,9 @@ export async function javascript(
     OptionsOverrides = {}
 ): Promise<TypedFlatConfigItem[]> {
   const {
-    isInEditor = false,
     lineEndings = "unix",
     overrides = {},
-    name = "",
+    repositoryName = "",
     globals = {}
   } = options;
 
@@ -59,7 +58,7 @@ export async function javascript(
           {
             commentType: "block",
             numNewlines: 1,
-            repositoryName: name,
+            repositoryName,
             lineEndings
           }
         ]

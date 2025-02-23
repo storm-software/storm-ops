@@ -1,11 +1,5 @@
-import { FlatCompat } from "@eslint/eslintrc";
 import type { OptionsGraphQL, TypedFlatConfigItem } from "../types";
 import { ensurePackages, interopDefault } from "../utils/helpers";
-
-const compat = new FlatCompat({
-  // import.meta.dirname is available after Node.js v20.11.0
-  baseDirectory: import.meta.dirname
-});
 
 export async function graphql(
   options: OptionsGraphQL = {}
@@ -22,8 +16,9 @@ export async function graphql(
     "eslint-plugin-relay"
   ]);
 
-  const [pluginGraphQL] = await Promise.all([
-    interopDefault(import("@graphql-eslint/eslint-plugin"))
+  const [pluginGraphQL, pluginRelay] = await Promise.all([
+    interopDefault(import("@graphql-eslint/eslint-plugin")),
+    interopDefault(import("eslint-plugin-relay"))
   ] as const);
 
   return [
@@ -168,11 +163,10 @@ export async function graphql(
         ...overrides
       }
     },
-    ...(relay
-      ? compat.config({
+    relay
+      ? {
           name: "storm/graphql/relay",
-          plugins: ["relay"],
-          extends: ["plugin:relay/ts-recommended"],
+          plugins: { relay: pluginRelay },
           rules: {
             // errors
             "relay/graphql-syntax": "error",
@@ -193,7 +187,7 @@ export async function graphql(
             "@graphql-eslint/relay-edge-types": "error",
             "@graphql-eslint/relay-page-info": "error"
           }
-        })
-      : [])
+        }
+      : {}
   ];
 }

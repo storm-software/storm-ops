@@ -65,6 +65,7 @@ export async function stylistic(
           "error",
           quotes === "single" ? "prefer-single" : "prefer-double"
         ],
+        "style/brace-style": ["error", "1tbs", { allowSingleLine: false }],
 
         ...overrides
       }

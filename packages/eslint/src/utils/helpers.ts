@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-binary-expression */
 import { Awaitable } from "eslint-flat-config-utils";
 import { isPackageExists } from "local-pkg";
 import process from "node:process";

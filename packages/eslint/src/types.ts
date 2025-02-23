@@ -420,7 +420,7 @@ export interface OptionsJavascript {
   /**
    * The name of the repository used in adding the banner comments
    */
-  name: string;
+  repositoryName: string;
 
   /**
    * An object containing a list of extra global variables to include in the configuration.
@@ -615,7 +615,7 @@ export interface OptionsConfig
    * Enable next rules.
    *
    * Requires installing:
-   * - `@next/eslint-plugin`
+   * - `@next/eslint-plugin-next`
    *
    * @default false
    */

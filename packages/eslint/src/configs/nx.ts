@@ -46,22 +46,25 @@ export async function nx(
     {
       name: "storm/nx/module-boundaries",
       files: ["**/nx.json", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
-      rules: {
-        "@nx/enforce-module-boundaries": [
-          "error",
-          moduleBoundaries ?? {
-            enforceBuildableLibDependency: false,
-            checkDynamicDependenciesExceptions: [".*"],
-            allow: [],
-            depConstraints: [
-              {
-                sourceTag: "*",
-                onlyDependOnLibsWithTags: ["*"]
-              }
-            ]
-          }
-        ]
-      }
+      rules:
+        moduleBoundaries !== false
+          ? {
+              "@nx/enforce-module-boundaries": [
+                "error",
+                moduleBoundaries ?? {
+                  enforceBuildableLibDependency: false,
+                  checkDynamicDependenciesExceptions: [".*"],
+                  allow: [],
+                  depConstraints: [
+                    {
+                      sourceTag: "*",
+                      onlyDependOnLibsWithTags: ["*"]
+                    }
+                  ]
+                }
+              ]
+            }
+          : {}
     }
   ];
 }

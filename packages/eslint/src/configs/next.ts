@@ -1,11 +1,5 @@
-import { FlatCompat } from "@eslint/eslintrc";
 import type { OptionsNext, TypedFlatConfigItem } from "../types";
-import { ensurePackages } from "../utils/helpers";
-
-const compat = new FlatCompat({
-  // import.meta.dirname is available after Node.js v20.11.0
-  baseDirectory: import.meta.dirname
-});
+import { ensurePackages, interopDefault } from "../utils/helpers";
 
 /**
  * Config for Next.js projects.
@@ -17,10 +11,14 @@ export async function next(
 
   await ensurePackages(["@next/eslint-plugin-next"]);
 
+  const pluginNext = await interopDefault(import("@next/eslint-plugin-next"));
+
   return [
-    ...compat.config({
+    {
       name: "storm/next/rules",
-      extends: ["next"],
+      plugins: {
+        "@next/next": pluginNext
+      },
       settings: {
         next: {
           rootDir
@@ -60,6 +58,6 @@ export async function next(
             }
           : {})
       }
-    })
+    }
   ];
 }

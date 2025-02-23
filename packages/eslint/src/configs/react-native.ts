@@ -1,11 +1,5 @@
-import { FlatCompat } from "@eslint/eslintrc";
 import type { OptionsOverrides, TypedFlatConfigItem } from "../types";
 import { ensurePackages, interopDefault } from "../utils/helpers";
-
-const compat = new FlatCompat({
-  // import.meta.dirname is available after Node.js v20.11.0
-  baseDirectory: import.meta.dirname
-});
 
 /**
  * Config for React Native projects.
@@ -23,23 +17,14 @@ export async function reactNative(
   );
 
   return [
-    ...compat.config({
+    {
       name: "storm/react-native/rules",
-      parserOptions: {
-        ecmaFeatures: {
-          "jsx": true
-        }
-      },
-      env: {
-        "react-native/react-native": true
-      },
-      plugins: ["react-native"],
-      extends: ["plugin:react-native/all"],
+      plugins: { "react-native": reactNative },
       rules: {
         ...reactNative.configs.all.rules,
 
         ...overrides
       }
-    })
+    }
   ];
 }
