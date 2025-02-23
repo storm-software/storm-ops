@@ -1,3 +1,9 @@
+## 0.124.1 (2025-02-23)
+
+### Bug Fixes
+
+- **eslint:** Turn off the `lines-around-comment` eslint rule ([995d98baf](https://github.com/storm-software/storm-ops/commit/995d98baf))
+
 ## 0.124.0 (2025-02-23)
 
 ### Features
