@@ -1,3 +1,13 @@
+## 0.123.3 (2025-02-23)
+
+### Bug Fixes
+
+- **monorepo:** Add code to check for empty `tsconfigPath` option ([75255713f](https://github.com/storm-software/storm-ops/commit/75255713f))
+
+### Miscellaneous
+
+- **eslint:** Regenerate rules types ([1d253b575](https://github.com/storm-software/storm-ops/commit/1d253b575))
+
 ## 0.123.2 (2025-02-23)
 
 ### Bug Fixes
