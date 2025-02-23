@@ -1,3 +1,4 @@
+import defu from "defu";
 import type {
   OptionsFormatters,
   StylisticConfig,
@@ -62,22 +63,31 @@ export async function formatters(
     options.xml || options.svg ? "@prettier/plugin-xml" : undefined
   ]);
 
-  const { indent, quotes, semi } = {
+  const {
+    indent = 2,
+    quotes = "double",
+    semi = true
+  } = {
     ...StylisticConfigDefaults,
     ...stylistic
   };
 
-  const prettierOptions: VendoredPrettierOptions = Object.assign(
+  const prettierOptions: VendoredPrettierOptions = defu(
     {
-      endOfLine: "auto",
+      proseWrap: "always",
+      quoteProps: "preserve",
+      bracketSameLine: true,
+      bracketSpacing: true,
+      arrowParens: "avoid",
+      endOfLine: "lf",
       printWidth: 120,
       semi,
       singleQuote: quotes === "single",
       tabWidth: typeof indent === "number" ? indent : 2,
-      trailingComma: "all",
+      trailingComma: "none",
       useTabs: indent === "tab"
     } satisfies VendoredPrettierOptions,
-    options.prettierOptions || {}
+    options.prettierOptions ?? {}
   );
 
   const prettierXmlOptions: VendoredPrettierOptions = {
@@ -87,13 +97,13 @@ export async function formatters(
     xmlWhitespaceSensitivity: "ignore"
   };
 
-  const dprintOptions = Object.assign(
+  const dprintOptions = defu(
     {
       indentWidth: typeof indent === "number" ? indent : 2,
       quoteStyle: quotes === "single" ? "preferSingle" : "preferDouble",
       useTabs: indent === "tab"
     },
-    options.dprintOptions || {}
+    options.dprintOptions ?? {}
   );
 
   const pluginFormat = await interopDefault(import("eslint-plugin-format"));

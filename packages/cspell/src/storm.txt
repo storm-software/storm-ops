@@ -292,6 +292,9 @@ Losslessly
 wimax
 FEFF
 
+# Tools
+dprint
+
 # JavaScript
 domwindow
 nodescript

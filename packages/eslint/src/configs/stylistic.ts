@@ -20,11 +20,11 @@ export async function stylistic(
   options: StylisticOptions = {}
 ): Promise<TypedFlatConfigItem[]> {
   const {
-    indent,
-    jsx,
+    indent = 2,
+    jsx = true,
     overrides = {},
-    quotes,
-    semi,
+    quotes = "double",
+    semi = true,
     lineEndings = "unix"
   } = {
     ...StylisticConfigDefaults,

@@ -133,10 +133,10 @@ export async function typescript(
       name: "storm/typescript/rules",
       rules: {
         ...renameRules(
-          pluginTs.configs["eslint-recommended"]!.overrides![0]!.rules!,
+          pluginTs.configs["eslint-recommended"]?.overrides?.[0]?.rules!,
           { "@typescript-eslint": "ts" }
         ),
-        ...renameRules(pluginTs.configs.strict!.rules!, {
+        ...renameRules(pluginTs.configs.strict?.rules!, {
           "@typescript-eslint": "ts"
         }),
 
