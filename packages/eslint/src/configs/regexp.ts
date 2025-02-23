@@ -26,6 +26,15 @@ export async function regexp(
       name: "storm/regexp/rules",
       rules: {
         ...rules,
+
+        "regexp/no-unused-capturing-group": [
+          "error",
+          {
+            fixable: true,
+            allowNamed: false
+          }
+        ],
+
         ...options.overrides
       }
     }
