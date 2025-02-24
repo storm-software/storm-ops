@@ -1,3 +1,10 @@
+## 0.129.3 (2025-02-23)
+
+### Miscellaneous
+
+- **eslint:** Disable the `ts/strict-boolean-expressions` ESLint rule ([999031a2b](https://github.com/storm-software/storm-ops/commit/999031a2b))
+- **monorepo:** Regenerate README markdown files ([b785ce163](https://github.com/storm-software/storm-ops/commit/b785ce163))
+
 ## 0.129.2 (2025-02-23)
 
 ### Miscellaneous
