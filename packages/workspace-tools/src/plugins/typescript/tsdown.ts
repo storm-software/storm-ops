@@ -2,22 +2,19 @@ import {
   createNodesFromFiles,
   CreateNodesResultV2,
   CreateNodesV2,
-  readJsonFile,
+  readJsonFile
 } from "@nx/devkit";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
-import {
-  readTargetsFromPackageJson,
-  type PackageJson,
-} from "nx/src/utils/package-json";
+import { readTargetsFromPackageJson } from "nx/src/utils/package-json";
+import type { PackageJson } from "pkg-types";
 import { setDefaultProjectTags } from "../../utils/project-tags";
 
 export const name = "storm-software/typescript/tsdown";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface TsDownPluginOptions {}
+export type TsDownPluginOptions = object;
 
 export const createNodesV2: CreateNodesV2<TsDownPluginOptions> = [
   "**/tsdown.config.ts",
@@ -29,11 +26,11 @@ export const createNodesV2: CreateNodesV2<TsDownPluginOptions> = [
 
           const projectRoot = createProjectRoot(
             configFile,
-            context.workspaceRoot,
+            context.workspaceRoot
           );
           if (!projectRoot) {
             console.error(
-              `tsdown.config.ts file must be location in the project root directory: ${configFile}`,
+              `tsdown.config.ts file must be location in the project root directory: ${configFile}`
             );
             return {};
           }
@@ -41,7 +38,7 @@ export const createNodesV2: CreateNodesV2<TsDownPluginOptions> = [
           const packageJson = readJsonFile(join(projectRoot, "package.json"));
           if (!packageJson) {
             console.error(
-              `No package.json found in project root: ${projectRoot}`,
+              `No package.json found in project root: ${projectRoot}`
             );
             return {};
           }
@@ -52,13 +49,13 @@ export const createNodesV2: CreateNodesV2<TsDownPluginOptions> = [
           ) {
             console.warn(
               `No "tsdown" dependency or devDependency found in package.json: ${configFile}
-Please add it to your dependencies by running "pnpm add tsdown -D --filter="${packageJson.name}"`,
+Please add it to your dependencies by running "pnpm add tsdown -D --filter="${packageJson.name}"`
             );
           }
 
           const project = createProjectFromPackageJsonNextToProjectJson(
             join(projectRoot, "project.json"),
-            packageJson,
+            packageJson
           );
 
           const nxJson = readNxJson(context.workspaceRoot);
@@ -85,15 +82,15 @@ Please add it to your dependencies by running "pnpm add tsdown -D --filter="${pa
             inputs: [
               `{workspaceRoot}/${configFile}`,
               "typescript",
-              "^production",
+              "^production"
             ],
             outputs: ["{projectRoot}/dist"],
             executor: "nx:run-commands",
             dependsOn: ["build-untyped", "^build"],
             options: {
               command: `tsdown --config="${relativeConfig}"`,
-              cwd: relativeRoot,
-            },
+              cwd: relativeRoot
+            }
           };
 
           targets.build ??= {
@@ -102,7 +99,7 @@ Please add it to your dependencies by running "pnpm add tsdown -D --filter="${pa
               "{workspaceRoot}/LICENSE",
               "{projectRoot}/dist",
               "{projectRoot}/*.md",
-              "{projectRoot}/package.json",
+              "{projectRoot}/package.json"
             ],
             outputs: ["{workspaceRoot}/dist/{projectRoot}"],
             executor: "nx:run-commands",
@@ -111,9 +108,9 @@ Please add it to your dependencies by running "pnpm add tsdown -D --filter="${pa
               commands: [
                 `pnpm copyfiles LICENSE dist/${relativeRoot}`,
                 `pnpm copyfiles --up=2 ./${relativeRoot}/*.md ./${relativeRoot}/package.json dist/${relativeRoot}`,
-                `pnpm copyfiles --up=3 "./${relativeRoot}/dist/**/*" dist/${relativeRoot}/dist`,
-              ],
-            },
+                `pnpm copyfiles --up=3 "./${relativeRoot}/dist/**/*" dist/${relativeRoot}/dist`
+              ]
+            }
           };
 
           targets.clean = {
@@ -121,14 +118,14 @@ Please add it to your dependencies by running "pnpm add tsdown -D --filter="${pa
             inputs: [
               `{workspaceRoot}/${configFile}`,
               "typescript",
-              "^production",
+              "^production"
             ],
             options: {
               commands: [
                 `pnpm exec rimraf dist/${relativeRoot}`,
-                `pnpm exec rimraf ${relativeRoot}/dist`,
-              ],
-            },
+                `pnpm exec rimraf ${relativeRoot}/dist`
+              ]
+            }
           };
 
           setDefaultProjectTags(project, name);
@@ -139,9 +136,9 @@ Please add it to your dependencies by running "pnpm add tsdown -D --filter="${pa
                   [project.name]: {
                     ...project,
                     root: relativeRoot,
-                    targets,
-                  },
-                },
+                    targets
+                  }
+                }
               }
             : {};
           console.log(`Writing Results for ${project?.name ?? "missing name"}`);
@@ -155,14 +152,14 @@ Please add it to your dependencies by running "pnpm add tsdown -D --filter="${pa
       },
       configFiles,
       options,
-      context,
+      context
     );
-  },
+  }
 ];
 
 function createProjectFromPackageJsonNextToProjectJson(
   projectJsonPath: string,
-  packageJson: PackageJson,
+  packageJson: PackageJson
 ): ProjectConfiguration {
   const { nx, name } = packageJson;
   const root = dirname(projectJsonPath);
@@ -174,13 +171,13 @@ function createProjectFromPackageJsonNextToProjectJson(
     name,
     ...nx,
     ...projectJson,
-    root,
+    root
   } as ProjectConfiguration;
 }
 
 function createProjectRoot(
   configPath: string,
-  workspaceRoot: string,
+  workspaceRoot: string
 ): string | null {
   try {
     const root = dirname(configPath);

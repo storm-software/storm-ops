@@ -249,7 +249,6 @@
     "jiti": "^2.4.2",
     "markdownlint-cli2": "^0.17.2",
     "micromatch": "^4.0.7",
-    "pkg-types": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-pkg": "^0.18.1",
     "read-yaml-file": "catalog:",
@@ -265,6 +264,7 @@
     "@types/node": "catalog:",
     "@types/semver": "7.5.8",
     "nx": "catalog:",
+    "pkg-types": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:"
   },

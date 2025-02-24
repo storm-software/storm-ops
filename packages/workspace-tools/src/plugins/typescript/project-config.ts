@@ -6,8 +6,9 @@ import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-
 import { readJsonFile } from "nx/src/utils/fileutils";
 import {
   readTargetsFromPackageJson,
-  type PackageJson
+  type PackageJson as PackageJsonNx
 } from "nx/src/utils/package-json";
+import type { PackageJson } from "pkg-types";
 import { readTSConfig } from "pkg-types";
 import { getProjectPlatform } from "../../utils/plugin-helpers";
 import {
@@ -84,7 +85,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
 
     const nxJson = readNxJson(ctx.workspaceRoot);
     const targets: ProjectConfiguration["targets"] = readTargetsFromPackageJson(
-      packageJson,
+      packageJson as PackageJsonNx,
       nxJson
     );
 
@@ -164,7 +165,7 @@ export const createNodes: CreateNodes<TypeScriptPluginOptions> = [
             cache: true,
             inputs: ["linting", "typescript", "^production"],
             outputs: [
-              "{projectRoot}/**/*.{ts,tsx,js,jsx,json,md,mdx,yaml,yml,html,css,scss,sass,less,graphql,gql,\}"
+              "{projectRoot}/**/*.{ts,tsx,js,jsx,json,md,mdx,yaml,yml,html,css,scss,sass,less,graphql,gql}"
             ],
             dependsOn: ["lint-markdown", "lint-knip", "^lint"],
             executor: "@nx/eslint:lint",
