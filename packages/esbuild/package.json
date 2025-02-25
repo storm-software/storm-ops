@@ -40,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "packageManager": "pnpm@10.3.0",
+  "packageManager": "pnpm@10.5.0",
   "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
+    "node": ">=22.14.0",
+    "pnpm": ">=10.5.0"
   },
   "bin": {
     "storm-esbuild": "./bin/esbuild.cjs"
@@ -171,7 +171,7 @@
     "@storm-software/config-tools": "workspace:*",
     "esbuild": "catalog:",
     "spdx-exceptions": "^2.5.0",
-    "spdx-license-ids": "^3.0.20"
+    "spdx-license-ids": "^3.0.21"
   },
   "peerDependenciesMeta": {
     "@microsoft/api-extractor": {
@@ -202,10 +202,10 @@
   "dependencies": {
     "chokidar": "^4.0.3",
     "commander": "catalog:",
-    "es-toolkit": "^1.30.1",
-    "globby": "^14.0.2",
+    "es-toolkit": "^1.32.0",
+    "globby": "^14.1.0",
     "nx": "catalog:",
-    "prettier-plugin-organize-imports": "^4.0.0",
+    "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-pkg": "^0.18.1",
     "prettier-plugin-sh": "^0.15.0",
     "source-map": "0.7.4",
@@ -221,9 +221,9 @@
     "@types/node": "catalog:",
     "defu": "catalog:",
     "esbuild": "catalog:",
-    "rollup": "4.29.1",
+    "rollup": "4.34.8",
     "spdx-exceptions": "^2.5.0",
-    "spdx-license-ids": "^3.0.20"
+    "spdx-license-ids": "^3.0.21"
   },
   "publishConfig": {
     "access": "public"
