@@ -35,8 +35,8 @@ export async function nx(
             ignoredDependencies: [],
             ignoredFiles: [],
             checkMissingDependencies: true,
-            checkObsoleteDependencies: true,
-            checkVersionMismatches: false,
+            checkObsoleteDependencies: false,
+            checkVersionMismatches: true,
             includeTransitiveDependencies: true,
             useLocalPathsForWorkspaceDependencies: true
           })

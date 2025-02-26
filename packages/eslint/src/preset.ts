@@ -32,6 +32,7 @@ import {
 } from "./configs";
 import { cspell } from "./configs/cspell";
 import { mdx } from "./configs/mdx";
+import { prettier } from "./configs/prettier";
 import { reactNative } from "./configs/react-native";
 import { secrets } from "./configs/secrets";
 import { RuleOptions } from "./typegen";
@@ -134,12 +135,11 @@ export function getStormConfig(
       );
   }
 
-  const stylisticOptions =
-    options.stylistic === false
-      ? false
-      : typeof options.stylistic === "object"
-        ? options.stylistic
-        : {};
+  const stylisticOptions = !options.stylistic
+    ? false
+    : typeof options.stylistic === "object"
+      ? options.stylistic
+      : {};
 
   if (stylisticOptions && !("jsx" in stylisticOptions))
     stylisticOptions.jsx = enableJsx;
@@ -198,6 +198,10 @@ export function getStormConfig(
     perfectionist(),
     secrets({ json: options.jsonc !== false })
   );
+
+  if (!stylisticOptions) {
+    configs.push(prettier());
+  }
 
   if (enableCSpell) {
     configs.push(cspell(resolveSubOptions(options, "cspell")));
