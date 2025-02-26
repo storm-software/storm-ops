@@ -22,6 +22,7 @@
     "./index": "./index.cjs",
     "./.prettierignore": "./.prettierignore",
     "./config.json": "./config.json",
+    "./prisma.json": "./prisma.json",
     "./tailwindcss.json": "./tailwindcss.json",
     "./solidity.json": "./solidity.json",
     "./package.json": "./package.json"
@@ -46,16 +47,16 @@
       "optional": false
     },
     "prettier-plugin-astro": {
-      "optional": true
+      "optional": false
     },
     "prettier-plugin-prisma": {
-      "optional": true
+      "optional": false
     },
     "prettier-plugin-solidity": {
-      "optional": true
+      "optional": false
     },
     "prettier-plugin-tailwindcss": {
-      "optional": true
+      "optional": false
     }
   },
   "dependencies": {
