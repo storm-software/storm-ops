@@ -1,3 +1,9 @@
+## 0.129.4 (2025-02-24)
+
+### Bug Fixes
+
+- **workspace-tools:** Ensure consistent package.json typings ([71993a4b0](https://github.com/storm-software/storm-ops/commit/71993a4b0))
+
 ## 0.129.3 (2025-02-23)
 
 ### Miscellaneous
