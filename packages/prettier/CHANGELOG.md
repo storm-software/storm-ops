@@ -1,3 +1,9 @@
+## 0.35.0 (2025-02-26)
+
+### Features
+
+- **prettier:** Added `prettier-plugin-organize-imports` to config ([d64a2b35c](https://github.com/storm-software/storm-ops/commit/d64a2b35c))
+
 ## 0.34.0 (2025-02-26)
 
 ### Features
