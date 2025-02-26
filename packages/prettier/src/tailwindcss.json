@@ -54,6 +54,7 @@
   "plugins": [
     "prettier-plugin-sh",
     "prettier-plugin-pkg",
+    "prettier-plugin-organize-imports",
     "prettier-plugin-tailwindcss",
     "prettier-plugin-prisma"
   ]
