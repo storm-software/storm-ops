@@ -1,3 +1,9 @@
+## 0.34.0 (2025-02-26)
+
+### Features
+
+- **prettier:** Added `prisma` configuration ([7c4716322](https://github.com/storm-software/storm-ops/commit/7c4716322))
+
 ## 0.33.5 (2025-02-26)
 
 ### Miscellaneous
