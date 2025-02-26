@@ -1,3 +1,13 @@
+## 0.130.0 (2025-02-26)
+
+### Features
+
+- **eslint:** Enable prettier in ESLint preset by default ([1b6ba440b](https://github.com/storm-software/storm-ops/commit/1b6ba440b))
+
+### Miscellaneous
+
+- **monorepo:** Regenerated README markdown files ([54355d315](https://github.com/storm-software/storm-ops/commit/54355d315))
+
 ## 0.129.4 (2025-02-24)
 
 ### Bug Fixes

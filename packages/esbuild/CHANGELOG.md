@@ -1,3 +1,15 @@
+## 0.26.5 (2025-02-26)
+
+### Miscellaneous
+
+- **monorepo:** Regenerated README markdown files ([54355d315](https://github.com/storm-software/storm-ops/commit/54355d315))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.155.5
+- Updated build-tools to 0.140.5
+- Updated config to 1.103.5
+
 ## 0.26.4 (2025-02-23)
 
 ### Miscellaneous
