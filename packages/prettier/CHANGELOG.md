@@ -1,3 +1,9 @@
+## 0.35.1 (2025-02-27)
+
+### Bug Fixes
+
+- **prettier:** Ensure correct parser applied to typescript files ([b36fa4e80](https://github.com/storm-software/storm-ops/commit/b36fa4e80))
+
 ## 0.35.0 (2025-02-26)
 
 ### Features
