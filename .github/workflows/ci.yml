@@ -22,7 +22,6 @@ env:
   STORM_REPOSITORY: ${{ github.repositoryUrl }}
   STORM_WORKSPACE_ROOT: ${{ github.workspace }}
   GITHUB_ACTOR: ${{ github.actor }}
-  GITHUB_TOKEN: ${{ github.token }}
   NPM_TOKEN: ${{ secrets.STORM_BOT_NPM_TOKEN }}
   CARGO_REGISTRY_TOKEN: ${{ secrets.STORM_BOT_CARGO_TOKEN }}
 
