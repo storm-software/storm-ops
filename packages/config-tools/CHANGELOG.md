@@ -1,3 +1,9 @@
+## 1.155.6 (2025-02-28)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue finding tsconfig root directory ([b38fd20be](https://github.com/storm-software/storm-ops/commit/b38fd20be))
+
 ## 1.155.5 (2025-02-26)
 
 ### Miscellaneous
