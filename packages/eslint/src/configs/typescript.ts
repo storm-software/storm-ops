@@ -67,10 +67,10 @@ export async function typescript(
     "ts/no-implied-eval": "error",
     "ts/no-misused-promises": "error",
     "ts/no-unnecessary-type-assertion": "error",
-    "ts/no-unsafe-argument": "error",
-    "ts/no-unsafe-assignment": "error",
+    "ts/no-unsafe-assignment": "off",
+    "ts/no-unsafe-argument": "off",
+    "ts/no-unsafe-member-access": "off",
     "ts/no-unsafe-call": "error",
-    "ts/no-unsafe-member-access": "error",
     "ts/no-unsafe-return": "off",
     "ts/promise-function-async": "error",
     "ts/restrict-plus-operands": "error",
@@ -152,9 +152,6 @@ export async function typescript(
          **************************************************************/
 
         "ts/no-explicit-any": "off",
-        "ts/no-unsafe-assignment": "off",
-        "ts/no-unsafe-argument": "off",
-        "ts/no-unsafe-member-access": "off",
         "ts/no-empty-function": "off",
         "ts/no-var-requires": "off",
         "ts/ban-ts-comment": "off",
