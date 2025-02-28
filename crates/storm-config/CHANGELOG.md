@@ -1,3 +1,9 @@
+## 0.7.32 (2025-02-28)
+
+### Bug Fixes
+
+- **eslint:** Update linting rules to relax on typing issues ([2bf183e30](https://github.com/storm-software/storm-ops/commit/2bf183e30))
+
 ## 0.7.31 (2025-02-28)
 
 ### Bug Fixes
