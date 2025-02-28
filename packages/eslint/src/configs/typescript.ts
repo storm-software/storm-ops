@@ -1,4 +1,3 @@
-import process from "node:process";
 import { getTsConfigPath } from "src/utils/tsconfig-path";
 import type {
   OptionsComponentExts,
@@ -94,13 +93,14 @@ export async function typescript(
         parserOptions: {
           extraFileExtensions: componentExts.map(ext => `.${ext}`),
           sourceType: "module",
+          projectService: true,
           ...(typeAware
             ? {
                 projectService: {
                   allowDefaultProject: ["./*.js"],
                   defaultProject: tsconfigPath
                 },
-                tsconfigRootDir: process.cwd()
+                tsconfigRootDir: import.meta.dirname
               }
             : {}),
           ...(parserOptions as any)
@@ -146,6 +146,9 @@ export async function typescript(
          **************************************************************/
 
         "ts/no-explicit-any": "off",
+        "ts/no-unsafe-assignment": "off",
+        "ts/no-unsafe-argument": "off",
+        "ts/no-unsafe-member-access": "off",
         "ts/no-empty-function": "off",
         "ts/no-var-requires": "off",
         "ts/ban-ts-comment": "off",
@@ -244,6 +247,7 @@ export async function typescript(
               ]
             }
           : {}),
+
         ...overrides
       }
     },
