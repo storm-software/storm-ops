@@ -1,3 +1,9 @@
+## 0.35.2 (2025-02-28)
+
+### Bug Fixes
+
+- **prettier:** Align typescript configuration to match standard ([8dda6ada8](https://github.com/storm-software/storm-ops/commit/8dda6ada8))
+
 ## 0.35.1 (2025-02-27)
 
 ### Bug Fixes
