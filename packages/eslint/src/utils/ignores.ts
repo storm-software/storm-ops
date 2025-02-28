@@ -15,6 +15,7 @@ export const DEFAULT_IGNORES = [
   "**/tamagui.css",
   "**/.nx/**",
   "**/.next/**",
+  "**/.storm/**",
   "**/workbox*.js",
   "**/sw*.js",
   "**/service-worker.js",
