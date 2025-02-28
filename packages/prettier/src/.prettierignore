@@ -19,6 +19,7 @@ bun.lockb
 **/dotnet/**
 **/node_modules/**
 **/.next/**
+**/.storm/**
 **/tools/docker/**
 **/__snapshots__/**
 **/catalog-package/**

@@ -13,6 +13,14 @@
   "endOfLine": "lf",
   "overrides": [
     {
+      "files": "**/{*.ts,*.tsx,*.mts,*.cts}",
+      "options": {
+        "parser": "typescript",
+        "singleQuote": false,
+        "trailingComma": "none"
+      }
+    },
+    {
       "files": "**/*.md{,x}",
       "options": {
         "semi": false,
