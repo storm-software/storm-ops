@@ -1,3 +1,9 @@
+## 0.7.34 (2025-02-28)
+
+### Bug Fixes
+
+- **eslint:** Remove duplicate linting rules ([9ae38ba02](https://github.com/storm-software/storm-ops/commit/9ae38ba02))
+
 ## 0.7.33 (2025-02-28)
 
 ### Bug Fixes
