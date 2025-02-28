@@ -1,3 +1,9 @@
+## 0.131.1 (2025-02-28)
+
+### Bug Fixes
+
+- **eslint:** Remove duplicate import sorting rules ([5764da015](https://github.com/storm-software/storm-ops/commit/5764da015))
+
 ## 0.131.0 (2025-02-26)
 
 ### Features
