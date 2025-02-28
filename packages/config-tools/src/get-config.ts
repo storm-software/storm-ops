@@ -10,7 +10,7 @@ import { loadStormConfig } from "./create-storm-config";
  */
 export const getConfig = (
   workspaceRoot?: string,
-  skipLogs = false,
+  skipLogs = false
 ): Promise<StormConfig> => {
   return loadStormConfig(workspaceRoot, skipLogs);
 };

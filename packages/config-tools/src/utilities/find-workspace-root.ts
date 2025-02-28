@@ -34,7 +34,7 @@ const rootFiles = [
   "npm-lock.yml",
   "yarn-lock.yml",
   "pnpm-lock.yml",
-  "bun.lockb",
+  "bun.lockb"
 ];
 
 const rootDirectories = [
@@ -42,7 +42,7 @@ const rootDirectories = [
   ".nx",
   ".github",
   ".vscode",
-  ".verdaccio",
+  ".verdaccio"
 ];
 
 /**
@@ -52,11 +52,11 @@ const rootDirectories = [
  * @returns The monorepo root directory
  */
 export function findWorkspaceRootSafe(
-  pathInsideMonorepo?: string,
+  pathInsideMonorepo?: string
 ): string | undefined {
   if (process.env.STORM_WORKSPACE_ROOT || process.env.NX_WORKSPACE_ROOT_PATH) {
     return correctPaths(
-      process.env.STORM_WORKSPACE_ROOT ?? process.env.NX_WORKSPACE_ROOT_PATH,
+      process.env.STORM_WORKSPACE_ROOT ?? process.env.NX_WORKSPACE_ROOT_PATH
     );
   }
 
@@ -64,8 +64,8 @@ export function findWorkspaceRootSafe(
     findFolderUp(
       pathInsideMonorepo ?? process.cwd(),
       rootFiles,
-      rootDirectories,
-    ),
+      rootDirectories
+    )
   );
 }
 
@@ -80,8 +80,8 @@ export function findWorkspaceRoot(pathInsideMonorepo?: string): string {
   if (!result) {
     throw new Error(
       `Cannot find workspace root upwards from known path. Files search list includes: \n${rootFiles.join(
-        "\n",
-      )}\nPath: ${pathInsideMonorepo ? pathInsideMonorepo : process.cwd()}`,
+        "\n"
+      )}\nPath: ${pathInsideMonorepo ? pathInsideMonorepo : process.cwd()}`
     );
   }
 

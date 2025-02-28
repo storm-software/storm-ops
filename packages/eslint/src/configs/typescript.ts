@@ -1,4 +1,3 @@
-import { getTsConfigPath } from "src/utils/tsconfig-path";
 import type {
   OptionsComponentExts,
   OptionsFiles,
@@ -15,6 +14,7 @@ import {
   GLOB_TSX
 } from "../utils/constants";
 import { interopDefault, renameRules } from "../utils/helpers";
+import { getTsConfigPath } from "../utils/tsconfig-path";
 
 export async function typescript(
   options: OptionsFiles &
@@ -31,6 +31,12 @@ export async function typescript(
     parserOptions = {},
     type = "app"
   } = options;
+
+  let tsconfigRootDir = process.cwd();
+  if (process.env.STORM_WORKSPACE_ROOT || process.env.NX_WORKSPACE_ROOT_PATH) {
+    tsconfigRootDir = (process.env.STORM_WORKSPACE_ROOT ||
+      process.env.NX_WORKSPACE_ROOT_PATH) as string;
+  }
 
   const files = options.files ?? [
     GLOB_TS,
@@ -100,7 +106,7 @@ export async function typescript(
                   allowDefaultProject: ["./*.js"],
                   defaultProject: tsconfigPath
                 },
-                tsconfigRootDir: import.meta.dirname
+                tsconfigRootDir
               }
             : {}),
           ...(parserOptions as any)
