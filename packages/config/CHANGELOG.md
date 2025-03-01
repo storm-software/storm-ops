@@ -1,3 +1,9 @@
+## 1.104.0 (2025-03-01)
+
+### Features
+
+- **monorepo:** Update the repository to use new `stormie-bot` user name and email ([316385be6](https://github.com/storm-software/storm-ops/commit/316385be6))
+
 ## 1.103.5 (2025-02-26)
 
 ### Miscellaneous

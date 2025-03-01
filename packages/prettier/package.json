@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/prettier",
-  "version": "0.35.14",
+  "version": "0.36.0",
   "type": "commonjs",
   "description": "⚡ A package containing the base Prettier configuration used by Storm Software across many projects.",
   "repository": {
