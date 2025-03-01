@@ -1,3 +1,9 @@
+## 0.131.8 (2025-03-01)
+
+### Bug Fixes
+
+- **esbuild:** Remove extra unused build parameteres ([8b951f308](https://github.com/storm-software/storm-ops/commit/8b951f308))
+
 ## 0.131.7 (2025-03-01)
 
 ### Bug Fixes
