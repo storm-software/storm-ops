@@ -444,9 +444,37 @@ async function executeEsBuild(context: ESBuildContext) {
   delete options.includeSrc;
   delete options.verbose;
   delete options.projectRoot;
+  delete options.projectName;
+  delete options.projectGraph;
+  delete options.projectConfigurations;
   delete options.renderers;
+  delete options.config;
+  delete options.injectShims;
 
-  const result = await esbuild.build(options as esbuild.BuildOptions);
+  const result = await esbuild.build(
+    options as Omit<
+      ESBuildResolvedOptions,
+      | "env"
+      | "name"
+      | "assets"
+      | "mode"
+      | "orgName"
+      | "watch"
+      | "clean"
+      | "debug"
+      | "generatePackageJson"
+      | "emitOnAll"
+      | "includeSrc"
+      | "verbose"
+      | "projectRoot"
+      | "projectName"
+      | "projectGraph"
+      | "projectConfigurations"
+      | "renderers"
+      | "config"
+      | "injectShims"
+    >
+  );
 
   if (result.metafile) {
     const metafilePath = `${context.options.outdir}/${context.options.name}.meta.json`;
