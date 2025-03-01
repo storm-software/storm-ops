@@ -405,7 +405,7 @@ export interface OptionsNx extends OptionsOverrides {
    * Enables us to discover mismatches between dependencies specified in a project's package.json and the dependencies that your project depends on.
    *
    * @remarks
-   * If any values are overridden here, the `ignoredDependencies`, `ignoredFiles`, `checkMissingDependencies`, and `checkObsoleteDependencies` options will be ignored.
+   * If any values are overridden here, the `ignoredDependencies`, `ignoredFiles`, and `checkObsoleteDependencies` options will be ignored.
    */
   depsCheck?: OptionsNxDependencyChecks | false;
 
