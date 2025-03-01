@@ -193,10 +193,12 @@ const resolveOptions = async (
       ...options.define,
       ...Object.keys(env || {}).reduce((res, key) => {
         const value = JSON.stringify(env[key]);
+        const safeKey = key.replaceAll("(", "").replaceAll(")", "");
+
         return {
           ...res,
-          [`process.env.${key}`]: value,
-          [`import.meta.env.${key}`]: value
+          [`process.env.${safeKey}`]: value,
+          [`import.meta.env.${safeKey}`]: value
         };
       }, {})
     },
