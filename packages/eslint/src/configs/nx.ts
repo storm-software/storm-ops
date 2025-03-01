@@ -8,7 +8,13 @@ import type { OptionsNx, TypedFlatConfigItem } from "../types";
 export async function nx(
   options: OptionsNx = {}
 ): Promise<TypedFlatConfigItem[]> {
-  const { depsCheck, moduleBoundaries } = options;
+  const {
+    depsCheck,
+    moduleBoundaries,
+    ignoredDependencies = [],
+    ignoredFiles = [],
+    checkObsoleteDependencies = true
+  } = options;
 
   return [
     {
@@ -32,10 +38,10 @@ export async function nx(
           "error",
           defu(depsCheck ?? {}, {
             buildTargets: ["build-base", "build"],
-            ignoredDependencies: [],
-            ignoredFiles: [],
+            ignoredDependencies,
+            ignoredFiles,
             checkMissingDependencies: true,
-            checkObsoleteDependencies: false,
+            checkObsoleteDependencies,
             checkVersionMismatches: true,
             includeTransitiveDependencies: false,
             useLocalPathsForWorkspaceDependencies: true

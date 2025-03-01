@@ -387,7 +387,25 @@ export interface OptionsNxEnforceModuleBoundaries extends OptionsOverrides {
 
 export interface OptionsNx extends OptionsOverrides {
   /**
+   * The dependencies to not check in the `@nx/dependency-checks` rule
+   */
+  ignoredDependencies?: string[];
+
+  /**
+   * The files to not check in the `@nx/dependency-checks` rule
+   */
+  ignoredFiles?: string[];
+
+  /**
+   * Check for obsolete dependencies in the `@nx/dependency-checks` rule
+   */
+  checkObsoleteDependencies?: boolean;
+
+  /**
    * Enables us to discover mismatches between dependencies specified in a project's package.json and the dependencies that your project depends on.
+   *
+   * @remarks
+   * If any values are overridden here, the `ignoredDependencies`, `ignoredFiles`, `checkMissingDependencies`, and `checkObsoleteDependencies` options will be ignored.
    */
   depsCheck?: OptionsNxDependencyChecks | false;
 
