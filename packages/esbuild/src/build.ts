@@ -423,7 +423,7 @@ async function executeEsBuild(context: ESBuildContext) {
   );
   const stopwatch = getStopwatch(`${context.options.name} build`);
 
-  if (process.env.WATCH === "true") {
+  if (process.env.STORM_WATCH) {
     const ctx = await esbuild.context(context.options as esbuild.BuildOptions);
 
     watch(ctx, context.options);
