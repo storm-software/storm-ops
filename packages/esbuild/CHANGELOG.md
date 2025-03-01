@@ -1,3 +1,9 @@
+## 0.26.11 (2025-03-01)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with `entry` option parameter ([7540001f9](https://github.com/storm-software/storm-ops/commit/7540001f9))
+
 ## 0.26.10 (2025-03-01)
 
 ### Bug Fixes
