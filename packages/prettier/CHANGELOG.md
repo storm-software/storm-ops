@@ -1,3 +1,9 @@
+## 0.38.1 (2025-03-01)
+
+### Bug Fixes
+
+- **esbuild:** Upgrade `esbuild` dependency and change asset copy method ([3646e16f9](https://github.com/storm-software/storm-ops/commit/3646e16f9))
+
 ## 0.38.0 (2025-03-01)
 
 ### Features
