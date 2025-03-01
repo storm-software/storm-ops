@@ -1,3 +1,14 @@
+## 0.28.3 (2025-03-01)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with the depth of the copied `assets` path ([4d3d54492](https://github.com/storm-software/storm-ops/commit/4d3d54492))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.157.0
+- Updated config to 1.105.0
+
 ## 0.28.2 (2025-03-01)
 
 ### Bug Fixes

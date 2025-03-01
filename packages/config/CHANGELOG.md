@@ -1,3 +1,9 @@
+## 1.105.0 (2025-03-01)
+
+### Features
+
+- **eslint:** Added the `ignoredDependencies`, `ignoredFiles`, and `checkObsoleteDependencies` options ([984f09f7d](https://github.com/storm-software/storm-ops/commit/984f09f7d))
+
 ## 1.104.1 (2025-03-01)
 
 ### Bug Fixes
