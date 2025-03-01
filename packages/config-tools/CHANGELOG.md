@@ -1,3 +1,9 @@
+## 1.156.1 (2025-03-01)
+
+### Bug Fixes
+
+- **eslint:** Remove `includeTransitiveDependencies` from Nx linting rules ([2f442eabb](https://github.com/storm-software/storm-ops/commit/2f442eabb))
+
 ## 1.156.0 (2025-03-01)
 
 ### Features
