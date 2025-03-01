@@ -1,3 +1,9 @@
+## 0.131.9 (2025-03-01)
+
+### Bug Fixes
+
+- **eslint:** Added `package.json` to the `ignores` list ([63fa4c26e](https://github.com/storm-software/storm-ops/commit/63fa4c26e))
+
 ## 0.131.8 (2025-03-01)
 
 ### Bug Fixes
