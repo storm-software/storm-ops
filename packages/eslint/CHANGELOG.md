@@ -1,3 +1,13 @@
+## 0.134.0 (2025-03-01)
+
+### Features
+
+- **eslint:** Added the `ignoredDependencies`, `ignoredFiles`, and `checkObsoleteDependencies` options ([984f09f7d](https://github.com/storm-software/storm-ops/commit/984f09f7d))
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with the depth of the copied `assets` path ([4d3d54492](https://github.com/storm-software/storm-ops/commit/4d3d54492))
+
 ## 0.133.2 (2025-03-01)
 
 ### Bug Fixes
