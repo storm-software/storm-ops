@@ -446,7 +446,7 @@ async function executeEsBuild(context: ESBuildContext) {
   delete options.projectRoot;
   delete options.renderers;
 
-  const result = await esbuild.build(context.options as esbuild.BuildOptions);
+  const result = await esbuild.build(options as esbuild.BuildOptions);
 
   if (result.metafile) {
     const metafilePath = `${context.options.outdir}/${context.options.name}.meta.json`;
