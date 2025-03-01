@@ -37,7 +37,7 @@ export async function nx(
             checkMissingDependencies: true,
             checkObsoleteDependencies: false,
             checkVersionMismatches: true,
-            includeTransitiveDependencies: true,
+            includeTransitiveDependencies: false,
             useLocalPathsForWorkspaceDependencies: true
           })
         ]
