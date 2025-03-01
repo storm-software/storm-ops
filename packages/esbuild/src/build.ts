@@ -223,6 +223,7 @@ const resolveOptions = async (
   } satisfies ESBuildResolvedOptions;
   result.plugins =
     userOptions.plugins ?? getDefaultBuildPlugins(userOptions, result);
+  delete result.entry;
 
   stopwatch();
 
@@ -387,31 +388,6 @@ async function generateContext(
 
   return { options, rendererEngine };
 }
-
-// /**
-//  * Extensions are not automatically by esbuild set for `options.outfile`. We
-//  * look at the set `options.outExtension` and we add that to `options.outfile`.
-//  */
-// function addExtensionFormat(options: ESBuildOptions) {
-//   if (options.outfile && options.outExtension) {
-//     const ext = options.outExtension[".js"];
-
-//     options.outfile = `${options.outfile}${ext}`;
-//   }
-
-//   return options;
-// }
-
-// /**
-//  * If we don't have `options.outfile`, we default `options.outdir`
-//  */
-// function addDefaultOutDir(options: ESBuildOptions) {
-//   if (options.outfile === undefined) {
-//     options.outdir = getOutDir(options);
-//   }
-
-//   return options;
-// }
 
 /**
  * Execute esbuild with all the configurations we pass

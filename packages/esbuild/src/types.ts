@@ -19,7 +19,7 @@ import type { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
 import type {
   AdditionalCLIOptions,
   TypeScriptBuildOptions,
-  TypeScriptBuildResolvedOptions,
+  TypeScriptBuildResolvedOptions
 } from "@storm-software/build-tools";
 import type { BuildOptions, BuildResult, Format, Metafile } from "esbuild";
 import type { SourceMap } from "rollup";
@@ -30,7 +30,7 @@ export type OutExtensionObject = { js?: string; dts?: string };
 
 export type OutExtensionFactory = (
   format?: Format,
-  pkgType?: string,
+  pkgType?: string
 ) => OutExtensionObject;
 
 export type ESBuildOptions = Omit<
@@ -130,7 +130,7 @@ export type AssetInfo = {
 export type RenderChunk = (
   options: ESBuildResolvedOptions,
   code: string,
-  chunkInfo: ChunkInfo,
+  chunkInfo: ChunkInfo
 ) => MaybePromise<
   | {
       code: string;
@@ -142,11 +142,11 @@ export type RenderChunk = (
 >;
 
 export type BuildStart = (
-  options: ESBuildResolvedOptions,
+  options: ESBuildResolvedOptions
 ) => MaybePromise<void>;
 export type BuildEnd = (
   options: ESBuildResolvedOptions,
-  ctx: { writtenFiles: WrittenFile[] },
+  ctx: { writtenFiles: WrittenFile[] }
 ) => MaybePromise<void>;
 
 export type ModifyEsbuildOptions = (options: ESBuildResolvedOptions) => void;
