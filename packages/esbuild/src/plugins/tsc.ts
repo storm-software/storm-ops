@@ -33,32 +33,33 @@ function bundleTypeDefinitions(
   filename: string,
   outfile: string,
   externals: string[],
-  options: ESBuildResolvedOptions,
+  options: ESBuildResolvedOptions
 ) {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const { dependencies, peerDependencies, devDependencies } = require(
-    joinPaths(options.projectRoot, "package.json"),
+    joinPaths(options.projectRoot, "package.json")
   );
 
   // get the list of bundled and non bundled as well as their eventual type dependencies
-  const dependenciesKeys = Object.keys(dependencies ?? {}).flatMap((p) => [
+  const dependenciesKeys = Object.keys(dependencies ?? {}).flatMap(p => [
     p,
-    getTypeDependencyPackageName(p),
+    getTypeDependencyPackageName(p)
   ]);
   const peerDependenciesKeys = Object.keys(peerDependencies ?? {}).flatMap(
-    (p) => [p, getTypeDependencyPackageName(p)],
+    p => [p, getTypeDependencyPackageName(p)]
   );
-  const devDependenciesKeys = Object.keys(devDependencies ?? {}).flatMap(
-    (p) => [p, getTypeDependencyPackageName(p)],
-  );
+  const devDependenciesKeys = Object.keys(devDependencies ?? {}).flatMap(p => [
+    p,
+    getTypeDependencyPackageName(p)
+  ]);
 
   const includeDeps = devDependenciesKeys;
   const excludeDeps = new Set([
     ...dependenciesKeys,
     ...peerDependenciesKeys,
-    ...externals,
+    ...externals
   ]);
-  const bundledPackages = includeDeps.filter((dep) => !excludeDeps.has(dep));
+  const bundledPackages = includeDeps.filter(dep => !excludeDeps.has(dep));
 
   // we give the config in its raw form instead of a file
   const extractorConfig = ExtractorConfig.prepare({
@@ -70,32 +71,32 @@ function bundleTypeDefinitions(
         tsconfigFilePath: options.tsconfig,
         overrideTsconfig: {
           compilerOptions: {
-            paths: {}, // bug with api extract + paths
-          },
-        },
+            paths: {} // bug with api extract + paths
+          }
+        }
       },
       dtsRollup: {
         enabled: true,
-        untrimmedFilePath: joinPaths(options.outdir, `${outfile}.d.ts`),
+        untrimmedFilePath: joinPaths(options.outdir, `${outfile}.d.ts`)
       },
       tsdocMetadata: {
-        enabled: false,
-      },
+        enabled: false
+      }
     },
     packageJsonFullPath: joinPaths(options.projectRoot, "package.json"),
-    configObjectFullPath: undefined,
+    configObjectFullPath: undefined
   });
 
   // here we trigger the "command line" interface equivalent
   const extractorResult = Extractor.invoke(extractorConfig, {
     showVerboseMessages: true,
-    localBuild: true,
+    localBuild: true
   });
 
   // we exit the process immediately if there were errors
   if (extractorResult.succeeded === false) {
     writeError(
-      `API Extractor completed with ${extractorResult.errorCount} ${extractorResult.errorCount === 1 ? "error" : "errors"}`,
+      `API Extractor completed with ${extractorResult.errorCount} ${extractorResult.errorCount === 1 ? "error" : "errors"}`
     );
 
     throw new Error("API Extractor completed with errors");
@@ -107,7 +108,7 @@ function bundleTypeDefinitions(
  */
 export const tscPlugin = (
   options: ESBuildOptions,
-  resolvedOptions: ESBuildResolvedOptions,
+  resolvedOptions: ESBuildResolvedOptions
 ): esbuild.Plugin => ({
   name: "storm:tsc",
   setup(build) {
@@ -131,7 +132,7 @@ export const tscPlugin = (
         await run(
           resolvedOptions.config,
           `pnpm exec tsc --project ${resolvedOptions.tsconfig}`,
-          resolvedOptions.config.workspaceRoot,
+          resolvedOptions.config.workspaceRoot
         );
       }
 
@@ -146,7 +147,7 @@ export const tscPlugin = (
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const sourceRoot = resolvedOptions.sourceRoot.replaceAll(
           resolvedOptions.projectRoot,
-          "",
+          ""
         );
         const typeOutDir = resolvedOptions.outdir; // type out dir
         const entryPoint = resolvedOptions.entryPoints[0]
@@ -160,42 +161,39 @@ export const tscPlugin = (
             joinPaths(
               resolvedOptions.config.workspaceRoot,
               typeOutDir,
-              `${entryPoint}.d.ts`,
-            ),
+              `${entryPoint}.d.ts`
+            )
           )
         ) {
           dtsPath = joinPaths(
             resolvedOptions.config.workspaceRoot,
             typeOutDir,
-            `${entryPoint}.d.ts`,
+            `${entryPoint}.d.ts`
           );
         } else if (
           existsSync(
             joinPaths(
               resolvedOptions.config.workspaceRoot,
               typeOutDir,
-              `${entryPoint.replace(/^src\//, "")}.d.ts`,
-            ),
+              `${entryPoint.replace(/^src\//, "")}.d.ts`
+            )
           )
         ) {
           dtsPath = joinPaths(
             resolvedOptions.config.workspaceRoot,
             typeOutDir,
-            `${entryPoint.replace(/^src\//, "")}.d.ts`,
+            `${entryPoint.replace(/^src\//, "")}.d.ts`
           );
         }
 
-        const ext =
-          resolvedOptions.outExtension.dts || resolvedOptions.format === "esm"
-            ? "d.mts"
-            : "d.ts";
+        const ext = resolvedOptions.format === "esm" ? "d.mts" : "d.ts";
         if (process.env.WATCH !== "true" && process.env.DEV !== "true") {
           // we get the types generated by tsc and bundle them near the output
           bundleTypeDefinitions(
             dtsPath,
             bundlePath,
             resolvedOptions.external ?? [],
-            resolvedOptions,
+            resolvedOptions
           );
 
           const dtsContents = await fs.readFile(`${bundlePath}.d.ts`, "utf8");
@@ -206,12 +204,12 @@ export const tscPlugin = (
           // we link the types locally by re-exporting them from the entry point
           await fs.writeFile(
             `${bundlePath}.${ext}`,
-            `export * from './${entryPoint}'`,
+            `export * from './${entryPoint}'`
           );
         }
       }
     });
-  },
+  }
 });
 
 /**
