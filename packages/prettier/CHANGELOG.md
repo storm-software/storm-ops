@@ -1,3 +1,9 @@
+## 0.37.2 (2025-03-01)
+
+### Bug Fixes
+
+- **esbuild:** Resolved issue with `assets` directory missing from distribution ([3b66153ac](https://github.com/storm-software/storm-ops/commit/3b66153ac))
+
 ## 0.37.1 (2025-03-01)
 
 ### Bug Fixes
