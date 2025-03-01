@@ -317,7 +317,7 @@ impl Default for StormConfig {
       organization: "storm-software".to_string(),
       log_level: LogLevel::Info,
       owner: "@storm-software/development".to_string(),
-      worker: "Stormie-Bot".to_string(),
+      worker: "stormie-bot".to_string(),
       env: EnvironmentType::Production,
       profile: None,
       ci: true,

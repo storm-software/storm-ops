@@ -2,7 +2,7 @@
   "$schema": "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm-workspace.schema.json",
   "organization": "storm-software",
   "owner": "@storm-software/admin",
-  "bot": { "name": "Stormie-Bot", "email": "bot@stormsoftware.com" },
+  "bot": { "name": "stormie-bot", "email": "bot@stormsoftware.com" },
   "mode": "production",
   "timezone": "America/New_York",
   "locale": "en-US",

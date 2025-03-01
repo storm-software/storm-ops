@@ -18,7 +18,7 @@ jobs:
     uses: storm-software/storm-ops/.github/workflows/release.yml@main
     with:
       tag: ${{ env.TAG }}
-      stormBot: Stormie-Bot
+      stormBot: stormie-bot
     secrets:
       githubToken: ${{ github.token }}
       npmToken: ${{ secrets.STORM_BOT_NPM_TOKEN }}

@@ -43,7 +43,8 @@ export const runRelease = async (
   process.env.GIT_AUTHOR_EMAIL = `${process.env.GITHUB_ACTOR}@users.noreply.github.com`;
 
   process.env.GIT_COMMITTER_NAME = config.bot.name;
-  process.env.GIT_COMMITTER_EMAIL = `${config.bot.name}@users.noreply.github.com`;
+  process.env.GIT_COMMITTER_EMAIL =
+    config.bot.email || `${config.bot.name}@users.noreply.github.com`;
 
   process.env.NODE_AUTH_TOKEN = process.env.NPM_TOKEN;
   process.env.NPM_AUTH_TOKEN = process.env.NPM_TOKEN;

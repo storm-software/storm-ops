@@ -28,5 +28,5 @@ jobs:
       - name: Auto-merge the pull request in GitHub
         run: gh pr merge --auto --squash --delete-branch "${PR_URL}"
         env:
-          GITHUB_ACTOR: Stormie-Bot
+          GITHUB_ACTOR: stormie-bot
           GITHUB_TOKEN: "${{secrets.STORM_BOT_GITHUB_TOKEN}}"
