@@ -1,3 +1,10 @@
+## 0.26.13 (2025-03-01)
+
+### Bug Fixes
+
+- **esbuild:** Resolve TypeScript build issue ([f042cc07f](https://github.com/storm-software/storm-ops/commit/f042cc07f))
+- **esbuild:** Remove unused `outExtension` option ([2cb08d221](https://github.com/storm-software/storm-ops/commit/2cb08d221))
+
 ## 0.26.12 (2025-03-01)
 
 ### Bug Fixes

@@ -1,3 +1,9 @@
+## 0.35.14 (2025-03-01)
+
+### Bug Fixes
+
+- **esbuild:** Remove unused `outExtension` option ([2cb08d221](https://github.com/storm-software/storm-ops/commit/2cb08d221))
+
 ## 0.35.13 (2025-03-01)
 
 ### Bug Fixes
