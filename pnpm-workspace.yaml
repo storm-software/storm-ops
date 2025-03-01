@@ -30,7 +30,7 @@ catalog:
   "tsup": "8.3.5"
   "typia": "^7.5.0"
   "typescript": "^5.7.2"
-  "esbuild": "^0.24.0"
+  "esbuild": "^0.25.0"
   "eslint": "^9.20.0"
   "copyfiles": "2.4.1"
   "rimraf": "6.0.1"
