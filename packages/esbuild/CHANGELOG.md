@@ -1,3 +1,13 @@
+## 0.26.10 (2025-03-01)
+
+### Bug Fixes
+
+- **eslint:** Added `package.json` to the `ignores` list ([63fa4c26e](https://github.com/storm-software/storm-ops/commit/63fa4c26e))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.155.9
+
 ## 0.26.9 (2025-03-01)
 
 ### Bug Fixes
