@@ -32,6 +32,7 @@ export async function jsonc(
     },
     {
       files,
+      ignores: ["**/package.json"],
       languageOptions: {
         parser: parserJsonc
       },
