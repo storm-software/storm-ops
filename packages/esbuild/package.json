@@ -155,6 +155,8 @@
   },
   "types": "./dist/index.d.ts",
   "files": [
+    "assets/**/*",
+    "bin/**/*",
     "dist/**/*"
   ],
   "keywords": [
@@ -171,7 +173,7 @@
     "@nx/js": "catalog:",
     "@storm-software/build-tools": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
-    "esbuild": "catalog:",
+    "esbuild": "^0.25.0",
     "spdx-exceptions": "^2.5.0",
     "spdx-license-ids": "^3.0.20"
   },
@@ -204,7 +206,9 @@
   "dependencies": {
     "chokidar": "^4.0.3",
     "commander": "catalog:",
+    "defu": "catalog:",
     "es-toolkit": "^1.30.1",
+    "esbuild": "^0.25.0",
     "globby": "^14.0.2",
     "nx": "catalog:",
     "prettier-plugin-organize-imports": "^4.0.0",
@@ -217,12 +221,10 @@
     "@microsoft/api-extractor": "catalog:",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/build-tools": "0.140.5",
-    "@storm-software/config": "1.104.1",
-    "@storm-software/config-tools": "1.156.1",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "@types/node": "catalog:",
-    "defu": "catalog:",
-    "esbuild": "catalog:",
     "rollup": "4.29.1",
     "spdx-exceptions": "^2.5.0",
     "spdx-license-ids": "^3.0.20"

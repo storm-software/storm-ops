@@ -621,9 +621,15 @@ importers:
       commander:
         specifier: 'catalog:'
         version: 12.1.0
+      defu:
+        specifier: 'catalog:'
+        version: 6.1.4
       es-toolkit:
         specifier: ^1.30.1
         version: 1.32.0
+      esbuild:
+        specifier: ^0.25.0
+        version: 0.25.0
       globby:
         specifier: ^14.0.2
         version: 14.1.0
@@ -667,12 +673,6 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.13.5
-      defu:
-        specifier: 'catalog:'
-        version: 6.1.4
-      esbuild:
-        specifier: 'catalog:'
-        version: 0.24.2
       rollup:
         specifier: 4.29.1
         version: 4.29.1
@@ -4225,7 +4225,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
