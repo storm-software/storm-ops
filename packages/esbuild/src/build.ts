@@ -224,6 +224,7 @@ const resolveOptions = async (
   result.plugins =
     userOptions.plugins ?? getDefaultBuildPlugins(userOptions, result);
   delete result.entry;
+  delete result.outputPath;
 
   stopwatch();
 
