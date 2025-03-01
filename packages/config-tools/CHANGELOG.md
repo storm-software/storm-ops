@@ -1,3 +1,9 @@
+## 1.155.10 (2025-03-01)
+
+### Bug Fixes
+
+- **eslint:** Disable `package.json` sort when using prettier ([eddd7cc95](https://github.com/storm-software/storm-ops/commit/eddd7cc95))
+
 ## 1.155.9 (2025-03-01)
 
 ### Bug Fixes

@@ -1,3 +1,13 @@
+## 0.26.12 (2025-03-01)
+
+### Bug Fixes
+
+- **esbuild:** Remove unused `outputPath` parameter from options ([a8ffdb44e](https://github.com/storm-software/storm-ops/commit/a8ffdb44e))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.155.10
+
 ## 0.26.11 (2025-03-01)
 
 ### Bug Fixes
