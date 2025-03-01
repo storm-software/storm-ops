@@ -1,3 +1,9 @@
+## 0.26.7 (2025-03-01)
+
+### Bug Fixes
+
+- **esbuild:** Updated env name to `STORM_WATCH` for watch function ([5af23e8e8](https://github.com/storm-software/storm-ops/commit/5af23e8e8))
+
 ## 0.26.6 (2025-03-01)
 
 ### Bug Fixes
