@@ -1,3 +1,13 @@
+## 0.26.6 (2025-03-01)
+
+### Bug Fixes
+
+- **esbuild:** Resolved issue with extra build options ([d9027747b](https://github.com/storm-software/storm-ops/commit/d9027747b))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.155.7
+
 ## 0.26.5 (2025-02-26)
 
 ### Miscellaneous
