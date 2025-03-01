@@ -52,6 +52,8 @@
   "module": "./dist/index.js",
   "exports": {
     "./package.json": "./package.json",
+    "./assets/cjs_shims.js": "./assets/cjs_shims.js",
+    "./assets/esm_shims.js": "./assets/esm_shims.js",
     "./types": {
       "import": {
         "types": "./dist/types.d.ts",
