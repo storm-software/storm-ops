@@ -1,3 +1,9 @@
+## 0.133.0 (2025-03-01)
+
+### Features
+
+- **esbuild:** Ensure env variables use safe names without invalid characters ([dc3079ebd](https://github.com/storm-software/storm-ops/commit/dc3079ebd))
+
 ## 0.132.0 (2025-03-01)
 
 ### Features
