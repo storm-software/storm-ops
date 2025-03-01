@@ -26,13 +26,6 @@ import type { SourceMap } from "rollup";
 import type { RawSourceMap } from "source-map";
 import type { RendererEngine } from "./base/renderer-engine";
 
-export type OutExtensionObject = { js?: string; dts?: string };
-
-export type OutExtensionFactory = (
-  format?: Format,
-  pkgType?: string
-) => OutExtensionObject;
-
 export type ESBuildOptions = Omit<
   BuildOptions,
   "outbase" | "outfile" | "outExtension" | "banner" | "entryPoints"
@@ -40,7 +33,6 @@ export type ESBuildOptions = Omit<
   Omit<TypeScriptBuildOptions, "format"> & {
     emitTypes?: boolean;
     injectShims?: boolean;
-    outExtension?: OutExtensionFactory;
     renderers?: Renderer[];
   };
 
@@ -48,7 +40,7 @@ export type ESBuildResult = BuildResult;
 
 export type ESBuildResolvedOptions = Omit<
   TypeScriptBuildResolvedOptions,
-  "banner" | "footer" | "target" | "format" | "sourcemap"
+  "banner" | "footer" | "target" | "format" | "sourcemap" | "outExtension"
 > &
   Pick<
     BuildOptions,
@@ -66,7 +58,6 @@ export type ESBuildResolvedOptions = Omit<
     outdir: string;
     projectGraph: ProjectGraph;
     projectConfigurations: ProjectsConfigurations;
-    outExtension: OutExtensionObject;
     entryPoints: string[];
     renderers?: Renderer[];
     format: Format;

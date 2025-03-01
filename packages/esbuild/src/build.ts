@@ -54,11 +54,7 @@ import hf from "node:fs/promises";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
 import { RendererEngine } from "./base/renderer-engine";
 import { cleanDirectories } from "./clean";
-import {
-  DEFAULT_BUILD_OPTIONS,
-  getDefaultBuildPlugins,
-  getOutputExtensionMap
-} from "./config";
+import { DEFAULT_BUILD_OPTIONS, getDefaultBuildPlugins } from "./config";
 import { depsCheckPlugin } from "./plugins/deps-check";
 import { shebangRenderer } from "./renderers/shebang";
 import {
@@ -127,10 +123,6 @@ const resolveOptions = async (
     throw new Error("Cannot find package.json configuration");
   }
 
-  const packageJsonFile = await hf.readFile(packageJsonPath, "utf8");
-  const packageJson = JSON.parse(packageJsonFile);
-  const outExtension = getOutputExtensionMap(options, packageJson.type);
-
   const env = getEnv("esbuild", options as Parameters<typeof getEnv>[1]);
 
   const result = {
@@ -178,7 +170,6 @@ const resolveOptions = async (
     bundle: userOptions.bundle !== false,
     keepNames: true,
     watch: userOptions.watch === true,
-    outExtension,
     footer: userOptions.footer,
     banner: {
       js: options.banner || DEFAULT_COMPILED_BANNER,
