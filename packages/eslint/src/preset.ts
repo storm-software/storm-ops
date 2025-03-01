@@ -305,9 +305,12 @@ export function getStormConfig(
         overrides: getOverrides(options, "jsonc"),
         stylistic: stylisticOptions
       }),
-      sortPackageJson(),
       sortTsconfig()
     );
+
+    if (stylisticOptions) {
+      configs.push(sortPackageJson());
+    }
   }
 
   if (options.yaml ?? true) {
