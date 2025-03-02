@@ -32,6 +32,7 @@ import {
 } from "@storm-software/build-tools";
 import { getConfig } from "@storm-software/config-tools/get-config";
 import {
+  formatLogMessage,
   getStopwatch,
   writeDebug,
   writeError,
@@ -146,7 +147,7 @@ const resolveOptions = async (
       projectRoot,
       projectJson.sourceRoot,
       userOptions.entry || ["./src/index.ts"],
-      userOptions.emitOnAll
+      userOptions.emitOnAll === true
     ),
     outdir: userOptions.outputPath || joinPaths("dist", projectRoot),
     plugins: [] as ESBuildResolvedOptions["plugins"],
@@ -420,6 +421,11 @@ async function executeEsBuild(context: ESBuildContext) {
   delete options.renderers;
   delete options.config;
   delete options.injectShims;
+
+  writeTrace(
+    `Run esbuild (${context.options.name}) with the following options: \n${formatLogMessage(options)}`,
+    context.options.config
+  );
 
   const result = await esbuild.build(
     options as Omit<

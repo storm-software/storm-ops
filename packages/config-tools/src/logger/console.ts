@@ -17,7 +17,7 @@ import { getLogLevel } from "./get-log-level";
 export const getLogFn = (
   logLevel: number | LogLevel = LogLevel.INFO,
   config: Partial<StormConfig> = {},
-  _chalk: ReturnType<typeof getChalk> = getChalk(),
+  _chalk: ReturnType<typeof getChalk> = getChalk()
 ): ((message?: any) => void) => {
   const colors =
     !(config.colors as ColorConfig)?.dark &&
@@ -57,7 +57,7 @@ export const getLogFn = (
       console.error(
         `
 ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.fatal ?? "#7d1a1a")(`[${CONSOLE_ICONS[LogLevelLabel.FATAL]} Fatal] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
-`,
+`
       );
     };
   }
@@ -67,7 +67,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.fatal ?? "#7d1a1a")(`[${CO
       console.error(
         `
 ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.danger ?? "#f85149")(`[${CONSOLE_ICONS[LogLevelLabel.ERROR]} Error] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
-`,
+`
       );
     };
   }
@@ -77,7 +77,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.danger ?? "#f85149")(`[${C
       console.warn(
         `
 ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.warning ?? "#e3b341")(`[${CONSOLE_ICONS[LogLevelLabel.WARN]} Warn] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
-`,
+`
       );
     };
   }
@@ -87,7 +87,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.warning ?? "#e3b341")(`[${
       console.info(
         `
 ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.success ?? "#56d364")(`[${CONSOLE_ICONS[LogLevelLabel.SUCCESS]} Success] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
-`,
+`
       );
     };
   }
@@ -97,7 +97,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.success ?? "#56d364")(`[${
       console.info(
         `
 ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.info ?? "#58a6ff")(`[${CONSOLE_ICONS[LogLevelLabel.INFO]} Info] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
-`,
+`
       );
     };
   }
@@ -107,7 +107,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.info ?? "#58a6ff")(`[${CON
       console.debug(
         `
 ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.brand ?? "#1fb2a6")(`[${CONSOLE_ICONS[LogLevelLabel.DEBUG]}  Debug] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
-`,
+`
       );
     };
   }
@@ -117,7 +117,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.brand ?? "#1fb2a6")(`[${CO
       console.debug(
         `
 ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.brand ?? "#1fb2a6")(`[${CONSOLE_ICONS[LogLevelLabel.TRACE]}  Trace] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
-`,
+`
       );
     };
   }
@@ -126,7 +126,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.brand ?? "#1fb2a6")(`[${CO
     console.log(
       `
 ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.brand ?? "#1fb2a6")(`[${CONSOLE_ICONS[LogLevelLabel.ALL]}  System] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
-`,
+`
     );
   };
 };
@@ -216,9 +216,9 @@ export const getStopwatch = (name: string) => {
     console.info(
       `
 >  ⏱️  The${name ? ` ${name}` : ""} process took ${Math.round(
-        end[0] * 1000 + end[1] / 1000000,
+        end[0] * 1000 + end[1] / 1000000
       )}ms to complete
-`,
+`
     );
   };
 };
@@ -233,7 +233,7 @@ export type FormatLogMessageOptions = {
 export const formatLogMessage = (
   message?: any,
   options: FormatLogMessageOptions = {},
-  depth = 0,
+  depth = 0
 ): string => {
   if (depth > MAX_DEPTH) {
     return "<max depth>";
@@ -252,9 +252,9 @@ export const formatLogMessage = (
         ? `\n${message.map((item, index) => ` ${prefix}> #${index} = ${formatLogMessage(item, { prefix: `${prefix}-`, skip }, depth + 1)}`).join("\n")}`
         : typeof message === "object"
           ? `\n${Object.keys(message)
-              .filter((key) => !skip.includes(key))
+              .filter(key => !skip.includes(key))
               .map(
-                (key) =>
+                key =>
                   ` ${prefix}> ${key} = ${
                     _isFunction(message[key])
                       ? "<function>"
@@ -262,17 +262,17 @@ export const formatLogMessage = (
                         ? formatLogMessage(
                             message[key],
                             { prefix: `${prefix}-`, skip },
-                            depth + 1,
+                            depth + 1
                           )
                         : message[key]
-                  }`,
+                  }`
               )
               .join("\n")}`
           : message;
 };
 
 const _isFunction = (
-  value: unknown,
+  value: unknown
 ): value is ((params?: unknown) => unknown) & ((param?: any) => any) => {
   try {
     return (
