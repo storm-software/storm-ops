@@ -1,3 +1,9 @@
+## 0.141.0 (2025-03-02)
+
+### Features
+
+- **esbuild:** Added options logging prior to running build ([6011389ff](https://github.com/storm-software/storm-ops/commit/6011389ff))
+
 ## 0.140.5 (2025-02-26)
 
 ### Miscellaneous
