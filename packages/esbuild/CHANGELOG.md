@@ -1,3 +1,13 @@
+## 0.29.1 (2025-03-02)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue calculating build entry points ([908545db9](https://github.com/storm-software/storm-ops/commit/908545db9))
+
+### 🧱 Updated Dependencies
+
+- Updated build-tools to 0.141.1
+
 ## 0.29.0 (2025-03-02)
 
 ### Features
