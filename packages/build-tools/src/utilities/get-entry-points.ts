@@ -47,41 +47,54 @@ export const getEntryPoints = async (
     );
   }
 
-  const results = [] as string[];
-  for (const entryPoint in entryPoints) {
-    if (entryPoint.includes("*")) {
-      const files = await glob(entryPoint, {
-        withFileTypes: true
-      });
+  const results = await Promise.all(
+    entryPoints.map(async entryPoint => {
+      const paths = [] as string[];
+      if (entryPoint.includes("*")) {
+        const files = await glob(entryPoint, {
+          withFileTypes: true,
+          ignore: ["**/node_modules/**"]
+        });
 
-      results.push(
-        ...files.reduce((ret, filePath: Path) => {
-          const result = correctPaths(
-            joinPaths(filePath.path, filePath.name)
-              .replaceAll(correctPaths(workspaceRoot), "")
-              .replaceAll(correctPaths(projectRoot), "")
-          );
-          if (result) {
-            writeDebug(
-              `Trying to add entry point ${result} at "${joinPaths(
-                filePath.path,
-                filePath.name
-              )}"`,
-              config
+        paths.push(
+          ...files.reduce((ret, filePath: Path) => {
+            const result = correctPaths(
+              joinPaths(filePath.path, filePath.name)
+                .replaceAll(correctPaths(workspaceRoot), "")
+                .replaceAll(correctPaths(projectRoot), "")
             );
+            if (result) {
+              writeDebug(
+                `Trying to add entry point ${result} at "${joinPaths(
+                  filePath.path,
+                  filePath.name
+                )}"`,
+                config
+              );
 
-            if (!results.includes(result)) {
-              results.push(result);
+              if (!paths.includes(result)) {
+                paths.push(result);
+              }
             }
-          }
 
-          return ret;
-        }, [] as string[])
-      );
-    } else {
-      results.push(entryPoint);
-    }
-  }
+            return ret;
+          }, [] as string[])
+        );
+      } else {
+        paths.push(entryPoint);
+      }
 
-  return results;
+      return paths;
+    })
+  );
+
+  return results.filter(Boolean).reduce((ret, result) => {
+    result.forEach(res => {
+      if (res && !ret.includes(res)) {
+        ret.push(res);
+      }
+    });
+
+    return ret;
+  }, [] as string[]);
 };

@@ -146,7 +146,7 @@ const resolveOptions = async (
       config,
       projectRoot,
       projectJson.sourceRoot,
-      userOptions.entry || ["./src/index.ts"],
+      userOptions.entry ?? "./src/index.ts",
       userOptions.emitOnAll === true
     ),
     outdir: userOptions.outputPath || joinPaths("dist", projectRoot),
