@@ -1,3 +1,17 @@
+## 0.30.0 (2025-03-03)
+
+### Features
+
+- **esbuild:** Added the `distDir` build option ([cc3389192](https://github.com/storm-software/storm-ops/commit/cc3389192))
+
+### Bug Fixes
+
+- **esbuild:** Added extra `resolveExtensions` items to build options ([e3ca88bb5](https://github.com/storm-software/storm-ops/commit/e3ca88bb5))
+
+### 🧱 Updated Dependencies
+
+- Updated build-tools to 0.142.0
+
 ## 0.29.2 (2025-03-03)
 
 ### Bug Fixes
