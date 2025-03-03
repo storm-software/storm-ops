@@ -403,6 +403,8 @@ async function executeEsBuild(context: ESBuildContext) {
 
   // Remove options not used by esbuild
   const options = { ...context.options } as Partial<ESBuildResolvedOptions>;
+  options.outdir = joinPaths(context.options.outdir, context.options.distDir);
+
   delete options.env;
   delete options.name;
   delete options.assets;
