@@ -1,3 +1,9 @@
+## 0.39.2 (2025-03-03)
+
+### Bug Fixes
+
+- **build-tools:** Cleaned up the compiled file header ([1bd90651c](https://github.com/storm-software/storm-ops/commit/1bd90651c))
+
 ## 0.39.1 (2025-03-02)
 
 ### Bug Fixes

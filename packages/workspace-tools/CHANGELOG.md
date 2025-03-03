@@ -1,3 +1,9 @@
+## 1.263.1 (2025-03-03)
+
+### Bug Fixes
+
+- **build-tools:** Cleaned up the compiled file header ([1bd90651c](https://github.com/storm-software/storm-ops/commit/1bd90651c))
+
 ## 1.263.0 (2025-03-02)
 
 ### Features
