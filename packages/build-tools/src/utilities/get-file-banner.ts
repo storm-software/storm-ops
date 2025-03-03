@@ -19,8 +19,8 @@ export const getFileBanner = (name: string, commentStart = "//") => {
 
     titleName = (titleName.charAt(0).toUpperCase() + titleName.slice(1))
       .split("-")
-      .filter((word) => word && word.length > 0)
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .filter(word => word && word.length > 0)
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
   }
 

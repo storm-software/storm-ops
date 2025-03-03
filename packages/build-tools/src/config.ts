@@ -1,8 +1,8 @@
-export const DEFAULT_COMPILED_BANNER = `
-/**
+export const DEFAULT_COMPILED_BANNER = `/*****************************************
+*
 *      ⚡ Built by Storm Software
-*/
-
+*
+*****************************************/
 `;
 
 export const DEFAULT_ENVIRONMENT = "production";

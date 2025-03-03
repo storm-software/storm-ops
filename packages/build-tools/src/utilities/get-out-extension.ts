@@ -7,18 +7,18 @@
  */
 export function getOutExtension(
   format?: string,
-  pkgType?: string,
+  pkgType?: string
 ): { js: string; dts: string } {
   let jsExtension = ".js";
-  let dtsExtension = ".d.ts";
+  const dtsExtension = ".d.ts";
 
   if (pkgType === "module" && format === "cjs") {
     jsExtension = ".cjs";
-    dtsExtension = ".d.cts";
+    // dtsExtension = ".d.cts";
   }
   if (pkgType !== "module" && format === "esm") {
     jsExtension = ".mjs";
-    dtsExtension = ".d.mts";
+    // dtsExtension = ".d.mts";
   }
   if (format === "iife") {
     jsExtension = ".global.js";
@@ -26,6 +26,6 @@ export function getOutExtension(
 
   return {
     js: jsExtension,
-    dts: dtsExtension,
+    dts: dtsExtension
   };
 }
