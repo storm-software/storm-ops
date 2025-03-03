@@ -132,7 +132,6 @@ const resolveOptions = async (
       options.platform === "node"
         ? ["module", "main"]
         : ["browser", "module", "main"],
-    resolveExtensions: [".ts", ".js", ".node"],
     ...userOptions,
     tsconfig: joinPaths(
       projectRoot,

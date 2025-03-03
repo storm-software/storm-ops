@@ -38,6 +38,7 @@ export const DEFAULT_BUILD_OPTIONS: Required<
     | "bundle"
     | "clean"
     | "debug"
+    | "resolveExtensions"
     | "loader"
     | "banner"
     | "logLevel"
@@ -58,6 +59,18 @@ export const DEFAULT_BUILD_OPTIONS: Required<
   bundle: true,
   clean: true,
   debug: false,
+  resolveExtensions: [
+    ".tsx",
+    ".ts",
+    ".cts",
+    ".mts",
+    ".jsx",
+    ".js",
+    ".cjs",
+    ".mjs",
+    ".css",
+    ".json"
+  ],
   loader: {
     ".aac": "file",
     ".css": "file",
