@@ -34,6 +34,7 @@ export type ESBuildOptions = Omit<
     emitTypes?: boolean;
     injectShims?: boolean;
     renderers?: Renderer[];
+    distDir?: string;
   };
 
 export type ESBuildResult = BuildResult;
@@ -61,6 +62,7 @@ export type ESBuildResolvedOptions = Omit<
     entryPoints: string[];
     renderers?: Renderer[];
     format: Format;
+    distDir: string;
   };
 
 export type ESBuildCLIOptions = AdditionalCLIOptions &

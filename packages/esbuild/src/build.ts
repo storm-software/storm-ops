@@ -22,7 +22,6 @@ import {
 } from "@nx/devkit";
 import {
   addPackageDependencies,
-  addPackageJsonExport,
   addWorkspacePackageJsonFields,
   copyAssets,
   DEFAULT_COMPILED_BANNER,
@@ -150,6 +149,7 @@ const resolveOptions = async (
       userOptions.emitOnAll === true
     ),
     outdir: userOptions.outputPath || joinPaths("dist", projectRoot),
+    distDir: userOptions.distDir || "dist",
     plugins: [] as ESBuildResolvedOptions["plugins"],
     name: userOptions.name || projectName,
     projectConfigurations,
@@ -272,11 +272,8 @@ async function generatePackageJson(context: ESBuildContext) {
 
     packageJson.exports ??= {};
     packageJson.exports["./package.json"] ??= "./package.json";
-    packageJson.exports["."] ??= addPackageJsonExport(
-      "index",
-      packageJson.type,
-      context.options.sourceRoot
-    );
+    packageJson.exports["."] ??=
+      `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.js`;
 
     let entryPoints = [{ in: "./src/index.ts", out: "./src/index.ts" }];
     if (context.options.entryPoints) {
@@ -298,19 +295,24 @@ async function generatePackageJson(context: ESBuildContext) {
         split.pop();
         const entry = split.join(".").replaceAll("\\", "/");
 
-        packageJson.exports[`./${entry}`] ??= addPackageJsonExport(
-          entry,
-          packageJson.type,
-          context.options.sourceRoot
-        );
+        packageJson.exports[`./${entry}`] ??=
+          `.${context.options.distDir ? `/${context.options.distDir}` : ""}/${entry}.js`;
       }
     }
 
-    packageJson.main =
-      packageJson.type === "commonjs" ? "./dist/index.js" : "./dist/index.cjs";
-    packageJson.module =
-      packageJson.type === "module" ? "./dist/index.js" : "./dist/index.mjs";
-    packageJson.types = "./dist/index.d.ts";
+    if (context.options.format === "esm") {
+      packageJson.module =
+        packageJson.type === "module"
+          ? `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.js`
+          : `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.mjs`;
+    } else {
+      packageJson.main =
+        packageJson.type === "commonjs"
+          ? `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.js`
+          : `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.cjs`;
+    }
+
+    packageJson.types = `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.d.ts`;
 
     packageJson.exports = Object.keys(packageJson.exports).reduce(
       (ret, key) => {
@@ -412,6 +414,7 @@ async function executeEsBuild(context: ESBuildContext) {
   delete options.debug;
   delete options.generatePackageJson;
   delete options.emitOnAll;
+  delete options.distDir;
   delete options.includeSrc;
   delete options.verbose;
   delete options.projectRoot;
@@ -440,6 +443,7 @@ async function executeEsBuild(context: ESBuildContext) {
       | "debug"
       | "generatePackageJson"
       | "emitOnAll"
+      | "distDir"
       | "includeSrc"
       | "verbose"
       | "projectRoot"
