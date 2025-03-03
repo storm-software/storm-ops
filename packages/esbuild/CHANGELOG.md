@@ -1,3 +1,19 @@
+## 0.30.1 (2025-03-03)
+
+### Bug Fixes
+
+- **esbuild:** Ensure generated output files are placed in `distDir` folder ([db881469a](https://github.com/storm-software/storm-ops/commit/db881469a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([78543811f](https://github.com/storm-software/storm-ops/commit/78543811f))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.158.2
+- Updated build-tools to 0.142.1
+- Updated config to 1.106.2
+
 ## 0.30.0 (2025-03-03)
 
 ### Features
