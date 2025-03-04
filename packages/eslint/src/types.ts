@@ -410,6 +410,13 @@ export interface OptionsNx extends OptionsOverrides {
   depsCheck?: OptionsNxDependencyChecks | false;
 
   /**
+   * The severity of the `@nx/dependency-checks` rule
+   *
+   * @defaultValue "warn"
+   */
+  depsCheckSeverity?: "off" | "warn" | "error";
+
+  /**
    * Enables us to define strict rules for accessing resources between different projects in the repository. Enforcing strict boundaries helps to prevent unplanned cross-dependencies.
    */
   moduleBoundaries?: OptionsNxEnforceModuleBoundaries | false;

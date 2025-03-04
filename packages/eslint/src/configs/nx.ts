@@ -10,6 +10,7 @@ export async function nx(
 ): Promise<TypedFlatConfigItem[]> {
   const {
     depsCheck,
+    depsCheckSeverity = "warn",
     moduleBoundaries,
     ignoredDependencies = [],
     ignoredFiles = [],
@@ -35,7 +36,7 @@ export async function nx(
       files: ["**/package.json"],
       rules: {
         "@nx/dependency-checks": [
-          "error",
+          depsCheckSeverity,
           defu(depsCheck ?? {}, {
             buildTargets: ["build-base", "build"],
             ignoredDependencies,
