@@ -256,7 +256,7 @@
     "chalk": "catalog:",
     "commander": "catalog:",
     "defu": "catalog:",
-    "giget": "^1.2.3",
+    "giget": "^1.2.5",
     "jiti": "catalog:",
     "sqlite": "^5.1.1",
     "zod": "catalog:"
