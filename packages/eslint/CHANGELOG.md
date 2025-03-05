@@ -1,3 +1,14 @@
+## 0.137.0 (2025-03-05)
+
+### Features
+
+- **eslint:** By default disable `@nx/dependency-checks` rule ([e5b2dfe68](https://github.com/storm-software/storm-ops/commit/e5b2dfe68))
+- **eslint:** Added the `depsCheckSeverity` options ([eda38496b](https://github.com/storm-software/storm-ops/commit/eda38496b))
+
+### Bug Fixes
+
+- **eslint:** Resolved build error with TypeScript typings ([bf95a724a](https://github.com/storm-software/storm-ops/commit/bf95a724a))
+
 ## 0.136.1 (2025-03-03)
 
 ### Miscellaneous
