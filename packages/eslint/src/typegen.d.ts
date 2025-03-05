@@ -3851,6 +3851,11 @@ Backward pagination arguments
    */
   'react-dom/no-find-dom-node'?: Linter.RuleEntry<[]>
   /**
+   * warns against using `flushSync`
+   * @see https://eslint-react.xyz/docs/rules/dom-no-flush-sync
+   */
+  'react-dom/no-flush-sync'?: Linter.RuleEntry<[]>
+  /**
    * enforce that button component have an explicit 'type' attribute
    * @see https://eslint-react.xyz/docs/rules/dom-no-missing-button-type
    */
@@ -3956,10 +3961,15 @@ Backward pagination arguments
    */
   'react-hooks/rules-of-hooks'?: Linter.RuleEntry<[]>
   /**
-   * enforce component naming convention to 'PascalCase' or 'CONSTANT_CASE'
+   * enforce naming convention for components
    * @see https://eslint-react.xyz/docs/rules/naming-convention-component-name
    */
   'react-naming-convention/component-name'?: Linter.RuleEntry<ReactNamingConventionComponentName>
+  /**
+   * enforce context name to be a valid component name with the suffix 'Context'
+   * @see https://eslint-react.xyz/docs/rules/naming-convention-context-name
+   */
+  'react-naming-convention/context-name'?: Linter.RuleEntry<[]>
   /**
    * enforce naming convention for JSX filenames
    * @see https://eslint-react.xyz/docs/rules/naming-convention-filename
@@ -4037,7 +4047,7 @@ Backward pagination arguments
    */
   'react/no-access-state-in-setstate'?: Linter.RuleEntry<[]>
   /**
-   * disallow using Array index as 'key'
+   * disallow using an item's index in the array as its key
    * @see https://eslint-react.xyz/docs/rules/no-array-index-key
    */
   'react/no-array-index-key'?: Linter.RuleEntry<[]>
@@ -10740,7 +10750,18 @@ type NodeNoRestrictedRequire = []|[(string | {
 // ----- node/no-sync -----
 type NodeNoSync = []|[{
   allowAtRootLevel?: boolean
-  ignores?: string[]
+  ignores?: (string | {
+    from?: "file"
+    path?: string
+    name?: string[]
+  } | {
+    from?: "lib"
+    name?: string[]
+  } | {
+    from?: "package"
+    package?: string
+    name?: string[]
+  })[]
 }]
 // ----- node/no-unpublished-bin -----
 type NodeNoUnpublishedBin = []|[{
@@ -14526,6 +14547,8 @@ type TsExplicitModuleBoundaryTypes = []|[{
   
   allowHigherOrderFunctions?: boolean
   
+  allowOverloadFunctions?: boolean
+  
   allowTypedFunctionExpressions?: boolean
 }]
 // ----- ts/init-declarations -----
@@ -15557,6 +15580,8 @@ type TsUnboundMethod = []|[{
 type TsUnifiedSignatures = []|[{
   
   ignoreDifferentlyNamedParameters?: boolean
+  
+  ignoreOverloadsWithDifferentJSDoc?: boolean
 }]
 // ----- unicode-bom -----
 type UnicodeBom = []|[("always" | "never")]
