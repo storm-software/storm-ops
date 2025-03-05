@@ -406,13 +406,15 @@ export interface OptionsNx extends OptionsOverrides {
    *
    * @remarks
    * If any values are overridden here, the `ignoredDependencies`, `ignoredFiles`, and `checkObsoleteDependencies` options will be ignored.
+   *
+   * @defaultValue `false`
    */
   depsCheck?: OptionsNxDependencyChecks | false;
 
   /**
    * The severity of the `@nx/dependency-checks` rule
    *
-   * @defaultValue "warn"
+   * @defaultValue "error"
    */
   depsCheckSeverity?: "off" | "warn" | "error";
 

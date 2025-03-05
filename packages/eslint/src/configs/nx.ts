@@ -9,8 +9,8 @@ export async function nx(
   options: OptionsNx = {}
 ): Promise<TypedFlatConfigItem[]> {
   const {
-    depsCheck,
-    depsCheckSeverity = "warn",
+    depsCheck = false,
+    depsCheckSeverity = "error",
     moduleBoundaries,
     ignoredDependencies = [],
     ignoredFiles = [],
@@ -34,21 +34,24 @@ export async function nx(
     {
       name: "storm/nx/dependency-check",
       files: ["**/package.json"],
-      rules: {
-        "@nx/dependency-checks": [
-          depsCheckSeverity,
-          defu(depsCheck ?? {}, {
-            buildTargets: ["build-base", "build"],
-            ignoredDependencies,
-            ignoredFiles,
-            checkMissingDependencies: true,
-            checkObsoleteDependencies,
-            checkVersionMismatches: true,
-            includeTransitiveDependencies: false,
-            useLocalPathsForWorkspaceDependencies: true
-          })
-        ]
-      }
+      rules:
+        depsCheck !== false
+          ? {
+              "@nx/dependency-checks": [
+                depsCheckSeverity,
+                defu(depsCheck, {
+                  buildTargets: ["build-base", "build"],
+                  ignoredDependencies,
+                  ignoredFiles,
+                  checkMissingDependencies: true,
+                  checkObsoleteDependencies,
+                  checkVersionMismatches: true,
+                  includeTransitiveDependencies: false,
+                  useLocalPathsForWorkspaceDependencies: true
+                })
+              ]
+            }
+          : {}
     },
     {
       name: "storm/nx/module-boundaries",
@@ -58,7 +61,7 @@ export async function nx(
           ? {
               "@nx/enforce-module-boundaries": [
                 "error",
-                moduleBoundaries ?? {
+                defu(moduleBoundaries ?? {}, {
                   enforceBuildableLibDependency: false,
                   checkDynamicDependenciesExceptions: [".*"],
                   allow: [],
@@ -68,7 +71,7 @@ export async function nx(
                       onlyDependOnLibsWithTags: ["*"]
                     }
                   ]
-                }
+                })
               ]
             }
           : {}
