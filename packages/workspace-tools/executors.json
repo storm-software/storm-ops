@@ -5,11 +5,6 @@
       "schema": "./dist/src/executors/typia/schema.json",
       "description": "Run the `typia` generator to create runtime type validators"
     },
-    "tsdown": {
-      "implementation": "./dist/src/executors/tsdown/executor",
-      "schema": "./dist/src/executors/tsdown/schema.json",
-      "description": "Run the `tsdown` build process on a selected project"
-    },
     "esbuild": {
       "implementation": "./dist/src/executors/esbuild/executor",
       "schema": "./dist/src/executors/esbuild/schema.json",

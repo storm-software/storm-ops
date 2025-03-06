@@ -190,7 +190,6 @@
     "./plugins/rust": "./dist/src/plugins/rust/index.js",
     "./plugins/typescript": "./dist/src/plugins/typescript/index.js",
     "./plugins/typescript/tsup": "./dist/src/plugins/typescript/tsup.js",
-    "./plugins/typescript/tsdown": "./dist/src/plugins/typescript/tsdown.js",
     "./plugins/typescript/untyped": "./dist/src/plugins/typescript/untyped-schema.js",
     "./plugins/typescript/untyped-schema": "./dist/src/plugins/typescript/untyped-schema.js"
   },
@@ -206,7 +205,6 @@
   "peerDependencies": {
     "@storm-software/esbuild": "workspace:*",
     "@storm-software/prettier": "workspace:*",
-    "@storm-software/tsdown": "workspace:*",
     "@storm-software/unbuild": "workspace:*",
     "markdownlint-cli2": "^0.17.2",
     "nx": "catalog:",
@@ -214,16 +212,13 @@
   },
   "peerDependenciesMeta": {
     "@storm-software/esbuild": {
-      "optional": true
+      "optional": false
     },
     "@storm-software/prettier": {
       "optional": false
     },
-    "@storm-software/tsdown": {
-      "optional": true
-    },
     "@storm-software/unbuild": {
-      "optional": true
+      "optional": false
     },
     "markdownlint-cli2": {
       "optional": false

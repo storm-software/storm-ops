@@ -16,40 +16,40 @@ module.exports = {
       files: "**/*.md{,x}",
       options: {
         semi: false,
-        trailingComma: "none",
-      },
+        trailingComma: "none"
+      }
     },
     {
       files: "**/*.svg",
       options: {
-        parser: "html",
-      },
+        parser: "html"
+      }
     },
     { files: "**/*.json", options: { trailingComma: "none" } },
     {
       files: "**/*.hbs",
       options: {
-        parser: "html",
-      },
+        parser: "html"
+      }
     },
     {
       files: "**/*.prisma",
       options: {
-        parser: "prisma-parse",
-      },
+        parser: "prisma-parse"
+      }
     },
     {
       files: "**/{*.acid,*.aci,*.acidic}",
       options: {
-        parser: "prisma-parse",
-      },
-    },
+        parser: "prisma-parse"
+      }
+    }
   ],
   plugins: [
     "prettier-plugin-sh",
     "prettier-plugin-pkg",
-    "prettier-plugin-prisma",
     "prettier-plugin-organize-imports",
+    "prettier-plugin-prisma"
   ],
-  organizeImportsSkipDestructiveCodeActions: false,
+  organizeImportsSkipDestructiveCodeActions: false
 };
