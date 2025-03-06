@@ -1,3 +1,13 @@
+## 0.31.0 (2025-03-05)
+
+### Features
+
+- **eslint:** Added the `depsCheckSeverity` options ([eda38496b](https://github.com/storm-software/storm-ops/commit/eda38496b))
+
+### 🧱 Updated Dependencies
+
+- Updated build-tools to 0.143.0
+
 ## 0.30.1 (2025-03-03)
 
 ### Bug Fixes
