@@ -1,3 +1,9 @@
+## 0.137.2 (2025-03-06)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with unneeded implicit dependency ([2a44b95f9](https://github.com/storm-software/storm-ops/commit/2a44b95f9))
+
 ## 0.137.1 (2025-03-06)
 
 ### Miscellaneous
