@@ -1,3 +1,13 @@
+## 0.42.0 (2025-03-06)
+
+### Features
+
+- **workspace-tools:** Remove unused `tsdown` executor ([9dec594bf](https://github.com/storm-software/storm-ops/commit/9dec594bf))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([26f342fb1](https://github.com/storm-software/storm-ops/commit/26f342fb1))
+
 ## 0.41.0 (2025-03-05)
 
 ### Features
