@@ -173,7 +173,7 @@
     "@nx/js": "catalog:",
     "@storm-software/build-tools": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
-    "esbuild": "^0.25.0",
+    "esbuild": "catalog:",
     "spdx-exceptions": "^2.5.0",
     "spdx-license-ids": "^3.0.20"
   },
@@ -208,7 +208,7 @@
     "commander": "catalog:",
     "defu": "catalog:",
     "es-toolkit": "^1.30.1",
-    "esbuild": "^0.25.0",
+    "esbuild": "catalog:",
     "globby": "^14.0.2",
     "nx": "catalog:",
     "prettier-plugin-organize-imports": "^4.0.0",
