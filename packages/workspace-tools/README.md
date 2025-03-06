@@ -47,30 +47,28 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
   - [Executors](#executors)
   - [typia](#typia)
     - [Example](#example)
-  - [tsdown](#tsdown)
-    - [Example](#example-1)
   - [esbuild](#esbuild)
-    - [Example](#example-2)
+    - [Example](#example-1)
   - [unbuild](#unbuild)
-    - [Example](#example-3)
+    - [Example](#example-2)
   - [clean-package](#clean-package)
-    - [Example](#example-4)
+    - [Example](#example-3)
   - [size-limit](#size-limit)
-    - [Example](#example-5)
+    - [Example](#example-4)
   - [npm-publish](#npm-publish)
-    - [Example](#example-6)
+    - [Example](#example-5)
   - [cargo-publish](#cargo-publish)
-    - [Example](#example-7)
+    - [Example](#example-6)
   - [cargo-build](#cargo-build)
-    - [Example](#example-8)
+    - [Example](#example-7)
   - [cargo-check](#cargo-check)
-    - [Example](#example-9)
+    - [Example](#example-8)
   - [cargo-format](#cargo-format)
-    - [Example](#example-10)
+    - [Example](#example-9)
   - [cargo-clippy](#cargo-clippy)
-    - [Example](#example-11)
+    - [Example](#example-10)
   - [cargo-doc](#cargo-doc)
-    - [Example](#example-12)
+    - [Example](#example-11)
   - [Generators](#generators)
   - [init](#init)
   - [preset](#preset)
@@ -152,22 +150,6 @@ nx run my-project:typia
 ```
 
 **Please note:** _The typia executor should be included in the desired projects's `project.json` file._ 
-
-
-
-## tsdown
-
-Run the \`tsdown\` build process on a selected project
-
-### Example 
-
-This executor can be used by executing the following in a command line utility: 
-
-```cmd 
-nx run my-project:tsdown
-```
-
-**Please note:** _The tsdown executor should be included in the desired projects's `project.json` file._ 
 
 
 

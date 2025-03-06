@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/workspace-tools/src",
   "projectType": "library",
-  "implicitDependencies": ["untyped", "unbuild", "esbuild", "tsdown"],
+  "implicitDependencies": ["untyped", "unbuild", "esbuild"],
   "targets": {
     "build-untyped": {
       "executor": "nx:run-commands",
