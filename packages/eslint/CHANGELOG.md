@@ -1,3 +1,17 @@
+## 0.138.0 (2025-03-09)
+
+### Features
+
+- **eslint:** Export the `types` module ([0cbf12e79](https://github.com/storm-software/storm-ops/commit/0cbf12e79))
+
+### Bug Fixes
+
+- **eslint:** Resolve build issue with export extensions ([21d524b87](https://github.com/storm-software/storm-ops/commit/21d524b87))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([de604c0d0](https://github.com/storm-software/storm-ops/commit/de604c0d0))
+
 ## 0.137.4 (2025-03-09)
 
 ### Miscellaneous
