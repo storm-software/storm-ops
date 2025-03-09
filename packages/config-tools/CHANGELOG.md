@@ -1,3 +1,9 @@
+## 1.158.4 (2025-03-06)
+
+### Bug Fixes
+
+- **esbuild:** Ensure all packages `esbuild` dependencies match ([b4ddf1284](https://github.com/storm-software/storm-ops/commit/b4ddf1284))
+
 ## 1.158.3 (2025-03-06)
 
 ### Miscellaneous
