@@ -1,3 +1,13 @@
+## 1.264.3 (2025-03-09)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([bf0d377f7](https://github.com/storm-software/storm-ops/commit/bf0d377f7))
+
+### Continuous Integration
+
+- **monorepo:** Update the `stormie-bot` account user name in actions ([d6082038c](https://github.com/storm-software/storm-ops/commit/d6082038c))
+
 ## 1.264.2 (2025-03-06)
 
 ### Bug Fixes
