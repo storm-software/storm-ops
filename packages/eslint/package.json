@@ -90,6 +90,20 @@
         "default": "./dist/preset.js"
       }
     },
+    "./types": {
+      "import": {
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
+      },
+      "require": {
+        "types": "./dist/types.d.cts",
+        "default": "./dist/types.cjs"
+      },
+      "default": {
+        "types": "./dist/types.d.ts",
+        "default": "./dist/types.js"
+      }
+    },
     "./rules/*": {
       "import": {
         "types": "./dist/rules/*.d.ts",
