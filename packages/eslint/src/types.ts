@@ -12,7 +12,7 @@ export type Rules = RuleOptions;
 
 export type { ConfigNames };
 
-export * from "./typegen";
+export * from "./typegen.d";
 
 export type TypedFlatConfigItem = Omit<
   Linter.Config<Linter.RulesRecord & Rules>,
