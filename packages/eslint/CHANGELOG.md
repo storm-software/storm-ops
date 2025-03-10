@@ -1,3 +1,18 @@
+## 0.139.0 (2025-03-10)
+
+### Features
+
+- **eslint:** Added `eslint-plugin-tsdoc` to config preset ([c9d0f6250](https://github.com/storm-software/storm-ops/commit/c9d0f6250))
+- **eslint:** Rename `name` to `repositoryName` in options ([c7a3abfeb](https://github.com/storm-software/storm-ops/commit/c7a3abfeb))
+
+### Bug Fixes
+
+- **eslint:** Disable `banner/banner` rule in markdown examples ([100ffc102](https://github.com/storm-software/storm-ops/commit/100ffc102))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([1b7ba4276](https://github.com/storm-software/storm-ops/commit/1b7ba4276))
+
 ## 0.138.1 (2025-03-10)
 
 ### Miscellaneous
