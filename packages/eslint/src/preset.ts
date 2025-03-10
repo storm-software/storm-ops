@@ -75,9 +75,9 @@ export function resolveSubOptions<K extends keyof OptionsConfig>(
   options: OptionsConfig,
   key: K
 ): ResolvedOptions<OptionsConfig[K]> {
-  return typeof options[key] === "boolean"
-    ? ({} as any)
-    : ((options[key] || {}) as ResolvedOptions<OptionsConfig[K]>);
+  return (
+    typeof options[key] === "boolean" ? {} : options[key] || {}
+  ) as ResolvedOptions<OptionsConfig[K]>;
 }
 
 export function getOverrides<K extends keyof OptionsConfig>(
@@ -102,12 +102,12 @@ export function getStormConfig(
   ...userConfigs: Awaitable<
     | TypedFlatConfigItem
     | TypedFlatConfigItem[]
-    | FlatConfigComposer<any, any>
+    | FlatConfigComposer<object, string>
     | Linter.Config[]
   >[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
-    name = "",
+    repositoryName,
     globals = {},
     lineEndings = "unix",
     astro: enableAstro = false,
@@ -183,7 +183,7 @@ export function getStormConfig(
   configs.push(
     ignores(options.ignores),
     javascript({
-      name,
+      repositoryName,
       globals,
       lineEndings,
       isInEditor,
@@ -370,14 +370,20 @@ export function getStormConfig(
   // User can optionally pass a flat config item to the first argument
   // We pick the known keys as ESLint would do schema validation
   const fusedConfig = flatConfigProps.reduce((acc, key) => {
-    if (key in options) acc[key] = options[key] as any;
+    if (key in options) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      acc[key] = options[key] as any;
+    }
+
     return acc;
   }, {} as TypedFlatConfigItem);
   if (Object.keys(fusedConfig).length) configs.push([fusedConfig]);
 
   let composer = new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>();
-
-  composer = composer.append(...configs, ...(userConfigs as any));
+  composer = composer.append(
+    ...configs,
+    ...(userConfigs as Linter.Config<Linter.RulesRecord>[])
+  );
 
   if (autoRenamePlugins) {
     composer = composer.renamePlugins(defaultPluginRenaming);

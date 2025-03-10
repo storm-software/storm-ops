@@ -220,7 +220,7 @@ const bannerRule = ESLintUtils.RuleCreator(
     {
       repositoryName: "",
       commentType: "block",
-      numNewlines: 1,
+      numNewlines: 2,
       lineEndings: "unix"
     }
   ],
@@ -231,7 +231,7 @@ const bannerRule = ESLintUtils.RuleCreator(
         banner,
         repositoryName = "",
         commentType = "block",
-        numNewlines = 1,
+        numNewlines = 2,
         lineEndings = "unix"
       }
     ]
@@ -424,7 +424,7 @@ const plugin: ESLint.Plugin = {
   },
   configs: {} as Record<string, Linter.Config<Linter.RulesRecord>>,
   rules: {
-    banner: bannerRule as any
+    banner: bannerRule as unknown
   },
   processors: {}
 };

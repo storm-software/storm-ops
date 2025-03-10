@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DepConstraint } from "@nx/eslint-plugin/src/utils/runtime-lint-utils";
 import type { StylisticCustomizeOptions } from "@stylistic/eslint-plugin";
 import type { ParserOptions } from "@typescript-eslint/parser";
@@ -447,7 +448,7 @@ export interface OptionsJavascript {
   /**
    * The name of the repository used in adding the banner comments
    */
-  name: string;
+  repositoryName?: string;
 
   /**
    * An object containing a list of extra global variables to include in the configuration.
