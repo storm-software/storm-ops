@@ -3735,6 +3735,21 @@ Backward pagination arguments
    */
   'perfectionist/sort-variable-declarations'?: Linter.RuleEntry<PerfectionistSortVariableDeclarations>
   /**
+   * Enforce using "catalog:" in `package.json`
+   * @see https://github.com/antfu/eslint-plugin-pnpm/blob/main/src/rules/enforce-catalog.test.ts
+   */
+  'pnpm/enforce-catalog'?: Linter.RuleEntry<PnpmEnforceCatalog>
+  /**
+   * Prefer having pnpm settings in `pnpm-workspace.yaml` instead of `package.json`. This would requires pnpm v10.6+, see https://github.com/orgs/pnpm/discussions/9037.
+   * @see https://github.com/antfu/eslint-plugin-pnpm/blob/main/src/rules/prefer-workspace-settings.test.ts
+   */
+  'pnpm/prefer-workspace-settings'?: Linter.RuleEntry<PnpmPreferWorkspaceSettings>
+  /**
+   * Enforce using valid catalog in `package.json`
+   * @see https://github.com/antfu/eslint-plugin-pnpm/blob/main/src/rules/valid-catalog.test.ts
+   */
+  'pnpm/valid-catalog'?: Linter.RuleEntry<PnpmValidCatalog>
+  /**
    * Require using arrow functions for callbacks
    * @see https://eslint.org/docs/latest/rules/prefer-arrow-callback
    */
@@ -6492,6 +6507,11 @@ Backward pagination arguments
    * @see https://typescript-eslint.io/rules/use-unknown-in-catch-callback-variable
    */
   'ts/use-unknown-in-catch-callback-variable'?: Linter.RuleEntry<[]>
+  /**
+   * Validates that TypeScript documentation comments conform to the TSDoc standard
+   * @see https://tsdoc.org/pages/packages/eslint-plugin-tsdoc
+   */
+  'tsdoc/syntax'?: Linter.RuleEntry<[]>
   /**
    * Require or disallow Unicode byte order mark (BOM)
    * @see https://eslint.org/docs/latest/rules/unicode-bom
@@ -12681,6 +12701,30 @@ type PerfectionistSortVariableDeclarations = []|[{
   
   partitionByNewLine?: boolean
 }]
+// ----- pnpm/enforce-catalog -----
+type PnpmEnforceCatalog = []|[{
+  
+  allowedProtocols?: string[]
+  
+  autofix?: boolean
+  
+  defaultCatalog?: string
+  
+  reuseExistingCatalog?: boolean
+}]
+// ----- pnpm/prefer-workspace-settings -----
+type PnpmPreferWorkspaceSettings = []|[{
+  autofix?: boolean
+}]
+// ----- pnpm/valid-catalog -----
+type PnpmValidCatalog = []|[{
+  
+  autoInsert?: boolean
+  
+  autoInsertDefaultSpecifier?: string
+  
+  autofix?: boolean
+}]
 // ----- prefer-arrow-callback -----
 type PreferArrowCallback = []|[{
   allowNamedFunctions?: boolean
@@ -16279,4 +16323,4 @@ type Yoda = []|[("always" | "never")]|[("always" | "never"), {
   onlyEquality?: boolean
 }]
 // Names of all the configs
-export type ConfigNames = 'storm/cspell/rules' | 'storm/astro/setup' | 'storm/astro/rules' | 'storm/formatter/setup' | 'storm/imports/rules' | 'storm/graphql/setup' | 'storm/graphql/rules' | 'storm/graphql/relay' | 'storm/javascript/setup' | 'storm/javascript/banner' | 'storm/javascript/rules' | 'storm/jsx/rules' | 'storm/jsdoc/rules' | 'storm/jsonc/setup' | 'storm/jsonc/rules' | 'storm/markdown/setup' | 'storm/markdown/processor' | 'storm/markdown/parser' | 'storm/markdown/disables' | 'storm/mdx/setup' | 'storm/node/rules' | 'storm/nx/setup' | 'storm/nx/schema' | 'storm/nx/dependency-check' | 'storm/nx/module-boundaries' | 'storm/next/rules' | 'storm/prettier/rules' | 'storm/perfectionist/rules' | 'storm/react/setup' | 'storm/react/rules' | 'storm/react-native/rules' | 'storm/sort/package-json' | 'storm/stylistic/rules' | 'storm/secrets/rules' | 'storm/storybook/setup' | 'storm/storybook/rules' | 'storm/storybook/main' | 'storm/test/setup' | 'storm/test/rules' | 'storm/toml/setup' | 'storm/toml/rules' | 'storm/regexp/rules' | 'storm/typescript/setup' | 'storm/typescript/parser' | 'storm/typescript/type-aware-parser' | 'storm/typescript/rules' | 'storm/typescript/rules-type-aware' | 'storm/unicorn/rules' | 'storm/unocss' | 'storm/yaml/setup' | 'storm/yaml/rules'
+export type ConfigNames = 'storm/cspell/rules' | 'storm/astro/setup' | 'storm/astro/rules' | 'storm/formatter/setup' | 'storm/imports/rules' | 'storm/graphql/setup' | 'storm/graphql/rules' | 'storm/graphql/relay' | 'storm/javascript/setup' | 'storm/javascript/banner' | 'storm/javascript/rules' | 'storm/jsx/rules' | 'storm/jsdoc/rules' | 'storm/jsonc/setup' | 'storm/jsonc/rules' | 'storm/markdown/setup' | 'storm/markdown/processor' | 'storm/markdown/parser' | 'storm/markdown/disables' | 'storm/mdx/setup' | 'storm/node/rules' | 'storm/nx/setup' | 'storm/nx/schema' | 'storm/nx/dependency-check' | 'storm/nx/module-boundaries' | 'storm/next/rules' | 'storm/prettier/rules' | 'storm/perfectionist/rules' | 'storm/pnpm/setup' | 'storm/pnpm/rules' | 'storm/react/setup' | 'storm/react/rules' | 'storm/react-native/rules' | 'storm/sort/package-json' | 'storm/stylistic/rules' | 'storm/secrets/rules' | 'storm/storybook/setup' | 'storm/storybook/rules' | 'storm/storybook/main' | 'storm/test/setup' | 'storm/test/rules' | 'storm/toml/setup' | 'storm/toml/rules' | 'storm/regexp/rules' | 'storm/typescript/setup' | 'storm/typescript/parser' | 'storm/typescript/type-aware-parser' | 'storm/typescript/rules' | 'storm/typescript/rules-tsdoc' | 'storm/typescript/rules-type-aware' | 'storm/unicorn/rules' | 'storm/unocss' | 'storm/yaml/setup' | 'storm/yaml/rules'

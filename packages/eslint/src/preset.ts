@@ -32,6 +32,7 @@ import {
 } from "./configs";
 import { cspell } from "./configs/cspell";
 import { mdx } from "./configs/mdx";
+import { pnpm } from "./configs/pnpm";
 import { prettier } from "./configs/prettier";
 import { reactNative } from "./configs/react-native";
 import { secrets } from "./configs/secrets";
@@ -297,6 +298,14 @@ export function getStormConfig(
       astro({
         overrides: getOverrides(options, "astro"),
         stylistic: stylisticOptions
+      })
+    );
+  }
+
+  if (options.pnpm ?? true) {
+    configs.push(
+      pnpm({
+        overrides: getOverrides(options, "pnpm")
       })
     );
   }

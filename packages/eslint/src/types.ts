@@ -523,6 +523,15 @@ export interface OptionsConfig
   nx?: OptionsNx;
 
   /**
+   * Enable PNPM related rules.
+   *
+   * @see https://github.com/antfu/pnpm-workspace-utils/tree/main/packages/eslint-plugin-pnpm
+   *
+   * @defaultValue true
+   */
+  pnpm?: boolean | OptionsOverrides;
+
+  /**
    * Enable JSX related rules.
    *
    * Currently only stylistic rules are included.
