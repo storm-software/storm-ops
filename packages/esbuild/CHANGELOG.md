@@ -1,3 +1,13 @@
+## 0.31.8 (2025-03-10)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate the README markdown files ([a720ef45d](https://github.com/storm-software/storm-ops/commit/a720ef45d))
+
+### 🧱 Updated Dependencies
+
+- Updated build-tools to 0.143.8
+
 ## 0.31.7 (2025-03-10)
 
 ### Miscellaneous

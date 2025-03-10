@@ -1,3 +1,17 @@
+## 0.140.0 (2025-03-10)
+
+### Features
+
+- **eslint:** Added `eslint-plugin-pnpm` linting config ([458840023](https://github.com/storm-software/storm-ops/commit/458840023))
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with workspace root config ([755dd3336](https://github.com/storm-software/storm-ops/commit/755dd3336))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate the README markdown files ([a720ef45d](https://github.com/storm-software/storm-ops/commit/a720ef45d))
+
 ## 0.139.0 (2025-03-10)
 
 ### Features
