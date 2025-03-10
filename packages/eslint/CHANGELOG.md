@@ -1,3 +1,10 @@
+## 0.138.1 (2025-03-10)
+
+### Miscellaneous
+
+- **eslint:** Rename the tsdoc tags and enable `nx.depsCheck` by default ([b9a3ae5c0](https://github.com/storm-software/storm-ops/commit/b9a3ae5c0))
+- **monorepo:** Regenerate README markdown files ([120ba4c77](https://github.com/storm-software/storm-ops/commit/120ba4c77))
+
 ## 0.138.0 (2025-03-09)
 
 ### Features
