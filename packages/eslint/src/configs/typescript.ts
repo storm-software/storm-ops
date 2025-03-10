@@ -13,6 +13,7 @@ import {
   GLOB_TS,
   GLOB_TSX
 } from "../utils/constants";
+import { findWorkspaceRoot } from "../utils/find-workspace-root";
 import { interopDefault, renameRules } from "../utils/helpers";
 import { getTsConfigPath } from "../utils/tsconfig-path";
 
@@ -33,12 +34,6 @@ export async function typescript(
     type = "app"
   } = options;
 
-  let tsconfigRootDir = process.cwd();
-  if (process.env.STORM_WORKSPACE_ROOT || process.env.NX_WORKSPACE_ROOT_PATH) {
-    tsconfigRootDir = (process.env.STORM_WORKSPACE_ROOT ||
-      process.env.NX_WORKSPACE_ROOT_PATH) as string;
-  }
-
   const files = options.files ?? [
     GLOB_TS,
     GLOB_TSX,
@@ -51,10 +46,8 @@ export async function typescript(
     GLOB_ASTRO_TS
   ];
 
-  let tsconfigPath = options?.tsconfigPath;
-  if (!tsconfigPath) {
-    tsconfigPath = getTsConfigPath();
-  }
+  const workspaceRoot = findWorkspaceRoot();
+  const tsconfigPath = getTsConfigPath(options?.tsconfigPath ?? workspaceRoot);
 
   const isTypeAware = !!tsconfigPath;
 
@@ -113,7 +106,7 @@ export async function typescript(
                   allowDefaultProject: ["./*.js"],
                   defaultProject: tsconfigPath
                 },
-                tsconfigRootDir
+                tsconfigRootDir: workspaceRoot
               }
             : {}),
           ...(parserOptions as any)
