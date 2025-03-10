@@ -38,10 +38,8 @@ export async function javascript(
           ecmaFeatures: {
             jsx: true
           },
-          ecmaVersion: 2022,
-          sourceType: "module"
-        },
-        sourceType: "module"
+          ecmaVersion: 2022
+        }
       },
       linterOptions: {
         reportUnusedDisableDirectives: true

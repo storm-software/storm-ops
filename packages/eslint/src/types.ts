@@ -108,7 +108,7 @@ export interface OptionsComponentExts {
    * Additional extensions for components.
    *
    * @example ['vue']
-   * @default []
+   * @defaultValue []
    */
   componentExts?: string[];
 }
@@ -117,7 +117,7 @@ export interface OptionsUnicorn {
   /**
    * Include all rules recommended by `eslint-plugin-unicorn`, instead of only ones picked by Anthony.
    *
-   * @default false
+   * @defaultValue false
    */
   allRecommended?: boolean;
 }
@@ -130,13 +130,13 @@ export interface OptionsTypeScriptParserOptions {
 
   /**
    * Glob patterns for files that should be type aware.
-   * @default ['**\/*.{ts,tsx}']
+   * @defaultValue ['**\/*.{ts,tsx}']
    */
   filesTypeAware?: string[];
 
   /**
    * Glob patterns for files that should not be type aware.
-   * @default ['**\/*.md\/**', '**\/*.astro/*.ts']
+   * @defaultValue ['**\/*.md\/**', '**\/*.astro/*.ts']
    */
   ignoresTypeAware?: string[];
 }
@@ -177,7 +177,7 @@ export interface OptionsProjectType {
   /**
    * Type of the project. `lib` will enable more strict rules for libraries.
    *
-   * @default 'app'
+   * @defaultValue 'app'
    */
   type?: "app" | "lib";
 }
@@ -196,12 +196,12 @@ export interface OptionsIsInEditor {
 export interface OptionsUnoCSS extends OptionsOverrides {
   /**
    * Enable attributify support.
-   * @default true
+   * @defaultValue true
    */
   attributify?: boolean;
   /**
    * Enable strict mode by throwing errors about blocklisted classes.
-   * @default false
+   * @defaultValue false
    */
   strict?: boolean;
 }
@@ -212,7 +212,7 @@ export interface OptionsNext extends OptionsOverrides {
    *
    * @see https://nextjs.org/docs/app/api-reference/config/eslint#with-core-web-vitals
    *
-   * @default true
+   * @defaultValue true
    */
   coreWebVitals?: boolean;
 
@@ -230,7 +230,7 @@ export interface OptionsGraphQL extends OptionsOverrides {
    *
    * @see https://the-guild.dev/graphql/eslint/rules
    *
-   * @default true
+   * @defaultValue true
    */
   schema?: boolean;
 
@@ -239,7 +239,7 @@ export interface OptionsGraphQL extends OptionsOverrides {
    *
    * @see https://the-guild.dev/graphql/eslint/rules
    *
-   * @default true
+   * @defaultValue true
    */
   operations?: boolean;
 
@@ -248,7 +248,7 @@ export interface OptionsGraphQL extends OptionsOverrides {
    *
    * @see https://github.com/relayjs/eslint-plugin-relay
    *
-   * @default true
+   * @defaultValue true
    */
   relay?: boolean;
 }
@@ -259,7 +259,7 @@ export interface OptionsStorybook extends OptionsOverrides {
    *
    * @see https://storybook.js.org/docs/api/csf
    *
-   * @default "loose"
+   * @defaultValue "loose"
    */
   csf?: "none" | "loose" | "strict";
 }
@@ -268,56 +268,56 @@ export interface OptionsNxDependencyChecks extends OptionsOverrides {
   /**
    * List of build target names
    *
-   * @default ['build-base', 'build']
+   * @defaultValue ['build-base', 'build']
    */
   buildTargets: string[];
 
   /**
    * Disable to skip checking for missing dependencies
    *
-   * @default true
+   * @defaultValue true
    */
   checkMissingDependencies: boolean;
 
   /**
    * Disable to skip checking for unused dependencies
    *
-   * @default true
+   * @defaultValue true
    */
   checkObsoleteDependencies: boolean;
 
   /**
    * Disable to skip checking if version specifier matches installed version
    *
-   * @default true
+   * @defaultValue true
    */
   checkVersionMismatches: boolean;
 
   /**
    * List of dependencies to ignore for checks
    *
-   * @default []
+   * @defaultValue []
    */
   ignoredDependencies: string[];
 
   /**
    * List of files to ignore when collecting dependencies. The default value will be set based on the selected executor during the generation.
    *
-   * @default []
+   * @defaultValue []
    */
   ignoredFiles: string[];
 
   /**
    * Enable to collect dependencies of children projects
    *
-   * @default false
+   * @defaultValue false
    */
   includeTransitiveDependencies: boolean;
 
   /**
    * Set workspace dependencies as relative file:// paths. Useful for monorepos that link via file:// in package.json files.
    *
-   * @default false
+   * @defaultValue false
    */
   useLocalPathsForWorkspaceDependencies: boolean;
 }
@@ -326,63 +326,63 @@ export interface OptionsNxEnforceModuleBoundaries extends OptionsOverrides {
   /**
    * List of imports that should be allowed without any checks
    *
-   * @default []
+   * @defaultValue []
    */
   allow: string[];
 
   /**
    * List of build target names
    *
-   * @default ['build-base', 'build']
+   * @defaultValue ['build-base', 'build']
    */
   buildTargets: string[];
 
   /**
    * List of dependency constraints between projects
    *
-   * @default true
+   * @defaultValue true
    */
   depConstraints: DepConstraint[];
 
   /**
    * Enable to restrict the buildable libs from importing non-buildable libraries
    *
-   * @default true
+   * @defaultValue true
    */
   enforceBuildableLibDependency: boolean;
 
   /**
    * Disable check for self circular dependency when project imports from itself via alias path
    *
-   * @default false
+   * @defaultValue false
    */
   allowCircularSelfDependency: boolean;
 
   /**
    * List of project pairs that should be skipped from Circular dependencies checks, including the self-circular dependency check. E.g. ['feature-project-a', 'myapp']. Project name can be replaced by catch all * for more generic matches.
    *
-   * @default []
+   * @defaultValue []
    */
   ignoredCircularDependencies: Array<[string, string]>;
 
   /**
    * List of imports that should be skipped for Imports of lazy-loaded libraries forbidden checks. E.g. ['@myorg/lazy-project/component/*', '@myorg/other-project']
    *
-   * @default []
+   * @defaultValue []
    */
   checkDynamicDependenciesExceptions: string[];
 
   /**
    * Ban import of dependencies that were not specified in the root or project's package.json
    *
-   * @default false
+   * @defaultValue false
    */
   banTransitiveDependencies: boolean;
 
   /**
    * Enable to enforce the check for banned external imports in the nested packages. Check [Dependency constraints](https://nx.dev/nx-api/eslint-plugin/documents/enforce-module-boundaries#dependency-constraints) for more information
    *
-   * @default false
+   * @defaultValue false
    */
   checkNestedExternalImports: boolean;
 }
@@ -408,15 +408,13 @@ export interface OptionsNx extends OptionsOverrides {
    *
    * @remarks
    * If any values are overridden here, the `ignoredDependencies`, `ignoredFiles`, and `checkObsoleteDependencies` options will be ignored.
-   *
-   * @defaultValue `false`
    */
   depsCheck?: OptionsNxDependencyChecks | false;
 
   /**
    * The severity of the `@nx/dependency-checks` rule
    *
-   * @defaultValue "error"
+   * @defaultValue "warn"
    */
   depsCheckSeverity?: "off" | "warn" | "error";
 
@@ -430,7 +428,7 @@ export interface OptionsCSpell extends OptionsOverrides {
   /**
    * A path to a CSpell configuration file
    *
-   * @default "./.vscode/cspell.json"
+   * @defaultValue "./.vscode/cspell.json"
    */
   configFile?: string;
 }
@@ -459,7 +457,7 @@ export interface OptionsJavascript {
   /**
    * The style of line endings to use.
    *
-   * @default "unix"
+   * @defaultValue "unix"
    */
   lineEndings?: "unix" | "windows";
 }
@@ -474,14 +472,14 @@ export interface OptionsConfig
    * Passing an object to configure the options.
    *
    * @see https://github.com/antfu/eslint-config-flat-gitignore
-   * @default true
+   * @defaultValue true
    */
   gitignore?: boolean | FlatGitignoreOptions;
 
   /**
    * Disable some opinionated rules to Anthony's preference.
    *
-   * @default false
+   * @defaultValue false
    */
   lessOpinionated?: boolean;
 
@@ -496,7 +494,7 @@ export interface OptionsConfig
    * Requires installing:
    * - `@cspell/eslint-plugin`
    *
-   * @default true
+   * @defaultValue true
    */
   cspell?: boolean | OptionsCSpell;
 
@@ -505,7 +503,7 @@ export interface OptionsConfig
    *
    * Passing an object to enable TypeScript Language Server support.
    *
-   * @default auto-detect based on the dependencies
+   * @defaultValue auto-detect based on the dependencies
    */
   typescript?: boolean | OptionsTypescript;
 
@@ -519,42 +517,42 @@ export interface OptionsConfig
    *
    * Currently only stylistic rules are included.
    *
-   * @default true
+   * @defaultValue true
    */
   jsx?: boolean;
 
   /**
    * Options for eslint-plugin-unicorn.
    *
-   * @default true
+   * @defaultValue true
    */
   unicorn?: boolean | OptionsUnicorn;
 
   /**
    * Enable test support.
    *
-   * @default true
+   * @defaultValue true
    */
   test?: boolean | OptionsOverrides;
 
   /**
    * Enable JSONC support.
    *
-   * @default true
+   * @defaultValue true
    */
   jsonc?: boolean | OptionsOverrides;
 
   /**
    * Enable YAML support.
    *
-   * @default true
+   * @defaultValue true
    */
   yaml?: boolean | OptionsOverrides;
 
   /**
    * Enable TOML support.
    *
-   * @default true
+   * @defaultValue true
    */
   toml?: boolean | OptionsOverrides;
 
@@ -567,7 +565,7 @@ export interface OptionsConfig
    * Requires installing for formatting .astro:
    * - `prettier-plugin-astro`
    *
-   * @default false
+   * @defaultValue false
    */
   astro?: boolean | OptionsOverrides;
 
@@ -576,14 +574,14 @@ export interface OptionsConfig
    *
    * For formatting Markdown content, enable also `formatters.markdown`.
    *
-   * @default true
+   * @defaultValue true
    */
   markdown?: boolean | OptionsOverrides;
 
   /**
    * Enable linting for mdx files.
    *
-   * @default true
+   * @defaultValue true
    */
   mdx?: boolean | OptionsOverrides;
 
@@ -592,7 +590,7 @@ export interface OptionsConfig
    *
    * @see https://eslint.style/
    *
-   * @default false
+   * @defaultValue false
    */
   stylistic?: boolean | (StylisticConfig & OptionsOverrides);
 
@@ -600,21 +598,21 @@ export interface OptionsConfig
    * Enable regexp rules.
    *
    * @see https://ota-meshi.github.io/eslint-plugin-regexp/
-   * @default true
+   * @defaultValue true
    */
   regexp?: boolean | (OptionsRegExp & OptionsOverrides);
 
   /**
    * Enable GraphQL support.
    *
-   * @default false
+   * @defaultValue false
    */
   graphql?: boolean | OptionsGraphQL;
 
   /**
    * Enable Storybook support.
    *
-   * @default false
+   * @defaultValue false
    */
   storybook?: boolean | OptionsStorybook;
 
@@ -626,7 +624,7 @@ export interface OptionsConfig
    * - `eslint-plugin-react-hooks`
    * - `eslint-plugin-react-refresh`
    *
-   * @default false
+   * @defaultValue false
    */
   react?: boolean | OptionsOverrides;
 
@@ -636,7 +634,7 @@ export interface OptionsConfig
    * Requires installing:
    * - `eslint-plugin-react-native`
    *
-   * @default false
+   * @defaultValue false
    */
   "react-native"?: boolean | OptionsOverrides;
 
@@ -646,7 +644,7 @@ export interface OptionsConfig
    * Requires installing:
    * - `@next/eslint-plugin-next`
    *
-   * @default false
+   * @defaultValue false
    */
   next?: boolean | OptionsNext;
 
@@ -656,7 +654,7 @@ export interface OptionsConfig
    * Requires installing:
    * - `@unocss/eslint-plugin`
    *
-   * @default false
+   * @defaultValue false
    */
   unocss?: boolean | OptionsUnoCSS;
 
@@ -668,20 +666,20 @@ export interface OptionsConfig
    *
    * When set to `true`, it will enable all formatters.
    *
-   * @default false
+   * @defaultValue false
    */
   formatters?: boolean | OptionsFormatters;
 
   /**
    * Control to disable some rules in editors.
-   * @default auto-detect based on the process.env
+   * @defaultValue auto-detect based on the process.env
    */
   isInEditor?: boolean;
 
   /**
    * Automatically rename plugins in the config.
    *
-   * @default true
+   * @defaultValue true
    */
   autoRenamePlugins?: boolean;
 }
