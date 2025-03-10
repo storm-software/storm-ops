@@ -65,6 +65,7 @@ export async function markdown(
       rules: {
         "import/newline-after-import": "off",
 
+        "banner/banner": "off",
         "no-alert": "off",
         "no-console": "off",
         "no-labels": "off",
