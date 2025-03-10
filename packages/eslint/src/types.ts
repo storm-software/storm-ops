@@ -153,6 +153,15 @@ export interface OptionsTypeScriptWithTypes {
    * Override type aware rules.
    */
   overridesTypeAware?: TypedFlatConfigItem["rules"];
+
+  /**
+   * The rule to use for eslint-plugin-tsdoc syntax checking. If set to `false`, it will disable the plugin.
+   *
+   * @see https://github.com/microsoft/tsdoc/tree/master/eslint-plugin
+   *
+   * @defaultValue 'warn'
+   */
+  tsdoc?: "warn" | "error" | "off" | false;
 }
 
 export interface OptionsHasTypeScript {
