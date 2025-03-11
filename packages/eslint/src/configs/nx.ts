@@ -9,7 +9,7 @@ export async function nx(
   options: OptionsNx = {}
 ): Promise<TypedFlatConfigItem[]> {
   const {
-    depsCheck = {},
+    depsCheck = false,
     depsCheckSeverity = "error",
     moduleBoundaries,
     ignoredDependencies = [],

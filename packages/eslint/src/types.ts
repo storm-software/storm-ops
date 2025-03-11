@@ -418,6 +418,8 @@ export interface OptionsNx extends OptionsOverrides {
    *
    * @remarks
    * If any values are overridden here, the `ignoredDependencies`, `ignoredFiles`, and `checkObsoleteDependencies` options will be ignored.
+   *
+   * @defaultValue false
    */
   depsCheck?: OptionsNxDependencyChecks | false;
 
@@ -487,7 +489,7 @@ export interface OptionsConfig
   gitignore?: boolean | FlatGitignoreOptions;
 
   /**
-   * Disable some opinionated rules to Anthony's preference.
+   * Disable some opinionated rules to Antfu's preference.
    *
    * @defaultValue false
    */
