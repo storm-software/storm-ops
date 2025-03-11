@@ -1,3 +1,13 @@
+## 0.140.2 (2025-03-11)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with missing `pnpm` plugin ([2b9abb8ef](https://github.com/storm-software/storm-ops/commit/2b9abb8ef))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([36b8a62d3](https://github.com/storm-software/storm-ops/commit/36b8a62d3))
+
 ## 0.140.1 (2025-03-11)
 
 ### Bug Fixes
