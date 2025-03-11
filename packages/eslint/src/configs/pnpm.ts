@@ -13,7 +13,7 @@ export async function pnpm(
 
   return [
     {
-      name: "storm/pnpm/setup",
+      name: "storm/pnpm",
       plugins: {
         pnpm: pluginPnpm
       },
@@ -21,10 +21,7 @@ export async function pnpm(
       files: ["package.json", "**/package.json"],
       languageOptions: {
         parser: parserJsonc
-      }
-    },
-    {
-      name: "storm/pnpm/rules",
+      },
       rules: {
         "pnpm/enforce-catalog": "error",
         "pnpm/valid-catalog": "error",
