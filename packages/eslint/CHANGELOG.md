@@ -1,3 +1,13 @@
+## 0.141.0 (2025-03-11)
+
+### Features
+
+- **eslint:** Patched `eslint-plugin-pnpm` to include a `skip` option ([799f277e5](https://github.com/storm-software/storm-ops/commit/799f277e5))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([076080ad7](https://github.com/storm-software/storm-ops/commit/076080ad7))
+
 ## 0.140.2 (2025-03-11)
 
 ### Bug Fixes
