@@ -1,10 +1,10 @@
-import type { OptionsOverrides, TypedFlatConfigItem } from "../types";
+import type { OptionsPnpm, TypedFlatConfigItem } from "../types";
 import { interopDefault } from "../utils/helpers";
 
 export async function pnpm(
-  options: OptionsOverrides = {}
+  options: OptionsPnpm = {}
 ): Promise<TypedFlatConfigItem[]> {
-  const { overrides = {} } = options;
+  const { overrides = {}, skip = ["typescript"] } = options;
 
   const [pluginPnpm, parserJsonc] = await Promise.all([
     interopDefault(import("eslint-plugin-pnpm")),
@@ -13,35 +13,17 @@ export async function pnpm(
 
   return [
     {
-      name: "storm/pnpm/package-json",
+      name: "storm/pnpm",
       plugins: {
         pnpm: pluginPnpm
       },
       ignores: ["**/node_modules/**", "**/dist/**"],
-      files: ["**/package.json"],
+      files: ["package.json", "**/package.json"],
       languageOptions: {
         parser: parserJsonc
       },
       rules: {
-        "pnpm/enforce-catalog": "error",
-        "pnpm/valid-catalog": "error",
-        "pnpm/prefer-workspace-settings": "error",
-
-        ...overrides
-      }
-    },
-    {
-      name: "storm/pnpm/workspace-root",
-      plugins: {
-        pnpm: pluginPnpm
-      },
-      ignores: ["**/node_modules/**", "**/dist/**"],
-      files: ["package.json"],
-      languageOptions: {
-        parser: parserJsonc
-      },
-      rules: {
-        "pnpm/enforce-catalog": ["error", { skip: ["typescript"] }],
+        "pnpm/enforce-catalog": ["error", { skip }],
         "pnpm/valid-catalog": "error",
         "pnpm/prefer-workspace-settings": "error",
 

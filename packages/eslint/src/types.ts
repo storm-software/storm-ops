@@ -436,6 +436,15 @@ export interface OptionsNx extends OptionsOverrides {
   moduleBoundaries?: OptionsNxEnforceModuleBoundaries | false;
 }
 
+export interface OptionsPnpm extends OptionsOverrides {
+  /**
+   * A list of dependencies to ignore for the `pnpm/enforce-catalog` rule.
+   *
+   * @defaultValue ["typescript"]
+   */
+  skip?: string[];
+}
+
 export interface OptionsCSpell extends OptionsOverrides {
   /**
    * A path to a CSpell configuration file
@@ -531,7 +540,7 @@ export interface OptionsConfig
    *
    * @defaultValue true
    */
-  pnpm?: boolean | OptionsOverrides;
+  pnpm?: boolean | OptionsPnpm;
 
   /**
    * Enable JSX related rules.
