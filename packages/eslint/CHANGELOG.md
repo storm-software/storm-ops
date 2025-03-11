@@ -1,3 +1,13 @@
+## 0.140.1 (2025-03-11)
+
+### Bug Fixes
+
+- **eslint:** Disable `nx/dependency-checks` by default ([80091713b](https://github.com/storm-software/storm-ops/commit/80091713b))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([c8c042ba1](https://github.com/storm-software/storm-ops/commit/c8c042ba1))
+
 ## 0.140.0 (2025-03-10)
 
 ### Features
