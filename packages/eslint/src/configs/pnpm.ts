@@ -13,17 +13,35 @@ export async function pnpm(
 
   return [
     {
-      name: "storm/pnpm",
+      name: "storm/pnpm/package-json",
       plugins: {
         pnpm: pluginPnpm
       },
       ignores: ["**/node_modules/**", "**/dist/**"],
-      files: ["package.json", "**/package.json"],
+      files: ["**/package.json"],
       languageOptions: {
         parser: parserJsonc
       },
       rules: {
         "pnpm/enforce-catalog": "error",
+        "pnpm/valid-catalog": "error",
+        "pnpm/prefer-workspace-settings": "error",
+
+        ...overrides
+      }
+    },
+    {
+      name: "storm/pnpm/workspace-root",
+      plugins: {
+        pnpm: pluginPnpm
+      },
+      ignores: ["**/node_modules/**", "**/dist/**"],
+      files: ["package.json"],
+      languageOptions: {
+        parser: parserJsonc
+      },
+      rules: {
+        "pnpm/enforce-catalog": ["error", { skip: ["typescript"] }],
         "pnpm/valid-catalog": "error",
         "pnpm/prefer-workspace-settings": "error",
 

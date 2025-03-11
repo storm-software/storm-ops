@@ -197,7 +197,10 @@
       "protobufjs",
       "sharp",
       "workerd"
-    ]
+    ],
+    "patchedDependencies": {
+      "eslint-plugin-pnpm": "patches/eslint-plugin-pnpm.patch"
+    }
   },
   "prettier": "./packages/prettier/src/config.json",
   "triggerEmptyDevReleaseByIncrementingThisNumber": 0

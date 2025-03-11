@@ -167,6 +167,11 @@ overrides:
   request: '>=2.88.2'
   tough-cookie: 4.1.4
 
+patchedDependencies:
+  eslint-plugin-pnpm:
+    hash: 84f04027dfe479d3e77d60fda7c1bb0afeb9b16b1eea993b53932448fba9a4a2
+    path: patches/eslint-plugin-pnpm.patch
+
 importers:
 
   .:
@@ -777,7 +782,7 @@ importers:
         version: 4.9.0(eslint@9.21.0(jiti@2.4.2))(typescript@5.8.2)
       eslint-plugin-pnpm:
         specifier: ^0.1.2
-        version: 0.1.2(eslint@9.21.0(jiti@2.4.2))
+        version: 0.1.2(patch_hash=84f04027dfe479d3e77d60fda7c1bb0afeb9b16b1eea993b53932448fba9a4a2)(eslint@9.21.0(jiti@2.4.2))
       eslint-plugin-prettier:
         specifier: ^5.2.3
         version: 5.2.3(@types/eslint@9.6.1)(eslint-config-prettier@10.0.1(eslint@9.21.0(jiti@2.4.2)))(eslint@9.21.0(jiti@2.4.2))(prettier@3.5.3)
@@ -4229,7 +4234,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -22228,7 +22232,7 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-pnpm@0.1.2(eslint@9.21.0(jiti@2.4.2)):
+  eslint-plugin-pnpm@0.1.2(patch_hash=84f04027dfe479d3e77d60fda7c1bb0afeb9b16b1eea993b53932448fba9a4a2)(eslint@9.21.0(jiti@2.4.2)):
     dependencies:
       eslint: 9.21.0(jiti@2.4.2)
       find-up-simple: 1.0.1
