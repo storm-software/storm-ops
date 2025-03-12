@@ -1,6 +1,6 @@
-import { ensurePackages, interopDefault } from "src/utils/helpers";
 import type { TypedFlatConfigItem } from "../types";
 import { GLOB_JSX, GLOB_TSX } from "../utils/constants";
+import { ensurePackages, interopDefault } from "../utils/helpers";
 
 export async function jsx(): Promise<TypedFlatConfigItem[]> {
   await ensurePackages(["eslint-plugin-jsx-a11y"]);
@@ -25,7 +25,7 @@ export async function jsx(): Promise<TypedFlatConfigItem[]> {
       },
       rules: {
         "jsx-a11y/alt-text": "error",
-        "jsx-a11y/anchor-ambiguous-text": "off", // TODO: error
+        "jsx-a11y/anchor-ambiguous-text": "error",
         "jsx-a11y/anchor-has-content": "error",
         "jsx-a11y/anchor-is-valid": "error",
         "jsx-a11y/aria-activedescendant-has-tabindex": "error",
