@@ -1,3 +1,13 @@
+## 0.144.1 (2025-03-12)
+
+### Bug Fixes
+
+- **eslint:** Exclude node_modules from build ([2251d328e](https://github.com/storm-software/storm-ops/commit/2251d328e))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([3c7bfed99](https://github.com/storm-software/storm-ops/commit/3c7bfed99))
+
 ## 0.144.0 (2025-03-12)
 
 ### Features
