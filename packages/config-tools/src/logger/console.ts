@@ -56,7 +56,7 @@ export const getLogFn = (
     return (message?: any) => {
       console.error(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.fatal ?? "#7d1a1a")(`[${CONSOLE_ICONS[LogLevelLabel.FATAL]} Fatal] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.fatal ?? "#7d1a1a")(`[${CONSOLE_ICONS[LogLevelLabel.FATAL]}  Fatal] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };

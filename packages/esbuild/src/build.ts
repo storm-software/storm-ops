@@ -609,7 +609,7 @@ export async function build(options: ESBuildOptions | ESBuildOptions[]) {
     writeSuccess("  🏁  ESBuild pipeline build completed successfully");
   } catch (error) {
     writeFatal(
-      "  ❌  Fatal errors occurred during the build that could not be recovered from. The build process has been terminated."
+      "Fatal errors that the build process could not recover from have occured. The build process has been terminated."
     );
 
     throw error;
