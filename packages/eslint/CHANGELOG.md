@@ -1,3 +1,13 @@
+## 0.144.2 (2025-03-12)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with invalid import path ([345db732a](https://github.com/storm-software/storm-ops/commit/345db732a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([c088a1bb8](https://github.com/storm-software/storm-ops/commit/c088a1bb8))
+
 ## 0.144.1 (2025-03-12)
 
 ### Bug Fixes
