@@ -1,3 +1,13 @@
+## 0.144.3 (2025-03-12)
+
+### Bug Fixes
+
+- **eslint:** Ensure all options are provided to the `pnpm/enforce-catalog` rule ([e7a0d7ed3](https://github.com/storm-software/storm-ops/commit/e7a0d7ed3))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([f7e8f1882](https://github.com/storm-software/storm-ops/commit/f7e8f1882))
+
 ## 0.144.2 (2025-03-12)
 
 ### Bug Fixes
