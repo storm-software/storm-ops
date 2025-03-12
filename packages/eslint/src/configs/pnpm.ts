@@ -23,7 +23,16 @@ export async function pnpm(
         parser: parserJsonc
       },
       rules: {
-        "pnpm/enforce-catalog": ["error", { skipPackages }],
+        "pnpm/enforce-catalog": [
+          "error",
+          {
+            skipPackages,
+            autofix: true,
+            reuseExistingCatalog: true,
+            allowedProtocols: ["workspace", "link", "file"],
+            defaultCatalog: "default"
+          }
+        ],
         "pnpm/valid-catalog": "error",
         "pnpm/prefer-workspace-settings": "error",
 
