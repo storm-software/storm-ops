@@ -1,0 +1,41 @@
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 2044814987bcfef550d8279fae0ac1100a85cc06..8ee750eac5a5f402aa36205dca2c9fb206997610 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -149,6 +149,9 @@ const DEFAULT_FIELDS$1 = [
+   "dependencies",
+   "devDependencies"
+ ];
++const IGNORED_DEPENDENCIES = [
++  "typescript"
++];
+ const enforceCatalog = createEslintRule({
+   name: RULE_NAME$4,
+   meta: {
+@@ -193,6 +196,12 @@ const enforceCatalog = createEslintRule({
+             description: "Fields to check for catalog",
+             items: { type: "string" },
+             default: DEFAULT_FIELDS$1
++          },
++          ignore: {
++            type: "array",
++            description: "A list of dependencies to ignore",
++            items: { type: "string" },
++            default: IGNORED_DEPENDENCIES
+           }
+         },
+         additionalProperties: false
+@@ -210,9 +219,12 @@ const enforceCatalog = createEslintRule({
+       autofix = true,
+       reuseExistingCatalog = true,
+       conflicts = "new-catalog",
+-      fields = DEFAULT_FIELDS$1
++      fields = DEFAULT_FIELDS$1,
++      ignore = IGNORED_DEPENDENCIES
+     } = options || {};
+     for (const { packageName, specifier, property } of iterateDependencies(context, fields)) {
++      if (ignore?.some((i) => i === packageName))
++        continue;
+       if (specifier.startsWith("catalog:"))
+         continue;
+       if (allowedProtocols?.some((p) => specifier.startsWith(p)))

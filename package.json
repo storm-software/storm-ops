@@ -200,7 +200,7 @@
       "workerd"
     ],
     "patchedDependencies": {
-      "eslint-plugin-pnpm@0.1.2": "patches/eslint-plugin-pnpm@0.1.2.patch"
+      "eslint-plugin-pnpm@0.3.0": "patches/eslint-plugin-pnpm@0.3.0.patch"
     }
   },
   "prettier": "./packages/prettier/src/config.json",

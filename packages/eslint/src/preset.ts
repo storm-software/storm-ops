@@ -306,10 +306,8 @@ export function getStormConfig(
     configs.push(
       pnpm({
         overrides: getOverrides(options, "pnpm"),
-        skipPackages:
-          typeof options.pnpm !== "boolean"
-            ? options.pnpm?.skipPackages
-            : undefined
+        ignore:
+          typeof options.pnpm !== "boolean" ? options.pnpm?.ignore : undefined
       })
     );
   }

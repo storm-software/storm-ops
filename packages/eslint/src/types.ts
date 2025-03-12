@@ -438,11 +438,11 @@ export interface OptionsNx extends OptionsOverrides {
 
 export interface OptionsPnpm extends OptionsOverrides {
   /**
-   * A list of dependencies to ignore for the `pnpm/enforce-catalog` rule.
+   * A list of dependencies to ignore for the `pnpm/json-enforce-catalog` rule.
    *
    * @defaultValue ["typescript"]
    */
-  skipPackages?: string[];
+  ignore?: string[];
 }
 
 export interface OptionsCSpell extends OptionsOverrides {
