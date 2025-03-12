@@ -39,7 +39,7 @@
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "build-typegen", "^build"],
       "options": {
-        "command": "tsup --config=tsup.config.ts",
+        "command": "tsup-node --config=tsup.config.ts",
         "cwd": "{projectRoot}"
       }
     },
