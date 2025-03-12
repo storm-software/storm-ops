@@ -1,3 +1,17 @@
+## 0.31.17 (2025-03-12)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with `inject` option merging ([eb7598f47](https://github.com/storm-software/storm-ops/commit/eb7598f47))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([abaffb6b4](https://github.com/storm-software/storm-ops/commit/abaffb6b4))
+
+### 🧱 Updated Dependencies
+
+- Updated build-tools to 0.143.17
+
 ## 0.31.16 (2025-03-12)
 
 ### Miscellaneous
