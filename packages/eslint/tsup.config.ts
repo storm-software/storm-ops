@@ -15,6 +15,8 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    shims: true
+    shims: true,
+    bundle: true,
+    noExternal: ["eslint-plugin-pnpm"]
   }
 ]);
