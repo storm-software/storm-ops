@@ -1,3 +1,13 @@
+## 0.145.0 (2025-03-12)
+
+### Features
+
+- **eslint:** Upgrade and patch `eslint-plugin-pnpm` package ([14f58d2da](https://github.com/storm-software/storm-ops/commit/14f58d2da))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([e83d6f588](https://github.com/storm-software/storm-ops/commit/e83d6f588))
+
 ## 0.144.3 (2025-03-12)
 
 ### Bug Fixes

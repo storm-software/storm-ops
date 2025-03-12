@@ -1,3 +1,9 @@
+## 1.106.12 (2025-03-12)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([e83d6f588](https://github.com/storm-software/storm-ops/commit/e83d6f588))
+
 ## 1.106.11 (2025-03-12)
 
 ### Miscellaneous
