@@ -1,3 +1,13 @@
+## 0.42.13 (2025-03-12)
+
+### Bug Fixes
+
+- **monorepo:** Resolve `sherif` test failures ([3e196dc4d](https://github.com/storm-software/storm-ops/commit/3e196dc4d))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([61ebec6ee](https://github.com/storm-software/storm-ops/commit/61ebec6ee))
+
 ## 0.42.12 (2025-03-12)
 
 ### Miscellaneous

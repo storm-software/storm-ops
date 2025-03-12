@@ -1,3 +1,18 @@
+## 0.31.14 (2025-03-12)
+
+### Bug Fixes
+
+- **monorepo:** Resolve `sherif` test failures ([3e196dc4d](https://github.com/storm-software/storm-ops/commit/3e196dc4d))
+- **esbuild:** Prevent `esbuild` process from running after build ([03ba7c03c](https://github.com/storm-software/storm-ops/commit/03ba7c03c))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([61ebec6ee](https://github.com/storm-software/storm-ops/commit/61ebec6ee))
+
+### 🧱 Updated Dependencies
+
+- Updated build-tools to 0.143.14
+
 ## 0.31.13 (2025-03-12)
 
 ### Bug Fixes

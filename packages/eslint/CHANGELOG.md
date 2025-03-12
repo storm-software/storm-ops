@@ -1,3 +1,17 @@
+## 0.143.0 (2025-03-12)
+
+### Features
+
+- **eslint:** Renamed `pnpm.skip` to `pnpm.skipPackages` option ([bd3e7221d](https://github.com/storm-software/storm-ops/commit/bd3e7221d))
+
+### Bug Fixes
+
+- **monorepo:** Resolve `sherif` test failures ([3e196dc4d](https://github.com/storm-software/storm-ops/commit/3e196dc4d))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([61ebec6ee](https://github.com/storm-software/storm-ops/commit/61ebec6ee))
+
 ## 0.142.1 (2025-03-12)
 
 ### Miscellaneous
