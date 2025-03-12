@@ -1,3 +1,9 @@
+## 0.144.0 (2025-03-12)
+
+### Features
+
+- **eslint:** Include patched `eslint-plugin-pnpm` dependency with package ([0acc249cd](https://github.com/storm-software/storm-ops/commit/0acc249cd))
+
 ## 0.143.0 (2025-03-12)
 
 ### Features
