@@ -1,3 +1,19 @@
+## 0.31.13 (2025-03-12)
+
+### Bug Fixes
+
+- **esbuild:** Clean up fatal build error message ([078da1ba6](https://github.com/storm-software/storm-ops/commit/078da1ba6))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([7944884ee](https://github.com/storm-software/storm-ops/commit/7944884ee))
+
+### 🧱 Updated Dependencies
+
+- Updated config-tools to 1.158.9
+- Updated build-tools to 0.143.13
+- Updated config to 1.106.9
+
 ## 0.31.12 (2025-03-11)
 
 ### Miscellaneous

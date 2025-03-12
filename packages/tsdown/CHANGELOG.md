@@ -1,3 +1,9 @@
+## 0.27.6 (2025-03-12)
+
+### Bug Fixes
+
+- **esbuild:** Clean up fatal build error message ([078da1ba6](https://github.com/storm-software/storm-ops/commit/078da1ba6))
+
 ## 0.27.5 (2025-02-26)
 
 ### Miscellaneous

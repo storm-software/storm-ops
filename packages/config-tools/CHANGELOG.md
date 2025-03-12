@@ -1,3 +1,13 @@
+## 1.158.9 (2025-03-12)
+
+### Bug Fixes
+
+- **esbuild:** Clean up fatal build error message ([078da1ba6](https://github.com/storm-software/storm-ops/commit/078da1ba6))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files ([7944884ee](https://github.com/storm-software/storm-ops/commit/7944884ee))
+
 ## 1.158.8 (2025-03-11)
 
 ### Miscellaneous
