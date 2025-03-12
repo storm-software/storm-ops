@@ -456,6 +456,7 @@ async function executeEsBuild(context: ESBuildContext) {
       | "injectShims"
     >
   );
+  await esbuild.stop();
 
   if (result.metafile) {
     const metafilePath = `${context.options.outdir}/${context.options.name}.meta.json`;
