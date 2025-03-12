@@ -442,7 +442,7 @@ export interface OptionsPnpm extends OptionsOverrides {
    *
    * @defaultValue ["typescript"]
    */
-  skip?: string[];
+  skipPackages?: string[];
 }
 
 export interface OptionsCSpell extends OptionsOverrides {

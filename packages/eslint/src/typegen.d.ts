@@ -12712,7 +12712,7 @@ type PnpmEnforceCatalog = []|[{
   
   reuseExistingCatalog?: boolean
   
-  skip?: string[]
+  skipPackages?: string[]
 }]
 // ----- pnpm/prefer-workspace-settings -----
 type PnpmPreferWorkspaceSettings = []|[{

@@ -1,5 +1,5 @@
 diff --git a/dist/index.mjs b/dist/index.mjs
-index 5d684e675461ef2e6a31ca70b59e9fbc0cfa1c71..e197476c690d924e3f3e1a40c0f949408fd41d9b 100644
+index 5d684e675461ef2e6a31ca70b59e9fbc0cfa1c71..b70ddea8f56b9e95ea3a9b9bf473764a6c336dee 100644
 --- a/dist/index.mjs
 +++ b/dist/index.mjs
 @@ -163,7 +163,14 @@ const enforceCatalog = createEslintRule({
@@ -8,9 +8,9 @@ index 5d684e675461ef2e6a31ca70b59e9fbc0cfa1c71..e197476c690d924e3f3e1a40c0f94940
              default: true
 -          }
 +          },
-+          skip: {
++          skipPackages: {
 +            type: "array",
-+            description: "A list of dependency package names to skip enforcing catalog",
++            description: "A list of packages to skip when enforcing the catalog",
 +            items: {
 +              type: "string"
 +            }
@@ -24,10 +24,10 @@ index 5d684e675461ef2e6a31ca70b59e9fbc0cfa1c71..e197476c690d924e3f3e1a40c0f94940
        autofix = true,
 -      reuseExistingCatalog = true
 +      reuseExistingCatalog = true,
-+      skip = []
++      skipPackages = []
      } = options || {};
      for (const { packageName, specifier, property } of iterateDependencies(context)) {
-+      if (skip.includes(packageName))
++      if (skipPackages.includes(packageName))
 +        continue;
        if (specifier.startsWith("catalog:"))
          continue;

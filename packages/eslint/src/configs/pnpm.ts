@@ -4,7 +4,7 @@ import { interopDefault } from "../utils/helpers";
 export async function pnpm(
   options: OptionsPnpm = {}
 ): Promise<TypedFlatConfigItem[]> {
-  const { overrides = {}, skip = ["typescript"] } = options;
+  const { overrides = {}, skipPackages = ["typescript"] } = options;
 
   const [pluginPnpm, parserJsonc] = await Promise.all([
     interopDefault(import("eslint-plugin-pnpm")),
@@ -23,7 +23,7 @@ export async function pnpm(
         parser: parserJsonc
       },
       rules: {
-        "pnpm/enforce-catalog": ["error", { skip }],
+        "pnpm/enforce-catalog": ["error", { skipPackages }],
         "pnpm/valid-catalog": "error",
         "pnpm/prefer-workspace-settings": "error",
 
