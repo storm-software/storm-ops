@@ -222,7 +222,7 @@
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
     "@storm-software/build-tools": "0.143.18",
-    "@storm-software/config": "1.109.0",
+    "@storm-software/config": "1.110.0",
     "@storm-software/config-tools": "1.160.0",
     "@types/node": "catalog:",
     "rollup": "4.29.1",
