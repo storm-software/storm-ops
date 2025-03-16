@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.110.1](https://github.com/storm-software/storm-ops/releases/tag/config%401.110.1) (2025-03-16)
+
+### Miscellaneous
+
+- **monorepo:** Clean up the CHANGELOG markdown
+  ([a328f646b](https://github.com/storm-software/storm-ops/commit/a328f646b))
+
 ## [1.110.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.110.0) (2025-03-16)
 
 ### Features
