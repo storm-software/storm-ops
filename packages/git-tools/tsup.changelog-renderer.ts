@@ -8,6 +8,7 @@ export default defineConfig([
     format: ["cjs", "esm"],
     outDir: "dist/changelog-renderer",
     platform: "node",
+    splitting: false,
     bundle: true,
     shims: true,
     clean: true,
