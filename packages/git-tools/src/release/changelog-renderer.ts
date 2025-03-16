@@ -81,7 +81,7 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
     //   .join("\n\n")
     //   .trim();
 
-    return super.render();
+    return await super.render();
   }
 
   protected override preprocessChanges(): void {
@@ -147,13 +147,11 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
   }
 
   /**
-   * Determines if the changelog entry should be rendered as empty.
-   * This is the case when there are no relevant changes, breaking changes,
-   * or dependency bumps.
+   * Determines if the changelog entry should be rendered as empty. This is the case when there are no relevant changes, breaking changes, or dependency bumps.
    */
-  protected override shouldRenderEmptyEntry(): boolean {
-    return true;
-  }
+  // protected override shouldRenderEmptyEntry(): boolean {
+  //   return true;
+  // }
 
   protected override renderVersionTitle(): string {
     const isMajorVersion =
@@ -166,8 +164,11 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
   }
 
   protected override renderBreakingChanges(): string[] {
-    const uniqueBreakingChanges = Array.from(new Set(this.breakingChanges));
-    return ["### Breaking Changes", "", ...uniqueBreakingChanges];
+    return [
+      "### Breaking Changes",
+      "",
+      ...Array.from(new Set(this.breakingChanges))
+    ];
   }
 
   protected override renderDependencyBumps(): string[] {
@@ -300,9 +301,11 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
     ) {
       changeLine += formatReferences(change.githubReferences, this.repoData);
     }
+
     if (extraLinesStr) {
       changeLine += "\n\n" + extraLinesStr;
     }
+
     return changeLine;
   }
 }

@@ -448,12 +448,10 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
       if (releaseGroup.projectsRelationship !== "independent") {
         continue;
       }
+
       for (const project of releaseGroup.projects) {
         // If the project does not have any changes, do not process its dependents
-        if (
-          !projectsVersionData[project] ||
-          projectsVersionData[project].newVersion === null
-        ) {
+        if (!projectsVersionData[project]?.newVersion) {
           continue;
         }
 
@@ -1256,78 +1254,85 @@ async function generateChangelogForProjects({
           releaseVersion.gitTag
         )}`
       });
-    }
 
-    const githubRepoData = getGitHubRepoData(gitRemote!, config.createRelease);
-
-    const changelogRenderer = new StormChangelogRenderer({
-      changes,
-      changelogEntryVersion: releaseVersion.rawVersion,
-      project: project.name,
-      repoData: githubRepoData!,
-      entryWhenNoChanges:
-        typeof config.entryWhenNoChanges === "string"
-          ? interpolate(config.entryWhenNoChanges, {
-              projectName: project.name,
-              projectRoot: project.data.root,
-              workspaceRoot: "" // within the tree, workspaceRoot is the root
-            })
-          : false,
-      changelogRenderOptions: config.renderOptions,
-      isVersionPlans: !!releaseGroup.versionPlans,
-      conventionalCommitsConfig: releaseGroup.versionPlans
-        ? null
-        : nxReleaseConfig.conventionalCommits,
-      dependencyBumps: projectToAdditionalDependencyBumps.get(project.name)
-    });
-    let contents = await changelogRenderer.render();
-
-    /**
-     * If interactive mode, make the changelog contents available for the user to modify in their editor of choice,
-     * in a similar style to git interactive rebases/merges.
-     */
-    if (interactive) {
-      const tmpDir = dirSync().name;
-      const changelogPath = joinPathFragments(
-        tmpDir,
-        // Include the tree path in the name so that it is easier to identify which changelog file is being edited
-        `PREVIEW__${interpolatedTreePath.replace(/\//g, "_")}`
+      const githubRepoData = getGitHubRepoData(
+        gitRemote!,
+        config.createRelease
       );
-      writeFileSync(changelogPath, contents);
-      await launchEditor(changelogPath);
-      contents = readFileSync(changelogPath, "utf8");
-    }
 
-    if (interpolatedTreePath) {
-      tree.write(
-        interpolatedTreePath,
-        await generateChangelogContent(
-          releaseVersion,
+      const changelogRenderer = new StormChangelogRenderer({
+        changes,
+        changelogEntryVersion: releaseVersion.rawVersion,
+        project: project.name,
+        repoData: githubRepoData!,
+        entryWhenNoChanges:
+          typeof config.entryWhenNoChanges === "string"
+            ? interpolate(config.entryWhenNoChanges, {
+                projectName: project.name,
+                projectRoot: project.data.root,
+                workspaceRoot: ""
+              })
+            : false,
+        changelogRenderOptions: config.renderOptions,
+        isVersionPlans: !!releaseGroup.versionPlans,
+        conventionalCommitsConfig: releaseGroup.versionPlans
+          ? null
+          : nxReleaseConfig.conventionalCommits,
+        dependencyBumps: projectToAdditionalDependencyBumps.get(project.name)
+      });
+      let contents = await changelogRenderer.render();
+      output.log({
+        title:
+          `Changelog renderer for ${project.name} rendered the following content: \n\n${contents}`.trim()
+      });
+
+      /**
+       * If interactive mode, make the changelog contents available for the user to modify in their editor of choice,
+       * in a similar style to git interactive rebases/merges.
+       */
+      if (interactive) {
+        const tmpDir = dirSync().name;
+        const changelogPath = joinPathFragments(
+          tmpDir,
+          // Include the tree path in the name so that it is easier to identify which changelog file is being edited
+          `PREVIEW__${interpolatedTreePath.replace(/\//g, "_")}`
+        );
+        writeFileSync(changelogPath, contents);
+        await launchEditor(changelogPath);
+        contents = readFileSync(changelogPath, "utf8");
+      }
+
+      if (interpolatedTreePath) {
+        tree.write(
           interpolatedTreePath,
-          contents,
-          tree.exists(interpolatedTreePath)
-            ? tree.read(interpolatedTreePath)?.toString()
-            : "",
-          project.name,
-          workspaceConfig
-        )
-      );
+          await generateChangelogContent(
+            releaseVersion,
+            interpolatedTreePath,
+            contents,
+            tree.exists(interpolatedTreePath)
+              ? tree.read(interpolatedTreePath)?.toString()
+              : "",
+            project.name,
+            workspaceConfig
+          )
+        );
 
-      printAndFlushChanges(
-        tree,
-        !!dryRun,
-        3,
-        false,
-        noDiffInChangelogMessage,
-        // Only print the change for the current changelog file at this point
-        f => f.path === interpolatedTreePath
-      );
+        printAndFlushChanges(
+          tree,
+          !!dryRun,
+          3,
+          false,
+          noDiffInChangelogMessage,
+          // Only print the change for the current changelog file at this point
+          f => f.path === interpolatedTreePath
+        );
+      }
+
+      projectChangelogs[project.name] = {
+        releaseVersion,
+        contents
+      };
     }
-
-    projectChangelogs[project.name] = {
-      releaseVersion,
-      contents
-    };
   }
 
   return projectChangelogs;
@@ -1341,15 +1346,9 @@ function checkChangelogFilesEnabled(nxReleaseConfig: NxReleaseConfig): boolean {
     return true;
   }
 
-  for (const releaseGroup of Object.values(nxReleaseConfig.groups)) {
-    if (
-      (releaseGroup as NxReleaseConfig["groups"]).changelog &&
-      (releaseGroup as NxReleaseConfig["groups"]).changelog.file
-    ) {
-      return true;
-    }
-  }
-  return false;
+  return Object.values(nxReleaseConfig.groups).some(
+    releaseGroup => (releaseGroup as NxReleaseConfig["groups"])?.changelog?.file
+  );
 }
 
 async function getCommits(
