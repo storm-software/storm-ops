@@ -9,10 +9,6 @@
 - **git-tools:** Updated the default release notes banner image
   ([46b55b394](https://github.com/storm-software/storm-ops/commit/46b55b394))
 
-![Storm Software](https://public.storm-cdn.com/logo-banner.png)
-
-# Changelog for Storm Ops - Config
-
 ## [1.109.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.109.0) (2025-03-16)
 
 ### Features
