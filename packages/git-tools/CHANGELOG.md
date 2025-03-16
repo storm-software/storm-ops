@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.99.0](git://github.com/storm-software/storm-ops.git/releases/tag/git-tools%402.99.0) (2025-03-16)
+
+### Features
+
+- **git-tools:** Added additional troubleshooting support code
+  ([0a892dea4](https://github.com/storm-software/storm-ops/commit/0a892dea4))
+
 ## 2.96.13 (2025-03-16)
 
 ### Miscellaneous
