@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.100.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.100.0) (2025-03-16)
+
+### Features
+
+- **git-tools:** Enhancements to the release notes markdown generator
+  ([10f2e0292](https://github.com/storm-software/storm-ops/commit/10f2e0292))
+
 ## [2.99.0](git://github.com/storm-software/storm-ops.git/releases/tag/git-tools%402.99.0) (2025-03-16)
 
 ### Features

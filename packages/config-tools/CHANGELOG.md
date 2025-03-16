@@ -1,645 +1,775 @@
+![Storm Software](https://public.storm-cdn.com/logo-banner.png)
 
+# Changelog for Storm Ops - Config Tools
+
+## [1.160.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.160.0) (2025-03-16)
+
+### Features
+
+- **config:** Added the `account` and `contact` workspace configuration
+  ([2d864cdbe](https://github.com/storm-software/storm-ops/commit/2d864cdbe))
 
 ## 1.158.13 (2025-03-16)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([bc0c826a6](https://github.com/storm-software/storm-ops/commit/bc0c826a6))
+- **monorepo:** Regenerate README markdown files
+  ([bc0c826a6](https://github.com/storm-software/storm-ops/commit/bc0c826a6))
 
 ## 1.158.12 (2025-03-12)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([e83d6f588](https://github.com/storm-software/storm-ops/commit/e83d6f588))
+- **monorepo:** Regenerate README markdown files
+  ([e83d6f588](https://github.com/storm-software/storm-ops/commit/e83d6f588))
 
 ## 1.158.11 (2025-03-12)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([c088a1bb8](https://github.com/storm-software/storm-ops/commit/c088a1bb8))
+- **monorepo:** Regenerate README markdown files
+  ([c088a1bb8](https://github.com/storm-software/storm-ops/commit/c088a1bb8))
 
 ## 1.158.10 (2025-03-12)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([4420540b4](https://github.com/storm-software/storm-ops/commit/4420540b4))
+- **monorepo:** Regenerate README markdown files
+  ([4420540b4](https://github.com/storm-software/storm-ops/commit/4420540b4))
 
 ## 1.158.9 (2025-03-12)
 
 ### Bug Fixes
 
-- **esbuild:** Clean up fatal build error message ([078da1ba6](https://github.com/storm-software/storm-ops/commit/078da1ba6))
+- **esbuild:** Clean up fatal build error message
+  ([078da1ba6](https://github.com/storm-software/storm-ops/commit/078da1ba6))
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([7944884ee](https://github.com/storm-software/storm-ops/commit/7944884ee))
+- **monorepo:** Regenerate README markdown files
+  ([7944884ee](https://github.com/storm-software/storm-ops/commit/7944884ee))
 
 ## 1.158.8 (2025-03-11)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([076080ad7](https://github.com/storm-software/storm-ops/commit/076080ad7))
+- **monorepo:** Regenerate README markdown files
+  ([076080ad7](https://github.com/storm-software/storm-ops/commit/076080ad7))
 
 ## 1.158.7 (2025-03-11)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([c8c042ba1](https://github.com/storm-software/storm-ops/commit/c8c042ba1))
+- **monorepo:** Regenerate README markdown files
+  ([c8c042ba1](https://github.com/storm-software/storm-ops/commit/c8c042ba1))
 
 ## 1.158.6 (2025-03-10)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([1b7ba4276](https://github.com/storm-software/storm-ops/commit/1b7ba4276))
+- **monorepo:** Regenerate README markdown files
+  ([1b7ba4276](https://github.com/storm-software/storm-ops/commit/1b7ba4276))
 
 ## 1.158.5 (2025-03-09)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([de604c0d0](https://github.com/storm-software/storm-ops/commit/de604c0d0))
+- **monorepo:** Regenerate README markdown files
+  ([de604c0d0](https://github.com/storm-software/storm-ops/commit/de604c0d0))
 
 ## 1.158.4 (2025-03-06)
 
 ### Bug Fixes
 
-- **esbuild:** Ensure all packages `esbuild` dependencies match ([b4ddf1284](https://github.com/storm-software/storm-ops/commit/b4ddf1284))
+- **esbuild:** Ensure all packages `esbuild` dependencies match
+  ([b4ddf1284](https://github.com/storm-software/storm-ops/commit/b4ddf1284))
 
 ## 1.158.3 (2025-03-06)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([26f342fb1](https://github.com/storm-software/storm-ops/commit/26f342fb1))
+- **monorepo:** Regenerate README markdown files
+  ([26f342fb1](https://github.com/storm-software/storm-ops/commit/26f342fb1))
 
 ## 1.158.2 (2025-03-03)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([78543811f](https://github.com/storm-software/storm-ops/commit/78543811f))
+- **monorepo:** Regenerate README markdown files
+  ([78543811f](https://github.com/storm-software/storm-ops/commit/78543811f))
 
 ## 1.158.1 (2025-03-03)
 
 ### Bug Fixes
 
-- **build-tools:** Cleaned up the compiled file header ([1bd90651c](https://github.com/storm-software/storm-ops/commit/1bd90651c))
+- **build-tools:** Cleaned up the compiled file header
+  ([1bd90651c](https://github.com/storm-software/storm-ops/commit/1bd90651c))
 
 ## 1.158.0 (2025-03-02)
 
 ### Features
 
-- **esbuild:** Added options logging prior to running build ([6011389ff](https://github.com/storm-software/storm-ops/commit/6011389ff))
+- **esbuild:** Added options logging prior to running build
+  ([6011389ff](https://github.com/storm-software/storm-ops/commit/6011389ff))
 
 ## 1.157.0 (2025-03-01)
 
 ### Features
 
-- **eslint:** Added the `ignoredDependencies`, `ignoredFiles`, and `checkObsoleteDependencies` options ([984f09f7d](https://github.com/storm-software/storm-ops/commit/984f09f7d))
+- **eslint:** Added the `ignoredDependencies`, `ignoredFiles`, and
+  `checkObsoleteDependencies` options
+  ([984f09f7d](https://github.com/storm-software/storm-ops/commit/984f09f7d))
 
 ## 1.156.1 (2025-03-01)
 
 ### Bug Fixes
 
-- **eslint:** Remove `includeTransitiveDependencies` from Nx linting rules ([2f442eabb](https://github.com/storm-software/storm-ops/commit/2f442eabb))
+- **eslint:** Remove `includeTransitiveDependencies` from Nx linting rules
+  ([2f442eabb](https://github.com/storm-software/storm-ops/commit/2f442eabb))
 
 ## 1.156.0 (2025-03-01)
 
 ### Features
 
-- **monorepo:** Update the repository to use new `stormie-bot` user name and email ([316385be6](https://github.com/storm-software/storm-ops/commit/316385be6))
+- **monorepo:** Update the repository to use new `stormie-bot` user name and
+  email
+  ([316385be6](https://github.com/storm-software/storm-ops/commit/316385be6))
 
 ## 1.155.10 (2025-03-01)
 
 ### Bug Fixes
 
-- **eslint:** Disable `package.json` sort when using prettier ([eddd7cc95](https://github.com/storm-software/storm-ops/commit/eddd7cc95))
+- **eslint:** Disable `package.json` sort when using prettier
+  ([eddd7cc95](https://github.com/storm-software/storm-ops/commit/eddd7cc95))
 
 ## 1.155.9 (2025-03-01)
 
 ### Bug Fixes
 
-- **eslint:** Added `package.json` to the `ignores` list ([63fa4c26e](https://github.com/storm-software/storm-ops/commit/63fa4c26e))
+- **eslint:** Added `package.json` to the `ignores` list
+  ([63fa4c26e](https://github.com/storm-software/storm-ops/commit/63fa4c26e))
 
 ## 1.155.8 (2025-03-01)
 
 ### Bug Fixes
 
-- **esbuild:** Resolve issue with incorrect options provided to build ([4148ddc79](https://github.com/storm-software/storm-ops/commit/4148ddc79))
+- **esbuild:** Resolve issue with incorrect options provided to build
+  ([4148ddc79](https://github.com/storm-software/storm-ops/commit/4148ddc79))
 
 ## 1.155.7 (2025-03-01)
 
 ### Bug Fixes
 
-- **esbuild:** Resolved issue with extra build options ([d9027747b](https://github.com/storm-software/storm-ops/commit/d9027747b))
+- **esbuild:** Resolved issue with extra build options
+  ([d9027747b](https://github.com/storm-software/storm-ops/commit/d9027747b))
 
 ## 1.155.6 (2025-02-28)
 
 ### Bug Fixes
 
-- **eslint:** Resolve issue finding tsconfig root directory ([b38fd20be](https://github.com/storm-software/storm-ops/commit/b38fd20be))
+- **eslint:** Resolve issue finding tsconfig root directory
+  ([b38fd20be](https://github.com/storm-software/storm-ops/commit/b38fd20be))
 
 ## 1.155.5 (2025-02-26)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerated README markdown files ([54355d315](https://github.com/storm-software/storm-ops/commit/54355d315))
+- **monorepo:** Regenerated README markdown files
+  ([54355d315](https://github.com/storm-software/storm-ops/commit/54355d315))
 
 ## 1.155.4 (2025-02-23)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([b785ce163](https://github.com/storm-software/storm-ops/commit/b785ce163))
+- **monorepo:** Regenerate README markdown files
+  ([b785ce163](https://github.com/storm-software/storm-ops/commit/b785ce163))
 
 ## 1.155.3 (2025-02-23)
 
 ### Miscellaneous
 
-- **monorepo:** Reformat README markdown files ([68f6724f6](https://github.com/storm-software/storm-ops/commit/68f6724f6))
+- **monorepo:** Reformat README markdown files
+  ([68f6724f6](https://github.com/storm-software/storm-ops/commit/68f6724f6))
 
 ## 1.155.2 (2025-02-23)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([312306e34](https://github.com/storm-software/storm-ops/commit/312306e34))
+- **monorepo:** Regenerate README markdown files
+  ([312306e34](https://github.com/storm-software/storm-ops/commit/312306e34))
 
 ## 1.155.1 (2025-02-22)
 
 ### Miscellaneous
 
-- **monorepo:** Reformat and lint workspace files ([9b706de2f](https://github.com/storm-software/storm-ops/commit/9b706de2f))
+- **monorepo:** Reformat and lint workspace files
+  ([9b706de2f](https://github.com/storm-software/storm-ops/commit/9b706de2f))
 
 ## 1.155.0 (2025-02-21)
 
 ### Features
 
-- **workspace-tools:** Added `lint-ls`, `format-readme`, and `format-toml` to plugins ([f6dd27ad4](https://github.com/storm-software/storm-ops/commit/f6dd27ad4))
+- **workspace-tools:** Added `lint-ls`, `format-readme`, and `format-toml` to
+  plugins
+  ([f6dd27ad4](https://github.com/storm-software/storm-ops/commit/f6dd27ad4))
 
 ### Miscellaneous
 
-- **monorepo:** Format monorepo files and run linters ([8f25455d5](https://github.com/storm-software/storm-ops/commit/8f25455d5))
+- **monorepo:** Format monorepo files and run linters
+  ([8f25455d5](https://github.com/storm-software/storm-ops/commit/8f25455d5))
 
 ## 1.154.1 (2025-02-18)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([ae8ae2775](https://github.com/storm-software/storm-ops/commit/ae8ae2775))
+- **monorepo:** Regenerate README markdown files
+  ([ae8ae2775](https://github.com/storm-software/storm-ops/commit/ae8ae2775))
 
 ## 1.154.0 (2025-02-18)
 
 ### Features
 
-- **config-tools:** Display colors for theme configuration in CLI ([c37ee6f40](https://github.com/storm-software/storm-ops/commit/c37ee6f40))
-- **config:** Change `env` parameter to `mode` ([2cb85c792](https://github.com/storm-software/storm-ops/commit/2cb85c792))
+- **config-tools:** Display colors for theme configuration in CLI
+  ([c37ee6f40](https://github.com/storm-software/storm-ops/commit/c37ee6f40))
+- **config:** Change `env` parameter to `mode`
+  ([2cb85c792](https://github.com/storm-software/storm-ops/commit/2cb85c792))
 
 ## 1.153.8 (2025-02-15)
 
 ### Miscellaneous
 
-- **monorepo:** Reformat monorepo files ([43087f2fa](https://github.com/storm-software/storm-ops/commit/43087f2fa))
+- **monorepo:** Reformat monorepo files
+  ([43087f2fa](https://github.com/storm-software/storm-ops/commit/43087f2fa))
 
 ## 1.153.7 (2025-02-15)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([6ded6b9a8](https://github.com/storm-software/storm-ops/commit/6ded6b9a8))
+- **monorepo:** Regenerate README markdown files
+  ([6ded6b9a8](https://github.com/storm-software/storm-ops/commit/6ded6b9a8))
 
 ## 1.153.6 (2025-02-15)
 
 ### Miscellaneous
 
-- **monorepo:** Reformat README markdown files ([60b05814e](https://github.com/storm-software/storm-ops/commit/60b05814e))
-- **eslint:** Include prettier dependencies in package ([7dbe1a334](https://github.com/storm-software/storm-ops/commit/7dbe1a334))
+- **monorepo:** Reformat README markdown files
+  ([60b05814e](https://github.com/storm-software/storm-ops/commit/60b05814e))
+- **eslint:** Include prettier dependencies in package
+  ([7dbe1a334](https://github.com/storm-software/storm-ops/commit/7dbe1a334))
 
 ## 1.153.5 (2025-02-13)
 
 ### Bug Fixes
 
-- **eslint:** Include missing prettier dependencies ([48dcec118](https://github.com/storm-software/storm-ops/commit/48dcec118))
+- **eslint:** Include missing prettier dependencies
+  ([48dcec118](https://github.com/storm-software/storm-ops/commit/48dcec118))
 
 ## 1.153.4 (2025-02-12)
 
 ### Bug Fixes
 
-- **monorepo:** Ensure `prettier-plugin-pkg` is installed in the workspace root ([c8a4d56ec](https://github.com/storm-software/storm-ops/commit/c8a4d56ec))
+- **monorepo:** Ensure `prettier-plugin-pkg` is installed in the workspace root
+  ([c8a4d56ec](https://github.com/storm-software/storm-ops/commit/c8a4d56ec))
 
 ## 1.153.3 (2025-02-12)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue with missing dependency on release ([f97cc70e6](https://github.com/storm-software/storm-ops/commit/f97cc70e6))
+- **workspace-tools:** Resolve issue with missing dependency on release
+  ([f97cc70e6](https://github.com/storm-software/storm-ops/commit/f97cc70e6))
 
 ## 1.153.2 (2025-02-12)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue with invalid reference ([400560453](https://github.com/storm-software/storm-ops/commit/400560453))
+- **workspace-tools:** Resolve issue with invalid reference
+  ([400560453](https://github.com/storm-software/storm-ops/commit/400560453))
 
 ## 1.153.1 (2025-02-12)
 
 ### Bug Fixes
 
-- **config-tools:** Resolve issue with invalid access to env values ([7681f4031](https://github.com/storm-software/storm-ops/commit/7681f4031))
+- **config-tools:** Resolve issue with invalid access to env values
+  ([7681f4031](https://github.com/storm-software/storm-ops/commit/7681f4031))
 
 ## 1.153.0 (2025-02-12)
 
 ### Features
 
-- **eslint:** Upgrade ESLint version used in package ([69fcbae20](https://github.com/storm-software/storm-ops/commit/69fcbae20))
+- **eslint:** Upgrade ESLint version used in package
+  ([69fcbae20](https://github.com/storm-software/storm-ops/commit/69fcbae20))
 
 ## 1.152.0 (2025-02-07)
 
 ### Features
 
-- **git-tools:** Added better error handling logic to release ([d77894323](https://github.com/storm-software/storm-ops/commit/d77894323))
+- **git-tools:** Added better error handling logic to release
+  ([d77894323](https://github.com/storm-software/storm-ops/commit/d77894323))
 
 ## 1.151.6 (2025-02-07)
 
 ### Bug Fixes
 
-- **linting-tools:** Resolved multiple issues with linting binary ([5e62a02e3](https://github.com/storm-software/storm-ops/commit/5e62a02e3))
+- **linting-tools:** Resolved multiple issues with linting binary
+  ([5e62a02e3](https://github.com/storm-software/storm-ops/commit/5e62a02e3))
 
 ## 1.151.5 (2025-02-06)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([1b886df47](https://github.com/storm-software/storm-ops/commit/1b886df47))
+- **monorepo:** Regenerate README markdown files
+  ([1b886df47](https://github.com/storm-software/storm-ops/commit/1b886df47))
 
 ## 1.151.4 (2025-02-05)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([93412b8ef](https://github.com/storm-software/storm-ops/commit/93412b8ef))
+- **monorepo:** Regenerate README markdown files
+  ([93412b8ef](https://github.com/storm-software/storm-ops/commit/93412b8ef))
 
 ## 1.151.3 (2025-02-05)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([de6ae2b84](https://github.com/storm-software/storm-ops/commit/de6ae2b84))
+- **monorepo:** Regenerate README markdown files
+  ([de6ae2b84](https://github.com/storm-software/storm-ops/commit/de6ae2b84))
 
 ## 1.151.2 (2025-02-05)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([79e7315d9](https://github.com/storm-software/storm-ops/commit/79e7315d9))
+- **monorepo:** Regenerate README markdown files
+  ([79e7315d9](https://github.com/storm-software/storm-ops/commit/79e7315d9))
 
 ## 1.151.1 (2025-02-05)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([50ba72ad6](https://github.com/storm-software/storm-ops/commit/50ba72ad6))
-- **monorepo:** Regenerated README markdown files ([2488fa0a7](https://github.com/storm-software/storm-ops/commit/2488fa0a7))
+- **monorepo:** Regenerate README markdown files
+  ([50ba72ad6](https://github.com/storm-software/storm-ops/commit/50ba72ad6))
+- **monorepo:** Regenerated README markdown files
+  ([2488fa0a7](https://github.com/storm-software/storm-ops/commit/2488fa0a7))
 
 ## 1.151.0 (2025-02-04)
 
 ### Features
 
-- **markdownlint:** Added aliases for the shared configuration files ([77346aa0f](https://github.com/storm-software/storm-ops/commit/77346aa0f))
+- **markdownlint:** Added aliases for the shared configuration files
+  ([77346aa0f](https://github.com/storm-software/storm-ops/commit/77346aa0f))
 
 ## 1.150.21 (2025-02-04)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([f151d13e9](https://github.com/storm-software/storm-ops/commit/f151d13e9))
+- **monorepo:** Regenerate README markdown files
+  ([f151d13e9](https://github.com/storm-software/storm-ops/commit/f151d13e9))
 
 ## 1.150.20 (2025-02-04)
 
 ### Bug Fixes
 
-- **markdownlint:** Adjust config to handle all paths in `build` target ([87cb6b901](https://github.com/storm-software/storm-ops/commit/87cb6b901))
+- **markdownlint:** Adjust config to handle all paths in `build` target
+  ([87cb6b901](https://github.com/storm-software/storm-ops/commit/87cb6b901))
 
 ## 1.150.19 (2025-02-04)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([572028003](https://github.com/storm-software/storm-ops/commit/572028003))
+- **monorepo:** Regenerate README markdown files
+  ([572028003](https://github.com/storm-software/storm-ops/commit/572028003))
 
 ## 1.150.18 (2025-02-04)
 
 ### Bug Fixes
 
-- **markdownlint:** Split the `markdownlint` config copy statements ([2c7afe6be](https://github.com/storm-software/storm-ops/commit/2c7afe6be))
+- **markdownlint:** Split the `markdownlint` config copy statements
+  ([2c7afe6be](https://github.com/storm-software/storm-ops/commit/2c7afe6be))
 
 ## 1.150.17 (2025-02-04)
 
 ### Miscellaneous
 
-- **monorepo:** Generate README markdown files ([12aa873f6](https://github.com/storm-software/storm-ops/commit/12aa873f6))
+- **monorepo:** Generate README markdown files
+  ([12aa873f6](https://github.com/storm-software/storm-ops/commit/12aa873f6))
 
 ## 1.150.16 (2025-02-04)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolved issues with invalid target configurations ([664e05fcb](https://github.com/storm-software/storm-ops/commit/664e05fcb))
+- **workspace-tools:** Resolved issues with invalid target configurations
+  ([664e05fcb](https://github.com/storm-software/storm-ops/commit/664e05fcb))
 
 ## 1.150.15 (2025-02-04)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([481420a10](https://github.com/storm-software/storm-ops/commit/481420a10))
+- **monorepo:** Regenerate README markdown files
+  ([481420a10](https://github.com/storm-software/storm-ops/commit/481420a10))
 
 ## 1.150.14 (2025-02-04)
 
 ### Bug Fixes
 
-- **markdownlint:** Resolved issue with missing configuration in dist ([e9b86a0a4](https://github.com/storm-software/storm-ops/commit/e9b86a0a4))
+- **markdownlint:** Resolved issue with missing configuration in dist
+  ([e9b86a0a4](https://github.com/storm-software/storm-ops/commit/e9b86a0a4))
 
 ## 1.150.13 (2025-02-04)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([12a2f638f](https://github.com/storm-software/storm-ops/commit/12a2f638f))
+- **monorepo:** Regenerate README markdown files
+  ([12a2f638f](https://github.com/storm-software/storm-ops/commit/12a2f638f))
 
 ## 1.150.12 (2025-02-04)
 
 ### Miscellaneous
 
-- **config-tools:** Do not include shims in dist code ([193c9b45f](https://github.com/storm-software/storm-ops/commit/193c9b45f))
+- **config-tools:** Do not include shims in dist code
+  ([193c9b45f](https://github.com/storm-software/storm-ops/commit/193c9b45f))
 
 ## 1.150.11 (2025-02-04)
 
 ### Bug Fixes
 
-- **config-tools:** Resolved issues with unbundled packages ([b3071e1e4](https://github.com/storm-software/storm-ops/commit/b3071e1e4))
+- **config-tools:** Resolved issues with unbundled packages
+  ([b3071e1e4](https://github.com/storm-software/storm-ops/commit/b3071e1e4))
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([5295557c6](https://github.com/storm-software/storm-ops/commit/5295557c6))
+- **monorepo:** Regenerate README markdown files
+  ([5295557c6](https://github.com/storm-software/storm-ops/commit/5295557c6))
 
 ## 1.150.10 (2025-02-04)
 
 ### Bug Fixes
 
-- **monorepo:** Resolve issue with missing `read-yaml-file` dependency ([0a61d2f39](https://github.com/storm-software/storm-ops/commit/0a61d2f39))
+- **monorepo:** Resolve issue with missing `read-yaml-file` dependency
+  ([0a61d2f39](https://github.com/storm-software/storm-ops/commit/0a61d2f39))
 
 ## 1.150.9 (2025-02-04)
 
 ### Bug Fixes
 
-- **monorepo:** Resolve issue with inconsistent `chalk` versions ([e20742ea0](https://github.com/storm-software/storm-ops/commit/e20742ea0))
+- **monorepo:** Resolve issue with inconsistent `chalk` versions
+  ([e20742ea0](https://github.com/storm-software/storm-ops/commit/e20742ea0))
 
 ## 1.150.8 (2025-02-04)
 
 ### Bug Fixes
 
-- **config-tools:** Resolve issue including dependencies in dist ([6e41c289f](https://github.com/storm-software/storm-ops/commit/6e41c289f))
+- **config-tools:** Resolve issue including dependencies in dist
+  ([6e41c289f](https://github.com/storm-software/storm-ops/commit/6e41c289f))
 
 ## 1.150.7 (2025-02-04)
 
 ### Bug Fixes
 
-- **monorepo:** Resolved issue with invalid `prettier` config used in hooks ([34974919d](https://github.com/storm-software/storm-ops/commit/34974919d))
+- **monorepo:** Resolved issue with invalid `prettier` config used in hooks
+  ([34974919d](https://github.com/storm-software/storm-ops/commit/34974919d))
 
 ### Miscellaneous
 
-- **monorepo:** Reformat the repo's files ([f33b07626](https://github.com/storm-software/storm-ops/commit/f33b07626))
-- **monorepo:** Regenerate README markdown files ([d147539be](https://github.com/storm-software/storm-ops/commit/d147539be))
+- **monorepo:** Reformat the repo's files
+  ([f33b07626](https://github.com/storm-software/storm-ops/commit/f33b07626))
+- **monorepo:** Regenerate README markdown files
+  ([d147539be](https://github.com/storm-software/storm-ops/commit/d147539be))
 
 ## 1.150.6 (2025-02-03)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([6a5afe3d6](https://github.com/storm-software/storm-ops/commit/6a5afe3d6))
-- **monorepo:** Regenerate README markdown files ([949c6f3cd](https://github.com/storm-software/storm-ops/commit/949c6f3cd))
+- **monorepo:** Regenerate README markdown files
+  ([6a5afe3d6](https://github.com/storm-software/storm-ops/commit/6a5afe3d6))
+- **monorepo:** Regenerate README markdown files
+  ([949c6f3cd](https://github.com/storm-software/storm-ops/commit/949c6f3cd))
 
 ## 1.150.5 (2025-02-02)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([c73bfdb6a](https://github.com/storm-software/storm-ops/commit/c73bfdb6a))
+- **monorepo:** Regenerate README markdown files
+  ([c73bfdb6a](https://github.com/storm-software/storm-ops/commit/c73bfdb6a))
 
 ## 1.150.4 (2025-02-02)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([47f85fdcf](https://github.com/storm-software/storm-ops/commit/47f85fdcf))
+- **monorepo:** Regenerate README markdown files
+  ([47f85fdcf](https://github.com/storm-software/storm-ops/commit/47f85fdcf))
 
 ## 1.150.3 (2025-02-02)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([e5f00be12](https://github.com/storm-software/storm-ops/commit/e5f00be12))
+- **monorepo:** Regenerate README markdown files
+  ([e5f00be12](https://github.com/storm-software/storm-ops/commit/e5f00be12))
 
 ## 1.150.2 (2025-02-02)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([665463d38](https://github.com/storm-software/storm-ops/commit/665463d38))
+- **monorepo:** Regenerate README markdown files
+  ([665463d38](https://github.com/storm-software/storm-ops/commit/665463d38))
 
 ## 1.150.1 (2025-02-02)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([7e673dd2f](https://github.com/storm-software/storm-ops/commit/7e673dd2f))
+- **monorepo:** Regenerate README markdown files
+  ([7e673dd2f](https://github.com/storm-software/storm-ops/commit/7e673dd2f))
 
 ## 1.150.0 (2025-02-02)
 
 ### Features
 
-- **cspell:** Bundle all `cspell` packages ([072f90951](https://github.com/storm-software/storm-ops/commit/072f90951))
+- **cspell:** Bundle all `cspell` packages
+  ([072f90951](https://github.com/storm-software/storm-ops/commit/072f90951))
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([81d0b65c2](https://github.com/storm-software/storm-ops/commit/81d0b65c2))
+- **monorepo:** Regenerate README markdown files
+  ([81d0b65c2](https://github.com/storm-software/storm-ops/commit/81d0b65c2))
 
 ## 1.149.1 (2025-02-02)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([b578d626a](https://github.com/storm-software/storm-ops/commit/b578d626a))
+- **monorepo:** Regenerate README markdown files
+  ([b578d626a](https://github.com/storm-software/storm-ops/commit/b578d626a))
 
 ## 1.149.0 (2025-02-02)
 
 ### Features
 
-- **cspell:** Added Javascript module to package ([9fcc82861](https://github.com/storm-software/storm-ops/commit/9fcc82861))
+- **cspell:** Added Javascript module to package
+  ([9fcc82861](https://github.com/storm-software/storm-ops/commit/9fcc82861))
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([a2b221881](https://github.com/storm-software/storm-ops/commit/a2b221881))
+- **monorepo:** Regenerate README markdown files
+  ([a2b221881](https://github.com/storm-software/storm-ops/commit/a2b221881))
 
 ## 1.148.4 (2025-02-02)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([e47c955b](https://github.com/storm-software/storm-ops/commit/e47c955b))
+- **monorepo:** Regenerate README markdown files
+  ([e47c955b](https://github.com/storm-software/storm-ops/commit/e47c955b))
 
 ## 1.148.3 (2025-02-02)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([e3b80ea7](https://github.com/storm-software/storm-ops/commit/e3b80ea7))
+- **monorepo:** Regenerate README markdown files
+  ([e3b80ea7](https://github.com/storm-software/storm-ops/commit/e3b80ea7))
 
 ## 1.148.2 (2025-02-02)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([4e1584d0](https://github.com/storm-software/storm-ops/commit/4e1584d0))
+- **monorepo:** Regenerate README markdown files
+  ([4e1584d0](https://github.com/storm-software/storm-ops/commit/4e1584d0))
 
 ## 1.148.1 (2025-02-01)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([af5c80fa](https://github.com/storm-software/storm-ops/commit/af5c80fa))
+- **monorepo:** Regenerate README markdown files
+  ([af5c80fa](https://github.com/storm-software/storm-ops/commit/af5c80fa))
 
 ## 1.148.0 (2025-02-01)
 
 ### Features
 
-- **config:** Added the `skipConfigLogging` option to config ([7bd9a7a5](https://github.com/storm-software/storm-ops/commit/7bd9a7a5))
-- **config:** Renamed config file from `storm.json` to `storm-workspace.json` ([3ce65c15](https://github.com/storm-software/storm-ops/commit/3ce65c15))
+- **config:** Added the `skipConfigLogging` option to config
+  ([7bd9a7a5](https://github.com/storm-software/storm-ops/commit/7bd9a7a5))
+- **config:** Renamed config file from `storm.json` to `storm-workspace.json`
+  ([3ce65c15](https://github.com/storm-software/storm-ops/commit/3ce65c15))
 
 ## 1.147.1 (2025-01-29)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([a1b6717d](https://github.com/storm-software/storm-ops/commit/a1b6717d))
+- **monorepo:** Regenerate README markdown files
+  ([a1b6717d](https://github.com/storm-software/storm-ops/commit/a1b6717d))
 
 ## 1.147.0 (2025-01-29)
 
 ### Features
 
-- **projen:** Initial check-in of the `projen` package ([a5b61ac7](https://github.com/storm-software/storm-ops/commit/a5b61ac7))
+- **projen:** Initial check-in of the `projen` package
+  ([a5b61ac7](https://github.com/storm-software/storm-ops/commit/a5b61ac7))
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([5e0520b1](https://github.com/storm-software/storm-ops/commit/5e0520b1))
+- **monorepo:** Regenerate README markdown files
+  ([5e0520b1](https://github.com/storm-software/storm-ops/commit/5e0520b1))
 
 ## 1.146.0 (2025-01-29)
 
 ### Features
 
-- **config-tools:** Use `pathe` package to handle file directory manipulation ([3f015d72](https://github.com/storm-software/storm-ops/commit/3f015d72))
+- **config-tools:** Use `pathe` package to handle file directory manipulation
+  ([3f015d72](https://github.com/storm-software/storm-ops/commit/3f015d72))
 
 ### Bug Fixes
 
-- **config-tools:** Resolve issue with ESM only external dependency ([6e26a1fe](https://github.com/storm-software/storm-ops/commit/6e26a1fe))
-- **config-tools:** Resolved issue with correct path helpers ([4102104a](https://github.com/storm-software/storm-ops/commit/4102104a))
-- **config-tools:** Resolved issue with `joinPaths` for relative directories ([9a083175](https://github.com/storm-software/storm-ops/commit/9a083175))
+- **config-tools:** Resolve issue with ESM only external dependency
+  ([6e26a1fe](https://github.com/storm-software/storm-ops/commit/6e26a1fe))
+- **config-tools:** Resolved issue with correct path helpers
+  ([4102104a](https://github.com/storm-software/storm-ops/commit/4102104a))
+- **config-tools:** Resolved issue with `joinPaths` for relative directories
+  ([9a083175](https://github.com/storm-software/storm-ops/commit/9a083175))
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([2eb0a4f0](https://github.com/storm-software/storm-ops/commit/2eb0a4f0))
-- **monorepo:** Regenerate README markdown files ([da76edd7](https://github.com/storm-software/storm-ops/commit/da76edd7))
+- **monorepo:** Regenerate README markdown files
+  ([2eb0a4f0](https://github.com/storm-software/storm-ops/commit/2eb0a4f0))
+- **monorepo:** Regenerate README markdown files
+  ([da76edd7](https://github.com/storm-software/storm-ops/commit/da76edd7))
 
 ## 1.145.1 (2025-01-29)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([07f7d3d5](https://github.com/storm-software/storm-ops/commit/07f7d3d5))
+- **monorepo:** Regenerate README markdown files
+  ([07f7d3d5](https://github.com/storm-software/storm-ops/commit/07f7d3d5))
 
 ## 1.145.0 (2025-01-29)
 
 ### Features
 
-- **monorepo:** Improve workspace dependency packaging ([b8d03e26](https://github.com/storm-software/storm-ops/commit/b8d03e26))
+- **monorepo:** Improve workspace dependency packaging
+  ([b8d03e26](https://github.com/storm-software/storm-ops/commit/b8d03e26))
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([c2ecaaf8](https://github.com/storm-software/storm-ops/commit/c2ecaaf8))
+- **monorepo:** Regenerate README markdown files
+  ([c2ecaaf8](https://github.com/storm-software/storm-ops/commit/c2ecaaf8))
 
 ## 1.144.14 (2025-01-29)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([c87535fb](https://github.com/storm-software/storm-ops/commit/c87535fb))
+- **monorepo:** Regenerate README markdown files
+  ([c87535fb](https://github.com/storm-software/storm-ops/commit/c87535fb))
 
 ## 1.144.13 (2025-01-29)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([87f7b939](https://github.com/storm-software/storm-ops/commit/87f7b939))
+- **monorepo:** Regenerate README markdown files
+  ([87f7b939](https://github.com/storm-software/storm-ops/commit/87f7b939))
 
 ## 1.144.12 (2025-01-28)
 
 ### Miscellaneous
 
-- **monorepo:** Generate README markdown files ([a28c725e](https://github.com/storm-software/storm-ops/commit/a28c725e))
+- **monorepo:** Generate README markdown files
+  ([a28c725e](https://github.com/storm-software/storm-ops/commit/a28c725e))
 
 ## 1.144.11 (2025-01-28)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([4540dfe1](https://github.com/storm-software/storm-ops/commit/4540dfe1))
+- **monorepo:** Regenerate README markdown files
+  ([4540dfe1](https://github.com/storm-software/storm-ops/commit/4540dfe1))
 
 ## 1.144.10 (2025-01-28)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([08ac6d0e](https://github.com/storm-software/storm-ops/commit/08ac6d0e))
+- **monorepo:** Regenerate README markdown files
+  ([08ac6d0e](https://github.com/storm-software/storm-ops/commit/08ac6d0e))
 
 ## 1.144.9 (2025-01-28)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([d5aac4fd](https://github.com/storm-software/storm-ops/commit/d5aac4fd))
+- **monorepo:** Regenerate README markdown files
+  ([d5aac4fd](https://github.com/storm-software/storm-ops/commit/d5aac4fd))
 
 ## 1.144.8 (2025-01-28)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([144ad8bf](https://github.com/storm-software/storm-ops/commit/144ad8bf))
+- **monorepo:** Regenerate README markdown files
+  ([144ad8bf](https://github.com/storm-software/storm-ops/commit/144ad8bf))
 
 ## 1.144.7 (2025-01-28)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([4a6cac15](https://github.com/storm-software/storm-ops/commit/4a6cac15))
+- **monorepo:** Regenerate README markdown files
+  ([4a6cac15](https://github.com/storm-software/storm-ops/commit/4a6cac15))
 
 ## 1.144.6 (2025-01-28)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([d9a6793e](https://github.com/storm-software/storm-ops/commit/d9a6793e))
+- **monorepo:** Regenerate README markdown files
+  ([d9a6793e](https://github.com/storm-software/storm-ops/commit/d9a6793e))
 
 ## 1.144.5 (2025-01-28)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([812b4fba](https://github.com/storm-software/storm-ops/commit/812b4fba))
+- **monorepo:** Regenerate README markdown files
+  ([812b4fba](https://github.com/storm-software/storm-ops/commit/812b4fba))
 
 ## 1.144.4 (2025-01-28)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([f3649091](https://github.com/storm-software/storm-ops/commit/f3649091))
+- **monorepo:** Regenerate README markdown files
+  ([f3649091](https://github.com/storm-software/storm-ops/commit/f3649091))
 
 ## 1.144.3 (2025-01-28)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([d3619f12](https://github.com/storm-software/storm-ops/commit/d3619f12))
+- **monorepo:** Regenerate README markdown files
+  ([d3619f12](https://github.com/storm-software/storm-ops/commit/d3619f12))
 
 ## 1.144.2 (2025-01-24)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate the README markdown files ([e217af7e](https://github.com/storm-software/storm-ops/commit/e217af7e))
+- **monorepo:** Regenerate the README markdown files
+  ([e217af7e](https://github.com/storm-software/storm-ops/commit/e217af7e))
 
 ## 1.144.1 (2025-01-24)
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate the README markdown files ([e7d99d45](https://github.com/storm-software/storm-ops/commit/e7d99d45))
+- **monorepo:** Regenerate the README markdown files
+  ([e7d99d45](https://github.com/storm-software/storm-ops/commit/e7d99d45))
 
 ## 1.144.0 (2025-01-23)
 
 ### Features
 
-- **config:** Update package to use modern tooling ([8ac7afa3](https://github.com/storm-software/storm-ops/commit/8ac7afa3))
+- **config:** Update package to use modern tooling
+  ([8ac7afa3](https://github.com/storm-software/storm-ops/commit/8ac7afa3))
 
 ## 1.143.0 (2025-01-23)
 
 ### Features
 
-- **workspace-tools:** Enhanced the plugin `platform` detection logic ([c87c73ad](https://github.com/storm-software/storm-ops/commit/c87c73ad))
+- **workspace-tools:** Enhanced the plugin `platform` detection logic
+  ([c87c73ad](https://github.com/storm-software/storm-ops/commit/c87c73ad))
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([eb629846](https://github.com/storm-software/storm-ops/commit/eb629846))
+- **monorepo:** Regenerate README markdown files
+  ([eb629846](https://github.com/storm-software/storm-ops/commit/eb629846))
 
 ## 1.142.4 (2025-01-23)
 
 ### Bug Fixes
 
-- **monorepo:** Resolve issue with invalid Nx Devkit imports ([356d591c](https://github.com/storm-software/storm-ops/commit/356d591c))
+- **monorepo:** Resolve issue with invalid Nx Devkit imports
+  ([356d591c](https://github.com/storm-software/storm-ops/commit/356d591c))
 
 ### 🧱 Updated Dependencies
 
@@ -649,11 +779,13 @@
 
 ### Bug Fixes
 
-- **monorepo:** Resolve issue with `copyfiles` command after build ([fd7606b7](https://github.com/storm-software/storm-ops/commit/fd7606b7))
+- **monorepo:** Resolve issue with `copyfiles` command after build
+  ([fd7606b7](https://github.com/storm-software/storm-ops/commit/fd7606b7))
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([64e4e1f3](https://github.com/storm-software/storm-ops/commit/64e4e1f3))
+- **monorepo:** Regenerate README markdown files
+  ([64e4e1f3](https://github.com/storm-software/storm-ops/commit/64e4e1f3))
 
 ### 🧱 Updated Dependencies
 
@@ -663,8 +795,10 @@
 
 ### Miscellaneous
 
-- **config-tools:** Updated the build configuration to no longer bundle lib ([9ee2096c](https://github.com/storm-software/storm-ops/commit/9ee2096c))
-- **monorepo:** Regenerate README markdown files ([e468fe22](https://github.com/storm-software/storm-ops/commit/e468fe22))
+- **config-tools:** Updated the build configuration to no longer bundle lib
+  ([9ee2096c](https://github.com/storm-software/storm-ops/commit/9ee2096c))
+- **monorepo:** Regenerate README markdown files
+  ([e468fe22](https://github.com/storm-software/storm-ops/commit/e468fe22))
 
 ### 🧱 Updated Dependencies
 
@@ -674,7 +808,8 @@
 
 ### Bug Fixes
 
-- **build-tools:** Resolve issue with unending copy asset files process ([e0050d6b](https://github.com/storm-software/storm-ops/commit/e0050d6b))
+- **build-tools:** Resolve issue with unending copy asset files process
+  ([e0050d6b](https://github.com/storm-software/storm-ops/commit/e0050d6b))
 
 ### 🧱 Updated Dependencies
 
@@ -684,11 +819,14 @@
 
 ### Features
 
-- **config-tools:** Added the `storm-config` CLI to view current workspace configuration ([4241a6ae](https://github.com/storm-software/storm-ops/commit/4241a6ae))
+- **config-tools:** Added the `storm-config` CLI to view current workspace
+  configuration
+  ([4241a6ae](https://github.com/storm-software/storm-ops/commit/4241a6ae))
 
 ### Bug Fixes
 
-- **monorepo:** Resolve issue with internal package referencing ([cdc11477](https://github.com/storm-software/storm-ops/commit/cdc11477))
+- **monorepo:** Resolve issue with internal package referencing
+  ([cdc11477](https://github.com/storm-software/storm-ops/commit/cdc11477))
 
 ### 🧱 Updated Dependencies
 
@@ -698,179 +836,216 @@
 
 ### Miscellaneous
 
-- **monorepo:** Update the workspace's `storm.json` config to use the new preset repository ([95067c70](https://github.com/storm-software/storm-ops/commit/95067c70))
+- **monorepo:** Update the workspace's `storm.json` config to use the new preset
+  repository
+  ([95067c70](https://github.com/storm-software/storm-ops/commit/95067c70))
 
 ## 1.141.5 (2025-01-22)
 
 ### Bug Fixes
 
-- **eslint:** Resolved issue with `ignores` configuration parameter ([f8987770](https://github.com/storm-software/storm-ops/commit/f8987770))
+- **eslint:** Resolved issue with `ignores` configuration parameter
+  ([f8987770](https://github.com/storm-software/storm-ops/commit/f8987770))
 
 ## 1.141.4 (2025-01-22)
 
 ### Bug Fixes
 
-- **build-tools:** Resolved issue with copying asset files into output directory ([1b314e8e](https://github.com/storm-software/storm-ops/commit/1b314e8e))
+- **build-tools:** Resolved issue with copying asset files into output directory
+  ([1b314e8e](https://github.com/storm-software/storm-ops/commit/1b314e8e))
 
 ## 1.141.3 (2025-01-22)
 
 ### Bug Fixes
 
-- **unbuild:** Resolve issue applying entry directory to build options ([2c795456](https://github.com/storm-software/storm-ops/commit/2c795456))
+- **unbuild:** Resolve issue applying entry directory to build options
+  ([2c795456](https://github.com/storm-software/storm-ops/commit/2c795456))
 
 ## 1.141.2 (2025-01-22)
 
 ### Bug Fixes
 
-- **config-tools:** Resolved issue applying entire token parameters object ([5ccf3881](https://github.com/storm-software/storm-ops/commit/5ccf3881))
+- **config-tools:** Resolved issue applying entire token parameters object
+  ([5ccf3881](https://github.com/storm-software/storm-ops/commit/5ccf3881))
 
 ## 1.141.1 (2025-01-22)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue applying tokens to user provided options ([ef3bad5f](https://github.com/storm-software/storm-ops/commit/ef3bad5f))
+- **workspace-tools:** Resolve issue applying tokens to user provided options
+  ([ef3bad5f](https://github.com/storm-software/storm-ops/commit/ef3bad5f))
 
 ## 1.141.0 (2025-01-22)
 
 ### Features
 
-- **workspace-tools:** Enhanced option tokenization logic for executors ([14ed93d7](https://github.com/storm-software/storm-ops/commit/14ed93d7))
+- **workspace-tools:** Enhanced option tokenization logic for executors
+  ([14ed93d7](https://github.com/storm-software/storm-ops/commit/14ed93d7))
 
 ## 1.140.1 (2025-01-21)
 
 ### Bug Fixes
 
-- **unbuild:** Ensure we always use directory as input instead of a file ([13d4a133](https://github.com/storm-software/storm-ops/commit/13d4a133))
+- **unbuild:** Ensure we always use directory as input instead of a file
+  ([13d4a133](https://github.com/storm-software/storm-ops/commit/13d4a133))
 
 ## 1.140.0 (2025-01-21)
 
 ### Features
 
-- **unbuild:** Added config logging for troubleshooting issues ([163f70c3](https://github.com/storm-software/storm-ops/commit/163f70c3))
+- **unbuild:** Added config logging for troubleshooting issues
+  ([163f70c3](https://github.com/storm-software/storm-ops/commit/163f70c3))
 
 ## 1.139.0 (2025-01-21)
 
 ### Features
 
-- **config-tools:** Update utility packages to use ESM ([3bc6d4ba](https://github.com/storm-software/storm-ops/commit/3bc6d4ba))
+- **config-tools:** Update utility packages to use ESM
+  ([3bc6d4ba](https://github.com/storm-software/storm-ops/commit/3bc6d4ba))
 
 ### Dependency Upgrades
 
-- **monorepo:** Use version 4.2.1 of `chalk` package to prevent CommonJs issues ([133dcdfd](https://github.com/storm-software/storm-ops/commit/133dcdfd))
+- **monorepo:** Use version 4.2.1 of `chalk` package to prevent CommonJs issues
+  ([133dcdfd](https://github.com/storm-software/storm-ops/commit/133dcdfd))
 
 ## 1.138.3 (2025-01-21)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve internal package as ESM via `jiti` resolver ([1dc4cfdd](https://github.com/storm-software/storm-ops/commit/1dc4cfdd))
+- **workspace-tools:** Resolve internal package as ESM via `jiti` resolver
+  ([1dc4cfdd](https://github.com/storm-software/storm-ops/commit/1dc4cfdd))
 
 ## 1.138.2 (2025-01-21)
 
 ### Bug Fixes
 
-- **unbuild:** Resolved issue with package `exports` path ([faf23b0e](https://github.com/storm-software/storm-ops/commit/faf23b0e))
+- **unbuild:** Resolved issue with package `exports` path
+  ([faf23b0e](https://github.com/storm-software/storm-ops/commit/faf23b0e))
 
 ## 1.138.1 (2025-01-21)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve issue with invalid import path ([42a07d0c](https://github.com/storm-software/storm-ops/commit/42a07d0c))
+- **workspace-tools:** Resolve issue with invalid import path
+  ([42a07d0c](https://github.com/storm-software/storm-ops/commit/42a07d0c))
 
 ## 1.138.0 (2025-01-21)
 
 ### Features
 
-- **config-tools:** Added the `createLogger` function to drive CommonJs modules ([0cee1525](https://github.com/storm-software/storm-ops/commit/0cee1525))
+- **config-tools:** Added the `createLogger` function to drive CommonJs modules
+  ([0cee1525](https://github.com/storm-software/storm-ops/commit/0cee1525))
 
 ## 1.137.2 (2025-01-21)
 
 ### Continuous Integration
 
-- **workspace-tools:** Mark all internal packages as external ([f8c65aeb](https://github.com/storm-software/storm-ops/commit/f8c65aeb))
+- **workspace-tools:** Mark all internal packages as external
+  ([f8c65aeb](https://github.com/storm-software/storm-ops/commit/f8c65aeb))
 
 ## 1.137.1 (2025-01-20)
 
 ### Bug Fixes
 
-- **config-tools:** Ensure all `nx` and `swc` dependencies are marked external ([257900fd](https://github.com/storm-software/storm-ops/commit/257900fd))
+- **config-tools:** Ensure all `nx` and `swc` dependencies are marked external
+  ([257900fd](https://github.com/storm-software/storm-ops/commit/257900fd))
 
 ### Miscellaneous
 
-- **config-tools:** Bundle dependencies in distributable ([df027cfe](https://github.com/storm-software/storm-ops/commit/df027cfe))
+- **config-tools:** Bundle dependencies in distributable
+  ([df027cfe](https://github.com/storm-software/storm-ops/commit/df027cfe))
 
 ## 1.137.0 (2025-01-20)
 
 ### Features
 
-- **unbuild:** Update package to bundle config-tools ([a2fc7768](https://github.com/storm-software/storm-ops/commit/a2fc7768))
+- **unbuild:** Update package to bundle config-tools
+  ([a2fc7768](https://github.com/storm-software/storm-ops/commit/a2fc7768))
 
 ## 1.136.4 (2025-01-20)
 
 ### Bug Fixes
 
-- **workspace-tools:** Add `jiti` to support resolution of `@storm-software/unbuild` package ([0abfa98b](https://github.com/storm-software/storm-ops/commit/0abfa98b))
+- **workspace-tools:** Add `jiti` to support resolution of
+  `@storm-software/unbuild` package
+  ([0abfa98b](https://github.com/storm-software/storm-ops/commit/0abfa98b))
 
 ## 1.136.3 (2025-01-20)
 
 ### Bug Fixes
 
-- **workspace-tools:** Resolve formatting issue with missing `parser` config ([da80cf3d](https://github.com/storm-software/storm-ops/commit/da80cf3d))
+- **workspace-tools:** Resolve formatting issue with missing `parser` config
+  ([da80cf3d](https://github.com/storm-software/storm-ops/commit/da80cf3d))
 
 ## 1.136.2 (2025-01-20)
 
 ### Bug Fixes
 
-- **untyped:** Resovle bundling issue with externals ([ff044ddf](https://github.com/storm-software/storm-ops/commit/ff044ddf))
+- **untyped:** Resovle bundling issue with externals
+  ([ff044ddf](https://github.com/storm-software/storm-ops/commit/ff044ddf))
 
 ## 1.136.1 (2025-01-20)
 
 ### Bug Fixes
 
-- **unbuild:** Update package to bundle the `unbuild` package for distribution ([d304c28d](https://github.com/storm-software/storm-ops/commit/d304c28d))
+- **unbuild:** Update package to bundle the `unbuild` package for distribution
+  ([d304c28d](https://github.com/storm-software/storm-ops/commit/d304c28d))
 
 ## 1.136.0 (2025-01-20)
 
 ### Features
 
-- **unbuild:** Update build process to use cached project graph ([610c94aa](https://github.com/storm-software/storm-ops/commit/610c94aa))
+- **unbuild:** Update build process to use cached project graph
+  ([610c94aa](https://github.com/storm-software/storm-ops/commit/610c94aa))
 
 ## 1.135.0 (2025-01-20)
 
 ### Features
 
-- **config-tools:** Improve visibility of console log messages ([1238c639](https://github.com/storm-software/storm-ops/commit/1238c639))
+- **config-tools:** Improve visibility of console log messages
+  ([1238c639](https://github.com/storm-software/storm-ops/commit/1238c639))
 
 ### Bug Fixes
 
-- **config-tools:** Resolved issue with incorrect console icons ([d2cbf971](https://github.com/storm-software/storm-ops/commit/d2cbf971))
+- **config-tools:** Resolved issue with incorrect console icons
+  ([d2cbf971](https://github.com/storm-software/storm-ops/commit/d2cbf971))
 
 ## 1.134.0 (2025-01-20)
 
 ### Features
 
-- **config-tools:** Added timestamp prefix to console log messages ([99a8d7c6](https://github.com/storm-software/storm-ops/commit/99a8d7c6))
-- **config-tools:** Update the formatting of the console log level indicators ([7169c489](https://github.com/storm-software/storm-ops/commit/7169c489))
-- **untyped:** Initial check-in for the `untyped` package ([c02dad71](https://github.com/storm-software/storm-ops/commit/c02dad71))
+- **config-tools:** Added timestamp prefix to console log messages
+  ([99a8d7c6](https://github.com/storm-software/storm-ops/commit/99a8d7c6))
+- **config-tools:** Update the formatting of the console log level indicators
+  ([7169c489](https://github.com/storm-software/storm-ops/commit/7169c489))
+- **untyped:** Initial check-in for the `untyped` package
+  ([c02dad71](https://github.com/storm-software/storm-ops/commit/c02dad71))
 
 ### Bug Fixes
 
-- **config-tools:** Resolve formatting issue in message ([47a108aa](https://github.com/storm-software/storm-ops/commit/47a108aa))
-- **untyped:** Resolved caching issue when run by CI workflow ([507dc76b](https://github.com/storm-software/storm-ops/commit/507dc76b))
-- **workspace-tools:** Resolved issue with invalid `package.json` exports ([76c63c08](https://github.com/storm-software/storm-ops/commit/76c63c08))
+- **config-tools:** Resolve formatting issue in message
+  ([47a108aa](https://github.com/storm-software/storm-ops/commit/47a108aa))
+- **untyped:** Resolved caching issue when run by CI workflow
+  ([507dc76b](https://github.com/storm-software/storm-ops/commit/507dc76b))
+- **workspace-tools:** Resolved issue with invalid `package.json` exports
+  ([76c63c08](https://github.com/storm-software/storm-ops/commit/76c63c08))
 
 ### Miscellaneous
 
-- **monorepo:** Regenerate README markdown files ([5c8e5c96](https://github.com/storm-software/storm-ops/commit/5c8e5c96))
+- **monorepo:** Regenerate README markdown files
+  ([5c8e5c96](https://github.com/storm-software/storm-ops/commit/5c8e5c96))
 
 ### Styling
 
-- **config-tools:** Minor updates to the console log styling ([14ce293f](https://github.com/storm-software/storm-ops/commit/14ce293f))
+- **config-tools:** Minor updates to the console log styling
+  ([14ce293f](https://github.com/storm-software/storm-ops/commit/14ce293f))
 
 ## 1.133.4 (2025-01-17)
 
 ### Bug Fixes
 
-- **unbuild:** Update package to use `tsup-node` to exclude bundles ([cf712b2a](https://github.com/storm-software/storm-ops/commit/cf712b2a))
+- **unbuild:** Update package to use `tsup-node` to exclude bundles
+  ([cf712b2a](https://github.com/storm-software/storm-ops/commit/cf712b2a))
 
 ## 1.133.3 (2025-01-16)
 
