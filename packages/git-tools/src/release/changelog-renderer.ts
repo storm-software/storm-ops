@@ -13,7 +13,7 @@ import {
   formatReferences
 } from "nx/src/command-line/release/utils/github";
 import { major } from "semver";
-import { generateChangelogTitle } from "../utilities/generate-changelog-title";
+import { generateChangelogTitle } from "../utilities/changelog-utils";
 
 // axios types and values don't seem to match
 // import _axios = require("axios");

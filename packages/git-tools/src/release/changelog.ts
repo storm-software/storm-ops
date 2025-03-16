@@ -41,7 +41,6 @@ import {
   getGitHubRepoData
 } from "nx/src/command-line/release/utils/github";
 import { launchEditor } from "nx/src/command-line/release/utils/launch-editor";
-import { parseChangelogMarkdown } from "nx/src/command-line/release/utils/markdown";
 import { printAndFlushChanges } from "nx/src/command-line/release/utils/print-changes";
 import { printConfigAndExit } from "nx/src/command-line/release/utils/print-config";
 import { resolveNxJsonConfigErrorMessage } from "nx/src/command-line/release/utils/resolve-nx-json-error-message";
@@ -74,7 +73,7 @@ import { joinPathFragments } from "nx/src/utils/path";
 import { workspaceRoot } from "nx/src/utils/workspace-root";
 import { ReleaseType, valid } from "semver";
 import { dirSync } from "tmp";
-import { generateChangelogTitle } from "../utilities/generate-changelog-title";
+import { generateChangelogContent } from "../utilities/changelog-utils";
 import StormChangelogRenderer from "./changelog-renderer";
 
 export interface NxReleaseChangelogResult {
@@ -1146,33 +1145,21 @@ async function generateChangelogForWorkspace({
   }
 
   if (interpolatedTreePath) {
-    let rootChangelogContents = tree.exists(interpolatedTreePath)
+    const rootChangelogContents = tree.exists(interpolatedTreePath)
       ? tree.read(interpolatedTreePath)?.toString()
       : "";
-    if (rootChangelogContents) {
-      // NOTE: right now existing releases are always expected to be in markdown format, but in the future we could potentially support others via a custom parser option
-      const changelogReleases = parseChangelogMarkdown(
-        rootChangelogContents
-      ).releases;
 
-      const existingVersionToUpdate = changelogReleases.find(
-        r => r.version === releaseVersion.rawVersion
-      );
-      if (existingVersionToUpdate) {
-        rootChangelogContents = rootChangelogContents.replace(
-          `## ${generateChangelogTitle(releaseVersion.rawVersion, null, false, workspaceConfig)}\n\n\n${existingVersionToUpdate.body}`,
-          contents
-        );
-      } else {
-        // No existing version, simply prepend the new release to the top of the file
-        rootChangelogContents = `${contents}\n\n${rootChangelogContents}`;
-      }
-    } else {
-      // No existing changelog contents, simply create a new one using the generated contents
-      rootChangelogContents = contents;
-    }
-
-    tree.write(interpolatedTreePath, rootChangelogContents);
+    tree.write(
+      interpolatedTreePath,
+      await generateChangelogContent(
+        releaseVersion,
+        interpolatedTreePath,
+        contents,
+        rootChangelogContents,
+        null,
+        workspaceConfig
+      )
+    );
 
     printAndFlushChanges(tree, !!dryRun, 3, false, noDiffInChangelogMessage);
   }
@@ -1296,32 +1283,21 @@ async function generateChangelogForProjects({
     }
 
     if (interpolatedTreePath) {
-      let changelogContents = tree.exists(interpolatedTreePath)
+      const changelogContents = tree.exists(interpolatedTreePath)
         ? tree.read(interpolatedTreePath)?.toString()
         : "";
-      if (changelogContents) {
-        // NOTE: right now existing releases are always expected to be in markdown format, but in the future we could potentially support others via a custom parser option
-        const changelogReleases =
-          parseChangelogMarkdown(changelogContents).releases;
 
-        const existingVersionToUpdate = changelogReleases.find(
-          r => r.version === releaseVersion.rawVersion
-        );
-        if (existingVersionToUpdate) {
-          changelogContents = changelogContents.replace(
-            `## ${generateChangelogTitle(releaseVersion.rawVersion, project.name, false, workspaceConfig)}\n\n\n${existingVersionToUpdate.body}`,
-            contents
-          );
-        } else {
-          // No existing version, simply prepend the new release to the top of the file
-          changelogContents = `${contents}\n\n${changelogContents}`;
-        }
-      } else {
-        // No existing changelog contents, simply create a new one using the generated contents
-        changelogContents = contents;
-      }
-
-      tree.write(interpolatedTreePath, changelogContents);
+      tree.write(
+        interpolatedTreePath,
+        await generateChangelogContent(
+          releaseVersion,
+          interpolatedTreePath,
+          contents,
+          changelogContents,
+          project.name,
+          workspaceConfig
+        )
+      );
 
       printAndFlushChanges(
         tree,
