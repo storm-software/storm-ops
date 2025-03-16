@@ -1499,7 +1499,7 @@ function formatGithubReleaseNotes(
     return content;
   }
 
-  return `![Storm Software](${workspaceConfig.release.banner}){ width="100%" style="display: block; margin: 0 auto" }
+  return `![Storm Software](${workspaceConfig.release.banner})
 ${workspaceConfig.release.header || ""}
 ${content}
 
