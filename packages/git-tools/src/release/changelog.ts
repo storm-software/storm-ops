@@ -1163,17 +1163,15 @@ async function generateChangelogForWorkspace({
   }
 
   if (interpolatedTreePath) {
-    const rootChangelogContents = tree.exists(interpolatedTreePath)
-      ? tree.read(interpolatedTreePath)?.toString()
-      : "";
-
     tree.write(
       interpolatedTreePath,
       await generateChangelogContent(
         releaseVersion,
         interpolatedTreePath,
         contents,
-        rootChangelogContents,
+        tree.exists(interpolatedTreePath)
+          ? tree.read(interpolatedTreePath)?.toString()
+          : "",
         null,
         workspaceConfig
       )
@@ -1233,7 +1231,7 @@ async function generateChangelogForProjects({
       interpolatedTreePath = interpolate(interpolatedTreePath, {
         projectName: project.name,
         projectRoot: project.data.root,
-        workspaceRoot: "" // within the tree, workspaceRoot is the root
+        workspaceRoot: ""
       });
     }
 
@@ -1301,17 +1299,15 @@ async function generateChangelogForProjects({
     }
 
     if (interpolatedTreePath) {
-      const changelogContents = tree.exists(interpolatedTreePath)
-        ? tree.read(interpolatedTreePath)?.toString()
-        : "";
-
       tree.write(
         interpolatedTreePath,
         await generateChangelogContent(
           releaseVersion,
           interpolatedTreePath,
           contents,
-          changelogContents,
+          tree.exists(interpolatedTreePath)
+            ? tree.read(interpolatedTreePath)?.toString()
+            : "",
           project.name,
           workspaceConfig
         )

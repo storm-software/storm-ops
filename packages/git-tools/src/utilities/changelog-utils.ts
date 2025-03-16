@@ -36,7 +36,7 @@ export async function generateChangelogContent(
   );
   if (existingVersionToUpdate) {
     changelogContents = changelogContents.replace(
-      `## ${generateChangelogTitle(releaseVersion.rawVersion, project, false, workspaceConfig)}\n\n\n${existingVersionToUpdate.body}`,
+      `## ${generateChangelogTitle(releaseVersion.rawVersion, project, workspaceConfig)}\n\n\n${existingVersionToUpdate.body}`,
       newContent
     );
   } else {
@@ -78,20 +78,13 @@ const titleCase = (input?: string): string | undefined => {
 export function generateChangelogTitle(
   version: string,
   project?: string | null,
-  excludeDate = false,
   workspaceConfig?: StormConfig | null
 ): string {
   if (!workspaceConfig?.repository || !project) {
     return version;
   }
 
-  let maybeDateStr = "";
-  if (excludeDate !== false) {
-    const dateStr = new Date().toISOString().slice(0, 10);
-    maybeDateStr = ` (${dateStr})`;
-  }
-
-  return `[${version}](${workspaceConfig.repository}/releases/tag/${project}%40${version})${maybeDateStr}`;
+  return `[${version}](${workspaceConfig.repository}/releases/tag/${project}%40${version}) (${new Date().toISOString().slice(0, 10)})`;
 }
 
 export function parseChangelogMarkdown(contents: string) {
@@ -110,7 +103,7 @@ export function parseChangelogMarkdown(contents: string) {
 
   for (let i = 0; i < headings.length; i++) {
     const heading = headings[i];
-    if (!heading || heading.length < 2) {
+    if (!heading) {
       continue; // Skip if no match found
     }
 

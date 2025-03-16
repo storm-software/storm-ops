@@ -161,8 +161,8 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
       this.changelogEntryVersion.replace(/^v/, "");
 
     return isMajorVersion
-      ? `# ${generateChangelogTitle(this.changelogEntryVersion, this.project!, false, this.workspaceConfig)}`
-      : `## ${generateChangelogTitle(this.changelogEntryVersion, this.project!, false, this.workspaceConfig)}`;
+      ? `# ${generateChangelogTitle(this.changelogEntryVersion, this.project!, this.workspaceConfig)}`
+      : `## ${generateChangelogTitle(this.changelogEntryVersion, this.project!, this.workspaceConfig)}`;
   }
 
   protected override renderBreakingChanges(): string[] {
