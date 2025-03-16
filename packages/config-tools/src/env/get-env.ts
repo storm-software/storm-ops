@@ -8,7 +8,7 @@ import {
   COLOR_KEYS,
   STORM_DEFAULT_DOCS,
   STORM_DEFAULT_HOMEPAGE,
-  STORM_DEFAULT_LICENSING,
+  STORM_DEFAULT_LICENSING
 } from "@storm-software/config";
 import { getLogLevelLabel } from "../logger/get-log-level";
 import type { DeepPartial, LogLevelLabel } from "../types";
@@ -21,21 +21,21 @@ import { correctPaths } from "../utilities/correct-paths";
  * @returns The config for the specified Storm extension module. If the module does not exist, `undefined` is returned.
  */
 export const getExtensionEnv = <
-  TConfig extends Record<string, any> = Record<string, any>,
+  TConfig extends Record<string, any> = Record<string, any>
 >(
-  extensionName: string,
+  extensionName: string
 ): TConfig | undefined => {
   const prefix = `STORM_EXTENSION_${extensionName.toUpperCase()}_`;
   return Object.keys(process.env)
-    .filter((key) => key.startsWith(prefix))
+    .filter(key => key.startsWith(prefix))
     .reduce((ret: Record<string, any>, key: string) => {
       const name = key
         .replace(prefix, "")
         .split("_")
-        .map((i) =>
+        .map(i =>
           i.length > 0
             ? i.trim().charAt(0).toUpperCase() + i.trim().slice(1)
-            : "",
+            : ""
         )
         .join("");
       if (name) {
@@ -61,7 +61,12 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
     owner: process.env[`${prefix}OWNER`] || undefined,
     bot: {
       name: process.env[`${prefix}BOT_NAME`] || undefined,
-      email: process.env[`${prefix}BOT_EMAIL`] || undefined,
+      email: process.env[`${prefix}BOT_EMAIL`] || undefined
+    },
+    release: {
+      banner: process.env[`${prefix}RELEASE_BANNER`] || undefined,
+      header: process.env[`${prefix}RELEASE_HEADER`] || undefined,
+      footer: process.env[`${prefix}RELEASE_FOOTER`] || undefined
     },
     organization: process.env[`${prefix}ORGANIZATION`] || undefined,
     packageManager:
@@ -98,7 +103,7 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
         : undefined,
       build: process.env[`${prefix}BUILD_DIR`]
         ? correctPaths(process.env[`${prefix}BUILD_DIR`])
-        : undefined,
+        : undefined
     },
     skipCache:
       process.env[`${prefix}SKIP_CACHE`] !== undefined
@@ -128,34 +133,34 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
       npm: process.env[`${prefix}REGISTRY_NPM`] || undefined,
       cargo: process.env[`${prefix}REGISTRY_CARGO`] || undefined,
       cyclone: process.env[`${prefix}REGISTRY_CYCLONE`] || undefined,
-      container: process.env[`${prefix}REGISTRY_CONTAINER`] || undefined,
+      container: process.env[`${prefix}REGISTRY_CONTAINER`] || undefined
     },
     logLevel:
       process.env[`${prefix}LOG_LEVEL`] !== null &&
       process.env[`${prefix}LOG_LEVEL`] !== undefined
         ? process.env[`${prefix}LOG_LEVEL`] &&
           Number.isSafeInteger(
-            Number.parseInt(process.env[`${prefix}LOG_LEVEL`] as string),
+            Number.parseInt(process.env[`${prefix}LOG_LEVEL`] as string)
           )
           ? getLogLevelLabel(
-              Number.parseInt(process.env[`${prefix}LOG_LEVEL`] as string),
+              Number.parseInt(process.env[`${prefix}LOG_LEVEL`] as string)
             )
           : (process.env[`${prefix}LOG_LEVEL`] as LogLevelLabel)
         : undefined,
     skipConfigLogging:
       process.env[`${prefix}SKIP_CONFIG_LOGGING`] !== undefined
         ? Boolean(process.env[`${prefix}SKIP_CONFIG_LOGGING`])
-        : undefined,
+        : undefined
   };
 
   const themeNames = Object.keys(process.env).filter(
-    (envKey) =>
+    envKey =>
       envKey.startsWith(`${prefix}COLOR_`) &&
       COLOR_KEYS.every(
-        (colorKey) =>
+        colorKey =>
           !envKey.startsWith(`${prefix}COLOR_LIGHT_${colorKey}`) &&
-          !envKey.startsWith(`${prefix}COLOR_DARK_${colorKey}`),
-      ),
+          !envKey.startsWith(`${prefix}COLOR_DARK_${colorKey}`)
+      )
   );
 
   config.colors =
@@ -166,7 +171,7 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
 
             return ret;
           },
-          {},
+          {}
         )
       : getThemeColorConfigEnv(prefix);
 
@@ -193,7 +198,7 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
       ...config,
       ...parsed,
       colors: { ...config.colors, ...parsed.colors },
-      extensions: { ...config.extensions, ...parsed.extensions },
+      extensions: { ...config.extensions, ...parsed.extensions }
     };
   }
 
@@ -218,7 +223,7 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
 
 const getThemeColorConfigEnv = (
   prefix: string,
-  theme?: string,
+  theme?: string
 ): ColorConfigInput => {
   const themeName =
     `COLOR_${theme && theme !== "base" ? `${theme}_` : ""}`.toUpperCase();
@@ -230,7 +235,7 @@ const getThemeColorConfigEnv = (
 };
 
 const getSingleThemeColorConfigEnv = (
-  prefix: string,
+  prefix: string
 ): SingleThemeColorConfigInput => {
   return {
     dark: process.env[`${prefix}DARK`],
@@ -246,18 +251,18 @@ const getSingleThemeColorConfigEnv = (
     danger: process.env[`${prefix}DANGER`],
     fatal: process.env[`${prefix}FATAL`],
     positive: process.env[`${prefix}POSITIVE`],
-    negative: process.env[`${prefix}NEGATIVE`],
+    negative: process.env[`${prefix}NEGATIVE`]
   };
 };
 
 const getMultiThemeColorConfigEnv = (
-  prefix: string,
+  prefix: string
 ): MultiThemeColorConfigInput => {
   return {
     light: getBaseThemeColorConfigEnv<"light", typeof prefix>(
-      `${prefix}_LIGHT_`,
+      `${prefix}_LIGHT_`
     ),
-    dark: getBaseThemeColorConfigEnv<"dark", typeof prefix>(`${prefix}_DARK_`),
+    dark: getBaseThemeColorConfigEnv<"dark", typeof prefix>(`${prefix}_DARK_`)
   };
 };
 
@@ -268,9 +273,9 @@ const getBaseThemeColorConfigEnv = <
   TExistingPrefix extends string = string,
   TResult = TColorThemeType extends "dark"
     ? DarkThemeColorConfigInput
-    : LightThemeColorConfigInput,
+    : LightThemeColorConfigInput
 >(
-  prefix: `${TExistingPrefix}_${Uppercase<TColorThemeType>}_`,
+  prefix: `${TExistingPrefix}_${Uppercase<TColorThemeType>}_`
 ): TResult => {
   return {
     foreground: process.env[`${prefix}FOREGROUND`],
@@ -286,6 +291,6 @@ const getBaseThemeColorConfigEnv = <
     danger: process.env[`${prefix}DANGER`],
     fatal: process.env[`${prefix}FATAL`],
     positive: process.env[`${prefix}POSITIVE`],
-    negative: process.env[`${prefix}NEGATIVE`],
+    negative: process.env[`${prefix}NEGATIVE`]
   } as TResult;
 };

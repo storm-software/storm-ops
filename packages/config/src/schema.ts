@@ -2,7 +2,9 @@ import z from "zod";
 import {
   STORM_DEFAULT_DOCS,
   STORM_DEFAULT_HOMEPAGE,
-  STORM_DEFAULT_LICENSING
+  STORM_DEFAULT_LICENSING,
+  STORM_DEFAULT_RELEASE_BANNER,
+  STORM_DEFAULT_RELEASE_FOOTER
 } from "./constants";
 
 const DarkColorSchema = z
@@ -238,6 +240,32 @@ export const WorkspaceBotConfigSchema = z
     "The workspace's bot user's config used to automated various operations tasks"
   );
 
+export const WorkspaceReleaseConfigSchema = z
+  .object({
+    banner: z
+      .string()
+      .trim()
+      .default(STORM_DEFAULT_RELEASE_BANNER)
+      .describe(
+        "A URL to a banner image used to display the workspace's release"
+      ),
+    header: z
+      .string()
+      .trim()
+      .optional()
+      .describe(
+        "A header message appended to the start of the workspace's release notes"
+      ),
+    footer: z
+      .string()
+      .trim()
+      .default(STORM_DEFAULT_RELEASE_FOOTER)
+      .describe(
+        "A footer message appended to the end of the workspace's release notes"
+      )
+  })
+  .describe("The workspace's release config used during the release process");
+
 export const WorkspaceDirectoryConfigSchema = z
   .object({
     cache: z
@@ -360,6 +388,7 @@ export const StormConfigSchema = z
       .default("@storm-software/admin")
       .describe("The owner of the package"),
     bot: WorkspaceBotConfigSchema,
+    release: WorkspaceReleaseConfigSchema,
     mode: z
       .enum(["development", "staging", "production"])
       .default("production")

@@ -46,6 +46,7 @@ keeping the codebase maintainable.
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Table of Contents
 
 - [Quick Features](#quick-features)
@@ -430,7 +431,7 @@ specification. Contributions of any kind welcome!
 <br />
 
 Storm Software is an open source software development organization and creator
-of Acidic, StormStack and StormCloud.
+of Cyclone UI, Storm Stack and Acidic.
 
 Our mission is to make software development more accessible. Our ideal future is
 one where anyone can create software without years of prior development

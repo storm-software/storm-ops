@@ -4,7 +4,7 @@ import type {
   LightThemeColorConfig,
   MultiThemeColorConfig,
   SingleThemeColorConfig,
-  StormConfig,
+  StormConfig
 } from "@storm-software/config";
 import { getLogLevel } from "../logger/get-log-level";
 import { LogLevel } from "../types";
@@ -17,17 +17,17 @@ import { correctPaths } from "../utilities/correct-paths";
  * @returns The config for the specified Storm extension module. If the module does not exist, `undefined` is returned.
  */
 export const setExtensionEnv = <
-  TConfig extends Record<string, any> = Record<string, any>,
+  TConfig extends Record<string, any> = Record<string, any>
 >(
   extensionName: string,
-  extension: TConfig,
+  extension: TConfig
 ) => {
   for (const key of Object.keys(extension ?? {})) {
     if (extension[key]) {
       const result =
         key
           ?.replace(/([A-Z])+/g, (input?: string) =>
-            input ? input[0]?.toUpperCase() + input.slice(1) : "",
+            input ? input[0]?.toUpperCase() + input.slice(1) : ""
           )
           .split(/(?=[A-Z])|[.\-\s_]/)
           .map((x: string) => x.toLowerCase()) ?? [];
@@ -77,6 +77,11 @@ export const setConfigEnv = (config: StormConfig) => {
     process.env[`${prefix}BOT_NAME`] = config.bot.name;
     process.env[`${prefix}BOT_EMAIL`] = config.bot.email;
   }
+  if (config.release) {
+    process.env[`${prefix}RELEASE_BANNER`] = config.release.banner;
+    process.env[`${prefix}RELEASE_HEADER`] = config.release.header;
+    process.env[`${prefix}RELEASE_FOOTER`] = config.release.footer;
+  }
   if (config.organization) {
     process.env[`${prefix}ORGANIZATION`] = config.organization;
   }
@@ -120,7 +125,7 @@ export const setConfigEnv = (config: StormConfig) => {
   if (config.directories) {
     if (!config.skipCache && config.directories.cache) {
       process.env[`${prefix}CACHE_DIR`] = correctPaths(
-        config.directories.cache,
+        config.directories.cache
       );
     }
     if (config.directories.data) {
@@ -128,7 +133,7 @@ export const setConfigEnv = (config: StormConfig) => {
     }
     if (config.directories.config) {
       process.env[`${prefix}CONFIG_DIR`] = correctPaths(
-        config.directories.config,
+        config.directories.config
       );
     }
     if (config.directories.temp) {
@@ -139,7 +144,7 @@ export const setConfigEnv = (config: StormConfig) => {
     }
     if (config.directories.build) {
       process.env[`${prefix}BUILD_DIR`] = correctPaths(
-        config.directories.build,
+        config.directories.build
       );
     }
   }
@@ -174,7 +179,7 @@ export const setConfigEnv = (config: StormConfig) => {
   } else {
     setThemeColorConfigEnv(
       `${prefix}COLOR_`,
-      config.colors as MultiThemeColorConfig | SingleThemeColorConfig,
+      config.colors as MultiThemeColorConfig | SingleThemeColorConfig
     );
   }
 
@@ -189,7 +194,7 @@ export const setConfigEnv = (config: StormConfig) => {
   }
   if (config.externalPackagePatterns) {
     process.env[`${prefix}EXTERNAL_PACKAGE_PATTERNS`] = JSON.stringify(
-      config.externalPackagePatterns,
+      config.externalPackagePatterns
     );
   }
   if (config.registry) {
@@ -204,12 +209,12 @@ export const setConfigEnv = (config: StormConfig) => {
     }
     if (config.registry.cyclone) {
       process.env[`${prefix}REGISTRY_CYCLONE`] = String(
-        config.registry.cyclone,
+        config.registry.cyclone
       );
     }
     if (config.registry.container) {
       process.env[`${prefix}REGISTRY_CONTAINER`] = String(
-        config.registry.cyclone,
+        config.registry.cyclone
       );
     }
   }
@@ -217,29 +222,29 @@ export const setConfigEnv = (config: StormConfig) => {
     process.env[`${prefix}LOG_LEVEL`] = String(config.logLevel);
     process.env.LOG_LEVEL = String(config.logLevel);
     process.env.NX_VERBOSE_LOGGING = String(
-      getLogLevel(config.logLevel) >= LogLevel.DEBUG ? true : false,
+      getLogLevel(config.logLevel) >= LogLevel.DEBUG ? true : false
     );
     process.env.RUST_BACKTRACE =
       getLogLevel(config.logLevel) >= LogLevel.DEBUG ? "full" : "none";
   }
   if (config.skipConfigLogging !== undefined) {
     process.env[`${prefix}SKIP_CONFIG_LOGGING`] = String(
-      config.skipConfigLogging,
+      config.skipConfigLogging
     );
   }
 
   process.env[`${prefix}CONFIG`] = JSON.stringify(config);
 
   for (const key of Object.keys(config.extensions ?? {})) {
-    config.extensions[key] &&
-      Object.keys(config.extensions[key]) &&
+    if (config.extensions[key] && Object.keys(config.extensions[key])) {
       setExtensionEnv(key, config.extensions[key]);
+    }
   }
 };
 
 const setThemeColorConfigEnv = (
   prefix: string,
-  config: MultiThemeColorConfig | SingleThemeColorConfig,
+  config: MultiThemeColorConfig | SingleThemeColorConfig
 ) => {
   // Check if the color configuration is set using separate dark and light color
   // palettes or a single multi-theme color palettes
@@ -251,7 +256,7 @@ const setThemeColorConfigEnv = (
 
 const setSingleThemeColorConfigEnv = (
   prefix: string,
-  config: SingleThemeColorConfig,
+  config: SingleThemeColorConfig
 ) => {
   if (config.dark) {
     process.env[`${prefix}DARK`] = config.dark;
@@ -299,17 +304,17 @@ const setSingleThemeColorConfigEnv = (
 
 const setMultiThemeColorConfigEnv = (
   prefix: string,
-  config: MultiThemeColorConfig,
+  config: MultiThemeColorConfig
 ) => {
   return {
     light: setBaseThemeColorConfigEnv(`${prefix}LIGHT_`, config.light),
-    dark: setBaseThemeColorConfigEnv(`${prefix}DARK_`, config.dark),
+    dark: setBaseThemeColorConfigEnv(`${prefix}DARK_`, config.dark)
   };
 };
 
 const setBaseThemeColorConfigEnv = (
   prefix: string,
-  config: DarkThemeColorConfig | LightThemeColorConfig,
+  config: DarkThemeColorConfig | LightThemeColorConfig
 ) => {
   if (config.foreground) {
     process.env[`${prefix}FOREGROUND`] = config.foreground;
