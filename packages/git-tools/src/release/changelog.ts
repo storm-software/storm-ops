@@ -1142,7 +1142,7 @@ async function generateChangelogForWorkspace({
     );
     writeFileSync(changelogPath, contents);
     await launchEditor(changelogPath);
-    contents = readFileSync(changelogPath, "utf-8");
+    contents = readFileSync(changelogPath, "utf8");
   }
 
   if (interpolatedTreePath) {
@@ -1160,7 +1160,7 @@ async function generateChangelogForWorkspace({
       );
       if (existingVersionToUpdate) {
         rootChangelogContents = rootChangelogContents.replace(
-          `## ${generateChangelogTitle(releaseVersion.rawVersion, null, workspaceConfig)}\n\n\n${existingVersionToUpdate.body}`,
+          `## ${generateChangelogTitle(releaseVersion.rawVersion, null, false, workspaceConfig)}\n\n\n${existingVersionToUpdate.body}`,
           contents
         );
       } else {
@@ -1309,7 +1309,7 @@ async function generateChangelogForProjects({
         );
         if (existingVersionToUpdate) {
           changelogContents = changelogContents.replace(
-            `## ${generateChangelogTitle(releaseVersion.rawVersion, project.name, workspaceConfig)}\n\n\n${existingVersionToUpdate.body}`,
+            `## ${generateChangelogTitle(releaseVersion.rawVersion, project.name, false, workspaceConfig)}\n\n\n${existingVersionToUpdate.body}`,
             contents
           );
         } else {

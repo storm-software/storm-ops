@@ -159,20 +159,10 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
     const isMajorVersion =
       `${major(this.changelogEntryVersion)}.0.0` ===
       this.changelogEntryVersion.replace(/^v/, "");
-    let maybeDateStr = "";
-
-    if (this.changelogRenderOptions.versionTitleDate) {
-      const dateStr = new Date().toISOString().slice(0, 10);
-      maybeDateStr = ` (${dateStr})`;
-    }
 
     return isMajorVersion
-      ? this.workspaceConfig?.repository
-        ? `# ${generateChangelogTitle(this.changelogEntryVersion, this.project!, this.workspaceConfig)}${maybeDateStr}`
-        : `# ${this.changelogEntryVersion}${maybeDateStr}`
-      : this.workspaceConfig?.repository
-        ? `## ${generateChangelogTitle(this.changelogEntryVersion, this.project!, this.workspaceConfig)}${maybeDateStr}`
-        : `## ${this.changelogEntryVersion}${maybeDateStr}`;
+      ? `# ${generateChangelogTitle(this.changelogEntryVersion, this.project!, false, this.workspaceConfig)}`
+      : `## ${generateChangelogTitle(this.changelogEntryVersion, this.project!, false, this.workspaceConfig)}`;
   }
 
   protected override renderBreakingChanges(): string[] {
