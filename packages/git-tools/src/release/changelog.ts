@@ -413,21 +413,27 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
       )
     ) {
       postGitTasks.push(async latestCommit => {
-        output.logSingleLine(`Creating GitHub Release`);
+        const contents = formatGithubReleaseNotes(
+          workspaceChangelog.contents,
+          workspaceConfig
+        );
+
+        output.logSingleLine(`Creating GitHub Release \n\n${contents}`);
 
         await createOrUpdateGithubRelease(
           nxReleaseConfig.changelog.workspaceChangelog
             ? nxReleaseConfig.changelog.workspaceChangelog.createRelease
             : defaultCreateReleaseProvider,
           workspaceChangelog.releaseVersion,
-          formatGithubReleaseNotes(
-            workspaceChangelog.contents,
-            workspaceConfig
-          ),
+          contents,
           latestCommit,
           { dryRun: !!args.dryRun }
         );
       });
+    } else {
+      output.logSingleLine(
+        `Skipping GitHub Release for workspace changelog as it is disabled in the release group configuration`
+      );
     }
 
     /**
@@ -634,22 +640,29 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
               )
             ) {
               postGitTasks.push(async latestCommit => {
-                output.logSingleLine(`Creating GitHub Release`);
+                const contents = formatGithubReleaseNotes(
+                  projectChangelog.contents,
+                  workspaceConfig
+                );
+
+                output.logSingleLine(`Creating GitHub Release \n\n${contents}`);
 
                 await createOrUpdateGithubRelease(
                   releaseGroup.changelog
                     ? releaseGroup.changelog.createRelease
                     : defaultCreateReleaseProvider,
                   projectChangelog.releaseVersion,
-                  formatGithubReleaseNotes(
-                    projectChangelog.contents,
-                    workspaceConfig
-                  ),
+                  contents,
                   latestCommit,
                   { dryRun: !!args.dryRun }
                 );
               });
+            } else {
+              output.logSingleLine(
+                `Skipping GitHub Release for ${projectName} as it is disabled in the release group configuration`
+              );
             }
+
             allProjectChangelogs[projectName] = projectChangelog;
           }
         }
@@ -793,7 +806,12 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
                 { dryRun: !!args.dryRun }
               );
             });
+          } else {
+            output.logSingleLine(
+              `Skipping GitHub Release for ${projectName} as it is disabled in the release group configuration`
+            );
           }
+
           allProjectChangelogs[projectName] = projectChangelog;
         }
       }
@@ -1396,6 +1414,7 @@ export function shouldCreateGitHubRelease(
   if (changelogConfig === false) {
     return false;
   }
+
   return changelogConfig.createRelease !== false;
 }
 
