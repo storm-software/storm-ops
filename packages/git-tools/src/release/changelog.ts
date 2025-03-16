@@ -73,7 +73,11 @@ import { joinPathFragments } from "nx/src/utils/path";
 import { workspaceRoot } from "nx/src/utils/workspace-root";
 import { ReleaseType, valid } from "semver";
 import { dirSync } from "tmp";
-import { generateChangelogContent } from "../utilities/changelog-utils";
+import {
+  generateChangelogContent,
+  generateChangelogTitle,
+  titleCase
+} from "../utilities/changelog-utils";
 import StormChangelogRenderer from "./changelog-renderer";
 
 export interface NxReleaseChangelogResult {
@@ -414,7 +418,9 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
     ) {
       postGitTasks.push(async latestCommit => {
         const contents = formatGithubReleaseNotes(
+          workspaceChangelog.releaseVersion,
           workspaceChangelog.contents,
+          null,
           workspaceConfig
         );
 
@@ -639,7 +645,9 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
             ) {
               postGitTasks.push(async latestCommit => {
                 const contents = formatGithubReleaseNotes(
+                  projectChangelog.releaseVersion,
                   projectChangelog.contents,
+                  projectName,
                   workspaceConfig
                 );
 
@@ -1482,16 +1490,31 @@ function versionPlanSemverReleaseTypeToChangelogType(bump: ReleaseType): {
 }
 
 function formatGithubReleaseNotes(
+  releaseVersion: ReleaseVersion,
   content: string,
+  projectName: string | null,
   workspaceConfig?: StormConfig
 ): string {
   if (!workspaceConfig) {
     return content;
   }
 
-  return `![Storm Software](${workspaceConfig.release.banner})
+  return `![${titleCase(workspaceConfig.organization)}](${workspaceConfig.release.banner})
 ${workspaceConfig.release.header || ""}
-${content}
+
+# ${projectName ? `${titleCase(projectName)} ` : ""}v${releaseVersion.rawVersion}
+
+We at ${titleCase(workspaceConfig.organization)} are very excited to announce the v${releaseVersion.rawVersion} release of the ${projectName ? titleCase(projectName) : workspaceConfig.name ? titleCase(workspaceConfig.name) : "Storm Software"} project! 🚀
+
+These changes are released under the ${workspaceConfig.license.includes("license") ? workspaceConfig.license : `${workspaceConfig.license} license`}. You can find more details on [our licensing page](${workspaceConfig.licensing}).
+
+If you have any questions or comments, feel free to reach out to the team on [Discord](${workspaceConfig.account.discord}) or [our contact page](${workspaceConfig.contact}). Please help us spread the word by [tweeting](https://twitter.com/intent/tweet?text=Check%20out%20the%20latest%20@${workspaceConfig.account.twitter}%20release%20${projectName ? `${titleCase(projectName)?.replaceAll(" ", "%20")}%20` : ""}v${releaseVersion.rawVersion}%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/${workspaceConfig.organization}/${workspaceConfig.name}/releases/tag/${releaseVersion.gitTag}) about this release!
+
+## Release Notes
+
+${content.replaceAll(`## ${generateChangelogTitle(releaseVersion.rawVersion, projectName, workspaceConfig)}`, "").replaceAll(`# ${generateChangelogTitle(releaseVersion.rawVersion, projectName, workspaceConfig)}`, "")}
+
+---
 
 ${workspaceConfig.release.footer}
 `;

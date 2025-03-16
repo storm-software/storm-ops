@@ -55,7 +55,7 @@ ${changelogContents}`,
   );
 }
 
-const titleCase = (input?: string): string | undefined => {
+export const titleCase = (input?: string): string | undefined => {
   if (!input) {
     return "";
   }
@@ -80,11 +80,11 @@ export function generateChangelogTitle(
   project?: string | null,
   workspaceConfig?: StormConfig | null
 ): string {
-  if (!workspaceConfig?.repository || !project) {
+  if (!workspaceConfig?.name || !project) {
     return version;
   }
 
-  return `[${version}](${workspaceConfig.repository}/releases/tag/${project}%40${version}) (${new Date().toISOString().slice(0, 10)})`;
+  return `[${version}](https://github.com/${workspaceConfig.organization}/${workspaceConfig.name}/releases/tag/${project}%40${version}) (${new Date().toISOString().slice(0, 10)})`;
 }
 
 export function parseChangelogMarkdown(contents: string) {
