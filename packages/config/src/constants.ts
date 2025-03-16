@@ -14,7 +14,7 @@ export const STORM_DEFAULT_ACCOUNT_MEDIUM = "https://medium.com/storm-software";
 export const STORM_DEFAULT_ACCOUNT_GITHUB = "https://github.com/storm-software";
 
 export const STORM_DEFAULT_RELEASE_FOOTER = `
-[Storm Software](${STORM_DEFAULT_HOMEPAGE}) is an open source software development organization with the mission is to make software development more accessible. Our ideal future is one where anyone can create software without years of prior development experience serving as a barrier to entry. We hope to achieve this via LLMs, Generative AI, and intuitive, high-level data modeling/programming languages.
+Storm Software is an open source software development organization with the mission is to make software development more accessible. Our ideal future is one where anyone can create software without years of prior development experience serving as a barrier to entry. We hope to achieve this via LLMs, Generative AI, and intuitive, high-level data modeling/programming languages.
 
 Join us on [Discord](${STORM_DEFAULT_ACCOUNT_DISCORD}) to chat with the team, receive release notifications, ask questions, and get involved.
 
