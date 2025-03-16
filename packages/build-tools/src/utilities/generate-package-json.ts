@@ -1,4 +1,4 @@
-import type { ProjectGraphProjectNode } from "@nx/devkit";
+import type { ProjectConfiguration, ProjectGraphProjectNode } from "@nx/devkit";
 import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
 import type { StormConfig } from "@storm-software/config";
 import { writeTrace } from "@storm-software/config-tools/logger/console";
@@ -9,14 +9,14 @@ import { existsSync, readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import {
   readCachedProjectGraph,
-  readProjectsConfigurationFromProjectGraph,
+  readProjectsConfigurationFromProjectGraph
 } from "nx/src/project-graph/project-graph";
 
 export const addPackageDependencies = async (
   workspaceRoot: string,
   projectRoot: string,
   projectName: string,
-  packageJson: Record<string, any>,
+  packageJson: Record<string, any>
 ): Promise<Record<string, any>> => {
   const projectGraph = readCachedProjectGraph();
   const projectDependencies = calculateProjectBuildableDependencies(
@@ -26,15 +26,15 @@ export const addPackageDependencies = async (
     projectName,
     process.env.NX_TASK_TARGET_TARGET || "build",
     process.env.NX_TASK_TARGET_CONFIGURATION || "production",
-    true,
+    true
   );
 
   const localPackages = [] as Record<string, any>[];
   for (const project of projectDependencies.dependencies.filter(
-    (dep) =>
+    dep =>
       dep.node.type === "lib" &&
-      dep.node.data.root !== projectRoot &&
-      dep.node.data.root !== workspaceRoot,
+      (dep.node.data as ProjectConfiguration)?.root !== projectRoot &&
+      (dep.node.data as ProjectConfiguration)?.root !== workspaceRoot
   )) {
     const projectNode = project.node as ProjectGraphProjectNode;
 
@@ -42,12 +42,12 @@ export const addPackageDependencies = async (
       const projectPackageJsonPath = joinPaths(
         workspaceRoot,
         projectNode.data.root,
-        "package.json",
+        "package.json"
       );
       if (existsSync(projectPackageJsonPath)) {
         const projectPackageJsonContent = await readFile(
           projectPackageJsonPath,
-          "utf8",
+          "utf8"
         );
 
         const projectPackageJson = JSON.parse(projectPackageJsonContent);
@@ -60,12 +60,12 @@ export const addPackageDependencies = async (
 
   if (localPackages.length > 0) {
     writeTrace(
-      `📦  Adding local packages to package.json: ${localPackages.map((p) => p.name).join(", ")}`,
+      `📦  Adding local packages to package.json: ${localPackages.map(p => p.name).join(", ")}`
     );
 
     const projectJsonFile = await readFile(
       joinPaths(projectRoot, "project.json"),
-      "utf8",
+      "utf8"
     );
     const projectJson = JSON.parse(projectJsonFile);
     const projectName = projectJson.name;
@@ -74,7 +74,7 @@ export const addPackageDependencies = async (
       readProjectsConfigurationFromProjectGraph(projectGraph);
     if (!projectConfigurations?.projects?.[projectName]) {
       throw new Error(
-        "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project.",
+        "The Build process failed because the project does not have a valid configuration in the project.json file. Check if the file exists in the root of the project."
       );
     }
 
@@ -85,12 +85,12 @@ export const addPackageDependencies = async (
         const depPackageJsonPath = joinPaths(
           workspaceRoot,
           projectConfigurations.projects[dep].root,
-          "package.json",
+          "package.json"
         );
         if (existsSync(depPackageJsonPath)) {
           const depPackageJsonContent = readFileSync(
             depPackageJsonPath,
-            "utf8",
+            "utf8"
           );
 
           const depPackageJson = JSON.parse(depPackageJsonContent);
@@ -140,14 +140,14 @@ export const addWorkspacePackageJsonFields = async (
   sourceRoot: string,
   projectName: string,
   includeSrc = false,
-  packageJson: Record<string, any>,
+  packageJson: Record<string, any>
 ): Promise<Record<string, any>> => {
   const workspaceRoot = config.workspaceRoot
     ? config.workspaceRoot
     : findWorkspaceRoot();
   const workspacePackageJsonContent = await readFile(
     joinPaths(workspaceRoot, "package.json"),
-    "utf8",
+    "utf8"
   );
   const workspacePackageJson = JSON.parse(workspacePackageJsonContent);
 
@@ -169,7 +169,7 @@ export const addWorkspacePackageJsonFields = async (
   }
 
   packageJson.publishConfig ??= {
-    access: "public",
+    access: "public"
   };
 
   packageJson.description ??= workspacePackageJson.description;
@@ -201,7 +201,7 @@ export const addWorkspacePackageJsonFields = async (
 export const addPackageJsonExport = (
   file: string,
   type: "commonjs" | "module" = "module",
-  sourceRoot?: string,
+  sourceRoot?: string
 ): Record<string, any> => {
   let entry = file.replaceAll("\\", "/");
   if (sourceRoot) {
@@ -211,31 +211,31 @@ export const addPackageJsonExport = (
   return {
     import: {
       types: `./dist/${entry}.d.${type === "module" ? "ts" : "mts"}`,
-      default: `./dist/${entry}.${type === "module" ? "js" : "mjs"}`,
+      default: `./dist/${entry}.${type === "module" ? "js" : "mjs"}`
     },
     require: {
       types: `./dist/${entry}.d.${type === "commonjs" ? "ts" : "cts"}`,
-      default: `./dist/${entry}.${type === "commonjs" ? "js" : "cjs"}`,
+      default: `./dist/${entry}.${type === "commonjs" ? "js" : "cjs"}`
     },
     default: {
       types: `./dist/${entry}.d.ts`,
-      default: `./dist/${entry}.js`,
-    },
+      default: `./dist/${entry}.js`
+    }
   };
 };
 
 export const addPackageJsonExports = async (
   sourceRoot: string,
-  packageJson: Record<string, any>,
+  packageJson: Record<string, any>
 ): Promise<Record<string, any>> => {
   packageJson.exports ??= {};
 
   const files = await new Glob("**/*.{ts,tsx}", {
     absolute: false,
     cwd: sourceRoot,
-    root: sourceRoot,
+    root: sourceRoot
   }).walk();
-  files.forEach((file) => {
+  files.forEach(file => {
     addPackageJsonExport(file, packageJson.type, sourceRoot);
 
     const split = file.split(".");
@@ -245,7 +245,7 @@ export const addPackageJsonExports = async (
     packageJson.exports[`./${entry}`] ??= addPackageJsonExport(
       entry,
       packageJson.type,
-      sourceRoot,
+      sourceRoot
     );
   });
 
