@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.109.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.109.0) (2025-03-16)
+
+### Features
+
+- **git-tools:** Improve the release notes markdown text
+  ([9192feeae](https://github.com/storm-software/storm-ops/commit/9192feeae))
+
 ## [1.108.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.108.0) (2025-03-16)
 
 ### Features
