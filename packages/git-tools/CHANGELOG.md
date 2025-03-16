@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.101.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.101.1) (2025-03-16)
+
+### Miscellaneous
+
+- **git-tools:** Cleaned up some language in the generated release notes
+  markdown
+  ([dd788f95a](https://github.com/storm-software/storm-ops/commit/dd788f95a))
+
 ## [2.101.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.101.0) (2025-03-16)
 
 ### Features
