@@ -82,6 +82,26 @@ export const setConfigEnv = (config: StormConfig) => {
     process.env[`${prefix}RELEASE_HEADER`] = config.release.header;
     process.env[`${prefix}RELEASE_FOOTER`] = config.release.footer;
   }
+  if (config.account) {
+    if (config.account.twitter) {
+      process.env[`${prefix}ACCOUNT_TWITTER`] = config.account.twitter;
+    }
+    if (config.account.discord) {
+      process.env[`${prefix}ACCOUNT_DISCORD`] = config.account.discord;
+    }
+    if (config.account.telegram) {
+      process.env[`${prefix}ACCOUNT_TELEGRAM`] = config.account.telegram;
+    }
+    if (config.account.slack) {
+      process.env[`${prefix}ACCOUNT_SLACK`] = config.account.slack;
+    }
+    if (config.account.medium) {
+      process.env[`${prefix}ACCOUNT_MEDIUM`] = config.account.medium;
+    }
+    if (config.account.github) {
+      process.env[`${prefix}ACCOUNT_GITHUB`] = config.account.github;
+    }
+  }
   if (config.organization) {
     process.env[`${prefix}ORGANIZATION`] = config.organization;
   }
@@ -99,6 +119,9 @@ export const setConfigEnv = (config: StormConfig) => {
   }
   if (config.licensing) {
     process.env[`${prefix}LICENSING`] = config.licensing;
+  }
+  if (config.contact) {
+    process.env[`${prefix}CONTACT`] = config.contact;
   }
   if (config.timezone) {
     process.env[`${prefix}TIMEZONE`] = config.timezone;

@@ -78,6 +78,12 @@
           "default": "https://license.stormsoftware.com",
           "description": "The base licensing site for the workspace"
         },
+        "contact": {
+          "type": "string",
+          "format": "uri",
+          "default": "https://stormsoftware.com/contact",
+          "description": "The base contact site for the workspace"
+        },
         "branch": {
           "type": "string",
           "default": "main",
@@ -124,12 +130,49 @@
             },
             "footer": {
               "type": "string",
-              "default": "\nStorm Software is an open source software development organization and creator\nof Cyclone UI, Storm Stack and Acidic.\n\nOur mission is to make software development more accessible. Our ideal future is\none where anyone can create software without years of prior development\nexperience serving as a barrier to entry. We hope to achieve this via LLMs,\nGenerative AI, and intuitive, high-level data modeling/programming languages.\n\nJoin us on [Discord](https://discord.gg/MQ6YVzakM5) to chat with the team,\nreceive release notifications, ask questions, and get involved.\n\nIf this sounds interesting, and you would like to help us in creating the next\ngeneration of development tools, please reach out on our [website](https://stormsoftware.com/contact) or join our\n[Slack](https://join.slack.com/t/storm-software/shared_invite/zt-2gsmk04hs-i6yhK_r6urq0dkZYAwq2pA) channel!\n\n![Storm Software](https://public.storm-cdn.com/icon-fill.png){ width=\"200\" style=\"display: block; margin: 0 auto\" }\n![Visit us at stormsoftware.com](https://public.storm-cdn.com/visit-us-text.svg){ height=\"90\" style=\"display: block; margin: 0 auto\" }\n",
+              "default": "\n[Storm Software](https://stormsoftware.com) is an open source software development organization with the mission is to make software development more accessible. Our ideal future is one where anyone can create software without years of prior development experience serving as a barrier to entry. We hope to achieve this via LLMs, Generative AI, and intuitive, high-level data modeling/programming languages.\n\nJoin us on [Discord](https://discord.gg/MQ6YVzakM5) to chat with the team, receive release notifications, ask questions, and get involved.\n\nIf this sounds interesting, and you would like to help us in creating the next generation of development tools, please reach out on our [website](https://stormsoftware.com/contact) or join our [Slack](https://join.slack.com/t/storm-software/shared_invite/zt-2gsmk04hs-i6yhK_r6urq0dkZYAwq2pA) channel!\n",
               "description": "A footer message appended to the end of the workspace's release notes"
             }
           },
           "additionalProperties": false,
           "description": "The workspace's release config used during the release process"
+        },
+        "account": {
+          "type": "object",
+          "properties": {
+            "twitter": {
+              "type": "string",
+              "default": "StormSoftwareHQ",
+              "description": "A Twitter/X account associated with the organization/project"
+            },
+            "discord": {
+              "type": "string",
+              "default": "https://discord.gg/MQ6YVzakM5",
+              "description": "A Discord account associated with the organization/project"
+            },
+            "telegram": {
+              "type": "string",
+              "default": "https://t.me/storm_software",
+              "description": "A Telegram account associated with the organization/project"
+            },
+            "slack": {
+              "type": "string",
+              "default": "https://join.slack.com/t/storm-software/shared_invite/zt-2gsmk04hs-i6yhK_r6urq0dkZYAwq2pA",
+              "description": "A Slack account associated with the organization/project"
+            },
+            "medium": {
+              "type": "string",
+              "default": "https://medium.com/storm-software",
+              "description": "A Medium account associated with the organization/project"
+            },
+            "github": {
+              "type": "string",
+              "default": "https://github.com/storm-software",
+              "description": "A GitHub account associated with the organization/project"
+            }
+          },
+          "additionalProperties": false,
+          "description": "The workspace's account config used to store various social media links"
         },
         "mode": {
           "type": "string",
@@ -514,7 +557,7 @@
           "description": "Configuration of each used extension"
         }
       },
-      "required": ["bot", "release", "directories", "colors"],
+      "required": ["bot", "release", "account", "directories", "colors"],
       "additionalProperties": false,
       "description": "Storm Workspace config values used during various dev-ops processes. This type is a combination of the StormPackageConfig and StormProject types. It represents the config of the entire monorepo."
     }

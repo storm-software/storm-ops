@@ -1,5 +1,12 @@
 import z from "zod";
 import {
+  STORM_DEFAULT_ACCOUNT_DISCORD,
+  STORM_DEFAULT_ACCOUNT_GITHUB,
+  STORM_DEFAULT_ACCOUNT_MEDIUM,
+  STORM_DEFAULT_ACCOUNT_SLACK,
+  STORM_DEFAULT_ACCOUNT_TELEGRAM,
+  STORM_DEFAULT_ACCOUNT_TWITTER,
+  STORM_DEFAULT_CONTACT,
   STORM_DEFAULT_DOCS,
   STORM_DEFAULT_HOMEPAGE,
   STORM_DEFAULT_LICENSING,
@@ -266,6 +273,43 @@ export const WorkspaceReleaseConfigSchema = z
   })
   .describe("The workspace's release config used during the release process");
 
+export const WorkspaceAccountConfigSchema = z
+  .object({
+    twitter: z
+      .string()
+      .trim()
+      .default(STORM_DEFAULT_ACCOUNT_TWITTER)
+      .describe("A Twitter/X account associated with the organization/project"),
+    discord: z
+      .string()
+      .trim()
+      .default(STORM_DEFAULT_ACCOUNT_DISCORD)
+      .describe("A Discord account associated with the organization/project"),
+    telegram: z
+      .string()
+      .trim()
+      .default(STORM_DEFAULT_ACCOUNT_TELEGRAM)
+      .describe("A Telegram account associated with the organization/project"),
+    slack: z
+      .string()
+      .trim()
+      .default(STORM_DEFAULT_ACCOUNT_SLACK)
+      .describe("A Slack account associated with the organization/project"),
+    medium: z
+      .string()
+      .trim()
+      .default(STORM_DEFAULT_ACCOUNT_MEDIUM)
+      .describe("A Medium account associated with the organization/project"),
+    github: z
+      .string()
+      .trim()
+      .default(STORM_DEFAULT_ACCOUNT_GITHUB)
+      .describe("A GitHub account associated with the organization/project")
+  })
+  .describe(
+    "The workspace's account config used to store various social media links"
+  );
+
 export const WorkspaceDirectoryConfigSchema = z
   .object({
     cache: z
@@ -373,6 +417,12 @@ export const StormConfigSchema = z
       .url()
       .default(STORM_DEFAULT_LICENSING)
       .describe("The base licensing site for the workspace"),
+    contact: z
+      .string()
+      .trim()
+      .url()
+      .default(STORM_DEFAULT_CONTACT)
+      .describe("The base contact site for the workspace"),
     branch: z
       .string()
       .trim()
@@ -389,6 +439,7 @@ export const StormConfigSchema = z
       .describe("The owner of the package"),
     bot: WorkspaceBotConfigSchema,
     release: WorkspaceReleaseConfigSchema,
+    account: WorkspaceAccountConfigSchema,
     mode: z
       .enum(["development", "staging", "production"])
       .default("production")

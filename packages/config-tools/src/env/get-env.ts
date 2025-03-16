@@ -68,6 +68,14 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
       header: process.env[`${prefix}RELEASE_HEADER`] || undefined,
       footer: process.env[`${prefix}RELEASE_FOOTER`] || undefined
     },
+    account: {
+      twitter: process.env[`${prefix}ACCOUNT_TWITTER`] || undefined,
+      discord: process.env[`${prefix}ACCOUNT_DISCORD`] || undefined,
+      telegram: process.env[`${prefix}ACCOUNT_TELEGRAM`] || undefined,
+      slack: process.env[`${prefix}ACCOUNT_SLACK`] || undefined,
+      medium: process.env[`${prefix}ACCOUNT_MEDIUM`] || undefined,
+      github: process.env[`${prefix}ACCOUNT_GITHUB`] || undefined
+    },
     organization: process.env[`${prefix}ORGANIZATION`] || undefined,
     packageManager:
       (process.env[
@@ -77,6 +85,7 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
     homepage: process.env[`${prefix}HOMEPAGE`] || undefined,
     docs: process.env[`${prefix}DOCS`] || undefined,
     licensing: process.env[`${prefix}LICENSING`] || undefined,
+    contact: process.env[`${prefix}CONTACT`] || undefined,
     timezone: process.env[`${prefix}TIMEZONE`] || process.env.TZ || undefined,
     locale: process.env[`${prefix}LOCALE`] || process.env.LOCALE || undefined,
     configFile: process.env[`${prefix}CONFIG_FILE`]
