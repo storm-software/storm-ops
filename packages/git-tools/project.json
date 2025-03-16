@@ -12,6 +12,14 @@
         "cwd": "{projectRoot}"
       }
     },
+    "build-changelog-renderer": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "^build"],
+      "options": {
+        "command": "tsup --config=tsup.changelog-renderer.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
     "build-bin": {
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
@@ -22,7 +30,7 @@
     },
     "build": {
       "executor": "nx:run-commands",
-      "dependsOn": ["build-base", "build-bin"],
+      "dependsOn": ["build-base", "build-changelog-renderer", "build-bin"],
       "options": {
         "commands": [
           "pnpm copyfiles LICENSE dist/packages/git-tools",
@@ -33,7 +41,8 @@
           "pnpm copyfiles --up=4 ./packages/git-tools/src/lefthook/* dist/packages/git-tools/dist/lefthook",
           "pnpm copyfiles --up=4 ./packages/git-tools/src/lint-staged/* dist/packages/git-tools/dist/lint-staged",
           "pnpm copyfiles --up=4 \"./packages/git-tools/dist/src/**/*\" dist/packages/git-tools/dist",
-          "pnpm copyfiles --up=4 \"./packages/git-tools/dist/bin/**/*\" dist/packages/git-tools/bin"
+          "pnpm copyfiles --up=4 \"./packages/git-tools/dist/bin/**/*\" dist/packages/git-tools/bin",
+          "pnpm copyfiles --up=4 \"./packages/git-tools/dist/changelog-renderer/**/*\" dist/packages/git-tools/changelog-renderer"
         ]
       }
     },

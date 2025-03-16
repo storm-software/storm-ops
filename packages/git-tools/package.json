@@ -206,16 +206,16 @@
     },
     "./changelog-renderer": {
       "import": {
-        "types": "./dist/release/changelog-renderer.d.ts",
-        "default": "./dist/release/changelog-renderer.js"
+        "types": "./changelog-renderer/changelog-renderer.d.ts",
+        "default": "./dist/changelog-renderer/changelog-renderer.js"
       },
       "require": {
-        "types": "./dist/release/changelog-renderer.d.cts",
-        "default": "./dist/release/changelog-renderer.cjs"
+        "types": "./changelog-renderer/changelog-renderer.d.cts",
+        "default": "./changelog-renderer/changelog-renderer.cjs"
       },
       "default": {
-        "types": "./dist/release/changelog-renderer.d.ts",
-        "default": "./dist/release/changelog-renderer.js"
+        "types": "./changelog-renderer/changelog-renderer.d.ts",
+        "default": "./changelog-renderer/changelog-renderer.js"
       }
     },
     "./lefthook/*": "./dist/lefthook/*",
