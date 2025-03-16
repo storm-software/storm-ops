@@ -7,11 +7,11 @@ import {
   writeWarning
 } from "@storm-software/config-tools";
 import defu from "defu";
-import { createAPI as createReleaseChangelogAPI } from "nx/src/command-line/release/changelog.js";
 import type { ReleaseOptions } from "nx/src/command-line/release/command-object.js";
 import { createAPI as createReleasePublishAPI } from "nx/src/command-line/release/publish.js";
 import type { ReleaseVersion } from "nx/src/command-line/release/utils/shared.js";
 import { NxReleaseConfiguration, readNxJson } from "nx/src/config/nx-json.js";
+import { createAPI as createReleaseChangelogAPI } from "./changelog";
 import { DEFAULT_RELEASE_CONFIG, DEFAULT_RELEASE_GROUP_CONFIG } from "./config";
 import { releaseVersion } from "./nx-version";
 

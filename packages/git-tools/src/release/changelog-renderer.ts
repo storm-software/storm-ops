@@ -13,6 +13,7 @@ import {
   formatReferences
 } from "nx/src/command-line/release/utils/github";
 import { major } from "semver";
+import { generateChangelogTitle } from "../utilities/generate-changelog-title";
 
 // axios types and values don't seem to match
 // import _axios = require("axios");
@@ -167,10 +168,10 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
 
     return isMajorVersion
       ? this.workspaceConfig?.repository
-        ? `# [${this.changelogEntryVersion}](${this.workspaceConfig.repository}/releases/tag/${this.project}%40${this.changelogEntryVersion})${maybeDateStr}`
+        ? `# ${generateChangelogTitle(this.changelogEntryVersion, this.project!, this.workspaceConfig)}${maybeDateStr}`
         : `# ${this.changelogEntryVersion}${maybeDateStr}`
       : this.workspaceConfig?.repository
-        ? `## [${this.changelogEntryVersion}](${this.workspaceConfig.repository}/releases/tag/${this.project}%40${this.changelogEntryVersion})${maybeDateStr}`
+        ? `## ${generateChangelogTitle(this.changelogEntryVersion, this.project!, this.workspaceConfig)}${maybeDateStr}`
         : `## ${this.changelogEntryVersion}${maybeDateStr}`;
   }
 
