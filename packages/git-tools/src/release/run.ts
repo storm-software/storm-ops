@@ -44,7 +44,9 @@ export const runRelease = async (
 
   process.env.GIT_COMMITTER_NAME = config.bot.name;
   process.env.GIT_COMMITTER_EMAIL =
-    config.bot.email || `${config.bot.name}@users.noreply.github.com`;
+    config.bot.email || config.bot.name
+      ? `${config.bot.name}@users.noreply.github.com`
+      : "bot@stormsoftware.com";
 
   process.env.NODE_AUTH_TOKEN = process.env.NPM_TOKEN;
   process.env.NPM_AUTH_TOKEN = process.env.NPM_TOKEN;
@@ -87,7 +89,7 @@ export const runRelease = async (
   if (nxJson.release?.groups) {
     nxJson.release.groups = Object.keys(nxJson.release.groups).reduce(
       (ret, groupName) => {
-        const groupConfig = nxJson.release!.groups![groupName];
+        const groupConfig = nxJson.release?.groups?.[groupName];
 
         ret[groupName] = defu(groupConfig, DEFAULT_RELEASE_GROUP_CONFIG);
         return ret;

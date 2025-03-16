@@ -378,6 +378,7 @@
         "releaseTagPattern": "{projectName}@{version}",
         "changelog": {
           "entryWhenNoChanges": false,
+          "renderer": "./dist/packages/git-tools/dist/release/changelog-renderer.cjs",
           "renderOptions": {
             "authors": false,
             "commitReferences": true,
