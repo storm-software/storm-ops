@@ -1,3 +1,4 @@
+import { StormConfig } from "@storm-software/config";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import * as chalk from "chalk";
 import { prompt } from "enquirer";
@@ -113,6 +114,8 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
   return async function releaseChangelog(
     args: ChangelogOptions
   ): Promise<NxReleaseChangelogResult> {
+    const workspaceConfig = await getWorkspaceConfig();
+
     const projectGraph = await createProjectGraphAsync({ exitOnError: true });
     const nxJson = readNxJson();
     const userProvidedReleaseConfig = deepMergeJson(
@@ -418,7 +421,10 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
             ? nxReleaseConfig.changelog.workspaceChangelog.createRelease
             : defaultCreateReleaseProvider,
           workspaceChangelog.releaseVersion,
-          workspaceChangelog.contents,
+          formatGithubReleaseNotes(
+            workspaceChangelog.contents,
+            workspaceConfig
+          ),
           latestCommit,
           { dryRun: !!args.dryRun }
         );
@@ -636,7 +642,10 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
                     ? releaseGroup.changelog.createRelease
                     : defaultCreateReleaseProvider,
                   projectChangelog.releaseVersion,
-                  projectChangelog.contents,
+                  formatGithubReleaseNotes(
+                    projectChangelog.contents,
+                    workspaceConfig
+                  ),
                   latestCommit,
                   { dryRun: !!args.dryRun }
                 );
@@ -1480,4 +1489,20 @@ function versionPlanSemverReleaseTypeToChangelogType(bump: ReleaseType): {
     default:
       throw new Error(`Invalid semver bump type: ${bump}`);
   }
+}
+
+function formatGithubReleaseNotes(
+  content: string,
+  workspaceConfig?: StormConfig
+): string {
+  if (!workspaceConfig) {
+    return content;
+  }
+
+  return `![Storm Software](${workspaceConfig.release.banner}){ width="100%" style="display: block; margin: 0 auto" }
+${workspaceConfig.release.header || ""}
+${content}
+
+${workspaceConfig.release.footer}
+`;
 }

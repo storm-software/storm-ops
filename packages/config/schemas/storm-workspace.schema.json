@@ -110,6 +110,27 @@
           "additionalProperties": false,
           "description": "The workspace's bot user's config used to automated various operations tasks"
         },
+        "release": {
+          "type": "object",
+          "properties": {
+            "banner": {
+              "type": "string",
+              "default": "https://public.storm-cdn.com/logo-banner.png",
+              "description": "A URL to a banner image used to display the workspace's release"
+            },
+            "header": {
+              "type": "string",
+              "description": "A header message appended to the start of the workspace's release notes"
+            },
+            "footer": {
+              "type": "string",
+              "default": "\nStorm Software is an open source software development organization and creator\nof Cyclone UI, Storm Stack and Acidic.\n\nOur mission is to make software development more accessible. Our ideal future is\none where anyone can create software without years of prior development\nexperience serving as a barrier to entry. We hope to achieve this via LLMs,\nGenerative AI, and intuitive, high-level data modeling/programming languages.\n\nJoin us on [Discord](https://discord.gg/MQ6YVzakM5) to chat with the team,\nreceive release notifications, ask questions, and get involved.\n\nIf this sounds interesting, and you would like to help us in creating the next\ngeneration of development tools, please reach out on our [website](https://stormsoftware.com/contact) or join our\n[Slack](https://join.slack.com/t/storm-software/shared_invite/zt-2gsmk04hs-i6yhK_r6urq0dkZYAwq2pA) channel!\n\n![Storm Software](https://public.storm-cdn.com/icon-fill.png){ width=\"200\" style=\"display: block; margin: 0 auto\" }\n![Visit us at stormsoftware.com](https://public.storm-cdn.com/visit-us-text.svg){ height=\"90\" style=\"display: block; margin: 0 auto\" }\n",
+              "description": "A footer message appended to the end of the workspace's release notes"
+            }
+          },
+          "additionalProperties": false,
+          "description": "The workspace's release config used during the release process"
+        },
         "mode": {
           "type": "string",
           "enum": ["development", "staging", "production"],
@@ -493,7 +514,7 @@
           "description": "Configuration of each used extension"
         }
       },
-      "required": ["bot", "directories", "colors"],
+      "required": ["bot", "release", "directories", "colors"],
       "additionalProperties": false,
       "description": "Storm Workspace config values used during various dev-ops processes. This type is a combination of the StormPackageConfig and StormProject types. It represents the config of the entire monorepo."
     }
