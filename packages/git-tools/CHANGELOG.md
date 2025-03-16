@@ -1,3 +1,7 @@
+![Storm Software](https://public.storm-cdn.com/logo-banner.png)
+
+# Changelog for Storm Ops - Git Tools
+
 ## 2.96.13 (2025-03-16)
 
 ### Miscellaneous
