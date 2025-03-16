@@ -1,3 +1,12 @@
+## [0.31.18](git://github.com/storm-software/storm-ops.git/releases/tag/esbuild%400.31.18) (2025-03-16)
+
+
+### Updated Dependencies
+
+- Updated config-tools to 1.159.0
+- Updated build-tools to 0.143.18
+- Updated config to 1.107.0
+
 ## 0.31.17 (2025-03-12)
 
 ### Bug Fixes
