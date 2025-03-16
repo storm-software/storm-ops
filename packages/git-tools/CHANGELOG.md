@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.101.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.101.2) (2025-03-16)
+
+### Miscellaneous
+
+- **git-tools:** Added CTA in release notes to star repository
+  ([f39ff7656](https://github.com/storm-software/storm-ops/commit/f39ff7656))
+- **git-tools:** Minor updates to release notes markdown
+  ([c9794ee76](https://github.com/storm-software/storm-ops/commit/c9794ee76))
+
 ## [2.101.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.101.1) (2025-03-16)
 
 ### Miscellaneous
