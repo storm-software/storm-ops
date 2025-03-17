@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.104.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.0) (2025-03-17)
+
+### Features
+
+- **git-tools:** Simplify commit types and align with convential commits
+  ([db838c51b](https://github.com/storm-software/storm-ops/commit/db838c51b))
+
 ## [2.103.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.103.0) (2025-03-17)
 
 ### Features
