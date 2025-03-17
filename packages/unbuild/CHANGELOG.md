@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.38.2](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.2) (2025-03-17)
+
+### Bug Fixes
+
+- **unbuild:** Resolve issue with resolving the `tsconfig.json` path
+  ([99b39e677](https://github.com/storm-software/storm-ops/commit/99b39e677))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([90d1828f9](https://github.com/storm-software/storm-ops/commit/90d1828f9))
+
 ## [0.38.1](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.1) (2025-03-17)
 
 ### Bug Fixes

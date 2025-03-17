@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.104.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.1) (2025-03-17)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([90d1828f9](https://github.com/storm-software/storm-ops/commit/90d1828f9))
+
 ## [2.104.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.0) (2025-03-17)
 
 ### Features
