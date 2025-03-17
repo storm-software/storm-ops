@@ -178,7 +178,7 @@
       "@storm-software/terraform-modules": "workspace:*",
       "@storm-software/cspell": "workspace:*",
       "@storm-software/tools-scripts": "workspace:*",
-      "axios": "1.7.2",
+      "axios": "1.8.2",
       "create-storm-workspace": "workspace:*",
       "got": "14.3.0",
       "load-plugin": "6.0.3",
