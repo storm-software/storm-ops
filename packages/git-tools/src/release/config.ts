@@ -9,6 +9,9 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
   projectsRelationship: "independent",
   releaseTagPattern: "{projectName}@{version}",
   changelog: {
+    git: {
+      tag: true
+    },
     createRelease: "github",
     entryWhenNoChanges: false,
     file: "{projectRoot}/CHANGELOG.md",
@@ -19,9 +22,6 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
     }
   },
   version: {
-    git: {
-      tag: true
-    },
     groupPreVersionCommand: "pnpm build",
     generator: "@storm-software/workspace-tools:release-version",
     generatorOptions: {
@@ -34,6 +34,9 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
 export const DEFAULT_RELEASE_CONFIG = {
   conventionalCommits: DEFAULT_CONVENTIONAL_COMMITS_CONFIG,
   changelog: {
+    git: {
+      tag: true
+    },
     automaticFromRef: true,
     workspaceChangelog: false,
     projectChangelogs: {
@@ -49,9 +52,6 @@ export const DEFAULT_RELEASE_CONFIG = {
     }
   },
   version: {
-    git: {
-      tag: true
-    },
     preVersionCommand: "pnpm build",
     generator: "@storm-software/workspace-tools:release-version",
     generatorOptions: {

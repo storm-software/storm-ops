@@ -123,7 +123,6 @@ export const runRelease = async (
       deleteVersionPlans: false,
       stageChanges: true,
       gitCommit: false,
-      // gitTag: false,
       nxReleaseConfig
     }
   );
@@ -139,7 +138,6 @@ export const runRelease = async (
     verbose: isVerbose(config.logLevel),
     to,
     from,
-    gitTag: true,
     gitCommit: true,
     gitCommitMessage: "release(monorepo): Publish workspace release updates"
   });
