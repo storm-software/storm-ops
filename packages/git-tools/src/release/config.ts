@@ -50,9 +50,7 @@ export const DEFAULT_RELEASE_CONFIG = {
   },
   version: {
     git: {
-      tag: true,
-      tagArgs: "-v",
-      tagMessage: "Release v{version}"
+      tag: true
     },
     preVersionCommand: "pnpm build",
     generator: "@storm-software/workspace-tools:release-version",
