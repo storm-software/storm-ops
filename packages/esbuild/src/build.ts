@@ -202,22 +202,25 @@ const resolveOptions = async (
         };
       }, {})
     },
-    inject: defu(
-      [
-        options.format === "cjs" && options.injectShims
-          ? joinPaths(__dirname, "../assets/cjs_shims.js")
-          : "",
-        options.format === "esm" &&
-        options.injectShims &&
-        options.platform === "node"
-          ? joinPaths(__dirname, "../assets/esm_shims.js")
-          : ""
-      ],
-      options.inject ?? []
-    ).filter(Boolean)
+    inject: [
+      options.format === "cjs" && options.injectShims
+        ? joinPaths(__dirname, "../assets/cjs_shims.js")
+        : "",
+      options.format === "esm" &&
+      options.injectShims &&
+      options.platform === "node"
+        ? joinPaths(__dirname, "../assets/esm_shims.js")
+        : ""
+    ]
   } satisfies ESBuildResolvedOptions;
   result.plugins =
     userOptions.plugins ?? getDefaultBuildPlugins(userOptions, result);
+
+  if (options.inject) {
+    options.inject = defu(result.inject, options.inject);
+  }
+  options.inject?.filter(Boolean);
+
   delete result.entry;
   delete result.outputPath;
 

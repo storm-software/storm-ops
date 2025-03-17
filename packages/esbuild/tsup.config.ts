@@ -14,7 +14,7 @@ export default defineConfig([
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     external: ["esbuild", "nx", "@nx/*"],
-    skipNodeModulesBundle: true,
+    skipNodeModulesBundle: true
   },
   {
     name: "esbuild-bin",
@@ -29,6 +29,6 @@ export default defineConfig([
     dts: false,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    skipNodeModulesBundle: false,
-  },
+    skipNodeModulesBundle: false
+  }
 ]);
