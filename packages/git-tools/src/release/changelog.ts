@@ -32,7 +32,6 @@ import {
   getLatestGitTagForPattern,
   gitAdd,
   gitPush,
-  gitTag,
   parseCommits,
   parseGitCommit
 } from "nx/src/command-line/release/utils/git";
@@ -78,6 +77,7 @@ import {
   generateChangelogTitle,
   titleCase
 } from "../utilities/changelog-utils";
+import { gitTag } from "../utilities/git-utils";
 import StormChangelogRenderer from "./changelog-renderer";
 
 export interface NxReleaseChangelogResult {
@@ -1499,7 +1499,7 @@ function formatGithubReleaseNotes(
     return content;
   }
 
-  return `![${titleCase(workspaceConfig.organization)}](${workspaceConfig.release.banner})
+  return `![${titleCase(workspaceConfig.organization)?.replaceAll(" ", "-")}](${workspaceConfig.release.banner})
 ${workspaceConfig.release.header || ""}
 
 # ${projectName ? `${titleCase(projectName)} ` : ""}v${releaseVersion.rawVersion}
