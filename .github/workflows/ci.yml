@@ -60,7 +60,6 @@ jobs:
           package-manager: pnpm
           package-manager-version: 10.3.0
           storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
-          ignore-scripts: Y
 
       - name: Run build script
         run: pnpm build

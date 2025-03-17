@@ -71,7 +71,6 @@ jobs:
         with:
           package-manager: pnpm
           package-manager-version: 10.3.0
-          storm-bot: stormie-bot
           storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
       # Initializes the CodeQL tools for scanning.
