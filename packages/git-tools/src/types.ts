@@ -5,7 +5,7 @@ import {
   NxReleaseChangelogConfiguration,
   NxReleaseConventionalCommitsConfiguration,
   NxReleaseGitConfiguration,
-  NxReleaseVersionConfiguration,
+  NxReleaseVersionConfiguration
 } from "nx/src/config/nx-json";
 
 export type DeepPartial<T> = T extends object
@@ -30,6 +30,8 @@ export type CommitTypeProps = CommitEnumItemProps & {
 };
 
 export const DEFAULT_COMMIT_TYPES = {
+  /* --- Bumps version when selected --- */
+
   chore: {
     description: "Other changes that don't modify src or test files",
     title: "Chore",
@@ -37,50 +39,8 @@ export const DEFAULT_COMMIT_TYPES = {
     semverBump: "patch",
     changelog: {
       title: "Miscellaneous",
-      hidden: false,
-    },
-  },
-  ci: {
-    description:
-      "Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)",
-    title: "Continuous Integration",
-    emoji: "🧰 ",
-    semverBump: "patch",
-    changelog: {
-      title: "Continuous Integration",
-      hidden: false,
-    },
-  },
-  deps: {
-    description:
-      "Changes that add, update, or remove dependencies. This includes devDependencies and peerDependencies",
-    title: "Dependencies",
-    emoji: "📦 ",
-    semverBump: "patch",
-    changelog: {
-      title: "Dependency Upgrades",
-      hidden: false,
-    },
-  },
-  docs: {
-    description: "A change that only includes documentation updates",
-    title: "Documentation",
-    emoji: "📜 ",
-    semverBump: "none",
-    changelog: {
-      title: "Documentation",
-      hidden: true,
-    },
-  },
-  feat: {
-    description: "A change that adds a new feature to the package",
-    title: "Feature",
-    emoji: "🔑 ",
-    semverBump: "minor",
-    changelog: {
-      title: "Features",
-      hidden: false,
-    },
+      hidden: false
+    }
   },
   fix: {
     description:
@@ -90,18 +50,29 @@ export const DEFAULT_COMMIT_TYPES = {
     semverBump: "patch",
     changelog: {
       title: "Bug Fixes",
-      hidden: false,
-    },
+      hidden: false
+    }
   },
-  perf: {
-    description: "A code change that improves performance",
-    title: "Performance Improvement",
-    emoji: "⏱️  ",
-    semverBump: "none",
+  feat: {
+    description: "A change that adds a new feature to the package",
+    title: "Feature",
+    emoji: "🔑 ",
+    semverBump: "minor",
     changelog: {
-      title: "Performance Improvements",
-      hidden: false,
-    },
+      title: "Features",
+      hidden: false
+    }
+  },
+  ci: {
+    description:
+      "Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)",
+    title: "Continuous Integration",
+    emoji: "🧰 ",
+    semverBump: "patch",
+    changelog: {
+      title: "Continuous Integration",
+      hidden: false
+    }
   },
   refactor: {
     description: "A code change that neither fixes a bug nor adds a feature",
@@ -109,30 +80,43 @@ export const DEFAULT_COMMIT_TYPES = {
     emoji: "🧪 ",
     semverBump: "patch",
     changelog: {
-      title: "Code Improvements",
-      hidden: false,
-    },
-  },
-  revert: {
-    description: "Revert a previously committed change",
-    title: "Revert",
-    emoji: "🗑️ ",
-    semverBump: "patch",
-    changelog: {
-      title: "Reverts",
-      hidden: false,
-    },
+      title: "Source Code Improvements",
+      hidden: false
+    }
   },
   style: {
     description:
       "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
-    title: "Styling",
+    title: "Style Improvements",
     emoji: "💎 ",
-    semverBump: "minor",
+    semverBump: "patch",
     changelog: {
-      title: "Styling",
-      hidden: false,
-    },
+      title: "Style Improvements",
+      hidden: false
+    }
+  },
+  perf: {
+    description: "A code change that improves performance",
+    title: "Performance Improvement",
+    emoji: "⏱️  ",
+    semverBump: "patch",
+    changelog: {
+      title: "Performance Improvements",
+      hidden: false
+    }
+  },
+
+  /* --- Does not bump version when selected --- */
+
+  docs: {
+    description: "A change that only includes documentation updates",
+    title: "Documentation",
+    emoji: "📜 ",
+    semverBump: "none",
+    changelog: {
+      title: "Documentation",
+      hidden: false
+    }
   },
   test: {
     description: "Adding missing tests or correcting existing tests",
@@ -141,18 +125,38 @@ export const DEFAULT_COMMIT_TYPES = {
     semverBump: "none",
     changelog: {
       title: "Testing",
-      hidden: true,
-    },
+      hidden: true
+    }
   },
-  types: {
-    description: "Changes that affect the project's type definitions",
-    title: "Type Definition",
-    emoji: "📓 ",
-    semverBump: "minor",
+
+  /* --- Not included in commitlint but included in changelog --- */
+
+  deps: {
+    description:
+      "Changes that add, update, or remove dependencies. This includes devDependencies and peerDependencies",
+    title: "Dependencies",
+    emoji: "📦 ",
+    hidden: true,
+    semverBump: "patch",
     changelog: {
-      title: "Type Definitions",
-      hidden: false,
-    },
+      title: "Dependency Upgrades",
+      hidden: false
+    }
+  },
+
+  /* --- Not included in commitlint or changelog --- */
+
+  build: {
+    description:
+      "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)",
+    title: "Build",
+    emoji: "🛠 ",
+    hidden: true,
+    semverBump: "none",
+    changelog: {
+      title: "Build",
+      hidden: true
+    }
   },
   release: {
     description: "Publishing a commit containing a newly released version",
@@ -162,15 +166,15 @@ export const DEFAULT_COMMIT_TYPES = {
     semverBump: "none",
     changelog: {
       title: "Publish Release",
-      hidden: true,
-    },
-  },
+      hidden: true
+    }
+  }
 } as const;
 
 export type DefaultCommitTypeKeys = keyof typeof DEFAULT_COMMIT_TYPES;
 
 export type CommitTypesEnum<
-  TCommitTypes extends DefaultCommitTypeKeys = DefaultCommitTypeKeys,
+  TCommitTypes extends DefaultCommitTypeKeys = DefaultCommitTypeKeys
 > = Record<TCommitTypes, CommitTypeProps>;
 
 export type CommitScopeProps = CommitEnumItemProps & {
@@ -197,10 +201,18 @@ export const DEFAULT_COMMIT_QUESTIONS = {
     type: "select",
     title: "Commit Type",
     description: "Select the commit type that best describes your changes",
-    enum: DEFAULT_COMMIT_TYPES,
+    enum: (
+      Object.keys(DEFAULT_COMMIT_TYPES).filter(
+        type => DEFAULT_COMMIT_TYPES[type].hidden !== true
+      ) as DefaultCommitTypeKeys[]
+    ).reduce((ret, type) => {
+      ret[type] = DEFAULT_COMMIT_TYPES[type];
+
+      return ret;
+    }, {} as CommitTypesEnum),
     defaultValue: "chore",
     maxLength: 20,
-    minLength: 3,
+    minLength: 3
   },
   scope: {
     type: "select",
@@ -210,26 +222,26 @@ export const DEFAULT_COMMIT_QUESTIONS = {
     enum: {} as CommitScopesEnum,
     defaultValue: "monorepo",
     maxLength: 50,
-    minLength: 1,
+    minLength: 1
   },
   subject: {
     type: "input",
     title: "Commit Subject",
     description: "Write a short, imperative tense description of the change",
     maxLength: 150,
-    minLength: 3,
+    minLength: 3
   },
   body: {
     type: "input",
     title: "Commit Body",
     description: "Provide a longer description of the change",
-    maxLength: 600,
+    maxLength: 600
   },
   isBreaking: {
     type: "confirm",
     title: "Breaking Changes",
     description: "Are there any breaking changes as a result of this commit?",
-    defaultValue: false,
+    defaultValue: false
   },
   breakingBody: {
     type: "input",
@@ -238,13 +250,13 @@ export const DEFAULT_COMMIT_QUESTIONS = {
       "A BREAKING CHANGE commit requires a body. Please enter a longer description of the commit itself",
     when: (answers: Record<string, any>) => answers.isBreaking === true,
     maxLength: 600,
-    minLength: 3,
+    minLength: 3
   },
   isIssueAffected: {
     type: "confirm",
     title: "Open Issue Affected",
     description: "Does this change impact any open issues?",
-    defaultValue: false,
+    defaultValue: false
   },
   issuesBody: {
     type: "input",
@@ -253,8 +265,8 @@ export const DEFAULT_COMMIT_QUESTIONS = {
       "If issues are closed, the commit requires a body. Please enter a longer description of the commit itself",
     when: (answers: Record<string, any>) => answers.isIssueAffected === true,
     maxLength: 600,
-    minLength: 3,
-  },
+    minLength: 3
+  }
 } as const;
 
 export type DefaultCommitQuestionKeys = keyof typeof DEFAULT_COMMIT_QUESTIONS;
@@ -262,7 +274,7 @@ export type DefaultCommitQuestionKeys = keyof typeof DEFAULT_COMMIT_QUESTIONS;
 export type CommitQuestionEnum<
   TCommitQuestionKeys extends
     DefaultCommitQuestionKeys = DefaultCommitQuestionKeys,
-  TCommitQuestionProps extends CommitQuestionProps = CommitQuestionProps,
+  TCommitQuestionProps extends CommitQuestionProps = CommitQuestionProps
 > = Record<TCommitQuestionKeys, TCommitQuestionProps> &
   typeof DEFAULT_COMMIT_QUESTIONS;
 
@@ -273,7 +285,7 @@ export const DEFAULT_COMMIT_PROMPT_MESSAGES = {
   emptyWarning: "can not be empty",
   upperLimitWarning: "%s is %d characters longer than the upper limit",
   lowerLimitWarning: "%s is %d characters less than the lower limit",
-  closedIssueMessage: "Closes: ",
+  closedIssueMessage: "Closes: "
 } as const;
 
 export type DefaultCommitPromptMessagesKeys =
@@ -281,7 +293,7 @@ export type DefaultCommitPromptMessagesKeys =
 
 export type CommitPromptMessagesEnum<
   TCommitPromptMessagesKeys extends
-    DefaultCommitPromptMessagesKeys = DefaultCommitPromptMessagesKeys,
+    DefaultCommitPromptMessagesKeys = DefaultCommitPromptMessagesKeys
 > = Record<TCommitPromptMessagesKeys, string> &
   typeof DEFAULT_COMMIT_PROMPT_MESSAGES;
 
@@ -293,7 +305,7 @@ export const DEFAULT_COMMIT_SETTINGS = {
   disableEmoji: true,
   breakingChangePrefix: "💣 ",
   closedIssuePrefix: "✅ ",
-  format: DEFAULT_COMMIT_MESSAGE_FORMAT,
+  format: DEFAULT_COMMIT_MESSAGE_FORMAT
 };
 
 export type CommitSettingsEnum = Record<string, any> & {
@@ -309,7 +321,7 @@ export type RuleConfigCondition = "always" | "never";
 export enum RuleConfigSeverity {
   Disabled = 0,
   Warning = 1,
-  Error = 2,
+  Error = 2
 }
 
 export type CommitRulesEnum = Record<
@@ -348,7 +360,7 @@ export type CommitConfig<
   TCommitTypesEnum extends CommitTypesEnum = CommitTypesEnum,
   TCommitPromptMessagesEnum extends
     CommitPromptMessagesEnum = CommitPromptMessagesEnum,
-  TCommitSettingsEnum extends CommitSettingsEnum = CommitSettingsEnum,
+  TCommitSettingsEnum extends CommitSettingsEnum = CommitSettingsEnum
 > = {
   extends?: string[];
   messages: TCommitPromptMessagesEnum;
@@ -359,7 +371,7 @@ export type CommitConfig<
 
 export type DefaultResolvedCommitRulesEnum = DefaultCommitRulesEnum & {
   "scope-enum": (
-    ctx: any,
+    ctx: any
   ) => Promise<[RuleConfigSeverity, RuleConfigCondition, string[]]>;
 };
 
@@ -370,7 +382,7 @@ export type CommitResolvedConfig<
   > = CommitQuestionEnum<DefaultCommitQuestionKeys, CommitQuestionProps>,
   TCommitPromptMessagesEnum extends
     CommitPromptMessagesEnum = CommitPromptMessagesEnum,
-  TCommitSettingsEnum extends CommitSettingsEnum = CommitSettingsEnum,
+  TCommitSettingsEnum extends CommitSettingsEnum = CommitSettingsEnum
 > = {
   utils: Record<string, any>;
   parserPreset: string;
@@ -382,14 +394,14 @@ export type CommitResolvedConfig<
 };
 
 export type CommitQuestionAnswers<
-  TCommitQuestionEnum extends CommitQuestionEnum = CommitQuestionEnum,
+  TCommitQuestionEnum extends CommitQuestionEnum = CommitQuestionEnum
 > = Record<keyof TCommitQuestionEnum | string, string | boolean>;
 
 export type CommitState<
   TCommitQuestionEnum extends CommitQuestionEnum = CommitQuestionEnum,
   TCommitPromptMessagesEnum extends
     CommitPromptMessagesEnum = CommitPromptMessagesEnum,
-  TCommitSettingsEnum extends CommitSettingsEnum = CommitSettingsEnum,
+  TCommitSettingsEnum extends CommitSettingsEnum = CommitSettingsEnum
 > = {
   answers: CommitQuestionAnswers<TCommitQuestionEnum>;
   config: CommitResolvedConfig<
