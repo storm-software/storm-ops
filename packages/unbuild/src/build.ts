@@ -116,11 +116,10 @@ export async function resolveOptions(
 
   let tsconfig = options.tsconfig;
   if (!tsconfig) {
-    tsconfig = joinPaths(
-      config.workspaceRoot,
-      options.projectRoot,
-      "tsconfig.json"
-    );
+    tsconfig = joinPaths(options.projectRoot, "tsconfig.json");
+  }
+  if (!tsconfig.startsWith(config.workspaceRoot)) {
+    tsconfig = joinPaths(config.workspaceRoot, tsconfig);
   }
 
   if (!existsSync(tsconfig)) {
