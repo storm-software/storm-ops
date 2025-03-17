@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.102.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.102.0) (2025-03-17)
+
+### Features
+
+- **git-tools:** Update template README files to use Storm-CDN and new banner
+  ([c7cc47f12](https://github.com/storm-software/storm-ops/commit/c7cc47f12))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([aa037c04d](https://github.com/storm-software/storm-ops/commit/aa037c04d))
+
 ## [2.101.3](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.101.3) (2025-03-16)
 
 ### Miscellaneous
