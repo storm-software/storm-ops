@@ -104,7 +104,7 @@ this monorepo:
 - Community support and contributions via GitHub Discussions and Discord
 
 <div align="center">
-<b>Be sure to ⭐ this repository on GitHub so you can keep up to date on any daily progress!</b>
+<a href="https://github.com/storm-software/storm-ops">Be sure to ⭐ this repository on GitHub so you can keep up to date on any daily progress!</a>
 </div>
 
 <div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
@@ -122,6 +122,8 @@ The following packages are included in this monorepo:
   environments and services.
 - **@storm-software/config-tools**: Utilities for handling configuration files
   and settings.
+- **@storm-software/esbuild**: Build tools and configurations for esbuild, a
+  fast JavaScript bundler and minifier.
 - **@storm-software/eslint**: ESLint configurations and rules for linting
   JavaScript and TypeScript code.
 - **@storm-software/git-tools**: Tools for managing Git repositories and
@@ -132,17 +134,20 @@ The following packages are included in this monorepo:
   various languages and file types.
 - **@storm-software/markdownlint**: Markdown linting configurations and rules.
 - **@storm-software/prettier**: Prettier configurations for code formatting.
+- **@storm-software/pulumi-tools**: Tools for managing and deploying
+  infrastructure with Pulumi.
 - **@storm-software/terraform-tools**: Tools for managing and deploying
   infrastructure with Terraform.
 - **@storm-software/testing-tools**: Testing utilities and configurations for
   unit and end-to-end tests.
+- **@storm-software/unbuild**: Build tools and configurations for Unbuild, a
+  zero-config build tool for JavaScript and TypeScript projects (primarily used
+  for libraries).
+- **@storm-software/untyped**: Helper functions for running Untyped type
+  generation on TypeScript projects.
 - **@storm-software/workspace-tools**: Tools and utilities for managing the
   monorepo workspace.
 - **@storm-software/tsconfig**: Tools and utilities for managing Rust projects.
-
-<div align="center">
-<b>Be sure to ⭐ this repository on GitHub so you can keep up to date on any daily progress!</b>
-</div>
 
 <div align="right">[ <a href="#table-of-contents">Back to top ▲</a> ]</div>
 <br />
@@ -417,7 +422,7 @@ specification. Contributions of any kind welcome!
 <br />
 
 <div align="center">
-<img src="https://public.storm-cdn.com/logo-banner.png" width="100%" alt="Storm Software" />
+<img src="https://public.storm-cdn.com/brand-banner.png" width="100%" alt="Storm Software" />
 </div>
 <br />
 
