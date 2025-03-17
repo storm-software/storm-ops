@@ -52,9 +52,13 @@ import {
   type BuildContext,
   BuildEntry,
   MkdistBuildEntry,
+  RollupOptions,
   build as unbuild
 } from "unbuild";
 import { cleanDirectories } from "./clean";
+import { analyzePlugin } from "./plugins/analyze";
+import { onErrorPlugin } from "./plugins/on-error";
+import { tscPlugin } from "./plugins/tsc";
 import type { UnbuildOptions, UnbuildResolvedOptions } from "./types";
 import { loadConfig } from "./utilities/helpers";
 
@@ -308,28 +312,27 @@ export async function resolveOptions(
   }
 
   resolvedOptions.hooks = {
-    // "rollup:options": async (ctx: BuildContext, opts: RollupOptions) => {
-    //   if (options.plugins && options.plugins.length > 0) {
-    //     writeDebug(
-    //       `  🧩   Found ${options.plugins.length} plugins in provided build options`,
-    //       config
-    //     );
+    "rollup:options": async (ctx: BuildContext, opts: RollupOptions) => {
+      if (options.plugins && options.plugins.length > 0) {
+        writeDebug(
+          `  🧩   Found ${options.plugins.length} plugins in provided build options`,
+          config
+        );
 
-    //     opts.plugins = options.plugins;
-    //   } else {
-    //     writeDebug(
-    //       `  🧩   No plugins found in provided build options, using default plugins`,
-    //       config
-    //     );
+        opts.plugins = options.plugins;
+      } else {
+        writeDebug(
+          `  🧩   No plugins found in provided build options, using default plugins`,
+          config
+        );
 
-    //     opts.plugins = await Promise.all([
-    //       analyzePlugin(resolvedOptions),
-    //       typeDefinitionsPlugin(resolvedOptions),
-    //       tscPlugin(resolvedOptions),
-    //       onErrorPlugin(resolvedOptions)
-    //     ]);
-    //   }
-    // },
+        opts.plugins = await Promise.all([
+          analyzePlugin(resolvedOptions),
+          tscPlugin(resolvedOptions),
+          onErrorPlugin(resolvedOptions)
+        ]);
+      }
+    },
     "mkdist:entry:options": async (
       ctx: BuildContext,
       entry: MkdistBuildEntry,
