@@ -69,6 +69,8 @@ jobs:
       - name: Setup workspace
         uses: storm-software/action-setup@main
         with:
+          gpg-sign-key: ${{ secrets.STORM_BOT_GPG_SIGN_KEY }}
+          gpg-passphrase: ${{ secrets.STORM_BOT_GPG_PASSPHRASE }}
           package-manager: pnpm
           package-manager-version: 10.3.0
           storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
