@@ -1,3 +1,22 @@
+![Storm Software](https://public.storm-cdn.com/brand-banner.png)
+
+# Changelog for Storm Ops - Esbuild
+
+## [0.31.20](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.20) (2025-03-17)
+
+### Miscellaneous
+
+- **monorepo:** Reformat CHANGELOG markdown files
+  ([8d5d61c71](https://github.com/storm-software/storm-ops/commit/8d5d61c71))
+- **monorepo:** Regenerate README markdown files
+  ([d085829dc](https://github.com/storm-software/storm-ops/commit/d085829dc))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.160.3
+- Updated build-tools to 0.143.20
+- Updated config to 1.110.3
+
 ![Storm-Software](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - Esbuild

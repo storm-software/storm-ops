@@ -1,3 +1,36 @@
+![Storm Software](https://public.storm-cdn.com/brand-banner.png)
+
+# Changelog for Storm Ops - Git Tools
+
+## [2.103.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.103.0) (2025-03-17)
+
+### Features
+
+- **git-tools:** Enable git tag generation during release versioning
+  ([be88675a8](https://github.com/storm-software/storm-ops/commit/be88675a8))
+
+### Bug Fixes
+
+- **git-tools:** Resolved issue with duplicate tag generation
+  ([991afe6b0](https://github.com/storm-software/storm-ops/commit/991afe6b0))
+- **git-tools:** Resolve issue with duplicate `git tag` call
+  ([e8f24a840](https://github.com/storm-software/storm-ops/commit/e8f24a840))
+- **git-tools:** Correct fingerprint in README markdown to use bot's key
+  ([e52ca2588](https://github.com/storm-software/storm-ops/commit/e52ca2588))
+- **git-tools:** Removed invalid parameters from git tag command
+  ([39cc36fb0](https://github.com/storm-software/storm-ops/commit/39cc36fb0))
+- **git-tools:** Resolved issue with invalid `git tag` arguments
+  ([4a612d038](https://github.com/storm-software/storm-ops/commit/4a612d038))
+- **git-tools:** Ensure the git tag is signed
+  ([7f81f9aaf](https://github.com/storm-software/storm-ops/commit/7f81f9aaf))
+
+### Miscellaneous
+
+- **monorepo:** Reformat CHANGELOG markdown files
+  ([8d5d61c71](https://github.com/storm-software/storm-ops/commit/8d5d61c71))
+- **monorepo:** Regenerate README markdown files
+  ([d085829dc](https://github.com/storm-software/storm-ops/commit/d085829dc))
+
 ![Storm-Software](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - Git Tools
