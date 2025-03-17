@@ -1,4 +1,4 @@
-![Storm Software](https://public.storm-cdn.com/brand-banner.png)
+![Storm-Software](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - Config Tools
 
@@ -785,7 +785,7 @@
 - **monorepo:** Resolve issue with invalid Nx Devkit imports
   ([356d591c](https://github.com/storm-software/storm-ops/commit/356d591c))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config to 1.99.4
 
@@ -801,7 +801,7 @@
 - **monorepo:** Regenerate README markdown files
   ([64e4e1f3](https://github.com/storm-software/storm-ops/commit/64e4e1f3))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config to 1.99.3
 
@@ -814,7 +814,7 @@
 - **monorepo:** Regenerate README markdown files
   ([e468fe22](https://github.com/storm-software/storm-ops/commit/e468fe22))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config to 1.99.2
 
@@ -825,7 +825,7 @@
 - **build-tools:** Resolve issue with unending copy asset files process
   ([e0050d6b](https://github.com/storm-software/storm-ops/commit/e0050d6b))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config to 1.99.1
 
@@ -842,7 +842,7 @@
 - **monorepo:** Resolve issue with internal package referencing
   ([cdc11477](https://github.com/storm-software/storm-ops/commit/cdc11477))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config to 1.99.0
 

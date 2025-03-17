@@ -1,4 +1,4 @@
-![Storm Software](https://public.storm-cdn.com/brand-banner.png)
+![Storm-Software](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - Esbuild
 
@@ -35,7 +35,7 @@
 - **monorepo:** Regenerate README markdown files
   ([abaffb6b4](https://github.com/storm-software/storm-ops/commit/abaffb6b4))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated build-tools to 0.143.17
 
@@ -46,7 +46,7 @@
 - **monorepo:** Regenerate README markdown files
   ([f7e8f1882](https://github.com/storm-software/storm-ops/commit/f7e8f1882))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated build-tools to 0.143.16
 
@@ -57,7 +57,7 @@
 - **monorepo:** Regenerate README markdown files
   ([3c7bfed99](https://github.com/storm-software/storm-ops/commit/3c7bfed99))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated build-tools to 0.143.15
 
@@ -75,7 +75,7 @@
 - **monorepo:** Regenerate README markdown files
   ([61ebec6ee](https://github.com/storm-software/storm-ops/commit/61ebec6ee))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated build-tools to 0.143.14
 
@@ -91,7 +91,7 @@
 - **monorepo:** Regenerate README markdown files
   ([7944884ee](https://github.com/storm-software/storm-ops/commit/7944884ee))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.158.9
 - Updated build-tools to 0.143.13
@@ -104,7 +104,7 @@
 - **monorepo:** Regenerate README markdown files
   ([fec5f6263](https://github.com/storm-software/storm-ops/commit/fec5f6263))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated build-tools to 0.143.12
 
@@ -115,7 +115,7 @@
 - **monorepo:** Regenerate README markdown files
   ([076080ad7](https://github.com/storm-software/storm-ops/commit/076080ad7))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.158.8
 - Updated build-tools to 0.143.11
@@ -128,7 +128,7 @@
 - **monorepo:** Regenerate README markdown files
   ([36b8a62d3](https://github.com/storm-software/storm-ops/commit/36b8a62d3))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated build-tools to 0.143.10
 
@@ -139,7 +139,7 @@
 - **monorepo:** Regenerate README markdown files
   ([c8c042ba1](https://github.com/storm-software/storm-ops/commit/c8c042ba1))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.158.7
 - Updated build-tools to 0.143.9
@@ -152,7 +152,7 @@
 - **monorepo:** Regenerate the README markdown files
   ([a720ef45d](https://github.com/storm-software/storm-ops/commit/a720ef45d))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated build-tools to 0.143.8
 
@@ -163,7 +163,7 @@
 - **monorepo:** Regenerate README markdown files
   ([1b7ba4276](https://github.com/storm-software/storm-ops/commit/1b7ba4276))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.158.6
 - Updated build-tools to 0.143.7
@@ -176,7 +176,7 @@
 - **monorepo:** Regenerate README markdown files
   ([120ba4c77](https://github.com/storm-software/storm-ops/commit/120ba4c77))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated build-tools to 0.143.6
 
@@ -187,7 +187,7 @@
 - **monorepo:** Regenerate README markdown files
   ([de604c0d0](https://github.com/storm-software/storm-ops/commit/de604c0d0))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.158.5
 - Updated build-tools to 0.143.5
@@ -200,7 +200,7 @@
 - **monorepo:** Regenerate README markdown files
   ([bf0d377f7](https://github.com/storm-software/storm-ops/commit/bf0d377f7))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated build-tools to 0.143.4
 
@@ -211,7 +211,7 @@
 - **esbuild:** Ensure all packages `esbuild` dependencies match
   ([b4ddf1284](https://github.com/storm-software/storm-ops/commit/b4ddf1284))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.158.4
 - Updated build-tools to 0.143.3
@@ -224,7 +224,7 @@
 - **workspace-tools:** Resolve issue with unneeded implicit dependency
   ([2a44b95f9](https://github.com/storm-software/storm-ops/commit/2a44b95f9))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated build-tools to 0.143.2
 
@@ -235,7 +235,7 @@
 - **monorepo:** Regenerate README markdown files
   ([26f342fb1](https://github.com/storm-software/storm-ops/commit/26f342fb1))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.158.3
 - Updated build-tools to 0.143.1
@@ -248,7 +248,7 @@
 - **eslint:** Added the `depsCheckSeverity` options
   ([eda38496b](https://github.com/storm-software/storm-ops/commit/eda38496b))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated build-tools to 0.143.0
 
@@ -264,7 +264,7 @@
 - **monorepo:** Regenerate README markdown files
   ([78543811f](https://github.com/storm-software/storm-ops/commit/78543811f))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.158.2
 - Updated build-tools to 0.142.1
@@ -282,7 +282,7 @@
 - **esbuild:** Added extra `resolveExtensions` items to build options
   ([e3ca88bb5](https://github.com/storm-software/storm-ops/commit/e3ca88bb5))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated build-tools to 0.142.0
 
@@ -293,7 +293,7 @@
 - **build-tools:** Cleaned up the compiled file header
   ([1bd90651c](https://github.com/storm-software/storm-ops/commit/1bd90651c))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.158.1
 - Updated build-tools to 0.141.2
@@ -306,7 +306,7 @@
 - **esbuild:** Resolve issue calculating build entry points
   ([908545db9](https://github.com/storm-software/storm-ops/commit/908545db9))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated build-tools to 0.141.1
 
@@ -317,7 +317,7 @@
 - **esbuild:** Added options logging prior to running build
   ([6011389ff](https://github.com/storm-software/storm-ops/commit/6011389ff))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.158.0
 - Updated build-tools to 0.141.0
@@ -337,7 +337,7 @@
 - **esbuild:** Resolve issue with the depth of the copied `assets` path
   ([4d3d54492](https://github.com/storm-software/storm-ops/commit/4d3d54492))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.157.0
 - Updated config to 1.105.0
@@ -356,7 +356,7 @@
 - **eslint:** Remove `includeTransitiveDependencies` from Nx linting rules
   ([2f442eabb](https://github.com/storm-software/storm-ops/commit/2f442eabb))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.156.1
 - Updated config to 1.104.1
@@ -376,7 +376,7 @@
   email
   ([316385be6](https://github.com/storm-software/storm-ops/commit/316385be6))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.156.0
 - Updated config to 1.104.0
@@ -397,7 +397,7 @@
 - **esbuild:** Remove unused `outputPath` parameter from options
   ([a8ffdb44e](https://github.com/storm-software/storm-ops/commit/a8ffdb44e))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.155.10
 
@@ -415,7 +415,7 @@
 - **eslint:** Added `package.json` to the `ignores` list
   ([63fa4c26e](https://github.com/storm-software/storm-ops/commit/63fa4c26e))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.155.9
 
@@ -433,7 +433,7 @@
 - **esbuild:** Resolve issue with incorrect options provided to build
   ([4148ddc79](https://github.com/storm-software/storm-ops/commit/4148ddc79))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.155.8
 
@@ -451,7 +451,7 @@
 - **esbuild:** Resolved issue with extra build options
   ([d9027747b](https://github.com/storm-software/storm-ops/commit/d9027747b))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.155.7
 
@@ -462,7 +462,7 @@
 - **monorepo:** Regenerated README markdown files
   ([54355d315](https://github.com/storm-software/storm-ops/commit/54355d315))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.155.5
 - Updated build-tools to 0.140.5
@@ -475,7 +475,7 @@
 - **monorepo:** Regenerate README markdown files
   ([b785ce163](https://github.com/storm-software/storm-ops/commit/b785ce163))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.155.4
 - Updated build-tools to 0.140.4
@@ -488,7 +488,7 @@
 - **monorepo:** Reformat README markdown files
   ([68f6724f6](https://github.com/storm-software/storm-ops/commit/68f6724f6))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.155.3
 - Updated build-tools to 0.140.3
@@ -501,7 +501,7 @@
 - **monorepo:** Regenerate README markdown files
   ([312306e34](https://github.com/storm-software/storm-ops/commit/312306e34))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.155.2
 - Updated build-tools to 0.140.2
@@ -514,7 +514,7 @@
 - **monorepo:** Reformat and lint workspace files
   ([9b706de2f](https://github.com/storm-software/storm-ops/commit/9b706de2f))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.155.1
 - Updated build-tools to 0.140.1
@@ -535,7 +535,7 @@
 - **monorepo:** Format monorepo files and run linters
   ([8f25455d5](https://github.com/storm-software/storm-ops/commit/8f25455d5))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.155.0
 - Updated build-tools to 0.140.0
@@ -548,7 +548,7 @@
 - **monorepo:** Regenerate README markdown files
   ([ae8ae2775](https://github.com/storm-software/storm-ops/commit/ae8ae2775))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.154.1
 - Updated config to 1.102.1
@@ -565,7 +565,7 @@
 - **build-tools:** Resolve issue with invalid `envName` parameter
   ([afe77d339](https://github.com/storm-software/storm-ops/commit/afe77d339))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.154.0
 - Updated build-tools to 0.139.0
@@ -578,7 +578,7 @@
 - **monorepo:** Reformat monorepo files
   ([43087f2fa](https://github.com/storm-software/storm-ops/commit/43087f2fa))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.153.8
 
@@ -589,7 +589,7 @@
 - **monorepo:** Regenerate README markdown files
   ([6ded6b9a8](https://github.com/storm-software/storm-ops/commit/6ded6b9a8))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.153.7
 
@@ -600,7 +600,7 @@
 - **monorepo:** Reformat README markdown files
   ([60b05814e](https://github.com/storm-software/storm-ops/commit/60b05814e))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.153.6
 
@@ -616,7 +616,7 @@
 - **eslint:** Reformat package.json file
   ([4611c5eeb](https://github.com/storm-software/storm-ops/commit/4611c5eeb))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.153.5
 
@@ -627,7 +627,7 @@
 - **workspace-tools:** Resolve issue with missing dependency on release
   ([f97cc70e6](https://github.com/storm-software/storm-ops/commit/f97cc70e6))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.153.3
 
@@ -638,7 +638,7 @@
 - **monorepo:** Update the package manager version
   ([7722640d6](https://github.com/storm-software/storm-ops/commit/7722640d6))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.153.1
 
@@ -649,7 +649,7 @@
 - **monorepo:** Regenerate README markdown files
   ([1b886df47](https://github.com/storm-software/storm-ops/commit/1b886df47))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.151.5
 - Updated build-tools to 0.138.33
@@ -662,7 +662,7 @@
 - **monorepo:** Regenerate README markdown files
   ([93412b8ef](https://github.com/storm-software/storm-ops/commit/93412b8ef))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.151.4
 - Updated build-tools to 0.138.32
@@ -675,7 +675,7 @@
 - **monorepo:** Regenerate README markdown files
   ([de6ae2b84](https://github.com/storm-software/storm-ops/commit/de6ae2b84))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.151.3
 - Updated build-tools to 0.138.31
@@ -688,7 +688,7 @@
 - **monorepo:** Regenerate README markdown files
   ([79e7315d9](https://github.com/storm-software/storm-ops/commit/79e7315d9))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.151.2
 - Updated build-tools to 0.138.30
@@ -701,7 +701,7 @@
 - **monorepo:** Regenerated README markdown files
   ([2488fa0a7](https://github.com/storm-software/storm-ops/commit/2488fa0a7))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.151.1
 - Updated build-tools to 0.138.29
@@ -714,7 +714,7 @@
 - **monorepo:** Regenerate README markdown files
   ([f151d13e9](https://github.com/storm-software/storm-ops/commit/f151d13e9))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.150.21
 - Updated build-tools to 0.138.28
@@ -727,7 +727,7 @@
 - **monorepo:** Regenerate README markdown files
   ([572028003](https://github.com/storm-software/storm-ops/commit/572028003))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.150.19
 - Updated build-tools to 0.138.27
@@ -740,7 +740,7 @@
 - **monorepo:** Generate README markdown files
   ([12aa873f6](https://github.com/storm-software/storm-ops/commit/12aa873f6))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.150.17
 - Updated build-tools to 0.138.26
@@ -753,7 +753,7 @@
 - **monorepo:** Regenerate README markdown files
   ([481420a10](https://github.com/storm-software/storm-ops/commit/481420a10))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.150.15
 - Updated build-tools to 0.138.25
@@ -766,7 +766,7 @@
 - **monorepo:** Regenerate README markdown files
   ([12a2f638f](https://github.com/storm-software/storm-ops/commit/12a2f638f))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.150.13
 - Updated build-tools to 0.138.24
@@ -779,7 +779,7 @@
 - **monorepo:** Regenerate README markdown files
   ([5295557c6](https://github.com/storm-software/storm-ops/commit/5295557c6))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.150.11
 - Updated build-tools to 0.138.23
@@ -792,7 +792,7 @@
 - **monorepo:** Resolve issue with inconsistent `chalk` versions
   ([e20742ea0](https://github.com/storm-software/storm-ops/commit/e20742ea0))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.150.9
 - Updated build-tools to 0.138.22
@@ -812,7 +812,7 @@
 - **monorepo:** Regenerate README markdown files
   ([d147539be](https://github.com/storm-software/storm-ops/commit/d147539be))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.150.7
 - Updated build-tools to 0.138.21
@@ -825,7 +825,7 @@
 - **monorepo:** Regenerate README markdown files
   ([949c6f3cd](https://github.com/storm-software/storm-ops/commit/949c6f3cd))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.150.6
 - Updated build-tools to 0.138.20
@@ -838,7 +838,7 @@
 - **monorepo:** Regenerate README markdown files
   ([47f85fdcf](https://github.com/storm-software/storm-ops/commit/47f85fdcf))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.150.4
 - Updated build-tools to 0.138.18
@@ -851,7 +851,7 @@
 - **monorepo:** Regenerate README markdown files
   ([665463d38](https://github.com/storm-software/storm-ops/commit/665463d38))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.150.2
 - Updated build-tools to 0.138.16
@@ -864,7 +864,7 @@
 - **monorepo:** Regenerate README markdown files
   ([81d0b65c2](https://github.com/storm-software/storm-ops/commit/81d0b65c2))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.150.0
 - Updated build-tools to 0.138.14
@@ -877,7 +877,7 @@
 - **monorepo:** Regenerate README markdown files
   ([a2b221881](https://github.com/storm-software/storm-ops/commit/a2b221881))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.149.0
 - Updated build-tools to 0.138.12
@@ -890,7 +890,7 @@
 - **monorepo:** Regenerate README markdown files
   ([e3b80ea7](https://github.com/storm-software/storm-ops/commit/e3b80ea7))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.148.3
 - Updated build-tools to 0.138.10
@@ -903,7 +903,7 @@
 - **monorepo:** Regenerate README markdown files
   ([af5c80fa](https://github.com/storm-software/storm-ops/commit/af5c80fa))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.148.1
 - Updated build-tools to 0.138.8
@@ -916,7 +916,7 @@
 - **monorepo:** Regenerate README markdown files
   ([a1b6717d](https://github.com/storm-software/storm-ops/commit/a1b6717d))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.147.1
 - Updated build-tools to 0.138.6
@@ -929,7 +929,7 @@
 - **monorepo:** Regenerate README markdown files
   ([5e0520b1](https://github.com/storm-software/storm-ops/commit/5e0520b1))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.147.0
 - Updated build-tools to 0.138.4
@@ -949,7 +949,7 @@
 - **monorepo:** Regenerate README markdown files
   ([da76edd7](https://github.com/storm-software/storm-ops/commit/da76edd7))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.146.0
 - Updated build-tools to 0.138.2
@@ -962,7 +962,7 @@
 - **monorepo:** Regenerate README markdown files
   ([07f7d3d5](https://github.com/storm-software/storm-ops/commit/07f7d3d5))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.145.1
 - Updated build-tools to 0.138.1
@@ -975,7 +975,7 @@
 - **monorepo:** Regenerate README markdown files
   ([c2ecaaf8](https://github.com/storm-software/storm-ops/commit/c2ecaaf8))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.145.0
 - Updated build-tools to 0.138.0
@@ -988,7 +988,7 @@
 - **monorepo:** Regenerate README markdown files
   ([c87535fb](https://github.com/storm-software/storm-ops/commit/c87535fb))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.144.14
 - Updated build-tools to 0.137.14
@@ -1001,7 +1001,7 @@
 - **monorepo:** Regenerate README markdown files
   ([87f7b939](https://github.com/storm-software/storm-ops/commit/87f7b939))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.144.13
 - Updated build-tools to 0.137.13
@@ -1014,7 +1014,7 @@
 - **monorepo:** Generate README markdown files
   ([a28c725e](https://github.com/storm-software/storm-ops/commit/a28c725e))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.144.12
 - Updated build-tools to 0.137.12
@@ -1027,7 +1027,7 @@
 - **monorepo:** Regenerate README markdown files
   ([4540dfe1](https://github.com/storm-software/storm-ops/commit/4540dfe1))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.144.11
 - Updated build-tools to 0.137.11
@@ -1040,7 +1040,7 @@
 - **monorepo:** Regenerate README markdown files
   ([08ac6d0e](https://github.com/storm-software/storm-ops/commit/08ac6d0e))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.144.10
 - Updated build-tools to 0.137.10
@@ -1053,7 +1053,7 @@
 - **monorepo:** Regenerate README markdown files
   ([d5aac4fd](https://github.com/storm-software/storm-ops/commit/d5aac4fd))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.144.9
 - Updated build-tools to 0.137.9
@@ -1066,7 +1066,7 @@
 - **monorepo:** Regenerate README markdown files
   ([144ad8bf](https://github.com/storm-software/storm-ops/commit/144ad8bf))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.144.8
 - Updated build-tools to 0.137.8
@@ -1079,7 +1079,7 @@
 - **monorepo:** Regenerate README markdown files
   ([4a6cac15](https://github.com/storm-software/storm-ops/commit/4a6cac15))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.144.7
 - Updated build-tools to 0.137.7
@@ -1092,7 +1092,7 @@
 - **monorepo:** Regenerate README markdown files
   ([d9a6793e](https://github.com/storm-software/storm-ops/commit/d9a6793e))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.144.6
 - Updated build-tools to 0.137.6
@@ -1115,7 +1115,7 @@
 - **monorepo:** Regenerate README markdown files
   ([812b4fba](https://github.com/storm-software/storm-ops/commit/812b4fba))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.144.5
 - Updated build-tools to 0.137.5
@@ -1128,7 +1128,7 @@
 - **monorepo:** Regenerate README markdown files
   ([f3649091](https://github.com/storm-software/storm-ops/commit/f3649091))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.144.4
 - Updated build-tools to 0.137.4
@@ -1141,7 +1141,7 @@
 - **monorepo:** Regenerate README markdown files
   ([d3619f12](https://github.com/storm-software/storm-ops/commit/d3619f12))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.144.3
 - Updated build-tools to 0.137.3
@@ -1154,7 +1154,7 @@
 - **monorepo:** Regenerate the README markdown files
   ([e217af7e](https://github.com/storm-software/storm-ops/commit/e217af7e))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.144.2
 - Updated build-tools to 0.137.2
@@ -1167,7 +1167,7 @@
 - **monorepo:** Regenerate the README markdown files
   ([e7d99d45](https://github.com/storm-software/storm-ops/commit/e7d99d45))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.144.1
 - Updated build-tools to 0.137.1
@@ -1180,7 +1180,7 @@
 - **config:** Update package to use modern tooling
   ([8ac7afa3](https://github.com/storm-software/storm-ops/commit/8ac7afa3))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.144.0
 - Updated build-tools to 0.137.0
@@ -1193,7 +1193,7 @@
 - **monorepo:** Regenerate README markdown files
   ([eb629846](https://github.com/storm-software/storm-ops/commit/eb629846))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.143.0
 - Updated build-tools to 0.136.5
@@ -1206,7 +1206,7 @@
 - **monorepo:** Resolve issue with invalid Nx Devkit imports
   ([356d591c](https://github.com/storm-software/storm-ops/commit/356d591c))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.142.4
 - Updated build-tools to 0.136.4
@@ -1224,7 +1224,7 @@
 - **monorepo:** Regenerate README markdown files
   ([64e4e1f3](https://github.com/storm-software/storm-ops/commit/64e4e1f3))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.142.3
 - Updated build-tools to 0.136.3
@@ -1237,7 +1237,7 @@
 - **monorepo:** Regenerate README markdown files
   ([e468fe22](https://github.com/storm-software/storm-ops/commit/e468fe22))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.142.2
 - Updated build-tools to 0.136.2
@@ -1250,7 +1250,7 @@
 - **build-tools:** Resolve issue with unending copy asset files process
   ([e0050d6b](https://github.com/storm-software/storm-ops/commit/e0050d6b))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.142.1
 - Updated build-tools to 0.136.1
@@ -1263,7 +1263,7 @@
 - **monorepo:** Resolve issue with internal package referencing
   ([cdc11477](https://github.com/storm-software/storm-ops/commit/cdc11477))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.142.0
 - Updated build-tools to 0.136.0
@@ -1277,7 +1277,7 @@
   repository
   ([95067c70](https://github.com/storm-software/storm-ops/commit/95067c70))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.141.6
 - Updated build-tools to 0.135.6
@@ -1290,7 +1290,7 @@
 - **build-tools:** Resolved issue with copying asset files into output directory
   ([1b314e8e](https://github.com/storm-software/storm-ops/commit/1b314e8e))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.141.4
 - Updated build-tools to 0.135.4
@@ -1303,7 +1303,7 @@
 - **config-tools:** Resolved issue applying entire token parameters object
   ([5ccf3881](https://github.com/storm-software/storm-ops/commit/5ccf3881))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.141.2
 - Updated build-tools to 0.135.2
@@ -1316,7 +1316,7 @@
 - **workspace-tools:** Enhanced option tokenization logic for executors
   ([14ed93d7](https://github.com/storm-software/storm-ops/commit/14ed93d7))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.141.0
 - Updated build-tools to 0.135.0
@@ -1329,7 +1329,7 @@
 - **unbuild:** Ensure we always use directory as input instead of a file
   ([13d4a133](https://github.com/storm-software/storm-ops/commit/13d4a133))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.140.1
 - Updated build-tools to 0.133.1
@@ -1342,7 +1342,7 @@
 - **monorepo:** Use version 4.2.1 of `chalk` package to prevent CommonJs issues
   ([133dcdfd](https://github.com/storm-software/storm-ops/commit/133dcdfd))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.139.0
 - Updated build-tools to 0.132.0
@@ -1355,7 +1355,7 @@
 - **workspace-tools:** Resolve internal package as ESM via `jiti` resolver
   ([1dc4cfdd](https://github.com/storm-software/storm-ops/commit/1dc4cfdd))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.138.3
 - Updated build-tools to 0.131.3
@@ -1368,7 +1368,7 @@
 - **workspace-tools:** Resolve issue with invalid import path
   ([42a07d0c](https://github.com/storm-software/storm-ops/commit/42a07d0c))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.138.1
 - Updated build-tools to 0.131.1
@@ -1381,7 +1381,7 @@
 - **workspace-tools:** Mark all internal packages as external
   ([f8c65aeb](https://github.com/storm-software/storm-ops/commit/f8c65aeb))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.137.2
 - Updated build-tools to 0.130.2
@@ -1394,7 +1394,7 @@
 - **unbuild:** Update package to bundle config-tools
   ([a2fc7768](https://github.com/storm-software/storm-ops/commit/a2fc7768))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.137.0
 - Updated build-tools to 0.130.0
@@ -1407,7 +1407,7 @@
 - **workspace-tools:** Resolve formatting issue with missing `parser` config
   ([da80cf3d](https://github.com/storm-software/storm-ops/commit/da80cf3d))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.136.3
 - Updated build-tools to 0.129.1
@@ -1420,7 +1420,7 @@
 - **unbuild:** Update package to bundle the `unbuild` package for distribution
   ([d304c28d](https://github.com/storm-software/storm-ops/commit/d304c28d))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.136.1
 - Updated build-tools to 0.128.1
@@ -1433,7 +1433,7 @@
 - **unbuild:** Update build process to use cached project graph
   ([610c94aa](https://github.com/storm-software/storm-ops/commit/610c94aa))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.136.0
 - Updated build-tools to 0.127.0
@@ -1456,7 +1456,7 @@
 - **monorepo:** Regenerate README markdown files
   ([5c8e5c96](https://github.com/storm-software/storm-ops/commit/5c8e5c96))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.134.0
 - Updated build-tools to 0.126.0
@@ -1469,7 +1469,7 @@
 - **unbuild:** Update package to use `tsup-node` to exclude bundles
   ([cf712b2a](https://github.com/storm-software/storm-ops/commit/cf712b2a))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.133.4
 - Updated build-tools to 0.125.4
@@ -1487,7 +1487,7 @@
 - **monorepo:** Regenerate the README markdown files
   ([e911945a](https://github.com/storm-software/storm-ops/commit/e911945a))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.133.3
 - Updated build-tools to 0.125.3
@@ -1500,7 +1500,7 @@
 - **monorepo:** Regenerate README markdown files
   ([e4668406](https://github.com/storm-software/storm-ops/commit/e4668406))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.133.2
 - Updated build-tools to 0.125.2
@@ -1513,7 +1513,7 @@
 - **unbuild:** Update build distributable formatting
   ([2c6a3dce](https://github.com/storm-software/storm-ops/commit/2c6a3dce))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.133.1
 - Updated build-tools to 0.125.1
@@ -1526,7 +1526,7 @@
 - **unbuild:** Bundle `unbuild` dependency into distributable
   ([78438a04](https://github.com/storm-software/storm-ops/commit/78438a04))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.133.0
 - Updated build-tools to 0.125.0
@@ -1539,7 +1539,7 @@
 - **unbuild:** Update the build configuration to properly bundle for node
   ([72be421b](https://github.com/storm-software/storm-ops/commit/72be421b))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.132.4
 - Updated build-tools to 0.124.4
@@ -1552,7 +1552,7 @@
 - **unbuild:** Resolved issue with the `src` path in the distributable
   ([8810c687](https://github.com/storm-software/storm-ops/commit/8810c687))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.132.3
 - Updated build-tools to 0.124.3
@@ -1565,7 +1565,7 @@
 - **unbuild:** Resolved issue with distribution package
   ([265f38a2](https://github.com/storm-software/storm-ops/commit/265f38a2))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.132.2
 - Updated build-tools to 0.124.2
@@ -1578,7 +1578,7 @@
 - **tsdown:** Update package to exclude `oxc` packages from distributable
   ([8e9ad1ad](https://github.com/storm-software/storm-ops/commit/8e9ad1ad))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.132.1
 - Updated build-tools to 0.124.1
@@ -1601,7 +1601,7 @@
 - **monorepo:** Resolve dependency mismatches between packages
   ([72960597](https://github.com/storm-software/storm-ops/commit/72960597))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.132.0
 - Updated build-tools to 0.124.0
@@ -1614,7 +1614,7 @@
 - **eslint:** Resolved issue with invalid `cspell` plugin
   ([1c13fb51](https://github.com/storm-software/storm-ops/commit/1c13fb51))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.131.2
 - Updated build-tools to 0.123.2
@@ -1627,7 +1627,7 @@
 - **eslint:** Resolve stack overflow error on eslint configuration load
   ([f66752ac](https://github.com/storm-software/storm-ops/commit/f66752ac))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.131.1
 - Updated build-tools to 0.123.1
@@ -1641,7 +1641,7 @@
   linting tool
   ([cdc1614b](https://github.com/storm-software/storm-ops/commit/cdc1614b))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.131.0
 - Updated build-tools to 0.123.0
@@ -1654,7 +1654,7 @@
 - **eslint:** Resolved issue with the bundling process
   ([d06b6588](https://github.com/storm-software/storm-ops/commit/d06b6588))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.130.4
 - Updated build-tools to 0.122.4
@@ -1668,7 +1668,7 @@
   dependencies
   ([1199e24f](https://github.com/storm-software/storm-ops/commit/1199e24f))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.130.2
 - Updated build-tools to 0.122.2
@@ -1682,7 +1682,7 @@
   process
   ([400b3369](https://github.com/storm-software/storm-ops/commit/400b3369))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.130.1
 - Updated build-tools to 0.122.1
@@ -1702,7 +1702,7 @@
   successful runs
   ([6964e972](https://github.com/storm-software/storm-ops/commit/6964e972))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.130.0
 - Updated build-tools to 0.122.0
@@ -1716,7 +1716,7 @@
   build
   ([5a9175b9](https://github.com/storm-software/storm-ops/commit/5a9175b9))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.129.0
 - Updated build-tools to 0.121.0
@@ -1729,7 +1729,7 @@
 - **workspace-tools:** Added missing `defu` dependency
   ([60401ac7](https://github.com/storm-software/storm-ops/commit/60401ac7))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.128.3
 - Updated build-tools to 0.120.3
@@ -1742,7 +1742,7 @@
 - **workspace-tools:** Added additional troubleshooting logging to the package
   ([c2cbdcc5](https://github.com/storm-software/storm-ops/commit/c2cbdcc5))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.128.2
 - Updated build-tools to 0.120.2
@@ -1755,7 +1755,7 @@
 - **workspace-tools:** Added `read-yaml-file` as external dependency
   ([c402da27](https://github.com/storm-software/storm-ops/commit/c402da27))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.128.1
 - Updated build-tools to 0.120.1
@@ -1812,7 +1812,7 @@
 - **monorepo:** Update `chalk` depenency to v4.1.2 to work with cjs packages
   ([a92755e8](https://github.com/storm-software/storm-ops/commit/a92755e8))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.128.0
 - Updated build-tools to 0.120.0
@@ -1831,7 +1831,7 @@
 - **storm-ops:** Remove unused `deepmerge` references and fix build
   ([0f4ee3f7](https://github.com/storm-software/storm-ops/commit/0f4ee3f7))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.127.0
 - Updated build-tools to 0.119.0
@@ -1844,7 +1844,7 @@
 - **git-tools:** Ensure the correct email is provided for Stormie-Bot
   ([5fb2c9b6](https://github.com/storm-software/storm-ops/commit/5fb2c9b6))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.126.2
 - Updated build-tools to 0.118.2
@@ -1858,7 +1858,7 @@
   executor
   ([21791bd1](https://github.com/storm-software/storm-ops/commit/21791bd1))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.126.1
 - Updated build-tools to 0.118.1
@@ -1871,7 +1871,7 @@
 - **storm-ops:** Updated catalog and JSON schema for `StormConfig` object
   ([bf99f680](https://github.com/storm-software/storm-ops/commit/bf99f680))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.126.0
 - Updated build-tools to 0.118.0
@@ -1884,7 +1884,7 @@
 - **config:** Clean up Storm workspace configuration properties
   ([22508dd8](https://github.com/storm-software/storm-ops/commit/22508dd8))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.125.0
 - Updated build-tools to 0.117.0
@@ -1897,7 +1897,7 @@
 - **k8s-tools:** Removed old dynamic modules import
   ([81805110](https://github.com/storm-software/storm-ops/commit/81805110))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.124.0
 - Updated build-tools to 0.116.0
@@ -1910,7 +1910,7 @@
 - **workspace-tools:** Removed old dynamically imported modules
   ([56f84500](https://github.com/storm-software/storm-ops/commit/56f84500))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.123.0
 - Updated build-tools to 0.115.0
@@ -1923,7 +1923,7 @@
 - **storm-ops:** Resolved issue with missing `zod` dependency
   ([a886ddde](https://github.com/storm-software/storm-ops/commit/a886ddde))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.122.3
 - Updated build-tools to 0.114.3
@@ -1936,7 +1936,7 @@
 - **storm-ops:** Resolve issue preventing release publishing
   ([92c10eae](https://github.com/storm-software/storm-ops/commit/92c10eae))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.122.2
 - Updated build-tools to 0.114.2
@@ -1949,7 +1949,7 @@
 - **workspace-tools:** Resolved issue with missing `deepmerge` dependency
   ([f27195c6](https://github.com/storm-software/storm-ops/commit/f27195c6))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.122.1
 - Updated build-tools to 0.114.1
@@ -1981,7 +1981,7 @@
 - **workspace-tools:** Resolve issue with invalid taplo configuration file name
   ([1ffec7e6](https://github.com/storm-software/storm-ops/commit/1ffec7e6))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.122.0
 - Updated build-tools to 0.114.0
@@ -2004,7 +2004,7 @@
 - **storm-ops:** Added consistent `@types/node` versions across repository
   ([a569536d](https://github.com/storm-software/storm-ops/commit/a569536d))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.120.0
 - Updated build-tools to 0.112.0
@@ -2017,7 +2017,7 @@
 - **unbuild:** Resolve typing issues with mismatch `typescript` versions
   ([5a9bd555](https://github.com/storm-software/storm-ops/commit/5a9bd555))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.118.0
 - Updated build-tools to 0.110.0
@@ -2037,7 +2037,7 @@
 - **esbuild:** Resolve DTS build issue
   ([bc4464b8](https://github.com/storm-software/storm-ops/commit/bc4464b8))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.117.0
 - Updated build-tools to 0.109.0
@@ -2049,7 +2049,7 @@
 - **esbuild:** Move shared code to `build-tools` package
   ([bef9364e](https://github.com/storm-software/storm-ops/commit/bef9364e))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated build-tools to 0.108.0
 

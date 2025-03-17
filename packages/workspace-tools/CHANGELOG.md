@@ -1,4 +1,4 @@
-![Storm Software](https://public.storm-cdn.com/brand-banner.png)
+![Storm-Software](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - Workspace Tools
 
@@ -1003,7 +1003,7 @@
 - **monorepo:** Regenerate README markdown files
   ([64e4e1f3](https://github.com/storm-software/storm-ops/commit/64e4e1f3))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated prettier to 0.30.5
 - Updated esbuild to 0.21.7
@@ -1020,7 +1020,7 @@
 - **monorepo:** Regenerate README markdown files
   ([e468fe22](https://github.com/storm-software/storm-ops/commit/e468fe22))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated esbuild to 0.21.6
 - Updated esbuild to 0.21.6
@@ -1036,7 +1036,7 @@
 - **build-tools:** Resolve issue with unending copy asset files process
   ([e0050d6b](https://github.com/storm-software/storm-ops/commit/e0050d6b))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated prettier to 0.30.4
 - Updated esbuild to 0.21.5
@@ -1059,7 +1059,7 @@
 - **monorepo:** Resolve issue with internal package referencing
   ([cdc11477](https://github.com/storm-software/storm-ops/commit/cdc11477))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated esbuild to 0.21.4
 - Updated esbuild to 0.21.4
@@ -1076,7 +1076,7 @@
   repository
   ([95067c70](https://github.com/storm-software/storm-ops/commit/95067c70))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated prettier to 0.30.3
 - Updated esbuild to 0.21.3
@@ -1091,7 +1091,7 @@
 - **eslint:** Resolved issue with `ignores` configuration parameter
   ([f8987770](https://github.com/storm-software/storm-ops/commit/f8987770))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated unbuild to 0.30.5
 - Updated unbuild to 0.30.5
@@ -1103,7 +1103,7 @@
 - **build-tools:** Resolved issue with copying asset files into output directory
   ([1b314e8e](https://github.com/storm-software/storm-ops/commit/1b314e8e))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated prettier to 0.30.2
 - Updated esbuild to 0.21.2
@@ -1118,7 +1118,7 @@
 - **unbuild:** Resolve issue applying entry directory to build options
   ([2c795456](https://github.com/storm-software/storm-ops/commit/2c795456))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated unbuild to 0.30.3
 - Updated unbuild to 0.30.3
@@ -1130,7 +1130,7 @@
 - **config-tools:** Resolved issue applying entire token parameters object
   ([5ccf3881](https://github.com/storm-software/storm-ops/commit/5ccf3881))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated prettier to 0.30.1
 - Updated esbuild to 0.21.1
@@ -1145,7 +1145,7 @@
 - **workspace-tools:** Resolve issue applying tokens to user provided options
   ([ef3bad5f](https://github.com/storm-software/storm-ops/commit/ef3bad5f))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated unbuild to 0.30.1
 - Updated unbuild to 0.30.1
@@ -1157,7 +1157,7 @@
 - **workspace-tools:** Enhanced option tokenization logic for executors
   ([14ed93d7](https://github.com/storm-software/storm-ops/commit/14ed93d7))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated prettier to 0.30.0
 - Updated esbuild to 0.21.0
@@ -1172,7 +1172,7 @@
 - **unbuild:** Update the `package.json` file via the `entry` option
   ([7eaf4a9b](https://github.com/storm-software/storm-ops/commit/7eaf4a9b))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated unbuild to 0.29.0
 - Updated unbuild to 0.29.0
@@ -1184,7 +1184,7 @@
 - **unbuild:** Ensure we always use directory as input instead of a file
   ([13d4a133](https://github.com/storm-software/storm-ops/commit/13d4a133))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated prettier to 0.29.1
 - Updated esbuild to 0.20.5
@@ -1200,7 +1200,7 @@
   directories
   ([ed51dde7](https://github.com/storm-software/storm-ops/commit/ed51dde7))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated unbuild to 0.28.0
 - Updated unbuild to 0.28.0
@@ -1217,7 +1217,7 @@
 - **monorepo:** Use version 4.2.1 of `chalk` package to prevent CommonJs issues
   ([133dcdfd](https://github.com/storm-software/storm-ops/commit/133dcdfd))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated prettier to 0.29.0
 - Updated esbuild to 0.20.4
@@ -1232,7 +1232,7 @@
 - **workspace-tools:** Resolve internal package as ESM via `jiti` resolver
   ([1dc4cfdd](https://github.com/storm-software/storm-ops/commit/1dc4cfdd))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated esbuild to 0.20.3
 - Updated unbuild to 0.25.3
@@ -1246,7 +1246,7 @@
 - **unbuild:** Resolved issue with package `exports` path
   ([faf23b0e](https://github.com/storm-software/storm-ops/commit/faf23b0e))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated prettier to 0.28.1
 - Updated unbuild to 0.25.2
@@ -1259,7 +1259,7 @@
 - **workspace-tools:** Resolve issue with invalid import path
   ([42a07d0c](https://github.com/storm-software/storm-ops/commit/42a07d0c))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated esbuild to 0.20.2
 - Updated unbuild to 0.25.1
@@ -1273,7 +1273,7 @@
 - **config-tools:** Added the `createLogger` function to drive CommonJs modules
   ([0cee1525](https://github.com/storm-software/storm-ops/commit/0cee1525))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated prettier to 0.28.0
 - Updated unbuild to 0.25.0
@@ -1286,7 +1286,7 @@
 - **workspace-tools:** Mark all internal packages as external
   ([f8c65aeb](https://github.com/storm-software/storm-ops/commit/f8c65aeb))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated esbuild to 0.20.1
 - Updated unbuild to 0.24.2
@@ -1300,7 +1300,7 @@
 - **config-tools:** Bundle dependencies in distributable
   ([df027cfe](https://github.com/storm-software/storm-ops/commit/df027cfe))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated prettier to 0.27.11
 - Updated unbuild to 0.24.1
@@ -1313,7 +1313,7 @@
 - **unbuild:** Update package to bundle config-tools
   ([a2fc7768](https://github.com/storm-software/storm-ops/commit/a2fc7768))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated esbuild to 0.20.0
 - Updated unbuild to 0.24.0
@@ -1328,7 +1328,7 @@
   `@storm-software/unbuild` package
   ([0abfa98b](https://github.com/storm-software/storm-ops/commit/0abfa98b))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated prettier to 0.27.10
 - Updated unbuild to 0.23.2
@@ -1341,7 +1341,7 @@
 - **workspace-tools:** Resolve formatting issue with missing `parser` config
   ([da80cf3d](https://github.com/storm-software/storm-ops/commit/da80cf3d))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated esbuild to 0.19.2
 - Updated unbuild to 0.23.1
@@ -1360,7 +1360,7 @@
 - **untyped:** Resovle bundling issue with externals
   ([ff044ddf](https://github.com/storm-software/storm-ops/commit/ff044ddf))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated prettier to 0.27.9
 - Updated unbuild to 0.23.0
@@ -1373,7 +1373,7 @@
 - **unbuild:** Update package to bundle the `unbuild` package for distribution
   ([d304c28d](https://github.com/storm-software/storm-ops/commit/d304c28d))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated esbuild to 0.19.1
 - Updated unbuild to 0.22.1
@@ -1387,7 +1387,7 @@
 - **build-tools:** Update helpers to use cached project graph
   ([ae202661](https://github.com/storm-software/storm-ops/commit/ae202661))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated unbuild to 0.22.0
 - Updated unbuild to 0.22.0

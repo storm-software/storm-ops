@@ -1,4 +1,4 @@
-![Storm Software](https://public.storm-cdn.com/brand-banner.png)
+![Storm-Software](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - Eslint
 
@@ -610,7 +610,7 @@
 - **eslint:** Update the version of workspace package
   ([d7f31c439](https://github.com/storm-software/storm-ops/commit/d7f31c439))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.155.1
 
@@ -633,7 +633,7 @@
 - **eslint:** Update meta for peer dependencies
   ([4641ba1f0](https://github.com/storm-software/storm-ops/commit/4641ba1f0))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated config-tools to 1.155.0
 

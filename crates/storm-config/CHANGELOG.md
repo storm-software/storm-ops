@@ -1,4 +1,4 @@
-![Storm Software](https://public.storm-cdn.com/brand-banner.png)
+![Storm-Software](https://public.storm-cdn.com/brand-banner.png)
 
 # Changelog for Storm Ops - Storm Config
 
@@ -527,7 +527,7 @@
 - **workspace-tools:** Update the Cargo executors body function signature
   ([e40fd886](https://github.com/storm-software/storm-ops/commit/e40fd886))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated storm-workspace to 0.6.2
 
@@ -543,7 +543,7 @@
 - **storm-ops:** Upgrade the workspace's Nx version
   ([4ce6ac9e](https://github.com/storm-software/storm-ops/commit/4ce6ac9e))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated storm-workspace to 0.6.1
 
@@ -554,7 +554,7 @@
 - **git-tools:** Added README header template to include table of contents
   ([6841042e](https://github.com/storm-software/storm-ops/commit/6841042e))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated storm-workspace to 0.6.0
 
@@ -565,7 +565,7 @@
 - **git-tools:** Added a table of content to the `README.md` header template
   ([227c234f](https://github.com/storm-software/storm-ops/commit/227c234f))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated storm-workspace to 0.5.0
 
@@ -577,7 +577,7 @@
   management
   ([f2ade202](https://github.com/storm-software/storm-ops/commit/f2ade202))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated storm-workspace to 0.4.0
 
@@ -588,7 +588,7 @@
 - **deps:** update patch prod dependencies
   ([ec613e8a](https://github.com/storm-software/storm-ops/commit/ec613e8a))
 
-### 🧱 Updated Dependencies
+### Updated Dependencies
 
 - Updated storm-workspace to null
 
