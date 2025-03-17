@@ -2,7 +2,7 @@ import { writeInfo } from "@storm-software/config-tools";
 import { Plugin } from "rollup";
 import { UnbuildResolvedOptions } from "../types";
 
-const formatBytes = (bytes) => {
+const formatBytes = bytes => {
   if (bytes === 0) return "0 Byte";
   const k = 1000;
   const dm = 3;
@@ -19,6 +19,6 @@ export const analyzePlugin = (options: UnbuildResolvedOptions): Plugin => {
       const fileName = chunk.fileName;
 
       writeInfo(` - ${fileName} ${sourceBytes}`, options.config);
-    },
+    }
   };
 };

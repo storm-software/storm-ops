@@ -1,17 +1,16 @@
-// nx-ignore-next-line
 import { readCachedProjectGraph } from "@nx/devkit";
 import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
 import {
   getHelperDependency,
-  HelperDependency,
+  HelperDependency
 } from "@nx/js/src/utils/compiler-helper-dependency";
-import type { Plugin } from "rollup"; // only used  for types
+import type { Plugin } from "rollup";
 import ts2Plugin from "rollup-plugin-typescript2";
 import { UnbuildResolvedOptions } from "../types";
 import { createTsCompilerOptions } from "../utilities/helpers";
 
 export const tscPlugin = async (
-  options: UnbuildResolvedOptions,
+  options: UnbuildResolvedOptions
 ): Promise<Plugin<any>> => {
   const projectGraph = readCachedProjectGraph();
 
@@ -22,7 +21,7 @@ export const tscPlugin = async (
     options.projectName,
     process.env.NX_TASK_TARGET_TARGET || "build",
     process.env.NX_TASK_TARGET_CONFIGURATION || "production",
-    true,
+    true
   );
   let dependencies = result.dependencies;
 
@@ -31,11 +30,11 @@ export const tscPlugin = async (
     options.tsconfig,
     dependencies,
     projectGraph,
-    true,
+    true
   );
   if (tsLibDependency) {
     dependencies = dependencies.filter(
-      (deps) => deps.name !== tsLibDependency.name,
+      deps => deps.name !== tsLibDependency.name
     );
     dependencies.push(tsLibDependency);
   }
@@ -44,12 +43,12 @@ export const tscPlugin = async (
     options.config,
     options.tsconfig,
     options.projectRoot,
-    dependencies,
+    dependencies
   );
 
   return ts2Plugin({
     check: options.declaration !== false,
     tsconfig: options.tsconfig,
-    tsconfigOverride: compilerOptions,
+    tsconfigOverride: compilerOptions
   });
 };

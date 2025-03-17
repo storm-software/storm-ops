@@ -52,14 +52,9 @@ import {
   type BuildContext,
   BuildEntry,
   MkdistBuildEntry,
-  RollupOptions,
   build as unbuild
 } from "unbuild";
 import { cleanDirectories } from "./clean";
-import { analyzePlugin } from "./plugins/analyze";
-import { onErrorPlugin } from "./plugins/on-error";
-import { tscPlugin } from "./plugins/tsc";
-import { typeDefinitionsPlugin } from "./plugins/type-definitions";
 import type { UnbuildOptions, UnbuildResolvedOptions } from "./types";
 import { loadConfig } from "./utilities/helpers";
 
@@ -164,7 +159,7 @@ export async function resolveOptions(
   const name = options.name || projectName;
   const entries = options.entry ?? [sourceRoot];
 
-  const resolvedOptions = {
+  const resolvedOptions: UnbuildResolvedOptions = {
     ...options,
     name,
     config,
@@ -200,7 +195,8 @@ export async function resolveOptions(
         input: `./${entryPath}`,
         outDir,
         declaration: options.emitTypes !== false ? "compatible" : false,
-        format: "esm"
+        format: "esm",
+        ext: "mjs"
       } as MkdistBuildEntry);
 
       ret.push({
@@ -220,10 +216,6 @@ export async function resolveOptions(
     sourcemap: options.sourcemap ?? !!options.debug,
     outDir: outputPath,
     parallel: true,
-    stub: false,
-    stubOptions: {
-      jiti: {}
-    },
     externals: options.external ?? [],
     dependencies: [] as string[],
     peerDependencies: [] as string[],
@@ -254,14 +246,25 @@ export async function resolveOptions(
       },
       resolve: {
         preferBuiltins: true,
-        extensions: [".cjs", ".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"]
+        extensions: [
+          ".tsx",
+          ".ts",
+          ".cts",
+          ".mts",
+          ".jsx",
+          ".js",
+          ".cjs",
+          ".mjs",
+          ".css",
+          ".json"
+        ]
       },
       esbuild: {
         minify: options.minify ?? !options.debug,
         sourceMap: options.sourcemap ?? !!options.debug,
         splitting: options.splitting !== false,
         treeShaking: options.treeShaking !== false,
-        platform: options.platform ?? "neutral",
+        platform: options.platform || "neutral",
         color: true,
         logLevel: (config.logLevel === LogLevelLabel.FATAL
           ? LogLevelLabel.ERROR
@@ -305,28 +308,28 @@ export async function resolveOptions(
   }
 
   resolvedOptions.hooks = {
-    "rollup:options": async (ctx: BuildContext, opts: RollupOptions) => {
-      if (options.plugins && options.plugins.length > 0) {
-        writeDebug(
-          `  🧩   Found ${options.plugins.length} plugins in provided build options`,
-          config
-        );
+    // "rollup:options": async (ctx: BuildContext, opts: RollupOptions) => {
+    //   if (options.plugins && options.plugins.length > 0) {
+    //     writeDebug(
+    //       `  🧩   Found ${options.plugins.length} plugins in provided build options`,
+    //       config
+    //     );
 
-        opts.plugins = options.plugins;
-      } else {
-        writeDebug(
-          `  🧩   No plugins found in provided build options, using default plugins`,
-          config
-        );
+    //     opts.plugins = options.plugins;
+    //   } else {
+    //     writeDebug(
+    //       `  🧩   No plugins found in provided build options, using default plugins`,
+    //       config
+    //     );
 
-        opts.plugins = await Promise.all([
-          analyzePlugin(resolvedOptions),
-          typeDefinitionsPlugin(resolvedOptions),
-          tscPlugin(resolvedOptions),
-          onErrorPlugin(resolvedOptions)
-        ]);
-      }
-    },
+    //     opts.plugins = await Promise.all([
+    //       analyzePlugin(resolvedOptions),
+    //       typeDefinitionsPlugin(resolvedOptions),
+    //       tscPlugin(resolvedOptions),
+    //       onErrorPlugin(resolvedOptions)
+    //     ]);
+    //   }
+    // },
     "mkdist:entry:options": async (
       ctx: BuildContext,
       entry: MkdistBuildEntry,
