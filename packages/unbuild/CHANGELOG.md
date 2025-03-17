@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.38.0](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.0) (2025-03-17)
+
+### Features
+
+- **unbuild:** Added back rollup plugins to resolved options
+  ([6d94ee7f9](https://github.com/storm-software/storm-ops/commit/6d94ee7f9))
+
+### Bug Fixes
+
+- **unbuild:** Resolve issue with esm extensions
+  ([11e3011bd](https://github.com/storm-software/storm-ops/commit/11e3011bd))
+
 ## [0.37.20](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.37.20) (2025-03-17)
 
 ### Miscellaneous
