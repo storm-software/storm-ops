@@ -22,7 +22,8 @@ import {
   type ReleaseGroupWithName
 } from "nx/src/command-line/release/config/filter-release-groups.js";
 import { batchProjectsByGeneratorConfig } from "nx/src/command-line/release/utils/batch-projects-by-generator-config.js";
-import { gitAdd, gitTag } from "nx/src/command-line/release/utils/git.js";
+import { execCommand } from "nx/src/command-line/release/utils/exec-command.js";
+import { gitAdd } from "nx/src/command-line/release/utils/git.js";
 import { printDiff } from "nx/src/command-line/release/utils/print-changes.js";
 import { resolveNxJsonConfigErrorMessage } from "nx/src/command-line/release/utils/resolve-nx-json-error-message.js";
 import {
@@ -454,6 +455,60 @@ export async function releaseVersion(
       `An exception was thrown in the Storm Release Version generator's process \n - Details: ${error.message}`,
       { cause: error }
     );
+  }
+}
+
+async function gitTag({
+  tag,
+  message,
+  additionalArgs,
+  dryRun,
+  verbose,
+  logFn
+}: {
+  tag: string;
+  message?: string;
+  additionalArgs?: string | string[];
+  dryRun?: boolean;
+  verbose?: boolean;
+  logFn?: (message: string) => void;
+}): Promise<string> {
+  logFn = logFn || console.log;
+
+  const commandArgs = [
+    "tag",
+    // Create an annotated tag (recommended for releases here: https://git-scm.com/docs/git-tag)
+    "--annotate",
+    "--sign",
+    tag,
+    "--message",
+    message || tag
+  ];
+  if (additionalArgs) {
+    if (Array.isArray(additionalArgs)) {
+      commandArgs.push(...additionalArgs);
+    } else {
+      commandArgs.push(...additionalArgs.split(" "));
+    }
+  }
+
+  if (verbose) {
+    logFn(
+      dryRun
+        ? `Would tag the current commit in git with the following command, but --dry-run was set:`
+        : `Tagging the current commit in git with the following command:`
+    );
+    logFn(`git ${commandArgs.join(" ")}`);
+  }
+
+  if (dryRun) {
+    return "";
+  }
+
+  try {
+    return await execCommand("git", commandArgs);
+  } catch (err) {
+    throw new Error(`Unexpected error when creating tag ${tag}:\n\n${err}`);
   }
 }
 
