@@ -1,4 +1,4 @@
-<div align="center"><img src="https://pub-761b436209f44a4d886487c917806c08.r2.dev/storm-banner.gif" width="100%" alt="Storm Software" /></div>
+<div align="center"><img src="https://public.storm-cdn.com/storm-banner.gif" width="100%" alt="Storm Software" /></div>
 <br />
 
 <div align="center">
@@ -28,7 +28,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 <!-- prettier-ignore-end -->
 
 <div align="center">
-<b>Be sure to ⭐ this repository on <a href="https://github.com/storm-software/storm-ops" target="_blank">GitHub</a> so you can keep up to date on any daily progress!</b>
+<b>Be sure to ⭐ this <a href="https://github.com/storm-software/storm-ops" target="_blank">repository on GitHub</a> so you can keep up to date on any daily progress!</b>
 </div>
 
 <br />
