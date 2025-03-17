@@ -121,7 +121,7 @@
           "properties": {
             "banner": {
               "type": "string",
-              "default": "https://public.storm-cdn.com/logo-banner.png",
+              "default": "https://public.storm-cdn.com/brand-banner.png",
               "description": "A URL to a banner image used to display the workspace's release"
             },
             "header": {
@@ -130,7 +130,7 @@
             },
             "footer": {
               "type": "string",
-              "default": "\n[Storm Software](https://stormsoftware.com) is an open source software development organization with the mission is to make software development more accessible. Our ideal future is one where anyone can create software without years of prior development experience serving as a barrier to entry. We hope to achieve this via LLMs, Generative AI, and intuitive, high-level data modeling/programming languages.\n\nJoin us on [Discord](https://discord.gg/MQ6YVzakM5) to chat with the team, receive release notifications, ask questions, and get involved.\n\nIf this sounds interesting, and you would like to help us in creating the next generation of development tools, please reach out on our [website](https://stormsoftware.com/contact) or join our [Slack](https://join.slack.com/t/storm-software/shared_invite/zt-2gsmk04hs-i6yhK_r6urq0dkZYAwq2pA) channel!\n",
+              "default": "\nStorm Software is an open source software development organization with the mission is to make software development more accessible. Our ideal future is one where anyone can create software without years of prior development experience serving as a barrier to entry. We hope to achieve this via LLMs, Generative AI, and intuitive, high-level data modeling/programming languages.\n\nJoin us on [Discord](https://discord.gg/MQ6YVzakM5) to chat with the team, receive release notifications, ask questions, and get involved.\n\nIf this sounds interesting, and you would like to help us in creating the next generation of development tools, please reach out on our [website](https://stormsoftware.com/contact) or join our [Slack](https://join.slack.com/t/storm-software/shared_invite/zt-2gsmk04hs-i6yhK_r6urq0dkZYAwq2pA) channel!\n",
               "description": "A footer message appended to the end of the workspace's release notes"
             }
           },
