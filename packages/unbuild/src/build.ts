@@ -47,6 +47,7 @@ import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { relative } from "node:path";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
+import { readTSConfig } from "pkg-types";
 import {
   type BuildConfig,
   type BuildContext,
@@ -126,6 +127,8 @@ export async function resolveOptions(
     throw new Error("Cannot find tsconfig.json configuration");
   }
 
+  const tsconfigFile = await readTSConfig(tsconfig);
+
   let sourceRoot = projectJson.sourceRoot as string;
   if (!sourceRoot) {
     sourceRoot = joinPaths(options.projectRoot, "src");
@@ -171,10 +174,9 @@ export async function resolveOptions(
     sourceRoot,
     projectName,
     tsconfig,
-    platform: options.platform ?? "neutral",
+    platform: options.platform || "neutral",
     generatePackageJson: true,
     clean: false,
-    env: {} as any,
     entries: entries.reduce((ret, entry) => {
       let entryPath = entry.replace(options.projectRoot, "");
       while (entryPath.startsWith(".")) {
@@ -198,9 +200,13 @@ export async function resolveOptions(
         builder: "mkdist",
         input: `./${entryPath}`,
         outDir,
-        declaration: options.emitTypes !== false ? "compatible" : false,
+        declaration: options.emitTypes !== false,
+        addRelativeDeclarationExtensions: true,
         format: "esm",
-        ext: "mjs"
+        ext: "mjs",
+        typescript: {
+          compilerOptions: tsconfigFile.compilerOptions
+        }
       } as MkdistBuildEntry);
 
       ret.push({
@@ -208,9 +214,13 @@ export async function resolveOptions(
         builder: "mkdist",
         input: `./${entryPath}`,
         outDir,
-        declaration: options.emitTypes !== false ? "compatible" : false,
+        declaration: options.emitTypes !== false,
+        addRelativeDeclarationExtensions: true,
         format: "cjs",
-        ext: "cjs"
+        ext: "cjs",
+        typescript: {
+          compilerOptions: tsconfigFile.compilerOptions
+        }
       } as MkdistBuildEntry);
 
       return ret;
@@ -220,7 +230,7 @@ export async function resolveOptions(
     sourcemap: options.sourcemap ?? !!options.debug,
     outDir: outputPath,
     parallel: true,
-    externals: options.external ?? [],
+    externals: options.external,
     dependencies: [] as string[],
     peerDependencies: [] as string[],
     devDependencies: [] as string[],
@@ -384,15 +394,15 @@ const addPackageJsonExport = (
 
   return {
     import: {
-      types: `./dist/${entry}.d.ts`,
+      types: `./dist/${entry}.d.mts`,
       default: `./dist/${entry}.mjs`
     },
     require: {
-      types: `./dist/${entry}.d.ts`,
+      types: `./dist/${entry}.d.cts`,
       default: `./dist/${entry}.cjs`
     },
     default: {
-      types: `./dist/${entry}.d.ts`,
+      types: `./dist/${entry}.d.mts`,
       default:
         type === "commonjs" ? `./dist/${entry}.cjs` : `./dist/${entry}.mjs`
     }

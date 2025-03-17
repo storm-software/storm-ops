@@ -173,6 +173,7 @@
     "@storm-software/build-tools": "workspace:*",
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
+    "@swc/core": "catalog:",
     "nx": "catalog:",
     "rollup": "catalog:",
     "typescript": "catalog:"
@@ -193,6 +194,9 @@
     "@storm-software/config-tools": {
       "optional": false
     },
+    "@swc/core": {
+      "optional": true
+    },
     "nx": {
       "optional": true
     },
@@ -204,19 +208,13 @@
     }
   },
   "dependencies": {
-    "@rollup/plugin-alias": "^5.1.1",
-    "@rollup/plugin-commonjs": "^28.0.2",
-    "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^16.0.0",
-    "@rollup/plugin-replace": "^6.0.2",
-    "@rollup/pluginutils": "^5.1.4",
-    "@swc/core": "catalog:",
     "commander": "catalog:",
     "defu": "catalog:",
     "esbuild": "catalog:",
     "glob": "catalog:",
     "jiti": "^2.4.2",
     "mkdist": "^2.2.0",
+    "pkg-types": "catalog:",
     "rollup": "catalog:",
     "rollup-plugin-typescript2": "0.36.0",
     "unbuild": "catalog:"

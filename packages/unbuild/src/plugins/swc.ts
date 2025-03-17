@@ -11,10 +11,10 @@ export const swcPlugin = (options: UnbuildResolvedOptions): Plugin => {
         filename,
         jsc: {
           transform: {
-            react: { runtime: "automatic" },
-          },
-        },
+            react: { runtime: "automatic" }
+          }
+        }
       });
-    },
+    }
   };
 };
