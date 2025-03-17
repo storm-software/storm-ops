@@ -21,7 +21,7 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
   version: {
     git: {
       tag: true,
-      tagArgs: "-v",
+      tagArgs: "-s",
       tagMessage: "Release v{version}"
     },
     groupPreVersionCommand: "pnpm build",
