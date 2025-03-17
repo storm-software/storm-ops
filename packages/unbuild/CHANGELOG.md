@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.38.1](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.1) (2025-03-17)
+
+### Bug Fixes
+
+- **unbuild:** Resolved issue with missing `compilerOptions` in `mkdist` entry
+  build
+  ([bcd6e1732](https://github.com/storm-software/storm-ops/commit/bcd6e1732))
+
 ## [0.38.0](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.0) (2025-03-17)
 
 ### Features

@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.31.22](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.22) (2025-03-17)
+
+### Bug Fixes
+
+- **unbuild:** Resolved issue with missing `compilerOptions` in `mkdist` entry
+  build
+  ([bcd6e1732](https://github.com/storm-software/storm-ops/commit/bcd6e1732))
+
 ## [0.31.21](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.21) (2025-03-17)
 
 ### Bug Fixes
