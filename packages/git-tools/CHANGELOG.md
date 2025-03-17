@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.101.3](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.101.3) (2025-03-16)
+
+### Miscellaneous
+
+- **monorepo:** Clean up the CHANGELOG markdown
+  ([a328f646b](https://github.com/storm-software/storm-ops/commit/a328f646b))
+
 ## [2.101.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.101.2) (2025-03-16)
 
 ### Miscellaneous
