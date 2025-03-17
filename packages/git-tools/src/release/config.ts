@@ -19,6 +19,11 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
     }
   },
   version: {
+    git: {
+      tag: true,
+      tagArgs: "-v",
+      tagMessage: "Release v{version}"
+    },
     groupPreVersionCommand: "pnpm build",
     generator: "@storm-software/workspace-tools:release-version",
     generatorOptions: {
@@ -46,6 +51,11 @@ export const DEFAULT_RELEASE_CONFIG = {
     }
   },
   version: {
+    git: {
+      tag: true,
+      tagArgs: "-v",
+      tagMessage: "Release v{version}"
+    },
     preVersionCommand: "pnpm build",
     generator: "@storm-software/workspace-tools:release-version",
     generatorOptions: {

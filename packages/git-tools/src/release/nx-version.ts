@@ -267,6 +267,7 @@ export async function releaseVersion(
 
       if (args.gitTag ?? nxReleaseConfig?.version.git.tag) {
         writeInfo("Tagging commit with git", config);
+
         for (const tag of gitTagValues) {
           await gitTag({
             tag,
