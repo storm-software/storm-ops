@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.38.4](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.4) (2025-03-18)
+
+### Bug Fixes
+
+- **unbuild:** Remove the build plugins and resolve issue with extensions
+  ([af629342a](https://github.com/storm-software/storm-ops/commit/af629342a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([2d7343483](https://github.com/storm-software/storm-ops/commit/2d7343483))
+
 ## [0.38.3](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.3) (2025-03-18)
 
 ### Bug Fixes

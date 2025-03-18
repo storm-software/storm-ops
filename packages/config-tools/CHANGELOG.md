@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.160.5](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.160.5) (2025-03-18)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([2d7343483](https://github.com/storm-software/storm-ops/commit/2d7343483))
+
 ## [1.160.4](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.160.4) (2025-03-17)
 
 ### Miscellaneous
