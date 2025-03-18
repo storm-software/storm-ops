@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.31.26](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.26) (2025-03-18)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue adding `inject` options
+  ([58948c941](https://github.com/storm-software/storm-ops/commit/58948c941))
+
 ## [0.31.25](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.25) (2025-03-18)
 
 ### Bug Fixes

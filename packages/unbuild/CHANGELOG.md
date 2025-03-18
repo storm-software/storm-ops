@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.38.5](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.5) (2025-03-18)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue adding `inject` options
+  ([58948c941](https://github.com/storm-software/storm-ops/commit/58948c941))
+
 ## [0.38.4](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.4) (2025-03-18)
 
 ### Bug Fixes
