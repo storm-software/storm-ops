@@ -205,13 +205,13 @@ const resolveOptions = async (
     inject: [
       options.format === "cjs" && options.injectShims
         ? joinPaths(__dirname, "../assets/cjs_shims.js")
-        : "",
+        : undefined,
       options.format === "esm" &&
       options.injectShims &&
       options.platform === "node"
         ? joinPaths(__dirname, "../assets/esm_shims.js")
-        : ""
-    ]
+        : undefined
+    ].filter(Boolean) as string[]
   } satisfies ESBuildResolvedOptions;
   result.plugins =
     userOptions.plugins ?? getDefaultBuildPlugins(userOptions, result);
@@ -221,9 +221,8 @@ const resolveOptions = async (
     Array.isArray(options.inject) &&
     options.inject.length > 0
   ) {
-    options.inject = defu(result.inject, options.inject);
+    result.inject = defu(result.inject, options.inject);
   }
-  result.inject.filter(Boolean);
 
   delete result.entry;
   delete result.outputPath;
