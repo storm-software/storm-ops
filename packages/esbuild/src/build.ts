@@ -216,10 +216,14 @@ const resolveOptions = async (
   result.plugins =
     userOptions.plugins ?? getDefaultBuildPlugins(userOptions, result);
 
-  if (options.inject) {
+  if (
+    options.inject &&
+    Array.isArray(options.inject) &&
+    options.inject.length > 0
+  ) {
     options.inject = defu(result.inject, options.inject);
   }
-  options.inject?.filter(Boolean);
+  result.inject.filter(Boolean);
 
   delete result.entry;
   delete result.outputPath;
