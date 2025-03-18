@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.31.24](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.24) (2025-03-18)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with applying invalid options to `esbuild`
+  ([7158b48a1](https://github.com/storm-software/storm-ops/commit/7158b48a1))
+
 ## [0.31.23](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.23) (2025-03-17)
 
 ### Miscellaneous

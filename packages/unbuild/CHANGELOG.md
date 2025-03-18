@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.38.3](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.3) (2025-03-18)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with applying invalid options to `esbuild`
+  ([7158b48a1](https://github.com/storm-software/storm-ops/commit/7158b48a1))
+
 ## [0.38.2](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.2) (2025-03-17)
 
 ### Bug Fixes
