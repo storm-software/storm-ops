@@ -430,6 +430,7 @@ async function executeEsBuild(context: ESBuildContext) {
   delete options.renderers;
   delete options.config;
   delete options.injectShims;
+  delete options.external;
 
   writeTrace(
     `Run esbuild (${context.options.name}) with the following options: \n${formatLogMessage(options)}`,
