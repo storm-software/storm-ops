@@ -221,7 +221,13 @@ const resolveOptions = async (
     Array.isArray(options.inject) &&
     options.inject.length > 0
   ) {
-    result.inject = defu(result.inject, options.inject);
+    result.inject = options.inject.reduce((ret, inj) => {
+      if (inj && typeof inj === "string" && ret.includes(inj)) {
+        ret.push(inj);
+      }
+
+      return ret;
+    }, result.inject);
   }
 
   delete result.entry;
@@ -412,6 +418,16 @@ async function executeEsBuild(context: ESBuildContext) {
   // Remove options not used by esbuild
   const options = { ...context.options } as Partial<ESBuildResolvedOptions>;
   options.outdir = joinPaths(context.options.outdir, context.options.distDir);
+
+  if (
+    !options.inject ||
+    !Array.isArray(options.inject) ||
+    options.inject.length === 0 ||
+    // eslint-disable-next-line no-constant-binary-expression, @typescript-eslint/no-explicit-any
+    (options.inject as any) === ({} as any)
+  ) {
+    delete options.inject;
+  }
 
   delete options.env;
   delete options.name;
