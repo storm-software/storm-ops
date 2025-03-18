@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.31.27](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.27) (2025-03-18)
+
+### Bug Fixes
+
+- **esbuild:** Made improvements to `inject` option resolution to resolve
+  loading issue
+  ([85f8c8500](https://github.com/storm-software/storm-ops/commit/85f8c8500))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([4a6eeab3f](https://github.com/storm-software/storm-ops/commit/4a6eeab3f))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.160.6
+- Updated build-tools to 0.143.23
+- Updated config to 1.110.6
+
 ## [0.31.26](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.26) (2025-03-18)
 
 ### Bug Fixes
