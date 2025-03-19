@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.38.7](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.7) (2025-03-19)
+
+### Bug Fixes
+
+- **unbuild:** Resolve issue with `mkdist` build
+  ([d5161c9e5](https://github.com/storm-software/storm-ops/commit/d5161c9e5))
+
 ## [0.38.6](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.6) (2025-03-18)
 
 ### Miscellaneous
