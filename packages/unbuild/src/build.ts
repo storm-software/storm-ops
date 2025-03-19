@@ -47,7 +47,6 @@ import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { relative } from "node:path";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
-import { readTSConfig } from "pkg-types";
 import {
   type BuildConfig,
   type BuildContext,
@@ -57,6 +56,9 @@ import {
   build as unbuild
 } from "unbuild";
 import { cleanDirectories } from "./clean";
+import { analyzePlugin } from "./plugins/analyze";
+import { onErrorPlugin } from "./plugins/on-error";
+import { tscPlugin } from "./plugins/tsc";
 import type { UnbuildOptions, UnbuildResolvedOptions } from "./types";
 import { loadConfig } from "./utilities/helpers";
 
@@ -122,8 +124,6 @@ export async function resolveOptions(
   if (!existsSync(tsconfig)) {
     throw new Error("Cannot find tsconfig.json configuration");
   }
-
-  const tsconfigFile = await readTSConfig(tsconfig);
 
   let sourceRoot = projectJson.sourceRoot as string;
   if (!sourceRoot) {
@@ -196,13 +196,9 @@ export async function resolveOptions(
         builder: "mkdist",
         input: `./${entryPath}`,
         outDir,
-        declaration: options.emitTypes !== false,
-        addRelativeDeclarationExtensions: true,
+        declaration: options.emitTypes !== false ? "compatible" : false,
         format: "esm",
-        ext: "mjs",
-        typescript: {
-          compilerOptions: tsconfigFile.compilerOptions
-        }
+        ext: "mjs"
       } as MkdistBuildEntry);
 
       ret.push({
@@ -210,13 +206,9 @@ export async function resolveOptions(
         builder: "mkdist",
         input: `./${entryPath}`,
         outDir,
-        declaration: options.emitTypes !== false,
-        addRelativeDeclarationExtensions: true,
+        declaration: options.emitTypes !== false ? "compatible" : false,
         format: "cjs",
-        ext: "cjs",
-        typescript: {
-          compilerOptions: tsconfigFile.compilerOptions
-        }
+        ext: "cjs"
       } as MkdistBuildEntry);
 
       return ret;
@@ -319,23 +311,23 @@ export async function resolveOptions(
 
   resolvedOptions.hooks = {
     "rollup:options": async (ctx: BuildContext, opts: RollupOptions) => {
-      // if (options.plugins && options.plugins.length > 0) {
-      //   writeDebug(
-      //     `  🧩   Found ${options.plugins.length} plugins in provided build options`,
-      //     config
-      //   );
-      //   opts.plugins = options.plugins;
-      // } else {
-      //   writeDebug(
-      //     `  🧩   No plugins found in provided build options, using default plugins`,
-      //     config
-      //   );
-      //   opts.plugins = await Promise.all([
-      //     analyzePlugin(resolvedOptions),
-      //     tscPlugin(resolvedOptions),
-      //     onErrorPlugin(resolvedOptions)
-      //   ]);
-      // }
+      if (options.plugins && options.plugins.length > 0) {
+        writeDebug(
+          `  🧩   Found ${options.plugins.length} plugins in provided build options`,
+          config
+        );
+        opts.plugins = options.plugins;
+      } else {
+        writeDebug(
+          `  🧩   No plugins found in provided build options, using default plugins`,
+          config
+        );
+        opts.plugins = await Promise.all([
+          analyzePlugin(resolvedOptions),
+          tscPlugin(resolvedOptions),
+          onErrorPlugin(resolvedOptions)
+        ]);
+      }
     },
     "mkdist:entry:options": async (
       ctx: BuildContext,
