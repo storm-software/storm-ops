@@ -128,7 +128,7 @@
   "peerDependencies": {
     "@nx/devkit": "catalog:",
     "nx": "catalog:",
-    "projen": "^0.91.6"
+    "projen": "^0.91.18"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
@@ -142,9 +142,9 @@
     }
   },
   "dependencies": {
-    "@aws/pdk": "^0.25.16",
+    "@aws/pdk": "^0.26.2",
     "@nx/devkit": "catalog:",
-    "projen": "^0.91.6",
+    "projen": "^0.91.18",
     "tslib": "catalog:"
   },
   "devDependencies": {
