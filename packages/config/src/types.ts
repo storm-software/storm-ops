@@ -75,13 +75,7 @@ export type StormWorkspaceConfig<
     keyof TStormWorkspaceConfig["extensions"] = keyof TStormWorkspaceConfig["extensions"],
   TExtensionConfig extends
     TStormWorkspaceConfig["extensions"][TExtensionName] = TStormWorkspaceConfig["extensions"][TExtensionName]
-> = TStormWorkspaceConfig & {
-  extensions:
-    | (TStormWorkspaceConfig["extensions"] & {
-        [extensionName in TExtensionName]: TExtensionConfig;
-      })
-    | NonNullable<Record<string, any>>;
-};
+> = StormConfig<TExtensionName, TExtensionConfig>;
 
 export const COLOR_KEYS = [
   "dark",

@@ -12,7 +12,7 @@ import {
 } from "@nx/devkit";
 import { resolveLocalPackageDependencies as resolveLocalPackageJsonDependencies } from "@nx/js/src/generators/release-version/utils/resolve-local-package-dependencies";
 import { updateLockFile } from "@nx/js/src/generators/release-version/utils/update-lock-file";
-import type { StormConfig } from "@storm-software/config";
+import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   findWorkspaceRoot,
   getConfig,
@@ -58,7 +58,7 @@ type ReleaseVersionPrefixes = "auto" | "" | "~" | "^" | "=";
 export async function releaseVersionGeneratorFn(
   tree: Tree,
   options: ReleaseVersionGeneratorSchema,
-  config?: StormConfig
+  config?: StormWorkspaceConfig
 ): Promise<ReleaseVersionGeneratorResult> {
   writeInfo(`⚡ Running the Storm Release Version generator...\n\n`, config);
 

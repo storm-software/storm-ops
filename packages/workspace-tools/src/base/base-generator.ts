@@ -1,5 +1,5 @@
 import type { GeneratorCallback, Tree } from "@nx/devkit";
-import type { StormConfig } from "@storm-software/config";
+import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   applyWorkspaceBaseTokens,
   applyWorkspaceTokens,
@@ -11,7 +11,7 @@ import {
   writeFatal,
   writeInfo,
   writeSuccess,
-  writeTrace,
+  writeTrace
 } from "@storm-software/config-tools";
 import type { BaseGeneratorOptions, BaseGeneratorResult } from "../types";
 import type { BaseGeneratorSchema } from "./base-generator.schema.d";
@@ -22,24 +22,24 @@ export const withRunGenerator =
     generatorFn: (
       tree: Tree,
       options: TGeneratorSchema,
-      config?: StormConfig,
+      config?: StormWorkspaceConfig
     ) =>
       | Promise<BaseGeneratorResult | null | undefined>
       | BaseGeneratorResult
       | null
       | undefined,
     generatorOptions: BaseGeneratorOptions<TGeneratorSchema> = {
-      skipReadingConfig: false,
-    },
+      skipReadingConfig: false
+    }
   ) =>
   async (
     tree: Tree,
-    _options: TGeneratorSchema,
+    _options: TGeneratorSchema
   ): Promise<GeneratorCallback | BaseGeneratorResult> => {
     const stopwatch = getStopwatch(name);
     let options = _options;
 
-    let config: StormConfig | undefined;
+    let config: StormWorkspaceConfig | undefined;
     try {
       writeInfo(`⚡ Running the ${name} generator...\n\n`, config);
 
@@ -48,7 +48,7 @@ export const withRunGenerator =
         writeDebug(
           `Loading the Storm Config from environment variables and storm.config.js file...
  - workspaceRoot: ${workspaceRoot}`,
-          config,
+          config
         );
 
         config = await getConfig(workspaceRoot);
@@ -57,35 +57,35 @@ export const withRunGenerator =
       if (generatorOptions?.hooks?.applyDefaultOptions) {
         writeDebug("Running the applyDefaultOptions hook...", config);
         options = await Promise.resolve(
-          generatorOptions.hooks.applyDefaultOptions(options, config),
+          generatorOptions.hooks.applyDefaultOptions(options, config)
         );
         writeDebug("Completed the applyDefaultOptions hook", config);
       }
 
       writeTrace(
         `Generator schema options ⚙️ \n${Object.keys(options ?? {})
-          .map((key) => ` - ${key}=${JSON.stringify(options[key])}`)
+          .map(key => ` - ${key}=${JSON.stringify(options[key])}`)
           .join("\n")}`,
-        config,
+        config
       );
 
       const tokenized = (await applyWorkspaceTokens(
         options as Record<string, any>,
         { workspaceRoot: tree.root, config },
-        applyWorkspaceBaseTokens,
+        applyWorkspaceBaseTokens
       )) as TGeneratorSchema;
 
       if (generatorOptions?.hooks?.preProcess) {
         writeDebug("Running the preProcess hook...", config);
         await Promise.resolve(
-          generatorOptions.hooks.preProcess(tokenized, config),
+          generatorOptions.hooks.preProcess(tokenized, config)
         );
         writeDebug("Completed the preProcess hook", config);
       }
 
       // Run the generator function
       const result = await Promise.resolve(
-        generatorFn(tree, tokenized, config),
+        generatorFn(tree, tokenized, config)
       );
       if (result) {
         if (
@@ -97,7 +97,7 @@ export const withRunGenerator =
             typeof (result?.error as Error)?.name === "string")
         ) {
           throw new Error(`The ${name} generator failed to run`, {
-            cause: result?.error,
+            cause: result?.error
           });
         } else if (result.success && result.data) {
           return result as any;
@@ -117,11 +117,11 @@ export const withRunGenerator =
       return () => {
         writeFatal(
           "A fatal error occurred while running the generator - the process was forced to terminate",
-          config,
+          config
         );
         writeError(
           `An exception was thrown in the generator's process \n - Details: ${error.message}\n - Stacktrace: ${error.stack}`,
-          config,
+          config
         );
       };
     } finally {

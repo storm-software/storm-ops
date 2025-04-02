@@ -3,15 +3,15 @@ import {
   generateFiles,
   names,
   offsetFromRoot,
-  type Tree,
+  type Tree
 } from "@nx/devkit";
-import { StormConfig } from "@storm-software/config";
+import { StormWorkspaceConfig } from "@storm-software/config";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { withRunGenerator } from "../../base/base-generator";
 import {
   normalizeOptions,
   typeScriptLibraryGeneratorFn,
-  TypeScriptLibraryGeneratorOptions,
+  TypeScriptLibraryGeneratorOptions
 } from "../../base/typescript-library-generator";
 import { typesNodeVersion } from "../../utils/versions";
 import type { NodeLibraryGeneratorSchema } from "./schema.d";
@@ -19,24 +19,24 @@ import type { NodeLibraryGeneratorSchema } from "./schema.d";
 export async function nodeLibraryGeneratorFn(
   tree: Tree,
   schema: NodeLibraryGeneratorSchema,
-  config?: StormConfig,
+  config?: StormWorkspaceConfig
 ) {
   const filesDir = joinPaths(
     __dirname,
     "src",
     "generators",
     "node-library",
-    "files",
+    "files"
   );
   const tsLibraryGeneratorOptions: TypeScriptLibraryGeneratorOptions = {
     platform: "node",
     devDependencies: {
-      "@types/node": typesNodeVersion,
+      "@types/node": typesNodeVersion
     },
     buildExecutor: "@storm-software/workspace-tools:unbuild",
     ...schema,
     directory: schema.directory,
-    description: schema.description!,
+    description: schema.description!
   };
 
   const options = await normalizeOptions(tree, tsLibraryGeneratorOptions);
@@ -56,7 +56,7 @@ export async function nodeLibraryGeneratorFn(
     tmpl: "",
     offsetFromRoot: offsetFromRoot(options.projectRoot),
     buildable: options.bundler && options.bundler !== "none",
-    hasUnitTestRunner: options.unitTestRunner !== "none",
+    hasUnitTestRunner: options.unitTestRunner !== "none"
   });
 
   await typeScriptLibraryGeneratorFn(tree, tsLibraryGeneratorOptions, config);
@@ -71,14 +71,14 @@ export default withRunGenerator<NodeLibraryGeneratorSchema>(
   {
     hooks: {
       applyDefaultOptions: (
-        options: NodeLibraryGeneratorSchema,
+        options: NodeLibraryGeneratorSchema
       ): NodeLibraryGeneratorSchema => {
         options.description ??=
           "A library used by Storm Software to support NodeJs applications";
         options.platform ??= "node";
 
         return options;
-      },
-    },
-  },
+      }
+    }
+  }
 );
