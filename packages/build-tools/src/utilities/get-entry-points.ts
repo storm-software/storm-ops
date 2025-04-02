@@ -1,4 +1,4 @@
-import type { StormConfig } from "@storm-software/config";
+import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   correctPaths,
   findWorkspaceRoot,
@@ -22,7 +22,7 @@ import { Entry } from "../types";
  * @returns The entry points (relative to the `projectRoot` path) for the build process
  */
 export const getEntryPoints = async (
-  config: StormConfig,
+  config: StormWorkspaceConfig,
   projectRoot: string,
   sourceRoot?: string,
   entry?: Entry,

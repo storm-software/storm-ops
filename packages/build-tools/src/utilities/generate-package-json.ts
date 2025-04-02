@@ -1,6 +1,6 @@
 import type { ProjectConfiguration, ProjectGraphProjectNode } from "@nx/devkit";
 import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
-import type { StormConfig } from "@storm-software/config";
+import type { StormWorkspaceConfig } from "@storm-software/config";
 import { writeTrace } from "@storm-software/config-tools/logger/console";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
@@ -137,7 +137,7 @@ export const addPackageDependencies = async (
 };
 
 export const addWorkspacePackageJsonFields = async (
-  config: StormConfig,
+  config: StormWorkspaceConfig,
   projectRoot: string,
   sourceRoot: string,
   projectName: string,

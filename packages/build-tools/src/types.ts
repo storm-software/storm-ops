@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { StormConfig } from "@storm-software/config";
+import { StormWorkspaceConfig } from "@storm-software/config";
 
 export type Entry = string | Record<string, string> | string[];
 export type Platform = "browser" | "node" | "neutral";
@@ -92,7 +92,7 @@ export type TypeScriptBuildResolvedOptions = Omit<
       | "verbose"
     >
   > & {
-    config: StormConfig;
+    config: StormWorkspaceConfig;
     entryPoints: string[];
     env: TypeScriptBuildEnv;
   };
