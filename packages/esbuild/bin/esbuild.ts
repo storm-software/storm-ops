@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import type { StormConfig } from "@storm-software/config";
+import type { StormWorkspaceConfig } from "@storm-software/config";
 import { getConfig } from "@storm-software/config-tools/get-config";
 import {
   getStopwatch,
@@ -20,14 +20,16 @@ import { build } from "../src/build";
 import { clean } from "../src/clean";
 import { ESBuildCLIOptions } from "../src/types";
 
-async function createProgram(config: StormConfig) {
+async function createProgram(config: StormWorkspaceConfig) {
   try {
     writeInfo("⚡ Running Storm ESBuild pipeline", config);
 
     const root = findWorkspaceRootSafe();
     process.env.STORM_WORKSPACE_ROOT ??= root;
     process.env.NX_WORKSPACE_ROOT_PATH ??= root;
-    root && process.chdir(root);
+    if (root) {
+      process.chdir(root);
+    }
 
     const program = new Command("storm-esbuild");
     program.version("1.0.0", "-v --version", "display CLI version");
@@ -241,7 +243,7 @@ async function createProgram(config: StormConfig) {
 }
 
 const buildAction =
-  (config: StormConfig) => async (options: ESBuildCLIOptions) => {
+  (config: StormWorkspaceConfig) => async (options: ESBuildCLIOptions) => {
     try {
       await build({
         ...options,
@@ -259,7 +261,7 @@ const buildAction =
   };
 
 const cleanAction =
-  (config: StormConfig) =>
+  (config: StormWorkspaceConfig) =>
   async (options: { output: string; name?: string }) => {
     try {
       await clean(options.name, options.output, config);

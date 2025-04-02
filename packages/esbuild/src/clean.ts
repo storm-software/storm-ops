@@ -1,7 +1,7 @@
-import { StormConfig } from "@storm-software/config";
+import { StormWorkspaceConfig } from "@storm-software/config";
 import {
   getStopwatch,
-  writeDebug,
+  writeDebug
 } from "@storm-software/config-tools/logger/console";
 import { rm } from "node:fs/promises";
 
@@ -10,12 +10,12 @@ import { rm } from "node:fs/promises";
  *
  * @param name - The name of the executor
  * @param directory - The directory to clean
- * @param config - The StormConfig object
+ * @param config - The StormWorkspaceConfig object
  */
 export async function clean(
   name = "ESBuild",
   directory: string,
-  config?: StormConfig,
+  config?: StormWorkspaceConfig
 ) {
   writeDebug(` 🧹  Cleaning ${name} output path: ${directory}`, config);
   const stopwatch = getStopwatch(`${name} output clean`);
@@ -30,12 +30,12 @@ export async function clean(
  *
  * @param name - The name of the executor
  * @param directory - The directory to clean
- * @param config - The StormConfig object
+ * @param config - The StormWorkspaceConfig object
  */
 export async function cleanDirectories(
   name = "ESBuild",
   directory: string,
-  config?: StormConfig,
+  config?: StormWorkspaceConfig
 ) {
   await rm(directory, { recursive: true, force: true });
 }
