@@ -3,7 +3,7 @@ import {
   computeCompilerOptionsPaths,
   DependentBuildableProjectNode
 } from "@nx/js/src/utils/buildable-libs-utils";
-import { StormConfig } from "@storm-software/config";
+import { StormWorkspaceConfig } from "@storm-software/config";
 import { writeTrace } from "@storm-software/config-tools/logger/console";
 import { dirname, extname } from "node:path";
 import { pathToFileURL } from "node:url";
@@ -25,7 +25,7 @@ export async function loadConfig(
 }
 
 export async function createTsCompilerOptions(
-  config: StormConfig,
+  config: StormWorkspaceConfig,
   tsConfigPath: string,
   projectRoot: string,
   dependencies?: DependentBuildableProjectNode[]

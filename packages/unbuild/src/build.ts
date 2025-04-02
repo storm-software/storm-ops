@@ -38,7 +38,7 @@ import {
   correctPaths,
   joinPaths
 } from "@storm-software/config-tools/utilities/correct-paths";
-import { StormConfig } from "@storm-software/config/types";
+import { StormWorkspaceConfig } from "@storm-software/config/types";
 import defu from "defu";
 import { LogLevel } from "esbuild";
 import { Glob } from "glob";
@@ -70,7 +70,7 @@ import { loadConfig } from "./utilities/helpers";
  */
 export async function resolveOptions(
   options: UnbuildOptions,
-  config: StormConfig
+  config: StormWorkspaceConfig
 ): Promise<UnbuildResolvedOptions> {
   writeDebug("  ⚙️   Resolving build options", config);
   const stopwatch = getStopwatch("Build options resolution");
