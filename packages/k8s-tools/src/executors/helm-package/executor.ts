@@ -1,5 +1,5 @@
 import type { ExecutorContext, PromiseExecutor } from "@nx/devkit";
-import type { StormConfig } from "@storm-software/config";
+import type { StormWorkspaceConfig } from "@storm-software/config";
 import { writeWarning } from "@storm-software/config-tools/logger/console";
 import { withRunExecutor } from "@storm-software/workspace-tools/base/base-executor";
 import { createHelmClient } from "../../utils/client";
@@ -8,7 +8,7 @@ import { HelmPackageExecutorSchema } from "./schema";
 export async function serveExecutor(
   options: HelmPackageExecutorSchema,
   context: ExecutorContext,
-  config?: StormConfig,
+  config?: StormWorkspaceConfig
 ) {
   if (
     !context?.projectName ||
@@ -38,20 +38,20 @@ export async function serveExecutor(
 
   const chartPath = await helm.package({
     chartFolder: options.chartFolder,
-    outputFolder: options.outputFolder,
+    outputFolder: options.outputFolder
   });
 
   if (options.push && chartPath && options.remote) {
     helm.push({
       chartPath,
-      remote: options.remote,
+      remote: options.remote
     });
   } else {
     writeWarning(`Chart packaged at: ${chartPath}`, config);
   }
 
   return {
-    success: true,
+    success: true
   };
 }
 
@@ -65,7 +65,7 @@ export default withRunExecutor<HelmPackageExecutorSchema>(
         options.port ??= 4500;
 
         return options as HelmPackageExecutorSchema;
-      },
-    },
-  },
+      }
+    }
+  }
 ) as PromiseExecutor<HelmPackageExecutorSchema>;

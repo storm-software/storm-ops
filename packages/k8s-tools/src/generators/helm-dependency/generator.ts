@@ -3,9 +3,9 @@ import {
   ProjectConfiguration,
   readProjectConfiguration,
   Tree,
-  updateProjectConfiguration,
+  updateProjectConfiguration
 } from "@nx/devkit";
-import { StormConfig } from "@storm-software/config";
+import { StormWorkspaceConfig } from "@storm-software/config";
 import { writeDebug } from "@storm-software/config-tools";
 import { withRunGenerator } from "@storm-software/workspace-tools/base/base-generator";
 import yaml from "js-yaml";
@@ -14,7 +14,7 @@ import type { HelmDependencyGeneratorSchema } from "./schema";
 export async function helmDependencyGeneratorFn(
   tree: Tree,
   options: HelmDependencyGeneratorSchema,
-  config?: StormConfig,
+  config?: StormWorkspaceConfig
 ) {
   writeDebug("📝  Preparing to add Helm Dependency", config);
 
@@ -22,14 +22,14 @@ export async function helmDependencyGeneratorFn(
 
   if (!project.targets?.["helm-package"]) {
     throw new Error(
-      `Project ${options.project} does not have a helm target. Please run the chart generator first.`,
+      `Project ${options.project} does not have a helm target. Please run the chart generator first.`
     );
   }
 
   updateProjectConfiguration(
     tree,
     options.project,
-    addDependencyToConfig(project, options.repositoryName, options.repository),
+    addDependencyToConfig(project, options.repositoryName, options.repository)
   );
 
   updateChartYaml(
@@ -37,7 +37,7 @@ export async function helmDependencyGeneratorFn(
     project,
     options.chartName!,
     options.chartVersion!,
-    options.repository,
+    options.repository
   );
 
   if (options.format) {
@@ -45,19 +45,19 @@ export async function helmDependencyGeneratorFn(
   }
 
   return {
-    success: true,
+    success: true
   };
 }
 
 export default withRunGenerator<HelmDependencyGeneratorSchema>(
   "Helm Dependency",
-  helmDependencyGeneratorFn,
+  helmDependencyGeneratorFn
 );
 
 function addDependencyToConfig(
   project: ProjectConfiguration,
   name: string,
-  url: string,
+  url: string
 ): ProjectConfiguration {
   return {
     ...project,
@@ -74,13 +74,13 @@ function addDependencyToConfig(
               ? [
                   ...project.targets["helm-package"].options.dependencies
                     .repositories,
-                  { name: name, url: url },
+                  { name: name, url: url }
                 ]
-              : [{ name: name, url: url }],
-          },
-        },
-      },
-    },
+              : [{ name: name, url: url }]
+          }
+        }
+      }
+    }
   };
 }
 
@@ -89,7 +89,7 @@ function updateChartYaml(
   project: ProjectConfiguration,
   name: string,
   version: string,
-  repository: string,
+  repository: string
 ) {
   const chartFolder = project.targets?.["helm-package"]?.options.chartFolder;
   const chartPath = `${chartFolder}/Chart.yaml`;
@@ -113,7 +113,7 @@ function updateChartYaml(
     }
 
     const existingDependency = chartContents.dependencies.find(
-      (dep) => dep.name === name,
+      dep => dep.name === name
     );
 
     if (existingDependency) {
@@ -123,7 +123,7 @@ function updateChartYaml(
       chartContents.dependencies.push({
         name: name,
         version: version,
-        repository: repository,
+        repository: repository
       });
 
       tree.write(chartPath, yaml.dump(chartContents));
