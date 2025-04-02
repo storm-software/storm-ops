@@ -1,4 +1,4 @@
-import type { StormConfig } from "@storm-software/config";
+import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   findWorkspaceRootSafe,
   writeFatal,
@@ -12,16 +12,18 @@ import { runReadme } from "../readme/run";
 import { runRelease } from "../release/run";
 import type { ReadMeOptions } from "../types";
 
-let _config: Partial<StormConfig> = {};
+let _config: Partial<StormWorkspaceConfig> = {};
 
-export function createProgram(config: StormConfig) {
+export function createProgram(config: StormWorkspaceConfig) {
   _config = config;
   writeInfo("⚡ Running Storm Git Tools", config);
 
   const root = findWorkspaceRootSafe(process.cwd());
   process.env.STORM_WORKSPACE_ROOT ??= root;
   process.env.NX_WORKSPACE_ROOT_PATH ??= root;
-  root && process.chdir(root);
+  if (root) {
+    process.chdir(root);
+  }
 
   const program = new Command("storm-git");
   program.version("1.0.0", "-v --version", "display CLI version");
@@ -195,7 +197,12 @@ export async function releaseAction({
       _config
     );
 
-    await runRelease(_config as StormConfig, { dryRun, project, base, head });
+    await runRelease(_config as StormWorkspaceConfig, {
+      dryRun,
+      project,
+      base,
+      head
+    });
 
     writeSuccess("Release completed successfully!\n", _config);
   } catch (error) {
@@ -234,7 +241,11 @@ export async function commitLintAction({
       _config
     );
 
-    await runCommitLint(_config as StormConfig, { config, message, file });
+    await runCommitLint(_config as StormWorkspaceConfig, {
+      config,
+      message,
+      file
+    });
 
     writeSuccess(
       "Linting the commit messages completed successfully!\n",

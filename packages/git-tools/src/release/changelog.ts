@@ -1,4 +1,4 @@
-import { StormConfig } from "@storm-software/config";
+import { StormWorkspaceConfig } from "@storm-software/config";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import * as chalk from "chalk";
 import { prompt } from "enquirer";
@@ -1493,7 +1493,7 @@ function formatGithubReleaseNotes(
   releaseVersion: ReleaseVersion,
   content: string,
   projectName: string | null,
-  workspaceConfig?: StormConfig
+  workspaceConfig?: StormWorkspaceConfig
 ): string {
   if (!workspaceConfig) {
     return content;

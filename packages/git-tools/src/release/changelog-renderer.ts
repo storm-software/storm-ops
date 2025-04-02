@@ -1,4 +1,4 @@
-import type { StormConfig } from "@storm-software/config";
+import type { StormWorkspaceConfig } from "@storm-software/config";
 import { getWorkspaceConfig } from "@storm-software/config-tools";
 import axios from "axios";
 import DefaultChangelogRenderer, {
@@ -23,7 +23,7 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
   /**
    * The Storm workspace configuration object, which is loaded from the storm-workspace.json file.
    */
-  protected workspaceConfig: StormConfig | null = null;
+  protected workspaceConfig: StormWorkspaceConfig | null = null;
 
   /**
    * A ChangelogRenderer class takes in the determined changes and other relevant metadata and returns a string, or a Promise of a string of changelog contents (usually markdown).

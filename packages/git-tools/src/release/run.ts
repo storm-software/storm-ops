@@ -1,4 +1,4 @@
-import type { StormConfig } from "@storm-software/config";
+import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   isVerbose,
   writeDebug,
@@ -36,7 +36,7 @@ export type StormReleaseOptions = ReleaseOptions & {
 };
 
 export const runRelease = async (
-  config: StormConfig,
+  config: StormWorkspaceConfig,
   options: StormReleaseOptions
 ) => {
   process.env.GIT_AUTHOR_NAME = process.env.GITHUB_ACTOR;

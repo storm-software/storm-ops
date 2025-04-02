@@ -1,5 +1,5 @@
 import { joinPathFragments, workspaceRoot } from "@nx/devkit";
-import type { StormConfig } from "@storm-software/config";
+import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   findWorkspaceRoot,
   writeDebug,
@@ -62,7 +62,7 @@ interface GeneratorData {
 }
 
 export async function releaseVersion(
-  config: StormConfig,
+  config: StormWorkspaceConfig,
   args: VersionOptions & { nxReleaseConfig: NxReleaseConfiguration }
 ): Promise<NxReleaseVersionResult> {
   try {
@@ -459,7 +459,7 @@ export async function releaseVersion(
 }
 
 async function runVersionOnProjects(
-  config: StormConfig,
+  config: StormWorkspaceConfig,
   projectGraph: ProjectGraph,
   nxJson: NxJsonConfiguration,
   args: VersionOptions,
@@ -528,7 +528,7 @@ async function runVersionOnProjects(
 }
 
 function printAndFlushChanges(
-  config: StormConfig,
+  config: StormWorkspaceConfig,
   tree: Tree,
   isDryRun: boolean
 ) {

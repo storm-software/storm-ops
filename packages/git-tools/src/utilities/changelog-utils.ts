@@ -1,4 +1,4 @@
-import type { StormConfig } from "@storm-software/config";
+import type { StormWorkspaceConfig } from "@storm-software/config";
 import { ReleaseVersion } from "nx/src/command-line/release/utils/shared";
 import { format, resolveConfig } from "prettier";
 
@@ -8,7 +8,7 @@ export async function generateChangelogContent(
   newContent: string,
   currentContent?: string,
   project?: string | null,
-  workspaceConfig?: StormConfig | null
+  workspaceConfig?: StormWorkspaceConfig | null
 ): Promise<string> {
   const formatOptions = (await resolveConfig(filepath)) ?? {};
 
@@ -78,7 +78,7 @@ export const titleCase = (input?: string): string | undefined => {
 export function generateChangelogTitle(
   version: string,
   project?: string | null,
-  workspaceConfig?: StormConfig | null
+  workspaceConfig?: StormWorkspaceConfig | null
 ): string {
   if (!workspaceConfig?.name || !project) {
     return version;
