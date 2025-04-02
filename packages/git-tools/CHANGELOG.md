@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.104.4](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.4) (2025-04-02)
+
+### Miscellaneous
+
+- **git-tools:** Update all references to `StormConfig` to point to
+  `StormWorkspaceConfig`
+  ([54310df92](https://github.com/storm-software/storm-ops/commit/54310df92))
+
 ## [2.104.3](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.3) (2025-03-18)
 
 ### Miscellaneous

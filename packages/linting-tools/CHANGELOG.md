@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.119.19](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.19) (2025-04-02)
+
+### Miscellaneous
+
+- **linting-tools:** Update all references to `StormConfig` to point to
+  `StormWorkspaceConfig`
+  ([f189a2e71](https://github.com/storm-software/storm-ops/commit/f189a2e71))
+
 ## [1.119.18](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.18) (2025-03-18)
 
 ### Miscellaneous

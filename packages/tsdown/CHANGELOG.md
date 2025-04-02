@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.27.17](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.27.17) (2025-04-02)
+
+### Miscellaneous
+
+- **tsdown:** Update all references to `StormConfig` to point to
+  `StormWorkspaceConfig`
+  ([75d2421bd](https://github.com/storm-software/storm-ops/commit/75d2421bd))
+
 ## [0.27.16](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.27.16) (2025-03-18)
 
 ### Miscellaneous

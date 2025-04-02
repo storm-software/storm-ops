@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.143.25](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.143.25) (2025-04-02)
+
+### Miscellaneous
+
+- **build-tools:** Update all references to `StormConfig` to point to
+  `StormWorkspaceConfig`
+  ([753d98465](https://github.com/storm-software/storm-ops/commit/753d98465))
+
 ## [0.143.24](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.143.24) (2025-04-02)
 
 ### Bug Fixes

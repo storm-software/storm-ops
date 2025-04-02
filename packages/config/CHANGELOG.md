@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.111.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.111.0) (2025-04-02)
+
+### Features
+
+- **config:** Update `StormConfig` to `StormWorkspaceConfig`
+  ([4bc076dd7](https://github.com/storm-software/storm-ops/commit/4bc076dd7))
+
+### Miscellaneous
+
+- **workspace-tools:** Update all references to `StormConfig` to point to
+  `StormWorkspaceConfig`
+  ([c769b40dd](https://github.com/storm-software/storm-ops/commit/c769b40dd))
+
 ## [1.110.6](https://github.com/storm-software/storm-ops/releases/tag/config%401.110.6) (2025-03-18)
 
 ### Miscellaneous

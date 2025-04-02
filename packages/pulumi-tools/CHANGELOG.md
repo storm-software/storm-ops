@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.7.39](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.7.39) (2025-04-02)
+
+### Miscellaneous
+
+- **pulumi-tools:** Update all references to `StormConfig` to point to
+  `StormWorkspaceConfig`
+  ([0b3779240](https://github.com/storm-software/storm-ops/commit/0b3779240))
+
 ## [0.7.38](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.7.38) (2025-03-18)
 
 ### Miscellaneous

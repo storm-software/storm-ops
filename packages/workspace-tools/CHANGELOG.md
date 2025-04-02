@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.264.23](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.264.23) (2025-04-02)
+
+### Miscellaneous
+
+- **workspace-tools:** Update all references to `StormConfig` to point to
+  `StormWorkspaceConfig`
+  ([c769b40dd](https://github.com/storm-software/storm-ops/commit/c769b40dd))
+
 ## [1.264.22](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.264.22) (2025-03-18)
 
 ### Miscellaneous

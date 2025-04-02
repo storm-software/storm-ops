@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.55.44](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.55.44) (2025-04-02)
+
+### Miscellaneous
+
+- **cloudflare-tools:** Update all references to `StormConfig` to point to
+  `StormWorkspaceConfig`
+  ([cdd9495af](https://github.com/storm-software/storm-ops/commit/cdd9495af))
+
 ## [0.55.43](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.55.43) (2025-03-18)
 
 ### Miscellaneous

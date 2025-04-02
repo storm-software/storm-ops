@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.24.52](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.24.52) (2025-04-02)
+
+### Miscellaneous
+
+- **k8s-tools:** Update all references to `StormConfig` to point to
+  `StormWorkspaceConfig`
+  ([3ccd974a7](https://github.com/storm-software/storm-ops/commit/3ccd974a7))
+
 ## [0.24.51](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.24.51) (2025-03-18)
 
 ### Miscellaneous

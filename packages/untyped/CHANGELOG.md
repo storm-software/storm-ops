@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.11.17](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.11.17) (2025-04-02)
+
+### Miscellaneous
+
+- **untyped:** Update all references to `StormConfig` to point to
+  `StormWorkspaceConfig`
+  ([d4e8a6f33](https://github.com/storm-software/storm-ops/commit/d4e8a6f33))
+
 ## [0.11.16](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.11.16) (2025-03-18)
 
 ### Miscellaneous

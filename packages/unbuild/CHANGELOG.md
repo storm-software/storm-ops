@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.38.8](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.8) (2025-04-02)
+
+### Miscellaneous
+
+- **unbuild:** Update all references to `StormConfig` to point to
+  `StormWorkspaceConfig`
+  ([8506a08d7](https://github.com/storm-software/storm-ops/commit/8506a08d7))
+
 ## [0.38.7](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.7) (2025-03-19)
 
 ### Bug Fixes

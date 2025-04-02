@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.9.36](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.36) (2025-04-02)
+
+### Miscellaneous
+
+- **projen:** Update all references to `StormConfig` to point to
+  `StormWorkspaceConfig`
+  ([7f316214f](https://github.com/storm-software/storm-ops/commit/7f316214f))
+
 ## [0.9.35](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.35) (2025-03-18)
 
 ### Miscellaneous

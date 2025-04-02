@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.31.29](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.29) (2025-04-02)
+
+### Miscellaneous
+
+- **esbuild:** Update all references to `StormConfig` to point to
+  `StormWorkspaceConfig`
+  ([972ee19c5](https://github.com/storm-software/storm-ops/commit/972ee19c5))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.160.7
+- Updated build-tools to 0.143.25
+- Updated config to 1.111.0
+
 ## [0.31.28](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.28) (2025-03-19)
 
 ### Bug Fixes

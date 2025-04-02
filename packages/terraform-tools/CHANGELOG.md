@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.54.44](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.54.44) (2025-04-02)
+
+### Miscellaneous
+
+- **terraform-tools:** Update all references to `StormConfig` to point to
+  `StormWorkspaceConfig`
+  ([b0a3d9f8d](https://github.com/storm-software/storm-ops/commit/b0a3d9f8d))
+
 ## [0.54.43](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.54.43) (2025-03-18)
 
 ### Miscellaneous
