@@ -1,12 +1,12 @@
 import {
   NX_DEFAULT_BUILD_OUTPUTS as BASE_NX_DEFAULT_BUILD_OUTPUTS,
-  NxWorkspace,
+  NxWorkspace
 } from "@aws/pdk/monorepo/components/nx-workspace";
 import { Nx } from "@aws/pdk/monorepo/nx-types";
 import { ProjectUtils } from "@aws/pdk/monorepo/utils";
 import { asUndefinedIfEmpty } from "@aws/pdk/monorepo/utils/common";
 import { NxJsonConfiguration } from "@nx/devkit";
-import { StormConfig } from "@storm-software/config";
+import { StormWorkspaceConfig } from "@storm-software/config";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { readFileSync } from "node:fs";
 import { JsonFile, Project } from "projen";
@@ -17,7 +17,7 @@ import { Obj } from "projen/lib/util";
  */
 export const NX_DEFAULT_BUILD_OUTPUTS: string[] = [
   ...BASE_NX_DEFAULT_BUILD_OUTPUTS,
-  "{workspaceRoot}/dist/{projectRoot}",
+  "{workspaceRoot}/dist/{projectRoot}"
 ];
 
 /**
@@ -30,8 +30,8 @@ export class StormNxWorkspace extends NxWorkspace {
    * @param scope project instance.
    */
   static override of(scope: Project): NxWorkspace | undefined {
-    return scope.root.components.find((c) =>
-      ProjectUtils.isNamedInstanceOf(c, NxWorkspace),
+    return scope.root.components.find(c =>
+      ProjectUtils.isNamedInstanceOf(c, NxWorkspace)
     ) as NxWorkspace | undefined;
   }
 
@@ -50,7 +50,7 @@ export class StormNxWorkspace extends NxWorkspace {
    * Automatically infer NxProject targets based on project type.
    * @experimental
    */
-  public override autoInferProjectTargets: boolean = true;
+  public override autoInferProjectTargets = true;
 
   /**
    * List of cacheable operations.
@@ -70,7 +70,7 @@ export class StormNxWorkspace extends NxWorkspace {
     "test",
     "e2e",
     "docs",
-    "nx-release-publish",
+    "nx-release-publish"
   ];
 
   /**
@@ -80,8 +80,7 @@ export class StormNxWorkspace extends NxWorkspace {
    *
    * @default "@storm-software/workspace-tools/config/base.json"
    */
-  public override extends: string =
-    "@storm-software/workspace-tools/config/base.json";
+  public override extends = "@storm-software/workspace-tools/config/base.json";
 
   /**
    * Plugins for extending the project graph
@@ -92,19 +91,19 @@ export class StormNxWorkspace extends NxWorkspace {
       exclude: ["packages/**/__fixtures__/**/*"],
       options: {
         targetName: "lint",
-        useFlatConfig: true,
-      },
+        useFlatConfig: true
+      }
     },
     "@storm-software/workspace-tools/plugins/typescript",
     "@storm-software/workspace-tools/plugins/typescript/untyped",
-    "@storm-software/workspace-tools/plugins/typescript/tsup",
+    "@storm-software/workspace-tools/plugins/typescript/tsup"
   ];
 
   /**
    * Default options for `nx affected`
    */
   public override affected: Nx.INxAffectedConfig = {
-    defaultBase: "main",
+    defaultBase: "main"
   };
 
   /**
@@ -149,7 +148,7 @@ export class StormNxWorkspace extends NxWorkspace {
       "{workspaceRoot}/.storm-workspace/config.ts",
       "{workspaceRoot}/.storm-workspace/config.*.ts",
       "{workspaceRoot}/.env",
-      "{workspaceRoot}/.env.local",
+      "{workspaceRoot}/.env.local"
     ],
     default: ["sharedGlobals", "{projectRoot}/**/*"],
     production: [
@@ -189,7 +188,7 @@ export class StormNxWorkspace extends NxWorkspace {
       "!{projectRoot}/tests/**/*",
       "!{projectRoot}/testing/**/*",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/tsconfig.spec.json"
     ],
     testing: [
       "sharedGlobals",
@@ -222,7 +221,7 @@ export class StormNxWorkspace extends NxWorkspace {
       "{projectRoot}/tests/**/*",
       "{projectRoot}/testing/**/*",
       "{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "{projectRoot}/tsconfig.spec.json",
+      "{projectRoot}/tsconfig.spec.json"
     ],
     linting: [
       "sharedGlobals",
@@ -259,7 +258,7 @@ export class StormNxWorkspace extends NxWorkspace {
       "{projectRoot}/.markdownlint.json",
       "{projectRoot}/.markdownlint-cli2.cjs",
       "{projectRoot}/.prettierrc",
-      "{projectRoot}/.prettierignore",
+      "{projectRoot}/.prettierignore"
     ],
     documentation: [
       "sharedGlobals",
@@ -294,7 +293,7 @@ export class StormNxWorkspace extends NxWorkspace {
       "!{projectRoot}/tests/**/*",
       "!{projectRoot}/testing/**/*",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/tsconfig.spec.json"
     ],
     rust: [
       "sharedGlobals",
@@ -326,7 +325,7 @@ export class StormNxWorkspace extends NxWorkspace {
       "!{projectRoot}/benches/**/*",
       "!{projectRoot}/e2e/**/*",
       "!{projectRoot}/tests/**/*",
-      "!{projectRoot}/testing/**/*",
+      "!{projectRoot}/testing/**/*"
     ],
     typescript: [
       "sharedGlobals",
@@ -382,8 +381,8 @@ export class StormNxWorkspace extends NxWorkspace {
       "{projectRoot}/bin/**/*",
       "{projectRoot}/tools/**/*",
       "{projectRoot}/helpers/**/*",
-      "{projectRoot}/scripts/**/*",
-    ],
+      "{projectRoot}/scripts/**/*"
+    ]
   };
 
   /**
@@ -400,23 +399,23 @@ export class StormNxWorkspace extends NxWorkspace {
       options: {
         command:
           'pnpm exec ls-lint --config="./node_modules/@storm-software/linting-tools/ls-lint/.ls-lint.yml" ',
-        color: true,
-      },
+        color: true
+      }
     },
     "lint-sherif": {
       outputs: ["{projectRoot}/package.json"],
       inputs: ["{workspaceRoot}/package.json", "{projectRoot}/package.json"],
       executor: "nx:run-commands",
       options: {
-        command: "pnpm exec sherif -i react -i react-dom -i typescript",
-      },
+        command: "pnpm exec sherif -i react -i react-dom -i typescript"
+      }
     },
     "lint-knip": {
       inputs: ["linting", "default", "^production"],
       executor: "nx:run-commands",
       options: {
-        command: "pnpm exec knip",
-      },
+        command: "pnpm exec knip"
+      }
     },
     lint: {
       outputs: ["{projectRoot}"],
@@ -424,8 +423,8 @@ export class StormNxWorkspace extends NxWorkspace {
       dependsOn: ["lint-ls", "lint-sherif", "lint-knip", "lint-docs", "^lint"],
       executor: "nx:run-commands",
       options: {
-        command: 'echo Linted the project files in "{projectRoot}" ',
-      },
+        command: 'echo Linted the project files in "{projectRoot}" '
+      }
     },
     "format-toml": {
       inputs: ["linting", "{projectRoot}/**/*.toml"],
@@ -435,8 +434,8 @@ export class StormNxWorkspace extends NxWorkspace {
       options: {
         command:
           'pnpm exec taplo format --colors="always" --config="./node_modules/@storm-software/linting-tools/taplo/config.toml" --cache-path="./tmp/taplo/{projectRoot}"',
-        color: true,
-      },
+        color: true
+      }
     },
     "format-readme": {
       inputs: [
@@ -444,7 +443,7 @@ export class StormNxWorkspace extends NxWorkspace {
         "documentation",
         "{projectRoot}/{README.md,package.json,Cargo.toml,executors.json,generators.json}",
         "default",
-        "^production",
+        "^production"
       ],
       outputs: ["{projectRoot}/README.md"],
       dependsOn: ["^format-readme"],
@@ -452,8 +451,8 @@ export class StormNxWorkspace extends NxWorkspace {
       options: {
         command:
           'pnpm exec storm-git readme-gen --templates="./tools/readme-templates" --project="{projectName}"',
-        color: true,
-      },
+        color: true
+      }
     },
     "format-prettier": {
       inputs: ["linting", "default", "^production"],
@@ -462,8 +461,8 @@ export class StormNxWorkspace extends NxWorkspace {
       options: {
         command:
           'pnpm exec prettier "{projectRoot}/**/*" --write --ignore-unknown --no-error-on-unmatched-pattern --config="./node_modules/@storm-software/prettier/config.json" --ignore-path="./node_modules/@storm-software/prettier/.prettierignore" --cache --cache-location="./tmp/prettier/{projectRoot}" ',
-        color: true,
-      },
+        color: true
+      }
     },
     format: {
       inputs: ["linting", "default", "^production"],
@@ -471,8 +470,8 @@ export class StormNxWorkspace extends NxWorkspace {
       dependsOn: ["format-toml", "format-readme", "format-prettier", "^format"],
       executor: "nx:run-commands",
       options: {
-        command: 'echo Formatted the project files in "{projectRoot}" ',
-      },
+        command: 'echo Formatted the project files in "{projectRoot}" '
+      }
     },
     clean: {
       inputs: ["default", "^production"],
@@ -482,24 +481,24 @@ export class StormNxWorkspace extends NxWorkspace {
       options: {
         commands: [
           "pnpm exec rimraf --glob {projectRoot}/dist",
-          "pnpm exec rimraf dist/{projectRoot}",
-        ],
-      },
+          "pnpm exec rimraf dist/{projectRoot}"
+        ]
+      }
     },
     "build-untyped": {
-      dependsOn: ["^build"],
+      dependsOn: ["^build"]
     },
     "build-base": {
-      dependsOn: ["build-untyped", "^build"],
+      dependsOn: ["build-untyped", "^build"]
     },
     "build-local": {
       inputs: ["default", "^production"],
-      dependsOn: ["build-base", "build-untyped", "^build"],
+      dependsOn: ["build-base", "build-untyped", "^build"]
     },
     build: {
       inputs: ["default", "^production"],
       outputs: NX_DEFAULT_BUILD_OUTPUTS,
-      dependsOn: ["build-base", "build-untyped", "^build"],
+      dependsOn: ["build-base", "build-untyped", "^build"]
     },
     rebuild: {
       inputs: ["default", "^production"],
@@ -508,26 +507,26 @@ export class StormNxWorkspace extends NxWorkspace {
       options: {
         command: "pnpm exec nx run {projectName}:build",
         color: true,
-        cwd: "{workspaceRoot}",
-      },
+        cwd: "{workspaceRoot}"
+      }
     },
     docs: {
       outputs: ["{options.outputPath}"],
       inputs: ["linting", "documentation", "default", "^production"],
-      dependsOn: ["build", "format-readme", "lint-docs", "^docs"],
+      dependsOn: ["build", "format-readme", "lint-docs", "^docs"]
     },
     test: {
       inputs: ["testing", "default", "^production"],
-      dependsOn: ["build", "^test"],
+      dependsOn: ["build", "^test"]
     },
     e2e: {
       inputs: ["testing", "default", "^production"],
-      dependsOn: ["test", "^e2e"],
+      dependsOn: ["test", "^e2e"]
     },
     "nx-release-publish": {
       inputs: ["default", "^production"],
-      dependsOn: ["build", "^nx-release-publish"],
-    },
+      dependsOn: ["build", "^nx-release-publish"]
+    }
   };
 
   /**
@@ -540,28 +539,28 @@ export class StormNxWorkspace extends NxWorkspace {
    *
    * @defaultValue 5
    */
-  public parallel: number = 5;
+  public parallel = 5;
 
   /**
    * Should the daemon be used to run tasks?
    *
    * @defaultValue true
    */
-  public useDaemonProcess: boolean = true;
+  public useDaemonProcess = true;
 
   /**
    * Set this to false to disable adding inference plugins when generating new projects
    *
    * @defaultValue true
    */
-  public useInferencePlugins: boolean = true;
+  public useInferencePlugins = true;
 
   /**
    * The default base branch for new projects.
    *
    * @defaultValue "main"
    */
-  public defaultBase: string = "main";
+  public defaultBase = "main";
 
   /**
    * The CLI configuration for the workspace.
@@ -571,29 +570,29 @@ export class StormNxWorkspace extends NxWorkspace {
   constructor(project: Project) {
     super(project);
 
-    let stormConfig!: StormConfig;
+    let StormWorkspaceConfig!: StormWorkspaceConfig;
     if (project.root.outdir) {
-      const stormConfigJson = readFileSync(
+      const StormWorkspaceConfigJson = readFileSync(
         joinPaths(project.root.outdir, "storm-workspace.json"),
-        "utf8",
+        "utf8"
       );
-      stormConfig = JSON.parse(stormConfigJson);
+      StormWorkspaceConfig = JSON.parse(StormWorkspaceConfigJson);
     }
 
-    if (stormConfig?.namespace) {
-      this.npmScope = stormConfig?.namespace;
+    if (StormWorkspaceConfig?.namespace) {
+      this.npmScope = StormWorkspaceConfig?.namespace;
     }
 
-    if (stormConfig?.branch) {
-      this.defaultBase = stormConfig?.branch;
+    if (StormWorkspaceConfig?.branch) {
+      this.defaultBase = StormWorkspaceConfig?.branch;
       this.affected = {
-        defaultBase: stormConfig?.branch,
+        defaultBase: StormWorkspaceConfig?.branch
       };
     }
 
-    if (stormConfig?.packageManager) {
+    if (StormWorkspaceConfig?.packageManager) {
       this.cli = {
-        packageManager: stormConfig?.packageManager,
+        packageManager: StormWorkspaceConfig?.packageManager
       };
     }
 
@@ -610,8 +609,8 @@ export class StormNxWorkspace extends NxWorkspace {
         parallel: () => this.parallel,
         useDaemonProcess: () => this.useDaemonProcess,
         useInferencePlugins: () => this.useInferencePlugins,
-        release: () => asUndefinedIfEmpty(this.release),
-      },
+        release: () => asUndefinedIfEmpty(this.release)
+      }
     });
   }
 
@@ -628,8 +627,8 @@ export class StormNxWorkspace extends NxWorkspace {
     name: string,
     projects: string[] | string,
     projectsRelationship: "fixed" | "independent" = "independent",
-    releaseTagPattern: string = "{projectName}@{version}",
-    groupPreVersionCommand: string = "pnpm build",
+    releaseTagPattern = "{projectName}@{version}",
+    groupPreVersionCommand = "pnpm build"
   ) {
     this.release ??= {
       groups: {},
@@ -638,9 +637,9 @@ export class StormNxWorkspace extends NxWorkspace {
         renderOptions: {
           authors: false,
           commitReferences: true,
-          versionTitleDate: true,
-        },
-      },
+          versionTitleDate: true
+        }
+      }
     };
 
     this.release.groups[name] = {
@@ -652,9 +651,9 @@ export class StormNxWorkspace extends NxWorkspace {
         generator: "@storm-software/workspace-tools:release-version",
         generatorOptions: {
           currentVersionResolver: "git-tag",
-          specifierSource: "conventional-commits",
-        },
-      },
+          specifierSource: "conventional-commits"
+        }
+      }
     };
   }
 }
