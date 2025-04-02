@@ -1,30 +1,32 @@
 #!/usr/bin/env node
 
-import type { StormConfig } from "@storm-software/config";
+import type { StormWorkspaceConfig } from "@storm-software/config";
 import { getConfig } from "@storm-software/config-tools/get-config";
 import {
   getStopwatch,
   writeFatal,
   writeInfo,
-  writeSuccess,
+  writeSuccess
 } from "@storm-software/config-tools/logger/console";
 import { findWorkspaceRootSafe } from "@storm-software/config-tools/utilities/find-workspace-root";
 import {
   exitWithError,
   exitWithSuccess,
-  handleProcess,
+  handleProcess
 } from "@storm-software/config-tools/utilities/process-handler";
 import { Command, Option } from "commander";
 import { getGenerateAction } from "../src/generate";
 
-async function createProgram(config: StormConfig) {
+async function createProgram(config: StormWorkspaceConfig) {
   try {
     writeInfo("⚡ Running Storm Untyped codegen utility", config);
 
     const root = findWorkspaceRootSafe();
     process.env.STORM_WORKSPACE_ROOT ??= root;
     process.env.NX_WORKSPACE_ROOT_PATH ??= root;
-    root && process.chdir(root);
+    if (root) {
+      process.chdir(root);
+    }
 
     const program = new Command("storm-untyped");
     program.version("1.0.0", "-v --version", "display CLI version");
@@ -36,19 +38,19 @@ async function createProgram(config: StormConfig) {
 
     const entryOption = new Option(
       "-e --entry <path>",
-      "The path to the entry file to generate types for. This can be a file or a directory. Globs are supported.",
+      "The path to the entry file to generate types for. This can be a file or a directory. Globs are supported."
     );
 
     const outputPathOption = new Option(
       "-o --output-path <path>",
-      "The path of the project's source folder to build",
+      "The path of the project's source folder to build"
     );
 
     program
       .command("generate", { isDefault: true })
       .alias("bundle")
       .description(
-        "Run a TypeScript build using Untyped, API-Extractor, and TSC (for type generation).",
+        "Run a TypeScript build using Untyped, API-Extractor, and TSC (for type generation)."
       )
       .addOption(entryOption)
       .addOption(outputPathOption)
@@ -58,7 +60,7 @@ async function createProgram(config: StormConfig) {
   } catch (e) {
     writeFatal(
       `A fatal error occurred while running the program: ${e.message}`,
-      config,
+      config
     );
     process.exit(1);
   }
@@ -76,7 +78,7 @@ void (async () => {
 
     writeSuccess(
       `🎉  Storm Untyped executable has completed successfully!`,
-      config,
+      config
     );
     exitWithSuccess(config);
   } catch (error) {
@@ -91,7 +93,7 @@ Stack Trace: ${error.stack}`
           : ""
       }
 `,
-      config,
+      config
     );
 
     exitWithError(config);

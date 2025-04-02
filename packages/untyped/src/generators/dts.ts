@@ -1,7 +1,7 @@
-import { StormConfig } from "@storm-software/config";
+import { StormWorkspaceConfig } from "@storm-software/config";
 import {
   writeError,
-  writeTrace,
+  writeTrace
 } from "@storm-software/config-tools/logger/console";
 import { Path } from "glob";
 import { writeFile } from "node:fs/promises";
@@ -16,7 +16,7 @@ export function generateDeclaration(schema: Schema) {
 ${generateTypes(schema, {
   addExport: true,
   partial: true,
-  interfaceName: `${schema.title?.replaceAll(" ", "") || "Type"}Schema`,
+  interfaceName: `${schema.title?.replaceAll(" ", "") || "Type"}Schema`
 })}
 
 `;
@@ -25,7 +25,7 @@ ${generateTypes(schema, {
 export function generateDeclarationFile(
   schema: Schema,
   file: Path,
-  config?: StormConfig,
+  config?: StormWorkspaceConfig
 ) {
   try {
     const declarations = getOutputFile(file, "d.ts");
@@ -47,7 +47,7 @@ Stack Trace: ${error.stack}`
 Parsed schema:
 ${JSON.stringify(schema)}
 `,
-      config,
+      config
     );
 
     throw error;
