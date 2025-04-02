@@ -11,7 +11,7 @@ import {
   type Package,
   type Packages
 } from "@manypkg/get-packages";
-import { StormConfig } from "@storm-software/config";
+import { StormWorkspaceConfig } from "@storm-software/config";
 import { runAsync } from "@storm-software/config-tools/utilities/run";
 import pLimit from "p-limit";
 import spawn from "spawndamnit";
@@ -119,7 +119,7 @@ export const MANY_PKG_TYPE_OPTIONS = [
 ];
 
 export async function runManypkg(
-  config: Partial<StormConfig>,
+  config: Partial<StormWorkspaceConfig>,
   manypkgType = "fix",
   manypkgArgs: string[]
 ) {

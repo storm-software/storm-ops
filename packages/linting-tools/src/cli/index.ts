@@ -1,4 +1,4 @@
-import type { StormConfig } from "@storm-software/config";
+import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   findWorkspaceRootSafe,
   writeDebug,
@@ -15,16 +15,18 @@ import { runAlex } from "../alex";
 import { runCodeowners } from "../codeowners";
 import { MANY_PKG_TYPE_OPTIONS, runManypkg } from "../manypkg";
 
-let _config: Partial<StormConfig> = {};
+let _config: Partial<StormWorkspaceConfig> = {};
 
-export function createProgram(config: StormConfig) {
+export function createProgram(config: StormWorkspaceConfig) {
   _config = config;
   writeInfo("⚡ Running Storm Linting Tools", config);
 
   const root = findWorkspaceRootSafe();
   process.env.STORM_WORKSPACE_ROOT ??= root;
   process.env.NX_WORKSPACE_ROOT_PATH ??= root;
-  root && process.chdir(root);
+  if (root) {
+    process.chdir(root);
+  }
 
   const program = new Command("storm-lint");
   program.version("1.0.0", "-v --version", "display CLI version");
