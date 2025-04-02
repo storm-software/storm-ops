@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.143.24](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.143.24) (2025-04-02)
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with `exports` paths and duplicate dependencies
+  ([58d312f16](https://github.com/storm-software/storm-ops/commit/58d312f16))
+
 ## [0.143.23](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.143.23) (2025-03-18)
 
 ### Miscellaneous
