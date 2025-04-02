@@ -1,4 +1,4 @@
-import type { StormConfigInput } from "./types";
+import type { StormWorkspaceConfigInput } from "./types";
 
 /**
  * Type the config values for the current Storm workspace
@@ -6,4 +6,4 @@ import type { StormConfigInput } from "./types";
  * @param input - The config values for the current Storm workspace
  * @returns The config values for the current Storm workspace
  */
-export const defineConfig = (input: StormConfigInput) => input;
+export const defineConfig = (input: StormWorkspaceConfigInput) => input;

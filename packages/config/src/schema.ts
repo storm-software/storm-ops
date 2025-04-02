@@ -356,7 +356,7 @@ export const WorkspaceDirectoryConfigSchema = z
 /**
  * Storm Workspace config values used during various dev-ops processes. It represents the config of the entire monorepo.
  */
-export const StormConfigSchema = z
+export const stormWorkspaceConfigSchema = z
   .object({
     $schema: z
       .string()
