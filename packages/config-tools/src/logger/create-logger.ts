@@ -1,11 +1,11 @@
-import { StormConfig } from "@storm-software/config/types";
+import { StormWorkspaceConfig } from "@storm-software/config/types";
 import chalk from "chalk";
 import { Logger, LogLevel } from "../types";
 import { findWorkspaceRoot } from "../utilities/find-workspace-root";
 import { getLogFn, getStopwatch } from "./console";
 
 export async function createLogger(
-  config?: Partial<StormConfig>,
+  config?: Partial<StormWorkspaceConfig>
 ): Promise<Logger> {
   const workspaceRoot = findWorkspaceRoot();
   if (!workspaceRoot) {
@@ -35,6 +35,6 @@ export async function createLogger(
     success: writeSuccess,
     debug: writeDebug,
     trace: writeTrace,
-    getStopwatch,
+    getStopwatch
   };
 }

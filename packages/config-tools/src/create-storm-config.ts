@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { StormConfig } from "@storm-software/config";
-import { StormConfigSchema } from "@storm-software/config/schema";
+import type { StormWorkspaceConfig } from "@storm-software/config";
+import { stormWorkspaceConfigSchema } from "@storm-software/config/schema";
 import defu from "defu";
 import type { ZodTypeAny } from "zod";
 import { getConfigFile } from "./config-file/get-config-file";
@@ -13,7 +13,7 @@ import { getDefaultConfig } from "./utilities/get-default-config";
 
 const _extension_cache = new WeakMap<{ extensionName: string }, any>();
 
-type StaticCache = { data: StormConfig; timestamp: number };
+type StaticCache = { data: StormWorkspaceConfig; timestamp: number };
 let _static_cache = undefined as StaticCache | undefined;
 
 /**
@@ -21,18 +21,18 @@ let _static_cache = undefined as StaticCache | undefined;
  *
  * @returns The config for the current Storm workspace
  */
-export const createStormConfig = async <
+export const createStormWorkspaceConfig = async <
   TExtensionName extends
-    keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
+    keyof StormWorkspaceConfig["extensions"] = keyof StormWorkspaceConfig["extensions"],
   TExtensionConfig = any,
-  TExtensionSchema extends ZodTypeAny = ZodTypeAny,
+  TExtensionSchema extends ZodTypeAny = ZodTypeAny
 >(
   extensionName?: TExtensionName,
   schema?: TExtensionSchema,
   workspaceRoot?: string,
-  skipLogs = false,
-): Promise<StormConfig<TExtensionName, TExtensionConfig>> => {
-  let result!: StormConfig<TExtensionName, TExtensionConfig>;
+  skipLogs = false
+): Promise<StormWorkspaceConfig<TExtensionName, TExtensionConfig>> => {
+  let result!: StormWorkspaceConfig<TExtensionName, TExtensionConfig>;
   if (
     !_static_cache?.data ||
     !_static_cache?.timestamp ||
@@ -43,7 +43,7 @@ export const createStormConfig = async <
       _workspaceRoot = findWorkspaceRoot();
     }
 
-    const configEnv = getConfigEnv() as StormConfig & {
+    const configEnv = getConfigEnv() as StormWorkspaceConfig & {
       [extensionName in TExtensionName]: TExtensionConfig;
     };
     const defaultConfig = await getDefaultConfig(_workspaceRoot);
@@ -52,16 +52,16 @@ export const createStormConfig = async <
     if (!configFile && !skipLogs) {
       writeWarning(
         "No Storm Workspace configuration file found in the current repository. Please ensure this is the expected behavior - you can add a `storm-workspace.json` file to the root of your workspace if it is not.\n",
-        { logLevel: "all" },
+        { logLevel: "all" }
       );
     }
 
-    result = (await StormConfigSchema.parseAsync(
-      defu(configEnv, configFile, defaultConfig),
-    )) as StormConfig<TExtensionName, TExtensionConfig>;
+    result = (await stormWorkspaceConfigSchema.parseAsync(
+      defu(configEnv, configFile, defaultConfig)
+    )) as StormWorkspaceConfig<TExtensionName, TExtensionConfig>;
     result.workspaceRoot ??= _workspaceRoot;
   } else {
-    result = _static_cache.data as StormConfig<
+    result = _static_cache.data as StormWorkspaceConfig<
       TExtensionName,
       TExtensionConfig
     >;
@@ -74,13 +74,13 @@ export const createStormConfig = async <
         TExtensionName,
         TExtensionConfig,
         TExtensionSchema
-      >(extensionName, schema),
+      >(extensionName, schema)
     };
   }
 
   _static_cache = {
     timestamp: Date.now(),
-    data: result,
+    data: result
   };
   return result;
 };
@@ -94,12 +94,12 @@ export const createStormConfig = async <
  */
 export const createConfigExtension = <
   TExtensionName extends
-    keyof StormConfig["extensions"] = keyof StormConfig["extensions"],
+    keyof StormWorkspaceConfig["extensions"] = keyof StormWorkspaceConfig["extensions"],
   TExtensionConfig = any,
-  TExtensionSchema extends ZodTypeAny = ZodTypeAny,
+  TExtensionSchema extends ZodTypeAny = ZodTypeAny
 >(
   extensionName: TExtensionName,
-  schema: TExtensionSchema,
+  schema: TExtensionSchema
 ): TExtensionConfig => {
   const extension_cache_key = { extensionName };
   if (_extension_cache.has(extension_cache_key)) {
@@ -118,22 +118,22 @@ export const createConfigExtension = <
 /**
  * Load the config file values for the current Storm workspace into environment variables
  */
-export const loadStormConfig = async (
+export const loadStormWorkspaceConfig = async (
   workspaceRoot?: string,
-  skipLogs = false,
-): Promise<StormConfig> => {
-  const config = await createStormConfig(
+  skipLogs = false
+): Promise<StormWorkspaceConfig> => {
+  const config = await createStormWorkspaceConfig(
     undefined,
     undefined,
     workspaceRoot,
-    skipLogs,
+    skipLogs
   );
   setConfigEnv(config);
 
   if (!skipLogs && !config.skipConfigLogging) {
     writeTrace(
       `⚙️  Using Storm Workspace configuration: \n${formatLogMessage(config)}`,
-      config,
+      config
     );
   }
 

@@ -4,7 +4,7 @@ import type {
   LightThemeColorConfig,
   MultiThemeColorConfig,
   SingleThemeColorConfig,
-  StormConfig
+  StormWorkspaceConfig
 } from "@storm-software/config";
 import { getLogLevel } from "../logger/get-log-level";
 import { LogLevel } from "../types";
@@ -56,7 +56,7 @@ export const setExtensionEnv = <
  *
  * @returns The config for the current Storm workspace from environment variables
  */
-export const setConfigEnv = (config: StormConfig) => {
+export const setConfigEnv = (config: StormWorkspaceConfig) => {
   const prefix = "STORM_";
 
   if (config.extends) {

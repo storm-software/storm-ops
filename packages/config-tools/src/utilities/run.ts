@@ -1,4 +1,4 @@
-import type { StormConfig } from "@storm-software/config";
+import type { StormWorkspaceConfig } from "@storm-software/config";
 import { exec, execSync } from "node:child_process";
 
 export const LARGE_BUFFER = 1024 * 1000000;
@@ -21,7 +21,7 @@ export type StdioOptions =
  * @returns The result of the command
  */
 export const run = (
-  config: Partial<StormConfig>,
+  config: Partial<StormWorkspaceConfig>,
   command: string,
   cwd: string = config.workspaceRoot ?? process.cwd(),
   stdio: StdioOptions = "inherit",
@@ -55,7 +55,7 @@ export const run = (
  * @returns A promise with the result of the command
  */
 export const runAsync = (
-  config: Partial<StormConfig>,
+  config: Partial<StormWorkspaceConfig>,
   command: string,
   cwd: string = config.workspaceRoot ?? process.cwd(),
   env: NodeJS.ProcessEnv = process.env

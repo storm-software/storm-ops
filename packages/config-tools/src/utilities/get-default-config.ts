@@ -4,7 +4,7 @@ import {
   ColorConfig,
   STORM_DEFAULT_HOMEPAGE,
   STORM_DEFAULT_LICENSE,
-  type StormConfig,
+  type StormWorkspaceConfig
 } from "@storm-software/config";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
@@ -27,7 +27,7 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
     warning: "#e3b341",
     danger: "#D8314A",
     positive: "#22c55e",
-    negative: "#dc2626",
+    negative: "#dc2626"
   },
   dark: {
     background: "#1d1e22",
@@ -40,8 +40,8 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
     warning: "#f3d371",
     danger: "#D8314A",
     positive: "#22c55e",
-    negative: "#dc2626",
-  },
+    negative: "#dc2626"
+  }
 };
 
 /**
@@ -50,10 +50,10 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
  * @returns The default Storm config values
  */
 export const getDefaultConfig = async (
-  root?: string,
+  root?: string
 ): Promise<
   Pick<
-    StormConfig,
+    StormWorkspaceConfig,
     | "workspaceRoot"
     | "name"
     | "namespace"
@@ -75,7 +75,7 @@ export const getDefaultConfig = async (
   if (existsSync(join(workspaceRoot, "package.json"))) {
     const file = await readFile(
       joinPaths(workspaceRoot, "package.json"),
-      "utf8",
+      "utf8"
     );
     if (file) {
       const packageJson = JSON.parse(file);
@@ -110,6 +110,6 @@ export const getDefaultConfig = async (
     license,
     homepage,
     docs: `${homepage || STORM_DEFAULT_HOMEPAGE}/docs`,
-    licensing: `${homepage || STORM_DEFAULT_HOMEPAGE}/license`,
+    licensing: `${homepage || STORM_DEFAULT_HOMEPAGE}/license`
   };
 };

@@ -1,5 +1,5 @@
-import { StormConfig } from "@storm-software/config/types";
-import { loadStormConfig } from "./create-storm-config";
+import { StormWorkspaceConfig } from "@storm-software/config/types";
+import { loadStormWorkspaceConfig } from "./create-storm-config";
 
 /**
  * Get the config for the current Storm workspace
@@ -11,8 +11,8 @@ import { loadStormConfig } from "./create-storm-config";
 export const getConfig = (
   workspaceRoot?: string,
   skipLogs = false
-): Promise<StormConfig> => {
-  return loadStormConfig(workspaceRoot, skipLogs);
+): Promise<StormWorkspaceConfig> => {
+  return loadStormWorkspaceConfig(workspaceRoot, skipLogs);
 };
 
 /**
@@ -21,6 +21,8 @@ export const getConfig = (
  * @param skipLogs - Skip writing logs to the console
  * @returns The config for the current Storm workspace
  */
-export const getWorkspaceConfig = (skipLogs = false): Promise<StormConfig> => {
+export const getWorkspaceConfig = (
+  skipLogs = false
+): Promise<StormWorkspaceConfig> => {
   return getConfig(undefined, skipLogs);
 };

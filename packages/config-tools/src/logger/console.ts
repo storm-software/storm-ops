@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { ColorConfig, StormConfig } from "@storm-software/config";
+import type { ColorConfig, StormWorkspaceConfig } from "@storm-software/config";
 import { LogLevel, LogLevelLabel } from "../types";
 import { DEFAULT_COLOR_CONFIG } from "../utilities/get-default-config";
 import { getChalk } from "./chalk";
@@ -16,7 +16,7 @@ import { getLogLevel } from "./get-log-level";
  */
 export const getLogFn = (
   logLevel: number | LogLevel = LogLevel.INFO,
-  config: Partial<StormConfig> = {},
+  config: Partial<StormWorkspaceConfig> = {},
   _chalk: ReturnType<typeof getChalk> = getChalk()
 ): ((message?: any) => void) => {
   const colors =
@@ -137,8 +137,10 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.brand ?? "#1fb2a6")(`[${CO
  * @param message - The message to write
  * @param config - The Storm configuration
  */
-export const writeFatal = (message?: any, config?: Partial<StormConfig>) =>
-  getLogFn(LogLevel.FATAL, config)(message);
+export const writeFatal = (
+  message?: any,
+  config?: Partial<StormWorkspaceConfig>
+) => getLogFn(LogLevel.FATAL, config)(message);
 
 /**
  * Write a message to the console at the `error` log level
@@ -146,8 +148,10 @@ export const writeFatal = (message?: any, config?: Partial<StormConfig>) =>
  * @param message - The message to write
  * @param config - The Storm configuration
  */
-export const writeError = (message?: any, config?: Partial<StormConfig>) =>
-  getLogFn(LogLevel.ERROR, config)(message);
+export const writeError = (
+  message?: any,
+  config?: Partial<StormWorkspaceConfig>
+) => getLogFn(LogLevel.ERROR, config)(message);
 
 /**
  * Write a message to the console at the `warning` log level
@@ -155,8 +159,10 @@ export const writeError = (message?: any, config?: Partial<StormConfig>) =>
  * @param message - The message to write
  * @param config - The Storm configuration
  */
-export const writeWarning = (message?: any, config?: Partial<StormConfig>) =>
-  getLogFn(LogLevel.WARN, config)(message);
+export const writeWarning = (
+  message?: any,
+  config?: Partial<StormWorkspaceConfig>
+) => getLogFn(LogLevel.WARN, config)(message);
 
 /**
  * Write a message to the console at the `info` log level
@@ -164,8 +170,10 @@ export const writeWarning = (message?: any, config?: Partial<StormConfig>) =>
  * @param message - The message to write
  * @param config - The Storm configuration
  */
-export const writeInfo = (message?: any, config?: Partial<StormConfig>) =>
-  getLogFn(LogLevel.INFO, config)(message);
+export const writeInfo = (
+  message?: any,
+  config?: Partial<StormWorkspaceConfig>
+) => getLogFn(LogLevel.INFO, config)(message);
 
 /**
  * Write a message to the console at the `success` log level
@@ -173,8 +181,10 @@ export const writeInfo = (message?: any, config?: Partial<StormConfig>) =>
  * @param message - The message to write
  * @param config - The Storm configuration
  */
-export const writeSuccess = (message?: any, config?: Partial<StormConfig>) =>
-  getLogFn(LogLevel.SUCCESS, config)(message);
+export const writeSuccess = (
+  message?: any,
+  config?: Partial<StormWorkspaceConfig>
+) => getLogFn(LogLevel.SUCCESS, config)(message);
 
 /**
  * Write a message to the console at the `debug` log level
@@ -182,8 +192,10 @@ export const writeSuccess = (message?: any, config?: Partial<StormConfig>) =>
  * @param message - The message to write
  * @param config - The Storm configuration
  */
-export const writeDebug = (message?: any, config?: Partial<StormConfig>) =>
-  getLogFn(LogLevel.DEBUG, config)(message);
+export const writeDebug = (
+  message?: any,
+  config?: Partial<StormWorkspaceConfig>
+) => getLogFn(LogLevel.DEBUG, config)(message);
 
 /**
  * Write a message to the console at the `trace` log level
@@ -191,8 +203,10 @@ export const writeDebug = (message?: any, config?: Partial<StormConfig>) =>
  * @param message - The message to write
  * @param config - The Storm configuration
  */
-export const writeTrace = (message?: any, config?: Partial<StormConfig>) =>
-  getLogFn(LogLevel.TRACE, config)(message);
+export const writeTrace = (
+  message?: any,
+  config?: Partial<StormWorkspaceConfig>
+) => getLogFn(LogLevel.TRACE, config)(message);
 
 /**
  * Write a message to the console at the `all` log level
@@ -200,8 +214,10 @@ export const writeTrace = (message?: any, config?: Partial<StormConfig>) =>
  * @param message - The message to write
  * @param config - The Storm configuration
  */
-export const writeSystem = (message?: any, config?: Partial<StormConfig>) =>
-  getLogFn(LogLevel.ALL, config)(message);
+export const writeSystem = (
+  message?: any,
+  config?: Partial<StormWorkspaceConfig>
+) => getLogFn(LogLevel.ALL, config)(message);
 
 /**
  * Get a stopwatch function

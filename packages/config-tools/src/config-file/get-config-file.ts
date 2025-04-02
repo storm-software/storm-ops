@@ -1,4 +1,4 @@
-import type { StormConfigInput } from "@storm-software/config";
+import type { StormWorkspaceConfigInput } from "@storm-software/config";
 import { loadConfig, ResolvedConfig, type LoadConfigOptions } from "c12";
 import defu from "defu";
 import { writeTrace } from "../logger/console";
@@ -18,12 +18,12 @@ import { findWorkspaceRoot } from "../utilities/find-workspace-root";
 export const getConfigFileByName = async (
   fileName: string,
   filePath?: string,
-  options: LoadConfigOptions<Partial<StormConfigInput>> = {},
-): Promise<ResolvedConfig<Partial<StormConfigInput>>> => {
+  options: LoadConfigOptions<Partial<StormWorkspaceConfigInput>> = {}
+): Promise<ResolvedConfig<Partial<StormWorkspaceConfigInput>>> => {
   const workspacePath = filePath || findWorkspaceRoot(filePath);
 
   const configs = await Promise.all([
-    loadConfig<Partial<StormConfigInput>>({
+    loadConfig<Partial<StormWorkspaceConfigInput>>({
       cwd: workspacePath,
       packageJson: true,
       name: fileName,
@@ -35,12 +35,12 @@ export const getConfigFileByName = async (
             ? false
             : joinPaths(
                 process.env.STORM_CACHE_DIR || "node_modules/.cache/storm",
-                "jiti",
-              ),
+                "jiti"
+              )
       },
-      ...options,
+      ...options
     }),
-    loadConfig<Partial<StormConfigInput>>({
+    loadConfig<Partial<StormWorkspaceConfigInput>>({
       cwd: workspacePath,
       packageJson: true,
       name: fileName,
@@ -52,12 +52,12 @@ export const getConfigFileByName = async (
             ? false
             : joinPaths(
                 process.env.STORM_CACHE_DIR || "node_modules/.cache/storm",
-                "jiti",
-              ),
+                "jiti"
+              )
       },
       configFile: fileName,
-      ...options,
-    }),
+      ...options
+    })
   ]);
 
   return defu(configs[0] ?? {}, configs[1] ?? {});
@@ -70,8 +70,8 @@ export const getConfigFileByName = async (
  */
 export const getConfigFile = async (
   filePath?: string,
-  additionalFileNames: string[] = [],
-): Promise<Partial<StormConfigInput> | undefined> => {
+  additionalFileNames: string[] = []
+): Promise<Partial<StormWorkspaceConfigInput> | undefined> => {
   const workspacePath = filePath ? filePath : findWorkspaceRoot(filePath);
 
   const result = await getConfigFileByName("storm-workspace", workspacePath);
@@ -91,16 +91,16 @@ export const getConfigFile = async (
           : configFile
       }" at "${workspacePath}"`,
       {
-        logLevel: "all",
-      },
+        logLevel: "all"
+      }
     );
   }
 
   if (additionalFileNames && additionalFileNames.length > 0) {
     const results = await Promise.all(
-      additionalFileNames.map((fileName) =>
-        getConfigFileByName(fileName, workspacePath),
-      ),
+      additionalFileNames.map(fileName =>
+        getConfigFileByName(fileName, workspacePath)
+      )
     );
     for (const result of results) {
       if (
@@ -116,8 +116,8 @@ export const getConfigFile = async (
                 : result.configFile
             }" at "${workspacePath}"`,
             {
-              logLevel: "all",
-            },
+              logLevel: "all"
+            }
           );
         }
 

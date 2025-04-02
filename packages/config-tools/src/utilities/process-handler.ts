@@ -1,38 +1,38 @@
-import type { StormConfig } from "@storm-software/config";
+import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   writeError,
   writeFatal,
   writeSuccess,
-  writeTrace,
+  writeTrace
 } from "../logger/console";
 
-export const exitWithError = (config?: Partial<StormConfig>) => {
+export const exitWithError = (config?: Partial<StormWorkspaceConfig>) => {
   writeFatal("Exiting script with an error status...", config);
   process.exit(1);
 };
 
-export const exitWithSuccess = (config?: Partial<StormConfig>) => {
+export const exitWithSuccess = (config?: Partial<StormWorkspaceConfig>) => {
   writeSuccess("Script completed successfully. Exiting...", config);
   process.exit(0);
 };
 
-export const handleProcess = (config?: Partial<StormConfig>) => {
+export const handleProcess = (config?: Partial<StormWorkspaceConfig>) => {
   writeTrace(
     `Using the following arguments to process the script: ${process.argv.join(", ")}`,
-    config,
+    config
   );
 
-  process.on("unhandledRejection", (error) => {
+  process.on("unhandledRejection", error => {
     writeError(
       `An Unhandled Rejection occurred while running the program: ${error}`,
-      config,
+      config
     );
     exitWithError(config);
   });
-  process.on("uncaughtException", (error) => {
+  process.on("uncaughtException", error => {
     writeError(
       `An Uncaught Exception occurred while running the program: ${error.message} \nStacktrace: ${error.stack}`,
-      config,
+      config
     );
     exitWithError(config);
   });

@@ -4,7 +4,7 @@ import {
   type LightThemeColorConfigInput,
   type MultiThemeColorConfigInput,
   type SingleThemeColorConfigInput,
-  type StormConfig,
+  type StormWorkspaceConfig,
   COLOR_KEYS,
   STORM_DEFAULT_DOCS,
   STORM_DEFAULT_HOMEPAGE,
@@ -51,10 +51,10 @@ export const getExtensionEnv = <
  *
  * @returns The config for the current Storm workspace from environment variables
  */
-export const getConfigEnv = (): DeepPartial<StormConfig> => {
+export const getConfigEnv = (): DeepPartial<StormWorkspaceConfig> => {
   const prefix = "STORM_";
 
-  let config: DeepPartial<StormConfig> = {
+  let config: DeepPartial<StormWorkspaceConfig> = {
     extends: process.env[`${prefix}EXTENDS`] || undefined,
     name: process.env[`${prefix}NAME`] || undefined,
     namespace: process.env[`${prefix}NAMESPACE`] || undefined,
@@ -80,7 +80,7 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
     packageManager:
       (process.env[
         `${prefix}PACKAGE_MANAGER`
-      ] as StormConfig["packageManager"]) || undefined,
+      ] as StormWorkspaceConfig["packageManager"]) || undefined,
     license: process.env[`${prefix}LICENSE`] || undefined,
     homepage: process.env[`${prefix}HOMEPAGE`] || undefined,
     docs: process.env[`${prefix}DOCS`] || undefined,
@@ -121,7 +121,7 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
     mode:
       ((process.env[`${prefix}MODE`] ??
         process.env.NODE_ENV ??
-        process.env.ENVIRONMENT) as StormConfig["mode"]) || undefined,
+        process.env.ENVIRONMENT) as StormWorkspaceConfig["mode"]) || undefined,
     // ci:
     //   process.env[`${prefix}CI`] !== undefined
     //     ? Boolean(
@@ -216,7 +216,7 @@ export const getConfigEnv = (): DeepPartial<StormConfig> => {
   /*const extensionPrefix = `${prefix}EXTENSION_`;
   return Object.keys(process.env)
     .filter((key) => key.startsWith(extensionPrefix))
-    .reduce((ret: StormConfig, key: string) => {
+    .reduce((ret: StormWorkspaceConfig, key: string) => {
       const extensionName = key
         .substring(prefix.length, key.indexOf("_", prefix.length))
         .split("_")
