@@ -1,5 +1,5 @@
 import type { ExecutorContext } from "@nx/devkit";
-import { StormConfig } from "@storm-software/config";
+import { StormWorkspaceConfig } from "@storm-software/config";
 import { ProjectTokenizerOptions, run } from "@storm-software/config-tools";
 import { withRunExecutor } from "@storm-software/workspace-tools/base/base-executor";
 import type { BaseExecutorSchema } from "@storm-software/workspace-tools/base/base-executor.schema.d";
@@ -16,27 +16,27 @@ export type NormalizedTerraformExecutorOptions = ProjectTokenizerOptions &
 export const withTerraformExecutor =
   <TExecutorSchema extends TerraformExecutorSchema = TerraformExecutorSchema>(
     command: string,
-    executorOptions: BaseExecutorOptions<TExecutorSchema> = {},
+    executorOptions: BaseExecutorOptions<TExecutorSchema> = {}
   ) =>
   async (
     _options: TExecutorSchema,
-    context: ExecutorContext,
+    context: ExecutorContext
   ): Promise<{ success: boolean }> => {
     return withRunExecutor<TExecutorSchema>(
       `Terraform \`${command}\` Command Executor`,
       async (
         options: NormalizedTerraformExecutorOptions,
         context: ExecutorContext,
-        config: StormConfig,
+        config: StormWorkspaceConfig
       ) => {
         if (!which("tofu") || !which("terraform")) {
           throw new Error(
-            "Both OpenTofu and Terraform are not installed. Please install one of the two before running this executor.",
+            "Both OpenTofu and Terraform are not installed. Please install one of the two before running this executor."
           );
         }
         if (!which("terragrunt")) {
           throw new Error(
-            "Terragrunt is not installed. Please install them before running this executor.",
+            "Terragrunt is not installed. Please install them before running this executor."
           );
         }
 
@@ -50,7 +50,7 @@ export const withTerraformExecutor =
           lock,
           varFile,
           varString,
-          reconfigure,
+          reconfigure
         } = options;
 
         let jsonBackendConfig = backendConfig;
@@ -64,7 +64,7 @@ export const withTerraformExecutor =
             "terragrunt",
             command,
             ...jsonBackendConfig.map(
-              (config) => `-backend-config="${config.key}=${config.name}"`,
+              config => `-backend-config="${config.key}=${config.name}"`
             ),
             command === "plan" && planFile && `-out ${planFile}`,
             command === "plan" && varFile && `--var-file ${varFile}`,
@@ -80,7 +80,7 @@ export const withTerraformExecutor =
             command === "init" && reconfigure && "-reconfigure",
             command === "providers" && lock && "lock",
             command === "test" && varFile && `--var-file ${varFile}`,
-            command === "test" && varString && `--var ${varString}`,
+            command === "test" && varString && `--var ${varString}`
           ]
             .filter(Boolean)
             .join(" "),
@@ -89,13 +89,13 @@ export const withTerraformExecutor =
           process.env.CI
             ? {
                 TF_IN_AUTOMATION: "true",
-                TF_INPUT: "0",
+                TF_INPUT: "0"
               }
-            : {},
+            : {}
         );
 
         return null;
       },
-      executorOptions,
+      executorOptions
     )(_options, context);
   };
