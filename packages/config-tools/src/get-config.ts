@@ -1,5 +1,6 @@
 import { StormWorkspaceConfig } from "@storm-software/config/types";
 import { loadStormWorkspaceConfig } from "./create-storm-config";
+import { findWorkspaceRoot } from "./utilities/find-workspace-root";
 
 /**
  * Get the config for the current Storm workspace
@@ -15,14 +16,33 @@ export const getConfig = (
   return loadStormWorkspaceConfig(workspaceRoot, skipLogs);
 };
 
+export type GetWorkspaceConfigOptions = {
+  /**
+   * The root directory of the workspace
+   */
+  workspaceRoot?: string;
+
+  /**
+   * A directory inside the monorepo to start searching from
+   */
+  cwd?: string;
+};
+
 /**
  * Get the config for the current Storm workspace
  *
  * @param skipLogs - Skip writing logs to the console
+ * @param options - Options for getting the workspace config
  * @returns The config for the current Storm workspace
  */
 export const getWorkspaceConfig = (
-  skipLogs = false
+  skipLogs = false,
+  options: GetWorkspaceConfigOptions = {}
 ): Promise<StormWorkspaceConfig> => {
-  return getConfig(undefined, skipLogs);
+  let workspaceRoot = options.workspaceRoot;
+  if (!workspaceRoot) {
+    workspaceRoot = findWorkspaceRoot(options.cwd);
+  }
+
+  return getConfig(workspaceRoot, skipLogs);
 };
