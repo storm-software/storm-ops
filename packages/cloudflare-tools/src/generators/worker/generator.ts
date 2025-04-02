@@ -10,12 +10,12 @@ import {
   runTasksInSerial,
   Tree,
   updateJson,
-  updateProjectConfiguration,
+  updateProjectConfiguration
 } from "@nx/devkit";
 import { determineProjectNameAndRootOptions } from "@nx/devkit/src/generators/project-name-and-root-utils";
 import { applicationGenerator as nodeApplicationGenerator } from "@nx/node";
 import { nxVersion } from "@nx/node/src/utils/versions";
-import { StormConfig } from "@storm-software/config";
+import { StormWorkspaceConfig } from "@storm-software/config";
 import {
   getConfig,
   getStopwatch,
@@ -23,7 +23,7 @@ import {
   writeError,
   writeFatal,
   writeInfo,
-  writeTrace,
+  writeTrace
 } from "@storm-software/config-tools";
 import { findWorkspaceRoot } from "@storm-software/config-tools/utilities/find-workspace-root";
 import { join } from "path";
@@ -35,11 +35,11 @@ import type { NormalizedSchema, WorkerGeneratorSchema } from "./schema";
 
 export async function applicationGenerator(
   tree: Tree,
-  schema: WorkerGeneratorSchema,
+  schema: WorkerGeneratorSchema
 ) {
   const stopwatch = getStopwatch("Storm Worker generator");
 
-  let config: StormConfig | undefined;
+  let config: StormWorkspaceConfig | undefined;
   try {
     writeInfo(`⚡ Running the Storm Worker generator...\n\n`, config);
 
@@ -48,15 +48,15 @@ export async function applicationGenerator(
     writeDebug(
       `Loading the Storm Config from environment variables and storm.json file...
 - workspaceRoot: ${workspaceRoot}`,
-      config,
+      config
     );
 
     config = await getConfig(workspaceRoot);
     writeTrace(
       `Loaded Storm config into env: \n${Object.keys(process.env)
-        .map((key) => ` - ${key}=${JSON.stringify(process.env[key])}`)
+        .map(key => ` - ${key}=${JSON.stringify(process.env[key])}`)
         .join("\n")}`,
-      config,
+      config
     );
 
     const options = await normalizeOptions(tree, schema, config);
@@ -66,8 +66,8 @@ export async function applicationGenerator(
     tasks.push(
       await initGenerator(tree, {
         ...options,
-        skipFormat: true,
-      }),
+        skipFormat: true
+      })
     );
 
     tasks.push(
@@ -78,21 +78,21 @@ export async function applicationGenerator(
         unitTestRunner:
           options.unitTestRunner == "vitest" ? "none" : options.unitTestRunner,
         e2eTestRunner: "none",
-        name: schema.name,
-      }),
+        name: schema.name
+      })
     );
 
     if (options.unitTestRunner === "vitest") {
       const { vitestGenerator, createOrEditViteConfig } = ensurePackage(
         "@nx/vite",
-        nxVersion,
+        nxVersion
       );
       const vitestTask = await vitestGenerator(tree, {
         project: options.name,
         uiFramework: "none",
         coverageProvider: "v8",
         skipFormat: true,
-        testEnvironment: "node",
+        testEnvironment: "node"
       });
       tasks.push(vitestTask);
       createOrEditViteConfig(
@@ -101,9 +101,9 @@ export async function applicationGenerator(
           project: options.name,
           includeLib: false,
           includeVitest: true,
-          testEnvironment: "node",
+          testEnvironment: "node"
         },
-        true,
+        true
       );
     }
 
@@ -123,15 +123,15 @@ export async function applicationGenerator(
       tasks.push(() => {
         const packageJsonPath = joinPathFragments(
           options.directory ?? "",
-          "package.json",
+          "package.json"
         );
         if (tree.exists(packageJsonPath)) {
-          updateJson(tree, packageJsonPath, (json) => ({
+          updateJson(tree, packageJsonPath, json => ({
             ...json,
             dependencies: {
               hono: "4.4.0",
-              ...json?.dependencies,
-            },
+              ...json?.dependencies
+            }
           }));
         }
       });
@@ -142,11 +142,11 @@ export async function applicationGenerator(
     return () => {
       writeFatal(
         "A fatal error occurred while running the generator - the process was forced to terminate",
-        config,
+        config
       );
       writeError(
         `An exception was thrown in the generator's process \n - Details: ${error.message}\n - Stacktrace: ${error.stack}`,
-        config,
+        config
       );
     };
   } finally {
@@ -156,37 +156,33 @@ export async function applicationGenerator(
 
 // Modify the default tsconfig.app.json generate by the node application generator to support workers.
 function updateTsAppConfig(tree: Tree, options: NormalizedSchema) {
-  updateJson(
-    tree,
-    join(options.appProjectRoot, "tsconfig.app.json"),
-    (json) => {
-      json.compilerOptions = {
-        ...json.compilerOptions,
-        esModuleInterop: true,
-        target: "es2021",
-        lib: ["es2021"],
-        module: "es2022",
-        moduleResolution: "node",
-        resolveJsonModule: true,
+  updateJson(tree, join(options.appProjectRoot, "tsconfig.app.json"), json => {
+    json.compilerOptions = {
+      ...json.compilerOptions,
+      esModuleInterop: true,
+      target: "es2021",
+      lib: ["es2021"],
+      module: "es2022",
+      moduleResolution: "node",
+      resolveJsonModule: true,
 
-        allowJs: true,
-        checkJs: false,
-        noEmit: true,
+      allowJs: true,
+      checkJs: false,
+      noEmit: true,
 
-        isolatedModules: true,
-        allowSyntheticDefaultImports: true,
-        forceConsistentCasingInFileNames: true,
+      isolatedModules: true,
+      allowSyntheticDefaultImports: true,
+      forceConsistentCasingInFileNames: true,
 
-        strict: true,
-        skipLibCheck: true,
-      };
-      json.compilerOptions.types = [
-        ...json.compilerOptions.types,
-        "@cloudflare/workers-types",
-      ];
-      return json;
-    },
-  );
+      strict: true,
+      skipLibCheck: true
+    };
+    json.compilerOptions.types = [
+      ...json.compilerOptions.types,
+      "@cloudflare/workers-types"
+    ];
+    return json;
+  });
 }
 
 // Adds the needed files from the common folder and the selected template folder
@@ -204,8 +200,8 @@ function addCloudflareFiles(tree: Tree, options: NormalizedSchema) {
       tmpl: "",
       name: options.name,
       accountId: options.accountId ? getAccountId(options.accountId) : "",
-      vitestScript: options.unitTestRunner === "vitest" ? vitestScript : "",
-    },
+      vitestScript: options.unitTestRunner === "vitest" ? vitestScript : ""
+    }
   );
 
   // Generate template files with workers code
@@ -220,8 +216,8 @@ function addCloudflareFiles(tree: Tree, options: NormalizedSchema) {
         name: options.name,
         accountId: options.accountId ? getAccountId(options.accountId) : "",
         vitestScript: options.unitTestRunner === "vitest" ? vitestScript : "",
-        vitestImports: options.unitTestRunner === "vitest" ? vitestImports : "",
-      },
+        vitestImports: options.unitTestRunner === "vitest" ? vitestImports : ""
+      }
     );
   }
 }
@@ -236,12 +232,12 @@ function addTargets(tree: Tree, options: NormalizedSchema) {
       serve: {
         executor: "@storm-software/cloudflare-tools:serve",
         options: {
-          port: options.port,
-        },
+          port: options.port
+        }
       },
       "nx-release-publish": {
-        executor: "@storm-software/cloudflare-tools:cloudflare-publish",
-      },
+        executor: "@storm-software/cloudflare-tools:cloudflare-publish"
+      }
     };
 
     if (projectConfiguration.targets.build) {
@@ -262,14 +258,14 @@ function removeTestFiles(tree: Tree, options: NormalizedSchema) {
 async function normalizeOptions(
   host: Tree,
   options: WorkerGeneratorSchema,
-  config?: StormConfig,
+  config?: StormWorkspaceConfig
 ): Promise<NormalizedSchema> {
   const { projectName: appProjectName, projectRoot: appProjectRoot } =
     await determineProjectNameAndRootOptions(host, {
       name: options.name,
       projectType: "application",
       directory: options.directory,
-      rootProject: options.rootProject,
+      rootProject: options.rootProject
     });
   options.rootProject = appProjectRoot === ".";
 
@@ -285,7 +281,7 @@ async function normalizeOptions(
     unitTestRunner: options.unitTestRunner ?? "vitest",
     rootProject: options.rootProject ?? false,
     template: options.template ?? "fetch-handler",
-    port: options.port ?? 3000,
+    port: options.port ?? 3000
   };
 }
 
