@@ -109,9 +109,10 @@ export const addPackageDependencies = async (
     packageJson.dependencies = localPackages.reduce((ret, localPackage) => {
       if (
         !ret[localPackage.name] &&
-        !implicitDependencies?.includes(localPackage.name)
+        !implicitDependencies?.includes(localPackage.name) &&
+        packageJson.devDependencies?.[localPackage.name] === undefined
       ) {
-        ret[localPackage.name] = `>=${localPackage.version || "0.0.1"}`;
+        ret[localPackage.name] = `^${localPackage.version || "0.0.1"}`;
       }
 
       return ret;
@@ -120,7 +121,8 @@ export const addPackageDependencies = async (
     packageJson.devDependencies = localPackages.reduce((ret, localPackage) => {
       if (
         !ret[localPackage.name] &&
-        implicitDependencies?.includes(localPackage.name)
+        implicitDependencies?.includes(localPackage.name) &&
+        packageJson.dependencies?.[localPackage.name] === undefined
       ) {
         ret[localPackage.name] = localPackage.version || "0.0.1";
       }
