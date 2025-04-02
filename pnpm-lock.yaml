@@ -161,7 +161,7 @@ overrides:
   '@storm-software/terraform-modules': workspace:*
   '@storm-software/cspell': workspace:*
   '@storm-software/tools-scripts': workspace:*
-  axios: 1.7.2
+  axios: 1.8.2
   create-storm-workspace: workspace:*
   got: 14.3.0
   load-plugin: 6.0.3
@@ -1000,8 +1000,8 @@ importers:
         specifier: 0.1.1
         version: 0.1.1
       axios:
-        specifier: 1.7.2
-        version: 1.7.2
+        specifier: 1.8.2
+        version: 1.8.2
       chalk:
         specifier: 'catalog:'
         version: 4.1.2
@@ -1678,6 +1678,7 @@ packages:
   '@aws-cdk/aws-cognito-identitypool-alpha@2.163.1-alpha.0':
     resolution: {integrity: sha512-QcgYM8F7lm+bQG6no0X7KfMTPAo/YajSocu3HxO5+Vmz3cETuJVvZWjZVwkAYU71HQh507nAmbONhYnqQO+7FA==}
     engines: {node: '>= 14.15.0'}
+    deprecated: This package has been stabilized and moved to aws-cdk-lib
     peerDependencies:
       aws-cdk-lib: ^2.163.1
       constructs: ^10.0.0
@@ -3665,6 +3666,7 @@ packages:
 
   '@eslint-types/typescript-eslint@7.5.0':
     resolution: {integrity: sha512-zKvsPBDq6o0L4p2sRtq8fxOtGc+mm37aZSXLsiD4DIRl2kYUxKNO9CKDTAgmuMYUzih9J7lbLxAomreLrdAiVQ==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   '@eslint/compat@1.2.7':
     resolution: {integrity: sha512-xvv7hJE32yhegJ8xNAnb62ggiAwTYHBpUCWhRxEj/ksvgDJuSXfoDkBcRYaYNFiJ+jH0IE3K16hd+xXzhBgNbg==}
@@ -4220,6 +4222,7 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
+    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -6526,8 +6529,8 @@ packages:
     resolution: {integrity: sha512-RE3mdQ7P3FRSe7eqCWoeQ/Z9QXrtniSjp1wUjt5nRC3WIpz5rSCve6o3fsZ2aCpJtrZjSZgjwXAoTO5k4tEI0w==}
     engines: {node: '>=4'}
 
-  axios@1.7.2:
-    resolution: {integrity: sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==}
+  axios@1.8.2:
+    resolution: {integrity: sha512-ls4GYBm5aig9vWx8AWDSGLpnpDQRtWAfrjU+EuytuODrFBkqesN2RkOQCBzrA1RQNHw1SmRMSDDDSwzNAYQ6Rg==}
 
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
@@ -20337,7 +20340,7 @@ snapshots:
     dependencies:
       '@aws-sdk/util-utf8-browser': 3.259.0
       '@httptoolkit/websocket-stream': 6.0.1
-      axios: 1.7.2
+      axios: 1.8.2
       buffer: 6.0.3
       crypto-js: 4.2.0
       mqtt: 4.3.8
@@ -20354,7 +20357,7 @@ snapshots:
 
   axe-core@4.10.2: {}
 
-  axios@1.7.2:
+  axios@1.8.2:
     dependencies:
       follow-redirects: 1.15.9
       form-data: 4.0.2
@@ -21110,7 +21113,7 @@ snapshots:
 
   create-nx-workspace@20.6.0:
     dependencies:
-      axios: 1.7.2
+      axios: 1.8.2
       chalk: 4.1.2
       enquirer: 2.3.6
       flat: 5.0.2
@@ -26391,7 +26394,7 @@ snapshots:
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.46
       '@zkochan/js-yaml': 0.0.6
-      axios: 1.7.2
+      axios: 1.8.2
       chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
@@ -26443,7 +26446,7 @@ snapshots:
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.2
       '@zkochan/js-yaml': 0.0.7
-      axios: 1.7.2
+      axios: 1.8.2
       chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
