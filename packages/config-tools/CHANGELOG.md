@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.161.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.161.0) (2025-04-02)
+
+### Features
+
+- **config-tools:** Added the `options` parameter to `getWorkspaceConfig`
+  ([5d250d574](https://github.com/storm-software/storm-ops/commit/5d250d574))
+
 ## [1.160.7](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.160.7) (2025-04-02)
 
 ### Miscellaneous
