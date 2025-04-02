@@ -5,13 +5,13 @@ import {
   GeneratorCallback,
   readJsonFile,
   runTasksInSerial,
-  type Tree,
+  type Tree
 } from "@nx/devkit";
-import { StormConfig } from "@storm-software/config";
+import { StormWorkspaceConfig } from "@storm-software/config";
 import { run } from "@storm-software/config-tools";
 import {
   initGenerator as baseInitGenerator,
-  withRunGenerator,
+  withRunGenerator
 } from "@storm-software/workspace-tools";
 import { readFileSync, unlinkSync } from "node:fs";
 import { join } from "node:path";
@@ -21,7 +21,7 @@ import type { InitGeneratorSchema } from "./schema";
 export async function initGeneratorFn(
   tree: Tree,
   options: InitGeneratorSchema,
-  config: StormConfig,
+  config: StormWorkspaceConfig
 ) {
   const task = baseInitGenerator(tree, options);
 
@@ -32,29 +32,29 @@ export async function initGeneratorFn(
     targets: {
       up: {
         executor: "@nx-extend/pulumi:up",
-        options: {},
+        options: {}
       },
       preview: {
         executor: "@nx-extend/pulumi:preview",
-        options: {},
+        options: {}
       },
       refresh: {
         executor: "@nx-extend/pulumi:refresh",
-        options: {},
+        options: {}
       },
       import: {
         executor: "@nx-extend/pulumi:import",
-        options: {},
-      },
+        options: {}
+      }
     },
-    tags: ["infra:pulumi"],
+    tags: ["infra:pulumi"]
   });
 
   await runTasksInSerial(
     generateNewPulumiProject(tree, options, config),
     loginToPulumi(tree, options, config),
     addPulumiDeps(tree, options),
-    cleanupProject(tree, options),
+    cleanupProject(tree, options)
   )();
 
   if (!options.skipFormat) {
@@ -66,13 +66,13 @@ export async function initGeneratorFn(
 
 export default withRunGenerator<InitGeneratorSchema>(
   "Initialize Storm Pulumi workspace",
-  initGeneratorFn,
+  initGeneratorFn
 );
 
 function generateNewPulumiProject(
   tree: Tree,
   options: InitGeneratorSchema,
-  config: StormConfig,
+  config: StormWorkspaceConfig
 ): GeneratorCallback {
   return () => {
     const template = getCloudTemplateName(options.provider);
@@ -87,12 +87,12 @@ function generateNewPulumiProject(
           `--secrets-provider=${options.secretsProvider}`,
         "--generate-only",
         "--yes",
-        "--force",
+        "--force"
       ]
         .filter(Boolean)
         .join(" "),
       join(config.workspaceRoot, options.directory || "./deployment"),
-      "inherit",
+      "inherit"
     );
   };
 }
@@ -100,7 +100,7 @@ function generateNewPulumiProject(
 function loginToPulumi(
   tree: Tree,
   options: InitGeneratorSchema,
-  config: StormConfig,
+  config: StormWorkspaceConfig
 ): GeneratorCallback {
   return () => {
     if (!options.login) {
@@ -120,15 +120,15 @@ function loginToPulumi(
       "inherit",
       {
         ...process.env,
-        PULUMI_EXPERIMENTAL: "true",
-      },
+        PULUMI_EXPERIMENTAL: "true"
+      }
     );
   };
 }
 
 function addPulumiDeps(
   tree: Tree,
-  options: InitGeneratorSchema,
+  options: InitGeneratorSchema
 ): GeneratorCallback {
   return () => {
     const packageJson = readJsonFile(`${options.directory}/package.json`);
@@ -141,27 +141,27 @@ function addPulumiDeps(
 
 function cleanupProject(
   tree: Tree,
-  options: InitGeneratorSchema,
+  options: InitGeneratorSchema
 ): GeneratorCallback {
   return () => {
     const indexTsLocation = join(
       tree.root,
-      `${options.directory || "./deployment"}/index.ts`,
+      `${options.directory || "./deployment"}/index.ts`
     );
     tree.write(
       `${options.directory}/pulumi.ts`,
-      readFileSync(indexTsLocation).toString(),
+      readFileSync(indexTsLocation).toString()
     );
 
     // Remove the unneeded files
     unlinkSync(
-      join(tree.root, `${options.directory || "./deployment"}/.gitignore`),
+      join(tree.root, `${options.directory || "./deployment"}/.gitignore`)
     );
     unlinkSync(
-      join(tree.root, `${options.directory || "./deployment"}/package.json`),
+      join(tree.root, `${options.directory || "./deployment"}/package.json`)
     );
     unlinkSync(
-      join(tree.root, `${options.directory || "./deployment"}/tsconfig.json`),
+      join(tree.root, `${options.directory || "./deployment"}/tsconfig.json`)
     );
   };
 }
