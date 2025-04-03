@@ -41,7 +41,10 @@ import {
   writeWarning
 } from "@storm-software/config-tools/logger/console";
 import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
-import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
+import {
+  correctPaths,
+  joinPaths
+} from "@storm-software/config-tools/utilities/correct-paths";
 import { watch as createWatcher } from "chokidar";
 import defu from "defu";
 import { debounce, flatten } from "es-toolkit";
@@ -298,7 +301,17 @@ async function generatePackageJson(context: ESBuildContext) {
           )[]
         ).map(entryPoint =>
           typeof entryPoint === "string"
-            ? { in: entryPoint, out: entryPoint }
+            ? {
+                in: entryPoint,
+                out: correctPaths(
+                  entryPoint
+                    .replaceAll(
+                      correctPaths(context.options.config.workspaceRoot),
+                      ""
+                    )
+                    .replaceAll(correctPaths(context.options.projectRoot), "")
+                )
+              }
             : entryPoint
         );
       }
@@ -452,7 +465,7 @@ async function executeEsBuild(context: ESBuildContext) {
   delete options.external;
 
   writeTrace(
-    `Run esbuild (${context.options.name}) with the following options: \n${formatLogMessage(options)}`,
+    `Run esbuild (${context.options.name}) with the following options: \n${formatLogMessage({ ...options, define: "<Hidden>" })}`,
     context.options.config
   );
 

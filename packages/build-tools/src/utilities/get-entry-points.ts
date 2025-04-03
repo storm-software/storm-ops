@@ -81,15 +81,10 @@ export const getEntryPoints = async (
           }, [] as string[])
         );
       } else {
-        const result = correctPaths(
-          entryPoint
-            .replaceAll(correctPaths(workspaceRoot), "")
-            .replaceAll(correctPaths(projectRoot), "")
-        );
-        writeDebug(`Trying to add entry point ${result}"`, config);
+        writeDebug(`Trying to add entry point ${entryPoint}"`, config);
 
-        if (!paths.includes(result)) {
-          paths.push(result);
+        if (!paths.includes(entryPoint)) {
+          paths.push(entryPoint);
         }
       }
 
