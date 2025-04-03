@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.31.31](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.31) (2025-04-03)
+
+### Miscellaneous
+
+- **esbuild:** Remove unused field from build options
+  ([6b4b9a488](https://github.com/storm-software/storm-ops/commit/6b4b9a488))
+
 ## [0.31.30](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.30) (2025-04-03)
 
 ### Bug Fixes
