@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.31.30](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.30) (2025-04-03)
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with invalid entry path
+  ([4da877fe0](https://github.com/storm-software/storm-ops/commit/4da877fe0))
+
+### Updated Dependencies
+
+- Updated build-tools to 0.143.26
+
 ## [0.31.29](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.29) (2025-04-02)
 
 ### Miscellaneous

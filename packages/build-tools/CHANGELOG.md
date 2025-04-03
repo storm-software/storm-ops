@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.143.26](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.143.26) (2025-04-03)
+
+### Bug Fixes
+
+- **build-tools:** Resolve issue with invalid entry path
+  ([4da877fe0](https://github.com/storm-software/storm-ops/commit/4da877fe0))
+
 ## [0.143.25](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.143.25) (2025-04-02)
 
 ### Miscellaneous
