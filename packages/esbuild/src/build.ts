@@ -148,7 +148,7 @@ const resolveOptions = async (
       projectRoot,
       projectJson.sourceRoot,
       userOptions.entry ?? "./src/index.ts",
-      userOptions.emitOnAll === true
+      false
     ),
     outdir: userOptions.outputPath || joinPaths("dist", projectRoot),
     distDir: userOptions.distDir || "dist",
@@ -167,7 +167,6 @@ const resolveOptions = async (
     metafile: userOptions.metafile !== false,
     generatePackageJson: userOptions.generatePackageJson !== false,
     clean: userOptions.clean !== false,
-    emitOnAll: userOptions.emitOnAll === true,
     assets: userOptions.assets ?? [],
     injectShims: userOptions.injectShims !== true,
     bundle: userOptions.bundle !== false,
@@ -451,7 +450,6 @@ async function executeEsBuild(context: ESBuildContext) {
   delete options.clean;
   delete options.debug;
   delete options.generatePackageJson;
-  delete options.emitOnAll;
   delete options.distDir;
   delete options.includeSrc;
   delete options.verbose;

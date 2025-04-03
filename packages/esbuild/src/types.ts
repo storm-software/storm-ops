@@ -30,7 +30,7 @@ export type ESBuildOptions = Omit<
   BuildOptions,
   "outbase" | "outfile" | "outExtension" | "banner" | "entryPoints"
 > &
-  Omit<TypeScriptBuildOptions, "format"> & {
+  Omit<TypeScriptBuildOptions, "format" | "emitOnAll"> & {
     emitTypes?: boolean;
     injectShims?: boolean;
     renderers?: Renderer[];
@@ -41,7 +41,13 @@ export type ESBuildResult = BuildResult;
 
 export type ESBuildResolvedOptions = Omit<
   TypeScriptBuildResolvedOptions,
-  "banner" | "footer" | "target" | "format" | "sourcemap" | "outExtension"
+  | "banner"
+  | "footer"
+  | "target"
+  | "format"
+  | "sourcemap"
+  | "outExtension"
+  | "emitOnAll"
 > &
   Pick<
     BuildOptions,
@@ -83,7 +89,6 @@ export type ESBuildCLIOptions = AdditionalCLIOptions &
     | "splitting"
     | "treeShaking"
     | "generatePackageJson"
-    | "emitOnAll"
     | "metafile"
     | "minify"
     | "includeSrc"
