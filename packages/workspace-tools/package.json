@@ -241,7 +241,7 @@
     "defu": "catalog:",
     "fs-extra": "11.2.0",
     "glob": "catalog:",
-    "jiti": "^2.4.2",
+    "jiti": "catalog:",
     "markdownlint-cli2": "^0.17.2",
     "micromatch": "^4.0.7",
     "prettier": "catalog:",
@@ -261,7 +261,7 @@
     "nx": "catalog:",
     "pkg-types": "catalog:",
     "tsup": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "^5.7.2"
   },
   "publishConfig": {
     "access": "public"

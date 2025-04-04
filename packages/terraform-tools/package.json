@@ -126,14 +126,14 @@
   ],
   "peerDependencies": {
     "@nx/devkit": "catalog:",
-    "@storm-software/workspace-tools": "workspace:*",
-    "nx": "catalog:"
+    "@storm-software/config": "1.112.0",
+    "@storm-software/config-tools": "1.162.0",
+    "@storm-software/workspace-tools": "1.264.23",
+    "tsup": "catalog:",
+    "untyped": "1.5.2"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
-      "optional": false
-    },
-    "@storm-software/workspace-tools": {
       "optional": false
     },
     "nx": {
@@ -141,9 +141,7 @@
     }
   },
   "dependencies": {
-    "@storm-software/workspace-tools": "1.245.8",
-    "shelljs": "^0.8.5",
-    "tslib": "catalog:"
+    "shelljs": "^0.8.5"
   },
   "devDependencies": {
     "@nx/devkit": "catalog:",

@@ -7,7 +7,7 @@
     "consola": "3.3.3",
     "esbuild": "catalog:",
     "pkg-types": "catalog:",
-    "read-yaml-file": "^2.1.0",
+    "read-yaml-file": "catalog:",
     "tslib": "catalog:"
   },
   "devDependencies": {

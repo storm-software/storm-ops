@@ -140,11 +140,12 @@
     "sullivanpj"
   ],
   "peerDependencies": {
-    "@nx-tools/container-metadata": "^6.0.2",
-    "@nx-tools/nx-container": "^6.0.2",
     "@nx/devkit": "catalog:",
-    "@nx/workspace": "catalog:",
-    "nx": "catalog:"
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/workspace-tools": "workspace:*",
+    "prettier": "catalog:",
+    "tsup": "catalog:"
   },
   "peerDependenciesMeta": {
     "@nx-tools/container-metadata": {
@@ -175,7 +176,7 @@
     "@types/node": "catalog:",
     "nx": "catalog:",
     "tsup": "catalog:",
-    "typescript": "catalog:",
+    "typescript": "^5.7.2",
     "untyped": "catalog:"
   },
   "publishConfig": {
