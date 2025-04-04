@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.104.6](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.6) (2025-04-04)
+
+### Miscellaneous
+
+- **monorepo:** update devdependency axios to v1.8.2 [security]
+  ([#232](https://github.com/storm-software/storm-ops/pull/232))
+
 ## [2.104.5](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.5) (2025-04-04)
 
 ### Miscellaneous
