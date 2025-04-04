@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.112.1](https://github.com/storm-software/storm-ops/releases/tag/config%401.112.1) (2025-04-04)
+
+### Miscellaneous
+
+- **config:** Regenerate JSON schema file
+  ([491a92827](https://github.com/storm-software/storm-ops/commit/491a92827))
+
 ## [1.112.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.112.0) (2025-04-04)
 
 ### Features
