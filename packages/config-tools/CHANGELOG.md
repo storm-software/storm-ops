@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.162.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.162.0) (2025-04-04)
+
+### Features
+
+- **config:** Added the `error` configuration node
+  ([ba68ca614](https://github.com/storm-software/storm-ops/commit/ba68ca614))
+
 ## [1.161.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.161.0) (2025-04-02)
 
 ### Features
