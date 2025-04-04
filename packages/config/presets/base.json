@@ -12,6 +12,9 @@
   "directories": {
     "build": "dist"
   },
+  "error": {
+    "codesFile": "errors/codes.json"
+  },
   "externalPackagePatterns": ["@storm-software/"],
   "registry": {
     "github": "https://npm.pkg.github.com",

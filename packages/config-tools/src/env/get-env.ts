@@ -68,6 +68,10 @@ export const getConfigEnv = (): DeepPartial<StormWorkspaceConfig> => {
       header: process.env[`${prefix}RELEASE_HEADER`] || undefined,
       footer: process.env[`${prefix}RELEASE_FOOTER`] || undefined
     },
+    error: {
+      codesFile: process.env[`${prefix}ERROR_CODES_FILE`] || undefined,
+      url: process.env[`${prefix}ERROR_URL`] || undefined
+    },
     account: {
       twitter: process.env[`${prefix}ACCOUNT_TWITTER`] || undefined,
       discord: process.env[`${prefix}ACCOUNT_DISCORD`] || undefined,

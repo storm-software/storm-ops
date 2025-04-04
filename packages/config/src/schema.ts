@@ -353,6 +353,24 @@ export const WorkspaceDirectoryConfigSchema = z
     "Various directories used by the workspace to store data, cache, and configuration files"
   );
 
+export const errorConfigSchema = z
+  .object({
+    codesFile: z
+      .string()
+      .trim()
+      .default(STORM_DEFAULT_RELEASE_BANNER)
+      .describe("The path to the workspace's error codes JSON file"),
+    url: z
+      .string()
+      .trim()
+      .url()
+      .optional()
+      .describe(
+        "A URL to a page that looks up the workspace's error messages given a specific error code"
+      )
+  })
+  .describe("The workspace's error config used during the error process");
+
 /**
  * Storm Workspace config values used during various dev-ops processes. It represents the config of the entire monorepo.
  */
@@ -440,6 +458,7 @@ export const stormWorkspaceConfigSchema = z
     bot: WorkspaceBotConfigSchema,
     release: WorkspaceReleaseConfigSchema,
     account: WorkspaceAccountConfigSchema,
+    error: errorConfigSchema,
     mode: z
       .enum(["development", "staging", "production"])
       .default("production")

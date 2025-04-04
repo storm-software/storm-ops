@@ -77,6 +77,10 @@ export const setConfigEnv = (config: StormWorkspaceConfig) => {
     process.env[`${prefix}BOT_NAME`] = config.bot.name;
     process.env[`${prefix}BOT_EMAIL`] = config.bot.email;
   }
+  if (config.error) {
+    process.env[`${prefix}ERROR_CODES_FILE`] = config.error.codesFile;
+    process.env[`${prefix}ERROR_URL`] = config.error.url;
+  }
   if (config.release) {
     process.env[`${prefix}RELEASE_BANNER`] = config.release.banner;
     process.env[`${prefix}RELEASE_HEADER`] = config.release.header;
@@ -237,7 +241,7 @@ export const setConfigEnv = (config: StormWorkspaceConfig) => {
     }
     if (config.registry.container) {
       process.env[`${prefix}REGISTRY_CONTAINER`] = String(
-        config.registry.cyclone
+        config.registry.container
       );
     }
   }

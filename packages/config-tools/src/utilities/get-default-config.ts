@@ -62,7 +62,7 @@ export const getDefaultConfig = async (
     | "homepage"
     | "docs"
     | "licensing"
-  >
+  > & { error: Partial<StormWorkspaceConfig["error"]> }
 > => {
   let license = STORM_DEFAULT_LICENSE;
   let homepage = STORM_DEFAULT_HOMEPAGE;
@@ -110,6 +110,9 @@ export const getDefaultConfig = async (
     license,
     homepage,
     docs: `${homepage || STORM_DEFAULT_HOMEPAGE}/docs`,
-    licensing: `${homepage || STORM_DEFAULT_HOMEPAGE}/license`
+    licensing: `${homepage || STORM_DEFAULT_HOMEPAGE}/license`,
+    error: {
+      url: `${homepage || STORM_DEFAULT_HOMEPAGE}/errors`
+    }
   };
 };
