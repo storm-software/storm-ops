@@ -127,7 +127,7 @@
   ],
   "peerDependencies": {
     "@nx/devkit": "catalog:",
-    "@pulumi/pulumi": "^3.144.1",
+    "@pulumi/pulumi": "^3.160.0",
     "nx": "catalog:"
   },
   "peerDependenciesMeta": {
@@ -143,8 +143,8 @@
   },
   "dependencies": {
     "@nx/devkit": "catalog:",
-    "@pulumi/pulumi": "^3.144.1",
-    "shelljs": "^0.8.5",
+    "@pulumi/pulumi": "^3.160.0",
+    "shelljs": "^0.9.2",
     "tslib": "catalog:"
   },
   "devDependencies": {
