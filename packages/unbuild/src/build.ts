@@ -542,7 +542,7 @@ export async function executeUnbuild(options: UnbuildResolvedOptions) {
 
     writeTrace(
       `Running with unbuild configuration:
-${formatLogMessage(config)}
+${formatLogMessage({ ...config, env: "<Hidden>" })}
 `,
       options.config
     );
