@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.38.10](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.10) (2025-04-07)
+
+### Miscellaneous
+
+- **unbuild:** Added logic to skip `env` configuration logging
+  ([d7b7f9d23](https://github.com/storm-software/storm-ops/commit/d7b7f9d23))
+
 ## [0.38.9](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.9) (2025-04-04)
 
 ### Miscellaneous

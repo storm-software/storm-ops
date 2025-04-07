@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.112.3](https://github.com/storm-software/storm-ops/releases/tag/config%401.112.3) (2025-04-07)
+
+### Miscellaneous
+
+- **unbuild:** Added logic to skip `env` configuration logging
+  ([d7b7f9d23](https://github.com/storm-software/storm-ops/commit/d7b7f9d23))
+
 ## [1.112.2](https://github.com/storm-software/storm-ops/releases/tag/config%401.112.2) (2025-04-04)
 
 ### Miscellaneous
