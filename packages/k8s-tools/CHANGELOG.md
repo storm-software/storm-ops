@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.24.54](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.24.54) (2025-04-07)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([1ac4c6ad4](https://github.com/storm-software/storm-ops/commit/1ac4c6ad4))
+
 ## [0.24.53](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.24.53) (2025-04-04)
 
 ### Miscellaneous
