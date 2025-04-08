@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.31.35](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.35) (2025-04-08)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with entrypoints properties
+  ([dc20914cc](https://github.com/storm-software/storm-ops/commit/dc20914cc))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([082eec9a5](https://github.com/storm-software/storm-ops/commit/082eec9a5))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.162.3
+- Updated build-tools to 0.143.29
+- Updated config to 1.112.6
+
 ## [0.31.34](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.34) (2025-04-08)
 
 ### Bug Fixes
