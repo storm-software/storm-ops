@@ -124,6 +124,7 @@ export default withRunExecutor<UnbuildExecutorSchema>(
       ) => {
         options.debug ??= false;
         options.treeShaking ??= true;
+        options.buildOnly ??= false;
         options.platform ??= "neutral";
         options.entry ??= ["{sourceRoot}"];
         options.tsconfig ??= "{projectRoot}/tsconfig.json";

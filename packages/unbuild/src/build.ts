@@ -628,9 +628,16 @@ export async function build(options: UnbuildOptions) {
     const resolvedOptions = await resolveOptions(options, config);
 
     await cleanOutputPath(resolvedOptions);
-    await generatePackageJson(resolvedOptions);
+
+    if (options.buildOnly !== true) {
+      await generatePackageJson(resolvedOptions);
+    }
+
     await executeUnbuild(resolvedOptions);
-    await copyBuildAssets(resolvedOptions);
+
+    if (options.buildOnly !== true) {
+      await copyBuildAssets(resolvedOptions);
+    }
 
     writeSuccess(
       `  🏁  The ${resolvedOptions.name} build completed successfully`,

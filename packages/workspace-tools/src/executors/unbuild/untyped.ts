@@ -7,15 +7,15 @@ export default defineUntypedSchema({
     id: "UnbuildExecutorSchema",
     title: "Unbuild Executor",
     description: "A type definition for a unbuild executor schema",
-    required: ["name", "entry"],
+    required: ["name", "entry"]
   },
   name: {
     $schema: {
       title: "Name",
       type: "string",
-      description: "The name of the project/build",
+      description: "The name of the project/build"
     },
-    $default: "{projectName}",
+    $default: "{projectName}"
   },
   entry: {
     $schema: {
@@ -23,69 +23,78 @@ export default defineUntypedSchema({
       format: "path",
       type: "array",
       description: "The directory to use as input for the build",
-      items: { type: "string" },
+      items: { type: "string" }
     },
-    $default: ["{sourceRoot}"],
+    $default: ["{sourceRoot}"]
   },
   outputPath: {
     $schema: {
       title: "Output Path",
       type: "string",
       format: "path",
-      description: "The output path for the build",
-    },
+      description: "The output path for the build"
+    }
   },
   treeShaking: {
     $schema: {
       title: "Tree Shaking",
       type: "boolean",
-      description: "Enable tree shaking",
+      description: "Enable tree shaking"
     },
-    $default: true,
+    $default: true
   },
   watch: {
     $schema: {
       title: "Watch",
       type: "boolean",
-      description: "Watch for changes",
+      description: "Watch for changes"
     },
-    $default: false,
+    $default: false
   },
   clean: {
     $schema: {
       title: "Clean",
       type: "boolean",
-      description: "Clean the output directory before building",
+      description: "Clean the output directory before building"
     },
-    $default: true,
+    $default: true
   },
   stub: {
     $schema: {
       title: "Stub",
       type: "boolean",
-      description: "Stub the output",
+      description: "Stub the output"
     },
-    $default: false,
+    $default: false
+  },
+  buildOnly: {
+    $schema: {
+      title: "Build Only",
+      type: "boolean",
+      description:
+        "Should the build process skip generating a package.json and copying assets"
+    },
+    $default: false
   },
   watchOptions: {
     $schema: {
       title: "Watch Options",
       type: "object",
-      description: "Watch options",
+      description: "Watch options"
     },
-    $default: {},
+    $default: {}
   },
   stubOptions: {
     $schema: {
       title: "Stub Options",
       type: "object",
-      description: "Stub options",
+      description: "Stub options"
     },
     $default: {
       jiti: {
-        cache: "node_modules/.cache/storm",
-      },
-    },
+        cache: "node_modules/.cache/storm"
+      }
+    }
   },
   dependencies: {
     $schema: {
@@ -93,9 +102,9 @@ export default defineUntypedSchema({
       type: "array",
       description: "The dependencies to install",
       items: {
-        type: "string",
-      },
-    },
+        type: "string"
+      }
+    }
   },
   peerDependencies: {
     $schema: {
@@ -103,9 +112,9 @@ export default defineUntypedSchema({
       type: "array",
       description: "The peer dependencies to install",
       items: {
-        type: "string",
-      },
-    },
+        type: "string"
+      }
+    }
   },
   devDependencies: {
     $schema: {
@@ -113,31 +122,31 @@ export default defineUntypedSchema({
       type: "array",
       description: "The dev dependencies to install",
       items: {
-        type: "string",
-      },
-    },
+        type: "string"
+      }
+    }
   },
   alias: {
     $schema: {
       title: "Alias",
       type: "object",
       tsType: "Record<string, string>",
-      description: "The alias to use",
-    },
+      description: "The alias to use"
+    }
   },
   replace: {
     $schema: {
       title: "Replace",
       type: "object",
       tsType: "Record<string, string>",
-      description: "The replace to use",
-    },
+      description: "The replace to use"
+    }
   },
   rollup: {
     $schema: {
       title: "Rollup",
       type: "object",
-      description: "The rollup options",
-    },
-  },
+      description: "The rollup options"
+    }
+  }
 });
