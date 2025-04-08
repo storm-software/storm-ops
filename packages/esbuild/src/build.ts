@@ -291,8 +291,8 @@ async function generatePackageJson(context: ESBuildContext) {
       if (entryPoint.out) {
         const entry = entryPoint.out
           .replaceAll("\\", "/")
-          .replaceAll(/^(\.\/)*/, "")
-          .replace(/\.([cm])?[jt]s(x)?$/, "");
+          .replaceAll(/^(\.\/)*/g, "")
+          .replace(/\.([cm])?[jt]s(x)?$/g, "");
 
         packageJson.exports[`./${entry}`] ??=
           `.${context.options.distDir ? `/${context.options.distDir}` : ""}/${entry}.js`;
