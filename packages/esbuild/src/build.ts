@@ -26,7 +26,6 @@ import {
   copyAssets,
   DEFAULT_COMPILED_BANNER,
   DEFAULT_TARGET,
-  getEntryPoints,
   getEnv
 } from "@storm-software/build-tools";
 import { getConfig } from "@storm-software/config-tools/get-config";
@@ -41,10 +40,7 @@ import {
   writeWarning
 } from "@storm-software/config-tools/logger/console";
 import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
-import {
-  correctPaths,
-  joinPaths
-} from "@storm-software/config-tools/utilities/correct-paths";
+import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { watch as createWatcher } from "chokidar";
 import defu from "defu";
 import { debounce, flatten } from "es-toolkit";
@@ -65,6 +61,7 @@ import {
   ESBuildResolvedOptions,
   type ESBuildOptions
 } from "./types";
+import { getEntryPoints } from "./utilities/get-entry-points";
 import { handle, pipe, transduce } from "./utilities/helpers";
 
 /**
@@ -290,31 +287,8 @@ async function generatePackageJson(context: ESBuildContext) {
     packageJson.exports["."] ??=
       `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.js`;
 
-    let entryPoints = [{ in: "./src/index.ts", out: "./src/index.ts" }];
+    const entryPoints = [{ in: "./src/index.ts", out: "./src/index.ts" }];
     if (context.options.entryPoints) {
-      if (Array.isArray(context.options.entryPoints)) {
-        entryPoints = (
-          context.options.entryPoints as (
-            | string
-            | { in: string; out: string }
-          )[]
-        ).map(entryPoint =>
-          typeof entryPoint === "string"
-            ? {
-                in: entryPoint,
-                out: correctPaths(
-                  entryPoint
-                    .replaceAll(
-                      correctPaths(context.options.config.workspaceRoot),
-                      ""
-                    )
-                    .replaceAll(correctPaths(context.options.projectRoot), "")
-                )
-              }
-            : entryPoint
-        );
-      }
-
       for (const entryPoint of entryPoints) {
         const split = entryPoint.out.split(".");
         split.pop();

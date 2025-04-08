@@ -48,6 +48,7 @@ export type ESBuildResolvedOptions = Omit<
   | "sourcemap"
   | "outExtension"
   | "emitOnAll"
+  | "entryPoints"
 > &
   Pick<
     BuildOptions,
@@ -60,12 +61,16 @@ export type ESBuildResolvedOptions = Omit<
     | "banner"
     | "footer"
     | "sourcemap"
+    | "entryPoints"
   > & {
     injectShims: boolean;
     outdir: string;
     projectGraph: ProjectGraph;
     projectConfigurations: ProjectsConfigurations;
-    entryPoints: string[];
+    entryPoints: Array<{
+      in: string;
+      out: string;
+    }>;
     renderers?: Renderer[];
     format: Format;
     distDir: string;
