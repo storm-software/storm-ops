@@ -287,12 +287,12 @@ async function generatePackageJson(context: ESBuildContext) {
     packageJson.exports["."] ??=
       `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.js`;
 
-    const entryPoints = [{ in: "./src/index.ts", out: "./src/index.ts" }];
-    if (context.options.entryPoints) {
-      for (const entryPoint of entryPoints) {
-        const split = entryPoint.out.split(".");
-        split.pop();
-        const entry = split.join(".").replaceAll("\\", "/");
+    for (const entryPoint of context.options.entryPoints) {
+      if (entryPoint.out) {
+        const entry = entryPoint.out
+          .replaceAll("\\", "/")
+          .replaceAll(/^(\.\/)*/, "")
+          .replace(/\.([cm])?[jt]s(x)?$/, "");
 
         packageJson.exports[`./${entry}`] ??=
           `.${context.options.distDir ? `/${context.options.distDir}` : ""}/${entry}.js`;
