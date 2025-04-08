@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.31.37](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.37) (2025-04-08)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with non-global RegExp argument
+  ([b869732a9](https://github.com/storm-software/storm-ops/commit/b869732a9))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([36df00f97](https://github.com/storm-software/storm-ops/commit/36df00f97))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.162.4
+- Updated build-tools to 0.143.30
+- Updated config to 1.112.8
+
 ## [0.31.36](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.36) (2025-04-08)
 
 ### Bug Fixes
