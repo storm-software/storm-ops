@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.265.1](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.265.1) (2025-04-08)
+
+### Miscellaneous
+
+- **workspace-tools:** Upgrade storm-software/typescript plugin to use v2 types
+  ([de7832ff9](https://github.com/storm-software/storm-ops/commit/de7832ff9))
+- **monorepo:** Regenerate README markdown files
+  ([9bb345e83](https://github.com/storm-software/storm-ops/commit/9bb345e83))
+
 ## [1.265.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.265.0) (2025-04-08)
 
 ### Features
