@@ -141,8 +141,8 @@ export const tscPlugin = (
         resolvedOptions.bundle &&
         resolvedOptions.entryPoints &&
         resolvedOptions.entryPoints.length > 0 &&
-        resolvedOptions.entryPoints[0] &&
-        resolvedOptions.entryPoints[0].endsWith(".ts")
+        resolvedOptions.entryPoints[0]?.in &&
+        resolvedOptions.entryPoints[0].in.endsWith(".ts")
       ) {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const sourceRoot = resolvedOptions.sourceRoot.replaceAll(
@@ -150,7 +150,7 @@ export const tscPlugin = (
           ""
         );
         const typeOutDir = resolvedOptions.outdir; // type out dir
-        const entryPoint = resolvedOptions.entryPoints[0]
+        const entryPoint = resolvedOptions.entryPoints[0].in
           .replace(sourceRoot, "")
           .replace(/\.ts$/, "");
         const bundlePath = joinPaths(resolvedOptions.outdir, entryPoint);
