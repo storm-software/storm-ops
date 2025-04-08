@@ -41,7 +41,7 @@ export const markdownlintConfig = {
   "no-multiple-space-closed-atx": true,
   "blanks-around-headers": false,
   "header-start-left": true,
-  "no-duplicate-heading": true,
+  "no-duplicate-heading": false,
   "single-h1": false,
   "no-trailing-punctuation": {
     punctuation: ".,:!?"
@@ -49,7 +49,7 @@ export const markdownlintConfig = {
   "no-multiple-space-blockquote": true,
   "no-blanks-blockquote": false,
   "ol-prefix": {
-    style: "one"
+    style: "one_or_ordered"
   },
   "list-marker-space": {
     ul_single: 1,

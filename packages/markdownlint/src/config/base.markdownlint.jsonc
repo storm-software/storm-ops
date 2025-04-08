@@ -56,9 +56,9 @@
     "tables": false,
     "code_blocks": true,
     "headings": true,
-    "line_length": 80,
+    "line_length": 120,
     "heading_line_length": 80,
-    "code_block_line_length": 80
+    "code_block_line_length": 150
   },
 
   // MD014: Disallow use of dollar signs($) before commands without showing output.
@@ -84,7 +84,7 @@
   "header-start-left": true,
 
   // MD024: Multiple headers with the same content
-  "no-duplicate-heading": true,
+  "no-duplicate-heading": false,
 
   // MD025: Disallow multiple top level headers in the same document.
   // Gotta have a matching closing brace at the end.
@@ -105,7 +105,7 @@
 
   // MD029: Ordered list item prefix
   "ol-prefix": {
-    "style": "one"
+    "style": "one_or_ordered"
   },
 
   // MD030: Spaces after list markers
