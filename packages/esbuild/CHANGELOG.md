@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.31.34](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.34) (2025-04-08)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with typescript build
+  ([a2daac845](https://github.com/storm-software/storm-ops/commit/a2daac845))
+- **esbuild:** Resolve issue with providing an object as entry points
+  ([f8879323b](https://github.com/storm-software/storm-ops/commit/f8879323b))
+
+### Updated Dependencies
+
+- Updated config to 1.112.5
+
 ## [0.31.33](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.33) (2025-04-07)
 
 ### Miscellaneous

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.38.12](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.12) (2025-04-08)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with providing an object as entry points
+  ([f8879323b](https://github.com/storm-software/storm-ops/commit/f8879323b))
+
 ## [0.38.11](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.11) (2025-04-07)
 
 ### Miscellaneous
