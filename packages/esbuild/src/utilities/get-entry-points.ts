@@ -40,7 +40,7 @@ export const getEntryPoints = async (
       entryPoints.push(
         ...Object.entries(entry).map(([key, value]) => {
           if (typeof value === "string") {
-            return { in: key, out: value };
+            return { in: value, out: key };
           } else {
             return { in: key, out: key };
           }
