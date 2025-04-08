@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.31.36](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.36) (2025-04-08)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue formatting output file name
+  ([ac0af3c4f](https://github.com/storm-software/storm-ops/commit/ac0af3c4f))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([7f3c89806](https://github.com/storm-software/storm-ops/commit/7f3c89806))
+
+### Updated Dependencies
+
+- Updated config to 1.112.7
+
 ## [0.31.35](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.35) (2025-04-08)
 
 ### Bug Fixes
