@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.39.0](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.39.0) (2025-04-08)
+
+### Features
+
+- **unbuild:** Added the `buildOnly` option
+  ([6cac087b8](https://github.com/storm-software/storm-ops/commit/6cac087b8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([d8782ee66](https://github.com/storm-software/storm-ops/commit/d8782ee66))
+
 ## [0.38.15](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.38.15) (2025-04-08)
 
 ### Miscellaneous

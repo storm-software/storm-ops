@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.265.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.265.0) (2025-04-08)
+
+### Features
+
+- **unbuild:** Added the `buildOnly` option
+  ([6cac087b8](https://github.com/storm-software/storm-ops/commit/6cac087b8))
+
+### Miscellaneous
+
+- **workspace-tools:** Regenerate untyped files
+  ([5fee9254f](https://github.com/storm-software/storm-ops/commit/5fee9254f))
+
 ## [1.264.27](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.264.27) (2025-04-08)
 
 ### Miscellaneous
