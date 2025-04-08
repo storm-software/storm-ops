@@ -177,6 +177,15 @@ export interface UnbuildExecutorSchema {
  stub?: boolean,
 
  /**
+  * Build Only
+  * 
+  * Should the build process skip generating a package.json and copying assets
+  * 
+  * @default false
+ */
+ buildOnly?: boolean,
+
+ /**
   * Watch Options
   * 
   * Watch options

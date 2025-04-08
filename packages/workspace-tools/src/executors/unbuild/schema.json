@@ -190,6 +190,13 @@
       "id": "#stub",
       "default": false
     },
+    "buildOnly": {
+      "title": "Build Only",
+      "type": "boolean",
+      "description": "Should the build process skip generating a package.json and copying assets",
+      "id": "#buildOnly",
+      "default": false
+    },
     "watchOptions": {
       "title": "Watch Options",
       "type": "object",
@@ -280,6 +287,7 @@
     "watch": false,
     "clean": true,
     "stub": false,
+    "buildOnly": false,
     "watchOptions": {},
     "stubOptions": {
       "jiti": {

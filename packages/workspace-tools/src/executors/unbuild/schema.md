@@ -173,6 +173,16 @@ Clean the output directory before building
 Stub the output
 
 
+## `buildOnly`
+- **Type**: `boolean`
+- **Default**: `false`
+
+> Build Only
+
+
+Should the build process skip generating a package.json and copying assets
+
+
 ## `watchOptions`
 
 ## `stubOptions`
