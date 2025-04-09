@@ -96,9 +96,12 @@ export const getEntryPoints = async (
           )
         );
       } else {
-        writeDebug(`Trying to add entry point ${entryPoint}"`, config);
+        writeDebug(
+          `Adding ESBuild entry point \n- Input: ${entryPoint.in} \n- Output: ${entryPoint.out}`,
+          config
+        );
 
-        if (!paths.some(p => p.in === entryPoint.in)) {
+        if (!paths.some(p => p.out === entryPoint.out)) {
           paths.push(entryPoint);
         }
       }
