@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.145.17](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.145.17) (2025-04-09)
+
+### Miscellaneous
+
+- **eslint:** Incldue jest configuration in ignore list
+  ([980b9368c](https://github.com/storm-software/storm-ops/commit/980b9368c))
+- **monorepo:** Regenerate README markdown files
+  ([ffad1a9e3](https://github.com/storm-software/storm-ops/commit/ffad1a9e3))
+
 ## [0.145.16](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.145.16) (2025-04-09)
 
 ### Miscellaneous
