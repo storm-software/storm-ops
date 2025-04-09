@@ -96,8 +96,8 @@
     "prettier-plugin-toml",
     "prettier-plugin-prisma",
     "prettier-plugin-organize-imports",
-    "prettier-plugin-tailwindcss",
-    "prettier-plugin-solidity"
+    "prettier-plugin-solidity",
+    "prettier-plugin-tailwindcss"
   ],
   "organizeImportsSkipDestructiveCodeActions": false
 }
