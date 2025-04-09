@@ -54,11 +54,10 @@
   // MD013: Line length
   "line-length": {
     "tables": false,
-    "code_blocks": true,
+    "code_blocks": false,
     "headings": true,
-    "line_length": 120,
-    "heading_line_length": 80,
-    "code_block_line_length": 150
+    "line_length": 80,
+    "heading_line_length": 80
   },
 
   // MD014: Disallow use of dollar signs($) before commands without showing output.

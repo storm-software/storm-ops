@@ -13,6 +13,21 @@ module.exports = {
   endOfLine: "lf",
   overrides: [
     {
+      files: "**/{*.ts,*.tsx,*.mts,*.cts}",
+      options: {
+        parser: "typescript",
+        singleQuote: false,
+        trailingComma: "none",
+        jsdocDescriptionWithDot: false,
+        jsdocDescriptionTag: true,
+        jsdocCommentLineStrategy: "multiline",
+        jsdocCapitalizeDescription: true,
+        jsdocSeparateTagGroups: true,
+        jsdocPreferCodeFences: true,
+        tsdoc: true
+      }
+    },
+    {
       files: "**/*.mdx",
       options: {
         semi: false,
@@ -29,20 +44,20 @@ module.exports = {
       }
     },
     {
-      "files": "**/*.toml",
-      "options": {
-        "parser": "toml",
-        "alignEntries": true,
-        "alignComments": true,
-        "arrayAutoExpand": true,
-        "arrayAutoCollapse": true,
-        "compactArrays": true,
-        "compactInlineTables": false,
-        "compactEntries": false,
-        "indentTables": false,
-        "indentEntries": false,
-        "reorderKeys": false,
-        "allowedBlankLines": 1
+      files: "**/*.toml",
+      options: {
+        parser: "toml",
+        alignEntries: true,
+        alignComments: true,
+        arrayAutoExpand: true,
+        arrayAutoCollapse: true,
+        compactArrays: true,
+        compactInlineTables: false,
+        compactEntries: false,
+        indentTables: false,
+        indentEntries: false,
+        reorderKeys: false,
+        allowedBlankLines: 1
       }
     },
     {
@@ -74,6 +89,7 @@ module.exports = {
   plugins: [
     "prettier-plugin-sh",
     "prettier-plugin-pkg",
+    "prettier-plugin-jsdoc",
     "prettier-plugin-toml",
     "prettier-plugin-organize-imports",
     "prettier-plugin-prisma"

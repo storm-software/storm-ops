@@ -17,7 +17,14 @@
       "options": {
         "parser": "typescript",
         "singleQuote": false,
-        "trailingComma": "none"
+        "trailingComma": "none",
+        "jsdocDescriptionWithDot": false,
+        "jsdocDescriptionTag": true,
+        "jsdocCommentLineStrategy": "multiline",
+        "jsdocCapitalizeDescription": true,
+        "jsdocSeparateTagGroups": true,
+        "jsdocPreferCodeFences": true,
+        "tsdoc": true
       }
     },
     {
@@ -93,6 +100,7 @@
   "plugins": [
     "prettier-plugin-sh",
     "prettier-plugin-pkg",
+    "prettier-plugin-jsdoc",
     "prettier-plugin-toml",
     "prettier-plugin-prisma",
     "prettier-plugin-organize-imports",
