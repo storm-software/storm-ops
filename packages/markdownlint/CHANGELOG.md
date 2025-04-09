@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.18.0](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.18.0) (2025-04-09)
+
+### Features
+
+- **prettier:** Added the `jsdoc` prettier plugin
+  ([5f119737f](https://github.com/storm-software/storm-ops/commit/5f119737f))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([f46d0f03f](https://github.com/storm-software/storm-ops/commit/f46d0f03f))
+
 ## [0.17.2](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.17.2) (2025-04-09)
 
 ### Miscellaneous

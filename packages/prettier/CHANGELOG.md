@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.44.0](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.44.0) (2025-04-09)
+
+### Features
+
+- **prettier:** Added the `jsdoc` prettier plugin
+  ([5f119737f](https://github.com/storm-software/storm-ops/commit/5f119737f))
+
+### Bug Fixes
+
+- **prettier:** Ensure `tailwindcss` plugin is always listed last
+  ([788071107](https://github.com/storm-software/storm-ops/commit/788071107))
+
 ## [0.43.0](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.43.0) (2025-04-09)
 
 ### Features
