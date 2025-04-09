@@ -128,12 +128,13 @@ export const GLOB_EXCLUDE = [
   "**/.output",
   "**/.vite-inspect",
   "**/.yarn",
-  "**/vite.config.*.timestamp-*",
 
   "**/CHANGELOG*.md",
   "**/*.min.*",
   "**/LICENSE*",
   "**/__snapshots__",
   "**/auto-import?(s).d.ts",
-  "**/components.d.ts"
+  "**/components.d.ts",
+  "**/vite.config.*.timestamp-*",
+  "**/jest.config.*"
 ];
