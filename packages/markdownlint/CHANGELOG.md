@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.18.5](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.18.5) (2025-04-09)
+
+### Miscellaneous
+
+- **markdownlint:** Extends the max line length option
+  ([2498f9802](https://github.com/storm-software/storm-ops/commit/2498f9802))
+- **monorepo:** Regenerate README markdown files
+  ([5ed8abb6e](https://github.com/storm-software/storm-ops/commit/5ed8abb6e))
+
 ## [0.18.4](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.18.4) (2025-04-09)
 
 ### Bug Fixes

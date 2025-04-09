@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.119.29](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.29) (2025-04-09)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([5ed8abb6e](https://github.com/storm-software/storm-ops/commit/5ed8abb6e))
+
 ## [1.119.28](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.28) (2025-04-09)
 
 ### Miscellaneous
