@@ -27,6 +27,12 @@
       devShells = eachSystem (pkgs: {
         default = pkgs.mkShell {
           packages = [
+            pkgs.direnv
+
+            pkgs.git
+            pkgs.gh
+            pkgs.zizmor
+
             pkgs.node2nix
             pkgs.nodejs
             pkgs.corepack
@@ -34,9 +40,7 @@
             pkgs.nodePackages.typescript
             pkgs.nodePackages.typescript-language-server
             pkgs.nodePackages.prettier
-            pkgs.git
             pkgs.typos
-            # pkgs.python3
           ];
         };
       });
