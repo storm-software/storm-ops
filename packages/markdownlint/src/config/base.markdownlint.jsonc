@@ -55,7 +55,8 @@
   "line-length": {
     "tables": false,
     "code_blocks": false,
-    "headings": false
+    "headings": false,
+    "line_length": 250
   },
 
   // MD014: Disallow use of dollar signs($) before commands without showing output.
