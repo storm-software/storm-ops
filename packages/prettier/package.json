@@ -21,10 +21,11 @@
     ".": "./index.cjs",
     "./index": "./index.cjs",
     "./.prettierignore": "./.prettierignore",
+    "./all.json": "./all.json",
     "./config.json": "./config.json",
     "./prisma.json": "./prisma.json",
-    "./tailwindcss.json": "./tailwindcss.json",
     "./solidity.json": "./solidity.json",
+    "./tailwindcss.json": "./tailwindcss.json",
     "./package.json": "./package.json"
   },
   "keywords": [
@@ -43,7 +44,8 @@
     "prettier-plugin-prisma": "^5.0.0",
     "prettier-plugin-sh": "^0.15.0",
     "prettier-plugin-solidity": "1.3.1",
-    "prettier-plugin-tailwindcss": "0.6.5"
+    "prettier-plugin-tailwindcss": "0.6.5",
+    "prettier-plugin-toml": "^2.0.4"
   },
   "peerDependenciesMeta": {
     "prettier": {
@@ -69,12 +71,16 @@
     },
     "prettier-plugin-tailwindcss": {
       "optional": true
+    },
+    "prettier-plugin-toml": {
+      "optional": false
     }
   },
   "dependencies": {
     "prettier-plugin-organize-imports": "^4.0.0",
     "prettier-plugin-pkg": "^0.18.1",
-    "prettier-plugin-sh": "^0.15.0"
+    "prettier-plugin-sh": "^0.15.0",
+    "prettier-plugin-toml": "^2.0.4"
   },
   "devDependencies": {
     "@types/node": "catalog:",

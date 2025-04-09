@@ -21,10 +21,36 @@
       }
     },
     {
-      "files": "*.md{,x}",
+      "files": "**/*.mdx",
       "options": {
         "semi": false,
-        "trailingComma": "none"
+        "trailingComma": "none",
+        "parser": "mdx"
+      }
+    },
+    {
+      "files": "**/*.md",
+      "options": {
+        "semi": false,
+        "trailingComma": "none",
+        "parser": "markdown"
+      }
+    },
+    {
+      "files": "**/*.toml",
+      "options": {
+        "parser": "toml",
+        "alignEntries": true,
+        "alignComments": true,
+        "arrayAutoExpand": true,
+        "arrayAutoCollapse": true,
+        "compactArrays": true,
+        "compactInlineTables": false,
+        "compactEntries": false,
+        "indentTables": false,
+        "indentEntries": false,
+        "reorderKeys": false,
+        "allowedBlankLines": 1
       }
     },
     {
@@ -41,19 +67,7 @@
       }
     },
     {
-      "files": "**/*.aci",
-      "options": {
-        "parser": "prisma-parse"
-      }
-    },
-    {
-      "files": "**/*.acid",
-      "options": {
-        "parser": "prisma-parse"
-      }
-    },
-    {
-      "files": "**/*.acidic",
+      "files": "**/{*.acid,*.aci,*.acidic}",
       "options": {
         "parser": "prisma-parse"
       }
@@ -62,6 +76,7 @@
   "plugins": [
     "prettier-plugin-sh",
     "prettier-plugin-pkg",
+    "prettier-plugin-toml",
     "prettier-plugin-organize-imports",
     "prettier-plugin-tailwindcss",
     "prettier-plugin-prisma"
