@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.17.1](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.17.1) (2025-04-09)
+
+### Miscellaneous
+
+- **markdownlint:** Update the build command `copyfiles` args
+  ([ea0dd4de3](https://github.com/storm-software/storm-ops/commit/ea0dd4de3))
+
 ## [0.17.0](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.17.0) (2025-04-08)
 
 ### Features
