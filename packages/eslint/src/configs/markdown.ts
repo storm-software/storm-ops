@@ -10,6 +10,7 @@ import {
   GLOB_MARKDOWN_CODE,
   GLOB_MARKDOWN_IN_MARKDOWN
 } from "../utils/constants";
+import { findWorkspaceRoot } from "../utils/find-workspace-root";
 import { interopDefault, parserPlain } from "../utils/helpers";
 
 export async function markdown(
@@ -22,6 +23,8 @@ export async function markdown(
   } = options;
 
   const markdown = await interopDefault(import("@eslint/markdown"));
+
+  const workspaceRoot = findWorkspaceRoot();
 
   return [
     {
@@ -56,6 +59,8 @@ export async function markdown(
       ],
       languageOptions: {
         parserOptions: {
+          projectService: true,
+          tsconfigRootDir: workspaceRoot,
           ecmaFeatures: {
             impliedStrict: true
           }

@@ -135,6 +135,5 @@ export const GLOB_EXCLUDE = [
   "**/__snapshots__",
   "**/auto-import?(s).d.ts",
   "**/components.d.ts",
-  "**/vite.config.*.timestamp-*",
-  "**/jest.config.*"
+  "**/vite.config.*.timestamp-*"
 ];

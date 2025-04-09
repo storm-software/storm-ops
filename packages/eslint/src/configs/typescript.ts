@@ -103,7 +103,7 @@ export async function typescript(
           ...(typeAware
             ? {
                 projectService: {
-                  allowDefaultProject: ["./*.js"],
+                  allowDefaultProject: ["./*.js", "./*.ts"],
                   defaultProject: tsconfigPath
                 },
                 tsconfigRootDir: workspaceRoot
