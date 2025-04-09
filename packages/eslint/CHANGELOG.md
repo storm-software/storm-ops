@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.145.23](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.145.23) (2025-04-09)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with code fenced markdown lint issues
+  ([34e066b48](https://github.com/storm-software/storm-ops/commit/34e066b48))
+
 ## [0.145.22](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.145.22) (2025-04-09)
 
 ### Miscellaneous
