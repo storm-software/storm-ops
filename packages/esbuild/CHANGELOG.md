@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.31.50](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.50) (2025-04-09)
+
+### Bug Fixes
+
+- **esbuild:** Ensure the correct entry points are filtered out
+  ([9f792a56e](https://github.com/storm-software/storm-ops/commit/9f792a56e))
+
 ## [0.31.49](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.49) (2025-04-09)
 
 ### Miscellaneous
