@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.18.4](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.18.4) (2025-04-09)
+
+### Bug Fixes
+
+- **markdownlint:** Update the markdownlint configuration
+  ([9c983ebe7](https://github.com/storm-software/storm-ops/commit/9c983ebe7))
+
+### Miscellaneous
+
+- **monorepo:** Resolve typos in README markdown
+  ([1e9b9fbcb](https://github.com/storm-software/storm-ops/commit/1e9b9fbcb))
+
 ## [0.18.3](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.18.3) (2025-04-09)
 
 ### Miscellaneous

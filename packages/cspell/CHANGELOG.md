@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cspell
 
+## [0.20.16](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.20.16) (2025-04-09)
+
+### Miscellaneous
+
+- **monorepo:** Resolve typos in README markdown
+  ([1e9b9fbcb](https://github.com/storm-software/storm-ops/commit/1e9b9fbcb))
+
 ## [0.20.15](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.20.15) (2025-04-09)
 
 ### Miscellaneous

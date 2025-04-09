@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.27.26](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.27.26) (2025-04-09)
+
+### Miscellaneous
+
+- **monorepo:** Resolve typos in README markdown
+  ([1e9b9fbcb](https://github.com/storm-software/storm-ops/commit/1e9b9fbcb))
+
 ## [0.27.25](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.27.25) (2025-04-09)
 
 ### Miscellaneous

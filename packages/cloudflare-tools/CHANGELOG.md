@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.55.53](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.55.53) (2025-04-09)
+
+### Miscellaneous
+
+- **monorepo:** Resolve typos in README markdown
+  ([1e9b9fbcb](https://github.com/storm-software/storm-ops/commit/1e9b9fbcb))
+
 ## [0.55.52](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.55.52) (2025-04-09)
 
 ### Miscellaneous

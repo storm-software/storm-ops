@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.104.14](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.14) (2025-04-09)
+
+### Miscellaneous
+
+- **monorepo:** Resolve typos in README markdown
+  ([1e9b9fbcb](https://github.com/storm-software/storm-ops/commit/1e9b9fbcb))
+
 ## [2.104.13](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.13) (2025-04-09)
 
 ### Miscellaneous

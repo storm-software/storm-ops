@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.9.45](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.45) (2025-04-09)
+
+### Miscellaneous
+
+- **monorepo:** Resolve typos in README markdown
+  ([1e9b9fbcb](https://github.com/storm-software/storm-ops/commit/1e9b9fbcb))
+
 ## [0.9.44](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.44) (2025-04-09)
 
 ### Miscellaneous

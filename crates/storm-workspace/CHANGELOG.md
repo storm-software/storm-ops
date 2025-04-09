@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.7.43](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.43) (2025-04-09)
+
+### Miscellaneous
+
+- **monorepo:** Resolve typos in README markdown
+  ([1e9b9fbcb](https://github.com/storm-software/storm-ops/commit/1e9b9fbcb))
+
 ## [0.7.42](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.42) (2025-04-09)
 
 ### Miscellaneous

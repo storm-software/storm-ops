@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.104.50](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.50) (2025-04-09)
+
+### Miscellaneous
+
+- **monorepo:** Resolve typos in README markdown
+  ([1e9b9fbcb](https://github.com/storm-software/storm-ops/commit/1e9b9fbcb))
+
 ## [1.104.49](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.49) (2025-04-09)
 
 ### Miscellaneous

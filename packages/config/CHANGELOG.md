@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.112.17](https://github.com/storm-software/storm-ops/releases/tag/config%401.112.17) (2025-04-09)
+
+### Miscellaneous
+
+- **monorepo:** Resolve typos in README markdown
+  ([1e9b9fbcb](https://github.com/storm-software/storm-ops/commit/1e9b9fbcb))
+
 ## [1.112.16](https://github.com/storm-software/storm-ops/releases/tag/config%401.112.16) (2025-04-09)
 
 ### Miscellaneous

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.145.19](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.145.19) (2025-04-09)
+
+### Miscellaneous
+
+- **monorepo:** Resolve typos in README markdown
+  ([1e9b9fbcb](https://github.com/storm-software/storm-ops/commit/1e9b9fbcb))
+
 ## [0.145.18](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.145.18) (2025-04-09)
 
 ### Bug Fixes

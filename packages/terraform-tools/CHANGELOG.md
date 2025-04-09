@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.54.53](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.54.53) (2025-04-09)
+
+### Miscellaneous
+
+- **monorepo:** Resolve typos in README markdown
+  ([1e9b9fbcb](https://github.com/storm-software/storm-ops/commit/1e9b9fbcb))
+
 ## [0.54.52](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.54.52) (2025-04-09)
 
 ### Miscellaneous

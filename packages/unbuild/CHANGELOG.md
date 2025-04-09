@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.39.8](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.39.8) (2025-04-09)
+
+### Miscellaneous
+
+- **monorepo:** Resolve typos in README markdown
+  ([1e9b9fbcb](https://github.com/storm-software/storm-ops/commit/1e9b9fbcb))
+
 ## [0.39.7](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.39.7) (2025-04-09)
 
 ### Miscellaneous

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.24.61](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.24.61) (2025-04-09)
+
+### Miscellaneous
+
+- **monorepo:** Resolve typos in README markdown
+  ([1e9b9fbcb](https://github.com/storm-software/storm-ops/commit/1e9b9fbcb))
+
 ## [0.24.60](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.24.60) (2025-04-09)
 
 ### Miscellaneous
