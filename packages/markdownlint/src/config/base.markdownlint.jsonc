@@ -28,7 +28,7 @@
   // MD007: Unordered list indentation: 2 spaces.
   "ul-indent": {
     "indent": 2,
-    "start_indented": true
+    "start_indented": false
   },
 
   // MD009: Disallow trailing spaces!
@@ -55,9 +55,7 @@
   "line-length": {
     "tables": false,
     "code_blocks": false,
-    "headings": true,
-    "line_length": 80,
-    "heading_line_length": 80
+    "headings": false
   },
 
   // MD014: Disallow use of dollar signs($) before commands without showing output.

@@ -28,11 +28,8 @@ export const markdownlintConfig = {
   },
   "line-length": {
     tables: false,
-    code_blocks: true,
-    headings: true,
-    line_length: 80,
-    heading_line_length: 80,
-    code_block_line_length: 80
+    code_blocks: false,
+    headings: false
   },
   "commands-show-output": true,
   "no-missing-space-atx": true,
