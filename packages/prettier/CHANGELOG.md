@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.43.0](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.43.0) (2025-04-09)
+
+### Features
+
+- **prettier:** Added `toml` plugin and resolve markdown issues
+  ([926cf7026](https://github.com/storm-software/storm-ops/commit/926cf7026))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([4ac223e59](https://github.com/storm-software/storm-ops/commit/4ac223e59))
+
 ## [0.42.27](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.42.27) (2025-04-08)
 
 ### Miscellaneous
