@@ -47,9 +47,7 @@ export async function typescript(
   ];
 
   const workspaceRoot = findWorkspaceRoot();
-  const tsconfigPath = getTsConfigPath(options?.tsconfigPath ?? workspaceRoot);
-
-  const isTypeAware = !!tsconfigPath;
+  const tsconfigPath = getTsConfigPath(options?.tsconfigPath || workspaceRoot);
 
   const typeAwareRules: TypedFlatConfigItem["rules"] = {
     "dot-notation": "off",
@@ -125,12 +123,10 @@ export async function typescript(
       }
     },
     // assign type-aware parser for type-aware files and type-unaware parser for the rest
-    ...(isTypeAware
-      ? [
-          makeParser(false, files),
-          makeParser(true, filesTypeAware, ignoresTypeAware)
-        ]
-      : [makeParser(false, files)]),
+    ...[
+      makeParser(false, files),
+      makeParser(true, filesTypeAware, ignoresTypeAware)
+    ],
     {
       files,
       name: "storm/typescript/rules",
@@ -264,18 +260,16 @@ export async function typescript(
         "tsdoc/syntax": tsdoc
       }
     },
-    ...(isTypeAware
-      ? [
-          {
-            files: filesTypeAware,
-            ignores: ignoresTypeAware,
-            name: "storm/typescript/rules-type-aware",
-            rules: {
-              ...typeAwareRules,
-              ...overridesTypeAware
-            }
-          }
-        ]
-      : [])
+    ...[
+      {
+        files: filesTypeAware,
+        ignores: ignoresTypeAware,
+        name: "storm/typescript/rules-type-aware",
+        rules: {
+          ...typeAwareRules,
+          ...overridesTypeAware
+        }
+      }
+    ]
   ].filter(Boolean) as TypedFlatConfigItem[];
 }
