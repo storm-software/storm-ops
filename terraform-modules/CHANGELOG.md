@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Terraform Modules
 
+## [0.45.20](https://github.com/storm-software/storm-ops/releases/tag/terraform-modules%400.45.20) (2025-04-09)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([3ab7c1ab9](https://github.com/storm-software/storm-ops/commit/3ab7c1ab9))
+
 ## [0.45.19](https://github.com/storm-software/storm-ops/releases/tag/terraform-modules%400.45.19) (2025-04-09)
 
 ### Miscellaneous
