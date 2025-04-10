@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.104.54](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.54) (2025-04-10)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([82c74e006](https://github.com/storm-software/storm-ops/commit/82c74e006))
+
 ## [1.104.53](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.53) (2025-04-09)
 
 ### Miscellaneous
