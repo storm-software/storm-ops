@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.45.0](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.45.0) (2025-04-10)
+
+### Features
+
+- **prettier:** Added `base` and `jsdoc` configurations
+  ([e497c1fee](https://github.com/storm-software/storm-ops/commit/e497c1fee))
+
 ## [0.44.7](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.44.7) (2025-04-09)
 
 ### Miscellaneous
