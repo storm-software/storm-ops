@@ -37,23 +37,6 @@
       }
     },
     {
-      "files": "**/*.toml",
-      "options": {
-        "parser": "toml",
-        "alignEntries": true,
-        "alignComments": true,
-        "arrayAutoExpand": true,
-        "arrayAutoCollapse": true,
-        "compactArrays": true,
-        "compactInlineTables": false,
-        "compactEntries": false,
-        "indentTables": false,
-        "indentEntries": false,
-        "reorderKeys": false,
-        "allowedBlankLines": 1
-      }
-    },
-    {
       "files": "**/*.svg",
       "options": {
         "parser": "html"
@@ -65,26 +48,12 @@
       "options": {
         "parser": "html"
       }
-    },
-    {
-      "files": "**/*.prisma",
-      "options": {
-        "parser": "prisma-parse"
-      }
-    },
-    {
-      "files": "**/{*.acid,*.aci,*.acidic}",
-      "options": {
-        "parser": "prisma-parse"
-      }
     }
   ],
   "plugins": [
     "prettier-plugin-sh",
     "prettier-plugin-pkg",
-    "prettier-plugin-toml",
-    "prettier-plugin-organize-imports",
-    "prettier-plugin-prisma"
+    "prettier-plugin-organize-imports"
   ],
   "organizeImportsSkipDestructiveCodeActions": false
 }

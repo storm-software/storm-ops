@@ -17,14 +17,7 @@ module.exports = {
       options: {
         parser: "typescript",
         singleQuote: false,
-        trailingComma: "none",
-        jsdocDescriptionWithDot: false,
-        jsdocDescriptionTag: true,
-        jsdocCommentLineStrategy: "multiline",
-        jsdocCapitalizeDescription: true,
-        jsdocSeparateTagGroups: true,
-        jsdocPreferCodeFences: true,
-        tsdoc: true
+        trailingComma: "none"
       }
     },
     {
@@ -72,24 +65,11 @@ module.exports = {
       options: {
         parser: "html"
       }
-    },
-    {
-      files: "**/*.prisma",
-      options: {
-        parser: "prisma-parse"
-      }
-    },
-    {
-      files: "**/{*.acid,*.aci,*.acidic}",
-      options: {
-        parser: "prisma-parse"
-      }
     }
   ],
   plugins: [
     "prettier-plugin-sh",
     "prettier-plugin-pkg",
-    "prettier-plugin-jsdoc",
     "prettier-plugin-toml",
     "prettier-plugin-organize-imports",
     "prettier-plugin-prisma"
