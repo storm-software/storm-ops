@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.265.13](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.265.13) (2025-04-13)
+
+### Miscellaneous
+
+- **workspace-tools:** Bundle `defu` dependency package
+  ([fb9057403](https://github.com/storm-software/storm-ops/commit/fb9057403))
+
 ## [1.265.12](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.265.12) (2025-04-10)
 
 ### Miscellaneous
