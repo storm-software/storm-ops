@@ -1535,9 +1535,6 @@ importers:
       '@storm-software/unbuild':
         specifier: workspace:*
         version: link:../unbuild
-      defu:
-        specifier: 'catalog:'
-        version: 6.1.4
       fs-extra:
         specifier: 11.2.0
         version: 11.2.0
@@ -1590,6 +1587,9 @@ importers:
       '@types/semver':
         specifier: 7.5.8
         version: 7.5.8
+      defu:
+        specifier: 'catalog:'
+        version: 6.1.4
       nx:
         specifier: 'catalog:'
         version: 20.6.0(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.21)(typescript@5.8.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))
@@ -4127,7 +4127,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 

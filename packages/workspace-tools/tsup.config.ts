@@ -20,7 +20,7 @@ export default defineConfig([
       "./src/generators/*/untyped.ts",
       "./src/generators/init/init.ts",
       "./src/plugins/rust/*.ts",
-      "./src/plugins/typescript/*.ts",
+      "./src/plugins/typescript/*.ts"
     ],
     outDir: "dist",
     format: ["cjs", "esm"],
@@ -31,6 +31,6 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     shims: true,
-    tsconfig: "./tsconfig.json",
-  },
+    tsconfig: "./tsconfig.json"
+  }
 ]);
