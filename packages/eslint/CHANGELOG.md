@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.146.4](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.146.4) (2025-04-15)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade Nx packages to v20.8.0
+  ([4cdf26b2a](https://github.com/storm-software/storm-ops/commit/4cdf26b2a))
+
 ## [0.146.3](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.146.3) (2025-04-15)
 
 ### Miscellaneous

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.266.4](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.266.4) (2025-04-15)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade Nx packages to v20.8.0
+  ([4cdf26b2a](https://github.com/storm-software/storm-ops/commit/4cdf26b2a))
+
 ## [1.266.3](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.266.3) (2025-04-15)
 
 ### Miscellaneous
