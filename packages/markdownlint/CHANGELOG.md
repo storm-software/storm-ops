@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.18.9](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.18.9) (2025-04-15)
+
+### Miscellaneous
+
+- **monorepo:** Reformat README markdown files
+  ([04b2bc7ed](https://github.com/storm-software/storm-ops/commit/04b2bc7ed))
+
 ## [0.18.8](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.18.8) (2025-04-10)
 
 ### Miscellaneous
