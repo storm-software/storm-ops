@@ -13,7 +13,7 @@
     "build": "dist"
   },
   "error": {
-    "codesFile": "errors/codes.json"
+    "codesFile": "tools/errors/codes.json"
   },
   "externalPackagePatterns": ["@storm-software/"],
   "registry": {

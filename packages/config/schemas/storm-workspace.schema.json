@@ -179,7 +179,7 @@
           "properties": {
             "codesFile": {
               "type": "string",
-              "default": "https://public.storm-cdn.com/brand-banner.png",
+              "default": "tools/errors/codes.json",
               "description": "The path to the workspace's error codes JSON file"
             },
             "url": {

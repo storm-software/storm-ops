@@ -8,6 +8,7 @@ import {
   STORM_DEFAULT_ACCOUNT_TWITTER,
   STORM_DEFAULT_CONTACT,
   STORM_DEFAULT_DOCS,
+  STORM_DEFAULT_ERROR_CODES_FILE,
   STORM_DEFAULT_HOMEPAGE,
   STORM_DEFAULT_LICENSING,
   STORM_DEFAULT_RELEASE_BANNER,
@@ -358,7 +359,7 @@ export const errorConfigSchema = z
     codesFile: z
       .string()
       .trim()
-      .default(STORM_DEFAULT_RELEASE_BANNER)
+      .default(STORM_DEFAULT_ERROR_CODES_FILE)
       .describe("The path to the workspace's error codes JSON file"),
     url: z
       .string()

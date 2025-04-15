@@ -21,4 +21,4 @@ Join us on [Discord](${STORM_DEFAULT_ACCOUNT_DISCORD}) to chat with the team, re
 If this sounds interesting, and you would like to help us in creating the next generation of development tools, please reach out on our [website](${STORM_DEFAULT_CONTACT}) or join our [Slack](${STORM_DEFAULT_ACCOUNT_SLACK}) channel!
 `;
 
-export const STORM_DEFAULT_ERROR_CODES_FILE = "errors/codes.json";
+export const STORM_DEFAULT_ERROR_CODES_FILE = "tools/errors/codes.json";
