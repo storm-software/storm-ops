@@ -40,6 +40,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Table of Contents
 
 - [Storm Software - DevEnv Import Modules](#storm-software---devenv-import-modules)
@@ -73,10 +74,9 @@ in the [DevEnv documentation](https://devenv.sh/composing-using-imports/).
 
 The following DevEnv modules are included in this package:
 
-- `storm-software/storm-ops/devenv-modules/base`: Base DevEnv module for Storm
-  Software repositories.
-- `storm-software/storm-ops/devenv-modules/rust`: DevEnv module to include rust
-  support.
+- `storm-ops/devenv-modules/base`: Base DevEnv module for Storm Software
+  repositories.
+- `storm-ops/devenv-modules/rust`: DevEnv module to include rust support.
 
 ## Usage
 
