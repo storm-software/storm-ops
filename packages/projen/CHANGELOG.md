@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.9.51](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.51) (2025-04-15)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([bf67bf013](https://github.com/storm-software/storm-ops/commit/bf67bf013))
+
 ## [0.9.50](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.50) (2025-04-15)
 
 ### Miscellaneous
