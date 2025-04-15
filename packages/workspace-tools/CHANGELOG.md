@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.266.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.266.0) (2025-04-15)
+
+### Features
+
+- **devenv-modules:** Initial check-in of `devenv` modules
+  ([29e61695a](https://github.com/storm-software/storm-ops/commit/29e61695a))
+
 ## [1.265.14](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.265.14) (2025-04-15)
 
 ### Miscellaneous

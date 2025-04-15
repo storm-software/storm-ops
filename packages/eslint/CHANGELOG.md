@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.146.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.146.0) (2025-04-15)
+
+### Features
+
+- **devenv-modules:** Initial check-in of `devenv` modules
+  ([29e61695a](https://github.com/storm-software/storm-ops/commit/29e61695a))
+
 ## [0.145.26](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.145.26) (2025-04-15)
 
 ### Miscellaneous
