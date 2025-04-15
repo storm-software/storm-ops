@@ -1,0 +1,8 @@
+{
+  "name": "devenv-modules",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "devenv-modules/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": []
+}

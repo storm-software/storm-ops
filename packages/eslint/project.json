@@ -19,14 +19,6 @@
         "color": true
       }
     },
-    // "build-inspector": {
-    //   "executor": "nx:run-commands",
-    //   "dependsOn": ["clean", "^build"],
-    //   "options": {
-    //     "command": "npx @eslint/config-inspector build",
-    //     "cwd": "{projectRoot}"
-    //   }
-    // },
     "build-typegen": {
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
