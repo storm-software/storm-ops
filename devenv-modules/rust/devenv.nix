@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }:
 {
-  name = "storm-software_rust";
+  name = "storm-software/storm-ops/rust";
 
   # https://devenv.sh/packages/
   packages = [
