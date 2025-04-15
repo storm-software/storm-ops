@@ -11,7 +11,7 @@ import {
   type Tree
 } from "@nx/devkit";
 import { resolveLocalPackageDependencies as resolveLocalPackageJsonDependencies } from "@nx/js/src/generators/release-version/utils/resolve-local-package-dependencies";
-import { updateLockFile } from "@nx/js/src/generators/release-version/utils/update-lock-file";
+import { updateLockFile } from "@nx/js/src/release/utils/update-lock-file";
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   findWorkspaceRoot,
@@ -38,11 +38,11 @@ import {
 } from "nx/src/command-line/release/utils/resolve-semver-specifier";
 import { isValidSemverSpecifier } from "nx/src/command-line/release/utils/semver";
 import {
-  deriveNewSemverVersion,
   ReleaseVersionGeneratorResult,
-  validReleaseVersionPrefixes,
-  type VersionData
-} from "nx/src/command-line/release/version";
+  VersionData,
+  deriveNewSemverVersion,
+  validReleaseVersionPrefixes
+} from "nx/src/command-line/release/version-legacy";
 import { interpolate } from "nx/src/tasks-runner/utils";
 import { prerelease } from "semver";
 import {
