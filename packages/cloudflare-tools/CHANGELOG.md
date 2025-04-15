@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.55.59](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.55.59) (2025-04-15)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([bf67bf013](https://github.com/storm-software/storm-ops/commit/bf67bf013))
+
 ## [0.55.58](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.55.58) (2025-04-15)
 
 ### Miscellaneous
