@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.162.17](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.162.17) (2025-04-16)
+
+### Miscellaneous
+
+- **config-tools:** Handle both `_DIR` and `_DIRECTORY` names
+  ([4bf50f71f](https://github.com/storm-software/storm-ops/commit/4bf50f71f))
+- **monorepo:** Regenerate README markdown files
+  ([762e7076f](https://github.com/storm-software/storm-ops/commit/762e7076f))
+
 ## [1.162.16](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.162.16) (2025-04-15)
 
 ### Miscellaneous

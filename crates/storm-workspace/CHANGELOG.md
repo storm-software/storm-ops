@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.7.51](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.51) (2025-04-16)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([762e7076f](https://github.com/storm-software/storm-ops/commit/762e7076f))
+
 ## [0.7.50](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.50) (2025-04-15)
 
 ### Miscellaneous
