@@ -154,25 +154,34 @@ export const setConfigEnv = (config: StormWorkspaceConfig) => {
       process.env[`${prefix}CACHE_DIR`] = correctPaths(
         config.directories.cache
       );
+      process.env[`${prefix}CACHE_DIRECTORY`] =
+        process.env[`${prefix}CACHE_DIR`];
     }
     if (config.directories.data) {
       process.env[`${prefix}DATA_DIR`] = correctPaths(config.directories.data);
+      process.env[`${prefix}DATA_DIRECTORY`] = process.env[`${prefix}DATA_DIR`];
     }
     if (config.directories.config) {
       process.env[`${prefix}CONFIG_DIR`] = correctPaths(
         config.directories.config
       );
+      process.env[`${prefix}CONFIG_DIRECTORY`] =
+        process.env[`${prefix}CONFIG_DIR`];
     }
     if (config.directories.temp) {
       process.env[`${prefix}TEMP_DIR`] = correctPaths(config.directories.temp);
+      process.env[`${prefix}TEMP_DIRECTORY`] = process.env[`${prefix}TEMP_DIR`];
     }
     if (config.directories.log) {
       process.env[`${prefix}LOG_DIR`] = correctPaths(config.directories.log);
+      process.env[`${prefix}LOG_DIRECTORY`] = process.env[`${prefix}LOG_DIR`];
     }
     if (config.directories.build) {
       process.env[`${prefix}BUILD_DIR`] = correctPaths(
         config.directories.build
       );
+      process.env[`${prefix}BUILD_DIRECTORY`] =
+        process.env[`${prefix}BUILD_DIR`];
     }
   }
 

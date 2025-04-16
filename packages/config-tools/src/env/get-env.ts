@@ -101,22 +101,34 @@ export const getConfigEnv = (): DeepPartial<StormWorkspaceConfig> => {
     directories: {
       cache: process.env[`${prefix}CACHE_DIR`]
         ? correctPaths(process.env[`${prefix}CACHE_DIR`])
-        : undefined,
+        : process.env[`${prefix}CACHE_DIRECTORY`]
+          ? correctPaths(process.env[`${prefix}CACHE_DIRECTORY`])
+          : undefined,
       data: process.env[`${prefix}DATA_DIR`]
         ? correctPaths(process.env[`${prefix}DATA_DIR`])
-        : undefined,
+        : process.env[`${prefix}DATA_DIRECTORY`]
+          ? correctPaths(process.env[`${prefix}DATA_DIRECTORY`])
+          : undefined,
       config: process.env[`${prefix}CONFIG_DIR`]
         ? correctPaths(process.env[`${prefix}CONFIG_DIR`])
-        : undefined,
+        : process.env[`${prefix}CONFIG_DIRECTORY`]
+          ? correctPaths(process.env[`${prefix}CONFIG_DIRECTORY`])
+          : undefined,
       temp: process.env[`${prefix}TEMP_DIR`]
         ? correctPaths(process.env[`${prefix}TEMP_DIR`])
-        : undefined,
+        : process.env[`${prefix}TEMP_DIRECTORY`]
+          ? correctPaths(process.env[`${prefix}TEMP_DIRECTORY`])
+          : undefined,
       log: process.env[`${prefix}LOG_DIR`]
         ? correctPaths(process.env[`${prefix}LOG_DIR`])
-        : undefined,
+        : process.env[`${prefix}LOG_DIRECTORY`]
+          ? correctPaths(process.env[`${prefix}LOG_DIRECTORY`])
+          : undefined,
       build: process.env[`${prefix}BUILD_DIR`]
         ? correctPaths(process.env[`${prefix}BUILD_DIR`])
-        : undefined
+        : process.env[`${prefix}BUILD_DIRECTORY`]
+          ? correctPaths(process.env[`${prefix}BUILD_DIRECTORY`])
+          : undefined
     },
     skipCache:
       process.env[`${prefix}SKIP_CACHE`] !== undefined
