@@ -62,9 +62,6 @@ jobs:
           gpg-passphrase: ${{ secrets.STORM_BOT_GPG_PASSPHRASE }}
           storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
-      - name: Run workspace build
-        run: devenv build
-
       # - name: Add permissions to linting tools
       #   run: chmod a=rwx "${{ github.workspace }}/dist/packages/linting-tools/bin/lint.js"
       # - name: Add permissions to alex config file
@@ -98,16 +95,19 @@ jobs:
       #     sarif_file: terrascan.sarif
 
       - name: Release Library Version Updates
-        run: devenv shell release -- --base=${{ steps.setSHAs.outputs.base }} --head=${{ steps.setSHAs.outputs.head }}
+        shell: devenv shell bash -- -e {0}
+        run: |
+          build
+          release -- --base=${{ steps.setSHAs.outputs.base }} --head=${{ steps.setSHAs.outputs.head }}
         env:
-          GITHUB_ACTOR: ${{ github.actor }}
-          GITHUB_TOKEN: ${{ github.token }}
-          GH_TOKEN: ${{ github.token }}
-          NPM_TOKEN: ${{ secrets.STORM_BOT_NPM_TOKEN }}
-          CARGO_REGISTRY_TOKEN: ${{ secrets.STORM_BOT_CARGO_TOKEN }}
-          STORM_WORKSPACE_ROOT: ${{ github.workspace }}
-          STORM_REPOSITORY: ${{ github.repositoryUrl }}
-          TAG: ${{ inputs.tag }}
+            GITHUB_ACTOR: ${{ github.actor }}
+            GITHUB_TOKEN: ${{ github.token }}
+            GH_TOKEN: ${{ github.token }}
+            NPM_TOKEN: ${{ secrets.STORM_BOT_NPM_TOKEN }}
+            CARGO_REGISTRY_TOKEN: ${{ secrets.STORM_BOT_CARGO_TOKEN }}
+            STORM_WORKSPACE_ROOT: ${{ github.workspace }}
+            STORM_REPOSITORY: ${{ github.repositoryUrl }}
+            TAG: ${{ inputs.tag }}
 
   success:
     needs:
