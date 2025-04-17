@@ -56,7 +56,7 @@ import { cleanDirectories } from "./clean";
 import { DEFAULT_BUILD_OPTIONS, getDefaultBuildPlugins } from "./config";
 import { depsCheckPlugin } from "./plugins/deps-check";
 import { shebangRenderer } from "./renderers/shebang";
-import { emit } from "./tsc";
+import { emitDts } from "./tsc";
 import {
   ESBuildContext,
   ESBuildResolvedOptions,
@@ -492,7 +492,12 @@ async function executeTypescript(context: ESBuildContext) {
     );
     const stopwatch = getStopwatch(`${context.options.name} asset copy`);
 
-    await emit(context);
+    await emitDts(
+      context.options.config,
+      context.options.tsconfig,
+      context.options.tsconfigRaw,
+      true
+    );
 
     stopwatch();
   }
@@ -544,6 +549,19 @@ async function reportResults(context: ESBuildContext) {
     writeSuccess(
       `  📦  The ${context.options.name} build completed successfully`,
       context.options.config
+    );
+  } else if (context.result?.errors && context.result?.errors.length > 0) {
+    writeError(
+      `  ❌  The ${context.options.name} build failed with the following errors: ${context.result.errors
+        .map(error => error.text)
+        .join("\n")}`,
+      context.options.config
+    );
+
+    throw new Error(
+      `The ${context.options.name} build failed with the following errors: ${context.result.errors
+        .map(error => error.text)
+        .join("\n")}`
     );
   }
 }

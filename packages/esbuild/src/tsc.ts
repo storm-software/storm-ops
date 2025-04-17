@@ -1,14 +1,20 @@
 import { writeError } from "@storm-software/config-tools/logger/console";
+import { StormWorkspaceConfig } from "@storm-software/config/types";
 import { loadTsConfig } from "bundle-require";
 import defu from "defu";
+import { TsconfigRaw } from "esbuild";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, isAbsolute, join, normalize } from "node:path";
 import ts from "typescript";
-import { ESBuildContext, ExportDeclaration } from "./types";
+import { ExportDeclaration } from "./types";
 
-export function ensureTempDeclarationDir(): string {
-  const cwd = process.cwd();
-  const dirPath = join(cwd, ".tsup", "declaration");
+export function ensureTempDeclarationDir(
+  workspaceConfig: StormWorkspaceConfig
+): string {
+  const root =
+    workspaceConfig.directories.temp ||
+    join(workspaceConfig.workspaceRoot, "tmp");
+  const dirPath = join(root, ".tsc", "declaration");
 
   if (existsSync(dirPath)) {
     return dirPath;
@@ -16,7 +22,7 @@ export function ensureTempDeclarationDir(): string {
 
   mkdirSync(dirPath, { recursive: true });
 
-  const gitIgnorePath = join(cwd, ".tsup", ".gitignore");
+  const gitIgnorePath = join(root, ".tsc", ".gitignore");
   writeFileSync(gitIgnorePath, "**/*\n");
 
   return dirPath;
@@ -32,12 +38,16 @@ export function slash(path: string) {
   return path.replace(/\\/g, "/");
 }
 
-export function toAbsolutePath(p: string, cwd?: string): string {
+export function toAbsolutePath(
+  workspaceConfig: StormWorkspaceConfig,
+  p: string,
+  cwd?: string
+): string {
   if (isAbsolute(p)) {
     return p;
   }
 
-  return slash(normalize(join(cwd || process.cwd(), p)));
+  return slash(normalize(join(cwd || workspaceConfig.workspaceRoot, p)));
 }
 
 class AliasPool {
@@ -65,6 +75,7 @@ class AliasPool {
  * Get all export declarations from root files.
  */
 function getExports(
+  workspaceConfig: StormWorkspaceConfig,
   program: ts.Program,
   fileMapping: Map<string, string>
 ): ExportDeclaration[] {
@@ -74,7 +85,7 @@ function getExports(
 
   function extractExports(sourceFileName: string): ExportDeclaration[] {
     const cwd = program.getCurrentDirectory();
-    sourceFileName = toAbsolutePath(sourceFileName, cwd);
+    sourceFileName = toAbsolutePath(workspaceConfig, sourceFileName, cwd);
 
     const sourceFile = program.getSourceFile(sourceFileName);
     if (!sourceFile) {
@@ -117,10 +128,12 @@ function getExports(
  *
  * @returns The mapping from source TS file paths to output declaration file paths
  */
-function emitDtsFiles(
-  context: ESBuildContext,
+export function emitDtsFiles(
+  workspaceConfig: StormWorkspaceConfig,
   program: ts.Program,
-  host: ts.CompilerHost
+  host: ts.CompilerHost,
+  emitOnlyDtsFiles = true,
+  customTransformers?: ts.CustomTransformers
 ) {
   const fileMapping = new Map<string, string>();
 
@@ -138,8 +151,8 @@ function emitDtsFiles(
     if (sourceFileName && !fileName.endsWith(".map")) {
       const cwd = program.getCurrentDirectory();
       fileMapping.set(
-        toAbsolutePath(sourceFileName, cwd),
-        toAbsolutePath(fileName, cwd)
+        toAbsolutePath(workspaceConfig, sourceFileName, cwd),
+        toAbsolutePath(workspaceConfig, fileName, cwd)
       );
     }
 
@@ -153,7 +166,13 @@ function emitDtsFiles(
     );
   };
 
-  const emitResult = program.emit(undefined, writeFile, undefined, true);
+  const emitResult = program.emit(
+    undefined,
+    writeFile,
+    undefined,
+    emitOnlyDtsFiles,
+    customTransformers
+  );
 
   const diagnostics = ts
     .getPreEmitDiagnostics(program)
@@ -187,7 +206,7 @@ function emitDtsFiles(
   if (diagnosticMessage) {
     writeError(
       `Failed to emit declaration files.\n\n${diagnosticMessage}`,
-      context.options.config
+      workspaceConfig
     );
 
     throw new Error("TypeScript compilation failed");
@@ -196,18 +215,21 @@ function emitDtsFiles(
   return fileMapping;
 }
 
-export function emit(context: ESBuildContext) {
-  const rawTsconfig = loadTsConfig(
-    context.options.config.workspaceRoot,
-    context.options.tsconfig
-  );
+export function emitDts(
+  workspaceConfig: StormWorkspaceConfig,
+  tsconfig: string,
+  tsconfigRaw?: TsconfigRaw,
+  emitOnlyDtsFiles = true,
+  customTransformers?: ts.CustomTransformers
+) {
+  const rawTsconfig = loadTsConfig(workspaceConfig.workspaceRoot, tsconfig);
   if (!rawTsconfig) {
     throw new Error(
-      `Unable to find ${context.options.tsconfig || "tsconfig.json"} in ${context.options.config.workspaceRoot}`
+      `Unable to find ${tsconfig || "tsconfig.json"} in ${workspaceConfig.workspaceRoot}`
     );
   }
 
-  const declarationDir = ensureTempDeclarationDir();
+  const declarationDir = ensureTempDeclarationDir(workspaceConfig);
   const parsedTsconfig = ts.parseJsonConfigFileContent(
     defu(
       {
@@ -220,10 +242,11 @@ export function emit(context: ESBuildContext) {
           emitDeclarationOnly: true
         }
       },
+      tsconfigRaw?.compilerOptions ?? {},
       rawTsconfig.data ?? {}
     ),
     ts.sys,
-    context.options.tsconfig ? dirname(context.options.tsconfig) : "./"
+    tsconfig ? dirname(tsconfig) : "./"
   );
 
   const options: ts.CompilerOptions = parsedTsconfig.options;
@@ -235,6 +258,12 @@ export function emit(context: ESBuildContext) {
     host
   );
 
-  const fileMapping = emitDtsFiles(context, program, host);
-  return getExports(program, fileMapping);
+  const fileMapping = emitDtsFiles(
+    workspaceConfig,
+    program,
+    host,
+    emitOnlyDtsFiles,
+    customTransformers
+  );
+  return getExports(workspaceConfig, program, fileMapping);
 }
