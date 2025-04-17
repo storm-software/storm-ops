@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.32.0](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.32.0) (2025-04-17)
+
+### Miscellaneous
+
+- **esbuild:** Update the default format type to `esm`
+  ([e6ba7c57b](https://github.com/storm-software/storm-ops/commit/e6ba7c57b))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.162.18
+- Updated build-tools to 0.143.44
+- Updated config to 1.112.26
+
 ## [0.31.55](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.31.55) (2025-04-16)
 
 ### Miscellaneous
