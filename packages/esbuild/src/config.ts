@@ -46,7 +46,7 @@ export const DEFAULT_BUILD_OPTIONS: Required<
 > = {
   platform: "node",
   target: "node22",
-  format: "cjs",
+  format: "esm",
   external: [],
   logLevel: "error",
   tsconfig: "tsconfig.json",

@@ -187,7 +187,7 @@ async function createProgram(config: StormWorkspaceConfig) {
 
     const dtsOption = new Option(
       "--dts",
-      "Should types be emitted for the output"
+      "Should typescript type declarations be emitted for the output"
     ).default(true);
 
     program
