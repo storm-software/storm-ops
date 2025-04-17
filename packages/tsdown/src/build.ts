@@ -144,11 +144,8 @@ const resolveOptions = async (
     generatePackageJson: userOptions.generatePackageJson !== false,
     clean: userOptions.clean !== false,
     emitOnAll: userOptions.emitOnAll === true,
-    dts:
-      userOptions.emitTypes === true
-        ? { transformer: "oxc" }
-        : userOptions.emitTypes,
-    bundleDts: userOptions.emitTypes,
+    dts: userOptions.dts === true ? { transformer: "oxc" } : userOptions.dts,
+    bundleDts: userOptions.dts,
     assets: userOptions.assets ?? [],
     shims: userOptions.injectShims !== true,
     bundle: userOptions.bundle !== false,

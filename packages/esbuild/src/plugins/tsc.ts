@@ -112,7 +112,7 @@ export const tscPlugin = (
 ): esbuild.Plugin => ({
   name: "storm:tsc",
   setup(build) {
-    if (options.emitTypes === false) {
+    if (options.dts === false) {
       return; // build has opted out of emitting types
     }
 

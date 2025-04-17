@@ -196,7 +196,7 @@ export async function resolveOptions(
         builder: "mkdist",
         input: `./${entryPath}`,
         outDir,
-        declaration: options.emitTypes !== false ? "compatible" : false,
+        declaration: options.dts !== false ? "compatible" : false,
         format: "esm",
         ext: "mjs"
       } as MkdistBuildEntry);
@@ -206,14 +206,14 @@ export async function resolveOptions(
         builder: "mkdist",
         input: `./${entryPath}`,
         outDir,
-        declaration: options.emitTypes !== false ? "compatible" : false,
+        declaration: options.dts !== false ? "compatible" : false,
         format: "cjs",
         ext: "cjs"
       } as MkdistBuildEntry);
 
       return ret;
     }, [] as BuildEntry[]),
-    declaration: options.emitTypes !== false ? "compatible" : false,
+    declaration: options.dts !== false ? "compatible" : false,
     failOnWarn: false,
     sourcemap: options.sourcemap ?? !!options.debug,
     outDir: outputPath,

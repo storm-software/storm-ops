@@ -134,7 +134,7 @@ export type UnbuildOptions = Omit<
      *
      * @defaultValue `true`
      */
-    emitTypes?: boolean;
+    dts?: boolean;
 
     /**
      * Should the build process skip generating a package.json and copying assets
@@ -157,7 +157,7 @@ export type UnbuildOptions = Omit<
 
 export type UnbuildResolvedOptions = Omit<
   TypeScriptBuildResolvedOptions,
-  "entryPoints" | "external" | "emitTypes"
+  "entryPoints" | "external" | "dts"
 > &
   BuildConfig & {
     /**
@@ -198,5 +198,5 @@ export type UnbuildCLIOptions = AdditionalCLIOptions &
     | "minify"
     | "includeSrc"
     | "verbose"
-    | "emitTypes"
+    | "dts"
   >;

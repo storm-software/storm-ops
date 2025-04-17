@@ -19,7 +19,7 @@ import { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
 import {
   AdditionalCLIOptions,
   TypeScriptBuildOptions,
-  TypeScriptBuildResolvedOptions,
+  TypeScriptBuildResolvedOptions
 } from "@storm-software/build-tools";
 import type { Options } from "tsdown";
 
@@ -30,7 +30,7 @@ export type TSDownOptions = Omit<
   "outbase" | "outfile" | "outExtension" | "banner"
 > &
   Omit<TypeScriptBuildOptions, "format"> & {
-    emitTypes?: boolean;
+    dts?: boolean;
     injectShims?: boolean;
   };
 
@@ -69,7 +69,7 @@ export type TSDownCLIOptions = AdditionalCLIOptions &
     | "minify"
     | "includeSrc"
     | "verbose"
-    | "emitTypes"
+    | "dts"
     | "injectShims"
   >;
 

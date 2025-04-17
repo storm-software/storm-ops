@@ -31,7 +31,7 @@ export type ESBuildOptions = Omit<
   "outbase" | "outfile" | "outExtension" | "banner" | "entryPoints"
 > &
   Omit<TypeScriptBuildOptions, "format" | "emitOnAll"> & {
-    emitTypes?: boolean;
+    dts?: boolean;
     injectShims?: boolean;
     renderers?: Renderer[];
     distDir?: string;
@@ -98,7 +98,7 @@ export type ESBuildCLIOptions = AdditionalCLIOptions &
     | "minify"
     | "includeSrc"
     | "verbose"
-    | "emitTypes"
+    | "dts"
     | "injectShims"
   >;
 
@@ -173,3 +173,22 @@ export type Renderer = {
 };
 
 export type WrittenFile = { readonly name: string; readonly size: number };
+
+export type ExportDeclaration = ModuleExport | NamedExport;
+
+interface ModuleExport {
+  kind: "module";
+  sourceFileName: string;
+  destFileName: string;
+  moduleName: string;
+  isTypeOnly: boolean;
+}
+
+interface NamedExport {
+  kind: "named";
+  sourceFileName: string;
+  destFileName: string;
+  alias: string;
+  name: string;
+  isTypeOnly: boolean;
+}

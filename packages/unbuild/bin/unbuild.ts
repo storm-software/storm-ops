@@ -179,7 +179,7 @@ async function createProgram(config: StormWorkspaceConfig) {
       "Should the build process be verbose"
     ).default(false);
 
-    const emitTypesOption = new Option(
+    const dtsOption = new Option(
       "--emit-types",
       "Should types be emitted for the output"
     ).default(true);
@@ -211,7 +211,7 @@ async function createProgram(config: StormWorkspaceConfig) {
       .addOption(minifyOption)
       .addOption(includeSrcOption)
       .addOption(verboseOption)
-      .addOption(emitTypesOption)
+      .addOption(dtsOption)
       .action(buildAction(config));
 
     program

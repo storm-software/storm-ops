@@ -185,7 +185,7 @@ async function createProgram(config: StormWorkspaceConfig) {
       "Should shims be injected into the output"
     ).default(true);
 
-    const emitTypesOption = new Option(
+    const dtsOption = new Option(
       "--emit-types",
       "Should types be emitted for the output"
     ).default(true);
@@ -220,7 +220,7 @@ async function createProgram(config: StormWorkspaceConfig) {
       .addOption(includeSrcOption)
       .addOption(verboseOption)
       .addOption(injectShimsOption)
-      .addOption(emitTypesOption)
+      .addOption(dtsOption)
       .action(buildAction(config));
 
     program
