@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   name = "storm-software/storm-ops/rust";
 
@@ -11,14 +11,6 @@
   languages.rust = {
     enable = true;
     channel = "nightly";
-    toolchain = inputs.nixpkgs;
-    components = [
-      "rustc"
-      "cargo"
-      "clippy"
-      "rustfmt"
-      "rust-analyzer"
-    ];
   };
 
   # https://devenv.sh/processes/
@@ -26,4 +18,3 @@
 
   # See full reference at https://devenv.sh/reference/options/
 }
-

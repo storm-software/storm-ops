@@ -66,6 +66,7 @@ in {
   };
 
   enterShell = ''
+    pnpm install
     bootstrap
   '';
 
