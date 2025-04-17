@@ -62,9 +62,8 @@ jobs:
           gpg-passphrase: ${{ secrets.STORM_BOT_GPG_PASSPHRASE }}
           storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
-      - name: Run build script
-        run: pnpm build
-        shell: bash
+      - name: Run workspace build
+        run: devenv build
 
       - name: Add permissions to linting tools
         run: chmod a=rwx dist/packages/linting-tools/bin/lint.js
@@ -117,7 +116,7 @@ jobs:
       #     sarif_file: terrascan.sarif
 
       - name: Release Library Version Updates
-        run: pnpm release --base=${{ steps.setSHAs.outputs.base }} --head=${{ steps.setSHAs.outputs.head }}
+        run: devenv shell release --base=${{ steps.setSHAs.outputs.base }} --head=${{ steps.setSHAs.outputs.head }}
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ github.token }}
