@@ -98,7 +98,7 @@ jobs:
       #     sarif_file: terrascan.sarif
 
       - name: Release Library Version Updates
-        run: devenv shell release --base=${{ steps.setSHAs.outputs.base }} --head=${{ steps.setSHAs.outputs.head }}
+        run: devenv shell release -- --base=${{ steps.setSHAs.outputs.base }} --head=${{ steps.setSHAs.outputs.head }}
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_TOKEN: ${{ github.token }}
