@@ -21,7 +21,13 @@ import type {
   TypeScriptBuildOptions,
   TypeScriptBuildResolvedOptions
 } from "@storm-software/build-tools";
-import type { BuildOptions, BuildResult, Format, Metafile } from "esbuild";
+import type {
+  BuildOptions,
+  BuildResult,
+  Format,
+  Metafile,
+  TsconfigRaw
+} from "esbuild";
 import type { SourceMap } from "rollup";
 import type { RawSourceMap } from "source-map";
 import type { RendererEngine } from "./base/renderer-engine";
@@ -35,6 +41,7 @@ export type ESBuildOptions = Omit<
     injectShims?: boolean;
     renderers?: Renderer[];
     distDir?: string;
+    tsconfigRaw?: TsconfigRaw;
   };
 
 export type ESBuildResult = BuildResult;
@@ -63,6 +70,7 @@ export type ESBuildResolvedOptions = Omit<
     | "sourcemap"
     | "entryPoints"
   > & {
+    dts?: boolean;
     injectShims: boolean;
     outdir: string;
     projectGraph: ProjectGraph;
@@ -74,6 +82,7 @@ export type ESBuildResolvedOptions = Omit<
     renderers?: Renderer[];
     format: Format;
     distDir: string;
+    tsconfigRaw?: TsconfigRaw;
   };
 
 export type ESBuildCLIOptions = AdditionalCLIOptions &

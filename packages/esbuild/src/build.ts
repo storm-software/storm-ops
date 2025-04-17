@@ -56,6 +56,7 @@ import { cleanDirectories } from "./clean";
 import { DEFAULT_BUILD_OPTIONS, getDefaultBuildPlugins } from "./config";
 import { depsCheckPlugin } from "./plugins/deps-check";
 import { shebangRenderer } from "./renderers/shebang";
+import { emit } from "./tsc";
 import {
   ESBuildContext,
   ESBuildResolvedOptions,
@@ -415,6 +416,7 @@ async function executeEsBuild(context: ESBuildContext) {
     delete options.inject;
   }
 
+  delete options.dts;
   delete options.env;
   delete options.name;
   delete options.assets;
@@ -444,6 +446,7 @@ async function executeEsBuild(context: ESBuildContext) {
   const result = await esbuild.build(
     options as Omit<
       ESBuildResolvedOptions,
+      | "dts"
       | "env"
       | "name"
       | "assets"
@@ -474,6 +477,25 @@ async function executeEsBuild(context: ESBuildContext) {
   }
 
   stopwatch();
+
+  return context;
+}
+
+/**
+ * Execute the typescript compiler
+ */
+async function executeTypescript(context: ESBuildContext) {
+  if (context.result?.errors.length === 0 && context.options.dts) {
+    writeDebug(
+      `  📋  Running TypeScript Compiler for ${context.options.name}`,
+      context.options.config
+    );
+    const stopwatch = getStopwatch(`${context.options.name} asset copy`);
+
+    await emit(context);
+
+    stopwatch();
+  }
 
   return context;
 }
@@ -611,6 +633,7 @@ export async function build(options: ESBuildOptions | ESBuildOptions[]) {
         generateContext,
         cleanOutputPath,
         generatePackageJson,
+        executeTypescript,
         executeEsBuild,
         copyBuildAssets,
         reportResults
