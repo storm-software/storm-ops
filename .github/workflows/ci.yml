@@ -65,12 +65,12 @@ jobs:
       - name: Run workspace build
         run: devenv build
 
-      - name: Add permissions to linting tools
-        run: chmod a=rwx "${{ github.workspace }}/dist/packages/linting-tools/bin/lint.js"
-      - name: Add permissions to alex config file
-        run: chmod a=rwx "${{ github.workspace }}/dist/packages/linting-tools/alex/config.json"
-      - name: Add permissions to alex ignore file
-        run: chmod a=rwx "${{ github.workspace }}/dist/packages/linting-tools/alex/.alexignore"
+      # - name: Add permissions to linting tools
+      #   run: chmod a=rwx "${{ github.workspace }}/dist/packages/linting-tools/bin/lint.js"
+      # - name: Add permissions to alex config file
+      #   run: chmod a=rwx "${{ github.workspace }}/dist/packages/linting-tools/alex/config.json"
+      # - name: Add permissions to alex ignore file
+      #   run: chmod a=rwx "${{ github.workspace }}/dist/packages/linting-tools/alex/.alexignore"
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         id: setSHAs
