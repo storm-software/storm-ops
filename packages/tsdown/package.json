@@ -40,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "packageManager": "pnpm@10.3.0",
+  "packageManager": "pnpm@10.8.1",
   "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
+    "node": ">=22.14.0",
+    "pnpm": ">=10.8.1"
   },
   "bin": {
     "storm-tsdown": "./bin/tsdown.cjs"
@@ -173,7 +173,7 @@
     "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
     "spdx-exceptions": "^2.5.0",
-    "spdx-license-ids": "^3.0.20",
+    "spdx-license-ids": "^3.0.21",
     "tsdown": "catalog:"
   },
   "peerDependenciesMeta": {
@@ -208,10 +208,10 @@
   "dependencies": {
     "chokidar": "^4.0.3",
     "commander": "catalog:",
-    "es-toolkit": "^1.30.1",
-    "globby": "^14.0.2",
+    "es-toolkit": "^1.35.0",
+    "globby": "^14.1.0",
     "nx": "catalog:",
-    "rolldown": "1.0.0-beta.1",
+    "rolldown": "1.0.0-beta.7",
     "source-map": "0.7.4",
     "tsup": "catalog:"
   },
@@ -223,7 +223,7 @@
     "defu": "catalog:",
     "rollup": "catalog:",
     "spdx-exceptions": "^2.5.0",
-    "spdx-license-ids": "^3.0.20",
+    "spdx-license-ids": "^3.0.21",
     "tsdown": "catalog:"
   },
   "publishConfig": {
