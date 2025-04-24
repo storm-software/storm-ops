@@ -1,5 +1,8 @@
 {
   "$schema": "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm-workspace.schema.json",
+  "organization": "storm-software",
+  "owner": "@storm-software/admin",
+  "bot": { "name": "stormie-bot", "email": "bot@stormsoftware.com" },
   "mode": "production",
   "timezone": "America/New_York",
   "locale": "en-US",
@@ -12,6 +15,7 @@
   "error": {
     "codesFile": "tools/errors/codes.json"
   },
+  "externalPackagePatterns": ["@storm-software/"],
   "registry": {
     "github": "https://npm.pkg.github.com",
     "npm": "https://registry.npmjs.org",

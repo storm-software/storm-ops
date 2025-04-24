@@ -15,6 +15,7 @@
     "./package.json": "./package.json",
     "./schemas/storm.schema.json": "./schemas/storm.schema.json",
     "./presets/base.json": "./presets/base.json",
+    "./presets/storm-software.json": "./presets/storm-software.json",
     "./index": {
       "import": {
         "types": "./dist/index.d.ts",
