@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.266.7](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.266.7) (2025-04-25)
+
+### Miscellaneous
+
+- **monorepo:** Upgrade monorepo's `tsup` dependency version
+  ([2fb83ea4c](https://github.com/storm-software/storm-ops/commit/2fb83ea4c))
+- **monorepo:** Regenerate README markdown files
+  ([9ab7e03d9](https://github.com/storm-software/storm-ops/commit/9ab7e03d9))
+
 ## [1.266.5](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.266.5) (2025-04-16)
 
 ### Miscellaneous
