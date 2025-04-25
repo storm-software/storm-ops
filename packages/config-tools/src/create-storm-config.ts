@@ -19,19 +19,29 @@ let _static_cache = undefined as StaticCache | undefined;
 /**
  * Get the config for the current Storm workspace
  *
+ * @param extensionName - The name of the config extension
+ * @param schema - The schema for the config extension
+ * @param workspaceRoot - The root directory of the workspace
+ * @param skipLogs - Skip writing logs to the console
+ * @param useDefault - Whether to use the default config if no config file is found
  * @returns The config for the current Storm workspace
  */
 export const createStormWorkspaceConfig = async <
   TExtensionName extends
     keyof StormWorkspaceConfig["extensions"] = keyof StormWorkspaceConfig["extensions"],
   TExtensionConfig = any,
-  TExtensionSchema extends ZodTypeAny = ZodTypeAny
+  TExtensionSchema extends ZodTypeAny = ZodTypeAny,
+  TUseDefault extends boolean | undefined = boolean | undefined,
+  TResult = TUseDefault extends true
+    ? StormWorkspaceConfig<TExtensionName, TExtensionConfig>
+    : StormWorkspaceConfig<TExtensionName, TExtensionConfig> | undefined
 >(
   extensionName?: TExtensionName,
   schema?: TExtensionSchema,
   workspaceRoot?: string,
-  skipLogs = false
-): Promise<StormWorkspaceConfig<TExtensionName, TExtensionConfig>> => {
+  skipLogs = false,
+  useDefault: TUseDefault = true as TUseDefault
+): Promise<TResult> => {
   let result!: StormWorkspaceConfig<TExtensionName, TExtensionConfig>;
   if (
     !_static_cache?.data ||
@@ -46,15 +56,22 @@ export const createStormWorkspaceConfig = async <
     const configEnv = getConfigEnv() as StormWorkspaceConfig & {
       [extensionName in TExtensionName]: TExtensionConfig;
     };
-    const defaultConfig = await getDefaultConfig(_workspaceRoot);
 
     const configFile = await getConfigFile(_workspaceRoot);
-    if (!configFile && !skipLogs) {
-      writeWarning(
-        "No Storm Workspace configuration file found in the current repository. Please ensure this is the expected behavior - you can add a `storm-workspace.json` file to the root of your workspace if it is not.\n",
-        { logLevel: "all" }
-      );
+    if (!configFile) {
+      if (!skipLogs) {
+        writeWarning(
+          "No Storm Workspace configuration file found in the current repository. Please ensure this is the expected behavior - you can add a `storm-workspace.json` file to the root of your workspace if it is not.\n",
+          { logLevel: "all" }
+        );
+      }
+
+      if (useDefault === false) {
+        return undefined as TResult;
+      }
     }
+
+    const defaultConfig = await getDefaultConfig(_workspaceRoot);
 
     result = (await stormWorkspaceConfigSchema.parseAsync(
       defu(configEnv, configFile, defaultConfig)
@@ -82,7 +99,7 @@ export const createStormWorkspaceConfig = async <
     timestamp: Date.now(),
     data: result
   };
-  return result;
+  return result as TResult;
 };
 
 /**
@@ -117,6 +134,10 @@ export const createConfigExtension = <
 
 /**
  * Load the config file values for the current Storm workspace into environment variables
+ *
+ * @param workspaceRoot - The root directory of the workspace
+ * @param skipLogs - Skip writing logs to the console
+ * @returns The config for the current Storm workspace, throws an error if the config file could not be loaded
  */
 export const loadStormWorkspaceConfig = async (
   workspaceRoot?: string,
@@ -126,7 +147,8 @@ export const loadStormWorkspaceConfig = async (
     undefined,
     undefined,
     workspaceRoot,
-    skipLogs
+    skipLogs,
+    true
   );
   setConfigEnv(config);
 
@@ -138,4 +160,50 @@ export const loadStormWorkspaceConfig = async (
   }
 
   return config;
+};
+
+/**
+ * Try to load the config file values for the current Storm workspace into environment variables
+ *
+ * @param workspaceRoot - The root directory of the workspace
+ * @param skipLogs - Skip writing logs to the console
+ * @param useDefault - Whether to use the default config if no config file is found
+ * @returns The config for the current Storm workspace, or undefined if the config file could not be loaded
+ */
+export const tryLoadStormWorkspaceConfig = async (
+  workspaceRoot?: string,
+  skipLogs = true,
+  useDefault = false
+): Promise<StormWorkspaceConfig | undefined> => {
+  try {
+    const config = await createStormWorkspaceConfig(
+      undefined,
+      undefined,
+      workspaceRoot,
+      skipLogs,
+      useDefault
+    );
+    if (!config) {
+      return undefined;
+    }
+
+    setConfigEnv(config);
+
+    if (!skipLogs && !config.skipConfigLogging) {
+      writeTrace(
+        `⚙️  Using Storm Workspace configuration: \n${formatLogMessage(config)}`,
+        config
+      );
+    }
+
+    return config;
+  } catch (error) {
+    if (!skipLogs) {
+      writeWarning(
+        `⚠️  Failed to load Storm Workspace configuration: ${error}`,
+        { logLevel: "all" }
+      );
+    }
+    return undefined;
+  }
 };

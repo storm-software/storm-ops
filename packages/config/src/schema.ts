@@ -467,7 +467,6 @@ export const stormWorkspaceConfigSchema = z
     workspaceRoot: z
       .string()
       .trim()
-      .default("")
       .describe("The root directory of the workspace"),
     externalPackagePatterns: z
       .array(z.string())

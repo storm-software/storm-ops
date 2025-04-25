@@ -126,7 +126,7 @@ export const getConfigFile = async (
     }
   }
 
-  if (!config) {
+  if (!config || Object.keys(config).length === 0) {
     return undefined;
   }
 
