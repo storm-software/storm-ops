@@ -124,7 +124,7 @@ export const addPackageDependencies = async (
         implicitDependencies?.includes(localPackage.name) &&
         packageJson.dependencies?.[localPackage.name] === undefined
       ) {
-        ret[localPackage.name] = localPackage.version || "0.0.1";
+        ret[localPackage.name] = `^${localPackage.version || "0.0.1"}`;
       }
 
       return ret;
