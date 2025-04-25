@@ -199,7 +199,6 @@
         },
         "workspaceRoot": {
           "type": "string",
-          "default": "",
           "description": "The root directory of the workspace"
         },
         "externalPackagePatterns": {
@@ -579,6 +578,7 @@
         "release",
         "account",
         "error",
+        "workspaceRoot",
         "directories",
         "colors"
       ],
