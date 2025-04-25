@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.113.2](https://github.com/storm-software/storm-ops/releases/tag/config%401.113.2) (2025-04-25)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with excessive release logging
+  ([ded2654b3](https://github.com/storm-software/storm-ops/commit/ded2654b3))
+
 ## [1.113.1](https://github.com/storm-software/storm-ops/releases/tag/config%401.113.1) (2025-04-25)
 
 ### Miscellaneous

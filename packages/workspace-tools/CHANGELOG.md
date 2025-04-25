@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.266.8](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.266.8) (2025-04-25)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with excessive release logging
+  ([ded2654b3](https://github.com/storm-software/storm-ops/commit/ded2654b3))
+
 ## [1.266.7](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.266.7) (2025-04-25)
 
 ### Miscellaneous
