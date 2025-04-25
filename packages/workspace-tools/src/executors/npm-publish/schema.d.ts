@@ -32,7 +32,7 @@ export interface NpmPublishExecutorSchema {
  tag?: string,
 
  /**
-  * Otp
+  * One Time Password
   * 
   * The one time password
   * 

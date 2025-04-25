@@ -76,6 +76,15 @@ export async function releaseVersionGeneratorFn(
 
     writeTrace(
       `Generator schema options ⚙️ \n${Object.keys(options ?? {})
+        .filter(
+          key =>
+            ![
+              "projects",
+              "releaseGroup",
+              "projectGraph",
+              "currentVersionResolverMetadata"
+            ].includes(key)
+        )
         .map(key => ` - ${key}=${JSON.stringify(options[key])}`)
         .join("\n")}`,
       config

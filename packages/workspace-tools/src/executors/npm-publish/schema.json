@@ -25,7 +25,7 @@
       "default": "latest"
     },
     "otp": {
-      "title": "Otp",
+      "title": "One Time Password",
       "type": "number",
       "description": "The one time password",
       "id": "#otp"

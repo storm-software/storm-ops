@@ -36,7 +36,7 @@ The tag to publish with
 ## `otp`
 - **Type**: `number`
 
-> Otp
+> One Time Password
 
 
 The one time password
