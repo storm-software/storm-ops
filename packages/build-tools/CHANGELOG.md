@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.143.46](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.143.46) (2025-04-25)
+
+### Miscellaneous
+
+- **build-tools:** Update specifier used to link workspace packages
+  ([3e5e15a3b](https://github.com/storm-software/storm-ops/commit/3e5e15a3b))
+- **monorepo:** Regenerate README markdown files
+  ([2a4a88059](https://github.com/storm-software/storm-ops/commit/2a4a88059))
+
 ## [0.143.45](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.143.45) (2025-04-25)
 
 ### Miscellaneous
