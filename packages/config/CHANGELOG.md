@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.113.4](https://github.com/storm-software/storm-ops/releases/tag/config%401.113.4) (2025-04-25)
+
+### Bug Fixes
+
+- **workspace-tools:** Remove unneeded pnpm publish update
+  ([9812caeab](https://github.com/storm-software/storm-ops/commit/9812caeab))
+
 ## [1.113.3](https://github.com/storm-software/storm-ops/releases/tag/config%401.113.3) (2025-04-25)
 
 ### Miscellaneous

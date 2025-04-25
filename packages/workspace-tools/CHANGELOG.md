@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.266.10](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.266.10) (2025-04-25)
+
+### Bug Fixes
+
+- **workspace-tools:** Remove unneeded pnpm publish update
+  ([9812caeab](https://github.com/storm-software/storm-ops/commit/9812caeab))
+
 ## [1.266.9](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.266.9) (2025-04-25)
 
 ### Miscellaneous
