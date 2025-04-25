@@ -62,14 +62,14 @@ export default async function npmPublishExecutorFn(
 
   await pnpmCatalogUpdate(packageRoot, context.root);
 
-  const npmPublishCommandSegments = [`pnpm publish --json`];
+  const npmPublishCommandSegments = [`npm publish --json`];
   const npmViewCommandSegments = [
     `npm view ${packageName} versions dist-tags --json`
   ];
 
   const registry = options.registry
     ? options.registry
-    : execSync("pnpm config get registry", {
+    : execSync("npm config get registry", {
         cwd: packageRoot,
         env: {
           ...process.env,
@@ -336,7 +336,7 @@ Execution response: ${result.toString()}`
     try {
       console.error("\n ********************** \n");
       console.info("");
-      console.error("An error occured running pnpm publish.");
+      console.error("An error occured running npm publish.");
       console.error("Please see below for more information:");
       console.info("");
 
