@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.113.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.113.0) (2025-04-25)
+
+### Features
+
+- **config-tools:** Added the `tryGetWorkspaceConfig` helper function
+  ([cd4dc675b](https://github.com/storm-software/storm-ops/commit/cd4dc675b))
+- **config:** Added the `storm-software` preset and removed org specific values
+  from `base`
+  ([c575fbe92](https://github.com/storm-software/storm-ops/commit/c575fbe92))
+
 ## [1.112.25](https://github.com/storm-software/storm-ops/releases/tag/config%401.112.25) (2025-04-16)
 
 ### Miscellaneous
