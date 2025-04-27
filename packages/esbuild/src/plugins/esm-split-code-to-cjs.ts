@@ -16,7 +16,7 @@
  -------------------------------------------------------------------*/
 
 import * as esbuild from "esbuild";
-import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
+import { ESBuildOptions } from "../types";
 
 /**
  * Code splitting only works in ESM at the moment, this plugin will convert the
@@ -24,22 +24,22 @@ import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
  */
 export const esmSplitCodeToCjsPlugin = (
   options: ESBuildOptions,
-  resolvedOptions: ESBuildResolvedOptions,
+  resolvedOptions: ESBuildOptions
 ): esbuild.Plugin => ({
   name: "storm:esm-split-code-to-cjs",
   setup(build) {
-    build.onEnd(async (result) => {
+    build.onEnd(async result => {
       const outFiles = Object.keys(result.metafile?.outputs ?? {});
-      const jsFiles = outFiles.filter((f) => f.endsWith("js"));
+      const jsFiles = outFiles.filter(f => f.endsWith("js"));
 
       await esbuild.build({
-        outdir: resolvedOptions.outdir,
+        outdir: resolvedOptions.outputPath,
         entryPoints: jsFiles,
         allowOverwrite: true,
         format: "cjs",
         logLevel: "error",
-        packages: "external",
+        packages: "external"
       });
     });
-  },
+  }
 });

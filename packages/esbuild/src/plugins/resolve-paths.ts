@@ -18,7 +18,7 @@
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import type * as esbuild from "esbuild";
 import path from "node:path";
-import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
+import { ESBuildContext } from "../types";
 
 type TsConfig = {
   compilerOptions?: {
@@ -64,8 +64,7 @@ function resolvePathsConfig(options: TsConfig, cwd: string) {
  * in the amount of dependency nesting it supports.
  */
 export const resolvePathsPlugin = (
-  options: ESBuildOptions,
-  resolvedOptions: ESBuildResolvedOptions
+  context: ESBuildContext
 ): esbuild.Plugin => ({
   name: "storm:resolve-paths",
   setup(build) {
@@ -73,14 +72,14 @@ export const resolvePathsPlugin = (
     const parentTsConfig = require(
       build.initialOptions.tsconfig
         ? joinPaths(
-            resolvedOptions.config.workspaceRoot,
+            context.workspaceConfig.workspaceRoot,
             build.initialOptions.tsconfig
           )
-        : joinPaths(resolvedOptions.config.workspaceRoot, "tsconfig.json")
+        : joinPaths(context.workspaceConfig.workspaceRoot, "tsconfig.json")
     );
     const resolvedTsPaths = resolvePathsConfig(
       parentTsConfig,
-      options.projectRoot
+      context.workspaceConfig.workspaceRoot
     );
     const packagesRegex = new RegExp(
       `^(${Object.keys(resolvedTsPaths).join("|")})$`

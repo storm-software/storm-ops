@@ -17,30 +17,29 @@
 
 import { writeError } from "@storm-software/config-tools";
 import type * as esbuild from "esbuild";
-import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
+import { ESBuildOptions } from "../types";
 
 /**
  * Causes esbuild to exit immediately with an error code.
  */
 export const onErrorPlugin = (
   options: ESBuildOptions,
-  resolvedOptions: ESBuildResolvedOptions,
+  resolvedOptions: ESBuildOptions
 ): esbuild.Plugin => ({
   name: "storm:on-error",
   setup(build) {
-    build.onEnd((result) => {
+    build.onEnd(result => {
       // if there were errors found on the build
       if (result.errors.length > 0 && process.env.WATCH !== "true") {
         writeError(
           `The following errors occurred during the build:
-${result.errors.map((error) => error.text).join("\n")}
+${result.errors.map(error => error.text).join("\n")}
 
-`,
-          resolvedOptions.config,
+`
         );
 
         throw new Error("Storm esbuild process failed with errors.");
       }
     });
-  },
+  }
 });

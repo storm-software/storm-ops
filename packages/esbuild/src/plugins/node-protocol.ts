@@ -1,5 +1,5 @@
 import type * as esbuild from "esbuild";
-import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
+import { ESBuildOptions } from "../types";
 
 /**
  * The node: protocol was added to require in Node v14.18.0
@@ -7,7 +7,7 @@ import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
  */
 export const nodeProtocolPlugin = (
   options: ESBuildOptions,
-  resolvedOptions: ESBuildResolvedOptions,
+  resolvedOptions: ESBuildOptions
 ): esbuild.Plugin => {
   const nodeProtocol = "node:";
 
@@ -16,13 +16,13 @@ export const nodeProtocolPlugin = (
     setup({ onResolve }) {
       onResolve(
         {
-          filter: /^node:/,
+          filter: /^node:/
         },
         ({ path }) => ({
           path: path.slice(nodeProtocol.length),
-          external: true,
-        }),
+          external: true
+        })
       );
-    },
+    }
   };
 };

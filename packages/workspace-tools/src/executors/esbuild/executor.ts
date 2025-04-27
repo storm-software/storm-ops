@@ -31,7 +31,7 @@ export async function esbuildExecutorFn(
     ...options,
     projectRoot:
       context.projectsConfigurations.projects?.[context.projectName]!.root,
-    projectName: context.projectName,
+    name: context.projectName,
     sourceRoot:
       context.projectsConfigurations.projects?.[context.projectName]
         ?.sourceRoot,

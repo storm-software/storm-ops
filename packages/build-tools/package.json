@@ -164,7 +164,7 @@
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
     "nx": "catalog:",
-    "typescript": "^5.7.2"
+    "typescript": "^5.8.3"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
@@ -193,7 +193,7 @@
     "@types/node": "catalog:",
     "nx": "catalog:",
     "tsup": "catalog:",
-    "typescript": "^5.7.2"
+    "typescript": "^5.8.3"
   },
   "publishConfig": {
     "access": "public"

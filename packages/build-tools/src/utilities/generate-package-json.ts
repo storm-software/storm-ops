@@ -137,15 +137,15 @@ export const addPackageDependencies = async (
 };
 
 export const addWorkspacePackageJsonFields = async (
-  config: StormWorkspaceConfig,
+  workspaceConfig: StormWorkspaceConfig,
   projectRoot: string,
   sourceRoot: string,
   projectName: string,
   includeSrc = false,
   packageJson: Record<string, any>
 ): Promise<Record<string, any>> => {
-  const workspaceRoot = config.workspaceRoot
-    ? config.workspaceRoot
+  const workspaceRoot = workspaceConfig.workspaceRoot
+    ? workspaceConfig.workspaceRoot
     : findWorkspaceRoot();
   const workspacePackageJsonContent = await readFile(
     joinPaths(workspaceRoot, "package.json"),

@@ -24,13 +24,11 @@ import {
   addPackageDependencies,
   addWorkspacePackageJsonFields,
   copyAssets,
-  DEFAULT_COMPILED_BANNER,
   DEFAULT_TARGET,
   getEnv
 } from "@storm-software/build-tools";
-import { getConfig } from "@storm-software/config-tools/get-config";
+import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import {
-  formatLogMessage,
   getStopwatch,
   writeDebug,
   writeError,
@@ -39,31 +37,23 @@ import {
   writeTrace,
   writeWarning
 } from "@storm-software/config-tools/logger/console";
-import { isVerbose } from "@storm-software/config-tools/logger/get-log-level";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { watch as createWatcher } from "chokidar";
 import defu from "defu";
-import { debounce, flatten } from "es-toolkit";
-import { map } from "es-toolkit/compat";
+import { debounce } from "es-toolkit";
 import * as esbuild from "esbuild";
 import { BuildContext } from "esbuild";
 import { globbySync } from "globby";
 import { existsSync } from "node:fs";
 import hf from "node:fs/promises";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
-import { RendererEngine } from "./base/renderer-engine";
+import { Options, build as tsup } from "tsup";
 import { cleanDirectories } from "./clean";
-import { DEFAULT_BUILD_OPTIONS, getDefaultBuildPlugins } from "./config";
+import { DEFAULT_BUILD_OPTIONS } from "./config";
 import { depsCheckPlugin } from "./plugins/deps-check";
-import { shebangRenderer } from "./renderers/shebang";
 import { emitDts } from "./tsc";
-import {
-  ESBuildContext,
-  ESBuildResolvedOptions,
-  type ESBuildOptions
-} from "./types";
-import { getEntryPoints } from "./utilities/get-entry-points";
-import { handle, pipe, transduce } from "./utilities/helpers";
+import { ESBuildContext, type ESBuildOptions } from "./types";
+import { handle } from "./utilities/helpers";
 
 /**
  * Apply defaults to the original build options
@@ -71,9 +61,9 @@ import { handle, pipe, transduce } from "./utilities/helpers";
  * @param userOptions - the original build options provided by the user
  * @returns the build options with defaults applied
  */
-const resolveOptions = async (
+const resolveContext = async (
   userOptions: ESBuildOptions
-): Promise<ESBuildResolvedOptions> => {
+): Promise<ESBuildContext> => {
   const projectRoot = userOptions.projectRoot;
 
   const workspaceRoot = findWorkspaceRoot(projectRoot);
@@ -81,9 +71,11 @@ const resolveOptions = async (
     throw new Error("Cannot find Nx workspace root");
   }
 
-  const config = await getConfig(workspaceRoot.dir);
+  const workspaceConfig = await getWorkspaceConfig(true, {
+    workspaceRoot: workspaceRoot.dir
+  });
 
-  writeDebug("  ⚙️   Resolving build options", config);
+  writeDebug("  ⚙️   Resolving build options", workspaceConfig);
   const stopwatch = getStopwatch("Build options resolution");
 
   const projectGraph = await createProjectGraphAsync({
@@ -101,7 +93,7 @@ const resolveOptions = async (
 
   const projectJsonFile = await hf.readFile(projectJsonPath, "utf8");
   const projectJson = JSON.parse(projectJsonFile);
-  const projectName = projectJson.name;
+  const projectName = projectJson.name || userOptions.name;
 
   const projectConfigurations =
     readProjectsConfigurationFromProjectGraph(projectGraph);
@@ -126,70 +118,29 @@ const resolveOptions = async (
 
   const env = getEnv("esbuild", options as Parameters<typeof getEnv>[1]);
 
-  const result = {
+  const resolvedOptions = {
     ...options,
-    config,
-    mainFields:
-      options.platform === "node"
-        ? ["module", "main"]
-        : ["browser", "module", "main"],
-    ...userOptions,
     tsconfig: joinPaths(
       projectRoot,
       userOptions.tsconfig
         ? userOptions.tsconfig.replace(projectRoot, "")
         : "tsconfig.json"
     ),
-    format: options.format || "cjs",
-    entryPoints: await getEntryPoints(
-      config,
-      projectRoot,
-      projectJson.sourceRoot,
-      userOptions.entry ?? "./src/index.ts",
-      false
-    ),
-    outdir: userOptions.outputPath || joinPaths("dist", projectRoot),
-    distDir: userOptions.distDir || "dist",
-    plugins: [] as ESBuildResolvedOptions["plugins"],
-    name: userOptions.name || projectName,
-    projectConfigurations,
-    projectName,
-    projectGraph,
-    sourceRoot:
-      userOptions.sourceRoot ||
-      projectJson.sourceRoot ||
-      joinPaths(projectRoot, "src"),
-    minify: userOptions.minify || !userOptions.debug,
-    verbose: userOptions.verbose || isVerbose() || userOptions.debug === true,
-    includeSrc: userOptions.includeSrc === true,
-    metafile: userOptions.metafile !== false,
-    generatePackageJson: userOptions.generatePackageJson !== false,
-    clean: userOptions.clean !== false,
-    assets: userOptions.assets ?? [],
-    injectShims: userOptions.injectShims !== true,
-    bundle: userOptions.bundle !== false,
-    keepNames: true,
-    watch: userOptions.watch === true,
-    footer: userOptions.footer,
-    banner: {
-      js: options.banner || DEFAULT_COMPILED_BANNER,
-      css: options.banner || DEFAULT_COMPILED_BANNER
-    },
+    distDir: "dist",
+    name: projectName,
+    metafile: userOptions.mode === "development",
+    ...userOptions,
+    clean: false,
+    target: (userOptions.target || options.target) as Options["target"],
     splitting:
       options.format === "iife"
         ? false
-        : typeof options.splitting === "boolean"
+        : options.treeshake === undefined
           ? options.splitting
-          : options.format === "esm",
-    treeShaking: options.format === "esm",
+          : true,
     env,
     define: {
-      STORM_FORMAT: JSON.stringify(options.format || "cjs"),
-      ...(options.format === "cjs" && options.injectShims
-        ? {
-            "import.meta.url": "importMetaUrl"
-          }
-        : {}),
+      STORM_FORMAT: JSON.stringify(options.format),
       ...options.define,
       ...Object.keys(env || {}).reduce((res, key) => {
         const value = JSON.stringify(env[key]);
@@ -201,41 +152,45 @@ const resolveOptions = async (
           [`import.meta.env.${safeKey}`]: value
         };
       }, {})
-    },
-    inject: [
-      options.format === "cjs" && options.injectShims
-        ? joinPaths(__dirname, "../assets/cjs_shims.js")
-        : undefined,
-      options.format === "esm" &&
-      options.injectShims &&
-      options.platform === "node"
-        ? joinPaths(__dirname, "../assets/esm_shims.js")
-        : undefined
-    ].filter(Boolean) as string[]
-  } satisfies ESBuildResolvedOptions;
-  result.plugins =
-    userOptions.plugins ?? getDefaultBuildPlugins(userOptions, result);
+    }
+  } satisfies ESBuildOptions;
 
-  if (
-    options.inject &&
-    Array.isArray(options.inject) &&
-    options.inject.length > 0
-  ) {
-    result.inject = options.inject.reduce((ret, inj) => {
-      if (inj && typeof inj === "string" && ret.includes(inj)) {
-        ret.push(inj);
-      }
+  // if (
+  //   options.inject &&
+  //   Array.isArray(options.inject) &&
+  //   options.inject.length > 0
+  // ) {
+  //   result.inject = options.inject.reduce((ret, inj) => {
+  //     if (inj && typeof inj === "string" && ret.includes(inj)) {
+  //       ret.push(inj);
+  //     }
 
-      return ret;
-    }, result.inject);
-  }
-
-  delete result.entry;
-  delete result.outputPath;
+  //     return ret;
+  //   }, result.inject);
+  // }
 
   stopwatch();
 
-  return result;
+  return {
+    options: resolvedOptions,
+    clean: userOptions.clean !== false,
+    workspaceConfig,
+    projectConfigurations,
+    projectName,
+    projectGraph,
+    sourceRoot:
+      resolvedOptions.sourceRoot ||
+      projectJson.sourceRoot ||
+      joinPaths(resolvedOptions.projectRoot, "src"),
+    outputPath:
+      resolvedOptions.outputPath ||
+      joinPaths(
+        workspaceConfig.workspaceRoot,
+        "dist",
+        resolvedOptions.projectRoot
+      ),
+    minify: resolvedOptions.minify || resolvedOptions.mode === "production"
+  } as ESBuildContext;
 };
 
 async function generatePackageJson(context: ESBuildContext) {
@@ -243,7 +198,7 @@ async function generatePackageJson(context: ESBuildContext) {
     context.options.generatePackageJson !== false &&
     existsSync(joinPaths(context.options.projectRoot, "package.json"))
   ) {
-    writeDebug("  ✍️   Writing package.json file", context.options.config);
+    writeDebug("  ✍️   Writing package.json file", context.workspaceConfig);
     const stopwatch = getStopwatch("Write package.json file");
 
     const packageJsonPath = joinPaths(
@@ -256,7 +211,7 @@ async function generatePackageJson(context: ESBuildContext) {
 
     const packageJsonFile = await hf.readFile(
       joinPaths(
-        context.options.config.workspaceRoot,
+        context.workspaceConfig.workspaceRoot,
         context.options.projectRoot,
         "package.json"
       ),
@@ -268,65 +223,70 @@ async function generatePackageJson(context: ESBuildContext) {
     }
 
     packageJson = await addPackageDependencies(
-      context.options.config.workspaceRoot,
+      context.workspaceConfig.workspaceRoot,
       context.options.projectRoot,
-      context.options.projectName,
+      context.projectName,
       packageJson
     );
 
     packageJson = await addWorkspacePackageJsonFields(
-      context.options.config,
+      context.workspaceConfig,
       context.options.projectRoot,
-      context.options.sourceRoot,
-      context.options.projectName,
+      context.sourceRoot,
+      context.projectName,
       false,
       packageJson
     );
 
-    packageJson.exports ??= {};
-    packageJson.exports["./package.json"] ??= "./package.json";
-    packageJson.exports["."] ??=
-      `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.js`;
+    if (context.options.entry) {
+      packageJson.exports ??= {};
+      packageJson.exports["./package.json"] ??= "./package.json";
+      packageJson.exports["."] ??=
+        `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.js`;
 
-    for (const entryPoint of context.options.entryPoints) {
-      if (entryPoint.out) {
-        const entry = entryPoint.out
-          .replaceAll("\\", "/")
-          .replaceAll(/^(\.\/)*/g, "")
-          .replace(/\.([cm])?[jt]s(x)?$/g, "");
+      const entryPoints = Array.isArray(context.options.entry)
+        ? context.options.entry
+        : Object.keys(context.options.entry);
+      for (const entryPoint of entryPoints) {
+        if (context.options.entry[entryPoint]) {
+          const entry = context.options.entry[entryPoint]
+            .replaceAll("\\", "/")
+            .replaceAll(/^(\.\/)*/g, "")
+            .replace(/\.([cm])?[jt]s(x)?$/g, "");
 
-        packageJson.exports[`./${entry}`] ??=
-          `.${context.options.distDir ? `/${context.options.distDir}` : ""}/${entry}.js`;
-      }
-    }
-
-    if (context.options.format === "esm") {
-      packageJson.module =
-        packageJson.type === "module"
-          ? `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.js`
-          : `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.mjs`;
-    } else {
-      packageJson.main =
-        packageJson.type === "commonjs"
-          ? `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.js`
-          : `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.cjs`;
-    }
-
-    packageJson.types = `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.d.ts`;
-
-    packageJson.exports = Object.keys(packageJson.exports).reduce(
-      (ret, key) => {
-        if (key.endsWith("/index") && !ret[key.replace("/index", "")]) {
-          ret[key.replace("/index", "")] = packageJson.exports[key];
+          packageJson.exports[`./${entry}`] ??=
+            `.${context.options.distDir ? `/${context.options.distDir}` : ""}/${entry}.js`;
         }
+      }
 
-        return ret;
-      },
-      packageJson.exports
-    );
+      if (context.options.format === "esm") {
+        packageJson.module =
+          packageJson.type === "module"
+            ? `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.js`
+            : `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.mjs`;
+      } else {
+        packageJson.main =
+          packageJson.type === "commonjs"
+            ? `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.js`
+            : `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.cjs`;
+      }
+
+      packageJson.types = `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.d.ts`;
+
+      packageJson.exports = Object.keys(packageJson.exports).reduce(
+        (ret, key) => {
+          if (key.endsWith("/index") && !ret[key.replace("/index", "")]) {
+            ret[key.replace("/index", "")] = packageJson.exports[key];
+          }
+
+          return ret;
+        },
+        packageJson.exports
+      );
+    }
 
     await writeJsonFile(
-      joinPaths(context.options.outdir, "package.json"),
+      joinPaths(context.outputPath, "package.json"),
       packageJson
     );
 
@@ -337,164 +297,135 @@ async function generatePackageJson(context: ESBuildContext) {
 }
 
 /**
- * Create two deferred builds for esm and cjs. The one follows the other:
- * - 1. The code gets compiled to an optimized tree-shaken esm output
- * - 2. We take that output and compile it to an optimized cjs output
- *
- * @param options - the original build options
- * @returns if options = [a, b], we get [a-esm, a-cjs, b-esm, b-cjs]
+ * Execute tsup with all the configurations we pass
  */
-async function createOptions(options: ESBuildOptions[]) {
-  return flatten(
-    await Promise.all(
-      map(options, opt => [
-        // we defer it so that we don't trigger glob immediately
-        () => resolveOptions(opt)
-      ])
-    )
-  );
-}
-
-/**
- * We only want to trigger the glob search once we are ready, and that is when
- * the previous build has finished. We get the build options from the deferred.
- */
-async function generateContext(
-  getOptions: () => Promise<ESBuildResolvedOptions>
-): Promise<ESBuildContext> {
-  const options = await getOptions();
-
-  const rendererEngine = new RendererEngine([
-    shebangRenderer,
-    ...(options.renderers || [])
-    // treeShakingPlugin({
-    //   treeshake: options.treeshake,
-    //   name: options.globalName,
-    //   silent: options.silent
-    // }),
-    // cjsSplitting(),
-    // cjsInterop(),
-    // sizeReporter(),
-    // terserPlugin({
-    //   minifyOptions: options.minify,
-    //   format,
-    //   terserOptions: options.terserOptions,
-    //   globalName: options.globalName
-    // })
-  ]);
-
-  return { options, rendererEngine };
-}
-
-/**
- * Execute esbuild with all the configurations we pass
- */
-async function executeEsBuild(context: ESBuildContext) {
+async function executeTsup(context: ESBuildContext) {
   writeDebug(
     `  🚀  Running ${context.options.name} build`,
-    context.options.config
+    context.workspaceConfig
   );
   const stopwatch = getStopwatch(`${context.options.name} build`);
 
-  if (process.env.STORM_WATCH) {
-    const ctx = await esbuild.context(context.options as esbuild.BuildOptions);
-
-    watch(ctx, context.options);
-  }
-
-  // Remove options not used by esbuild
-  const options = { ...context.options } as Partial<ESBuildResolvedOptions>;
-  options.outdir = joinPaths(context.options.outdir, context.options.distDir);
-
-  if (
-    !options.inject ||
-    !Array.isArray(options.inject) ||
-    options.inject.length === 0 ||
-    // eslint-disable-next-line no-constant-binary-expression, @typescript-eslint/no-explicit-any
-    (options.inject as any) === ({} as any)
-  ) {
-    delete options.inject;
-  }
-
-  delete options.dts;
-  delete options.env;
-  delete options.name;
-  delete options.assets;
-  delete options.mode;
-  delete options.orgName;
-  delete options.watch;
-  delete options.clean;
-  delete options.debug;
-  delete options.generatePackageJson;
-  delete options.distDir;
-  delete options.includeSrc;
-  delete options.verbose;
-  delete options.projectRoot;
-  delete options.projectName;
-  delete options.projectGraph;
-  delete options.projectConfigurations;
-  delete options.renderers;
-  delete options.config;
-  delete options.injectShims;
-  delete options.external;
-
-  writeTrace(
-    `Run esbuild (${context.options.name}) with the following options: \n${formatLogMessage({ ...options, define: "<Hidden>" })}`,
-    context.options.config
-  );
-
-  const result = await esbuild.build(
-    options as Omit<
-      ESBuildResolvedOptions,
-      | "dts"
-      | "env"
-      | "name"
-      | "assets"
-      | "mode"
-      | "orgName"
-      | "watch"
-      | "clean"
-      | "debug"
-      | "generatePackageJson"
-      | "emitOnAll"
-      | "distDir"
-      | "includeSrc"
-      | "verbose"
-      | "projectRoot"
-      | "projectName"
-      | "projectGraph"
-      | "projectConfigurations"
-      | "renderers"
-      | "config"
-      | "injectShims"
-    >
-  );
-  await esbuild.stop();
-
-  if (result.metafile) {
-    const metafilePath = `${context.options.outdir}/${context.options.name}.meta.json`;
-    await hf.writeFile(metafilePath, JSON.stringify(result.metafile));
-  }
+  await tsup({
+    ...context.options,
+    outDir: context.outputPath,
+    workspaceConfig: context.workspaceConfig
+  } as Options);
 
   stopwatch();
 
   return context;
 }
 
+// /**
+//  * Execute esbuild with all the configurations we pass
+//  */
+// async function executeEsBuild(context: ESBuildContext) {
+//   writeDebug(
+//     `  🚀  Running ${context.options.name} build`,
+//     context.options.config
+//   );
+//   const stopwatch = getStopwatch(`${context.options.name} build`);
+
+//   if (process.env.STORM_WATCH) {
+//     const ctx = await esbuild.context(context.options as esbuild.BuildOptions);
+
+//     watch(ctx, context.options);
+//   }
+
+//   // Remove options not used by esbuild
+//   const options = { ...context.options } as Partial<ESBuildOptions>;
+//   options.outdir = joinPaths(context.options.outdir, context.options.distDir);
+
+//   if (
+//     !options.inject ||
+//     !Array.isArray(options.inject) ||
+//     options.inject.length === 0 ||
+//     // eslint-disable-next-line no-constant-binary-expression, @typescript-eslint/no-explicit-any
+//     (options.inject as any) === ({} as any)
+//   ) {
+//     delete options.inject;
+//   }
+
+//   delete options.dts;
+//   delete options.env;
+//   delete options.name;
+//   delete options.assets;
+//   delete options.mode;
+//   delete options.orgName;
+//   delete options.watch;
+//   delete options.clean;
+//   delete options.debug;
+//   delete options.generatePackageJson;
+//   delete options.distDir;
+//   delete options.includeSrc;
+//   delete options.verbose;
+//   delete options.projectRoot;
+//   delete options.projectName;
+//   delete options.projectGraph;
+//   delete options.projectConfigurations;
+//   delete options.renderers;
+//   delete options.config;
+//   delete options.injectShims;
+//   delete options.external;
+
+//   writeTrace(
+//     `Run esbuild (${context.options.name}) with the following options: \n${formatLogMessage({ ...options, define: "<Hidden>" })}`,
+//     context.options.config
+//   );
+
+//   const result = await esbuild.build(
+//     options as Omit<
+//       ESBuildOptions,
+//       | "dts"
+//       | "env"
+//       | "name"
+//       | "assets"
+//       | "mode"
+//       | "orgName"
+//       | "watch"
+//       | "clean"
+//       | "debug"
+//       | "generatePackageJson"
+//       | "emitOnAll"
+//       | "distDir"
+//       | "includeSrc"
+//       | "verbose"
+//       | "projectRoot"
+//       | "projectName"
+//       | "projectGraph"
+//       | "projectConfigurations"
+//       | "renderers"
+//       | "config"
+//       | "injectShims"
+//     >
+//   );
+//   await esbuild.stop();
+
+//   if (result.metafile) {
+//     const metafilePath = `${context.options.outdir}/${context.options.name}.meta.json`;
+//     await hf.writeFile(metafilePath, JSON.stringify(result.metafile));
+//   }
+
+//   stopwatch();
+
+//   return context;
+// }
+
 /**
  * Execute the typescript compiler
  */
-async function executeTypescript(context: ESBuildContext) {
+export async function executeTypescript(context: ESBuildContext) {
   if (context.result?.errors.length === 0 && context.options.dts) {
     writeDebug(
       `  📋  Running TypeScript Compiler for ${context.options.name}`,
-      context.options.config
+      context.workspaceConfig
     );
     const stopwatch = getStopwatch(`${context.options.name} asset copy`);
 
     await emitDts(
-      context.options.config,
-      context.options.tsconfig,
+      context.workspaceConfig,
+      context.options.tsconfig!,
       context.options.tsconfigRaw,
       true
     );
@@ -511,17 +442,17 @@ async function executeTypescript(context: ESBuildContext) {
 async function copyBuildAssets(context: ESBuildContext) {
   if (context.result?.errors.length === 0) {
     writeDebug(
-      `  📋  Copying asset files to output directory: ${context.options.outdir}`,
-      context.options.config
+      `  📋  Copying asset files to output directory: ${context.outputPath}`,
+      context.workspaceConfig
     );
     const stopwatch = getStopwatch(`${context.options.name} asset copy`);
 
     await copyAssets(
-      context.options.config,
+      context.workspaceConfig,
       context.options.assets ?? [],
-      context.options.outdir,
+      context.outputPath,
       context.options.projectRoot,
-      context.options.sourceRoot,
+      context.sourceRoot,
       true,
       false
     );
@@ -542,20 +473,20 @@ async function reportResults(context: ESBuildContext) {
         `  🚧  The following warnings occurred during the build: ${context.result.warnings
           .map(warning => warning.text)
           .join("\n")}`,
-        context.options.config
+        context.workspaceConfig
       );
     }
 
     writeSuccess(
       `  📦  The ${context.options.name} build completed successfully`,
-      context.options.config
+      context.workspaceConfig
     );
   } else if (context.result?.errors && context.result?.errors.length > 0) {
     writeError(
       `  ❌  The ${context.options.name} build failed with the following errors: ${context.result.errors
         .map(error => error.text)
         .join("\n")}`,
-      context.options.config
+      context.workspaceConfig
     );
 
     throw new Error(
@@ -608,17 +539,17 @@ async function dependencyCheck(options: ESBuildOptions) {
  * @param context - the build context
  */
 export async function cleanOutputPath(context: ESBuildContext) {
-  if (context.options.clean !== false && context.options.outdir) {
+  if (context.clean !== false && context.outputPath) {
     writeDebug(
-      ` 🧹  Cleaning ${context.options.name} output path: ${context.options.outdir}`,
-      context.options.config
+      ` 🧹  Cleaning ${context.options.name} output path: ${context.outputPath}`,
+      context.workspaceConfig
     );
     const stopwatch = getStopwatch(`${context.options.name} output clean`);
 
     await cleanDirectories(
       context.options.name,
-      context.options.outdir,
-      context.options.config
+      context.outputPath,
+      context.workspaceConfig
     );
 
     stopwatch();
@@ -633,7 +564,7 @@ export async function cleanOutputPath(context: ESBuildContext) {
  * @param options - the build options
  * @returns the build result
  */
-export async function build(options: ESBuildOptions | ESBuildOptions[]) {
+export async function build(options: ESBuildOptions) {
   writeDebug(`  ⚡   Executing Storm ESBuild pipeline`);
   const stopwatch = getStopwatch("ESBuild pipeline");
 
@@ -643,20 +574,16 @@ export async function build(options: ESBuildOptions | ESBuildOptions[]) {
       throw new Error("No build options were provided");
     }
 
-    void transduce.async(opts, dependencyCheck);
+    const context = await resolveContext(options);
+    await cleanOutputPath(context);
 
-    await transduce.async(
-      await createOptions(opts),
-      pipe.async(
-        generateContext,
-        cleanOutputPath,
-        generatePackageJson,
-        executeTypescript,
-        executeEsBuild,
-        copyBuildAssets,
-        reportResults
-      )
-    );
+    await Promise.all([
+      dependencyCheck(context.options),
+      generatePackageJson(context),
+      copyBuildAssets(context),
+      executeTsup(context)
+    ]);
+    await reportResults(context);
 
     writeSuccess("  🏁  ESBuild pipeline build completed successfully");
   } catch (error) {
@@ -677,7 +604,7 @@ export async function build(options: ESBuildOptions | ESBuildOptions[]) {
  * @param options - the build options
  * @returns the build result
  */
-const watch = (context: BuildContext, options: ESBuildResolvedOptions) => {
+export const watch = (context: BuildContext, options: ESBuildOptions) => {
   if (!options.watch) {
     return context;
   }

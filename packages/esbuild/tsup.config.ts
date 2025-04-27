@@ -12,7 +12,7 @@ export default defineConfig([
     clean: true,
     dts: true,
     sourcemap: false,
-    tsconfig: "./tsconfig.json",
+    tsconfig: "./packages/esbuild/tsconfig.json",
     external: ["esbuild", "nx", "@nx/*"],
     skipNodeModulesBundle: true
   },
@@ -28,7 +28,7 @@ export default defineConfig([
     clean: true,
     dts: false,
     sourcemap: false,
-    tsconfig: "./tsconfig.json",
+    tsconfig: "./packages/esbuild/tsconfig.json",
     skipNodeModulesBundle: false
   }
 ]);

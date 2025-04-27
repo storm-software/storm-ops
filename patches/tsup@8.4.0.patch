@@ -1,3 +1,38 @@
+diff --git a/dist/chunk-TWFEYLU4.js b/dist/chunk-TWFEYLU4.js
+index 811e92e4d4b6adf6a3d0b3c8f97661f802d5e55b..dc5e715ea1b7574c7740b9b0df5e46efde72492e 100644
+--- a/dist/chunk-TWFEYLU4.js
++++ b/dist/chunk-TWFEYLU4.js
+@@ -204,8 +204,8 @@ function defaultOutExtension({
+     dts: dtsExtension
+   };
+ }
+-function ensureTempDeclarationDir() {
+-  const cwd = process.cwd();
++function ensureTempDeclarationDir(options) {
++  const cwd = options.workspaceConfig?.workspaceRoot || process.cwd();
+   const dirPath = _path2.default.join(cwd, ".tsup", "declaration");
+   if (_fs2.default.existsSync(dirPath)) {
+     return dirPath;
+diff --git a/dist/chunk-VGC3FXLU.js b/dist/chunk-VGC3FXLU.js
+index ef2599c4f04d34227a73b405e1170045d9a5bca0..960a9ccc8405173be3f1db19b2299fb895f1ba06 100644
+--- a/dist/chunk-VGC3FXLU.js
++++ b/dist/chunk-VGC3FXLU.js
+@@ -8,13 +8,13 @@ var _path = require('path'); var _path2 = _interopRequireDefault(_path);
+ var _joycon = require('joycon'); var _joycon2 = _interopRequireDefault(_joycon);
+ var _bundlerequire = require('bundle-require');
+ var joycon = new (0, _joycon2.default)();
+-var loadJson = async (filepath) => {
++var loadJson = async (filepath, options) => {
+   try {
+     return _chunkTWFEYLU4js.jsoncParse.call(void 0, await _fs2.default.promises.readFile(filepath, "utf8"));
+   } catch (error) {
+     if (error instanceof Error) {
+       throw new Error(
+-        `Failed to parse ${_path2.default.relative(process.cwd(), filepath)}: ${error.message}`
++        `Failed to parse ${_path2.default.relative(options.workspaceConfig?.workspaceRoot || process.cwd(), filepath)}: ${error.message}`
+       );
+     } else {
+       throw error;
 diff --git a/dist/index.d.ts b/dist/index.d.ts
 index 0d10e3993019d08a97151b9fec142fd3d51cd950..a968d21ea73780b3cf6aa70e9033e3454f0ed56f 100644
 --- a/dist/index.d.ts
@@ -12,7 +47,7 @@ index 0d10e3993019d08a97151b9fec142fd3d51cd950..a968d21ea73780b3cf6aa70e9033e345
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f0bda2502 100644
+index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..3b71f3477f4fc7d60712c6c13bc2fcdc09cc1945 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -83,7 +83,7 @@ var externalPlugin = ({
@@ -165,7 +200,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f
          writtenFiles.push({
            get name() {
 -            return _path2.default.relative(process.cwd(), info.path);
-+            return _path2.default.relative(this.context.options.workspaceConfig?.workspaceRoot || process.cwd(), info.path);
++            return _path2.default.relative(options.workspaceConfig?.workspaceRoot || process.cwd(), info.path);
            },
            get size() {
              return contents.length;
@@ -174,7 +209,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f
            writtenFiles.push({
              get name() {
 -              return _path2.default.relative(process.cwd(), outPath);
-+              return _path2.default.relative(this.context.options.workspaceConfig?.workspaceRoot || process.cwd(), outPath);
++              return _path2.default.relative(options.workspaceConfig?.workspaceRoot || process.cwd(), outPath);
              },
              get size() {
                return contents2.length;
@@ -196,18 +231,29 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f
      _path2.default.resolve(publicDir === true ? "public" : publicDir)
    );
    return _chunkTWFEYLU4js.slash.call(void 0, _path2.default.resolve(filePath)).startsWith(`${publicPath}/`);
-@@ -1132,8 +1137,8 @@ ${diagnosticMessage}`
+@@ -1132,13 +1137,16 @@ ${diagnosticMessage}`
    }
    return fileMapping;
  }
 -function emit(compilerOptions, tsconfig) {
 -  const cwd = process.cwd();
-+function emit(compilerOptions, tsconfig, options) {
-+  const cwd = options.workspaceConfig?.workspaceRoot || process.cwd();
-   const rawTsconfig = _bundlerequire.loadTsConfig.call(void 0, cwd, tsconfig);
+-  const rawTsconfig = _bundlerequire.loadTsConfig.call(void 0, cwd, tsconfig);
++function emit(compilerOptions, tsconfig, _options) {
++  const cwd = _options.workspaceConfig?.workspaceRoot || process.cwd();
++  let rawTsconfig = _bundlerequire.loadTsConfig.call(void 0, cwd, tsconfig);
    if (!rawTsconfig) {
-     throw new Error(`Unable to find ${tsconfig || "tsconfig.json"} in ${cwd}`);
-@@ -1174,7 +1179,7 @@ function runTypeScriptCompiler(options) {
+-    throw new Error(`Unable to find ${tsconfig || "tsconfig.json"} in ${cwd}`);
++    rawTsconfig = _bundlerequire.loadTsConfig.call(void 0, process.cwd(), tsconfig);
++    if (!rawTsconfig) {
++      throw new Error(`Unable to find ${tsconfig || "tsconfig.json"} in ${cwd}`);
++    }
+   }
+-  const declarationDir = _chunkTWFEYLU4js.ensureTempDeclarationDir.call(void 0, );
++  const declarationDir = _chunkTWFEYLU4js.ensureTempDeclarationDir.call(void 0, _options);
+   const parsedTsconfig = _typescript2.default.parseJsonConfigFileContent(
+     {
+       ...rawTsconfig.data,
+@@ -1174,7 +1182,7 @@ function runTypeScriptCompiler(options) {
      };
      logger.info("tsc", "Build start");
      const dtsOptions = options.experimentalDts;
@@ -216,7 +262,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f
      logger.success("tsc", `\u26A1\uFE0F Build success in ${getDuration()}`);
      return exports;
    } catch (error) {
-@@ -1199,7 +1204,7 @@ function formatAggregationExports(exports, declarationDirPath) {
+@@ -1199,7 +1207,7 @@ function formatAggregationExports(exports, declarationDirPath) {
  `;
  }
  function formatAggregationExport(declaration, declarationDirPath) {
@@ -225,7 +271,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f
      `./${_path2.default.posix.normalize(
        _chunkTWFEYLU4js.slash.call(void 0, _path2.default.relative(declarationDirPath, declaration.destFileName))
      )}`
-@@ -1221,7 +1226,7 @@ function formatAggregationExport(declaration, declarationDirPath) {
+@@ -1221,7 +1229,7 @@ function formatAggregationExport(declaration, declarationDirPath) {
    }
  }
  function formatDistributionExports(exports, fromFilePath, toFilePath) {
@@ -234,7 +280,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f
      _path2.default.posix.relative(
        _path2.default.posix.dirname(_path2.default.posix.normalize(_chunkTWFEYLU4js.slash.call(void 0, fromFilePath))),
        _path2.default.posix.normalize(_chunkTWFEYLU4js.slash.call(void 0, toFilePath))
-@@ -1276,8 +1281,8 @@ function formatDistributionExport(declaration, dest) {
+@@ -1276,8 +1284,8 @@ function formatDistributionExport(declaration, dest) {
  
  // src/api-extractor.ts
  var logger2 = _chunkVGC3FXLUjs.createLogger.call(void 0, );
@@ -245,16 +291,19 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f
    const packageJsonFullPath = _path2.default.join(cwd, "package.json");
    const configObject = {
      mainEntryPointFilePath: inputFilePath,
-@@ -1329,7 +1334,7 @@ async function rollupDtsFiles(options, exports, format) {
+@@ -1327,9 +1335,9 @@ async function rollupDtsFiles(options, exports, format) {
+   if (!options.experimentalDts || !_optionalChain([options, 'access', _18 => _18.experimentalDts, 'optionalAccess', _19 => _19.entry])) {
+     return;
    }
-   const declarationDir = _chunkTWFEYLU4js.ensureTempDeclarationDir.call(void 0, );
+-  const declarationDir = _chunkTWFEYLU4js.ensureTempDeclarationDir.call(void 0, );
++  const declarationDir = _chunkTWFEYLU4js.ensureTempDeclarationDir.call(void 0, options);
    const outDir = options.outDir || "dist";
 -  const pkg = await _chunkVGC3FXLUjs.loadPkg.call(void 0, process.cwd());
 +  const pkg = await _chunkVGC3FXLUjs.loadPkg.call(void 0, options.workspaceConfig?.workspaceRoot || process.cwd());
    const dtsExtension = _chunkTWFEYLU4js.defaultOutExtension.call(void 0, { format, pkgType: pkg.type }).dts;
    const tsconfig = options.tsconfig || "tsconfig.json";
    let dtsInputFilePath = _path2.default.join(
-@@ -1338,11 +1343,11 @@ async function rollupDtsFiles(options, exports, format) {
+@@ -1338,11 +1346,11 @@ async function rollupDtsFiles(options, exports, format) {
    );
    dtsInputFilePath = dtsInputFilePath.replace(/\.d\.mts$/, ".dmts.d.ts").replace(/\.d\.cts$/, ".dcts.d.ts");
    const dtsOutputFilePath = _path2.default.join(outDir, `_tsup-dts-rollup${dtsExtension}`);
@@ -269,7 +318,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f
    for (let [out, sourceFileName] of Object.entries(
      options.experimentalDts.entry
    )) {
-@@ -1351,7 +1356,7 @@ async function rollupDtsFiles(options, exports, format) {
+@@ -1351,7 +1359,7 @@ async function rollupDtsFiles(options, exports, format) {
      const currentExports = exports.filter(
        (declaration) => declaration.sourceFileName === sourceFileName
      );
@@ -278,7 +327,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f
        outFileName,
        formatDistributionExports(currentExports, outFileName, dtsOutputFilePath)
      );
-@@ -1423,7 +1428,7 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -1423,10 +1431,16 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
      ..._options,
      format: typeof _options.format === "string" ? [_options.format] : _options.format || ["cjs"],
      dts: typeof _options.dts === "boolean" ? _options.dts ? {} : void 0 : typeof _options.dts === "string" ? { entry: _options.dts } : _options.dts,
@@ -287,7 +336,16 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f
        _options.experimentalDts
      )
    };
-@@ -1449,11 +1454,11 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
++
++  if (!options.workspaceConfig)
++    options.workspaceConfig = {};
++  if (!options.workspaceConfig.workspaceRoot)
++    options.workspaceConfig.workspaceRoot = process.cwd();
++
+   _chunkVGC3FXLUjs.setSilent.call(void 0, options.silent);
+   const entry = options.entry || options.entryPoints;
+   if (!entry || Object.keys(entry).length === 0) {
+@@ -1449,11 +1463,11 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
      options.entry = entry;
      logger3.info("CLI", `Building entry: ${JSON.stringify(entry)}`);
    }
@@ -301,7 +359,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f
      );
      options.tsconfig = tsconfig.path;
      options.tsconfigResolvePaths = _optionalChain([tsconfig, 'access', _22 => _22.data, 'optionalAccess', _23 => _23.compilerOptions, 'optionalAccess', _24 => _24.paths]) || {};
-@@ -1465,7 +1470,7 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -1465,7 +1479,7 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
        };
      }
      if (options.experimentalDts) {
@@ -310,7 +368,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f
          options,
          tsconfig
        );
-@@ -1482,8 +1487,8 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -1482,8 +1496,8 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
    return options;
  };
  async function build(_options) {
@@ -321,7 +379,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f
      _options.config === true ? void 0 : _options.config
    );
    const configData = typeof config.data === "function" ? await config.data(_options) : config.data;
-@@ -1559,7 +1564,7 @@ async function build(_options) {
+@@ -1559,7 +1573,7 @@ async function build(_options) {
              let onSuccessProcess;
              let onSuccessCleanup;
              const buildDependencies = /* @__PURE__ */ new Set();
@@ -330,7 +388,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f
              const doOnSuccessCleanup = async () => {
                if (onSuccessProcess) {
                  await killProcess({
-@@ -1572,7 +1577,7 @@ async function build(_options) {
+@@ -1572,7 +1586,7 @@ async function build(_options) {
                onSuccessProcess = void 0;
                onSuccessCleanup = void 0;
              };
@@ -339,7 +397,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f
                () => {
                  return buildAll();
                },
-@@ -1676,7 +1681,7 @@ async function build(_options) {
+@@ -1676,7 +1690,7 @@ async function build(_options) {
                  let shouldSkipChange = false;
                  if (options.watch === true) {
                    if (file === "package.json" && !buildDependencies.has(file)) {
@@ -349,7 +407,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f
                      depsHash = currentHash;
                    } else if (!buildDependencies.has(file)) {
 diff --git a/dist/rollup.js b/dist/rollup.js
-index cc82363277fe849c9460937773d9bc8b5c86beb6..0f0abbab5b5e3c1a878678a519b3ccfb8055d7eb 100644
+index cc82363277fe849c9460937773d9bc8b5c86beb6..eb7b2d497869a941a5463e027d0c99f4bd394540 100644
 --- a/dist/rollup.js
 +++ b/dist/rollup.js
 @@ -4834,14 +4834,14 @@ var require_rollup_plugin_dts = _chunkTWFEYLU4js.__commonJS.call(void 0, {
@@ -369,7 +427,22 @@ index cc82363277fe849c9460937773d9bc8b5c86beb6..0f0abbab5b5e3c1a878678a519b3ccfb
          if (!configPath) {
            return { dtsFiles, dirName, compilerOptions };
          }
-@@ -4877,11 +4877,11 @@ var require_rollup_plugin_dts = _chunkTWFEYLU4js.__commonJS.call(void 0, {
+@@ -4862,7 +4862,7 @@ var require_rollup_plugin_dts = _chunkTWFEYLU4js.__commonJS.call(void 0, {
+       } else {
+         logCache("HIT", cacheKey);
+       }
+-      const { fileNames, options, errors } = configByPath.get(cacheKey);
++      const { fileNames, options: cachedOptions, errors } = configByPath.get(cacheKey);
+       dtsFiles = fileNames.filter((name) => DTS_EXTENSIONS.test(name));
+       if (errors.length) {
+         console.error(ts2.formatDiagnostics(errors, formatHost));
+@@ -4872,16 +4872,16 @@ var require_rollup_plugin_dts = _chunkTWFEYLU4js.__commonJS.call(void 0, {
+         dtsFiles,
+         dirName,
+         compilerOptions: {
+-          ...options,
++          ...cachedOptions,
+           ...compilerOptions
          }
        };
      }
@@ -380,7 +453,7 @@ index cc82363277fe849c9460937773d9bc8b5c86beb6..0f0abbab5b5e3c1a878678a519b3ccfb
        return ts2.createProgram([fileName].concat(Array.from(dtsFiles)), compilerOptions, ts2.createCompilerHost(compilerOptions, true));
      }
 -    function createPrograms(input, overrideOptions, tsconfig) {
-+    function createPrograms(input, overrideOptions, tsconfig, options) {
++    function createPrograms(input, overrideOptions, tsconfig, _options) {
        const programs = [];
        let inputs = [];
        let dtsFiles = /* @__PURE__ */ new Set();
@@ -389,7 +462,7 @@ index cc82363277fe849c9460937773d9bc8b5c86beb6..0f0abbab5b5e3c1a878678a519b3ccfb
          }
          main = path__namespace.resolve(main);
 -        const options = getCompilerOptions(main, overrideOptions, tsconfig);
-+        const options = getCompilerOptions(main, overrideOptions, tsconfig, options);
++        const options = getCompilerOptions(main, overrideOptions, tsconfig, _options);
          options.dtsFiles.forEach(dtsFiles.add, dtsFiles);
          if (!inputs.length) {
            inputs.push(main);

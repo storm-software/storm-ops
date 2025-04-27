@@ -1,4 +1,4 @@
-import { DEFAULT_COMPILED_BANNER } from "@storm-software/build-tools/utilities/get-out-extension";
+import { DEFAULT_COMPILED_BANNER } from "@storm-software/build-tools";
 import { esmSplitCodeToCjsPlugin } from "./plugins/esm-split-code-to-cjs";
 import { fixImportsPlugin } from "./plugins/fix-imports";
 import { nativeNodeModulesPlugin } from "./plugins/native-node-module";
@@ -6,71 +6,56 @@ import { nodeProtocolPlugin } from "./plugins/node-protocol";
 import { onErrorPlugin } from "./plugins/on-error";
 import { resolvePathsPlugin } from "./plugins/resolve-paths";
 import { tscPlugin } from "./plugins/tsc";
-import { ESBuildOptions, ESBuildResolvedOptions } from "./types";
+import { ESBuildContext, ESBuildOptions } from "./types";
 
 export const getDefaultBuildPlugins = (
   options: ESBuildOptions,
-  resolvedOptions: ESBuildResolvedOptions
+  context: ESBuildContext
 ) => [
-  nodeProtocolPlugin(options, resolvedOptions),
-  resolvePathsPlugin(options, resolvedOptions),
-  fixImportsPlugin(options, resolvedOptions),
-  nativeNodeModulesPlugin(options, resolvedOptions),
-  esmSplitCodeToCjsPlugin(options, resolvedOptions),
-  tscPlugin(options, resolvedOptions),
-  onErrorPlugin(options, resolvedOptions)
+  nodeProtocolPlugin(options, context.options),
+  resolvePathsPlugin(context),
+  fixImportsPlugin(options, context.options),
+  nativeNodeModulesPlugin(options, context.options),
+  esmSplitCodeToCjsPlugin(options, context.options),
+  tscPlugin(context),
+  onErrorPlugin(options, context.options)
 ];
 
 export const DEFAULT_BUILD_OPTIONS: Required<
   Pick<
     ESBuildOptions,
+    | "assets"
     | "format"
     | "platform"
     | "target"
-    | "external"
     | "tsconfig"
     | "mode"
+    | "includeSrc"
+    | "generatePackageJson"
     | "keepNames"
     | "metafile"
-    | "injectShims"
-    | "color"
+    | "treeshake"
+    | "shims"
     | "watch"
     | "bundle"
-    | "clean"
-    | "debug"
-    | "resolveExtensions"
     | "loader"
     | "banner"
-    | "logLevel"
   >
 > = {
+  assets: [],
   platform: "node",
-  target: "node22",
+  target: ["esnext"],
   format: "esm",
-  external: [],
-  logLevel: "error",
   tsconfig: "tsconfig.json",
   mode: "production",
+  generatePackageJson: true,
+  includeSrc: false,
   keepNames: true,
-  metafile: true,
-  injectShims: true,
-  color: true,
+  metafile: false,
+  treeshake: true,
+  shims: false,
   watch: false,
   bundle: true,
-  clean: true,
-  debug: false,
-  resolveExtensions: [
-    ".tsx",
-    ".ts",
-    ".cts",
-    ".mts",
-    ".jsx",
-    ".js",
-    ".cjs",
-    ".mjs",
-    ".css",
-    ".json"
-  ],
   loader: {
     ".aac": "file",
     ".css": "file",
@@ -92,5 +77,8 @@ export const DEFAULT_BUILD_OPTIONS: Required<
     ".woff": "file",
     ".woff2": "file"
   },
-  banner: DEFAULT_COMPILED_BANNER
+  banner: {
+    js: DEFAULT_COMPILED_BANNER,
+    css: DEFAULT_COMPILED_BANNER
+  }
 };

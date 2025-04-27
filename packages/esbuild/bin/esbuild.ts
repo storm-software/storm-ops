@@ -125,10 +125,10 @@ async function createProgram(config: StormWorkspaceConfig) {
       "Should the build process watch for changes"
     ).default(false);
 
-    const debugOption = new Option(
-      "-d --debug",
-      "Should the build process run in debug mode"
-    ).default(false);
+    const modeOption = new Option(
+      "-m --mode",
+      "What mode should the build process run in"
+    ).default("production");
 
     const bannerOption = new Option(
       "--banner <value>",
@@ -146,7 +146,7 @@ async function createProgram(config: StormWorkspaceConfig) {
     ).default(true);
 
     const treeShakingOption = new Option(
-      "--tree-shaking",
+      "--treeshake",
       "Should tree shaking be enabled"
     ).default(true);
 
@@ -155,10 +155,10 @@ async function createProgram(config: StormWorkspaceConfig) {
       "Should a package.json be generated for the output"
     ).default(true);
 
-    const emitOnAllOption = new Option(
-      "--emit-on-all",
-      "Should the output be emitted on all platforms"
-    ).default(false);
+    // const emitOnAllOption = new Option(
+    //   "--emit-on-all",
+    //   "Should the output be emitted on all platforms"
+    // ).default(false);
 
     const metafileOption = new Option(
       "--metafile",
@@ -175,13 +175,8 @@ async function createProgram(config: StormWorkspaceConfig) {
       "Should the source files be included in the output"
     ).default(false);
 
-    const verboseOption = new Option(
-      "--verbose",
-      "Should the build process be verbose"
-    ).default(false);
-
     const injectShimsOption = new Option(
-      "--inject-shims",
+      "--shims",
       "Should shims be injected into the output"
     ).default(true);
 
@@ -208,17 +203,15 @@ async function createProgram(config: StormWorkspaceConfig) {
       .addOption(cleanOption)
       .addOption(noCleanOption)
       .addOption(watchOption)
-      .addOption(debugOption)
+      .addOption(modeOption)
       .addOption(bannerOption)
       .addOption(footerOption)
       .addOption(splittingOption)
       .addOption(treeShakingOption)
       .addOption(generatePackageJsonOption)
-      .addOption(emitOnAllOption)
       .addOption(metafileOption)
       .addOption(minifyOption)
       .addOption(includeSrcOption)
-      .addOption(verboseOption)
       .addOption(injectShimsOption)
       .addOption(dtsOption)
       .action(buildAction(config));

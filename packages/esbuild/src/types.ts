@@ -15,75 +15,34 @@
 
  -------------------------------------------------------------------*/
 
-import type { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
+import { ProjectGraph, ProjectsConfigurations } from "@nx/devkit";
 import type {
   AdditionalCLIOptions,
-  TypeScriptBuildOptions,
-  TypeScriptBuildResolvedOptions
+  TypeScriptBuildOptions
 } from "@storm-software/build-tools";
-import type {
-  BuildOptions,
-  BuildResult,
-  Format,
-  Metafile,
-  TsconfigRaw
-} from "esbuild";
+import { StormWorkspaceConfig } from "@storm-software/config";
+import type { BuildResult, Metafile, TsconfigRaw } from "esbuild";
 import type { SourceMap } from "rollup";
 import type { RawSourceMap } from "source-map";
-import type { RendererEngine } from "./base/renderer-engine";
+import type { Options } from "tsup";
 
-export type ESBuildOptions = Omit<
-  BuildOptions,
-  "outbase" | "outfile" | "outExtension" | "banner" | "entryPoints"
-> &
-  Omit<TypeScriptBuildOptions, "format" | "emitOnAll"> & {
-    dts?: boolean;
-    injectShims?: boolean;
-    renderers?: Renderer[];
+export type ESBuildOptions = Omit<Options, "outDir" | "entryPoints"> &
+  Required<Pick<TypeScriptBuildOptions, "projectRoot">> &
+  Pick<
+    TypeScriptBuildOptions,
+    | "assets"
+    | "sourceRoot"
+    | "outputPath"
+    | "generatePackageJson"
+    | "includeSrc"
+    | "mode"
+  > & {
+    userOptions?: any;
     distDir?: string;
     tsconfigRaw?: TsconfigRaw;
   };
 
 export type ESBuildResult = BuildResult;
-
-export type ESBuildResolvedOptions = Omit<
-  TypeScriptBuildResolvedOptions,
-  | "banner"
-  | "footer"
-  | "target"
-  | "format"
-  | "sourcemap"
-  | "outExtension"
-  | "emitOnAll"
-  | "entryPoints"
-> &
-  Pick<
-    BuildOptions,
-    | "loader"
-    | "inject"
-    | "metafile"
-    | "keepNames"
-    | "target"
-    | "color"
-    | "banner"
-    | "footer"
-    | "sourcemap"
-    | "entryPoints"
-  > & {
-    dts?: boolean;
-    injectShims: boolean;
-    outdir: string;
-    projectGraph: ProjectGraph;
-    projectConfigurations: ProjectsConfigurations;
-    entryPoints: Array<{
-      in: string;
-      out: string;
-    }>;
-    renderers?: Renderer[];
-    format: Format;
-    distDir: string;
-    tsconfigRaw?: TsconfigRaw;
-  };
 
 export type ESBuildCLIOptions = AdditionalCLIOptions &
   Pick<
@@ -97,23 +56,28 @@ export type ESBuildCLIOptions = AdditionalCLIOptions &
     | "target"
     | "watch"
     | "clean"
-    | "debug"
+    | "mode"
     | "banner"
     | "footer"
     | "splitting"
-    | "treeShaking"
+    | "treeshake"
     | "generatePackageJson"
     | "metafile"
     | "minify"
     | "includeSrc"
-    | "verbose"
     | "dts"
-    | "injectShims"
+    | "shims"
   >;
 
 export type ESBuildContext = {
-  options: ESBuildResolvedOptions;
-  rendererEngine: RendererEngine;
+  options: ESBuildOptions;
+  clean: boolean;
+  workspaceConfig: StormWorkspaceConfig;
+  projectConfigurations: ProjectsConfigurations;
+  projectName: string;
+  projectGraph: ProjectGraph;
+  sourceRoot: string;
+  outputPath: string;
   result?: BuildResult;
 };
 
@@ -140,7 +104,7 @@ export type AssetInfo = {
 };
 
 export type RenderChunk = (
-  options: ESBuildResolvedOptions,
+  options: ESBuildOptions,
   code: string,
   chunkInfo: ChunkInfo
 ) => MaybePromise<
@@ -153,15 +117,13 @@ export type RenderChunk = (
   | void
 >;
 
-export type BuildStart = (
-  options: ESBuildResolvedOptions
-) => MaybePromise<void>;
+export type BuildStart = (options: ESBuildOptions) => MaybePromise<void>;
 export type BuildEnd = (
-  options: ESBuildResolvedOptions,
+  options: ESBuildOptions,
   ctx: { writtenFiles: WrittenFile[] }
 ) => MaybePromise<void>;
 
-export type ModifyEsbuildOptions = (options: ESBuildResolvedOptions) => void;
+export type ModifyEsbuildOptions = (options: ESBuildOptions) => void;
 
 /**
  * A renderer that can be used to determine how chunks are written to the output directory and to modify the esbuild process

@@ -16,14 +16,14 @@
  -------------------------------------------------------------------*/
 
 import type * as esbuild from "esbuild";
-import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
+import { ESBuildOptions } from "../types";
 
 /**
  * For dependencies that forgot to add them into their package.json.
  */
 export const fixImportsPlugin = (
   options: ESBuildOptions,
-  resolvedOptions: ESBuildResolvedOptions,
+  resolvedOptions: ESBuildOptions
 ): esbuild.Plugin => ({
   name: "storm:fix-imports",
   setup(build) {
@@ -33,5 +33,5 @@ export const fixImportsPlugin = (
     build.onResolve({ filter: /^spdx-license-ids/ }, () => {
       return { path: require.resolve("spdx-license-ids") };
     });
-  },
+  }
 });

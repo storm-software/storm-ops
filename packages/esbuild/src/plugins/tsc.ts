@@ -20,7 +20,7 @@ import { joinPaths, run, writeError } from "@storm-software/config-tools";
 import type * as esbuild from "esbuild";
 import { existsSync } from "node:fs";
 import fs from "node:fs/promises";
-import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
+import { ESBuildContext } from "../types";
 
 /**
  * Bundle all type definitions by using the API Extractor from RushStack
@@ -32,12 +32,11 @@ import { ESBuildOptions, ESBuildResolvedOptions } from "../types";
 function bundleTypeDefinitions(
   filename: string,
   outfile: string,
-  externals: string[],
-  options: ESBuildResolvedOptions
+  context: ESBuildContext
 ) {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const { dependencies, peerDependencies, devDependencies } = require(
-    joinPaths(options.projectRoot, "package.json")
+    joinPaths(context.workspaceConfig.workspaceRoot, "package.json")
   );
 
   // get the list of bundled and non bundled as well as their eventual type dependencies
@@ -57,18 +56,18 @@ function bundleTypeDefinitions(
   const excludeDeps = new Set([
     ...dependenciesKeys,
     ...peerDependenciesKeys,
-    ...externals
+    ...(context.options.external ?? [])
   ]);
   const bundledPackages = includeDeps.filter(dep => !excludeDeps.has(dep));
 
   // we give the config in its raw form instead of a file
   const extractorConfig = ExtractorConfig.prepare({
     configObject: {
-      projectFolder: options.projectRoot,
+      projectFolder: context.options.projectRoot,
       mainEntryPointFilePath: filename,
       bundledPackages,
       compiler: {
-        tsconfigFilePath: options.tsconfig,
+        tsconfigFilePath: context.options.tsconfig,
         overrideTsconfig: {
           compilerOptions: {
             paths: {} // bug with api extract + paths
@@ -77,13 +76,19 @@ function bundleTypeDefinitions(
       },
       dtsRollup: {
         enabled: true,
-        untrimmedFilePath: joinPaths(options.outdir, `${outfile}.d.ts`)
+        untrimmedFilePath: joinPaths(
+          context.workspaceConfig.workspaceRoot,
+          `${outfile}.d.ts`
+        )
       },
       tsdocMetadata: {
         enabled: false
       }
     },
-    packageJsonFullPath: joinPaths(options.projectRoot, "package.json"),
+    packageJsonFullPath: joinPaths(
+      context.workspaceConfig.workspaceRoot,
+      "package.json"
+    ),
     configObjectFullPath: undefined
   });
 
@@ -96,7 +101,9 @@ function bundleTypeDefinitions(
   // we exit the process immediately if there were errors
   if (extractorResult.succeeded === false) {
     writeError(
-      `API Extractor completed with ${extractorResult.errorCount} ${extractorResult.errorCount === 1 ? "error" : "errors"}`
+      `API Extractor completed with ${extractorResult.errorCount} ${
+        extractorResult.errorCount === 1 ? "error" : "errors"
+      }`
     );
 
     throw new Error("API Extractor completed with errors");
@@ -106,13 +113,10 @@ function bundleTypeDefinitions(
 /**
  * Triggers the TypeScript compiler and the type bundler.
  */
-export const tscPlugin = (
-  options: ESBuildOptions,
-  resolvedOptions: ESBuildResolvedOptions
-): esbuild.Plugin => ({
+export const tscPlugin = (context: ESBuildContext): esbuild.Plugin => ({
   name: "storm:tsc",
   setup(build) {
-    if (options.dts === false) {
+    if (context.options.dts === false) {
       return; // build has opted out of emitting types
     }
 
@@ -130,82 +134,88 @@ export const tscPlugin = (
         // );
 
         await run(
-          resolvedOptions.config,
-          `pnpm exec tsc --project ${resolvedOptions.tsconfig}`,
-          resolvedOptions.config.workspaceRoot
+          context.workspaceConfig,
+          `pnpm exec tsc --project ${context.options.tsconfig}`,
+          context.workspaceConfig.workspaceRoot
         );
       }
 
       // we bundle types if we also bundle the entry point and it is a ts file
-      if (
-        resolvedOptions.bundle &&
-        resolvedOptions.entryPoints &&
-        resolvedOptions.entryPoints.length > 0 &&
-        resolvedOptions.entryPoints[0]?.in &&
-        resolvedOptions.entryPoints[0].in.endsWith(".ts")
-      ) {
+      if (context.options.bundle && context.options.entry) {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const sourceRoot = resolvedOptions.sourceRoot.replaceAll(
-          resolvedOptions.projectRoot,
+        const sourceRoot = context.sourceRoot.replaceAll(
+          context.options.projectRoot,
           ""
         );
-        const typeOutDir = resolvedOptions.outdir; // type out dir
-        const entryPoint = resolvedOptions.entryPoints[0].in
-          .replace(sourceRoot, "")
-          .replace(/\.ts$/, "");
-        const bundlePath = joinPaths(resolvedOptions.outdir, entryPoint);
+        const typeOutDir =
+          context.options.outputPath ||
+          joinPaths(
+            context.workspaceConfig.workspaceRoot,
+            "dist",
+            context.options.projectRoot
+          ); // type out dir
+        const entries = Array.isArray(context.options.entry)
+          ? context.options.entry
+          : Object.values(context.options.entry);
 
-        let dtsPath;
-        if (
-          existsSync(
-            joinPaths(
-              resolvedOptions.config.workspaceRoot,
+        for (const entry of entries) {
+          const entryPoint = entry.replace(sourceRoot, "").replace(/\.ts$/, "");
+          const bundlePath = joinPaths(typeOutDir, entryPoint);
+
+          let dtsPath;
+          if (
+            existsSync(
+              joinPaths(
+                context.workspaceConfig.workspaceRoot,
+                typeOutDir,
+                `${entryPoint}.d.ts`
+              )
+            )
+          ) {
+            dtsPath = joinPaths(
+              context.workspaceConfig.workspaceRoot,
               typeOutDir,
               `${entryPoint}.d.ts`
+            );
+          } else if (
+            existsSync(
+              joinPaths(
+                context.workspaceConfig.workspaceRoot,
+                typeOutDir,
+                `${entryPoint.replace(/^src\//, "")}.d.ts`
+              )
             )
-          )
-        ) {
-          dtsPath = joinPaths(
-            resolvedOptions.config.workspaceRoot,
-            typeOutDir,
-            `${entryPoint}.d.ts`
-          );
-        } else if (
-          existsSync(
-            joinPaths(
-              resolvedOptions.config.workspaceRoot,
+          ) {
+            dtsPath = joinPaths(
+              context.workspaceConfig.workspaceRoot,
               typeOutDir,
               `${entryPoint.replace(/^src\//, "")}.d.ts`
-            )
+            );
+          }
+
+          const ext = (
+            Array.isArray(context.options.format)
+              ? context.options.format?.some(format => format === "esm")
+              : context.options.format === "esm"
           )
-        ) {
-          dtsPath = joinPaths(
-            resolvedOptions.config.workspaceRoot,
-            typeOutDir,
-            `${entryPoint.replace(/^src\//, "")}.d.ts`
-          );
-        }
+            ? "d.mts"
+            : "d.ts";
 
-        const ext = resolvedOptions.format === "esm" ? "d.mts" : "d.ts";
-        if (process.env.WATCH !== "true" && process.env.DEV !== "true") {
-          // we get the types generated by tsc and bundle them near the output
-          bundleTypeDefinitions(
-            dtsPath,
-            bundlePath,
-            resolvedOptions.external ?? [],
-            resolvedOptions
-          );
+          if (process.env.WATCH !== "true" && process.env.DEV !== "true") {
+            // we get the types generated by tsc and bundle them near the output
+            bundleTypeDefinitions(dtsPath, bundlePath, context);
 
-          const dtsContents = await fs.readFile(`${bundlePath}.d.ts`, "utf8");
-          await fs.writeFile(`${bundlePath}.${ext}`, dtsContents!);
-        } else {
-          // in watch mode, it wouldn't be viable to bundle the types every time
-          // we haven't built any types with tsc at this stage, but we want types
-          // we link the types locally by re-exporting them from the entry point
-          await fs.writeFile(
-            `${bundlePath}.${ext}`,
-            `export * from './${entryPoint}'`
-          );
+            const dtsContents = await fs.readFile(`${bundlePath}.d.ts`, "utf8");
+            await fs.writeFile(`${bundlePath}.${ext}`, dtsContents!);
+          } else {
+            // in watch mode, it wouldn't be viable to bundle the types every time
+            // we haven't built any types with tsc at this stage, but we want types
+            // we link the types locally by re-exporting them from the entry point
+            await fs.writeFile(
+              `${bundlePath}.${ext}`,
+              `export * from './${entryPoint}'`
+            );
+          }
         }
       }
     });
