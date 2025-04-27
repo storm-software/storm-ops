@@ -37,7 +37,7 @@ export async function pnpm(
             allowedProtocols: ["workspace", "link", "file"],
             defaultCatalog: "default",
             reuseExistingCatalog: true,
-            conflicts: "new-catalog",
+            conflicts: "overrides",
             fields: ["dependencies", "devDependencies"]
           }
         ],

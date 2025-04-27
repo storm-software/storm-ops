@@ -204,7 +204,8 @@
       "workerd"
     ],
     "patchedDependencies": {
-      "eslint-plugin-pnpm@0.3.0": "patches/eslint-plugin-pnpm@0.3.0.patch"
+      "eslint-plugin-pnpm@0.3.0": "/home/development/repos/storm-ops/patches/eslint-plugin-pnpm@0.3.0.patch",
+      "tsup@8.4.0": "patches/tsup@8.4.0.patch"
     }
   },
   "prettier": "./packages/prettier/src/config.json",

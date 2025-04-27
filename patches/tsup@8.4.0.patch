@@ -1,0 +1,520 @@
+diff --git a/dist/index.d.ts b/dist/index.d.ts
+index 0d10e3993019d08a97151b9fec142fd3d51cd950..a968d21ea73780b3cf6aa70e9033e3454f0ed56f 100644
+--- a/dist/index.d.ts
++++ b/dist/index.d.ts
+@@ -552,6 +552,8 @@ type Options = {
+      * @default true
+      */
+     removeNodeProtocol?: boolean;
++
++    workspaceConfig?: Record<string, any>;
+ };
+ interface NormalizedExperimentalDtsConfig {
+     entry: {
+diff --git a/dist/index.js b/dist/index.js
+index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..6a3b9a09677402226de442bf23e6ee3f0bda2502 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -83,7 +83,7 @@ var externalPlugin = ({
+     name: `external`,
+     setup(build2) {
+       if (skipNodeModulesBundle) {
+-        const resolvePatterns = _bundlerequire.tsconfigPathsToRegExp.call(void 0, 
++        const resolvePatterns = _bundlerequire.tsconfigPathsToRegExp.call(void 0,
+           tsconfigResolvePaths || {}
+         );
+         build2.onResolve({ filter: /.*/ }, (args) => {
+@@ -121,6 +121,7 @@ var externalPlugin = ({
+ 
+ 
+ var postcssPlugin = ({
++  options,
+   css,
+   inject,
+   cssLoader
+@@ -135,7 +136,7 @@ var postcssPlugin = ({
+           return configCache;
+         }
+         try {
+-          const result = await loadConfig({}, process.cwd());
++          const result = await loadConfig({}, options.workspaceConfig?.workspaceRoot || process.cwd());
+           configCache = result;
+           return result;
+         } catch (error) {
+@@ -157,11 +158,11 @@ var postcssPlugin = ({
+             contents: `
+           export default function styleInject(css, { insertAt } = {}) {
+             if (!css || typeof document === 'undefined') return
+-          
++
+             const head = document.head || document.getElementsByTagName('head')[0]
+             const style = document.createElement('style')
+             style.type = 'text/css'
+-          
++
+             if (insertAt === 'top') {
+               if (head.firstChild) {
+                 head.insertBefore(style, head.firstChild)
+@@ -171,7 +172,7 @@ var postcssPlugin = ({
+             } else {
+               head.appendChild(style)
+             }
+-          
++
+             if (style.styleSheet) {
+               style.styleSheet.cssText = css
+             } else {
+@@ -237,7 +238,8 @@ var postcssPlugin = ({
+ 
+ var useSvelteCssExtension = (p) => p.replace(/\.svelte$/, ".svelte.css");
+ var sveltePlugin = ({
+-  css
++  css,
++  options
+ }) => {
+   return {
+     name: "svelte",
+@@ -247,7 +249,7 @@ var sveltePlugin = ({
+       build2.onResolve({ filter: /\.svelte\.css$/ }, (args) => {
+         return {
+           path: _path2.default.relative(
+-            process.cwd(),
++            options.workspaceConfig?.workspaceRoot || process.cwd(),
+             _path2.default.join(args.resolveDir, args.path)
+           ),
+           namespace: "svelte-css"
+@@ -277,7 +279,7 @@ var sveltePlugin = ({
+           return { text: message, location };
+         };
+         const source = await _fs2.default.promises.readFile(args.path, "utf8");
+-        const filename = _path2.default.relative(process.cwd(), args.path);
++        const filename = _path2.default.relative(options.workspaceConfig?.workspaceRoot || process.cwd(), args.path);
+         try {
+           const preprocess = await svelte.preprocess(
+             source,
+@@ -444,7 +446,7 @@ var generateExternal = async (external) => {
+       result.push(item);
+       continue;
+     }
+-    const pkgPath = _path2.default.isAbsolute(item) ? _path2.default.dirname(item) : _path2.default.dirname(_path2.default.resolve(process.cwd(), item));
++    const pkgPath = _path2.default.isAbsolute(item) ? _path2.default.dirname(item) : _path2.default.dirname(_path2.default.resolve(options.workspaceConfig?.workspaceRoot || process.cwd(), item));
+     const deps = await _chunkVGC3FXLUjs.getProductionDeps.call(void 0, pkgPath);
+     result.push(...deps);
+   }
+@@ -457,8 +459,8 @@ async function runEsbuild(options, {
+   buildDependencies,
+   pluginContainer
+ }) {
+-  const pkg = await _chunkVGC3FXLUjs.loadPkg.call(void 0, process.cwd());
+-  const deps = await _chunkVGC3FXLUjs.getProductionDeps.call(void 0, process.cwd());
++  const pkg = await _chunkVGC3FXLUjs.loadPkg.call(void 0, options.workspaceConfig?.workspaceRoot || process.cwd());
++  const deps = await _chunkVGC3FXLUjs.getProductionDeps.call(void 0, options.workspaceConfig?.workspaceRoot || process.cwd());
+   const external = [
+     // Exclude dependencies, e.g. `lodash`, `lodash/get`
+     ...deps.map((dep) => new RegExp(`^${dep}($|\\/|\\\\)`)),
+@@ -508,11 +510,12 @@ async function runEsbuild(options, {
+     options.tsconfigDecoratorMetadata && swcPlugin({ logger: logger3 }),
+     nativeNodeModulesPlugin(),
+     postcssPlugin({
++      options,
+       css,
+       inject: options.injectStyle,
+       cssLoader: loader[".css"]
+     }),
+-    sveltePlugin({ css }),
++    sveltePlugin({ css, options }),
+     ...options.esbuildPlugins || []
+   ];
+   const banner = typeof options.banner === "function" ? options.banner({ format }) : options.banner;
+@@ -610,6 +613,7 @@ async function runEsbuild(options, {
+   }
+   if (result && result.outputFiles) {
+     await pluginContainer.buildFinished({
++      options,
+       outputFiles: result.outputFiles,
+       metafile: result.metafile
+     });
+@@ -708,8 +712,8 @@ var parseSourceMap = (map) => {
+ var isJS = (path12) => /\.(js|mjs|cjs)$/.test(path12);
+ var isCSS = (path12) => /\.css$/.test(path12);
+ var PluginContainer = class {
+-  
+-  
++
++
+   constructor(plugins) {
+     this.plugins = plugins;
+   }
+@@ -735,12 +739,13 @@ var PluginContainer = class {
+     }
+   }
+   async buildFinished({
++    options,
+     outputFiles,
+     metafile
+   }) {
+     const files = outputFiles.filter((file) => !file.path.endsWith(".map")).map((file) => {
+       if (isJS(file.path) || isCSS(file.path)) {
+-        const relativePath = _chunkTWFEYLU4js.slash.call(void 0, _path2.default.relative(process.cwd(), file.path));
++        const relativePath = _chunkTWFEYLU4js.slash.call(void 0, _path2.default.relative(options.workspaceConfig?.workspaceRoot || process.cwd(), file.path));
+         const meta = _optionalChain([metafile, 'optionalAccess', _6 => _6.outputs, 'access', _7 => _7[relativePath]]);
+         return {
+           type: "chunk",
+@@ -795,7 +800,7 @@ var PluginContainer = class {
+         });
+         writtenFiles.push({
+           get name() {
+-            return _path2.default.relative(process.cwd(), info.path);
++            return _path2.default.relative(this.context.options.workspaceConfig?.workspaceRoot || process.cwd(), info.path);
+           },
+           get size() {
+             return contents.length;
+@@ -808,7 +813,7 @@ var PluginContainer = class {
+           await outputFile(outPath, contents2);
+           writtenFiles.push({
+             get name() {
+-              return _path2.default.relative(process.cwd(), outPath);
++              return _path2.default.relative(this.context.options.workspaceConfig?.workspaceRoot || process.cwd(), outPath);
+             },
+             get size() {
+               return contents2.length;
+@@ -891,7 +896,7 @@ var sizeReporter = () => {
+   return {
+     name: "size-reporter",
+     buildEnd({ writtenFiles }) {
+-      _chunkVGC3FXLUjs.reportSize.call(void 0, 
++      _chunkVGC3FXLUjs.reportSize.call(void 0,
+         this.logger,
+         this.format,
+         writtenFiles.reduce((res, file) => {
+@@ -965,7 +970,7 @@ var copyPublicDir = (publicDir, outDir) => {
+ };
+ var isInPublicDir = (publicDir, filePath) => {
+   if (!publicDir) return false;
+-  const publicPath = _chunkTWFEYLU4js.slash.call(void 0, 
++  const publicPath = _chunkTWFEYLU4js.slash.call(void 0,
+     _path2.default.resolve(publicDir === true ? "public" : publicDir)
+   );
+   return _chunkTWFEYLU4js.slash.call(void 0, _path2.default.resolve(filePath)).startsWith(`${publicPath}/`);
+@@ -1132,8 +1137,8 @@ ${diagnosticMessage}`
+   }
+   return fileMapping;
+ }
+-function emit(compilerOptions, tsconfig) {
+-  const cwd = process.cwd();
++function emit(compilerOptions, tsconfig, options) {
++  const cwd = options.workspaceConfig?.workspaceRoot || process.cwd();
+   const rawTsconfig = _bundlerequire.loadTsConfig.call(void 0, cwd, tsconfig);
+   if (!rawTsconfig) {
+     throw new Error(`Unable to find ${tsconfig || "tsconfig.json"} in ${cwd}`);
+@@ -1174,7 +1179,7 @@ function runTypeScriptCompiler(options) {
+     };
+     logger.info("tsc", "Build start");
+     const dtsOptions = options.experimentalDts;
+-    const exports = emit(dtsOptions.compilerOptions, options.tsconfig);
++    const exports = emit(dtsOptions.compilerOptions, options.tsconfig, options);
+     logger.success("tsc", `\u26A1\uFE0F Build success in ${getDuration()}`);
+     return exports;
+   } catch (error) {
+@@ -1199,7 +1204,7 @@ function formatAggregationExports(exports, declarationDirPath) {
+ `;
+ }
+ function formatAggregationExport(declaration, declarationDirPath) {
+-  const dest = _chunkTWFEYLU4js.replaceDtsWithJsExtensions.call(void 0, 
++  const dest = _chunkTWFEYLU4js.replaceDtsWithJsExtensions.call(void 0,
+     `./${_path2.default.posix.normalize(
+       _chunkTWFEYLU4js.slash.call(void 0, _path2.default.relative(declarationDirPath, declaration.destFileName))
+     )}`
+@@ -1221,7 +1226,7 @@ function formatAggregationExport(declaration, declarationDirPath) {
+   }
+ }
+ function formatDistributionExports(exports, fromFilePath, toFilePath) {
+-  let importPath = _chunkTWFEYLU4js.replaceDtsWithJsExtensions.call(void 0, 
++  let importPath = _chunkTWFEYLU4js.replaceDtsWithJsExtensions.call(void 0,
+     _path2.default.posix.relative(
+       _path2.default.posix.dirname(_path2.default.posix.normalize(_chunkTWFEYLU4js.slash.call(void 0, fromFilePath))),
+       _path2.default.posix.normalize(_chunkTWFEYLU4js.slash.call(void 0, toFilePath))
+@@ -1276,8 +1281,8 @@ function formatDistributionExport(declaration, dest) {
+ 
+ // src/api-extractor.ts
+ var logger2 = _chunkVGC3FXLUjs.createLogger.call(void 0, );
+-function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath) {
+-  const cwd = process.cwd();
++function rollupDtsFile(inputFilePath, outputFilePath, tsconfigFilePath, options) {
++  const cwd = options.workspaceConfig?.workspaceRoot || process.cwd();
+   const packageJsonFullPath = _path2.default.join(cwd, "package.json");
+   const configObject = {
+     mainEntryPointFilePath: inputFilePath,
+@@ -1329,7 +1334,7 @@ async function rollupDtsFiles(options, exports, format) {
+   }
+   const declarationDir = _chunkTWFEYLU4js.ensureTempDeclarationDir.call(void 0, );
+   const outDir = options.outDir || "dist";
+-  const pkg = await _chunkVGC3FXLUjs.loadPkg.call(void 0, process.cwd());
++  const pkg = await _chunkVGC3FXLUjs.loadPkg.call(void 0, options.workspaceConfig?.workspaceRoot || process.cwd());
+   const dtsExtension = _chunkTWFEYLU4js.defaultOutExtension.call(void 0, { format, pkgType: pkg.type }).dts;
+   const tsconfig = options.tsconfig || "tsconfig.json";
+   let dtsInputFilePath = _path2.default.join(
+@@ -1338,11 +1343,11 @@ async function rollupDtsFiles(options, exports, format) {
+   );
+   dtsInputFilePath = dtsInputFilePath.replace(/\.d\.mts$/, ".dmts.d.ts").replace(/\.d\.cts$/, ".dcts.d.ts");
+   const dtsOutputFilePath = _path2.default.join(outDir, `_tsup-dts-rollup${dtsExtension}`);
+-  _chunkTWFEYLU4js.writeFileSync.call(void 0, 
++  _chunkTWFEYLU4js.writeFileSync.call(void 0,
+     dtsInputFilePath,
+-    formatAggregationExports(exports, declarationDir)
++    formatAggregationExports(exports, declarationDir, options)
+   );
+-  rollupDtsFile(dtsInputFilePath, dtsOutputFilePath, tsconfig);
++  rollupDtsFile(dtsInputFilePath, dtsOutputFilePath, tsconfig, options);
+   for (let [out, sourceFileName] of Object.entries(
+     options.experimentalDts.entry
+   )) {
+@@ -1351,7 +1356,7 @@ async function rollupDtsFiles(options, exports, format) {
+     const currentExports = exports.filter(
+       (declaration) => declaration.sourceFileName === sourceFileName
+     );
+-    _chunkTWFEYLU4js.writeFileSync.call(void 0, 
++    _chunkTWFEYLU4js.writeFileSync.call(void 0,
+       outFileName,
+       formatDistributionExports(currentExports, outFileName, dtsOutputFilePath)
+     );
+@@ -1423,7 +1428,7 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+     ..._options,
+     format: typeof _options.format === "string" ? [_options.format] : _options.format || ["cjs"],
+     dts: typeof _options.dts === "boolean" ? _options.dts ? {} : void 0 : typeof _options.dts === "string" ? { entry: _options.dts } : _options.dts,
+-    experimentalDts: await _chunkTWFEYLU4js.resolveInitialExperimentalDtsConfig.call(void 0, 
++    experimentalDts: await _chunkTWFEYLU4js.resolveInitialExperimentalDtsConfig.call(void 0,
+       _options.experimentalDts
+     )
+   };
+@@ -1449,11 +1454,11 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+     options.entry = entry;
+     logger3.info("CLI", `Building entry: ${JSON.stringify(entry)}`);
+   }
+-  const tsconfig = _bundlerequire.loadTsConfig.call(void 0, process.cwd(), options.tsconfig);
++  const tsconfig = _bundlerequire.loadTsConfig.call(void 0, options.workspaceConfig?.workspaceRoot || process.cwd(), options.tsconfig);
+   if (tsconfig) {
+     logger3.info(
+       "CLI",
+-      `Using tsconfig: ${_path2.default.relative(process.cwd(), tsconfig.path)}`
++      `Using tsconfig: ${_path2.default.relative(options.workspaceConfig?.workspaceRoot || process.cwd(), tsconfig.path)}`
+     );
+     options.tsconfig = tsconfig.path;
+     options.tsconfigResolvePaths = _optionalChain([tsconfig, 'access', _22 => _22.data, 'optionalAccess', _23 => _23.compilerOptions, 'optionalAccess', _24 => _24.paths]) || {};
+@@ -1465,7 +1470,7 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+       };
+     }
+     if (options.experimentalDts) {
+-      options.experimentalDts = await _chunkTWFEYLU4js.resolveExperimentalDtsConfig.call(void 0, 
++      options.experimentalDts = await _chunkTWFEYLU4js.resolveExperimentalDtsConfig.call(void 0,
+         options,
+         tsconfig
+       );
+@@ -1482,8 +1487,8 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+   return options;
+ };
+ async function build(_options) {
+-  const config = _options.config === false ? {} : await _chunkVGC3FXLUjs.loadTsupConfig.call(void 0, 
+-    process.cwd(),
++  const config = _options.config === false ? {} : await _chunkVGC3FXLUjs.loadTsupConfig.call(void 0,
++    _options.workspaceConfig?.workspaceRoot || process.cwd(),
+     _options.config === true ? void 0 : _options.config
+   );
+   const configData = typeof config.data === "function" ? await config.data(_options) : config.data;
+@@ -1559,7 +1564,7 @@ async function build(_options) {
+             let onSuccessProcess;
+             let onSuccessCleanup;
+             const buildDependencies = /* @__PURE__ */ new Set();
+-            let depsHash = await _chunkVGC3FXLUjs.getAllDepsHash.call(void 0, process.cwd());
++            let depsHash = await _chunkVGC3FXLUjs.getAllDepsHash.call(void 0, options.workspaceConfig?.workspaceRoot || process.cwd());
+             const doOnSuccessCleanup = async () => {
+               if (onSuccessProcess) {
+                 await killProcess({
+@@ -1572,7 +1577,7 @@ async function build(_options) {
+               onSuccessProcess = void 0;
+               onSuccessCleanup = void 0;
+             };
+-            const debouncedBuildAll = _chunkTWFEYLU4js.debouncePromise.call(void 0, 
++            const debouncedBuildAll = _chunkTWFEYLU4js.debouncePromise.call(void 0,
+               () => {
+                 return buildAll();
+               },
+@@ -1676,7 +1681,7 @@ async function build(_options) {
+                 let shouldSkipChange = false;
+                 if (options.watch === true) {
+                   if (file === "package.json" && !buildDependencies.has(file)) {
+-                    const currentHash = await _chunkVGC3FXLUjs.getAllDepsHash.call(void 0, process.cwd());
++                    const currentHash = await _chunkVGC3FXLUjs.getAllDepsHash.call(void 0, options.workspaceConfig?.workspaceRoot || process.cwd());
+                     shouldSkipChange = currentHash === depsHash;
+                     depsHash = currentHash;
+                   } else if (!buildDependencies.has(file)) {
+diff --git a/dist/rollup.js b/dist/rollup.js
+index cc82363277fe849c9460937773d9bc8b5c86beb6..0f0abbab5b5e3c1a878678a519b3ccfb8055d7eb 100644
+--- a/dist/rollup.js
++++ b/dist/rollup.js
+@@ -4834,14 +4834,14 @@ var require_rollup_plugin_dts = _chunkTWFEYLU4js.__commonJS.call(void 0, {
+         configByPath.set(fromPath, config);
+       }
+     }
+-    function getCompilerOptions(input, overrideOptions, overrideConfigPath) {
++    function getCompilerOptions(input, overrideOptions, overrideConfigPath, options) {
+       const compilerOptions = { ...DEFAULT_OPTIONS, ...overrideOptions };
+       let dirName = path__namespace.dirname(input);
+       let dtsFiles = [];
+       const cacheKey = overrideConfigPath || dirName;
+       if (!configByPath.has(cacheKey)) {
+         logCache("miss", cacheKey);
+-        const configPath = overrideConfigPath ? path__namespace.resolve(process.cwd(), overrideConfigPath) : ts2.findConfigFile(dirName, ts2.sys.fileExists);
++        const configPath = overrideConfigPath ? path__namespace.resolve(options.workspaceConfig?.workspaceRoot || process.cwd(), overrideConfigPath) : ts2.findConfigFile(dirName, ts2.sys.fileExists);
+         if (!configPath) {
+           return { dtsFiles, dirName, compilerOptions };
+         }
+@@ -4877,11 +4877,11 @@ var require_rollup_plugin_dts = _chunkTWFEYLU4js.__commonJS.call(void 0, {
+         }
+       };
+     }
+-    function createProgram$1(fileName, overrideOptions, tsconfig) {
+-      const { dtsFiles, compilerOptions } = getCompilerOptions(fileName, overrideOptions, tsconfig);
++    function createProgram$1(fileName, overrideOptions, tsconfig, options) {
++      const { dtsFiles, compilerOptions } = getCompilerOptions(fileName, overrideOptions, tsconfig, options);
+       return ts2.createProgram([fileName].concat(Array.from(dtsFiles)), compilerOptions, ts2.createCompilerHost(compilerOptions, true));
+     }
+-    function createPrograms(input, overrideOptions, tsconfig) {
++    function createPrograms(input, overrideOptions, tsconfig, options) {
+       const programs = [];
+       let inputs = [];
+       let dtsFiles = /* @__PURE__ */ new Set();
+@@ -4892,7 +4892,7 @@ var require_rollup_plugin_dts = _chunkTWFEYLU4js.__commonJS.call(void 0, {
+           continue;
+         }
+         main = path__namespace.resolve(main);
+-        const options = getCompilerOptions(main, overrideOptions, tsconfig);
++        const options = getCompilerOptions(main, overrideOptions, tsconfig, options);
+         options.dtsFiles.forEach(dtsFiles.add, dtsFiles);
+         if (!inputs.length) {
+           inputs.push(main);
+@@ -6273,7 +6273,7 @@ export { ${[...exportedNames].join(", ")} };
+       return "";
+     }
+     var TS_EXTENSIONS = /\.([cm]ts|[tj]sx?)$/;
+-    function getModule({ programs, resolvedOptions: { compilerOptions, tsconfig } }, fileName, code) {
++    function getModule({ programs, resolvedOptions: { compilerOptions, tsconfig } }, fileName, code, options) {
+       if (!programs.length && DTS_EXTENSIONS.test(fileName)) {
+         return { code };
+       }
+@@ -6286,7 +6286,7 @@ export { ${[...exportedNames].join(", ")} };
+           program: existingProgram
+         };
+       } else if (ts2.sys.fileExists(fileName)) {
+-        const newProgram = createProgram$1(fileName, compilerOptions, tsconfig);
++        const newProgram = createProgram$1(fileName, compilerOptions, tsconfig, options);
+         programs.push(newProgram);
+         const source = newProgram.getSourceFile(fileName);
+         return {
+@@ -6322,7 +6322,7 @@ export { ${[...exportedNames].join(", ")} };
+               options2.input[name] = filename;
+             }
+           }
+-          ctx.programs = createPrograms(Object.values(input), ctx.resolvedOptions.compilerOptions, ctx.resolvedOptions.tsconfig);
++          ctx.programs = createPrograms(Object.values(input), ctx.resolvedOptions.compilerOptions, ctx.resolvedOptions.tsconfig, options);
+           return transformPlugin.options.call(this, options2);
+         },
+         transform(code, id) {
+@@ -6337,7 +6337,7 @@ export { ${[...exportedNames].join(", ")} };
+             }
+           };
+           const handleDtsFile = () => {
+-            const module2 = getModule(ctx, id, code);
++            const module2 = getModule(ctx, id, code, options);
+             if (module2) {
+               watchFiles(module2);
+               return transformPlugin.transform.call(this, module2.code, id);
+@@ -6346,7 +6346,7 @@ export { ${[...exportedNames].join(", ")} };
+           };
+           const treatTsAsDts = () => {
+             const declarationId = id.replace(TS_EXTENSIONS, dts);
+-            let module2 = getModule(ctx, declarationId, code);
++            let module2 = getModule(ctx, declarationId, code, options);
+             if (module2) {
+               watchFiles(module2);
+               return transformPlugin.transform.call(this, module2.code, declarationId);
+@@ -6354,7 +6354,7 @@ export { ${[...exportedNames].join(", ")} };
+             return null;
+           };
+           const generateDtsFromTs = () => {
+-            const module2 = getModule(ctx, id, code);
++            const module2 = getModule(ctx, id, code, options);
+             if (!module2 || !module2.source || !module2.program)
+               return null;
+             watchFiles(module2);
+@@ -6390,7 +6390,7 @@ export { ${[...exportedNames].join(", ")} };
+           let resolvedCompilerOptions = ctx.resolvedOptions.compilerOptions;
+           if (ctx.resolvedOptions.tsconfig) {
+             const resolvedSource = source.startsWith(".") ? path__namespace.resolve(path__namespace.dirname(importer), source) : source;
+-            resolvedCompilerOptions = getCompilerOptions(resolvedSource, ctx.resolvedOptions.compilerOptions, ctx.resolvedOptions.tsconfig).compilerOptions;
++            resolvedCompilerOptions = getCompilerOptions(resolvedSource, ctx.resolvedOptions.compilerOptions, ctx.resolvedOptions.tsconfig, options).compilerOptions;
+           }
+           const { resolvedModule } = ts2.resolveModuleName(source, importer, resolvedCompilerOptions, ts2.sys);
+           if (!resolvedModule) {
+@@ -6646,7 +6646,7 @@ var resolveModule = (id, opts) => new Promise((resolve2, reject) => {
+ var tsResolvePlugin = ({
+   resolveOnly,
+   ignore
+-} = {}) => {
++} = {}, options) => {
+   const resolveExtensions = [".d.ts", ".ts"];
+   return {
+     name: `ts-resolve`,
+@@ -6674,7 +6674,7 @@ var tsResolvePlugin = ({
+         debug(`skipped absolute path: %s`, source);
+         return null;
+       }
+-      const basedir = importer ? await _fs2.default.promises.realpath(_path2.default.dirname(importer)) : process.cwd();
++      const basedir = importer ? await _fs2.default.promises.realpath(_path2.default.dirname(importer)) : options.workspaceConfig?.workspaceRoot || process.cwd();
+       if (source[0] === ".") {
+         return resolveModule(source, {
+           basedir,
+@@ -6744,8 +6744,8 @@ var getRollupConfig = async (options) => {
+       };
+     }
+   }
+-  const pkg = await _chunkVGC3FXLUjs.loadPkg.call(void 0, process.cwd());
+-  const deps = await _chunkVGC3FXLUjs.getProductionDeps.call(void 0, process.cwd());
++  const pkg = await _chunkVGC3FXLUjs.loadPkg.call(void 0, options.workspaceConfig?.workspaceRoot || process.cwd());
++  const deps = await _chunkVGC3FXLUjs.getProductionDeps.call(void 0, options.workspaceConfig?.workspaceRoot || process.cwd());
+   const tsupCleanPlugin = {
+     name: "tsup:clean",
+     async buildStart() {
+@@ -6784,7 +6784,7 @@ var getRollupConfig = async (options) => {
+       },
+       plugins: [
+         tsupCleanPlugin,
+-        tsResolveOptions && tsResolvePlugin(tsResolveOptions),
++        tsResolveOptions && tsResolvePlugin(tsResolveOptions, options),
+         json(),
+         ignoreFiles,
+         dtsPlugin.default({
+@@ -6844,12 +6844,12 @@ async function runRollup(options) {
+     const results = await Promise.all(options.outputConfig.map(bundle.write));
+     const outputs = results.flatMap((result) => result.output);
+     logger.success("dts", `\u26A1\uFE0F Build success in ${getDuration()}`);
+-    _chunkVGC3FXLUjs.reportSize.call(void 0, 
++    _chunkVGC3FXLUjs.reportSize.call(void 0,
+       logger,
+       "dts",
+       outputs.reduce((res, info) => {
+         const name = _path2.default.relative(
+-          process.cwd(),
++          options.workspaceConfig?.workspaceRoot || process.cwd(),
+           _path2.default.join(options.outputConfig[0].dir || ".", info.fileName)
+         );
+         return {
+@@ -6896,7 +6896,7 @@ var startRollup = async (options) => {
+ };
+ _optionalChain([_worker_threads.parentPort, 'optionalAccess', _26 => _26.on, 'call', _27 => _27("message", (data) => {
+   logger.setName(data.configName);
+-  const hasTypescript = _resolvefrom2.default.silent(process.cwd(), "typescript");
++  const hasTypescript = _resolvefrom2.default.silent(data.options.workspaceConfig?.workspaceRoot || process.cwd(), "typescript");
+   if (!hasTypescript) {
+     logger.error("dts", `You need to install "typescript" in your project`);
+     _optionalChain([_worker_threads.parentPort, 'optionalAccess', _28 => _28.postMessage, 'call', _29 => _29("error")]);
