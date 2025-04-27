@@ -184,6 +184,7 @@ export function emitDtsFiles(
     if (diagnostic.file) {
       const { line, character } = ts.getLineAndCharacterOfPosition(
         diagnostic.file,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         diagnostic.start!
       );
       const message = ts.flattenDiagnosticMessageText(

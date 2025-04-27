@@ -423,8 +423,9 @@ export async function executeTypescript(context: ESBuildContext) {
     );
     const stopwatch = getStopwatch(`${context.options.name} asset copy`);
 
-    await emitDts(
+    emitDts(
       context.workspaceConfig,
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       context.options.tsconfig!,
       context.options.tsconfigRaw,
       true
@@ -546,11 +547,7 @@ export async function cleanOutputPath(context: ESBuildContext) {
     );
     const stopwatch = getStopwatch(`${context.options.name} output clean`);
 
-    await cleanDirectories(
-      context.options.name,
-      context.outputPath,
-      context.workspaceConfig
-    );
+    await cleanDirectories(context.outputPath);
 
     stopwatch();
   }

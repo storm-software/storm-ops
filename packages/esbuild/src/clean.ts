@@ -20,7 +20,7 @@ export async function clean(
   writeDebug(` 🧹  Cleaning ${name} output path: ${directory}`, config);
   const stopwatch = getStopwatch(`${name} output clean`);
 
-  await cleanDirectories(name, directory, config);
+  await cleanDirectories(directory);
 
   stopwatch();
 }
@@ -32,10 +32,6 @@ export async function clean(
  * @param directory - The directory to clean
  * @param config - The StormWorkspaceConfig object
  */
-export async function cleanDirectories(
-  name = "ESBuild",
-  directory: string,
-  config?: StormWorkspaceConfig
-) {
+export async function cleanDirectories(directory: string) {
   await rm(directory, { recursive: true, force: true });
 }
