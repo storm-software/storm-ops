@@ -21,9 +21,7 @@ import type {
   TypeScriptBuildOptions
 } from "@storm-software/build-tools";
 import { StormWorkspaceConfig } from "@storm-software/config";
-import type { BuildResult, Metafile, TsconfigRaw } from "esbuild";
-import type { SourceMap } from "rollup";
-import type { RawSourceMap } from "source-map";
+import type { BuildResult, TsconfigRaw } from "esbuild";
 import type { Options } from "tsup";
 
 export type ESBuildOptions = Omit<Options, "outDir" | "entryPoints"> &
@@ -83,70 +81,6 @@ export type ESBuildContext = {
 
 export type MaybePromise<T> = T | Promise<T>;
 
-export type ChunkInfo = {
-  type: "chunk";
-  code: string;
-  map?: string | RawSourceMap | null;
-  path: string;
-  /**
-   * Sets the file mode
-   */
-  mode?: number;
-  entryPoint?: string;
-  exports?: string[];
-  imports?: Metafile["outputs"][string]["imports"];
-};
-
-export type AssetInfo = {
-  type: "asset";
-  path: string;
-  contents: Uint8Array;
-};
-
-export type RenderChunk = (
-  options: ESBuildOptions,
-  code: string,
-  chunkInfo: ChunkInfo
-) => MaybePromise<
-  | {
-      code: string;
-      map?: object | string | SourceMap | null;
-    }
-  | undefined
-  | null
-  | void
->;
-
-export type BuildStart = (options: ESBuildOptions) => MaybePromise<void>;
-export type BuildEnd = (
-  options: ESBuildOptions,
-  ctx: { writtenFiles: WrittenFile[] }
-) => MaybePromise<void>;
-
-export type ModifyEsbuildOptions = (options: ESBuildOptions) => void;
-
-/**
- * A renderer that can be used to determine how chunks are written to the output directory and to modify the esbuild process
- *
- * @remarks
- * It is essentially an extended form of the esbuild's built in plugins
- */
-export type Renderer = {
-  name: string;
-
-  esbuildOptions?: ModifyEsbuildOptions;
-
-  buildStart?: BuildStart;
-
-  renderChunk?: RenderChunk;
-
-  buildEnd?: BuildEnd;
-};
-
-export type WrittenFile = { readonly name: string; readonly size: number };
-
-export type ExportDeclaration = ModuleExport | NamedExport;
-
 interface ModuleExport {
   kind: "module";
   sourceFileName: string;
@@ -163,3 +97,5 @@ interface NamedExport {
   name: string;
   isTypeOnly: boolean;
 }
+
+export type ExportDeclaration = ModuleExport | NamedExport;
