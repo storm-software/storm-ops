@@ -300,6 +300,12 @@ radash
 redocusaurus
 tailwindcss
 
+# Nix
+nixos
+nixpkgs
+cachix
+devenv
+
 # JavaScript
 domwindow
 nodescript
