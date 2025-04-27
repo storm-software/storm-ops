@@ -1,4 +1,8 @@
-import type { ProjectConfiguration, ProjectGraphProjectNode } from "@nx/devkit";
+import type {
+  ProjectConfiguration,
+  ProjectGraph,
+  ProjectGraphProjectNode
+} from "@nx/devkit";
 import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import { writeTrace } from "@storm-software/config-tools/logger/console";
@@ -8,6 +12,7 @@ import { Glob } from "glob";
 import { existsSync, readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import {
+  createProjectGraphAsync,
   readCachedProjectGraph,
   readProjectsConfigurationFromProjectGraph
 } from "nx/src/project-graph/project-graph";
@@ -18,7 +23,20 @@ export const addPackageDependencies = async (
   projectName: string,
   packageJson: Record<string, any>
 ): Promise<Record<string, any>> => {
-  const projectGraph = readCachedProjectGraph();
+  let projectGraph!: ProjectGraph;
+  try {
+    projectGraph = readCachedProjectGraph();
+  } catch {
+    await createProjectGraphAsync();
+    projectGraph = readCachedProjectGraph();
+  }
+
+  if (!projectGraph) {
+    throw new Error(
+      "The Build process failed because the project graph is not available. Please run the build command again."
+    );
+  }
+
   const projectDependencies = calculateProjectBuildableDependencies(
     undefined,
     projectGraph,

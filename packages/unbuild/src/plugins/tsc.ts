@@ -1,4 +1,8 @@
-import { readCachedProjectGraph } from "@nx/devkit";
+import {
+  createProjectGraphAsync,
+  ProjectGraph,
+  readCachedProjectGraph
+} from "@nx/devkit";
 import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
 import {
   getHelperDependency,
@@ -12,7 +16,19 @@ import { createTsCompilerOptions } from "../utilities/helpers";
 export const tscPlugin = async (
   options: UnbuildResolvedOptions
 ): Promise<Plugin<any>> => {
-  const projectGraph = readCachedProjectGraph();
+  let projectGraph!: ProjectGraph;
+  try {
+    projectGraph = readCachedProjectGraph();
+  } catch {
+    await createProjectGraphAsync();
+    projectGraph = readCachedProjectGraph();
+  }
+
+  if (!projectGraph) {
+    throw new Error(
+      "The build process failed because the project graph is not available. Please run the build command again."
+    );
+  }
 
   const result = calculateProjectBuildableDependencies(
     undefined,

@@ -1,14 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { ProjectGraph } from "@nx/devkit";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
 import {
+  createProjectGraphAsync,
   readCachedProjectGraph,
-  readProjectsConfigurationFromProjectGraph,
+  readProjectsConfigurationFromProjectGraph
 } from "nx/src/project-graph/project-graph";
 import { RuleConfigCondition, RuleConfigSeverity } from "../types";
 
 export async function getNxScopes(
   context?: any,
-  selector = (params?: ProjectConfiguration) => true,
+  selector = (params?: ProjectConfiguration) => true
 ): Promise<string[]> {
   const ctx = context || {};
 
@@ -19,11 +21,19 @@ export async function getNxScopes(
     process.cwd();
   process.env.NX_WORKSPACE_ROOT_PATH ??= workspaceRoot;
 
-  // const projectGraph = await createProjectGraphAsync({
-  //   exitOnError: false,
-  //   resetDaemonClient: true
-  // });
-  const projectGraph = readCachedProjectGraph();
+  let projectGraph!: ProjectGraph;
+  try {
+    projectGraph = readCachedProjectGraph();
+  } catch {
+    await createProjectGraphAsync();
+    projectGraph = readCachedProjectGraph();
+  }
+
+  if (!projectGraph) {
+    throw new Error(
+      "The commit process failed because the project graph is not available. Please run the build command again."
+    );
+  }
 
   const projectConfigs =
     readProjectsConfigurationFromProjectGraph(projectGraph);
@@ -31,12 +41,12 @@ export async function getNxScopes(
   const result = Object.entries(projectConfigs.projects || {})
     .map(([name, project]) => ({
       name,
-      ...project,
+      ...project
     }))
     .filter(selector)
-    .filter((project) => project.targets)
-    .map((project) => project.name)
-    .map((name) => (name.charAt(0) === "@" ? name.split("/")[1] : name))
+    .filter(project => project.targets)
+    .map(project => project.name)
+    .map(name => (name.charAt(0) === "@" ? name.split("/")[1] : name))
     .filter(Boolean) as string[];
   result.unshift("monorepo");
 
@@ -47,12 +57,12 @@ export const getScopeEnum = async (context?: any): Promise<string[]> => {
   return await getNxScopes(
     context,
     (projectConfig?: ProjectConfiguration) =>
-      !!projectConfig?.name && !projectConfig.name.includes("e2e"),
+      !!projectConfig?.name && !projectConfig.name.includes("e2e")
   );
 };
 
 export const getRuleFromScopeEnum = (
-  scopeEnum: string[],
+  scopeEnum: string[]
 ): [RuleConfigSeverity, RuleConfigCondition, string[]] => {
   if (!scopeEnum?.filter(Boolean).length) {
     throw new Error("No scopes found in the Storm workspace.");
@@ -61,12 +71,12 @@ export const getRuleFromScopeEnum = (
   return [
     RuleConfigSeverity.Error,
     "always",
-    scopeEnum.filter(Boolean) as string[],
+    scopeEnum.filter(Boolean) as string[]
   ];
 };
 
 export const getScopeEnumRule = async (
-  context?: any,
+  context?: any
 ): Promise<[RuleConfigSeverity, RuleConfigCondition, string[]]> => {
   return getRuleFromScopeEnum(await getScopeEnum(context));
 };

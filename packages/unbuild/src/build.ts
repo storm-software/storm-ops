@@ -15,7 +15,12 @@
 
  -------------------------------------------------------------------*/
 
-import { readCachedProjectGraph, writeJsonFile } from "@nx/devkit";
+import {
+  createProjectGraphAsync,
+  ProjectGraph,
+  readCachedProjectGraph,
+  writeJsonFile
+} from "@nx/devkit";
 import { getHelperDependency, HelperDependency } from "@nx/js";
 import { calculateProjectBuildableDependencies } from "@nx/js/src/utils/buildable-libs-utils";
 import {
@@ -85,7 +90,19 @@ export async function resolveOptions(
   const outputPath =
     options.outputPath || joinPaths("dist", options.projectRoot);
 
-  const projectGraph = readCachedProjectGraph();
+  let projectGraph!: ProjectGraph;
+  try {
+    projectGraph = readCachedProjectGraph();
+  } catch {
+    await createProjectGraphAsync();
+    projectGraph = readCachedProjectGraph();
+  }
+
+  if (!projectGraph) {
+    throw new Error(
+      "The build process failed because the project graph is not available. Please run the build command again."
+    );
+  }
 
   const projectJsonPath = joinPaths(
     config.workspaceRoot,
