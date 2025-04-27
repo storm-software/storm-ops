@@ -35,6 +35,11 @@ export const getFileBanner = (repositoryName = "") => {
       .join(" ");
   }
 
+  const license = (process.env.STORM_LICENSE ?? "Apache-2.0")
+    ?.toLowerCase()
+    ?.replace("license", "")
+    ?.trim();
+
   return ` -------------------------------------------------------------------
 
 ${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
@@ -42,38 +47,32 @@ ${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
  This code was released as part of ${titleName ? `the ${titleName}` : "a Storm Software"} project. ${
    titleName ? titleName : "The project"
  }
- is maintained by Storm Software under the ${
-   (process.env.STORM_LICENSE ?? "Apache-2.0")
-     ?.toLowerCase()
-     ?.includes("license")
-     ? (process.env.STORM_LICENSE ?? "Apache-2.0")
-     : `${process.env.STORM_LICENSE ?? "Apache-2.0"} License`
- }, and is
+ is maintained by Storm Software under the ${license} license, and is
  free for commercial and private use. For more information, please visit
- our licensing page.
+ our licensing page at ${
+   process.env.STORM_LICENSING
+     ? process.env.STORM_LICENSING
+     : `https://stormsoftware.com/${repositoryName ? `projects/${repositoryName}/` : ""}license`
+ }.
 
- Website:         ${process.env.STORM_HOMEPAGE ?? "https://stormsoftware.com"}
- Repository:      ${
+ Website:                  ${process.env.STORM_HOMEPAGE ?? "https://stormsoftware.com"}
+ Repository:               ${
    process.env.STORM_REPOSITORY ??
    `https://github.com/storm-software${repositoryName ? `/${repositoryName}` : ""}`
  }
- Documentation:   ${
+ Documentation:            ${
    process.env.STORM_DOCS
      ? process.env.STORM_DOCS
      : `https://stormsoftware.com/${repositoryName ? `projects/${repositoryName}/` : ""}docs`
  }
- Contact:         ${
+ Contact:                  ${
    process.env.STORM_HOMEPAGE
      ? process.env.STORM_HOMEPAGE.endsWith("/")
        ? process.env.STORM_HOMEPAGE.slice(-1)
        : process.env.STORM_HOMEPAGE
      : "https://stormsoftware.com"
  }/contact
- License:         ${
-   process.env.STORM_LICENSING
-     ? process.env.STORM_LICENSING
-     : `https://stormsoftware.com/${repositoryName ? `projects/${repositoryName}/` : ""}license`
- }
+ SPDX-License-Identifier:  ${license}
 
  ------------------------------------------------------------------- `;
 };
