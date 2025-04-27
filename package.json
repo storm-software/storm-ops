@@ -28,10 +28,10 @@
   },
   "license": "Apache-2.0",
   "private": true,
-  "packageManager": "pnpm@10.8.0",
+  "packageManager": "pnpm@10.8.1",
   "engines": {
     "node": ">=22.14.0",
-    "pnpm": ">=10.8.0"
+    "pnpm": ">=10.8.1"
   },
   "keywords": [
     "acidic",

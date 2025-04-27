@@ -57,6 +57,7 @@ in {
   # https://devenv.sh/scripts/
   scripts = {
     bootstrap.exec = "pnpm bootstrap";
+    upgrade.exec = "pnpm upgrade";
     build.exec = "pnpm build";
     build-dev.exec = "pnpm build-dev";
     lint.exec = "pnpm lint";
