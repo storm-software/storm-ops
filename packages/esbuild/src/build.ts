@@ -1,20 +1,3 @@
-/*-------------------------------------------------------------------
-
-                  ⚡ Storm Software - Storm Stack
-
- This code was released as part of the Storm Stack project. Storm Stack
- is maintained by Storm Software under the Apache-2.0 License, and is
- free for commercial and private use. For more information, please visit
- our licensing page.
-
- Website:         https://stormsoftware.com
- Repository:      https://github.com/storm-software/storm-ops
- Documentation:   https://stormsoftware.com/projects/storm-ops/docs
- Contact:         https://stormsoftware.com/contact
- License:         https://stormsoftware.com/projects/storm-ops/license
-
- -------------------------------------------------------------------*/
-
 import {
   createProjectGraphAsync,
   readProjectsConfigurationFromProjectGraph,
@@ -51,7 +34,6 @@ import { Options, build as tsup } from "tsup";
 import { cleanDirectories } from "./clean";
 import { DEFAULT_BUILD_OPTIONS } from "./config";
 import { depsCheckPlugin } from "./plugins/deps-check";
-import { emitDts } from "./tsc";
 import { ESBuildContext, type ESBuildOptions } from "./types";
 import { handle } from "./utilities/helpers";
 
@@ -61,9 +43,9 @@ import { handle } from "./utilities/helpers";
  * @param userOptions - the original build options provided by the user
  * @returns the build options with defaults applied
  */
-const resolveContext = async (
+async function resolveContext(
   userOptions: ESBuildOptions
-): Promise<ESBuildContext> => {
+): Promise<ESBuildContext> {
   const projectRoot = userOptions.projectRoot;
 
   const workspaceRoot = findWorkspaceRoot(projectRoot);
@@ -191,7 +173,7 @@ const resolveContext = async (
       ),
     minify: resolvedOptions.minify || resolvedOptions.mode === "production"
   } as ESBuildContext;
-};
+}
 
 async function generatePackageJson(context: ESBuildContext) {
   if (
@@ -318,31 +300,6 @@ async function executeTsup(context: ESBuildContext) {
 }
 
 /**
- * Execute the typescript compiler
- */
-export async function executeTypescript(context: ESBuildContext) {
-  if (context.result?.errors.length === 0 && context.options.dts) {
-    writeDebug(
-      `  📋  Running TypeScript Compiler for ${context.options.name}`,
-      context.workspaceConfig
-    );
-    const stopwatch = getStopwatch(`${context.options.name} asset copy`);
-
-    emitDts(
-      context.workspaceConfig,
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      context.options.tsconfig!,
-      context.options.tsconfigRaw,
-      true
-    );
-
-    stopwatch();
-  }
-
-  return context;
-}
-
-/**
  * Copy the assets to the build directory
  */
 async function copyBuildAssets(context: ESBuildContext) {
@@ -411,6 +368,7 @@ async function dependencyCheck(options: ESBuildOptions) {
   if (process.env.DEV === "true") {
     return undefined;
   }
+
   // Only run on test and publish pipelines on Buildkite
   // Meaning we skip on GitHub Actions
   // Because it's slow and runs for each job, during setup, making each job slower
@@ -444,7 +402,7 @@ async function dependencyCheck(options: ESBuildOptions) {
  *
  * @param context - the build context
  */
-export async function cleanOutputPath(context: ESBuildContext) {
+async function cleanOutputPath(context: ESBuildContext) {
   if (context.clean !== false && context.outputPath) {
     writeDebug(
       ` 🧹  Cleaning ${context.options.name} output path: ${context.outputPath}`,
@@ -541,21 +499,3 @@ export const watch = (context: BuildContext, options: ESBuildOptions) => {
 
   return undefined;
 };
-
-// Utils ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-// get the current project externals this helps to mark dependencies as external
-// by having convention in the package.json (dev = bundled, non-dev = external)
-// function getProjectExternals(options: ESBuildOptions) {
-//   const pkg = require(`${process.cwd()}/package.json`);
-//   const peerDeps = Object.keys(pkg.peerDependencies ?? {});
-//   const regDeps = Object.keys(pkg.dependencies ?? {});
-
-//   // when bundling, only the devDeps will be bundled
-//   if (!process.env.IGNORE_EXTERNALS && options.bundle === true) {
-//     return [...new Set([...peerDeps, ...regDeps])];
-//   }
-
-//   // otherwise, all the dependencies will be bundled
-//   return [];
-// }
