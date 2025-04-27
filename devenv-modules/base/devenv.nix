@@ -18,6 +18,7 @@ in {
     pkgs.zsh
     pkgs.zsh-autosuggestions
     pkgs.zsh-completions
+    pkgs.atuin
 
     # Source Control
     pkgs.git
@@ -32,10 +33,7 @@ in {
   ];
 
   # https://devenv.sh/languages/
-  languages.nix = {
-    enable = true;
-    lsp.package = pkgs.nixd;
-  };
+  languages.nix.enable = true;
   languages.javascript = {
     enable = true;
     package = pkgs-unstable.nodejs;
@@ -47,12 +45,6 @@ in {
     };
   };
   languages.typescript.enable = true;
-
-  # https://devenv.sh/processes/
-  # processes.cargo-watch.exec = "cargo-watch";
-
-  # https://devenv.sh/services/
-  # services.postgres.enable = true;
 
   # https://devenv.sh/scripts/
   scripts = {
@@ -67,21 +59,11 @@ in {
   };
 
   enterShell = ''
+    echo 'eval "$(atuin init zsh)"' >> ~/.zshrc
+
     pnpm install
     bootstrap
   '';
-
-  # https://devenv.sh/tasks/
-  # tasks = {
-  #   "myproj:setup".exec = "mytool build";
-  #   "devenv:enterShell".after = [ "myproj:setup" ];
-  # };
-
-  # https://devenv.sh/tests/
-  # enterTest = ''
-  #   echo "Running tests"
-  #   git --version | grep --color=auto "${pkgs.git.version}"
-  # '';
 
   # https://devenv.sh/git-hooks/
   git-hooks.hooks = {
