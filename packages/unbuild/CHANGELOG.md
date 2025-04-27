@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.41.1](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.41.1) (2025-04-27)
+
+### Bug Fixes
+
+- **git-tools:** Ensure project graph is regenerated if not in cache
+  ([817e291e6](https://github.com/storm-software/storm-ops/commit/817e291e6))
+
 ## [0.40.2](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.40.2) (2025-04-25)
 
 ### Miscellaneous

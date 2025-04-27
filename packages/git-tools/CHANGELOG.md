@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.104.27](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.27) (2025-04-27)
+
+### Bug Fixes
+
+- **git-tools:** Ensure project graph is regenerated if not in cache
+  ([817e291e6](https://github.com/storm-software/storm-ops/commit/817e291e6))
+
 ## [2.104.25](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.25) (2025-04-25)
 
 ### Miscellaneous

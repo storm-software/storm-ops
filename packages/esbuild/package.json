@@ -221,7 +221,7 @@
     "@microsoft/api-extractor": "catalog:",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/build-tools": "0.144.0",
+    "@storm-software/build-tools": "0.144.1",
     "@storm-software/config": "1.113.5",
     "@storm-software/config-tools": "1.163.5",
     "@types/node": "catalog:",

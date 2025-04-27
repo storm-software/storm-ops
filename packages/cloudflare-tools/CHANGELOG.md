@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.55.66](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.55.66) (2025-04-27)
+
+### Bug Fixes
+
+- **git-tools:** Ensure project graph is regenerated if not in cache
+  ([817e291e6](https://github.com/storm-software/storm-ops/commit/817e291e6))
+
 ## [0.55.64](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.55.64) (2025-04-25)
 
 ### Miscellaneous

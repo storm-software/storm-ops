@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.144.1](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.144.1) (2025-04-27)
+
+### Bug Fixes
+
+- **git-tools:** Ensure project graph is regenerated if not in cache
+  ([817e291e6](https://github.com/storm-software/storm-ops/commit/817e291e6))
+
 ## [0.143.46](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.143.46) (2025-04-25)
 
 ### Miscellaneous
