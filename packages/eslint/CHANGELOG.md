@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.148.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.0) (2025-04-27)
+
+### Features
+
+- **eslint:** Added `SPDX-License-Identifier` to the banner
+  ([3cbe08a26](https://github.com/storm-software/storm-ops/commit/3cbe08a26))
+
 ## [0.146.8](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.146.8) (2025-04-25)
 
 ### Miscellaneous

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.33.1](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.33.1) (2025-04-27)
+
+### Miscellaneous
+
+- **esbuild:** Clean up the build module
+  ([642dec7f8](https://github.com/storm-software/storm-ops/commit/642dec7f8))
+
 ## [0.33.0](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.33.0) (2025-04-27)
 
 ### Updated Dependencies
