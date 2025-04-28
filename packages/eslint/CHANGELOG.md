@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.148.3](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.3) (2025-04-28)
+
+### Miscellaneous
+
+- **eslint:** Added default ignores to ESLint preset
+  ([a0f8543fc](https://github.com/storm-software/storm-ops/commit/a0f8543fc))
+- **monorepo:** Regenerate README markdown files
+  ([54eadd1b2](https://github.com/storm-software/storm-ops/commit/54eadd1b2))
+
 ## [0.148.2](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.2) (2025-04-28)
 
 ### Bug Fixes
