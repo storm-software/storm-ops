@@ -1,7 +1,7 @@
 import defu from "defu";
-import { DEFAULT_IGNORES } from "src/utils/ignores";
 import type { TypedFlatConfigItem } from "../types";
 import { GLOB_EXCLUDE } from "../utils/constants";
+import { DEFAULT_IGNORES } from "../utils/ignores";
 
 export async function ignores(
   userIgnores: string[] = []
