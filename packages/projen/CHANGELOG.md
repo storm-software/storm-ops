@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.9.58](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.58) (2025-04-28)
+
+### Miscellaneous
+
+- **monorepo:** Update dependency versions in packages
+  ([f1f72dd67](https://github.com/storm-software/storm-ops/commit/f1f72dd67))
+
 ## [0.9.56](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.56) (2025-04-25)
 
 ### Miscellaneous

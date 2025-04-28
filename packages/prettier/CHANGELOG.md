@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.45.10](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.45.10) (2025-04-28)
+
+### Miscellaneous
+
+- **monorepo:** Resolve linting issues with typegen files
+  ([a24afc3e1](https://github.com/storm-software/storm-ops/commit/a24afc3e1))
+- **monorepo:** Update dependency versions in packages
+  ([f1f72dd67](https://github.com/storm-software/storm-ops/commit/f1f72dd67))
+
 ## [0.45.8](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.45.8) (2025-04-25)
 
 ### Miscellaneous

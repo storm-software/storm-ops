@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.104.28](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.28) (2025-04-28)
+
+### Miscellaneous
+
+- **monorepo:** Update dependency versions in packages
+  ([f1f72dd67](https://github.com/storm-software/storm-ops/commit/f1f72dd67))
+
 ## [2.104.27](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.27) (2025-04-27)
 
 ### Bug Fixes
