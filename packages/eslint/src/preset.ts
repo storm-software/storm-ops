@@ -344,7 +344,7 @@ export function getStormConfig(
     );
   }
 
-  if (options.markdown ?? true) {
+  if (options.markdown ?? false) {
     configs.push(
       markdown({
         componentExts,

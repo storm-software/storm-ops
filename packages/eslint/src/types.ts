@@ -604,7 +604,7 @@ export interface OptionsConfig
    *
    * For formatting Markdown content, enable also `formatters.markdown`.
    *
-   * @defaultValue true
+   * @defaultValue false
    */
   markdown?: boolean | OptionsOverrides;
 
