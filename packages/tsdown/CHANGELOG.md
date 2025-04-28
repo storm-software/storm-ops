@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.28.9](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.28.9) (2025-04-28)
+
+### Miscellaneous
+
+- **eslint:** Disable markdown eslint rules by default
+  ([a84e36deb](https://github.com/storm-software/storm-ops/commit/a84e36deb))
+- **monorepo:** Regenerate README markdown files
+  ([adffb8372](https://github.com/storm-software/storm-ops/commit/adffb8372))
+
 ## [0.28.8](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.28.8) (2025-04-28)
 
 ### Bug Fixes

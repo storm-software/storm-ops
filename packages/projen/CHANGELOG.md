@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.9.63](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.63) (2025-04-28)
+
+### Miscellaneous
+
+- **eslint:** Disable markdown eslint rules by default
+  ([a84e36deb](https://github.com/storm-software/storm-ops/commit/a84e36deb))
+- **monorepo:** Regenerate README markdown files
+  ([adffb8372](https://github.com/storm-software/storm-ops/commit/adffb8372))
+
 ## [0.9.62](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.62) (2025-04-28)
 
 ### Bug Fixes

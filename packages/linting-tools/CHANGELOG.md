@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.119.46](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.46) (2025-04-28)
+
+### Miscellaneous
+
+- **eslint:** Disable markdown eslint rules by default
+  ([a84e36deb](https://github.com/storm-software/storm-ops/commit/a84e36deb))
+- **monorepo:** Regenerate README markdown files
+  ([adffb8372](https://github.com/storm-software/storm-ops/commit/adffb8372))
+
 ## [1.119.45](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.45) (2025-04-28)
 
 ### Bug Fixes

@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.55.72](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.55.72) (2025-04-28)
+
+### Miscellaneous
+
+- **eslint:** Disable markdown eslint rules by default
+  ([a84e36deb](https://github.com/storm-software/storm-ops/commit/a84e36deb))
+- **monorepo:** Regenerate README markdown files
+  ([adffb8372](https://github.com/storm-software/storm-ops/commit/adffb8372))
+
 ## [0.55.71](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.55.71) (2025-04-28)
 
 ### Bug Fixes
