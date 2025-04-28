@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.85.65](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.85.65) (2025-04-28)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate pnpm-lock.yaml file
+  ([5f9f4b14c](https://github.com/storm-software/storm-ops/commit/5f9f4b14c))
+- **monorepo:** Regenerate README markdown files
+  ([70315e770](https://github.com/storm-software/storm-ops/commit/70315e770))
+
 ## [1.85.63](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.85.63) (2025-04-25)
 
 ### Miscellaneous

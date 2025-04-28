@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.28.5](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.28.5) (2025-04-28)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate pnpm-lock.yaml file
+  ([5f9f4b14c](https://github.com/storm-software/storm-ops/commit/5f9f4b14c))
+- **monorepo:** Regenerate README markdown files
+  ([70315e770](https://github.com/storm-software/storm-ops/commit/70315e770))
+
 ## [0.28.4](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.28.4) (2025-04-28)
 
 ### Miscellaneous

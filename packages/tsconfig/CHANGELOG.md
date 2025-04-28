@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.35.53](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.35.53) (2025-04-28)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate pnpm-lock.yaml file
+  ([5f9f4b14c](https://github.com/storm-software/storm-ops/commit/5f9f4b14c))
+- **monorepo:** Regenerate README markdown files
+  ([70315e770](https://github.com/storm-software/storm-ops/commit/70315e770))
+
 ## [0.35.51](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.35.51) (2025-04-25)
 
 ### Miscellaneous

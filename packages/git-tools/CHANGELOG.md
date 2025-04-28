@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.104.29](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.29) (2025-04-28)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate pnpm-lock.yaml file
+  ([5f9f4b14c](https://github.com/storm-software/storm-ops/commit/5f9f4b14c))
+- **monorepo:** Regenerate README markdown files
+  ([70315e770](https://github.com/storm-software/storm-ops/commit/70315e770))
+
 ## [2.104.28](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.28) (2025-04-28)
 
 ### Miscellaneous

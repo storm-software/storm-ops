@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.25.2](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.25.2) (2025-04-28)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate pnpm-lock.yaml file
+  ([5f9f4b14c](https://github.com/storm-software/storm-ops/commit/5f9f4b14c))
+- **monorepo:** Regenerate README markdown files
+  ([70315e770](https://github.com/storm-software/storm-ops/commit/70315e770))
+
 ## [0.25.1](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.25.1) (2025-04-28)
 
 ### Miscellaneous

@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.148.2](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.2) (2025-04-28)
+
+### Bug Fixes
+
+- **eslint:** Clean up the file banner heading
+  ([d416d9ebd](https://github.com/storm-software/storm-ops/commit/d416d9ebd))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate pnpm-lock.yaml file
+  ([5f9f4b14c](https://github.com/storm-software/storm-ops/commit/5f9f4b14c))
+- **monorepo:** Regenerate README markdown files
+  ([70315e770](https://github.com/storm-software/storm-ops/commit/70315e770))
+
 ## [0.148.1](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.1) (2025-04-28)
 
 ### Miscellaneous
