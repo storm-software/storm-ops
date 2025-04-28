@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.163.7](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.163.7) (2025-04-28)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate pnpm-lock.yaml file
+  ([5f9f4b14c](https://github.com/storm-software/storm-ops/commit/5f9f4b14c))
+- **monorepo:** Regenerate README markdown files
+  ([70315e770](https://github.com/storm-software/storm-ops/commit/70315e770))
+
 ## [1.163.6](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.163.6) (2025-04-28)
 
 ### Miscellaneous

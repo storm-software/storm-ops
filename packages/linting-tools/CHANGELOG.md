@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.119.42](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.42) (2025-04-28)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate pnpm-lock.yaml file
+  ([5f9f4b14c](https://github.com/storm-software/storm-ops/commit/5f9f4b14c))
+- **monorepo:** Regenerate README markdown files
+  ([70315e770](https://github.com/storm-software/storm-ops/commit/70315e770))
+
 ## [1.119.41](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.41) (2025-04-28)
 
 ### Miscellaneous

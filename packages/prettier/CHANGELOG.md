@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.45.11](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.45.11) (2025-04-28)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate pnpm-lock.yaml file
+  ([5f9f4b14c](https://github.com/storm-software/storm-ops/commit/5f9f4b14c))
+- **monorepo:** Regenerate README markdown files
+  ([70315e770](https://github.com/storm-software/storm-ops/commit/70315e770))
+
 ## [0.45.10](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.45.10) (2025-04-28)
 
 ### Miscellaneous
