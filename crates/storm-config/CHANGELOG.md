@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.13.47](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.13.47) (2025-04-28)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with import file path
+  ([302ad797a](https://github.com/storm-software/storm-ops/commit/302ad797a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([a202b48b2](https://github.com/storm-software/storm-ops/commit/a202b48b2))
+
 ## [0.13.46](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.13.46) (2025-04-28)
 
 ### Miscellaneous

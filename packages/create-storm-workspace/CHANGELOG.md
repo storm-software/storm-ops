@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.85.67](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.85.67) (2025-04-28)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with import file path
+  ([302ad797a](https://github.com/storm-software/storm-ops/commit/302ad797a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([a202b48b2](https://github.com/storm-software/storm-ops/commit/a202b48b2))
+
 ## [1.85.66](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.85.66) (2025-04-28)
 
 ### Miscellaneous

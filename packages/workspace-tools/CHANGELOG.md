@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.267.4](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.267.4) (2025-04-28)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with import file path
+  ([302ad797a](https://github.com/storm-software/storm-ops/commit/302ad797a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([a202b48b2](https://github.com/storm-software/storm-ops/commit/a202b48b2))
+
 ## [1.267.3](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.267.3) (2025-04-28)
 
 ### Miscellaneous

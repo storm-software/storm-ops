@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.28.7](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.28.7) (2025-04-28)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with import file path
+  ([302ad797a](https://github.com/storm-software/storm-ops/commit/302ad797a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([a202b48b2](https://github.com/storm-software/storm-ops/commit/a202b48b2))
+
 ## [0.28.6](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.28.6) (2025-04-28)
 
 ### Miscellaneous
