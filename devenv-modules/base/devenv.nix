@@ -49,7 +49,7 @@ in {
   # https://devenv.sh/scripts/
   scripts = {
     bootstrap.exec = "pnpm bootstrap";
-    upgrade.exec = "pnpm upgrade";
+    update.exec = "pnpm update";
     build.exec = "pnpm build";
     build-dev.exec = "pnpm build-dev";
     lint.exec = "pnpm lint";
@@ -61,6 +61,7 @@ in {
   enterShell = ''
     echo 'eval "$(atuin init zsh)"' >> ~/.zshrc
 
+    pnpm update --recursive --workspace
     pnpm install
     bootstrap
   '';
