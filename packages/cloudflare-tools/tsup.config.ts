@@ -1,6 +1,6 @@
-import { defineConfig } from "tsup";
+import { defineConfig, Options } from "tsup";
 
-export default defineConfig([
+const config = defineConfig([
   {
     name: "cloudflare-tools",
     target: "node22",
@@ -9,7 +9,7 @@ export default defineConfig([
       "./src/utils/*.ts",
       "./src/executors/*/executor.ts",
       "./src/generators/*/generator.ts",
-      "./src/generators/plugins/*.ts",
+      "./src/generators/plugins/*.ts"
     ],
     outDir: "dist",
     format: ["cjs", "esm"],
@@ -20,6 +20,8 @@ export default defineConfig([
     sourcemap: false,
     shims: true,
     tsconfig: "./tsconfig.json",
-    external: ["@storm-software/workspace-tools"],
-  },
-]);
+    external: ["@storm-software/workspace-tools"]
+  }
+]) as Options;
+
+export default config;
