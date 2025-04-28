@@ -127,8 +127,10 @@
   ],
   "peerDependencies": {
     "@nx/devkit": "catalog:",
-    "@pulumi/pulumi": "^3.144.1",
-    "nx": "catalog:"
+    "@storm-software/config": "1.113.5",
+    "@storm-software/config-tools": "1.163.5",
+    "@storm-software/workspace-tools": "1.267.0",
+    "tsup": "catalog:"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
@@ -143,9 +145,7 @@
   },
   "dependencies": {
     "@nx/devkit": "catalog:",
-    "@pulumi/pulumi": "^3.144.1",
-    "shelljs": "^0.8.5",
-    "tslib": "catalog:"
+    "shelljs": "^0.8.5"
   },
   "devDependencies": {
     "@nx/devkit": "catalog:",

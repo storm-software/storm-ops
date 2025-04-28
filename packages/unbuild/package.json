@@ -213,7 +213,7 @@
     "esbuild": "catalog:",
     "glob": "catalog:",
     "jiti": "catalog:",
-    "mkdist": "^2.2.0",
+    "mkdist": "^2.3.0",
     "pkg-types": "catalog:",
     "rollup": "catalog:",
     "rollup-plugin-typescript2": "0.36.0",

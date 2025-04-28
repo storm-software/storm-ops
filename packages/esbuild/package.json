@@ -207,11 +207,11 @@
     "chokidar": "^4.0.3",
     "commander": "catalog:",
     "defu": "catalog:",
-    "es-toolkit": "^1.30.1",
+    "es-toolkit": "^1.36.0",
     "esbuild": "catalog:",
-    "globby": "^14.0.2",
+    "globby": "^14.1.0",
     "nx": "catalog:",
-    "prettier-plugin-organize-imports": "^4.0.0",
+    "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-pkg": "^0.18.1",
     "prettier-plugin-sh": "^0.15.0",
     "source-map": "0.7.4",
@@ -221,13 +221,13 @@
     "@microsoft/api-extractor": "catalog:",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/build-tools": "0.144.1",
-    "@storm-software/config": "1.113.5",
-    "@storm-software/config-tools": "1.163.5",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "@types/node": "catalog:",
     "rollup": "catalog:",
     "spdx-exceptions": "^2.5.0",
-    "spdx-license-ids": "^3.0.20"
+    "spdx-license-ids": "^3.0.21"
   },
   "publishConfig": {
     "access": "public"

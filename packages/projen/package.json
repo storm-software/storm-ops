@@ -127,8 +127,12 @@
   ],
   "peerDependencies": {
     "@nx/devkit": "catalog:",
-    "nx": "catalog:",
-    "projen": "^0.91.6"
+    "@storm-software/config": "1.113.5",
+    "@storm-software/config-tools": "1.163.5",
+    "@storm-software/workspace-tools": "1.267.0",
+    "projen": "^0.91.6",
+    "tsup": "catalog:",
+    "untyped": "1.5.2"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
@@ -142,10 +146,9 @@
     }
   },
   "dependencies": {
-    "@aws/pdk": "^0.25.16",
+    "@aws/pdk": "^0.25.17",
     "@nx/devkit": "catalog:",
-    "projen": "^0.91.6",
-    "tslib": "catalog:"
+    "projen": "0.91.20"
   },
   "devDependencies": {
     "@nx/devkit": "catalog:",

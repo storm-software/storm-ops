@@ -137,7 +137,7 @@
   },
   "devDependencies": {
     "@manypkg/cli": "^0.23.0",
-    "@manypkg/get-packages": "^2.2.1",
+    "@manypkg/get-packages": "^2.2.2",
     "@types/node": "catalog:",
     "alex": "^11.0.1",
     "check-dependency-version-consistency": "4.1.0",
