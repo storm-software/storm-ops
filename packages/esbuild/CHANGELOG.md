@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.33.6](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.33.6) (2025-04-28)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with provided ignores list
+  ([debd59a14](https://github.com/storm-software/storm-ops/commit/debd59a14))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([5834a3608](https://github.com/storm-software/storm-ops/commit/5834a3608))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.163.10
+- Updated build-tools to 0.144.5
+- Updated config to 1.113.9
+
 ## [0.33.5](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.33.5) (2025-04-28)
 
 ### Bug Fixes

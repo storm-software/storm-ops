@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.148.5](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.5) (2025-04-28)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with provided ignores list
+  ([debd59a14](https://github.com/storm-software/storm-ops/commit/debd59a14))
+
+### Miscellaneous
+
+- **eslint:** Include missing barrel file updates
+  ([61a2824a9](https://github.com/storm-software/storm-ops/commit/61a2824a9))
+- **monorepo:** Regenerate README markdown files
+  ([5834a3608](https://github.com/storm-software/storm-ops/commit/5834a3608))
+
 ## [0.148.4](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.4) (2025-04-28)
 
 ### Bug Fixes

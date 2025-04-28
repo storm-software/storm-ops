@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.9.62](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.62) (2025-04-28)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with provided ignores list
+  ([debd59a14](https://github.com/storm-software/storm-ops/commit/debd59a14))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([5834a3608](https://github.com/storm-software/storm-ops/commit/5834a3608))
+
 ## [0.9.61](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.61) (2025-04-28)
 
 ### Bug Fixes

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.163.10](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.163.10) (2025-04-28)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with provided ignores list
+  ([debd59a14](https://github.com/storm-software/storm-ops/commit/debd59a14))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([5834a3608](https://github.com/storm-software/storm-ops/commit/5834a3608))
+
 ## [1.163.9](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.163.9) (2025-04-28)
 
 ### Bug Fixes

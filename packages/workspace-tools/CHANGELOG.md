@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.267.5](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.267.5) (2025-04-28)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with provided ignores list
+  ([debd59a14](https://github.com/storm-software/storm-ops/commit/debd59a14))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([5834a3608](https://github.com/storm-software/storm-ops/commit/5834a3608))
+
 ## [1.267.4](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.267.4) (2025-04-28)
 
 ### Bug Fixes
