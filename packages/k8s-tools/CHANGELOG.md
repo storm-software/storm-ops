@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.25.1](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.25.1) (2025-04-28)
+
+### Miscellaneous
+
+- **monorepo:** Update dependency versions in packages
+  ([f1f72dd67](https://github.com/storm-software/storm-ops/commit/f1f72dd67))
+
 ## [0.24.72](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.24.72) (2025-04-25)
 
 ### Miscellaneous

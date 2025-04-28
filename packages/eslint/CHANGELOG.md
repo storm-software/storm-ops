@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.148.1](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.1) (2025-04-28)
+
+### Miscellaneous
+
+- **monorepo:** Resolve linting issues with typegen files
+  ([a24afc3e1](https://github.com/storm-software/storm-ops/commit/a24afc3e1))
+- **monorepo:** Update dependency versions in packages
+  ([f1f72dd67](https://github.com/storm-software/storm-ops/commit/f1f72dd67))
+
 ## [0.148.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.0) (2025-04-27)
 
 ### Features

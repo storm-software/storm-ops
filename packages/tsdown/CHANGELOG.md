@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.28.4](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.28.4) (2025-04-28)
+
+### Miscellaneous
+
+- **monorepo:** Update dependency versions in packages
+  ([f1f72dd67](https://github.com/storm-software/storm-ops/commit/f1f72dd67))
+
 ## [0.28.2](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.28.2) (2025-04-25)
 
 ### Miscellaneous
