@@ -36,9 +36,9 @@ export const getFileBanner = (repositoryName = "") => {
   }
 
   const license = (process.env.STORM_LICENSE ?? "Apache-2.0")
-    ?.toLowerCase()
-    ?.replace("license", "")
-    ?.trim();
+    .split(" ")
+    .filter(word => word && word.toLowerCase() !== "license")
+    .join(" ");
 
   return ` -------------------------------------------------------------------
 
@@ -72,6 +72,7 @@ ${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
        : process.env.STORM_HOMEPAGE
      : "https://stormsoftware.com"
  }/contact
+
  SPDX-License-Identifier:  ${license}
 
  ------------------------------------------------------------------- `;
