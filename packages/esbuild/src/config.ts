@@ -35,6 +35,7 @@ export const DEFAULT_BUILD_OPTIONS: Required<
     | "keepNames"
     | "metafile"
     | "treeshake"
+    | "splitting"
     | "shims"
     | "watch"
     | "bundle"
@@ -54,6 +55,7 @@ export const DEFAULT_BUILD_OPTIONS: Required<
   keepNames: true,
   metafile: false,
   treeshake: true,
+  splitting: true,
   shims: false,
   watch: false,
   bundle: true,

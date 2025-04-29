@@ -96,6 +96,7 @@ async function resolveContext(
   }
 
   const env = getEnv("esbuild", options as Parameters<typeof getEnv>[1]);
+  const define = defu(options.define ?? {}, env ?? {});
 
   const resolvedOptions = {
     name: projectName,
@@ -108,26 +109,21 @@ async function resolveContext(
     ),
     metafile: userOptions.mode === "development",
     clean: false,
-    splitting:
-      options.format === "iife"
-        ? false
-        : options.treeshake === undefined
-          ? options.splitting
-          : true,
     env,
     define: {
       STORM_FORMAT: JSON.stringify(options.format),
-      ...options.define,
-      ...Object.keys(env || {}).reduce((res, key) => {
-        const value = JSON.stringify(env[key]);
-        const safeKey = key.replaceAll("(", "").replaceAll(")", "");
+      ...Object.keys(define)
+        .filter(key => define[key] !== undefined)
+        .reduce((res, key) => {
+          const value = JSON.stringify(define[key]);
+          const safeKey = key.replaceAll("(", "").replaceAll(")", "");
 
-        return {
-          ...res,
-          [`process.env.${safeKey}`]: value,
-          [`import.meta.env.${safeKey}`]: value
-        };
-      }, {})
+          return {
+            ...res,
+            [`process.env.${safeKey}`]: value,
+            [`import.meta.env.${safeKey}`]: value
+          };
+        }, {})
     }
   } satisfies ESBuildOptions;
 
