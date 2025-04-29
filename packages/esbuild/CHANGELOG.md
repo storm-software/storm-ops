@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.34.1](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.34.1) (2025-04-29)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with generated package.json `exports` field
+  ([3e4b3228e](https://github.com/storm-software/storm-ops/commit/3e4b3228e))
+
 ## [0.34.0](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.34.0) (2025-04-29)
 
 ### Features
