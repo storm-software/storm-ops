@@ -249,9 +249,6 @@
     "es-toolkit": "^1.36.0",
     "esbuild": "catalog:",
     "globby": "^14.1.0",
-    "prettier-plugin-organize-imports": "^4.1.0",
-    "prettier-plugin-pkg": "^0.18.1",
-    "prettier-plugin-sh": "^0.15.0",
     "tsup": "catalog:"
   },
   "devDependencies": {

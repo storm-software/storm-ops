@@ -665,15 +665,6 @@ importers:
       globby:
         specifier: ^14.1.0
         version: 14.1.0
-      prettier-plugin-organize-imports:
-        specifier: ^4.1.0
-        version: 4.1.0(prettier@3.5.3)(typescript@5.8.3)
-      prettier-plugin-pkg:
-        specifier: ^0.18.1
-        version: 0.18.1(prettier@3.5.3)
-      prettier-plugin-sh:
-        specifier: ^0.15.0
-        version: 0.15.0(prettier@3.5.3)
       tsup:
         specifier: 'catalog:'
         version: 8.4.0(patch_hash=6f5ec3d4990820b9e30a2e3135e1e171cde70966824e3b0ca9c0d2f02fc93f24)(@microsoft/api-extractor@7.52.3(@types/node@22.14.0))(@swc/core@1.7.26(@swc/helpers@0.5.13))(jiti@2.4.2)(postcss@8.5.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.1)
@@ -4307,7 +4298,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
