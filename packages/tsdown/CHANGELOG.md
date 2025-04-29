@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.28.19](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.28.19) (2025-04-29)
+
+### Miscellaneous
+
+- **monorepo:** Update tsup patch to include proper commonjs require plugin
+  ([3944d7156](https://github.com/storm-software/storm-ops/commit/3944d7156))
+- **monorepo:** Regenerate README markdown files
+  ([1d8036bdd](https://github.com/storm-software/storm-ops/commit/1d8036bdd))
+
 ## [0.28.18](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.28.18) (2025-04-29)
 
 ### Miscellaneous

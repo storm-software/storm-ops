@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.9.73](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.73) (2025-04-29)
+
+### Miscellaneous
+
+- **monorepo:** Update tsup patch to include proper commonjs require plugin
+  ([3944d7156](https://github.com/storm-software/storm-ops/commit/3944d7156))
+- **monorepo:** Regenerate README markdown files
+  ([1d8036bdd](https://github.com/storm-software/storm-ops/commit/1d8036bdd))
+
 ## [0.9.72](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.72) (2025-04-29)
 
 ### Miscellaneous

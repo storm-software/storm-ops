@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.55.82](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.55.82) (2025-04-29)
+
+### Miscellaneous
+
+- **monorepo:** Update tsup patch to include proper commonjs require plugin
+  ([3944d7156](https://github.com/storm-software/storm-ops/commit/3944d7156))
+- **monorepo:** Regenerate README markdown files
+  ([1d8036bdd](https://github.com/storm-software/storm-ops/commit/1d8036bdd))
+
 ## [0.55.81](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.55.81) (2025-04-29)
 
 ### Miscellaneous

@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.13.59](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.13.59) (2025-04-29)
+
+### Miscellaneous
+
+- **monorepo:** Update tsup patch to include proper commonjs require plugin
+  ([3944d7156](https://github.com/storm-software/storm-ops/commit/3944d7156))
+- **monorepo:** Regenerate README markdown files
+  ([1d8036bdd](https://github.com/storm-software/storm-ops/commit/1d8036bdd))
+
 ## [0.13.58](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.13.58) (2025-04-29)
 
 ### Miscellaneous

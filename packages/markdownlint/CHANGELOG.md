@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.18.31](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.18.31) (2025-04-29)
+
+### Miscellaneous
+
+- **monorepo:** Update tsup patch to include proper commonjs require plugin
+  ([3944d7156](https://github.com/storm-software/storm-ops/commit/3944d7156))
+- **monorepo:** Regenerate README markdown files
+  ([1d8036bdd](https://github.com/storm-software/storm-ops/commit/1d8036bdd))
+
 ## [0.18.30](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.18.30) (2025-04-29)
 
 ### Miscellaneous

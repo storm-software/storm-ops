@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.11.53](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.11.53) (2025-04-29)
+
+### Miscellaneous
+
+- **monorepo:** Update tsup patch to include proper commonjs require plugin
+  ([3944d7156](https://github.com/storm-software/storm-ops/commit/3944d7156))
+- **monorepo:** Regenerate README markdown files
+  ([1d8036bdd](https://github.com/storm-software/storm-ops/commit/1d8036bdd))
+
 ## [0.11.52](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.11.52) (2025-04-29)
 
 ### Miscellaneous

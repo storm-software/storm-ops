@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.119.56](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.56) (2025-04-29)
+
+### Miscellaneous
+
+- **monorepo:** Update tsup patch to include proper commonjs require plugin
+  ([3944d7156](https://github.com/storm-software/storm-ops/commit/3944d7156))
+- **monorepo:** Regenerate README markdown files
+  ([1d8036bdd](https://github.com/storm-software/storm-ops/commit/1d8036bdd))
+
 ## [1.119.55](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.55) (2025-04-29)
 
 ### Miscellaneous

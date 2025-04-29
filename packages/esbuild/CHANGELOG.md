@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.35.7](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.7) (2025-04-29)
+
+### Miscellaneous
+
+- **monorepo:** Update tsup patch to include proper commonjs require plugin
+  ([3944d7156](https://github.com/storm-software/storm-ops/commit/3944d7156))
+- **monorepo:** Regenerate README markdown files
+  ([1d8036bdd](https://github.com/storm-software/storm-ops/commit/1d8036bdd))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.163.21
+- Updated build-tools to 0.144.16
+- Updated config to 1.113.20
+
 ## [0.35.6](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.6) (2025-04-29)
 
 ### Bug Fixes

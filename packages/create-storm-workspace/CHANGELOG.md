@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.85.79](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.85.79) (2025-04-29)
+
+### Miscellaneous
+
+- **monorepo:** Update tsup patch to include proper commonjs require plugin
+  ([3944d7156](https://github.com/storm-software/storm-ops/commit/3944d7156))
+- **monorepo:** Regenerate README markdown files
+  ([1d8036bdd](https://github.com/storm-software/storm-ops/commit/1d8036bdd))
+
 ## [1.85.78](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.85.78) (2025-04-29)
 
 ### Miscellaneous

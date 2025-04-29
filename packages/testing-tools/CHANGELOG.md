@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.104.77](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.77) (2025-04-29)
+
+### Miscellaneous
+
+- **monorepo:** Update tsup patch to include proper commonjs require plugin
+  ([3944d7156](https://github.com/storm-software/storm-ops/commit/3944d7156))
+- **monorepo:** Regenerate README markdown files
+  ([1d8036bdd](https://github.com/storm-software/storm-ops/commit/1d8036bdd))
+
 ## [1.104.76](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.76) (2025-04-29)
 
 ### Miscellaneous

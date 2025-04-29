@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.148.16](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.16) (2025-04-29)
+
+### Miscellaneous
+
+- **monorepo:** Update tsup patch to include proper commonjs require plugin
+  ([3944d7156](https://github.com/storm-software/storm-ops/commit/3944d7156))
+- **monorepo:** Regenerate README markdown files
+  ([1d8036bdd](https://github.com/storm-software/storm-ops/commit/1d8036bdd))
+
 ## [0.148.15](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.15) (2025-04-29)
 
 ### Miscellaneous

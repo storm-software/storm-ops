@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.7.70](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.70) (2025-04-29)
+
+### Miscellaneous
+
+- **monorepo:** Update tsup patch to include proper commonjs require plugin
+  ([3944d7156](https://github.com/storm-software/storm-ops/commit/3944d7156))
+- **monorepo:** Regenerate README markdown files
+  ([1d8036bdd](https://github.com/storm-software/storm-ops/commit/1d8036bdd))
+
 ## [0.7.69](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.69) (2025-04-29)
 
 ### Miscellaneous
