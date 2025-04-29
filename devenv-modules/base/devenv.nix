@@ -7,6 +7,7 @@ in {
 
   dotenv.enable = true;
   dotenv.filename = [".env" ".env.local"];
+  dotenv.disableHint = true;
 
   # https://devenv.sh/basics/
   env.DEFAULT_LOCALE = "en_US";
@@ -58,8 +59,6 @@ in {
   };
 
   enterShell = ''
-    pnpm install
-
     pnpm update --recursive --workspace
     pnpm install
 
