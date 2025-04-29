@@ -126,16 +126,86 @@
     },
     "./build": {
       "import": {
-        "types": "./dist/build/index.d.ts",
-        "default": "./dist/build/index.js"
+        "types": "./dist/build.d.ts",
+        "default": "./dist/build.js"
       },
       "require": {
-        "types": "./dist/build/index.d.cts",
-        "default": "./dist/build/index.cjs"
+        "types": "./dist/build.d.cts",
+        "default": "./dist/build.cjs"
       },
       "default": {
-        "types": "./dist/build/index.d.ts",
-        "default": "./dist/build/index.js"
+        "types": "./dist/build.d.ts",
+        "default": "./dist/build.js"
+      }
+    },
+    "./assets": {
+      "import": {
+        "types": "./dist/assets.d.ts",
+        "default": "./dist/assets.js"
+      },
+      "require": {
+        "types": "./dist/assets.d.cts",
+        "default": "./dist/assets.cjs"
+      },
+      "default": {
+        "types": "./dist/assets.d.ts",
+        "default": "./dist/assets.js"
+      }
+    },
+    "./context": {
+      "import": {
+        "types": "./dist/context.d.ts",
+        "default": "./dist/context.js"
+      },
+      "require": {
+        "types": "./dist/context.d.cts",
+        "default": "./dist/context.cjs"
+      },
+      "default": {
+        "types": "./dist/context.d.ts",
+        "default": "./dist/context.js"
+      }
+    },
+    "./package-json": {
+      "import": {
+        "types": "./dist/package-json.d.ts",
+        "default": "./dist/package-json.js"
+      },
+      "require": {
+        "types": "./dist/package-json.d.cts",
+        "default": "./dist/package-json.cjs"
+      },
+      "default": {
+        "types": "./dist/package-json.d.ts",
+        "default": "./dist/package-json.js"
+      }
+    },
+    "./tsup": {
+      "import": {
+        "types": "./dist/tsup.d.ts",
+        "default": "./dist/tsup.js"
+      },
+      "require": {
+        "types": "./dist/tsup.d.cts",
+        "default": "./dist/tsup.cjs"
+      },
+      "default": {
+        "types": "./dist/tsup.d.ts",
+        "default": "./dist/tsup.js"
+      }
+    },
+    "./watch": {
+      "import": {
+        "types": "./dist/watch.d.ts",
+        "default": "./dist/watch.js"
+      },
+      "require": {
+        "types": "./dist/watch.d.cts",
+        "default": "./dist/watch.cjs"
+      },
+      "default": {
+        "types": "./dist/watch.d.ts",
+        "default": "./dist/watch.js"
       }
     },
     "./plugins/*": {
@@ -167,67 +237,26 @@
     "storm-stack",
     "sullivanpj"
   ],
-  "peerDependencies": {
-    "@microsoft/api-extractor": "catalog:",
+  "dependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
     "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config": "workspace:*",
     "@storm-software/config-tools": "workspace:*",
-    "esbuild": "catalog:",
-    "spdx-exceptions": "^2.5.0",
-    "spdx-license-ids": "^3.0.20"
-  },
-  "peerDependenciesMeta": {
-    "@microsoft/api-extractor": {
-      "optional": true
-    },
-    "@nx/devkit": {
-      "optional": false
-    },
-    "@nx/js": {
-      "optional": false
-    },
-    "@storm-software/build-tools": {
-      "optional": false
-    },
-    "@storm-software/config-tools": {
-      "optional": false
-    },
-    "esbuild": {
-      "optional": false
-    },
-    "spdx-exceptions": {
-      "optional": true
-    },
-    "spdx-license-ids": {
-      "optional": true
-    }
-  },
-  "dependencies": {
     "chokidar": "^4.0.3",
     "commander": "catalog:",
     "defu": "catalog:",
     "es-toolkit": "^1.36.0",
     "esbuild": "catalog:",
     "globby": "^14.1.0",
-    "nx": "catalog:",
     "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-pkg": "^0.18.1",
     "prettier-plugin-sh": "^0.15.0",
-    "source-map": "0.7.4",
     "tsup": "catalog:"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "catalog:",
-    "@nx/devkit": "catalog:",
-    "@nx/js": "catalog:",
-    "@storm-software/build-tools": "workspace:*",
-    "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*",
     "@types/node": "catalog:",
-    "rollup": "catalog:",
-    "spdx-exceptions": "^2.5.0",
-    "spdx-license-ids": "^3.0.21"
+    "nx": "catalog:"
   },
   "publishConfig": {
     "access": "public"
