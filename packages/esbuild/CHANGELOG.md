@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.34.3](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.34.3) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Ensure tsup is packaged with distributable
+  ([5893e680c](https://github.com/storm-software/storm-ops/commit/5893e680c))
+
 ## [0.34.2](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.34.2) (2025-04-29)
 
 ### Bug Fixes
