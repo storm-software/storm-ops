@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.54.78](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.54.78) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Add shims and interop to build
+  ([eea9f68a9](https://github.com/storm-software/storm-ops/commit/eea9f68a9))
+- **monorepo:** Regenerate README markdown files
+  ([60542151f](https://github.com/storm-software/storm-ops/commit/60542151f))
+
 ## [0.54.77](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.54.77) (2025-04-29)
 
 ### Bug Fixes

@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.35.65](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.35.65) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Add shims and interop to build
+  ([eea9f68a9](https://github.com/storm-software/storm-ops/commit/eea9f68a9))
+- **monorepo:** Regenerate README markdown files
+  ([60542151f](https://github.com/storm-software/storm-ops/commit/60542151f))
+
 ## [0.35.64](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.35.64) (2025-04-29)
 
 ### Bug Fixes

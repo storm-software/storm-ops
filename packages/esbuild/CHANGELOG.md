@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.35.5](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.5) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Add shims and interop to build
+  ([eea9f68a9](https://github.com/storm-software/storm-ops/commit/eea9f68a9))
+- **monorepo:** Regenerate README markdown files
+  ([60542151f](https://github.com/storm-software/storm-ops/commit/60542151f))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.163.19
+- Updated build-tools to 0.144.14
+- Updated config to 1.113.18
+
 ## [0.35.4](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.4) (2025-04-29)
 
 ### Bug Fixes

@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.104.75](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.75) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Add shims and interop to build
+  ([eea9f68a9](https://github.com/storm-software/storm-ops/commit/eea9f68a9))
+- **monorepo:** Regenerate README markdown files
+  ([60542151f](https://github.com/storm-software/storm-ops/commit/60542151f))
+
 ## [1.104.74](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.74) (2025-04-29)
 
 ### Bug Fixes

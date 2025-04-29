@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.7.68](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.68) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Add shims and interop to build
+  ([eea9f68a9](https://github.com/storm-software/storm-ops/commit/eea9f68a9))
+- **monorepo:** Regenerate README markdown files
+  ([60542151f](https://github.com/storm-software/storm-ops/commit/60542151f))
+
 ## [0.7.67](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.67) (2025-04-29)
 
 ### Bug Fixes

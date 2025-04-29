@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.55.80](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.55.80) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Add shims and interop to build
+  ([eea9f68a9](https://github.com/storm-software/storm-ops/commit/eea9f68a9))
+- **monorepo:** Regenerate README markdown files
+  ([60542151f](https://github.com/storm-software/storm-ops/commit/60542151f))
+
 ## [0.55.79](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.55.79) (2025-04-29)
 
 ### Bug Fixes
