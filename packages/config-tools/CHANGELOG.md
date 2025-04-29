@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.163.19](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.163.19) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Add shims and interop to build
+  ([eea9f68a9](https://github.com/storm-software/storm-ops/commit/eea9f68a9))
+- **monorepo:** Regenerate README markdown files
+  ([60542151f](https://github.com/storm-software/storm-ops/commit/60542151f))
+
 ## [1.163.18](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.163.18) (2025-04-29)
 
 ### Bug Fixes

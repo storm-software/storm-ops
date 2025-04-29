@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.148.14](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.14) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Add shims and interop to build
+  ([eea9f68a9](https://github.com/storm-software/storm-ops/commit/eea9f68a9))
+- **monorepo:** Regenerate README markdown files
+  ([60542151f](https://github.com/storm-software/storm-ops/commit/60542151f))
+
 ## [0.148.13](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.13) (2025-04-29)
 
 ### Bug Fixes
