@@ -18,7 +18,6 @@ in {
     pkgs.zsh
     pkgs.zsh-autosuggestions
     pkgs.zsh-completions
-    pkgs.atuin
 
     # Source Control
     pkgs.git
@@ -59,10 +58,6 @@ in {
   };
 
   enterShell = ''
-    echo 'eval "$(atuin init zsh)"' >> ~/.zshrc
-    atuin import zsh
-    atuin gen-completions --shell zsh --out-dir $HOME
-
     pnpm update --recursive --workspace
     pnpm install
     bootstrap
