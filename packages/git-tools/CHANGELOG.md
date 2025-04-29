@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.104.36](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.36) (2025-04-29)
+
+### Bug Fixes
+
+- **esbuild:** Remove unused modules from package
+  ([e3dc467c8](https://github.com/storm-software/storm-ops/commit/e3dc467c8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([c12ea4b7b](https://github.com/storm-software/storm-ops/commit/c12ea4b7b))
+
 ## [2.104.35](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.35) (2025-04-29)
 
 ### Miscellaneous

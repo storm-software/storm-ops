@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.119.49](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.49) (2025-04-29)
+
+### Bug Fixes
+
+- **esbuild:** Remove unused modules from package
+  ([e3dc467c8](https://github.com/storm-software/storm-ops/commit/e3dc467c8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([c12ea4b7b](https://github.com/storm-software/storm-ops/commit/c12ea4b7b))
+
 ## [1.119.48](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.48) (2025-04-29)
 
 ### Miscellaneous

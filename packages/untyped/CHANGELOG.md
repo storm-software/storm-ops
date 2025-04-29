@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.11.46](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.11.46) (2025-04-29)
+
+### Bug Fixes
+
+- **esbuild:** Remove unused modules from package
+  ([e3dc467c8](https://github.com/storm-software/storm-ops/commit/e3dc467c8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([c12ea4b7b](https://github.com/storm-software/storm-ops/commit/c12ea4b7b))
+
 ## [0.11.45](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.11.45) (2025-04-29)
 
 ### Miscellaneous

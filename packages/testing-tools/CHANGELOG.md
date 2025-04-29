@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.104.70](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.70) (2025-04-29)
+
+### Bug Fixes
+
+- **esbuild:** Remove unused modules from package
+  ([e3dc467c8](https://github.com/storm-software/storm-ops/commit/e3dc467c8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([c12ea4b7b](https://github.com/storm-software/storm-ops/commit/c12ea4b7b))
+
 ## [1.104.69](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.69) (2025-04-29)
 
 ### Miscellaneous

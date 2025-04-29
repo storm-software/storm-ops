@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.25.9](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.25.9) (2025-04-29)
+
+### Bug Fixes
+
+- **esbuild:** Remove unused modules from package
+  ([e3dc467c8](https://github.com/storm-software/storm-ops/commit/e3dc467c8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([c12ea4b7b](https://github.com/storm-software/storm-ops/commit/c12ea4b7b))
+
 ## [0.25.8](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.25.8) (2025-04-29)
 
 ### Miscellaneous

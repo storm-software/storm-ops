@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.7.63](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.63) (2025-04-29)
+
+### Bug Fixes
+
+- **esbuild:** Remove unused modules from package
+  ([e3dc467c8](https://github.com/storm-software/storm-ops/commit/e3dc467c8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([c12ea4b7b](https://github.com/storm-software/storm-ops/commit/c12ea4b7b))
+
 ## [0.7.62](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.62) (2025-04-29)
 
 ### Miscellaneous

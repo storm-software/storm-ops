@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.45.18](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.45.18) (2025-04-29)
+
+### Bug Fixes
+
+- **esbuild:** Remove unused modules from package
+  ([e3dc467c8](https://github.com/storm-software/storm-ops/commit/e3dc467c8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([c12ea4b7b](https://github.com/storm-software/storm-ops/commit/c12ea4b7b))
+
 ## [0.45.17](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.45.17) (2025-04-29)
 
 ### Miscellaneous

@@ -2,6 +2,29 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.35.0](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.0) (2025-04-29)
+
+### Features
+
+- **esbuild:** Split modules out into separate utilities
+  ([8848a7226](https://github.com/storm-software/storm-ops/commit/8848a7226))
+
+### Bug Fixes
+
+- **esbuild:** Remove unused modules from package
+  ([e3dc467c8](https://github.com/storm-software/storm-ops/commit/e3dc467c8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([c12ea4b7b](https://github.com/storm-software/storm-ops/commit/c12ea4b7b))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.163.14
+- Updated build-tools to 0.144.9
+- Updated config to 1.113.13
+
 ## [0.34.3](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.34.3) (2025-04-29)
 
 ### Miscellaneous

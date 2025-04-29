@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.9.66](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.66) (2025-04-29)
+
+### Bug Fixes
+
+- **esbuild:** Remove unused modules from package
+  ([e3dc467c8](https://github.com/storm-software/storm-ops/commit/e3dc467c8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([c12ea4b7b](https://github.com/storm-software/storm-ops/commit/c12ea4b7b))
+
 ## [0.9.65](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.65) (2025-04-29)
 
 ### Miscellaneous
