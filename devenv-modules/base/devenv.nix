@@ -58,8 +58,11 @@ in {
   };
 
   enterShell = ''
+    pnpm install
+
     pnpm update --recursive --workspace
     pnpm install
+
     bootstrap
   '';
 
