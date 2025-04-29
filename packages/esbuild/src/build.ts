@@ -7,7 +7,6 @@ import {
   addPackageDependencies,
   addWorkspacePackageJsonFields,
   copyAssets,
-  DEFAULT_TARGET,
   getEnv
 } from "@storm-software/build-tools";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
@@ -85,9 +84,7 @@ async function resolveContext(
     );
   }
 
-  const options = defu(userOptions, DEFAULT_BUILD_OPTIONS);
-  options.name ??= `${projectName}-${options.format}`;
-  options.target ??= DEFAULT_TARGET;
+  const options = defu(userOptions, DEFAULT_BUILD_OPTIONS) as ESBuildOptions;
 
   const packageJsonPath = joinPaths(
     workspaceRoot.dir,
@@ -101,6 +98,7 @@ async function resolveContext(
   const env = getEnv("esbuild", options as Parameters<typeof getEnv>[1]);
 
   const resolvedOptions = {
+    name: projectName,
     ...options,
     tsconfig: joinPaths(
       projectRoot,
@@ -108,12 +106,8 @@ async function resolveContext(
         ? userOptions.tsconfig.replace(projectRoot, "")
         : "tsconfig.json"
     ),
-    distDir: "dist",
-    name: projectName,
     metafile: userOptions.mode === "development",
-    ...userOptions,
     clean: false,
-    target: (userOptions.target || options.target) as Options["target"],
     splitting:
       options.format === "iife"
         ? false
@@ -223,48 +217,107 @@ async function generatePackageJson(context: ESBuildContext) {
     if (context.options.entry) {
       packageJson.exports ??= {};
       packageJson.exports["./package.json"] ??= "./package.json";
-      packageJson.exports["."] ??=
-        `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.js`;
 
       const entryPoints = Array.isArray(context.options.entry)
         ? context.options.entry
         : Object.keys(context.options.entry);
-      for (const entryPoint of entryPoints) {
-        if (context.options.entry[entryPoint]) {
-          const entry = context.options.entry[entryPoint]
-            .replaceAll("\\", "/")
-            .replaceAll(/^(\.\/)*/g, "")
-            .replace(/\.([cm])?[jt]s(x)?$/g, "");
+      if (entryPoints.length > 0) {
+        const defaultEntry = entryPoints.includes("index")
+          ? `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index`
+          : `.${context.options.distDir ? `/${context.options.distDir}` : ""}/${entryPoints[0]}`;
 
-          packageJson.exports[`./${entry}`] ??=
-            `.${context.options.distDir ? `/${context.options.distDir}` : ""}/${entry}.js`;
-        }
-      }
+        const isEsm = Array.isArray(context.options.format)
+          ? context.options.format.includes("esm")
+          : context.options.format === "esm";
+        const isCjs = Array.isArray(context.options.format)
+          ? context.options.format.includes("cjs")
+          : context.options.format === "cjs";
+        const isDts = context.options.dts || context.options.experimentalDts;
 
-      if (context.options.format === "esm") {
-        packageJson.module =
-          packageJson.type === "module"
-            ? `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.js`
-            : `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.mjs`;
-      } else {
-        packageJson.main =
-          packageJson.type === "commonjs"
-            ? `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.js`
-            : `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.cjs`;
-      }
+        packageJson.exports["."] ??=
+          `${defaultEntry}.${isEsm ? "mjs" : isCjs ? "cjs" : "js"}`;
 
-      packageJson.types = `.${context.options.distDir ? `/${context.options.distDir}` : ""}/index.d.ts`;
+        for (const entryPoint of entryPoints) {
+          packageJson.exports[`./${entryPoint}`] ??= {};
+          if (isEsm) {
+            if (isDts) {
+              packageJson.exports[`./${entryPoint}`].import = {
+                types: `./dist/${entryPoint}.d.mts`,
+                default: `./dist/${entryPoint}.mjs`
+              };
+            } else {
+              packageJson.exports[`./${entryPoint}`].import =
+                `./dist/${entryPoint}.mjs`;
+            }
 
-      packageJson.exports = Object.keys(packageJson.exports).reduce(
-        (ret, key) => {
-          if (key.endsWith("/index") && !ret[key.replace("/index", "")]) {
-            ret[key.replace("/index", "")] = packageJson.exports[key];
+            if (isDts) {
+              packageJson.exports[`./${entryPoint}`].default = {
+                types: `./dist/${entryPoint}.d.mts`,
+                default: `./dist/${entryPoint}.mjs`
+              };
+            } else {
+              packageJson.exports[`./${entryPoint}`].default =
+                `./dist/${entryPoint}.mjs`;
+            }
+          }
+          if (isCjs) {
+            if (isDts) {
+              packageJson.exports[`./${entryPoint}`].require = {
+                types: `./dist/${entryPoint}.d.cts`,
+                default: `./dist/${entryPoint}.cjs`
+              };
+            } else {
+              packageJson.exports[`./${entryPoint}`].require =
+                `./dist/${entryPoint}.cjs`;
+            }
+
+            if (!isEsm) {
+              if (isDts) {
+                packageJson.exports[`./${entryPoint}`].default = {
+                  types: `./dist/${entryPoint}.d.cts`,
+                  default: `./dist/${entryPoint}.cjs`
+                };
+              } else {
+                packageJson.exports[`./${entryPoint}`].default =
+                  `./dist/${entryPoint}.cjs`;
+              }
+            }
           }
 
-          return ret;
-        },
-        packageJson.exports
-      );
+          if (!isEsm && !isCjs) {
+            if (isDts) {
+              packageJson.exports[`./${entryPoint}`].default = {
+                types: `./dist/${entryPoint}.d.ts`,
+                default: `./dist/${entryPoint}.js`
+              };
+            } else {
+              packageJson.exports[`./${entryPoint}`].default =
+                `./dist/${entryPoint}.js`;
+            }
+          }
+        }
+
+        if (isEsm) {
+          packageJson.module = `${defaultEntry}.mjs`;
+        } else {
+          packageJson.main = `${defaultEntry}.cjs`;
+        }
+
+        if (isDts) {
+          packageJson.types = `${defaultEntry}.d.${isEsm ? "mts" : isCjs ? "cts" : "ts"}`;
+        }
+
+        packageJson.exports = Object.keys(packageJson.exports).reduce(
+          (ret, key) => {
+            if (key.endsWith("/index") && !ret[key.replace("/index", "")]) {
+              ret[key.replace("/index", "")] = packageJson.exports[key];
+            }
+
+            return ret;
+          },
+          packageJson.exports
+        );
+      }
     }
 
     await writeJsonFile(
@@ -290,7 +343,9 @@ async function executeTsup(context: ESBuildContext) {
 
   await tsup({
     ...context.options,
-    outDir: context.outputPath,
+    outDir: context.options.distDir
+      ? joinPaths(context.outputPath, context.options.distDir)
+      : context.outputPath,
     workspaceConfig: context.workspaceConfig
   } as Options);
 

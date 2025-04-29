@@ -40,11 +40,12 @@ export const DEFAULT_BUILD_OPTIONS: Required<
     | "bundle"
     | "loader"
     | "banner"
+    | "distDir"
   >
 > = {
   assets: [],
   platform: "node",
-  target: ["esnext"],
+  target: "node22",
   format: "esm",
   tsconfig: "tsconfig.json",
   mode: "production",
@@ -56,6 +57,7 @@ export const DEFAULT_BUILD_OPTIONS: Required<
   shims: false,
   watch: false,
   bundle: true,
+  distDir: "dist",
   loader: {
     ".aac": "file",
     ".css": "file",
