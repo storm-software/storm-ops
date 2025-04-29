@@ -81,13 +81,8 @@ export async function resolveContext(
   const define = defu(options.define ?? {}, env ?? {});
 
   const resolvedOptions = {
+    tsconfig: joinPaths(workspaceRoot.dir, projectRoot, "tsconfig.json"),
     ...options,
-    tsconfig: joinPaths(
-      projectRoot,
-      userOptions.tsconfig
-        ? userOptions.tsconfig.replace(projectRoot, "")
-        : "tsconfig.json"
-    ),
     metafile: userOptions.mode === "development",
     clean: false,
     env,
