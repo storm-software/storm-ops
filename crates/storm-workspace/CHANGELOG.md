@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.7.67](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.67) (2025-04-29)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with workspace version linking
+  ([1af97d171](https://github.com/storm-software/storm-ops/commit/1af97d171))
+
+### Miscellaneous
+
+- **monorepo:** Added the `update-pnpm-link` script
+  ([1b59ed92e](https://github.com/storm-software/storm-ops/commit/1b59ed92e))
+
 ## [0.7.66](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.66) (2025-04-29)
 
 ### Miscellaneous

@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.35.4](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.4) (2025-04-29)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with workspace version linking
+  ([1af97d171](https://github.com/storm-software/storm-ops/commit/1af97d171))
+
+### Miscellaneous
+
+- **monorepo:** Added the `update-pnpm-link` script
+  ([1b59ed92e](https://github.com/storm-software/storm-ops/commit/1b59ed92e))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.163.18
+- Updated build-tools to 0.144.13
+- Updated config to 1.113.17
+
 ## [0.35.3](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.3) (2025-04-29)
 
 ### Miscellaneous

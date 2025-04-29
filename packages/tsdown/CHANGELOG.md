@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.28.16](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.28.16) (2025-04-29)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with workspace version linking
+  ([1af97d171](https://github.com/storm-software/storm-ops/commit/1af97d171))
+
+### Miscellaneous
+
+- **monorepo:** Added the `update-pnpm-link` script
+  ([1b59ed92e](https://github.com/storm-software/storm-ops/commit/1b59ed92e))
+
 ## [0.28.15](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.28.15) (2025-04-29)
 
 ### Miscellaneous

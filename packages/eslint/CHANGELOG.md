@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.148.13](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.13) (2025-04-29)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with workspace version linking
+  ([1af97d171](https://github.com/storm-software/storm-ops/commit/1af97d171))
+
+### Miscellaneous
+
+- **monorepo:** Added the `update-pnpm-link` script
+  ([1b59ed92e](https://github.com/storm-software/storm-ops/commit/1b59ed92e))
+
 ## [0.148.12](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.12) (2025-04-29)
 
 ### Miscellaneous
