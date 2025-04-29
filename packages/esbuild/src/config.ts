@@ -1,25 +1,5 @@
 import { DEFAULT_COMPILED_BANNER } from "@storm-software/build-tools";
-import { esmSplitCodeToCjsPlugin } from "./plugins/esm-split-code-to-cjs";
-import { fixImportsPlugin } from "./plugins/fix-imports";
-import { nativeNodeModulesPlugin } from "./plugins/native-node-module";
-import { nodeProtocolPlugin } from "./plugins/node-protocol";
-import { onErrorPlugin } from "./plugins/on-error";
-import { resolvePathsPlugin } from "./plugins/resolve-paths";
-import { tscPlugin } from "./plugins/tsc";
-import { ESBuildContext, ESBuildOptions } from "./types";
-
-export const getDefaultBuildPlugins = (
-  options: ESBuildOptions,
-  context: ESBuildContext
-) => [
-  nodeProtocolPlugin(options, context.options),
-  resolvePathsPlugin(context),
-  fixImportsPlugin(options, context.options),
-  nativeNodeModulesPlugin(options, context.options),
-  esmSplitCodeToCjsPlugin(options, context.options),
-  tscPlugin(context),
-  onErrorPlugin(options, context.options)
-];
+import { ESBuildOptions } from "./types";
 
 export const DEFAULT_BUILD_OPTIONS: Required<
   Pick<

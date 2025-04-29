@@ -33,6 +33,7 @@ import { Options, build as tsup } from "tsup";
 import { cleanDirectories } from "./clean";
 import { DEFAULT_BUILD_OPTIONS } from "./config";
 import { depsCheckPlugin } from "./plugins/deps-check";
+import { resolvePathsPlugin } from "./plugins/resolve-paths";
 import { ESBuildContext, type ESBuildOptions } from "./types";
 import { handle } from "./utilities/helpers";
 
@@ -127,23 +128,9 @@ async function resolveContext(
     }
   } satisfies ESBuildOptions;
 
-  // if (
-  //   options.inject &&
-  //   Array.isArray(options.inject) &&
-  //   options.inject.length > 0
-  // ) {
-  //   result.inject = options.inject.reduce((ret, inj) => {
-  //     if (inj && typeof inj === "string" && ret.includes(inj)) {
-  //       ret.push(inj);
-  //     }
-
-  //     return ret;
-  //   }, result.inject);
-  // }
-
   stopwatch();
 
-  return {
+  const context = {
     options: resolvedOptions,
     clean: userOptions.clean !== false,
     workspaceConfig,
@@ -163,6 +150,13 @@ async function resolveContext(
       ),
     minify: resolvedOptions.minify || resolvedOptions.mode === "production"
   } as ESBuildContext;
+
+  context.options.esbuildPlugins = [
+    resolvePathsPlugin(context),
+    ...(context.options.esbuildPlugins ?? [])
+  ];
+
+  return context;
 }
 
 async function generatePackageJson(context: ESBuildContext) {

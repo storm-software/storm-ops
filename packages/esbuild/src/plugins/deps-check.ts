@@ -15,7 +15,10 @@
 
  -------------------------------------------------------------------*/
 
-import { writeError, writeWarning } from "@storm-software/config-tools";
+import {
+  writeError,
+  writeWarning
+} from "@storm-software/config-tools/logger/console";
 import type * as esbuild from "esbuild";
 import { builtinModules } from "node:module";
 import path from "node:path";

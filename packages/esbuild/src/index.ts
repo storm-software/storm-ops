@@ -27,6 +27,5 @@
 export * from "./build";
 export * from "./clean";
 export * from "./config";
-export * from "./tsc";
 export * from "./types";
 export * from "./utilities";
