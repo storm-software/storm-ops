@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.104.39](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.39) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Update package.json dependencies
+  ([269f6c46c](https://github.com/storm-software/storm-ops/commit/269f6c46c))
+- **monorepo:** Regenerate README markdown files
+  ([93e1b7f8b](https://github.com/storm-software/storm-ops/commit/93e1b7f8b))
+
 ## [2.104.38](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.38) (2025-04-29)
 
 ### Miscellaneous

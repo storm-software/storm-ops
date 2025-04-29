@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.104.73](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.73) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Update package.json dependencies
+  ([269f6c46c](https://github.com/storm-software/storm-ops/commit/269f6c46c))
+- **monorepo:** Regenerate README markdown files
+  ([93e1b7f8b](https://github.com/storm-software/storm-ops/commit/93e1b7f8b))
+
 ## [1.104.72](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.72) (2025-04-29)
 
 ### Miscellaneous

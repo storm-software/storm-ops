@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Cspell
 
+## [0.21.12](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.21.12) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Update package.json dependencies
+  ([269f6c46c](https://github.com/storm-software/storm-ops/commit/269f6c46c))
+- **monorepo:** Regenerate README markdown files
+  ([93e1b7f8b](https://github.com/storm-software/storm-ops/commit/93e1b7f8b))
+
 ## [0.21.11](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.21.11) (2025-04-29)
 
 ### Miscellaneous

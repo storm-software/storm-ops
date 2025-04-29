@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.119.52](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.52) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Update package.json dependencies
+  ([269f6c46c](https://github.com/storm-software/storm-ops/commit/269f6c46c))
+- **monorepo:** Regenerate README markdown files
+  ([93e1b7f8b](https://github.com/storm-software/storm-ops/commit/93e1b7f8b))
+
 ## [1.119.51](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.51) (2025-04-29)
 
 ### Miscellaneous

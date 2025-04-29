@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.7.72](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.7.72) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Update package.json dependencies
+  ([269f6c46c](https://github.com/storm-software/storm-ops/commit/269f6c46c))
+- **monorepo:** Regenerate README markdown files
+  ([93e1b7f8b](https://github.com/storm-software/storm-ops/commit/93e1b7f8b))
+
 ## [0.7.71](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.7.71) (2025-04-29)
 
 ### Miscellaneous

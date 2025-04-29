@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.7.66](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.66) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Update package.json dependencies
+  ([269f6c46c](https://github.com/storm-software/storm-ops/commit/269f6c46c))
+- **monorepo:** Regenerate README markdown files
+  ([93e1b7f8b](https://github.com/storm-software/storm-ops/commit/93e1b7f8b))
+
 ## [0.7.65](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.65) (2025-04-29)
 
 ### Miscellaneous

@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.9.69](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.69) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Update package.json dependencies
+  ([269f6c46c](https://github.com/storm-software/storm-ops/commit/269f6c46c))
+- **monorepo:** Regenerate README markdown files
+  ([93e1b7f8b](https://github.com/storm-software/storm-ops/commit/93e1b7f8b))
+
 ## [0.9.68](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.68) (2025-04-29)
 
 ### Miscellaneous

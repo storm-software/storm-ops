@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.163.17](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.163.17) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Update package.json dependencies
+  ([269f6c46c](https://github.com/storm-software/storm-ops/commit/269f6c46c))
+- **monorepo:** Regenerate README markdown files
+  ([93e1b7f8b](https://github.com/storm-software/storm-ops/commit/93e1b7f8b))
+
 ## [1.163.16](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.163.16) (2025-04-29)
 
 ### Miscellaneous

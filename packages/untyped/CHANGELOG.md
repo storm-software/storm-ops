@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.11.49](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.11.49) (2025-04-29)
+
+### Miscellaneous
+
+- **esbuild:** Update package.json dependencies
+  ([269f6c46c](https://github.com/storm-software/storm-ops/commit/269f6c46c))
+- **monorepo:** Regenerate README markdown files
+  ([93e1b7f8b](https://github.com/storm-software/storm-ops/commit/93e1b7f8b))
+
 ## [0.11.48](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.11.48) (2025-04-29)
 
 ### Miscellaneous
