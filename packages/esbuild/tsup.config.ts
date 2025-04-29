@@ -8,12 +8,14 @@ export default defineConfig([
     format: ["cjs", "esm"],
     outDir: "dist/src",
     platform: "node",
+    bundle: true,
     splitting: true,
     clean: true,
     dts: true,
     sourcemap: false,
     tsconfig: "./packages/esbuild/tsconfig.json",
-    external: ["esbuild", "nx", "@nx/*"],
+    external: ["nx", "@nx/*"],
+    noExternal: ["tsup"],
     skipNodeModulesBundle: true
   },
   {

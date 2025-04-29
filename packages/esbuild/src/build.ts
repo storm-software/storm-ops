@@ -85,6 +85,7 @@ async function resolveContext(
   }
 
   const options = defu(userOptions, DEFAULT_BUILD_OPTIONS) as ESBuildOptions;
+  options.name ??= projectName;
 
   const packageJsonPath = joinPaths(
     workspaceRoot.dir,
@@ -99,7 +100,6 @@ async function resolveContext(
   const define = defu(options.define ?? {}, env ?? {});
 
   const resolvedOptions = {
-    name: projectName,
     ...options,
     tsconfig: joinPaths(
       projectRoot,
