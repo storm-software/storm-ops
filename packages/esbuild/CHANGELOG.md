@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.34.0](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.34.0) (2025-04-29)
+
+### Features
+
+- **devenv-modules:** Added atuin imports and completions to `enterShell`
+  ([199ba96c4](https://github.com/storm-software/storm-ops/commit/199ba96c4))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([25750fcd9](https://github.com/storm-software/storm-ops/commit/25750fcd9))
+- **monorepo:** Regenerate README markdown files
+  ([87d08a499](https://github.com/storm-software/storm-ops/commit/87d08a499))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.163.12
+- Updated build-tools to 0.144.7
+- Updated config to 1.113.11
+
 ## [0.33.7](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.33.7) (2025-04-28)
 
 ### Miscellaneous
