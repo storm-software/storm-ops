@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.45.15](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.45.15) (2025-04-28)
+
+### Miscellaneous
+
+- **eslint:** Disable markdown eslint rules by default
+  ([a84e36deb](https://github.com/storm-software/storm-ops/commit/a84e36deb))
+- **monorepo:** Regenerate README markdown files
+  ([adffb8372](https://github.com/storm-software/storm-ops/commit/adffb8372))
+
 ## [0.45.14](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.45.14) (2025-04-28)
 
 ### Bug Fixes

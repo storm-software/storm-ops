@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Cspell
 
+## [0.21.6](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.21.6) (2025-04-28)
+
+### Miscellaneous
+
+- **eslint:** Disable markdown eslint rules by default
+  ([a84e36deb](https://github.com/storm-software/storm-ops/commit/a84e36deb))
+- **monorepo:** Regenerate README markdown files
+  ([adffb8372](https://github.com/storm-software/storm-ops/commit/adffb8372))
+
 ## [0.21.5](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.21.5) (2025-04-28)
 
 ### Bug Fixes

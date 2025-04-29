@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.33.7](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.33.7) (2025-04-28)
+
+### Miscellaneous
+
+- **eslint:** Disable markdown eslint rules by default
+  ([a84e36deb](https://github.com/storm-software/storm-ops/commit/a84e36deb))
+- **monorepo:** Regenerate README markdown files
+  ([adffb8372](https://github.com/storm-software/storm-ops/commit/adffb8372))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.163.11
+- Updated build-tools to 0.144.6
+- Updated config to 1.113.10
+
 ## [0.33.6](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.33.6) (2025-04-28)
 
 ### Bug Fixes

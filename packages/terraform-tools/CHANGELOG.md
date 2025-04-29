@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.54.70](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.54.70) (2025-04-28)
+
+### Miscellaneous
+
+- **eslint:** Disable markdown eslint rules by default
+  ([a84e36deb](https://github.com/storm-software/storm-ops/commit/a84e36deb))
+- **monorepo:** Regenerate README markdown files
+  ([adffb8372](https://github.com/storm-software/storm-ops/commit/adffb8372))
+
 ## [0.54.69](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.54.69) (2025-04-28)
 
 ### Bug Fixes

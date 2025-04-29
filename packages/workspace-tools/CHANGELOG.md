@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.267.6](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.267.6) (2025-04-28)
+
+### Miscellaneous
+
+- **eslint:** Disable markdown eslint rules by default
+  ([a84e36deb](https://github.com/storm-software/storm-ops/commit/a84e36deb))
+- **monorepo:** Regenerate README markdown files
+  ([adffb8372](https://github.com/storm-software/storm-ops/commit/adffb8372))
+
 ## [1.267.5](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.267.5) (2025-04-28)
 
 ### Bug Fixes
