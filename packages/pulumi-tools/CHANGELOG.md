@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.7.75](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.7.75) (2025-04-29)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([4c87d97b3](https://github.com/storm-software/storm-ops/commit/4c87d97b3))
+
 ## [0.7.74](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.7.74) (2025-04-29)
 
 ### Miscellaneous

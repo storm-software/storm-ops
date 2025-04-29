@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.35.6](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.6) (2025-04-29)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with invalid import updates with plugin
+  ([ee0b3dd3d](https://github.com/storm-software/storm-ops/commit/ee0b3dd3d))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([4c87d97b3](https://github.com/storm-software/storm-ops/commit/4c87d97b3))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.163.20
+- Updated build-tools to 0.144.15
+- Updated config to 1.113.19
+
 ## [0.35.5](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.5) (2025-04-29)
 
 ### Miscellaneous
