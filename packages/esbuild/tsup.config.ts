@@ -13,6 +13,8 @@ export default defineConfig([
     clean: true,
     dts: true,
     sourcemap: false,
+    shims: true,
+    cjsInterop: true,
     tsconfig: "./packages/esbuild/tsconfig.json",
     external: ["nx", "@nx/*"],
     noExternal: ["tsup"],
