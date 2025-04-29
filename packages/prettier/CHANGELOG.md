@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.45.19](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.45.19) (2025-04-29)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([a85b80f6d](https://github.com/storm-software/storm-ops/commit/a85b80f6d))
+
 ## [0.45.18](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.45.18) (2025-04-29)
 
 ### Bug Fixes
