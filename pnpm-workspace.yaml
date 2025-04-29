@@ -1,3 +1,6 @@
+linkWorkspacePackages: true
+preferWorkspacePackages: true
+
 packages:
   - "tools/*"
   - "crates/*"
