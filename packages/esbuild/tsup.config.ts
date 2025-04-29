@@ -15,6 +15,7 @@ export default defineConfig([
     sourcemap: false,
     shims: true,
     cjsInterop: true,
+    requireToImport: true,
     tsconfig: "./packages/esbuild/tsconfig.json",
     external: ["nx", "@nx/*"],
     noExternal: ["tsup"],
