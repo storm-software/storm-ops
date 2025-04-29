@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.34.2](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.34.2) (2025-04-29)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with missing define parameters
+  ([46c6f1d6b](https://github.com/storm-software/storm-ops/commit/46c6f1d6b))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([f2e5028dd](https://github.com/storm-software/storm-ops/commit/f2e5028dd))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.163.13
+- Updated build-tools to 0.144.8
+- Updated config to 1.113.12
+
 ## [0.34.1](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.34.1) (2025-04-29)
 
 ### Bug Fixes
