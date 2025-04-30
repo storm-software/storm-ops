@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.163.27](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.163.27) (2025-04-30)
+
+### Miscellaneous
+
+- **esbuild:** Remove swc plugin for ESBuild
+  ([ad298c288](https://github.com/storm-software/storm-ops/commit/ad298c288))
+- **monorepo:** Regenerate README markdown files
+  ([933d45f0b](https://github.com/storm-software/storm-ops/commit/933d45f0b))
+
 ## [1.163.26](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.163.26) (2025-04-30)
 
 ### Bug Fixes

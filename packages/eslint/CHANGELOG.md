@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.148.22](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.22) (2025-04-30)
+
+### Miscellaneous
+
+- **esbuild:** Remove swc plugin for ESBuild
+  ([ad298c288](https://github.com/storm-software/storm-ops/commit/ad298c288))
+- **monorepo:** Regenerate README markdown files
+  ([933d45f0b](https://github.com/storm-software/storm-ops/commit/933d45f0b))
+
 ## [0.148.21](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.21) (2025-04-30)
 
 ### Bug Fixes

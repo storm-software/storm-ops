@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.104.49](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.49) (2025-04-30)
+
+### Miscellaneous
+
+- **esbuild:** Remove swc plugin for ESBuild
+  ([ad298c288](https://github.com/storm-software/storm-ops/commit/ad298c288))
+- **monorepo:** Regenerate README markdown files
+  ([933d45f0b](https://github.com/storm-software/storm-ops/commit/933d45f0b))
+
 ## [2.104.48](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.48) (2025-04-30)
 
 ### Bug Fixes

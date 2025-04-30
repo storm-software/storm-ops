@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.104.83](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.83) (2025-04-30)
+
+### Miscellaneous
+
+- **esbuild:** Remove swc plugin for ESBuild
+  ([ad298c288](https://github.com/storm-software/storm-ops/commit/ad298c288))
+- **monorepo:** Regenerate README markdown files
+  ([933d45f0b](https://github.com/storm-software/storm-ops/commit/933d45f0b))
+
 ## [1.104.82](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.82) (2025-04-30)
 
 ### Bug Fixes

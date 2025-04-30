@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.11.59](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.11.59) (2025-04-30)
+
+### Miscellaneous
+
+- **esbuild:** Remove swc plugin for ESBuild
+  ([ad298c288](https://github.com/storm-software/storm-ops/commit/ad298c288))
+- **monorepo:** Regenerate README markdown files
+  ([933d45f0b](https://github.com/storm-software/storm-ops/commit/933d45f0b))
+
 ## [0.11.58](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.11.58) (2025-04-30)
 
 ### Bug Fixes
