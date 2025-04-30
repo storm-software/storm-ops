@@ -402,7 +402,7 @@ index 0d10e3993019d08a97151b9fec142fd3d51cd950..a587c6a1d9d00c0dfd7d44904bd82ed5
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..469486874bd5a1d5e3fcfd97fe679912ef33c44b 100644
+index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..bae12e8ef2f2ff2fc83b35ac4910059c43b57c7f 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -33,6 +33,8 @@ var _chunkJZ25TPTYjs = require('./chunk-JZ25TPTY.js');
@@ -771,16 +771,21 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..469486874bd5a1d5e3fcfd97fe679912
      _options.config === true ? void 0 : _options.config
    );
    const configData = typeof config.data === "function" ? await config.data(_options) : config.data;
-@@ -1514,7 +1535,7 @@ async function build(_options) {
+@@ -1514,7 +1535,12 @@ async function build(_options) {
            await experimentalDtsTask();
            if (options.dts) {
              await new Promise((resolve, reject) => {
 -              const worker = new (0, _worker_threads.Worker)(_path2.default.join(__dirname, "./rollup.js"));
-+              const worker = new (0, _worker_threads.Worker)(_path2.default.join(__dirname, "./rollup.cjs"));
++              let workerPath = _path2.default.join(__dirname, "./rollup.cjs");
++              if (!_fs2.default.existsSync(workerPath)) {
++                workerPath = _path2.default.join(__dirname, "./rollup.js");
++              }
++
++              const worker = new (0, _worker_threads.Worker)(workerPath);
                const terminateWorker = () => {
                  if (options.watch) return;
                  worker.terminate();
-@@ -1559,7 +1580,7 @@ async function build(_options) {
+@@ -1559,7 +1585,7 @@ async function build(_options) {
              let onSuccessProcess;
              let onSuccessCleanup;
              const buildDependencies = /* @__PURE__ */ new Set();
@@ -789,7 +794,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..469486874bd5a1d5e3fcfd97fe679912
              const doOnSuccessCleanup = async () => {
                if (onSuccessProcess) {
                  await killProcess({
-@@ -1572,7 +1593,7 @@ async function build(_options) {
+@@ -1572,7 +1598,7 @@ async function build(_options) {
                onSuccessProcess = void 0;
                onSuccessCleanup = void 0;
              };
@@ -798,7 +803,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..469486874bd5a1d5e3fcfd97fe679912
                () => {
                  return buildAll();
                },
-@@ -1676,7 +1697,7 @@ async function build(_options) {
+@@ -1676,7 +1702,7 @@ async function build(_options) {
                  let shouldSkipChange = false;
                  if (options.watch === true) {
                    if (file === "package.json" && !buildDependencies.has(file)) {
