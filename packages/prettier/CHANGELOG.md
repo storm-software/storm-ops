@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.45.26](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.45.26) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with tsconfig path
+  ([9e7fad9fc](https://github.com/storm-software/storm-ops/commit/9e7fad9fc))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([8912eb9f0](https://github.com/storm-software/storm-ops/commit/8912eb9f0))
+
 ## [0.45.25](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.45.25) (2025-04-29)
 
 ### Miscellaneous

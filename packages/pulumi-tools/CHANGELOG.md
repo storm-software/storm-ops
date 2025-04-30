@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.7.77](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.7.77) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with tsconfig path
+  ([9e7fad9fc](https://github.com/storm-software/storm-ops/commit/9e7fad9fc))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([8912eb9f0](https://github.com/storm-software/storm-ops/commit/8912eb9f0))
+
 ## [0.7.76](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.7.76) (2025-04-29)
 
 ### Miscellaneous

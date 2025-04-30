@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.104.78](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.78) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with tsconfig path
+  ([9e7fad9fc](https://github.com/storm-software/storm-ops/commit/9e7fad9fc))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([8912eb9f0](https://github.com/storm-software/storm-ops/commit/8912eb9f0))
+
 ## [1.104.77](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.77) (2025-04-29)
 
 ### Miscellaneous

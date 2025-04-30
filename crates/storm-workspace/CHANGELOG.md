@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.7.71](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.71) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with tsconfig path
+  ([9e7fad9fc](https://github.com/storm-software/storm-ops/commit/9e7fad9fc))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([8912eb9f0](https://github.com/storm-software/storm-ops/commit/8912eb9f0))
+
 ## [0.7.70](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.70) (2025-04-29)
 
 ### Miscellaneous

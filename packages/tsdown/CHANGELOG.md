@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.28.20](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.28.20) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with tsconfig path
+  ([9e7fad9fc](https://github.com/storm-software/storm-ops/commit/9e7fad9fc))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([8912eb9f0](https://github.com/storm-software/storm-ops/commit/8912eb9f0))
+
 ## [0.28.19](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.28.19) (2025-04-29)
 
 ### Miscellaneous

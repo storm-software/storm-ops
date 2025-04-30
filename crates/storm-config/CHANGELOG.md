@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.13.60](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.13.60) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with tsconfig path
+  ([9e7fad9fc](https://github.com/storm-software/storm-ops/commit/9e7fad9fc))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([8912eb9f0](https://github.com/storm-software/storm-ops/commit/8912eb9f0))
+
 ## [0.13.59](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.13.59) (2025-04-29)
 
 ### Miscellaneous

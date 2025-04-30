@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.148.17](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.17) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue with tsconfig path
+  ([9e7fad9fc](https://github.com/storm-software/storm-ops/commit/9e7fad9fc))
+
+### Miscellaneous
+
+- **monorepo:** Add `unrs-resolver` to the pnpm scripts
+  ([d99fa1488](https://github.com/storm-software/storm-ops/commit/d99fa1488))
+- **monorepo:** Regenerate README markdown files
+  ([8912eb9f0](https://github.com/storm-software/storm-ops/commit/8912eb9f0))
+
 ## [0.148.16](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.16) (2025-04-29)
 
 ### Miscellaneous

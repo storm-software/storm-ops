@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/cspell",
-  "version": "0.21.16",
+  "version": "0.21.17",
   "type": "module",
   "description": "A package containing CSpell keyword dictionaries and shared configurations for Storm Software.",
   "repository": {
