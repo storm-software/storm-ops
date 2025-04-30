@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.9.75](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.75) (2025-04-30)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with tsconfig path in tsup
+  ([98ca0489a](https://github.com/storm-software/storm-ops/commit/98ca0489a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([34e5b9e9f](https://github.com/storm-software/storm-ops/commit/34e5b9e9f))
+
 ## [0.9.74](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.74) (2025-04-30)
 
 ### Bug Fixes

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.267.18](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.267.18) (2025-04-30)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with tsconfig path in tsup
+  ([98ca0489a](https://github.com/storm-software/storm-ops/commit/98ca0489a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([34e5b9e9f](https://github.com/storm-software/storm-ops/commit/34e5b9e9f))
+
 ## [1.267.17](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.267.17) (2025-04-30)
 
 ### Bug Fixes

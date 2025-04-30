@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.35.9](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.9) (2025-04-30)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with tsconfig path in tsup
+  ([98ca0489a](https://github.com/storm-software/storm-ops/commit/98ca0489a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([34e5b9e9f](https://github.com/storm-software/storm-ops/commit/34e5b9e9f))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.163.23
+- Updated build-tools to 0.144.18
+- Updated config to 1.113.22
+
 ## [0.35.8](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.8) (2025-04-30)
 
 ### Bug Fixes
