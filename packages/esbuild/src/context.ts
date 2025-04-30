@@ -14,7 +14,6 @@ import { existsSync } from "node:fs";
 import hf from "node:fs/promises";
 import { findWorkspaceRoot } from "nx/src/utils/find-workspace-root";
 import { DEFAULT_BUILD_OPTIONS } from "./config";
-import { resolvePathsPlugin } from "./plugins/resolve-paths";
 import { ESBuildContext, type ESBuildOptions } from "./types";
 
 /**
@@ -126,10 +125,7 @@ export async function resolveContext(
     minify: resolvedOptions.minify || resolvedOptions.mode === "production"
   } as ESBuildContext;
 
-  context.options.esbuildPlugins = [
-    resolvePathsPlugin(context),
-    ...(context.options.esbuildPlugins ?? [])
-  ];
+  context.options.esbuildPlugins = [...(context.options.esbuildPlugins ?? [])];
 
   return context;
 }

@@ -16,6 +16,7 @@
  -------------------------------------------------------------------*/
 
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
+import { findFilePath } from "@storm-software/config-tools/utilities/file-path-utils";
 import type { Plugin } from "esbuild";
 import path from "node:path";
 import { ESBuildContext } from "../types";
@@ -100,7 +101,12 @@ export const resolvePathsPlugin = (context: ESBuildContext): Plugin => ({
         return { path: args.path, external: true };
       }
 
-      return { path: `${resolvedTsPaths[args.path][0]}/index.ts` };
+      let resolvedPath = resolvedTsPaths[args.path][0];
+      if (resolvedPath.endsWith(".ts") || resolvedPath.endsWith(".tsx")) {
+        resolvedPath = findFilePath(resolvedPath);
+      }
+
+      return { path: joinPaths(resolvedPath, "index.ts") };
     });
   }
 });
