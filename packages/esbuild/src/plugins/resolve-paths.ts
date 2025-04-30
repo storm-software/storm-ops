@@ -72,6 +72,7 @@ export const resolvePathsPlugin = (context: ESBuildContext): Plugin => ({
         ? joinPaths(
             context.workspaceConfig.workspaceRoot,
             build.initialOptions.tsconfig
+              .replace(context.workspaceConfig.workspaceRoot, "")
           )
         : joinPaths(context.workspaceConfig.workspaceRoot, "tsconfig.json")
     );
