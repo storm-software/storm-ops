@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.35.13](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.13) (2025-04-30)
+
+### Miscellaneous
+
+- **esbuild:** Remove swc plugin for ESBuild
+  ([ad298c288](https://github.com/storm-software/storm-ops/commit/ad298c288))
+- **monorepo:** Regenerate README markdown files
+  ([933d45f0b](https://github.com/storm-software/storm-ops/commit/933d45f0b))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.163.27
+- Updated build-tools to 0.144.22
+- Updated config to 1.113.26
+
 ## [0.35.12](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.12) (2025-04-30)
 
 ### Bug Fixes

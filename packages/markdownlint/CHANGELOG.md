@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.18.37](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.18.37) (2025-04-30)
+
+### Miscellaneous
+
+- **esbuild:** Remove swc plugin for ESBuild
+  ([ad298c288](https://github.com/storm-software/storm-ops/commit/ad298c288))
+- **monorepo:** Regenerate README markdown files
+  ([933d45f0b](https://github.com/storm-software/storm-ops/commit/933d45f0b))
+
 ## [0.18.36](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.18.36) (2025-04-30)
 
 ### Bug Fixes

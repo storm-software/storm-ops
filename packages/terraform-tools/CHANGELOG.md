@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.54.86](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.54.86) (2025-04-30)
+
+### Miscellaneous
+
+- **esbuild:** Remove swc plugin for ESBuild
+  ([ad298c288](https://github.com/storm-software/storm-ops/commit/ad298c288))
+- **monorepo:** Regenerate README markdown files
+  ([933d45f0b](https://github.com/storm-software/storm-ops/commit/933d45f0b))
+
 ## [0.54.85](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.54.85) (2025-04-30)
 
 ### Bug Fixes
