@@ -34,7 +34,7 @@ type TsConfig = {
  * @param cwd
  * @returns
  */
-function resolvePathsConfig(options: TsConfig, cwd: string) {
+function resolvePathsConfig(options: TsConfig, cwd: string, projectRoot: string) {
   if (options?.compilerOptions?.paths) {
     const paths = Object.entries(options.compilerOptions.paths);
 
@@ -46,7 +46,7 @@ function resolvePathsConfig(options: TsConfig, cwd: string) {
   }
 
   if (options.extends) {
-    const extendsPath = path.resolve(cwd, options.extends);
+    const extendsPath = path.resolve(joinPaths(cwd, projectRoot, options.extends));
     const extendsDir = path.dirname(extendsPath);
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const extendsConfig = require(extendsPath);
@@ -78,7 +78,8 @@ export const resolvePathsPlugin = (context: ESBuildContext): Plugin => ({
     );
     const resolvedTsPaths = resolvePathsConfig(
       parentTsConfig,
-      context.workspaceConfig.workspaceRoot
+      context.workspaceConfig.workspaceRoot,
+      context.options.projectRoot
     );
     const packagesRegex = new RegExp(
       `^(${Object.keys(resolvedTsPaths).join("|")})$`
