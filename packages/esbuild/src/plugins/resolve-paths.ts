@@ -34,7 +34,11 @@ type TsConfig = {
  * @param cwd
  * @returns
  */
-function resolvePathsConfig(options: TsConfig, cwd: string, projectRoot: string) {
+function resolvePathsConfig(
+  options: TsConfig,
+  cwd: string,
+  projectRoot?: string
+) {
   if (options?.compilerOptions?.paths) {
     const paths = Object.entries(options.compilerOptions.paths);
 
@@ -46,7 +50,11 @@ function resolvePathsConfig(options: TsConfig, cwd: string, projectRoot: string)
   }
 
   if (options.extends) {
-    const extendsPath = path.resolve(joinPaths(cwd, projectRoot, options.extends));
+    const extendsPath = path.resolve(
+      projectRoot
+        ? joinPaths(cwd, projectRoot, options.extends)
+        : joinPaths(cwd, options.extends)
+    );
     const extendsDir = path.dirname(extendsPath);
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const extendsConfig = require(extendsPath);
@@ -71,8 +79,10 @@ export const resolvePathsPlugin = (context: ESBuildContext): Plugin => ({
       build.initialOptions.tsconfig
         ? joinPaths(
             context.workspaceConfig.workspaceRoot,
-            build.initialOptions.tsconfig
-              .replace(context.workspaceConfig.workspaceRoot, "")
+            build.initialOptions.tsconfig.replace(
+              context.workspaceConfig.workspaceRoot,
+              ""
+            )
           )
         : joinPaths(context.workspaceConfig.workspaceRoot, "tsconfig.json")
     );
