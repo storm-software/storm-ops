@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.85.84](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.85.84) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Update script to use .cjs file extension
+  ([95c4e5abd](https://github.com/storm-software/storm-ops/commit/95c4e5abd))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([17b6c5930](https://github.com/storm-software/storm-ops/commit/17b6c5930))
+
 ## [1.85.83](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.85.83) (2025-04-30)
 
 ### Bug Fixes

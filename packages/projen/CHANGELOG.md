@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.9.78](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.78) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Update script to use .cjs file extension
+  ([95c4e5abd](https://github.com/storm-software/storm-ops/commit/95c4e5abd))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([17b6c5930](https://github.com/storm-software/storm-ops/commit/17b6c5930))
+
 ## [0.9.77](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.77) (2025-04-30)
 
 ### Bug Fixes

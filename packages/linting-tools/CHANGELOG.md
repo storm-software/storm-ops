@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.119.61](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.61) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Update script to use .cjs file extension
+  ([95c4e5abd](https://github.com/storm-software/storm-ops/commit/95c4e5abd))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([17b6c5930](https://github.com/storm-software/storm-ops/commit/17b6c5930))
+
 ## [1.119.60](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.60) (2025-04-30)
 
 ### Bug Fixes

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.13.64](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.13.64) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Update script to use .cjs file extension
+  ([95c4e5abd](https://github.com/storm-software/storm-ops/commit/95c4e5abd))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([17b6c5930](https://github.com/storm-software/storm-ops/commit/17b6c5930))
+
 ## [0.13.63](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.13.63) (2025-04-30)
 
 ### Bug Fixes

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.35.72](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.35.72) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Update script to use .cjs file extension
+  ([95c4e5abd](https://github.com/storm-software/storm-ops/commit/95c4e5abd))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([17b6c5930](https://github.com/storm-software/storm-ops/commit/17b6c5930))
+
 ## [0.35.71](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.35.71) (2025-04-30)
 
 ### Bug Fixes
