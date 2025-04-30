@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.7.74](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.74) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Include the worker scripts in the build package
+  ([7955b1ba3](https://github.com/storm-software/storm-ops/commit/7955b1ba3))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([1c4eba5f0](https://github.com/storm-software/storm-ops/commit/1c4eba5f0))
+
 ## [0.7.73](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.7.73) (2025-04-30)
 
 ### Bug Fixes

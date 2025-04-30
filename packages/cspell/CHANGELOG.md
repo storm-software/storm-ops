@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cspell
 
+## [0.21.20](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.21.20) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Include the worker scripts in the build package
+  ([7955b1ba3](https://github.com/storm-software/storm-ops/commit/7955b1ba3))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([1c4eba5f0](https://github.com/storm-software/storm-ops/commit/1c4eba5f0))
+
 ## [0.21.19](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.21.19) (2025-04-30)
 
 ### Bug Fixes

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.119.60](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.60) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Include the worker scripts in the build package
+  ([7955b1ba3](https://github.com/storm-software/storm-ops/commit/7955b1ba3))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([1c4eba5f0](https://github.com/storm-software/storm-ops/commit/1c4eba5f0))
+
 ## [1.119.59](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.59) (2025-04-30)
 
 ### Bug Fixes

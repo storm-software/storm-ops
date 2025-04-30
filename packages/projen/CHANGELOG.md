@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.9.77](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.77) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Include the worker scripts in the build package
+  ([7955b1ba3](https://github.com/storm-software/storm-ops/commit/7955b1ba3))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([1c4eba5f0](https://github.com/storm-software/storm-ops/commit/1c4eba5f0))
+
 ## [0.9.76](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.76) (2025-04-30)
 
 ### Bug Fixes

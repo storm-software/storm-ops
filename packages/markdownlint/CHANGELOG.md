@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.18.35](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.18.35) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Include the worker scripts in the build package
+  ([7955b1ba3](https://github.com/storm-software/storm-ops/commit/7955b1ba3))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([1c4eba5f0](https://github.com/storm-software/storm-ops/commit/1c4eba5f0))
+
 ## [0.18.34](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.18.34) (2025-04-30)
 
 ### Bug Fixes

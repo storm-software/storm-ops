@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.35.71](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.35.71) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Include the worker scripts in the build package
+  ([7955b1ba3](https://github.com/storm-software/storm-ops/commit/7955b1ba3))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([1c4eba5f0](https://github.com/storm-software/storm-ops/commit/1c4eba5f0))
+
 ## [0.35.70](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.35.70) (2025-04-30)
 
 ### Bug Fixes

@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.35.11](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.11) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Include the worker scripts in the build package
+  ([7955b1ba3](https://github.com/storm-software/storm-ops/commit/7955b1ba3))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([1c4eba5f0](https://github.com/storm-software/storm-ops/commit/1c4eba5f0))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.163.25
+- Updated build-tools to 0.144.20
+- Updated config to 1.113.24
+
 ## [0.35.10](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.10) (2025-04-30)
 
 ### Bug Fixes
