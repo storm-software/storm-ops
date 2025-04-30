@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.9.76](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.76) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue finding parent tsconfig path
+  ([d0276f4cd](https://github.com/storm-software/storm-ops/commit/d0276f4cd))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([746468efe](https://github.com/storm-software/storm-ops/commit/746468efe))
+
 ## [0.9.75](https://github.com/storm-software/storm-ops/releases/tag/projen%400.9.75) (2025-04-30)
 
 ### Bug Fixes

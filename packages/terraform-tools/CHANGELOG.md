@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.54.83](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.54.83) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue finding parent tsconfig path
+  ([d0276f4cd](https://github.com/storm-software/storm-ops/commit/d0276f4cd))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([746468efe](https://github.com/storm-software/storm-ops/commit/746468efe))
+
 ## [0.54.82](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.54.82) (2025-04-30)
 
 ### Bug Fixes

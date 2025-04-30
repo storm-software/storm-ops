@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.55.85](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.55.85) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue finding parent tsconfig path
+  ([d0276f4cd](https://github.com/storm-software/storm-ops/commit/d0276f4cd))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([746468efe](https://github.com/storm-software/storm-ops/commit/746468efe))
+
 ## [0.55.84](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.55.84) (2025-04-30)
 
 ### Bug Fixes

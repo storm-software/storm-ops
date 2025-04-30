@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.11.56](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.11.56) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue finding parent tsconfig path
+  ([d0276f4cd](https://github.com/storm-software/storm-ops/commit/d0276f4cd))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([746468efe](https://github.com/storm-software/storm-ops/commit/746468efe))
+
 ## [0.11.55](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.11.55) (2025-04-30)
 
 ### Bug Fixes

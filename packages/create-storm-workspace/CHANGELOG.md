@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.85.82](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.85.82) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue finding parent tsconfig path
+  ([d0276f4cd](https://github.com/storm-software/storm-ops/commit/d0276f4cd))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([746468efe](https://github.com/storm-software/storm-ops/commit/746468efe))
+
 ## [1.85.81](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.85.81) (2025-04-30)
 
 ### Bug Fixes

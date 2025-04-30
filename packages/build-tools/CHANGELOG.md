@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.144.19](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.144.19) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue finding parent tsconfig path
+  ([d0276f4cd](https://github.com/storm-software/storm-ops/commit/d0276f4cd))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([746468efe](https://github.com/storm-software/storm-ops/commit/746468efe))
+
 ## [0.144.18](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.144.18) (2025-04-30)
 
 ### Bug Fixes

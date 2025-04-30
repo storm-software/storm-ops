@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.104.46](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.46) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue finding parent tsconfig path
+  ([d0276f4cd](https://github.com/storm-software/storm-ops/commit/d0276f4cd))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([746468efe](https://github.com/storm-software/storm-ops/commit/746468efe))
+
 ## [2.104.45](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.104.45) (2025-04-30)
 
 ### Bug Fixes

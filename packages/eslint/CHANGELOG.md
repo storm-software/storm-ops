@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.148.19](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.19) (2025-04-30)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue finding parent tsconfig path
+  ([d0276f4cd](https://github.com/storm-software/storm-ops/commit/d0276f4cd))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([746468efe](https://github.com/storm-software/storm-ops/commit/746468efe))
+
 ## [0.148.18](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.148.18) (2025-04-30)
 
 ### Bug Fixes
