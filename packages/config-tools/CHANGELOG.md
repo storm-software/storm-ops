@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.163.28](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.163.28) (2025-04-30)
+
+### Miscellaneous
+
+- **esbuild:** Remove the resolvePath plugin
+  ([75aab3c41](https://github.com/storm-software/storm-ops/commit/75aab3c41))
+- **monorepo:** Regenerate README markdown files
+  ([4b707da15](https://github.com/storm-software/storm-ops/commit/4b707da15))
+
 ## [1.163.27](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.163.27) (2025-04-30)
 
 ### Miscellaneous

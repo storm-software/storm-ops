@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.35.14](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.14) (2025-04-30)
+
+### Miscellaneous
+
+- **esbuild:** Remove the resolvePath plugin
+  ([75aab3c41](https://github.com/storm-software/storm-ops/commit/75aab3c41))
+- **monorepo:** Regenerate README markdown files
+  ([4b707da15](https://github.com/storm-software/storm-ops/commit/4b707da15))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.163.28
+- Updated build-tools to 0.144.23
+- Updated config to 1.113.27
+
 ## [0.35.13](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.35.13) (2025-04-30)
 
 ### Miscellaneous
