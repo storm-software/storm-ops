@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.27.0](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.27.0) (2025-05-05)
+
+### Features
+
+- **eslint:** Added the `ignoreWorkspaceDeps` option
+  ([b9713759d](https://github.com/storm-software/storm-ops/commit/b9713759d))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([d3523fe43](https://github.com/storm-software/storm-ops/commit/d3523fe43))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.269.0
+- Updated workspace-tools to 1.269.0
+- Updated config-tools to 1.165.0
+- Updated config-tools to 1.165.0
+- Updated config to 1.115.0
+- Updated config to 1.115.0
+
 ## [0.26.5](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.26.5) (2025-05-05)
 
 ### Miscellaneous

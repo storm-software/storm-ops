@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.106.0](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.106.0) (2025-05-05)
+
+### Features
+
+- **eslint:** Added the `ignoreWorkspaceDeps` option
+  ([b9713759d](https://github.com/storm-software/storm-ops/commit/b9713759d))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([d3523fe43](https://github.com/storm-software/storm-ops/commit/d3523fe43))
+
 ## [1.105.5](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.105.5) (2025-05-05)
 
 ### Miscellaneous

@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.269.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.269.0) (2025-05-05)
+
+### Features
+
+- **eslint:** Added the `ignoreWorkspaceDeps` option
+  ([b9713759d](https://github.com/storm-software/storm-ops/commit/b9713759d))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([d3523fe43](https://github.com/storm-software/storm-ops/commit/d3523fe43))
+
+### Updated Dependencies
+
+- Updated prettier to 0.47.0
+- Updated esbuild to 0.37.0
+- Updated esbuild to 0.37.0
+- Updated unbuild to 0.43.0
+- Updated unbuild to 0.43.0
+
 ## [1.268.5](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.268.5) (2025-05-05)
 
 ### Miscellaneous
