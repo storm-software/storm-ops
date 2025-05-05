@@ -62,7 +62,7 @@ export default async function npmPublishExecutorFn(
 
   await pnpmCatalogUpdate(packageRoot, context.root);
 
-  const npmPublishCommandSegments = [`pnpm publish --json`];
+  const npmPublishCommandSegments = [`pnpm publish --json --no-git-checks`];
   const npmViewCommandSegments = [
     `npm view ${packageName} versions dist-tags --json`
   ];
