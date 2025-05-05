@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.87.1](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.87.1) (2025-05-05)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([372776939](https://github.com/storm-software/storm-ops/commit/372776939))
+
 ## [1.87.0](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.87.0) (2025-05-05)
 
 ### Features
