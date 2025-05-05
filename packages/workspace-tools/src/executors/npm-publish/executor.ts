@@ -62,7 +62,7 @@ export default async function npmPublishExecutorFn(
 
   await pnpmCatalogUpdate(packageRoot, context.root);
 
-  const npmPublishCommandSegments = [`npm publish --json`];
+  const npmPublishCommandSegments = [`pnpm publish --json`];
   const npmViewCommandSegments = [
     `npm view ${packageName} versions dist-tags --json`
   ];
@@ -353,7 +353,7 @@ Execution response: ${result.toString()}`
 
       if (context.isVerbose) {
         console.error(
-          `npm publish stdout:\n${JSON.stringify(stdoutData, null, 2)}`
+          `pnpm publish stdout:\n${JSON.stringify(stdoutData, null, 2)}`
         );
       }
 
