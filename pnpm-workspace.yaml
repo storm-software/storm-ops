@@ -2,12 +2,12 @@ linkWorkspacePackages: true
 preferWorkspacePackages: true
 
 packages:
-  - "tools/*"
-  - "crates/*"
-  - "packages/*"
+  - "tools/**"
+  - "crates/**"
+  - "packages/**"
   - "devenv-modules"
   - "terraform-modules"
-  - "docs/*"
+  - "docs/**"
 
 catalog:
   "@microsoft/api-extractor": "^7.48.1"
