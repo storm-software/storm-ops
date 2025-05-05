@@ -4084,6 +4084,11 @@ Backward pagination arguments
    */
   'react/ensure-forward-ref-using-ref'?: Linter.RuleEntry<[]>
   /**
+   * Enforces that the 'key' attribute is placed before the spread attribute in JSX elements.
+   * @see https://eslint-react.xyz/docs/rules/jsx-key-before-spread
+   */
+  'react/jsx-key-before-spread'?: Linter.RuleEntry<[]>
+  /**
    * Disallow duplicate props in JSX elements.
    * @see https://eslint-react.xyz/docs/rules/jsx-no-duplicate-props
    */
@@ -5603,7 +5608,7 @@ Backward pagination arguments
    */
   'test/no-standalone-expect'?: Linter.RuleEntry<TestNoStandaloneExpect>
   /**
-   * disallow using `test` as a prefix
+   * Disallow using the `f` and `x` prefixes in favour of `.only` and `.skip`
    * @see https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/no-test-prefixes.md
    */
   'test/no-test-prefixes'?: Linter.RuleEntry<[]>
