@@ -40,11 +40,6 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "packageManager": "pnpm@10.3.0",
-  "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
-  },
   "bin": {
     "storm-unbuild": "./bin/unbuild.js",
     "storm-unbuild-cjs": "./bin/unbuild.cjs",
@@ -170,9 +165,6 @@
   "peerDependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/build-tools": "workspace:*",
-    "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*",
     "@swc/core": "catalog:",
     "nx": "catalog:",
     "rollup": "catalog:",
@@ -183,15 +175,6 @@
       "optional": false
     },
     "@nx/js": {
-      "optional": false
-    },
-    "@storm-software/build-tools": {
-      "optional": false
-    },
-    "@storm-software/config": {
-      "optional": false
-    },
-    "@storm-software/config-tools": {
       "optional": false
     },
     "@swc/core": {
@@ -208,6 +191,9 @@
     }
   },
   "dependencies": {
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "commander": "catalog:",
     "defu": "catalog:",
     "esbuild": "catalog:",
