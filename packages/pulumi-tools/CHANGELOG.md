@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.8.1](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.8.1) (2025-05-05)
+
+### Miscellaneous
+
+- **unbuild:** Update dependencies list
+  ([0e4702f96](https://github.com/storm-software/storm-ops/commit/0e4702f96))
+- **monorepo:** Regenerate README markdown files
+  ([1100d212e](https://github.com/storm-software/storm-ops/commit/1100d212e))
+
 ## [0.8.0](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.8.0) (2025-05-05)
 
 ### Features

@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.114.1](https://github.com/storm-software/storm-ops/releases/tag/config%401.114.1) (2025-05-05)
+
+### Miscellaneous
+
+- **unbuild:** Update dependencies list
+  ([0e4702f96](https://github.com/storm-software/storm-ops/commit/0e4702f96))
+- **monorepo:** Regenerate README markdown files
+  ([1100d212e](https://github.com/storm-software/storm-ops/commit/1100d212e))
+
 ## [1.114.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.114.0) (2025-05-05)
 
 ### Features
