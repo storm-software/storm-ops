@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.87.2](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.87.2) (2025-05-05)
+
+### Miscellaneous
+
+- **workspace-tools:** Skip git checks during publish
+  ([7fdcbfc9a](https://github.com/storm-software/storm-ops/commit/7fdcbfc9a))
+- **monorepo:** Regenerate README markdown files
+  ([fb8ab0609](https://github.com/storm-software/storm-ops/commit/fb8ab0609))
+
 ## [1.87.1](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.87.1) (2025-05-05)
 
 ### Miscellaneous

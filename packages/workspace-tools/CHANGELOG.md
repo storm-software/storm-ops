@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.269.2](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.269.2) (2025-05-05)
+
+### Miscellaneous
+
+- **workspace-tools:** Skip git checks during publish
+  ([7fdcbfc9a](https://github.com/storm-software/storm-ops/commit/7fdcbfc9a))
+- **monorepo:** Regenerate README markdown files
+  ([fb8ab0609](https://github.com/storm-software/storm-ops/commit/fb8ab0609))
+
+### Updated Dependencies
+
+- Updated prettier to 0.47.2
+- Updated esbuild to 0.37.2
+- Updated esbuild to 0.37.2
+- Updated unbuild to 0.43.2
+- Updated unbuild to 0.43.2
+
 ## [1.269.1](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.269.1) (2025-05-05)
 
 ### Miscellaneous

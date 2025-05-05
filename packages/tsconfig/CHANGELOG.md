@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.37.2](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.37.2) (2025-05-05)
+
+### Miscellaneous
+
+- **workspace-tools:** Skip git checks during publish
+  ([7fdcbfc9a](https://github.com/storm-software/storm-ops/commit/7fdcbfc9a))
+- **monorepo:** Regenerate README markdown files
+  ([fb8ab0609](https://github.com/storm-software/storm-ops/commit/fb8ab0609))
+
 ## [0.37.1](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.37.1) (2025-05-05)
 
 ### Miscellaneous

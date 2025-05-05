@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.27.2](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.27.2) (2025-05-05)
+
+### Miscellaneous
+
+- **workspace-tools:** Skip git checks during publish
+  ([7fdcbfc9a](https://github.com/storm-software/storm-ops/commit/7fdcbfc9a))
+- **monorepo:** Regenerate README markdown files
+  ([fb8ab0609](https://github.com/storm-software/storm-ops/commit/fb8ab0609))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.269.2
+- Updated workspace-tools to 1.269.2
+- Updated config-tools to 1.165.2
+- Updated config-tools to 1.165.2
+- Updated config to 1.115.2
+- Updated config to 1.115.2
+
 ## [0.27.1](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.27.1) (2025-05-05)
 
 ### Miscellaneous

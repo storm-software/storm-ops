@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.30.2](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.30.2) (2025-05-05)
+
+### Miscellaneous
+
+- **workspace-tools:** Skip git checks during publish
+  ([7fdcbfc9a](https://github.com/storm-software/storm-ops/commit/7fdcbfc9a))
+- **monorepo:** Regenerate README markdown files
+  ([fb8ab0609](https://github.com/storm-software/storm-ops/commit/fb8ab0609))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.165.2
+- Updated build-tools to 0.146.2
+- Updated config to 1.115.2
+
 ## [0.30.1](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.30.1) (2025-05-05)
 
 ### Miscellaneous
