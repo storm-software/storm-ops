@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Storm Workspace
 
+## [0.8.4](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.8.4) (2025-05-05)
+
+### Miscellaneous
+
+- **monorepo:** Update pnpm workspace links
+  ([5d634e41e](https://github.com/storm-software/storm-ops/commit/5d634e41e))
+- **monorepo:** Regenerate README markdown files
+  ([fcf99cfec](https://github.com/storm-software/storm-ops/commit/fcf99cfec))
+
 ## [0.8.3](https://github.com/storm-software/storm-ops/releases/tag/storm-workspace%400.8.3) (2025-05-05)
 
 ### Miscellaneous

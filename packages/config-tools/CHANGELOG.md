@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.164.4](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.164.4) (2025-05-05)
+
+### Miscellaneous
+
+- **monorepo:** Update pnpm workspace links
+  ([5d634e41e](https://github.com/storm-software/storm-ops/commit/5d634e41e))
+- **monorepo:** Regenerate README markdown files
+  ([fcf99cfec](https://github.com/storm-software/storm-ops/commit/fcf99cfec))
+
+### Updated Dependencies
+
+- Updated config to 1.114.4
+
 ## [1.164.3](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.164.3) (2025-05-05)
 
 ### Miscellaneous
