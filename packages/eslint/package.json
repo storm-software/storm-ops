@@ -169,7 +169,7 @@
   "dependencies": {
     "@antfu/install-pkg": "^1.0.0",
     "@clack/prompts": "^0.10.1",
-    "@cspell/eslint-plugin": "^8.19.3",
+    "@cspell/eslint-plugin": "^8.19.4",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/markdown": "^6.4.0",
     "@nx/eslint-plugin": "catalog:",
@@ -177,7 +177,7 @@
     "@typescript-eslint/eslint-plugin": "^8.31.1",
     "@typescript-eslint/parser": "^8.31.1",
     "@typescript-eslint/utils": "^8.31.1",
-    "@vitest/eslint-plugin": "^1.1.43",
+    "@vitest/eslint-plugin": "^1.1.44",
     "chalk": "catalog:",
     "defu": "catalog:",
     "eslint-config-flat-gitignore": "^2.1.0",
@@ -198,7 +198,7 @@
     "eslint-plugin-paths": "^1.1.0",
     "eslint-plugin-perfectionist": "^4.12.3",
     "eslint-plugin-pnpm": "0.3.0",
-    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-prettier": "^5.3.1",
     "eslint-plugin-regexp": "^2.7.0",
     "eslint-plugin-toml": "^0.12.0",
     "eslint-plugin-tsdoc": "^0.4.0",
@@ -213,8 +213,8 @@
     "yaml-eslint-parser": "^1.3.0"
   },
   "devDependencies": {
-    "@eslint-community/eslint-utils": "^4.6.1",
-    "@eslint-react/eslint-plugin": "^1.48.5",
+    "@eslint-community/eslint-utils": "^4.7.0",
+    "@eslint-react/eslint-plugin": "^1.49.0",
     "@eslint-types/typescript-eslint": "^7.5.0",
     "@eslint/config-inspector": "^0.5.6",
     "@graphql-eslint/eslint-plugin": "^4.4.0",

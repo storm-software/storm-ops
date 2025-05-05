@@ -240,13 +240,13 @@
   "dependencies": {
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/build-tools": "0.145.1",
-    "@storm-software/config": "1.114.1",
-    "@storm-software/config-tools": "1.164.1",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "chokidar": "^4.0.3",
     "commander": "catalog:",
     "defu": "catalog:",
-    "es-toolkit": "^1.36.0",
+    "es-toolkit": "^1.37.2",
     "esbuild": "catalog:",
     "globby": "^14.1.0",
     "tsup": "catalog:"

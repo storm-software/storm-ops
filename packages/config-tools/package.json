@@ -243,15 +243,8 @@
     "sullivanpj",
     "monorepo"
   ],
-  "peerDependencies": {
-    "@storm-software/config": "workspace:*"
-  },
-  "peerDependenciesMeta": {
-    "@storm-software/config": {
-      "optional": false
-    }
-  },
   "dependencies": {
+    "@storm-software/config": "workspace:*",
     "c12": "catalog:",
     "chalk": "catalog:",
     "commander": "catalog:",

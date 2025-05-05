@@ -141,9 +141,6 @@
   ],
   "peerDependencies": {
     "@nx/devkit": "catalog:",
-    "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*",
-    "@storm-software/workspace-tools": "workspace:*",
     "prettier": "catalog:",
     "tsup": "catalog:"
   },
@@ -165,6 +162,9 @@
     }
   },
   "dependencies": {
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/workspace-tools": "workspace:*",
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {

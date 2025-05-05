@@ -40,11 +40,6 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "packageManager": "pnpm@10.3.0",
-  "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
-  },
   "bin": {
     "storm-tsdown": "./bin/tsdown.cjs"
   },
@@ -169,9 +164,6 @@
     "@microsoft/api-extractor": "catalog:",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/build-tools": "workspace:*",
-    "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*",
     "spdx-exceptions": "^2.5.0",
     "spdx-license-ids": "^3.0.20",
     "tsdown": "catalog:"
@@ -186,15 +178,6 @@
     "@nx/js": {
       "optional": false
     },
-    "@storm-software/build-tools": {
-      "optional": false
-    },
-    "@storm-software/config": {
-      "optional": false
-    },
-    "@storm-software/config-tools": {
-      "optional": false
-    },
     "spdx-exceptions": {
       "optional": true
     },
@@ -206,9 +189,12 @@
     }
   },
   "dependencies": {
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "chokidar": "^4.0.3",
     "commander": "catalog:",
-    "es-toolkit": "^1.36.0",
+    "es-toolkit": "^1.37.2",
     "globby": "^14.1.0",
     "nx": "catalog:",
     "rolldown": "1.0.0-beta.1",
