@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cspell
 
+## [0.22.3](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.22.3) (2025-05-05)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([8401e74b4](https://github.com/storm-software/storm-ops/commit/8401e74b4))
+
 ## [0.22.2](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.22.2) (2025-05-05)
 
 ### Miscellaneous

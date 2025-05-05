@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.149.3](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.149.3) (2025-05-05)
+
+### Miscellaneous
+
+- **eslint:** Regenerate typegen definitions
+  ([d6d5da032](https://github.com/storm-software/storm-ops/commit/d6d5da032))
+- **monorepo:** Regenerate README markdown files
+  ([8401e74b4](https://github.com/storm-software/storm-ops/commit/8401e74b4))
+
 ## [0.149.2](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.149.2) (2025-05-05)
 
 ### Miscellaneous
