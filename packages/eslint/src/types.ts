@@ -443,6 +443,13 @@ export interface OptionsPnpm extends OptionsOverrides {
    * @defaultValue ["typescript"]
    */
   ignore?: string[];
+
+  /**
+   * Should local workspace dependencies be ignored by the `pnpm/json-enforce-catalog` rule.
+   *
+   * @defaultValue true
+   */
+  ignoreWorkspaceDeps?: boolean;
 }
 
 export interface OptionsCSpell extends OptionsOverrides {
