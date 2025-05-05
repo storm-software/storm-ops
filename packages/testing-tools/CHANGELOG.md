@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.105.0](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.105.0) (2025-05-05)
+
+### Features
+
+- **workspace-tools:** Use pnpm to publish the packages
+  ([f31a22830](https://github.com/storm-software/storm-ops/commit/f31a22830))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([ddded09ab](https://github.com/storm-software/storm-ops/commit/ddded09ab))
+
 ## [1.104.84](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.104.84) (2025-04-30)
 
 ### Miscellaneous

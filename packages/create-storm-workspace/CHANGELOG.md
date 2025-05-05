@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.86.0](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.86.0) (2025-05-05)
+
+### Features
+
+- **workspace-tools:** Use pnpm to publish the packages
+  ([f31a22830](https://github.com/storm-software/storm-ops/commit/f31a22830))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([ddded09ab](https://github.com/storm-software/storm-ops/commit/ddded09ab))
+
 ## [1.85.86](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.85.86) (2025-04-30)
 
 ### Miscellaneous

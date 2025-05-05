@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.120.0](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.120.0) (2025-05-05)
+
+### Features
+
+- **workspace-tools:** Use pnpm to publish the packages
+  ([f31a22830](https://github.com/storm-software/storm-ops/commit/f31a22830))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([ddded09ab](https://github.com/storm-software/storm-ops/commit/ddded09ab))
+
 ## [1.119.63](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.119.63) (2025-04-30)
 
 ### Miscellaneous

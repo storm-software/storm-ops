@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.55.0](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.55.0) (2025-05-05)
+
+### Features
+
+- **workspace-tools:** Use pnpm to publish the packages
+  ([f31a22830](https://github.com/storm-software/storm-ops/commit/f31a22830))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([ddded09ab](https://github.com/storm-software/storm-ops/commit/ddded09ab))
+
 ## [0.54.87](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.54.87) (2025-04-30)
 
 ### Miscellaneous

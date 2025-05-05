@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.46.0](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.46.0) (2025-05-05)
+
+### Features
+
+- **workspace-tools:** Use pnpm to publish the packages
+  ([f31a22830](https://github.com/storm-software/storm-ops/commit/f31a22830))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([ddded09ab](https://github.com/storm-software/storm-ops/commit/ddded09ab))
+
 ## [0.45.32](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.45.32) (2025-04-30)
 
 ### Miscellaneous

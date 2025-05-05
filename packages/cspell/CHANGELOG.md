@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cspell
 
+## [0.22.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.22.0) (2025-05-05)
+
+### Features
+
+- **workspace-tools:** Use pnpm to publish the packages
+  ([f31a22830](https://github.com/storm-software/storm-ops/commit/f31a22830))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([ddded09ab](https://github.com/storm-software/storm-ops/commit/ddded09ab))
+
 ## [0.21.23](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.21.23) (2025-04-30)
 
 ### Miscellaneous
