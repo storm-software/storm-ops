@@ -223,10 +223,10 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                 clean: {
                   cache: true,
                   inputs: ["rust", "^production"],
-                  outputs: [`{workspaceRoot}/dist/target/{projectRoot}`],
+                  outputs: [`{workspaceRoot}/dist/{projectRoot}`],
                   executor: "nx:run-commands",
                   options: {
-                    command: `pnpm exec rimraf dist/target/crates/${cargoPackage.name}`,
+                    command: `pnpm exec rimraf dist/{projectRoot}`,
                     color: true,
                     cwd: "{workspaceRoot}"
                   }
@@ -236,7 +236,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   inputs: ["rust", "^production"],
                   dependsOn: ["build-base", "^build"],
                   executor: "@storm-software/workspace-tools:cargo-build",
-                  outputs: [`{workspaceRoot}/dist/target/{projectRoot}`],
+                  outputs: [`{workspaceRoot}/dist/{projectRoot}`],
                   options: {
                     toolchain: toolchain
                   },
@@ -248,7 +248,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   inputs: ["rust", "^production"],
                   dependsOn: ["clean", "build-base", "^build"],
                   executor: "@storm-software/workspace-tools:cargo-build",
-                  outputs: [`{workspaceRoot}/dist/target/{projectRoot}`],
+                  outputs: [`{workspaceRoot}/dist/{projectRoot}`],
                   options: {
                     toolchain: toolchain
                   },
@@ -262,7 +262,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   executor: "@monodon/rust:test",
                   outputs: ["{options.target-dir}"],
                   options: {
-                    "target-dir": `{workspaceRoot}/dist/target/{projectRoot}`
+                    "target-dir": `{workspaceRoot}/dist/{projectRoot}`
                   },
                   defaultConfiguration: "development",
                   configurations
@@ -279,7 +279,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                     "^production"
                   ],
                   dependsOn: ["format-readme", "lint-docs", "^docs"],
-                  outputs: [`{workspaceRoot}/dist/docs/{projectRoot}`],
+                  outputs: [`{workspaceRoot}/dist/{projectRoot}/docs`],
                   executor: "@storm-software/workspace-tools:cargo-doc",
                   options: {
                     toolchain: toolchain
@@ -340,6 +340,10 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   }
                 }
               };
+
+              console.log(
+                `[storm-software/rust]: Inferred Nx configuration for ${project?.name ?? "missing name"}`
+              );
             }
 
             for (const dep of cargoPackage.dependencies) {

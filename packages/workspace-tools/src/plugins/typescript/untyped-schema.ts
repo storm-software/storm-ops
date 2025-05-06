@@ -123,8 +123,9 @@ Please add it to your dependencies by running "pnpm add untyped -D --filter="${p
                 }
               }
             : {};
-          console.log(`Writing Results for ${project?.name ?? "missing name"}`);
-          console.log(result);
+          console.log(
+            `[storm-software/typescript/untyped]: Inferred Nx configuration for ${project?.name ?? "missing name"}`
+          );
 
           return result;
         } catch (e) {

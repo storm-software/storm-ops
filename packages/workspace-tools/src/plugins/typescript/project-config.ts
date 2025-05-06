@@ -441,8 +441,10 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
                 }
               : {}
           ) as CreateNodesResultV2;
-          console.log(`Writing Results for ${project?.name ?? "missing name"}`);
-          console.log(result);
+
+          console.log(
+            `[storm-software/typescript]: Inferred Nx configuration for ${project?.name ?? "missing name"}`
+          );
 
           return result;
         } catch (e) {
