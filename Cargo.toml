@@ -3,45 +3,45 @@
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 [workspace]
-resolver = '2'
 default-members = ['crates/storm-workspace', 'crates/storm-config']
-members = ['crates/storm-workspace', 'crates/storm-config']
+members         = ['crates/storm-workspace', 'crates/storm-config']
+resolver        = '2'
 
 [workspace.package]
-version = '0.0.1'
-description = '⚙️ The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.'
-repository = 'https://github.com/storm-software/storm-ops'
-edition = '2021'
-authors = ['storm-software']
-license = 'Apache-2.0'
+authors       = ['storm-software']
+categories    = ['config', 'development-tools']
+description   = '⚙️ The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.'
 documentation = 'https://stormsoftware.com/docs'
-homepage = 'https://stormsoftware.com'
-categories = ['config', 'development-tools']
-keywords = ['storm', 'storm-ops', 'storm-software', 'build-tools', 'monorepo']
+edition       = '2021'
+homepage      = 'https://stormsoftware.com'
+keywords      = ['storm', 'storm-ops', 'storm-software', 'build-tools', 'monorepo']
+license       = 'Apache-2.0'
+repository    = 'https://github.com/storm-software/storm-ops'
+version       = '0.0.1'
 
 [workspace.metadata.release]
 pre-release-commit-message = 'Release Storm-Ops workspace crates v{{version}}'
-shared-version = true
-tag-prefix = ''
-publish = false
+publish                    = false
+shared-version             = true
+tag-prefix                 = ''
 
 [workspace.lints.rust]
 missing-debug-implementations = "warn"
-missing-docs = "warn"
-unreachable-pub = "warn"
-unused-must-use = "deny"
-rust-2018-idioms = "deny"
-unnameable-types = "warn"
+missing-docs                  = "warn"
+rust-2018-idioms              = "deny"
+unnameable-types              = "warn"
+unreachable-pub               = "warn"
+unused-must-use               = "deny"
 
 [workspace.lints.rustdoc]
 all = "warn"
 
 [workspace.lints.clippy]
-all = { level = "warn", priority = -1 }
+all                  = { level = "warn", priority = -1 }
 missing-const-for-fn = "warn"
-use-self = "warn"
-option-if-let-else = "warn"
-redundant-clone = "warn"
+option-if-let-else   = "warn"
+redundant-clone      = "warn"
+use-self             = "warn"
 
 [workspace.metadata.docs.rs]
 all-features = true
@@ -51,7 +51,7 @@ rustdoc-args = ["--cfg", "docsrs"]
 # ref: https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#inheriting-a-dependency-from-a-workspace
 [workspace.dependencies]
 # Storm-Ops
-storm-config = { path = "./crates/storm-config" }
+storm-config    = { path = "./crates/storm-config" }
 storm-workspace = { path = "./crates/storm-workspace" }
 
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -59,31 +59,31 @@ storm-workspace = { path = "./crates/storm-workspace" }
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 [profile.dev]
-debug = true
+debug       = true
 incremental = true
 
 [profile.release]
-lto = "thin"
-strip = "debuginfo"
 codegen-units = 16
-panic = "unwind"
+lto           = "thin"
+panic         = "unwind"
+strip         = "debuginfo"
 
 [profile.release-with-debug]
+debug    = true
 inherits = "release"
-strip = false
-lto = "fat"
-debug = true
+lto      = "fat"
+strip    = false
 
 [profile.debug-fast]
+debug    = true
 inherits = "release"
-strip = "none"
-debug = true
+strip    = "none"
 
 [profile.prod]
-inherits = "release"
-lto = "fat"
 codegen-units = 1
-incremental = false
+incremental   = false
+inherits      = "release"
+lto           = "fat"
 
 # [profile.release]
 # # configuration adapted from oxc
