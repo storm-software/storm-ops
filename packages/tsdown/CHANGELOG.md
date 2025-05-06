@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.32.1](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.32.1) (2025-05-06)
+
+### Miscellaneous
+
+- **eslint:** Regenerate type definitions
+  ([aa082a323](https://github.com/storm-software/storm-ops/commit/aa082a323))
+- **monorepo:** Regenerate README markdown files
+  ([ed5072712](https://github.com/storm-software/storm-ops/commit/ed5072712))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.167.1
+- Updated build-tools to 0.148.1
+- Updated config to 1.117.1
+
 ## [0.32.0](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.32.0) (2025-05-06)
 
 ### Features
