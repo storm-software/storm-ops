@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.270.2](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.270.2) (2025-05-06)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with import path in executor
+  ([ddad2fdc8](https://github.com/storm-software/storm-ops/commit/ddad2fdc8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([7e0751c3d](https://github.com/storm-software/storm-ops/commit/7e0751c3d))
+
+### Updated Dependencies
+
+- Updated prettier to 0.48.2
+- Updated esbuild to 0.38.2
+- Updated esbuild to 0.38.2
+- Updated unbuild to 0.44.2
+- Updated unbuild to 0.44.2
+
 ## [1.270.1](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.270.1) (2025-05-06)
 
 ### Bug Fixes
