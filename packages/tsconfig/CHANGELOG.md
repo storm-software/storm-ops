@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.39.0](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.39.0) (2025-05-06)
+
+### Features
+
+- **workspace-tools:** Update the release executor to replace workspace
+  configurations
+  ([7d2aa456c](https://github.com/storm-software/storm-ops/commit/7d2aa456c))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([96f241a4d](https://github.com/storm-software/storm-ops/commit/96f241a4d))
+- **monorepo:** Regenerate README markdown files
+  ([17bbe7e16](https://github.com/storm-software/storm-ops/commit/17bbe7e16))
+
 ## [0.38.2](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.38.2) (2025-05-06)
 
 ### Bug Fixes
