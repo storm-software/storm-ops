@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.12.0](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.12.0) (2025-05-06)
+
+### Features
+
+- **git-tools:** Update release version to use Nx package
+  ([f31c02dec](https://github.com/storm-software/storm-ops/commit/f31c02dec))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([32a1809d1](https://github.com/storm-software/storm-ops/commit/32a1809d1))
+
 ## [0.11.1](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.11.1) (2025-05-06)
 
 ### Miscellaneous

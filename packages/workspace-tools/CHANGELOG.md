@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.272.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.272.0) (2025-05-06)
+
+### Features
+
+- **git-tools:** Update release version to use Nx package
+  ([f31c02dec](https://github.com/storm-software/storm-ops/commit/f31c02dec))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([32a1809d1](https://github.com/storm-software/storm-ops/commit/32a1809d1))
+
+### Updated Dependencies
+
+- Updated prettier to 0.50.0
+- Updated esbuild to 0.40.0
+- Updated esbuild to 0.40.0
+- Updated unbuild to 0.46.0
+- Updated unbuild to 0.46.0
+
 ## [1.271.2](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.271.2) (2025-05-06)
 
 ### Miscellaneous

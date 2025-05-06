@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.90.0](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.90.0) (2025-05-06)
+
+### Features
+
+- **git-tools:** Update release version to use Nx package
+  ([f31c02dec](https://github.com/storm-software/storm-ops/commit/f31c02dec))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([32a1809d1](https://github.com/storm-software/storm-ops/commit/32a1809d1))
+
 ## [1.89.1](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.89.1) (2025-05-06)
 
 ### Miscellaneous

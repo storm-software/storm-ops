@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.30.0](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.30.0) (2025-05-06)
+
+### Features
+
+- **git-tools:** Update release version to use Nx package
+  ([f31c02dec](https://github.com/storm-software/storm-ops/commit/f31c02dec))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([32a1809d1](https://github.com/storm-software/storm-ops/commit/32a1809d1))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.272.0
+- Updated workspace-tools to 1.272.0
+- Updated config-tools to 1.168.0
+- Updated config-tools to 1.168.0
+- Updated config to 1.118.0
+- Updated config to 1.118.0
+
 ## [0.29.2](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.29.2) (2025-05-06)
 
 ### Miscellaneous

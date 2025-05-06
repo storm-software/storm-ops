@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.33.0](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.33.0) (2025-05-06)
+
+### Features
+
+- **git-tools:** Update release version to use Nx package
+  ([f31c02dec](https://github.com/storm-software/storm-ops/commit/f31c02dec))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([32a1809d1](https://github.com/storm-software/storm-ops/commit/32a1809d1))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.168.0
+- Updated build-tools to 0.149.0
+- Updated config to 1.118.0
+
 ## [0.32.2](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.32.2) (2025-05-06)
 
 ### Miscellaneous

@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/testing-tools",
-  "version": "1.108.1",
+  "version": "1.109.0",
   "type": "commonjs",
   "description": "⚡ A package containing various testing tools used by Storm workspaces to drive unit and e2e testing.",
   "repository": {
