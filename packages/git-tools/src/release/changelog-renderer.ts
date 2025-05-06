@@ -8,12 +8,9 @@ import DefaultChangelogRenderer, {
 import { ChangelogChange } from "nx/src/command-line/release/changelog";
 import { NxReleaseConfig } from "nx/src/command-line/release/config/config";
 import { DEFAULT_CONVENTIONAL_COMMITS_CONFIG } from "nx/src/command-line/release/config/conventional-commits";
-import {
-  GithubRepoData,
-  formatReferences
-} from "nx/src/command-line/release/utils/github";
 import { major } from "semver";
 import { generateChangelogTitle } from "../utilities/changelog-utils";
+import { formatReferences, GithubRepoData } from "./github";
 
 // axios types and values don't seem to match
 // import _axios = require("axios");

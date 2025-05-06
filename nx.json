@@ -1,32 +1,5 @@
 {
-  "$schema": "https://cdn.jsdelivr.net/npm/nx/schemas/nx-schema.json",
   "extends": "./packages/workspace-tools/config/base.json",
-  "tasksRunnerOptions": {
-    "default": {
-      "options": {
-        "cacheableOperations": [
-          "lint-sherif",
-          "lint-knip",
-          "lint-docs",
-          "lint-ls",
-          "lint",
-          "format-readme",
-          "format-toml",
-          "format-prettier",
-          "format-sherif",
-          "format",
-          "clean",
-          "build-base",
-          "build",
-          "test",
-          "e2e",
-          "docs",
-          "nx-release-publish"
-        ],
-        "parallel": 3
-      }
-    }
-  },
   "namedInputs": {
     "sharedGlobals": [
       "{workspaceRoot}/.github/**/*",
@@ -390,15 +363,12 @@
           "generatorOptions": {
             "currentVersionResolver": "git-tag",
             "specifierSource": "conventional-commits"
-          }
+          },
+          "useLegacyVersioning": true
         }
       }
     }
   },
-  "defaultBase": "main",
-  "useDaemonProcess": true,
-  "useInferencePlugins": true,
-  "neverConnectToCloud": true,
   "plugins": [
     "./dist/plugins/rust/index.js",
     "./dist/plugins/typescript/index.js",
@@ -410,5 +380,6 @@
         "useFlatConfig": false
       }
     }
-  ]
+  ],
+  "neverConnectToCloud": true
 }

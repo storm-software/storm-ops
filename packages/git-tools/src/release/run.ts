@@ -104,7 +104,7 @@ export const runRelease = async (
     preid: config.preid,
     deleteVersionPlans: false,
     stageChanges: true,
-    gitCommit: true
+    gitCommit: false
   });
 
   await releaseChangelog({

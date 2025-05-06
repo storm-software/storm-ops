@@ -35,10 +35,6 @@ import {
   parseCommits,
   parseGitCommit
 } from "nx/src/command-line/release/utils/git";
-import {
-  createOrUpdateGithubRelease,
-  getGitHubRepoData
-} from "nx/src/command-line/release/utils/github";
 import { launchEditor } from "nx/src/command-line/release/utils/launch-editor";
 import { printAndFlushChanges } from "nx/src/command-line/release/utils/print-changes";
 import { printConfigAndExit } from "nx/src/command-line/release/utils/print-config";
@@ -79,6 +75,7 @@ import {
 } from "../utilities/changelog-utils";
 import { gitTag } from "../utilities/git-utils";
 import StormChangelogRenderer from "./changelog-renderer";
+import { createOrUpdateGithubRelease, getGitHubRepoData } from "./github";
 
 export interface NxReleaseChangelogResult {
   workspaceChangelog?: {
