@@ -10,10 +10,10 @@ import defu from "defu";
 import type { ReleaseOptions } from "nx/src/command-line/release/command-object.js";
 import { createAPI as createReleasePublishAPI } from "nx/src/command-line/release/publish.js";
 import type { ReleaseVersion } from "nx/src/command-line/release/utils/shared.js";
+import { createAPI as createReleaseVersionAPI } from "nx/src/command-line/release/version.js";
 import { NxReleaseConfiguration, readNxJson } from "nx/src/config/nx-json.js";
 import { createAPI as createReleaseChangelogAPI } from "./changelog";
 import { DEFAULT_RELEASE_CONFIG, DEFAULT_RELEASE_GROUP_CONFIG } from "./config";
-import { releaseVersion } from "./nx-version";
 
 export interface NxReleaseChangelogResult {
   workspaceChangelog?: {
@@ -109,23 +109,19 @@ export const runRelease = async (
   );
   writeInfo(nxReleaseConfig, config);
 
+  const releaseVersion = createReleaseVersionAPI(nxReleaseConfig);
   const releaseChangelog = createReleaseChangelogAPI(nxReleaseConfig);
   const releasePublish = createReleasePublishAPI(nxReleaseConfig);
 
   writeDebug("Determining the current release versions...", config);
 
-  const { workspaceVersion, projectsVersionData } = await releaseVersion(
-    config,
-    {
-      dryRun: false,
-      verbose: isVerbose(config.logLevel),
-      preid: config.preid,
-      deleteVersionPlans: false,
-      stageChanges: true,
-      gitCommit: false,
-      nxReleaseConfig
-    }
-  );
+  const { workspaceVersion, projectsVersionData } = await releaseVersion({
+    dryRun: false,
+    verbose: isVerbose(config.logLevel),
+    preid: config.preid,
+    deleteVersionPlans: false,
+    stageChanges: true
+  });
 
   await releaseChangelog({
     ...options,
