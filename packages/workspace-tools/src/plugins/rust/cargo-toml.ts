@@ -246,7 +246,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                 rebuild: {
                   cache: false,
                   inputs: ["rust", "^production"],
-                  dependsOn: ["clean", "^build"],
+                  dependsOn: ["clean", "build-base", "^build"],
                   executor: "@storm-software/workspace-tools:cargo-build",
                   outputs: [`{workspaceRoot}/dist/target/{projectRoot}`],
                   options: {

@@ -105,7 +105,7 @@ Please add it to your dependencies by running "pnpm add untyped -D --filter="${p
             ],
             options: {
               commands: [
-                `storm-untyped generate --entry="${projectRoot}/**/{untyped.ts,*.untyped.ts}" `
+                `storm-untyped generate --entry=\\"${projectRoot}/**/{untyped.ts,*.untyped.ts}\\" `
               ]
             }
           };
