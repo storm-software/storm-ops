@@ -30,6 +30,18 @@ try {
   }
 
   if (configuration === "production") {
+    proc = $`pnpm nx run workspace-tools:build:production --outputStyle=dynamic-legacy`;
+    proc.stdout.on("data", data => {
+      echo`${data}`;
+    });
+    result = await proc;
+
+    if (!result.ok) {
+      throw new Error(
+        `An error occurred while building the workspace-tools package in production mode: \n\n${result.message}\n`
+      );
+    }
+
     proc = $`pnpm nx run-many --target=build --all --exclude="@storm-software/storm-ops" --configuration=production --parallel=5 --outputStyle=dynamic-legacy`;
     proc.stdout.on("data", data => {
       echo`${data}`;
@@ -42,6 +54,18 @@ try {
       );
     }
   } else {
+    proc = $`pnpm nx run workspace-tools:build:${configuration} --outputStyle=dynamic-legacy`;
+    proc.stdout.on("data", data => {
+      echo`${data}`;
+    });
+    result = await proc;
+
+    if (!result.ok) {
+      throw new Error(
+        `An error occurred while building the workspace-tools package in ${configuration} mode: \n\n${result.message}\n`
+      );
+    }
+
     proc = $`pnpm nx run-many --target=build --all --exclude="@storm-software/storm-ops" --configuration=${configuration} --nxBail --outputStyle=dynamic-legacy`;
     proc.stdout.on("data", data => {
       echo`${data}`;
@@ -50,7 +74,7 @@ try {
 
     if (!result.ok) {
       throw new Error(
-        `An error occurred while building the monorepo in development mode: \n\n${result.message}\n`
+        `An error occurred while building the monorepo in ${configuration} mode: \n\n${result.message}\n`
       );
     }
   }
