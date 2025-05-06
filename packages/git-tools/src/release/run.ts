@@ -69,23 +69,6 @@ export const runRelease = async (
     config
   );
 
-  //     const { error: configError, nxReleaseConfig } = await createNxReleaseConfig(
-  //       projectGraph,
-  //       await createProjectFileMapUsingProjectGraph(projectGraph),
-  //       defu(nxJson.release, DEFAULT_RELEASE_CONFIG)
-  //     );
-  //     if (configError) {
-  //       throw new Error(
-  //         `An error occured determining the release configuration (Error Code: ${
-  //           configError.code
-  //         }):
-  // ${JSON.stringify(configError.data)}
-
-  // Exiting without completing release publish.
-  //         `
-  //       );
-  //     }
-
   if (nxJson.release?.groups) {
     nxJson.release.groups = Object.keys(nxJson.release.groups).reduce(
       (ret, groupName) => {
@@ -120,7 +103,8 @@ export const runRelease = async (
     verbose: isVerbose(config.logLevel),
     preid: config.preid,
     deleteVersionPlans: false,
-    stageChanges: true
+    stageChanges: true,
+    gitCommit: true
   });
 
   await releaseChangelog({

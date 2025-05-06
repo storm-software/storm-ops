@@ -133,7 +133,7 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
       userProvidedReleaseConfig
     );
     if (configError) {
-      return await handleNxReleaseConfigError(configError);
+      return await handleNxReleaseConfigError(configError, false);
     }
     // --print-config exits directly as it is not designed to be combined with any other programmatic operations
     if (args.printConfig) {
@@ -201,7 +201,7 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
     }
 
     const changelogGenerationEnabled =
-      !!nxReleaseConfig?.changelog.workspaceChangelog ||
+      !!nxReleaseConfig?.changelog?.workspaceChangelog ||
       (nxReleaseConfig?.groups &&
         Object.values(nxReleaseConfig?.groups).some(g => (g as any).changelog));
     if (!changelogGenerationEnabled) {
@@ -249,7 +249,7 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
      * this seems like it would always be unintentional.
      */
     const autoCommitEnabled =
-      args.gitCommit ?? nxReleaseConfig.changelog.git.commit;
+      args.gitCommit ?? nxReleaseConfig.changelog?.git.commit;
     if (autoCommitEnabled && headSHA !== toSHA) {
       throw new Error(
         `You are attempting to recreate the changelog for an old release, but you have enabled auto-commit mode. Please disable auto-commit mode by updating your nx.json, or passing --git-commit=false`
@@ -257,7 +257,7 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
     }
 
     const commitMessage: string | undefined =
-      args.gitCommitMessage || nxReleaseConfig.changelog.git.commitMessage;
+      args.gitCommitMessage || nxReleaseConfig.changelog?.git?.commitMessage;
 
     const commitMessageValues: string[] = createCommitMessageValues(
       releaseGroups,
@@ -268,7 +268,7 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
 
     // Resolve any git tags as early as possible so that we can hard error in case of any duplicates before reaching the actual git command
     const gitTagValues: string[] =
-      (args.gitTag ?? nxReleaseConfig.changelog.git.tag)
+      (args.gitTag ?? nxReleaseConfig.changelog?.git.tag)
         ? createGitTagValues(
             releaseGroups,
             releaseGroupToFilteredProjects,
@@ -412,7 +412,7 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
     if (
       workspaceChangelog &&
       shouldCreateGitHubRelease(
-        nxReleaseConfig.changelog.workspaceChangelog,
+        nxReleaseConfig.changelog?.workspaceChangelog,
         args.createRelease
       )
     ) {
@@ -427,8 +427,8 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
         output.logSingleLine(`Creating GitHub Release \n\n${contents}`);
 
         await createOrUpdateGithubRelease(
-          nxReleaseConfig.changelog.workspaceChangelog
-            ? nxReleaseConfig.changelog.workspaceChangelog.createRelease
+          nxReleaseConfig.changelog?.workspaceChangelog
+            ? nxReleaseConfig.changelog?.workspaceChangelog.createRelease
             : defaultCreateReleaseProvider,
           workspaceChangelog.releaseVersion,
           contents,
@@ -985,7 +985,7 @@ async function applyChangesAndExit(
   }
 
   // Generate a new commit for the changes, if configured to do so
-  if (args.gitCommit ?? nxReleaseConfig.changelog.git.commit) {
+  if (args.gitCommit ?? nxReleaseConfig.changelog?.git.commit) {
     await commitChanges({
       changedFiles,
       deletedFiles,
@@ -993,12 +993,12 @@ async function applyChangesAndExit(
       isVerbose: !!args.verbose,
       gitCommitMessages: commitMessageValues,
       gitCommitArgs:
-        args.gitCommitArgs || nxReleaseConfig.changelog.git.commitArgs
+        args.gitCommitArgs || nxReleaseConfig.changelog?.git.commitArgs
     });
     // Resolve the commit we just made
     latestCommit = await getCommitHash("HEAD");
   } else if (
-    (args.stageChanges ?? nxReleaseConfig.changelog.git.stageChanges) &&
+    (args.stageChanges ?? nxReleaseConfig.changelog?.git.stageChanges) &&
     changes.length
   ) {
     output.logSingleLine(`Staging changed files with git`);
@@ -1011,21 +1011,22 @@ async function applyChangesAndExit(
   }
 
   // Generate a one or more git tags for the changes, if configured to do so
-  if (args.gitTag ?? nxReleaseConfig.changelog.git.tag) {
+  if (args.gitTag ?? nxReleaseConfig.changelog?.git.tag) {
     output.logSingleLine(`Tagging commit with git`);
     for (const tag of gitTagValues) {
       await gitTag({
         tag,
-        message: args.gitTagMessage || nxReleaseConfig.changelog.git.tagMessage,
+        message:
+          args.gitTagMessage || nxReleaseConfig.changelog?.git.tagMessage,
         additionalArgs:
-          args.gitTagArgs || nxReleaseConfig.changelog.git.tagArgs,
+          args.gitTagArgs || nxReleaseConfig.changelog?.git.tagArgs,
         dryRun: args.dryRun,
         verbose: args.verbose
       });
     }
   }
 
-  if (args.gitPush ?? nxReleaseConfig.changelog.git.push) {
+  if (args.gitPush ?? nxReleaseConfig.changelog?.git.push) {
     output.logSingleLine(`Pushing to git remote "${args.gitRemote}"`);
     await gitPush({
       gitRemote: args.gitRemote,
@@ -1066,7 +1067,7 @@ async function generateChangelogForWorkspace({
     );
   }
 
-  const config = nxReleaseConfig.changelog.workspaceChangelog;
+  const config = nxReleaseConfig.changelog?.workspaceChangelog;
   // The entire feature is disabled at the workspace level, exit early
   if (config === false) {
     return;
@@ -1084,7 +1085,7 @@ async function generateChangelogForWorkspace({
     );
   }
 
-  if (Object.entries(nxReleaseConfig.groups).length > 1) {
+  if (Object.entries(nxReleaseConfig.groups ?? {}).length > 1) {
     output.warn({
       title: `Workspace changelog is enabled, but you have multiple release groups configured. This is not supported, so workspace changelog will be disabled.`,
       bodyLines: [
@@ -1096,8 +1097,8 @@ async function generateChangelogForWorkspace({
   }
 
   if (
-    (Object.values(nxReleaseConfig.groups)[0] as any)?.projectsRelationship ===
-    "independent"
+    (Object.values(nxReleaseConfig.groups ?? {})[0] as any)
+      ?.projectsRelationship === "independent"
   ) {
     output.warn({
       title: `Workspace changelog is enabled, but you have configured an independent projects relationship. This is not supported, so workspace changelog will be disabled.`,
@@ -1348,14 +1349,17 @@ async function generateChangelogForProjects({
 
 function checkChangelogFilesEnabled(nxReleaseConfig: NxReleaseConfig): boolean {
   if (
-    nxReleaseConfig.changelog.workspaceChangelog &&
-    nxReleaseConfig.changelog.workspaceChangelog.file
+    nxReleaseConfig.changelog?.workspaceChangelog &&
+    nxReleaseConfig.changelog?.workspaceChangelog.file
   ) {
     return true;
   }
 
-  return Object.values(nxReleaseConfig.groups).some(
-    releaseGroup => (releaseGroup as NxReleaseConfig["groups"])?.changelog?.file
+  return Object.values(nxReleaseConfig.groups ?? {}).some(
+    (releaseGroup: any) =>
+      (typeof releaseGroup?.changelog === "boolean" &&
+        releaseGroup.changelog) ||
+      releaseGroup?.changelog?.file
   );
 }
 
@@ -1405,10 +1409,7 @@ function filterHiddenCommits(
 }
 
 export function shouldCreateGitHubRelease(
-  changelogConfig:
-    | NxReleaseConfig["changelog"]["workspaceChangelog"]
-    | NxReleaseConfig["changelog"]["projectChangelogs"]
-    | NxReleaseConfig["groups"][number]["changelog"],
+  changelogConfig: any,
   createReleaseArg: ChangelogOptions["createRelease"] | undefined = undefined
 ): boolean {
   if (createReleaseArg !== undefined) {
