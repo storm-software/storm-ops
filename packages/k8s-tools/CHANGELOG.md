@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.28.2](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.28.2) (2025-05-06)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with import path in executor
+  ([ddad2fdc8](https://github.com/storm-software/storm-ops/commit/ddad2fdc8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([7e0751c3d](https://github.com/storm-software/storm-ops/commit/7e0751c3d))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.270.2
+- Updated workspace-tools to 1.270.2
+- Updated config-tools to 1.166.2
+- Updated config-tools to 1.166.2
+- Updated config to 1.116.2
+- Updated config to 1.116.2
+
 ## [0.28.1](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.28.1) (2025-05-06)
 
 ### Bug Fixes

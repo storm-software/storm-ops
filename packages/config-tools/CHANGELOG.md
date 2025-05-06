@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.166.2](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.166.2) (2025-05-06)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with import path in executor
+  ([ddad2fdc8](https://github.com/storm-software/storm-ops/commit/ddad2fdc8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([7e0751c3d](https://github.com/storm-software/storm-ops/commit/7e0751c3d))
+
+### Updated Dependencies
+
+- Updated config to 1.116.2
+
 ## [1.166.1](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.166.1) (2025-05-06)
 
 ### Bug Fixes

@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.44.2](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.44.2) (2025-05-06)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with import path in executor
+  ([ddad2fdc8](https://github.com/storm-software/storm-ops/commit/ddad2fdc8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([7e0751c3d](https://github.com/storm-software/storm-ops/commit/7e0751c3d))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.166.2
+- Updated build-tools to 0.147.2
+- Updated config to 1.116.2
+
 ## [0.44.1](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.44.1) (2025-05-06)
 
 ### Bug Fixes

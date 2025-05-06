@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.107.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.107.2) (2025-05-06)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with import path in executor
+  ([ddad2fdc8](https://github.com/storm-software/storm-ops/commit/ddad2fdc8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([7e0751c3d](https://github.com/storm-software/storm-ops/commit/7e0751c3d))
+
 ## [2.107.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.107.1) (2025-05-06)
 
 ### Bug Fixes
