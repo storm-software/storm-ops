@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.88.1](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.88.1) (2025-05-06)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependencies
+  ([e4fcafde0](https://github.com/storm-software/storm-ops/commit/e4fcafde0))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([6eabb3ff1](https://github.com/storm-software/storm-ops/commit/6eabb3ff1))
+
 ## [1.88.0](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.88.0) (2025-05-06)
 
 ### Features

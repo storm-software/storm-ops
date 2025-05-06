@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.107.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.107.1) (2025-05-06)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with missing dependencies
+  ([e4fcafde0](https://github.com/storm-software/storm-ops/commit/e4fcafde0))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([6eabb3ff1](https://github.com/storm-software/storm-ops/commit/6eabb3ff1))
+
 ## [2.107.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.107.0) (2025-05-06)
 
 ### Features
