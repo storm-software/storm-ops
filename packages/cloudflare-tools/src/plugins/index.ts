@@ -44,7 +44,12 @@ export const createNodesV2: CreateNodesV2<CloudflarePluginOptions> = [
           const nxJson = readNxJson(context.workspaceRoot);
 
           const targets: ProjectConfiguration["targets"] =
-            readTargetsFromPackageJson(packageJson, nxJson);
+            readTargetsFromPackageJson(
+              packageJson as PackageJson,
+              nxJson,
+              project.root,
+              context.workspaceRoot
+            );
 
           // Apply nx-release-publish target for non-private projects
 

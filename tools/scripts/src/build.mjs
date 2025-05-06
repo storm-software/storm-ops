@@ -2,6 +2,8 @@
 
 import { $, argv, chalk, echo } from "zx";
 
+// usePwsh();
+
 try {
   let configuration = argv.configuration;
   if (!configuration) {

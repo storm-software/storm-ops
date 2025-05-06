@@ -60,7 +60,12 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
 
           const nxJson = readNxJson(context.workspaceRoot);
           const targets: ProjectConfiguration["targets"] =
-            readTargetsFromPackageJson(packageJson, nxJson);
+            readTargetsFromPackageJson(
+              packageJson,
+              nxJson,
+              projectRoot,
+              context.workspaceRoot
+            );
 
           let relativeRoot = projectRoot
             .replaceAll("\\", "/")

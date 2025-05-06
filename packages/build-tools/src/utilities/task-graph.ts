@@ -1,18 +1,18 @@
 import type { NxJsonConfiguration, ProjectGraph, TaskGraph } from "@nx/devkit";
 import {
   createTaskGraph,
-  mapTargetDefaultsToDependencies,
+  mapTargetDefaultsToDependencies
 } from "nx/src/tasks-runner/create-task-graph";
 
 export function getAllWorkspaceTaskGraphs(
   nxJson: NxJsonConfiguration,
-  projectGraph: ProjectGraph,
+  projectGraph: ProjectGraph
 ): {
   taskGraphs: Record<string, TaskGraph>;
   errors: Record<string, string>;
 } {
   const defaultDependencyConfigs = mapTargetDefaultsToDependencies(
-    nxJson.targetDefaults,
+    nxJson.targetDefaults
   );
 
   const taskGraphs: Record<string, TaskGraph> = {};
@@ -31,20 +31,21 @@ export function getAllWorkspaceTaskGraphs(
           [projectName],
           [target],
           undefined,
-          {},
+          {}
         );
       } catch (err) {
         taskGraphs[taskId] = {
           tasks: {},
           dependencies: {},
-          roots: [],
+          continuousDependencies: {},
+          roots: []
         };
 
         taskGraphErrors[taskId] = err.message;
       }
 
       const configurations = Object.keys(
-        project?.data?.targets?.[target]?.configurations || {},
+        project?.data?.targets?.[target]?.configurations || {}
       );
       if (configurations.length > 0) {
         for (const configuration of configurations) {
@@ -56,13 +57,14 @@ export function getAllWorkspaceTaskGraphs(
               [projectName],
               [target],
               configuration,
-              {},
+              {}
             );
           } catch (err) {
             taskGraphs[taskId] = {
               tasks: {},
               dependencies: {},
-              roots: [],
+              continuousDependencies: {},
+              roots: []
             };
 
             taskGraphErrors[taskId] = err.message;
@@ -78,7 +80,7 @@ export function getAllWorkspaceTaskGraphs(
 export function createTaskId(
   projectId: string,
   targetId: string,
-  configurationId?: string,
+  configurationId?: string
 ) {
   if (configurationId) {
     return `${projectId}:${targetId}:${configurationId}`;

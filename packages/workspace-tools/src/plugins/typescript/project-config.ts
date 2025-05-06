@@ -8,10 +8,8 @@ import { dirname, join } from "node:path";
 import { readNxJson } from "nx/src/config/nx-json.js";
 import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
 import { readJsonFile } from "nx/src/utils/fileutils";
-import {
-  readTargetsFromPackageJson,
-  type PackageJson as PackageJsonNx
-} from "nx/src/utils/package-json";
+import type { PackageJson as NxPackageJson } from "nx/src/utils/package-json";
+import { readTargetsFromPackageJson } from "nx/src/utils/package-json";
 import type { PackageJson } from "pkg-types";
 import { readTSConfig } from "pkg-types";
 import { getProjectPlatform } from "../../utils/plugin-helpers";
@@ -106,7 +104,12 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
 
           const nxJson = readNxJson(context.workspaceRoot);
           const targets: ProjectConfiguration["targets"] =
-            readTargetsFromPackageJson(packageJson as PackageJsonNx, nxJson);
+            readTargetsFromPackageJson(
+              packageJson as NxPackageJson,
+              nxJson,
+              project.root,
+              context.workspaceRoot
+            );
 
           if (
             join(context.workspaceRoot, project.root).startsWith(
