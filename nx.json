@@ -370,9 +370,9 @@
     }
   },
   "plugins": [
-    "./dist/plugins/rust/index.js",
     "./dist/plugins/typescript/index.js",
     "./dist/plugins/cloudflare/index.js",
+    "./dist/plugins/rust/index.js",
     {
       "plugin": "@nx/eslint/plugin",
       "options": {

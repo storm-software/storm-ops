@@ -1,5 +1,4 @@
-import { ExecutorContext, workspaceRoot } from "@nx/devkit";
-import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
+import { ExecutorContext, joinPathFragments, workspaceRoot } from "@nx/devkit";
 import {
   type ChildProcess,
   execSync,
@@ -195,7 +194,7 @@ export function runProcess(
 ): { success: boolean } | PromiseLike<{ success: boolean }> {
   const metadata = cargoMetadata();
   const targetDir =
-    metadata?.target_directory ?? joinPaths(workspaceRoot, "dist");
+    metadata?.target_directory ?? joinPathFragments(workspaceRoot, "dist");
 
   return new Promise(resolve => {
     if (process.env.VERCEL) {

@@ -392,8 +392,6 @@ export const createDependencies: CreateDependencies = (_, context) => {
 
   for (const pkg of cargoPackages) {
     if (context.projects[pkg.name]) {
-      console.debug(`Local Cargo package found: ${pkg.name}`);
-
       for (const deps of pkg.dependencies) {
         if (!cargoPackages.find(p => p.name === deps.name)) {
           console.debug(
@@ -418,6 +416,10 @@ export const createDependencies: CreateDependencies = (_, context) => {
       }
     }
   }
+
+  console.log(
+    `Total workspace Cargo dependencies found: ${dependencies.length}`
+  );
 
   return dependencies;
 };

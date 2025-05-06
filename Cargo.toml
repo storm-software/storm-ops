@@ -54,9 +54,6 @@ rustdoc-args = ["--cfg", "docsrs"]
 storm-config = { path = "./crates/storm-config" }
 storm-workspace = { path = "./crates/storm-workspace" }
 
-# Tools
-zizmor = "0.9.2"
-
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## COMPILATION PROFILES
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
