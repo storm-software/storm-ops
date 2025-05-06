@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.57.0](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.57.0) (2025-05-06)
+
+### Features
+
+- **workspace-tools:** Update the publish executor source code
+  ([527dcfe84](https://github.com/storm-software/storm-ops/commit/527dcfe84))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([d58a4014e](https://github.com/storm-software/storm-ops/commit/d58a4014e))
+
 ## [0.56.2](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.56.2) (2025-05-05)
 
 ### Miscellaneous

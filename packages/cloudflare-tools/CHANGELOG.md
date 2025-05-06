@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.58.0](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.58.0) (2025-05-06)
+
+### Features
+
+- **workspace-tools:** Update the publish executor source code
+  ([527dcfe84](https://github.com/storm-software/storm-ops/commit/527dcfe84))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([d58a4014e](https://github.com/storm-software/storm-ops/commit/d58a4014e))
+
 ## [0.57.2](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.57.2) (2025-05-05)
 
 ### Miscellaneous
