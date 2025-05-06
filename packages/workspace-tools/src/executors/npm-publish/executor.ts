@@ -4,7 +4,7 @@ import {
   type ExecutorContext
 } from "@nx/devkit";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
-import * as columnify from "columnify";
+import columnify from "columnify";
 import { exec, execSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import { relative } from "node:path";
