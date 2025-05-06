@@ -6,7 +6,7 @@ target-dir = "dist"
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 [profile.dev]
-debug = true
+debug       = true
 incremental = true
 
 # Make insta run faster by compiling with release mode optimizations
@@ -20,24 +20,24 @@ opt-level = 3
 opt-level = 3
 
 [profile.release]
-lto = "thin"
-strip = "debuginfo"
+lto           = "thin"
+strip         = "debuginfo"
 codegen-units = 16
-panic = "unwind"
+panic         = "unwind"
 
 [profile.release-with-debug]
 inherits = "release"
-strip = false
-lto = "fat"
-debug = true
+strip    = false
+lto      = "fat"
+debug    = true
 
 [profile.debug-fast]
 inherits = "release"
-strip = "none"
-debug = true
+strip    = "none"
+debug    = true
 
 [profile.prod]
-inherits = "release"
-lto = "fat"
+inherits      = "release"
+lto           = "fat"
 codegen-units = 1
-incremental = false
+incremental   = false
