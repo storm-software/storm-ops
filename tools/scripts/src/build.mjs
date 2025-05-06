@@ -2,8 +2,6 @@
 
 import { $, argv, chalk, echo } from "zx";
 
-// usePwsh();
-
 try {
   let configuration = argv.configuration;
   if (!configuration) {
@@ -30,7 +28,7 @@ try {
   }
 
   if (configuration === "production") {
-    proc = $`pnpm nx run-many --target=build --all --exclude="@storm-software/storm-ops" --configuration=production --parallel=5`;
+    proc = $`pnpm nx run-many --target=build --all --exclude="@storm-software/storm-ops" --configuration=production --parallel=5 --outputStyle=dynamic-legacy`;
     proc.stdout.on("data", data => {
       echo`${data}`;
     });
@@ -42,7 +40,7 @@ try {
       );
     }
   } else {
-    proc = $`pnpm nx run-many --target=build --all --exclude="@storm-software/storm-ops" --configuration=${configuration} --nxBail`;
+    proc = $`pnpm nx run-many --target=build --all --exclude="@storm-software/storm-ops" --configuration=${configuration} --nxBail --outputStyle=dynamic-legacy`;
     proc.stdout.on("data", data => {
       echo`${data}`;
     });
