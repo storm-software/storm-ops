@@ -71,6 +71,7 @@ in {
     pnpm update --recursive --workspace
     pnpm install
     bootstrap
+    pnpm nx reset
   '';
 
   # https://devenv.sh/git-hooks/
