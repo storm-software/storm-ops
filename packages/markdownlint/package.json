@@ -124,6 +124,8 @@
     "tsup": "catalog:"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "linkDirectory": true,
+    "directory": "../../dist/packages/markdownlint"
   }
 }
