@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.11.1](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.11.1) (2025-05-06)
+
+### Miscellaneous
+
+- **eslint:** Regenerate type definitions
+  ([aa082a323](https://github.com/storm-software/storm-ops/commit/aa082a323))
+- **monorepo:** Regenerate README markdown files
+  ([ed5072712](https://github.com/storm-software/storm-ops/commit/ed5072712))
+
 ## [0.11.0](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.11.0) (2025-05-06)
 
 ### Features
