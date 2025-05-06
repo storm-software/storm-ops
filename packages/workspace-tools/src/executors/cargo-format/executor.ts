@@ -5,7 +5,7 @@ import { CargoFormatExecutorSchema } from "./schema.d";
 
 export async function cargoFormatExecutor(
   options: CargoFormatExecutorSchema,
-  context: ExecutorContext,
+  context: ExecutorContext
 ) {
   const command = buildCargoCommand("fmt", options, context);
   return await cargoCommand(...command);
@@ -18,11 +18,11 @@ export default withRunExecutor<CargoFormatExecutorSchema>(
     skipReadingConfig: false,
     hooks: {
       applyDefaultOptions: (options: CargoFormatExecutorSchema) => {
-        options.outputPath ??= "dist/target/{projectRoot}";
+        options.outputPath ??= "dist/{projectRoot}/target";
         options.toolchain ??= "stable";
 
         return options as CargoFormatExecutorSchema;
-      },
-    },
-  },
+      }
+    }
+  }
 ) as PromiseExecutor<CargoFormatExecutorSchema>;

@@ -18,7 +18,7 @@ export default withRunExecutor<CargoBuildExecutorSchema>(
     skipReadingConfig: false,
     hooks: {
       applyDefaultOptions: (options: CargoBuildExecutorSchema) => {
-        options.outputPath ??= "dist/target/{projectRoot}";
+        options.outputPath ??= "dist/{projectRoot}/target";
         options.toolchain ??= "stable";
 
         return options as CargoBuildExecutorSchema;

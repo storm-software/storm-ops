@@ -1,5 +1,5 @@
 [build]
-target-dir = "dist/target"
+target-dir = "dist"
 
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## COMPILATION PROFILES
@@ -14,7 +14,7 @@ incremental = true
 [profile.dev.package.insta]
 opt-level = 3
 
-# Make insta diffing libary faster by compiling with release mode optimizations
+# Make insta diffing library faster by compiling with release mode optimizations
 # https://docs.rs/insta/latest/insta/#optional-faster-runs
 [profile.dev.package.similar]
 opt-level = 3

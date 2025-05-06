@@ -223,10 +223,10 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                 clean: {
                   cache: true,
                   inputs: ["rust", "^production"],
-                  outputs: [`{workspaceRoot}/dist/{projectRoot}`],
+                  outputs: [`{workspaceRoot}/dist/{projectRoot}/target`],
                   executor: "nx:run-commands",
                   options: {
-                    command: `pnpm exec rimraf dist/{projectRoot}`,
+                    command: `pnpm exec rimraf dist/{projectRoot}/target`,
                     color: true,
                     cwd: "{workspaceRoot}"
                   }
@@ -236,7 +236,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   inputs: ["rust", "^production"],
                   dependsOn: ["build-base", "^build"],
                   executor: "@storm-software/workspace-tools:cargo-build",
-                  outputs: [`{workspaceRoot}/dist/{projectRoot}`],
+                  outputs: [`{workspaceRoot}/dist/{projectRoot}/target`],
                   options: {
                     toolchain: toolchain
                   },
@@ -248,7 +248,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   inputs: ["rust", "^production"],
                   dependsOn: ["clean", "build-base", "^build"],
                   executor: "@storm-software/workspace-tools:cargo-build",
-                  outputs: [`{workspaceRoot}/dist/{projectRoot}`],
+                  outputs: [`{workspaceRoot}/dist/{projectRoot}/target`],
                   options: {
                     toolchain: toolchain
                   },
@@ -262,7 +262,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   executor: "@monodon/rust:test",
                   outputs: ["{options.target-dir}"],
                   options: {
-                    "target-dir": `{workspaceRoot}/dist/{projectRoot}`
+                    "target-dir": `{workspaceRoot}/dist/{projectRoot}/target`
                   },
                   defaultConfiguration: "development",
                   configurations
