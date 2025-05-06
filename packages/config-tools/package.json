@@ -244,7 +244,7 @@
     "monorepo"
   ],
   "dependencies": {
-    "@storm-software/config": "1.117.0",
+    "@storm-software/config": "workspace:*",
     "c12": "catalog:",
     "chalk": "catalog:",
     "commander": "catalog:",
