@@ -4,13 +4,12 @@ import {
   type ExecutorContext
 } from "@nx/devkit";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
-import { exec } from "child_process";
 import * as columnify from "columnify";
-import { existsSync } from "fs";
-import { execSync } from "node:child_process";
+import { exec, execSync } from "node:child_process";
+import { existsSync } from "node:fs";
+import { relative } from "node:path";
 import { env as appendLocalEnv } from "npm-run-path";
 import { PackageJson } from "nx/src/utils/package-json";
-import { join, relative } from "path";
 import { pnpmCatalogUpdate } from "../../utils/pnpm-deps-update";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
@@ -423,7 +422,7 @@ async function parseRegistryOptions(
   tag: string;
   registryConfigKey: string;
 }> {
-  const npmRcPath = join(pkg.packageRoot, ".npmrc");
+  const npmRcPath = joinPaths(pkg.packageRoot, ".npmrc");
   if (existsSync(npmRcPath)) {
     const relativeNpmRcPath = relative(cwd, npmRcPath);
     logWarnFn(
@@ -448,7 +447,7 @@ async function parseRegistryOptions(
   if (publishConfigRegistry || pkg.packageJson.publishConfig?.registry) {
     const relativePackageJsonPath = relative(
       cwd,
-      join(pkg.packageRoot, "package.json")
+      joinPaths(pkg.packageRoot, "package.json")
     );
     if (options.registry) {
       logWarnFn(
