@@ -51,7 +51,9 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
     return await createNodesFromFiles(
       (configFile, options, context) => {
         try {
-          console.log(`Processing Cargo.toml file: ${configFile}`);
+          console.log(
+            `[storm-software/rust]: Processing Cargo.toml file: ${configFile}`
+          );
 
           const profiles = options?.profiles ?? {};
           const includeApps = options?.includeApps ?? true;
@@ -395,7 +397,7 @@ export const createDependencies: CreateDependencies = (_, context) => {
       for (const deps of pkg.dependencies) {
         if (!cargoPackages.find(p => p.name === deps.name)) {
           console.debug(
-            `Dependency ${deps.name} not found in the cargo metadata.`
+            `[storm-software/rust]: Dependency ${deps.name} not found in the cargo metadata.`
           );
           continue;
         }
@@ -418,7 +420,7 @@ export const createDependencies: CreateDependencies = (_, context) => {
   }
 
   console.log(
-    `Total workspace Cargo dependencies found: ${dependencies.length}`
+    `[storm-software/rust]: Total workspace Cargo dependencies found: ${dependencies.length}`
   );
 
   return dependencies;
