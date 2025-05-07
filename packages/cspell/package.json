@@ -136,7 +136,7 @@
     "@cspell/dict-dotnet": "^5.0.9",
     "@cspell/dict-en-common-misspellings": "^2.0.10",
     "@cspell/dict-en-gb": "^4.1.65",
-    "@cspell/dict-en_us": "^4.4.7",
+    "@cspell/dict-en_us": "^4.4.8",
     "@cspell/dict-filetypes": "^3.0.12",
     "@cspell/dict-fonts": "^4.0.4",
     "@cspell/dict-fullstack": "^3.2.6",

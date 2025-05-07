@@ -1,7 +1,7 @@
 import type { ProjectConfiguration } from "@nx/devkit";
 import {
   findWorkspaceRoot,
-  type BaseTokenizerOptions,
+  type BaseTokenizerOptions
 } from "@storm-software/config-tools";
 
 export type ExecutorTokenizerOptions = BaseTokenizerOptions &
@@ -13,7 +13,7 @@ export type ExecutorTokenizerOptions = BaseTokenizerOptions &
 
 export const applyWorkspaceExecutorTokens = async (
   option: string,
-  tokenizerOptions: ExecutorTokenizerOptions,
+  tokenizerOptions: ExecutorTokenizerOptions
 ): Promise<string> => {
   let result = option;
   if (!result) {
@@ -42,12 +42,12 @@ export const applyWorkspaceExecutorTokens = async (
 
   if (tokenizerOptions.config) {
     const configKeys = Object.keys(tokenizerOptions.config);
-    if (configKeys.some((configKey) => result.includes(`{${configKey}}`))) {
+    if (configKeys.some(configKey => result.includes(`{${configKey}}`))) {
       for (const configKey of configKeys) {
         if (result.includes(`{${configKey}}`)) {
           result = result.replaceAll(
             `{${configKey}}`,
-            tokenizerOptions.config[configKey],
+            tokenizerOptions.config[configKey]
           );
         }
       }
@@ -65,7 +65,7 @@ export const applyWorkspaceExecutorTokens = async (
   if (result.includes("{workspaceRoot}")) {
     result = result.replaceAll(
       "{workspaceRoot}",
-      tokenizerOptions.workspaceRoot ?? findWorkspaceRoot(),
+      tokenizerOptions.workspaceRoot ?? findWorkspaceRoot()
     );
   }
 
