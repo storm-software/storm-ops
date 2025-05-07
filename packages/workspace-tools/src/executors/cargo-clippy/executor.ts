@@ -12,7 +12,7 @@ export async function cargoClippyExecutor(
 }
 
 export default withRunExecutor<CargoClippyExecutorSchema>(
-  "Cargo Clippy",
+  "Cargo - Clippy",
   cargoClippyExecutor,
   {
     skipReadingConfig: false,

@@ -12,7 +12,7 @@ export async function cargoFormatExecutor(
 }
 
 export default withRunExecutor<CargoFormatExecutorSchema>(
-  "Cargo Format",
+  "Cargo - Format",
   cargoFormatExecutor,
   {
     skipReadingConfig: false,

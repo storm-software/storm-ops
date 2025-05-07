@@ -12,7 +12,7 @@ export async function cargoBuildExecutor(
 }
 
 export default withRunExecutor<CargoBuildExecutorSchema>(
-  "Cargo Build",
+  "Cargo - Build",
   cargoBuildExecutor,
   {
     skipReadingConfig: false,

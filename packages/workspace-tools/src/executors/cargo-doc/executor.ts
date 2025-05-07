@@ -17,7 +17,7 @@ export async function cargoDocExecutor(
 }
 
 export default withRunExecutor<CargoDocExecutorSchema>(
-  "Cargo Doc",
+  "Cargo - Doc",
   cargoDocExecutor,
   {
     skipReadingConfig: false,

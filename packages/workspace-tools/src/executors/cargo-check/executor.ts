@@ -12,7 +12,7 @@ export async function cargoCheckExecutor(
 }
 
 export default withRunExecutor<CargoCheckExecutorSchema>(
-  "Cargo Check",
+  "Cargo - Check",
   cargoCheckExecutor,
   {
     skipReadingConfig: false,
