@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.109.2](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.109.2) (2025-05-07)
+
+### Bug Fixes
+
+- **git-tools:** Remove auto-commit on versioning step
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [1.109.0](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.109.0) (2025-05-06)
 
 ### Features

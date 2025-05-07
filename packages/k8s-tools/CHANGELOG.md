@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.30.2](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.30.2) (2025-05-07)
+
+### Bug Fixes
+
+- **git-tools:** Remove auto-commit on versioning step
+- **git-tools:** Update versioning to commit changes
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.272.2
+- Updated workspace-tools to 1.272.2
+- Updated config-tools to 1.168.2
+- Updated config-tools to 1.168.2
+- Updated config to 1.118.2
+- Updated config to 1.118.2
+
 ## [0.30.1](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.30.1) (2025-05-07)
 
 ### Updated Dependencies

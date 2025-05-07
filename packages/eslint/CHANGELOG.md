@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.154.1](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.154.1) (2025-05-07)
+
+### Bug Fixes
+
+- **git-tools:** Remove auto-commit on versioning step
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.153.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.153.0) (2025-05-06)
 
 ### Features

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.23.2](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.23.2) (2025-05-07)
+
+### Bug Fixes
+
+- **git-tools:** Remove auto-commit on versioning step
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.23.0](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.23.0) (2025-05-06)
 
 ### Features

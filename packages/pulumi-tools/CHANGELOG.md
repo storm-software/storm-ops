@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.12.2](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.12.2) (2025-05-07)
+
+### Bug Fixes
+
+- **git-tools:** Remove auto-commit on versioning step
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.12.0](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.12.0) (2025-05-06)
 
 ### Features

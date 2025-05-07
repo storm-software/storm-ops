@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.110.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.110.1) (2025-05-07)
+
+### Bug Fixes
+
+- **git-tools:** Remove auto-commit on versioning step
+- **git-tools:** Update versioning to commit changes
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [2.110.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.110.0) (2025-05-07)
 
 ### Bug Fixes

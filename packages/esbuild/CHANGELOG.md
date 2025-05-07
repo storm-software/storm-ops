@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.40.2](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.40.2) (2025-05-07)
+
+### Bug Fixes
+
+- **git-tools:** Remove auto-commit on versioning step
+- **git-tools:** Update versioning to commit changes
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config-tools to 1.168.2
+- Updated build-tools to 0.149.2
+- Updated config to 1.118.2
+
 ## [0.40.1](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.40.1) (2025-05-07)
 
 ### Updated Dependencies

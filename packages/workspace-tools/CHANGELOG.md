@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.272.2](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.272.2) (2025-05-07)
+
+### Bug Fixes
+
+- **git-tools:** Remove auto-commit on versioning step
+- **git-tools:** Update versioning to commit changes
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated prettier to 0.50.2
+- Updated esbuild to 0.40.2
+- Updated esbuild to 0.40.2
+- Updated unbuild to 0.46.2
+- Updated unbuild to 0.46.2
+
 ## [1.272.1](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.272.1) (2025-05-07)
 
 ### Bug Fixes

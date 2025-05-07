@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.168.2](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.168.2) (2025-05-07)
+
+### Bug Fixes
+
+- **git-tools:** Remove auto-commit on versioning step
+- **git-tools:** Update versioning to commit changes
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config to 1.118.2
+
 ## [1.168.1](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.168.1) (2025-05-07)
 
 ### Updated Dependencies

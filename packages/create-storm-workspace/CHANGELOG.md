@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.90.2](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.90.2) (2025-05-07)
+
+### Bug Fixes
+
+- **git-tools:** Remove auto-commit on versioning step
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [1.90.0](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.90.0) (2025-05-06)
 
 ### Features
