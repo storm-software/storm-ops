@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.110.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.110.0) (2025-05-07)
+
+### Bug Fixes
+
+- **git-tools:** Update the default configuration to set `useLegacyVersioning`
+  to true
+
 ## [2.109.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.109.0) (2025-05-06)
 
 ### Features
