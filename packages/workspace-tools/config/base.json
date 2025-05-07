@@ -454,11 +454,9 @@
   "plugins": [
     "@storm-software/workspace-tools/plugins/typescript",
     "@storm-software/workspace-tools/plugins/typescript/tsup",
-    "@storm-software/workspace-tools/plugins/typescript/untyped"
+    "@storm-software/workspace-tools/plugins/typescript/untyped",
+    "@storm-software/workspace-tools/plugins/rust"
   ],
-  "cli": {
-    "packageManager": "pnpm"
-  },
   "parallel": 3,
   "defaultBase": "main",
   "useDaemonProcess": true,
