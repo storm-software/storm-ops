@@ -28,7 +28,7 @@ try {
   }
 
   if (configuration === "production") {
-    proc = $`pnpm nx run workspace-tools:build:production --outputStyle=stream`;
+    proc = $`pnpm nx run workspace-tools:build:production --outputStyle=dynamic-legacy`;
     proc.stdout.on("data", data => {
       echo`${data}`;
     });
@@ -40,7 +40,7 @@ try {
       );
     }
 
-    proc = $`pnpm nx run-many --target=build --all --exclude="@storm-software/storm-ops" --configuration=production --parallel=5 --outputStyle=stream`;
+    proc = $`pnpm nx run-many --target=build --all --exclude="@storm-software/storm-ops" --configuration=production --parallel=5 --outputStyle=dynamic-legacy`;
     proc.stdout.on("data", data => {
       echo`${data}`;
     });

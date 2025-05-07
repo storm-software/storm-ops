@@ -8,7 +8,6 @@ import { ChangelogOptions } from "nx/src/command-line/release/command-object";
 import {
   NxReleaseConfig,
   createNxReleaseConfig,
-  defaultCreateReleaseProvider,
   handleNxReleaseConfigError
 } from "nx/src/command-line/release/config/config";
 import { deepMergeJson } from "nx/src/command-line/release/config/deep-merge-json";
@@ -38,6 +37,7 @@ import {
 import { launchEditor } from "nx/src/command-line/release/utils/launch-editor";
 import { printAndFlushChanges } from "nx/src/command-line/release/utils/print-changes";
 import { printConfigAndExit } from "nx/src/command-line/release/utils/print-config";
+import { defaultCreateReleaseProvider } from "nx/src/command-line/release/utils/remote-release-clients/github";
 import { resolveNxJsonConfigErrorMessage } from "nx/src/command-line/release/utils/resolve-nx-json-error-message";
 import {
   ReleaseVersion,
@@ -48,7 +48,11 @@ import {
   handleDuplicateGitTags,
   noDiffInChangelogMessage
 } from "nx/src/command-line/release/utils/shared";
-import { NxReleaseConfiguration, readNxJson } from "nx/src/config/nx-json";
+import {
+  NxReleaseChangelogConfiguration,
+  NxReleaseConfiguration,
+  readNxJson
+} from "nx/src/config/nx-json";
 import {
   FileData,
   ProjectFileMap,
@@ -426,7 +430,7 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
         await createOrUpdateGithubRelease(
           nxReleaseConfig.changelog?.workspaceChangelog
             ? nxReleaseConfig.changelog?.workspaceChangelog.createRelease
-            : defaultCreateReleaseProvider,
+            : (defaultCreateReleaseProvider as NxReleaseChangelogConfiguration["createRelease"]),
           workspaceChangelog.releaseVersion,
           contents,
           latestCommit,
