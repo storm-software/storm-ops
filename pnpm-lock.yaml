@@ -543,8 +543,8 @@ importers:
         specifier: ^5.0.9
         version: 5.0.9
       '@cspell/dict-en-common-misspellings':
-        specifier: ^2.0.10
-        version: 2.0.10
+        specifier: ^2.0.11
+        version: 2.0.11
       '@cspell/dict-en-gb':
         specifier: ^4.1.65
         version: 4.1.65
@@ -2899,8 +2899,8 @@ packages:
   '@cspell/dict-elixir@4.0.7':
     resolution: {integrity: sha512-MAUqlMw73mgtSdxvbAvyRlvc3bYnrDqXQrx5K9SwW8F7fRYf9V4vWYFULh+UWwwkqkhX9w03ZqFYRTdkFku6uA==}
 
-  '@cspell/dict-en-common-misspellings@2.0.10':
-    resolution: {integrity: sha512-80mXJLtr0tVEtzowrI7ycVae/ULAYImZUlr0kUTpa8i57AUk7Zy3pYBs44EYIKW7ZC9AHu4Qjjfq4vriAtyTDQ==}
+  '@cspell/dict-en-common-misspellings@2.0.11':
+    resolution: {integrity: sha512-xFQjeg0wFHh9sFhshpJ+5BzWR1m9Vu8pD0CGPkwZLK9oii8AD8RXNchabLKy/O5VTLwyqPOi9qpyp1cxm3US4Q==}
 
   '@cspell/dict-en-gb@1.1.33':
     resolution: {integrity: sha512-tKSSUf9BJEV+GJQAYGw5e+ouhEe2ZXE620S7BLKe3ZmpnjlNG9JqlnaBhkIMxKnNFkLY2BP/EARzw31AZnOv4g==}
@@ -11808,8 +11808,8 @@ packages:
   property-information@6.5.0:
     resolution: {integrity: sha512-PgTgs/BlvHxOu8QuEN7wi5A0OmXaBcHpmCSTehcs6Uuu9IkDIEo13Hy7n898RHfrQ49vKCoGeWZSaAK01nwVig==}
 
-  property-information@7.0.0:
-    resolution: {integrity: sha512-7D/qOz/+Y4X/rzSB6jKxKUsQnphO046ei8qxG59mtM3RG3DHgTK81HrxrmoDVINJb8NKT5ZsRbwHvQ6B68Iyhg==}
+  property-information@7.1.0:
+    resolution: {integrity: sha512-TwEZ+X+yCJmYfL7TPUOcvBZ4QfoT5YenQiJuX//0th53DE6w0xxLEtfK3iyryQFddXuvkIk51EEgrJQ0WJkOmQ==}
 
   proto-list@1.2.4:
     resolution: {integrity: sha512-vtK/94akxsTMhe0/cbfpR+syPuszcuwhqVjJq26CuNDgFGj682oRBXOP5MJpv2r7JtE8MsiepGIqvvOTBwn2vA==}
@@ -13629,8 +13629,8 @@ packages:
   url-parse@1.5.10:
     resolution: {integrity: sha512-WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ==}
 
-  urlpattern-polyfill@10.0.0:
-    resolution: {integrity: sha512-H/A06tKD7sS1O1X2SshBVeA5FLycRpjqiBeqGKmBwBDBy28EnRjORxTNe269KSSr5un5qyWi1iL61wLxpd+ZOg==}
+  urlpattern-polyfill@10.1.0:
+    resolution: {integrity: sha512-IGjKp/o0NL3Bso1PymYURCJxMPNAf/ILOpendP9f5B6e1rTJgdgiOvgfoT8VxCAdY+Wisb9uhGaJJf3yZ2V9nw==}
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
@@ -15741,7 +15741,7 @@ snapshots:
       '@cspell/dict-docker': 1.1.14
       '@cspell/dict-dotnet': 5.0.9
       '@cspell/dict-elixir': 4.0.7
-      '@cspell/dict-en-common-misspellings': 2.0.10
+      '@cspell/dict-en-common-misspellings': 2.0.11
       '@cspell/dict-en-gb': 1.1.33
       '@cspell/dict-en_us': 4.4.8
       '@cspell/dict-filetypes': 3.0.12
@@ -15802,7 +15802,7 @@ snapshots:
       '@cspell/dict-docker': 1.1.14
       '@cspell/dict-dotnet': 5.0.9
       '@cspell/dict-elixir': 4.0.7
-      '@cspell/dict-en-common-misspellings': 2.0.10
+      '@cspell/dict-en-common-misspellings': 2.0.11
       '@cspell/dict-en-gb': 1.1.33
       '@cspell/dict-en_us': 4.4.8
       '@cspell/dict-filetypes': 3.0.12
@@ -15916,7 +15916,7 @@ snapshots:
 
   '@cspell/dict-elixir@4.0.7': {}
 
-  '@cspell/dict-en-common-misspellings@2.0.10': {}
+  '@cspell/dict-en-common-misspellings@2.0.11': {}
 
   '@cspell/dict-en-gb@1.1.33': {}
 
@@ -19529,7 +19529,7 @@ snapshots:
   '@whatwg-node/fetch@0.10.6':
     dependencies:
       '@whatwg-node/node-fetch': 0.7.18
-      urlpattern-polyfill: 10.0.0
+      urlpattern-polyfill: 10.1.0
 
   '@whatwg-node/node-fetch@0.7.18':
     dependencies:
@@ -22798,7 +22798,7 @@ snapshots:
       '@types/unist': 3.0.3
       devlop: 1.1.0
       hastscript: 9.0.1
-      property-information: 7.0.0
+      property-information: 7.1.0
       vfile: 6.0.3
       vfile-location: 5.0.3
       web-namespaces: 2.0.1
@@ -22905,7 +22905,7 @@ snapshots:
       '@types/hast': 3.0.4
       comma-separated-tokens: 2.0.3
       hast-util-parse-selector: 4.0.0
-      property-information: 7.0.0
+      property-information: 7.1.0
       space-separated-tokens: 2.0.2
 
   he@1.2.0: {}
@@ -26870,7 +26870,7 @@ snapshots:
 
   property-information@6.5.0: {}
 
-  property-information@7.0.0: {}
+  property-information@7.1.0: {}
 
   proto-list@1.2.4: {}
 
@@ -29219,7 +29219,7 @@ snapshots:
       querystringify: 2.2.0
       requires-port: 1.0.0
 
-  urlpattern-polyfill@10.0.0: {}
+  urlpattern-polyfill@10.1.0: {}
 
   util-deprecate@1.0.2: {}
 
