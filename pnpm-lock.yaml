@@ -193,7 +193,7 @@ importers:
         specifier: 2.2.3
         version: 2.2.3
       '@ltd/j-toml':
-        specifier: 1.38.0
+        specifier: 'catalog:'
         version: 1.38.0
       '@monodon/rust':
         specifier: 1.4.0
