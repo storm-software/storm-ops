@@ -50,10 +50,6 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
     return await createNodesFromFiles(
       (configFile, options, context) => {
         try {
-          console.log(
-            `[storm-software/rust]: Processing Cargo.toml file: ${configFile}`
-          );
-
           const profiles = options?.profiles ?? {};
           const includeApps = options?.includeApps ?? true;
           const toolchain = options?.toolchain;
@@ -341,10 +337,6 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                   }
                 }
               };
-
-              console.log(
-                `[storm-software/rust]: Inferred Nx configuration for ${project?.name ?? "missing name"}`
-              );
             }
 
             for (const dep of cargoPackage.dependencies) {
@@ -417,10 +409,6 @@ export const createDependencies: CreateDependencies = (_, context) => {
       }
     }
   }
-
-  console.log(
-    `[storm-software/rust]: Total workspace Cargo dependencies found: ${dependencies.length}`
-  );
 
   return dependencies;
 };

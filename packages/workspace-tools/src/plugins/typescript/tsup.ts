@@ -22,15 +22,13 @@ export const createNodesV2: CreateNodesV2<TsupPluginOptions> = [
     return await createNodesFromFiles(
       (configFile, options, context) => {
         try {
-          console.log(`Processing tsup.config.ts file: ${configFile}`);
-
           const projectRoot = createProjectRoot(
             configFile,
             context.workspaceRoot
           );
           if (!projectRoot) {
             console.error(
-              `tsup.config.ts file must be location in the project root directory: ${configFile}`
+              `[storm-software/typescript/tsup]: tsup.config.ts file must be location in the project root directory: ${configFile}`
             );
             return {};
           }
@@ -38,7 +36,7 @@ export const createNodesV2: CreateNodesV2<TsupPluginOptions> = [
           const packageJson = readJsonFile(join(projectRoot, "package.json"));
           if (!packageJson) {
             console.error(
-              `No package.json found in project root: ${projectRoot}`
+              `[storm-software/typescript/tsup]: No package.json found in project root: ${projectRoot}`
             );
             return {};
           }
@@ -48,7 +46,7 @@ export const createNodesV2: CreateNodesV2<TsupPluginOptions> = [
             !packageJson.dependencies?.tsup
           ) {
             console.warn(
-              `No "tsup" dependency or devDependency found in package.json: ${configFile}
+              `[storm-software/typescript/tsup]: No "tsup" dependency or devDependency found in package.json: ${configFile}
 Please add it to your dependencies by running "pnpm add tsup -D --filter="${packageJson.name}"`
             );
           }
@@ -135,7 +133,7 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
 
           setDefaultProjectTags(project, name);
 
-          const result = project?.name
+          return project?.name
             ? {
                 projects: {
                   [project.name]: {
@@ -146,12 +144,6 @@ Please add it to your dependencies by running "pnpm add tsup -D --filter="${pack
                 }
               }
             : {};
-
-          console.log(
-            `[storm-software/typescript/tsup]: Inferred Nx configuration for ${project?.name ?? "missing name"}`
-          );
-
-          return result;
         } catch (e) {
           console.error(e);
           return {};

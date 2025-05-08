@@ -25,15 +25,13 @@ export const createNodesV2: CreateNodesV2<UntypedPluginOptions> = [
     return await createNodesFromFiles(
       (configFile, options, context) => {
         try {
-          console.log(`Processing untyped schema file: ${configFile}`);
-
           const projectRoot = createProjectRoot(
             configFile,
             context.workspaceRoot
           );
           if (!projectRoot) {
             console.error(
-              "No project.json found in parent directories of Untyped schema file: ",
+              "[storm-software/typescript/untyped]: No project.json found in parent directories of Untyped schema file: ",
               configFile
             );
 
@@ -43,7 +41,7 @@ export const createNodesV2: CreateNodesV2<UntypedPluginOptions> = [
           const packageJson = readJsonFile(join(projectRoot, "package.json"));
           if (!packageJson) {
             console.error(
-              `No package.json found in project root: ${projectRoot}`
+              `[storm-software/typescript/untyped]: No package.json found in project root: ${projectRoot}`
             );
             return {};
           }
@@ -53,7 +51,7 @@ export const createNodesV2: CreateNodesV2<UntypedPluginOptions> = [
             !packageJson.dependencies?.untyped
           ) {
             console.warn(
-              `No "untyped" dependency or devDependency found in package.json: ${configFile}
+              `[storm-software/typescript/untyped]: No "untyped" dependency or devDependency found in package.json: ${configFile}
 Please add it to your dependencies by running "pnpm add untyped -D --filter="${packageJson.name}"`
             );
           }
@@ -112,7 +110,7 @@ Please add it to your dependencies by running "pnpm add untyped -D --filter="${p
 
           addProjectTag(project, ProjectTagConstants.Plugin.TAG_ID, name);
 
-          const result = project?.name
+          return project?.name
             ? {
                 projects: {
                   [project.name]: {
@@ -123,11 +121,6 @@ Please add it to your dependencies by running "pnpm add untyped -D --filter="${p
                 }
               }
             : {};
-          console.log(
-            `[storm-software/typescript/untyped]: Inferred Nx configuration for ${project?.name ?? "missing name"}`
-          );
-
-          return result;
         } catch (e) {
           console.error(e);
           return {};

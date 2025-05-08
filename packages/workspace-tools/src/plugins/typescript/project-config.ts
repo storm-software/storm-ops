@@ -420,7 +420,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
 
           setDefaultProjectTags(project, name);
 
-          const result = (
+          return (
             project?.name
               ? {
                   projects: {
@@ -441,12 +441,6 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
                 }
               : {}
           ) as CreateNodesResultV2;
-
-          console.log(
-            `[storm-software/typescript]: Inferred Nx configuration for ${project?.name ?? "missing name"}`
-          );
-
-          return result;
         } catch (e) {
           console.error(e);
           return {};
@@ -487,7 +481,7 @@ function createPackageJson(
 
     return readJsonFile(packageJsonPath) as PackageJson;
   } catch (e) {
-    console.log(e);
+    console.warn(e);
     return null;
   }
 }
@@ -507,7 +501,7 @@ async function createTsconfig(projectJsonPath: string, workspaceRoot: string) {
 
     return readTSConfig(tsconfigJsonPath);
   } catch (e) {
-    console.log(e);
+    console.warn(e);
     return null;
   }
 }
