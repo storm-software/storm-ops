@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.273.4](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.273.4) (2025-05-08)
+
+### Bug Fixes
+
+- **workspace-tools:** Remove old schema fields from Nx configuration
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated prettier to 0.51.4
+- Updated esbuild to 0.41.4
+- Updated esbuild to 0.41.4
+- Updated unbuild to 0.47.4
+- Updated unbuild to 0.47.4
+
 ## [1.273.3](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.273.3) (2025-05-08)
 
 ### Miscellaneous
