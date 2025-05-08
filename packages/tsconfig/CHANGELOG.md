@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.41.5](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.41.5) (2025-05-08)
+
+### Miscellaneous
+
+- **workspace-tools:** Reduce rebuilding during release
+- **monorepo:** Regenerate README markdown files
+
 ## [0.41.4](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.41.4) (2025-05-08)
 
 ### Miscellaneous

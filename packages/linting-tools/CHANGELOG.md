@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.125.5](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.125.5) (2025-05-08)
+
+### Miscellaneous
+
+- **workspace-tools:** Reduce rebuilding during release
+- **monorepo:** Regenerate README markdown files
+
 ## [1.125.4](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.125.4) (2025-05-08)
 
 ### Miscellaneous

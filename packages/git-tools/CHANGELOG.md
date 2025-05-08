@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.111.5](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.111.5) (2025-05-08)
+
+### Miscellaneous
+
+- **workspace-tools:** Reduce rebuilding during release
+- **monorepo:** Regenerate README markdown files
+
 ## [2.111.4](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.111.4) (2025-05-08)
 
 ### Miscellaneous

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.155.5](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.155.5) (2025-05-08)
+
+### Miscellaneous
+
+- **workspace-tools:** Reduce rebuilding during release
+- **monorepo:** Regenerate README markdown files
+
 ## [0.155.4](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.155.4) (2025-05-08)
 
 ### Miscellaneous
