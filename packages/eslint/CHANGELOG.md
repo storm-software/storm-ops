@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.155.3](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.155.3) (2025-05-08)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with Nx ESLint rule name
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+- **monorepo:** Regenerate README markdown files
+
 ## [0.155.2](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.155.2) (2025-05-08)
 
 ### Miscellaneous
