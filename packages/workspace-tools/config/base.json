@@ -415,7 +415,6 @@
           }
         },
         "version": {
-          "groupPreVersionCommand": "pnpm build",
           "generator": "@storm-software/workspace-tools:release-version",
           "generatorOptions": {
             "currentVersionResolver": "git-tag",

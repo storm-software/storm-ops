@@ -49,7 +49,7 @@ try {
     echo`${chalk.green("All Storm plugin built successfully")}`;
   });
 
-  const proc = $`pnpm nx reset`.timeout(`${5 * 60}s`);
+  const proc = $`pnpm nx reset --onlyDaemon`.timeout(`${5 * 60}s`);
   proc.stdout.on("data", data => {
     echo`${data}`;
   });

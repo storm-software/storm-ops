@@ -90,7 +90,7 @@ Please add it to your dependencies by running "pnpm add untyped -D --filter="${p
           targets["build-untyped"] ??= {
             cache: true,
             executor: "nx:run-commands",
-            dependsOn: ["clean", "^build"],
+            dependsOn: ["^build"],
             inputs: [
               "{projectRoot}/src/**/untyped.ts",
               "{projectRoot}/src/**/*.untyped.ts"
