@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.125.0](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.125.0) (2025-05-08)
+
+### Features
+
+- **config-tools:** Added TOML utilities module
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [1.124.2](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.124.2) (2025-05-07)
 
 ### Bug Fixes

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.60.0](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.60.0) (2025-05-08)
+
+### Features
+
+- **config-tools:** Added TOML utilities module
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.59.2](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.59.2) (2025-05-07)
 
 ### Bug Fixes

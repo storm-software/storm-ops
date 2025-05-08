@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.62.0](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.62.0) (2025-05-08)
+
+### Features
+
+- **config-tools:** Added TOML utilities module
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.61.1](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.61.1) (2025-05-07)
 
 ### Bug Fixes

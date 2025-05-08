@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.41.0](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.41.0) (2025-05-08)
+
+### Features
+
+- **config-tools:** Added TOML utilities module
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.40.2](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.40.2) (2025-05-07)
 
 ### Bug Fixes

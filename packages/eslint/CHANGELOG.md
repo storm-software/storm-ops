@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.155.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.155.0) (2025-05-08)
+
+### Features
+
+- **config-tools:** Added TOML utilities module
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.154.1](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.154.1) (2025-05-07)
 
 ### Bug Fixes

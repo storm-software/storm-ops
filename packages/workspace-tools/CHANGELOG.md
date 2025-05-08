@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.273.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.273.0) (2025-05-08)
+
+### Features
+
+- **git-tools:** Update release process to ensure package.json is updated
+- **k8s-tools:** Update Nx plugin to support `createNodesV2`
+- **config-tools:** Added TOML utilities module
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated prettier to 0.51.0
+- Updated esbuild to 0.41.0
+- Updated esbuild to 0.41.0
+- Updated unbuild to 0.47.0
+- Updated unbuild to 0.47.0
+
 ## [1.272.2](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.272.2) (2025-05-07)
 
 ### Bug Fixes

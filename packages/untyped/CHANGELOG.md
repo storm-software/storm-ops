@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.17.0](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.17.0) (2025-05-08)
+
+### Features
+
+- **config-tools:** Added TOML utilities module
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.16.2](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.16.2) (2025-05-07)
 
 ### Bug Fixes

@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.34.0](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.34.0) (2025-05-08)
+
+### Features
+
+- **git-tools:** Update release process to ensure package.json is updated
+- **config-tools:** Added TOML utilities module
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config-tools to 1.169.0
+- Updated build-tools to 0.150.0
+- Updated config to 1.119.0
+
 ## [0.33.2](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.33.2) (2025-05-07)
 
 ### Bug Fixes

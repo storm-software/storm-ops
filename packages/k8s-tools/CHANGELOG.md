@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.31.0](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.31.0) (2025-05-08)
+
+### Features
+
+- **git-tools:** Update release process to ensure package.json is updated
+- **k8s-tools:** Update Nx plugin to support `createNodesV2`
+- **config-tools:** Added TOML utilities module
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.273.0
+- Updated workspace-tools to 1.273.0
+- Updated config-tools to 1.169.0
+- Updated config-tools to 1.169.0
+- Updated config to 1.119.0
+- Updated config to 1.119.0
+
 ## [0.30.2](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.30.2) (2025-05-07)
 
 ### Bug Fixes

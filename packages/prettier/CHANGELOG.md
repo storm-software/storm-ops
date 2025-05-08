@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.51.0](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.51.0) (2025-05-08)
+
+### Features
+
+- **config-tools:** Added TOML utilities module
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.50.2](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.50.2) (2025-05-07)
 
 ### Bug Fixes

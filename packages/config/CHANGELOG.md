@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.119.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.119.0) (2025-05-08)
+
+### Features
+
+- **config-tools:** Added TOML utilities module
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [1.118.2](https://github.com/storm-software/storm-ops/releases/tag/config%401.118.2) (2025-05-07)
 
 ### Bug Fixes

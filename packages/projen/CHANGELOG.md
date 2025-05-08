@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.15.0](https://github.com/storm-software/storm-ops/releases/tag/projen%400.15.0) (2025-05-08)
+
+### Features
+
+- **config-tools:** Added TOML utilities module
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.14.2](https://github.com/storm-software/storm-ops/releases/tag/projen%400.14.2) (2025-05-07)
 
 ### Bug Fixes

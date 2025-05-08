@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.111.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.111.0) (2025-05-08)
+
+### Features
+
+- **git-tools:** Update release process to ensure package.json is updated
+- **config-tools:** Added TOML utilities module
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [2.110.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.110.1) (2025-05-07)
 
 ### Bug Fixes

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.150.0](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.150.0) (2025-05-08)
+
+### Features
+
+- **config-tools:** Added TOML utilities module
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.149.2](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.149.2) (2025-05-07)
 
 ### Bug Fixes

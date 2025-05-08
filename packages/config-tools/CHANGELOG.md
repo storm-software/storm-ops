@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.169.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.169.0) (2025-05-08)
+
+### Features
+
+- **k8s-tools:** Update Nx plugin to support `createNodesV2`
+- **config-tools:** Added TOML utilities module
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config to 1.119.0
+
 ## [1.168.2](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.168.2) (2025-05-07)
 
 ### Bug Fixes
