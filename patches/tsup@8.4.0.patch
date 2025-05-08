@@ -402,7 +402,7 @@ index 0d10e3993019d08a97151b9fec142fd3d51cd950..a587c6a1d9d00c0dfd7d44904bd82ed5
  interface NormalizedExperimentalDtsConfig {
      entry: {
 diff --git a/dist/index.js b/dist/index.js
-index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220f5ce176c 100644
+index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..3d85973ca2d7504c045d37473a505a0d235ad2af 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -33,6 +33,8 @@ var _chunkJZ25TPTYjs = require('./chunk-JZ25TPTY.js');
@@ -591,7 +591,42 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
          const meta = _optionalChain([metafile, 'optionalAccess', _6 => _6.outputs, 'access', _7 => _7[relativePath]]);
          return {
            type: "chunk",
-@@ -795,7 +807,7 @@ var PluginContainer = class {
+@@ -768,17 +780,23 @@ var PluginContainer = class {
+             if (result) {
+               info.code = result.code;
+               if (result.map) {
+-                const originalConsumer = await new (0, _sourcemap.SourceMapConsumer)(
+-                  parseSourceMap(info.map)
+-                );
+-                const newConsumer = await new (0, _sourcemap.SourceMapConsumer)(
+-                  parseSourceMap(result.map)
+-                );
+-                const generator = _sourcemap.SourceMapGenerator.fromSourceMap(newConsumer);
+-                generator.applySourceMap(originalConsumer, info.path);
+-                info.map = generator.toJSON();
+-                originalConsumer.destroy();
+-                newConsumer.destroy();
++                try {
++                  const originalConsumer = await new (0, _sourcemap.SourceMapConsumer)(
++                    parseSourceMap(info.map)
++                  );
++                  const newConsumer = await new (0, _sourcemap.SourceMapConsumer)(
++                    parseSourceMap(result.map)
++                  );
++                  const generator = _sourcemap.SourceMapGenerator.fromSourceMap(newConsumer);
++                  generator.applySourceMap(originalConsumer, info.path);
++                  info.map = generator.toJSON();
++                  originalConsumer.destroy();
++                  newConsumer.destroy();
++                } catch (error) {
++                  console.warn(
++                    `Failed to parse sourcemap for ${info.path}: ${error.message}`
++                  );
++                }
+               }
+             }
+           }
+@@ -795,7 +813,7 @@ var PluginContainer = class {
          });
          writtenFiles.push({
            get name() {
@@ -600,7 +635,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
            },
            get size() {
              return contents.length;
-@@ -808,7 +820,7 @@ var PluginContainer = class {
+@@ -808,7 +826,7 @@ var PluginContainer = class {
            await outputFile(outPath, contents2);
            writtenFiles.push({
              get name() {
@@ -609,7 +644,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
              },
              get size() {
                return contents2.length;
-@@ -891,7 +903,7 @@ var sizeReporter = () => {
+@@ -891,7 +909,7 @@ var sizeReporter = () => {
    return {
      name: "size-reporter",
      buildEnd({ writtenFiles }) {
@@ -618,7 +653,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
          this.logger,
          this.format,
          writtenFiles.reduce((res, file) => {
-@@ -965,7 +977,7 @@ var copyPublicDir = (publicDir, outDir) => {
+@@ -965,7 +983,7 @@ var copyPublicDir = (publicDir, outDir) => {
  };
  var isInPublicDir = (publicDir, filePath) => {
    if (!publicDir) return false;
@@ -627,7 +662,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
      _path2.default.resolve(publicDir === true ? "public" : publicDir)
    );
    return _chunkTWFEYLU4js.slash.call(void 0, _path2.default.resolve(filePath)).startsWith(`${publicPath}/`);
-@@ -1132,13 +1144,16 @@ ${diagnosticMessage}`
+@@ -1132,13 +1150,16 @@ ${diagnosticMessage}`
    }
    return fileMapping;
  }
@@ -649,7 +684,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
    const parsedTsconfig = _typescript2.default.parseJsonConfigFileContent(
      {
        ...rawTsconfig.data,
-@@ -1174,7 +1189,7 @@ function runTypeScriptCompiler(options) {
+@@ -1174,7 +1195,7 @@ function runTypeScriptCompiler(options) {
      };
      logger.info("tsc", "Build start");
      const dtsOptions = options.experimentalDts;
@@ -658,7 +693,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
      logger.success("tsc", `\u26A1\uFE0F Build success in ${getDuration()}`);
      return exports;
    } catch (error) {
-@@ -1199,7 +1214,7 @@ function formatAggregationExports(exports, declarationDirPath) {
+@@ -1199,7 +1220,7 @@ function formatAggregationExports(exports, declarationDirPath) {
  `;
  }
  function formatAggregationExport(declaration, declarationDirPath) {
@@ -667,7 +702,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
      `./${_path2.default.posix.normalize(
        _chunkTWFEYLU4js.slash.call(void 0, _path2.default.relative(declarationDirPath, declaration.destFileName))
      )}`
-@@ -1221,7 +1236,7 @@ function formatAggregationExport(declaration, declarationDirPath) {
+@@ -1221,7 +1242,7 @@ function formatAggregationExport(declaration, declarationDirPath) {
    }
  }
  function formatDistributionExports(exports, fromFilePath, toFilePath) {
@@ -676,7 +711,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
      _path2.default.posix.relative(
        _path2.default.posix.dirname(_path2.default.posix.normalize(_chunkTWFEYLU4js.slash.call(void 0, fromFilePath))),
        _path2.default.posix.normalize(_chunkTWFEYLU4js.slash.call(void 0, toFilePath))
-@@ -1276,8 +1291,8 @@ function formatDistributionExport(declaration, dest) {
+@@ -1276,8 +1297,8 @@ function formatDistributionExport(declaration, dest) {
  
  // src/api-extractor.ts
  var logger2 = _chunkVGC3FXLUjs.createLogger.call(void 0, );
@@ -687,7 +722,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
    const packageJsonFullPath = _path2.default.join(cwd, "package.json");
    const configObject = {
      mainEntryPointFilePath: inputFilePath,
-@@ -1327,9 +1342,9 @@ async function rollupDtsFiles(options, exports, format) {
+@@ -1327,9 +1348,9 @@ async function rollupDtsFiles(options, exports, format) {
    if (!options.experimentalDts || !_optionalChain([options, 'access', _18 => _18.experimentalDts, 'optionalAccess', _19 => _19.entry])) {
      return;
    }
@@ -699,7 +734,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
    const dtsExtension = _chunkTWFEYLU4js.defaultOutExtension.call(void 0, { format, pkgType: pkg.type }).dts;
    const tsconfig = options.tsconfig || "tsconfig.json";
    let dtsInputFilePath = _path2.default.join(
-@@ -1338,11 +1353,11 @@ async function rollupDtsFiles(options, exports, format) {
+@@ -1338,11 +1359,11 @@ async function rollupDtsFiles(options, exports, format) {
    );
    dtsInputFilePath = dtsInputFilePath.replace(/\.d\.mts$/, ".dmts.d.ts").replace(/\.d\.cts$/, ".dcts.d.ts");
    const dtsOutputFilePath = _path2.default.join(outDir, `_tsup-dts-rollup${dtsExtension}`);
@@ -714,7 +749,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
    for (let [out, sourceFileName] of Object.entries(
      options.experimentalDts.entry
    )) {
-@@ -1351,7 +1366,7 @@ async function rollupDtsFiles(options, exports, format) {
+@@ -1351,7 +1372,7 @@ async function rollupDtsFiles(options, exports, format) {
      const currentExports = exports.filter(
        (declaration) => declaration.sourceFileName === sourceFileName
      );
@@ -723,7 +758,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
        outFileName,
        formatDistributionExports(currentExports, outFileName, dtsOutputFilePath)
      );
-@@ -1423,10 +1438,16 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -1423,10 +1444,16 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
      ..._options,
      format: typeof _options.format === "string" ? [_options.format] : _options.format || ["cjs"],
      dts: typeof _options.dts === "boolean" ? _options.dts ? {} : void 0 : typeof _options.dts === "string" ? { entry: _options.dts } : _options.dts,
@@ -741,7 +776,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
    _chunkVGC3FXLUjs.setSilent.call(void 0, options.silent);
    const entry = options.entry || options.entryPoints;
    if (!entry || Object.keys(entry).length === 0) {
-@@ -1449,11 +1470,11 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -1449,11 +1476,11 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
      options.entry = entry;
      logger3.info("CLI", `Building entry: ${JSON.stringify(entry)}`);
    }
@@ -755,7 +790,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
      );
      options.tsconfig = tsconfig.path;
      options.tsconfigResolvePaths = _optionalChain([tsconfig, 'access', _22 => _22.data, 'optionalAccess', _23 => _23.compilerOptions, 'optionalAccess', _24 => _24.paths]) || {};
-@@ -1465,7 +1486,7 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -1465,7 +1492,7 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
        };
      }
      if (options.experimentalDts) {
@@ -764,7 +799,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
          options,
          tsconfig
        );
-@@ -1482,8 +1503,8 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
+@@ -1482,8 +1509,8 @@ var normalizeOptions = async (logger3, optionsFromConfigFile, optionsOverride) =
    return options;
  };
  async function build(_options) {
@@ -775,7 +810,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
      _options.config === true ? void 0 : _options.config
    );
    const configData = typeof config.data === "function" ? await config.data(_options) : config.data;
-@@ -1514,7 +1535,12 @@ async function build(_options) {
+@@ -1514,7 +1541,12 @@ async function build(_options) {
            await experimentalDtsTask();
            if (options.dts) {
              await new Promise((resolve, reject) => {
@@ -789,7 +824,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
                const terminateWorker = () => {
                  if (options.watch) return;
                  worker.terminate();
-@@ -1559,7 +1585,7 @@ async function build(_options) {
+@@ -1559,7 +1591,7 @@ async function build(_options) {
              let onSuccessProcess;
              let onSuccessCleanup;
              const buildDependencies = /* @__PURE__ */ new Set();
@@ -798,7 +833,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
              const doOnSuccessCleanup = async () => {
                if (onSuccessProcess) {
                  await killProcess({
-@@ -1572,7 +1598,7 @@ async function build(_options) {
+@@ -1572,7 +1604,7 @@ async function build(_options) {
                onSuccessProcess = void 0;
                onSuccessCleanup = void 0;
              };
@@ -807,7 +842,7 @@ index e875f0c94b50eb7921cfe54b8ebc40cca1a6c565..34ab2d45c2a1ab3bdeac46f52f8ca220
                () => {
                  return buildAll();
                },
-@@ -1676,7 +1702,7 @@ async function build(_options) {
+@@ -1676,7 +1708,7 @@ async function build(_options) {
                  let shouldSkipChange = false;
                  if (options.watch === true) {
                    if (file === "package.json" && !buildDependencies.has(file)) {
