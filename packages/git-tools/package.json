@@ -245,7 +245,7 @@
     "tsconfig-paths": "4.2.0"
   },
   "devDependencies": {
-    "@commitlint/rules": "^19.8.0",
+    "@commitlint/rules": "^19.8.1",
     "@humanfs/core": "^0.19.1",
     "@humanfs/node": "^0.16.6",
     "@humanwhocodes/retry": "0.4.1",
