@@ -244,6 +244,7 @@
     "monorepo"
   ],
   "dependencies": {
+    "@ltd/j-toml": "catalog:",
     "@storm-software/config": "1.118.2",
     "c12": "catalog:",
     "chalk": "catalog:",
