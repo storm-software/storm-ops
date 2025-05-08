@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.41.4](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.41.4) (2025-05-08)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+- **monorepo:** Regenerate README markdown files
+
 ## [0.41.3](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.41.3) (2025-05-08)
 
 ### Miscellaneous
