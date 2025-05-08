@@ -1,15 +1,29 @@
+import {
+  createProjectGraphAsync,
+  ProjectGraph,
+  readCachedProjectGraph
+} from "@nx/devkit";
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import {
   isVerbose,
+  joinPaths,
+  parseCargoToml,
+  stringifyCargoToml,
   writeDebug,
   writeInfo,
   writeSuccess,
+  writeTrace,
   writeWarning
 } from "@storm-software/config-tools";
 import defu from "defu";
+import { existsSync } from "node:fs";
+import { readFile, writeFile } from "node:fs/promises";
 import type { ReleaseOptions } from "nx/src/command-line/release/command-object.js";
 import { createAPI as createReleasePublishAPI } from "nx/src/command-line/release/publish.js";
-import type { ReleaseVersion } from "nx/src/command-line/release/utils/shared.js";
+import type {
+  ReleaseVersion,
+  VersionData
+} from "nx/src/command-line/release/utils/shared.js";
 import { createAPI as createReleaseVersionAPI } from "nx/src/command-line/release/version.js";
 import { NxReleaseConfiguration, readNxJson } from "nx/src/config/nx-json.js";
 import { createAPI as createReleaseChangelogAPI } from "./changelog";
@@ -141,6 +155,8 @@ ${changedProjects.map(changedProject => `  - ${changedProject}`).join("\n")}
         config
       );
 
+      await updatePackageManifests(projectsVersionData, config);
+
       const result = await releasePublish({
         ...options,
         dryRun: !!options.dryRun,
@@ -166,3 +182,66 @@ ${failedProjects.map(failedProject => `  - ${failedProject} (Error Code: ${resul
 
   writeSuccess("Completed the Storm workspace release process!", config);
 };
+
+async function updatePackageManifests(
+  projectsVersionData: VersionData,
+  config: StormWorkspaceConfig
+) {
+  let projectGraph!: ProjectGraph;
+  try {
+    projectGraph = readCachedProjectGraph();
+  } catch {
+    await createProjectGraphAsync();
+    projectGraph = readCachedProjectGraph();
+  }
+
+  if (projectGraph) {
+    await Promise.all(
+      Object.keys(projectsVersionData).map(async node => {
+        const projectNode = projectGraph.nodes[node];
+        if (!projectNode?.data.root) {
+          writeWarning(
+            `Project node ${node} not found in the project graph. Skipping manifest update.`,
+            config
+          );
+          return;
+        }
+
+        const versionData = projectsVersionData[node];
+        if (projectNode?.data.root && versionData) {
+          writeTrace(
+            `Writing version ${versionData.newVersion} update to manifest file for ${node}
+        `,
+            config
+          );
+
+          const projectRoot = joinPaths(
+            config.workspaceRoot,
+            projectNode.data.root
+          );
+
+          const packageJsonPath = joinPaths(projectRoot, "package.json");
+          const cargoTomlPath = joinPaths(projectRoot, "Cargo.toml");
+
+          if (existsSync(packageJsonPath)) {
+            const packageJsonContent = await readFile(packageJsonPath, "utf8");
+            const packageJson = JSON.parse(packageJsonContent);
+
+            packageJson.version = versionData.newVersion;
+            await writeFile(packageJsonPath, JSON.stringify(packageJson));
+          } else if (existsSync(cargoTomlPath)) {
+            const cargoToml = parseCargoToml(
+              await readFile(cargoTomlPath, "utf8")
+            );
+
+            cargoToml.package ??= {};
+            cargoToml.package.version = versionData.newVersion;
+            await writeFile(cargoTomlPath, stringifyCargoToml(cargoToml));
+          }
+        }
+      })
+    );
+  } else {
+    writeWarning("No project nodes found. Skipping manifest updates.", config);
+  }
+}

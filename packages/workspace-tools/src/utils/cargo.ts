@@ -1,4 +1,9 @@
 import { ExecutorContext, joinPathFragments, workspaceRoot } from "@nx/devkit";
+import type {
+  CargoMetadata,
+  Dependency,
+  Package
+} from "@storm-software/config-tools/utilities/toml";
 import {
   type ChildProcess,
   execSync,
@@ -7,7 +12,6 @@ import {
 } from "node:child_process";
 import { relative } from "node:path";
 import { CargoBaseExecutorSchema } from "../base/cargo-base-executor.schema.d";
-import type { CargoMetadata, Dependency, Package } from "./toml";
 
 interface CargoRun {
   success: boolean;

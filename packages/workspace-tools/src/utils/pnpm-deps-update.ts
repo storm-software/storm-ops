@@ -34,10 +34,6 @@ async function pnpmCatalogUpdate(
     const pnpmWorkspaceYaml = await readYamlFile<{
       catalog: Record<string, string>;
     }>(pnpmWorkspacePath);
-    console.info(
-      `pnpmWorkspaceYaml: ${JSON.stringify(pnpmWorkspaceYaml ?? {})}`
-    );
-
     if (pnpmWorkspaceYaml?.catalog) {
       pnpmCatalog = pnpmWorkspaceYaml.catalog;
     } else {

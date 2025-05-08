@@ -33,6 +33,15 @@ The registry to publish to
 The tag to publish with
 
 
+## `version`
+- **Type**: `string`
+
+> Version
+
+
+The version to publish. If not provided, the version from package.json will be used
+
+
 ## `otp`
 - **Type**: `number`
 

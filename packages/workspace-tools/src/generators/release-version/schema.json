@@ -2,12 +2,7 @@
   "id": "#",
   "title": "Release Version Generator",
   "description": "A type definition for a release version generator schema",
-  "required": [
-    "projects",
-    "releaseGroup",
-    "projectGraph",
-    "specifier"
-  ],
+  "required": ["projects", "releaseGroup", "projectGraph", "specifier"],
   "properties": {
     "projects": {
       "title": "Projects",
@@ -87,13 +82,7 @@
       "title": "Version Prefix",
       "type": "string",
       "description": "The version prefix",
-      "enum": [
-        "",
-        "auto",
-        "~",
-        "^",
-        "="
-      ],
+      "enum": ["", "auto", "~", "^", "="],
       "id": "#versionPrefix"
     },
     "skipLockFileUpdate": {

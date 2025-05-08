@@ -30,6 +30,14 @@ export default defineUntypedSchema({
     },
     $default: "latest"
   },
+  version: {
+    $schema: {
+      title: "Version",
+      type: "string",
+      description:
+        "The version to publish. If not provided, the version from package.json will be used"
+    }
+  },
   otp: {
     $schema: {
       title: "One Time Password",

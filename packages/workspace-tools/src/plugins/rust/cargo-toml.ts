@@ -21,7 +21,6 @@ import {
   ProjectTagConstants,
   setDefaultProjectTags
 } from "../../utils/project-tags";
-import type { Package } from "../../utils/toml";
 
 export const name = "storm-software/rust";
 export const description = "Plugin for parsing Cargo.toml files";
@@ -87,7 +86,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
               acc.set(p.name, p);
             }
             return acc;
-          }, new Map<string, Package>());
+          }, new Map<string, { manifest_path: string; name: string; version: string }>());
 
           for (const cargoPackage of cargoPackages) {
             if (!isExternal(cargoPackage, context.workspaceRoot)) {
@@ -427,7 +426,7 @@ export const createDependencies: CreateDependencies = (_, context) => {
 };
 
 function createDependency(
-  pkg: Package,
+  pkg: { manifest_path: string; name: string },
   depName: string,
   type: DependencyType
 ): RawProjectGraphDependency {

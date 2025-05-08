@@ -24,6 +24,12 @@
       "id": "#tag",
       "default": "latest"
     },
+    "version": {
+      "title": "Version",
+      "type": "string",
+      "description": "The version to publish. If not provided, the version from package.json will be used",
+      "id": "#version"
+    },
     "otp": {
       "title": "One Time Password",
       "type": "number",

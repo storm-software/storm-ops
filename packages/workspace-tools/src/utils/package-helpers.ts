@@ -3,10 +3,13 @@ import {
   ProjectConfiguration,
   readJsonFile
 } from "@nx/devkit";
+import {
+  CargoToml,
+  parseCargoToml
+} from "@storm-software/config-tools/utilities/toml";
 import { existsSync } from "node:fs";
 import type { PackageJson } from "nx/src/utils/package-json.js";
 import { isEqualProjectTag, ProjectTagConstants } from "./project-tags";
-import { CargoToml, parseCargoToml } from "./toml";
 
 export type PackageManagerType = "package.json" | "Cargo.toml";
 export const PackageManagerTypes = {

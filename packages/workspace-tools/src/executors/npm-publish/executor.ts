@@ -1,7 +1,8 @@
 import { type ExecutorContext } from "@nx/devkit";
 import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
 import { execSync } from "node:child_process";
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
+import { format } from "prettier";
 import { pnpmUpdate } from "../../utils/pnpm-deps-update";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
@@ -33,6 +34,14 @@ export default async function npmPublishExecutorFn(
     context.root,
     options.packageRoot || joinPaths("dist", projectConfig.root)
   );
+  const projectRoot = context.projectsConfigurations.projects[
+    context.projectName
+  ]!.root
+    ? joinPaths(
+        context.root,
+        context.projectsConfigurations.projects[context.projectName]!.root
+      )
+    : packageRoot;
 
   const packageJsonPath = joinPaths(packageRoot, "package.json");
   const packageJsonFile = await readFile(packageJsonPath, "utf8");
@@ -41,8 +50,46 @@ export default async function npmPublishExecutorFn(
   }
 
   const packageJson = JSON.parse(packageJsonFile);
-  const packageName = packageJson.name;
 
+  const projectPackageJsonPath = joinPaths(projectRoot, "package.json");
+  const projectPackageJsonFile = await readFile(projectPackageJsonPath, "utf8");
+  if (!projectPackageJsonFile) {
+    throw new Error(
+      `Could not find \`package.json\` at ${projectPackageJsonPath}`
+    );
+  }
+
+  const projectPackageJson = JSON.parse(projectPackageJsonFile);
+
+  if (packageJson.version !== projectPackageJson.version) {
+    console.warn(
+      `The version in the package.json file at ${packageJsonPath} does not match the version in the package.json file at ${projectPackageJsonPath}. This file will be updated to match the version in the project package.json file.`
+    );
+
+    packageJson.version = projectPackageJson.version;
+
+    await writeFile(
+      packageJsonPath,
+      await format(JSON.stringify(packageJson), {
+        parser: "json",
+        proseWrap: "always",
+        trailingComma: "none",
+        tabWidth: 2,
+        semi: true,
+        singleQuote: false,
+        quoteProps: "as-needed",
+        insertPragma: false,
+        bracketSameLine: true,
+        printWidth: 80,
+        bracketSpacing: true,
+        arrowParens: "avoid",
+        endOfLine: "lf",
+        plugins: ["prettier-plugin-pkg"]
+      })
+    );
+  }
+
+  const packageName = packageJson.name;
   console.info(
     `🚀  Running Storm NPM Publish executor on the ${packageName} package`
   );
@@ -124,7 +171,7 @@ export default async function npmPublishExecutorFn(
    * perform the npm view step, and just show npm publish's dry-run output.
    */
   if (!isDryRun) {
-    const currentVersion = packageJson.version;
+    const currentVersion = options.version || packageJson.version;
     try {
       try {
         const result = execSync(npmViewCommandSegments.join(" "), {

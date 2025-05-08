@@ -17,6 +17,10 @@ import {
   findWorkspaceRoot,
   getConfig,
   getStopwatch,
+  modifyCargoTable,
+  parseCargoToml,
+  parseCargoTomlWithTree,
+  stringifyCargoToml,
   writeDebug,
   writeError,
   writeFatal,
@@ -45,12 +49,6 @@ import {
 } from "nx/src/command-line/release/version-legacy";
 import { interpolate } from "nx/src/tasks-runner/utils";
 import { prerelease } from "semver";
-import {
-  modifyCargoTable,
-  parseCargoToml,
-  parseCargoTomlWithTree,
-  stringifyCargoToml
-} from "../../utils/toml";
 import type { ReleaseVersionGeneratorSchema } from "./schema.d";
 
 type ReleaseVersionPrefixes = "auto" | "" | "~" | "^" | "=";
