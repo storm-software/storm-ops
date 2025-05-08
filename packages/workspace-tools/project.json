@@ -44,7 +44,7 @@
           "pnpm copyfiles --up=3 ./packages/workspace-tools/assets/* dist/packages/workspace-tools/assets",
           "pnpm copyfiles --up=3 ./packages/workspace-tools/config/* dist/packages/workspace-tools/config",
           "pnpm copyfiles --up=3 ./packages/workspace-tools/docs/* dist/packages/workspace-tools/docs",
-          "pnpm copyfiles --up=3 \"./packages/workspace-tools/src/**/*schema.*\" packages/workspace-tools/dist/src",
+          "pnpm copyfiles --up=3 \"./packages/workspace-tools/src/executors/**/*.json\" \"./packages/workspace-tools/src/executors/**/*.d.ts\" \"./packages/workspace-tools/src/generators/**/*.json\" \"./packages/workspace-tools/src/generators/**/*.d.ts\" packages/workspace-tools/dist/src",
           "pnpm copyfiles --up=3 \"./packages/workspace-tools/src/**/*.md\" dist/packages/workspace-tools/docs/api",
           "pnpm copyfiles --up=4 \"./packages/workspace-tools/src/generators/*/files/**/*\" dist/packages/workspace-tools/dist/src/generators",
           "pnpm copyfiles --up=3 \"./packages/workspace-tools/dist/**/*\" dist/packages/workspace-tools/dist"
