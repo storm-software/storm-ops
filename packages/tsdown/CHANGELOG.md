@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.34.1](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.34.1) (2025-05-08)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config-tools to 1.169.1
+- Updated build-tools to 0.150.1
+- Updated config to 1.119.1
+
 ## [0.34.0](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.34.0) (2025-05-08)
 
 ### Features

@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/pulumi-tools",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "type": "commonjs",
   "description": "Tools for managing Pulumi infrastructure within a Nx workspace.",
   "repository": {
