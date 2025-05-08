@@ -28,7 +28,7 @@ export async function nx(
       name: "storm/nx/schema",
       files: ["**/executors/**/schema.json", "**/generators/**/schema.json"],
       rules: {
-        "@nx/workspace/valid-schema-description": "error"
+        "@nx/valid-schema-description": "error"
       }
     },
     {
