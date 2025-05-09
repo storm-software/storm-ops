@@ -12,24 +12,24 @@ packages:
 catalog:
   "@microsoft/api-extractor": "^7.48.1"
   "@types/node": "^22.10.2"
-  "@nx/devkit": 21.0.0
-  "@nx/eslint-plugin": 21.0.0
-  "@nx/eslint": 21.0.0
-  "@nx/esbuild": 21.0.0
-  "@nx/node": 21.0.0
-  "@nx/web": 21.0.0
-  "@nx/webpack": 21.0.0
-  "@nx/rollup": 21.0.0
-  "@nx/jest": 21.0.0
-  "@nx/js": 21.0.0
-  "@nx/plugin": 21.0.0
-  "@nx/react": 21.0.0
-  "@nx/workspace": 21.0.0
-  "create-nx-workspace": 21.0.0
+  "@nx/devkit": 21.0.3
+  "@nx/eslint-plugin": 21.0.3
+  "@nx/eslint": 21.0.3
+  "@nx/esbuild": 21.0.3
+  "@nx/node": 21.0.3
+  "@nx/web": 21.0.3
+  "@nx/webpack": 21.0.3
+  "@nx/rollup": 21.0.3
+  "@nx/jest": 21.0.3
+  "@nx/js": 21.0.3
+  "@nx/plugin": 21.0.3
+  "@nx/react": 21.0.3
+  "@nx/workspace": 21.0.3
+  "create-nx-workspace": 21.0.3
   "@swc-node/register": "1.10.9"
   "@swc/core": "1.7.26"
   "@swc/helpers": "0.5.13"
-  "nx": 21.0.0
+  "nx": 21.0.3
   "prettier": "^3.5.1"
   "tsup": "8.4.0"
   "typia": "^7.5.0"

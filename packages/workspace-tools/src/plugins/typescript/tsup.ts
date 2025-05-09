@@ -47,7 +47,7 @@ export const createNodesV2: CreateNodesV2<TsupPluginOptions> = [
           ) {
             console.warn(
               `[storm-software/typescript/tsup]: No "tsup" dependency or devDependency found in package.json: ${configFile}
-Please add it to your dependencies by running "pnpm add tsup -D --filter="${packageJson.name}"`
+Please add it to your dependencies by running \`pnpm add tsup -D --filter="${packageJson.name}"\``
             );
           }
 
