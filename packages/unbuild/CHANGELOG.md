@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.47.6](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.47.6) (2025-05-09)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+- **monorepo:** Upgrade Nx packages to v21.0.3
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config-tools to 1.169.6
+- Updated build-tools to 0.150.6
+- Updated config to 1.119.6
+
 ## [0.47.5](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.47.5) (2025-05-08)
 
 ### Miscellaneous

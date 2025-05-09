@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.150.6](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.150.6) (2025-05-09)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+- **monorepo:** Upgrade Nx packages to v21.0.3
+- **monorepo:** Regenerate README markdown files
+
 ## [0.150.5](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.150.5) (2025-05-08)
 
 ### Miscellaneous

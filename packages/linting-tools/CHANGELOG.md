@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.125.6](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.125.6) (2025-05-09)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+- **monorepo:** Upgrade Nx packages to v21.0.3
+- **monorepo:** Regenerate README markdown files
+
 ## [1.125.5](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.125.5) (2025-05-08)
 
 ### Miscellaneous
