@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.15.5](https://github.com/storm-software/storm-ops/releases/tag/projen%400.15.5) (2025-05-08)
+
+### Miscellaneous
+
+- **workspace-tools:** Reduce rebuilding during release
+- **monorepo:** Regenerate README markdown files
+
 ## [0.15.4](https://github.com/storm-software/storm-ops/releases/tag/projen%400.15.4) (2025-05-08)
 
 ### Miscellaneous

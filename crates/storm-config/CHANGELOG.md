@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.19.5](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.19.5) (2025-05-08)
+
+### Miscellaneous
+
+- **workspace-tools:** Reduce rebuilding during release
+- **monorepo:** Regenerate README markdown files
+
 ## [0.19.4](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.19.4) (2025-05-08)
 
 ### Miscellaneous

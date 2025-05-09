@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.273.5](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.273.5) (2025-05-08)
+
+### Miscellaneous
+
+- **workspace-tools:** Remove unneeded logging from Nx plugins
+- **workspace-tools:** Reduce rebuilding during release
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated prettier to 0.51.5
+- Updated esbuild to 0.41.5
+- Updated esbuild to 0.41.5
+- Updated unbuild to 0.47.5
+- Updated unbuild to 0.47.5
+
 ## [1.273.4](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.273.4) (2025-05-08)
 
 ### Bug Fixes

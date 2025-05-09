@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.51.5](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.51.5) (2025-05-08)
+
+### Miscellaneous
+
+- **workspace-tools:** Reduce rebuilding during release
+- **monorepo:** Regenerate README markdown files
+
 ## [0.51.4](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.51.4) (2025-05-08)
 
 ### Miscellaneous

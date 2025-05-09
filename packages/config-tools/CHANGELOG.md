@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.169.5](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.169.5) (2025-05-08)
+
+### Miscellaneous
+
+- **workspace-tools:** Reduce rebuilding during release
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config to 1.119.5
+
 ## [1.169.4](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.169.4) (2025-05-08)
 
 ### Miscellaneous
