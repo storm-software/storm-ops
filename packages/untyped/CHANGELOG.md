@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.17.6](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.17.6) (2025-05-09)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+- **monorepo:** Upgrade Nx packages to v21.0.3
+- **monorepo:** Regenerate README markdown files
+
 ## [0.17.5](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.17.5) (2025-05-08)
 
 ### Miscellaneous

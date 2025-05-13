@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.19.6](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.19.6) (2025-05-09)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+- **monorepo:** Upgrade Nx packages to v21.0.3
+- **monorepo:** Regenerate README markdown files
+
 ## [0.19.5](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.19.5) (2025-05-08)
 
 ### Miscellaneous

@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.91.6](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.91.6) (2025-05-09)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+- **monorepo:** Upgrade Nx packages to v21.0.3
+- **monorepo:** Regenerate README markdown files
+
 ## [1.91.5](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.91.5) (2025-05-08)
 
 ### Miscellaneous
