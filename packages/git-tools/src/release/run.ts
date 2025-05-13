@@ -208,7 +208,11 @@ async function updatePackageManifests(
         }
 
         const versionData = projectsVersionData[node];
-        if (projectNode?.data.root && versionData) {
+        if (
+          projectNode?.data.root &&
+          versionData &&
+          versionData.newVersion !== null
+        ) {
           writeTrace(
             `Writing version ${versionData.newVersion} update to manifest file for ${node}
         `,
