@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.273.8](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.273.8) (2025-05-13)
+
+### Bug Fixes
+
+- **workspace-tools:** Resolve issue with null version written to package.json
+
 ## [1.273.7](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.273.7) (2025-05-13)
 
 ### Miscellaneous

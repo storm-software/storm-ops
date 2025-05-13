@@ -162,9 +162,9 @@
     }
   },
   "dependencies": {
-    "@storm-software/config": "1.119.7",
-    "@storm-software/config-tools": "1.169.7",
-    "@storm-software/workspace-tools": "1.273.7",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/workspace-tools": "1.273.8",
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
