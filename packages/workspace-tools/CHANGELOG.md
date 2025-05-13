@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.273.9](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.273.9) (2025-05-13)
+
+### Bug Fixes
+
+- **workspace-tools:** Add back `groupPreVersionCommand` build configuration
+
+### Updated Dependencies
+
+- Updated esbuild to 0.41.8
+- Updated esbuild to 0.41.8
+- Updated unbuild to 0.47.8
+- Updated unbuild to 0.47.8
+
 ## [1.273.8](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.273.8) (2025-05-13)
 
 ### Bug Fixes
