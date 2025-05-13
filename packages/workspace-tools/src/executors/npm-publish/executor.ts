@@ -36,9 +36,10 @@ export default async function npmPublishExecutorFn(
   );
   const projectRoot = context.projectsConfigurations.projects[
     context.projectName
-  ]!.root
+  ]?.root
     ? joinPaths(
         context.root,
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         context.projectsConfigurations.projects[context.projectName]!.root
       )
     : packageRoot;
@@ -63,30 +64,32 @@ export default async function npmPublishExecutorFn(
 
   if (packageJson.version !== projectPackageJson.version) {
     console.warn(
-      `The version in the package.json file at ${packageJsonPath} does not match the version in the package.json file at ${projectPackageJsonPath}. This file will be updated to match the version in the project package.json file.`
+      `The version in the package.json file at ${packageJsonPath} (current: ${packageJson.version}) does not match the version in the package.json file at ${projectPackageJsonPath} (current: ${projectPackageJson.version}). This file will be updated to match the version in the project package.json file.`
     );
 
-    packageJson.version = projectPackageJson.version;
+    if (projectPackageJson.version) {
+      packageJson.version = projectPackageJson.version;
 
-    await writeFile(
-      packageJsonPath,
-      await format(JSON.stringify(packageJson), {
-        parser: "json",
-        proseWrap: "always",
-        trailingComma: "none",
-        tabWidth: 2,
-        semi: true,
-        singleQuote: false,
-        quoteProps: "as-needed",
-        insertPragma: false,
-        bracketSameLine: true,
-        printWidth: 80,
-        bracketSpacing: true,
-        arrowParens: "avoid",
-        endOfLine: "lf",
-        plugins: ["prettier-plugin-pkg"]
-      })
-    );
+      await writeFile(
+        packageJsonPath,
+        await format(JSON.stringify(packageJson), {
+          parser: "json",
+          proseWrap: "always",
+          trailingComma: "none",
+          tabWidth: 2,
+          semi: true,
+          singleQuote: false,
+          quoteProps: "as-needed",
+          insertPragma: false,
+          bracketSameLine: true,
+          printWidth: 80,
+          bracketSpacing: true,
+          arrowParens: "avoid",
+          endOfLine: "lf",
+          plugins: ["prettier-plugin-pkg"]
+        })
+      );
+    }
   }
 
   const packageName = packageJson.name;
