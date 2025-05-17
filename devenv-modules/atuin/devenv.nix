@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  name = "storm-software/storm-ops/atuin";
+  name = "storm-software/atuin";
 
  # https://devenv.sh/packages/
   packages = [

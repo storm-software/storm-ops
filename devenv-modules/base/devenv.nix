@@ -3,7 +3,7 @@
 let
   pkgs-unstable = import inputs.nixpkgs-unstable { system = pkgs.stdenv.system; };
 in {
-  name = "storm-software/storm-ops/base";
+  name = "storm-software/base";
 
   dotenv.enable = true;
   dotenv.filename = [".env" ".env.local"];
@@ -15,10 +15,11 @@ in {
 
   # https://devenv.sh/packages/
   packages = [
-    # Shell
+  # Shell
     pkgs.zsh
     pkgs.zsh-autosuggestions
     pkgs.zsh-completions
+    pkgs.zsh-syntax-highlighting
 
     # Source Control
     pkgs.git
@@ -54,14 +55,13 @@ in {
     build-dev.exec = "pnpm build-dev";
     lint.exec = "pnpm lint";
     format.exec = "pnpm format";
-    release.exec = "pnpm release";
+    release.exec = "pnpm release --base=$1 --head=$2";
     nuke.exec = "pnpm nuke";
   };
 
   enterShell = ''
     pnpm update --recursive --workspace
     pnpm install
-
     bootstrap
   '';
 
@@ -72,4 +72,3 @@ in {
 
   # See full reference at https://devenv.sh/reference/options/
 }
-

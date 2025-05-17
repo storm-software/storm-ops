@@ -9,3 +9,6 @@ inputs:
     inputs:
       nixpkgs:
         follows: nixpkgs
+imports:
+  - ./devenv-modules/base
+  - ./devenv-modules/rust
