@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.111.8](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.111.8) (2025-05-13)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with writing null version to package.json
+
 ## [2.111.7](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.111.7) (2025-05-13)
 
 ### Miscellaneous

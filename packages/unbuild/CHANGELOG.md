@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.47.8](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.47.8) (2025-05-13)
+
+### Bug Fixes
+
+- **workspace-tools:** Add back `groupPreVersionCommand` build configuration
+
+### Updated Dependencies
+
+- Updated config-tools to 1.169.8
+
 ## [0.47.7](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.47.7) (2025-05-13)
 
 ### Miscellaneous

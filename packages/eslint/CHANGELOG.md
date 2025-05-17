@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.155.8](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.155.8) (2025-05-13)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with writing null version to package.json
+- **workspace-tools:** Add back `groupPreVersionCommand` build configuration
+
 ## [0.155.7](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.155.7) (2025-05-13)
 
 ### Miscellaneous

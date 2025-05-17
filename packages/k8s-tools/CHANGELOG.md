@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.31.8](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.31.8) (2025-05-13)
+
+### Bug Fixes
+
+- **workspace-tools:** Add back `groupPreVersionCommand` build configuration
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.273.9
+- Updated workspace-tools to 1.273.9
+- Updated config-tools to 1.169.8
+- Updated config-tools to 1.169.8
+
 ## [0.31.7](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.31.7) (2025-05-13)
 
 ### Miscellaneous
