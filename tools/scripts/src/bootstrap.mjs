@@ -3,8 +3,6 @@
 import { build } from "esbuild";
 import { $, chalk, echo } from "zx";
 
-// usePwsh();
-
 try {
   echo`${chalk.whiteBright("⚙️  Bootstrapping the monorepo...")}`;
 

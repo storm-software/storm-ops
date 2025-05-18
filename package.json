@@ -78,7 +78,7 @@
     "push": "git push origin main:main",
     "rebuild": "pnpm clean && pnpm build",
     "rebuild-all": "pnpm clean-all && pnpm build-all",
-    "release": "node ./dist/packages/git-tools/bin/git.cjs release",
+    "release": "pnpm exec zx tools/scripts/src/release.mjs",
     "start": "nx serve",
     "test": "echo Skipping workspace testing...",
     "update-storm": "pnpm update --recursive --workspace",

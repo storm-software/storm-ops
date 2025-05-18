@@ -2,8 +2,6 @@
 
 import { $, chalk, echo } from "zx";
 
-// usePwsh();
-
 try {
   echo`${chalk.whiteBright("💣  Nuking the monorepo...")}`;
 
