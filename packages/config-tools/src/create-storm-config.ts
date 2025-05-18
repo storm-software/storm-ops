@@ -9,7 +9,10 @@ import { getConfigEnv, getExtensionEnv } from "./env/get-env";
 import { setConfigEnv } from "./env/set-env";
 import { formatLogMessage, writeTrace, writeWarning } from "./logger/console";
 import { findWorkspaceRoot } from "./utilities/find-workspace-root";
-import { getDefaultConfig } from "./utilities/get-default-config";
+import {
+  applyDefaultConfig,
+  getPackageJsonConfig
+} from "./utilities/get-default-config";
 
 const _extension_cache = new WeakMap<{ extensionName: string }, any>();
 
@@ -71,11 +74,13 @@ export const createStormWorkspaceConfig = async <
       }
     }
 
-    const defaultConfig = await getDefaultConfig(_workspaceRoot);
+    const defaultConfig = await getPackageJsonConfig(_workspaceRoot);
 
-    result = (await stormWorkspaceConfigSchema.parseAsync(
-      defu(configEnv, configFile, defaultConfig)
-    )) as StormWorkspaceConfig<TExtensionName, TExtensionConfig>;
+    result = applyDefaultConfig(
+      await stormWorkspaceConfigSchema.parseAsync(
+        defu(configEnv, configFile, defaultConfig)
+      )
+    ) as StormWorkspaceConfig<TExtensionName, TExtensionConfig>;
     result.workspaceRoot ??= _workspaceRoot;
   } else {
     result = _static_cache.data as StormWorkspaceConfig<

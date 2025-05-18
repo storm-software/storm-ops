@@ -2,7 +2,7 @@
 
 import {
   ColorConfig,
-  STORM_DEFAULT_HOMEPAGE,
+  STORM_DEFAULT_ERROR_CODES_FILE,
   STORM_DEFAULT_LICENSE,
   type StormWorkspaceConfig
 } from "@storm-software/config";
@@ -49,7 +49,7 @@ export const DEFAULT_COLOR_CONFIG: ColorConfig = {
  *
  * @returns The default Storm config values
  */
-export const getDefaultConfig = async (
+export async function getPackageJsonConfig(
   root?: string
 ): Promise<
   Pick<
@@ -60,12 +60,12 @@ export const getDefaultConfig = async (
     | "repository"
     | "license"
     | "homepage"
-    | "docs"
-    | "licensing"
-  > & { error: Partial<StormWorkspaceConfig["error"]> }
-> => {
+    | "support"
+  >
+> {
   let license = STORM_DEFAULT_LICENSE;
-  let homepage = STORM_DEFAULT_HOMEPAGE;
+  let homepage: string | undefined = undefined;
+  let support: string | undefined = undefined;
 
   let name: string | undefined = undefined;
   let namespace: string | undefined = undefined;
@@ -99,6 +99,14 @@ export const getDefaultConfig = async (
       if (packageJson.homepage) {
         homepage = packageJson.homepage;
       }
+
+      if (packageJson.bugs) {
+        if (typeof packageJson.bugs === "string") {
+          support = packageJson.bugs;
+        } else if (packageJson.bugs.url) {
+          support = packageJson.bugs.url;
+        }
+      }
     }
   }
 
@@ -109,10 +117,50 @@ export const getDefaultConfig = async (
     repository,
     license,
     homepage,
-    docs: `${homepage || STORM_DEFAULT_HOMEPAGE}/docs`,
-    licensing: `${homepage || STORM_DEFAULT_HOMEPAGE}/license`,
-    error: {
-      url: `${homepage || STORM_DEFAULT_HOMEPAGE}/errors`
-    }
+    support
   };
-};
+}
+
+/**
+ * Apply default config values to the given config object
+ *
+ * @param config - The config object to apply defaults to
+ * @returns The config object with defaults applied
+ */
+export function applyDefaultConfig(
+  config: Partial<StormWorkspaceConfig>
+): Partial<StormWorkspaceConfig> {
+  if (!config.support && config.contact) {
+    config.support = config.contact;
+  }
+
+  if (!config.contact && config.support) {
+    config.contact = config.support;
+  }
+
+  if (config.homepage) {
+    if (!config.docs) {
+      config.docs = `${config.homepage}/docs`;
+    }
+
+    if (!config.license) {
+      config.license = `${config.homepage}/license`;
+    }
+
+    if (!config.support) {
+      config.support = `${config.homepage}/support`;
+    }
+    if (!config.contact) {
+      config.contact = `${config.homepage}/contact`;
+    }
+
+    if (!config.error?.codesFile || !config?.error?.url) {
+      config.error ??= { codesFile: STORM_DEFAULT_ERROR_CODES_FILE };
+      if (config.homepage) {
+        config.error.url ??= `${config.homepage}/errors`;
+      }
+    }
+  }
+
+  return config;
+}
