@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.170.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.170.0) (2025-05-18)
+
+### Features
+
+- **config:** Added the `support` workspace configuration parameter
+
+### Bug Fixes
+
+- **config-tools:** Ensure default values are properly applied to configuration
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config to 1.120.0
+
 ## [1.169.8](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.169.8) (2025-05-13)
 
 ### Bug Fixes

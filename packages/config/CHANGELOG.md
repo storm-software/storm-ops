@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.120.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.120.0) (2025-05-18)
+
+### Features
+
+- **config:** Added the `support` workspace configuration parameter
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [1.119.7](https://github.com/storm-software/storm-ops/releases/tag/config%401.119.7) (2025-05-13)
 
 ### Miscellaneous

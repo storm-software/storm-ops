@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.34.9](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.34.9) (2025-05-18)
+
+### Miscellaneous
+
+- **monorepo:** Add back dotenv configuration to devenv file
+- **monorepo:** Update workspace package links
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config-tools to 1.170.0
+- Updated build-tools to 0.150.8
+- Updated config to 1.120.0
+
 ## [0.34.8](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.34.8) (2025-05-13)
 
 ### Bug Fixes

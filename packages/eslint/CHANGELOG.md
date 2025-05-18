@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.156.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.156.0) (2025-05-18)
+
+### Features
+
+- **config:** Added the `support` workspace configuration parameter
+
+### Bug Fixes
+
+- **monorepo:** Resolve issue with base Nx.json configuration
+
+### Miscellaneous
+
+- **monorepo:** Update pnpm project dependencies
+- **monorepo:** Update workspace package links
+- **monorepo:** Regenerate README markdown files
+- **monorepo:** Upgrade package dependencies
+
 ## [0.155.8](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.155.8) (2025-05-13)
 
 ### Bug Fixes

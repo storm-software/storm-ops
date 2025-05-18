@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.111.9](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.111.9) (2025-05-18)
+
+### Miscellaneous
+
+- **git-tools:** Add SHAs to error message details
+- **monorepo:** Update workspace package links
+- **monorepo:** Regenerate README markdown files
+
 ## [2.111.8](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.111.8) (2025-05-13)
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/build-tools",
-  "version": "0.150.7",
+  "version": "0.150.8",
   "description": "A comprehensive set of tools for building and managing projects within a Storm workspace. Includes builders such as rollup, rolldown, tsup, and unbuild, along with various utilities.",
   "repository": {
     "type": "github",
