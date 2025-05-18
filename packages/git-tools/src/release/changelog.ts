@@ -253,7 +253,7 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
       args.gitCommit ?? nxReleaseConfig.changelog?.git.commit;
     if (autoCommitEnabled && headSHA !== toSHA) {
       throw new Error(
-        `You are attempting to recreate the changelog for an old release, but you have enabled auto-commit mode. Please disable auto-commit mode by updating your nx.json, or passing --git-commit=false`
+        `You are attempting to recreate the changelog for an old release (Head: "${headSHA}", To: "${toSHA}", From: "${args.from}"), but you have enabled auto-commit mode. Please disable auto-commit mode by updating your nx.json, or passing --git-commit=false`
       );
     }
 
