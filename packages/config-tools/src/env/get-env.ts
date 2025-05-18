@@ -90,6 +90,7 @@ export const getConfigEnv = (): DeepPartial<StormWorkspaceConfig> => {
     docs: process.env[`${prefix}DOCS`] || undefined,
     licensing: process.env[`${prefix}LICENSING`] || undefined,
     contact: process.env[`${prefix}CONTACT`] || undefined,
+    support: process.env[`${prefix}SUPPORT`] || undefined,
     timezone: process.env[`${prefix}TIMEZONE`] || process.env.TZ || undefined,
     locale: process.env[`${prefix}LOCALE`] || process.env.LOCALE || undefined,
     configFile: process.env[`${prefix}CONFIG_FILE`]

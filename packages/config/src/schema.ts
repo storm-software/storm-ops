@@ -6,11 +6,7 @@ import {
   STORM_DEFAULT_ACCOUNT_SLACK,
   STORM_DEFAULT_ACCOUNT_TELEGRAM,
   STORM_DEFAULT_ACCOUNT_TWITTER,
-  STORM_DEFAULT_CONTACT,
-  STORM_DEFAULT_DOCS,
   STORM_DEFAULT_ERROR_CODES_FILE,
-  STORM_DEFAULT_HOMEPAGE,
-  STORM_DEFAULT_LICENSING,
   STORM_DEFAULT_RELEASE_BANNER,
   STORM_DEFAULT_RELEASE_FOOTER
 } from "./constants";
@@ -422,26 +418,34 @@ export const stormWorkspaceConfigSchema = z
       .string()
       .trim()
       .url()
-      .default(STORM_DEFAULT_HOMEPAGE)
+      .optional()
       .describe("The homepage of the workspace"),
     docs: z
       .string()
       .trim()
       .url()
-      .default(STORM_DEFAULT_DOCS)
-      .describe("The base documentation site for the workspace"),
+      .optional()
+      .describe("The documentation site for the workspace"),
     licensing: z
       .string()
       .trim()
       .url()
-      .default(STORM_DEFAULT_LICENSING)
-      .describe("The base licensing site for the workspace"),
+      .optional()
+      .describe("The licensing site for the workspace"),
     contact: z
       .string()
       .trim()
       .url()
-      .default(STORM_DEFAULT_CONTACT)
-      .describe("The base contact site for the workspace"),
+      .optional()
+      .describe("The contact site for the workspace"),
+    support: z
+      .string()
+      .trim()
+      .url()
+      .optional()
+      .describe(
+        "The support site for the workspace. If not provided, this is defaulted to the `contact` config value"
+      ),
     branch: z
       .string()
       .trim()

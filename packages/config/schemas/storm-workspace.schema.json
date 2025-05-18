@@ -63,26 +63,27 @@
         "homepage": {
           "type": "string",
           "format": "uri",
-          "default": "https://stormsoftware.com",
           "description": "The homepage of the workspace"
         },
         "docs": {
           "type": "string",
           "format": "uri",
-          "default": "https://docs.stormsoftware.com",
-          "description": "The base documentation site for the workspace"
+          "description": "The documentation site for the workspace"
         },
         "licensing": {
           "type": "string",
           "format": "uri",
-          "default": "https://license.stormsoftware.com",
-          "description": "The base licensing site for the workspace"
+          "description": "The licensing site for the workspace"
         },
         "contact": {
           "type": "string",
           "format": "uri",
-          "default": "https://stormsoftware.com/contact",
-          "description": "The base contact site for the workspace"
+          "description": "The contact site for the workspace"
+        },
+        "support": {
+          "type": "string",
+          "format": "uri",
+          "description": "The support site for the workspace. If not provided, this is defaulted to the `contact` config value"
         },
         "branch": {
           "type": "string",

@@ -127,6 +127,9 @@ export const setConfigEnv = (config: StormWorkspaceConfig) => {
   if (config.contact) {
     process.env[`${prefix}CONTACT`] = config.contact;
   }
+  if (config.support) {
+    process.env[`${prefix}SUPPORT`] = config.support;
+  }
   if (config.timezone) {
     process.env[`${prefix}TIMEZONE`] = config.timezone;
     process.env.TZ = config.timezone;

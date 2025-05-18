@@ -9,6 +9,11 @@
   "logLevel": "info",
   "skipConfigLogging": true,
   "skipCache": false,
+  "homepage": "https://stormsoftware.com",
+  "docs": "https://stormsoftware.com/docs",
+  "licensing": "https://stormsoftware.com/license",
+  "contact": "https://stormsoftware.com/contact",
+  "support": "https://stormsoftware.com/support",
   "directories": {
     "build": "dist"
   },
