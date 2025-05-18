@@ -81,7 +81,7 @@
     "release": "node ./dist/packages/git-tools/bin/git.cjs release",
     "start": "nx serve",
     "test": "echo Skipping workspace testing...",
-    "update-pnpm-link": "pnpm update --recursive --workspace",
+    "update-storm": "pnpm update --recursive --workspace",
     "view-config": "node ./dist/packages/config-tools/bin/config.cjs"
   },
   "devDependencies": {
