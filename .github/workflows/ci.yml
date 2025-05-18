@@ -13,6 +13,8 @@ on:
       - canary
       - experimental
 
+permissions: {}
+
 env:
   CI: true
   # NX_CLOUD_DISTRIBUTED_EXECUTION: true # this enables DTE

@@ -1,0 +1,30 @@
+rules:
+  template-injection:
+    ignore:
+      - ci.yml
+  dangerous-triggers:
+    ignore:
+      - greetings.yml:3:1
+  use-trusted-publishing:
+    ignore:
+      # ignore line 12, column 10 on pypi.yml
+      # - pypi.yml:12:10
+  unpinned-uses:
+    ignore:
+      - ci.yml
+      - ci-reusable.yml
+      - zizmor.yml
+      - sync-labels.yml
+      - lock.yml
+      - gitguardian.yml
+      - contributors.yml
+      - codeql.yml
+      - security.yml
+      - security-reusable.yml
+      - dependabot-update.yml
+  excessive-permissions:
+    ignore:
+      - zizmor.yml
+      - sync-labels.yml
+      - lock.yml
+      - gitguardian.yml

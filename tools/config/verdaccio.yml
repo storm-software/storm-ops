@@ -1,5 +1,5 @@
 # path to a directory with all packages
-storage: ../tmp/local-registry/storage
+storage: ../dist/local-registry/storage
 
 # a list of other known repositories we can talk to
 uplinks:
@@ -8,6 +8,18 @@ uplinks:
     maxage: 60m
 
 packages:
+  "@storm-software/*":
+    access: $all
+    publish: $all
+    proxy: http://localhost:4873
+
+  "@*/*":
+    # scoped packages
+    access: $all
+    publish: $all
+    unpublish: $all
+    proxy: npmjs
+
   "**":
     # give all users (including non-authenticated users) full access
     # because it is a local registry
