@@ -40,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "private": false,
-  "packageManager": "pnpm@10.3.0",
+  "packageManager": "pnpm@10.11.0",
   "engines": {
-    "node": ">=22.4.0",
-    "pnpm": ">=10.3.0"
+    "node": ">=22.16.0",
+    "pnpm": ">=10.11.0"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -123,7 +123,7 @@
     "cspell": "catalog:"
   },
   "devDependencies": {
-    "@cspell/cspell-pipe": "8.17.3",
+    "@cspell/cspell-pipe": "8.19.4",
     "@cspell/cspell-tools": "^8.19.4",
     "@cspell/dict-aws": "^4.0.10",
     "@cspell/dict-bash": "^4.2.0",
@@ -136,7 +136,7 @@
     "@cspell/dict-dotnet": "^5.0.9",
     "@cspell/dict-en-common-misspellings": "^2.0.11",
     "@cspell/dict-en-gb": "^4.1.65",
-    "@cspell/dict-en_us": "^4.4.8",
+    "@cspell/dict-en_us": "^4.4.9",
     "@cspell/dict-filetypes": "^3.0.12",
     "@cspell/dict-fonts": "^4.0.4",
     "@cspell/dict-fullstack": "^3.2.6",
@@ -150,7 +150,7 @@
     "@cspell/dict-makefile": "^1.0.4",
     "@cspell/dict-markdown": "^2.0.10",
     "@cspell/dict-node": "^5.0.7",
-    "@cspell/dict-npm": "^5.2.3",
+    "@cspell/dict-npm": "^5.2.4",
     "@cspell/dict-php": "^4.0.14",
     "@cspell/dict-powershell": "^5.0.14",
     "@cspell/dict-public-licenses": "^2.0.13",
