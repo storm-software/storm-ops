@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.158.1](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.158.1) (2025-05-25)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue with undefined tsdoc override options
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.158.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.158.0) (2025-05-25)
 
 ### Features
