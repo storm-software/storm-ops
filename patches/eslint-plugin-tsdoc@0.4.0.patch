@@ -1,41 +1,116 @@
 diff --git a/lib/ConfigCache.js b/lib/ConfigCache.js
-index 55d07a04c611f65e0a27f59b5de9c89c9d393888..85b83a51e97a4e344994cf771cd93aa22b5d841a 100644
+index 55d07a04c611f65e0a27f59b5de9c89c9d393888..cc4409068be87c2fcedbc67d10e96cf86e777f04 100644
 --- a/lib/ConfigCache.js
 +++ b/lib/ConfigCache.js
-@@ -29,6 +29,9 @@ exports.ConfigCache = void 0;
+@@ -29,6 +29,76 @@ exports.ConfigCache = void 0;
  const tsdoc_config_1 = require("@microsoft/tsdoc-config");
  const path = __importStar(require("path"));
  const Debug_1 = require("./Debug");
 +
-+const _configTools = require("@storm-software/config-tools");
++function _nullishCoalesce(lhs, rhsFn) { if (lhs != null) { return lhs; } else { return rhsFn(); } }
++var _fs = require('fs');
++var _path = require('path');
++var MAX_PATH_SEARCH_DEPTH = 30;
++var depth = 0;
++
++const ROOT_FILES = [
++  "storm-workspace.json",
++  "storm-workspace.json",
++  "storm-workspace.yaml",
++  "storm-workspace.yml",
++  "storm-workspace.js",
++  "storm-workspace.ts",
++  ".storm-workspace.json",
++  ".storm-workspace.yaml",
++  ".storm-workspace.yml",
++  ".storm-workspace.js",
++  ".storm-workspace.ts",
++  "lerna.json",
++  "nx.json",
++  "turbo.json",
++  "npm-workspace.json",
++  "yarn-workspace.json",
++  "pnpm-workspace.json",
++  "npm-workspace.yaml",
++  "yarn-workspace.yaml",
++  "pnpm-workspace.yaml",
++  "npm-workspace.yml",
++  "yarn-workspace.yml",
++  "pnpm-workspace.yml",
++  "npm-lock.json",
++  "yarn-lock.json",
++  "pnpm-lock.json",
++  "npm-lock.yaml",
++  "yarn-lock.yaml",
++  "pnpm-lock.yaml",
++  "npm-lock.yml",
++  "yarn-lock.yml",
++  "pnpm-lock.yml",
++  "bun.lockb"
++];
++const ROOT_DIRECTORIES = [
++  ".storm-workspace",
++  ".nx",
++  ".github",
++  ".vscode",
++  ".verdaccio"
++];
++
++function findWorkspaceRoot(startPath) {
++  const _startPath = _nullishCoalesce(startPath, () => ( process.cwd()));
++  if (ROOT_DIRECTORIES.some(
++    (endDirName) => _fs.existsSync.call(void 0, _path.join.call(void 0, _startPath, endDirName))
++  )) {
++    return _startPath;
++  }
++  if (ROOT_FILES.some(
++    (endFileName) => _fs.existsSync.call(void 0, _path.join.call(void 0, _startPath, endFileName))
++  )) {
++    return _startPath;
++  }
++  if (_startPath !== "/" && depth++ < MAX_PATH_SEARCH_DEPTH) {
++    const parent = _path.join.call(void 0, _startPath, "..");
++    return findWorkspaceRoot(parent);
++  }
++  return void 0;
++}
++
 +
  // How often to check for modified input files.  If a file's modification timestamp has changed, then we will
  // evict the cache entry immediately.
  const CACHE_CHECK_INTERVAL_MS = 3 * 1000;
-@@ -103,6 +106,77 @@ class ConfigCache {
+@@ -103,6 +173,85 @@ class ConfigCache {
          }
          return cachedConfig.configFile;
      }
-+    static getStormConfigFile() {
++    static getStormConfigFile({
++        type = "base",
++        configFile,
++      }) {
 +        let workspaceRoot = "";
 +        if (process.env.STORM_WORKSPACE_ROOT || process.env.NX_WORKSPACE_ROOT_PATH) {
 +          workspaceRoot = process.env.STORM_WORKSPACE_ROOT || process.env.NX_WORKSPACE_ROOT_PATH;
 +        }
 +
 +        if (!workspaceRoot) {
-+          workspaceRoot = _configTools.findWorkspaceRootSafe();
++          workspaceRoot = findWorkspaceRoot();
 +        }
 +
-+        const configFilePath = process.env.STORM_TSDOC_CONFIG_PATH
-+          ? process.env.STORM_TSDOC_CONFIG_PATH
++        const configFilePath = process.env.STORM_TSDOC_CONFIG_FILE
++          ? process.env.STORM_TSDOC_CONFIG_FILE
++          : configFile
++          ? configFile
 +          : path.join(
 +              workspaceRoot,
 +              "node_modules",
 +              "@storm-software",
 +              "tsdoc",
-+              process.env.STORM_TSDOC_CONFIG_FILE
-+                ? process.env.STORM_TSDOC_CONFIG_FILE
-+                : "config.json"
++              "config",
++              (process.env.STORM_TSDOC_TYPE
++                ? process.env.STORM_TSDOC_TYPE
++                : type) === "typedoc"
++                  ? "typedoc.json"
++                  : "base.json"
 +            );
 +
 +        const cacheKey = configFilePath;
@@ -91,7 +166,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..85b83a51e97a4e344994cf771cd93aa2
  exports.ConfigCache = ConfigCache;
  // findConfigPathForFolder() result --> loaded tsdoc.json configuration
 diff --git a/lib/index.js b/lib/index.js
-index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..337d07537b14ca3b65f79b42f483638699f4bf5f 100644
+index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..b6b10f424125e3801c1539c21d7b1c56b3cf153a 100644
 --- a/lib/index.js
 +++ b/lib/index.js
 @@ -15,7 +15,7 @@ const plugin = {
@@ -103,14 +178,61 @@ index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..337d07537b14ca3b65f79b42f4836386
                  type: 'problem',
                  docs: {
                      description: 'Validates that TypeScript documentation comments conform to the TSDoc standard',
-@@ -33,30 +33,71 @@ const plugin = {
+@@ -23,9 +23,41 @@ const plugin = {
+                     // This package is experimental
+                     recommended: false,
+                     url: 'https://tsdoc.org/pages/packages/eslint-plugin-tsdoc'
+-                }
++                },
++                schema: [
++                  {
++                    type: "object",
++                    properties: {
++                      type: {
++                        type: "string",
++                        enum: ["typedoc", "base"],
++                        description:
++                          "The TSDoc configuration type to use from '@storm-software/tsdoc'. Defaults to 'base' (@storm-software/tsdoc/base.json)."
++                      },
++                      configFile: {
++                        type: "string",
++                        description:
++                          "The TSDoc configuration file to use."
++                      }
++                    },
++                    additionalProperties: false
++                  }
++                ],
+             },
+-            create: (context) => {
++            defaultOptions: [
++              {
++                type: "base"
++              }
++            ],
++            create: (
++              context,
++              [
++                {
++                  type = "base",
++                  configFile,
++                }
++              ]
++            ) => {
+                 const sourceFilePath = context.filename;
+                 // If eslint is configured with @typescript-eslint/parser, there is a parser option
+                 // to explicitly specify where the tsconfig file is. Use that if available.
+@@ -33,30 +65,74 @@ const plugin = {
                  Debug_1.Debug.log(`Linting: "${sourceFilePath}"`);
                  const tsdocConfiguration = new tsdoc_1.TSDocConfiguration();
                  try {
 -                    const tsdocConfigFile = ConfigCache_1.ConfigCache.getForSourceFile(sourceFilePath, tsConfigDir);
 +                  let tsdocConfigFile = {};
 +                  try {
-+                    tsdocConfigFile = ConfigCache_1.ConfigCache.getStormConfigFile();
++                    tsdocConfigFile = ConfigCache_1.ConfigCache.getStormConfigFile({
++                      type,
++                      configFile,
++                    });
                      if (!tsdocConfigFile.fileNotFound) {
 -                        if (tsdocConfigFile.hasErrors) {
 -                            context.report({

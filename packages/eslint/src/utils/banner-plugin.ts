@@ -151,7 +151,7 @@ function matchesLineEndings(src, num) {
 type Options = [
   {
     banner?: string;
-    repositoryName?: string;
+    name?: string;
     commentType?: "block" | "line" | string;
     numNewlines?: number;
     lineEndings?: "unix" | "windows";
@@ -182,7 +182,7 @@ const bannerRule = ESLintUtils.RuleCreator(
             description:
               "The banner to enforce at the top of the file. If not provided, the banner will be read from the file specified in the commentStart option"
           },
-          repositoryName: {
+          name: {
             type: "string",
             description:
               "The name of the repository to use when reading the banner from a file."
@@ -218,7 +218,7 @@ const bannerRule = ESLintUtils.RuleCreator(
   },
   defaultOptions: [
     {
-      repositoryName: "",
+      name: "",
       commentType: "block",
       numNewlines: 2,
       lineEndings: "unix"
@@ -229,7 +229,7 @@ const bannerRule = ESLintUtils.RuleCreator(
     [
       {
         banner,
-        repositoryName = "",
+        name = "",
         commentType = "block",
         numNewlines = 2,
         lineEndings = "unix"
@@ -237,7 +237,7 @@ const bannerRule = ESLintUtils.RuleCreator(
     ]
   ) {
     if (!banner) {
-      banner = getFileBanner(repositoryName);
+      banner = getFileBanner(name);
     }
 
     const options = context.options;

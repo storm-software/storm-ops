@@ -30,6 +30,7 @@ export async function typescript(
     overrides = {},
     overridesTypeAware = {},
     parserOptions = {},
+    typeImports = "always",
     type = "app"
   } = options;
 
@@ -191,14 +192,17 @@ export async function typescript(
         "no-use-before-define": "off",
         "no-useless-constructor": "off",
         "ts/consistent-type-definitions": ["error", "interface"],
-        "ts/consistent-type-imports": [
-          "error",
-          {
-            disallowTypeAnnotations: false,
-            fixStyle: "separate-type-imports",
-            prefer: "type-imports"
-          }
-        ],
+        "ts/consistent-type-imports":
+          typeImports === "off"
+            ? "off"
+            : [
+                typeImports === "optional" ? "warn" : "error",
+                {
+                  disallowTypeAnnotations: typeImports === "never",
+                  fixStyle: "separate-type-imports",
+                  prefer: "type-imports"
+                }
+              ],
         "ts/method-signature-style": ["error", "property"], // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
         "ts/no-dupe-class-members": "error",
         "ts/no-dynamic-delete": "off",

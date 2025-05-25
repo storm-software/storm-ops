@@ -3,20 +3,20 @@ import { ACRONYMS_LIST } from "./constants";
 /**
  * Get a banner header to display at the top of a file
  *
- * @param repositoryName - The name to use in the display
+ * @param name - The name to use in the display
  * @returns The banner header
  */
-export const getFileBanner = (repositoryName = "") => {
-  if (!repositoryName) {
-    repositoryName = process.env.STORM_NAME || "";
+export const getFileBanner = (name = "") => {
+  if (!name) {
+    name = process.env.STORM_NAME || "";
   }
 
   let padding = "                               ";
-  for (let i = 0; i < repositoryName.length + 2 && padding.length > 4; i++) {
+  for (let i = 0; i < name.length + 2 && padding.length > 4; i++) {
     padding = padding.slice(0, -1);
   }
 
-  let titleName = repositoryName;
+  let titleName = name;
   if (titleName) {
     if (titleName?.startsWith("@")) {
       titleName = titleName.slice(1);
@@ -52,18 +52,18 @@ ${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
  our licensing page at ${
    process.env.STORM_LICENSING
      ? process.env.STORM_LICENSING
-     : `https://stormsoftware.com/${repositoryName ? `projects/${repositoryName}/` : ""}license`
+     : `https://stormsoftware.com/${name ? `projects/${name}/` : ""}license`
  }.
 
  Website:                  ${process.env.STORM_HOMEPAGE ?? "https://stormsoftware.com"}
  Repository:               ${
    process.env.STORM_REPOSITORY ??
-   `https://github.com/storm-software${repositoryName ? `/${repositoryName}` : ""}`
+   `https://github.com/storm-software${name ? `/${name}` : ""}`
  }
  Documentation:            ${
    process.env.STORM_DOCS
      ? process.env.STORM_DOCS
-     : `https://stormsoftware.com/${repositoryName ? `projects/${repositoryName}/` : ""}docs`
+     : `https://stormsoftware.com/${name ? `projects/${name}/` : ""}docs`
  }
  Contact:                  ${
    process.env.STORM_HOMEPAGE

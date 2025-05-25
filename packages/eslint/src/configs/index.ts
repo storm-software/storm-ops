@@ -26,6 +26,7 @@ export * from "./storybook";
 export * from "./stylistic";
 export * from "./test";
 export * from "./toml";
+export * from "./tsdoc";
 export * from "./typescript";
 export * from "./unicorn";
 export * from "./unocss";

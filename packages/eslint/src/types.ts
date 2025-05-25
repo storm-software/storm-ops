@@ -123,6 +123,27 @@ export interface OptionsUnicorn {
   allRecommended?: boolean;
 }
 
+export interface OptionsTSDoc extends OptionsOverrides {
+  /**
+   * The TSDoc ESLint rule severity.
+   *
+   * @defaultValue "error"
+   */
+  severity?: "error" | "warn" | "off";
+
+  /**
+   * The type of Storm Software TSDoc configuration to use.
+   *
+   * @defaultValue "base"
+   */
+  type?: "base" | "typedoc";
+
+  /**
+   * The path to a TSDoc config file.
+   */
+  configFile?: string;
+}
+
 export interface OptionsTypeScriptParserOptions {
   /**
    * Additional parser options for TypeScript.
@@ -155,13 +176,19 @@ export interface OptionsTypeScriptWithTypes {
   overridesTypeAware?: TypedFlatConfigItem["rules"];
 
   /**
-   * The rule to use for eslint-plugin-tsdoc syntax checking. If set to `false`, it will disable the plugin.
+   * A linting style for importing types. This is applied to the "ts/consistent-type-imports" rule.
    *
-   * @see https://github.com/microsoft/tsdoc/tree/master/eslint-plugin
+   * - `always`: always import types
+   * - `never`: never import types
+   * - `optional`: warn to import as type but allow any import
+   * - `off`: Do not check import types
    *
-   * @defaultValue 'warn'
+   * @remarks
+   * When set to `true`, it will use the default value of `always`. When set to `false`, it will use the default value of `never`.
+   *
+   * @defaultValue "always"
    */
-  tsdoc?: "warn" | "error" | "off" | false;
+  typeImports?: "always" | "never" | "optional" | "off" | boolean;
 }
 
 export interface OptionsHasTypeScript {
@@ -475,7 +502,7 @@ export interface OptionsJavascript {
   /**
    * The name of the repository used in adding the banner comments
    */
-  repositoryName?: string;
+  name?: string;
 
   /**
    * An object containing a list of extra global variables to include in the configuration.
@@ -564,6 +591,13 @@ export interface OptionsConfig
    * @defaultValue true
    */
   unicorn?: boolean | OptionsUnicorn;
+
+  /**
+   * Options for eslint-plugin-tsdoc.
+   *
+   * @defaultValue true
+   */
+  tsdoc?: boolean | OptionsTSDoc;
 
   /**
    * Enable test support.

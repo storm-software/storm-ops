@@ -36,6 +36,7 @@ import { pnpm } from "./configs/pnpm";
 import { prettier } from "./configs/prettier";
 import { reactNative } from "./configs/react-native";
 import { secrets } from "./configs/secrets";
+import { tsdoc } from "./configs/tsdoc";
 import { RuleOptions } from "./typegen";
 import type {
   Awaitable,
@@ -108,7 +109,7 @@ export function getStormConfig(
   >[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
-    repositoryName,
+    name,
     globals = {},
     lineEndings = "unix",
     astro: enableAstro = false,
@@ -125,6 +126,7 @@ export function getStormConfig(
     storybook: enableStorybook = false,
     typescript: enableTypeScript = isPackageExists("typescript"),
     unicorn: enableUnicorn = true,
+    tsdoc: enableTSDoc = true,
     unocss: enableUnoCSS = false
   } = options;
 
@@ -184,7 +186,7 @@ export function getStormConfig(
   configs.push(
     ignores(options.ignores),
     javascript({
-      repositoryName,
+      name,
       globals,
       lineEndings,
       isInEditor,
@@ -212,6 +214,15 @@ export function getStormConfig(
 
   if (enableUnicorn) {
     configs.push(unicorn(enableUnicorn === true ? {} : enableUnicorn));
+  }
+
+  if (enableTSDoc) {
+    configs.push(
+      tsdoc({
+        ...resolveSubOptions(options, "tsdoc"),
+        overrides: getOverrides(options, "tsdoc")
+      })
+    );
   }
 
   if (enableJsx) {
