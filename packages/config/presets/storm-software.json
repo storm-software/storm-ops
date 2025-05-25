@@ -18,7 +18,8 @@
     "build": "dist"
   },
   "error": {
-    "codesFile": "tools/errors/codes.json"
+    "codesFile": "tools/errors/codes.json",
+    "url": "https://stormsoftware.com/api/errors"
   },
   "externalPackagePatterns": ["@storm-software/"],
   "registry": {
