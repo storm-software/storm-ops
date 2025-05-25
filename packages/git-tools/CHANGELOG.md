@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.111.12](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.111.12) (2025-05-25)
+
+### Miscellaneous
+
+- **git-tools:** Alphabetize commit scopes and ensure ProjectGraph is
+  recalculated
+- **monorepo:** Regenerate README markdown files
+
 ## [2.111.11](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.111.11) (2025-05-25)
 
 ### Miscellaneous

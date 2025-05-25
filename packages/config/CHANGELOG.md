@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.121.5](https://github.com/storm-software/storm-ops/releases/tag/config%401.121.5) (2025-05-25)
+
+### Miscellaneous
+
+- **config:** Update the `error.url` in the Storm Software preset
+- **monorepo:** Regenerate README markdown files
+
 ## [1.121.4](https://github.com/storm-software/storm-ops/releases/tag/config%401.121.4) (2025-05-25)
 
 ### Miscellaneous
