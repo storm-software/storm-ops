@@ -180,6 +180,7 @@
       "@storm-software/terraform-tools": "workspace:*",
       "@storm-software/testing-tools": "workspace:*",
       "@storm-software/tsconfig": "workspace:*",
+      "@storm-software/tsdoc": "workspace:*",
       "@storm-software/workspace-tools": "workspace:*",
       "@storm-software/terraform-modules": "workspace:*",
       "@storm-software/cspell": "workspace:*",

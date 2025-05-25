@@ -45,6 +45,8 @@
       "@storm-software/tools-scripts/*": ["packages/tools-scripts/src/*"],
       "@storm-software/tsconfig": ["packages/tsconfig/src/index.ts"],
       "@storm-software/tsconfig/*": ["packages/tsconfig/src/*"],
+      "@storm-software/tsdoc": ["packages/tsdoc/src/index.ts"],
+      "@storm-software/tsdoc/*": ["packages/tsdoc/src/*"],
       "@storm-software/tsdown": ["packages/tsdown/src/index.ts"],
       "@storm-software/tsdown/*": ["packages/tsdown/src/*"],
       "@storm-software/unbuild": ["packages/unbuild/src/index.ts"],

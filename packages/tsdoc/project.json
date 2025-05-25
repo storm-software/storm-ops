@@ -1,0 +1,36 @@
+{
+  "name": "tsdoc",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/tsdoc/src",
+  "targets": {
+    "build-base": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["clean", "build-typegen", "^build"],
+      "options": {
+        "command": "tsup-node --config=tsup.config.ts",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "cache": true,
+      "inputs": ["{workspaceRoot}/packages/tsdoc/dist/**"],
+      "outputs": ["{workspaceRoot}/dist/packages/tsdoc/**"],
+      "executor": "nx:run-commands",
+      "dependsOn": ["build-base"],
+      "options": {
+        "commands": [
+          "pnpm copyfiles --up=3 packages/tsdoc/dist/* dist/packages/tsdoc/dist",
+          "pnpm copyfiles --up=2 packages/tsdoc/README.md packages/tsdoc/CHANGELOG.md packages/tsdoc/package.json dist/packages/tsdoc",
+          "pnpm copyfiles LICENSE dist/packages/tsdoc"
+        ],
+        "parallel": false,
+        "color": true
+      }
+    },
+    "nx-release-publish": {
+      "executor": "@storm-software/workspace-tools:npm-publish"
+    }
+  },
+  "tags": ["platform:node"]
+}

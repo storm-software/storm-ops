@@ -1,0 +1,322 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+  "tagDefinitions": [
+    {
+      "tagName": "@author",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@category",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@categoryDescription",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@showCategories",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@hideCategories",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@defaultValue",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@default",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@deprecated",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@document",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@example",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@expandType",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@group",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@groupDescription",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@showGroups",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@hideGroups",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@disableGroups",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@import",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@inlineType",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@license",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@mergeModuleWith",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@module",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@param",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@preventExpand",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@preventInline",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@privateRemarks",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@property",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@prop",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@remarks",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@returns",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@return",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@see",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@since",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@summary",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@template",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@throws",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@typeParam",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@type",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@yields",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@jsx",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@typedef",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@extends",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@augments",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@satisfies",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@callback",
+      "syntaxKind": "block"
+    },
+
+    {
+      "tagName": "@abstract",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@alpha",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@beta",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@class",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@enum",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@event",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@eventProperty",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@expand",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@experimental",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@function",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@hidden",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@hideconstructor",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@ignore",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@inline",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@interface",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@internal",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@namespace",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@overload",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@override",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@packageDocumentation",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@primaryExport",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@private",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@protected",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@public",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@readonly",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@sealed",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@useDeclaredType",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@virtual",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@include",
+      "syntaxKind": "inline"
+    },
+    {
+      "tagName": "@includeCode",
+      "syntaxKind": "inline"
+    },
+    {
+      "tagName": "@inheritDoc",
+      "syntaxKind": "inline"
+    },
+    {
+      "tagName": "@label",
+      "syntaxKind": "inline"
+    },
+    {
+      "tagName": "@link",
+      "syntaxKind": "inline"
+    },
+    {
+      "tagName": "@linkcode",
+      "syntaxKind": "inline"
+    },
+    {
+      "tagName": "@linkplain",
+      "syntaxKind": "inline"
+    }
+  ]
+}
