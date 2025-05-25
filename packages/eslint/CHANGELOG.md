@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.158.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.158.0) (2025-05-25)
+
+### Features
+
+- **eslint:** Added `typescript.typeImports`, `tsdoc.severity`, `tsdoc.type`,
+  and `tsdoc.configFile` options
+- **eslint:** Patched tsdoc plugin to use config from `@storm-software/tsdoc`
+
+### Bug Fixes
+
+- **eslint:** Resolved issue importing patched tsdoc plugin from bundle
+- **tsdoc:** Resolved issue with invalid output directories
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.157.1](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.157.1) (2025-05-25)
 
 ### Miscellaneous

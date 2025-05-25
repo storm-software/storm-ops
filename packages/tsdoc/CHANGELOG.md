@@ -1,0 +1,14 @@
+![Storm Software](https://public.storm-cdn.com/brand-banner.png)
+
+# Changelog for Storm Ops - Tsdoc
+
+## [0.1.0](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.1.0) (2025-05-25)
+
+### Features
+
+- **eslint:** Patched tsdoc plugin to use config from `@storm-software/tsdoc`
+- **tsdoc:** Initial check-in of the `tsdoc` package
+
+### Bug Fixes
+
+- **tsdoc:** Resolved issue with invalid output directories
