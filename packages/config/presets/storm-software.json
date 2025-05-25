@@ -19,7 +19,7 @@
   },
   "error": {
     "codesFile": "tools/errors/codes.json",
-    "url": "https://stormsoftware.com/api/errors"
+    "url": "https://developer.stormsoftware.com/api/errors"
   },
   "externalPackagePatterns": ["@storm-software/"],
   "registry": {
