@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.32.1](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.32.1) (2025-05-25)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.274.1
+- Updated workspace-tools to 1.274.1
+- Updated config-tools to 1.171.1
+- Updated config-tools to 1.171.1
+- Updated config to 1.121.1
+- Updated config to 1.121.1
+
 ## [0.32.0](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.32.0) (2025-05-25)
 
 ### Features
