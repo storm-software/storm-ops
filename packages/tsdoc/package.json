@@ -86,9 +86,13 @@
     "storm-stack"
   ],
   "peerDependencies": {
+    "@microsoft/tsdoc": ">=0.15.0",
     "@microsoft/tsdoc-config": ">=0.17.0"
   },
   "peerDependenciesMeta": {
+    "@microsoft/tsdoc": {
+      "optional": false
+    },
     "@microsoft/tsdoc-config": {
       "optional": false
     }

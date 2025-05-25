@@ -1,3 +1,4 @@
+import { pluginTsdoc } from "../plugins";
 import type {
   OptionsComponentExts,
   OptionsFiles,
@@ -77,12 +78,6 @@ export async function typescript(
     interopDefault(import("@typescript-eslint/eslint-plugin")),
     interopDefault(import("@typescript-eslint/parser"))
   ] as const);
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let pluginTsdoc: any | undefined;
-  if (tsdoc !== false && tsdoc !== "off") {
-    pluginTsdoc = await interopDefault(import("eslint-plugin-tsdoc"));
-  }
 
   function makeParser(
     typeAware: boolean,
@@ -250,16 +245,17 @@ export async function typescript(
         ...overrides
       }
     },
-    pluginTsdoc && {
-      files,
-      name: "storm/typescript/rules-tsdoc",
-      plugins: {
-        tsdoc: pluginTsdoc
+    tsdoc !== false &&
+      tsdoc !== "off" && {
+        files,
+        name: "storm/typescript/rules-tsdoc",
+        plugins: {
+          tsdoc: pluginTsdoc
+        },
+        rules: {
+          "tsdoc/syntax": tsdoc
+        }
       },
-      rules: {
-        "tsdoc/syntax": tsdoc
-      }
-    },
     ...[
       {
         files: filesTypeAware,

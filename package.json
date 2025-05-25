@@ -208,7 +208,8 @@
     ],
     "patchedDependencies": {
       "eslint-plugin-pnpm@0.3.0": "patches/eslint-plugin-pnpm@0.3.0.patch",
-      "tsup@8.4.0": "patches/tsup@8.4.0.patch"
+      "tsup@8.4.0": "patches/tsup@8.4.0.patch",
+      "eslint-plugin-tsdoc@0.4.0": "patches/eslint-plugin-tsdoc@0.4.0.patch"
     }
   },
   "prettier": "./packages/prettier/src/config.json",
