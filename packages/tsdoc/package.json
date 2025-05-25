@@ -77,13 +77,15 @@
   },
   "types": "./dist/index.d.ts",
   "files": [
+    "config/**/*",
     "dist/**/*"
   ],
   "keywords": [
     "tsdoc",
+    "typedoc",
     "storm",
     "storm-ops",
-    "storm-stack"
+    "storm-software"
   ],
   "peerDependencies": {
     "@microsoft/tsdoc": ">=0.15.0",
@@ -91,10 +93,10 @@
   },
   "peerDependenciesMeta": {
     "@microsoft/tsdoc": {
-      "optional": false
+      "optional": true
     },
     "@microsoft/tsdoc-config": {
-      "optional": false
+      "optional": true
     }
   },
   "devDependencies": {

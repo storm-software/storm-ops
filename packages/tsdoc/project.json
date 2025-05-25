@@ -5,6 +5,9 @@
   "sourceRoot": "packages/tsdoc/src",
   "targets": {
     "build-base": {
+      "cache": true,
+      "inputs": ["default", "^production"],
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "executor": "nx:run-commands",
       "dependsOn": ["clean", "^build"],
       "options": {
@@ -14,14 +17,14 @@
     },
     "build": {
       "cache": true,
-      "inputs": ["{workspaceRoot}/packages/tsdoc/dist/**"],
-      "outputs": ["{workspaceRoot}/dist/packages/tsdoc/**"],
+      "inputs": ["default", "^production"],
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
       "executor": "nx:run-commands",
       "dependsOn": ["build-base"],
       "options": {
         "commands": [
           "pnpm copyfiles --up=3 packages/tsdoc/dist/* dist/packages/tsdoc/dist",
-          "pnpm copyfiles --up=3 packages/tsdoc/src/typedoc.json packages/tsdoc/src/base.json dist/packages/tsdoc/config",
+          "pnpm copyfiles --up=3 packages/tsdoc/src/*.json dist/packages/tsdoc/config",
           "pnpm copyfiles --up=2 packages/tsdoc/README.md packages/tsdoc/CHANGELOG.md packages/tsdoc/package.json dist/packages/tsdoc",
           "pnpm copyfiles LICENSE dist/packages/tsdoc"
         ],

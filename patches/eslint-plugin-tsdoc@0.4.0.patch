@@ -166,7 +166,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..cc4409068be87c2fcedbc67d10e96cf8
  exports.ConfigCache = ConfigCache;
  // findConfigPathForFolder() result --> loaded tsdoc.json configuration
 diff --git a/lib/index.js b/lib/index.js
-index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..3bdc527878b1d5301f6c9d3e2aa75399d7f763f2 100644
+index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..aee120d318373c2438a2aa536a56da45f39b6985 100644
 --- a/lib/index.js
 +++ b/lib/index.js
 @@ -15,7 +15,7 @@ const plugin = {
@@ -212,7 +212,7 @@ index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..3bdc527878b1d5301f6c9d3e2aa75399
              create: (context) => {
                  const sourceFilePath = context.filename;
                  // If eslint is configured with @typescript-eslint/parser, there is a parser option
-@@ -33,30 +57,75 @@ const plugin = {
+@@ -33,30 +57,76 @@ const plugin = {
                  Debug_1.Debug.log(`Linting: "${sourceFilePath}"`);
                  const tsdocConfiguration = new tsdoc_1.TSDocConfiguration();
                  try {
@@ -279,7 +279,8 @@ index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..3bdc527878b1d5301f6c9d3e2aa75399
 +                    });
 +                  }
 +
-+                  if (!tsdocConfigFile) {
++                  if (!tsdocConfigFile || tsdocConfigFile.fileNotFound || tsdocConfigFile.hasErrors) {
++                    // If the Storm Software config was not found, or if it has errors, try to load the config file
 +                    tsdocConfigFile = ConfigCache_1.ConfigCache.getForSourceFile(sourceFilePath, tsConfigDir);
 +
 +                    if (!tsdocConfigFile.fileNotFound) {

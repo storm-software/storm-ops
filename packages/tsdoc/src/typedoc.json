@@ -1,148 +1,18 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+  // If updating this, also update tsdoc-defaults.ts
+  "noStandardTags": false,
   "tagDefinitions": [
     {
       "tagName": "@author",
       "syntaxKind": "block"
     },
     {
-      "tagName": "@category",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@categoryDescription",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@showCategories",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@hideCategories",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@defaultValue",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@default",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@deprecated",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@document",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@example",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@expandType",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@group",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@groupDescription",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@showGroups",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@hideGroups",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@disableGroups",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@import",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@inlineType",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@license",
+      "tagName": "@module",
       "syntaxKind": "block"
     },
     {
       "tagName": "@mergeModuleWith",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@module",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@param",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@preventExpand",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@preventInline",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@privateRemarks",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@property",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@prop",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@remarks",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@returns",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@return",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@see",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@since",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@summary",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@template",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@throws",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@typeParam",
       "syntaxKind": "block"
     },
     {
@@ -150,15 +20,72 @@
       "syntaxKind": "block"
     },
     {
-      "tagName": "@yields",
-      "syntaxKind": "block"
-    },
-    {
-      "tagName": "@jsx",
-      "syntaxKind": "block"
-    },
-    {
       "tagName": "@typedef",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@callback",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@prop",
+      "syntaxKind": "block",
+      "allowMultiple": true
+    },
+    {
+      "tagName": "@property",
+      "syntaxKind": "block",
+      "allowMultiple": true
+    },
+    // Don't include @inheritDoc, because the @microsoft/tsdoc-config parser blows up
+    // if the standard @inheritDoc inline tag is also defined here.
+    {
+      "tagName": "@group",
+      "syntaxKind": "block",
+      "allowMultiple": true
+    },
+    {
+      "tagName": "@groupDescription",
+      "syntaxKind": "block",
+      "allowMultiple": true
+    },
+    {
+      "tagName": "@disableGroups",
+      "syntaxKind": "modifier",
+      "allowMultiple": false
+    },
+    {
+      "tagName": "@category",
+      "syntaxKind": "block",
+      "allowMultiple": true
+    },
+    {
+      "tagName": "@categoryDescription",
+      "syntaxKind": "block",
+      "allowMultiple": true
+    },
+    {
+      "tagName": "@hidden",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@ignore",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@class",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@abstract",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@document",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@default",
       "syntaxKind": "block"
     },
     {
@@ -170,29 +97,13 @@
       "syntaxKind": "block"
     },
     {
-      "tagName": "@satisfies",
+      // TSDoc defines @returns, we also recognize @return for JSDoc compat
+      "tagName": "@return",
       "syntaxKind": "block"
     },
     {
-      "tagName": "@callback",
+      "tagName": "@yields",
       "syntaxKind": "block"
-    },
-
-    {
-      "tagName": "@abstract",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@alpha",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@beta",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@class",
-      "syntaxKind": "modifier"
     },
     {
       "tagName": "@enum",
@@ -203,64 +114,57 @@
       "syntaxKind": "modifier"
     },
     {
-      "tagName": "@eventProperty",
-      "syntaxKind": "modifier"
-    },
-    {
       "tagName": "@expand",
       "syntaxKind": "modifier"
     },
     {
-      "tagName": "@experimental",
-      "syntaxKind": "modifier"
+      "tagName": "@preventExpand",
+      "syntaxKind": "block"
     },
     {
-      "tagName": "@function",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@hidden",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@hideconstructor",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@ignore",
-      "syntaxKind": "modifier"
+      "tagName": "@expandType",
+      "syntaxKind": "block"
     },
     {
       "tagName": "@inline",
       "syntaxKind": "modifier"
     },
     {
-      "tagName": "@interface",
-      "syntaxKind": "modifier"
+      "tagName": "@preventInline",
+      "syntaxKind": "block"
     },
     {
-      "tagName": "@internal",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@namespace",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@overload",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@override",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@packageDocumentation",
-      "syntaxKind": "modifier"
+      "tagName": "@inlineType",
+      "syntaxKind": "block"
     },
     {
       "tagName": "@primaryExport",
       "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@template",
+      "syntaxKind": "block",
+      "allowMultiple": true
+    },
+    {
+      "tagName": "@linkcode",
+      "syntaxKind": "inline",
+      "allowMultiple": true
+    },
+    {
+      "tagName": "@linkplain",
+      "syntaxKind": "inline",
+      "allowMultiple": true
+    },
+    {
+      "tagName": "@include",
+      "syntaxKind": "inline",
+      "allowMultiple": true
+    },
+    {
+      "tagName": "@includeCode",
+      "syntaxKind": "inline",
+      "allowMultiple": true
     },
     {
       "tagName": "@private",
@@ -271,52 +175,68 @@
       "syntaxKind": "modifier"
     },
     {
-      "tagName": "@public",
+      "tagName": "@satisfies",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@since",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@license",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@import",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@overload",
       "syntaxKind": "modifier"
     },
     {
-      "tagName": "@readonly",
+      "tagName": "@namespace",
       "syntaxKind": "modifier"
     },
     {
-      "tagName": "@sealed",
+      "tagName": "@interface",
       "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@function",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@showCategories",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@hideCategories",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@showGroups",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@hideGroups",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@hideconstructor",
+      "syntaxKind": "modifier"
+    },
+    {
+      "tagName": "@jsx",
+      "syntaxKind": "block"
+    },
+    {
+      "tagName": "@summary",
+      "syntaxKind": "block"
     },
     {
       "tagName": "@useDeclaredType",
       "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@virtual",
-      "syntaxKind": "modifier"
-    },
-    {
-      "tagName": "@include",
-      "syntaxKind": "inline"
-    },
-    {
-      "tagName": "@includeCode",
-      "syntaxKind": "inline"
-    },
-    {
-      "tagName": "@inheritDoc",
-      "syntaxKind": "inline"
-    },
-    {
-      "tagName": "@label",
-      "syntaxKind": "inline"
-    },
-    {
-      "tagName": "@link",
-      "syntaxKind": "inline"
-    },
-    {
-      "tagName": "@linkcode",
-      "syntaxKind": "inline"
-    },
-    {
-      "tagName": "@linkplain",
-      "syntaxKind": "inline"
     }
   ]
 }
