@@ -5,6 +5,7 @@ import {
 import { getEnv } from "@storm-software/build-tools";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import {
+  formatLogMessage,
   getStopwatch,
   writeDebug
 } from "@storm-software/config-tools/logger/console";
@@ -126,6 +127,13 @@ export async function resolveContext(
   } as ESBuildContext;
 
   context.options.esbuildPlugins = [...(context.options.esbuildPlugins ?? [])];
+
+  if (context.options.verbose) {
+    writeDebug(
+      `  ⚙️   Build options resolved: \n\n${formatLogMessage(context.options)}`,
+      workspaceConfig
+    );
+  }
 
   return context;
 }
