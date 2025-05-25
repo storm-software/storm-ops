@@ -17,6 +17,7 @@ export default defineConfig([
     tsconfig: "./tsconfig.json",
     shims: true,
     bundle: true,
-    noExternal: ["eslint-plugin-pnpm", "eslint-plugin-tsdoc"]
+    noExternal: ["eslint-plugin-pnpm", "eslint-plugin-tsdoc"],
+    external: ["@storm-software/config-tools"]
   }
 ]);

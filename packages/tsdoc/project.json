@@ -6,7 +6,7 @@
   "targets": {
     "build-base": {
       "executor": "nx:run-commands",
-      "dependsOn": ["clean", "build-typegen", "^build"],
+      "dependsOn": ["clean", "^build"],
       "options": {
         "command": "tsup-node --config=tsup.config.ts",
         "cwd": "{projectRoot}"
@@ -21,6 +21,7 @@
       "options": {
         "commands": [
           "pnpm copyfiles --up=3 packages/tsdoc/dist/* dist/packages/tsdoc/dist",
+          "pnpm copyfiles --up=3 packages/tsdoc/src/typedoc.json packages/tsdoc/src/base.json dist/packages/tsdoc/config",
           "pnpm copyfiles --up=2 packages/tsdoc/README.md packages/tsdoc/CHANGELOG.md packages/tsdoc/package.json dist/packages/tsdoc",
           "pnpm copyfiles LICENSE dist/packages/tsdoc"
         ],

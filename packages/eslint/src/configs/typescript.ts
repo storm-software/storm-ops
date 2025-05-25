@@ -1,4 +1,3 @@
-import { pluginTsdoc } from "../plugins";
 import type {
   OptionsComponentExts,
   OptionsFiles,
@@ -31,7 +30,6 @@ export async function typescript(
     overrides = {},
     overridesTypeAware = {},
     parserOptions = {},
-    tsdoc = "warn",
     type = "app"
   } = options;
 
@@ -245,17 +243,6 @@ export async function typescript(
         ...overrides
       }
     },
-    tsdoc !== false &&
-      tsdoc !== "off" && {
-        files,
-        name: "storm/typescript/rules-tsdoc",
-        plugins: {
-          tsdoc: pluginTsdoc
-        },
-        rules: {
-          "tsdoc/syntax": tsdoc
-        }
-      },
     ...[
       {
         files: filesTypeAware,

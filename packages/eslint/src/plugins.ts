@@ -9,6 +9,5 @@ export { default as pluginSecrets } from "eslint-plugin-no-secrets";
 export { default as pluginPerfectionist } from "eslint-plugin-perfectionist";
 export { default as pluginPnpm } from "eslint-plugin-pnpm";
 export { default as pluginPrettier } from "eslint-plugin-prettier";
-export { default as pluginTsdoc } from "eslint-plugin-tsdoc";
 export { default as pluginUnicorn } from "eslint-plugin-unicorn";
 export { default as pluginUnusedImports } from "eslint-plugin-unused-imports";

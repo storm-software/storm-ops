@@ -44,8 +44,8 @@
   "module": "./dist/index.js",
   "exports": {
     "./package.json": "./package.json",
-    "./typedoc.json": "./typedoc.json",
-    "./config.json": "./config.json",
+    "./typedoc.json": "./config/typedoc.json",
+    "./base.json": "./config/base.json",
     "./index": {
       "import": {
         "types": "./dist/index.d.ts",
