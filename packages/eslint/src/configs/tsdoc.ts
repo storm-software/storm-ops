@@ -1,4 +1,4 @@
-export { default as pluginTsdoc } from "eslint-plugin-tsdoc";
+import pluginTsdoc from "eslint-plugin-tsdoc";
 import type { OptionsFiles, OptionsTSDoc, TypedFlatConfigItem } from "../types";
 import { GLOB_TS, GLOB_TSX } from "../utils/constants";
 

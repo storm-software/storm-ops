@@ -6590,6 +6590,11 @@ Backward pagination arguments
    */
   'ts/use-unknown-in-catch-callback-variable'?: Linter.RuleEntry<[]>
   /**
+   * Validates that TypeScript documentation comments conform to the TSDoc standard
+   * @see https://tsdoc.org/pages/packages/eslint-plugin-tsdoc
+   */
+  'tsdoc/syntax'?: Linter.RuleEntry<TsdocSyntax>
+  /**
    * Require or disallow Unicode byte order mark (BOM)
    * @see https://eslint.org/docs/latest/rules/unicode-bom
    */
@@ -16931,6 +16936,13 @@ type TsUnifiedSignatures = []|[{
   
   ignoreOverloadsWithDifferentJSDoc?: boolean
 }]
+// ----- tsdoc/syntax -----
+type TsdocSyntax = []|[{
+  
+  type?: ("typedoc" | "base")
+  
+  configFile?: string
+}]
 // ----- unicode-bom -----
 type UnicodeBom = []|[("always" | "never")]
 // ----- unicorn/better-regex -----
@@ -17629,4 +17641,4 @@ type Yoda = []|[("always" | "never")]|[("always" | "never"), {
   onlyEquality?: boolean
 }]
 // Names of all the configs
-export type ConfigNames = 'storm/cspell/rules' | 'storm/astro/setup' | 'storm/astro/rules' | 'storm/formatter/setup' | 'storm/imports/rules' | 'storm/graphql/setup' | 'storm/graphql/rules' | 'storm/graphql/relay' | 'storm/javascript/setup' | 'storm/javascript/banner' | 'storm/javascript/rules' | 'storm/jsx/rules' | 'storm/jsdoc/rules' | 'storm/jsonc/setup' | 'storm/jsonc/rules' | 'storm/markdown/setup' | 'storm/markdown/processor' | 'storm/markdown/parser' | 'storm/mdx/setup' | 'storm/node/rules' | 'storm/nx/setup' | 'storm/nx/schema' | 'storm/nx/dependency-check' | 'storm/nx/module-boundaries' | 'storm/next/rules' | 'storm/prettier/rules' | 'storm/perfectionist/rules' | 'storm/pnpm/setup' | 'storm/pnpm/package-json' | 'storm/pnpm/pnpm-workspace-yaml' | 'storm/react/setup' | 'storm/react/rules' | 'storm/react-native/rules' | 'storm/sort/package-json' | 'storm/stylistic/rules' | 'storm/secrets/rules' | 'storm/storybook/setup' | 'storm/storybook/rules' | 'storm/storybook/main' | 'storm/test/setup' | 'storm/test/rules' | 'storm/toml/setup' | 'storm/toml/rules' | 'storm/regexp/rules' | 'storm/typescript/setup' | 'storm/typescript/parser' | 'storm/typescript/type-aware-parser' | 'storm/typescript/rules' | 'storm/typescript/rules-type-aware' | 'storm/unicorn/rules' | 'storm/unocss' | 'storm/yaml/setup' | 'storm/yaml/rules'
+export type ConfigNames = 'storm/cspell/rules' | 'storm/astro/setup' | 'storm/astro/rules' | 'storm/formatter/setup' | 'storm/imports/rules' | 'storm/graphql/setup' | 'storm/graphql/rules' | 'storm/graphql/relay' | 'storm/javascript/setup' | 'storm/javascript/banner' | 'storm/javascript/rules' | 'storm/jsx/rules' | 'storm/jsdoc/rules' | 'storm/jsonc/setup' | 'storm/jsonc/rules' | 'storm/markdown/setup' | 'storm/markdown/processor' | 'storm/markdown/parser' | 'storm/mdx/setup' | 'storm/node/rules' | 'storm/nx/setup' | 'storm/nx/schema' | 'storm/nx/dependency-check' | 'storm/nx/module-boundaries' | 'storm/next/rules' | 'storm/prettier/rules' | 'storm/perfectionist/rules' | 'storm/pnpm/setup' | 'storm/pnpm/package-json' | 'storm/pnpm/pnpm-workspace-yaml' | 'storm/react/setup' | 'storm/react/rules' | 'storm/react-native/rules' | 'storm/sort/package-json' | 'storm/stylistic/rules' | 'storm/secrets/rules' | 'storm/storybook/setup' | 'storm/storybook/rules' | 'storm/storybook/main' | 'storm/test/setup' | 'storm/test/rules' | 'storm/tsdoc/rules' | 'storm/toml/setup' | 'storm/toml/rules' | 'storm/regexp/rules' | 'storm/typescript/setup' | 'storm/typescript/parser' | 'storm/typescript/type-aware-parser' | 'storm/typescript/rules' | 'storm/typescript/rules-type-aware' | 'storm/unicorn/rules' | 'storm/unocss' | 'storm/yaml/setup' | 'storm/yaml/rules'
