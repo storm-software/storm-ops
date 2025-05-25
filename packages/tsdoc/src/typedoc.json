@@ -1,6 +1,5 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
-  // If updating this, also update tsdoc-defaults.ts
   "noStandardTags": false,
   "tagDefinitions": [
     {
@@ -37,8 +36,6 @@
       "syntaxKind": "block",
       "allowMultiple": true
     },
-    // Don't include @inheritDoc, because the @microsoft/tsdoc-config parser blows up
-    // if the standard @inheritDoc inline tag is also defined here.
     {
       "tagName": "@group",
       "syntaxKind": "block",
@@ -97,7 +94,6 @@
       "syntaxKind": "block"
     },
     {
-      // TSDoc defines @returns, we also recognize @return for JSDoc compat
       "tagName": "@return",
       "syntaxKind": "block"
     },
