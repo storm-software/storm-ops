@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.158.2](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.158.2) (2025-05-25)
+
+### Bug Fixes
+
+- **eslint:** Resolved issue with reading options in `eslint-plugin-tsdoc` patch
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.158.1](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.158.1) (2025-05-25)
 
 ### Bug Fixes
