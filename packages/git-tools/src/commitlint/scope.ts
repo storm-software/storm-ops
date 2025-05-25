@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ProjectGraph } from "@nx/devkit";
-import type { ProjectConfiguration } from "nx/src/config/workspace-json-project-json";
+import { StormWorkspaceConfig } from "@storm-software/config";
 import {
   createProjectGraphAsync,
   readCachedProjectGraph,
@@ -8,19 +8,9 @@ import {
 } from "nx/src/project-graph/project-graph";
 import { RuleConfigCondition, RuleConfigSeverity } from "../types";
 
-export async function getNxScopes(
-  context?: any,
-  selector = (params?: ProjectConfiguration) => true
-): Promise<string[]> {
-  const ctx = context || {};
-
-  const workspaceRoot =
-    process.env.NX_WORKSPACE_ROOT_PATH ||
-    process.env.STORM_WORKSPACE_ROOT ||
-    ctx.cwd ||
-    process.cwd();
-  process.env.NX_WORKSPACE_ROOT_PATH ??= workspaceRoot;
-
+export async function getNxScopes(context: {
+  config: StormWorkspaceConfig;
+}): Promise<string[]> {
   let projectGraph!: ProjectGraph;
   try {
     projectGraph = readCachedProjectGraph();
@@ -38,32 +28,43 @@ export async function getNxScopes(
   const projectConfigs =
     readProjectsConfigurationFromProjectGraph(projectGraph);
 
-  const result = Object.entries(projectConfigs.projects || {})
-    .map(([name, project]) => ({
-      name,
-      ...project
-    }))
-    .filter(selector)
-    .filter(project => project.targets)
-    .map(project => project.name)
-    .map(name => (name.charAt(0) === "@" ? name.split("/")[1] : name))
-    .filter(Boolean) as string[];
+  const result = (
+    Object.entries(projectConfigs.projects || {})
+      .map(([name, project]) => ({
+        name,
+        ...project
+      }))
+      .filter(
+        project =>
+          project.name &&
+          project.root &&
+          project.root !== "." &&
+          project.root !== context.config.workspaceRoot &&
+          !project.name.includes("e2e")
+      )
+      .filter(project => project.targets)
+      .map(project => project.name)
+      // .map(name => (name.charAt(0) === "@" ? name.split("/")[1] : name))
+      .filter(Boolean) as string[]
+  ).sort((a, b) => a.localeCompare(b));
   result.unshift("monorepo");
 
   return result;
 }
 
-export const getScopeEnum = async (context?: any): Promise<string[]> => {
-  return await getNxScopes(
-    context,
-    (projectConfig?: ProjectConfiguration) =>
-      !!projectConfig?.name && !projectConfig.name.includes("e2e")
-  );
-};
+export function getScopeEnumUtil(context: { config: StormWorkspaceConfig }) {
+  return (): Promise<string[]> => getScopeEnum(context);
+}
 
-export const getRuleFromScopeEnum = (
+export function getScopeEnum(context: {
+  config: StormWorkspaceConfig;
+}): Promise<string[]> {
+  return getNxScopes(context);
+}
+
+export function getRuleFromScopeEnum(
   scopeEnum: string[]
-): [RuleConfigSeverity, RuleConfigCondition, string[]] => {
+): [RuleConfigSeverity, RuleConfigCondition, string[]] {
   if (!scopeEnum?.filter(Boolean).length) {
     throw new Error("No scopes found in the Storm workspace.");
   }
@@ -73,10 +74,4 @@ export const getRuleFromScopeEnum = (
     "always",
     scopeEnum.filter(Boolean) as string[]
   ];
-};
-
-export const getScopeEnumRule = async (
-  context?: any
-): Promise<[RuleConfigSeverity, RuleConfigCondition, string[]]> => {
-  return getRuleFromScopeEnum(await getScopeEnum(context));
-};
+}

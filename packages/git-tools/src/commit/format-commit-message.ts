@@ -8,7 +8,7 @@ export const formatCommitMessage = (state: CommitState) => {
   const wrapOptions = {
     indent: "",
     trim: true,
-    width: MAX_LINE_WIDTH,
+    width: MAX_LINE_WIDTH
   };
 
   if (typeof answers.type !== "string") {
@@ -31,8 +31,6 @@ export const formatCommitMessage = (state: CommitState) => {
   const format =
     config.prompt.settings.format || "{type}({scope}): {emoji}{subject}";
 
-  //const affectsLine = makeAffectsLine(answers);
-
   // Wrap these lines at MAX_LINE_WIDTH character
   const body =
     answers.body && typeof answers.body === "string"
@@ -51,7 +49,7 @@ export const formatCommitMessage = (state: CommitState) => {
   const head = format
     .replace(
       /\{emoji\}/g,
-      config.prompt.settings.disableEmoji ? "" : `${emoji} `,
+      config.prompt.settings.disableEmoji ? "" : `${emoji} `
     )
     .replace(/\{scope\}/g, scope)
     .replace(/\{subject\}/g, subject || "")

@@ -112,11 +112,11 @@ export const askQuestion = (
     return select({
       message,
       choices: Object.keys(question.enum)
-        .filter(key => !question.enum![key]?.hidden)
+        .filter(key => !question.enum?.[key]?.hidden)
         .map(key => ({
-          name: question.enum![key]?.title || key,
+          name: question.enum?.[key]?.title || key,
           value: key,
-          description: question.enum![key]?.description || ""
+          description: question.enum?.[key]?.description || ""
         })),
       default: String(question.defaultValue || "")
     });

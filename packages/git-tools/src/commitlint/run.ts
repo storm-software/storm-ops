@@ -91,7 +91,9 @@ export const runCommitLint = async (
   }
 
   const allowedTypes = Object.keys(DEFAULT_COMMIT_TYPES).join("|");
-  const allowedScopes = await getNxScopes();
+  const allowedScopes = await getNxScopes({
+    config
+  });
 
   // eslint-disable-next-line no-useless-escape
   const commitMsgRegex = `(${allowedTypes})\\((${allowedScopes})\\)!?:\\s(([a-z0-9:\-\s])+)`;

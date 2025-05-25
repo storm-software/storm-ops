@@ -1,12 +1,17 @@
 import { hfs } from "@humanfs/node";
-import { ProjectConfiguration } from "@nx/devkit";
+import { ProjectGraph } from "@nx/devkit";
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { joinPaths, writeInfo } from "@storm-software/config-tools";
 import chalkTemplate from "chalk-template";
 import defu from "defu";
 import { execSync } from "node:child_process";
-import { readCachedProjectConfiguration } from "nx/src/project-graph/project-graph";
-import { getScopeEnum } from "../commitlint/scope";
+import { existsSync } from "node:fs";
+import {
+  createProjectGraphAsync,
+  readCachedProjectGraph,
+  readProjectsConfigurationFromProjectGraph
+} from "nx/src/project-graph/project-graph";
+import { getScopeEnum, getScopeEnumUtil } from "../commitlint/scope";
 import type {
   CommitConfig,
   CommitQuestionAnswers,
@@ -21,29 +26,30 @@ import type {
 } from "../types";
 import { DEFAULT_COMMIT_CONFIG } from "./config";
 
-export const getGitDir = () => {
+export function getGitDir() {
   const devNull = process.platform === "win32" ? " nul" : "/dev/null";
   const dir = execSync(`git rev-parse --absolute-git-dir 2>${devNull}`)
     .toString()
     .trim();
 
   return dir;
-};
+}
 
-export const getGitRootDir = () => {
+export function getGitRootDir() {
   const devNull = process.platform === "win32" ? " nul" : "/dev/null";
   const dir = execSync(`git rev-parse --show-toplevel 2>${devNull}`)
     .toString()
     .trim();
 
   return dir;
-};
+}
 
-const resolveCommitOptions = async (
-  config: CommitConfig
-): Promise<CommitResolvedConfig> => {
+async function resolveCommitOptions(
+  config: CommitConfig,
+  workspaceConfig: StormWorkspaceConfig
+): Promise<CommitResolvedConfig> {
   return {
-    utils: { getScopeEnum },
+    utils: { getScopeEnum: getScopeEnumUtil({ config: workspaceConfig }) },
     parserPreset: "conventional-changelog-conventionalcommits",
     prompt: {
       settings: config.settings,
@@ -54,19 +60,24 @@ const resolveCommitOptions = async (
       >
     }
   };
-};
+}
 
-const resolveDefaultCommitOptions = async (): Promise<CommitResolvedConfig> =>
-  resolveCommitOptions(DEFAULT_COMMIT_CONFIG);
+async function resolveDefaultCommitOptions(
+  config: StormWorkspaceConfig
+): Promise<CommitResolvedConfig> {
+  return resolveCommitOptions(DEFAULT_COMMIT_CONFIG, config);
+}
 
-export const createState = async (
+export async function createState(
   config: StormWorkspaceConfig,
   commitizenFile = "@storm-software/git-tools/commit/config"
-): Promise<CommitState> => {
+): Promise<CommitState> {
   let root: string;
 
   try {
     root = getGitRootDir();
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (_) {
     throw new Error("Could not find Git root folder.");
   }
@@ -74,7 +85,7 @@ export const createState = async (
   let state!: CommitState;
   if (commitizenFile === "@storm-software/git-tools/commit/config") {
     state = {
-      config: await resolveDefaultCommitOptions(),
+      config: await resolveDefaultCommitOptions(config),
       root,
       answers: {}
     };
@@ -89,41 +100,13 @@ export const createState = async (
 
     state = {
       config: await resolveCommitOptions(
-        defu(commitizenConfig ?? {}, DEFAULT_COMMIT_CONFIG)
+        defu(commitizenConfig ?? {}, DEFAULT_COMMIT_CONFIG),
+        config
       ),
       root,
       answers: {}
     };
   }
-
-  // if (!state.config.prompt.questions.type) {
-  //   state.config.prompt.questions.type = {
-  //     name: "type",
-  //     message: "Select the type of change that you're committing:",
-  //     choices: [],
-  //     default: "feat"
-  //   };
-  // }
-
-  // state.config.questions.type.enum = Object.keys(
-  //   defaultCommitizenConfig.types
-  // ).map((key: string) => {
-  //   let name = key;
-  //   let description: string | undefined = undefined;
-
-  //   const type: CommitType | undefined =
-  //     key in defaultConfig.types
-  //       ? ((defaultConfig.types as Record<string, CommitType>)?.[
-  //           key
-  //         ] as CommitType)
-  //       : undefined;
-  //   if (type) {
-  //     name = `${key} - ${type.title} ${type.emoji} ${type.description ? type.description : ""}`;
-  //     description = type.description;
-  //   }
-
-  //   return { name, value: key, description };
-  // });
 
   if (
     state.config.prompt.questions.type &&
@@ -132,11 +115,36 @@ export const createState = async (
     (state.config.prompt.questions.type as CommitQuestionProps).enum =
       Object.keys(state.config.prompt.questions.type.enum).reduce(
         (ret, key) => {
-          ret[key] = {
-            ...state.config.prompt.questions.type.enum![key],
-            title: chalkTemplate`${state.config.prompt.questions.type.enum![key]?.emoji ? `${state.config.prompt.questions.type.enum![key]?.emoji} ` : ""}{bold ${key}} ${state.config.prompt.questions.type.enum![key]?.title && state.config.prompt.questions.type.enum![key]?.title !== key ? `- ${state.config.prompt.questions.type.enum![key]?.title}` : ""}${(state.config.prompt.questions.type.enum![key] as CommitTypeProps)?.semverBump ? ` (version bump: ${(state.config.prompt.questions.type.enum![key] as CommitTypeProps)?.semverBump})` : ""}`,
-            hidden: false
-          };
+          if (state.config.prompt.questions.type.enum) {
+            ret[key] = {
+              ...state.config.prompt.questions.type.enum[key],
+              title: chalkTemplate`${
+                state.config.prompt.questions.type.enum[key]?.emoji
+                  ? `${state.config.prompt.questions.type.enum[key]?.emoji} `
+                  : ""
+              }{bold ${key}} ${
+                state.config.prompt.questions.type.enum[key]?.title &&
+                state.config.prompt.questions.type.enum[key]?.title !== key
+                  ? `- ${state.config.prompt.questions.type.enum[key]?.title}`
+                  : ""
+              }${
+                (
+                  state.config.prompt.questions.type.enum[
+                    key
+                  ] as CommitTypeProps
+                )?.semverBump
+                  ? ` (version bump: ${
+                      (
+                        state.config.prompt.questions.type.enum[
+                          key
+                        ] as CommitTypeProps
+                      )?.semverBump
+                    })`
+                  : ""
+              }`,
+              hidden: false
+            };
+          }
 
           return ret;
         },
@@ -149,14 +157,9 @@ export const createState = async (
     !state.config.prompt.questions.scope.enum ||
     Object.keys(state.config.prompt.questions.scope.enum).length === 0
   ) {
-    const workspaceRoot =
-      config.workspaceRoot ||
-      process.env.NX_WORKSPACE_ROOT_PATH ||
-      process.env.STORM_WORKSPACE_ROOT ||
-      process.cwd();
-    process.env.NX_WORKSPACE_ROOT_PATH ??= workspaceRoot;
-
-    const scopes = await getScopeEnum({});
+    const scopes = await getScopeEnum({
+      config
+    });
     for (const scope of scopes) {
       if (scope === "monorepo") {
         state.config.prompt.questions.scope.enum[scope] = {
@@ -166,18 +169,34 @@ export const createState = async (
           projectRoot: "/"
         } as CommitScopeProps;
       } else {
-        let project!: ProjectConfiguration;
+        let projectGraph!: ProjectGraph;
         try {
-          project = readCachedProjectConfiguration(scope);
-        } catch (_) {
-          // Do nothing
+          projectGraph = readCachedProjectGraph();
+        } catch {
+          await createProjectGraphAsync();
+          projectGraph = readCachedProjectGraph();
         }
 
+        if (!projectGraph) {
+          throw new Error(
+            "Failed to load the project graph. Please run `nx reset`, then run the `storm-git commit` command again."
+          );
+        }
+
+        const projectConfigurations =
+          readProjectsConfigurationFromProjectGraph(projectGraph);
+        if (!projectConfigurations?.projects?.[scope]) {
+          throw new Error(
+            `Failed to load the project configuration for project ${scope}. Please run \`nx reset\`, then run the \`storm-git commit\` command again.`
+          );
+        }
+
+        const project = projectConfigurations.projects[scope];
         if (project) {
           let description = `${project.name} - ${project.root}`;
 
           const packageJsonPath = joinPaths(project.root, "package.json");
-          if (await hfs.isFile(packageJsonPath)) {
+          if (existsSync(packageJsonPath)) {
             const packageJson = await hfs.json(packageJsonPath);
             description = packageJson.description || description;
           }
@@ -203,4 +222,4 @@ export const createState = async (
   );
 
   return state;
-};
+}
