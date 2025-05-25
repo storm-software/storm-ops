@@ -177,7 +177,7 @@ patchedDependencies:
     hash: 72dcde755c336eeca3e6170de1106fd85ecb66171e060788f80df45cea29bc9b
     path: patches/eslint-plugin-pnpm@0.3.0.patch
   eslint-plugin-tsdoc@0.4.0:
-    hash: be253a1e507d3049c735251fea147ba0612ee26e241e78fe442073fc4b39d16c
+    hash: 81bad945d9ea1bb54b58bcaaa69ba9238f921d8116af83909b8bb924e1526820
     path: patches/eslint-plugin-tsdoc@0.4.0.patch
   tsup@8.4.0:
     hash: 751a554d775c3572381af4e7e5fa22eeda6dd6856012fb1cf521d6806eb2dc74
@@ -792,7 +792,7 @@ importers:
         version: 0.12.0(eslint@9.26.0(jiti@2.4.2))
       eslint-plugin-tsdoc:
         specifier: 0.4.0
-        version: 0.4.0(patch_hash=be253a1e507d3049c735251fea147ba0612ee26e241e78fe442073fc4b39d16c)
+        version: 0.4.0(patch_hash=81bad945d9ea1bb54b58bcaaa69ba9238f921d8116af83909b8bb924e1526820)
       eslint-plugin-unicorn:
         specifier: ^57.0.0
         version: 57.0.0(eslint@9.26.0(jiti@2.4.2))
@@ -4139,7 +4139,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -21647,7 +21646,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-tsdoc@0.4.0(patch_hash=be253a1e507d3049c735251fea147ba0612ee26e241e78fe442073fc4b39d16c):
+  eslint-plugin-tsdoc@0.4.0(patch_hash=81bad945d9ea1bb54b58bcaaa69ba9238f921d8116af83909b8bb924e1526820):
     dependencies:
       '@microsoft/tsdoc': 0.15.1
       '@microsoft/tsdoc-config': 0.17.1

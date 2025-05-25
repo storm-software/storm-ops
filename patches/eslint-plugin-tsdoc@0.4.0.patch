@@ -166,7 +166,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..cc4409068be87c2fcedbc67d10e96cf8
  exports.ConfigCache = ConfigCache;
  // findConfigPathForFolder() result --> loaded tsdoc.json configuration
 diff --git a/lib/index.js b/lib/index.js
-index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..b6b10f424125e3801c1539c21d7b1c56b3cf153a 100644
+index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..3bdc527878b1d5301f6c9d3e2aa75399d7f763f2 100644
 --- a/lib/index.js
 +++ b/lib/index.js
 @@ -15,7 +15,7 @@ const plugin = {
@@ -178,7 +178,7 @@ index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..b6b10f424125e3801c1539c21d7b1c56
                  type: 'problem',
                  docs: {
                      description: 'Validates that TypeScript documentation comments conform to the TSDoc standard',
-@@ -23,9 +23,41 @@ const plugin = {
+@@ -23,8 +23,32 @@ const plugin = {
                      // This package is experimental
                      recommended: false,
                      url: 'https://tsdoc.org/pages/packages/eslint-plugin-tsdoc'
@@ -204,35 +204,26 @@ index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..b6b10f424125e3801c1539c21d7b1c56
 +                  }
 +                ],
              },
--            create: (context) => {
 +            defaultOptions: [
 +              {
 +                type: "base"
 +              }
 +            ],
-+            create: (
-+              context,
-+              [
-+                {
-+                  type = "base",
-+                  configFile,
-+                }
-+              ]
-+            ) => {
+             create: (context) => {
                  const sourceFilePath = context.filename;
                  // If eslint is configured with @typescript-eslint/parser, there is a parser option
-                 // to explicitly specify where the tsconfig file is. Use that if available.
-@@ -33,30 +65,74 @@ const plugin = {
+@@ -33,30 +57,75 @@ const plugin = {
                  Debug_1.Debug.log(`Linting: "${sourceFilePath}"`);
                  const tsdocConfiguration = new tsdoc_1.TSDocConfiguration();
                  try {
 -                    const tsdocConfigFile = ConfigCache_1.ConfigCache.getForSourceFile(sourceFilePath, tsConfigDir);
 +                  let tsdocConfigFile = {};
 +                  try {
-+                    tsdocConfigFile = ConfigCache_1.ConfigCache.getStormConfigFile({
-+                      type,
-+                      configFile,
-+                    });
++                    tsdocConfigFile = ConfigCache_1.ConfigCache.getStormConfigFile(
++                      context.options && context.options.length > 0
++                        ? context.options[0]
++                        : { type: "base" }
++                    );
                      if (!tsdocConfigFile.fileNotFound) {
 -                        if (tsdocConfigFile.hasErrors) {
 -                            context.report({

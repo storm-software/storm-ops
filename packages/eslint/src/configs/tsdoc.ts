@@ -22,9 +22,7 @@ export async function tsdoc(
         tsdoc: pluginTsdoc
       },
       rules: {
-        "tsdoc/syntax": [severity, { type, configFile }],
-
-        ...(overrides ?? {})
+        "tsdoc/syntax": [severity, { type, configFile }]
       }
     }
   ];
