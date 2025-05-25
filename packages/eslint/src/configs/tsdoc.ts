@@ -24,7 +24,7 @@ export async function tsdoc(
       rules: {
         "tsdoc/syntax": [severity, { type, configFile }],
 
-        ...overrides
+        ...(overrides ?? {})
       }
     }
   ];
