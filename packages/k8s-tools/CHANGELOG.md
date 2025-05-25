@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.32.0](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.32.0) (2025-05-25)
+
+### Features
+
+- **config:** Added a default errors URL to Storm Software's preset
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.274.0
+- Updated workspace-tools to 1.274.0
+- Updated config-tools to 1.171.0
+- Updated config-tools to 1.171.0
+- Updated config to 1.121.0
+- Updated config to 1.121.0
+
 ## [0.31.9](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.31.9) (2025-05-18)
 
 ### Miscellaneous

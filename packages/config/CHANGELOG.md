@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.121.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.121.0) (2025-05-25)
+
+### Features
+
+- **config:** Added a default errors URL to Storm Software's preset
+
 ## [1.120.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.120.0) (2025-05-18)
 
 ### Features

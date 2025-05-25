@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.63.0](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.63.0) (2025-05-25)
+
+### Features
+
+- **config:** Added a default errors URL to Storm Software's preset
+
 ## [0.62.8](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.62.8) (2025-05-18)
 
 ### Miscellaneous

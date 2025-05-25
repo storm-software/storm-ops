@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.274.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.274.0) (2025-05-25)
+
+### Features
+
+- **config:** Added a default errors URL to Storm Software's preset
+
+### Updated Dependencies
+
+- Updated esbuild to 0.42.0
+- Updated esbuild to 0.42.0
+- Updated unbuild to 0.48.0
+- Updated unbuild to 0.48.0
+
 ## [1.273.10](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.273.10) (2025-05-18)
 
 ### Miscellaneous

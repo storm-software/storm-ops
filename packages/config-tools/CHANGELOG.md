@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.171.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.171.0) (2025-05-25)
+
+### Features
+
+- **config:** Added a default errors URL to Storm Software's preset
+
+### Updated Dependencies
+
+- Updated config to 1.121.0
+
 ## [1.170.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.170.0) (2025-05-18)
 
 ### Features

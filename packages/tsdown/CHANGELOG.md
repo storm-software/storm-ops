@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.35.0](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.35.0) (2025-05-25)
+
+### Features
+
+- **config:** Added a default errors URL to Storm Software's preset
+
+### Updated Dependencies
+
+- Updated config-tools to 1.171.0
+- Updated config to 1.121.0
+
 ## [0.34.9](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.34.9) (2025-05-18)
 
 ### Miscellaneous

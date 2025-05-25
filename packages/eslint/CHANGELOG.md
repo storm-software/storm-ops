@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.157.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.157.0) (2025-05-25)
+
+### Features
+
+- **config:** Added a default errors URL to Storm Software's preset
+
 ## [0.156.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.156.0) (2025-05-18)
 
 ### Features
