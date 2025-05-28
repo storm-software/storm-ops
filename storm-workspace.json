@@ -5,5 +5,6 @@
   "namespace": "storm-software",
   "repository": "https://github.com/storm-software/storm-ops",
   "packageManager": "pnpm",
-  "logLevel": "all"
+  "logLevel": "all",
+  "docs": "https://docs.stormsoftware.com/projects/storm-ops"
 }
