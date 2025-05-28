@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.1.4](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.1.4) (2025-05-28)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+
 ## [0.1.3](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.1.3) (2025-05-25)
 
 ### Bug Fixes
