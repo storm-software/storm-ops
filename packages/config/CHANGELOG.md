@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.121.7](https://github.com/storm-software/storm-ops/releases/tag/config%401.121.7) (2025-05-28)
+
+### Miscellaneous
+
+- **config:** Update errors display URL to no longer point to API end point
+- **monorepo:** Regenerate README markdown files
+
 ## [1.121.6](https://github.com/storm-software/storm-ops/releases/tag/config%401.121.6) (2025-05-28)
 
 ### Miscellaneous
