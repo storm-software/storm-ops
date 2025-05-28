@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/markdownlint",
-  "version": "0.24.10",
+  "version": "0.24.11",
   "description": "An opinionated collection of markdownlint rules used by Storm Software.",
   "repository": {
     "type": "github",

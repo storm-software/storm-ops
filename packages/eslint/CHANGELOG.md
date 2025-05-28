@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.158.3](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.158.3) (2025-05-25)
+
+### Bug Fixes
+
+- **tsdoc:** Resolved issue with missing configuration in output
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.158.2](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.158.2) (2025-05-25)
 
 ### Bug Fixes

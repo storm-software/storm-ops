@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.1.3](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.1.3) (2025-05-25)
+
+### Bug Fixes
+
+- **tsdoc:** Removed invalid comments from `typedoc.json` configuration
+- **tsdoc:** Resolved issue with missing configuration in output
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.1.2](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.1.2) (2025-05-25)
 
 ### Miscellaneous
