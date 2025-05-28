@@ -10,7 +10,7 @@
   "skipConfigLogging": true,
   "skipCache": false,
   "homepage": "https://stormsoftware.com",
-  "docs": "https://stormsoftware.com/docs",
+  "docs": "https://docs.stormsoftware.com",
   "licensing": "https://stormsoftware.com/license",
   "contact": "https://stormsoftware.com/contact",
   "support": "https://stormsoftware.com/support",
@@ -19,7 +19,7 @@
   },
   "error": {
     "codesFile": "tools/errors/codes.json",
-    "url": "https://developer.stormsoftware.com/api/errors"
+    "url": "https://development.stormsoftware.com/api/errors"
   },
   "externalPackagePatterns": ["@storm-software/"],
   "registry": {
