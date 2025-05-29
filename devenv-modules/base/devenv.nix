@@ -31,6 +31,9 @@ in {
     pkgs.zizmor
     pkgs.taplo
     pkgs.typos
+
+    # Tools
+    pkgs.capnproto
   ];
 
   # https://devenv.sh/languages/

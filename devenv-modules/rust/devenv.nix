@@ -5,6 +5,8 @@
   # https://devenv.sh/packages/
   packages = [
     pkgs.cargo-deny
+    pkgs.capnproto
+    pkgs.capnproto-rust
   ];
 
   # https://devenv.sh/languages/

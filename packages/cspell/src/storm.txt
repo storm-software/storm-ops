@@ -300,6 +300,7 @@ radash
 redocusaurus
 tailwindcss
 capnp
+capnproto
 magicast
 nanotar
 unctx
