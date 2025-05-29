@@ -299,6 +299,14 @@ opentelemetry
 radash
 redocusaurus
 tailwindcss
+capnp
+magicast
+nanotar
+unctx
+unenv
+unrs
+rwsdk
+uqr
 
 # Nix
 nixos
