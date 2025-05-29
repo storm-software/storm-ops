@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.44.0](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.44.0) (2025-05-29)
+
+### Features
+
+- **devenv-modules:** Added `capnproto` and `capnproto-rust` to the shared
+  DevEnv flakes
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config-tools to 1.172.0
+- Updated build-tools to 0.150.13
+- Updated config to 1.121.9
+
 ## [0.43.7](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.43.7) (2025-05-29)
 
 ### Miscellaneous

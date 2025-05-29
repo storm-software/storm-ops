@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Cspell
 
+## [0.30.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.30.0) (2025-05-29)
+
+### Features
+
+- **devenv-modules:** Added `capnproto` and `capnproto-rust` to the shared
+  DevEnv flakes
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+- **monorepo:** Regenerate README markdown files
+
 ## [0.29.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.29.0) (2025-05-29)
 
 ### Features

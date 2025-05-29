@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.158.7](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.158.7) (2025-05-29)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+- **monorepo:** Regenerate README markdown files
+
 ## [0.158.6](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.158.6) (2025-05-29)
 
 ### Miscellaneous

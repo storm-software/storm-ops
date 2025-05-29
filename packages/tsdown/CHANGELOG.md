@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.36.0](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.36.0) (2025-05-29)
+
+### Features
+
+- **devenv-modules:** Added `capnproto` and `capnproto-rust` to the shared
+  DevEnv flakes
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config-tools to 1.172.0
+- Updated build-tools to 0.150.13
+- Updated config to 1.121.9
+
 ## [0.35.8](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.35.8) (2025-05-29)
 
 ### Miscellaneous

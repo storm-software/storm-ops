@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.33.0](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.33.0) (2025-05-29)
+
+### Features
+
+- **devenv-modules:** Added `capnproto` and `capnproto-rust` to the shared
+  DevEnv flakes
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.275.0
+- Updated workspace-tools to 1.275.0
+- Updated config-tools to 1.172.0
+- Updated config-tools to 1.172.0
+- Updated config to 1.121.9
+- Updated config to 1.121.9
+
 ## [0.32.8](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.32.8) (2025-05-29)
 
 ### Miscellaneous
