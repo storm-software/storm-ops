@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.158.6](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.158.6) (2025-05-29)
+
+### Miscellaneous
+
+- **monorepo:** Update Storm workspace packages
+
 ## [0.158.5](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.158.5) (2025-05-28)
 
 ### Miscellaneous

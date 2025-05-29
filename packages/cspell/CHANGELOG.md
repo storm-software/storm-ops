@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Cspell
 
+## [0.29.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.29.0) (2025-05-29)
+
+### Features
+
+- **cspell:** Added recently used tools to the CSpell dictionary
+
+### Miscellaneous
+
+- **monorepo:** Update Storm workspace packages
+
 ## [0.28.7](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.28.7) (2025-05-28)
 
 ### Miscellaneous
