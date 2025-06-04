@@ -1,41 +1,16 @@
 # Storm Software's base keyword dictionary
 
+# Internal
 stryke
 stormstack
 stormcloud
 stormsoftware
 stormie
 stormiebot
-Akka
-alexignore
-alexjs
-alexrc
-treeshake
-cdvc
-mkdn
-mkdown
-defu
-Pluggable
-Rolldown
-retext
-vfile
-autoincrement
-favicons
-sarif
-lockb
-smee
-remeda
-jiti
-venv
-javascripts
-mkdocs
-terrascan
-codeowners
-deepmerge
-copyfiles
-blockquote
-typia
 stormie
+
+# Misc
+treeshake
 npmjs
 noopener
 noreferrer
@@ -111,17 +86,8 @@ datetime
 devcontainer
 devkit
 dimens
-DMMF
-docgen
-doctoc
-dpdm
+dmmf
 endregion
-enjoi
-esbuild
-espree
-eventcatalog
-eventsourced
-Expando
 fullpath
 funct
 graphiql
@@ -252,6 +218,43 @@ wimax
 FEFF
 
 # Tools
+akka
+alexignore
+alexjs
+alexrc
+cdvc
+mkdn
+mkdown
+defu
+pluggable
+rolldown
+retext
+vfile
+autoincrement
+favicons
+sarif
+lockb
+smee
+remeda
+jiti
+venv
+javascripts
+mkdocs
+terrascan
+codeowners
+deepmerge
+copyfiles
+blockquote
+typia
+docgen
+doctoc
+dpdm
+enjoi
+esbuild
+espree
+eventcatalog
+eventsourced
+expando
 dprint
 unocss
 nuxt
@@ -308,6 +311,18 @@ unenv
 unrs
 rwsdk
 uqr
+ghostty
+agola
+appcircle
+bitrise
+dsari
+gerrit
+gitea
+gocd
+layerci
+nevercode
+sailci
+sourcehut
 
 # Nix
 nixos
@@ -370,3 +385,6 @@ Pibyte
 Eibyte
 Zibyte
 Yibyte
+
+# Directories
+localappdata
