@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.2.0](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.2.0) (2025-06-04)
+
+### Features
+
+- **tsdoc:** Extend `@microsoft/api-extractor` configuration in `base.json`
+
 ## [0.1.7](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.1.7) (2025-05-29)
 
 ### Miscellaneous
