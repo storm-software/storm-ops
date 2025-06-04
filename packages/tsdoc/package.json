@@ -88,10 +88,14 @@
     "storm-software"
   ],
   "peerDependencies": {
+    "@microsoft/api-extractor": ">=7.52.0",
     "@microsoft/tsdoc": ">=0.15.0",
     "@microsoft/tsdoc-config": ">=0.17.0"
   },
   "peerDependenciesMeta": {
+    "@microsoft/api-extractor": {
+      "optional": true
+    },
     "@microsoft/tsdoc": {
       "optional": true
     },

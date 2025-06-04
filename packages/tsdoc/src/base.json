@@ -1,6 +1,9 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
-  "extends": ["./typedoc.json"],
+  "extends": [
+    "./typedoc.json",
+    "@microsoft/api-extractor/extends/tsdoc-config.json"
+  ],
   "tagDefinitions": [
     {
       "tagName": "@alias",
