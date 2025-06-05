@@ -2451,10 +2451,25 @@ Backward pagination arguments
    */
   'markdown/heading-increment'?: Linter.RuleEntry<[]>
   /**
+   * Disallow duplicate definitions
+   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-duplicate-definitions.md
+   */
+  'markdown/no-duplicate-definitions'?: Linter.RuleEntry<MarkdownNoDuplicateDefinitions>
+  /**
    * Disallow duplicate headings in the same document
    * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-duplicate-headings.md
    */
   'markdown/no-duplicate-headings'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow empty definitions
+   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-empty-definitions.md
+   */
+  'markdown/no-empty-definitions'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow empty images
+   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-empty-images.md
+   */
+  'markdown/no-empty-images'?: Linter.RuleEntry<[]>
   /**
    * Disallow empty links
    * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-empty-links.md
@@ -2471,10 +2486,30 @@ Backward pagination arguments
    */
   'markdown/no-invalid-label-refs'?: Linter.RuleEntry<[]>
   /**
+   * Disallow headings without a space after the hash characters
+   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-missing-atx-heading-space.md
+   */
+  'markdown/no-missing-atx-heading-space'?: Linter.RuleEntry<[]>
+  /**
    * Disallow missing label references
    * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-missing-label-refs.md
    */
   'markdown/no-missing-label-refs'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow multiple H1 headings in the same document
+   * @see https://github.com/eslint/markdown/blob/main/docs/rules/no-multiple-h1.md
+   */
+  'markdown/no-multiple-h1'?: Linter.RuleEntry<MarkdownNoMultipleH1>
+  /**
+   * Require alternative text for images
+   * @see https://github.com/eslint/markdown/blob/main/docs/rules/require-alt-text.md
+   */
+  'markdown/require-alt-text'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow data rows in a GitHub Flavored Markdown table from having more cells than the header row
+   * @see https://github.com/eslint/markdown/blob/main/docs/rules/table-column-count.md
+   */
+  'markdown/table-column-count'?: Linter.RuleEntry<[]>
   /**
    * Enforce a maximum number of classes per file
    * @see https://eslint.org/docs/latest/rules/max-classes-per-file
@@ -10245,9 +10280,18 @@ type LogicalAssignmentOperators = (([]|["always"]|["always", {
 type MarkdownFencedCodeLanguage = []|[{
   required?: string[]
 }]
+// ----- markdown/no-duplicate-definitions -----
+type MarkdownNoDuplicateDefinitions = []|[{
+  allowDefinitions?: string[]
+  allowFootnoteDefinitions?: string[]
+}]
 // ----- markdown/no-html -----
 type MarkdownNoHtml = []|[{
   allowed?: string[]
+}]
+// ----- markdown/no-multiple-h1 -----
+type MarkdownNoMultipleH1 = []|[{
+  frontmatterTitle?: string
 }]
 // ----- max-classes-per-file -----
 type MaxClassesPerFile = []|[(number | {
