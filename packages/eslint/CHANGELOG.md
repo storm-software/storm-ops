@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.159.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.159.0) (2025-06-05)
+
+### Features
+
+- **eslint:** Added new TSDoc configuration presets to options
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages and README markdown
+
 ## [0.158.8](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.158.8) (2025-06-04)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.3.0](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.3.0) (2025-06-05)
+
+### Features
+
+- **tsdoc:** Added the `api-extractor.json` and `config.json` files
+
+### Miscellaneous
+
+- **tsdoc:** Rename `config.json` to `core.json`
+- **monorepo:** Update workspace packages and README markdown
+
 ## [0.2.0](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.2.0) (2025-06-04)
 
 ### Features
