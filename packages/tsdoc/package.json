@@ -45,7 +45,9 @@
   "exports": {
     "./package.json": "./package.json",
     "./typedoc.json": "./config/typedoc.json",
+    "./api-extractor.json": "./config/api-extractor.json",
     "./base.json": "./config/base.json",
+    "./config.json": "./config/config.json",
     "./index": {
       "import": {
         "types": "./dist/index.d.ts",
