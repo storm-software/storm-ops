@@ -171,7 +171,7 @@
     "@clack/prompts": "^0.10.1",
     "@cspell/eslint-plugin": "^8.19.4",
     "@eslint/eslintrc": "^3.3.1",
-    "@eslint/markdown": "^6.4.0",
+    "@eslint/markdown": "^6.5.0",
     "@nx/eslint-plugin": "catalog:",
     "@stylistic/eslint-plugin": "^4.4.1",
     "@typescript-eslint/eslint-plugin": "^8.33.1",
