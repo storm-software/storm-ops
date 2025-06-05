@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.3.5](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.3.5) (2025-06-05)
+
+### Bug Fixes
+
+- **tsdoc:** Remove duplicate configuration from `core.json` file
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+- **monorepo:** Regenerate README markdown files
+
 ## [0.3.4](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.3.4) (2025-06-05)
 
 ### Bug Fixes
