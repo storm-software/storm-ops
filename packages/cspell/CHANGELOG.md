@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Cspell
 
+## [0.31.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.31.0) (2025-06-04)
+
+### Features
+
+- **cspell:** Added tools and internal phrases to `base` dictionary
+
 ## [0.30.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.30.0) (2025-05-29)
 
 ### Features
