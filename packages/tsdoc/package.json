@@ -44,10 +44,10 @@
   "module": "./dist/index.js",
   "exports": {
     "./package.json": "./package.json",
+    "./base.json": "./config/base.json",
     "./typedoc.json": "./config/typedoc.json",
     "./api-extractor.json": "./config/api-extractor.json",
-    "./base.json": "./config/base.json",
-    "./config.json": "./config/config.json",
+    "./core.json": "./config/core.json",
     "./index": {
       "import": {
         "types": "./dist/index.d.ts",
