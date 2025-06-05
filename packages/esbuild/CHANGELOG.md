@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.44.4](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.44.4) (2025-06-05)
+
+### Bug Fixes
+
+- **esbuild:** Resolve issue providing the `assets` option
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config-tools to 1.172.4
+- Updated build-tools to 0.150.15
+- Updated config to 1.121.11
+
 ## [0.44.3](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.44.3) (2025-06-05)
 
 ### Miscellaneous

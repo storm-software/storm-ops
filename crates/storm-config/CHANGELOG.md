@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.19.15](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.19.15) (2025-06-05)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.19.14](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.19.14) (2025-06-05)
 
 ### Miscellaneous
