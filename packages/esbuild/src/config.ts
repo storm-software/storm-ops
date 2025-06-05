@@ -4,7 +4,6 @@ import { ESBuildOptions } from "./types";
 export const DEFAULT_BUILD_OPTIONS: Required<
   Pick<
     ESBuildOptions,
-    | "assets"
     | "format"
     | "platform"
     | "target"
@@ -24,7 +23,6 @@ export const DEFAULT_BUILD_OPTIONS: Required<
     | "distDir"
   >
 > = {
-  assets: [],
   platform: "node",
   target: "node22",
   format: "esm",

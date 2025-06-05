@@ -12,9 +12,9 @@ import { ESBuildContext } from "./types";
  * @returns The build context
  */
 export async function copyBuildAssets(context: ESBuildContext) {
-  if (context.result?.errors.length === 0) {
+  if (!context.result?.errors.length && context.options.assets?.length) {
     writeDebug(
-      `  📋  Copying asset files to output directory: ${context.outputPath}`,
+      `  📋  Copying ${context.options.assets.length} asset files to output directory: ${context.outputPath}`,
       context.workspaceConfig
     );
     const stopwatch = getStopwatch(`${context.options.name} asset copy`);
