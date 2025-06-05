@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.3.1](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.3.1) (2025-06-05)
+
+### Bug Fixes
+
+- **tsdoc:** Remove the `supportForTags` property
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.3.0](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.3.0) (2025-06-05)
 
 ### Features
