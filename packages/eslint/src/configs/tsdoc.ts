@@ -5,12 +5,7 @@ import { GLOB_TS, GLOB_TSX } from "../utils/constants";
 export async function tsdoc(
   options: OptionsFiles & OptionsTSDoc = {}
 ): Promise<TypedFlatConfigItem[]> {
-  const {
-    overrides = {},
-    severity = "error",
-    type = "base",
-    configFile
-  } = options;
+  const { severity = "error", type = "core", configFile } = options;
 
   const files = options.files ?? [GLOB_TS, GLOB_TSX];
 
