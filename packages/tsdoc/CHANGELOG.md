@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.3.6](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.3.6) (2025-06-06)
+
+### Bug Fixes
+
+- **tsdoc:** Remove the `supportedTags` property
+
 ## [0.3.5](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.3.5) (2025-06-05)
 
 ### Bug Fixes
