@@ -327,6 +327,7 @@ sourcehut
 workerd
 fastly
 tinyexec
+ohash
 
 # Nix
 nixos
