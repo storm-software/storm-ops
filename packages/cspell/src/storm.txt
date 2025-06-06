@@ -303,6 +303,7 @@ radash
 redocusaurus
 tailwindcss
 capnp
+capnpc
 capnproto
 magicast
 nanotar
@@ -323,6 +324,9 @@ layerci
 nevercode
 sailci
 sourcehut
+workerd
+fastly
+tinyexec
 
 # Nix
 nixos
@@ -388,3 +392,6 @@ Yibyte
 
 # Directories
 localappdata
+
+# Names
+dbaeumer
