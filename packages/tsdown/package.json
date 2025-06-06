@@ -189,12 +189,12 @@
     }
   },
   "dependencies": {
-    "@storm-software/build-tools": "0.150.17",
-    "@storm-software/config": "1.121.13",
-    "@storm-software/config-tools": "1.172.7",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "chokidar": "^4.0.3",
     "commander": "catalog:",
-    "es-toolkit": "^1.39.0",
+    "es-toolkit": "^1.39.1",
     "globby": "^14.1.0",
     "nx": "catalog:",
     "rolldown": "1.0.0-beta.1",
