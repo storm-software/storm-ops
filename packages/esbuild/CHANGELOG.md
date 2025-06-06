@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.45.0](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.0) (2025-06-06)
+
+### Features
+
+- **esbuild:** Allow `null` value as `tsconfig` option to skip defaulting
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config-tools to 1.172.9
+- Updated build-tools to 0.151.0
+- Updated config to 1.121.14
+
 ## [0.44.8](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.44.8) (2025-06-06)
 
 ### Miscellaneous

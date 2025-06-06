@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.4.0](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.4.0) (2025-06-06)
+
+### Features
+
+- **esbuild:** Allow `null` value as `tsconfig` option to skip defaulting
+
+### Bug Fixes
+
+- **tsdoc:** Update the `tagName` back to `title`
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.3.7](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.3.7) (2025-06-06)
 
 ### Bug Fixes

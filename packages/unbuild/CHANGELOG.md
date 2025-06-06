@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.49.9](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.9) (2025-06-06)
+
+### Bug Fixes
+
+- **unbuild:** Resolve typing issue with `null` value for `tsconfig` option
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config-tools to 1.172.9
+- Updated build-tools to 0.151.0
+- Updated config to 1.121.14
+
 ## [0.49.8](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.8) (2025-06-06)
 
 ### Miscellaneous

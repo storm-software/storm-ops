@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.41.18](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.41.18) (2025-06-06)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.41.17](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.41.17) (2025-06-05)
 
 ### Miscellaneous

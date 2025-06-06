@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.151.0](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.0) (2025-06-06)
+
+### Features
+
+- **esbuild:** Allow `null` value as `tsconfig` option to skip defaulting
+
+### Bug Fixes
+
+- **unbuild:** Resolve typing issue with `null` value for `tsconfig` option
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.150.17](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.150.17) (2025-06-05)
 
 ### Miscellaneous
