@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.3.7](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.3.7) (2025-06-06)
+
+### Bug Fixes
+
+- **tsdoc:** Resolve issue with missing `tagDefinitions` properties
+
 ## [0.3.6](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.3.6) (2025-06-06)
 
 ### Bug Fixes
