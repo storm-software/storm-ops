@@ -395,3 +395,7 @@ localappdata
 
 # Names
 dbaeumer
+
+# TSDoc Tags
+preapproved
+hideconstructor
