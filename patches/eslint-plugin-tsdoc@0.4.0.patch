@@ -1,5 +1,5 @@
 diff --git a/lib/ConfigCache.js b/lib/ConfigCache.js
-index 55d07a04c611f65e0a27f59b5de9c89c9d393888..cc4409068be87c2fcedbc67d10e96cf86e777f04 100644
+index 55d07a04c611f65e0a27f59b5de9c89c9d393888..3c7f21e0d867bc758f5b5117934c1451c13cf2a2 100644
 --- a/lib/ConfigCache.js
 +++ b/lib/ConfigCache.js
 @@ -29,6 +29,76 @@ exports.ConfigCache = void 0;
@@ -84,7 +84,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..cc4409068be87c2fcedbc67d10e96cf8
          return cachedConfig.configFile;
      }
 +    static getStormConfigFile({
-+        type = "base",
++        type = "core",
 +        configFile,
 +      }) {
 +        let workspaceRoot = "";
@@ -106,11 +106,11 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..cc4409068be87c2fcedbc67d10e96cf8
 +              "@storm-software",
 +              "tsdoc",
 +              "config",
-+              (process.env.STORM_TSDOC_TYPE
-+                ? process.env.STORM_TSDOC_TYPE
-+                : type) === "typedoc"
-+                  ? "typedoc.json"
-+                  : "base.json"
++              `${
++                  process.env.STORM_TSDOC_TYPE
++                    ? process.env.STORM_TSDOC_TYPE
++                    : type
++                }.json`
 +            );
 +
 +        const cacheKey = configFilePath;
