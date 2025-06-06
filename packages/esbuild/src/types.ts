@@ -37,6 +37,7 @@ export type ESBuildOptions = Omit<Options, "outDir" | "entryPoints"> &
   > & {
     userOptions?: any;
     distDir?: string;
+    tsconfig?: string | null;
     tsconfigRaw?: TsconfigRaw;
     verbose?: boolean;
   };
