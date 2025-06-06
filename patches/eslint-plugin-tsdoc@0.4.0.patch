@@ -1,5 +1,5 @@
 diff --git a/lib/ConfigCache.js b/lib/ConfigCache.js
-index 55d07a04c611f65e0a27f59b5de9c89c9d393888..3c7f21e0d867bc758f5b5117934c1451c13cf2a2 100644
+index 55d07a04c611f65e0a27f59b5de9c89c9d393888..1989de15fd7492ea9df655f7ec9443eae4eb89d6 100644
 --- a/lib/ConfigCache.js
 +++ b/lib/ConfigCache.js
 @@ -29,6 +29,76 @@ exports.ConfigCache = void 0;
@@ -79,7 +79,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..3c7f21e0d867bc758f5b5117934c1451
  // How often to check for modified input files.  If a file's modification timestamp has changed, then we will
  // evict the cache entry immediately.
  const CACHE_CHECK_INTERVAL_MS = 3 * 1000;
-@@ -103,6 +173,85 @@ class ConfigCache {
+@@ -103,6 +173,91 @@ class ConfigCache {
          }
          return cachedConfig.configFile;
      }
@@ -106,11 +106,17 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..3c7f21e0d867bc758f5b5117934c1451
 +              "@storm-software",
 +              "tsdoc",
 +              "config",
-+              `${
-+                  process.env.STORM_TSDOC_TYPE
++              (process.env.STORM_TSDOC_TYPE
 +                    ? process.env.STORM_TSDOC_TYPE
-+                    : type
-+                }.json`
++                    : type).endsWith(".json")
++                ? (process.env.STORM_TSDOC_TYPE
++                      ? process.env.STORM_TSDOC_TYPE
++                      : type)
++                : `${
++                    process.env.STORM_TSDOC_TYPE
++                      ? process.env.STORM_TSDOC_TYPE
++                      : type
++                  }.json`
 +            );
 +
 +        const cacheKey = configFilePath;
