@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.159.9](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.159.9) (2025-06-06)
+
+### Bug Fixes
+
+- **eslint:** Resolve issue reading config file in `eslint-plugin-tsdoc` patch
+
 ## [0.159.8](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.159.8) (2025-06-06)
 
 ### Miscellaneous

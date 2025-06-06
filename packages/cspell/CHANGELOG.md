@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Cspell
 
+## [0.33.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.33.0) (2025-06-06)
+
+### Features
+
+- **cspell:** Added `ohash` to names section of dictionary
+
 ## [0.32.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.32.0) (2025-06-06)
 
 ### Features
