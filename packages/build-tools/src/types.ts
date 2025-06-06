@@ -27,7 +27,7 @@ export interface TypeScriptBuildOptions extends AdditionalCLIOptions {
   name?: string;
   entry?: Entry;
   assets?: (AssetGlob | string)[];
-  tsconfig?: string;
+  tsconfig?: string | null;
   format?: Format | Format[];
   bundle?: boolean;
   external?: string[];

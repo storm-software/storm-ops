@@ -7,7 +7,6 @@ export const DEFAULT_BUILD_OPTIONS: Required<
     | "format"
     | "platform"
     | "target"
-    | "tsconfig"
     | "mode"
     | "includeSrc"
     | "generatePackageJson"
@@ -26,7 +25,6 @@ export const DEFAULT_BUILD_OPTIONS: Required<
   platform: "node",
   target: "node22",
   format: "esm",
-  tsconfig: "tsconfig.json",
   mode: "production",
   generatePackageJson: true,
   includeSrc: false,
