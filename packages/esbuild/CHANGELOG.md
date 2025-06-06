@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.45.2](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.2) (2025-06-06)
+
+### Bug Fixes
+
+- **esbuild:** Ensure the correct `tsconfig` type value is used
+
 ## [0.45.1](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.1) (2025-06-06)
 
 ### Miscellaneous
