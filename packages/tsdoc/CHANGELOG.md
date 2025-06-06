@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.4.1](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.4.1) (2025-06-06)
+
+### Bug Fixes
+
+- **tsdoc:** Added `noStandardTags` back to `core.json` configuration
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+- **monorepo:** Regenerate README markdown files
+
 ## [0.4.0](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.4.0) (2025-06-06)
 
 ### Features

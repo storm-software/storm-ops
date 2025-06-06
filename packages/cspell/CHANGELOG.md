@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Cspell
 
+## [0.32.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.32.0) (2025-06-06)
+
+### Features
+
+- **cspell:** Added TSDoc tags to the dictionary
+- **cspell:** Added additional names to the dictionary
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
 ## [0.31.7](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.31.7) (2025-06-06)
 
 ### Miscellaneous

@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/config-tools",
-  "version": "1.172.9",
+  "version": "1.172.10",
   "type": "module",
   "description": "⚡The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.",
   "repository": {
@@ -245,7 +245,7 @@
   ],
   "dependencies": {
     "@ltd/j-toml": "catalog:",
-    "@storm-software/config": "1.121.14",
+    "@storm-software/config": "1.121.15",
     "c12": "catalog:",
     "chalk": "catalog:",
     "commander": "catalog:",
