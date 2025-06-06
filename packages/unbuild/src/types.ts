@@ -111,7 +111,7 @@ export type UnbuildOptions = Omit<
   | "format"
   | "parallel"
 > &
-  Omit<TypeScriptBuildOptions, "entry" | "format"> & {
+  Omit<TypeScriptBuildOptions, "entry" | "format" | "tsconfig"> & {
     /**
      * The directories to run the build process out of
      *
@@ -144,6 +144,13 @@ export type UnbuildOptions = Omit<
     buildOnly?: boolean;
 
     /**
+     * The path to the TypeScript configuration file to use for the build process
+     *
+     * @defaultValue "{{projectRoot}}/tsconfig.json"
+     */
+    tsconfig?: string;
+
+    /**
      * Override the loader options used in the build process
      */
     loaders?:
@@ -157,9 +164,14 @@ export type UnbuildOptions = Omit<
 
 export type UnbuildResolvedOptions = Omit<
   TypeScriptBuildResolvedOptions,
-  "entryPoints" | "external" | "dts"
+  "entryPoints" | "external" | "dts" | "tsconfig"
 > &
   BuildConfig & {
+    /**
+     * The path to the TypeScript configuration file to use for the build process
+     */
+    tsconfig: string;
+
     /**
      * Path to a rollup configuration file relative to the project root
      */

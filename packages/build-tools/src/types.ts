@@ -81,7 +81,6 @@ export type TypeScriptBuildResolvedOptions = Omit<
       | "projectName"
       | "platform"
       | "target"
-      | "tsconfig"
       | "clean"
       | "define"
       | "generatePackageJson"
@@ -92,6 +91,7 @@ export type TypeScriptBuildResolvedOptions = Omit<
       | "verbose"
     >
   > & {
+    tsconfig?: string;
     config: StormWorkspaceConfig;
     entryPoints: string[];
     env: TypeScriptBuildEnv;
