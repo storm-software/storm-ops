@@ -7,7 +7,7 @@
       "allowMultiple": true
     },
     {
-      "tagName": "@label",
+      "tagName": "@title",
       "syntaxKind": "block"
     },
 
