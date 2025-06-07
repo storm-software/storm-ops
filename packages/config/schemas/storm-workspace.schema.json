@@ -70,6 +70,11 @@
           "format": "uri",
           "description": "The documentation site for the workspace"
         },
+        "portal": {
+          "type": "string",
+          "format": "uri",
+          "description": "The development portal site for the workspace"
+        },
         "licensing": {
           "type": "string",
           "format": "uri",

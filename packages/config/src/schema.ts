@@ -426,6 +426,12 @@ export const stormWorkspaceConfigSchema = z
       .url()
       .optional()
       .describe("The documentation site for the workspace"),
+    portal: z
+      .string()
+      .trim()
+      .url()
+      .optional()
+      .describe("The development portal site for the workspace"),
     licensing: z
       .string()
       .trim()
