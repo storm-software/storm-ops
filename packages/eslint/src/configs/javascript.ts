@@ -1,3 +1,4 @@
+import { tryGetWorkspaceConfig } from "@storm-software/config-tools/get-config";
 import defu from "defu";
 import globalsLib from "globals";
 import { pluginUnusedImports } from "../plugins";
@@ -8,6 +9,7 @@ import type {
   TypedFlatConfigItem
 } from "../types";
 import banner from "../utils/banner-plugin";
+import { getFileBanner } from "../utils/get-file-banner";
 
 export async function javascript(
   options: Partial<OptionsJavascript> &
@@ -15,6 +17,8 @@ export async function javascript(
     OptionsOverrides = {}
 ): Promise<TypedFlatConfigItem[]> {
   const { lineEndings = "unix", overrides = {}, name, globals = {} } = options;
+
+  const workspaceConfig = await tryGetWorkspaceConfig();
 
   return [
     {
@@ -49,6 +53,7 @@ export async function javascript(
         "banner/banner": [
           "error",
           {
+            banner: getFileBanner(name, workspaceConfig),
             commentType: "block",
             numNewlines: 2,
             name,

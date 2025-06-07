@@ -46,7 +46,7 @@ export type GetWorkspaceConfigOptions = {
  * @returns The config for the current Storm workspace, or throws an error if the config file could not be loaded
  */
 export const getWorkspaceConfig = (
-  skipLogs = false,
+  skipLogs = true,
   options: GetWorkspaceConfigOptions = {}
 ): Promise<StormWorkspaceConfig> => {
   let workspaceRoot = options.workspaceRoot;
@@ -65,7 +65,7 @@ export const getWorkspaceConfig = (
  * @returns The config for the current Storm workspace, or undefined if the config file could not be loaded
  */
 export const tryGetWorkspaceConfig = async (
-  skipLogs = false,
+  skipLogs = true,
   options: GetWorkspaceConfigOptions = {}
 ): Promise<StormWorkspaceConfig | undefined> => {
   try {

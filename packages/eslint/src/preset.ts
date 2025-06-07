@@ -424,31 +424,3 @@ export function getStormConfig(
 }
 
 export default getStormConfig;
-
-// const areFilesEqual = (
-//   files1: Linter.Config["files"],
-//   files2: Linter.Config["files"]
-// ): boolean => {
-//   if (files1 === files2) {
-//     return true;
-//   } else if (!files1 || !files2) {
-//     return false;
-//   } else if (
-//     (typeof files1 === "string" && typeof files2 !== "string") ||
-//     (typeof files1 !== "string" && typeof files2 === "string") ||
-//     (Array.isArray(files1) && !Array.isArray(files2)) ||
-//     (!Array.isArray(files1) && Array.isArray(files2))
-//   ) {
-//     return false;
-//   } else if (files1.length !== files2.length) {
-//     return false;
-//   }
-
-//   return files1.every((file, index) =>
-//     Array.isArray(file) && Array.isArray(files2?.[index])
-//       ? areFilesEqual(file, files2?.[index])
-//       : !Array.isArray(file) && !Array.isArray(files2?.[index])
-//         ? file?.toLowerCase() === files2?.[index]?.toLowerCase()
-//         : file === files2
-//   );
-// };

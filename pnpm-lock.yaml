@@ -706,6 +706,9 @@ importers:
       '@nx/eslint-plugin':
         specifier: 'catalog:'
         version: 21.0.3(@babel/traverse@7.27.4)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.22)(typescript@5.8.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))(@typescript-eslint/parser@8.33.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3))(eslint-config-prettier@10.1.5(eslint@9.26.0(jiti@2.4.2)))(eslint@9.26.0(jiti@2.4.2))(nx@21.0.3(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.22)(typescript@5.8.3))(@swc/core@1.7.26(@swc/helpers@0.5.13)))(typescript@5.8.3)(verdaccio@6.0.5(typanion@3.14.0))
+      '@storm-software/config-tools':
+        specifier: workspace:*
+        version: link:../config-tools
       '@stylistic/eslint-plugin':
         specifier: ^4.4.1
         version: 4.4.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)
@@ -4297,7 +4300,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -21573,7 +21575,7 @@ snapshots:
     dependencies:
       debug: 3.2.7
       is-core-module: 2.16.1
-      resolve: 1.22.10
+      resolve: 1.22.8
     transitivePeerDependencies:
       - supports-color
     optional: true

@@ -1,12 +1,17 @@
+import type { StormWorkspaceConfig } from "@storm-software/config";
 import { ACRONYMS_LIST } from "./constants";
 
 /**
  * Get a banner header to display at the top of a file
  *
  * @param name - The name to use in the display
+ * @param workspaceConfig - The workspace config to use for additional information
  * @returns The banner header
  */
-export const getFileBanner = (name = "") => {
+export const getFileBanner = (
+  name = "",
+  workspaceConfig?: StormWorkspaceConfig
+) => {
   if (!name) {
     name = process.env.STORM_NAME || "";
   }
@@ -16,7 +21,7 @@ export const getFileBanner = (name = "") => {
     padding = padding.slice(0, -1);
   }
 
-  let titleName = name;
+  let titleName = name || workspaceConfig?.name;
   if (titleName) {
     if (titleName?.startsWith("@")) {
       titleName = titleName.slice(1);
@@ -35,7 +40,11 @@ export const getFileBanner = (name = "") => {
       .join(" ");
   }
 
-  const license = (process.env.STORM_LICENSE ?? "Apache-2.0")
+  const license = (
+    process.env.STORM_LICENSE ||
+    workspaceConfig?.license ||
+    "Apache-2.0"
+  )
     .split(" ")
     .filter(word => word && word.toLowerCase() !== "license")
     .join(" ");
@@ -50,27 +59,36 @@ ${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
  is maintained by Storm Software under the ${license} license, and is
  free for commercial and private use. For more information, please visit
  our licensing page at ${
-   process.env.STORM_LICENSING
-     ? process.env.STORM_LICENSING
-     : `https://stormsoftware.com/${name ? `projects/${name}/` : ""}license`
+   process.env.STORM_LICENSING ||
+   workspaceConfig?.licensing ||
+   `https://stormsoftware.com/${name ? `projects/${name}/` : ""}license`
  }.
 
- Website:                  ${process.env.STORM_HOMEPAGE ?? "https://stormsoftware.com"}
+ Website:                  ${process.env.STORM_HOMEPAGE || workspaceConfig?.homepage || "https://stormsoftware.com"}
  Repository:               ${
-   process.env.STORM_REPOSITORY ??
+   process.env.STORM_REPOSITORY ||
+   workspaceConfig?.repository ||
    `https://github.com/storm-software${name ? `/${name}` : ""}`
  }
  Documentation:            ${
-   process.env.STORM_DOCS
-     ? process.env.STORM_DOCS
-     : `https://stormsoftware.com/${name ? `projects/${name}/` : ""}docs`
+   process.env.STORM_DOCS ||
+   workspaceConfig?.docs ||
+   `https://docs.stormsoftware.com/${name ? `projects/${name}/` : ""}`
  }
  Contact:                  ${
-   process.env.STORM_HOMEPAGE
-     ? process.env.STORM_HOMEPAGE.endsWith("/")
-       ? process.env.STORM_HOMEPAGE.slice(-1)
-       : process.env.STORM_HOMEPAGE
-     : "https://stormsoftware.com"
+   (
+     process.env.STORM_HOMEPAGE ||
+     workspaceConfig?.homepage ||
+     "https://stormsoftware.com"
+   ).endsWith("/")
+     ? (
+         process.env.STORM_HOMEPAGE ||
+         workspaceConfig?.homepage ||
+         "https://stormsoftware.com"
+       ).slice(-1)
+     : process.env.STORM_HOMEPAGE ||
+       workspaceConfig?.homepage ||
+       "https://stormsoftware.com"
  }/contact
 
  SPDX-License-Identifier:  ${license}
