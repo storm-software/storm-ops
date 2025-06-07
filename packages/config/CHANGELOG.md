@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.122.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.122.0) (2025-06-07)
+
+### Features
+
+- **config:** Added the `portal` website configuration parameter
+
 ## [1.121.15](https://github.com/storm-software/storm-ops/releases/tag/config%401.121.15) (2025-06-06)
 
 ### Miscellaneous

@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.275.11](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.275.11) (2025-06-07)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+
+### Updated Dependencies
+
+- Updated unbuild to 0.49.11
+- Updated unbuild to 0.49.11
+
 ## [1.275.10](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.275.10) (2025-06-06)
 
 ### Miscellaneous

@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.173.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.173.0) (2025-06-07)
+
+### Features
+
+- **config-tools:** Added logic to support `STORM_PORTAL` env
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+
+### Updated Dependencies
+
+- Updated config to 1.122.0
+
 ## [1.172.10](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.172.10) (2025-06-06)
 
 ### Miscellaneous

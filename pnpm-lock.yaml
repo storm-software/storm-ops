@@ -667,8 +667,8 @@ importers:
         specifier: 'catalog:'
         version: 6.1.4
       es-toolkit:
-        specifier: ^1.39.1
-        version: 1.39.1
+        specifier: ^1.39.3
+        version: 1.39.3
       esbuild:
         specifier: 'catalog:'
         version: 0.25.4
@@ -1396,8 +1396,8 @@ importers:
         specifier: 'catalog:'
         version: 12.1.0
       es-toolkit:
-        specifier: ^1.39.1
-        version: 1.39.1
+        specifier: ^1.39.3
+        version: 1.39.3
       globby:
         specifier: ^14.1.0
         version: 14.1.0
@@ -1720,8 +1720,8 @@ packages:
     resolution: {integrity: sha512-60vepv88RwcJtSHrD6MjIL6Ta3SOYbgfnkHb+ppAVK+o9mXprRtulx7VlRl3lN3bbvysAfCS7WMVfhUYemB0IQ==}
     engines: {node: '>= 16'}
 
-  '@astrojs/compiler@2.12.0':
-    resolution: {integrity: sha512-7bCjW6tVDpUurQLeKBUN9tZ5kSv5qYrGmcn0sG0IwacL7isR2ZbyyA3AdZ4uxsuUFOS2SlgReTH7wkxO6zpqWA==}
+  '@astrojs/compiler@2.12.1':
+    resolution: {integrity: sha512-WDSyVIiz7sNcJcCJxJFITu6XjfGhJ50Z0auyaWsrM+xb07IlhBLFtQuDkNy0caVHWNcKTM2LISAaHhgkRqGAVg==}
 
   '@aws-cdk/asset-awscli-v1@2.2.239':
     resolution: {integrity: sha512-dhs0hKNk/PCvpoJb/WIePrWbwieNMxfW/hS2aJLRv6QIh6M6DSPAxhJ2d7ALg8pfk2NQhHpKERNGB4KUiCodmg==}
@@ -7700,8 +7700,8 @@ packages:
     resolution: {integrity: sha512-w+5mJ3GuFL+NjVtJlvydShqE1eN3h3PbI7/5LAsYJP/2qtuMXjfL2LpHSRqo4b4eSF5K/DH1JXKUAHSB2UW50g==}
     engines: {node: '>= 0.4'}
 
-  es-toolkit@1.39.1:
-    resolution: {integrity: sha512-cJNIXXx861Brn2GaXourDn5h3WRjYVc5hHKBLve8r0vP9TFeyPCiNgJFLn30HiJyCK4lUyjDhBELBwZG1tgZ0A==}
+  es-toolkit@1.39.3:
+    resolution: {integrity: sha512-Qb/TCFCldgOy8lZ5uC7nLGdqJwSabkQiYQShmw4jyiPk1pZzaYWTwaYKYP7EgLccWYgZocMrtItrwh683voaww==}
 
   esbuild-visualizer@0.6.0:
     resolution: {integrity: sha512-oNK3JAhC7+re93VTtUdWJKTDVnA2qXPAjCAoaw9OxEFUXztszw3kcaK46u1U790T8FdUBAWv6F9Xt59P8nJCVA==}
@@ -14250,7 +14250,7 @@ snapshots:
       '@types/json-schema': 7.0.15
       js-yaml: 4.1.0
 
-  '@astrojs/compiler@2.12.0': {}
+  '@astrojs/compiler@2.12.1': {}
 
   '@aws-cdk/asset-awscli-v1@2.2.239': {}
 
@@ -19888,10 +19888,10 @@ snapshots:
 
   astro-eslint-parser@1.2.2:
     dependencies:
-      '@astrojs/compiler': 2.12.0
+      '@astrojs/compiler': 2.12.1
       '@typescript-eslint/scope-manager': 8.33.1
       '@typescript-eslint/types': 8.33.1
-      astrojs-compiler-sync: 1.1.1(@astrojs/compiler@2.12.0)
+      astrojs-compiler-sync: 1.1.1(@astrojs/compiler@2.12.1)
       debug: 4.4.1
       entities: 6.0.0
       eslint-scope: 8.3.0
@@ -19903,9 +19903,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astrojs-compiler-sync@1.1.1(@astrojs/compiler@2.12.0):
+  astrojs-compiler-sync@1.1.1(@astrojs/compiler@2.12.1):
     dependencies:
-      '@astrojs/compiler': 2.12.0
+      '@astrojs/compiler': 2.12.1
       synckit: 0.11.8
 
   async-function@1.0.0: {}
@@ -21394,7 +21394,7 @@ snapshots:
       is-date-object: 1.1.0
       is-symbol: 1.1.1
 
-  es-toolkit@1.39.1: {}
+  es-toolkit@1.39.3: {}
 
   esbuild-visualizer@0.6.0:
     dependencies:
@@ -26889,7 +26889,7 @@ snapshots:
 
   prettier-plugin-astro@0.14.1:
     dependencies:
-      '@astrojs/compiler': 2.12.0
+      '@astrojs/compiler': 2.12.1
       prettier: 3.5.3
       sass-formatter: 0.7.9
 
