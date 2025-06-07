@@ -121,6 +121,9 @@ export const setConfigEnv = (config: StormWorkspaceConfig) => {
   if (config.docs) {
     process.env[`${prefix}DOCS`] = config.docs;
   }
+  if (config.portal) {
+    process.env[`${prefix}PORTAL`] = config.portal;
+  }
   if (config.licensing) {
     process.env[`${prefix}LICENSING`] = config.licensing;
   }
