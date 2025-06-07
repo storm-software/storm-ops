@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Cspell
 
+## [0.34.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.34.0) (2025-06-07)
+
+### Features
+
+- **cspell:** Added bash and zsh scripts to dictionary
+
 ## [0.33.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.33.0) (2025-06-06)
 
 ### Features
