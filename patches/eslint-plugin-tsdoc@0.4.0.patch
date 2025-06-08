@@ -1,5 +1,5 @@
 diff --git a/lib/ConfigCache.js b/lib/ConfigCache.js
-index 55d07a04c611f65e0a27f59b5de9c89c9d393888..1989de15fd7492ea9df655f7ec9443eae4eb89d6 100644
+index 55d07a04c611f65e0a27f59b5de9c89c9d393888..27e403d0673acc9c0899ed44445505ad60b83c93 100644
 --- a/lib/ConfigCache.js
 +++ b/lib/ConfigCache.js
 @@ -29,6 +29,76 @@ exports.ConfigCache = void 0;
@@ -79,7 +79,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..1989de15fd7492ea9df655f7ec9443ea
  // How often to check for modified input files.  If a file's modification timestamp has changed, then we will
  // evict the cache entry immediately.
  const CACHE_CHECK_INTERVAL_MS = 3 * 1000;
-@@ -103,6 +173,91 @@ class ConfigCache {
+@@ -103,6 +173,103 @@ class ConfigCache {
          }
          return cachedConfig.configFile;
      }
@@ -99,7 +99,19 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..1989de15fd7492ea9df655f7ec9443ea
 +        const configFilePath = process.env.STORM_TSDOC_CONFIG_FILE
 +          ? process.env.STORM_TSDOC_CONFIG_FILE
 +          : configFile
-+          ? configFile
++          ? path.existsSync(
++              path.join(
++                workspaceRoot,
++                "node_modules",
++                configFile
++              )
++            )
++            ? path.join(
++                workspaceRoot,
++                "node_modules",
++                configFile
++              )
++            : configFile
 +          : path.join(
 +              workspaceRoot,
 +              "node_modules",

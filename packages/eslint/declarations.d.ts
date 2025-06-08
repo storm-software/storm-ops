@@ -7,3 +7,7 @@ declare module "eslint-plugin-jsx-a11y";
 declare module "@eslint/eslintrc";
 declare module "@next/eslint-plugin-next";
 declare module "eslint-config-prettier";
+
+// declare module "@storm-software/config-tools" {
+//   export function tryGetWorkspaceConfig(): any;
+// }

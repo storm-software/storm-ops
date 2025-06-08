@@ -165,7 +165,7 @@ export type MessageIds =
   | "noNewlineAfterBanner";
 
 const bannerRule = ESLintUtils.RuleCreator(
-  () => `https://docs.stormsoftware.com/eslint/rules/banner`
+  () => `https://developer.stormsoftware.com/eslint/rules/banner`
 )<Options, MessageIds>({
   name: "banner",
   meta: {

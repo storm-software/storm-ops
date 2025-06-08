@@ -4,12 +4,14 @@
     "outDir": "../../dist/out-tsc",
     "rootDir": "../..",
     "target": "ESNext",
-    "baseUrl": ".",
     "module": "ESNext",
+    "lib": ["ESNext"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "moduleResolution": "Bundler",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true
+    "moduleDetection": "force",
+    "types": ["node"],
+    "strict": true
   },
   "include": [
     "src/**/*.ts",

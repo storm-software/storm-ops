@@ -3,7 +3,7 @@ import { defineConfig } from "tsup";
 export default defineConfig([
   {
     name: "config-tools-base",
-    target: "node22",
+    target: "ESNext",
     entryPoints: ["./src/**/*.ts"],
     format: ["cjs", "esm"],
     outDir: "dist/src",
@@ -13,11 +13,12 @@ export default defineConfig([
     clean: false,
     dts: true,
     sourcemap: false,
-    tsconfig: "./tsconfig.json"
+    tsconfig: "./tsconfig.json",
+    shims: true
   },
   {
     name: "config-tools-bin",
-    target: "node22",
+    target: "ESNext",
     entryPoints: ["bin/*.ts"],
     format: ["cjs", "esm"],
     outDir: "dist/bin",

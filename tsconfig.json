@@ -10,8 +10,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
-    "importHelpers": true,
-    "preserveSymlinks": true
+    "importHelpers": true
   },
   "include": ["**/*.ts", "**/*.js", "**/*.json"],
   "exclude": ["node_modules", "tmp"]

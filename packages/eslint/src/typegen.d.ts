@@ -820,7 +820,7 @@ Backward pagination arguments
   'astro/valid-compile'?: Linter.RuleEntry<[]>
   /**
    * Ensures the file has a organization specific banner at the top of source code files
-   * @see https://docs.stormsoftware.com/eslint/rules/banner
+   * @see https://developer.stormsoftware.com/eslint/rules/banner
    */
   'banner/banner'?: Linter.RuleEntry<BannerBanner>
   /**
