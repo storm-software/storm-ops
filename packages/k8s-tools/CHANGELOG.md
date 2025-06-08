@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.33.13](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.33.13) (2025-06-08)
+
+### Miscellaneous
+
+- **cspell:** Added missing words to dictionary
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.275.13
+- Updated workspace-tools to 1.275.13
+- Updated config-tools to 1.173.2
+- Updated config-tools to 1.173.2
+- Updated config to 1.122.2
+- Updated config to 1.122.2
+
 ## [0.33.12](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.33.12) (2025-06-08)
 
 ### Miscellaneous

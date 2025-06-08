@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.275.13](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.275.13) (2025-06-08)
+
+### Miscellaneous
+
+- **cspell:** Added missing words to dictionary
+
+### Updated Dependencies
+
+- Updated unbuild to 0.49.13
+- Updated unbuild to 0.49.13
+
 ## [1.275.12](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.275.12) (2025-06-08)
 
 ### Miscellaneous

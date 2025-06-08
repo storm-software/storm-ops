@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Cspell
 
+## [0.34.2](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.34.2) (2025-06-08)
+
+### Bug Fixes
+
+- **cspell:** Resolved issue with missing dictionary update
+
 ## [0.34.1](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.34.1) (2025-06-08)
 
 ### Miscellaneous

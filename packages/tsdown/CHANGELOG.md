@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.36.13](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.36.13) (2025-06-08)
+
+### Miscellaneous
+
+- **cspell:** Added missing words to dictionary
+
+### Updated Dependencies
+
+- Updated config-tools to 1.173.2
+- Updated config to 1.122.2
+
 ## [0.36.12](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.36.12) (2025-06-08)
 
 ### Miscellaneous

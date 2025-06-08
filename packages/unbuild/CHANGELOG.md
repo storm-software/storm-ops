@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.49.13](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.13) (2025-06-08)
+
+### Miscellaneous
+
+- **cspell:** Added missing words to dictionary
+
+### Updated Dependencies
+
+- Updated config-tools to 1.173.2
+- Updated config to 1.122.2
+
 ## [0.49.12](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.12) (2025-06-08)
 
 ### Miscellaneous

@@ -2,6 +2,16 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.173.2](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.173.2) (2025-06-08)
+
+### Miscellaneous
+
+- **cspell:** Added missing words to dictionary
+
+### Updated Dependencies
+
+- Updated config to 1.122.2
+
 ## [1.173.1](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.173.1) (2025-06-08)
 
 ### Bug Fixes

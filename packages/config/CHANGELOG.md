@@ -2,6 +2,12 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.122.2](https://github.com/storm-software/storm-ops/releases/tag/config%401.122.2) (2025-06-08)
+
+### Miscellaneous
+
+- **cspell:** Added missing words to dictionary
+
 ## [1.122.1](https://github.com/storm-software/storm-ops/releases/tag/config%401.122.1) (2025-06-08)
 
 ### Miscellaneous
