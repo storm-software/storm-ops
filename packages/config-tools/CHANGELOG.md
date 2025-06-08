@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.173.1](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.173.1) (2025-06-08)
+
+### Bug Fixes
+
+- **eslint:** Update banner plugin to use workspace config and change tsdoc path
+- **eslint:** Resolve issue displaying incorrect banner URLs
+
+### Miscellaneous
+
+- **monorepo:** Improve workspace package dependencies
+- **cspell:** Add new item to CSpell dictionary
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config to 1.122.1
+
 ## [1.173.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.173.0) (2025-06-07)
 
 ### Features

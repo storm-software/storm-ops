@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/git-tools",
-  "version": "2.111.21",
+  "version": "2.111.22",
   "type": "module",
   "description": "Tools for managing Git repositories within a Nx workspace.",
   "repository": {

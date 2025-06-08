@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.159.10](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.159.10) (2025-06-08)
+
+### Bug Fixes
+
+- **eslint:** Update banner plugin to use workspace config and change tsdoc path
+- **eslint:** Resolve issue displaying incorrect banner URLs
+
+### Miscellaneous
+
+- **cspell:** Add new item to CSpell dictionary
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config-tools to 1.173.1
+- Updated config to 1.122.1
+
 ## [0.159.9](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.159.9) (2025-06-06)
 
 ### Bug Fixes
