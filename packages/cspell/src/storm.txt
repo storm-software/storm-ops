@@ -329,6 +329,7 @@ fastly
 tinyexec
 ohash
 clicolor
+hookable
 
 # Nix
 nixos
