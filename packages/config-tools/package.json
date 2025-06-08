@@ -2,7 +2,7 @@
   "name": "@storm-software/config-tools",
   "version": "1.173.0",
   "type": "module",
-  "description": "⚡The Storm-Ops monorepo contains utility applications, tools, and various libraries to create modern and scalable web applications.",
+  "description": "A package containing various utilities to support custom workspace configurations and environment management for Storm Software projects, including configuration file handling, environment variable management, and logging utilities.",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
@@ -228,24 +228,16 @@
     "dist/**/*"
   ],
   "keywords": [
-    "storm-stack",
     "storm-software",
     "storm",
-    "stormstack",
     "storm-ops",
-    "acidic",
-    "acidic-lang",
-    "acidic-model",
-    "cyclone-ui",
-    "nextjs",
-    "prisma",
-    "graphql",
     "sullivanpj",
-    "monorepo"
+    "monorepo",
+    "config"
   ],
   "dependencies": {
     "@ltd/j-toml": "catalog:",
-    "@storm-software/config": "1.122.0",
+    "@storm-software/config": "workspace:*",
     "c12": "catalog:",
     "chalk": "catalog:",
     "commander": "catalog:",

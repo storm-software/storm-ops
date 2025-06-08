@@ -158,60 +158,6 @@
       "release"
     ]
   },
-  "pnpm": {
-    "overrides": {
-      "@cypress/request": ">=3.0.0",
-      "@storm-software/build-tools": "workspace:*",
-      "@storm-software/cloudflare-tools": "workspace:*",
-      "@storm-software/config": "workspace:*",
-      "@storm-software/config-tools": "workspace:*",
-      "@storm-software/eslint": "workspace:*",
-      "@storm-software/git-tools": "workspace:*",
-      "@storm-software/k8s-tools": "workspace:*",
-      "@storm-software/pulumi-tools": "workspace:*",
-      "@storm-software/linting-tools": "workspace:*",
-      "@storm-software/markdownlint": "workspace:*",
-      "@storm-software/projen": "workspace:*",
-      "@storm-software/prettier": "workspace:*",
-      "@storm-software/untyped": "workspace:*",
-      "@storm-software/esbuild": "workspace:*",
-      "@storm-software/tsdown": "workspace:*",
-      "@storm-software/unbuild": "workspace:*",
-      "@storm-software/terraform-tools": "workspace:*",
-      "@storm-software/testing-tools": "workspace:*",
-      "@storm-software/tsconfig": "workspace:*",
-      "@storm-software/tsdoc": "workspace:*",
-      "@storm-software/workspace-tools": "workspace:*",
-      "@storm-software/terraform-modules": "workspace:*",
-      "@storm-software/cspell": "workspace:*",
-      "@storm-software/tools-scripts": "workspace:*",
-      "axios": "1.8.2",
-      "create-storm-workspace": "workspace:*",
-      "got": "14.3.0",
-      "load-plugin": "6.0.3",
-      "request": ">=2.88.2",
-      "tough-cookie": "4.1.4"
-    },
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "@swc/core",
-      "aws-crt",
-      "core-js",
-      "core-js-pure",
-      "esbuild",
-      "lefthook",
-      "nx",
-      "protobufjs",
-      "sharp",
-      "unrs-resolver",
-      "workerd"
-    ],
-    "patchedDependencies": {
-      "eslint-plugin-pnpm@0.3.0": "patches/eslint-plugin-pnpm@0.3.0.patch",
-      "tsup@8.4.0": "patches/tsup@8.4.0.patch",
-      "eslint-plugin-tsdoc@0.4.0": "patches/eslint-plugin-tsdoc@0.4.0.patch"
-    }
-  },
   "prettier": "./packages/prettier/src/config.json",
   "triggerEmptyDevReleaseByIncrementingThisNumber": 0
 }
