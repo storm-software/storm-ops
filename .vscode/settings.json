@@ -183,5 +183,6 @@
   "eslint.codeAction.showDocumentation": {
     "enable": true
   },
-  "eslint.useFlatConfig": false
+  "eslint.useFlatConfig": false,
+  "nxConsole.generateAiAgentRules": true
 }
