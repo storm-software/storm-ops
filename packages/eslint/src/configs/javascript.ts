@@ -1,4 +1,4 @@
-import { tryGetWorkspaceConfig } from "@storm-software/config-tools/get-config";
+import { tryGetWorkspaceConfig } from "@storm-software/config-tools";
 import defu from "defu";
 import globalsLib from "globals";
 import { pluginUnusedImports } from "../plugins";
@@ -53,10 +53,10 @@ export async function javascript(
         "banner/banner": [
           "error",
           {
+            name,
             banner: getFileBanner(name, workspaceConfig),
             commentType: "block",
             numNewlines: 2,
-            name,
             lineEndings
           }
         ]

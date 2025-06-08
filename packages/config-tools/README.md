@@ -40,6 +40,7 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 
 <!-- START doctoc -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 ## Table of Contents
 
 - [Storm Configuration Tools](#storm-configuration-tools)
@@ -69,7 +70,9 @@ This package is part of the <b>⚡Storm-Ops</b> monorepo. The Storm-Ops packages
 # Storm Configuration Tools
 
 A package containing various utilities to support custom workspace
-configurations
+configurations and environment management for Storm Software projects, including
+configuration file handling, environment variable management, and logging
+utilities.
 
 Below is a list of the available configuration values that can be set through
 environment variables:

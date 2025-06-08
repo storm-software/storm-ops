@@ -328,6 +328,7 @@ workerd
 fastly
 tinyexec
 ohash
+clicolor
 
 # Nix
 nixos
