@@ -330,6 +330,10 @@ tinyexec
 ohash
 clicolor
 hookable
+tses
+tsestree
+kvhttp
+dotenvx
 
 # Nix
 nixos
