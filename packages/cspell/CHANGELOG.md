@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cspell
 
+## [0.34.3](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.34.3) (2025-06-12)
+
+### Miscellaneous
+
+- **cspell:** Added `dotenvx` to dictionary
+- **monorepo:** Update workspace package links and README markdown files
+
 ## [0.34.2](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.34.2) (2025-06-08)
 
 ### Bug Fixes
