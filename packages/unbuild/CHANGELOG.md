@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.49.15](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.15) (2025-06-14)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config-tools to 1.173.4
+- Updated config to 1.122.4
+
 ## [0.49.14](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.14) (2025-06-12)
 
 ### Miscellaneous
