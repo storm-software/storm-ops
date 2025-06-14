@@ -2,7 +2,7 @@
   "name": "@storm-software/eslint",
   "version": "0.159.10",
   "type": "module",
-  "description": "⚡ A package containing the base ESLint configuration used by Storm Software across many projects.",
+  "description": "A package containing the base ESLint configuration used by Storm Software across many projects.",
   "repository": {
     "type": "github",
     "url": "https://github.com/storm-software/storm-ops",
