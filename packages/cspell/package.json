@@ -134,7 +134,7 @@
     "@cspell/dict-css": "^4.0.17",
     "@cspell/dict-docker": "^1.1.14",
     "@cspell/dict-dotnet": "^5.0.9",
-    "@cspell/dict-en-common-misspellings": "^2.1.0",
+    "@cspell/dict-en-common-misspellings": "^2.1.1",
     "@cspell/dict-en-gb": "^4.1.65",
     "@cspell/dict-en_us": "^4.4.11",
     "@cspell/dict-filetypes": "^3.0.12",
