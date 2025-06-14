@@ -248,7 +248,6 @@ blockquote
 typia
 docgen
 doctoc
-dpdm
 enjoi
 esbuild
 espree
@@ -309,8 +308,6 @@ magicast
 nanotar
 unctx
 unenv
-unrs
-rwsdk
 uqr
 ghostty
 agola
@@ -330,10 +327,17 @@ tinyexec
 ohash
 clicolor
 hookable
-tses
 tsestree
-kvhttp
 dotenvx
+cmder
+
+# Acronyms
+dpdm
+kvhttp
+unrs
+rwsdk
+tses
+rxvt
 
 # Nix
 nixos
