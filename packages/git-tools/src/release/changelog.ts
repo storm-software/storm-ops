@@ -1032,8 +1032,8 @@ async function applyChangesAndExit(
     await gitPush({
       gitRemote: args.gitRemote,
       dryRun: args.dryRun,
-      verbose: args.verbose,
-      additionalArgs: ["--signed=if-asked"]
+      verbose: args.verbose
+      // additionalArgs: ["--signed=if-asked"]
     });
   }
 
