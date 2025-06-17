@@ -330,6 +330,8 @@ hookable
 tsestree
 dotenvx
 cmder
+shellescape
+monodon
 
 # Acronyms
 dpdm
