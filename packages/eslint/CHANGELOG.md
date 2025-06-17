@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.159.13](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.159.13) (2025-06-17)
+
+### Miscellaneous
+
+- **eslint:** Regenerate typegen declaration file
+- **monorepo:** Regenerate README markdown files
+- **monorepo:** Update respository package dependencies
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config-tools to 1.173.5
+- Updated config to 1.122.5
+
 ## [0.159.12](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.159.12) (2025-06-14)
 
 ### Miscellaneous

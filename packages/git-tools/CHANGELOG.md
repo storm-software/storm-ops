@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.111.24](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.111.24) (2025-06-17)
+
+### Bug Fixes
+
+- **git-tools:** Remove unused signing arg to changelog push
+
+### Miscellaneous
+
+- **git-tools:** Added `--signed=if-asked` to changelog github push
+- **git-tools:** Resolve lint rule violations
+- **monorepo:** Regenerate README markdown files
+
 ## [2.111.23](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.111.23) (2025-06-12)
 
 ### Miscellaneous

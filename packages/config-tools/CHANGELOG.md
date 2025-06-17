@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.173.5](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.173.5) (2025-06-17)
+
+### Bug Fixes
+
+- **git-tools:** Remove unused signing arg to changelog push
+
+### Miscellaneous
+
+- **git-tools:** Added `--signed=if-asked` to changelog github push
+- **monorepo:** Regenerate README markdown files
+- **monorepo:** Update respository package dependencies
+- **monorepo:** Regenerate README markdown files
+
+### Updated Dependencies
+
+- Updated config to 1.122.5
+
 ## [1.173.4](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.173.4) (2025-06-14)
 
 ### Miscellaneous
