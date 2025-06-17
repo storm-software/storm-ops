@@ -22,6 +22,7 @@ void (async () => {
       config
     );
     exitWithSuccess(config);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     exitWithError(config);
     process.exit(1);
