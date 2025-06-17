@@ -1,4 +1,5 @@
 import type { StormWorkspaceConfig } from "@storm-software/config";
+import { titleCase } from "@stryke/string-format/title-case";
 import { ReleaseVersion } from "nx/src/command-line/release/utils/shared";
 import { format, resolveConfig } from "prettier";
 
@@ -54,26 +55,6 @@ ${changelogContents}`,
     }
   );
 }
-
-export const titleCase = (input?: string): string | undefined => {
-  if (!input) {
-    return "";
-  }
-
-  return (
-    input
-      // eslint-disable-next-line no-useless-escape
-      .split(/(?=[A-Z])|[\.\-\s_]/)
-      .map(s => s.trim())
-      .filter(s => !!s)
-      .map(s =>
-        s
-          ? s.toLowerCase().charAt(0).toUpperCase() + s.toLowerCase().slice(1)
-          : s
-      )
-      .join(" ")
-  );
-};
 
 export function generateChangelogTitle(
   version: string,

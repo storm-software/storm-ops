@@ -1,5 +1,6 @@
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
+import { titleCase } from "@stryke/string-format/title-case";
 import * as chalk from "chalk";
 import { prompt } from "enquirer";
 import { readFileSync, rmSync, writeFileSync } from "node:fs";
@@ -7,6 +8,7 @@ import type { DependencyBump } from "nx/release/changelog-renderer";
 import { ChangelogOptions } from "nx/src/command-line/release/command-object";
 import {
   NxReleaseConfig,
+  ResolvedCreateRemoteReleaseProvider,
   createNxReleaseConfig,
   handleNxReleaseConfigError
 } from "nx/src/command-line/release/config/config";
@@ -38,6 +40,7 @@ import { launchEditor } from "nx/src/command-line/release/utils/launch-editor";
 import { printAndFlushChanges } from "nx/src/command-line/release/utils/print-changes";
 import { printConfigAndExit } from "nx/src/command-line/release/utils/print-config";
 import { defaultCreateReleaseProvider } from "nx/src/command-line/release/utils/remote-release-clients/github";
+import { createRemoteReleaseClient } from "nx/src/command-line/release/utils/remote-release-clients/remote-release-client";
 import { resolveNxJsonConfigErrorMessage } from "nx/src/command-line/release/utils/resolve-nx-json-error-message";
 import {
   ReleaseVersion,
@@ -74,8 +77,7 @@ import { ReleaseType, valid } from "semver";
 import { dirSync } from "tmp";
 import {
   generateChangelogContent,
-  generateChangelogTitle,
-  titleCase
+  generateChangelogTitle
 } from "../utilities/changelog-utils";
 import { gitTag } from "../utilities/git-utils";
 import StormChangelogRenderer from "./changelog-renderer";
@@ -1048,11 +1050,9 @@ async function applyChangesAndExit(
 async function generateChangelogForWorkspace({
   tree,
   args,
-  projectGraph,
   nxReleaseConfig,
   workspaceChangelogVersion,
-  changes,
-  commits
+  changes
 }: {
   tree: Tree;
   args: ChangelogOptions;
@@ -1143,6 +1143,13 @@ async function generateChangelogForWorkspace({
 
   const githubRepoData = getGitHubRepoData(gitRemote!, config.createRelease);
 
+  const remoteReleaseClient = await createRemoteReleaseClient(
+    config.createRelease as unknown as
+      | false
+      | ResolvedCreateRemoteReleaseProvider,
+    gitRemote
+  );
+
   const changelogRenderer = new StormChangelogRenderer({
     changes,
     changelogEntryVersion: releaseVersion.rawVersion,
@@ -1151,7 +1158,8 @@ async function generateChangelogForWorkspace({
     repoData: githubRepoData!,
     entryWhenNoChanges: config.entryWhenNoChanges,
     changelogRenderOptions: config.renderOptions,
-    conventionalCommitsConfig: nxReleaseConfig.conventionalCommits
+    conventionalCommitsConfig: nxReleaseConfig.conventionalCommits,
+    remoteReleaseClient: remoteReleaseClient!
   });
   let contents = await changelogRenderer.render();
 
@@ -1271,6 +1279,13 @@ async function generateChangelogForProjects({
         config.createRelease
       );
 
+      const remoteReleaseClient = await createRemoteReleaseClient(
+        config.createRelease as unknown as
+          | false
+          | ResolvedCreateRemoteReleaseProvider,
+        gitRemote
+      );
+
       const changelogRenderer = new StormChangelogRenderer({
         changes,
         changelogEntryVersion: releaseVersion.rawVersion,
@@ -1289,7 +1304,8 @@ async function generateChangelogForProjects({
         conventionalCommitsConfig: releaseGroup.versionPlans
           ? null
           : nxReleaseConfig.conventionalCommits,
-        dependencyBumps: projectToAdditionalDependencyBumps.get(project.name)
+        dependencyBumps: projectToAdditionalDependencyBumps.get(project.name),
+        remoteReleaseClient: remoteReleaseClient!
       });
       let contents = await changelogRenderer.render();
       output.log({

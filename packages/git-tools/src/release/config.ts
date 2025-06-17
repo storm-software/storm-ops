@@ -24,6 +24,9 @@ export const DEFAULT_RELEASE_GROUP_CONFIG = {
   version: {
     groupPreVersionCommand: "pnpm build",
     useLegacyVersioning: true,
+    currentVersionResolver: "git-tag",
+    specifierSource: "conventional-commits",
+
     generator: "@storm-software/workspace-tools:release-version",
     generatorOptions: {
       currentVersionResolver: "git-tag",
@@ -55,6 +58,9 @@ export const DEFAULT_RELEASE_CONFIG = {
   version: {
     preVersionCommand: "pnpm build",
     useLegacyVersioning: true,
+    currentVersionResolver: "git-tag",
+    specifierSource: "conventional-commits",
+
     generator: "@storm-software/workspace-tools:release-version",
     generatorOptions: {
       currentVersionResolver: "git-tag",

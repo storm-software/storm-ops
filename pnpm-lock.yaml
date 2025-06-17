@@ -990,6 +990,9 @@ importers:
       '@nx/js':
         specifier: 'catalog:'
         version: 21.0.3(@babel/traverse@7.27.4)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.23)(typescript@5.8.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))(nx@21.0.3(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.23)(typescript@5.8.3))(@swc/core@1.7.26(@swc/helpers@0.5.13)))(verdaccio@6.0.5(typanion@3.14.0))
+      '@stryke/string-format':
+        specifier: 0.4.11
+        version: 0.4.11
       '@textlint/ast-node-types':
         specifier: 14.4.2
         version: 14.4.2
@@ -4315,7 +4318,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -5410,6 +5412,21 @@ packages:
 
   '@storybook/csf@0.1.13':
     resolution: {integrity: sha512-7xOOwCLGB3ebM87eemep89MYRFTko+D8qE7EdAAq74lgdqRR5cOUtYWJLjO2dLtP94nqoOdHJo6MdLLKzg412Q==}
+
+  '@stryke/convert@0.2.3':
+    resolution: {integrity: sha512-zJQlwOX3c4M7jFCeXsQiC8BVoo6GokqjvDMVg83uOrAKmB0TuIilJ0J1M+5gtdI3V85a+z/+GDHfCwQxwzCdFQ==}
+
+  '@stryke/helpers@0.6.2':
+    resolution: {integrity: sha512-resRMHLuQ9LoVEh0o+K7OgcKAlGmhEneRABTRTmvjo7D37TjbYqND0QYWUu95cG9ZgwqU5m207UvWNJhu621uQ==}
+
+  '@stryke/string-format@0.4.11':
+    resolution: {integrity: sha512-N/eE7MbxpreWCQ1N0CTPcJOAnRKWcFjzNlqF40Bi6OsqZ3rJY+1dcgtRFjVi8TdtKtwo2BmfLItMFePADkD+Hg==}
+
+  '@stryke/type-checks@0.3.5':
+    resolution: {integrity: sha512-ekdrdA9s3EapKh/v7ljzRUX00lHHRTmrgFnRbFghQhX2F/DoEMisYAcnDNb9HDPOROjEDLNOCflgrmZCh+LEHA==}
+
+  '@stryke/types@0.8.5':
+    resolution: {integrity: sha512-2/EIsTS6tm8rnr2w+7n54LjjNK0ZrHby35Ef8cDyXowmzdy09/aGYtQUkmBydfSObE0rAxHrUtDywu2lhFtJFQ==}
 
   '@stylistic/eslint-plugin-migrate@4.4.1':
     resolution: {integrity: sha512-9HgQi6MfLp2ctYnrHbqkgEFHNwwSKoU7rGV7dJsVwWyVhlgglh8AvkfcYxY1mnyMCMZulFNs5XEQsxUaaS0UrQ==}
@@ -18819,6 +18836,28 @@ snapshots:
   '@storybook/csf@0.1.13':
     dependencies:
       type-fest: 2.19.0
+
+  '@stryke/convert@0.2.3':
+    dependencies:
+      '@stryke/type-checks': 0.3.5
+      '@stryke/types': 0.8.5
+
+  '@stryke/helpers@0.6.2':
+    dependencies:
+      '@stryke/convert': 0.2.3
+      '@stryke/type-checks': 0.3.5
+      '@stryke/types': 0.8.5
+
+  '@stryke/string-format@0.4.11':
+    dependencies:
+      '@stryke/helpers': 0.6.2
+      '@stryke/types': 0.8.5
+
+  '@stryke/type-checks@0.3.5':
+    dependencies:
+      '@stryke/types': 0.8.5
+
+  '@stryke/types@0.8.5': {}
 
   '@stylistic/eslint-plugin-migrate@4.4.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)':
     dependencies:

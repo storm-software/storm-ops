@@ -648,6 +648,9 @@ export class StormNxWorkspace extends NxWorkspace {
       releaseTagPattern,
       version: {
         groupPreVersionCommand,
+        currentVersionResolver: "git-tag",
+        specifierSource: "conventional-commits",
+
         generator: "@storm-software/workspace-tools:release-version",
         generatorOptions: {
           currentVersionResolver: "git-tag",

@@ -360,10 +360,8 @@
         "version": {
           "groupPreVersionCommand": "pnpm build",
           "generator": "@storm-software/workspace-tools:release-version",
-          "generatorOptions": {
-            "currentVersionResolver": "git-tag",
-            "specifierSource": "conventional-commits"
-          }
+          "currentVersionResolver": "git-tag",
+          "specifierSource": "conventional-commits"
         }
       }
     }

@@ -509,8 +509,8 @@ function hasInvalidConventionalCommitsConfig(
   // at the root
   if (
     userConfig.version?.conventionalCommits === true &&
-    (userConfig.version?.generatorOptions?.currentVersionResolver ||
-      userConfig.version?.generatorOptions?.specifierSource)
+    (userConfig.version?.currentVersionResolver ||
+      userConfig.version?.specifierSource)
   ) {
     return true;
   }
@@ -519,8 +519,8 @@ function hasInvalidConventionalCommitsConfig(
     for (const group of Object.values(userConfig.groups)) {
       if (
         group.version?.conventionalCommits === true &&
-        (group.version?.generatorOptions?.currentVersionResolver ||
-          group.version?.generatorOptions?.specifierSource)
+        (group.version?.currentVersionResolver ||
+          group.version?.specifierSource)
       ) {
         return true;
       }
@@ -764,22 +764,21 @@ export async function createNxReleaseConfig(
   );
 
   // these options are not supported at the group level, only the root/command level
-  const rootVersionWithoutGlobalOptions = {} as NxReleaseVersionConfig;
+  let rootVersionWithoutGlobalOptions = {} as NxReleaseVersionConfig;
   delete rootVersionWithoutGlobalOptions.git;
   delete rootVersionWithoutGlobalOptions.preVersionCommand;
 
   // Apply conventionalCommits shorthand to the final group defaults if explicitly configured in the original user config
   if (userConfig.version?.conventionalCommits === true) {
-    rootVersionWithoutGlobalOptions.generatorOptions = {
-      ...rootVersionWithoutGlobalOptions.generatorOptions,
+    rootVersionWithoutGlobalOptions = {
+      ...rootVersionWithoutGlobalOptions,
       currentVersionResolver: "git-tag",
       specifierSource: "conventional-commits"
     };
   }
   if (userConfig.version?.conventionalCommits === false) {
-    delete rootVersionWithoutGlobalOptions.generatorOptions
-      ?.currentVersionResolver;
-    delete rootVersionWithoutGlobalOptions.generatorOptions?.specifierSource;
+    delete rootVersionWithoutGlobalOptions?.currentVersionResolver;
+    delete rootVersionWithoutGlobalOptions?.specifierSource;
   }
 
   const groups =
@@ -923,19 +922,19 @@ export async function createNxReleaseConfig(
 
     // Apply conventionalCommits shorthand to the final group if explicitly configured in the original group
     if (releaseGroup.version?.conventionalCommits === true) {
-      finalReleaseGroup.version.generatorOptions = {
-        ...finalReleaseGroup.version.generatorOptions,
+      finalReleaseGroup.version = {
+        ...finalReleaseGroup.version,
         currentVersionResolver: "git-tag",
         specifierSource: "conventional-commits"
       };
     }
-    if (
-      releaseGroup.version?.conventionalCommits === false &&
-      releaseGroupName !== IMPLICIT_DEFAULT_RELEASE_GROUP
-    ) {
-      delete finalReleaseGroup.version.generatorOptions.currentVersionResolver;
-      delete finalReleaseGroup.version.generatorOptions.specifierSource;
-    }
+    // if (
+    //   releaseGroup.version?.conventionalCommits === false &&
+    //   releaseGroupName !== IMPLICIT_DEFAULT_RELEASE_GROUP
+    // ) {
+    //   delete finalReleaseGroup.version?.currentVersionResolver;
+    //   delete finalReleaseGroup.version?.specifierSource;
+    // }
 
     releaseGroups[releaseGroupName] = finalReleaseGroup;
   }
