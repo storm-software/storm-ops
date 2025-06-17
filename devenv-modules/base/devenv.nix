@@ -63,6 +63,11 @@ in {
   };
 
   enterShell = ''
+    git config commit.gpgsign true
+    git config tag.gpgSign true
+    git config lfs.allowincompletepush true
+    git config init.defaultBranch main
+
     pnpm update --recursive --workspace
     pnpm install
     bootstrap
