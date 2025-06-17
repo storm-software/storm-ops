@@ -161,14 +161,14 @@
     }
   },
   "dependencies": {
-    "@storm-software/config": "1.122.4",
-    "@storm-software/config-tools": "1.173.4",
-    "@storm-software/workspace-tools": "1.275.15",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/workspace-tools": "workspace:*",
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
-    "@nx-tools/container-metadata": "^6.7.1",
-    "@nx-tools/nx-container": "^6.7.1",
+    "@nx-tools/container-metadata": "^6.8.0",
+    "@nx-tools/nx-container": "^6.8.0",
     "@nx/devkit": "catalog:",
     "@nx/workspace": "catalog:",
     "@types/js-yaml": "4.0.9",
