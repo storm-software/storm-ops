@@ -990,15 +990,27 @@ async function applyChangesAndExit(
 
   // Generate a new commit for the changes, if configured to do so
   if (args.gitCommit ?? nxReleaseConfig.changelog?.git.commit) {
+    let gitCommitArgs =
+      args.gitCommitArgs ?? nxReleaseConfig.changelog?.git.commitArgs;
+    if (!gitCommitArgs) {
+      gitCommitArgs = [];
+    }
+    if (typeof gitCommitArgs === "string") {
+      gitCommitArgs = gitCommitArgs.split(" ");
+    }
+    if (!gitCommitArgs.includes("-S")) {
+      gitCommitArgs.push("-S");
+    }
+
     await commitChanges({
       changedFiles,
       deletedFiles,
       isDryRun: !!args.dryRun,
       isVerbose: !!args.verbose,
       gitCommitMessages: commitMessageValues,
-      gitCommitArgs:
-        args.gitCommitArgs || nxReleaseConfig.changelog?.git.commitArgs
+      gitCommitArgs
     });
+
     // Resolve the commit we just made
     latestCommit = await getCommitHash("HEAD");
   } else if (
@@ -1036,7 +1048,6 @@ async function applyChangesAndExit(
       gitRemote: args.gitRemote,
       dryRun: args.dryRun,
       verbose: args.verbose
-      // additionalArgs: ["--signed=if-asked"]
     });
   }
 
