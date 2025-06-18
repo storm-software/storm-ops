@@ -782,8 +782,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       eslint-plugin-perfectionist:
-        specifier: ^4.14.0
-        version: 4.14.0(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)
+        specifier: ^4.15.0
+        version: 4.15.0(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)
       eslint-plugin-pnpm:
         specifier: 0.3.0
         version: 0.3.0(patch_hash=72dcde755c336eeca3e6170de1106fd85ecb66171e060788f80df45cea29bc9b)(eslint@9.26.0(jiti@2.4.2))
@@ -4318,6 +4318,7 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
+    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -7966,8 +7967,8 @@ packages:
   eslint-plugin-paths@1.1.0:
     resolution: {integrity: sha512-Ye633sqwSy/GE5dLUI4zpxXoekIyQOD8FyYi2H0YkBws3Q4xjX/ycIzpDWt7BDAlKhbXYGk2BgP9qmNFnEX03w==}
 
-  eslint-plugin-perfectionist@4.14.0:
-    resolution: {integrity: sha512-BkhiOqzdum8vQSFgj1/q5+6UUWPMn4GELdxuX7uIsGegmAeH/+LnWsiVxgMrxalD0p68sYfMeKaHF1NfrpI/mg==}
+  eslint-plugin-perfectionist@4.15.0:
+    resolution: {integrity: sha512-pC7PgoXyDnEXe14xvRUhBII8A3zRgggKqJFx2a82fjrItDs1BSI7zdZnQtM2yQvcyod6/ujmzb7ejKPx8lZTnw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
       eslint: '>=8.45.0'
@@ -21867,7 +21868,7 @@ snapshots:
     dependencies:
       comment-json: 4.2.5
 
-  eslint-plugin-perfectionist@4.14.0(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3):
+  eslint-plugin-perfectionist@4.15.0(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3):
     dependencies:
       '@typescript-eslint/types': 8.34.1
       '@typescript-eslint/utils': 8.34.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)

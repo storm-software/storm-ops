@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cspell
 
+## [0.34.6](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.34.6) (2025-06-18)
+
+### Miscellaneous
+
+- **cspell:** Added package name to tools list
+  ([8fb81e29b](https://github.com/storm-software/storm-ops/commit/8fb81e29b))
+
 ## [0.34.5](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.34.5) (2025-06-17)
 
 ### Miscellaneous

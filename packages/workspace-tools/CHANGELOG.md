@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.275.17](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.275.17) (2025-06-18)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with configuration provided to
+  `StormChangelogGenerator` class
+  ([d1e2d63b9](https://github.com/storm-software/storm-ops/commit/d1e2d63b9))
+
 ## [1.275.16](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.275.16) (2025-06-17)
 
 ### Miscellaneous

@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.111.25](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.111.25) (2025-06-18)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue bundling `@stryke/string-format` package
+  ([a1fbc087c](https://github.com/storm-software/storm-ops/commit/a1fbc087c))
+- **git-tools:** Resolve issue with configuration provided to
+  `StormChangelogGenerator` class
+  ([d1e2d63b9](https://github.com/storm-software/storm-ops/commit/d1e2d63b9))
+
+### Miscellaneous
+
+- **git-tools:** Resolve lint rule violations
+  ([89d24ac54](https://github.com/storm-software/storm-ops/commit/89d24ac54))
+
 ## [2.111.24](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.111.24) (2025-06-17)
 
 ### Bug Fixes

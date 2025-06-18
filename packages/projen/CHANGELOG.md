@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.15.23](https://github.com/storm-software/storm-ops/releases/tag/projen%400.15.23) (2025-06-18)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with configuration provided to
+  `StormChangelogGenerator` class
+  ([d1e2d63b9](https://github.com/storm-software/storm-ops/commit/d1e2d63b9))
+
 ## [0.15.22](https://github.com/storm-software/storm-ops/releases/tag/projen%400.15.22) (2025-06-17)
 
 ### Miscellaneous

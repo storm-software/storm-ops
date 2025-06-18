@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.173.6](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.173.6) (2025-06-18)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue bundling `@stryke/string-format` package
+  ([a1fbc087c](https://github.com/storm-software/storm-ops/commit/a1fbc087c))
+
 ## [1.173.5](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.173.5) (2025-06-17)
 
 ### Bug Fixes
