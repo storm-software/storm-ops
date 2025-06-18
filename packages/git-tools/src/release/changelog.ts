@@ -8,7 +8,6 @@ import type { DependencyBump } from "nx/release/changelog-renderer";
 import { ChangelogOptions } from "nx/src/command-line/release/command-object";
 import {
   NxReleaseConfig,
-  ResolvedCreateRemoteReleaseProvider,
   createNxReleaseConfig,
   handleNxReleaseConfigError
 } from "nx/src/command-line/release/config/config";
@@ -40,7 +39,6 @@ import { launchEditor } from "nx/src/command-line/release/utils/launch-editor";
 import { printAndFlushChanges } from "nx/src/command-line/release/utils/print-changes";
 import { printConfigAndExit } from "nx/src/command-line/release/utils/print-config";
 import { defaultCreateReleaseProvider } from "nx/src/command-line/release/utils/remote-release-clients/github";
-import { createRemoteReleaseClient } from "nx/src/command-line/release/utils/remote-release-clients/remote-release-client";
 import { resolveNxJsonConfigErrorMessage } from "nx/src/command-line/release/utils/resolve-nx-json-error-message";
 import {
   ReleaseVersion,
@@ -81,7 +79,10 @@ import {
 } from "../utilities/changelog-utils";
 import { gitTag } from "../utilities/git-utils";
 import StormChangelogRenderer from "./changelog-renderer";
-import { createOrUpdateGithubRelease, getGitHubRepoData } from "./github";
+import {
+  createGithubRemoteReleaseClient,
+  createOrUpdateGithubRelease
+} from "./github";
 
 export interface NxReleaseChangelogResult {
   workspaceChangelog?: {
@@ -541,7 +542,7 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
                   : null;
                 if (parsedCommit) {
                   githubReferences = parsedCommit.references;
-                  // TODO(JamesHenry): Implement support for Co-authored-by and adding multiple authors
+                  // TODO: Implement support for Co-authored-by and adding multiple authors
                   authors = [parsedCommit.author];
                 }
                 return {
@@ -610,7 +611,7 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
                 body: c.body,
                 isBreaking: c.isBreaking,
                 githubReferences: c.references,
-                // TODO(JamesHenry): Implement support for Co-authored-by and adding multiple authors
+                // TODO: Implement support for Co-authored-by and adding multiple authors
                 authors: [c.author],
                 shortHash: c.shortHash,
                 revertedHashes: c.revertedHashes,
@@ -766,7 +767,7 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
               body: c.body,
               isBreaking: c.isBreaking,
               githubReferences: c.references,
-              // TODO(JamesHenry): Implement support for Co-authored-by and adding multiple authors
+              // TODO: Implement support for Co-authored-by and adding multiple authors
               authors: [c.author],
               shortHash: c.shortHash,
               revertedHashes: c.revertedHashes,
@@ -1141,25 +1142,16 @@ async function generateChangelogForWorkspace({
     });
   }
 
-  const githubRepoData = getGitHubRepoData(gitRemote!, config.createRelease);
-
-  const remoteReleaseClient = await createRemoteReleaseClient(
-    config.createRelease as unknown as
-      | false
-      | ResolvedCreateRemoteReleaseProvider,
-    gitRemote
-  );
-
+  const remoteReleaseClient = await createGithubRemoteReleaseClient(gitRemote);
   const changelogRenderer = new StormChangelogRenderer({
     changes,
     changelogEntryVersion: releaseVersion.rawVersion,
     project: null,
     isVersionPlans: false,
-    repoData: githubRepoData!,
     entryWhenNoChanges: config.entryWhenNoChanges,
     changelogRenderOptions: config.renderOptions,
     conventionalCommitsConfig: nxReleaseConfig.conventionalCommits,
-    remoteReleaseClient: remoteReleaseClient!
+    remoteReleaseClient: remoteReleaseClient
   });
   let contents = await changelogRenderer.render();
 
@@ -1256,12 +1248,13 @@ async function generateChangelogForProjects({
      * newVersion will be null in the case that no changes were detected (e.g. in conventional commits mode),
      * no changelog entry is relevant in that case.
      */
-    if (!projectsVersionData[project.name]?.newVersion) {
+    const newVersion = projectsVersionData[project.name]?.newVersion;
+    if (!newVersion) {
       continue;
     }
 
     const releaseVersion = new ReleaseVersion({
-      version: projectsVersionData[project.name]!.newVersion!,
+      version: newVersion,
       releaseTagPattern: releaseGroup.releaseTagPattern,
       projectName: project.name
     });
@@ -1274,23 +1267,12 @@ async function generateChangelogForProjects({
         )}`
       });
 
-      const githubRepoData = getGitHubRepoData(
-        gitRemote!,
-        config.createRelease
-      );
-
-      const remoteReleaseClient = await createRemoteReleaseClient(
-        config.createRelease as unknown as
-          | false
-          | ResolvedCreateRemoteReleaseProvider,
-        gitRemote
-      );
-
+      const remoteReleaseClient =
+        await createGithubRemoteReleaseClient(gitRemote);
       const changelogRenderer = new StormChangelogRenderer({
         changes,
         changelogEntryVersion: releaseVersion.rawVersion,
         project: project.name,
-        repoData: githubRepoData!,
         entryWhenNoChanges:
           typeof config.entryWhenNoChanges === "string"
             ? interpolate(config.entryWhenNoChanges, {
@@ -1305,9 +1287,10 @@ async function generateChangelogForProjects({
           ? null
           : nxReleaseConfig.conventionalCommits,
         dependencyBumps: projectToAdditionalDependencyBumps.get(project.name),
-        remoteReleaseClient: remoteReleaseClient!
+        remoteReleaseClient
       });
       let contents = await changelogRenderer.render();
+
       output.log({
         title:
           `Changelog renderer for ${project.name} rendered the following content: \n\n${contents}`.trim()

@@ -8,10 +8,10 @@ import DefaultChangelogRenderer, {
 import { ChangelogChange } from "nx/src/command-line/release/changelog";
 import { NxReleaseConfig } from "nx/src/command-line/release/config/config";
 import { DEFAULT_CONVENTIONAL_COMMITS_CONFIG } from "nx/src/command-line/release/config/conventional-commits";
-import { RemoteReleaseClient } from "nx/src/command-line/release/utils/remote-release-clients/remote-release-client";
+import { GithubRemoteReleaseClient } from "nx/src/command-line/release/utils/remote-release-clients/github";
 import { major } from "semver";
 import { generateChangelogTitle } from "../utilities/changelog-utils";
-import { formatReferences, GithubRepoData } from "./github";
+import { GithubRepoData } from "./github";
 
 // axios types and values don't seem to match
 // import _axios = require("axios");
@@ -25,9 +25,9 @@ export interface StormChangelogRenderOptions {
   isVersionPlans: boolean;
   changelogRenderOptions: DefaultChangelogRenderOptions;
   dependencyBumps?: DependencyBump[];
-  repoData?: GithubRepoData;
+  repoData: GithubRepoData | null;
   conventionalCommitsConfig: NxReleaseConfig["conventionalCommits"] | null;
-  remoteReleaseClient: RemoteReleaseClient<any>;
+  remoteReleaseClient: GithubRemoteReleaseClient;
 }
 
 export default class StormChangelogRenderer extends DefaultChangelogRenderer {
@@ -37,50 +37,26 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
   protected workspaceConfig: StormWorkspaceConfig | null = null;
 
   /**
+   * The configuration object for the ChangelogRenderer, which includes the changes, version, project, and other options.
+   */
+  protected config: StormChangelogRenderOptions;
+
+  /**
    * A ChangelogRenderer class takes in the determined changes and other relevant metadata and returns a string, or a Promise of a string of changelog contents (usually markdown).
    *
    * @param config - The configuration object for the ChangelogRenderer
    */
-  constructor(protected config: StormChangelogRenderOptions) {
+  constructor(config: Omit<StormChangelogRenderOptions, "repoData">) {
     super(config);
+
+    this.config = {
+      ...config,
+      repoData: config.remoteReleaseClient.getRemoteRepoData()
+    };
   }
 
   override async render(): Promise<string> {
     this.workspaceConfig = await getWorkspaceConfig();
-
-    // const sections: string[][] = [];
-
-    // this.preprocessChanges();
-
-    // if (this.shouldRenderEmptyEntry()) {
-    //   return this.renderEmptyEntry();
-    // }
-
-    // sections.push([this.renderVersionTitle()]);
-
-    // const changesByType = this.renderChangesByType();
-    // if (changesByType.length > 0) {
-    //   sections.push(changesByType);
-    // }
-
-    // if (this.hasBreakingChanges()) {
-    //   sections.push(this.renderBreakingChanges());
-    // }
-
-    // if (this.hasDependencyBumps()) {
-    //   sections.push(this.renderDependencyBumps());
-    // }
-
-    // if (this.shouldRenderAuthors()) {
-    //   sections.push(await this.renderAuthors());
-    // }
-
-    // // Join sections with double newlines, and trim any extra whitespace
-    // return sections
-    //   .filter(section => section.length > 0)
-    //   .map(section => section.join("\n").trim())
-    //   .join("\n\n")
-    //   .trim();
 
     return await super.render();
   }
@@ -295,14 +271,9 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
         ? `**${change.scope.trim()}:** `
         : "") +
       description;
-    if (
-      this.config.repoData &&
-      this.changelogRenderOptions.commitReferences &&
-      change.githubReferences
-    ) {
-      changeLine += formatReferences(
-        change.githubReferences,
-        this.config.repoData
+    if (this.config.repoData && change.githubReferences) {
+      changeLine += this.remoteReleaseClient.formatReferences(
+        change.githubReferences
       );
     }
 

@@ -5,8 +5,7 @@
  * Special thanks to changelogen for the original inspiration for many of these utilities:
  * https://github.com/unjs/changelogen
  */
-import { output } from "@nx/devkit";
-import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths";
+import { joinPathFragments, output } from "@nx/devkit";
 import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
 import * as chalk from "chalk";
@@ -14,9 +13,11 @@ import { prompt } from "enquirer";
 import { execSync } from "node:child_process";
 import { existsSync, promises as fsp } from "node:fs";
 import { homedir } from "node:os";
-import { Reference } from "nx/src/command-line/release/utils/git";
 import { printDiff } from "nx/src/command-line/release/utils/print-changes";
-import { defaultCreateReleaseProvider } from "nx/src/command-line/release/utils/remote-release-clients/github";
+import {
+  defaultCreateReleaseProvider,
+  GithubRemoteReleaseClient
+} from "nx/src/command-line/release/utils/remote-release-clients/github";
 import {
   noDiffInChangelogMessage,
   ReleaseVersion
@@ -55,7 +56,7 @@ export interface GithubRepoData {
 export function getGitHubRepoData(
   remoteName = "origin",
   createReleaseConfig: NxReleaseChangelogConfiguration["createRelease"]
-): GithubRepoData | null {
+): GithubRepoData | undefined {
   try {
     const remoteUrl = execSync(`git remote get-url ${remoteName}`, {
       encoding: "utf8",
@@ -88,9 +89,15 @@ export function getGitHubRepoData(
         `Could not extract "user/repo" data from the resolved remote URL: ${remoteUrl}`
       );
     }
+
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
-    return null;
+    output.error({
+      title: `Failed to get GitHub repo data`,
+      bodyLines: [error.message]
+    });
+
+    return undefined;
   }
 }
 
@@ -112,12 +119,12 @@ export async function createOrUpdateGithubRelease(
     process.exit(1);
   }
 
-  const token = await resolveGithubToken(githubRepoData.hostname);
+  const tokenData = await resolveTokenData(githubRepoData.hostname);
   const githubRequestConfig: GithubRequestConfig = {
     repo: githubRepoData.slug,
     hostname: githubRepoData.hostname,
     apiBaseUrl: githubRepoData.apiBaseUrl,
-    token
+    token: tokenData?.token || null
   };
 
   let existingGithubReleaseForVersion: GithubRelease | undefined;
@@ -348,16 +355,24 @@ async function syncGithubRelease(
   }
 }
 
-async function resolveGithubToken(hostname: string): Promise<string | null> {
+/**
+ * Resolve a GitHub token from environment variables or gh CLI
+ */
+async function resolveTokenData(
+  hostname: string
+): Promise<{ token: string; headerName: string }> {
   // Try and resolve from the environment
-  const tokenFromEnv = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
+  const tokenFromEnv =
+    process.env.STORM_BOT_GITHUB_TOKEN ||
+    process.env.GITHUB_TOKEN ||
+    process.env.GH_TOKEN;
   if (tokenFromEnv) {
-    return tokenFromEnv;
+    return { token: tokenFromEnv, headerName: "Authorization" };
   }
 
   // Try and resolve from gh CLI installation
-  const ghCLIPath = joinPaths(
-    process.env.XDG_CONFIG_HOME || joinPaths(homedir(), ".config"),
+  const ghCLIPath = joinPathFragments(
+    process.env.XDG_CONFIG_HOME || joinPathFragments(homedir(), ".config"),
     "gh",
     "hosts.yml"
   );
@@ -370,17 +385,17 @@ async function resolveGithubToken(hostname: string): Promise<string | null> {
       if (ghCLIConfig[hostname].oauth_token) {
         return ghCLIConfig[hostname].oauth_token;
       }
-
       // SSH based session (we need to dynamically resolve a token using the CLI)
       if (
         ghCLIConfig[hostname].user &&
         ghCLIConfig[hostname].git_protocol === "ssh"
       ) {
-        return execSync(`gh auth token`, {
+        const token = execSync(`gh auth token`, {
           encoding: "utf8",
           stdio: "pipe",
           windowsHide: false
         }).trim();
+        return { token, headerName: "Authorization" };
       }
     }
   }
@@ -389,7 +404,10 @@ async function resolveGithubToken(hostname: string): Promise<string | null> {
       `Warning: It was not possible to automatically resolve a GitHub token from your environment for hostname ${hostname}. If you set the GITHUB_TOKEN or GH_TOKEN environment variable, that will be used for GitHub API requests.`
     );
   }
-  return null;
+
+  throw new Error(
+    `Unable to resolve a GitHub token for hostname ${hostname}. Please set the GITHUB_TOKEN or GH_TOKEN environment variable, or ensure you have an active session via the official gh CLI tool (https://cli.github.com).`
+  );
 }
 
 export async function getGithubReleaseByTag(
@@ -461,37 +479,26 @@ function githubNewReleaseURL(
   return url;
 }
 
-type RepoProvider = "github";
-
-const providerToRefSpec: Record<
-  RepoProvider,
-  Record<Reference["type"], string>
-> = {
-  github: { "pull-request": "pull", hash: "commit", issue: "issues" }
-};
-
-function formatReference(ref: Reference, repoData: GithubRepoData) {
-  const refSpec = providerToRefSpec["github"];
-  return `[${ref.value}](https://${repoData.hostname}/${repoData.slug}/${
-    refSpec[ref.type]
-  }/${ref.value.replace(/^#/, "")})`;
-}
-
-export function formatReferences(
-  references: Reference[],
-  repoData: GithubRepoData
-) {
-  const pr = references.filter(ref => ref.type === "pull-request");
-  const issue = references.filter(ref => ref.type === "issue");
-  if (pr.length > 0 || issue.length > 0) {
-    return (
-      " (" +
-      [...pr, ...issue].map(ref => formatReference(ref, repoData)).join(", ") +
-      ")"
+/**
+ * Factory function to create a remote release client based on the given configuration
+ */
+export async function createGithubRemoteReleaseClient(
+  remoteName = "origin"
+): Promise<GithubRemoteReleaseClient> {
+  const repoData = getGitHubRepoData(remoteName, "github");
+  if (!repoData) {
+    throw new Error(
+      `Unable to create a remote release client because the GitHub repo slug could not be determined. Please ensure you have a valid GitHub remote configured.`
     );
   }
-  if (references.length > 0) {
-    return " (" + formatReference(references[0]!, repoData) + ")";
-  }
-  return "";
+
+  return new GithubRemoteReleaseClient(
+    repoData,
+    {
+      provider: "github",
+      hostname: repoData.hostname,
+      apiBaseUrl: repoData.apiBaseUrl
+    },
+    await resolveTokenData(repoData.hostname)
+  );
 }
