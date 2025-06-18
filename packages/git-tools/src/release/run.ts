@@ -10,6 +10,7 @@ import {
   parseCargoToml,
   stringifyCargoToml,
   writeDebug,
+  writeFatal,
   writeInfo,
   writeSuccess,
   writeTrace,
@@ -28,6 +29,7 @@ import { createAPI as createReleaseVersionAPI } from "nx/src/command-line/releas
 import { NxReleaseConfiguration, readNxJson } from "nx/src/config/nx-json.js";
 import { createAPI as createReleaseChangelogAPI } from "./changelog";
 import { DEFAULT_RELEASE_CONFIG, DEFAULT_RELEASE_GROUP_CONFIG } from "./config";
+import { isUserAnOrganizationMember } from "./github";
 
 export interface NxReleaseChangelogResult {
   workspaceChangelog?: {
@@ -53,6 +55,20 @@ export const runRelease = async (
   config: StormWorkspaceConfig,
   options: StormReleaseOptions
 ) => {
+  if (!process.env.GITHUB_ACTOR) {
+    throw new Error("The `GITHUB_ACTOR` environment variable is not set.");
+  }
+
+  if (!(await isUserAnOrganizationMember(process.env.GITHUB_ACTOR, config))) {
+    writeFatal(
+      "You must be a member of the Storm Software organization to run the release process.",
+      config
+    );
+    throw new Error(
+      `The GitHub actor "${process.env.GITHUB_ACTOR}" is not a member of the organization "${config.organization}". Only members of the organization can initiate releases.`
+    );
+  }
+
   const name = config.bot.name;
   const email = config.bot.email
     ? config.bot.email

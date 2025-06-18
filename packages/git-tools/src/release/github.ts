@@ -6,6 +6,7 @@
  * https://github.com/unjs/changelogen
  */
 import { joinPathFragments, output } from "@nx/devkit";
+import { StormWorkspaceConfig } from "@storm-software/config/types";
 import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
 import * as chalk from "chalk";
@@ -414,38 +415,40 @@ export async function getGithubReleaseByTag(
   config: GithubRequestConfig,
   tag: string
 ): Promise<GithubRelease> {
-  return await makeGithubRequest(
-    config,
-    `/repos/${config.repo}/releases/tags/${tag}`,
-    {}
-  );
+  return (
+    await makeGithubRequest(
+      config,
+      `/repos/${config.repo}/releases/tags/${tag}`,
+      {}
+    )
+  ).data as GithubRelease;
 }
 
-async function makeGithubRequest(
+export async function makeGithubRequest(
   config: GithubRequestConfig,
   url: string,
   opts: AxiosRequestConfig = {}
 ) {
-  return (
-    await axios<any, any>(url, {
-      ...opts,
-      baseURL: config.apiBaseUrl,
-      headers: {
-        ...(opts.headers as any),
-        Authorization: config.token ? `Bearer ${config.token}` : undefined
-      }
-    })
-  ).data;
+  return await axios(url, {
+    ...opts,
+    baseURL: config.apiBaseUrl,
+    headers: {
+      ...(opts.headers as any),
+      Authorization: config.token ? `Bearer ${config.token}` : undefined
+    }
+  });
 }
 
 async function createGithubRelease(
   config: GithubRequestConfig,
   body: GithubRelease
 ) {
-  return await makeGithubRequest(config, `/repos/${config.repo}/releases`, {
-    method: "POST",
-    data: body
-  });
+  return (
+    await makeGithubRequest(config, `/repos/${config.repo}/releases`, {
+      method: "POST",
+      data: body
+    })
+  ).data;
 }
 
 async function updateGithubRelease(
@@ -453,14 +456,12 @@ async function updateGithubRelease(
   id: string,
   body: GithubRelease
 ) {
-  return await makeGithubRequest(
-    config,
-    `/repos/${config.repo}/releases/${id}`,
-    {
+  return (
+    await makeGithubRequest(config, `/repos/${config.repo}/releases/${id}`, {
       method: "PATCH",
       data: body
-    }
-  );
+    })
+  ).data;
 }
 
 function githubNewReleaseURL(
@@ -501,4 +502,44 @@ export async function createGithubRemoteReleaseClient(
     },
     await resolveTokenData(repoData.hostname)
   );
+}
+
+export async function isUserAnOrganizationMember(
+  userId: string,
+  config: StormWorkspaceConfig,
+  remoteName = "origin"
+): Promise<boolean> {
+  try {
+    const repoData = getGitHubRepoData(remoteName, "github");
+    if (!repoData) {
+      throw new Error(
+        `Unable to validate GitHub actor because the GitHub repo slug could not be determined. Please ensure you have a valid GitHub remote configured.`
+      );
+    }
+
+    const tokenData = await resolveTokenData(repoData.hostname);
+    if (!tokenData.token) {
+      throw new Error(
+        `Unable to validate GitHub actor because no token was provided. Please set the GITHUB_TOKEN or GH_TOKEN environment variable, or ensure you have an active session via the official gh CLI tool (https://cli.github.com).`
+      );
+    }
+
+    const result = await makeGithubRequest(
+      {
+        repo: repoData.slug,
+        hostname: repoData.hostname,
+        apiBaseUrl: repoData.apiBaseUrl,
+        token: tokenData?.token || null
+      },
+      `/orgs/${config.organization}/members/${userId}`,
+      {}
+    );
+    if (result.status >= 200 && result.status < 300) {
+      return false;
+    }
+
+    return true;
+  } catch {
+    return false;
+  }
 }
