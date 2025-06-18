@@ -43,7 +43,6 @@ import { resolveNxJsonConfigErrorMessage } from "nx/src/command-line/release/uti
 import {
   ReleaseVersion,
   VersionData,
-  commitChanges,
   createCommitMessageValues,
   createGitTagValues,
   handleDuplicateGitTags,
@@ -77,7 +76,7 @@ import {
   generateChangelogContent,
   generateChangelogTitle
 } from "../utilities/changelog-utils";
-import { gitTag } from "../utilities/git-utils";
+import { commitChanges, gitTag } from "../utilities/git-utils";
 import StormChangelogRenderer from "./changelog-renderer";
 import {
   createGithubRemoteReleaseClient,
@@ -990,25 +989,14 @@ async function applyChangesAndExit(
 
   // Generate a new commit for the changes, if configured to do so
   if (args.gitCommit ?? nxReleaseConfig.changelog?.git.commit) {
-    let gitCommitArgs =
-      args.gitCommitArgs ?? nxReleaseConfig.changelog?.git.commitArgs;
-    if (!gitCommitArgs) {
-      gitCommitArgs = [];
-    }
-    if (typeof gitCommitArgs === "string") {
-      gitCommitArgs = gitCommitArgs.split(" ");
-    }
-    if (!gitCommitArgs.includes("-S")) {
-      gitCommitArgs.push("-S");
-    }
-
     await commitChanges({
       changedFiles,
       deletedFiles,
       isDryRun: !!args.dryRun,
       isVerbose: !!args.verbose,
       gitCommitMessages: commitMessageValues,
-      gitCommitArgs
+      gitCommitArgs:
+        args.gitCommitArgs ?? nxReleaseConfig.changelog?.git.commitArgs
     });
 
     // Resolve the commit we just made
