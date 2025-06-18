@@ -82,7 +82,7 @@ export async function gitCommit({
 }): Promise<string | undefined> {
   logFn = logFn || console.log;
 
-  const commandArgs = ["commit", "-S"];
+  const commandArgs = ["commit", "--gpg-sign"];
   for (const message of messages) {
     commandArgs.push("--message", message);
   }

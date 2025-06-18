@@ -76,13 +76,6 @@ jobs:
           gpg-passphrase: ${{ secrets.STORM_BOT_GPG_PASSPHRASE }}
           storm-bot-github-token: ${{ secrets.STORM_BOT_GITHUB_TOKEN }}
 
-      # - name: Add permissions to linting tools
-      #   run: chmod a=rwx "${{ github.workspace }}/dist/packages/linting-tools/bin/lint.js"
-      # - name: Add permissions to alex config file
-      #   run: chmod a=rwx "${{ github.workspace }}/dist/packages/linting-tools/alex/config.json"
-      # - name: Add permissions to alex ignore file
-      #   run: chmod a=rwx "${{ github.workspace }}/dist/packages/linting-tools/alex/.alexignore"
-
       # - name: Run Terrascan
       #   id: terrascan
       #   uses: tenable/terrascan-action@main

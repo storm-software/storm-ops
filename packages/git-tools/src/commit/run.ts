@@ -53,7 +53,7 @@ export const runCommit = async (
 
   const commandItems = ["git", "commit"];
   if (!process.env.CI && !process.env.STORM_CI) {
-    commandItems.push("-S");
+    commandItems.push("--gpg-sign");
   }
 
   commandItems.push(...["--file", commitMsgFile]);
