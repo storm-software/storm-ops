@@ -1,5 +1,24 @@
 ![Storm Software](https://public.storm-cdn.com/brand-banner.png)
 
+# Changelog for Storm Ops - ESLint
+
+## [0.159.15](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.159.15) (2025-06-18)
+
+### Bug Fixes
+
+- **git-tools:** Remove child repository dependency and add local `titleCase`
+  utility
+  ([fe6d281f8](https://github.com/storm-software/storm-ops/commit/fe6d281f8))
+- **git-tools:** Ensure the devops bot is used to commit release files
+  ([4776b3504](https://github.com/storm-software/storm-ops/commit/4776b3504))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([39fa60f2c](https://github.com/storm-software/storm-ops/commit/39fa60f2c))
+
+![Storm Software](https://public.storm-cdn.com/brand-banner.png)
+
 # Changelog for Storm Ops - Eslint
 
 ## [0.159.14](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.159.14) (2025-06-18)

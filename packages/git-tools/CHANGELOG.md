@@ -2,6 +2,31 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.111.27](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.111.27) (2025-06-18)
+
+### Bug Fixes
+
+- **git-tools:** Remove child repository dependency and add local `titleCase`
+  utility
+  ([fe6d281f8](https://github.com/storm-software/storm-ops/commit/fe6d281f8))
+- **git-tools:** Ensure the devops bot is used to commit release files
+  ([4776b3504](https://github.com/storm-software/storm-ops/commit/4776b3504))
+- **git-tools:** Ensure custom `gitCommit` function is invoked with signer flag
+  ([4c93ff392](https://github.com/storm-software/storm-ops/commit/4c93ff392))
+- **git-tools:** Ensure changelog commits to git are GPG signed
+  ([aa1a78b5c](https://github.com/storm-software/storm-ops/commit/aa1a78b5c))
+- **git-tools:** Update release logic to use Stormie-Bot's github token
+  ([dbd4f034a](https://github.com/storm-software/storm-ops/commit/dbd4f034a))
+
+### Miscellaneous
+
+- **git-tools:** Added explicit `--gpg-sign` arguments to commit commands
+  ([15d22e585](https://github.com/storm-software/storm-ops/commit/15d22e585))
+- **monorepo:** Update README markdown files
+  ([10805dcf5](https://github.com/storm-software/storm-ops/commit/10805dcf5))
+- **monorepo:** Regenerate README markdown files
+  ([39fa60f2c](https://github.com/storm-software/storm-ops/commit/39fa60f2c))
+
 ## [2.111.26](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.111.26) (2025-06-18)
 
 ### Bug Fixes
