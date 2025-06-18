@@ -6,15 +6,15 @@ export default defineUntypedSchema({
   $schema: {
     id: "ESBuildExecutorSchema",
     title: "ESBuild Executor",
-    description: "A type definition for an ESBuild executor schema",
+    description: "A type definition for an ESBuild executor schema"
   },
   format: {
     $schema: {
       title: "Format",
       type: "string",
       description: "The format to build",
-      enum: ["cjs", "esm", "iife"],
+      enum: ["cjs", "esm", "iife"]
     },
-    $default: "esm",
-  },
+    $default: "esm"
+  }
 });
