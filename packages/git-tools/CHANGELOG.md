@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.112.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.112.2) (2025-06-18)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue adding duplicate dependency updates to changelog
+  ([6f510743f](https://github.com/storm-software/storm-ops/commit/6f510743f))
+
 ## [2.112.1](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.112.1) (2025-06-18)
 
 ### Miscellaneous
