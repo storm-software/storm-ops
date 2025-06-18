@@ -534,6 +534,10 @@ export async function isUserAnOrganizationMember(
       `/orgs/${config.organization}/members/${userId}`,
       {}
     );
+    console.log(result.data);
+    console.log(`Status: ${result.status}`);
+    console.log(`Status Text: ${result.statusText}`);
+
     if (result.status >= 200 && result.status < 300) {
       return false;
     }
