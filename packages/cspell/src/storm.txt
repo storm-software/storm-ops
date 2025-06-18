@@ -332,6 +332,7 @@ dotenvx
 cmder
 shellescape
 monodon
+zkochan
 
 # Acronyms
 dpdm
