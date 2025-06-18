@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.112.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.112.0) (2025-06-18)
+
+### Features
+
+- **git-tools:** Add org member validation to release process
+  ([918abe503](https://github.com/storm-software/storm-ops/commit/918abe503))
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with bad logic in organization validation
+  ([2f82dfffd](https://github.com/storm-software/storm-ops/commit/2f82dfffd))
+
+### Miscellaneous
+
+- **git-tools:** Added logging to the Github API request
+  ([94678423a](https://github.com/storm-software/storm-ops/commit/94678423a))
+
 ## [2.111.28](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.111.28) (2025-06-18)
 
 ### Miscellaneous
