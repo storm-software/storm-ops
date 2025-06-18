@@ -353,6 +353,7 @@ async function resolveGithubToken(hostname: string): Promise<string | null> {
   if (tokenFromEnv) {
     return tokenFromEnv;
   }
+
   // Try and resolve from gh CLI installation
   const ghCLIPath = joinPaths(
     process.env.XDG_CONFIG_HOME || joinPaths(homedir(), ".config"),
@@ -368,6 +369,7 @@ async function resolveGithubToken(hostname: string): Promise<string | null> {
       if (ghCLIConfig[hostname].oauth_token) {
         return ghCLIConfig[hostname].oauth_token;
       }
+
       // SSH based session (we need to dynamically resolve a token using the CLI)
       if (
         ghCLIConfig[hostname].user &&
