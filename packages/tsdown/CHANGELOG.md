@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.36.17](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.36.17) (2025-06-18)
+
+### Bug Fixes
+
+- **git-tools:** Ensure the devops bot is used to commit release files
+  ([4776b3504](https://github.com/storm-software/storm-ops/commit/4776b3504))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([39fa60f2c](https://github.com/storm-software/storm-ops/commit/39fa60f2c))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.173.7
+- Updated build-tools to 0.151.5
+- Updated config to 1.122.6
+
 ## [0.36.16](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.36.16) (2025-06-17)
 
 ### Miscellaneous

@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Eslint
 
+## [0.159.14](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.159.14) (2025-06-18)
+
+### Bug Fixes
+
+- **git-tools:** Ensure the devops bot is used to commit release files
+  ([4776b3504](https://github.com/storm-software/storm-ops/commit/4776b3504))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([39fa60f2c](https://github.com/storm-software/storm-ops/commit/39fa60f2c))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.173.7
+- Updated config to 1.122.6
+
 ## [0.159.13](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.159.13) (2025-06-17)
 
 ### Miscellaneous

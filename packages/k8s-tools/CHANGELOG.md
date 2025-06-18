@@ -2,6 +2,27 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.33.17](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.33.17) (2025-06-18)
+
+### Bug Fixes
+
+- **git-tools:** Ensure the devops bot is used to commit release files
+  ([4776b3504](https://github.com/storm-software/storm-ops/commit/4776b3504))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([39fa60f2c](https://github.com/storm-software/storm-ops/commit/39fa60f2c))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.275.18
+- Updated workspace-tools to 1.275.18
+- Updated config-tools to 1.173.7
+- Updated config-tools to 1.173.7
+- Updated config to 1.122.6
+- Updated config to 1.122.6
+
 ## [0.33.16](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.33.16) (2025-06-17)
 
 ### Miscellaneous
