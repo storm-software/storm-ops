@@ -151,7 +151,10 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
   protected override renderDependencyBumps(): string[] {
     const markdownLines = ["", "### Updated Dependencies", ""];
     this.dependencyBumps?.forEach(({ dependencyName, newVersion }) => {
-      markdownLines.push(`- Updated ${dependencyName} to ${newVersion}`);
+      const markdownLine = `- Updated ${dependencyName} to ${newVersion}`;
+      if (!markdownLines.includes(markdownLine)) {
+        markdownLines.push(markdownLine);
+      }
     });
 
     return markdownLines;
