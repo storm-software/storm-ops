@@ -1,6 +1,5 @@
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
-import { titleCase } from "@stryke/string-format/title-case";
 import * as chalk from "chalk";
 import { prompt } from "enquirer";
 import { readFileSync, rmSync, writeFileSync } from "node:fs";
@@ -77,6 +76,7 @@ import {
   generateChangelogTitle
 } from "../utilities/changelog-utils";
 import { commitChanges, gitTag } from "../utilities/git-utils";
+import { titleCase } from "../utilities/title-case";
 import StormChangelogRenderer from "./changelog-renderer";
 import {
   createGithubRemoteReleaseClient,

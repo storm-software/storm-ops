@@ -264,7 +264,6 @@
     "@inquirer/select": "4.0.4",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@stryke/string-format": "0.4.11",
     "@textlint/ast-node-types": "14.4.2",
     "@textlint/markdown-to-ast": "14.4.2",
     "@types/node": "catalog:",

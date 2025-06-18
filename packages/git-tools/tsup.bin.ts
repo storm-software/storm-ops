@@ -15,13 +15,7 @@ export default defineConfig([
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     shims: true,
-    external: [
-      "oxc-parser",
-      "@oxc-parser/*",
-      "nx",
-      "@nx/*",
-      "@stryke/string-format"
-    ],
+    external: ["oxc-parser", "@oxc-parser/*", "nx", "@nx/*"],
     noExternal: ["@commitlint/rules", "conventional-commits-parser", "defu"]
   }
 ]);

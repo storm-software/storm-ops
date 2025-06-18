@@ -19,7 +19,7 @@ export default defineConfig([
     dts: true,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
-    external: ["nx", "@nx/*", "@stryke/string-format"],
+    external: ["nx", "@nx/*"],
     skipNodeModulesBundle: true
   }
 ]);

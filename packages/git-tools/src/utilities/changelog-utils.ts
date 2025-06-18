@@ -1,7 +1,7 @@
 import type { StormWorkspaceConfig } from "@storm-software/config";
-import { titleCase } from "@stryke/string-format/title-case";
 import { ReleaseVersion } from "nx/src/command-line/release/utils/shared";
 import { format, resolveConfig } from "prettier";
+import { titleCase } from "./title-case";
 
 export async function generateChangelogContent(
   releaseVersion: ReleaseVersion,
