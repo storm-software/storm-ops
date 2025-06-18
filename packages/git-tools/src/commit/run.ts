@@ -51,10 +51,7 @@ export const runCommit = async (
 
   await runCommitLint(config, { message });
 
-  const commandItems = ["git", "commit"];
-  if (!process.env.CI && !process.env.STORM_CI) {
-    commandItems.push("--gpg-sign");
-  }
+  const commandItems = ["git", "commit", "-S"];
 
   commandItems.push(...["--file", commitMsgFile]);
   const command = shellescape(commandItems);

@@ -22,6 +22,7 @@ in {
     pkgs.zsh-syntax-highlighting
 
     # Source Control
+    pkgs.gnupg
     pkgs.git
     pkgs.git-lfs
     pkgs.git-crypt

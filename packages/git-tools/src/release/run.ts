@@ -53,14 +53,17 @@ export const runRelease = async (
   config: StormWorkspaceConfig,
   options: StormReleaseOptions
 ) => {
-  process.env.GIT_AUTHOR_NAME = process.env.GITHUB_ACTOR;
-  process.env.GIT_AUTHOR_EMAIL = `${process.env.GITHUB_ACTOR}@users.noreply.github.com`;
-
-  process.env.GIT_COMMITTER_NAME = config.bot.name;
-  process.env.GIT_COMMITTER_EMAIL =
-    config.bot.email || config.bot.name
+  const name = config.bot.name;
+  const email = config.bot.email
+    ? config.bot.email
+    : config.bot.name
       ? `${config.bot.name}@users.noreply.github.com`
       : "bot@stormsoftware.com";
+
+  process.env.GIT_AUTHOR_NAME = name;
+  process.env.GIT_AUTHOR_EMAIL = email;
+  process.env.GIT_COMMITTER_NAME = name;
+  process.env.GIT_COMMITTER_EMAIL = email;
 
   process.env.NODE_AUTH_TOKEN = process.env.NPM_TOKEN;
   process.env.NPM_AUTH_TOKEN = process.env.NPM_TOKEN;
