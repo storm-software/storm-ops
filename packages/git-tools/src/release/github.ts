@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
 /**
@@ -87,6 +88,7 @@ export function getGitHubRepoData(
         `Could not extract "user/repo" data from the resolved remote URL: ${remoteUrl}`
       );
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return null;
   }
@@ -250,18 +252,17 @@ async function createOrUpdateGithubReleaseInternal(
             "\n"
         );
       });
-  }
 
-  /**
-   * If something went wrong POSTing to Github we can still pre-populate the web form on github.com
-   * to allow the user to manually complete the release.
-   */
-  if (result.status === "manual") {
+    /**
+     * If something went wrong POSTing to Github we can still pre-populate the web form on github.com
+     * to allow the user to manually complete the release.
+     */
+
     if (result.error) {
       console.error(result.error);
       process.exitCode = 1;
     }
-    const open = require("open");
+
     await open(result.url)
       .then(() => {
         console.info(
