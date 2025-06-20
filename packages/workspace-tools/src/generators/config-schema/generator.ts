@@ -32,7 +32,15 @@ export async function configSchemaGeneratorFn(
     config
   );
 
-  const jsonSchema = z.toJSONSchema(stormWorkspaceConfigSchema);
+  const jsonSchema = z.toJSONSchema(stormWorkspaceConfigSchema, {
+    target: "draft-7"
+  });
+
+  jsonSchema.$id ??=
+    "https://public.storm-cdn.com/schemas/storm-workspace.schema.json";
+  jsonSchema.title ??= "Storm Workspace Configuration JSON Schema";
+  jsonSchema.description ??=
+    "This JSON Schema defines the structure of the Storm Workspace configuration file (`storm-workspace.json`). It is used to validate the configuration file and ensure that it adheres to the expected format.";
 
   writeTrace(jsonSchema, config);
 
