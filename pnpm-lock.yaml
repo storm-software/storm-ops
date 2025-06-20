@@ -133,8 +133,8 @@ catalogs:
       specifier: ^1.5.2
       version: 1.5.2
     zod:
-      specifier: ^3.24.0
-      version: 3.24.4
+      specifier: ^3.25.67
+      version: 3.25.67
     zx:
       specifier: ^8.5.2
       version: 8.5.3
@@ -339,7 +339,7 @@ importers:
         version: 6.0.5(typanion@3.14.0)
       zod:
         specifier: 'catalog:'
-        version: 3.24.4
+        version: 3.25.67
       zx:
         specifier: 'catalog:'
         version: 8.5.3
@@ -439,7 +439,7 @@ importers:
     dependencies:
       zod:
         specifier: 'catalog:'
-        version: 3.24.4
+        version: 3.25.67
     devDependencies:
       tsup:
         specifier: 'catalog:'
@@ -476,7 +476,7 @@ importers:
         version: 5.1.1
       zod:
         specifier: 'catalog:'
-        version: 3.24.4
+        version: 3.25.67
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1610,10 +1610,7 @@ importers:
         version: 1.5.2
       zod:
         specifier: 'catalog:'
-        version: 3.24.4
-      zod-to-json-schema:
-        specifier: 3.23.1
-        version: 3.23.1(zod@3.24.4)
+        version: 3.25.67
     devDependencies:
       '@types/micromatch':
         specifier: ^4.0.9
@@ -4315,7 +4312,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -14194,11 +14190,6 @@ packages:
   youch@3.3.4:
     resolution: {integrity: sha512-UeVBXie8cA35DS6+nBkls68xaBBXCye0CNznrhszZjTbRVnJKQuNsyLKBTTL4ln1o1rh2PKtv35twV7irj5SEg==}
 
-  zod-to-json-schema@3.23.1:
-    resolution: {integrity: sha512-oT9INvydob1XV0v1d2IadrR74rLtDInLvDFfAa1CG0Pmg/vxATk7I2gSelfj271mbzeM4Da0uuDQE/Nkj3DWNw==}
-    peerDependencies:
-      zod: ^3.23.3
-
   zod-to-json-schema@3.24.5:
     resolution: {integrity: sha512-/AuWwMP+YqiPbsJx5D6TfgRTc4kTLjsh5SOcd4bLsfUg2RcEXrFMJl1DGgdHy2aCfsIA/cr/1JM0xcB2GZji8g==}
     peerDependencies:
@@ -14212,9 +14203,6 @@ packages:
 
   zod@3.22.3:
     resolution: {integrity: sha512-EjIevzuJRiRPbVH4mGc8nApb/lVLKVpmUhAaR5R5doKGfAnGJ6Gr3CViAVjP+4FWSxCsybeWQdcgCtbX+7oZug==}
-
-  zod@3.24.4:
-    resolution: {integrity: sha512-OdqJE9UDRPwWsrHjLN2F8bPxvwJBK22EHLWtanu0LSYr5YqzsaaW3RMgmjwr8Rypg5k+meEJdSPXJZXE/yqOMg==}
 
   zod@3.25.67:
     resolution: {integrity: sha512-idA2YXwpCdqUSKRCACDE6ItZD9TZzy3OZMtpfLoh6oPR47lipysRrJfjzMqFxQ3uJuUPyUeWe1r9vLH33xO/Qw==}
@@ -21630,7 +21618,7 @@ snapshots:
     dependencies:
       debug: 3.2.7
       is-core-module: 2.16.1
-      resolve: 1.22.10
+      resolve: 1.22.8
     transitivePeerDependencies:
       - supports-color
     optional: true
@@ -30079,10 +30067,6 @@ snapshots:
       mustache: 4.2.0
       stacktracey: 2.1.8
 
-  zod-to-json-schema@3.23.1(zod@3.24.4):
-    dependencies:
-      zod: 3.24.4
-
   zod-to-json-schema@3.24.5(zod@3.25.67):
     dependencies:
       zod: 3.25.67
@@ -30092,8 +30076,6 @@ snapshots:
       zod: 3.25.67
 
   zod@3.22.3: {}
-
-  zod@3.24.4: {}
 
   zod@3.25.67: {}
 

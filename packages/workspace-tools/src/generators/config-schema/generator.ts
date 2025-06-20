@@ -9,8 +9,7 @@ import {
   writeSuccess,
   writeTrace
 } from "@storm-software/config-tools";
-import * as z from "zod";
-import { JsonSchema7Type, zodToJsonSchema } from "zod-to-json-schema";
+import * as z from "zod/v4";
 import { withRunGenerator } from "../../base/base-generator";
 import type { ConfigSchemaGeneratorSchema } from "./schema.d";
 
@@ -18,7 +17,6 @@ export type ModuleSchema = {
   name: string;
   schema: z.ZodObject<any>;
 };
-
 export async function configSchemaGeneratorFn(
   tree: Tree,
   options: ConfigSchemaGeneratorSchema,
@@ -34,16 +32,21 @@ export async function configSchemaGeneratorFn(
     config
   );
 
-  const jsonSchema = zodToJsonSchema(stormWorkspaceConfigSchema, {
-    name: "StormWorkspaceConfiguration"
-  });
+  const jsonSchema = z.toJSONSchema(stormWorkspaceConfigSchema);
+
   writeTrace(jsonSchema, config);
 
-  const outputPath = options
-    .outputFile!.replaceAll("{workspaceRoot}", "")
+  if (!options.outputFile) {
+    throw new Error(
+      "The `outputFile` option is required. Please specify the output file path."
+    );
+  }
+
+  const outputPath = options.outputFile
+    .replaceAll("{workspaceRoot}", "")
     .replaceAll(
       config?.workspaceRoot ?? findWorkspaceRoot(),
-      options.outputFile?.startsWith("./") ? "" : "./"
+      options.outputFile.startsWith("./") ? "" : "./"
     );
 
   writeTrace(
@@ -51,16 +54,7 @@ export async function configSchemaGeneratorFn(
     config
   );
 
-  writeJson<
-    JsonSchema7Type & {
-      $schema?: string | undefined;
-      definitions?:
-        | {
-            [key: string]: JsonSchema7Type;
-          }
-        | undefined;
-    }
-  >(tree, outputPath, jsonSchema, { spaces: 2 });
+  writeJson(tree, outputPath, jsonSchema, { spaces: 2 });
   await formatFiles(tree);
 
   writeSuccess(
