@@ -1,6 +1,12 @@
 {
   "$schema": "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm-workspace.schema.json",
-  "organization": "storm-software",
+  "organization": {
+    "name": "storm-software",
+    "description": "An open source software development organization and the creator of the Stryke utilities, Storm Stack, Cyclone UI, Acidic, and Storm Cloud.",
+    "logo": "https://public.storm-cdn.com/logo.png",
+    "icon": "https://public.storm-cdn.com/icon-fill.png",
+    "url": "https://stormsoftware.com"
+  },
   "owner": "@storm-software/admin",
   "bot": { "name": "stormie-bot", "email": "bot@stormsoftware.com" },
   "mode": "production",

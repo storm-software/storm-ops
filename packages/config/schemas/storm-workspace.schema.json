@@ -47,9 +47,44 @@
           "description": "The namespace of the package"
         },
         "organization": {
-          "type": "string",
-          "default": "storm-software",
-          "description": "The organization of the workspace"
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "The name of the organization"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "A description of the organization"
+                },
+                "logo": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "A URL to the organization's logo image"
+                },
+                "icon": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "A URL to the organization's icon image"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "description": "A URL to a page that provides more information about the organization"
+                }
+              },
+              "required": ["name"],
+              "additionalProperties": false,
+              "description": "The workspace's organization details"
+            },
+            {
+              "type": "string",
+              "description": "The organization of the workspace"
+            }
+          ],
+          "description": "The organization of the workspace. This can be a string or an object containing the organization's details"
         },
         "repository": {
           "type": "string",

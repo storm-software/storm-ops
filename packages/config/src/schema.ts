@@ -368,6 +368,37 @@ export const errorConfigSchema = z
   })
   .describe("The workspace's error config used during the error process");
 
+export const organizationSchema = z
+  .object({
+    name: z.string().trim().describe("The name of the organization"),
+    description: z
+      .string()
+      .trim()
+      .optional()
+      .describe("A description of the organization"),
+    logo: z
+      .string()
+      .trim()
+      .url()
+      .optional()
+      .describe("A URL to the organization's logo image"),
+    icon: z
+      .string()
+      .trim()
+      .url()
+      .optional()
+      .describe("A URL to the organization's icon image"),
+    url: z
+      .string()
+      .trim()
+      .url()
+      .optional()
+      .describe(
+        "A URL to a page that provides more information about the organization"
+      )
+  })
+  .describe("The workspace's organization details");
+
 /**
  * Storm Workspace config values used during various dev-ops processes. It represents the config of the entire monorepo.
  */
@@ -399,11 +430,12 @@ export const stormWorkspaceConfigSchema = z
       .toLowerCase()
       .optional()
       .describe("The namespace of the package"),
-    organization: z
-      .string()
-      .trim()
-      .default("storm-software")
-      .describe("The organization of the workspace"),
+    organization: organizationSchema
+      .or(z.string().trim().describe("The organization of the workspace"))
+      .optional()
+      .describe(
+        "The organization of the workspace. This can be a string or an object containing the organization's details"
+      ),
     repository: z
       .string()
       .trim()
