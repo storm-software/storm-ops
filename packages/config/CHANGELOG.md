@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.123.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.123.0) (2025-06-20)
+
+### Features
+
+- **config:** Export `OrganizationConfig` type definitions
+  ([1789efc81](https://github.com/storm-software/storm-ops/commit/1789efc81))
+- **config:** Added the `organization` sub-node configuration object
+  ([1550346b8](https://github.com/storm-software/storm-ops/commit/1550346b8))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([0bdc8a84e](https://github.com/storm-software/storm-ops/commit/0bdc8a84e))
+
 ## [1.122.8](https://github.com/storm-software/storm-ops/releases/tag/config%401.122.8) (2025-06-18)
 
 ### Miscellaneous
