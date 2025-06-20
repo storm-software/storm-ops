@@ -234,9 +234,11 @@ export async function commitLintAction({
             ? _config.namespace
             : _config.name
               ? _config.name
-              : _config.organization
+              : typeof _config.organization === "string"
                 ? _config.organization
-                : "Storm-Software"
+                : _config.organization?.name
+                  ? _config.organization?.name
+                  : "Storm-Software"
       } repository's commit messages.`,
       _config
     );

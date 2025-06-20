@@ -65,7 +65,13 @@ export const runRelease = async (
       config
     );
     throw new Error(
-      `The GitHub actor "${process.env.GITHUB_ACTOR}" is not a member of the organization "${config.organization}". Only members of the organization can initiate releases.`
+      `The GitHub actor "${
+        process.env.GITHUB_ACTOR
+      }" is not a member of the organization "${
+        typeof config.organization === "string"
+          ? config.organization
+          : config.organization?.name
+      }". Only members of the organization can initiate releases.`
     );
   }
 

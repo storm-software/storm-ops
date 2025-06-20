@@ -65,7 +65,11 @@ export function generateChangelogTitle(
     return version;
   }
 
-  return `[${version}](https://github.com/${workspaceConfig.organization}/${workspaceConfig.name}/releases/tag/${project}%40${version}) (${new Date().toISOString().slice(0, 10)})`;
+  return `[${version}](https://github.com/${
+    typeof workspaceConfig.organization === "string"
+      ? workspaceConfig.organization
+      : workspaceConfig.organization?.name
+  }/${workspaceConfig.name}/releases/tag/${project}%40${version}) (${new Date().toISOString().slice(0, 10)})`;
 }
 
 export function parseChangelogMarkdown(contents: string) {

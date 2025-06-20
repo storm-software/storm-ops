@@ -531,7 +531,11 @@ export async function isUserAnOrganizationMember(
         apiBaseUrl: repoData.apiBaseUrl,
         token: tokenData?.token || null
       },
-      `/orgs/${config.organization}/members/${userId}`,
+      `/orgs/${
+        typeof config.organization === "string"
+          ? config.organization
+          : config.organization?.name
+      }/members/${userId}`,
       {}
     );
     if (result.status !== 204) {
