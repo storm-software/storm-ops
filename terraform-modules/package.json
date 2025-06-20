@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/terraform-modules",
-  "version": "0.51.26",
+  "version": "0.51.27",
   "type": "commonjs",
   "private": true,
   "main": "./src/index.js",

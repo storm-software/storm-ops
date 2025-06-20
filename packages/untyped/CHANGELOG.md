@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.17.27](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.17.27) (2025-06-20)
+
+### Miscellaneous
+
+- **monorepo:** Update README markdown files
+  ([90a90bfac](https://github.com/storm-software/storm-ops/commit/90a90bfac))
+
 ## [0.17.26](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.17.26) (2025-06-20)
 
 ### Miscellaneous
