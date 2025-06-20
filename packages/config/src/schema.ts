@@ -408,12 +408,10 @@ export const stormWorkspaceConfigSchema = z
       .string()
       .trim()
       .default(
-        "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm-workspace.schema.json"
+        "https://public.storm-cdn.com/schemas/storm-workspace.schema.json"
       )
-      .optional()
-      .nullish()
       .describe(
-        "The URL to the JSON schema file that describes the Storm configuration file"
+        "The URL or file path to the JSON schema file that describes the Storm configuration file"
       ),
     extends: ExtendsSchema.optional(),
     name: z

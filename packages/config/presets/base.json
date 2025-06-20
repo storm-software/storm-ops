@@ -1,5 +1,5 @@
 {
-  "$schema": "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm-workspace.schema.json",
+  "$schema": "https://public.storm-cdn.com/schemas/storm-workspace.schema.json",
   "mode": "production",
   "timezone": "America/New_York",
   "locale": "en-US",

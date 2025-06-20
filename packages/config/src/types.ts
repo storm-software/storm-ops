@@ -54,7 +54,7 @@ export type StormWorkspaceConfigInput = z.input<
  * This type is used to define the configuration object for the entire Storm workspace/monorepo. The value is extracted from the `storm-workspace.json` file in the workspace root and the currently configuration environment variables. The value can be obtained by calling `getWorkspaceConfig()` in `@storm-software/config-tools`.
  *
  * @deprecated
- * This type is deprecated and will be removed in the next major version. Use `StormWorkspaceConfig` instead.
+ * This type is deprecated and will be removed in the next major version. Use {@link StormWorkspaceConfig} instead.
  */
 export type StormConfig<
   TExtensionName extends
