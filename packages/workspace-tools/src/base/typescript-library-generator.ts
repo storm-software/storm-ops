@@ -154,7 +154,11 @@ export async function typeScriptLibraryGeneratorFn(
     type: "github",
     url:
       config?.repository ||
-      `https://github.com/${config?.organization || "storm-software"}/${config?.namespace || config?.name || "repository"}.git`
+      `https://github.com/${
+        (typeof config?.organization === "string"
+          ? config?.organization
+          : config?.organization?.name) || "storm-software"
+      }/${config?.namespace || config?.name || "repository"}.git`
   };
 
   let description =
