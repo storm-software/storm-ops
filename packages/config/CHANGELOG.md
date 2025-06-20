@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.123.1](https://github.com/storm-software/storm-ops/releases/tag/config%401.123.1) (2025-06-20)
+
+### Miscellaneous
+
+- **config:** Upgrade JSON schema definition
+  ([aa375c8c1](https://github.com/storm-software/storm-ops/commit/aa375c8c1))
+- **config:** Upgrade to `zod` v4 schema definition
+  ([54305f4b1](https://github.com/storm-software/storm-ops/commit/54305f4b1))
+
 ## [1.123.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.123.0) (2025-06-20)
 
 ### Features

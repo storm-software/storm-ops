@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.275.22](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.275.22) (2025-06-20)
+
+### Miscellaneous
+
+- **workspace-tools:** Upgrade to `zod` v4 schema definition
+  ([76cc38262](https://github.com/storm-software/storm-ops/commit/76cc38262))
+- **config:** Upgrade to `zod` v4 schema definition
+  ([54305f4b1](https://github.com/storm-software/storm-ops/commit/54305f4b1))
+
 ## [1.275.21](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.275.21) (2025-06-20)
 
 ### Bug Fixes

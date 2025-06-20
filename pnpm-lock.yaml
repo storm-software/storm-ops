@@ -4312,6 +4312,7 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
+    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -4764,8 +4765,8 @@ packages:
     resolution: {integrity: sha512-qnB2+SY3hkCmBxZsR/MPCybNmbJe4KAlfWErXq+rBKkQJlbjdJeS85VI9r8UqeLYLvnAenU8Q1okM/0MBsAGXw==}
     engines: {node: '>= 18'}
 
-  '@octokit/request@9.2.3':
-    resolution: {integrity: sha512-Ma+pZU8PXLOEYzsWf0cn/gY+ME57Wq8f49WTXA8FMHp2Ps9djKw//xYJ1je8Hm0pR2lU9FUGeJRWOtxq6olt4w==}
+  '@octokit/request@9.2.4':
+    resolution: {integrity: sha512-q8ybdytBmxa6KogWlNa818r0k1wlqzNC+yNkcQDECHvQo8Vmstrg18JwqJHdJdUiHD2sjlwBgSm9kHkOKe2iyA==}
     engines: {node: '>= 18'}
 
   '@octokit/types@12.6.0':
@@ -18023,7 +18024,7 @@ snapshots:
     dependencies:
       '@octokit/auth-oauth-app': 8.1.4
       '@octokit/auth-oauth-user': 5.1.6
-      '@octokit/request': 9.2.3
+      '@octokit/request': 9.2.4
       '@octokit/request-error': 6.1.8
       '@octokit/types': 14.1.0
       toad-cache: 3.7.0
@@ -18034,14 +18035,14 @@ snapshots:
     dependencies:
       '@octokit/auth-oauth-device': 7.1.5
       '@octokit/auth-oauth-user': 5.1.6
-      '@octokit/request': 9.2.3
+      '@octokit/request': 9.2.4
       '@octokit/types': 14.1.0
       universal-user-agent: 7.0.3
 
   '@octokit/auth-oauth-device@7.1.5':
     dependencies:
       '@octokit/oauth-methods': 5.1.5
-      '@octokit/request': 9.2.3
+      '@octokit/request': 9.2.4
       '@octokit/types': 14.1.0
       universal-user-agent: 7.0.3
 
@@ -18049,7 +18050,7 @@ snapshots:
     dependencies:
       '@octokit/auth-oauth-device': 7.1.5
       '@octokit/oauth-methods': 5.1.5
-      '@octokit/request': 9.2.3
+      '@octokit/request': 9.2.4
       '@octokit/types': 14.1.0
       universal-user-agent: 7.0.3
 
@@ -18076,7 +18077,7 @@ snapshots:
     dependencies:
       '@octokit/auth-token': 5.1.2
       '@octokit/graphql': 8.2.2
-      '@octokit/request': 9.2.3
+      '@octokit/request': 9.2.4
       '@octokit/request-error': 6.1.8
       '@octokit/types': 14.1.0
       before-after-hook: 3.0.2
@@ -18100,7 +18101,7 @@ snapshots:
 
   '@octokit/graphql@8.2.2':
     dependencies:
-      '@octokit/request': 9.2.3
+      '@octokit/request': 9.2.4
       '@octokit/types': 14.1.0
       universal-user-agent: 7.0.3
 
@@ -18120,7 +18121,7 @@ snapshots:
   '@octokit/oauth-methods@5.1.5':
     dependencies:
       '@octokit/oauth-authorization-url': 7.1.1
-      '@octokit/request': 9.2.3
+      '@octokit/request': 9.2.4
       '@octokit/request-error': 6.1.8
       '@octokit/types': 14.1.0
 
@@ -18193,7 +18194,7 @@ snapshots:
       '@octokit/types': 13.10.0
       universal-user-agent: 6.0.1
 
-  '@octokit/request@9.2.3':
+  '@octokit/request@9.2.4':
     dependencies:
       '@octokit/endpoint': 10.1.4
       '@octokit/request-error': 6.1.8
@@ -21618,7 +21619,7 @@ snapshots:
     dependencies:
       debug: 3.2.7
       is-core-module: 2.16.1
-      resolve: 1.22.8
+      resolve: 1.22.10
     transitivePeerDependencies:
       - supports-color
     optional: true
