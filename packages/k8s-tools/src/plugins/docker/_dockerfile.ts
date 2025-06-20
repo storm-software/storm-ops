@@ -75,8 +75,24 @@ export const createNodesV2: CreateNodesV2<DockerFilePluginOptions> = [
           const labels = [
             `org.opencontainers.image.ref.name=${project.name}`,
             `org.opencontainers.image.title=${titleCase(project.name)}`,
-            `org.opencontainers.image.authors=${config.organization ? titleCase(config.organization) : "Storm Software"}`,
-            `org.opencontainers.image.vendor=${config.organization ? titleCase(config.organization) : "Storm Software"}`,
+            `org.opencontainers.image.authors=${
+              config.organization
+                ? titleCase(
+                    typeof config.organization === "string"
+                      ? config.organization
+                      : config.organization.name
+                  )
+                : "Storm Software"
+            }`,
+            `org.opencontainers.image.vendor=${
+              config.organization
+                ? titleCase(
+                    typeof config.organization === "string"
+                      ? config.organization
+                      : config.organization.name
+                  )
+                : "Storm Software"
+            }`,
             `org.opencontainers.image.documentation=${config.docs}`,
             `org.opencontainers.image.url=${config.homepage}`,
             `org.opencontainers.image.source=${config.repository}`
