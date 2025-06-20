@@ -1,4 +1,5 @@
-import type z from "zod";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import * as z from "zod/v4";
 import type {
   ColorConfigMapSchema,
   ColorConfigSchema,

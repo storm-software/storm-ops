@@ -1,4 +1,4 @@
-import z from "zod";
+import * as z from "zod/v4";
 import {
   STORM_DEFAULT_ACCOUNT_DISCORD,
   STORM_DEFAULT_ACCOUNT_GITHUB,
@@ -572,7 +572,7 @@ export const stormWorkspaceConfigSchema = z
       "Storm theme config values used for styling various package elements"
     ),
     extensions: z
-      .record(z.any())
+      .record(z.string(), z.any())
       .optional()
       .default({})
       .describe("Configuration of each used extension")
