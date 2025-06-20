@@ -1525,7 +1525,9 @@ We at [${
     releaseVersion.rawVersion
   } release of the ${
     projectName
-      ? titleCase(projectName)
+      ? workspaceConfig.name
+        ? `${titleCase(workspaceConfig.name)} - ${titleCase(projectName)}`
+        : titleCase(projectName)
       : workspaceConfig.name
         ? titleCase(workspaceConfig.name)
         : "Storm Software"
