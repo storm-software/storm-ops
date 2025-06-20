@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.160.0](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.160.0) (2025-06-20)
+
+### Features
+
+- **eslint:** Enhanced the file banner plugin generation logic to pull
+  organization from configuration
+  ([231038479](https://github.com/storm-software/storm-ops/commit/231038479))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace packages' links
+  ([97f657fbc](https://github.com/storm-software/storm-ops/commit/97f657fbc))
+- **monorepo:** Update README markdown files
+  ([cd1727b2a](https://github.com/storm-software/storm-ops/commit/cd1727b2a))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.174.2
+- Updated config to 1.124.1
+
 ## [0.159.19](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.159.19) (2025-06-20)
 
 ### Miscellaneous

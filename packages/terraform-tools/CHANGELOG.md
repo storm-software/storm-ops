@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.60.28](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.60.28) (2025-06-20)
+
+### Miscellaneous
+
+- **monorepo:** Update README markdown files
+  ([cd1727b2a](https://github.com/storm-software/storm-ops/commit/cd1727b2a))
+
 ## [0.60.27](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.60.27) (2025-06-20)
 
 ### Miscellaneous
