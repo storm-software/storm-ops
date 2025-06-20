@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.174.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.174.0) (2025-06-20)
+
+### Features
+
+- **config-tools:** Update env parsing to include `STORM_ORG` and
+  `STORM_ORGANIZATION` variables
+  ([0e9379307](https://github.com/storm-software/storm-ops/commit/0e9379307))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([0bdc8a84e](https://github.com/storm-software/storm-ops/commit/0bdc8a84e))
+- **monorepo:** Update workspace packages' links
+  ([35f3ef346](https://github.com/storm-software/storm-ops/commit/35f3ef346))
+
+### Updated Dependencies
+
+- Updated config to 1.123.0
+
 ## [1.173.9](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.173.9) (2025-06-18)
 
 ### Miscellaneous

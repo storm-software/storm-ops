@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.112.3](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.112.3) (2025-06-20)
+
+### Bug Fixes
+
+- **git-tools:** Update all references to latest `OrganizationConfig` type
+  definition
+  ([5f9e9847a](https://github.com/storm-software/storm-ops/commit/5f9e9847a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([0bdc8a84e](https://github.com/storm-software/storm-ops/commit/0bdc8a84e))
+
 ## [2.112.2](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.112.2) (2025-06-18)
 
 ### Bug Fixes

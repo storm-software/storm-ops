@@ -2,6 +2,30 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.33.20](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.33.20) (2025-06-20)
+
+### Bug Fixes
+
+- **k8s-tools:** Update all references to latest `OrganizationConfig` type
+  definition
+  ([88765f826](https://github.com/storm-software/storm-ops/commit/88765f826))
+- **k8s-tools:** Update Nx plugin to handle new `organization` configuration
+  type definition
+  ([fef21972c](https://github.com/storm-software/storm-ops/commit/fef21972c))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([0bdc8a84e](https://github.com/storm-software/storm-ops/commit/0bdc8a84e))
+- **monorepo:** Update workspace packages' links
+  ([35f3ef346](https://github.com/storm-software/storm-ops/commit/35f3ef346))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.275.21
+- Updated config-tools to 1.174.0
+- Updated config to 1.123.0
+
 ## [0.33.19](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.33.19) (2025-06-18)
 
 ### Miscellaneous
