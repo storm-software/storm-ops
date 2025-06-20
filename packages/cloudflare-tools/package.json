@@ -129,12 +129,12 @@
     "@nx/js": "catalog:",
     "@nx/node": "catalog:",
     "@nx/web": "catalog:",
-    "@storm-software/config": "1.113.5",
-    "@storm-software/config-tools": "1.163.5",
-    "@storm-software/workspace-tools": "1.267.0",
+    "@storm-software/config": "1.124.2",
+    "@storm-software/config-tools": "1.174.3",
+    "@storm-software/workspace-tools": "1.276.2",
     "nx": "catalog:",
     "tsup": "catalog:",
-    "wrangler": ">=3.58.0"
+    "wrangler": ">=3.114.9"
   },
   "peerDependenciesMeta": {
     "@nx/devkit": {
@@ -157,7 +157,7 @@
     }
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.47.0",
+    "@aws-sdk/client-s3": "3.832.0",
     "glob": "catalog:"
   },
   "devDependencies": {
@@ -168,7 +168,7 @@
     "nx": "catalog:",
     "tsup": "catalog:",
     "untyped": "catalog:",
-    "wrangler": "^4.20.3"
+    "wrangler": "^4.20.5"
   },
   "publishConfig": {
     "access": "public"
