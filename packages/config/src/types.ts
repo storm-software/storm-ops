@@ -5,6 +5,7 @@ import type {
   DarkThemeColorConfigSchema,
   LightThemeColorConfigSchema,
   MultiThemeColorConfigSchema,
+  organizationConfigSchema,
   SingleThemeColorConfigSchema,
   stormWorkspaceConfigSchema
 } from "./schema";
@@ -36,6 +37,9 @@ export type ColorConfigInput = z.input<typeof ColorConfigSchema>;
 
 export type ColorConfigMap = z.infer<typeof ColorConfigMapSchema>;
 export type ColorConfigMapInput = z.input<typeof ColorConfigMapSchema>;
+
+export type OrganizationConfig = z.infer<typeof organizationConfigSchema>;
+export type OrganizationConfigInput = z.input<typeof organizationConfigSchema>;
 
 type TStormWorkspaceConfig = z.infer<typeof stormWorkspaceConfigSchema>;
 export type StormWorkspaceConfigInput = z.input<

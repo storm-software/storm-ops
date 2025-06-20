@@ -368,7 +368,7 @@ export const errorConfigSchema = z
   })
   .describe("The workspace's error config used during the error process");
 
-export const organizationSchema = z
+export const organizationConfigSchema = z
   .object({
     name: z.string().trim().describe("The name of the organization"),
     description: z
@@ -430,7 +430,7 @@ export const stormWorkspaceConfigSchema = z
       .toLowerCase()
       .optional()
       .describe("The namespace of the package"),
-    organization: organizationSchema
+    organization: organizationConfigSchema
       .or(z.string().trim().describe("The organization of the workspace"))
       .optional()
       .describe(
