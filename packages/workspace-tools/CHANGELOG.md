@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.276.0](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.276.0) (2025-06-20)
+
+### Features
+
+- **workspace-tools:** Add metadata to the generated Storm Workspace
+  Configuration JSON schema file
+  ([be00978f0](https://github.com/storm-software/storm-ops/commit/be00978f0))
+
 ## [1.275.23](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.275.23) (2025-06-20)
 
 ### Miscellaneous

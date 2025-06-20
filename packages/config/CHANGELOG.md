@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.124.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.124.0) (2025-06-20)
+
+### Features
+
+- **config:** Update URL to Storm Workspace Configuration JSON schema file
+  ([8169f4614](https://github.com/storm-software/storm-ops/commit/8169f4614))
+
 ## [1.123.2](https://github.com/storm-software/storm-ops/releases/tag/config%401.123.2) (2025-06-20)
 
 ### Miscellaneous
