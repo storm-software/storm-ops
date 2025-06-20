@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { StormWorkspaceConfig } from "@storm-software/config";
 
 export type LogLevel = 0 | 10 | 20 | 30 | 35 | 40 | 60 | 70 | 100;

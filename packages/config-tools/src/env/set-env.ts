@@ -107,7 +107,38 @@ export const setConfigEnv = (config: StormWorkspaceConfig) => {
     }
   }
   if (config.organization) {
-    process.env[`${prefix}ORGANIZATION`] = config.organization;
+    if (typeof config.organization === "string") {
+      process.env[`${prefix}ORG`] = config.organization;
+      process.env[`${prefix}ORG_NAME`] = config.organization;
+      process.env[`${prefix}ORGANIZATION`] = config.organization;
+      process.env[`${prefix}ORGANIZATION_NAME`] = config.organization;
+    } else {
+      process.env[`${prefix}ORG`] = config.organization.name;
+      process.env[`${prefix}ORG_NAME`] = config.organization.name;
+      process.env[`${prefix}ORGANIZATION`] = config.organization.name;
+      process.env[`${prefix}ORGANIZATION_NAME`] = config.organization.name;
+      if (config.organization.url) {
+        process.env[`${prefix}ORG_URL`] = config.organization.url;
+        process.env[`${prefix}ORGANIZATION_URL`] = config.organization.url;
+      }
+
+      if (config.organization.description) {
+        process.env[`${prefix}ORG_DESCRIPTION`] =
+          config.organization.description;
+        process.env[`${prefix}ORGANIZATION_DESCRIPTION`] =
+          config.organization.description;
+      }
+
+      if (config.organization.logo) {
+        process.env[`${prefix}ORG_LOGO`] = config.organization.logo;
+        process.env[`${prefix}ORGANIZATION_LOGO`] = config.organization.logo;
+      }
+
+      if (config.organization.icon) {
+        process.env[`${prefix}ORG_ICON`] = config.organization.icon;
+        process.env[`${prefix}ORGANIZATION_ICON`] = config.organization.icon;
+      }
+    }
   }
   if (config.packageManager) {
     process.env[`${prefix}PACKAGE_MANAGER`] = config.packageManager;

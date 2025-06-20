@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   type ColorConfigInput,
   type DarkThemeColorConfigInput,
@@ -80,7 +82,44 @@ export const getConfigEnv = (): DeepPartial<StormWorkspaceConfig> => {
       medium: process.env[`${prefix}ACCOUNT_MEDIUM`] || undefined,
       github: process.env[`${prefix}ACCOUNT_GITHUB`] || undefined
     },
-    organization: process.env[`${prefix}ORGANIZATION`] || undefined,
+    organization:
+      process.env[`${prefix}ORG`] ||
+      process.env[`${prefix}ORGANIZATION`] ||
+      process.env[`${prefix}ORG_NAME`] ||
+      process.env[`${prefix}ORGANIZATION_NAME`]
+        ? process.env[`${prefix}ORG_DESCRIPTION`] ||
+          process.env[`${prefix}ORGANIZATION_DESCRIPTION`] ||
+          process.env[`${prefix}ORG_URL`] ||
+          process.env[`${prefix}ORGANIZATION_URL`] ||
+          process.env[`${prefix}ORG_LOGO`] ||
+          process.env[`${prefix}ORGANIZATION_LOGO`]
+          ? {
+              name: (process.env[`${prefix}ORG`] ||
+                process.env[`${prefix}ORGANIZATION`] ||
+                process.env[`${prefix}ORG_NAME`] ||
+                process.env[`${prefix}ORGANIZATION_NAME`])!,
+              description:
+                process.env[`${prefix}ORG_DESCRIPTION`] ||
+                process.env[`${prefix}ORGANIZATION_DESCRIPTION`] ||
+                undefined,
+              url:
+                process.env[`${prefix}ORG_URL`] ||
+                process.env[`${prefix}ORGANIZATION_URL`] ||
+                undefined,
+              logo:
+                process.env[`${prefix}ORG_LOGO`] ||
+                process.env[`${prefix}ORGANIZATION_LOGO`] ||
+                undefined,
+              icon:
+                process.env[`${prefix}ORG_ICON`] ||
+                process.env[`${prefix}ORGANIZATION_ICON`] ||
+                undefined
+            }
+          : process.env[`${prefix}ORG`] ||
+            process.env[`${prefix}ORGANIZATION`] ||
+            process.env[`${prefix}ORG_NAME`] ||
+            process.env[`${prefix}ORGANIZATION_NAME`]
+        : undefined,
     packageManager:
       (process.env[
         `${prefix}PACKAGE_MANAGER`
