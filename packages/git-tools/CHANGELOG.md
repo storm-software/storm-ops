@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.112.6](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.112.6) (2025-06-20)
+
+### Bug Fixes
+
+- **git-tools:** Clean up the release notes message to include full project name
+  ([5091362ce](https://github.com/storm-software/storm-ops/commit/5091362ce))
+
 ## [2.112.5](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.112.5) (2025-06-20)
 
 ### Miscellaneous
