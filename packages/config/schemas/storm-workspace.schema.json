@@ -1,19 +1,12 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Storm Workspace config values used during various dev-ops processes. This type is a combination of the StormPackageConfig and StormProject types. It represents the config of the entire monorepo.",
   "type": "object",
   "properties": {
     "$schema": {
-      "description": "The URL to the JSON schema file that describes the Storm configuration file",
-      "anyOf": [
-        {
-          "default": "https://cdn.jsdelivr.net/npm/@storm-software/config/schemas/storm-workspace.schema.json",
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ]
+      "description": "The URL or file path to the JSON schema file that describes the Storm configuration file",
+      "default": "https://public.storm-cdn.com/schemas/storm-workspace.schema.json",
+      "type": "string"
     },
     "extends": {
       "description": "The path to a base config file to use as a configuration preset file. Documentation can be found at https://github.com/unjs/c12#extending-configuration.",
@@ -1577,6 +1570,7 @@
     }
   },
   "required": [
+    "$schema",
     "license",
     "branch",
     "owner",
@@ -1598,5 +1592,7 @@
     "colors",
     "extensions"
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$id": "https://public.storm-cdn.com/schemas/storm-workspace.schema.json",
+  "title": "Storm Workspace Configuration JSON Schema"
 }
