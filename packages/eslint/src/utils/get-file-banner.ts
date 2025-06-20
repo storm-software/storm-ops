@@ -49,14 +49,61 @@ export const getFileBanner = (
     .filter(word => word && word.toLowerCase() !== "license")
     .join(" ");
 
+  const organization =
+    process.env.STORM_ORG_NAME ||
+    process.env.STORM_ORGANIZATION_NAME ||
+    process.env.STORM_ORG ||
+    process.env.STORM_ORGANIZATION ||
+    (workspaceConfig?.organization &&
+    (typeof workspaceConfig.organization === "string" ||
+      typeof workspaceConfig.organization.name === "string")
+      ? typeof workspaceConfig.organization === "string"
+        ? workspaceConfig.organization
+        : workspaceConfig.organization.name
+      : "storm-software");
+
   return ` -------------------------------------------------------------------
 
-${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
+${padding}⚡ ${(organization.charAt(0).toUpperCase() + organization.slice(1))
+    .split("-")
+    .filter(word => word && word.length > 0)
+    .map(word => {
+      if (ACRONYMS_LIST.includes(word.toUpperCase())) {
+        return word.toUpperCase();
+      }
 
- This code was released as part of ${titleName ? `the ${titleName}` : "a Storm Software"} project. ${
-   titleName ? titleName : "The project"
- }
- is maintained by Storm Software under the ${license} license, and is
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ")} ${titleName ? `- ${titleName}` : ""}
+
+ This code was released as part of ${
+   titleName
+     ? `the ${titleName}`
+     : `a ${(organization.charAt(0).toUpperCase() + organization.slice(1))
+         .split("-")
+         .filter(word => word && word.length > 0)
+         .map(word => {
+           if (ACRONYMS_LIST.includes(word.toUpperCase())) {
+             return word.toUpperCase();
+           }
+
+           return word.charAt(0).toUpperCase() + word.slice(1);
+         })
+         .join(" ")}`
+ } project. ${titleName ? titleName : "The project"}
+ is maintained by ${(
+   organization.charAt(0).toUpperCase() + organization.slice(1)
+ )
+   .split("-")
+   .filter(word => word && word.length > 0)
+   .map(word => {
+     if (ACRONYMS_LIST.includes(word.toUpperCase())) {
+       return word.toUpperCase();
+     }
+
+     return word.charAt(0).toUpperCase() + word.slice(1);
+   })
+   .join(" ")} under the ${license} license, and is
  free for commercial and private use. For more information, please visit
  our licensing page at ${
    process.env.STORM_LICENSING ||
@@ -68,7 +115,7 @@ ${padding}⚡ Storm Software ${titleName ? `- ${titleName}` : ""}
  Repository:               ${
    process.env.STORM_REPOSITORY ||
    workspaceConfig?.repository ||
-   `https://github.com/storm-software${name ? `/${name}` : ""}`
+   `https://github.com/${organization}${name ? `/${name}` : ""}`
  }
  Documentation:            ${
    process.env.STORM_DOCS ||
