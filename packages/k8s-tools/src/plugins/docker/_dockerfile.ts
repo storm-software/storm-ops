@@ -127,7 +127,11 @@ export const createNodesV2: CreateNodesV2<DockerFilePluginOptions> = [
                 metadata: {
                   images: [
                     `${config.namespace ? config.namespace : "storm-software"}/${project.name?.replace(`${config.namespace}-`, "")}`,
-                    `ghcr.io/${config.organization ? config.organization : "storm-software"}/${project.name}`
+                    `ghcr.io/${
+                      (typeof config.organization === "string"
+                        ? config.organization
+                        : config.organization?.name) || "storm-software"
+                    }/${project.name}`
                   ],
                   tags: [
                     "type=schedule",
