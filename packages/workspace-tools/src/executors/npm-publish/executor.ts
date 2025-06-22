@@ -3,6 +3,7 @@ import { joinPaths } from "@storm-software/config-tools/utilities/correct-paths"
 import { execSync } from "node:child_process";
 import { readFile, writeFile } from "node:fs/promises";
 import { format } from "prettier";
+import { addPackageJsonGitHead } from "../../utils/package-helpers";
 import { pnpmUpdate } from "../../utils/pnpm-deps-update";
 import type { NpmPublishExecutorSchema } from "./schema.d";
 
@@ -111,6 +112,7 @@ export default async function npmPublishExecutorFn(
   }
 
   await pnpmUpdate(packageRoot, context.root);
+  await addPackageJsonGitHead(packageRoot);
 
   const npmPublishCommandSegments = [`npm publish --json`];
   const npmViewCommandSegments = [
