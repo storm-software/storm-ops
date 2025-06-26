@@ -8,11 +8,11 @@ import { DEFAULT_COLOR_CONFIG } from "./get-default-config";
 /**
  * Get the color configuration from the Storm workspace configuration.
  *
- * @param config - The Storm workspace configuration object.
+ * @param config - An optional, partial color configuration for the Storm workspace.
  * @returns The color configuration, or the default color configuration if not defined.
  */
 export function getColorConfig(
-  config: Pick<StormWorkspaceConfig, "colors">
+  config?: Partial<Pick<StormWorkspaceConfig, "colors">>
 ): ColorConfig {
   if (
     !config?.colors ||
@@ -43,12 +43,11 @@ export function getColorConfig(
 /**
  * Get a specific color from the Storm workspace configuration.
  *
- * @param config - The Storm workspace configuration object.
  * @param key - The key of the color to retrieve.
+ * @param config - An optional, partial color configuration for the Storm workspace.
  * @returns The color value for the specified key, or a default value if not defined.
  */
 export function getColor(
-  config: Pick<StormWorkspaceConfig, "colors">,
   key:
     | "background"
     | "foreground"
@@ -63,7 +62,8 @@ export function getColor(
     | "alternate"
     | "accent"
     | "link"
-    | "fatal"
+    | "fatal",
+  config?: Partial<Pick<StormWorkspaceConfig, "colors">>
 ): string {
   const colors = getColorConfig(config);
 
@@ -76,10 +76,10 @@ export function getColor(
   }
 
   if (key === "link") {
-    return getColor(config, "info");
+    return getColor("info", config);
   } else if (key === "fatal") {
-    return getColor(config, "danger");
+    return getColor("danger", config);
   }
 
-  return getColor(config, "brand");
+  return getColor("brand", config);
 }
