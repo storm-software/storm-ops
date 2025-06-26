@@ -206,10 +206,10 @@ export const ColorConfigSchema = SingleThemeColorConfigSchema.or(
   MultiThemeColorConfigSchema
 ).describe("Colors used for various workspace elements");
 
-export const ColorConfigMapSchema = z.union([
-  z.object({ base: ColorConfigSchema }),
-  z.record(z.string(), ColorConfigSchema)
-]);
+export const ColorConfigMapSchema = z.record(
+  z.union([z.literal("base"), z.string()]),
+  ColorConfigSchema
+);
 
 const ExtendsItemSchema = z
   .string()
