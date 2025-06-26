@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.175.1](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.175.1) (2025-06-26)
+
+### Miscellaneous
+
+- **monorepo:** Update and align workspace package dependencies
+  ([4e0b79bfa](https://github.com/storm-software/storm-ops/commit/4e0b79bfa))
+- **config-tools:** Update `getColor` and `getColorConfig` utilities to accept
+  missing configuration
+  ([556a5d871](https://github.com/storm-software/storm-ops/commit/556a5d871))
+- **monorepo:** Regenerate README markdown files
+  ([a8119c53b](https://github.com/storm-software/storm-ops/commit/a8119c53b))
+
+### Updated Dependencies
+
+- Updated config to 1.124.5
+
 ## [1.175.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.175.0) (2025-06-26)
 
 ### Features

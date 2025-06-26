@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.45.15](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.15) (2025-06-26)
+
+### Miscellaneous
+
+- **monorepo:** Update and align workspace package dependencies
+  ([4e0b79bfa](https://github.com/storm-software/storm-ops/commit/4e0b79bfa))
+- **monorepo:** Regenerate README markdown files
+  ([a8119c53b](https://github.com/storm-software/storm-ops/commit/a8119c53b))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.175.1
+- Updated build-tools to 0.151.12
+- Updated config to 1.124.5
+
 ## [0.45.14](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.14) (2025-06-26)
 
 ### Miscellaneous
