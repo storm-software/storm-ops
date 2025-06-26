@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.124.4](https://github.com/storm-software/storm-ops/releases/tag/config%401.124.4) (2025-06-26)
+
+### Bug Fixes
+
+- **config:** Simplify `ColorMapSchema` record key type
+  ([9651d88e3](https://github.com/storm-software/storm-ops/commit/9651d88e3))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([4d805888b](https://github.com/storm-software/storm-ops/commit/4d805888b))
+
 ## [1.124.3](https://github.com/storm-software/storm-ops/releases/tag/config%401.124.3) (2025-06-22)
 
 ### Miscellaneous
