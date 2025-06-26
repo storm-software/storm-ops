@@ -1,4 +1,5 @@
 export * from "./apply-workspace-tokens";
+export * from "./colors";
 export * from "./correct-paths";
 export * from "./file-path-utils";
 export * from "./find-workspace-root";
