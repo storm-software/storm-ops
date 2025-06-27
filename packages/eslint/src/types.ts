@@ -134,9 +134,15 @@ export interface OptionsTSDoc extends OptionsOverrides {
   /**
    * The type of Storm Software TSDoc configuration to use.
    *
-   * @defaultValue "core"
+   * @defaultValue "recommended"
    */
-  type?: "base" | "typedoc" | "api-extractor" | "core";
+  type?:
+    | "base"
+    | "typedoc"
+    | "api-extractor"
+    | "core"
+    | "callouts"
+    | "recommended";
 
   /**
    * The path to a TSDoc config file.

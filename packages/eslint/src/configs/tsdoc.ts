@@ -7,7 +7,7 @@ export async function tsdoc(
 ): Promise<TypedFlatConfigItem[]> {
   const {
     severity = "error",
-    type = "core",
+    type = "recommended",
     configFile,
     files = [GLOB_TS, GLOB_TSX]
   } = options;

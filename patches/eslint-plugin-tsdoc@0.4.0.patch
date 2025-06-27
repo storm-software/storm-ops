@@ -1,5 +1,5 @@
 diff --git a/lib/ConfigCache.js b/lib/ConfigCache.js
-index 55d07a04c611f65e0a27f59b5de9c89c9d393888..27e403d0673acc9c0899ed44445505ad60b83c93 100644
+index 55d07a04c611f65e0a27f59b5de9c89c9d393888..ebc37245a2bceb7eb303ddba637ded925f15f130 100644
 --- a/lib/ConfigCache.js
 +++ b/lib/ConfigCache.js
 @@ -29,6 +29,76 @@ exports.ConfigCache = void 0;
@@ -84,7 +84,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..27e403d0673acc9c0899ed44445505ad
          return cachedConfig.configFile;
      }
 +    static getStormConfigFile({
-+        type = "core",
++        type = "recommended",
 +        configFile,
 +      }) {
 +        let workspaceRoot = "";
@@ -184,7 +184,7 @@ index 55d07a04c611f65e0a27f59b5de9c89c9d393888..27e403d0673acc9c0899ed44445505ad
  exports.ConfigCache = ConfigCache;
  // findConfigPathForFolder() result --> loaded tsdoc.json configuration
 diff --git a/lib/index.js b/lib/index.js
-index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..4a382c40d336242bb67b7886a1614337dfbe073b 100644
+index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..66653ce1f2246a4f57767dfaea6c2680564d5ec9 100644
 --- a/lib/index.js
 +++ b/lib/index.js
 @@ -15,7 +15,7 @@ const plugin = {
@@ -208,9 +208,9 @@ index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..4a382c40d336242bb67b7886a1614337
 +                    properties: {
 +                      type: {
 +                        type: "string",
-+                        enum: ["typedoc", "api-extractor", "base", "core"],
++                        enum: ["typedoc", "api-extractor", "base", "core", "callouts", "recommended"],
 +                        description:
-+                          "The TSDoc configuration type to use from '@storm-software/tsdoc'. Defaults to 'core' (@storm-software/tsdoc/core.json)."
++                          "The TSDoc configuration type to use from '@storm-software/tsdoc'. Defaults to 'recommended' (@storm-software/tsdoc/recommended.json)."
 +                      },
 +                      configFile: {
 +                        type: "string",
@@ -224,7 +224,7 @@ index 73c357f96e3c69ac87e19cc3e5d2733073d6aef3..4a382c40d336242bb67b7886a1614337
              },
 +            defaultOptions: [
 +              {
-+                type: "core"
++                type: "recommended"
 +              }
 +            ],
              create: (context) => {

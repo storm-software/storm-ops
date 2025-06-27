@@ -17072,7 +17072,7 @@ type TsUnifiedSignatures = []|[{
 // ----- tsdoc/syntax -----
 type TsdocSyntax = []|[{
   
-  type?: ("typedoc" | "api-extractor" | "base" | "core")
+  type?: ("typedoc" | "api-extractor" | "base" | "core" | "callouts" | "recommended")
   
   configFile?: string
 }]
