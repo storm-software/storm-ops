@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.160.5](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.160.5) (2025-06-27)
+
+### Bug Fixes
+
+- **eslint:** Allow mixed-case in interface names
+  ([86e3d2fe9](https://github.com/storm-software/storm-ops/commit/86e3d2fe9))
+
 ## [0.160.4](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.160.4) (2025-06-26)
 
 ### Miscellaneous
