@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.5.2](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.5.2) (2025-06-27)
+
+### Bug Fixes
+
+- **tsdoc:** Resolve issues with duplicate `tagDefinitions` configuration
+  ([582c75494](https://github.com/storm-software/storm-ops/commit/582c75494))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([651b8c2a6](https://github.com/storm-software/storm-ops/commit/651b8c2a6))
+
 ## [0.5.1](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.5.1) (2025-06-27)
 
 ### Miscellaneous
