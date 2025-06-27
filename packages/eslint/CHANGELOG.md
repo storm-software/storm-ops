@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.160.6](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.160.6) (2025-06-27)
+
+### Bug Fixes
+
+- **eslint:** Remove the unneeded regex from interface naming convention rule
+  ([e1b753940](https://github.com/storm-software/storm-ops/commit/e1b753940))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.175.2
+
 ## [0.160.5](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.160.5) (2025-06-27)
 
 ### Bug Fixes
