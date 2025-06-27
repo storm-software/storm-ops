@@ -48,6 +48,8 @@
     "./typedoc.json": "./config/typedoc.json",
     "./api-extractor.json": "./config/api-extractor.json",
     "./core.json": "./config/core.json",
+    "./callouts.json": "./config/callouts.json",
+    "./recommended.json": "./config/recommended.json",
     "./index": {
       "import": {
         "types": "./dist/index.d.ts",
