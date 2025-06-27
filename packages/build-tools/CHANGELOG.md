@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.151.13](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.13) (2025-06-27)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([6358bee04](https://github.com/storm-software/storm-ops/commit/6358bee04))
+
 ## [0.151.12](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.12) (2025-06-26)
 
 ### Miscellaneous
