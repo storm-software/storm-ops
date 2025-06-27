@@ -150,12 +150,12 @@ export async function typescript(
           },
           {
             selector: "interface",
-            format: ["PascalCase"]
-            // custom: { regex: "^I[A-Z]*([a-z]*)?", match: false },
-            // filter: {
-            //   regex: "^I(Arguments|TextWriter|O([A-Z][a-z]+[A-Za-z]*)?)$",
-            //   match: false
-            // }
+            format: ["PascalCase"],
+            custom: { regex: "^I[A-Z]", match: false },
+            filter: {
+              regex: "^I(Arguments|TextWriter|O([A-Z][a-z]+[A-Za-z]*)?)$",
+              match: false
+            }
           },
           {
             selector: "variable",
