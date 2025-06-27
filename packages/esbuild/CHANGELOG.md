@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.45.18](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.18) (2025-06-27)
+
+### Miscellaneous
+
+- **monorepo:** Add updated version to generated markdown
+  ([963abb0de](https://github.com/storm-software/storm-ops/commit/963abb0de))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.175.4
+
 ## [0.45.17](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.17) (2025-06-27)
 
 ### Miscellaneous

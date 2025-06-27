@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.5.0](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.5.0) (2025-06-27)
+
+### Features
+
+- **tsdoc:** Added the `callouts` and `recommended` configuration JSONs
+  ([2f70b47a3](https://github.com/storm-software/storm-ops/commit/2f70b47a3))
+
 ## [0.4.13](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.4.13) (2025-06-27)
 
 ### Miscellaneous
