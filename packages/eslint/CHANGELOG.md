@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.160.9](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.160.9) (2025-06-27)
+
+### Miscellaneous
+
+- **eslint:** Added the `callouts` and `recommended` TSDoc configuration options
+  ([02a3a0967](https://github.com/storm-software/storm-ops/commit/02a3a0967))
+- **monorepo:** Regenerated README markdown files
+  ([e86c0228b](https://github.com/storm-software/storm-ops/commit/e86c0228b))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.175.5
+- Updated config to 1.124.7
+
 ## [0.160.8](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.160.8) (2025-06-27)
 
 ### Miscellaneous
