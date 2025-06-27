@@ -151,7 +151,7 @@ export async function typescript(
           {
             selector: "interface",
             format: ["PascalCase"],
-            custom: { regex: "^I[A-Z]", match: false },
+            custom: { regex: "^I[A-Za-z]", match: false },
             filter: {
               regex: "^I(Arguments|TextWriter|O([A-Z][a-z]+[A-Za-z]*)?)$",
               match: false
