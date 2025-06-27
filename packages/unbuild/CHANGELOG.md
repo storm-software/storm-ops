@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.49.29](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.29) (2025-06-27)
+
+### Miscellaneous
+
+- **monorepo:** Add updated version to generated markdown
+  ([963abb0de](https://github.com/storm-software/storm-ops/commit/963abb0de))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.175.4
+
 ## [0.49.28](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.28) (2025-06-27)
 
 ### Miscellaneous

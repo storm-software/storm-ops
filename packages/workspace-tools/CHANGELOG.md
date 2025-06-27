@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.277.5](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.5) (2025-06-27)
+
+### Miscellaneous
+
+- **monorepo:** Add updated version to generated markdown
+  ([963abb0de](https://github.com/storm-software/storm-ops/commit/963abb0de))
+
+### Updated Dependencies
+
+- Updated esbuild to 0.45.18
+- Updated unbuild to 0.49.29
+
 ## [1.277.4](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.4) (2025-06-27)
 
 ### Miscellaneous

@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.160.8](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.160.8) (2025-06-27)
+
+### Miscellaneous
+
+- **monorepo:** Add updated version to generated markdown
+  ([963abb0de](https://github.com/storm-software/storm-ops/commit/963abb0de))
+- **eslint:** Added back the interface naming convention linting rule
+  ([a20e6de0c](https://github.com/storm-software/storm-ops/commit/a20e6de0c))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.175.4
+
 ## [0.160.7](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.160.7) (2025-06-27)
 
 ### Miscellaneous

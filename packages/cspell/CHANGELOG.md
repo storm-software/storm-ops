@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.34.17](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.34.17) (2025-06-27)
+
+### Miscellaneous
+
+- **monorepo:** Add updated version to generated markdown
+  ([963abb0de](https://github.com/storm-software/storm-ops/commit/963abb0de))
+
 ## [0.34.16](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.34.16) (2025-06-27)
 
 ### Miscellaneous
