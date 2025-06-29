@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.175.7](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.175.7) (2025-06-29)
+
+### Miscellaneous
+
+- **config-tools:** Update color code for 'debug', 'trace', and 'system' console
+  logs
+  ([9022dbfcc](https://github.com/storm-software/storm-ops/commit/9022dbfcc))
+- **monorepo:** Regenerate README markdown files
+  ([0d0461a4d](https://github.com/storm-software/storm-ops/commit/0d0461a4d))
+
+### Updated Dependencies
+
+- Updated config to 1.124.8
+
 ## [1.175.6](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.175.6) (2025-06-27)
 
 ### Miscellaneous
