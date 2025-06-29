@@ -106,7 +106,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.info ?? "#58a6ff")(`[${CON
     return (message?: any) => {
       console.debug(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.brand ?? "#1fb2a6")(`[${CONSOLE_ICONS[LogLevelLabel.DEBUG]}  Debug] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex("#3e9eff")(`[${CONSOLE_ICONS[LogLevelLabel.DEBUG]}  Debug] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -116,7 +116,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.brand ?? "#1fb2a6")(`[${CO
     return (message?: any) => {
       console.debug(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.brand ?? "#1fb2a6")(`[${CONSOLE_ICONS[LogLevelLabel.TRACE]}  Trace] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex("#0070E0")(`[${CONSOLE_ICONS[LogLevelLabel.TRACE]}  Trace] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -125,7 +125,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.brand ?? "#1fb2a6")(`[${CO
   return (message?: any) => {
     console.log(
       `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.brand ?? "#1fb2a6")(`[${CONSOLE_ICONS[LogLevelLabel.ALL]}  System] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex("#0356a8")(`[${CONSOLE_ICONS[LogLevelLabel.ALL]}  System] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
     );
   };
