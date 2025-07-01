@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.34.21](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.34.21) (2025-07-01)
+
+### Miscellaneous
+
+- **cspell:** Added repo management tool names to dictionary
+  ([c48e2feec](https://github.com/storm-software/storm-ops/commit/c48e2feec))
+- **monorepo:** Update workspace package links
+  ([21c64ff50](https://github.com/storm-software/storm-ops/commit/21c64ff50))
+
 ## [0.34.20](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.34.20) (2025-06-29)
 
 ### Miscellaneous
