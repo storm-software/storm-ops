@@ -333,6 +333,10 @@ cmder
 shellescape
 monodon
 zkochan
+whitesource
+huskyrc
+lintstagedrc
+commitlintrc
 
 # Acronyms
 dpdm
