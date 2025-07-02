@@ -1,6 +1,6 @@
 {
   "name": "create-storm-workspace",
-  "version": "1.91.33",
+  "version": "1.91.34",
   "type": "commonjs",
   "description": "⚡A CLI tool used to generate and fully configure a Storm Workspace repository.",
   "repository": {

@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.34.22](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.34.22) (2025-07-02)
+
+### Miscellaneous
+
+- **cspell:** Added the `TypeScript` section to dictionary
+  ([637d49c61](https://github.com/storm-software/storm-ops/commit/637d49c61))
+- **monorepo:** Regenerate README markdown files
+  ([a606340bb](https://github.com/storm-software/storm-ops/commit/a606340bb))
+
 ## [0.34.21](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.34.21) (2025-07-01)
 
 ### Miscellaneous
