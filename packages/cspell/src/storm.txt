@@ -352,6 +352,9 @@ nixpkgs
 cachix
 devenv
 
+# TypeScript
+transpiles
+
 # JavaScript
 domwindow
 nodescript
