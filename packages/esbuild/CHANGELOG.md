@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.45.24](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.24) (2025-07-03)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([d45ffe6c6](https://github.com/storm-software/storm-ops/commit/d45ffe6c6))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.0
+- Updated config to 1.125.0
+
 ## [0.45.23](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.23) (2025-07-02)
 
 ### Miscellaneous

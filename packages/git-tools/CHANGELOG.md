@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.113.0](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.0) (2025-07-03)
+
+### Features
+
+- **config:** Renamed the `accounts` configuration section to `socials`
+  ([d568204db](https://github.com/storm-software/storm-ops/commit/d568204db))
+
 ## [2.112.13](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.112.13) (2025-07-02)
 
 ### Miscellaneous

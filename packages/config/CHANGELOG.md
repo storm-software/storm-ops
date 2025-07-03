@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.125.0](https://github.com/storm-software/storm-ops/releases/tag/config%401.125.0) (2025-07-03)
+
+### Features
+
+- **config:** Renamed the `accounts` configuration section to `socials`
+  ([d568204db](https://github.com/storm-software/storm-ops/commit/d568204db))
+
 ## [1.124.9](https://github.com/storm-software/storm-ops/releases/tag/config%401.124.9) (2025-07-02)
 
 ### Miscellaneous

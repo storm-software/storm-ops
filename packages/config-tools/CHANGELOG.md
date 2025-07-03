@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.176.0](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.176.0) (2025-07-03)
+
+### Features
+
+- **config:** Renamed the `accounts` configuration section to `socials`
+  ([d568204db](https://github.com/storm-software/storm-ops/commit/d568204db))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([d45ffe6c6](https://github.com/storm-software/storm-ops/commit/d45ffe6c6))
+
+### Updated Dependencies
+
+- Updated config to 1.125.0
+
 ## [1.175.9](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.175.9) (2025-07-02)
 
 ### Miscellaneous
