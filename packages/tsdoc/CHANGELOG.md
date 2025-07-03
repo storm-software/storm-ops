@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.6.0](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.0) (2025-07-03)
+
+### Features
+
+- **tsdoc:** Added the `@credits` tag for providing recognition to other devs
+  ([b58b17214](https://github.com/storm-software/storm-ops/commit/b58b17214))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([0d65555eb](https://github.com/storm-software/storm-ops/commit/0d65555eb))
+
 ## [0.5.6](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.5.6) (2025-07-03)
 
 ### Miscellaneous
