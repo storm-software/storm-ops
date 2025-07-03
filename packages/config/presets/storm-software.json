@@ -7,6 +7,14 @@
     "icon": "https://public.storm-cdn.com/icon-fill.png",
     "url": "https://stormsoftware.com"
   },
+  "socials": {
+    "twitter": "StormSoftwareHQ",
+    "discord": "https://discord.gg/MQ6YVzakM5",
+    "telegram": "https://t.me/storm_software",
+    "slack": "https://join.slack.com/t/storm-software/shared_invite/zt-2gsmk04hs-i6yhK_r6urq0dkZYAwq2pA",
+    "medium": "https://medium.com/storm-software",
+    "github": "https://github.com/storm-software"
+  },
   "owner": "@storm-software/admin",
   "bot": { "name": "stormie-bot", "email": "bot@stormsoftware.com" },
   "mode": "production",
@@ -28,7 +36,6 @@
     "codesFile": "tools/errors/codes.json",
     "url": "https://developer.stormsoftware.com/static/errors"
   },
-  "externalPackagePatterns": ["@storm-software/"],
   "registry": {
     "github": "https://npm.pkg.github.com",
     "npm": "https://registry.npmjs.org",

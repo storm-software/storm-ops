@@ -74,13 +74,13 @@ export const getConfigEnv = (): DeepPartial<StormWorkspaceConfig> => {
       codesFile: process.env[`${prefix}ERROR_CODES_FILE`] || undefined,
       url: process.env[`${prefix}ERROR_URL`] || undefined
     },
-    account: {
-      twitter: process.env[`${prefix}ACCOUNT_TWITTER`] || undefined,
-      discord: process.env[`${prefix}ACCOUNT_DISCORD`] || undefined,
-      telegram: process.env[`${prefix}ACCOUNT_TELEGRAM`] || undefined,
-      slack: process.env[`${prefix}ACCOUNT_SLACK`] || undefined,
-      medium: process.env[`${prefix}ACCOUNT_MEDIUM`] || undefined,
-      github: process.env[`${prefix}ACCOUNT_GITHUB`] || undefined
+    socials: {
+      twitter: process.env[`${prefix}SOCIAL_TWITTER`] || undefined,
+      discord: process.env[`${prefix}SOCIAL_DISCORD`] || undefined,
+      telegram: process.env[`${prefix}SOCIAL_TELEGRAM`] || undefined,
+      slack: process.env[`${prefix}SOCIAL_SLACK`] || undefined,
+      medium: process.env[`${prefix}SOCIAL_MEDIUM`] || undefined,
+      github: process.env[`${prefix}SOCIAL_GITHUB`] || undefined
     },
     organization:
       process.env[`${prefix}ORG`] ||
@@ -191,9 +191,6 @@ export const getConfigEnv = (): DeepPartial<StormWorkspaceConfig> => {
     repository: process.env[`${prefix}REPOSITORY`] || undefined,
     branch: process.env[`${prefix}BRANCH`] || undefined,
     preid: process.env[`${prefix}PRE_ID`] || undefined,
-    externalPackagePatterns: process.env[`${prefix}EXTERNAL_PACKAGE_PATTERNS`]
-      ? JSON.parse(process.env[`${prefix}EXTERNAL_PACKAGE_PATTERNS`] as string)
-      : [],
     registry: {
       github: process.env[`${prefix}REGISTRY_GITHUB`] || undefined,
       npm: process.env[`${prefix}REGISTRY_NPM`] || undefined,

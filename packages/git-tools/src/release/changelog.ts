@@ -1540,12 +1540,12 @@ These changes are released under the ${
   }. You can find more details on [our licensing page](${workspaceConfig.licensing}). You can find guides, API references, and other documentation around this release (and much more) on [our documentation site](${workspaceConfig.docs}).
 
 If you have any questions or comments, feel free to reach out to the team on [Discord](${
-    workspaceConfig.account.discord
+    workspaceConfig.socials.discord
   }) or [our contact page](${workspaceConfig.contact}). Please help us spread the word by giving [this repository](https://github.com/${
     typeof workspaceConfig.organization === "string"
       ? workspaceConfig.organization
       : workspaceConfig.organization?.name
-  }/${workspaceConfig.name}) a star ⭐ on GitHub or [posting on X (Twitter)](https://x.com/intent/tweet?text=Check%20out%20the%20latest%20@${workspaceConfig.account.twitter}%20release%20${
+  }/${workspaceConfig.name}) a star ⭐ on GitHub or [posting on X (Twitter)](https://x.com/intent/tweet?text=Check%20out%20the%20latest%20@${workspaceConfig.socials.twitter}%20release%20${
     projectName ? `${titleCase(projectName)?.replaceAll(" ", "%20")}%20` : ""
   }v${releaseVersion.rawVersion}%20%F0%9F%9A%80%0D%0A%0D%0Ahttps://github.com/${
     typeof workspaceConfig.organization === "string"

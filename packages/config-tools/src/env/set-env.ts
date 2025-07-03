@@ -86,24 +86,24 @@ export const setConfigEnv = (config: StormWorkspaceConfig) => {
     process.env[`${prefix}RELEASE_HEADER`] = config.release.header;
     process.env[`${prefix}RELEASE_FOOTER`] = config.release.footer;
   }
-  if (config.account) {
-    if (config.account.twitter) {
-      process.env[`${prefix}ACCOUNT_TWITTER`] = config.account.twitter;
+  if (config.socials) {
+    if (config.socials.twitter) {
+      process.env[`${prefix}SOCIAL_TWITTER`] = config.socials.twitter;
     }
-    if (config.account.discord) {
-      process.env[`${prefix}ACCOUNT_DISCORD`] = config.account.discord;
+    if (config.socials.discord) {
+      process.env[`${prefix}SOCIAL_DISCORD`] = config.socials.discord;
     }
-    if (config.account.telegram) {
-      process.env[`${prefix}ACCOUNT_TELEGRAM`] = config.account.telegram;
+    if (config.socials.telegram) {
+      process.env[`${prefix}SOCIAL_TELEGRAM`] = config.socials.telegram;
     }
-    if (config.account.slack) {
-      process.env[`${prefix}ACCOUNT_SLACK`] = config.account.slack;
+    if (config.socials.slack) {
+      process.env[`${prefix}SOCIAL_SLACK`] = config.socials.slack;
     }
-    if (config.account.medium) {
-      process.env[`${prefix}ACCOUNT_MEDIUM`] = config.account.medium;
+    if (config.socials.medium) {
+      process.env[`${prefix}SOCIAL_MEDIUM`] = config.socials.medium;
     }
-    if (config.account.github) {
-      process.env[`${prefix}ACCOUNT_GITHUB`] = config.account.github;
+    if (config.socials.github) {
+      process.env[`${prefix}SOCIAL_GITHUB`] = config.socials.github;
     }
   }
   if (config.organization) {
@@ -264,11 +264,6 @@ export const setConfigEnv = (config: StormWorkspaceConfig) => {
   }
   if (config.preid) {
     process.env[`${prefix}PRE_ID`] = String(config.preid);
-  }
-  if (config.externalPackagePatterns) {
-    process.env[`${prefix}EXTERNAL_PACKAGE_PATTERNS`] = JSON.stringify(
-      config.externalPackagePatterns
-    );
   }
   if (config.registry) {
     if (config.registry.github) {

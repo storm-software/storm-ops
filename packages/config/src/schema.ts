@@ -1,14 +1,14 @@
 import * as z from "zod/v4";
 import {
-  STORM_DEFAULT_ACCOUNT_DISCORD,
-  STORM_DEFAULT_ACCOUNT_GITHUB,
-  STORM_DEFAULT_ACCOUNT_MEDIUM,
-  STORM_DEFAULT_ACCOUNT_SLACK,
-  STORM_DEFAULT_ACCOUNT_TELEGRAM,
-  STORM_DEFAULT_ACCOUNT_TWITTER,
   STORM_DEFAULT_ERROR_CODES_FILE,
   STORM_DEFAULT_RELEASE_BANNER,
-  STORM_DEFAULT_RELEASE_FOOTER
+  STORM_DEFAULT_RELEASE_FOOTER,
+  STORM_DEFAULT_SOCIAL_DISCORD,
+  STORM_DEFAULT_SOCIAL_GITHUB,
+  STORM_DEFAULT_SOCIAL_MEDIUM,
+  STORM_DEFAULT_SOCIAL_SLACK,
+  STORM_DEFAULT_SOCIAL_TELEGRAM,
+  STORM_DEFAULT_SOCIAL_TWITTER
 } from "./constants";
 
 const DarkColorSchema = z
@@ -270,37 +270,37 @@ export const WorkspaceReleaseConfigSchema = z
   })
   .describe("The workspace's release config used during the release process");
 
-export const WorkspaceAccountConfigSchema = z
+export const WorkspaceSocialsConfigSchema = z
   .object({
     twitter: z
       .string()
       .trim()
-      .default(STORM_DEFAULT_ACCOUNT_TWITTER)
+      .default(STORM_DEFAULT_SOCIAL_TWITTER)
       .describe("A Twitter/X account associated with the organization/project"),
     discord: z
       .string()
       .trim()
-      .default(STORM_DEFAULT_ACCOUNT_DISCORD)
+      .default(STORM_DEFAULT_SOCIAL_DISCORD)
       .describe("A Discord account associated with the organization/project"),
     telegram: z
       .string()
       .trim()
-      .default(STORM_DEFAULT_ACCOUNT_TELEGRAM)
+      .default(STORM_DEFAULT_SOCIAL_TELEGRAM)
       .describe("A Telegram account associated with the organization/project"),
     slack: z
       .string()
       .trim()
-      .default(STORM_DEFAULT_ACCOUNT_SLACK)
+      .default(STORM_DEFAULT_SOCIAL_SLACK)
       .describe("A Slack account associated with the organization/project"),
     medium: z
       .string()
       .trim()
-      .default(STORM_DEFAULT_ACCOUNT_MEDIUM)
+      .default(STORM_DEFAULT_SOCIAL_MEDIUM)
       .describe("A Medium account associated with the organization/project"),
     github: z
       .string()
       .trim()
-      .default(STORM_DEFAULT_ACCOUNT_GITHUB)
+      .default(STORM_DEFAULT_SOCIAL_GITHUB)
       .describe("A GitHub account associated with the organization/project")
   })
   .describe(
@@ -498,7 +498,7 @@ export const stormWorkspaceConfigSchema = z
       .describe("The owner of the package"),
     bot: WorkspaceBotConfigSchema,
     release: WorkspaceReleaseConfigSchema,
-    account: WorkspaceAccountConfigSchema,
+    socials: WorkspaceSocialsConfigSchema,
     error: errorConfigSchema,
     mode: z
       .enum(["development", "staging", "production"])
@@ -508,12 +508,6 @@ export const stormWorkspaceConfigSchema = z
       .string()
       .trim()
       .describe("The root directory of the workspace"),
-    externalPackagePatterns: z
-      .array(z.string())
-      .default([])
-      .describe(
-        "The build will use these package patterns to determine if they should be external to the bundle"
-      ),
     skipCache: z
       .boolean()
       .default(false)

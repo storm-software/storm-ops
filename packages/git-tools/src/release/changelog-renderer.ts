@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import { getWorkspaceConfig } from "@storm-software/config-tools";
 import axios from "axios";
@@ -12,10 +15,6 @@ import { GithubRemoteReleaseClient } from "nx/src/command-line/release/utils/rem
 import { major } from "semver";
 import { generateChangelogTitle } from "../utilities/changelog-utils";
 import { GithubRepoData } from "./github";
-
-// axios types and values don't seem to match
-// import _axios = require("axios");
-// const axios = _axios as any as (typeof _axios)["default"];
 
 export interface StormChangelogRenderOptions {
   changes: ChangelogChange[];
@@ -136,8 +135,16 @@ export default class StormChangelogRenderer extends DefaultChangelogRenderer {
       this.changelogEntryVersion.replace(/^v/, "");
 
     return isMajorVersion
-      ? `# ${generateChangelogTitle(this.changelogEntryVersion, this.project!, this.workspaceConfig)}`
-      : `## ${generateChangelogTitle(this.changelogEntryVersion, this.project!, this.workspaceConfig)}`;
+      ? `# ${generateChangelogTitle(
+          this.changelogEntryVersion,
+          this.project!,
+          this.workspaceConfig
+        )}`
+      : `## ${generateChangelogTitle(
+          this.changelogEntryVersion,
+          this.project!,
+          this.workspaceConfig
+        )}`;
   }
 
   protected override renderBreakingChanges(): string[] {
