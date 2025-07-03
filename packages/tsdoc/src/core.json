@@ -1,4 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
-  "extends": ["./base.json", "./api-extractor.json", "./typedoc.json"]
+  "extends": ["./base.json", "./api-extractor.json", "./typedoc.json"],
+  "tagDefinitions": [
+    {
+      "tagName": "@credits",
+      "syntaxKind": "block",
+      "allowMultiple": true
+    }
+  ]
 }
