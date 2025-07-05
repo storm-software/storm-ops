@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.35.0](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.35.0) (2025-07-05)
+
+### Features
+
+- **cspell:** Added the `Tools / Scripts` dictionary section
+  ([26d850f3a](https://github.com/storm-software/storm-ops/commit/26d850f3a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([de1ec3c9b](https://github.com/storm-software/storm-ops/commit/de1ec3c9b))
+
 ## [0.34.24](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.34.24) (2025-07-03)
 
 ### Miscellaneous
