@@ -351,6 +351,8 @@ nixos
 nixpkgs
 cachix
 devenv
+nixd
+nixfmt
 
 # TypeScript
 transpiles
@@ -416,14 +418,26 @@ localappdata
 
 # Developers
 dbaeumer
+tamasfe
+firsttris
+ambar
+davidanson
+mikestead
+bbenoist
 
 # TSDoc Tags
 preapproved
 hideconstructor
 
-# Scripts
+# Tools / Scripts
 cword
 mapfile
 compdef
 loadautofunc
 bashdefault
+atuin
+ttyd
+ffmpeg
+gpgsign
+allowincompletepush
+shellcheck
