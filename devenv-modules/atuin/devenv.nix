@@ -16,6 +16,4 @@
     atuin import zsh
     atuin gen-completions --shell zsh --out-dir $HOME
   '';
-
-  # See full reference at https://devenv.sh/reference/options/
 }
