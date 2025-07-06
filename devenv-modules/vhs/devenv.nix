@@ -5,7 +5,7 @@
  # https://devenv.sh/packages/
   packages = [
     pkgs.ttyd
-    pkgs.ffmpeg-headless
+    pkgs.ffmpeg
     pkgs.vhs
   ];
  }
