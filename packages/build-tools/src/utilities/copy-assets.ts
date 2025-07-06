@@ -60,6 +60,8 @@ ${pendingAssets.map(pendingAsset => (typeof pendingAsset === "string" ? ` - ${pe
   });
   await assetHandler.processAllAssetsOnce();
 
+  writeTrace("Completed copying assets to the output directory", config);
+
   if (includeSrc === true) {
     writeDebug(
       `📝  Adding banner and writing source files: ${joinPaths(
