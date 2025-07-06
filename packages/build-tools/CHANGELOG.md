@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.151.19](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.19) (2025-07-06)
+
+### Miscellaneous
+
+- **build-tools:** Added logging to the `copyAssets` helper function
+  ([3b1ef2d65](https://github.com/storm-software/storm-ops/commit/3b1ef2d65))
+
 ## [0.151.18](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.18) (2025-07-06)
 
 ### Miscellaneous
