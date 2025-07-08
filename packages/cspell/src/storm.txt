@@ -356,6 +356,9 @@ nixfmt
 
 # TypeScript
 transpiles
+genaiscript
+genaisrc
+genai
 
 # JavaScript
 domwindow
@@ -429,7 +432,7 @@ bbenoist
 preapproved
 hideconstructor
 
-# Tools / Scripts
+# Nix Packages / Tools
 cword
 mapfile
 compdef
