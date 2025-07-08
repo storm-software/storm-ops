@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.113.4](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.4) (2025-07-08)
+
+### Bug Fixes
+
+- **git-tools:** Resolved issue with JSON file comments
+  ([9a266c853](https://github.com/storm-software/storm-ops/commit/9a266c853))
+
+### Miscellaneous
+
+- **git-tools:** Added a separate `commit-types.json` and commit specification
+  ([1edd9cade](https://github.com/storm-software/storm-ops/commit/1edd9cade))
+- **monorepo:** Update workspace package links
+  ([7736665aa](https://github.com/storm-software/storm-ops/commit/7736665aa))
+
 ## [2.113.3](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.3) (2025-07-06)
 
 ### Miscellaneous

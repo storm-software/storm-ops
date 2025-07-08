@@ -676,8 +676,8 @@ importers:
         specifier: 'catalog:'
         version: 6.1.4
       es-toolkit:
-        specifier: ^1.39.6
-        version: 1.39.6
+        specifier: ^1.39.7
+        version: 1.39.7
       esbuild:
         specifier: 'catalog:'
         version: 0.25.4
@@ -858,8 +858,8 @@ importers:
         specifier: 'catalog:'
         version: 21.0.3(@babel/traverse@7.28.0)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.23)(typescript@5.8.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))(@zkochan/js-yaml@0.0.7)(eslint@9.26.0(jiti@2.4.2))(nx@21.0.3(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.23)(typescript@5.8.3))(@swc/core@1.7.26(@swc/helpers@0.5.13)))(verdaccio@6.0.5(typanion@3.14.0))
       '@prettier/plugin-xml':
-        specifier: ^3.4.1
-        version: 3.4.1(prettier@3.6.2)
+        specifier: ^3.4.2
+        version: 3.4.2(prettier@3.6.2)
       '@stylistic/eslint-plugin-migrate':
         specifier: ^4.4.1
         version: 4.4.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)
@@ -1417,8 +1417,8 @@ importers:
         specifier: 'catalog:'
         version: 12.1.0
       es-toolkit:
-        specifier: ^1.39.6
-        version: 1.39.6
+        specifier: ^1.39.7
+        version: 1.39.7
       globby:
         specifier: ^14.1.0
         version: 14.1.0
@@ -2349,16 +2349,16 @@ packages:
     resolution: {integrity: sha512-0hKEzLhpw+ZTAfNJyRrn6s+V0nDWzXk9OjBr2TiGIu0OfMr5s2V4FpKLTAK3Ca5r5OKLbf4hkOGDPyiRjie/jA==}
     engines: {node: '>=18.0.0'}
 
-  '@azure/msal-browser@4.14.0':
-    resolution: {integrity: sha512-6VB06LypBS0Cf/dSUwRZse/eGnfAHwDof7GpCfoo3JjnruSN40jFBw+QXZd1ox5OLC6633EdWRRz+TGeHMEspg==}
+  '@azure/msal-browser@4.15.0':
+    resolution: {integrity: sha512-+AIGTvpVz+FIx5CsM1y+nW0r/qOb/ChRdM8/Cbp+jKWC0Wdw4ldnwPdYOBi5NaALUQnYITirD9XMZX7LdklEzQ==}
     engines: {node: '>=0.8.0'}
 
-  '@azure/msal-common@15.8.0':
-    resolution: {integrity: sha512-gYqq9MsWT/KZh8iTG37DkGv+wgfllgImTMB++Z83qn75M5eZ0cMX5kSSXdJqHbFm1qxaYydv+2kiVyA9ksN9pA==}
+  '@azure/msal-common@15.8.1':
+    resolution: {integrity: sha512-ltIlFK5VxeJ5BurE25OsJIfcx1Q3H/IZg2LjV9d4vmH+5t4c1UCyRQ/HgKLgXuCZShs7qfc/TC95GYZfsUsJUQ==}
     engines: {node: '>=0.8.0'}
 
-  '@azure/msal-node@3.6.2':
-    resolution: {integrity: sha512-lfZtncCSmKvW31Bh3iUBkeTf+Myt85YsamMkGNZ0ayTO5MirOGBgTa3BgUth0kWFBQuhZIRfi5B95INZ+ppkjw==}
+  '@azure/msal-node@3.6.3':
+    resolution: {integrity: sha512-95wjsKGyUcAd5tFmQBo5Ug/kOj+hFh/8FsXuxluEvdfbgg6xCimhSP9qnyq6+xIg78/jREkBD1/BSqd7NIDDYQ==}
     engines: {node: '>=16'}
 
   '@azure/search-documents@12.1.0':
@@ -5714,8 +5714,8 @@ packages:
     resolution: {integrity: sha512-c83qWb22rNRuB0UaVCI0uRPNRr8Z0FWnEIvT47jiHAmOIUHbBOg5XvV7pM5x+rKn9HRpjxquDbXYSXr3fAKFcw==}
     engines: {node: '>=12'}
 
-  '@prettier/plugin-xml@3.4.1':
-    resolution: {integrity: sha512-Uf/6/+9ez6z/IvZErgobZ2G9n1ybxF5BhCd7eMcKqfoWuOzzNUxBipNo3QAP8kRC1VD18TIo84no7LhqtyDcTg==}
+  '@prettier/plugin-xml@3.4.2':
+    resolution: {integrity: sha512-/UyNlHfkuLXG6Ed85KB0WBF283xn2yavR+UtRibBRUcvEJId2DSLdGXwJ/cDa1X++SWDPzq3+GSFniHjkNy7yg==}
     peerDependencies:
       prettier: ^3.0.0
 
@@ -8877,8 +8877,8 @@ packages:
     resolution: {integrity: sha512-w+5mJ3GuFL+NjVtJlvydShqE1eN3h3PbI7/5LAsYJP/2qtuMXjfL2LpHSRqo4b4eSF5K/DH1JXKUAHSB2UW50g==}
     engines: {node: '>= 0.4'}
 
-  es-toolkit@1.39.6:
-    resolution: {integrity: sha512-uiVjnLem6kkfXumlwUEWEKnwUN5QbSEB0DHy2rNJt0nkYcob5K0TXJ7oJRzhAcvx+SRmz4TahKyN5V9cly/IPA==}
+  es-toolkit@1.39.7:
+    resolution: {integrity: sha512-ek/wWryKouBrZIjkwW2BFf91CWOIMvoy2AE5YYgUrfWsJQM2Su1LoLtrw8uusEpN9RfqLlV/0FVNjT0WMv8Bxw==}
 
   esbuild-visualizer@0.6.0:
     resolution: {integrity: sha512-oNK3JAhC7+re93VTtUdWJKTDVnA2qXPAjCAoaw9OxEFUXztszw3kcaK46u1U790T8FdUBAWv6F9Xt59P8nJCVA==}
@@ -17306,8 +17306,8 @@ snapshots:
       '@azure/core-tracing': 1.2.0
       '@azure/core-util': 1.12.0
       '@azure/logger': 1.2.0
-      '@azure/msal-browser': 4.14.0
-      '@azure/msal-node': 3.6.2
+      '@azure/msal-browser': 4.15.0
+      '@azure/msal-node': 3.6.3
       open: 10.1.2
       tslib: 2.8.1
     transitivePeerDependencies:
@@ -17320,15 +17320,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@azure/msal-browser@4.14.0':
+  '@azure/msal-browser@4.15.0':
     dependencies:
-      '@azure/msal-common': 15.8.0
+      '@azure/msal-common': 15.8.1
 
-  '@azure/msal-common@15.8.0': {}
+  '@azure/msal-common@15.8.1': {}
 
-  '@azure/msal-node@3.6.2':
+  '@azure/msal-node@3.6.3':
     dependencies:
-      '@azure/msal-common': 15.8.0
+      '@azure/msal-common': 15.8.1
       jsonwebtoken: 9.0.2
       uuid: 8.3.2
 
@@ -19091,7 +19091,7 @@ snapshots:
       '@genaiscript/core': 2.2.11(aws-crt@1.27.3)(ws@8.18.3)(zod@3.25.76)
       '@genaiscript/runtime': 2.2.11(@types/node@22.15.17)(aws-crt@1.27.3)(ws@8.18.3)
       debug: 4.4.1
-      es-toolkit: 1.39.6
+      es-toolkit: 1.39.7
       tslib: 2.8.1
     transitivePeerDependencies:
       - '@types/node'
@@ -19128,7 +19128,7 @@ snapshots:
       debug: 4.4.1
       diff: 8.0.2
       dotenv: 16.6.1
-      es-toolkit: 1.39.6
+      es-toolkit: 1.39.7
       fast-xml-parser: 5.2.5
       fastest-levenshtein: 1.0.16
       fetch-retry: 6.0.0
@@ -19200,7 +19200,7 @@ snapshots:
       '@inquirer/prompts': 7.6.0(@types/node@22.15.17)
       debug: 4.4.1
       dockerode: 4.0.7
-      es-toolkit: 1.39.6
+      es-toolkit: 1.39.7
       execa: 9.6.0
       glob: 11.0.3
       memorystream: 0.3.1
@@ -21471,7 +21471,7 @@ snapshots:
       '@pnpm/network.ca-file': 1.0.2
       config-chain: 1.1.13
 
-  '@prettier/plugin-xml@3.4.1(prettier@3.6.2)':
+  '@prettier/plugin-xml@3.4.2(prettier@3.6.2)':
     dependencies:
       '@xml-tools/parser': 1.0.11
       prettier: 3.6.2
@@ -23298,7 +23298,7 @@ snapshots:
 
   agent-base@6.0.2:
     dependencies:
-      debug: 4.4.0
+      debug: 4.4.1
     transitivePeerDependencies:
       - supports-color
 
@@ -25132,7 +25132,7 @@ snapshots:
       is-date-object: 1.1.0
       is-symbol: 1.1.1
 
-  es-toolkit@1.39.6: {}
+  es-toolkit@1.39.7: {}
 
   esbuild-visualizer@0.6.0:
     dependencies:
@@ -26420,7 +26420,7 @@ snapshots:
       commander: 14.0.0
       debug: 4.4.1
       dotenv: 16.6.1
-      es-toolkit: 1.39.6
+      es-toolkit: 1.39.7
       execa: 9.6.0
       fastify: 5.4.0
       inflection: 3.0.2
@@ -27093,7 +27093,7 @@ snapshots:
   https-proxy-agent@5.0.1:
     dependencies:
       agent-base: 6.0.2
-      debug: 4.4.0
+      debug: 4.4.1
     transitivePeerDependencies:
       - supports-color
 
@@ -29564,7 +29564,7 @@ snapshots:
       devlop: 1.1.0
       micromark-util-chunked: 2.0.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.1
+      micromark-util-types: 2.0.2
 
   micromark-util-symbol@1.1.0: {}
 

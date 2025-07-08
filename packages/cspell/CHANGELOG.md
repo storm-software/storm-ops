@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.35.2](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.35.2) (2025-07-08)
+
+### Miscellaneous
+
+- **cspell:** Add new items to dictionary
+  ([bc08decc5](https://github.com/storm-software/storm-ops/commit/bc08decc5))
+- **monorepo:** Update workspace package links
+  ([7736665aa](https://github.com/storm-software/storm-ops/commit/7736665aa))
+
 ## [0.35.1](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.35.1) (2025-07-06)
 
 ### Miscellaneous
