@@ -12418,8 +12418,8 @@ packages:
     resolution: {integrity: sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==}
     engines: {node: '>=12'}
 
-  openai@5.8.2:
-    resolution: {integrity: sha512-8C+nzoHYgyYOXhHGN6r0fcb4SznuEn1R7YZMvlqDbnCuE0FM2mm3T1HiYW6WIcMS/F1Of2up/cSPjLPaWt0X9Q==}
+  openai@5.8.3:
+    resolution: {integrity: sha512-IdotKmquCnpouTRvF9xRXVhMx6K5Sc8zkD6Usf+so+NTQ+qiJ8bLSCd7LBb8b/Rof7uYltlSxJhNp+spphKI4Q==}
     hasBin: true
     peerDependencies:
       ws: ^8.18.0
@@ -19157,7 +19157,7 @@ snapshots:
       node-sarif-builder: 3.2.0
       object-inspect: 1.13.4
       octokit: 5.0.3
-      openai: 5.8.2(ws@8.18.3)(zod@3.25.76)
+      openai: 5.8.3(ws@8.18.3)(zod@3.25.76)
       p-limit: 6.2.0
       package-manager-detector: 1.3.0
       parse-diff: 0.11.1
@@ -26424,7 +26424,7 @@ snapshots:
       execa: 9.6.0
       fastify: 5.4.0
       inflection: 3.0.2
-      openai: 5.8.2(ws@8.18.3)(zod@3.25.76)
+      openai: 5.8.3(ws@8.18.3)(zod@3.25.76)
       replace-ext: 2.0.0
       tslib: 2.8.1
       typescript: 5.8.3
@@ -30272,7 +30272,7 @@ snapshots:
       is-docker: 2.2.1
       is-wsl: 2.2.0
 
-  openai@5.8.2(ws@8.18.3)(zod@3.25.76):
+  openai@5.8.3(ws@8.18.3)(zod@3.25.76):
     optionalDependencies:
       ws: 8.18.3
       zod: 3.25.76
