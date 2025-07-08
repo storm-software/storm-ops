@@ -10,7 +10,7 @@ import defu from "defu";
 import { existsSync } from "fs";
 import { readFile } from "fs/promises";
 import childProcess from "node:child_process";
-import { DEFAULT_COMMIT_TYPES } from "../types";
+import { COMMIT_TYPES } from "../types";
 import { DEFAULT_COMMITLINT_CONFIG } from "./config";
 import lint from "./lint";
 import { getNxScopes, getRuleFromScopeEnum } from "./scope";
@@ -90,7 +90,7 @@ export const runCommitLint = async (
     }
   }
 
-  const allowedTypes = Object.keys(DEFAULT_COMMIT_TYPES).join("|");
+  const allowedTypes = Object.keys(COMMIT_TYPES).join("|");
   const allowedScopes = await getNxScopes({
     config
   });

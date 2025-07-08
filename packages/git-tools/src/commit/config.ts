@@ -1,12 +1,12 @@
 import {
+  COMMIT_TYPES,
   CommitConfig,
   CommitQuestionEnum,
   CommitQuestionProps,
   DEFAULT_COMMIT_PROMPT_MESSAGES,
   DEFAULT_COMMIT_QUESTIONS,
   DEFAULT_COMMIT_SETTINGS,
-  DEFAULT_COMMIT_TYPES,
-  DefaultCommitQuestionKeys,
+  DefaultCommitQuestionKeys
 } from "../types";
 
 export const DEFAULT_COMMIT_CONFIG: CommitConfig = {
@@ -16,5 +16,5 @@ export const DEFAULT_COMMIT_CONFIG: CommitConfig = {
     DefaultCommitQuestionKeys,
     CommitQuestionProps
   >,
-  types: DEFAULT_COMMIT_TYPES,
+  types: COMMIT_TYPES
 };

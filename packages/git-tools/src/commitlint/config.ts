@@ -1,5 +1,5 @@
 import {
-  DEFAULT_COMMIT_TYPES,
+  COMMIT_TYPES,
   DefaultCommitRulesEnum,
   RuleConfigCondition,
   RuleConfigSeverity
@@ -22,7 +22,7 @@ export const DEFAULT_COMMIT_RULES: DefaultCommitRulesEnum = {
   "type-enum": [
     RuleConfigSeverity.Error,
     "always",
-    Object.keys(DEFAULT_COMMIT_TYPES)
+    Object.keys(COMMIT_TYPES)
   ] as [RuleConfigSeverity, RuleConfigCondition, string[]],
   "type-max-length": [RuleConfigSeverity.Error, "always", 20],
   "type-min-length": [RuleConfigSeverity.Error, "always", 3],

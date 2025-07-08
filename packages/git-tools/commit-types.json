@@ -1,6 +1,4 @@
 {
-  /* --- Bumps version when selected --- */
-
   "chore": {
     "description": "Other changes that don't modify src or test files",
     "title": "Chore",
@@ -71,9 +69,6 @@
       "hidden": false
     }
   },
-
-  /* --- Does not bump version when selected --- */
-
   "docs": {
     "description": "A change that only includes documentation updates",
     "title": "Documentation",
@@ -94,9 +89,6 @@
       "hidden": true
     }
   },
-
-  /* --- Not included in commitlint but included in changelog --- */
-
   "deps": {
     "description": "Changes that add, update, or remove dependencies. This includes devDependencies and peerDependencies",
     "title": "Dependencies",
@@ -108,9 +100,6 @@
       "hidden": false
     }
   },
-
-  /* --- Not included in commitlint or changelog --- */
-
   "build": {
     "description": "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)",
     "title": "Build",

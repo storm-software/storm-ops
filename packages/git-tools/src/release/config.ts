@@ -1,9 +1,8 @@
-import commitTypes from "../../commit-types.json";
-import { DEFAULT_COMMIT_QUESTIONS } from "../types";
+import { COMMIT_TYPES, DEFAULT_COMMIT_QUESTIONS } from "../types";
 
 export const DEFAULT_CONVENTIONAL_COMMITS_CONFIG = {
   questions: DEFAULT_COMMIT_QUESTIONS,
-  types: commitTypes
+  types: COMMIT_TYPES
 };
 
 export const DEFAULT_RELEASE_GROUP_CONFIG = {
