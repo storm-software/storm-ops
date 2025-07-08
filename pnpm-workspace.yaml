@@ -38,6 +38,7 @@ catalog:
   "eslint": "^9.20.0"
   "copyfiles": "2.4.1"
   "rimraf": "6.0.1"
+  "genaiscript": "^2.2.9"
   "c12": "^2.0.0-beta.2"
   "pkg-types": "^1.3.1"
   "@ltd/j-toml": "1.38.0"
@@ -62,8 +63,8 @@ catalog:
   "zx": "^8.5.2"
 
 onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - '@swc/core'
+  - "@parcel/watcher"
+  - "@swc/core"
   - aws-crt
   - bufferutil
   - core-js
