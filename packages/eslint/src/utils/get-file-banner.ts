@@ -120,7 +120,7 @@ ${padding}⚡ ${(organization.charAt(0).toUpperCase() + organization.slice(1))
  Documentation:            ${
    process.env.STORM_DOCS ||
    workspaceConfig?.docs ||
-   `https://docs.stormsoftware.com/${name ? `projects/${name}/` : ""}`
+   `https://docs.stormsoftware.com/${name ? `projects/${name}` : ""}`
  }
  Contact:                  ${
    (
