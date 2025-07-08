@@ -2,6 +2,25 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.160.19](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.160.19) (2025-07-08)
+
+### Bug Fixes
+
+- **eslint:** Resolve issues with URL slashes in file banner
+  ([398f770e6](https://github.com/storm-software/storm-ops/commit/398f770e6))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([aabde5749](https://github.com/storm-software/storm-ops/commit/aabde5749))
+- **monorepo:** Update README markdown files
+  ([a201e9178](https://github.com/storm-software/storm-ops/commit/a201e9178))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.5
+- Updated config to 1.125.4
+
 ## [0.160.18](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.160.18) (2025-07-08)
 
 ### Miscellaneous

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.113.5](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.5) (2025-07-08)
+
+### Miscellaneous
+
+- **monorepo:** Update README markdown files
+  ([a201e9178](https://github.com/storm-software/storm-ops/commit/a201e9178))
+
 ## [2.113.4](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.4) (2025-07-08)
 
 ### Bug Fixes
