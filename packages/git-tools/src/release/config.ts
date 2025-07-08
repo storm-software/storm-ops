@@ -1,8 +1,9 @@
-import { DEFAULT_COMMIT_QUESTIONS, DEFAULT_COMMIT_TYPES } from "../types";
+import commitTypes from "../../commit-types.json";
+import { DEFAULT_COMMIT_QUESTIONS } from "../types";
 
 export const DEFAULT_CONVENTIONAL_COMMITS_CONFIG = {
   questions: DEFAULT_COMMIT_QUESTIONS,
-  types: DEFAULT_COMMIT_TYPES
+  types: commitTypes
 };
 
 export const DEFAULT_RELEASE_GROUP_CONFIG = {
@@ -47,7 +48,6 @@ export const DEFAULT_RELEASE_CONFIG = {
       createRelease: "github",
       entryWhenNoChanges: false,
       file: "{projectRoot}/CHANGELOG.md",
-      // renderer: "@storm-software/git-tools/changelog-renderer",
       renderOptions: {
         authors: false,
         commitReferences: true,

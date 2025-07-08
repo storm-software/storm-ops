@@ -8,16 +8,18 @@
     "lib": ["ESNext"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "resolveJsonModule": true,
     "moduleResolution": "Bundler",
     "moduleDetection": "force",
     "types": ["node"]
   },
   "include": [
-    "src/**/*.ts",
-    "bin/**/*.ts",
-    "src/declarations.d.ts",
-    "tsup.base.ts",
-    "tsup.bin.ts"
+    "./commit-types.json",
+    "./src/**/*.ts",
+    "./bin/**/*.ts",
+    "./tsup.base.ts",
+    "./tsup.bin.ts",
+    "./tsup.changelog-renderer.ts"
   ],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }
