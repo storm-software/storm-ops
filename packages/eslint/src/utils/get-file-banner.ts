@@ -106,10 +106,10 @@ ${padding}⚡ ${(organization.charAt(0).toUpperCase() + organization.slice(1))
    .join(" ")} under the ${license} license, and is
  free for commercial and private use. For more information, please visit
  our licensing page at ${
-   process.env.STORM_LICENSING ||
-   workspaceConfig?.licensing ||
-   `https://stormsoftware.com/${name ? `projects/${name}/` : ""}license`
- }.
+   process.env.STORM_LICENSING?.replace(/\/$/, "") ||
+   workspaceConfig?.licensing?.replace(/\/$/, "") ||
+   "https://stormsoftware.com/licenses"
+ }/${name ? `projects/${name}` : ""}.
 
  Website:                  ${process.env.STORM_HOMEPAGE || workspaceConfig?.homepage || "https://stormsoftware.com"}
  Repository:               ${
