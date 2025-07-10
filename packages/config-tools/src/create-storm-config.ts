@@ -75,13 +75,24 @@ export const createStormWorkspaceConfig = async <
     }
 
     const defaultConfig = await getPackageJsonConfig(_workspaceRoot);
+    const configInput = defu(configEnv, configFile, defaultConfig);
+    try {
+      result = applyDefaultConfig(
+        await stormWorkspaceConfigSchema.parseAsync(configInput)
+      ) as StormWorkspaceConfig<TExtensionName, TExtensionConfig>;
+      result.workspaceRoot ??= _workspaceRoot;
+    } catch (error) {
+      throw new Error(
+        `Failed to parse Storm Workspace configuration${error?.message ? `: ${error.message}` : ""}
 
-    result = applyDefaultConfig(
-      await stormWorkspaceConfigSchema.parseAsync(
-        defu(configEnv, configFile, defaultConfig)
-      )
-    ) as StormWorkspaceConfig<TExtensionName, TExtensionConfig>;
-    result.workspaceRoot ??= _workspaceRoot;
+Please ensure your configuration file is valid JSON and matches the expected schema. The current workspace configuration input is: ${formatLogMessage(
+          configInput
+        )}`,
+        {
+          cause: error
+        }
+      );
+    }
   } else {
     result = _static_cache.data as StormWorkspaceConfig<
       TExtensionName,
