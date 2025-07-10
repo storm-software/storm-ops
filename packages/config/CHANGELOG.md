@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.125.9](https://github.com/storm-software/storm-ops/releases/tag/config%401.125.9) (2025-07-10)
+
+### Bug Fixes
+
+- **config:** Resolved issues with unmet `zod` v4 requirements
+  ([9d82ae81a](https://github.com/storm-software/storm-ops/commit/9d82ae81a))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([b95696e42](https://github.com/storm-software/storm-ops/commit/b95696e42))
+
 ## [1.125.8](https://github.com/storm-software/storm-ops/releases/tag/config%401.125.8) (2025-07-10)
 
 ### Miscellaneous
