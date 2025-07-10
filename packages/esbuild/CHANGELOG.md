@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.45.32](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.32) (2025-07-10)
+
+### Miscellaneous
+
+- **monorepo:** Update links and `zod` to v4
+  ([fbdb2f1e6](https://github.com/storm-software/storm-ops/commit/fbdb2f1e6))
+- **monorepo:** Regenerate README markdown files
+  ([113ca7595](https://github.com/storm-software/storm-ops/commit/113ca7595))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.8
+- Updated config to 1.125.7
+
 ## [0.45.31](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.31) (2025-07-10)
 
 ### Miscellaneous

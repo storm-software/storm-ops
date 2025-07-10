@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.51.45](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.51.45) (2025-07-10)
+
+### Miscellaneous
+
+- **monorepo:** Update links and `zod` to v4
+  ([fbdb2f1e6](https://github.com/storm-software/storm-ops/commit/fbdb2f1e6))
+
 ## [0.51.44](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.51.44) (2025-07-10)
 
 ### Miscellaneous
