@@ -179,9 +179,6 @@ export const SingleThemeColorConfigSchema = z.object({
 });
 
 export const RegistryUrlConfigSchema = z
-  .string()
-  .trim()
-  .toLowerCase()
   .url()
   .optional()
   .describe("A remote registry URL used to publish distributable packages");
@@ -232,8 +229,6 @@ export const WorkspaceBotConfigSchema = z
         "The workspace bot user's name (this is the bot that will be used to perform various tasks)"
       ),
     email: z
-      .string()
-      .trim()
       .email()
       .default("bot@stormsoftware.com")
       .describe("The email of the workspace bot")
@@ -356,8 +351,6 @@ export const errorConfigSchema = z
       .default(STORM_DEFAULT_ERROR_CODES_FILE)
       .describe("The path to the workspace's error codes JSON file"),
     url: z
-      .string()
-      .trim()
       .url()
       .optional()
       .describe(
@@ -374,21 +367,9 @@ export const organizationConfigSchema = z
       .trim()
       .optional()
       .describe("A description of the organization"),
-    logo: z
-      .string()
-      .trim()
-      .url()
-      .optional()
-      .describe("A URL to the organization's logo image"),
-    icon: z
-      .string()
-      .trim()
-      .url()
-      .optional()
-      .describe("A URL to the organization's icon image"),
+    logo: z.url().optional().describe("A URL to the organization's logo image"),
+    icon: z.url().optional().describe("A URL to the organization's icon image"),
     url: z
-      .string()
-      .trim()
       .url()
       .optional()
       .describe(
@@ -396,6 +377,8 @@ export const organizationConfigSchema = z
       )
   })
   .describe("The workspace's organization details");
+
+const MODE_OPTIONS = ["development", "staging", "production"] as const;
 
 /**
  * Storm Workspace config values used during various dev-ops processes. It represents the config of the entire monorepo.
@@ -442,39 +425,21 @@ export const stormWorkspaceConfigSchema = z
       .trim()
       .default("Apache-2.0")
       .describe("The license type of the package"),
-    homepage: z
-      .string()
-      .trim()
-      .url()
-      .optional()
-      .describe("The homepage of the workspace"),
+    homepage: z.url().optional().describe("The homepage of the workspace"),
     docs: z
-      .string()
-      .trim()
       .url()
       .optional()
       .describe("The documentation site for the workspace"),
     portal: z
-      .string()
-      .trim()
       .url()
       .optional()
       .describe("The development portal site for the workspace"),
     licensing: z
-      .string()
-      .trim()
       .url()
       .optional()
       .describe("The licensing site for the workspace"),
-    contact: z
-      .string()
-      .trim()
-      .url()
-      .optional()
-      .describe("The contact site for the workspace"),
+    contact: z.url().optional().describe("The contact site for the workspace"),
     support: z
-      .string()
-      .trim()
       .url()
       .optional()
       .describe(
@@ -499,8 +464,8 @@ export const stormWorkspaceConfigSchema = z
     socials: WorkspaceSocialsConfigSchema,
     error: errorConfigSchema,
     mode: z
-      .enum(["development", "staging", "production"])
-      .default("production")
+      .enum(MODE_OPTIONS)
+      .prefault("production") // Default to 'production'
       .describe("The current runtime environment mode for the package"),
     workspaceRoot: z
       .string()
