@@ -3,7 +3,7 @@
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import { stormWorkspaceConfigSchema } from "@storm-software/config/schema";
 import defu from "defu";
-import type { ZodTypeAny } from "zod";
+import * as z from "zod/v4";
 import { getConfigFile } from "./config-file/get-config-file";
 import { getConfigEnv, getExtensionEnv } from "./env/get-env";
 import { setConfigEnv } from "./env/set-env";
@@ -33,7 +33,7 @@ export const createStormWorkspaceConfig = async <
   TExtensionName extends
     keyof StormWorkspaceConfig["extensions"] = keyof StormWorkspaceConfig["extensions"],
   TExtensionConfig = any,
-  TExtensionSchema extends ZodTypeAny = ZodTypeAny,
+  TExtensionSchema extends z.ZodType = z.ZodType,
   TUseDefault extends boolean | undefined = boolean | undefined,
   TResult = TUseDefault extends true
     ? StormWorkspaceConfig<TExtensionName, TExtensionConfig>
@@ -75,7 +75,11 @@ export const createStormWorkspaceConfig = async <
     }
 
     const defaultConfig = await getPackageJsonConfig(_workspaceRoot);
-    const configInput = defu(configEnv, configFile, defaultConfig);
+    const configInput = defu(
+      configEnv,
+      configFile,
+      defaultConfig
+    ) as StormWorkspaceConfig<TExtensionName, TExtensionConfig>;
     try {
       result = applyDefaultConfig(
         await stormWorkspaceConfigSchema.parseAsync(configInput)
@@ -129,7 +133,7 @@ export const createConfigExtension = <
   TExtensionName extends
     keyof StormWorkspaceConfig["extensions"] = keyof StormWorkspaceConfig["extensions"],
   TExtensionConfig = any,
-  TExtensionSchema extends ZodTypeAny = ZodTypeAny
+  TExtensionSchema extends z.ZodType = z.ZodType
 >(
   extensionName: TExtensionName,
   schema: TExtensionSchema
@@ -141,7 +145,7 @@ export const createConfigExtension = <
 
   let extension = getExtensionEnv(extensionName);
   if (schema) {
-    extension = schema.parse(extension);
+    extension = schema.parse(extension) as TExtensionSchema;
   }
 
   _extension_cache.set(extension_cache_key, extension);

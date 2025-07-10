@@ -15,7 +15,7 @@ import type { ConfigSchemaGeneratorSchema } from "./schema.d";
 
 export type ModuleSchema = {
   name: string;
-  schema: z.ZodObject<any>;
+  schema: z.ZodType;
 };
 export async function configSchemaGeneratorFn(
   tree: Tree,
