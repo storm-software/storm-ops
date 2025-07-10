@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.125.39](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.125.39) (2025-07-10)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace artifacts
+  ([f45c14e5f](https://github.com/storm-software/storm-ops/commit/f45c14e5f))
+
 ## [1.125.38](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.125.38) (2025-07-10)
 
 ### Miscellaneous

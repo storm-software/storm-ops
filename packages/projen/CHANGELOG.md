@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.15.40](https://github.com/storm-software/storm-ops/releases/tag/projen%400.15.40) (2025-07-10)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace artifacts
+  ([f45c14e5f](https://github.com/storm-software/storm-ops/commit/f45c14e5f))
+
 ## [0.15.39](https://github.com/storm-software/storm-ops/releases/tag/projen%400.15.39) (2025-07-10)
 
 ### Miscellaneous

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.63.42](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.63.42) (2025-07-10)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace artifacts
+  ([f45c14e5f](https://github.com/storm-software/storm-ops/commit/f45c14e5f))
+
 ## [0.63.41](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.63.41) (2025-07-10)
 
 ### Miscellaneous

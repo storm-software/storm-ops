@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Esbuild
 
+## [0.45.33](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.33) (2025-07-10)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace artifacts
+  ([f45c14e5f](https://github.com/storm-software/storm-ops/commit/f45c14e5f))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.9
+- Updated build-tools to 0.151.22
+- Updated config to 1.125.8
+
 ## [0.45.32](https://github.com/storm-software/storm-ops/releases/tag/esbuild%400.45.32) (2025-07-10)
 
 ### Miscellaneous

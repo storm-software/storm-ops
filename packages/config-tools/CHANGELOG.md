@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.176.9](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.176.9) (2025-07-10)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace artifacts
+  ([f45c14e5f](https://github.com/storm-software/storm-ops/commit/f45c14e5f))
+
+### Updated Dependencies
+
+- Updated config to 1.125.8
+
 ## [1.176.8](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.176.8) (2025-07-10)
 
 ### Miscellaneous

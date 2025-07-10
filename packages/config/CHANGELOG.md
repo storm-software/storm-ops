@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.125.8](https://github.com/storm-software/storm-ops/releases/tag/config%401.125.8) (2025-07-10)
+
+### Miscellaneous
+
+- **config:** Remove org-specific `release` field from defaults
+  ([ea298fb47](https://github.com/storm-software/storm-ops/commit/ea298fb47))
+- **monorepo:** Regenerate workspace artifacts
+  ([f45c14e5f](https://github.com/storm-software/storm-ops/commit/f45c14e5f))
+
 ## [1.125.7](https://github.com/storm-software/storm-ops/releases/tag/config%401.125.7) (2025-07-10)
 
 ### Miscellaneous

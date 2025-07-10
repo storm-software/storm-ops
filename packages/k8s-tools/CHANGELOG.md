@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - K8s Tools
 
+## [0.33.44](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.33.44) (2025-07-10)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace artifacts
+  ([f45c14e5f](https://github.com/storm-software/storm-ops/commit/f45c14e5f))
+
+### Updated Dependencies
+
+- Updated workspace-tools to 1.277.20
+- Updated config-tools to 1.176.9
+- Updated config to 1.125.8
+
 ## [0.33.43](https://github.com/storm-software/storm-ops/releases/tag/k8s-tools%400.33.43) (2025-07-10)
 
 ### Miscellaneous

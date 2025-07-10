@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Terraform Tools
 
+## [0.60.39](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.60.39) (2025-07-10)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace artifacts
+  ([f45c14e5f](https://github.com/storm-software/storm-ops/commit/f45c14e5f))
+
 ## [0.60.38](https://github.com/storm-software/storm-ops/releases/tag/terraform-tools%400.60.38) (2025-07-10)
 
 ### Miscellaneous

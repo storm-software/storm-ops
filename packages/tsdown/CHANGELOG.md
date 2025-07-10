@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.36.44](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.36.44) (2025-07-10)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace artifacts
+  ([f45c14e5f](https://github.com/storm-software/storm-ops/commit/f45c14e5f))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.9
+- Updated build-tools to 0.151.22
+- Updated config to 1.125.8
+
 ## [0.36.43](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.36.43) (2025-07-10)
 
 ### Miscellaneous

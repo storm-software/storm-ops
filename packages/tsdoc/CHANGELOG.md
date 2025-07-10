@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.6.5](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.5) (2025-07-10)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace artifacts
+  ([f45c14e5f](https://github.com/storm-software/storm-ops/commit/f45c14e5f))
+
 ## [0.6.4](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.4) (2025-07-10)
 
 ### Miscellaneous

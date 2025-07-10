@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.113.9](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.9) (2025-07-10)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate workspace artifacts
+  ([f45c14e5f](https://github.com/storm-software/storm-ops/commit/f45c14e5f))
+
 ## [2.113.8](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.8) (2025-07-10)
 
 ### Miscellaneous
