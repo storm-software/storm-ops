@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.176.7](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.176.7) (2025-07-10)
+
+### Miscellaneous
+
+- **config-tools:** Added improved error details when failing to parse config
+  ([2468ba6e8](https://github.com/storm-software/storm-ops/commit/2468ba6e8))
+- **monorepo:** Regenerate README markdown files
+  ([98723860a](https://github.com/storm-software/storm-ops/commit/98723860a))
+
+### Updated Dependencies
+
+- Updated config to 1.125.6
+
 ## [1.176.6](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.176.6) (2025-07-09)
 
 ### Miscellaneous

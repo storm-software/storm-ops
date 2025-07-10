@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.51.44](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.51.44) (2025-07-10)
+
+### Miscellaneous
+
+- **prettier:** Update `prettier-plugin-tailwindcss` dependency
+  ([33ee31530](https://github.com/storm-software/storm-ops/commit/33ee31530))
+- **monorepo:** Regenerate README markdown files
+  ([98723860a](https://github.com/storm-software/storm-ops/commit/98723860a))
+
 ## [0.51.43](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.51.43) (2025-07-08)
 
 ### Miscellaneous
