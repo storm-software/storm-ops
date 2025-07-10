@@ -1,8 +1,6 @@
 import * as z from "zod/v4";
 import {
   STORM_DEFAULT_ERROR_CODES_FILE,
-  STORM_DEFAULT_RELEASE_BANNER,
-  STORM_DEFAULT_RELEASE_FOOTER,
   STORM_DEFAULT_SOCIAL_DISCORD,
   STORM_DEFAULT_SOCIAL_GITHUB,
   STORM_DEFAULT_SOCIAL_MEDIUM,
@@ -249,7 +247,7 @@ export const WorkspaceReleaseConfigSchema = z
     banner: z
       .string()
       .trim()
-      .default(STORM_DEFAULT_RELEASE_BANNER)
+      .optional()
       .describe(
         "A URL to a banner image used to display the workspace's release"
       ),
@@ -263,7 +261,7 @@ export const WorkspaceReleaseConfigSchema = z
     footer: z
       .string()
       .trim()
-      .default(STORM_DEFAULT_RELEASE_FOOTER)
+      .optional()
       .describe(
         "A footer message appended to the end of the workspace's release notes"
       )
