@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.113.6](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.6) (2025-07-09)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([e14a6ded1](https://github.com/storm-software/storm-ops/commit/e14a6ded1))
+- **monorepo:** Regenerate README markdown files
+  ([5c75c1280](https://github.com/storm-software/storm-ops/commit/5c75c1280))
+
 ## [2.113.5](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.5) (2025-07-08)
 
 ### Miscellaneous

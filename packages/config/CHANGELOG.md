@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.125.5](https://github.com/storm-software/storm-ops/releases/tag/config%401.125.5) (2025-07-09)
+
+### Bug Fixes
+
+- **eslint:** Update the banner file generation logic
+  ([328e9d53a](https://github.com/storm-software/storm-ops/commit/328e9d53a))
+
 ## [1.125.4](https://github.com/storm-software/storm-ops/releases/tag/config%401.125.4) (2025-07-08)
 
 ### Miscellaneous
