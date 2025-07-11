@@ -229,7 +229,6 @@
     },
     "mode": {
       "description": "The current runtime environment mode for the package",
-      "default": "production",
       "type": "string",
       "enum": ["development", "staging", "production"]
     },
