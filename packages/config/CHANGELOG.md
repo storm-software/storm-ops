@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.125.12](https://github.com/storm-software/storm-ops/releases/tag/config%401.125.12) (2025-07-11)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issues with outdated `lefthook` schema
+  ([16d0d2e99](https://github.com/storm-software/storm-ops/commit/16d0d2e99))
+
+### Miscellaneous
+
+- **monorepo:** Update the `pnpm-lock.yaml` file
+  ([e24f8515a](https://github.com/storm-software/storm-ops/commit/e24f8515a))
+- **monorepo:** Regenerate README markdown files
+  ([111c8bf3c](https://github.com/storm-software/storm-ops/commit/111c8bf3c))
+- **config:** Update the definition for the `mode` configuration type
+  ([9a7ef6e5d](https://github.com/storm-software/storm-ops/commit/9a7ef6e5d))
+- **monorepo:** Regenerate README markdown files
+  ([be8521423](https://github.com/storm-software/storm-ops/commit/be8521423))
+
 ## [1.125.11](https://github.com/storm-software/storm-ops/releases/tag/config%401.125.11) (2025-07-11)
 
 ### Bug Fixes

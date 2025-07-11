@@ -2,6 +2,30 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.277.24](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.24) (2025-07-11)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issues with outdated `lefthook` schema
+  ([16d0d2e99](https://github.com/storm-software/storm-ops/commit/16d0d2e99))
+
+### Miscellaneous
+
+- **monorepo:** Update the `pnpm-lock.yaml` file
+  ([e24f8515a](https://github.com/storm-software/storm-ops/commit/e24f8515a))
+- **monorepo:** Regenerate README markdown files
+  ([111c8bf3c](https://github.com/storm-software/storm-ops/commit/111c8bf3c))
+- **monorepo:** Update workspace package links
+  ([cd962910d](https://github.com/storm-software/storm-ops/commit/cd962910d))
+- **monorepo:** Regenerate README markdown files
+  ([be8521423](https://github.com/storm-software/storm-ops/commit/be8521423))
+
+### Updated Dependencies
+
+- Updated prettier to 0.51.50
+- Updated esbuild to 0.45.37
+- Updated unbuild to 0.49.48
+
 ## [1.277.23](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.23) (2025-07-11)
 
 ### Miscellaneous

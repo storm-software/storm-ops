@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.13.41](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.13.41) (2025-07-11)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issues with outdated `lefthook` schema
+  ([16d0d2e99](https://github.com/storm-software/storm-ops/commit/16d0d2e99))
+
+### Miscellaneous
+
+- **monorepo:** Update the `pnpm-lock.yaml` file
+  ([e24f8515a](https://github.com/storm-software/storm-ops/commit/e24f8515a))
+- **monorepo:** Regenerate README markdown files
+  ([111c8bf3c](https://github.com/storm-software/storm-ops/commit/111c8bf3c))
+- **monorepo:** Regenerate README markdown files
+  ([be8521423](https://github.com/storm-software/storm-ops/commit/be8521423))
+
 ## [0.13.40](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.13.40) (2025-07-11)
 
 ### Miscellaneous
