@@ -378,8 +378,6 @@ export const organizationConfigSchema = z
   })
   .describe("The workspace's organization details");
 
-const MODE_OPTIONS = ["development", "staging", "production"] as const;
-
 /**
  * Storm Workspace config values used during various dev-ops processes. It represents the config of the entire monorepo.
  */
