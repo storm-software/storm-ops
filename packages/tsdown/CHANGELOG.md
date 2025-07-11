@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.36.47](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.36.47) (2025-07-11)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([e316c2ed8](https://github.com/storm-software/storm-ops/commit/e316c2ed8))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.12
+- Updated config to 1.125.11
+
 ## [0.36.46](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.36.46) (2025-07-11)
 
 ### Bug Fixes

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.125.11](https://github.com/storm-software/storm-ops/releases/tag/config%401.125.11) (2025-07-11)
+
+### Bug Fixes
+
+- **config:** Specify the `production` mode default instead of string value
+  ([3ba8efef1](https://github.com/storm-software/storm-ops/commit/3ba8efef1))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([e316c2ed8](https://github.com/storm-software/storm-ops/commit/e316c2ed8))
+
 ## [1.125.10](https://github.com/storm-software/storm-ops/releases/tag/config%401.125.10) (2025-07-11)
 
 ### Bug Fixes

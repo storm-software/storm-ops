@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.176.12](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.176.12) (2025-07-11)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([e316c2ed8](https://github.com/storm-software/storm-ops/commit/e316c2ed8))
+
+### Updated Dependencies
+
+- Updated config to 1.125.11
+
 ## [1.176.11](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.176.11) (2025-07-11)
 
 ### Bug Fixes
