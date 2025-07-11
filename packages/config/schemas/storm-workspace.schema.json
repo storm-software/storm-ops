@@ -230,8 +230,7 @@
     "mode": {
       "description": "The current runtime environment mode for the package",
       "default": "production",
-      "type": "string",
-      "enum": ["development", "staging", "production"]
+      "type": "string"
     },
     "workspaceRoot": {
       "description": "The root directory of the workspace",
