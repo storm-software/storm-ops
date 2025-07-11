@@ -464,8 +464,9 @@ export const stormWorkspaceConfigSchema = z
     socials: WorkspaceSocialsConfigSchema,
     error: errorConfigSchema,
     mode: z
-      .enum(MODE_OPTIONS)
-      .default(MODE_OPTIONS[2]) // Default to 'production'
+      .string()
+      .trim()
+      .default("production")
       .describe("The current runtime environment mode for the package"),
     workspaceRoot: z
       .string()
