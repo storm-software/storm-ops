@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.49.46](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.46) (2025-07-11)
+
+### Bug Fixes
+
+- **monorepo:** Ensure the correct `zod` version is used in all packages
+  ([029702308](https://github.com/storm-software/storm-ops/commit/029702308))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([c13e76556](https://github.com/storm-software/storm-ops/commit/c13e76556))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.11
+- Updated build-tools to 0.151.23
+- Updated config to 1.125.10
+
 ## [0.49.45](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.45) (2025-07-10)
 
 ### Miscellaneous

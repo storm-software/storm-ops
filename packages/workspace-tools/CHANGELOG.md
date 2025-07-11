@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.277.22](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.22) (2025-07-11)
+
+### Bug Fixes
+
+- **monorepo:** Ensure the correct `zod` version is used in all packages
+  ([029702308](https://github.com/storm-software/storm-ops/commit/029702308))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([c13e76556](https://github.com/storm-software/storm-ops/commit/c13e76556))
+
+### Updated Dependencies
+
+- Updated prettier to 0.51.48
+- Updated esbuild to 0.45.35
+- Updated unbuild to 0.49.46
+
 ## [1.277.21](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.21) (2025-07-10)
 
 ### Miscellaneous

@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.113.11](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.11) (2025-07-11)
+
+### Bug Fixes
+
+- **monorepo:** Ensure the correct `zod` version is used in all packages
+  ([029702308](https://github.com/storm-software/storm-ops/commit/029702308))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([c13e76556](https://github.com/storm-software/storm-ops/commit/c13e76556))
+
 ## [2.113.10](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.10) (2025-07-10)
 
 ### Miscellaneous

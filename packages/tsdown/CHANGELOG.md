@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Tsdown
 
+## [0.36.46](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.36.46) (2025-07-11)
+
+### Bug Fixes
+
+- **monorepo:** Ensure the correct `zod` version is used in all packages
+  ([029702308](https://github.com/storm-software/storm-ops/commit/029702308))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([c13e76556](https://github.com/storm-software/storm-ops/commit/c13e76556))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.11
+- Updated build-tools to 0.151.23
+- Updated config to 1.125.10
+
 ## [0.36.45](https://github.com/storm-software/storm-ops/releases/tag/tsdown%400.36.45) (2025-07-10)
 
 ### Miscellaneous
