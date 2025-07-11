@@ -238,6 +238,9 @@
     "lefthook",
     "lint-staged"
   ],
+  "peerDependencies": {
+    "zod": ">=4.0.0"
+  },
   "dependencies": {
     "@angular-devkit/architect": "0.1900.6",
     "nx": "catalog:",
@@ -284,7 +287,8 @@
     "tsup": "catalog:",
     "underscore": "1.13.7",
     "update-section": "0.3.3",
-    "word-wrap": "1.2.5"
+    "word-wrap": "1.2.5",
+    "zod": "catalog:"
   },
   "publishConfig": {
     "access": "public"

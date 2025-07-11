@@ -9,7 +9,7 @@ import {
   writeSuccess,
   writeTrace
 } from "@storm-software/config-tools";
-import * as z from "zod/v4";
+import * as z from "zod";
 import { withRunGenerator } from "../../base/base-generator";
 import type { ConfigSchemaGeneratorSchema } from "./schema.d";
 

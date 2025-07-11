@@ -3,7 +3,7 @@
 import type { StormWorkspaceConfig } from "@storm-software/config";
 import { stormWorkspaceConfigSchema } from "@storm-software/config/schema";
 import defu from "defu";
-import * as z from "zod/v4";
+import * as z from "zod";
 import { getConfigFile } from "./config-file/get-config-file";
 import { getConfigEnv, getExtensionEnv } from "./env/get-env";
 import { setConfigEnv } from "./env/set-env";

@@ -192,8 +192,8 @@
   },
   "dependencies": {
     "@storm-software/build-tools": "workspace:*",
-    "@storm-software/config": "1.125.9",
-    "@storm-software/config-tools": "1.176.10",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "commander": "catalog:",
     "defu": "catalog:",
     "esbuild": "catalog:",
