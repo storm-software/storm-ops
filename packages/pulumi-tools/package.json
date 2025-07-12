@@ -127,9 +127,9 @@
   ],
   "peerDependencies": {
     "@nx/devkit": "catalog:",
-    "@storm-software/config": "1.113.5",
-    "@storm-software/config-tools": "1.163.5",
-    "@storm-software/workspace-tools": "1.267.0",
+    "@storm-software/config": "1.125.12",
+    "@storm-software/config-tools": "1.176.13",
+    "@storm-software/workspace-tools": "1.277.24",
     "tsup": "catalog:"
   },
   "peerDependenciesMeta": {
@@ -145,7 +145,7 @@
   },
   "dependencies": {
     "@nx/devkit": "catalog:",
-    "shelljs": "^0.8.5"
+    "shelljs": "^0.10.0"
   },
   "devDependencies": {
     "@nx/devkit": "catalog:",
