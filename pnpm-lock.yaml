@@ -999,6 +999,12 @@ importers:
       '@nx/js':
         specifier: 'catalog:'
         version: 21.0.3(@babel/traverse@7.28.0)(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.23)(typescript@5.8.3))(@swc/core@1.7.26(@swc/helpers@0.5.13))(nx@21.0.3(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.23)(typescript@5.8.3))(@swc/core@1.7.26(@swc/helpers@0.5.13)))(verdaccio@6.0.5(typanion@3.14.0))
+      '@storm-software/config':
+        specifier: workspace:*
+        version: link:../config
+      '@storm-software/config-tools':
+        specifier: workspace:*
+        version: link:../config-tools
       '@textlint/ast-node-types':
         specifier: 14.4.2
         version: 14.4.2

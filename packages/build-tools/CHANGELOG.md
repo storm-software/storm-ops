@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.151.26](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.26) (2025-07-14)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([aa3c5e120](https://github.com/storm-software/storm-ops/commit/aa3c5e120))
+- **monorepo:** Regenerate README markdown files
+  ([11ac201a7](https://github.com/storm-software/storm-ops/commit/11ac201a7))
+
 ## [0.151.25](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.25) (2025-07-14)
 
 ### Miscellaneous

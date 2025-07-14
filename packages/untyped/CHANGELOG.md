@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.17.43](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.17.43) (2025-07-14)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([aa3c5e120](https://github.com/storm-software/storm-ops/commit/aa3c5e120))
+- **monorepo:** Regenerate README markdown files
+  ([11ac201a7](https://github.com/storm-software/storm-ops/commit/11ac201a7))
+
 ## [0.17.42](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.17.42) (2025-07-14)
 
 ### Miscellaneous

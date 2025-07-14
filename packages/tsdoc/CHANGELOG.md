@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.6.9](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.9) (2025-07-14)
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([aa3c5e120](https://github.com/storm-software/storm-ops/commit/aa3c5e120))
+- **monorepo:** Regenerate README markdown files
+  ([11ac201a7](https://github.com/storm-software/storm-ops/commit/11ac201a7))
+
 ## [0.6.8](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.8) (2025-07-14)
 
 ### Miscellaneous

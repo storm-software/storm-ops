@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/git-tools",
-  "version": "2.113.14",
+  "version": "2.113.15",
   "type": "module",
   "description": "Tools for managing Git repositories within a Nx workspace.",
   "repository": {
@@ -267,8 +267,8 @@
     "@inquirer/select": "4.0.4",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "workspace:*",
+    "@storm-software/config": "1.125.14",
+    "@storm-software/config-tools": "1.176.15",
     "@textlint/ast-node-types": "14.4.2",
     "@textlint/markdown-to-ast": "14.4.2",
     "@types/node": "catalog:",
