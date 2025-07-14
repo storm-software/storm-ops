@@ -2,6 +2,30 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.49.48](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.48) (2025-07-11)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issues with outdated `lefthook` schema
+  ([16d0d2e99](https://github.com/storm-software/storm-ops/commit/16d0d2e99))
+
+### Miscellaneous
+
+- **monorepo:** Update the `pnpm-lock.yaml` file
+  ([e24f8515a](https://github.com/storm-software/storm-ops/commit/e24f8515a))
+- **monorepo:** Regenerate README markdown files
+  ([111c8bf3c](https://github.com/storm-software/storm-ops/commit/111c8bf3c))
+- **monorepo:** Update workspace package links
+  ([cd962910d](https://github.com/storm-software/storm-ops/commit/cd962910d))
+- **monorepo:** Regenerate README markdown files
+  ([be8521423](https://github.com/storm-software/storm-ops/commit/be8521423))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.13
+- Updated build-tools to 0.151.24
+- Updated config to 1.125.12
+
 ## [0.49.47](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.47) (2025-07-11)
 
 ### Miscellaneous

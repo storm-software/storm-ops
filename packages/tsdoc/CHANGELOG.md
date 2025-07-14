@@ -2,6 +2,22 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.6.7](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.7) (2025-07-11)
+
+### Bug Fixes
+
+- **monorepo:** Resolve issues with outdated `lefthook` schema
+  ([16d0d2e99](https://github.com/storm-software/storm-ops/commit/16d0d2e99))
+
+### Miscellaneous
+
+- **monorepo:** Update the `pnpm-lock.yaml` file
+  ([e24f8515a](https://github.com/storm-software/storm-ops/commit/e24f8515a))
+- **monorepo:** Regenerate README markdown files
+  ([111c8bf3c](https://github.com/storm-software/storm-ops/commit/111c8bf3c))
+- **monorepo:** Regenerate README markdown files
+  ([be8521423](https://github.com/storm-software/storm-ops/commit/be8521423))
+
 ## [0.6.6](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.6) (2025-07-11)
 
 ### Miscellaneous
