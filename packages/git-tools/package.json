@@ -242,7 +242,6 @@
     "zod": ">=4.0.0"
   },
   "dependencies": {
-    "@angular-devkit/architect": "0.1900.6",
     "nx": "catalog:",
     "prettier": "catalog:",
     "tsconfig-paths": "4.2.0"
@@ -280,7 +279,6 @@
     "commander": "catalog:",
     "conventional-commits-parser": "^6.2.0",
     "defu": "catalog:",
-    "genaiscript": "^2.2.16",
     "htmlparser2": "10.0.0",
     "jsonc-parser": "3.2.1",
     "read-yaml-file": "catalog:",

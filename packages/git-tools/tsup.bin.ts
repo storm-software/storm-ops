@@ -8,6 +8,7 @@ export default defineConfig([
     format: ["cjs", "esm"],
     outDir: "dist/bin",
     platform: "node",
+    treeshake: true,
     splitting: true,
     bundle: true,
     clean: false,
@@ -15,14 +16,8 @@ export default defineConfig([
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     shims: true,
-    external: [
-      "oxc-parser",
-      "@oxc-parser/*",
-      "nx",
-      "@nx/*",
-      "zod",
-      "@storm-software/*"
-    ],
-    noExternal: ["@commitlint/rules", "conventional-commits-parser", "defu"]
+    external: ["oxc-parser", "@oxc-parser/*", "nx", "@nx/*"],
+    noExternal: ["@commitlint/rules", "conventional-commits-parser", "defu"],
+    skipNodeModulesBundle: true
   }
 ]);
