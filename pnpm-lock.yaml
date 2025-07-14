@@ -942,15 +942,6 @@ importers:
       '@commitlint/rules':
         specifier: ^19.8.1
         version: 19.8.1
-      '@humanfs/core':
-        specifier: ^0.19.1
-        version: 0.19.1
-      '@humanfs/node':
-        specifier: ^0.16.6
-        version: 0.16.6
-      '@humanwhocodes/retry':
-        specifier: 0.4.1
-        version: 0.4.1
       '@inquirer/checkbox':
         specifier: 4.0.4
         version: 4.0.4(@types/node@22.15.17)
@@ -4006,10 +3997,6 @@ packages:
 
   '@humanwhocodes/retry@0.3.1':
     resolution: {integrity: sha512-JBxkERygn7Bv/GbN5Rv8Ul6LVknS+5Bp6RgDC/O8gEBU/yeH5Ui5C/OlWrTb6qct7LjjfT6Re2NxB0ln0yYybA==}
-    engines: {node: '>=18.18'}
-
-  '@humanwhocodes/retry@0.4.1':
-    resolution: {integrity: sha512-c7hNEllBlenFTHBky65mhq8WD2kbN9Q6gk0bTk8lSBvc554jpXSkST1iePudpt7+A/AQvuHs9EMqjHDXMY1lrA==}
     engines: {node: '>=18.18'}
 
   '@humanwhocodes/retry@0.4.3':
@@ -17028,8 +17015,6 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/retry@0.3.1': {}
-
-  '@humanwhocodes/retry@0.4.1': {}
 
   '@humanwhocodes/retry@0.4.3': {}
 

@@ -248,9 +248,6 @@
   },
   "devDependencies": {
     "@commitlint/rules": "^19.8.1",
-    "@humanfs/core": "^0.19.1",
-    "@humanfs/node": "^0.16.6",
-    "@humanwhocodes/retry": "0.4.1",
     "@inquirer/checkbox": "4.0.4",
     "@inquirer/confirm": "5.1.1",
     "@inquirer/core": "10.1.2",

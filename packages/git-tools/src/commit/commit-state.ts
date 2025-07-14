@@ -1,4 +1,3 @@
-import { hfs } from "@humanfs/node";
 import { ProjectGraph } from "@nx/devkit";
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { joinPaths, writeInfo } from "@storm-software/config-tools";
@@ -6,6 +5,7 @@ import chalkTemplate from "chalk-template";
 import defu from "defu";
 import { execSync } from "node:child_process";
 import { existsSync } from "node:fs";
+import { readFile } from "node:fs/promises";
 import {
   createProjectGraphAsync,
   readCachedProjectGraph,
@@ -197,7 +197,9 @@ export async function createState(
 
           const packageJsonPath = joinPaths(project.root, "package.json");
           if (existsSync(packageJsonPath)) {
-            const packageJson = await hfs.json(packageJsonPath);
+            const packageJsonFile = await readFile(packageJsonPath, "utf8");
+            const packageJson = JSON.parse(packageJsonFile);
+
             description = packageJson.description || description;
           }
 
