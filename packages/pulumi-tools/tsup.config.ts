@@ -7,8 +7,9 @@ export default defineConfig([
     entryPoints: [
       "./*.ts",
       "./src/base/*.ts",
+      "./src/lib/aws/*.ts",
       "./src/executors/*/executor.ts",
-      "./src/generators/*/generator.ts",
+      "./src/generators/*/generator.ts"
     ],
     outDir: "dist",
     format: ["cjs", "esm"],
@@ -19,6 +20,6 @@ export default defineConfig([
     sourcemap: false,
     shims: true,
     tsconfig: "./tsconfig.json",
-    external: ["@storm-software/workspace-tools"],
-  },
+    external: ["@storm-software/workspace-tools"]
+  }
 ]);

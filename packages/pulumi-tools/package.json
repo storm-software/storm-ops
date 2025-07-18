@@ -111,6 +111,34 @@
         "default": "./dist/src/base/*.js"
       }
     },
+    "./aws": {
+      "import": {
+        "types": "./dist/src/lib/aws/index.d.mts",
+        "default": "./dist/src/lib/aws/index.mjs"
+      },
+      "require": {
+        "types": "./dist/src/lib/aws/index.d.ts",
+        "default": "./dist/src/lib/aws/index.js"
+      },
+      "default": {
+        "types": "./dist/src/lib/aws/index.d.ts",
+        "default": "./dist/src/lib/aws/index.js"
+      }
+    },
+    "./aws/*": {
+      "import": {
+        "types": "./dist/src/lib/aws/*.d.mts",
+        "default": "./dist/src/lib/aws/*.mjs"
+      },
+      "require": {
+        "types": "./dist/src/lib/aws/*.d.ts",
+        "default": "./dist/src/lib/aws/*.js"
+      },
+      "default": {
+        "types": "./dist/src/lib/aws/*.d.ts",
+        "default": "./dist/src/lib/aws/*.js"
+      }
+    },
     "./executors/*/executor.js": "./dist/src/executors/*/executor.js",
     "./generators/*/generators.js": "./dist/src/generators/*/generator.js"
   },
@@ -127,9 +155,7 @@
   ],
   "peerDependencies": {
     "@nx/devkit": "catalog:",
-    "@storm-software/config": "1.113.5",
-    "@storm-software/config-tools": "1.163.5",
-    "@storm-software/workspace-tools": "1.267.0",
+    "@storm-software/workspace-tools": ">=1.267.0",
     "tsup": "catalog:"
   },
   "peerDependenciesMeta": {
@@ -145,6 +171,12 @@
   },
   "dependencies": {
     "@nx/devkit": "catalog:",
+    "@pulumi/aws": "^6.83.0",
+    "@pulumi/awsx": "^2.22.0",
+    "@pulumi/pulumi": "^3.182.0",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
+    "defu": "catalog:",
     "shelljs": "^0.8.5"
   },
   "devDependencies": {
