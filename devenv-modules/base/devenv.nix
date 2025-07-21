@@ -35,10 +35,14 @@ in {
 
     # Tools
     pkgs.capnproto
+    pkgs.nixd
   ];
 
   # https://devenv.sh/languages/
-  languages.nix.enable = true;
+  languages.nix = {
+    enable = true;
+    lsp.package = pkgs.nixd;
+  };
   languages.javascript = {
     enable = true;
     package = pkgs-unstable.nodejs;
