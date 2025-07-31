@@ -990,6 +990,9 @@ importers:
         specifier: 'catalog:'
         version: 4.0.5
     devDependencies:
+      '@commitlint/ensure':
+        specifier: ^19.8.1
+        version: 19.8.1
       '@commitlint/rules':
         specifier: ^19.8.1
         version: 19.8.1
