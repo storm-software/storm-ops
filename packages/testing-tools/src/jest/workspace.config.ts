@@ -1,4 +1,4 @@
-import { getJestProjects } from "@nx/jest";
+import { getJestProjectsAsync } from "@nx/jest";
 
 /**
  * Config for Jest unit tests
@@ -10,7 +10,7 @@ export default {
    * When the projects configuration is provided with an array of paths or glob patterns, Jest will run tests in all of the specified projects at the same time.
    * This is great for monorepos or when working on multiple projects at the same time.
    */
-  projects: getJestProjects(),
+  projects: await getJestProjectsAsync(),
 
   /**
    * Indicates whether the coverage information should be collected while executing the test. Because this retrofits all
@@ -40,7 +40,7 @@ export default {
     "<rootDir>/dist",
     "<rootDir>/test",
     "<rootDir>/__generated__",
-    "<rootDir>/node_modules",
+    "<rootDir>/node_modules"
   ],
 
   /**
@@ -61,6 +61,6 @@ export default {
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
       "@storm-software/testing-tools/jest/__mocks__/file.mock.js",
     "\\.(css|less)$":
-      "@storm-software/testing-tools/jest/__mocks__/style.mock.js",
-  },
+      "@storm-software/testing-tools/jest/__mocks__/style.mock.js"
+  }
 };
