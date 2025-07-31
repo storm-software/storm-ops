@@ -2,6 +2,44 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.111.0](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.111.0) (2025-07-31)
+
+### Features
+
+- **testing-tools:** Update build format to `esm` output
+  ([d8e9db9b2](https://github.com/storm-software/storm-ops/commit/d8e9db9b2))
+
+### Bug Fixes
+
+- **testing-tools:** Resolve issue with invalid `@nx/jest` imports
+  ([eb5481188](https://github.com/storm-software/storm-ops/commit/eb5481188))
+
+### Miscellaneous
+
+- **monorepo:** Update TypeScript to v5.9.2
+  ([d4a90784d](https://github.com/storm-software/storm-ops/commit/d4a90784d))
+- **monorepo:** Regenerate README markdown files
+  ([18c227394](https://github.com/storm-software/storm-ops/commit/18c227394))
+- **monorepo:** Resolve inconsistent dependency versions
+  ([79c5ae240](https://github.com/storm-software/storm-ops/commit/79c5ae240))
+- **monorepo:** Update workspace package links
+  ([3ec10b48b](https://github.com/storm-software/storm-ops/commit/3ec10b48b))
+- **monorepo:** Regenerate README markdown files
+  ([8aeb77070](https://github.com/storm-software/storm-ops/commit/8aeb77070))
+- **monorepo:** Regenerate workspace repository packages
+  ([a78abe68e](https://github.com/storm-software/storm-ops/commit/a78abe68e))
+- **monorepo:** Regenerate README markdown files
+  ([b7b8fec51](https://github.com/storm-software/storm-ops/commit/b7b8fec51))
+- **eslint:** Update package dependencies
+  ([a6eaee75a](https://github.com/storm-software/storm-ops/commit/a6eaee75a))
+- **monorepo:** Regenerate README markdown files
+  ([d02c46b78](https://github.com/storm-software/storm-ops/commit/d02c46b78))
+- **git-tools:** Ensure dependencies are marked `external` by default for `bin`
+  build
+  ([b6c66aae5](https://github.com/storm-software/storm-ops/commit/b6c66aae5))
+- **monorepo:** Regenerate README markdown files
+  ([fa4b5a24f](https://github.com/storm-software/storm-ops/commit/fa4b5a24f))
+
 ## [1.110.43](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.110.43) (2025-07-14)
 
 ### Miscellaneous

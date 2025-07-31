@@ -2,6 +2,32 @@
 
 # Changelog for Storm Ops - Tsconfig
 
+## [0.41.44](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.41.44) (2025-07-31)
+
+### Miscellaneous
+
+- **monorepo:** Update TypeScript to v5.9.2
+  ([d4a90784d](https://github.com/storm-software/storm-ops/commit/d4a90784d))
+- **monorepo:** Regenerate README markdown files
+  ([18c227394](https://github.com/storm-software/storm-ops/commit/18c227394))
+- **monorepo:** Update workspace package links
+  ([3ec10b48b](https://github.com/storm-software/storm-ops/commit/3ec10b48b))
+- **monorepo:** Regenerate README markdown files
+  ([8aeb77070](https://github.com/storm-software/storm-ops/commit/8aeb77070))
+- **monorepo:** Regenerate workspace repository packages
+  ([a78abe68e](https://github.com/storm-software/storm-ops/commit/a78abe68e))
+- **monorepo:** Regenerate README markdown files
+  ([b7b8fec51](https://github.com/storm-software/storm-ops/commit/b7b8fec51))
+- **eslint:** Update package dependencies
+  ([a6eaee75a](https://github.com/storm-software/storm-ops/commit/a6eaee75a))
+- **monorepo:** Regenerate README markdown files
+  ([d02c46b78](https://github.com/storm-software/storm-ops/commit/d02c46b78))
+- **git-tools:** Ensure dependencies are marked `external` by default for `bin`
+  build
+  ([b6c66aae5](https://github.com/storm-software/storm-ops/commit/b6c66aae5))
+- **monorepo:** Regenerate README markdown files
+  ([fa4b5a24f](https://github.com/storm-software/storm-ops/commit/fa4b5a24f))
+
 ## [0.41.43](https://github.com/storm-software/storm-ops/releases/tag/tsconfig%400.41.43) (2025-07-14)
 
 ### Miscellaneous
