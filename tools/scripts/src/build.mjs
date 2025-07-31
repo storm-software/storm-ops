@@ -1,8 +1,11 @@
 #!/usr/bin/env zx
 
+import { EventEmitter } from "node:events";
 import { $, argv, chalk, echo } from "zx";
 
 try {
+  EventEmitter.defaultMaxListeners = 15;
+
   let configuration = argv.configuration;
   if (!configuration) {
     if (argv.prod) {

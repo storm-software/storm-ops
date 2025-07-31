@@ -325,8 +325,13 @@ To fix this you will either need to add a package.json or Cargo.toml file at tha
             const releaseTagPattern = options.releaseGroup.releaseTagPattern;
             latestMatchingGitTag = await getLatestGitTagForPattern(
               releaseTagPattern,
+
               {
                 projectName: project.name
+              },
+              {
+                releaseTagPatternRequireSemver: false,
+                releaseTagPatternStrictPreid: false
               }
             );
             if (!latestMatchingGitTag) {
