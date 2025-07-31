@@ -21,22 +21,21 @@
   "types": "./declarations.d.ts",
   "keywords": [
     "monorepo",
-    "open-system",
+    "jest",
+    "playwright",
     "storm",
     "storm-ops",
-    "storm-stack",
-    "stormstack",
     "sullivanpj"
   ],
   "peerDependencies": {
     "@nx/jest": "catalog:",
-    "jest": "29.7.0"
+    "jest": "catalog:"
   },
   "devDependencies": {
     "@nx/jest": "catalog:",
     "@types/node": "catalog:",
-    "jest": "29.7.0",
-    "jest-resolve": "29.7.0"
+    "jest": "catalog:",
+    "jest-resolve": "catalog:"
   },
   "publishConfig": {
     "access": "public"
