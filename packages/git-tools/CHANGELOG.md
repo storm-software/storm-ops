@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.113.18](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.18) (2025-07-31)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with missing bundled dependencies
+  ([20229746c](https://github.com/storm-software/storm-ops/commit/20229746c))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.18
+
 ## [2.113.17](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.17) (2025-07-31)
 
 ### Bug Fixes
