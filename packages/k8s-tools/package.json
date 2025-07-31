@@ -168,8 +168,8 @@
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
-    "@nx-tools/container-metadata": "^6.8.0",
-    "@nx-tools/nx-container": "^6.8.0",
+    "@nx-tools/container-metadata": "^6.8.1",
+    "@nx-tools/nx-container": "^6.8.1",
     "@nx/devkit": "catalog:",
     "@nx/workspace": "catalog:",
     "@types/js-yaml": "4.0.9",

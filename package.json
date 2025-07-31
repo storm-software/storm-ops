@@ -120,7 +120,7 @@
     "nx": "21.2.4",
     "pkg-types": "catalog:",
     "prettier": "catalog:",
-    "prettier-plugin-organize-imports": "^4.1.0",
+    "prettier-plugin-organize-imports": "^4.2.0",
     "prettier-plugin-pkg": "^0.18.1",
     "prettier-plugin-prisma": "^5.0.0",
     "prettier-plugin-sh": "^0.15.0",
@@ -133,7 +133,7 @@
     "tsup": "catalog:",
     "tsx": "catalog:",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.37.0",
+    "typescript-eslint": "^8.38.0",
     "verdaccio": "6.0.5",
     "zod": "catalog:",
     "zx": "catalog:"
