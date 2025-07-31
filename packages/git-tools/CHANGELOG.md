@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.113.20](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.20) (2025-07-31)
+
+### Bug Fixes
+
+- **git-tools:** Resolved issue with invalid `noExternal` dependency
+  ([43fcf6787](https://github.com/storm-software/storm-ops/commit/43fcf6787))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.20
+- Updated config to 1.125.18
+
 ## [2.113.19](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.19) (2025-07-31)
 
 ### Bug Fixes

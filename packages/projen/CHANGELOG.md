@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.15.48](https://github.com/storm-software/storm-ops/releases/tag/projen%400.15.48) (2025-07-31)
+
+### Miscellaneous
+
+- **monorepo:** Ran `update-storm` package script
+  ([71f8c1c1e](https://github.com/storm-software/storm-ops/commit/71f8c1c1e))
+
 ## [0.15.47](https://github.com/storm-software/storm-ops/releases/tag/projen%400.15.47) (2025-07-31)
 
 ### Miscellaneous

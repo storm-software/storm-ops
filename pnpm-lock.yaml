@@ -11120,8 +11120,8 @@ packages:
     resolution: {integrity: sha512-UERzLsxzllchadvbPs5aolHh65ISpKpM+ccLbOJ8/vvpBKmAWf+la7dXFy7Mr0ySHbdHrFv5kGFCUHHe6GFEmw==}
     engines: {node: '>= 4.0.0'}
 
-  memfs@4.26.0:
-    resolution: {integrity: sha512-2ZtDVcPolyWmuriS7S2cuE20jK5QWgP+qNuZ3cZzch+/6sY0mnHgVvf2YLQKKR4Cl4MW0nJsoZuUPOkQwp0+JQ==}
+  memfs@4.27.0:
+    resolution: {integrity: sha512-AE5uCKeJyjBwUlq9qA6uP5Z2bOxax0yDNT6mI/9qj8ZBngKjjY3OCMTxbBL3j7iEWx6tVci/30xFkiQzOb+sbA==}
     engines: {node: '>= 4.0.0'}
 
   meow@11.0.0:
@@ -27124,7 +27124,7 @@ snapshots:
     dependencies:
       fs-monkey: 1.1.0
 
-  memfs@4.26.0:
+  memfs@4.27.0:
     dependencies:
       '@jsonjoy.com/json-pack': 1.4.0(tslib@2.8.1)
       '@jsonjoy.com/util': 1.8.0(tslib@2.8.1)
@@ -32141,7 +32141,7 @@ snapshots:
   webpack-dev-middleware@7.4.2(webpack@5.99.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(esbuild@0.25.8)):
     dependencies:
       colorette: 2.0.20
-      memfs: 4.26.0
+      memfs: 4.27.0
       mime-types: 2.1.35
       on-finished: 2.4.1
       range-parser: 1.2.1

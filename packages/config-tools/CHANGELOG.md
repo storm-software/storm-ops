@@ -2,6 +2,17 @@
 
 # Changelog for Storm Ops - Config Tools
 
+## [1.176.20](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.176.20) (2025-07-31)
+
+### Miscellaneous
+
+- **monorepo:** Ran `update-storm` package script
+  ([71f8c1c1e](https://github.com/storm-software/storm-ops/commit/71f8c1c1e))
+
+### Updated Dependencies
+
+- Updated config to 1.125.18
+
 ## [1.176.19](https://github.com/storm-software/storm-ops/releases/tag/config-tools%401.176.19) (2025-07-31)
 
 ### Miscellaneous

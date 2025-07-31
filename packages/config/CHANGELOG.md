@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Config
 
+## [1.125.18](https://github.com/storm-software/storm-ops/releases/tag/config%401.125.18) (2025-07-31)
+
+### Miscellaneous
+
+- **monorepo:** Ran `update-storm` package script
+  ([71f8c1c1e](https://github.com/storm-software/storm-ops/commit/71f8c1c1e))
+
 ## [1.125.17](https://github.com/storm-software/storm-ops/releases/tag/config%401.125.17) (2025-07-31)
 
 ### Miscellaneous

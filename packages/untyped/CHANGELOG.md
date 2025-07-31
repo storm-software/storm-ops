@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Untyped
 
+## [0.17.47](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.17.47) (2025-07-31)
+
+### Miscellaneous
+
+- **monorepo:** Ran `update-storm` package script
+  ([71f8c1c1e](https://github.com/storm-software/storm-ops/commit/71f8c1c1e))
+
 ## [0.17.46](https://github.com/storm-software/storm-ops/releases/tag/untyped%400.17.46) (2025-07-31)
 
 ### Miscellaneous

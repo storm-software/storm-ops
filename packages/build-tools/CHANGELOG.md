@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.151.30](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.30) (2025-07-31)
+
+### Miscellaneous
+
+- **monorepo:** Ran `update-storm` package script
+  ([71f8c1c1e](https://github.com/storm-software/storm-ops/commit/71f8c1c1e))
+
 ## [0.151.29](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.29) (2025-07-31)
 
 ### Miscellaneous

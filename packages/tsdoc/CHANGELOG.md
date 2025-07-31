@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.6.13](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.13) (2025-07-31)
+
+### Miscellaneous
+
+- **monorepo:** Ran `update-storm` package script
+  ([71f8c1c1e](https://github.com/storm-software/storm-ops/commit/71f8c1c1e))
+
 ## [0.6.12](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.12) (2025-07-31)
 
 ### Miscellaneous

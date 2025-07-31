@@ -2,6 +2,19 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.49.55](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.55) (2025-07-31)
+
+### Miscellaneous
+
+- **monorepo:** Ran `update-storm` package script
+  ([71f8c1c1e](https://github.com/storm-software/storm-ops/commit/71f8c1c1e))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.20
+- Updated build-tools to 0.151.30
+- Updated config to 1.125.18
+
 ## [0.49.54](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.54) (2025-07-31)
 
 ### Miscellaneous
