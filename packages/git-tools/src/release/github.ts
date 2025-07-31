@@ -9,7 +9,6 @@ import { joinPathFragments, output } from "@nx/devkit";
 import { StormWorkspaceConfig } from "@storm-software/config/types";
 import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
-import * as chalk from "chalk";
 import { prompt } from "enquirer";
 import { execSync } from "node:child_process";
 import { existsSync, promises as fsp } from "node:fs";
@@ -155,17 +154,9 @@ export async function createOrUpdateGithubRelease(
 
   const logTitle = `https://${githubRepoData.hostname}/${githubRepoData.slug}/releases/tag/${releaseVersion.gitTag}`;
   if (existingGithubReleaseForVersion) {
-    console.error(
-      `${chalk.white("UPDATE")} ${logTitle}${
-        dryRun ? chalk.keyword("orange")(" [dry-run]") : ""
-      }`
-    );
+    console.error(`UPDATE ${logTitle}${dryRun ? " [dry-run]" : ""}`);
   } else {
-    console.error(
-      `${chalk.green("CREATE")} ${logTitle}${
-        dryRun ? chalk.keyword("orange")(" [dry-run]") : ""
-      }`
-    );
+    console.error(`CREATE ${logTitle}${dryRun ? " [dry-run]" : ""}`);
   }
 
   console.log("");
@@ -249,15 +240,13 @@ async function createOrUpdateGithubReleaseInternal(
       .then(() => {
         console.info(
           `\nFollow up in the browser to manually create the release:\n\n` +
-            chalk.underline(chalk.cyan(result.url)) +
+            result.url +
             `\n`
         );
       })
       .catch(() => {
         console.info(
-          `Open this link to manually create a release: \n` +
-            chalk.underline(chalk.cyan(result.url)) +
-            "\n"
+          `Open this link to manually create a release: \n` + result.url + "\n"
         );
       });
 
@@ -279,9 +268,7 @@ async function createOrUpdateGithubReleaseInternal(
       })
       .catch(() => {
         console.info(
-          `Open this link to manually create a release: \n` +
-            chalk.underline(chalk.cyan(result.url)) +
-            "\n"
+          `Open this link to manually create a release: \n` + result.url + "\n"
         );
       });
   }
