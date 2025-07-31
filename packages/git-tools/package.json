@@ -246,7 +246,7 @@
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
     "@storm-software/config": "workspace:*",
-    "@storm-software/config-tools": "1.176.18",
+    "@storm-software/config-tools": "workspace:*",
     "any-shell-escape": "0.1.1",
     "axios": "1.8.2",
     "chalk": "catalog:",
@@ -257,6 +257,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@commitlint/ensure": "^19.8.1",
     "@commitlint/rules": "^19.8.1",
     "@textlint/ast-node-types": "14.4.2",
     "@textlint/markdown-to-ast": "14.4.2",
