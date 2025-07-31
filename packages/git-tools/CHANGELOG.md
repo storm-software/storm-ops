@@ -2,6 +2,26 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.113.19](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.19) (2025-07-31)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with missing `@commitlint/ensure` bundled
+  dependency
+  ([349ff6218](https://github.com/storm-software/storm-ops/commit/349ff6218))
+
+### Miscellaneous
+
+- **monorepo:** Update workspace package links
+  ([86bc24e80](https://github.com/storm-software/storm-ops/commit/86bc24e80))
+- **monorepo:** Regenerate README markdown files
+  ([984745037](https://github.com/storm-software/storm-ops/commit/984745037))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.19
+- Updated config to 1.125.17
+
 ## [2.113.18](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.18) (2025-07-31)
 
 ### Bug Fixes
