@@ -971,6 +971,15 @@ importers:
       '@storm-software/config-tools':
         specifier: workspace:*
         version: link:../config-tools
+      '@textlint/ast-node-types':
+        specifier: 14.4.2
+        version: 14.4.2
+      '@textlint/markdown-to-ast':
+        specifier: 14.4.2
+        version: 14.4.2
+      anchor-markdown-header:
+        specifier: 0.7.0
+        version: 0.7.0
       any-shell-escape:
         specifier: 0.1.1
         version: 0.1.1
@@ -996,18 +1005,9 @@ importers:
         specifier: 'catalog:'
         version: 4.0.5
     devDependencies:
-      '@textlint/ast-node-types':
-        specifier: 14.4.2
-        version: 14.4.2
-      '@textlint/markdown-to-ast':
-        specifier: 14.4.2
-        version: 14.4.2
       '@types/node':
         specifier: 'catalog:'
         version: 22.16.4
-      anchor-markdown-header:
-        specifier: 0.7.0
-        version: 0.7.0
       commander:
         specifier: 'catalog:'
         version: 12.1.0
