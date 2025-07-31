@@ -950,58 +950,9 @@ importers:
 
   packages/git-tools:
     dependencies:
-      nx:
-        specifier: 'catalog:'
-        version: 21.3.10(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.23)(typescript@5.9.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))
-      prettier:
-        specifier: 'catalog:'
-        version: 3.6.2
-      tsconfig-paths:
-        specifier: 4.2.0
-        version: 4.2.0
-    devDependencies:
-      '@commitlint/rules':
-        specifier: ^19.8.1
-        version: 19.8.1
-      '@inquirer/checkbox':
-        specifier: 4.0.4
-        version: 4.0.4(@types/node@22.16.4)
-      '@inquirer/confirm':
-        specifier: 5.1.1
-        version: 5.1.1(@types/node@22.16.4)
-      '@inquirer/core':
-        specifier: 10.1.2
-        version: 10.1.2(@types/node@22.16.4)
-      '@inquirer/editor':
-        specifier: 4.2.1
-        version: 4.2.1(@types/node@22.16.4)
-      '@inquirer/expand':
-        specifier: 4.0.4
-        version: 4.0.4(@types/node@22.16.4)
-      '@inquirer/figures':
-        specifier: 1.0.9
-        version: 1.0.9
-      '@inquirer/input':
-        specifier: 4.1.1
-        version: 4.1.1(@types/node@22.16.4)
-      '@inquirer/number':
-        specifier: 3.0.4
-        version: 3.0.4(@types/node@22.16.4)
-      '@inquirer/password':
-        specifier: 4.0.4
-        version: 4.0.4(@types/node@22.16.4)
       '@inquirer/prompts':
         specifier: 7.2.1
         version: 7.2.1(@types/node@22.16.4)
-      '@inquirer/rawlist':
-        specifier: 4.0.4
-        version: 4.0.4(@types/node@22.16.4)
-      '@inquirer/search':
-        specifier: 3.0.4
-        version: 3.0.4(@types/node@22.16.4)
-      '@inquirer/select':
-        specifier: 4.0.4
-        version: 4.0.4(@types/node@22.16.4)
       '@nx/devkit':
         specifier: 'catalog:'
         version: 21.3.10(nx@21.3.10(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.23)(typescript@5.9.2))(@swc/core@1.7.26(@swc/helpers@0.5.13)))
@@ -1014,18 +965,6 @@ importers:
       '@storm-software/config-tools':
         specifier: workspace:*
         version: link:../config-tools
-      '@textlint/ast-node-types':
-        specifier: 14.4.2
-        version: 14.4.2
-      '@textlint/markdown-to-ast':
-        specifier: 14.4.2
-        version: 14.4.2
-      '@types/node':
-        specifier: 'catalog:'
-        version: 22.16.4
-      anchor-markdown-header:
-        specifier: 0.7.0
-        version: 0.7.0
       any-shell-escape:
         specifier: 0.1.1
         version: 0.1.1
@@ -1038,6 +977,34 @@ importers:
       chalk-template:
         specifier: 1.1.0
         version: 1.1.0
+      nx:
+        specifier: 'catalog:'
+        version: 21.3.10(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.23)(typescript@5.9.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))
+      prettier:
+        specifier: 'catalog:'
+        version: 3.6.2
+      tsconfig-paths:
+        specifier: 4.2.0
+        version: 4.2.0
+      zod:
+        specifier: 'catalog:'
+        version: 4.0.5
+    devDependencies:
+      '@commitlint/rules':
+        specifier: ^19.8.1
+        version: 19.8.1
+      '@textlint/ast-node-types':
+        specifier: 14.4.2
+        version: 14.4.2
+      '@textlint/markdown-to-ast':
+        specifier: 14.4.2
+        version: 14.4.2
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.16.4
+      anchor-markdown-header:
+        specifier: 0.7.0
+        version: 0.7.0
       commander:
         specifier: 'catalog:'
         version: 12.1.0
@@ -1074,9 +1041,6 @@ importers:
       word-wrap:
         specifier: 1.2.5
         version: 1.2.5
-      zod:
-        specifier: 'catalog:'
-        version: 4.0.5
 
   packages/k8s-tools:
     dependencies:
@@ -4693,7 +4657,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
@@ -6363,8 +6326,8 @@ packages:
   '@types/babel__template@7.4.4':
     resolution: {integrity: sha512-h/NUaSyG5EyxBIp8YRxo4RMe2/qQgvyowRwVMzhYhBCONbW8PUsg4lkFMrhgZhUe5z3L3MiLDuvyJ/CaPa2A8A==}
 
-  '@types/babel__traverse@7.20.7':
-    resolution: {integrity: sha512-dkO5fhS7+/oos4ciWxyEyjWe48zmG6wbCheo/G2ZnHx4fs3EU6YC6UM8rk56gAjNJ9P3MTH2jo5jb92/K6wbng==}
+  '@types/babel__traverse@7.28.0':
+    resolution: {integrity: sha512-8PvcXf70gTDZBgt9ptxJ8elBeBjcLOAcOtoO/mPJjtji1+CdGbHgm77om1GrsPxsiE+uXIpNSK64UYaIwQXd4Q==}
 
   '@types/body-parser@1.19.6':
     resolution: {integrity: sha512-HLFeCYgz89uk22N5Qg3dvGvsv46B8GLvKKo1zKG4NybA8U2DiEO3w9lqGg29t/tfLRJpJ6iQxnVw4OnB7MoM9g==}
@@ -21050,7 +21013,7 @@ snapshots:
       '@babel/types': 7.28.2
       '@types/babel__generator': 7.27.0
       '@types/babel__template': 7.4.4
-      '@types/babel__traverse': 7.20.7
+      '@types/babel__traverse': 7.28.0
 
   '@types/babel__generator@7.27.0':
     dependencies:
@@ -21061,7 +21024,7 @@ snapshots:
       '@babel/parser': 7.28.0
       '@babel/types': 7.28.2
 
-  '@types/babel__traverse@7.20.7':
+  '@types/babel__traverse@7.28.0':
     dependencies:
       '@babel/types': 7.28.2
 
