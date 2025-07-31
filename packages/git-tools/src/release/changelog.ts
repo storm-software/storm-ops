@@ -1,6 +1,5 @@
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { getWorkspaceConfig } from "@storm-software/config-tools/get-config";
-import * as chalk from "chalk";
 import { prompt } from "enquirer";
 import { readFileSync, rmSync, writeFileSync } from "node:fs";
 import type { DependencyBump } from "nx/release/changelog-renderer";
@@ -351,7 +350,17 @@ export function createAPI(overrideReleaseConfig: NxReleaseConfiguration) {
           await getLatestGitTagForPattern(
             nxReleaseConfig.releaseTagPattern,
             {},
-            nxReleaseConfig.releaseTagPatternCheckAllBranchesWhen
+            {
+              checkAllBranchesWhen:
+                nxReleaseConfig.releaseTagPatternCheckAllBranchesWhen,
+              // preid:
+              //   workspacePreid ??
+              //   projectsPreid?.[Object.keys(projectsPreid)[0]],
+              releaseTagPatternRequireSemver:
+                nxReleaseConfig.releaseTagPatternRequireSemver,
+              releaseTagPatternStrictPreid:
+                nxReleaseConfig.releaseTagPatternStrictPreid
+            }
           )
         )?.tag;
       if (!workspaceChangelogFromRef) {
@@ -1135,9 +1144,9 @@ async function generateChangelogForWorkspace({
   if (interpolatedTreePath) {
     const prefix = dryRun ? "Previewing" : "Generating";
     output.log({
-      title: `${prefix} an entry in ${interpolatedTreePath} for ${chalk.white(
+      title: `${prefix} an entry in ${interpolatedTreePath} for ${
         releaseVersion.gitTag
-      )}`
+      }`
     });
   }
 
@@ -1261,9 +1270,9 @@ async function generateChangelogForProjects({
     if (interpolatedTreePath) {
       const prefix = dryRun ? "Previewing" : "Generating";
       output.log({
-        title: `${prefix} an entry in ${interpolatedTreePath} for ${chalk.white(
+        title: `${prefix} an entry in ${interpolatedTreePath} for ${
           releaseVersion.gitTag
-        )}`
+        }`
       });
 
       const remoteReleaseClient =

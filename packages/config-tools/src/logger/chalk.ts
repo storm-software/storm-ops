@@ -4,15 +4,19 @@ export type GetChalkReturn = {
   hex: (_: string) => (message?: string) => string | undefined;
   bgHex: (_: string) => {
     whiteBright: (message?: string) => string | undefined;
+    white: (message?: string) => string | undefined;
   };
   whiteBright: (message?: string) => string | undefined;
+  white: (message?: string) => string | undefined;
   gray: (message?: string) => string | undefined;
   bold: {
     hex: (_: string) => (message?: string) => string | undefined;
     bgHex: (_: string) => {
       whiteBright: (message?: string) => string | undefined;
+      white: (message?: string) => string | undefined;
     };
     whiteBright: (message?: string) => string | undefined;
+    white: (message?: string) => string | undefined;
   };
   dim: {
     hex: (_: string) => (message?: string) => string | undefined;
@@ -24,20 +28,24 @@ const chalkDefault: GetChalkReturn = {
   hex: (_: string) => (message?: string) => message,
   bgHex: (_: string) => ({
     whiteBright: (message?: string) => message,
+    white: (message?: string) => message
   }),
+  white: (message?: string) => message,
   whiteBright: (message?: string) => message,
   gray: (message?: string) => message,
   bold: {
     hex: (_: string) => (message?: string) => message,
     bgHex: (_: string) => ({
       whiteBright: (message?: string) => message,
+      white: (message?: string) => message
     }),
     whiteBright: (message?: string) => message,
+    white: (message?: string) => message
   },
   dim: {
     hex: (_: string) => (message?: string) => message,
-    gray: (message?: string) => message,
-  },
+    gray: (message?: string) => message
+  }
 };
 
 /**
@@ -54,7 +62,8 @@ export const getChalk = (): GetChalkReturn => {
     !_chalk?.hex ||
     !_chalk?.bold?.hex ||
     !_chalk?.bgHex ||
-    !_chalk?.whiteBright
+    !_chalk?.whiteBright ||
+    !_chalk?.white
   ) {
     _chalk = chalkDefault;
   }
