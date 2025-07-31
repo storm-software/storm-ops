@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.113.17](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.17) (2025-07-31)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with incorrect log formatting
+  ([062583d84](https://github.com/storm-software/storm-ops/commit/062583d84))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([e5c02a04d](https://github.com/storm-software/storm-ops/commit/e5c02a04d))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.17
+- Updated config to 1.125.16
+
 ## [2.113.16](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.16) (2025-07-31)
 
 ### Bug Fixes

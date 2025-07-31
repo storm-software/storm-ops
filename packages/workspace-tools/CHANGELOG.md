@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.277.28](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.28) (2025-07-31)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with incorrect log formatting
+  ([062583d84](https://github.com/storm-software/storm-ops/commit/062583d84))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([e5c02a04d](https://github.com/storm-software/storm-ops/commit/e5c02a04d))
+
+### Updated Dependencies
+
+- Updated prettier to 0.51.54
+- Updated esbuild to 0.45.41
+- Updated unbuild to 0.49.52
+
 ## [1.277.27](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.27) (2025-07-31)
 
 ### Bug Fixes

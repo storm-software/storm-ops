@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - ESLint
 
+## [0.160.31](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.160.31) (2025-07-31)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with incorrect log formatting
+  ([062583d84](https://github.com/storm-software/storm-ops/commit/062583d84))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([e5c02a04d](https://github.com/storm-software/storm-ops/commit/e5c02a04d))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.17
+- Updated config to 1.125.16
+
 ## [0.160.30](https://github.com/storm-software/storm-ops/releases/tag/eslint%400.160.30) (2025-07-31)
 
 ### Miscellaneous

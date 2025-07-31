@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.24.45](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.24.45) (2025-07-31)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with incorrect log formatting
+  ([062583d84](https://github.com/storm-software/storm-ops/commit/062583d84))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([e5c02a04d](https://github.com/storm-software/storm-ops/commit/e5c02a04d))
+
 ## [0.24.44](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.24.44) (2025-07-31)
 
 ### Miscellaneous

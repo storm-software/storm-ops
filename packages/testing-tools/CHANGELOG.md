@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.111.1](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.111.1) (2025-07-31)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with incorrect log formatting
+  ([062583d84](https://github.com/storm-software/storm-ops/commit/062583d84))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([e5c02a04d](https://github.com/storm-software/storm-ops/commit/e5c02a04d))
+
 ## [1.111.0](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.111.0) (2025-07-31)
 
 ### Features

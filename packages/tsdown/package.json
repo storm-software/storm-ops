@@ -1,6 +1,6 @@
 {
   "name": "@storm-software/tsdown",
-  "version": "0.36.51",
+  "version": "0.36.52",
   "type": "module",
   "description": "A package containing `tsdown` utilities for building Storm Software libraries and applications",
   "repository": {
@@ -189,9 +189,9 @@
     }
   },
   "dependencies": {
-    "@storm-software/build-tools": "0.151.27",
-    "@storm-software/config": "1.125.15",
-    "@storm-software/config-tools": "1.176.16",
+    "@storm-software/build-tools": "0.151.28",
+    "@storm-software/config": "1.125.16",
+    "@storm-software/config-tools": "1.176.17",
     "chokidar": "^4.0.3",
     "commander": "catalog:",
     "es-toolkit": "^1.39.8",

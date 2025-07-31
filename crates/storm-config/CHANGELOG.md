@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.19.45](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.19.45) (2025-07-31)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with incorrect log formatting
+  ([062583d84](https://github.com/storm-software/storm-ops/commit/062583d84))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([e5c02a04d](https://github.com/storm-software/storm-ops/commit/e5c02a04d))
+
 ## [0.19.44](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.19.44) (2025-07-31)
 
 ### Miscellaneous
