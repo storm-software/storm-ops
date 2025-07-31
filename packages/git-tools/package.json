@@ -242,37 +242,26 @@
     "zod": ">=4.0.0"
   },
   "dependencies": {
-    "nx": "catalog:",
-    "prettier": "catalog:",
-    "tsconfig-paths": "4.2.0"
-  },
-  "devDependencies": {
-    "@commitlint/rules": "^19.8.1",
-    "@inquirer/checkbox": "4.0.4",
-    "@inquirer/confirm": "5.1.1",
-    "@inquirer/core": "10.1.2",
-    "@inquirer/editor": "4.2.1",
-    "@inquirer/expand": "4.0.4",
-    "@inquirer/figures": "1.0.9",
-    "@inquirer/input": "4.1.1",
-    "@inquirer/number": "3.0.4",
-    "@inquirer/password": "4.0.4",
     "@inquirer/prompts": "7.2.1",
-    "@inquirer/rawlist": "4.0.4",
-    "@inquirer/search": "3.0.4",
-    "@inquirer/select": "4.0.4",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/config": "1.125.16",
-    "@storm-software/config-tools": "1.176.17",
-    "@textlint/ast-node-types": "14.4.2",
-    "@textlint/markdown-to-ast": "14.4.2",
-    "@types/node": "catalog:",
-    "anchor-markdown-header": "0.7.0",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "any-shell-escape": "0.1.1",
     "axios": "1.8.2",
     "chalk": "catalog:",
     "chalk-template": "1.1.0",
+    "nx": "catalog:",
+    "prettier": "catalog:",
+    "tsconfig-paths": "4.2.0",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@commitlint/rules": "^19.8.1",
+    "@textlint/ast-node-types": "14.4.2",
+    "@textlint/markdown-to-ast": "14.4.2",
+    "@types/node": "catalog:",
+    "anchor-markdown-header": "0.7.0",
     "commander": "catalog:",
     "conventional-commits-parser": "^6.2.0",
     "defu": "catalog:",
@@ -284,8 +273,7 @@
     "tsup": "catalog:",
     "underscore": "1.13.7",
     "update-section": "0.3.3",
-    "word-wrap": "1.2.5",
-    "zod": "catalog:"
+    "word-wrap": "1.2.5"
   },
   "publishConfig": {
     "access": "public"

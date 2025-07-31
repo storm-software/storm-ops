@@ -16,7 +16,13 @@ export default defineConfig([
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     shims: true,
-    external: ["oxc-parser", "@oxc-parser/*", "nx", "@nx/*"],
+    external: [
+      "oxc-parser",
+      "@oxc-parser/*",
+      "nx",
+      "@nx/*",
+      "@storm-software/*"
+    ],
     noExternal: ["@commitlint/rules", "conventional-commits-parser", "defu"],
     skipNodeModulesBundle: true
   }
