@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.6.14](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.14) (2025-08-01)
+
+### Miscellaneous
+
+- **monorepo:** Update README markdown and package links
+  ([2468d6357](https://github.com/storm-software/storm-ops/commit/2468d6357))
+
 ## [0.6.13](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.13) (2025-07-31)
 
 ### Miscellaneous

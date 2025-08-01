@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Git Tools
 
+## [2.113.21](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.21) (2025-08-01)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with missing external dependencies
+  ([9f0749a68](https://github.com/storm-software/storm-ops/commit/9f0749a68))
+
+### Miscellaneous
+
+- **monorepo:** Update README markdown and package links
+  ([2468d6357](https://github.com/storm-software/storm-ops/commit/2468d6357))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.21
+- Updated config to 1.125.19
+
 ## [2.113.20](https://github.com/storm-software/storm-ops/releases/tag/git-tools%402.113.20) (2025-07-31)
 
 ### Bug Fixes
