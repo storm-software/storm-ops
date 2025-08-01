@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.125.49](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.125.49) (2025-08-01)
+
+### Bug Fixes
+
+- **git-tools:** Update `package.json` to ensure external dependencies are
+  installed
+  ([506a0cf30](https://github.com/storm-software/storm-ops/commit/506a0cf30))
+
 ## [1.125.48](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.125.48) (2025-08-01)
 
 ### Miscellaneous

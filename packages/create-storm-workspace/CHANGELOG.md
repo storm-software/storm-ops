@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.91.48](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.91.48) (2025-08-01)
+
+### Bug Fixes
+
+- **git-tools:** Update `package.json` to ensure external dependencies are
+  installed
+  ([506a0cf30](https://github.com/storm-software/storm-ops/commit/506a0cf30))
+
 ## [1.91.47](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.91.47) (2025-08-01)
 
 ### Miscellaneous

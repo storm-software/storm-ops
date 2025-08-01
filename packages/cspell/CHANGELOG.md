@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.35.19](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.35.19) (2025-08-01)
+
+### Bug Fixes
+
+- **git-tools:** Update `package.json` to ensure external dependencies are
+  installed
+  ([506a0cf30](https://github.com/storm-software/storm-ops/commit/506a0cf30))
+
 ## [0.35.18](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.35.18) (2025-08-01)
 
 ### Miscellaneous

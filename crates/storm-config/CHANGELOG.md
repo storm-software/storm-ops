@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.19.49](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.19.49) (2025-08-01)
+
+### Bug Fixes
+
+- **git-tools:** Update `package.json` to ensure external dependencies are
+  installed
+  ([506a0cf30](https://github.com/storm-software/storm-ops/commit/506a0cf30))
+
 ## [0.19.48](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.19.48) (2025-08-01)
 
 ### Miscellaneous

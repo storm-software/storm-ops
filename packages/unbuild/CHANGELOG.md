@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Unbuild
 
+## [0.49.57](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.57) (2025-08-01)
+
+### Bug Fixes
+
+- **git-tools:** Update `package.json` to ensure external dependencies are
+  installed
+  ([506a0cf30](https://github.com/storm-software/storm-ops/commit/506a0cf30))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.22
+- Updated build-tools to 0.151.32
+- Updated config to 1.125.20
+
 ## [0.49.56](https://github.com/storm-software/storm-ops/releases/tag/unbuild%400.49.56) (2025-08-01)
 
 ### Miscellaneous

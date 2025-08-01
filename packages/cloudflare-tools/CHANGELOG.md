@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Cloudflare Tools
 
+## [0.63.54](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.63.54) (2025-08-01)
+
+### Bug Fixes
+
+- **git-tools:** Update `package.json` to ensure external dependencies are
+  installed
+  ([506a0cf30](https://github.com/storm-software/storm-ops/commit/506a0cf30))
+
 ## [0.63.53](https://github.com/storm-software/storm-ops/releases/tag/cloudflare-tools%400.63.53) (2025-08-01)
 
 ### Miscellaneous

@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Testing Tools
 
+## [1.111.5](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.111.5) (2025-08-01)
+
+### Bug Fixes
+
+- **git-tools:** Update `package.json` to ensure external dependencies are
+  installed
+  ([506a0cf30](https://github.com/storm-software/storm-ops/commit/506a0cf30))
+
 ## [1.111.4](https://github.com/storm-software/storm-ops/releases/tag/testing-tools%401.111.4) (2025-08-01)
 
 ### Miscellaneous

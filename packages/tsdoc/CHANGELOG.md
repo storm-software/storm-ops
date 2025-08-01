@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Tsdoc
 
+## [0.6.15](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.15) (2025-08-01)
+
+### Bug Fixes
+
+- **git-tools:** Update `package.json` to ensure external dependencies are
+  installed
+  ([506a0cf30](https://github.com/storm-software/storm-ops/commit/506a0cf30))
+
 ## [0.6.14](https://github.com/storm-software/storm-ops/releases/tag/tsdoc%400.6.14) (2025-08-01)
 
 ### Miscellaneous

@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.277.33](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.33) (2025-08-01)
+
+### Bug Fixes
+
+- **git-tools:** Update `package.json` to ensure external dependencies are
+  installed
+  ([506a0cf30](https://github.com/storm-software/storm-ops/commit/506a0cf30))
+
+### Updated Dependencies
+
+- Updated prettier to 0.51.58
+- Updated esbuild to 0.45.46
+- Updated unbuild to 0.49.57
+
 ## [1.277.32](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.32) (2025-08-01)
 
 ### Miscellaneous

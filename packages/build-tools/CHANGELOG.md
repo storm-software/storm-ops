@@ -2,6 +2,14 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.151.32](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.32) (2025-08-01)
+
+### Bug Fixes
+
+- **git-tools:** Update `package.json` to ensure external dependencies are
+  installed
+  ([506a0cf30](https://github.com/storm-software/storm-ops/commit/506a0cf30))
+
 ## [0.151.31](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.31) (2025-08-01)
 
 ### Miscellaneous
