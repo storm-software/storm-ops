@@ -247,8 +247,8 @@
     "@inquirer/prompts": "7.2.1",
     "@nx/devkit": "catalog:",
     "@nx/js": "catalog:",
-    "@storm-software/config": "1.125.19",
-    "@storm-software/config-tools": "1.176.21",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "@textlint/ast-node-types": "14.4.2",
     "@textlint/markdown-to-ast": "14.4.2",
     "anchor-markdown-header": "0.7.0",
@@ -259,6 +259,9 @@
     "nx": "catalog:",
     "prettier": "catalog:",
     "tsconfig-paths": "4.2.0",
+    "underscore": "1.13.7",
+    "update-section": "0.3.3",
+    "word-wrap": "1.2.5",
     "zod": "catalog:"
   },
   "devDependencies": {
@@ -271,10 +274,7 @@
     "read-yaml-file": "catalog:",
     "semver": "7.6.2",
     "simple-git": "^3.28.0",
-    "tsup": "catalog:",
-    "underscore": "1.13.7",
-    "update-section": "0.3.3",
-    "word-wrap": "1.2.5"
+    "tsup": "catalog:"
   },
   "publishConfig": {
     "access": "public"
