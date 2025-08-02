@@ -992,12 +992,21 @@ importers:
       chalk-template:
         specifier: 1.1.0
         version: 1.1.0
+      htmlparser2:
+        specifier: 10.0.0
+        version: 10.0.0
+      jsonc-parser:
+        specifier: 3.2.1
+        version: 3.2.1
       nx:
         specifier: 'catalog:'
         version: 21.3.10(@swc-node/register@1.10.9(@swc/core@1.7.26(@swc/helpers@0.5.13))(@swc/types@0.1.23)(typescript@5.9.2))(@swc/core@1.7.26(@swc/helpers@0.5.13))
       prettier:
         specifier: 'catalog:'
         version: 3.6.2
+      read-yaml-file:
+        specifier: 'catalog:'
+        version: 2.1.0
       tsconfig-paths:
         specifier: 4.2.0
         version: 4.2.0
@@ -1026,15 +1035,6 @@ importers:
       defu:
         specifier: 'catalog:'
         version: 6.1.4
-      htmlparser2:
-        specifier: 10.0.0
-        version: 10.0.0
-      jsonc-parser:
-        specifier: 3.2.1
-        version: 3.2.1
-      read-yaml-file:
-        specifier: 'catalog:'
-        version: 2.1.0
       semver:
         specifier: 7.6.2
         version: 7.6.2
@@ -4695,7 +4695,6 @@ packages:
 
   '@ls-lint/ls-lint@2.2.3':
     resolution: {integrity: sha512-ekM12jNm/7O2I/hsRv9HvYkRdfrHpiV1epVuI2NP+eTIcEgdIdKkKCs9KgQydu/8R5YXTov9aHdOgplmCHLupw==}
-    cpu: [x64, arm64, s390x]
     os: [darwin, linux, win32]
     hasBin: true
 
