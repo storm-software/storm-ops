@@ -189,9 +189,9 @@
     }
   },
   "dependencies": {
-    "@storm-software/build-tools": "0.151.33",
-    "@storm-software/config": "1.125.21",
-    "@storm-software/config-tools": "1.176.23",
+    "@storm-software/build-tools": "workspace:*",
+    "@storm-software/config": "workspace:*",
+    "@storm-software/config-tools": "workspace:*",
     "chokidar": "^4.0.3",
     "commander": "catalog:",
     "es-toolkit": "^1.39.8",
