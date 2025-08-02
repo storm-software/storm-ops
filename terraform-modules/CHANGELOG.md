@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - Terraform Modules
 
+## [0.51.50](https://github.com/storm-software/storm-ops/releases/tag/terraform-modules%400.51.50) (2025-08-02)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with missing external dependencies
+  ([d47adff14](https://github.com/storm-software/storm-ops/commit/d47adff14))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([b867380ec](https://github.com/storm-software/storm-ops/commit/b867380ec))
+
 ## [0.51.49](https://github.com/storm-software/storm-ops/releases/tag/terraform-modules%400.51.49) (2025-08-01)
 
 ### Bug Fixes

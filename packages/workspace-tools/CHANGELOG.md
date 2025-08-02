@@ -2,6 +2,24 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.277.34](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.34) (2025-08-02)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with missing external dependencies
+  ([d47adff14](https://github.com/storm-software/storm-ops/commit/d47adff14))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([b867380ec](https://github.com/storm-software/storm-ops/commit/b867380ec))
+
+### Updated Dependencies
+
+- Updated prettier to 0.51.59
+- Updated esbuild to 0.45.47
+- Updated unbuild to 0.49.58
+
 ## [1.277.33](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.277.33) (2025-08-01)
 
 ### Bug Fixes

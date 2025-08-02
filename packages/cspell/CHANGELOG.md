@@ -2,6 +2,18 @@
 
 # Changelog for Storm Ops - CSpell
 
+## [0.35.20](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.35.20) (2025-08-02)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with missing external dependencies
+  ([d47adff14](https://github.com/storm-software/storm-ops/commit/d47adff14))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([b867380ec](https://github.com/storm-software/storm-ops/commit/b867380ec))
+
 ## [0.35.19](https://github.com/storm-software/storm-ops/releases/tag/cspell%400.35.19) (2025-08-01)
 
 ### Bug Fixes

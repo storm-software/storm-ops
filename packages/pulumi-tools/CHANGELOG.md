@@ -2,6 +2,23 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.14.7](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.14.7) (2025-08-02)
+
+### Bug Fixes
+
+- **git-tools:** Resolve issue with missing external dependencies
+  ([d47adff14](https://github.com/storm-software/storm-ops/commit/d47adff14))
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README markdown files
+  ([b867380ec](https://github.com/storm-software/storm-ops/commit/b867380ec))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.176.23
+- Updated config to 1.125.21
+
 ## [0.14.6](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.14.6) (2025-08-01)
 
 ### Bug Fixes
