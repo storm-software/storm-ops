@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Markdownlint
 
+## [0.24.55](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.24.55) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Updates to README and dependencies
+  ([d5fa740ba](https://github.com/storm-software/storm-ops/commit/d5fa740ba))
+
 ## [0.24.54](https://github.com/storm-software/storm-ops/releases/tag/markdownlint%400.24.54) (2025-08-03)
 
 ### Miscellaneous

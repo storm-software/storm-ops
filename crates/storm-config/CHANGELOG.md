@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.19.55](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.19.55) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Updates to README and dependencies
+  ([d5fa740ba](https://github.com/storm-software/storm-ops/commit/d5fa740ba))
+
 ## [0.19.54](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.19.54) (2025-08-03)
 
 ### Miscellaneous

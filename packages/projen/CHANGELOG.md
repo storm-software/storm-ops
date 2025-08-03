@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Projen
 
+## [0.15.56](https://github.com/storm-software/storm-ops/releases/tag/projen%400.15.56) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Updates to README and dependencies
+  ([d5fa740ba](https://github.com/storm-software/storm-ops/commit/d5fa740ba))
+
 ## [0.15.55](https://github.com/storm-software/storm-ops/releases/tag/projen%400.15.55) (2025-08-03)
 
 ### Miscellaneous

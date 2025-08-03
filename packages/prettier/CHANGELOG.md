@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Prettier
 
+## [0.51.64](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.51.64) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Updates to README and dependencies
+  ([d5fa740ba](https://github.com/storm-software/storm-ops/commit/d5fa740ba))
+
 ## [0.51.63](https://github.com/storm-software/storm-ops/releases/tag/prettier%400.51.63) (2025-08-03)
 
 ### Miscellaneous
