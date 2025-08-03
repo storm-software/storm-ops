@@ -2,6 +2,7 @@
   "$schema": "https://cdn.jsdelivr.net/npm/nx/schemas/nx-schema.json",
   "extends": "nx/presets/npm.json",
   "namedInputs": {
+    "allProjectFiles": ["sharedGlobals", "{projectRoot}/**/*"],
     "sharedGlobals": [
       "{workspaceRoot}/.github/**/*",
       "{workspaceRoot}/.gitattributes",
@@ -33,12 +34,19 @@
       "{workspaceRoot}/storm-workspace.config.ts",
       "{workspaceRoot}/.storm-workspace/config.ts",
       "{workspaceRoot}/.storm-workspace/config.*.ts",
+      "{workspaceRoot}/devenv.lock",
+      "{workspaceRoot}/devenv.nix",
+      "{workspaceRoot}/devenv.yaml",
+      "{workspaceRoot}/.devenv.flake.nix",
+      "{workspaceRoot}/.devenv",
+      "{workspaceRoot}/.direnv",
       "{workspaceRoot}/.env",
+      "{workspaceRoot}/.envrc",
       "{workspaceRoot}/.env.*"
     ],
-    "default": ["sharedGlobals", "{projectRoot}/**/*"],
     "production": [
       "{projectRoot}/**/*",
+      "!{projectRoot}/dist/**/*",
       "!{projectRoot}/tools/**/*",
       "!{projectRoot}/scripts/**/*",
       "!{projectRoot}/node_modules/**/*",
@@ -87,8 +95,6 @@
       "{workspaceRoot}/testing/**/*",
       "{workspaceRoot}/coverage/**/*",
       "{projectRoot}/project.json",
-      "{projectRoot}/README.md",
-      "{projectRoot}/CHANGELOG.md",
       "{projectRoot}/.env",
       "{projectRoot}/.env.local",
       "{projectRoot}/jest.config.ts",
@@ -134,8 +140,6 @@
       "{workspaceRoot}/prettier.config.js",
       "{workspaceRoot}/.prettierignore",
       "{projectRoot}/project.json",
-      "{projectRoot}/README.md",
-      "{projectRoot}/CHANGELOG.md",
       "{projectRoot}/.env",
       "{projectRoot}/.env.local",
       "{projectRoot}/.eslintignore",
@@ -239,26 +243,17 @@
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
       "!{projectRoot}/node_modules/**/*",
+      "!{projectRoot}/dist/**/*",
       "!{projectRoot}/benches/**/*",
       "!{projectRoot}/e2e/**/*",
       "!{projectRoot}/tests/**/*",
       "!{projectRoot}/testing/**/*",
-      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/tsconfig.spec.json",
-      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
-      "!{projectRoot}/node_modules/**/*",
       "{projectRoot}/package.json",
       "{projectRoot}/tsconfig.json",
       "{projectRoot}/tsconfig.*.json",
       "{projectRoot}/project.json",
-      "{projectRoot}/README.md",
-      "{projectRoot}/CHANGELOG.md",
       "{projectRoot}/.env",
       "{projectRoot}/.env.*",
-      "{projectRoot}/README.md",
-      "{projectRoot}/docs/**/*",
-      "{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
       "{projectRoot}/**/*.proto",
       "{projectRoot}/**/*.acid",
       "{projectRoot}/**/*.acidic",
@@ -282,76 +277,16 @@
       "{projectRoot}/src/**/*.mdx",
       "{projectRoot}/build.*.[jt]s?(x)",
       "{projectRoot}/tsup.*.[jt]s?(x)",
+      "{projectRoot}/vite.*.[jt]s?(x)",
       "{projectRoot}/contentlayer.*.[jt]s?(x)",
       "{projectRoot}/bin/**/*",
-      "{projectRoot}/tools/**/*",
-      "{projectRoot}/helpers/**/*",
-      "{projectRoot}/scripts/**/*"
+      "{projectRoot}/helpers/**/*"
     ]
   },
   "targetDefaults": {
-    "lint-markdown": {
-      "inputs": ["linting", "{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
-      "outputs": ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
-      "dependsOn": ["^lint-markdown"],
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm exec markdownlint-cli2 \"{projectRoot}/*.{md,mdx}\" \"{projectRoot}/**/*.{md,mdx}\" --config \"node_modules/@storm-software/markdownlint/config/base.markdownlint-cli2.jsonc\" --fix"
-      }
-    },
-    "lint": {
-      "dependsOn": ["lint-markdown", "^lint"],
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "echo Linted the project files in \"{projectRoot}\" "
-      }
-    },
-    "format-toml": {
-      "inputs": ["linting", "{projectRoot}/**/*.toml"],
-      "outputs": ["{projectRoot}/**/*.toml"],
-      "dependsOn": ["^format-toml"],
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm exec taplo format --config=\"node_modules/@storm-software/linting-tools/taplo/config.toml\" --cache-path=\"node_modules/.cache/taplo/{projectRoot}\" --colors=\"always\" \"{projectRoot}/*.toml\" \"{projectRoot}/**/*.toml\" "
-      }
-    },
-    "format-readme": {
-      "inputs": [
-        "linting",
-        "documentation",
-        "{projectRoot}/{README.md,package.json,Cargo.toml,executors.json,generators.json}",
-        "default",
-        "^production"
-      ],
-      "outputs": ["{projectRoot}/README.md"],
-      "dependsOn": ["^format-readme"],
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm exec storm-git readme --templates=\"tools/readme-templates\" --project=\"{projectName}\""
-      }
-    },
-    "format-prettier": {
-      "inputs": ["linting", "default", "^production"],
-      "dependsOn": ["^format-prettier"],
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm exec prettier \"{projectRoot}/**/*\" --write --ignore-unknown --no-error-on-unmatched-pattern --config=\"node_modules/@storm-software/prettier/config.json\" --ignore-path=\"node_modules/@storm-software/prettier/.prettierignore\" --cache --cache-location=\"node_modules/.cache/prettier/{projectRoot}\" "
-      }
-    },
-    "format": {
-      "dependsOn": [
-        "format-toml",
-        "format-readme",
-        "format-prettier",
-        "^format"
-      ],
-      "options": {
-        "command": "echo Formatted the project files in \"{projectRoot}\" "
-      }
-    },
     "clean": {
-      "inputs": ["default", "^production"],
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "inputs": ["{workspaceRoot}/dist/{projectRoot}", "{projectRoot}/dist"],
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}", "{projectRoot}/dist"],
       "dependsOn": ["^clean"],
       "executor": "nx:run-commands",
       "options": {
@@ -361,45 +296,7 @@
         ]
       }
     },
-    "build-untyped": {
-      "dependsOn": ["^build"]
-    },
-    "build-base": {
-      "dependsOn": ["build-untyped", "^build"]
-    },
-    "build-compile": {
-      "inputs": ["default", "^production"],
-      "dependsOn": ["build-base", "build-untyped", "^build"]
-    },
-    "build": {
-      "inputs": ["default", "^production"],
-      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
-      "dependsOn": ["build-base", "build-compile", "build-untyped", "^build"]
-    },
-    "rebuild": {
-      "inputs": ["default", "^production"],
-      "executor": "nx:run-commands",
-      "dependsOn": ["clean", "^build"],
-      "options": {
-        "command": "pnpm exec nx run {projectName}:build",
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "docs": {
-      "outputs": ["{options.outputPath}"],
-      "inputs": ["linting", "documentation", "default", "^production"],
-      "dependsOn": ["build", "format-readme", "lint-docs", "^docs"]
-    },
-    "test": {
-      "inputs": ["testing", "default", "^production"],
-      "dependsOn": ["build", "^test"]
-    },
-    "e2e": {
-      "inputs": ["testing", "default", "^production"],
-      "dependsOn": ["test", "^e2e"]
-    },
     "nx-release-publish": {
-      "inputs": ["default", "^production"],
       "dependsOn": ["build", "^nx-release-publish"]
     }
   },

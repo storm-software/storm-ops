@@ -46,7 +46,7 @@ export async function sizeLimitExecutorFn(
     );
   }
 
-  writeInfo(`📏 Running Size-Limit on ${context.projectName}`, config);
+  writeInfo(`📏   Running Size-Limit on ${context.projectName}`, config);
 
   sizeLimit([filePlugin, esBuildPlugin, esBuildWhyPlugin], {
     checks:
@@ -60,7 +60,7 @@ export async function sizeLimitExecutorFn(
       )
   }).then(result => {
     writeInfo(
-      `📏 ${context.projectName} Size-Limit result: ${JSON.stringify(result)}`,
+      `📏   ${context.projectName} Size-Limit result: ${JSON.stringify(result)}`,
       config
     );
   });

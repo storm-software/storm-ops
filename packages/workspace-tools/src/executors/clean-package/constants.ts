@@ -39,7 +39,7 @@ export const IGNORE_FILES = [
   /^\.yaspellerrc/,
   /^changelog/i,
   /eslint.config.(c|m)?js/,
-  /README\.[\w-]+\.md/,
+  /README\.[\w-]+\.md/
 ];
 
 export const IGNORE_FIELDS = [
@@ -65,8 +65,9 @@ export const IGNORE_FIELDS = [
   "simple-git-hooks",
   "simple-pre-commit",
   "size-limit",
+  "storm",
   "typeCoverage",
-  "yaspeller",
+  "yaspeller"
 ];
 
 export const NPM_SCRIPTS = [
@@ -77,7 +78,7 @@ export const NPM_SCRIPTS = [
   "prepublish",
   "publish",
   "uninstall",
-  "version",
+  "version"
 ];
 
 // https://pnpm.io/package_json#publishconfig
@@ -95,5 +96,5 @@ export const PUBLISH_CONFIG_FIELDS = [
   "umd:main",
   "typesVersions",
   "cpu",
-  "os",
+  "os"
 ];

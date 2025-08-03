@@ -16,6 +16,7 @@ import {
   type ProjectGraphExternalNode
 } from "nx/src/config/project-graph";
 import { cargoMetadata, isExternal } from "../../utils/cargo";
+import { getRoot } from "../../utils/plugin-helpers";
 import {
   addProjectTag,
   ProjectTagConstants,
@@ -86,8 +87,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
 
           for (const cargoPackage of cargoPackages) {
             if (!isExternal(cargoPackage, context.workspaceRoot)) {
-              const root = dirname(configFile);
-
+              const root = getRoot(dirname(configFile), context);
               const project: ProjectConfiguration = {
                 root,
                 name: cargoPackage.name
@@ -269,12 +269,7 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
               if (skipDocs != true) {
                 project.targets.docs = {
                   cache: true,
-                  inputs: [
-                    "linting",
-                    "documentation",
-                    "default",
-                    "^production"
-                  ],
+                  inputs: ["linting", "documentation", "^production"],
                   dependsOn: ["format-readme", "lint-docs", "^docs"],
                   outputs: [`{workspaceRoot}/dist/{projectRoot}/docs`],
                   executor: "@storm-software/workspace-tools:cargo-doc",
@@ -344,7 +339,9 @@ export const createNodesV2: CreateNodesV2<CargoPluginOptions | undefined> = [
                 const externalDepName = `cargo:${dep.name}`;
                 if (!externalNodes?.[externalDepName]) {
                   externalNodes[externalDepName] = {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     type: "cargo" as any,
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     name: externalDepName as any,
                     data: {
                       packageName: dep.name,

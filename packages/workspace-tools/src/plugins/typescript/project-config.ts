@@ -66,6 +66,8 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
     options = { includeApps: true },
     context
   ): Promise<CreateNodesResultV2> => {
+    const nxJson = readNxJson(context.workspaceRoot);
+
     return createNodesFromFiles(
       async (file, options = { includeApps: true }, context) => {
         try {
@@ -94,11 +96,9 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
 
           const root = getRoot(projectConfig.root, context);
 
-          // const enableKnip = options?.enableKnip !== false;
           const enableMarkdownlint = options?.enableMarkdownlint !== false;
           const enableEslint = options?.enableEslint !== false;
 
-          const nxJson = readNxJson(context.workspaceRoot);
           const targets: ProjectConfiguration["targets"] =
             readTargetsFromPackageJson(
               packageJson as NxPackageJson,
@@ -113,7 +113,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             ) &&
             options?.lintInternalTools !== true
           ) {
-            targets.lint = {
+            targets.lint ??= {
               dependsOn: ["^lint"],
               executor: "nx:run-commands",
               options: {
@@ -122,47 +122,26 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
               }
             };
           } else {
-            // if (!targets["lint-knip"] && enableKnip) {
-            //   const relativePath = relative(dirname(file), context.workspaceRoot);
+            targets["lint-ls"] ??= {
+              cache: true,
+              inputs: ["linting", "typescript", "^production"],
+              dependsOn: ["^lint-ls"],
+              executor: "nx:run-commands",
+              options: {
+                command:
+                  'pnpm exec ls-lint --config="node_modules/@storm-software/linting-tools/ls-lint/.ls-lint.yml" '
+              }
+            };
 
-            //   targets["lint-knip"] = {
-            //     cache: true,
-            //     outputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
-            //     inputs: [
-            //       "linting",
-            //       "{projectRoot}/**/*.md",
-            //       "{projectRoot}/**/*.mdx"
-            //     ],
-            //     dependsOn: ["^lint-knip"],
-            //     executor: "nx:run-commands",
-            //     options: {
-            //       command: `pnpm exec knip --config "${join(relativePath, "node_modules/@storm-software/linting-tools/knip/config.json").replaceAll("\\", "/")}" --tsConfig "{projectRoot}/tsconfig.json" --directory "{projectRoot}" --fix --no-exit-code --cache --cache-location "${join(relativePath, "node_modules/.cache/knip/{projectRoot}").replaceAll("\\", "/")}"`
-            //     }
-            //   };
-            // }
-
-            if (!targets["lint-ls"]) {
-              targets["lint-ls"] = {
+            if (enableMarkdownlint) {
+              targets["lint-markdown"] ??= {
                 cache: true,
-                inputs: ["linting", "typescript", "^production"],
-                dependsOn: ["^lint-ls"],
-                executor: "nx:run-commands",
-                options: {
-                  command:
-                    'pnpm exec ls-lint --config="node_modules/@storm-software/linting-tools/ls-lint/.ls-lint.yml" '
-                }
-              };
-            }
-
-            if (!targets["lint-markdown"] && enableMarkdownlint) {
-              targets["lint-markdown"] = {
-                cache: true,
-                outputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
                 inputs: [
                   "linting",
                   "{projectRoot}/**/*.md",
                   "{projectRoot}/**/*.mdx"
                 ],
+                outputs: ["{projectRoot}/**/*.md", "{projectRoot}/**/*.mdx"],
                 dependsOn: ["^lint-markdown"],
                 executor: "nx:run-commands",
                 options: {
@@ -172,20 +151,20 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
               };
             }
 
-            if (!targets.lint && enableEslint) {
+            if (enableEslint) {
               let eslintConfig = checkEslintConfigAtPath(projectConfig.root);
               if (!eslintConfig) {
                 eslintConfig = checkEslintConfigAtPath(context.workspaceRoot);
               }
 
               if (eslintConfig) {
-                targets.lint = {
+                targets.lint ??= {
                   cache: true,
                   inputs: ["linting", "typescript", "^production"],
                   outputs: [
                     "{projectRoot}/**/*.{ts,tsx,js,jsx,json,md,mdx,yaml,yml,html,css,scss,sass,less,graphql,gql}"
                   ],
-                  dependsOn: ["lint-markdown", "lint-knip", "^lint"],
+                  dependsOn: ["lint-markdown", "^lint"],
                   executor: "@nx/eslint:lint",
                   options: {
                     format: "stylish",
@@ -201,94 +180,88 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             }
           }
 
-          if (!targets["format-toml"]) {
-            targets["format-toml"] = {
-              inputs: ["linting", "{projectRoot}/**/*.toml"],
-              outputs: ["{projectRoot}/**/*.toml"],
-              dependsOn: ["^format-toml"],
-              executor: "nx:run-commands",
-              options: {
-                command:
-                  'pnpm exec taplo format --config="node_modules/@storm-software/linting-tools/taplo/config.toml" --cache-path="node_modules/.cache/taplo/{projectRoot}" --colors="always" "{projectRoot}/*.toml" "{projectRoot}/**/*.toml" '
-              }
-            };
-          }
+          targets["format-toml"] ??= {
+            cache: true,
+            inputs: ["linting", "{projectRoot}/**/*.toml"],
+            outputs: ["{projectRoot}/**/*.toml"],
+            dependsOn: ["^format-toml"],
+            executor: "nx:run-commands",
+            options: {
+              command:
+                'pnpm exec taplo format --config="node_modules/@storm-software/linting-tools/taplo/config.toml" --cache-path="node_modules/.cache/taplo/{projectRoot}" --colors="always" "{projectRoot}/*.toml" "{projectRoot}/**/*.toml" '
+            }
+          };
 
-          if (!targets["format-readme"]) {
-            targets["format-readme"] = {
-              inputs: [
-                "linting",
-                "documentation",
-                "{projectRoot}/{README.md,package.json,Cargo.toml,executors.json,generators.json}"
-              ],
-              outputs: ["{projectRoot}/README.md"],
-              dependsOn: ["^format-readme"],
-              executor: "nx:run-commands",
-              options: {
-                command:
-                  'pnpm exec storm-git readme --templates="tools/readme-templates" --project="{projectName}"'
-              }
-            };
-          }
+          targets["format-readme"] ??= {
+            cache: true,
+            inputs: [
+              "linting",
+              "documentation",
+              "{projectRoot}/{README.md,package.json,Cargo.toml,executors.json,generators.json}"
+            ],
+            outputs: ["{projectRoot}/README.md"],
+            dependsOn: ["^format-readme"],
+            executor: "nx:run-commands",
+            options: {
+              command:
+                'pnpm exec storm-git readme --templates="tools/readme-templates" --project="{projectName}"'
+            }
+          };
 
-          if (!targets["format-prettier"]) {
-            targets["format-prettier"] = {
-              inputs: ["linting", "typescript", "^production"],
-              outputs: ["{projectRoot}/**/*"],
-              dependsOn: ["^format-prettier"],
-              executor: "nx:run-commands",
-              options: {
-                command:
-                  'pnpm exec prettier "{projectRoot}/**/*" --write --ignore-unknown --no-error-on-unmatched-pattern --config="node_modules/@storm-software/prettier/config.json" --ignore-path="node_modules/@storm-software/prettier/.prettierignore" --cache --cache-location="node_modules/.cache/prettier/{projectRoot}" '
-              }
-            };
-          }
+          targets["format-prettier"] ??= {
+            cache: true,
+            inputs: ["linting", "typescript", "^production"],
+            outputs: ["{projectRoot}/**/*"],
+            dependsOn: ["^format-prettier"],
+            executor: "nx:run-commands",
+            options: {
+              command:
+                'pnpm exec prettier "{projectRoot}/**/*" --write --ignore-unknown --no-error-on-unmatched-pattern --config="node_modules/@storm-software/prettier/config.json" --ignore-path="node_modules/@storm-software/prettier/.prettierignore" --cache --cache-location="node_modules/.cache/prettier/{projectRoot}" '
+            }
+          };
 
-          if (!targets.format) {
-            targets.format = {
-              dependsOn: [
-                "format-readme",
-                "format-toml",
-                "format-prettier",
-                "^format"
-              ],
-              executor: "nx:run-commands",
-              options: {
-                command:
-                  "echo 'Formatting the project files in \"{projectRoot}\"' "
-              }
-            };
-          }
+          targets.format ??= {
+            cache: true,
+            inputs: ["linting", "typescript", "^production"],
+            outputs: ["{projectRoot}/**/*"],
+            dependsOn: [
+              "format-readme",
+              "format-toml",
+              "format-prettier",
+              "^format"
+            ],
+            executor: "nx:run-commands",
+            options: {
+              command:
+                "echo 'Formatting the project files in \"{projectRoot}\"' "
+            }
+          };
 
-          if (!targets.clean) {
-            targets.clean = {
-              cache: true,
-              executor: "nx:run-commands",
-              inputs: ["typescript", "^production"],
-              outputs: ["{workspaceRoot}/dist/{projectRoot}"],
-              options: {
-                command: "pnpm exec rimraf dist/{projectRoot}",
-                color: true,
-                cwd: "{workspaceRoot}"
-              }
-            };
-          }
+          targets.clean ??= {
+            cache: true,
+            executor: "nx:run-commands",
+            inputs: ["typescript", "^production"],
+            outputs: ["{workspaceRoot}/dist/{projectRoot}"],
+            options: {
+              command: "pnpm exec rimraf dist/{projectRoot}",
+              color: true,
+              cwd: "{workspaceRoot}"
+            }
+          };
 
-          if (!targets.rebuild) {
-            targets.rebuild = {
-              cache: false,
-              executor: "nx:run-commands",
-              dependsOn: ["clean", "^build"],
-              inputs: ["typescript", "default", "^production"],
-              outputs: ["{workspaceRoot}/dist/{projectRoot}"],
-              options: {
-                command: `pnpm exec nx run ${projectConfig.name}:build`
-              }
-            };
-          }
+          targets.rebuild ??= {
+            cache: false,
+            executor: "nx:run-commands",
+            dependsOn: ["clean", "^build"],
+            inputs: ["typescript", "^production"],
+            outputs: ["{workspaceRoot}/dist/{projectRoot}"],
+            options: {
+              command: `pnpm exec nx run ${projectConfig.name}:build`
+            }
+          };
 
-          if (!targets.test && checkJestConfigAtPath(projectConfig.root)) {
-            targets.test = {
+          if (checkJestConfigAtPath(projectConfig.root)) {
+            targets.test ??= {
               cache: true,
               executor: "@nx/jest:jest",
               inputs: ["testing", "typescript", "^production"],
@@ -311,7 +284,18 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             };
           }
 
-          targets["size-limit"] = {
+          targets["docs"] ??= {
+            cache: true,
+            inputs: ["linting", "documentation", "typescript", "^production"],
+            outputs: ["{projectRoot}/docs"],
+            dependsOn: ["build", "format-readme", "lint-docs", "^docs"],
+            options: {}
+          };
+
+          targets["size-limit"] ??= {
+            cache: true,
+            inputs: ["testing", "typescript", "^production"],
+            outputs: ["{workspaceRoot}/dist/{projectRoot}"],
             dependsOn: ["build", "^size-limit"],
             options: {}
           };
@@ -327,6 +311,7 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
             );
 
             targets["nx-release-publish"] = {
+              cache: false,
               dependsOn: ["build", "size-limit", "^nx-release-publish"],
               executor: "@storm-software/workspace-tools:npm-publish",
               options: {}
@@ -345,16 +330,10 @@ export const createNodesV2: CreateNodesV2<TypeScriptPluginOptions> = [
                 ProjectTagConstants.DistStyle.CLEAN
               )
             ) {
-              targets["clean-package"] = {
+              targets["clean-package"] ??= {
                 cache: true,
                 dependsOn: ["build"],
-                inputs: [
-                  "linting",
-                  "testing",
-                  "documentation",
-                  "default",
-                  "^production"
-                ],
+                inputs: ["{workspaceRoot}/dist/{projectRoot}"],
                 outputs: ["{workspaceRoot}/dist/{projectRoot}"],
                 executor: "@storm-software/workspace-tools:clean-package",
                 options: {
