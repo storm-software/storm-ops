@@ -3,7 +3,44 @@ import {
   ColorConfigMap,
   StormWorkspaceConfig
 } from "@storm-software/config/types";
-import { DEFAULT_COLOR_CONFIG } from "./get-default-config";
+
+/**
+ * Storm theme config values used for styling various workspace elements
+ */
+export const DEFAULT_COLOR_CONFIG = {
+  light: {
+    background: "#fafafa",
+    foreground: "#1d1e22",
+    brand: "#1fb2a6",
+    alternate: "#db2777",
+    help: "#5C4EE5",
+    success: "#087f5b",
+    info: "#0550ae",
+    warning: "#e3b341",
+    danger: "#D8314A",
+    fatal: "#51070f",
+    link: "#3fa6ff",
+    positive: "#22c55e",
+    negative: "#dc2626",
+    gradient: ["#1fb2a6", "#db2777", "#5C4EE5"]
+  },
+  dark: {
+    background: "#1d1e22",
+    foreground: "#cbd5e1",
+    brand: "#2dd4bf",
+    alternate: "#db2777",
+    help: "#818cf8",
+    success: "#10b981",
+    info: "#58a6ff",
+    warning: "#f3d371",
+    danger: "#D8314A",
+    fatal: "#a40e26",
+    link: "#3fa6ff",
+    positive: "#22c55e",
+    negative: "#dc2626",
+    gradient: ["#1fb2a6", "#db2777", "#818cf8"]
+  }
+};
 
 /**
  * Get the color configuration from the Storm workspace configuration.

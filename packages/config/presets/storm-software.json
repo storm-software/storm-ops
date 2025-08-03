@@ -58,9 +58,11 @@
       "info": "#0550ae",
       "warning": "#e3b341",
       "danger": "#a40e26",
+      "fatal": "#51070f",
       "link": "#3fa6ff",
       "positive": "#22c55e",
-      "negative": "#dc2626"
+      "negative": "#dc2626",
+      "gradient": ["#1fb2a6", "#db2777", "#5c4ee5"]
     },
     "dark": {
       "background": "#151718",
@@ -72,9 +74,11 @@
       "info": "#38bdf8",
       "warning": "#f3d371",
       "danger": "#d8314a",
+      "fatal": "#7d1a1a",
       "link": "#3fa6ff",
       "positive": "#22c55e",
-      "negative": "#dc2626"
+      "negative": "#dc2626",
+      "gradient": ["#1fb2a6", "#db2777", "#818cf8"]
     }
   }
 }

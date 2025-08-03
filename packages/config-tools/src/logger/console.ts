@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { ColorConfig, StormWorkspaceConfig } from "@storm-software/config";
 import { LogLevel, LogLevelLabel } from "../types";
-import { DEFAULT_COLOR_CONFIG } from "../utilities/get-default-config";
+import { DEFAULT_COLOR_CONFIG } from "../utilities/colors";
 import { getChalk } from "./chalk";
 import { CONSOLE_ICONS } from "./console-icons";
 import { formatTimestamp } from "./format-timestamp";
@@ -47,6 +47,7 @@ export const getLogFn = (
     logLevel <= LogLevel.SILENT ||
     getLogLevel(configLogLevel) <= LogLevel.SILENT
   ) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     return (_: string) => {
       /* noop */
     };
@@ -56,7 +57,7 @@ export const getLogFn = (
     return (message?: any) => {
       console.error(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.fatal ?? "#7d1a1a")(`[${CONSOLE_ICONS[LogLevelLabel.FATAL]}  Fatal] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.fatal ?? DEFAULT_COLOR_CONFIG.dark.fatal)(`[${CONSOLE_ICONS[LogLevelLabel.FATAL]} Fatal] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -66,7 +67,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.fatal ?? "#7d1a1a")(`[${CO
     return (message?: any) => {
       console.error(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.danger ?? "#f85149")(`[${CONSOLE_ICONS[LogLevelLabel.ERROR]} Error] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.danger ?? DEFAULT_COLOR_CONFIG.dark.danger)(`[${CONSOLE_ICONS[LogLevelLabel.ERROR]} Error] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -76,7 +77,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.danger ?? "#f85149")(`[${C
     return (message?: any) => {
       console.warn(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.warning ?? "#e3b341")(`[${CONSOLE_ICONS[LogLevelLabel.WARN]} Warn] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.warning ?? DEFAULT_COLOR_CONFIG.dark.warning)(`[${CONSOLE_ICONS[LogLevelLabel.WARN]} Warn] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -86,7 +87,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.warning ?? "#e3b341")(`[${
     return (message?: any) => {
       console.info(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.success ?? "#56d364")(`[${CONSOLE_ICONS[LogLevelLabel.SUCCESS]} Success] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.success ?? DEFAULT_COLOR_CONFIG.dark.success)(`[${CONSOLE_ICONS[LogLevelLabel.SUCCESS]} Success] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -96,7 +97,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.success ?? "#56d364")(`[${
     return (message?: any) => {
       console.info(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.info ?? "#58a6ff")(`[${CONSOLE_ICONS[LogLevelLabel.INFO]} Info] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.info ?? DEFAULT_COLOR_CONFIG.dark.info)(`[${CONSOLE_ICONS[LogLevelLabel.INFO]} Info] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -106,7 +107,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.info ?? "#58a6ff")(`[${CON
     return (message?: any) => {
       console.debug(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex("#3e9eff")(`[${CONSOLE_ICONS[LogLevelLabel.DEBUG]}  Debug] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.info ?? DEFAULT_COLOR_CONFIG.dark.info)(`[${CONSOLE_ICONS[LogLevelLabel.DEBUG]} Debug] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -116,7 +117,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex("#3e9eff")(`[${CONSOLE_ICONS[LogL
     return (message?: any) => {
       console.debug(
         `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex("#0070E0")(`[${CONSOLE_ICONS[LogLevelLabel.TRACE]}  Trace] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.info ?? DEFAULT_COLOR_CONFIG.dark.info)(`[${CONSOLE_ICONS[LogLevelLabel.TRACE]} Trace] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
       );
     };
@@ -125,7 +126,7 @@ ${_chalk.gray(formatTimestamp())} ${_chalk.hex("#0070E0")(`[${CONSOLE_ICONS[LogL
   return (message?: any) => {
     console.log(
       `
-${_chalk.gray(formatTimestamp())} ${_chalk.hex("#0356a8")(`[${CONSOLE_ICONS[LogLevelLabel.ALL]}  System] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
+${_chalk.gray(formatTimestamp())} ${_chalk.hex(colors.brand ?? DEFAULT_COLOR_CONFIG.dark.brand)(`[${CONSOLE_ICONS[LogLevelLabel.ALL]} System] `)}${_chalk.bold.whiteBright(formatLogMessage(message))}
 `
     );
   };
@@ -296,7 +297,7 @@ const _isFunction = (
       typeof value === "function" ||
       !!(value?.constructor && (value as any)?.call && (value as any)?.apply)
     );
-  } catch (e) {
+  } catch {
     return false;
   }
 };

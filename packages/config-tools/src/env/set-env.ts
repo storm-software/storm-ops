@@ -168,11 +168,12 @@ export const setConfigEnv = (config: StormWorkspaceConfig) => {
     process.env[`${prefix}TIMEZONE`] = config.timezone;
     process.env.TZ = config.timezone;
     process.env.DEFAULT_TIMEZONE = config.timezone;
+    process.env.TIMEZONE = config.timezone;
   }
   if (config.locale) {
     process.env[`${prefix}LOCALE`] = config.locale;
-    process.env.LOCALE = config.locale;
     process.env.DEFAULT_LOCALE = config.locale;
+    process.env.LOCALE = config.locale;
     process.env.LANG = config.locale
       ? `${config.locale.replaceAll("-", "_")}.UTF-8`
       : "en_US.UTF-8";
@@ -368,6 +369,11 @@ const setSingleThemeColorConfigEnv = (
   if (config.negative) {
     process.env[`${prefix}NEGATIVE`] = config.negative;
   }
+  if (config.gradient) {
+    for (let i = 0; i < config.gradient.length; i++) {
+      process.env[`${prefix}GRADIENT_${i}`] = config.gradient[i];
+    }
+  }
 };
 
 const setMultiThemeColorConfigEnv = (
@@ -425,5 +431,10 @@ const setBaseThemeColorConfigEnv = (
   }
   if (config.negative) {
     process.env[`${prefix}NEGATIVE`] = config.negative;
+  }
+  if (config.gradient) {
+    for (let i = 0; i < config.gradient.length; i++) {
+      process.env[`${prefix}GRADIENT_${i}`] = config.gradient[i];
+    }
   }
 };

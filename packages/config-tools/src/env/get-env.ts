@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import {
   type ColorConfigInput,
   type DarkThemeColorConfigInput,
@@ -300,6 +301,26 @@ const getThemeColorConfigEnv = (
 const getSingleThemeColorConfigEnv = (
   prefix: string
 ): SingleThemeColorConfigInput => {
+  const gradient = [] as string[];
+  if (
+    process.env[`${prefix}GRADIENT_START`] &&
+    process.env[`${prefix}GRADIENT_END`]
+  ) {
+    gradient.push(
+      process.env[`${prefix}GRADIENT_START`]!,
+      process.env[`${prefix}GRADIENT_END`]!
+    );
+  } else if (
+    process.env[`${prefix}GRADIENT_0`] ||
+    process.env[`${prefix}GRADIENT_1`]
+  ) {
+    let index = process.env[`${prefix}GRADIENT_0`] ? 0 : 1;
+    while (process.env[`${prefix}GRADIENT_${index}`]) {
+      gradient.push(process.env[`${prefix}GRADIENT_${index}`]!);
+      index++;
+    }
+  }
+
   return {
     dark: process.env[`${prefix}DARK`],
     light: process.env[`${prefix}LIGHT`],
@@ -314,7 +335,8 @@ const getSingleThemeColorConfigEnv = (
     danger: process.env[`${prefix}DANGER`],
     fatal: process.env[`${prefix}FATAL`],
     positive: process.env[`${prefix}POSITIVE`],
-    negative: process.env[`${prefix}NEGATIVE`]
+    negative: process.env[`${prefix}NEGATIVE`],
+    gradient
   };
 };
 
@@ -340,6 +362,26 @@ const getBaseThemeColorConfigEnv = <
 >(
   prefix: `${TExistingPrefix}_${Uppercase<TColorThemeType>}_`
 ): TResult => {
+  const gradient = [] as string[];
+  if (
+    process.env[`${prefix}GRADIENT_START`] &&
+    process.env[`${prefix}GRADIENT_END`]
+  ) {
+    gradient.push(
+      process.env[`${prefix}GRADIENT_START`]!,
+      process.env[`${prefix}GRADIENT_END`]!
+    );
+  } else if (
+    process.env[`${prefix}GRADIENT_0`] ||
+    process.env[`${prefix}GRADIENT_1`]
+  ) {
+    let index = process.env[`${prefix}GRADIENT_0`] ? 0 : 1;
+    while (process.env[`${prefix}GRADIENT_${index}`]) {
+      gradient.push(process.env[`${prefix}GRADIENT_${index}`]!);
+      index++;
+    }
+  }
+
   return {
     foreground: process.env[`${prefix}FOREGROUND`],
     background: process.env[`${prefix}BACKGROUND`],
@@ -354,6 +396,7 @@ const getBaseThemeColorConfigEnv = <
     danger: process.env[`${prefix}DANGER`],
     fatal: process.env[`${prefix}FATAL`],
     positive: process.env[`${prefix}POSITIVE`],
-    negative: process.env[`${prefix}NEGATIVE`]
+    negative: process.env[`${prefix}NEGATIVE`],
+    gradient
   } as TResult;
 };
