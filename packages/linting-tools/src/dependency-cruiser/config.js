@@ -10,8 +10,8 @@ export default {
         "your solution (i.e. use dependency inversion, make sure the modules have a single responsibility) ",
       from: {},
       to: {
-        circular: true,
-      },
+        circular: true
+      }
     },
     {
       name: "no-orphans",
@@ -28,10 +28,10 @@ export default {
           "(^|/)\\.[^/]+\\.(js|cjs|mjs|ts|json)$", // dot files
           "\\.d\\.ts$", // TypeScript declaration files
           "(^|/)tsconfig\\.json$", // TypeScript config
-          "(^|/)(babel|webpack)\\.config\\.(js|cjs|mjs|ts|json)$", // other configs
-        ],
+          "(^|/)(babel|webpack)\\.config\\.(js|cjs|mjs|ts|json)$" // other configs
+        ]
       },
-      to: {},
+      to: {}
     },
     {
       name: "no-deprecated-core",
@@ -62,9 +62,9 @@ export default {
           "^(constants)$",
           "^(sys)$",
           "^(_linklist)$",
-          "^(_stream_wrap)$",
-        ],
-      },
+          "^(_stream_wrap)$"
+        ]
+      }
     },
     {
       name: "not-to-deprecated",
@@ -74,8 +74,8 @@ export default {
       severity: "warn",
       from: {},
       to: {
-        dependencyTypes: ["deprecated"],
-      },
+        dependencyTypes: ["deprecated"]
+      }
     },
     {
       name: "no-non-package-json",
@@ -87,8 +87,8 @@ export default {
         "in your package.json.",
       from: {},
       to: {
-        dependencyTypes: ["npm-no-pkg", "npm-unknown"],
-      },
+        dependencyTypes: ["npm-no-pkg", "npm-unknown"]
+      }
     },
     {
       name: "not-to-unresolvable",
@@ -98,8 +98,8 @@ export default {
       severity: "error",
       from: {},
       to: {
-        couldNotResolve: true,
-      },
+        couldNotResolve: true
+      }
     },
     {
       name: "no-duplicate-dep-types",
@@ -114,8 +114,8 @@ export default {
         // as it's pretty common to have a type import be a type only import
         // _and_ (e.g.) a devDependency - don't consider type-only dependency
         // types for this rule
-        dependencyTypesNot: ["type-only"],
-      },
+        dependencyTypesNot: ["type-only"]
+      }
     },
 
     /* rules you might want to tweak for your specific situation: */
@@ -128,8 +128,8 @@ export default {
       severity: "error",
       from: {},
       to: {
-        path: "\\.(spec|test)\\.(js|mjs|cjs|ts|ls|coffee|litcoffee|coffee\\.md)$",
-      },
+        path: "\\.(spec|test)\\.(js|mjs|cjs|ts|ls|coffee|litcoffee|coffee\\.md)$"
+      }
     },
     {
       name: "not-to-dev-dep",
@@ -143,11 +143,11 @@ export default {
       from: {
         path: "^(src)",
         pathNot:
-          "\\.(spec|test)\\.(js|mjs|cjs|ts|ls|coffee|litcoffee|coffee\\.md)$",
+          "\\.(spec|test)\\.(js|mjs|cjs|ts|ls|coffee|litcoffee|coffee\\.md)$"
       },
       to: {
-        dependencyTypes: ["npm-dev"],
-      },
+        dependencyTypes: ["npm-dev"]
+      }
     },
     {
       name: "optional-deps-used",
@@ -159,8 +159,8 @@ export default {
         "dependency-cruiser configuration.",
       from: {},
       to: {
-        dependencyTypes: ["npm-optional"],
-      },
+        dependencyTypes: ["npm-optional"]
+      }
     },
     {
       name: "peer-deps-used",
@@ -172,9 +172,9 @@ export default {
       severity: "warn",
       from: {},
       to: {
-        dependencyTypes: ["npm-peer"],
-      },
-    },
+        dependencyTypes: ["npm-peer"]
+      }
+    }
   ],
   options: {
     /* conditions specifying which files not to follow further when encountered:
@@ -183,7 +183,7 @@ export default {
        for a complete list
     */
     doNotFollow: {
-      path: "node_modules",
+      path: "node_modules"
     },
 
     /* conditions specifying which dependencies to exclude
@@ -247,7 +247,7 @@ export default {
        defaults to './tsconfig.json'.
      */
     tsConfig: {
-      fileName: "tsconfig.json",
+      fileName: "tsconfig.json"
     },
 
     /* Webpack configuration to use to get resolve options from.
@@ -326,7 +326,7 @@ export default {
          this if you're not sure, but still use TypeScript. In a future version
          of dependency-cruiser this will likely become the default.
        */
-      mainFields: ["main", "types"],
+      mainFields: ["main", "types"]
     },
     reporterOptions: {
       dot: {
@@ -336,7 +336,7 @@ export default {
            collapses everything in node_modules to one folder deep so you see
            the external modules, but not the innards your app depends upon.
          */
-        collapsePattern: "node_modules/(@[^/]+/[^/]+|[^/]+)",
+        collapsePattern: "node_modules/(@[^/]+/[^/]+|[^/]+)"
 
         /* Options to tweak the appearance of your graph.See
            https://github.com/sverweij/dependency-cruiser/blob/main/doc/options-reference.md#reporteroptions
@@ -418,7 +418,7 @@ export default {
           this collapsePattern to your situation.
         */
         collapsePattern:
-          "^(packages|src|lib|app|bin|test(s?)|spec(s?))/[^/]+|node_modules/(@[^/]+/[^/]+|[^/]+)",
+          "^(packages|src|lib(s?)|app(s?)|bin|test(s?)|spec(s?))/[^/]+|node_modules/(@[^/]+/[^/]+|[^/]+)"
 
         /* Options to tweak the appearance of your graph.See
            https://github.com/sverweij/dependency-cruiser/blob/main/doc/options-reference.md#reporteroptions
@@ -430,9 +430,9 @@ export default {
         // },
       },
       text: {
-        highlightFocused: true,
-      },
-    },
-  },
+        highlightFocused: true
+      }
+    }
+  }
 };
 // generated: dependency-cruiser@13.0.3 on 2023-06-08T22:17:09.126Z

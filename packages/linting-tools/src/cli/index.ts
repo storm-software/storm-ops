@@ -19,7 +19,7 @@ let _config: Partial<StormWorkspaceConfig> = {};
 
 export function createProgram(config: StormWorkspaceConfig) {
   _config = config;
-  writeInfo("⚡ Running Storm Linting Tools", config);
+  writeInfo("⚡  Running Storm Linting Tools", config);
 
   const root = findWorkspaceRootSafe();
   process.env.STORM_WORKSPACE_ROOT ??= root;
@@ -32,7 +32,7 @@ export function createProgram(config: StormWorkspaceConfig) {
   program.version("1.0.0", "-v --version", "display CLI version");
 
   program
-    .description("⚡ Lint the Storm Workspace")
+    .description("⚡  Lint the Storm Workspace")
     .showHelpAfterError()
     .showSuggestionAfterError();
 
@@ -64,9 +64,45 @@ export function createProgram(config: StormWorkspaceConfig) {
     .addOption(alexIgnore)
     .action(alexAction);
 
+  const ignoreDeps = new Option(
+    "--ignore-deps <deps>",
+    "One or more dependencies to ignore for the dependency version consistency linting (comma-separated)"
+  )
+    .argParser(val =>
+      !val || !val.replaceAll("", ",")
+        ? []
+        : val.split(",").map(v => v.trim().toLowerCase())
+    )
+    .default([]);
+
+  const ignorePackages = new Option(
+    "--ignore-packages <packages>",
+    "One or more packages to ignore for the dependency version consistency linting (comma-separated)"
+  )
+    .argParser(val =>
+      !val || !val.replaceAll("", ",")
+        ? []
+        : val.split(",").map(v => v.trim().toLowerCase())
+    )
+    .default([]);
+
+  const ignorePaths = new Option(
+    "--ignore-paths <paths>",
+    "One or more paths to ignore for the dependency version consistency linting (comma-separated)"
+  )
+    .argParser(val =>
+      !val || !val.replaceAll("", ",")
+        ? []
+        : val.split(",").map(v => v.trim().toLowerCase())
+    )
+    .default([]);
+
   program
     .command("deps-version")
     .description("Run dependency version consistency lint for the workspace.")
+    .addOption(ignoreDeps)
+    .addOption(ignorePackages)
+    .addOption(ignorePaths)
     .action(depsVersionAction);
 
   program
@@ -183,7 +219,7 @@ async function allAction({
   manypkgArgs: string[];
 }) {
   try {
-    writeDebug("⚡ Linting the Storm Workspace", _config);
+    writeDebug("⚡  Linting the Storm Workspace", _config);
 
     const promises = [] as Promise<any>[];
     if (!skipCspell) {
@@ -207,7 +243,7 @@ async function allAction({
     }
 
     await Promise.all(promises);
-    writeSuccess("Successfully linted the workspace ✅", _config);
+    writeSuccess("Successfully linted the workspace  ✅", _config);
   } catch (e) {
     writeFatal(
       `A fatal error occurred while linting the workspace: ${e.message}`,
@@ -223,7 +259,7 @@ async function cspellAction({
   cspellConfig: string;
 }) {
   try {
-    writeInfo("⚡Linting the workspace spelling");
+    writeInfo("⚡  Linting the workspace spelling");
     const result = await lint(["**/*.{txt,js,jsx,ts,tsx,md,mdx}"], {
       cache: true,
       summary: true,
@@ -246,22 +282,22 @@ async function cspellAction({
       );
     }
 
-    writeSuccess("Spelling linting is complete ✅", _config);
+    writeSuccess("Spelling linting is complete  ✅", _config);
   } catch (e) {
-    writeError(`Spelling linting has failed ❌ \n\n${e.message}`, _config);
+    writeError(`Spelling linting has failed  ✘ \n\n${e.message}`, _config);
     throw new Error(e.message, { cause: e });
   }
 }
 
 async function codeownersAction() {
   try {
-    writeInfo("⚡Linting the workspace CODEOWNERS file");
+    writeInfo("⚡  Linting the workspace CODEOWNERS file");
 
     await runCodeowners();
 
-    writeSuccess("CODEOWNERS linting is complete ✅", _config);
+    writeSuccess("CODEOWNERS linting is complete  ✅", _config);
   } catch (e) {
-    writeError("CODEOWNERS linting has failed ❌", _config);
+    writeError("CODEOWNERS linting has failed  ✘", _config);
     writeFatal(
       `A fatal error occurred while CODEOWNERS linting the workspace: \n\n${e.message} \n`,
       _config
@@ -278,16 +314,16 @@ async function alexAction({
   alexIgnore: string;
 }) {
   try {
-    writeDebug("⚡ Linting the workspace language with alexjs.com", _config);
+    writeDebug("⚡  Linting the workspace language with alexjs.com", _config);
 
     const result = await runAlex(alexConfig, alexIgnore);
     if (result) {
       throw new Error(`Alex CLI Error Code: ${result}`);
     }
 
-    writeSuccess("Language linting is complete ✅", _config);
+    writeSuccess("Language linting is complete  ✅", _config);
   } catch (e) {
-    writeError(`Language linting has failed ❌ \n\n${e.message} `, _config);
+    writeError(`Language linting has failed  ✘ \n\n${e.message} `, _config);
     writeFatal(
       `A fatal error occurred while language linting the workspace: \n\n${e.message} \n`,
       _config
@@ -296,14 +332,27 @@ async function alexAction({
   }
 }
 
-async function depsVersionAction() {
+async function depsVersionAction({
+  ignoreDeps = [],
+  ignorePackages = [],
+  ignorePaths = []
+}: {
+  ignoreDeps: string[];
+  ignorePackages: string[];
+  ignorePaths: string[];
+}) {
   try {
     writeDebug(
-      "⚡ Linting the workspace dependency version consistency",
+      "⚡  Linting the workspace dependency version consistency",
       _config
     );
 
-    const cdvc = new CDVC(".", { fix: true });
+    const cdvc = new CDVC(".", {
+      fix: true,
+      ignoreDep: ignoreDeps,
+      ignorePackage: ignorePackages,
+      ignorePath: ignorePaths
+    });
 
     // Show output for dependencies we fixed.
     if (cdvc.hasMismatchingDependenciesFixable) {
@@ -315,10 +364,10 @@ async function depsVersionAction() {
       throw new Error(cdvc.toMismatchSummary());
     }
 
-    writeSuccess("Dependency Version linting is complete ✅", _config);
+    writeSuccess("Dependency Version linting is complete  ✅", _config);
   } catch (e) {
     writeError(
-      `Dependency version consistency linting has failed ❌ \n\n${e.message} `,
+      `Dependency version consistency linting has failed ✘ \n\n${e.message} `,
       _config
     );
     writeFatal(
@@ -331,7 +380,7 @@ async function depsVersionAction() {
 
 async function circularDepsAction() {
   try {
-    writeDebug("⚡ Linting the workspace circular dependency", _config);
+    writeDebug("⚡  Linting the workspace circular dependency", _config);
 
     const circulars = parseCircular(
       await parseDependencyTree(["**/*"], {
@@ -354,10 +403,10 @@ async function circularDepsAction() {
       );
     }
 
-    writeSuccess("Circular dependency linting is complete ✅", _config);
+    writeSuccess("Circular dependency linting is complete  ✅", _config);
   } catch (e) {
     writeError(
-      `Circular dependency linting has failed ❌ \n\n${e.message} `,
+      `Circular dependency linting has failed  ✘ \n\n${e.message} `,
       _config
     );
     writeFatal(
@@ -376,13 +425,13 @@ async function manypkgAction({
   manypkgArgs: string[];
 }) {
   try {
-    writeDebug("⚡ Linting the workspace's packages with Manypkg", _config);
+    writeDebug("⚡  Linting the workspace's packages with Manypkg", _config);
 
     await runManypkg(_config, manypkgType, manypkgArgs);
 
-    writeSuccess("Manypkg linting is complete ✅", _config);
+    writeSuccess("Manypkg linting is complete  ✅", _config);
   } catch (e) {
-    writeError(`Manypkg linting has failed ❌ \n\n${e.message} `, _config);
+    writeError(`Manypkg linting has failed  ✘ \n\n${e.message} `, _config);
     writeFatal(
       `A fatal error occurred while manypkg linting the workspace: ${e.message}`,
       _config

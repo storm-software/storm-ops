@@ -6,11 +6,7 @@ import { npmTagAll } from "@manypkg/cli/src/npm-tag";
 import { runCmd } from "@manypkg/cli/src/run";
 import { upgradeDependency } from "@manypkg/cli/src/upgrade";
 import { writePackage } from "@manypkg/cli/src/utils";
-import {
-  getPackages,
-  type Package,
-  type Packages
-} from "@manypkg/get-packages";
+import { getPackages, type Package } from "@manypkg/get-packages";
 import { StormWorkspaceConfig } from "@storm-software/config";
 import { runAsync } from "@storm-software/config-tools/utilities/run";
 import pLimit from "p-limit";
@@ -21,13 +17,10 @@ type RootPackage = Package & {
     manypkg?: Options;
   };
 };
-type PackagesWithConfig = Packages & {
-  rootPackage?: RootPackage;
-};
 
-const defaultOptions = {
-  defaultBranch: "main"
-};
+// type PackagesWithConfig = Packages & {
+//   rootPackage?: RootPackage;
+// };
 
 const runChecks = (
   allWorkspaces: Map<string, Package>,
@@ -37,6 +30,7 @@ const runChecks = (
 ) => {
   let hasErrored = false;
   let requiresInstall = false;
+
   const ignoredRules = new Set(options.ignoredRules || []);
   for (const [ruleName, check] of Object.entries(checks)) {
     if (ignoredRules.has(ruleName)) {
@@ -68,6 +62,7 @@ const runChecks = (
         }
       }
     }
+
     if (check.type === "root" && rootWorkspace) {
       const errors = check.validate(rootWorkspace, allWorkspaces, options);
       if (shouldFix && check.fix !== undefined) {
@@ -87,6 +82,7 @@ const runChecks = (
       }
     }
   }
+
   return { requiresInstall, hasErrored };
 };
 
@@ -150,7 +146,8 @@ export async function runManypkg(
   );
 
   const options: Options = {
-    ...defaultOptions,
+    defaultBranch: "main",
+    workspaceProtocol: "require",
     ...rootPackage?.packageJson.manypkg
   };
 

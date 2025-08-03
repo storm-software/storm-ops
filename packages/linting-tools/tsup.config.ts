@@ -2,15 +2,16 @@ import { defineConfig } from "tsup";
 
 export default defineConfig([
   {
-    name: "linting-tools-base",
+    name: "linting-tools",
     target: "node22",
-    entryPoints: ["src/index.ts"],
+    entryPoints: ["bin/*.ts"],
     format: ["cjs", "esm"],
-    outDir: "dist/src",
+    outDir: "dist",
     platform: "node",
     splitting: true,
+    bundle: true,
     clean: false,
-    dts: true,
+    dts: false,
     sourcemap: false,
     tsconfig: "./tsconfig.json",
     shims: true
