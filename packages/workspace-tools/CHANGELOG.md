@@ -2,6 +2,21 @@
 
 # Changelog for Storm Ops - Workspace Tools
 
+## [1.278.7](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.278.7) (2025-08-03)
+
+### Miscellaneous
+
+- **cspell:** Added external package names to dictionary
+  ([a322e5039](https://github.com/storm-software/storm-ops/commit/a322e5039))
+- **monorepo:** Regenerate README files and package.json links
+  ([aef5b3b2b](https://github.com/storm-software/storm-ops/commit/aef5b3b2b))
+
+### Updated Dependencies
+
+- Updated prettier to 0.51.69
+- Updated esbuild to 0.45.57
+- Updated unbuild to 0.49.68
+
 ## [1.278.6](https://github.com/storm-software/storm-ops/releases/tag/workspace-tools%401.278.6) (2025-08-03)
 
 ### Miscellaneous

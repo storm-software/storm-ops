@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Build Tools
 
+## [0.151.43](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.43) (2025-08-03)
+
+### Miscellaneous
+
+- **cspell:** Added external package names to dictionary
+  ([a322e5039](https://github.com/storm-software/storm-ops/commit/a322e5039))
+- **monorepo:** Regenerate README files and package.json links
+  ([aef5b3b2b](https://github.com/storm-software/storm-ops/commit/aef5b3b2b))
+
 ## [0.151.42](https://github.com/storm-software/storm-ops/releases/tag/build-tools%400.151.42) (2025-08-03)
 
 ### Miscellaneous

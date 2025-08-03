@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Storm Config
 
+## [0.19.60](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.19.60) (2025-08-03)
+
+### Miscellaneous
+
+- **cspell:** Added external package names to dictionary
+  ([a322e5039](https://github.com/storm-software/storm-ops/commit/a322e5039))
+- **monorepo:** Regenerate README files and package.json links
+  ([aef5b3b2b](https://github.com/storm-software/storm-ops/commit/aef5b3b2b))
+
 ## [0.19.59](https://github.com/storm-software/storm-ops/releases/tag/storm-config%400.19.59) (2025-08-03)
 
 ### Miscellaneous

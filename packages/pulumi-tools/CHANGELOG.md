@@ -2,6 +2,20 @@
 
 # Changelog for Storm Ops - Pulumi Tools
 
+## [0.14.17](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.14.17) (2025-08-03)
+
+### Miscellaneous
+
+- **cspell:** Added external package names to dictionary
+  ([a322e5039](https://github.com/storm-software/storm-ops/commit/a322e5039))
+- **monorepo:** Regenerate README files and package.json links
+  ([aef5b3b2b](https://github.com/storm-software/storm-ops/commit/aef5b3b2b))
+
+### Updated Dependencies
+
+- Updated config-tools to 1.178.2
+- Updated config to 1.126.6
+
 ## [0.14.16](https://github.com/storm-software/storm-ops/releases/tag/pulumi-tools%400.14.16) (2025-08-03)
 
 ### Miscellaneous

@@ -2,6 +2,13 @@
 
 # Changelog for Storm Ops - Create Storm Workspace
 
+## [1.91.59](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.91.59) (2025-08-03)
+
+### Miscellaneous
+
+- **monorepo:** Regenerate README files and package.json links
+  ([aef5b3b2b](https://github.com/storm-software/storm-ops/commit/aef5b3b2b))
+
 ## [1.91.58](https://github.com/storm-software/storm-ops/releases/tag/create-storm-workspace%401.91.58) (2025-08-03)
 
 ### Miscellaneous

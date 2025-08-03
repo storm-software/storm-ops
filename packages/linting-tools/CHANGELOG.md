@@ -2,6 +2,15 @@
 
 # Changelog for Storm Ops - Linting Tools
 
+## [1.126.4](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.126.4) (2025-08-03)
+
+### Miscellaneous
+
+- **cspell:** Added external package names to dictionary
+  ([a322e5039](https://github.com/storm-software/storm-ops/commit/a322e5039))
+- **monorepo:** Regenerate README files and package.json links
+  ([aef5b3b2b](https://github.com/storm-software/storm-ops/commit/aef5b3b2b))
+
 ## [1.126.3](https://github.com/storm-software/storm-ops/releases/tag/linting-tools%401.126.3) (2025-08-03)
 
 ### Miscellaneous
